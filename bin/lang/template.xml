@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering"/>
     <entry id="145" string="MP3 Files"/>
     <entry id="146" string="Ogg Vorbis Files"/>
-    <entry id="147" string="BONK Files"/>
+    <entry id="147" string="Bonk Files"/>
     <entry id="148" string="Automatic CDDB queries"/>
     <entry id="149" string="CDDB access mode:"/>
     <entry id="150" string="CDDB server:"/>
@@ -213,6 +213,7 @@
     <entry id="201" string="No audio CD in drive!"/>
     <entry id="202" string="Please fill all fields and track titles before submitting."/>
     <entry id="203" string="CD ripping disabled!"/>
+    <entry id="204" string="CD options"/>
     <entry id="205" string="Submitting CD information"/>
     <entry id="206" string="Cannot open file:"/>
     <entry id="207" string="Query CDDB database"/>
@@ -255,5 +256,14 @@
     <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?"/>
     <entry id="245" string="There are no updates available at the moment!"/>
     <entry id="246" string="Check for updates at startup"/>
+    <entry id="247" string="Read CD contents on insert"/>
+    <entry id="248" string="Eject disk after ripping"/>
+    <entry id="249" string="Encode 'On-The-Fly'"/>
+    <entry id="250" string="Keep ripped wave files"/>
+    <entry id="251" string="ripping/decoding"/>
+    <entry id="252" string="encoding"/>
+    <entry id="253" string="Unicode"/>
+    <entry id="254" string="Use Unicode filenames"/>
+    <entry id="255" string="AAC Files"/>
   </data>
 </LangFile>

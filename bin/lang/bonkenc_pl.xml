@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering">Wyłącz filtrowanie</entry>
     <entry id="145" string="MP3 Files">Pliki MP3</entry>
     <entry id="146" string="Ogg Vorbis Files">Pliki Ogg Vorbis</entry>
-    <entry id="147" string="BONK Files">Pliki BONK</entry>
+    <entry id="147" string="Bonk Files">Pliki Bonk</entry>
     <entry id="148" string="Automatic CDDB queries">Automatyczne zapytania CDDB</entry>
     <entry id="149" string="CDDB access mode:">Tryb dostępu do CDDB:</entry>
     <entry id="150" string="CDDB server:">Serwer CDDB:</entry>

@@ -28,6 +28,10 @@
 #define MPEG2 1
 #define MPEG4 0
 
+#undef MAIN
+#undef SSR
+#undef LTP
+
 /* AAC object types */
 #define MAIN 0
 #define LOW  1

@@ -129,6 +129,13 @@ FAACENCSETCONFIGURATION		 ex_faacEncSetConfiguration		= NIL;
 FAACENCENCODE			 ex_faacEncEncode			= NIL;
 FAACENCCLOSE			 ex_faacEncClose			= NIL;
 
+FAACDECOPEN			 ex_faacDecOpen				= NIL;
+FAACDECINIT			 ex_faacDecInit				= NIL;
+FAACDECGETCURRENTCONFIGURATION	 ex_faacDecGetCurrentConfiguration	= NIL;
+FAACDECSETCONFIGURATION		 ex_faacDecSetConfiguration		= NIL;
+FAACDECDECODE			 ex_faacDecDecode			= NIL;
+FAACDECCLOSE			 ex_faacDecClose			= NIL;
+
 TVQGETVERSIONID			 ex_TvqGetVersionID			= NIL;
 TVQENCINITIALIZE		 ex_TvqEncInitialize			= NIL;
 TVQENCTERMINATE			 ex_TvqEncTerminate			= NIL;
@@ -477,6 +484,34 @@ Bool bonkEnc::LoadFAACDLL()
 Void bonkEnc::FreeFAACDLL()
 {
 	FreeLibrary(faacdll);
+}
+
+Bool bonkEnc::LoadFAAD2DLL()
+{
+	faad2dll = LoadLibraryA(GetApplicationDirectory().Append("encoders/FAAD2.dll"));
+
+	if (faad2dll == NIL) return false;
+
+	ex_faacDecOpen				= (FAACDECOPEN) GetProcAddress(faad2dll, "faacDecOpen");
+	ex_faacDecInit				= (FAACDECINIT) GetProcAddress(faad2dll, "faacDecInit");
+	ex_faacDecGetCurrentConfiguration	= (FAACDECGETCURRENTCONFIGURATION) GetProcAddress(faad2dll, "faacDecGetCurrentConfiguration");
+	ex_faacDecSetConfiguration		= (FAACDECSETCONFIGURATION) GetProcAddress(faad2dll, "faacDecSetConfiguration");
+	ex_faacDecDecode			= (FAACDECDECODE) GetProcAddress(faad2dll, "faacDecDecode");
+	ex_faacDecClose				= (FAACDECCLOSE) GetProcAddress(faad2dll, "faacDecClose");
+
+	if (ex_faacDecOpen == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_faacDecInit == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_faacDecGetCurrentConfiguration == NULL)	{ FreeLibrary(faad2dll); return false; }
+	if (ex_faacDecSetConfiguration == NULL)		{ FreeLibrary(faad2dll); return false; }
+	if (ex_faacDecDecode == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_faacDecClose == NULL)			{ FreeLibrary(faad2dll); return false; }
+
+	return true;
+}
+
+Void bonkEnc::FreeFAAD2DLL()
+{
+	FreeLibrary(faad2dll);
 }
 
 Bool bonkEnc::LoadCDRipDLL()

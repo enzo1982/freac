@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering">Κανένα Φίλτρο</entry>
     <entry id="145" string="MP3 Files">Αρχεία MP3</entry>
     <entry id="146" string="Ogg Vorbis Files">Αρχεία Ogg Vorbis</entry>
-    <entry id="147" string="BONK Files">Αρχεία BONK</entry>
+    <entry id="147" string="Bonk Files">Αρχεία Bonk</entry>
     <entry id="148" string="Automatic CDDB queries">Αυτόματη αίτηση CDDB</entry>
     <entry id="149" string="CDDB access mode:">Επιλογή πρόσβασης CDDB:</entry>
     <entry id="150" string="CDDB server:">Εξυπηρετητής CDDB:</entry>

@@ -53,6 +53,7 @@ class bonkEncConfig
 		Bool		 enable_lame;
 		Bool		 enable_vorbis;
 		Bool		 enable_faac;
+		Bool		 enable_faad2;
 		Bool		 enable_tvq;
 		Bool		 enable_cdrip;
 		Bool		 enable_auto_cddb;

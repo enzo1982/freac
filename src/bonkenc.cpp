@@ -42,6 +42,7 @@
 #include <input/filter-in-lame.h>
 #include <input/filter-in-vorbis.h>
 #include <input/filter-in-bonk.h>
+#include <input/filter-in-faad2.h>
 #include <input/filter-in-winamp.h>
 
 Int	 ENCODER_BONKENC	= -1;
@@ -57,7 +58,7 @@ I18n::Translator	*bonkEnc::i18n		= NIL;
 
 bonkEncDebug	*debug_out;
 
-String	 bonkEnc::version = "v1.0 beta 2.5";
+String	 bonkEnc::version = "v1.0 beta 3";
 String	 bonkEnc::cddbVersion = "v1.0beta3";
 String	 bonkEnc::shortVersion = "v1.0";
 
@@ -103,6 +104,9 @@ bonkEnc::bonkEnc()
 
 	if (LoadFAACDLL() == false)	currentConfig->enable_faac = false;
 	else				currentConfig->enable_faac = true;
+
+	if (LoadFAAD2DLL() == false)	currentConfig->enable_faad2 = false;
+	else				currentConfig->enable_faad2 = true;
 
 	if (LoadTVQDLL() == false)	currentConfig->enable_tvq = false;
 	else				currentConfig->enable_tvq = true;
@@ -194,6 +198,7 @@ bonkEnc::~bonkEnc()
 	if (currentConfig->enable_bonk)		FreeBonkDLL();
 	if (currentConfig->enable_blade)	FreeBladeDLL();
 	if (currentConfig->enable_faac)		FreeFAACDLL();
+	if (currentConfig->enable_faad2)	FreeFAAD2DLL();
 	if (currentConfig->enable_lame)		FreeLAMEDLL();
 	if (currentConfig->enable_tvq)		FreeTVQDLL();
 	if (currentConfig->enable_vorbis)	FreeVorbisDLL();
@@ -289,6 +294,10 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 	else if (extension3 == "ogg" && currentConfig->enable_vorbis)
 	{
 		filter_in = new FilterInVORBIS(currentConfig);
+	}
+	else if (extension3 == "aac" && currentConfig->enable_faad2)
+	{
+		filter_in = new FilterInFAAD2(currentConfig);
 	}
 	else if (extension4 == "bonk" && currentConfig->enable_bonk)
 	{

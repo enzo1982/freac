@@ -110,6 +110,10 @@ SOURCE="..\src\input\filter-in-cdrip.cpp"
 # End Source File
 # Begin Source File
 
+SOURCE="..\src\input\filter-in-faad2.cpp"
+# End Source File
+# Begin Source File
+
 SOURCE="..\src\input\filter-in-lame.cpp"
 # End Source File
 # Begin Source File
@@ -337,6 +341,10 @@ SOURCE="..\include\input\filter-in-bonk.h"
 # Begin Source File
 
 SOURCE="..\include\input\filter-in-cdrip.h"
+# End Source File
+# Begin Source File
+
+SOURCE="..\include\input\filter-in-faad2.h"
 # End Source File
 # Begin Source File
 

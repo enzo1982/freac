@@ -24,6 +24,7 @@ Geschichte
 		- Ein Uninstaller wurde hinzugefügt
 		- Einige andere Fehler wurden behoben
 		- FAAC auf Version 1.24.0 aktualisiert
+		- FAAD2 AAC Decoder Unterstützung hinzugefügt
 		- Update auf smooth v0.8.65.0
 
 	Version 1.0 beta 2 (Februar 2004)

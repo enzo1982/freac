@@ -26,7 +26,7 @@ bool FilterInLAME::Activate()
 {
 	ex_lame_decode_init();
 
-	int	 size = 4096;
+	Int	 size = 4096;
 
 	do
 	{
@@ -81,7 +81,7 @@ int FilterInLAME::ReadData(unsigned char **data, int size)
 
 	*data = new unsigned char [nsamples * 4];
 
-	for (int i = 0; i < nsamples; i++)
+	for (Int i = 0; i < nsamples; i++)
 	{
 		((short *) *data)[2 * i]	= pcm_l[i];
 		((short *) *data)[2 * i + 1]	= pcm_r[i];
@@ -100,9 +100,10 @@ bonkEncTrack *FilterInLAME::GetFileInfo(String inFile)
 	bonkEncTrack	*nFormat = new bonkEncTrack;
 	InStream	*f_in = OpenFile(inFile);
 
-	nFormat->order = BYTE_INTEL;
-	nFormat->bits = 16;
-	nFormat->fileSize = f_in->Size();
+	nFormat->order		= BYTE_INTEL;
+	nFormat->bits		= 16;
+	nFormat->fileSize	= f_in->Size();
+	nFormat->length		= -1;
 
 	Int	 size = 4096;
 
@@ -122,9 +123,8 @@ bonkEncTrack *FilterInLAME::GetFileInfo(String inFile)
 		delete [] pcm_l;
 		delete [] pcm_r;
 
-		nFormat->channels = mp3data.stereo;
-		nFormat->rate = mp3data.samplerate;
-		nFormat->length = -1;
+		nFormat->channels	= mp3data.stereo;
+		nFormat->rate		= mp3data.samplerate;
 
 		delete [] data;
 

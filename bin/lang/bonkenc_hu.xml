@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering">Minden szûrö ki</entry>
     <entry id="145" string="MP3 Files">MP3 fájlok</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis fájlok</entry>
-    <entry id="147" string="BONK Files">BONK fájlok</entry>
+    <entry id="147" string="Bonk Files">Bonk fájlok</entry>
     <entry id="148" string="Automatic CDDB queries">Automatikus CDDB lekérdezések</entry>
     <entry id="149" string="CDDB access mode:">CDDB hozzáférési mód:</entry>
     <entry id="150" string="CDDB server:">CDDB szerver:</entry>

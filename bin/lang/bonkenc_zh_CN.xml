@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering">禁止所有过滤</entry>
     <entry id="145" string="MP3 Files">MP3文件</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis文件</entry>
-    <entry id="147" string="BONK Files">BONK文件</entry>
+    <entry id="147" string="Bonk Files">Bonk文件</entry>
     <entry id="148" string="Automatic CDDB queries">自动CDDB文件</entry>
     <entry id="149" string="CDDB access mode:">CDDB存取模式:</entry>
     <entry id="150" string="CDDB server:">CDDB服务器:</entry>

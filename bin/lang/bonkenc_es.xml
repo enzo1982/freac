@@ -154,7 +154,7 @@
     <entry id="144" string="Disable all filtering">Deshabilitar filtros</entry>
     <entry id="145" string="MP3 Files">Archivos de Audio MP3</entry>
     <entry id="146" string="Ogg Vorbis Files">Archivos de Audio Ogg Vorbis</entry>
-    <entry id="147" string="BONK Files">Archivos de Audio BONK</entry>
+    <entry id="147" string="Bonk Files">Archivos de Audio Bonk</entry>
     <entry id="149" string="CDDB access mode:">Modo de acceso CDDB:</entry>
     <entry id="150" string="CDDB server:">Servidor CDDB</entry>
     <entry id="151" string="Port:">Puerto:</entry>

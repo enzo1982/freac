@@ -45,6 +45,10 @@ extern "C" {
 
 #define FAAD2_VERSION "2.0     "
 
+#undef MAIN
+#undef SSR
+#undef LTP
+
 /* object types for AAC */
 #define MAIN       1
 #define LC         2

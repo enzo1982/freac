@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering">Отключить фильтры</entry>
     <entry id="145" string="MP3 Files">MP3 файлы</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis файлы</entry>
-    <entry id="147" string="BONK Files">BONK файлы</entry>
+    <entry id="147" string="Bonk Files">Bonk файлы</entry>
     <entry id="148" string="Automatic CDDB queries">Авто запрос к CDDB</entry>
     <entry id="149" string="CDDB access mode:">Способ доступа к CDDB:</entry>
     <entry id="150" string="CDDB server:">CDDB сервер:</entry>

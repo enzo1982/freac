@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering">Filterung abschalten</entry>
     <entry id="145" string="MP3 Files">MP3 Dateien</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis Dateien</entry>
-    <entry id="147" string="BONK Files">BONK Dateien</entry>
+    <entry id="147" string="Bonk Files">Bonk Dateien</entry>
     <entry id="148" string="Automatic CDDB queries">Automatische CDDB Abfrage</entry>
     <entry id="149" string="CDDB access mode:">CDDB Zugriffsmodus:</entry>
     <entry id="150" string="CDDB server:">CDDB Server:</entry>
@@ -264,5 +264,6 @@
     <entry id="252" string="encoding">Codieren</entry>
     <entry id="253" string="Unicode">Unicode</entry>
     <entry id="254" string="Use Unicode filenames">Dateinamen mit Unicode</entry>
+    <entry id="255" string="AAC Files">AAC Dateien</entry>
   </data>
 </LangFile>

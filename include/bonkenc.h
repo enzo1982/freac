@@ -110,6 +110,8 @@ class bonkEnc : public Application
 		Void			 FreeVorbisDLL();
 		Bool			 LoadFAACDLL();
 		Void			 FreeFAACDLL();
+		Bool			 LoadFAAD2DLL();
+		Void			 FreeFAAD2DLL();
 		Bool			 LoadTVQDLL();
 		Void			 FreeTVQDLL();
 		Bool			 LoadCDRipDLL();
@@ -150,6 +152,7 @@ class bonkEnc : public Application
 		HINSTANCE		 lamedll;
 		HINSTANCE		 vorbisdll;
 		HINSTANCE		 faacdll;
+		HINSTANCE		 faad2dll;
 		HINSTANCE		 tvqdll;
 		HINSTANCE		 cdripdll;
 		HINSTANCE		 id3dll;

@@ -23,6 +23,7 @@
 #include <3rdparty/bladedll/bladedll.h>
 #include <3rdparty/vorbis/vorbisenc.h>
 #include <3rdparty/faac/faac.h>
+#include <3rdparty/faad2/faad.h>
 #include <3rdparty/cdrip/cdrip.h>
 #include <3rdparty/lame/lame.h>
 #include <3rdparty/twinvq/twinvq.h>
@@ -185,23 +186,13 @@
 // Ogg Vorbis API
 
 	typedef void				(*VORBISINFOINIT)				 (vorbis_info *);
-	typedef int				(*VORBISENCODEINIT)				 (vorbis_info *, long, long,
- long,
- long,
- long);
-	typedef int				(*VORBISENCODEINITVBR)				 (vorbis_info *,
- long,
- long,
- float);
+	typedef int				(*VORBISENCODEINIT)				 (vorbis_info *, long, long, long, long, long);
+	typedef int				(*VORBISENCODEINITVBR)				 (vorbis_info *, long, long, float);
 	typedef void				(*VORBISCOMMENTINIT)				 (vorbis_comment *);
 	typedef void				(*VORBISCOMMENTADDTAG)				 (vorbis_comment *, char *, char *);
 	typedef int				(*VORBISANALYSISINIT)				 (vorbis_dsp_state *, vorbis_info *);
 	typedef int				(*VORBISBLOCKINIT)				 (vorbis_dsp_state *, vorbis_block *);
-	typedef int				(*VORBISANALYSISHEADEROUT)			 (vorbis_dsp_state *,
- vorbis_comment *,
- ogg_packet *,
- ogg_packet *,
- ogg_packet *);
+	typedef int				(*VORBISANALYSISHEADEROUT)			 (vorbis_dsp_state *, vorbis_comment *, ogg_packet *, ogg_packet *, ogg_packet *);
 	typedef float **			(*VORBISANALYSISBUFFER)				 (vorbis_dsp_state *, int);
 	typedef int				(*VORBISANALYSISWROTE)				 (vorbis_dsp_state *, int);
 	typedef int				(*VORBISANALYSISBLOCKOUT)			 (vorbis_dsp_state *, vorbis_block *);
@@ -285,6 +276,22 @@
 	extern FAACENCSETCONFIGURATION		 ex_faacEncSetConfiguration;
 	extern FAACENCENCODE			 ex_faacEncEncode;
 	extern FAACENCCLOSE			 ex_faacEncClose;
+
+// FAAD2 DLL API
+
+	typedef faacDecHandle			(FAADAPI *FAACDECOPEN)				();
+	typedef long				(FAADAPI *FAACDECINIT)				(faacDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
+	typedef faacDecConfigurationPtr		(FAADAPI *FAACDECGETCURRENTCONFIGURATION)	(faacDecHandle);
+	typedef unsigned char			(FAADAPI *FAACDECSETCONFIGURATION)		(faacDecHandle, faacDecConfigurationPtr);
+	typedef void *				(FAADAPI *FAACDECDECODE)			(faacDecHandle, faacDecFrameInfo *, unsigned char *, unsigned long);
+	typedef void				(FAADAPI *FAACDECCLOSE)				(faacDecHandle);
+
+	extern FAACDECOPEN			 ex_faacDecOpen;
+	extern FAACDECINIT			 ex_faacDecInit;
+	extern FAACDECGETCURRENTCONFIGURATION	 ex_faacDecGetCurrentConfiguration;
+	extern FAACDECSETCONFIGURATION		 ex_faacDecSetConfiguration;
+	extern FAACDECDECODE			 ex_faacDecDecode;
+	extern FAACDECCLOSE			 ex_faacDecClose;
 
 // TwinVQ DLL API
 

@@ -153,7 +153,7 @@
     <entry id="144" string="Disable all filtering">Poista suodattimet</entry>
     <entry id="145" string="MP3 Files">MP3-tiedostot</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis -tiedostot</entry>
-    <entry id="147" string="BONK Files">BONK -tiedostot</entry>
+    <entry id="147" string="Bonk Files">Bonk -tiedostot</entry>
     <entry id="149" string="CDDB access mode:">CDDB-kirjautumistila:</entry>
     <entry id="150" string="CDDB server:">CDDB-palvelin:</entry>
     <entry id="151" string="Port:">Portti:</entry>

@@ -83,7 +83,11 @@ Void bonkEncGUI::AddFile()
 		}
 	}
 
-	String	 fileTypes = "*.aif; *.aiff; *.au";
+	String	 fileTypes;
+
+	if (currentConfig->enable_faad2) fileTypes.Append("; *.aac; ");
+
+	fileTypes.Append("*.aif; *.aiff; *.au");
 
 	if (currentConfig->enable_bonk) fileTypes.Append("; *.bonk");
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) fileTypes.Append("; *.cda");
@@ -96,9 +100,11 @@ Void bonkEncGUI::AddFile()
 
 	dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
 
+	if (currentConfig->enable_faad2) dialog->AddFilter(i18n->TranslateString("AAC Files").Append(" (*.aac)"), "*.aac");
+
 	dialog->AddFilter(i18n->TranslateString("Apple Audio Files").Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
 
-	if (currentConfig->enable_bonk)		dialog->AddFilter(i18n->TranslateString("BONK Files").Append(" (*.bonk)"), "*.bonk");
+	if (currentConfig->enable_bonk)		dialog->AddFilter(i18n->TranslateString("Bonk Files").Append(" (*.bonk)"), "*.bonk");
 
 	dialog->AddFilter(i18n->TranslateString("Creative Voice Files").Append(" (*.voc)"), "*.voc");
 

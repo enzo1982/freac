@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering">Відмінити всі фільтри</entry>
     <entry id="145" string="MP3 Files">МР3 файли</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis файли</entry>
-    <entry id="147" string="BONK Files">BONK файли</entry>
+    <entry id="147" string="Bonk Files">Bonk файли</entry>
     <entry id="148" string="Automatic CDDB queries">Автоматичні CDDB запити</entry>
     <entry id="149" string="CDDB access mode:">Режим доступу CDDB:</entry>
     <entry id="150" string="CDDB server:">Сервер CDDB:</entry>

@@ -24,9 +24,9 @@ FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkEncTrack *format) : Outp
 		return;
 	}
 
-	handle = (faacEncHandle) ex_faacEncOpen(format->rate, format->channels, &samples_size, &buffersize);
+	handle = ex_faacEncOpen(format->rate, format->channels, &samples_size, &buffersize);
 
-	fConfig = (faacEncConfigurationPtr) ex_faacEncGetCurrentConfiguration(handle);
+	fConfig = ex_faacEncGetCurrentConfiguration(handle);
 
 	fConfig->mpegVersion	= currentConfig->faac_mpegversion;
 	fConfig->aacObjectType	= currentConfig->faac_type;
