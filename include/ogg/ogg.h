@@ -5,8 +5,8 @@
  * GOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE *
  * IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.       *
  *                                                                  *
- * THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-2001             *
- * by the XIPHOPHORUS Company http://www.xiph.org/                  *
+ * THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-2002             *
+ * by the Xiph.Org Foundation http://www.xiph.org/                  *
  *                                                                  *
  ********************************************************************
 
@@ -110,21 +110,40 @@ typedef struct {
 /* Ogg BITSTREAM PRIMITIVES: bitstream ************************/
 
 extern void  oggpack_writeinit(oggpack_buffer *b);
+extern void  oggpack_writetrunc(oggpack_buffer *b,long bits);
+extern void  oggpack_writealign(oggpack_buffer *b);
+extern void  oggpack_writecopy(oggpack_buffer *b,void *source,long bits);
 extern void  oggpack_reset(oggpack_buffer *b);
 extern void  oggpack_writeclear(oggpack_buffer *b);
 extern void  oggpack_readinit(oggpack_buffer *b,unsigned char *buf,int bytes);
 extern void  oggpack_write(oggpack_buffer *b,unsigned long value,int bits);
 extern long  oggpack_look(oggpack_buffer *b,int bits);
-extern long  oggpack_look_huff(oggpack_buffer *b,int bits);
 extern long  oggpack_look1(oggpack_buffer *b);
 extern void  oggpack_adv(oggpack_buffer *b,int bits);
-extern int   oggpack_adv_huff(oggpack_buffer *b,int bits);
 extern void  oggpack_adv1(oggpack_buffer *b);
 extern long  oggpack_read(oggpack_buffer *b,int bits);
 extern long  oggpack_read1(oggpack_buffer *b);
 extern long  oggpack_bytes(oggpack_buffer *b);
 extern long  oggpack_bits(oggpack_buffer *b);
 extern unsigned char *oggpack_get_buffer(oggpack_buffer *b);
+
+extern void  oggpackB_writeinit(oggpack_buffer *b);
+extern void  oggpackB_writetrunc(oggpack_buffer *b,long bits);
+extern void  oggpackB_writealign(oggpack_buffer *b);
+extern void  oggpackB_writecopy(oggpack_buffer *b,void *source,long bits);
+extern void  oggpackB_reset(oggpack_buffer *b);
+extern void  oggpackB_writeclear(oggpack_buffer *b);
+extern void  oggpackB_readinit(oggpack_buffer *b,unsigned char *buf,int bytes);
+extern void  oggpackB_write(oggpack_buffer *b,unsigned long value,int bits);
+extern long  oggpackB_look(oggpack_buffer *b,int bits);
+extern long  oggpackB_look1(oggpack_buffer *b);
+extern void  oggpackB_adv(oggpack_buffer *b,int bits);
+extern void  oggpackB_adv1(oggpack_buffer *b);
+extern long  oggpackB_read(oggpack_buffer *b,int bits);
+extern long  oggpackB_read1(oggpack_buffer *b);
+extern long  oggpackB_bytes(oggpack_buffer *b);
+extern long  oggpackB_bits(oggpack_buffer *b);
+extern unsigned char *oggpackB_get_buffer(oggpack_buffer *b);
 
 /* Ogg BITSTREAM PRIMITIVES: encoding **************************/
 
@@ -175,3 +194,9 @@ extern void     ogg_packet_clear(ogg_packet *op);
 #endif
 
 #endif  /* _OGG_H */
+
+
+
+
+
+

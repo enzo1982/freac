@@ -10,6 +10,9 @@
 
 #include <iolib-cxx.h>
 #include <output/filter-out-tvq.h>
+
+#undef V2
+
 #include <dllinterfaces.h>
 #include <memory.h>
 

@@ -12,6 +12,7 @@
 #define _H_FILTER_OUT_FAAC_
 
 #include "outputfilter.h"
+#include <stdint.h>
 #include <faac/faac.h>
 
 class FilterOutFAAC : public OutputFilter

@@ -122,7 +122,7 @@ configureGeneralSettings::configureGeneralSettings()
 	}
 
 	if (currentConfig->enable_lame)		encoders_combo_encoder->AddEntry(String("LAME v").Append(ex_get_lame_short_version()));
-	if (currentConfig->enable_vorbis)	encoders_combo_encoder->AddEntry(String("Ogg Vorbis v1.0"));
+	if (currentConfig->enable_vorbis)	encoders_combo_encoder->AddEntry(String("Ogg Vorbis v1.0.1"));
 
 	if (currentConfig->enable_tvq)
 	{

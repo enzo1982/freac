@@ -59,7 +59,30 @@ extern int vorbis_encode_setup_init(vorbis_info *vi);
 
 extern int vorbis_encode_ctl(vorbis_info *vi,int number,void *arg);
 
+#define OV_ECTL_RATEMANAGE_GET       0x10
 
+#define OV_ECTL_RATEMANAGE_SET       0x11
+#define OV_ECTL_RATEMANAGE_AVG       0x12
+#define OV_ECTL_RATEMANAGE_HARD      0x13
+
+#define OV_ECTL_LOWPASS_GET          0x20
+#define OV_ECTL_LOWPASS_SET          0x21
+
+#define OV_ECTL_IBLOCK_GET           0x30
+#define OV_ECTL_IBLOCK_SET           0x31
+
+struct ovectl_ratemanage_arg {
+  int    management_active;
+
+  long   bitrate_hard_min;
+  long   bitrate_hard_max;
+  double bitrate_hard_window;
+
+  long   bitrate_av_lo;
+  long   bitrate_av_hi;
+  double bitrate_av_window;
+  double bitrate_av_window_center;
+};
 
 #ifdef __cplusplus
 }

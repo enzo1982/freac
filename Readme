@@ -22,6 +22,8 @@ History
 		- output directory can be changed from the main screen
 		- read and write Vorbis comments in UTF-8 format
 		- upgraded LAME to version 3.94 beta
+		- upgraded Ogg Vorbis to version 1.0.1
+		- upgraded FAAC to version 1.23.1
 		- some small improvements
 		- some bugfixes
 

@@ -22,6 +22,8 @@ Geschichte
 		- Ausgabeverzeichnis kann vom Hauptbildschirm aus verändert werden
 		- Lesen und Schreiben von Vorbis-Comments im UTF-8 Format
 		- LAME auf Version 3.94 beta aktualisiert
+		- Ogg Vorbis auf Version 1.0.1 aktualisiert
+		- FAAC auf Version 1.23.1 aktualisiert
 		- Einige kleinere Verbesserungen
 		- Einige Fehler wurden behoben
 

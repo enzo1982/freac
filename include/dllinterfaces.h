@@ -12,6 +12,7 @@
 #define _H_DLLINTERFACES_
 
 #include <smooth.h>
+#include <stdint.h>
 #include <bonk/bonk.h>
 #include <bladedll/bladedll.h>
 #include <vorbis/vorbisenc.h>
@@ -271,7 +272,7 @@
 	typedef faacEncHandle			(FAACAPI *FAACENCOPEN)				(unsigned long, unsigned int, unsigned long *, unsigned long *);
 	typedef faacEncConfigurationPtr		(FAACAPI *FAACENCGETCURRENTCONFIGURATION)	(faacEncHandle);
 	typedef int				(FAACAPI *FAACENCSETCONFIGURATION)		(faacEncHandle, faacEncConfigurationPtr);
-	typedef int				(FAACAPI *FAACENCENCODE)			(faacEncHandle, short *, unsigned int, unsigned char *, unsigned int);
+	typedef int				(FAACAPI *FAACENCENCODE)			(faacEncHandle, int32_t *, unsigned int, unsigned char *, unsigned int);
 	typedef int				(FAACAPI *FAACENCCLOSE)				(faacEncHandle);
 
 	extern FAACENCOPEN			 ex_faacEncOpen;

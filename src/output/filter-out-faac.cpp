@@ -34,6 +34,7 @@ FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 	fConfig->useTns		= currentConfig->faac_usetns;
 	fConfig->bandWidth	= currentConfig->faac_bandwidth;
 	fConfig->bitRate	= currentConfig->faac_bitrate * 1000;
+	fConfig->inputFormat	= FAAC_INPUT_32BIT;
 
 	ex_faacEncSetConfiguration(handle, fConfig);
 
@@ -46,16 +47,16 @@ FilterOutFAAC::~FilterOutFAAC()
 
 int FilterOutFAAC::WriteData(unsigned char *data, int size)
 {
-	signed short	*samples = new signed short [size / (format->bits / 8)];
+	int32_t		*samples = new int32_t [size / (format->bits / 8)];
 	unsigned char	*outbuffer = new unsigned char [buffersize];
 	unsigned long	 bytes;
 
 	for (int i = 0; i < size / (format->bits / 8); i++)
 	{
-		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
-		if (format->bits == 16)	samples[i] = ((short *) data)[i];
-		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+		if (format->bits == 8)	samples[i] = (data[i] - 128) * 65536;
+		if (format->bits == 16)	samples[i] = ((short *) data)[i] * 256;
+		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0));
+		if (format->bits == 32)	samples[i] = ((int32_t *) data)[i] / 256;
 	}
 
 	bytes = ex_faacEncEncode(handle, samples, samples_size, outbuffer, buffersize);
