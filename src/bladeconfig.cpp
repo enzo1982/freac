@@ -25,7 +25,7 @@ configureBladeEnc::configureBladeEnc()
 	priv = currentConfig->blade_private;
 	dualchannel = currentConfig->blade_dualchannel;
 
-	mainWnd			= new Window(String("BladeEnc ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "BladeEnc"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Codificatore selezionato:</entry>
     <entry id="18" string="File progress:">Avanzamento:</entry>
     <entry id="19" string="Output dir.:">Destinazione:</entry>
-    <entry id="20" string=" file(s) in joblist:"> file da processare.</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 file da processare:</entry>
     <entry id="21" string="none">nessuno</entry>
     <entry id="22" string="Help topics...">Guida in linea</entry>    
     <entry id="23" string="Add audio file(s) to the joblist">Aggiunge file audio all'elenco</entry>
@@ -51,13 +51,13 @@
     <entry id="39" string="You have not selected a file!">Nessun file selezionato.</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Elaborazione ancora in corso. Uscire comunque?</entry>
     <entry id="41" string="Currently encoding">Elaborazione in corso</entry>
-    <entry id="42" string="This program is being distributed under the terms">La distribuzione di questo programma è soggetta</entry>
-    <entry id="43" string="of the GNU General Public License (GPL).">ai termini della GNU General Public License (GPL).</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">La distribuzione di questo programma è soggetta&#10;ai termini della GNU General Public License (GPL).</entry>
+    <entry id="43" string="CDDB query">Interrogazione CDDB</entry>
     <entry id="44" string="About BonkEnc">Informazioni su BonkEnc</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Nessuna opzione disponibile per il filtro WAVE Out.</entry>
     <entry id="46" string="WAVE Out filter">Filtro WAVE Out</entry>
     <entry id="47" string="Cannot change settings while encoding!">Impossibile modificare le impostazioni durante l'elaborazione.</entry>
-    <entry id="48" string="encoder configuration">- Configurazione</entry>
+    <entry id="48" string="%1 encoder configuration">%1 - Configurazione</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Annulla</entry>
     <entry id="51" string="Encoding Mode">Modalità di codifica</entry>
@@ -235,6 +235,5 @@
     <entry id="223" string="Psycho acoustic model">Modello psico-acustico</entry>
     <entry id="224" string="Use Temporal Masking Effect">Usa effetto di mascheramento temporale</entry>
     <entry id="225" string="Expert">Avanzate</entry>
-    <entry id="226" string="CDDB query">Interrogazione CDDB</entry>
   </data>
 </LangFile>

@@ -289,7 +289,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		SMOOTH::MessageBox(i18n->TranslateString("Cannot open file:").Append(" ").Append(file), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 	}
 
-	if (!currentConfig->enable_console) txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+	if (!currentConfig->enable_console) txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(joblist->GetNOfEntries())));
 }
 
 Void bonkEncGUI::RemoveFile()
@@ -342,7 +342,7 @@ Void bonkEncGUI::RemoveFile()
 
 	surface->EndPaint();
 
-	txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+	txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(joblist->GetNOfEntries())));
 
 	if (joblist->GetNOfEntries() > 0)
 	{
@@ -385,7 +385,7 @@ Void bonkEnc::ClearList()
 	sa_formatinfo.RemoveAll();
 	joblist->RemoveAll();
 
-	if (!currentConfig->enable_console) txt_joblist->SetText(String("0").Append(i18n->TranslateString(" file(s) in joblist:")));
+	if (!currentConfig->enable_console) txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", "0"));
 
 	dontUpdateInfo = True;
 

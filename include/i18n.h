@@ -38,8 +38,6 @@ class bonkTranslator
 
 		Int				 GetSupportedLanguages();
 		Int				 ReadStrings(Document *, bonkEncLanguageInfo *);
-
-		Int				 GetStringChecksum(String);
 	public:
 						 bonkTranslator();
 						~bonkTranslator();

@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Выбор кодека:</entry>
     <entry id="18" string="File progress:">Процесс:</entry>
     <entry id="19" string="Output dir.:">Директория:</entry>
-    <entry id="20" string=" file(s) in joblist:"> Файл(ы) в списке:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 Файл(ы) в списке:</entry>
     <entry id="21" string="none">пусто</entry>
     <entry id="22" string="Help topics...">Помощь...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Добавить аудио файл(ы) в список</entry>
@@ -51,13 +51,13 @@
     <entry id="39" string="You have not selected a file!">Файл не выбран!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Кодирование в процессе! Выйти?</entry>
     <entry id="41" string="Currently encoding">Сейчас кодируется</entry>
-    <entry id="42" string="This program is being distributed under the terms">Эта программа распространяется в рамках</entry>
-    <entry id="43" string="of the GNU General Public License (GPL).">GNU General Public License (GPL).</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Эта программа распространяется в рамках&#10;GNU General Public License (GPL).</entry>
+    <entry id="43" string="CDDB query">CDDB запрос</entry>
     <entry id="44" string="About BonkEnc">О BonkEnc</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Для WAVE нет настроек!</entry>
     <entry id="46" string="WAVE Out filter">WAVE Out фильтр</entry>
     <entry id="47" string="Cannot change settings while encoding!">Нельзя менять настройки в процессе кодирования!</entry>
-    <entry id="48" string="encoder configuration">Настройка кодека</entry>
+    <entry id="48" string="%1 encoder configuration">Настройка кодека %1</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Отмена</entry>
     <entry id="51" string="Encoding Mode">Способ кодирования</entry>
@@ -235,6 +235,5 @@
     <entry id="223" string="Psycho acoustic model">Психо-акустическая модель</entry>
     <entry id="224" string="Use Temporal Masking Effect">Использовать эффект маски</entry>
     <entry id="225" string="Expert">Эксперт</entry>
-    <entry id="226" string="CDDB query">CDDB запрос</entry>
   </data>
 </LangFile>

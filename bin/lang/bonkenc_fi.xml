@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Valittu pakkaaja:</entry>
     <entry id="18" string="File progress:">Tiedoston eteneminen:</entry>
     <entry id="19" string="Output dir.:">Hakemisto:</entry>
-    <entry id="20" string=" file(s) in joblist:"> tiedosto(a) listassa:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 tiedosto(a) listassa:</entry>
     <entry id="21" string="none">ei mitään</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Lisää äänitiedosto(t) listalle</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Lisää äänilevyn sisältö listalle</entry>
@@ -50,13 +50,12 @@
     <entry id="39" string="You have not selected a file!">Et ole valinnut tiedostoa!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Pakkaus on edelleen käynnissä! Haluatko silti poistua?</entry>
     <entry id="41" string="Currently encoding">Nyt pakataan</entry>
-    <entry id="42" string="This program is being distributed under the terms">Tätä ohjelmaa levitettäessä noudatetaan</entry>
-    <entry id="43" string="of the GNU General Public License (GPL">GNU General Public License (GPL).</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tätä ohjelmaa levitettäessä noudatetaan&#10;GNU General Public License (GPL).</entry>
     <entry id="44" string="About BonkEnc">Tietoja BonkEncistä</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE Out -suodattimelle ei voida määrittää ehtoja!</entry>
     <entry id="46" string="WAVE Out filter">WAVE Out -suodatin</entry>
     <entry id="47" string="Cannot change settings while encoding!">Pakkauksen aikana ei voida muuttaa asetuksia!</entry>
-    <entry id="48" string="encoder configuration">Pakkaajan asetukset</entry>
+    <entry id="48" string="%1 encoder configuration">Pakkaajan asetukset %1</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Peruuta</entry>
     <entry id="51" string="Encoding Mode">Pakkaustapa</entry>

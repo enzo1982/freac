@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Odabrani enkoder:</entry>
     <entry id="18" string="File progress:">Progres:</entry>
     <entry id="19" string="Output dir.:">Izlazni direktorijum:</entry>
-    <entry id="20" string=" file(s) in joblist:"> fajlova u listi:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 fajlova u listi:</entry>
     <entry id="21" string="none">nijedan</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Dodati fajl (ove) u listu</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Dodati sadrzaj Audio CD-a u listu</entry>
@@ -50,13 +50,12 @@
     <entry id="39" string="You have not selected a file!">Niste izabrali fajl!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Enkodovanje jos uvek traje! Da li zaista zelite da izadjete iz programa?</entry>
     <entry id="41" string="Currently encoding">Trenutno enkodovani fajl</entry>
-    <entry id="42" string="This program is being distributed under the terms">Ovaj program je distributovan pod termama</entry>
-    <entry id="43" string="of the GNU General Public License (GPL).">GNU General Public Licence (GPL) licence</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ovaj program je distributovan pod termama&#10;GNU General Public Licence (GPL) licence.</entry>
     <entry id="44" string="About BonkEnc">O BonkEnc-u</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE Out filter se ne moze podesavati!</entry>
     <entry id="46" string="WAVE Out filter">WAVE Out Filter</entry>
     <entry id="47" string="Cannot change settings while encoding!">Ne mozete promeniti podesavanja za vreme enkodovanja!</entry>
-    <entry id="48" string="encoder configuration">konfiguracija enkodera</entry>
+    <entry id="48" string="%1 encoder configuration">Konfiguracija enkodera %1</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Prekini</entry>
     <entry id="51" string="Encoding Mode">Rezim rada enkodera</entry>

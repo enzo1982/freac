@@ -48,7 +48,7 @@ configureLameEnc::configureLameEnc()
 	enable_ath = currentConfig->lame_enable_ath;
 	enable_tempmask = currentConfig->lame_use_tns;
 
-	mainWnd			= new Window(String("LAME MP3 ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "LAME MP3"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 
 	register_layer_basic	= new Layer(bonkEnc::i18n->TranslateString("Basic"));

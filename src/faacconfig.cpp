@@ -24,7 +24,7 @@ configureFAAC::configureFAAC()
 	allowjs = currentConfig->faac_allowjs;
 	usetns = currentConfig->faac_usetns;
 
-	mainWnd			= new Window(String("FAAC ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "FAAC"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

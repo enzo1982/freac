@@ -22,7 +22,7 @@ configureVorbisEnc::configureVorbisEnc()
 	abr = currentConfig->vorbis_bitrate;
 	mode = currentConfig->vorbis_mode;
 
-	mainWnd			= new Window(String("Ogg Vorbis ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "Ogg Vorbis"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 	mainWnd_layer_vbr	= new Layer();

@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Választott tömörítõ:</entry>
     <entry id="18" string="File progress:">Folyamat állapot:</entry>
     <entry id="19" string="Output dir.:">Cél könyvtár:</entry>
-    <entry id="20" string=" file(s) in joblist:"> fájl(ok) a listán:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 fájl(ok) a listán:</entry>
     <entry id="21" string="none">nincs</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Audiofájlok hozzáadása a listához </entry>
     <entry id="24" string="Add audio CD contents to the joblist">Audio CD tartalma a listához</entry>
@@ -50,13 +50,12 @@
     <entry id="39" string="You have not selected a file!">Nem választottál ki még egy fájlt sem!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">A tömörítés még fut! Megállítsam?</entry>
     <entry id="41" string="Currently encoding">Tömörítés folyamatban</entry>
-    <entry id="42" string="This program is being distributed under the terms">Ez a program szabadon terjeszthetõ</entry>
-    <entry id="43" string="of the GNU General Public License (GPL).">a GNU (General Public License) elõírásai szerint.</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ez a program szabadon terjeszthetõ&#10;a GNU (General Public License) elõírásai szerint.</entry>
     <entry id="44" string="About BonkEnc">A BonkEnc-rõl röviden</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">A WAVE Out Filter-nek nincsenek beállítási lehetõségei!</entry>
     <entry id="46" string="WAVE Out filter">WAVE Out Filter</entry>
     <entry id="47" string="Cannot change settings while encoding!">Tömörítés közben a beállítások nem változtathatók meg!</entry>
-    <entry id="48" string="encoder configuration">Tömörítõ beállításai</entry>
+    <entry id="48" string="%1 encoder configuration">%1 tömörítõ beállításai</entry>
     <entry id="49" string="OK">Rendben!</entry>
     <entry id="50" string="Cancel">Mégsem</entry>
     <entry id="51" string="Encoding Mode">Tömörítési mód</entry>

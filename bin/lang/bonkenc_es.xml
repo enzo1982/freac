@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Compresor elegido:</entry>
     <entry id="18" string="File progress:">Progreso:</entry>
     <entry id="19" string="Output dir.:">Dir. de salida:</entry>
-    <entry id="20" string=" file(s) in joblist:"> archivo(s) en lista:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 archivo(s) en lista:</entry>
     <entry id="21" string="none">ninguno</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Añadir archivo(s) de audio a la lista</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Añadir contenido de CD Audio a la lista</entry>
@@ -50,13 +50,12 @@
     <entry id="39" string="You have not selected a file!">¡No ha selecionado ningún fichero!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">¡El proceso de compresión continúa! ¿De verdad quiere salir?</entry>
     <entry id="41" string="Currently encoding">Iniciado proceso de compresión</entry>
-    <entry id="42" string="This program is being distributed under the terms">Este programa se distribuye bajo la cláusula</entry>
-    <entry id="43" string="of the GNU General Public License (GPL).">GNU General Public License (GPL).</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa se distribuye bajo la cláusula&#10;GNU General Public License (GPL).</entry>
     <entry id="44" string="About BonkEnc">Sobre BonkEnc</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">¡El filtro de Salida de Ondas (Wave Out) no tiene opciones de configuración!</entry>
     <entry id="46" string="WAVE Out filter">Filtro de Salida de Onda (WAVE Out)</entry>
     <entry id="47" string="Cannot change settings while encoding!">¡No se puede modificar la configuración durante la compresión!</entry>
-    <entry id="48" string="encoder configuration">Configuración de comrpesor</entry>
+    <entry id="48" string="%1 encoder configuration">Configuración de compresor %1</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Cancelar</entry>
     <entry id="51" string="Encoding Mode">Modo de compresión</entry>

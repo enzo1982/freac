@@ -418,7 +418,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			surface->EndPaint();
 
-			txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+			txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(joblist->GetNOfEntries())));
 
 			nRemoved++;
 		}

@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:"/>
     <entry id="18" string="File progress:"/>
     <entry id="19" string="Output dir.:"/>
-    <entry id="20" string=" file(s) in joblist:"/>
+    <entry id="20" string="%1 file(s) in joblist:"/>
     <entry id="21" string="none"/>
     <entry id="22" string="Help topics..."/>
     <entry id="23" string="Add audio file(s) to the joblist"/>
@@ -51,13 +51,13 @@
     <entry id="39" string="You have not selected a file!"/>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?"/>
     <entry id="41" string="Currently encoding"/>
-    <entry id="42" string="This program is being distributed under the terms"/>
-    <entry id="43" string="of the GNU General Public License (GPL)."/>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL)."/>
+    <entry id="43" string="CDDB query"/>
     <entry id="44" string="About BonkEnc"/>
     <entry id="45" string="No options can be configured for the WAVE Out filter!"/>
     <entry id="46" string="WAVE Out filter"/>
     <entry id="47" string="Cannot change settings while encoding!"/>
-    <entry id="48" string="encoder configuration"/>
+    <entry id="48" string="%1 encoder configuration"/>
     <entry id="49" string="OK"/>
     <entry id="50" string="Cancel"/>
     <entry id="51" string="Encoding Mode"/>
@@ -235,6 +235,5 @@
     <entry id="223" string="Psycho acoustic model"/>
     <entry id="224" string="Use Temporal Masking Effect"/>
     <entry id="225" string="Expert"/>
-    <entry id="226" string="CDDB query"/>
   </data>
 </LangFile>

@@ -14,6 +14,7 @@ History
 		- new (partial) Arabic and Japanese translations (for demonstration purpose)
 		- upgraded to smooth v0.8.63.0
 		- improved setup compatibility with Windows 9x/ME
+		- improved overall stability especially on Windows 9x/ME
 		- some small improvements
 		- some bugfixes
 

@@ -18,7 +18,7 @@ configureTVQ::configureTVQ()
 
 	currentConfig = bonkEnc::currentConfig;
 
-	mainWnd			= new Window(String("TwinVQ ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "TwinVQ"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

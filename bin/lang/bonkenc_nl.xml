@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Geselecteerde codec:</entry>
     <entry id="18" string="File progress:">Voortgang:</entry>
     <entry id="19" string="Output dir.:">Uitvoermap:</entry>
-    <entry id="20" string=" file(s) in joblist:"> bestand(en) in taaklijst</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 bestand(en) in taaklijst:</entry>
     <entry id="21" string="none">geen</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Voeg audiobestand(en) toe aan taaklijst</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Voeg Audio CD inhoud toe aan taaklijst</entry>
@@ -50,13 +50,12 @@
     <entry id="39" string="You have not selected a file!">U hebt geen bestand geselecteerd!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Het coderingsproces is nog bezig! Wilt u toch afsluiten?</entry>
     <entry id="41" string="Currently encoding">Bezig met coderen</entry>
-    <entry id="42" string="This program is being distributed under the terms">Dit programma wordt verdeeld onder de termen van</entry>
-    <entry id="43" string="of the GNU General Public License (GPL).">het GNU General Public License (GPL).</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Dit programma wordt verdeeld onder de termen van&#10;het GNU General Public License (GPL).</entry>
     <entry id="44" string="About BonkEnc">Over BonkEnc</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">De WAVE Out filter kan niet geconfigureerd worden!</entry>
     <entry id="46" string="WAVE Out filter">WAVE Out filter</entry>
     <entry id="47" string="Cannot change settings while encoding!">De instellingen kunnen niet gewijzigd worden tijdens het coderen!</entry>
-    <entry id="48" string="encoder configuration">codec configuratie</entry>
+    <entry id="48" string="%1 encoder configuration">%1 codec configuratie</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Annuleren</entry>
     <entry id="51" string="Encoding Mode">Codeermodus</entry>

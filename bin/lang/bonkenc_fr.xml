@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Encodeur sélectionné :</entry>
     <entry id="18" string="File progress:">Progression :</entry>
     <entry id="19" string="Output dir.:">Répertoire de sortie :</entry>
-    <entry id="20" string=" file(s) in joblist:"> fichier(s) à traiter :</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 fichier(s) à traiter :</entry>
     <entry id="21" string="none">aucun</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Ajouter le(s) fichier(s) à la liste</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Ajouter le contenu du CD audio à la liste</entry>
@@ -50,13 +50,12 @@
     <entry id="39" string="You have not selected a file!">Aucun fichier n'est sélectionné !</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Le thread d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
     <entry id="41" string="Currently encoding">Encodage en cours</entry>
-    <entry id="42" string="This program is being distributed under the terms">Ce programme est diffusé selon les termes</entry>
-    <entry id="43" string="of the GNU General Public License (GPL).">de la licence GNU GPL (General Public License).</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ce programme est diffusé selon les termes&#10;de la licence GNU GPL (General Public License).</entry>
     <entry id="44" string="About BonkEnc">A propos de BonkEnc</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Aucune option ne peut être configurée pour le filtre WAVE Out !</entry>
     <entry id="46" string="WAVE Out filter">Filtre WAVE Out</entry>
     <entry id="47" string="Cannot change settings while encoding!">Impossible de modifier les paramètres lors de l'encodage !</entry>
-    <entry id="48" string="encoder configuration">Configuration de l'encodeur</entry>
+    <entry id="48" string="%1 encoder configuration">Configuration de l'encodeur %1</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Annuler</entry>
     <entry id="51" string="Encoding Mode">Mode d'encodage</entry>

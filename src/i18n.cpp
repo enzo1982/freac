@@ -136,19 +136,6 @@ Int bonkTranslator::GetSupportedLanguages()
 	return Success;
 }
 
-Int bonkTranslator::GetStringChecksum(String string)
-{
-	Int	 checksum = (string.Length() & 127) << 24;
-	Int	 value = 0;
-
-	for (Int i = 0; i < string.Length(); i++) value += ((wchar_t *) string)[i];
-
-	checksum += ((value & 65535) << 8);
-	checksum += string[0];
-
-	return checksum;
-}
-
 Int bonkTranslator::GetNOfLanguages()
 {
 	return languages.GetNOfEntries();
@@ -198,7 +185,7 @@ Int bonkTranslator::ActivateLanguage(String magic)
 
 String bonkTranslator::TranslateString(String string)
 {
-	String	 translation = activeLanguage->strings.GetEntry(GetStringChecksum(string));
+	String	 translation = activeLanguage->strings.GetEntry(string.ComputeCRC32());
 
 	if (translation == NIL)	return string;
 	else			return translation;
@@ -212,7 +199,7 @@ Int bonkTranslator::ReadStrings(Document *language, bonkEncLanguageInfo *info)
 	{
 		if (entry->GetName() == "entry")
 		{
-			info->strings.AddEntry(entry->GetContent(), GetStringChecksum(entry->GetAttributeByName("string")->GetContent()));
+			info->strings.AddEntry(entry->GetContent(), entry->GetAttributeByName("string")->GetContent().ComputeCRC32());
 		}
 
 		entry = entry->GetNextNode();
