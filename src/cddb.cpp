@@ -14,7 +14,7 @@
 #include <cddb.h>
 #include <dllinterfaces.h>
 
-#define LOG_CDDB
+//#define LOG_CDDB
 
 Array<Array<bonkFormatInfo::bonkTrackInfo *> *>	 bonkEncCDDB::titleCache;
 Array<CDDBInfo *>				 bonkEncCDDB::infoCache;
@@ -508,7 +508,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
 	str.Append("Discid: ").Append(cddbInfo->discid).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append("test").Append("\n");
+	str.Append("Submit-Mode: ").Append("submit").Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(content.Length())).Append("\n");
 	str.Append("Charset: ISO-8859-1\n");
 	str.Append("\n");

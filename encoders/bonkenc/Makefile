@@ -1,14 +1,14 @@
 OBJECTS = api.o codec.o utility.o
 
-all : BonkEnc.dll
+all : Bonk.dll
 
-BonkEnc.dll : $(OBJECTS)
-	dllwrap -mwindows -o BonkEnc.dll --output-lib libbonkenc.a $(OBJECTS) -L../../../smooth/lib -liolib
-	strip --strip-all BonkEnc.dll
-	upx -9 -q BonkEnc.dll
+Bonk.dll : $(OBJECTS)
+	dllwrap -mwindows -o Bonk.dll --output-lib libbonk.a $(OBJECTS) -L../../../smooth/lib -liolib
+	strip --strip-all Bonk.dll
+	upx -9 -q Bonk.dll
 
 clean :
-	rm -f BonkEnc.dll libbonkenc.a $(OBJECTS)
+	rm -f Bonk.dll libbonk.a $(OBJECTS)
 
 api.o: api.cpp
 	gcc -O6 -march=i586 -I../../../smooth/include -c api.cpp
