@@ -89,28 +89,47 @@ CDEX_ERR InitAspiDll(bool &bUseNtScsi)
 
 	if (FALSE == bUseNtScsi) 
 	{
-		// try to load DLL ( no path )
+		// try to load DLL (no path)
 		strcpy(lpszPathName, "wnaspi32.dll");
 
 		hAspiLib = LoadLibrary(lpszPathName);
 
-		// check result
+		// try to load the ASPI DLL from the windows\system32 directory
 		if (NULL == hAspiLib)
 		{
-			// try to load DLL from the system directory
 			GetSystemDirectory(lpszPathName, MYMAXPATHLENGTH);
 
-			strcat( lpszPathName, "\\wnaspi32.dll");
+			strcat(lpszPathName, "\\wnaspi32.dll");
 			
 			hAspiLib = LoadLibrary(lpszPathName);
+		}
 
-			// if failed, try the windows\system directory
-			if (NULL == hAspiLib)
+		// if failed, try the windows directory
+		if (NULL == hAspiLib)
+		{
+			GetWindowsDirectory(lpszPathName, MYMAXPATHLENGTH);
+
+			strcat(lpszPathName, "\\wnaspi32.dll");
+
+			hAspiLib = LoadLibrary(lpszPathName);
+		}
+
+		// try to use the ASPI library installed by Nero
+		if (NULL == hAspiLib)
+		{
+			HKEY	ahead;
+
+			if (RegOpenKey(HKEY_LOCAL_MACHINE, "Software\\Ahead\\Shared", &ahead) == ERROR_SUCCESS)
 			{
-				// try to load DLL from the system directory
-				GetWindowsDirectory(lpszPathName, MYMAXPATHLENGTH);
+				DWORD	size;
+				DWORD	type;
 
-				strcat( lpszPathName, "\\wnaspi32.dll");
+				RegQueryValueEx(ahead, "NeroAPI", 0, &type, 0, &size);
+				RegQueryValueEx(ahead, "NeroAPI", 0, &type, (BYTE *) &lpszPathName, &size);
+
+				RegCloseKey(ahead);
+
+				strcat(lpszPathName, "\\wnaspi32.dll");
 
 				hAspiLib = LoadLibrary(lpszPathName);
 			}
