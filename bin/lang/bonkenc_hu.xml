@@ -235,5 +235,9 @@
     <entry id="223" string="Psycho acoustic model">Pszichoakusztikai modell</entry>
     <entry id="224" string="Use Temporal Masking Effect">Idöbeli maszkolás használata</entry>
     <entry id="225" string="Expert">Profi</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">Tömörítés alatt a beállítás nem lehetséges!</entry>
+    <entry id="227" string="The output directory does not exist! Do you want to create it?">A célkönyvtár nem létezi. Létrehozzam?</entry>
+    <entry id="228" string="Filename pattern">Fájlnév minta</entry>
+    <entry id="229" string="unknown album">ismeretlen album</entry>
   </data>
 </LangFile>

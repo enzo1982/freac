@@ -11,9 +11,9 @@ History
 	Version 1.0 beta 2 CVS (September 2003)
 
 		- added support for filename generation patterns
-		- added Chinese (simplified) language support
+		- added Japanese and Chinese (simplified) language support
 		- added support for right-to-left scripts like Arabic or Hebrew
-		- new (partial) Arabic and Japanese translations (for demonstration purpose)
+		- new (partial) Arabic translation (for demonstration purpose)
 		- upgraded to smooth v0.8.63.0
 		- improved setup compatibility with Windows 9x/ME
 		- improved overall stability especially on Windows 9x/ME
