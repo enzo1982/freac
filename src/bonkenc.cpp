@@ -45,7 +45,7 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig	*bonkEnc::currentConfig	= NIL;
 bonkTranslator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "CVS-20030504";
+String	 bonkEnc::version = "CVS-20030511";
 String	 bonkEnc::cddbVersion = "v0.9";
 String	 bonkEnc::shortVersion = "v0.9";
 
@@ -56,11 +56,7 @@ bonkEnc::bonkEnc()
 
 	currentConfig = new bonkEncConfig;
 
-	String	 iniFile = SMOOTH::StartDirectory;
-
-	iniFile.Append("bonkenc.ini");
-
-	currentConfig->SetIniFile(iniFile);
+	currentConfig->SetIniFile(GetApplicationDirectory().Append("bonkenc.ini"));
 	currentConfig->LoadSettings();
 
 	i18n = new bonkTranslator();
@@ -113,13 +109,10 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->encoder >= nextEC) currentConfig->encoder = ENCODER_WAVE;
 
-	String	 inifile = SMOOTH::StartDirectory;
-
-	inifile.Append("BonkEnc.ini");
 
 	if (currentConfig->enable_cdrip)
 	{
-		Long		 error = ex_CR_Init(inifile);
+		Long		 error = ex_CR_Init(currentConfig->GetIniFile());
 		Int		 choice = IDYES;
 		OSVERSIONINFOA	 vInfo;
 
@@ -133,7 +126,7 @@ bonkEnc::bonkEnc()
 
 			ex_CR_SaveSettings();
 
-			error = ex_CR_Init(inifile);
+			error = ex_CR_Init(currentConfig->GetIniFile());
 		}
 
 		if (error != CDEX_OK)
@@ -168,7 +161,7 @@ bonkEnc::bonkEnc()
 
 						ex_CR_SaveSettings();
 
-						error = ex_CR_Init(inifile);
+						error = ex_CR_Init(currentConfig->GetIniFile());
 
 						if (error != CDEX_OK)
 						{

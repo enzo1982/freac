@@ -137,11 +137,7 @@ TVQENCODEFRAME			 ex_TvqEncodeFrame;
 
 Bool bonkEnc::LoadBonkDLL()
 {
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("Bonk.dll");
-
-	bonkdll = LoadLibraryA(file);
+	bonkdll = LoadLibraryA(GetApplicationDirectory().Append("Bonk.dll"));
 
 	if (bonkdll == NIL) return false;
 
@@ -171,11 +167,7 @@ Void bonkEnc::FreeBonkDLL()
 
 Bool bonkEnc::LoadBladeDLL()
 {
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("bladeenc.dll");
-
-	bladedll = LoadLibraryA(file);
+	bladedll = LoadLibraryA(GetApplicationDirectory().Append("BladeEnc.dll"));
 
 	if (bladedll == NIL) return false;
 
@@ -201,11 +193,7 @@ Void bonkEnc::FreeBladeDLL()
 
 Bool bonkEnc::LoadLAMEDLL()
 {
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("lame.dll");
-
-	lamedll = LoadLibraryA(file);
+	lamedll = LoadLibraryA(GetApplicationDirectory().Append("LAME.dll"));
 
 	if (lamedll == NIL) return false;
 
@@ -293,11 +281,7 @@ Void bonkEnc::FreeLAMEDLL()
 
 Bool bonkEnc::LoadTVQDLL()
 {
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("tvqenc.dll");
-
-	tvqdll = LoadLibraryA(file);
+	tvqdll = LoadLibraryA(GetApplicationDirectory().Append("TVQenc.dll"));
 
 	if (tvqdll == NIL) return false;
 
@@ -331,11 +315,7 @@ Void bonkEnc::FreeTVQDLL()
 
 Bool bonkEnc::LoadVorbisDLL()
 {
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("oggvorbis.dll");
-
-	vorbisdll = LoadLibraryA(file);
+	vorbisdll = LoadLibraryA(GetApplicationDirectory().Append("OggVorbis.dll"));
 
 	if (vorbisdll == NIL) return false;
 
@@ -427,11 +407,7 @@ Void bonkEnc::FreeVorbisDLL()
 
 Bool bonkEnc::LoadFAACDLL()
 {
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("faac.dll");
-
-	faacdll = LoadLibraryA(file);
+	faacdll = LoadLibraryA(GetApplicationDirectory().Append("FAAC.dll"));
 
 	if (faacdll == NIL) return false;
 
@@ -457,11 +433,7 @@ Void bonkEnc::FreeFAACDLL()
 
 Bool bonkEnc::LoadCDRipDLL()
 {
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("cdrip.dll");
-
-	cdripdll = LoadLibraryA(file);
+	cdripdll = LoadLibraryA(GetApplicationDirectory().Append("CDRip.dll"));
 
 	if (cdripdll == NIL) return false;
 

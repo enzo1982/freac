@@ -346,11 +346,7 @@ bool FilterOutLAME::Deactivate()
 
 	if (currentConfig->lame_vbrmode != vbr_off)
 	{
-		String	 file = SMOOTH::StartDirectory;
-
-		file.Append("xing.tmp");
-
-		FILE	*f_out = fopen(file, "w+b");
+		FILE	*f_out = fopen(Application::GetApplicationDirectory().Append("xing.tmp"), "w+b");
 
 		if (f_out != NIL)
 		{
@@ -378,7 +374,7 @@ bool FilterOutLAME::Deactivate()
 			delete [] buffer;
 
 			fclose(f_out);
-			remove(file);
+			remove(Application::GetApplicationDirectory().Append("xing.tmp"));
 		}
 	}
 

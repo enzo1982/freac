@@ -30,7 +30,7 @@ bonkTranslator::~bonkTranslator()
 
 Int bonkTranslator::GetSupportedLanguages()
 {
-	String			 dir = SMOOTH::StartDirectory;
+	String			 dir = Application::GetApplicationDirectory().Append("lang\\");
 	_finddata_t		 fileData;
 	int			 handle;
 	Document		*doc = NIL;
@@ -49,7 +49,6 @@ Int bonkTranslator::GetSupportedLanguages()
 		languages.AddEntry(language);
 	}
 
-	dir.Append("lang\\");
 	chdir(dir);
 
 	if ((handle = _findfirst("bonkenc_*.xml", &fileData)) != -1)
@@ -130,7 +129,7 @@ Int bonkTranslator::GetSupportedLanguages()
 
 	_findclose(handle);
 
-	chdir(SMOOTH::StartDirectory);
+	chdir(Application::GetApplicationDirectory());
 
 	return Success;
 }
