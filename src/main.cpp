@@ -58,6 +58,7 @@ bonkEncGUI::bonkEncGUI()
 	cddbRetry = True;
 	cddbInfo = NIL;
 	clicked_drive = -1;
+	clicked_encoder = -1;
 
 	Point	 pos;
 	Size	 size;
@@ -76,6 +77,7 @@ bonkEncGUI::bonkEncGUI()
 	menu_database		= new Menu();
 	menu_trackmenu		= new Menu();
 	menu_help		= new Menu();
+	menu_encoders		= new Menu();
 
 	pos.x = 91;
 	pos.y = -22;
@@ -638,7 +640,16 @@ bonkEncGUI::bonkEncGUI()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL));
+	if (currentConfig->enable_blade) menu_encoders->AddEntry("BladeEnc", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_bonk) menu_encoders->AddEntry("Bonk", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_faac) menu_encoders->AddEntry("FAAC", NIL, NIL, NIL, &clicked_encoder, ENCODER_FAAC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_lame) menu_encoders->AddEntry("LAME", NIL, NIL, NIL, &clicked_encoder, ENCODER_LAMEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_vorbis) menu_encoders->AddEntry("Ogg Vorbis", NIL, NIL, NIL, &clicked_encoder, ENCODER_VORBISENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_tvq) menu_encoders->AddEntry("TwinVQ", NIL, NIL, NIL, &clicked_encoder, ENCODER_TVQ)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+
+	menu_encoders->AddEntry("WAVE Out", NIL, NIL, NIL, &clicked_encoder, ENCODER_WAVE)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+
+	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), ENCODER_WAVE > 0 ? menu_encoders : NIL);
 	entry->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Start the encoding process"));
 
@@ -1354,7 +1365,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), ENCODER_WAVE > 0 ? menu_encoders : NIL);
 	entry->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Start the encoding process"));
 
@@ -1369,6 +1380,23 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	hyperlink->Show();
 
 	return true;
+}
+
+Void bonkEncGUI::EncodeSpecific()
+{
+	currentConfig->encoder = clicked_encoder;
+
+	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk");
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc");
+	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME");
+	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder->SetText("Ogg Vorbis");
+	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder->SetText("FAAC");
+	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ");
+	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out");
+
+	clicked_encoder = -1;
+
+	Encode();
 }
 
 Menu *bonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)

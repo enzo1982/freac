@@ -29,6 +29,7 @@ class bonkEncGUI : public bonkEnc
 		Menu		*menu_database;
 		Menu		*menu_trackmenu;
 		Menu		*menu_help;
+		Menu		*menu_encoders;
 
 		Menubar		*mainWnd_menubar;
 		Menubar		*mainWnd_iconbar;
@@ -41,6 +42,7 @@ class bonkEncGUI : public bonkEnc
 		Button		*button_next;
 
 		Int		 clicked_drive;
+		Int		 clicked_encoder;
 
 		Bool		 ExitProc();
 		Void		 ResizeProc();
@@ -57,6 +59,7 @@ class bonkEncGUI : public bonkEnc
 		Void		 ReadSpecificCD();
 		Void		 QueryCDDB();
 		Void		 SubmitCDDBData();
+		Void		 EncodeSpecific();
 		Menu		*GetTrackMenu(Int, Int);
 		Void		 ShowHelp();
 
