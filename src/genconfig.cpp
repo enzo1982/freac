@@ -21,7 +21,6 @@
 #include <faacconfig.h>
 #include <tvqconfig.h>
 
-#include <bonk/bonk.h>
 #include <bladedll/bladedll.h>
 #include <lame/lame.h>
 #include <vorbis/vorbisenc.h>
@@ -199,12 +198,10 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 
 	cdrip_combo_drive	= new SMOOTHComboBox(pos, size, NULLPROC);
 
-	for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
+	for (int j = 0; j < currentConfig->cdrip_numdrives; j++)
 	{
-		cdrip_combo_drive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(i), NULLPROC);
+		cdrip_combo_drive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NULLPROC);
 	}
-
-	ex_CR_DeInit();
 
 	cdrip_combo_drive->SelectEntry(currentConfig->cdrip_activedrive);
 

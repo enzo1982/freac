@@ -154,7 +154,7 @@ bool FilterInVORBIS::DecodeData(unsigned char **data, int size, int *outsize)
 
 				if (dataBufferLen < *outsize + (bout * vi.channels * 2))
 				{
-					dataBufferLen += 131072;
+					dataBufferLen += ((bout * vi.channels * 2) + 131072);
 
 					unsigned char *backbuffer = new unsigned char [*outsize];
 

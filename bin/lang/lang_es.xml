@@ -593,4 +593,8 @@
 		<property name="string">Ogg Vorbis Files</property>
 		<property name="translation">Archivos de Audio Ogg Vorbis</property>
 	</entry>
+	<entry id="146">
+		<property name="string">BONK Files</property>
+		<property name="translation">Archivos de Audio BONK</property>
+	</entry>
 </LangFile>

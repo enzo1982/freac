@@ -9,7 +9,7 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/console.o $(OBJECTDIR)/console_interface.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/parseini.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/console.o $(OBJECTDIR)/console_interface.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/parseini.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -125,6 +125,11 @@ $(OBJECTDIR)/filter-in-aiff.o: $(SRCDIR)/input/filter-in-aiff.cpp
 $(OBJECTDIR)/filter-in-au.o: $(SRCDIR)/input/filter-in-au.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-au.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-au.cpp -o $(OBJECTDIR)/filter-in-au.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/filter-in-bonk.o: $(SRCDIR)/input/filter-in-bonk.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-bonk.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-bonk.cpp -o $(OBJECTDIR)/filter-in-bonk.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/filter-in-cdrip.o: $(SRCDIR)/input/filter-in-cdrip.cpp

@@ -1,4 +1,4 @@
-OBJECTS = api.o encoder.o utility.o
+OBJECTS = api.o codec.o utility.o
 
 all : BonkEnc.dll
 
@@ -13,8 +13,8 @@ clean :
 api.o: api.cpp
 	gcc -O6 -march=i586 -I../../../smooth/include -c api.cpp
 
-encoder.o: encoder.cpp
-	gcc -O6 -march=i586 -I../../../smooth/include -c encoder.cpp
+codec.o: codec.cpp
+	gcc -O6 -march=i586 -I../../../smooth/include -c codec.cpp
 
 utility.o: utility.cpp
 	gcc -O6 -march=i586 -I../../../smooth/include -c utility.cpp

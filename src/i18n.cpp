@@ -10,6 +10,7 @@
 
 #include <smoothx.h>
 #include <i18n.h>
+#include <direct.h>
 
 bonkTranslator::bonkTranslator()
 {
@@ -140,7 +141,7 @@ SMOOTHInt bonkTranslator::GetStringChecksum(SMOOTHString string)
 	SMOOTHInt	 checksum = (string.Length() & 127) << 24;
 	SMOOTHInt	 value = 0;
 
-	for (SMOOTHInt i = 0; i < string.Length(); i++) value += string[i];
+	for (SMOOTHInt i = 0; i < string.Length(); i++) value += ((wchar_t *) string)[i];
 
 	checksum += ((value & 65535) << 8);
 	checksum += string[0];

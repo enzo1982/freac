@@ -5,6 +5,8 @@
 #include <vector>
 #include <iolib-cxx.h>
 
+using namespace std;
+
 typedef unsigned long  uint32;
 typedef unsigned short uint16;
 typedef unsigned char  uint8;
@@ -18,6 +20,48 @@ int bits_to_store(uint32);
 struct error { 
   char *message; 
   error(char *_message) : message(_message) { } 
+};
+
+struct bitstream_in {
+  InStream *f_in;
+  int byte;
+  int bit_no;
+
+  void setup() {
+    bit_no = 8;
+  }
+
+  int read() {
+    if (bit_no == 8) {
+      byte = f_in->InputNumber(1);
+      bit_no = 0;
+    }
+
+    return (byte & (1<<bit_no++) ? 1 : 0);
+  }
+
+  uint32 read_uint(int bits) {
+    uint32 value = 0;
+    for(int i=0;i<bits;i++)
+      value += read()<<i;
+    return value;
+  }
+
+  uint read_uint_max(int max) {
+    if (!max) return 0;
+    int bits = bits_to_store(max);
+
+    uint value = 0;
+    for(int i=0;i<bits-1;i++)
+      if (read())
+        value += 1<<i;
+   
+    if ( ((int)value | (1<<(bits-1))) <= max )
+      if (read())
+        value += 1<<(bits-1);
+
+    return value;
+  }
 };
 
 struct bitstream_out {
@@ -72,5 +116,6 @@ struct bitstream_out {
 };
 
 void write_list(const vector<int> &, bool, bitstream_out &);
+bool read_list(vector<int> &, bool, bitstream_in &);
 
 #endif UTILITY_H

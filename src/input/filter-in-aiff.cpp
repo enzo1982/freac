@@ -64,8 +64,8 @@ bool FilterInAIFF::DecodeData(unsigned char **data, int size, int *outsize)
 
 		format.length = uint32(file->InputNumberRaw(4) - 8) / (format.bits / 8);
 
-		for(int l = 0; l < 8; l++)
-			file->InputNumber(1);
+		for(int m = 0; m < 8; m++)
+			file->InputNumber(m);
 
 		delete file;
 

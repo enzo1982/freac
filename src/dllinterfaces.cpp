@@ -32,6 +32,11 @@ CR_READCDTEXT			 ex_CR_ReadCDText;
 BONKCREATEENCODER		 ex_bonk_create_encoder;
 BONKCLOSEENCODER		 ex_bonk_close_encoder;
 BONKENCODEPACKET		 ex_bonk_encode_packet;
+BONKCREATEDECODER		 ex_bonk_create_decoder;
+BONKCLOSEDECODER		 ex_bonk_close_decoder;
+BONKDECODERPUSHDATA		 ex_bonk_decoder_push_data;
+BONKDECODEHEADER		 ex_bonk_decode_header;
+BONKDECODEPACKET		 ex_bonk_decode_packet;
 BONKGETVERSIONSTRING		 ex_bonk_get_version_string;
 
 BEINITSTREAM			 ex_beInitStream;
@@ -141,11 +146,21 @@ SMOOTHBool bonkEnc::LoadBonkDLL()
 	ex_bonk_create_encoder		= (BONKCREATEENCODER) GetProcAddress(bonkdll, "bonk_create_encoder");
 	ex_bonk_close_encoder		= (BONKCLOSEENCODER) GetProcAddress(bonkdll, "bonk_close_encoder");
 	ex_bonk_encode_packet		= (BONKENCODEPACKET) GetProcAddress(bonkdll, "bonk_encode_packet");
+	ex_bonk_create_decoder		= (BONKCREATEDECODER) GetProcAddress(bonkdll, "bonk_create_decoder");
+	ex_bonk_close_decoder		= (BONKCLOSEDECODER) GetProcAddress(bonkdll, "bonk_close_decoder");
+	ex_bonk_decoder_push_data	= (BONKDECODERPUSHDATA) GetProcAddress(bonkdll, "bonk_decoder_push_data");
+	ex_bonk_decode_header		= (BONKDECODEHEADER) GetProcAddress(bonkdll, "bonk_decode_header");
+	ex_bonk_decode_packet		= (BONKDECODEPACKET) GetProcAddress(bonkdll, "bonk_decode_packet");
 	ex_bonk_get_version_string	= (BONKGETVERSIONSTRING) GetProcAddress(bonkdll, "bonk_get_version_string");
 
 	if (ex_bonk_create_encoder == NULL)	{ FreeLibrary(bonkdll); return false; }
 	if (ex_bonk_close_encoder == NULL)	{ FreeLibrary(bonkdll); return false; }
 	if (ex_bonk_encode_packet == NULL)	{ FreeLibrary(bonkdll); return false; }
+	if (ex_bonk_create_decoder == NULL)	{ FreeLibrary(bonkdll); return false; }
+	if (ex_bonk_close_decoder == NULL)	{ FreeLibrary(bonkdll); return false; }
+	if (ex_bonk_decoder_push_data == NULL)	{ FreeLibrary(bonkdll); return false; }
+	if (ex_bonk_decode_header == NULL)	{ FreeLibrary(bonkdll); return false; }
+	if (ex_bonk_decode_packet == NULL)	{ FreeLibrary(bonkdll); return false; }
 	if (ex_bonk_get_version_string == NULL)	{ FreeLibrary(bonkdll); return false; }
 
 	return true;

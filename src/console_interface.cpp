@@ -107,9 +107,48 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 
 			if (currentConfig->enc_outdir[len] != '\\') currentConfig->enc_outdir[++len] = '\\';
 
+			bool	 lferror = false;
+
 			for (int i = 0; i < files.GetNOfEntries(); i++)
 			{
-				if (i != 0) con->OutputString("done.\n");
+				if (i != 0 && !lferror) con->OutputString("done.\n");
+
+				lferror = false;
+
+				InStream	*in = new InStream(STREAM_FILE, files.GetNthEntry(i));
+
+				if (in->GetLastError() != IOLIB_ERROR_OK)
+				{
+					delete in;
+
+					con->OutputString(SMOOTHString("File not found: ").Append(files.GetNthEntry(i)).Append("\n"));
+
+					lferror = true;
+					broken = true;
+
+					continue;
+				}
+				else
+				{
+					delete in;
+				}
+
+				SMOOTHString	 extension;
+
+				extension[0] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 4];
+				extension[1] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 3];
+				extension[2] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 2];
+				extension[3] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 1];
+
+				if ((extension == ".mp3" && !currentConfig->enable_lame) || (extension == ".ogg" && !currentConfig->enable_vorbis))
+				{
+					con->OutputString(SMOOTHString("Cannot process file: ").Append(files.GetNthEntry(i)).Append("\n"));
+
+					lferror = true;
+					broken = true;
+
+					continue;
+				}
 
 				con->OutputString(SMOOTHString("Processing file: ").Append(files.GetNthEntry(i)).Append("..."));
 
@@ -137,7 +176,13 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 				}
 			}
 
-			con->OutputString("done.\n\n");
+			if (!lferror) con->OutputString("done.\n");
+
+			if (broken)
+			{
+				con->OutputString("\n-- Press any key to continue --");
+				con->WaitKey();
+			}
 		}
 	}
 

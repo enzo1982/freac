@@ -15,6 +15,7 @@ Geschichte
 
 		- Unterstützung für MP3 Decodierung hinzugefügt
 		- Unterstützung zur Decodierung von Ogg Vorbis Dateien hinzugefügt
+		- Unterstützung zur Decodierung von BONK Dateien hinzugefügt
 		- Update auf smooth v0.8.60.0
 		- Kleinere Verbesserungen
 		- Sprachunterstützung für Spanisch, Englisch und Niederländisch hinzugefügt
@@ -104,7 +105,7 @@ Pläne für zukünftige Versionen
 
 	- das BONK Format um ID3V2 Unterstützung erweitern
 	- Künstler und Titel aus Dateinamen extrahieren und in ID3V2 Tags schreiben
-	- Eingabefilter für BONK, AAC, VQF
+	- Eingabefilter für AAC, VQF
 	- mehr Audioformate unterstützen (FLAC, MAC, ...)
 	- Experteneinstellungen für LAME (ATH, Zeitliche Maskierung, Psy-Modelle)
 	- ein IOLib-Filters basierendes PlugIn System entwickeln

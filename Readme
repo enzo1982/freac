@@ -15,6 +15,7 @@ History
 
 		- added MP3 decoding support
 		- added Ogg Vorbis decoding support
+		- added BONK decoding support
 		- upgraded to smooth v0.8.60.0
 		- some small improvements
 		- added Spanish, Italian and Dutch language support
@@ -104,7 +105,7 @@ Future plans
 
 	- extend the BONK format to support ID3V2 tags
 	- extract artist and title from the filename and write ID3V2 or similar
-	- input filters for BONK, AAC, VQF
+	- input filters for AAC, VQF
 	- support more audio formats (FLAC, MAC, ...)
 	- allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
 	- develop an IOLib-Filters based plugin system

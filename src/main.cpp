@@ -37,6 +37,7 @@
 #include <input/filter-in-au.h>
 #include <input/filter-in-lame.h>
 #include <input/filter-in-vorbis.h>
+#include <input/filter-in-bonk.h>
 #include <output/filter-out-blade.h>
 #include <output/filter-out-bonk.h>
 #include <output/filter-out-faac.h>
@@ -483,16 +484,19 @@ SMOOTHVoid bonkEnc::AddFile()
 
 	SMOOTHString	 fileTypes = "*.aif; *.aiff; *.au";
 
+	if (currentConfig->enable_bonk) fileTypes.Append("; *.bonk");
+	if (currentConfig->enable_cdrip) fileTypes.Append("; *.cda");
 	if (currentConfig->enable_lame) fileTypes.Append("; *.mp3");
 	if (currentConfig->enable_vorbis) fileTypes.Append("; *.ogg");
 
 	fileTypes.Append("; *.voc; *.wav");
 
-	if (currentConfig->enable_cdrip) fileTypes.Append("; *.cda");
-
 	dialog->AddFilter(currentConfig->i18n->TranslateString("Audio Files"), fileTypes);
 
 	dialog->AddFilter(currentConfig->i18n->TranslateString("Apple Audio Files").Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
+
+	if (currentConfig->enable_bonk)		dialog->AddFilter(currentConfig->i18n->TranslateString("BONK Files").Append(" (*.bonk)"), "*.bonk");
+
 	dialog->AddFilter(currentConfig->i18n->TranslateString("Creative Voice Files").Append(" (*.voc)"), "*.voc");
 
 	if (currentConfig->enable_lame)		dialog->AddFilter(currentConfig->i18n->TranslateString("MP3 Files").Append(" (*.mp3)"), "*.mp3");
@@ -1156,10 +1160,10 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 					    trackInfo->artist[i] == '\\') trackInfo->artist[i] = '_';
 				}
 
-				for (int i = 0; i < trackInfo->title.Length(); i++)
+				for (int j = 0; j < trackInfo->title.Length(); j++)
 				{
-					if (trackInfo->title[i] == '/' ||
-					    trackInfo->title[i] == '\\') trackInfo->title[i] = '_';
+					if (trackInfo->title[j] == '/' ||
+					    trackInfo->title[j] == '\\') trackInfo->title[j] = '_';
 				}
 
 				out_filename.Append(trackInfo->artist).Append(" - ").Append(trackInfo->title);
@@ -1227,15 +1231,21 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 
 			f_in = new SMOOTHInStream(STREAM_FILE, in_filename);
 
-			if (extension == ".mp3")
+			if (extension == ".mp3" || extension == ".MP3")
 			{
 				filter_in = new FilterInLAME(currentConfig);
 
 				f_in->SetPackageSize(4096);
 			}
-			else if (extension == ".ogg")
+			else if (extension == ".ogg" || extension == ".OGG")
 			{
 				filter_in = new FilterInVORBIS(currentConfig);
+
+				f_in->SetPackageSize(4096);
+			}
+			else if (extension == "bonk" || extension == "BONK")
+			{
+				filter_in = new FilterInBONK(currentConfig);
 
 				f_in->SetPackageSize(4096);
 			}

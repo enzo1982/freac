@@ -60,7 +60,7 @@ bool FilterInAU::DecodeData(unsigned char **data, int size, int *outsize)
 		format.rate = uint32(file->InputNumberRaw(4));
 		format.channels = uint32(file->InputNumberRaw(4));
 
-		for(int i = 24; i < headerSize; i++)
+		for(int j = 24; j < headerSize; j++)
 			file->InputNumber(1);
 
 		delete file;
