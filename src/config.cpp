@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -113,7 +113,7 @@ Bool bonkEncConfig::LoadSettings()
 	tab_width_size = getINIValue("Settings", "TabWidthSize", "80").ToInt();
 
 	enable_tags = getINIValue("Settings", "EnableTags", "1").ToInt();
-	default_comment = getINIValue("Settings", "DefaultComment", "BonkEnc v0.9 <http://www.bonkenc.org>");
+	default_comment = getINIValue("Settings", "DefaultComment", "BonkEnc v1.0 <http://www.bonkenc.org>");
 
 	enable_cddb = getINIValue("freedb", "EnableCDDB", "0").ToInt();
 	enable_cddb_cache = getINIValue("freedb", "EnableCDDBCache", "1").ToInt();
@@ -214,7 +214,7 @@ Bool bonkEncConfig::SaveSettings()
 		out->OutputLine(str);
 
 		str = "Encoder=";
-		str.Append(String::IntToString(encoder));
+		str.Append(String::FromInt(encoder));
 		out->OutputLine(str);
 
 		str = "EncoderOutdir=";
@@ -222,43 +222,43 @@ Bool bonkEncConfig::SaveSettings()
 		out->OutputLine(str);
 
 		str = "ShowTitleInfo=";
-		str.Append(String::IntToString(showTitleInfo));
+		str.Append(String::FromInt(showTitleInfo));
 		out->OutputLine(str);
 
 		str = "WindowPosX=";
-		str.Append(String::IntToString(wndPos.x));
+		str.Append(String::FromInt(wndPos.x));
 		out->OutputLine(str);
 
 		str = "WindowPosY=";
-		str.Append(String::IntToString(wndPos.y));
+		str.Append(String::FromInt(wndPos.y));
 		out->OutputLine(str);
 
 		str = "WindowSizeX=";
-		str.Append(String::IntToString(wndSize.cx));
+		str.Append(String::FromInt(wndSize.cx));
 		out->OutputLine(str);
 
 		str = "WindowSizeY=";
-		str.Append(String::IntToString(wndSize.cy));
+		str.Append(String::FromInt(wndSize.cy));
 		out->OutputLine(str);
 
 		str = "WindowMaximized=";
-		str.Append(String::IntToString(maximized));
+		str.Append(String::FromInt(maximized));
 		out->OutputLine(str);
 
 		str = "TabWidthTrack=";
-		str.Append(String::IntToString(tab_width_track));
+		str.Append(String::FromInt(tab_width_track));
 		out->OutputLine(str);
 
 		str = "TabWidthLength=";
-		str.Append(String::IntToString(tab_width_length));
+		str.Append(String::FromInt(tab_width_length));
 		out->OutputLine(str);
 
 		str = "TabWidthSize=";
-		str.Append(String::IntToString(tab_width_size));
+		str.Append(String::FromInt(tab_width_size));
 		out->OutputLine(str);
 
 		str = "EnableTags=";
-		str.Append(String::IntToString(enable_tags));
+		str.Append(String::FromInt(enable_tags));
 		out->OutputLine(str);
 
 		str = "DefaultComment=";
@@ -269,46 +269,46 @@ Bool bonkEncConfig::SaveSettings()
 		out->OutputLine("[CDRip]");
 
 		str = "ActiveCDROM=";
-		str.Append(String::IntToString(cdrip_activedrive));
+		str.Append(String::FromInt(cdrip_activedrive));
 		out->OutputLine(str);
 
 		str = "DebugCDRip=";
-		str.Append(String::IntToString(cdrip_debuglevel));
+		str.Append(String::FromInt(cdrip_debuglevel));
 		out->OutputLine(str);
 
 		str = "CDParanoia=";
-		str.Append(String::IntToString(cdrip_paranoia));
+		str.Append(String::FromInt(cdrip_paranoia));
 		out->OutputLine(str);
 
 		str = "CDParanoiaMode=";
-		str.Append(String::IntToString(cdrip_paranoia_mode));
+		str.Append(String::FromInt(cdrip_paranoia_mode));
 		out->OutputLine(str);
 
 		str = "Jitter=";
-		str.Append(String::IntToString(cdrip_jitter));
+		str.Append(String::FromInt(cdrip_jitter));
 		out->OutputLine(str);
 
 		str = "SwapChannels=";
-		str.Append(String::IntToString(cdrip_swapchannels));
+		str.Append(String::FromInt(cdrip_swapchannels));
 		out->OutputLine(str);
 
 		str = "LockTray=";
-		str.Append(String::IntToString(cdrip_locktray));
+		str.Append(String::FromInt(cdrip_locktray));
 		out->OutputLine(str);
 
 		str = "UseNTSCSI=";
-		str.Append(String::IntToString(cdrip_ntscsi));
+		str.Append(String::FromInt(cdrip_ntscsi));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[freedb]");
 
 		str = "EnableCDDB=";
-		str.Append(String::IntToString(enable_cddb));
+		str.Append(String::FromInt(enable_cddb));
 		out->OutputLine(str);
 
 		str = "EnableCDDBCache=";
-		str.Append(String::IntToString(enable_cddb_cache));
+		str.Append(String::FromInt(enable_cddb_cache));
 		out->OutputLine(str);
 
 		str = "Server=";
@@ -316,11 +316,11 @@ Bool bonkEncConfig::SaveSettings()
 		out->OutputLine(str);
 
 		str = "Mode=";
-		str.Append(String::IntToString(freedb_mode));
+		str.Append(String::FromInt(freedb_mode));
 		out->OutputLine(str);
 
 		str = "CDDBPPort=";
-		str.Append(String::IntToString(freedb_cddbp_port));
+		str.Append(String::FromInt(freedb_cddbp_port));
 		out->OutputLine(str);
 
 		str = "QueryPath=";
@@ -336,7 +336,7 @@ Bool bonkEncConfig::SaveSettings()
 		out->OutputLine(str);
 
 		str = "ProxyMode=";
-		str.Append(String::IntToString(freedb_proxy_mode));
+		str.Append(String::FromInt(freedb_proxy_mode));
 		out->OutputLine(str);
 
 		str = "Proxy=";
@@ -344,237 +344,237 @@ Bool bonkEncConfig::SaveSettings()
 		out->OutputLine(str);
 
 		str = "ProxyPort=";
-		str.Append(String::IntToString(freedb_proxy_port));
+		str.Append(String::FromInt(freedb_proxy_port));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[bonk]");
 
 		str = "Quantization=";
-		str.Append(String::IntToString(bonk_quantization));
+		str.Append(String::FromInt(bonk_quantization));
 		out->OutputLine(str);
 
 		str = "Predictor=";
-		str.Append(String::IntToString(bonk_predictor));
+		str.Append(String::FromInt(bonk_predictor));
 		out->OutputLine(str);
 
 		str = "Downsampling=";
-		str.Append(String::IntToString(bonk_downsampling));
+		str.Append(String::FromInt(bonk_downsampling));
 		out->OutputLine(str);
 
 		str = "JointStereo=";
-		str.Append(String::IntToString(bonk_jstereo));
+		str.Append(String::FromInt(bonk_jstereo));
 		out->OutputLine(str);
 
 		str = "Lossless=";
-		str.Append(String::IntToString(bonk_lossless));
+		str.Append(String::FromInt(bonk_lossless));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[bladeEnc]");
 
 		str = "Bitrate=";
-		str.Append(String::IntToString(blade_bitrate));
+		str.Append(String::FromInt(blade_bitrate));
 		out->OutputLine(str);
 
 		str = "CRC=";
-		str.Append(String::IntToString(blade_crc));
+		str.Append(String::FromInt(blade_crc));
 		out->OutputLine(str);
 
 		str = "Copyright=";
-		str.Append(String::IntToString(blade_copyright));
+		str.Append(String::FromInt(blade_copyright));
 		out->OutputLine(str);
 
 		str = "Original=";
-		str.Append(String::IntToString(blade_original));
+		str.Append(String::FromInt(blade_original));
 		out->OutputLine(str);
 
 		str = "Private=";
-		str.Append(String::IntToString(blade_private));
+		str.Append(String::FromInt(blade_private));
 		out->OutputLine(str);
 
 		str = "DualChannel=";
-		str.Append(String::IntToString(blade_dualchannel));
+		str.Append(String::FromInt(blade_dualchannel));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[lameMP3]");
 
 		str = "Preset=";
-		str.Append(String::IntToString(lame_preset));
+		str.Append(String::FromInt(lame_preset));
 		out->OutputLine(str);
 
 		str = "SetBitrate=";
-		str.Append(String::IntToString(lame_set_bitrate));
+		str.Append(String::FromInt(lame_set_bitrate));
 		out->OutputLine(str);
 
 		str = "Bitrate=";
-		str.Append(String::IntToString(lame_bitrate));
+		str.Append(String::FromInt(lame_bitrate));
 		out->OutputLine(str);
 
 		str = "Ratio=";
-		str.Append(String::IntToString(lame_ratio));
+		str.Append(String::FromInt(lame_ratio));
 		out->OutputLine(str);
 
 		str = "SetQuality=";
-		str.Append(String::IntToString(lame_set_quality));
+		str.Append(String::FromInt(lame_set_quality));
 		out->OutputLine(str);
 
 		str = "Quality=";
-		str.Append(String::IntToString(lame_quality));
+		str.Append(String::FromInt(lame_quality));
 		out->OutputLine(str);
 
 		str = "StereoMode=";
-		str.Append(String::IntToString(lame_stereomode));
+		str.Append(String::FromInt(lame_stereomode));
 		out->OutputLine(str);
 
 		str = "ForceJS=";
-		str.Append(String::IntToString(lame_forcejs));
+		str.Append(String::FromInt(lame_forcejs));
 		out->OutputLine(str);
 
 		str = "VBRMode=";
-		str.Append(String::IntToString(lame_vbrmode));
+		str.Append(String::FromInt(lame_vbrmode));
 		out->OutputLine(str);
 
 		str = "VBRQuality=";
-		str.Append(String::IntToString(lame_vbrquality));
+		str.Append(String::FromInt(lame_vbrquality));
 		out->OutputLine(str);
 
 		str = "ABRBitrate=";
-		str.Append(String::IntToString(lame_abrbitrate));
+		str.Append(String::FromInt(lame_abrbitrate));
 		out->OutputLine(str);
 
 		str = "SetMinVBRBitrate=";
-		str.Append(String::IntToString(lame_set_min_vbr_bitrate));
+		str.Append(String::FromInt(lame_set_min_vbr_bitrate));
 		out->OutputLine(str);
 
 		str = "MinVBRBitrate=";
-		str.Append(String::IntToString(lame_min_vbr_bitrate));
+		str.Append(String::FromInt(lame_min_vbr_bitrate));
 		out->OutputLine(str);
 
 		str = "SetMaxVBRBitrate=";
-		str.Append(String::IntToString(lame_set_max_vbr_bitrate));
+		str.Append(String::FromInt(lame_set_max_vbr_bitrate));
 		out->OutputLine(str);
 
 		str = "MaxVBRBitrate=";
-		str.Append(String::IntToString(lame_max_vbr_bitrate));
+		str.Append(String::FromInt(lame_max_vbr_bitrate));
 		out->OutputLine(str);
 
 		str = "CRC=";
-		str.Append(String::IntToString(lame_crc));
+		str.Append(String::FromInt(lame_crc));
 		out->OutputLine(str);
 
 		str = "Copyright=";
-		str.Append(String::IntToString(lame_copyright));
+		str.Append(String::FromInt(lame_copyright));
 		out->OutputLine(str);
 
 		str = "Original=";
-		str.Append(String::IntToString(lame_original));
+		str.Append(String::FromInt(lame_original));
 		out->OutputLine(str);
 
 		str = "Private=";
-		str.Append(String::IntToString(lame_private));
+		str.Append(String::FromInt(lame_private));
 		out->OutputLine(str);
 
 		str = "StrictISO=";
-		str.Append(String::IntToString(lame_strict_iso));
+		str.Append(String::FromInt(lame_strict_iso));
 		out->OutputLine(str);
 
 		str = "PaddingType=";
-		str.Append(String::IntToString(lame_padding_type));
+		str.Append(String::FromInt(lame_padding_type));
 		out->OutputLine(str);
 
 		str = "Resample=";
-		str.Append(String::IntToString(lame_resample));
+		str.Append(String::FromInt(lame_resample));
 		out->OutputLine(str);
 
 		str = "DisableFiltering=";
-		str.Append(String::IntToString(lame_disable_filtering));
+		str.Append(String::FromInt(lame_disable_filtering));
 		out->OutputLine(str);
 
 		str = "SetLowpass=";
-		str.Append(String::IntToString(lame_set_lowpass));
+		str.Append(String::FromInt(lame_set_lowpass));
 		out->OutputLine(str);
 
 		str = "Lowpass=";
-		str.Append(String::IntToString(lame_lowpass));
+		str.Append(String::FromInt(lame_lowpass));
 		out->OutputLine(str);
 
 		str = "SetLowpassWidth=";
-		str.Append(String::IntToString(lame_set_lowpass_width));
+		str.Append(String::FromInt(lame_set_lowpass_width));
 		out->OutputLine(str);
 
 		str = "LowpassWidth=";
-		str.Append(String::IntToString(lame_lowpass_width));
+		str.Append(String::FromInt(lame_lowpass_width));
 		out->OutputLine(str);
 
 		str = "SetHighpass=";
-		str.Append(String::IntToString(lame_set_highpass));
+		str.Append(String::FromInt(lame_set_highpass));
 		out->OutputLine(str);
 
 		str = "Highpass=";
-		str.Append(String::IntToString(lame_highpass));
+		str.Append(String::FromInt(lame_highpass));
 		out->OutputLine(str);
 
 		str = "SetHighpassWidth=";
-		str.Append(String::IntToString(lame_set_highpass_width));
+		str.Append(String::FromInt(lame_set_highpass_width));
 		out->OutputLine(str);
 
 		str = "HighpassWidth=";
-		str.Append(String::IntToString(lame_highpass_width));
+		str.Append(String::FromInt(lame_highpass_width));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[oggVorbis]");
 
 		str = "Mode=";
-		str.Append(String::IntToString(vorbis_mode));
+		str.Append(String::FromInt(vorbis_mode));
 		out->OutputLine(str);
 
 		str = "Quality=";
-		str.Append(String::IntToString(vorbis_quality));
+		str.Append(String::FromInt(vorbis_quality));
 		out->OutputLine(str);
 
 		str = "Bitrate=";
-		str.Append(String::IntToString(vorbis_bitrate));
+		str.Append(String::FromInt(vorbis_bitrate));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[FAAC]");
 
 		str = "MPEGVersion=";
-		str.Append(String::IntToString(faac_mpegversion));
+		str.Append(String::FromInt(faac_mpegversion));
 		out->OutputLine(str);
 
 		str = "AACType=";
-		str.Append(String::IntToString(faac_type));
+		str.Append(String::FromInt(faac_type));
 		out->OutputLine(str);
 
 		str = "Bitrate=";
-		str.Append(String::IntToString(faac_bitrate));
+		str.Append(String::FromInt(faac_bitrate));
 		out->OutputLine(str);
 
 		str = "BandWidth=";
-		str.Append(String::IntToString(faac_bandwidth));
+		str.Append(String::FromInt(faac_bandwidth));
 		out->OutputLine(str);
 
 		str = "AllowJS=";
-		str.Append(String::IntToString(faac_allowjs));
+		str.Append(String::FromInt(faac_allowjs));
 		out->OutputLine(str);
 
 		str = "UseTNS=";
-		str.Append(String::IntToString(faac_usetns));
+		str.Append(String::FromInt(faac_usetns));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[TwinVQ]");
 
 		str = "Bitrate=";
-		str.Append(String::IntToString(tvq_bitrate));
+		str.Append(String::FromInt(tvq_bitrate));
 		out->OutputLine(str);
 
 		str = "PreselectionCandidates=";
-		str.Append(String::IntToString(tvq_presel_candidates));
+		str.Append(String::FromInt(tvq_presel_candidates));
 		out->OutputLine(str);
 	}
 	else

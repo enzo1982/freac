@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -96,7 +96,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 		ex_beVersion(&beVer);
 
-		bladeVersion.Append("v").Append(String::IntToString(beVer.byMajorVersion)).Append(".").Append(String::IntToString(beVer.byMinorVersion));
+		bladeVersion.Append("v").Append(String::FromInt(beVer.byMajorVersion)).Append(".").Append(String::FromInt(beVer.byMinorVersion));
 
 		encoders_combo_encoder->AddEntry(String("BladeEnc ").Append(bladeVersion));
 	}
@@ -115,7 +115,7 @@ configureGeneralSettings::configureGeneralSettings()
 		encoders_combo_encoder->AddEntry(String("TwinVQ v").Append(tvqVersionID + 4));
 	}
 
-	encoders_combo_encoder->AddEntry(String("WAVE Out Filter v0.9"));
+	encoders_combo_encoder->AddEntry(String("WAVE Out Filter v1.0"));
 
 	encoders_combo_encoder->SelectEntry(currentConfig->encoder);
 
@@ -274,7 +274,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 344;
-	size.cy = 123;
+	size.cy = 125;
 
 	cddb_group_cddb		= new GroupBox("", pos, size);
 
@@ -299,7 +299,7 @@ configureGeneralSettings::configureGeneralSettings()
 	cddb_layer_background->SetMetrics(cddb_layer_background->GetObjectProperties()->pos, Size(cddb_check_enable->GetObjectProperties()->textSize.cx + 24, cddb_layer_background->GetObjectProperties()->size.cy));
 
 	pos.x = 16;
-	pos.y = 24;
+	pos.y = 26;
 
 	cddb_text_mode		= new Text(bonkEnc::i18n->TranslateString("CDDB access mode:"), pos);
 
@@ -769,12 +769,12 @@ Void configureGeneralSettings::SetCDDBMode()
 	if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_CDDBP)
 	{
 		cddb_edit_port->Activate();
-		cddb_edit_port->SetText(String::IntToString(currentConfig->freedb_cddbp_port));
+		cddb_edit_port->SetText(String::FromInt(currentConfig->freedb_cddbp_port));
 	}
 	else if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_HTTP)
 	{
 		cddb_edit_port->Deactivate();
-		cddb_edit_port->SetText(String::IntToString(currentConfig->freedb_http_port));
+		cddb_edit_port->SetText(String::FromInt(currentConfig->freedb_http_port));
 	}
 }
 

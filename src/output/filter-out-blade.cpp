@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -111,8 +111,8 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->track > 0)
 		{
-			if (format->trackInfo->track < 10)	track_text.Set((unicode_t *) (wchar_t *) String("0").Append(String::IntToString(format->trackInfo->track)));
-			else					track_text.Set((unicode_t *) (wchar_t *) String::IntToString(format->trackInfo->track));
+			if (format->trackInfo->track < 10)	track_text.Set((unicode_t *) (wchar_t *) String("0").Append(String::FromInt(format->trackInfo->track)));
+			else					track_text.Set((unicode_t *) (wchar_t *) String::FromInt(format->trackInfo->track));
 
 			tag->AddFrame(track);
 		}
@@ -122,7 +122,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->year > 0)
 		{
-			year_text.Set((unicode_t *) (wchar_t *) String::IntToString(format->trackInfo->year));
+			year_text.Set((unicode_t *) (wchar_t *) String::FromInt(format->trackInfo->year));
 
 			tag->AddFrame(year);
 		}

@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -74,13 +74,13 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 
 		if (format->trackInfo->track > 0)
 		{
-			if (format->trackInfo->track < 10)	ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String("0").Append(String::IntToString(format->trackInfo->track)));
-			else					ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String::IntToString(format->trackInfo->track));
+			if (format->trackInfo->track < 10)	ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String("0").Append(String::FromInt(format->trackInfo->track)));
+			else					ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String::FromInt(format->trackInfo->track));
 		}
 
 		if (format->trackInfo->year > 0)
 		{
-			ex_vorbis_comment_add_tag(&vc, "DATE", String::IntToString(format->trackInfo->year));
+			ex_vorbis_comment_add_tag(&vc, "DATE", String::FromInt(format->trackInfo->year));
 		}
 
 		if (format->trackInfo->genre != NIL && format->trackInfo->genre != "")

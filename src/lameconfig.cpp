@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -144,7 +144,7 @@ configureLameEnc::configureLameEnc()
 	pos.y += 22;
 	size.cx = 34;
 
-	basic_edit_ratio	= new EditBox(String::DoubleToString(((double) ratio) / 100), pos, size, EDB_NUMERIC, 5);
+	basic_edit_ratio	= new EditBox(String::FromFloat(((double) ratio) / 100), pos, size, EDB_NUMERIC, 5);
 
 	pos.x = 7;
 	pos.y = 137;
@@ -474,7 +474,7 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_highpass	= new EditBox(String::IntToString(currentConfig->lame_highpass), pos, size, EDB_NUMERIC, 5);
+	filtering_edit_highpass	= new EditBox(String::FromInt(currentConfig->lame_highpass), pos, size, EDB_NUMERIC, 5);
 
 	pos.x -= 164;
 	pos.y += 26;
@@ -487,7 +487,7 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_highpass_width= new EditBox(String::IntToString(currentConfig->lame_highpass_width), pos, size, EDB_NUMERIC, 5);
+	filtering_edit_highpass_width= new EditBox(String::FromInt(currentConfig->lame_highpass_width), pos, size, EDB_NUMERIC, 5);
 
 	pos.x = 153;
 	pos.y = 87;
@@ -508,7 +508,7 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_lowpass	= new EditBox(String::IntToString(currentConfig->lame_lowpass), pos, size, EDB_NUMERIC, 5);
+	filtering_edit_lowpass	= new EditBox(String::FromInt(currentConfig->lame_lowpass), pos, size, EDB_NUMERIC, 5);
 
 	pos.x -= 164;
 	pos.y += 26;
@@ -521,7 +521,7 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_lowpass_width= new EditBox(String::IntToString(currentConfig->lame_lowpass_width), pos, size, EDB_NUMERIC, 5);
+	filtering_edit_lowpass_width= new EditBox(String::FromInt(currentConfig->lame_lowpass_width), pos, size, EDB_NUMERIC, 5);
 
 	pos.x = 7;
 	pos.y = 62;
@@ -869,7 +869,7 @@ Void configureLameEnc::OK()
 	currentConfig->lame_preset = preset;
 	currentConfig->lame_set_bitrate = set_bitrate;
 	currentConfig->lame_bitrate = GetBitrate();
-	currentConfig->lame_ratio = (int) (basic_edit_ratio->GetText().ToDouble() * 100);
+	currentConfig->lame_ratio = (int) (basic_edit_ratio->GetText().ToFloat() * 100);
 	currentConfig->lame_set_quality = set_quality;
 	currentConfig->lame_quality = 9 - quality;
 	currentConfig->lame_stereomode = stereomode;
@@ -1196,7 +1196,7 @@ Void configureLameEnc::SetBitrateOption()
 
 Void configureLameEnc::SetBitrate()
 {
-	basic_text_bitrate->SetText(String::IntToString(GetBitrate()).Append(" kbps"));
+	basic_text_bitrate->SetText(String::FromInt(GetBitrate()).Append(" kbps"));
 }
 
 Void configureLameEnc::SetQualityOption()
@@ -1219,7 +1219,7 @@ Void configureLameEnc::SetQualityOption()
 
 Void configureLameEnc::SetQuality()
 {
-	basic_text_quality->SetText(String::IntToString(9 - quality));
+	basic_text_quality->SetText(String::FromInt(9 - quality));
 }
 
 Void configureLameEnc::SetStereoMode()
@@ -1230,7 +1230,7 @@ Void configureLameEnc::SetStereoMode()
 
 Void configureLameEnc::SetVBRQuality()
 {
-	vbr_text_quality->SetText(String::IntToString(9 - vbrquality));
+	vbr_text_quality->SetText(String::FromInt(9 - vbrquality));
 }
 
 Void configureLameEnc::SetVBRMode()
@@ -1375,7 +1375,7 @@ Void configureLameEnc::SetVBRMode()
 
 Void configureLameEnc::SetABRBitrate()
 {
-	vbr_edit_abrbitrate->SetText(String::IntToString(abrbitrate));
+	vbr_edit_abrbitrate->SetText(String::FromInt(abrbitrate));
 }
 
 Void configureLameEnc::SetABRBitrateByEditBox()
@@ -1413,7 +1413,7 @@ Void configureLameEnc::SetMaxVBRBitrateOption()
 
 Void configureLameEnc::SetMinVBRBitrate()
 {
-	vbr_text_min_brate_kbps->SetText(String::IntToString(GetMinVBRBitrate()).Append(" kbps"));
+	vbr_text_min_brate_kbps->SetText(String::FromInt(GetMinVBRBitrate()).Append(" kbps"));
 
 	if (min_vbr_brate > max_vbr_brate)
 	{
@@ -1423,7 +1423,7 @@ Void configureLameEnc::SetMinVBRBitrate()
 
 Void configureLameEnc::SetMaxVBRBitrate()
 {
-	vbr_text_max_brate_kbps->SetText(String::IntToString(GetMaxVBRBitrate()).Append(" kbps"));
+	vbr_text_max_brate_kbps->SetText(String::FromInt(GetMaxVBRBitrate()).Append(" kbps"));
 
 	if (max_vbr_brate < min_vbr_brate)
 	{

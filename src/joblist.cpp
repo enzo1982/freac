@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -177,7 +177,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 		if (format->fileSize > 0)
 		{
-			String	 fSize = String::IntToString(format->fileSize);
+			String	 fSize = String::FromInt(format->fileSize);
 			String	 separator;
 			char	*buffer_a = new char [256];
 			wchar_t	*buffer_w = new wchar_t [256];
@@ -191,20 +191,15 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 			delete [] buffer_a;
 			delete [] buffer_w;
 
-			Int	 totalSeparators = Int((fSize.Length() - 1) / 3) * separator.Length();
-			Int	 doneSeparators = 0;
-			Int	 groupCount = 3 - fSize.Length() % 3;
-
-			for (int i = 0; i < fSize.Length() + totalSeparators; i++)
+			for (Int i = 0; i < fSize.Length(); i++)
 			{
-				if (groupCount == 3)	{ format->trackInfo->fileSize.Append(separator); doneSeparators += separator.Length(); }
-				else			format->trackInfo->fileSize[i] = fSize[i - doneSeparators];
+				if ((fSize.Length() - i) % 3 == 0 && i > 0) format->trackInfo->fileSize.Append(separator);
 
-				if (++groupCount == 4) groupCount = 0;
+				format->trackInfo->fileSize[format->trackInfo->fileSize.Length()] = fSize[i];
 			}
 		}
 
-		if (format->length > 0)	format->trackInfo->length = String::IntToString(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::IntToString(format->length / (format->rate * format->channels) % 60));
+		if (format->length > 0)	format->trackInfo->length = String::FromInt(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->length / (format->rate * format->channels) % 60));
 		else			format->trackInfo->length = "?";
 
 		if (format->trackInfo->origFilename == NIL) format->trackInfo->origFilename = file;
@@ -215,14 +210,18 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		    format->trackInfo->title.Length() == 0)	jlEntry = String(format->trackInfo->origFilename).Append("\t");
 		else						jlEntry = String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t");
 
-		jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::IntToString(format->trackInfo->track)) : String::IntToString(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
+		jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
 
 		format->trackInfo->outfile = outfile;
 
 		sa_formatinfo.AddEntry(format, joblist->AddEntry(jlEntry)->code);
 	}
+	else
+	{
+		SMOOTH::MessageBox(i18n->TranslateString("Cannot open file:").Append(" ").Append(file), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+	}
 
-	txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+	txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
 }
 
 Void bonkEnc::RemoveFile()
@@ -249,7 +248,7 @@ Void bonkEnc::RemoveFile()
 		sa_formatinfo.DeleteEntry(entry);
 		joblist->RemoveEntry(entry);
 
-		txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+		txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
 
 		dontUpdateInfo = True;
 
@@ -315,12 +314,12 @@ Void bonkEnc::SelectJoblistEntry()
 
 	info_edit_track->SetText("");
 
-	if (format->trackInfo->track > 0 && format->trackInfo->track < 10)	info_edit_track->SetText(String("0").Append(String::IntToString(format->trackInfo->track)));
-	else if (format->trackInfo->track >= 10)				info_edit_track->SetText(String::IntToString(format->trackInfo->track));
+	if (format->trackInfo->track > 0 && format->trackInfo->track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(format->trackInfo->track)));
+	else if (format->trackInfo->track >= 10)				info_edit_track->SetText(String::FromInt(format->trackInfo->track));
 
 	info_edit_year->SetText("");
 
-	if (format->trackInfo->year > 0) info_edit_year->SetText(String::IntToString(format->trackInfo->year));
+	if (format->trackInfo->year > 0) info_edit_year->SetText(String::FromInt(format->trackInfo->year));
 
 	info_combo_genre->SelectEntry(0);
 
@@ -361,7 +360,7 @@ Void bonkEnc::UpdateTitleInfo()
 	    format->trackInfo->title.Length() == 0)	jlEntry = String(format->trackInfo->origFilename).Append("\t");
 	else						jlEntry = String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t");
 
-	jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::IntToString(format->trackInfo->track)) : String::IntToString(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
+	jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
 
 	joblist->ModifyEntry(joblist->GetSelectedEntry(), jlEntry);
 }

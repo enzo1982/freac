@@ -2,8 +2,8 @@
 #include "../include/resources.h"
 
 IDR_VERSION		VERSIONINFO
-  FILEVERSION		0,9,0,0
-  PRODUCTVERSION	0,9,0,0
+  FILEVERSION		1,0,0,0
+  PRODUCTVERSION	1,0,0,0
   FILEFLAGSMASK		VS_FFI_FILEFLAGSMASK
   FILEFLAGS		VS_FF_DEBUG|VS_FF_PRERELEASE|VS_FF_PRIVATEBUILD
   FILEOS		VOS_NT_WINDOWS32
@@ -19,7 +19,7 @@ BEGIN
             VALUE	"InternalName",		"BONKENC\0"
             VALUE	"OriginalFilename",	"bonkenc.exe\0"
             VALUE	"ProductName",		"BonkEnc\0"
-            VALUE	"ProductVersion",	"0.9\0"
+            VALUE	"ProductVersion",	"1.0 beta 1\0"
             VALUE	"LegalCopyright",	"Copyright © 2001-2003 Robert Kausch\0"
             VALUE	"Official website",	"http://www.bonkenc.org\0"
          END

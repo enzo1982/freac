@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -18,7 +18,7 @@ languageDlg::languageDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window("Welcome to BonkEnc v0.9");
+	mainWnd			= new Window("Welcome to BonkEnc v1.0");
 	mainWnd_titlebar	= new Titlebar(false, false, false);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

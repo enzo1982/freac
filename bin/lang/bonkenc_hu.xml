@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
-    <property name="version">0.9</property>
+    <property name="version">1.0</property>
     <property name="language">Magyar</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Tóth Péter &lt;golbat@freemail.hu&gt;</property>

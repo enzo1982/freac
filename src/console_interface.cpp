@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -31,10 +31,10 @@ Void bonkEnc::ConsoleMode()
 
 	bonkEncConsole	*con;
 
-	if (!quiet)	con = new bonkEncConsole("BonkEnc v0.9");
+	if (!quiet)	con = new bonkEncConsole("BonkEnc v1.0 beta 1");
 	else		con = new bonkEncConsole((char *) NULL);
 
-	con->OutputString("BonkEnc audio encoder v0.9 console interface\nCopyright (C) 2001-2003 Robert Kausch\n\n");
+	con->OutputString("BonkEnc Audio Encoder v1.0 console interface\nCopyright (C) 2001-2003 Robert Kausch\n\n");
 
 	if ((files.GetNOfEntries() == 0 && helpenc == "") || !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "TVQ" || encoder == "WAVE") || (files.GetNOfEntries() > 1 && outfile != ""))
 	{

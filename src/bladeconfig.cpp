@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -209,7 +209,7 @@ Void configureBladeEnc::Cancel()
 
 Void configureBladeEnc::SetBitrate()
 {
-	text_bit->SetText(String::IntToString(GetBitrate()).Append(" kbit"));
+	text_bit->SetText(String::FromInt(GetBitrate()).Append(" kbit"));
 }
 
 Int configureBladeEnc::GetBitrate()

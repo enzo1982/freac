@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -241,9 +241,9 @@ bonkEnc::bonkEnc()
 
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd			= new Window("BonkEnc v0.9");
+	mainWnd			= new Window("BonkEnc v1.0 beta 1");
 	mainWnd_titlebar	= new Titlebar(true, true, true);
-	mainWnd_statusbar	= new Statusbar("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
+	mainWnd_statusbar	= new Statusbar("BonkEnc v1.0 beta 1 - Copyright (C) 2001-2003 Robert Kausch");
 	menu_file		= new Menu();
 	menu_options		= new Menu();
 	menu_addsubmenu		= new Menu();
@@ -946,7 +946,7 @@ Bool bonkEnc::ExitProc()
 
 Void bonkEnc::DrawProc()
 {
-	mainWnd_statusbar->SetText("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
+	mainWnd_statusbar->SetText("BonkEnc v1.0 beta 1 - Copyright (C) 2001-2003 Robert Kausch");
 
 	if (mainWnd->GetObjectProperties()->size.cx == currentConfig->wndSize.cx && mainWnd->GetObjectProperties()->size.cy == currentConfig->wndSize.cy) return;
 
@@ -1027,7 +1027,7 @@ Void bonkEnc::DrawProc()
 
 Void bonkEnc::About()
 {
-	SMOOTH::MessageBox(String("BonkEnc v0.9\nCopyright (C) 2001-2003 Robert Kausch\n\n").Append(i18n->TranslateString("This program is being distributed under the terms")).Append("\n").Append(i18n->TranslateString("of the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	SMOOTH::MessageBox(String("BonkEnc v1.0 beta 1\nCopyright (C) 2001-2003 Robert Kausch\n\n").Append(i18n->TranslateString("This program is being distributed under the terms")).Append("\n").Append(i18n->TranslateString("of the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void bonkEnc::ConfigureEncoder()
@@ -1162,7 +1162,7 @@ Void bonkEnc::ReadCD()
 
 	for (int i = 1; i <= numTocEntries; i++)
 	{
-		AddFileByName(String("/cda").Append(String::IntToString(i)));
+		AddFileByName(String("/cda").Append(String::FromInt(i)));
 
 		cddbRetry = False;
 	}
@@ -1381,7 +1381,7 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 	if (currentConfig->freedb_mode == FREEDB_MODE_CDDBP) cddb.CloseConnection();
 
-	mainWnd_statusbar->SetText("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
+	mainWnd_statusbar->SetText("BonkEnc v1.0 beta 1 - Copyright (C) 2001-2003 Robert Kausch");
 
 	return array;
 }
@@ -1477,7 +1477,7 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 {
 	i18n->ActivateLanguage(currentConfig->language);
 
-	txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+	txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
 
 	enc_filename->Hide();
 	enc_time->Hide();
@@ -1554,7 +1554,7 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 		if ((format->trackInfo->artist.Length() == 0 && format->trackInfo->title.Length() != 0) ||
 		    (format->trackInfo->artist.Length() != 0 && format->trackInfo->title.Length() == 0))
 		{
-			joblist->ModifyEntry(code, String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t").Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::IntToString(format->trackInfo->track)) : String::IntToString(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize));
+			joblist->ModifyEntry(code, String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t").Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize));
 		}
 	}
 

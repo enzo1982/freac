@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -126,18 +126,18 @@ String bonkEncCDDB::GetCDDBQueryString()
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 	TOCENTRY entry;
 
-	str.Append(" ").Append(String::IntToString(numTocEntries));
+	str.Append(" ").Append(String::FromInt(numTocEntries));
 
 	for (int i = 0; i < numTocEntries; i++)
 	{
 		entry = ex_CR_GetTocEntry(i);
 
-		str.Append(" ").Append(String::IntToString(entry.dwStartSector + 2 * 75));
+		str.Append(" ").Append(String::FromInt(entry.dwStartSector + 2 * 75));
 	}
 
 	entry = ex_CR_GetTocEntry(numTocEntries);
 
-	str.Append(" ").Append(String::IntToString(entry.dwStartSector / 75 + 2));
+	str.Append(" ").Append(String::FromInt(entry.dwStartSector / 75 + 2));
 
 	return str;
 }
@@ -202,13 +202,13 @@ String bonkEncCDDB::SendCommand(String command)
 
 			str.Append("POST ").Append(config->freedb_query_path).Append(" HTTP/1.0\n");
 			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-			str.Append("Content-Length: ").Append(String::IntToString(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v0.9&proto=5\n").Length())).Append("\n");
+			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v1.0+beta+1&proto=5\n").Length())).Append("\n");
 			str.Append("Charset: ISO-8859-1\n");
 			str.Append("\n");
 
 			for (int i = 0; i < command.Length(); i++) if (command[i] == ' ') command[i] = '+';
 
-			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v0.9&proto=5\n");
+			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v1.0+beta+1&proto=5\n");
 
 			delete [] buffer;
 
@@ -219,7 +219,7 @@ String bonkEncCDDB::SendCommand(String command)
 			if (socket->GetLastError() != IOLIB_ERROR_OK)
 			{
 #ifdef LOG_CDDB
-				log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::IntToString(config->freedb_http_port)));
+				log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 #endif
 
 				str = "error";
@@ -300,7 +300,7 @@ Bool bonkEncCDDB::ConnectToServer()
 #ifdef LOG_CDDB
 			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
 
-			log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::IntToString(config->freedb_cddbp_port)));
+			log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_cddbp_port)));
 
 			delete log;
 #endif
@@ -333,7 +333,7 @@ Bool bonkEncCDDB::ConnectToServer()
 
 	gethostname(buffer, 256);
 
-	SendCommand(String("cddb hello user ").Append(buffer).Append(" BonkEnc v0.9"));
+	SendCommand(String("cddb hello user ").Append(buffer).Append(" BonkEnc v1.0 beta 1"));
 
 	delete [] buffer;
 
@@ -485,14 +485,14 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 	for (int i = 0; i < cddbInfo->nOfTracks; i++)
 	{
-		content.Append("#     ").Append(String::IntToString(cddbInfo->offsets.GetNthEntry(i))).Append("\n");
+		content.Append("#     ").Append(String::FromInt(cddbInfo->offsets.GetNthEntry(i))).Append("\n");
 	}
 
 	content.Append("# ").Append("\n");
-	content.Append("# Disc length: ").Append(String::IntToString(cddbInfo->disclength)).Append(" seconds").Append("\n");
+	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->disclength)).Append(" seconds").Append("\n");
 	content.Append("# ").Append("\n");
-	content.Append("# Revision: ").Append(String::IntToString(cddbInfo->revision)).Append("\n");
-	content.Append("# Submitted via: ").Append("BonkEnc v0.9").Append("\n");
+	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->revision)).Append("\n");
+	content.Append("# Submitted via: ").Append("BonkEnc v1.0 beta 1").Append("\n");
 	content.Append("# ").Append("\n");
 
 	content.Append("DISCID=").Append(cddbInfo->discid).Append("\n");
@@ -502,14 +502,14 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 	for (int j = 0; j < cddbInfo->nOfTracks; j++)
 	{
-		content.Append("TTITLE").Append(String::IntToString(j)).Append("=").Append(cddbInfo->titles.GetNthEntry(j)).Append("\n");
+		content.Append("TTITLE").Append(String::FromInt(j)).Append("=").Append(cddbInfo->titles.GetNthEntry(j)).Append("\n");
 	}
 
 	content.Append("EXTD=").Append("\n");
 
 	for (int k = 0; k < cddbInfo->nOfTracks; k++)
 	{
-		content.Append("EXTT").Append(String::IntToString(k)).Append("=").Append("\n");
+		content.Append("EXTT").Append(String::FromInt(k)).Append("=").Append("\n");
 	}
 
 	content.Append("PLAYORDER=").Append("\n");
@@ -523,7 +523,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	str.Append("Discid: ").Append(cddbInfo->discid).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
 	str.Append("Submit-Mode: ").Append("submit").Append("\n");
-	str.Append("Content-Length: ").Append(String::IntToString(content.Length())).Append("\n");
+	str.Append("Content-Length: ").Append(String::FromInt(content.Length())).Append("\n");
 	str.Append("Charset: ISO-8859-1\n");
 	str.Append("\n");
 
@@ -536,7 +536,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	if (socket->GetLastError() != IOLIB_ERROR_OK)
 	{
 #ifdef LOG_CDDB
-		log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::IntToString(config->freedb_http_port)));
+		log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 #endif
 
 		str = "error";

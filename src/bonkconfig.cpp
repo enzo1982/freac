@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -214,7 +214,7 @@ Void configureBonkEnc::Cancel()
 
 Void configureBonkEnc::SetQuantization()
 {
-	String	 val = String::DoubleToString(0.05 * (double) quant);
+	String	 val = String::FromFloat(0.05 * (double) quant);
 
 	switch (val.Length())
 	{
@@ -231,12 +231,12 @@ Void configureBonkEnc::SetQuantization()
 
 Void configureBonkEnc::SetPredictorSize()
 {
-	text_predictor->SetText(String::IntToString(predictor));
+	text_predictor->SetText(String::FromInt(predictor));
 }
 
 Void configureBonkEnc::SetDownsamplingRatio()
 {
-	text_downsampling->SetText(String::IntToString(downsampling).Append(":1"));
+	text_downsampling->SetText(String::FromInt(downsampling).Append(":1"));
 }
 
 Void configureBonkEnc::SetEncoderMode()

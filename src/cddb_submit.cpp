@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -540,7 +540,7 @@ Void cddbSubmitDlg::ChangeDrive()
 	{
 		edit_artist->SetText(cdInfo->GetEntry(0)->artist);
 		edit_album->SetText(cdInfo->GetEntry(0)->album);
-		edit_year->SetText(String::IntToString(cdInfo->GetEntry(0)->year) == "0" ? String("") : String::IntToString(cdInfo->GetEntry(0)->year));
+		edit_year->SetText(String::FromInt(cdInfo->GetEntry(0)->year) == "0" ? String("") : String::FromInt(cdInfo->GetEntry(0)->year));
 		combo_genre->SelectEntry(0);
 
 		for (int i = 0; i < combo_genre->GetNOfEntries(); i++)
@@ -560,7 +560,7 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		for (int j = 1; j < cdInfo->GetNOfEntries(); j++)
 		{
-			titles.AddEntry(cdInfo->GetEntry(j)->title, list_tracks->AddEntry(String(j < 10 ? "0" : "").Append(String::IntToString(j)).Append("\t").Append(cdInfo->GetEntry(j)->title == "" ? bonkEnc::i18n->TranslateString("unknown title") : cdInfo->GetEntry(j)->title))->code);
+			titles.AddEntry(cdInfo->GetEntry(j)->title, list_tracks->AddEntry(String(j < 10 ? "0" : "").Append(String::FromInt(j)).Append("\t").Append(cdInfo->GetEntry(j)->title == "" ? bonkEnc::i18n->TranslateString("unknown title") : cdInfo->GetEntry(j)->title))->code);
 		}
 
 		cddbInfo = currentConfig->appMain->cddbInfo;
@@ -599,7 +599,7 @@ Void cddbSubmitDlg::ChangeDrive()
 			{
 				cddbInfo->titles.SetEntry(j, currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber));
 
-				titles.AddEntry(currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber), list_tracks->AddEntry(String(entry.btTrackNumber < 10 ? "0" : "").Append(String::IntToString(entry.btTrackNumber)).Append("\t").Append(currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber) == "" ? bonkEnc::i18n->TranslateString("unknown title") : currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber)))->code);
+				titles.AddEntry(currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber), list_tracks->AddEntry(String(entry.btTrackNumber < 10 ? "0" : "").Append(String::FromInt(entry.btTrackNumber)).Append("\t").Append(currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber) == "" ? bonkEnc::i18n->TranslateString("unknown title") : currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber)))->code);
 			}
 		}
 	}
@@ -630,7 +630,7 @@ Void cddbSubmitDlg::ChangeDrive()
 
 			if (j == numTocEntries) cddbInfo->disclength = (entry.dwStartSector + 150) / 75;
 
-			if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == j + 1) titles.AddEntry("", list_tracks->AddEntry(String(entry.btTrackNumber < 10 ? "0" : "").Append(String::IntToString(entry.btTrackNumber)).Append("\t").Append(bonkEnc::i18n->TranslateString("unknown title")))->code);
+			if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == j + 1) titles.AddEntry("", list_tracks->AddEntry(String(entry.btTrackNumber < 10 ? "0" : "").Append(String::FromInt(entry.btTrackNumber)).Append("\t").Append(bonkEnc::i18n->TranslateString("unknown title")))->code);
 		}
 	}
 
@@ -646,7 +646,7 @@ Void cddbSubmitDlg::ChangeDrive()
 			{
 				titles.SetEntry(titles.GetNthEntryIndex(m), trackInfo->title);
 				cddbInfo->titles.SetEntry(trackInfo->track - 1, trackInfo->title);
-				list_tracks->ModifyEntry(list_tracks->GetNthEntry(m), String(trackInfo->track < 10 ? "0" : "").Append(String::IntToString(trackInfo->track)).Append("\t").Append(trackInfo->title));
+				list_tracks->ModifyEntry(list_tracks->GetNthEntry(m), String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track)).Append("\t").Append(trackInfo->title));
 			}
 		}
 	}
@@ -664,8 +664,8 @@ Void cddbSubmitDlg::SelectTrack()
 	edit_title->SetText(title);
 	edit_track->SetText("");
 
-	if (track > 0 && track < 10)	edit_track->SetText(String("0").Append(String::IntToString(track)));
-	else if (track >= 10)		edit_track->SetText(String::IntToString(track));
+	if (track > 0 && track < 10)	edit_track->SetText(String("0").Append(String::FromInt(track)));
+	else if (track >= 10)		edit_track->SetText(String::FromInt(track));
 
 	dontUpdateInfo = False;
 }
@@ -677,7 +677,7 @@ Void cddbSubmitDlg::UpdateTrack()
 
 	Int	 track = edit_track->GetText().ToInt();
 
-	list_tracks->ModifyEntry(list_tracks->GetSelectedEntry(), String(track < 10 ? "0" : "").Append(String::IntToString(track)).Append("\t").Append(edit_title->GetText() == "" ? bonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
+	list_tracks->ModifyEntry(list_tracks->GetSelectedEntry(), String(track < 10 ? "0" : "").Append(String::FromInt(track)).Append("\t").Append(edit_title->GetText() == "" ? bonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
 
 	titles.SetEntry(list_tracks->GetSelectedEntry(), edit_title->GetText());
 }

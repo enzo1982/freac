@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -94,11 +94,11 @@ Int bonkEnc::Encoder(Thread *thread)
 		}
 		else if (trackInfo->isCDTrack)
 		{
-			out_filename.Append("cd").Append(String::IntToString(trackInfo->drive)).Append("track");
+			out_filename.Append("cd").Append(String::FromInt(trackInfo->drive)).Append("track");
 
 			if (trackInfo->track < 10) out_filename.Append("0");
 
-			out_filename.Append(String::IntToString(trackInfo->track));
+			out_filename.Append(String::FromInt(trackInfo->track));
 		}
 		else
 		{
@@ -272,7 +272,7 @@ Int bonkEnc::Encoder(Thread *thread)
 						{
 							lastpercent = (int) (position * 100.0 / format->length);
 
-							edb_percent->SetText(String::IntToString(lastpercent).Append("%"));
+							edb_percent->SetText(String::FromInt(lastpercent).Append("%"));
 						}
 
 						ticks = clock() - startticks;
@@ -283,7 +283,7 @@ Int bonkEnc::Encoder(Thread *thread)
 						{
 							lastticks = ticks;
 
-							String	 buf = String::IntToString(ticks / 60);
+							String	 buf = String::FromInt(ticks / 60);
 							String	 txt = "0";
 
 							if (buf.Length() == 1)	txt.Append(buf);
@@ -291,7 +291,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 							txt.Append(":");
 
-							buf = String::IntToString(ticks % 60);
+							buf = String::FromInt(ticks % 60);
 
 							if (buf.Length() == 1)	txt.Append(String("0").Append(buf));
 							else			txt.Append(buf);
@@ -329,7 +329,7 @@ Int bonkEnc::Encoder(Thread *thread)
 						{
 							lastpercent = (int) (position * 100.0 / f_in->Size());
 
-							edb_percent->SetText(String::IntToString(lastpercent).Append("%"));
+							edb_percent->SetText(String::FromInt(lastpercent).Append("%"));
 						}
 
 						ticks = clock() - startticks;
@@ -340,7 +340,7 @@ Int bonkEnc::Encoder(Thread *thread)
 						{
 							lastticks = ticks;
 
-							String	 buf = String::IntToString(ticks / 60);
+							String	 buf = String::FromInt(ticks / 60);
 							String	 txt = "0";
 
 							if (buf.Length() == 1)	txt.Append(buf);
@@ -348,7 +348,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 							txt.Append(":");
 
-							buf = String::IntToString(ticks % 60);
+							buf = String::FromInt(ticks % 60);
 
 							if (buf.Length() == 1)	txt.Append(String("0").Append(buf));
 							else			txt.Append(buf);

@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -126,7 +126,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.y -= 3;
 	size.cx = 37;
 
-	proxy_edit_port		= new EditBox(String::IntToString(currentConfig->freedb_proxy_port), pos, size, EDB_NUMERIC, 5);
+	proxy_edit_port		= new EditBox(String::FromInt(currentConfig->freedb_proxy_port), pos, size, EDB_NUMERIC, 5);
 
 	maxTextSize = max(proxy_text_mode->GetObjectProperties()->textSize.cx, proxy_text_server->GetObjectProperties()->textSize.cx);
 

@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -163,7 +163,7 @@ configureFAAC::configureFAAC()
 	size.cx = 291 - text_bandwidth->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	edit_bandwidth		= new EditBox(String::IntToString(currentConfig->faac_bandwidth), pos, size, EDB_NUMERIC, 5);
+	edit_bandwidth		= new EditBox(String::FromInt(currentConfig->faac_bandwidth), pos, size, EDB_NUMERIC, 5);
 
 	SetBitrate();
 
@@ -303,7 +303,7 @@ Void configureFAAC::SetMPEGVersion()
 
 Void configureFAAC::SetBitrate()
 {
-	edit_bitrate->SetText(String::IntToString(bitrate));
+	edit_bitrate->SetText(String::FromInt(bitrate));
 }
 
 Void configureFAAC::SetBitrateByEditBox()

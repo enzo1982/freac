@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -67,8 +67,16 @@ bonkFormatInfo *FilterInWAVE::GetFileInfo(String inFile)
 		f_in->InputNumber(1);
 
 	// Read FMT chunk
-	for (Int j = 0; j < 10; j++)
+	for (Int j = 0; j < 8; j++)
 		f_in->InputNumber(1);
+
+	if (f_in->InputNumber(2) != 1)
+	{
+		delete f_in;
+		delete nFormat;
+
+		return NIL;
+	}
 
 	nFormat->channels = uint16(f_in->InputNumber(2));
 	nFormat->rate = uint32(f_in->InputNumber(4));

@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -397,11 +397,11 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 
 	nFormat->trackInfo->isCDTrack = True;
 
-	nFormat->trackInfo->origFilename = String("Audio CD ").Append(String::IntToString(nFormat->trackInfo->drive)).Append(" - Track ");
+	nFormat->trackInfo->origFilename = String("Audio CD ").Append(String::FromInt(nFormat->trackInfo->drive)).Append(" - Track ");
 
 	if (nFormat->trackInfo->track < 10) nFormat->trackInfo->origFilename.Append("0");
 
-	nFormat->trackInfo->origFilename.Append(String::IntToString(nFormat->trackInfo->track));
+	nFormat->trackInfo->origFilename.Append(String::FromInt(nFormat->trackInfo->track));
 
 	currentConfig->appMain->FreeCDText();
 

@@ -1,4 +1,4 @@
-BonkEnc Version 0.9
+BonkEnc Version 1.0 beta
 
 BonkEnc ist ein Codierer für verschiedene Audioformate.
 Es kann MP3, Ogg Vorbis, BONK, AAC und VQF Dateien erzeugen.
@@ -10,6 +10,11 @@ BonkEnc mit der '--console' Option aufgerufen wird.
 
 Geschichte
 ----------
+
+	Version 1.0 beta 1 CVS (April 2003)
+
+		- Update auf smooth v0.8.62.0
+		- Einige Bugfixes
 
 	Version 0.9 (März 2003)
 

@@ -1,4 +1,4 @@
- /* BonkEnc version 0.9
+ /* BonkEnc Audio Encoder
   * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -235,7 +235,7 @@ Void configureVorbisEnc::SetMode()
 
 Void configureVorbisEnc::SetQuality()
 {
-	String	 txt = String::DoubleToString(((double) quality) / 100);
+	String	 txt = String::FromFloat(((double) quality) / 100);
 
 	if (txt.Length() == 1)		txt.Append(".00");
 	else if (txt.Length() == 3)	txt.Append("0");
@@ -245,7 +245,7 @@ Void configureVorbisEnc::SetQuality()
 
 Void configureVorbisEnc::SetBitrate()
 {
-	edit_abr->SetText(String::IntToString(abr));
+	edit_abr->SetText(String::FromInt(abr));
 }
 
 Void configureVorbisEnc::SetBitrateByEditBox()
