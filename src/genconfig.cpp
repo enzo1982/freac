@@ -386,12 +386,12 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.y += 27;
 	size.cx = 158;
 
-	cddb_button_http	= new Button(bonkEnc::i18n->TranslateString("HTTP settings"), NULL, pos, size);
+	cddb_button_http	= new Button(bonkEnc::i18n->TranslateString("HTTP settings"), NIL, pos, size);
 	cddb_button_http->onClick.Connect(&configureGeneralSettings::HTTPSettings, this);
 
 	pos.x += 166;
 
-	cddb_button_proxy	= new Button(bonkEnc::i18n->TranslateString("Proxy settings"), NULL, pos, size);
+	cddb_button_proxy	= new Button(bonkEnc::i18n->TranslateString("Proxy settings"), NIL, pos, size);
 	cddb_button_proxy->onClick.Connect(&configureGeneralSettings::ProxySettings, this);
 
 	SetCDDBMode();

@@ -82,7 +82,7 @@ bonkEncGUI::bonkEncGUI()
 	pos.x = 91;
 	pos.y = -22;
 
-	hyperlink		= new Hyperlink("www.bonkenc.org", NULL, "http://www.bonkenc.org", pos);
+	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org", pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 
 	if (winamp_out_modules.GetNOfEntries() > 0)
