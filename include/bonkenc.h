@@ -127,20 +127,10 @@ class bonkEnc : public Application
 		Void			 FreeWinampDLLs();
 
 		Void			 AddFileByName(String, String out = NIL);
-		Void			 ClearList();
-		Void			 ReadCD();
-		Void			 Encode();
 		Int			 Encoder(Thread *);
-		Void			 StopEncoding();
 		InputFilter		*CreateInputFilter(String, bonkEncTrack *);
 		Void			 PlayItem(Int);
-		Void			 PlaySelectedItem();
 		Int			 PlayThread(Thread *);
-		Void			 PausePlayback();
-		Void			 StopPlayback();
-		Void			 PlayPrevious();
-		Void			 PlayNext();
-		Void			 SelectDir();
 	public:
 		static String		 version;
 		static String		 cddbVersion;
@@ -174,6 +164,21 @@ class bonkEnc : public Application
 					~bonkEnc();
 
 		Array<bonkEncTrack *>	*GetCDDBData();
+	slots:
+		Void			 ClearList();
+
+		Void			 ReadCD();
+
+		Void			 Encode();
+		Void			 StopEncoding();
+
+		Void			 PlaySelectedItem();
+		Void			 PausePlayback();
+		Void			 StopPlayback();
+		Void			 PlayPrevious();
+		Void			 PlayNext();
+
+		Void			 SelectDir();
 };
 
 #endif

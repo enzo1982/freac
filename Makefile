@@ -23,8 +23,8 @@ LINKER = gcc
 REMOVER = rm
 ECHO = echo
 COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -Os -g0 -Wall -Wno-pmf-conversions -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
-LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lwsock32 -mwindows -o$(EXENAME)
-CMDLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lwsock32 -o$(CMDNAME)
+LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lwsock32 -lstdc++ -mwindows -o$(EXENAME)
+CMDLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lwsock32 -lstdc++ -o$(CMDNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
