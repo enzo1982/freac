@@ -253,7 +253,7 @@
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">¿Le gusta BonkEnc? BonkEnc se encuentra disponible&#10;gratuitamente, pero puede ayudar al desarrollo del proyecto&#10;BonkEnc haciendo una donación. Puede enviar dinero a&#10;%1 a través de PayPal.&#10;Vea %2 para más detalles.</entry>
     <entry id="242" string="Bitrate / Quality">Tasa de bits / Calidad</entry>
     <entry id="243" string="Check for updates now">Comprobar actualizaciones ahora</entry>
-    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">¡Existen actualizaciones disponibles para BonkEnc!¿Desea ver una lista de actualizaciones disponibles?</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">¡Existen actualizaciones disponibles para BonkEnc!&#10;¿Desea ver una lista de actualizaciones disponibles?</entry>
     <entry id="245" string="There are no updates available at the moment!">No hay actualizaciones disponibles por el momento</entry>
     <entry id="246" string="Check for updates at startup">Comprobar por actualizaciones al iniciar</entry>
     <entry id="247" string="Read CD contents on insert">Leer CD al insertar</entry>
