@@ -33,12 +33,12 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(Window, mainWnd, Close));
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(configureFAAC, this, OK));
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureFAAC::OK), this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -53,11 +53,11 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 99;
 	size.cy = 0;
 
-	option_version_mpeg2	= new OptionBox("MPEG 2", pos, size, &mpegVersion, 1, Proc(configureFAAC, this, SetMPEGVersion));
+	option_version_mpeg2	= new OptionBox("MPEG 2", pos, size, &mpegVersion, 1, Proc(&configureFAAC::SetMPEGVersion), this);
 
 	pos.y += 25;
 
-	option_version_mpeg4	= new OptionBox("MPEG 4", pos, size, &mpegVersion, 0, Proc(configureFAAC, this, SetMPEGVersion));
+	option_version_mpeg4	= new OptionBox("MPEG 4", pos, size, &mpegVersion, 0, Proc(&configureFAAC::SetMPEGVersion), this);
 
 	pos.x = 7;
 	pos.y = 88;
@@ -99,13 +99,13 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 228 - text_bitrate->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	slider_bitrate		= new Slider(pos, size, OR_HORZ, &bitrate, 8, 256, Proc(configureFAAC, this, SetBitrate));
+	slider_bitrate		= new Slider(pos, size, OR_HORZ, &bitrate, 8, 256, Proc(&configureFAAC::SetBitrate), this);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
 	size.cx = 25;
 
-	edit_bitrate		= new EditBox("", pos, size, EDB_NUMERIC, 3, Proc(configureFAAC, this, SetBitrateByEditBox));
+	edit_bitrate		= new EditBox("", pos, size, EDB_NUMERIC, 3, Proc(&configureFAAC::SetBitrateByEditBox), this);
 
 	pos.x += 32;
 	pos.y += 3;

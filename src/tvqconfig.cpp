@@ -27,12 +27,12 @@ configureTVQ::configureTVQ(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(Window, mainWnd, Close));
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(configureTVQ, this, OK));
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureTVQ::OK), this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;

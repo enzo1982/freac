@@ -33,12 +33,12 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(Window, mainWnd, Close));
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(configureBonkEnc, this, OK));
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureBonkEnc::OK), this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -72,7 +72,7 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	size.cx = 147;
 	size.cy = 0;
 
-	check_lossless		= new CheckBox(currentConfig->i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless, Proc(configureBonkEnc, this, SetEncoderMode));
+	check_lossless		= new CheckBox(currentConfig->i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless, Proc(&configureBonkEnc::SetEncoderMode), this);
 
 	pos.x += 176;
 
@@ -83,7 +83,7 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	size.cx = 120;
 	size.cy = 0;
 
-	slider_quant		= new Slider(pos, size, OR_HORZ, &quant, 0, 40, Proc(configureBonkEnc, this, SetQuantization));
+	slider_quant		= new Slider(pos, size, OR_HORZ, &quant, 0, 40, Proc(&configureBonkEnc::SetQuantization), this);
 
 	pos.x += 127;
 	pos.y += 2;
@@ -94,7 +94,7 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	pos.x += 49;
 	pos.y -= 2;
 
-	slider_downsampling	= new Slider(pos, size, OR_HORZ, &downsampling, 1, 10, Proc(configureBonkEnc, this, SetDownsamplingRatio));
+	slider_downsampling	= new Slider(pos, size, OR_HORZ, &downsampling, 1, 10, Proc(&configureBonkEnc::SetDownsamplingRatio), this);
 
 	pos.x += 127;
 	pos.y += 2;
@@ -106,7 +106,7 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	pos.y += 53;
 	size.cx += 176;
 
-	slider_predictor	= new Slider(pos, size, OR_HORZ, &predictor, 0, 512, Proc(configureBonkEnc, this, SetPredictorSize));
+	slider_predictor	= new Slider(pos, size, OR_HORZ, &predictor, 0, 512, Proc(&configureBonkEnc::SetPredictorSize), this);
 
 	pos.x += 303;
 	pos.y += 2;

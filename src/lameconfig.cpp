@@ -59,12 +59,12 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(Window, mainWnd, Close));
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(configureLameEnc, this, OK));
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureLameEnc::OK), this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -87,18 +87,18 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 76;
 	size.cy = 0;
 
-	basic_option_set_bitrate= new OptionBox(currentConfig->i18n->TranslateString("Set bitrate:"), pos, size, &set_bitrate, 1, Proc(configureLameEnc, this, SetBitrateOption));
+	basic_option_set_bitrate= new OptionBox(currentConfig->i18n->TranslateString("Set bitrate:"), pos, size, &set_bitrate, 1, Proc(&configureLameEnc::SetBitrateOption), this);
 	if (vbrmode != vbr_off) basic_option_set_bitrate->Deactivate();
 
 	pos.y += 25;
 
-	basic_option_set_ratio	= new OptionBox(currentConfig->i18n->TranslateString("Set ratio:"), pos, size, &set_bitrate, 0, Proc(configureLameEnc, this, SetBitrateOption));
+	basic_option_set_ratio	= new OptionBox(currentConfig->i18n->TranslateString("Set ratio:"), pos, size, &set_bitrate, 0, Proc(&configureLameEnc::SetBitrateOption), this);
 	if (vbrmode != vbr_off) basic_option_set_ratio->Deactivate();
 
 	pos.y -= 25;
 	pos.x += 85;
 
-	basic_slider_bitrate	= new Slider(pos, size, OR_HORZ, &bitrate, 0, 17, Proc(configureLameEnc, this, SetBitrate));
+	basic_slider_bitrate	= new Slider(pos, size, OR_HORZ, &bitrate, 0, 17, Proc(&configureLameEnc::SetBitrate), this);
 	if (!set_bitrate) basic_slider_bitrate->Deactivate();
 	if (vbrmode != vbr_off) basic_slider_bitrate->Deactivate();
 
@@ -130,12 +130,12 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 76;
 	size.cy = 0;
 
-	basic_check_set_quality	= new CheckBox(currentConfig->i18n->TranslateString("Set quality:"), pos, size, &set_quality, Proc(configureLameEnc, this, SetQualityOption));
+	basic_check_set_quality	= new CheckBox(currentConfig->i18n->TranslateString("Set quality:"), pos, size, &set_quality, Proc(&configureLameEnc::SetQualityOption), this);
 
 	pos.x += 85;
 	size.cx += 38;
 
-	basic_slider_quality	= new Slider(pos, size, OR_HORZ, &quality, 0, 9, Proc(configureLameEnc, this, SetQuality));
+	basic_slider_quality	= new Slider(pos, size, OR_HORZ, &quality, 0, 9, Proc(&configureLameEnc::SetQuality), this);
 	if (!set_quality) basic_slider_quality->Deactivate();
 
 	pos.x += 121;
@@ -167,15 +167,15 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 106;
 	size.cy = 0;
 
-	basic_option_autostereo	= new OptionBox(currentConfig->i18n->TranslateString("Auto"), pos, size, &stereomode, 0, Proc(configureLameEnc, this, SetStereoMode));
+	basic_option_autostereo	= new OptionBox(currentConfig->i18n->TranslateString("Auto"), pos, size, &stereomode, 0, Proc(&configureLameEnc::SetStereoMode), this);
 
 	pos.y += 25;
 
-	basic_option_stereo	= new OptionBox(currentConfig->i18n->TranslateString("Stereo"), pos, size, &stereomode, 1, Proc(configureLameEnc, this, SetStereoMode));
+	basic_option_stereo	= new OptionBox(currentConfig->i18n->TranslateString("Stereo"), pos, size, &stereomode, 1, Proc(&configureLameEnc::SetStereoMode), this);
 
 	pos.y += 25;
 
-	basic_option_jstereo	= new OptionBox(currentConfig->i18n->TranslateString("Joint Stereo"), pos, size, &stereomode, 2, Proc(configureLameEnc, this, SetStereoMode));
+	basic_option_jstereo	= new OptionBox(currentConfig->i18n->TranslateString("Joint Stereo"), pos, size, &stereomode, 2, Proc(&configureLameEnc::SetStereoMode), this);
 
 	pos.y += 31;
 
@@ -194,19 +194,19 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 107;
 	size.cy = 0;
 
-	vbr_option_cbr		= new OptionBox(String("CBR (").Append(currentConfig->i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off, Proc(configureLameEnc, this, SetVBRMode));
+	vbr_option_cbr		= new OptionBox(String("CBR (").Append(currentConfig->i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off, Proc(&configureLameEnc::SetVBRMode), this);
 
 	pos.y += 23;
 
-	vbr_option_abr		= new OptionBox("ABR", pos, size, &vbrmode, vbr_abr, Proc(configureLameEnc, this, SetVBRMode));
+	vbr_option_abr		= new OptionBox("ABR", pos, size, &vbrmode, vbr_abr, Proc(&configureLameEnc::SetVBRMode), this);
 
 	pos.y += 23;
 
-	vbr_option_vbrrh	= new OptionBox("VBR rh", pos, size, &vbrmode, vbr_rh, Proc(configureLameEnc, this, SetVBRMode));
+	vbr_option_vbrrh	= new OptionBox("VBR rh", pos, size, &vbrmode, vbr_rh, Proc(&configureLameEnc::SetVBRMode), this);
 
 	pos.y += 23;
 
-	vbr_option_vbrmtrh	= new OptionBox("VBR mtrh", pos, size, &vbrmode, vbr_mtrh, Proc(configureLameEnc, this, SetVBRMode));
+	vbr_option_vbrmtrh	= new OptionBox("VBR mtrh", pos, size, &vbrmode, vbr_mtrh, Proc(&configureLameEnc::SetVBRMode), this);
 
 	pos.x = 142;
 	pos.y = 11;
@@ -227,7 +227,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 190 - vbr_text_setquality->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	vbr_slider_quality	= new Slider(pos, size, OR_HORZ, &vbrquality, 0, 9, Proc(configureLameEnc, this, SetVBRQuality));
+	vbr_slider_quality	= new Slider(pos, size, OR_HORZ, &vbrquality, 0, 9, Proc(&configureLameEnc::SetVBRQuality), this);
 	if (vbrmode != vbr_rh && vbrmode != vbr_mtrh) vbr_slider_quality->Deactivate();
 
 	pos.x = 358;
@@ -260,14 +260,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 146;
 	size.cy = 0;
 
-	vbr_slider_abrbitrate	= new Slider(pos, size, OR_HORZ, &abrbitrate, 8, 310, Proc(configureLameEnc, this, SetABRBitrate));
+	vbr_slider_abrbitrate	= new Slider(pos, size, OR_HORZ, &abrbitrate, 8, 310, Proc(&configureLameEnc::SetABRBitrate), this);
 	if (vbrmode != vbr_abr) vbr_slider_abrbitrate->Deactivate();
 
 	pos.x += 154;
 	pos.y -= 1;
 	size.cx = 25;
 
-	vbr_edit_abrbitrate	= new EditBox("", pos, size, EDB_NUMERIC, 3, Proc(configureLameEnc, this, SetABRBitrateByEditBox));
+	vbr_edit_abrbitrate	= new EditBox("", pos, size, EDB_NUMERIC, 3, Proc(&configureLameEnc::SetABRBitrateByEditBox), this);
 	if (vbrmode != vbr_abr) vbr_edit_abrbitrate->Deactivate();
 	SetABRBitrate();
 
@@ -290,13 +290,13 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 146;
 	size.cy = 0;
 
-	vbr_check_set_min_brate	= new CheckBox(currentConfig->i18n->TranslateString("Set minimum VBR bitrate:"), pos, size, &set_min_vbr_brate, Proc(configureLameEnc, this, SetMinVBRBitrateOption));
+	vbr_check_set_min_brate	= new CheckBox(currentConfig->i18n->TranslateString("Set minimum VBR bitrate:"), pos, size, &set_min_vbr_brate, Proc(&configureLameEnc::SetMinVBRBitrateOption), this);
 	if (vbrmode == vbr_off) vbr_check_set_min_brate->Deactivate();
 
 	pos.x += 155;
 	size.cx = 138;
 
-	vbr_slider_min_brate	= new Slider(pos, size, OR_HORZ, &min_vbr_brate, 0, 17, Proc(configureLameEnc, this, SetMinVBRBitrate));
+	vbr_slider_min_brate	= new Slider(pos, size, OR_HORZ, &min_vbr_brate, 0, 17, Proc(&configureLameEnc::SetMinVBRBitrate), this);
 	if (vbrmode == vbr_off) vbr_slider_min_brate->Deactivate();
 	if (!set_min_vbr_brate) vbr_slider_min_brate->Deactivate();
 
@@ -312,13 +312,13 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	pos.y += 23;
 	size.cx = 146;
 
-	vbr_check_set_max_brate	= new CheckBox(currentConfig->i18n->TranslateString("Set maximum VBR bitrate:"), pos, size, &set_max_vbr_brate, Proc(configureLameEnc, this, SetMaxVBRBitrateOption));
+	vbr_check_set_max_brate	= new CheckBox(currentConfig->i18n->TranslateString("Set maximum VBR bitrate:"), pos, size, &set_max_vbr_brate, Proc(&configureLameEnc::SetMaxVBRBitrateOption), this);
 	if (vbrmode == vbr_off) vbr_check_set_max_brate->Deactivate();
 
 	pos.x += 155;
 	size.cx = 138;
 
-	vbr_slider_max_brate	= new Slider(pos, size, OR_HORZ, &max_vbr_brate, 0, 17, Proc(configureLameEnc, this, SetMaxVBRBitrate));
+	vbr_slider_max_brate	= new Slider(pos, size, OR_HORZ, &max_vbr_brate, 0, 17, Proc(&configureLameEnc::SetMaxVBRBitrate), this);
 	if (vbrmode == vbr_off) vbr_slider_max_brate->Deactivate();
 	if (!set_max_vbr_brate) vbr_slider_max_brate->Deactivate();
 
@@ -450,7 +450,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 155;
 	size.cy = 0;
 
-	filtering_set_highpass	= new CheckBox(currentConfig->i18n->TranslateString("Set Highpass frequency (Hz):"), pos, size, &set_highpass, Proc(configureLameEnc, this, SetHighpass));
+	filtering_set_highpass	= new CheckBox(currentConfig->i18n->TranslateString("Set Highpass frequency (Hz):"), pos, size, &set_highpass, Proc(&configureLameEnc::SetHighpass), this);
 	if (disable_filtering) filtering_set_highpass->Deactivate();
 
 	pos.x += 164;
@@ -464,7 +464,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	pos.y += 26;
 	size.cx = 155;
 
-	filtering_set_highpass_width= new CheckBox(currentConfig->i18n->TranslateString("Set Highpass width (Hz):"), pos, size, &set_highpass_width, Proc(configureLameEnc, this, SetHighpassWidth));
+	filtering_set_highpass_width= new CheckBox(currentConfig->i18n->TranslateString("Set Highpass width (Hz):"), pos, size, &set_highpass_width, Proc(&configureLameEnc::SetHighpassWidth), this);
 	if (!set_highpass || disable_filtering) filtering_set_highpass_width->Deactivate();
 
 	pos.x += 164;
@@ -487,7 +487,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 155;
 	size.cy = 0;
 
-	filtering_set_lowpass	= new CheckBox(currentConfig->i18n->TranslateString("Set Lowpass frequency (Hz):"), pos, size, &set_lowpass, Proc(configureLameEnc, this, SetLowpass));
+	filtering_set_lowpass	= new CheckBox(currentConfig->i18n->TranslateString("Set Lowpass frequency (Hz):"), pos, size, &set_lowpass, Proc(&configureLameEnc::SetLowpass), this);
 	if (disable_filtering) filtering_set_lowpass->Deactivate();
 
 	pos.x += 164;
@@ -501,7 +501,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	pos.y += 26;
 	size.cx = 155;
 
-	filtering_set_lowpass_width= new CheckBox(currentConfig->i18n->TranslateString("Set Lowpass width (Hz):"), pos, size, &set_lowpass_width, Proc(configureLameEnc, this, SetLowpassWidth));
+	filtering_set_lowpass_width= new CheckBox(currentConfig->i18n->TranslateString("Set Lowpass width (Hz):"), pos, size, &set_lowpass_width, Proc(&configureLameEnc::SetLowpassWidth), this);
 	if (!set_lowpass || disable_filtering) filtering_set_lowpass_width->Deactivate();
 
 	pos.x += 164;
@@ -523,7 +523,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 117;
 	size.cy = 0;
 
-	filtering_check_disable_all= new CheckBox(currentConfig->i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering, Proc(configureLameEnc, this, SetDisableFiltering));
+	filtering_check_disable_all= new CheckBox(currentConfig->i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering, Proc(&configureLameEnc::SetDisableFiltering), this);
 
 	RegisterObject(mainWnd);
 

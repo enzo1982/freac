@@ -33,12 +33,12 @@ configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(Window, mainWnd, Close));
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(configureVorbisEnc, this, OK));
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureVorbisEnc::OK), this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -57,11 +57,11 @@ configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
 	size.cx = 157;
 	size.cy = 0;
 
-	option_mode_vbr		= new OptionBox(String("VBR (").Append(currentConfig->i18n->TranslateString("Variable Bitrate")).Append(")"), pos, size, &mode, 0, Proc(configureVorbisEnc, this, SetMode));
+	option_mode_vbr		= new OptionBox(String("VBR (").Append(currentConfig->i18n->TranslateString("Variable Bitrate")).Append(")"), pos, size, &mode, 0, Proc(&configureVorbisEnc::SetMode), this);
 
 	pos.x += 166;
 
-	option_mode_abr		= new OptionBox(String("ABR (").Append(currentConfig->i18n->TranslateString("Average Bitrate")).Append(")"), pos, size, &mode, 1, Proc(configureVorbisEnc, this, SetMode));
+	option_mode_abr		= new OptionBox(String("ABR (").Append(currentConfig->i18n->TranslateString("Average Bitrate")).Append(")"), pos, size, &mode, 1, Proc(&configureVorbisEnc::SetMode), this);
 
 	pos.x = 19;
 	pos.y += 43;
@@ -72,7 +72,7 @@ configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
 	pos.y -= 2;
 	size.cx = 283 - text_quality->GetObjectProperties()->textSize.cx;
 
-	slider_quality		= new Slider(pos, size, OR_HORZ, &quality, 0, 100, Proc(configureVorbisEnc, this, SetQuality));
+	slider_quality		= new Slider(pos, size, OR_HORZ, &quality, 0, 100, Proc(&configureVorbisEnc::SetQuality), this);
 
 	pos.x += (size.cx + 7);
 	pos.y += 2;
@@ -87,13 +87,13 @@ configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
 	pos.y -= 2;
 	size.cx = 248 - text_abr->GetObjectProperties()->textSize.cx;
 
-	slider_abr		= new Slider(pos, size, OR_HORZ, &abr, 32, 512, Proc(configureVorbisEnc, this, SetBitrate));
+	slider_abr		= new Slider(pos, size, OR_HORZ, &abr, 32, 512, Proc(&configureVorbisEnc::SetBitrate), this);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
 	size.cx = 25;
 
-	edit_abr		= new EditBox("", pos, size, EDB_NUMERIC, 3, Proc(configureVorbisEnc, this, SetBitrateByEditBox));
+	edit_abr		= new EditBox("", pos, size, EDB_NUMERIC, 3, Proc(&configureVorbisEnc::SetBitrateByEditBox), this);
 
 	pos.x += 32;
 	pos.y += 3;

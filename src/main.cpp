@@ -371,46 +371,46 @@ bonkEnc::bonkEnc()
 	progress->Deactivate();
 
 	menu_file->AddEntry(currentConfig->i18n->TranslateString("Add"), NIL, NULLPROC, menu_addsubmenu);
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Remove"), NIL, Proc(bonkEnc, this, RemoveFile));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Remove"), NIL, Proc(&bonkEnc::RemoveFile), this);
 	menu_file->AddEntry();
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Clear joblist"), NIL, Proc(bonkEnc, this, ClearList));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Clear joblist"), NIL, Proc(&bonkEnc::ClearList), this);
 	menu_file->AddEntry();
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Exit"), NIL, Proc(Window, mainWnd, Close));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Exit"), NIL, Proc(mainWnd->*(&Window::Close)), mainWnd);
 
-	menu_options->AddEntry(currentConfig->i18n->TranslateString("General settings..."), NIL, Proc(bonkEnc, this, ConfigureGeneral));
-	menu_options->AddEntry(currentConfig->i18n->TranslateString("Configure selected encoder..."), NIL, Proc(bonkEnc, this, ConfigureEncoder));
+	menu_options->AddEntry(currentConfig->i18n->TranslateString("General settings..."), NIL, Proc(&bonkEnc::ConfigureGeneral), this);
+	menu_options->AddEntry(currentConfig->i18n->TranslateString("Configure selected encoder..."), NIL, Proc(&bonkEnc::ConfigureEncoder), this);
 
-	menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio file(s)..."), NIL, Proc(bonkEnc, this, AddFile));
+	menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio file(s)..."), NIL, Proc(&bonkEnc::AddFile), this);
 
 	if (currentConfig->enable_cdrip)
 	{
-		menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio CD contents"), NIL, Proc(bonkEnc, this, ReadCD));
+		menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio CD contents"), NIL, Proc(&bonkEnc::ReadCD), this);
 	}
 
-	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Start encoding"), NIL, Proc(bonkEnc, this, Encode));
-	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Stop encoding"), NIL, Proc(bonkEnc, this, StopEncoding));
+	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Start encoding"), NIL, Proc(&bonkEnc::Encode), this);
+	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Stop encoding"), NIL, Proc(&bonkEnc::StopEncoding), this);
 
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("File"), NIL, NULLPROC, menu_file);
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("Options"), NIL, NULLPROC, menu_options);
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("Encode"), NIL, NULLPROC, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-	mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), Proc(bonkEnc, this, About), NIL, NIL, NIL, 0, OR_RIGHT)->SetStatusText(currentConfig->i18n->TranslateString("Display information about BonkEnc"));
+	mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), Proc(&bonkEnc::About), this, NIL, NIL, NIL, 0, OR_RIGHT)->SetStatusText(currentConfig->i18n->TranslateString("Display information about BonkEnc"));
 
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL), Proc(bonkEnc, this, AddFile))->SetStatusText(currentConfig->i18n->TranslateString("Add audio file(s) to the joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL), Proc(&bonkEnc::AddFile), this)->SetStatusText(currentConfig->i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), Proc(bonkEnc, this, ReadCD))->SetStatusText(currentConfig->i18n->TranslateString("Add audio CD contents to the joblist"));
+		mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), Proc(&bonkEnc::ReadCD), this)->SetStatusText(currentConfig->i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), Proc(bonkEnc, this, RemoveFile))->SetStatusText(currentConfig->i18n->TranslateString("Remove the selected entry from the joblist"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL), Proc(bonkEnc, this, ClearList))->SetStatusText(currentConfig->i18n->TranslateString("Clear the entire joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), Proc(&bonkEnc::RemoveFile), this)->SetStatusText(currentConfig->i18n->TranslateString("Remove the selected entry from the joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL), Proc(&bonkEnc::ClearList), this)->SetStatusText(currentConfig->i18n->TranslateString("Clear the entire joblist"));
 	mainWnd_iconbar->AddEntry();
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL), Proc(bonkEnc, this, ConfigureGeneral))->SetStatusText(currentConfig->i18n->TranslateString("Configure general settings"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL), Proc(bonkEnc, this, ConfigureEncoder))->SetStatusText(currentConfig->i18n->TranslateString("Configure the selected audio encoder"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL), Proc(&bonkEnc::ConfigureGeneral), this)->SetStatusText(currentConfig->i18n->TranslateString("Configure general settings"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL), Proc(&bonkEnc::ConfigureEncoder), this)->SetStatusText(currentConfig->i18n->TranslateString("Configure the selected audio encoder"));
 	mainWnd_iconbar->AddEntry();
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), Proc(bonkEnc, this, Encode))->SetStatusText(currentConfig->i18n->TranslateString("Start the encoding process"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL), Proc(bonkEnc, this, StopEncoding))->SetStatusText(currentConfig->i18n->TranslateString("Stop encoding"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), Proc(&bonkEnc::Encode), this)->SetStatusText(currentConfig->i18n->TranslateString("Start the encoding process"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL), Proc(&bonkEnc::StopEncoding), this)->SetStatusText(currentConfig->i18n->TranslateString("Stop encoding"));
 
 	RegisterObject(mainWnd);
 
@@ -437,8 +437,8 @@ bonkEnc::bonkEnc()
 	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(IDI_ICON);
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
-	mainWnd->SetPaintProc(PaintProc(bonkEnc, this, DrawProc));
-	mainWnd->SetKillProc(KillProc(bonkEnc, this, ExitProc));
+	mainWnd->SetPaintProc(Proc(&bonkEnc::DrawProc), this);
+	mainWnd->SetKillProc(KillProc(&bonkEnc::ExitProc), this);
 	mainWnd->SetMinimumSize(Size(390, 284));
 }
 
@@ -1249,7 +1249,7 @@ Void bonkEnc::Encode()
 		encoder_thread = NIL;
 	}
 
-	encoder_thread = new Thread(ThreadProc(bonkEnc, this, Encoder));
+	encoder_thread = new Thread(ThreadProc(&bonkEnc::Encoder), this);
 
 	encoding = true;
 
@@ -1934,46 +1934,46 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	mainWnd_iconbar->Clear();
 
 	menu_file->AddEntry(currentConfig->i18n->TranslateString("Add"), NIL, NULLPROC, menu_addsubmenu);
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Remove"), NIL, Proc(bonkEnc, this, RemoveFile));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Remove"), NIL, Proc(&bonkEnc::RemoveFile), this);
 	menu_file->AddEntry();
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Clear joblist"), NIL, Proc(bonkEnc, this, ClearList));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Clear joblist"), NIL, Proc(&bonkEnc::ClearList), this);
 	menu_file->AddEntry();
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Exit"), NIL, Proc(Window, mainWnd, Close));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Exit"), NIL, Proc(mainWnd->*(&Window::Close)), mainWnd);
 
-	menu_options->AddEntry(currentConfig->i18n->TranslateString("General settings..."), NIL, Proc(bonkEnc, this, ConfigureGeneral));
-	menu_options->AddEntry(currentConfig->i18n->TranslateString("Configure selected encoder..."), NIL, Proc(bonkEnc, this, ConfigureEncoder));
+	menu_options->AddEntry(currentConfig->i18n->TranslateString("General settings..."), NIL, Proc(&bonkEnc::ConfigureGeneral), this);
+	menu_options->AddEntry(currentConfig->i18n->TranslateString("Configure selected encoder..."), NIL, Proc(&bonkEnc::ConfigureEncoder), this);
 
-	menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio file(s)..."), NIL, Proc(bonkEnc, this, AddFile));
+	menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio file(s)..."), NIL, Proc(&bonkEnc::AddFile), this);
 
 	if (currentConfig->enable_cdrip)
 	{
-		menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio CD contents"), NIL, Proc(bonkEnc, this, ReadCD));
+		menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio CD contents"), NIL, Proc(&bonkEnc::ReadCD), this);
 	}
 
-	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Start encoding"), NIL, Proc(bonkEnc, this, Encode));
-	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Stop encoding"), NIL, Proc(bonkEnc, this, StopEncoding));
+	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Start encoding"), NIL, Proc(&bonkEnc::Encode), this);
+	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Stop encoding"), NIL, Proc(&bonkEnc::StopEncoding), this);
 
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("File"), NIL, NULLPROC, menu_file);
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("Options"), NIL, NULLPROC, menu_options);
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("Encode"), NIL, NULLPROC, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-	mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), Proc(bonkEnc, this, About), NIL, NIL, NIL, 0, OR_RIGHT)->SetStatusText(currentConfig->i18n->TranslateString("Display information about BonkEnc"));
+	mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), Proc(&bonkEnc::About), this, NIL, NIL, NIL, 0, OR_RIGHT)->SetStatusText(currentConfig->i18n->TranslateString("Display information about BonkEnc"));
 
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL), Proc(bonkEnc, this, AddFile))->SetStatusText(currentConfig->i18n->TranslateString("Add audio file(s) to the joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL), Proc(&bonkEnc::AddFile), this)->SetStatusText(currentConfig->i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), Proc(bonkEnc, this, ReadCD))->SetStatusText(currentConfig->i18n->TranslateString("Add audio CD contents to the joblist"));
+		mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), Proc(&bonkEnc::ReadCD), this)->SetStatusText(currentConfig->i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), Proc(bonkEnc, this, RemoveFile))->SetStatusText(currentConfig->i18n->TranslateString("Remove the selected entry from the joblist"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL), Proc(bonkEnc, this, ClearList))->SetStatusText(currentConfig->i18n->TranslateString("Clear the entire joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), Proc(&bonkEnc::RemoveFile), this)->SetStatusText(currentConfig->i18n->TranslateString("Remove the selected entry from the joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL), Proc(&bonkEnc::ClearList), this)->SetStatusText(currentConfig->i18n->TranslateString("Clear the entire joblist"));
 	mainWnd_iconbar->AddEntry();
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL), Proc(bonkEnc, this, ConfigureGeneral))->SetStatusText(currentConfig->i18n->TranslateString("Configure general settings"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL), Proc(bonkEnc, this, ConfigureEncoder))->SetStatusText(currentConfig->i18n->TranslateString("Configure the selected audio encoder"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL), Proc(&bonkEnc::ConfigureGeneral), this)->SetStatusText(currentConfig->i18n->TranslateString("Configure general settings"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL), Proc(&bonkEnc::ConfigureEncoder), this)->SetStatusText(currentConfig->i18n->TranslateString("Configure the selected audio encoder"));
 	mainWnd_iconbar->AddEntry();
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), Proc(bonkEnc, this, Encode))->SetStatusText(currentConfig->i18n->TranslateString("Start the encoding process"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL), Proc(bonkEnc, this, StopEncoding))->SetStatusText(currentConfig->i18n->TranslateString("Stop encoding"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), Proc(&bonkEnc::Encode), this)->SetStatusText(currentConfig->i18n->TranslateString("Start the encoding process"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL), Proc(&bonkEnc::StopEncoding), this)->SetStatusText(currentConfig->i18n->TranslateString("Stop encoding"));
 
 	mainWnd_menubar->Show();
 	mainWnd_iconbar->Show();

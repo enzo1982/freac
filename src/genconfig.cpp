@@ -57,12 +57,12 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(Window, mainWnd, Close));
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(configureGeneralSettings, this, OK));
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureGeneralSettings::OK), this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -120,7 +120,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.x += 194;
 	size.cx = 130;
 
-	encoders_button_config	= new Button(currentConfig->i18n->TranslateString("Configure encoder"), NIL, pos, size, Proc(configureGeneralSettings, this, ConfigureEncoder));
+	encoders_button_config	= new Button(currentConfig->i18n->TranslateString("Configure encoder"), NIL, pos, size, Proc(&configureGeneralSettings::ConfigureEncoder), this);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -140,7 +140,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.y -= 1;
 	size.cx = 0;
 
-	dirs_button_outdir_browse= new Button(currentConfig->i18n->TranslateString("Browse"), NIL, pos, size, Proc(configureGeneralSettings, this, SelectDir));
+	dirs_button_outdir_browse= new Button(currentConfig->i18n->TranslateString("Browse"), NIL, pos, size, Proc(&configureGeneralSettings::SelectDir), this);
 
 	pos.x = 7;
 	pos.y = 66;
@@ -176,7 +176,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = (317 - language_text_language->GetObjectProperties()->textSize.cx);
 	size.cy = 0;
 
-	language_combo_language	= new ComboBox(pos, size, Proc(configureGeneralSettings, this, SelectLanguage));
+	language_combo_language	= new ComboBox(pos, size, Proc(&configureGeneralSettings::SelectLanguage), this);
 
 	for (int i = 0; i < currentConfig->i18n->GetNOfLanguages(); i++)
 	{
@@ -221,7 +221,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 157;
 	size.cy = 0;
 
-	cdrip_check_paranoia	= new CheckBox(currentConfig->i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia, Proc(configureGeneralSettings, this, SetParanoia));
+	cdrip_check_paranoia	= new CheckBox(currentConfig->i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia, Proc(&configureGeneralSettings::SetParanoia), this);
 
 	pos.x += 166;
 	pos.y -= 1;
@@ -276,7 +276,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 84;
 	size.cy = 0;
 
-	cddb_check_enable	= new CheckBox(currentConfig->i18n->TranslateString("Enable CDDB"), pos, size, &cddb, Proc(configureGeneralSettings, this, SetCDDB));
+	cddb_check_enable	= new CheckBox(currentConfig->i18n->TranslateString("Enable CDDB"), pos, size, &cddb, Proc(&configureGeneralSettings::SetCDDB), this);
 	cddb_check_enable->SetMetrics(pos, Size(cddb_check_enable->GetObjectProperties()->textSize.cx + 19, cddb_check_enable->GetObjectProperties()->size.cy));
 
 	pos.x -= 3;
@@ -288,7 +288,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.y -= 3;
 	size.cx = 219;
 
-	cddb_combo_mode		= new ComboBox(pos, size, Proc(configureGeneralSettings, this, SetCDDBMode));
+	cddb_combo_mode		= new ComboBox(pos, size, Proc(&configureGeneralSettings::SetCDDBMode), this);
 	cddb_combo_mode->AddEntry("CDDBP", NULLPROC);
 	cddb_combo_mode->AddEntry("HTTP", NULLPROC);
 	cddb_combo_mode->SelectEntry(currentConfig->freedb_mode);
@@ -331,11 +331,11 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.y += 27;
 	size.cx = 158;
 
-	cddb_button_http	= new Button(currentConfig->i18n->TranslateString("HTTP settings"), NULL, pos, size, Proc(configureGeneralSettings, this, HTTPSettings));
+	cddb_button_http	= new Button(currentConfig->i18n->TranslateString("HTTP settings"), NULL, pos, size, Proc(&configureGeneralSettings::HTTPSettings), this);
 
 	pos.x += 166;
 
-	cddb_button_proxy	= new Button(currentConfig->i18n->TranslateString("Proxy settings"), NULL, pos, size, Proc(configureGeneralSettings, this, ProxySettings));
+	cddb_button_proxy	= new Button(currentConfig->i18n->TranslateString("Proxy settings"), NULL, pos, size, Proc(&configureGeneralSettings::ProxySettings), this);
 
 	SetCDDBMode();
 	SetCDDB();
@@ -404,7 +404,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(IDI_ICON);
 	mainWnd->SetMetrics(Point(120, 120), Size(384, 271));
-	mainWnd->SetPaintProc(Proc(configureGeneralSettings, this, DrawProc));
+	mainWnd->SetPaintProc(Proc(&configureGeneralSettings::DrawProc), this);
 }
 
 configureGeneralSettings::~configureGeneralSettings()
