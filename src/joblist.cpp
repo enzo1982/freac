@@ -233,23 +233,52 @@ Void bonkEnc::RemoveFile()
 		return;
 	}
 
-	Int	 entry = joblist->GetSelectedEntry()->id;
-
-	if (entry != -1)
+	if (joblist->GetSelectedEntry() == NIL)
 	{
-		Int	 n = 0;
+		SMOOTH::MessageBox(i18n->TranslateString("You have not selected a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
-		for (Int i = 0; i < joblist->GetNOfEntries(); i++)
-		{
-			if (joblist->GetNthEntry(i)->id == entry) n = i;
-		}
+		return;
+	}
 
-		delete sa_formatinfo.GetEntry(entry);
-		sa_formatinfo.RemoveEntry(entry);
-		joblist->RemoveEntry(entry);
+	Int	 entry = joblist->GetSelectedEntry()->id;
+	Int	 n = 0;
 
-		txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+	{
+		if (joblist->GetNthEntry(i)->id == entry) n = i;
+	}
 
+	Surface	*surface = mainWnd->GetDrawSurface();
+	Point	 realPos = joblist->GetRealPosition();
+	Rect	 frame;
+
+	frame.left	= realPos.x;
+	frame.top	= realPos.y;
+	frame.right	= realPos.x + joblist->GetObjectProperties()->size.cx - 1;
+	frame.bottom	= realPos.y + joblist->GetObjectProperties()->size.cy - 1;
+
+	surface->StartPaint(frame);
+
+	delete sa_formatinfo.GetEntry(entry);
+	sa_formatinfo.RemoveEntry(entry);
+	joblist->RemoveEntry(entry);
+
+	if (joblist->GetNOfEntries() > 0)
+	{
+		if (n < joblist->GetNOfEntries())	joblist->SelectEntry(joblist->GetNthEntry(n)->id);
+		else					joblist->SelectEntry(joblist->GetNthEntry(n - 1)->id);
+	}
+
+	surface->EndPaint();
+
+	txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+
+	if (joblist->GetNOfEntries() > 0)
+	{
+		SelectJoblistEntry();
+	}
+	else
+	{
 		dontUpdateInfo = True;
 
 		info_edit_artist->SetText("");
@@ -260,20 +289,9 @@ Void bonkEnc::RemoveFile()
 		info_combo_genre->SelectEntry(0);
 
 		dontUpdateInfo = False;
-
-		if (joblist->GetNOfEntries() > 0)
-		{
-			if (n < joblist->GetNOfEntries())	joblist->SelectEntry(joblist->GetNthEntry(n)->id);
-			else					joblist->SelectEntry(joblist->GetNthEntry(n - 1)->id);
-
-			SelectJoblistEntry();
-		}
-	}
-	else
-	{
-		SMOOTH::MessageBox(i18n->TranslateString("You have not selected a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 	}
 }
+
 
 Void bonkEnc::ClearList()
 {
