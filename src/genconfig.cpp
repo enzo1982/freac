@@ -143,7 +143,7 @@ configureGeneralSettings::configureGeneralSettings()
 	encoders_button_config->onClick.Connect(&configureGeneralSettings::ConfigureEncoder, this);
 
 	pos.x = 7;
-	pos.y = 66;
+	pos.y = 65;
 	size.cx = 344;
 	size.cy = 43;
 
@@ -162,6 +162,31 @@ configureGeneralSettings::configureGeneralSettings()
 
 	encoders_button_outdir_browse= new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
 	encoders_button_outdir_browse->onClick.Connect(&configureGeneralSettings::SelectDir, this);
+
+	pos.x = 7;
+	pos.y = 119;
+	size.cx = 344;
+	size.cy = 43;
+
+	encoders_group_filename	= new GroupBox(bonkEnc::i18n->TranslateString("Filename pattern"), pos, size);
+
+	pos.x = 17;
+	pos.y += 12;
+	size.cx = 324;
+	size.cy = 0;
+
+	encoders_edit_filename	= new EditBox(currentConfig->enc_filePattern, pos, size, 0);
+
+	encoders_list_filename	= new ListBox(pos, size);
+	encoders_list_filename->AddEntry("<artist> - <title>");
+	encoders_list_filename->AddEntry("<artist>\\<artist> - <title>");
+	encoders_list_filename->AddEntry("<artist> - <album> - <track> - <title>");
+	encoders_list_filename->AddEntry("<artist> - <album>\\<track> - <title>");
+	encoders_list_filename->AddEntry("<artist> - <album>\\<artist> - <album> - <track> - <title>");
+	encoders_list_filename->AddEntry("<track> - <artist> - <title>");
+	encoders_list_filename->AddEntry("<album>\\<track> - <artist> - <title>");
+
+	encoders_edit_filename->SetDropDownList(encoders_list_filename);
 
 	pos.x = 7;
 	pos.y = 66;
@@ -496,6 +521,8 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_encoders->RegisterObject(encoders_group_outdir);
 	register_layer_encoders->RegisterObject(encoders_edit_outdir);
 	register_layer_encoders->RegisterObject(encoders_button_outdir_browse);
+	register_layer_encoders->RegisterObject(encoders_group_filename);
+	register_layer_encoders->RegisterObject(encoders_edit_filename);
 
 	register_layer_language->RegisterObject(language_group_language);
 	register_layer_language->RegisterObject(language_text_language);
@@ -570,6 +597,9 @@ configureGeneralSettings::~configureGeneralSettings()
 	DeleteObject(encoders_group_outdir);
 	DeleteObject(encoders_edit_outdir);
 	DeleteObject(encoders_button_outdir_browse);
+	DeleteObject(encoders_group_filename);
+	DeleteObject(encoders_edit_filename);
+	DeleteObject(encoders_list_filename);
 	DeleteObject(language_group_language);
 	DeleteObject(language_text_language);
 	DeleteObject(language_combo_language);
@@ -624,6 +654,33 @@ Int configureGeneralSettings::ShowDialog()
 
 Void configureGeneralSettings::OK()
 {
+	if (Setup::enableUnicode ? _wchdir(encoders_edit_outdir->GetText()) : _chdir(encoders_edit_outdir->GetText()) != 0)
+	{
+		if (SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), bonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION) == IDYES)
+		{
+			String	 dir = encoders_edit_outdir->GetText();
+			String	 tmp;
+
+			for (Int i = 0; i < dir.Length(); i++)
+			{
+				if (dir[i] == '\\' || dir[i] == '/')
+				{
+					if (Setup::enableUnicode)	_wmkdir(tmp);
+					else				_mkdir(tmp);
+				}
+
+				tmp[i] = dir[i];
+			}
+		}
+		else
+		{
+			return;
+		}
+	}
+
+	if (Setup::enableUnicode)	_wchdir(GetApplicationDirectory());
+	else				_chdir(GetApplicationDirectory());
+
 	Bool	 valid = False;
 	String	 email = cddb_edit_email->GetText();
 
@@ -642,6 +699,7 @@ Void configureGeneralSettings::OK()
 
 	currentConfig->language = bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry()->id);
 	currentConfig->enc_outdir = encoders_edit_outdir->GetText();
+	currentConfig->enc_filePattern = encoders_edit_filename->GetText();
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) currentConfig->cdrip_activedrive = cdrip_combo_drive->GetSelectedEntry()->id;
 

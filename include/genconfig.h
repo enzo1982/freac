@@ -35,6 +35,9 @@ class configureGeneralSettings : public Dialog
 		GroupBox	*encoders_group_outdir;
 		EditBox		*encoders_edit_outdir;
 		Button		*encoders_button_outdir_browse;
+		GroupBox	*encoders_group_filename;
+		EditBox		*encoders_edit_filename;
+		ListBox		*encoders_list_filename;
 
 		GroupBox	*language_group_language;
 		Text		*language_text_language;

@@ -236,5 +236,7 @@
     <entry id="224" string="Use Temporal Masking Effect"/>
     <entry id="225" string="Expert"/>
     <entry id="226" string="Cannot configure encoder while encoding!"/>
+    <entry id="227" string="The output directory does not exist! Do you want to create it?"/>
+    <entry id="228" string="Filename pattern"/>
   </data>
 </LangFile>

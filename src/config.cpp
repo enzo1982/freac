@@ -125,6 +125,7 @@ Bool bonkEncConfig::LoadSettings()
 
 	encoder = getINIValue("Settings", "Encoder", "0").ToInt();
 	enc_outdir = getINIValue("Settings", "EncoderOutdir", pDir);
+	enc_filePattern = getINIValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
 	showTitleInfo = getINIValue("Settings", "ShowTitleInfo", "0").ToInt();
 
 	tab_width_track = getINIValue("Settings", "TabWidthTrack", "50").ToInt();
@@ -244,6 +245,10 @@ Bool bonkEncConfig::SaveSettings()
 
 		str = "EncoderOutdir=";
 		str.Append(enc_outdir);
+		out->OutputLine(str);
+
+		str = "EncoderFilenamePattern=";
+		str.Append(enc_filePattern);
 		out->OutputLine(str);
 
 		str = "ShowTitleInfo=";

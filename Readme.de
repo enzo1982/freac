@@ -8,14 +8,17 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 beta 2 CVS (Juli 2003)
+	Version 1.0 beta 2 CVS (September 2003)
 
+		- Unterstützung für Vorlagen für Dateinamen hinzugefügt
+		- Sprachunterstützung für Chinesisch (vereinfacht) hinzugefügt
 		- Unterstützung für Schriften von rechts nach links hinzugefügt
 		- Neue (unvollständige) Arabische und Japanische Übersetzung (zu Demonstrationszwecken)
 		- Update auf smooth v0.8.63.0
 		- Kompatibilität des Setups mit Windows 9x/ME verbessert
 		- Allemeine Stabilität besonders unter Windows 9x/ME verbessert
-		- I18N Funktionen jetzt in smooth
+		- I18n Funktionalität jetzt in smooth
+		- Konfigurationsdialog fragt jetzt, ob ein fehlendes Ausgabeverzeichnis erzeugt werden soll
 		- Einige kleinere Verbesserungen
 		- Einige Fehler wurden behoben
 

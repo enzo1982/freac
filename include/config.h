@@ -57,6 +57,7 @@ class bonkEncConfig
 		Bool		 enable_auto_cddb;
 		Bool		 enable_id3;
 		String		 enc_outdir;
+		String		 enc_filePattern;
 
 		Bool		 enable_tags;
 		String		 default_comment;
