@@ -13,12 +13,12 @@
 
 #include <debug.h>
 
-bonkEncDebug::bonkEncDebug()
+bonkEncDebug::bonkEncDebug(String fileName)
 {
 	tabLevel = 0;
 
 #ifdef DEBUG
-	driver_out = new IOLibDriverPOSIX(Application::GetApplicationDirectory().Append("BonkEnc.log"), OS_APPEND);
+	driver_out = new IOLibDriverPOSIX(fileName, OS_APPEND);
 #else
 	driver_out = new IOLibDriverZero();
 #endif

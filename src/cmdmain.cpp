@@ -15,7 +15,7 @@
 
 Int smooth::Main(Array<String> &args)
 {
-	debug_out = new bonkEncDebug();
+	debug_out = new bonkEncDebug("BonkEnc.log");
 
 	debug_out->OutputLine("");
 	debug_out->OutputLine("=========================================");

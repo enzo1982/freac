@@ -638,7 +638,7 @@ Void cddbSubmitDlg::ChangeDrive()
 	{
 		bonkEncTrack	*trackInfo = currentConfig->appMain->sa_formatinfo.GetNthEntry(l);
 
-		if (trackInfo->discid != cddb.ComputeDiscID()) continue;
+		if (trackInfo->discid != cddb.GetDiscIDString()) continue;
 
 		for (Int m = 0; m < titles.GetNOfEntries(); m++)
 		{
@@ -736,9 +736,7 @@ Void cddbSubmitDlg::SelectTrack()
 	if (track > 0 && track < 10)	edit_track->SetText(String("0").Append(String::FromInt(track)));
 	else if (track >= 10)		edit_track->SetText(String::FromInt(track));
 
-//	edit_title->checked = True;  // TODO: replace this block with something like edit_title->MarkAll();
-	edit_title->Process(SM_LBUTTONDOWN, 0, 0);
-	edit_title->Process(WM_KEYDOWN, VK_END, 0);
+	edit_title->MarkAll();
 
 	dontUpdateInfo = False;
 }

@@ -142,7 +142,11 @@ String bonkEncCDDB::SendCommand(String command)
 
 			do
 			{
-				str = in->InputLine();
+				char	*buffer = in->InputLine();
+
+				str = buffer;
+
+				delete [] buffer;
 
 				debug_out->OutputString("CDDB: < ");
 				debug_out->OutputLine(str);
@@ -211,7 +215,11 @@ String bonkEncCDDB::SendCommand(String command)
 
 			do
 			{
-				str = in->InputLine();
+				char	*buffer = in->InputLine();
+
+				str = buffer;
+
+				delete [] buffer;
 
 				debug_out->OutputString("CDDB: < ");
 				debug_out->OutputLine(str);
@@ -220,7 +228,11 @@ String bonkEncCDDB::SendCommand(String command)
 
 			do
 			{
-				str = in->InputLine();
+				char	*buffer = in->InputLine();
+
+				str = buffer;
+
+				delete [] buffer;
 
 				debug_out->OutputString("CDDB: < ");
 				debug_out->OutputLine(str);
@@ -324,8 +336,11 @@ String bonkEncCDDB::Query(String discid)
 		do
 		{
 			String	 val;
+			char	*buffer = in->InputLine();
 
-			val.ImportFrom("UTF-8", in->InputLine());
+			val.ImportFrom("UTF-8", buffer);
+
+			delete [] buffer;
 
 			String	 id;
 			String	 title;
@@ -385,7 +400,11 @@ String bonkEncCDDB::Read(String query)
 		{
 			String	 val;
 
-			val.ImportFrom("UTF-8", in->InputLine());
+			char	*buffer = in->InputLine();
+
+			val.ImportFrom("UTF-8", buffer);
+
+			delete [] buffer;
 
 			debug_out->OutputString("CDDB: < ");
 			debug_out->OutputLine(val.ConvertTo("UTF-8"));

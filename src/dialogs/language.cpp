@@ -38,8 +38,8 @@ languageDlg::languageDlg()
 
 	pos.x = 7;
 	pos.y += 19;
-	size.cx = 220;
-	size.cy = 80;
+	size.cx = 280;
+	size.cy = 94;
 
 	list_language	= new ListBox(pos, size);
 
@@ -59,7 +59,7 @@ languageDlg::languageDlg()
 	mainWnd->RegisterObject(divbar);
 
 	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(120, 120), Size(240, 182));
+	mainWnd->SetMetrics(Point(120, 120), Size(300, 196));
 }
 
 languageDlg::~languageDlg()

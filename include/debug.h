@@ -25,7 +25,7 @@ class bonkEncDebug
 
 		Array<String>	 methods;
 	public:
-				 bonkEncDebug();
+				 bonkEncDebug(String);
 				~bonkEncDebug();
 
 		Int		 OutputString(String);

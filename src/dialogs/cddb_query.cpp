@@ -128,7 +128,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 	text_status->SetText(bonkEnc::i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
-	if (currentConfig->freedb_mode == FREEDB_MODE_CDDBP) cddb.ConnectToServer();
+	cddb.ConnectToServer();
 
 	prog_status->SetValue(20);
 	text_status->SetText(bonkEnc::i18n->TranslateString("Requesting CD information").Append("..."));
@@ -180,187 +180,195 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 	if (read != NIL)
 	{
 		String	 result = cddb.Read(read);
-		String	 cLine;
 
-		array = new Array<bonkEncTrack *>;
-
-		array->AddEntry(new bonkEncTrack);
-
-		array->GetFirstEntry()->discid = cddb.GetDiscIDString();
-		array->GetFirstEntry()->category = cddb.GetCategory();
-
-		if (fuzzy) array->GetFirstEntry()->revision = -1;
-
-		Bool	 parseAgain = False;
-
-		for (Int j = 0; j < result.Length();)
+		if (result == "error")
 		{
-			if (!parseAgain)
+			QuickMessage(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		}
+		else
+		{
+			String	 cLine;
+
+			array = new Array<bonkEncTrack *>;
+
+			array->AddEntry(new bonkEncTrack);
+
+			array->GetFirstEntry()->discid = cddb.GetDiscIDString();
+			array->GetFirstEntry()->category = cddb.GetCategory();
+
+			if (fuzzy) array->GetFirstEntry()->revision = -1;
+
+			Bool	 parseAgain = False;
+
+			for (Int j = 0; j < result.Length();)
 			{
-				for (Int i = 0; i >= 0; i++, j++)
+				if (!parseAgain)
 				{
-					if (result[j] == '\n' || result[j] == 0)	{ cLine[i] = 0; j++; break; }
-					else						cLine[i] = result[j];
-				}
-			}
-
-			parseAgain = False;
-
-			if (cLine.CompareN("DTITLE", 6) == 0)
-			{
-				bonkEncTrack	*info = array->GetFirstEntry();
-				Int		 k;
-
-				for (k = 7; k >= 0; k++)
-				{
-					if (cLine[k] == ' ' && cLine[k + 1] == '/' && cLine[k + 2] == ' ')	break;
-					else									info->artist[k - 7] = cLine[k];
-				}
-
-				for (Int l = k + 3; l < cLine.Length(); l++) info->album[l - k - 3] = cLine[l];
-
-				info->track = -1;
-			}
-			else if (cLine.CompareN("DGENRE", 6) == 0)
-			{
-				bonkEncTrack	*info = array->GetFirstEntry();
-
-				for (Int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
-			}
-			else if (cLine.CompareN("DYEAR", 5) == 0)
-			{
-				String	 year;
-
-				for (Int l = 6; l < cLine.Length(); l++) year[l - 6] = cLine[l];
-
-				array->GetFirstEntry()->year = year.ToInt();
-			}
-			else if (cLine.CompareN("TTITLE", 6) == 0)
-			{
-				String	 track;
-				Int	 k;
-
-				for (k = 6; k >= 0; k++)
-				{
-					if (cLine[k] == '=')	break;
-					else			track[k - 6] = cLine[k];
-				}
-
-				bonkEncTrack	*info = array->GetEntry(track.ToInt() + 1);
-
-				if (info != NIL)
-				{
-					for (Int l = k + 1; l < cLine.Length(); l++) info->title[l - k - 1] = cLine[l];
-				}
-			}
-			else if (cLine.CompareN("EXTD", 4) == 0)
-			{
-				bonkEncTrack	*info = array->GetFirstEntry();
-
-				for (Int k = 5; k < cLine.Length(); k++) info->comment[k - 5] = cLine[k];
-			}
-			else if (cLine.CompareN("EXTT", 4) == 0)
-			{
-				String	 track;
-				Int	 k;
-
-				for (k = 4; k >= 0; k++)
-				{
-					if (cLine[k] == '=')	break;
-					else			track[k - 4] = cLine[k];
-				}
-
-				bonkEncTrack	*info = array->GetEntry(track.ToInt() + 1);
-
-				if (info != NIL)
-				{
-					for (Int l = k + 1; l < cLine.Length(); l++) info->comment[l - k - 1] = cLine[l];
-				}
-			}
-			else if (cLine.CompareN("PLAYORDER", 9) == 0)
-			{
-				bonkEncTrack	*info = array->GetFirstEntry();
-
-				for (Int k = 10; k < cLine.Length(); k++) info->playorder[k - 10] = cLine[k];
-			}
-			else if (cLine.CompareN("# Revision: ", 12) == 0 && !fuzzy)
-			{
-				String	 revision;
-
-				for (Int l = 12; l < cLine.Length(); l++) revision[l - 12] = cLine[l];
-
-				array->GetFirstEntry()->revision = revision.ToInt();
-			}
-			else if (cLine.CompareN("# Track frame offsets:", 22) == 0)
-			{
-				Int	 track = 0;
-
-				do
-				{
-					for (Int m = 0; m >= 0; m++, j++)
+					for (Int i = 0; i >= 0; i++, j++)
 					{
-						if (result[j] == '\n' || result[j] == 0)	{ cLine[m] = 0; j++; break; }
-						else						cLine[m] = result[j];
+						if (result[j] == '\n' || result[j] == 0)	{ cLine[i] = 0; j++; break; }
+						else						cLine[i] = result[j];
+					}
+				}
+
+				parseAgain = False;
+
+				if (cLine.CompareN("DTITLE", 6) == 0)
+				{
+					bonkEncTrack	*info = array->GetFirstEntry();
+					Int		 k;
+
+					for (k = 7; k >= 0; k++)
+					{
+						if (cLine[k] == ' ' && cLine[k + 1] == '/' && cLine[k + 2] == ' ')	break;
+						else									info->artist[k - 7] = cLine[k];
 					}
 
-					if (cLine[0] == '#' && cLine.Length() <= 2) break;
+					for (Int l = k + 3; l < cLine.Length(); l++) info->album[l - k - 3] = cLine[l];
 
-					Int	 firstDigit = 0;
-					String	 offset;
+					info->track = -1;
+				}
+				else if (cLine.CompareN("DGENRE", 6) == 0)
+				{
+					bonkEncTrack	*info = array->GetFirstEntry();
 
-					for (Int n = 2; n < cLine.Length(); n++)
+					for (Int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
+				}
+				else if (cLine.CompareN("DYEAR", 5) == 0)
+				{
+					String	 year;
+
+					for (Int l = 6; l < cLine.Length(); l++) year[l - 6] = cLine[l];
+
+					array->GetFirstEntry()->year = year.ToInt();
+				}
+				else if (cLine.CompareN("TTITLE", 6) == 0)
+				{
+					String	 track;
+					Int	 k;
+
+					for (k = 6; k >= 0; k++)
 					{
-						if (cLine[n] != ' ' && cLine[n] != '\t')
+						if (cLine[k] == '=')	break;
+						else			track[k - 6] = cLine[k];
+					}
+
+					bonkEncTrack	*info = array->GetEntry(track.ToInt() + 1);
+
+					if (info != NIL)
+					{
+						for (Int l = k + 1; l < cLine.Length(); l++) info->title[l - k - 1] = cLine[l];
+					}
+				}
+				else if (cLine.CompareN("EXTD", 4) == 0)
+				{
+					bonkEncTrack	*info = array->GetFirstEntry();
+
+					for (Int k = 5; k < cLine.Length(); k++) info->comment[k - 5] = cLine[k];
+				}
+				else if (cLine.CompareN("EXTT", 4) == 0)
+				{
+					String	 track;
+					Int	 k;
+
+					for (k = 4; k >= 0; k++)
+					{
+						if (cLine[k] == '=')	break;
+						else			track[k - 4] = cLine[k];
+					}
+
+					bonkEncTrack	*info = array->GetEntry(track.ToInt() + 1);
+
+					if (info != NIL)
+					{
+						for (Int l = k + 1; l < cLine.Length(); l++) info->comment[l - k - 1] = cLine[l];
+					}
+				}
+				else if (cLine.CompareN("PLAYORDER", 9) == 0)
+				{
+					bonkEncTrack	*info = array->GetFirstEntry();
+
+					for (Int k = 10; k < cLine.Length(); k++) info->playorder[k - 10] = cLine[k];
+				}
+				else if (cLine.CompareN("# Revision: ", 12) == 0 && !fuzzy)
+				{
+					String	 revision;
+
+					for (Int l = 12; l < cLine.Length(); l++) revision[l - 12] = cLine[l];
+
+					array->GetFirstEntry()->revision = revision.ToInt();
+				}
+				else if (cLine.CompareN("# Track frame offsets:", 22) == 0)
+				{
+					Int	 track = 0;
+
+					do
+					{
+						for (Int m = 0; m >= 0; m++, j++)
 						{
-							firstDigit = n;
+							if (result[j] == '\n' || result[j] == 0)	{ cLine[m] = 0; j++; break; }
+							else						cLine[m] = result[j];
+						}
+
+						if (cLine[0] == '#' && cLine.Length() <= 2) break;
+
+						Int	 firstDigit = 0;
+						String	 offset;
+
+						for (Int n = 2; n < cLine.Length(); n++)
+						{
+							if (cLine[n] != ' ' && cLine[n] != '\t')
+							{
+								firstDigit = n;
+
+								break;
+							}
+						}
+
+						for (Int l = firstDigit; l < cLine.Length(); l++) offset[l - firstDigit] = cLine[l];
+
+						if (offset.ToInt() == 0)
+						{
+							parseAgain = True;
 
 							break;
 						}
+
+						bonkEncTrack	*info = new bonkEncTrack;
+
+						info->offset = offset.ToInt();
+						info->track = ++track;
+
+						array->AddEntry(info, info->track);
 					}
-
-					for (Int l = firstDigit; l < cLine.Length(); l++) offset[l - firstDigit] = cLine[l];
-
-					if (offset.ToInt() == 0)
-					{
-						parseAgain = True;
-
-						break;
-					}
-
-					bonkEncTrack	*info = new bonkEncTrack;
-
-					info->offset = offset.ToInt();
-					info->track = ++track;
-
-					array->AddEntry(info, info->track);
+					while (True);
 				}
-				while (True);
-			}
-			else if (cLine.CompareN("# Disc length: ", 15) == 0)
-			{
-				String	 disclength;
-
-				for (Int l = 15; l < cLine.Length(); l++) disclength[l - 15] = cLine[l];
-
-				array->GetFirstEntry()->disclength = disclength.ToInt();
-			}
-			else if (cLine.CompareN("210 ", 4) == 0)
-			{
-				String	 category;
-
-				for (Int l = 4; l < cLine.Length(); l++)
+				else if (cLine.CompareN("# Disc length: ", 15) == 0)
 				{
-					if (cLine[l] == ' ') break;
+					String	 disclength;
 
-					category[l - 4] = cLine[l];
+					for (Int l = 15; l < cLine.Length(); l++) disclength[l - 15] = cLine[l];
+
+					array->GetFirstEntry()->disclength = disclength.ToInt();
 				}
+				else if (cLine.CompareN("210 ", 4) == 0)
+				{
+					String	 category;
 
-				array->GetFirstEntry()->category = category;
+					for (Int l = 4; l < cLine.Length(); l++)
+					{
+						if (cLine[l] == ' ') break;
+
+						category[l - 4] = cLine[l];
+					}
+
+					array->GetFirstEntry()->category = category;
+				}
 			}
 		}
 	}
 
-	if (currentConfig->freedb_mode == FREEDB_MODE_CDDBP) cddb.CloseConnection();
+	cddb.CloseConnection();
 
 	prog_status->SetValue(100);
 	text_status->SetText("");
