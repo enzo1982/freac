@@ -286,7 +286,7 @@ Void bonkEnc::RemoveFile()
 		info_edit_album->SetText("");
 		info_edit_track->SetText("");
 		info_edit_year->SetText("");
-		info_combo_genre->SelectEntry(0);
+		info_edit_genre->SetText("");
 
 		dontUpdateInfo = False;
 	}
@@ -315,7 +315,7 @@ Void bonkEnc::ClearList()
 	info_edit_album->SetText("");
 	info_edit_track->SetText("");
 	info_edit_year->SetText("");
-	info_combo_genre->SelectEntry(0);
+	info_edit_genre->SetText("");
 
 	dontUpdateInfo = False;
 }
@@ -339,17 +339,7 @@ Void bonkEnc::SelectJoblistEntry()
 
 	if (format->trackInfo->year > 0) info_edit_year->SetText(String::FromInt(format->trackInfo->year));
 
-	info_combo_genre->SelectEntry(0);
-
-	for (int i = 0; i < info_combo_genre->GetNOfEntries(); i++)
-	{
-		if (info_combo_genre->GetNthEntry(i)->name == format->trackInfo->genre)
-		{
-			info_combo_genre->SelectEntry(i);
-
-			break;
-		}
-	}
+	info_edit_genre->SetText(format->trackInfo->genre);
 
 	dontUpdateInfo = False;
 }
@@ -369,7 +359,7 @@ Void bonkEnc::UpdateTitleInfo()
 	format->trackInfo->album = info_edit_album->GetText();
 	format->trackInfo->track = info_edit_track->GetText().ToInt();
 	format->trackInfo->year = info_edit_year->GetText().ToInt();
-	format->trackInfo->genre = info_combo_genre->GetSelectedEntry()->name;
+	format->trackInfo->genre = info_edit_genre->GetText();
 
 	if (format->trackInfo->artist.Length() == 0 && format->trackInfo->title.Length() == 0)	format->trackInfo->hasText = False;
 	else											format->trackInfo->hasText = True;
@@ -382,5 +372,5 @@ Void bonkEnc::UpdateTitleInfo()
 
 	jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
 
-	joblist->ModifyEntry(joblist->GetSelectedEntry()->id, jlEntry);
+	if (joblist->GetSelectedEntry()->name != jlEntry) joblist->ModifyEntry(joblist->GetSelectedEntry()->id, jlEntry);
 }

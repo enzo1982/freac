@@ -35,7 +35,8 @@ class cddbSubmitDlg : public Dialog
 		Text		*text_year;
 		EditBox		*edit_year;
 		Text		*text_genre;
-		ComboBox	*combo_genre;
+		EditBox		*edit_genre;
+		ListBox		*list_genre;
 
 		ListBox		*list_tracks;
 		Text		*text_track;

@@ -91,6 +91,20 @@ Int bonkEnc::Encoder(Thread *thread)
 			}
 
 			out_filename.Append(String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
+
+			String	 bak_filename = out_filename;
+
+			for (Int k = 0, b = 0; k < bak_filename.Length(); k++)
+			{
+				if (bak_filename[k] == '\"')		{ out_filename[k + b] = '\''; out_filename[k + ++b] = '\''; }
+				else if (bak_filename[k] == '?')	b--;
+				else if (bak_filename[k] == '|')	out_filename[k + b] = '_';
+				else if (bak_filename[k] == '*')	b--;
+				else if (bak_filename[k] == '<')	out_filename[k + b] = '(';
+				else if (bak_filename[k] == '>')	out_filename[k + b] = ')';
+				else if (bak_filename[k] == ':')	b--;
+				else					out_filename[k + b] = bak_filename[k];
+			}
 		}
 		else if (trackInfo->isCDTrack)
 		{

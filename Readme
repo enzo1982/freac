@@ -13,6 +13,8 @@ History
 
 	Version 1.0 beta 1 CVS (April 2003)
 
+		- the genre field is now editable
+		- invalid characters in filenames are now replaced
 		- upgraded to smooth v0.8.62.0
 		- some bugfixes
 

@@ -414,164 +414,167 @@ bonkEnc::bonkEnc()
 	info_text_genre		= new Text(i18n->TranslateString("Genre").Append(":"), pos);
 	info_text_genre->SetOrientation(OR_LOWERLEFT);
 
+	info_list_genre		= new ListBox(pos, size);
+	info_list_genre->AddEntry("");
+	info_list_genre->AddEntry("A Cappella");
+	info_list_genre->AddEntry("Acid");
+	info_list_genre->AddEntry("Acid Jazz");
+	info_list_genre->AddEntry("Acid Punk");
+	info_list_genre->AddEntry("Acoustic");
+	info_list_genre->AddEntry("Alt. Rock");
+	info_list_genre->AddEntry("Alternative");
+	info_list_genre->AddEntry("Ambient");
+	info_list_genre->AddEntry("Anime");
+	info_list_genre->AddEntry("Avantgarde");
+	info_list_genre->AddEntry("Ballad");
+	info_list_genre->AddEntry("Bass");
+	info_list_genre->AddEntry("Beat");
+	info_list_genre->AddEntry("Bebob");
+	info_list_genre->AddEntry("Big Band");
+	info_list_genre->AddEntry("Black Metal");
+	info_list_genre->AddEntry("Bluegrass");
+	info_list_genre->AddEntry("Blues");
+	info_list_genre->AddEntry("Booty Bass");
+	info_list_genre->AddEntry("BritPop");
+	info_list_genre->AddEntry("Cabaret");
+	info_list_genre->AddEntry("Celtic");
+	info_list_genre->AddEntry("Chamber Music");
+	info_list_genre->AddEntry("Chanson");
+	info_list_genre->AddEntry("Chorus");
+	info_list_genre->AddEntry("Christian Gangsta Rap");
+	info_list_genre->AddEntry("Christian Rap");
+	info_list_genre->AddEntry("Christian Rock");
+	info_list_genre->AddEntry("Classic Rock");
+	info_list_genre->AddEntry("Classical");
+	info_list_genre->AddEntry("Club");
+	info_list_genre->AddEntry("Club-House");
+	info_list_genre->AddEntry("Comedy");
+	info_list_genre->AddEntry("Contemporary Christian");
+	info_list_genre->AddEntry("Country");
+	info_list_genre->AddEntry("Cover");
+	info_list_genre->AddEntry("Crossover");
+	info_list_genre->AddEntry("Cult");
+	info_list_genre->AddEntry("Dance");
+	info_list_genre->AddEntry("Dance Hall");
+	info_list_genre->AddEntry("Darkwave");
+	info_list_genre->AddEntry("Death Metal");
+	info_list_genre->AddEntry("Disco");
+	info_list_genre->AddEntry("Dream");
+	info_list_genre->AddEntry("Drum & Bass");
+	info_list_genre->AddEntry("Drum Solo");
+	info_list_genre->AddEntry("Duet");
+	info_list_genre->AddEntry("Easy Listening");
+	info_list_genre->AddEntry("Electronic");
+	info_list_genre->AddEntry("Ethnic");
+	info_list_genre->AddEntry("Eurodance");
+	info_list_genre->AddEntry("Euro-House");
+	info_list_genre->AddEntry("Euro-Techno");
+	info_list_genre->AddEntry("Fast-Fusion");
+	info_list_genre->AddEntry("Folk");
+	info_list_genre->AddEntry("Folk/Rock");
+	info_list_genre->AddEntry("Folklore");
+	info_list_genre->AddEntry("Freestyle");
+	info_list_genre->AddEntry("Funk");
+	info_list_genre->AddEntry("Fusion");
+	info_list_genre->AddEntry("Game");
+	info_list_genre->AddEntry("Gangsta Rap");
+	info_list_genre->AddEntry("Goa");
+	info_list_genre->AddEntry("Gospel");
+	info_list_genre->AddEntry("Gothic");
+	info_list_genre->AddEntry("Gothic Rock");
+	info_list_genre->AddEntry("Grunge");
+	info_list_genre->AddEntry("Hard Rock");
+	info_list_genre->AddEntry("Hardcore");
+	info_list_genre->AddEntry("Heavy Metal");
+	info_list_genre->AddEntry("Hip-Hop");
+	info_list_genre->AddEntry("House");
+	info_list_genre->AddEntry("Humour");
+	info_list_genre->AddEntry("Indie");
+	info_list_genre->AddEntry("Industrial");
+	info_list_genre->AddEntry("Instrumental");
+	info_list_genre->AddEntry("Instrumental Pop");
+	info_list_genre->AddEntry("Instrumental Rock");
+	info_list_genre->AddEntry("Jazz");
+	info_list_genre->AddEntry("Jazz+Funk");
+	info_list_genre->AddEntry("JPop");
+	info_list_genre->AddEntry("Jungle");
+	info_list_genre->AddEntry("Latin");
+	info_list_genre->AddEntry("Lo-Fi");
+	info_list_genre->AddEntry("Meditative");
+	info_list_genre->AddEntry("Merengue");
+	info_list_genre->AddEntry("Metal");
+	info_list_genre->AddEntry("Musical");
+	info_list_genre->AddEntry("National Folk");
+	info_list_genre->AddEntry("Native American");
+	info_list_genre->AddEntry("Negerpunk");
+	info_list_genre->AddEntry("New Age");
+	info_list_genre->AddEntry("New Wave");
+	info_list_genre->AddEntry("Noise");
+	info_list_genre->AddEntry("Oldies");
+	info_list_genre->AddEntry("Opera");
+	info_list_genre->AddEntry("Other");
+	info_list_genre->AddEntry("Polka");
+	info_list_genre->AddEntry("Polsk Punk");
+	info_list_genre->AddEntry("Pop");
+	info_list_genre->AddEntry("Pop/Funk");
+	info_list_genre->AddEntry("Pop-Folk");
+	info_list_genre->AddEntry("Porn Groove");
+	info_list_genre->AddEntry("Power Ballad");
+	info_list_genre->AddEntry("Pranks");
+	info_list_genre->AddEntry("Primus");
+	info_list_genre->AddEntry("Progressive Rock");
+	info_list_genre->AddEntry("Psychedelic");
+	info_list_genre->AddEntry("Psychedelic Rock");
+	info_list_genre->AddEntry("Punk");
+	info_list_genre->AddEntry("Punk Rock");
+	info_list_genre->AddEntry("R&B");
+	info_list_genre->AddEntry("Rap");
+	info_list_genre->AddEntry("Rave");
+	info_list_genre->AddEntry("Reggae");
+	info_list_genre->AddEntry("Remix");
+	info_list_genre->AddEntry("Retro");
+	info_list_genre->AddEntry("Revival");
+	info_list_genre->AddEntry("Rhythmic Soul");
+	info_list_genre->AddEntry("Rock");
+	info_list_genre->AddEntry("Rock & Roll");
+	info_list_genre->AddEntry("Salsa");
+	info_list_genre->AddEntry("Samba");
+	info_list_genre->AddEntry("Satire");
+	info_list_genre->AddEntry("Showtunes");
+	info_list_genre->AddEntry("Ska");
+	info_list_genre->AddEntry("Slow Jam");
+	info_list_genre->AddEntry("Slow Rock");
+	info_list_genre->AddEntry("Sonata");
+	info_list_genre->AddEntry("Soul");
+	info_list_genre->AddEntry("Sound Clip");
+	info_list_genre->AddEntry("Soundtrack");
+	info_list_genre->AddEntry("Southern Rock");
+	info_list_genre->AddEntry("Space");
+	info_list_genre->AddEntry("Speech");
+	info_list_genre->AddEntry("Swing");
+	info_list_genre->AddEntry("Symphonic Rock");
+	info_list_genre->AddEntry("Symphony");
+	info_list_genre->AddEntry("Synthpop");
+	info_list_genre->AddEntry("Tango");
+	info_list_genre->AddEntry("Techno");
+	info_list_genre->AddEntry("Techno-Industrial");
+	info_list_genre->AddEntry("Terror");
+	info_list_genre->AddEntry("Thrash-Metal");
+	info_list_genre->AddEntry("Top 40");
+	info_list_genre->AddEntry("Trailer");
+	info_list_genre->AddEntry("Trance");
+	info_list_genre->AddEntry("Tribal");
+	info_list_genre->AddEntry("Trip-Hop");
+	info_list_genre->AddEntry("Vocal");
+
 	pos.x += (7 + info_text_genre->GetObjectProperties()->textSize.cx);
 	pos.y += 3;
 	size.cx = 130;
 
-	info_combo_genre	= new ComboBox(pos, size);
-	info_combo_genre->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
-	info_combo_genre->SetOrientation(OR_LOWERLEFT);
-	info_combo_genre->AddEntry("");
-	info_combo_genre->AddEntry("A Cappella");
-	info_combo_genre->AddEntry("Acid");
-	info_combo_genre->AddEntry("Acid Jazz");
-	info_combo_genre->AddEntry("Acid Punk");
-	info_combo_genre->AddEntry("Acoustic");
-	info_combo_genre->AddEntry("Alt. Rock");
-	info_combo_genre->AddEntry("Alternative");
-	info_combo_genre->AddEntry("Ambient");
-	info_combo_genre->AddEntry("Anime");
-	info_combo_genre->AddEntry("Avantgarde");
-	info_combo_genre->AddEntry("Ballad");
-	info_combo_genre->AddEntry("Bass");
-	info_combo_genre->AddEntry("Beat");
-	info_combo_genre->AddEntry("Bebob");
-	info_combo_genre->AddEntry("Big Band");
-	info_combo_genre->AddEntry("Black Metal");
-	info_combo_genre->AddEntry("Bluegrass");
-	info_combo_genre->AddEntry("Blues");
-	info_combo_genre->AddEntry("Booty Bass");
-	info_combo_genre->AddEntry("BritPop");
-	info_combo_genre->AddEntry("Cabaret");
-	info_combo_genre->AddEntry("Celtic");
-	info_combo_genre->AddEntry("Chamber Music");
-	info_combo_genre->AddEntry("Chanson");
-	info_combo_genre->AddEntry("Chorus");
-	info_combo_genre->AddEntry("Christian Gangsta Rap");
-	info_combo_genre->AddEntry("Christian Rap");
-	info_combo_genre->AddEntry("Christian Rock");
-	info_combo_genre->AddEntry("Classic Rock");
-	info_combo_genre->AddEntry("Classical");
-	info_combo_genre->AddEntry("Club");
-	info_combo_genre->AddEntry("Club-House");
-	info_combo_genre->AddEntry("Comedy");
-	info_combo_genre->AddEntry("Contemporary Christian");
-	info_combo_genre->AddEntry("Country");
-	info_combo_genre->AddEntry("Cover");
-	info_combo_genre->AddEntry("Crossover");
-	info_combo_genre->AddEntry("Cult");
-	info_combo_genre->AddEntry("Dance");
-	info_combo_genre->AddEntry("Dance Hall");
-	info_combo_genre->AddEntry("Darkwave");
-	info_combo_genre->AddEntry("Death Metal");
-	info_combo_genre->AddEntry("Disco");
-	info_combo_genre->AddEntry("Dream");
-	info_combo_genre->AddEntry("Drum & Bass");
-	info_combo_genre->AddEntry("Drum Solo");
-	info_combo_genre->AddEntry("Duet");
-	info_combo_genre->AddEntry("Easy Listening");
-	info_combo_genre->AddEntry("Electronic");
-	info_combo_genre->AddEntry("Ethnic");
-	info_combo_genre->AddEntry("Eurodance");
-	info_combo_genre->AddEntry("Euro-House");
-	info_combo_genre->AddEntry("Euro-Techno");
-	info_combo_genre->AddEntry("Fast-Fusion");
-	info_combo_genre->AddEntry("Folk");
-	info_combo_genre->AddEntry("Folk/Rock");
-	info_combo_genre->AddEntry("Folklore");
-	info_combo_genre->AddEntry("Freestyle");
-	info_combo_genre->AddEntry("Funk");
-	info_combo_genre->AddEntry("Fusion");
-	info_combo_genre->AddEntry("Game");
-	info_combo_genre->AddEntry("Gangsta Rap");
-	info_combo_genre->AddEntry("Goa");
-	info_combo_genre->AddEntry("Gospel");
-	info_combo_genre->AddEntry("Gothic");
-	info_combo_genre->AddEntry("Gothic Rock");
-	info_combo_genre->AddEntry("Grunge");
-	info_combo_genre->AddEntry("Hard Rock");
-	info_combo_genre->AddEntry("Hardcore");
-	info_combo_genre->AddEntry("Heavy Metal");
-	info_combo_genre->AddEntry("Hip-Hop");
-	info_combo_genre->AddEntry("House");
-	info_combo_genre->AddEntry("Humour");
-	info_combo_genre->AddEntry("Indie");
-	info_combo_genre->AddEntry("Industrial");
-	info_combo_genre->AddEntry("Instrumental");
-	info_combo_genre->AddEntry("Instrumental Pop");
-	info_combo_genre->AddEntry("Instrumental Rock");
-	info_combo_genre->AddEntry("Jazz");
-	info_combo_genre->AddEntry("Jazz+Funk");
-	info_combo_genre->AddEntry("JPop");
-	info_combo_genre->AddEntry("Jungle");
-	info_combo_genre->AddEntry("Latin");
-	info_combo_genre->AddEntry("Lo-Fi");
-	info_combo_genre->AddEntry("Meditative");
-	info_combo_genre->AddEntry("Merengue");
-	info_combo_genre->AddEntry("Metal");
-	info_combo_genre->AddEntry("Musical");
-	info_combo_genre->AddEntry("National Folk");
-	info_combo_genre->AddEntry("Native American");
-	info_combo_genre->AddEntry("Negerpunk");
-	info_combo_genre->AddEntry("New Age");
-	info_combo_genre->AddEntry("New Wave");
-	info_combo_genre->AddEntry("Noise");
-	info_combo_genre->AddEntry("Oldies");
-	info_combo_genre->AddEntry("Opera");
-	info_combo_genre->AddEntry("Other");
-	info_combo_genre->AddEntry("Polka");
-	info_combo_genre->AddEntry("Polsk Punk");
-	info_combo_genre->AddEntry("Pop");
-	info_combo_genre->AddEntry("Pop/Funk");
-	info_combo_genre->AddEntry("Pop-Folk");
-	info_combo_genre->AddEntry("Porn Groove");
-	info_combo_genre->AddEntry("Power Ballad");
-	info_combo_genre->AddEntry("Pranks");
-	info_combo_genre->AddEntry("Primus");
-	info_combo_genre->AddEntry("Progressive Rock");
-	info_combo_genre->AddEntry("Psychedelic");
-	info_combo_genre->AddEntry("Psychedelic Rock");
-	info_combo_genre->AddEntry("Punk");
-	info_combo_genre->AddEntry("Punk Rock");
-	info_combo_genre->AddEntry("R&B");
-	info_combo_genre->AddEntry("Rap");
-	info_combo_genre->AddEntry("Rave");
-	info_combo_genre->AddEntry("Reggae");
-	info_combo_genre->AddEntry("Remix");
-	info_combo_genre->AddEntry("Retro");
-	info_combo_genre->AddEntry("Revival");
-	info_combo_genre->AddEntry("Rhythmic Soul");
-	info_combo_genre->AddEntry("Rock");
-	info_combo_genre->AddEntry("Rock & Roll");
-	info_combo_genre->AddEntry("Salsa");
-	info_combo_genre->AddEntry("Samba");
-	info_combo_genre->AddEntry("Satire");
-	info_combo_genre->AddEntry("Showtunes");
-	info_combo_genre->AddEntry("Ska");
-	info_combo_genre->AddEntry("Slow Jam");
-	info_combo_genre->AddEntry("Slow Rock");
-	info_combo_genre->AddEntry("Sonata");
-	info_combo_genre->AddEntry("Soul");
-	info_combo_genre->AddEntry("Sound Clip");
-	info_combo_genre->AddEntry("Soundtrack");
-	info_combo_genre->AddEntry("Southern Rock");
-	info_combo_genre->AddEntry("Space");
-	info_combo_genre->AddEntry("Speech");
-	info_combo_genre->AddEntry("Swing");
-	info_combo_genre->AddEntry("Symphonic Rock");
-	info_combo_genre->AddEntry("Symphony");
-	info_combo_genre->AddEntry("Synthpop");
-	info_combo_genre->AddEntry("Tango");
-	info_combo_genre->AddEntry("Techno");
-	info_combo_genre->AddEntry("Techno-Industrial");
-	info_combo_genre->AddEntry("Terror");
-	info_combo_genre->AddEntry("Thrash-Metal");
-	info_combo_genre->AddEntry("Top 40");
-	info_combo_genre->AddEntry("Trailer");
-	info_combo_genre->AddEntry("Trance");
-	info_combo_genre->AddEntry("Tribal");
-	info_combo_genre->AddEntry("Trip-Hop");
-	info_combo_genre->AddEntry("Vocal");
+	info_edit_genre	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_genre->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
+	info_edit_genre->SetOrientation(OR_LOWERLEFT);
+	info_edit_genre->SetDropDownList(info_list_genre);
 
 	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(214 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
 	info_edit_track->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
@@ -582,7 +585,7 @@ bonkEnc::bonkEnc()
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
 	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
 	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
-	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
+	info_edit_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_edit_genre->GetObjectProperties()->pos.y), info_edit_genre->GetObjectProperties()->size);
 
 	pos.y = 99;
 	pos.x = maxTextLength + 14;
@@ -757,7 +760,7 @@ bonkEnc::bonkEnc()
 	mainWnd->RegisterObject(info_text_year);
 	mainWnd->RegisterObject(info_edit_year);
 	mainWnd->RegisterObject(info_text_genre);
-	mainWnd->RegisterObject(info_combo_genre);
+	mainWnd->RegisterObject(info_edit_genre);
 	mainWnd->RegisterObject(enc_filename);
 	mainWnd->RegisterObject(enc_time);
 	mainWnd->RegisterObject(enc_percent);
@@ -792,7 +795,7 @@ bonkEnc::bonkEnc()
 		info_text_year->Hide();
 		info_edit_year->Hide();
 		info_text_genre->Hide();
-		info_combo_genre->Hide();
+		info_edit_genre->Hide();
 	}
 
 	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
@@ -848,7 +851,7 @@ bonkEnc::~bonkEnc()
 		mainWnd->UnregisterObject(info_text_year);
 		mainWnd->UnregisterObject(info_edit_year);
 		mainWnd->UnregisterObject(info_text_genre);
-		mainWnd->UnregisterObject(info_combo_genre);
+		mainWnd->UnregisterObject(info_edit_genre);
 		mainWnd->UnregisterObject(enc_filename);
 		mainWnd->UnregisterObject(enc_time);
 		mainWnd->UnregisterObject(enc_percent);
@@ -888,7 +891,8 @@ bonkEnc::~bonkEnc()
 		delete info_text_year;
 		delete info_edit_year;
 		delete info_text_genre;
-		delete info_combo_genre;
+		delete info_edit_genre;
+		delete info_list_genre;
 		delete enc_filename;
 		delete enc_time;
 		delete enc_percent;
@@ -974,7 +978,7 @@ Void bonkEnc::DrawProc()
 		info_text_year->Hide();
 		info_edit_year->Hide();
 		info_text_genre->Hide();
-		info_combo_genre->Hide();
+		info_edit_genre->Hide();
 	}
 
 	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(214 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
@@ -986,7 +990,7 @@ Void bonkEnc::DrawProc()
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
 	info_edit_artist->SetMetrics(info_edit_artist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
 	info_edit_album->SetMetrics(info_edit_album->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
-	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
+	info_edit_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_edit_genre->GetObjectProperties()->pos.y), info_edit_genre->GetObjectProperties()->size);
 
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), Math::Max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
 
@@ -1014,7 +1018,7 @@ Void bonkEnc::DrawProc()
 		info_text_year->Show();
 		info_edit_year->Show();
 		info_text_genre->Show();
-		info_combo_genre->Show();
+		info_edit_genre->Show();
 	}
 
 	edb_filename->Show();
@@ -1128,9 +1132,11 @@ Void bonkEnc::ReadCD()
 
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
-	for (int i = 1; i <= numTocEntries; i++)
+	for (Int i = 0; i < numTocEntries; i++)
 	{
-		AddFileByName(String("/cda").Append(String::FromInt(i)));
+		TOCENTRY entry = ex_CR_GetTocEntry(i);
+
+		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1) AddFileByName(String("/cda").Append(String::FromInt(i + 1)));
 
 		cddbRetry = False;
 	}
@@ -1411,7 +1417,7 @@ Void bonkEnc::ShowHideTitleInfo()
 		info_text_year->Hide();
 		info_edit_year->Hide();
 		info_text_genre->Hide();
-		info_combo_genre->Hide();
+		info_edit_genre->Hide();
 	}
 
 	if (mainWnd->IsMaximized())
@@ -1446,7 +1452,7 @@ Void bonkEnc::ShowHideTitleInfo()
 		info_text_year->Show();
 		info_edit_year->Show();
 		info_text_genre->Show();
-		info_combo_genre->Show();
+		info_edit_genre->Show();
 	}
 }
 
@@ -1561,7 +1567,7 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 		info_text_year->Hide();
 		info_edit_year->Hide();
 		info_text_genre->Hide();
-		info_combo_genre->Hide();
+		info_edit_genre->Hide();
 	}
 
 	info_text_artist->SetText(i18n->TranslateString("Artist").Append(":"));
@@ -1580,7 +1586,7 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
 	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
 	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
-	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
+	info_edit_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_edit_genre->GetObjectProperties()->pos.y), info_edit_genre->GetObjectProperties()->size);
 
 	if (currentConfig->showTitleInfo)
 	{
@@ -1595,7 +1601,7 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 		info_text_year->Show();
 		info_edit_year->Show();
 		info_text_genre->Show();
-		info_combo_genre->Show();
+		info_edit_genre->Show();
 	}
 
 	mainWnd_menubar->Hide();

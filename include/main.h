@@ -140,7 +140,8 @@ class bonkEnc : public Application
 		Text			*info_text_year;
 		EditBox			*info_edit_year;
 		Text			*info_text_genre;
-		ComboBox		*info_combo_genre;
+		EditBox			*info_edit_genre;
+		ListBox			*info_list_genre;
 
 		Text			*enc_filename;
 		Text			*enc_time;

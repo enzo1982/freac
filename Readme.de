@@ -13,6 +13,8 @@ Geschichte
 
 	Version 1.0 beta 1 CVS (April 2003)
 
+		- Das Genre Feld ist jetzt editierbar
+		- Ungültige Zeichen in Dateinamen werden jetzt ersetzt
 		- Update auf smooth v0.8.62.0
 		- Einige Bugfixes
 

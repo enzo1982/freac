@@ -89,160 +89,163 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	edit_album	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
 
+	list_genre	= new ListBox(pos, size);
+	list_genre->AddEntry("");
+	list_genre->AddEntry("A Cappella");
+	list_genre->AddEntry("Acid");
+	list_genre->AddEntry("Acid Jazz");
+	list_genre->AddEntry("Acid Punk");
+	list_genre->AddEntry("Acoustic");
+	list_genre->AddEntry("Alt. Rock");
+	list_genre->AddEntry("Alternative");
+	list_genre->AddEntry("Ambient");
+	list_genre->AddEntry("Anime");
+	list_genre->AddEntry("Avantgarde");
+	list_genre->AddEntry("Ballad");
+	list_genre->AddEntry("Bass");
+	list_genre->AddEntry("Beat");
+	list_genre->AddEntry("Bebob");
+	list_genre->AddEntry("Big Band");
+	list_genre->AddEntry("Black Metal");
+	list_genre->AddEntry("Bluegrass");
+	list_genre->AddEntry("Blues");
+	list_genre->AddEntry("Booty Bass");
+	list_genre->AddEntry("BritPop");
+	list_genre->AddEntry("Cabaret");
+	list_genre->AddEntry("Celtic");
+	list_genre->AddEntry("Chamber Music");
+	list_genre->AddEntry("Chanson");
+	list_genre->AddEntry("Chorus");
+	list_genre->AddEntry("Christian Gangsta Rap");
+	list_genre->AddEntry("Christian Rap");
+	list_genre->AddEntry("Christian Rock");
+	list_genre->AddEntry("Classic Rock");
+	list_genre->AddEntry("Classical");
+	list_genre->AddEntry("Club");
+	list_genre->AddEntry("Club-House");
+	list_genre->AddEntry("Comedy");
+	list_genre->AddEntry("Contemporary Christian");
+	list_genre->AddEntry("Country");
+	list_genre->AddEntry("Cover");
+	list_genre->AddEntry("Crossover");
+	list_genre->AddEntry("Cult");
+	list_genre->AddEntry("Dance");
+	list_genre->AddEntry("Dance Hall");
+	list_genre->AddEntry("Darkwave");
+	list_genre->AddEntry("Death Metal");
+	list_genre->AddEntry("Disco");
+	list_genre->AddEntry("Dream");
+	list_genre->AddEntry("Drum & Bass");
+	list_genre->AddEntry("Drum Solo");
+	list_genre->AddEntry("Duet");
+	list_genre->AddEntry("Easy Listening");
+	list_genre->AddEntry("Electronic");
+	list_genre->AddEntry("Ethnic");
+	list_genre->AddEntry("Eurodance");
+	list_genre->AddEntry("Euro-House");
+	list_genre->AddEntry("Euro-Techno");
+	list_genre->AddEntry("Fast-Fusion");
+	list_genre->AddEntry("Folk");
+	list_genre->AddEntry("Folk/Rock");
+	list_genre->AddEntry("Folklore");
+	list_genre->AddEntry("Freestyle");
+	list_genre->AddEntry("Funk");
+	list_genre->AddEntry("Fusion");
+	list_genre->AddEntry("Game");
+	list_genre->AddEntry("Gangsta Rap");
+	list_genre->AddEntry("Goa");
+	list_genre->AddEntry("Gospel");
+	list_genre->AddEntry("Gothic");
+	list_genre->AddEntry("Gothic Rock");
+	list_genre->AddEntry("Grunge");
+	list_genre->AddEntry("Hard Rock");
+	list_genre->AddEntry("Hardcore");
+	list_genre->AddEntry("Heavy Metal");
+	list_genre->AddEntry("Hip-Hop");
+	list_genre->AddEntry("House");
+	list_genre->AddEntry("Humour");
+	list_genre->AddEntry("Indie");
+	list_genre->AddEntry("Industrial");
+	list_genre->AddEntry("Instrumental");
+	list_genre->AddEntry("Instrumental Pop");
+	list_genre->AddEntry("Instrumental Rock");
+	list_genre->AddEntry("Jazz");
+	list_genre->AddEntry("Jazz+Funk");
+	list_genre->AddEntry("JPop");
+	list_genre->AddEntry("Jungle");
+	list_genre->AddEntry("Latin");
+	list_genre->AddEntry("Lo-Fi");
+	list_genre->AddEntry("Meditative");
+	list_genre->AddEntry("Merengue");
+	list_genre->AddEntry("Metal");
+	list_genre->AddEntry("Musical");
+	list_genre->AddEntry("National Folk");
+	list_genre->AddEntry("Native American");
+	list_genre->AddEntry("Negerpunk");
+	list_genre->AddEntry("New Age");
+	list_genre->AddEntry("New Wave");
+	list_genre->AddEntry("Noise");
+	list_genre->AddEntry("Oldies");
+	list_genre->AddEntry("Opera");
+	list_genre->AddEntry("Other");
+	list_genre->AddEntry("Polka");
+	list_genre->AddEntry("Polsk Punk");
+	list_genre->AddEntry("Pop");
+	list_genre->AddEntry("Pop/Funk");
+	list_genre->AddEntry("Pop-Folk");
+	list_genre->AddEntry("Porn Groove");
+	list_genre->AddEntry("Power Ballad");
+	list_genre->AddEntry("Pranks");
+	list_genre->AddEntry("Primus");
+	list_genre->AddEntry("Progressive Rock");
+	list_genre->AddEntry("Psychedelic");
+	list_genre->AddEntry("Psychedelic Rock");
+	list_genre->AddEntry("Punk");
+	list_genre->AddEntry("Punk Rock");
+	list_genre->AddEntry("R&B");
+	list_genre->AddEntry("Rap");
+	list_genre->AddEntry("Rave");
+	list_genre->AddEntry("Reggae");
+	list_genre->AddEntry("Remix");
+	list_genre->AddEntry("Retro");
+	list_genre->AddEntry("Revival");
+	list_genre->AddEntry("Rhythmic Soul");
+	list_genre->AddEntry("Rock");
+	list_genre->AddEntry("Rock & Roll");
+	list_genre->AddEntry("Salsa");
+	list_genre->AddEntry("Samba");
+	list_genre->AddEntry("Satire");
+	list_genre->AddEntry("Showtunes");
+	list_genre->AddEntry("Ska");
+	list_genre->AddEntry("Slow Jam");
+	list_genre->AddEntry("Slow Rock");
+	list_genre->AddEntry("Sonata");
+	list_genre->AddEntry("Soul");
+	list_genre->AddEntry("Sound Clip");
+	list_genre->AddEntry("Soundtrack");
+	list_genre->AddEntry("Southern Rock");
+	list_genre->AddEntry("Space");
+	list_genre->AddEntry("Speech");
+	list_genre->AddEntry("Swing");
+	list_genre->AddEntry("Symphonic Rock");
+	list_genre->AddEntry("Symphony");
+	list_genre->AddEntry("Synthpop");
+	list_genre->AddEntry("Tango");
+	list_genre->AddEntry("Techno");
+	list_genre->AddEntry("Techno-Industrial");
+	list_genre->AddEntry("Terror");
+	list_genre->AddEntry("Thrash-Metal");
+	list_genre->AddEntry("Top 40");
+	list_genre->AddEntry("Trailer");
+	list_genre->AddEntry("Trance");
+	list_genre->AddEntry("Tribal");
+	list_genre->AddEntry("Trip-Hop");
+	list_genre->AddEntry("Vocal");
+
 	pos.y += 28;
 
-	combo_genre	= new ComboBox(pos, size);
-	combo_genre->AddEntry("");
-	combo_genre->AddEntry("A Cappella");
-	combo_genre->AddEntry("Acid");
-	combo_genre->AddEntry("Acid Jazz");
-	combo_genre->AddEntry("Acid Punk");
-	combo_genre->AddEntry("Acoustic");
-	combo_genre->AddEntry("Alt. Rock");
-	combo_genre->AddEntry("Alternative");
-	combo_genre->AddEntry("Ambient");
-	combo_genre->AddEntry("Anime");
-	combo_genre->AddEntry("Avantgarde");
-	combo_genre->AddEntry("Ballad");
-	combo_genre->AddEntry("Bass");
-	combo_genre->AddEntry("Beat");
-	combo_genre->AddEntry("Bebob");
-	combo_genre->AddEntry("Big Band");
-	combo_genre->AddEntry("Black Metal");
-	combo_genre->AddEntry("Bluegrass");
-	combo_genre->AddEntry("Blues");
-	combo_genre->AddEntry("Booty Bass");
-	combo_genre->AddEntry("BritPop");
-	combo_genre->AddEntry("Cabaret");
-	combo_genre->AddEntry("Celtic");
-	combo_genre->AddEntry("Chamber Music");
-	combo_genre->AddEntry("Chanson");
-	combo_genre->AddEntry("Chorus");
-	combo_genre->AddEntry("Christian Gangsta Rap");
-	combo_genre->AddEntry("Christian Rap");
-	combo_genre->AddEntry("Christian Rock");
-	combo_genre->AddEntry("Classic Rock");
-	combo_genre->AddEntry("Classical");
-	combo_genre->AddEntry("Club");
-	combo_genre->AddEntry("Club-House");
-	combo_genre->AddEntry("Comedy");
-	combo_genre->AddEntry("Contemporary Christian");
-	combo_genre->AddEntry("Country");
-	combo_genre->AddEntry("Cover");
-	combo_genre->AddEntry("Crossover");
-	combo_genre->AddEntry("Cult");
-	combo_genre->AddEntry("Dance");
-	combo_genre->AddEntry("Dance Hall");
-	combo_genre->AddEntry("Darkwave");
-	combo_genre->AddEntry("Death Metal");
-	combo_genre->AddEntry("Disco");
-	combo_genre->AddEntry("Dream");
-	combo_genre->AddEntry("Drum & Bass");
-	combo_genre->AddEntry("Drum Solo");
-	combo_genre->AddEntry("Duet");
-	combo_genre->AddEntry("Easy Listening");
-	combo_genre->AddEntry("Electronic");
-	combo_genre->AddEntry("Ethnic");
-	combo_genre->AddEntry("Eurodance");
-	combo_genre->AddEntry("Euro-House");
-	combo_genre->AddEntry("Euro-Techno");
-	combo_genre->AddEntry("Fast-Fusion");
-	combo_genre->AddEntry("Folk");
-	combo_genre->AddEntry("Folk/Rock");
-	combo_genre->AddEntry("Folklore");
-	combo_genre->AddEntry("Freestyle");
-	combo_genre->AddEntry("Funk");
-	combo_genre->AddEntry("Fusion");
-	combo_genre->AddEntry("Game");
-	combo_genre->AddEntry("Gangsta Rap");
-	combo_genre->AddEntry("Goa");
-	combo_genre->AddEntry("Gospel");
-	combo_genre->AddEntry("Gothic");
-	combo_genre->AddEntry("Gothic Rock");
-	combo_genre->AddEntry("Grunge");
-	combo_genre->AddEntry("Hard Rock");
-	combo_genre->AddEntry("Hardcore");
-	combo_genre->AddEntry("Heavy Metal");
-	combo_genre->AddEntry("Hip-Hop");
-	combo_genre->AddEntry("House");
-	combo_genre->AddEntry("Humour");
-	combo_genre->AddEntry("Indie");
-	combo_genre->AddEntry("Industrial");
-	combo_genre->AddEntry("Instrumental");
-	combo_genre->AddEntry("Instrumental Pop");
-	combo_genre->AddEntry("Instrumental Rock");
-	combo_genre->AddEntry("Jazz");
-	combo_genre->AddEntry("Jazz+Funk");
-	combo_genre->AddEntry("JPop");
-	combo_genre->AddEntry("Jungle");
-	combo_genre->AddEntry("Latin");
-	combo_genre->AddEntry("Lo-Fi");
-	combo_genre->AddEntry("Meditative");
-	combo_genre->AddEntry("Merengue");
-	combo_genre->AddEntry("Metal");
-	combo_genre->AddEntry("Musical");
-	combo_genre->AddEntry("National Folk");
-	combo_genre->AddEntry("Native American");
-	combo_genre->AddEntry("Negerpunk");
-	combo_genre->AddEntry("New Age");
-	combo_genre->AddEntry("New Wave");
-	combo_genre->AddEntry("Noise");
-	combo_genre->AddEntry("Oldies");
-	combo_genre->AddEntry("Opera");
-	combo_genre->AddEntry("Other");
-	combo_genre->AddEntry("Polka");
-	combo_genre->AddEntry("Polsk Punk");
-	combo_genre->AddEntry("Pop");
-	combo_genre->AddEntry("Pop/Funk");
-	combo_genre->AddEntry("Pop-Folk");
-	combo_genre->AddEntry("Porn Groove");
-	combo_genre->AddEntry("Power Ballad");
-	combo_genre->AddEntry("Pranks");
-	combo_genre->AddEntry("Primus");
-	combo_genre->AddEntry("Progressive Rock");
-	combo_genre->AddEntry("Psychedelic");
-	combo_genre->AddEntry("Psychedelic Rock");
-	combo_genre->AddEntry("Punk");
-	combo_genre->AddEntry("Punk Rock");
-	combo_genre->AddEntry("R&B");
-	combo_genre->AddEntry("Rap");
-	combo_genre->AddEntry("Rave");
-	combo_genre->AddEntry("Reggae");
-	combo_genre->AddEntry("Remix");
-	combo_genre->AddEntry("Retro");
-	combo_genre->AddEntry("Revival");
-	combo_genre->AddEntry("Rhythmic Soul");
-	combo_genre->AddEntry("Rock");
-	combo_genre->AddEntry("Rock & Roll");
-	combo_genre->AddEntry("Salsa");
-	combo_genre->AddEntry("Samba");
-	combo_genre->AddEntry("Satire");
-	combo_genre->AddEntry("Showtunes");
-	combo_genre->AddEntry("Ska");
-	combo_genre->AddEntry("Slow Jam");
-	combo_genre->AddEntry("Slow Rock");
-	combo_genre->AddEntry("Sonata");
-	combo_genre->AddEntry("Soul");
-	combo_genre->AddEntry("Sound Clip");
-	combo_genre->AddEntry("Soundtrack");
-	combo_genre->AddEntry("Southern Rock");
-	combo_genre->AddEntry("Space");
-	combo_genre->AddEntry("Speech");
-	combo_genre->AddEntry("Swing");
-	combo_genre->AddEntry("Symphonic Rock");
-	combo_genre->AddEntry("Symphony");
-	combo_genre->AddEntry("Synthpop");
-	combo_genre->AddEntry("Tango");
-	combo_genre->AddEntry("Techno");
-	combo_genre->AddEntry("Techno-Industrial");
-	combo_genre->AddEntry("Terror");
-	combo_genre->AddEntry("Thrash-Metal");
-	combo_genre->AddEntry("Top 40");
-	combo_genre->AddEntry("Trailer");
-	combo_genre->AddEntry("Trance");
-	combo_genre->AddEntry("Tribal");
-	combo_genre->AddEntry("Trip-Hop");
-	combo_genre->AddEntry("Vocal");
+	edit_genre	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	edit_genre->SetDropDownList(list_genre);
 
 	pos.x = 6;
 	pos.y += 3;
@@ -312,7 +315,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->RegisterObject(text_album);
 	mainWnd->RegisterObject(edit_album);
 	mainWnd->RegisterObject(text_genre);
-	mainWnd->RegisterObject(combo_genre);
+	mainWnd->RegisterObject(edit_genre);
 	mainWnd->RegisterObject(text_year);
 	mainWnd->RegisterObject(edit_year);
 	mainWnd->RegisterObject(list_tracks);
@@ -342,7 +345,7 @@ cddbSubmitDlg::~cddbSubmitDlg()
 	mainWnd->UnregisterObject(text_album);
 	mainWnd->UnregisterObject(edit_album);
 	mainWnd->UnregisterObject(text_genre);
-	mainWnd->UnregisterObject(combo_genre);
+	mainWnd->UnregisterObject(edit_genre);
 	mainWnd->UnregisterObject(text_year);
 	mainWnd->UnregisterObject(edit_year);
 	mainWnd->UnregisterObject(list_tracks);
@@ -367,7 +370,8 @@ cddbSubmitDlg::~cddbSubmitDlg()
 	delete text_album;
 	delete edit_album;
 	delete text_genre;
-	delete combo_genre;
+	delete edit_genre;
+	delete list_genre;
 	delete text_year;
 	delete edit_year;
 	delete list_tracks;
@@ -415,14 +419,14 @@ Void cddbSubmitDlg::Submit()
 	cddbInfo->artist = edit_artist->GetText();
 	cddbInfo->album = edit_album->GetText();
 	cddbInfo->year = edit_year->GetText();
-	cddbInfo->genre = combo_genre->GetSelectedEntry()->name;
+	cddbInfo->genre = edit_genre->GetText();
 
 	for (Int j = 0; j < cddbInfo->nOfTracks; j++)
 	{
 		cddbInfo->titles.SetEntry(cddbInfo->titles.GetNthEntryIndex(j), titles.GetNthEntry(j));
 	}
 
-	if (cddbInfo->category == "") cddbInfo->category = GetCDDBGenre(combo_genre->GetSelectedEntry()->name);
+	if (cddbInfo->category == "") cddbInfo->category = GetCDDBGenre(edit_genre->GetText());
 
 	cddbInfo->revision++;
 
@@ -480,7 +484,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_artist->SetText("");
 		edit_album->SetText("");
 		edit_year->SetText("");
-		combo_genre->SelectEntry(0);
+		edit_genre->SetText("");
 
 		list_tracks->RemoveAll();
 		titles.RemoveAll();
@@ -541,17 +545,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_artist->SetText(cdInfo->GetEntry(0)->artist);
 		edit_album->SetText(cdInfo->GetEntry(0)->album);
 		edit_year->SetText(String::FromInt(cdInfo->GetEntry(0)->year) == "0" ? String("") : String::FromInt(cdInfo->GetEntry(0)->year));
-		combo_genre->SelectEntry(0);
-
-		for (int i = 0; i < combo_genre->GetNOfEntries(); i++)
-		{
-			if (combo_genre->GetNthEntry(i)->name == cdInfo->GetEntry(0)->genre)
-			{
-				combo_genre->SelectEntry(i);
-
-				break;
-			}
-		}
+		edit_genre->SetText(cdInfo->GetEntry(0)->genre);
 
 		list_tracks->RemoveAll();
 
@@ -570,7 +564,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_artist->SetText(currentConfig->appMain->cdText.GetEntry(0));
 		edit_album->SetText(currentConfig->appMain->cdText.GetEntry(100));
 		edit_year->SetText("");
-		combo_genre->SelectEntry(0);
+		edit_genre->SetText("");
 
 		list_tracks->RemoveAll();
 
@@ -608,7 +602,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_artist->SetText("");
 		edit_album->SetText("");
 		edit_year->SetText("");
-		combo_genre->SelectEntry(0);
+		edit_genre->SetText("");
 
 		list_tracks->RemoveAll();
 
@@ -679,7 +673,7 @@ Void cddbSubmitDlg::UpdateTrack()
 
 	list_tracks->ModifyEntry(list_tracks->GetSelectedEntry()->id, String(track < 10 ? "0" : "").Append(String::FromInt(track)).Append("\t").Append(edit_title->GetText() == "" ? bonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
 
-	titles.SetEntry(list_tracks->GetSelectedEntry()->id, edit_title->GetText());
+	if (list_tracks->GetSelectedEntry()->name != edit_title->GetText()) titles.SetEntry(list_tracks->GetSelectedEntry()->id, edit_title->GetText());
 }
 
 String cddbSubmitDlg::GetCDDBGenre(String genre)
