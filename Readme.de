@@ -15,13 +15,14 @@ Geschichte
 
 		- Unterstützung für Drag & Drop hinzugefügt
 		- Unterstützung für LAME Voreinstellungen hinzugefügt
-		- Sprachunterstützung für Ungarisch, Französisch, Russisch und Serbisch hinzugefügt
+		- Sprachunterstützung für Ungarisch, Französisch, Russisch, Serbisch und Finnish hinzugefügt
 		- Unterstützung für META Tags in BONK Dateien entfernt
 		- Unterstützung für ID3V2 Tags in BONK Dateien hinzugefügt
 		- Format der Sprachdateien vereinfacht
 		- Update auf smooth v0.8.61.0
 		- CDRip auf Version 117 aktualisiert, um einige ASPI Probleme zu beheben
 		- LAME auf Version 3.93.1 aktualisiert
+		- FAAC auf Version 1.14 aktualisiert
 		- Kleinere Verbesserungen und Bugfixes
 
 	Version 0.8

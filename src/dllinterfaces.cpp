@@ -425,11 +425,11 @@ Bool bonkEnc::LoadFAACDLL()
 
 	if (faacdll == NIL) return false;
 
-	ex_faacEncOpen				= (FAACENCOPEN) GetProcAddress(faacdll, "faacEncOpen@16");
-	ex_faacEncGetCurrentConfiguration	= (FAACENCGETCURRENTCONFIGURATION) GetProcAddress(faacdll, "faacEncGetCurrentConfiguration@4");
-	ex_faacEncSetConfiguration		= (FAACENCSETCONFIGURATION) GetProcAddress(faacdll, "faacEncSetConfiguration@8");
-	ex_faacEncEncode			= (FAACENCENCODE) GetProcAddress(faacdll, "faacEncEncode@20");
-	ex_faacEncClose				= (FAACENCCLOSE) GetProcAddress(faacdll, "faacEncClose@4");
+	ex_faacEncOpen				= (FAACENCOPEN) GetProcAddress(faacdll, "faacEncOpen");
+	ex_faacEncGetCurrentConfiguration	= (FAACENCGETCURRENTCONFIGURATION) GetProcAddress(faacdll, "faacEncGetCurrentConfiguration");
+	ex_faacEncSetConfiguration		= (FAACENCSETCONFIGURATION) GetProcAddress(faacdll, "faacEncSetConfiguration");
+	ex_faacEncEncode			= (FAACENCENCODE) GetProcAddress(faacdll, "faacEncEncode");
+	ex_faacEncClose				= (FAACENCCLOSE) GetProcAddress(faacdll, "faacEncClose");
 
 	if (ex_faacEncOpen == NULL)			{ FreeLibrary(faacdll); return false; }
 	if (ex_faacEncGetCurrentConfiguration == NULL)	{ FreeLibrary(faacdll); return false; }

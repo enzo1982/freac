@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">BonkEnc</property>
+    <property name="version">0.9</property>
+    <property name="language">Suomi</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">Krisu &lt;krisu@poispakkoruotsi.com&gt;</property>
+    <property name="url">http://www.bonkenc.org</property>
+  </info>
+  <data>
+    <entry id="1" string="File">Tiedosto</entry>
+    <entry id="2" string="Options">Asetukset</entry>
+    <entry id="3" string="Encode">Pakkaa</entry>
+    <entry id="4" string="Add">Lisää</entry>
+    <entry id="5" string="Remove">Poista</entry>
+    <entry id="6" string="Clear joblist">Tyhjennä lista</entry>
+    <entry id="7" string="Exit">Lopeta</entry>
+    <entry id="8" string="General settings...">Yleiset asetukset...</entry>
+    <entry id="9" string="Configure selected encoder...">Konfiguroi valittu pakkaaja...</entry>
+    <entry id="10" string="Audio file(s)...">Äänitiedosto(t)...</entry>
+    <entry id="11" string="Audio CD contents">Äänilevyn sisältö</entry>
+    <entry id="12" string="Start encoding">Aloita pakkaus</entry>
+    <entry id="13" string="Stop encoding">Pysäytä pakkaus</entry>
+    <entry id="14" string="Encoding file:">Pakataan tiedostoa:</entry>
+    <entry id="15" string="Time left:">Aikaa jäljellä:</entry>
+    <entry id="16" string="Percent done:">Eteneminen:</entry>
+    <entry id="17" string="Selected encoder:">Valittu pakkaaja:</entry>
+    <entry id="18" string="File progress:">Tiedoston eteneminen:</entry>
+    <entry id="19" string="Output dir.:">Hakemisto:</entry>
+    <entry id="20" string=" file(s) in joblist:"> tiedosto(a) listassa:</entry>
+    <entry id="21" string="none">ei mitään</entry>
+    <entry id="22" string="Display information about BonkEnc">Näytä tietoja kohteesta BonkEnc</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Lisää äänitiedosto(t) listalle</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Lisää äänilevyn sisältö listalle</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Poista valittu kohta listalta</entry>
+    <entry id="26" string="Clear the entire joblist">Tyhjennä koko lista</entry>
+    <entry id="27" string="Configure general settings">Konfiguroi yleiset asetukset</entry>
+    <entry id="28" string="Configure the selected audio encoder">Konfiguroi valittu äänenpakkaaja</entry>
+    <entry id="29" string="Start the encoding process">Aloita pakkaustoiminto</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Pakkauksen aikana ei voida muuttaa listaa!</entry>
+    <entry id="31" string="Error">Virhe</entry>
+    <entry id="32" string="Audio Files">Äänitiedostot</entry>
+    <entry id="33" string="Apple Audio Files">Apple-äänitiedostot</entry>
+    <entry id="34" string="Creative Voice Files">Creative Voice -tiedostot</entry>
+    <entry id="35" string="Sun Audio Files">Sun Audio -tiedostot</entry>
+    <entry id="36" string="Wave Files">Aaltoäänitiedostot</entry>
+    <entry id="37" string="Windows CD Audio Track">Windows CD Audio -raita</entry>
+    <entry id="38" string="All Files">Kaikki tiedostot</entry>
+    <entry id="39" string="You have not selected a file!">Et ole valinnut tiedostoa!</entry>
+    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">Pakkaus on edelleen käynnissä!\nHaluatko silti poistua?</entry>
+    <entry id="41" string="Currently encoding">Nyt pakataan</entry>
+    <entry id="42" string="This program is being distributed under the terms">Tätä ohjelmaa levitettäessä noudatetaan</entry>
+    <entry id="43" string="of the GNU General Public License (GPL">GNU General Public License (GPL).</entry>
+    <entry id="44" string="About BonkEnc">Tietoja BonkEncistä</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE Out -suodattimelle ei voida määrittää ehtoja!</entry>
+    <entry id="46" string="WAVE Out filter">WAVE Out -suodatin</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Pakkauksen aikana ei voida muuttaa asetuksia!</entry>
+    <entry id="48" string="encoder configuration">Pakkaajan asetukset</entry>
+    <entry id="49" string="OK">OK</entry>
+    <entry id="50" string="Cancel">Peruuta</entry>
+    <entry id="51" string="Encoding Mode">Pakkaustapa</entry>
+    <entry id="52" string="Variable Bitrate">Muuttuva bittivirta</entry>
+    <entry id="53" string="Average Bitrate">Keskimääräinen bittivirta</entry>
+    <entry id="54" string="Quality">Laatu</entry>
+    <entry id="55" string="Encoders">Pakkaajat</entry>
+    <entry id="56" string="Language">Kieli</entry>
+    <entry id="58" string="General settings setup">Yleisasetuksien määritys</entry>
+    <entry id="59" string="Configure encoder">Konfiguroi pakkaaja</entry>
+    <entry id="60" string="Encoder">Pakkaaja</entry>
+    <entry id="61" string="Output directory">Hakemisto pakatuille tiedostoille</entry>
+    <entry id="62" string="Browse">Selaa</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Valitse hakemisto, minne pakatut tiedostot pannaan:</entry>
+    <entry id="64" string="Encoding">Koodaus</entry>
+    <entry id="65" string="Author">Tekijä</entry>
+    <entry id="66" string="URL">URL</entry>
+    <entry id="67" string="Information">Tiedot</entry>
+    <entry id="68" string="Select language:">Valitse kieli:</entry>
+    <entry id="69" string="Active CD-ROM drive">Valittu CD-asema</entry>
+    <entry id="70" string="Ripper settings">Rippaajan asetukset</entry>
+    <entry id="71" string="Activate cdparanoia mode:">Ota käyttöön cdparanoia-tila:</entry>
+    <entry id="72" string="Activate jitter correction">Ota käyttöön värinän korjaus</entry>
+    <entry id="73" string="Swap left/right channel">Vaihda vasen/oikea kanava</entry>
+    <entry id="74" string="Lock CD tray while ripping">Lukitse CD-kelkka</entry>
+    <entry id="75" string="Use native NT SCSI library">Käytä NT:n SCSI-kirjastoa</entry>
+    <entry id="76" string="Overlap only">Vain limitys</entry>
+    <entry id="77" string="No verify">Ei varmennusta</entry>
+    <entry id="78" string="No scratch repair">Ei naarmujenkorjausta</entry>
+    <entry id="79" string="Full cdparanoia mode">Täysi cdparanoia-tila</entry>
+    <entry id="80" string="Bitrate">Bittivirran nopeus</entry>
+    <entry id="81" string="Copyright bit">Tekijänoikeusmerkki</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">Alkuperäismerkki</entry>
+    <entry id="84" string="Channels">Kanavat</entry>
+    <entry id="85" string="Private bit">Yksityismerkki</entry>
+    <entry id="86" string="Set Copyright bit">Tekijänoikeusmerkki</entry>
+    <entry id="87" string="Enable CRC">Ota käyttöön CRC</entry>
+    <entry id="88" string="Set Original bit">Alkuperäismerkki</entry>
+    <entry id="89" string="Dual channel encoding">Kaksoiskanavapakkaus</entry>
+    <entry id="90" string="Set Private bit">Yksityismerkki</entry>
+    <entry id="91" string="Encoder mode">Pakkaajan tila</entry>
+    <entry id="92" string="Stereo mode">Stereo-tila</entry>
+    <entry id="93" string="Quantization">Kvantifiointi</entry>
+    <entry id="94" string="Downsampling ratio">Alasnäytteistäminen</entry>
+    <entry id="95" string="Predictor size">Ennustuksen koko</entry>
+    <entry id="96" string="Enable lossless encoding">Häviötön pakkaus</entry>
+    <entry id="97" string="Enable Joint Stereo">Yhdistetty stereo</entry>
+    <entry id="98" string="Bitrate per channel:">Bittivirta kanavaa kohti:</entry>
+    <entry id="99" string="Preselection">Esivalinta</entry>
+    <entry id="100" string="Number of preselection candidates:">Esivalittujen ehdokkaiden määrä:</entry>
+    <entry id="101" string="MPEG version">MPEG-versio</entry>
+    <entry id="102" string="AAC object type">AAC-objektityyppi</entry>
+    <entry id="103" string="Allow Joint Stereo">Salli yhdistetty stereo</entry>
+    <entry id="104" string="Temporal Noise Shaping">Ajallinen melunmuokkaus</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Käytä ajallista melunmuokkausta</entry>
+    <entry id="106" string="Maximum bandwidth">Suurin kaistanleveys</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Suurin käytettävä AAC:n taajuuskaista (Hz):</entry>
+    <entry id="108" string="Basic">Perus</entry>
+    <entry id="109" string="Misc">Sekalaiset</entry>
+    <entry id="110" string="Audio processing">Äänenkäsittely</entry>
+    <entry id="111" string="Set bitrate:">Aseta bittivirta:</entry>
+    <entry id="112" string="Set ratio:">Aseta suhde:</entry>
+    <entry id="113" string="Set quality:">Laatu:</entry>
+    <entry id="114" string="worse">huono</entry>
+    <entry id="115" string="better">hyvä</entry>
+    <entry id="116" string="Auto">Automaattinen</entry>
+    <entry id="117" string="Stereo">Stereo</entry>
+    <entry id="118" string="Joint Stereo">Yhdistetty stereo</entry>
+    <entry id="119" string="Force Joint Stereo">Pakota yhdistetty</entry>
+    <entry id="120" string="VBR mode">VBR-tila</entry>
+    <entry id="121" string="no VBR">ei VBR:ää</entry>
+    <entry id="122" string="VBR quality">VBR:n laatu</entry>
+    <entry id="123" string="ABR target bitrate">ABR:n kohdebittivirta</entry>
+    <entry id="124" string="VBR bitrate range">VBR:n bittivirta-alue</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Aseta pienin VBR-bittivirta:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Aseta suurin VBR-bittivirta:</entry>
+    <entry id="127" string="Control bits">Ohjausbitit</entry>
+    <entry id="128" string="Stream format">Virran muoto</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Noudata tiukasti standardia</entry>
+    <entry id="130" string="Padding">Täyte</entry>
+    <entry id="131" string="Set padding type:">Määrittele täytetyyppi:</entry>
+    <entry id="132" string="pad no frames">älä täytä kehyksiä</entry>
+    <entry id="133" string="pad all frames">täytä kaikki kehykset</entry>
+    <entry id="134" string="adjust padding">säätele täyttöä</entry>
+    <entry id="135" string="Output sampling rate">Näytteenottotaajuus</entry>
+    <entry id="136" string="no resampling">Ei ollenkaan</entry>
+    <entry id="137" string="Highpass filter">Korkean väylän suodatin</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Korkean väylän taajuus (Hz):</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Korkean väylän leveys(Hz):</entry>
+    <entry id="140" string="Lowpass filter">Matalan väylän suodatin</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Matalan väylän taajuus (Hz):</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Matalan väylän leveys (Hz):</entry>
+    <entry id="143" string="Misc settings">Sekalaiset asetukset</entry>
+    <entry id="144" string="Disable all filtering">Poista suodattimet</entry>
+    <entry id="145" string="MP3 Files">MP3-tiedostot</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis -tiedostot</entry>
+    <entry id="147" string="BONK Files">BONK -tiedostot</entry>
+    <entry id="148" string="Enable CDDB">Ota käyttöön CDDB</entry>
+    <entry id="149" string="CDDB access mode:">CDDB-kirjautumistila:</entry>
+    <entry id="150" string="CDDB server:">CDDB-palvelin:</entry>
+    <entry id="151" string="Port:">Portti:</entry>
+    <entry id="152" string="Info">Tiedot</entry>
+    <entry id="153" string="No freedb entry for this disk.">Ei freedb-merkintää tälle levylle.</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Sattui joku virhe yritettäessä yhdistää freedb-palvelimelle.</entry>
+    <entry id="155" string="Connecting to freedb server at">Otetaan yhteyttä freedb-palvelimeen</entry>
+    <entry id="156" string="Requesting CD information">Pyydetään levyn tietoja</entry>
+    <entry id="157" string="eMail address:">Sähköposti:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Anna toimiva sähköpostiosoite.</entry>
+    <entry id="159" string="No exact matches found">Ei löytynyt täsmällisiä tuloksia</entry>
+    <entry id="160" string="Multiple matches found">Löydettiin monia tuloksia</entry>
+    <entry id="161" string="Matches">Tulokset</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Valitse levyäsi parhaiten vastaava tulos:</entry>
+    <entry id="163" string="Extended CDDB settings">Laajennetut CDDB-asetukset</entry>
+    <entry id="164" string="CGI scripts">CGI-lausekkeet</entry>
+    <entry id="165" string="CDDB query script:">CDDB-kyselylauseke:</entry>
+    <entry id="166" string="CDDB submit script:">CDDB-lisäyslauseke:</entry>
+    <entry id="167" string="HTTP settings">HTTP-asetukset</entry>
+    <entry id="168" string="Proxy settings">Välityspalvelimet</entry>
+    <entry id="169" string="no proxy">Ei välityspalvelinta</entry>
+    <entry id="170" string="Proxy type:">Palvelimen tyyppi:</entry>
+    <entry id="171" string="Proxy server:">Välityspalvelin:</entry>
+  </data>
+</LangFile>

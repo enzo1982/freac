@@ -9,7 +9,7 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/console.o $(OBJECTDIR)/console_interface.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/console.o $(OBJECTDIR)/console_interface.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -97,6 +97,11 @@ $(OBJECTDIR)/dllinterfaces.o: $(SRCDIR)/dllinterfaces.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dllinterfaces.cpp -o $(OBJECTDIR)/dllinterfaces.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/encoder.o: $(SRCDIR)/encoder.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/encoder.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/encoder.cpp -o $(OBJECTDIR)/encoder.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/faacconfig.o: $(SRCDIR)/faacconfig.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/faacconfig.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/faacconfig.cpp -o $(OBJECTDIR)/faacconfig.o
@@ -110,6 +115,11 @@ $(OBJECTDIR)/genconfig.o: $(SRCDIR)/genconfig.cpp
 $(OBJECTDIR)/i18n.o: $(SRCDIR)/i18n.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/i18n.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/i18n.cpp -o $(OBJECTDIR)/i18n.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/joblist.o: $(SRCDIR)/joblist.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/joblist.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/joblist.cpp -o $(OBJECTDIR)/joblist.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/lameconfig.o: $(SRCDIR)/lameconfig.cpp

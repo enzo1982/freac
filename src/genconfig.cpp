@@ -100,7 +100,7 @@ configureGeneralSettings::configureGeneralSettings()
 	}
 
 	if (currentConfig->enable_bonk)		encoders_combo_encoder->AddEntry(String("BonkEnc v").Append(ex_bonk_get_version_string()));
-	if (currentConfig->enable_faac)		encoders_combo_encoder->AddEntry(String("FAAC v").Append(String::DoubleToString(FAACENC_VERSION)));
+	if (currentConfig->enable_faac)		encoders_combo_encoder->AddEntry(String("FAAC v").Append(FAACENC_VERSION));
 	if (currentConfig->enable_lame)		encoders_combo_encoder->AddEntry(String("LAME v").Append(ex_get_lame_short_version()));
 	if (currentConfig->enable_vorbis)	encoders_combo_encoder->AddEntry(String("Ogg Vorbis v1.0"));
 

@@ -37,8 +37,7 @@ extern "C" {
   #endif
 #endif
 
-#define FAACENC_VERSION 1.9
-#define FAACENC_VERSIONB 1 /* If 1 this version is still in beta */
+#define FAACENC_VERSION "1.14 (beta)"
 
 /* MPEG ID's */
 #define MPEG2 1
@@ -81,10 +80,17 @@ typedef struct faacEncConfiguration
 	*/
 	unsigned int outputFormat;
 
+	// psychoacoustic model list
+	const struct {
+	  void *ptr;
+	  char *name;
+	} *psymodellist;
+	// selected index in psymodellist
+	unsigned int psymodelidx;
+
 } faacEncConfiguration, *faacEncConfigurationPtr;
 
 typedef void *faacEncHandle;
-
 
 faacEncConfigurationPtr FAACAPI faacEncGetCurrentConfiguration(faacEncHandle hEncoder);
 int FAACAPI faacEncSetConfiguration (faacEncHandle hEncoder, faacEncConfigurationPtr config);
