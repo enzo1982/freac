@@ -23,7 +23,6 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	Point	 pos;
 	Size	 size;
-	String	 title;
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("CDDB data"));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
@@ -40,7 +39,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	pos.x -= 88;
 
-	btn_submit			= new Button(bonkEnc::i18n->TranslateString("Submit"), NIL, pos, size);
+	btn_submit		= new Button(bonkEnc::i18n->TranslateString("Submit"), NIL, pos, size);
 	btn_submit->onClick.Connect(&cddbSubmitDlg::Submit, this);
 	btn_submit->SetOrientation(OR_LOWERRIGHT);
 
@@ -79,9 +78,9 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	text_genre	= new Text(bonkEnc::i18n->TranslateString("Genre").Append(":"), pos);
 
-	pos.x += (7 + (Int) Math::Max(text_artist->GetObjectProperties()->textSize.cx, text_album->GetObjectProperties()->textSize.cx));
+	pos.x += (7 + (Int) Math::Max(text_artist->GetObjectProperties()->textSize.cx, Math::Max(text_album->GetObjectProperties()->textSize.cx, text_genre->GetObjectProperties()->textSize.cx)));
 	pos.y -= 59;
-	size.cx = 186 - (Int) Math::Max(text_artist->GetObjectProperties()->textSize.cx, text_album->GetObjectProperties()->textSize.cx);
+	size.cx = 186 - (Int) Math::Max(text_artist->GetObjectProperties()->textSize.cx, Math::Max(text_album->GetObjectProperties()->textSize.cx, text_genre->GetObjectProperties()->textSize.cx));
 	size.cy = 0;
 
 	edit_artist	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
@@ -253,8 +252,9 @@ cddbSubmitDlg::cddbSubmitDlg()
 	pos.x = 226;
 
 	text_year	= new Text(bonkEnc::i18n->TranslateString("Year").Append(":"), pos);
+	text_year->SetMetrics(Point(249 - text_year->GetObjectProperties()->textSize.cx, text_year->GetObjectProperties()->pos.y), text_year->GetObjectProperties()->size);
 
-	pos.x += (7 + text_year->GetObjectProperties()->textSize.cx);
+	pos.x = 256;
 	pos.y -= 3;
 	size.cx = 31;
 
@@ -631,6 +631,23 @@ Void cddbSubmitDlg::ChangeDrive()
 			if (j == numTocEntries) cddbInfo->disclength = (entry.dwStartSector + 150) / 75;
 
 			if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == j + 1) titles.AddEntry("", list_tracks->AddEntry(String(entry.btTrackNumber < 10 ? "0" : "").Append(String::IntToString(entry.btTrackNumber)).Append("\t").Append(bonkEnc::i18n->TranslateString("unknown title")))->code);
+		}
+	}
+
+	for (Int l = 0; l < currentConfig->appMain->sa_formatinfo.GetNOfEntries(); l++)
+	{
+		bonkFormatInfo::bonkTrackInfo	*trackInfo = currentConfig->appMain->sa_formatinfo.GetNthEntry(l)->trackInfo;
+
+		if (trackInfo->discid != cddb.ComputeDiscID()) continue;
+
+		for (Int m = 0; m < titles.GetNOfEntries(); m++)
+		{
+			if (trackInfo->track == list_tracks->GetNthEntryName(m).ToInt() && trackInfo->title != titles.GetNthEntry(m))
+			{
+				titles.SetEntry(titles.GetNthEntryIndex(m), trackInfo->title);
+				cddbInfo->titles.SetEntry(trackInfo->track - 1, trackInfo->title);
+				list_tracks->ModifyEntry(list_tracks->GetNthEntry(m), String(trackInfo->track < 10 ? "0" : "").Append(String::IntToString(trackInfo->track)).Append("\t").Append(trackInfo->title));
+			}
 		}
 	}
 

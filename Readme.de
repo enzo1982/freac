@@ -11,7 +11,7 @@ BonkEnc mit der '--console' Option aufgerufen wird.
 Geschichte
 ----------
 
-	Version 0.9-CVS (März 2003)
+	Version 0.9 (März 2003)
 
 		- Unterstützung für Drag & Drop hinzugefügt
 		- Unterstützung für LAME Voreinstellungen hinzugefügt
@@ -82,7 +82,7 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP, Windows 95/98/SE/ME
+	- Windows 2000/XP, Windows 98/SE/ME
 	- Ein 200MHz Prozessor oder besser, um BONK Dateien abzuspielen
 	- Winamp wird benötigt um BONK Dateien unter Windows abzuspielen
 	- Zum CD-Rippen werden korrekt installierte ASPI-Treiber benötigt

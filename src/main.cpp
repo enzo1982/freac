@@ -33,6 +33,8 @@
 #include <cddb_multimatch.h>
 #include <cddb_submit.h>
 
+#include <language.h>
+
 Int	 ENCODER_BONKENC	= -1;
 Int	 ENCODER_BLADEENC	= -1;
 Int	 ENCODER_LAMEENC	= -1;
@@ -74,8 +76,21 @@ bonkEnc::bonkEnc()
 	if (ScanForParameter("--console", NULL))	currentConfig->enable_console = true;
 	else						currentConfig->enable_console = false;
 
-	if (!currentConfig->enable_console) i18n = new bonkTranslator();
-	if (!currentConfig->enable_console) i18n->ActivateLanguage(currentConfig->language);
+	if (!currentConfig->enable_console)
+	{
+		i18n = new bonkTranslator();
+
+		if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
+		{
+			languageDlg	*dlg = new languageDlg();
+
+			dlg->ShowDialog();
+
+			delete dlg;
+		}
+
+		i18n->ActivateLanguage(currentConfig->language);
+	}
 
 	if (LoadBonkDLL() == false)	currentConfig->enable_bonk = false;
 	else				currentConfig->enable_bonk = true;
@@ -389,7 +404,7 @@ bonkEnc::bonkEnc()
 	pos.y += 3;
 	size.cx = 31;
 
-	info_edit_year		= new EditBox("", pos, size, EDB_NUMERIC, 0);
+	info_edit_year		= new EditBox("", pos, size, EDB_NUMERIC, 4);
 	info_edit_year->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_year->SetOrientation(OR_LOWERLEFT);
 
@@ -565,8 +580,8 @@ bonkEnc::bonkEnc()
 	info_text_genre->SetMetrics(Point(info_edit_year->GetObjectProperties()->pos.x + 38, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
 	info_text_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
-	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
-	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
+	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
+	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
 	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
 
 	pos.y = 99;
@@ -969,8 +984,8 @@ Void bonkEnc::DrawProc()
 	info_text_genre->SetMetrics(Point(info_edit_year->GetObjectProperties()->pos.x + 38, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
 	info_text_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
-	info_edit_artist->SetMetrics(info_edit_artist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
-	info_edit_album->SetMetrics(info_edit_album->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
+	info_edit_artist->SetMetrics(info_edit_artist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
+	info_edit_album->SetMetrics(info_edit_album->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
 	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
 
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), Math::Max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
@@ -1586,8 +1601,8 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	info_text_genre->SetMetrics(Point(info_edit_year->GetObjectProperties()->pos.x + 38, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
 	info_text_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
-	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
-	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
+	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
+	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
 	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
 
 	if (currentConfig->showTitleInfo)

@@ -11,7 +11,7 @@ BonkEnc with the '--console' parameter.
 History
 -------
 
-	Version 0.9-CVS (March 2003)
+	Version 0.9 (March 2003)
 
 		- added Drag & Drop functionality
 		- added support for LAME presets
@@ -82,7 +82,7 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP, Windows 95/98/SE/ME
+	- Windows 2000/XP, Windows 98/SE/ME
 	- A 200MHz processor or better for playing BONK files
 	- Winamp is required to play BONK files in Windows
 	- You'll need properly installed ASPI drivers for CD ripping.

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -65,6 +65,7 @@
     <entry id="54" string="Quality">Minõség</entry>
     <entry id="55" string="Encoders">Tömörítõk</entry>
     <entry id="56" string="Language">Nyelv</entry>
+    <entry id="57" string="Show title info">Cím információ kijelzése</entry>
     <entry id="58" string="General settings setup">Általános beállítások</entry>
     <entry id="59" string="Configure encoder">Tömörítõ beállítása</entry>
     <entry id="60" string="Encoder">Tömörítõ</entry>
@@ -179,5 +180,39 @@
     <entry id="169" string="no proxy">nincs Proxy</entry>
     <entry id="170" string="Proxy type:">Proxy típusa:</entry>
     <entry id="171" string="Proxy server:">Proxy szerver:</entry>
+    <entry id="172" string="Presets">Beállítások</entry>
+    <entry id="173" string="Use preset:">Használható beállítás:</entry>
+    <entry id="174" string="Custom settings">Egyedi beállítások</entry>
+    <entry id="175" string="Medium">Közepes</entry>
+    <entry id="176" string="Standard">Standard</entry>
+    <entry id="177" string="Extreme">Extrém</entry>
+    <entry id="178" string="Insane">Elborult &gt;:)</entry>
+    <entry id="179" string="Medium, Fast">Közepes, Gyors</entry>
+    <entry id="180" string="Standard, Fast">Standard, Gyors</entry>
+    <entry id="181" string="Extreme, Fast">Extrém, Gyors</entry>
+    <entry id="182" string="Title">Cím</entry>
+    <entry id="183" string="Track">Szám</entry>
+    <entry id="184" string="Length">Hossz</entry>
+    <entry id="185" string="Size">Méret</entry>
+    <entry id="186" string="Artist">Elõadó</entry>
+    <entry id="187" string="Year">Év</entry>
+    <entry id="188" string="Genre">Mûfaj</entry>
+    <entry id="189" string="Album">Album</entry>
+    <entry id="190" string="Info tags">Info Tag-ek</entry>
+    <entry id="191" string="Write ID3V2/Vorbis info tags">ID3V2/Vorbis Info Tag-ek írása</entry>
+    <entry id="192" string="Default comment string:">Alap megjegyzés:</entry>
+    <entry id="193" string="unknown artist">ismeretlen elõadó</entry>
+    <entry id="194" string="unknown title">ismeretlen cím</entry>
+    <entry id="195" string="Unable to load ASPI drivers!">Az ASPI meghajtókat nem tudom betölteni!</entry>
+    <entry id="196" string="Database">Adatbázis</entry>
+    <entry id="197" string="Submit CDDB data...">CDDB adatok küldése...</entry>
+    <entry id="198" string="Enable CDDB cache">CDDB Cache bekapcsolása</entry>
+    <entry id="199" string="CDDB data">CDDB adatok</entry>
+    <entry id="200" string="Submit">Küldés</entry>
+    <entry id="201" string="No audio CD in drive!">Nincs Audio-CD a meghajtóban!</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Feltöltés elõtt tölts ki minden mezõt és számcímet!</entry>
+    <entry id="203" string="CD ripping disabled!">CD-másolás kikapcsolva!</entry>
+    <entry id="204" string="Do you want to use native NT SCSI instead?">Inkább NT SCSI módot akarsz használni?</entry>
+    <entry id="205" string="Submitting CD information">CD infók küldése</entry>
   </data>
 </LangFile>

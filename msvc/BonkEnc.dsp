@@ -235,6 +235,10 @@ SOURCE=..\src\lameconfig.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\language.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\main.cpp
 # End Source File
 # Begin Source File
@@ -376,6 +380,10 @@ SOURCE=..\include\i18n.h
 # Begin Source File
 
 SOURCE=..\include\lameconfig.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\language.h
 # End Source File
 # Begin Source File
 

@@ -95,7 +95,7 @@ Bool bonkEncConfig::LoadSettings()
 	delete [] buffera;
 	delete [] bufferw;
 
-	language = getINIValue("Settings", "Language", "english-internal");
+	language = getINIValue("Settings", "Language", "");
 
 	wndPos.x = getINIValue("Settings", "WindowPosX", "100").ToInt();
 	wndPos.y = getINIValue("Settings", "WindowPosY", "100").ToInt();
@@ -120,7 +120,7 @@ Bool bonkEncConfig::LoadSettings()
 	freedb_server = getINIValue("freedb", "Server", "freedb.freedb.org");
 	freedb_mode = getINIValue("freedb", "ReadMode", "0").ToInt();
 	freedb_cddbp_port = getINIValue("freedb", "CDDBPPort", "8880").ToInt();
-	freedb_http_port = getINIValue("freedb", "HTTPPort", "80").ToInt();
+	freedb_http_port = 80;
 	freedb_query_path = getINIValue("freedb", "QueryPath", "/~cddb/cddb.cgi");
 	freedb_submit_path = getINIValue("freedb", "SubmitPath", "/~cddb/submit.cgi");
 	freedb_email = getINIValue("freedb", "eMail", "cddb@bonkenc.org");
@@ -321,10 +321,6 @@ Bool bonkEncConfig::SaveSettings()
 
 		str = "CDDBPPort=";
 		str.Append(String::IntToString(freedb_cddbp_port));
-		out->OutputLine(str);
-
-		str = "HTTPPort=";
-		str.Append(String::IntToString(freedb_http_port));
 		out->OutputLine(str);
 
 		str = "QueryPath=";

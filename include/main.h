@@ -45,6 +45,7 @@ class bonkFormatInfo
 
 						track = -1;
 						drive = -1;
+						discid = 0;
 
 						hasText = False;
 						year = -1;
@@ -52,6 +53,7 @@ class bonkFormatInfo
 
 				Bool	 isCDTrack;
 				Int	 drive;
+				Int	 discid;
 				Int	 cdTrack;
 
 				Bool	 hasText;
@@ -155,7 +157,6 @@ class bonkEnc : public Application
 
 		Progressbar		*progress;
 
-		Array<bonkFormatInfo *>	 sa_formatinfo;
 		Bool			 encoding;
 		Thread			*encoder_thread;
 
@@ -236,6 +237,7 @@ class bonkEnc : public Application
 
 		Array<String>		 cdText;
 		CDDBInfo		*cddbInfo;
+		Array<bonkFormatInfo *>	 sa_formatinfo;
 
 					 bonkEnc();
 					~bonkEnc();

@@ -9,7 +9,7 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/console.o $(OBJECTDIR)/console_interface.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/console.o $(OBJECTDIR)/console_interface.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/language.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -130,6 +130,11 @@ $(OBJECTDIR)/joblist.o: $(SRCDIR)/joblist.cpp
 $(OBJECTDIR)/lameconfig.o: $(SRCDIR)/lameconfig.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/lameconfig.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/lameconfig.cpp -o $(OBJECTDIR)/lameconfig.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/language.o: $(SRCDIR)/language.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/language.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/language.cpp -o $(OBJECTDIR)/language.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/main.o: $(SRCDIR)/main.cpp
