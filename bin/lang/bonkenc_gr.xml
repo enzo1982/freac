@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">BonkEnc</property>
+    <property name="version">1.0</property>
+    <property name="language">Ελληνικά</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">Φώτης Ευαγγέλου (Fotis Evangelou) &lt;fevangelou@msn.com&gt;</property>
+    <property name="url">http://www.bonkenc.org</property>
+  </info>
+  <data>
+    <entry id="1" string="File">Αρχείο</entry>
+    <entry id="2" string="Options">Επιλογές</entry>
+    <entry id="3" string="Encode">Κωδικοποίηση</entry>
+    <entry id="4" string="Add">Προσθήκη</entry>
+    <entry id="5" string="Remove">Κατάργηση</entry>
+    <entry id="6" string="Clear joblist">Καθάρισμα Λίστας Εργασίας</entry>
+    <entry id="7" string="Exit">Έξοδος</entry>
+    <entry id="8" string="General settings...">Γενικές Ρυθμίσεις...</entry>
+    <entry id="9" string="Configure selected encoder...">Ρύθμιση επιλεγμένου Κωδικοποιητή...</entry>
+    <entry id="10" string="Audio file(s)...">Αρχείο(α) Ήχου...</entry>
+    <entry id="11" string="Audio CD contents">Περιεχόμενα CD Ήχου</entry>
+    <entry id="12" string="Start encoding">Έναρξη Κωδικοποίησης</entry>
+    <entry id="13" string="Stop encoding">Διακοπή Κωδικοποίησης</entry>
+    <entry id="14" string="Encoding file:">Κωδικοποίηση Αρχείου:</entry>
+    <entry id="15" string="Time left:">Χρόνος που απομένει:</entry>
+    <entry id="16" string="Percent done:">Ποσοστό που ολοκληρώθηκε:</entry>
+    <entry id="17" string="Selected encoder:">Επιλεγμένος Κωδικοποιητής:</entry>
+    <entry id="18" string="File progress:">Πρόοδος Αρχείου:</entry>
+    <entry id="19" string="Output dir.:">Τα αρχεία σώζονται στο φάκελο:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 Αρχείο(α) στη Λίστα Εργασίας:</entry>
+    <entry id="21" string="none">Κανένα</entry>
+    <entry id="22" string="Help topics...">Ευρετήριο Βοηθείας...</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Προσθήκη αρχείου(ων) ήχου στη Λίστα Εργασίας</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Προσθήκη περιεχομένων δίσκου CD στη Λίστα Εργασίας</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Κατάργηση επιλογής από τη Λίστα Εργασίας</entry>
+    <entry id="26" string="Clear the entire joblist">Καθαρισμός της Λίστας Εργασίας</entry>
+    <entry id="27" string="Configure general settings">Διαμόρφωση των Γενικών Ρυθμίσεων</entry>
+    <entry id="28" string="Configure the selected audio encoder">Διαμόρφωση Ρυθμίσεων επιλεγμένου Κωδικοποιητή</entry>
+    <entry id="29" string="Start the encoding process">Έναρξη της Διαδικασίας Κωδικοποίησης</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Αδύνατη η τροποποίηση της Λίστας Εργασίας κατά την Κωδικοποίηση</entry>
+    <entry id="31" string="Error">Σφάλμα</entry>
+    <entry id="32" string="Audio Files">Αρχεία ήχου</entry>
+    <entry id="33" string="Apple Audio Files">Αρχεία ήχου σε φορμά Apple</entry>
+    <entry id="34" string="Creative Voice Files">Αρχεία ήχου σε φορμά Creative Voice</entry>
+    <entry id="35" string="Sun Audio Files">Αρχεία ήχου σε φορμά Sun</entry>
+    <entry id="36" string="Wave Files">Αρχεία .wav</entry>
+    <entry id="37" string="Windows CD Audio Track">Αρχεία .cda</entry>
+    <entry id="38" string="All Files">Όλα τα αρχεία</entry>
+    <entry id="39" string="You have not selected a file!">Δεν επιλέξατε αρχεία!</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Η κωδικοποίηση είναι σε εξέλιξη! Είστε σίγουροι ότι θέλετε να διακόψετε;</entry>
+    <entry id="41" string="Currently encoding">Σε κωδικοποίηση</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Το πρόγραμμα διανέμεται κάτω από τους όρους&#10;GNU General Public License (GPL) (Γενική Άδεια Χρήσης GNU)</entry>
+    <entry id="43" string="CDDB query">Αίτηση CDDB</entry>
+    <entry id="44" string="About BonkEnc">Σχετικά με το BonkEnc</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">Καμμία επιλογή δεν μπορεί να διαμορφωθεί για το φίλτρο WAVE Out!</entry>
+    <entry id="46" string="WAVE Out filter">Φίλτρο WAVE Out</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Αδύνατη η τροποποίηση των Ρυθμίσεων κατά την Κωδικοποίηση</entry>
+    <entry id="48" string="%1 encoder configuration">%1 Ρύθμιση Κωδικοποιητή</entry>
+    <entry id="49" string="OK">OK</entry>
+    <entry id="50" string="Cancel">Άκυρο</entry>
+    <entry id="51" string="Encoding Mode">Επιλογή Κωδικοποίησης</entry>
+    <entry id="52" string="Variable Bitrate">Μεταβλητό Bitrate</entry>
+    <entry id="53" string="Average Bitrate">Μέσο Bitrate</entry>
+    <entry id="54" string="Quality">Ποιότητα</entry>
+    <entry id="55" string="Encoders">Κωδικοποιητές</entry>
+    <entry id="56" string="Language"/>
+    <entry id="57" string="Show title info">Εμφάνιση Πληροφοριών Τίτλου</entry>
+    <entry id="58" string="General settings setup">Διαμόρφωση Γενικών Επιλογών</entry>
+    <entry id="59" string="Configure encoder">Ρύθμιση Κωδικοποιητή</entry>
+    <entry id="60" string="Encoder">Κωδικοποιητής</entry>
+    <entry id="61" string="Output directory">Έξοδος Προς Φάκελο</entry>
+    <entry id="62" string="Browse">Αναζήτηση</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Επιλέξτε φάκελο αποθήκευσης των αρχείων:</entry>
+    <entry id="64" string="Encoding">Κωδικοποίηση</entry>
+    <entry id="65" string="Author"/>
+    <entry id="66" string="URL"/>
+    <entry id="67" string="Information">Πληροφορίες</entry>
+    <entry id="68" string="Select language:">Επιλέξτε γλώσσα:</entry>
+    <entry id="69" string="Active CD-ROM drive">Ενεργό CD-ROM Drive</entry>
+    <entry id="70" string="Ripper settings">Επιλογές Εξαγωγής CD</entry>
+    <entry id="71" string="Activate cdparanoia mode:">Επιλογή cdparanoia:</entry>
+    <entry id="72" string="Activate jitter correction">Διόρθωση jitter</entry>
+    <entry id="73" string="Swap left/right channel">Swap left/right channel</entry>
+    <entry id="74" string="Lock CD tray while ripping">Κλείδωμα πόρτας CD</entry>
+    <entry id="75" string="Use native NT SCSI library">Χρήση NT SCSI Library</entry>
+    <entry id="76" string="Overlap only">Μόνο Υπέρθεση</entry>
+    <entry id="77" string="No verify">Όχι Εξακρίβωση</entry>
+    <entry id="78" string="No scratch repair">Όχι Διόρθωση Γραντζουνιών</entry>
+    <entry id="79" string="Full cdparanoia mode">Πλήρης επιλογή cdparanoia</entry>
+    <entry id="80" string="Bitrate">Ρυθμός Διαμεταγωγής Δεδομένων (Bitrate)</entry>
+    <entry id="81" string="Copyright bit">Copyright bit</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">Original bit</entry>
+    <entry id="84" string="Channels">Κανάλια</entry>
+    <entry id="85" string="Private bit">Private bit</entry>
+    <entry id="86" string="Set Copyright bit">Set Copyright bit</entry>
+    <entry id="87" string="Enable CRC">Ενεργοποίηση CRC</entry>
+    <entry id="88" string="Set Original bit">Set Original bit</entry>
+    <entry id="89" string="Dual channel encoding">Δικάναλη Κωδικοποίηση</entry>
+    <entry id="90" string="Set Private bit">Set Private bit</entry>
+    <entry id="91" string="Encoder mode">Επιλογές Κωδικοποιητή</entry>
+    <entry id="92" string="Stereo mode">Επιλογή Stereo</entry>
+    <entry id="93" string="Quantization">Κβαντισμός (Quantization)</entry>
+    <entry id="94" string="Downsampling ratio">Ρυθμός Downsampling</entry>
+    <entry id="95" string="Predictor size">Προβλεπόμενο μέγεθος</entry>
+    <entry id="96" string="Enable lossless encoding">Απωλεστική κωδικοποίηση</entry>
+    <entry id="97" string="Enable Joint Stereo">Ενεργοποίηση Joint Stereo</entry>
+    <entry id="98" string="Bitrate per channel:">Bitrate ανά κανάλι</entry>
+    <entry id="99" string="Preselection">Προεπιλογή</entry>
+    <entry id="100" string="Number of preselection candidates:">Αριθμός προεπιλογών:</entry>
+    <entry id="101" string="MPEG version">Έκδοση MPEG</entry>
+    <entry id="102" string="AAC object type">Τύπος AAC</entry>
+    <entry id="103" string="Allow Joint Stereo">Joint Stereo</entry>
+    <entry id="104" string="Temporal Noise Shaping">Χρονική Μορφοποίηση Θορύβου</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Ενεργοποίηση</entry>
+    <entry id="106" string="Maximum bandwidth">Μέγιστο εύρος συχνοτήτων</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Μέγιστο εύρος συχνοτήτων AAC προς χρήση (Hz):</entry>
+    <entry id="108" string="Basic">Βασικό</entry>
+    <entry id="109" string="Misc">Διάφορα</entry>
+    <entry id="110" string="Audio processing">Επεξεργασία Ήχου</entry>
+    <entry id="111" string="Set bitrate:">Set bitrate:</entry>
+    <entry id="112" string="Set ratio:">Set ratio:</entry>
+    <entry id="113" string="Set quality:">Ρύθμιση:</entry>
+    <entry id="114" string="worse">Χειρότερη</entry>
+    <entry id="115" string="better">Καλύτερη</entry>
+    <entry id="116" string="Auto">Auto</entry>
+    <entry id="117" string="Stereo">Stereo</entry>
+    <entry id="118" string="Joint Stereo">Joint Stereo</entry>
+    <entry id="119" string="Force Joint Stereo">Εξανάγκασε</entry>
+    <entry id="120" string="VBR mode">Επιλογή VBR</entry>
+    <entry id="121" string="no VBR">Όχι VBR</entry>
+    <entry id="122" string="VBR quality">Ποιότητα VBR</entry>
+    <entry id="123" string="ABR target bitrate">Τελικό ABR Bitrate </entry>
+    <entry id="124" string="VBR bitrate range">Εύρος Bitrate VBR</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Ελάχιστο VBR Bitrate:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Μέγιστο VBR Bitrate:</entry>
+    <entry id="127" string="Control bits">Έλεγχος bits</entry>
+    <entry id="128" string="Stream format">Φορμά διαμεταγωγής</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Εξανάγκασε συμβατότητα κατά ISO</entry>
+    <entry id="130" string="Padding">Padding</entry>
+    <entry id="131" string="Set padding type:">Ρύθμιση τύπου:</entry>
+    <entry id="132" string="pad no frames">pad no frames</entry>
+    <entry id="133" string="pad all frames">pad all frames</entry>
+    <entry id="134" string="adjust padding">adjust padding</entry>
+    <entry id="135" string="Output sampling rate">Output sampling rate</entry>
+    <entry id="136" string="no resampling">No resampling</entry>
+    <entry id="137" string="Highpass filter">Φίλτρο Highpass</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Ρύθμιση συχνοτήτων (Hz):</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Ρύθμιση εύρους (Hz):</entry>
+    <entry id="140" string="Lowpass filter">Φίλτρο Lowpass</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Ρύθμιση συχνοτήτων (Hz):</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Ρύθμιση εύρους (Hz):</entry>
+    <entry id="143" string="Misc settings">Διάφορες Ρυθμίσεις</entry>
+    <entry id="144" string="Disable all filtering">Κανένα Φίλτρο</entry>
+    <entry id="145" string="MP3 Files">Αρχεία MP3</entry>
+    <entry id="146" string="Ogg Vorbis Files">Αρχεία Ogg Vorbis</entry>
+    <entry id="147" string="BONK Files">Αρχεία BONK</entry>
+    <entry id="148" string="Automatic CDDB queries">Αυτόματη αίτηση CDDB</entry>
+    <entry id="149" string="CDDB access mode:">Επιλογή πρόσβασης CDDB:</entry>
+    <entry id="150" string="CDDB server:">Εξυπηρετητής CDDB:</entry>
+    <entry id="151" string="Port:">Θύρα:</entry>
+    <entry id="152" string="Info">Πληροφορίες</entry>
+    <entry id="153" string="No freedb entry for this disk.">Καμμία καταχώρηση για αυτό τον δίσκο</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Πρόβλημα στη σύνδεση με τον εξυπηρετητή freedb</entry>
+    <entry id="155" string="Connecting to freedb server at">Σύνδεση με εξυπηρετητή freedb</entry>
+    <entry id="156" string="Requesting CD information">Αίτηση πληροφοριών CD</entry>
+    <entry id="157" string="eMail address:">Διεύθυνση e-mail:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Παρακαλώ προσθέστε μία έγκυρη διεύθυνση e-mail</entry>
+    <entry id="159" string="No exact matches found">Δεν βρέθηκαν ακριβείς καταχωρήσεις</entry>
+    <entry id="160" string="Multiple matches found">Βρέθηκαν πολλαπλές καταχωρήσεις</entry>
+    <entry id="161" string="Matches">Καταχωρήσεις</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Επιλέξτε την καταχώρηση που ανταποκρίνεται καλύτερα στο δίσκο CD:</entry>
+    <entry id="163" string="Extended CDDB settings">Εκτεταμένες ρυθμίσεις CDDB</entry>
+    <entry id="164" string="CGI scripts">Κείμενα CGI</entry>
+    <entry id="165" string="CDDB query script:">Κείμενο αίτησης CDDB:</entry>
+    <entry id="166" string="CDDB submit script:">Κείμενο καταχώρησης CDDB:</entry>
+    <entry id="167" string="HTTP settings">Ρυθμίσεις HTTP</entry>
+    <entry id="168" string="Proxy settings">Ρυθμίσεις Proxy</entry>
+    <entry id="169" string="no proxy">Όχι Proxy</entry>
+    <entry id="170" string="Proxy type:">Τύπος Proxy:</entry>
+    <entry id="171" string="Proxy server:">Εξυπηρετητής Proxy:</entry>
+    <entry id="172" string="Presets">Προεπιλογές</entry>
+    <entry id="173" string="Use preset:">Χρήση προεπιλογής:</entry>
+    <entry id="174" string="Custom settings">Προεπιλεγμένες Ρυθμίσεις</entry>
+    <entry id="175" string="Medium">Μέτρια</entry>
+    <entry id="176" string="Standard">Στάνταρ</entry>
+    <entry id="177" string="Extreme">Ακραία</entry>
+    <entry id="178" string="Insane">Παράλογη</entry>
+    <entry id="179" string="Medium, Fast">Γρήγορη Μέτρια</entry>
+    <entry id="180" string="Standard, Fast">Γρήγορη Στάνταρ</entry>
+    <entry id="181" string="Extreme, Fast">Γρήγορη Ακραία</entry>
+    <entry id="182" string="Title">Τίτλος</entry>
+    <entry id="183" string="Track">Κομμάτι</entry>
+    <entry id="184" string="Length">Διάρκεια</entry>
+    <entry id="185" string="Size">Μέγεθος</entry>
+    <entry id="186" string="Artist">Καλλιτέχνης</entry>
+    <entry id="187" string="Year">Έτος</entry>
+    <entry id="188" string="Genre">Κατηγορία</entry>
+    <entry id="189" string="Album">Άλμπουμ</entry>
+    <entry id="190" string="Info tags">Info Tags</entry>
+    <entry id="191" string="Write ID3V2/Vorbis info tags">Εγγραφή ετικεττών πληροφοριών ID3v2 ή Vorbis</entry>
+    <entry id="192" string="Default comment string:">Προεπιλεγμένο Σχόλιο:</entry>
+    <entry id="193" string="unknown artist">Άγνωστος Καλλιτέχνης</entry>
+    <entry id="194" string="unknown title">Άγνωστος Τίτλος</entry>
+    <entry id="195" string="Unable to load ASPI drivers!">Αδύνατο να φορτωθούν οι οδηγοί ASPI!</entry>
+    <entry id="196" string="Database">Βάση Πληροφοριών</entry>
+    <entry id="197" string="Submit CDDB data...">Καταχώρηση πληροφοριών CDDB...</entry>
+    <entry id="198" string="Enable CDDB cache">Ενεργοποίηση CDDB cache</entry>
+    <entry id="199" string="CDDB data">Πληροφορίες CDDB</entry>
+    <entry id="200" string="Submit">Καταχώρηση</entry>
+    <entry id="201" string="No audio CD in drive!">Δεν έχετε τοποθετήσει κανένα CD!</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Παρακαλώ συμπληρώστε όλα τα πεδία πριν την καταχώρηση</entry>
+    <entry id="203" string="CD ripping disabled!">Αδύνατη η εξαγωγή από το CD!</entry>
+    <entry id="204" string="Do you want to use native NT SCSI instead?">Προτιμάτε τη χρήση επιλογής NT SCSI;</entry>
+    <entry id="205" string="Submitting CD information">Καταχώρηση πληροφοριών CD</entry>
+    <entry id="206" string="Cannot open file:">Αδύνατο το άνοιγμα του αρχείου:</entry>
+    <entry id="207" string="Query CDDB database">Βάση δεδομένων αιτήσεων CDDB</entry>
+    <entry id="208" string="Help">Βοήθεια</entry>
+    <entry id="209" string="index.html">index.html</entry>
+    <entry id="210" string="Plug-ins">Plug-ins</entry>
+    <entry id="211" string="Input plug-ins">Plug-ins εισόδου</entry>
+    <entry id="212" string="Output plug-ins">Plug-ins εξόδου</entry>
+    <entry id="213" string="Configure">Ρύθμιση</entry>
+    <entry id="214" string="About">Σχετικά</entry>
+    <entry id="215" string="Play">Αναπαραγωγή</entry>
+    <entry id="216" string="Stop">Διακοπή Αναπαραγωγής</entry>
+    <entry id="217" string="Cannot play a file while encoding!">Αδύνατη η αναπαραγωγή αρχείου κατά την κωδικοποίηση!</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">Αδύνατη η έναρξη κωδικοποίησης κατά την αναπαραγωγή!</entry>
+    <entry id="219" string="CDDB Settings">Ρυθμίσεις CDDB</entry>
+    <entry id="220" string="ATH">ATH</entry>
+    <entry id="221" string="Enable ATH:">Ενεργοποίηση:</entry>
+    <entry id="222" string="Use default setting">Προεπιλεγμένη ρύθμιση</entry>
+    <entry id="223" string="Psycho acoustic model">Ψυχο-ακουστικό μοντέλο</entry>
+    <entry id="224" string="Use Temporal Masking Effect">Χρήση εφφέ &quot;χρονικού καμουφλάζ&quot;</entry>
+    <entry id="225" string="Expert">Για Προχωρημένους</entry>
+  </data>
+</LangFile>
