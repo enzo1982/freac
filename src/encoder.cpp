@@ -49,7 +49,8 @@ Void bonkEnc::Encode()
 	encoder_thread = new Thread();
 	encoder_thread->threadMain.Connect(&bonkEnc::Encoder, this);
 
-	encoding = true;
+	encoding = True;
+	stop_encoding = False;
 
 	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
 	encoder_thread->Start();
@@ -251,6 +252,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 					position += step;
 
+					if (stop_encoding) break;
+
 					if (!currentConfig->enable_console)
 					{
 						progress->SetValue((int) ((position * 100.0 / format->length) * 10.0));
@@ -309,6 +312,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 					position = filter_in->GetInBytes();
 
+					if (stop_encoding) break;
+
 					if (!currentConfig->enable_console)
 					{
 						progress->SetValue((int) ((position * 100.0 / f_in->Size()) * 10.0));
@@ -346,29 +351,19 @@ Int bonkEnc::Encoder(Thread *thread)
 					}
 				}
 			}
-
-			f_out->RemoveFilter();
-			f_in->RemoveFilter();
 		}
 
-		delete filter_out;
-		delete filter_in;
 		delete f_in;
+		delete filter_in;
+
+		if (f_out->Size() == 0) remove(out_filename);
+
+		delete f_out;
+		delete filter_out;
 
 		if (trackInfo->isCDTrack) delete d_zero;
 
-		if (f_out->Size() == 0)
-		{
-			delete f_out;
-
-			remove(out_filename);
-		}
-		else
-		{
-			delete f_out;
-		}
-
-		if (!currentConfig->enable_console)
+		if (!currentConfig->enable_console && !stop_encoding)
 		{
 			Int	 entry = joblist->GetNthEntry(i - nRemoved)->id;
 
@@ -417,6 +412,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			nRemoved++;
 		}
+
+		if (stop_encoding) break;
 	}
 
 	currentConfig->cdrip_activedrive = encoder_activedrive;
@@ -438,19 +435,11 @@ Void bonkEnc::StopEncoding()
 {
 	if (!encoding) return;
 
-	encoder_thread->Stop();
+	stop_encoding = True;
+
+	while (encoding) Sleep(10);
 
 	delete encoder_thread;
 
 	encoder_thread = NIL;
-	encoding = false;
-
-	currentConfig->cdrip_activedrive = encoder_activedrive;
-
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_locktray) ex_CR_LockCD(false);
-
-	edb_filename->SetText(i18n->TranslateString("none"));
-	edb_percent->SetText("0%");
-	progress->SetValue(0);
-	edb_time->SetText("00:00");
 }

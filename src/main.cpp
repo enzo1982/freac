@@ -613,15 +613,18 @@ bonkEncGUI::bonkEncGUI()
 	entry->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Clear the entire joblist"));
 
-	mainWnd_iconbar->AddEntry();
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	{
+		mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
-	entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
-	entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
+		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
+		entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
+		entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));
-	entry->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
-	entry->SetStatusText(i18n->TranslateString("Submit CDDB data..."));
+		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));
+		entry->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
+		entry->SetStatusText(i18n->TranslateString("Submit CDDB data..."));
+	}
 
 	mainWnd_iconbar->AddEntry();
 
@@ -1326,15 +1329,18 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	entry->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Clear the entire joblist"));
 
-	mainWnd_iconbar->AddEntry();
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	{
+		mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
-	entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
-	entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
+		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
+		entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
+		entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));
-	entry->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
-	entry->SetStatusText(i18n->TranslateString("Submit CDDB data..."));
+		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));
+		entry->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
+		entry->SetStatusText(i18n->TranslateString("Submit CDDB data..."));
+	}
 
 	mainWnd_iconbar->AddEntry();
 

@@ -41,9 +41,12 @@ bool FilterInLAME::Activate()
 
 		ex_lame_decode_headers(data, size, pcm_l, pcm_r, &mp3data);
 
+		delete [] pcm_l;
+		delete [] pcm_r;
+
 		delete [] data;
 
-		if (mp3data.stereo <= 2) break;
+		if (mp3data.stereo <= 2 && mp3data.stereo > 0) break;
 	}
 	while (driver->GetPos() < driver->GetSize());
 
@@ -115,13 +118,16 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 
 		ex_lame_decode_headers(data, size, pcm_l, pcm_r, &mp3data);
 
+		delete [] pcm_l;
+		delete [] pcm_r;
+
 		nFormat->channels = mp3data.stereo;
 		nFormat->rate = mp3data.samplerate;
 		nFormat->length = -1;
 
 		delete [] data;
 
-		if (mp3data.stereo <= 2) break;
+		if (mp3data.stereo <= 2 && mp3data.stereo > 0) break;
 	}
 	while (f_in->GetPos() < f_in->Size());
 

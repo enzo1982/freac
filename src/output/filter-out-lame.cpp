@@ -344,6 +344,8 @@ bool FilterOutLAME::Deactivate()
 
 	driver->WriteData(outbuffer, bytes);
 
+	delete [] outbuffer;
+
 	if (currentConfig->lame_vbrmode != vbr_off)
 	{
 		FILE	*f_out = fopen(Application::GetApplicationDirectory().Append("xing.tmp"), "w+b");

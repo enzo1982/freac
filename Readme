@@ -22,7 +22,7 @@ History
 		- added support for Winamp Input Plugins
 		- added support for audio playback through Winamp Output Plugins
 		- upgraded FAAC to version 1.17
-		- some bugfixes
+		- fixed many bugs and memory leaks
 
 	Version 0.9 (March 2003)
 

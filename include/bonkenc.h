@@ -151,10 +151,12 @@ class bonkEnc : public Application
 
 		Bool			 encoding;
 		Thread			*encoder_thread;
+		Bool			 stop_encoding;
 
 		Bool			 playing;
 		Bool			 paused;
 		Thread			*play_thread;
+		Bool			 stop_playback;
 
 		Int			 player_activedrive;
 		Int			 player_plugin;

@@ -629,7 +629,7 @@ Void configureGeneralSettings::OK()
 
 	for (Int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = True;
 
-	if (!valid)
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1 && !valid)
 	{
 		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Please enter a valid eMail address."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 

@@ -199,11 +199,11 @@ Bool bonkEncConfig::LoadSettings()
 	vorbis_bitrate = getINIValue("oggVorbis", "Bitrate", "192").ToInt();
 
 	faac_mpegversion = getINIValue("FAAC", "MPEGVersion", "0").ToInt();
-	faac_type = getINIValue("FAAC", "AACType", "0").ToInt();
+	faac_type = getINIValue("FAAC", "AACType", "1").ToInt();
 	faac_bitrate = getINIValue("FAAC", "Bitrate", "96").ToInt();
-	faac_bandwidth = getINIValue("FAAC", "BandWidth", "22000").ToInt();
+	faac_bandwidth = getINIValue("FAAC", "BandWidth", "22050").ToInt();
 	faac_allowjs = getINIValue("FAAC", "AllowJS", "1").ToInt();
-	faac_usetns = getINIValue("FAAC", "UseTNS", "0").ToInt();
+	faac_usetns = getINIValue("FAAC", "UseTNS", "1").ToInt();
 
 	tvq_bitrate = getINIValue("TwinVQ", "Bitrate", "48").ToInt();
 	tvq_presel_candidates = getINIValue("TwinVQ", "PreselectionCandidates", "32").ToInt();

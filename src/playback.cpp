@@ -50,6 +50,7 @@ Void bonkEnc::PlayItem(Int entry)
 	playing = True;
 	paused = False;
 	player_entry = entry;
+	stop_playback = False;
 
 	play_thread->SetFlags(THREAD_WAITFLAG_START);
 	play_thread->Start();
@@ -157,7 +158,14 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 					position += step;
 
-					while (out->CanWrite() < (int16(format->bits / 8) * step)) Sleep(10);
+					while (out->CanWrite() < (int16(format->bits / 8) * step))
+					{
+						if (stop_playback) break;
+
+						Sleep(10);
+					}
+
+					if (stop_playback) break;
 
 					out->Write((char *) sample_buffer, int16(format->bits / 8) * step);
 				}
@@ -184,7 +192,14 @@ Int bonkEnc::PlayThread(Thread *thread)
 						else			i--;
 					}
 
-					while (out->CanWrite() < (int16(format->bits / 8) * step)) Sleep(10);
+					while (out->CanWrite() < (int16(format->bits / 8) * step))
+					{
+						if (stop_playback) break;
+
+						Sleep(10);
+					}
+
+					if (stop_playback) break;
 
 					out->Write((char *) sample_buffer, int16(format->bits / 8) * step);
 				}
@@ -195,12 +210,12 @@ Int bonkEnc::PlayThread(Thread *thread)
 			f_in->RemoveFilter();
 		}
 
-		while (out->IsPlaying()) Sleep(20);
+		if (!stop_playback) while (out->IsPlaying()) Sleep(20);
 
 		out->Close();
 
-		delete filter_in;
 		delete f_in;
+		delete filter_in;
 	}
 
 	if (trackInfo->isCDTrack) delete d_zero;
@@ -229,21 +244,13 @@ Void bonkEnc::StopPlayback()
 {
 	if (!playing) return;
 
-	winamp_out_modules.GetNthEntry(player_plugin)->Close();
+	stop_playback = True;
 
-	play_thread->Stop();
+	while (playing) Sleep(10);
 
 	delete play_thread;
 
-	joblist->GetNthEntry(player_entry)->font.SetColor(Setup::ClientTextColor);
-	joblist->Paint(SP_PAINT);
-
 	play_thread = NIL;
-	playing = false;
-
-	currentConfig->cdrip_activedrive = player_activedrive;
-
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_locktray) ex_CR_LockCD(false);
 }
 
 Void bonkEnc::PlayPrevious()
