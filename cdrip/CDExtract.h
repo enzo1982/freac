@@ -27,6 +27,14 @@ extern "C"
 	#include "./paranoia/cdda_paranoia.h"
 }
 
+#ifndef max
+#define max(a,b) ((a)>(b)?(a):(b))
+#endif
+
+#ifndef min
+#define min(a,b) ((a)<(b)?(a):(b))
+#endif
+
 class CCDExtract : public CAspiCD
 {
 	private:

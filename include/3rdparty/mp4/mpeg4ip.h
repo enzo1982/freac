@@ -64,7 +64,11 @@ typedef short int16_t;
 typedef signed char  int8_t;
 typedef unsigned short in_port_t;
 typedef int socklen_t;
+
+#ifndef _SSIZE_T_
 typedef int ssize_t;
+#endif
+
 #define snprintf _snprintf
 #define strncasecmp _strnicmp
 #define strcasecmp _stricmp

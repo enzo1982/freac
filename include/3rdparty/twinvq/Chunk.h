@@ -91,7 +91,7 @@ class CIntChunk : public CChunk
 	int m_dataSize;
 public:
 	const TINT GetInt() { cnk_rewind(); return GetNInt(m_dataSize); };	// ®”ƒf[ƒ^‚ğæ“¾‚·‚é
-	int PutInt( TINT data ) { cnk_delete(); PutNInt( data, m_dataSize ); };
+	int PutInt( TINT data ) { cnk_delete(); PutNInt( data, m_dataSize ); return 0; };
 
 	CIntChunk( const CChunk& parent ) : CChunk(parent) { m_dataSize = sizeof(TINT); };
 	CIntChunk( std::string id, TINT data ) : CChunk(id) { 

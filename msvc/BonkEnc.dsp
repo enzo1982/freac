@@ -118,6 +118,10 @@ SOURCE="..\src\input\filter-in-lame.cpp"
 # End Source File
 # Begin Source File
 
+SOURCE="..\src\input\filter-in-mp4.cpp"
+# End Source File
+# Begin Source File
+
 SOURCE="..\src\input\filter-in-voc.cpp"
 # End Source File
 # Begin Source File
@@ -349,6 +353,10 @@ SOURCE="..\include\input\filter-in-faad2.h"
 # Begin Source File
 
 SOURCE="..\include\input\filter-in-lame.h"
+# End Source File
+# Begin Source File
+
+SOURCE="..\include\input\filter-in-mp4.h"
 # End Source File
 # Begin Source File
 
