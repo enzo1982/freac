@@ -8,9 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#define __THROW_BAD_ALLOC exit(1)
-#define MAKEUNICODESTR(x) L##x
-
 #include <bonkenc.h>
 #include <resources.h>
 #include <stdlib.h>
@@ -131,68 +128,29 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->enable_cdrip)
 	{
-		Long		 error = ex_CR_Init(NIL);
-		Int		 choice = IDYES;
+		Long		 error = CDEX_OK;
 		OSVERSIONINFOA	 vInfo;
 
 		vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
 
 		GetVersionExA(&vInfo);
 
-		if (currentConfig->cdrip_ntscsi && vInfo.dwPlatformId == VER_PLATFORM_WIN32_NT)
+		if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) currentConfig->cdrip_ntscsi = False;
+
+		error = ex_CR_Init(currentConfig->cdrip_ntscsi);
+
+		if (error != CDEX_OK && vInfo.dwPlatformId == VER_PLATFORM_WIN32_NT)
 		{
-			ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
+			currentConfig->cdrip_ntscsi = !currentConfig->cdrip_ntscsi;
 
-			ex_CR_SaveSettings();
-
-			error = ex_CR_Init(NIL);
+			error = ex_CR_Init(currentConfig->cdrip_ntscsi);
 		}
 
 		if (error != CDEX_OK)
 		{
-			switch (error)
-			{
-				case CDEX_NATIVEEASPINOTSUPPORTED:
-				case CDEX_FAILEDTOLOADASPIDRIVERS:
-				case CDEX_FAILEDTOGETASPISTATUS:
-					QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+			QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
-					currentConfig->enable_cdrip = false;
-
-					break;
-				case CDEX_NOCDROMDEVICES:
-					if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT)
-					{
-						QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-
-						currentConfig->enable_cdrip = false;
-
-						break;
-					}
-				case CDEX_NATIVEEASPISUPPORTEDNOTSELECTED:
-					if (error == CDEX_NATIVEEASPISUPPORTEDNOTSELECTED) choice = QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("Do you want to use native NT SCSI instead?")), i18n->TranslateString("Error"), MB_YESNO, IDI_QUESTION);
-
-					if (choice == IDYES)
-					{
-						currentConfig->cdrip_ntscsi = True;
-	
-						ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
-
-						ex_CR_SaveSettings();
-
-						error = ex_CR_Init(NIL);
-
-						if (error != CDEX_OK)
-						{
-							QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-
-							currentConfig->enable_cdrip = False;
-							currentConfig->cdrip_ntscsi = False;
-						}
-					}
-
-					break;
-			}
+			currentConfig->enable_cdrip = false;
 		}
 
 		if (error == CDEX_OK)

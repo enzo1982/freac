@@ -60,7 +60,6 @@ class CAspiCD : public CDRomSettings
 		BYTE		 InquiryCommand(BYTE btAdapterID, BYTE btTargetID, BYTE btLunID, SCSI_INQUIRY_RESULT *pbtResult);
 		BOOL		 EjectCD(BOOL bEject);
 		void		 GetDeviceName(BYTE btAdapterID, BYTE btTargetID, BYTE btLunID, LPSTR lpszDeviceName);
-		BYTE		 Seek(DWORD dwAbsPos);
 
 		void		 PreventMediaRemoval(BOOL bAudioMode);
 
@@ -76,17 +75,10 @@ class CAspiCD : public CDRomSettings
 		CDEX_ERR	 ReadToc();
 		CDEX_ERR	 ReadCDText(BYTE *pbtBuffer, int nBufferSize, LPINT pnCDTextSize);
 
-		void		 DumpToc(LPBYTE pbtBuffer, int nSize);
-		void		 RecordTrack(DWORD dwFirstSector, DWORD dwLastSector);
-		static UINT	 RecordThread(void *pThreadParams);
-
 		BOOL		 ReadCdRomSector(BYTE *pbtReadBuffer, DWORD dwReadBufferSize, LONG lSector, DWORD dwNumSectors, BOOL bGetC2);
 
 		CDMEDIASTATUS	 IsMediaLoaded();
 		void		 UpdateDeviceParams();
-		BOOL		 PlayTrack(DWORD dwStartSector, DWORD dwEndSector);
-		BYTE		 IsAudioPlaying();
-		BOOL		 StopPlayTrack();
 		WORD		 GetPeakValue();
 		void		 SetCDSpeed(int nSpeed);
 		void		 AutoDetectDriveType();
@@ -97,9 +89,6 @@ class CAspiCD : public CDRomSettings
 		BOOL		 RequestSense();
 		BYTE		 ModeSense(int nPageLen, BYTE *pbtBuffer, int nBufSize);
 		BYTE		 ModeSelect(int nPageSize, BYTE *pbtBuffer, int nBufSize, BOOL bPageFormat = 0);
-		BOOL		 PauseCD(BOOL bPause);
-		BOOL		 Scan(DWORD dwSector, BOOL bForeWard);
-		BYTE		 CurrentPosition(DWORD &dwRelPos, DWORD &dwAbsPos);
 		BYTE		 ReadSubChannel(BYTE btDataFormat, BYTE *pbtBuffer, int nBufSize, BYTE btTrack = 0);
 		BYTE		 ReadSubChannelQ(BYTE btDataFormat, BYTE *pbtBuffer, int nBufSize );
 		int		 GetScsiTimeOut();
@@ -111,7 +100,6 @@ class CAspiCD : public CDRomSettings
 		BYTE		 GetSubChannelTrackInfo(int &nReadIndex, int &nReadTrack, DWORD &dwReadPos);
 
 		CDEX_ERR	 ScanForC2Errors(DWORD dwStartSector, DWORD dwNumSectors, DWORD &dwErrors, DWORD *pdwErrorSectors);
-		void		 LogSenseData();
 
 		CDEX_ERR	 ExtractC2ErrorInfo(BYTE *pData, DWORD dwStartSector, DWORD dwNumSectors, DWORD &dwErrors, DWORD *pdwErrorSectors);
 		CDEX_ERR	 GetDetailedDriveInfo(LPSTR lpszInfo, DWORD dwInfoSize);

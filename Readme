@@ -10,7 +10,9 @@ History
 
 	Version 1.0 beta 3 CVS (February 2004)
 
-		- fixed a serious bug in the CDDB implementation
+		- NT SCSI support is working again
+		- fixed some bugs in the CDDB implementation
+		- fixed a bug in the WAVE file reader
 		- some other bugfixes
 
 	Version 1.0 beta 2 (February 2004)

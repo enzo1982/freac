@@ -213,7 +213,6 @@
     <entry id="201" string="No audio CD in drive!">Nessun CD audio nell'unità.</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Prima di inviare le informazioni, è necessario compilare tutti i campi e immettere i titoli delle tracce.</entry>
     <entry id="203" string="CD ripping disabled!">Estrazione dati audio da CD disattivata.</entry>
-    <entry id="204" string="Do you want to use native NT SCSI instead?">Utilizzare SCSI NT nativo?</entry>
     <entry id="205" string="Submitting CD information">Invio informazioni sul CD...</entry>
     <entry id="206" string="Cannot open file:">Impossibile aprire il seguente file:</entry>
     <entry id="207" string="Query CDDB database">Interroga database CDDB</entry>

@@ -10,7 +10,9 @@ Geschichte
 
 	Version 1.0 beta 3 CVS (Februar 2004)
 
-		- Ein ernster Fehler in der CDDB Implementierung wurde behoben
+		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
+		- Einige Fehler in der CDDB Implementierung wurden behoben
+		- Fehler im WAVE Input Plugin wurde behoben
 		- Einige andere Fehler wurden behoben
 
 	Version 1.0 beta 2 (Februar 2004)

@@ -87,7 +87,7 @@ CDEX_ERR InitAspiDll(bool &bUseNtScsi)
 	const int	 MYMAXPATHLENGTH = 32768;
 	char		 lpszPathName[MYMAXPATHLENGTH] = {'\0',};
 
-	if (FALSE == bUseNtScsi) 
+	if (bUseNtScsi == false) 
 	{
 		// try to load DLL (no path)
 		strcpy(lpszPathName, "wnaspi32.dll");

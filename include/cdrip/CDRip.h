@@ -94,7 +94,6 @@ typedef struct CDSTATUSINFO_TAG
 	BYTE	target_stat;
 } CDSTATUSINFO;
 
-
 enum DRIVETYPE
 {
 	GENERIC = 0,
@@ -228,7 +227,7 @@ struct TOCENTRY
 extern "C" {
 
 // Call init before anything else
-DLLEXPORT CDEX_ERR CR_Init(LPCSTR strIniFname);
+DLLEXPORT CDEX_ERR CR_Init(int nTransportLayer);
 
 // Call DeIni when ripping library is no longer needed
 DLLEXPORT CDEX_ERR CR_DeInit();
@@ -283,12 +282,6 @@ DLLEXPORT LONG CR_GetJitterPosition();
 // number of bytes that have been ripped and corrected for jitter (if enabled)
 DLLEXPORT CDEX_ERR CR_RipChunk(BYTE *pbtStream, LONG *pNumBytes, BOOL &bAbort);
 
-// Load the CD-ROM settings from the file
-DLLEXPORT CDEX_ERR CR_LoadSettings();
-
-// Save the settings to a INI file
-DLLEXPORT CDEX_ERR CR_SaveSettings();
-
 // Normalize the stream (i.e. multiply by dScaleFactor)
 DLLEXPORT void CR_NormalizeChunk(SHORT *pbsStream, LONG nNumSamples, DOUBLE dScaleFactor);
 
@@ -313,18 +306,6 @@ DLLEXPORT CDEX_ERR CR_IsMediaLoaded(CDMEDIASTATUS &IsMediaLoaded);
 // Eject the CD, bEject=TRUE=> the CD will be ejected, bEject=FALSE=> the CD will be loaded
 DLLEXPORT BOOL CR_EjectCD(BOOL bEject);
 
-// Check if the CD is playing
-DLLEXPORT BOOL CR_IsAudioPlaying();
-
-// Play track
-DLLEXPORT CDEX_ERR CR_PlayTrack(int nTrack);
-
-// Stop Play track
-DLLEXPORT CDEX_ERR CR_StopPlayTrack();
-
-// Pause Play track
-DLLEXPORT CDEX_ERR CR_PauseCD(BOOL bPause);
-
 // Get debug information
 DLLEXPORT CDSTATUSINFO CR_GetCDStatusInfo();
 
@@ -332,14 +313,6 @@ DLLEXPORT CDSTATUSINFO CR_GetCDStatusInfo();
 DLLEXPORT void CR_LockCD(BOOL bLock);
 
 DLLEXPORT void CR_GetSubChannelTrackInfo(int &nReadIndex, int &nReadTrack, DWORD &dwReadPos);
-
-// Get status of audio playing
-DLLEXPORT CDEX_ERR CR_GetPlayPosition(DWORD &dwRelPos, DWORD &dwAbsPos);
-
-// Set the audio play position
-DLLEXPORT CDEX_ERR CR_SetPlayPosition(DWORD dwAbsPos);
-
-DLLEXPORT CDEX_ERR CR_PlaySection(LONG lStartSector, LONG lEndSector);
 
 DLLEXPORT void CR_GetLastJitterErrorPosition(DWORD &dwStartSector, DWORD &dwEndSector);
 

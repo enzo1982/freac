@@ -210,7 +210,6 @@
     <entry id="201" string="No audio CD in drive!">Ningun CD de audio en la unidad</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting">Rellenar todos los campos y pistas antes de enviar.</entry>
     <entry id="203" string="CD ripping disabled!">Copiado de CD desactivado!</entry>
-    <entry id="204" string="Do you want to use native NT SCSI instead?">Desea usar el modo nativo NT SCSI?</entry>
     <entry id="205" string="Submitting CD information">Enviando información del CD</entry>
   </data>
 </LangFile>

@@ -11,6 +11,7 @@
 #include <iolib-cxx.h>
 #include <output/filter-out-tvq.h>
 
+#define __THROW_BAD_ALLOC exit(1)
 #undef V2
 
 #include <dllinterfaces.h>

@@ -8,9 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#define __THROW_BAD_ALLOC exit(1)
-#define MAKEUNICODESTR(x) L##x
-
 #include <smooth/main.h>
 #include <main.h>
 #include <resources.h>

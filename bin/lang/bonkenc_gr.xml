@@ -213,7 +213,6 @@
     <entry id="201" string="No audio CD in drive!">Δεν έχετε τοποθετήσει CD!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Παρακαλώ συμπληρώστε όλα τα πεδία πριν την καταχώρηση</entry>
     <entry id="203" string="CD ripping disabled!">Αδύνατη η εξαγωγή από το CD!</entry>
-    <entry id="204" string="Do you want to use native NT SCSI instead?">Προτιμάτε τη χρήση επιλογής NT SCSI;</entry>
     <entry id="205" string="Submitting CD information">Καταχώρηση πληροφοριών CD</entry>
     <entry id="206" string="Cannot open file:">Αδύνατο το άνοιγμα του αρχείου:</entry>
     <entry id="207" string="Query CDDB database">Βάση δεδομένων αιτήσεων CDDB</entry>

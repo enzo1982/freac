@@ -25,10 +25,8 @@ CR_GETACTIVECDROM		 ex_CR_GetActiveCDROM			= NIL;
 CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM			= NIL;
 CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters		= NIL;
 CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters		= NIL;
-CR_SETTRANSPORTLAYER		 ex_CR_SetTransportLayer		= NIL;
 CR_LOCKCD			 ex_CR_LockCD				= NIL;
 CR_READCDTEXT			 ex_CR_ReadCDText			= NIL;
-CR_SAVESETTINGS			 ex_CR_SaveSettings			= NIL;
 
 BONKCREATEENCODER		 ex_bonk_create_encoder			= NIL;
 BONKCLOSEENCODER		 ex_bonk_close_encoder			= NIL;
@@ -499,10 +497,8 @@ Bool bonkEnc::LoadCDRipDLL()
 	ex_CR_SetActiveCDROM		= (CR_SETACTIVECDROM) GetProcAddress(cdripdll, "CR_SetActiveCDROM");
 	ex_CR_GetCDROMParameters	= (CR_GETCDROMPARAMETERS) GetProcAddress(cdripdll, "CR_GetCDROMParameters");
 	ex_CR_SetCDROMParameters	= (CR_SETCDROMPARAMETERS) GetProcAddress(cdripdll, "CR_SetCDROMParameters");
-	ex_CR_SetTransportLayer		= (CR_SETTRANSPORTLAYER) GetProcAddress(cdripdll, "CR_SetTransportLayer");
 	ex_CR_LockCD			= (CR_LOCKCD) GetProcAddress(cdripdll, "CR_LockCD");
 	ex_CR_ReadCDText		= (CR_READCDTEXT) GetProcAddress(cdripdll, "CR_ReadCDText");
-	ex_CR_SaveSettings		= (CR_SAVESETTINGS) GetProcAddress(cdripdll, "CR_SaveSettings");
 
 	if (ex_CR_Init == NULL)			{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_DeInit == NULL)		{ FreeLibrary(cdripdll); return false; }
@@ -517,10 +513,8 @@ Bool bonkEnc::LoadCDRipDLL()
 	if (ex_CR_SetActiveCDROM == NULL)	{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_GetCDROMParameters == NULL)	{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_SetCDROMParameters == NULL)	{ FreeLibrary(cdripdll); return false; }
-	if (ex_CR_SetTransportLayer == NULL)	{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_LockCD == NULL)		{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_ReadCDText == NULL)		{ FreeLibrary(cdripdll); return false; }
-	if (ex_CR_SaveSettings == NULL)		{ FreeLibrary(cdripdll); return false; }
 
 	return true;
 }

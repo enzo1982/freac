@@ -67,33 +67,12 @@ Int bonkEncCDDB::ComputeDiscID()
 
 	ex_CR_ReadToc();
 
-	Int		 numTocEntries = ex_CR_GetNumTocEntries();
-	Array<int>	 tocmin;
-	Array<int>	 tocsec;
-
-	for (int j = 0; j <= numTocEntries; j++)
-	{
-		TOCENTRY	 entry = ex_CR_GetTocEntry(j);
-
-		entry.dwStartSector += 2 * 75;
-
-		tocmin.AddEntry(entry.dwStartSector / 4500);
-		tocsec.AddEntry(entry.dwStartSector % 4500 / 75);
-	}
-
-	int	 i = 0;
-	int	 t = 0;
+	int	 numTocEntries = ex_CR_GetNumTocEntries();
 	int	 n = 0;
 
-	while (i < numTocEntries)
-	{
-		n = n + cddb_sum((tocmin.GetNthEntry(i) * 60) + tocsec.GetNthEntry(i));
+	for (int i = 0; i < numTocEntries; i++)	n += cddb_sum((ex_CR_GetTocEntry(i).dwStartSector + 150) / 75);
 
-		i++;
-	}
-
-	t = ((tocmin.GetLastEntry() * 60) + tocsec.GetLastEntry()) -
-	    ((tocmin.GetFirstEntry() * 60) + tocsec.GetFirstEntry());
+	int	 t = (ex_CR_GetTocEntry(numTocEntries).dwStartSector - ex_CR_GetTocEntry(0).dwStartSector) / 75;
 
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }

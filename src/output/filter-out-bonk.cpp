@@ -8,8 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#define __THROW_BAD_ALLOC exit(1)
-
 #include <iolib-cxx.h>
 #include <output/filter-out-bonk.h>
 #include <dllinterfaces.h>
@@ -188,17 +186,20 @@ bool FilterOutBONK::Deactivate()
 int FilterOutBONK::WriteData(unsigned char *data, int size)
 {
 	int		 pos = d_out->GetPos();
-	vector<int>	 samples(size / (format->bits / 8));
+	long		 buffersize = size;
+	unsigned char	*buffer = new unsigned char [buffersize];
 
 	for (int i = 0; i < size / (format->bits / 8); i++)
 	{
-		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
-		if (format->bits == 16)	samples[i] = ((short *) data)[i];
-		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+		if (format->bits == 8)	((short *) buffer)[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	((short *) buffer)[i] = ((short *) data)[i];
+		if (format->bits == 24) ((short *) buffer)[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+		if (format->bits == 32)	((short *) buffer)[i] = (int) ((long *) data)[i] / 65536;
 	}
 
-	ex_bonk_encode_packet(encoder, samples);
+	ex_bonk_encode_packet(encoder, buffer, buffersize);
+
+	delete [] buffer;
 
 	return d_out->GetPos() - pos;
 }

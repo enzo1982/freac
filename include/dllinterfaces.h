@@ -32,7 +32,7 @@
 
 // CDRip DLL API
 
-	typedef CDEX_ERR			(*CR_INIT)					(LPCSTR);
+	typedef CDEX_ERR			(*CR_INIT)					(int);
 	typedef CDEX_ERR			(*CR_DEINIT)					();
 	typedef LONG				(*CR_GETNUMCDROM)				();
 	typedef LONG				(*CR_GETACTIVECDROM)				();
@@ -46,9 +46,7 @@
 	typedef LONG				(*CR_GETNUMTOCENTRIES)				();
 	typedef TOCENTRY			(*CR_GETTOCENTRY)				(LONG);
 	typedef void				(*CR_LOCKCD)					(BOOL);
-	typedef void				(*CR_SETTRANSPORTLAYER)				(int);
 	typedef CDEX_ERR			(*CR_READCDTEXT)				(BYTE *, int, LPINT);
-	typedef CDEX_ERR			(*CR_SAVESETTINGS)				();
 
 	extern CR_INIT				 ex_CR_Init;
 	extern CR_DEINIT			 ex_CR_DeInit;
@@ -63,19 +61,17 @@
 	extern CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM;
 	extern CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters;
 	extern CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters;
-	extern CR_SETTRANSPORTLAYER		 ex_CR_SetTransportLayer;
 	extern CR_LOCKCD			 ex_CR_LockCD;
 	extern CR_READCDTEXT			 ex_CR_ReadCDText;
-	extern CR_SAVESETTINGS			 ex_CR_SaveSettings;
 
 // Bonk DLL API
 
 	typedef void *				(*BONKCREATEENCODER)				(OutStream *, uint32, uint32, int, bool, bool, int, int, int, double);
 	typedef bool				(*BONKCLOSEENCODER)				(void *);
-	typedef bool				(*BONKENCODEPACKET)				(void *, vector<int> &);
+	typedef bool				(*BONKENCODEPACKET)				(void *, void *, int);
 	typedef void *				(*BONKCREATEDECODER)				(InStream *, uint32 *, uint32 *, int *);
 	typedef bool				(*BONKCLOSEDECODER)				(void *);
-	typedef bool				(*BONKDECODEPACKET)				(void *, vector<int> &);
+	typedef int				(*BONKDECODEPACKET)				(void *, void *, int);
 	typedef const char *			(*BONKGETVERSIONSTRING)				();
 
 	extern BONKCREATEENCODER		 ex_bonk_create_encoder;

@@ -186,8 +186,8 @@ Bool bonkEncConfig::LoadSettings()
 	faac_bitrate = config->GetIntValue("FAAC", "Bitrate", 96);
 	faac_bandwidth = config->GetIntValue("FAAC", "BandWidth", 22050);
 	faac_allowjs = config->GetIntValue("FAAC", "AllowJS", 1);
-	faac_usetns = config->GetIntValue("FAAC", "UseTNS", 1);
-	faac_set_quality = config->GetIntValue("FAAC", "SetQuality", 0);
+	faac_usetns = config->GetIntValue("FAAC", "UseTNS", 0);
+	faac_set_quality = config->GetIntValue("FAAC", "SetQuality", 1);
 	faac_aac_quality = config->GetIntValue("FAAC", "AACQuality", 120);
 
 	tvq_bitrate = config->GetIntValue("TwinVQ", "Bitrate", 48);

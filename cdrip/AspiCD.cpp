@@ -152,44 +152,6 @@ BYTE CAspiCD::ReadSubChannelQ(BYTE btDataFormat, BYTE *pbtBuffer, int nBufSize)
 	return bReturn;
 }
 
-BYTE CAspiCD::IsAudioPlaying()
-{
-	BYTE bReturn = 0;
-
-	// Create buffer
-	BYTE pbtBuffer[48];
-
-	// Read SubChannel information 0
-	ReadSubChannel(0x01,pbtBuffer,sizeof(pbtBuffer));
-
-	// Return result
-	bReturn = pbtBuffer[1];
-
-	return bReturn;
-}
-
-BYTE CAspiCD::CurrentPosition(DWORD &dwRelPos, DWORD &dwAbsPos)
-{
-	// Create buffer
-	BYTE pbtBuffer[48];
-
-	// Read SubChannel information 0
-	BYTE btReturn=ReadSubChannel(0x01,pbtBuffer,sizeof(pbtBuffer));
-
-	dwAbsPos=	((DWORD)pbtBuffer[11]);
-	dwAbsPos+=	((DWORD)pbtBuffer[10])<<8;
-	dwAbsPos+=	((DWORD)pbtBuffer[ 9])<<16;
-	dwAbsPos+=	((DWORD)pbtBuffer[ 8])<<24;
-
-	dwRelPos=	((DWORD)pbtBuffer[15]);
-	dwRelPos+=	((DWORD)pbtBuffer[14])<<8;
-	dwRelPos+=	((DWORD)pbtBuffer[13])<<16;
-	dwRelPos+=	((DWORD)pbtBuffer[12])<<24;
-
-	// Return result
-	return btReturn;
-}
-
 BYTE CAspiCD::GetSubChannelTrackInfo(int &nReadIndex, int &nReadTrack, DWORD &dwReadPos)
 {
 	// Create buffer
@@ -205,21 +167,6 @@ BYTE CAspiCD::GetSubChannelTrackInfo(int &nReadIndex, int &nReadTrack, DWORD &dw
 	dwReadPos+=	( (DWORD)pbtBuffer[10] )<<8;
 	dwReadPos+=	( (DWORD)pbtBuffer[ 9] )<<16;
 	dwReadPos+=	( (DWORD)pbtBuffer[ 8] )<<24;
-
-	return btReturn;
-}
-
-BYTE CAspiCD::Seek(DWORD dwAbsPos)
-{
-	BYTE		btReturn = 0;
-	static BYTE cmd[10] = {0x2B,GetLunID()<<5, 0,0, 0, 0,0,0,0,0};
-
-	cmd[2] =(BYTE)((dwAbsPos>>24) & 0xff);
-	cmd[3] =(BYTE)((dwAbsPos>>16) & 0xff);
-	cmd[4] =(BYTE)((dwAbsPos>>8 ) & 0xff);
-	cmd[5] =(BYTE)(dwAbsPos&0xff);
-
-	btReturn = IssueScsiCmd( SRB_DIR_OUT, cmd, sizeof( cmd ) );
 
 	return btReturn;
 }
@@ -716,75 +663,6 @@ CDMEDIASTATUS CAspiCD::IsMediaLoaded()
 	return returnValue;
 }
 
-BOOL CAspiCD::Scan(DWORD dwSector,BOOL bForeWard)
-{
-	int nCmdSize=0;
-
-	static BYTE cmd[12];
-
-	// clear cmd buffer
-	memset(cmd,0x00,sizeof(cmd));
-
-	nCmdSize=10;
-	
-	cmd[0]= 0xBA;
-	cmd[1]= GetLunID()<<5;
-	cmd[1]+= (bForeWard)?0x00:0x10;
-
-	cmd[2]= (BYTE)(dwSector >> 24);
-	cmd[3]= (BYTE)((dwSector >> 16) & 0xFF);
-	cmd[4]= (BYTE)((dwSector >> 8) & 0xFF);
-	cmd[5]= (BYTE)(dwSector & 0xFF);
-
-	return (BOOL)IssueScsiCmd(SRB_DIR_OUT,cmd,nCmdSize);
-}
-
-BOOL CAspiCD::PlayTrack(DWORD dwStartSector,DWORD dwEndSector)
-{
-	int nCmdSize=0;
-
-	static BYTE cmd[12];
-
-	// clear cmd buffer
-	memset(cmd,0x00,sizeof(cmd));
-
-	DWORD dwSector=dwStartSector;
-
-	// There might be quite a few sectors
-	DWORD dwNumSectors=dwEndSector-dwStartSector;
-
-	nCmdSize=12;
-	cmd[0]= 0xA5;
-	cmd[1]= GetLunID()<<5;
-
-	// Start sector
-	cmd[2]= (BYTE)(dwSector >> 24);
-	cmd[3]= (BYTE)((dwSector >> 16) & 0xFF);
-	cmd[4]= (BYTE)((dwSector >> 8) & 0xFF);
-	cmd[5]= (BYTE)(dwSector & 0xFF);
-
-	// Set Track Length
-	cmd[6]= (BYTE)((dwNumSectors >>24) & 0xFF);
-	cmd[7]= (BYTE)((dwNumSectors >>16) & 0xFF);
-	cmd[8]= (BYTE)((dwNumSectors >>8) & 0xFF);
-	cmd[9]= (BYTE) (dwNumSectors & 0xFF);
-
-	return (BOOL)IssueScsiCmd(SRB_DIR_OUT,cmd,nCmdSize);
-}
-
-BOOL CAspiCD::StopPlayTrack()
-{
-	// Set up SCSI command buffer
-	static BYTE cmd[6] = {0x1B,GetLunID()<<5|01,0,0,0,0};
-	// Do command
-	return (BOOL)IssueScsiCmd(SRB_DIR_OUT,cmd,sizeof(cmd));
-}
-
-short SWAPSHORT(short sSwap)
-{
-	return ((sSwap>>8)&0xFF) + ((sSwap&0xFF) <<8);
-}
-
 BOOL CAspiCD::EjectCD(BOOL bEject)
 {
 	BYTE cmd[6] = {0x1B, 0, 0, 0, 0, 0};
@@ -803,28 +681,6 @@ BOOL CAspiCD::EjectCD(BOOL bEject)
 	return (BOOL)IssueScsiCmd(SRB_DIR_OUT,cmd,sizeof(cmd));
 }
 
-
-BOOL CAspiCD::PauseCD(BOOL bPause)
-{
-	BYTE cmd[10] = {0x4B, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	
-	cmd [1]=GetLunID()<<5;
-
-	if (!bPause)
-		cmd [8]=0x01;
-	else
-		cmd [8]=0x00;
-
-	return (BOOL)IssueScsiCmd(SRB_DIR_OUT,cmd,sizeof(cmd));
-}
-
-
-WORD SWAPWORD(WORD nSwap)
-{
-	return ((nSwap>>8)&0xFF) || ((nSwap&0xFF)<<8);
-}
-
-
 BYTE CAspiCD::IssueScsiCmd(BYTE bFlags,LPBYTE lpcbData,int ncbLen)
 {
 	return IssueScsiCmd(bFlags,lpcbData,ncbLen,NULL,0,GetAdapterID(),GetTargetID(),GetLunID());
@@ -834,7 +690,6 @@ BYTE CAspiCD::IssueScsiCmd(BYTE bFlags,LPBYTE lpcbData,int ncbLen,LPBYTE lpBuffe
 {
 	return IssueScsiCmd(bFlags,lpcbData,ncbLen,lpBuffer,nBufLen,GetAdapterID(),GetTargetID(),GetLunID());
 }
-
 
 BOOL CAspiCD::ScsiAbort(SRB_EXECSCSICMD *sp, BYTE btAdapterID)
 {
@@ -967,9 +822,6 @@ BYTE CAspiCD::IssueScsiCmd(BYTE bFlags,LPBYTE lpcbData,int ncbLen,LPBYTE lpBuffe
 
 	m_btLastError = mySrb.SRB_Status;
 
-	// Check ASPI command status
-	if (mySrb.SRB_Status != SS_COMP) LogSenseData();
-
 	// Close the event handle
 	CloseHandle(hEvent);
 
@@ -1001,7 +853,6 @@ void CAspiCD::BusDeviceReset()
 	m_btLastError = mySrb.SRB_Status;
 }
 
-
 void CAspiCD::PreventMediaRemoval (BOOL bAudioMode)
 {
 	if ( GetLockDuringRead() )
@@ -1018,7 +869,6 @@ void CAspiCD::PreventMediaRemoval (BOOL bAudioMode)
 		IssueScsiCmd( SRB_DIR_OUT, cmd,sizeof(cmd), NULL, 0 );
 	}
 }
-
 
 // Method to get CD table of contents via SCSI interface
 CDEX_ERR CAspiCD::ReadToc()
@@ -1059,7 +909,6 @@ CDEX_ERR CAspiCD::ReadToc()
 	return CDEX_OK;
 }
 
-
 // Method to get CD table of contents via SCSI interface
 CDEX_ERR CAspiCD::ReadCDText( BYTE* pbtBuffer, int nBufferSize, LPINT pnCDTextSize)
 {
@@ -1095,7 +944,6 @@ CDEX_ERR CAspiCD::ReadCDText( BYTE* pbtBuffer, int nBufferSize, LPINT pnCDTextSi
 
 	return bReturn;
 }
-
 
 // added by Andi, scenalyzer@blackbox.net
 
@@ -1341,7 +1189,6 @@ CDEX_ERR CAspiCD::GetStatus()
 	return bReturn;
 }
 
-
 CDEX_ERR CAspiCD::ScanForC2Errors(	DWORD	dwStartSector,
 									DWORD	dwNumSectors,
 									DWORD&	dwErrors,
@@ -1398,13 +1245,7 @@ CDEX_ERR CAspiCD::ScanForC2Errors(	DWORD	dwStartSector,
 
 	delete [] pDataBuf;
 
-	LogSenseData();
-
 	return CDEX_OK;
-}
-
-void CAspiCD::LogSenseData()
-{
 }
 
 CDEX_ERR CAspiCD::Init()
@@ -1464,7 +1305,6 @@ CDEX_ERR CAspiCD::ExtractC2ErrorInfo(	BYTE*  pData,
 	return bReturn;
 }
 
-
 CDEX_ERR CAspiCD::GetDetailedDriveInfo( 
 	LPSTR lpszInfo, 
 	DWORD dwInfoSize )
@@ -1514,7 +1354,7 @@ CDEX_ERR CAspiCD::GetDetailedDriveInfo(
 	int n2aSize=sizeof(SCSICDMODEPAGE2A);
 	int nBlockSize=sizeof(SCISMODEHEADER);
 
-    if( pPage->p_code == 0x2A )
+	if( pPage->p_code == 0x2A )
 	{
 		// Check the size of the page, in order to determine that we deal
 		// with a MMC capable drive
@@ -1531,7 +1371,7 @@ CDEX_ERR CAspiCD::GetDetailedDriveInfo(
 		{
 			strcpy( lpszLine,"MMC drive, but reports CDDA incapable\r\n");
 		}
-    }
+	}
 	else
 	{
 		strcpy( lpszLine,"Drive does not support MMC\r\n");

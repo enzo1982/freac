@@ -17,8 +17,6 @@ class FilterInWAVE : public InputFilter
 {
 	private:
 		Bool		 setup;
-
-		Int		 headerSize;
 	public:
 				 FilterInWAVE(bonkEncConfig *);
 				~FilterInWAVE();

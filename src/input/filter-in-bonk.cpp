@@ -36,30 +36,32 @@ int FilterInBONK::ReadData(unsigned char **data, int size)
 {
 	if (!setup)
 	{
-		driver->Seek(0);
-
-		f_in = new InStream(STREAM_DRIVER, driver);
-
 		Int	 length = 0;
 		Int	 rate = 0;
 		Int	 channels = 0;
+
+		driver->Seek(0);
+
+		f_in = new InStream(STREAM_DRIVER, driver);
 
 		decoder = ex_bonk_create_decoder(f_in, (uint32 *) &length, (uint32 *) &rate, (int *) &channels);
 
 		setup = true;
 	}
 
-	vector<int>	 samples;
+	long		 buffersize = 131072;
+	unsigned char	*buffer = new unsigned char [buffersize];
+	int		 bytes = ex_bonk_decode_packet(decoder, buffer, buffersize);
 
-	samples.clear();
+	if (bytes == -1) return 0;
 
-	if (!ex_bonk_decode_packet(decoder, samples)) return 0;
+	*data = new unsigned char [bytes];
 
-	*data = new unsigned char [samples.size() * 2];
+	for (int i = 0; i < bytes / 2; i++) ((short *) *data)[i] = (short) Math::Min(Math::Max(((short *) buffer)[i], -32768), 32767);
 
-	for (unsigned int i = 0; i < samples.size(); i++) ((short *) *data)[i] = min(max(samples[i], -32768), 32767);
+	delete [] buffer;
 
-	return samples.size() * 2;
+	return bytes;
 }
 
 bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)

@@ -16,8 +16,7 @@ FilterInWAVE::FilterInWAVE(bonkEncConfig *config) : InputFilter(config)
 {
 	setup = false;
 
-	headerSize	= 0;
-	packageSize	= 0;
+	packageSize = 0;
 }
 
 FilterInWAVE::~FilterInWAVE()
@@ -33,6 +32,8 @@ int FilterInWAVE::ReadData(unsigned char **data, int size)
 	if (setup == false)
 	{
 		setup = true;
+
+		long	 headerSize = (long) *(*data + 16) + 28;
 
 		size -= headerSize;
 
@@ -70,7 +71,7 @@ bonkFormatInfo *FilterInWAVE::GetFileInfo(String inFile)
 	for (Int j = 0; j < 4; j++)
 		f_in->InputNumber(1);
 
-	headerSize = 28 + f_in->InputNumber(4);
+	Int	 headerSize = 28 + f_in->InputNumber(4);
 
 	if (f_in->InputNumber(2) != 1)
 	{
