@@ -6,238 +6,238 @@
     <property name="language">Polski</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="author">Andreas Tobianski &lt;andreas.tobianski@gmx.de&gt;</property>
-    <property name="url">http://www.bonkenc.org</property>
+    <property name="author">Wojtek Wasilewski</property>
+    <property name="url">http://www.bonkenc.org/</property>
   </info>
   <data>
     <entry id="1" string="File">Plik</entry>
-    <entry id="2" string="Options">Opcje</entry>
-    <entry id="3" string="Encode">Kodować</entry>
-    <entry id="4" string="Add">Dodać</entry>
-    <entry id="5" string="Remove">Zlikwidować</entry>
-    <entry id="6" string="Clear joblist">Wszystkie usunąć</entry>
-    <entry id="7" string="Exit">Zakończyć</entry>
-    <entry id="8" string="General settings...">Ogólne nastawienia...</entry>
-    <entry id="9" string="Configure selected encoder...">Wybrany Encoder konfigurować...</entry>
-    <entry id="10" string="Audio file(s)...">Plik(i) dźwiękowy(e)...</entry>
-    <entry id="11" string="Audio CD contents">Zawartość dysku dźwiękowego</entry>
-    <entry id="12" string="Start encoding">Kodowanie wystartować</entry>
-    <entry id="13" string="Stop encoding">Kodowanie przerwać</entry>
-    <entry id="14" string="Encoding file:">Aktualny plik:</entry>
-    <entry id="15" string="Time left:">Pozostały czas:</entry>
-    <entry id="16" string="Percent done:">Procent:</entry>
-    <entry id="17" string="Selected encoder:">Wybrany Encoder:</entry>
-    <entry id="18" string="File progress:">Postęp:</entry>
-    <entry id="19" string="Output dir.:">Folder docelowy:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1 pliku/ów do opracowania:</entry>
-    <entry id="21" string="none">żadne</entry>
-    <entry id="22" string="Help topics...">Indeks pomocniczy...</entry>
-    <entry id="23" string="Add audio file(s) to the joblist">Dodać plik(i) dźwiękowe do listy</entry>
-    <entry id="24" string="Add audio CD contents to the joblist">Dodać zawartość dysku dźwiękowego do listy</entry>
-    <entry id="25" string="Remove the selected entry from the joblist">Wybrany nanos usunac z listy</entry>
-    <entry id="26" string="Clear the entire joblist">Całą listę usunąć</entry>
-    <entry id="27" string="Configure general settings">Konfiguracja ogólnych nastawień</entry>
-    <entry id="28" string="Configure the selected audio encoder">Wybrany dźwiekowy enkoder konfigurować</entry>
-    <entry id="29" string="Start the encoding process">Wystartować proces kodowania</entry>
-    <entry id="30" string="Cannot modify the joblist while encoding!">Lista nie może być modifikowana podczas kodowania!</entry>
+    <entry id="2" string="Options">Ustawienia</entry>
+    <entry id="3" string="Encode">Konwersja</entry>
+    <entry id="4" string="Add">Dodaj</entry>
+    <entry id="5" string="Remove">Usuń z listy</entry>
+    <entry id="6" string="Clear joblist">Usuń wszystkie z listy</entry>
+    <entry id="7" string="Exit">Wyjdź</entry>
+    <entry id="8" string="General settings...">Ustawienia podstawowe...</entry>
+    <entry id="9" string="Configure selected encoder...">Konfiguracja bieżącego konwertera...</entry>
+    <entry id="10" string="Audio file(s)...">Plik(i) audio...</entry>
+    <entry id="11" string="Audio CD contents">Zawartość płyty audio CD</entry>
+    <entry id="12" string="Start encoding">Rozpoczęcie konwersji</entry>
+    <entry id="13" string="Stop encoding">Zatrzymanie konwersji</entry>
+    <entry id="14" string="Encoding file:">Konwersja pliku:</entry>
+    <entry id="15" string="Time left:">Pozostało do końca:</entry>
+    <entry id="16" string="Percent done:">Wykonane:</entry>
+    <entry id="17" string="Selected encoder:">Zastosowany konwerter:</entry>
+    <entry id="18" string="File progress:">Przetwarzanie pliku:</entry>
+    <entry id="19" string="Output dir.:">Katalog docelowy:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 plik(i/ów) na liście:</entry>
+    <entry id="21" string="none">brak</entry>
+    <entry id="22" string="Help topics...">Tematy pomocy...</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Dodawanie plików audio do listy</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Dodawanie zawartości płyty CD do listy</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Usunięcie zaznaczonego elementu z listy zadań</entry>
+    <entry id="26" string="Clear the entire joblist">Usunięcie wszystkich elementów z listy zadań</entry>
+    <entry id="27" string="Configure general settings">Podstawowe ustawienia programu</entry>
+    <entry id="28" string="Configure the selected audio encoder">Konfiguracja bieżącego konwertera</entry>
+    <entry id="29" string="Start the encoding process">Rozpoczęcie procesu konwersji</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Nie można zmieniać listy zadań podczas konwersji!</entry>
     <entry id="31" string="Error">Błąd</entry>
-    <entry id="32" string="Audio Files">Pliki dźwiękowe</entry>
-    <entry id="33" string="Apple Audio Files">Pliki dźwiękowe Apple</entry>
-    <entry id="34" string="Creative Voice Files">Pliki dźwiękowe Creative</entry>
-    <entry id="35" string="Sun Audio Files">Pliki dżwiękowe Sun</entry>
+    <entry id="32" string="Audio Files">Pliki audio</entry>
+    <entry id="33" string="Apple Audio Files">Pliki audio Apple</entry>
+    <entry id="34" string="Creative Voice Files">Pliki Creative Voice</entry>
+    <entry id="35" string="Sun Audio Files">Pliki audio Sun</entry>
     <entry id="36" string="Wave Files">Pliki Wave</entry>
-    <entry id="37" string="Windows CD Audio Track">ścieżka dźwiękowa WindowsAudio CD</entry>
-    <entry id="38" string="All Files">Wszystkie Pliki</entry>
-    <entry id="39" string="You have not selected a file!">Zadny nanos nie został wybrany!</entry>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Proces kodowania jest jeszcze aktywny! Czy chcesz pomimo tego program zakonczyć?</entry>
-    <entry id="41" string="Currently encoding">Proces kodowania jest aktywny</entry>
-    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ten program jest rozprowadzany&#10;zgodnie z General Public License (GPL).</entry>
-    <entry id="43" string="CDDB query">Odpytanie CDDB</entry>
-    <entry id="44" string="About BonkEnc">Na temat BonkEnc</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Dla filtru WAVE Out nie można żadnych opcji konfigurować!</entry>
-    <entry id="46" string="WAVE Out filter">WAVE Out Filter</entry>
-    <entry id="47" string="Cannot change settings while encoding!">Podczas kodowania nie moźna zmienić żadnych opcji!</entry>
-    <entry id="48" string="%1 encoder configuration">Konfiguracji kodera %1</entry>
-    <entry id="49" string="OK">OK</entry>
+    <entry id="37" string="Windows CD Audio Track">Ścieżki audio CD Windows</entry>
+    <entry id="38" string="All Files">Wszystkie pliki</entry>
+    <entry id="39" string="You have not selected a file!">Nie wybrano żadnego pliku!</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Wątek konwersji jeszcze trwa! Na pewno zakończyć program?</entry>
+    <entry id="41" string="Currently encoding">Trwa konwersja</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Program jest rozpowszechniany zgodnie z&#10;warunkami Licencji Publicznej GNU (GPL).</entry>
+    <entry id="43" string="CDDB query">Zapytanie CDDB</entry>
+    <entry id="44" string="About BonkEnc">O programie BonkEnc</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">Filtr WAVE Out nie ma parametrów które można ustawić.</entry>
+    <entry id="46" string="WAVE Out filter">Filtr WAVE Out</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Nie można zmieniać ustawień podczas konwersji!</entry>
+    <entry id="48" string="%1 encoder configuration">%1 - ustawienia kompresji</entry>
+    <entry id="49" string="OK">Akceptuj</entry>
     <entry id="50" string="Cancel">Anuluj</entry>
-    <entry id="51" string="Encoding Mode">Sposób kodowania</entry>
-    <entry id="52" string="Variable Bitrate">Zmienna bitrate</entry>
-    <entry id="53" string="Average Bitrate">Średnia bitrate</entry>
+    <entry id="51" string="Encoding Mode">Tryb konwersji</entry>
+    <entry id="52" string="Variable Bitrate">zmienna przepływność</entry>
+    <entry id="53" string="Average Bitrate">średnia przepływność</entry>
     <entry id="54" string="Quality">Jakość</entry>
-    <entry id="55" string="Encoders">Kodery</entry>
+    <entry id="55" string="Encoders">Konwertery</entry>
     <entry id="56" string="Language">Język</entry>
-    <entry id="57" string="Show title info">Pokazać informacje tytułowe</entry>
-    <entry id="58" string="General settings setup">Ogólne nastawienia</entry>
-    <entry id="59" string="Configure encoder">Koder konfigurować</entry>
-    <entry id="60" string="Encoder">Koder</entry>
-    <entry id="61" string="Output directory">Folder docelowy</entry>
-    <entry id="62" string="Browse">Szukać</entry>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:">Proszę wybrać folder dla plików wyjściowych:</entry>
-    <entry id="64" string="Encoding">Zestaw znaków</entry>
+    <entry id="57" string="Show title info">Wyświetl dane utworu</entry>
+    <entry id="58" string="General settings setup">Ustawienia podstawowe</entry>
+    <entry id="59" string="Configure encoder">Ustawienia konwersji</entry>
+    <entry id="60" string="Encoder">Kompresor/konwerter</entry>
+    <entry id="61" string="Output directory">Katalog docelowy</entry>
+    <entry id="62" string="Browse">Wybierz</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Wybierz katalog docelowy dla konwertowanych plików</entry>
+    <entry id="64" string="Encoding">Kodowanie</entry>
     <entry id="65" string="Author">Autor</entry>
     <entry id="66" string="URL">URL</entry>
-    <entry id="67" string="Information">Informacja</entry>
-    <entry id="68" string="Select language:">Wybrać język:</entry>
-    <entry id="69" string="Active CD-ROM drive">Aktywna odtwarzarka CD</entry>
-    <entry id="70" string="Ripper settings">Ustawienia ripper'a</entry>
-    <entry id="71" string="Activate cdparanoia mode:">Uaktywnić Paranoia Modus:</entry>
-    <entry id="72" string="Activate jitter correction">Uaktywnić korekcje Jitter</entry>
-    <entry id="73" string="Swap left/right channel">Zmienić prawy/lewy kanał</entry>
-    <entry id="74" string="Lock CD tray while ripping">Zamknąć CD pdczas ripowania</entry>
-    <entry id="75" string="Use native NT SCSI library">Używać NT SCSI DLL</entry>
-    <entry id="76" string="Overlap only">Tylko Overlap</entry>
-    <entry id="77" string="No verify">Żadne sprawdzenie</entry>
-    <entry id="78" string="No scratch repair">Żadna naprawa zarysowań</entry>
-    <entry id="79" string="Full cdparanoia mode">Pełny modus</entry>
-    <entry id="80" string="Bitrate">Przepust bitów</entry>
-    <entry id="81" string="Copyright bit">Copyright Bit</entry>
-    <entry id="82" string="CRC">CRC</entry>
-    <entry id="83" string="Original bit">Oryginalny bit</entry>
+    <entry id="67" string="Information">Informacje</entry>
+    <entry id="68" string="Select language:">Wybierz język:</entry>
+    <entry id="69" string="Active CD-ROM drive">Bieżący napęd CD-ROM</entry>
+    <entry id="70" string="Ripper settings">Ustawienia ekstrakcji</entry>
+    <entry id="71" string="Activate cdparanoia mode:">Włącz tryb 'cdparanoia'</entry>
+    <entry id="72" string="Activate jitter correction">Włącz korekcję drżenia</entry>
+    <entry id="73" string="Swap left/right channel">Zamień kanały lewy&lt;-&gt;prawy</entry>
+    <entry id="74" string="Lock CD tray while ripping">Zablokuj CD podczas ekstrakcji</entry>
+    <entry id="75" string="Use native NT SCSI library">Wykorzystaj bibliotekę SCSI NT</entry>
+    <entry id="76" string="Overlap only">tylko nakładanie</entry>
+    <entry id="77" string="No verify">bez weryfikacji</entry>
+    <entry id="78" string="No scratch repair">bez naprawy uszkodzeń</entry>
+    <entry id="79" string="Full cdparanoia mode">pełny (wszystko)</entry>
+    <entry id="80" string="Bitrate">Przepływność binarna</entry>
+    <entry id="81" string="Copyright bit">Prawa autorskie zastrzeżone</entry>
+    <entry id="82" string="CRC">Suma kontrolna (CRC)</entry>
+    <entry id="83" string="Original bit">Oryginał</entry>
     <entry id="84" string="Channels">Kanały</entry>
-    <entry id="85" string="Private bit">Priwatny bit</entry>
-    <entry id="86" string="Set Copyright bit">Zastosować Copyright Bit</entry>
-    <entry id="87" string="Enable CRC">Uaktywnić CRC</entry>
-    <entry id="88" string="Set Original bit">Zastosować Original Bit</entry>
-    <entry id="89" string="Dual channel encoding">Oddzielić kanaly stereofoniczne</entry>
-    <entry id="90" string="Set Private bit">Private Bit użyć</entry>
-    <entry id="91" string="Encoder mode">System kodowania</entry>
-    <entry id="92" string="Stereo mode">System stereo</entry>
-    <entry id="93" string="Quantization">Quantyfikacja</entry>
-    <entry id="94" string="Downsampling ratio">Stopień Downsampling</entry>
-    <entry id="95" string="Predictor size">Wielkość Predictora</entry>
-    <entry id="96" string="Enable lossless encoding">Kodowanie wolne od strat</entry>
-    <entry id="97" string="Enable Joint Stereo">Uaktywnić Joint Stereo</entry>
-    <entry id="98" string="Bitrate per channel:">Bitrate na kanał:</entry>
-    <entry id="99" string="Preselection">Preselekcja</entry>
-    <entry id="100" string="Number of preselection candidates:">Ilość kandydatów do preselekcji:</entry>
+    <entry id="85" string="Private bit">Prywatny</entry>
+    <entry id="86" string="Set Copyright bit">Ustaw znacznik</entry>
+    <entry id="87" string="Enable CRC">Włącz CRC</entry>
+    <entry id="88" string="Set Original bit">Ustaw znacznik</entry>
+    <entry id="89" string="Dual channel encoding">dwa kanały</entry>
+    <entry id="90" string="Set Private bit">Ustaw znacznik</entry>
+    <entry id="91" string="Encoder mode">Tryb konwertera</entry>
+    <entry id="92" string="Stereo mode">Tryb stereo</entry>
+    <entry id="93" string="Quantization">Kwantyzacja</entry>
+    <entry id="94" string="Downsampling ratio">Współczynnik podpróbkowania</entry>
+    <entry id="95" string="Predictor size">Zakres przewidywania</entry>
+    <entry id="96" string="Enable lossless encoding">Włącz kompresję bezstratną</entry>
+    <entry id="97" string="Enable Joint Stereo">Włącz 'wspólne stereo'</entry>
+    <entry id="98" string="Bitrate per channel:">Przepływnośc na kanał:</entry>
+    <entry id="99" string="Preselection">Wybór wstępny</entry>
+    <entry id="100" string="Number of preselection candidates:">Ilość analizowanych ustawień:</entry>
     <entry id="101" string="MPEG version">Wersja MPEG</entry>
-    <entry id="102" string="AAC object type">Typ objektu AAC</entry>
-    <entry id="103" string="Allow Joint Stereo">Pozwolić na Joint Stereo</entry>
-    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
-    <entry id="105" string="Use Temporal Noise Shaping">Użyć TNS</entry>
-    <entry id="106" string="Maximum bandwidth">Maksymalna szerokość ścieżki</entry>
-    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maksymalnny zakres częstotliwości AAC w Hz:</entry>
-    <entry id="108" string="Basic">Prosty</entry>
+    <entry id="102" string="AAC object type">Typ obiektu AAC</entry>
+    <entry id="103" string="Allow Joint Stereo">'wspólne stereo'</entry>
+    <entry id="104" string="Temporal Noise Shaping">Kształtowanie czasowe szumu</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Wykorzystaj kształtowanie</entry>
+    <entry id="106" string="Maximum bandwidth">Pasmo maksymalne</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maksymalne pasmo częstotliwości AAC [Hz]:</entry>
+    <entry id="108" string="Basic">Podstawowe</entry>
     <entry id="109" string="Misc">Różne</entry>
-    <entry id="110" string="Audio processing">Proces obróbki dźwiękowej</entry>
-    <entry id="111" string="Set bitrate:">Bitrate:</entry>
-    <entry id="112" string="Set ratio:">Stosunek:</entry>
-    <entry id="113" string="Set quality:">Ustawić jakość:</entry>
-    <entry id="114" string="worse">gorzej</entry>
-    <entry id="115" string="better">lepiej</entry>
-    <entry id="116" string="Auto">Automatycznie</entry>
-    <entry id="117" string="Stereo">Stereo</entry>
-    <entry id="118" string="Joint Stereo">Joint Stereo</entry>
-    <entry id="119" string="Force Joint Stereo">Tylko Joint Stereo</entry>
-    <entry id="120" string="VBR mode">VBR Modus</entry>
-    <entry id="121" string="no VBR">Żadny VBR</entry>
+    <entry id="110" string="Audio processing">Przetwarzanie audio</entry>
+    <entry id="111" string="Set bitrate:">przepływność:</entry>
+    <entry id="112" string="Set ratio:">współczynnik:</entry>
+    <entry id="113" string="Set quality:">Określ jakość:</entry>
+    <entry id="114" string="worse">gorsza</entry>
+    <entry id="115" string="better">lepsza</entry>
+    <entry id="116" string="Auto">automatycznie</entry>
+    <entry id="117" string="Stereo">stereo</entry>
+    <entry id="118" string="Joint Stereo">wspólne stereo</entry>
+    <entry id="119" string="Force Joint Stereo">wymuś wspólne</entry>
+    <entry id="120" string="VBR mode">Tryb VBR</entry>
+    <entry id="121" string="no VBR">bez VBR</entry>
     <entry id="122" string="VBR quality">Jakość VBR</entry>
-    <entry id="123" string="ABR target bitrate">Docelowa ABR bitrate</entry>
-    <entry id="124" string="VBR bitrate range">VBR obszar Bitrate</entry>
-    <entry id="125" string="Set minimum VBR bitrate:">Minimalna VBR Bitrate:</entry>
-    <entry id="126" string="Set maximum VBR bitrate:">Maksymalna VBR Bitrate:</entry>
-    <entry id="127" string="Control bits">Bity kontrolne</entry>
-    <entry id="128" string="Stream format">Format Stream</entry>
-    <entry id="129" string="Enforce strict ISO compliance">Wymusić ścisłą zgodność z ISO</entry>
-    <entry id="130" string="Padding">Padding</entry>
-    <entry id="131" string="Set padding type:">Rodzaj padding:</entry>
-    <entry id="132" string="pad no frames">żaden padding</entry>
-    <entry id="133" string="pad all frames">wszystkie frames</entry>
-    <entry id="134" string="adjust padding">poprawić padding</entry>
-    <entry id="135" string="Output sampling rate">Samplingrate</entry>
-    <entry id="136" string="no resampling">żaden resampling</entry>
-    <entry id="137" string="Highpass filter">Filtr dla highpass</entry>
-    <entry id="138" string="Set Highpass frequency (Hz):">Czestotliwość highpass w Hz:</entry>
-    <entry id="139" string="Set Highpass width (Hz):">Szerokość highpass w Hz:</entry>
-    <entry id="140" string="Lowpass filter">Filtr dla lowpass</entry>
-    <entry id="141" string="Set Lowpass frequency (Hz):">Czestotliwość lowpass w Hz:</entry>
-    <entry id="142" string="Set Lowpass width (Hz):">Szerokość lowpass w Hz:</entry>
-    <entry id="143" string="Misc settings">Różne ustawienia</entry>
-    <entry id="144" string="Disable all filtering">Filtrowanie wyłączyć</entry>
+    <entry id="123" string="ABR target bitrate">Zakładana przepływność ABR</entry>
+    <entry id="124" string="VBR bitrate range">Zakres przepływności VBR</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Ustaw minimalną na:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Ustaw maksymalną na:</entry>
+    <entry id="127" string="Control bits">Bity sterujące</entry>
+    <entry id="128" string="Stream format">Format strumienia</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Narzuć ścisłą zgodność z ISO</entry>
+    <entry id="130" string="Padding">Uzupełnianie</entry>
+    <entry id="131" string="Set padding type:">Typ uzupełniania:</entry>
+    <entry id="132" string="pad no frames">brakujące ramki</entry>
+    <entry id="133" string="pad all frames">wszystkie ramki</entry>
+    <entry id="134" string="adjust padding">korekcyjne</entry>
+    <entry id="135" string="Output sampling rate">Wyjściowe próbkowanie</entry>
+    <entry id="136" string="no resampling">bez zmiany</entry>
+    <entry id="137" string="Highpass filter">Filtr górnoprzepustowy</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">częstotliwość [Hz]:</entry>
+    <entry id="139" string="Set Highpass width (Hz):">szerokość pasma [Hz]:</entry>
+    <entry id="140" string="Lowpass filter">Filtr dolnoprzepustowy</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">częstotliwość [Hz]:</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">szerokość pasma [Hz]:</entry>
+    <entry id="143" string="Misc settings">Różne</entry>
+    <entry id="144" string="Disable all filtering">Wyłącz filtrowanie</entry>
     <entry id="145" string="MP3 Files">Pliki MP3</entry>
     <entry id="146" string="Ogg Vorbis Files">Pliki Ogg Vorbis</entry>
     <entry id="147" string="BONK Files">Pliki BONK</entry>
-    <entry id="148" string="Automatic CDDB queries">Automatyczne odpytanie CDDB</entry>
-    <entry id="149" string="CDDB access mode:">Dostęp CDDB:</entry>
-    <entry id="150" string="CDDB server:">CDDB Server:</entry>
+    <entry id="148" string="Automatic CDDB queries">Automatyczne zapytania CDDB</entry>
+    <entry id="149" string="CDDB access mode:">Tryb dostępu do CDDB:</entry>
+    <entry id="150" string="CDDB server:">Serwer CDDB:</entry>
     <entry id="151" string="Port:">Port:</entry>
-    <entry id="152" string="Info">Informacja</entry>
-    <entry id="153" string="No freedb entry for this disk.">Do tej Cd nie istnieje żaden wpis w freedb</entry>
-    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Błąd przy łączeniu z serwerem freedb.</entry>
-    <entry id="155" string="Connecting to freedb server at">Łączę z serwerem freedb w</entry>
-    <entry id="156" string="Requesting CD information">Odpytanie informacji o CD</entry>
-    <entry id="157" string="eMail address:">Adres eMail:</entry>
-    <entry id="158" string="Please enter a valid eMail address.">Proszę podać ważny adres eMail.</entry>
-    <entry id="159" string="No exact matches found">Nie znaleziono żadnych dokładniejszych zgodności</entry>
-    <entry id="160" string="Multiple matches found">Okryto wiele zgodności</entry>
-    <entry id="161" string="Matches">Zgodności</entry>
-    <entry id="162" string="Select the entry that best fits your CD:">Proszę wybrać wpis najlepiej pasujący do Twojej CD:</entry>
-    <entry id="163" string="Extended CDDB settings">Poszerzone ustawienia CDDB</entry>
+    <entry id="152" string="Info">Informacje</entry>
+    <entry id="153" string="No freedb entry for this disk.">Baza freedb nie zawiera danych tej płyty CD</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Przy połączeniu z serwerem freedb wystąpił błąd</entry>
+    <entry id="155" string="Connecting to freedb server at">Łączenie z serwerem freedb</entry>
+    <entry id="156" string="Requesting CD information">Wysyłanie zapytania o dane płyty CD</entry>
+    <entry id="157" string="eMail address:">Adres e-mail:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Należy wprowadzić poprawny adres e-mail.</entry>
+    <entry id="159" string="No exact matches found">Brak danych pasujących do wzorca</entry>
+    <entry id="160" string="Multiple matches found">Znaleziono kilka wpisów pasujących do wzorca</entry>
+    <entry id="161" string="Matches">Znalezione wpisy</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Wybierz wpis najlepiej odpowiadający płycie CD</entry>
+    <entry id="163" string="Extended CDDB settings">Rozszerzone ustawienia CDDB</entry>
     <entry id="164" string="CGI scripts">Skrypty CGI</entry>
-    <entry id="165" string="CDDB query script:">Skrypt odpytać CDDB:</entry>
-    <entry id="166" string="CDDB submit script:">Skrypt wysłania CDDB:</entry>
+    <entry id="165" string="CDDB query script:">Skrypt zapytania CDDB:</entry>
+    <entry id="166" string="CDDB submit script:">Skrypt wysyłania danych do CDDB:</entry>
     <entry id="167" string="HTTP settings">Ustawienia HTTP</entry>
-    <entry id="168" string="Proxy settings">Ustawienia Proxy</entry>
-    <entry id="169" string="no proxy">Żaden Proxy</entry>
-    <entry id="170" string="Proxy type:">Typ Proxy:</entry>
-    <entry id="171" string="Proxy server:">Serwer Proxy:</entry>
-    <entry id="172" string="Presets">Ustawienia wstępne</entry>
-    <entry id="173" string="Use preset:">Użyć ustawień wstępnych:</entry>
-    <entry id="174" string="Custom settings">Ustawienia własne</entry>
-    <entry id="175" string="Medium">Średnie</entry>
-    <entry id="176" string="Standard">Standart</entry>
-    <entry id="177" string="Extreme">Maksymalne</entry>
-    <entry id="178" string="Insane">Zwariowane</entry>
-    <entry id="179" string="Medium, Fast">Średnie, Szybkie</entry>
-    <entry id="180" string="Standard, Fast">Standart, Szybkie</entry>
-    <entry id="181" string="Extreme, Fast">Maksymalne, Szybkie</entry>
+    <entry id="168" string="Proxy settings">Ustawienia serwera proxy</entry>
+    <entry id="169" string="no proxy">bez serwera proxy</entry>
+    <entry id="170" string="Proxy type:">Typ serwera proxy:</entry>
+    <entry id="171" string="Proxy server:">Serwer proxy:</entry>
+    <entry id="172" string="Presets">Zdefiniowane ustawienia</entry>
+    <entry id="173" string="Use preset:">Zastosuj:</entry>
+    <entry id="174" string="Custom settings">ustawienia użytkownika</entry>
+    <entry id="175" string="Medium">średni</entry>
+    <entry id="176" string="Standard">standardowy</entry>
+    <entry id="177" string="Extreme">ekstremalny</entry>
+    <entry id="178" string="Insane">wariacki</entry>
+    <entry id="179" string="Medium, Fast">średni, szybki</entry>
+    <entry id="180" string="Standard, Fast">standardowy, szybki</entry>
+    <entry id="181" string="Extreme, Fast">ekstremalny, szybki</entry>
     <entry id="182" string="Title">Tytuł</entry>
     <entry id="183" string="Track">Ścieżka</entry>
     <entry id="184" string="Length">Długość</entry>
-    <entry id="185" string="Size">Wielkość</entry>
+    <entry id="185" string="Size">Rozmiar</entry>
     <entry id="186" string="Artist">Artysta</entry>
     <entry id="187" string="Year">Rok</entry>
-    <entry id="188" string="Genre">Genre</entry>
+    <entry id="188" string="Genre">Rodzaj</entry>
     <entry id="189" string="Album">Album</entry>
-    <entry id="190" string="Info tags">Info Tags</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">Pisać ID3V2/Vorbis Info Tags</entry>
-    <entry id="192" string="Default comment string:">Komentarze standartowe:</entry>
+    <entry id="190" string="Info tags">Identyfikatory</entry>
+    <entry id="191" string="Write ID3V2/Vorbis info tags">Identyfikatory ID3v2/Vorbis</entry>
+    <entry id="192" string="Default comment string:">Domyślny opis:</entry>
     <entry id="193" string="unknown artist">nieznany artysta</entry>
     <entry id="194" string="unknown title">nieznany tytuł</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">Nie mogę załadowac drivera ASPI!</entry>
+    <entry id="195" string="Unable to load ASPI drivers!">Nie można załadować sterowników ASPI</entry>
     <entry id="196" string="Database">Baza danych</entry>
-    <entry id="197" string="Submit CDDB data...">Dane CDDB wysłać...</entry>
-    <entry id="198" string="Enable CDDB cache">CDDB Cache aktywować</entry>
+    <entry id="197" string="Submit CDDB data...">Wysyłanie danych do CDDB...</entry>
+    <entry id="198" string="Enable CDDB cache">Włącz bufor CDDB</entry>
     <entry id="199" string="CDDB data">Dane CDDB</entry>
-    <entry id="200" string="Submit">Wysłać</entry>
-    <entry id="201" string="No audio CD in drive!">Nie ma Audio-CD w odtwarzarce!</entry>
-    <entry id="202" string="Please fill all fields and track titles before submitting.">Proszę wypełnić wszytkie pola i tytuły przed wysłaniem.</entry>
-    <entry id="203" string="CD ripping disabled!">CD-Ripping zdeaktywowane!</entry>
-    <entry id="204" string="Do you want to use native NT SCSI instead?">Chcesz użyć NT SCSI?</entry>
-    <entry id="205" string="Submitting CD information">Wysyłam informacje o CD</entry>
-    <entry id="206" string="Cannot open file:">Nie mogę otworzyć pliku:</entry>
-    <entry id="207" string="Query CDDB database">Odpytać basę danych CDDB</entry>
+    <entry id="200" string="Submit">Wyślij</entry>
+    <entry id="201" string="No audio CD in drive!">Brak płyty audio CD w napędzie!</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Przed wysłaniem należy wypełnić wszystkie pola i tytuły utworów.</entry>
+    <entry id="203" string="CD ripping disabled!">Ekstrakcja z płyt CD jest wyłączona!</entry>
+    <entry id="204" string="Do you want to use native NT SCSI instead?">Zastosować wewnętrzną bibliotekę SCSI NT?</entry>
+    <entry id="205" string="Submitting CD information">Wysyłanie danych płyty CD</entry>
+    <entry id="206" string="Cannot open file:">Nie można otworzyć pliku:</entry>
+    <entry id="207" string="Query CDDB database">Zapytanie do bazy danych CDDB</entry>
     <entry id="208" string="Help">Pomoc</entry>
     <entry id="209" string="index.html">index.html</entry>
-    <entry id="210" string="Plug-ins">Plugins</entry>
-    <entry id="211" string="Input plug-ins">Plugins wejściowe</entry>
-    <entry id="212" string="Output plug-ins">Plugins wyjściowe</entry>
-    <entry id="213" string="Configure">Konfiguruj</entry>
-    <entry id="214" string="About">Na temat</entry>
-    <entry id="215" string="Play">Odtworzyć</entry>
-    <entry id="216" string="Stop">Zatrzymać</entry>
-    <entry id="217" string="Cannot play a file while encoding!">Podczas kodowania nie  można odtworzyć żadnego pliku!</entry>
-    <entry id="218" string="Cannot start encoding while playing a file!">Nie moge zacząć kodowania podczas odtwarzania pliku!</entry>
+    <entry id="210" string="Plug-ins">Moduły rozszerzeń</entry>
+    <entry id="211" string="Input plug-ins">Moduły wejściowe</entry>
+    <entry id="212" string="Output plug-ins">Moduły wyjściowe</entry>
+    <entry id="213" string="Configure">Konfiguracja</entry>
+    <entry id="214" string="About">O programie</entry>
+    <entry id="215" string="Play">Odtwórz</entry>
+    <entry id="216" string="Stop">Zatrzymaj</entry>
+    <entry id="217" string="Cannot play a file while encoding!">Nie można odtwarzać pliku podczas kompresji!</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">Nie można rozpocząć konwersji podczas odtwarzania pliku!</entry>
     <entry id="219" string="CDDB Settings">Ustawienia CDDB</entry>
     <entry id="220" string="ATH">ATH</entry>
-    <entry id="221" string="Enable ATH:">Uaktywować ATH:</entry>
-    <entry id="222" string="Use default setting">Użyj ustawień wstępnych</entry>
+    <entry id="221" string="Enable ATH:">Włącz ATH:</entry>
+    <entry id="222" string="Use default setting">ustawienie domyślne</entry>
     <entry id="223" string="Psycho acoustic model">Model psychoakustyczny</entry>
-    <entry id="224" string="Use Temporal Masking Effect">Użyć tymczasowego Masking Effekt</entry>
-    <entry id="225" string="Expert">Ustawienia dla ekspertów</entry>
-    <entry id="226" string="Cannot configure encoder while encoding!">Podczas kodowania nie można zmienić ustawień kodera!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">Folder wyjściowy nie istnieje! Założyc go?</entry>
-    <entry id="228" string="Filename pattern">Wzór dla nazw plików</entry>
+    <entry id="224" string="Use Temporal Masking Effect">Wykorzystaj efekt maskowania</entry>
+    <entry id="225" string="Expert">Zaawansowane</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">Nie można ustawiać konwertera podczas konwersji!</entry>
+    <entry id="227" string="The output directory does not exist! Do you want to create it?">Katalog docelowy nie istnieje! Utworzyć go?</entry>
+    <entry id="228" string="Filename pattern">Wzór nazw plików</entry>
     <entry id="229" string="unknown album">nieznany album</entry>
     <entry id="230" string="Translated by %1.">Przetłumaczone %1.</entry>
   </data>
