@@ -69,7 +69,7 @@ Int bonkEnc::Encoder(Thread *thread)
 	Int		 num = joblist->GetNOfEntries();
 	Int		 nRemoved = 0;
 
-	for (int i = 0; i < num; i++)
+	for (Int i = 0; i < num; i++)
 	{
 		if (!joblist->GetNthEntry(i - nRemoved)->selected) continue;
 

@@ -55,9 +55,9 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig		*bonkEnc::currentConfig	= NIL;
 I18n::Translator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "CVS 20040130";
+String	 bonkEnc::version = "CVS 20040131";
 String	 bonkEnc::cddbVersion = "v1.0beta1";
-String	 bonkEnc::shortVersion = "20040130";
+String	 bonkEnc::shortVersion = "20040131";
 
 bonkEnc::bonkEnc()
 {

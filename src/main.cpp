@@ -126,6 +126,30 @@ bonkEncGUI::bonkEncGUI()
 		button_next->SetFlags(BF_NOFRAME);
 	}
 
+	pos.x = -4;
+	pos.y = 20;
+	size.cx = 21;
+	size.cy = 21;
+
+	button_sel_all		= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 16, NIL), pos, size);
+	button_sel_all->onClick.Connect(&bonkEncGUI::JoblistSelectAll, this);
+	button_sel_all->SetFlags(BF_NOFRAME);
+	button_sel_all->SetTooltip(i18n->TranslateString("Select all"));
+
+	pos.y += 14;
+
+	button_sel_none		= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 17, NIL), pos, size);
+	button_sel_none->onClick.Connect(&bonkEncGUI::JoblistSelectNone, this);
+	button_sel_none->SetFlags(BF_NOFRAME);
+	button_sel_none->SetTooltip(i18n->TranslateString("Select none"));
+
+	pos.y += 14;
+
+	button_sel_toggle	= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 18, NIL), pos, size);
+	button_sel_toggle->onClick.Connect(&bonkEncGUI::JoblistToggleSelection, this);
+	button_sel_toggle->SetFlags(BF_NOFRAME);
+	button_sel_toggle->SetTooltip(i18n->TranslateString("Toggle selection"));
+
 	pos.x = 7;
 	pos.y = 96;
 
@@ -167,9 +191,9 @@ bonkEncGUI::bonkEncGUI()
 
 	txt_joblist		= new Text(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", "0"), pos);
 
-	pos.x = 7;
+	pos.x = 16;
 	pos.y += 19;
-	size.cx = currentConfig->wndSize.cx - 20;
+	size.cx = currentConfig->wndSize.cx - 29;
 	size.cy = currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0);
 
 	joblist			= new ListBox(pos, size);
@@ -683,6 +707,10 @@ bonkEncGUI::bonkEncGUI()
 		mainWnd->RegisterObject(button_next);
 	}
 
+	mainWnd->RegisterObject(button_sel_all);
+	mainWnd->RegisterObject(button_sel_none);
+	mainWnd->RegisterObject(button_sel_toggle);
+
 	mainWnd->RegisterObject(txt_joblist);
 	mainWnd->RegisterObject(info_divider);
 	mainWnd->RegisterObject(info_bottom);
@@ -790,6 +818,10 @@ bonkEncGUI::~bonkEncGUI()
 		DeleteObject(button_next);
 	}
 
+	DeleteObject(button_sel_all);
+	DeleteObject(button_sel_none);
+	DeleteObject(button_sel_toggle);
+
 	DeleteObject(txt_joblist);
 	DeleteObject(info_divider);
 	DeleteObject(info_bottom);
@@ -888,8 +920,8 @@ Void bonkEncGUI::ResizeProc()
 
 	progress->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->GetObjectProperties()->size.cy);
 
-	joblist->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
-	droparea->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
+	joblist->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
+	droparea->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
 
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);

@@ -41,6 +41,10 @@ class bonkEncGUI : public bonkEnc
 		Button		*button_prev;
 		Button		*button_next;
 
+		Button		*button_sel_all;
+		Button		*button_sel_none;
+		Button		*button_sel_toggle;
+
 		Int		 clicked_drive;
 		Int		 clicked_encoder;
 
@@ -54,6 +58,9 @@ class bonkEncGUI : public bonkEnc
 		Void		 AddDragDropFile(String *);
 		Void		 RemoveFile();
 		Void		 SelectJoblistEntry();
+		Void		 JoblistSelectAll();
+		Void		 JoblistSelectNone();
+		Void		 JoblistToggleSelection();
 		Void		 ShowHideTitleInfo();
 		Void		 UpdateTitleInfo();
 		Void		 ReadSpecificCD();

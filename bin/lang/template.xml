@@ -240,5 +240,8 @@
     <entry id="228" string="Filename pattern"/>
     <entry id="229" string="unknown album"/>
     <entry id="230" string="Translated by %1."/>
+    <entry id="231" string="Select all"/>
+    <entry id="232" string="Select none"/>
+    <entry id="233" string="Toggle selection"/>
   </data>
 </LangFile>

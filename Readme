@@ -26,6 +26,7 @@ History
 		- upgraded Ogg Vorbis to version 1.0.1
 		- upgraded FAAC to version 1.23.1
 		- added support for CDDB protocol version 6 (UTF-8 support)
+		- added buttons to select all/none/toggle joblist entries
 		- some small improvements
 		- some bugfixes
 

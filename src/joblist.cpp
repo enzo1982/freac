@@ -462,3 +462,40 @@ Void bonkEncGUI::UpdateTitleInfo()
 
 	if (joblist->GetSelectedEntry()->name != jlEntry) joblist->ModifyEntry(joblist->GetSelectedEntry()->id, jlEntry);
 }
+
+Void bonkEncGUI::JoblistSelectAll()
+{
+	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+	{
+		if (!joblist->GetNthEntry(i)->selected) joblist->GetNthEntry(i)->selected = True;
+	}
+
+	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetObjectProperties()->size));
+	joblist->Paint(SP_PAINT);
+	mainWnd->GetDrawSurface()->EndPaint();
+}
+
+Void bonkEncGUI::JoblistSelectNone()
+{
+	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+	{
+		if (joblist->GetNthEntry(i)->selected) joblist->GetNthEntry(i)->selected = False;
+	}
+
+	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetObjectProperties()->size));
+	joblist->Paint(SP_PAINT);
+	mainWnd->GetDrawSurface()->EndPaint();
+}
+
+Void bonkEncGUI::JoblistToggleSelection()
+{
+	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+	{
+		if (joblist->GetNthEntry(i)->selected)	joblist->GetNthEntry(i)->selected = False;
+		else					joblist->GetNthEntry(i)->selected = True;
+	}
+
+	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetObjectProperties()->size));
+	joblist->Paint(SP_PAINT);
+	mainWnd->GetDrawSurface()->EndPaint();
+}
