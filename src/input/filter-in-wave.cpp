@@ -16,7 +16,8 @@ FilterInWAVE::FilterInWAVE(bonkEncConfig *config) : InputFilter(config)
 {
 	setup = false;
 
-	packageSize = 0;
+	headerSize	= 0;
+	packageSize	= 0;
 }
 
 FilterInWAVE::~FilterInWAVE()
@@ -33,11 +34,11 @@ int FilterInWAVE::ReadData(unsigned char **data, int size)
 	{
 		setup = true;
 
-		size -= 44;
+		size -= headerSize;
 
 		unsigned char	*buffer = new unsigned char [size];
 
-		memcpy((void *) buffer, (void *) (*data + 44), size);
+		memcpy((void *) buffer, (void *) (*data + headerSize), size);
 
 		delete [] *data;
 
@@ -66,8 +67,10 @@ bonkFormatInfo *FilterInWAVE::GetFileInfo(String inFile)
 		f_in->InputNumber(1);
 
 	// Read FMT chunk
-	for (Int j = 0; j < 8; j++)
+	for (Int j = 0; j < 4; j++)
 		f_in->InputNumber(1);
+
+	headerSize = 28 + f_in->InputNumber(4);
 
 	if (f_in->InputNumber(2) != 1)
 	{
@@ -85,8 +88,12 @@ bonkFormatInfo *FilterInWAVE::GetFileInfo(String inFile)
 
 	nFormat->bits = uint16(f_in->InputNumber(2));
 
+	// Read rest of FMT chunk
+	for (Int l = 0; l < headerSize - 44; l++)
+		f_in->InputNumber(1);
+
 	// Read DATA chunk
-	for (Int l = 0; l < 4; l++)
+	for (Int m = 0; m < 4; m++)
 		f_in->InputNumber(1);
 
 	nFormat->length = uint32(f_in->InputNumber(4)) / (nFormat->bits / 8);
