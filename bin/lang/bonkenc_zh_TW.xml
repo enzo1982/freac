@@ -244,12 +244,12 @@
     <entry id="232" string="Select none">取消選取</entry>
     <entry id="233" string="Toggle selection">反向選取</entry>
     <entry id="234" string="Show Tip of the Day">顯示每日小秘訣</entry>
-    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc 目前擁有 %1 種語言版本. 如果您使&#10;用的語言不在其中. 您可以藉由安裝時勾選的 &#10;'Smooth Translator' 小工具來替 BonkEnc 進行翻譯喔.</entry>
+    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc 目前擁有 %1 種語言版本. 如果您使&#10;用的語言不在其中. 您可以藉由安裝時勾選的 &#10;'smooth Translator' 小工具來替 BonkEnc 進行翻譯喔.</entry>
     <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC&#10;and Bonk encoders. An encoder for the VQF format is available&#10;at the BonkEnc website: %1">BonkEnc 預設支援 LAME, Ogg Vorbis, FAAC 及 &#10;Bonk 編碼器. 另外還有 VQF 格式的編碼器&#10;可於 BonkEnc 的網站下載到.</entry>
     <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc 能夠使用 Winamp 2 的音訊輸出外掛&#10;程式來方便轉換成更多不同音訊格式. 只要拷貝&#10; in_*.dll 這類的檔案到 BonkEnc/plugins 資校匣下,&#10;就可以讓 BonkEnc 使用這些格式了.</entry>
     <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">您可以藉由 BonkEnc 上傳您自己編輯的 Unicode&#10;專輯資訊到 freedb 資料庫喔. 因此若您有一些其他&#10;不同字元的 CD 資訊, 也可以藉由 BonkEnc&#10;正確地上傳喔.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">為了修正音軌讀取上的錯誤, 您可以開啟 &quot;跳針修正&quot;&#10;這個功能於 BonkEnc 的設定中的 CD Rip 頁面.&#10;若這樣子做還沒辦法解決問題, 您可以啟用其中的&#10;Paranoia 模式.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">您是否對於 BonkEnc 的功能上有更好的建議?&#10;您可以藉由 BonkEnc 的軟體追蹤器上傳您的&#10;任何建議. 位址是在 SourceForge project 頁面 - &#10;%1 ,&#10;&#10;或直接寄送電子信件到 %2 也可以.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">您是否對於 BonkEnc 的功能上有更好的建議?&#10;您可以藉由 BonkEnc 的軟體追蹤器上傳您的&#10;任何建議. 位址是在 SourceForge project 頁面 - &#10;%1,&#10;或直接寄送電子信件到 %2 也可以.</entry>
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">您喜歡 BonkEnc 嗎? 它是免費的喔.&#10;不過您也可以藉由捐點小錢贊助 BonkEnc 計劃.&#10;您可以利用 PayPal 贊助給 %1.&#10;請參閱 %2 的詳細資訊.</entry>
     <entry id="242" string="Bitrate / Quality">播放率 / 品質</entry>
     <entry id="243" string="Check for updates now">檢查更新版本</entry>
@@ -270,7 +270,7 @@
     <entry id="258" string="File format">檔案格式</entry> 
     <entry id="259" string="Allow ID3V2 tags in AAC files">允許在 AAC 檔案內使用 ID3V2 標籤</entry> 
     <entry id="260" string="Note:">注意:</entry> 
-    <entry id="261" string="Some players may have problems playing AAC files with ID3 tags attached. Please use this option only if you are sure that your player can handle these tags.">某些播放器在播放這些包含 ID3 標籤的 AAC 檔案時會發生問題. 使用這個選項時請留意您的播放器是否支援這個 ID3 標籤.</entry> 
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放這些包含 ID3 標籤的 AAC 檔案時會發生問題.&#10;使用這個選項時請留意您的播放器是否支援這個 ID3 標籤.</entry> 
     <entry id="262" string="FLAC Files">FLAC 檔案</entry> 
     <entry id="263" string="Sampling rate">取樣率</entry> 
     <entry id="264" string="Sample resolution">取樣解析度</entry> 
