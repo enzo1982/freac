@@ -509,7 +509,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	reg_register->RegisterObject(register_layer_encoders);
 
-	if (bonkEnc::i18n->GetNOfLanguages() > 0) reg_register->RegisterObject(register_layer_language);
+	if (bonkEnc::i18n->GetNOfLanguages() > 1) reg_register->RegisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cddb);
@@ -696,9 +696,13 @@ Void configureGeneralSettings::OK()
 
 	currentConfig->encoder = encoders_combo_encoder->GetSelectedEntry()->id;
 
-	if (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry()->id)) currentConfig->languageChanged = true;
+	if (bonkEnc::i18n->GetNOfLanguages() > 1)
+	{
+		if (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry()->id)) currentConfig->languageChanged = true;
 
-	currentConfig->language = bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry()->id);
+		currentConfig->language = bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry()->id);
+	}
+
 	currentConfig->enc_outdir = encoders_edit_outdir->GetText();
 	currentConfig->enc_filePattern = encoders_edit_filename->GetText();
 

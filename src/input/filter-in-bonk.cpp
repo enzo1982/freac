@@ -51,17 +51,18 @@ int FilterInBONK::ReadData(unsigned char **data, int size)
 
 	long		 buffersize = 131072;
 	unsigned char	*buffer = new unsigned char [buffersize];
-	int		 bytes = ex_bonk_decode_packet(decoder, buffer, buffersize);
 
-	if (bytes == -1) return 0;
+	size = ex_bonk_decode_packet(decoder, buffer, buffersize);
 
-	*data = new unsigned char [bytes];
+	if (size == -1) return 0;
 
-	for (int i = 0; i < bytes / 2; i++) ((short *) *data)[i] = (short) Math::Min(Math::Max(((short *) buffer)[i], -32768), 32767);
+	*data = new unsigned char [size];
+
+	memcpy((void *) *data, (void *) buffer, size);
 
 	delete [] buffer;
 
-	return bytes;
+	return size;
 }
 
 bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
