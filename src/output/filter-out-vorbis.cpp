@@ -13,8 +13,6 @@
 
 FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
-	packageSize = 0;
-
 	if (format->channels > 2)
 	{
 		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
@@ -23,7 +21,14 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkEncTrack *format) : 
 
 		return;
 	}
+}
 
+FilterOutVORBIS::~FilterOutVORBIS()
+{
+}
+
+bool FilterOutVORBIS::Activate()
+{
 	srand(clock());
 
 	ex_vorbis_info_init(&vi);
@@ -87,14 +92,7 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkEncTrack *format) : 
 	ex_vorbis_block_init(&vd, &vb);
 
 	ex_ogg_stream_init(&os, rand());
-}
 
-FilterOutVORBIS::~FilterOutVORBIS()
-{
-}
-
-bool FilterOutVORBIS::Activate()
-{
 	ogg_packet	 header;
 	ogg_packet	 header_comm;
 	ogg_packet	 header_code;

@@ -15,8 +15,6 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkEncTrack *format) : Outp
 {
 	debug_out->EnterMethod("FilterOutLAME::FilterOutLame(bonkEncConfig *, bonkEncTrack *)");
 
-	packageSize = 0;
-
 	int	 effrate;
 
 	if (currentConfig->lame_resample)	effrate = currentConfig->lame_resample;
@@ -106,6 +104,28 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkEncTrack *format) : Outp
 		return;
 	}
 
+	if (format->channels > 2)
+	{
+		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+
+		error = 1;
+
+		return;
+	}
+
+	debug_out->LeaveMethod();
+}
+
+FilterOutLAME::~FilterOutLAME()
+{
+}
+
+bool FilterOutLAME::Activate()
+{
+	debug_out->EnterMethod("FilterOutLAME::Activate()");
+
+	outBuffer.Resize(131072);
+
 	lameFlags = ex_lame_init();
 
 	ex_lame_set_in_samplerate(lameFlags, format->rate);
@@ -161,16 +181,6 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkEncTrack *format) : Outp
 			else if (format->channels == 1)
 			{
 				ex_lame_set_mode(lameFlags, MONO);
-			}
-			else
-			{
-				ex_lame_close(lameFlags);
-
-				QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
-
-				error = 1;
-
-				return;
 			}
 
 			switch (currentConfig->lame_vbrmode)
@@ -237,19 +247,6 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkEncTrack *format) : Outp
 	}
 
 	ex_lame_init_params(lameFlags);
-
-	debug_out->LeaveMethod();
-}
-
-FilterOutLAME::~FilterOutLAME()
-{
-}
-
-bool FilterOutLAME::Activate()
-{
-	debug_out->EnterMethod("FilterOutLAME::Activate()");
-
-	outBuffer.Resize(131072);
 
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3)
 	{

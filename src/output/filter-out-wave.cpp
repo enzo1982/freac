@@ -12,8 +12,7 @@
 
 FilterOutWAVE::FilterOutWAVE(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
-	packageSize	= 0;
-	nOfSamples	= 0;
+	nOfSamples = 0;
 }
 
 FilterOutWAVE::~FilterOutWAVE()

@@ -22,6 +22,22 @@ FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkEncTrack *format) : Ou
 		return;
 	}
 
+	if (format->channels > 2)
+	{
+		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+
+		error = 1;
+
+		return;
+	}
+}
+
+FilterOutBLADE::~FilterOutBLADE()
+{
+}
+
+bool FilterOutBLADE::Activate()
+{
 	beConfig.dwConfig			= BE_CONFIG_MP3;
 	beConfig.format.mp3.dwSampleRate	= format->rate;
 
@@ -34,28 +50,13 @@ FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkEncTrack *format) : Ou
 	{
 		beConfig.format.mp3.byMode = BE_MP3_MODE_MONO;
 	}
-	else
-	{
-		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
-
-		error = 1;
-
-		return;
-	}
 
 	beConfig.format.mp3.wBitrate	= currentConfig->blade_bitrate;
 	beConfig.format.mp3.bCopyright	= currentConfig->blade_copyright;
 	beConfig.format.mp3.bCRC	= currentConfig->blade_crc;
 	beConfig.format.mp3.bOriginal	= currentConfig->blade_original;
 	beConfig.format.mp3.bPrivate	= currentConfig->blade_private;
-}
 
-FilterOutBLADE::~FilterOutBLADE()
-{
-}
-
-bool FilterOutBLADE::Activate()
-{
 	unsigned long	 bufferSize	= 0;
 	unsigned long	 samplesSize	= 0;
 

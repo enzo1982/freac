@@ -21,8 +21,6 @@ FilterOutMP4::FilterOutMP4(bonkEncConfig *config, bonkEncTrack *format) : Output
 
 		return;
 	}
-
-	packageSize = 0;
 }
 
 FilterOutMP4::~FilterOutMP4()
@@ -91,19 +89,11 @@ bool FilterOutMP4::Deactivate()
 
 	if (bytes > 0)
 	{
-		Int	 samplesLeft = totalSamples - encodedSamples + delaySamples;
+		Int		 samplesLeft	= totalSamples - encodedSamples + delaySamples;
+		MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
+		MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
 
-		do
-		{
-			MP4Duration	 dur = samplesLeft > frameSize ? frameSize : samplesLeft;
-			MP4Duration	 ofs = encodedSamples > 0 ? 0 : delaySamples;
-
-			ex_MP4WriteSample(mp4File, mp4Track, bytes > 0 ? outBuffer : NIL, bytes, dur, ofs, true);
-
-			bytes = 0;
-			samplesLeft -= dur;
-		}
-		while (samplesLeft > 0);
+		ex_MP4WriteSample(mp4File, mp4Track, bytes > 0 ? outBuffer : NIL, bytes, dur, ofs, true);
 	}
 
 	ex_faacEncClose(handle);

@@ -22,8 +22,6 @@ FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkEncTrack *format) : Outp
 
 		return;
 	}
-
-	packageSize = int(1024.0 * format->rate / 44100) * format->channels * (currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling) * (format->bits / 8);
 }
 
 FilterOutBONK::~FilterOutBONK()
@@ -45,6 +43,8 @@ bool FilterOutBONK::Activate()
 		d_out->OutputNumber(size + 10, 4);
 		d_out->OutputString(" id3");
 	}
+
+	packageSize = int(1024.0 * format->rate / 44100) * format->channels * (currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling) * (format->bits / 8);
 
 	encoder	= ex_bonk_create_encoder(d_out,
 		(unsigned int) Math::Max(format->length, 0), format->rate, format->channels,

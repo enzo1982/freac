@@ -56,6 +56,22 @@ FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkEncTrack *format) : Output
 			return;
 	}
 
+	if (format->channels > 2)
+	{
+		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+
+		error = 1;
+
+		return;
+	}
+}
+
+FilterOutTVQ::~FilterOutTVQ()
+{
+}
+
+bool FilterOutTVQ::Activate()
+{
 	memset(&setupInfo, 0, sizeof(headerInfo));
 	memset(&encInfo, 0, sizeof(encSpecificInfo));
 	
@@ -75,14 +91,7 @@ FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkEncTrack *format) : Output
 
 	outBuffer.Resize(samples_size * (format->bits / 8));
 	frame.Resize(samples_size);
-}
 
-FilterOutTVQ::~FilterOutTVQ()
-{
-}
-
-bool FilterOutTVQ::Activate()
-{
 	TvqInitBsWriter();
 
 	CChunkChunk	*twinChunk	= TvqCreateHeaderChunk(&setupInfo, "header_info");
