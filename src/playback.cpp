@@ -49,7 +49,6 @@ Void bonkEnc::PlayItem(Int entry)
 	font.SetColor(RGB(255, 0, 0));
 
 	joblist->GetNthEntry(entry)->SetFont(font);
-	joblist->Paint(SP_PAINT); // TODO: remove this line once ListEntries are real widgets
 
 	play_thread = new Thread();
 	play_thread->threadMain.Connect(&bonkEncGUI::PlayThread, this);
@@ -84,7 +83,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 	{
 		playing = false;
 
-		return Error;
+		return Failure;
 	}
 
 	in_filename = trackInfo->origFilename;
@@ -232,7 +231,6 @@ Int bonkEnc::PlayThread(Thread *thread)
 	font.SetColor(Setup::ClientTextColor);
 
 	joblist->GetNthEntry(player_entry)->SetFont(font);
-	joblist->Paint(SP_PAINT); // TODO: remove this line once ListEntries are real widgets
 
 	playing = false;
 

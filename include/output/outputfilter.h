@@ -20,7 +20,7 @@ class OutputFilter : public IOLibFilter
 		bonkEncTrack	*format;
 		bonkEncConfig	*currentConfig;
 
-		Int		 RenderID3V2Tag(unsigned char *buffer);
+		Int		 RenderID3Tag(Int, unsigned char *);
 
 		IOLibDriver	*iolibDriver;
 

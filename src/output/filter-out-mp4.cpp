@@ -29,6 +29,13 @@ FilterOutMP4::~FilterOutMP4()
 
 bool FilterOutMP4::Activate()
 {
+	if (GetTempFile(format->outfile) != format->outfile)
+	{
+		File	 mp4File(format->outfile);
+
+		mp4File.Delete();
+	}
+
 	unsigned long	 samplesSize	= 0;
 	unsigned long	 bufferSize	= 0;
 
@@ -56,7 +63,7 @@ bool FilterOutMP4::Activate()
 
 	ex_faacEncSetConfiguration(handle, fConfig);
 
-	mp4File		= ex_MP4Create(format->outfile, 0, 0, 1, 1, NIL, 0, NIL, 0);
+	mp4File		= ex_MP4Create(GetTempFile(format->outfile), 0, 0, 1, 1, NIL, 0, NIL, 0);
 
 	ex_MP4SetTimeScale(mp4File, 90000);
 
@@ -96,9 +103,9 @@ bool FilterOutMP4::Deactivate()
 
 	ex_faacEncClose(handle);
 
-	if (currentConfig->enable_tags)
+	if (currentConfig->enable_mp4meta)
 	{
-		String	 prevOutFormat = String::SetOutputFormat("UTF-8");
+		String	 prevOutFormat = String::SetOutputFormat(currentConfig->mp4meta_encoding);
 
 		ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
 
@@ -117,7 +124,14 @@ bool FilterOutMP4::Deactivate()
 
 	ex_MP4Close(mp4File);
 
-	ex_MP4Optimize(format->outfile, NIL, 0);
+	ex_MP4Optimize(GetTempFile(format->outfile), NIL, 0);
+
+	if (GetTempFile(format->outfile) != format->outfile)
+	{
+		File	 tempFile(GetTempFile(format->outfile));
+
+		tempFile.Move(format->outfile);
+	}
 
 	return true;
 }
@@ -157,4 +171,13 @@ int FilterOutMP4::WriteData(unsigned char *data, int size)
 	}
 
 	return bytes;
+}
+
+String FilterOutMP4::GetTempFile(const String &oFileName)
+{
+	String	 rVal = oFileName;
+
+	for (Int i = 0; i < rVal.Length(); i++) if (rVal[i] > 255) rVal[i] = '#';
+
+	return rVal == oFileName ? rVal : rVal.Append(".temp");
 }

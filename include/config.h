@@ -58,17 +58,24 @@ class bonkEncConfig
 		Bool		 enable_tvq;
 		Bool		 enable_cdrip;
 		Bool		 enable_auto_cddb;
-		Bool		 enable_id3;
 		Bool		 enable_eUpdate;
 		Bool		 enable_mp4;
 		Bool		 enable_flac;
+		Bool		 enable_id3;
 		String		 enc_outdir;
 		String		 enc_filePattern;
 		Bool		 enc_onTheFly;
 		Bool		 enc_keepWaves;
 		Bool		 useUnicodeNames;
 
-		Bool		 enable_tags;
+		Bool		 enable_id3v1;
+		Bool		 enable_id3v2;
+		Bool		 enable_vctags;
+		Bool		 enable_mp4meta;
+		String		 id3v1_encoding;
+		String		 id3v2_encoding;
+		String		 vctag_encoding;
+		String		 mp4meta_encoding;
 		String		 default_comment;
 
 		Array<String>	 cdrip_drives;

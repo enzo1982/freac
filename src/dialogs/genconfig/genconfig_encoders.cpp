@@ -58,10 +58,10 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 
 		bladeVersion.Append("v").Append(String::FromInt(beVer.byMajorVersion)).Append(".").Append(String::FromInt(beVer.byMinorVersion));
 
-		combo_encoder->AddEntry(String("BladeEnc ").Append(bladeVersion));
+		combo_encoder->AddEntry(String("BladeEnc MP3 Encoder ").Append(bladeVersion));
 	}
 
-	if (currentConfig->enable_bonk)		combo_encoder->AddEntry(String("Bonk v").Append(ex_bonk_get_version_string()));
+	if (currentConfig->enable_bonk)		combo_encoder->AddEntry(String("Bonk Audio Encoder v").Append(ex_bonk_get_version_string()));
 
 	if (currentConfig->enable_faac)
 	{
@@ -74,11 +74,11 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 
 		ex_faacEncClose(faac);
 
-		combo_encoder->AddEntry(String("FAAC ").Append(faacVersion));
+		combo_encoder->AddEntry(String("FAAC MP4/AAC Encoder ").Append(faacVersion));
 	}
 
-	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME v").Append(ex_get_lame_short_version()));
-	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis v1.1"));
+	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME MP3 Encoder v").Append(ex_get_lame_short_version()));
+	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.1"));
 
 	if (currentConfig->enable_tvq)
 	{
@@ -86,7 +86,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 
 		ex_TvqGetVersionID(V2, tvqVersionID);
 
-		combo_encoder->AddEntry(String("TwinVQ v").Append(tvqVersionID + 4));
+		combo_encoder->AddEntry(String("TwinVQ VQF Encoder v").Append(tvqVersionID + 4));
 	}
 
 	combo_encoder->AddEntry(String("WAVE Out Filter v1.0"));
@@ -101,7 +101,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	button_config->onClick.Connect(&configureGeneralSettingsLayerEncoders::ConfigureEncoder, this);
 
 	pos.x	= 7;
-	pos.y	= 65;
+	pos.y	= 66;
 	size.cx	= 344;
 	size.cy	= 43;
 
@@ -122,7 +122,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	button_outdir_browse->onClick.Connect(&configureGeneralSettingsLayerEncoders::SelectDir, this);
 
 	pos.x	= 7;
-	pos.y	= 119;
+	pos.y	= 121;
 	size.cx	= 344;
 	size.cy	= 43;
 
@@ -168,7 +168,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	ToggleOnTheFly();
 
 	pos.x	= 359;
-	pos.y	= 119;
+	pos.y	= 121;
 	size.cx	= 178;
 	size.cy	= 43;
 

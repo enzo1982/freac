@@ -530,13 +530,13 @@ bonkEncGUI::bonkEncGUI()
 	pos.x += (47 + enc_encoder->textSize.cx);
 	size.cx = currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx;
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("Bonk", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new EditBox("BladeEnc", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder = new EditBox("LAME", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder = new EditBox("Ogg Vorbis", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder = new EditBox("FAAC", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder = new EditBox("TwinVQ", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder = new EditBox("WAVE Out", pos, size, 4);
+	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("Bonk Audio Encoder", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new EditBox("BladeEnc MP3 Encoder", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder = new EditBox("LAME MP3 Encoder", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder = new EditBox("Ogg Vorbis Encoder", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder = new EditBox("FAAC MP4/AAC Encoder", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder = new EditBox("TwinVQ VQF Encoder", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder = new EditBox("WAVE Out Filter", pos, size, 4);
 
 	edb_encoder->SetOrientation(OR_LOWERLEFT);
 	edb_encoder->Deactivate();
@@ -610,14 +610,14 @@ bonkEncGUI::bonkEncGUI()
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, (bonkEnc *) this);
 
-	if (currentConfig->enable_blade) menu_encoders->AddEntry("BladeEnc", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_bonk) menu_encoders->AddEntry("Bonk", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_faac) menu_encoders->AddEntry("FAAC", NIL, NIL, NIL, &clicked_encoder, ENCODER_FAAC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_lame) menu_encoders->AddEntry("LAME", NIL, NIL, NIL, &clicked_encoder, ENCODER_LAMEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_vorbis) menu_encoders->AddEntry("Ogg Vorbis", NIL, NIL, NIL, &clicked_encoder, ENCODER_VORBISENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_tvq) menu_encoders->AddEntry("TwinVQ", NIL, NIL, NIL, &clicked_encoder, ENCODER_TVQ)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_blade) menu_encoders->AddEntry("BladeEnc MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_bonk) menu_encoders->AddEntry("Bonk Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_faac) menu_encoders->AddEntry("FAAC MP4/AAC Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_FAAC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_lame) menu_encoders->AddEntry("LAME MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_LAMEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_vorbis) menu_encoders->AddEntry("Ogg Vorbis Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_VORBISENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_tvq) menu_encoders->AddEntry("TwinVQ VQF Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_TVQ)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
 
-	menu_encoders->AddEntry("WAVE Out", NIL, NIL, NIL, &clicked_encoder, ENCODER_WAVE)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	menu_encoders->AddEntry("WAVE Out Filter", NIL, NIL, NIL, &clicked_encoder, ENCODER_WAVE)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
 
 	if (ENCODER_WAVE > 0)
 	{
@@ -1095,13 +1095,13 @@ Void bonkEncGUI::ConfigureGeneral()
 		currentConfig->languageChanged = false;
 	}
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk");
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc");
-	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME");
-	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder->SetText("Ogg Vorbis");
-	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder->SetText("FAAC");
-	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ");
-	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out");
+	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk Audio Encoder");
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc MP3 Encoder");
+	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME MP3 Encoder");
+	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder->SetText("Ogg Vorbis Encoder");
+	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder->SetText("FAAC MP4/AAC Encoder");
+	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ VQF Encoder");
+	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out Filter");
 
 	edb_outdir->SetText(currentConfig->enc_outdir);
 }
@@ -1655,13 +1655,13 @@ Void bonkEncGUI::EncodeSpecific()
 {
 	currentConfig->encoder = clicked_encoder;
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk");
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc");
-	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME");
-	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder->SetText("Ogg Vorbis");
-	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder->SetText("FAAC");
-	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ");
-	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out");
+	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk Audio Encoder");
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc MP3 Encoder");
+	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME MP3 Encoder");
+	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder->SetText("Ogg Vorbis Encoder");
+	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder->SetText("FAAC MP4/AAC Encoder");
+	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ VQF Encoder");
+	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out Filter");
 
 	clicked_encoder = -1;
 

@@ -45,9 +45,9 @@ bool FilterOutVORBIS::Activate()
 
 	ex_vorbis_comment_init(&vc);
 
-	if (currentConfig->enable_tags)
+	if (currentConfig->enable_vctags)
 	{
-		String	 prevOutFormat = String::SetOutputFormat("UTF-8");
+		String	 prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
 
 		ex_vorbis_comment_add_tag(&vc, "COMMENT", currentConfig->default_comment);
 

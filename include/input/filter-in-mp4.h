@@ -33,6 +33,8 @@ class FilterInMP4 : public InputFilter
 		Int				 sampleId;
 
 		Int				 GetAudioTrack();
+
+		String				 GetTempFile(const String &);
 	public:
 						 FilterInMP4(bonkEncConfig *, bonkEncTrack *);
 						~FilterInMP4();

@@ -51,7 +51,7 @@ Int bonkEncCDDB::SetActiveDrive(Int driveID)
 {
 	if (driveID >= ex_CR_GetNumCDROM())
 	{
-		return Error;
+		return Failure;
 	}
 	else
 	{

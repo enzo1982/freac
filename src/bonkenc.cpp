@@ -210,7 +210,15 @@ bonkEnc::~bonkEnc()
 {
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
-	for (Int i = 0; i < bonkEncCDDB::infoCache.GetNOfEntries(); i++) delete bonkEncCDDB::infoCache.GetNthEntry(i);
+	for (Int i = 0; i < bonkEncCDDB::infoCache.GetNOfEntries(); i++)
+	{
+		for (Int j = 0; j < bonkEncCDDB::infoCache.GetNthEntry(i)->GetNOfEntries(); j++)
+		{
+			delete bonkEncCDDB::infoCache.GetNthEntry(i)->GetNthEntry(j);
+		}
+
+		delete bonkEncCDDB::infoCache.GetNthEntry(i);
+	}
 
 	if (currentConfig->enable_bonk)		FreeBonkDLL();
 	if (currentConfig->enable_blade)	FreeBladeDLL();

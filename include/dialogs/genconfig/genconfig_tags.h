@@ -21,20 +21,54 @@ class configureGeneralSettingsLayerTags : public Layer
 {
 	private:
 		GroupBox	*group_tags;
-		CheckBox	*check_enable;
+		CheckBox	*check_id3v1;
+		CheckBox	*check_id3v2;
+		CheckBox	*check_vctags;
+		CheckBox	*check_mp4meta;
+
+		GroupBox	*group_encodings;
+		Text		*text_id3v1_encoding;
+		Text		*text_id3v2_encoding;
+		Text		*text_vctags_encoding;
+		Text		*text_mp4meta_encoding;
+		EditBox		*edit_id3v1_encoding;
+		EditBox		*edit_id3v2_encoding;
+		EditBox		*edit_vctags_encoding;
+		EditBox		*edit_mp4meta_encoding;
+
+		GroupBox	*group_definfo;
 		Text		*text_defcomment;
 		EditBox		*edit_defcomment;
 
-		Bool		 enableTags;
- 
+		List		*list_encodings;
+
+		Bool		 enableID3V1;
+		Bool		 enableID3V2;
+		Bool		 enableVCTags;
+		Bool		 enableMP4Meta;
+
 		bonkEncConfig	*currentConfig;
 	slots:
+		Void		 ToggleID3V1();
+		Void		 ToggleID3V2();
+		Void		 ToggleVCTags();
+		Void		 ToggleMP4Meta();
+
 		Void		 ToggleTags();
 	public:
 				 configureGeneralSettingsLayerTags();
 				~configureGeneralSettingsLayerTags();
 
-		Bool		 GetEnableTags();
+		Bool		 GetEnableID3V1();
+		Bool		 GetEnableID3V2();
+		Bool		 GetEnableVCTags();
+		Bool		 GetEnableMP4Meta();
+
+		String		 GetID3V1Encoding();
+		String		 GetID3V2Encoding();
+		String		 GetVCTagEncoding();
+		String		 GetMP4MetaEncoding();
+
 		String		 GetDefaultComment();
 };
 

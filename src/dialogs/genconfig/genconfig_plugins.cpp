@@ -20,7 +20,7 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 529;
-	size.cy	= 154;
+	size.cy	= 175;
 
 	tabs_plugins		= new TabWidget(pos, size);
 
@@ -29,7 +29,7 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 425;
-	size.cy	= 118;
+	size.cy	= 139;
 
 	list_input		= new ListBox(pos, size);
 	list_input->onClick.Connect(&configureGeneralSettingsLayerPlugins::SelectInputPlugin, this);
@@ -58,7 +58,7 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 425;
-	size.cy	= 118;
+	size.cy	= 139;
 
 	list_output		= new ListBox(pos, size);
 	list_output->SetFlags(LF_MULTICHECKBOX);

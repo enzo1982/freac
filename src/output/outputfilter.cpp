@@ -42,25 +42,33 @@ S::Int OutputFilter::CloseFile(OutStream *stream)
 	return Success;
 }
 
-S::Int OutputFilter::RenderID3V2Tag(unsigned char *buffer)
+S::Int OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)
 {
 	ID3Tag		*tag = ex_ID3Tag_New();
 
 	ex_ID3Tag_SetPadding(tag, false);
 
 	ID3Frame	*artist = ex_ID3Frame_NewID(ID3FID_LEADARTIST);
+	ID3_TextEnc	 encoding = ID3TE_NONE;
+	String		 encString = (version == 1 ? currentConfig->id3v1_encoding : currentConfig->id3v2_encoding);
+
+	if (encString == "UTF-8")		encoding = ID3TE_UTF8;
+	else if (encString == "ISO-8859-1")	encoding = ID3TE_ISO8859_1;
+	else if (encString == "UTF-16" ||
+		 encString == "UTF-16LE" ||
+		 encString == "UCS-2" ||
+		 encString == "UCS-2LE")	encoding = ID3TE_UTF16;
+	else if (encString == "UTF-16BE" ||
+		 encString == "UCS-2BE")	encoding = ID3TE_UTF16BE;
+
+	String	 prevOutFormat = String::SetOutputFormat(encString);
 
 	if (format->artist != NIL)
 	{
-		if (String::IsUnicode(format->artist))
-		{
-			ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(artist, ID3FN_TEXT), ID3TE_UTF8);
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (char *) format->artist.ConvertTo("UTF-8"));
-		}
-		else
-		{
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (char *) format->artist);
-		}
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(artist, ID3FN_TEXTENC), encoding);
+
+		if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (unicode_t *) (wchar_t *) format->artist);
+		else								ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), format->artist);
 
 		ex_ID3Tag_AddFrame(tag, artist);
 	}
@@ -69,15 +77,10 @@ S::Int OutputFilter::RenderID3V2Tag(unsigned char *buffer)
 
 	if (format->title != NIL)
 	{
-		if (String::IsUnicode(format->title))
-		{
-			ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(title, ID3FN_TEXT), ID3TE_UTF8);
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), (char *) format->title.ConvertTo("UTF-8"));
-		}
-		else
-		{
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), (char *) format->title);
-		}
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(title, ID3FN_TEXTENC), encoding);
+
+		if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(title, ID3FN_TEXT), (unicode_t *) (wchar_t *) format->title);
+		else								ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), format->title);
 
 		ex_ID3Tag_AddFrame(tag, title);
 	}
@@ -86,15 +89,10 @@ S::Int OutputFilter::RenderID3V2Tag(unsigned char *buffer)
 
 	if (format->album != NIL)
 	{
-		if (String::IsUnicode(format->album))
-		{
-			ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(album, ID3FN_TEXT), ID3TE_UTF8);
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), (char *) format->album.ConvertTo("UTF-8"));
-		}
-		else
-		{
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), (char *) format->album);
-		}
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(album, ID3FN_TEXTENC), encoding);
+
+		if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(album, ID3FN_TEXT), (unicode_t *) (wchar_t *) format->album);
+		else								ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), format->album);
 
 		ex_ID3Tag_AddFrame(tag, album);
 	}
@@ -103,8 +101,8 @@ S::Int OutputFilter::RenderID3V2Tag(unsigned char *buffer)
 
 	if (format->track > 0)
 	{
-		if (format->track < 10)	ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), (char *) String("0").Append(String::FromInt(format->track)));
-		else			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), (char *) String::FromInt(format->track));
+		if (format->track < 10)	ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), String("0").Append(String::FromInt(format->track)));
+		else			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), String::FromInt(format->track));
 
 		ex_ID3Tag_AddFrame(tag, track);
 	}
@@ -113,7 +111,7 @@ S::Int OutputFilter::RenderID3V2Tag(unsigned char *buffer)
 
 	if (format->year > 0)
 	{
-		ex_ID3Field_SetASCII(ex_ID3Frame_GetField(year, ID3FN_TEXT), (char *) String::FromInt(format->year));
+		ex_ID3Field_SetASCII(ex_ID3Frame_GetField(year, ID3FN_TEXT), String::FromInt(format->year));
 
 		ex_ID3Tag_AddFrame(tag, year);
 	}
@@ -122,34 +120,26 @@ S::Int OutputFilter::RenderID3V2Tag(unsigned char *buffer)
 
 	if (format->genre != NIL)
 	{
-		if (String::IsUnicode(format->genre))
-		{
-			ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(genre, ID3FN_TEXT), ID3TE_UTF8);
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (char *) format->genre.ConvertTo("UTF-8"));
-		}
-		else
-		{
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (char *) format->genre);
-		}
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(genre, ID3FN_TEXTENC), encoding);
+
+		if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (unicode_t *) (wchar_t *) format->genre);
+		else								ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), format->genre);
 
 		ex_ID3Tag_AddFrame(tag, genre);
 	}
 
 	ID3Frame	*comment = ex_ID3Frame_NewID(ID3FID_COMMENT);
 
-	if (String::IsUnicode(currentConfig->default_comment))
-	{
-		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(comment, ID3FN_TEXT), ID3TE_UTF8);
-		ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (char *) currentConfig->default_comment.ConvertTo("UTF-8"));
-	}
-	else
-	{
-		ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (char *) currentConfig->default_comment);
-	}
+	ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(comment, ID3FN_TEXTENC), encoding);
+
+	if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) (wchar_t *) currentConfig->default_comment);
+	else								ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), currentConfig->default_comment);
 
 	ex_ID3Tag_AddFrame(tag, comment);
 
-	Int	 size = ex_ID3Tag_Render(tag, buffer, ID3TT_ID3V2);
+	String::SetOutputFormat(prevOutFormat);
+
+	Int	 size = ex_ID3Tag_Render(tag, buffer, version == 1 ? ID3TT_ID3V1 : ID3TT_ID3V2);
 
 	ex_ID3Tag_Delete(tag);
 	ex_ID3Frame_Delete(artist);

@@ -9,10 +9,15 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 RC1 CVS (February 2005)
+	Version 1.0 RC1 CVS (April 2005)
 
-		- added Czech, Korean and Portuguese (Brazilian) language support
+		- added Czech, Korean, Danish and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
+		- info tag encodings can now be set in the configuration dialog
+		- fixed a crash when opening protected MP4 files
+		- added support for MP4 files with Unicode
+		- fixed bad default AAC profile setting
+		- added support for ID3V1 tags
 		- upgrade to MPEG4IP v1.2
 		- use smooth v0.8.67.0
 		- removed support for MinGW 1.x
@@ -244,7 +249,8 @@ Special thanks to
 		   Krisu (Finnish),
 		   Vladimir Kytyr (Czech),
 		   Escada (Portuguese, Brazilian),
-		   Odyssey (Korean)
+		   Odyssey (Korean),
+		   Jan Arni Jacobsen (Danish)
 
 - Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 - all the testers and everyone who submitted bug reports

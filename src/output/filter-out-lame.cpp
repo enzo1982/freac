@@ -248,10 +248,10 @@ bool FilterOutLAME::Activate()
 
 	ex_lame_init_params(lameFlags);
 
-	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3)
+	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v2 && currentConfig->enable_id3)
 	{
 		Buffer<unsigned char>	 id3Buffer(32768);
-		Int			 size = RenderID3V2Tag(id3Buffer);
+		Int			 size = RenderID3Tag(2, id3Buffer);
 
 		driver->WriteData(id3Buffer, size);
 	}
@@ -301,6 +301,14 @@ bool FilterOutLAME::Deactivate()
 	}
 
 	ex_lame_close(lameFlags);
+
+	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v1 && currentConfig->enable_id3)
+	{
+		Buffer<unsigned char>	 id3Buffer(32768);
+		Int			 size = RenderID3Tag(1, id3Buffer);
+
+		driver->WriteData(id3Buffer, size);
+	}
 
 	debug_out->LeaveMethod();
 

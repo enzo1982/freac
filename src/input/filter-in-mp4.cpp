@@ -21,7 +21,14 @@ FilterInMP4::~FilterInMP4()
 
 bool FilterInMP4::Activate()
 {
-	mp4File		= ex_MP4Read(format->origFilename, 0);
+	if (GetTempFile(format->origFilename) != format->origFilename)
+	{
+		File	 mp4File(format->origFilename);
+
+		mp4File.Copy(GetTempFile(format->origFilename));
+	}
+
+	mp4File		= ex_MP4Read(GetTempFile(format->origFilename), 0);
 	mp4Track	= GetAudioTrack();
 
 	if (mp4Track >= 0)
@@ -59,6 +66,13 @@ bool FilterInMP4::Deactivate()
 	if (mp4Track >= 0) ex_NeAACDecClose(handle);
 
 	ex_MP4Close(mp4File);
+
+	if (GetTempFile(format->origFilename) != format->origFilename)
+	{
+		File	 tempFile(GetTempFile(format->origFilename));
+
+		tempFile.Delete();
+	}
 
 	return true;
 }
@@ -122,15 +136,22 @@ int FilterInMP4::ReadData(unsigned char **data, int size)
 
 bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 {
+	if (GetTempFile(inFile) != inFile)
+	{
+		File	 mp4File(inFile);
+
+		mp4File.Copy(GetTempFile(inFile));
+	}
+
 	bonkEncTrack	*nFormat = new bonkEncTrack;
-	InStream	*f_in = OpenFile(inFile);
+	InStream	*f_in = OpenFile(GetTempFile(inFile));
 
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
 
 	CloseFile(f_in);
 
-	mp4File = ex_MP4Read(inFile, 0);
+	mp4File = ex_MP4Read(GetTempFile(inFile), 0);
 
 	char		*buffer		= NIL;
 	unsigned long	 buffer_size	= 0;
@@ -181,6 +202,13 @@ bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 
 	ex_MP4Close(mp4File);
 
+	if (GetTempFile(inFile) != inFile)
+	{
+		File	 tempFile(GetTempFile(inFile));
+
+		tempFile.Delete();
+	}
+
 	return nFormat;
 }
 
@@ -198,3 +226,12 @@ Int FilterInMP4::GetAudioTrack()
 
 	return -1;
 } 
+
+String FilterInMP4::GetTempFile(const String &oFileName)
+{
+	String	 rVal = oFileName;
+
+	for (Int i = 0; i < rVal.Length(); i++) if (rVal[i] > 255) rVal[i] = '#';
+
+	return rVal == oFileName ? rVal : rVal.Append(".temp");
+}

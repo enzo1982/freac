@@ -58,7 +58,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 547;
-	size.cy	= 191;
+	size.cy	= 212;
 
 	reg_register		= new TabWidget(pos, size);
 
@@ -82,7 +82,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(120, 120), Size(568, 277));
+	mainWnd->SetMetrics(Point(120, 120), Size(568, 298));
 }
 
 configureGeneralSettings::~configureGeneralSettings()
@@ -175,7 +175,15 @@ Void configureGeneralSettings::OK()
 	currentConfig->cdrip_autoRead		= register_layer_cdrip->GetAutoRead();
 	currentConfig->cdrip_autoEject		= register_layer_cdrip->GetAutoEject();
 
-	currentConfig->enable_tags		= register_layer_tags->GetEnableTags();
+	currentConfig->enable_id3v1		= register_layer_tags->GetEnableID3V1();
+	currentConfig->enable_id3v2		= register_layer_tags->GetEnableID3V2();
+	currentConfig->enable_vctags		= register_layer_tags->GetEnableVCTags();
+	currentConfig->enable_mp4meta		= register_layer_tags->GetEnableMP4Meta();
+
+	currentConfig->id3v1_encoding		= register_layer_tags->GetID3V1Encoding();
+	currentConfig->id3v2_encoding		= register_layer_tags->GetID3V2Encoding();
+	currentConfig->vctag_encoding		= register_layer_tags->GetVCTagEncoding();
+	currentConfig->mp4meta_encoding		= register_layer_tags->GetMP4MetaEncoding();
 
 	currentConfig->enable_auto_cddb		= register_layer_cddb->GetCDDBAutoQuery();
 	currentConfig->enable_cddb_cache	= register_layer_cddb->GetCDDBCache();

@@ -40,6 +40,8 @@ class FilterOutMP4 : public OutputFilter
 
 		Buffer<unsigned char>	 outBuffer;
 		Buffer<int32_t>		 samplesBuffer;
+
+		String			 GetTempFile(const String &);
 	public:
 					 FilterOutMP4(bonkEncConfig *, bonkEncTrack *);
 					~FilterOutMP4();

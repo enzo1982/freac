@@ -9,10 +9,15 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 RC1 CVS (Februar 2005)
+	Version 1.0 RC1 CVS (April 2005)
 
-		- Sprachunterstützung für Tschechisch, Koreanisch und Portugisisch (Brasilianisch) hinzugefügt
+		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
+		- Info-Tag-Zeichencodierungen können jetzt im Konfigurationsdialog festgelegt werden
+		- Absturz beim Öffnen von geschützten MP4-Dateien behoben
+		- Unterstützung für MP4-Dateinamen mit Unicode hinzugefügt
+		- Falsche AAC-Profil Einstellung korrigiert
+		- Unterstützung für ID3V1-Tags hinzugefügt
 		- Update auf MPEG4IP v1.2
 		- Verwende smooth v0.8.67.0
 		- Unterstützung für MinGW 1.x entfernt
@@ -244,7 +249,8 @@ Besonderen Dank
 		   Krisu (Finnisch),
 		   Vladimir Kytyr (Tschechisch),
 		   Escada (Portugiesisch, Brasilianisch),
-		   Odyssey (Koreanisch)
+		   Odyssey (Koreanisch),
+		   Jan Arni Jacobsen (Dänisch)
 
 - Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 - allen Testern und jedem der Fehlerberichte eingeschickt hat

@@ -32,10 +32,10 @@ bool FilterOutBONK::Activate()
 {
 	d_out	= new OutStream(STREAM_DRIVER, driver);
 
-	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3)
+	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v2 && currentConfig->enable_id3)
 	{
 		Buffer<unsigned char>	 id3Buffer(32768);
-		Int			 size = RenderID3V2Tag(id3Buffer);
+		Int			 size = RenderID3Tag(2, id3Buffer);
 
 		d_out->OutputNumber(0, 1);
 		d_out->OutputNumber(32, 1);

@@ -57,10 +57,10 @@ bool FilterOutFAAC::Activate()
 
 	packageSize = samplesSize * (format->bits / 8);
 
-	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3 && currentConfig->faac_enable_id3)
+	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v2 && currentConfig->enable_id3 && currentConfig->faac_enable_id3)
 	{
 		Buffer<unsigned char>	 id3Buffer(32768);
-		Int			 size = RenderID3V2Tag(id3Buffer);
+		Int			 size = RenderID3Tag(2, id3Buffer);
 
 		driver->WriteData(id3Buffer, size);
 	}
