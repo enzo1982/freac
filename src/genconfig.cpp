@@ -385,6 +385,7 @@ configureGeneralSettings::configureGeneralSettings()
 	size.cy = 112;
 
 	plugins_list_input	= new ListBox(pos, size);
+	plugins_list_input->onClick.Connect(&configureGeneralSettings::SelectInputPlugin, this);
 
 	for (Int i = 0; i < currentConfig->appMain->winamp_in_modules.GetNOfEntries(); i++)
 	{
@@ -397,11 +398,13 @@ configureGeneralSettings::configureGeneralSettings()
 
 	plugins_button_input	= new Button(bonkEnc::i18n->TranslateString("Configure"), NIL, pos, size);
 	plugins_button_input->onClick.Connect(&configureGeneralSettings::ConfigureInputPlugin, this);
+	plugins_button_input->Deactivate();
 
 	pos.y += 30;
 
 	plugins_button_input_about	= new Button(bonkEnc::i18n->TranslateString("About"), NIL, pos, size);
 	plugins_button_input_about->onClick.Connect(&configureGeneralSettings::AboutInputPlugin, this);
+	plugins_button_input_about->Deactivate();
 
 	plugins_layer_output	= new Layer(bonkEnc::i18n->TranslateString("Output plug-ins"));
 
@@ -411,10 +414,14 @@ configureGeneralSettings::configureGeneralSettings()
 	size.cy = 112;
 
 	plugins_list_output	= new ListBox(pos, size);
+	plugins_list_output->SetFlags(LF_MULTICHECKBOX);
+	plugins_list_output->onClick.Connect(&configureGeneralSettings::SelectOutputPlugin, this);
 
 	for (Int i = 0; i < currentConfig->appMain->winamp_out_modules.GetNOfEntries(); i++)
 	{
-		plugins_list_output->AddEntry(currentConfig->appMain->winamp_out_modules.GetNthEntry(i)->description);
+		ListEntry	*entry = plugins_list_output->AddEntry(currentConfig->appMain->winamp_out_modules.GetNthEntry(i)->description);
+
+		if (i == currentConfig->output_plugin) entry->selected = True;
 	}
 
 	pos.x += 247;
@@ -423,11 +430,13 @@ configureGeneralSettings::configureGeneralSettings()
 
 	plugins_button_output	= new Button(bonkEnc::i18n->TranslateString("Configure"), NIL, pos, size);
 	plugins_button_output->onClick.Connect(&configureGeneralSettings::ConfigureOutputPlugin, this);
+	plugins_button_output->Deactivate();
 
 	pos.y += 30;
 
 	plugins_button_output_about	= new Button(bonkEnc::i18n->TranslateString("About"), NIL, pos, size);
 	plugins_button_output_about->onClick.Connect(&configureGeneralSettings::AboutOutputPlugin, this);
+	plugins_button_output_about->Deactivate();
 
 	pos.x = 7;
 	pos.y = 11;
@@ -658,6 +667,8 @@ Void configureGeneralSettings::OK()
 	if (cddb_combo_mode->GetSelectedEntry()->id == FREEDB_MODE_CDDBP)	currentConfig->freedb_cddbp_port = cddb_edit_port->GetText().ToInt();
 	else if (cddb_combo_mode->GetSelectedEntry()->id == FREEDB_MODE_HTTP)	currentConfig->freedb_http_port = cddb_edit_port->GetText().ToInt();
 
+	for (Int i = 0; i < plugins_list_output->GetNOfEntries(); i++) if (plugins_list_output->GetNthEntry(i)->selected) currentConfig->output_plugin = i;
+
 	int	 len = currentConfig->enc_outdir.Length() - 1;
 
 	if (currentConfig->enc_outdir[len] != '\\') currentConfig->enc_outdir[++len] = '\\';
@@ -832,6 +843,40 @@ Void configureGeneralSettings::ToggleTags()
 	{
 		tags_text_defcomment->Deactivate();
 		tags_edit_defcomment->Deactivate();
+	}
+}
+
+Void configureGeneralSettings::SelectInputPlugin()
+{
+	plugins_button_input->Activate();
+	plugins_button_input_about->Activate();
+}
+
+Void configureGeneralSettings::SelectOutputPlugin()
+{
+	plugins_button_output->Activate();
+	plugins_button_output_about->Activate();
+
+	if (plugins_list_output->GetSelectedEntry()->selected)
+	{
+		for (Int i = 0; i < plugins_list_output->GetNOfEntries(); i++) plugins_list_output->GetNthEntry(i)->selected = False;
+
+		plugins_list_output->GetSelectedEntry()->selected = True;
+		plugins_list_output->Paint(SP_PAINT);
+		plugins_list_output->Paint(SP_MOUSEIN);
+	}
+	else
+	{
+		Bool	 selected = False;
+
+		for (Int i = 0; i < plugins_list_output->GetNOfEntries(); i++) if (plugins_list_output->GetNthEntry(i)->selected) selected = True;
+
+		if (!selected)
+		{
+			plugins_list_output->GetSelectedEntry()->selected = True;
+			plugins_list_output->Paint(SP_PAINT);
+			plugins_list_output->Paint(SP_MOUSEIN);
+		}
 	}
 }
 

@@ -131,6 +131,8 @@ Bool bonkEncConfig::LoadSettings()
 	tab_width_length = getINIValue("Settings", "TabWidthLength", "80").ToInt();
 	tab_width_size = getINIValue("Settings", "TabWidthSize", "80").ToInt();
 
+	output_plugin = getINIValue("Settings", "OutputPlugin", "0").ToInt();
+
 	enable_tags = getINIValue("Settings", "EnableTags", "1").ToInt();
 	default_comment = getINIValue("Settings", "DefaultComment", String("BonkEnc ").Append(bonkEnc::shortVersion).Append(" <http://www.bonkenc.org>"));
 
@@ -274,6 +276,10 @@ Bool bonkEncConfig::SaveSettings()
 
 		str = "TabWidthSize=";
 		str.Append(String::FromInt(tab_width_size));
+		out->OutputLine(str);
+
+		str = "OutputPlugin=";
+		str.Append(String::FromInt(output_plugin));
 		out->OutputLine(str);
 
 		str = "EnableTags=";

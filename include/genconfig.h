@@ -112,6 +112,8 @@ class configureGeneralSettings : public Dialog
 		Void		 HTTPSettings();
 		Void		 ProxySettings();
 		Void		 ToggleTags();
+		Void		 SelectInputPlugin();
+		Void		 SelectOutputPlugin();
 		Void		 ConfigureInputPlugin();
 		Void		 ConfigureOutputPlugin();
 		Void		 AboutInputPlugin();

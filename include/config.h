@@ -42,6 +42,8 @@ class bonkEncConfig
 		Int		 tab_width_length;
 		Int		 tab_width_size;
 
+		Int		 output_plugin;
+
 		Bool		 showTitleInfo;
 
 		Int		 encoder;
