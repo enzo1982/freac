@@ -255,7 +255,6 @@ configureGeneralSettings::configureGeneralSettings()
 
 	cdrip_combo_drive->SelectEntry(currentConfig->cdrip_activedrive);
 
-
 	pos.x = 7;
 	pos.y = 66;
 	size.cx = 344;
@@ -507,7 +506,8 @@ configureGeneralSettings::configureGeneralSettings()
 	mainWnd->RegisterObject(reg_register);
 
 	reg_register->RegisterObject(register_layer_encoders);
-	reg_register->RegisterObject(register_layer_language);
+
+	if (bonkEnc::i18n->GetNOfLanguages() > 0) reg_register->RegisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cddb);
@@ -661,9 +661,9 @@ Void configureGeneralSettings::OK()
 			String	 dir = encoders_edit_outdir->GetText();
 			String	 tmp;
 
-			for (Int i = 0; i < dir.Length(); i++)
+			for (Int i = 0; i <= dir.Length(); i++)
 			{
-				if (dir[i] == '\\' || dir[i] == '/')
+				if (dir[i] == '\\' || dir[i] == '/' || dir[i] == 0)
 				{
 					if (Setup::enableUnicode)	_wmkdir(tmp);
 					else				_mkdir(tmp);
@@ -815,13 +815,16 @@ Void configureGeneralSettings::SetParanoia()
 
 Void configureGeneralSettings::SelectLanguage()
 {
-	language_text_info->SetText(bonkEnc::i18n->TranslateString("Language").Append(": ").Append(bonkEnc::i18n->GetNthLanguageName(language_combo_language->GetSelectedEntry()->id))
-					.Append("\n").Append(bonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageEncoding(language_combo_language->GetSelectedEntry()->id))
-					.Append("\n").Append(bonkEnc::i18n->TranslateString("Author")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageAuthor(language_combo_language->GetSelectedEntry()->id))
-					.Append("\n").Append(bonkEnc::i18n->TranslateString("URL")).Append(": "));
+	if (language_combo_language->GetSelectedEntry() != NIL)
+	{
+		language_text_info->SetText(bonkEnc::i18n->TranslateString("Language").Append(": ").Append(bonkEnc::i18n->GetNthLanguageName(language_combo_language->GetSelectedEntry()->id))
+						.Append("\n").Append(bonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageEncoding(language_combo_language->GetSelectedEntry()->id))
+						.Append("\n").Append(bonkEnc::i18n->TranslateString("Author")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageAuthor(language_combo_language->GetSelectedEntry()->id))
+						.Append("\n").Append(bonkEnc::i18n->TranslateString("URL")).Append(": "));
 
-	language_link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()->id));
-	language_link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()->id));
+		language_link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()->id));
+		language_link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()->id));
+	}
 }
 
 Void configureGeneralSettings::SetCDDBMode()

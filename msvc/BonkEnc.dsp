@@ -253,10 +253,6 @@ SOURCE=..\src\genconfig.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\i18n.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\src\joblist.cpp
 # End Source File
 # Begin Source File
@@ -422,10 +418,6 @@ SOURCE=..\include\faacconfig.h
 # Begin Source File
 
 SOURCE=..\include\genconfig.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\i18n.h
 # End Source File
 # Begin Source File
 

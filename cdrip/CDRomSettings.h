@@ -27,7 +27,7 @@
 
 using namespace std ;
 
-#define MAX_TRACKS 100
+#define MAX_TRACKS 500
 
 class CDSETTINGSPARAMS:public CDROMPARAMS
 {

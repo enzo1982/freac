@@ -238,5 +238,6 @@
     <entry id="226" string="Cannot configure encoder while encoding!">Während der Codierung können keine Einstellungen verändert werden!</entry>
     <entry id="227" string="The output directory does not exist! Do you want to create it?">Das Ausgabeverzeichnis existiert nicht! Soll es erzeugt werden?</entry>
     <entry id="228" string="Filename pattern">Vorlage für Dateinamen</entry>
+    <entry id="229" string="unknown album">unbekanntes Album</entry>
   </data>
 </LangFile>

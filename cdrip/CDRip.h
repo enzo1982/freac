@@ -213,7 +213,7 @@ struct CDROMPARAMS
 	BOOL		 bMultiReadFirstOnly;		// Only do the multiple reads on the first block
 	INT		 nMultiReadCount;		// Number of times to reread and compare
 
-	BOOL		 bLockDuringRead;		// Number of times to reread and compare
+	BOOL		 bLockDuringRead;		// Lock the CD-ROM drive tray during the ripping
 
 	INT		 nRippingMode;
 	INT		 nParanoiaMode;

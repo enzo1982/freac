@@ -91,19 +91,46 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		if (trackInfo->hasText)
 		{
-			for (Int i = 0; i < trackInfo->artist.Length(); i++)
+			Int i = 0;
+
+			for (i = 0; i < trackInfo->artist.Length(); i++)
 			{
 				if (trackInfo->artist[i] == '/' ||
 				    trackInfo->artist[i] == '\\') trackInfo->artist[i] = '_';
 			}
 
-			for (Int j = 0; j < trackInfo->title.Length(); j++)
+			for (i = 0; i < trackInfo->title.Length(); i++)
 			{
-				if (trackInfo->title[j] == '/' ||
-				    trackInfo->title[j] == '\\') trackInfo->title[j] = '_';
+				if (trackInfo->title[i] == '/' ||
+				    trackInfo->title[i] == '\\') trackInfo->title[i] = '_';
 			}
 
-			out_filename.Append(String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
+			for (i = 0; i < trackInfo->album.Length(); i++)
+			{
+				if (trackInfo->album[i] == '/' ||
+				    trackInfo->album[i] == '\\') trackInfo->album[i] = '_';
+			}
+
+			out_filename.Append(currentConfig->enc_filePattern);
+
+			out_filename.Replace("<artist>", trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"));
+			out_filename.Replace("<title>", trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"));
+			out_filename.Replace("<album>", trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
+			out_filename.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
+
+			String	 dir = out_filename;
+			String	 tmp;
+
+			for (i = 0; i < dir.Length(); i++)
+			{
+				if (dir[i] == '\\' || dir[i] == '/')
+				{
+					if (Setup::enableUnicode)	_wmkdir(tmp);
+					else				_mkdir(tmp);
+				}
+
+				tmp[i] = dir[i];
+			}
 
 			String	 bak_filename = out_filename;
 

@@ -57,7 +57,7 @@ class CAspiCD : public CDRomSettings
 		void		 GetDiskInfo();
 		void		 BusDeviceReset();
 		CDEX_ERR	 GetCDRomDevices();
-		void		 InquiryCommand(BYTE btAdapterID, BYTE btTargetID, BYTE btLunID);
+		BYTE		 InquiryCommand(BYTE btAdapterID, BYTE btTargetID, BYTE btLunID, SCSI_INQUIRY_RESULT *pbtResult);
 		BOOL		 EjectCD(BOOL bEject);
 		void		 GetDeviceName(BYTE btAdapterID, BYTE btTargetID, BYTE btLunID, LPSTR lpszDeviceName);
 		BYTE		 Seek(DWORD dwAbsPos);

@@ -82,7 +82,7 @@ Int languageDlg::ShowDialog()
 
 Void languageDlg::OK()
 {
-	currentConfig->language = bonkEnc::i18n->GetNthLanguageID(list_language->GetSelectedEntry()->id);
+	if (list_language->GetSelectedEntry() != NIL) currentConfig->language = bonkEnc::i18n->GetNthLanguageID(list_language->GetSelectedEntry()->id);
 
 	mainWnd->Close();
 }

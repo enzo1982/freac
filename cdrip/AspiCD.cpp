@@ -59,28 +59,8 @@ CAspiCD::~CAspiCD()
 
 BYTE CAspiCD::GetDeviceType(BYTE btAdapterID,BYTE btTargetID,BYTE btLunID)
 {
-	// Create SRB_HAINQUIRY header
-	SRB_GDEVBLOCK mySrb;
-
-	// Clear all fields
-	memset(&mySrb,0x00,sizeof(SRB_GDEVBLOCK));
-
-	// Set SRB fields
-	mySrb.SRB_Cmd = SC_GET_DEV_TYPE;
-	mySrb.SRB_HaId = btAdapterID;
-	mySrb.SRB_Target = btTargetID;
-	mySrb.SRB_Lun = btLunID;
-
-	// Send command
-	SendASPI32Command((LPSRB)&mySrb);
-
-	// Check aspi function call
-	IsScsiError((LPSRB)&mySrb);
-
-	m_btLastError = mySrb.SRB_Status;
-
 	// Return device type
-	return mySrb.SRB_DeviceType;
+	return (BYTE) -1;
 }
 
 void CAspiCD::SetTimeOut(int nMilliSeconds)
@@ -102,6 +82,7 @@ void CAspiCD::GetDiskInfo()
 	mySrb.SRB_HaId = GetAdapterID();
 	mySrb.SRB_Target = GetTargetID();
 	mySrb.SRB_Lun = GetLunID();
+	mySrb.SRB_Flags = 0;
 
 	// Send command
 	SendASPI32Command((LPSRB)&mySrb);
@@ -151,9 +132,7 @@ BYTE CAspiCD::ReadSubChannel(BYTE btDataFormat,BYTE* pbtBuffer,int nBufSize,BYTE
 
 
 
-BYTE CAspiCD::ReadSubChannelQ( BYTE		btDataFormat,
-							   BYTE*	pbtBuffer,
-							   int		nBufSize )
+BYTE CAspiCD::ReadSubChannelQ(BYTE btDataFormat, BYTE *pbtBuffer, int nBufSize)
 {
 	BYTE	bReturn = 0;
 	BYTE	cmd [12];
@@ -265,24 +244,35 @@ CDEX_ERR CAspiCD::GetCDRomDevices()
 
 	if ( CDEX_OK == bReturn )
 	{
-		DWORD dwDevType;
 		BYTE btAdapterID=0;
 		BYTE btLunID=0;
 		BYTE btTargetID=0;
 
-		for ( btAdapterID=0; btAdapterID < m_bNumHA; btAdapterID++ )
+		for (btAdapterID=0; btAdapterID < m_bNumHA; btAdapterID++)
 		{
-			for ( btTargetID = 0; btTargetID < 12; btTargetID++ )
+			for (btTargetID = 0; btTargetID < 16; btTargetID++)
 			{
-				for ( btLunID = 0; btLunID < 8; btLunID++ )
-				{
-					// Get device type
-					dwDevType = GetDeviceType( btAdapterID, btTargetID, btLunID );
+				int nMaxLunID = 7;
 
-					if ( dwDevType == DTC_CDROM || dwDevType == DTC_WORM )
+				for (btLunID = 0; btLunID <= nMaxLunID; btLunID++)
+				{
+					SCSI_INQUIRY_RESULT	 inqResult;
+
+					if ( SS_COMP == InquiryCommand( btAdapterID, btTargetID, btLunID, &inqResult ) )
 					{
-						// Inquiry drive
-						InquiryCommand( btAdapterID, btTargetID, btLunID );
+						CHAR lpszDeviceName[ 25 ];
+						DWORD dwDeviceType = inqResult.btDeviceType;
+
+						// Create a string with CD-ROM Vendor and type information
+						strncpy( lpszDeviceName, inqResult.lpsVendorId , sizeof( lpszDeviceName ) - 1 );
+						lpszDeviceName[ sizeof( lpszDeviceName ) - 1 ] = '\0';
+
+						if ( dwDeviceType == DTC_CDROM || dwDeviceType == DTC_WORM )
+						{
+							// Add entry to array of CD-ROM Settings
+							AddCDRom( lpszDeviceName, btAdapterID, btTargetID, btLunID );
+
+						}
 					}
 				}
 			}
@@ -306,7 +296,6 @@ BOOL CAspiCD::IsMMC( LPSTR lpszInfo )
 	ModeSense( 0x2A, pbtBuffer, sizeof( pbtBuffer ) );
 
 	SCISMODEHEADER* pBlockHeader=(SCISMODEHEADER*)pbtBuffer;
-//	SCSICDMODEPAGE2A* pPage=(SCSICDMODEPAGE2A*)(pbtBuffer+sizeof(SCISMODEHEADER)+pBlockHeader->nBlockLen);
 	SCSICDMODEPAGE2A* pPage=(SCSICDMODEPAGE2A*)( &pbtBuffer[ 4 ] );
 
 	int n2aSize = sizeof( SCSICDMODEPAGE2A );
@@ -314,7 +303,7 @@ BOOL CAspiCD::IsMMC( LPSTR lpszInfo )
 
 	strcpy( lpszInfo, "Drive does not support MMC" );
 
-    if( ( pbtBuffer[ 4 ] & 0x3F ) == 0x2A )
+	if( ( pbtBuffer[ 4 ] & 0x3F ) == 0x2A )
 	{
 		// Set mmc variable or so
 		// MMC style drive!
@@ -331,39 +320,27 @@ BOOL CAspiCD::IsMMC( LPSTR lpszInfo )
 			strcpy( lpszInfo, "MMC drive, but reports CDDA incapable" );
 			bReturn = TRUE;
 		}
-    }
+	}
 
 	return bReturn;
 }
 
-
-
-void CAspiCD::InquiryCommand( BYTE btAdapterID, BYTE btTargetID, BYTE btLunID )
+BYTE CAspiCD::InquiryCommand(BYTE btAdapterID, BYTE btTargetID, BYTE btLunID, SCSI_INQUIRY_RESULT *pbtResult)
 {
-	char lpszTmp[255] = { '\0',};
-
-	static BYTE cmd[6] = { SCSI_CMD_INQUIRY,btLunID << 5, 0,0, 0x24, 0 };
-
-	static BYTE pbtBuffer[ 0x24];
+	BYTE		 btReturn	= (BYTE) -1;
+	static BYTE	 cmd[6]		= { SCSI_CMD_INQUIRY, btLunID << 5, 0, 0, sizeof(SCSI_INQUIRY_RESULT), 0 };
 
 	// Clear buffer
-	memset(pbtBuffer,0x00,sizeof(pbtBuffer));
+	memset(pbtResult, 0x00, sizeof(SCSI_INQUIRY_RESULT));
 
-	IssueScsiCmd(SRB_DIR_IN,cmd,sizeof(cmd),pbtBuffer,sizeof(pbtBuffer),btAdapterID,btTargetID,btLunID);
+	// do SCSI call
+	btReturn = IssueScsiCmd(SRB_DIR_IN, cmd, sizeof(cmd), (PBYTE) pbtResult, sizeof(SCSI_INQUIRY_RESULT), btAdapterID, btTargetID, btLunID);
 
-	// Clear string
-	memset(lpszTmp,0x00,sizeof(lpszTmp));
-
-	// Create a string with CD-ROM Vendor and type information
-	strncpy(lpszTmp,(LPSTR)&pbtBuffer[8],24);
-
-	// Add entry to array of CD-ROM Settings
-	AddCDRom( lpszTmp, btAdapterID, btTargetID, btLunID );
+	return btReturn;
 }
 
 void CAspiCD::GetDeviceName(BYTE btAdapterID,BYTE btTargetID,BYTE btLunID,LPSTR lpszDviceName)
 {
-
 	static BYTE cmd[6] = {0x12,btLunID<<5, 0,0, 0x24, 0};
 
 	static BYTE pbtBuffer[ 0x25];
@@ -376,7 +353,6 @@ void CAspiCD::GetDeviceName(BYTE btAdapterID,BYTE btTargetID,BYTE btLunID,LPSTR 
 	// Create a string with CD-ROM Vendor and type information
 	strncpy( lpszDviceName, (LPSTR)&pbtBuffer[ 8 ], 24 );
 }
-
 
 BYTE CAspiCD::ModeSense(int nPage,BYTE* pbtBuffer,int nBufSize)
 {
@@ -948,7 +924,7 @@ BOOL CAspiCD::ScsiAbort(SRB_EXECSCSICMD* sp,BYTE btAdapterID)
 	// Set structure variables
 	s.SRB_Cmd		= SC_ABORT_SRB;			// ASPI command code = SC_ABORT_SRB
 	s.SRB_HaID		= btAdapterID;			// ASPI host adapter number
-	s.SRB_Flags		= 0;					// Flags
+	s.SRB_Flags		= SRB_DIR_IN;			// Flags
 	s.SRB_ToAbort	= (LPSRB)&sp;			// sp
 
 	// Initiate SCSI abort
@@ -968,101 +944,15 @@ BOOL CAspiCD::ScsiAbort(SRB_EXECSCSICMD* sp,BYTE btAdapterID)
 	// Everything went OK
 	return (TRUE);
 }
-
-/*
-BOOL CAspiCD::RezeroUnit(SRB_EXECSCSICMD* sp,BYTE btAdapterID)
-{
-	DWORD			dwStatus = 0;
-	SRB_Abort		s;
-
-	// Clear SRB_Abort structure
-	memset(&s,0x00,sizeof(s));
-
-	// Set structure variables
-	s.SRB_Cmd		= SC_ABORT_SRB;			// ASPI command code = SC_ABORT_SRB
-	s.SRB_HaID		= btAdapterID;			// ASPI host adapter number
-	s.SRB_Flags		= 0;					// Flags
-	s.SRB_ToAbort	= (LPSRB)&sp;			// sp
-
-	// Initiate SCSI abort
-	dwStatus = SendASPI32Command((LPSRB)&s);
-
-	m_btLastError=s.SRB_Status;
-
-	// Check condition
-	if (s.SRB_Status != SS_COMP)
-	{
-//		printf("Abort ERROR! 0x%08X\n", s.SRB_Status);
-
-		// Indicate that error has occured
-		return (FALSE);
-	}
-
-	// Everything went OK
-	return (TRUE);
-}
-*/
 
 void  CAspiCD::SetScsiTimeOut(int nTimeOut)
 {
-/*
-	static SRB_GetSetTimeouts srbTimeOut;
-	memset(&srbTimeOut,0x00,sizeof(srbTimeOut));
-	srbTimeOut.SRB_Cmd=SC_GETSET_TIMEOUTS;
-	srbTimeOut.SRB_HaId=GetAdapterID();;
-	srbTimeOut.SRB_Flags=SRB_DIR_OUT;
-	srbTimeOut.SRB_Lun=GetLunID();
-	srbTimeOut.SRB_Timeout=nTimeOut*2;
-	srbTimeOut.SRB_Target=GetTargetID();
-
-	// Send ASPI32 command
-	SendASPI32Command((LPSRB)&srbTimeOut);
-
-	switch (srbTimeOut.SRB_Status)
-	{
-		case SS_COMP:
-		break;
-		case SS_INVALID_HA:
-		case SS_NO_DEVICE:
-		case SS_INVALID_SRB:
-			assert(FALSE);
-		break;
-	}
-*/
 }
 
 int CAspiCD::GetScsiTimeOut()
 {
-/*
-	static SRB_GetSetTimeouts srbTimeOut;
-	memset(&srbTimeOut,0x00,sizeof(srbTimeOut));
-	srbTimeOut.SRB_Cmd=SC_GETSET_TIMEOUTS;
-	srbTimeOut.SRB_HaId=GetAdapterID();;
-	srbTimeOut.SRB_Flags=SRB_DIR_IN;
-	srbTimeOut.SRB_Lun=GetLunID();
-	srbTimeOut.SRB_Target=GetTargetID();
-	
-	// Send ASPI32 command
-	DWORD dwASPIStatus=SendASPI32Command((LPSRB)&srbTimeOut);
-
-	switch (dwASPIStatus)
-	{
-		case SS_COMP:
-			return srbTimeOut.SRB_Timeout/2;
-		break;
-
-		case SS_INVALID_HA:
-		case SS_NO_DEVICE:
-		case SS_INVALID_SRB:
-			assert(FALSE);
-		break;
-	}
-*/
 	return 10*2;
-
 }
-
-
 
 BYTE CAspiCD::IssueScsiCmd(BYTE bFlags,LPBYTE lpcbData,int ncbLen,LPBYTE lpBuffer,int nBufLen,BYTE btAdapterID,BYTE btTargetID,BYTE btLunID)
 {
@@ -1100,15 +990,14 @@ BYTE CAspiCD::IssueScsiCmd(BYTE bFlags,LPBYTE lpcbData,int ncbLen,LPBYTE lpBuffe
 	// Set SRB fields
 	mySrb.SRB_Cmd=SC_EXEC_SCSI_CMD;
 	mySrb.SRB_HaId=btAdapterID;
-	mySrb.SRB_Flags = bFlags;
-	mySrb.SRB_Flags |= SRB_EVENT_NOTIFY;
+	mySrb.SRB_Flags = SRB_EVENT_NOTIFY | SRB_DIR_IN;
 	mySrb.SRB_Target=btTargetID;
 	mySrb.SRB_Lun=btLunID;
-    mySrb.SRB_SenseLen=SENSE_LEN;
+	mySrb.SRB_SenseLen=SENSE_LEN;
 	mySrb.SRB_CDBLen=ncbLen;
-    mySrb.SRB_BufLen=nBufLen;
-    mySrb.SRB_BufPointer=lpBuffer;
-    mySrb.SRB_PostProc= (POSTPROCFUNC)hEvent;
+	mySrb.SRB_BufLen=nBufLen;
+	mySrb.SRB_BufPointer=lpBuffer;
+	mySrb.SRB_PostProc= (POSTPROCFUNC)hEvent;
 
 
 	// Copy CBDByte data, if available

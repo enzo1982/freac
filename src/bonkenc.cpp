@@ -55,9 +55,9 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig		*bonkEnc::currentConfig	= NIL;
 I18n::Translator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "CVS 20030914";
+String	 bonkEnc::version = "CVS 20030920";
 String	 bonkEnc::cddbVersion = "v1.0beta1";
-String	 bonkEnc::shortVersion = "20030914";
+String	 bonkEnc::shortVersion = "20030920";
 
 bonkEnc::bonkEnc()
 {
@@ -78,8 +78,10 @@ bonkEnc::bonkEnc()
 
 		dlg->ShowDialog();
 
-		delete dlg;
+		DeleteObject(dlg);
 	}
+
+	if (currentConfig->language == "") currentConfig->language = "internal";
 
 	i18n->ActivateLanguage(currentConfig->language);
 

@@ -327,22 +327,15 @@ void GetDriveInformation( BYTE i, NTSCSIDRIVE *pDrive )
 					&returned,
 					NULL );
 
-		if ( status )
+		if (status)
 		{
-			memcpy( pDrive->inqData, inqData, NTSCSI_HA_INQUIRY_SIZE );
+			memcpy(pDrive->inqData, inqData, NTSCSI_HA_INQUIRY_SIZE);
 
 			
 			// get the address (path/tgt/lun) of the drive via IOCTL_SCSI_GET_ADDRESS
-			scsiAddr.Length = sizeof( SCSI_ADDRESS );
+			scsiAddr.Length = sizeof(SCSI_ADDRESS);
 
-			if ( DeviceIoControl(	fh, 
-									IOCTL_SCSI_GET_ADDRESS, 
-									NULL,
-									0,
-									&scsiAddr,
-									sizeof( SCSI_ADDRESS ),
-									&returned,
-									NULL ) )
+			if (DeviceIoControl(fh, IOCTL_SCSI_GET_ADDRESS, NULL, 0, &scsiAddr, sizeof(SCSI_ADDRESS), &returned, NULL))
 			{
 
 				pDrive->bIsCDDrive = TRUE;
@@ -354,12 +347,27 @@ void GetDriveInformation( BYTE i, NTSCSIDRIVE *pDrive )
 			}
 			else
 			{
-				pDrive->bIsCDDrive     = FALSE;
+				// support USB/FIREWIRE devices where this call is not supported
+				// assign drive letter as device ID
+
+				if (GetLastError() == 50)
+				{
+					pDrive->bIsCDDrive = TRUE;
+					pDrive->ha = i;
+					pDrive->tgt = 0;
+					pDrive->lun = 0;
+					pDrive->driveLetter = i;
+					pDrive->hDevice = INVALID_HANDLE_VALUE;
+				}
+				else
+				{
+					pDrive->bIsCDDrive = FALSE;
+				}
 			}
 
 		}
 
-		CloseHandle( fh );
+		CloseHandle(fh);
 	}
 }
 

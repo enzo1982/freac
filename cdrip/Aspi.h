@@ -394,6 +394,46 @@ typedef struct
 }
 SCSICDMODEPAGE1A;
 
+// INQUIRY struct
+typedef struct
+{
+	Ucbit	btDeviceType		:5;	// 0
+	Ucbit	btPeripheralQualifier	:3;	// 0
+
+	Ucbit	btDeviceTypeModifier	:7;	// 1
+	Ucbit	btRMB			:1;	// 1
+
+	Ucbit	btANSIApprovedVersion	:3;	// 2
+	Ucbit	btECMAVersion		:3;	// 2
+	Ucbit	btISOVersion		:2;	// 2
+
+	Ucbit	btResponseDataFormat	:3;	// 3
+	Ucbit	btReserved_3		:2;	// 3
+	Ucbit	btTrmIOP		:1;	// 3
+	Ucbit	btAENC			:1;	// 3
+
+	Ucbit	btAdditionalLenghth;		// 4
+	Ucbit	btReserved_5;			// 5
+	Ucbit	btReserved_6;			// 6
+
+	Ucbit	btRelAdr		:1;	// 7
+	Ucbit	btWBus32		:1;	// 7
+	Ucbit	btWBus16		:1;	// 7
+	Ucbit	btSync			:1;	// 7
+	Ucbit	btLinked		:1;	// 7
+	Ucbit	btReserved_7		:1;	// 7
+	Ucbit	btCmdQue		:1;	// 7
+	Ucbit	btSftRe			:1;	// 7
+
+	char	lpsVendorId[8];			// 8 .. 15
+	char	lpsProductId[16];		// 16 .. 31
+	char	lpsRevisionLevel[3];		// 32 .. 35
+	char    szTerminateChar;
+//	char	btaVendorSpecific[20];		// 36 .. 55
+//	char	btaReserved[40];		// 56 .. 95
+}
+SCSI_INQUIRY_RESULT;
+
 // FUNCTION PROTOTYPES
 CDEX_ERR	 InitAspiDll(bool &bUseNtScsi);
 CDEX_ERR	 DeInitAspiDll();
