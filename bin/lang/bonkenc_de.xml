@@ -271,5 +271,6 @@
     <entry id="259" string="Allow ID3V2 tags in AAC files">ID3V2-Tags in AAC-Dateien erlauben</entry>
     <entry id="260" string="Note:">Hinweis:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
+    <entry id="262" string="FLAC Files">FLAC Dateien</entry>
   </data>
 </LangFile>

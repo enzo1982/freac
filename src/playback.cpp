@@ -22,6 +22,7 @@
 #include <input/filter-in-lame.h>
 #include <input/filter-in-vorbis.h>
 #include <input/filter-in-bonk.h>
+#include <input/filter-in-flac.h>
 
 Void bonkEnc::PlayItem(Int entry)
 {

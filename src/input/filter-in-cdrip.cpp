@@ -8,7 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib-cxx.h>
 #include <input/filter-in-cdrip.h>
 #include <3rdparty/cdrip/cdrip.h>
 #include <dllinterfaces.h>

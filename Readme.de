@@ -18,7 +18,7 @@ Geschichte
 		- Unterstützung für nicht-'on-the-fly' Codierung hinzugefügt
 		- HTTP Proxy Unterstützung integriert
 		- Fehler im WAVE Input Plugin wurde behoben
-		- Die BonkEnc Standardversion enthält jetzt das in_flac.dll Plugin für FLAC Unterstützung
+		- FLAC Audio Decoder hinzugefügt
 		- Unterstützung für Unicode Dateinamen hinzugefügt
 		- Ein Uninstaller wurde hinzugefügt
 		- Einige andere Fehler wurden behoben

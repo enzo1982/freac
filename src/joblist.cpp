@@ -91,6 +91,7 @@ Void bonkEncGUI::AddFile()
 										fileTypes.Append("*.aif; *.aiff; *.au");
 	if (currentConfig->enable_bonk)						fileTypes.Append("; *.bonk");
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
+	if (currentConfig->enable_flac)						fileTypes.Append("; *.flac");
 	if (currentConfig->enable_lame)						fileTypes.Append("; *.mp3");
 	if (currentConfig->enable_mp4 && currentConfig->enable_faad2)		fileTypes.Append("; *.mp4");
 	if (currentConfig->enable_vorbis)					fileTypes.Append("; *.ogg");
@@ -103,6 +104,7 @@ Void bonkEncGUI::AddFile()
 										dialog->AddFilter(i18n->TranslateString("Apple Audio Files").Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
 	if (currentConfig->enable_bonk)						dialog->AddFilter(i18n->TranslateString("Bonk Files").Append(" (*.bonk)"), "*.bonk");
 										dialog->AddFilter(i18n->TranslateString("Creative Voice Files").Append(" (*.voc)"), "*.voc");
+	if (currentConfig->enable_flac)						dialog->AddFilter(i18n->TranslateString("FLAC Files").Append(" (*.flac)"), "*.flac");
 	if (currentConfig->enable_lame)						dialog->AddFilter(i18n->TranslateString("MP3 Files").Append(" (*.mp3)"), "*.mp3");
 	if (currentConfig->enable_mp4 && currentConfig->enable_faad2)		dialog->AddFilter(i18n->TranslateString("MP4 Files").Append(" (*.mp4)"), "*.mp4");
 	if (currentConfig->enable_vorbis)					dialog->AddFilter(i18n->TranslateString("Ogg Vorbis Files").Append(" (*.ogg)"), "*.ogg");

@@ -60,6 +60,7 @@ class bonkEncConfig
 		Bool		 enable_id3;
 		Bool		 enable_eUpdate;
 		Bool		 enable_mp4;
+		Bool		 enable_flac;
 		String		 enc_outdir;
 		String		 enc_filePattern;
 		Bool		 enc_onTheFly;

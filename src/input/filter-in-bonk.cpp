@@ -8,7 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib-cxx.h>
 #include <input/filter-in-bonk.h>
 #include <dllinterfaces.h>
 #include <3rdparty/id3/tag.h>

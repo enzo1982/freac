@@ -183,6 +183,20 @@ MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack			= NIL;
 MP4READSAMPLE			 ex_MP4ReadSample			= NIL;
 MP4WRITESAMPLE			 ex_MP4WriteSample			= NIL;
 
+FLAC__STREAM_DECODER_NEW				 ex_FLAC__stream_decoder_new				= NIL;
+FLAC__STREAM_DECODER_DELETE				 ex_FLAC__stream_decoder_delete				= NIL;
+FLAC__STREAM_DECODER_SET_READ_CALLBACK			 ex_FLAC__stream_decoder_set_read_callback		= NIL;
+FLAC__STREAM_DECODER_SET_WRITE_CALLBACK			 ex_FLAC__stream_decoder_set_write_callback		= NIL;
+FLAC__STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__stream_decoder_set_metadata_callback		= NIL;
+FLAC__STREAM_DECODER_SET_ERROR_CALLBACK			 ex_FLAC__stream_decoder_set_error_callback		= NIL;
+FLAC__STREAM_DECODER_INIT				 ex_FLAC__stream_decoder_init				= NIL;
+FLAC__STREAM_DECODER_FINISH				 ex_FLAC__stream_decoder_finish				= NIL;
+FLAC__STREAM_DECODER_GET_CHANNELS			 ex_FLAC__stream_decoder_get_channels			= NIL;
+FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE		 ex_FLAC__stream_decoder_get_bits_per_sample		= NIL;
+FLAC__STREAM_DECODER_GET_SAMPLE_RATE			 ex_FLAC__stream_decoder_get_sample_rate		= NIL;
+FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA	 ex_FLAC__stream_decoder_process_until_end_of_metadata	= NIL;
+FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM	 ex_FLAC__stream_decoder_process_until_end_of_stream	= NIL;
+
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
 ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
 ID3TAGSETPADDING		 ex_ID3Tag_SetPadding			= NIL;
@@ -664,7 +678,7 @@ Void bonkEnc::FreeEUpdateDLL()
 
 Bool bonkEnc::LoadMP4V2DLL()
 {
-	mp4v2dll = LoadLibraryA(GetApplicationDirectory().Append("encoders/mp4v2.dll"));
+	mp4v2dll = LoadLibraryA(GetApplicationDirectory().Append("encoders/MP4v2.dll"));
 
 	if (mp4v2dll == NIL) return false;
 
@@ -732,6 +746,48 @@ Bool bonkEnc::LoadMP4V2DLL()
 Void bonkEnc::FreeMP4V2DLL()
 {
 	FreeLibrary(mp4v2dll);
+}
+
+Bool bonkEnc::LoadFLACDLL()
+{
+	flacdll = LoadLibraryA(GetApplicationDirectory().Append("encoders/FLAC.dll"));
+
+	if (flacdll == NIL) return false;
+
+	ex_FLAC__stream_decoder_new				= (FLAC__STREAM_DECODER_NEW) GetProcAddress(flacdll, "FLAC__stream_decoder_new");
+	ex_FLAC__stream_decoder_delete				= (FLAC__STREAM_DECODER_DELETE) GetProcAddress(flacdll, "FLAC__stream_decoder_delete");
+	ex_FLAC__stream_decoder_set_read_callback		= (FLAC__STREAM_DECODER_SET_READ_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_read_callback");
+	ex_FLAC__stream_decoder_set_write_callback		= (FLAC__STREAM_DECODER_SET_WRITE_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_write_callback");
+	ex_FLAC__stream_decoder_set_metadata_callback		= (FLAC__STREAM_DECODER_SET_METADATA_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_metadata_callback");
+	ex_FLAC__stream_decoder_set_error_callback		= (FLAC__STREAM_DECODER_SET_ERROR_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_error_callback");
+	ex_FLAC__stream_decoder_init				= (FLAC__STREAM_DECODER_INIT) GetProcAddress(flacdll, "FLAC__stream_decoder_init");
+	ex_FLAC__stream_decoder_finish				= (FLAC__STREAM_DECODER_FINISH) GetProcAddress(flacdll, "FLAC__stream_decoder_finish");
+	ex_FLAC__stream_decoder_get_channels			= (FLAC__STREAM_DECODER_GET_CHANNELS) GetProcAddress(flacdll, "FLAC__stream_decoder_get_channels");
+	ex_FLAC__stream_decoder_get_bits_per_sample		= (FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE) GetProcAddress(flacdll, "FLAC__stream_decoder_get_bits_per_sample");
+	ex_FLAC__stream_decoder_get_sample_rate			= (FLAC__STREAM_DECODER_GET_SAMPLE_RATE) GetProcAddress(flacdll, "FLAC__stream_decoder_get_sample_rate");
+	ex_FLAC__stream_decoder_process_until_end_of_metadata	= (FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA) GetProcAddress(flacdll, "FLAC__stream_decoder_process_until_end_of_metadata");
+	ex_FLAC__stream_decoder_process_until_end_of_stream	= (FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM) GetProcAddress(flacdll, "FLAC__stream_decoder_process_until_end_of_stream");
+
+	if (ex_FLAC__stream_decoder_new == NULL)				{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_delete == NULL)				{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_set_read_callback == NULL)			{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_set_write_callback == NULL)			{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_set_metadata_callback == NULL)		{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_set_error_callback == NULL)			{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_init == NULL)				{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_finish == NULL)				{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_get_channels == NULL)			{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_get_bits_per_sample == NULL)		{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_get_sample_rate == NULL)			{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_process_until_end_of_metadata == NULL)	{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_process_until_end_of_stream == NULL)	{ FreeLibrary(flacdll); return false; }
+
+	return true;
+}
+
+Void bonkEnc::FreeFLACDLL()
+{
+	FreeLibrary(flacdll);
 }
 
 Bool bonkEnc::LoadWinampDLLs()

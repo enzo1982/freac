@@ -44,6 +44,7 @@
 #include <input/filter-in-vorbis.h>
 #include <input/filter-in-bonk.h>
 #include <input/filter-in-faad2.h>
+#include <input/filter-in-flac.h>
 #include <input/filter-in-winamp.h>
 
 Int	 ENCODER_BONKENC	= -1;
@@ -120,6 +121,9 @@ bonkEnc::bonkEnc()
 
 	if (LoadEUpdateDLL() == false)	currentConfig->enable_eUpdate = false;
 	else				currentConfig->enable_eUpdate = true;
+
+	if (LoadFLACDLL() == false)	currentConfig->enable_flac = false;
+	else				currentConfig->enable_flac = true;
 
 	if (currentConfig->enable_faac || currentConfig->enable_faad2)
 	{
@@ -217,6 +221,7 @@ bonkEnc::~bonkEnc()
 	if (currentConfig->enable_id3)		FreeID3DLL();
 	if (currentConfig->enable_eUpdate)	FreeEUpdateDLL();
 	if (currentConfig->enable_mp4)		FreeMP4V2DLL();
+	if (currentConfig->enable_flac)		FreeFLACDLL();
 
 	FreeWinampDLLs();
 
@@ -318,6 +323,10 @@ InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
 	else if (extension4 == "bonk" && currentConfig->enable_bonk)
 	{
 		filter_in = new FilterInBONK(currentConfig, trackInfo);
+	}
+	else if (extension4 == "flac" && currentConfig->enable_flac)
+	{
+		filter_in = new FilterInFLAC(currentConfig, trackInfo);
 	}
 	else
 	{

@@ -31,6 +31,7 @@
 #include <3rdparty/winamp/in2.h>
 #include <3rdparty/id3.h>
 #include <3rdparty/mp4/mp4av.h>
+#include <3rdparty/flac/stream_decoder.h>
 
 // CDRip DLL API
 
@@ -393,6 +394,36 @@
 	extern MP4ADDAUDIOTRACK			 ex_MP4AddAudioTrack;
 	extern MP4READSAMPLE			 ex_MP4ReadSample;
 	extern MP4WRITESAMPLE			 ex_MP4WriteSample;
+
+// FLAC DLL API
+
+	typedef FLAC__StreamDecoder *		(*FLAC__STREAM_DECODER_NEW)				();
+	typedef void				(*FLAC__STREAM_DECODER_DELETE)				(FLAC__StreamDecoder *);
+	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_READ_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderReadCallback);
+	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_WRITE_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderWriteCallback);
+	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_METADATA_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderMetadataCallback);
+	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_ERROR_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderErrorCallback);
+	typedef FLAC__StreamDecoderState	(*FLAC__STREAM_DECODER_INIT)				(FLAC__StreamDecoder *);
+	typedef void				(*FLAC__STREAM_DECODER_FINISH)				(FLAC__StreamDecoder *);
+	typedef unsigned			(*FLAC__STREAM_DECODER_GET_CHANNELS)			(const FLAC__StreamDecoder *);
+	typedef unsigned			(*FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE)		(const FLAC__StreamDecoder *);
+	typedef unsigned			(*FLAC__STREAM_DECODER_GET_SAMPLE_RATE)			(const FLAC__StreamDecoder *);
+	typedef FLAC__bool			(*FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA)	(FLAC__StreamDecoder *);
+	typedef FLAC__bool			(*FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM)	(FLAC__StreamDecoder *);
+
+	extern FLAC__STREAM_DECODER_NEW					 ex_FLAC__stream_decoder_new;
+	extern FLAC__STREAM_DECODER_DELETE				 ex_FLAC__stream_decoder_delete;
+	extern FLAC__STREAM_DECODER_SET_READ_CALLBACK			 ex_FLAC__stream_decoder_set_read_callback;
+	extern FLAC__STREAM_DECODER_SET_WRITE_CALLBACK			 ex_FLAC__stream_decoder_set_write_callback;
+	extern FLAC__STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__stream_decoder_set_metadata_callback;
+	extern FLAC__STREAM_DECODER_SET_ERROR_CALLBACK			 ex_FLAC__stream_decoder_set_error_callback;
+	extern FLAC__STREAM_DECODER_INIT				 ex_FLAC__stream_decoder_init;
+	extern FLAC__STREAM_DECODER_FINISH				 ex_FLAC__stream_decoder_finish;
+	extern FLAC__STREAM_DECODER_GET_CHANNELS			 ex_FLAC__stream_decoder_get_channels;
+	extern FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE			 ex_FLAC__stream_decoder_get_bits_per_sample;
+	extern FLAC__STREAM_DECODER_GET_SAMPLE_RATE			 ex_FLAC__stream_decoder_get_sample_rate;
+	extern FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA	 ex_FLAC__stream_decoder_process_until_end_of_metadata;
+	extern FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM		 ex_FLAC__stream_decoder_process_until_end_of_stream;
 
 // ID3Lib DLL API
 

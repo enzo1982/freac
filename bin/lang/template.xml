@@ -271,5 +271,6 @@
     <entry id="259" string="Allow ID3V2 tags in AAC files"/>
     <entry id="260" string="Note:"/>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
+    <entry id="262" string="FLAC Files"/>
   </data>
 </LangFile>

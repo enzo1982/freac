@@ -18,7 +18,7 @@ History
 		- added support for non-'on-the-fly' encoding
 		- added HTTP proxy support
 		- fixed a bug in the WAVE file reader
-		- the BonkEnc distribution now includes the in_flac.dll plug-in for FLAC input
+		- added FLAC audio decoder
 		- added support for Unicode filenames
 		- added an uninstaller
 		- some other bugfixes

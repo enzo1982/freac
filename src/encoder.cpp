@@ -24,6 +24,8 @@
 #include <input/filter-in-lame.h>
 #include <input/filter-in-vorbis.h>
 #include <input/filter-in-bonk.h>
+#include <input/filter-in-flac.h>
+
 #include <output/filter-out-blade.h>
 #include <output/filter-out-bonk.h>
 #include <output/filter-out-faac.h>
