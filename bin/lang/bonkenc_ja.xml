@@ -213,6 +213,7 @@
     <entry id="201" string="No audio CD in drive!">CDに音楽がありません！</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting."></entry>
     <entry id="203" string="CD ripping disabled!">CDリッピングが使えません！</entry>
+    <entry id="204" string="CD options">CD設定</entry>
     <entry id="205" string="Submitting CD information">CD情報を送信</entry>
     <entry id="206" string="Cannot open file:">ファイルが開けません:</entry>
     <entry id="207" string="Query CDDB database">CDDBデータベースのクエリ</entry>
@@ -252,8 +253,24 @@
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">BonkEncを好きですか？BonkEncは無料で公開されていますが、&#10;あなたはBonkEncプロジェクトに開発費を寄付する事が出来ます。&#10;あなたは%1へPayPalを通して送金できます。&#10;詳細は%2を参照してください。</entry>
     <entry id="242" string="Bitrate / Quality">ビットレート/音質</entry>
     <entry id="243" string="Check for updates now">更新を確認する</entry>
-    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">新しいバージョンのBonkEncがオンラインで公開されています。&#10;新しいバージョンをインストールしますか？</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">新しいバージョンのBonkEncがオンラインで公開されています。&#10;ダウンロードページにアクセスしますか？</entry>
     <entry id="245" string="There are no updates available at the moment!">現在公開されている更新はありません。</entry>
     <entry id="246" string="Check for updates at startup">起動時に更新を確認する</entry>
+    <entry id="247" string="Read CD contents on insert">CD挿入時に読み込みを行う</entry>
+    <entry id="248" string="Eject disk after ripping">リッピング後にディスクを取り出す</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">'オンザフライ'方式でエンコードする</entry>
+    <entry id="250" string="Keep ripped wave files">リッピング後もファイルを保存</entry>
+    <entry id="251" string="ripping/decoding">リッピング/デコード</entry>
+    <entry id="252" string="encoding">エンコード</entry>
+    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="254" string="Use Unicode filenames">Unicodeファイル名を使用</entry>
+    <entry id="255" string="AAC Files">AACファイル</entry>
+    <entry id="256" string="MP4 Files">MP4ファイル</entry>
+    <entry id="257" string="Format">形式</entry>
+    <entry id="258" string="File format">ファイル形式</entry>
+    <entry id="259" string="Allow ID3V2 tags in AAC files">AACファイルのID3V2形式タグを許可</entry>
+    <entry id="260" string="Note:">注意:</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">いくつかのプレーヤーではID3タグが付加された&#10;AACファイルの再生に問題が発生する可能性が有ります。このオプションはあなたの&#10;プレーヤーでID3タグが使用できる事を確認してから使用してください。</entry>
+    <entry id="262" string="FLAC Files">FLACファイル</entry>
   </data>
 </LangFile>
