@@ -20,8 +20,8 @@ bonkEncConsole::bonkEncConsole(String title)
 	{
 		AllocConsole();
 
-		if (SMOOTH::Setup::enableUnicode)	SetConsoleTitleW(title);
-		else					SetConsoleTitleA(title);
+		if (Setup::enableUnicode)	SetConsoleTitleW(title);
+		else				SetConsoleTitleA(title);
 	}
 }
 

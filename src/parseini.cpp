@@ -16,7 +16,7 @@ String getINIValue(String section, String value, String def)
 
 	file.Append("bonkenc.ini");
 
-	if (SMOOTH::Setup::enableUnicode)
+	if (Setup::enableUnicode)
 	{
 		wchar_t	*rvalw = new wchar_t [256];
 

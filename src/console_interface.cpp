@@ -161,15 +161,15 @@ Void bonkEnc::ConsoleMode()
 					MSG	 msg;
 					bool	 result;
 
-					if (SMOOTH::Setup::enableUnicode)	result = PeekMessageW(&msg, 0, 0, 0, PM_REMOVE);
-					else					result = PeekMessageA(&msg, 0, 0, 0, PM_REMOVE);
+					if (Setup::enableUnicode)	result = PeekMessageW(&msg, 0, 0, 0, PM_REMOVE);
+					else				result = PeekMessageA(&msg, 0, 0, 0, PM_REMOVE);
 
 					if (result)
 					{
 						TranslateMessage(&msg);
 
-						if (SMOOTH::Setup::enableUnicode)	DispatchMessageW(&msg);
-						else					DispatchMessageA(&msg);
+						if (Setup::enableUnicode)	DispatchMessageW(&msg);
+						else				DispatchMessageA(&msg);
 					}
 
 					Sleep(10);
