@@ -18,15 +18,6 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 {
 	packageSize = 0;
 
-	if (format->bits != 16)
-	{
-		SMOOTH::MessageBox("Input files must be 16 bit for LAME MP3 encoding!", "Error", MB_OK, IDI_HAND);
-
-		error = 1;
-
-		return;
-	}
-
 	int	 effrate;
 
 	if (currentConfig->lame_resample)	effrate = currentConfig->lame_resample;
@@ -398,15 +389,25 @@ bool FilterOutLAME::Deactivate()
 
 int FilterOutLAME::WriteData(unsigned char *data, int size)
 {
+	signed short	*samples = new signed short [size / (format->bits / 8)];
 	long		 buffersize = size + 7200;
 	unsigned char	*outbuffer = new unsigned char [buffersize];
 	unsigned long	 bytes;
 
-	if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, (signed short *) data, size / (format->bits / 8) / format->channels, outbuffer, buffersize);
-	else				bytes = ex_lame_encode_buffer(lameFlags, (signed short *) data, (signed short *) data, size / (format->bits / 8), outbuffer, buffersize);
+	for (int i = 0; i < size / (format->bits / 8); i++)
+	{
+		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	samples[i] = ((short *) data)[i];
+		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+	}
+
+	if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, samples, size / (format->bits / 8) / format->channels, outbuffer, buffersize);
+	else				bytes = ex_lame_encode_buffer(lameFlags, samples, samples, size / (format->bits / 8), outbuffer, buffersize);
 
 	driver->WriteData(outbuffer, bytes);
 
+	delete [] samples;
 	delete [] outbuffer;
 
 	return bytes;

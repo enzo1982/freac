@@ -19,18 +19,9 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 
 	setup = false;
 
-	if (format->channels != 2)
+	if (format->channels > 2)
 	{
-		SMOOTH::MessageBox("Input files must be stereo for Ogg Vorbis encoding!", "Error", MB_OK, IDI_HAND);
-
-		error = 1;
-
-		return;
-	}
-
-	if (format->bits != 16)
-	{
-		SMOOTH::MessageBox("Input files must be 16 bit for Ogg Vorbis encoding!", "Error", MB_OK, IDI_HAND);
+		SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
 
 		error = 1;
 
@@ -44,10 +35,10 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 	switch (currentConfig->vorbis_mode)
 	{
 		case 0:
-			ex_vorbis_encode_init_vbr(&vi, 2, format->rate, ((double) currentConfig->vorbis_quality) / 100);
+			ex_vorbis_encode_init_vbr(&vi, format->channels, format->rate, ((double) currentConfig->vorbis_quality) / 100);
 			break;
 		case 1:
-			ex_vorbis_encode_init(&vi, 2, format->rate, -1, currentConfig->vorbis_bitrate * 1000, -1);
+			ex_vorbis_encode_init(&vi, format->channels, format->rate, -1, currentConfig->vorbis_bitrate * 1000, -1);
 			break;
 	}
 
@@ -145,15 +136,38 @@ int FilterOutVORBIS::WriteData(unsigned char *data, int size)
 		while (true);
 	}
 
-	float	**buffer = ex_vorbis_analysis_buffer(&vd, samples_size / 2);
+	signed short	*samples = new signed short [size / (format->bits / 8)];
 
-	for (int j = 0; j < samples_size / 2; j++)
+	for (int i = 0; i < size / (format->bits / 8); i++)
 	{
-		buffer[0][j] = ((((signed char *) data)[j * 4 + 1] << 8) | (0x00ff & ((signed char *) data)[j * 4 + 0])) / 32768.f;
-		buffer[1][j] = ((((signed char *) data)[j * 4 + 3] << 8) | (0x00ff & ((signed char *) data)[j * 4 + 2])) / 32768.f;
+		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	samples[i] = ((short *) data)[i];
+		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
 	}
 
-	ex_vorbis_analysis_wrote(&vd, samples_size / 2);
+	float	**buffer = ex_vorbis_analysis_buffer(&vd, samples_size / format->channels);
+
+	if (format->channels == 1)
+	{
+		for (int j = 0; j < samples_size; j++)
+		{
+			buffer[0][j] = ((((signed char *) samples)[j * 2 + 1] << 8) | (0x00ff & ((signed char *) samples)[j * 2 + 0])) / 32768.f;
+		}
+	}
+
+	if (format->channels == 2)
+	{
+		for (int j = 0; j < samples_size / 2; j++)
+		{
+			buffer[0][j] = ((((signed char *) samples)[j * 4 + 1] << 8) | (0x00ff & ((signed char *) samples)[j * 4 + 0])) / 32768.f;
+			buffer[1][j] = ((((signed char *) samples)[j * 4 + 3] << 8) | (0x00ff & ((signed char *) samples)[j * 4 + 2])) / 32768.f;
+		}
+	}
+
+	delete [] samples;
+
+	ex_vorbis_analysis_wrote(&vd, samples_size / format->channels);
 
 	while (ex_vorbis_analysis_blockout(&vd, &vb) == 1)
 	{

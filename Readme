@@ -24,7 +24,7 @@ History
 		- upgraded FAAC to version 1.17
 		- improved ASPI detection
 		- some expert settings can now be set for the LAME encoder
-		- artist and title can now be extracted from the filename
+		- fixed many input format restrictions
 		- fixed many bugs and memory leaks
 
 	Version 0.9 (March 2003)
@@ -122,18 +122,12 @@ Problems
 
 	- There are the following restrictions on the input file format:
 
-		- BonkEnc:
-				- files must be 16 bit
 		- BladeEnc:
-				- files must be 16 bit at 32, 44.1 or 48kHz
+				- files must be at 32, 44.1 or 48kHz
 		- LAME:
-				- files must be 16 bit at standard rates (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48kHz)
-		- Ogg Vorbis:
-				- files must be 16 bit, stereo
-		- FAAC:
-				- files must be 16 bit, stereo
+				- files must be at standard rates (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48kHz)
 		- TwinVQ:
-				- files must be 16 bit, at 22.05kHz (24 and 32kBit) or 44.1kHz (48kBit)
+				- files must be at 22.05kHz (24 and 32kBit) or 44.1kHz (48kBit)
 
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
@@ -144,6 +138,7 @@ Future plans
 ------------
 
 	- Sheduled for v1.0 beta 1
+		* extract artist and title from the filename
 		* improve CDDB querying (dialog with abort button)
 
 	- Sheduled for v1.0

@@ -16,15 +16,6 @@
 
 FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
 {
-	if (format->bits != 16)
-	{
-		SMOOTH::MessageBox("Input files must be 16 bit for BladeEnc MP3 encoding!", "Error", MB_OK, IDI_HAND);
-
-		error = 1;
-
-		return;
-	}
-
 	if (format->rate != 32000 && format->rate != 44100 && format->rate != 48000)
 	{
 		SMOOTH::MessageBox("Bad sampling rate! BladeEnc supports only 32, 44.1 or 48kHz.", "Error", MB_OK, IDI_HAND);
@@ -180,13 +171,23 @@ bool FilterOutBLADE::Deactivate()
 
 int FilterOutBLADE::WriteData(unsigned char *data, int size)
 {
+	signed short	*samples = new signed short [size / (format->bits / 8)];
 	unsigned char	*outbuffer = new unsigned char [buffersize];
 	unsigned long	 bytes = 0;
 
-	ex_beEncodeChunk(handle, samples_size, (signed short *) data, outbuffer, &bytes);
+	for (int i = 0; i < size / (format->bits / 8); i++)
+	{
+		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	samples[i] = ((short *) data)[i];
+		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+	}
+
+	ex_beEncodeChunk(handle, samples_size, samples, outbuffer, &bytes);
 
 	driver->WriteData(outbuffer, bytes);
 
+	delete [] samples;
 	delete [] outbuffer;
 
 	return bytes;

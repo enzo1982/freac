@@ -18,7 +18,7 @@
 
 FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
 {
-	if (format->channels != 1 && format->channels != 2)
+	if (format->channels > 2)
 	{
 		SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
 
@@ -27,18 +27,9 @@ FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 		return;
 	}
 
-	if (format->bits != 16)
-	{
-		SMOOTH::MessageBox("Input files must be 16 bit for BONK encoding!", "Error", MB_OK, IDI_HAND);
-
-		error = 1;
-
-		return;
-	}
-
 	int	 packet_size = int(1024.0 * (currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling) * format->rate / 44100);
 
-	packageSize = packet_size * format->channels * (format->bits / 8);
+	packageSize = packet_size * format->channels * 2;
 }
 
 FilterOutBONK::~FilterOutBONK()
@@ -166,7 +157,13 @@ int FilterOutBONK::WriteData(unsigned char *data, int size)
 	int		 pos = d_out->GetPos();
 	vector<int>	 samples(size / (format->bits / 8));
 
-	for (int i = 0; i < size / (format->bits / 8); i++) samples[i] = ((short *) data)[i];
+	for (int i = 0; i < size / (format->bits / 8); i++)
+	{
+		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	samples[i] = ((short *) data)[i];
+		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+	}
 
 	ex_bonk_encode_packet(encoder, samples);
 

@@ -24,15 +24,6 @@ FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkFormatInfo *format) : Outp
 {
 	setup = false;
 
-	if (format->bits != 16)
-	{
-		SMOOTH::MessageBox("Input files must be 16 bit for TwinVQ encoding!", "Error", MB_OK, IDI_HAND);
-
-		error = 1;
-
-		return;
-	}
-
 	switch (format->rate)
 	{
 		case 22050:
@@ -88,7 +79,6 @@ FilterOutTVQ::~FilterOutTVQ()
 int FilterOutTVQ::WriteData(unsigned char *data, int size)
 {
 	float		*frame		= new float [samples_size];
-
 	char		*outbuffer	= new char [buffersize];
 	OutStream	*d_out		= new OutStream(STREAM_BUFFER, (void *) outbuffer, 131072);
 
@@ -107,13 +97,25 @@ int FilterOutTVQ::WriteData(unsigned char *data, int size)
 		d_out->Flush();
 	}
 
+	signed short	*samples = new signed short [size / (format->bits / 8)];
+
+	for (int i = 0; i < size / (format->bits / 8); i++)
+	{
+		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	samples[i] = ((short *) data)[i];
+		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+	}
+
 	for (int ch = 0; ch < format->channels; ch++)
 	{
 		for (int i = 0; i < int(size / (format->bits / 8) / format->channels); i++)
 		{
-			frame[ch * int(samples_size / format->channels) + i] = (float) ((short *) data)[i * format->channels + ch];
+			frame[ch * int(samples_size / format->channels) + i] = (float) samples[i * format->channels + ch];
 		}
 	}
+
+	delete [] samples;
 
 	ex_TvqEncodeFrame(frame, &index);
 	TvqWriteBsFrame(&index, d_out);

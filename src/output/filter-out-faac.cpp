@@ -15,15 +15,6 @@
 
 FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
 {
-	if (format->bits != 16)
-	{
-		SMOOTH::MessageBox("Input files must be 16 bit for FAAC encoding!", "Error", MB_OK, IDI_HAND);
-
-		error = 1;
-
-		return;
-	}
-
 	if (format->channels > 2)
 	{
 		SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
@@ -55,12 +46,23 @@ FilterOutFAAC::~FilterOutFAAC()
 
 int FilterOutFAAC::WriteData(unsigned char *data, int size)
 {
+	signed short	*samples = new signed short [size / (format->bits / 8)];
 	unsigned char	*outbuffer = new unsigned char [buffersize];
 	unsigned long	 bytes;
 
-	bytes = ex_faacEncEncode(handle, (signed short *) data, samples_size, outbuffer, buffersize);
+	for (int i = 0; i < size / (format->bits / 8); i++)
+	{
+		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	samples[i] = ((short *) data)[i];
+		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+	}
+
+	bytes = ex_faacEncEncode(handle, samples, samples_size, outbuffer, buffersize);
 
 	driver->WriteData(outbuffer, bytes);
+
+	delete [] samples;
 
 	size = bytes;
 
