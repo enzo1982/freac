@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+ï»¿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE LangFile>
 <LangFile>
 	<info>
 		<property name="program">BonkEnc</property>
 		<property name="version">0.8</property>
-		<property name="language">Italiano (2)</property>
-		<property name="encoding">ISO-8859-1</property>
-		<property name="author">Marco D'Amato &lt;protect100@hotmail.com&gt;</property>
-		<property name="url">http://web.tiscali.it/protect/mdt.html</property>
+		<property name="language">Italiano</property>
+		<property name="encoding">UTF-8</property>
+		<property name="author">Adolfo Duse &lt;ado.duse@libero.it&gt;</property>
+		<property name="url">http://www.bonkenc.org</property>
 	</info>
 	<entry id="1">
 		<property name="string">File</property>
@@ -19,7 +19,7 @@
 	</entry>
 	<entry id="3">
 		<property name="string">Encode</property>
-		<property name="translation">Codifica</property>
+		<property name="translation">Trasforma</property>
 	</entry>
 	<entry id="4">
 		<property name="string">Add</property>
@@ -27,11 +27,11 @@
 	</entry>
 	<entry id="5">
 		<property name="string">Remove</property>
-		<property name="translation">Rimuovi</property>
+		<property name="translation">Elimina</property>
 	</entry>
 	<entry id="6">
 		<property name="string">Clear joblist</property>
-		<property name="translation">Svuota elenco</property>
+		<property name="translation">Cancella lista</property>
 	</entry>
 	<entry id="7">
 		<property name="string">Exit</property>
@@ -39,55 +39,55 @@
 	</entry>
 	<entry id="8">
 		<property name="string">General settings...</property>
-		<property name="translation">Impostazioni generali...</property>
+		<property name="translation">Funzioni principali...</property>
 	</entry>
 	<entry id="9">
 		<property name="string">Configure selected encoder...</property>
-		<property name="translation">Configurazione encoder...</property>
+		<property name="translation">Configura l'encoder selezionato...</property>
 	</entry>
 	<entry id="10">
 		<property name="string">Audio file(s)...</property>
-		<property name="translation">File audio...</property>
+		<property name="translation">File Audio...</property>
 	</entry>
 	<entry id="11">
 		<property name="string">Audio CD contents</property>
-		<property name="translation">Tracce audio da CD</property>
+		<property name="translation">Contenuto del CD Audio</property>
 	</entry>
 	<entry id="12">
 		<property name="string">Start encoding</property>
-		<property name="translation">Avvia codifica</property>
+		<property name="translation">Inizia la codifica</property>
 	</entry>
 	<entry id="13">
 		<property name="string">Stop encoding</property>
-		<property name="translation">Interrompi codifica</property>
+		<property name="translation">Termina la codifica</property>
 	</entry>
 	<entry id="14">
 		<property name="string">Encoding file:</property>
-		<property name="translation">File processato:</property>
+		<property name="translation">Codifica file:</property>
 	</entry>
 	<entry id="15">
 		<property name="string">Time left:</property>
-		<property name="translation">Tempo residuo:</property>
+		<property name="translation">Tempo rimasto:</property>
 	</entry>
 	<entry id="16">
 		<property name="string">Percent done:</property>
-		<property name="translation">Completato:</property>
+		<property name="translation">Eseguito:</property>
 	</entry>
 	<entry id="17">
 		<property name="string">Selected encoder:</property>
-		<property name="translation">Encoder selezionato:</property>
+		<property name="translation">Seleziona la codifica:</property>
 	</entry>
 	<entry id="18">
 		<property name="string">File progress:</property>
-		<property name="translation">Avanzamento:</property>
+		<property name="translation">File completato:</property>
 	</entry>
 	<entry id="19">
 		<property name="string">Output dir.:</property>
-		<property name="translation">Cartella di destinazione:</property>
+		<property name="translation">Directory di output:</property>
 	</entry>
 	<entry id="20">
 		<property name="string"> file(s) in joblist:</property>
-		<property name="translation"> file da processare:</property>
+		<property name="translation"> File nella lista:</property>
 	</entry>
 	<entry id="21">
 		<property name="string">none</property>
@@ -95,39 +95,39 @@
 	</entry>
 	<entry id="22">
 		<property name="string">Display information about BonkEnc</property>
-		<property name="translation">Visualizza informazioni su BonkEnc</property>
+		<property name="translation">Informazioni su BonkEnc</property>
 	</entry>
 	<entry id="23">
 		<property name="string">Add audio file(s) to the joblist</property>
-		<property name="translation">Aggiunge file audio all'elenco</property>
+		<property name="translation">Aggiungi file audio alla lista</property>
 	</entry>
 	<entry id="24">
 		<property name="string">Add audio CD contents to the joblist</property>
-		<property name="translation">Aggiunge tracce audio all'elenco</property>
+		<property name="translation">Aggiungi il contenuto CD audio alla lista</property>
 	</entry>
 	<entry id="25">
 		<property name="string">Remove the selected entry from the joblist</property>
-		<property name="translation">Rimuove dall'elenco le voci selezionate</property>
+		<property name="translation">Rimuovi i selezionati dalla lista</property>
 	</entry>
 	<entry id="26">
 		<property name="string">Clear the entire joblist</property>
-		<property name="translation">Elimina tutte le voci presenti in elenco</property>
+		<property name="translation">Cancella l'intera lista</property>
 	</entry>
 	<entry id="27">
 		<property name="string">Configure general settings</property>
-		<property name="translation">Configura le opzioni generali del programma</property>
+		<property name="translation">Configurazione principale</property>
 	</entry>
 	<entry id="28">
 		<property name="string">Configure the selected audio encoder</property>
-		<property name="translation">Configura le opzioni dell'encoder selezionato</property>
+		<property name="translation">Configura l'encoder selezionato</property>
 	</entry>
 	<entry id="29">
 		<property name="string">Start the encoding process</property>
-		<property name="translation">Avvia il processo di codifica</property>
+		<property name="translation">Inizia il processo di codifica</property>
 	</entry>
 	<entry id="30">
 		<property name="string">Cannot modify the joblist while encoding!</property>
-		<property name="translation">Impossibile aggiungere o rimuovere voci all'elenco durate l'elaborazione.</property>
+		<property name="translation">Non posso modificare la lista durante il processo!</property>
 	</entry>
 	<entry id="31">
 		<property name="string">Error</property>
@@ -135,51 +135,51 @@
 	</entry>
 	<entry id="32">
 		<property name="string">Audio Files</property>
-		<property name="translation">Tutti i tipi di file audio supportati</property>
+		<property name="translation">File Audio</property>
 	</entry>
 	<entry id="33">
 		<property name="string">Apple Audio Files</property>
-		<property name="translation">File audio Apple</property>
+		<property name="translation">Apple Files Audio</property>
 	</entry>
 	<entry id="34">
 		<property name="string">Creative Voice Files</property>
-		<property name="translation">File audio Creative Voice</property>
+		<property name="translation">Creative Files Voice</property>
 	</entry>
 	<entry id="35">
 		<property name="string">Sun Audio Files</property>
-		<property name="translation">File audio Sun</property>
+		<property name="translation">Sun Files Voice</property>
 	</entry>
 	<entry id="36">
 		<property name="string">Wave Files</property>
-		<property name="translation">File audio wave</property>
+		<property name="translation">Wave Files</property>
 	</entry>
 	<entry id="37">
 		<property name="string">Windows CD Audio Track</property>
-		<property name="translation">Brano CD audio</property>
+		<property name="translation">Windows CD Tracce Audio</property>
 	</entry>
 	<entry id="38">
 		<property name="string">All Files</property>
-		<property name="translation">Tutti i file (*.*)</property>
+		<property name="translation">Tutti i Files</property>
 	</entry>
 	<entry id="39">
 		<property name="string">You have not selected a file!</property>
-		<property name="translation">Nessun file selezionato.</property>
+		<property name="translation">Non hai selezionato nessun File</property>
 	</entry>
 	<entry id="40">
 		<property name="string">The encoding thread is still running!\nDo you really want to quit?</property>
-		<property name="translation">Elaborazione ancora in corso.\nUscire comunque?</property>
+		<property name="translation">DIl processo Ã¨ ancora in corso!\nVuoi realmente terminarlo?</property>
 	</entry>
 	<entry id="41">
 		<property name="string">Currently encoding</property>
-		<property name="translation">Elaborazione in corso</property>
+		<property name="translation">Attualmente in trasformazione</property>
 	</entry>
 	<entry id="42">
 		<property name="string">This program is being distributed under the terms</property>
-		<property name="translation">Questo programma è distribuito sotto licenza</property>
+		<property name="translation">Questo programma Ã¨ distribuito secondo i termini</property>
 	</entry>
 	<entry id="43">
 		<property name="string">of the GNU General Public License (GPL).</property>
-		<property name="translation">GNU General Public License (GPL).</property>
+		<property name="translation">della GNU General Public License (GPL).</property>
 	</entry>
 	<entry id="44">
 		<property name="string">About BonkEnc</property>
@@ -187,7 +187,7 @@
 	</entry>
 	<entry id="45">
 		<property name="string">No options can be configured for the WAVE Out filter!</property>
-		<property name="translation">Nessuna opzione disponibile per il filtro WAVE Out.</property>
+		<property name="translation">Nessuna opzione puÃ² essere configurata per il filtro WAVE Out!</property>
 	</entry>
 	<entry id="46">
 		<property name="string">WAVE Out filter</property>
@@ -195,11 +195,11 @@
 	</entry>
 	<entry id="47">
 		<property name="string">Cannot change settings while encoding!</property>
-		<property name="translation">Impossibile modificare le impostazioni durante l'elaborazione.</property>
+		<property name="translation">Non posso cambiare le impostazioni durante il processo!</property>
 	</entry>
 	<entry id="48">
 		<property name="string">encoder configuration</property>
-		<property name="translation">Configurazione encoder</property>
+		<property name="translation">Configura</property>
 	</entry>
 	<entry id="49">
 		<property name="string">OK</property>
@@ -207,31 +207,31 @@
 	</entry>
 	<entry id="50">
 		<property name="string">Cancel</property>
-		<property name="translation">Annulla</property>
+		<property name="translation">Cancella</property>
 	</entry>
 	<entry id="51">
 		<property name="string">Encoding Mode</property>
-		<property name="translation">Modalità di codifica</property>
+		<property name="translation">Tipo di Encoding</property>
 	</entry>
 	<entry id="52">
 		<property name="string">Variable Bitrate</property>
-		<property name="translation">Bitrate variabile</property>
+		<property name="translation">Bitrate Variabile </property>
 	</entry>
 	<entry id="53">
 		<property name="string">Average Bitrate</property>
-		<property name="translation">Bitrate medio</property>
+		<property name="translation">Bitrate Medio</property>
 	</entry>
 	<entry id="54">
 		<property name="string">Quality</property>
-		<property name="translation">Qualità</property>
+		<property name="translation">QualitÃ </property>
 	</entry>
 	<entry id="55">
 		<property name="string">Encoders</property>
-		<property name="translation">Encoder</property>
+		<property name="translation">Encoders</property>
 	</entry>
 	<entry id="56">
 		<property name="string">Directories</property>
-		<property name="translation">Cartelle</property>
+		<property name="translation">Directory</property>
 	</entry>
 	<entry id="57">
 		<property name="string">Language</property>
@@ -239,11 +239,11 @@
 	</entry>
 	<entry id="58">
 		<property name="string">General settings setup</property>
-		<property name="translation">Impostazioni generali</property>
+		<property name="translation">Setup delle impostazioni generali</property>
 	</entry>
 	<entry id="59">
 		<property name="string">Configure encoder</property>
-		<property name="translation">Configurazione...</property>
+		<property name="translation">Configurazione</property>
 	</entry>
 	<entry id="60">
 		<property name="string">Encoder</property>
@@ -251,19 +251,19 @@
 	</entry>
 	<entry id="61">
 		<property name="string">Output directory</property>
-		<property name="translation">Cartella di destinazione</property>
+		<property name="translation">Directory di destinazione</property>
 	</entry>
 	<entry id="62">
 		<property name="string">Browse</property>
-		<property name="translation">Sfoglia...</property>
+		<property name="translation">Scegli</property>
 	</entry>
 	<entry id="63">
 		<property name="string">Select the folder in which the encoded files will be placed:</property>
-		<property name="translation">Selezionare la cartella in cui memorizzare i file:</property>
+		<property name="translation">Seleziona la cartella in cui posizionare i files trasformati:</property>
 	</entry>
 	<entry id="64">
 		<property name="string">Encoding</property>
-		<property name="translation">Codifica</property>
+		<property name="translation">Encoding</property>
 	</entry>
 	<entry id="65">
 		<property name="string">Author</property>
@@ -279,39 +279,39 @@
 	</entry>
 	<entry id="68">
 		<property name="string">Select language:</property>
-		<property name="translation">Scegliere la lingua:</property>
+		<property name="translation">Seleziona la lingua:</property>
 	</entry>
 	<entry id="69">
 		<property name="string">Active CD-ROM drive</property>
-		<property name="translation">Unità CD</property>
+		<property name="translation">CD-ROM Attivo</property>
 	</entry>
 	<entry id="70">
 		<property name="string">Ripper settings</property>
-		<property name="translation">Impostazioni estrazione dati audio</property>
+		<property name="translation">Impostazioni di ripping</property>
 	</entry>
 	<entry id="71">
 		<property name="string">Activate cdparanoia mode:</property>
-		<property name="translation">Attiva modalità Paranoia</property>
+		<property name="translation">Attiva modo cdparanoia:</property>
 	</entry>
 	<entry id="72">
 		<property name="string">Activate jitter correction</property>
-		<property name="translation">Attiva correzione Jitter</property>
+		<property name="translation">Attiva la correzione jitter</property>
 	</entry>
 	<entry id="73">
 		<property name="string">Swap left/right channel</property>
-		<property name="translation">Inverti canali destro e sinistro</property>
+		<property name="translation">Scambia canale left/right</property>
 	</entry>
 	<entry id="74">
 		<property name="string">Lock CD tray while ripping</property>
-		<property name="translation">Blocca cassetto CD</property>
+		<property name="translation">Blocca CD mentre Ã¨ in ripping</property>
 	</entry>
 	<entry id="75">
 		<property name="string">Use native NT SCSI library</property>
-		<property name="translation">Usa libreria nativa NT SCSI</property>
+		<property name="translation">Utilizza libreria NT SCSI</property>
 	</entry>
 	<entry id="76">
 		<property name="string">Overlap only</property>
-		<property name="translation">Solo overlap</property>
+		<property name="translation">Solo Overlap</property>
 	</entry>
 	<entry id="77">
 		<property name="string">No verify</property>
@@ -319,11 +319,11 @@
 	</entry>
 	<entry id="78">
 		<property name="string">No scratch repair</property>
-		<property name="translation">Nessuna correzione suono</property>
+		<property name="translation">Nessuna riparazione scratch</property>
 	</entry>
 	<entry id="79">
 		<property name="string">Full cdparanoia mode</property>
-		<property name="translation">Modalità completa Paranoia</property>
+		<property name="translation">Modo cdparanoia FULL</property>
 	</entry>
 	<entry id="80">
 		<property name="string">Bitrate</property>
@@ -331,7 +331,7 @@
 	</entry>
 	<entry id="81">
 		<property name="string">Copyright bit</property>
-		<property name="translation">Bit di Copyright</property>
+		<property name="translation">Copyright Bit</property>
 	</entry>
 	<entry id="82">
 		<property name="string">CRC</property>
@@ -339,7 +339,7 @@
 	</entry>
 	<entry id="83">
 		<property name="string">Original bit</property>
-		<property name="translation">Originale</property>
+		<property name="translation">Original Bit</property>
 	</entry>
 	<entry id="84">
 		<property name="string">Channels</property>
@@ -347,11 +347,11 @@
 	</entry>
 	<entry id="85">
 		<property name="string">Private bit</property>
-		<property name="translation">Privato</property>
+		<property name="translation">Bit Privato </property>
 	</entry>
 	<entry id="86">
 		<property name="string">Set Copyright bit</property>
-		<property name="translation">Imposta bit Copyright</property>
+		<property name="translation">Copyright bit</property>
 	</entry>
 	<entry id="87">
 		<property name="string">Enable CRC</property>
@@ -359,23 +359,23 @@
 	</entry>
 	<entry id="88">
 		<property name="string">Set Original bit</property>
-		<property name="translation">Imposta bit Originale</property>
+		<property name="translation">Original Bit</property>
 	</entry>
 	<entry id="89">
 		<property name="string">Dual channel encoding</property>
-		<property name="translation">Codifica canali stereo</property>
+		<property name="translation">Stereo Encoding</property>
 	</entry>
 	<entry id="90">
 		<property name="string">Set Private bit</property>
-		<property name="translation">Imposta bit Privato</property>
+		<property name="translation">Bit Privato</property>
 	</entry>
 	<entry id="91">
 		<property name="string">Encoder mode</property>
-		<property name="translation">Modalità encoder</property>
+		<property name="translation">Modo di codifica</property>
 	</entry>
 	<entry id="92">
 		<property name="string">Stereo mode</property>
-		<property name="translation">Modalità stereo</property>
+		<property name="translation">Modo stereo</property>
 	</entry>
 	<entry id="93">
 		<property name="string">Quantization</property>
@@ -383,15 +383,15 @@
 	</entry>
 	<entry id="94">
 		<property name="string">Downsampling ratio</property>
-		<property name="translation">Rapporto downsampling</property>
+		<property name="translation">Downsampling ratio</property>
 	</entry>
 	<entry id="95">
 		<property name="string">Predictor size</property>
-		<property name="translation">Predictor</property>
+		<property name="translation">Probabile grandezza</property>
 	</entry>
 	<entry id="96">
 		<property name="string">Enable lossless encoding</property>
-		<property name="translation">Attiva codifica lossless</property>
+		<property name="translation">Encoding senza perdite</property>
 	</entry>
 	<entry id="97">
 		<property name="string">Enable Joint Stereo</property>
@@ -407,19 +407,19 @@
 	</entry>
 	<entry id="100">
 		<property name="string">Number of preselection candidates:</property>
-		<property name="translation">Numero di preselezioni:</property>
+		<property name="translation">Numero delle preselezioni:</property>
 	</entry>
 	<entry id="101">
 		<property name="string">MPEG version</property>
-		<property name="translation">Versione MPEG</property>
+		<property name="translation">MPEG Version</property>
 	</entry>
 	<entry id="102">
 		<property name="string">AAC object type</property>
-		<property name="translation">Tipo oggetto AAC</property>
+		<property name="translation">AAC Oggetto Tipo</property>
 	</entry>
 	<entry id="103">
 		<property name="string">Allow Joint Stereo</property>
-		<property name="translation">Joint Stereo</property>
+		<property name="translation">Permetti il Joint Stereo</property>
 	</entry>
 	<entry id="104">
 		<property name="string">Temporal Noise Shaping</property>
@@ -427,27 +427,27 @@
 	</entry>
 	<entry id="105">
 		<property name="string">Use Temporal Noise Shaping</property>
-		<property name="translation">Usa Temporal Noise Shaping</property>
+		<property name="translation">Utilizza il Temporal Noise Shaping</property>
 	</entry>
 	<entry id="106">
 		<property name="string">Maximum bandwidth</property>
-		<property name="translation">Ampiezza massima</property>
+		<property name="translation">Massima larghezza di banda</property>
 	</entry>
 	<entry id="107">
 		<property name="string">Maximum AAC frequency bandwidth to use (Hz):</property>
-		<property name="translation">Frequenza AAC massima da utilizzare (in Hz):</property>
+		<property name="translation">Massima frequenza di banda AAC da usare in Hz:</property>
 	</entry>
 	<entry id="108">
 		<property name="string">Basic</property>
-		<property name="translation">Generale</property>
+		<property name="translation">Base</property>
 	</entry>
 	<entry id="109">
 		<property name="string">Misc</property>
-		<property name="translation">Varie</property>
+		<property name="translation">Altro</property>
 	</entry>
 	<entry id="110">
 		<property name="string">Audio processing</property>
-		<property name="translation">Elaborazione audio</property>
+		<property name="translation">Audio processing</property>
 	</entry>
 	<entry id="111">
 		<property name="string">Set bitrate:</property>
@@ -459,7 +459,7 @@
 	</entry>
 	<entry id="113">
 		<property name="string">Set quality:</property>
-		<property name="translation">Qualità:</property>
+		<property name="translation">Imposta:</property>
 	</entry>
 	<entry id="114">
 		<property name="string">worse</property>
@@ -471,7 +471,7 @@
 	</entry>
 	<entry id="116">
 		<property name="string">Auto</property>
-		<property name="translation">Automatica</property>
+		<property name="translation">Automatico</property>
 	</entry>
 	<entry id="117">
 		<property name="string">Stereo</property>
@@ -487,43 +487,43 @@
 	</entry>
 	<entry id="120">
 		<property name="string">VBR mode</property>
-		<property name="translation">Modalità VBR</property>
+		<property name="translation">Modo VBR</property>
 	</entry>
 	<entry id="121">
 		<property name="string">no VBR</property>
-		<property name="translation">no VBR</property>
+		<property name="translation">No VBR</property>
 	</entry>
 	<entry id="122">
 		<property name="string">VBR quality</property>
-		<property name="translation">Qualità VBR</property>
+		<property name="translation">QualitÃ  VBR</property>
 	</entry>
 	<entry id="123">
 		<property name="string">ABR target bitrate</property>
-		<property name="translation">Bitrate ABR</property>
+		<property name="translation">ABR target bitrate</property>
 	</entry>
 	<entry id="124">
 		<property name="string">VBR bitrate range</property>
-		<property name="translation">Bitrate variabile</property>
+		<property name="translation">VBR bitrate range</property>
 	</entry>
 	<entry id="125">
 		<property name="string">Set minimum VBR bitrate:</property>
-		<property name="translation">VBR minimo:</property>
+		<property name="translation">Imposta VBR Min:</property>
 	</entry>
 	<entry id="126">
 		<property name="string">Set maximum VBR bitrate:</property>
-		<property name="translation">VBR massimo:</property>
+		<property name="translation">Imposta VBR Max:</property>
 	</entry>
 	<entry id="127">
 		<property name="string">Control bits</property>
-		<property name="translation">Bit di controllo</property>
+		<property name="translation">Control bits</property>
 	</entry>
 	<entry id="128">
 		<property name="string">Stream format</property>
-		<property name="translation">Formato flusso audio</property>
+		<property name="translation">Formato Stream</property>
 	</entry>
 	<entry id="129">
 		<property name="string">Enforce strict ISO compliance</property>
-		<property name="translation">Forza conformità ISO</property>
+		<property name="translation">Costringi conformitÃ  ISO</property>
 	</entry>
 	<entry id="130">
 		<property name="string">Padding</property>
@@ -531,55 +531,55 @@
 	</entry>
 	<entry id="131">
 		<property name="string">Set padding type:</property>
-		<property name="translation">Tipo padding:</property>
+		<property name="translation">Imposta Padding:</property>
 	</entry>
 	<entry id="132">
 		<property name="string">pad no frames</property>
-		<property name="translation">Nessun frame</property>
+		<property name="translation">No Padding</property>
 	</entry>
 	<entry id="133">
 		<property name="string">pad all frames</property>
-		<property name="translation">Tutti i frame</property>
+		<property name="translation">Tutti i Frames</property>
 	</entry>
 	<entry id="134">
 		<property name="string">adjust padding</property>
-		<property name="translation">Regola padding</property>
+		<property name="translation">Aggiusta padding</property>
 	</entry>
 	<entry id="135">
 		<property name="string">Output sampling rate</property>
-		<property name="translation">Frequenza</property>
+		<property name="translation">Sampling rate di uscita</property>
 	</entry>
 	<entry id="136">
 		<property name="string">no resampling</property>
-		<property name="translation">No ricampionatura</property>
+		<property name="translation">no resampling</property>
 	</entry>
 	<entry id="137">
 		<property name="string">Highpass filter</property>
-		<property name="translation">Filtro Highpass</property>
+		<property name="translation">Highpass filter</property>
 	</entry>
 	<entry id="138">
 		<property name="string">Set Highpass frequency (Hz):</property>
-		<property name="translation">Frequenza (in Hz):</property>
+		<property name="translation">Freq. di Highpass in Hz:</property>
 	</entry>
 	<entry id="139">
 		<property name="string">Set Highpass width (Hz):</property>
-		<property name="translation">Ampiezza (in Hz):</property>
+		<property name="translation">Banda di Highpass in Hz:</property>
 	</entry>
 	<entry id="140">
 		<property name="string">Lowpass filter</property>
-		<property name="translation">Filtro Lowpass</property>
+		<property name="translation">filtro di Lowpass</property>
 	</entry>
 	<entry id="141">
 		<property name="string">Set Lowpass frequency (Hz):</property>
-		<property name="translation">Frequenza (in Hz):</property>
+		<property name="translation">Freq. di Lowpass in Hz:</property>
 	</entry>
 	<entry id="142">
 		<property name="string">Set Lowpass width (Hz):</property>
-		<property name="translation">Ampiezza (in Hz):</property>
+		<property name="translation">Banda di lowpass in Hz:</property>
 	</entry>
 	<entry id="143">
 		<property name="string">Misc settings</property>
-		<property name="translation">Varie</property>
+		<property name="translation">Altre impostazioni</property>
 	</entry>
 	<entry id="144">
 		<property name="string">Disable all filtering</property>
@@ -587,10 +587,10 @@
 	</entry>
 	<entry id="145">
 		<property name="string">MP3 Files</property>
-		<property name="translation">File audio MP3</property>
+		<property name="translation">MP3 Files</property>
 	</entry>
 	<entry id="146">
 		<property name="string">Ogg Vorbis Files</property>
-		<property name="translation">File audio Ogg Vorbis</property>
+		<property name="translation">Ogg Vorbis Files</property>
 	</entry>
 </LangFile>

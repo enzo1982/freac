@@ -88,7 +88,37 @@ SMOOTHInt bonkTranslator::GetSupportedLanguages()
 				if (version[0] == '0' && version[2] < '8' && version[3] == 0)	language->isOutOfDate = true;
 				else								language->isOutOfDate = false;
 
-				languages.AddEntry(language);
+				bool	 done = false;
+
+				for (int i = 0; i < languages.GetNOfEntries(); i++)
+				{
+					bonkEncLanguageInfo	*lang = languages.GetNthEntry(i);
+
+					for (int j = 0; j < max(language->language.Length(), lang->language.Length()); j++)
+					{
+						if (language->language[j] < lang->language[j])
+						{
+							languages.InsertEntryAtPos(i, language);
+
+							done = true;
+
+							break;
+						}
+						else if (language->language[j] > lang->language[j])
+						{
+							break;
+						}
+					}
+
+					if (i == languages.GetNOfEntries() - 1)
+					{
+						languages.AddEntry(language);
+
+						done = true;
+					}
+
+					if (done) break;
+				}
 			}
 
 			ReadStrings(doc, language);
