@@ -107,6 +107,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			String	 bak_filename = out_filename;
 
+			out_filename = String();
+
 			for (Int k = 0, b = 0; k < bak_filename.Length(); k++)
 			{
 				if (bak_filename[k] == '\"')			{ out_filename[k + b] = '\''; out_filename[k + ++b] = '\''; }
