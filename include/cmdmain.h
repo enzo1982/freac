@@ -20,11 +20,13 @@ using namespace smooth::GUI;
 class bonkEncCommandline : public bonkEnc
 {
 	private:
-		Bool	 ScanForParameter(String, String *);
-		Void	 ScanForFiles(Array<String> *);
+		Array<String>	&args; 
+
+		Bool		 ScanForParameter(String, String *);
+		Void		 ScanForFiles(Array<String> *);
 	public:
-			 bonkEncCommandline();
-			~bonkEncCommandline();
+				 bonkEncCommandline(Array<String> &);
+				~bonkEncCommandline();
 };
 
 #endif

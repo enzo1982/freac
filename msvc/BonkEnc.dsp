@@ -68,7 +68,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /Gm /GX /ZI /Od /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC /YX /FD /GZ /c
+# ADD CPP /nologo /Gm /GX /ZI /Od /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC /D "FLAC__NO_DLL" /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
@@ -111,6 +111,10 @@ SOURCE="..\src\input\filter-in-cdrip.cpp"
 # Begin Source File
 
 SOURCE="..\src\input\filter-in-faad2.cpp"
+# End Source File
+# Begin Source File
+
+SOURCE="..\src\input\filter-in-flac.cpp"
 # End Source File
 # Begin Source File
 
@@ -159,6 +163,10 @@ SOURCE="..\src\output\filter-out-faac.cpp"
 # Begin Source File
 
 SOURCE="..\src\output\filter-out-lame.cpp"
+# End Source File
+# Begin Source File
+
+SOURCE="..\src\output\filter-out-mp4.cpp"
 # End Source File
 # Begin Source File
 
@@ -352,6 +360,10 @@ SOURCE="..\include\input\filter-in-faad2.h"
 # End Source File
 # Begin Source File
 
+SOURCE="..\include\input\filter-in-flac.h"
+# End Source File
+# Begin Source File
+
 SOURCE="..\include\input\filter-in-lame.h"
 # End Source File
 # Begin Source File
@@ -397,6 +409,10 @@ SOURCE="..\include\output\filter-out-faac.h"
 # Begin Source File
 
 SOURCE="..\include\output\filter-out-lame.h"
+# End Source File
+# Begin Source File
+
+SOURCE="..\include\output\filter-out-mp4.h"
 # End Source File
 # Begin Source File
 

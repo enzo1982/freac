@@ -33,6 +33,7 @@ History
 		- added support for online program updates
 		- fixes for compiling with GCC 3.4
 		- speed optimizations for most encoders
+		- added support for spaces in filenames passed to BEcmd
 
 	Version 1.0 beta 2 (February 2004)
 

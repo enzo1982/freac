@@ -33,6 +33,7 @@ Geschichte
 		- Unterstützung für Online-Programmupdates hinzugefügt
 		- Anpassungen für Kompilierung mit GCC 3.4
 		- Geschwindigkeitsoptimierungen für die meisten Encoder
+		- Unterstützung für Dateinamen mit Leerzeichen für BEcmd
 
 	Version 1.0 beta 2 (Februar 2004)
 

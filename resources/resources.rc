@@ -19,7 +19,7 @@ BEGIN
             VALUE	"InternalName",		"BONKENC\0"
             VALUE	"OriginalFilename",	"bonkenc.exe\0"
             VALUE	"ProductName",		"BonkEnc\0"
-            VALUE	"ProductVersion",	"1.0 beta 2\0"
+            VALUE	"ProductVersion",	"1.0 beta 3\0"
             VALUE	"LegalCopyright",	"Copyright © 2001-2004 Robert Kausch\0"
             VALUE	"Official website",	"http://www.bonkenc.org/\0"
          END

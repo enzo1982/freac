@@ -9,10 +9,11 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <smooth/main.h>
+#include <smooth/args.h>
 #include <cmdmain.h>
 #include <console.h>
 
-Int smooth::Main()
+Int smooth::Main(Array<String> &args)
 {
 	debug_out = new bonkEncDebug();
 
@@ -22,7 +23,7 @@ Int smooth::Main()
 	debug_out->OutputLine("=========================================");
 	debug_out->OutputLine("");
 
-	bonkEncCommandline	*app = new bonkEncCommandline();
+	bonkEncCommandline	*app = new bonkEncCommandline(args);
 
 	delete app;
 
@@ -36,19 +37,19 @@ Int smooth::Main()
 	return 0;
 }
 
-bonkEncCommandline::bonkEncCommandline()
+bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(arguments)
 {
 	currentConfig->enable_console = true;
 	currentConfig->appMain = this;
 
-	joblist = new ListBox(Point(0, 0), Size(0, 0));
+	joblist	= new ListBox(Point(0, 0), Size(0, 0));
 
-	bool		 quiet = ScanForParameter("-q", NULL);
+	bool		 quiet		= ScanForParameter("-q", NULL);
 	Array<String>	 files;
-	String		 encoder = "BONK";
-	String		 helpenc = "";
-	String		 outdir = ".";
-	String		 outfile = "";
+	String		 encoder	= "BONK";
+	String		 helpenc	= "";
+	String		 outdir		= ".";
+	String		 outfile	= "";
 
 	ScanForParameter("-e", &encoder);
 	ScanForParameter("-h", &helpenc);
@@ -207,83 +208,29 @@ bonkEncCommandline::~bonkEncCommandline()
 
 Bool bonkEncCommandline::ScanForParameter(String param, String *option)
 {
-	for (int i = 0; i < szCmdLine.Length(); i++)
+	for (Int i = 0; i < args.GetNOfEntries(); i++)
 	{
-		bool	 gotit = true;
-
-		for (int j = 0; j < param.Length(); j++)
+		if (args.GetNthEntry(i) == param)
 		{
-			if (szCmdLine[i + j] != param[j])
-			{
-				gotit = false;
+			if (option != NULL) *option = args.GetNthEntry(i + 1);
 
-				break;
-			}
-		}
-
-		if (gotit)
-		{
-			if (option != NULL)
-			{
-				*option = "";
-
-				int	 sval = 0;
-
-				for (sval = 0; szCmdLine[i + param.Length() + sval] == ' '; sval++);
-
-				for (int j = sval; j > 0; j++)
-				{
-					if ((i + param.Length() + j) >= szCmdLine.Length()) break;
-					if (szCmdLine[i + param.Length() + j] == ' ') break;
-
-					(*option)[j - sval] = szCmdLine[i + param.Length() + j];
-				}
-			}
-
-			return true;
+			return True;
 		}
 	}
 
-	return false;
+	return False;
 }
 
 Void bonkEncCommandline::ScanForFiles(Array<String> *files)
 {
 	String	 param;
 	String	 prevParam;
-	bool	 done = true;
-	int	 len = szCmdLine.Length();
 
-	for (int i = 0; i < len; i++)
+	for (Int i = 0; i < args.GetNOfEntries(); i++)
 	{
-		if (done)
-		{
-			prevParam = param;
+		prevParam	= param;
+		param		= args.GetNthEntry(i);
 
-			param = "";
-
-			done = false;
-		}
-
-		if (szCmdLine[i] != ' ')
-		{
-			for (int j = 0; j < szCmdLine.Length() - i; j++)
-			{
-				if (szCmdLine[i + j] == ' ' || i + j == len - 1)
-				{
-					if (szCmdLine[i + j] != ' ') param[j] = szCmdLine[i + j];
-
-					done = true;
-
-					i += j;
-
-					break;
-				}
-
-				param[j] = szCmdLine[i + j];
-			}
-
-			if (param[0] != '-' && (prevParam[0] != '-' || prevParam == "-q" || prevParam == "--console")) (*files).AddEntry(param);
-		}
+		if (param[0] != '-' && (prevParam[0] != '-' || prevParam == "-q")) (*files).AddEntry(param);
 	}
 }
