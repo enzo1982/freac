@@ -33,8 +33,6 @@ FilterInVORBIS::~FilterInVORBIS()
 		ex_vorbis_dsp_clear(&vd);
 		ex_vorbis_comment_clear(&vc);
 		ex_vorbis_info_clear(&vi);
-
-		delete [] buffer;
 	}
 
 	ex_ogg_sync_clear(&oy);
@@ -194,6 +192,7 @@ bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 	nFormat.order = BYTE_INTEL;
 	nFormat.bits = 16;
 	nFormat.trackInfo = NIL;
+	nFormat.fileSize = f_in->Size();
 
 	ogg_sync_state		 foy;
 	ogg_stream_state	 fos;
@@ -279,6 +278,42 @@ bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 					nFormat.trackInfo->artist[p] = fvc.user_comments[j][p + 7];
 				}
 			}
+			else if (String("ALBUM").CompareN(fvc.user_comments[j], 5) == 0)
+			{
+				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
+				{
+					nFormat.trackInfo->album[p] = fvc.user_comments[j][p + 6];
+				}
+			}
+			else if (String("GENRE").CompareN(fvc.user_comments[j], 5) == 0)
+			{
+				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
+				{
+					nFormat.trackInfo->genre[p] = fvc.user_comments[j][p + 6];
+				}
+			}
+			else if (String("DATE").CompareN(fvc.user_comments[j], 4) == 0)
+			{
+				String	 year;
+
+				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
+				{
+					year[p] = fvc.user_comments[j][p + 5];
+				}
+
+				nFormat.trackInfo->year = year.ToInt();
+			}
+			else if (String("TRACKNUMBER").CompareN(fvc.user_comments[j], 11) == 0)
+			{
+				String	 track;
+
+				for (Int p = 0; p < fvc.comment_lengths[j] - 12; p++)
+				{
+					track[p] = fvc.user_comments[j][p + 12];
+				}
+
+				nFormat.trackInfo->track = track.ToInt();
+			}
 		}
 
 		if (nFormat.trackInfo->artist.Length() != 0 || nFormat.trackInfo->title.Length() != 0)
@@ -296,8 +331,6 @@ bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 	ex_ogg_sync_clear(&foy);
 
 	delete f_in;
-
-	delete [] fbuffer;
 
 	return nFormat;
 }

@@ -24,12 +24,12 @@ History
 		- upgraded to CDRip v117 to fix some ASPI issues
 		- upgraded LAME to version 3.93.1
 		- upgraded FAAC to version 1.14
+		- greatly improved joblist and other GUI improvements
 		- some minor enhancements and bugfixes
 
 		Still to be done, but definitely in 0.9:
 
 		- full freedb support
-		- greatly improved joblist
 
 	Version 0.8 (November 2002)
 

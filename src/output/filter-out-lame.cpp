@@ -291,9 +291,9 @@ bool FilterOutLAME::Activate()
 		ID3_Frame	*year = new ID3_Frame(ID3FID_YEAR);
 		ID3_Field	&year_text = year->Field(ID3FN_TEXT);
 
-		if (format->trackInfo->year != NIL && format->trackInfo->year != "")
+		if (format->trackInfo->year > 0)
 		{
-			year_text.Set(format->trackInfo->year);
+			year_text.Set(String::IntToString(format->trackInfo->year));
 
 			tag->AddFrame(year);
 		}

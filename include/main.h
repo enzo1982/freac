@@ -33,35 +33,57 @@ typedef unsigned long  uint32;
 typedef unsigned short uint16;
 typedef unsigned char  uint8;
 
-typedef struct
+class bonkTrackInfo
 {
-	Int	 track;
-	Int	 drive;
+	public:
+			 bonkTrackInfo()
+			{
+				track = -1;
+				drive = -1;
 
-	Bool	 cdText;
-	String	 artist;
-	String	 title;
-	String	 album;
-	String	 comment;
-	String	 genre;
-	String	 year;
+				cdText = False;
+				year = -1;
+			}
 
-	String	 outfile;
-	String	 origFilename;
-}
-bonkTrackInfo;
+		Int	 track;
+		Int	 drive;
 
-typedef struct
+		Bool	 cdText;
+		String	 artist;
+		String	 title;
+		String	 album;
+		String	 comment;
+		String	 genre;
+		Int	 year;
+
+		String	 outfile;
+		String	 origFilename;
+};
+
+class bonkFormatInfo
 {
-	bonkTrackInfo	*trackInfo;
+	public:
+				 bonkFormatInfo()
+				{
+					trackInfo = NIL;
 
-	Int		 channels;
-	Int		 rate;
-	Int		 bits;
-	Int		 length;
-	Int		 order;
-}
-bonkFormatInfo;
+					channels = 0;
+					rate = 0;
+					bits = 0;
+					length = 0;
+					fileSize = -1;
+					order = BYTE_INTEL;
+				}
+
+		bonkTrackInfo	*trackInfo;
+
+		Int		 channels;
+		Int		 rate;
+		Int		 bits;
+		Int		 length;
+		Int		 fileSize;
+		Int		 order;
+};
 
 // bonkEnc Application class definition
 
@@ -72,6 +94,8 @@ class bonkEnc : public Application
 		Menu			*menu_options;
 		Menu			*menu_addsubmenu;
 		Menu			*menu_encode;
+		Menu			*menu_drives;
+		Menu			*menu_seldrive;
 
 		Menubar			*mainWnd_menubar;
 		Menubar			*mainWnd_iconbar;
@@ -96,8 +120,8 @@ class bonkEnc : public Application
 		EditBox			*info_edit_album;
 		Text			*info_text_track;
 		EditBox			*info_edit_track;
-		Text			*info_text_date;
-		EditBox			*info_edit_date;
+		Text			*info_text_year;
+		EditBox			*info_edit_year;
 		Text			*info_text_genre;
 		ComboBox		*info_combo_genre;
 
@@ -178,6 +202,7 @@ class bonkEnc : public Application
 		Void			 RemoveFile();
 		Void			 ClearList();
 		Void			 ReadCD();
+		Void			 ReadSpecificCD();
 		Array<bonkTrackInfo *>	*GetCDDBData();
 		Void			 ConfigureEncoder();
 		Void			 ConfigureGeneral();
@@ -187,6 +212,7 @@ class bonkEnc : public Application
 		Bool			 ExitProc();
 		Void			 DrawProc();
 		Void			 ShowHideTitleInfo();
+		Void			 SelectJoblistEntry();
 
 		Bool			 SetLanguage(String);
 	public:

@@ -70,6 +70,7 @@ bonkFormatInfo FilterInBONK::GetFileInfo(S::String inFile)
 	nFormat.order = BYTE_INTEL;
 	nFormat.bits = 16;
 	nFormat.trackInfo = NIL;
+	nFormat.fileSize = in->Size();
 
 	ex_bonk_close_decoder(decoder);
 

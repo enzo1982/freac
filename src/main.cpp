@@ -165,6 +165,8 @@ bonkEnc::bonkEnc()
 	menu_options		= new Menu();
 	menu_addsubmenu		= new Menu();
 	menu_encode		= new Menu();
+	menu_drives		= new Menu();
+	menu_seldrive		= new Menu();
 
 	pos.x = 91;
 	pos.y = -22;
@@ -219,6 +221,7 @@ bonkEnc::bonkEnc()
 	size.cy = currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0);
 
 	joblist			= new ListBox(pos, size);
+	joblist->onClick.Connect(&bonkEnc::SelectJoblistEntry, this);
 	joblist->AddTab(i18n->TranslateString("Title"));
 	joblist->AddTab(i18n->TranslateString("Track"), 50);
 	joblist->AddTab(i18n->TranslateString("Length"), 80);
@@ -306,17 +309,17 @@ bonkEnc::bonkEnc()
 	pos.x += (7 + info_edit_track->GetObjectProperties()->size.cx);
 	pos.y -= 3;
 
-	info_text_date		= new Text(i18n->TranslateString("Date").Append(":"), pos);
-	info_text_date->SetOrientation(OR_LOWERLEFT);
+	info_text_year		= new Text(i18n->TranslateString("Year").Append(":"), pos);
+	info_text_year->SetOrientation(OR_LOWERLEFT);
 
-	pos.x += (7 + info_text_date->GetObjectProperties()->textSize.cx);
+	pos.x += (7 + info_text_year->GetObjectProperties()->textSize.cx);
 	pos.y += 3;
-	size.cx = 61;
+	size.cx = 31;
 
-	info_edit_date		= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
-	info_edit_date->SetOrientation(OR_LOWERLEFT);
+	info_edit_year		= new EditBox("", pos, size, EDB_NUMERIC, 0);
+	info_edit_year->SetOrientation(OR_LOWERLEFT);
 
-	pos.x += (7 + info_edit_date->GetObjectProperties()->size.cx);
+	pos.x += (7 + info_edit_year->GetObjectProperties()->size.cx);
 	pos.y -= 3;
 
 	info_text_genre		= new Text(i18n->TranslateString("Genre").Append(":"), pos);
@@ -324,7 +327,7 @@ bonkEnc::bonkEnc()
 
 	pos.x += (7 + info_text_genre->GetObjectProperties()->textSize.cx);
 	pos.y += 3;
-	size.cx = 120;
+	size.cx = 130;
 
 	info_combo_genre	= new ComboBox(pos, size);
 	info_combo_genre->SetOrientation(OR_LOWERLEFT);
@@ -480,16 +483,16 @@ bonkEnc::bonkEnc()
 	info_combo_genre->AddEntry("Trip-Hop");
 	info_combo_genre->AddEntry("Vocal");
 
-	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 247 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(234 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_date->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
-	info_edit_track->SetMetrics(Point(currentConfig->wndSize.cx - 247 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
-	info_text_date->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + 32, info_text_date->GetObjectProperties()->pos.y), info_text_date->GetObjectProperties()->size);
-	info_edit_date->SetMetrics(Point(info_text_date->GetObjectProperties()->pos.x + info_text_date->GetObjectProperties()->textSize.cx + 7, info_edit_date->GetObjectProperties()->pos.y), info_edit_date->GetObjectProperties()->size);
-	info_text_genre->SetMetrics(Point(info_edit_date->GetObjectProperties()->pos.x + 68, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
+	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(214 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
+	info_edit_track->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
+	info_text_year->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + 32, info_text_year->GetObjectProperties()->pos.y), info_text_year->GetObjectProperties()->size);
+	info_edit_year->SetMetrics(Point(info_text_year->GetObjectProperties()->pos.x + info_text_year->GetObjectProperties()->textSize.cx + 7, info_edit_year->GetObjectProperties()->pos.y), info_edit_year->GetObjectProperties()->size);
+	info_text_genre->SetMetrics(Point(info_edit_year->GetObjectProperties()->pos.x + 38, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
 	info_text_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
-	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 307 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
-	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 307 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
-	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 133, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
+	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
+	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
+	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
 
 	pos.y = 99;
 	pos.x = maxTextLength + 14;
@@ -555,6 +558,18 @@ bonkEnc::bonkEnc()
 	menu_options->AddEntry(i18n->TranslateString("General settings..."))->onClick.Connect(&bonkEnc::ConfigureGeneral, this);
 	menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."))->onClick.Connect(&bonkEnc::ConfigureEncoder, this);
 
+	if (currentConfig->enable_cdrip)
+	{
+		menu_options->AddEntry();
+
+		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
+		{
+			menu_seldrive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &currentConfig->cdrip_activedrive, j);
+		}
+
+		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
+	}
+
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)..."))->onClick.Connect(&bonkEnc::AddFile, this);
 
 	if (currentConfig->enable_cdrip)
@@ -582,7 +597,13 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
+		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
+		{
+			entry = menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
+			entry->onClick.Connect(&bonkEnc::ReadSpecificCD, this);
+		}
+
+		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), menu_drives);
 		entry->onClick.Connect(&bonkEnc::ReadCD, this);
 		entry->SetStatusText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
@@ -631,8 +652,8 @@ bonkEnc::bonkEnc()
 	mainWnd->RegisterObject(info_edit_album);
 	mainWnd->RegisterObject(info_text_track);
 	mainWnd->RegisterObject(info_edit_track);
-	mainWnd->RegisterObject(info_text_date);
-	mainWnd->RegisterObject(info_edit_date);
+	mainWnd->RegisterObject(info_text_year);
+	mainWnd->RegisterObject(info_edit_year);
 	mainWnd->RegisterObject(info_text_genre);
 	mainWnd->RegisterObject(info_combo_genre);
 	mainWnd->RegisterObject(enc_filename);
@@ -666,8 +687,8 @@ bonkEnc::bonkEnc()
 		info_edit_album->Hide();
 		info_text_track->Hide();
 		info_edit_track->Hide();
-		info_text_date->Hide();
-		info_edit_date->Hide();
+		info_text_year->Hide();
+		info_edit_year->Hide();
 		info_text_genre->Hide();
 		info_combo_genre->Hide();
 	}
@@ -712,8 +733,8 @@ bonkEnc::~bonkEnc()
 		mainWnd->UnregisterObject(info_edit_album);
 		mainWnd->UnregisterObject(info_text_track);
 		mainWnd->UnregisterObject(info_edit_track);
-		mainWnd->UnregisterObject(info_text_date);
-		mainWnd->UnregisterObject(info_edit_date);
+		mainWnd->UnregisterObject(info_text_year);
+		mainWnd->UnregisterObject(info_edit_year);
 		mainWnd->UnregisterObject(info_text_genre);
 		mainWnd->UnregisterObject(info_combo_genre);
 		mainWnd->UnregisterObject(enc_filename);
@@ -752,8 +773,8 @@ bonkEnc::~bonkEnc()
 		delete info_edit_album;
 		delete info_text_track;
 		delete info_edit_track;
-		delete info_text_date;
-		delete info_edit_date;
+		delete info_text_year;
+		delete info_edit_year;
 		delete info_text_genre;
 		delete info_combo_genre;
 		delete enc_filename;
@@ -772,6 +793,8 @@ bonkEnc::~bonkEnc()
 		delete menu_options;
 		delete menu_addsubmenu;
 		delete menu_encode;
+		delete menu_drives;
+		delete menu_seldrive;
 		delete hyperlink;
 	}
 
@@ -826,22 +849,22 @@ Void bonkEnc::DrawProc()
 		info_edit_album->Hide();
 		info_text_track->Hide();
 		info_edit_track->Hide();
-		info_text_date->Hide();
-		info_edit_date->Hide();
+		info_text_year->Hide();
+		info_edit_year->Hide();
 		info_text_genre->Hide();
 		info_combo_genre->Hide();
 	}
 
-	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 247 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(234 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_date->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
-	info_edit_track->SetMetrics(Point(currentConfig->wndSize.cx - 247 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
-	info_text_date->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + 32, info_text_date->GetObjectProperties()->pos.y), info_text_date->GetObjectProperties()->size);
-	info_edit_date->SetMetrics(Point(info_text_date->GetObjectProperties()->pos.x + info_text_date->GetObjectProperties()->textSize.cx + 7, info_edit_date->GetObjectProperties()->pos.y), info_edit_date->GetObjectProperties()->size);
-	info_text_genre->SetMetrics(Point(info_edit_date->GetObjectProperties()->pos.x + 68, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
+	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(214 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
+	info_edit_track->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
+	info_text_year->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + 32, info_text_year->GetObjectProperties()->pos.y), info_text_year->GetObjectProperties()->size);
+	info_edit_year->SetMetrics(Point(info_text_year->GetObjectProperties()->pos.x + info_text_year->GetObjectProperties()->textSize.cx + 7, info_edit_year->GetObjectProperties()->pos.y), info_edit_year->GetObjectProperties()->size);
+	info_text_genre->SetMetrics(Point(info_edit_year->GetObjectProperties()->pos.x + 38, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
 	info_text_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
-	info_edit_artist->SetMetrics(info_edit_artist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 307 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
-	info_edit_album->SetMetrics(info_edit_album->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 307 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
-	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 133, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
+	info_edit_artist->SetMetrics(info_edit_artist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
+	info_edit_album->SetMetrics(info_edit_album->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
+	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
 
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), Math::Max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
 
@@ -862,8 +885,8 @@ Void bonkEnc::DrawProc()
 		info_edit_album->Show();
 		info_text_track->Show();
 		info_edit_track->Show();
-		info_text_date->Show();
-		info_edit_date->Show();
+		info_text_year->Show();
+		info_edit_year->Show();
 		info_text_genre->Show();
 		info_combo_genre->Show();
 	}
@@ -977,6 +1000,23 @@ Void bonkEnc::ConfigureGeneral()
 	edb_outdir->SetText(currentConfig->enc_outdir);
 }
 
+Void bonkEnc::ReadSpecificCD()
+{
+	Int	 driveID = menu_drives->GetLastClickedEntry();
+
+	for (Int i = 0; i < menu_drives->GetNOfEntries(); i++)
+	{
+		if (menu_drives->entries.GetNthEntry(i)->id == driveID)
+		{
+			currentConfig->cdrip_activedrive = i;
+
+			break;
+		}
+	}
+
+	ReadCD();
+}
+
 Void bonkEnc::ReadCD()
 {
 	if (encoding)
@@ -1047,7 +1087,7 @@ Void bonkEnc::ReadCD()
 				trackInfo->title	= cdText.GetEntry(entry.btTrackNumber);
 				trackInfo->album	= cdText.GetEntry(100);
 				trackInfo->genre	= "Pop";
-				trackInfo->year		= String::IntToString(systime.wYear);
+				trackInfo->year		= systime.wYear;
 
 				sa_trackinfo.AddEntry(trackInfo);
 			}
@@ -1145,18 +1185,18 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 		array = new Array<bonkTrackInfo *>;
 
-		for (int j = 0; j < result.Length();)
+		for (Int j = 0; j < result.Length();)
 		{
-			for (int i = 0; i >= 0; i++, j++)
+			for (Int i = 0; i >= 0; i++, j++)
 			{
 				if (result[j] == '\n' || result[j] == 0)	{ cLine[i] = 0; j++; break; }
 				else						cLine[i] = result[j];
 			}
 
-			if (!cLine.CompareN("DTITLE", 6))
+			if (cLine.CompareN("DTITLE", 6) == 0)
 			{
 				bonkTrackInfo	*info = new bonkTrackInfo;
-				int		 k;
+				Int		 k;
 
 				for (k = 7; k >= 0; k++)
 				{
@@ -1164,29 +1204,32 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 					else									info->artist[k - 7] = cLine[k];
 				}
 
-				for (int l = k + 3; l < cLine.Length(); l++) info->album[l - k - 3] = cLine[l];
+				for (Int l = k + 3; l < cLine.Length(); l++) info->album[l - k - 3] = cLine[l];
 
 				info->track = -1;
 
 				array->AddEntry(info);
 			}
-			else if (!cLine.CompareN("DGENRE", 6))
+			else if (cLine.CompareN("DGENRE", 6) == 0)
 			{
 				bonkTrackInfo	*info = array->GetEntry(0);
 
-				for (int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
+				for (Int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
 			}
-			else if (!cLine.CompareN("DYEAR", 5))
+			else if (cLine.CompareN("DYEAR", 5) == 0)
 			{
 				bonkTrackInfo	*info = array->GetEntry(0);
+				String		 year;
 
-				for (int l = 6; l < cLine.Length(); l++) info->year[l - 6] = cLine[l];
+				for (Int l = 6; l < cLine.Length(); l++) year[l - 6] = cLine[l];
+
+				info->year = year.ToInt();
 			}
-			else if (!cLine.CompareN("TTITLE", 6))
+			else if (cLine.CompareN("TTITLE", 6) == 0)
 			{
 				bonkTrackInfo	*info = new bonkTrackInfo;
 				String		 track;
-				int		 k;
+				Int		 k;
 
 				for (k = 6; k >= 0; k++)
 				{
@@ -1194,7 +1237,7 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 					else			track[k - 6] = cLine[k];
 				}
 
-				for (int l = k + 1; l < cLine.Length(); l++) info->title[l - k - 1] = cLine[l];
+				for (Int l = k + 1; l < cLine.Length(); l++) info->title[l - k - 1] = cLine[l];
 
 				info->track = track.ToInt() + 1;
 
@@ -1235,8 +1278,8 @@ Void bonkEnc::ShowHideTitleInfo()
 		info_edit_album->Hide();
 		info_text_track->Hide();
 		info_edit_track->Hide();
-		info_text_date->Hide();
-		info_edit_date->Hide();
+		info_text_year->Hide();
+		info_edit_year->Hide();
 		info_text_genre->Hide();
 		info_combo_genre->Hide();
 	}
@@ -1261,8 +1304,8 @@ Void bonkEnc::ShowHideTitleInfo()
 		info_edit_album->Show();
 		info_text_track->Show();
 		info_edit_track->Show();
-		info_text_date->Show();
-		info_edit_date->Show();
+		info_text_year->Show();
+		info_edit_year->Show();
 		info_text_genre->Show();
 		info_combo_genre->Show();
 	}
@@ -1360,8 +1403,8 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 		info_edit_album->Hide();
 		info_text_track->Hide();
 		info_edit_track->Hide();
-		info_text_date->Hide();
-		info_edit_date->Hide();
+		info_text_year->Hide();
+		info_edit_year->Hide();
 		info_text_genre->Hide();
 		info_combo_genre->Hide();
 	}
@@ -1370,19 +1413,19 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	info_text_album->SetText(i18n->TranslateString("Album").Append(":"));
 	info_text_title->SetText(i18n->TranslateString("Title").Append(":"));
 	info_text_track->SetText(i18n->TranslateString("Track").Append(":"));
-	info_text_date->SetText(i18n->TranslateString("Date").Append(":"));
+	info_text_year->SetText(i18n->TranslateString("Year").Append(":"));
 	info_text_genre->SetText(i18n->TranslateString("Genre").Append(":"));
 
-	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 247 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(234 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_date->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
-	info_edit_track->SetMetrics(Point(currentConfig->wndSize.cx - 247 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
-	info_text_date->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + 32, info_text_date->GetObjectProperties()->pos.y), info_text_date->GetObjectProperties()->size);
-	info_edit_date->SetMetrics(Point(info_text_date->GetObjectProperties()->pos.x + info_text_date->GetObjectProperties()->textSize.cx + 7, info_edit_date->GetObjectProperties()->pos.y), info_edit_date->GetObjectProperties()->size);
-	info_text_genre->SetMetrics(Point(info_edit_date->GetObjectProperties()->pos.x + 68, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
+	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(214 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
+	info_edit_track->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
+	info_text_year->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + 32, info_text_year->GetObjectProperties()->pos.y), info_text_year->GetObjectProperties()->size);
+	info_edit_year->SetMetrics(Point(info_text_year->GetObjectProperties()->pos.x + info_text_year->GetObjectProperties()->textSize.cx + 7, info_edit_year->GetObjectProperties()->pos.y), info_edit_year->GetObjectProperties()->size);
+	info_text_genre->SetMetrics(Point(info_edit_year->GetObjectProperties()->pos.x + 38, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
 	info_text_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
 	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
-	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 307 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
-	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 307 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_date->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
-	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 133, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
+	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_artist->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
+	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 287 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
+	info_combo_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
 
 	if (currentConfig->showTitleInfo)
 	{
@@ -1394,8 +1437,8 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 		info_edit_album->Show();
 		info_text_track->Show();
 		info_edit_track->Show();
-		info_text_date->Show();
-		info_edit_date->Show();
+		info_text_year->Show();
+		info_edit_year->Show();
 		info_text_genre->Show();
 		info_combo_genre->Show();
 	}

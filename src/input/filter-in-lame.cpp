@@ -105,6 +105,7 @@ bonkFormatInfo FilterInLAME::GetFileInfo(S::String inFile)
 	nFormat.order = BYTE_INTEL;
 	nFormat.bits = 16;
 	nFormat.trackInfo = NIL;
+	nFormat.fileSize = f_in->Size();
 
 	Int	 size = 4096;
 

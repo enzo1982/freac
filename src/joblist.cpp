@@ -194,7 +194,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 			trackInfo->title	= cdText.GetEntry(trackNumber);
 			trackInfo->album	= cdText.GetEntry(100);
 			trackInfo->genre	= "Pop";
-			trackInfo->year		= String::IntToString(systime.wYear);
+			trackInfo->year		= systime.wYear;
 
 			sa_trackinfo.AddEntry(trackInfo);
 		}
@@ -227,6 +227,9 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 	{
 		InputFilter	*filter_in = NIL;
 		bonkTrackInfo	*trackInfo = NIL;
+
+		String	 length;
+		String	 fileSize;
 
 		if (extension == ".mp3" || extension == ".MP3")
 		{
@@ -266,14 +269,54 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 		if (filter_in != NIL)
 		{
-			trackInfo = filter_in->GetFileInfo(file).trackInfo;
+			bonkFormatInfo	 format = filter_in->GetFileInfo(file);
+
+			trackInfo = format.trackInfo;
+
+			if (format.fileSize > 0)
+			{
+				String	 fSize = String::IntToString(format.fileSize);
+				String	 separator;
+				char	*buffer_a = new char [256];
+				wchar_t	*buffer_w = new wchar_t [256];
+
+				if (Setup::enableUnicode)	GetLocaleInfoW(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_w, 256);
+				else				GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_a, 256);
+
+				if (Setup::enableUnicode)	separator = buffer_w;
+				else				separator = buffer_a;
+
+				delete [] buffer_a;
+				delete [] buffer_w;
+
+				Int	 totalSeparators = Int((fSize.Length() - 1) / 3) * separator.Length();
+				Int	 doneSeparators = 0;
+				Int	 groupCount = 3 - fSize.Length() % 3;
+
+				for (int i = 0; i < fSize.Length() + totalSeparators; i++)
+				{
+					if (groupCount == 3)	{ fileSize.Append(separator); doneSeparators += separator.Length(); }
+					else			fileSize[i] = fSize[i - doneSeparators];
+
+					if (++groupCount == 4) groupCount = 0;
+				}
+			}
+
+			if (format.length > 0)	length = String::IntToString(Math::Floor(format.length / (format.rate * format.channels) / 60)).Append(":").Append(String::IntToString(format.length / (format.rate * format.channels) % 60));
+			else			length = "?";
 
 			delete filter_in;
 		}
 
 		if (trackInfo != NIL)
 		{
-			sa_joblist.AddEntry(String(trackInfo->artist).Append(" - ").Append(trackInfo->title), joblist->AddEntry(String(trackInfo->artist).Append(" - ").Append(trackInfo->title))->code);
+			String	 jlEntry = String(trackInfo->artist).Append(" - ")
+					  .Append(trackInfo->title).Append("\t")
+					  .Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::IntToString(trackInfo->track)) : String::IntToString(trackInfo->track)) : String("")).Append("\t")
+					  .Append(length).Append("\t")
+					  .Append(fileSize);
+
+			sa_joblist.AddEntry(jlEntry, joblist->AddEntry(jlEntry)->code);
 		}
 		else
 		{
@@ -311,6 +354,13 @@ Void bonkEnc::RemoveFile()
 		joblist->RemoveEntry(joblist->GetSelectedEntry());
 
 		txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+
+		info_edit_artist->SetText("");
+		info_edit_title->SetText("");
+		info_edit_album->SetText("");
+		info_edit_track->SetText("");
+		info_edit_year->SetText("");
+		info_combo_genre->SelectEntry(0);
 	}
 	else
 	{
@@ -333,4 +383,41 @@ Void bonkEnc::ClearList()
 	joblist->Cleanup();
 
 	if (!currentConfig->enable_console) txt_joblist->SetText(String("0").Append(i18n->TranslateString(" file(s) in joblist:")));
+
+	info_edit_artist->SetText("");
+	info_edit_title->SetText("");
+	info_edit_album->SetText("");
+	info_edit_track->SetText("");
+	info_edit_year->SetText("");
+	info_combo_genre->SelectEntry(0);
+}
+
+Void bonkEnc::SelectJoblistEntry()
+{
+	bonkTrackInfo	*trackInfo = sa_trackinfo.GetEntry(joblist->GetSelectedEntry());
+
+	info_edit_artist->SetText(trackInfo->artist);
+	info_edit_title->SetText(trackInfo->title);
+	info_edit_album->SetText(trackInfo->album);
+
+	info_edit_track->SetText("");
+
+	if (trackInfo->track > 0 && trackInfo->track < 10)	info_edit_track->SetText(String("0").Append(String::IntToString(trackInfo->track)));
+	else if (trackInfo->track >= 10)			info_edit_track->SetText(String::IntToString(trackInfo->track));
+
+	info_edit_year->SetText("");
+
+	if (trackInfo->year > 0) info_edit_year->SetText(String::IntToString(trackInfo->year));
+
+	info_combo_genre->SelectEntry(0);
+
+	for (int i = 0; i < info_combo_genre->GetNOfEntries(); i++)
+	{
+		if (info_combo_genre->GetNthEntryName(i) == trackInfo->genre)
+		{
+			info_combo_genre->SelectEntry(i);
+
+			break;
+		}
+	}
 }

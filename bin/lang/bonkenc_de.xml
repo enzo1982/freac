@@ -195,9 +195,8 @@
     <entry id="184" string="Length">Länge</entry>
     <entry id="185" string="Size">Größe</entry>
     <entry id="186" string="Artist">Künstler</entry>
-    <entry id="187" string="Date">Datum</entry>
+    <entry id="187" string="Year">Jahr</entry>
     <entry id="188" string="Genre">Genre</entry>
     <entry id="189" string="Album">Album</entry>
-
   </data>
 </LangFile>

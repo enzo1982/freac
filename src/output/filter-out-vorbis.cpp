@@ -77,9 +77,9 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 			else					ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String::IntToString(format->trackInfo->track));
 		}
 
-		if (format->trackInfo->year != NIL && format->trackInfo->year != "")
+		if (format->trackInfo->year > 0)
 		{
-			ex_vorbis_comment_add_tag(&vc, "DATE", format->trackInfo->year);
+			ex_vorbis_comment_add_tag(&vc, "DATE", String::IntToString(format->trackInfo->year));
 		}
 
 		if (format->trackInfo->genre != NIL && format->trackInfo->genre != "")
