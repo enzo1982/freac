@@ -11,22 +11,22 @@ clean :
 	rm -f CDRip.dll libcdrip.a $(OBJECTS)
 
 Aspi.o: Aspi.cpp
-	gcc -O6 -march=i586 -c Aspi.cpp
+	gcc -march=i586 -Os -g0 -fno-exceptions -c Aspi.cpp
 
 AspiCD.o: AspiCD.cpp
-	gcc -O6 -march=i586 -DCDEX_DLL -c AspiCD.cpp
+	gcc -march=i586 -Os -g0 -fno-exceptions -DCDEX_DLL -c AspiCD.cpp
 
 CDExtract.o: CDExtract.cpp
-	gcc -O6 -march=i586 -c CDExtract.cpp
+	gcc -march=i586 -Os -g0 -fno-exceptions -c CDExtract.cpp
 
 CDRip.o: CDRip.cpp
-	gcc -O6 -march=i586 -DCDEX_DLL -c CDRip.cpp
+	gcc -march=i586 -Os -g0 -fno-exceptions -DCDEX_DLL -c CDRip.cpp
 
 CDRomSettings.o: CDRomSettings.cpp
-	gcc -O6 -march=i586 -c CDRomSettings.cpp
+	gcc -march=i586 -Os -g0 -fno-exceptions -c CDRomSettings.cpp
 
 NTScsi.o: NTScsi.cpp
-	gcc -O6 -march=i586 -c NTScsi.cpp
+	gcc -march=i586 -Os -g0 -fno-exceptions -c NTScsi.cpp
 
 resources.o: CDRip.rc
 	windres -O coff CDRip.rc -o resources.o

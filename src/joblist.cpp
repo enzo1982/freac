@@ -44,7 +44,7 @@ Void bonkEncGUI::AddFile()
 
 				if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
-					if (type != "AAC Files (*.AAC)") types.AddEntry(type);
+					types.AddEntry(type);
 
 					k = 0;
 					n++;
@@ -87,36 +87,28 @@ Void bonkEncGUI::AddFile()
 
 	String	 fileTypes;
 
-	if (currentConfig->enable_faad2) fileTypes.Append("; *.aac; ");
-
-	fileTypes.Append("*.aif; *.aiff; *.au");
-
-	if (currentConfig->enable_bonk) fileTypes.Append("; *.bonk");
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) fileTypes.Append("; *.cda");
-	if (currentConfig->enable_lame) fileTypes.Append("; *.mp3");
-	if (currentConfig->enable_vorbis) fileTypes.Append("; *.ogg");
-
-	fileTypes.Append("; *.voc; *.wav");
+	if (currentConfig->enable_faad2)					fileTypes.Append("*.aac; ");
+										fileTypes.Append("*.aif; *.aiff; *.au");
+	if (currentConfig->enable_bonk)						fileTypes.Append("; *.bonk");
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
+	if (currentConfig->enable_lame)						fileTypes.Append("; *.mp3");
+	if (currentConfig->enable_mp4 && currentConfig->enable_faad2)		fileTypes.Append("; *.mp4");
+	if (currentConfig->enable_vorbis)					fileTypes.Append("; *.ogg");
+										fileTypes.Append("; *.voc; *.wav");
 
 	for (Int l = 0; l < extensions.GetNOfEntries(); l++) fileTypes.Append("; ").Append(extensions.GetNthEntry(l));
 
-	dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
-
-	if (currentConfig->enable_faad2) dialog->AddFilter(i18n->TranslateString("AAC Files").Append(" (*.aac)"), "*.aac");
-
-	dialog->AddFilter(i18n->TranslateString("Apple Audio Files").Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
-
-	if (currentConfig->enable_bonk)		dialog->AddFilter(i18n->TranslateString("Bonk Files").Append(" (*.bonk)"), "*.bonk");
-
-	dialog->AddFilter(i18n->TranslateString("Creative Voice Files").Append(" (*.voc)"), "*.voc");
-
-	if (currentConfig->enable_lame)		dialog->AddFilter(i18n->TranslateString("MP3 Files").Append(" (*.mp3)"), "*.mp3");
-	if (currentConfig->enable_vorbis)	dialog->AddFilter(i18n->TranslateString("Ogg Vorbis Files").Append(" (*.ogg)"), "*.ogg");
-
-	dialog->AddFilter(i18n->TranslateString("Sun Audio Files").Append(" (*.au)"), "*.au");
-	dialog->AddFilter(i18n->TranslateString("Wave Files").Append(" (*.wav)"), "*.wav");
-
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) dialog->AddFilter(i18n->TranslateString("Windows CD Audio Track").Append(" (*.cda)"), "*.cda");
+										dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
+	if (currentConfig->enable_faad2)					dialog->AddFilter(i18n->TranslateString("AAC Files").Append(" (*.aac)"), "*.aac");
+										dialog->AddFilter(i18n->TranslateString("Apple Audio Files").Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
+	if (currentConfig->enable_bonk)						dialog->AddFilter(i18n->TranslateString("Bonk Files").Append(" (*.bonk)"), "*.bonk");
+										dialog->AddFilter(i18n->TranslateString("Creative Voice Files").Append(" (*.voc)"), "*.voc");
+	if (currentConfig->enable_lame)						dialog->AddFilter(i18n->TranslateString("MP3 Files").Append(" (*.mp3)"), "*.mp3");
+	if (currentConfig->enable_mp4 && currentConfig->enable_faad2)		dialog->AddFilter(i18n->TranslateString("MP4 Files").Append(" (*.mp4)"), "*.mp4");
+	if (currentConfig->enable_vorbis)					dialog->AddFilter(i18n->TranslateString("Ogg Vorbis Files").Append(" (*.ogg)"), "*.ogg");
+										dialog->AddFilter(i18n->TranslateString("Sun Audio Files").Append(" (*.au)"), "*.au");
+										dialog->AddFilter(i18n->TranslateString("Wave Files").Append(" (*.wav)"), "*.wav");
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(i18n->TranslateString("Windows CD Audio Track").Append(" (*.cda)"), "*.cda");
 
 	for (Int m = 0; m < types.GetNOfEntries(); m++) dialog->AddFilter(types.GetNthEntry(m), extensions.GetNthEntry(m));
 

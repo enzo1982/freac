@@ -25,6 +25,8 @@ configureFAAC::configureFAAC()
 	usetns = currentConfig->faac_usetns;
 	setQuality = currentConfig->faac_set_quality;
 	aacQuality = currentConfig->faac_aac_quality;
+	allowID3 = currentConfig->faac_enable_id3;
+	fileFormat = currentConfig->faac_enable_mp4;
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "FAAC"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -46,6 +48,15 @@ configureFAAC::configureFAAC()
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
+	pos.y = 7;
+	size.cx = 524;
+	size.cy = 207;
+
+	tabwidget		= new TabWidget(pos, size);
+
+	layer_format		= new Layer(bonkEnc::i18n->TranslateString("Format"));
+
+	pos.x = 135;
 	pos.y = 11;
 	size.cx = 120;
 	size.cy = 65;
@@ -86,9 +97,55 @@ configureFAAC::configureFAAC()
 	pos.y += 25;
 
 	option_aactype_ltp	= new OptionBox("LTP", pos, size, &aacType, 3);
-	if (mpegVersion == 1) option_aactype_ltp->Deactivate();
+
+	pos.x = 7;
+	pos.y = 11;
+	size.cx = 120;
+	size.cy = 65;
+
+	group_mp4		= new GroupBox(bonkEnc::i18n->TranslateString("File format"), pos, size);
+
+	pos.x += 10;
+	pos.y += 13;
+	size.cx = 99;
+	size.cy = 0;
+
+	option_mp4		= new OptionBox("MP4", pos, size, &fileFormat, 1);
+	option_mp4->onClick.Connect(&configureFAAC::SetFileFormat, this);
+
+	pos.y += 25;
+
+	option_aac		= new OptionBox("AAC", pos, size, &fileFormat, 0);
+	option_aac->onClick.Connect(&configureFAAC::SetFileFormat, this);
 
 	pos.x = 135;
+	pos.y = 88;
+	size.cx = 279;
+	size.cy = 90;
+
+	group_id3v2		= new GroupBox(bonkEnc::i18n->TranslateString("Info tags"), pos, size);
+
+	pos.x += 10;
+	pos.y += 13;
+	size.cx = 200;
+	size.cy = 0;
+
+	check_id3v2		= new CheckBox(bonkEnc::i18n->TranslateString("Allow ID3V2 tags in AAC files"), pos, size, &allowID3);
+	check_id3v2->SetMetrics(check_id3v2->GetObjectProperties()->pos, Size(check_id3v2->GetObjectProperties()->textSize.cx + 20, check_id3v2->GetObjectProperties()->size.cy));
+
+	pos.y += 25;
+
+	text_note		= new Text(bonkEnc::i18n->TranslateString("Note:"), pos);
+
+	pos.x += text_note->GetObjectProperties()->textSize.cx + 2;
+
+	text_id3v2		= new Text(bonkEnc::i18n->TranslateString("Some players may have problems playing AAC\nfiles with ID3 tags attached. Please use this option only\nif you are sure that your player can handle these tags."), pos);
+
+	group_id3v2->SetMetrics(group_id3v2->GetObjectProperties()->pos, Size(text_note->GetObjectProperties()->textSize.cx + text_id3v2->GetObjectProperties()->textSize.cx + 22, group_id3v2->GetObjectProperties()->size.cy));
+
+	layer_quality		= new Layer(bonkEnc::i18n->TranslateString("Quality"));
+
+	pos.x = 7;
 	pos.y = 11;
 	size.cx = 320;
 	size.cy = 65;
@@ -124,7 +181,7 @@ configureFAAC::configureFAAC()
 
 	text_bitrate_kbps	= new Text("kbps", pos);
 
-	pos.x = 145;
+	pos.x = 17;
 	pos.y += 23;
 	size.cx = 150;
 	size.cy = 0;
@@ -153,36 +210,36 @@ configureFAAC::configureFAAC()
 
 	text_quality_percent	= new Text("%", pos);
 
-	pos.x = 135;
-	pos.y = 88;
-	size.cx = 129;
-	size.cy = 43;
+	pos.x = 335;
+	pos.y = 11;
+	size.cx = 179;
+	size.cy = 42;
 
 	group_js		= new GroupBox(bonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
-	size.cx = 108;
+	size.cx = 158;
 	size.cy = 0;
 
 	check_js		= new CheckBox(bonkEnc::i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
 
-	pos.x = 272;
-	pos.y = 88;
-	size.cx = 183;
-	size.cy = 43;
+	pos.x = 335;
+	pos.y = 65;
+	size.cx = 179;
+	size.cy = 42;
 
 	group_tns		= new GroupBox(bonkEnc::i18n->TranslateString("Temporal Noise Shaping"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
-	size.cx = 162;
+	size.cx = 158;
 	size.cy = 0;
 
 	check_tns		= new CheckBox(bonkEnc::i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
 
-	pos.x = 135;
-	pos.y = 143;
+	pos.x = 7;
+	pos.y = 88;
 	size.cx = 320;
 	size.cy = 43;
 
@@ -203,6 +260,8 @@ configureFAAC::configureFAAC()
 
 	SetBitrate();
 	SetQuality();
+	SetMPEGVersion();
+	SetFileFormat();
 
 	ToggleBitrateQuality();
 
@@ -210,35 +269,48 @@ configureFAAC::configureFAAC()
 
 	mainWnd->RegisterObject(btn_ok);
 	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(group_version);
-	mainWnd->RegisterObject(option_version_mpeg2);
-	mainWnd->RegisterObject(option_version_mpeg4);
-	mainWnd->RegisterObject(group_aactype);
-	mainWnd->RegisterObject(option_aactype_main);
-	mainWnd->RegisterObject(option_aactype_low);
-	mainWnd->RegisterObject(option_aactype_ltp);
-	mainWnd->RegisterObject(group_bitrate);
-	mainWnd->RegisterObject(option_bitrate);
-	mainWnd->RegisterObject(slider_bitrate);
-	mainWnd->RegisterObject(edit_bitrate);
-	mainWnd->RegisterObject(text_bitrate_kbps);
-	mainWnd->RegisterObject(option_quality);
-	mainWnd->RegisterObject(slider_quality);
-	mainWnd->RegisterObject(edit_quality);
-	mainWnd->RegisterObject(text_quality_percent);
-	mainWnd->RegisterObject(group_js);
-	mainWnd->RegisterObject(check_js);
-	mainWnd->RegisterObject(group_tns);
-	mainWnd->RegisterObject(check_tns);
-	mainWnd->RegisterObject(group_bandwidth);
-	mainWnd->RegisterObject(text_bandwidth);
-	mainWnd->RegisterObject(edit_bandwidth);
+	mainWnd->RegisterObject(tabwidget);
 	mainWnd->RegisterObject(mainWnd_titlebar);
 	mainWnd->RegisterObject(divbar);
 
+	tabwidget->RegisterObject(layer_quality);
+	tabwidget->RegisterObject(layer_format);
+
+	layer_format->RegisterObject(group_version);
+	layer_format->RegisterObject(option_version_mpeg2);
+	layer_format->RegisterObject(option_version_mpeg4);
+	layer_format->RegisterObject(group_aactype);
+	layer_format->RegisterObject(option_aactype_main);
+	layer_format->RegisterObject(option_aactype_low);
+	layer_format->RegisterObject(option_aactype_ltp);
+	layer_format->RegisterObject(group_mp4);
+	layer_format->RegisterObject(option_mp4);
+	layer_format->RegisterObject(option_aac);
+	layer_format->RegisterObject(group_id3v2);
+	layer_format->RegisterObject(check_id3v2);
+	layer_format->RegisterObject(text_note);
+	layer_format->RegisterObject(text_id3v2);
+
+	layer_quality->RegisterObject(group_bitrate);
+	layer_quality->RegisterObject(option_bitrate);
+	layer_quality->RegisterObject(slider_bitrate);
+	layer_quality->RegisterObject(edit_bitrate);
+	layer_quality->RegisterObject(text_bitrate_kbps);
+	layer_quality->RegisterObject(option_quality);
+	layer_quality->RegisterObject(slider_quality);
+	layer_quality->RegisterObject(edit_quality);
+	layer_quality->RegisterObject(text_quality_percent);
+	layer_quality->RegisterObject(group_js);
+	layer_quality->RegisterObject(check_js);
+	layer_quality->RegisterObject(group_tns);
+	layer_quality->RegisterObject(check_tns);
+	layer_quality->RegisterObject(group_bandwidth);
+	layer_quality->RegisterObject(text_bandwidth);
+	layer_quality->RegisterObject(edit_bandwidth);
+
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(468, 264));
+	mainWnd->SetMetrics(Point(140, 140), Size(545, 293));
 }
 
 configureFAAC::~configureFAAC()
@@ -248,6 +320,11 @@ configureFAAC::~configureFAAC()
 	DeleteObject(divbar);
 	DeleteObject(btn_ok);
 	DeleteObject(btn_cancel);
+
+	DeleteObject(tabwidget);
+	DeleteObject(layer_format);
+	DeleteObject(layer_quality);
+
 	DeleteObject(group_version);
 	DeleteObject(option_version_mpeg2);
 	DeleteObject(option_version_mpeg4);
@@ -255,6 +332,14 @@ configureFAAC::~configureFAAC()
 	DeleteObject(option_aactype_main);
 	DeleteObject(option_aactype_low);
 	DeleteObject(option_aactype_ltp);
+	DeleteObject(group_mp4);
+	DeleteObject(option_mp4);
+	DeleteObject(option_aac);
+	DeleteObject(group_id3v2);
+	DeleteObject(check_id3v2);
+	DeleteObject(text_note);
+	DeleteObject(text_id3v2);
+
 	DeleteObject(group_bitrate);
 	DeleteObject(option_bitrate);
 	DeleteObject(slider_bitrate);
@@ -296,6 +381,8 @@ Void configureFAAC::OK()
 	currentConfig->faac_bandwidth = edit_bandwidth->GetText().ToInt();
 	currentConfig->faac_set_quality = setQuality;
 	currentConfig->faac_aac_quality = aacQuality;
+	currentConfig->faac_enable_id3 = allowID3;
+	currentConfig->faac_enable_mp4 = fileFormat;
 
 	mainWnd->Close();
 }
@@ -344,6 +431,24 @@ Void configureFAAC::SetQuality()
 Void configureFAAC::SetQualityByEditBox()
 {
 	slider_quality->SetValue(edit_quality->GetText().ToInt());
+}
+
+Void configureFAAC::SetFileFormat()
+{
+	if (fileFormat == 1)
+	{
+		group_id3v2->Deactivate();
+		check_id3v2->Deactivate();
+		text_id3v2->Deactivate();
+		text_note->Deactivate();
+	}
+	else
+	{
+		group_id3v2->Activate();
+		check_id3v2->Activate();
+		text_id3v2->Activate();
+		text_note->Activate();
+	}
 }
 
 Void configureFAAC::ToggleBitrateQuality()

@@ -8,10 +8,11 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_OUT_FAAC_
-#define _H_FILTER_OUT_FAAC_
+#ifndef _H_FILTER_IN_MP4_
+#define _H_FILTER_IN_MP4_
 
-#include "outputfilter.h"
+#include "inputfilter.h"
+#include "filter-in-faad2.h"
 
 #ifndef _MSC_VER
 #include <stdint.h>
@@ -19,24 +20,25 @@
 #define int32_t long
 #endif
 
-#include <3rdparty/faac/faac.h>
+#include <3rdparty/mp4/mp4.h>
 
-class FilterOutFAAC : public OutputFilter
+class FilterInMP4 : public InputFilter
 {
 	private:
-		faacEncHandle		 handle;
-		faacEncConfigurationPtr	 fConfig;
+		MP4FileHandle		 mp4File;
+		FilterInFAAD2		*aacFilter;
 
-		unsigned long		 samples_size;
-		unsigned long		 buffersize;
+		Int			 GetAudioTrack();
 	public:
-					 FilterOutFAAC(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutFAAC();
+					 FilterInMP4(bonkEncConfig *);
+					~FilterInMP4();
 
 		bool			 Activate();
 		bool			 Deactivate();
 
-		int			 WriteData(unsigned char *, int);
+		int			 ReadData(unsigned char **, int);
+
+		bonkEncTrack		*GetFileInfo(String);
 };
 
 #endif

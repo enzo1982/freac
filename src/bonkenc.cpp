@@ -40,6 +40,7 @@
 #include <input/filter-in-aiff.h>
 #include <input/filter-in-au.h>
 #include <input/filter-in-lame.h>
+#include <input/filter-in-mp4.h>
 #include <input/filter-in-vorbis.h>
 #include <input/filter-in-bonk.h>
 #include <input/filter-in-faad2.h>
@@ -119,6 +120,16 @@ bonkEnc::bonkEnc()
 
 	if (LoadEUpdateDLL() == false)	currentConfig->enable_eUpdate = false;
 	else				currentConfig->enable_eUpdate = true;
+
+	if (currentConfig->enable_faac || currentConfig->enable_faad2)
+	{
+		if (LoadMP4V2DLL() == false)	currentConfig->enable_mp4 = false;
+		else				currentConfig->enable_mp4 = true;
+	}
+	else
+	{
+		currentConfig->enable_mp4 = false;
+	}
 
 	LoadWinampDLLs();
 
@@ -205,6 +216,7 @@ bonkEnc::~bonkEnc()
 	if (currentConfig->enable_cdrip)	FreeCDRipDLL();
 	if (currentConfig->enable_id3)		FreeID3DLL();
 	if (currentConfig->enable_eUpdate)	FreeEUpdateDLL();
+	if (currentConfig->enable_mp4)		FreeMP4V2DLL();
 
 	FreeWinampDLLs();
 
@@ -290,6 +302,10 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 	else if (extension3 == "mp3" && currentConfig->enable_lame)
 	{
 		filter_in = new FilterInLAME(currentConfig);
+	}
+	else if (extension3 == "mp4" && currentConfig->enable_mp4 && currentConfig->enable_faad2)
+	{
+		filter_in = new FilterInMP4(currentConfig);
 	}
 	else if (extension3 == "ogg" && currentConfig->enable_vorbis)
 	{

@@ -51,6 +51,26 @@ FilterOutFAAC::~FilterOutFAAC()
 {
 }
 
+bool FilterOutFAAC::Activate()
+{
+	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3 && currentConfig->faac_enable_id3)
+	{
+		unsigned char	*buffer	= new unsigned char [32768];
+		Int		 size	= RenderID3V2Tag(buffer);
+
+		driver->WriteData(buffer, size);
+
+		delete [] buffer;
+	}
+
+	return true;
+}
+
+bool FilterOutFAAC::Deactivate()
+{
+	return true;
+}
+
 int FilterOutFAAC::WriteData(unsigned char *data, int size)
 {
 	int32_t		*samples = new int32_t [size / (format->bits / 8)];

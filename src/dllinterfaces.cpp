@@ -151,6 +151,28 @@ EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext		= NIL;
 EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates		= NIL;
 EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
 
+MP4READ				 ex_MP4Read				= NIL;
+MP4CLOSE			 ex_MP4Close				= NIL;
+MP4SETMETADATANAME		 ex_MP4SetMetadataName			= NIL;
+MP4GETMETADATANAME		 ex_MP4GetMetadataName			= NIL;
+MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist		= NIL;
+MP4GETMETADATAARTIST		 ex_MP4GetMetadataArtist		= NIL;
+MP4SETMETADATACOMMENT		 ex_MP4SetMetadataComment		= NIL;
+MP4GETMETADATACOMMENT		 ex_MP4GetMetadataComment		= NIL;
+MP4SETMETADATAYEAR		 ex_MP4SetMetadataYear			= NIL;
+MP4GETMETADATAYEAR		 ex_MP4GetMetadataYear			= NIL;
+MP4SETMETADATAALBUM		 ex_MP4SetMetadataAlbum			= NIL;
+MP4GETMETADATAALBUM		 ex_MP4GetMetadataAlbum			= NIL;
+MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre			= NIL;
+MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre			= NIL;
+MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack			= NIL;
+MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack			= NIL;
+MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks		= NIL;
+MP4FINDTRACKID			 ex_MP4FindTrackId			= NIL;
+MP4GETTRACKTYPE			 ex_MP4GetTrackType			= NIL;
+MP4GETTRACKDURATION		 ex_MP4GetTrackDuration			= NIL;
+MP4CONVERTFROMTRACKDURATION	 ex_MP4ConvertFromTrackDuration		= NIL;
+
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
 ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
 ID3TAGSETPADDING		 ex_ID3Tag_SetPadding			= NIL;
@@ -608,15 +630,15 @@ Bool bonkEnc::LoadEUpdateDLL()
 
 	if (eupdatedll == NIL) return false;
 
-	ex_eUpdate_CreateUpdateContext		= (EUCREATEUPDATECONTEXT) GetProcAddress(eupdatedll, "eUpdate_CreateUpdateContext");
-	ex_eUpdate_FreeUpdateContext		= (EUFREEUPDATECONTEXT) GetProcAddress(eupdatedll, "eUpdate_FreeUpdateContext");
-	ex_eUpdate_CheckForNewUpdates		= (EUCHECKFORNEWUPDATES) GetProcAddress(eupdatedll, "eUpdate_CheckForNewUpdates");
-	ex_eUpdate_AutomaticUpdate		= (EUAUTOMATICUPDATE) GetProcAddress(eupdatedll, "eUpdate_AutomaticUpdate");
+	ex_eUpdate_CreateUpdateContext	= (EUCREATEUPDATECONTEXT) GetProcAddress(eupdatedll, "eUpdate_CreateUpdateContext");
+	ex_eUpdate_FreeUpdateContext	= (EUFREEUPDATECONTEXT) GetProcAddress(eupdatedll, "eUpdate_FreeUpdateContext");
+	ex_eUpdate_CheckForNewUpdates	= (EUCHECKFORNEWUPDATES) GetProcAddress(eupdatedll, "eUpdate_CheckForNewUpdates");
+	ex_eUpdate_AutomaticUpdate	= (EUAUTOMATICUPDATE) GetProcAddress(eupdatedll, "eUpdate_AutomaticUpdate");
 
-	if (ex_eUpdate_CreateUpdateContext == NULL)		{ FreeLibrary(eupdatedll); return false; }
-	if (ex_eUpdate_FreeUpdateContext == NULL)		{ FreeLibrary(eupdatedll); return false; }
-	if (ex_eUpdate_CheckForNewUpdates == NULL)		{ FreeLibrary(eupdatedll); return false; }
-	if (ex_eUpdate_AutomaticUpdate == NULL)			{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_CreateUpdateContext == NULL)	{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_FreeUpdateContext == NULL)	{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_CheckForNewUpdates == NULL)	{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_AutomaticUpdate == NULL)		{ FreeLibrary(eupdatedll); return false; }
 
 	return true;
 }
@@ -624,6 +646,64 @@ Bool bonkEnc::LoadEUpdateDLL()
 Void bonkEnc::FreeEUpdateDLL()
 {
 	FreeLibrary(eupdatedll);
+}
+
+Bool bonkEnc::LoadMP4V2DLL()
+{
+	mp4v2dll = LoadLibraryA(GetApplicationDirectory().Append("encoders/mp4v2.dll"));
+
+	if (mp4v2dll == NIL) return false;
+
+	ex_MP4Read			= (MP4READ) GetProcAddress(mp4v2dll, "MP4Read");
+	ex_MP4Close			= (MP4CLOSE) GetProcAddress(mp4v2dll, "MP4Close");
+	ex_MP4SetMetadataName		= (MP4SETMETADATANAME) GetProcAddress(mp4v2dll, "MP4SetMetadataName");
+	ex_MP4GetMetadataName		= (MP4GETMETADATANAME) GetProcAddress(mp4v2dll, "MP4GetMetadataName");
+	ex_MP4SetMetadataArtist		= (MP4SETMETADATAARTIST) GetProcAddress(mp4v2dll, "MP4SetMetadataArtist");
+	ex_MP4GetMetadataArtist		= (MP4GETMETADATAARTIST) GetProcAddress(mp4v2dll, "MP4GetMetadataArtist");
+	ex_MP4SetMetadataComment	= (MP4SETMETADATACOMMENT) GetProcAddress(mp4v2dll, "MP4SetMetadataComment");
+	ex_MP4GetMetadataComment	= (MP4GETMETADATACOMMENT) GetProcAddress(mp4v2dll, "MP4GetMetadataComment");
+	ex_MP4SetMetadataYear		= (MP4SETMETADATAYEAR) GetProcAddress(mp4v2dll, "MP4SetMetadataYear");
+	ex_MP4GetMetadataYear		= (MP4GETMETADATAYEAR) GetProcAddress(mp4v2dll, "MP4GetMetadataYear");
+	ex_MP4SetMetadataAlbum		= (MP4SETMETADATAALBUM) GetProcAddress(mp4v2dll, "MP4SetMetadataAlbum");
+	ex_MP4GetMetadataAlbum		= (MP4GETMETADATAALBUM) GetProcAddress(mp4v2dll, "MP4GetMetadataAlbum");
+	ex_MP4SetMetadataGenre		= (MP4SETMETADATAGENRE) GetProcAddress(mp4v2dll, "MP4SetMetadataGenre");
+	ex_MP4GetMetadataGenre		= (MP4GETMETADATAGENRE) GetProcAddress(mp4v2dll, "MP4GetMetadataGenre");
+	ex_MP4SetMetadataTrack		= (MP4SETMETADATATRACK) GetProcAddress(mp4v2dll, "MP4SetMetadataTrack");
+	ex_MP4GetMetadataTrack		= (MP4GETMETADATATRACK) GetProcAddress(mp4v2dll, "MP4GetMetadataTrack");
+	ex_MP4GetNumberOfTracks		= (MP4GETNUMBEROFTRACKS) GetProcAddress(mp4v2dll, "MP4GetNumberOfTracks");
+	ex_MP4FindTrackId		= (MP4FINDTRACKID) GetProcAddress(mp4v2dll, "MP4FindTrackId");
+	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) GetProcAddress(mp4v2dll, "MP4GetTrackType");
+	ex_MP4GetTrackDuration		= (MP4GETTRACKDURATION) GetProcAddress(mp4v2dll, "MP4GetTrackDuration");
+	ex_MP4ConvertFromTrackDuration	= (MP4CONVERTFROMTRACKDURATION) GetProcAddress(mp4v2dll, "MP4ConvertFromTrackDuration");
+
+	if (ex_MP4Read == NULL)				{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4Close == NULL)			{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4SetMetadataName == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetMetadataName == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4SetMetadataArtist == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetMetadataArtist == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4SetMetadataComment == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetMetadataComment == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4SetMetadataYear == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetMetadataYear == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4SetMetadataAlbum == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetMetadataAlbum == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4SetMetadataGenre == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetMetadataGenre == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4SetMetadataTrack == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetMetadataTrack == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetNumberOfTracks == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4FindTrackId == NULL)			{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetTrackType == NULL)			{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetTrackDuration == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4ConvertFromTrackDuration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
+
+	return true;
+}
+
+Void bonkEnc::FreeMP4V2DLL()
+{
+	FreeLibrary(mp4v2dll);
 }
 
 Bool bonkEnc::LoadWinampDLLs()

@@ -112,7 +112,7 @@
     <entry id="100" string="Number of preselection candidates:">Anzahl der Vorauswahlkandidaten:</entry>
     <entry id="101" string="MPEG version">MPEG Version</entry>
     <entry id="102" string="AAC object type">AAC Objekttyp</entry>
-    <entry id="103" string="Allow Joint Stereo">Joint Stereo</entry>
+    <entry id="103" string="Allow Joint Stereo">Joint Stereo erlauben</entry>
     <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
     <entry id="105" string="Use Temporal Noise Shaping">TNS verwenden</entry>
     <entry id="106" string="Maximum bandwidth">Maximale Bandbreite</entry>
@@ -265,5 +265,11 @@
     <entry id="253" string="Unicode">Unicode</entry>
     <entry id="254" string="Use Unicode filenames">Dateinamen mit Unicode</entry>
     <entry id="255" string="AAC Files">AAC Dateien</entry>
+    <entry id="256" string="MP4 Files">MP4 Dateien</entry>
+    <entry id="257" string="Format">Format</entry>
+    <entry id="258" string="File format">Dateiformat</entry>
+    <entry id="259" string="Allow ID3V2 tags in AAC files">ID3V2-Tags in AAC-Dateien erlauben</entry>
+    <entry id="260" string="Note:">Hinweis:</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
   </data>
 </LangFile>

@@ -23,6 +23,8 @@ class configureLameEnc : public Dialog
 		Window		*mainWnd;
 		Titlebar	*mainWnd_titlebar;
 
+		Divider		*divbar;
+
 		Button		*btn_cancel;
 		Button		*btn_ok;
 

@@ -13,14 +13,20 @@
 
 #include <iolib-cxx.h>
 #include "../bonkenc.h"
+#include "../dllinterfaces.h"
 
 class InputFilter : public IOLibFilter
 {
+	private:
+		Bool			 ParseID3V2Tag(ID3Tag *, bonkEncTrack *);
 	protected:
 		Int			 inBytes;
 
 		UnsignedInt		 fileSize;
 		bonkEncConfig		*currentConfig;
+
+		Bool			 ParseID3V2Tag(unsigned char *, Int, bonkEncTrack *);
+		Bool			 ParseID3V2Tag(String, bonkEncTrack *);
 
 		String			 GetID3CategoryName(Int);
 

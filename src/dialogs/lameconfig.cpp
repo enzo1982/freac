@@ -50,6 +50,7 @@ configureLameEnc::configureLameEnc()
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "LAME MP3"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
+	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	register_layer_basic	= new Layer(bonkEnc::i18n->TranslateString("Basic"));
 	register_layer_vbr	= new Layer("VBR");
@@ -598,6 +599,7 @@ configureLameEnc::configureLameEnc()
 	RegisterObject(mainWnd);
 
 	mainWnd->RegisterObject(mainWnd_titlebar);
+	mainWnd->RegisterObject(divbar);
 	mainWnd->RegisterObject(btn_ok);
 	mainWnd->RegisterObject(btn_cancel);
 	mainWnd->RegisterObject(reg_register);
@@ -700,12 +702,13 @@ configureLameEnc::configureLameEnc()
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(405, 297));
+	mainWnd->SetMetrics(Point(140, 140), Size(405, 307));
 }
 
 configureLameEnc::~configureLameEnc()
 {
 	DeleteObject(mainWnd_titlebar);
+	DeleteObject(divbar);
 	DeleteObject(mainWnd);
 	DeleteObject(btn_ok);
 	DeleteObject(btn_cancel);

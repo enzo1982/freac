@@ -22,6 +22,8 @@ class OutputFilter : public IOLibFilter
 		bonkEncTrack	*format;
 		bonkEncConfig	*currentConfig;
 
+		Int		 RenderID3V2Tag(unsigned char *buffer);
+
 		IOLibDriver	*iolibDriver;
 
 		OutStream	*CreateFile(String);

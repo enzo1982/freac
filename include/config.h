@@ -59,6 +59,7 @@ class bonkEncConfig
 		Bool		 enable_auto_cddb;
 		Bool		 enable_id3;
 		Bool		 enable_eUpdate;
+		Bool		 enable_mp4;
 		String		 enc_outdir;
 		String		 enc_filePattern;
 		Bool		 enc_onTheFly;
@@ -153,6 +154,8 @@ class bonkEncConfig
 		Bool		 faac_usetns;
 		Int		 faac_set_quality;
 		Int		 faac_aac_quality;
+		Bool		 faac_enable_id3;
+		Bool		 faac_enable_mp4;
 
 		Int		 tvq_bitrate;
 		Int		 tvq_presel_candidates;

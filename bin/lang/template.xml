@@ -265,5 +265,11 @@
     <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames"/>
     <entry id="255" string="AAC Files"/>
+    <entry id="256" string="MP4 Files"/>
+    <entry id="257" string="Format"/>
+    <entry id="258" string="File format"/>
+    <entry id="259" string="Allow ID3V2 tags in AAC files"/>
+    <entry id="260" string="Note:"/>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
   </data>
 </LangFile>

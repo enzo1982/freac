@@ -20,6 +20,10 @@ using namespace smooth::GUI;
 class configureFAAC : public Dialog
 {
 	private:
+		TabWidget	*tabwidget;
+
+		Layer		*layer_format;
+
 		GroupBox	*group_version;
 		OptionBox	*option_version_mpeg2;
 		OptionBox	*option_version_mpeg4;
@@ -28,6 +32,17 @@ class configureFAAC : public Dialog
 		OptionBox	*option_aactype_main;
 		OptionBox	*option_aactype_low;
 		OptionBox	*option_aactype_ltp;
+
+		GroupBox	*group_id3v2;
+		CheckBox	*check_id3v2;
+		Text		*text_note;
+		Text		*text_id3v2;
+
+		GroupBox	*group_mp4;
+		OptionBox	*option_mp4;
+		OptionBox	*option_aac;
+
+		Layer		*layer_quality;
 
 		GroupBox	*group_bitrate;
 		Slider		*slider_bitrate;
@@ -64,6 +79,8 @@ class configureFAAC : public Dialog
 		Bool		 usetns;
 		Int		 setQuality;
 		Int		 aacQuality;
+		Bool		 allowID3;
+		Int		 fileFormat;
 
 		bonkEncConfig	*currentConfig;
 
@@ -74,6 +91,7 @@ class configureFAAC : public Dialog
 		Void		 SetBitrateByEditBox();
 		Void		 SetQuality();
 		Void		 SetQualityByEditBox();
+		Void		 SetFileFormat();
 		Void		 ToggleBitrateQuality();
 	public:
 				 configureFAAC();

@@ -30,6 +30,7 @@
 #include <3rdparty/twinvq/tvqenc.h>
 #include <3rdparty/winamp/in2.h>
 #include <3rdparty/id3.h>
+#include <3rdparty/mp4/mp4av.h>
 
 // CDRip DLL API
 
@@ -326,6 +327,53 @@
 	extern EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext;
 	extern EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates;
 	extern EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate;
+
+// MP4V2 DLL API
+
+	typedef MP4FileHandle			(*MP4READ)					(const char *, u_int32_t);
+	typedef bool				(*MP4CLOSE)					(MP4FileHandle);
+	typedef bool				(*MP4SETMETADATANAME)				(MP4FileHandle, const char *);
+	typedef bool				(*MP4GETMETADATANAME)				(MP4FileHandle, char **);
+	typedef bool				(*MP4SETMETADATAARTIST)				(MP4FileHandle, const char *);
+	typedef bool				(*MP4GETMETADATAARTIST)				(MP4FileHandle, char **);
+	typedef bool				(*MP4SETMETADATACOMMENT)			(MP4FileHandle, const char *);
+	typedef bool				(*MP4GETMETADATACOMMENT)			(MP4FileHandle, char **);
+	typedef bool				(*MP4SETMETADATAYEAR)				(MP4FileHandle, const char *);
+	typedef bool				(*MP4GETMETADATAYEAR)				(MP4FileHandle, char **);
+	typedef bool				(*MP4SETMETADATAALBUM)				(MP4FileHandle, const char *);
+	typedef bool				(*MP4GETMETADATAALBUM)				(MP4FileHandle, char **);
+	typedef bool				(*MP4SETMETADATAGENRE)				(MP4FileHandle, const char *);
+	typedef bool				(*MP4GETMETADATAGENRE)				(MP4FileHandle, char **);
+	typedef bool				(*MP4SETMETADATATRACK)				(MP4FileHandle, u_int16_t, u_int16_t);
+	typedef bool				(*MP4GETMETADATATRACK)				(MP4FileHandle, u_int16_t *, u_int16_t *);
+	typedef u_int32_t			(*MP4GETNUMBEROFTRACKS)				(MP4FileHandle, const char *, u_int8_t);
+	typedef MP4TrackId			(*MP4FINDTRACKID)				(MP4FileHandle, u_int16_t, const char *, u_int8_t);
+	typedef const char *			(*MP4GETTRACKTYPE)				(MP4FileHandle, MP4TrackId);
+	typedef MP4Duration			(*MP4GETTRACKDURATION)				(MP4FileHandle, MP4TrackId);
+	typedef u_int64_t			(*MP4CONVERTFROMTRACKDURATION)			(MP4FileHandle, MP4TrackId, MP4Duration,
+ u_int32_t);
+
+	extern MP4READ				 ex_MP4Read;
+	extern MP4CLOSE				 ex_MP4Close;
+	extern MP4SETMETADATANAME		 ex_MP4SetMetadataName;
+	extern MP4GETMETADATANAME		 ex_MP4GetMetadataName;
+	extern MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist;
+	extern MP4GETMETADATAARTIST		 ex_MP4GetMetadataArtist;
+	extern MP4SETMETADATACOMMENT		 ex_MP4SetMetadataComment;
+	extern MP4GETMETADATACOMMENT		 ex_MP4GetMetadataComment;
+	extern MP4SETMETADATAYEAR		 ex_MP4SetMetadataYear;
+	extern MP4GETMETADATAYEAR		 ex_MP4GetMetadataYear;
+	extern MP4SETMETADATAALBUM		 ex_MP4SetMetadataAlbum;
+	extern MP4GETMETADATAALBUM		 ex_MP4GetMetadataAlbum;
+	extern MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre;
+	extern MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre;
+	extern MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack;
+	extern MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack;
+	extern MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
+	extern MP4FINDTRACKID			 ex_MP4FindTrackId;
+	extern MP4GETTRACKTYPE			 ex_MP4GetTrackType;
+	extern MP4GETTRACKDURATION		 ex_MP4GetTrackDuration;
+	extern MP4CONVERTFROMTRACKDURATION	 ex_MP4ConvertFromTrackDuration;
 
 // ID3Lib DLL API
 

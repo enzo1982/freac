@@ -1,7 +1,7 @@
 BonkEnc version 1.0 beta 3
 
 BonkEnc is an encoder for various audio formats. It can
-produce MP3, Ogg Vorbis, BONK, AAC and VQF files.
+produce MP3, MP4, Ogg Vorbis, AAC, Bonk and VQF files.
 
 BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 
@@ -24,7 +24,9 @@ History
 		- some other bugfixes
 		- upgraded LAME to version 3.96
 		- upgraded FAAC to version 1.24.0
+		- added support for ID3V2 tags in AAC files
 		- added FAAD2 AAC decoder support
+		- added basic MP4 support
 		- upgraded to smooth v0.8.65.0
 		- added support for online program updates
 
@@ -81,8 +83,8 @@ History
 		- added Drag & Drop functionality
 		- added support for LAME presets
 		- added Hungarian, French, Russian, Serbian and Finnish language support
-		- removed support for the META tag in BONK files
-		- added support for ID3V2 tags in BONK files
+		- removed support for the META tag in Bonk files
+		- added support for ID3V2 tags in Bonk files
 		- added support for reading ID3V2 and Vorbis comment tags
 		- added full CDDB/freedb support
 		- added a CDDB cache
@@ -97,7 +99,7 @@ History
 	Version 0.8 (November 2002)
 
 		- added CDDB/freedb support (read only)
-		- added support for decoding MP3, Ogg Vorbis and BONK files
+		- added support for decoding MP3, Ogg Vorbis and Bonk files
 		- implemented a command line interface
 		- added Spanish, Italian and Dutch language support
 		- added ID3V2 tag support
@@ -119,11 +121,11 @@ History
 
 		- upgraded to smooth v0.8.58.1
 		- upgraded to Ogg Vorbis v1.0
-		- upgraded to BONK v0.6
+		- upgraded to Bonk v0.6
 		- upgraded to CDRip v116
 		- added support for ripping to PCM WAVE files
-		- added support for encoding lossless BONK files
-		- the BONK format has been extended by the META-tag
+		- added support for encoding lossless Bonk files
+		- the Bonk format has been extended by the META-tag
 		- all encoders and decoders are now implemented as IOLib filters
 		- all encoder DLLs are now optional
 		- some minor bugfixes
@@ -135,7 +137,7 @@ History
 		- added support for FAAC (AAC encoder)
 		- added support for LAME
 		- added support for mono and different sampling rates
-		- the BONK format has been extended to support instant skipping
+		- the Bonk format has been extended to support instant skipping
 		- added preliminary support for Apple AIFF, Creative Voice and Sun Audio files
 		- allowed more options for BladeEnc
 		- upgraded to smooth v0.8.58.0
@@ -148,8 +150,8 @@ Requirements
 ------------
 
 	- Windows NT/2000/XP, Windows 95/98/SE/ME
-	- A 200MHz processor or better for playing BONK files
-	- Winamp is required to play BONK files in Windows
+	- A 200MHz processor or better for playing Bonk files
+	- Winamp is required to play Bonk files in Windows
 	- You'll need properly installed ASPI drivers for CD ripping.
 
 	Additional requirements for compiling the sources:
@@ -207,7 +209,7 @@ Future plans
 -----------------------------------------------------------------------------------
 
 The official BonkEnc homepage: http://www.bonkenc.org/
-Paul F. Harrison's BONK page: http://www.logarithmic.net/pfh/bonk
+Paul F. Harrison's Bonk page: http://www.logarithmic.net/pfh/bonk
 
 robert.kausch@bonkenc.org,
 Robert Kausch

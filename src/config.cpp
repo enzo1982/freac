@@ -194,6 +194,8 @@ Bool bonkEncConfig::LoadSettings()
 	faac_usetns = config->GetIntValue("FAAC", "UseTNS", 0);
 	faac_set_quality = config->GetIntValue("FAAC", "SetQuality", 1);
 	faac_aac_quality = config->GetIntValue("FAAC", "AACQuality", 120);
+	faac_enable_id3 = config->GetIntValue("FAAC", "AllowID3V2", 0);
+	faac_enable_mp4 = config->GetIntValue("FAAC", "MP4Container", 1);
 
 	tvq_bitrate = config->GetIntValue("TwinVQ", "Bitrate", 48);
 	tvq_presel_candidates = config->GetIntValue("TwinVQ", "PreselectionCandidates", 32);
@@ -317,6 +319,8 @@ Bool bonkEncConfig::SaveSettings()
 		config->SetIntValue("FAAC", "UseTNS", faac_usetns);
 		config->SetIntValue("FAAC", "SetQuality", faac_set_quality);
 		config->SetIntValue("FAAC", "AACQuality", faac_aac_quality);
+		config->SetIntValue("FAAC", "AllowID3V2", faac_enable_id3);
+		config->SetIntValue("FAAC", "MP4Container", faac_enable_mp4);
 
 		config->SetIntValue("TwinVQ", "Bitrate", tvq_bitrate);
 		config->SetIntValue("TwinVQ", "PreselectionCandidates", tvq_presel_candidates);

@@ -120,6 +120,8 @@ class bonkEnc : public Application
 		Void			 FreeID3DLL();
 		Bool			 LoadEUpdateDLL();
 		Void			 FreeEUpdateDLL();
+		Bool			 LoadMP4V2DLL();
+		Void			 FreeMP4V2DLL();
 
 		Bool			 LoadWinampDLLs();
 		Void			 FreeWinampDLLs();
@@ -157,6 +159,7 @@ class bonkEnc : public Application
 		HINSTANCE		 cdripdll;
 		HINSTANCE		 id3dll;
 		HINSTANCE		 eupdatedll;
+		HINSTANCE		 mp4v2dll;
 
 		Array<HMODULE>		 winamp_in_plugins;
 		Array<In_Module *>	 winamp_in_modules;

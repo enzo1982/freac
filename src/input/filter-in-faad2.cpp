@@ -170,5 +170,13 @@ bonkEncTrack *FilterInFAAD2::GetFileInfo(String inFile)
 
 	ex_faacDecClose(handle);
 
+	if (currentConfig->enable_id3)
+	{
+		nFormat->track = -1;
+		nFormat->outfile = NIL;
+
+		ParseID3V2Tag(inFile, nFormat);
+	}
+
 	return nFormat;
 }
