@@ -65,7 +65,7 @@
     <entry id="53" string="Average Bitrate">Середній бітрейт</entry>
     <entry id="54" string="Quality">Якість</entry>
     <entry id="55" string="Encoders">Кодеки</entry>
-    <entry id="56" string="Language"/>
+    <entry id="56" string="Language">Мова</entry>
     <entry id="57" string="Show title info">Показати інформацію заголовків</entry>
     <entry id="58" string="General settings setup">Основні налаштування інсталяції</entry>
     <entry id="59" string="Configure encoder">Налаштувати кодек</entry>
