@@ -42,6 +42,8 @@ configureGeneralSettings::configureGeneralSettings()
 	swapchannels = currentConfig->cdrip_swapchannels;
 	locktray = currentConfig->cdrip_locktray;
 	ntscsi = currentConfig->cdrip_ntscsi;
+	autoRead = currentConfig->cdrip_autoRead;
+	autoEject = currentConfig->cdrip_autoEject;
 	enable_tags = currentConfig->enable_tags;
 	cddb_auto = currentConfig->enable_auto_cddb;
 	cddb_cache = currentConfig->enable_cddb_cache;
@@ -74,7 +76,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	pos.x = 7;
 	pos.y = 7;
-	size.cx = 361;
+	size.cx = 547;
 	size.cy = 191;
 
 	reg_register		= new TabWidget(pos, size);
@@ -260,7 +262,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.x = 7;
 	pos.y = 66;
 	size.cx = 344;
-	size.cy = 90;
+	size.cy = 65;
 
 	cdrip_group_ripping	= new GroupBox(bonkEnc::i18n->TranslateString("Ripper settings"), pos, size);
 
@@ -296,12 +298,29 @@ configureGeneralSettings::configureGeneralSettings()
 
 	cdrip_check_swapchannels= new CheckBox(bonkEnc::i18n->TranslateString("Swap left/right channel"), pos, size, &swapchannels);
 
-	pos.x -= 166;
-	pos.y += 25;
+	pos.x = 359;
+	pos.y = 11;
+	size.cx = 178;
+	size.cy = 120;
+
+	cdrip_group_cdoptions	= new GroupBox(bonkEnc::i18n->TranslateString("CD options"), pos, size);
+
+	pos.x += 10;
+	pos.y += 14;
+	size.cx = 157;
+	size.cy = 0;
+
+	cdrip_check_autoRead	= new CheckBox(bonkEnc::i18n->TranslateString("Read CD contents on insert"), pos, size, &autoRead);
+
+	pos.y += 26;
+
+	cdrip_check_autoEject	= new CheckBox(bonkEnc::i18n->TranslateString("Eject disk after ripping"), pos, size, &autoEject);
+
+	pos.y += 26;
 
 	cdrip_check_locktray	= new CheckBox(bonkEnc::i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
 
-	pos.x += 166;
+	pos.y += 26;
 
 	cdrip_check_ntscsi	= new CheckBox(bonkEnc::i18n->TranslateString("Use native NT SCSI library"), pos, size, &ntscsi);
 
@@ -404,7 +423,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	pos.x = 7;
 	pos.y = 7;
-	size.cx = 343;
+	size.cx = 529;
 	size.cy = 154;
 
 	plugins_tabs_plugins	= new TabWidget(pos, size);
@@ -413,7 +432,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	pos.x = 7;
 	pos.y = 7;
-	size.cx = 239;
+	size.cx = 425;
 	size.cy = 118;
 
 	plugins_list_input	= new ListBox(pos, size);
@@ -424,7 +443,7 @@ configureGeneralSettings::configureGeneralSettings()
 		plugins_list_input->AddEntry(currentConfig->appMain->winamp_in_modules.GetNthEntry(k)->description);
 	}
 
-	pos.x += 247;
+	pos.x += 433;
 	size.cx = 0;
 	size.cy = 0;
 
@@ -442,7 +461,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	pos.x = 7;
 	pos.y = 7;
-	size.cx = 239;
+	size.cx = 425;
 	size.cy = 118;
 
 	plugins_list_output	= new ListBox(pos, size);
@@ -456,7 +475,7 @@ configureGeneralSettings::configureGeneralSettings()
 		if (l == currentConfig->output_plugin) entry->selected = True;
 	}
 
-	pos.x += 247;
+	pos.x += 433;
 	size.cx = 0;
 	size.cy = 0;
 
@@ -472,7 +491,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	pos.x = 7;
 	pos.y = 11;
-	size.cx = 344;
+	size.cx = 530;
 	size.cy = 67;
 
 	tags_group_tags		= new GroupBox(bonkEnc::i18n->TranslateString("Info tags"), pos, size);
@@ -492,7 +511,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	pos.x += (7 + tags_text_defcomment->GetObjectProperties()->textSize.cx);
 	pos.y -= 3;
-	size.cx = 320 - tags_text_defcomment->GetObjectProperties()->textSize.cx;
+	size.cx = 503 - tags_text_defcomment->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
 	tags_edit_defcomment	= new EditBox(currentConfig->default_comment, pos, size, 0);
@@ -540,6 +559,9 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_cdrip->RegisterObject(cdrip_combo_paranoia_mode);
 	register_layer_cdrip->RegisterObject(cdrip_check_jitter);
 	register_layer_cdrip->RegisterObject(cdrip_check_swapchannels);
+	register_layer_cdrip->RegisterObject(cdrip_group_cdoptions);
+	register_layer_cdrip->RegisterObject(cdrip_check_autoRead);
+	register_layer_cdrip->RegisterObject(cdrip_check_autoEject);
 	register_layer_cdrip->RegisterObject(cdrip_check_locktray);
 	register_layer_cdrip->RegisterObject(cdrip_check_ntscsi);
 
@@ -577,7 +599,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(120, 120), Size(384, 277));
+	mainWnd->SetMetrics(Point(120, 120), Size(568, 277));
 }
 
 configureGeneralSettings::~configureGeneralSettings()
@@ -614,6 +636,9 @@ configureGeneralSettings::~configureGeneralSettings()
 	DeleteObject(cdrip_combo_paranoia_mode);
 	DeleteObject(cdrip_check_jitter);
 	DeleteObject(cdrip_check_swapchannels);
+	DeleteObject(cdrip_group_cdoptions);
+	DeleteObject(cdrip_check_autoRead);
+	DeleteObject(cdrip_check_autoEject);
 	DeleteObject(cdrip_check_locktray);
 	DeleteObject(cdrip_check_ntscsi);
 	DeleteObject(cddb_group_cddb);
@@ -714,6 +739,8 @@ Void configureGeneralSettings::OK()
 	currentConfig->cdrip_swapchannels = swapchannels;
 	currentConfig->cdrip_locktray = locktray;
 	currentConfig->cdrip_ntscsi = ntscsi;
+	currentConfig->cdrip_autoRead = autoRead;
+	currentConfig->cdrip_autoEject = ntscsi;
 	currentConfig->enable_tags = enable_tags;
 	currentConfig->enable_auto_cddb = cddb_auto;
 	currentConfig->enable_cddb_cache = cddb_cache;

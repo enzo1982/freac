@@ -8,13 +8,16 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 beta 3 CVS (März 2004)
+	Version 1.0 beta 3 CVS (April 2004)
 
 		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
 		- Einige Fehler in der CDDB Implementierung wurden behoben
 		- Sprachunterstützung für Ukrainisch hinzugefügt
+		- Unterstützung für automatisches Einlesen von CDs beim Einlegen hinzugefügt
+		- Automatisches Auswerfen von CDs hinzugefügt
 		- Fehler im WAVE Input Plugin wurde behoben
 		- Die BonkEnc Standardversion enthält jetzt das in_flac.dll Plugin für FLAC Unterstützung
+		- Fehlerhafte Darstellung von rechts-nach-links Schriften unter Windows NT/2000 behoben
 		- Ein Uninstaller wurde hinzugefügt
 		- Einige andere Fehler wurden behoben
 		- Update auf smooth v0.8.65.0

@@ -213,6 +213,7 @@
     <entry id="201" string="No audio CD in drive!">Keine Audio-CD im Laufwerk!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Bitte füllen Sie alle Felder und Titelnamen vor dem Senden aus.</entry>
     <entry id="203" string="CD ripping disabled!">CD-Rippen deaktiviert!</entry>
+    <entry id="204" string="CD options">CD Optionen</entry>
     <entry id="205" string="Submitting CD information">Sende CD Informationen</entry>
     <entry id="206" string="Cannot open file:">Kann Datei nicht öffnen:</entry>
     <entry id="207" string="Query CDDB database">CDDB Datenbank abfragen</entry>
@@ -255,5 +256,7 @@
     <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">Eine neue BonkEnc Version ist online verfügbar!&#10;Möchten Sie sie jetzt installieren?</entry>
     <entry id="245" string="There are no updates available at the moment!">Zur Zeit sind keine Aktualisierungen verfügbar!</entry>
     <entry id="246" string="Check for updates at startup">Beim Start auf Aktualisierungen überprüfen</entry>
+    <entry id="247" string="Read CD contents on insert">CD Inhalt autmatisch lesen</entry>
+    <entry id="248" string="Eject disk after ripping">Automatisch auswerfen</entry>
   </data>
 </LangFile>

@@ -263,7 +263,7 @@ Int bonkEnc::Encoder(Thread *thread)
 			{
 				int	 sample = 0;
 
-				for(int loop = 0; loop < n_loops; loop++)
+				for (int loop = 0; loop < n_loops; loop++)
 				{
 					int	 step = samples_size;
 
@@ -456,6 +456,20 @@ Int bonkEnc::Encoder(Thread *thread)
 		}
 
 		if (stop_encoding) break;
+
+		if (trackInfo->isCDTrack && currentConfig->cdrip_autoEject)
+		{
+			Bool	 ejectDisk = True;
+
+			for (Int j = i + 1; j < num; j++)
+			{
+				if (!joblist->GetNthEntry(j - nRemoved)->selected) continue;
+
+				if (sa_formatinfo.GetNthEntry(j - nRemoved)->trackInfo->drive == trackInfo->drive) { ejectDisk = False; break; }
+			}
+
+			if (ejectDisk) ex_CR_EjectCD(True);
+		}
 	}
 
 	currentConfig->cdrip_activedrive = encoder_activedrive;

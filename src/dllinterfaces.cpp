@@ -26,6 +26,7 @@ CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM			= NIL;
 CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters		= NIL;
 CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters		= NIL;
 CR_LOCKCD			 ex_CR_LockCD				= NIL;
+CR_EJECTCD			 ex_CR_EjectCD				= NIL;
 CR_READCDTEXT			 ex_CR_ReadCDText			= NIL;
 
 BONKCREATEENCODER		 ex_bonk_create_encoder			= NIL;
@@ -498,6 +499,7 @@ Bool bonkEnc::LoadCDRipDLL()
 	ex_CR_GetCDROMParameters	= (CR_GETCDROMPARAMETERS) GetProcAddress(cdripdll, "CR_GetCDROMParameters");
 	ex_CR_SetCDROMParameters	= (CR_SETCDROMPARAMETERS) GetProcAddress(cdripdll, "CR_SetCDROMParameters");
 	ex_CR_LockCD			= (CR_LOCKCD) GetProcAddress(cdripdll, "CR_LockCD");
+	ex_CR_EjectCD			= (CR_EJECTCD) GetProcAddress(cdripdll, "CR_EjectCD");
 	ex_CR_ReadCDText		= (CR_READCDTEXT) GetProcAddress(cdripdll, "CR_ReadCDText");
 
 	if (ex_CR_Init == NULL)			{ FreeLibrary(cdripdll); return false; }
@@ -514,6 +516,7 @@ Bool bonkEnc::LoadCDRipDLL()
 	if (ex_CR_GetCDROMParameters == NULL)	{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_SetCDROMParameters == NULL)	{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_LockCD == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_EjectCD == NULL)		{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_ReadCDText == NULL)		{ FreeLibrary(cdripdll); return false; }
 
 	return true;

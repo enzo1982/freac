@@ -46,6 +46,7 @@
 	typedef LONG				(*CR_GETNUMTOCENTRIES)				();
 	typedef TOCENTRY			(*CR_GETTOCENTRY)				(LONG);
 	typedef void				(*CR_LOCKCD)					(BOOL);
+	typedef BOOL				(*CR_EJECTCD)					(BOOL);
 	typedef CDEX_ERR			(*CR_READCDTEXT)				(BYTE *, int, LPINT);
 
 	extern CR_INIT				 ex_CR_Init;
@@ -62,6 +63,7 @@
 	extern CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters;
 	extern CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters;
 	extern CR_LOCKCD			 ex_CR_LockCD;
+	extern CR_EJECTCD			 ex_CR_EjectCD;
 	extern CR_READCDTEXT			 ex_CR_ReadCDText;
 
 // Bonk DLL API

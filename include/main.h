@@ -50,8 +50,6 @@ class bonkEncGUI : public bonkEnc
 
 		Thread		*checkForUpdates;
 
-		Bool		 ExitProc();
-		Void		 ResizeProc();
 		Void		 Close();
 		Void		 About();
 		Void		 ConfigureEncoder();
@@ -77,6 +75,11 @@ class bonkEncGUI : public bonkEnc
 		Int		 CheckForUpdatesThread(Thread *);
 
 		Bool		 SetLanguage(String);
+	slots:
+		Bool		 ExitProc();
+
+		Void		 MessageProc(Int, Int, Int);
+		Void		 ResizeProc();
 	public:
 				 bonkEncGUI();
 				~bonkEncGUI();

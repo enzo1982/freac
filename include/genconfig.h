@@ -53,8 +53,11 @@ class configureGeneralSettings : public Dialog
 		ComboBox	*cdrip_combo_paranoia_mode;
 		CheckBox	*cdrip_check_jitter;
 		CheckBox	*cdrip_check_swapchannels;
+		GroupBox	*cdrip_group_cdoptions;
 		CheckBox	*cdrip_check_locktray;
 		CheckBox	*cdrip_check_ntscsi;
+		CheckBox	*cdrip_check_autoRead;
+		CheckBox	*cdrip_check_autoEject;
 
 		GroupBox	*cddb_group_cddb;
 		CheckBox	*cddb_check_auto;
@@ -98,6 +101,8 @@ class configureGeneralSettings : public Dialog
 		Bool		 swapchannels;
 		Bool		 locktray;
 		Bool		 ntscsi;
+		Bool		 autoRead;
+		Bool		 autoEject;
 		Bool		 enable_tags;
 		Bool		 cddb_auto;
 		Bool		 cddb_cache;

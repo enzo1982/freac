@@ -74,6 +74,8 @@ class bonkEncConfig
 		Bool		 cdrip_swapchannels;
 		Bool		 cdrip_locktray;
 		Bool		 cdrip_ntscsi;
+		Bool		 cdrip_autoRead;
+		Bool		 cdrip_autoEject;
 
 		String		 freedb_server;
 		Int		 freedb_mode;

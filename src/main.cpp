@@ -15,6 +15,7 @@
 #include <string>
 #include <vector>
 #include <time.h>
+#include <dbt.h>
 
 #include <dllinterfaces.h>
 
@@ -799,7 +800,9 @@ bonkEncGUI::bonkEncGUI()
 
 	mainWnd->SetIcon(Bitmap::LoadBitmap("BonkEnc.pci", 0, NIL));
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
+
 	mainWnd->onResize.Connect(&bonkEncGUI::ResizeProc, this);
+	mainWnd->onEvent.Connect(&bonkEncGUI::MessageProc, this);
 
 	if (currentConfig->showTips) mainWnd->onShow.Connect(&bonkEncGUI::ShowTipOfTheDay, this);
 
@@ -911,6 +914,68 @@ Bool bonkEncGUI::ExitProc()
 	currentConfig->SaveSettings();
 
 	return True;
+}
+
+Void bonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
+{
+	switch (message)
+	{
+		case WM_DEVICECHANGE:
+			if (wParam == DBT_DEVICEARRIVAL && currentConfig->enable_cdrip && currentConfig->cdrip_autoRead)
+			{
+				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype == DBT_DEVTYP_VOLUME && ((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)
+				{
+					Int	 drive = 0;
+
+					for (drive = 0; drive <= 26; drive++)
+					{
+						if (((DEV_BROADCAST_VOLUME *) lParam)->dbcv_unitmask >> drive & 1) break;
+					}
+
+					if (drive < 26)
+					{
+						String	 trackCDA = String(" ").Append(":\\track01.cda");
+
+						trackCDA[0] = drive + 'A';
+
+						InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READONLY);
+
+						in->Seek(32);
+
+						Int	 trackLength = in->InputNumber(4);
+
+						delete in;
+
+						if (trackLength > 0)
+						{
+							Bool	 ok = False;
+
+							for (drive = 0; drive < currentConfig->cdrip_numdrives; drive++)
+							{
+								ex_CR_SetActiveCDROM(drive);
+
+								ex_CR_ReadToc();
+
+								TOCENTRY	 entry = ex_CR_GetTocEntry(0);
+								TOCENTRY	 nextentry = ex_CR_GetTocEntry(1);
+								Int		 length = nextentry.dwStartSector - entry.dwStartSector;
+
+								if (!(entry.btFlag & CDROMDATAFLAG) && length == trackLength) { ok = True; break; }
+							}
+
+							if (ok)
+							{
+								currentConfig->cdrip_activedrive = drive;
+
+								ReadCD();
+							}
+						}
+					}
+				}
+			}
+
+			break;
+	}
 }
 
 Void bonkEncGUI::ResizeProc()
