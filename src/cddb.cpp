@@ -384,7 +384,7 @@ String bonkEncCDDB::Query(String discid)
 			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
 
 			log->OutputString("< ");
-			log->OutputLine(val);
+			log->OutputLine(val.ConvertTo("UTF-8"));
 
 			delete log;
 #endif
@@ -446,7 +446,7 @@ String bonkEncCDDB::Read(String query)
 			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
 
 			log->OutputString("< ");
-			log->OutputLine(val);
+			log->OutputLine(val.ConvertTo("UTF-8"));
 
 			delete log;
 #endif
@@ -520,6 +520,12 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 	str.Append(content);
 
+#ifdef LOG_CDDB
+	log->OutputString("\n");
+	log->OutputString(str.ConvertTo("UTF-8"));
+	log->OutputString("\n");
+#endif
+
 	if (config->freedb_proxy_mode == 0)		socket = new IOLibDriverSocket(config->freedb_server, config->freedb_http_port);
 	else if (config->freedb_proxy_mode == 1)	socket = new IOLibDriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
 	else if (config->freedb_proxy_mode == 2)	socket = new IOLibDriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
@@ -528,6 +534,8 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	{
 #ifdef LOG_CDDB
 		log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
+
+		delete log;
 #endif
 
 		str = "error";
@@ -539,12 +547,6 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 	in = new InStream(STREAM_DRIVER, socket);
 	out = new OutStream(STREAM_STREAM, in);
-
-#ifdef LOG_CDDB
-	log->OutputString("\n");
-	log->OutputString(str.ConvertTo("UTF-8"));
-	log->OutputString("\n");
-#endif
 
 	out->OutputString(str.ConvertTo("UTF-8"));
 
