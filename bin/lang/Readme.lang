@@ -34,19 +34,6 @@ Character encoding
 	If you use 16 or 32 bit Unicode (UCS-2, UCS-4), you should specify if the file is
 	big endian or little endian and write UCS-2BE or UCS-2LE.
 
-Right-to-left scripts
----------------------
-
-	The smooth library does not fully support RTL scripts like Arabic or Hebrew, yet.
-	The text is drawn correctly, but the layout of the menus etc. doesn't adjust, yet.
-	This will be supported in a coming version of smooth.
-
-	Have a look at the bonkenc_ar.xml file (available from CVS) to see how far we are.
-	It's a (very incomplete) Arabic translation for BonkEnc.
-
-	Left-to-right scripts are fully supported, though - including Asian scripts with
-	CJK symbols. See bonkenc_ja.xml for an example.
-
 The 'info' node
 ---------------
 
@@ -61,7 +48,11 @@ The 'info' node
 	information to the language name (like 'English (alternative)'). The whole string
 	will be displayed in BonkEnc.
 
-	The encoding field should contain the name of the encoding used in the file. The
+	The 'righttoleft' field specifies how the application windows and dialogs will be
+	laid out. Possible values are 'true' for right-to-left scripts like Arabic and 'false'
+	for left-to-right scripts as in most Latin or Asian languages.
+
+	The 'encoding' field should contain the name of the encoding used in the file. The
 	same as in the first line of the XML file.
 
 	The 'author' field should contain the name of the translator. You can append additional

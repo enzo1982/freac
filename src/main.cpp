@@ -1104,7 +1104,53 @@ Void bonkEncGUI::ShowHideTitleInfo()
 
 Bool bonkEncGUI::SetLanguage(String newLanguage)
 {
+	Bool	 prevRTL = Setup::rightToLeft;
+
 	i18n->ActivateLanguage(currentConfig->language);
+
+	if (Setup::rightToLeft != prevRTL)
+	{
+		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->GetObjectProperties()->size));
+		mainWnd->Paint(SP_PAINT);
+
+		if (winamp_out_modules.GetNOfEntries() > 0)
+		{
+			button_play->Hide();
+			button_pause->Hide();
+			button_stop->Hide();
+			button_prev->Hide();
+			button_next->Hide();
+
+			Point	 pos;
+
+			pos.x = 116 - (Setup::rightToLeft ? 88 : 0);
+			pos.y = -1;
+
+			button_play->SetPosition(pos);
+
+			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+
+			button_pause->SetPosition(pos);
+
+			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+
+			button_stop->SetPosition(pos);
+
+			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+
+			button_prev->SetPosition(pos);
+
+			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+
+			button_next->SetPosition(pos);
+
+			button_play->Show();
+			button_pause->Show();
+			button_stop->Show();
+			button_prev->Show();
+			button_next->Show();
+		}
+	}
 
 	txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
 

@@ -1,6 +1,4 @@
-Updated entries since BonkEnc v0.9
-----------------------------------
+Updated entries since BonkEnc v1.0 beta 1
+-----------------------------------------
 
-#22
-#148
-#206-226
+new property: righttoleft; values: true, false

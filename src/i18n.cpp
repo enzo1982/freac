@@ -44,7 +44,8 @@ Int bonkTranslator::GetSupportedLanguages()
 		language->magic = "english-internal";
 		language->author = "Robert Kausch <robert.kausch@gmx.net>";
 		language->url = "http://www.bonkenc.org";
-		language->isOutOfDate = false;
+		language->rightToLeft = False;
+		language->isOutOfDate = False;
 
 		languages.AddEntry(language);
 	}
@@ -73,6 +74,7 @@ Int bonkTranslator::GetSupportedLanguages()
 				if (property == "program")	 program = info->GetNthNode(i)->GetContent();
 				if (property == "version")	 version = info->GetNthNode(i)->GetContent();
 				if (property == "language")	 language->language = info->GetNthNode(i)->GetContent();
+				if (property == "righttoleft")	 language->rightToLeft = (info->GetNthNode(i)->GetContent() == "true" ? True : False);
 				if (property == "encoding")	 language->encoding = info->GetNthNode(i)->GetContent();
 				if (property == "author")	 language->author = info->GetNthNode(i)->GetContent();
 				if (property == "url")		 language->url = info->GetNthNode(i)->GetContent();
@@ -184,6 +186,8 @@ Int bonkTranslator::ActivateLanguage(String magic)
 		if (languages.GetNthEntry(i)->magic == magic)
 		{
 			activeLanguage = languages.GetNthEntry(i);
+
+			Setup::rightToLeft = activeLanguage->rightToLeft;
 
 			return Success;
 		}

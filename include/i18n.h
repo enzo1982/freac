@@ -25,6 +25,7 @@ typedef struct
 	String		 magic;
 	String		 author;
 	String		 url;
+	Bool		 rightToLeft;
 	Bool		 isOutOfDate;
 }
 bonkEncLanguageInfo;

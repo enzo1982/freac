@@ -84,7 +84,7 @@ CDEX_ERR DeInitAspiDll()
 CDEX_ERR InitAspiDll(bool &bUseNtScsi)
 {
 	CDEX_ERR	 bReturn = CDEX_OK;
-	const int	 MYMAXPATHLENGTH = 255;
+	const int	 MYMAXPATHLENGTH = 32768;
 	char		 lpszPathName[MYMAXPATHLENGTH] = {'\0',};
 
 	if (FALSE == bUseNtScsi) 

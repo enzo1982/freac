@@ -4,6 +4,7 @@
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
     <property name="language">Italiano</property>
+    <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Marco D'Amato &lt;protect100@hotmail.com&gt;</property>
     <property name="url">http://web.tiscali.it/protect/mdt.html</property>
