@@ -504,11 +504,19 @@ bonkEncGUI::bonkEncGUI()
 
 	pos.x = maxTextLength + 14;
 	pos.y -= 48;
-	size.cx = currentConfig->wndSize.cx - 27 - maxTextLength;
+	size.cx = currentConfig->wndSize.cx - 113 - maxTextLength;
 
 	edb_outdir		= new EditBox(currentConfig->enc_outdir, pos, size, 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->Deactivate();
+
+	pos.x = 87;
+	pos.y += 1;
+	size.cx = 0;
+
+	btn_outdir		= new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	btn_outdir->SetOrientation(OR_LOWERRIGHT);
+	btn_outdir->onClick.Connect(&bonkEnc::SelectDir, (bonkEnc *) this);
 
 	pos.x = maxTextLength + 14;
 	pos.y = 51;
@@ -704,6 +712,7 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd->RegisterObject(edb_percent);
 	mainWnd->RegisterObject(edb_encoder);
 	mainWnd->RegisterObject(edb_outdir);
+	mainWnd->RegisterObject(btn_outdir);
 	mainWnd->RegisterObject(progress);
 	mainWnd->RegisterObject(hyperlink);
 	mainWnd->RegisterObject(mainWnd_titlebar);
@@ -767,53 +776,56 @@ bonkEncGUI::~bonkEncGUI()
 {
 	ClearList();
 
-	delete mainWnd_menubar;
-	delete mainWnd_iconbar;
-	delete mainWnd_titlebar;
-	delete mainWnd_statusbar;
-	delete mainWnd;
-	delete joblist;
-	delete droparea;
+	DeleteObject(mainWnd_menubar);
+	DeleteObject(mainWnd_iconbar);
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd_statusbar);
+	DeleteObject(mainWnd);
+	DeleteObject(joblist);
+	DeleteObject(droparea);
 
 	if (winamp_out_modules.GetNOfEntries() > 0)
 	{
-		delete button_play;
-		delete button_pause;
-		delete button_stop;
-		delete button_prev;
-		delete button_next;
+		DeleteObject(button_play);
+		DeleteObject(button_pause);
+		DeleteObject(button_stop);
+		DeleteObject(button_prev);
+		DeleteObject(button_next);
 	}
 
-	delete txt_joblist;
-	delete info_divider;
-	delete info_bottom;
-	delete info_background;
-	delete info_checkbox;
-	delete info_text_artist;
-	delete info_edit_artist;
-	delete info_text_title;
-	delete info_edit_title;
-	delete info_text_album;
-	delete info_edit_album;
-	delete info_text_track;
-	delete info_edit_track;
-	delete info_text_year;
-	delete info_edit_year;
-	delete info_text_genre;
-	delete info_edit_genre;
-	delete info_list_genre;
-	delete enc_filename;
-	delete enc_time;
-	delete enc_percent;
-	delete enc_encoder;
-	delete enc_progress;
-	delete enc_outdir;
-	delete edb_filename;
-	delete edb_time;
-	delete edb_percent;
-	delete edb_encoder;
-	delete edb_outdir;
-	delete progress;
+	DeleteObject(txt_joblist);
+	DeleteObject(info_divider);
+	DeleteObject(info_bottom);
+	DeleteObject(info_background);
+	DeleteObject(info_checkbox);
+	DeleteObject(info_text_artist);
+	DeleteObject(info_edit_artist);
+	DeleteObject(info_text_title);
+	DeleteObject(info_edit_title);
+	DeleteObject(info_text_album);
+	DeleteObject(info_edit_album);
+	DeleteObject(info_text_track);
+	DeleteObject(info_edit_track);
+	DeleteObject(info_text_year);
+	DeleteObject(info_edit_year);
+	DeleteObject(info_text_genre);
+	DeleteObject(info_edit_genre);
+	DeleteObject(info_list_genre);
+	DeleteObject(enc_filename);
+	DeleteObject(enc_time);
+	DeleteObject(enc_percent);
+	DeleteObject(enc_encoder);
+	DeleteObject(enc_progress);
+	DeleteObject(enc_outdir);
+	DeleteObject(edb_filename);
+	DeleteObject(edb_time);
+	DeleteObject(edb_percent);
+	DeleteObject(edb_encoder);
+	DeleteObject(edb_outdir);
+	DeleteObject(btn_outdir);
+	DeleteObject(progress);
+	DeleteObject(hyperlink);
+
 	delete menu_file;
 	delete menu_options;
 	delete menu_addsubmenu;
@@ -824,7 +836,6 @@ bonkEncGUI::~bonkEncGUI()
 	delete menu_database;
 	delete menu_trackmenu;
 	delete menu_help;
-	delete hyperlink;
 }
 
 Bool bonkEncGUI::ExitProc()
@@ -876,7 +887,7 @@ Void bonkEncGUI::ResizeProc()
 
 	edb_filename->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_filename->GetObjectProperties()->size.cy);
 	edb_encoder->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy);
-	edb_outdir->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy);
+	edb_outdir->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 113 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy);
 
 	progress->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->GetObjectProperties()->size.cy);
 
@@ -942,7 +953,7 @@ Void bonkEncGUI::ConfigureGeneral()
 
 	dlg->ShowDialog();
 
-	delete dlg;
+	DeleteObject(dlg);
 
 	if (currentConfig->languageChanged)
 	{
@@ -1052,7 +1063,7 @@ Void bonkEncGUI::SubmitCDDBData()
 
 	dlg->ShowDialog();
 
-	delete dlg;
+	DeleteObject(dlg);
 }
 
 Void bonkEncGUI::ShowHideTitleInfo()
@@ -1213,14 +1224,17 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	edb_time->SetMetrics(Point(maxTextLength + 14, edb_time->GetObjectProperties()->pos.y), Size(34, edb_time->GetObjectProperties()->size.cy));
 	edb_percent->SetMetrics(Point(maxTextLength + 62 + enc_percent->GetObjectProperties()->textSize.cx, edb_percent->GetObjectProperties()->pos.y), Size(33, edb_percent->GetObjectProperties()->size.cy));
 	edb_encoder->SetMetrics(Point(maxTextLength + 109 + enc_percent->GetObjectProperties()->textSize.cx + enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
-	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
+	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 113 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
 
 	progress->SetMetrics(Point(maxTextLength + 14, progress->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->GetObjectProperties()->size.cy));
  
 	info_checkbox->SetText(i18n->TranslateString("Show title info"));
 	info_checkbox->SetMetrics(info_checkbox->GetObjectProperties()->pos, Size(info_checkbox->GetObjectProperties()->textSize.cx + 19, info_checkbox->GetObjectProperties()->size.cy));
 
+	info_background->Hide();
+	info_divider->Paint(SP_PAINT);
 	info_background->SetMetrics(info_background->GetObjectProperties()->pos, Size(info_checkbox->GetObjectProperties()->textSize.cx + 24, info_background->GetObjectProperties()->size.cy));
+	info_background->Show();
 
 	enc_filename->Show();
 	enc_time->Show();
@@ -1234,6 +1248,8 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	edb_percent->Show();
 	edb_encoder->Show();
 	edb_outdir->Show();
+
+	btn_outdir->SetText(bonkEnc::i18n->TranslateString("Browse"));
 
 	progress->Show();
 

@@ -8,7 +8,7 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 2 CVS (September 2003)
+	Version 1.0 beta 2 CVS (October 2003)
 
 		- added support for filename generation patterns
 		- added Greek, Japanese and Chinese (simplified) language support
@@ -19,6 +19,7 @@ History
 		- improved overall stability especially on Windows 9x/ME
 		- moved I18n capabilities to smooth
 		- config dialog asks to create missing output directory
+		- output directory can be changed from the main screen
 		- some small improvements
 		- some bugfixes
 

@@ -146,6 +146,8 @@ class bonkEnc : public Application
 		EditBox			*edb_encoder;
 		EditBox			*edb_outdir;
 
+		Button			*btn_outdir;
+
 		Progressbar		*progress;
 
 		Bool			 encoding;
@@ -198,6 +200,7 @@ class bonkEnc : public Application
 		Void			 StopPlayback();
 		Void			 PlayPrevious();
 		Void			 PlayNext();
+		Void			 SelectDir();
 	public:
 		static String		 version;
 		static String		 cddbVersion;

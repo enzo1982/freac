@@ -55,9 +55,9 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig		*bonkEnc::currentConfig	= NIL;
 I18n::Translator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "CVS 20030920";
+String	 bonkEnc::version = "CVS 20031003";
 String	 bonkEnc::cddbVersion = "v1.0beta1";
-String	 bonkEnc::shortVersion = "20030920";
+String	 bonkEnc::shortVersion = "20031003";
 
 bonkEnc::bonkEnc()
 {
@@ -418,4 +418,20 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 	delete dlg;
 
 	return array;
+}
+
+Void bonkEnc::SelectDir()
+{
+	DialogDirSelection	*dialog = new DialogDirSelection();
+
+	dialog->SetParentWindow(mainWnd);
+	dialog->SetCaption(String("\n").Append(bonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+
+	if (dialog->ShowDialog() == Success)
+	{
+		edb_outdir->SetText(dialog->GetDirName());
+		currentConfig->enc_outdir = dialog->GetDirName();
+	}
+
+	DeleteObject(dialog);
 }
