@@ -8,7 +8,7 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 beta 3 CVS (Mai 2004)
+	Version 1.0 beta 3 CVS (August 2004)
 
 		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
 		- Einige Fehler in der CDDB Implementierung wurden behoben
@@ -19,13 +19,14 @@ Geschichte
 		- HTTP Proxy Unterstützung integriert
 		- Fehler im WAVE Input Plugin wurde behoben
 		- Die BonkEnc Standardversion enthält jetzt das in_flac.dll Plugin für FLAC Unterstützung
-		- Fehlerhafte Darstellung von rechts-nach-links Schriften unter Windows NT/2000 behoben
 		- Unterstützung für Unicode Dateinamen hinzugefügt
 		- Ein Uninstaller wurde hinzugefügt
 		- Einige andere Fehler wurden behoben
+		- LAME auf Version 3.96 aktualisiert
 		- FAAC auf Version 1.24.0 aktualisiert
 		- FAAD2 AAC Decoder Unterstützung hinzugefügt
 		- Update auf smooth v0.8.65.0
+		- Unterstützung für Online-Programmupdates hinzugefügt
 
 	Version 1.0 beta 2 (Februar 2004)
 
@@ -164,8 +165,8 @@ Voraussetzungen
 		- Winamp 2 input und output Plugins werden verwendet, wenn sie im plugins Verzeichnis vorhanden sind
 		- MSLU wird verwendet, wenn es auf Windows 9x/ME installiert ist (http://www.microsoft.com/)
 
-Probleme
---------
+Bekannte Probleme
+-----------------
 
 	- Es gibt folgende Einschränkungen für das Eingabeformat:
 
@@ -179,9 +180,9 @@ Probleme
 	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
 	  Ausgabe-Samplingrate haben, wenn sie nicht LAME verwenden.
 
-	- Unicode Zeichen werden in Dateinamen durch '#' ersetzt, da IOLib noch keine Unicode Dateinamen unterstützt.
-
 	- Das Kommandozeileninterface unterstützt bisher noch keine Optionen um Encodereinstellungen zu verändern.
+
+	- Arabische Sprachunterstützung benötigt zur Zeit noch mindestens Windows XP.
 
 Pläne für zukünftige Versionen
 ------------------------------
@@ -190,11 +191,10 @@ Pläne für zukünftige Versionen
 		* Shell Integration
 		* Lokale CDDB Datenbank
 		* Onlinedokumentation für BonkEnc schreiben
-		* Online Update unterstützen
 		* CDDB Code aufräumen
 
 	- Spätere Versionen
-		* Eingabefilter für AAC, VQF
+		* Eingabefilter für VQF
 		* mehr Audioformate unterstützen (FLAC, MAC, WMA, ...)
 		* ein IOLib-Filters basierendes PlugIn System entwickeln
 		* Unterstützung für musicbrainz.org

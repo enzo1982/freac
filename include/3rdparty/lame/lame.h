@@ -26,11 +26,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-
-#ifdef HAVE_MPGLIB
-#define DECODE_ON_THE_FLY
-#endif
-
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -275,23 +270,32 @@ int CDECL lame_get_force_ms(const lame_global_flags *);
 int CDECL lame_set_free_format(lame_global_flags *, int);
 int CDECL lame_get_free_format(const lame_global_flags *);
 
-/* perform ReplayGain analysis on input data?  default = 0 (disabled) */
+/* perform ReplayGain analysis?  default = 0 (disabled) */
+int CDECL lame_set_findReplayGain(lame_global_flags *, int);
+int CDECL lame_get_findReplayGain(const lame_global_flags *);
+
+/* decode on the fly. Search for the peak sample. If the ReplayGain
+ * analysis is enabled then perform the analysis on the decoded data
+ * stream. default = 0 (disabled) 
+ * NOTE: if this option is set the build-in decoder should not be used */
+int CDECL lame_set_decode_on_the_fly(lame_global_flags *, int);
+int CDECL lame_get_decode_on_the_fly(const lame_global_flags *);
+
+/* DEPRECATED: now does the same as lame_set_findReplayGain() 
+   default = 0 (disabled) */
 int CDECL lame_set_ReplayGain_input(lame_global_flags *, int);
 int CDECL lame_get_ReplayGain_input(const lame_global_flags *);
 
-#ifdef DECODE_ON_THE_FLY
-/* perform ReplayGain analysis on decoded data?  default = 0 (disabled) 
- * NOTE: this option enables decoding on the fly and therefore if it is
- * set the build-in decoder should not be used */
+/* DEPRECATED: now does the same as 
+   lame_set_decode_on_the_fly() && lame_set_findReplayGain()
+   default = 0 (disabled) */
 int CDECL lame_set_ReplayGain_decode(lame_global_flags *, int);
 int CDECL lame_get_ReplayGain_decode(const lame_global_flags *);
 
-/* find peak sample?  default = 0 (disabled) 
- * NOTE: this option enables decoding on the fly and therefore if it is
- * set the build-in decoder should not be used */
+/* DEPRECATED: now does the same as lame_set_decode_on_the_fly() 
+   default = 0 (disabled) */
 int CDECL lame_set_findPeakSample(lame_global_flags *, int);
 int CDECL lame_get_findPeakSample(const lame_global_flags *);
-#endif
 
 /*
  * OPTIONAL:
@@ -556,22 +560,31 @@ int CDECL lame_get_frameNum(const lame_global_flags *);
 */
 int CDECL lame_get_totalframes(const lame_global_flags *);
 
-/* RadioGain value */
+/* RadioGain value. Multiplied by 10 and rounded to the nearest. */
 int CDECL lame_get_RadioGain(const lame_global_flags *);
 
-/* AudiophileGain value */
+/* AudiophileGain value. Multipled by 10 and rounded to the nearest. */
 int CDECL lame_get_AudiophileGain(const lame_global_flags *);
 
-#ifdef DECODE_ON_THE_FLY
 /* the peak sample */
 float CDECL lame_get_PeakSample(const lame_global_flags *);
 
-/* is decoding on the fly going to be performed */
+/* is decoding on the fly performed */
 int CDECL lame_get_decode_on_the_fly(const lame_global_flags *);
-#endif
 
+/* is ReplayGain analysis performed */
+int CDECL lame_get_findReplayGain(const lame_global_flags *);
 
+/* Gain change required for preventing clipping. The value is correct only if 
+   peak sample searching was enabled. If negative then the waveform 
+   already does not clip. The value is multiplied by 10 and rounded up. */
+int CDECL lame_get_noclipGainChange(const lame_global_flags *);
 
+/* user-specified scale factor required for preventing clipping. Value is 
+   correct only if peak sample searching was enabled and no user-specified
+   scaling was performed. If negative then either the waveform already does
+   not clip or the value cannot be determined */
+float CDECL lame_get_noclipScale(const lame_global_flags *);
 
 
 

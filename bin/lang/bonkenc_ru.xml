@@ -252,7 +252,7 @@
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Вам нравиться BonkEnc?&#10;BonkEnc полностью свободен, но Вы можете&#10;профинансировать разработки проекта.&#10;И переслать средства на %1 через PayPal.&#10;Подробности на %2.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate/Качество</entry>
     <entry id="243" string="Check for updates now">Проверить сейчас обновления</entry>
-    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">Новая версия BonkEnc доступна!</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Новая версия BonkEnc доступна!</entry>
     <entry id="245" string="There are no updates available at the moment!">На данный момент обновлений нет!</entry>
     <entry id="246" string="Check for updates at startup">Проверять обновления при запуске программы</entry>
   </data>

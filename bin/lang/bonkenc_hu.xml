@@ -245,7 +245,7 @@
     <entry id="234" string="Show Tip of the Day">Mutassa a Nap Tippjét</entry>
     <entry id="242" string="Bitrate / Quality">Bitráta/Minõség</entry>
     <entry id="243" string="Check for updates now">Friss verzió keresése most</entry>
-    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">A BonkEnc legújabb verziója már letölthetõ!&#10;Would you like to install it now?</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">A BonkEnc legújabb verziója már letölthetõ!&#10;Would you like to install it now?</entry>
     <entry id="245" string="There are no updates available at the moment!">Jelenleg nincs újabb verzió.</entry>
     <entry id="246" string="Check for updates at startup">Friss verzió keresése induláskor</entry>
   </data>

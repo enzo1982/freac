@@ -252,7 +252,7 @@
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">BonkEncを好きですか？BonkEncは無料で公開されていますが、&#10;あなたはBonkEncプロジェクトに開発費を寄付する事が出来ます。&#10;あなたは%1へPayPalを通して送金できます。&#10;詳細は%2を参照してください。</entry>
     <entry id="242" string="Bitrate / Quality">ビットレート/音質</entry>
     <entry id="243" string="Check for updates now">更新を確認する</entry>
-    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">新しいバージョンのBonkEncがオンラインで公開されています。&#10;新しいバージョンをインストールしますか？</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">新しいバージョンのBonkEncがオンラインで公開されています。&#10;新しいバージョンをインストールしますか？</entry>
     <entry id="245" string="There are no updates available at the moment!">現在公開されている更新はありません。</entry>
     <entry id="246" string="Check for updates at startup">起動時に更新を確認する</entry>
   </data>

@@ -27,23 +27,12 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	pos.x	= 7;
 	pos.y	= 11;
 	size.cx	= 344;
-	size.cy	= 151;
+	size.cy	= 125;
 
 	group_cddb	= new GroupBox(bonkEnc::i18n->TranslateString("CDDB Settings"), pos, size);
 
-	pos.x	= 17;
-	pos.y	= 24;
-	size.cx	= 157;
-	size.cy	= 0;
-
-	check_auto	= new CheckBox(bonkEnc::i18n->TranslateString("Automatic CDDB queries"), pos, size, &cddb_auto);
-
-	pos.x += 166;
-
-	check_cache	= new CheckBox(bonkEnc::i18n->TranslateString("Enable CDDB cache"), pos, size, &cddb_cache);
-
 	pos.x	= 16;
-	pos.y	+= 28;
+	pos.y	= 26;
 
 	text_mode	= new Text(bonkEnc::i18n->TranslateString("CDDB access mode:"), pos);
 
@@ -105,6 +94,24 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	button_proxy	= new Button(bonkEnc::i18n->TranslateString("Proxy settings"), NIL, pos, size);
 	button_proxy->onClick.Connect(&configureGeneralSettingsLayerCDDB::ProxySettings, this);
 
+	pos.x	= 359;
+	pos.y	= 11;
+	size.cx	= 178;
+	size.cy	= 68;
+
+	group_cddb_options = new GroupBox(bonkEnc::i18n->TranslateString("Options"), pos, size);
+
+	pos.x	= 369;
+	pos.y	= 25;
+	size.cx	= 157;
+	size.cy	= 0;
+
+	check_auto	= new CheckBox(bonkEnc::i18n->TranslateString("Automatic CDDB queries"), pos, size, &cddb_auto);
+
+	pos.y += 26;
+
+	check_cache	= new CheckBox(bonkEnc::i18n->TranslateString("Enable CDDB cache"), pos, size, &cddb_cache);
+
 	SetCDDBMode();
 
 	Int	 maxTextSize = max(text_email->GetObjectProperties()->textSize.cx, max(text_mode->GetObjectProperties()->textSize.cx, text_server->GetObjectProperties()->textSize.cx));
@@ -114,8 +121,6 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->GetObjectProperties()->pos.y), Size(317 - maxTextSize, edit_email->GetObjectProperties()->size.cy));
 
 	RegisterObject(group_cddb);
-	RegisterObject(check_auto);
-	RegisterObject(check_cache);
 	RegisterObject(text_mode);
 	RegisterObject(combo_mode);
 	RegisterObject(text_server);
@@ -126,13 +131,14 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	RegisterObject(edit_email);
 	RegisterObject(button_http);
 	RegisterObject(button_proxy);
+	RegisterObject(group_cddb_options);
+	RegisterObject(check_auto);
+	RegisterObject(check_cache);
 }
 
 configureGeneralSettingsLayerCDDB::~configureGeneralSettingsLayerCDDB()
 {
 	DeleteObject(group_cddb);
-	DeleteObject(check_auto);
-	DeleteObject(check_cache);
 	DeleteObject(text_mode);
 	DeleteObject(combo_mode);
 	DeleteObject(text_server);
@@ -143,6 +149,9 @@ configureGeneralSettingsLayerCDDB::~configureGeneralSettingsLayerCDDB()
 	DeleteObject(edit_email);
 	DeleteObject(button_http);
 	DeleteObject(button_proxy);
+	DeleteObject(group_cddb_options);
+	DeleteObject(check_auto);
+	DeleteObject(check_cache);
 }
 
 Void configureGeneralSettingsLayerCDDB::SetCDDBMode()

@@ -19,7 +19,7 @@ configureGeneralSettingsLayerLanguage::configureGeneralSettingsLayerLanguage() :
 
 	pos.x	= 7;
 	pos.y	= 66;
-	size.cx	= 344;
+	size.cx	= 530;
 	size.cy	= 77;
 
 	group_info	= new GroupBox(bonkEnc::i18n->TranslateString("Information"), pos, size);
@@ -36,7 +36,7 @@ configureGeneralSettingsLayerLanguage::configureGeneralSettingsLayerLanguage() :
 
 	pos.x	= 7;
 	pos.y	= 11;
-	size.cx	= 344;
+	size.cx	= 530;
 	size.cy	= 43;
 
 	group_language	= new GroupBox(bonkEnc::i18n->TranslateString("Language"), pos, size);
@@ -48,7 +48,7 @@ configureGeneralSettingsLayerLanguage::configureGeneralSettingsLayerLanguage() :
 
 	pos.x	+= (text_language->GetObjectProperties()->textSize.cx + 8);
 	pos.y	= 23;
-	size.cx	= (317 - text_language->GetObjectProperties()->textSize.cx);
+	size.cx	= (503 - text_language->GetObjectProperties()->textSize.cx);
 	size.cy	= 0;
 
 	combo_language	= new ComboBox(pos, size);

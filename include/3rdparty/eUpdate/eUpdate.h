@@ -1,8 +1,6 @@
 #ifndef _H_EASYUPDATE_
 #define _H_EASYUPDATE_
 
-#include <smooth.h>
-
 #if defined EUPDATE_DLL
 	#define DLLAPI __declspec (dllexport)
 #else
@@ -11,26 +9,36 @@
 
 extern "C"
 {
-	DLLAPI S::Void	*eUpdate_CreateUpdateContext		(const char *);
-	DLLAPI S::Int	 eUpdate_FreeUpdateContext		(S::Void *);
+/* Use this function to automate the update process.
+   easyUpdate will show a dialog box presenting the
+   available updates and let the user choose what
+   packages to install. */
 
-	DLLAPI S::Int	 eUpdate_CheckForUpdates		(S::Void *, const char *);
+	DLLAPI void	 eUpdate_AutomaticUpdate		(const char *, const char *, const char *, bool, int);
 
-	DLLAPI char	*eUpdate_GetLatestVersionID		(S::Void *);
-	DLLAPI char	*eUpdate_GetLatestPossibleUpdateID	(S::Void *, char *);
+/* Use these functions to implement your own GUI for
+   updating your software. */
 
-	DLLAPI S::Int	 eUpdate_GetNumberOfVersions		(S::Void *);
-	DLLAPI char	*eUpdate_GetNthVersionID		(S::Void *, S::Int);
-	DLLAPI char	*eUpdate_GetNthVersionDescription	(S::Void *, S::Int);
+	DLLAPI void	*eUpdate_CreateUpdateContext		(const char *);
+	DLLAPI int	 eUpdate_FreeUpdateContext		(void *);
 
-	DLLAPI S::Int	 eUpdate_GetNumberOfOptions		(S::Void *);
-	DLLAPI char	*eUpdate_GetNthOptionID			(S::Void *, S::Int);
-	DLLAPI char	*eUpdate_GetNthOptionDescription	(S::Void *, S::Int);
+	DLLAPI int	 eUpdate_CheckForUpdates		(void *, const char *);
 
-	DLLAPI S::Int	 eUpdate_DownloadVersion		(S::Void *, const char *, const char *);
-	DLLAPI S::Int	 eUpdate_DownloadOption			(S::Void *, const char *, const char *);
+	DLLAPI char	*eUpdate_GetLatestVersionID		(void *);
+	DLLAPI char	*eUpdate_GetLatestPossibleUpdateID	(void *, char *);
 
-	DLLAPI S::Void	 eUpdate_PerformUpdate			(S::Void *);
+	DLLAPI int	 eUpdate_GetNumberOfVersions		(void *);
+	DLLAPI char	*eUpdate_GetNthVersionID		(void *, int);
+	DLLAPI char	*eUpdate_GetNthVersionDescription	(void *, int);
+
+	DLLAPI int	 eUpdate_GetNumberOfOptions		(void *);
+	DLLAPI char	*eUpdate_GetNthOptionID			(void *, int);
+	DLLAPI char	*eUpdate_GetNthOptionDescription	(void *, int);
+
+	DLLAPI int	 eUpdate_DownloadVersion		(void *, const char *, const char *);
+	DLLAPI int	 eUpdate_DownloadOption			(void *, const char *, const char *);
+
+	DLLAPI void	 eUpdate_PerformUpdate			(void *);
 }
 
 #endif

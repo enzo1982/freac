@@ -8,7 +8,7 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 3 CVS (May 2004)
+	Version 1.0 beta 3 CVS (August 2004)
 
 		- NT SCSI support is working again
 		- fixed some bugs in the CDDB implementation
@@ -19,13 +19,14 @@ History
 		- added HTTP proxy support
 		- fixed a bug in the WAVE file reader
 		- the BonkEnc distribution now includes the in_flac.dll plug-in for FLAC input
-		- fixed bad rendering right-to-left scripts on Windows NT/2000
 		- added support for Unicode filenames
 		- added an uninstaller
 		- some other bugfixes
+		- upgraded LAME to version 3.96
 		- upgraded FAAC to version 1.24.0
 		- added FAAD2 AAC decoder support
 		- upgraded to smooth v0.8.65.0
+		- added support for online program updates
 
 	Version 1.0 beta 2 (February 2004)
 
@@ -164,8 +165,8 @@ Requirements
 		- Winamp 2 input and output plug-ins are used if they are found in the plugins directory
 		- MSLU is used if installed on Windows 9x/ME systems (http://www.microsoft.com/)
 
-Problems
---------
+Known problems
+--------------
 
 	- There are the following restrictions on the input file format:
 
@@ -181,6 +182,8 @@ Problems
 
 	- The command line interface doesn't support options for modifying encoder settings, yet.
 
+	- Arabic language support currently requires Windows XP or later.
+
 Future plans
 ------------
 
@@ -188,11 +191,10 @@ Future plans
 		* shell integration
 		* local CDDB support
 		* write online documentation for BonkEnc
-		* add online update functionality
 		* clean CDDB code
 
 	- Some later release
-		* input filters for AAC, VQF
+		* input filter for VQF
 		* support more audio formats (FLAC, MAC, WMA, ...)
 		* develop an IOLib-Filters based plugin system
 		* add musicbrainz.org support

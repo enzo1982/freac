@@ -44,7 +44,8 @@ Void bonkEncGUI::AddFile()
 
 				if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
-					types.AddEntry(type);
+					if (type != "AAC Files (*.AAC)") types.AddEntry(type);
+
 					k = 0;
 					n++;
 					type = "";
@@ -72,7 +73,8 @@ Void bonkEncGUI::AddFile()
 						}
 					}
 
-					extensions.AddEntry(extension);
+					if (extension != "*.AAC") extensions.AddEntry(extension);
+
 					k = 0;
 					n++;
 					extension = "";

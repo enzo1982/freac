@@ -252,7 +252,7 @@
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Vous appréciez BonkEnc? BonkEnc est disponible gratuitement,&#10;mais vous pouvez aider à son financement en faisant un don&#10;au projet BonkEnc. Vous pouvez envoyer de l'argent à&#10;%1 grâce à PayPal.&#10;Voir %2 pour plus de détails.</entry>
     <entry id="242" string="Bitrate / Quality">Débit binaire / Qualité</entry>
     <entry id="243" string="Check for updates now">Rechercher des mises à jours maintenant</entry>
-    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">Une nouvelle version de BonkEnc est disponible en ligne ! Voulez-vous l'installer maintenant ?</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Une nouvelle version de BonkEnc est disponible en ligne ! Voulez-vous l'installer maintenant ?</entry>
     <entry id="245" string="There are no updates available at the moment!">Actuellement, aucune mise à jour n'est disponible !</entry>
     <entry id="246" string="Check for updates at startup">Rechercher des mises à jours au démarrage</entry>
   </data>

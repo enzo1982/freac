@@ -317,35 +317,15 @@
 
 // eUpdate DLL API
 
-	typedef S::Void *			(*EUCREATEUPDATECONTEXT)			(const char *);
+	typedef S::Void *			(*EUCREATEUPDATECONTEXT)			(const char *, const char *, const char *);
 	typedef S::Int				(*EUFREEUPDATECONTEXT)				(S::Void *);
-	typedef S::Int				(*EUCHECKFORUPDATES)				(S::Void *, const char *);
-	typedef char *				(*EUGETLATESTVERSIONID)				(S::Void *);
-	typedef char *				(*EUGETLATESTPOSSIBLEUPDATEID)			(S::Void *, char *);
-	typedef S::Int				(*EUGETNUMBEROFVERSIONS)			(S::Void *);
-	typedef char *				(*EUGETNTHVERSIONID)				(S::Void *, S::Int);
-	typedef char *				(*EUGETNTHVERSIONDESCRIPTION)			(S::Void *, S::Int);
-	typedef S::Int				(*EUGETNUMBEROFOPTIONS)				(S::Void *);
-	typedef char				(*EUGETNTHOPTIONID)				(S::Void *, S::Int);
-	typedef char				(*EUGETNTHOPTIONDESCRIPTION)			(S::Void *, S::Int);
-	typedef S::Int				(*EUDOWNLOADVERSION)				(S::Void *, const char *, const char *);
-	typedef S::Int				(*EUDOWNLOADOPTION)				(S::Void *, const char *, const char *);
-	typedef S::Void				(*EUPERFORMUPDATE)				(S::Void *);
+	typedef S::Int				(*EUCHECKFORNEWUPDATES)				(S::Void *, S::Bool);
+	typedef S::Void				(*EUAUTOMATICUPDATE)				(S::Void *);
 
 	extern EUCREATEUPDATECONTEXT		 ex_eUpdate_CreateUpdateContext;
 	extern EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext;
-	extern EUCHECKFORUPDATES		 ex_eUpdate_CheckForUpdates;
-	extern EUGETLATESTVERSIONID		 ex_eUpdate_GetLatestVersionID;
-	extern EUGETLATESTPOSSIBLEUPDATEID	 ex_eUpdate_GetLatestPossibleUpdateID;
-	extern EUGETNUMBEROFVERSIONS		 ex_eUpdate_GetNumberOfVersions;
-	extern EUGETNTHVERSIONID		 ex_eUpdate_GetNthVersionID;
-	extern EUGETNTHVERSIONDESCRIPTION	 ex_eUpdate_GetNthVersionDescription;
-	extern EUGETNUMBEROFOPTIONS		 ex_eUpdate_GetNumberOfOptions;
-	extern EUGETNTHOPTIONID			 ex_eUpdate_GetNthOptionID;
-	extern EUGETNTHOPTIONDESCRIPTION	 ex_eUpdate_GetNthOptionDescription;
-	extern EUDOWNLOADVERSION		 ex_eUpdate_DownloadVersion;
-	extern EUDOWNLOADOPTION			 ex_eUpdate_DownloadOption;
-	extern EUPERFORMUPDATE			 ex_eUpdate_PerformUpdate;
+	extern EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates;
+	extern EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate;
 
 // ID3Lib DLL API
 

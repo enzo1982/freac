@@ -1714,24 +1714,13 @@ Int bonkEncGUI::CheckForUpdatesThread(Thread *self)
 {
 	if (!currentConfig->enable_eUpdate) return Success;
 
-	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder");
-	String	 latest;
+	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "http://localhost/eUpdate/eUpdate_test.xml");
 
-	if (ex_eUpdate_CheckForUpdates(context, "http://www.bonkenc.org/eUpdate/eUpdate.xml") >= 0)
+	if (ex_eUpdate_CheckForNewUpdates(context, (self == NIL)) > 0)
 	{
-		if (ex_eUpdate_GetNumberOfVersions(context) > 0) latest = ex_eUpdate_GetLatestPossibleUpdateID(context, version);
-	}
+		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
 
-	if (latest != NIL && latest != version)
-	{
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("A new version of BonkEnc is available online!\nWould you like to install it now?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
-
-		if (msgBox->ShowDialog() == IDYES)
-		{
-			ex_eUpdate_DownloadVersion(context, version, latest);
-
-			ex_eUpdate_PerformUpdate(context);
-		}
+		if (msgBox->ShowDialog() == IDYES) ex_eUpdate_AutomaticUpdate(context);
 
 		DeleteObject(msgBox);
 	}

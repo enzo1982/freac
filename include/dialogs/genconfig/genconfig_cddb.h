@@ -21,8 +21,6 @@ class configureGeneralSettingsLayerCDDB : public Layer
 {
 	private:
 		GroupBox	*group_cddb;
-		CheckBox	*check_auto;
-		CheckBox	*check_cache;
 		Text		*text_mode;
 		ComboBox	*combo_mode;
 		Text		*text_server;
@@ -33,6 +31,9 @@ class configureGeneralSettingsLayerCDDB : public Layer
 		EditBox		*edit_email;
 		Button		*button_http;
 		Button		*button_proxy;
+		GroupBox	*group_cddb_options;
+		CheckBox	*check_auto;
+		CheckBox	*check_cache;
 
 		Bool		 cddb_auto;
 		Bool		 cddb_cache;
