@@ -195,6 +195,10 @@ SOURCE=..\src\cddb_multimatch.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\cddb_query.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\cddb_submit.cpp
 # End Source File
 # Begin Source File
@@ -386,6 +390,10 @@ SOURCE=..\include\cddb_extsettings.h
 # Begin Source File
 
 SOURCE=..\include\cddb_multimatch.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\cddb_query.h
 # End Source File
 # Begin Source File
 

@@ -109,7 +109,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW v1.x (http://www.mingw.org/) or MSVC v6.0
-		- smooth v0.8.62.0 CVS (http://www.smooth-project.org/)
+		- smooth v0.8.62.0 (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - included with smooth)
 
 	Additional optional software:
@@ -145,6 +145,7 @@ Future plans
 		* local CDDB support
 		* write online documentation for BonkEnc
 		* add online update functionality
+		* clean CDDB code
 
 	- Some later release
 		* input filters for AAC, VQF

@@ -4,6 +4,15 @@ Guide to writing BonkEnc language files
 People had some problems writing new language files for BonkEnc in the past. Most
 were related to the text encoding in the language files.
 
+The language files and items
+----------------------------
+
+	If you are doing a completely new translation, you can take the template.xml file
+	as a starting point. It includes all the strings that need to be translated for BonkEnc.
+
+	The Changes file provides information about which entries have been updated since the
+	last release. So if you are updating a translation, you now where to look at.
+
 Character encoding
 ------------------
 
@@ -20,7 +29,7 @@ Character encoding
 
 	If you use a different charset than UTF-8, you need to change the first line of the
 	XML file. It usually is: <?xml version="1.0" encoding="UTF-8"?>
-	Replace UTF-8 by whatever encoding you used in the file.
+	Replace UTF-8 with whatever encoding you used in the file.
 
 	If you use 16 or 32 bit Unicode (UCS-2, UCS-4), you should specify if the file is
 	big endian or little endian and write UCS-2BE or UCS-2LE.
