@@ -1,4 +1,4 @@
-BonkEnc version 0.8
+BonkEnc version 0.9
 
 BonkEnc is an encoder for various audio formats. It can
 produce MP3, Ogg Vorbis, BONK, AAC and VQF files.
@@ -10,6 +10,10 @@ BonkEnc with the '--console' parameter.
 
 History
 -------
+
+	Version 0.9
+
+		- added Hungarian language support
 
 	Version 0.8
 
@@ -72,7 +76,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW32 v1.0 or greater (http://www.mingw.org/)
-		- smooth v0.8.60.0 (http://www.smooth-project.org/)
+		- smooth v0.8.61.0 (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - included with smooth)
 
 	Additional optional software:

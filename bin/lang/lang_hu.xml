@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">BonkEnc</property>
+    <property name="version">0.8</property>
+    <property name="language">Magyar</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">Tóth Péter &lt;golbat@freemail.hu&gt;</property>
+    <property name="url">http://www.bonkenc.org</property>
+  </info>
+  <entry id="1">
+    <property name="string">File</property>
+    <property name="translation">Fájl</property>
+  </entry>
+  <entry id="2">
+    <property name="string">Options</property>
+    <property name="translation">Beállítások</property>
+  </entry>
+  <entry id="3">
+    <property name="string">Encode</property>
+    <property name="translation">Tömörítés</property>
+  </entry>
+  <entry id="4">
+    <property name="string">Add</property>
+    <property name="translation">Hozzáadás</property>
+  </entry>
+  <entry id="5">
+    <property name="string">Remove</property>
+    <property name="translation">Eltávolítás</property>
+  </entry>
+  <entry id="6">
+    <property name="string">Clear joblist</property>
+    <property name="translation">Mindet töröl</property>
+  </entry>
+  <entry id="7">
+    <property name="string">Exit</property>
+    <property name="translation">Befejezés</property>
+  </entry>
+  <entry id="8">
+    <property name="string">General settings...</property>
+    <property name="translation">Általános beállítások</property>
+  </entry>
+  <entry id="9">
+    <property name="string">Configure selected encoder...</property>
+    <property name="translation">Választott tömörítõ beállításai</property>
+  </entry>
+  <entry id="10">
+    <property name="string">Audio file(s)...</property>
+    <property name="translation">Audio fájl(ok)</property>
+  </entry>
+  <entry id="11">
+    <property name="string">Audio CD contents</property>
+    <property name="translation">Audio CD tartalma</property>
+  </entry>
+  <entry id="12">
+    <property name="string">Start encoding</property>
+    <property name="translation">Tömörítés indítása</property>
+  </entry>
+  <entry id="13">
+    <property name="string">Stop encoding</property>
+    <property name="translation">Tömörítés megszakítása</property>
+  </entry>
+  <entry id="14">
+    <property name="string">Encoding file:</property>
+    <property name="translation">Jelenleg tömörítés alatt:</property>
+  </entry>
+  <entry id="15">
+    <property name="string">Time left:</property>
+    <property name="translation">Hátralévõ idõ:</property>
+  </entry>
+  <entry id="16">
+    <property name="string">Percent done:</property>
+    <property name="translation">Készenlét %:</property>
+  </entry>
+  <entry id="17">
+    <property name="string">Selected encoder:</property>
+    <property name="translation">Választott tömörítõ:</property>
+  </entry>
+  <entry id="18">
+    <property name="string">File progress:</property>
+    <property name="translation">Folyamat állapot:</property>
+  </entry>
+  <entry id="19">
+    <property name="string">Output dir.:</property>
+    <property name="translation">Cél könyvtár:</property>
+  </entry>
+  <entry id="20">
+    <property name="string"> file(s) in joblist:</property>
+    <property name="translation"> fájl(ok) a listán:</property>
+  </entry>
+  <entry id="21">
+    <property name="string">none</property>
+    <property name="translation">nincs</property>
+  </entry>
+  <entry id="22">
+    <property name="string">Display information about BonkEnc</property>
+    <property name="translation">Információk a BonkEnc-rõl</property>
+  </entry>
+  <entry id="23">
+    <property name="string">Add audio file(s) to the joblist</property>
+    <property name="translation">Audiofájlok hozzáadása a listához </property>
+  </entry>
+  <entry id="24">
+    <property name="string">Add audio CD contents to the joblist</property>
+    <property name="translation">Audio CD tartalma a listához</property>
+  </entry>
+  <entry id="25">
+    <property name="string">Remove the selected entry from the joblist</property>
+    <property name="translation">Kiválasztott elem törlése a listából</property>
+  </entry>
+  <entry id="26">
+    <property name="string">Clear the entire joblist</property>
+    <property name="translation">Teljes lista törlése</property>
+  </entry>
+  <entry id="27">
+    <property name="string">Configure general settings</property>
+    <property name="translation">Általános beállítások módosítása</property>
+  </entry>
+  <entry id="28">
+    <property name="string">Configure the selected audio encoder</property>
+    <property name="translation">Kiválasztott tömörítõ beállításai</property>
+  </entry>
+  <entry id="29">
+    <property name="string">Start the encoding process</property>
+    <property name="translation">Tömörítés indítása</property>
+  </entry>
+  <entry id="30">
+    <property name="string">Cannot modify the joblist while encoding!</property>
+    <property name="translation">Tömörítés közben a lista nem módosítható!</property>
+  </entry>
+  <entry id="31">
+    <property name="string">Error</property>
+    <property name="translation">Hiba!</property>
+  </entry>
+  <entry id="32">
+    <property name="string">Audio Files</property>
+    <property name="translation">Audio fájlok</property>
+  </entry>
+  <entry id="33">
+    <property name="string">Apple Audio Files</property>
+    <property name="translation">Apple Audio fájlok</property>
+  </entry>
+  <entry id="34">
+    <property name="string">Creative Voice Files</property>
+    <property name="translation">Creative Voice fájlok</property>
+  </entry>
+  <entry id="35">
+    <property name="string">Sun Audio Files</property>
+    <property name="translation">Sun Audio fájlok</property>
+  </entry>
+  <entry id="36">
+    <property name="string">Wave Files</property>
+    <property name="translation">Wave fájlok</property>
+  </entry>
+  <entry id="37">
+    <property name="string">Windows CD Audio Track</property>
+    <property name="translation">Windows Audio CD szám</property>
+  </entry>
+  <entry id="38">
+    <property name="string">All Files</property>
+    <property name="translation">Összes fájl</property>
+  </entry>
+  <entry id="39">
+    <property name="string">You have not selected a file!</property>
+    <property name="translation">Nem választottál ki még egy fájlt sem!</property>
+  </entry>
+  <entry id="40">
+    <property name="string">The encoding thread is still running!\nDo you really want to quit?</property>
+    <property name="translation">A tömörítés még fut! Megállítsam?</property>
+  </entry>
+  <entry id="41">
+    <property name="string">Currently encoding</property>
+    <property name="translation">Tömörítés folyamatban</property>
+  </entry>
+  <entry id="42">
+    <property name="string">This program is being distributed under the terms</property>
+    <property name="translation">Ez a program szabadon terjeszthetõ</property>
+  </entry>
+  <entry id="43">
+    <property name="string">of the GNU General Public License (GPL).</property>
+    <property name="translation">a GNU (General Public License) elõírásai szerint.</property>
+  </entry>
+  <entry id="44">
+    <property name="string">About BonkEnc</property>
+    <property name="translation">A BonkEnc-rõl röviden</property>
+  </entry>
+  <entry id="45">
+    <property name="string">No options can be configured for the WAVE Out filter!</property>
+    <property name="translation">A WAVE Out Filter-nek nincsenek beállítási lehetõségei!</property>
+  </entry>
+  <entry id="46">
+    <property name="string">WAVE Out filter</property>
+    <property name="translation">WAVE Out Filter</property>
+  </entry>
+  <entry id="47">
+    <property name="string">Cannot change settings while encoding!</property>
+    <property name="translation">Tömörítés közben a beállítások nem változtathatók meg!</property>
+  </entry>
+  <entry id="48">
+    <property name="string">encoder configuration</property>
+    <property name="translation">Tömörítõ beállításai</property>
+  </entry>
+  <entry id="49">
+    <property name="string">OK</property>
+    <property name="translation">Rendben!</property>
+  </entry>
+  <entry id="50">
+    <property name="string">Cancel</property>
+    <property name="translation">Mégsem</property>
+  </entry>
+  <entry id="51">
+    <property name="string">Encoding Mode</property>
+    <property name="translation">Tömörítési mód</property>
+  </entry>
+  <entry id="52">
+    <property name="string">Variable Bitrate</property>
+    <property name="translation">Változó bitráta</property>
+  </entry>
+  <entry id="53">
+    <property name="string">Average Bitrate</property>
+    <property name="translation">Átlagos bitráta</property>
+  </entry>
+  <entry id="54">
+    <property name="string">Quality</property>
+    <property name="translation">Minõség</property>
+  </entry>
+  <entry id="55">
+    <property name="string">Encoders</property>
+    <property name="translation">Tömörítõk</property>
+  </entry>
+  <entry id="56">
+    <property name="string">Directories</property>
+    <property name="translation">Könyvtárak</property>
+  </entry>
+  <entry id="57">
+    <property name="string">Language</property>
+    <property name="translation">Nyelv</property>
+  </entry>
+  <entry id="58">
+    <property name="string">General settings setup</property>
+    <property name="translation">Általános beállítások</property>
+  </entry>
+  <entry id="59">
+    <property name="string">Configure encoder</property>
+    <property name="translation">Tömörítõ beállítása</property>
+  </entry>
+  <entry id="60">
+    <property name="string">Encoder</property>
+    <property name="translation">Tömörítõ</property>
+  </entry>
+  <entry id="61">
+    <property name="string">Output directory</property>
+    <property name="translation">Célkönyvtár</property>
+  </entry>
+  <entry id="62">
+    <property name="string">Browse</property>
+    <property name="translation">Keresés</property>
+  </entry>
+  <entry id="63">
+    <property name="string">Select the folder in which the encoded files will be placed:</property>
+    <property name="translation">Célkönyvtár megadása:</property>
+  </entry>
+  <entry id="64">
+    <property name="string">Encoding</property>
+    <property name="translation">Tömörítés</property>
+  </entry>
+  <entry id="65">
+    <property name="string">Author</property>
+    <property name="translation">Szerzõ</property>
+  </entry>
+  <entry id="66">
+    <property name="string">URL</property>
+    <property name="translation">URL</property>
+  </entry>
+  <entry id="67">
+    <property name="string">Information</property>
+    <property name="translation">Információk</property>
+  </entry>
+  <entry id="68">
+    <property name="string">Select language:</property>
+    <property name="translation">Válassz nyelvet:</property>
+  </entry>
+  <entry id="69">
+    <property name="string">Active CD-ROM drive</property>
+    <property name="translation">Aktív CD-ROM meghajtó</property>
+  </entry>
+  <entry id="70">
+    <property name="string">Ripper settings</property>
+    <property name="translation">Másoló beállítások</property>
+  </entry>
+  <entry id="71">
+    <property name="string">Activate cdparanoia mode:</property>
+    <property name="translation">CdParanoia mód be</property>
+  </entry>
+  <entry id="72">
+    <property name="string">Activate jitter correction</property>
+    <property name="translation">Jitter korrekció be</property>
+  </entry>
+  <entry id="73">
+    <property name="string">Swap left/right channel</property>
+    <property name="translation">Csatornák felcserélése</property>
+  </entry>
+  <entry id="74">
+    <property name="string">Lock CD tray while ripping</property>
+    <property name="translation">Tálca zárás másoláskor</property>
+  </entry>
+  <entry id="75">
+    <property name="string">Use native NT SCSI library</property>
+    <property name="translation">NT SCSI DLL használat</property>
+  </entry>
+  <entry id="76">
+    <property name="string">Overlap only</property>
+    <property name="translation">Csak Overlap</property>
+  </entry>
+  <entry id="77">
+    <property name="string">No verify</property>
+    <property name="translation">Nincs ellenõrzés</property>
+  </entry>
+  <entry id="78">
+    <property name="string">No scratch repair</property>
+    <property name="translation">Pattogás nincs javítva</property>
+  </entry>
+  <entry id="79">
+    <property name="string">Full cdparanoia mode</property>
+    <property name="translation">Teljes ellenõrzés mód</property>
+  </entry>
+  <entry id="80">
+    <property name="string">Bitrate</property>
+    <property name="translation">Bitráta</property>
+  </entry>
+  <entry id="81">
+    <property name="string">Copyright bit</property>
+    <property name="translation">Copyright Bit</property>
+  </entry>
+  <entry id="82">
+    <property name="string">CRC</property>
+    <property name="translation">CRC</property>
+  </entry>
+  <entry id="83">
+    <property name="string">Original bit</property>
+    <property name="translation">Original Bit</property>
+  </entry>
+  <entry id="84">
+    <property name="string">Channels</property>
+    <property name="translation">Csatornák</property>
+  </entry>
+  <entry id="85">
+    <property name="string">Private bit</property>
+    <property name="translation">Private Bit</property>
+  </entry>
+  <entry id="86">
+    <property name="string">Set Copyright bit</property>
+    <property name="translation">Copyright Bit be</property>
+  </entry>
+  <entry id="87">
+    <property name="string">Enable CRC</property>
+    <property name="translation">CRC engedélyezés</property>
+  </entry>
+  <entry id="88">
+    <property name="string">Set Original bit</property>
+    <property name="translation">Original Bit be</property>
+  </entry>
+  <entry id="89">
+    <property name="string">Dual channel encoding</property>
+    <property name="translation">Bal/jobb csatorna szétválasztás</property>
+  </entry>
+  <entry id="90">
+    <property name="string">Set Private bit</property>
+    <property name="translation">Private Bit be</property>
+  </entry>
+  <entry id="91">
+    <property name="string">Encoder mode</property>
+    <property name="translation">Tömörítõ mód</property>
+  </entry>
+  <entry id="92">
+    <property name="string">Stereo mode</property>
+    <property name="translation">Sztereó mód</property>
+  </entry>
+  <entry id="93">
+    <property name="string">Quantization</property>
+    <property name="translation">Kvantálás</property>
+  </entry>
+  <entry id="94">
+    <property name="string">Downsampling ratio</property>
+    <property name="translation">Downsampling ráta</property>
+  </entry>
+  <entry id="95">
+    <property name="string">Predictor size</property>
+    <property name="translation">Predictor mérete</property>
+  </entry>
+  <entry id="96">
+    <property name="string">Enable lossless encoding</property>
+    <property name="translation">Veszteségmentes tömörítés</property>
+  </entry>
+  <entry id="97">
+    <property name="string">Enable Joint Stereo</property>
+    <property name="translation">Joint Stereo be</property>
+  </entry>
+  <entry id="98">
+    <property name="string">Bitrate per channel:</property>
+    <property name="translation">Bitráta csatornánként:</property>
+  </entry>
+  <entry id="99">
+    <property name="string">Preselection</property>
+    <property name="translation">Elõválasztás</property>
+  </entry>
+  <entry id="100">
+    <property name="string">Number of preselection candidates:</property>
+    <property name="translation">Elõválasztási jelöltek száma:</property>
+  </entry>
+  <entry id="101">
+    <property name="string">MPEG version</property>
+    <property name="translation">MPEG verzió</property>
+  </entry>
+  <entry id="102">
+    <property name="string">AAC object type</property>
+    <property name="translation">AAC objektum típus</property>
+  </entry>
+  <entry id="103">
+    <property name="string">Allow Joint Stereo</property>
+    <property name="translation">Joint Stereo be</property>
+  </entry>
+  <entry id="104">
+    <property name="string">Temporal Noise Shaping</property>
+    <property name="translation">Temporal Noise Shaping</property>
+  </entry>
+  <entry id="105">
+    <property name="string">Use Temporal Noise Shaping</property>
+    <property name="translation">TNS használat</property>
+  </entry>
+  <entry id="106">
+    <property name="string">Maximum bandwidth</property>
+    <property name="translation">Maximális sávszélesség</property>
+  </entry>
+  <entry id="107">
+    <property name="string">Maximum AAC frequency bandwidth to use (Hz):</property>
+    <property name="translation">Maximum AAC frekvencia sávszélesség Hz:</property>
+  </entry>
+  <entry id="108">
+    <property name="string">Basic</property>
+    <property name="translation">Alap</property>
+  </entry>
+  <entry id="109">
+    <property name="string">Misc</property>
+    <property name="translation">Egyéb</property>
+  </entry>
+  <entry id="110">
+    <property name="string">Audio processing</property>
+    <property name="translation">Audio feldolgozás</property>
+  </entry>
+  <entry id="111">
+    <property name="string">Set bitrate:</property>
+    <property name="translation">Bitráta:</property>
+  </entry>
+  <entry id="112">
+    <property name="string">Set ratio:</property>
+    <property name="translation">Szint beállítás:</property>
+  </entry>
+  <entry id="113">
+    <property name="string">Set quality:</property>
+    <property name="translation">Minõség:</property>
+  </entry>
+  <entry id="114">
+    <property name="string">worse</property>
+    <property name="translation">rosszabb</property>
+  </entry>
+  <entry id="115">
+    <property name="string">better</property>
+    <property name="translation">jobb</property>
+  </entry>
+  <entry id="116">
+    <property name="string">Auto</property>
+    <property name="translation">Automatikus</property>
+  </entry>
+  <entry id="117">
+    <property name="string">Stereo</property>
+    <property name="translation">Stereo</property>
+  </entry>
+  <entry id="118">
+    <property name="string">Joint Stereo</property>
+    <property name="translation">Joint Stereo</property>
+  </entry>
+  <entry id="119">
+    <property name="string">Force Joint Stereo</property>
+    <property name="translation">Csak Joint Stereo mód</property>
+  </entry>
+  <entry id="120">
+    <property name="string">VBR mode</property>
+    <property name="translation">VBR mód</property>
+  </entry>
+  <entry id="121">
+    <property name="string">no VBR</property>
+    <property name="translation">VBR mód ki</property>
+  </entry>
+  <entry id="122">
+    <property name="string">VBR quality</property>
+    <property name="translation">VBR minõségi szint</property>
+  </entry>
+  <entry id="123">
+    <property name="string">ABR target bitrate</property>
+    <property name="translation">ABR cél bitráta</property>
+  </entry>
+  <entry id="124">
+    <property name="string">VBR bitrate range</property>
+    <property name="translation">VBR Bitráta szélesség</property>
+  </entry>
+  <entry id="125">
+    <property name="string">Set minimum VBR bitrate:</property>
+    <property name="translation">Minimum VBR Bitráta:</property>
+  </entry>
+  <entry id="126">
+    <property name="string">Set maximum VBR bitrate:</property>
+    <property name="translation">Maximális VBR Bitráta:</property>
+  </entry>
+  <entry id="127">
+    <property name="string">Control bits</property>
+    <property name="translation">Kontroll bitek</property>
+  </entry>
+  <entry id="128">
+    <property name="string">Stream format</property>
+    <property name="translation">Stream formátum</property>
+  </entry>
+  <entry id="129">
+    <property name="string">Enforce strict ISO compliance</property>
+    <property name="translation">Szigorúan ISO kompatibilis kimenet</property>
+  </entry>
+  <entry id="130">
+    <property name="string">Padding</property>
+    <property name="translation">Padding</property>
+  </entry>
+  <entry id="131">
+    <property name="string">Set padding type:</property>
+    <property name="translation">Padding típusa:</property>
+  </entry>
+  <entry id="132">
+    <property name="string">pad no frames</property>
+    <property name="translation">nincs Padding</property>
+  </entry>
+  <entry id="133">
+    <property name="string">pad all frames</property>
+    <property name="translation">minden Frame</property>
+  </entry>
+  <entry id="134">
+    <property name="string">adjust padding</property>
+    <property name="translation">Padding beállítása</property>
+  </entry>
+  <entry id="135">
+    <property name="string">Output sampling rate</property>
+    <property name="translation">Kimenet mintavételezése</property>
+  </entry>
+  <entry id="136">
+    <property name="string">no resampling</property>
+    <property name="translation">nincs újramintavételezés</property>
+  </entry>
+  <entry id="137">
+    <property name="string">Highpass filter</property>
+    <property name="translation">Felüláteresztõ szûrõ</property>
+  </entry>
+  <entry id="138">
+    <property name="string">Set Highpass frequency (Hz):</property>
+    <property name="translation">Felüláteresztõ szûrõ frekv. Hz:</property>
+  </entry>
+  <entry id="139">
+    <property name="string">Set Highpass width (Hz):</property>
+    <property name="translation">Felüláteresztõ szûrõ sávszél. Hz:</property>
+  </entry>
+  <entry id="140">
+    <property name="string">Lowpass filter</property>
+    <property name="translation">Aluláteresztõ szûrõ</property>
+  </entry>
+  <entry id="141">
+    <property name="string">Set Lowpass frequency (Hz):</property>
+    <property name="translation">Aluláteresztõ szûrõ frekv.  Hz:</property>
+  </entry>
+  <entry id="142">
+    <property name="string">Set Lowpass width (Hz):</property>
+    <property name="translation">Aluláteresztõ szûrõ sávszél. Hz:</property>
+  </entry>
+  <entry id="143">
+    <property name="string">Misc settings</property>
+    <property name="translation">Egyéb beállítások</property>
+  </entry>
+  <entry id="144">
+    <property name="string">Disable all filtering</property>
+    <property name="translation">Minden szûrõ ki</property>
+  </entry>
+  <entry id="145">
+    <property name="string">MP3 Files</property>
+    <property name="translation">MP3 fájlok</property>
+  </entry>
+  <entry id="146">
+    <property name="string">Ogg Vorbis Files</property>
+    <property name="translation">Ogg Vorbis fájlok</property>
+  </entry>
+  <entry id="147">
+    <property name="string">BONK Files</property>
+    <property name="translation">BONK fájlok</property>
+  </entry>
+  <entry id="148">
+    <property name="string">Enable CDDB</property>
+    <property name="translation">CDDB aktiválása</property>
+  </entry>
+  <entry id="149">
+    <property name="string">CDDB access mode:</property>
+    <property name="translation">CDDB hozzáférési mód:</property>
+  </entry>
+  <entry id="150">
+    <property name="string">CDDB server:</property>
+    <property name="translation">CDDB szerver:</property>
+  </entry>
+  <entry id="151">
+    <property name="string">Port:</property>
+    <property name="translation">Port:</property>
+  </entry>
+  <entry id="152">
+    <property name="string">Info</property>
+    <property name="translation">Info</property>
+  </entry>
+  <entry id="153">
+    <property name="string">No freedb entry for this disk.</property>
+    <property name="translation">Nem találtam bejegyzést ehhez a CD-hez.</property>
+  </entry>
+  <entry id="154">
+    <property name="string">Some error occurred trying to connect to the freedb server.</property>
+    <property name="translation">Hiba történt a freedb szervehez kapcsolódás közben.</property>
+  </entry>
+  <entry id="155">
+    <property name="string">Connecting to freedb server at</property>
+    <property name="translation">Kapcsoldás a freedb szerverhez</property>
+  </entry>
+  <entry id="156">
+    <property name="string">Requesting CD information</property>
+    <property name="translation">CD Információ kérése</property>
+  </entry>
+  <entry id="157">
+    <property name="string">eMail address:</property>
+    <property name="translation">eMail cím:</property>
+  </entry>
+  <entry id="158">
+    <property name="string">Please enter a valid eMail address.</property>
+    <property name="translation">Kérem adjon meg egy élõ e-mail cimet</property>
+  </entry>
+  <entry id="159">
+    <property name="string">No exact matches found</property>
+    <property name="translation">Nem találtam pontos megfelelelõ</property>
+  </entry>
+  <entry id="160">
+    <property name="string">Multiple matches found</property>
+    <property name="translation">Több azonosságot találtam</property>
+  </entry>
+  <entry id="161">
+    <property name="string">Matches</property>
+    <property name="translation">Találatok</property>
+  </entry>
+  <entry id="162">
+    <property name="string">Select the entry that best fits your CD:</property>
+    <property name="translation">Válassza ki a CD-nek leginkább megfelelõ bejegyzést</property>
+  </entry>
+  <entry id="163">
+    <property name="string">Extended CDDB settings</property>
+    <property name="translation">Részletes CDDB beállítások</property>
+  </entry>
+  <entry id="164">
+    <property name="string">CGI scripts</property>
+    <property name="translation">CGI Scripts</property>
+  </entry>
+  <entry id="165">
+    <property name="string">CDDB query script:</property>
+    <property name="translation">CDDB kezdõ script:</property>
+  </entry>
+  <entry id="166">
+    <property name="string">CDDB submit script:</property>
+    <property name="translation">CDDB küldõ script:</property>
+  </entry>
+  <entry id="167">
+    <property name="string">HTTP settings</property>
+    <property name="translation">HTTP beállítások</property>
+  </entry>
+  <entry id="168">
+    <property name="string">Proxy settings</property>
+    <property name="translation">Proxy beállítások</property>
+  </entry>
+  <entry id="169">
+    <property name="string">no proxy</property>
+    <property name="translation">nincs Proxy</property>
+  </entry>
+  <entry id="170">
+    <property name="string">Proxy type:</property>
+    <property name="translation">Proxy típusa:</property>
+  </entry>
+  <entry id="171">
+    <property name="string">Proxy server:</property>
+    <property name="translation">Proxy szerver:</property>
+  </entry>
+</LangFile>
