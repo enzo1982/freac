@@ -157,6 +157,7 @@ EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
 MP4READ				 ex_MP4Read				= NIL;
 MP4CREATE			 ex_MP4Create				= NIL;
 MP4CLOSE			 ex_MP4Close				= NIL;
+MP4OPTIMIZE			 ex_MP4Optimize				= NIL;
 MP4SETMETADATANAME		 ex_MP4SetMetadataName			= NIL;
 MP4GETMETADATANAME		 ex_MP4GetMetadataName			= NIL;
 MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist		= NIL;
@@ -685,6 +686,7 @@ Bool bonkEnc::LoadMP4V2DLL()
 	ex_MP4Read			= (MP4READ) GetProcAddress(mp4v2dll, "MP4Read");
 	ex_MP4Create			= (MP4CREATE) GetProcAddress(mp4v2dll, "MP4Create");
 	ex_MP4Close			= (MP4CLOSE) GetProcAddress(mp4v2dll, "MP4Close");
+	ex_MP4Optimize			= (MP4OPTIMIZE) GetProcAddress(mp4v2dll, "MP4Optimize");
 	ex_MP4SetMetadataName		= (MP4SETMETADATANAME) GetProcAddress(mp4v2dll, "MP4SetMetadataName");
 	ex_MP4GetMetadataName		= (MP4GETMETADATANAME) GetProcAddress(mp4v2dll, "MP4GetMetadataName");
 	ex_MP4SetMetadataArtist		= (MP4SETMETADATAARTIST) GetProcAddress(mp4v2dll, "MP4SetMetadataArtist");
@@ -714,6 +716,7 @@ Bool bonkEnc::LoadMP4V2DLL()
 	if (ex_MP4Read == NULL)				{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4Create == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4Close == NULL)			{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4Optimize == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4SetMetadataName == NULL)		{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4GetMetadataName == NULL)		{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4SetMetadataArtist == NULL)		{ FreeLibrary(mp4v2dll); return false; }

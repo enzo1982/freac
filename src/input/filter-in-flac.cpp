@@ -11,6 +11,11 @@
 #include <input/filter-in-flac.h>
 #include <dllinterfaces.h>
 
+FLAC__StreamDecoderReadStatus	 BonkEncFLACStreamDecoderReadCallback(const FLAC__StreamDecoder *, FLAC__byte [], unsigned *, void *);
+FLAC__StreamDecoderWriteStatus	 BonkEncFLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
+void				 BonkEncFLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *, const FLAC__StreamMetadata *, void *);
+void				 BonkEncFLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *, const FLAC__StreamDecoderErrorStatus *, void *);
+
 FilterInFLAC::FilterInFLAC(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	packageSize = 0;
@@ -38,4 +43,22 @@ int FilterInFLAC::ReadData(unsigned char **data, int size)
 bonkEncTrack *FilterInFLAC::GetFileInfo(String inFile)
 {
 	return NIL;
+}
+
+FLAC__StreamDecoderReadStatus BonkEncFLACStreamDecoderReadCallback(const FLAC__StreamDecoder *decoder, FLAC__byte buffer[], unsigned *bytes, void *client_data)
+{
+	return FLAC__STREAM_DECODER_READ_STATUS_ABORT;
+}
+
+FLAC__StreamDecoderWriteStatus BonkEncFLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *decoder, const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)
+{
+	return FLAC__STREAM_DECODER_WRITE_STATUS_ABORT;
+}
+
+void BonkEncFLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decoder, const FLAC__StreamMetadata *metadata, void *client_data)
+{
+}
+
+void BonkEncFLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *decoder, const FLAC__StreamDecoderErrorStatus *status, void *client_data)
+{
 }

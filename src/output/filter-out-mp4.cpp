@@ -115,6 +115,8 @@ bool FilterOutMP4::Deactivate()
 
 	ex_MP4Close(mp4File);
 
+	ex_MP4Optimize(format->outfile, NIL, 0);
+
 	return true;
 }
 

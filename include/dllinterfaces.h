@@ -338,6 +338,7 @@
 	typedef MP4FileHandle			(*MP4READ)					(const char *, u_int32_t);
 	typedef MP4FileHandle			(*MP4CREATE)					(const char *, u_int32_t, u_int32_t);
 	typedef bool				(*MP4CLOSE)					(MP4FileHandle);
+	typedef bool				(*MP4OPTIMIZE)					(const char *, const char *, u_int32_t);
 	typedef bool				(*MP4SETMETADATANAME)				(MP4FileHandle, const char *);
 	typedef bool				(*MP4GETMETADATANAME)				(MP4FileHandle, char **);
 	typedef bool				(*MP4SETMETADATAARTIST)				(MP4FileHandle, const char *);
@@ -369,6 +370,7 @@
 	extern MP4READ				 ex_MP4Read;
 	extern MP4CREATE			 ex_MP4Create;
 	extern MP4CLOSE				 ex_MP4Close;
+	extern MP4OPTIMIZE			 ex_MP4Optimize;
 	extern MP4SETMETADATANAME		 ex_MP4SetMetadataName;
 	extern MP4GETMETADATANAME		 ex_MP4GetMetadataName;
 	extern MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist;

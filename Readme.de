@@ -28,7 +28,7 @@ Geschichte
 		- TwinVQ Abstürze behoben
 		- Unterstützung für ID3V2-Tags in AAC-Dateien hinzugefügt
 		- FAAD2 AAC Decoder Unterstützung hinzugefügt
-		- MP4 Unterstützung hinzugefügt
+		- iTunes-kompatible MP4 Unterstützung hinzugefügt
 		- Update auf smooth v0.8.66.0
 		- Unterstützung für Online-Programmupdates hinzugefügt
 		- Anpassungen für Kompilierung mit GCC 3.4

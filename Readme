@@ -28,7 +28,7 @@ History
 		- fixed TwinVQ encoder crashes
 		- added support for ID3V2 tags in AAC files
 		- added FAAD2 AAC decoder support
-		- added MP4 format support
+		- added iTunes compatible MP4 format support
 		- upgraded to smooth v0.8.66.0
 		- added support for online program updates
 		- fixes for compiling with GCC 3.4

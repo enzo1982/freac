@@ -211,7 +211,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		if (encoder == ENCODER_FAAC)
 		{
-			if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)	out_filename.Append(".mp4");
+			if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)	out_filename.Append(".m4a");
 			else									out_filename.Append(".aac");
 		}
 
