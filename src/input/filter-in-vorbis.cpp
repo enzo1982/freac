@@ -9,32 +9,77 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-vorbis.h>
-#include <dllinterfaces.h>
 
 FilterInVORBIS::FilterInVORBIS(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
-	setup = false;
-
 	packageSize = 0;
-
-	buffer = NIL;
-
-	ex_ogg_sync_init(&oy);
 }
 
 FilterInVORBIS::~FilterInVORBIS()
 {
-	if (buffer != NIL)
-	{
-		ex_ogg_stream_clear(&os);
+}
 
-		ex_vorbis_block_clear(&vb);
-		ex_vorbis_dsp_clear(&vd);
-		ex_vorbis_comment_clear(&vc);
-		ex_vorbis_info_clear(&vi);
+bool FilterInVORBIS::Activate()
+{
+	ex_ogg_sync_init(&oy);
+
+	inBytes = 4096;
+
+	buffer = ex_ogg_sync_buffer(&oy, inBytes);
+
+	driver->ReadData((unsigned char *) buffer, inBytes);
+
+	ex_ogg_sync_wrote(&oy, inBytes);
+
+	ex_ogg_sync_pageout(&oy, &og);
+
+	ex_ogg_stream_init(&os, ex_ogg_page_serialno(&og)); 
+
+	ex_vorbis_info_init(&vi);
+	ex_vorbis_comment_init(&vc);
+
+	ex_ogg_stream_pagein(&os, &og);
+	ex_ogg_stream_packetout(&os, &op);
+
+	ex_vorbis_synthesis_headerin(&vi, &vc, &op);
+
+	int	 i = 0;
+
+	while (i < 2)
+	{
+		if (ex_ogg_sync_pageout(&oy, &og) == 1)
+		{
+			ex_ogg_stream_pagein(&os, &og);
+
+			while (i < 2)
+			{
+				if (ex_ogg_stream_packetout(&os, &op) == 0) break;
+
+				ex_vorbis_synthesis_headerin(&vi, &vc, &op); 
+
+				i++;
+			}
+		}
 	}
 
+	ex_vorbis_synthesis_init(&vd, &vi);
+	ex_vorbis_block_init(&vd, &vb);
+
+	return true;
+}
+
+bool FilterInVORBIS::Deactivate()
+{
+	ex_ogg_stream_clear(&os);
+
+	ex_vorbis_block_clear(&vb);
+	ex_vorbis_dsp_clear(&vd);
+	ex_vorbis_comment_clear(&vc);
+	ex_vorbis_info_clear(&vi);
+
 	ex_ogg_sync_clear(&oy);
+
+	return true;
 }
 
 int FilterInVORBIS::ReadData(unsigned char **data, int size)
@@ -43,62 +88,15 @@ int FilterInVORBIS::ReadData(unsigned char **data, int size)
 
 	inBytes += size;
 
-	*data = new unsigned char [size];
-
-	driver->ReadData(*data, size);
-
 	buffer = ex_ogg_sync_buffer(&oy, size);
 
-	memcpy((void *) buffer, (void *) *data, size);
-
-	delete [] *data;
-
-	*data = NULL;
-
-	int	 dataBufferLen = 0;
+	driver->ReadData((unsigned char *) buffer, size);
 
 	ex_ogg_sync_wrote(&oy, size);
 
 	size = 0;
 
-	if (!setup)
-	{
-		setup = true;
-
-		ex_ogg_sync_pageout(&oy, &og);
-
-		ex_ogg_stream_init(&os, ex_ogg_page_serialno(&og)); 
-
-		ex_vorbis_info_init(&vi);
-		ex_vorbis_comment_init(&vc);
-
-		ex_ogg_stream_pagein(&os, &og);
-		ex_ogg_stream_packetout(&os, &op);
-
-		ex_vorbis_synthesis_headerin(&vi, &vc, &op);
-
-		int	 i = 0;
-
-		while (i < 2)
-		{
-			if (ex_ogg_sync_pageout(&oy, &og) == 1)
-			{
-				ex_ogg_stream_pagein(&os, &og);
-
-				while (i < 2)
-				{
-					if (ex_ogg_stream_packetout(&os, &op) == 0) break;
-
-					ex_vorbis_synthesis_headerin(&vi, &vc, &op); 
-
-					i++;
-				}
-			}
-		}
-
-		ex_vorbis_synthesis_init(&vd, &vi);
-		ex_vorbis_block_init(&vd, &vb);
-	}
+	int	 dataBufferLen = 0;
 
 	while (true)
 	{

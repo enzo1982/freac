@@ -9,13 +9,9 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-au.h>
-#include <main.h>
-#include <memory.h>
 
 FilterInAU::FilterInAU(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
-	setup = false;
-
 	packageSize = 0;
 }
 
@@ -23,40 +19,31 @@ FilterInAU::~FilterInAU()
 {
 }
 
+bool FilterInAU::Activate()
+{
+	InStream	*in = new InStream(STREAM_DRIVER, driver);
+    
+	in->InputNumber(4); // Read magic number
+
+	Int		 headerSize = in->InputNumberRaw(4);
+
+	delete in;
+
+	driver->Seek(headerSize);
+
+	return true;
+}
+
+bool FilterInAU::Deactivate()
+{
+	return true;
+}
+
 int FilterInAU::ReadData(unsigned char **data, int size)
 {
 	*data = new unsigned char [size];
 
 	driver->ReadData(*data, size);
-
-	if (setup == false)
-	{
-		InStream	*file = new InStream(STREAM_BUFFER, (void *) *data, size);
-    
-		// Read magic number
-		for (Int i = 0; i < 4; i++)
-			file->InputNumber(1);
-
-		Int headerSize = file->InputNumberRaw(4);
-
-		delete file;
-
-		setup = true;
-
-		size -= headerSize;
-
-		unsigned char	*buffer = new unsigned char [size];
-
-		memcpy((void *) buffer, (void *) (*data + headerSize), size);
-
-		delete [] *data;
-
-		*data = new unsigned char [size];
-
-		memcpy((void *) *data, (void *) buffer, size);
-
-		delete [] buffer;
-	}
 
 	return size;
 }

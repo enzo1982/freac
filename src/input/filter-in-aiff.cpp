@@ -9,13 +9,9 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-aiff.h>
-#include <main.h>
-#include <memory.h>
 
 FilterInAIFF::FilterInAIFF(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
-	setup = False;
-
 	packageSize = 0;
 }
 
@@ -23,30 +19,23 @@ FilterInAIFF::~FilterInAIFF()
 {
 }
 
+bool FilterInAIFF::Activate()
+{
+	driver->Seek(54); // Skip the header
+
+	return true;
+}
+
+bool FilterInAIFF::Deactivate()
+{
+	return true;
+}
+
 int FilterInAIFF::ReadData(unsigned char **data, int size)
 {
 	*data = new unsigned char [size];
 
 	driver->ReadData(*data, size);
-
-	if (setup == False)
-	{
-		setup = True;
-
-		size -= 54;
-
-		unsigned char	*buffer = new unsigned char [size];
-
-		memcpy((void *) buffer, (void *) (*data + 54), size);
-
-		delete [] *data;
-
-		*data = new unsigned char [size];
-
-		memcpy((void *) *data, (void *) buffer, size);
-
-		delete [] buffer;
-	}
 
 	return size;
 }

@@ -10,9 +10,6 @@
 
 #include <input/filter-in-cdrip.h>
 #include <3rdparty/cdrip/cdrip.h>
-#include <dllinterfaces.h>
-#include <memory.h>
-#include <main.h>
 #include <cddb.h>
 
 #define PARANOIA_MODE_FULL        0xff

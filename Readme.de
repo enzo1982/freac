@@ -1,14 +1,15 @@
 BonkEnc Version 1.0 beta 3
 
-BonkEnc ist ein Codierer für verschiedene Audioformate.
-Es kann MP3, MP4, Ogg Vorbis, AAC, Bonk und VQF Dateien erzeugen.
+BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann MP3,
+MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC lesen
+und MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, VQF und WAV Dateien erzeugen.
 
 BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 
 Geschichte
 ----------
 
-	Version 1.0 beta 3 CVS (Dezember 2004)
+	Version 1.0 beta 3 (Januar 2005)
 
 		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
 		- Einige Fehler in der CDDB Implementierung wurden behoben
@@ -189,7 +190,7 @@ Bekannte Probleme
 
 	- Das Kommandozeileninterface unterstützt bisher noch keine Optionen um Encodereinstellungen zu verändern.
 
-	- Arabische Sprachunterstützung benötigt zur Zeit noch mindestens Windows XP.
+	- Arabische (und andere RTL Schriften) Sprachunterstützung benötigt zur Zeit noch mindestens Windows XP.
 
 Pläne für zukünftige Versionen
 ------------------------------

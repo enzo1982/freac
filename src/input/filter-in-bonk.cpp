@@ -9,12 +9,10 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-bonk.h>
-#include <dllinterfaces.h>
 #include <3rdparty/id3/tag.h>
 
 FilterInBONK::FilterInBONK(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
-	setup	= false;
 	f_in	= NIL;
 	decoder	= NIL;
 
@@ -23,43 +21,41 @@ FilterInBONK::FilterInBONK(bonkEncConfig *config, bonkEncTrack *format) : InputF
 
 FilterInBONK::~FilterInBONK()
 {
-	if (decoder != NIL)
-	{
-		ex_bonk_close_decoder(decoder);
+}
 
-		delete f_in;
-	}
+bool FilterInBONK::Activate()
+{
+	Int	 length = 0;
+	Int	 rate = 0;
+	Int	 channels = 0;
+
+	f_in = new InStream(STREAM_DRIVER, driver);
+
+	decoder = ex_bonk_create_decoder(f_in, (uint32 *) &length, (uint32 *) &rate, (int *) &channels);
+
+	buffer.Resize(131072);
+
+	return true;
+}
+
+bool FilterInBONK::Deactivate()
+{
+	ex_bonk_close_decoder(decoder);
+
+	delete f_in;
+
+	return true;
 }
 
 int FilterInBONK::ReadData(unsigned char **data, int size)
 {
-	if (!setup)
-	{
-		Int	 length = 0;
-		Int	 rate = 0;
-		Int	 channels = 0;
-
-		driver->Seek(0);
-
-		f_in = new InStream(STREAM_DRIVER, driver);
-
-		decoder = ex_bonk_create_decoder(f_in, (uint32 *) &length, (uint32 *) &rate, (int *) &channels);
-
-		setup = true;
-	}
-
-	long		 buffersize = 131072;
-	unsigned char	*buffer = new unsigned char [buffersize];
-
-	size = ex_bonk_decode_packet(decoder, buffer, buffersize);
+	size = ex_bonk_decode_packet(decoder, buffer, buffer.Size());
 
 	if (size == -1) return 0;
 
 	*data = new unsigned char [size];
 
-	memcpy((void *) *data, (void *) buffer, size);
-
-	delete [] buffer;
+	memcpy(*data, buffer, size);
 
 	return size;
 }

@@ -9,7 +9,6 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-lame.h>
-#include <dllinterfaces.h>
 #include <3rdparty/id3/tag.h>
 
 FilterInLAME::FilterInLAME(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)

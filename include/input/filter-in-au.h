@@ -15,11 +15,12 @@
 
 class FilterInAU : public InputFilter
 {
-	private:
-		Bool		 setup;
 	public:
 				 FilterInAU(bonkEncConfig *, bonkEncTrack *);
 				~FilterInAU();
+
+		bool		 Activate();
+		bool		 Deactivate();
 
 		int		 ReadData(unsigned char **, int);
 

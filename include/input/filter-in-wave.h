@@ -15,11 +15,12 @@
 
 class FilterInWAVE : public InputFilter
 {
-	private:
-		Bool		 setup;
 	public:
 				 FilterInWAVE(bonkEncConfig *, bonkEncTrack *);
 				~FilterInWAVE();
+
+		bool		 Activate();
+		bool		 Deactivate();
 
 		int		 ReadData(unsigned char **, int);
 

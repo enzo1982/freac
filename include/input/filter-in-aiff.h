@@ -15,11 +15,12 @@
 
 class FilterInAIFF : public InputFilter
 {
-	private:
-		Bool		 setup;
 	public:
 				 FilterInAIFF(bonkEncConfig *, bonkEncTrack *);
 				~FilterInAIFF();
+
+		bool		 Activate();
+		bool		 Deactivate();
 
 		int		 ReadData(unsigned char **, int);
 

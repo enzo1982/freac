@@ -9,7 +9,6 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-mp4.h>
-#include <dllinterfaces.h>
 
 FilterInMP4::FilterInMP4(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
@@ -138,6 +137,8 @@ bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 	unsigned short	 trackNr	= 0;
 	unsigned short	 nOfTracks	= 0;
 
+	String	 prevInFormat = String::SetInputFormat("UTF-8");
+
 	if (ex_MP4GetMetadataName(mp4File, &buffer)) { nFormat->title = buffer; free(buffer); }
 	if (ex_MP4GetMetadataArtist(mp4File, &buffer)) { nFormat->artist = buffer; free(buffer); }
 	if (ex_MP4GetMetadataComment(mp4File, &buffer)) { nFormat->comment = buffer; free(buffer); }
@@ -145,6 +146,8 @@ bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 	if (ex_MP4GetMetadataAlbum(mp4File, &buffer)) { nFormat->album = buffer; free(buffer); }
 	if (ex_MP4GetMetadataGenre(mp4File, &buffer)) { nFormat->genre = buffer; free(buffer); }
 	if (ex_MP4GetMetadataTrack(mp4File, &trackNr, &nOfTracks)) { nFormat->track = trackNr; }
+
+	String::SetInputFormat(prevInFormat);
 
 	mp4Track = GetAudioTrack();
 

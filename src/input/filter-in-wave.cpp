@@ -9,12 +9,9 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-wave.h>
-#include <memory.h>
 
 FilterInWAVE::FilterInWAVE(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
-	setup = false;
-
 	packageSize = 0;
 }
 
@@ -22,32 +19,31 @@ FilterInWAVE::~FilterInWAVE()
 {
 }
 
+bool FilterInWAVE::Activate()
+{
+	InStream	*in = new InStream(STREAM_DRIVER, driver);
+    
+	in->Seek(16);
+
+	Int		 headerSize = in->InputNumber(4) + 28;
+
+	delete in;
+
+	driver->Seek(headerSize);
+
+	return true;
+}
+
+bool FilterInWAVE::Deactivate()
+{
+	return true;
+}
+
 int FilterInWAVE::ReadData(unsigned char **data, int size)
 {
 	*data = new unsigned char [size];
 
 	driver->ReadData(*data, size);
-
-	if (setup == false)
-	{
-		setup = true;
-
-		long	 headerSize = (long) *(*data + 16) + 28;
-
-		size -= headerSize;
-
-		unsigned char	*buffer = new unsigned char [size];
-
-		memcpy((void *) buffer, (void *) (*data + headerSize), size);
-
-		delete [] *data;
-
-		*data = new unsigned char [size];
-
-		memcpy((void *) *data, (void *) buffer, size);
-
-		delete [] buffer;
-	}
 
 	return size;
 }
@@ -70,7 +66,7 @@ bonkEncTrack *FilterInWAVE::GetFileInfo(String inFile)
 	for (Int j = 0; j < 4; j++)
 		f_in->InputNumber(1);
 
-	Int	 headerSize = 28 + f_in->InputNumber(4);
+	Int	 headerSize = f_in->InputNumber(4) + 28;
 
 	if (f_in->InputNumber(2) != 1)
 	{

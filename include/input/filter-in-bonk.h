@@ -16,16 +16,20 @@
 class FilterInBONK : public InputFilter
 {
 	private:
-		void		*decoder;
-		Bool		 setup;
-		InStream	*f_in;
+		void			*decoder;
+		InStream		*f_in;
+
+		Buffer<unsigned char>	 buffer;
 	public:
-				 FilterInBONK(bonkEncConfig *, bonkEncTrack *);
-				~FilterInBONK();
+					 FilterInBONK(bonkEncConfig *, bonkEncTrack *);
+					~FilterInBONK();
 
-		int		 ReadData(unsigned char **, int);
+		bool			 Activate();
+		bool			 Deactivate();
 
-		bonkEncTrack	*GetFileInfo(String);
+		int			 ReadData(unsigned char **, int);
+
+		bonkEncTrack		*GetFileInfo(String);
 };
 
 #endif

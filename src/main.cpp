@@ -1714,7 +1714,7 @@ Int bonkEncGUI::CheckForUpdatesThread(Thread *self)
 {
 	if (!currentConfig->enable_eUpdate) return Success;
 
-	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "http://localhost/eUpdate/eUpdate_test.xml");
+	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "http://www.bonkenc.org/eUpdate/eUpdate.xml");
 
 	if (ex_eUpdate_CheckForNewUpdates(context, (self == NIL)) > 0)
 	{

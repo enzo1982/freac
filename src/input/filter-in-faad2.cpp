@@ -9,7 +9,6 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-faad2.h>
-#include <dllinterfaces.h>
 
 FilterInFAAD2::FilterInFAAD2(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {

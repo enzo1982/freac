@@ -28,11 +28,12 @@ class FilterInVORBIS : public InputFilter
 		vorbis_block		 vb;
 
 		char			*buffer;
-
-		Bool			 setup;
 	public:
 					 FilterInVORBIS(bonkEncConfig *, bonkEncTrack *);
 					~FilterInVORBIS();
+
+		bool			 Activate();
+		bool			 Deactivate();
 
 		int			 ReadData(unsigned char **, int);
 

@@ -76,6 +76,13 @@ int FilterInFLAC::ReadData(unsigned char **data, int size)
 		while (decoderThread->GetStatus() == THREAD_RUNNING) Sleep(10);
 	}
 
+	if (samplesBuffer.Size() == 0)
+	{
+		inputBufferMutex->Lock();
+
+		return ReadData(data, size);
+	}
+
 	samplesBufferMutex->Lock();
 
 	size = samplesBuffer.Size() * 2;

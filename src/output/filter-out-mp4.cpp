@@ -21,6 +21,8 @@ FilterOutMP4::FilterOutMP4(bonkEncConfig *config, bonkEncTrack *format) : Output
 
 		return;
 	}
+
+	packageSize = 0;
 }
 
 FilterOutMP4::~FilterOutMP4()
@@ -89,17 +91,27 @@ bool FilterOutMP4::Deactivate()
 
 	if (bytes > 0)
 	{
-		Int		 samplesLeft	= totalSamples - encodedSamples + delaySamples;
-		MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
-		MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
+		Int	 samplesLeft = totalSamples - encodedSamples + delaySamples;
 
-		ex_MP4WriteSample(mp4File, mp4Track, outBuffer, bytes, dur, ofs, true);
+		do
+		{
+			MP4Duration	 dur = samplesLeft > frameSize ? frameSize : samplesLeft;
+			MP4Duration	 ofs = encodedSamples > 0 ? 0 : delaySamples;
+
+			ex_MP4WriteSample(mp4File, mp4Track, bytes > 0 ? outBuffer : NIL, bytes, dur, ofs, true);
+
+			bytes = 0;
+			samplesLeft -= dur;
+		}
+		while (samplesLeft > 0);
 	}
 
 	ex_faacEncClose(handle);
 
 	if (currentConfig->enable_tags)
 	{
+		String	 prevOutFormat = String::SetOutputFormat("UTF-8");
+
 		ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
 
 		if (format->artist != NIL || format->title != NIL)
@@ -111,6 +123,8 @@ bool FilterOutMP4::Deactivate()
 			if (format->genre != NIL)	ex_MP4SetMetadataGenre(mp4File, format->genre);
 			if (format->track > 0)		ex_MP4SetMetadataTrack(mp4File, format->track, 0);
 		}
+
+		String::SetOutputFormat(prevOutFormat);
 	}
 
 	ex_MP4Close(mp4File);
@@ -123,7 +137,6 @@ bool FilterOutMP4::Deactivate()
 int FilterOutMP4::WriteData(unsigned char *data, int size)
 {
 	unsigned long	 bytes = 0;
-
 	Int		 samplesRead = size / (format->bits / 8);
 
 	totalSamples += samplesRead / format->channels;

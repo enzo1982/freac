@@ -9,19 +9,35 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-voc.h>
-#include <main.h>
-#include <memory.h>
 
 FilterInVOC::FilterInVOC(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
-	setup = false;
-	bytesleft = 0;
-
-	packageSize = 0;
+	bytesLeft	= 0;
+	packageSize	= 0;
 }
 
 FilterInVOC::~FilterInVOC()
 {
+}
+
+bool FilterInVOC::Activate()
+{
+	InStream	*in = new InStream(STREAM_DRIVER, driver);
+    
+	for (Int i = 0; i < 27; i++) in->InputNumber(1); // Read magic number
+
+	bytesLeft = in->InputNumber(3) - 12;
+
+	delete in;
+
+	driver->Seek(42);
+
+	return true;
+}
+
+bool FilterInVOC::Deactivate()
+{
+	return true;
 }
 
 int FilterInVOC::ReadData(unsigned char **data, int size)
@@ -30,70 +46,39 @@ int FilterInVOC::ReadData(unsigned char **data, int size)
 
 	driver->ReadData(*data, size);
 
-	int	 outsize = size;
+	int	 outSize = size;
 
-	if (setup == false)
+	if (size > bytesLeft)
 	{
-		InStream	*file = new InStream(STREAM_BUFFER, (void *) *data, size);
-    
-		// Read magic number
-		for (Int i = 0; i < 27; i++)
-			file->InputNumber(1);
-
-		bytesleft = file->InputNumber(3) - 12;
-
-		delete file;
-
-		setup = true;
-
-		outsize = size - 42;
-
-		unsigned char	*buffer = new unsigned char [outsize];
-
-		memcpy((void *) buffer, (void *) (*data + 42), outsize);
-
-		delete [] *data;
-
-		*data = new unsigned char [outsize];
-
-		memcpy((void *) *data, (void *) buffer, outsize);
-
-		delete [] buffer;
-
-		size -= 42;
-	}
-
-	if (size >= bytesleft)
-	{
-		if (((char *) (*data + bytesleft))[0] == 2)
+		if (((char *) (*data + bytesLeft))[0] == 2)
 		{
-			int newbytesleft = ((char *) (*data + bytesleft + 1))[0] + 256 * ((char *) (*data + bytesleft + 2))[0] + 65536 * ((char *) (*data + bytesleft + 3))[0];
+			Int newBytesLeft = ((char *) (*data + bytesLeft + 1))[0] + 256 * ((char *) (*data + bytesLeft + 2))[0] + 65536 * ((char *) (*data + bytesLeft + 3))[0];
 
-			outsize = size - 4;
+			outSize = size - 4;
 
-			unsigned char *buffer = new unsigned char [outsize];
+			unsigned char *buffer = new unsigned char [outSize];
 
-			memcpy((void *) buffer, (void *) *data, bytesleft);
+			memcpy((void *) buffer, (void *) *data, bytesLeft);
 
-			memcpy((void *) (buffer + bytesleft), (void *) (*data + bytesleft + 4), size - bytesleft - 4);
+			memcpy((void *) (buffer + bytesLeft), (void *) (*data + bytesLeft + 4), size - bytesLeft - 4);
 
 			delete [] *data;
 
-			*data = new unsigned char [outsize];
+			*data = new unsigned char [outSize];
 
-			memcpy((void *) *data, (void *) buffer, outsize);
+			memcpy((void *) *data, (void *) buffer, outSize);
 
 			delete [] buffer;
 
-			bytesleft = newbytesleft - (size - bytesleft - 4);
+			bytesLeft = newBytesLeft - (size - bytesLeft - 4);
 		}
 	}
 	else
 	{
-		bytesleft -= size;
+		bytesLeft -= size;
 	}
 
-	return outsize;
+	return outSize;
 }
 
 bonkEncTrack *FilterInVOC::GetFileInfo(String inFile)
@@ -110,7 +95,7 @@ bonkEncTrack *FilterInVOC::GetFileInfo(String inFile)
 	for (Int i = 0; i < 27; i++)
 		f_in->InputNumber(1);
 
-	bytesleft = f_in->InputNumber(3) - 12;
+	bytesLeft = f_in->InputNumber(3) - 12;
 
 	nFormat->rate = uint32(f_in->InputNumber(4));
 	nFormat->bits = uint8(f_in->InputNumber(1));

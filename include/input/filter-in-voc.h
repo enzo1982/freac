@@ -16,11 +16,13 @@
 class FilterInVOC : public InputFilter
 {
 	private:
-		Bool		 setup;
-		Int		 bytesleft;
+		Int		 bytesLeft;
 	public:
 				 FilterInVOC(bonkEncConfig *, bonkEncTrack *);
 				~FilterInVOC();
+
+		bool		 Activate();
+		bool		 Deactivate();
 
 		int		 ReadData(unsigned char **, int);
 
