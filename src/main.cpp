@@ -1508,5 +1508,5 @@ Menu *bonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)
 
 Void bonkEncGUI::ShowHelp()
 {
-	ShellExecuteA(NIL, "open", GetApplicationDirectory().Append("manual/").Append(i18n->TranslateString("index.html")), NIL, NIL, 0);
+	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index.html")), NIL, NIL, 0);
 }
