@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -69,6 +69,8 @@ LAME_INIT_PARAMS		 ex_lame_init_params;
 LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
 LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
 LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
+LAME_DECODE_INIT		 ex_lame_decode_init;
+LAME_DECODE_HEADERS		 ex_lame_decode_headers;
 GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
 
 VORBISINFOINIT			 ex_vorbis_info_init;
@@ -85,16 +87,30 @@ VORBISANALYSISBLOCKOUT		 ex_vorbis_analysis_blockout;
 VORBISANALYSIS			 ex_vorbis_analysis;
 VORBISBITRATEADDBLOCK		 ex_vorbis_bitrate_addblock;
 VORBISBITRATEFLUSHPACKET	 ex_vorbis_bitrate_flushpacket;
+VORBISSYNTHESISINIT		 ex_vorbis_synthesis_init;
+VORBISSYNTHESIS			 ex_vorbis_synthesis;
+VORBISSYNTHESISBLOCKIN		 ex_vorbis_synthesis_blockin;
+VORBISSYNTHESISPCMOUT		 ex_vorbis_synthesis_pcmout;
+VORBISSYNTHESISREAD		 ex_vorbis_synthesis_read;
+VORBISSYNTHESISHEADERIN		 ex_vorbis_synthesis_headerin;
 VORBISBLOCKCLEAR		 ex_vorbis_block_clear;
 VORBISDSPCLEAR			 ex_vorbis_dsp_clear;
 VORBISCOMMENTCLEAR		 ex_vorbis_comment_clear;
 VORBISINFOCLEAR			 ex_vorbis_info_clear;
 OGGSTREAMINIT			 ex_ogg_stream_init;
 OGGSTREAMPACKETIN		 ex_ogg_stream_packetin;
+OGGSTREAMPACKETOUT		 ex_ogg_stream_packetout;
 OGGSTREAMFLUSH			 ex_ogg_stream_flush;
+OGGSTREAMPAGEIN			 ex_ogg_stream_pagein;
 OGGSTREAMPAGEOUT		 ex_ogg_stream_pageout;
 OGGPAGEEOS			 ex_ogg_page_eos;
+OGGPAGESERIALNO			 ex_ogg_page_serialno;
 OGGSTREAMCLEAR			 ex_ogg_stream_clear;
+OGGSYNCINIT			 ex_ogg_sync_init;
+OGGSYNCBUFFER			 ex_ogg_sync_buffer;
+OGGSYNCWROTE			 ex_ogg_sync_wrote;
+OGGSYNCPAGEOUT			 ex_ogg_sync_pageout;
+OGGSYNCCLEAR			 ex_ogg_sync_clear;
 
 FAACENCOPEN			 ex_faacEncOpen;
 FAACENCGETCURRENTCONFIGURATION	 ex_faacEncGetCurrentConfiguration;
@@ -198,6 +214,8 @@ SMOOTHBool bonkEnc::LoadLAMEDLL()
 	ex_lame_encode_buffer			= (LAME_ENCODE_BUFFER) GetProcAddress(lamedll, "lame_encode_buffer");
 	ex_lame_encode_buffer_interleaved	= (LAME_ENCODE_BUFFER_INTERLEAVED) GetProcAddress(lamedll, "lame_encode_buffer_interleaved");
 	ex_lame_encode_flush			= (LAME_ENCODE_FLUSH) GetProcAddress(lamedll, "lame_encode_flush");
+	ex_lame_decode_init			= (LAME_DECODE_INIT) GetProcAddress(lamedll, "lame_decode_init");
+	ex_lame_decode_headers			= (LAME_DECODE_HEADERS) GetProcAddress(lamedll, "lame_decode_headers");
 	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) GetProcAddress(lamedll, "get_lame_short_version");
 
 	return true;
@@ -260,16 +278,30 @@ SMOOTHBool bonkEnc::LoadVorbisDLL()
 	ex_vorbis_analysis		= (VORBISANALYSIS) GetProcAddress(vorbisdll, "vorbis_analysis");
 	ex_vorbis_bitrate_addblock	= (VORBISBITRATEADDBLOCK) GetProcAddress(vorbisdll, "vorbis_bitrate_addblock");
 	ex_vorbis_bitrate_flushpacket	= (VORBISBITRATEFLUSHPACKET) GetProcAddress(vorbisdll, "vorbis_bitrate_flushpacket");
+	ex_vorbis_synthesis_init	= (VORBISSYNTHESISINIT) GetProcAddress(vorbisdll, "vorbis_synthesis_init");
+	ex_vorbis_synthesis		= (VORBISSYNTHESIS) GetProcAddress(vorbisdll, "vorbis_synthesis");
+	ex_vorbis_synthesis_blockin	= (VORBISSYNTHESISBLOCKIN) GetProcAddress(vorbisdll, "vorbis_synthesis_blockin");
+	ex_vorbis_synthesis_pcmout	= (VORBISSYNTHESISPCMOUT) GetProcAddress(vorbisdll, "vorbis_synthesis_pcmout");
+	ex_vorbis_synthesis_read	= (VORBISSYNTHESISREAD) GetProcAddress(vorbisdll, "vorbis_synthesis_read");
+	ex_vorbis_synthesis_headerin	= (VORBISSYNTHESISHEADERIN) GetProcAddress(vorbisdll, "vorbis_synthesis_headerin");
 	ex_vorbis_block_clear		= (VORBISBLOCKCLEAR) GetProcAddress(vorbisdll, "vorbis_block_clear");
 	ex_vorbis_dsp_clear		= (VORBISDSPCLEAR) GetProcAddress(vorbisdll, "vorbis_dsp_clear");
 	ex_vorbis_comment_clear		= (VORBISCOMMENTCLEAR) GetProcAddress(vorbisdll, "vorbis_comment_clear");
 	ex_vorbis_info_clear		= (VORBISINFOCLEAR) GetProcAddress(vorbisdll, "vorbis_info_clear");
 	ex_ogg_stream_init		= (OGGSTREAMINIT) GetProcAddress(vorbisdll, "ogg_stream_init");
 	ex_ogg_stream_packetin		= (OGGSTREAMPACKETIN) GetProcAddress(vorbisdll, "ogg_stream_packetin");
+	ex_ogg_stream_packetout		= (OGGSTREAMPACKETOUT) GetProcAddress(vorbisdll, "ogg_stream_packetout");
 	ex_ogg_stream_flush		= (OGGSTREAMFLUSH) GetProcAddress(vorbisdll, "ogg_stream_flush");
+	ex_ogg_stream_pagein		= (OGGSTREAMPAGEIN) GetProcAddress(vorbisdll, "ogg_stream_pagein");
 	ex_ogg_stream_pageout		= (OGGSTREAMPAGEOUT) GetProcAddress(vorbisdll, "ogg_stream_pageout");
 	ex_ogg_page_eos			= (OGGPAGEEOS) GetProcAddress(vorbisdll, "ogg_page_eos");
+	ex_ogg_page_serialno		= (OGGPAGESERIALNO) GetProcAddress(vorbisdll, "ogg_page_serialno");
 	ex_ogg_stream_clear		= (OGGSTREAMCLEAR) GetProcAddress(vorbisdll, "ogg_stream_clear");
+	ex_ogg_sync_init		= (OGGSYNCINIT) GetProcAddress(vorbisdll, "ogg_sync_init");
+	ex_ogg_sync_buffer		= (OGGSYNCBUFFER) GetProcAddress(vorbisdll, "ogg_sync_buffer");
+	ex_ogg_sync_wrote		= (OGGSYNCWROTE) GetProcAddress(vorbisdll, "ogg_sync_wrote");
+	ex_ogg_sync_pageout		= (OGGSYNCPAGEOUT) GetProcAddress(vorbisdll, "ogg_sync_pageout");
+	ex_ogg_sync_clear		= (OGGSYNCCLEAR) GetProcAddress(vorbisdll, "ogg_sync_clear");
 
 	return true;
 }

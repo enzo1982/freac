@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   * Portions Copyright (C) 1999-2002 Albert L. Faber
   *

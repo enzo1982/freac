@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -13,6 +13,7 @@
 InputFilter::InputFilter(bonkEncConfig *config)
 {
 	error = 0;
+	inBytes = 0;
 	fileSize = 0;
 	currentConfig = config;
 }
@@ -26,4 +27,9 @@ bool InputFilter::SetFileSize(unsigned int newFileSize)
 	fileSize = newFileSize;
 
 	return true;
+}
+
+int InputFilter::GetInBytes()
+{
+	return inBytes;
 }

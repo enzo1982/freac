@@ -1,4 +1,4 @@
-BonkEnc Version 0.7
+BonkEnc Version 0.8
 
 BonkEnc ist ein Codierer für verschiedene Audioformate.
 Es kann MP3, Ogg Vorbis, BONK, AAC und VQF Dateien erzeugen.
@@ -7,6 +7,12 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 
 Geschichte
 ----------
+
+	Version 0.8
+
+		- Unterstützung für MP3 Decodierung hinzugefügt
+		- Unterstützung zur Decodierung von Ogg Vorbis Dateien hinzugefügt
+		- Update auf smooth v0.8.60.0
 
 	Version 0.7
 
@@ -68,9 +74,6 @@ Voraussetzungen
 Probleme
 --------
 
-	- Die aktuelle Version von Paul Harrisons BONK Codierer hat noch ein paar Fehler. Bitte
-	  kontaktieren sie ihn (pfh@csse.monash.edu.au), falls BonkEnc BONK Dateien mit Fehlern erzeugt.
-
 	- Es gibt folgende Einschränkungen für das Eingabeformat:
 
 		- BonkEnc:
@@ -94,7 +97,7 @@ Pläne für zukünftige Versionen
 
 	- das BONK Format um ID3V2 Unterstützung erweitern
 	- Künstler und Titel aus Dateinamen extrahieren und in ID3V2 Tags schreiben
-	- Eingabefilter für MP3, Ogg Vorbis, BONK, AAC, VQF
+	- Eingabefilter für BONK, AAC, VQF
 	- mehr Audioformate unterstützen (FLAC, MAC, ...)
 	- Experteneinstellungen für LAME (ATH, Zeitliche Maskierung, Psy-Modelle)
 	- ein IOLib-Filters basierendes PlugIn System entwickeln

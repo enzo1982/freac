@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -15,7 +15,7 @@ bonkTranslator::bonkTranslator()
 {
 	GetSupportedLanguages();
 
-	ActivateLanguage("00000-00000-00000-00000-00000");
+	ActivateLanguage("english-internal");
 }
 
 bonkTranslator::~bonkTranslator()
@@ -41,9 +41,9 @@ SMOOTHInt bonkTranslator::GetSupportedLanguages()
 
 		language->language = "English";
 		language->encoding = "UTF-8";
-		language->magic = "00000-00000-00000-00000-00000";
+		language->magic = "english-internal";
 		language->author = "Robert Kausch <robert.kausch@gmx.net>";
-		language->url = "http://bonkenc.sf.net";
+		language->url = "http://www.bonkenc.org";
 		language->isOutOfDate = false;
 
 		languages.AddEntry(language);
@@ -65,6 +65,8 @@ SMOOTHInt bonkTranslator::GetSupportedLanguages()
 			SMOOTHString	 program;
 			SMOOTHString	 version;
 
+			language->magic = fileData.name;
+
 			for (int i = 0; i < info->GetNOfNodes(); i++)
 			{
 				SMOOTHString	 property = info->GetNthNode(i)->GetAttributeByName("name")->GetContent();
@@ -73,7 +75,6 @@ SMOOTHInt bonkTranslator::GetSupportedLanguages()
 				if (property == "version")	 version = info->GetNthNode(i)->GetContent();
 				if (property == "language")	 language->language = info->GetNthNode(i)->GetContent();
 				if (property == "encoding")	 language->encoding = info->GetNthNode(i)->GetContent();
-				if (property == "magic")	 language->magic = info->GetNthNode(i)->GetContent();
 				if (property == "author")	 language->author = info->GetNthNode(i)->GetContent();
 				if (property == "url")		 language->url = info->GetNthNode(i)->GetContent();
 			}
@@ -84,7 +85,7 @@ SMOOTHInt bonkTranslator::GetSupportedLanguages()
 			}
 			else
 			{
-				if (version[0] == '0' && version[2] < '7' && version[3] == 0)	language->isOutOfDate = true;
+				if (version[0] == '0' && version[2] < '8' && version[3] == 0)	language->isOutOfDate = true;
 				else								language->isOutOfDate = false;
 
 				languages.AddEntry(language);

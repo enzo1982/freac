@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -110,7 +110,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 		encoders_combo_encoder->AddEntry(SMOOTHString("TwinVQ v").Append(tvqVersionID + 4), NULLPROC);
 	}
 
-	encoders_combo_encoder->AddEntry(SMOOTHString("WAVE Out Filter v0.7"), NULLPROC);
+	encoders_combo_encoder->AddEntry(SMOOTHString("WAVE Out Filter v0.8"), NULLPROC);
 
 	encoders_combo_encoder->SelectEntry(config->encoder);
 

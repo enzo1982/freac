@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -10,7 +10,6 @@
 
 #include <iolib-cxx.h>
 #include <input/filter-in-wave.h>
-#include <main.h>
 #include <memory.h>
 
 FilterInWAVE::FilterInWAVE(bonkEncConfig *config) : InputFilter(config)

@@ -3,10 +3,9 @@
 <LangFile>
 	<info>
 		<property name="program">BonkEnc</property>
-		<property name="version">0.7</property>
-             <property name="language">Español</property>
+		<property name="version">0.8</property>
+		<property name="language">Español</property>
 		<property name="encoding">ISO-8859-1</property>
-		<property name="magic">V5AUQ-EHAAR-V5ADV-EEXMQ-ERTSA</property>
 		<property name="author">Pablo Acevedo Noda &lt;pablo@acevedo.tk&gt;</property>
 		<property name="url">http://www.acevedo.tk</property>
 	</info>
@@ -585,5 +584,13 @@
 	<entry id="144">
 		<property name="string">Disable all filtering</property>
 		<property name="translation">Deshabilitar filtros</property>
+	</entry>
+	<entry id="145">
+		<property name="string">MP3 Files</property>
+		<property name="translation">Archivos de Audio MP3</property>
+	</entry>
+	<entry id="146">
+		<property name="string">Ogg Vorbis Files</property>
+		<property name="translation">Archivos de Audio Ogg Vorbis</property>
 	</entry>
 </LangFile>

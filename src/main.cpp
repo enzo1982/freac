@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -35,6 +35,8 @@
 #include <input/filter-in-voc.h>
 #include <input/filter-in-aiff.h>
 #include <input/filter-in-au.h>
+#include <input/filter-in-lame.h>
+#include <input/filter-in-vorbis.h>
 #include <output/filter-out-blade.h>
 #include <output/filter-out-bonk.h>
 #include <output/filter-out-faac.h>
@@ -68,7 +70,7 @@ bonkEnc::bonkEnc()
 	currentConfig = new bonkEncConfig;
 	currentConfig->i18n = new bonkTranslator();
 
-	currentConfig->language = getINIValue("Settings", "Language", "00000-00000-00000-00000-00000");
+	currentConfig->language = getINIValue("Settings", "Language", "english-internal");
 
 	currentConfig->i18n->ActivateLanguage(currentConfig->language);
 
@@ -199,19 +201,19 @@ bonkEnc::bonkEnc()
 
 	mainWnd_menubar		= new SMOOTHMenubar();
 	mainWnd_iconbar		= new SMOOTHMenubar();
-	mainWnd			= new SMOOTHWindow("BonkEnc v0.7");
+	mainWnd			= new SMOOTHWindow("BonkEnc v0.8");
 	mainWnd_titlebar	= new SMOOTHTitlebar(true, false, true);
-	mainWnd_statusbar	= new SMOOTHStatusbar("BonkEnc v0.7 - Copyright (C) 2001-2002 Robert Kausch");
+	mainWnd_statusbar	= new SMOOTHStatusbar("BonkEnc v0.8 - Copyright (C) 2001-2002 Robert Kausch");
 	mainWnd_layer		= new SMOOTHLayer();
 	menu_file		= new SMOOTHPopupMenu();
 	menu_options		= new SMOOTHPopupMenu();
 	menu_addsubmenu		= new SMOOTHPopupMenu();
 	menu_encode		= new SMOOTHPopupMenu();
 
-	pos.x = 291;
+	pos.x = 323;
 	pos.y = -22;
 
-	hyperlink		= new SMOOTHHyperlink("bonkenc.sourceforge.net", NULL, "http://bonkenc.sourceforge.net", pos);
+	hyperlink		= new SMOOTHHyperlink("www.bonkenc.org", NULL, "http://www.bonkenc.org", pos);
 
 	pos.x = 7;
 	pos.y = 5;
@@ -450,11 +452,23 @@ SMOOTHVoid bonkEnc::AddFile()
 	dialog->SetParentWindow(mainWnd);
 	dialog->SetFlags(SFD_ALLOWMULTISELECT);
 
-	if (currentConfig->enable_cdrip)	dialog->AddFilter(currentConfig->i18n->TranslateString("Audio Files"), "*.aif; *.aiff; *.au; *.voc; *.wav; *.cda");
-	else					dialog->AddFilter(currentConfig->i18n->TranslateString("Audio Files"), "*.aif; *.aiff; *.au; *.voc; *.wav");
+	SMOOTHString	 fileTypes = "*.aif; *.aiff; *.au";
+
+	if (currentConfig->enable_lame) fileTypes.Append("; *.mp3");
+	if (currentConfig->enable_vorbis) fileTypes.Append("; *.ogg");
+
+	fileTypes.Append("; *.voc; *.wav");
+
+	if (currentConfig->enable_cdrip) fileTypes.Append("; *.cda");
+
+	dialog->AddFilter(currentConfig->i18n->TranslateString("Audio Files"), fileTypes);
 
 	dialog->AddFilter(currentConfig->i18n->TranslateString("Apple Audio Files").Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
 	dialog->AddFilter(currentConfig->i18n->TranslateString("Creative Voice Files").Append(" (*.voc)"), "*.voc");
+
+	if (currentConfig->enable_lame)		dialog->AddFilter(currentConfig->i18n->TranslateString("MP3 Files").Append(" (*.mp3)"), "*.mp3");
+	if (currentConfig->enable_vorbis)	dialog->AddFilter(currentConfig->i18n->TranslateString("Ogg Vorbis Files").Append(" (*.ogg)"), "*.ogg");
+
 	dialog->AddFilter(currentConfig->i18n->TranslateString("Sun Audio Files").Append(" (*.au)"), "*.au");
 	dialog->AddFilter(currentConfig->i18n->TranslateString("Wave Files").Append(" (*.wav)"), "*.wav");
 
@@ -923,7 +937,7 @@ SMOOTHVoid bonkEnc::Exit()
 
 SMOOTHVoid bonkEnc::About()
 {
-	SMOOTH::MessageBox(SMOOTHString("BonkEnc v0.7\nCopyright (C) 2001-2002 Robert Kausch\n\n").Append(currentConfig->i18n->TranslateString("This program is being distributed under the terms")).Append("\n").Append(currentConfig->i18n->TranslateString("of the GNU General Public License (GPL).")), currentConfig->i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	SMOOTH::MessageBox(SMOOTHString("BonkEnc v0.8\nCopyright (C) 2001-2002 Robert Kausch\n\n").Append(currentConfig->i18n->TranslateString("This program is being distributed under the terms")).Append("\n").Append(currentConfig->i18n->TranslateString("of the GNU General Public License (GPL).")), currentConfig->i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 SMOOTHVoid bonkEnc::ConfigureEncoder()
@@ -1151,26 +1165,47 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		}
 		else
 		{
+			SMOOTHString	 extension;
+
+			extension[0] = in_filename[in_filename.Length() - 3];
+			extension[1] = in_filename[in_filename.Length() - 2];
+			extension[2] = in_filename[in_filename.Length() - 1];
+
 			f_in = new SMOOTHInStream(STREAM_FILE, in_filename);
 
-			int magic = f_in->InputNumber(4);
-
-			f_in->Seek(0);
-
-			switch (magic)
+			if (extension == "mp3")
 			{
-				case 1297239878:
-					filter_in = new FilterInAIFF(currentConfig);
-					break;
-				case 1684960046:
-					filter_in = new FilterInAU(currentConfig);
-					break;
-				case 1634038339:
-					filter_in = new FilterInVOC(currentConfig);
-					break;
-				case 1179011410:
-					filter_in = new FilterInWAVE(currentConfig);
-					break;
+				filter_in = new FilterInLAME(currentConfig);
+
+				f_in->SetPackageSize(4096);
+			}
+			else if (extension == "ogg")
+			{
+				filter_in = new FilterInVORBIS(currentConfig);
+
+				f_in->SetPackageSize(4096);
+			}
+			else
+			{
+				int magic = f_in->InputNumber(4);
+
+				f_in->Seek(0);
+
+				switch (magic)
+				{
+					case 1297239878:
+						filter_in = new FilterInAIFF(currentConfig);
+						break;
+					case 1684960046:
+						filter_in = new FilterInAU(currentConfig);
+						break;
+					case 1634038339:
+						filter_in = new FilterInVOC(currentConfig);
+						break;
+					case 1179011410:
+						filter_in = new FilterInWAVE(currentConfig);
+						break;
+				}
 			}
 
 			filter_in->SetFileSize(f_in->Size());
@@ -1208,59 +1243,111 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 
 			startticks = clock();
 
-			for(int loop = 0; loop < n_loops; loop++)
+			if (format.length >= 0)
 			{
-				int	 step = samples_size;
-
-				if (position + step > format.length)
-					step = format.length - position;
-
-				if (format.order == BYTE_INTEL)
-					for (int i = 0; i < step; i++)
-					{
-						if ((loop == (n_loops - 1)) && (i == (step - 1))) filter_out->PrepareLastPacket();
-						f_out->OutputNumber(f_in->InputNumberIntel(int16(format.bits / 8)), int16(format.bits / 8));
-					}
-				else if (format.order == BYTE_RAW)
-					for (int i = 0; i < step; i++)
-					{
-						if ((loop == (n_loops - 1)) && (i == (step - 1))) filter_out->PrepareLastPacket();
-						f_out->OutputNumber(f_in->InputNumberRaw(int16(format.bits / 8)), int16(format.bits / 8));
-					}
-
-				position += step;
-
-				progress->SetValue((int) ((position * 100.0 / format.length) * 10.0));
-
-				if ((int) (position * 100.0 / format.length) != lastpercent)
+				for(int loop = 0; loop < n_loops; loop++)
 				{
-					lastpercent = (int) (position * 100.0 / format.length);
+					int	 step = samples_size;
 
-					edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
+					if (position + step > format.length)
+						step = format.length - position;
+
+					for (int i = 0; i < step; i++)
+					{
+						if ((loop == (n_loops - 1)) && (i == (step - 1))) filter_out->PrepareLastPacket();
+
+						if (format.order == BYTE_INTEL)		f_out->OutputNumber(f_in->InputNumberIntel(int16(format.bits / 8)), int16(format.bits / 8));
+						else if (format.order == BYTE_RAW)	f_out->OutputNumber(f_in->InputNumberRaw(int16(format.bits / 8)), int16(format.bits / 8));
+					}
+
+					position += step;
+
+					progress->SetValue((int) ((position * 100.0 / format.length) * 10.0));
+
+					if ((int) (position * 100.0 / format.length) != lastpercent)
+					{
+						lastpercent = (int) (position * 100.0 / format.length);
+
+						edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
+					}
+
+					ticks = clock() - startticks;
+
+					ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / format.length) * 10.0)) / ((position * 100.0 / format.length) * 10.0))) / 1000 + 1;
+
+					if (ticks != lastticks)
+					{
+						lastticks = ticks;
+
+						SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
+						SMOOTHString	 txt = "0";
+
+						if (buf.Length() == 1)	txt.Append(buf);
+						else			txt.Copy(buf);
+
+						txt.Append(":");
+
+						buf = SMOOTHString::IntToString(ticks % 60);
+
+						if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
+						else			txt.Append(buf);
+
+						edb_time->SetText(txt);
+					}
 				}
+			}
+			else if (format.length == -1)
+			{
+				int	 sample = 0;
 
-				ticks = clock() - startticks;
-
-				ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / format.length) * 10.0)) / ((position * 100.0 / format.length) * 10.0))) / 1000 + 1;
-
-				if (ticks != lastticks)
+				while (sample != -1)
 				{
-					lastticks = ticks;
+					int	 step = samples_size;
 
-					SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
-					SMOOTHString	 txt = "0";
+					for (int i = 0; i < step; i++)
+					{
+						if (format.order == BYTE_INTEL)		sample = f_in->InputNumberIntel(int16(format.bits / 8));
+						else if (format.order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(format.bits / 8));
 
-					if (buf.Length() == 1)	txt.Append(buf);
-					else			txt.Copy(buf);
+						if (sample == -1) { filter_out->PrepareLastPacket(); step = i; break; }
 
-					txt.Append(":");
+						f_out->OutputNumber(sample, int16(format.bits / 8));
+					}
 
-					buf = SMOOTHString::IntToString(ticks % 60);
+					position = filter_in->GetInBytes();
 
-					if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
-					else			txt.Append(buf);
+					progress->SetValue((int) ((position * 100.0 / f_in->Size()) * 10.0));
 
-					edb_time->SetText(txt);
+					if ((int) (position * 100.0 / f_in->Size()) != lastpercent)
+					{
+						lastpercent = (int) (position * 100.0 / f_in->Size());
+
+						edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
+					}
+
+					ticks = clock() - startticks;
+
+					ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / f_in->Size()) * 10.0)) / ((position * 100.0 / f_in->Size()) * 10.0))) / 1000 + 1;
+
+					if (ticks != lastticks)
+					{
+						lastticks = ticks;
+
+						SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
+						SMOOTHString	 txt = "0";
+
+						if (buf.Length() == 1)	txt.Append(buf);
+						else			txt.Copy(buf);
+
+						txt.Append(":");
+
+						buf = SMOOTHString::IntToString(ticks % 60);
+
+						if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
+						else			txt.Append(buf);
+
+						edb_time->SetText(txt);
+					}
 				}
 			}
 

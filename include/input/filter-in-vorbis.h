@@ -8,26 +8,37 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_OUT_FAAC_
-#define _H_FILTER_OUT_FAAC_
+#ifndef _H_FILTER_IN_VORBIS_
+#define _H_FILTER_IN_VORBIS_
 
-#include "outputfilter.h"
-#include <faac/faac.h>
+#include "inputfilter.h"
+#include <vorbis/vorbisenc.h>
 
-class FilterOutFAAC : public OutputFilter
+class FilterInVORBIS : public InputFilter
 {
 	private:
-		faacEncHandle		 handle;
-		faacEncConfigurationPtr	 fConfig;
+		ogg_sync_state		 oy;
+		ogg_stream_state	 os;
+		ogg_page		 og;
+		ogg_packet		 op;
 
-		unsigned long		 samples_size;
-		unsigned long		 buffersize;
+		vorbis_info		 vi;
+		vorbis_comment		 vc;
+		vorbis_dsp_state	 vd;
+		vorbis_block		 vb;
+
+		char			*buffer;
+
+		bool			 setup;
+		bonkFormatInfo		 format;
 	public:
-					 FilterOutFAAC(bonkEncConfig *, bonkFormatInfo *);
-					~FilterOutFAAC();
+					 FilterInVORBIS(bonkEncConfig *);
+					~FilterInVORBIS();
 
 		bool			 EncodeData(unsigned char **, int, int *);
 		bool			 DecodeData(unsigned char **, int, int *);
+
+		bonkFormatInfo		 GetAudioFormat();
 };
 
 #endif

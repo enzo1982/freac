@@ -3,12 +3,11 @@
 <LangFile>
 	<info>
 		<property name="program">BonkEnc</property>
-		<property name="version">0.7</property>
+		<property name="version">0.8</property>
 		<property name="language">Nederlands</property>
 		<property name="encoding">UTF-8</property>
-		<property name="magic">V5AUQ-EHAAR-V5ADV-EEXMQ-NLERS</property>
 		<property name="author">Wim Garreyn &lt;wim.garreyn@pandora.be&gt;</property>
-		<property name="url">http://bonkenc.sf.net</property>
+		<property name="url">http://www.bonkenc.org</property>
 	</info>
 	<entry id="1">
 		<property name="string">File</property>
@@ -585,5 +584,13 @@
 	<entry id="144">
 		<property name="string">Disable all filtering</property>
 		<property name="translation">Alle filters uitschakelen</property>
+	</entry>
+	<entry id="145">
+		<property name="string">MP3 Files</property>
+		<property name="translation">MP3 bestanden</property>
+	</entry>
+	<entry id="146">
+		<property name="string">Ogg Vorbis Files</property>
+		<property name="translation">Ogg Vorbis bestanden</property>
 	</entry>
 </LangFile>

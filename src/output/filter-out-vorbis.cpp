@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -52,7 +52,7 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 	}
 
 	ex_vorbis_comment_init(&vc);
-	ex_vorbis_comment_add_tag(&vc, "COMMENT", "BonkEnc v0.7 <http://bonkenc.sf.net>");
+	ex_vorbis_comment_add_tag(&vc, "COMMENT", "BonkEnc v0.8 <http://www.bonkenc.org>");
 	ex_vorbis_analysis_init(&vd, &vi);
 	ex_vorbis_block_init(&vd, &vb);
 

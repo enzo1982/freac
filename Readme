@@ -1,4 +1,4 @@
-BonkEnc version 0.7
+BonkEnc version 0.8
 
 BonkEnc is an encoder for various audio formats. It can
 produce MP3, Ogg Vorbis, BONK, AAC and VQF files.
@@ -7,6 +7,12 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 
 History
 -------
+
+	Version 0.8
+
+		- added MP3 decoding support
+		- added Ogg Vorbis decoding support
+		- upgraded to smooth v0.8.60.0
 
 	Version 0.7
 
@@ -51,13 +57,12 @@ Requirements
 	- Windows NT/2000/XP, Windows 95/98/SE/ME
 	- A 200MHz processor or better for playing BONK files
 	- Winamp is required to play BONK files in Windows
-	- You'll need properly installed ASPI drivers for
-	  CD ripping.
+	- You'll need properly installed ASPI drivers for CD ripping.
 
 	Additional requirements for compiling the sources:
 
 		- MinGW32 v1.0 or greater (http://mingw.sf.net/)
-		- smooth v0.8.59.0 (http://smooth.sf.net/)
+		- smooth v0.8.60.0 (http://smooth.sf.net/)
 		- IOLib v5.x (http://iolib.sf.net/ - included with smooth)
 
 	Additional optional software:
@@ -68,9 +73,6 @@ Requirements
 
 Problems
 --------
-
-	- The current version of Paul Harrison's BONK encoder still has a few bugs.
-	  Please contact him (pfh@csse.monash.edu.au) if BonkEnc generates BONK files with errors.
 
 	- There are the following restrictions on the input file format:
 
@@ -95,7 +97,7 @@ Future plans
 
 	- extend the BONK format to support ID3V2 tags
 	- extract artist and title from the filename and write ID3V2 or similar
-	- input filters for MP3, Ogg Vorbis, BONK, AAC, VQF
+	- input filters for BONK, AAC, VQF
 	- support more audio formats (FLAC, MAC, ...)
 	- allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
 	- develop an IOLib-Filters based plugin system

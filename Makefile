@@ -1,4 +1,4 @@
-# Makefile fo BonkEnc
+# Makefile for BonkEnc
 
 INCLUDEDIR1 = ./include
 INCLUDEDIR2 = ../smooth/include
@@ -9,7 +9,7 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/parseini.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/parseini.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -122,9 +122,19 @@ $(OBJECTDIR)/filter-in-cdrip.o: $(SRCDIR)/input/filter-in-cdrip.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-cdrip.cpp -o $(OBJECTDIR)/filter-in-cdrip.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/filter-in-lame.o: $(SRCDIR)/input/filter-in-lame.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-lame.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-lame.cpp -o $(OBJECTDIR)/filter-in-lame.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/filter-in-voc.o: $(SRCDIR)/input/filter-in-voc.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-voc.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-voc.cpp -o $(OBJECTDIR)/filter-in-voc.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/filter-in-vorbis.o: $(SRCDIR)/input/filter-in-vorbis.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-vorbis.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-vorbis.cpp -o $(OBJECTDIR)/filter-in-vorbis.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/filter-in-wave.o: $(SRCDIR)/input/filter-in-wave.cpp

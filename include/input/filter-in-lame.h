@@ -8,21 +8,24 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_OUT_WAVE_
-#define _H_FILTER_OUT_WAVE_
+#ifndef _H_FILTER_IN_LAME_
+#define _H_FILTER_IN_LAME_
 
-#include "outputfilter.h"
+#include "inputfilter.h"
 
-class FilterOutWAVE : public OutputFilter
+class FilterInLAME : public InputFilter
 {
 	private:
 		bool		 setup;
+		bonkFormatInfo	 format;
 	public:
-				 FilterOutWAVE(bonkEncConfig *, bonkFormatInfo *);
-				~FilterOutWAVE();
+				 FilterInLAME(bonkEncConfig *);
+				~FilterInLAME();
 
 		bool		 EncodeData(unsigned char **, int, int *);
 		bool		 DecodeData(unsigned char **, int, int *);
+
+		bonkFormatInfo	 GetAudioFormat();
 };
 
 #endif

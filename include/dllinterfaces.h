@@ -1,4 +1,4 @@
- /* BonkEnc version 0.7
+ /* BonkEnc version 0.8
   * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
@@ -114,6 +114,8 @@
 	typedef int				(*LAME_ENCODE_BUFFER)				(lame_global_flags *, const short int [], const short int [], const int, unsigned char *, const int);
 	typedef int				(*LAME_ENCODE_BUFFER_INTERLEAVED)		(lame_global_flags *, short int [], int, unsigned char *, int);
 	typedef int				(*LAME_ENCODE_FLUSH)				(lame_global_flags *, unsigned char *, int);
+	typedef int				(*LAME_DECODE_INIT)				();
+	typedef int				(*LAME_DECODE_HEADERS)				(unsigned char *, int, short [], short [], mp3data_struct *);
 	typedef char *				(*GET_LAME_SHORT_VERSION)			();
 
 	extern LAME_INIT			 ex_lame_init;
@@ -145,6 +147,8 @@
 	extern LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
 	extern LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
 	extern LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
+	extern LAME_DECODE_INIT			 ex_lame_decode_init;
+	extern LAME_DECODE_HEADERS		 ex_lame_decode_headers;
 	extern GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
 
 // Ogg Vorbis API
@@ -173,16 +177,30 @@
 	typedef int				(*VORBISANALYSIS)				 (vorbis_block *, ogg_packet *);
 	typedef int				(*VORBISBITRATEADDBLOCK)			 (vorbis_block *);
 	typedef int				(*VORBISBITRATEFLUSHPACKET)			 (vorbis_dsp_state *, ogg_packet *);
+	typedef int				(*VORBISSYNTHESISINIT)				 (vorbis_dsp_state *, vorbis_info *);
+	typedef int				(*VORBISSYNTHESIS)				 (vorbis_block *, ogg_packet *);
+	typedef int				(*VORBISSYNTHESISBLOCKIN)			 (vorbis_dsp_state *, vorbis_block *);
+	typedef int				(*VORBISSYNTHESISPCMOUT)			 (vorbis_dsp_state *, float ***);
+	typedef int				(*VORBISSYNTHESISREAD)				 (vorbis_dsp_state *, int);
+	typedef int				(*VORBISSYNTHESISHEADERIN)			 (vorbis_info *, vorbis_comment *, ogg_packet *);
 	typedef int				(*VORBISBLOCKCLEAR)				 (vorbis_block *);
 	typedef void				(*VORBISDSPCLEAR)				 (vorbis_dsp_state *);
 	typedef void				(*VORBISCOMMENTCLEAR)				 (vorbis_comment *);
 	typedef void				(*VORBISINFOCLEAR)				 (vorbis_info *);
 	typedef int				(*OGGSTREAMINIT)				 (ogg_stream_state *, int);
 	typedef int				(*OGGSTREAMPACKETIN)				 (ogg_stream_state *, ogg_packet *);
+	typedef int				(*OGGSTREAMPACKETOUT)				 (ogg_stream_state *, ogg_packet *);
 	typedef int				(*OGGSTREAMFLUSH)				 (ogg_stream_state *, ogg_page *);
+	typedef int				(*OGGSTREAMPAGEIN)				 (ogg_stream_state *, ogg_page *);
 	typedef int				(*OGGSTREAMPAGEOUT)				 (ogg_stream_state *, ogg_page *);
 	typedef int				(*OGGPAGEEOS)					 (ogg_page *);
+	typedef int				(*OGGPAGESERIALNO)				 (ogg_page *);
 	typedef int				(*OGGSTREAMCLEAR)				 (ogg_stream_state *);
+	typedef int				(*OGGSYNCINIT)					 (ogg_sync_state *);
+	typedef char *				(*OGGSYNCBUFFER)				 (ogg_sync_state *, int);
+	typedef int				(*OGGSYNCWROTE)					 (ogg_sync_state *, int);
+	typedef int				(*OGGSYNCPAGEOUT)				 (ogg_sync_state *, ogg_page *);
+	typedef int				(*OGGSYNCCLEAR)					 (ogg_sync_state *);
 
 	extern VORBISINFOINIT			 ex_vorbis_info_init;
 	extern VORBISENCODEINIT			 ex_vorbis_encode_init;
@@ -198,16 +216,30 @@
 	extern VORBISANALYSIS			 ex_vorbis_analysis;
 	extern VORBISBITRATEADDBLOCK		 ex_vorbis_bitrate_addblock;
 	extern VORBISBITRATEFLUSHPACKET		 ex_vorbis_bitrate_flushpacket;
+	extern VORBISSYNTHESISINIT		 ex_vorbis_synthesis_init;
+	extern VORBISSYNTHESIS			 ex_vorbis_synthesis;
+	extern VORBISSYNTHESISBLOCKIN		 ex_vorbis_synthesis_blockin;
+	extern VORBISSYNTHESISPCMOUT		 ex_vorbis_synthesis_pcmout;
+	extern VORBISSYNTHESISREAD		 ex_vorbis_synthesis_read;
+	extern VORBISSYNTHESISHEADERIN		 ex_vorbis_synthesis_headerin;
 	extern VORBISBLOCKCLEAR			 ex_vorbis_block_clear;
 	extern VORBISDSPCLEAR			 ex_vorbis_dsp_clear;
 	extern VORBISCOMMENTCLEAR		 ex_vorbis_comment_clear;
 	extern VORBISINFOCLEAR			 ex_vorbis_info_clear;
 	extern OGGSTREAMINIT			 ex_ogg_stream_init;
 	extern OGGSTREAMPACKETIN		 ex_ogg_stream_packetin;
+	extern OGGSTREAMPACKETOUT		 ex_ogg_stream_packetout;
 	extern OGGSTREAMFLUSH			 ex_ogg_stream_flush;
+	extern OGGSTREAMPAGEIN			 ex_ogg_stream_pagein;
 	extern OGGSTREAMPAGEOUT			 ex_ogg_stream_pageout;
 	extern OGGPAGEEOS			 ex_ogg_page_eos;
+	extern OGGPAGESERIALNO			 ex_ogg_page_serialno;
 	extern OGGSTREAMCLEAR			 ex_ogg_stream_clear;
+	extern OGGSYNCINIT			 ex_ogg_sync_init;
+	extern OGGSYNCBUFFER			 ex_ogg_sync_buffer;
+	extern OGGSYNCWROTE			 ex_ogg_sync_wrote;
+	extern OGGSYNCPAGEOUT			 ex_ogg_sync_pageout;
+	extern OGGSYNCCLEAR			 ex_ogg_sync_clear;
 
 // FAAC DLL API
 
