@@ -33,7 +33,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 		case 24000:
 			if (currentConfig->lame_set_bitrate && currentConfig->lame_vbrmode == vbr_off && (currentConfig->lame_bitrate == 192 || currentConfig->lame_bitrate == 224 || currentConfig->lame_bitrate == 256 || currentConfig->lame_bitrate == 320))
 			{
-				SMOOTH::MessageBox("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				QuickMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 
@@ -42,7 +42,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 
 			if (currentConfig->lame_set_min_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_min_vbr_bitrate == 192 || currentConfig->lame_min_vbr_bitrate == 224 || currentConfig->lame_min_vbr_bitrate == 256 || currentConfig->lame_min_vbr_bitrate == 320))
 			{
-				SMOOTH::MessageBox("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				QuickMessage("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 
@@ -51,7 +51,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 
 			if (currentConfig->lame_set_max_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_max_vbr_bitrate == 192 || currentConfig->lame_max_vbr_bitrate == 224 || currentConfig->lame_max_vbr_bitrate == 256 || currentConfig->lame_max_vbr_bitrate == 320))
 			{
-				SMOOTH::MessageBox("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				QuickMessage("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 
@@ -63,7 +63,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 		case 48000:
 			if (currentConfig->lame_set_bitrate && currentConfig->lame_vbrmode == vbr_off && (currentConfig->lame_bitrate == 8 || currentConfig->lame_bitrate == 16 || currentConfig->lame_bitrate == 24 || currentConfig->lame_bitrate == 144))
 			{
-				SMOOTH::MessageBox("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				QuickMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 
@@ -72,7 +72,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 
 			if (currentConfig->lame_set_min_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_min_vbr_bitrate == 8 || currentConfig->lame_min_vbr_bitrate == 16 || currentConfig->lame_min_vbr_bitrate == 24 || currentConfig->lame_min_vbr_bitrate == 144))
 			{
-				SMOOTH::MessageBox("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				QuickMessage("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 
@@ -81,7 +81,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 
 			if (currentConfig->lame_set_max_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_max_vbr_bitrate == 8 || currentConfig->lame_max_vbr_bitrate == 16 || currentConfig->lame_max_vbr_bitrate == 24 || currentConfig->lame_max_vbr_bitrate == 144))
 			{
-				SMOOTH::MessageBox("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				QuickMessage("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 
@@ -89,7 +89,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 			}
 			break;
 		default:
-			SMOOTH::MessageBox("Bad sampling rate! The selected sampling rate is not supported.", "Error", MB_OK, IDI_HAND);
+			QuickMessage("Bad sampling rate! The selected sampling rate is not supported.", "Error", MB_OK, IDI_HAND);
 
 			error = 1;
 
@@ -98,7 +98,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 
 	if (format->rate != 8000 && format->rate != 11025 && format->rate != 12000 && format->rate != 16000 && format->rate != 22050 && format->rate != 24000 && format->rate != 32000 && format->rate != 44100 && format->rate != 48000)
 	{
-		SMOOTH::MessageBox("Bad sampling rate! The selected sampling rate is not supported.", "Error", MB_OK, IDI_HAND);
+		QuickMessage("Bad sampling rate! The selected sampling rate is not supported.", "Error", MB_OK, IDI_HAND);
 
 		error = 1;
 
@@ -165,7 +165,7 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 			{
 				ex_lame_close(lameFlags);
 
-				SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+				QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 

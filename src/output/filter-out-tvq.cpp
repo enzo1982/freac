@@ -32,7 +32,7 @@ FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkFormatInfo *format) : Outp
 		case 22050:
 			if (currentConfig->tvq_bitrate == 48)
 			{
-				SMOOTH::MessageBox("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				QuickMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 
@@ -42,7 +42,7 @@ FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkFormatInfo *format) : Outp
 		case 44100:
 			if (currentConfig->tvq_bitrate != 48)
 			{
-				SMOOTH::MessageBox("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				QuickMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
 
 				error = 1;
 
@@ -50,7 +50,7 @@ FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkFormatInfo *format) : Outp
 			}
 			break;
 		default:
-			SMOOTH::MessageBox("Bad sampling rate! The selected sampling rate is not supported.", "Error", MB_OK, IDI_HAND);
+			QuickMessage("Bad sampling rate! The selected sampling rate is not supported.", "Error", MB_OK, IDI_HAND);
 
 			error = 1;
 

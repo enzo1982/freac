@@ -331,7 +331,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->RegisterObject(divbar);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
+	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(120, 120), Size(500, 346));
 }
@@ -386,7 +386,7 @@ Void cddbSubmitDlg::Submit()
 
 	if (!sane)
 	{
-		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Please fill all fields and track titles before submitting."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Please fill all fields and track titles before submitting."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
@@ -414,7 +414,7 @@ Void cddbSubmitDlg::Submit()
 
 	if (result == "error")
 	{
-		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		text_status->SetText("");
 

@@ -53,7 +53,7 @@ cddbQueryDlg::cddbQueryDlg()
 	mainWnd->RegisterObject(mainWnd_titlebar);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
+	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(140, 140), Size(308, 82));
 }
@@ -135,7 +135,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 	if (result == "none")
 	{
-		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("No freedb entry for this disk."), bonkEnc::i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
+		QuickMessage(bonkEnc::i18n->TranslateString("No freedb entry for this disk."), bonkEnc::i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
 	}
 	else if (result == "multiple" || result == "fuzzy")
 	{
@@ -164,7 +164,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 	}
 	else if (result == "error")
 	{
-		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 	}
 	else
 	{

@@ -153,7 +153,7 @@ bonkEnc::bonkEnc()
 				case CDEX_NATIVEEASPINOTSUPPORTED:
 				case CDEX_FAILEDTOLOADASPIDRIVERS:
 				case CDEX_FAILEDTOGETASPISTATUS:
-					SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+					QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 					currentConfig->enable_cdrip = false;
 
@@ -161,14 +161,14 @@ bonkEnc::bonkEnc()
 				case CDEX_NOCDROMDEVICES:
 					if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT)
 					{
-						SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+						QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 						currentConfig->enable_cdrip = false;
 
 						break;
 					}
 				case CDEX_NATIVEEASPISUPPORTEDNOTSELECTED:
-					if (error == CDEX_NATIVEEASPISUPPORTEDNOTSELECTED) choice = SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("Do you want to use native NT SCSI instead?")), i18n->TranslateString("Error"), MB_YESNO, IDI_QUESTION);
+					if (error == CDEX_NATIVEEASPISUPPORTEDNOTSELECTED) choice = QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("Do you want to use native NT SCSI instead?")), i18n->TranslateString("Error"), MB_YESNO, IDI_QUESTION);
 
 					if (choice == IDYES)
 					{
@@ -182,7 +182,7 @@ bonkEnc::bonkEnc()
 
 						if (error != CDEX_OK)
 						{
-							SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+							QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 							currentConfig->enable_cdrip = False;
 							currentConfig->cdrip_ntscsi = False;
@@ -389,7 +389,7 @@ Void bonkEnc::ReadCD()
 {
 	if (encoding)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}

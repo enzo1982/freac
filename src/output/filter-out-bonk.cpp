@@ -20,7 +20,7 @@ FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 {
 	if (format->channels > 2)
 	{
-		SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
 
 		error = 1;
 

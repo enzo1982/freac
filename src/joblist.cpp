@@ -16,7 +16,7 @@ Void bonkEncGUI::AddFile()
 {
 	if (encoding)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
@@ -144,7 +144,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 {
 	if (encoding)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
@@ -281,7 +281,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 	}
 	else
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot open file:").Append(" ").Append(file), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot open file:").Append(" ").Append(file), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 	}
 
 	if (!currentConfig->enable_console) txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(joblist->GetNOfEntries())));
@@ -291,14 +291,14 @@ Void bonkEncGUI::RemoveFile()
 {
 	if (encoding)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
 
 	if (joblist->GetSelectedEntry() == NIL)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("You have not selected a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("You have not selected a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
@@ -369,7 +369,7 @@ Void bonkEnc::ClearList()
 {
 	if (encoding)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}

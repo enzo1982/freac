@@ -25,7 +25,7 @@ Void bonkEnc::PlayItem(Int entry)
 {
 	if (encoding)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot play a file while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot play a file while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}

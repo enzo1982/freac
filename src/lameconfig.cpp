@@ -699,7 +699,7 @@ configureLameEnc::configureLameEnc()
 	register_layer_filtering->RegisterObject(filtering_check_disable_all);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
+	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(140, 140), Size(405, 297));
 }
@@ -804,35 +804,35 @@ Void configureLameEnc::OK()
 
 	if (set_lowpass && filtering_edit_lowpass->GetText().Length() == 0)
 	{
-		SMOOTH::MessageBox("Please enter a frequency for the Lowpass filter!", "Error", MB_OK, IDI_HAND);
+		QuickMessage("Please enter a frequency for the Lowpass filter!", "Error", MB_OK, IDI_HAND);
 
 		return;
 	}
 
 	if (set_lowpass && set_lowpass_width && filtering_edit_lowpass_width->GetText().Length() == 0)
 	{
-		SMOOTH::MessageBox("Please enter a frequency for the Lowpass filter width!", "Error", MB_OK, IDI_HAND);
+		QuickMessage("Please enter a frequency for the Lowpass filter width!", "Error", MB_OK, IDI_HAND);
 
 		return;
 	}
 
 	if (set_highpass && filtering_edit_highpass->GetText().Length() == 0)
 	{
-		SMOOTH::MessageBox("Please enter a frequency for the Highpass filter!", "Error", MB_OK, IDI_HAND);
+		QuickMessage("Please enter a frequency for the Highpass filter!", "Error", MB_OK, IDI_HAND);
 
 		return;
 	}
 
 	if (set_highpass && set_highpass_width && filtering_edit_highpass_width->GetText().Length() == 0)
 	{
-		SMOOTH::MessageBox("Please enter a frequency for the Highpass filter width!", "Error", MB_OK, IDI_HAND);
+		QuickMessage("Please enter a frequency for the Highpass filter width!", "Error", MB_OK, IDI_HAND);
 
 		return;
 	}
 
 	if (set_highpass && set_lowpass && filtering_edit_lowpass->GetText().ToInt() != 0 && filtering_edit_highpass->GetText().ToInt() != 0 && (filtering_edit_lowpass->GetText().ToInt() < filtering_edit_highpass->GetText().ToInt()))
 	{
-		SMOOTH::MessageBox("Lowpass frequency is lower than Highpass frequency!", "Error", MB_OK, IDI_HAND);
+		QuickMessage("Lowpass frequency is lower than Highpass frequency!", "Error", MB_OK, IDI_HAND);
 
 		return;
 	}

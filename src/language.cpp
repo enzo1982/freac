@@ -58,7 +58,7 @@ languageDlg::languageDlg()
 	mainWnd->RegisterObject(mainWnd_titlebar);
 	mainWnd->RegisterObject(divbar);
 
-	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
+	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(120, 120), Size(240, 182));
 }

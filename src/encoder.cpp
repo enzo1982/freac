@@ -36,7 +36,7 @@ Void bonkEnc::Encode()
 
 	if (playing)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot start encoding while playing a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot start encoding while playing a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}

@@ -473,7 +473,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	{
 		if (cddbInfo->offsets.GetNthEntry(i) == 0)
 		{
-			SMOOTH::MessageBox("A CDDB error occurred! CDDB data cannot be submitted.\n\nPlease report this error to cddb@bonkenc.org and\ninclude detailed information about the corresponding CD.", "CDDB Error #001", MB_OK, IDI_HAND);
+			QuickMessage("A CDDB error occurred! CDDB data cannot be submitted.\n\nPlease report this error to cddb@bonkenc.org and\ninclude detailed information about the corresponding CD.", "CDDB Error #001", MB_OK, IDI_HAND);
 
 			str = "error";
 
@@ -499,7 +499,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	{
 		if (cddbInfo->titles.GetNthEntry(j) == "")
 		{
-			SMOOTH::MessageBox("A CDDB error occurred! CDDB data cannot be submitted.\n\nPlease report this error to cddb@bonkenc.org and\ninclude detailed information about the corresponding CD.", "CDDB Error #002", MB_OK, IDI_HAND);
+			QuickMessage("A CDDB error occurred! CDDB data cannot be submitted.\n\nPlease report this error to cddb@bonkenc.org and\ninclude detailed information about the corresponding CD.", "CDDB Error #002", MB_OK, IDI_HAND);
 
 			str = "error";
 

@@ -92,35 +92,35 @@ bonkEncGUI::bonkEncGUI()
 		size.cx = 25;
 		size.cy = 25;
 
-		button_play	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 11, NIL), pos, size);
+		button_play	= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 11, NIL), pos, size);
 		button_play->onClick.Connect(&bonkEnc::PlaySelectedItem, (bonkEnc *) this);
 		button_play->SetOrientation(OR_UPPERRIGHT);
 		button_play->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
 
-		button_pause	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 12, NIL), pos, size);
+		button_pause	= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 12, NIL), pos, size);
 		button_pause->onClick.Connect(&bonkEnc::PausePlayback, (bonkEnc *) this);
 		button_pause->SetOrientation(OR_UPPERRIGHT);
 		button_pause->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
 
-		button_stop	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 13, NIL), pos, size);
+		button_stop	= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 13, NIL), pos, size);
 		button_stop->onClick.Connect(&bonkEnc::StopPlayback, (bonkEnc *) this);
 		button_stop->SetOrientation(OR_UPPERRIGHT);
 		button_stop->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
 
-		button_prev	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 14, NIL), pos, size);
+		button_prev	= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 14, NIL), pos, size);
 		button_prev->onClick.Connect(&bonkEnc::PlayPrevious, (bonkEnc *) this);
 		button_prev->SetOrientation(OR_UPPERRIGHT);
 		button_prev->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
 
-		button_next	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 15, NIL), pos, size);
+		button_next	= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 15, NIL), pos, size);
 		button_next->onClick.Connect(&bonkEnc::PlayNext, (bonkEnc *) this);
 		button_next->SetOrientation(OR_UPPERRIGHT);
 		button_next->SetFlags(BF_NOFRAME);
@@ -619,22 +619,22 @@ bonkEncGUI::bonkEncGUI()
 
 	mainWnd_iconbar->SetBitmapSize(24);
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 1, NIL));
 	entry->onClick.Connect(&bonkEncGUI::AddFile, this);
 	entry->SetStatusText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
+		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 2, NIL), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onClick.Connect(&bonkEnc::ReadCD, (bonkEnc *) this);
 		entry->SetStatusText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 3, NIL));
 	entry->onClick.Connect(&bonkEncGUI::RemoveFile, this);
 	entry->SetStatusText(i18n->TranslateString("Remove the selected entry from the joblist"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 4, NIL));
 	entry->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Clear the entire joblist"));
 
@@ -642,32 +642,32 @@ bonkEncGUI::bonkEncGUI()
 	{
 		mainWnd_iconbar->AddEntry();
 
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
+		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 9, NIL));
 		entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
 		entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
 
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));
+		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 10, NIL));
 		entry->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
 		entry->SetStatusText(i18n->TranslateString("Submit CDDB data..."));
 	}
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 5, NIL));
 	entry->onClick.Connect(&bonkEncGUI::ConfigureGeneral, this);
 	entry->SetStatusText(i18n->TranslateString("Configure general settings"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 6, NIL));
 	entry->onClick.Connect(&bonkEncGUI::ConfigureEncoder, this);
 	entry->SetStatusText(i18n->TranslateString("Configure the selected audio encoder"));
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), ENCODER_WAVE > 0 ? menu_encoders : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 7, NIL), ENCODER_WAVE > 0 ? menu_encoders : NIL);
 	entry->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Start the encoding process"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 8, NIL));
 	entry->onClick.Connect(&bonkEnc::StopEncoding, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Stop encoding"));
 
@@ -761,7 +761,7 @@ bonkEncGUI::bonkEncGUI()
 		currentConfig->wndPos.y = (Int) Math::Min(workArea.bottom - 10 - currentConfig->wndSize.cy, currentConfig->wndPos.y);
 	}
 
-	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
+	mainWnd->SetIcon(Bitmap::LoadBitmap("BonkEnc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->onResize.Connect(&bonkEncGUI::ResizeProc, this);
@@ -842,7 +842,7 @@ Bool bonkEncGUI::ExitProc()
 {
 	if (encoding)
 	{
-		if (IDNO == SMOOTH::MessageBox(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
+		if (IDNO == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
 
 		StopEncoding();
 	}
@@ -906,21 +906,21 @@ Void bonkEncGUI::Close()
 
 Void bonkEncGUI::About()
 {
-	SMOOTH::MessageBox(String("BonkEnc ").Append(bonkEnc::version).Append("\nCopyright (C) 2001-2004 Robert Kausch\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String("BonkEnc ").Append(bonkEnc::version).Append("\nCopyright (C) 2001-2004 Robert Kausch\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void bonkEncGUI::ConfigureEncoder()
 {
 	if (encoding)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot configure encoder while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot configure encoder while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
 
 	if (currentConfig->encoder == ENCODER_WAVE)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("No options can be configured for the WAVE Out filter!"), i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		QuickMessage(i18n->TranslateString("No options can be configured for the WAVE Out filter!"), i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
 
 		return;
 	}
@@ -944,7 +944,7 @@ Void bonkEncGUI::ConfigureGeneral()
 {
 	if (encoding)
 	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot change settings while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(i18n->TranslateString("Cannot change settings while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
@@ -1416,22 +1416,22 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help, NIL, NIL, 0, OR_RIGHT);
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 1, NIL));
 	entry->onClick.Connect(&bonkEncGUI::AddFile, this);
 	entry->SetStatusText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
+		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 2, NIL), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onClick.Connect(&bonkEnc::ReadCD, (bonkEnc *) this);
 		entry->SetStatusText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 3, NIL));
 	entry->onClick.Connect(&bonkEncGUI::RemoveFile, this);
 	entry->SetStatusText(i18n->TranslateString("Remove the selected entry from the joblist"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 4, NIL));
 	entry->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Clear the entire joblist"));
 
@@ -1439,32 +1439,32 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	{
 		mainWnd_iconbar->AddEntry();
 
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
+		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 9, NIL));
 		entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
 		entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
 
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));
+		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 10, NIL));
 		entry->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
 		entry->SetStatusText(i18n->TranslateString("Submit CDDB data..."));
 	}
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 5, NIL));
 	entry->onClick.Connect(&bonkEncGUI::ConfigureGeneral, this);
 	entry->SetStatusText(i18n->TranslateString("Configure general settings"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 6, NIL));
 	entry->onClick.Connect(&bonkEncGUI::ConfigureEncoder, this);
 	entry->SetStatusText(i18n->TranslateString("Configure the selected audio encoder"));
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), ENCODER_WAVE > 0 ? menu_encoders : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 7, NIL), ENCODER_WAVE > 0 ? menu_encoders : NIL);
 	entry->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Start the encoding process"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL));
+	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 8, NIL));
 	entry->onClick.Connect(&bonkEnc::StopEncoding, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Stop encoding"));
 

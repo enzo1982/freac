@@ -18,7 +18,7 @@ FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkFormatInfo *format) : 
 {
 	if (format->rate != 32000 && format->rate != 44100 && format->rate != 48000)
 	{
-		SMOOTH::MessageBox("Bad sampling rate! BladeEnc supports only 32, 44.1 or 48kHz.", "Error", MB_OK, IDI_HAND);
+		QuickMessage("Bad sampling rate! BladeEnc supports only 32, 44.1 or 48kHz.", "Error", MB_OK, IDI_HAND);
 
 		error = 1;
 
@@ -39,7 +39,7 @@ FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkFormatInfo *format) : 
 	}
 	else
 	{
-		SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
 
 		error = 1;
 

@@ -576,7 +576,7 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_tags->RegisterObject(tags_edit_defcomment);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
+	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(120, 120), Size(384, 277));
 }
@@ -658,7 +658,7 @@ Void configureGeneralSettings::OK()
 {
 	if (Setup::enableUnicode ? _wchdir(encoders_edit_outdir->GetText()) : _chdir(encoders_edit_outdir->GetText()) != 0)
 	{
-		if (SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), bonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION) == IDYES)
+		if (QuickMessage(bonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), bonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION) == IDYES)
 		{
 			String	 dir = encoders_edit_outdir->GetText();
 			String	 tmp;
@@ -690,7 +690,7 @@ Void configureGeneralSettings::OK()
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1 && !valid)
 	{
-		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Please enter a valid eMail address."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Please enter a valid eMail address."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
@@ -805,7 +805,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_WAVE)
 	{
-		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), bonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		QuickMessage(bonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), bonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
 	}
 }
 
