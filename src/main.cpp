@@ -540,7 +540,7 @@ bonkEncGUI::bonkEncGUI()
 
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)..."))->onClick.Connect(&bonkEncGUI::AddFile, this);
 
-	Menu::Entry	*entry;
+	MenuEntry	*entry;
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
@@ -1264,7 +1264,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)..."))->onClick.Connect(&bonkEncGUI::AddFile, this);
 
-	Menu::Entry	*entry;
+	MenuEntry	*entry;
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{

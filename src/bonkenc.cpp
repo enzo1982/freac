@@ -121,7 +121,6 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->encoder >= nextEC) currentConfig->encoder = ENCODER_WAVE;
 
-
 	if (currentConfig->enable_cdrip)
 	{
 		Long		 error = ex_CR_Init(currentConfig->GetIniFile());
