@@ -22,6 +22,8 @@ History
 		- added support for Winamp Input Plugins
 		- added support for audio playback through Winamp Output Plugins
 		- upgraded FAAC to version 1.17
+		- improved ASPI detection
+		- some expert settings can now be set for the LAME encoder
 		- fixed many bugs and memory leaks
 
 	Version 0.9 (March 2003)
@@ -142,7 +144,6 @@ Future plans
 
 	- Sheduled for v1.0 beta 1
 		* extract artist and title from the filename
-		* allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
 		* improve CDDB querying (dialog with abort button)
 
 	- Sheduled for v1.0

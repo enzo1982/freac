@@ -193,6 +193,9 @@ Bool bonkEncConfig::LoadSettings()
 	lame_highpass = getINIValue("lameMP3", "Highpass", "0").ToInt();
 	lame_set_highpass_width = getINIValue("lameMP3", "SetHighpassWidth", "0").ToInt();
 	lame_highpass_width = getINIValue("lameMP3", "HighpassWidth", "0").ToInt();
+	lame_enable_ath = getINIValue("lameMP3", "EnableATH", "1").ToInt();
+	lame_athtype = getINIValue("lameMP3", "ATHType", "-1").ToInt();
+	lame_use_tns = getINIValue("lameMP3", "UseTNS", "1").ToInt();
 
 	vorbis_mode = getINIValue("oggVorbis", "Mode", "0").ToInt();
 	vorbis_quality = getINIValue("oggVorbis", "Quality", "60").ToInt();
@@ -548,6 +551,18 @@ Bool bonkEncConfig::SaveSettings()
 
 		str = "HighpassWidth=";
 		str.Append(String::FromInt(lame_highpass_width));
+		out->OutputLine(str);
+
+		str = "EnableATH=";
+		str.Append(String::FromInt(lame_enable_ath));
+		out->OutputLine(str);
+
+		str = "ATHType=";
+		str.Append(String::FromInt(lame_athtype));
+		out->OutputLine(str);
+
+		str = "UseTNS=";
+		str.Append(String::FromInt(lame_use_tns));
 		out->OutputLine(str);
 
 		out->OutputLine("");

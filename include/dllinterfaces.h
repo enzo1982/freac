@@ -120,6 +120,9 @@
 	typedef int				(*LAME_SET_VBR_MEAN_BITRATE_KBPS)		(lame_global_flags *, int);
 	typedef int				(*LAME_SET_VBR_MIN_BITRATE_KBPS)		(lame_global_flags *, int);
 	typedef int				(*LAME_SET_VBR_MAX_BITRATE_KBPS)		(lame_global_flags *, int);
+	typedef int				(*LAME_SET_NOATH)				(lame_global_flags *, int);
+	typedef int				(*LAME_SET_ATHTYPE)				(lame_global_flags *, int);
+	typedef int				(*LAME_SET_USETEMPORAL)				(lame_global_flags *, int);
 	typedef int				(*LAME_INIT_PARAMS)				(lame_global_flags * const);
 	typedef int				(*LAME_ENCODE_BUFFER)				(lame_global_flags *, const short int [], const short int [], const int, unsigned char *, const int);
 	typedef int				(*LAME_ENCODE_BUFFER_INTERLEAVED)		(lame_global_flags *, short int [], int, unsigned char *, int);
@@ -157,6 +160,9 @@
 	extern LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps;
 	extern LAME_SET_VBR_MIN_BITRATE_KBPS	 ex_lame_set_VBR_min_bitrate_kbps;
 	extern LAME_SET_VBR_MAX_BITRATE_KBPS	 ex_lame_set_VBR_max_bitrate_kbps;
+	extern LAME_SET_NOATH			 ex_lame_set_noATH;
+	extern LAME_SET_ATHTYPE			 ex_lame_set_ATHtype;
+	extern LAME_SET_USETEMPORAL		 ex_lame_set_useTemporal;
 	extern LAME_INIT_PARAMS			 ex_lame_init_params;
 	extern LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
 	extern LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;

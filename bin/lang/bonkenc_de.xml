@@ -228,5 +228,11 @@
     <entry id="217" string="Cannot play a file while encoding!">Kann während des Codierens keine Datei abspielen!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">Kann nicht Codieren, während eine Datei abgespielt wird!</entry>
     <entry id="219" string="CDDB Settings">CDDB Einstellungen</entry>
+    <entry id="220" string="ATH">ATH</entry>
+    <entry id="221" string="Enable ATH:">ATH aktivieren:</entry>
+    <entry id="222" string="Use default setting">Voreinstellung verwenden</entry>
+    <entry id="223" string="Psycho acoustic model">Psychoakustik Modell</entry>
+    <entry id="224" string="Use Temporal Masking Effect">Temporal Masking Effekt verwenden</entry>
+    <entry id="225" string="Expert">Experteneinstellungen</entry>
   </data>
 </LangFile>

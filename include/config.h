@@ -129,6 +129,9 @@ class bonkEncConfig
 		Bool		 lame_set_highpass_width;
 		Int		 lame_highpass_width;
 		Bool		 lame_disable_filtering;
+		Bool		 lame_enable_ath;
+		Int		 lame_athtype;
+		Bool		 lame_use_tns;
 
 		Bool		 vorbis_mode;
 		Int		 vorbis_quality;

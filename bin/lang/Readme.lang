@@ -32,10 +32,10 @@ Right-to-left scripts
 	The text is drawn correctly, but the layout of the menus etc. doesn't adjust, yet.
 	This will be supported in a coming version of smooth.
 
-	Have a look at the bonkenc_ar.xml file (available from CVS) to seen how far we are.
+	Have a look at the bonkenc_ar.xml file (available from CVS) to see how far we are.
 	It's a (very incomplete) Arabic translation for BonkEnc.
 
-	Left-to-right scripts are fully supported though - including Asian scripts with
+	Left-to-right scripts are fully supported, though - including Asian scripts with
 	CJK symbols. See bonkenc_ja.xml for an example.
 
 The 'info' node

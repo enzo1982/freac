@@ -70,6 +70,9 @@ LAME_SET_VBR_Q			 ex_lame_set_VBR_q;
 LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps;
 LAME_SET_VBR_MIN_BITRATE_KBPS	 ex_lame_set_VBR_min_bitrate_kbps;
 LAME_SET_VBR_MAX_BITRATE_KBPS	 ex_lame_set_VBR_max_bitrate_kbps;
+LAME_SET_NOATH			 ex_lame_set_noATH;
+LAME_SET_ATHTYPE		 ex_lame_set_ATHtype;
+LAME_SET_USETEMPORAL		 ex_lame_set_useTemporal;
 LAME_INIT_PARAMS		 ex_lame_init_params;
 LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
 LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
@@ -227,6 +230,9 @@ Bool bonkEnc::LoadLAMEDLL()
 	ex_lame_set_VBR_mean_bitrate_kbps	= (LAME_SET_VBR_MEAN_BITRATE_KBPS) GetProcAddress(lamedll, "lame_set_VBR_mean_bitrate_kbps");
 	ex_lame_set_VBR_min_bitrate_kbps	= (LAME_SET_VBR_MIN_BITRATE_KBPS) GetProcAddress(lamedll, "lame_set_VBR_min_bitrate_kbps");
 	ex_lame_set_VBR_max_bitrate_kbps	= (LAME_SET_VBR_MAX_BITRATE_KBPS) GetProcAddress(lamedll, "lame_set_VBR_max_bitrate_kbps");
+	ex_lame_set_noATH			= (LAME_SET_NOATH) GetProcAddress(lamedll, "lame_set_noATH");
+	ex_lame_set_ATHtype			= (LAME_SET_ATHTYPE) GetProcAddress(lamedll, "lame_set_ATHtype");
+	ex_lame_set_useTemporal			= (LAME_SET_USETEMPORAL) GetProcAddress(lamedll, "lame_set_useTemporal");
 	ex_lame_init_params			= (LAME_INIT_PARAMS) GetProcAddress(lamedll, "lame_init_params");
 	ex_lame_encode_buffer			= (LAME_ENCODE_BUFFER) GetProcAddress(lamedll, "lame_encode_buffer");
 	ex_lame_encode_buffer_interleaved	= (LAME_ENCODE_BUFFER_INTERLEAVED) GetProcAddress(lamedll, "lame_encode_buffer_interleaved");
@@ -264,6 +270,9 @@ Bool bonkEnc::LoadLAMEDLL()
 	if (ex_lame_set_VBR_mean_bitrate_kbps == NULL)	{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_set_VBR_min_bitrate_kbps == NULL)	{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_set_VBR_max_bitrate_kbps == NULL)	{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_noATH == NULL)			{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_ATHtype == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_useTemporal == NULL)		{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_init_params == NULL)		{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_encode_buffer == NULL)		{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_encode_buffer_interleaved == NULL)	{ FreeLibrary(lamedll); return false; }

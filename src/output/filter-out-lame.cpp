@@ -203,6 +203,17 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 			if (currentConfig->lame_vbrmode != vbr_off && currentConfig->lame_set_min_vbr_bitrate) ex_lame_set_VBR_min_bitrate_kbps(lameFlags, currentConfig->lame_min_vbr_bitrate);
 			if (currentConfig->lame_vbrmode != vbr_off && currentConfig->lame_set_max_vbr_bitrate) ex_lame_set_VBR_max_bitrate_kbps(lameFlags, currentConfig->lame_max_vbr_bitrate);
 
+			if (currentConfig->lame_enable_ath)
+			{
+				if (currentConfig->lame_athtype != -1) ex_lame_set_ATHtype(lameFlags, currentConfig->lame_athtype);
+			}
+			else
+			{
+				ex_lame_set_noATH(lameFlags, 1);
+			}
+
+			ex_lame_set_useTemporal(lameFlags, currentConfig->lame_use_tns);
+
 			break;
 		case 1:
 			ex_lame_set_preset(lameFlags, MEDIUM);

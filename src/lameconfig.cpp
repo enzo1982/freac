@@ -45,6 +45,8 @@ configureLameEnc::configureLameEnc()
 	set_lowpass_width = currentConfig->lame_set_lowpass_width;
 	set_highpass = currentConfig->lame_set_highpass;
 	set_highpass_width = currentConfig->lame_set_highpass_width;
+	enable_ath = currentConfig->lame_enable_ath;
+	enable_tempmask = currentConfig->lame_use_tns;
 
 	mainWnd			= new Window(String("LAME MP3 ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -52,7 +54,7 @@ configureLameEnc::configureLameEnc()
 	register_layer_basic	= new Layer(bonkEnc::i18n->TranslateString("Basic"));
 	register_layer_vbr	= new Layer("VBR");
 	register_layer_misc	= new Layer(bonkEnc::i18n->TranslateString("Misc"));
-	register_layer_expert	= new Layer("Expert");
+	register_layer_expert	= new Layer(bonkEnc::i18n->TranslateString("Expert"));
 	register_layer_filtering= new Layer(bonkEnc::i18n->TranslateString("Audio processing"));
 
 	pos.x = 175;
@@ -425,6 +427,53 @@ configureLameEnc::configureLameEnc()
 
 	pos.x = 7;
 	pos.y = 11;
+	size.cx = 270;
+	size.cy = 39;
+
+	expert_ath		= new GroupBox(bonkEnc::i18n->TranslateString("ATH"), pos, size);
+
+	pos.x += 10;
+	pos.y += 11;
+	size.cx = 93;
+	size.cy = 0;
+
+	expert_check_ath	= new CheckBox(bonkEnc::i18n->TranslateString("Enable ATH:"), pos, size, &enable_ath);
+	expert_check_ath->onClick.Connect(&configureLameEnc::SetEnableATH, this);
+	expert_check_ath->SetMetrics(expert_check_ath->GetObjectProperties()->pos, Size(expert_check_ath->GetObjectProperties()->textSize.cx + 19, expert_check_ath->GetObjectProperties()->size.cy));
+
+	pos.x += (expert_check_ath->GetObjectProperties()->textSize.cx + 28);
+	pos.y -= 1;
+	size.cx = 222 - expert_check_ath->GetObjectProperties()->textSize.cx;
+	size.cy = 0;
+
+	expert_combo_athtype	= new ComboBox(pos, size);
+	expert_combo_athtype->AddEntry(bonkEnc::i18n->TranslateString("Use default setting"));
+	expert_combo_athtype->AddEntry("Gabriel Bouvigne, 9");
+	expert_combo_athtype->AddEntry("Frank Klemm");
+	expert_combo_athtype->AddEntry("Gabriel Bouvigne, 0");
+	expert_combo_athtype->AddEntry("Roel Van Den Berghe");
+	expert_combo_athtype->AddEntry("Gabriel Bouvigne VBR");
+	expert_combo_athtype->AddEntry("John Dahlstrom");
+	expert_combo_athtype->SelectEntry(currentConfig->lame_athtype + 1);
+
+	if (!enable_ath) expert_combo_athtype->Deactivate();
+
+	pos.x = 7;
+	pos.y = 62;
+	size.cx = 270;
+	size.cy = 39;
+
+	expert_psycho		= new GroupBox(bonkEnc::i18n->TranslateString("Psycho acoustic model"), pos, size);
+
+	pos.x += 10;
+	pos.y += 11;
+	size.cx = 249;
+	size.cy = 0;
+
+	expert_check_tempmask	= new CheckBox(bonkEnc::i18n->TranslateString("Use Temporal Masking Effect"), pos, size, &enable_tempmask);
+
+	pos.x = 7;
+	pos.y = 11;
 	size.cx = 138;
 	size.cy = 39;
 
@@ -556,7 +605,7 @@ configureLameEnc::configureLameEnc()
 	reg_register->RegisterObject(register_layer_basic);
 	reg_register->RegisterObject(register_layer_vbr);
 	reg_register->RegisterObject(register_layer_misc);
-//	reg_register->RegisterObject(register_layer_expert);
+	reg_register->RegisterObject(register_layer_expert);
 	reg_register->RegisterObject(register_layer_filtering);
 
 	register_layer_basic->RegisterObject(basic_preset);
@@ -623,6 +672,13 @@ configureLameEnc::configureLameEnc()
 	register_layer_misc->RegisterObject(misc_padding);
 	register_layer_misc->RegisterObject(misc_text_padding);
 	register_layer_misc->RegisterObject(misc_combo_padding);
+
+	register_layer_expert->RegisterObject(expert_ath);
+	register_layer_expert->RegisterObject(expert_check_ath);
+	register_layer_expert->RegisterObject(expert_combo_athtype);
+
+	register_layer_expert->RegisterObject(expert_psycho);
+	register_layer_expert->RegisterObject(expert_check_tempmask);
 
 	register_layer_filtering->RegisterObject(filtering_resample);
 	register_layer_filtering->RegisterObject(filtering_combo_resample);
@@ -713,6 +769,11 @@ configureLameEnc::~configureLameEnc()
 	DeleteObject(misc_padding);
 	DeleteObject(misc_text_padding);
 	DeleteObject(misc_combo_padding);
+	DeleteObject(expert_ath);
+	DeleteObject(expert_check_ath);
+	DeleteObject(expert_combo_athtype);
+	DeleteObject(expert_psycho);
+	DeleteObject(expert_check_tempmask);
 	DeleteObject(filtering_resample);
 	DeleteObject(filtering_combo_resample);
 	DeleteObject(filtering_lowpass);
@@ -806,6 +867,9 @@ Void configureLameEnc::OK()
 	currentConfig->lame_lowpass_width = filtering_edit_lowpass_width->GetText().ToInt();
 	currentConfig->lame_highpass = filtering_edit_highpass->GetText().ToInt();
 	currentConfig->lame_highpass_width = filtering_edit_highpass_width->GetText().ToInt();
+	currentConfig->lame_enable_ath = enable_ath;
+	currentConfig->lame_athtype = expert_combo_athtype->GetSelectedEntry()->id - 1;
+	currentConfig->lame_use_tns = enable_tempmask;
 
 	switch (filtering_combo_resample->GetSelectedEntry()->id)
 	{
@@ -905,6 +969,11 @@ Void configureLameEnc::SetPreset()
 		misc_padding->Activate();
 		misc_text_padding->Activate();
 		misc_combo_padding->Activate();
+		expert_ath->Activate();
+		expert_check_ath->Activate();
+		expert_combo_athtype->Activate();
+		expert_psycho->Activate();
+		expert_check_tempmask->Activate();
 		filtering_resample->Activate();
 		filtering_combo_resample->Activate();
 		filtering_lowpass->Activate();
@@ -1010,6 +1079,8 @@ Void configureLameEnc::SetPreset()
 		}
 
 		if (!set_lowpass_width || !set_lowpass || disable_filtering) filtering_edit_lowpass_width->Deactivate();
+
+		if (!enable_ath) expert_combo_athtype->Deactivate();
 	}
 	else
 	{
@@ -1063,6 +1134,11 @@ Void configureLameEnc::SetPreset()
 		misc_padding->Deactivate();
 		misc_text_padding->Deactivate();
 		misc_combo_padding->Deactivate();
+		expert_ath->Deactivate();
+		expert_check_ath->Deactivate();
+		expert_combo_athtype->Deactivate();
+		expert_psycho->Deactivate();
+		expert_check_tempmask->Deactivate();
 		filtering_resample->Deactivate();
 		filtering_combo_resample->Deactivate();
 		filtering_lowpass->Deactivate();
@@ -1385,6 +1461,18 @@ Void configureLameEnc::SetLowpassWidth()
 {
 	if (set_lowpass_width)	filtering_edit_lowpass_width->Activate();
 	else			filtering_edit_lowpass_width->Deactivate();
+}
+
+Void configureLameEnc::SetEnableATH()
+{
+	if (enable_ath)
+	{
+		expert_combo_athtype->Activate();
+	}
+	else
+	{
+		expert_combo_athtype->Deactivate();
+	}
 }
 
 Void configureLameEnc::SetDisableFiltering()

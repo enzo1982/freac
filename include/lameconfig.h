@@ -99,6 +99,14 @@ class configureLameEnc : public Dialog
 		Text		*misc_text_padding;
 		ComboBox	*misc_combo_padding;
 
+		GroupBox	*expert_ath;
+		GroupBox	*expert_psycho;
+
+		CheckBox	*expert_check_ath;
+		ComboBox	*expert_combo_athtype;
+
+		CheckBox	*expert_check_tempmask;
+
 		GroupBox	*filtering_resample;
 		GroupBox	*filtering_misc;
 		GroupBox	*filtering_lowpass;
@@ -135,6 +143,8 @@ class configureLameEnc : public Dialog
 		Bool		 set_copyright;
 		Bool		 set_crc;
 		Bool		 set_iso;
+		Bool		 enable_ath;
+		Bool		 enable_tempmask;
 		Bool		 disable_filtering;
 		Bool		 set_lowpass;
 		Bool		 set_lowpass_width;
@@ -159,6 +169,7 @@ class configureLameEnc : public Dialog
 		Void		 SetMaxVBRBitrateOption();
 		Void		 SetMinVBRBitrate();
 		Void		 SetMaxVBRBitrate();
+		Void		 SetEnableATH();
 		Void		 SetDisableFiltering();
 		Void		 SetLowpass();
 		Void		 SetLowpassWidth();
