@@ -35,7 +35,6 @@ class bonkEncCDDB
 		Array<String>	 titles;
 		Array<String>	 categories;
 
-		Int		 ComputeDiscID();
 		String		 GetCDDBQueryString();
 		String		 SendCommand(String);
 	public:
@@ -43,6 +42,7 @@ class bonkEncCDDB
 				~bonkEncCDDB();
 
 		Int		 SetActiveDrive(Int);
+		Int		 ComputeDiscID();
 		String		 GetDiscIDString();
 
 		Bool		 ConnectToServer();
@@ -54,6 +54,9 @@ class bonkEncCDDB
 		String		 GetNthID(Int);
 		String		 GetNthTitle(Int);
 		String		 GetNthCategory(Int);
+
+		static Array<Array<bonkFormatInfo::bonkTrackInfo *> *>	 titleCache;
+		static Array<Bool>					 requestedDiscs;
 };
 
 #endif

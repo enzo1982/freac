@@ -8,24 +8,35 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_IN_VOC_
-#define _H_FILTER_IN_VOC_
+#ifndef _H_CDDB_SUBMIT_
+#define _H_CDDB_SUBMIT_
 
-#include "inputfilter.h"
+#include <smooth.h>
+#include <main.h>
 
-class FilterInVOC : public InputFilter
+using namespace smooth;
+using namespace smooth::GUI;
+
+class cddbSubmitDlg : public Application
 {
 	private:
-		bonkFormatInfo	 format;
-		Bool		 setup;
-		Int		 bytesleft;
+		Divider		*divbar;
+
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
+
+		Button		*btn_cancel;
+		Button		*btn_ok;
+
+		bonkEncConfig	*currentConfig;
+
+		Void		 OK();
+		Void		 Cancel();
 	public:
-				 FilterInVOC(bonkEncConfig *);
-				~FilterInVOC();
+				 cddbSubmitDlg();
+				~cddbSubmitDlg();
 
-		int		 ReadData(unsigned char **, int);
-
-		bonkFormatInfo	*GetFileInfo(String);
+		Int		 ShowDialog();
 };
 
 #endif

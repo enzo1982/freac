@@ -112,7 +112,20 @@ int FilterInVOC::ReadData(unsigned char **data, int size)
 	return outsize;
 }
 
-bonkFormatInfo FilterInVOC::GetFileInfo(S::String inFile)
+bonkFormatInfo *FilterInVOC::GetFileInfo(String inFile)
 {
-	return format;
+	bonkFormatInfo	*nFormat = new bonkFormatInfo;
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+
+	nFormat->trackInfo = NIL;
+	nFormat->fileSize = f_in->Size();
+	nFormat->order = format.order;
+	nFormat->rate = format.rate;
+	nFormat->channels = format.channels;
+	nFormat->length = format.length;
+	nFormat->bits = format.bits;
+
+	delete f_in;
+
+	return nFormat;
 }

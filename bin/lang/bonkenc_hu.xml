@@ -48,7 +48,7 @@
     <entry id="37" string="Windows CD Audio Track">Windows Audio CD szám</entry>
     <entry id="38" string="All Files">Összes fájl</entry>
     <entry id="39" string="You have not selected a file!">Nem választottál ki még egy fájlt sem!</entry>
-    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">A tömörítés még fut! Megállítsam?</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">A tömörítés még fut! Megállítsam?</entry>
     <entry id="41" string="Currently encoding">Tömörítés folyamatban</entry>
     <entry id="42" string="This program is being distributed under the terms">Ez a program szabadon terjeszthetõ</entry>
     <entry id="43" string="of the GNU General Public License (GPL).">a GNU (General Public License) elõírásai szerint.</entry>

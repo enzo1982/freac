@@ -17,7 +17,7 @@ class FilterInBONK : public InputFilter
 {
 	private:
 		void		*decoder;
-		bool		 setup;
+		Bool		 setup;
 		bonkFormatInfo	 format;
 		InStream	*f_in;
 	public:
@@ -26,7 +26,7 @@ class FilterInBONK : public InputFilter
 
 		int		 ReadData(unsigned char **, int);
 
-		bonkFormatInfo	 GetFileInfo(S::String);
+		bonkFormatInfo	*GetFileInfo(String);
 };
 
 #endif

@@ -33,36 +33,43 @@ typedef unsigned long  uint32;
 typedef unsigned short uint16;
 typedef unsigned char  uint8;
 
-class bonkTrackInfo
-{
-	public:
-			 bonkTrackInfo()
-			{
-				track = -1;
-				drive = -1;
-
-				cdText = False;
-				year = -1;
-			}
-
-		Int	 track;
-		Int	 drive;
-
-		Bool	 cdText;
-		String	 artist;
-		String	 title;
-		String	 album;
-		String	 comment;
-		String	 genre;
-		Int	 year;
-
-		String	 outfile;
-		String	 origFilename;
-};
-
 class bonkFormatInfo
 {
 	public:
+		class bonkTrackInfo
+		{
+			public:
+					 bonkTrackInfo()
+					{
+						isCDTrack = False;
+
+						track = -1;
+						drive = -1;
+
+						hasText = False;
+						year = -1;
+					}
+
+				Bool	 isCDTrack;
+				Int	 drive;
+				Int	 cdTrack;
+
+				Bool	 hasText;
+				String	 artist;
+				String	 title;
+				String	 album;
+				Int	 track;
+				String	 genre;
+				Int	 year;
+				String	 comment;
+
+				String	 length;
+				String	 fileSize;
+
+				String	 outfile;
+				String	 origFilename;
+		};
+
 				 bonkFormatInfo()
 				{
 					trackInfo = NIL;
@@ -73,6 +80,11 @@ class bonkFormatInfo
 					length = 0;
 					fileSize = -1;
 					order = BYTE_INTEL;
+				}
+
+				~bonkFormatInfo()
+				{
+					if (trackInfo != NIL) delete trackInfo;
 				}
 
 		bonkTrackInfo	*trackInfo;
@@ -96,6 +108,7 @@ class bonkEnc : public Application
 		Menu			*menu_encode;
 		Menu			*menu_drives;
 		Menu			*menu_seldrive;
+		Menu			*menu_database;
 
 		Menubar			*mainWnd_menubar;
 		Menubar			*mainWnd_iconbar;
@@ -140,12 +153,13 @@ class bonkEnc : public Application
 
 		Progressbar		*progress;
 
-		Array<String>		 sa_joblist;
-		Array<bonkTrackInfo *>	 sa_trackinfo;
+		Array<bonkFormatInfo *>	 sa_formatinfo;
 		Bool			 encoding;
 		Thread			*encoder_thread;
 
-		Array<String>		 cdText;
+		Bool			 dontUpdateInfo;
+		Bool			 cddbRetry;
+		Int			 encoder_activedrive;
 
 		HINSTANCE		 bonkdll;
 
@@ -187,9 +201,6 @@ class bonkEnc : public Application
 		Bool			 LoadID3DLL();
 		Void			 FreeID3DLL();
 
-		Int			 ReadCDText();
-		Int			 FreeCDText();
-
 		Void			 ConsoleMode();
 		Bool			 ScanForParameter(String, String *);
 		Void			 ScanForFiles(Array<String> *);
@@ -203,7 +214,6 @@ class bonkEnc : public Application
 		Void			 ClearList();
 		Void			 ReadCD();
 		Void			 ReadSpecificCD();
-		Array<bonkTrackInfo *>	*GetCDDBData();
 		Void			 ConfigureEncoder();
 		Void			 ConfigureGeneral();
 		Void			 Encode();
@@ -212,15 +222,24 @@ class bonkEnc : public Application
 		Bool			 ExitProc();
 		Void			 DrawProc();
 		Void			 ShowHideTitleInfo();
+		Void			 UpdateTitleInfo();
 		Void			 SelectJoblistEntry();
+		Void			 SubmitCDDBData();
 
 		Bool			 SetLanguage(String);
 	public:
 		static bonkEncConfig	*currentConfig;
 		static bonkTranslator	*i18n;
 
+		Array<String>		 cdText;
+
 					 bonkEnc();
 					~bonkEnc();
+
+		Int			 ReadCDText();
+		Int			 FreeCDText();
+
+		Array<bonkFormatInfo::bonkTrackInfo *>	*GetCDDBData();
 };
 
 #endif

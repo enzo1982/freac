@@ -16,9 +16,9 @@
 class FilterInCDRip : public InputFilter
 {
 	private:
-		int		 trackNumber;
-		int		 trackSize;
-		int		 byteCount;
+		Int		 trackNumber;
+		Int		 trackSize;
+		Int		 byteCount;
 		unsigned char	*buffer;
 	public:
 				 FilterInCDRip(bonkEncConfig *);
@@ -26,10 +26,10 @@ class FilterInCDRip : public InputFilter
 
 		int		 ReadData(unsigned char **, int);
 
-		bool		 SetTrack(int);
-		int		 GetTrackSize();
+		Bool		 SetTrack(Int);
+		Int		 GetTrackSize();
 
-		bonkFormatInfo	 GetFileInfo(S::String);
+		bonkFormatInfo	*GetFileInfo(String);
 };
 
 #endif

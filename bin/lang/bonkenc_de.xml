@@ -48,7 +48,7 @@
     <entry id="37" string="Windows CD Audio Track">Windows Audio CD Track</entry>
     <entry id="38" string="All Files">Alle Dateien</entry>
     <entry id="39" string="You have not selected a file!">Es ist kein Eintrag ausgewählt!</entry>
-    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">Der Codierungsprozess läuft noch!\nMöchten sie das Programm trotzdem beenden?</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Der Codierungsprozess läuft noch! Möchten sie das Programm trotzdem beenden?</entry>
     <entry id="41" string="Currently encoding">Codierungsprozess aktiv</entry>
     <entry id="42" string="This program is being distributed under the terms">Dieses Programm wird unter den Bedingungen der</entry>
     <entry id="43" string="of the GNU General Public License (GPL).">GNU General Public License (GPL) vertrieben.</entry>
@@ -201,5 +201,11 @@
     <entry id="190" string="Info tags">Info Tags</entry>
     <entry id="191" string="Write ID3V2/Vorbis info tags">ID3V2/Vorbis Info Tags schreiben</entry>
     <entry id="192" string="Default comment string:">Standardkommentar:</entry>
+    <entry id="193" string="unknown artist">unbekannter Künstler</entry>
+    <entry id="194" string="unknown title">unbekannter Titel</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Kann ASPI Treiber nicht laden! CD Rippen deaktiviert!</entry>
+    <entry id="196" string="Database">Datenbank</entry>
+    <entry id="197" string="Submit CDDB data...">CDDB Daten senden...</entry>
+    <entry id="198" string="Enable CDDB cache">CDDB Cache aktivieren</entry>
   </data>
 </LangFile>

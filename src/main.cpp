@@ -31,6 +31,7 @@
 
 #include <cddb.h>
 #include <cddb_multimatch.h>
+#include <cddb_submit.h>
 
 Int	 ENCODER_BONKENC	= -1;
 Int	 ENCODER_BLADEENC	= -1;
@@ -67,6 +68,8 @@ bonkEnc::bonkEnc()
 
 	currentConfig->SetIniFile(iniFile);
 	currentConfig->LoadSettings();
+
+	currentConfig->appMain = this;
 
 	if (ScanForParameter("--console", NULL))	currentConfig->enable_console = true;
 	else						currentConfig->enable_console = false;
@@ -119,27 +122,41 @@ bonkEnc::bonkEnc()
 	{
 		ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
 
-		ex_CR_Init(inifile);
+		Long	 error = ex_CR_Init(inifile);
 
-		currentConfig->cdrip_numdrives = ex_CR_GetNumCDROM();
-
-		if (currentConfig->cdrip_numdrives >= 1)
+		if (error != CDEX_OK)
 		{
-			for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
+			switch (error)
 			{
-				ex_CR_SetActiveCDROM(i);
-
-				CDROMPARAMS	 params;
-
-				ex_CR_GetCDROMParameters(&params);
-
-				currentConfig->cdrip_drives.AddEntry(params.lpszCDROMID);
+				case CDEX_NATIVEEASPINOTSUPPORTED:
+				case CDEX_FAILEDTOLOADASPIDRIVERS:
+				case CDEX_NATIVEEASPISUPPORTEDNOTSELECTED:
+					SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers! CD ripping disabled!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+					break;
 			}
+
+			currentConfig->enable_cdrip = false;
 		}
+		else
+		{
+			currentConfig->cdrip_numdrives = ex_CR_GetNumCDROM();
 
-		ex_CR_DeInit();
+			if (currentConfig->cdrip_numdrives >= 1)
+			{
+				for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
+				{
+					ex_CR_SetActiveCDROM(i);
 
-		if (currentConfig->cdrip_numdrives <= currentConfig->cdrip_activedrive) currentConfig->cdrip_activedrive = 0;
+					CDROMPARAMS	 params;
+
+					ex_CR_GetCDROMParameters(&params);
+
+					currentConfig->cdrip_drives.AddEntry(params.lpszCDROMID);
+				}
+			}
+
+			if (currentConfig->cdrip_numdrives <= currentConfig->cdrip_activedrive) currentConfig->cdrip_activedrive = 0;
+		}
 	}
 
 	int	 len = currentConfig->enc_outdir.Length() - 1;
@@ -152,6 +169,9 @@ bonkEnc::bonkEnc()
 
 		return;
 	}
+
+	dontUpdateInfo = False;
+	cddbRetry = True;
 
 	Point	 pos;
 	Size	 size;
@@ -167,6 +187,7 @@ bonkEnc::bonkEnc()
 	menu_encode		= new Menu();
 	menu_drives		= new Menu();
 	menu_seldrive		= new Menu();
+	menu_database		= new Menu();
 
 	pos.x = 91;
 	pos.y = -22;
@@ -275,11 +296,13 @@ bonkEnc::bonkEnc()
 	size.cy = 0;
 
 	info_edit_artist	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_artist->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_artist->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
 	info_edit_album	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_album->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_album->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + info_edit_artist->GetObjectProperties()->size.cx);
@@ -298,12 +321,14 @@ bonkEnc::bonkEnc()
 	size.cx = 100;
 
 	info_edit_title		= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_title->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_title->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 	size.cx = 25;
 
 	info_edit_track		= new EditBox("", pos, size, EDB_NUMERIC, 3);
+	info_edit_track->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_track->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + info_edit_track->GetObjectProperties()->size.cx);
@@ -317,6 +342,7 @@ bonkEnc::bonkEnc()
 	size.cx = 31;
 
 	info_edit_year		= new EditBox("", pos, size, EDB_NUMERIC, 0);
+	info_edit_year->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_year->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + info_edit_year->GetObjectProperties()->size.cx);
@@ -330,6 +356,7 @@ bonkEnc::bonkEnc()
 	size.cx = 130;
 
 	info_combo_genre	= new ComboBox(pos, size);
+	info_combo_genre->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_combo_genre->SetOrientation(OR_LOWERLEFT);
 	info_combo_genre->AddEntry("");
 	info_combo_genre->AddEntry("A Cappella");
@@ -520,7 +547,7 @@ bonkEnc::bonkEnc()
 	pos.x += (47 + enc_encoder->GetObjectProperties()->textSize.cx);
 	size.cx = currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx;
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("BonkEnc", pos, size, EDB_ALPHANUMERIC, 4);
+	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("Bonk", pos, size, EDB_ALPHANUMERIC, 4);
 	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new EditBox("BladeEnc", pos, size, EDB_ALPHANUMERIC, 4);
 	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder = new EditBox("LAME", pos, size, EDB_ALPHANUMERIC, 4);
 	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder = new EditBox("Ogg Vorbis", pos, size, EDB_ALPHANUMERIC, 4);
@@ -580,9 +607,14 @@ bonkEnc::bonkEnc()
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, this);
 
+	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEnc::SubmitCDDBData, this);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
+	mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 
 	Menu::Entry	*entry;
@@ -705,6 +737,13 @@ bonkEnc::bonkEnc()
 
 bonkEnc::~bonkEnc()
 {
+	if (currentConfig->enable_cdrip) ex_CR_DeInit();
+
+	for (Int i = 0; i < bonkEncCDDB::titleCache.GetNOfEntries(); i++)
+	{
+		delete bonkEncCDDB::titleCache.GetNthEntry(i);
+	}
+
 	if (currentConfig->enable_bonk)		FreeBonkDLL();
 	if (currentConfig->enable_blade)	FreeBladeDLL();
 	if (currentConfig->enable_faac)		FreeFAACDLL();
@@ -797,6 +836,7 @@ bonkEnc::~bonkEnc()
 		delete menu_encode;
 		delete menu_drives;
 		delete menu_seldrive;
+		delete menu_database;
 		delete hyperlink;
 	}
 
@@ -813,7 +853,7 @@ Bool bonkEnc::ExitProc()
 {
 	if (encoding)
 	{
-		if (IDNO == SMOOTH::MessageBox(i18n->TranslateString("The encoding thread is still running!\nDo you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
+		if (IDNO == SMOOTH::MessageBox(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
 
 		StopEncoding();
 	}
@@ -835,6 +875,8 @@ Bool bonkEnc::ExitProc()
 
 Void bonkEnc::DrawProc()
 {
+	mainWnd_statusbar->SetText("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
+
 	if (mainWnd->GetObjectProperties()->size.cx == currentConfig->wndSize.cx && mainWnd->GetObjectProperties()->size.cy == currentConfig->wndSize.cy) return;
 
 	currentConfig->wndPos = mainWnd->GetObjectProperties()->pos;
@@ -1002,7 +1044,7 @@ Void bonkEnc::ConfigureGeneral()
 		currentConfig->languageChanged = false;
 	}
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("BonkEnc");
+	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk");
 	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc");
 	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME");
 	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder->SetText("Ogg Vorbis");
@@ -1039,102 +1081,23 @@ Void bonkEnc::ReadCD()
 		return;
 	}
 
-	Array<bonkTrackInfo *>	*cdInfo = GetCDDBData();
-
-	Int	 numTocEntries;
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("BonkEnc.ini");
-
-	ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
-
-	ex_CR_Init(file);
-
 	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
 
 	ex_CR_ReadToc();
 
-	numTocEntries = ex_CR_GetNumTocEntries();
+	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
-	ReadCDText();
-
-	for (int i = 0; i < numTocEntries; i++)
+	for (int i = 1; i <= numTocEntries; i++)
 	{
-		TOCENTRY	 entry = ex_CR_GetTocEntry(i);
+		AddFileByName(String("/cda").Append(String::IntToString(i)));
 
-		if (!(entry.btFlag & CDROMDATAFLAG))
-		{
-			if (cdInfo != NIL)
-			{
-				sa_joblist.AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), joblist->AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title))->code);
-
-				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-				trackInfo->track	= entry.btTrackNumber;
-				trackInfo->drive	= currentConfig->cdrip_activedrive;
-				trackInfo->outfile	= NIL;
-				trackInfo->cdText	= True;
-				trackInfo->artist	= cdInfo->GetEntry(0)->artist;
-				trackInfo->title	= cdInfo->GetEntry(entry.btTrackNumber)->title;
-				trackInfo->album	= cdInfo->GetEntry(0)->album;
-				trackInfo->genre	= cdInfo->GetEntry(0)->genre;
-				trackInfo->year		= cdInfo->GetEntry(0)->year;
-
-				sa_trackinfo.AddEntry(trackInfo);
-			}
-			else if (cdText.GetEntry(entry.btTrackNumber) != NIL)
-			{
-				SYSTEMTIME	 systime;
-
-				GetSystemTime(&systime);
-
-				sa_joblist.AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), joblist->AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)))->code);
-
-				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-				trackInfo->track	= entry.btTrackNumber;
-				trackInfo->drive	= currentConfig->cdrip_activedrive;
-				trackInfo->outfile	= NIL;
-				trackInfo->cdText	= True;
-				trackInfo->artist	= cdText.GetEntry(0);
-				trackInfo->title	= cdText.GetEntry(entry.btTrackNumber);
-				trackInfo->album	= cdText.GetEntry(100);
-				trackInfo->genre	= "Pop";
-				trackInfo->year		= systime.wYear;
-
-				sa_trackinfo.AddEntry(trackInfo);
-			}
-			else
-			{
-				sa_joblist.AddEntry(String("Audio CD ").Append(String::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(String::IntToString(entry.btTrackNumber)), joblist->AddEntry(String("Audio CD ").Append(String::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(String::IntToString(entry.btTrackNumber)))->code);
-
-				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-				trackInfo->track	= entry.btTrackNumber;
-				trackInfo->drive	= currentConfig->cdrip_activedrive;
-				trackInfo->outfile	= NIL;
-				trackInfo->cdText	= False;
-
-				sa_trackinfo.AddEntry(trackInfo);
-			}
-
-			txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
-		}
+		cddbRetry = False;
 	}
 
-	FreeCDText();
-
-	ex_CR_DeInit();
-
-	if (cdInfo != NIL)
-	{
-		cdInfo->DeleteAll();
-
-		delete cdInfo;
-	}
+	cddbRetry = True;
 }
 
-Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
+Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 {
 	if (!currentConfig->enable_cddb) return NIL;
 
@@ -1146,7 +1109,11 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 	String		 discid = cddb.GetDiscIDString();
 
-	if (discid == "ffffffff" || discid == "00000000") return false; // no disc in drive or read error
+	if (discid == "ffffffff" || discid == "00000000") return NIL; // no disc in drive or read error
+
+	if (bonkEncCDDB::requestedDiscs.GetEntry(cddb.ComputeDiscID()) == True && !cddbRetry) return NIL;
+
+	bonkEncCDDB::requestedDiscs.AddEntry(True, cddb.ComputeDiscID());
 
 	mainWnd_statusbar->SetText(i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
@@ -1189,14 +1156,14 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 		read = result;
 	}
 
-	Array<bonkTrackInfo *>	*array = NIL;
+	Array<bonkFormatInfo::bonkTrackInfo *>	*array = NIL;
 
 	if (read != NIL)
 	{
 		String	 result = cddb.Read(read);
 		String	 cLine;
 
-		array = new Array<bonkTrackInfo *>;
+		array = new Array<bonkFormatInfo::bonkTrackInfo *>;
 
 		for (Int j = 0; j < result.Length();)
 		{
@@ -1208,8 +1175,8 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 			if (cLine.CompareN("DTITLE", 6) == 0)
 			{
-				bonkTrackInfo	*info = new bonkTrackInfo;
-				Int		 k;
+				bonkFormatInfo::bonkTrackInfo	*info = new bonkFormatInfo::bonkTrackInfo;
+				Int				 k;
 
 				for (k = 7; k >= 0; k++)
 				{
@@ -1225,14 +1192,14 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 			}
 			else if (cLine.CompareN("DGENRE", 6) == 0)
 			{
-				bonkTrackInfo	*info = array->GetEntry(0);
+				bonkFormatInfo::bonkTrackInfo	*info = array->GetEntry(0);
 
 				for (Int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
 			}
 			else if (cLine.CompareN("DYEAR", 5) == 0)
 			{
-				bonkTrackInfo	*info = array->GetEntry(0);
-				String		 year;
+				bonkFormatInfo::bonkTrackInfo	*info = array->GetEntry(0);
+				String				 year;
 
 				for (Int l = 6; l < cLine.Length(); l++) year[l - 6] = cLine[l];
 
@@ -1240,9 +1207,9 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 			}
 			else if (cLine.CompareN("TTITLE", 6) == 0)
 			{
-				bonkTrackInfo	*info = new bonkTrackInfo;
-				String		 track;
-				Int		 k;
+				bonkFormatInfo::bonkTrackInfo	*info = new bonkFormatInfo::bonkTrackInfo;
+				String				 track;
+				Int				 k;
 
 				for (k = 6; k >= 0; k++)
 				{
@@ -1264,6 +1231,15 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 	mainWnd_statusbar->SetText("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
 
 	return array;
+}
+
+Void bonkEnc::SubmitCDDBData()
+{
+	cddbSubmitDlg	*dlg = new cddbSubmitDlg();
+
+	dlg->ShowDialog();
+
+	delete dlg;
 }
 
 Void bonkEnc::ShowHideTitleInfo()
@@ -1397,6 +1373,18 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 
 	joblist->Hide();
 
+	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+	{
+		Int		 code = joblist->GetNthEntry(i);
+		bonkFormatInfo	*format = sa_formatinfo.GetEntry(code);
+
+		if ((format->trackInfo->artist.Length() == 0 && format->trackInfo->title.Length() != 0) ||
+		    (format->trackInfo->artist.Length() != 0 && format->trackInfo->title.Length() == 0))
+		{
+			joblist->ModifyEntry(code, String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t").Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::IntToString(format->trackInfo->track)) : String::IntToString(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize));
+		}
+	}
+
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
 	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
@@ -1467,6 +1455,7 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	menu_options->Clear();
 	menu_addsubmenu->Clear();
 	menu_encode->Clear();
+	menu_database->Clear();
 	mainWnd_menubar->Clear();
 	mainWnd_iconbar->Clear();
 
@@ -1484,11 +1473,6 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	{
 		menu_options->AddEntry();
 
-		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
-		{
-			menu_seldrive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &currentConfig->cdrip_activedrive, j);
-		}
-
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
 	}
 
@@ -1502,9 +1486,14 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, this);
 
+	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEnc::SubmitCDDBData, this);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
+	mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 
 	Menu::Entry	*entry;
@@ -1519,12 +1508,6 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
-		{
-			entry = menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
-			entry->onClick.Connect(&bonkEnc::ReadSpecificCD, this);
-		}
-
 		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), menu_drives);
 		entry->onClick.Connect(&bonkEnc::ReadCD, this);
 		entry->SetStatusText(i18n->TranslateString("Add audio CD contents to the joblist"));

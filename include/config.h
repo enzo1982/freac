@@ -17,6 +17,8 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+class bonkEnc;
+
 class bonkEncConfig
 {
 	private:
@@ -27,6 +29,8 @@ class bonkEncConfig
 
 		String		 getINIValue(String, String, String);
 	public:
+		bonkEnc		*appMain;
+
 		String		 language;
 		Bool		 languageChanged;
 
@@ -77,6 +81,7 @@ class bonkEncConfig
 		Int		 freedb_proxy_mode;
 		String		 freedb_proxy;
 		Int		 freedb_proxy_port;
+		Bool		 enable_cddb_cache;
 
 		Int		 bonk_quantization;
 		Int		 bonk_predictor;

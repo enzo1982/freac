@@ -16,7 +16,7 @@
 class FilterInWAVE : public InputFilter
 {
 	private:
-		bool		 setup;
+		Bool		 setup;
 		bonkFormatInfo	 format;
 	public:
 				 FilterInWAVE(bonkEncConfig *);
@@ -24,7 +24,7 @@ class FilterInWAVE : public InputFilter
 
 		int		 ReadData(unsigned char **, int);
 
-		bonkFormatInfo	 GetFileInfo(S::String);
+		bonkFormatInfo	*GetFileInfo(String);
 };
 
 #endif

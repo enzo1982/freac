@@ -52,83 +52,76 @@ Int bonkEnc::Encoder(Thread *thread)
 {
 	String		 in_filename;
 	String		 out_filename;
-	Int		 activedrive = currentConfig->cdrip_activedrive;
-	bonkTrackInfo	*trackInfo;
+	bonkFormatInfo	*format;
 
-	for (int i = 0; i < sa_joblist.GetNOfEntries(); i++)
+	encoder_activedrive = currentConfig->cdrip_activedrive;
+
+	for (int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		if (i == 0)	trackInfo = sa_trackinfo.GetFirstEntry();
-		else		trackInfo = sa_trackinfo.GetNextEntry();
+		if (i == 0)	format = sa_formatinfo.GetFirstEntry();
+		else		format = sa_formatinfo.GetNextEntry();
+
+		bonkFormatInfo::bonkTrackInfo *trackInfo = format->trackInfo;
 
 		in_filename = trackInfo->origFilename;
 
 		if (!currentConfig->enable_console)
 		{
-			edb_filename->SetText(in_filename);
+			if (trackInfo->artist.Length() == 0 &&
+			    trackInfo->title.Length() == 0)	edb_filename->SetText(trackInfo->origFilename);
+			else					edb_filename->SetText(String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
+
 			progress->SetValue(0);
 			edb_time->SetText("00:00");
 		}
 
-		String	 compString;
-		Int	 trackNumber = -1;
-		Int	 audiodrive = -1;
-		Bool	 cdTrack = False;
-
 		out_filename.Copy(currentConfig->enc_outdir);
 
-		if (trackInfo->track != -1)
+		if (trackInfo->hasText)
 		{
-			audiodrive = trackInfo->drive;
-			trackNumber = trackInfo->track;
-
-			if (!trackInfo->cdText)
+			for (Int i = 0; i < trackInfo->artist.Length(); i++)
 			{
-				out_filename.Append("cd").Append(String::IntToString(audiodrive)).Append("track");
-
-				if (trackNumber < 10) out_filename.Append("0");
-
-				out_filename.Append(String::IntToString(trackNumber));
-			}
-			else
-			{
-				for (int i = 0; i < trackInfo->artist.Length(); i++)
-				{
-					if (trackInfo->artist[i] == '/' ||
-					    trackInfo->artist[i] == '\\') trackInfo->artist[i] = '_';
-				}
-
-				for (int j = 0; j < trackInfo->title.Length(); j++)
-				{
-					if (trackInfo->title[j] == '/' ||
-					    trackInfo->title[j] == '\\') trackInfo->title[j] = '_';
-				}
-
-				out_filename.Append(trackInfo->artist).Append(" - ").Append(trackInfo->title);
+				if (trackInfo->artist[i] == '/' ||
+				    trackInfo->artist[i] == '\\') trackInfo->artist[i] = '_';
 			}
 
-			cdTrack = True;
+			for (Int j = 0; j < trackInfo->title.Length(); j++)
+			{
+				if (trackInfo->title[j] == '/' ||
+				    trackInfo->title[j] == '\\') trackInfo->title[j] = '_';
+			}
+
+			out_filename.Append(String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
+		}
+		else if (trackInfo->isCDTrack)
+		{
+			out_filename.Append("cd").Append(String::IntToString(trackInfo->drive)).Append("track");
+
+			if (trackInfo->track < 10) out_filename.Append("0");
+
+			out_filename.Append(String::IntToString(trackInfo->track));
 		}
 		else
 		{
-			int	 in_len = in_filename.Length();
-			int	 out_len = out_filename.Length();
-			int	 lastbs = -1;
-			int	 firstdot = 0;
+			Int	 in_len = in_filename.Length();
+			Int	 out_len = out_filename.Length();
+			Int	 lastBs = -1;
+			Int	 firstDot = 0;
 
-			for (int i = 0; i < in_len; i++)
+			for (Int i = 0; i < in_len; i++)
 			{
-				if (in_filename[i] == '\\') lastbs = i;
+				if (in_filename[i] == '\\') lastBs = i;
 			}
 
-			for (int j = in_len - 1; j >= 0; j--)
+			for (Int j = in_len - 1; j >= 0; j--)
 			{
-				if (in_filename[j] == '.') { firstdot = in_len - j; break; }
+				if (in_filename[j] == '.') { firstDot = in_len - j; break; }
 				if (in_filename[j] == '\\') break;
 			}
 
-			for (int k = out_len; k < (in_len + out_len - lastbs - firstdot - 1); k++)
+			for (Int k = out_len; k < (in_len + out_len - lastBs - firstDot - 1); k++)
 			{
-				out_filename[k] = in_filename[(k - out_len) + lastbs + 1];
+				out_filename[k] = in_filename[(k - out_len) + lastBs + 1];
 			}
 		}
 
@@ -145,17 +138,16 @@ Int bonkEnc::Encoder(Thread *thread)
 		IOLibDriver	*d_zero = NIL;
 		InStream	*f_in;
 		InputFilter	*filter_in = NIL;
-		bonkFormatInfo	 format;
 
-		if (cdTrack)
+		if (trackInfo->isCDTrack)
 		{
-			currentConfig->cdrip_activedrive = audiodrive;
+			currentConfig->cdrip_activedrive = trackInfo->drive;
 
 			d_zero = new IOLibDriverZero();
 			f_in = new InStream(STREAM_DRIVER, d_zero);
 			filter_in = new FilterInCDRip(currentConfig);
 
-			((FilterInCDRip *) filter_in)->SetTrack(trackNumber);
+			((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
 
 			f_in->SetFilter(filter_in);
 		}
@@ -226,9 +218,6 @@ Int bonkEnc::Encoder(Thread *thread)
 			continue;
 		}
 
-		format = filter_in->GetFileInfo(in_filename);
-		format.trackInfo = trackInfo;
-
 		OutStream	*f_out	= new OutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
 
 		int	 startticks;
@@ -237,59 +226,59 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		int		 position = 0;
 		unsigned long	 samples_size = 1024;
-		int		 n_loops = (format.length + samples_size - 1) / samples_size;
+		int		 n_loops = (format->length + samples_size - 1) / samples_size;
 		int		 lastpercent = 100;
 
 		OutputFilter	*filter_out = NIL;
 
-		if (currentConfig->encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(currentConfig, &format);
-		if (currentConfig->encoder == ENCODER_BONKENC)	filter_out = new FilterOutBONK(currentConfig, &format);
-		if (currentConfig->encoder == ENCODER_FAAC)	filter_out = new FilterOutFAAC(currentConfig, &format);
-		if (currentConfig->encoder == ENCODER_TVQ)	filter_out = new FilterOutTVQ(currentConfig, &format);
-		if (currentConfig->encoder == ENCODER_LAMEENC)	filter_out = new FilterOutLAME(currentConfig, &format);
-		if (currentConfig->encoder == ENCODER_VORBISENC)filter_out = new FilterOutVORBIS(currentConfig, &format);
-		if (currentConfig->encoder == ENCODER_WAVE)	filter_out = new FilterOutWAVE(currentConfig, &format);
+		if (currentConfig->encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(currentConfig, format);
+		if (currentConfig->encoder == ENCODER_BONKENC)	filter_out = new FilterOutBONK(currentConfig, format);
+		if (currentConfig->encoder == ENCODER_FAAC)	filter_out = new FilterOutFAAC(currentConfig, format);
+		if (currentConfig->encoder == ENCODER_TVQ)	filter_out = new FilterOutTVQ(currentConfig, format);
+		if (currentConfig->encoder == ENCODER_LAMEENC)	filter_out = new FilterOutLAME(currentConfig, format);
+		if (currentConfig->encoder == ENCODER_VORBISENC)filter_out = new FilterOutVORBIS(currentConfig, format);
+		if (currentConfig->encoder == ENCODER_WAVE)	filter_out = new FilterOutWAVE(currentConfig, format);
 
 		if (!filter_out->error)
 		{
-			f_out->SetPackageSize(samples_size * (format.bits / 8) * format.channels);
+			f_out->SetPackageSize(samples_size * (format->bits / 8) * format->channels);
 			f_out->SetFilter(filter_out);
 
 			startticks = clock();
 
-			if (format.length >= 0)
+			if (format->length >= 0)
 			{
 				for(int loop = 0; loop < n_loops; loop++)
 				{
 					int	 step = samples_size;
 
-					if (position + step > format.length)
-						step = format.length - position;
+					if (position + step > format->length)
+						step = format->length - position;
 
 					for (int i = 0; i < step; i++)
 					{
 						if ((loop == (n_loops - 1)) && (i == (step - 1))) filter_out->PrepareLastPacket();
 
-						if (format.order == BYTE_INTEL)		f_out->OutputNumber(f_in->InputNumberIntel(int16(format.bits / 8)), int16(format.bits / 8));
-						else if (format.order == BYTE_RAW)	f_out->OutputNumber(f_in->InputNumberRaw(int16(format.bits / 8)), int16(format.bits / 8));
+						if (format->order == BYTE_INTEL)	f_out->OutputNumber(f_in->InputNumberIntel(int16(format->bits / 8)), int16(format->bits / 8));
+						else if (format->order == BYTE_RAW)	f_out->OutputNumber(f_in->InputNumberRaw(int16(format->bits / 8)), int16(format->bits / 8));
 					}
 
 					position += step;
 
 					if (!currentConfig->enable_console)
 					{
-						progress->SetValue((int) ((position * 100.0 / format.length) * 10.0));
+						progress->SetValue((int) ((position * 100.0 / format->length) * 10.0));
 
-						if ((int) (position * 100.0 / format.length) != lastpercent)
+						if ((int) (position * 100.0 / format->length) != lastpercent)
 						{
-							lastpercent = (int) (position * 100.0 / format.length);
+							lastpercent = (int) (position * 100.0 / format->length);
 
 							edb_percent->SetText(String::IntToString(lastpercent).Append("%"));
 						}
 
 						ticks = clock() - startticks;
 
-						ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / format.length) * 10.0)) / ((position * 100.0 / format.length) * 10.0))) / 1000 + 1;
+						ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / format->length) * 10.0)) / ((position * 100.0 / format->length) * 10.0))) / 1000 + 1;
 
 						if (ticks != lastticks)
 						{
@@ -313,7 +302,7 @@ Int bonkEnc::Encoder(Thread *thread)
 					}
 				}
 			}
-			else if (format.length == -1)
+			else if (format->length == -1)
 			{
 				int	 sample = 0;
 
@@ -323,12 +312,12 @@ Int bonkEnc::Encoder(Thread *thread)
 
 					for (int i = 0; i < step; i++)
 					{
-						if (format.order == BYTE_INTEL)		sample = f_in->InputNumberIntel(int16(format.bits / 8));
-						else if (format.order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(format.bits / 8));
+						if (format->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(format->bits / 8));
+						else if (format->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(format->bits / 8));
 
 						if (sample == -1) { filter_out->PrepareLastPacket(); step = i; break; }
 
-						f_out->OutputNumber(sample, int16(format.bits / 8));
+						f_out->OutputNumber(sample, int16(format->bits / 8));
 					}
 
 					position = filter_in->GetInBytes();
@@ -378,7 +367,7 @@ Int bonkEnc::Encoder(Thread *thread)
 		delete filter_in;
 		delete f_in;
 
-		if (cdTrack) delete d_zero;
+		if (trackInfo->isCDTrack) delete d_zero;
 
 		if (f_out->Size() == 0)
 		{
@@ -392,7 +381,7 @@ Int bonkEnc::Encoder(Thread *thread)
 		}
 	}
 
-	currentConfig->cdrip_activedrive = activedrive;
+	currentConfig->cdrip_activedrive = encoder_activedrive;
 
 	if (!currentConfig->enable_console)
 	{
@@ -419,6 +408,10 @@ Void bonkEnc::StopEncoding()
 
 	encoder_thread = NIL;
 	encoding = false;
+
+	currentConfig->cdrip_activedrive = encoder_activedrive;
+
+	if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
 
 	edb_filename->SetText(i18n->TranslateString("none"));
 	edb_percent->SetText("0%");

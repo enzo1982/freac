@@ -29,7 +29,7 @@ class FilterInVORBIS : public InputFilter
 
 		char			*buffer;
 
-		bool			 setup;
+		Bool			 setup;
 		bonkFormatInfo		 format;
 	public:
 					 FilterInVORBIS(bonkEncConfig *);
@@ -37,7 +37,7 @@ class FilterInVORBIS : public InputFilter
 
 		int			 ReadData(unsigned char **, int);
 
-		bonkFormatInfo		 GetFileInfo(S::String);
+		bonkFormatInfo		*GetFileInfo(String);
 };
 
 #endif

@@ -13,6 +13,8 @@
 #include <cdrip/cdrip.h>
 #include <dllinterfaces.h>
 #include <memory.h>
+#include <main.h>
+#include <cddb.h>
 
 #define PARANOIA_MODE_FULL        0xff
 #define PARANOIA_MODE_DISABLE     0
@@ -40,8 +42,6 @@ FilterInCDRip::~FilterInCDRip()
 		ex_CR_CloseRipper();
 
 		if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
-
-		ex_CR_DeInit();
 	}
 }
 
@@ -60,8 +60,6 @@ int FilterInCDRip::ReadData(unsigned char **data, int size)
 			ex_CR_CloseRipper();
 
 			if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
-
-			ex_CR_DeInit();
 		}
 
 		trackNumber = -1;
@@ -86,19 +84,21 @@ int FilterInCDRip::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bool FilterInCDRip::SetTrack(int newTrack)
+S::Bool FilterInCDRip::SetTrack(Int newTrack)
 {
+	if (buffer != NIL)
+	{
+		delete [] buffer;
+
+		ex_CR_CloseRipper();
+
+		if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
+	}
+
 	trackNumber = newTrack;
 
 	int	 numTocEntries;
 	TOCENTRY entry;
-	String	 file = SMOOTH::StartDirectory;
-
-	file.Append("bonkenc.ini");
-
-	ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
-
-	ex_CR_Init(file);
 
 	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
 
@@ -186,22 +186,180 @@ bool FilterInCDRip::SetTrack(int newTrack)
 	return true;
 }
 
-int FilterInCDRip::GetTrackSize()
+S::Int FilterInCDRip::GetTrackSize()
 {
 	if (trackNumber == -1) return 0;
 
 	return trackSize;
 }
 
-bonkFormatInfo FilterInCDRip::GetFileInfo(S::String inFile)
+bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	 format;
+	bonkFormatInfo	*nFormat = new bonkFormatInfo;
 
-	format.channels = 2;
-	format.rate = 44100;
-	format.bits = 16;
-	format.length = GetTrackSize() / (format.bits / 8);
-	format.order = BYTE_INTEL;
+	nFormat->channels = 2;
+	nFormat->rate = 44100;
+	nFormat->bits = 16;
+	nFormat->trackInfo = NIL;
+	nFormat->order = BYTE_INTEL;
 
-	return format;
+	Int	 trackNumber = 0;
+	Int	 trackLength = 0;
+	Int	 audiodrive = 0;
+
+	if (inFile.CompareN("/cda", 4) == 0)
+	{
+		String	 track;
+
+		for (Int j = 4; j < inFile.Length(); j++) track[j - 4] = inFile[j];
+
+		audiodrive = currentConfig->cdrip_activedrive;
+
+		ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
+
+		ex_CR_ReadToc();
+
+		Int	 numTocEntries = ex_CR_GetNumTocEntries();
+
+		TOCENTRY	 entry;
+		TOCENTRY	 nextentry;
+
+		entry.btTrackNumber = 0;
+
+		for (Int i = 0; i < numTocEntries; i++)
+		{
+			entry = ex_CR_GetTocEntry(i);
+			nextentry = ex_CR_GetTocEntry(i + 1);
+
+			trackLength = nextentry.dwStartSector - entry.dwStartSector;
+
+			if (!(entry.btFlag & CDROMDATAFLAG) && (entry.btTrackNumber == track.ToInt())) break;
+			else entry.btTrackNumber = 0;
+		}
+
+		trackNumber = entry.btTrackNumber;
+	}
+	else if (inFile.Length() >= 5)
+	{
+		if (inFile[inFile.Length() - 4] == '.' && inFile[inFile.Length() - 3] == 'c' && inFile[inFile.Length() - 2] == 'd' && inFile[inFile.Length() - 1] == 'a')
+		{
+			InStream	*in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+
+			in->Seek(22);
+
+			trackNumber = in->InputNumber(2);
+
+			in->Seek(32);
+
+			trackLength = in->InputNumber(4);
+
+			delete in;
+
+			for (audiodrive = 0; audiodrive < currentConfig->cdrip_numdrives; audiodrive++)
+			{
+				Bool	 done = false;
+
+				ex_CR_SetActiveCDROM(audiodrive);
+
+				ex_CR_ReadToc();
+
+				Int	 numTocEntries = ex_CR_GetNumTocEntries();
+
+				for (int j = 0; j < numTocEntries; j++)
+				{
+					TOCENTRY	 entry = ex_CR_GetTocEntry(j);
+					TOCENTRY	 nextentry = ex_CR_GetTocEntry(j + 1);
+					Int		 length = nextentry.dwStartSector - entry.dwStartSector;
+
+					if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == trackNumber && length == trackLength)
+					{
+						done = true;
+						break;
+					}
+				}
+
+				if (done) break;
+			}
+		}
+	}
+
+	currentConfig->appMain->ReadCDText();
+
+	if (trackNumber == 0)
+	{
+		delete nFormat;
+
+		return NIL;
+	}
+
+	nFormat->trackInfo = new bonkFormatInfo::bonkTrackInfo;
+
+	nFormat->length = (trackLength * 2352) / (nFormat->bits / 8);
+	nFormat->fileSize = trackLength * 2352;
+
+	bonkEncCDDB	 cddb(currentConfig);
+
+	cddb.SetActiveDrive(audiodrive);
+
+	Array<bonkFormatInfo::bonkTrackInfo *>	*cdInfo = NIL;
+
+	if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
+
+	if (cdInfo == NIL)
+	{
+		Int	 oDrive = currentConfig->cdrip_activedrive;
+
+		currentConfig->cdrip_activedrive = audiodrive;
+
+		cdInfo = currentConfig->appMain->GetCDDBData();
+
+		if (currentConfig->enable_cddb_cache) bonkEncCDDB::titleCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+
+		currentConfig->cdrip_activedrive = oDrive;
+	}
+
+	if (cdInfo != NIL)
+	{
+		nFormat->trackInfo->track	= trackNumber;
+		nFormat->trackInfo->cdTrack	= trackNumber;
+		nFormat->trackInfo->drive	= audiodrive;
+		nFormat->trackInfo->outfile	= NIL;
+		nFormat->trackInfo->hasText	= True;
+		nFormat->trackInfo->artist	= cdInfo->GetEntry(0)->artist;
+		nFormat->trackInfo->title	= cdInfo->GetEntry(trackNumber)->title;
+		nFormat->trackInfo->album	= cdInfo->GetEntry(0)->album;
+		nFormat->trackInfo->genre	= cdInfo->GetEntry(0)->genre;
+		nFormat->trackInfo->year	= cdInfo->GetEntry(0)->year;
+	}
+	else if (currentConfig->appMain->cdText.GetEntry(trackNumber) != NIL)
+	{
+		nFormat->trackInfo->track	= trackNumber;
+		nFormat->trackInfo->cdTrack	= trackNumber;
+		nFormat->trackInfo->drive	= audiodrive;
+		nFormat->trackInfo->outfile	= NIL;
+		nFormat->trackInfo->hasText	= True;
+		nFormat->trackInfo->artist	= currentConfig->appMain->cdText.GetEntry(0);
+		nFormat->trackInfo->title	= currentConfig->appMain->cdText.GetEntry(trackNumber);
+		nFormat->trackInfo->album	= currentConfig->appMain->cdText.GetEntry(100);
+	}
+	else
+	{
+		nFormat->trackInfo->track	= trackNumber;
+		nFormat->trackInfo->cdTrack	= trackNumber;
+		nFormat->trackInfo->drive	= audiodrive;
+		nFormat->trackInfo->outfile	= NIL;
+		nFormat->trackInfo->hasText	= False;
+	}
+
+	nFormat->trackInfo->isCDTrack = True;
+
+	nFormat->trackInfo->origFilename = String("Audio CD ").Append(String::IntToString(nFormat->trackInfo->drive)).Append(" - Track ");
+
+	if (nFormat->trackInfo->track < 10) nFormat->trackInfo->origFilename.Append("0");
+
+	nFormat->trackInfo->origFilename.Append(String::IntToString(nFormat->trackInfo->track));
+
+	currentConfig->appMain->FreeCDText();
+
+	return nFormat;
 }

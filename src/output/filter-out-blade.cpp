@@ -72,7 +72,7 @@ FilterOutBLADE::~FilterOutBLADE()
 
 bool FilterOutBLADE::Activate()
 {
-	if (format->trackInfo->cdText && currentConfig->enable_tags)
+	if (format->trackInfo->hasText && currentConfig->enable_tags)
 	{
 		ID3_Tag		*tag = new ID3_Tag();
 

@@ -184,15 +184,15 @@ int FilterInVORBIS::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
+bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	 nFormat;
+	bonkFormatInfo	*nFormat = new bonkFormatInfo;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
-	nFormat.order = BYTE_INTEL;
-	nFormat.bits = 16;
-	nFormat.trackInfo = NIL;
-	nFormat.fileSize = f_in->Size();
+	nFormat->order = BYTE_INTEL;
+	nFormat->bits = 16;
+	nFormat->trackInfo = NIL;
+	nFormat->fileSize = f_in->Size();
 
 	ogg_sync_state		 foy;
 	ogg_stream_state	 fos;
@@ -250,17 +250,19 @@ bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 		}
 	}
 
-	nFormat.rate = fvi.rate;
-	nFormat.channels = fvi.channels;
-	nFormat.length = -1;
+	nFormat->rate = fvi.rate;
+	nFormat->channels = fvi.channels;
+	nFormat->length = -1;
 
 	if (fvc.comments > 0)
 	{
-		nFormat.trackInfo = new bonkTrackInfo;
+		nFormat->trackInfo = new bonkFormatInfo::bonkTrackInfo;
 
-		nFormat.trackInfo->track = -1;
-		nFormat.trackInfo->outfile = NIL;
-		nFormat.trackInfo->cdText = True;
+		nFormat->trackInfo->track = -1;
+		nFormat->trackInfo->outfile = NIL;
+		nFormat->trackInfo->hasText = True;
+
+		String::SetInputFormat("ISO-8859-1");
 
 		for (Int j = 0; j < fvc.comments; j++)
 		{
@@ -268,28 +270,28 @@ bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 			{
 				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
 				{
-					nFormat.trackInfo->title[p] = fvc.user_comments[j][p + 6];
+					nFormat->trackInfo->title[p] = fvc.user_comments[j][p + 6];
 				}
 			}
 			else if (String("ARTIST").CompareN(fvc.user_comments[j], 6) == 0)
 			{
 				for (Int p = 0; p < fvc.comment_lengths[j] - 7; p++)
 				{
-					nFormat.trackInfo->artist[p] = fvc.user_comments[j][p + 7];
+					nFormat->trackInfo->artist[p] = fvc.user_comments[j][p + 7];
 				}
 			}
 			else if (String("ALBUM").CompareN(fvc.user_comments[j], 5) == 0)
 			{
 				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
 				{
-					nFormat.trackInfo->album[p] = fvc.user_comments[j][p + 6];
+					nFormat->trackInfo->album[p] = fvc.user_comments[j][p + 6];
 				}
 			}
 			else if (String("GENRE").CompareN(fvc.user_comments[j], 5) == 0)
 			{
 				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
 				{
-					nFormat.trackInfo->genre[p] = fvc.user_comments[j][p + 6];
+					nFormat->trackInfo->genre[p] = fvc.user_comments[j][p + 6];
 				}
 			}
 			else if (String("DATE").CompareN(fvc.user_comments[j], 4) == 0)
@@ -301,7 +303,7 @@ bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 					year[p] = fvc.user_comments[j][p + 5];
 				}
 
-				nFormat.trackInfo->year = year.ToInt();
+				nFormat->trackInfo->year = year.ToInt();
 			}
 			else if (String("TRACKNUMBER").CompareN(fvc.user_comments[j], 11) == 0)
 			{
@@ -312,15 +314,11 @@ bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 					track[p] = fvc.user_comments[j][p + 12];
 				}
 
-				nFormat.trackInfo->track = track.ToInt();
+				nFormat->trackInfo->track = track.ToInt();
 			}
 		}
 
-		if (nFormat.trackInfo->artist.Length() != 0 || nFormat.trackInfo->title.Length() != 0)
-		{
-			if (nFormat.trackInfo->artist.Length() == 0) nFormat.trackInfo->artist = "unknown artist";
-			if (nFormat.trackInfo->title.Length() == 0) nFormat.trackInfo->title = "unknown title";
-		}
+		String::SetInputFormat("UTF-8");
 	}
 
 	ex_ogg_stream_clear(&fos);

@@ -48,7 +48,7 @@
     <entry id="37" string="Windows CD Audio Track">Piste de CD audio Windows</entry>
     <entry id="38" string="All Files">Tous les fichiers</entry>
     <entry id="39" string="You have not selected a file!">Aucun fichier n'est sélectionné !</entry>
-    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">Le thread d'encodage est toujours en cours d'exécution !\nVoulez-vous vraiment quitter ?</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Le thread d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
     <entry id="41" string="Currently encoding">Encodage en cours</entry>
     <entry id="42" string="This program is being distributed under the terms">Ce programme est diffusé selon les termes</entry>
     <entry id="43" string="of the GNU General Public License (GPL).">de la licence GNU GPL (General Public License).</entry>

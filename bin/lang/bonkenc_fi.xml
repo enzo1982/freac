@@ -48,7 +48,7 @@
     <entry id="37" string="Windows CD Audio Track">Windows CD Audio -raita</entry>
     <entry id="38" string="All Files">Kaikki tiedostot</entry>
     <entry id="39" string="You have not selected a file!">Et ole valinnut tiedostoa!</entry>
-    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">Pakkaus on edelleen käynnissä!\nHaluatko silti poistua?</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Pakkaus on edelleen käynnissä! Haluatko silti poistua?</entry>
     <entry id="41" string="Currently encoding">Nyt pakataan</entry>
     <entry id="42" string="This program is being distributed under the terms">Tätä ohjelmaa levitettäessä noudatetaan</entry>
     <entry id="43" string="of the GNU General Public License (GPL">GNU General Public License (GPL).</entry>

@@ -14,6 +14,9 @@
 #include <cddb.h>
 #include <dllinterfaces.h>
 
+Array<Array<bonkFormatInfo::bonkTrackInfo *> *>	 bonkEncCDDB::titleCache;
+Array<Bool>					 bonkEncCDDB::requestedDiscs;
+
 int cddb_sum(int n)
 {
 	int	 ret = 0;
@@ -41,23 +44,13 @@ bonkEncCDDB::~bonkEncCDDB()
 
 Int bonkEncCDDB::SetActiveDrive(Int driveID)
 {
-	String	 inifile = SMOOTH::StartDirectory;
-
-	inifile.Append("BonkEnc.ini");
-
-	ex_CR_Init(inifile);
-
 	if (driveID >= ex_CR_GetNumCDROM())
 	{
-		ex_CR_DeInit();
-
 		return Error;
 	}
 	else
 	{
 		activeDriveID = driveID;
-
-		ex_CR_DeInit();
 
 		return Success;
 	}
@@ -65,12 +58,6 @@ Int bonkEncCDDB::SetActiveDrive(Int driveID)
 
 Int bonkEncCDDB::ComputeDiscID()
 {
-	String	 inifile = SMOOTH::StartDirectory;
-
-	inifile.Append("BonkEnc.ini");
-
-	ex_CR_Init(inifile);
-
 	ex_CR_SetActiveCDROM(activeDriveID);
 
 	ex_CR_ReadToc();
@@ -103,8 +90,6 @@ Int bonkEncCDDB::ComputeDiscID()
 	t = ((tocmin.GetLastEntry() * 60) + tocsec.GetLastEntry()) -
 	    ((tocmin.GetFirstEntry() * 60) + tocsec.GetFirstEntry());
 
-	ex_CR_DeInit();
-
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
 
@@ -125,11 +110,6 @@ String bonkEncCDDB::GetDiscIDString()
 String bonkEncCDDB::GetCDDBQueryString()
 {
 	String	 str = String("cddb query ").Append(GetDiscIDString());
-	String	 inifile = SMOOTH::StartDirectory;
-
-	inifile.Append("BonkEnc.ini");
-
-	ex_CR_Init(inifile);
 
 	ex_CR_SetActiveCDROM(activeDriveID);
 
@@ -150,8 +130,6 @@ String bonkEncCDDB::GetCDDBQueryString()
 	entry = ex_CR_GetTocEntry(numTocEntries);
 
 	str.Append(" ").Append(String::IntToString(entry.dwStartSector / 75 + 2));
-
-	ex_CR_DeInit();
 
 	return str;
 }

@@ -68,7 +68,11 @@ Void bonkEnc::AddFile()
 			String	 file = dialog->GetNthFileName(i);
 
 			AddFileByName(file);
+
+			cddbRetry = False;
 		}
+
+		cddbRetry = True;
 	}
 
 	delete dialog;
@@ -92,146 +96,32 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		return;
 	}
 
-	String	 extension;
+	bonkFormatInfo	*format = NIL;
 
-	extension[0] = file[file.Length() - 4];
-	extension[1] = file[file.Length() - 3];
-	extension[2] = file[file.Length() - 2];
-	extension[3] = file[file.Length() - 1];
-
-	if (extension == ".cda" && currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	if (file.CompareN("/cda", 4) == 0)
 	{
-		FILE		*afile = fopen(file, "r");
-		InStream	*in = new InStream(STREAM_ANSI, afile);
-		Int		 trackNumber;
-		Int		 trackLength;
+		InputFilter	*filter_in = new FilterInCDRip(currentConfig);
 
-		in->Seek(22);
+		format = filter_in->GetFileInfo(file);
 
-		trackNumber = in->InputNumber(2);
-
-		in->Seek(32);
-
-		trackLength = in->InputNumber(4);
-
-		delete in;
-
-		fclose(afile);
-
-		Array<bonkTrackInfo *>	*cdInfo = GetCDDBData();
-
-		Int	 audiodrive = 0;
-		Bool	 done = false;
-
-		ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
-
-		String	 inifile = SMOOTH::StartDirectory;
-
-		inifile.Append("BonkEnc.ini");
-
-		ex_CR_Init(inifile);
-
-		for (audiodrive = 0; audiodrive < currentConfig->cdrip_numdrives; audiodrive++)
-		{
-			ex_CR_SetActiveCDROM(audiodrive);
-
-			ex_CR_ReadToc();
-
-			Int	 numTocEntries = ex_CR_GetNumTocEntries();
-
-			ReadCDText();
-
-			for (int j = 0; j < numTocEntries; j++)
-			{
-				TOCENTRY	 entry = ex_CR_GetTocEntry(j);
-				TOCENTRY	 nextentry = ex_CR_GetTocEntry(j + 1);
-				Int		 length = nextentry.dwStartSector - entry.dwStartSector;
-
-				if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == trackNumber && length == trackLength)
-				{
-					done = true;
-					break;
-				}
-			}
-
-			if (done) break;
-		}
-
-		if (cdInfo != NIL)
-		{
-			sa_joblist.AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), joblist->AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title))->code);
-
-			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-			trackInfo->track	= trackNumber;
-			trackInfo->drive	= audiodrive;
-			trackInfo->outfile	= NIL;
-			trackInfo->origFilename	= NIL;
-			trackInfo->cdText	= True;
-			trackInfo->artist	= cdInfo->GetEntry(0)->artist;
-			trackInfo->title	= cdInfo->GetEntry(trackNumber)->title;
-			trackInfo->album	= cdInfo->GetEntry(0)->album;
-			trackInfo->genre	= cdInfo->GetEntry(0)->genre;
-			trackInfo->year		= cdInfo->GetEntry(0)->year;
-
-			sa_trackinfo.AddEntry(trackInfo);
-		}
-		else if (cdText.GetEntry(trackNumber) != NIL)
-		{
-			SYSTEMTIME	 systime;
-
-			GetSystemTime(&systime);
-
-			sa_joblist.AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), joblist->AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)))->code);
-
-			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-			trackInfo->track	= trackNumber;
-			trackInfo->drive	= audiodrive;
-			trackInfo->outfile	= NIL;
-			trackInfo->cdText	= True;
-			trackInfo->artist	= cdText.GetEntry(0);
-			trackInfo->title	= cdText.GetEntry(trackNumber);
-			trackInfo->album	= cdText.GetEntry(100);
-			trackInfo->genre	= "Pop";
-			trackInfo->year		= systime.wYear;
-
-			sa_trackinfo.AddEntry(trackInfo);
-		}
-		else
-		{
-			sa_joblist.AddEntry(String("Audio CD ").Append(String::IntToString(audiodrive)).Append(" track ").Append(String::IntToString(trackNumber)), joblist->AddEntry(String("Audio CD ").Append(String::IntToString(audiodrive)).Append(" track ").Append(String::IntToString(trackNumber)))->code);
-
-			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-			trackInfo->track	= trackNumber;
-			trackInfo->drive	= audiodrive;
-			trackInfo->outfile	= NIL;
-			trackInfo->cdText	= False;
-
-			sa_trackinfo.AddEntry(trackInfo);
-		}
-
-		FreeCDText();
-
-		ex_CR_DeInit();
-
-		if (cdInfo != NIL)
-		{
-			cdInfo->DeleteAll();
-
-			delete cdInfo;
-		}
+		delete filter_in;
 	}
 	else
 	{
+		String	 extension;
+
+		extension[0] = file[file.Length() - 4];
+		extension[1] = file[file.Length() - 3];
+		extension[2] = file[file.Length() - 2];
+		extension[3] = file[file.Length() - 1];
+
 		InputFilter	*filter_in = NIL;
-		bonkTrackInfo	*trackInfo = NIL;
 
-		String	 length;
-		String	 fileSize;
-
-		if (extension == ".mp3" || extension == ".MP3")
+		if (extension == ".cda" && currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+		{
+			filter_in = new FilterInCDRip(currentConfig);
+		}
+		else if (extension == ".mp3" || extension == ".MP3")
 		{
 			filter_in = new FilterInLAME(currentConfig);
 		}
@@ -269,73 +159,67 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 		if (filter_in != NIL)
 		{
-			bonkFormatInfo	 format = filter_in->GetFileInfo(file);
-
-			trackInfo = format.trackInfo;
-
-			if (format.fileSize > 0)
-			{
-				String	 fSize = String::IntToString(format.fileSize);
-				String	 separator;
-				char	*buffer_a = new char [256];
-				wchar_t	*buffer_w = new wchar_t [256];
-
-				if (Setup::enableUnicode)	GetLocaleInfoW(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_w, 256);
-				else				GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_a, 256);
-
-				if (Setup::enableUnicode)	separator = buffer_w;
-				else				separator = buffer_a;
-
-				delete [] buffer_a;
-				delete [] buffer_w;
-
-				Int	 totalSeparators = Int((fSize.Length() - 1) / 3) * separator.Length();
-				Int	 doneSeparators = 0;
-				Int	 groupCount = 3 - fSize.Length() % 3;
-
-				for (int i = 0; i < fSize.Length() + totalSeparators; i++)
-				{
-					if (groupCount == 3)	{ fileSize.Append(separator); doneSeparators += separator.Length(); }
-					else			fileSize[i] = fSize[i - doneSeparators];
-
-					if (++groupCount == 4) groupCount = 0;
-				}
-			}
-
-			if (format.length > 0)	length = String::IntToString(Math::Floor(format.length / (format.rate * format.channels) / 60)).Append(":").Append(String::IntToString(format.length / (format.rate * format.channels) % 60));
-			else			length = "?";
+			format = filter_in->GetFileInfo(file);
 
 			delete filter_in;
 		}
+	}
 
-		if (trackInfo != NIL)
+	if (format != NIL)
+	{
+		if (format->trackInfo == NIL)
 		{
-			String	 jlEntry = String(trackInfo->artist).Append(" - ")
-					  .Append(trackInfo->title).Append("\t")
-					  .Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::IntToString(trackInfo->track)) : String::IntToString(trackInfo->track)) : String("")).Append("\t")
-					  .Append(length).Append("\t")
-					  .Append(fileSize);
+			format->trackInfo = new bonkFormatInfo::bonkTrackInfo;
 
-			sa_joblist.AddEntry(jlEntry, joblist->AddEntry(jlEntry)->code);
-		}
-		else
-		{
-			String	 jlEntry = String(file).Append("\t\t")
-					  .Append(length).Append("\t")
-					  .Append(fileSize);
-
-			sa_joblist.AddEntry(jlEntry, joblist->AddEntry(jlEntry)->code);
-
-			trackInfo = new bonkTrackInfo;
-
-			trackInfo->track	= -1;
-			trackInfo->cdText	= False;
+			format->trackInfo->track	= -1;
+			format->trackInfo->hasText	= False;
 		}
 
-		trackInfo->outfile	= outfile;
-		trackInfo->origFilename	= file;
+		if (format->fileSize > 0)
+		{
+			String	 fSize = String::IntToString(format->fileSize);
+			String	 separator;
+			char	*buffer_a = new char [256];
+			wchar_t	*buffer_w = new wchar_t [256];
 
-		sa_trackinfo.AddEntry(trackInfo);
+			if (Setup::enableUnicode)	GetLocaleInfoW(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_w, 256);
+			else				GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_a, 256);
+
+			if (Setup::enableUnicode)	separator = buffer_w;
+			else				separator = buffer_a;
+
+			delete [] buffer_a;
+			delete [] buffer_w;
+
+			Int	 totalSeparators = Int((fSize.Length() - 1) / 3) * separator.Length();
+			Int	 doneSeparators = 0;
+			Int	 groupCount = 3 - fSize.Length() % 3;
+
+			for (int i = 0; i < fSize.Length() + totalSeparators; i++)
+			{
+				if (groupCount == 3)	{ format->trackInfo->fileSize.Append(separator); doneSeparators += separator.Length(); }
+				else			format->trackInfo->fileSize[i] = fSize[i - doneSeparators];
+
+				if (++groupCount == 4) groupCount = 0;
+			}
+		}
+
+		if (format->length > 0)	format->trackInfo->length = String::IntToString(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append(String::IntToString(format->length / (format->rate * format->channels) % 60));
+		else			format->trackInfo->length = "?";
+
+		if (format->trackInfo->origFilename == NIL) format->trackInfo->origFilename = file;
+
+		String	 jlEntry;
+
+		if (format->trackInfo->artist.Length() == 0 &&
+		    format->trackInfo->title.Length() == 0)	jlEntry = String(format->trackInfo->origFilename).Append("\t");
+		else						jlEntry = String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t");
+
+		jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::IntToString(format->trackInfo->track)) : String::IntToString(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
+
+		format->trackInfo->outfile = outfile;
+
+		sa_formatinfo.AddEntry(format, joblist->AddEntry(jlEntry)->code);
 	}
 
 	txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
@@ -352,12 +236,13 @@ Void bonkEnc::RemoveFile()
 
 	if (joblist->GetSelectedEntry() != -1)
 	{
-		sa_joblist.DeleteEntry(joblist->GetSelectedEntry());
-		delete sa_trackinfo.GetEntry(joblist->GetSelectedEntry());
-		sa_trackinfo.DeleteEntry(joblist->GetSelectedEntry());
+		delete sa_formatinfo.GetEntry(joblist->GetSelectedEntry());
+		sa_formatinfo.DeleteEntry(joblist->GetSelectedEntry());
 		joblist->RemoveEntry(joblist->GetSelectedEntry());
 
 		txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+
+		dontUpdateInfo = True;
 
 		info_edit_artist->SetText("");
 		info_edit_title->SetText("");
@@ -365,6 +250,8 @@ Void bonkEnc::RemoveFile()
 		info_edit_track->SetText("");
 		info_edit_year->SetText("");
 		info_combo_genre->SelectEntry(0);
+
+		dontUpdateInfo = True;
 	}
 	else
 	{
@@ -381,12 +268,13 @@ Void bonkEnc::ClearList()
 		return;
 	}
 
-	sa_joblist.DeleteAll();
-	for (int i = 0; i < sa_trackinfo.GetNOfEntries(); i++) delete sa_trackinfo.GetNthEntry(i);
-	sa_trackinfo.DeleteAll();
+	for (int i = 0; i < sa_formatinfo.GetNOfEntries(); i++) delete sa_formatinfo.GetNthEntry(i);
+	sa_formatinfo.DeleteAll();
 	joblist->Cleanup();
 
 	if (!currentConfig->enable_console) txt_joblist->SetText(String("0").Append(i18n->TranslateString(" file(s) in joblist:")));
+
+	dontUpdateInfo = True;
 
 	info_edit_artist->SetText("");
 	info_edit_title->SetText("");
@@ -394,34 +282,67 @@ Void bonkEnc::ClearList()
 	info_edit_track->SetText("");
 	info_edit_year->SetText("");
 	info_combo_genre->SelectEntry(0);
+
+	dontUpdateInfo = False;
 }
 
 Void bonkEnc::SelectJoblistEntry()
 {
-	bonkTrackInfo	*trackInfo = sa_trackinfo.GetEntry(joblist->GetSelectedEntry());
+	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry());
 
-	info_edit_artist->SetText(trackInfo->artist);
-	info_edit_title->SetText(trackInfo->title);
-	info_edit_album->SetText(trackInfo->album);
+	dontUpdateInfo = True;
+
+	info_edit_artist->SetText(format->trackInfo->artist);
+	info_edit_title->SetText(format->trackInfo->title);
+	info_edit_album->SetText(format->trackInfo->album);
 
 	info_edit_track->SetText("");
 
-	if (trackInfo->track > 0 && trackInfo->track < 10)	info_edit_track->SetText(String("0").Append(String::IntToString(trackInfo->track)));
-	else if (trackInfo->track >= 10)			info_edit_track->SetText(String::IntToString(trackInfo->track));
+	if (format->trackInfo->track > 0 && format->trackInfo->track < 10)	info_edit_track->SetText(String("0").Append(String::IntToString(format->trackInfo->track)));
+	else if (format->trackInfo->track >= 10)				info_edit_track->SetText(String::IntToString(format->trackInfo->track));
 
 	info_edit_year->SetText("");
 
-	if (trackInfo->year > 0) info_edit_year->SetText(String::IntToString(trackInfo->year));
+	if (format->trackInfo->year > 0) info_edit_year->SetText(String::IntToString(format->trackInfo->year));
 
 	info_combo_genre->SelectEntry(0);
 
 	for (int i = 0; i < info_combo_genre->GetNOfEntries(); i++)
 	{
-		if (info_combo_genre->GetNthEntryName(i) == trackInfo->genre)
+		if (info_combo_genre->GetNthEntryName(i) == format->trackInfo->genre)
 		{
 			info_combo_genre->SelectEntry(i);
 
 			break;
 		}
 	}
+
+	dontUpdateInfo = False;
+}
+
+Void bonkEnc::UpdateTitleInfo()
+{
+	if (dontUpdateInfo) return;
+
+	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry());
+
+	format->trackInfo->artist = info_edit_artist->GetText();
+	format->trackInfo->title = info_edit_title->GetText();
+	format->trackInfo->album = info_edit_album->GetText();
+	format->trackInfo->track = info_edit_track->GetText().ToInt();
+	format->trackInfo->year = info_edit_year->GetText().ToInt();
+	format->trackInfo->genre = info_combo_genre->GetSelectedEntryName();
+
+	if (format->trackInfo->artist.Length() == 0 && format->trackInfo->title.Length() == 0)	format->trackInfo->hasText = False;
+	else											format->trackInfo->hasText = True;
+
+	String	 jlEntry;
+
+	if (format->trackInfo->artist.Length() == 0 &&
+	    format->trackInfo->title.Length() == 0)	jlEntry = String(format->trackInfo->origFilename).Append("\t");
+	else						jlEntry = String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t");
+
+	jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::IntToString(format->trackInfo->track)) : String::IntToString(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
+
+	joblist->ModifyEntry(joblist->GetSelectedEntry(), jlEntry);
 }

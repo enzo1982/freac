@@ -48,7 +48,7 @@
     <entry id="37" string="Windows CD Audio Track">Windows Audio CD Fajl</entry>
     <entry id="38" string="All Files">Svi Fajlovi</entry>
     <entry id="39" string="You have not selected a file!">Niste izabrali fajl!</entry>
-    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">Enkodovanje jos uvek traje!\nDa li zaista zelite da izadjete iz programa?</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Enkodovanje jos uvek traje! Da li zaista zelite da izadjete iz programa?</entry>
     <entry id="41" string="Currently encoding">Trenutno enkodovani fajl</entry>
     <entry id="42" string="This program is being distributed under the terms">Ovaj program je distributovan pod termama</entry>
     <entry id="43" string="of the GNU General Public License (GPL).">GNU General Public Licence (GPL) licence</entry>

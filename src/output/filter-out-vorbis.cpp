@@ -55,7 +55,7 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 
 	if (currentConfig->enable_tags) ex_vorbis_comment_add_tag(&vc, "COMMENT", currentConfig->default_comment);
 
-	if (format->trackInfo->cdText && currentConfig->enable_tags)
+	if (format->trackInfo->hasText && currentConfig->enable_tags)
 	{
 		if (format->trackInfo->title != NIL && format->trackInfo->title != "")
 		{

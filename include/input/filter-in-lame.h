@@ -26,7 +26,7 @@ class FilterInLAME : public InputFilter
 
 		int		 ReadData(unsigned char **, int);
 
-		bonkFormatInfo	 GetFileInfo(S::String);
+		bonkFormatInfo	*GetFileInfo(String);
 };
 
 #endif

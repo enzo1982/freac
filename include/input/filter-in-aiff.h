@@ -17,14 +17,14 @@ class FilterInAIFF : public InputFilter
 {
 	private:
 		bonkFormatInfo	 format;
-		bool		 setup;
+		Bool		 setup;
 	public:
 				 FilterInAIFF(bonkEncConfig *);
 				~FilterInAIFF();
 
 		int		 ReadData(unsigned char **, int);
 
-		bonkFormatInfo	 GetFileInfo(S::String);
+		bonkFormatInfo	*GetFileInfo(String);
 };
 
 #endif

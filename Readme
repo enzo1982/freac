@@ -11,7 +11,7 @@ BonkEnc with the '--console' parameter.
 History
 -------
 
-	Version 0.9-CVS (February 2003)
+	Version 0.9-CVS (March 2003)
 
 		- added Drag & Drop functionality
 		- added support for LAME presets
@@ -19,6 +19,8 @@ History
 		- removed support for the META tag in BONK files
 		- added support for ID3V2 tags in BONK files
 		- added support for reading ID3V2 and Vorbis comment tags
+		- added full CDDB/freedb support
+		- added a CDDB cache
 		- simplified the language file format
 		- upgraded to smooth v0.8.61.0
 		- upgraded to CDRip v117 to fix some ASPI issues
@@ -26,10 +28,6 @@ History
 		- upgraded FAAC to version 1.14
 		- greatly improved joblist and other GUI improvements
 		- some minor enhancements and bugfixes
-
-		Still to be done, but definitely in 0.9:
-
-		- full freedb support
 
 	Version 0.8 (November 2002)
 
@@ -91,7 +89,7 @@ Requirements
 
 	Additional requirements for compiling the sources:
 
-		- MinGW v1.x (http://www.mingw.org/)
+		- MinGW v1.x (http://www.mingw.org/) or MSVC v6.0
 		- smooth v0.8.61.0 (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - included with smooth)
 
@@ -134,8 +132,9 @@ Future plans
 	- develop an IOLib-Filters based plugin system
 	- support more languages
 	- cleanup the code
-	- finish CDDB support
 	- shell integration
+	- add musicbrainz.org support
+	- local CDDB support
 	- allow command line options to configure encoder settings
 	- write online documentation for BonkEnc
 	- improve support for right-to-left scripts

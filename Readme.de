@@ -11,7 +11,7 @@ BonkEnc mit der '--console' Option aufgerufen wird.
 Geschichte
 ----------
 
-	Version 0.9-CVS (Februar 2003)
+	Version 0.9-CVS (März 2003)
 
 		- Unterstützung für Drag & Drop hinzugefügt
 		- Unterstützung für LAME Voreinstellungen hinzugefügt
@@ -19,6 +19,8 @@ Geschichte
 		- Unterstützung für META Tags in BONK Dateien entfernt
 		- Unterstützung für ID3V2 Tags in BONK Dateien hinzugefügt
 		- Fähigkeit zum Lesen von ID3V2 und Vorbis Comment Tags hinzugefügt
+		- komplette CDDB/freedb Unterstützung
+		- CDDB Cache hinzugefügt
 		- Format der Sprachdateien vereinfacht
 		- Update auf smooth v0.8.61.0
 		- CDRip auf Version 117 aktualisiert, um einige ASPI Probleme zu beheben
@@ -87,7 +89,7 @@ Voraussetzungen
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
-		- MinGW v1.x (http://www.mingw.org/)
+		- MinGW v1.x (http://www.mingw.org/) oder MSVC v6.0
 		- smooth v0.8.61.0 (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - bei smooth dabei)
 
@@ -130,8 +132,9 @@ Pläne für zukünftige Versionen
 	- ein IOLib-Filters basierendes PlugIn System entwickeln
 	- mehr Sprachen unterstützen
 	- den Sourcecode überarbeiten
-	- CDDB Unterstützung fertigstellen
 	- Shell Integration
+	- Unterstützung für musicbrainz.org
+	- Lokale CDDB Datenbank
 	- Kommandozeilenoptionen zum Konfigurieren der Encoder erlauben
 	- Onlinedokumentation für BonkEnc schreiben
 	- Unterstützung für rechts-nach-links Schriften verbessern

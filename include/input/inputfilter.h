@@ -17,23 +17,24 @@
 class InputFilter : public IOLibFilter
 {
 	protected:
-		int			 inBytes;
+		Int			 inBytes;
 
-		unsigned int		 fileSize;
+		UnsignedInt		 fileSize;
 		bonkEncConfig		*currentConfig;
+
+		String			 GetID3CategoryName(Int);
 	public:
-		int			 error;
+		Int			 error;
 
 					 InputFilter(bonkEncConfig *);
 					~InputFilter();
 
 		virtual int		 ReadData(unsigned char **, int) = 0;
 
-		virtual bonkFormatInfo	 GetFileInfo(S::String) = 0;
+		virtual bonkFormatInfo	*GetFileInfo(String) = 0;
+		virtual Bool		 SetFileSize(UnsignedInt);
 
-		virtual bool		 SetFileSize(unsigned int);
-
-		int			 GetInBytes();
+		Int			 GetInBytes();
 };
 
 #endif
