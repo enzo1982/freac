@@ -20,7 +20,7 @@ History
 		- added support for ID3V2 tags in BONK files
 		- simplified the language file format
 		- upgraded to smooth v0.8.61.0
-		- upgraded CDRip.dll to fix some ASPI issues
+		- upgraded to CDRip v117 to fix some ASPI issues
 		- upgraded LAME to version 3.93.1
 		- some minor enhancements and bugfixes
 
