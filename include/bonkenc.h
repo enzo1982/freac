@@ -133,6 +133,8 @@ class bonkEnc : public Application
 		InputFilter		*CreateInputFilter(String, bonkEncTrack *);
 		Void			 PlayItem(Int);
 		Int			 PlayThread(Thread *);
+
+		String			 LocalizeNumber(Int);
 	public:
 		static String		 version;
 		static String		 cddbVersion;

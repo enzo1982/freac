@@ -239,45 +239,38 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 			}
 		}
 
-		if (format->fileSize > 0)
-		{
-			String	 fSize = String::FromInt(format->fileSize);
-			String	 separator;
-			char	*buffer_a = new char [256];
-			wchar_t	*buffer_w = new wchar_t [256];
-
-			if (Setup::enableUnicode)	GetLocaleInfoW(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_w, 256);
-			else				GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_a, 256);
-
-			if (Setup::enableUnicode)	separator = buffer_w;
-			else				separator = buffer_a;
-
-			delete [] buffer_a;
-			delete [] buffer_w;
-
-			for (Int i = 0; i < fSize.Length(); i++)
-			{
-				if ((fSize.Length() - i) % 3 == 0 && i > 0) format->fileSizeString.Append(separator);
-
-				format->fileSizeString[format->fileSizeString.Length()] = fSize[i];
-			}
-		}
+		if (format->fileSize > 0) format->fileSizeString = LocalizeNumber(format->fileSize);
 
 		if (format->length > 0)	format->lengthString = String::FromInt(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->length / (format->rate * format->channels) % 60));
 		else			format->lengthString = "?";
 
 		if (format->origFilename == NIL) format->origFilename = file;
 
-		String	 jlEntry;
+		String		 jlEntry;
+		String		 tooltip;
 
 		if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
 		else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
 
 		jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
 
+		tooltip = String(i18n->TranslateString("File")).Append(": ").Append(format->origFilename).Append("\n").
+			  Append(i18n->TranslateString("Size")).Append(": ").Append(format->fileSizeString).Append(" ").Append(i18n->TranslateString("bytes")).Append("\n").
+			  Append(i18n->TranslateString("Artist")).Append(": ").Append(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append("\n").
+			  Append(i18n->TranslateString("Title")).Append(": ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\n").
+			  Append(format->length > 0 ? i18n->TranslateString("Length").Append(": ").Append(format->lengthString).Append(" ").Append(i18n->TranslateString("min")).Append("\n") : "").
+			  Append(format->length > 0 ? i18n->TranslateString("Number of samples").Append(": ").Append(LocalizeNumber(format->length)).Append("\n") : "").
+			  Append(i18n->TranslateString("Sampling rate")).Append(": ").Append(LocalizeNumber(format->rate)).Append(" Hz\n").
+			  Append(i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(format->bits)).Append(" ").Append(i18n->TranslateString("bit")).Append("\n").
+			  Append(i18n->TranslateString("Channels")).Append(": ").Append((format->channels > 2 || format->channels < 1) ? String::FromInt(format->channels) : (format->channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo"))).
+			  Append((format->length > 0 && format->rate > 0 && format->channels > 0) ? i18n->TranslateString("\nBitrate").Append(": ").Append(String::FromInt((Int) Math::Round(((Float) format->fileSize) / (format->length / (format->rate * format->channels)) * 8.0 / 1024.0))).Append(" kbps") : "");
+
 		format->outfile = outfile;
 
-		Int	 id = joblist->AddEntry(jlEntry)->id;
+		ListEntry	*entry	= joblist->AddEntry(jlEntry);
+		Int		 id	= entry->id;
+
+		entry->SetTooltipText(tooltip);
 
 		joblist->GetEntry(id)->selected = True;
 		joblist->Paint(SP_UPDATE);

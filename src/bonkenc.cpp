@@ -60,7 +60,7 @@ I18n::Translator	*bonkEnc::i18n		= NIL;
 
 bonkEncDebug	*debug_out;
 
-String	 bonkEnc::version = "v1.0 Beta 3";
+String	 bonkEnc::version = "v1.0 Beta 3 - Preview release";
 String	 bonkEnc::cddbVersion = "v1.0beta3";
 String	 bonkEnc::shortVersion = "v1.0";
 
@@ -439,4 +439,32 @@ Void bonkEnc::SelectDir()
 	}
 
 	DeleteObject(dialog);
+}
+
+String bonkEnc::LocalizeNumber(Int number)
+{
+	String	 nString = String::FromInt(number);
+	String	 retVal;
+	String	 separator;
+
+	char	*buffer_a = new char [256];
+	wchar_t	*buffer_w = new wchar_t [256];
+
+	if (Setup::enableUnicode)	GetLocaleInfoW(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_w, 256);
+	else				GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_a, 256);
+
+	if (Setup::enableUnicode)	separator = buffer_w;
+	else				separator = buffer_a;
+
+	delete [] buffer_a;
+	delete [] buffer_w;
+
+	for (Int i = 0; i < nString.Length(); i++)
+	{
+		if ((nString.Length() - i) % 3 == 0 && i > 0) retVal.Append(separator);
+
+		retVal[retVal.Length()] = nString[i];
+	}
+
+	return retVal;
 }

@@ -272,5 +272,12 @@
     <entry id="260" string="Note:"/>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
     <entry id="262" string="FLAC Files"/>
+    <entry id="263" string="Sampling rate"/>
+    <entry id="264" string="Sample resolution"/>
+    <entry id="265" string="Number of samples"/>
+    <entry id="266" string="Mono"/>
+    <entry id="267" string="bytes"/>
+    <entry id="268" string="bit"/>
+    <entry id="269" string="min"/>
   </data>
 </LangFile>

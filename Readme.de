@@ -35,6 +35,7 @@ Geschichte
 		- Anpassungen für Kompilierung mit GCC 3.4
 		- Geschwindigkeitsoptimierungen für die meisten Encoder
 		- Unterstützung für Dateinamen mit Leerzeichen für BEcmd
+		- Tooltips zeigen mehr Informationen über Joblist-Einträge an
 
 	Version 1.0 beta 2 (Februar 2004)
 
