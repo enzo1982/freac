@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@gmx.net>
+  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -72,7 +72,7 @@ bonkEnc::bonkEnc()
 	currentConfig->LoadSettings();
 
 	i18n = new I18n::Translator();
-	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@gmx.net>", "http://www.bonkenc.org", False);
+	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@bonkenc.org>", "http://www.bonkenc.org/", False);
 
 	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
 	{

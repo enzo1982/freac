@@ -8,7 +8,7 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 beta 2 CVS (Februar 2004)
+	Version 1.0 beta 2 (Februar 2004)
 
 		- Unterstützung für Vorlagen für Dateinamen hinzugefügt
 		- Sprachunterstützung für Griechisch, Japanisch, Chinesisch (vereinfacht) und Polnisch hinzugefügt
@@ -22,9 +22,9 @@ Geschichte
 		- Ausgabeverzeichnis kann vom Hauptbildschirm aus verändert werden
 		- Lesen und Schreiben von Vorbis-Comments im UTF-8 Format
 		- Umstieg auf ein XML basiertes Konfigurationssystem
-		- LAME auf Version 3.94 beta aktualisiert
+		- LAME auf Version 3.95.1 aktualisiert
 		- Ogg Vorbis auf Version 1.0.1 aktualisiert
-		- FAAC auf Version 1.23.1 aktualisiert und der Standardversion hinzugefügt
+		- FAAC auf Version 1.23.5 aktualisiert und der Standardversion hinzugefügt
 		- Unterstzützung für 24 und 32 Bit AAC Ausgabe hinzugefügt
 		- die BonkEnc Standardversion enthält jetzt die FAAD2 in_mp4.dll für AAC/MP4 Unterstützung
 		- Unterstützung für CDDB Protokol Version 6 hinzugefügt (UTF-8 Unterstützung)
@@ -127,7 +127,7 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows 2000/XP, Windows 95/98/SE/ME
+	- Windows NT/2000/XP, Windows 95/98/SE/ME
 	- Ein 200MHz Prozessor oder besser, um BONK Dateien abzuspielen
 	- Winamp wird benötigt um BONK Dateien unter Windows abzuspielen
 	- Zum CD-Rippen werden korrekt installierte ASPI-Treiber benötigt
@@ -160,8 +160,6 @@ Probleme
 	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
 	  Ausgabe-Samplingrate haben, wenn sie nicht LAME verwenden.
 
-	- Der Winamp Inputfilter unterstützt bisher nur 16-Bit Input.
-
 	- Das Kommandozeileninterface unterstützt bisher noch keine Optionen um Encodereinstellungen zu verändern.
 
 Pläne für zukünftige Versionen
@@ -190,7 +188,7 @@ Pläne für zukünftige Versionen
 Die offizielle BonkEnc Homepage: http://www.bonkenc.org/
 Paul F. Harrisons BONK Homepage: http://www.logarithmic.net/pfh/bonk
 
-robert.kausch@gmx.net,
+robert.kausch@bonkenc.org,
 Robert Kausch
 
 ICQ#23891569

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@gmx.net>
+  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
   * Portions Copyright (C) 1999-2002 Albert L. Faber
   *
   * This program is free software; you can redistribute it and/or

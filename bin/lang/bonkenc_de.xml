@@ -6,7 +6,7 @@
     <property name="language">Deutsch</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="author">Robert Kausch &lt;robert.kausch@gmx.net&gt;</property>
+    <property name="author">Robert Kausch &lt;robert.kausch@bonkenc.org&gt;</property>
     <property name="url">http://www.bonkenc.org/</property>
   </info>
   <data>

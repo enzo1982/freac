@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@gmx.net>
+  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -215,8 +215,9 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 				if (goodFormat)
 				{
 					Int	 artistComplete = 0;
+					Int	 m = 0;
 
-					for (Int m = 0; m < fileName.Length(); m++)
+					for (m = 0; m < fileName.Length(); m++)
 					{
 						if (fileName[  m  ] == ' ' &&
 						    fileName[m + 1] == '-' &&
@@ -230,6 +231,8 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 						if (!artistComplete)	format->trackInfo->artist[m] = fileName[m];
 						else			format->trackInfo->title[m - artistComplete] = fileName[m];
 					}
+
+					format->trackInfo->title[m - artistComplete] = 0;
 				}
 			}
 		}

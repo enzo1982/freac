@@ -8,7 +8,7 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 2 CVS (February 2004)
+	Version 1.0 beta 2 (February 2004)
 
 		- added support for filename generation patterns
 		- added Greek, Japanese, Chinese (simplified) and Polish language support
@@ -22,9 +22,9 @@ History
 		- output directory can be changed from the main screen
 		- read and write Vorbis comments in UTF-8 format
 		- now using an XML based config system
-		- upgraded LAME to version 3.94 beta
+		- upgraded LAME to version 3.95.1
 		- upgraded Ogg Vorbis to version 1.0.1
-		- upgraded FAAC to version 1.23.1 and added to the main distribution
+		- upgraded FAAC to version 1.23.5 and added to the main distribution
 		- added support for 24 and 32 bit AAC output
 		- the BonkEnc distribution now includes the FAAD2 in_mp4.dll for AAC/MP4 input
 		- added support for CDDB protocol version 6 (UTF-8 support)
@@ -127,7 +127,7 @@ History
 Requirements
 ------------
 
-	- Windows 2000/XP, Windows 95/98/SE/ME
+	- Windows NT/2000/XP, Windows 95/98/SE/ME
 	- A 200MHz processor or better for playing BONK files
 	- Winamp is required to play BONK files in Windows
 	- You'll need properly installed ASPI drivers for CD ripping.
@@ -160,18 +160,10 @@ Problems
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
 
-	- The Winamp input filter supports only 16 bit input, yet.
-
 	- The command line interface doesn't support options for modifying encoder settings, yet.
 
 Future plans
 ------------
-
-	- v1.0 beta 2
-		* check Windows 98 support
-		* translate missing strings
-		* update to LAME 3.95.1
-		* update to FAAC 1.23.5
 
 	- Sheduled for v1.0
 		* shell integration
@@ -196,7 +188,7 @@ Future plans
 The official BonkEnc homepage: http://www.bonkenc.org/
 Paul F. Harrison's BONK page: http://www.logarithmic.net/pfh/bonk
 
-robert.kausch@gmx.net,
+robert.kausch@bonkenc.org,
 Robert Kausch
 
 ICQ#23891569

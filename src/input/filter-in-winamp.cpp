@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@gmx.net>
+  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,6 +13,7 @@
 
 int	 channels = 0;
 int	 rate = 0;
+int	 bits = 16;
 
 int	 get_more_samples = 0;
 int	 n_samples = 0;
@@ -124,7 +125,7 @@ int FilterInWinamp::ReadData(unsigned char **data, int size)
 
 	get_more_samples = 0;
 
-	size = n_samples * 2 * channels;
+	size = n_samples * (bits / 8) * channels;
 
 	*data = new unsigned char [size];
 
@@ -141,7 +142,6 @@ bonkFormatInfo *FilterInWinamp::GetFileInfo(String inFile)
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	nFormat->order = BYTE_INTEL;
-	nFormat->bits = 16;
 	nFormat->fileSize = f_in->Size();
 
 	delete f_in;
@@ -151,6 +151,7 @@ bonkFormatInfo *FilterInWinamp::GetFileInfo(String inFile)
 
 	nFormat->rate = rate;
 	nFormat->channels = channels;
+	nFormat->bits = bits;
 
 	int	 length_ms;
 
@@ -234,6 +235,8 @@ void SetPan(int pan)
 
 int Out_Open(int samplerate, int numchannels, int bitspersamp, int bufferlenms, int prebufferms)
 {
+	bits = bitspersamp;
+
 	return 25;
 }
 
