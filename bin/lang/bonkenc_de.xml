@@ -258,5 +258,9 @@
     <entry id="246" string="Check for updates at startup">Beim Start auf Aktualisierungen überprüfen</entry>
     <entry id="247" string="Read CD contents on insert">CD Inhalt autmatisch lesen</entry>
     <entry id="248" string="Eject disk after ripping">Automatisch auswerfen</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">'On-The-Fly' codieren</entry>
+    <entry id="250" string="Keep ripped wave files">Wave Dateien behalten</entry>
+    <entry id="251" string="ripping/decoding">Rippen/Decodieren</entry>
+    <entry id="252" string="encoding">Codieren</entry>
   </data>
 </LangFile>
