@@ -12,7 +12,13 @@
 #define _H_DLLINTERFACES_
 
 #include <smooth.h>
+
+#ifndef _MSC_VER
 #include <stdint.h>
+#else
+#define int32_t long
+#endif
+
 #include <bonk/bonk.h>
 #include <bladedll/bladedll.h>
 #include <vorbis/vorbisenc.h>

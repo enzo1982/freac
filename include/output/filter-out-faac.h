@@ -12,7 +12,13 @@
 #define _H_FILTER_OUT_FAAC_
 
 #include "outputfilter.h"
+
+#ifndef _MSC_VER
 #include <stdint.h>
+#else
+#define int32_t long
+#endif
+
 #include <faac/faac.h>
 
 class FilterOutFAAC : public OutputFilter
