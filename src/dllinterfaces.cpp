@@ -135,6 +135,9 @@ TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo;
 TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo;
 TVQENCODEFRAME			 ex_TvqEncodeFrame;
 
+Array<HMODULE>		 winamp_plugins;
+Array<In_Module *>	 winamp_modules;
+
 Bool bonkEnc::LoadBonkDLL()
 {
 	bonkdll = LoadLibraryA(GetApplicationDirectory().Append("Bonk.dll"));
@@ -488,4 +491,58 @@ Bool bonkEnc::LoadID3DLL()
 
 Void bonkEnc::FreeID3DLL()
 {
+}
+
+Bool bonkEnc::LoadWinampDLLs()
+{
+	String		 dir = Application::GetApplicationDirectory().Append("plugins\\");
+	_finddata_t	 fileData;
+	int		 handle;
+
+	chdir(dir);
+
+	if ((handle = _findfirst("in_*.dll", &fileData)) != -1)
+	{
+		do
+		{
+			HMODULE	 dll = LoadLibraryA(fileData.name);
+
+			if (dll != NIL)
+			{
+				In_Module *(*proc)() = (In_Module *(*)()) GetProcAddress(dll, "winampGetInModule2");
+
+				if (proc != NIL)
+				{
+					winamp_plugins.AddEntry(dll);
+					winamp_modules.AddEntry(proc());
+
+					proc()->Init();
+				}
+				else
+				{
+					FreeLibrary(dll);
+				}
+			}
+		}
+		while (_findnext(handle, &fileData) == 0);
+	}
+
+	_findclose(handle);
+
+	chdir(Application::GetApplicationDirectory());
+
+	return true;
+}
+
+Void bonkEnc::FreeWinampDLLs()
+{
+	for (Int i = 0; i < winamp_plugins.GetNOfEntries(); i++)
+	{
+		winamp_modules.GetNthEntry(i)->Quit();
+
+		FreeLibrary(winamp_plugins.GetNthEntry(i));
+	}
+
+	winamp_plugins.RemoveAll();
+	winamp_modules.RemoveAll();
 }

@@ -56,9 +56,14 @@ Int bonkEnc::Encoder(Thread *thread)
 
 	encoder_activedrive = currentConfig->cdrip_activedrive;
 
-	for (int i = 0; i < joblist->GetNOfEntries(); i++)
+	Int		 num = joblist->GetNOfEntries();
+	Int		 nRemoved = 0;
+
+	for (int i = 0; i < num; i++)
 	{
-		format = sa_formatinfo.GetNthEntry(i);
+		if (!joblist->GetNthEntry(i - nRemoved)->selected) continue;
+
+		format = sa_formatinfo.GetNthEntry(i - nRemoved);
 
 		bonkFormatInfo::bonkTrackInfo *trackInfo = format->trackInfo;
 
@@ -166,55 +171,10 @@ Int bonkEnc::Encoder(Thread *thread)
 		}
 		else
 		{
-			String	 extension;
-
-			extension[0] = in_filename[in_filename.Length() - 4];
-			extension[1] = in_filename[in_filename.Length() - 3];
-			extension[2] = in_filename[in_filename.Length() - 2];
-			extension[3] = in_filename[in_filename.Length() - 1];
+			filter_in = CreateInputFilter(in_filename);
 
 			f_in = new InStream(STREAM_FILE, in_filename);
-
-			if (extension == ".mp3" || extension == ".MP3")
-			{
-				filter_in = new FilterInLAME(currentConfig);
-
-				f_in->SetPackageSize(4096);
-			}
-			else if (extension == ".ogg" || extension == ".OGG")
-			{
-				filter_in = new FilterInVORBIS(currentConfig);
-
-				f_in->SetPackageSize(4096);
-			}
-			else if (extension == "bonk" || extension == "BONK")
-			{
-				filter_in = new FilterInBONK(currentConfig);
-
-				f_in->SetPackageSize(4096);
-			}
-			else
-			{
-				Int magic = f_in->InputNumber(4);
-
-				f_in->Seek(0);
-
-				switch (magic)
-				{
-					case 1297239878:
-						filter_in = new FilterInAIFF(currentConfig);
-						break;
-					case 1684960046:
-						filter_in = new FilterInAU(currentConfig);
-						break;
-					case 1634038339:
-						filter_in = new FilterInVOC(currentConfig);
-						break;
-					case 1179011410:
-						filter_in = new FilterInWAVE(currentConfig);
-						break;
-				}
-			}
+			f_in->SetPackageSize(4096);
 
 			if (filter_in != NIL)
 			{
@@ -393,6 +353,56 @@ Int bonkEnc::Encoder(Thread *thread)
 		{
 			delete f_out;
 		}
+
+		if (!currentConfig->enable_console)
+		{
+			Int	 entry = joblist->GetNthEntry(i - nRemoved)->id;
+
+			if (joblist->GetSelectedEntry() != NIL)
+			{
+				if (entry == joblist->GetSelectedEntry()->id)
+				{
+					dontUpdateInfo = True;
+
+					info_edit_artist->SetText("");
+					info_edit_title->SetText("");
+					info_edit_album->SetText("");
+					info_edit_track->SetText("");
+					info_edit_year->SetText("");
+					info_edit_genre->SetText("");
+
+					info_edit_artist->Deactivate();
+					info_edit_title->Deactivate();
+					info_edit_album->Deactivate();
+					info_edit_track->Deactivate();
+					info_edit_year->Deactivate();
+					info_edit_genre->Deactivate();
+
+					dontUpdateInfo = False;
+				}
+			}
+
+			Surface	*surface = mainWnd->GetDrawSurface();
+			Point	 realPos = joblist->GetRealPosition();
+			Rect	 frame;
+
+			frame.left	= realPos.x;
+			frame.top	= realPos.y;
+			frame.right	= realPos.x + joblist->GetObjectProperties()->size.cx - 1;
+			frame.bottom	= realPos.y + joblist->GetObjectProperties()->size.cy - 1;
+
+			surface->StartPaint(frame);
+
+			delete sa_formatinfo.GetEntry(entry);
+			sa_formatinfo.RemoveEntry(entry);
+			joblist->RemoveEntry(entry);
+
+			surface->EndPaint();
+
+			txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+
+			nRemoved++;
+		}
 	}
 
 	currentConfig->cdrip_activedrive = encoder_activedrive;
@@ -406,8 +416,6 @@ Int bonkEnc::Encoder(Thread *thread)
 	}
 
 	encoding = false;
-
-	ClearList();
 
 	return Success;
 }

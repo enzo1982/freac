@@ -9,7 +9,7 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/language.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/language.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o $(OBJECTDIR)/console.o
@@ -206,6 +206,11 @@ $(OBJECTDIR)/filter-in-vorbis.o: $(SRCDIR)/input/filter-in-vorbis.cpp
 $(OBJECTDIR)/filter-in-wave.o: $(SRCDIR)/input/filter-in-wave.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-wave.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-wave.cpp -o $(OBJECTDIR)/filter-in-wave.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/filter-in-winamp.o: $(SRCDIR)/input/filter-in-winamp.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-winamp.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-winamp.cpp -o $(OBJECTDIR)/filter-in-winamp.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/inputfilter.o: $(SRCDIR)/input/inputfilter.cpp

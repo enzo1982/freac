@@ -19,6 +19,7 @@ History
 		- upgraded to CDRip v118 (own build)
 		- added support for MSLU (Unicode support for Windows 9x/ME)
 		- many smaller improvements
+		- added support for Winamp Input Plugins
 		- some bugfixes
 
 	Version 0.9 (March 2003)

@@ -8,28 +8,27 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_OUTPUTFILTER_
-#define _H_OUTPUTFILTER_
+#ifndef _H_FILTER_IN_WINAMP_
+#define _H_FILTER_IN_WINAMP_
 
-#include <iolib-cxx.h>
-#include "../bonkenc.h"
+#include "inputfilter.h"
+#include "../winamp/in2.h"
 
-class OutputFilter : public IOLibFilter
+class FilterInWinamp : public InputFilter
 {
-	protected:
-		bool		 lastPacket;
-
-		bonkFormatInfo	*format;
-		bonkEncConfig	*currentConfig;
+	private:
+		Bool		 setup;
+		In_Module	*plugin;
 	public:
-		int		 error;
+				 FilterInWinamp(bonkEncConfig *, In_Module *);
+				~FilterInWinamp();
 
-				 OutputFilter(bonkEncConfig *, bonkFormatInfo *);
-				~OutputFilter();
+		bool		 Activate();
+		bool		 Deactivate();
 
-		virtual int	 WriteData(unsigned char *, int) = 0;
+		int		 ReadData(unsigned char **, int);
 
-		void		 PrepareLastPacket();
+		bonkFormatInfo	*GetFileInfo(String);
 };
 
 #endif

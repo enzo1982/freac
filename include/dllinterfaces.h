@@ -20,6 +20,7 @@
 #include <lame/lame.h>
 #include <twinvq/twinvq.h>
 #include <twinvq/tvqenc.h>
+#include <winamp/in2.h>
 
 // CDRip DLL API
 
@@ -292,5 +293,9 @@
 	extern TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo;
 	extern TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo;
 	extern TVQENCODEFRAME			 ex_TvqEncodeFrame;
+
+// Winamp Plugin DLL API
+
+	extern Array<In_Module *>	 input_plugins;
 
 #endif

@@ -10,15 +10,7 @@
 
 #include <main.h>
 #include <dllinterfaces.h>
-
 #include <input/filter-in-cdrip.h>
-#include <input/filter-in-wave.h>
-#include <input/filter-in-voc.h>
-#include <input/filter-in-aiff.h>
-#include <input/filter-in-au.h>
-#include <input/filter-in-lame.h>
-#include <input/filter-in-vorbis.h>
-#include <input/filter-in-bonk.h>
 
 Void bonkEncGUI::AddFile()
 {
@@ -34,6 +26,63 @@ Void bonkEncGUI::AddFile()
 	dialog->SetParentWindow(mainWnd);
 	dialog->SetFlags(SFD_ALLOWMULTISELECT);
 
+	Array<String>	 types;
+	Array<String>	 extensions;
+
+	for (Int i = 0; i < winamp_plugins.GetNOfEntries(); i++)
+	{
+		Int		 n = 1;
+		Int		 k = 0;
+		String		 type;
+		String		 extension;
+
+		for (Int j = 0; true; j++)
+		{
+			if (!(n & 1))
+			{
+				type[k++] = winamp_modules.GetNthEntry(i)->FileExtensions[j];
+
+				if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				{
+					types.AddEntry(type);
+					k = 0;
+					n++;
+					type = "";
+				}
+			}
+			else
+			{
+				extension[k++] = winamp_modules.GetNthEntry(i)->FileExtensions[j];
+
+				if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				{
+					String	 extension2 = String("*.").Append(extension);
+					Int	 o = 0;		
+
+					for (Int m = 0; m < extension2.Length(); m++)
+					{
+						extension[m + o] = extension2[m];
+
+						if (extension2[m] == ';')
+						{
+							extension[m + o + 1] = ' ';
+							extension[m + o + 2] = '*';
+							extension[m + o + 3] = '.';
+							o += 3;
+						}
+					}
+
+					extensions.AddEntry(extension);
+					k = 0;
+					n++;
+					extension = "";
+				}
+			}
+
+			if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0 && winamp_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
+		}
+	}
+
 	String	 fileTypes = "*.aif; *.aiff; *.au";
 
 	if (currentConfig->enable_bonk) fileTypes.Append("; *.bonk");
@@ -42,6 +91,8 @@ Void bonkEncGUI::AddFile()
 	if (currentConfig->enable_vorbis) fileTypes.Append("; *.ogg");
 
 	fileTypes.Append("; *.voc; *.wav");
+
+	for (Int l = 0; l < extensions.GetNOfEntries(); l++) fileTypes.Append("; ").Append(extensions.GetNthEntry(l));
 
 	dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
 
@@ -58,6 +109,8 @@ Void bonkEncGUI::AddFile()
 	dialog->AddFilter(i18n->TranslateString("Wave Files").Append(" (*.wav)"), "*.wav");
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) dialog->AddFilter(i18n->TranslateString("Windows CD Audio Track").Append(" (*.cda)"), "*.cda");
+
+	for (Int l = 0; l < types.GetNOfEntries(); l++) dialog->AddFilter(types.GetNthEntry(l), extensions.GetNthEntry(l));
 
 	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
@@ -108,54 +161,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 	}
 	else
 	{
-		String	 extension;
-
-		extension[0] = file[file.Length() - 4];
-		extension[1] = file[file.Length() - 3];
-		extension[2] = file[file.Length() - 2];
-		extension[3] = file[file.Length() - 1];
-
-		InputFilter	*filter_in = NIL;
-
-		if (extension == ".cda" && currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
-		{
-			filter_in = new FilterInCDRip(currentConfig);
-		}
-		else if (extension == ".mp3" || extension == ".MP3")
-		{
-			filter_in = new FilterInLAME(currentConfig);
-		}
-		else if (extension == ".ogg" || extension == ".OGG")
-		{
-			filter_in = new FilterInVORBIS(currentConfig);
-		}
-		else if (extension == "bonk" || extension == "BONK")
-		{
-			filter_in = new FilterInBONK(currentConfig);
-		}
-		else
-		{
-			InStream	*f_in = new InStream(STREAM_FILE, file);
-			Int		 magic = f_in->InputNumber(4);
-
-			delete f_in;
-
-			switch (magic)
-			{
-				case 1297239878:
-					filter_in = new FilterInAIFF(currentConfig);
-					break;
-				case 1684960046:
-					filter_in = new FilterInAU(currentConfig);
-					break;
-				case 1634038339:
-					filter_in = new FilterInVOC(currentConfig);
-					break;
-				case 1179011410:
-					filter_in = new FilterInWAVE(currentConfig);
-					break;
-			}
-		}
+		InputFilter	*filter_in = CreateInputFilter(file);
 
 		if (filter_in != NIL)
 		{
@@ -214,7 +220,11 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 		format->trackInfo->outfile = outfile;
 
-		sa_formatinfo.AddEntry(format, joblist->AddEntry(jlEntry)->id);
+		Int	 id = joblist->AddEntry(jlEntry)->id;
+
+		joblist->GetEntry(id)->selected = True;
+		joblist->Paint(SP_UPDATE);
+		sa_formatinfo.AddEntry(format, id);
 	}
 	else
 	{

@@ -126,6 +126,7 @@ bonkEncGUI::bonkEncGUI()
 
 	joblist			= new ListBox(pos, size);
 	joblist->onClick.Connect(&bonkEncGUI::SelectJoblistEntry, this);
+	joblist->SetFlags(LF_MULTICHECKBOX);
 	joblist->AddTab(i18n->TranslateString("Title"));
 	joblist->AddTab(i18n->TranslateString("Track"), currentConfig->tab_width_track);
 	joblist->AddTab(i18n->TranslateString("Length"), currentConfig->tab_width_length);

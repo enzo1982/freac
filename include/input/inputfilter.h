@@ -12,7 +12,7 @@
 #define _H_INPUTFILTER_
 
 #include <iolib-cxx.h>
-#include "../main.h"
+#include "../bonkenc.h"
 
 class InputFilter : public IOLibFilter
 {

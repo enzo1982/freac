@@ -14,9 +14,12 @@
 #include <smooth.h>
 #include "i18n.h"
 #include "config.h"
+#include "winamp/in2.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
+
+class InputFilter;
 
 extern Int	 ENCODER_BONKENC;
 extern Int	 ENCODER_BLADEENC;
@@ -193,12 +196,19 @@ class bonkEnc : public Application
 		Bool			 LoadID3DLL();
 		Void			 FreeID3DLL();
 
+		Array<HMODULE>		 winamp_plugins;
+		Array<In_Module *>	 winamp_modules;
+
+		Bool			 LoadWinampDLLs();
+		Void			 FreeWinampDLLs();
+
 		Void			 AddFileByName(String, String out = NIL);
 		Void			 ClearList();
 		Void			 ReadCD();
 		Void			 Encode();
 		Int			 Encoder(Thread *);
 		Void			 StopEncoding();
+		InputFilter		*CreateInputFilter(String);
 	public:
 		static String		 version;
 		static String		 cddbVersion;
