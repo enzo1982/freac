@@ -60,11 +60,11 @@ cddbQueryDlg::cddbQueryDlg()
 
 cddbQueryDlg::~cddbQueryDlg()
 {
-	delete mainWnd_titlebar;
-	delete mainWnd;
-	delete text_status;
-	delete prog_status;
-	delete btn_cancel;
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(text_status);
+	DeleteObject(prog_status);
+	DeleteObject(btn_cancel);
 }
 
 Int cddbQueryDlg::ShowDialog()

@@ -338,29 +338,29 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 cddbSubmitDlg::~cddbSubmitDlg()
 {
-	delete mainWnd_titlebar;
-	delete mainWnd;
-	delete divbar;
-	delete combo_drive;
-	delete group_drive;
-	delete text_artist;
-	delete edit_artist;
-	delete text_album;
-	delete edit_album;
-	delete text_genre;
-	delete edit_genre;
-	delete list_genre;
-	delete text_year;
-	delete edit_year;
-	delete list_tracks;
-	delete text_track;
-	delete edit_track;
-	delete text_title;
-	delete edit_title;
-	delete text_cdstatus;
-	delete text_status;
-	delete btn_submit;
-	delete btn_cancel;
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(divbar);
+	DeleteObject(combo_drive);
+	DeleteObject(group_drive);
+	DeleteObject(text_artist);
+	DeleteObject(edit_artist);
+	DeleteObject(text_album);
+	DeleteObject(edit_album);
+	DeleteObject(text_genre);
+	DeleteObject(edit_genre);
+	DeleteObject(list_genre);
+	DeleteObject(text_year);
+	DeleteObject(edit_year);
+	DeleteObject(list_tracks);
+	DeleteObject(text_track);
+	DeleteObject(edit_track);
+	DeleteObject(text_title);
+	DeleteObject(edit_title);
+	DeleteObject(text_cdstatus);
+	DeleteObject(text_status);
+	DeleteObject(btn_submit);
+	DeleteObject(btn_cancel);
 }
 
 Int cddbSubmitDlg::ShowDialog()

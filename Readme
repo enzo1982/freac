@@ -11,8 +11,11 @@ History
 	Version 1.0 beta 2 CVS (July 2003)
 
 		- added support for right-to-left scripts like Arabic or Hebrew
+		- new (partial) Arabic and Japanese translations (for demonstration purpose)
 		- upgraded to smooth v0.8.63.0
+		- improved setup compatibility with Windows 9x/ME
 		- some small improvements
+		- some bugfixes
 
 	Version 1.0 beta 1 (July 2003)
 

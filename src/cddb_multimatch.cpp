@@ -76,14 +76,14 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 
 cddbMultiMatchDlg::~cddbMultiMatchDlg()
 {
-	delete mainWnd_titlebar;
-	delete mainWnd;
-	delete divbar;
-	delete group_match;
-	delete combo_match;
-	delete text_match;
-	delete btn_ok;
-	delete btn_cancel;
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(divbar);
+	DeleteObject(group_match);
+	DeleteObject(combo_match);
+	DeleteObject(text_match);
+	DeleteObject(btn_ok);
+	DeleteObject(btn_cancel);
 }
 
 Int cddbMultiMatchDlg::ShowDialog()

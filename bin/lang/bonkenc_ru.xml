@@ -1,182 +1,240 @@
-<?xml version="1.0" encoding="CP1251"?>
+п»ї<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
-    <property name="language">Русский</property>
+    <property name="language">Р СѓСЃСЃРєРёР№</property>
     <property name="righttoleft">false</property>
-    <property name="encoding">CP1251</property>
-    <property name="author">Roman Sabanin &lt;accounter@xaker.ru&gt;</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">Dimonis</property>
     <property name="url">http://www.bonkenc.org</property>
   </info>
   <data>
-    <entry id="1" string="File">Файл</entry>
-    <entry id="2" string="Options">Настройки</entry>
-    <entry id="3" string="Encode">Кодирование</entry>
-    <entry id="4" string="Add">Добавить</entry>
-    <entry id="5" string="Remove">Удалить</entry>
-    <entry id="6" string="Clear joblist">Очистить лист</entry>
-    <entry id="7" string="Exit">Выход</entry>
-    <entry id="8" string="General settings...">Основные настройки</entry>
-    <entry id="9" string="Configure selected encoder...">Настроить текущий кодировщик...</entry>
-    <entry id="10" string="Audio file(s)...">Аудио файл(ы)...</entry>
-    <entry id="11" string="Audio CD contents">Содержимое Аудио CD</entry>
-    <entry id="12" string="Start encoding">Начать кодирование</entry>
-    <entry id="13" string="Stop encoding">Остановить кодирование</entry>
-    <entry id="14" string="Encoding file:">Кодируемый файл:</entry>
-    <entry id="15" string="Time left:">Осталось времени:</entry>
-    <entry id="16" string="Percent done:">Статус:</entry>
-    <entry id="17" string="Selected encoder:">Кодировщик:</entry>
-    <entry id="18" string="File progress:">Прогресс:</entry>
-    <entry id="19" string="Output dir.:">Директория:</entry>
-    <entry id="20" string=" file(s) in joblist:"> Файл(а/ов) в листе:</entry>
-    <entry id="21" string="none">пусто</entry>
-    <entry id="23" string="Add audio file(s) to the joblist">Добавить аудио файл(ы) в лист</entry>
-    <entry id="24" string="Add audio CD contents to the joblist">Добавить содержимое Аудио CD в лист</entry>
-    <entry id="25" string="Remove the selected entry from the joblist">Удалить текущую позицию из листа</entry>
-    <entry id="26" string="Clear the entire joblist">Очистить весь лист</entry>
-    <entry id="27" string="Configure general settings">Настройка основных параметров</entry>
-    <entry id="28" string="Configure the selected audio encoder">Настройка выбранного кодировщика</entry>
-    <entry id="29" string="Start the encoding process">Начать процесс кодирования</entry>
-    <entry id="30" string="Cannot modify the joblist while encoding!">Невозможно изменить лист в процессе кодирования</entry>
-    <entry id="31" string="Error">Ошибка</entry>
-    <entry id="32" string="Audio Files">Аудио файлы</entry>
-    <entry id="33" string="Apple Audio Files">Аудио файлы Apple </entry>
-    <entry id="34" string="Creative Voice Files">Creative Voice файлы</entry>
-    <entry id="35" string="Sun Audio Files">Sun Audio файлы</entry>
-    <entry id="36" string="Wave Files">Wave файлы</entry>
-    <entry id="37" string="Windows CD Audio Track">Audio CD Track</entry>
-    <entry id="38" string="All Files">Все файлы</entry>
-    <entry id="39" string="You have not selected a file!">Файл не выбран!</entry>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Процесс кодироания всё ещё запущен! Вы действительно хотите выйти?</entry>
-    <entry id="41" string="Currently encoding">Сейчас кодируется</entry>
-    <entry id="42" string="This program is being distributed under the terms">Эта программа была разработана на правах</entry>
+    <entry id="1" string="File">Р¤Р°Р№Р»</entry>
+    <entry id="2" string="Options">РќР°СЃС‚СЂРѕР№РєРё</entry>
+    <entry id="3" string="Encode">РљРѕРґРёСЂРѕРІР°РЅРёРµ</entry>
+    <entry id="4" string="Add">Р”РѕР±Р°РІРёС‚СЊ</entry>
+    <entry id="5" string="Remove">РЈРґР°Р»РёС‚СЊ</entry>
+    <entry id="6" string="Clear joblist">РћС‡РёСЃС‚РёС‚СЊ СЃРїРёСЃРѕРє Р·Р°РґР°С‡</entry>
+    <entry id="7" string="Exit">Р’С‹С…РѕРґ</entry>
+    <entry id="8" string="General settings...">РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</entry>
+    <entry id="9" string="Configure selected encoder...">РќР°СЃС‚СЂРѕРёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Р№ РєРѕРґРµРє...</entry>
+    <entry id="10" string="Audio file(s)...">РђСѓРґРёРѕ С„Р°Р№Р»(С‹)...</entry>
+    <entry id="11" string="Audio CD contents">РЎРѕРґРµСЂР¶РёРјРѕРµ РђСѓРґРёРѕ CD</entry>
+    <entry id="12" string="Start encoding">РќР°С‡Р°С‚СЊ РєРѕРґРёСЂРѕРІР°РЅРёРµ</entry>
+    <entry id="13" string="Stop encoding">РћСЃС‚Р°РЅРѕРІРёС‚СЊ РєРѕРґРёСЂРѕРІР°РЅРёРµ</entry>
+    <entry id="14" string="Encoding file:">РљРѕРґРёСЂСѓРµРјС‹Р№ С„Р°Р№Р»:</entry>
+    <entry id="15" string="Time left:">РћСЃС‚Р°Р»РѕСЃСЊ РІСЂРµРјРµРЅРё:</entry>
+    <entry id="16" string="Percent done:">РџСЂРѕС†РµРЅС‚С‹:</entry>
+    <entry id="17" string="Selected encoder:">Р’С‹Р±РѕСЂ РєРѕРґРµРєР°:</entry>
+    <entry id="18" string="File progress:">РџСЂРѕС†РµСЃСЃ:</entry>
+    <entry id="19" string="Output dir.:">Р”РёСЂРµРєС‚РѕСЂРёСЏ:</entry>
+    <entry id="20" string=" file(s) in joblist:"> Р¤Р°Р№Р»(С‹) РІ СЃРїРёСЃРєРµ:</entry>
+    <entry id="21" string="none">РїСѓСЃС‚Рѕ</entry>
+    <entry id="22" string="Help topics...">РџРѕРјРѕС‰СЊ...</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Р”РѕР±Р°РІРёС‚СЊ Р°СѓРґРёРѕ С„Р°Р№Р»(С‹) РІ СЃРїРёСЃРѕРє</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Р”РѕР±Р°РІРёС‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ РђСѓРґРёРѕ CD РІ Р»РёСЃС‚</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">РЈРґР°Р»РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РёР· СЃРїРёСЃРєР°</entry>
+    <entry id="26" string="Clear the entire joblist">РћС‡РёСЃС‚РёС‚СЊ СЃРїРёСЃРѕРє</entry>
+    <entry id="27" string="Configure general settings">РќР°СЃС‚СЂРѕР№РєР° РѕСЃРЅРѕРІРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ</entry>
+    <entry id="28" string="Configure the selected audio encoder">РќР°СЃС‚СЂРѕР№РєР° РІС‹Р±СЂР°РЅРЅРѕРіРѕ РєРѕРґРµРєР°</entry>
+    <entry id="29" string="Start the encoding process">РЎС‚Р°СЂС‚ РїСЂРѕС†РµСЃСЃ РєРѕРґРёСЂРѕРІР°РЅРёСЏ</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">РќРµРІРѕР·РјРѕР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ СЃРїРёСЃРѕРє РІ РїСЂРѕС†РµСЃСЃРµ РєРѕРґРёСЂРѕРІР°РЅРёСЏ</entry>
+    <entry id="31" string="Error">РћС€РёР±РєР°</entry>
+    <entry id="32" string="Audio Files">РђСѓРґРёРѕ С„Р°Р№Р»С‹</entry>
+    <entry id="33" string="Apple Audio Files">РђСѓРґРёРѕ С„Р°Р№Р»С‹ Apple</entry>
+    <entry id="34" string="Creative Voice Files">Creative Voice С„Р°Р№Р»С‹</entry>
+    <entry id="35" string="Sun Audio Files">Sun Audio С„Р°Р№Р»С‹</entry>
+    <entry id="36" string="Wave Files">Wave С„Р°Р№Р»С‹</entry>
+    <entry id="37" string="Windows CD Audio Track">РђСѓРґРёРѕ CD С‚СЂРµРє</entry>
+    <entry id="38" string="All Files">Р’СЃРµ С„Р°Р№Р»С‹</entry>
+    <entry id="39" string="You have not selected a file!">Р¤Р°Р№Р» РЅРµ РІС‹Р±СЂР°РЅ!</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">РљРѕРґРёСЂРѕРІР°РЅРёРµ РІ РїСЂРѕС†РµСЃСЃРµ! Р’С‹Р№С‚Рё?</entry>
+    <entry id="41" string="Currently encoding">РЎРµР№С‡Р°СЃ РєРѕРґРёСЂСѓРµС‚СЃСЏ</entry>
+    <entry id="42" string="This program is being distributed under the terms">Р­С‚Р° РїСЂРѕРіСЂР°РјРјР° СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅСЏРµС‚СЃСЏ РІ СЂР°РјРєР°С…</entry>
     <entry id="43" string="of the GNU General Public License (GPL).">GNU General Public License (GPL).</entry>
-    <entry id="44" string="About BonkEnc">О BonkEnc</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Для WAVE Out фильтра нет настроек!</entry>
-    <entry id="46" string="WAVE Out filter">WAVE Out фильтр</entry>
-    <entry id="47" string="Cannot change settings while encoding!">Невозможно изменить настройки в процессе кодирования!</entry>
-    <entry id="48" string="encoder configuration">Настройка кодировщика</entry>
+    <entry id="44" string="About BonkEnc">Рћ BonkEnc</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">Р”Р»СЏ WAVE РЅРµС‚ РЅР°СЃС‚СЂРѕРµРє!</entry>
+    <entry id="46" string="WAVE Out filter">WAVE Out С„РёР»СЊС‚СЂ</entry>
+    <entry id="47" string="Cannot change settings while encoding!">РќРµР»СЊР·СЏ РјРµРЅСЏС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё РІ РїСЂРѕС†РµСЃСЃРµ РєРѕРґРёСЂРѕРІР°РЅРёСЏ!</entry>
+    <entry id="48" string="encoder configuration">РќР°СЃС‚СЂРѕР№РєР° РєРѕРґРµРєР°</entry>
     <entry id="49" string="OK">OK</entry>
-    <entry id="50" string="Cancel">Отмена</entry>
-    <entry id="51" string="Encoding Mode">Способ кодирования</entry>
-    <entry id="52" string="Variable Bitrate">Variable Bitrate</entry>
-    <entry id="53" string="Average Bitrate">Average Bitrate</entry>
-    <entry id="54" string="Quality">Качество</entry>
-    <entry id="55" string="Encoders">Кодировщики</entry>
-    <entry id="56" string="Language">Язык</entry>
-    <entry id="58" string="General settings setup">Основные параметры</entry>
-    <entry id="59" string="Configure encoder">Настроить</entry>
-    <entry id="60" string="Encoder">Кодировщик</entry>
-    <entry id="61" string="Output directory">Каталог для сохранения</entry>
-    <entry id="62" string="Browse">Выбрать</entry>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:">Выбрать каталог, куда сохранять кодированные файлы:</entry>
-    <entry id="64" string="Encoding">Кодировка</entry>
-    <entry id="65" string="Author">Автор</entry>
+    <entry id="50" string="Cancel">РћС‚РјРµРЅР°</entry>
+    <entry id="51" string="Encoding Mode">РЎРїРѕСЃРѕР± РєРѕРґРёСЂРѕРІР°РЅРёСЏ</entry>
+    <entry id="52" string="Variable Bitrate">РџРµСЂРµРјРµРЅРЅС‹Р№ Bitrate</entry>
+    <entry id="53" string="Average Bitrate">РЎСЂРµРґРЅРёР№ Bitrate</entry>
+    <entry id="54" string="Quality">РљР°С‡РµСЃС‚РІРѕ</entry>
+    <entry id="55" string="Encoders">РљРѕРґРµРєРё</entry>
+    <entry id="56" string="Language">РЇР·С‹Рє</entry>
+    <entry id="57" string="Show title info">РџРѕРєР°Р·Р°С‚СЊ Р·Р°РіРѕР»РѕРІРѕРє</entry>
+    <entry id="58" string="General settings setup">РћСЃРЅРѕРІРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹</entry>
+    <entry id="59" string="Configure encoder">РќР°СЃС‚СЂРѕР№РєР° РєРѕРґРµРєР°</entry>
+    <entry id="60" string="Encoder">РљРѕРґРµРє</entry>
+    <entry id="61" string="Output directory">РљР°С‚Р°Р»РѕРі РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ</entry>
+    <entry id="62" string="Browse">Р’С‹Р±СЂР°С‚СЊ</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Р’С‹Р±СЂР°С‚СЊ РєР°С‚Р°Р»РѕРі РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґСѓС‚ РїРѕРјРµС‰РµРЅС‹ РєРѕРґРёСЂСѓРµРјС‹Рµ С„Р°Р№Р»С‹:</entry>
+    <entry id="64" string="Encoding">РљРѕРґРёСЂРѕРІРєР°</entry>
+    <entry id="65" string="Author">РђРІС‚РѕСЂ</entry>
     <entry id="66" string="URL">URL</entry>
-    <entry id="67" string="Information">Информация</entry>
-    <entry id="68" string="Select language:">Выбрать язык</entry>
-    <entry id="69" string="Active CD-ROM drive">Активный CD-ROM</entry>
-    <entry id="70" string="Ripper settings">Настройки захвата данных</entry>
-    <entry id="71" string="Activate cdparanoia mode:">cdparanoia mode:</entry>
-    <entry id="72" string="Activate jitter correction">Jitter correction</entry>
-    <entry id="73" string="Swap left/right channel">Поменять каналы местами</entry>
-    <entry id="74" string="Lock CD tray while ripping">Блокировать CD tray </entry>
-    <entry id="75" string="Use native NT SCSI library">NT SCSI библиотеки</entry>
-    <entry id="76" string="Overlap only">Overlap only</entry>
-    <entry id="77" string="No verify">No verify</entry>
-    <entry id="78" string="No scratch repair">No scratch repair</entry>
-    <entry id="79" string="Full cdparanoia mode">Full cdparanoia mode</entry>
+    <entry id="67" string="Information">РРЅС„РѕСЂРјР°С†РёСЏ</entry>
+    <entry id="68" string="Select language:">Р’С‹Р±СЂР°С‚СЊ СЏР·С‹Рє</entry>
+    <entry id="69" string="Active CD-ROM drive">Р’С‹Р±РѕСЂ РїСЂРёРІРѕРґР° CD-ROM</entry>
+    <entry id="70" string="Ripper settings">РќР°СЃС‚СЂРѕР№РєРё Р·Р°С…РІР°С‚Р° РґР°РЅРЅС‹С… (РіСЂР°Р±Р±РµСЂР°)</entry>
+    <entry id="71" string="Activate cdparanoia mode:">Р РµР¶РёРј cd-РїР°СЂР°РЅРѕСЏ:</entry>
+    <entry id="72" string="Activate jitter correction">Jitter РєРѕСЂСЂРµРєС†РёСЏ</entry>
+    <entry id="73" string="Swap left/right channel">РџРѕРјРµРЅСЏС‚СЊ Р»РµРІС‹Р№/РїСЂР°РІС‹Р№</entry>
+    <entry id="74" string="Lock CD tray while ripping">Р‘Р»РѕРєРёСЂРѕРІРєР° CD РїСЂРё СЂР°Р±РѕС‚Рµ </entry>
+    <entry id="75" string="Use native NT SCSI library">Р РѕРґРЅС‹Рµ NT SCSI Р±РёР±Р»РёРѕС‚РµРєРё</entry>
+    <entry id="76" string="Overlap only">РўРѕР»СЊРєРѕ РїРµСЂРµРєСЂС‹РІР°С‚СЊ</entry>
+    <entry id="77" string="No verify">Р‘РµР· РїСЂРѕРІРµСЂРєРё</entry>
+    <entry id="78" string="No scratch repair">Р‘РµР· РєРѕСЂСЂРµРєС†РёРё С†Р°СЂР°РїРёРЅ</entry>
+    <entry id="79" string="Full cdparanoia mode">РџРѕР»РЅС‹Р№ СЂРµР¶РёРј cd-РїР°СЂР°РЅРѕСЏ</entry>
     <entry id="80" string="Bitrate">Bitrate</entry>
     <entry id="81" string="Copyright bit">Copyright Bit</entry>
-    <entry id="82" string="CRC">CRC</entry>
-    <entry id="83" string="Original bit">Исходный Bit</entry>
-    <entry id="84" string="Channels">Каналы</entry>
+    <entry id="82" string="CRC">CRC (РєРѕРЅС‚СЂРѕР»СЊРЅР°СЏ СЃСѓРјРјР°)</entry>
+    <entry id="83" string="Original bit">Original Bit</entry>
+    <entry id="84" string="Channels">РљР°РЅР°Р»С‹</entry>
     <entry id="85" string="Private bit">Private Bit</entry>
     <entry id="86" string="Set Copyright bit">Copyright Bit</entry>
-    <entry id="87" string="Enable CRC">Разрешить CRC</entry>
+    <entry id="87" string="Enable CRC">Р Р°Р·СЂРµС€РёС‚СЊ CRC</entry>
     <entry id="88" string="Set Original bit">Original Bit</entry>
-    <entry id="89" string="Dual channel encoding">2-канальное кодирование</entry>
+    <entry id="89" string="Dual channel encoding">2-РєР°РЅР°Р»СЊРЅРѕРµ РєРѕРґРёСЂРѕРІР°РЅРёРµ</entry>
     <entry id="90" string="Set Private bit">Private Bit</entry>
-    <entry id="91" string="Encoder mode">Способ кодирования</entry>
-    <entry id="92" string="Stereo mode">Стерео</entry>
-    <entry id="93" string="Quantization">Quantization</entry>
-    <entry id="94" string="Downsampling ratio">Downsampling ratio</entry>
-    <entry id="95" string="Predictor size">Predictor size</entry>
-    <entry id="96" string="Enable lossless encoding">Побайтовое кодирование</entry>
-    <entry id="97" string="Enable Joint Stereo">Joint стерео</entry>
-    <entry id="98" string="Bitrate per channel:">Bitrate per channel:</entry>
-    <entry id="99" string="Preselection">Предварительно</entry>
-    <entry id="100" string="Number of preselection candidates:">Number of preselection candidates:</entry>
-    <entry id="101" string="MPEG version">Версия MPEG</entry>
-    <entry id="102" string="AAC object type">AAC object type</entry>
-    <entry id="103" string="Allow Joint Stereo">Joint стерео</entry>
-    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
-    <entry id="105" string="Use Temporal Noise Shaping">Use Temporal Noise Shaping</entry>
-    <entry id="106" string="Maximum bandwidth">Maximum bandwidth</entry>
-    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maximum AAC frequency bandwidth to use (Hz):</entry>
-    <entry id="108" string="Basic">Основное</entry>
-    <entry id="109" string="Misc">Прочее</entry>
-    <entry id="110" string="Audio processing">Аудиопроцесс</entry>
+    <entry id="91" string="Encoder mode">РЎРїРѕСЃРѕР± РєРѕРґРёСЂРѕРІР°РЅРёСЏ</entry>
+    <entry id="92" string="Stereo mode">РЎС‚РµСЂРµРѕ СЂРµР¶РёРј</entry>
+    <entry id="93" string="Quantization">РљРІР°РЅС‚РѕРІР°РЅРёРµ</entry>
+    <entry id="94" string="Downsampling ratio">РќРёР¶РЅРµ-РґРёСЃРєСЂРµС‚РЅС‹Р№ РєРѕСЌС„С„.</entry>
+    <entry id="95" string="Predictor size">РџСЂРѕРіРЅРѕР· СЂР°Р·РјРµСЂР°</entry>
+    <entry id="96" string="Enable lossless encoding">РЎРјРёРЅРёРјСѓРј РїРѕС‚РµСЂСЏРјРё</entry>
+    <entry id="97" string="Enable Joint Stereo">РЎРѕРµРґРёРЅСЏС‚СЊ СЃС‚РµСЂРµРѕ</entry>
+    <entry id="98" string="Bitrate per channel:">Bitrate РїРѕ РєР°РЅР°Р»Р°Рј:</entry>
+    <entry id="99" string="Preselection">РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅР°СЏ РІС‹Р±РѕСЂРєР°</entry>
+    <entry id="100" string="Number of preselection candidates:">РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹С… РІР°СЂРёР°РЅС‚РѕРІ:</entry>
+    <entry id="101" string="MPEG version">Р’РµСЂСЃРёСЏ MPEG</entry>
+    <entry id="102" string="AAC object type">РћР±СЉРµРєС‚ С‚РёРїР° AAC</entry>
+    <entry id="103" string="Allow Joint Stereo">РЎРѕРµРґРёРЅСЏС‚СЊ СЃС‚РµСЂРµРѕ</entry>
+    <entry id="104" string="Temporal Noise Shaping">Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РІСЂРµРјРµРЅРЅРѕРіРѕ С€СѓРјР°</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ РІСЂРµРјРµРЅРЅРѕРіРѕ С€СѓРјР°</entry>
+    <entry id="106" string="Maximum bandwidth">РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР° РїРѕР»РѕСЃС‹ С‡Р°СЃС‚РѕС‚</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ AAC С€РёСЂРёРЅР° РїРѕР»РѕСЃС‹ РїСЂРѕРїСѓСЃРєР°РЅРёСЏ РІ Hz:</entry>
+    <entry id="108" string="Basic">РћСЃРЅРѕРІРЅРѕРµ</entry>
+    <entry id="109" string="Misc">РџСЂРѕС‡РµРµ</entry>
+    <entry id="110" string="Audio processing">РђСѓРґРёРѕ РїСЂРѕС†РµСЃСЃ</entry>
     <entry id="111" string="Set bitrate:">Bitrate:</entry>
-    <entry id="112" string="Set ratio:">Ratio:</entry>
-    <entry id="113" string="Set quality:">Качество:</entry>
-    <entry id="114" string="worse">хуже</entry>
-    <entry id="115" string="better">лучше</entry>
-    <entry id="116" string="Auto">Авто</entry>
-    <entry id="117" string="Stereo">Стерео</entry>
-    <entry id="118" string="Joint Stereo">Joint стерео</entry>
-    <entry id="119" string="Force Joint Stereo">Force Joint стерео</entry>
-    <entry id="120" string="VBR mode">VBR режим</entry>
-    <entry id="121" string="no VBR">нет VBR</entry>
-    <entry id="122" string="VBR quality">Качество VBR</entry>
-    <entry id="123" string="ABR target bitrate">ABR target bitrate</entry>
-    <entry id="124" string="VBR bitrate range">диапазон VBR bitrate</entry>
-    <entry id="125" string="Set minimum VBR bitrate:">Минимальный VBR bitrate:</entry>
-    <entry id="126" string="Set maximum VBR bitrate:">Максимальный VBR bitrate:</entry>
-    <entry id="127" string="Control bits">Control bits</entry>
-    <entry id="128" string="Stream format">Формат потока</entry>
-    <entry id="129" string="Enforce strict ISO compliance">Строгое ISO согласование</entry>
-    <entry id="130" string="Padding">Заполнение</entry>
-    <entry id="131" string="Set padding type:">Тип заполнения:</entry>
-    <entry id="132" string="pad no frames">pad no frames</entry>
-    <entry id="133" string="pad all frames">pad all frames</entry>
-    <entry id="134" string="adjust padding">adjust padding</entry>
-    <entry id="135" string="Output sampling rate">Выходной Sample Rate</entry>
-    <entry id="136" string="no resampling">Без ресемплинга</entry>
-    <entry id="137" string="Highpass filter">Highpass filter</entry>
-    <entry id="138" string="Set Highpass frequency (Hz):">Highpass frequency (Hz):</entry>
-    <entry id="139" string="Set Highpass width (Hz):">Highpass width (Hz):</entry>
-    <entry id="140" string="Lowpass filter">Lowpass filter</entry>
-    <entry id="141" string="Set Lowpass frequency (Hz):">Lowpass frequency (Hz):</entry>
-    <entry id="142" string="Set Lowpass width (Hz):">Lowpass width (Hz):</entry>
-    <entry id="143" string="Misc settings">Прочие настройки</entry>
-    <entry id="144" string="Disable all filtering">Запретить фильтры</entry>
-    <entry id="145" string="MP3 Files">MP3 файлы</entry>
-    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis файлы</entry>
-    <entry id="147" string="BONK Files">BONK файлы</entry>
-    <entry id="149" string="CDDB access mode:">CDDB способ доступа:</entry>
-    <entry id="150" string="CDDB server:">CDDB сервер:</entry>
-    <entry id="151" string="Port:">Порт:</entry>
-    <entry id="152" string="Info">Информация</entry>
-    <entry id="153" string="No freedb entry for this disk.">База для этого диска не найдена.</entry>
-    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу.</entry>
-    <entry id="155" string="Connecting to freedb server at">Подключение к серверу</entry>
-    <entry id="156" string="Requesting CD information">Получение информации о CD</entry>
-    <entry id="157" string="eMail address:">E-mail:</entry>
-    <entry id="158" string="Please enter a valid eMail address.">Пожалуйста, введите правильный почтовый адрес.</entry>
-    <entry id="159" string="No exact matches found">Не найдено точного соответствия</entry>
-    <entry id="160" string="Multiple matches found">Найдено несколько соответствий</entry>
-    <entry id="161" string="Matches">Соответствия</entry>
-    <entry id="162" string="Select the entry that best fits your CD:">Выбрать наиболее подходящий список для CD:</entry>
-    <entry id="163" string="Extended CDDB settings">Расширенные установки CDDB</entry>
-    <entry id="164" string="CGI scripts">CGI скрипты</entry>
-    <entry id="165" string="CDDB query script:">Скрипт CDDB запроса:</entry>
-    <entry id="166" string="CDDB submit script:">Подтверждающий CDDB скрипт:</entry>
-    <entry id="167" string="HTTP settings">Установки HTTP</entry>
-    <entry id="168" string="Proxy settings">Установки прокси</entry>
-    <entry id="169" string="no proxy">Не использовать прокси</entry>
-    <entry id="170" string="Proxy type:">Тип прокси:</entry>
-    <entry id="171" string="Proxy server:">Прокси сервер:</entry>
+    <entry id="112" string="Set ratio:">РљРѕСЌС„С„РёС†РёРµРЅС‚:</entry>
+    <entry id="113" string="Set quality:">РљР°С‡РµСЃС‚РІРѕ:</entry>
+    <entry id="114" string="worse">С…СѓР¶Рµ</entry>
+    <entry id="115" string="better">Р»СѓС‡С€Рµ</entry>
+    <entry id="116" string="Auto">РђРІС‚Рѕ</entry>
+    <entry id="117" string="Stereo">РЎС‚РµСЂРµРѕ</entry>
+    <entry id="118" string="Joint Stereo">РЎРѕРµРґРёРЅСЏС‚СЊ СЃС‚РµСЂРµРѕ</entry>
+    <entry id="119" string="Force Joint Stereo">РїСЂРёРЅСѓРґРёС‚РµР»СЊРЅРѕ</entry>
+    <entry id="120" string="VBR mode">VBR СЂРµР¶РёРј</entry>
+    <entry id="121" string="no VBR">Р±РµР· VBR</entry>
+    <entry id="122" string="VBR quality">РљР°С‡РµСЃС‚РІРѕ VBR</entry>
+    <entry id="123" string="ABR target bitrate">ABR bitrate</entry>
+    <entry id="124" string="VBR bitrate range">РґРёР°РїР°Р·РѕРЅ VBR bitrate</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">РњРёРЅРёРјР°Р»СЊРЅС‹Р№ VBR bitrate:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ VBR bitrate:</entry>
+    <entry id="127" string="Control bits">РЈРїСЂР°РІР»СЏСЋС‰РёРµ Р±РёС‚С‹</entry>
+    <entry id="128" string="Stream format">Р¤РѕСЂРјР°С‚ РїРѕС‚РѕРєР°</entry>
+    <entry id="129" string="Enforce strict ISO compliance">РЎС‚СЂРѕРіРѕРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ ISO</entry>
+    <entry id="130" string="Padding">Р—Р°РїРѕР»РЅРµРЅРёРµ</entry>
+    <entry id="131" string="Set padding type:">РўРёРї Р·Р°РїРѕР»РЅРµРЅРёСЏ:</entry>
+    <entry id="132" string="pad no frames">РїР°РЅРµР»СЊ Р±РµР· С„СЂРµР№РјРѕРІ</entry>
+    <entry id="133" string="pad all frames">РїР°РЅРµР»СЊ СЃРѕ РІСЃРµРјРё С„СЂРµР№РјР°РјРё</entry>
+    <entry id="134" string="adjust padding">СЂРµРіСѓР»РёСЂРѕРІРєР° Р·Р°РїРѕР»РЅРµРЅРёСЏ</entry>
+    <entry id="135" string="Output sampling rate">Р’С‹С…РѕРґРЅР°СЏ С‡Р°СЃС‚РѕС‚Р°</entry>
+    <entry id="136" string="no resampling">РќРµ РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ С„РѕСЂРјСѓ СЃРёРіРЅР°Р»Р° (Р±РµР· СЂРµСЃРµРјРїР»РёРЅРіР°)</entry>
+    <entry id="137" string="Highpass filter">Р’РµСЂС…РЅРёР№ С„РёР»СЊС‚СЂ</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Р’РµСЂС…РЅРёР№ СѓСЂРѕРІРµРЅСЊ С‡Р°СЃС‚РѕС‚С‹ Hz:</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Р’РµСЂС…РЅРёР№ СѓСЂРѕРІРµРЅСЊ С€РёСЂРёРЅС‹ Hz:</entry>
+    <entry id="140" string="Lowpass filter">РќРёР¶РЅРёР№ С„РёР»СЊС‚СЂ</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">РќРёР¶РЅРёР№ СѓСЂРѕРІРµРЅСЊ С‡Р°СЃС‚РѕС‚С‹ Hz:</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">РќРёР¶РЅРёР№ СѓСЂРѕРІРµРЅСЊ С€РёСЂРёРЅС‹ Hz:</entry>
+    <entry id="143" string="Misc settings">РџСЂРѕС‡РёРµ РЅР°СЃС‚СЂРѕР№РєРё</entry>
+    <entry id="144" string="Disable all filtering">РћС‚РєР»СЋС‡РёС‚СЊ С„РёР»СЊС‚СЂС‹</entry>
+    <entry id="145" string="MP3 Files">MP3 С„Р°Р№Р»С‹</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis С„Р°Р№Р»С‹</entry>
+    <entry id="147" string="BONK Files">BONK С„Р°Р№Р»С‹</entry>
+    <entry id="148" string="Automatic CDDB queries">РђРІС‚Рѕ Р·Р°РїСЂРѕСЃ Рє CDDB</entry>
+    <entry id="149" string="CDDB access mode:">РЎРїРѕСЃРѕР± РґРѕСЃС‚СѓРїР° Рє CDDB:</entry>
+    <entry id="150" string="CDDB server:">CDDB СЃРµСЂРІРµСЂ:</entry>
+    <entry id="151" string="Port:">РџРѕСЂС‚:</entry>
+    <entry id="152" string="Info">РРЅС„РѕСЂРјР°С†РёСЏ</entry>
+    <entry id="153" string="No freedb entry for this disk.">РќРµС‚Сѓ РґР°РЅРЅС‹С… РѕР± СЌС‚РѕРј CD.</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">РћС€РёР±РєР° РІ РїСЂРѕС†РµСЃСЃРµ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє СЃРµСЂРІРµСЂСѓ.</entry>
+    <entry id="155" string="Connecting to freedb server at">РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє СЃРµСЂРІРµСЂСѓ</entry>
+    <entry id="156" string="Requesting CD information">РџРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ CD</entry>
+    <entry id="157" string="eMail address:">E-mail Р°РґСЂРµСЃ:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РїСЂР°РІРёР»СЊРЅС‹Р№ e-mail.</entry>
+    <entry id="159" string="No exact matches found">РќРµ РЅР°Р№РґРµРЅРѕ С‚РѕС‡РЅРѕРіРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ</entry>
+    <entry id="160" string="Multiple matches found">РќР°Р№РґРµРЅС‹ РЅРµРєРѕС‚РѕСЂС‹Рµ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ</entry>
+    <entry id="161" string="Matches">РЎРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Р’С‹Р±РµСЂРёС‚Рµ РЅР°РёР±РѕР»РµРµ РїРѕРґС…РѕРґСЏС‰РёР№ СЃРїРёСЃРѕРє РґР»СЏ CD:</entry>
+    <entry id="163" string="Extended CDDB settings">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё CDDB</entry>
+    <entry id="164" string="CGI scripts">CGI СЃРєСЂРёРїС‚С‹</entry>
+    <entry id="165" string="CDDB query script:">РЎРєСЂРёРїС‚ CDDB Р·Р°РїСЂРѕСЃР°:</entry>
+    <entry id="166" string="CDDB submit script:">РџРѕРґС‚РІРµСЂР¶РґР°СЋС‰РёР№ CDDB СЃРєСЂРёРїС‚:</entry>
+    <entry id="167" string="HTTP settings">РќР°СЃС‚СЂРѕР№РєР° HTTP</entry>
+    <entry id="168" string="Proxy settings">РЈСЃС‚Р°РЅРѕРІРєРё РїСЂРѕРєСЃРё</entry>
+    <entry id="169" string="no proxy">Р±РµР· РїСЂРѕРєСЃРё</entry>
+    <entry id="170" string="Proxy type:">РўРёРї РїСЂРѕРєСЃРё:</entry>
+    <entry id="171" string="Proxy server:">РџСЂРѕРєСЃРё СЃРµСЂРІРµСЂ:</entry>
+    <entry id="172" string="Presets">РќР°СЃС‚СЂРѕР№РєР°</entry>
+    <entry id="173" string="Use preset:">Р’С‹Р±РµСЂРµС‚Рµ РІР°СЂРёР°РЅС‚</entry>
+    <entry id="174" string="Custom settings">РЈРєР°Р·Р°С‚СЊ РЅР°СЃС‚СЂРѕР№РєРё РІ СЂСѓС‡РЅСѓСЋ</entry>
+    <entry id="175" string="Medium">РЎСЂРµРґРЅРёР№</entry>
+    <entry id="176" string="Standard">РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№</entry>
+    <entry id="177" string="Extreme">РџСЂРµРґРµР»СЊРЅС‹Р№</entry>
+    <entry id="178" string="Insane">РЎСѓРјР°СЃС€РµРґС€РёР№</entry>
+    <entry id="179" string="Medium, Fast">РЎСЂРµРґРЅРёР№, Р‘С‹СЃС‚СЂС‹Р№</entry>
+    <entry id="180" string="Standard, Fast">РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№, Р‘С‹СЃС‚СЂС‹Р№</entry>
+    <entry id="181" string="Extreme, Fast">РџСЂРµРґРµР»СЊРЅС‹Р№, Р‘С‹СЃС‚СЂС‹Р№</entry>
+    <entry id="182" string="Title">РќР°Р·РІР°РЅРёРµ</entry>
+    <entry id="183" string="Track">Р”РѕСЂРѕР¶РєР°</entry>
+    <entry id="184" string="Length">Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ</entry>
+    <entry id="185" string="Size">Р Р°Р·РјРµСЂ</entry>
+    <entry id="186" string="Artist">РСЃРїРѕР»РЅРёС‚РµР»СЊ</entry>
+    <entry id="187" string="Year">Р“РѕРґ</entry>
+    <entry id="188" string="Genre">Р–Р°РЅСЂ</entry>
+    <entry id="189" string="Album">РђР»СЊР±РѕРј</entry>
+    <entry id="190" string="Info tags">Р—Р°РіРѕР»РѕРІРєРё</entry>
+    <entry id="191" string="Write ID3V2/Vorbis info tags">Р—Р°РїРёСЃСЊ ID3V2/Vorbis Р·Р°РіРѕР»РѕРІРєРѕРІ</entry>
+    <entry id="192" string="Default comment string:">РљРѕРјРјРµРЅС‚Р°СЂРёРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ</entry>
+    <entry id="193" string="unknown artist">unknown artist</entry>
+    <entry id="194" string="unknown title">unknown title</entry>
+    <entry id="195" string="Unable to load ASPI drivers!">РќРµ РјРѕРіСѓ Р·Р°РіСЂСѓР·РёС‚СЊ РґСЂР°Р№РІРµСЂ ASPI!</entry>
+    <entry id="196" string="Database">Р‘Р°Р·Р° РґР°РЅРЅС‹С…</entry>
+    <entry id="197" string="Submit CDDB data...">Р’СЃС‚Р°РІРёС‚СЊ РґР°РЅРЅС‹Рµ РІ CDDB...</entry>
+    <entry id="198" string="Enable CDDB cache">РљСЌС€РёСЂРѕРІР°РЅРёРµ CDDB</entry>
+    <entry id="199" string="CDDB data">CDDB РґР°РЅРЅС‹Рµ</entry>
+    <entry id="200" string="Submit">РџРѕРґС‚РІРµСЂРґРёС‚СЊ</entry>
+    <entry id="201" string="No audio CD in drive!">РќРµС‚Сѓ РґРёСЃРєР° РІ CDROMРµ</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">РџРѕР¶Р°Р»СѓР№СЃС‚Р° Р·Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ РїРµСЂРµРґ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµРј.</entry>
+    <entry id="203" string="CD ripping disabled!">CD РіСЂР°Р±Р±РµСЂ РѕС‚РєР»СЋС‡РµРЅ!</entry>
+    <entry id="204" string="Do you want to use native NT SCSI instead?">РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЂРѕРґРЅРѕР№ NT SCSI РІР·Р°РјРµРЅ?&quot;&gt;</entry>
+    <entry id="205" string="Submitting CD information">РџРѕРґС‚РІРµСЂРґРёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ CD</entry>
+    <entry id="206" string="Cannot open file:">РќРµ РјРѕРіСѓ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»:</entry>
+    <entry id="207" string="Query CDDB database">Р—Р°РїСЂРѕСЃ РІ Р±Р°Р·Сѓ CDDB</entry>
+    <entry id="208" string="Help">РџРѕРјРѕС‰СЊ</entry>
+    <entry id="209" string="index.html">index.html</entry>
+    <entry id="210" string="Plug-ins">РџР»Р°РіРёРЅС‹</entry>
+    <entry id="211" string="Input plug-ins">РќР° РІС…РѕРґРµ</entry>
+    <entry id="212" string="Output plug-ins">РќР° РІС‹С…РѕРґРµ</entry>
+    <entry id="213" string="Configure">РќР°СЃС‚СЂРѕР№РєР°</entry>
+    <entry id="214" string="About">Рћ РїР»Р°РіРёРЅРµ</entry>
+    <entry id="215" string="Play">РРіСЂР°С‚СЊ</entry>
+    <entry id="216" string="Stop">РЎС‚РѕРї</entry>
+    <entry id="217" string="Cannot play a file while encoding!">РќРµР»СЊР·СЏ РёРіСЂР°С‚СЊ С„Р°Р№Р» РІ РїСЂРѕС†РµСЃСЃРµ РєРѕРґРёСЂРѕРІР°РЅРёСЏ!</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">РќРµР»СЊР·СЏ РєРѕРґРёСЂРѕРІР°С‚СЊ С„Р°Р№Р» РІ РїСЂРѕС†РµСЃСЃРµ РїСЂРѕРёРіСЂС‹РІР°РЅРёСЏ!</entry>
+    <entry id="219" string="CDDB Settings">РќР°СЃС‚СЂРѕР№РєРё CDDB</entry>
+    <entry id="220" string="ATH">ATH</entry>
+    <entry id="221" string="Enable ATH:">Р Р°Р·СЂРµС€РёС‚СЊ ATH:</entry>
+    <entry id="222" string="Use default setting">РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РЅР°СЃС‚СЂРѕР№РєРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ</entry>
+    <entry id="223" string="Psycho acoustic model">РџСЃРёС…Рѕ-Р°РєСѓСЃС‚РёС‡РµСЃРєР°СЏ РјРѕРґРµР»СЊ</entry>
+    <entry id="224" string="Use Temporal Masking Effect">РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЌС„С„РµРєС‚ РјР°СЃРєРё</entry>
+    <entry id="225" string="Expert">Р­РєСЃРїРµСЂС‚</entry>
+    <entry id="226" string="CDDB query">CDDB Р·Р°РїСЂРѕСЃ</entry>
   </data>
 </LangFile>

@@ -6,8 +6,8 @@
     <property name="language">Italiano</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="author">Marco D'Amato &lt;protect100@hotmail.com&gt;</property>
-    <property name="url">http://web.tiscali.it/protect/mdt.html</property>
+    <property name="author">Marco D'Amato &lt;md@swzone.it&gt;</property>
+    <property name="url">http://mdt.swzone.it</property>
   </info>
   <data>
     <entry id="1" string="File">File</entry>
@@ -18,7 +18,7 @@
     <entry id="6" string="Clear joblist">Reimposta elenco</entry>
     <entry id="7" string="Exit">Esci</entry>
     <entry id="8" string="General settings...">Impostazioni generali...</entry>
-    <entry id="9" string="Configure selected encoder...">Configurazione encoder...</entry>
+    <entry id="9" string="Configure selected encoder...">Configura codificatore...</entry>
     <entry id="10" string="Audio file(s)...">File audio...</entry>
     <entry id="11" string="Audio CD contents">Brani da CD audio</entry>
     <entry id="12" string="Start encoding">Avvia codifica</entry>
@@ -26,17 +26,18 @@
     <entry id="14" string="Encoding file:">File processato:</entry>
     <entry id="15" string="Time left:">Tempo residuo:</entry>
     <entry id="16" string="Percent done:">Completato:</entry>
-    <entry id="17" string="Selected encoder:">Encoder selezionato:</entry>
+    <entry id="17" string="Selected encoder:">Codificatore selezionato:</entry>
     <entry id="18" string="File progress:">Avanzamento:</entry>
     <entry id="19" string="Output dir.:">Destinazione:</entry>
-    <entry id="20" string=" file(s) in joblist:"> file da processare:</entry>
+    <entry id="20" string=" file(s) in joblist:"> file da processare.</entry>
     <entry id="21" string="none">nessuno</entry>
+    <entry id="22" string="Help topics...">Guida in linea</entry>    
     <entry id="23" string="Add audio file(s) to the joblist">Aggiunge file audio all'elenco</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Aggiunge brani da CD audio all'elenco</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Rimuove le voci selezionate in elenco</entry>
     <entry id="26" string="Clear the entire joblist">Reimposta l'elenco dei brani</entry>
     <entry id="27" string="Configure general settings">Configura le opzioni generali del programma</entry>
-    <entry id="28" string="Configure the selected audio encoder">Configura l'encoder selezionato</entry>
+    <entry id="28" string="Configure the selected audio encoder">Configura il codificatore selezionato</entry>
     <entry id="29" string="Start the encoding process">Avvia il processo di codifica</entry>
     <entry id="30" string="Cannot modify the joblist while encoding!">Impossibile modificare l'elenco durante l'elaborazione.</entry>
     <entry id="31" string="Error">Errore</entry>
@@ -63,12 +64,12 @@
     <entry id="52" string="Variable Bitrate">Bitrate variabile</entry>
     <entry id="53" string="Average Bitrate">Bitrate medio</entry>
     <entry id="54" string="Quality">Qualità</entry>
-    <entry id="55" string="Encoders">Encoder</entry>
+    <entry id="55" string="Encoders">Codificatori</entry>
     <entry id="56" string="Language">Lingua</entry>
     <entry id="57" string="Show title info">Mostra informazioni sul brano</entry>    
     <entry id="58" string="General settings setup">Impostazioni generali</entry>
-    <entry id="59" string="Configure encoder">Configurazione...</entry>
-    <entry id="60" string="Encoder">Encoder</entry>
+    <entry id="59" string="Configure encoder">Configura...</entry>
+    <entry id="60" string="Encoder">Codificatore</entry>
     <entry id="61" string="Output directory">Cartella di destinazione</entry>
     <entry id="62" string="Browse">Sfoglia...</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Selezionare la cartella in cui memorizzare i file processati:</entry>
@@ -77,7 +78,7 @@
     <entry id="66" string="URL">URL</entry>
     <entry id="67" string="Information">Informazioni</entry>
     <entry id="68" string="Select language:">Scegliere la lingua:</entry>
-    <entry id="69" string="Active CD-ROM drive">Unità CD</entry>
+    <entry id="69" string="Active CD-ROM drive">Unità CD predefinita</entry>
     <entry id="70" string="Ripper settings">Impostazioni estrazione dati audio</entry>
     <entry id="71" string="Activate cdparanoia mode:">Attiva modalità paranoia</entry>
     <entry id="72" string="Activate jitter correction">Attiva correzione Jitter</entry>
@@ -120,8 +121,8 @@
     <entry id="109" string="Misc">Altro</entry>
     <entry id="110" string="Audio processing">Elaborazione audio</entry>
     <entry id="111" string="Set bitrate:">Bitrate:</entry>
-    <entry id="112" string="Set ratio:">Ratio:</entry>
-    <entry id="113" string="Set quality:">Qualità:</entry>
+    <entry id="112" string="Set ratio:">Rapporto:</entry>
+    <entry id="113" string="Set quality:">Imposta:</entry>
     <entry id="114" string="worse">peggiore</entry>
     <entry id="115" string="better">migliore</entry>
     <entry id="116" string="Auto">Automatica</entry>
@@ -156,6 +157,7 @@
     <entry id="145" string="MP3 Files">File audio MP3</entry>
     <entry id="146" string="Ogg Vorbis Files">File audio Ogg Vorbis</entry>
     <entry id="147" string="BONK Files">File audio BONK</entry>
+    <entry id="148" string="Automatic CDDB queries">Interroga automaticamente</entry>
     <entry id="149" string="CDDB access mode:">Modalità di accesso CDDB:</entry>
     <entry id="150" string="CDDB server:">Server CDDB:</entry>
     <entry id="151" string="Port:">Porta:</entry>
@@ -172,8 +174,8 @@
     <entry id="162" string="Select the entry that best fits your CD:">Scegliere la voce corretta per il CD:</entry>
     <entry id="163" string="Extended CDDB settings">Opzioni avanzate CDDB</entry>
     <entry id="164" string="CGI scripts">Script CGI</entry>
-    <entry id="165" string="CDDB query script:">Script query CDDB:</entry>
-    <entry id="166" string="CDDB submit script:">Script submit CDDB:</entry>
+    <entry id="165" string="CDDB query script:">Interrogazione database CDDB:</entry>
+    <entry id="166" string="CDDB submit script:">Invio dati CDDB:</entry>
     <entry id="167" string="HTTP settings">Impostazioni HTTP</entry>
     <entry id="168" string="Proxy settings">Impostazioni Proxy</entry>
     <entry id="169" string="no proxy">nessun proxy</entry>
@@ -197,14 +199,14 @@
     <entry id="187" string="Year">Anno</entry>
     <entry id="188" string="Genre">Genere</entry>
     <entry id="189" string="Album">Album</entry>
-    <entry id="190" string="Info tags">Informazioni tag</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">Scrivi informazioni tag ID3V2/Vorbis</entry>
+    <entry id="190" string="Info tags">Tag</entry>
+    <entry id="191" string="Write ID3V2/Vorbis info tags">Scrivi tag ID3V2/Vorbis</entry>
     <entry id="192" string="Default comment string:">Commento predefinito:</entry>
     <entry id="193" string="unknown artist">artista sconosciuto</entry>
     <entry id="194" string="unknown title">titolo sconosciuto</entry>
     <entry id="195" string="Unable to load ASPI drivers!">Impossibile caricare i driver ASPI.</entry>
-    <entry id="196" string="Database">Database</entry>
-    <entry id="197" string="Submit CDDB data...">Invia dati CDDB...</entry>
+    <entry id="196" string="Database">CDDB</entry>
+    <entry id="197" string="Submit CDDB data...">Invia dati CDDB</entry>
     <entry id="198" string="Enable CDDB cache">Attiva cache CDDB</entry>
     <entry id="199" string="CDDB data">Dati CDDB</entry>
     <entry id="200" string="Submit">Invia</entry>
@@ -213,5 +215,26 @@
     <entry id="203" string="CD ripping disabled!">Estrazione dati audio da CD disattivata.</entry>
     <entry id="204" string="Do you want to use native NT SCSI instead?">Utilizzare SCSI NT nativo?</entry>
     <entry id="205" string="Submitting CD information">Invio informazioni sul CD...</entry>
+    <entry id="206" string="Cannot open file:">Impossibile aprire il seguente file:</entry>
+    <entry id="207" string="Query CDDB database">Interroga database CDDB</entry>
+    <entry id="208" string="Help">?</entry>
+    <entry id="209" string="index.html">index.html</entry>
+    <entry id="210" string="Plug-ins">Plugin</entry>
+    <entry id="211" string="Input plug-ins">Input</entry>
+    <entry id="212" string="Output plug-ins">Output</entry>
+    <entry id="213" string="Configure">Configura</entry>
+    <entry id="214" string="About">Informazioni...</entry>
+    <entry id="215" string="Play">Riproduci</entry>
+    <entry id="216" string="Stop">Interrompi riproduzione</entry>
+    <entry id="217" string="Cannot play a file while encoding!">Impossibile riprodurre un file audio durante l'operazione di codifica.</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">Impossibile avviare la codifica di un file durante la riproduzione.</entry>
+    <entry id="219" string="CDDB Settings">Impostazioni CDDB</entry>
+    <entry id="220" string="ATH">ATH</entry>
+    <entry id="221" string="Enable ATH:">Attiva ATH:</entry>
+    <entry id="222" string="Use default setting">Usa impostazione predefinita</entry>
+    <entry id="223" string="Psycho acoustic model">Modello psico-acustico</entry>
+    <entry id="224" string="Use Temporal Masking Effect">Usa effetto di mascheramento temporale</entry>
+    <entry id="225" string="Expert">Avanzate</entry>
+    <entry id="226" string="CDDB query">Interrogazione CDDB</entry>
   </data>
 </LangFile>
