@@ -8,7 +8,7 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 beta 2 CVS (Januar 2004)
+	Version 1.0 beta 2 CVS (Februar 2004)
 
 		- Unterstützung für Vorlagen für Dateinamen hinzugefügt
 		- Sprachunterstützung für Griechisch, Japanisch, Chinesisch (vereinfacht) und Polnisch hinzugefügt
@@ -24,10 +24,12 @@ Geschichte
 		- Umstieg auf ein XML basiertes Konfigurationssystem
 		- LAME auf Version 3.94 beta aktualisiert
 		- Ogg Vorbis auf Version 1.0.1 aktualisiert
-		- FAAC auf Version 1.23.1 aktualisiert
+		- FAAC auf Version 1.23.1 aktualisiert und der Standardversion hinzugefügt
+		- Unterstzützung für 24 und 32 Bit AAC Ausgabe hinzugefügt
+		- die BonkEnc Standardversion enthält jetzt die FAAD2 in_mp4.dll für AAC/MP4 Unterstützung
 		- Unterstützung für CDDB Protokol Version 6 hinzugefügt (UTF-8 Unterstützung)
 		- Buttons für Alle/Keinen Eintrag auswählen, Auswahl umkehren hinzugefügt
-		- 'Tipp des Tages' Dialog hinzugefügt
+		- Dialog 'Tipp des Tages' hinzugefügt
 		- Einige kleinere Verbesserungen
 		- Einige Fehler wurden behoben
 
@@ -137,11 +139,11 @@ Voraussetzungen
 
 	Zusätzliche optionale Software:
 
-		- BladeEnc wird verwendet, wenn es installiert ist (http://bladeenc.mp3.no)
-		- FAAC wird verwendet, wenn es installiert ist (http://www.audiocoding.com)
-		- TwinVQ wird verwendet, wenn es installiert ist (http://www.twinvq.org)
+		- BladeEnc wird verwendet, wenn es installiert ist (http://bladeenc.mp3.no/)
+		- FAAC wird verwendet, wenn es installiert ist (http://www.audiocoding.com/)
+		- TwinVQ wird verwendet, wenn es installiert ist (http://www.twinvq.org/)
 		- Winamp 2 input und output Plugins werden verwendet, wenn sie im plugins Verzeichnis vorhanden sind
-		- MSLU wird verwendet, wenn es auf Windows 9x/ME installiert ist (http://www.microsoft.com)
+		- MSLU wird verwendet, wenn es auf Windows 9x/ME installiert ist (http://www.microsoft.com/)
 
 Probleme
 --------

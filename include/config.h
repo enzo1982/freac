@@ -142,6 +142,8 @@ class bonkEncConfig
 		Int		 faac_bandwidth;
 		Bool		 faac_allowjs;
 		Bool		 faac_usetns;
+		Int		 faac_set_quality;
+		Int		 faac_aac_quality;
 
 		Int		 tvq_bitrate;
 		Int		 tvq_presel_candidates;

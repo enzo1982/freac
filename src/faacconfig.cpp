@@ -23,6 +23,8 @@ configureFAAC::configureFAAC()
 	bitrate = currentConfig->faac_bitrate;
 	allowjs = currentConfig->faac_allowjs;
 	usetns = currentConfig->faac_usetns;
+	setQuality = currentConfig->faac_set_quality;
+	aacQuality = currentConfig->faac_aac_quality;
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "FAAC"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -89,18 +91,21 @@ configureFAAC::configureFAAC()
 	pos.x = 135;
 	pos.y = 11;
 	size.cx = 320;
-	size.cy = 43;
+	size.cy = 65;
 
-	group_bitrate		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate"), pos, size);
+	group_bitrate		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate / Quality"), pos, size);
 
-	pos.x += 11;
-	pos.y += 15;
+	pos.x += 10;
+	pos.y += 13;
+	size.cx = 150;
+	size.cy = 0;
 
-	text_bitrate		= new Text(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos);
+	option_bitrate		= new OptionBox(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos, size, &setQuality, 0);
+	option_bitrate->onClick.Connect(&configureFAAC::ToggleBitrateQuality, this);
+	option_bitrate->SetMetrics(option_bitrate->GetObjectProperties()->pos, Size(option_bitrate->GetObjectProperties()->textSize.cx + 19, option_bitrate->GetObjectProperties()->size.cy));
 
-	pos.x += (text_bitrate->GetObjectProperties()->textSize.cx + 8);
-	pos.y -= 2;
-	size.cx = 228 - text_bitrate->GetObjectProperties()->textSize.cx;
+	pos.x += (option_bitrate->GetObjectProperties()->size.cx + 9);
+	size.cx = 227 - option_bitrate->GetObjectProperties()->size.cx;
 	size.cy = 0;
 
 	slider_bitrate		= new Slider(pos, size, OR_HORZ, &bitrate, 8, 256);
@@ -119,8 +124,37 @@ configureFAAC::configureFAAC()
 
 	text_bitrate_kbps	= new Text("kbps", pos);
 
+	pos.x = 145;
+	pos.y += 23;
+	size.cx = 150;
+	size.cy = 0;
+
+	option_quality		= new OptionBox(bonkEnc::i18n->TranslateString("Set quality:"), pos, size, &setQuality, 1);
+	option_quality->onClick.Connect(&configureFAAC::ToggleBitrateQuality, this);
+	option_quality->SetMetrics(option_quality->GetObjectProperties()->pos, Size(option_bitrate->GetObjectProperties()->textSize.cx + 19, option_quality->GetObjectProperties()->size.cy));
+
+	pos.x += (option_quality->GetObjectProperties()->size.cx + 9);
+	size.cx = 227 - option_quality->GetObjectProperties()->size.cx;
+	size.cy = 0;
+
+	slider_quality		= new Slider(pos, size, OR_HORZ, &aacQuality, 10, 500);
+	slider_quality->onClick.Connect(&configureFAAC::SetQuality, this);
+
+	pos.x += (size.cx + 8);
+	pos.y -= 1;
+	size.cx = 25;
+
+	edit_quality		= new EditBox("", pos, size, 3);
+	edit_quality->SetFlags(EDB_NUMERIC);
+	edit_quality->onClick.Connect(&configureFAAC::SetQualityByEditBox, this);
+
+	pos.x += 32;
+	pos.y += 3;
+
+	text_quality_percent	= new Text("%", pos);
+
 	pos.x = 135;
-	pos.y = 66;
+	pos.y = 88;
 	size.cx = 129;
 	size.cy = 43;
 
@@ -134,7 +168,7 @@ configureFAAC::configureFAAC()
 	check_js		= new CheckBox(bonkEnc::i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
 
 	pos.x = 272;
-	pos.y = 66;
+	pos.y = 88;
 	size.cx = 183;
 	size.cy = 43;
 
@@ -148,7 +182,7 @@ configureFAAC::configureFAAC()
 	check_tns		= new CheckBox(bonkEnc::i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
 
 	pos.x = 135;
-	pos.y = 121;
+	pos.y = 143;
 	size.cx = 320;
 	size.cy = 43;
 
@@ -168,6 +202,9 @@ configureFAAC::configureFAAC()
 	edit_bandwidth->SetFlags(EDB_NUMERIC);
 
 	SetBitrate();
+	SetQuality();
+
+	ToggleBitrateQuality();
 
 	RegisterObject(mainWnd);
 
@@ -181,10 +218,14 @@ configureFAAC::configureFAAC()
 	mainWnd->RegisterObject(option_aactype_low);
 	mainWnd->RegisterObject(option_aactype_ltp);
 	mainWnd->RegisterObject(group_bitrate);
-	mainWnd->RegisterObject(text_bitrate);
+	mainWnd->RegisterObject(option_bitrate);
 	mainWnd->RegisterObject(slider_bitrate);
 	mainWnd->RegisterObject(edit_bitrate);
 	mainWnd->RegisterObject(text_bitrate_kbps);
+	mainWnd->RegisterObject(option_quality);
+	mainWnd->RegisterObject(slider_quality);
+	mainWnd->RegisterObject(edit_quality);
+	mainWnd->RegisterObject(text_quality_percent);
 	mainWnd->RegisterObject(group_js);
 	mainWnd->RegisterObject(check_js);
 	mainWnd->RegisterObject(group_tns);
@@ -197,35 +238,39 @@ configureFAAC::configureFAAC()
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(468, 256));
+	mainWnd->SetMetrics(Point(140, 140), Size(468, 264));
 }
 
 configureFAAC::~configureFAAC()
 {
-	delete mainWnd_titlebar;
-	delete mainWnd;
-	delete divbar;
-	delete btn_ok;
-	delete btn_cancel;
-	delete group_version;
-	delete option_version_mpeg2;
-	delete option_version_mpeg4;
-	delete group_aactype;
-	delete option_aactype_main;
-	delete option_aactype_low;
-	delete option_aactype_ltp;
-	delete group_bitrate;
-	delete text_bitrate;
-	delete slider_bitrate;
-	delete edit_bitrate;
-	delete text_bitrate_kbps;
-	delete group_js;
-	delete check_js;
-	delete group_tns;
-	delete check_tns;
-	delete group_bandwidth;
-	delete text_bandwidth;
-	delete edit_bandwidth;
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(divbar);
+	DeleteObject(btn_ok);
+	DeleteObject(btn_cancel);
+	DeleteObject(group_version);
+	DeleteObject(option_version_mpeg2);
+	DeleteObject(option_version_mpeg4);
+	DeleteObject(group_aactype);
+	DeleteObject(option_aactype_main);
+	DeleteObject(option_aactype_low);
+	DeleteObject(option_aactype_ltp);
+	DeleteObject(group_bitrate);
+	DeleteObject(option_bitrate);
+	DeleteObject(slider_bitrate);
+	DeleteObject(edit_bitrate);
+	DeleteObject(text_bitrate_kbps);
+	DeleteObject(option_quality);
+	DeleteObject(slider_quality);
+	DeleteObject(edit_quality);
+	DeleteObject(text_quality_percent);
+	DeleteObject(group_js);
+	DeleteObject(check_js);
+	DeleteObject(group_tns);
+	DeleteObject(check_tns);
+	DeleteObject(group_bandwidth);
+	DeleteObject(text_bandwidth);
+	DeleteObject(edit_bandwidth);
 }
 
 Int configureFAAC::ShowDialog()
@@ -246,6 +291,8 @@ Void configureFAAC::OK()
 	currentConfig->faac_allowjs = allowjs;
 	currentConfig->faac_usetns = usetns;
 	currentConfig->faac_bandwidth = edit_bandwidth->GetText().ToInt();
+	currentConfig->faac_set_quality = setQuality;
+	currentConfig->faac_aac_quality = aacQuality;
 
 	mainWnd->Close();
 }
@@ -284,4 +331,34 @@ Void configureFAAC::SetBitrate()
 Void configureFAAC::SetBitrateByEditBox()
 {
 	slider_bitrate->SetValue(edit_bitrate->GetText().ToInt());
+}
+
+Void configureFAAC::SetQuality()
+{
+	edit_quality->SetText(String::FromInt(aacQuality));
+}
+
+Void configureFAAC::SetQualityByEditBox()
+{
+	slider_quality->SetValue(edit_quality->GetText().ToInt());
+}
+
+Void configureFAAC::ToggleBitrateQuality()
+{
+	if (setQuality)
+	{
+		slider_bitrate->Deactivate();
+		edit_bitrate->Deactivate();
+
+		slider_quality->Activate();
+		edit_quality->Activate();
+	}
+	else
+	{
+		slider_quality->Deactivate();
+		edit_quality->Deactivate();
+
+		slider_bitrate->Activate();
+		edit_bitrate->Activate();
+	}
 }

@@ -186,6 +186,8 @@ Bool bonkEncConfig::LoadSettings()
 	faac_bandwidth = config->GetIntValue("FAAC", "BandWidth", 22050);
 	faac_allowjs = config->GetIntValue("FAAC", "AllowJS", 1);
 	faac_usetns = config->GetIntValue("FAAC", "UseTNS", 1);
+	faac_set_quality = config->GetIntValue("FAAC", "SetQuality", 0);
+	faac_aac_quality = config->GetIntValue("FAAC", "AACQuality", 100);
 
 	tvq_bitrate = config->GetIntValue("TwinVQ", "Bitrate", 48);
 	tvq_presel_candidates = config->GetIntValue("TwinVQ", "PreselectionCandidates", 32);
@@ -301,6 +303,8 @@ Bool bonkEncConfig::SaveSettings()
 		config->SetIntValue("FAAC", "BandWidth", faac_bandwidth);
 		config->SetIntValue("FAAC", "AllowJS", faac_allowjs);
 		config->SetIntValue("FAAC", "UseTNS", faac_usetns);
+		config->SetIntValue("FAAC", "SetQuality", faac_set_quality);
+		config->SetIntValue("FAAC", "AACQuality", faac_aac_quality);
 
 		config->SetIntValue("TwinVQ", "Bitrate", tvq_bitrate);
 		config->SetIntValue("TwinVQ", "PreselectionCandidates", tvq_presel_candidates);

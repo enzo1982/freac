@@ -33,8 +33,14 @@ FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 	fConfig->allowMidside	= currentConfig->faac_allowjs;
 	fConfig->useTns		= currentConfig->faac_usetns;
 	fConfig->bandWidth	= currentConfig->faac_bandwidth;
-	fConfig->bitRate	= currentConfig->faac_bitrate * 1000;
-	fConfig->inputFormat	= FAAC_INPUT_32BIT;
+
+	if (currentConfig->faac_set_quality)	fConfig->quantqual	= currentConfig->faac_aac_quality;
+	else					fConfig->bitRate	= currentConfig->faac_bitrate * 1000;
+
+	if (format->bits == 8)	fConfig->inputFormat	= FAAC_INPUT_16BIT;
+	if (format->bits == 16)	fConfig->inputFormat	= FAAC_INPUT_16BIT;
+	if (format->bits == 24)	fConfig->inputFormat	= FAAC_INPUT_32BIT;
+	if (format->bits == 32)	fConfig->inputFormat	= FAAC_INPUT_FLOAT;
 
 	ex_faacEncSetConfiguration(handle, fConfig);
 
@@ -53,10 +59,10 @@ int FilterOutFAAC::WriteData(unsigned char *data, int size)
 
 	for (int i = 0; i < size / (format->bits / 8); i++)
 	{
-		if (format->bits == 8)	samples[i] = (data[i] - 128) * 65536;
-		if (format->bits == 16)	samples[i] = ((short *) data)[i] * 256;
-		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0));
-		if (format->bits == 32)	samples[i] = ((int32_t *) data)[i] / 256;
+		if (format->bits == 8)	((short *) samples)[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	((short *) samples)[i] = ((short *) data)[i];
+		if (format->bits == 24) samples[i] = data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0);
+		if (format->bits == 32)	((float *) samples)[i] = (1.0 / 65536) * ((int32_t *) data)[i];
 	}
 
 	bytes = ex_faacEncEncode(handle, samples, samples_size, outbuffer, buffersize);

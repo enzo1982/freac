@@ -31,9 +31,13 @@ class configureFAAC : public Dialog
 
 		GroupBox	*group_bitrate;
 		Slider		*slider_bitrate;
-		Text		*text_bitrate;
+		OptionBox	*option_bitrate;
 		EditBox		*edit_bitrate;
 		Text		*text_bitrate_kbps;
+		Slider		*slider_quality;
+		OptionBox	*option_quality;
+		EditBox		*edit_quality;
+		Text		*text_quality_percent;
 
 		GroupBox	*group_js;
 		CheckBox	*check_js;
@@ -58,6 +62,8 @@ class configureFAAC : public Dialog
 		Int		 bitrate;
 		Bool		 allowjs;
 		Bool		 usetns;
+		Int		 setQuality;
+		Int		 aacQuality;
 
 		bonkEncConfig	*currentConfig;
 
@@ -66,6 +72,9 @@ class configureFAAC : public Dialog
 		Void		 SetMPEGVersion();
 		Void		 SetBitrate();
 		Void		 SetBitrateByEditBox();
+		Void		 SetQuality();
+		Void		 SetQualityByEditBox();
+		Void		 ToggleBitrateQuality();
 	public:
 				 configureFAAC();
 				~configureFAAC();
