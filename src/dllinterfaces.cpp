@@ -154,6 +154,7 @@ EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates		= NIL;
 EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
 
 MP4READ				 ex_MP4Read				= NIL;
+MP4CREATE			 ex_MP4Create				= NIL;
 MP4CLOSE			 ex_MP4Close				= NIL;
 MP4SETMETADATANAME		 ex_MP4SetMetadataName			= NIL;
 MP4GETMETADATANAME		 ex_MP4GetMetadataName			= NIL;
@@ -172,12 +173,11 @@ MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack			= NIL;
 MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks		= NIL;
 MP4FINDTRACKID			 ex_MP4FindTrackId			= NIL;
 MP4GETTRACKTYPE			 ex_MP4GetTrackType			= NIL;
-MP4GETTRACKDURATION		 ex_MP4GetTrackDuration			= NIL;
 MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration		= NIL;
 MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration		= NIL;
 MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples		= NIL;
-MP4CONVERTFROMTRACKDURATION	 ex_MP4ConvertFromTrackDuration		= NIL;
 MP4READSAMPLE			 ex_MP4ReadSample			= NIL;
+MP4WRITESAMPLE			 ex_MP4WriteSample			= NIL;
 
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
 ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
@@ -663,6 +663,7 @@ Bool bonkEnc::LoadMP4V2DLL()
 	if (mp4v2dll == NIL) return false;
 
 	ex_MP4Read			= (MP4READ) GetProcAddress(mp4v2dll, "MP4Read");
+	ex_MP4Create			= (MP4CREATE) GetProcAddress(mp4v2dll, "MP4Create");
 	ex_MP4Close			= (MP4CLOSE) GetProcAddress(mp4v2dll, "MP4Close");
 	ex_MP4SetMetadataName		= (MP4SETMETADATANAME) GetProcAddress(mp4v2dll, "MP4SetMetadataName");
 	ex_MP4GetMetadataName		= (MP4GETMETADATANAME) GetProcAddress(mp4v2dll, "MP4GetMetadataName");
@@ -681,14 +682,14 @@ Bool bonkEnc::LoadMP4V2DLL()
 	ex_MP4GetNumberOfTracks		= (MP4GETNUMBEROFTRACKS) GetProcAddress(mp4v2dll, "MP4GetNumberOfTracks");
 	ex_MP4FindTrackId		= (MP4FINDTRACKID) GetProcAddress(mp4v2dll, "MP4FindTrackId");
 	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) GetProcAddress(mp4v2dll, "MP4GetTrackType");
-	ex_MP4GetTrackDuration		= (MP4GETTRACKDURATION) GetProcAddress(mp4v2dll, "MP4GetTrackDuration");
 	ex_MP4GetTrackESConfiguration	= (MP4GETTRACKESCONFIGURATION) GetProcAddress(mp4v2dll, "MP4GetTrackESConfiguration");
 	ex_MP4SetTrackESConfiguration	= (MP4SETTRACKESCONFIGURATION) GetProcAddress(mp4v2dll, "MP4SetTrackESConfiguration");
 	ex_MP4GetTrackNumberOfSamples	= (MP4GETTRACKNUMBEROFSAMPLES) GetProcAddress(mp4v2dll, "MP4GetTrackNumberOfSamples");
-	ex_MP4ConvertFromTrackDuration	= (MP4CONVERTFROMTRACKDURATION) GetProcAddress(mp4v2dll, "MP4ConvertFromTrackDuration");
 	ex_MP4ReadSample		= (MP4READSAMPLE) GetProcAddress(mp4v2dll, "MP4ReadSample");
+	ex_MP4WriteSample		= (MP4WRITESAMPLE) GetProcAddress(mp4v2dll, "MP4WriteSample");
 
 	if (ex_MP4Read == NULL)				{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4Create == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4Close == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4SetMetadataName == NULL)		{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4GetMetadataName == NULL)		{ FreeLibrary(mp4v2dll); return false; }
@@ -707,12 +708,11 @@ Bool bonkEnc::LoadMP4V2DLL()
 	if (ex_MP4GetNumberOfTracks == NULL)		{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4FindTrackId == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4GetTrackType == NULL)			{ FreeLibrary(mp4v2dll); return false; }
-	if (ex_MP4GetTrackDuration == NULL)		{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4GetTrackESConfiguration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4SetTrackESConfiguration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4GetTrackNumberOfSamples == NULL)	{ FreeLibrary(mp4v2dll); return false; }
-	if (ex_MP4ConvertFromTrackDuration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4ReadSample == NULL)			{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4WriteSample == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 
 	return true;
 }
@@ -728,7 +728,7 @@ Bool bonkEnc::LoadWinampDLLs()
 	_finddata_t	 fileData;
 	int		 handle;
 
-	MoveFileA("plugins\\plugins.ini", "BonkEnc.ini");
+	MoveFileA(Application::GetApplicationDirectory().Append("plugins\\plugins.ini"), Application::GetApplicationDirectory().Append("BonkEnc.ini"));
 
 	chdir(dir);
 
@@ -817,5 +817,5 @@ Void bonkEnc::FreeWinampDLLs()
 	winamp_out_plugins.RemoveAll();
 	winamp_out_modules.RemoveAll();
 
-	MoveFileA("BonkEnc.ini", "plugins\\plugins.ini");
+	MoveFileA(Application::GetApplicationDirectory().Append("BonkEnc.ini"), Application::GetApplicationDirectory().Append("plugins\\plugins.ini"));
 }

@@ -52,6 +52,9 @@ bool FilterInLAME::Activate()
 
 	driver->Seek(0);
 
+	ex_lame_decode_exit();
+	ex_lame_decode_init();
+
 	return true;
 }
 

@@ -333,6 +333,7 @@
 // MP4V2 DLL API
 
 	typedef MP4FileHandle			(*MP4READ)					(const char *, u_int32_t);
+	typedef MP4FileHandle			(*MP4CREATE)					(const char *, u_int32_t, u_int32_t);
 	typedef bool				(*MP4CLOSE)					(MP4FileHandle);
 	typedef bool				(*MP4SETMETADATANAME)				(MP4FileHandle, const char *);
 	typedef bool				(*MP4GETMETADATANAME)				(MP4FileHandle, char **);
@@ -351,16 +352,16 @@
 	typedef u_int32_t			(*MP4GETNUMBEROFTRACKS)				(MP4FileHandle, const char *, u_int8_t);
 	typedef MP4TrackId			(*MP4FINDTRACKID)				(MP4FileHandle, u_int16_t, const char *, u_int8_t);
 	typedef const char *			(*MP4GETTRACKTYPE)				(MP4FileHandle, MP4TrackId);
-	typedef MP4Duration			(*MP4GETTRACKDURATION)				(MP4FileHandle, MP4TrackId);
 	typedef bool				(*MP4GETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, u_int8_t **, u_int32_t *);
 	typedef bool				(*MP4SETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t);
 	typedef MP4SampleId			(*MP4GETTRACKNUMBEROFSAMPLES)			(MP4FileHandle, MP4TrackId);
-	typedef u_int64_t			(*MP4CONVERTFROMTRACKDURATION)			(MP4FileHandle, MP4TrackId, MP4Duration,
- u_int32_t);
 	typedef bool				(*MP4READSAMPLE)				(MP4FileHandle, MP4TrackId, MP4SampleId, u_int8_t **, u_int32_t *, MP4Timestamp *, MP4Duration *,
  MP4Duration *, bool *);
+	typedef bool				(*MP4WRITESAMPLE)				(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t, MP4Duration,
+ MP4Duration, bool);
 
 	extern MP4READ				 ex_MP4Read;
+	extern MP4CREATE			 ex_MP4Create;
 	extern MP4CLOSE				 ex_MP4Close;
 	extern MP4SETMETADATANAME		 ex_MP4SetMetadataName;
 	extern MP4GETMETADATANAME		 ex_MP4GetMetadataName;
@@ -379,12 +380,11 @@
 	extern MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
 	extern MP4FINDTRACKID			 ex_MP4FindTrackId;
 	extern MP4GETTRACKTYPE			 ex_MP4GetTrackType;
-	extern MP4GETTRACKDURATION		 ex_MP4GetTrackDuration;
 	extern MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration;
 	extern MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
 	extern MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples;
-	extern MP4CONVERTFROMTRACKDURATION	 ex_MP4ConvertFromTrackDuration;
 	extern MP4READSAMPLE			 ex_MP4ReadSample;
+	extern MP4WRITESAMPLE			 ex_MP4WriteSample;
 
 // ID3Lib DLL API
 

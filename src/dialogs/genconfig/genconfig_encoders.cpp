@@ -78,7 +78,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	}
 
 	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME v").Append(ex_get_lame_short_version()));
-	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis v1.0.1"));
+	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis v1.1"));
 
 	if (currentConfig->enable_tvq)
 	{
