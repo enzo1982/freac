@@ -16,9 +16,10 @@
 ** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include <Stdio.h>
-#include <Stdlib.h>
-#include "vector"
+#include <stdio.h>
+#include <stdlib.h>
+#include <algorithm>
+#include <vector>
 #include "CDRip.h"
 
 using namespace std;

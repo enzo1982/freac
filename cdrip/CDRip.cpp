@@ -26,7 +26,7 @@ CCDExtract *pExtract = NULL;
 // Get the DLL version number
 DLLEXPORT LONG CR_GetCDRipVersion()
 {
-	return 117;
+	return 119;
 }
 
 DLLEXPORT CDEX_ERR CR_DeInit()

@@ -13,6 +13,7 @@ Geschichte
 		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
 		- Einige Fehler in der CDDB Implementierung wurden behoben
 		- Fehler im WAVE Input Plugin wurde behoben
+		- die BonkEnc Standardversion enthält jetzt das in_flac.dll Plugin für FLAC Unterstützung
 		- Einige andere Fehler wurden behoben
 
 	Version 1.0 beta 2 (Februar 2004)

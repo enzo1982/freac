@@ -104,7 +104,7 @@ CDSETTINGSPARAMS::CDSETTINGSPARAMS()
 	DriveTable.DriveType	= GENERIC;
 	DriveTable.ReadMethod	= READMMC;
 	DriveTable.SetSpeed	= SPEEDMMC;
-	DriveTable.Endian	= LITTLEENDIAN;
+	DriveTable.Endian	= MY_LITTLEENDIAN;
 	DriveTable.EnableMode	= ENABLENONE;
 	DriveTable.nDensity	= 0;
 	DriveTable.bAtapi	= TRUE;
@@ -193,7 +193,7 @@ void CDRomSettings::UpdateDriveSettings()
 	{
 		// Set defaults	(SONY)
 		m_CDParams[m_nActive].DriveTable.SetSpeed	= SPEEDNONE;
-		m_CDParams[m_nActive].DriveTable.Endian		= LITTLEENDIAN;
+		m_CDParams[m_nActive].DriveTable.Endian		= MY_LITTLEENDIAN;
 		m_CDParams[m_nActive].DriveTable.nDensity	= 0x00;
 		m_CDParams[m_nActive].DriveTable.EnableMode	= ENABLENONE;
 		m_CDParams[m_nActive].DriveTable.bAtapi		= FALSE;
@@ -236,7 +236,7 @@ void CDRomSettings::UpdateDriveSettings()
 			m_CDParams[m_nActive].DriveTable.ReadMethod	= READ10;
 			m_CDParams[m_nActive].DriveTable.SetSpeed	= SPEEDPHILIPS;
 			m_CDParams[m_nActive].DriveTable.EnableMode	= ENABLESTD;
-			m_CDParams[m_nActive].DriveTable.Endian		= BIGENDIAN;
+			m_CDParams[m_nActive].DriveTable.Endian		= MY_BIGENDIAN;
 
 			break;
 		case NRC:

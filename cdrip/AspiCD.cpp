@@ -1127,7 +1127,7 @@ BOOL CAspiCD::ReadCdRomSector(
 	}
 
 	// Do byte swapping if necessary
-	if ( GetEndian() == BIGENDIAN )
+	if ( GetEndian() == MY_BIGENDIAN )
 	{
 		// Get pointer to read buffer
 		BYTE* pbtBuffer=pbtReadBuffer;

@@ -176,7 +176,7 @@ Array<In_Module *>	 winamp_modules;
 
 Bool bonkEnc::LoadBonkDLL()
 {
-	bonkdll = LoadLibraryA(GetApplicationDirectory().Append("Bonk.dll"));
+	bonkdll = LoadLibraryA(GetApplicationDirectory().Append("encoders/Bonk.dll"));
 
 	if (bonkdll == NIL) return false;
 
@@ -206,7 +206,7 @@ Void bonkEnc::FreeBonkDLL()
 
 Bool bonkEnc::LoadBladeDLL()
 {
-	bladedll = LoadLibraryA(GetApplicationDirectory().Append("BladeEnc.dll"));
+	bladedll = LoadLibraryA(GetApplicationDirectory().Append("encoders/BladeEnc.dll"));
 
 	if (bladedll == NIL) return false;
 
@@ -232,7 +232,7 @@ Void bonkEnc::FreeBladeDLL()
 
 Bool bonkEnc::LoadLAMEDLL()
 {
-	lamedll = LoadLibraryA(GetApplicationDirectory().Append("LAME.dll"));
+	lamedll = LoadLibraryA(GetApplicationDirectory().Append("encoders/LAME.dll"));
 
 	if (lamedll == NIL) return false;
 
@@ -328,7 +328,7 @@ Void bonkEnc::FreeLAMEDLL()
 
 Bool bonkEnc::LoadTVQDLL()
 {
-	tvqdll = LoadLibraryA(GetApplicationDirectory().Append("TVQenc.dll"));
+	tvqdll = LoadLibraryA(GetApplicationDirectory().Append("encoders/TVQenc.dll"));
 
 	if (tvqdll == NIL) return false;
 
@@ -362,7 +362,7 @@ Void bonkEnc::FreeTVQDLL()
 
 Bool bonkEnc::LoadVorbisDLL()
 {
-	vorbisdll = LoadLibraryA(GetApplicationDirectory().Append("OggVorbis.dll"));
+	vorbisdll = LoadLibraryA(GetApplicationDirectory().Append("encoders/OggVorbis.dll"));
 
 	if (vorbisdll == NIL) return false;
 
@@ -454,7 +454,7 @@ Void bonkEnc::FreeVorbisDLL()
 
 Bool bonkEnc::LoadFAACDLL()
 {
-	faacdll = LoadLibraryA(GetApplicationDirectory().Append("FAAC.dll"));
+	faacdll = LoadLibraryA(GetApplicationDirectory().Append("encoders/FAAC.dll"));
 
 	if (faacdll == NIL) return false;
 
@@ -624,6 +624,8 @@ Bool bonkEnc::LoadWinampDLLs()
 	_finddata_t	 fileData;
 	int		 handle;
 
+	MoveFileA("plugins\\plugins.ini", "BonkEnc.ini");
+
 	chdir(dir);
 
 	if ((handle = _findfirst("in_*.dll", &fileData)) != -1)
@@ -710,4 +712,6 @@ Void bonkEnc::FreeWinampDLLs()
 
 	winamp_out_plugins.RemoveAll();
 	winamp_out_modules.RemoveAll();
+
+	MoveFileA("BonkEnc.ini", "plugins\\plugins.ini");
 }
