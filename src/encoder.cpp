@@ -58,8 +58,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 	for (int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		if (i == 0)	format = sa_formatinfo.GetFirstEntry();
-		else		format = sa_formatinfo.GetNextEntry();
+		format = sa_formatinfo.GetNthEntry(i);
 
 		bonkFormatInfo::bonkTrackInfo *trackInfo = format->trackInfo;
 

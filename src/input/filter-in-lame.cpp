@@ -34,8 +34,8 @@ bool FilterInLAME::Activate()
 
 		driver->ReadData(data, size);
 
-		short	*pcm_l = new short [size * 32];
-		short	*pcm_r = new short [size * 32];
+		short	*pcm_l = new short [size * 64];
+		short	*pcm_r = new short [size * 64];
 
 		mp3data_struct	 mp3data;
 
@@ -73,11 +73,10 @@ int FilterInLAME::ReadData(unsigned char **data, int size)
 
 	driver->ReadData(*data, size);
 
-	short	*pcm_l = new short [size * 32];
-	short	*pcm_r = new short [size * 32];
+	short	*pcm_l = new short [size * 64];
+	short	*pcm_r = new short [size * 64];
 
-	mp3data_struct	 mp3data;
-	int		 nsamples = ex_lame_decode_headers(*data, size, pcm_l, pcm_r, &mp3data);
+	int	 nsamples = ex_lame_decode(*data, size, pcm_l, pcm_r);
 
 	delete [] *data;
 
@@ -115,8 +114,8 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 
 		f_in->InputData((void *) data, size);
 
-		short	*pcm_l = new short [size * 32];
-		short	*pcm_r = new short [size * 32];
+		short	*pcm_l = new short [size * 64];
+		short	*pcm_r = new short [size * 64];
 
 		mp3data_struct	 mp3data;
 

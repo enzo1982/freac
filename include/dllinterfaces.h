@@ -124,6 +124,7 @@
 	typedef int				(*LAME_ENCODE_BUFFER_INTERLEAVED)		(lame_global_flags *, short int [], int, unsigned char *, int);
 	typedef int				(*LAME_ENCODE_FLUSH)				(lame_global_flags *, unsigned char *, int);
 	typedef int				(*LAME_DECODE_INIT)				();
+	typedef int				(*LAME_DECODE)					(unsigned char *, int, short [], short []);
 	typedef int				(*LAME_DECODE_HEADERS)				(unsigned char *, int, short [], short [], mp3data_struct *);
 	typedef char *				(*GET_LAME_SHORT_VERSION)			();
 
@@ -158,6 +159,7 @@
 	extern LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
 	extern LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
 	extern LAME_DECODE_INIT			 ex_lame_decode_init;
+	extern LAME_DECODE			 ex_lame_decode;
 	extern LAME_DECODE_HEADERS		 ex_lame_decode_headers;
 	extern GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
 

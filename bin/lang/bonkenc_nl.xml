@@ -5,88 +5,89 @@
     <property name="version">0.9</property>
     <property name="language">Nederlands</property>
     <property name="encoding">UTF-8</property>
-    <property name="author">Wim Garreyn &lt;wim.garreyn@pandora.be&gt;</property>
+    <property name="author">Wim Garreyn</property>
     <property name="url">http://www.bonkenc.org</property>
   </info>
   <data>
     <entry id="1" string="File">Bestand</entry>
-    <entry id="2" string="Options">Opties</entry>
-    <entry id="3" string="Encode">Encoderen</entry>
+    <entry id="2" string="Options">Instellingen</entry>
+    <entry id="3" string="Encode">Coderen</entry>
     <entry id="4" string="Add">Toevoegen</entry>
     <entry id="5" string="Remove">Verwijderen</entry>
-    <entry id="6" string="Clear joblist">Wis taaklijst</entry>
+    <entry id="6" string="Clear joblist">Taaklijst wissen</entry>
     <entry id="7" string="Exit">Afsluiten</entry>
     <entry id="8" string="General settings...">Algemene instellingen...</entry>
-    <entry id="9" string="Configure selected encoder...">Configureer geselecteerde encoder...</entry>
-    <entry id="10" string="Audio file(s)...">Audio bestand(en)...</entry>
+    <entry id="9" string="Configure selected encoder...">Geselecteerde codec configureren...</entry>
+    <entry id="10" string="Audio file(s)...">Audiobestand(en)...</entry>
     <entry id="11" string="Audio CD contents">Audio CD inhoud</entry>
-    <entry id="12" string="Start encoding">Encoderen starten</entry>
-    <entry id="13" string="Stop encoding">Encoderen stoppen</entry>
+    <entry id="12" string="Start encoding">Coderen starten</entry>
+    <entry id="13" string="Stop encoding">Coderen stoppen</entry>
     <entry id="14" string="Encoding file:">Bezig met:</entry>
-    <entry id="15" string="Time left:">Resterende tijd:</entry>
+    <entry id="15" string="Time left:">Rest. tijd:</entry>
     <entry id="16" string="Percent done:">Voltooid:</entry>
-    <entry id="17" string="Selected encoder:">Encoder:</entry>
+    <entry id="17" string="Selected encoder:">Geselecteerde codec:</entry>
     <entry id="18" string="File progress:">Voortgang:</entry>
     <entry id="19" string="Output dir.:">Uitvoermap:</entry>
-    <entry id="20" string=" file(s) in joblist:"> bestand(en) in taaklijst:</entry>
+    <entry id="20" string=" file(s) in joblist:"> bestand(en) in taaklijst</entry>
     <entry id="21" string="none">geen</entry>
-    <entry id="22" string="Display information about BonkEnc">Toon informatie in verband met BonkEnc</entry>
+    <entry id="22" string="Display information about BonkEnc">Geef informatie i.v.m. BonkEnc weer</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Voeg audiobestand(en) toe aan taaklijst</entry>
-    <entry id="24" string="Add audio CD contents to the joblist">Voeg audio CD inhoud toe aan taaklijst</entry>
-    <entry id="25" string="Remove the selected entry from the joblist">Verwijder het geselecteerde item uit de taaklijst</entry>
-    <entry id="26" string="Clear the entire joblist">Leeg de taaklijst</entry>
-    <entry id="27" string="Configure general settings">Algemene instellingen zetten</entry>
-    <entry id="28" string="Configure the selected audio encoder">Configureer de geselecteerde encoder</entry>
-    <entry id="29" string="Start the encoding process">Start het encoderingsproces</entry>
-    <entry id="30" string="Cannot modify the joblist while encoding!">De taaklijst kan niet gewijzigd worden tijdens het encoderen!</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Voeg Audio CD inhoud toe aan taaklijst</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Verwijder geselecteerd item uit de taaklijst</entry>
+    <entry id="26" string="Clear the entire joblist">Taaklijst volledig wissen</entry>
+    <entry id="27" string="Configure general settings">Algemene instellingen verrichten</entry>
+    <entry id="28" string="Configure the selected audio encoder">Configureer de geselecteerde codec</entry>
+    <entry id="29" string="Start the encoding process">Het coderingsproces starten</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">De taaklijst kan niet gewijzigd worden tijdens het coderen!</entry>
     <entry id="31" string="Error">Fout</entry>
     <entry id="32" string="Audio Files">Audiobestanden</entry>
-    <entry id="33" string="Apple Audio Files">Apple audiobestanden</entry>
+    <entry id="33" string="Apple Audio Files">Apple Audio bestanden</entry>
     <entry id="34" string="Creative Voice Files">Creative Voice bestanden</entry>
-    <entry id="35" string="Sun Audio Files">Sun audiobestanden</entry>
-    <entry id="36" string="Wave Files">Wave audiobestanden</entry>
-    <entry id="37" string="Windows CD Audio Track">Audio CD Track</entry>
+    <entry id="35" string="Sun Audio Files">Sun Audio bestanden</entry>
+    <entry id="36" string="Wave Files">Wave bestanden</entry>
+    <entry id="37" string="Windows CD Audio Track">Windows Audio CD Track</entry>
     <entry id="38" string="All Files">Alle bestanden</entry>
     <entry id="39" string="You have not selected a file!">U hebt geen bestand geselecteerd!</entry>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Het coderingsproces is nog bezig! Weet u zeker dat u wilt stoppen?</entry>
-    <entry id="41" string="Currently encoding">Bezig met encoderen</entry>
-    <entry id="42" string="This program is being distributed under the terms">Dit programma wordt verspreid onder de termen</entry>
-    <entry id="43" string="of the GNU General Public License (GPL).">van het GNU General Public License (GPL).</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Het coderingsproces is nog bezig! Wilt u toch afsluiten?</entry>
+    <entry id="41" string="Currently encoding">Bezig met coderen</entry>
+    <entry id="42" string="This program is being distributed under the terms">Dit programma wordt verdeeld onder de termen van</entry>
+    <entry id="43" string="of the GNU General Public License (GPL).">het GNU General Public License (GPL).</entry>
     <entry id="44" string="About BonkEnc">Over BonkEnc</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">De WAVE Out Filter vereist geen configuratie!</entry>
-    <entry id="46" string="WAVE Out filter">WAVE Out Filter</entry>
-    <entry id="47" string="Cannot change settings while encoding!">De instellingen kunnen niet gewijzigd worden tijdens het encoderen!</entry>
-    <entry id="48" string="encoder configuration">Encoder configuratie</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">De WAVE Out filter kan niet geconfigureerd worden!</entry>
+    <entry id="46" string="WAVE Out filter">WAVE Out filter</entry>
+    <entry id="47" string="Cannot change settings while encoding!">De instellingen kunnen niet gewijzigd worden tijdens het coderen!</entry>
+    <entry id="48" string="encoder configuration">codec configuratie</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Annuleren</entry>
-    <entry id="51" string="Encoding Mode">Encodeermodus</entry>
+    <entry id="51" string="Encoding Mode">Codeermodus</entry>
     <entry id="52" string="Variable Bitrate">Variabele Bitrate</entry>
     <entry id="53" string="Average Bitrate">Gemiddelde Bitrate</entry>
     <entry id="54" string="Quality">Kwaliteit</entry>
-    <entry id="55" string="Encoders">Encoders</entry>
+    <entry id="55" string="Encoders">Codecs</entry>
     <entry id="56" string="Language">Taal</entry>
+    <entry id="57" string="Show title info">Toon titelinformatie</entry>
     <entry id="58" string="General settings setup">Algemene instellingen</entry>
-    <entry id="59" string="Configure encoder">Encoder configureren</entry>
-    <entry id="60" string="Encoder">Encoder</entry>
+    <entry id="59" string="Configure encoder">Codec configureren</entry>
+    <entry id="60" string="Encoder">Codec</entry>
     <entry id="61" string="Output directory">Uitvoermap</entry>
     <entry id="62" string="Browse">Bladeren</entry>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:">Selecteer de map waar de geëncodeerde bestanden geplaatst zullen worden:</entry>
-    <entry id="64" string="Encoding">Encodering</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Kies de map waarin de gecodeerde bestanden zullen geplaatst worden:</entry>
+    <entry id="64" string="Encoding">Codering</entry>
     <entry id="65" string="Author">Auteur</entry>
     <entry id="66" string="URL">URL</entry>
     <entry id="67" string="Information">Informatie</entry>
-    <entry id="68" string="Select language:">Selecteer taal:</entry>
-    <entry id="69" string="Active CD-ROM drive">Actieve CD-ROM drive</entry>
+    <entry id="68" string="Select language:">Selecteer een taal:</entry>
+    <entry id="69" string="Active CD-ROM drive">Actief CD-ROM station</entry>
     <entry id="70" string="Ripper settings">Ripper instellingen</entry>
-    <entry id="71" string="Activate cdparanoia mode:">Paranoia Modus activeren:</entry>
-    <entry id="72" string="Activate jitter correction">Jitter Correctie activeren</entry>
+    <entry id="71" string="Activate cdparanoia mode:">Paranoia modus activeren</entry>
+    <entry id="72" string="Activate jitter correction">Jitter correctie activeren</entry>
     <entry id="73" string="Swap left/right channel">Wissel linker/rechter kanaal</entry>
-    <entry id="74" string="Lock CD tray while ripping">CD lade blokkeren tijdens rippen</entry>
-    <entry id="75" string="Use native NT SCSI library">NT SCSI bibliotheek gebruiken</entry>
+    <entry id="74" string="Lock CD tray while ripping">Blokkeer cd lade tijdens rippen</entry>
+    <entry id="75" string="Use native NT SCSI library">Gebruik NT SCSI DLL</entry>
     <entry id="76" string="Overlap only">Enkel overlappen</entry>
     <entry id="77" string="No verify">Geen verifiëring</entry>
-    <entry id="78" string="No scratch repair">Geen scratch herstelling</entry>
-    <entry id="79" string="Full cdparanoia mode">Volledige Paranoia Modus</entry>
+    <entry id="78" string="No scratch repair">Geen kras reparatie</entry>
+    <entry id="79" string="Full cdparanoia mode">Volledige paranoia modus</entry>
     <entry id="80" string="Bitrate">Bitrate</entry>
     <entry id="81" string="Copyright bit">Copyright Bit</entry>
     <entry id="82" string="CRC">CRC</entry>
@@ -96,27 +97,27 @@
     <entry id="86" string="Set Copyright bit">Copyright Bit zetten</entry>
     <entry id="87" string="Enable CRC">CRC activeren</entry>
     <entry id="88" string="Set Original bit">Origineel Bit zetten</entry>
-    <entry id="89" string="Dual channel encoding">2 kanalen encoderen</entry>
+    <entry id="89" string="Dual channel encoding">2 kanalen coderen</entry>
     <entry id="90" string="Set Private bit">Privaat Bit zetten</entry>
-    <entry id="91" string="Encoder mode">Encodeermodus</entry>
+    <entry id="91" string="Encoder mode">Codeermodus</entry>
     <entry id="92" string="Stereo mode">Stereomodus</entry>
-    <entry id="93" string="Quantization">Quantization</entry>
+    <entry id="93" string="Quantization">Quantisering</entry>
     <entry id="94" string="Downsampling ratio">Downsampling ratio</entry>
-    <entry id="95" string="Predictor size">Voorspeller grootte</entry>
-    <entry id="96" string="Enable lossless encoding">Lossless encoding</entry>
-    <entry id="97" string="Enable Joint Stereo">Joint Stereo</entry>
+    <entry id="95" string="Predictor size">Voorspellersgrootte</entry>
+    <entry id="96" string="Enable lossless encoding">Verliesloze codering</entry>
+    <entry id="97" string="Enable Joint Stereo">Joint Stereo activeren</entry>
     <entry id="98" string="Bitrate per channel:">Bitrate per kanaal:</entry>
-    <entry id="99" string="Preselection">Voorselectie</entry>
-    <entry id="100" string="Number of preselection candidates:">Voorgeselecteerde kandidaten:</entry>
-    <entry id="101" string="MPEG version">MPEG Versie</entry>
-    <entry id="102" string="AAC object type">AAC Objecttype</entry>
+    <entry id="99" string="Preselection">Preselectie</entry>
+    <entry id="100" string="Number of preselection candidates:">Aantal preselectie kandidaten:</entry>
+    <entry id="101" string="MPEG version">MPEG versie</entry>
+    <entry id="102" string="AAC object type">AAC objecttype</entry>
     <entry id="103" string="Allow Joint Stereo">Joint Stereo</entry>
     <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
-    <entry id="105" string="Use Temporal Noise Shaping">Temporal Noise Shaping</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">TNS gebruiken</entry>
     <entry id="106" string="Maximum bandwidth">Maximale bandbreedte</entry>
-    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maximale AAC frequentie bandbreedte in Hz:</entry>
-    <entry id="108" string="Basic">Basisch</entry>
-    <entry id="109" string="Misc">Overige</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maximale AAC frequentie bandbreedte (Hz):</entry>
+    <entry id="108" string="Basic">Basis</entry>
+    <entry id="109" string="Misc">Allerlei</entry>
     <entry id="110" string="Audio processing">Audioverwerking</entry>
     <entry id="111" string="Set bitrate:">Bitrate:</entry>
     <entry id="112" string="Set ratio:">Ratio:</entry>
@@ -131,53 +132,87 @@
     <entry id="121" string="no VBR">geen VBR</entry>
     <entry id="122" string="VBR quality">VBR kwaliteit</entry>
     <entry id="123" string="ABR target bitrate">ABR doelbitrate</entry>
-    <entry id="124" string="VBR bitrate range">VBR bitrate bereik</entry>
+    <entry id="124" string="VBR bitrate range">VBR bitratebereik</entry>
     <entry id="125" string="Set minimum VBR bitrate:">Minimale VBR bitrate:</entry>
     <entry id="126" string="Set maximum VBR bitrate:">Maximale VBR bitrate:</entry>
-    <entry id="127" string="Control bits">Controle bits</entry>
-    <entry id="128" string="Stream format">Streamformaat</entry>
-    <entry id="129" string="Enforce strict ISO compliance">Forceer strikte ISO compabiliteit</entry>
+    <entry id="127" string="Control bits">Controlebits</entry>
+    <entry id="128" string="Stream format">Stroomformaat</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Strikte ISO conformiteit hanteren</entry>
     <entry id="130" string="Padding">Padding</entry>
     <entry id="131" string="Set padding type:">Paddingtype:</entry>
     <entry id="132" string="pad no frames">geen padding</entry>
     <entry id="133" string="pad all frames">alle frames</entry>
-    <entry id="134" string="adjust padding">Padding aanpassen</entry>
+    <entry id="134" string="adjust padding">padding aanpassen</entry>
     <entry id="135" string="Output sampling rate">Samplingrate</entry>
     <entry id="136" string="no resampling">geen resampling</entry>
     <entry id="137" string="Highpass filter">Highpass filter</entry>
     <entry id="138" string="Set Highpass frequency (Hz):">Highpass frequentie (Hz):</entry>
-    <entry id="139" string="Set Highpass width (Hz):">Highpass bandbreedte (Hz):</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Highpass breedte (Hz):</entry>
     <entry id="140" string="Lowpass filter">Lowpass filter</entry>
     <entry id="141" string="Set Lowpass frequency (Hz):">Lowpass frequentie (Hz):</entry>
-    <entry id="142" string="Set Lowpass width (Hz):">Lowpass bandbreedte (Hz):</entry>
-    <entry id="143" string="Misc settings">Overige instellingen</entry>
-    <entry id="144" string="Disable all filtering">Alle filters uitschakelen</entry>
-    <entry id="145" string="MP3 Files">MP3 bestanden</entry>
-    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis bestanden</entry>
-    <entry id="147" string="BONK Files">BONK bestanden</entry>
-    <entry id="148" string="Enable CDDB">Gebruik CDDB</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Lowpass breedte (Hz):</entry>
+    <entry id="143" string="Misc settings">Allerlei instellingen</entry>
+    <entry id="144" string="Disable all filtering">Filters uitschakelen</entry>
+    <entry id="145" string="MP3 Files">MP3 Bestanden</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis Bestanden</entry>
+    <entry id="147" string="BONK Files">BONK Bestanden</entry>
+    <entry id="148" string="Enable CDDB">CDDB activeren</entry>
     <entry id="149" string="CDDB access mode:">CDDB toegangsmodus:</entry>
     <entry id="150" string="CDDB server:">CDDB server:</entry>
     <entry id="151" string="Port:">Poort:</entry>
     <entry id="152" string="Info">Info</entry>
-    <entry id="153" string="No freedb entry for this disk.">Schijf niet gevonden in freedb.</entry>
-    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Fout bij het verbinden met de freedb server.</entry>
-    <entry id="155" string="Connecting to freedb server at">Bezig te verbinden met freedb server op</entry>
-    <entry id="156" string="Requesting CD information">CD info wordt opgevraagd</entry>
+    <entry id="153" string="No freedb entry for this disk.">Geen freedb ingang voor deze schijf</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Er deed zich een fout voor bij het verbinden met de freedb server.</entry>
+    <entry id="155" string="Connecting to freedb server at">Verbinden met freedb server op</entry>
+    <entry id="156" string="Requesting CD information">Opvraag van CD informatie</entry>
     <entry id="157" string="eMail address:">E-mailadres:</entry>
-    <entry id="158" string="Please enter a valid eMail address.">Voer een geldig e-mailadres in.</entry>
-    <entry id="159" string="No exact matches found">Geen gelijke cd gevonden.</entry>
-    <entry id="160" string="Multiple matches found">Meerdere gelijke cd's gevonden.</entry>
-    <entry id="161" string="Matches">Gelijke cd's</entry>
-    <entry id="162" string="Select the entry that best fits your CD:">Kies wat het beste bij uw cd past:</entry>
-    <entry id="163" string="Extended CDDB settings">Uitgebreide CDDB opties</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Voer a.u.b. een geldig e-mailadres in.</entry>
+    <entry id="159" string="No exact matches found">Geen exacte overeenkomst gevonden</entry>
+    <entry id="160" string="Multiple matches found">Meerdere overeenkomsten gevonden</entry>
+    <entry id="161" string="Matches">Overeenkomsten</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Selecteer de ingang die het best bij uw CD past:</entry>
+    <entry id="163" string="Extended CDDB settings">Uitgebreide CDDB instellingen</entry>
     <entry id="164" string="CGI scripts">CGI scripts</entry>
-    <entry id="165" string="CDDB query script:">CDDB query script:</entry>
+    <entry id="165" string="CDDB query script:">CDDB aanvraagscript:</entry>
     <entry id="166" string="CDDB submit script:">CDDB verzendscript:</entry>
     <entry id="167" string="HTTP settings">HTTP instellingen</entry>
     <entry id="168" string="Proxy settings">Proxy instellingen</entry>
     <entry id="169" string="no proxy">geen proxy</entry>
-    <entry id="170" string="Proxy type:">Proxy type:</entry>
-    <entry id="171" string="Proxy server:">Proxy server:</entry>
+    <entry id="170" string="Proxy type:">Proxytype:</entry>
+    <entry id="171" string="Proxy server:">Proxyserver:</entry>
+    <entry id="172" string="Presets">Voorkeursinstellingen</entry>
+    <entry id="173" string="Use preset:">Voorkeursinstelling gebruiken:</entry>
+    <entry id="174" string="Custom settings">Aangepaste instellingen</entry>
+    <entry id="175" string="Medium">Medium</entry>
+    <entry id="176" string="Standard">Standaard</entry>
+    <entry id="177" string="Extreme">Extreem</entry>
+    <entry id="178" string="Insane">Krankzinnig</entry>
+    <entry id="179" string="Medium, Fast">Medium, Snel</entry>
+    <entry id="180" string="Standard, Fast">Standaard, Snel</entry>
+    <entry id="181" string="Extreme, Fast">Extreem, Snel</entry>
+    <entry id="182" string="Title">Titel</entry>
+    <entry id="183" string="Track">Nummer</entry>
+    <entry id="184" string="Length">Duur</entry>
+    <entry id="185" string="Size">Grootte</entry>
+    <entry id="186" string="Artist">Artiest</entry>
+    <entry id="187" string="Year">Jaar</entry>
+    <entry id="188" string="Genre">Genre</entry>
+    <entry id="189" string="Album">Album</entry>
+    <entry id="190" string="Info tags">Info tags</entry>
+    <entry id="191" string="Write ID3V2/Vorbis info tags">ID3V2/Vorbis info tags schrijven</entry>
+    <entry id="192" string="Default comment string:">Standaardcommentaar:</entry>
+    <entry id="193" string="unknown artist">onbekende artiest</entry>
+    <entry id="194" string="unknown title">onbekende titel</entry>
+    <entry id="195" string="Unable to load ASPI drivers!">Kan ASPI driver niet laden!</entry>
+    <entry id="196" string="Database">Databank</entry>
+    <entry id="197" string="Submit CDDB data...">CDDB gegevens verzenden...</entry>
+    <entry id="198" string="Enable CDDB cache">CDDB cache activeren</entry>
+    <entry id="199" string="CDDB data">CDDB gegevens</entry>
+    <entry id="200" string="Submit">Verzenden</entry>
+    <entry id="201" string="No audio CD in drive!">Geen audio cd in station!</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Vul alle velden en titels in alvorens te verzenden.</entry>
+    <entry id="203" string="CD ripping disabled!">CD Rippen gedeactiveerd!</entry>
+    <entry id="204" string="Do you want to use native NT SCSI instead?">Wilt u in de plaats NT SCSI gebruiken?</entry>
+    <entry id="205" string="Submitting CD information">CD informatie wordt verzonden</entry>
   </data>
 </LangFile>

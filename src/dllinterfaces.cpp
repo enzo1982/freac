@@ -74,6 +74,7 @@ LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
 LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
 LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
 LAME_DECODE_INIT		 ex_lame_decode_init;
+LAME_DECODE			 ex_lame_decode;
 LAME_DECODE_HEADERS		 ex_lame_decode_headers;
 GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
 
@@ -237,6 +238,7 @@ Bool bonkEnc::LoadLAMEDLL()
 	ex_lame_encode_buffer_interleaved	= (LAME_ENCODE_BUFFER_INTERLEAVED) GetProcAddress(lamedll, "lame_encode_buffer_interleaved");
 	ex_lame_encode_flush			= (LAME_ENCODE_FLUSH) GetProcAddress(lamedll, "lame_encode_flush");
 	ex_lame_decode_init			= (LAME_DECODE_INIT) GetProcAddress(lamedll, "lame_decode_init");
+	ex_lame_decode				= (LAME_DECODE) GetProcAddress(lamedll, "lame_decode");
 	ex_lame_decode_headers			= (LAME_DECODE_HEADERS) GetProcAddress(lamedll, "lame_decode_headers");
 	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) GetProcAddress(lamedll, "get_lame_short_version");
 
@@ -271,6 +273,7 @@ Bool bonkEnc::LoadLAMEDLL()
 	if (ex_lame_encode_buffer_interleaved == NULL)	{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_encode_flush == NULL)		{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_decode_init == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_decode == NULL)			{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_decode_headers == NULL)		{ FreeLibrary(lamedll); return false; }
 	if (ex_get_lame_short_version == NULL)		{ FreeLibrary(lamedll); return false; }
 

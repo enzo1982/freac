@@ -234,11 +234,20 @@ Void bonkEnc::RemoveFile()
 		return;
 	}
 
-	if (joblist->GetSelectedEntry() != -1)
+	Int	 entry = joblist->GetSelectedEntry();
+
+	if (entry != -1)
 	{
-		delete sa_formatinfo.GetEntry(joblist->GetSelectedEntry());
-		sa_formatinfo.DeleteEntry(joblist->GetSelectedEntry());
-		joblist->RemoveEntry(joblist->GetSelectedEntry());
+		Int	 n = 0;
+
+		for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+		{
+			if (joblist->GetNthEntry(i) == entry) n = i;
+		}
+
+		delete sa_formatinfo.GetEntry(entry);
+		sa_formatinfo.DeleteEntry(entry);
+		joblist->RemoveEntry(entry);
 
 		txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
 
@@ -251,7 +260,15 @@ Void bonkEnc::RemoveFile()
 		info_edit_year->SetText("");
 		info_combo_genre->SelectEntry(0);
 
-		dontUpdateInfo = True;
+		dontUpdateInfo = False;
+
+		if (joblist->GetNOfEntries() > 0)
+		{
+			if (n < joblist->GetNOfEntries())	joblist->SelectEntry(joblist->GetNthEntry(n));
+			else					joblist->SelectEntry(joblist->GetNthEntry(n - 1));
+
+			SelectJoblistEntry();
+		}
 	}
 	else
 	{

@@ -231,10 +231,17 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 			entry = ex_CR_GetTocEntry(i);
 			nextentry = ex_CR_GetTocEntry(i + 1);
 
-			trackLength = nextentry.dwStartSector - entry.dwStartSector;
+			if ((i > 0) && (entry.btFlag != nextentry.btFlag) && (nextentry.btTrackNumber != 0xAA))
+			{
+				trackLength = nextentry.dwStartSector - entry.dwStartSector - 11250;
+			}
+			else
+			{
+				trackLength = nextentry.dwStartSector - entry.dwStartSector;
+			}
 
-			if (!(entry.btFlag & CDROMDATAFLAG) && (entry.btTrackNumber == track.ToInt())) break;
-			else entry.btTrackNumber = 0;
+			if (!(entry.btFlag & CDROMDATAFLAG) && (entry.btTrackNumber == track.ToInt()))	break;
+			else										entry.btTrackNumber = 0;
 		}
 
 		trackNumber = entry.btTrackNumber;
@@ -279,6 +286,31 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 				}
 
 				if (done) break;
+			}
+
+			Int	 numTocEntries = ex_CR_GetNumTocEntries();
+
+			TOCENTRY	 entry;
+			TOCENTRY	 nextentry;
+
+			entry.btTrackNumber = 0;
+
+			for (Int i = 0; i < numTocEntries; i++)
+			{
+				entry = ex_CR_GetTocEntry(i);
+				nextentry = ex_CR_GetTocEntry(i + 1);
+
+				if ((i > 0) && (entry.btFlag != nextentry.btFlag) && (nextentry.btTrackNumber != 0xAA))
+				{
+					trackLength = nextentry.dwStartSector - entry.dwStartSector - 11250;
+				}
+				else
+				{
+					trackLength = nextentry.dwStartSector - entry.dwStartSector;
+				}
+
+				if (!(entry.btFlag & CDROMDATAFLAG) && (entry.btTrackNumber == trackNumber))	break;
+				else										entry.btTrackNumber = 0;
 			}
 		}
 	}
