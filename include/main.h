@@ -170,10 +170,10 @@ bonkFormatInfo;
 class bonkEnc : public Application
 {
 	private:
-		PopupMenu		*menu_file;
-		PopupMenu		*menu_options;
-		PopupMenu		*menu_addsubmenu;
-		PopupMenu		*menu_encode;
+		Menu			*menu_file;
+		Menu			*menu_options;
+		Menu			*menu_addsubmenu;
+		Menu			*menu_encode;
 
 		Menubar			*mainWnd_menubar;
 		Menubar			*mainWnd_iconbar;
@@ -267,7 +267,7 @@ class bonkEnc : public Application
 		Void			 ConfigureEncoder();
 		Void			 ConfigureGeneral();
 		Void			 Encode();
-		Void			 Encoder(Thread *);
+		Int			 Encoder(Thread *);
 		Void			 StopEncoding();
 		Bool			 ExitProc();
 		Void			 DrawProc();

@@ -257,10 +257,10 @@ bonkEnc::bonkEnc()
 	mainWnd			= new Window("BonkEnc v0.9");
 	mainWnd_titlebar	= new Titlebar(true, true, true);
 	mainWnd_statusbar	= new Statusbar("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
-	menu_file		= new PopupMenu();
-	menu_options		= new PopupMenu();
-	menu_addsubmenu		= new PopupMenu();
-	menu_encode		= new PopupMenu();
+	menu_file		= new Menu();
+	menu_options		= new Menu();
+	menu_addsubmenu		= new Menu();
+	menu_encode		= new Menu();
 
 	pos.x = 91;
 	pos.y = -22;
@@ -315,6 +315,8 @@ bonkEnc::bonkEnc()
 	size.cy = currentConfig->wndSize.cy - 221;
 
 	joblist			= new ListBox(pos, size);
+	joblist->AddTab("Title");
+	joblist->AddTab("Length");
 
 	pos.y = 99;
 	pos.x = maxTextLength + 15;
@@ -466,7 +468,7 @@ bonkEnc::bonkEnc()
 	mainWnd->SetApplicationIcon(IDI_ICON);
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->onPaint.Connect(&bonkEnc::DrawProc, this);
-	mainWnd->SetKillProc(KillProc(&bonkEnc::ExitProc), this);
+	mainWnd->doQuit.Connect(&bonkEnc::ExitProc, this);
 	mainWnd->SetMinimumSize(Size(390, 284));
 }
 
@@ -1275,24 +1277,21 @@ Void bonkEnc::Encode()
 
 	if (encoder_thread != NIL)
 	{
-		UnregisterObject(encoder_thread);
-
 		delete encoder_thread;
 
 		encoder_thread = NIL;
 	}
 
-	encoder_thread = new Thread(ThreadProc(&bonkEnc::Encoder), this);
+	encoder_thread = new Thread();
+	encoder_thread->threadMain.Connect(&bonkEnc::Encoder, this);
 
 	encoding = true;
-
-	RegisterObject(encoder_thread);
 
 	encoder_thread->SetWaitFlag(THREAD_WAITFLAG_START);
 	encoder_thread->Start();
 }
 
-Void bonkEnc::Encoder(Thread *thread)
+Int bonkEnc::Encoder(Thread *thread)
 {
 	String		 in_filename;
 	String		 out_filename;
@@ -1640,6 +1639,8 @@ Void bonkEnc::Encoder(Thread *thread)
 	encoding = false;
 
 	ClearList();
+
+	return Success;
 }
 
 Void bonkEnc::StopEncoding()
@@ -1647,8 +1648,6 @@ Void bonkEnc::StopEncoding()
 	if (!encoding) return;
 
 	encoder_thread->Stop();
-
-	UnregisterObject(encoder_thread);
 
 	delete encoder_thread;
 

@@ -5,7 +5,7 @@ produce MP3, Ogg Vorbis, BONK, AAC and VQF files.
 
 BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 
-The new command line interface is accessible by invoking
+The command line interface is accessible by invoking
 BonkEnc with the '--console' parameter.
 
 History
@@ -13,7 +13,7 @@ History
 
 	Version 0.9
 
-		- added Hungarian, French and Russian language support
+		- added Hungarian, French, Russian and Serbian language support
 		- removed support for the META tag in BONK files
 		- added support for ID3V2 tags in BONK files
 		- upgraded to smooth v0.8.61.0

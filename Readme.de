@@ -5,7 +5,7 @@ Es kann MP3, Ogg Vorbis, BONK, AAC und VQF Dateien erzeugen.
 
 BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 
-Das neue Kommandozeileninterface ist verfügbar, wenn
+Das Kommandozeileninterface ist verfügbar, wenn
 BonkEnc mit der '--console' Option aufgerufen wird.
 
 Geschichte
@@ -13,7 +13,7 @@ Geschichte
 
 	Version 0.9
 
-		- Sprachunterstützung für Ungarisch, Französisch und Russisch hinzugefügt
+		- Sprachunterstützung für Ungarisch, Französisch, Russisch und Serbisch hinzugefügt
 		- Unterstützung für META Tags in BONK Dateien entfernt
 		- Unterstützung für ID3V2 Tags in BONK Dateien hinzugefügt
 		- Update auf smooth v0.8.61.0

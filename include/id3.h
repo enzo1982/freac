@@ -1,6 +1,4 @@
-/* $Id$
- * 
- * id3lib: a software library for creating and manipulating id3v1/v2 tags
+/* id3lib: a software library for creating and manipulating id3v1/v2 tags
  * Copyright 1999, 2000  Scott Thomas Haug
  * 
  * This library is free software; you can redistribute it and/or modify it
