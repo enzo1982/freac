@@ -564,6 +564,21 @@ bonkEncGUI::bonkEncGUI()
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, (bonkEnc *) this);
 
+	if (currentConfig->enable_blade) menu_encoders->AddEntry("BladeEnc", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_bonk) menu_encoders->AddEntry("Bonk", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_faac) menu_encoders->AddEntry("FAAC", NIL, NIL, NIL, &clicked_encoder, ENCODER_FAAC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_lame) menu_encoders->AddEntry("LAME", NIL, NIL, NIL, &clicked_encoder, ENCODER_LAMEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_vorbis) menu_encoders->AddEntry("Ogg Vorbis", NIL, NIL, NIL, &clicked_encoder, ENCODER_VORBISENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_tvq) menu_encoders->AddEntry("TwinVQ", NIL, NIL, NIL, &clicked_encoder, ENCODER_TVQ)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+
+	menu_encoders->AddEntry("WAVE Out", NIL, NIL, NIL, &clicked_encoder, ENCODER_WAVE)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
+
+	if (ENCODER_WAVE > 0)
+	{
+		menu_encode->AddEntry();
+		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
+	}
+
 	menu_database->AddEntry(i18n->TranslateString("Query CDDB database"))->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
 	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
 	menu_database->AddEntry();
@@ -639,15 +654,6 @@ bonkEncGUI::bonkEncGUI()
 	entry->SetStatusText(i18n->TranslateString("Configure the selected audio encoder"));
 
 	mainWnd_iconbar->AddEntry();
-
-	if (currentConfig->enable_blade) menu_encoders->AddEntry("BladeEnc", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_bonk) menu_encoders->AddEntry("Bonk", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_faac) menu_encoders->AddEntry("FAAC", NIL, NIL, NIL, &clicked_encoder, ENCODER_FAAC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_lame) menu_encoders->AddEntry("LAME", NIL, NIL, NIL, &clicked_encoder, ENCODER_LAMEENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_vorbis) menu_encoders->AddEntry("Ogg Vorbis", NIL, NIL, NIL, &clicked_encoder, ENCODER_VORBISENC)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_tvq) menu_encoders->AddEntry("TwinVQ", NIL, NIL, NIL, &clicked_encoder, ENCODER_TVQ)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
-
-	menu_encoders->AddEntry("WAVE Out", NIL, NIL, NIL, &clicked_encoder, ENCODER_WAVE)->onClick.Connect(&bonkEncGUI::EncodeSpecific, this);
 
 	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), ENCODER_WAVE > 0 ? menu_encoders : NIL);
 	entry->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
@@ -792,6 +798,7 @@ bonkEncGUI::~bonkEncGUI()
 	delete menu_encode;
 	delete menu_drives;
 	delete menu_seldrive;
+	delete menu_encoders;
 	delete menu_database;
 	delete menu_trackmenu;
 	delete menu_help;
@@ -1290,6 +1297,12 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, (bonkEnc *) this);
+
+	if (ENCODER_WAVE > 0)
+	{
+		menu_encode->AddEntry();
+		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
+	}
 
 	menu_database->AddEntry(i18n->TranslateString("Query CDDB database"))->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
 	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
