@@ -45,6 +45,7 @@ void	 Out_SetPan(int);
 FilterInWinamp::FilterInWinamp(bonkEncConfig *config, In_Module *iPlugin) : InputFilter(config)
 {
 	plugin = iPlugin;
+	setup = False;
 
 	plugin->SetInfo = SetInfo;
 	plugin->VSASetInfo = VSASetInfo;
@@ -105,9 +106,23 @@ int FilterInWinamp::ReadData(unsigned char **data, int size)
 		plugin->Play(file);
 	}
 
-	get_more_samples = 65536;
+	get_more_samples = 32768;
+	n_samples = 0;
 
-	while (get_more_samples == 65536) Sleep(10);
+	Int	 count = 0;
+
+	while (get_more_samples > 0)
+	{
+		if (++count == 10)
+		{
+			if (n_samples == 0)	return -1;
+			else			break;
+		}
+
+		Sleep(10);
+	}
+
+	get_more_samples = 0;
 
 	size = n_samples * 2 * channels;
 
@@ -142,6 +157,8 @@ bonkFormatInfo *FilterInWinamp::GetFileInfo(String inFile)
 
 	plugin->GetFileInfo(inFile, NIL, &length_ms);
 
+	nFormat->length = (Int) (Float(length_ms) * Float(rate * channels) / 1000.0);
+
 	return nFormat;
 }
 
@@ -149,7 +166,7 @@ void SetInfo(int bitrate, int srate, int stereo, int synched)
 {
 }
 
-void VSASetInfo(int nch, int srate)
+void VSASetInfo(int srate, int nch)
 {
 	channels = nch;
 	rate = srate;
@@ -196,13 +213,14 @@ int dsp_isactive()
 
 int dsp_dosamples(short int *samples, int numsamples, int bps, int nch, int srate)
 {
-	sample_buffer = new char [numsamples * (bps / 8) * nch];
+	if (n_samples == 0) sample_buffer = new char [32768 * (bps / 8) * nch];
 
-	memcpy((void *) sample_buffer, (void *) samples, numsamples * (bps / 8) * nch);
+	memcpy((void *) (sample_buffer + n_samples * (bps / 8) * nch), (void *) samples, numsamples * (bps / 8) * nch);
 
-	get_more_samples = 0;
+	get_more_samples -= numsamples;
+	n_samples	 += numsamples;
 
-	n_samples = numsamples;
+	if (get_more_samples <= 8192) get_more_samples = 0;
 
 	return numsamples;
 }

@@ -109,6 +109,7 @@ Requirements
 		- BladeEnc is used if installed (http://bladeenc.mp3.no)
 		- FAAC is used if installed (http://www.audiocoding.com)
 		- TwinVQ is used if installed (http://www.twinvq.org)
+		- Winamp 2 Input Plugins are used if they are found in the plugins directory
 		- MSLU is used if installed on Windows 9x/ME systems (http://www.microsoft.com)
 
 Problems
