@@ -730,6 +730,28 @@ bonkEncGUI::bonkEncGUI()
 		info_edit_genre->Hide();
 	}
 
+	Rect	 workArea;
+
+	{
+		RECT rect;
+
+		if (Setup::enableUnicode)	SystemParametersInfoW(SPI_GETWORKAREA, 0, &rect, 0);
+		else				SystemParametersInfoA(SPI_GETWORKAREA, 0, &rect, 0);
+
+		workArea = rect;
+	}
+
+	if (currentConfig->wndPos.x < workArea.left - 2					||
+	    currentConfig->wndPos.y < workArea.top - 2					||
+	    currentConfig->wndPos.x + currentConfig->wndSize.cx > workArea.right + 2	||
+	    currentConfig->wndPos.y + currentConfig->wndSize.cy > workArea.bottom + 2)
+	{
+		currentConfig->wndPos.x = (Int) Math::Max(workArea.left + 10, currentConfig->wndPos.x);
+		currentConfig->wndPos.y = (Int) Math::Max(workArea.top + 10, currentConfig->wndPos.y);
+		currentConfig->wndPos.x = (Int) Math::Min(workArea.right - 10 - currentConfig->wndSize.cx, currentConfig->wndPos.x);
+		currentConfig->wndPos.y = (Int) Math::Min(workArea.bottom - 10 - currentConfig->wndSize.cy, currentConfig->wndPos.y);
+	}
+
 	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
