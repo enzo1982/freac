@@ -23,6 +23,7 @@ class configureGeneralSettings : public SMOOTHApplication
 		SMOOTHLayer		*register_layer_dirs;
 		SMOOTHLayer		*register_layer_language;
 		SMOOTHLayer		*register_layer_cdrip;
+		SMOOTHLayer		*register_layer_cddb;
 
 		SMOOTHGroupBox		*encoders_group_encoder;
 		SMOOTHComboBox		*encoders_combo_encoder;
@@ -49,6 +50,19 @@ class configureGeneralSettings : public SMOOTHApplication
 		SMOOTHCheckBox		*cdrip_check_locktray;
 		SMOOTHCheckBox		*cdrip_check_ntscsi;
 
+		SMOOTHGroupBox		*cddb_group_cddb;
+		SMOOTHCheckBox		*cddb_check_enable;
+		SMOOTHText		*cddb_text_mode;
+		SMOOTHComboBox		*cddb_combo_mode;
+		SMOOTHText		*cddb_text_server;
+		SMOOTHEditBox		*cddb_edit_server;
+		SMOOTHText		*cddb_text_port;
+		SMOOTHEditBox		*cddb_edit_port;
+		SMOOTHText		*cddb_text_email;
+		SMOOTHEditBox		*cddb_edit_email;
+		SMOOTHButton		*cddb_button_http;
+		SMOOTHButton		*cddb_button_proxy;
+
 		SMOOTHDivisionbar	*divbar;
 
 		SMOOTHWindow		*mainWnd;
@@ -63,15 +77,21 @@ class configureGeneralSettings : public SMOOTHApplication
 		SMOOTHBool		 swapchannels;
 		SMOOTHBool		 locktray;
 		SMOOTHBool		 ntscsi;
+		SMOOTHBool		 cddb;
  
 		bonkEncConfig		*currentConfig;
 
 		SMOOTHVoid		 OK();
 		SMOOTHVoid		 Cancel();
+		SMOOTHVoid		 PaintProc();
 		SMOOTHVoid		 SelectDir();
 		SMOOTHVoid		 SelectLanguage();
 		SMOOTHVoid		 ConfigureEncoder();
 		SMOOTHVoid		 SetParanoia();
+		SMOOTHVoid		 SetCDDB();
+		SMOOTHVoid		 SetCDDBMode();
+		SMOOTHVoid		 HTTPSettings();
+		SMOOTHVoid		 ProxySettings();
 	public:
 					 configureGeneralSettings(bonkEncConfig *);
 					~configureGeneralSettings();

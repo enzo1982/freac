@@ -27,8 +27,7 @@ class OutputFilter : public IOLibFilter
 				 OutputFilter(bonkEncConfig *, bonkFormatInfo *);
 				~OutputFilter();
 
-		virtual bool	 EncodeData(unsigned char **, int, int *) = 0;
-		virtual bool	 DecodeData(unsigned char **, int, int *) = 0;
+		virtual int	 WriteData(unsigned char *, int) = 0;
 
 		void		 PrepareLastPacket();
 };

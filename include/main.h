@@ -35,6 +35,9 @@ typedef struct
 	SMOOTHString	 language;
 	SMOOTHBool	 languageChanged;
 
+	SMOOTHPoint	 wndPos;
+	SMOOTHSize	 wndSize;
+
 	SMOOTHInt	 encoder;
 	SMOOTHBool	 enable_console;
 	SMOOTHBool	 enable_bonk;
@@ -44,6 +47,8 @@ typedef struct
 	SMOOTHBool	 enable_faac;
 	SMOOTHBool	 enable_tvq;
 	SMOOTHBool	 enable_cdrip;
+	SMOOTHBool	 enable_cddb;
+	SMOOTHBool	 enable_id3;
 	SMOOTHString	 enc_outdir;
 
 	SMOOTHArray<SMOOTHString>	 cdrip_drives;
@@ -56,6 +61,17 @@ typedef struct
 	SMOOTHBool	 cdrip_swapchannels;
 	SMOOTHBool	 cdrip_locktray;
 	SMOOTHBool	 cdrip_ntscsi;
+
+	SMOOTHString	 freedb_server;
+	SMOOTHInt	 freedb_mode;
+	SMOOTHInt	 freedb_cddbp_port;
+	SMOOTHInt	 freedb_http_port;
+	SMOOTHString	 freedb_query_path;
+	SMOOTHString	 freedb_submit_path;
+	SMOOTHString	 freedb_email;
+	SMOOTHInt	 freedb_proxy_mode;
+	SMOOTHString	 freedb_proxy;
+	SMOOTHInt	 freedb_proxy_port;
 
 	SMOOTHInt	 bonk_quantization;
 	SMOOTHInt	 bonk_predictor;
@@ -119,16 +135,6 @@ bonkEncConfig;
 
 typedef struct
 {
-	SMOOTHInt	 channels;
-	SMOOTHInt	 rate;
-	SMOOTHInt	 bits;
-	SMOOTHInt	 length;
-	SMOOTHInt	 order;
-}
-bonkFormatInfo;
-
-typedef struct
-{
 	SMOOTHInt	 track;
 	SMOOTHInt	 drive;
 
@@ -137,10 +143,24 @@ typedef struct
 	SMOOTHString	 title;
 	SMOOTHString	 album;
 	SMOOTHString	 comment;
+	SMOOTHString	 genre;
+	SMOOTHString	 year;
 
 	SMOOTHString	 outfile;
 }
 bonkTrackInfo;
+
+typedef struct
+{
+	bonkTrackInfo	*trackInfo;
+
+	SMOOTHInt	 channels;
+	SMOOTHInt	 rate;
+	SMOOTHInt	 bits;
+	SMOOTHInt	 length;
+	SMOOTHInt	 order;
+}
+bonkFormatInfo;
 
 // bonkEnc SMOOTHApplication class definition
 
@@ -222,6 +242,11 @@ class bonkEnc : public SMOOTHApplication
 		SMOOTHBool			 LoadCDRipDLL();
 		SMOOTHVoid			 FreeCDRipDLL();
 
+		HINSTANCE			 id3dll;
+
+		SMOOTHBool			 LoadID3DLL();
+		SMOOTHVoid			 FreeID3DLL();
+
 		SMOOTHInt			 ReadCDText();
 		SMOOTHInt			 FreeCDText();
 
@@ -231,17 +256,19 @@ class bonkEnc : public SMOOTHApplication
 
 		SMOOTHVoid			 About();
 		SMOOTHVoid			 AddFile();
-		SMOOTHVoid			 AddFileByName(SMOOTHString, SMOOTHString out = "");
+		SMOOTHVoid			 AddFileByName(SMOOTHString, SMOOTHString out = NIL);
 		SMOOTHVoid			 RemoveFile();
 		SMOOTHVoid			 ClearList();
 		SMOOTHVoid			 Exit();
 		SMOOTHVoid			 ReadCD();
+		SMOOTHArray<bonkTrackInfo *>	*GetCDDBData();
 		SMOOTHVoid			 ConfigureEncoder();
 		SMOOTHVoid			 ConfigureGeneral();
 		SMOOTHVoid			 Encode();
 		SMOOTHVoid			 Encoder(SMOOTHThread *);
 		SMOOTHVoid			 StopEncoding();
 		SMOOTHBool			 KillProc();
+		SMOOTHVoid			 PaintProc();
 
 		SMOOTHBool			 SetLanguage(SMOOTHString);
 	public:

@@ -30,8 +30,7 @@ class FilterOutTVQ : public OutputFilter
 					 FilterOutTVQ(bonkEncConfig *, bonkFormatInfo *);
 					~FilterOutTVQ();
 
-		bool			 EncodeData(unsigned char **, int, int *);
-		bool			 DecodeData(unsigned char **, int, int *);
+		int			 WriteData(unsigned char *, int);
 };
 
 #endif

@@ -17,15 +17,15 @@ class FilterOutBONK : public OutputFilter
 {
 	private:
 		void		*encoder;
-		unsigned char	*buffer;
 		OutStream	*d_out;
-		bool		 setup;
 	public:
 				 FilterOutBONK(bonkEncConfig *, bonkFormatInfo *);
 				~FilterOutBONK();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		bool		 Activate();
+		bool		 Deactivate();
+
+		int		 WriteData(unsigned char *, int);
 };
 
 #endif

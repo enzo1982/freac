@@ -22,8 +22,7 @@ class FilterInAU : public InputFilter
 				 FilterInAU(bonkEncConfig *);
 				~FilterInAU();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		int		 ReadData(unsigned char **, int);
 
 		bonkFormatInfo	 GetAudioFormat();
 };

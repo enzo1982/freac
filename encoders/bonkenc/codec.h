@@ -125,11 +125,13 @@ class BONKencoder
 		OutStream	*f_out;
 		OutStream	*i_out;
 		bitstream_out	 bit_out;
+		int		 samples_size;
 		int		 channels, rate;
 		bool		 lossless;
 		bool		 mid_side;
 		int		 n_taps;
-		int		 down_sampling, samples_per_packet;
+		int		 down_sampling;
+		int		 samples_per_packet;
 		double		 quant_level;
 		int		 sample_count;
 		unsigned char	*infoData;
@@ -137,11 +139,11 @@ class BONKencoder
 		uint32		 length;
 		vector<int>	 tail;
 
-		vector<vector<int> >	 output_samples;
+		vector< vector<int> > output_samples;
 	public:
-		int		 samples_size;
 		void		 begin(OutStream *, uint32, uint32, int, bool, bool, int, int, int, double);
 		void		 finish();
+
 		void		 store_packet(vector<int> &);
 };
 
@@ -149,9 +151,6 @@ class BONKdecoder
 {
 	private:
 		bitstream_in	 bit_in;
-		unsigned char	*d_buffer;
-		int		 d_buffer_size;
-
 		int		 length;
 		int		 length_remaining;
 		int		 rate;
@@ -163,18 +162,13 @@ class BONKdecoder
 		int		 samples_per_packet;
 		double		 quant_level;
 		lattice		 predictor;
-
 		bool		 isBonk;
 
 		vector< vector<int> > predictor_initer;
 	public:
-				 BONKdecoder();
-				~BONKdecoder();
-
-		bool		 begin(uint32 *, uint32 *, int *);
+		bool		 begin(InStream *, uint32 *, uint32 *, int *);
 		void		 finish();
 
-		void		 push_data(void *, uint32);
 		bool		 read_packet(vector<int> &);
 };
 

@@ -53,48 +53,29 @@ FilterOutFAAC::~FilterOutFAAC()
 {
 }
 
-bool FilterOutFAAC::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterOutFAAC::WriteData(unsigned char *data, int size)
 {
-	char	*outbuffer = new char [buffersize];
+	char		*outbuffer = new char [buffersize];
+	unsigned long	 bytes;
 
-	*outsize = ex_faacEncEncode(handle, (signed short *) (*data), samples_size, outbuffer, buffersize);
+	bytes = ex_faacEncEncode(handle, (signed short *) data, samples_size, outbuffer, buffersize);
 
-	delete [] *data;
+	driver->WriteData((unsigned char *) outbuffer, bytes);
 
-	*data = new unsigned char [*outsize];
-
-	memcpy((void *) *data, (void *) outbuffer, *outsize);
+	size = bytes;
 
 	if (lastPacket)
 	{
-		unsigned long	 bytes = ex_faacEncEncode(handle, NULL, 0, outbuffer, buffersize);
-		unsigned char	*buffer = new unsigned char [*outsize];
+		bytes = ex_faacEncEncode(handle, NULL, 0, outbuffer, buffersize);
 
-		memcpy((void *) buffer, (void *) *data, *outsize);
+		driver->WriteData((unsigned char *) outbuffer, bytes);
 
-		delete [] *data;
-
-		*data = new unsigned char [*outsize + bytes];
-
-		memcpy((void *) *data, (void *) buffer, *outsize);
-
-		delete [] buffer;
-
-		memcpy((void *) (*data + *outsize), (void *) outbuffer, bytes);
-
-		*outsize += bytes;
+		size += bytes;
 
 		ex_faacEncClose(handle);
 	}
 
 	delete [] outbuffer;
 
-	return true;
-}
-
-bool FilterOutFAAC::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	*outsize = size;
-
-	return true;
+	return size;
 }

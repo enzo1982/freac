@@ -12,6 +12,7 @@
 #include <output/filter-out-lame.h>
 #include <dllinterfaces.h>
 #include <memory.h>
+#include <id3/tag.h>
 
 FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
 {
@@ -206,50 +207,112 @@ FilterOutLAME::~FilterOutLAME()
 {
 }
 
-bool FilterOutLAME::EncodeData(unsigned char **data, int size, int *outsize)
+bool FilterOutLAME::Activate()
 {
-	long		 buffersize = size + 7800;
-	unsigned char	*outbuffer = new unsigned char [buffersize];
-
-	if (format->channels == 2)	*outsize = ex_lame_encode_buffer_interleaved(lameFlags, (signed short *) *data, size / (format->bits / 8) / format->channels, outbuffer, buffersize);
-	else				*outsize = ex_lame_encode_buffer(lameFlags, (signed short *) *data, (signed short *) *data, size / (format->bits / 8), outbuffer, buffersize);
-
-	delete [] *data;
-
-	*data = new unsigned char [*outsize];
-
-	memcpy((void *) *data, (void *) outbuffer, *outsize);
-
-	if (lastPacket)
+#ifndef _MSC_VER
+	if (format->trackInfo->cdText)
 	{
-		unsigned long 	 bytes = ex_lame_encode_flush(lameFlags, outbuffer, buffersize);
-		unsigned char	*buffer = new unsigned char [*outsize];
+		ID3_Tag		*tag = new ID3_Tag();
 
-		memcpy((void *) buffer, (void *) *data, *outsize);
+		ID3_Frame	*artist = new ID3_Frame(ID3FID_LEADARTIST);
+		ID3_Field	&artist_text = artist->Field(ID3FN_TEXT);
 
-		delete [] *data;
+		artist_text.Set(format->trackInfo->artist);
 
-		*data = new unsigned char [*outsize + bytes];
+		tag->AddFrame(artist);
 
-		memcpy((void *) *data, (void *) buffer, *outsize);
+		ID3_Frame	*title = new ID3_Frame(ID3FID_TITLE);
+		ID3_Field	&title_text = title->Field(ID3FN_TEXT);
+
+		title_text.Set(format->trackInfo->title);
+
+		tag->AddFrame(title);
+
+		ID3_Frame	*album = new ID3_Frame(ID3FID_ALBUM);
+		ID3_Field	&album_text = album->Field(ID3FN_TEXT);
+
+		album_text.Set(format->trackInfo->album);
+
+		tag->AddFrame(album);
+
+		ID3_Frame	*track = new ID3_Frame(ID3FID_TRACKNUM);
+		ID3_Field	&track_text = track->Field(ID3FN_TEXT);
+
+		if (format->trackInfo->track > 0)
+		{
+			if (format->trackInfo->track < 10)	track_text.Set(SMOOTHString("0").Append(SMOOTHString::IntToString(format->trackInfo->track)));
+			else					track_text.Set(SMOOTHString::IntToString(format->trackInfo->track));
+
+			tag->AddFrame(track);
+		}
+
+		ID3_Frame	*year = new ID3_Frame(ID3FID_YEAR);
+		ID3_Field	&year_text = year->Field(ID3FN_TEXT);
+
+		year_text.Set(format->trackInfo->year);
+
+		tag->AddFrame(year);
+
+		ID3_Frame	*genre = new ID3_Frame(ID3FID_CONTENTTYPE);
+		ID3_Field	&genre_text = genre->Field(ID3FN_TEXT);
+
+		genre_text.Set(format->trackInfo->genre);
+
+		tag->AddFrame(genre);
+
+		ID3_Frame	*comment = new ID3_Frame(ID3FID_COMMENT);
+		ID3_Field	&comment_text = comment->Field(ID3FN_TEXT);
+
+		comment_text.Set("BonkEnc v0.8 <http://www.bonkenc.org>");
+
+		tag->AddFrame(comment);
+
+		unsigned char	*buffer = new unsigned char [tag->Size()];
+		int		 size = tag->Render(buffer);
+
+		driver->WriteData(buffer, size);
 
 		delete [] buffer;
 
-		memcpy((void *) (*data + *outsize), (void *) outbuffer, bytes);
-
-		*outsize += bytes;
-
-		ex_lame_close(lameFlags);
+		delete tag;
+		delete artist;
+		delete title;
+		delete album;
+		delete track;
+		delete year;
+		delete genre;
+		delete comment;
 	}
-
-	delete [] outbuffer;
+#endif
 
 	return true;
 }
 
-bool FilterOutLAME::DecodeData(unsigned char **data, int size, int *outsize)
+bool FilterOutLAME::Deactivate()
 {
-	*outsize = size;
+	long		 buffersize = 131072;
+	unsigned char	*outbuffer = new unsigned char [buffersize];
+	unsigned long	 bytes = ex_lame_encode_flush(lameFlags, outbuffer, buffersize);
+
+	driver->WriteData(outbuffer, bytes);
+
+	ex_lame_close(lameFlags);
 
 	return true;
+}
+
+int FilterOutLAME::WriteData(unsigned char *data, int size)
+{
+	long		 buffersize = size + 7200;
+	unsigned char	*outbuffer = new unsigned char [buffersize];
+	unsigned long	 bytes;
+
+	if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, (signed short *) data, size / (format->bits / 8) / format->channels, outbuffer, buffersize);
+	else				bytes = ex_lame_encode_buffer(lameFlags, (signed short *) data, (signed short *) data, size / (format->bits / 8), outbuffer, buffersize);
+
+	driver->WriteData(outbuffer, bytes);
+
+	delete [] outbuffer;
+
+	return bytes;
 }

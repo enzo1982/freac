@@ -19,12 +19,12 @@ class FilterInBONK : public InputFilter
 		void		*decoder;
 		bool		 setup;
 		bonkFormatInfo	 format;
+		InStream	*f_in;
 	public:
 				 FilterInBONK(bonkEncConfig *);
 				~FilterInBONK();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		int		 ReadData(unsigned char **, int);
 
 		bonkFormatInfo	 GetAudioFormat();
 };

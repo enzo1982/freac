@@ -53,6 +53,20 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 
 	ex_vorbis_comment_init(&vc);
 	ex_vorbis_comment_add_tag(&vc, "COMMENT", "BonkEnc v0.8 <http://www.bonkenc.org>");
+
+	if (format->trackInfo->cdText)
+	{
+		ex_vorbis_comment_add_tag(&vc, "TITLE", format->trackInfo->title);
+		ex_vorbis_comment_add_tag(&vc, "ARTIST", format->trackInfo->artist);
+		ex_vorbis_comment_add_tag(&vc, "ALBUM", format->trackInfo->album);
+
+		if (format->trackInfo->track < 10)	ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", SMOOTHString("0").Append(SMOOTHString::IntToString(format->trackInfo->track)));
+		else					ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", SMOOTHString::IntToString(format->trackInfo->track));
+
+		ex_vorbis_comment_add_tag(&vc, "DATE", format->trackInfo->year);
+		ex_vorbis_comment_add_tag(&vc, "GENRE", format->trackInfo->genre);
+	}
+
 	ex_vorbis_analysis_init(&vd, &vi);
 	ex_vorbis_block_init(&vd, &vb);
 
@@ -63,7 +77,7 @@ FilterOutVORBIS::~FilterOutVORBIS()
 {
 }
 
-bool FilterOutVORBIS::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterOutVORBIS::WriteData(unsigned char *data, int size)
 {
 	unsigned char	*dataBuffer = NIL;
 	int		 dataLength = 0;
@@ -113,8 +127,8 @@ bool FilterOutVORBIS::EncodeData(unsigned char **data, int size, int *outsize)
 
 	for (int j = 0; j < samples_size / 2; j++)
 	{
-		buffer[0][j] = ((((signed char *)*data)[j*4+1]<<8)|(0x00ff&((signed char *)*data)[j*4+0]))/32768.f;
-		buffer[1][j] = ((((signed char *)*data)[j*4+3]<<8)|(0x00ff&((signed char *)*data)[j*4+2]))/32768.f;
+		buffer[0][j] = ((((signed char *) data)[j * 4 + 1] << 8) | (0x00ff & ((signed char *) data)[j * 4 + 0])) / 32768.f;
+		buffer[1][j] = ((((signed char *) data)[j * 4 + 3] << 8) | (0x00ff & ((signed char *) data)[j * 4 + 2])) / 32768.f;
 	}
 
 	ex_vorbis_analysis_wrote(&vd, samples_size / 2);
@@ -202,22 +216,10 @@ bool FilterOutVORBIS::EncodeData(unsigned char **data, int size, int *outsize)
 		ex_vorbis_info_clear(&vi);
 	}
 
-	*outsize = dataLength;
 
-	delete [] *data;
-
-	*data = new unsigned char [dataLength];
-
-	memcpy((void *) *data, (void *) dataBuffer, dataLength);
+	driver->WriteData(dataBuffer, dataLength);
 
 	delete [] dataBuffer;
 
-	return true;
-}
-
-bool FilterOutVORBIS::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	*outsize = size;
-
-	return true;
+	return dataLength;
 }

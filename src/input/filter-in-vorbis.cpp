@@ -35,23 +35,15 @@ FilterInVORBIS::~FilterInVORBIS()
 	delete [] buffer;
 }
 
-bool FilterInVORBIS::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterInVORBIS::ReadData(unsigned char **data, int size)
 {
-	*outsize = size;
-
-	return true;
-}
-
-bool FilterInVORBIS::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	if (size <= 0)
-	{
-		*outsize = 0;
-
-		return false;
-	}
+	if (size <= 0) return -1;
 
 	inBytes += size;
+
+	*data = new unsigned char [size];
+
+	driver->ReadData(*data, size);
 
 	buffer = ex_ogg_sync_buffer(&oy, size);
 
@@ -61,11 +53,11 @@ bool FilterInVORBIS::DecodeData(unsigned char **data, int size, int *outsize)
 
 	*data = NULL;
 
-	*outsize = 0;
-
 	int	 dataBufferLen = 0;
 
 	ex_ogg_sync_wrote(&oy, size);
+
+	size = 0;
 
 	if (!setup)
 	{
@@ -152,31 +144,31 @@ bool FilterInVORBIS::DecodeData(unsigned char **data, int size, int *outsize)
 					}
 				}
 
-				if (dataBufferLen < *outsize + (bout * vi.channels * 2))
+				if (dataBufferLen < size + (bout * vi.channels * 2))
 				{
 					dataBufferLen += ((bout * vi.channels * 2) + 131072);
 
-					unsigned char *backbuffer = new unsigned char [*outsize];
+					unsigned char *backbuffer = new unsigned char [size];
 
-					memcpy((void *) backbuffer, (void *) *data, *outsize);
+					memcpy((void *) backbuffer, (void *) *data, size);
 
 					delete [] *data;
 
 					*data = new unsigned char [dataBufferLen];
 
-					memcpy((void *) *data, (void *) backbuffer, *outsize);
+					memcpy((void *) *data, (void *) backbuffer, size);
 
 					delete [] backbuffer;
 
-					memcpy((void *) (*data + *outsize), (void *) convbuffer, bout * vi.channels * 2);
+					memcpy((void *) (*data + size), (void *) convbuffer, bout * vi.channels * 2);
 
-					*outsize += (bout * vi.channels * 2);
+					size += (bout * vi.channels * 2);
 				}
 				else
 				{
-					memcpy((void *) (*data + *outsize), (void *) convbuffer, bout * vi.channels * 2);
+					memcpy((void *) (*data + size), (void *) convbuffer, bout * vi.channels * 2);
 
-					*outsize += (bout * vi.channels * 2);
+					size += (bout * vi.channels * 2);
 				}
 
 				ex_vorbis_synthesis_read(&vd, bout);
@@ -186,7 +178,7 @@ bool FilterInVORBIS::DecodeData(unsigned char **data, int size, int *outsize)
 		if (ex_ogg_page_eos(&og)) break;
 	}
 
-	return true;
+	return size;
 }
 
 bonkFormatInfo FilterInVORBIS::GetAudioFormat()

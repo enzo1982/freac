@@ -25,16 +25,13 @@ FilterInVOC::~FilterInVOC()
 {
 }
 
-bool FilterInVOC::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterInVOC::ReadData(unsigned char **data, int size)
 {
-	*outsize = size;
+	*data = new unsigned char [size];
 
-	return true;
-}
+	driver->ReadData(*data, size);
 
-bool FilterInVOC::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	*outsize = size;
+	int	 outsize = size;
 
 	if (setup == false)
 	{
@@ -65,17 +62,17 @@ bool FilterInVOC::DecodeData(unsigned char **data, int size, int *outsize)
 
 		setup = true;
 
-		*outsize = size - 42;
+		outsize = size - 42;
 
-		unsigned char	*buffer = new unsigned char [*outsize];
+		unsigned char	*buffer = new unsigned char [outsize];
 
-		memcpy((void *) buffer, (void *) (*data + 42), *outsize);
+		memcpy((void *) buffer, (void *) (*data + 42), outsize);
 
 		delete [] *data;
 
-		*data = new unsigned char [*outsize];
+		*data = new unsigned char [outsize];
 
-		memcpy((void *) *data, (void *) buffer, *outsize);
+		memcpy((void *) *data, (void *) buffer, outsize);
 
 		delete [] buffer;
 
@@ -88,9 +85,9 @@ bool FilterInVOC::DecodeData(unsigned char **data, int size, int *outsize)
 		{
 			int newbytesleft = ((char *) (*data + bytesleft + 1))[0] + 256 * ((char *) (*data + bytesleft + 2))[0] + 65536 * ((char *) (*data + bytesleft + 3))[0];
 
-			*outsize = size - 4;
+			outsize = size - 4;
 
-			unsigned char *buffer = new unsigned char [*outsize];
+			unsigned char *buffer = new unsigned char [outsize];
 
 			memcpy((void *) buffer, (void *) *data, bytesleft);
 
@@ -98,9 +95,9 @@ bool FilterInVOC::DecodeData(unsigned char **data, int size, int *outsize)
 
 			delete [] *data;
 
-			*data = new unsigned char [*outsize];
+			*data = new unsigned char [outsize];
 
-			memcpy((void *) *data, (void *) buffer, *outsize);
+			memcpy((void *) *data, (void *) buffer, outsize);
 
 			delete [] buffer;
 
@@ -112,7 +109,7 @@ bool FilterInVOC::DecodeData(unsigned char **data, int size, int *outsize)
 		bytesleft -= size;
 	}
 
-	return true;
+	return outsize;
 }
 
 bonkFormatInfo FilterInVOC::GetAudioFormat()

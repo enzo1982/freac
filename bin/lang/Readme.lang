@@ -51,6 +51,12 @@ The 'info' node
 	The 'magic' string that was used in the language files of BonkEnc v0.7 isn't used
 	anymore and should be removed from the language files.
 
+The smooth Translator utility
+-----------------------------
+
+	The smooth Translator can be used to create and edit language files. It supports full
+	Unicode on Windows 2000 and XP and automatically saves in UTF-8 on all systems.
+
 
 Robert Kausch,
 <robert.kausch@gmx.net>

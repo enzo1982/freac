@@ -22,8 +22,7 @@ class FilterInWAVE : public InputFilter
 				 FilterInWAVE(bonkEncConfig *);
 				~FilterInWAVE();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		int		 ReadData(unsigned char **, int);
 
 		bonkFormatInfo	 GetAudioFormat();
 };

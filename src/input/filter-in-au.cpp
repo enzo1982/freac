@@ -24,16 +24,11 @@ FilterInAU::~FilterInAU()
 {
 }
 
-bool FilterInAU::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterInAU::ReadData(unsigned char **data, int size)
 {
-	*outsize = size;
+	*data = new unsigned char [size];
 
-	return true;
-}
-
-bool FilterInAU::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	*outsize = size;
+	driver->ReadData(*data, size);
 
 	if (setup == false)
 	{
@@ -67,22 +62,22 @@ bool FilterInAU::DecodeData(unsigned char **data, int size, int *outsize)
 
 		setup = true;
 
-		*outsize = size - headerSize;
+		size -= headerSize;
 
-		unsigned char	*buffer = new unsigned char [*outsize];
+		unsigned char	*buffer = new unsigned char [size];
 
-		memcpy((void *) buffer, (void *) (*data + headerSize), *outsize);
+		memcpy((void *) buffer, (void *) (*data + headerSize), size);
 
 		delete [] *data;
 
-		*data = new unsigned char [*outsize];
+		*data = new unsigned char [size];
 
-		memcpy((void *) *data, (void *) buffer, *outsize);
+		memcpy((void *) *data, (void *) buffer, size);
 
 		delete [] buffer;
 	}
 
-	return true;
+	return size;
 }
 
 bonkFormatInfo FilterInAU::GetAudioFormat()

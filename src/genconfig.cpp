@@ -26,6 +26,9 @@
 #include <vorbis/vorbisenc.h>
 #include <faac/faac.h>
 
+#include <cddb.h>
+#include <cddb_extsettings.h>
+
 configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 {
 	SMOOTHPoint	 pos;
@@ -38,6 +41,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	swapchannels = currentConfig->cdrip_swapchannels;
 	locktray = currentConfig->cdrip_locktray;
 	ntscsi = currentConfig->cdrip_ntscsi;
+	cddb = currentConfig->enable_cddb;
 
 	mainWnd			= new SMOOTHWindow(currentConfig->i18n->TranslateString("General settings setup"));
 	mainWnd_titlebar	= new SMOOTHTitlebar(false, false, true);
@@ -48,6 +52,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	register_layer_dirs	= new SMOOTHLayer(currentConfig->i18n->TranslateString("Directories"));
 	register_layer_language	= new SMOOTHLayer(currentConfig->i18n->TranslateString("Language"));
 	register_layer_cdrip	= new SMOOTHLayer("CDRip");
+	register_layer_cddb	= new SMOOTHLayer("CDDB");
 
 	pos.x = 175;
 	pos.y = 29;
@@ -261,6 +266,88 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 
 	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) cdrip_check_ntscsi->Deactivate();
 
+	pos.x = 7;
+	pos.y = 11;
+	size.cx = 344;
+	size.cy = 123;
+
+	cddb_group_cddb		= new SMOOTHGroupBox(SMOOTHString("      ").Append(currentConfig->i18n->TranslateString("Enable CDDB")).Append(" "), pos, size);
+
+	pos.x += 12;
+	pos.y -= 8;
+	size.cx = 84;
+	size.cy = 0;
+
+	cddb_check_enable	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Enable CDDB"), pos, size, &cddb, SMOOTHProc(configureGeneralSettings, this, SetCDDB));
+	cddb_check_enable->SetMetrics(pos, SMOOTHSize(cddb_check_enable->GetObjectProperties()->textSize.cx + 19, cddb_check_enable->GetObjectProperties()->size.cy));
+
+	pos.x -= 3;
+	pos.y += 21;
+
+	cddb_text_mode		= new SMOOTHText(currentConfig->i18n->TranslateString("CDDB access mode:"), pos);
+
+	pos.x += 106;
+	pos.y -= 3;
+	size.cx = 219;
+
+	cddb_combo_mode		= new SMOOTHComboBox(pos, size, SMOOTHProc(configureGeneralSettings, this, SetCDDBMode));
+	cddb_combo_mode->AddEntry("CDDBP", NULLPROC);
+	cddb_combo_mode->AddEntry("HTTP", NULLPROC);
+	cddb_combo_mode->SelectEntry(currentConfig->freedb_mode);
+
+	pos.x -= 106;
+	pos.y += 30;
+
+	cddb_text_server	= new SMOOTHText(currentConfig->i18n->TranslateString("CDDB server:"), pos);
+
+	pos.x += 106;
+	pos.y -= 3;
+	size.cx = 146;
+
+	cddb_edit_server	= new SMOOTHEditBox(currentConfig->freedb_server, pos, size, EDB_ALPHANUMERIC, 0, NULLPROC);
+
+	pos.x += 153;
+	pos.y += 3;
+
+	cddb_text_port		= new SMOOTHText(currentConfig->i18n->TranslateString("Port:"), pos);
+	cddb_text_port->SetPosition(SMOOTHPoint(296 - cddb_text_port->GetObjectProperties()->textSize.cx, cddb_text_port->GetObjectProperties()->pos.y));
+
+	pos.x += 29;
+	pos.y -= 3;
+	size.cx = 37;
+
+	cddb_edit_port = new SMOOTHEditBox("", pos, size, EDB_NUMERIC, 5, NULLPROC);
+
+	pos.x = 16;
+	pos.y += 30;
+
+	cddb_text_email		= new SMOOTHText(currentConfig->i18n->TranslateString("eMail address:"), pos);
+
+	pos.x += 106;
+	pos.y -= 3;
+	size.cx = 146;
+
+	cddb_edit_email		= new SMOOTHEditBox(currentConfig->freedb_email, pos, size, EDB_ALPHANUMERIC, 0, NULLPROC);
+
+	pos.x = 17;
+	pos.y += 27;
+	size.cx = 158;
+
+	cddb_button_http	= new SMOOTHButton(currentConfig->i18n->TranslateString("HTTP settings"), NULL, pos, size, SMOOTHProc(configureGeneralSettings, this, HTTPSettings));
+
+	pos.x += 166;
+
+	cddb_button_proxy	= new SMOOTHButton(currentConfig->i18n->TranslateString("Proxy settings"), NULL, pos, size, SMOOTHProc(configureGeneralSettings, this, ProxySettings));
+
+	SetCDDBMode();
+	SetCDDB();
+
+	SMOOTHInt	 maxTextSize = max(cddb_text_email->GetObjectProperties()->textSize.cx, max(cddb_text_mode->GetObjectProperties()->textSize.cx, cddb_text_server->GetObjectProperties()->textSize.cx));
+
+	cddb_combo_mode->SetMetrics(SMOOTHPoint(maxTextSize + 24, cddb_combo_mode->GetObjectProperties()->pos.y), SMOOTHSize(317 - maxTextSize, cddb_combo_mode->GetObjectProperties()->size.cy));
+	cddb_edit_server->SetMetrics(SMOOTHPoint(maxTextSize + 24, cddb_edit_server->GetObjectProperties()->pos.y), SMOOTHSize(265 - maxTextSize - cddb_text_port->GetObjectProperties()->textSize.cx, cddb_edit_server->GetObjectProperties()->size.cy));
+	cddb_edit_email->SetMetrics(SMOOTHPoint(maxTextSize + 24, cddb_edit_email->GetObjectProperties()->pos.y), SMOOTHSize(317 - maxTextSize, cddb_edit_email->GetObjectProperties()->size.cy));
+
 	RegisterObject(mainWnd);
 
 	mainWnd->RegisterObject(mainWnd_titlebar);
@@ -276,6 +363,8 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	reg_register->RegisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
+
+	reg_register->RegisterObject(register_layer_cddb);
 
 	register_layer_encoders->RegisterObject(encoders_group_encoder);
 	register_layer_encoders->RegisterObject(encoders_combo_encoder);
@@ -302,10 +391,24 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	register_layer_cdrip->RegisterObject(cdrip_check_locktray);
 	register_layer_cdrip->RegisterObject(cdrip_check_ntscsi);
 
+	register_layer_cddb->RegisterObject(cddb_group_cddb);
+	register_layer_cddb->RegisterObject(cddb_check_enable);
+	register_layer_cddb->RegisterObject(cddb_text_mode);
+	register_layer_cddb->RegisterObject(cddb_combo_mode);
+	register_layer_cddb->RegisterObject(cddb_text_server);
+	register_layer_cddb->RegisterObject(cddb_edit_server);
+	register_layer_cddb->RegisterObject(cddb_text_port);
+	register_layer_cddb->RegisterObject(cddb_edit_port);
+	register_layer_cddb->RegisterObject(cddb_text_email);
+	register_layer_cddb->RegisterObject(cddb_edit_email);
+	register_layer_cddb->RegisterObject(cddb_button_http);
+	register_layer_cddb->RegisterObject(cddb_button_proxy);
+
 	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(IDI_ICON);
 	mainWnd->SetMetrics(SMOOTHPoint(120, 120), SMOOTHSize(384, 271));
+	mainWnd->SetPaintProc(SMOOTHProc(configureGeneralSettings, this, PaintProc));
 }
 
 configureGeneralSettings::~configureGeneralSettings()
@@ -323,6 +426,8 @@ configureGeneralSettings::~configureGeneralSettings()
 	reg_register->UnregisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->UnregisterObject(register_layer_cdrip);
+
+	reg_register->UnregisterObject(register_layer_cddb);
 
 	register_layer_encoders->UnregisterObject(encoders_group_encoder);
 	register_layer_encoders->UnregisterObject(encoders_combo_encoder);
@@ -349,6 +454,19 @@ configureGeneralSettings::~configureGeneralSettings()
 	register_layer_cdrip->UnregisterObject(cdrip_check_locktray);
 	register_layer_cdrip->UnregisterObject(cdrip_check_ntscsi);
 
+	register_layer_cddb->UnregisterObject(cddb_group_cddb);
+	register_layer_cddb->UnregisterObject(cddb_check_enable);
+	register_layer_cddb->UnregisterObject(cddb_text_mode);
+	register_layer_cddb->UnregisterObject(cddb_combo_mode);
+	register_layer_cddb->UnregisterObject(cddb_text_server);
+	register_layer_cddb->UnregisterObject(cddb_edit_server);
+	register_layer_cddb->UnregisterObject(cddb_text_port);
+	register_layer_cddb->UnregisterObject(cddb_edit_port);
+	register_layer_cddb->UnregisterObject(cddb_text_email);
+	register_layer_cddb->UnregisterObject(cddb_edit_email);
+	register_layer_cddb->UnregisterObject(cddb_button_http);
+	register_layer_cddb->UnregisterObject(cddb_button_proxy);
+
 	UnregisterObject(mainWnd);
 
 	delete mainWnd_titlebar;
@@ -360,6 +478,7 @@ configureGeneralSettings::~configureGeneralSettings()
 	delete register_layer_dirs;
 	delete register_layer_language;
 	delete register_layer_cdrip;
+	delete register_layer_cddb;
 	delete encoders_group_encoder;
 	delete encoders_combo_encoder;
 	delete encoders_button_config;
@@ -381,6 +500,18 @@ configureGeneralSettings::~configureGeneralSettings()
 	delete cdrip_check_swapchannels;
 	delete cdrip_check_locktray;
 	delete cdrip_check_ntscsi;
+	delete cddb_group_cddb;
+	delete cddb_check_enable;
+	delete cddb_text_mode;
+	delete cddb_combo_mode;
+	delete cddb_text_server;
+	delete cddb_edit_server;
+	delete cddb_text_port;
+	delete cddb_edit_port;
+	delete cddb_text_email;
+	delete cddb_edit_email;
+	delete cddb_button_http;
+	delete cddb_button_proxy;
 	delete btn_ok;
 	delete btn_cancel;
 }
@@ -392,8 +523,28 @@ SMOOTHInt configureGeneralSettings::ShowDialog()
 	return mainWnd->value;
 }
 
+SMOOTHVoid configureGeneralSettings::PaintProc()
+{
+	cddb_check_enable->Paint(SP_PAINT);
+}
+
 SMOOTHVoid configureGeneralSettings::OK()
 {
+	if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_HTTP)
+	{
+		bool	 valid = false;
+		SString	 email = cddb_edit_email->GetText();
+
+		for (int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = true;
+
+		if (!valid)
+		{
+			SMOOTH::MessageBox(currentConfig->i18n->TranslateString("Please enter a valid eMail address."), currentConfig->i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+
+			return;
+		}
+	}
+
 	currentConfig->encoder = encoders_combo_encoder->GetSelectedEntry();
 
 	if (currentConfig->language != currentConfig->i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry())) currentConfig->languageChanged = true;
@@ -409,6 +560,14 @@ SMOOTHVoid configureGeneralSettings::OK()
 	currentConfig->cdrip_swapchannels = swapchannels;
 	currentConfig->cdrip_locktray = locktray;
 	currentConfig->cdrip_ntscsi = ntscsi;
+	currentConfig->enable_cddb = cddb;
+
+	currentConfig->freedb_mode = cddb_combo_mode->GetSelectedEntry();
+	currentConfig->freedb_server = cddb_edit_server->GetText();
+	currentConfig->freedb_email = cddb_edit_email->GetText();
+
+	if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_CDDBP)		currentConfig->freedb_cddbp_port = cddb_edit_port->GetText().ToInt();
+	else if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_HTTP)	currentConfig->freedb_http_port = cddb_edit_port->GetText().ToInt();
 
 	int	 len = currentConfig->enc_outdir.Length() - 1;
 
@@ -508,4 +667,71 @@ SMOOTHVoid configureGeneralSettings::SelectLanguage()
 
 	language_link_url->SetText(currentConfig->i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()));
 	language_link_url->SetURL(currentConfig->i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()));
+}
+
+SMOOTHVoid configureGeneralSettings::SetCDDB()
+{
+	if (cddb)
+	{
+		cddb_text_mode->Activate();
+		cddb_combo_mode->Activate();
+		cddb_text_server->Activate();
+		cddb_edit_server->Activate();
+		cddb_text_port->Activate();
+		cddb_edit_port->Activate();
+		cddb_button_proxy->Activate();
+
+		SetCDDBMode();
+	}
+	else
+	{
+		cddb_text_mode->Deactivate();
+		cddb_combo_mode->Deactivate();
+		cddb_text_server->Deactivate();
+		cddb_edit_server->Deactivate();
+		cddb_text_port->Deactivate();
+		cddb_edit_port->Deactivate();
+		cddb_text_email->Deactivate();
+		cddb_edit_email->Deactivate();
+		cddb_button_http->Deactivate();
+		cddb_button_proxy->Deactivate();
+	}
+}
+
+SMOOTHVoid configureGeneralSettings::SetCDDBMode()
+{
+	if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_CDDBP)
+	{
+		cddb_edit_port->SetText(SMOOTHString::IntToString(currentConfig->freedb_cddbp_port));
+
+		cddb_text_email->Deactivate();
+		cddb_edit_email->Deactivate();
+		cddb_button_http->Deactivate();
+	}
+	else if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_HTTP)
+	{
+		cddb_edit_port->SetText(SMOOTHString::IntToString(currentConfig->freedb_http_port));
+
+		cddb_text_email->Activate();
+		cddb_edit_email->Activate();
+		cddb_button_http->Activate();
+	}
+}
+
+SMOOTHVoid configureGeneralSettings::HTTPSettings()
+{
+	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(currentConfig, 0);
+
+	dlg->ShowDialog();
+
+	delete dlg;
+}
+
+SMOOTHVoid configureGeneralSettings::ProxySettings()
+{
+	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(currentConfig, 1);
+
+	dlg->ShowDialog();
+
+	delete dlg;
 }

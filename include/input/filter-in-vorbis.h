@@ -35,8 +35,7 @@ class FilterInVORBIS : public InputFilter
 					 FilterInVORBIS(bonkEncConfig *);
 					~FilterInVORBIS();
 
-		bool			 EncodeData(unsigned char **, int, int *);
-		bool			 DecodeData(unsigned char **, int, int *);
+		int			 ReadData(unsigned char **, int);
 
 		bonkFormatInfo		 GetAudioFormat();
 };

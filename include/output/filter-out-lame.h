@@ -22,8 +22,10 @@ class FilterOutLAME : public OutputFilter
 					 FilterOutLAME(bonkEncConfig *, bonkFormatInfo *);
 					~FilterOutLAME();
 
-		bool			 EncodeData(unsigned char **, int, int *);
-		bool			 DecodeData(unsigned char **, int, int *);
+		bool			 Activate();
+		bool			 Deactivate();
+
+		int			 WriteData(unsigned char *, int);
 };
 
 #endif

@@ -12,18 +12,45 @@
 #define _H_CDDB_
 
 #include <smoothx.h>
+#include <main.h>
+
+const SMOOTHInt	 FREEDB_MODE_CDDBP	= 0;
+const SMOOTHInt	 FREEDB_MODE_HTTP	= 1;
 
 class bonkEncCDDB
 {
 	private:
 		SMOOTHInt	 activeDriveID;
+		SMOOTHBool	 connected;
+		bonkEncConfig	*config;
+
+		IOLibDriver	*socket;
+		InStream	*in;
+		OutStream	*out;
+
+		SMOOTHArray<SMOOTHString>	 ids;
+		SMOOTHArray<SMOOTHString>	 titles;
+		SMOOTHArray<SMOOTHString>	 categories;
+
+		SMOOTHInt	 ComputeDiscID();
+		SMOOTHString	 GetCDDBQueryString();
+		SMOOTHString	 SendCommand(SMOOTHString);
 	public:
-				 bonkEncCDDB();
+				 bonkEncCDDB(bonkEncConfig *);
 				~bonkEncCDDB();
 
 		SMOOTHInt	 SetActiveDrive(SMOOTHInt);
+		SMOOTHString	 GetDiscIDString();
 
-		SMOOTHInt	 ComputeDiscID();
+		SMOOTHBool	 ConnectToServer();
+		SMOOTHString	 Query(SMOOTHString);
+		SMOOTHString	 Read(SMOOTHString);
+		SMOOTHBool	 CloseConnection();
+
+		SMOOTHInt	 GetNOfMatches();
+		SMOOTHString	 GetNthID(SMOOTHInt);
+		SMOOTHString	 GetNthTitle(SMOOTHInt);
+		SMOOTHString	 GetNthCategory(SMOOTHInt);
 };
 
 #endif

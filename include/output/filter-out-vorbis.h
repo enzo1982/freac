@@ -31,8 +31,7 @@ class FilterOutVORBIS : public OutputFilter
 					 FilterOutVORBIS(bonkEncConfig *, bonkFormatInfo *);
 					~FilterOutVORBIS();
 
-		bool			 EncodeData(unsigned char **, int, int *);
-		bool			 DecodeData(unsigned char **, int, int *);
+		int			 WriteData(unsigned char *, int);
 };
 
 #endif

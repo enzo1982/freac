@@ -12,6 +12,7 @@
 #include <output/filter-out-blade.h>
 #include <dllinterfaces.h>
 #include <memory.h>
+#include <id3/tag.h>
 
 FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
 {
@@ -69,51 +70,111 @@ FilterOutBLADE::~FilterOutBLADE()
 {
 }
 
-bool FilterOutBLADE::EncodeData(unsigned char **data, int size, int *outsize)
+bool FilterOutBLADE::Activate()
 {
-	unsigned char	*outbuffer = new unsigned char [buffersize];
-
-	ex_beEncodeChunk(handle, samples_size, (signed short *) (*data), outbuffer, (unsigned long *) outsize);
-
-	delete [] *data;
-
-	*data = new unsigned char [*outsize];
-
-	memcpy((void *) *data, (void *) outbuffer, *outsize);
-
-	if (lastPacket)
+#ifndef _MSC_VER
+	if (format->trackInfo->cdText)
 	{
-		unsigned long	 bytes = 0;
+		ID3_Tag		*tag = new ID3_Tag();
 
-		ex_beDeinitStream(handle, outbuffer, &bytes);
+		ID3_Frame	*artist = new ID3_Frame(ID3FID_LEADARTIST);
+		ID3_Field	&artist_text = artist->Field(ID3FN_TEXT);
 
-		unsigned char	*buffer = new unsigned char [*outsize];
+		artist_text.Set(format->trackInfo->artist);
 
-		memcpy((void *) buffer, (void *) *data, *outsize);
+		tag->AddFrame(artist);
 
-		delete [] *data;
+		ID3_Frame	*title = new ID3_Frame(ID3FID_TITLE);
+		ID3_Field	&title_text = title->Field(ID3FN_TEXT);
 
-		*data = new unsigned char [*outsize + bytes];
+		title_text.Set(format->trackInfo->title);
 
-		memcpy((void *) *data, (void *) buffer, *outsize);
+		tag->AddFrame(title);
+
+		ID3_Frame	*album = new ID3_Frame(ID3FID_ALBUM);
+		ID3_Field	&album_text = album->Field(ID3FN_TEXT);
+
+		album_text.Set(format->trackInfo->album);
+
+		tag->AddFrame(album);
+
+		ID3_Frame	*track = new ID3_Frame(ID3FID_TRACKNUM);
+		ID3_Field	&track_text = track->Field(ID3FN_TEXT);
+
+		if (format->trackInfo->track > 0)
+		{
+			if (format->trackInfo->track < 10)	track_text.Set(SMOOTHString("0").Append(SMOOTHString::IntToString(format->trackInfo->track)));
+			else					track_text.Set(SMOOTHString::IntToString(format->trackInfo->track));
+
+			tag->AddFrame(track);
+		}
+
+		ID3_Frame	*year = new ID3_Frame(ID3FID_YEAR);
+		ID3_Field	&year_text = year->Field(ID3FN_TEXT);
+
+		year_text.Set(format->trackInfo->year);
+
+		tag->AddFrame(year);
+
+		ID3_Frame	*genre = new ID3_Frame(ID3FID_CONTENTTYPE);
+		ID3_Field	&genre_text = genre->Field(ID3FN_TEXT);
+
+		genre_text.Set(format->trackInfo->genre);
+
+		tag->AddFrame(genre);
+
+		ID3_Frame	*comment = new ID3_Frame(ID3FID_COMMENT);
+		ID3_Field	&comment_text = comment->Field(ID3FN_TEXT);
+
+		comment_text.Set("BonkEnc v0.8 <http://www.bonkenc.org>");
+
+		tag->AddFrame(comment);
+
+		unsigned char	*buffer = new unsigned char [tag->Size()];
+		int		 size = tag->Render(buffer);
+
+		driver->WriteData(buffer, size);
 
 		delete [] buffer;
 
-		memcpy((void *) (*data + *outsize), (void *) outbuffer, bytes);
-
-		*outsize += bytes;
-
-		ex_beCloseStream(handle);
+		delete tag;
+		delete artist;
+		delete title;
+		delete album;
+		delete track;
+		delete year;
+		delete genre;
+		delete comment;
 	}
-
-	delete [] outbuffer;
+#endif
 
 	return true;
 }
 
-bool FilterOutBLADE::DecodeData(unsigned char **data, int size, int *outsize)
+bool FilterOutBLADE::Deactivate()
 {
-	*outsize = size;
+	unsigned char	*outbuffer = new unsigned char [buffersize];
+	unsigned long	 bytes = 0;
+
+	ex_beDeinitStream(handle, outbuffer, &bytes);
+
+	driver->WriteData(outbuffer, bytes);
+
+	ex_beCloseStream(handle);
 
 	return true;
+}
+
+int FilterOutBLADE::WriteData(unsigned char *data, int size)
+{
+	unsigned char	*outbuffer = new unsigned char [buffersize];
+	unsigned long	 bytes = 0;
+
+	ex_beEncodeChunk(handle, samples_size, (signed short *) data, outbuffer, &bytes);
+
+	driver->WriteData(outbuffer, bytes);
+
+	delete [] outbuffer;
+
+	return bytes;
 }

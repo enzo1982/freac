@@ -24,8 +24,7 @@ class FilterInCDRip : public InputFilter
 				 FilterInCDRip(bonkEncConfig *);
 				~FilterInCDRip();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		int		 ReadData(unsigned char **, int);
 
 		bool		 SetTrack(int);
 		int		 GetTrackSize();

@@ -206,7 +206,7 @@ SMOOTHInt bonkTranslator::ReadStrings(SMOOTHXMLDocument *language, bonkEncLangua
 {
 	SXMLNode	*entry = language->GetRootNode()->GetNodeByName("entry");
 
-	do
+	while (entry != NIL)
 	{
 		if (entry->GetName() == "entry")
 		{
@@ -237,7 +237,6 @@ SMOOTHInt bonkTranslator::ReadStrings(SMOOTHXMLDocument *language, bonkEncLangua
 
 		entry = entry->GetNextNode();
 	}
-	while (entry != NIL);
 
 	return SMOOTH::Success;
 }

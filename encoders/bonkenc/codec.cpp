@@ -113,9 +113,11 @@ void BONKencoder::begin(OutStream *_f_out, uint32 _length, uint32 _rate, int _ch
 
 	samples_size = channels * samples_per_packet * down_sampling;
 
-	infoData = new unsigned char [5 * int((length + samples_size - 1) / samples_size)];
+	if (length == 0)	infoData = new unsigned char [524288];
+	else			infoData = new unsigned char [5 * int((length + samples_size - 1) / samples_size)];
 
-	i_out = new OutStream(STREAM_BUFFER, (void *) infoData, 5 * int((length + samples_size - 1) / samples_size));
+	if (length == 0)	i_out = new OutStream(STREAM_BUFFER, (void *) infoData, 524288);
+	else			i_out = new OutStream(STREAM_BUFFER, (void *) infoData, 5 * int((length + samples_size - 1) / samples_size));
 
 	f_out->OutputNumber(0, 1);
 	f_out->OutputString("BONK");
@@ -138,7 +140,7 @@ void BONKencoder::begin(OutStream *_f_out, uint32 _length, uint32 _rate, int _ch
 
 	output_samples.resize(channels);
 
-	for(int j=0;j<channels;j++)
+	for(int j = 0; j < channels; j++)
 		output_samples[j].resize(samples_per_packet);
 
 	sample_count = 0;
@@ -160,7 +162,8 @@ void BONKencoder::finish()
 
 	delete i_out;
 
-	f_out->OutputData((void *) infoData, 5 * int((length + samples_size - 1) / samples_size));
+	if (length == 0)	f_out->OutputData((void *) infoData, 5 * int((sample_count + samples_size - 1) / samples_size));
+	else			f_out->OutputData((void *) infoData, 5 * int((length + samples_size - 1) / samples_size));
 
 	f_out->OutputNumber(0, 1);
 	f_out->OutputString("META");
@@ -173,6 +176,9 @@ void BONKencoder::finish()
 	f_out->OutputString("meta");
 
 	f_out->Flush();
+
+	f_out->Seek(6);
+	f_out->OutputNumber(sample_count, 4);
 
 	delete [] infoData;
 }
@@ -292,38 +298,16 @@ void BONKencoder::store_packet(vector<int> &samples)
 	sample_count += samples_size;
 }
 
-BONKdecoder::BONKdecoder()
+bool BONKdecoder::begin(InStream *f_in, uint32 *_length, uint32 *_rate, int *_channels)
 {
 	isBonk = false;
 
-	d_buffer = NULL;
-	d_buffer_size = 0;
-
-	bit_in.f_in = new InStream(STREAM_BUFFER, (void *) d_buffer, d_buffer_size);
-}
-
-BONKdecoder::~BONKdecoder()
-{
-	delete bit_in.f_in;
-
-	delete [] d_buffer;
-}
-
-bool BONKdecoder::begin(uint32 *_length, uint32 *_rate, int *_channels)
-{
-	if (isBonk)
-	{
-		*_length = length;
-		*_rate = rate;
-		*_channels = channels;
-
-		return true;
-	}
+	bit_in.f_in = f_in;
 
 	if (bit_in.f_in->Size() == 0) return false;
 
-	vector<char>	buffer;
-	int i;
+	vector<char>	 buffer;
+	int		 i;
 
 	for(i = 0; i < 6; i++) buffer.push_back(bit_in.f_in->InputNumber(1));
 
@@ -382,36 +366,10 @@ void BONKdecoder::finish()
 {
 }
 
-void BONKdecoder::push_data(void *data, uint32 size)
-{
-	int	 pos = bit_in.f_in->GetPos();
-
-	delete bit_in.f_in;
-
-	unsigned char	*buffer = new unsigned char [d_buffer_size - pos];
-
-	memcpy((void *) buffer, (void *) (d_buffer + pos), d_buffer_size - pos);
-
-	delete [] d_buffer;
-
-	d_buffer = new unsigned char [d_buffer_size - pos + size];
-
-	memcpy((void *) d_buffer, (void *) buffer, d_buffer_size - pos);
-	memcpy((void *) (d_buffer + d_buffer_size - pos), (void *) data, size);
-
-	d_buffer_size = d_buffer_size - pos + size;
-
-	bit_in.f_in = new InStream(STREAM_BUFFER, (void *) d_buffer, d_buffer_size);
-
-	delete [] buffer;
-}
-
 bool BONKdecoder::read_packet(vector<int> &samples)
 {
 	if (!isBonk) return false;
 	if (!length_remaining) return false;
-
-	if (d_buffer_size - bit_in.f_in->GetPos() < 4096) return false;
 
 	samples.resize(samples_per_packet * down_sampling * channels);
 

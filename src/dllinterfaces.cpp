@@ -34,8 +34,6 @@ BONKCLOSEENCODER		 ex_bonk_close_encoder;
 BONKENCODEPACKET		 ex_bonk_encode_packet;
 BONKCREATEDECODER		 ex_bonk_create_decoder;
 BONKCLOSEDECODER		 ex_bonk_close_decoder;
-BONKDECODERPUSHDATA		 ex_bonk_decoder_push_data;
-BONKDECODEHEADER		 ex_bonk_decode_header;
 BONKDECODEPACKET		 ex_bonk_decode_packet;
 BONKGETVERSIONSTRING		 ex_bonk_get_version_string;
 
@@ -148,8 +146,6 @@ SMOOTHBool bonkEnc::LoadBonkDLL()
 	ex_bonk_encode_packet		= (BONKENCODEPACKET) GetProcAddress(bonkdll, "bonk_encode_packet");
 	ex_bonk_create_decoder		= (BONKCREATEDECODER) GetProcAddress(bonkdll, "bonk_create_decoder");
 	ex_bonk_close_decoder		= (BONKCLOSEDECODER) GetProcAddress(bonkdll, "bonk_close_decoder");
-	ex_bonk_decoder_push_data	= (BONKDECODERPUSHDATA) GetProcAddress(bonkdll, "bonk_decoder_push_data");
-	ex_bonk_decode_header		= (BONKDECODEHEADER) GetProcAddress(bonkdll, "bonk_decode_header");
 	ex_bonk_decode_packet		= (BONKDECODEPACKET) GetProcAddress(bonkdll, "bonk_decode_packet");
 	ex_bonk_get_version_string	= (BONKGETVERSIONSTRING) GetProcAddress(bonkdll, "bonk_get_version_string");
 
@@ -158,8 +154,6 @@ SMOOTHBool bonkEnc::LoadBonkDLL()
 	if (ex_bonk_encode_packet == NULL)	{ FreeLibrary(bonkdll); return false; }
 	if (ex_bonk_create_decoder == NULL)	{ FreeLibrary(bonkdll); return false; }
 	if (ex_bonk_close_decoder == NULL)	{ FreeLibrary(bonkdll); return false; }
-	if (ex_bonk_decoder_push_data == NULL)	{ FreeLibrary(bonkdll); return false; }
-	if (ex_bonk_decode_header == NULL)	{ FreeLibrary(bonkdll); return false; }
 	if (ex_bonk_decode_packet == NULL)	{ FreeLibrary(bonkdll); return false; }
 	if (ex_bonk_get_version_string == NULL)	{ FreeLibrary(bonkdll); return false; }
 
@@ -168,7 +162,7 @@ SMOOTHBool bonkEnc::LoadBonkDLL()
 
 SMOOTHVoid bonkEnc::FreeBonkDLL()
 {
-	FreeLibrary(bonkdll);	
+	FreeLibrary(bonkdll);
 }
 
 SMOOTHBool bonkEnc::LoadBladeDLL()
@@ -198,7 +192,7 @@ SMOOTHBool bonkEnc::LoadBladeDLL()
 
 SMOOTHVoid bonkEnc::FreeBladeDLL()
 {
-	FreeLibrary(bladedll);	
+	FreeLibrary(bladedll);
 }
 
 SMOOTHBool bonkEnc::LoadLAMEDLL()
@@ -282,7 +276,7 @@ SMOOTHBool bonkEnc::LoadLAMEDLL()
 
 SMOOTHVoid bonkEnc::FreeLAMEDLL()
 {
-	FreeLibrary(lamedll);	
+	FreeLibrary(lamedll);
 }
 
 SMOOTHBool bonkEnc::LoadTVQDLL()
@@ -320,7 +314,7 @@ SMOOTHBool bonkEnc::LoadTVQDLL()
 
 SMOOTHVoid bonkEnc::FreeTVQDLL()
 {
-	FreeLibrary(tvqdll);	
+	FreeLibrary(tvqdll);
 }
 
 SMOOTHBool bonkEnc::LoadVorbisDLL()
@@ -416,7 +410,7 @@ SMOOTHBool bonkEnc::LoadVorbisDLL()
 
 SMOOTHVoid bonkEnc::FreeVorbisDLL()
 {
-	FreeLibrary(vorbisdll);	
+	FreeLibrary(vorbisdll);
 }
 
 SMOOTHBool bonkEnc::LoadFAACDLL()
@@ -446,7 +440,7 @@ SMOOTHBool bonkEnc::LoadFAACDLL()
 
 SMOOTHVoid bonkEnc::FreeFAACDLL()
 {
-	FreeLibrary(faacdll);	
+	FreeLibrary(faacdll);
 }
 
 SMOOTHBool bonkEnc::LoadCDRipDLL()
@@ -498,5 +492,14 @@ SMOOTHBool bonkEnc::LoadCDRipDLL()
 
 SMOOTHVoid bonkEnc::FreeCDRipDLL()
 {
-	FreeLibrary(cdripdll);	
+	FreeLibrary(cdripdll);
+}
+
+SMOOTHBool bonkEnc::LoadID3DLL()
+{
+	return true;
+}
+
+SMOOTHVoid bonkEnc::FreeID3DLL()
+{
 }

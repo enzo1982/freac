@@ -24,16 +24,11 @@ FilterInAIFF::~FilterInAIFF()
 {
 }
 
-bool FilterInAIFF::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterInAIFF::ReadData(unsigned char **data, int size)
 {
-	*outsize = size;
+	*data = new unsigned char [size];
 
-	return true;
-}
-
-bool FilterInAIFF::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	*outsize = size;
+	driver->ReadData(*data, size);
 
 	if (setup == false)
 	{
@@ -71,22 +66,22 @@ bool FilterInAIFF::DecodeData(unsigned char **data, int size, int *outsize)
 
 		setup = true;
 
-		*outsize = size - 54;
+		size -= 54;
 
-		unsigned char	*buffer = new unsigned char [*outsize];
+		unsigned char	*buffer = new unsigned char [size];
 
-		memcpy((void *) buffer, (void *) (*data + 54), *outsize);
+		memcpy((void *) buffer, (void *) (*data + 54), size);
 
 		delete [] *data;
 
-		*data = new unsigned char [*outsize];
+		*data = new unsigned char [size];
 
-		memcpy((void *) *data, (void *) buffer, *outsize);
+		memcpy((void *) *data, (void *) buffer, size);
 
 		delete [] buffer;
 	}
 
-	return true;
+	return size;
 }
 
 bonkFormatInfo FilterInAIFF::GetAudioFormat()

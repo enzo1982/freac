@@ -62,10 +62,8 @@
 	typedef void *				(*BONKCREATEENCODER)				(OutStream *, uint32, uint32, int, bool, bool, int, int, int, double);
 	typedef bool				(*BONKCLOSEENCODER)				(void *);
 	typedef bool				(*BONKENCODEPACKET)				(void *, vector<int> &);
-	typedef void *				(*BONKCREATEDECODER)				();
+	typedef void *				(*BONKCREATEDECODER)				(InStream *, uint32 *, uint32 *, int *);
 	typedef bool				(*BONKCLOSEDECODER)				(void *);
-	typedef bool				(*BONKDECODERPUSHDATA)				(void *, void *, uint32);
-	typedef bool				(*BONKDECODEHEADER)				(void *, uint32 *, uint32 *, int *);
 	typedef bool				(*BONKDECODEPACKET)				(void *, vector<int> &);
 	typedef const char *			(*BONKGETVERSIONSTRING)				();
 
@@ -74,8 +72,6 @@
 	extern BONKENCODEPACKET			 ex_bonk_encode_packet;
 	extern BONKCREATEDECODER		 ex_bonk_create_decoder;
 	extern BONKCLOSEDECODER			 ex_bonk_close_decoder;
-	extern BONKDECODERPUSHDATA		 ex_bonk_decoder_push_data;
-	extern BONKDECODEHEADER			 ex_bonk_decode_header;
 	extern BONKDECODEPACKET			 ex_bonk_decode_packet;
 	extern BONKGETVERSIONSTRING		 ex_bonk_get_version_string;
 

@@ -16,14 +16,15 @@
 class FilterInLAME : public InputFilter
 {
 	private:
-		bool		 setup;
 		bonkFormatInfo	 format;
 	public:
 				 FilterInLAME(bonkEncConfig *);
 				~FilterInLAME();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		bool		 Activate();
+		bool		 Deactivate();
+
+		int		 ReadData(unsigned char **, int);
 
 		bonkFormatInfo	 GetAudioFormat();
 };

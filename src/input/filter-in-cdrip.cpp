@@ -45,17 +45,8 @@ FilterInCDRip::~FilterInCDRip()
 	}
 }
 
-bool FilterInCDRip::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterInCDRip::ReadData(unsigned char **data, int size)
 {
-	*outsize = size;
-
-	return true;
-}
-
-bool FilterInCDRip::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	*outsize = size;
-
 	if (trackNumber == -1) return true;
 
 	if (byteCount >= trackSize)
@@ -85,16 +76,14 @@ bool FilterInCDRip::DecodeData(unsigned char **data, int size, int *outsize)
 
 	byteCount += nBytes;
 
-	*outsize = nBytes;
+	size = nBytes;
 
-	delete [] *data;
+	*data = new unsigned char [size];
 
-	*data = new unsigned char [*outsize];
-
-	memcpy((void *) *data, (void *) buffer, *outsize);
+	memcpy((void *) *data, (void *) buffer, size);
 
 
-	return true;
+	return size;
 }
 
 bool FilterInCDRip::SetTrack(int newTrack)

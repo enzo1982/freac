@@ -22,8 +22,7 @@ class FilterInAIFF : public InputFilter
 				 FilterInAIFF(bonkEncConfig *);
 				~FilterInAIFF();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		int		 ReadData(unsigned char **, int);
 
 		bonkFormatInfo	 GetAudioFormat();
 };

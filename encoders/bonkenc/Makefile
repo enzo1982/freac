@@ -3,7 +3,7 @@ OBJECTS = api.o codec.o utility.o
 all : BonkEnc.dll
 
 BonkEnc.dll : $(OBJECTS)
-	dllwrap -mwindows -o BonkEnc.dll --output-lib libbonkenc.a $(OBJECTS) -L../../../smooth/lib -liolib -lwsock32
+	dllwrap -mwindows -o BonkEnc.dll --output-lib libbonkenc.a $(OBJECTS) -L../../../smooth/lib -liolib
 	strip --strip-all BonkEnc.dll
 	upx -9 -q BonkEnc.dll
 

@@ -23,8 +23,7 @@ class FilterInVOC : public InputFilter
 				 FilterInVOC(bonkEncConfig *);
 				~FilterInVOC();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		int		 ReadData(unsigned char **, int);
 
 		bonkFormatInfo	 GetAudioFormat();
 };

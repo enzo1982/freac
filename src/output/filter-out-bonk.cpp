@@ -17,8 +17,6 @@
 
 FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
 {
-	setup = false;
-
 	if (format->channels != 1 && format->channels != 2)
 	{
 		SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
@@ -37,82 +35,45 @@ FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 		return;
 	}
 
-	buffer = new unsigned char [131072];
-	d_out = new OutStream(STREAM_BUFFER, (void *) buffer, 131072);
-
-	int	 down_sampling = currentConfig->bonk_downsampling;
-	double	 quantization = 0.05 * (double) currentConfig->bonk_quantization;
-	int	 tap_count = currentConfig->bonk_predictor;
-	bool	 lossless = currentConfig->bonk_lossless;
-	bool	 mid_side = currentConfig->bonk_jstereo;
-	int	 packet_size = int(1024.0 * down_sampling * format->rate / 44100);
-
-	encoder = ex_bonk_create_encoder(d_out,
-		format->length, format->rate, format->channels, lossless, mid_side,
-		tap_count, down_sampling,
-		packet_size / down_sampling,
-		quantization);
+	int	 packet_size = int(1024.0 * currentConfig->bonk_downsampling * format->rate / 44100);
 
 	packageSize = packet_size * format->channels * (format->bits / 8);
 }
 
 FilterOutBONK::~FilterOutBONK()
 {
-	delete [] buffer;
-	delete d_out;
 }
 
-bool FilterOutBONK::EncodeData(unsigned char **data, int size, int *outsize)
+bool FilterOutBONK::Activate()
 {
-	vector<int>	 samples(size / (format->bits / 8)); 
+	d_out	= new OutStream(STREAM_DRIVER, driver);
+	encoder	= ex_bonk_create_encoder(d_out,
+		max((int) format->length, 0), format->rate, format->channels,
+		currentConfig->bonk_lossless, currentConfig->bonk_jstereo,
+		currentConfig->bonk_predictor, currentConfig->bonk_downsampling,
+		int(1024.0 * format->rate / 44100),
+		0.05 * (double) currentConfig->bonk_quantization);
 
-	if (setup)	d_out->Seek(0);
-	else		setup = true;
+	return true;
+}
 
-	for (int i = 0; i < size / (format->bits / 8); i++) samples[i] = ((short *) *data)[i];
+bool FilterOutBONK::Deactivate()
+{
+	ex_bonk_close_encoder(encoder);
+
+	delete d_out;
+
+	return true;
+}
+
+int FilterOutBONK::WriteData(unsigned char *data, int size)
+{
+	int		 pos = d_out->GetPos();
+	vector<int>	 samples(size / (format->bits / 8));
+
+	for (int i = 0; i < size / (format->bits / 8); i++) samples[i] = ((short *) data)[i];
 
 	ex_bonk_encode_packet(encoder, samples);
 
-	d_out->Flush();
-
-	*outsize = d_out->GetPos();
-
-	delete [] *data;
-
-	*data = new unsigned char [*outsize];
-
-	memcpy((void *) *data, (void *) buffer, *outsize);
-
-	if (lastPacket)
-	{
-		d_out->Seek(0);
-
-		ex_bonk_close_encoder(encoder);
-
-		unsigned long 	 bytes = d_out->GetPos();
-		unsigned char	*pbuffer = new unsigned char [*outsize];
-
-		memcpy((void *) pbuffer, (void *) *data, *outsize);
-
-		delete [] *data;
-
-		*data = new unsigned char [*outsize + bytes];
-
-		memcpy((void *) *data, (void *) pbuffer, *outsize);
-
-		delete [] pbuffer;
-
-		memcpy((void *) (*data + *outsize), (void *) buffer, bytes);
-
-		*outsize += bytes;
-	}
-
-	return true;
-}
-
-bool FilterOutBONK::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	*outsize = size;
-
-	return true;
+	return d_out->GetPos() - pos;
 }

@@ -14,51 +14,69 @@
 
 FilterInLAME::FilterInLAME(bonkEncConfig *config) : InputFilter(config)
 {
-	setup = false;
-
 	packageSize = 0;
-
-	ex_lame_decode_init();
 }
 
 FilterInLAME::~FilterInLAME()
 {
 }
 
-bool FilterInLAME::EncodeData(unsigned char **data, int size, int *outsize)
+bool FilterInLAME::Activate()
 {
-	*outsize = size;
+	ex_lame_decode_init();
 
-	return true;
-}
+	int	 size = 4096;
 
-bool FilterInLAME::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	if (size <= 0)
+	do
 	{
-		*outsize = 0;
+		unsigned char	*data = new unsigned char [size];
 
-		return false;
-	}
+		driver->ReadData(data, size);
 
-	inBytes += size;
+		short	*pcm_l = new short [size * 32];
+		short	*pcm_r = new short [size * 32];
 
-	short	*pcm_l = new short [size * 32];
-	short	*pcm_r = new short [size * 32];
+		mp3data_struct	 mp3data;
 
-	mp3data_struct	 mp3data;
-	int		 nsamples = ex_lame_decode_headers(*data, size, pcm_l, pcm_r, &mp3data);
-
-	if (!setup)
-	{
-		setup = true;
+		ex_lame_decode_headers(data, size, pcm_l, pcm_r, &mp3data);
 
 		format.order = BYTE_INTEL;
 		format.channels = mp3data.stereo;
 		format.rate = mp3data.samplerate;
 		format.bits = 16;
 		format.length = -1;
+
+		delete [] data;
+
+		if (mp3data.stereo <= 2) break;
 	}
+	while (driver->GetPos() < driver->GetSize());
+
+	driver->Seek(0);
+
+	return true;
+}
+
+bool FilterInLAME::Deactivate()
+{
+	return true;
+}
+
+int FilterInLAME::ReadData(unsigned char **data, int size)
+{
+	if (size <= 0) return -1;
+
+	inBytes += size;
+
+	*data = new unsigned char [size];
+
+	driver->ReadData(*data, size);
+
+	short	*pcm_l = new short [size * 32];
+	short	*pcm_r = new short [size * 32];
+
+	mp3data_struct	 mp3data;
+	int		 nsamples = ex_lame_decode_headers(*data, size, pcm_l, pcm_r, &mp3data);
 
 	delete [] *data;
 
@@ -70,12 +88,10 @@ bool FilterInLAME::DecodeData(unsigned char **data, int size, int *outsize)
 		((short *) *data)[2 * i + 1]	= pcm_r[i];
 	}
 
-	*outsize = nsamples * 4;
-
 	delete [] pcm_l;
 	delete [] pcm_r;
 
-	return true;
+	return nsamples * 4;
 }
 
 bonkFormatInfo FilterInLAME::GetAudioFormat()

@@ -27,8 +27,7 @@ class InputFilter : public IOLibFilter
 					 InputFilter(bonkEncConfig *);
 					~InputFilter();
 
-		virtual bool		 EncodeData(unsigned char **, int, int *) = 0;
-		virtual bool		 DecodeData(unsigned char **, int, int *) = 0;
+		virtual int		 ReadData(unsigned char **, int) = 0;
 
 		virtual bonkFormatInfo	 GetAudioFormat() = 0;
 

@@ -14,14 +14,15 @@ Geschichte
 	Version 0.8
 
 		- Unterstützung für CDDB/freedb hinzugefügt
+		- Unterstützung zur Decodierung von MP3, Ogg Vorbis und BONK Dateien hinzugefügt
 		- Kommandozeileninterface implementiert
-		- Sprachunterstützung für Spanisch, Englisch und Niederländisch hinzugefügt
-		- Unterstützung für MP3 Decodierung hinzugefügt
-		- Unterstützung zur Decodierung von Ogg Vorbis Dateien hinzugefügt
-		- Unterstützung zur Decodierung von BONK Dateien hinzugefügt
+		- Sprachunterstützung für Spanisch, Italienisch und Niederländisch hinzugefügt
+		- Unterstützung für ID3V2 tags hinzugefügt
+		- smooth Translator Utility zum Übersetzen von Sprachdateien hinzugefügt
+		- Mausrad Unterstützung hinzugefügt
+		- Update auf smooth v0.8.60.0
 		- Kleinere Verbesserungen
 		- Einige Bugfixes
-		- Update auf smooth v0.8.60.0
 
 	Version 0.7
 
@@ -70,9 +71,9 @@ Voraussetzungen
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
-		- MinGW32 v1.0 oder besser (http://mingw.sf.net/)
-		- smooth v0.8.59.0 (http://smooth.sf.net/)
-		- IOLib v5.x (http://iolib.sf.net/ - bei smooth dabei)
+		- MinGW32 v1.0 oder besser (http://www.mingw.org/)
+		- smooth v0.8.59.0 (http://www.smooth-project.org/)
+		- IOLib v5.x (http://www.iolib.org/ - bei smooth dabei)
 
 	Zusätzliche optionale Software:
 
@@ -107,7 +108,7 @@ Pläne für zukünftige Versionen
 ------------------------------
 
 	- das BONK Format um ID3V2 Unterstützung erweitern
-	- Künstler und Titel aus Dateinamen extrahieren und in ID3V2 Tags schreiben
+	- Künstler und Titel aus Dateinamen extrahieren
 	- Eingabefilter für AAC, VQF
 	- mehr Audioformate unterstützen (FLAC, MAC, ...)
 	- Experteneinstellungen für LAME (ATH, Zeitliche Maskierung, Psy-Modelle)
@@ -120,7 +121,7 @@ Pläne für zukünftige Versionen
 
 -----------------------------------------------------------------------------------
 
-Die offizielle BonkEnc Homepage: http://bonkenc.sf.net/
+Die offizielle BonkEnc Homepage: http://www.bonkenc.org/
 Paul F. Harrisons BONK Homepage: http://yoyo.cc.monash.edu.au/~pfh/bonk/
 
 robert.kausch@gmx.net,

@@ -11,66 +11,63 @@
 #include <iolib-cxx.h>
 #include <output/filter-out-wave.h>
 #include <main.h>
-#include <memory.h>
 
 FilterOutWAVE::FilterOutWAVE(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
 {
-	packageSize = 0;
-
-	setup = false;
+	packageSize	= 0;
+	nOfSamples	= 0;
 }
 
 FilterOutWAVE::~FilterOutWAVE()
 {
 }
 
-bool FilterOutWAVE::EncodeData(unsigned char **data, int size, int *outsize)
+bool FilterOutWAVE::Activate()
 {
-	*outsize = size;
+	unsigned char	*buffer = new unsigned char [44];
+	OutStream	*out = new OutStream(STREAM_BUFFER, (void *) buffer, 44);
 
-	if (setup == false)
-	{
-		setup = true;
+	out->OutputString("RIFF");
+	out->OutputNumber(format->length * (format->bits / 8) + 36, 4);
+	out->OutputString("WAVE");
+	out->OutputString("fmt ");
+	out->OutputNumber(16, 4);
+	out->OutputNumber(1, 2);
+	out->OutputNumber(format->channels, 2);
+	out->OutputNumber(format->rate, 4);
+	out->OutputNumber(format->rate * format->channels * (format->bits / 8), 4);
+	out->OutputNumber(format->channels * (format->bits / 8), 2);
+	out->OutputNumber(format->bits, 2);
+	out->OutputString("data");
+	out->OutputNumber(format->length * (format->bits / 8), 4);
 
-		*outsize = size + 44;
+	delete out;
 
-		unsigned char	*buffer = new unsigned char [size];
+	driver->WriteData(buffer, 44);
 
-		memcpy((void *) buffer, (void *) *data, size);
-
-		delete [] *data;
-
-		*data = new unsigned char [*outsize];
-
-		memcpy((void *) (*data + 44), (void *) buffer, size);
-
-		delete [] buffer;
-
-		OutStream	*out = new OutStream(STREAM_BUFFER, (void *) *data, size + 44);
-
-		out->OutputString("RIFF");
-		out->OutputNumber(format->length * (format->bits / 8) + 36, 4);
-		out->OutputString("WAVE");
-		out->OutputString("fmt ");
-		out->OutputNumber(16, 4);
-		out->OutputNumber(1, 2);
-		out->OutputNumber(format->channels, 2);
-		out->OutputNumber(format->rate, 4);
-		out->OutputNumber(format->rate * format->channels * (format->bits / 8), 4);
-		out->OutputNumber(format->channels * (format->bits / 8), 2);
-		out->OutputNumber(format->bits, 2);
-		out->OutputString("data");
-		out->OutputNumber(format->length * (format->bits / 8), 4);
-
-		delete out;
-	}
+	delete [] buffer;
 
 	return true;
 }
 
-bool FilterOutWAVE::DecodeData(unsigned char **data, int size, int *outsize)
+bool FilterOutWAVE::Deactivate()
 {
-	*outsize = size;
+	int	 size = nOfSamples * (format->bits / 8) + 36;
+
+	driver->Seek(4);
+	driver->WriteData((unsigned char *) &size, 4);
+
+	size -= 36;
+
+	driver->Seek(40);
+	driver->WriteData((unsigned char *) &size, 4);
 
 	return true;
+}
+
+int FilterOutWAVE::WriteData(unsigned char *data, int size)
+{
+	nOfSamples += (size / (format->bits / 8));
+
+	return driver->WriteData(data, size);
 }

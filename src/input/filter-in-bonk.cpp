@@ -14,84 +14,46 @@
 
 FilterInBONK::FilterInBONK(bonkEncConfig *config) : InputFilter(config)
 {
-	setup = false;
+	setup	= false;
+	f_in	= NULL;
 
 	packageSize = 0;
-
-	decoder = ex_bonk_create_decoder();
 }
 
 FilterInBONK::~FilterInBONK()
 {
 	ex_bonk_close_decoder(decoder);
+
+	delete f_in;
 }
 
-bool FilterInBONK::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterInBONK::ReadData(unsigned char **data, int size)
 {
-	*outsize = size;
-
-	return true;
-}
-
-bool FilterInBONK::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	ex_bonk_decoder_push_data(decoder, (void *) *data, size);
-
-	delete [] *data;
-
-	*data = NULL;
-
-	*outsize = 0;
-
-	unsigned int	 dataBufferLen = 0;
-
 	if (!setup)
 	{
+		driver->Seek(0);
+
+		f_in = new InStream(STREAM_DRIVER, driver);
+
+		decoder = ex_bonk_create_decoder(f_in, (uint32 *) &format.length, (uint32 *) &format.rate, (int *) &format.channels);
+
 		format.order = BYTE_INTEL;
 		format.bits = 16;
-
-		if (!ex_bonk_decode_header(decoder, (uint32 *) &format.length, (uint32 *) &format.rate, (int *) &format.channels)) return true;
 
 		setup = true;
 	}
 
 	vector<int>	 samples;
 
-	while (true)
-	{
-		samples.clear();
+	samples.clear();
 
-		if (!ex_bonk_decode_packet(decoder, samples)) break;
+	if (!ex_bonk_decode_packet(decoder, samples)) return 0;
 
-		if (dataBufferLen < *outsize + (samples.size() * 2))
-		{
-			dataBufferLen += ((samples.size() * 2) + 131072);
+	*data = new unsigned char [samples.size() * 2];
 
-			unsigned char *backbuffer = new unsigned char [*outsize];
+	for (unsigned int i = 0; i < samples.size(); i++) ((short *) *data)[i] = min(max(samples[i], -32768), 32767);
 
-			memcpy((void *) backbuffer, (void *) *data, *outsize);
-
-			delete [] *data;
-
-			*data = new unsigned char [dataBufferLen];
-
-			memcpy((void *) *data, (void *) backbuffer, *outsize);
-
-			delete [] backbuffer;
-
-			for (unsigned int i = 0; i < samples.size(); i++) ((short *) (*data + *outsize))[i] = min(max(samples[i], -32768), 32767);
-
-			*outsize += (samples.size() * 2);
-		}
-		else
-		{
-			for (unsigned int i = 0; i < samples.size(); i++) ((short *) (*data + *outsize))[i] = min(max(samples[i], -32768), 32767);
-
-			*outsize += (samples.size() * 2);
-		}
-	}
-
-	return true;
+	return samples.size() * 2;
 }
 
 bonkFormatInfo FilterInBONK::GetAudioFormat()

@@ -28,9 +28,11 @@ bool bonk_encode_packet(void *encoder, vector<int> &samples)
 	return true;
 }
 
-void *bonk_create_decoder()
+void *bonk_create_decoder(InStream *f_in, uint32 *length, uint32 *_rate, int *_channels)
 {
 	BONKdecoder *decoder = new BONKdecoder();
+
+	decoder->begin(f_in, length, _rate, _channels);
 
 	return (void *) decoder;
 }
@@ -42,18 +44,6 @@ bool bonk_close_decoder(void *decoder)
 	delete (BONKdecoder *) decoder;
 
 	return true;
-}
-
-bool bonk_decoder_push_data(void *decoder, void *data, uint32 size)
-{
-	((BONKdecoder *) decoder)->push_data(data, size);
-
-	return true;
-}
-
-bool bonk_decode_header(void *decoder, uint32 *length, uint32 *_rate, int *_channels)
-{
-	return ((BONKdecoder *) decoder)->begin(length, _rate, _channels);
 }
 
 bool bonk_decode_packet(void *decoder, vector<int> &samples)

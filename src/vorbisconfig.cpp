@@ -132,7 +132,7 @@ configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
 	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(IDI_ICON);
-	mainWnd->SetMetrics(SMOOTHPoint(120, 120), SMOOTHSize(364, 173));
+	mainWnd->SetMetrics(SMOOTHPoint(140, 140), SMOOTHSize(364, 173));
 
 	switch (mode)
 	{

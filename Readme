@@ -13,15 +13,16 @@ History
 
 	Version 0.8
 
-		- added CDDB/freedb support
-		- added MP3 decoding support
-		- added Ogg Vorbis decoding support
-		- added BONK decoding support
+		- added CDDB/freedb support (read only)
+		- added support for decoding MP3, Ogg Vorbis and BONK files
 		- implemented a command line interface
 		- added Spanish, Italian and Dutch language support
+		- added ID3V2 tag support
+		- added the smooth Translator utility for editing language files
+		- added mouse wheel support
+		- upgraded to smooth v0.8.60.0
 		- some small improvements
 		- some bugfixes
-		- upgraded to smooth v0.8.60.0
 
 	Version 0.7
 
@@ -70,9 +71,9 @@ Requirements
 
 	Additional requirements for compiling the sources:
 
-		- MinGW32 v1.0 or greater (http://mingw.sf.net/)
-		- smooth v0.8.60.0 (http://smooth.sf.net/)
-		- IOLib v5.x (http://iolib.sf.net/ - included with smooth)
+		- MinGW32 v1.0 or greater (http://www.mingw.org/)
+		- smooth v0.8.60.0 (http://www.smooth-project.org/)
+		- IOLib v5.x (http://www.iolib.org/ - included with smooth)
 
 	Additional optional software:
 
@@ -107,7 +108,7 @@ Future plans
 ------------
 
 	- extend the BONK format to support ID3V2 tags
-	- extract artist and title from the filename and write ID3V2 or similar
+	- extract artist and title from the filename
 	- input filters for AAC, VQF
 	- support more audio formats (FLAC, MAC, ...)
 	- allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
@@ -120,7 +121,7 @@ Future plans
 
 -----------------------------------------------------------------------------------
 
-The official BonkEnc homepage: http://bonkenc.sf.net/
+The official BonkEnc homepage: http://www.bonkenc.org/
 Paul F. Harrison's BONK page: http://yoyo.cc.monash.edu.au/~pfh/bonk/
 
 robert.kausch@gmx.net,

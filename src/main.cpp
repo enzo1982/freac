@@ -12,6 +12,7 @@
 #define MAKEUNICODESTR(x) L##x
 
 #include <smooth.h>
+#include <iolib/drivers/driver_zero.h>
 #include <main.h>
 #include <resources.h>
 #include <stdlib.h>
@@ -19,7 +20,6 @@
 #include <vector>
 #include <parseini.h>
 #include <time.h>
-#include <cddb.h>
 
 #include <dllinterfaces.h>
 
@@ -30,6 +30,9 @@
 #include <vorbisconfig.h>
 #include <faacconfig.h>
 #include <tvqconfig.h>
+
+#include <cddb.h>
+#include <cddb_multimatch.h>
 
 #include <input/filter-in-cdrip.h>
 #include <input/filter-in-wave.h>
@@ -81,8 +84,25 @@ bonkEnc::bonkEnc()
 
 	if (!currentConfig->enable_console) currentConfig->i18n->ActivateLanguage(currentConfig->language);
 
+	currentConfig->wndPos.x = getINIValue("Settings", "WindowPosX", "100").ToInt();
+	currentConfig->wndPos.y = getINIValue("Settings", "WindowPosY", "100").ToInt();
+	currentConfig->wndSize.cx = getINIValue("Settings", "WindowSizeX", "420").ToInt();
+	currentConfig->wndSize.cy = getINIValue("Settings", "WindowSizeY", "371").ToInt();
+
 	currentConfig->encoder = getINIValue("Settings", "Encoder", "0").ToInt();
 	currentConfig->enc_outdir = getINIValue("Settings", "EncoderOutdir", "C:\\");
+
+	currentConfig->enable_cddb = getINIValue("freedb", "EnableCDDB", "0").ToInt();
+	currentConfig->freedb_server = getINIValue("freedb", "Server", "freedb.freedb.org");
+	currentConfig->freedb_mode = getINIValue("freedb", "Mode", "0").ToInt();
+	currentConfig->freedb_cddbp_port = getINIValue("freedb", "CDDBPPort", "8880").ToInt();
+	currentConfig->freedb_http_port = getINIValue("freedb", "HTTPPort", "80").ToInt();
+	currentConfig->freedb_query_path = getINIValue("freedb", "QueryPath", "/~cddb/cddb.cgi");
+	currentConfig->freedb_submit_path = getINIValue("freedb", "SubmitPath", "/~cddb/submit.cgi");
+	currentConfig->freedb_email = getINIValue("freedb", "eMail", "");
+	currentConfig->freedb_proxy_mode = getINIValue("freedb", "ProxyMode", "0").ToInt();
+	currentConfig->freedb_proxy = getINIValue("freedb", "Proxy", "");
+	currentConfig->freedb_proxy_port = getINIValue("freedb", "ProxyPort", "1080").ToInt();
 
 	currentConfig->bonk_quantization = getINIValue("bonkEnc", "Quantization", "8").ToInt();
 	currentConfig->bonk_predictor = getINIValue("bonkEnc", "Predictor", "32").ToInt();
@@ -172,6 +192,9 @@ bonkEnc::bonkEnc()
 	if (LoadCDRipDLL() == false)	currentConfig->enable_cdrip = false;
 	else				currentConfig->enable_cdrip = true;
 
+	if (LoadID3DLL() == false)	currentConfig->enable_id3 = false;
+	else				currentConfig->enable_id3 = true;
+
 	int	 nextEC = 0;
 
 	if (currentConfig->enable_blade)	ENCODER_BLADEENC = nextEC++;
@@ -230,7 +253,7 @@ bonkEnc::bonkEnc()
 	mainWnd_menubar		= new SMOOTHMenubar();
 	mainWnd_iconbar		= new SMOOTHMenubar();
 	mainWnd			= new SMOOTHWindow("BonkEnc v0.8");
-	mainWnd_titlebar	= new SMOOTHTitlebar(true, false, true);
+	mainWnd_titlebar	= new SMOOTHTitlebar(true, true, true);
 	mainWnd_statusbar	= new SMOOTHStatusbar("BonkEnc v0.8 - Copyright (C) 2001-2002 Robert Kausch");
 	mainWnd_layer		= new SMOOTHLayer();
 	menu_file		= new SMOOTHPopupMenu();
@@ -238,40 +261,38 @@ bonkEnc::bonkEnc()
 	menu_addsubmenu		= new SMOOTHPopupMenu();
 	menu_encode		= new SMOOTHPopupMenu();
 
-	pos.x = 323;
+	pos.x = 91;
 	pos.y = -22;
 
 	hyperlink		= new SMOOTHHyperlink("www.bonkenc.org", NULL, "http://www.bonkenc.org", pos);
+	hyperlink->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x = 7;
-	pos.y = 5;
-
-	txt_joblist		= new SMOOTHText(SMOOTHString("0").Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")), pos);
-
-	pos.x = 7;
-	pos.y += 19;
-	size.cx = 400;
-	size.cy = 150;
-
-	joblist			= new SMOOTHListBox(pos, size, NULLPROC);
-
-	pos.y += 161;
+	pos.y = 96;
 
 	enc_filename		= new SMOOTHText(currentConfig->i18n->TranslateString("Encoding file:"), pos);
+	enc_filename->SetOrientation(OR_LOWERLEFT);
 
-	pos.y += 24;
+	pos.y -= 24;
 
 	enc_time		= new SMOOTHText(currentConfig->i18n->TranslateString("Time left:"), pos);
-	enc_percent		= new SMOOTHText(currentConfig->i18n->TranslateString("Percent done:"), pos);
-	enc_encoder		= new SMOOTHText(currentConfig->i18n->TranslateString("Selected encoder:"), pos);
+	enc_time->SetOrientation(OR_LOWERLEFT);
 
-	pos.y += 24;
+	enc_percent		= new SMOOTHText(currentConfig->i18n->TranslateString("Percent done:"), pos);
+	enc_percent->SetOrientation(OR_LOWERLEFT);
+
+	enc_encoder		= new SMOOTHText(currentConfig->i18n->TranslateString("Selected encoder:"), pos);
+	enc_encoder->SetOrientation(OR_LOWERLEFT);
+
+	pos.y -= 24;
 
 	enc_progress		= new SMOOTHText(currentConfig->i18n->TranslateString("File progress:"), pos);
+	enc_progress->SetOrientation(OR_LOWERLEFT);
 
-	pos.y += 24;
+	pos.y -= 24;
 
 	enc_outdir		= new SMOOTHText(currentConfig->i18n->TranslateString("Output dir.:"), pos);
+	enc_outdir->SetOrientation(OR_LOWERLEFT);
 
 	SMOOTHInt	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
 
@@ -282,28 +303,43 @@ bonkEnc::bonkEnc()
 	enc_percent->SetPosition(SMOOTHPoint(maxTextLength + 56, enc_percent->GetObjectProperties()->pos.y));
 	enc_encoder->SetPosition(SMOOTHPoint(maxTextLength + 104 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
 
-	pos.y = 182;
+	pos.x = 7;
+	pos.y = 5;
+
+	txt_joblist		= new SMOOTHText(SMOOTHString("0").Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")), pos);
+
+	pos.x = 7;
+	pos.y += 19;
+	size.cx = currentConfig->wndSize.cx - 20;
+	size.cy = currentConfig->wndSize.cy - 221;
+
+	joblist			= new SMOOTHListBox(pos, size, NULLPROC);
+
+	pos.y = 99;
 	pos.x = maxTextLength + 15;
-	size.cx = 392 - maxTextLength;
+	size.cx = currentConfig->wndSize.cx - 28 - maxTextLength;
 	size.cy = 0;
 
 	edb_filename		= new SMOOTHEditBox(currentConfig->i18n->TranslateString("none"), pos, size, EDB_ALPHANUMERIC, 1024, NULLPROC);
+	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
-	pos.y += 24;
+	pos.y -= 24;
 	size.cx = 34;
 
 	edb_time		= new SMOOTHEditBox("00:00", pos, size, EDB_ALPHANUMERIC, 5, NULLPROC);
+	edb_time->SetOrientation(OR_LOWERLEFT);
 	edb_time->Deactivate();
 
 	pos.x += (49 + enc_percent->GetObjectProperties()->textSize.cx);
 	size.cx = 33;
 
 	edb_percent		= new SMOOTHEditBox("0%", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	edb_percent->SetOrientation(OR_LOWERLEFT);
 	edb_percent->Deactivate();
 
 	pos.x += (48 + enc_encoder->GetObjectProperties()->textSize.cx);
-	size.cx = 295 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx;
+	size.cx = currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx;
 
 	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new SMOOTHEditBox("BonkEnc", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
 	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new SMOOTHEditBox("BladeEnc", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
@@ -313,21 +349,24 @@ bonkEnc::bonkEnc()
 	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder = new SMOOTHEditBox("TwinVQ", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
 	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder = new SMOOTHEditBox("WAVE Out", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
 
+	edb_encoder->SetOrientation(OR_LOWERLEFT);
 	edb_encoder->Deactivate();
 
 	pos.x = maxTextLength + 15;
-	pos.y += 48;
-	size.cx = 392 - maxTextLength;
+	pos.y -= 48;
+	size.cx = currentConfig->wndSize.cx - 28 - maxTextLength;
 
 	edb_outdir		= new SMOOTHEditBox(currentConfig->enc_outdir, pos, size, EDB_ALPHANUMERIC, 1024, NULLPROC);
+	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->Deactivate();
 
 	pos.x = maxTextLength + 15;
-	pos.y = 230;
-	size.cx = 391 - maxTextLength;
+	pos.y = 51;
+	size.cx = currentConfig->wndSize.cx - 29 - maxTextLength;
 	size.cy = 18;
 
 	progress		= new SMOOTHProgressbar(pos, size, OR_HORZ, PB_NOTEXT, 0, 1000, 0);
+	progress->SetOrientation(OR_LOWERLEFT);
 	progress->Deactivate();
 
 	menu_file->AddEntry(currentConfig->i18n->TranslateString("Add"), NIL, NULLPROC, menu_addsubmenu);
@@ -398,8 +437,10 @@ bonkEnc::bonkEnc()
 
 	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(IDI_ICON);
-	mainWnd->SetMetrics(SMOOTHPoint(100, 100), SMOOTHSize(420, 371));
+	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
+	mainWnd->SetPaintProc(SMOOTHPaintProc(bonkEnc, this, PaintProc));
 	mainWnd->SetKillProc(SMOOTHKillProc(bonkEnc, this, KillProc));
+	mainWnd->SetMinimumSize(SMOOTHSize(390, 284));
 }
 
 bonkEnc::~bonkEnc()
@@ -560,6 +601,8 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 
 		fclose(afile);
 
+		SMOOTHArray<bonkTrackInfo *>	*cdInfo = GetCDDBData();
+
 		SMOOTHInt	 audiodrive = 0;
 		SMOOTHBool	 done = false;
 
@@ -597,18 +640,43 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 			if (done) break;
 		}
 
-		if (cdText.GetEntry(trackNumber) != NIL)
+		if (cdInfo != NIL)
 		{
+			sa_joblist.AddEntry(SMOOTHString(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), joblist->AddEntry(SMOOTHString(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), NULLPROC));
+
+			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
+
+			trackInfo->track	= trackNumber;
+			trackInfo->drive	= audiodrive;
+			trackInfo->outfile	= NIL;
+			trackInfo->cdText	= SMOOTH::True;
+			trackInfo->artist	= cdInfo->GetEntry(0)->artist;
+			trackInfo->title	= cdInfo->GetEntry(trackNumber)->title;
+			trackInfo->album	= cdInfo->GetEntry(0)->album;
+			trackInfo->genre	= cdInfo->GetEntry(0)->genre;
+			trackInfo->year		= cdInfo->GetEntry(0)->year;
+
+			sa_trackinfo.AddEntry(trackInfo);
+		}
+		else if (cdText.GetEntry(trackNumber) != NIL)
+		{
+			SYSTEMTIME	 systime;
+
+			GetSystemTime(&systime);
+
 			sa_joblist.AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), joblist->AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), NULLPROC));
 
 			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
 			trackInfo->track	= trackNumber;
 			trackInfo->drive	= audiodrive;
+			trackInfo->outfile	= NIL;
 			trackInfo->cdText	= SMOOTH::True;
 			trackInfo->artist	= cdText.GetEntry(0);
 			trackInfo->title	= cdText.GetEntry(trackNumber);
 			trackInfo->album	= cdText.GetEntry(100);
+			trackInfo->genre	= "Pop";
+			trackInfo->year		= SMOOTHString::IntToString(systime.wYear);
 
 			sa_trackinfo.AddEntry(trackInfo);
 		}
@@ -620,6 +688,7 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 
 			trackInfo->track	= trackNumber;
 			trackInfo->drive	= audiodrive;
+			trackInfo->outfile	= NIL;
 			trackInfo->cdText	= SMOOTH::False;
 
 			sa_trackinfo.AddEntry(trackInfo);
@@ -628,6 +697,13 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 		FreeCDText();
 
 		ex_CR_DeInit();
+
+		if (cdInfo != NIL)
+		{
+			cdInfo->DeleteAll();
+
+			delete cdInfo;
+		}
 	}
 	else
 	{
@@ -637,6 +713,7 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 
 		trackInfo->track	= -1;
 		trackInfo->outfile	= outfile;
+		trackInfo->cdText	= SMOOTH::False;
 
 		sa_trackinfo.AddEntry(trackInfo);
 	}
@@ -715,6 +792,22 @@ SMOOTHBool bonkEnc::KillProc()
 		str.Append(currentConfig->enc_outdir);
 		out->OutputLine(str);
 
+		str = "WindowPosX=";
+		str.Append(SMOOTHString::IntToString(mainWnd->GetObjectProperties()->pos.x));
+		out->OutputLine(str);
+
+		str = "WindowPosY=";
+		str.Append(SMOOTHString::IntToString(mainWnd->GetObjectProperties()->pos.y));
+		out->OutputLine(str);
+
+		str = "WindowSizeX=";
+		str.Append(SMOOTHString::IntToString(currentConfig->wndSize.cx));
+		out->OutputLine(str);
+
+		str = "WindowSizeY=";
+		str.Append(SMOOTHString::IntToString(currentConfig->wndSize.cy));
+		out->OutputLine(str);
+
 		out->OutputLine("");
 		out->OutputLine("[CDRip]");
 
@@ -748,6 +841,53 @@ SMOOTHBool bonkEnc::KillProc()
 
 		str = "UseNTSCSI=";
 		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_ntscsi));
+		out->OutputLine(str);
+
+		out->OutputLine("");
+		out->OutputLine("[freedb]");
+
+		str = "EnableCDDB=";
+		str.Append(SMOOTHString::IntToString(currentConfig->enable_cddb));
+		out->OutputLine(str);
+
+		str = "Server=";
+		str.Append(currentConfig->freedb_server);
+		out->OutputLine(str);
+
+		str = "Mode=";
+		str.Append(SMOOTHString::IntToString(currentConfig->freedb_mode));
+		out->OutputLine(str);
+
+		str = "CDDBPPort=";
+		str.Append(SMOOTHString::IntToString(currentConfig->freedb_cddbp_port));
+		out->OutputLine(str);
+
+		str = "HTTPPort=";
+		str.Append(SMOOTHString::IntToString(currentConfig->freedb_http_port));
+		out->OutputLine(str);
+
+		str = "QueryPath=";
+		str.Append(currentConfig->freedb_query_path);
+		out->OutputLine(str);
+
+		str = "SubmitPath=";
+		str.Append(currentConfig->freedb_submit_path);
+		out->OutputLine(str);
+
+		str = "eMail=";
+		str.Append(currentConfig->freedb_email);
+		out->OutputLine(str);
+
+		str = "ProxyMode=";
+		str.Append(SMOOTHString::IntToString(currentConfig->freedb_proxy_mode));
+		out->OutputLine(str);
+
+		str = "Proxy=";
+		str.Append(currentConfig->freedb_proxy);
+		out->OutputLine(str);
+
+		str = "ProxyPort=";
+		str.Append(SMOOTHString::IntToString(currentConfig->freedb_proxy_port));
 		out->OutputLine(str);
 
 		out->OutputLine("");
@@ -982,6 +1122,23 @@ SMOOTHBool bonkEnc::KillProc()
 	return true;
 }
 
+SMOOTHVoid bonkEnc::PaintProc()
+{
+	if (mainWnd->GetObjectProperties()->size.cx == currentConfig->wndSize.cx && mainWnd->GetObjectProperties()->size.cy == currentConfig->wndSize.cy) return;
+
+	currentConfig->wndSize = mainWnd->GetObjectProperties()->size;
+
+	SMOOTHInt	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
+
+	edb_filename->SetMetrics(edb_filename->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 28 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
+	edb_encoder->SetMetrics(edb_encoder->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
+	edb_outdir->SetMetrics(edb_outdir->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 28 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
+
+	progress->SetMetrics(progress->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 29 - maxTextLength, progress->GetObjectProperties()->size.cy));
+
+	joblist->SetMetrics(joblist->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 221));
+}
+
 SMOOTHVoid bonkEnc::Exit()
 {
 	SMOOTH::CloseWindow(mainWnd);
@@ -1204,8 +1361,9 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		else if (currentConfig->encoder == ENCODER_TVQ)		out_filename.Append(".vqf");
 		else if (currentConfig->encoder == ENCODER_WAVE)	out_filename.Append(".wav");
 
-		if (trackInfo->outfile != "") out_filename = trackInfo->outfile;
+		if (trackInfo->outfile != NIL) out_filename = trackInfo->outfile;
 
+		IOLibDriver	*d_zero = NIL;
 		SMOOTHInStream	*f_in;
 		InputFilter	*filter_in = NIL;
 		bonkFormatInfo	 format;
@@ -1214,7 +1372,8 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		{
 			currentConfig->cdrip_activedrive = audiodrive;
 
-			f_in = new SMOOTHInStream(STREAM_ZERO);
+			d_zero = new IOLibDriverZero();
+			f_in = new SMOOTHInStream(STREAM_DRIVER, d_zero);
 			filter_in = new FilterInCDRip(currentConfig);
 
 			((FilterInCDRip *) filter_in)->SetTrack(trackNumber);
@@ -1279,6 +1438,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		}
 
 		format = filter_in->GetAudioFormat();
+		format.trackInfo = trackInfo;
 
 		SMOOTHOutStream	*f_out	= new SMOOTHOutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
 
@@ -1429,6 +1589,8 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		delete filter_in;
 		delete f_in;
 
+		if (cdTrack) delete d_zero;
+
 		if (f_out->Size() == 0)
 		{
 			delete f_out;
@@ -1443,10 +1605,6 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 
 	currentConfig->cdrip_activedrive = activedrive;
 
-	encoding = false;
-
-	ClearList();
-
 	if (!currentConfig->enable_console)
 	{
 		edb_filename->SetText(currentConfig->i18n->TranslateString("none"));
@@ -1454,6 +1612,10 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		progress->SetValue(0);
 		edb_time->SetText("00:00");
 	}
+
+	encoding = false;
+
+	ClearList();
 }
 
 SMOOTHVoid bonkEnc::StopEncoding()
@@ -1484,6 +1646,8 @@ SMOOTHVoid bonkEnc::ReadCD()
 		return;
 	}
 
+	SMOOTHArray<bonkTrackInfo *>	*cdInfo = GetCDDBData();
+
 	SMOOTHInt	 numTocEntries;
 	SMOOTHString	 file = SMOOTH::StartDirectory;
 
@@ -1507,18 +1671,43 @@ SMOOTHVoid bonkEnc::ReadCD()
 
 		if (!(entry.btFlag & CDROMDATAFLAG))
 		{
-			if (cdText.GetEntry(entry.btTrackNumber) != NIL)
+			if (cdInfo != NIL)
 			{
+				sa_joblist.AddEntry(SMOOTHString(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), joblist->AddEntry(SMOOTHString(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), NULLPROC));
+
+				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
+
+				trackInfo->track	= entry.btTrackNumber;
+				trackInfo->drive	= currentConfig->cdrip_activedrive;
+				trackInfo->outfile	= NIL;
+				trackInfo->cdText	= SMOOTH::True;
+				trackInfo->artist	= cdInfo->GetEntry(0)->artist;
+				trackInfo->title	= cdInfo->GetEntry(entry.btTrackNumber)->title;
+				trackInfo->album	= cdInfo->GetEntry(0)->album;
+				trackInfo->genre	= cdInfo->GetEntry(0)->genre;
+				trackInfo->year		= cdInfo->GetEntry(0)->year;
+
+				sa_trackinfo.AddEntry(trackInfo);
+			}
+			else if (cdText.GetEntry(entry.btTrackNumber) != NIL)
+			{
+				SYSTEMTIME	 systime;
+
+				GetSystemTime(&systime);
+
 				sa_joblist.AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), joblist->AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), NULLPROC));
 
 				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
 				trackInfo->track	= entry.btTrackNumber;
 				trackInfo->drive	= currentConfig->cdrip_activedrive;
+				trackInfo->outfile	= NIL;
 				trackInfo->cdText	= SMOOTH::True;
 				trackInfo->artist	= cdText.GetEntry(0);
 				trackInfo->title	= cdText.GetEntry(entry.btTrackNumber);
 				trackInfo->album	= cdText.GetEntry(100);
+				trackInfo->genre	= "Pop";
+				trackInfo->year		= SMOOTHString::IntToString(systime.wYear);
 
 				sa_trackinfo.AddEntry(trackInfo);
 			}
@@ -1530,6 +1719,7 @@ SMOOTHVoid bonkEnc::ReadCD()
 
 				trackInfo->track	= entry.btTrackNumber;
 				trackInfo->drive	= currentConfig->cdrip_activedrive;
+				trackInfo->outfile	= NIL;
 				trackInfo->cdText	= SMOOTH::False;
 
 				sa_trackinfo.AddEntry(trackInfo);
@@ -1542,6 +1732,142 @@ SMOOTHVoid bonkEnc::ReadCD()
 	FreeCDText();
 
 	ex_CR_DeInit();
+
+	if (cdInfo != NIL)
+	{
+		cdInfo->DeleteAll();
+
+		delete cdInfo;
+	}
+}
+
+SMOOTHArray<bonkTrackInfo *> *bonkEnc::GetCDDBData()
+{
+	if (!currentConfig->enable_cddb) return NIL;
+
+	bonkEncCDDB	 cddb(currentConfig);
+	SMOOTHString	 result;
+	SMOOTHString	 read = NIL;
+
+	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
+
+	SMOOTHString	 discid = cddb.GetDiscIDString();
+
+	if (discid == "ffffffff" || discid == "00000000") return false; // no disc in drive or read error
+
+	mainWnd_statusbar->SetText(currentConfig->i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
+
+	cddb.ConnectToServer();
+
+	mainWnd_statusbar->SetText(currentConfig->i18n->TranslateString("Requesting CD information").Append("..."));
+
+	result = cddb.Query(discid);
+
+	if (result == "none")
+	{
+		SMOOTH::MessageBox(currentConfig->i18n->TranslateString("No freedb entry for this disk."), currentConfig->i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
+	}
+	else if (result == "multiple" || result == "fuzzy")
+	{
+		cddbMultiMatchDlg	*dlg = new cddbMultiMatchDlg(currentConfig, false);
+
+		for (int i = 0; i < cddb.GetNOfMatches(); i++)
+		{
+			dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
+		}
+
+		if (result == "fuzzy") dlg->AddEntry(currentConfig->i18n->TranslateString("none"), "");
+
+		SMOOTHInt index = dlg->ShowDialog();
+
+		if (index < cddb.GetNOfMatches() && index >= 0)
+		{
+			read = SMOOTHString(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthID(index));
+		}
+
+		delete dlg;
+	}
+	else if (result == "error")
+	{
+		SMOOTH::MessageBox(currentConfig->i18n->TranslateString("Some error occurred trying to connect to the freedb server."), currentConfig->i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+	}
+	else
+	{
+		read = result;
+	}
+
+	SMOOTHArray<bonkTrackInfo *>	*array = NIL;
+
+	if (read != NIL)
+	{
+		SMOOTHString	 result = cddb.Read(read);
+		SMOOTHString	 cLine;
+
+		array = new SMOOTHArray<bonkTrackInfo *>;
+
+		for (int j = 0; j < result.Length();)
+		{
+			for (int i = 0; i >= 0; i++, j++)
+			{
+				if (result[j] == '\n' || result[j] == 0)	{ cLine[i] = 0; j++; break; }
+				else						cLine[i] = result[j];
+			}
+
+			if (!cLine.CompareN("DTITLE", 6))
+			{
+				bonkTrackInfo	*info = new bonkTrackInfo;
+				int		 k;
+
+				for (k = 7; k >= 0; k++)
+				{
+					if (cLine[k] == ' ' && cLine[k + 1] == '/' && cLine[k + 2] == ' ')	break;
+					else									info->artist[k - 7] = cLine[k];
+				}
+
+				for (int l = k + 3; l < cLine.Length(); l++) info->album[l - k - 3] = cLine[l];
+
+				info->track = -1;
+
+				array->AddEntry(info);
+			}
+			else if (!cLine.CompareN("DGENRE", 6))
+			{
+				bonkTrackInfo	*info = array->GetEntry(0);
+
+				for (int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
+			}
+			else if (!cLine.CompareN("DYEAR", 5))
+			{
+				bonkTrackInfo	*info = array->GetEntry(0);
+
+				for (int l = 6; l < cLine.Length(); l++) info->year[l - 6] = cLine[l];
+			}
+			else if (!cLine.CompareN("TTITLE", 6))
+			{
+				bonkTrackInfo	*info = new bonkTrackInfo;
+				SMOOTHString	 track;
+				int		 k;
+
+				for (k = 6; k >= 0; k++)
+				{
+					if (cLine[k] == '=')	break;
+					else			track[k - 6] = cLine[k];
+				}
+
+				for (int l = k + 1; l < cLine.Length(); l++) info->title[l - k - 1] = cLine[l];
+
+				info->track = track.ToInt() + 1;
+
+				array->AddEntry(info, info->track);
+			}
+		}
+	}
+
+	cddb.CloseConnection();
+
+	mainWnd_statusbar->SetText("BonkEnc v0.8 - Copyright (C) 2001-2002 Robert Kausch");
+
+	return array;
 }
 
 SMOOTHBool bonkEnc::SetLanguage(SMOOTHString newLanguage)
@@ -1583,14 +1909,14 @@ SMOOTHBool bonkEnc::SetLanguage(SMOOTHString newLanguage)
 
 	edb_filename->SetText(currentConfig->i18n->TranslateString("none"));
 
-	edb_filename->SetMetrics(SMOOTHPoint(maxTextLength + 15, edb_filename->GetObjectProperties()->pos.y), SMOOTHSize(392 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
+	edb_filename->SetMetrics(SMOOTHPoint(maxTextLength + 15, edb_filename->GetObjectProperties()->pos.y), SMOOTHSize(currentConfig->wndSize.cx - 28 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
 	edb_time->SetMetrics(SMOOTHPoint(maxTextLength + 15, edb_time->GetObjectProperties()->pos.y), SMOOTHSize(34, edb_time->GetObjectProperties()->size.cy));
 	edb_percent->SetMetrics(SMOOTHPoint(maxTextLength + 64 + enc_percent->GetObjectProperties()->textSize.cx, edb_percent->GetObjectProperties()->pos.y), SMOOTHSize(33, edb_percent->GetObjectProperties()->size.cy));
-	edb_encoder->SetMetrics(SMOOTHPoint(maxTextLength + 112 + enc_percent->GetObjectProperties()->textSize.cx + enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->pos.y), SMOOTHSize(295 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
-	edb_outdir->SetMetrics(SMOOTHPoint(maxTextLength + 15, edb_outdir->GetObjectProperties()->pos.y), SMOOTHSize(392 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
+	edb_encoder->SetMetrics(SMOOTHPoint(maxTextLength + 112 + enc_percent->GetObjectProperties()->textSize.cx + enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->pos.y), SMOOTHSize(currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
+	edb_outdir->SetMetrics(SMOOTHPoint(maxTextLength + 15, edb_outdir->GetObjectProperties()->pos.y), SMOOTHSize(currentConfig->wndSize.cx - 28 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
 
-	progress->SetMetrics(SMOOTHPoint(maxTextLength + 15, progress->GetObjectProperties()->pos.y), SMOOTHSize(391 - maxTextLength, progress->GetObjectProperties()->size.cy));
-
+	progress->SetMetrics(SMOOTHPoint(maxTextLength + 15, progress->GetObjectProperties()->pos.y), SMOOTHSize(currentConfig->wndSize.cx - 29 - maxTextLength, progress->GetObjectProperties()->size.cy));
+ 
 	enc_filename->Show();
 	enc_time->Show();
 	enc_percent->Show();

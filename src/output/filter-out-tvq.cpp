@@ -85,7 +85,7 @@ FilterOutTVQ::~FilterOutTVQ()
 {
 }
 
-bool FilterOutTVQ::EncodeData(unsigned char **data, int size, int *outsize)
+int FilterOutTVQ::WriteData(unsigned char *data, int size)
 {
 	float		*frame		= new float [samples_size];
 
@@ -111,7 +111,7 @@ bool FilterOutTVQ::EncodeData(unsigned char **data, int size, int *outsize)
 	{
 		for (int i = 0; i < int(size / (format->bits / 8) / format->channels); i++)
 		{
-			frame[ch * int(samples_size / format->channels) + i] = (float) ((short *) *data)[i * format->channels + ch];
+			frame[ch * int(samples_size / format->channels) + i] = (float) ((short *) data)[i * format->channels + ch];
 		}
 	}
 
@@ -135,25 +135,14 @@ bool FilterOutTVQ::EncodeData(unsigned char **data, int size, int *outsize)
 
 	d_out->Flush();
 
-	*outsize = d_out->GetPos();
+	size = d_out->GetPos();
 
-	delete [] *data;
-
-	*data = new unsigned char [*outsize];
-
-	memcpy((void *) *data, (void *) outbuffer, *outsize);
+	driver->WriteData((unsigned char *) outbuffer, size);
 
 	delete d_out;
 
 	delete [] frame;
 	delete [] outbuffer;
 
-	return true;
-}
-
-bool FilterOutTVQ::DecodeData(unsigned char **data, int size, int *outsize)
-{
-	*outsize = size;
-
-	return true;
+	return size;
 }

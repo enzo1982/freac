@@ -26,8 +26,10 @@ class FilterOutBLADE : public OutputFilter
 				 FilterOutBLADE(bonkEncConfig *, bonkFormatInfo *);
 				~FilterOutBLADE();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		bool		 Activate();
+		bool		 Deactivate();
+
+		int		 WriteData(unsigned char *, int);
 };
 
 #endif

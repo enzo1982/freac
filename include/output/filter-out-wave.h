@@ -16,13 +16,15 @@
 class FilterOutWAVE : public OutputFilter
 {
 	private:
-		bool		 setup;
+		int	 nOfSamples;
 	public:
-				 FilterOutWAVE(bonkEncConfig *, bonkFormatInfo *);
-				~FilterOutWAVE();
+			 FilterOutWAVE(bonkEncConfig *, bonkFormatInfo *);
+			~FilterOutWAVE();
 
-		bool		 EncodeData(unsigned char **, int, int *);
-		bool		 DecodeData(unsigned char **, int, int *);
+		bool	 Activate();
+		bool	 Deactivate();
+
+		int	 WriteData(unsigned char *, int);
 };
 
 #endif

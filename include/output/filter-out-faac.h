@@ -26,8 +26,7 @@ class FilterOutFAAC : public OutputFilter
 					 FilterOutFAAC(bonkEncConfig *, bonkFormatInfo *);
 					~FilterOutFAAC();
 
-		bool			 EncodeData(unsigned char **, int, int *);
-		bool			 DecodeData(unsigned char **, int, int *);
+		int			 WriteData(unsigned char *, int);
 };
 
 #endif
