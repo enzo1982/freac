@@ -13,14 +13,15 @@ Geschichte
 
 	Version 0.8
 
+		- Unterstützung für CDDB/freedb hinzugefügt
+		- Kommandozeileninterface implementiert
+		- Sprachunterstützung für Spanisch, Englisch und Niederländisch hinzugefügt
 		- Unterstützung für MP3 Decodierung hinzugefügt
 		- Unterstützung zur Decodierung von Ogg Vorbis Dateien hinzugefügt
 		- Unterstützung zur Decodierung von BONK Dateien hinzugefügt
-		- Update auf smooth v0.8.60.0
 		- Kleinere Verbesserungen
-		- Sprachunterstützung für Spanisch, Englisch und Niederländisch hinzugefügt
-		- Kommandozeileninterface implementiert
-		- einige Bugfixes
+		- Einige Bugfixes
+		- Update auf smooth v0.8.60.0
 
 	Version 0.7
 
@@ -100,6 +101,8 @@ Probleme
 	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
 	  Ausgabe-Samplingrate haben, wenn sie nicht LAME verwenden.
 
+	- Das Kommandozeileninterface unterstützt bisher noch keine Optionen um Encodereinstellungen zu verändern.
+
 Pläne für zukünftige Versionen
 ------------------------------
 
@@ -111,7 +114,7 @@ Pläne für zukünftige Versionen
 	- ein IOLib-Filters basierendes PlugIn System entwickeln
 	- mehr Sprachen unterstützen
 	- den Sourcecode überarbeiten
-	- CDDB Unterstützung hinzufügen
+	- CDDB Unterstützung fertigstellen
 	- Kommandozeilenoptionen zum Konfigurieren der Encoder erlauben
 	- Onlinedokumentation für BonkEnc schreiben
 

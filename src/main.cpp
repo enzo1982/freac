@@ -19,6 +19,7 @@
 #include <vector>
 #include <parseini.h>
 #include <time.h>
+#include <cddb.h>
 
 #include <dllinterfaces.h>
 

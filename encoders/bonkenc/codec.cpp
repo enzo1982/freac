@@ -444,9 +444,9 @@ bool BONKdecoder::read_packet(vector<int> &samples)
 			sample += channels;
 		}
 
-		for(int i = 0; i < n_taps; i++)
+		for(int j = 0; j < n_taps; j++)
 		{
-			predictor_initer[channel][i] = samples[samples.size() - channels + channel - i * channels];
+			predictor_initer[channel][j] = samples[samples.size() - channels + channel - j * channels];
 		}
 	}
 

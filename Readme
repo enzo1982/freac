@@ -13,14 +13,15 @@ History
 
 	Version 0.8
 
+		- added CDDB/freedb support
 		- added MP3 decoding support
 		- added Ogg Vorbis decoding support
 		- added BONK decoding support
-		- upgraded to smooth v0.8.60.0
-		- some small improvements
-		- added Spanish, Italian and Dutch language support
 		- implemented a command line interface
+		- added Spanish, Italian and Dutch language support
+		- some small improvements
 		- some bugfixes
+		- upgraded to smooth v0.8.60.0
 
 	Version 0.7
 
@@ -100,6 +101,8 @@ Problems
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
 
+	- The command line interface doesn't support options for modifying encoder settings, yet.
+
 Future plans
 ------------
 
@@ -111,7 +114,7 @@ Future plans
 	- develop an IOLib-Filters based plugin system
 	- support more languages
 	- cleanup the code
-	- add CDDB support
+	- finish CDDB support
 	- allow command line options to configure encoder settings
 	- write online documentation for BonkEnc
 
