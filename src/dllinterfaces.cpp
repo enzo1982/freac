@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,7 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <smoothx.h>
 #include <main.h>
 #include <dllinterfaces.h>
 
@@ -131,9 +130,9 @@ TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo;
 TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo;
 TVQENCODEFRAME			 ex_TvqEncodeFrame;
 
-SMOOTHBool bonkEnc::LoadBonkDLL()
+Bool bonkEnc::LoadBonkDLL()
 {
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("BonkEnc.dll");
 
@@ -160,14 +159,14 @@ SMOOTHBool bonkEnc::LoadBonkDLL()
 	return true;
 }
 
-SMOOTHVoid bonkEnc::FreeBonkDLL()
+Void bonkEnc::FreeBonkDLL()
 {
 	FreeLibrary(bonkdll);
 }
 
-SMOOTHBool bonkEnc::LoadBladeDLL()
+Bool bonkEnc::LoadBladeDLL()
 {
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("bladeenc.dll");
 
@@ -190,14 +189,14 @@ SMOOTHBool bonkEnc::LoadBladeDLL()
 	return true;
 }
 
-SMOOTHVoid bonkEnc::FreeBladeDLL()
+Void bonkEnc::FreeBladeDLL()
 {
 	FreeLibrary(bladedll);
 }
 
-SMOOTHBool bonkEnc::LoadLAMEDLL()
+Bool bonkEnc::LoadLAMEDLL()
 {
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("lame.dll");
 
@@ -274,14 +273,14 @@ SMOOTHBool bonkEnc::LoadLAMEDLL()
 	return true;
 }
 
-SMOOTHVoid bonkEnc::FreeLAMEDLL()
+Void bonkEnc::FreeLAMEDLL()
 {
 	FreeLibrary(lamedll);
 }
 
-SMOOTHBool bonkEnc::LoadTVQDLL()
+Bool bonkEnc::LoadTVQDLL()
 {
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("tvqenc.dll");
 
@@ -312,14 +311,14 @@ SMOOTHBool bonkEnc::LoadTVQDLL()
 	return true;
 }
 
-SMOOTHVoid bonkEnc::FreeTVQDLL()
+Void bonkEnc::FreeTVQDLL()
 {
 	FreeLibrary(tvqdll);
 }
 
-SMOOTHBool bonkEnc::LoadVorbisDLL()
+Bool bonkEnc::LoadVorbisDLL()
 {
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("oggvorbis.dll");
 
@@ -408,14 +407,14 @@ SMOOTHBool bonkEnc::LoadVorbisDLL()
 	return true;
 }
 
-SMOOTHVoid bonkEnc::FreeVorbisDLL()
+Void bonkEnc::FreeVorbisDLL()
 {
 	FreeLibrary(vorbisdll);
 }
 
-SMOOTHBool bonkEnc::LoadFAACDLL()
+Bool bonkEnc::LoadFAACDLL()
 {
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("faac.dll");
 
@@ -438,14 +437,14 @@ SMOOTHBool bonkEnc::LoadFAACDLL()
 	return true;
 }
 
-SMOOTHVoid bonkEnc::FreeFAACDLL()
+Void bonkEnc::FreeFAACDLL()
 {
 	FreeLibrary(faacdll);
 }
 
-SMOOTHBool bonkEnc::LoadCDRipDLL()
+Bool bonkEnc::LoadCDRipDLL()
 {
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("cdrip.dll");
 
@@ -490,16 +489,16 @@ SMOOTHBool bonkEnc::LoadCDRipDLL()
 	return true;
 }
 
-SMOOTHVoid bonkEnc::FreeCDRipDLL()
+Void bonkEnc::FreeCDRipDLL()
 {
 	FreeLibrary(cdripdll);
 }
 
-SMOOTHBool bonkEnc::LoadID3DLL()
+Bool bonkEnc::LoadID3DLL()
 {
 	return true;
 }
 
-SMOOTHVoid bonkEnc::FreeID3DLL()
+Void bonkEnc::FreeID3DLL()
 {
 }

@@ -1,4 +1,4 @@
-const char *version = "0.8";
+const char *version = "0.9";
 
 #include "codec.h"
 #include "bonk.h"

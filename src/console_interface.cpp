@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,16 +11,16 @@
 #include <main.h>
 #include <console.h>
 
-SMOOTHVoid bonkEnc::ConsoleMode()
+Void bonkEnc::ConsoleMode()
 {
-	joblist = new SMOOTHListBox(SPoint(0, 0), SSize(0, 0), NULLPROC);
+	joblist = new ListBox(Point(0, 0), Size(0, 0), NULLPROC);
 
-	bool				 quiet = ScanForParameter("-q", NULL);
-	SMOOTHArray<SMOOTHString>	 files;
-	SMOOTHString			 encoder = "BONK";
-	SMOOTHString			 helpenc = "";
-	SMOOTHString			 outdir = ".";
-	SMOOTHString			 outfile = "";
+	bool		 quiet = ScanForParameter("-q", NULL);
+	Array<String>	 files;
+	String		 encoder = "BONK";
+	String		 helpenc = "";
+	String		 outdir = ".";
+	String		 outfile = "";
 
 	ScanForParameter("-e", &encoder);
 	ScanForParameter("-h", &helpenc);
@@ -31,10 +31,10 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 
 	bonkEncConsole	*con;
 
-	if (!quiet)	con = new bonkEncConsole("BonkEnc v0.8");
+	if (!quiet)	con = new bonkEncConsole("BonkEnc v0.9");
 	else		con = new bonkEncConsole((char *) NULL);
 
-	con->OutputString("BonkEnc audio encoder v0.8 console interface\nCopyright (C) 2001-2002 Robert Kausch\n\n");
+	con->OutputString("BonkEnc audio encoder v0.9 console interface\nCopyright (C) 2001-2003 Robert Kausch\n\n");
 
 	if ((files.GetNOfEntries() == 0 && helpenc == "") || !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "TVQ" || encoder == "WAVE") || (files.GetNOfEntries() > 1 && outfile != ""))
 	{
@@ -58,7 +58,7 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 		else if (helpenc == "FAAC")	con->OutputString("There are no FAAC options on the BonkEnc console interface!\n\n");
 		else if (helpenc == "TVQ")	con->OutputString("There are no TwinVQ options on the BonkEnc console interface!\n\n");
 		else if (helpenc == "WAVE")	con->OutputString("No options can be configured for the WAVE Out filter!\n\n");
-		else				con->OutputString(SMOOTHString("Encoder ").Append(helpenc).Append(" is not supported by BonkEnc!\n\n"));
+		else				con->OutputString(String("Encoder ").Append(helpenc).Append(" is not supported by BonkEnc!\n\n"));
 
 		con->OutputString("-- Press any key to continue --");
 		con->WaitKey();
@@ -74,7 +74,7 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 		    (encoder == "FAAC" && !currentConfig->enable_faac) ||
 		    (encoder == "TVQ" && !currentConfig->enable_tvq))
 		{
-			con->OutputString(SMOOTHString("Encoder ").Append(encoder).Append(" is not available!\n\n"));
+			con->OutputString(String("Encoder ").Append(encoder).Append(" is not available!\n\n"));
 
 			con->OutputString("-- Press any key to continue --");
 			con->WaitKey();
@@ -91,7 +91,7 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 		else if (encoder == "WAVE")	currentConfig->encoder = ENCODER_WAVE;
 		else
 		{
-			con->OutputString(SMOOTHString("Encoder ").Append(encoder).Append(" is not supported by BonkEnc!\n\n"));
+			con->OutputString(String("Encoder ").Append(encoder).Append(" is not supported by BonkEnc!\n\n"));
 
 			con->OutputString("-- Press any key to continue --");
 			con->WaitKey();
@@ -121,7 +121,7 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 				{
 					delete in;
 
-					con->OutputString(SMOOTHString("File not found: ").Append(files.GetNthEntry(i)).Append("\n"));
+					con->OutputString(String("File not found: ").Append(files.GetNthEntry(i)).Append("\n"));
 
 					lferror = true;
 					broken = true;
@@ -133,7 +133,7 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 					delete in;
 				}
 
-				SMOOTHString	 extension;
+				String	 extension;
 
 				extension[0] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 4];
 				extension[1] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 3];
@@ -142,7 +142,7 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 
 				if ((extension == ".mp3" && !currentConfig->enable_lame) || (extension == ".ogg" && !currentConfig->enable_vorbis))
 				{
-					con->OutputString(SMOOTHString("Cannot process file: ").Append(files.GetNthEntry(i)).Append("\n"));
+					con->OutputString(String("Cannot process file: ").Append(files.GetNthEntry(i)).Append("\n"));
 
 					lferror = true;
 					broken = true;
@@ -150,7 +150,7 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 					continue;
 				}
 
-				con->OutputString(SMOOTHString("Processing file: ").Append(files.GetNthEntry(i)).Append("..."));
+				con->OutputString(String("Processing file: ").Append(files.GetNthEntry(i)).Append("..."));
 
 				AddFileByName(files.GetNthEntry(i), outfile);
 
@@ -191,7 +191,7 @@ SMOOTHVoid bonkEnc::ConsoleMode()
 	delete joblist;
 }
 
-SMOOTHBool bonkEnc::ScanForParameter(SMOOTHString param, SMOOTHString *option)
+Bool bonkEnc::ScanForParameter(String param, String *option)
 {
 	for (int i = 0; i < szCmdLine.Length(); i++)
 	{
@@ -233,12 +233,12 @@ SMOOTHBool bonkEnc::ScanForParameter(SMOOTHString param, SMOOTHString *option)
 	return false;
 }
 
-SMOOTHVoid bonkEnc::ScanForFiles(SMOOTHArray<SMOOTHString> *files)
+Void bonkEnc::ScanForFiles(Array<String> *files)
 {
-	SMOOTHString	 param;
-	SMOOTHString	 prevParam;
-	bool		 done = true;
-	int		 len = szCmdLine.Length();
+	String	 param;
+	String	 prevParam;
+	bool	 done = true;
+	int	 len = szCmdLine.Length();
 
 	for (int i = 0; i < len; i++)
 	{

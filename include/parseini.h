@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,8 +11,10 @@
 #ifndef _H_PARSEINI_
 #define _H_PARSEINI_
 
-#include <smoothx.h>
+#include <smooth.h>
 
-SMOOTHString getINIValue(SMOOTHString, SMOOTHString, SMOOTHString);
+using namespace smooth;
+
+String getINIValue(String, String, String);
 
 #endif

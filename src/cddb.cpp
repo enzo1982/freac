@@ -1,6 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
-  * Portions Copyright (C) 1999-2002 Albert L. Faber
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,7 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <smoothx.h>
 #include <iolib/drivers/driver_socket.h>
 #include <iolib/drivers/driver_socks4.h>
 #include <iolib/drivers/driver_socks5.h>
@@ -32,7 +30,7 @@ int cddb_sum(int n)
 bonkEncCDDB::bonkEncCDDB(bonkEncConfig *iConfig)
 {
 	activeDriveID = 0;
-	connected = SMOOTH::False;
+	connected = False;
 
 	config = iConfig;
 }
@@ -41,9 +39,9 @@ bonkEncCDDB::~bonkEncCDDB()
 {
 }
 
-SMOOTHInt bonkEncCDDB::SetActiveDrive(SMOOTHInt driveID)
+Int bonkEncCDDB::SetActiveDrive(Int driveID)
 {
-	SMOOTHString	 inifile = SMOOTH::StartDirectory;
+	String	 inifile = SMOOTH::StartDirectory;
 
 	inifile.Append("BonkEnc.ini");
 
@@ -53,7 +51,7 @@ SMOOTHInt bonkEncCDDB::SetActiveDrive(SMOOTHInt driveID)
 	{
 		ex_CR_DeInit();
 
-		return SMOOTH::Error;
+		return Error;
 	}
 	else
 	{
@@ -61,13 +59,13 @@ SMOOTHInt bonkEncCDDB::SetActiveDrive(SMOOTHInt driveID)
 
 		ex_CR_DeInit();
 
-		return SMOOTH::Success;
+		return Success;
 	}
 }
 
-SMOOTHInt bonkEncCDDB::ComputeDiscID()
+Int bonkEncCDDB::ComputeDiscID()
 {
-	SMOOTHString	 inifile = SMOOTH::StartDirectory;
+	String	 inifile = SMOOTH::StartDirectory;
 
 	inifile.Append("BonkEnc.ini");
 
@@ -77,9 +75,9 @@ SMOOTHInt bonkEncCDDB::ComputeDiscID()
 
 	ex_CR_ReadToc();
 
-	SMOOTHInt		 numTocEntries = ex_CR_GetNumTocEntries();
-	SMOOTHArray<int>	 tocmin;
-	SMOOTHArray<int>	 tocsec;
+	Int		 numTocEntries = ex_CR_GetNumTocEntries();
+	Array<int>	 tocmin;
+	Array<int>	 tocsec;
 
 	for (int j = 0; j <= numTocEntries; j++)
 	{
@@ -110,10 +108,10 @@ SMOOTHInt bonkEncCDDB::ComputeDiscID()
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
 
-SMOOTHString bonkEncCDDB::GetDiscIDString()
+String bonkEncCDDB::GetDiscIDString()
 {
 	int	 id = ComputeDiscID();
-	SString	 str;
+	String	 str;
 
 	for (int i = 28; i >= 0; i -= 4)
 	{
@@ -124,11 +122,10 @@ SMOOTHString bonkEncCDDB::GetDiscIDString()
 	return str;
 }
 
-SMOOTHString bonkEncCDDB::GetCDDBQueryString()
+String bonkEncCDDB::GetCDDBQueryString()
 {
-	SString	 str = SMOOTHString("cddb query ").Append(GetDiscIDString());
-
-	SMOOTHString	 inifile = SMOOTH::StartDirectory;
+	String	 str = String("cddb query ").Append(GetDiscIDString());
+	String	 inifile = SMOOTH::StartDirectory;
 
 	inifile.Append("BonkEnc.ini");
 
@@ -138,32 +135,32 @@ SMOOTHString bonkEncCDDB::GetCDDBQueryString()
 
 	ex_CR_ReadToc();
 
-	SMOOTHInt	 numTocEntries = ex_CR_GetNumTocEntries();
-	TOCENTRY	 entry;
+	Int	 numTocEntries = ex_CR_GetNumTocEntries();
+	TOCENTRY entry;
 
-	str.Append(" ").Append(SMOOTHString::IntToString(numTocEntries));
+	str.Append(" ").Append(String::IntToString(numTocEntries));
 
 	for (int i = 0; i < numTocEntries; i++)
 	{
 		entry = ex_CR_GetTocEntry(i);
 
-		str.Append(" ").Append(SMOOTHString::IntToString(entry.dwStartSector + 2 * 75));
+		str.Append(" ").Append(String::IntToString(entry.dwStartSector + 2 * 75));
 	}
 
 	entry = ex_CR_GetTocEntry(numTocEntries);
 
-	str.Append(" ").Append(SMOOTHString::IntToString(entry.dwStartSector / 75 + 2));
+	str.Append(" ").Append(String::IntToString(entry.dwStartSector / 75 + 2));
 
 	ex_CR_DeInit();
 
 	return str;
 }
 
-SMOOTHString bonkEncCDDB::SendCommand(SMOOTHString command)
+String bonkEncCDDB::SendCommand(String command)
 {
 	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return "error not connected";
 
-	SMOOTHString	 str;
+	String	 str;
 
 #ifdef LOG_CDDB
 	OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
@@ -215,13 +212,13 @@ SMOOTHString bonkEncCDDB::SendCommand(SMOOTHString command)
 
 			str.Append("POST ").Append(config->freedb_query_path).Append(" HTTP/1.0\n");
 			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-			str.Append("Content-Length: ").Append(SMOOTHString::IntToString(SMOOTHString("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v0.8&proto=5\n").Length())).Append("\n");
+			str.Append("Content-Length: ").Append(String::IntToString(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v0.9&proto=5\n").Length())).Append("\n");
 			str.Append("Charset: ISO-8859-1\n");
 			str.Append("\n");
 
 			for (int i = 0; i < command.Length(); i++) if (command[i] == ' ') command[i] = '+';
 
-			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v0.8&proto=5\n");
+			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v0.9&proto=5\n");
 
 			delete [] buffer;
 
@@ -232,7 +229,7 @@ SMOOTHString bonkEncCDDB::SendCommand(SMOOTHString command)
 			if (socket->GetLastError() != IOLIB_ERROR_OK)
 			{
 #ifdef LOG_CDDB
-				log->OutputLine(SMOOTHString("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(SMOOTHString::IntToString(config->freedb_cddbp_port)));
+				log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::IntToString(config->freedb_cddbp_port)));
 #endif
 
 				str = "error";
@@ -296,7 +293,7 @@ SMOOTHString bonkEncCDDB::SendCommand(SMOOTHString command)
 	return str;
 }
 
-SMOOTHBool bonkEncCDDB::ConnectToServer()
+Bool bonkEncCDDB::ConnectToServer()
 {
 	if (config->freedb_mode == FREEDB_MODE_CDDBP)
 	{
@@ -309,7 +306,7 @@ SMOOTHBool bonkEncCDDB::ConnectToServer()
 #ifdef LOG_CDDB
 			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
 
-			log->OutputLine(SMOOTHString("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(SMOOTHString::IntToString(config->freedb_cddbp_port)));
+			log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::IntToString(config->freedb_cddbp_port)));
 
 			delete log;
 #endif
@@ -324,7 +321,7 @@ SMOOTHBool bonkEncCDDB::ConnectToServer()
 #ifdef LOG_CDDB
 		OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
 
-		log->OutputLine(SMOOTHString("Connected to CDDB server at ").Append(config->freedb_server).Append(":").Append(config->freedb_cddbp_port));
+		log->OutputLine(String("Connected to CDDB server at ").Append(config->freedb_server).Append(":").Append(config->freedb_cddbp_port));
 
 		delete log;
 #endif
@@ -342,16 +339,16 @@ SMOOTHBool bonkEncCDDB::ConnectToServer()
 
 	gethostname(buffer, 256);
 
-	SendCommand(SMOOTHString("cddb hello user ").Append(buffer).Append(" BonkEnc v0.8"));
+	SendCommand(String("cddb hello user ").Append(buffer).Append(" BonkEnc v0.9"));
 
 	delete [] buffer;
 
 	return true;
 }
 
-SMOOTHString bonkEncCDDB::Query(SMOOTHString discid)
+String bonkEncCDDB::Query(String discid)
 {
-	SMOOTHString	 str = SendCommand(GetCDDBQueryString());
+	String	 str = SendCommand(GetCDDBQueryString());
 
 	// no match found
 	if (str[0] == '2' && str[1] == '0' && str[2] == '2') return "none";
@@ -359,7 +356,7 @@ SMOOTHString bonkEncCDDB::Query(SMOOTHString discid)
 	// exact match
 	if (str[0] == '2' && str[1] == '0' && str[2] == '0')
 	{
-		SMOOTHString	 ret;
+		String	 ret;
 
 		for (int s = 4; s < 256; s++)
 		{
@@ -387,10 +384,10 @@ SMOOTHString bonkEncCDDB::Query(SMOOTHString discid)
 
 		do
 		{
-			SMOOTHString	 val = in->InputLine();
-			SMOOTHString	 id;
-			SMOOTHString	 title;
-			SMOOTHString	 category;
+			String	 val = in->InputLine();
+			String	 id;
+			String	 title;
+			String	 category;
 
 #ifdef LOG_CDDB
 			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
@@ -431,9 +428,9 @@ SMOOTHString bonkEncCDDB::Query(SMOOTHString discid)
 	return "error";
 }
 
-SMOOTHString bonkEncCDDB::Read(SMOOTHString query)
+String bonkEncCDDB::Read(String query)
 {
-	SMOOTHString	 str = SendCommand(SMOOTHString("cddb read ").Append(query));
+	String	 str = SendCommand(String("cddb read ").Append(query));
 
 	if (str[0] == '2' && str[1] == '1' && str[2] == '0')
 	{
@@ -441,7 +438,7 @@ SMOOTHString bonkEncCDDB::Read(SMOOTHString query)
 
 		do
 		{
-			SMOOTHString	 val = in->InputLine();
+			String	 val = in->InputLine();
 
 #ifdef LOG_CDDB
 			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
@@ -466,7 +463,7 @@ SMOOTHString bonkEncCDDB::Read(SMOOTHString query)
 	}
 }
 
-SMOOTHBool bonkEncCDDB::CloseConnection()
+Bool bonkEncCDDB::CloseConnection()
 {
 	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return false;
 
@@ -482,22 +479,22 @@ SMOOTHBool bonkEncCDDB::CloseConnection()
 	return true;
 }
 
-SMOOTHInt bonkEncCDDB::GetNOfMatches()
+Int bonkEncCDDB::GetNOfMatches()
 {
 	return ids.GetNOfEntries();
 }
 
-SMOOTHString bonkEncCDDB::GetNthID(SMOOTHInt n)
+String bonkEncCDDB::GetNthID(Int n)
 {
 	return ids.GetNthEntry(n);
 }
 
-SMOOTHString bonkEncCDDB::GetNthTitle(SMOOTHInt n)
+String bonkEncCDDB::GetNthTitle(Int n)
 {
 	return titles.GetNthEntry(n);
 }
 
-SMOOTHString bonkEncCDDB::GetNthCategory(SMOOTHInt n)
+String bonkEncCDDB::GetNthCategory(Int n)
 {
 	return categories.GetNthEntry(n);
 }

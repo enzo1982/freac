@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,163 +11,163 @@
 #ifndef _H_LAMECONFIG_
 #define _H_LAMECONFIG_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class configureLameEnc : public SMOOTHApplication
+using namespace smooth;
+
+class configureLameEnc : public Application
 {
 	private:
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		SMOOTHTabRegister	*reg_register;
+		TabWidget	*reg_register;
 
-		SMOOTHLayer		*register_layer_basic;
-		SMOOTHLayer		*register_layer_vbr;
-		SMOOTHLayer		*register_layer_misc;
-		SMOOTHLayer		*register_layer_expert;
-		SMOOTHLayer		*register_layer_filtering;
+		Layer		*register_layer_basic;
+		Layer		*register_layer_vbr;
+		Layer		*register_layer_misc;
+		Layer		*register_layer_expert;
+		Layer		*register_layer_filtering;
 
-		SMOOTHGroupBox		*basic_bitrate;
-		SMOOTHGroupBox		*basic_quality;
-		SMOOTHGroupBox		*basic_stereomode;
+		GroupBox	*basic_bitrate;
+		GroupBox	*basic_quality;
+		GroupBox	*basic_stereomode;
 
-		SMOOTHOptionBox		*basic_option_set_bitrate;
-		SMOOTHOptionBox		*basic_option_set_ratio;
-		SMOOTHSlider		*basic_slider_bitrate;
-		SMOOTHText		*basic_text_bitrate;
-		SMOOTHEditBox		*basic_edit_ratio;
+		OptionBox	*basic_option_set_bitrate;
+		OptionBox	*basic_option_set_ratio;
+		Slider		*basic_slider_bitrate;
+		Text		*basic_text_bitrate;
+		EditBox		*basic_edit_ratio;
 
-		SMOOTHCheckBox		*basic_check_set_quality;
-		SMOOTHSlider		*basic_slider_quality;
-		SMOOTHText		*basic_text_quality;
-		SMOOTHText		*basic_text_quality_better;
-		SMOOTHText		*basic_text_quality_worse;
+		CheckBox	*basic_check_set_quality;
+		Slider		*basic_slider_quality;
+		Text		*basic_text_quality;
+		Text		*basic_text_quality_better;
+		Text		*basic_text_quality_worse;
 
-		SMOOTHOptionBox		*basic_option_autostereo;
-		SMOOTHOptionBox		*basic_option_stereo;
-		SMOOTHOptionBox		*basic_option_jstereo;
-		SMOOTHCheckBox		*basic_check_forcejs;
+		OptionBox	*basic_option_autostereo;
+		OptionBox	*basic_option_stereo;
+		OptionBox	*basic_option_jstereo;
+		CheckBox	*basic_check_forcejs;
 
-		SMOOTHGroupBox		*vbr_vbrmode;
-		SMOOTHGroupBox		*vbr_quality;
-		SMOOTHGroupBox		*vbr_abrbitrate;
-		SMOOTHGroupBox		*vbr_bitrate;
+		GroupBox	*vbr_vbrmode;
+		GroupBox	*vbr_quality;
+		GroupBox	*vbr_abrbitrate;
+		GroupBox	*vbr_bitrate;
 
-		SMOOTHOptionBox		*vbr_option_cbr;
-		SMOOTHOptionBox		*vbr_option_abr;
-		SMOOTHOptionBox		*vbr_option_vbrrh;
-		SMOOTHOptionBox		*vbr_option_vbrmtrh;
+		OptionBox	*vbr_option_cbr;
+		OptionBox	*vbr_option_abr;
+		OptionBox	*vbr_option_vbrrh;
+		OptionBox	*vbr_option_vbrmtrh;
 
-		SMOOTHText		*vbr_text_setquality;
-		SMOOTHSlider		*vbr_slider_quality;
-		SMOOTHText		*vbr_text_quality;
-		SMOOTHText		*vbr_text_quality_better;
-		SMOOTHText		*vbr_text_quality_worse;
+		Text		*vbr_text_setquality;
+		Slider		*vbr_slider_quality;
+		Text		*vbr_text_quality;
+		Text		*vbr_text_quality_better;
+		Text		*vbr_text_quality_worse;
 
-		SMOOTHSlider		*vbr_slider_abrbitrate;
-		SMOOTHEditBox		*vbr_edit_abrbitrate;
-		SMOOTHText		*vbr_text_abrbitrate_kbps;
+		Slider		*vbr_slider_abrbitrate;
+		EditBox		*vbr_edit_abrbitrate;
+		Text		*vbr_text_abrbitrate_kbps;
 
-		SMOOTHCheckBox		*vbr_check_set_min_brate;
-		SMOOTHCheckBox		*vbr_check_set_max_brate;
-		SMOOTHSlider		*vbr_slider_min_brate;
-		SMOOTHSlider		*vbr_slider_max_brate;
-		SMOOTHText		*vbr_text_min_brate_kbps;
-		SMOOTHText		*vbr_text_max_brate_kbps;
+		CheckBox	*vbr_check_set_min_brate;
+		CheckBox	*vbr_check_set_max_brate;
+		Slider		*vbr_slider_min_brate;
+		Slider		*vbr_slider_max_brate;
+		Text		*vbr_text_min_brate_kbps;
+		Text		*vbr_text_max_brate_kbps;
 
-		SMOOTHGroupBox		*misc_bits;
-		SMOOTHGroupBox		*misc_crc;
-		SMOOTHGroupBox		*misc_format;
-		SMOOTHGroupBox		*misc_padding;
+		GroupBox	*misc_bits;
+		GroupBox	*misc_crc;
+		GroupBox	*misc_format;
+		GroupBox	*misc_padding;
 
-		SMOOTHCheckBox		*misc_check_original;
-		SMOOTHCheckBox		*misc_check_copyright;
-		SMOOTHCheckBox		*misc_check_private;
-		SMOOTHCheckBox		*misc_check_crc;
-		SMOOTHCheckBox		*misc_check_iso;
-		SMOOTHText		*misc_text_padding;
-		SMOOTHComboBox		*misc_combo_padding;
+		CheckBox	*misc_check_original;
+		CheckBox	*misc_check_copyright;
+		CheckBox	*misc_check_private;
+		CheckBox	*misc_check_crc;
+		CheckBox	*misc_check_iso;
+		Text		*misc_text_padding;
+		ComboBox	*misc_combo_padding;
 
-		SMOOTHGroupBox		*filtering_resample;
-		SMOOTHGroupBox		*filtering_misc;
-		SMOOTHGroupBox		*filtering_lowpass;
-		SMOOTHGroupBox		*filtering_highpass;
+		GroupBox	*filtering_resample;
+		GroupBox	*filtering_misc;
+		GroupBox	*filtering_lowpass;
+		GroupBox	*filtering_highpass;
 
-		SMOOTHComboBox		*filtering_combo_resample;
-		SMOOTHCheckBox		*filtering_check_disable_all;
-		SMOOTHCheckBox		*filtering_set_lowpass;
-		SMOOTHEditBox		*filtering_edit_lowpass;
-		SMOOTHCheckBox		*filtering_set_lowpass_width;
-		SMOOTHEditBox		*filtering_edit_lowpass_width;
-		SMOOTHCheckBox		*filtering_set_highpass;
-		SMOOTHEditBox		*filtering_edit_highpass;
-		SMOOTHCheckBox		*filtering_set_highpass_width;
-		SMOOTHEditBox		*filtering_edit_highpass_width;
+		ComboBox	*filtering_combo_resample;
+		CheckBox	*filtering_check_disable_all;
+		CheckBox	*filtering_set_lowpass;
+		EditBox		*filtering_edit_lowpass;
+		CheckBox	*filtering_set_lowpass_width;
+		EditBox		*filtering_edit_lowpass_width;
+		CheckBox	*filtering_set_highpass;
+		EditBox		*filtering_edit_highpass;
+		CheckBox	*filtering_set_highpass_width;
+		EditBox		*filtering_edit_highpass_width;
 
-		SMOOTHInt		 set_bitrate;
-		SMOOTHInt		 bitrate;
-		SMOOTHInt		 ratio;
-		SMOOTHBool		 set_quality;
-		SMOOTHInt		 quality;
-		SMOOTHInt		 stereomode;
-		SMOOTHBool		 forcejs;
-		SMOOTHInt		 vbrmode;
-		SMOOTHInt		 vbrquality;
-		SMOOTHInt		 abrbitrate;
-		SMOOTHBool		 set_min_vbr_brate;
-		SMOOTHBool		 set_max_vbr_brate;
-		SMOOTHInt		 min_vbr_brate;
-		SMOOTHInt		 max_vbr_brate;
-		SMOOTHBool		 set_original;
-		SMOOTHBool		 set_private;
-		SMOOTHBool		 set_copyright;
-		SMOOTHBool		 set_crc;
-		SMOOTHBool		 set_iso;
-		SMOOTHBool		 disable_filtering;
-		SMOOTHBool		 set_lowpass;
-		SMOOTHBool		 set_lowpass_width;
-		SMOOTHBool		 set_highpass;
-		SMOOTHBool		 set_highpass_width;
+		Int		 set_bitrate;
+		Int		 bitrate;
+		Int		 ratio;
+		Bool		 set_quality;
+		Int		 quality;
+		Int		 stereomode;
+		Bool		 forcejs;
+		Int		 vbrmode;
+		Int		 vbrquality;
+		Int		 abrbitrate;
+		Bool		 set_min_vbr_brate;
+		Bool		 set_max_vbr_brate;
+		Int		 min_vbr_brate;
+		Int		 max_vbr_brate;
+		Bool		 set_original;
+		Bool		 set_private;
+		Bool		 set_copyright;
+		Bool		 set_crc;
+		Bool		 set_iso;
+		Bool		 disable_filtering;
+		Bool		 set_lowpass;
+		Bool		 set_lowpass_width;
+		Bool		 set_highpass;
+		Bool		 set_highpass_width;
 
-		bonkEncConfig		*currentConfig;
+		bonkEncConfig	*currentConfig;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
-		SMOOTHVoid		 SetBitrateOption();
-		SMOOTHVoid		 SetBitrate();
-		SMOOTHVoid		 SetQualityOption();
-		SMOOTHVoid		 SetQuality();
-		SMOOTHVoid		 SetStereoMode();
-		SMOOTHVoid		 SetVBRMode();
-		SMOOTHVoid		 SetVBRQuality();
-		SMOOTHVoid		 SetABRBitrate();
-		SMOOTHVoid		 SetABRBitrateByEditBox();
-		SMOOTHVoid		 SetMinVBRBitrateOption();
-		SMOOTHVoid		 SetMaxVBRBitrateOption();
-		SMOOTHVoid		 SetMinVBRBitrate();
-		SMOOTHVoid		 SetMaxVBRBitrate();
-		SMOOTHVoid		 SetDisableFiltering();
-		SMOOTHVoid		 SetLowpass();
-		SMOOTHVoid		 SetLowpassWidth();
-		SMOOTHVoid		 SetHighpass();
-		SMOOTHVoid		 SetHighpassWidth();
-		SMOOTHInt		 GetBitrate();
-		SMOOTHInt		 GetSliderValue();
-		SMOOTHInt		 GetMinVBRBitrate();
-		SMOOTHInt		 GetMinVBRSliderValue();
-		SMOOTHInt		 GetMaxVBRBitrate();
-		SMOOTHInt		 GetMaxVBRSliderValue();
-		SMOOTHInt		 SliderValueToBitrate(SMOOTHInt);
-		SMOOTHInt		 BitrateToSliderValue(SMOOTHInt);
+		Void		 OK();
+		Void		 SetBitrateOption();
+		Void		 SetBitrate();
+		Void		 SetQualityOption();
+		Void		 SetQuality();
+		Void		 SetStereoMode();
+		Void		 SetVBRMode();
+		Void		 SetVBRQuality();
+		Void		 SetABRBitrate();
+		Void		 SetABRBitrateByEditBox();
+		Void		 SetMinVBRBitrateOption();
+		Void		 SetMaxVBRBitrateOption();
+		Void		 SetMinVBRBitrate();
+		Void		 SetMaxVBRBitrate();
+		Void		 SetDisableFiltering();
+		Void		 SetLowpass();
+		Void		 SetLowpassWidth();
+		Void		 SetHighpass();
+		Void		 SetHighpassWidth();
+		Int		 GetBitrate();
+		Int		 GetSliderValue();
+		Int		 GetMinVBRBitrate();
+		Int		 GetMinVBRSliderValue();
+		Int		 GetMaxVBRBitrate();
+		Int		 GetMaxVBRSliderValue();
+		Int		 SliderValueToBitrate(Int);
+		Int		 BitrateToSliderValue(Int);
 	public:
-					 configureLameEnc(bonkEncConfig *);
-					~configureLameEnc();
-		SMOOTHInt		 ShowDialog();
+				 configureLameEnc(bonkEncConfig *);
+				~configureLameEnc();
+		Int		 ShowDialog();
 };
 
 #endif

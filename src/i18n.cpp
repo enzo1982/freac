@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,7 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <smoothx.h>
 #include <i18n.h>
 #include <direct.h>
 
@@ -29,12 +28,12 @@ bonkTranslator::~bonkTranslator()
 	languages.DeleteAll();
 }
 
-SMOOTHInt bonkTranslator::GetSupportedLanguages()
+Int bonkTranslator::GetSupportedLanguages()
 {
-	SMOOTHString		 dir = SMOOTH::StartDirectory;
+	String			 dir = SMOOTH::StartDirectory;
 	_finddata_t		 fileData;
 	int			 handle;
-	SXMLDocument		*doc = NIL;
+	Document		*doc = NIL;
 	bonkEncLanguageInfo	*language = NIL;
 
 	{
@@ -57,20 +56,20 @@ SMOOTHInt bonkTranslator::GetSupportedLanguages()
 	{
 		do
 		{
-			doc = new SXMLDocument();
+			doc = new Document();
 			language = new bonkEncLanguageInfo();
 
 			doc->LoadFile(fileData.name);
 
-			SXMLNode	*info = doc->GetRootNode()->GetNodeByName("info");
-			SMOOTHString	 program;
-			SMOOTHString	 version;
+			Node	*info = doc->GetRootNode()->GetNodeByName("info");
+			String	 program;
+			String	 version;
 
 			language->magic = fileData.name;
 
 			for (int i = 0; i < info->GetNOfNodes(); i++)
 			{
-				SMOOTHString	 property = info->GetNthNode(i)->GetAttributeByName("name")->GetContent();
+				String	 property = info->GetNthNode(i)->GetAttributeByName("name")->GetContent();
 
 				if (property == "program")	 program = info->GetNthNode(i)->GetContent();
 				if (property == "version")	 version = info->GetNthNode(i)->GetContent();
@@ -133,15 +132,15 @@ SMOOTHInt bonkTranslator::GetSupportedLanguages()
 
 	chdir(SMOOTH::StartDirectory);
 
-	return SMOOTH::Success;
+	return Success;
 }
 
-SMOOTHInt bonkTranslator::GetStringChecksum(SMOOTHString string)
+Int bonkTranslator::GetStringChecksum(String string)
 {
-	SMOOTHInt	 checksum = (string.Length() & 127) << 24;
-	SMOOTHInt	 value = 0;
+	Int	 checksum = (string.Length() & 127) << 24;
+	Int	 value = 0;
 
-	for (SMOOTHInt i = 0; i < string.Length(); i++) value += ((wchar_t *) string)[i];
+	for (Int i = 0; i < string.Length(); i++) value += ((wchar_t *) string)[i];
 
 	checksum += ((value & 65535) << 8);
 	checksum += string[0];
@@ -149,37 +148,37 @@ SMOOTHInt bonkTranslator::GetStringChecksum(SMOOTHString string)
 	return checksum;
 }
 
-SMOOTHInt bonkTranslator::GetNOfLanguages()
+Int bonkTranslator::GetNOfLanguages()
 {
 	return languages.GetNOfEntries();
 }
 
-SMOOTHString bonkTranslator::GetNthLanguageName(SMOOTHInt index)
+String bonkTranslator::GetNthLanguageName(Int index)
 {
 	return languages.GetNthEntry(index)->language;
 }
 
-SMOOTHString bonkTranslator::GetNthLanguageID(SMOOTHInt index)
+String bonkTranslator::GetNthLanguageID(Int index)
 {
 	return languages.GetNthEntry(index)->magic;
 }
 
-SMOOTHString bonkTranslator::GetNthLanguageAuthor(SMOOTHInt index)
+String bonkTranslator::GetNthLanguageAuthor(Int index)
 {
 	return languages.GetNthEntry(index)->author;
 }
 
-SMOOTHString bonkTranslator::GetNthLanguageEncoding(SMOOTHInt index)
+String bonkTranslator::GetNthLanguageEncoding(Int index)
 {
 	return languages.GetNthEntry(index)->encoding;
 }
 
-SMOOTHString bonkTranslator::GetNthLanguageURL(SMOOTHInt index)
+String bonkTranslator::GetNthLanguageURL(Int index)
 {
 	return languages.GetNthEntry(index)->url;
 }
 
-SMOOTHInt bonkTranslator::ActivateLanguage(SMOOTHString magic)
+Int bonkTranslator::ActivateLanguage(String magic)
 {
 	for (int i = 0; i < languages.GetNOfEntries(); i++)
 	{
@@ -187,32 +186,32 @@ SMOOTHInt bonkTranslator::ActivateLanguage(SMOOTHString magic)
 		{
 			activeLanguage = languages.GetNthEntry(i);
 
-			return SMOOTH::Success;
+			return Success;
 		}
 	}
 
-	return SMOOTH::Error;
+	return Error;
 }
 
-SMOOTHString bonkTranslator::TranslateString(SMOOTHString string)
+String bonkTranslator::TranslateString(String string)
 {
-	SMOOTHString	 translation = activeLanguage->strings.GetEntry(GetStringChecksum(string));
+	String	 translation = activeLanguage->strings.GetEntry(GetStringChecksum(string));
 
 	if (translation == NIL)	return string;
 	else			return translation;
 }
 
-SMOOTHInt bonkTranslator::ReadStrings(SMOOTHXMLDocument *language, bonkEncLanguageInfo *info)
+Int bonkTranslator::ReadStrings(Document *language, bonkEncLanguageInfo *info)
 {
-	SXMLNode	*entry = language->GetRootNode()->GetNodeByName("entry");
+	Node	*entry = language->GetRootNode()->GetNodeByName("entry");
 
 	while (entry != NIL)
 	{
 		if (entry->GetName() == "entry")
 		{
-			SMOOTHXMLNode	*property = entry->GetNodeByName("property");
-			SMOOTHString	 translation;
-			SMOOTHInt	 checksum = 0;
+			Node	*property = entry->GetNodeByName("property");
+			String	 translation;
+			Int	 checksum = 0;
 
 			do
 			{
@@ -238,5 +237,5 @@ SMOOTHInt bonkTranslator::ReadStrings(SMOOTHXMLDocument *language, bonkEncLangua
 		entry = entry->GetNextNode();
 	}
 
-	return SMOOTH::Success;
+	return Success;
 }

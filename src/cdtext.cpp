@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   * Portions Copyright (C) 1999-2002 Albert L. Faber
   *
   * This program is free software; you can redistribute it and/or
@@ -9,7 +9,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <smoothx.h>
 #include <main.h>
 #include <dllinterfaces.h>
 
@@ -29,7 +28,7 @@ typedef struct
 }
 cdTextPackage;
 
-SMOOTHInt bonkEnc::ReadCDText()
+Int bonkEnc::ReadCDText()
 {
 	FreeCDText();
 
@@ -40,7 +39,7 @@ SMOOTHInt bonkEnc::ReadCDText()
 
 	ex_CR_ReadCDText(pbtBuffer, nBufferSize, &nCDTextSize);
 
-	if (nCDTextSize < 4) return SMOOTH::Error;
+	if (nCDTextSize < 4) return Error;
 
 	int		 nNumPacks		= (nCDTextSize - 4) / sizeof(cdTextPackage);
 	cdTextPackage	*pCDtextPacks		= NIL;
@@ -88,12 +87,12 @@ SMOOTHInt bonkEnc::ReadCDText()
 
 	delete [] pbtBuffer;
 
-	return SMOOTH::Success;
+	return Success;
 }
 
-SMOOTHInt bonkEnc::FreeCDText()
+Int bonkEnc::FreeCDText()
 {
 	cdText.DeleteAll();
 
-	return SMOOTH::Success;
+	return Success;
 }

@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -52,7 +52,7 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 	}
 
 	ex_vorbis_comment_init(&vc);
-	ex_vorbis_comment_add_tag(&vc, "COMMENT", "BonkEnc v0.8 <http://www.bonkenc.org>");
+	ex_vorbis_comment_add_tag(&vc, "COMMENT", "BonkEnc v0.9 <http://www.bonkenc.org>");
 
 	if (format->trackInfo->cdText)
 	{
@@ -60,8 +60,8 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 		ex_vorbis_comment_add_tag(&vc, "ARTIST", format->trackInfo->artist);
 		ex_vorbis_comment_add_tag(&vc, "ALBUM", format->trackInfo->album);
 
-		if (format->trackInfo->track < 10)	ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", SMOOTHString("0").Append(SMOOTHString::IntToString(format->trackInfo->track)));
-		else					ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", SMOOTHString::IntToString(format->trackInfo->track));
+		if (format->trackInfo->track < 10)	ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String("0").Append(String::IntToString(format->trackInfo->track)));
+		else					ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String::IntToString(format->trackInfo->track));
 
 		ex_vorbis_comment_add_tag(&vc, "DATE", format->trackInfo->year);
 		ex_vorbis_comment_add_tag(&vc, "GENRE", format->trackInfo->genre);

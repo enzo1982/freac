@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -570,7 +570,7 @@
   </entry>
   <entry id="141">
     <property name="string">Set Lowpass frequency (Hz):</property>
-    <property name="translation">Aluláteresztõ szûrõ frekv.  Hz:</property>
+    <property name="translation">Aluláteresztõ szûrõ frekv. Hz:</property>
   </entry>
   <entry id="142">
     <property name="string">Set Lowpass width (Hz):</property>

@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,58 +11,58 @@
 #ifndef _H_BLADECONFIG_
 #define _H_BLADECONFIG_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class configureBladeEnc : public SMOOTHApplication
+using namespace smooth;
+
+class configureBladeEnc : public Application
 {
 	private:
-		SMOOTHGroupBox		*group_bit;
-		SMOOTHSlider		*slider_bit;
-		SMOOTHText		*text_bit;
+		GroupBox	*group_bit;
+		Slider		*slider_bit;
+		Text		*text_bit;
 
-		SMOOTHGroupBox		*group_crc;
-		SMOOTHCheckBox		*check_crc;
+		GroupBox	*group_crc;
+		CheckBox	*check_crc;
 
-		SMOOTHGroupBox		*group_copyright;
-		SMOOTHCheckBox		*check_copyright;
+		GroupBox	*group_copyright;
+		CheckBox	*check_copyright;
 
-		SMOOTHGroupBox		*group_original;
-		SMOOTHCheckBox		*check_original;
+		GroupBox	*group_original;
+		CheckBox	*check_original;
 
-		SMOOTHGroupBox		*group_private;
-		SMOOTHCheckBox		*check_private;
+		GroupBox	*group_private;
+		CheckBox	*check_private;
 
-		SMOOTHGroupBox		*group_dualchannel;
-		SMOOTHCheckBox		*check_dualchannel;
+		GroupBox	*group_dualchannel;
+		CheckBox	*check_dualchannel;
 
-		SMOOTHDivisionbar	*divbar;
+		Divider		*divbar;
 
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		SMOOTHInt		 bitrate;
-		SMOOTHBool		 crc;
-		SMOOTHBool		 copyright;
-		SMOOTHBool		 original;
-		SMOOTHBool		 priv;
-		SMOOTHBool		 dualchannel;
+		Int		 bitrate;
+		Bool		 crc;
+		Bool		 copyright;
+		Bool		 original;
+		Bool		 priv;
+		Bool		 dualchannel;
 
-		bonkEncConfig		*currentConfig;
+		bonkEncConfig	*currentConfig;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
-		SMOOTHVoid		 SetBitrate();
-		SMOOTHInt		 GetBitrate();
-		SMOOTHInt		 GetSliderValue();
+		Void		 OK();
+		Void		 SetBitrate();
+		Int		 GetBitrate();
+		Int		 GetSliderValue();
 	public:
-					 configureBladeEnc(bonkEncConfig *);
-					~configureBladeEnc();
-		SMOOTHInt		 ShowDialog();
+				 configureBladeEnc(bonkEncConfig *);
+				~configureBladeEnc();
+		Int		 ShowDialog();
 };
 
 #endif

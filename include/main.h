@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,16 +11,16 @@
 #ifndef _H_MAIN_
 #define _H_MAIN_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include "i18n.h"
 
-extern SMOOTHInt	 ENCODER_BONKENC;
-extern SMOOTHInt	 ENCODER_BLADEENC;
-extern SMOOTHInt	 ENCODER_LAMEENC;
-extern SMOOTHInt	 ENCODER_VORBISENC;
-extern SMOOTHInt	 ENCODER_FAAC;
-extern SMOOTHInt	 ENCODER_TVQ;
-extern SMOOTHInt	 ENCODER_WAVE;
+extern Int	 ENCODER_BONKENC;
+extern Int	 ENCODER_BLADEENC;
+extern Int	 ENCODER_LAMEENC;
+extern Int	 ENCODER_VORBISENC;
+extern Int	 ENCODER_FAAC;
+extern Int	 ENCODER_TVQ;
+extern Int	 ENCODER_WAVE;
 
 const int	 BYTE_INTEL	= 0;
 const int	 BYTE_RAW	= 1;
@@ -32,121 +32,121 @@ typedef unsigned char  uint8;
 typedef struct
 {
 	bonkTranslator	*i18n;
-	SMOOTHString	 language;
-	SMOOTHBool	 languageChanged;
+	String		 language;
+	Bool		 languageChanged;
 
-	SMOOTHPoint	 wndPos;
-	SMOOTHSize	 wndSize;
+	Point		 wndPos;
+	Size		 wndSize;
 
-	SMOOTHInt	 encoder;
-	SMOOTHBool	 enable_console;
-	SMOOTHBool	 enable_bonk;
-	SMOOTHBool	 enable_blade;
-	SMOOTHBool	 enable_lame;
-	SMOOTHBool	 enable_vorbis;
-	SMOOTHBool	 enable_faac;
-	SMOOTHBool	 enable_tvq;
-	SMOOTHBool	 enable_cdrip;
-	SMOOTHBool	 enable_cddb;
-	SMOOTHBool	 enable_id3;
-	SMOOTHString	 enc_outdir;
+	Int		 encoder;
+	Bool		 enable_console;
+	Bool		 enable_bonk;
+	Bool		 enable_blade;
+	Bool		 enable_lame;
+	Bool		 enable_vorbis;
+	Bool		 enable_faac;
+	Bool		 enable_tvq;
+	Bool		 enable_cdrip;
+	Bool		 enable_cddb;
+	Bool		 enable_id3;
+	String		 enc_outdir;
 
-	SMOOTHArray<SMOOTHString>	 cdrip_drives;
-	SMOOTHInt	 cdrip_numdrives;
-	SMOOTHInt	 cdrip_activedrive;
-	SMOOTHInt	 cdrip_debuglevel;
-	SMOOTHBool	 cdrip_paranoia;
-	SMOOTHBool	 cdrip_jitter;
-	SMOOTHInt	 cdrip_paranoia_mode;
-	SMOOTHBool	 cdrip_swapchannels;
-	SMOOTHBool	 cdrip_locktray;
-	SMOOTHBool	 cdrip_ntscsi;
+	Array<String>	 cdrip_drives;
+	Int		 cdrip_numdrives;
+	Int		 cdrip_activedrive;
+	Int		 cdrip_debuglevel;
+	Bool		 cdrip_paranoia;
+	Bool		 cdrip_jitter;
+	Int		 cdrip_paranoia_mode;
+	Bool		 cdrip_swapchannels;
+	Bool		 cdrip_locktray;
+	Bool		 cdrip_ntscsi;
 
-	SMOOTHString	 freedb_server;
-	SMOOTHInt	 freedb_mode;
-	SMOOTHInt	 freedb_cddbp_port;
-	SMOOTHInt	 freedb_http_port;
-	SMOOTHString	 freedb_query_path;
-	SMOOTHString	 freedb_submit_path;
-	SMOOTHString	 freedb_email;
-	SMOOTHInt	 freedb_proxy_mode;
-	SMOOTHString	 freedb_proxy;
-	SMOOTHInt	 freedb_proxy_port;
+	String		 freedb_server;
+	Int		 freedb_mode;
+	Int		 freedb_cddbp_port;
+	Int		 freedb_http_port;
+	String		 freedb_query_path;
+	String		 freedb_submit_path;
+	String		 freedb_email;
+	Int		 freedb_proxy_mode;
+	String		 freedb_proxy;
+	Int		 freedb_proxy_port;
 
-	SMOOTHInt	 bonk_quantization;
-	SMOOTHInt	 bonk_predictor;
-	SMOOTHInt	 bonk_downsampling;
-	SMOOTHBool	 bonk_jstereo;
-	SMOOTHBool	 bonk_lossless;
+	Int		 bonk_quantization;
+	Int		 bonk_predictor;
+	Int		 bonk_downsampling;
+	Bool		 bonk_jstereo;
+	Bool		 bonk_lossless;
 
-	SMOOTHInt	 blade_bitrate;
-	SMOOTHBool	 blade_crc;
-	SMOOTHBool	 blade_copyright;
-	SMOOTHBool	 blade_original;
-	SMOOTHBool	 blade_private;
-	SMOOTHBool	 blade_dualchannel;
+	Int		 blade_bitrate;
+	Bool		 blade_crc;
+	Bool		 blade_copyright;
+	Bool		 blade_original;
+	Bool		 blade_private;
+	Bool		 blade_dualchannel;
 
-	SMOOTHBool	 lame_set_bitrate;
-	SMOOTHInt	 lame_bitrate;
-	SMOOTHInt	 lame_ratio;
-	SMOOTHBool	 lame_set_quality;
-	SMOOTHInt	 lame_quality;
-	SMOOTHInt	 lame_stereomode;
-	SMOOTHBool	 lame_forcejs;
-	SMOOTHInt	 lame_vbrmode;
-	SMOOTHInt	 lame_vbrquality;
-	SMOOTHInt	 lame_abrbitrate;
-	SMOOTHBool	 lame_set_min_vbr_bitrate;
-	SMOOTHInt	 lame_min_vbr_bitrate;
-	SMOOTHBool	 lame_set_max_vbr_bitrate;
-	SMOOTHInt	 lame_max_vbr_bitrate;
-	SMOOTHBool	 lame_crc;
-	SMOOTHBool	 lame_copyright;
-	SMOOTHBool	 lame_original;
-	SMOOTHBool	 lame_private;
-	SMOOTHBool	 lame_strict_iso;
-	SMOOTHInt	 lame_padding_type;
-	SMOOTHInt	 lame_resample;
-	SMOOTHBool	 lame_set_lowpass;
-	SMOOTHInt	 lame_lowpass;
-	SMOOTHBool	 lame_set_lowpass_width;
-	SMOOTHInt	 lame_lowpass_width;
-	SMOOTHBool	 lame_set_highpass;
-	SMOOTHInt	 lame_highpass;
-	SMOOTHBool	 lame_set_highpass_width;
-	SMOOTHInt	 lame_highpass_width;
-	SMOOTHBool	 lame_disable_filtering;
+	Bool		 lame_set_bitrate;
+	Int		 lame_bitrate;
+	Int		 lame_ratio;
+	Bool		 lame_set_quality;
+	Int		 lame_quality;
+	Int		 lame_stereomode;
+	Bool		 lame_forcejs;
+	Int		 lame_vbrmode;
+	Int		 lame_vbrquality;
+	Int		 lame_abrbitrate;
+	Bool		 lame_set_min_vbr_bitrate;
+	Int		 lame_min_vbr_bitrate;
+	Bool		 lame_set_max_vbr_bitrate;
+	Int		 lame_max_vbr_bitrate;
+	Bool		 lame_crc;
+	Bool		 lame_copyright;
+	Bool		 lame_original;
+	Bool		 lame_private;
+	Bool		 lame_strict_iso;
+	Int		 lame_padding_type;
+	Int		 lame_resample;
+	Bool		 lame_set_lowpass;
+	Int		 lame_lowpass;
+	Bool		 lame_set_lowpass_width;
+	Int		 lame_lowpass_width;
+	Bool		 lame_set_highpass;
+	Int		 lame_highpass;
+	Bool		 lame_set_highpass_width;
+	Int		 lame_highpass_width;
+	Bool		 lame_disable_filtering;
 
-	SMOOTHBool	 vorbis_mode;
-	SMOOTHInt	 vorbis_quality;
-	SMOOTHInt	 vorbis_bitrate;
+	Bool		 vorbis_mode;
+	Int		 vorbis_quality;
+	Int		 vorbis_bitrate;
 
-	SMOOTHInt	 faac_mpegversion;
-	SMOOTHInt	 faac_type;
-	SMOOTHInt	 faac_bitrate;
-	SMOOTHInt	 faac_bandwidth;
-	SMOOTHBool	 faac_allowjs;
-	SMOOTHBool	 faac_usetns;
+	Int		 faac_mpegversion;
+	Int		 faac_type;
+	Int		 faac_bitrate;
+	Int		 faac_bandwidth;
+	Bool		 faac_allowjs;
+	Bool		 faac_usetns;
 
-	SMOOTHInt	 tvq_bitrate;
-	SMOOTHInt	 tvq_presel_candidates;
+	Int		 tvq_bitrate;
+	Int		 tvq_presel_candidates;
 }
 bonkEncConfig;
 
 typedef struct
 {
-	SMOOTHInt	 track;
-	SMOOTHInt	 drive;
+	Int	 track;
+	Int	 drive;
 
-	SMOOTHBool	 cdText;
-	SMOOTHString	 artist;
-	SMOOTHString	 title;
-	SMOOTHString	 album;
-	SMOOTHString	 comment;
-	SMOOTHString	 genre;
-	SMOOTHString	 year;
+	Bool	 cdText;
+	String	 artist;
+	String	 title;
+	String	 album;
+	String	 comment;
+	String	 genre;
+	String	 year;
 
-	SMOOTHString	 outfile;
+	String	 outfile;
 }
 bonkTrackInfo;
 
@@ -154,126 +154,124 @@ typedef struct
 {
 	bonkTrackInfo	*trackInfo;
 
-	SMOOTHInt	 channels;
-	SMOOTHInt	 rate;
-	SMOOTHInt	 bits;
-	SMOOTHInt	 length;
-	SMOOTHInt	 order;
+	Int		 channels;
+	Int		 rate;
+	Int		 bits;
+	Int		 length;
+	Int		 order;
 }
 bonkFormatInfo;
 
-// bonkEnc SMOOTHApplication class definition
+// bonkEnc Application class definition
 
-class bonkEnc : public SMOOTHApplication
+class bonkEnc : public Application
 {
 	private:
-		SMOOTHPopupMenu			*menu_file;
-		SMOOTHPopupMenu			*menu_options;
-		SMOOTHPopupMenu			*menu_addsubmenu;
-		SMOOTHPopupMenu			*menu_encode;
+		PopupMenu		*menu_file;
+		PopupMenu		*menu_options;
+		PopupMenu		*menu_addsubmenu;
+		PopupMenu		*menu_encode;
 
-		SMOOTHMenubar			*mainWnd_menubar;
-		SMOOTHMenubar			*mainWnd_iconbar;
-		SMOOTHWindow			*mainWnd;
-		SMOOTHTitlebar			*mainWnd_titlebar;
-		SMOOTHStatusbar			*mainWnd_statusbar;
-		SMOOTHLayer			*mainWnd_layer;
+		Menubar			*mainWnd_menubar;
+		Menubar			*mainWnd_iconbar;
+		Window			*mainWnd;
+		Titlebar		*mainWnd_titlebar;
+		Statusbar		*mainWnd_statusbar;
 
-		SMOOTHListBox			*joblist;
-		SMOOTHText			*txt_joblist;
-		SMOOTHHyperlink			*hyperlink;
+		ListBox			*joblist;
+		Text			*txt_joblist;
+		Hyperlink		*hyperlink;
 
-		SMOOTHText			*enc_filename;
-		SMOOTHText			*enc_time;
-		SMOOTHText			*enc_percent;
-		SMOOTHText			*enc_encoder;
-		SMOOTHText			*enc_progress;
-		SMOOTHText			*enc_outdir;
+		Text			*enc_filename;
+		Text			*enc_time;
+		Text			*enc_percent;
+		Text			*enc_encoder;
+		Text			*enc_progress;
+		Text			*enc_outdir;
 
-		SMOOTHEditBox			*edb_filename;
-		SMOOTHEditBox			*edb_time;
-		SMOOTHEditBox			*edb_percent;
-		SMOOTHEditBox			*edb_encoder;
-		SMOOTHEditBox			*edb_outdir;
+		EditBox			*edb_filename;
+		EditBox			*edb_time;
+		EditBox			*edb_percent;
+		EditBox			*edb_encoder;
+		EditBox			*edb_outdir;
 
-		SMOOTHProgressbar		*progress;
+		Progressbar		*progress;
 
-		SMOOTHArray<SMOOTHString>	 sa_joblist;
-		SMOOTHArray<bonkTrackInfo *>	 sa_trackinfo;
-		SMOOTHBool			 encoding;
-		SMOOTHThread			*encoder_thread;
+		Array<String>		 sa_joblist;
+		Array<bonkTrackInfo *>	 sa_trackinfo;
+		Bool			 encoding;
+		Thread			*encoder_thread;
 
-		bonkEncConfig			*currentConfig;
+		bonkEncConfig		*currentConfig;
 
-		SMOOTHArray<SMOOTHString>	 cdText;
+		Array<String>		 cdText;
 
-		HINSTANCE			 bonkdll;
+		HINSTANCE		 bonkdll;
 
-		SMOOTHBool			 LoadBonkDLL();
-		SMOOTHVoid			 FreeBonkDLL();
+		Bool			 LoadBonkDLL();
+		Void			 FreeBonkDLL();
 
-		HINSTANCE			 bladedll;
+		HINSTANCE		 bladedll;
 
-		SMOOTHBool			 LoadBladeDLL();
-		SMOOTHVoid			 FreeBladeDLL();
+		Bool			 LoadBladeDLL();
+		Void			 FreeBladeDLL();
 
-		HINSTANCE			 lamedll;
+		HINSTANCE		 lamedll;
 
-		SMOOTHBool			 LoadLAMEDLL();
-		SMOOTHVoid			 FreeLAMEDLL();
+		Bool			 LoadLAMEDLL();
+		Void			 FreeLAMEDLL();
 
-		HINSTANCE			 vorbisdll;
+		HINSTANCE		 vorbisdll;
 
-		SMOOTHBool			 LoadVorbisDLL();
-		SMOOTHVoid			 FreeVorbisDLL();
+		Bool			 LoadVorbisDLL();
+		Void			 FreeVorbisDLL();
 
-		HINSTANCE			 faacdll;
+		HINSTANCE		 faacdll;
 
-		SMOOTHBool			 LoadFAACDLL();
-		SMOOTHVoid			 FreeFAACDLL();
+		Bool			 LoadFAACDLL();
+		Void			 FreeFAACDLL();
 
-		HINSTANCE			 tvqdll;
+		HINSTANCE		 tvqdll;
 
-		SMOOTHBool			 LoadTVQDLL();
-		SMOOTHVoid			 FreeTVQDLL();
+		Bool			 LoadTVQDLL();
+		Void			 FreeTVQDLL();
 
-		HINSTANCE			 cdripdll;
+		HINSTANCE		 cdripdll;
 
-		SMOOTHBool			 LoadCDRipDLL();
-		SMOOTHVoid			 FreeCDRipDLL();
+		Bool			 LoadCDRipDLL();
+		Void			 FreeCDRipDLL();
 
-		HINSTANCE			 id3dll;
+		HINSTANCE		 id3dll;
 
-		SMOOTHBool			 LoadID3DLL();
-		SMOOTHVoid			 FreeID3DLL();
+		Bool			 LoadID3DLL();
+		Void			 FreeID3DLL();
 
-		SMOOTHInt			 ReadCDText();
-		SMOOTHInt			 FreeCDText();
+		Int			 ReadCDText();
+		Int			 FreeCDText();
 
-		SMOOTHVoid			 ConsoleMode();
-		SMOOTHBool			 ScanForParameter(SMOOTHString, SMOOTHString *);
-		SMOOTHVoid			 ScanForFiles(SMOOTHArray<SMOOTHString> *);
+		Void			 ConsoleMode();
+		Bool			 ScanForParameter(String, String *);
+		Void			 ScanForFiles(Array<String> *);
 
-		SMOOTHVoid			 About();
-		SMOOTHVoid			 AddFile();
-		SMOOTHVoid			 AddFileByName(SMOOTHString, SMOOTHString out = NIL);
-		SMOOTHVoid			 RemoveFile();
-		SMOOTHVoid			 ClearList();
-		SMOOTHVoid			 Exit();
-		SMOOTHVoid			 ReadCD();
-		SMOOTHArray<bonkTrackInfo *>	*GetCDDBData();
-		SMOOTHVoid			 ConfigureEncoder();
-		SMOOTHVoid			 ConfigureGeneral();
-		SMOOTHVoid			 Encode();
-		SMOOTHVoid			 Encoder(SMOOTHThread *);
-		SMOOTHVoid			 StopEncoding();
-		SMOOTHBool			 KillProc();
-		SMOOTHVoid			 PaintProc();
+		Void			 About();
+		Void			 AddFile();
+		Void			 AddFileByName(String, String out = NIL);
+		Void			 RemoveFile();
+		Void			 ClearList();
+		Void			 ReadCD();
+		Array<bonkTrackInfo *>	*GetCDDBData();
+		Void			 ConfigureEncoder();
+		Void			 ConfigureGeneral();
+		Void			 Encode();
+		Void			 Encoder(Thread *);
+		Void			 StopEncoding();
+		Bool			 ExitProc();
+		Void			 DrawProc();
 
-		SMOOTHBool			 SetLanguage(SMOOTHString);
+		Bool			 SetLanguage(String);
 	public:
-						 bonkEnc();
-						~bonkEnc();
+					 bonkEnc();
+					~bonkEnc();
 };
 
 #endif

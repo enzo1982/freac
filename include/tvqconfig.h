@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,38 +11,38 @@
 #ifndef _H_TVQCONFIG_
 #define _H_TVQCONFIG_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class configureTVQ : public SMOOTHApplication
+using namespace smooth;
+
+class configureTVQ : public Application
 {
 	private:
-		SMOOTHGroupBox		*group_bitrate;
-		SMOOTHComboBox		*combo_bitrate;
-		SMOOTHText		*text_bitrate;
-		SMOOTHText		*text_bitrate_kbps;
+		GroupBox	*group_bitrate;
+		ComboBox	*combo_bitrate;
+		Text		*text_bitrate;
+		Text		*text_bitrate_kbps;
 
-		SMOOTHGroupBox		*group_precand;
-		SMOOTHComboBox		*combo_precand;
-		SMOOTHText		*text_precand;
+		GroupBox	*group_precand;
+		ComboBox	*combo_precand;
+		Text		*text_precand;
 
-		SMOOTHDivisionbar	*divbar;
+		Divider		*divbar;
 
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		bonkEncConfig		*currentConfig;
+		bonkEncConfig	*currentConfig;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
+		Void		 OK();
 	public:
-					 configureTVQ(bonkEncConfig *);
-					~configureTVQ();
-		SMOOTHInt		 ShowDialog();
+				 configureTVQ(bonkEncConfig *);
+				~configureTVQ();
+		Int		 ShowDialog();
 };
 
 #endif

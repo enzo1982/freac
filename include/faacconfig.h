@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,63 +11,63 @@
 #ifndef _H_FAACCONFIG_
 #define _H_FAACCONFIG_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class configureFAAC : public SMOOTHApplication
+using namespace smooth;
+
+class configureFAAC : public Application
 {
 	private:
-		SMOOTHGroupBox		*group_version;
-		SMOOTHOptionBox		*option_version_mpeg2;
-		SMOOTHOptionBox		*option_version_mpeg4;
+		GroupBox	*group_version;
+		OptionBox	*option_version_mpeg2;
+		OptionBox	*option_version_mpeg4;
 
-		SMOOTHGroupBox		*group_aactype;
-		SMOOTHOptionBox		*option_aactype_main;
-		SMOOTHOptionBox		*option_aactype_low;
-		SMOOTHOptionBox		*option_aactype_ltp;
+		GroupBox	*group_aactype;
+		OptionBox	*option_aactype_main;
+		OptionBox	*option_aactype_low;
+		OptionBox	*option_aactype_ltp;
 
-		SMOOTHGroupBox		*group_bitrate;
-		SMOOTHSlider		*slider_bitrate;
-		SMOOTHText		*text_bitrate;
-		SMOOTHEditBox		*edit_bitrate;
-		SMOOTHText		*text_bitrate_kbps;
+		GroupBox	*group_bitrate;
+		Slider		*slider_bitrate;
+		Text		*text_bitrate;
+		EditBox		*edit_bitrate;
+		Text		*text_bitrate_kbps;
 
-		SMOOTHGroupBox		*group_js;
-		SMOOTHCheckBox		*check_js;
+		GroupBox	*group_js;
+		CheckBox	*check_js;
 
-		SMOOTHGroupBox		*group_tns;
-		SMOOTHCheckBox		*check_tns;
+		GroupBox	*group_tns;
+		CheckBox	*check_tns;
 
-		SMOOTHGroupBox		*group_bandwidth;
-		SMOOTHText		*text_bandwidth;
-		SMOOTHEditBox		*edit_bandwidth;
+		GroupBox	*group_bandwidth;
+		Text		*text_bandwidth;
+		EditBox		*edit_bandwidth;
 
-		SMOOTHDivisionbar	*divbar;
+		Divider		*divbar;
 
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		SMOOTHInt		 mpegVersion;
-		SMOOTHInt		 aacType;
-		SMOOTHInt		 bitrate;
-		SMOOTHBool		 allowjs;
-		SMOOTHBool		 usetns;
+		Int		 mpegVersion;
+		Int		 aacType;
+		Int		 bitrate;
+		Bool		 allowjs;
+		Bool		 usetns;
 
-		bonkEncConfig		*currentConfig;
+		bonkEncConfig	*currentConfig;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
-		SMOOTHVoid		 SetMPEGVersion();
-		SMOOTHVoid		 SetBitrate();
-		SMOOTHVoid		 SetBitrateByEditBox();
+		Void		 OK();
+		Void		 SetMPEGVersion();
+		Void		 SetBitrate();
+		Void		 SetBitrateByEditBox();
 	public:
-					 configureFAAC(bonkEncConfig *);
-					~configureFAAC();
-		SMOOTHInt		 ShowDialog();
+				 configureFAAC(bonkEncConfig *);
+				~configureFAAC();
+		Int		 ShowDialog();
 };
 
 #endif

@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,46 +11,48 @@
 #ifndef _H_CDDB_
 #define _H_CDDB_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-const SMOOTHInt	 FREEDB_MODE_CDDBP	= 0;
-const SMOOTHInt	 FREEDB_MODE_HTTP	= 1;
+using namespace smooth;
+
+const Int	 FREEDB_MODE_CDDBP	= 0;
+const Int	 FREEDB_MODE_HTTP	= 1;
 
 class bonkEncCDDB
 {
 	private:
-		SMOOTHInt	 activeDriveID;
-		SMOOTHBool	 connected;
+		Int		 activeDriveID;
+		Bool		 connected;
 		bonkEncConfig	*config;
 
 		IOLibDriver	*socket;
 		InStream	*in;
 		OutStream	*out;
 
-		SMOOTHArray<SMOOTHString>	 ids;
-		SMOOTHArray<SMOOTHString>	 titles;
-		SMOOTHArray<SMOOTHString>	 categories;
+		Array<String>	 ids;
+		Array<String>	 titles;
+		Array<String>	 categories;
 
-		SMOOTHInt	 ComputeDiscID();
-		SMOOTHString	 GetCDDBQueryString();
-		SMOOTHString	 SendCommand(SMOOTHString);
+		Int		 ComputeDiscID();
+		String		 GetCDDBQueryString();
+		String		 SendCommand(String);
 	public:
 				 bonkEncCDDB(bonkEncConfig *);
 				~bonkEncCDDB();
 
-		SMOOTHInt	 SetActiveDrive(SMOOTHInt);
-		SMOOTHString	 GetDiscIDString();
+		Int		 SetActiveDrive(Int);
+		String		 GetDiscIDString();
 
-		SMOOTHBool	 ConnectToServer();
-		SMOOTHString	 Query(SMOOTHString);
-		SMOOTHString	 Read(SMOOTHString);
-		SMOOTHBool	 CloseConnection();
+		Bool		 ConnectToServer();
+		String		 Query(String);
+		String		 Read(String);
+		Bool		 CloseConnection();
 
-		SMOOTHInt	 GetNOfMatches();
-		SMOOTHString	 GetNthID(SMOOTHInt);
-		SMOOTHString	 GetNthTitle(SMOOTHInt);
-		SMOOTHString	 GetNthCategory(SMOOTHInt);
+		Int		 GetNOfMatches();
+		String		 GetNthID(Int);
+		String		 GetNthTitle(Int);
+		String		 GetNthCategory(Int);
 };
 
 #endif

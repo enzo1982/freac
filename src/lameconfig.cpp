@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,7 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <smoothx.h>
 #include <lameconfig.h>
 #include <resources.h>
 
@@ -16,8 +15,8 @@
 
 configureLameEnc::configureLameEnc(bonkEncConfig *config)
 {
-	SMOOTHPoint	 pos;
-	SMOOTHSize	 size;
+	Point	 pos;
+	Size	 size;
 
 	currentConfig = config;
 
@@ -46,27 +45,26 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	set_highpass = currentConfig->lame_set_highpass;
 	set_highpass_width = currentConfig->lame_set_highpass_width;
 
-	mainWnd			= new SMOOTHWindow(SMOOTHString("LAME MP3 ").Append(currentConfig->i18n->TranslateString("encoder configuration")));
-	mainWnd_titlebar	= new SMOOTHTitlebar(false, false, true);
-	mainWnd_layer		= new SMOOTHLayer();
+	mainWnd			= new Window(String("LAME MP3 ").Append(currentConfig->i18n->TranslateString("encoder configuration")));
+	mainWnd_titlebar	= new Titlebar(false, false, true);
 
-	register_layer_basic	= new SMOOTHLayer(currentConfig->i18n->TranslateString("Basic"));
-	register_layer_vbr	= new SMOOTHLayer("VBR");
-	register_layer_misc	= new SMOOTHLayer(currentConfig->i18n->TranslateString("Misc"));
-	register_layer_expert	= new SMOOTHLayer("Expert");
-	register_layer_filtering= new SMOOTHLayer(currentConfig->i18n->TranslateString("Audio processing"));
+	register_layer_basic	= new Layer(currentConfig->i18n->TranslateString("Basic"));
+	register_layer_vbr	= new Layer("VBR");
+	register_layer_misc	= new Layer(currentConfig->i18n->TranslateString("Misc"));
+	register_layer_expert	= new Layer("Expert");
+	register_layer_filtering= new Layer(currentConfig->i18n->TranslateString("Audio processing"));
 
 	pos.x = 175;
 	pos.y = 29;
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new SMOOTHButton(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, SMOOTHProc(configureLameEnc, this, Cancel));
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(Window, mainWnd, Close));
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new SMOOTHButton(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, SMOOTHProc(configureLameEnc, this, OK));
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(configureLameEnc, this, OK));
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -74,14 +72,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 384;
 	size.cy = 221;
 
-	reg_register		= new SMOOTHTabRegister(pos, size);
+	reg_register		= new TabWidget(pos, size);
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 232;
 	size.cy = 63;
 
-	basic_bitrate		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Bitrate"), pos, size);
+	basic_bitrate		= new GroupBox(currentConfig->i18n->TranslateString("Bitrate"), pos, size);
 	if (vbrmode != vbr_off) basic_bitrate->Deactivate();
 
 	pos.x += 10;
@@ -89,25 +87,25 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 76;
 	size.cy = 0;
 
-	basic_option_set_bitrate= new SMOOTHOptionBox(currentConfig->i18n->TranslateString("Set bitrate:"), pos, size, &set_bitrate, 1, SMOOTHProc(configureLameEnc, this, SetBitrateOption));
+	basic_option_set_bitrate= new OptionBox(currentConfig->i18n->TranslateString("Set bitrate:"), pos, size, &set_bitrate, 1, Proc(configureLameEnc, this, SetBitrateOption));
 	if (vbrmode != vbr_off) basic_option_set_bitrate->Deactivate();
 
 	pos.y += 25;
 
-	basic_option_set_ratio	= new SMOOTHOptionBox(currentConfig->i18n->TranslateString("Set ratio:"), pos, size, &set_bitrate, 0, SMOOTHProc(configureLameEnc, this, SetBitrateOption));
+	basic_option_set_ratio	= new OptionBox(currentConfig->i18n->TranslateString("Set ratio:"), pos, size, &set_bitrate, 0, Proc(configureLameEnc, this, SetBitrateOption));
 	if (vbrmode != vbr_off) basic_option_set_ratio->Deactivate();
 
 	pos.y -= 25;
 	pos.x += 85;
 
-	basic_slider_bitrate	= new SMOOTHSlider(pos, size, OR_HORZ, &bitrate, 0, 17, SMOOTHProc(configureLameEnc, this, SetBitrate));
+	basic_slider_bitrate	= new Slider(pos, size, OR_HORZ, &bitrate, 0, 17, Proc(configureLameEnc, this, SetBitrate));
 	if (!set_bitrate) basic_slider_bitrate->Deactivate();
 	if (vbrmode != vbr_off) basic_slider_bitrate->Deactivate();
 
 	pos.x += 83;
 	pos.y += 2;
 
-	basic_text_bitrate	= new SMOOTHText("", pos);
+	basic_text_bitrate	= new Text("", pos);
 	SetBitrate();
 	if (!set_bitrate) basic_text_bitrate->Deactivate();
 	if (vbrmode != vbr_off) basic_text_bitrate->Deactivate();
@@ -116,7 +114,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	pos.y += 22;
 	size.cx = 34;
 
-	basic_edit_ratio	= new SMOOTHEditBox(SMOOTHString::DoubleToString(((double) ratio) / 100), pos, size, EDB_NUMERIC, 5, NULLPROC);
+	basic_edit_ratio	= new EditBox(String::DoubleToString(((double) ratio) / 100), pos, size, EDB_NUMERIC, 5, NULLPROC);
 	if (set_bitrate) basic_edit_ratio->Deactivate();
 	if (vbrmode != vbr_off) basic_edit_ratio->Deactivate();
 
@@ -125,36 +123,36 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 232;
 	size.cy = 51;
 
-	basic_quality		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Quality"), pos, size);
+	basic_quality		= new GroupBox(currentConfig->i18n->TranslateString("Quality"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 76;
 	size.cy = 0;
 
-	basic_check_set_quality	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set quality:"), pos, size, &set_quality, SMOOTHProc(configureLameEnc, this, SetQualityOption));
+	basic_check_set_quality	= new CheckBox(currentConfig->i18n->TranslateString("Set quality:"), pos, size, &set_quality, Proc(configureLameEnc, this, SetQualityOption));
 
 	pos.x += 85;
 	size.cx += 38;
 
-	basic_slider_quality	= new SMOOTHSlider(pos, size, OR_HORZ, &quality, 0, 9, SMOOTHProc(configureLameEnc, this, SetQuality));
+	basic_slider_quality	= new Slider(pos, size, OR_HORZ, &quality, 0, 9, Proc(configureLameEnc, this, SetQuality));
 	if (!set_quality) basic_slider_quality->Deactivate();
 
 	pos.x += 121;
 	pos.y += 2;
 
-	basic_text_quality	= new SMOOTHText("", pos);
+	basic_text_quality	= new Text("", pos);
 	SetQuality();
 	if (!set_quality) basic_text_quality->Deactivate();
 
 	pos.y += 17;
 
-	basic_text_quality_worse= new SMOOTHText(currentConfig->i18n->TranslateString("worse"), pos);
-	basic_text_quality_worse->SetPosition(SMOOTHPoint(105 - (basic_text_quality_worse->GetObjectProperties()->textSize.cx / 2), pos.y));
+	basic_text_quality_worse= new Text(currentConfig->i18n->TranslateString("worse"), pos);
+	basic_text_quality_worse->SetPosition(Point(105 - (basic_text_quality_worse->GetObjectProperties()->textSize.cx / 2), pos.y));
 	if (!set_quality) basic_text_quality_worse->Deactivate();
 
-	basic_text_quality_better= new SMOOTHText(currentConfig->i18n->TranslateString("better"), pos);
-	basic_text_quality_better->SetPosition(SMOOTHPoint(211 - (basic_text_quality_better->GetObjectProperties()->textSize.cx / 2), pos.y));
+	basic_text_quality_better= new Text(currentConfig->i18n->TranslateString("better"), pos);
+	basic_text_quality_better->SetPosition(Point(211 - (basic_text_quality_better->GetObjectProperties()->textSize.cx / 2), pos.y));
 	if (!set_quality) basic_text_quality_better->Deactivate();
 
 	pos.x = 247;
@@ -162,26 +160,26 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 127;
 	size.cy = 126;
 
-	basic_stereomode	= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Stereo mode"), pos, size);
+	basic_stereomode	= new GroupBox(currentConfig->i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 106;
 	size.cy = 0;
 
-	basic_option_autostereo	= new SMOOTHOptionBox(currentConfig->i18n->TranslateString("Auto"), pos, size, &stereomode, 0, SMOOTHProc(configureLameEnc, this, SetStereoMode));
+	basic_option_autostereo	= new OptionBox(currentConfig->i18n->TranslateString("Auto"), pos, size, &stereomode, 0, Proc(configureLameEnc, this, SetStereoMode));
 
 	pos.y += 25;
 
-	basic_option_stereo	= new SMOOTHOptionBox(currentConfig->i18n->TranslateString("Stereo"), pos, size, &stereomode, 1, SMOOTHProc(configureLameEnc, this, SetStereoMode));
+	basic_option_stereo	= new OptionBox(currentConfig->i18n->TranslateString("Stereo"), pos, size, &stereomode, 1, Proc(configureLameEnc, this, SetStereoMode));
 
 	pos.y += 25;
 
-	basic_option_jstereo	= new SMOOTHOptionBox(currentConfig->i18n->TranslateString("Joint Stereo"), pos, size, &stereomode, 2, SMOOTHProc(configureLameEnc, this, SetStereoMode));
+	basic_option_jstereo	= new OptionBox(currentConfig->i18n->TranslateString("Joint Stereo"), pos, size, &stereomode, 2, Proc(configureLameEnc, this, SetStereoMode));
 
 	pos.y += 31;
 
-	basic_check_forcejs	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Force Joint Stereo"), pos, size, &forcejs, NULLPROC);
+	basic_check_forcejs	= new CheckBox(currentConfig->i18n->TranslateString("Force Joint Stereo"), pos, size, &forcejs, NULLPROC);
 	if (stereomode != 2) basic_check_forcejs->Deactivate();
 
 	pos.x = 7;
@@ -189,39 +187,39 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 127;
 	size.cy = 106;
 
-	vbr_vbrmode		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("VBR mode"), pos, size);
+	vbr_vbrmode		= new GroupBox(currentConfig->i18n->TranslateString("VBR mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 107;
 	size.cy = 0;
 
-	vbr_option_cbr		= new SMOOTHOptionBox(SMOOTHString("CBR (").Append(currentConfig->i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off, SMOOTHProc(configureLameEnc, this, SetVBRMode));
+	vbr_option_cbr		= new OptionBox(String("CBR (").Append(currentConfig->i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off, Proc(configureLameEnc, this, SetVBRMode));
 
 	pos.y += 23;
 
-	vbr_option_abr		= new SMOOTHOptionBox("ABR", pos, size, &vbrmode, vbr_abr, SMOOTHProc(configureLameEnc, this, SetVBRMode));
+	vbr_option_abr		= new OptionBox("ABR", pos, size, &vbrmode, vbr_abr, Proc(configureLameEnc, this, SetVBRMode));
 
 	pos.y += 23;
 
-	vbr_option_vbrrh	= new SMOOTHOptionBox("VBR rh", pos, size, &vbrmode, vbr_rh, SMOOTHProc(configureLameEnc, this, SetVBRMode));
+	vbr_option_vbrrh	= new OptionBox("VBR rh", pos, size, &vbrmode, vbr_rh, Proc(configureLameEnc, this, SetVBRMode));
 
 	pos.y += 23;
 
-	vbr_option_vbrmtrh	= new SMOOTHOptionBox("VBR mtrh", pos, size, &vbrmode, vbr_mtrh, SMOOTHProc(configureLameEnc, this, SetVBRMode));
+	vbr_option_vbrmtrh	= new OptionBox("VBR mtrh", pos, size, &vbrmode, vbr_mtrh, Proc(configureLameEnc, this, SetVBRMode));
 
 	pos.x = 142;
 	pos.y = 11;
 	size.cx = 232;
 	size.cy = 51;
 
-	vbr_quality		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("VBR quality"), pos, size);
+	vbr_quality		= new GroupBox(currentConfig->i18n->TranslateString("VBR quality"), pos, size);
 	if (vbrmode != vbr_rh && vbrmode != vbr_mtrh) vbr_quality->Deactivate();
 
 	pos.x += 11;
 	pos.y += 13;
 
-	vbr_text_setquality	= new SMOOTHText(currentConfig->i18n->TranslateString("Quality").Append(":"), pos);
+	vbr_text_setquality	= new Text(currentConfig->i18n->TranslateString("Quality").Append(":"), pos);
 	if (vbrmode != vbr_rh && vbrmode != vbr_mtrh) vbr_text_setquality->Deactivate();
 
 	pos.x += (vbr_text_setquality->GetObjectProperties()->textSize.cx + 8);
@@ -229,24 +227,24 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 190 - vbr_text_setquality->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	vbr_slider_quality	= new SMOOTHSlider(pos, size, OR_HORZ, &vbrquality, 0, 9, SMOOTHProc(configureLameEnc, this, SetVBRQuality));
+	vbr_slider_quality	= new Slider(pos, size, OR_HORZ, &vbrquality, 0, 9, Proc(configureLameEnc, this, SetVBRQuality));
 	if (vbrmode != vbr_rh && vbrmode != vbr_mtrh) vbr_slider_quality->Deactivate();
 
 	pos.x = 358;
 	pos.y += 2;
 
-	vbr_text_quality	= new SMOOTHText("", pos);
+	vbr_text_quality	= new Text("", pos);
 	SetVBRQuality();
 	if (vbrmode != vbr_rh && vbrmode != vbr_mtrh) vbr_text_quality->Deactivate();
 
 	pos.y += 17;
 
-	vbr_text_quality_worse= new SMOOTHText(currentConfig->i18n->TranslateString("worse"), pos);
-	vbr_text_quality_worse->SetPosition(SMOOTHPoint(vbr_slider_quality->GetObjectProperties()->pos.x + 3 - (vbr_text_quality_worse->GetObjectProperties()->textSize.cx / 2), pos.y));
+	vbr_text_quality_worse= new Text(currentConfig->i18n->TranslateString("worse"), pos);
+	vbr_text_quality_worse->SetPosition(Point(vbr_slider_quality->GetObjectProperties()->pos.x + 3 - (vbr_text_quality_worse->GetObjectProperties()->textSize.cx / 2), pos.y));
 	if (vbrmode != vbr_rh && vbrmode != vbr_mtrh) vbr_text_quality_worse->Deactivate();
 
-	vbr_text_quality_better= new SMOOTHText(currentConfig->i18n->TranslateString("better"), pos);
-	vbr_text_quality_better->SetPosition(SMOOTHPoint(346 - (vbr_text_quality_better->GetObjectProperties()->textSize.cx / 2), pos.y));
+	vbr_text_quality_better= new Text(currentConfig->i18n->TranslateString("better"), pos);
+	vbr_text_quality_better->SetPosition(Point(346 - (vbr_text_quality_better->GetObjectProperties()->textSize.cx / 2), pos.y));
 	if (vbrmode != vbr_rh && vbrmode != vbr_mtrh) vbr_text_quality_better->Deactivate();
 
 	pos.x = 142;
@@ -254,7 +252,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 232;
 	size.cy = 43;
 
-	vbr_abrbitrate		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("ABR target bitrate"), pos, size);
+	vbr_abrbitrate		= new GroupBox(currentConfig->i18n->TranslateString("ABR target bitrate"), pos, size);
 	if (vbrmode != vbr_abr) vbr_abrbitrate->Deactivate();
 
 	pos.x += 10;
@@ -262,21 +260,21 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 146;
 	size.cy = 0;
 
-	vbr_slider_abrbitrate	= new SMOOTHSlider(pos, size, OR_HORZ, &abrbitrate, 8, 310, SMOOTHProc(configureLameEnc, this, SetABRBitrate));
+	vbr_slider_abrbitrate	= new Slider(pos, size, OR_HORZ, &abrbitrate, 8, 310, Proc(configureLameEnc, this, SetABRBitrate));
 	if (vbrmode != vbr_abr) vbr_slider_abrbitrate->Deactivate();
 
 	pos.x += 154;
 	pos.y -= 1;
 	size.cx = 25;
 
-	vbr_edit_abrbitrate	= new SMOOTHEditBox("", pos, size, EDB_NUMERIC, 3, SMOOTHProc(configureLameEnc, this, SetABRBitrateByEditBox));
+	vbr_edit_abrbitrate	= new EditBox("", pos, size, EDB_NUMERIC, 3, Proc(configureLameEnc, this, SetABRBitrateByEditBox));
 	if (vbrmode != vbr_abr) vbr_edit_abrbitrate->Deactivate();
 	SetABRBitrate();
 
 	pos.x += 32;
 	pos.y += 3;
 
-	vbr_text_abrbitrate_kbps= new SMOOTHText("kbps", pos);
+	vbr_text_abrbitrate_kbps= new Text("kbps", pos);
 	if (vbrmode != vbr_abr) vbr_text_abrbitrate_kbps->Deactivate();
 
 	pos.x = 7;
@@ -284,7 +282,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 367;
 	size.cy = 63;
 
-	vbr_bitrate		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("VBR bitrate range"), pos, size);
+	vbr_bitrate		= new GroupBox(currentConfig->i18n->TranslateString("VBR bitrate range"), pos, size);
 	if (vbrmode == vbr_off) vbr_bitrate->Deactivate();
 
 	pos.x += 10;
@@ -292,20 +290,20 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 146;
 	size.cy = 0;
 
-	vbr_check_set_min_brate	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set minimum VBR bitrate:"), pos, size, &set_min_vbr_brate, SMOOTHProc(configureLameEnc, this, SetMinVBRBitrateOption));
+	vbr_check_set_min_brate	= new CheckBox(currentConfig->i18n->TranslateString("Set minimum VBR bitrate:"), pos, size, &set_min_vbr_brate, Proc(configureLameEnc, this, SetMinVBRBitrateOption));
 	if (vbrmode == vbr_off) vbr_check_set_min_brate->Deactivate();
 
 	pos.x += 155;
 	size.cx = 138;
 
-	vbr_slider_min_brate	= new SMOOTHSlider(pos, size, OR_HORZ, &min_vbr_brate, 0, 17, SMOOTHProc(configureLameEnc, this, SetMinVBRBitrate));
+	vbr_slider_min_brate	= new Slider(pos, size, OR_HORZ, &min_vbr_brate, 0, 17, Proc(configureLameEnc, this, SetMinVBRBitrate));
 	if (vbrmode == vbr_off) vbr_slider_min_brate->Deactivate();
 	if (!set_min_vbr_brate) vbr_slider_min_brate->Deactivate();
 
 	pos.x += 145;
 	pos.y += 2;
 
-	vbr_text_min_brate_kbps	= new SMOOTHText("kbps", pos);
+	vbr_text_min_brate_kbps	= new Text("kbps", pos);
 	SetMinVBRBitrate();
 	if (vbrmode == vbr_off) vbr_text_min_brate_kbps->Deactivate();
 	if (!set_min_vbr_brate) vbr_text_min_brate_kbps->Deactivate();
@@ -314,20 +312,20 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	pos.y += 23;
 	size.cx = 146;
 
-	vbr_check_set_max_brate	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set maximum VBR bitrate:"), pos, size, &set_max_vbr_brate, SMOOTHProc(configureLameEnc, this, SetMaxVBRBitrateOption));
+	vbr_check_set_max_brate	= new CheckBox(currentConfig->i18n->TranslateString("Set maximum VBR bitrate:"), pos, size, &set_max_vbr_brate, Proc(configureLameEnc, this, SetMaxVBRBitrateOption));
 	if (vbrmode == vbr_off) vbr_check_set_max_brate->Deactivate();
 
 	pos.x += 155;
 	size.cx = 138;
 
-	vbr_slider_max_brate	= new SMOOTHSlider(pos, size, OR_HORZ, &max_vbr_brate, 0, 17, SMOOTHProc(configureLameEnc, this, SetMaxVBRBitrate));
+	vbr_slider_max_brate	= new Slider(pos, size, OR_HORZ, &max_vbr_brate, 0, 17, Proc(configureLameEnc, this, SetMaxVBRBitrate));
 	if (vbrmode == vbr_off) vbr_slider_max_brate->Deactivate();
 	if (!set_max_vbr_brate) vbr_slider_max_brate->Deactivate();
 
 	pos.x += 145;
 	pos.y += 2;
 
-	vbr_text_max_brate_kbps	= new SMOOTHText("", pos);
+	vbr_text_max_brate_kbps	= new Text("", pos);
 	SetMaxVBRBitrate();
 	if (vbrmode == vbr_off) vbr_text_max_brate_kbps->Deactivate();
 	if (!set_max_vbr_brate) vbr_text_max_brate_kbps->Deactivate();
@@ -337,69 +335,69 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 138;
 	size.cy = 89;
 
-	misc_bits		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Control bits"), pos, size);
+	misc_bits		= new GroupBox(currentConfig->i18n->TranslateString("Control bits"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 117;
 	size.cy = 0;
 
-	misc_check_copyright	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set Copyright bit"), pos, size, &set_copyright, NULLPROC);
+	misc_check_copyright	= new CheckBox(currentConfig->i18n->TranslateString("Set Copyright bit"), pos, size, &set_copyright, NULLPROC);
 
 	pos.y += 25;
 
-	misc_check_original	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set Original bit"), pos, size, &set_original, NULLPROC);
+	misc_check_original	= new CheckBox(currentConfig->i18n->TranslateString("Set Original bit"), pos, size, &set_original, NULLPROC);
 
 	pos.y += 25;
 
-	misc_check_private	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set Private bit"), pos, size, &set_private, NULLPROC);
+	misc_check_private	= new CheckBox(currentConfig->i18n->TranslateString("Set Private bit"), pos, size, &set_private, NULLPROC);
 
 	pos.x = 7;
 	pos.y = 112;
 	size.cx = 138;
 	size.cy = 39;
 
-	misc_crc		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("CRC"), pos, size);
+	misc_crc		= new GroupBox(currentConfig->i18n->TranslateString("CRC"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 117;
 	size.cy = 0;
 
-	misc_check_crc		= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Enable CRC"), pos, size, &set_crc, NULLPROC);
+	misc_check_crc		= new CheckBox(currentConfig->i18n->TranslateString("Enable CRC"), pos, size, &set_crc, NULLPROC);
 
 	pos.x = 153;
 	pos.y = 11;
 	size.cx = 221;
 	size.cy = 39;
 
-	misc_format		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Stream format"), pos, size);
+	misc_format		= new GroupBox(currentConfig->i18n->TranslateString("Stream format"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 200;
 	size.cy = 0;
 
-	misc_check_iso		= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Enforce strict ISO compliance"), pos, size, &set_iso, NULLPROC);
+	misc_check_iso		= new CheckBox(currentConfig->i18n->TranslateString("Enforce strict ISO compliance"), pos, size, &set_iso, NULLPROC);
 
 	pos.x = 153;
 	pos.y = 61;
 	size.cx = 221;
 	size.cy = 39;
 
-	misc_padding		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Padding"), pos, size);
+	misc_padding		= new GroupBox(currentConfig->i18n->TranslateString("Padding"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	misc_text_padding	= new SMOOTHText(currentConfig->i18n->TranslateString("Set padding type:"), pos);
+	misc_text_padding	= new Text(currentConfig->i18n->TranslateString("Set padding type:"), pos);
 
 	pos.x += (misc_text_padding->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 3;
 	size.cx = 194 - misc_text_padding->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	misc_combo_padding	= new SMOOTHComboBox(pos, size, NULLPROC);
+	misc_combo_padding	= new ComboBox(pos, size, NULLPROC);
 	misc_combo_padding->AddEntry(currentConfig->i18n->TranslateString("pad no frames"), NULLPROC);
 	misc_combo_padding->AddEntry(currentConfig->i18n->TranslateString("pad all frames"), NULLPROC);
 	misc_combo_padding->AddEntry(currentConfig->i18n->TranslateString("adjust padding"), NULLPROC);
@@ -410,14 +408,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 138;
 	size.cy = 39;
 
-	filtering_resample	= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Output sampling rate"), pos, size);
+	filtering_resample	= new GroupBox(currentConfig->i18n->TranslateString("Output sampling rate"), pos, size);
 
 	pos.x += 10;
 	pos.y += 10;
 	size.cx = 118;
 	size.cy = 0;
 
-	filtering_combo_resample= new SMOOTHComboBox(pos, size, NULLPROC);
+	filtering_combo_resample= new ComboBox(pos, size, NULLPROC);
 	filtering_combo_resample->AddEntry(currentConfig->i18n->TranslateString("no resampling"), NULLPROC);
 	filtering_combo_resample->AddEntry("8 kHz", NULLPROC);
 	filtering_combo_resample->AddEntry("11.025 kHz", NULLPROC);
@@ -444,7 +442,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 221;
 	size.cy = 64;
 
-	filtering_highpass	= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Highpass filter"), pos, size);
+	filtering_highpass	= new GroupBox(currentConfig->i18n->TranslateString("Highpass filter"), pos, size);
 	if (disable_filtering) filtering_highpass->Deactivate();
 
 	pos.x += 10;
@@ -452,28 +450,28 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 155;
 	size.cy = 0;
 
-	filtering_set_highpass	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set Highpass frequency (Hz):"), pos, size, &set_highpass, SMOOTHProc(configureLameEnc, this, SetHighpass));
+	filtering_set_highpass	= new CheckBox(currentConfig->i18n->TranslateString("Set Highpass frequency (Hz):"), pos, size, &set_highpass, Proc(configureLameEnc, this, SetHighpass));
 	if (disable_filtering) filtering_set_highpass->Deactivate();
 
 	pos.x += 164;
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_highpass	= new SMOOTHEditBox(SMOOTHString::IntToString(currentConfig->lame_highpass), pos, size, EDB_NUMERIC, 5, NULLPROC);
+	filtering_edit_highpass	= new EditBox(String::IntToString(currentConfig->lame_highpass), pos, size, EDB_NUMERIC, 5, NULLPROC);
 	if (!set_highpass || disable_filtering) filtering_edit_highpass->Deactivate();
 
 	pos.x -= 164;
 	pos.y += 26;
 	size.cx = 155;
 
-	filtering_set_highpass_width= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set Highpass width (Hz):"), pos, size, &set_highpass_width, SMOOTHProc(configureLameEnc, this, SetHighpassWidth));
+	filtering_set_highpass_width= new CheckBox(currentConfig->i18n->TranslateString("Set Highpass width (Hz):"), pos, size, &set_highpass_width, Proc(configureLameEnc, this, SetHighpassWidth));
 	if (!set_highpass || disable_filtering) filtering_set_highpass_width->Deactivate();
 
 	pos.x += 164;
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_highpass_width= new SMOOTHEditBox(SMOOTHString::IntToString(currentConfig->lame_highpass_width), pos, size, EDB_NUMERIC, 5, NULLPROC);
+	filtering_edit_highpass_width= new EditBox(String::IntToString(currentConfig->lame_highpass_width), pos, size, EDB_NUMERIC, 5, NULLPROC);
 	if (!set_highpass_width || !set_highpass || disable_filtering) filtering_edit_highpass_width->Deactivate();
 
 	pos.x = 153;
@@ -481,7 +479,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 221;
 	size.cy = 64;
 
-	filtering_lowpass	= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Lowpass filter"), pos, size);
+	filtering_lowpass	= new GroupBox(currentConfig->i18n->TranslateString("Lowpass filter"), pos, size);
 	if (disable_filtering) filtering_lowpass->Deactivate();
 
 	pos.x += 10;
@@ -489,28 +487,28 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 155;
 	size.cy = 0;
 
-	filtering_set_lowpass	= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set Lowpass frequency (Hz):"), pos, size, &set_lowpass, SMOOTHProc(configureLameEnc, this, SetLowpass));
+	filtering_set_lowpass	= new CheckBox(currentConfig->i18n->TranslateString("Set Lowpass frequency (Hz):"), pos, size, &set_lowpass, Proc(configureLameEnc, this, SetLowpass));
 	if (disable_filtering) filtering_set_lowpass->Deactivate();
 
 	pos.x += 164;
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_lowpass	= new SMOOTHEditBox(SMOOTHString::IntToString(currentConfig->lame_lowpass), pos, size, EDB_NUMERIC, 5, NULLPROC);
+	filtering_edit_lowpass	= new EditBox(String::IntToString(currentConfig->lame_lowpass), pos, size, EDB_NUMERIC, 5, NULLPROC);
 	if (!set_lowpass || disable_filtering) filtering_edit_lowpass->Deactivate();
 
 	pos.x -= 164;
 	pos.y += 26;
 	size.cx = 155;
 
-	filtering_set_lowpass_width= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Set Lowpass width (Hz):"), pos, size, &set_lowpass_width, SMOOTHProc(configureLameEnc, this, SetLowpassWidth));
+	filtering_set_lowpass_width= new CheckBox(currentConfig->i18n->TranslateString("Set Lowpass width (Hz):"), pos, size, &set_lowpass_width, Proc(configureLameEnc, this, SetLowpassWidth));
 	if (!set_lowpass || disable_filtering) filtering_set_lowpass_width->Deactivate();
 
 	pos.x += 164;
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_lowpass_width= new SMOOTHEditBox(SMOOTHString::IntToString(currentConfig->lame_lowpass_width), pos, size, EDB_NUMERIC, 5, NULLPROC);
+	filtering_edit_lowpass_width= new EditBox(String::IntToString(currentConfig->lame_lowpass_width), pos, size, EDB_NUMERIC, 5, NULLPROC);
 	if (!set_lowpass_width || !set_lowpass || disable_filtering) filtering_edit_lowpass_width->Deactivate();
 
 	pos.x = 7;
@@ -518,23 +516,21 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 138;
 	size.cy = 39;
 
-	filtering_misc		= new SMOOTHGroupBox(currentConfig->i18n->TranslateString("Misc settings"), pos, size);
+	filtering_misc		= new GroupBox(currentConfig->i18n->TranslateString("Misc settings"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 117;
 	size.cy = 0;
 
-	filtering_check_disable_all= new SMOOTHCheckBox(currentConfig->i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering, SMOOTHProc(configureLameEnc, this, SetDisableFiltering));
+	filtering_check_disable_all= new CheckBox(currentConfig->i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering, Proc(configureLameEnc, this, SetDisableFiltering));
 
 	RegisterObject(mainWnd);
 
 	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(mainWnd_layer);
-
-	mainWnd_layer->RegisterObject(btn_ok);
-	mainWnd_layer->RegisterObject(btn_cancel);
-	mainWnd_layer->RegisterObject(reg_register);
+	mainWnd->RegisterObject(btn_ok);
+	mainWnd->RegisterObject(btn_cancel);
+	mainWnd->RegisterObject(reg_register);
 
 	reg_register->RegisterObject(register_layer_basic);
 	reg_register->RegisterObject(register_layer_vbr);
@@ -624,7 +620,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(IDI_ICON);
-	mainWnd->SetMetrics(SMOOTHPoint(140, 140), SMOOTHSize(405, 297));
+	mainWnd->SetMetrics(Point(140, 140), Size(405, 297));
 }
 
 configureLameEnc::~configureLameEnc()
@@ -714,100 +710,97 @@ configureLameEnc::~configureLameEnc()
 //	reg_register->UnregisterObject(register_layer_expert);
 	reg_register->UnregisterObject(register_layer_filtering);
 
-	mainWnd_layer->UnregisterObject(btn_ok);
-	mainWnd_layer->UnregisterObject(btn_cancel);
-	mainWnd_layer->UnregisterObject(reg_register);
-
+	mainWnd->UnregisterObject(btn_ok);
+	mainWnd->UnregisterObject(btn_cancel);
+	mainWnd->UnregisterObject(reg_register);
 	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(mainWnd_layer);
 
 	UnregisterObject(mainWnd);
 
-	SMOOTH::DeleteObject(mainWnd_titlebar);
-	SMOOTH::DeleteObject(mainWnd_layer);
-	SMOOTH::DeleteObject(mainWnd);
-	SMOOTH::DeleteObject(btn_ok);
-	SMOOTH::DeleteObject(btn_cancel);
-	SMOOTH::DeleteObject(reg_register);
-	SMOOTH::DeleteObject(register_layer_basic);
-	SMOOTH::DeleteObject(register_layer_vbr);
-	SMOOTH::DeleteObject(register_layer_misc);
-	SMOOTH::DeleteObject(register_layer_expert);
-	SMOOTH::DeleteObject(register_layer_filtering);
-	SMOOTH::DeleteObject(basic_bitrate);
-	SMOOTH::DeleteObject(basic_option_set_bitrate);
-	SMOOTH::DeleteObject(basic_option_set_ratio);
-	SMOOTH::DeleteObject(basic_slider_bitrate);
-	SMOOTH::DeleteObject(basic_text_bitrate);
-	SMOOTH::DeleteObject(basic_edit_ratio);
-	SMOOTH::DeleteObject(basic_quality);
-	SMOOTH::DeleteObject(basic_check_set_quality);
-	SMOOTH::DeleteObject(basic_slider_quality);
-	SMOOTH::DeleteObject(basic_text_quality);
-	SMOOTH::DeleteObject(basic_text_quality_worse);
-	SMOOTH::DeleteObject(basic_text_quality_better);
-	SMOOTH::DeleteObject(basic_stereomode);
-	SMOOTH::DeleteObject(basic_option_autostereo);
-	SMOOTH::DeleteObject(basic_option_stereo);
-	SMOOTH::DeleteObject(basic_option_jstereo);
-	SMOOTH::DeleteObject(basic_check_forcejs);
-	SMOOTH::DeleteObject(vbr_vbrmode);
-	SMOOTH::DeleteObject(vbr_option_cbr);
-	SMOOTH::DeleteObject(vbr_option_abr);
-	SMOOTH::DeleteObject(vbr_option_vbrrh);
-	SMOOTH::DeleteObject(vbr_option_vbrmtrh);
-	SMOOTH::DeleteObject(vbr_quality);
-	SMOOTH::DeleteObject(vbr_text_setquality);
-	SMOOTH::DeleteObject(vbr_slider_quality);
-	SMOOTH::DeleteObject(vbr_text_quality);
-	SMOOTH::DeleteObject(vbr_text_quality_worse);
-	SMOOTH::DeleteObject(vbr_text_quality_better);
-	SMOOTH::DeleteObject(vbr_abrbitrate);
-	SMOOTH::DeleteObject(vbr_slider_abrbitrate);
-	SMOOTH::DeleteObject(vbr_edit_abrbitrate);
-	SMOOTH::DeleteObject(vbr_text_abrbitrate_kbps);
-	SMOOTH::DeleteObject(vbr_bitrate);
-	SMOOTH::DeleteObject(vbr_check_set_min_brate);
-	SMOOTH::DeleteObject(vbr_check_set_max_brate);
-	SMOOTH::DeleteObject(vbr_slider_min_brate);
-	SMOOTH::DeleteObject(vbr_slider_max_brate);
-	SMOOTH::DeleteObject(vbr_text_min_brate_kbps);
-	SMOOTH::DeleteObject(vbr_text_max_brate_kbps);
-	SMOOTH::DeleteObject(misc_bits);
-	SMOOTH::DeleteObject(misc_check_original);
-	SMOOTH::DeleteObject(misc_check_copyright);
-	SMOOTH::DeleteObject(misc_check_private);
-	SMOOTH::DeleteObject(misc_crc);
-	SMOOTH::DeleteObject(misc_check_crc);
-	SMOOTH::DeleteObject(misc_format);
-	SMOOTH::DeleteObject(misc_check_iso);
-	SMOOTH::DeleteObject(misc_padding);
-	SMOOTH::DeleteObject(misc_text_padding);
-	SMOOTH::DeleteObject(misc_combo_padding);
-	SMOOTH::DeleteObject(filtering_resample);
-	SMOOTH::DeleteObject(filtering_combo_resample);
-	SMOOTH::DeleteObject(filtering_lowpass);
-	SMOOTH::DeleteObject(filtering_set_lowpass);
-	SMOOTH::DeleteObject(filtering_edit_lowpass);
-	SMOOTH::DeleteObject(filtering_set_lowpass_width);
-	SMOOTH::DeleteObject(filtering_edit_lowpass_width);
-	SMOOTH::DeleteObject(filtering_highpass);
-	SMOOTH::DeleteObject(filtering_set_highpass);
-	SMOOTH::DeleteObject(filtering_edit_highpass);
-	SMOOTH::DeleteObject(filtering_set_highpass_width);
-	SMOOTH::DeleteObject(filtering_edit_highpass_width);
-	SMOOTH::DeleteObject(filtering_misc);
-	SMOOTH::DeleteObject(filtering_check_disable_all);
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(btn_ok);
+	DeleteObject(btn_cancel);
+	DeleteObject(reg_register);
+	DeleteObject(register_layer_basic);
+	DeleteObject(register_layer_vbr);
+	DeleteObject(register_layer_misc);
+	DeleteObject(register_layer_expert);
+	DeleteObject(register_layer_filtering);
+	DeleteObject(basic_bitrate);
+	DeleteObject(basic_option_set_bitrate);
+	DeleteObject(basic_option_set_ratio);
+	DeleteObject(basic_slider_bitrate);
+	DeleteObject(basic_text_bitrate);
+	DeleteObject(basic_edit_ratio);
+	DeleteObject(basic_quality);
+	DeleteObject(basic_check_set_quality);
+	DeleteObject(basic_slider_quality);
+	DeleteObject(basic_text_quality);
+	DeleteObject(basic_text_quality_worse);
+	DeleteObject(basic_text_quality_better);
+	DeleteObject(basic_stereomode);
+	DeleteObject(basic_option_autostereo);
+	DeleteObject(basic_option_stereo);
+	DeleteObject(basic_option_jstereo);
+	DeleteObject(basic_check_forcejs);
+	DeleteObject(vbr_vbrmode);
+	DeleteObject(vbr_option_cbr);
+	DeleteObject(vbr_option_abr);
+	DeleteObject(vbr_option_vbrrh);
+	DeleteObject(vbr_option_vbrmtrh);
+	DeleteObject(vbr_quality);
+	DeleteObject(vbr_text_setquality);
+	DeleteObject(vbr_slider_quality);
+	DeleteObject(vbr_text_quality);
+	DeleteObject(vbr_text_quality_worse);
+	DeleteObject(vbr_text_quality_better);
+	DeleteObject(vbr_abrbitrate);
+	DeleteObject(vbr_slider_abrbitrate);
+	DeleteObject(vbr_edit_abrbitrate);
+	DeleteObject(vbr_text_abrbitrate_kbps);
+	DeleteObject(vbr_bitrate);
+	DeleteObject(vbr_check_set_min_brate);
+	DeleteObject(vbr_check_set_max_brate);
+	DeleteObject(vbr_slider_min_brate);
+	DeleteObject(vbr_slider_max_brate);
+	DeleteObject(vbr_text_min_brate_kbps);
+	DeleteObject(vbr_text_max_brate_kbps);
+	DeleteObject(misc_bits);
+	DeleteObject(misc_check_original);
+	DeleteObject(misc_check_copyright);
+	DeleteObject(misc_check_private);
+	DeleteObject(misc_crc);
+	DeleteObject(misc_check_crc);
+	DeleteObject(misc_format);
+	DeleteObject(misc_check_iso);
+	DeleteObject(misc_padding);
+	DeleteObject(misc_text_padding);
+	DeleteObject(misc_combo_padding);
+	DeleteObject(filtering_resample);
+	DeleteObject(filtering_combo_resample);
+	DeleteObject(filtering_lowpass);
+	DeleteObject(filtering_set_lowpass);
+	DeleteObject(filtering_edit_lowpass);
+	DeleteObject(filtering_set_lowpass_width);
+	DeleteObject(filtering_edit_lowpass_width);
+	DeleteObject(filtering_highpass);
+	DeleteObject(filtering_set_highpass);
+	DeleteObject(filtering_edit_highpass);
+	DeleteObject(filtering_set_highpass_width);
+	DeleteObject(filtering_edit_highpass_width);
+	DeleteObject(filtering_misc);
+	DeleteObject(filtering_check_disable_all);
 }
 
-SMOOTHInt configureLameEnc::ShowDialog()
+Int configureLameEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return mainWnd->value;
 }
 
-SMOOTHVoid configureLameEnc::OK()
+Void configureLameEnc::OK()
 {
 	if (abrbitrate < 8)	abrbitrate = 8;
 	if (abrbitrate > 310)	abrbitrate = 310;
@@ -911,15 +904,10 @@ SMOOTHVoid configureLameEnc::OK()
 			break;
 	}
 
-	SMOOTH::CloseWindow(mainWnd);
+	mainWnd->Close();
 }
 
-SMOOTHVoid configureLameEnc::Cancel()
-{
-	SMOOTH::CloseWindow(mainWnd);
-}
-
-SMOOTHVoid configureLameEnc::SetBitrateOption()
+Void configureLameEnc::SetBitrateOption()
 {
 	if (set_bitrate)
 	{
@@ -935,12 +923,12 @@ SMOOTHVoid configureLameEnc::SetBitrateOption()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetBitrate()
+Void configureLameEnc::SetBitrate()
 {
-	basic_text_bitrate->SetText(SMOOTHString::IntToString(GetBitrate()).Append(" kbps"));
+	basic_text_bitrate->SetText(String::IntToString(GetBitrate()).Append(" kbps"));
 }
 
-SMOOTHVoid configureLameEnc::SetQualityOption()
+Void configureLameEnc::SetQualityOption()
 {
 	if (set_quality)
 	{
@@ -958,23 +946,23 @@ SMOOTHVoid configureLameEnc::SetQualityOption()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetQuality()
+Void configureLameEnc::SetQuality()
 {
-	basic_text_quality->SetText(SMOOTHString::IntToString(9 - quality));
+	basic_text_quality->SetText(String::IntToString(9 - quality));
 }
 
-SMOOTHVoid configureLameEnc::SetStereoMode()
+Void configureLameEnc::SetStereoMode()
 {
 	if (stereomode == 2)	basic_check_forcejs->Activate();
 	else			basic_check_forcejs->Deactivate();
 }
 
-SMOOTHVoid configureLameEnc::SetVBRQuality()
+Void configureLameEnc::SetVBRQuality()
 {
-	vbr_text_quality->SetText(SMOOTHString::IntToString(9 - vbrquality));
+	vbr_text_quality->SetText(String::IntToString(9 - vbrquality));
 }
 
-SMOOTHVoid configureLameEnc::SetVBRMode()
+Void configureLameEnc::SetVBRMode()
 {
 	switch (vbrmode)
 	{
@@ -1114,17 +1102,17 @@ SMOOTHVoid configureLameEnc::SetVBRMode()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetABRBitrate()
+Void configureLameEnc::SetABRBitrate()
 {
-	vbr_edit_abrbitrate->SetText(SMOOTHString::IntToString(abrbitrate));
+	vbr_edit_abrbitrate->SetText(String::IntToString(abrbitrate));
 }
 
-SMOOTHVoid configureLameEnc::SetABRBitrateByEditBox()
+Void configureLameEnc::SetABRBitrateByEditBox()
 {
 	vbr_slider_abrbitrate->SetValue(vbr_edit_abrbitrate->GetText().ToInt());
 }
 
-SMOOTHVoid configureLameEnc::SetMinVBRBitrateOption()
+Void configureLameEnc::SetMinVBRBitrateOption()
 {
 	if (set_min_vbr_brate)
 	{
@@ -1138,7 +1126,7 @@ SMOOTHVoid configureLameEnc::SetMinVBRBitrateOption()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetMaxVBRBitrateOption()
+Void configureLameEnc::SetMaxVBRBitrateOption()
 {
 	if (set_max_vbr_brate)
 	{
@@ -1152,9 +1140,9 @@ SMOOTHVoid configureLameEnc::SetMaxVBRBitrateOption()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetMinVBRBitrate()
+Void configureLameEnc::SetMinVBRBitrate()
 {
-	vbr_text_min_brate_kbps->SetText(SMOOTHString::IntToString(GetMinVBRBitrate()).Append(" kbps"));
+	vbr_text_min_brate_kbps->SetText(String::IntToString(GetMinVBRBitrate()).Append(" kbps"));
 
 	if (min_vbr_brate > max_vbr_brate)
 	{
@@ -1162,9 +1150,9 @@ SMOOTHVoid configureLameEnc::SetMinVBRBitrate()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetMaxVBRBitrate()
+Void configureLameEnc::SetMaxVBRBitrate()
 {
-	vbr_text_max_brate_kbps->SetText(SMOOTHString::IntToString(GetMaxVBRBitrate()).Append(" kbps"));
+	vbr_text_max_brate_kbps->SetText(String::IntToString(GetMaxVBRBitrate()).Append(" kbps"));
 
 	if (max_vbr_brate < min_vbr_brate)
 	{
@@ -1172,7 +1160,7 @@ SMOOTHVoid configureLameEnc::SetMaxVBRBitrate()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetHighpass()
+Void configureLameEnc::SetHighpass()
 {
 	if (set_highpass)
 	{
@@ -1189,13 +1177,13 @@ SMOOTHVoid configureLameEnc::SetHighpass()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetHighpassWidth()
+Void configureLameEnc::SetHighpassWidth()
 {
 	if (set_highpass_width)	filtering_edit_highpass_width->Activate();
 	else			filtering_edit_highpass_width->Deactivate();
 }
 
-SMOOTHVoid configureLameEnc::SetLowpass()
+Void configureLameEnc::SetLowpass()
 {
 	if (set_lowpass)
 	{
@@ -1212,13 +1200,13 @@ SMOOTHVoid configureLameEnc::SetLowpass()
 	}
 }
 
-SMOOTHVoid configureLameEnc::SetLowpassWidth()
+Void configureLameEnc::SetLowpassWidth()
 {
 	if (set_lowpass_width)	filtering_edit_lowpass_width->Activate();
 	else			filtering_edit_lowpass_width->Deactivate();
 }
 
-SMOOTHVoid configureLameEnc::SetDisableFiltering()
+Void configureLameEnc::SetDisableFiltering()
 {
 	if (disable_filtering)
 	{
@@ -1245,37 +1233,37 @@ SMOOTHVoid configureLameEnc::SetDisableFiltering()
 	}
 }
 
-SMOOTHInt configureLameEnc::GetBitrate()
+Int configureLameEnc::GetBitrate()
 {
 	return SliderValueToBitrate(bitrate);
 }
 
-SMOOTHInt configureLameEnc::GetSliderValue()
+Int configureLameEnc::GetSliderValue()
 {
 	return BitrateToSliderValue(currentConfig->lame_bitrate);
 }
 
-SMOOTHInt configureLameEnc::GetMinVBRBitrate()
+Int configureLameEnc::GetMinVBRBitrate()
 {
 	return SliderValueToBitrate(min_vbr_brate);
 }
 
-SMOOTHInt configureLameEnc::GetMinVBRSliderValue()
+Int configureLameEnc::GetMinVBRSliderValue()
 {
 	return BitrateToSliderValue(currentConfig->lame_min_vbr_bitrate);
 }
 
-SMOOTHInt configureLameEnc::GetMaxVBRBitrate()
+Int configureLameEnc::GetMaxVBRBitrate()
 {
 	return SliderValueToBitrate(max_vbr_brate);
 }
 
-SMOOTHInt configureLameEnc::GetMaxVBRSliderValue()
+Int configureLameEnc::GetMaxVBRSliderValue()
 {
 	return BitrateToSliderValue(currentConfig->lame_max_vbr_bitrate);
 }
 
-SMOOTHInt configureLameEnc::SliderValueToBitrate(SMOOTHInt value)
+Int configureLameEnc::SliderValueToBitrate(Int value)
 {
 	switch (value)
 	{
@@ -1320,7 +1308,7 @@ SMOOTHInt configureLameEnc::SliderValueToBitrate(SMOOTHInt value)
 	}
 }
 
-SMOOTHInt configureLameEnc::BitrateToSliderValue(SMOOTHInt value)
+Int configureLameEnc::BitrateToSliderValue(Int value)
 {
 	switch (value)
 	{

@@ -13,7 +13,8 @@ History
 
 	Version 0.9
 
-		- added Hungarian language support
+		- added Hungarian, French and Russian language support
+		- upgraded to smooth v0.8.61.0
 
 	Version 0.8
 
@@ -82,7 +83,7 @@ Requirements
 	Additional optional software:
 
 		- BladeEnc is used if installed (http://bladeenc.mp3.no)
-		- FAAC is used if installed (http://faac.sf.net)
+		- FAAC is used if installed (http://www.audiocoding.com)
 		- TwinVQ is used if installed (http://www.twinvq.org)
 
 Problems

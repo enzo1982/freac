@@ -13,7 +13,8 @@ Geschichte
 
 	Version 0.9
 
-		- Sprachunterstützung für Ungarisch hinzugefügt
+		- Sprachunterstützung für Ungarisch, Französisch und Russisch hinzugefügt
+		- Update auf smooth v0.8.61.0
 
 	Version 0.8
 
@@ -82,7 +83,7 @@ Voraussetzungen
 	Zusätzliche optionale Software:
 
 		- BladeEnc wird verwendet, wenn es installiert ist (http://bladeenc.mp3.no)
-		- FAAC wird verwendet, wenn es installiert ist (http://faac.sf.net)
+		- FAAC wird verwendet, wenn es installiert ist (http://www.audiocoding.com)
 		- TwinVQ wird verwendet, wenn es installiert ist (http://www.twinvq.org)
 
 Probleme

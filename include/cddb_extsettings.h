@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,50 +11,50 @@
 #ifndef _H_CDDB_EXTSETTINGS_
 #define _H_CDDB_EXTSETTINGS_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class cddbExtendedSettingsDlg : public SMOOTHApplication
+using namespace smooth;
+
+class cddbExtendedSettingsDlg : public Application
 {
 	private:
-		SMOOTHTabRegister	*reg_register;
+		TabWidget	*reg_register;
 
-		SMOOTHLayer		*register_layer_http;
-		SMOOTHLayer		*register_layer_proxy;
+		Layer		*register_layer_http;
+		Layer		*register_layer_proxy;
 
-		SMOOTHGroupBox		*http_group_scripts;
-		SMOOTHText		*http_text_query;
-		SMOOTHEditBox		*http_edit_query;
-		SMOOTHText		*http_text_submit;
-		SMOOTHEditBox		*http_edit_submit;
+		GroupBox	*http_group_scripts;
+		Text		*http_text_query;
+		EditBox		*http_edit_query;
+		Text		*http_text_submit;
+		EditBox		*http_edit_submit;
 
-		SMOOTHGroupBox		*proxy_group_proxy;
-		SMOOTHText		*proxy_text_mode;
-		SMOOTHComboBox		*proxy_combo_mode;
-		SMOOTHText		*proxy_text_server;
-		SMOOTHEditBox		*proxy_edit_server;
-		SMOOTHText		*proxy_text_port;
-		SMOOTHEditBox		*proxy_edit_port;
+		GroupBox	*proxy_group_proxy;
+		Text		*proxy_text_mode;
+		ComboBox	*proxy_combo_mode;
+		Text		*proxy_text_server;
+		EditBox		*proxy_edit_server;
+		Text		*proxy_text_port;
+		EditBox		*proxy_edit_port;
 
-		SMOOTHDivisionbar	*divbar;
+		Divider		*divbar;
 
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		bonkEncConfig		*currentConfig;
+		bonkEncConfig	*currentConfig;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
-		SMOOTHVoid		 SetProxyMode();
+		Void		 OK();
+		Void		 SetProxyMode();
 	public:
-					 cddbExtendedSettingsDlg(bonkEncConfig *, SMOOTHInt);
-					~cddbExtendedSettingsDlg();
+				 cddbExtendedSettingsDlg(bonkEncConfig *, Int);
+				~cddbExtendedSettingsDlg();
 
-		SMOOTHInt		 ShowDialog();
+		Int		 ShowDialog();
 };
 
 #endif

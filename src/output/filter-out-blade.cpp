@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -103,8 +103,8 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->track > 0)
 		{
-			if (format->trackInfo->track < 10)	track_text.Set(SMOOTHString("0").Append(SMOOTHString::IntToString(format->trackInfo->track)));
-			else					track_text.Set(SMOOTHString::IntToString(format->trackInfo->track));
+			if (format->trackInfo->track < 10)	track_text.Set(String("0").Append(String::IntToString(format->trackInfo->track)));
+			else					track_text.Set(String::IntToString(format->trackInfo->track));
 
 			tag->AddFrame(track);
 		}
@@ -126,7 +126,7 @@ bool FilterOutBLADE::Activate()
 		ID3_Frame	*comment = new ID3_Frame(ID3FID_COMMENT);
 		ID3_Field	&comment_text = comment->Field(ID3FN_TEXT);
 
-		comment_text.Set("BonkEnc v0.8 <http://www.bonkenc.org>");
+		comment_text.Set("BonkEnc v0.9 <http://www.bonkenc.org>");
 
 		tag->AddFrame(comment);
 

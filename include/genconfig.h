@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,91 +11,91 @@
 #ifndef _H_GENCONFIG_
 #define _H_GENCONFIG_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class configureGeneralSettings : public SMOOTHApplication
+using namespace smooth;
+
+class configureGeneralSettings : public Application
 {
 	private:
-		SMOOTHTabRegister	*reg_register;
+		TabWidget	*reg_register;
 
-		SMOOTHLayer		*register_layer_encoders;
-		SMOOTHLayer		*register_layer_dirs;
-		SMOOTHLayer		*register_layer_language;
-		SMOOTHLayer		*register_layer_cdrip;
-		SMOOTHLayer		*register_layer_cddb;
+		Layer		*register_layer_encoders;
+		Layer		*register_layer_dirs;
+		Layer		*register_layer_language;
+		Layer		*register_layer_cdrip;
+		Layer		*register_layer_cddb;
 
-		SMOOTHGroupBox		*encoders_group_encoder;
-		SMOOTHComboBox		*encoders_combo_encoder;
-		SMOOTHButton		*encoders_button_config;
+		GroupBox	*encoders_group_encoder;
+		ComboBox	*encoders_combo_encoder;
+		Button		*encoders_button_config;
 
-		SMOOTHGroupBox		*dirs_group_outdir;
-		SMOOTHEditBox		*dirs_edit_outdir;
-		SMOOTHButton		*dirs_button_outdir_browse;
+		GroupBox	*dirs_group_outdir;
+		EditBox		*dirs_edit_outdir;
+		Button		*dirs_button_outdir_browse;
 
-		SMOOTHGroupBox		*language_group_language;
-		SMOOTHText		*language_text_language;
-		SMOOTHComboBox		*language_combo_language;
-		SMOOTHGroupBox		*language_group_info;
-		SMOOTHText		*language_text_info;
-		SMOOTHHyperlink		*language_link_url;
+		GroupBox	*language_group_language;
+		Text		*language_text_language;
+		ComboBox	*language_combo_language;
+		GroupBox	*language_group_info;
+		Text		*language_text_info;
+		Hyperlink	*language_link_url;
 
-		SMOOTHGroupBox		*cdrip_group_drive;
-		SMOOTHComboBox		*cdrip_combo_drive;
-		SMOOTHGroupBox		*cdrip_group_ripping;
-		SMOOTHCheckBox		*cdrip_check_paranoia;
-		SMOOTHComboBox		*cdrip_combo_paranoia_mode;
-		SMOOTHCheckBox		*cdrip_check_jitter;
-		SMOOTHCheckBox		*cdrip_check_swapchannels;
-		SMOOTHCheckBox		*cdrip_check_locktray;
-		SMOOTHCheckBox		*cdrip_check_ntscsi;
+		GroupBox	*cdrip_group_drive;
+		ComboBox	*cdrip_combo_drive;
+		GroupBox	*cdrip_group_ripping;
+		CheckBox	*cdrip_check_paranoia;
+		ComboBox	*cdrip_combo_paranoia_mode;
+		CheckBox	*cdrip_check_jitter;
+		CheckBox	*cdrip_check_swapchannels;
+		CheckBox	*cdrip_check_locktray;
+		CheckBox	*cdrip_check_ntscsi;
 
-		SMOOTHGroupBox		*cddb_group_cddb;
-		SMOOTHCheckBox		*cddb_check_enable;
-		SMOOTHText		*cddb_text_mode;
-		SMOOTHComboBox		*cddb_combo_mode;
-		SMOOTHText		*cddb_text_server;
-		SMOOTHEditBox		*cddb_edit_server;
-		SMOOTHText		*cddb_text_port;
-		SMOOTHEditBox		*cddb_edit_port;
-		SMOOTHText		*cddb_text_email;
-		SMOOTHEditBox		*cddb_edit_email;
-		SMOOTHButton		*cddb_button_http;
-		SMOOTHButton		*cddb_button_proxy;
+		GroupBox	*cddb_group_cddb;
+		CheckBox	*cddb_check_enable;
+		Text		*cddb_text_mode;
+		ComboBox	*cddb_combo_mode;
+		Text		*cddb_text_server;
+		EditBox		*cddb_edit_server;
+		Text		*cddb_text_port;
+		EditBox		*cddb_edit_port;
+		Text		*cddb_text_email;
+		EditBox		*cddb_edit_email;
+		Button		*cddb_button_http;
+		Button		*cddb_button_proxy;
 
-		SMOOTHDivisionbar	*divbar;
+		Divider		*divbar;
 
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		SMOOTHBool		 cdparanoia;
-		SMOOTHBool		 jitter;
-		SMOOTHBool		 swapchannels;
-		SMOOTHBool		 locktray;
-		SMOOTHBool		 ntscsi;
-		SMOOTHBool		 cddb;
+		Bool		 cdparanoia;
+		Bool		 jitter;
+		Bool		 swapchannels;
+		Bool		 locktray;
+		Bool		 ntscsi;
+		Bool		 cddb;
  
-		bonkEncConfig		*currentConfig;
+		bonkEncConfig	*currentConfig;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
-		SMOOTHVoid		 PaintProc();
-		SMOOTHVoid		 SelectDir();
-		SMOOTHVoid		 SelectLanguage();
-		SMOOTHVoid		 ConfigureEncoder();
-		SMOOTHVoid		 SetParanoia();
-		SMOOTHVoid		 SetCDDB();
-		SMOOTHVoid		 SetCDDBMode();
-		SMOOTHVoid		 HTTPSettings();
-		SMOOTHVoid		 ProxySettings();
+		Void		 OK();
+		Void		 DrawProc();
+		Void		 SelectDir();
+		Void		 SelectLanguage();
+		Void		 ConfigureEncoder();
+		Void		 SetParanoia();
+		Void		 SetCDDB();
+		Void		 SetCDDBMode();
+		Void		 HTTPSettings();
+		Void		 ProxySettings();
 	public:
-					 configureGeneralSettings(bonkEncConfig *);
-					~configureGeneralSettings();
-		SMOOTHInt		 ShowDialog();
+				 configureGeneralSettings(bonkEncConfig *);
+				~configureGeneralSettings();
+		Int		 ShowDialog();
 };
 
 #endif

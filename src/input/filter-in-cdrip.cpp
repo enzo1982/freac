@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -90,9 +90,9 @@ bool FilterInCDRip::SetTrack(int newTrack)
 {
 	trackNumber = newTrack;
 
-	int		 numTocEntries;
-	TOCENTRY	 entry;
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	int	 numTocEntries;
+	TOCENTRY entry;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("bonkenc.ini");
 
@@ -123,9 +123,9 @@ bool FilterInCDRip::SetTrack(int newTrack)
 		return false;
 	}
 
-	int		 startSector = entry.dwStartSector;
-	int		 endSector = 0;
-	TOCENTRY	 entry2 = ex_CR_GetTocEntry(0);
+	int	 startSector = entry.dwStartSector;
+	int	 endSector = 0;
+	TOCENTRY entry2 = ex_CR_GetTocEntry(0);
 
 	for (int j = 1; j <= numTocEntries; j++)
 	{

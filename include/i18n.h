@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,45 +11,48 @@
 #ifndef _H_I18N_
 #define _H_I18N_
 
-#include <smoothx.h>
+#include <smooth.h>
+
+using namespace smooth;
+using namespace smooth::XML;
 
 typedef struct
 {
-	SMOOTHArray<SMOOTHString>	 strings;
+	Array<String>	 strings;
 
-	SMOOTHString			 language;
-	SMOOTHString			 encoding;
-	SMOOTHString			 magic;
-	SMOOTHString			 author;
-	SMOOTHString			 url;
-	SMOOTHBool			 isOutOfDate;
+	String		 language;
+	String		 encoding;
+	String		 magic;
+	String		 author;
+	String		 url;
+	Bool		 isOutOfDate;
 }
 bonkEncLanguageInfo;
 
 class bonkTranslator
 {
 	private:
-		SMOOTHArray<bonkEncLanguageInfo *>	 languages;
-		bonkEncLanguageInfo			*activeLanguage;
+		Array<bonkEncLanguageInfo *>	 languages;
+		bonkEncLanguageInfo		*activeLanguage;
 
-		SMOOTHInt				 GetSupportedLanguages();
-		SMOOTHInt				 ReadStrings(SMOOTHXMLDocument *, bonkEncLanguageInfo *);
+		Int				 GetSupportedLanguages();
+		Int				 ReadStrings(Document *, bonkEncLanguageInfo *);
 
-		SMOOTHInt				 GetStringChecksum(SMOOTHString);
+		Int				 GetStringChecksum(String);
 	public:
-							 bonkTranslator();
-							~bonkTranslator();
+						 bonkTranslator();
+						~bonkTranslator();
 
-		SMOOTHInt				 GetNOfLanguages();
+		Int				 GetNOfLanguages();
 
-		SMOOTHString				 GetNthLanguageName(SMOOTHInt);
-		SMOOTHString				 GetNthLanguageID(SMOOTHInt);
-		SMOOTHString				 GetNthLanguageAuthor(SMOOTHInt);
-		SMOOTHString				 GetNthLanguageEncoding(SMOOTHInt);
-		SMOOTHString				 GetNthLanguageURL(SMOOTHInt);
+		String				 GetNthLanguageName(Int);
+		String				 GetNthLanguageID(Int);
+		String				 GetNthLanguageAuthor(Int);
+		String				 GetNthLanguageEncoding(Int);
+		String				 GetNthLanguageURL(Int);
 
-		SMOOTHInt				 ActivateLanguage(SMOOTHString);
-		SMOOTHString				 TranslateString(SMOOTHString);
+		Int				 ActivateLanguage(String);
+		String				 TranslateString(String);
 };
 
 #endif

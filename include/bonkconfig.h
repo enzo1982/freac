@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,57 +11,57 @@
 #ifndef _H_BONKCONFIG_
 #define _H_BONKCONFIG_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class configureBonkEnc : public SMOOTHApplication
+using namespace smooth;
+
+class configureBonkEnc : public Application
 {
 	private:
-		SMOOTHGroupBox		*group_quant;
-		SMOOTHSlider		*slider_quant;
-		SMOOTHText		*text_quant;
+		GroupBox	*group_quant;
+		Slider		*slider_quant;
+		Text		*text_quant;
 
-		SMOOTHGroupBox		*group_stereo;
-		SMOOTHCheckBox		*check_joint;
+		GroupBox	*group_stereo;
+		CheckBox	*check_joint;
 
-		SMOOTHGroupBox		*group_mode;
-		SMOOTHCheckBox		*check_lossless;
+		GroupBox	*group_mode;
+		CheckBox	*check_lossless;
 
-		SMOOTHGroupBox		*group_downsampling;
-		SMOOTHSlider		*slider_downsampling;
-		SMOOTHText		*text_downsampling;
+		GroupBox	*group_downsampling;
+		Slider		*slider_downsampling;
+		Text		*text_downsampling;
 
-		SMOOTHGroupBox		*group_predictor;
-		SMOOTHSlider		*slider_predictor;
-		SMOOTHText		*text_predictor;
+		GroupBox	*group_predictor;
+		Slider		*slider_predictor;
+		Text		*text_predictor;
 
-		SMOOTHDivisionbar	*divbar;
+		Divider		*divbar;
 
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		SMOOTHInt		 quant;
-		SMOOTHInt		 predictor;
-		SMOOTHInt		 downsampling;
-		SMOOTHBool		 jstereo;
-		SMOOTHBool		 lossless;
+		Int		 quant;
+		Int		 predictor;
+		Int		 downsampling;
+		Bool		 jstereo;
+		Bool		 lossless;
 
-		bonkEncConfig		*currentConfig;
+		bonkEncConfig	*currentConfig;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
-		SMOOTHVoid		 SetQuantization();
-		SMOOTHVoid		 SetPredictorSize();
-		SMOOTHVoid		 SetDownsamplingRatio();
-		SMOOTHVoid		 SetEncoderMode();
+		Void		 OK();
+		Void		 SetQuantization();
+		Void		 SetPredictorSize();
+		Void		 SetDownsamplingRatio();
+		Void		 SetEncoderMode();
 	public:
-					 configureBonkEnc(bonkEncConfig *);
-					~configureBonkEnc();
-		SMOOTHInt		 ShowDialog();
+				 configureBonkEnc(bonkEncConfig *);
+				~configureBonkEnc();
+		Int		 ShowDialog();
 };
 
 #endif

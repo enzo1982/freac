@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,34 +11,34 @@
 #ifndef _H_CDDB_MULTIMATCH_
 #define _H_CDDB_MULTIMATCH_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class cddbMultiMatchDlg : public SMOOTHApplication
+using namespace smooth;
+
+class cddbMultiMatchDlg : public Application
 {
 	private:
-		SMOOTHGroupBox		*group_match;
-		SMOOTHText		*text_match;
-		SMOOTHComboBox		*combo_match;
+		GroupBox	*group_match;
+		Text		*text_match;
+		ComboBox	*combo_match;
 
-		SMOOTHDivisionbar	*divbar;
+		Divider		*divbar;
 
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
+		Void		 OK();
 	public:
-					 cddbMultiMatchDlg(bonkEncConfig *, SMOOTHBool);
-					~cddbMultiMatchDlg();
+				 cddbMultiMatchDlg(bonkEncConfig *, Bool);
+				~cddbMultiMatchDlg();
 
-		SMOOTHInt		 ShowDialog();
+		Int		 ShowDialog();
 
-		SMOOTHInt		 AddEntry(SMOOTHString, SMOOTHString);
+		Int		 AddEntry(String, String);
 };
 
 #endif

@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,7 +11,7 @@
 #define __THROW_BAD_ALLOC exit(1)
 #define MAKEUNICODESTR(x) L##x
 
-#include <smooth.h>
+#include <smooth/main.h>
 #include <iolib/drivers/driver_zero.h>
 #include <main.h>
 #include <resources.h>
@@ -50,21 +50,23 @@
 #include <output/filter-out-tvq.h>
 #include <output/filter-out-wave.h>
 
-SMOOTHInt	 ENCODER_BONKENC	= -1;
-SMOOTHInt	 ENCODER_BLADEENC	= -1;
-SMOOTHInt	 ENCODER_LAMEENC	= -1;
-SMOOTHInt	 ENCODER_VORBISENC	= -1;
-SMOOTHInt	 ENCODER_FAAC		= -1;
-SMOOTHInt	 ENCODER_TVQ		= -1;
-SMOOTHInt	 ENCODER_WAVE		= -1;
+Int	 ENCODER_BONKENC	= -1;
+Int	 ENCODER_BLADEENC	= -1;
+Int	 ENCODER_LAMEENC	= -1;
+Int	 ENCODER_VORBISENC	= -1;
+Int	 ENCODER_FAAC		= -1;
+Int	 ENCODER_TVQ		= -1;
+Int	 ENCODER_WAVE		= -1;
 
-SMOOTHVoid SMOOTH::Main()
+Int smooth::Main()
 {
 	bonkEnc	*app = new bonkEnc();
 
-	SMOOTH::Loop();
+	Loop();
 
 	delete app;
+
+	return 0;
 }
 
 bonkEnc::bonkEnc()
@@ -208,7 +210,7 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->encoder >= nextEC) currentConfig->encoder = ENCODER_WAVE;
 
-	SMOOTHString	 inifile = SMOOTH::StartDirectory;
+	String	 inifile = SMOOTH::StartDirectory;
 
 	inifile.Append("BonkEnc.ini");
 
@@ -247,107 +249,106 @@ bonkEnc::bonkEnc()
 		return;
 	}
 
-	SMOOTHPoint	 pos;
-	SMOOTHSize	 size;
+	Point	 pos;
+	Size	 size;
 
-	mainWnd_menubar		= new SMOOTHMenubar();
-	mainWnd_iconbar		= new SMOOTHMenubar();
-	mainWnd			= new SMOOTHWindow("BonkEnc v0.8");
-	mainWnd_titlebar	= new SMOOTHTitlebar(true, true, true);
-	mainWnd_statusbar	= new SMOOTHStatusbar("BonkEnc v0.8 - Copyright (C) 2001-2002 Robert Kausch");
-	mainWnd_layer		= new SMOOTHLayer();
-	menu_file		= new SMOOTHPopupMenu();
-	menu_options		= new SMOOTHPopupMenu();
-	menu_addsubmenu		= new SMOOTHPopupMenu();
-	menu_encode		= new SMOOTHPopupMenu();
+	mainWnd_menubar		= new Menubar();
+	mainWnd_iconbar		= new Menubar();
+	mainWnd			= new Window("BonkEnc v0.9");
+	mainWnd_titlebar	= new Titlebar(true, true, true);
+	mainWnd_statusbar	= new Statusbar("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
+	menu_file		= new PopupMenu();
+	menu_options		= new PopupMenu();
+	menu_addsubmenu		= new PopupMenu();
+	menu_encode		= new PopupMenu();
 
 	pos.x = 91;
 	pos.y = -22;
 
-	hyperlink		= new SMOOTHHyperlink("www.bonkenc.org", NULL, "http://www.bonkenc.org", pos);
+	hyperlink		= new Hyperlink("www.bonkenc.org", NULL, "http://www.bonkenc.org", pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x = 7;
 	pos.y = 96;
 
-	enc_filename		= new SMOOTHText(currentConfig->i18n->TranslateString("Encoding file:"), pos);
+	enc_filename		= new Text(currentConfig->i18n->TranslateString("Encoding file:"), pos);
 	enc_filename->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	enc_time		= new SMOOTHText(currentConfig->i18n->TranslateString("Time left:"), pos);
+	enc_time		= new Text(currentConfig->i18n->TranslateString("Time left:"), pos);
 	enc_time->SetOrientation(OR_LOWERLEFT);
 
-	enc_percent		= new SMOOTHText(currentConfig->i18n->TranslateString("Percent done:"), pos);
+	enc_percent		= new Text(currentConfig->i18n->TranslateString("Percent done:"), pos);
 	enc_percent->SetOrientation(OR_LOWERLEFT);
 
-	enc_encoder		= new SMOOTHText(currentConfig->i18n->TranslateString("Selected encoder:"), pos);
+	enc_encoder		= new Text(currentConfig->i18n->TranslateString("Selected encoder:"), pos);
 	enc_encoder->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	enc_progress		= new SMOOTHText(currentConfig->i18n->TranslateString("File progress:"), pos);
+	enc_progress		= new Text(currentConfig->i18n->TranslateString("File progress:"), pos);
 	enc_progress->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	enc_outdir		= new SMOOTHText(currentConfig->i18n->TranslateString("Output dir.:"), pos);
+	enc_outdir		= new Text(currentConfig->i18n->TranslateString("Output dir.:"), pos);
 	enc_outdir->SetOrientation(OR_LOWERLEFT);
 
-	SMOOTHInt	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
+	Int	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
 
-	enc_progress->SetPosition(SMOOTHPoint(maxTextLength + 7 - enc_progress->GetObjectProperties()->textSize.cx, enc_progress->GetObjectProperties()->pos.y));
-	enc_outdir->SetPosition(SMOOTHPoint(maxTextLength + 7 - enc_outdir->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->pos.y));
-	enc_filename->SetPosition(SMOOTHPoint(maxTextLength + 7 - enc_filename->GetObjectProperties()->textSize.cx, enc_filename->GetObjectProperties()->pos.y));
-	enc_time->SetPosition(SMOOTHPoint(maxTextLength + 7 - enc_time->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->pos.y));
-	enc_percent->SetPosition(SMOOTHPoint(maxTextLength + 56, enc_percent->GetObjectProperties()->pos.y));
-	enc_encoder->SetPosition(SMOOTHPoint(maxTextLength + 104 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
+	enc_progress->SetPosition(Point(maxTextLength + 7 - enc_progress->GetObjectProperties()->textSize.cx, enc_progress->GetObjectProperties()->pos.y));
+	enc_outdir->SetPosition(Point(maxTextLength + 7 - enc_outdir->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->pos.y));
+	enc_filename->SetPosition(Point(maxTextLength + 7 - enc_filename->GetObjectProperties()->textSize.cx, enc_filename->GetObjectProperties()->pos.y));
+	enc_time->SetPosition(Point(maxTextLength + 7 - enc_time->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->pos.y));
+	enc_percent->SetPosition(Point(maxTextLength + 56, enc_percent->GetObjectProperties()->pos.y));
+	enc_encoder->SetPosition(Point(maxTextLength + 104 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
 
 	pos.x = 7;
 	pos.y = 5;
 
-	txt_joblist		= new SMOOTHText(SMOOTHString("0").Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")), pos);
+	txt_joblist		= new Text(String("0").Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")), pos);
 
 	pos.x = 7;
 	pos.y += 19;
 	size.cx = currentConfig->wndSize.cx - 20;
 	size.cy = currentConfig->wndSize.cy - 221;
 
-	joblist			= new SMOOTHListBox(pos, size, NULLPROC);
+	joblist			= new ListBox(pos, size, NULLPROC);
 
 	pos.y = 99;
 	pos.x = maxTextLength + 15;
 	size.cx = currentConfig->wndSize.cx - 28 - maxTextLength;
 	size.cy = 0;
 
-	edb_filename		= new SMOOTHEditBox(currentConfig->i18n->TranslateString("none"), pos, size, EDB_ALPHANUMERIC, 1024, NULLPROC);
+	edb_filename		= new EditBox(currentConfig->i18n->TranslateString("none"), pos, size, EDB_ALPHANUMERIC, 1024, NULLPROC);
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
 	pos.y -= 24;
 	size.cx = 34;
 
-	edb_time		= new SMOOTHEditBox("00:00", pos, size, EDB_ALPHANUMERIC, 5, NULLPROC);
+	edb_time		= new EditBox("00:00", pos, size, EDB_ALPHANUMERIC, 5, NULLPROC);
 	edb_time->SetOrientation(OR_LOWERLEFT);
 	edb_time->Deactivate();
 
 	pos.x += (49 + enc_percent->GetObjectProperties()->textSize.cx);
 	size.cx = 33;
 
-	edb_percent		= new SMOOTHEditBox("0%", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	edb_percent		= new EditBox("0%", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
 	edb_percent->SetOrientation(OR_LOWERLEFT);
 	edb_percent->Deactivate();
 
 	pos.x += (48 + enc_encoder->GetObjectProperties()->textSize.cx);
 	size.cx = currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx;
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new SMOOTHEditBox("BonkEnc", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new SMOOTHEditBox("BladeEnc", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
-	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder = new SMOOTHEditBox("LAME", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
-	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder = new SMOOTHEditBox("Ogg Vorbis", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
-	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder = new SMOOTHEditBox("FAAC", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
-	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder = new SMOOTHEditBox("TwinVQ", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
-	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder = new SMOOTHEditBox("WAVE Out", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("BonkEnc", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new EditBox("BladeEnc", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder = new EditBox("LAME", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder = new EditBox("Ogg Vorbis", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder = new EditBox("FAAC", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder = new EditBox("TwinVQ", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
+	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder = new EditBox("WAVE Out", pos, size, EDB_ALPHANUMERIC, 4, NULLPROC);
 
 	edb_encoder->SetOrientation(OR_LOWERLEFT);
 	edb_encoder->Deactivate();
@@ -356,7 +357,7 @@ bonkEnc::bonkEnc()
 	pos.y -= 48;
 	size.cx = currentConfig->wndSize.cx - 28 - maxTextLength;
 
-	edb_outdir		= new SMOOTHEditBox(currentConfig->enc_outdir, pos, size, EDB_ALPHANUMERIC, 1024, NULLPROC);
+	edb_outdir		= new EditBox(currentConfig->enc_outdir, pos, size, EDB_ALPHANUMERIC, 1024, NULLPROC);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->Deactivate();
 
@@ -365,82 +366,80 @@ bonkEnc::bonkEnc()
 	size.cx = currentConfig->wndSize.cx - 29 - maxTextLength;
 	size.cy = 18;
 
-	progress		= new SMOOTHProgressbar(pos, size, OR_HORZ, PB_NOTEXT, 0, 1000, 0);
+	progress		= new Progressbar(pos, size, OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 	progress->SetOrientation(OR_LOWERLEFT);
 	progress->Deactivate();
 
 	menu_file->AddEntry(currentConfig->i18n->TranslateString("Add"), NIL, NULLPROC, menu_addsubmenu);
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Remove"), NIL, SMOOTHProc(bonkEnc, this, RemoveFile));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Remove"), NIL, Proc(bonkEnc, this, RemoveFile));
 	menu_file->AddEntry();
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Clear joblist"), NIL, SMOOTHProc(bonkEnc, this, ClearList));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Clear joblist"), NIL, Proc(bonkEnc, this, ClearList));
 	menu_file->AddEntry();
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Exit"), NIL, SMOOTHProc(bonkEnc, this, Exit));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Exit"), NIL, Proc(Window, mainWnd, Close));
 
-	menu_options->AddEntry(currentConfig->i18n->TranslateString("General settings..."), NIL, SMOOTHProc(bonkEnc, this, ConfigureGeneral));
-	menu_options->AddEntry(currentConfig->i18n->TranslateString("Configure selected encoder..."), NIL, SMOOTHProc(bonkEnc, this, ConfigureEncoder));
+	menu_options->AddEntry(currentConfig->i18n->TranslateString("General settings..."), NIL, Proc(bonkEnc, this, ConfigureGeneral));
+	menu_options->AddEntry(currentConfig->i18n->TranslateString("Configure selected encoder..."), NIL, Proc(bonkEnc, this, ConfigureEncoder));
 
-	menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio file(s)..."), NIL, SMOOTHProc(bonkEnc, this, AddFile));
+	menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio file(s)..."), NIL, Proc(bonkEnc, this, AddFile));
 
 	if (currentConfig->enable_cdrip)
 	{
-		menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio CD contents"), NIL, SMOOTHProc(bonkEnc, this, ReadCD));
+		menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio CD contents"), NIL, Proc(bonkEnc, this, ReadCD));
 	}
 
-	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Start encoding"), NIL, SMOOTHProc(bonkEnc, this, Encode));
-	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Stop encoding"), NIL, SMOOTHProc(bonkEnc, this, StopEncoding));
+	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Start encoding"), NIL, Proc(bonkEnc, this, Encode));
+	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Stop encoding"), NIL, Proc(bonkEnc, this, StopEncoding));
 
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("File"), NIL, NULLPROC, menu_file);
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("Options"), NIL, NULLPROC, menu_options);
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("Encode"), NIL, NULLPROC, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-	mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), SMOOTHProc(bonkEnc, this, About), NIL, NIL, NIL, 0, OR_RIGHT)->SetStatusText(currentConfig->i18n->TranslateString("Display information about BonkEnc"));
+	mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), Proc(bonkEnc, this, About), NIL, NIL, NIL, 0, OR_RIGHT)->SetStatusText(currentConfig->i18n->TranslateString("Display information about BonkEnc"));
 
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL), SMOOTHProc(bonkEnc, this, AddFile))->SetStatusText(currentConfig->i18n->TranslateString("Add audio file(s) to the joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL), Proc(bonkEnc, this, AddFile))->SetStatusText(currentConfig->i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), SMOOTHProc(bonkEnc, this, ReadCD))->SetStatusText(currentConfig->i18n->TranslateString("Add audio CD contents to the joblist"));
+		mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), Proc(bonkEnc, this, ReadCD))->SetStatusText(currentConfig->i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), SMOOTHProc(bonkEnc, this, RemoveFile))->SetStatusText(currentConfig->i18n->TranslateString("Remove the selected entry from the joblist"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL), SMOOTHProc(bonkEnc, this, ClearList))->SetStatusText(currentConfig->i18n->TranslateString("Clear the entire joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), Proc(bonkEnc, this, RemoveFile))->SetStatusText(currentConfig->i18n->TranslateString("Remove the selected entry from the joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL), Proc(bonkEnc, this, ClearList))->SetStatusText(currentConfig->i18n->TranslateString("Clear the entire joblist"));
 	mainWnd_iconbar->AddEntry();
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL), SMOOTHProc(bonkEnc, this, ConfigureGeneral))->SetStatusText(currentConfig->i18n->TranslateString("Configure general settings"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL), SMOOTHProc(bonkEnc, this, ConfigureEncoder))->SetStatusText(currentConfig->i18n->TranslateString("Configure the selected audio encoder"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL), Proc(bonkEnc, this, ConfigureGeneral))->SetStatusText(currentConfig->i18n->TranslateString("Configure general settings"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL), Proc(bonkEnc, this, ConfigureEncoder))->SetStatusText(currentConfig->i18n->TranslateString("Configure the selected audio encoder"));
 	mainWnd_iconbar->AddEntry();
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), SMOOTHProc(bonkEnc, this, Encode))->SetStatusText(currentConfig->i18n->TranslateString("Start the encoding process"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL), SMOOTHProc(bonkEnc, this, StopEncoding))->SetStatusText(currentConfig->i18n->TranslateString("Stop encoding"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), Proc(bonkEnc, this, Encode))->SetStatusText(currentConfig->i18n->TranslateString("Start the encoding process"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL), Proc(bonkEnc, this, StopEncoding))->SetStatusText(currentConfig->i18n->TranslateString("Stop encoding"));
 
 	RegisterObject(mainWnd);
 
-	mainWnd_layer->RegisterObject(joblist);
-	mainWnd_layer->RegisterObject(txt_joblist);
-	mainWnd_layer->RegisterObject(enc_filename);
-	mainWnd_layer->RegisterObject(enc_time);
-	mainWnd_layer->RegisterObject(enc_percent);
-	mainWnd_layer->RegisterObject(enc_encoder);
-	mainWnd_layer->RegisterObject(enc_progress);
-	mainWnd_layer->RegisterObject(enc_outdir);
-	mainWnd_layer->RegisterObject(edb_filename);
-	mainWnd_layer->RegisterObject(edb_time);
-	mainWnd_layer->RegisterObject(edb_percent);
-	mainWnd_layer->RegisterObject(edb_encoder);
-	mainWnd_layer->RegisterObject(edb_outdir);
-	mainWnd_layer->RegisterObject(progress);
-	mainWnd_layer->RegisterObject(hyperlink);
-
+	mainWnd->RegisterObject(joblist);
+	mainWnd->RegisterObject(txt_joblist);
+	mainWnd->RegisterObject(enc_filename);
+	mainWnd->RegisterObject(enc_time);
+	mainWnd->RegisterObject(enc_percent);
+	mainWnd->RegisterObject(enc_encoder);
+	mainWnd->RegisterObject(enc_progress);
+	mainWnd->RegisterObject(enc_outdir);
+	mainWnd->RegisterObject(edb_filename);
+	mainWnd->RegisterObject(edb_time);
+	mainWnd->RegisterObject(edb_percent);
+	mainWnd->RegisterObject(edb_encoder);
+	mainWnd->RegisterObject(edb_outdir);
+	mainWnd->RegisterObject(progress);
+	mainWnd->RegisterObject(hyperlink);
 	mainWnd->RegisterObject(mainWnd_titlebar);
 	mainWnd->RegisterObject(mainWnd_statusbar);
-	mainWnd->RegisterObject(mainWnd_layer);
 	mainWnd->RegisterObject(mainWnd_menubar);
 	mainWnd->RegisterObject(mainWnd_iconbar);
 
 	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(IDI_ICON);
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
-	mainWnd->SetPaintProc(SMOOTHPaintProc(bonkEnc, this, PaintProc));
-	mainWnd->SetKillProc(SMOOTHKillProc(bonkEnc, this, KillProc));
-	mainWnd->SetMinimumSize(SMOOTHSize(390, 284));
+	mainWnd->SetPaintProc(PaintProc(bonkEnc, this, DrawProc));
+	mainWnd->SetKillProc(KillProc(bonkEnc, this, ExitProc));
+	mainWnd->SetMinimumSize(Size(390, 284));
 }
 
 bonkEnc::~bonkEnc()
@@ -459,23 +458,21 @@ bonkEnc::~bonkEnc()
 		mainWnd->UnregisterObject(mainWnd_iconbar);
 		mainWnd->UnregisterObject(mainWnd_titlebar);
 		mainWnd->UnregisterObject(mainWnd_statusbar);
-		mainWnd->UnregisterObject(mainWnd_layer);
-
-		mainWnd_layer->UnregisterObject(joblist);
-		mainWnd_layer->UnregisterObject(txt_joblist);
-		mainWnd_layer->UnregisterObject(enc_filename);
-		mainWnd_layer->UnregisterObject(enc_time);
-		mainWnd_layer->UnregisterObject(enc_percent);
-		mainWnd_layer->UnregisterObject(enc_encoder);
-		mainWnd_layer->UnregisterObject(enc_progress);
-		mainWnd_layer->UnregisterObject(enc_outdir);
-		mainWnd_layer->UnregisterObject(edb_filename);
-		mainWnd_layer->UnregisterObject(edb_time);
-		mainWnd_layer->UnregisterObject(edb_percent);
-		mainWnd_layer->UnregisterObject(edb_encoder);
-		mainWnd_layer->UnregisterObject(edb_outdir);
-		mainWnd_layer->UnregisterObject(progress);
-		mainWnd_layer->UnregisterObject(hyperlink);
+		mainWnd->UnregisterObject(joblist);
+		mainWnd->UnregisterObject(txt_joblist);
+		mainWnd->UnregisterObject(enc_filename);
+		mainWnd->UnregisterObject(enc_time);
+		mainWnd->UnregisterObject(enc_percent);
+		mainWnd->UnregisterObject(enc_encoder);
+		mainWnd->UnregisterObject(enc_progress);
+		mainWnd->UnregisterObject(enc_outdir);
+		mainWnd->UnregisterObject(edb_filename);
+		mainWnd->UnregisterObject(edb_time);
+		mainWnd->UnregisterObject(edb_percent);
+		mainWnd->UnregisterObject(edb_encoder);
+		mainWnd->UnregisterObject(edb_outdir);
+		mainWnd->UnregisterObject(progress);
+		mainWnd->UnregisterObject(hyperlink);
 
 		UnregisterObject(mainWnd);
 
@@ -483,7 +480,6 @@ bonkEnc::~bonkEnc()
 		delete mainWnd_iconbar;
 		delete mainWnd_titlebar;
 		delete mainWnd_statusbar;
-		delete mainWnd_layer;
 		delete mainWnd;
 		delete joblist;
 		delete txt_joblist;
@@ -510,7 +506,7 @@ bonkEnc::~bonkEnc()
 	delete currentConfig;
 }
 
-SMOOTHVoid bonkEnc::AddFile()
+Void bonkEnc::AddFile()
 {
 	if (encoding)
 	{
@@ -519,12 +515,12 @@ SMOOTHVoid bonkEnc::AddFile()
 		return;
 	}
 
-	SDialogFileSelection	*dialog = new SDialogFileSelection();
+	DialogFileSelection	*dialog = new DialogFileSelection();
 
 	dialog->SetParentWindow(mainWnd);
 	dialog->SetFlags(SFD_ALLOWMULTISELECT);
 
-	SMOOTHString	 fileTypes = "*.aif; *.aiff; *.au";
+	String	 fileTypes = "*.aif; *.aiff; *.au";
 
 	if (currentConfig->enable_bonk) fileTypes.Append("; *.bonk");
 	if (currentConfig->enable_cdrip) fileTypes.Append("; *.cda");
@@ -551,11 +547,11 @@ SMOOTHVoid bonkEnc::AddFile()
 
 	dialog->AddFilter(currentConfig->i18n->TranslateString("All Files"), "*.*");
 
-	if (dialog->ShowDialog() == SMOOTH::Success)
+	if (dialog->ShowDialog() == Success)
 	{
 		for (int i = 0; i < dialog->GetNumberOfFiles(); i++)
 		{
-			SMOOTHString	 file = dialog->GetNthFileName(i);
+			String	 file = dialog->GetNthFileName(i);
 
 			AddFileByName(file);
 		}
@@ -563,10 +559,10 @@ SMOOTHVoid bonkEnc::AddFile()
 
 	delete dialog;
 
-	txt_joblist->SetText(SMOOTHString::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
+	txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
 }
 
-SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
+Void bonkEnc::AddFileByName(String file, String outfile)
 {
 	if (encoding)
 	{
@@ -575,7 +571,7 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 		return;
 	}
 
-	SMOOTHString	 extension;
+	String	 extension;
 
 	extension[0] = file[file.Length() - 4];
 	extension[1] = file[file.Length() - 3];
@@ -586,8 +582,8 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 	{
 		FILE		*afile = fopen(file, "r");
 		InStream	*in = new InStream(STREAM_ANSI, afile);
-		SMOOTHInt	 trackNumber;
-		SMOOTHInt	 trackLength;
+		Int		 trackNumber;
+		Int		 trackLength;
 
 		in->Seek(22);
 
@@ -601,14 +597,14 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 
 		fclose(afile);
 
-		SMOOTHArray<bonkTrackInfo *>	*cdInfo = GetCDDBData();
+		Array<bonkTrackInfo *>	*cdInfo = GetCDDBData();
 
-		SMOOTHInt	 audiodrive = 0;
-		SMOOTHBool	 done = false;
+		Int	 audiodrive = 0;
+		Bool	 done = false;
 
 		ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
 
-		SMOOTHString	 inifile = SMOOTH::StartDirectory;
+		String	 inifile = SMOOTH::StartDirectory;
 
 		inifile.Append("BonkEnc.ini");
 
@@ -620,7 +616,7 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 
 			ex_CR_ReadToc();
 
-			SMOOTHInt	 numTocEntries = ex_CR_GetNumTocEntries();
+			Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
 			ReadCDText();
 
@@ -628,7 +624,7 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 			{
 				TOCENTRY	 entry = ex_CR_GetTocEntry(j);
 				TOCENTRY	 nextentry = ex_CR_GetTocEntry(j + 1);
-				SMOOTHInt	 length = nextentry.dwStartSector - entry.dwStartSector;
+				Int		 length = nextentry.dwStartSector - entry.dwStartSector;
 
 				if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == trackNumber && length == trackLength)
 				{
@@ -642,14 +638,14 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 
 		if (cdInfo != NIL)
 		{
-			sa_joblist.AddEntry(SMOOTHString(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), joblist->AddEntry(SMOOTHString(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), NULLPROC));
+			sa_joblist.AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), joblist->AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), NULLPROC));
 
 			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
 			trackInfo->track	= trackNumber;
 			trackInfo->drive	= audiodrive;
 			trackInfo->outfile	= NIL;
-			trackInfo->cdText	= SMOOTH::True;
+			trackInfo->cdText	= True;
 			trackInfo->artist	= cdInfo->GetEntry(0)->artist;
 			trackInfo->title	= cdInfo->GetEntry(trackNumber)->title;
 			trackInfo->album	= cdInfo->GetEntry(0)->album;
@@ -664,32 +660,32 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 
 			GetSystemTime(&systime);
 
-			sa_joblist.AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), joblist->AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), NULLPROC));
+			sa_joblist.AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), joblist->AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), NULLPROC));
 
 			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
 			trackInfo->track	= trackNumber;
 			trackInfo->drive	= audiodrive;
 			trackInfo->outfile	= NIL;
-			trackInfo->cdText	= SMOOTH::True;
+			trackInfo->cdText	= True;
 			trackInfo->artist	= cdText.GetEntry(0);
 			trackInfo->title	= cdText.GetEntry(trackNumber);
 			trackInfo->album	= cdText.GetEntry(100);
 			trackInfo->genre	= "Pop";
-			trackInfo->year		= SMOOTHString::IntToString(systime.wYear);
+			trackInfo->year		= String::IntToString(systime.wYear);
 
 			sa_trackinfo.AddEntry(trackInfo);
 		}
 		else
 		{
-			sa_joblist.AddEntry(SMOOTHString("Audio CD ").Append(SMOOTHString::IntToString(audiodrive)).Append(" track ").Append(SMOOTHString::IntToString(trackNumber)), joblist->AddEntry(SMOOTHString("Audio CD ").Append(SMOOTHString::IntToString(audiodrive)).Append(" track ").Append(SMOOTHString::IntToString(trackNumber)), NULLPROC));
+			sa_joblist.AddEntry(String("Audio CD ").Append(String::IntToString(audiodrive)).Append(" track ").Append(String::IntToString(trackNumber)), joblist->AddEntry(String("Audio CD ").Append(String::IntToString(audiodrive)).Append(" track ").Append(String::IntToString(trackNumber)), NULLPROC));
 
 			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
 			trackInfo->track	= trackNumber;
 			trackInfo->drive	= audiodrive;
 			trackInfo->outfile	= NIL;
-			trackInfo->cdText	= SMOOTH::False;
+			trackInfo->cdText	= False;
 
 			sa_trackinfo.AddEntry(trackInfo);
 		}
@@ -713,13 +709,13 @@ SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
 
 		trackInfo->track	= -1;
 		trackInfo->outfile	= outfile;
-		trackInfo->cdText	= SMOOTH::False;
+		trackInfo->cdText	= False;
 
 		sa_trackinfo.AddEntry(trackInfo);
 	}
 }
 
-SMOOTHVoid bonkEnc::RemoveFile()
+Void bonkEnc::RemoveFile()
 {
 	if (encoding)
 	{
@@ -735,7 +731,7 @@ SMOOTHVoid bonkEnc::RemoveFile()
 		sa_trackinfo.DeleteEntry(joblist->GetSelectedEntry());
 		joblist->RemoveEntry(joblist->GetSelectedEntry());
 
-		txt_joblist->SetText(SMOOTHString::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
+		txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
 	}
 	else
 	{
@@ -743,7 +739,7 @@ SMOOTHVoid bonkEnc::RemoveFile()
 	}
 }
 
-SMOOTHVoid bonkEnc::ClearList()
+Void bonkEnc::ClearList()
 {
 	if (encoding)
 	{
@@ -757,10 +753,10 @@ SMOOTHVoid bonkEnc::ClearList()
 	sa_trackinfo.DeleteAll();
 	joblist->Cleanup();
 
-	if (!currentConfig->enable_console) txt_joblist->SetText(SMOOTHString("0").Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
+	if (!currentConfig->enable_console) txt_joblist->SetText(String("0").Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
 }
 
-SMOOTHBool bonkEnc::KillProc()
+Bool bonkEnc::ExitProc()
 {
 	if (encoding)
 	{
@@ -769,12 +765,12 @@ SMOOTHBool bonkEnc::KillProc()
 		StopEncoding();
 	}
 
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("BonkEnc.ini");
 
-	SMOOTHOutStream	*out = new SMOOTHOutStream(STREAM_FILE, file, OS_OVERWRITE);
-	SMOOTHString	 str;
+	OutStream	*out = new OutStream(STREAM_FILE, file, OS_OVERWRITE);
+	String	 str;
 
 	if (out->GetLastError() == IOLIB_ERROR_OK)
 	{
@@ -785,7 +781,7 @@ SMOOTHBool bonkEnc::KillProc()
 		out->OutputLine(str);
 
 		str = "Encoder=";
-		str.Append(SMOOTHString::IntToString(currentConfig->encoder));
+		str.Append(String::IntToString(currentConfig->encoder));
 		out->OutputLine(str);
 
 		str = "EncoderOutdir=";
@@ -793,61 +789,61 @@ SMOOTHBool bonkEnc::KillProc()
 		out->OutputLine(str);
 
 		str = "WindowPosX=";
-		str.Append(SMOOTHString::IntToString(mainWnd->GetObjectProperties()->pos.x));
+		str.Append(String::IntToString(mainWnd->GetObjectProperties()->pos.x));
 		out->OutputLine(str);
 
 		str = "WindowPosY=";
-		str.Append(SMOOTHString::IntToString(mainWnd->GetObjectProperties()->pos.y));
+		str.Append(String::IntToString(mainWnd->GetObjectProperties()->pos.y));
 		out->OutputLine(str);
 
 		str = "WindowSizeX=";
-		str.Append(SMOOTHString::IntToString(currentConfig->wndSize.cx));
+		str.Append(String::IntToString(currentConfig->wndSize.cx));
 		out->OutputLine(str);
 
 		str = "WindowSizeY=";
-		str.Append(SMOOTHString::IntToString(currentConfig->wndSize.cy));
+		str.Append(String::IntToString(currentConfig->wndSize.cy));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[CDRip]");
 
 		str = "ActiveCDROM=";
-		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_activedrive));
+		str.Append(String::IntToString(currentConfig->cdrip_activedrive));
 		out->OutputLine(str);
 
 		str = "DebugCDRip=";
-		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_debuglevel));
+		str.Append(String::IntToString(currentConfig->cdrip_debuglevel));
 		out->OutputLine(str);
 
 		str = "CDParanoia=";
-		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_paranoia));
+		str.Append(String::IntToString(currentConfig->cdrip_paranoia));
 		out->OutputLine(str);
 
 		str = "CDParanoiaMode=";
-		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_paranoia_mode));
+		str.Append(String::IntToString(currentConfig->cdrip_paranoia_mode));
 		out->OutputLine(str);
 
 		str = "Jitter=";
-		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_jitter));
+		str.Append(String::IntToString(currentConfig->cdrip_jitter));
 		out->OutputLine(str);
 
 		str = "SwapChannels=";
-		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_swapchannels));
+		str.Append(String::IntToString(currentConfig->cdrip_swapchannels));
 		out->OutputLine(str);
 
 		str = "LockTray=";
-		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_locktray));
+		str.Append(String::IntToString(currentConfig->cdrip_locktray));
 		out->OutputLine(str);
 
 		str = "UseNTSCSI=";
-		str.Append(SMOOTHString::IntToString(currentConfig->cdrip_ntscsi));
+		str.Append(String::IntToString(currentConfig->cdrip_ntscsi));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[freedb]");
 
 		str = "EnableCDDB=";
-		str.Append(SMOOTHString::IntToString(currentConfig->enable_cddb));
+		str.Append(String::IntToString(currentConfig->enable_cddb));
 		out->OutputLine(str);
 
 		str = "Server=";
@@ -855,15 +851,15 @@ SMOOTHBool bonkEnc::KillProc()
 		out->OutputLine(str);
 
 		str = "Mode=";
-		str.Append(SMOOTHString::IntToString(currentConfig->freedb_mode));
+		str.Append(String::IntToString(currentConfig->freedb_mode));
 		out->OutputLine(str);
 
 		str = "CDDBPPort=";
-		str.Append(SMOOTHString::IntToString(currentConfig->freedb_cddbp_port));
+		str.Append(String::IntToString(currentConfig->freedb_cddbp_port));
 		out->OutputLine(str);
 
 		str = "HTTPPort=";
-		str.Append(SMOOTHString::IntToString(currentConfig->freedb_http_port));
+		str.Append(String::IntToString(currentConfig->freedb_http_port));
 		out->OutputLine(str);
 
 		str = "QueryPath=";
@@ -879,7 +875,7 @@ SMOOTHBool bonkEnc::KillProc()
 		out->OutputLine(str);
 
 		str = "ProxyMode=";
-		str.Append(SMOOTHString::IntToString(currentConfig->freedb_proxy_mode));
+		str.Append(String::IntToString(currentConfig->freedb_proxy_mode));
 		out->OutputLine(str);
 
 		str = "Proxy=";
@@ -887,233 +883,233 @@ SMOOTHBool bonkEnc::KillProc()
 		out->OutputLine(str);
 
 		str = "ProxyPort=";
-		str.Append(SMOOTHString::IntToString(currentConfig->freedb_proxy_port));
+		str.Append(String::IntToString(currentConfig->freedb_proxy_port));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[bonkEnc]");
 
 		str = "Quantization=";
-		str.Append(SMOOTHString::IntToString(currentConfig->bonk_quantization));
+		str.Append(String::IntToString(currentConfig->bonk_quantization));
 		out->OutputLine(str);
 
 		str = "Predictor=";
-		str.Append(SMOOTHString::IntToString(currentConfig->bonk_predictor));
+		str.Append(String::IntToString(currentConfig->bonk_predictor));
 		out->OutputLine(str);
 
 		str = "Downsampling=";
-		str.Append(SMOOTHString::IntToString(currentConfig->bonk_downsampling));
+		str.Append(String::IntToString(currentConfig->bonk_downsampling));
 		out->OutputLine(str);
 
 		str = "JointStereo=";
-		str.Append(SMOOTHString::IntToString(currentConfig->bonk_jstereo));
+		str.Append(String::IntToString(currentConfig->bonk_jstereo));
 		out->OutputLine(str);
 
 		str = "Lossless=";
-		str.Append(SMOOTHString::IntToString(currentConfig->bonk_lossless));
+		str.Append(String::IntToString(currentConfig->bonk_lossless));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[bladeEnc]");
 
 		str = "Bitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->blade_bitrate));
+		str.Append(String::IntToString(currentConfig->blade_bitrate));
 		out->OutputLine(str);
 
 		str = "CRC=";
-		str.Append(SMOOTHString::IntToString(currentConfig->blade_crc));
+		str.Append(String::IntToString(currentConfig->blade_crc));
 		out->OutputLine(str);
 
 		str = "Copyright=";
-		str.Append(SMOOTHString::IntToString(currentConfig->blade_copyright));
+		str.Append(String::IntToString(currentConfig->blade_copyright));
 		out->OutputLine(str);
 
 		str = "Original=";
-		str.Append(SMOOTHString::IntToString(currentConfig->blade_original));
+		str.Append(String::IntToString(currentConfig->blade_original));
 		out->OutputLine(str);
 
 		str = "Private=";
-		str.Append(SMOOTHString::IntToString(currentConfig->blade_private));
+		str.Append(String::IntToString(currentConfig->blade_private));
 		out->OutputLine(str);
 
 		str = "DualChannel=";
-		str.Append(SMOOTHString::IntToString(currentConfig->blade_dualchannel));
+		str.Append(String::IntToString(currentConfig->blade_dualchannel));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[lameMP3]");
 
 		str = "SetBitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_set_bitrate));
+		str.Append(String::IntToString(currentConfig->lame_set_bitrate));
 		out->OutputLine(str);
 
 		str = "Bitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_bitrate));
+		str.Append(String::IntToString(currentConfig->lame_bitrate));
 		out->OutputLine(str);
 
 		str = "Ratio=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_ratio));
+		str.Append(String::IntToString(currentConfig->lame_ratio));
 		out->OutputLine(str);
 
 		str = "SetQuality=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_set_quality));
+		str.Append(String::IntToString(currentConfig->lame_set_quality));
 		out->OutputLine(str);
 
 		str = "Quality=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_quality));
+		str.Append(String::IntToString(currentConfig->lame_quality));
 		out->OutputLine(str);
 
 		str = "StereoMode=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_stereomode));
+		str.Append(String::IntToString(currentConfig->lame_stereomode));
 		out->OutputLine(str);
 
 		str = "ForceJS=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_forcejs));
+		str.Append(String::IntToString(currentConfig->lame_forcejs));
 		out->OutputLine(str);
 
 		str = "VBRMode=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_vbrmode));
+		str.Append(String::IntToString(currentConfig->lame_vbrmode));
 		out->OutputLine(str);
 
 		str = "VBRQuality=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_vbrquality));
+		str.Append(String::IntToString(currentConfig->lame_vbrquality));
 		out->OutputLine(str);
 
 		str = "ABRBitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_abrbitrate));
+		str.Append(String::IntToString(currentConfig->lame_abrbitrate));
 		out->OutputLine(str);
 
 		str = "SetMinVBRBitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_set_min_vbr_bitrate));
+		str.Append(String::IntToString(currentConfig->lame_set_min_vbr_bitrate));
 		out->OutputLine(str);
 
 		str = "MinVBRBitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_min_vbr_bitrate));
+		str.Append(String::IntToString(currentConfig->lame_min_vbr_bitrate));
 		out->OutputLine(str);
 
 		str = "SetMaxVBRBitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_set_max_vbr_bitrate));
+		str.Append(String::IntToString(currentConfig->lame_set_max_vbr_bitrate));
 		out->OutputLine(str);
 
 		str = "MaxVBRBitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_max_vbr_bitrate));
+		str.Append(String::IntToString(currentConfig->lame_max_vbr_bitrate));
 		out->OutputLine(str);
 
 		str = "CRC=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_crc));
+		str.Append(String::IntToString(currentConfig->lame_crc));
 		out->OutputLine(str);
 
 		str = "Copyright=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_copyright));
+		str.Append(String::IntToString(currentConfig->lame_copyright));
 		out->OutputLine(str);
 
 		str = "Original=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_original));
+		str.Append(String::IntToString(currentConfig->lame_original));
 		out->OutputLine(str);
 
 		str = "Private=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_private));
+		str.Append(String::IntToString(currentConfig->lame_private));
 		out->OutputLine(str);
 
 		str = "StrictISO=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_strict_iso));
+		str.Append(String::IntToString(currentConfig->lame_strict_iso));
 		out->OutputLine(str);
 
 		str = "PaddingType=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_padding_type));
+		str.Append(String::IntToString(currentConfig->lame_padding_type));
 		out->OutputLine(str);
 
 		str = "Resample=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_resample));
+		str.Append(String::IntToString(currentConfig->lame_resample));
 		out->OutputLine(str);
 
 		str = "DisableFiltering=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_disable_filtering));
+		str.Append(String::IntToString(currentConfig->lame_disable_filtering));
 		out->OutputLine(str);
 
 		str = "SetLowpass=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_set_lowpass));
+		str.Append(String::IntToString(currentConfig->lame_set_lowpass));
 		out->OutputLine(str);
 
 		str = "Lowpass=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_lowpass));
+		str.Append(String::IntToString(currentConfig->lame_lowpass));
 		out->OutputLine(str);
 
 		str = "SetLowpassWidth=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_set_lowpass_width));
+		str.Append(String::IntToString(currentConfig->lame_set_lowpass_width));
 		out->OutputLine(str);
 
 		str = "LowpassWidth=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_lowpass_width));
+		str.Append(String::IntToString(currentConfig->lame_lowpass_width));
 		out->OutputLine(str);
 
 		str = "SetHighpass=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_set_highpass));
+		str.Append(String::IntToString(currentConfig->lame_set_highpass));
 		out->OutputLine(str);
 
 		str = "Highpass=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_highpass));
+		str.Append(String::IntToString(currentConfig->lame_highpass));
 		out->OutputLine(str);
 
 		str = "SetHighpassWidth=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_set_highpass_width));
+		str.Append(String::IntToString(currentConfig->lame_set_highpass_width));
 		out->OutputLine(str);
 
 		str = "HighpassWidth=";
-		str.Append(SMOOTHString::IntToString(currentConfig->lame_highpass_width));
+		str.Append(String::IntToString(currentConfig->lame_highpass_width));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[oggVorbis]");
 
 		str = "Mode=";
-		str.Append(SMOOTHString::IntToString(currentConfig->vorbis_mode));
+		str.Append(String::IntToString(currentConfig->vorbis_mode));
 		out->OutputLine(str);
 
 		str = "Quality=";
-		str.Append(SMOOTHString::IntToString(currentConfig->vorbis_quality));
+		str.Append(String::IntToString(currentConfig->vorbis_quality));
 		out->OutputLine(str);
 
 		str = "Bitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->vorbis_bitrate));
+		str.Append(String::IntToString(currentConfig->vorbis_bitrate));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[FAAC]");
 
 		str = "MPEGVersion=";
-		str.Append(SMOOTHString::IntToString(currentConfig->faac_mpegversion));
+		str.Append(String::IntToString(currentConfig->faac_mpegversion));
 		out->OutputLine(str);
 
 		str = "AACType=";
-		str.Append(SMOOTHString::IntToString(currentConfig->faac_type));
+		str.Append(String::IntToString(currentConfig->faac_type));
 		out->OutputLine(str);
 
 		str = "Bitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->faac_bitrate));
+		str.Append(String::IntToString(currentConfig->faac_bitrate));
 		out->OutputLine(str);
 
 		str = "BandWidth=";
-		str.Append(SMOOTHString::IntToString(currentConfig->faac_bandwidth));
+		str.Append(String::IntToString(currentConfig->faac_bandwidth));
 		out->OutputLine(str);
 
 		str = "AllowJS=";
-		str.Append(SMOOTHString::IntToString(currentConfig->faac_allowjs));
+		str.Append(String::IntToString(currentConfig->faac_allowjs));
 		out->OutputLine(str);
 
 		str = "UseTNS=";
-		str.Append(SMOOTHString::IntToString(currentConfig->faac_usetns));
+		str.Append(String::IntToString(currentConfig->faac_usetns));
 		out->OutputLine(str);
 
 		out->OutputLine("");
 		out->OutputLine("[TwinVQ]");
 
 		str = "Bitrate=";
-		str.Append(SMOOTHString::IntToString(currentConfig->tvq_bitrate));
+		str.Append(String::IntToString(currentConfig->tvq_bitrate));
 		out->OutputLine(str);
 
 		str = "PreselectionCandidates=";
-		str.Append(SMOOTHString::IntToString(currentConfig->tvq_presel_candidates));
+		str.Append(String::IntToString(currentConfig->tvq_presel_candidates));
 		out->OutputLine(str);
 	}
 
@@ -1122,34 +1118,29 @@ SMOOTHBool bonkEnc::KillProc()
 	return true;
 }
 
-SMOOTHVoid bonkEnc::PaintProc()
+Void bonkEnc::DrawProc()
 {
 	if (mainWnd->GetObjectProperties()->size.cx == currentConfig->wndSize.cx && mainWnd->GetObjectProperties()->size.cy == currentConfig->wndSize.cy) return;
 
 	currentConfig->wndSize = mainWnd->GetObjectProperties()->size;
 
-	SMOOTHInt	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
+	Int	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
 
-	edb_filename->SetMetrics(edb_filename->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 28 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
-	edb_encoder->SetMetrics(edb_encoder->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
-	edb_outdir->SetMetrics(edb_outdir->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 28 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
+	edb_filename->SetMetrics(edb_filename->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 28 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
+	edb_encoder->SetMetrics(edb_encoder->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
+	edb_outdir->SetMetrics(edb_outdir->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 28 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
 
-	progress->SetMetrics(progress->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 29 - maxTextLength, progress->GetObjectProperties()->size.cy));
+	progress->SetMetrics(progress->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 29 - maxTextLength, progress->GetObjectProperties()->size.cy));
 
-	joblist->SetMetrics(joblist->GetObjectProperties()->pos, SMOOTHSize(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 221));
+	joblist->SetMetrics(joblist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 221));
 }
 
-SMOOTHVoid bonkEnc::Exit()
+Void bonkEnc::About()
 {
-	SMOOTH::CloseWindow(mainWnd);
+	SMOOTH::MessageBox(String("BonkEnc v0.9\nCopyright (C) 2001-2003 Robert Kausch\n\n").Append(currentConfig->i18n->TranslateString("This program is being distributed under the terms")).Append("\n").Append(currentConfig->i18n->TranslateString("of the GNU General Public License (GPL).")), currentConfig->i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
-SMOOTHVoid bonkEnc::About()
-{
-	SMOOTH::MessageBox(SMOOTHString("BonkEnc v0.8\nCopyright (C) 2001-2002 Robert Kausch\n\n").Append(currentConfig->i18n->TranslateString("This program is being distributed under the terms")).Append("\n").Append(currentConfig->i18n->TranslateString("of the GNU General Public License (GPL).")), currentConfig->i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
-}
-
-SMOOTHVoid bonkEnc::ConfigureEncoder()
+Void bonkEnc::ConfigureEncoder()
 {
 	if (encoding)
 	{
@@ -1212,7 +1203,7 @@ SMOOTHVoid bonkEnc::ConfigureEncoder()
 	}
 }
 
-SMOOTHVoid bonkEnc::ConfigureGeneral()
+Void bonkEnc::ConfigureGeneral()
 {
 	if (encoding)
 	{
@@ -1245,7 +1236,7 @@ SMOOTHVoid bonkEnc::ConfigureGeneral()
 	edb_outdir->SetText(currentConfig->enc_outdir);
 }
 
-SMOOTHVoid bonkEnc::Encode()
+Void bonkEnc::Encode()
 {
 	if (encoding) return;
 
@@ -1258,7 +1249,7 @@ SMOOTHVoid bonkEnc::Encode()
 		encoder_thread = NIL;
 	}
 
-	encoder_thread = new SMOOTHThread(SMOOTHThreadProc(bonkEnc, this, Encoder));
+	encoder_thread = new Thread(ThreadProc(bonkEnc, this, Encoder));
 
 	encoding = true;
 
@@ -1268,11 +1259,11 @@ SMOOTHVoid bonkEnc::Encode()
 	encoder_thread->Start();
 }
 
-SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
+Void bonkEnc::Encoder(Thread *thread)
 {
-	SMOOTHString	 in_filename;
-	SMOOTHString	 out_filename;
-	SMOOTHInt	 activedrive = currentConfig->cdrip_activedrive;
+	String		 in_filename;
+	String		 out_filename;
+	Int		 activedrive = currentConfig->cdrip_activedrive;
 	bonkTrackInfo	*trackInfo;
 
 	for (int i = 0; i < sa_joblist.GetNOfEntries(); i++)
@@ -1290,10 +1281,10 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 			edb_time->SetText("00:00");
 		}
 
-		SMOOTHString	 compString;
-		SMOOTHInt	 trackNumber = -1;
-		SMOOTHInt	 audiodrive = -1;
-		SMOOTHBool	 cdTrack = SMOOTH::False;
+		String	 compString;
+		Int	 trackNumber = -1;
+		Int	 audiodrive = -1;
+		Bool	 cdTrack = False;
 
 		out_filename.Copy(currentConfig->enc_outdir);
 
@@ -1304,11 +1295,11 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 
 			if (!trackInfo->cdText)
 			{
-				out_filename.Append("cd").Append(SMOOTHString::IntToString(audiodrive)).Append("track");
+				out_filename.Append("cd").Append(String::IntToString(audiodrive)).Append("track");
 
 				if (trackNumber < 10) out_filename.Append("0");
 
-				out_filename.Append(SMOOTHString::IntToString(trackNumber));
+				out_filename.Append(String::IntToString(trackNumber));
 			}
 			else
 			{
@@ -1327,7 +1318,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 				out_filename.Append(trackInfo->artist).Append(" - ").Append(trackInfo->title);
 			}
 
-			cdTrack = SMOOTH::True;
+			cdTrack = True;
 		}
 		else
 		{
@@ -1364,7 +1355,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		if (trackInfo->outfile != NIL) out_filename = trackInfo->outfile;
 
 		IOLibDriver	*d_zero = NIL;
-		SMOOTHInStream	*f_in;
+		InStream	*f_in;
 		InputFilter	*filter_in = NIL;
 		bonkFormatInfo	 format;
 
@@ -1373,7 +1364,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 			currentConfig->cdrip_activedrive = audiodrive;
 
 			d_zero = new IOLibDriverZero();
-			f_in = new SMOOTHInStream(STREAM_DRIVER, d_zero);
+			f_in = new InStream(STREAM_DRIVER, d_zero);
 			filter_in = new FilterInCDRip(currentConfig);
 
 			((FilterInCDRip *) filter_in)->SetTrack(trackNumber);
@@ -1382,14 +1373,14 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		}
 		else
 		{
-			SMOOTHString	 extension;
+			String	 extension;
 
 			extension[0] = in_filename[in_filename.Length() - 4];
 			extension[1] = in_filename[in_filename.Length() - 3];
 			extension[2] = in_filename[in_filename.Length() - 2];
 			extension[3] = in_filename[in_filename.Length() - 1];
 
-			f_in = new SMOOTHInStream(STREAM_FILE, in_filename);
+			f_in = new InStream(STREAM_FILE, in_filename);
 
 			if (extension == ".mp3" || extension == ".MP3")
 			{
@@ -1440,7 +1431,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		format = filter_in->GetAudioFormat();
 		format.trackInfo = trackInfo;
 
-		SMOOTHOutStream	*f_out	= new SMOOTHOutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
+		OutStream	*f_out	= new OutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
 
 		int	 startticks;
 		int	 ticks;
@@ -1495,7 +1486,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 						{
 							lastpercent = (int) (position * 100.0 / format.length);
 
-							edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
+							edb_percent->SetText(String::IntToString(lastpercent).Append("%"));
 						}
 
 						ticks = clock() - startticks;
@@ -1506,17 +1497,17 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 						{
 							lastticks = ticks;
 
-							SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
-							SMOOTHString	 txt = "0";
+							String	 buf = String::IntToString(ticks / 60);
+							String	 txt = "0";
 
 							if (buf.Length() == 1)	txt.Append(buf);
 							else			txt.Copy(buf);
 
 							txt.Append(":");
 
-							buf = SMOOTHString::IntToString(ticks % 60);
+							buf = String::IntToString(ticks % 60);
 
-							if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
+							if (buf.Length() == 1)	txt.Append(String("0").Append(buf));
 							else			txt.Append(buf);
 
 							edb_time->SetText(txt);
@@ -1552,7 +1543,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 						{
 							lastpercent = (int) (position * 100.0 / f_in->Size());
 
-							edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
+							edb_percent->SetText(String::IntToString(lastpercent).Append("%"));
 						}
 
 						ticks = clock() - startticks;
@@ -1563,17 +1554,17 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 						{
 							lastticks = ticks;
 
-							SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
-							SMOOTHString	 txt = "0";
+							String	 buf = String::IntToString(ticks / 60);
+							String	 txt = "0";
 
 							if (buf.Length() == 1)	txt.Append(buf);
 							else			txt.Copy(buf);
 
 							txt.Append(":");
 
-							buf = SMOOTHString::IntToString(ticks % 60);
+							buf = String::IntToString(ticks % 60);
 
-							if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
+							if (buf.Length() == 1)	txt.Append(String("0").Append(buf));
 							else			txt.Append(buf);
 
 							edb_time->SetText(txt);
@@ -1618,7 +1609,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 	ClearList();
 }
 
-SMOOTHVoid bonkEnc::StopEncoding()
+Void bonkEnc::StopEncoding()
 {
 	if (!encoding) return;
 
@@ -1637,7 +1628,7 @@ SMOOTHVoid bonkEnc::StopEncoding()
 	edb_time->SetText("00:00");
 }
 
-SMOOTHVoid bonkEnc::ReadCD()
+Void bonkEnc::ReadCD()
 {
 	if (encoding)
 	{
@@ -1646,10 +1637,10 @@ SMOOTHVoid bonkEnc::ReadCD()
 		return;
 	}
 
-	SMOOTHArray<bonkTrackInfo *>	*cdInfo = GetCDDBData();
+	Array<bonkTrackInfo *>	*cdInfo = GetCDDBData();
 
-	SMOOTHInt	 numTocEntries;
-	SMOOTHString	 file = SMOOTH::StartDirectory;
+	Int	 numTocEntries;
+	String	 file = SMOOTH::StartDirectory;
 
 	file.Append("BonkEnc.ini");
 
@@ -1673,14 +1664,14 @@ SMOOTHVoid bonkEnc::ReadCD()
 		{
 			if (cdInfo != NIL)
 			{
-				sa_joblist.AddEntry(SMOOTHString(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), joblist->AddEntry(SMOOTHString(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), NULLPROC));
+				sa_joblist.AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), joblist->AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), NULLPROC));
 
 				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
 				trackInfo->track	= entry.btTrackNumber;
 				trackInfo->drive	= currentConfig->cdrip_activedrive;
 				trackInfo->outfile	= NIL;
-				trackInfo->cdText	= SMOOTH::True;
+				trackInfo->cdText	= True;
 				trackInfo->artist	= cdInfo->GetEntry(0)->artist;
 				trackInfo->title	= cdInfo->GetEntry(entry.btTrackNumber)->title;
 				trackInfo->album	= cdInfo->GetEntry(0)->album;
@@ -1695,37 +1686,37 @@ SMOOTHVoid bonkEnc::ReadCD()
 
 				GetSystemTime(&systime);
 
-				sa_joblist.AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), joblist->AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), NULLPROC));
+				sa_joblist.AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), joblist->AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), NULLPROC));
 
 				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
 				trackInfo->track	= entry.btTrackNumber;
 				trackInfo->drive	= currentConfig->cdrip_activedrive;
 				trackInfo->outfile	= NIL;
-				trackInfo->cdText	= SMOOTH::True;
+				trackInfo->cdText	= True;
 				trackInfo->artist	= cdText.GetEntry(0);
 				trackInfo->title	= cdText.GetEntry(entry.btTrackNumber);
 				trackInfo->album	= cdText.GetEntry(100);
 				trackInfo->genre	= "Pop";
-				trackInfo->year		= SMOOTHString::IntToString(systime.wYear);
+				trackInfo->year		= String::IntToString(systime.wYear);
 
 				sa_trackinfo.AddEntry(trackInfo);
 			}
 			else
 			{
-				sa_joblist.AddEntry(SMOOTHString("Audio CD ").Append(SMOOTHString::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(SMOOTHString::IntToString(entry.btTrackNumber)), joblist->AddEntry(SMOOTHString("Audio CD ").Append(SMOOTHString::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(SMOOTHString::IntToString(entry.btTrackNumber)), NULLPROC));
+				sa_joblist.AddEntry(String("Audio CD ").Append(String::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(String::IntToString(entry.btTrackNumber)), joblist->AddEntry(String("Audio CD ").Append(String::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(String::IntToString(entry.btTrackNumber)), NULLPROC));
 
 				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
 				trackInfo->track	= entry.btTrackNumber;
 				trackInfo->drive	= currentConfig->cdrip_activedrive;
 				trackInfo->outfile	= NIL;
-				trackInfo->cdText	= SMOOTH::False;
+				trackInfo->cdText	= False;
 
 				sa_trackinfo.AddEntry(trackInfo);
 			}
 
-			txt_joblist->SetText(SMOOTHString::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
+			txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
 		}
 	}
 
@@ -1741,17 +1732,17 @@ SMOOTHVoid bonkEnc::ReadCD()
 	}
 }
 
-SMOOTHArray<bonkTrackInfo *> *bonkEnc::GetCDDBData()
+Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 {
 	if (!currentConfig->enable_cddb) return NIL;
 
 	bonkEncCDDB	 cddb(currentConfig);
-	SMOOTHString	 result;
-	SMOOTHString	 read = NIL;
+	String		 result;
+	String		 read = NIL;
 
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
-	SMOOTHString	 discid = cddb.GetDiscIDString();
+	String		 discid = cddb.GetDiscIDString();
 
 	if (discid == "ffffffff" || discid == "00000000") return false; // no disc in drive or read error
 
@@ -1778,11 +1769,11 @@ SMOOTHArray<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 		if (result == "fuzzy") dlg->AddEntry(currentConfig->i18n->TranslateString("none"), "");
 
-		SMOOTHInt index = dlg->ShowDialog();
+		Int index = dlg->ShowDialog();
 
 		if (index < cddb.GetNOfMatches() && index >= 0)
 		{
-			read = SMOOTHString(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthID(index));
+			read = String(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthID(index));
 		}
 
 		delete dlg;
@@ -1796,14 +1787,14 @@ SMOOTHArray<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 		read = result;
 	}
 
-	SMOOTHArray<bonkTrackInfo *>	*array = NIL;
+	Array<bonkTrackInfo *>	*array = NIL;
 
 	if (read != NIL)
 	{
-		SMOOTHString	 result = cddb.Read(read);
-		SMOOTHString	 cLine;
+		String	 result = cddb.Read(read);
+		String	 cLine;
 
-		array = new SMOOTHArray<bonkTrackInfo *>;
+		array = new Array<bonkTrackInfo *>;
 
 		for (int j = 0; j < result.Length();)
 		{
@@ -1845,7 +1836,7 @@ SMOOTHArray<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 			else if (!cLine.CompareN("TTITLE", 6))
 			{
 				bonkTrackInfo	*info = new bonkTrackInfo;
-				SMOOTHString	 track;
+				String		 track;
 				int		 k;
 
 				for (k = 6; k >= 0; k++)
@@ -1865,16 +1856,16 @@ SMOOTHArray<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 	cddb.CloseConnection();
 
-	mainWnd_statusbar->SetText("BonkEnc v0.8 - Copyright (C) 2001-2002 Robert Kausch");
+	mainWnd_statusbar->SetText("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
 
 	return array;
 }
 
-SMOOTHBool bonkEnc::SetLanguage(SMOOTHString newLanguage)
+Bool bonkEnc::SetLanguage(String newLanguage)
 {
 	currentConfig->i18n->ActivateLanguage(currentConfig->language);
 
-	txt_joblist->SetText(SMOOTHString::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
+	txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
 
 	enc_filename->Hide();
 	enc_time->Hide();
@@ -1898,24 +1889,24 @@ SMOOTHBool bonkEnc::SetLanguage(SMOOTHString newLanguage)
 	enc_progress->SetText(currentConfig->i18n->TranslateString("File progress:"));
 	enc_outdir->SetText(currentConfig->i18n->TranslateString("Output dir.:"));
 
-	SMOOTHInt	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
+	Int	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
 
-	enc_progress->SetPosition(SMOOTHPoint(maxTextLength + 7 - enc_progress->GetObjectProperties()->textSize.cx, enc_progress->GetObjectProperties()->pos.y));
-	enc_outdir->SetPosition(SMOOTHPoint(maxTextLength + 7 - enc_outdir->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->pos.y));
-	enc_filename->SetPosition(SMOOTHPoint(maxTextLength + 7 - enc_filename->GetObjectProperties()->textSize.cx, enc_filename->GetObjectProperties()->pos.y));
-	enc_time->SetPosition(SMOOTHPoint(maxTextLength + 7 - enc_time->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->pos.y));
-	enc_percent->SetPosition(SMOOTHPoint(maxTextLength + 56, enc_percent->GetObjectProperties()->pos.y));
-	enc_encoder->SetPosition(SMOOTHPoint(maxTextLength + 104 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
+	enc_progress->SetPosition(Point(maxTextLength + 7 - enc_progress->GetObjectProperties()->textSize.cx, enc_progress->GetObjectProperties()->pos.y));
+	enc_outdir->SetPosition(Point(maxTextLength + 7 - enc_outdir->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->pos.y));
+	enc_filename->SetPosition(Point(maxTextLength + 7 - enc_filename->GetObjectProperties()->textSize.cx, enc_filename->GetObjectProperties()->pos.y));
+	enc_time->SetPosition(Point(maxTextLength + 7 - enc_time->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->pos.y));
+	enc_percent->SetPosition(Point(maxTextLength + 56, enc_percent->GetObjectProperties()->pos.y));
+	enc_encoder->SetPosition(Point(maxTextLength + 104 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
 
 	edb_filename->SetText(currentConfig->i18n->TranslateString("none"));
 
-	edb_filename->SetMetrics(SMOOTHPoint(maxTextLength + 15, edb_filename->GetObjectProperties()->pos.y), SMOOTHSize(currentConfig->wndSize.cx - 28 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
-	edb_time->SetMetrics(SMOOTHPoint(maxTextLength + 15, edb_time->GetObjectProperties()->pos.y), SMOOTHSize(34, edb_time->GetObjectProperties()->size.cy));
-	edb_percent->SetMetrics(SMOOTHPoint(maxTextLength + 64 + enc_percent->GetObjectProperties()->textSize.cx, edb_percent->GetObjectProperties()->pos.y), SMOOTHSize(33, edb_percent->GetObjectProperties()->size.cy));
-	edb_encoder->SetMetrics(SMOOTHPoint(maxTextLength + 112 + enc_percent->GetObjectProperties()->textSize.cx + enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->pos.y), SMOOTHSize(currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
-	edb_outdir->SetMetrics(SMOOTHPoint(maxTextLength + 15, edb_outdir->GetObjectProperties()->pos.y), SMOOTHSize(currentConfig->wndSize.cx - 28 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
+	edb_filename->SetMetrics(Point(maxTextLength + 15, edb_filename->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 28 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
+	edb_time->SetMetrics(Point(maxTextLength + 15, edb_time->GetObjectProperties()->pos.y), Size(34, edb_time->GetObjectProperties()->size.cy));
+	edb_percent->SetMetrics(Point(maxTextLength + 64 + enc_percent->GetObjectProperties()->textSize.cx, edb_percent->GetObjectProperties()->pos.y), Size(33, edb_percent->GetObjectProperties()->size.cy));
+	edb_encoder->SetMetrics(Point(maxTextLength + 112 + enc_percent->GetObjectProperties()->textSize.cx + enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
+	edb_outdir->SetMetrics(Point(maxTextLength + 15, edb_outdir->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 28 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
 
-	progress->SetMetrics(SMOOTHPoint(maxTextLength + 15, progress->GetObjectProperties()->pos.y), SMOOTHSize(currentConfig->wndSize.cx - 29 - maxTextLength, progress->GetObjectProperties()->size.cy));
+	progress->SetMetrics(Point(maxTextLength + 15, progress->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 29 - maxTextLength, progress->GetObjectProperties()->size.cy));
  
 	enc_filename->Show();
 	enc_time->Show();
@@ -1943,46 +1934,46 @@ SMOOTHBool bonkEnc::SetLanguage(SMOOTHString newLanguage)
 	mainWnd_iconbar->Clear();
 
 	menu_file->AddEntry(currentConfig->i18n->TranslateString("Add"), NIL, NULLPROC, menu_addsubmenu);
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Remove"), NIL, SMOOTHProc(bonkEnc, this, RemoveFile));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Remove"), NIL, Proc(bonkEnc, this, RemoveFile));
 	menu_file->AddEntry();
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Clear joblist"), NIL, SMOOTHProc(bonkEnc, this, ClearList));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Clear joblist"), NIL, Proc(bonkEnc, this, ClearList));
 	menu_file->AddEntry();
-	menu_file->AddEntry(currentConfig->i18n->TranslateString("Exit"), NIL, SMOOTHProc(bonkEnc, this, Exit));
+	menu_file->AddEntry(currentConfig->i18n->TranslateString("Exit"), NIL, Proc(Window, mainWnd, Close));
 
-	menu_options->AddEntry(currentConfig->i18n->TranslateString("General settings..."), NIL, SMOOTHProc(bonkEnc, this, ConfigureGeneral));
-	menu_options->AddEntry(currentConfig->i18n->TranslateString("Configure selected encoder..."), NIL, SMOOTHProc(bonkEnc, this, ConfigureEncoder));
+	menu_options->AddEntry(currentConfig->i18n->TranslateString("General settings..."), NIL, Proc(bonkEnc, this, ConfigureGeneral));
+	menu_options->AddEntry(currentConfig->i18n->TranslateString("Configure selected encoder..."), NIL, Proc(bonkEnc, this, ConfigureEncoder));
 
-	menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio file(s)..."), NIL, SMOOTHProc(bonkEnc, this, AddFile));
+	menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio file(s)..."), NIL, Proc(bonkEnc, this, AddFile));
 
 	if (currentConfig->enable_cdrip)
 	{
-		menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio CD contents"), NIL, SMOOTHProc(bonkEnc, this, ReadCD));
+		menu_addsubmenu->AddEntry(currentConfig->i18n->TranslateString("Audio CD contents"), NIL, Proc(bonkEnc, this, ReadCD));
 	}
 
-	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Start encoding"), NIL, SMOOTHProc(bonkEnc, this, Encode));
-	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Stop encoding"), NIL, SMOOTHProc(bonkEnc, this, StopEncoding));
+	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Start encoding"), NIL, Proc(bonkEnc, this, Encode));
+	menu_encode->AddEntry(currentConfig->i18n->TranslateString("Stop encoding"), NIL, Proc(bonkEnc, this, StopEncoding));
 
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("File"), NIL, NULLPROC, menu_file);
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("Options"), NIL, NULLPROC, menu_options);
 	mainWnd_menubar->AddEntry(currentConfig->i18n->TranslateString("Encode"), NIL, NULLPROC, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-	mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), SMOOTHProc(bonkEnc, this, About), NIL, NIL, NIL, 0, OR_RIGHT)->SetStatusText(currentConfig->i18n->TranslateString("Display information about BonkEnc"));
+	mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), Proc(bonkEnc, this, About), NIL, NIL, NIL, 0, OR_RIGHT)->SetStatusText(currentConfig->i18n->TranslateString("Display information about BonkEnc"));
 
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL), SMOOTHProc(bonkEnc, this, AddFile))->SetStatusText(currentConfig->i18n->TranslateString("Add audio file(s) to the joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL), Proc(bonkEnc, this, AddFile))->SetStatusText(currentConfig->i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), SMOOTHProc(bonkEnc, this, ReadCD))->SetStatusText(currentConfig->i18n->TranslateString("Add audio CD contents to the joblist"));
+		mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), Proc(bonkEnc, this, ReadCD))->SetStatusText(currentConfig->i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), SMOOTHProc(bonkEnc, this, RemoveFile))->SetStatusText(currentConfig->i18n->TranslateString("Remove the selected entry from the joblist"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL), SMOOTHProc(bonkEnc, this, ClearList))->SetStatusText(currentConfig->i18n->TranslateString("Clear the entire joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 2, NIL), Proc(bonkEnc, this, RemoveFile))->SetStatusText(currentConfig->i18n->TranslateString("Remove the selected entry from the joblist"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL), Proc(bonkEnc, this, ClearList))->SetStatusText(currentConfig->i18n->TranslateString("Clear the entire joblist"));
 	mainWnd_iconbar->AddEntry();
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL), SMOOTHProc(bonkEnc, this, ConfigureGeneral))->SetStatusText(currentConfig->i18n->TranslateString("Configure general settings"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL), SMOOTHProc(bonkEnc, this, ConfigureEncoder))->SetStatusText(currentConfig->i18n->TranslateString("Configure the selected audio encoder"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 4, NIL), Proc(bonkEnc, this, ConfigureGeneral))->SetStatusText(currentConfig->i18n->TranslateString("Configure general settings"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 5, NIL), Proc(bonkEnc, this, ConfigureEncoder))->SetStatusText(currentConfig->i18n->TranslateString("Configure the selected audio encoder"));
 	mainWnd_iconbar->AddEntry();
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), SMOOTHProc(bonkEnc, this, Encode))->SetStatusText(currentConfig->i18n->TranslateString("Start the encoding process"));
-	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL), SMOOTHProc(bonkEnc, this, StopEncoding))->SetStatusText(currentConfig->i18n->TranslateString("Stop encoding"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 7, NIL), Proc(bonkEnc, this, Encode))->SetStatusText(currentConfig->i18n->TranslateString("Start the encoding process"));
+	mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 8, NIL), Proc(bonkEnc, this, StopEncoding))->SetStatusText(currentConfig->i18n->TranslateString("Stop encoding"));
 
 	mainWnd_menubar->Show();
 	mainWnd_iconbar->Show();

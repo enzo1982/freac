@@ -1,5 +1,5 @@
- /* BonkEnc version 0.8
-  * Copyright (C) 2001-2002 Robert Kausch <robert.kausch@gmx.net>
+ /* BonkEnc version 0.9
+  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,51 +11,51 @@
 #ifndef _H_VORBISCONFIG_
 #define _H_VORBISCONFIG_
 
-#include <smoothx.h>
+#include <smooth.h>
 #include <main.h>
 
-class configureVorbisEnc : public SMOOTHApplication
+using namespace smooth;
+
+class configureVorbisEnc : public Application
 {
 	private:
-		SMOOTHGroupBox		*group_mode;
-		SMOOTHGroupBox		*group_mode2;
-		SMOOTHOptionBox		*option_mode_vbr;
-		SMOOTHOptionBox		*option_mode_abr;
-		SMOOTHSlider		*slider_quality;
-		SMOOTHText		*text_quality;
-		SMOOTHText		*text_quality_value;
-		SMOOTHSlider		*slider_abr;
-		SMOOTHText		*text_abr;
-		SMOOTHEditBox		*edit_abr;
-		SMOOTHText		*text_abr_kbps;
+		GroupBox	*group_mode;
+		GroupBox	*group_mode2;
+		OptionBox	*option_mode_vbr;
+		OptionBox	*option_mode_abr;
+		Slider		*slider_quality;
+		Text		*text_quality;
+		Text		*text_quality_value;
+		Slider		*slider_abr;
+		Text		*text_abr;
+		EditBox		*edit_abr;
+		Text		*text_abr_kbps;
 
-		SMOOTHDivisionbar	*divbar;
+		Divider		*divbar;
 
-		SMOOTHWindow		*mainWnd;
-		SMOOTHTitlebar		*mainWnd_titlebar;
-		SMOOTHLayer		*mainWnd_layer;
-		SMOOTHLayer		*mainWnd_layer_vbr;
-		SMOOTHLayer		*mainWnd_layer_abr;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
+		Layer		*mainWnd_layer_vbr;
+		Layer		*mainWnd_layer_abr;
 
-		SMOOTHButton		*btn_cancel;
-		SMOOTHButton		*btn_ok;
+		Button		*btn_cancel;
+		Button		*btn_ok;
 
-		SMOOTHInt		 quality;
-		SMOOTHInt		 abr;
-		SMOOTHInt		 mode;
+		Int		 quality;
+		Int		 abr;
+		Int		 mode;
 
-		bonkEncConfig		*currentConfig;
+		bonkEncConfig	*currentConfig;
 
-		SMOOTHVoid		 OK();
-		SMOOTHVoid		 Cancel();
-		SMOOTHVoid		 SetMode();
-		SMOOTHVoid		 SetQuality();
-		SMOOTHVoid		 SetBitrate();
-		SMOOTHVoid		 SetBitrateByEditBox();
+		Void		 OK();
+		Void		 SetMode();
+		Void		 SetQuality();
+		Void		 SetBitrate();
+		Void		 SetBitrateByEditBox();
 	public:
-					 configureVorbisEnc(bonkEncConfig *);
-					~configureVorbisEnc();
-		SMOOTHInt		 ShowDialog();
+				 configureVorbisEnc(bonkEncConfig *);
+				~configureVorbisEnc();
+		Int		 ShowDialog();
 };
 
 #endif
