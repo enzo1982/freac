@@ -188,13 +188,20 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 		if (fuzzy) currentConfig->appMain->cddbInfo->revision = -1;
 
+		Bool	 parseAgain = False;
+
 		for (Int j = 0; j < result.Length();)
 		{
-			for (Int i = 0; i >= 0; i++, j++)
+			if (!parseAgain)
 			{
-				if (result[j] == '\n' || result[j] == 0)	{ cLine[i] = 0; j++; break; }
-				else						cLine[i] = result[j];
+				for (Int i = 0; i >= 0; i++, j++)
+				{
+					if (result[j] == '\n' || result[j] == 0)	{ cLine[i] = 0; j++; break; }
+					else						cLine[i] = result[j];
+				}
 			}
+
+			parseAgain = False;
 
 			if (cLine.CompareN("DTITLE", 6) == 0)
 			{
@@ -325,6 +332,13 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 					}
 
 					for (Int l = firstDigit; l < cLine.Length(); l++) offset[l - firstDigit] = cLine[l];
+
+					if (offset.ToInt() == 0)
+					{
+						parseAgain = True;
+
+						break;
+					}
 
 					currentConfig->appMain->cddbInfo->offsets.AddEntry(offset.ToInt());
 				}

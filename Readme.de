@@ -1,4 +1,4 @@
-BonkEnc Version 1.0 beta 2
+BonkEnc Version 1.0 beta 3
 
 BonkEnc ist ein Codierer für verschiedene Audioformate.
 Es kann MP3, Ogg Vorbis, BONK, AAC und VQF Dateien erzeugen.
@@ -7,6 +7,11 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 
 Geschichte
 ----------
+
+	Version 1.0 beta 3 CVS (Februar 2004)
+
+		- Ein ernster Fehler in der CDDB Implementierung wurde behoben
+		- Einige andere Fehler wurden behoben
 
 	Version 1.0 beta 2 (Februar 2004)
 
@@ -127,14 +132,14 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP, Windows 95/98/SE/ME
+	- Windows NT/2000/XP/2003, Windows 95/98/SE/ME
 	- Ein 200MHz Prozessor oder besser, um BONK Dateien abzuspielen
 	- Winamp wird benötigt um BONK Dateien unter Windows abzuspielen
 	- Zum CD-Rippen werden korrekt installierte ASPI-Treiber benötigt
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
-		- MinGW v1.x (http://www.mingw.org/) oder MSVC v6.0
+		- MinGW v1.x oder v3.2+ (http://www.mingw.org/) oder MSVC v6.0
 		- smooth v0.8.64.0 CVS (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - bei smooth dabei)
 

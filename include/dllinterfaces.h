@@ -28,26 +28,27 @@
 #include <twinvq/twinvq.h>
 #include <twinvq/tvqenc.h>
 #include <winamp/in2.h>
+#include <id3.h>
 
 // CDRip DLL API
 
-	typedef CDEX_ERR			(CCONV *CR_INIT)				(LPCSTR);
-	typedef CDEX_ERR			(CCONV *CR_DEINIT)				();
-	typedef LONG				(CCONV *CR_GETNUMCDROM)				();
-	typedef LONG				(CCONV *CR_GETACTIVECDROM)			();
-	typedef void				(CCONV *CR_SETACTIVECDROM)			(LONG);
-	typedef CDEX_ERR			(CCONV *CR_GETCDROMPARAMETERS)			(CDROMPARAMS *);
-	typedef CDEX_ERR			(CCONV *CR_SETCDROMPARAMETERS)			(CDROMPARAMS *);
-	typedef CDEX_ERR			(CCONV *CR_OPENRIPPER)				(LONG *, LONG, LONG);
-	typedef CDEX_ERR			(CCONV *CR_CLOSERIPPER)				();
-	typedef CDEX_ERR			(CCONV *CR_RIPCHUNK)				(BYTE *, LONG *, BOOL &);
-	typedef CDEX_ERR			(CCONV *CR_READTOC)				();
-	typedef LONG				(CCONV *CR_GETNUMTOCENTRIES)			();
-	typedef TOCENTRY			(CCONV *CR_GETTOCENTRY)				(LONG);
-	typedef void				(CCONV *CR_LOCKCD)				(BOOL);
-	typedef void				(CCONV *CR_SETTRANSPORTLAYER)			(int);
-	typedef CDEX_ERR			(CCONV *CR_READCDTEXT)				(BYTE *, int, LPINT);
-	typedef CDEX_ERR			(CCONV *CR_SAVESETTINGS)			();
+	typedef CDEX_ERR			(*CR_INIT)					(LPCSTR);
+	typedef CDEX_ERR			(*CR_DEINIT)					();
+	typedef LONG				(*CR_GETNUMCDROM)				();
+	typedef LONG				(*CR_GETACTIVECDROM)				();
+	typedef void				(*CR_SETACTIVECDROM)				(LONG);
+	typedef CDEX_ERR			(*CR_GETCDROMPARAMETERS)			(CDROMPARAMS *);
+	typedef CDEX_ERR			(*CR_SETCDROMPARAMETERS)			(CDROMPARAMS *);
+	typedef CDEX_ERR			(*CR_OPENRIPPER)				(LONG *, LONG, LONG);
+	typedef CDEX_ERR			(*CR_CLOSERIPPER)				();
+	typedef CDEX_ERR			(*CR_RIPCHUNK)					(BYTE *, LONG *, BOOL &);
+	typedef CDEX_ERR			(*CR_READTOC)					();
+	typedef LONG				(*CR_GETNUMTOCENTRIES)				();
+	typedef TOCENTRY			(*CR_GETTOCENTRY)				(LONG);
+	typedef void				(*CR_LOCKCD)					(BOOL);
+	typedef void				(*CR_SETTRANSPORTLAYER)				(int);
+	typedef CDEX_ERR			(*CR_READCDTEXT)				(BYTE *, int, LPINT);
+	typedef CDEX_ERR			(*CR_SAVESETTINGS)				();
 
 	extern CR_INIT				 ex_CR_Init;
 	extern CR_DEINIT			 ex_CR_DeInit;
@@ -311,20 +312,20 @@
 
 // eUpdate DLL API
 
-	typedef S::Void *			(*EUCREATEUPDATECONTEXT)	(const char *);
-	typedef S::Int				(*EUFREEUPDATECONTEXT)		(S::Void *);
-	typedef S::Int				(*EUCHECKFORUPDATES)		(S::Void *, const char *);
-	typedef char *				(*EUGETLATESTVERSIONID)		(S::Void *);
-	typedef char *				(*EUGETLATESTPOSSIBLEUPDATEID)	(S::Void *, char *);
-	typedef S::Int				(*EUGETNUMBEROFVERSIONS)	(S::Void *);
-	typedef char *				(*EUGETNTHVERSIONID)		(S::Void *, S::Int);
-	typedef char *				(*EUGETNTHVERSIONDESCRIPTION)	(S::Void *, S::Int);
-	typedef S::Int				(*EUGETNUMBEROFOPTIONS)		(S::Void *);
-	typedef char				(*EUGETNTHOPTIONID)		(S::Void *, S::Int);
-	typedef char				(*EUGETNTHOPTIONDESCRIPTION)	(S::Void *, S::Int);
-	typedef S::Int				(*EUDOWNLOADVERSION)		(S::Void *, const char *, const char *);
-	typedef S::Int				(*EUDOWNLOADOPTION)		(S::Void *, const char *, const char *);
-	typedef S::Void				(*EUPERFORMUPDATE)		(S::Void *);
+	typedef S::Void *			(*EUCREATEUPDATECONTEXT)			(const char *);
+	typedef S::Int				(*EUFREEUPDATECONTEXT)				(S::Void *);
+	typedef S::Int				(*EUCHECKFORUPDATES)				(S::Void *, const char *);
+	typedef char *				(*EUGETLATESTVERSIONID)				(S::Void *);
+	typedef char *				(*EUGETLATESTPOSSIBLEUPDATEID)			(S::Void *, char *);
+	typedef S::Int				(*EUGETNUMBEROFVERSIONS)			(S::Void *);
+	typedef char *				(*EUGETNTHVERSIONID)				(S::Void *, S::Int);
+	typedef char *				(*EUGETNTHVERSIONDESCRIPTION)			(S::Void *, S::Int);
+	typedef S::Int				(*EUGETNUMBEROFOPTIONS)				(S::Void *);
+	typedef char				(*EUGETNTHOPTIONID)				(S::Void *, S::Int);
+	typedef char				(*EUGETNTHOPTIONDESCRIPTION)			(S::Void *, S::Int);
+	typedef S::Int				(*EUDOWNLOADVERSION)				(S::Void *, const char *, const char *);
+	typedef S::Int				(*EUDOWNLOADOPTION)				(S::Void *, const char *, const char *);
+	typedef S::Void				(*EUPERFORMUPDATE)				(S::Void *);
 
 	extern EUCREATEUPDATECONTEXT		 ex_eUpdate_CreateUpdateContext;
 	extern EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext;
@@ -340,6 +341,44 @@
 	extern EUDOWNLOADVERSION		 ex_eUpdate_DownloadVersion;
 	extern EUDOWNLOADOPTION			 ex_eUpdate_DownloadOption;
 	extern EUPERFORMUPDATE			 ex_eUpdate_PerformUpdate;
+
+// ID3Lib DLL API
+
+	typedef ID3Tag *			(*ID3TAGNEW)					();
+	typedef void				(*ID3TAGDELETE)					(ID3Tag *);
+	typedef void				(*ID3TAGSETPADDING)				(ID3Tag *, bool);
+	typedef void				(*ID3TAGADDFRAME)				(ID3Tag *, const ID3Frame *);
+	typedef size_t				(*ID3TAGLINK)					(ID3Tag *, const char *);
+	typedef size_t				(*ID3TAGNUMFRAMES)				(ID3Tag *);
+	typedef ID3Frame *			(*ID3TAGFINDFRAMEWITHID)			(const ID3Tag *, ID3_FrameID);
+	typedef size_t				(*ID3TAGPARSEBUFFER)				(ID3Tag *tag, const uchar *buffer, size_t bytes);
+	typedef size_t				(*ID3TAGRENDER)					(const ID3Tag *, uchar *, ID3_TagType);
+	typedef ID3Frame *			(*ID3FRAMENEWID)				(ID3_FrameID);
+	typedef void				(*ID3FRAMEDELETE)				(ID3Frame *);
+	typedef ID3Field *			(*ID3FRAMEGETFIELD)				(const ID3Frame *, ID3_FieldID);
+	typedef uint32				(*ID3FIELDGETINT)				(const ID3Field *);
+	typedef size_t				(*ID3FIELDGETUNICODE)				(const ID3Field *, unicode_t *, size_t);
+	typedef bool				(*ID3FIELDSETENCODING)				(ID3Field *, ID3_TextEnc);
+	typedef void				(*ID3FIELDSETASCII)				(ID3Field *, const char *);
+	typedef size_t				(*ID3FIELDGETASCII)				(const ID3Field *, char *, size_t);
+
+	extern ID3TAGNEW			 ex_ID3Tag_New;
+	extern ID3TAGDELETE			 ex_ID3Tag_Delete;
+	extern ID3TAGSETPADDING			 ex_ID3Tag_SetPadding;
+	extern ID3TAGADDFRAME			 ex_ID3Tag_AddFrame;
+	extern ID3TAGLINK			 ex_ID3Tag_Link;
+	extern ID3TAGNUMFRAMES			 ex_ID3Tag_NumFrames;
+	extern ID3TAGFINDFRAMEWITHID		 ex_ID3Tag_FindFrameWithID;
+	extern ID3TAGPARSEBUFFER		 ex_ID3Tag_ParseBuffer;
+	extern ID3TAGRENDER			 ex_ID3Tag_Render;
+	extern ID3FRAMENEWID			 ex_ID3Frame_NewID;
+	extern ID3FRAMEDELETE			 ex_ID3Frame_Delete;
+	extern ID3FRAMEGETFIELD			 ex_ID3Frame_GetField;
+	extern ID3FIELDGETINT			 ex_ID3Field_GetINT;
+	extern ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE;
+	extern ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding;
+	extern ID3FIELDSETASCII			 ex_ID3Field_SetASCII;
+	extern ID3FIELDGETASCII			 ex_ID3Field_GetASCII;
 
 // Winamp Plugin DLL API
 

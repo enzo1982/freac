@@ -136,158 +136,163 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 
 	ex_lame_decode_exit();
 
-	ID3_Tag	*tag = new ID3_Tag(inFile);
-
-	if (tag->NumFrames() > 0)
+	if (currentConfig->enable_id3)
 	{
-		ID3_Frame	*frame;
-		ID3_Field	*field;
-		int		 tbufsize = 1024;
-		char		*abuffer = new char [tbufsize];
-		wchar_t		*wbuffer = new wchar_t [tbufsize];
+		ID3Tag	*tag = ex_ID3Tag_New();
 
-		nFormat->trackInfo->track = -1;
-		nFormat->trackInfo->outfile = NIL;
-		nFormat->trackInfo->hasText = True;
+		ex_ID3Tag_Link(tag, inFile);
 
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
+		if (ex_ID3Tag_NumFrames(tag) > 0)
+		{
+			ID3Frame	*frame;
+			ID3Field	*field;
+			int		 tbufsize = 1024;
+			char		*abuffer = new char [tbufsize];
+			wchar_t		*wbuffer = new wchar_t [tbufsize];
 
-		if ((frame = tag->Find(ID3FID_LEADARTIST)) != NIL)
-			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
-				if (field->Get() == ID3TE_ASCII)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
+			nFormat->trackInfo->track = -1;
+			nFormat->trackInfo->outfile = NIL;
+			nFormat->trackInfo->hasText = True;
 
-					nFormat->trackInfo->artist.ImportFrom("UTF-8", abuffer);
-				}
-				else if (field->Get() == ID3TE_UNICODE)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) wbuffer, tbufsize);
+			ZeroMemory(abuffer, tbufsize);
+			ZeroMemory(wbuffer, 2 * tbufsize);
 
-					nFormat->trackInfo->artist = wbuffer;
-				}
-
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
-
-		if ((frame = tag->Find(ID3FID_TITLE)) != NIL)
-			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
-				if (field->Get() == ID3TE_ASCII)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
-
-					nFormat->trackInfo->title.ImportFrom("UTF-8", abuffer);
-				}
-				else if (field->Get() == ID3TE_UNICODE)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) wbuffer, tbufsize);
-
-					nFormat->trackInfo->title = wbuffer;
-				}
-
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
-
-		if ((frame = tag->Find(ID3FID_ALBUM)) != NIL)
-			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
-				if (field->Get() == ID3TE_ASCII)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
-
-					nFormat->trackInfo->album.ImportFrom("UTF-8", abuffer);
-				}
-				else if (field->Get() == ID3TE_UNICODE)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) wbuffer, tbufsize);
-
-					nFormat->trackInfo->album = wbuffer;
-				}
-
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
-
-		if ((frame = tag->Find(ID3FID_CONTENTTYPE)) != NIL)
-			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
-				if (field->Get() == ID3TE_ASCII)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
-
-					int startByte = 0;
-
-					if (abuffer[0] == '(')
+			if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_LEADARTIST)) != NIL)
+				if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+					if (ex_ID3Field_GetINT(field) == ID3TE_ASCII)
 					{
-						for (int i = 0; i < tbufsize; i++)
-						{
-							startByte++;
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-							if (abuffer[i] == ')') break;
-						}
+						nFormat->trackInfo->artist.ImportFrom("UTF-8", abuffer);
+					}
+					else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
+
+						nFormat->trackInfo->artist = wbuffer;
 					}
 
-					if ((abuffer + startByte)[0] != 0)	nFormat->trackInfo->genre.ImportFrom("UTF-8", abuffer + startByte);
-					else if (startByte > 0)			nFormat->trackInfo->genre = GetID3CategoryName(String(abuffer + 1).ToInt());
-				}
-				else if (field->Get() == ID3TE_UNICODE)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) wbuffer, tbufsize);
+			ZeroMemory(abuffer, tbufsize);
+			ZeroMemory(wbuffer, 2 * tbufsize);
 
-					int startByte = 0;
-
-					if (wbuffer[0] == '(')
+			if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_TITLE)) != NIL)
+				if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+					if (ex_ID3Field_GetINT(field) == ID3TE_ASCII)
 					{
-						for (int i = 0; i < tbufsize; i++)
-						{
-							startByte++;
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-							if (wbuffer[i] == ')') break;
-						}
+						nFormat->trackInfo->title.ImportFrom("UTF-8", abuffer);
+					}
+					else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
+
+						nFormat->trackInfo->title = wbuffer;
 					}
 
-					nFormat->trackInfo->genre = wbuffer;
-				}
+			ZeroMemory(abuffer, tbufsize);
+			ZeroMemory(wbuffer, 2 * tbufsize);
 
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
+			if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_ALBUM)) != NIL)
+				if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+					if (ex_ID3Field_GetINT(field) == ID3TE_ASCII)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-		if ((frame = tag->Find(ID3FID_YEAR)) != NIL)
-			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
-				if (field->Get() == ID3TE_ASCII)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
+						nFormat->trackInfo->album.ImportFrom("UTF-8", abuffer);
+					}
+					else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->trackInfo->year = String(abuffer).ToInt();
-				}
-				else if (field->Get() == ID3TE_UNICODE)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) wbuffer, tbufsize);
+						nFormat->trackInfo->album = wbuffer;
+					}
 
-					nFormat->trackInfo->year = String(wbuffer).ToInt();
-				}
+			ZeroMemory(abuffer, tbufsize);
+			ZeroMemory(wbuffer, 2 * tbufsize);
 
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
+			if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_CONTENTTYPE)) != NIL)
+				if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+					if (ex_ID3Field_GetINT(field) == ID3TE_ASCII)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-		if ((frame = tag->Find(ID3FID_TRACKNUM)) != NIL)
-			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
-				if (field->Get() == ID3TE_ASCII)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
+						int startByte = 0;
 
-					nFormat->trackInfo->track = String(abuffer).ToInt();
-				}
-				else if (field->Get() == ID3TE_UNICODE)
-				{
-					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) wbuffer, tbufsize);
+						if (abuffer[0] == '(')
+						{
+							for (int i = 0; i < tbufsize; i++)
+							{
+								startByte++;
 
-					nFormat->trackInfo->track = String(wbuffer).ToInt();
-				}
+								if (abuffer[i] == ')') break;
+							}
+						}
 
-		delete [] abuffer;
-		delete [] wbuffer;
+						if ((abuffer + startByte)[0] != 0)	nFormat->trackInfo->genre.ImportFrom("UTF-8", abuffer + startByte);
+						else if (startByte > 0)			nFormat->trackInfo->genre = GetID3CategoryName(String(abuffer + 1).ToInt());
+					}
+					else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
+
+						int startByte = 0;
+
+						if (wbuffer[0] == '(')
+						{
+							for (int i = 0; i < tbufsize; i++)
+							{
+								startByte++;
+
+								if (wbuffer[i] == ')') break;
+							}
+						}
+
+						nFormat->trackInfo->genre = wbuffer;
+					}
+
+			ZeroMemory(abuffer, tbufsize);
+			ZeroMemory(wbuffer, 2 * tbufsize);
+
+			if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_YEAR)) != NIL)
+				if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+					if (ex_ID3Field_GetINT(field) == ID3TE_ASCII)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
+
+						nFormat->trackInfo->year = String(abuffer).ToInt();
+					}
+					else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
+
+						nFormat->trackInfo->year = String(wbuffer).ToInt();
+					}
+
+			ZeroMemory(abuffer, tbufsize);
+			ZeroMemory(wbuffer, 2 * tbufsize);
+
+			if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_TRACKNUM)) != NIL)
+				if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+					if (ex_ID3Field_GetINT(field) == ID3TE_ASCII)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
+
+						nFormat->trackInfo->track = String(abuffer).ToInt();
+					}
+					else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
+					{
+						if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
+
+						nFormat->trackInfo->track = String(wbuffer).ToInt();
+					}
+
+			delete [] abuffer;
+			delete [] wbuffer;
+		}
+
+		ex_ID3Tag_Delete(tag);
 	}
-
-	delete tag;
 
 	return nFormat;
 }

@@ -38,115 +38,115 @@ bool FilterOutBONK::Activate()
 {
 	d_out	= new OutStream(STREAM_DRIVER, driver);
 
-	if (format->trackInfo->hasText && currentConfig->enable_tags)
+	if (format->trackInfo->hasText && currentConfig->enable_tags && currentConfig->enable_id3)
 	{
-		ID3_Tag		*tag = new ID3_Tag();
+		ID3Tag		*tag = ex_ID3Tag_New();
 
-		tag->SetPadding(false);
+		ex_ID3Tag_SetPadding(tag, false);
 
-		ID3_Frame	*artist = new ID3_Frame(ID3FID_LEADARTIST);
+		ID3Frame	*artist = ex_ID3Frame_NewID(ID3FID_LEADARTIST);
 
 		if (format->trackInfo->artist != NIL)
 		{
 			if (String::IsUnicode(format->trackInfo->artist))
 			{
-				artist->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
-				artist->Field(ID3FN_TEXT).Set((char *) format->trackInfo->artist.ConvertTo("UTF-8"));
+				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(artist, ID3FN_TEXT), ID3TE_UTF8);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (char *) format->trackInfo->artist.ConvertTo("UTF-8"));
 			}
 			else
 			{
-				artist->Field(ID3FN_TEXT).Set((char *) format->trackInfo->artist);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (char *) format->trackInfo->artist);
 			}
 
-			tag->AddFrame(artist);
+			ex_ID3Tag_AddFrame(tag, artist);
 		}
 
-		ID3_Frame	*title = new ID3_Frame(ID3FID_TITLE);
+		ID3Frame	*title = ex_ID3Frame_NewID(ID3FID_TITLE);
 
 		if (format->trackInfo->title != NIL)
 		{
 			if (String::IsUnicode(format->trackInfo->title))
 			{
-				title->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
-				title->Field(ID3FN_TEXT).Set((char *) format->trackInfo->title.ConvertTo("UTF-8"));
+				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(title, ID3FN_TEXT), ID3TE_UTF8);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), (char *) format->trackInfo->title.ConvertTo("UTF-8"));
 			}
 			else
 			{
-				title->Field(ID3FN_TEXT).Set((char *) format->trackInfo->title);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), (char *) format->trackInfo->title);
 			}
 
-			tag->AddFrame(title);
+			ex_ID3Tag_AddFrame(tag, title);
 		}
 
-		ID3_Frame	*album = new ID3_Frame(ID3FID_ALBUM);
+		ID3Frame	*album = ex_ID3Frame_NewID(ID3FID_ALBUM);
 
 		if (format->trackInfo->album != NIL)
 		{
 			if (String::IsUnicode(format->trackInfo->album))
 			{
-				album->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
-				album->Field(ID3FN_TEXT).Set((char *) format->trackInfo->album.ConvertTo("UTF-8"));
+				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(album, ID3FN_TEXT), ID3TE_UTF8);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), (char *) format->trackInfo->album.ConvertTo("UTF-8"));
 			}
 			else
 			{
-				album->Field(ID3FN_TEXT).Set((char *) format->trackInfo->album);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), (char *) format->trackInfo->album);
 			}
 
-			tag->AddFrame(album);
+			ex_ID3Tag_AddFrame(tag, album);
 		}
 
-		ID3_Frame	*track = new ID3_Frame(ID3FID_TRACKNUM);
+		ID3Frame	*track = ex_ID3Frame_NewID(ID3FID_TRACKNUM);
 
 		if (format->trackInfo->track > 0)
 		{
-			if (format->trackInfo->track < 10)	track->Field(ID3FN_TEXT).Set((char *) String("0").Append(String::FromInt(format->trackInfo->track)));
-			else					track->Field(ID3FN_TEXT).Set((char *) String::FromInt(format->trackInfo->track));
+			if (format->trackInfo->track < 10)	ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), (char *) String("0").Append(String::FromInt(format->trackInfo->track)));
+			else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), (char *) String::FromInt(format->trackInfo->track));
 
-			tag->AddFrame(track);
+			ex_ID3Tag_AddFrame(tag, track);
 		}
 
-		ID3_Frame	*year = new ID3_Frame(ID3FID_YEAR);
+		ID3Frame	*year = ex_ID3Frame_NewID(ID3FID_YEAR);
 
 		if (format->trackInfo->year > 0)
 		{
-			year->Field(ID3FN_TEXT).Set((char *) String::FromInt(format->trackInfo->year));
+			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(year, ID3FN_TEXT), (char *) String::FromInt(format->trackInfo->year));
 
-			tag->AddFrame(year);
+			ex_ID3Tag_AddFrame(tag, year);
 		}
 
-		ID3_Frame	*genre = new ID3_Frame(ID3FID_CONTENTTYPE);
+		ID3Frame	*genre = ex_ID3Frame_NewID(ID3FID_CONTENTTYPE);
 
 		if (format->trackInfo->genre != NIL)
 		{
 			if (String::IsUnicode(format->trackInfo->genre))
 			{
-				genre->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
-				genre->Field(ID3FN_TEXT).Set((char *) format->trackInfo->genre.ConvertTo("UTF-8"));
+				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(genre, ID3FN_TEXT), ID3TE_UTF8);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (char *) format->trackInfo->genre.ConvertTo("UTF-8"));
 			}
 			else
 			{
-				genre->Field(ID3FN_TEXT).Set((char *) format->trackInfo->genre);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (char *) format->trackInfo->genre);
 			}
 
-			tag->AddFrame(genre);
+			ex_ID3Tag_AddFrame(tag, genre);
 		}
 
-		ID3_Frame	*comment = new ID3_Frame(ID3FID_COMMENT);
+		ID3Frame	*comment = ex_ID3Frame_NewID(ID3FID_COMMENT);
 
 		if (String::IsUnicode(currentConfig->default_comment))
 		{
-			comment->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
-			comment->Field(ID3FN_TEXT).Set((char *) currentConfig->default_comment.ConvertTo("UTF-8"));
+			ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(comment, ID3FN_TEXT), ID3TE_UTF8);
+			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (char *) currentConfig->default_comment.ConvertTo("UTF-8"));
 		}
 		else
 		{
-			comment->Field(ID3FN_TEXT).Set((char *) currentConfig->default_comment);
+			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (char *) currentConfig->default_comment);
 		}
 
-		tag->AddFrame(comment);
+		ex_ID3Tag_AddFrame(tag, comment);
 
 		unsigned char	*buffer = new unsigned char [32768];
-		int		 size = tag->Render(buffer);
+		int		 size = ex_ID3Tag_Render(tag, buffer, ID3TT_ID3V2);
 
 		d_out->OutputNumber(0, 1);
 		d_out->OutputNumber(32, 1);
@@ -156,14 +156,14 @@ bool FilterOutBONK::Activate()
 
 		delete [] buffer;
 
-		delete tag;
-		delete artist;
-		delete title;
-		delete album;
-		delete track;
-		delete year;
-		delete genre;
-		delete comment;
+		ex_ID3Tag_Delete(tag);
+		ex_ID3Frame_Delete(artist);
+		ex_ID3Frame_Delete(title);
+		ex_ID3Frame_Delete(album);
+		ex_ID3Frame_Delete(track);
+		ex_ID3Frame_Delete(year);
+		ex_ID3Frame_Delete(genre);
+		ex_ID3Frame_Delete(comment);
 	}
 
 	encoder	= ex_bonk_create_encoder(d_out,

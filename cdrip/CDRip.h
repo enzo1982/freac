@@ -24,10 +24,6 @@
 
 #pragma pack(push,4)
 
-#ifdef __WIN32__
-  #define CCONV
-#endif
-
 #undef DLLEXPORT
 
 #ifdef CDEX_DLL
@@ -232,133 +228,133 @@ struct TOCENTRY
 extern "C" {
 
 // Call init before anything else
-DLLEXPORT CDEX_ERR CCONV CR_Init(LPCSTR strIniFname);
+DLLEXPORT CDEX_ERR CR_Init(LPCSTR strIniFname);
 
 // Call DeIni when ripping library is no longer needed
-DLLEXPORT CDEX_ERR CCONV CR_DeInit();
+DLLEXPORT CDEX_ERR CR_DeInit();
 
 // Get the DLL version number
-DLLEXPORT LONG CCONV CR_GetCDRipVersion();
+DLLEXPORT LONG CR_GetCDRipVersion();
 
 // Get the number of detected CD-ROM drives
-DLLEXPORT LONG CCONV CR_GetNumCDROM();
+DLLEXPORT LONG CR_GetNumCDROM();
 
 // Get the active CDROM drive index (0..GetNumCDROM()-1 )
-DLLEXPORT LONG CCONV CR_GetActiveCDROM();
+DLLEXPORT LONG CR_GetActiveCDROM();
 
 // Get the active CDROM drive (0..GetNumCDROM()-1 )
-DLLEXPORT void CCONV CR_SetActiveCDROM(LONG nActiveDrive);
+DLLEXPORT void CR_SetActiveCDROM(LONG nActiveDrive);
 
 // Setlect the DRIVETYPE of the active drive
-DLLEXPORT CDEX_ERR CCONV CR_SelectCDROMType(DRIVETYPE cdType);
+DLLEXPORT CDEX_ERR CR_SelectCDROMType(DRIVETYPE cdType);
 
 // Get the Selected CDROM type
-DLLEXPORT DRIVETYPE CCONV CR_GetCDROMType();
+DLLEXPORT DRIVETYPE CR_GetCDROMType();
 
 // Get the CDROM parameters of the active drive
-DLLEXPORT CDEX_ERR CCONV CR_GetCDROMParameters(CDROMPARAMS *pParam);
+DLLEXPORT CDEX_ERR CR_GetCDROMParameters(CDROMPARAMS *pParam);
 
 // Set the CDROM parameters of the active drive
-DLLEXPORT CDEX_ERR CCONV CR_SetCDROMParameters(CDROMPARAMS *pParam);
+DLLEXPORT CDEX_ERR CR_SetCDROMParameters(CDROMPARAMS *pParam);
 
 // Start ripping section, output is fetched to WriteBufferFunc
 // Data is extracted from dwStartSector to dwEndSector
-DLLEXPORT CDEX_ERR CCONV CR_OpenRipper(LONG *plBufferSize, LONG dwStartSector, LONG dwEndSector);
+DLLEXPORT CDEX_ERR CR_OpenRipper(LONG *plBufferSize, LONG dwStartSector, LONG dwEndSector);
 
 // Close the ripper, has to be called when the ripping process is completed (i.e 100%)
 // Or it can be called to abort the current ripping section
-DLLEXPORT CDEX_ERR CCONV CR_CloseRipper();
+DLLEXPORT CDEX_ERR CR_CloseRipper();
 
 // Indicates how far the ripping process is right now
 // Returns 100% when the ripping is completed
-DLLEXPORT LONG CCONV CR_GetPercentCompleted();
+DLLEXPORT LONG CR_GetPercentCompleted();
 
 // Returns the peak value of the ripped section (0..2^15)
-DLLEXPORT LONG CCONV CR_GetPeakValue();
+DLLEXPORT LONG CR_GetPeakValue();
 
 // Get number of Jitter Errors that have occured during the ripping
 // This function must be called before CloseRipper is called !
-DLLEXPORT LONG CCONV CR_GetNumberOfJitterErrors();
+DLLEXPORT LONG CR_GetNumberOfJitterErrors();
 
 // Get the jitter position of the extracted track
-DLLEXPORT LONG CCONV CR_GetJitterPosition();
+DLLEXPORT LONG CR_GetJitterPosition();
 
 // Rip a chunk from the CD, pbtStream contains the ripped data, pNumBytes the
 // number of bytes that have been ripped and corrected for jitter (if enabled)
-DLLEXPORT CDEX_ERR CCONV CR_RipChunk(BYTE *pbtStream, LONG *pNumBytes, BOOL &bAbort);
+DLLEXPORT CDEX_ERR CR_RipChunk(BYTE *pbtStream, LONG *pNumBytes, BOOL &bAbort);
 
 // Load the CD-ROM settings from the file
-DLLEXPORT CDEX_ERR CCONV CR_LoadSettings();
+DLLEXPORT CDEX_ERR CR_LoadSettings();
 
 // Save the settings to a INI file
-DLLEXPORT CDEX_ERR CCONV CR_SaveSettings();
+DLLEXPORT CDEX_ERR CR_SaveSettings();
 
 // Normalize the stream (i.e. multiply by dScaleFactor)
-DLLEXPORT void CCONV CR_NormalizeChunk(SHORT *pbsStream, LONG nNumSamples, DOUBLE dScaleFactor);
+DLLEXPORT void CR_NormalizeChunk(SHORT *pbsStream, LONG nNumSamples, DOUBLE dScaleFactor);
 
 // Read the table of contents
-DLLEXPORT CDEX_ERR CCONV CR_ReadToc();
+DLLEXPORT CDEX_ERR CR_ReadToc();
 
 // Read CD Text entry
-DLLEXPORT CDEX_ERR CCONV CR_ReadCDText(BYTE *pbtBuffer, int nBufferSize, LPINT pnCDTextSize);
+DLLEXPORT CDEX_ERR CR_ReadCDText(BYTE *pbtBuffer, int nBufferSize, LPINT pnCDTextSize);
 
 // Get the number of TOC entries, including the lead out
-DLLEXPORT LONG CCONV CR_GetNumTocEntries();
+DLLEXPORT LONG CR_GetNumTocEntries();
 
 // Get the TOC entry
-DLLEXPORT TOCENTRY CCONV CR_GetTocEntry(LONG nTocEntry);
+DLLEXPORT TOCENTRY CR_GetTocEntry(LONG nTocEntry);
 
 // Checks if the unit is ready (i.e. is the CD media present)
-DLLEXPORT BOOL CCONV CR_IsUnitReady();
+DLLEXPORT BOOL CR_IsUnitReady();
 
 // Checks if the Media is loaded
-DLLEXPORT CDEX_ERR CCONV CR_IsMediaLoaded(CDMEDIASTATUS &IsMediaLoaded);
+DLLEXPORT CDEX_ERR CR_IsMediaLoaded(CDMEDIASTATUS &IsMediaLoaded);
 
 // Eject the CD, bEject=TRUE=> the CD will be ejected, bEject=FALSE=> the CD will be loaded
-DLLEXPORT BOOL CCONV CR_EjectCD(BOOL bEject);
+DLLEXPORT BOOL CR_EjectCD(BOOL bEject);
 
 // Check if the CD is playing
-DLLEXPORT BOOL CCONV CR_IsAudioPlaying();
+DLLEXPORT BOOL CR_IsAudioPlaying();
 
 // Play track
-DLLEXPORT CDEX_ERR CCONV CR_PlayTrack(int nTrack);
+DLLEXPORT CDEX_ERR CR_PlayTrack(int nTrack);
 
 // Stop Play track
-DLLEXPORT CDEX_ERR CCONV CR_StopPlayTrack();
+DLLEXPORT CDEX_ERR CR_StopPlayTrack();
 
 // Pause Play track
-DLLEXPORT CDEX_ERR CCONV CR_PauseCD(BOOL bPause);
+DLLEXPORT CDEX_ERR CR_PauseCD(BOOL bPause);
 
 // Get debug information
-DLLEXPORT CDSTATUSINFO CCONV CR_GetCDStatusInfo();
+DLLEXPORT CDSTATUSINFO CR_GetCDStatusInfo();
 
 // Lock/unlock the CD Tray
-DLLEXPORT void CCONV CR_LockCD(BOOL bLock);
+DLLEXPORT void CR_LockCD(BOOL bLock);
 
-DLLEXPORT void CCONV CR_GetSubChannelTrackInfo(int &nReadIndex, int &nReadTrack, DWORD &dwReadPos);
+DLLEXPORT void CR_GetSubChannelTrackInfo(int &nReadIndex, int &nReadTrack, DWORD &dwReadPos);
 
 // Get status of audio playing
-DLLEXPORT CDEX_ERR CCONV CR_GetPlayPosition(DWORD &dwRelPos, DWORD &dwAbsPos);
+DLLEXPORT CDEX_ERR CR_GetPlayPosition(DWORD &dwRelPos, DWORD &dwAbsPos);
 
 // Set the audio play position
-DLLEXPORT CDEX_ERR CCONV CR_SetPlayPosition(DWORD dwAbsPos);
+DLLEXPORT CDEX_ERR CR_SetPlayPosition(DWORD dwAbsPos);
 
-DLLEXPORT CDEX_ERR CCONV CR_PlaySection(LONG lStartSector, LONG lEndSector);
+DLLEXPORT CDEX_ERR CR_PlaySection(LONG lStartSector, LONG lEndSector);
 
-DLLEXPORT void CCONV CR_GetLastJitterErrorPosition(DWORD &dwStartSector, DWORD &dwEndSector);
+DLLEXPORT void CR_GetLastJitterErrorPosition(DWORD &dwStartSector, DWORD &dwEndSector);
 
-DLLEXPORT DWORD CCONV CR_GetCurrentRipSector();
+DLLEXPORT DWORD CR_GetCurrentRipSector();
 
 // Change transport layer, DLL has to be re-initialzed when changing the transport layer!
 // 0 = ASPI drivers
 // 1 = Native NT scsi drivers
 
-DLLEXPORT VOID CCONV CR_SetTransportLayer(int nTransportLayer);
-DLLEXPORT INT CCONV CR_GetTransportLayer();
+DLLEXPORT VOID CR_SetTransportLayer(int nTransportLayer);
+DLLEXPORT INT CR_GetTransportLayer();
 
-DLLEXPORT CDEX_ERR CCONV CR_ScanForC2Errors(DWORD dwStartSector, DWORD dwNumSectors, DWORD &dwErrors, DWORD *pdwErrorSectors);
+DLLEXPORT CDEX_ERR CR_ScanForC2Errors(DWORD dwStartSector, DWORD dwNumSectors, DWORD &dwErrors, DWORD *pdwErrorSectors);
 
-DLLEXPORT CDEX_ERR CCONV CR_GetDetailedDriveInfo(LPSTR lpszInfo, DWORD dwInfoSize);
+DLLEXPORT CDEX_ERR CR_GetDetailedDriveInfo(LPSTR lpszInfo, DWORD dwInfoSize);
 
 } // extern "C"
 

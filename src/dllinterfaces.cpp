@@ -155,6 +155,24 @@ EUDOWNLOADVERSION		 ex_eUpdate_DownloadVersion		= NIL;
 EUDOWNLOADOPTION		 ex_eUpdate_DownloadOption		= NIL;
 EUPERFORMUPDATE			 ex_eUpdate_PerformUpdate		= NIL;
 
+ID3TAGNEW			 ex_ID3Tag_New				= NIL;
+ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
+ID3TAGSETPADDING		 ex_ID3Tag_SetPadding			= NIL;
+ID3TAGADDFRAME			 ex_ID3Tag_AddFrame			= NIL;
+ID3TAGLINK			 ex_ID3Tag_Link				= NIL;
+ID3TAGNUMFRAMES			 ex_ID3Tag_NumFrames			= NIL;
+ID3TAGFINDFRAMEWITHID		 ex_ID3Tag_FindFrameWithID		= NIL;
+ID3TAGPARSEBUFFER		 ex_ID3Tag_ParseBuffer			= NIL;
+ID3TAGRENDER			 ex_ID3Tag_Render			= NIL;
+ID3FRAMENEWID			 ex_ID3Frame_NewID			= NIL;
+ID3FRAMEDELETE			 ex_ID3Frame_Delete			= NIL;
+ID3FRAMEGETFIELD		 ex_ID3Frame_GetField			= NIL;
+ID3FIELDGETINT			 ex_ID3Field_GetINT			= NIL;
+ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE			= NIL;
+ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding		= NIL;
+ID3FIELDSETASCII		 ex_ID3Field_SetASCII			= NIL;
+ID3FIELDGETASCII		 ex_ID3Field_GetASCII			= NIL;
+
 Array<HMODULE>		 winamp_plugins;
 Array<In_Module *>	 winamp_modules;
 
@@ -514,11 +532,52 @@ Void bonkEnc::FreeCDRipDLL()
 
 Bool bonkEnc::LoadID3DLL()
 {
+	id3dll = LoadLibraryA(GetApplicationDirectory().Append("id3lib.dll"));
+
+	if (id3dll == NIL) return false;
+
+	ex_ID3Tag_New			= (ID3TAGNEW) GetProcAddress(id3dll, "ID3Tag_New");
+	ex_ID3Tag_Delete		= (ID3TAGDELETE) GetProcAddress(id3dll, "ID3Tag_Delete");
+	ex_ID3Tag_SetPadding		= (ID3TAGSETPADDING) GetProcAddress(id3dll, "ID3Tag_SetPadding");
+	ex_ID3Tag_AddFrame		= (ID3TAGADDFRAME) GetProcAddress(id3dll, "ID3Tag_AddFrame");
+	ex_ID3Tag_Link			= (ID3TAGLINK) GetProcAddress(id3dll, "ID3Tag_Link");
+	ex_ID3Tag_NumFrames		= (ID3TAGNUMFRAMES) GetProcAddress(id3dll, "ID3Tag_NumFrames");
+	ex_ID3Tag_FindFrameWithID	= (ID3TAGFINDFRAMEWITHID) GetProcAddress(id3dll, "ID3Tag_FindFrameWithID");
+	ex_ID3Tag_ParseBuffer		= (ID3TAGPARSEBUFFER) GetProcAddress(id3dll, "ID3Tag_ParseBuffer");
+	ex_ID3Tag_Render		= (ID3TAGRENDER) GetProcAddress(id3dll, "ID3Tag_Render");
+	ex_ID3Frame_NewID		= (ID3FRAMENEWID) GetProcAddress(id3dll, "ID3Frame_NewID");
+	ex_ID3Frame_Delete		= (ID3FRAMEDELETE) GetProcAddress(id3dll, "ID3Frame_Delete");
+	ex_ID3Frame_GetField		= (ID3FRAMEGETFIELD) GetProcAddress(id3dll, "ID3Frame_GetField");
+	ex_ID3Field_GetINT		= (ID3FIELDGETINT) GetProcAddress(id3dll, "ID3Field_GetINT");
+	ex_ID3Field_GetUNICODE		= (ID3FIELDGETUNICODE) GetProcAddress(id3dll, "ID3Field_GetUNICODE");
+	ex_ID3Field_SetEncoding		= (ID3FIELDSETENCODING) GetProcAddress(id3dll, "ID3Field_SetEncoding");
+	ex_ID3Field_SetASCII		= (ID3FIELDSETASCII) GetProcAddress(id3dll, "ID3Field_SetASCII");
+	ex_ID3Field_GetASCII		= (ID3FIELDGETASCII) GetProcAddress(id3dll, "ID3Field_GetASCII");
+
+	if (ex_ID3Tag_New == NULL)		{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Tag_Delete == NULL)		{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Tag_SetPadding == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Tag_AddFrame == NULL)		{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Tag_Link == NULL)		{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Tag_NumFrames == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Tag_FindFrameWithID == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Tag_ParseBuffer == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Tag_Render == NULL)		{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Frame_NewID == NULL)		{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Frame_Delete == NULL)		{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Frame_GetField == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Field_GetINT == NULL)		{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Field_GetUNICODE == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Field_SetEncoding == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Field_SetASCII == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Field_GetASCII == NULL)	{ FreeLibrary(id3dll); return false; }
+
 	return true;
 }
 
 Void bonkEnc::FreeID3DLL()
 {
+	FreeLibrary(id3dll);
 }
 
 Bool bonkEnc::LoadEUpdateDLL()
