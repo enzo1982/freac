@@ -41,6 +41,9 @@ class bonkEncConfig
 
 		Bool		 showTitleInfo;
 
+		Bool		 showTips;
+		Int		 tipOffset;
+
 		Int		 encoder;
 		Bool		 enable_console;
 		Bool		 enable_bonk;

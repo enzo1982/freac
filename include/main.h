@@ -69,6 +69,7 @@ class bonkEncGUI : public bonkEnc
 		Void		 EncodeSpecific();
 		Menu		*GetTrackMenu(Int, Int);
 		Void		 ShowHelp();
+		Void		 ShowTipOfTheDay();
 
 		Bool		 SetLanguage(String);
 	public:

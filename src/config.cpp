@@ -101,6 +101,8 @@ Bool bonkEncConfig::LoadSettings()
 	tab_width_size = config->GetIntValue("Settings", "TabWidthSize", 80);
 	output_plugin = config->GetIntValue("Settings", "OutputPlugin", 0);
 	enable_tags = config->GetIntValue("Settings", "EnableTags", 1);
+	showTips = config->GetIntValue("Settings", "ShowTips", 1);
+	tipOffset = config->GetIntValue("Settings", "TipOffset", 0);
 	default_comment = config->GetStringValue("Settings", "DefaultComment", String("BonkEnc ").Append(bonkEnc::shortVersion).Append(" <http://www.bonkenc.org/>"));
 
 	cdrip_activedrive = config->GetIntValue("CDRip", "ActiveCDROM", 0);
@@ -216,6 +218,8 @@ Bool bonkEncConfig::SaveSettings()
 		config->SetIntValue("Settings", "TabWidthSize", tab_width_size);
 		config->SetIntValue("Settings", "OutputPlugin", output_plugin);
 		config->SetIntValue("Settings", "EnableTags", enable_tags);
+		config->SetIntValue("Settings", "ShowTips", showTips);
+		config->SetIntValue("Settings", "TipOffset", tipOffset);
 		config->SetStringValue("Settings", "DefaultComment", default_comment);
 
 		config->SetIntValue("CDRip", "ActiveCDROM", cdrip_activedrive);
