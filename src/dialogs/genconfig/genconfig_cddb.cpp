@@ -62,7 +62,7 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	pos.y += 3;
 
 	text_port	= new Text(bonkEnc::i18n->TranslateString("Port:"), pos);
-	text_port->SetPosition(Point(296 - text_port->GetObjectProperties()->textSize.cx, text_port->GetObjectProperties()->pos.y));
+	text_port->SetPosition(Point(296 - text_port->textSize.cx, text_port->pos.y));
 
 	pos.x	+= 29;
 	pos.y	-= 3;
@@ -114,11 +114,11 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 
 	SetCDDBMode();
 
-	Int	 maxTextSize = max(text_email->GetObjectProperties()->textSize.cx, max(text_mode->GetObjectProperties()->textSize.cx, text_server->GetObjectProperties()->textSize.cx));
+	Int	 maxTextSize = max(text_email->textSize.cx, max(text_mode->textSize.cx, text_server->textSize.cx));
 
-	combo_mode->SetMetrics(Point(maxTextSize + 24, combo_mode->GetObjectProperties()->pos.y), Size(317 - maxTextSize, combo_mode->GetObjectProperties()->size.cy));
-	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetObjectProperties()->pos.y), Size(265 - maxTextSize - text_port->GetObjectProperties()->textSize.cx, edit_server->GetObjectProperties()->size.cy));
-	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->GetObjectProperties()->pos.y), Size(317 - maxTextSize, edit_email->GetObjectProperties()->size.cy));
+	combo_mode->SetMetrics(Point(maxTextSize + 24, combo_mode->pos.y), Size(317 - maxTextSize, combo_mode->size.cy));
+	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->pos.y), Size(265 - maxTextSize - text_port->textSize.cx, edit_server->size.cy));
+	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->pos.y), Size(317 - maxTextSize, edit_email->size.cy));
 
 	RegisterObject(group_cddb);
 	RegisterObject(text_mode);

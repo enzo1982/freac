@@ -97,9 +97,9 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	text_genre	= new Text(bonkEnc::i18n->TranslateString("Genre").Append(":"), pos);
 
-	pos.x += (7 + (Int) Math::Max(text_artist->GetObjectProperties()->textSize.cx, Math::Max(text_album->GetObjectProperties()->textSize.cx, text_genre->GetObjectProperties()->textSize.cx)));
+	pos.x += (7 + (Int) Math::Max(text_artist->textSize.cx, Math::Max(text_album->textSize.cx, text_genre->textSize.cx)));
 	pos.y -= 59;
-	size.cx = 186 - (Int) Math::Max(text_artist->GetObjectProperties()->textSize.cx, Math::Max(text_album->GetObjectProperties()->textSize.cx, text_genre->GetObjectProperties()->textSize.cx));
+	size.cx = 186 - (Int) Math::Max(text_artist->textSize.cx, Math::Max(text_album->textSize.cx, text_genre->textSize.cx));
 	size.cy = 0;
 
 	edit_artist	= new EditBox("", pos, size, 0);
@@ -274,7 +274,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	pos.x = 226;
 
 	text_year	= new Text(bonkEnc::i18n->TranslateString("Year").Append(":"), pos);
-	text_year->SetMetrics(Point(249 - text_year->GetObjectProperties()->textSize.cx, text_year->GetObjectProperties()->pos.y), text_year->GetObjectProperties()->size);
+	text_year->SetMetrics(Point(249 - text_year->textSize.cx, text_year->pos.y), text_year->size);
 
 	pos.x = 256;
 	pos.y -= 3;
@@ -298,7 +298,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	text_track	= new Text(bonkEnc::i18n->TranslateString("Track").Append(":"), pos);
 
-	pos.x += (7 + text_track->GetObjectProperties()->textSize.cx);
+	pos.x += (7 + text_track->textSize.cx);
 	pos.y -= 3;
 	size.cx = 25;
 	size.cy = 0;
@@ -312,9 +312,9 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	text_title	= new Text(bonkEnc::i18n->TranslateString("Title").Append(":"), pos);
 
-	pos.x += (7 + text_title->GetObjectProperties()->textSize.cx);
+	pos.x += (7 + text_title->textSize.cx);
 	pos.y -= 3;
-	size.cx = 435 - text_title->GetObjectProperties()->textSize.cx - text_track->GetObjectProperties()->textSize.cx;
+	size.cx = 435 - text_title->textSize.cx - text_track->textSize.cx;
 
 	edit_title	= new EditBox("", pos, size, 0);
 	edit_title->onClick.Connect(&cddbSubmitDlg::UpdateTrack, this);
@@ -736,7 +736,7 @@ Void cddbSubmitDlg::SelectTrack()
 	if (track > 0 && track < 10)	edit_track->SetText(String("0").Append(String::FromInt(track)));
 	else if (track >= 10)		edit_track->SetText(String::FromInt(track));
 
-	edit_title->GetObjectProperties()->checked = True;
+//	edit_title->checked = True;
 	edit_title->Process(SM_LBUTTONDOWN, 0, 0);
 	edit_title->Process(WM_KEYDOWN, VK_END, 0);
 

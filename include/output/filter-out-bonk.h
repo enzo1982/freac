@@ -16,16 +16,18 @@
 class FilterOutBONK : public OutputFilter
 {
 	private:
-		void		*encoder;
-		OutStream	*d_out;
+		void			*encoder;
+		OutStream		*d_out;
+
+		Buffer<unsigned char>	 buffer;
 	public:
-				 FilterOutBONK(bonkEncConfig *, bonkEncTrack *);
-				~FilterOutBONK();
+					 FilterOutBONK(bonkEncConfig *, bonkEncTrack *);
+					~FilterOutBONK();
 
-		bool		 Activate();
-		bool		 Deactivate();
+		bool			 Activate();
+		bool			 Deactivate();
 
-		int		 WriteData(unsigned char *, int);
+		int			 WriteData(unsigned char *, int);
 };
 
 #endif

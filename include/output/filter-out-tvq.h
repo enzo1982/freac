@@ -18,17 +18,19 @@
 class FilterOutTVQ : public OutputFilter
 {
 	private:
-		bool			 setup;
-
 		headerInfo		 setupInfo;
 		encSpecificInfo		 encInfo;
 		INDEX			 index;
 
-		unsigned long		 samples_size;
-		unsigned long		 buffersize;
+		Buffer<unsigned char>	 outBuffer;
+		Buffer<signed short>	 samplesBuffer;
+		Buffer<float>		 frame;
 	public:
 					 FilterOutTVQ(bonkEncConfig *, bonkEncTrack *);
 					~FilterOutTVQ();
+
+		bool			 Activate();
+		bool			 Deactivate();
 
 		int			 WriteData(unsigned char *, int);
 };

@@ -113,6 +113,13 @@ configureFAAC::configureFAAC()
 	option_mp4		= new OptionBox("MP4", pos, size, &fileFormat, 1);
 	option_mp4->onClick.Connect(&configureFAAC::SetFileFormat, this);
 
+	if (!currentConfig->enable_mp4)
+	{
+		option_mp4->Deactivate();
+
+		fileFormat = 0;
+	}
+
 	pos.y += 25;
 
 	option_aac		= new OptionBox("AAC", pos, size, &fileFormat, 0);
@@ -131,17 +138,17 @@ configureFAAC::configureFAAC()
 	size.cy = 0;
 
 	check_id3v2		= new CheckBox(bonkEnc::i18n->TranslateString("Allow ID3V2 tags in AAC files"), pos, size, &allowID3);
-	check_id3v2->SetMetrics(check_id3v2->GetObjectProperties()->pos, Size(check_id3v2->GetObjectProperties()->textSize.cx + 20, check_id3v2->GetObjectProperties()->size.cy));
+	check_id3v2->SetMetrics(check_id3v2->pos, Size(check_id3v2->textSize.cx + 20, check_id3v2->size.cy));
 
 	pos.y += 25;
 
 	text_note		= new Text(bonkEnc::i18n->TranslateString("Note:"), pos);
 
-	pos.x += text_note->GetObjectProperties()->textSize.cx + 2;
+	pos.x += text_note->textSize.cx + 2;
 
 	text_id3v2		= new Text(bonkEnc::i18n->TranslateString("Some players may have problems playing AAC\nfiles with ID3 tags attached. Please use this option only\nif you are sure that your player can handle these tags."), pos);
 
-	group_id3v2->SetMetrics(group_id3v2->GetObjectProperties()->pos, Size(text_note->GetObjectProperties()->textSize.cx + text_id3v2->GetObjectProperties()->textSize.cx + 22, group_id3v2->GetObjectProperties()->size.cy));
+	group_id3v2->SetMetrics(group_id3v2->pos, Size(text_note->textSize.cx + text_id3v2->textSize.cx + 22, group_id3v2->size.cy));
 
 	layer_quality		= new Layer(bonkEnc::i18n->TranslateString("Quality"));
 
@@ -159,10 +166,10 @@ configureFAAC::configureFAAC()
 
 	option_bitrate		= new OptionBox(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos, size, &setQuality, 0);
 	option_bitrate->onClick.Connect(&configureFAAC::ToggleBitrateQuality, this);
-	option_bitrate->SetMetrics(option_bitrate->GetObjectProperties()->pos, Size(option_bitrate->GetObjectProperties()->textSize.cx + 19, option_bitrate->GetObjectProperties()->size.cy));
+	option_bitrate->SetMetrics(option_bitrate->pos, Size(option_bitrate->textSize.cx + 19, option_bitrate->size.cy));
 
-	pos.x += (option_bitrate->GetObjectProperties()->size.cx + 9);
-	size.cx = 227 - option_bitrate->GetObjectProperties()->size.cx;
+	pos.x += (option_bitrate->size.cx + 9);
+	size.cx = 227 - option_bitrate->size.cx;
 	size.cy = 0;
 
 	slider_bitrate		= new Slider(pos, size, OR_HORZ, &bitrate, 8, 256);
@@ -188,10 +195,10 @@ configureFAAC::configureFAAC()
 
 	option_quality		= new OptionBox(bonkEnc::i18n->TranslateString("Set quality:"), pos, size, &setQuality, 1);
 	option_quality->onClick.Connect(&configureFAAC::ToggleBitrateQuality, this);
-	option_quality->SetMetrics(option_quality->GetObjectProperties()->pos, Size(option_bitrate->GetObjectProperties()->textSize.cx + 19, option_quality->GetObjectProperties()->size.cy));
+	option_quality->SetMetrics(option_quality->pos, Size(option_bitrate->textSize.cx + 19, option_quality->size.cy));
 
-	pos.x += (option_quality->GetObjectProperties()->size.cx + 9);
-	size.cx = 227 - option_quality->GetObjectProperties()->size.cx;
+	pos.x += (option_quality->size.cx + 9);
+	size.cx = 227 - option_quality->size.cx;
 	size.cy = 0;
 
 	slider_quality		= new Slider(pos, size, OR_HORZ, &aacQuality, 10, 500);
@@ -250,9 +257,9 @@ configureFAAC::configureFAAC()
 
 	text_bandwidth		= new Text(bonkEnc::i18n->TranslateString("Maximum AAC frequency bandwidth to use (Hz):"), pos);
 
-	pos.x += (text_bandwidth->GetObjectProperties()->textSize.cx + 8);
+	pos.x += (text_bandwidth->textSize.cx + 8);
 	pos.y -= 3;
-	size.cx = 291 - text_bandwidth->GetObjectProperties()->textSize.cx;
+	size.cx = 291 - text_bandwidth->textSize.cx;
 	size.cy = 0;
 
 	edit_bandwidth		= new EditBox(String::FromInt(currentConfig->faac_bandwidth), pos, size, 5);
@@ -435,15 +442,23 @@ Void configureFAAC::SetQualityByEditBox()
 
 Void configureFAAC::SetFileFormat()
 {
-	if (fileFormat == 1)
+	if (fileFormat == 1)	// MP4 container
 	{
+		group_version->Deactivate();
+		option_version_mpeg2->Deactivate();
+		option_version_mpeg4->Deactivate();
+
 		group_id3v2->Deactivate();
 		check_id3v2->Deactivate();
 		text_id3v2->Deactivate();
 		text_note->Deactivate();
 	}
-	else
+	else			// raw AAC file format
 	{
+		group_version->Activate();
+		option_version_mpeg2->Activate();
+		option_version_mpeg4->Activate();
+
 		group_id3v2->Activate();
 		check_id3v2->Activate();
 		text_id3v2->Activate();

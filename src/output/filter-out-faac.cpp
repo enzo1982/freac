@@ -8,10 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib-cxx.h>
 #include <output/filter-out-faac.h>
 #include <dllinterfaces.h>
-#include <memory.h>
 
 FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
@@ -23,8 +21,21 @@ FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkEncTrack *format) : Outp
 
 		return;
 	}
+}
 
-	handle = ex_faacEncOpen(format->rate, format->channels, &samples_size, &buffersize);
+FilterOutFAAC::~FilterOutFAAC()
+{
+}
+
+bool FilterOutFAAC::Activate()
+{
+	unsigned long	 samplesSize	= 0;
+	unsigned long	 bufferSize	= 0;
+
+	handle = ex_faacEncOpen(format->rate, format->channels, &samplesSize, &bufferSize);
+
+	outBuffer.Resize(bufferSize);
+	samplesBuffer.Resize(samplesSize);
 
 	fConfig = ex_faacEncGetCurrentConfiguration(handle);
 
@@ -44,23 +55,14 @@ FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkEncTrack *format) : Outp
 
 	ex_faacEncSetConfiguration(handle, fConfig);
 
-	packageSize = samples_size * (format->bits / 8);
-}
+	packageSize = samplesSize * (format->bits / 8);
 
-FilterOutFAAC::~FilterOutFAAC()
-{
-}
-
-bool FilterOutFAAC::Activate()
-{
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3 && currentConfig->faac_enable_id3)
 	{
-		unsigned char	*buffer	= new unsigned char [32768];
-		Int		 size	= RenderID3V2Tag(buffer);
+		Buffer<unsigned char>	 id3Buffer(32768);
+		Int			 size = RenderID3V2Tag(id3Buffer);
 
-		driver->WriteData(buffer, size);
-
-		delete [] buffer;
+		driver->WriteData(id3Buffer, size);
 	}
 
 	return true;
@@ -68,43 +70,36 @@ bool FilterOutFAAC::Activate()
 
 bool FilterOutFAAC::Deactivate()
 {
+	unsigned long	 bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
+
+	driver->WriteData(outBuffer, bytes);
+
+	ex_faacEncClose(handle);
+
 	return true;
 }
 
 int FilterOutFAAC::WriteData(unsigned char *data, int size)
 {
-	int32_t		*samples = new int32_t [size / (format->bits / 8)];
-	unsigned char	*outbuffer = new unsigned char [buffersize];
-	unsigned long	 bytes;
+	unsigned long	 bytes = 0;
 
-	for (int i = 0; i < size / (format->bits / 8); i++)
+	if (format->bits != 16)
 	{
-		if (format->bits == 8)	((short *) samples)[i] = (data[i] - 128) * 256;
-		if (format->bits == 16)	((short *) samples)[i] = ((short *) data)[i];
-		if (format->bits == 24) samples[i] = data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0);
-		if (format->bits == 32)	((float *) samples)[i] = (1.0 / 65536) * ((int32_t *) data)[i];
+		for (int i = 0; i < size / (format->bits / 8); i++)
+		{
+			if (format->bits == 8)	((short *) (int32_t *) samplesBuffer)[i] = (data[i] - 128) * 256;
+			if (format->bits == 24) samplesBuffer[i] = data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0);
+			if (format->bits == 32)	((float *) (int32_t *) samplesBuffer)[i] = (1.0 / 65536) * ((int32_t *) data)[i];
+		}
+
+		bytes = ex_faacEncEncode(handle, samplesBuffer, size / (format->bits / 8), outBuffer, outBuffer.Size());
+	}
+	else
+	{
+		bytes = ex_faacEncEncode(handle, (int32_t *) data, size / (format->bits / 8), outBuffer, outBuffer.Size());
 	}
 
-	bytes = ex_faacEncEncode(handle, samples, samples_size, outbuffer, buffersize);
+	driver->WriteData(outBuffer, bytes);
 
-	driver->WriteData(outbuffer, bytes);
-
-	delete [] samples;
-
-	size = bytes;
-
-	if (lastPacket)
-	{
-		bytes = ex_faacEncEncode(handle, NULL, 0, outbuffer, buffersize);
-
-		driver->WriteData(outbuffer, bytes);
-
-		size += bytes;
-
-		ex_faacEncClose(handle);
-	}
-
-	delete [] outbuffer;
-
-	return size;
+	return bytes;
 }

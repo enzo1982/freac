@@ -8,9 +8,7 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib-cxx.h>
 #include <output/filter-out-wave.h>
-#include <main.h>
 
 FilterOutWAVE::FilterOutWAVE(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
@@ -24,8 +22,8 @@ FilterOutWAVE::~FilterOutWAVE()
 
 bool FilterOutWAVE::Activate()
 {
-	unsigned char	*buffer = new unsigned char [44];
-	OutStream	*out = new OutStream(STREAM_BUFFER, (void *) buffer, 44);
+	Buffer<unsigned char>	 buffer(44);
+	OutStream		*out = new OutStream(STREAM_BUFFER, buffer, 44);
 
 	out->OutputString("RIFF");
 	out->OutputNumber(format->length * (format->bits / 8) + 36, 4);
@@ -44,8 +42,6 @@ bool FilterOutWAVE::Activate()
 	delete out;
 
 	driver->WriteData(buffer, 44);
-
-	delete [] buffer;
 
 	return true;
 }

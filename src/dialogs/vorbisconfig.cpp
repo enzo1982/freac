@@ -72,9 +72,9 @@ configureVorbisEnc::configureVorbisEnc()
 
 	text_quality		= new Text(bonkEnc::i18n->TranslateString("Quality").Append(":"), pos);
 
-	pos.x += (text_quality->GetObjectProperties()->textSize.cx + 8);
+	pos.x += (text_quality->textSize.cx + 8);
 	pos.y -= 2;
-	size.cx = 283 - text_quality->GetObjectProperties()->textSize.cx;
+	size.cx = 283 - text_quality->textSize.cx;
 
 	slider_quality		= new Slider(pos, size, OR_HORZ, &quality, 0, 100);
 	slider_quality->onClick.Connect(&configureVorbisEnc::SetQuality, this);
@@ -88,9 +88,9 @@ configureVorbisEnc::configureVorbisEnc()
 
 	text_abr		= new Text(bonkEnc::i18n->TranslateString("Average Bitrate").Append(":"), pos);
 
-	pos.x += (text_abr->GetObjectProperties()->textSize.cx + 8);
+	pos.x += (text_abr->textSize.cx + 8);
 	pos.y -= 2;
-	size.cx = 248 - text_abr->GetObjectProperties()->textSize.cx;
+	size.cx = 248 - text_abr->textSize.cx;
 
 	slider_abr		= new Slider(pos, size, OR_HORZ, &abr, 45, 500);
 	slider_abr->onClick.Connect(&configureVorbisEnc::SetBitrate, this);

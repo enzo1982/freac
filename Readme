@@ -8,7 +8,7 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 3 CVS (November 2004)
+	Version 1.0 beta 3 CVS (December 2004)
 
 		- NT SCSI support is working again
 		- fixed some bugs in the CDDB implementation
@@ -25,12 +25,14 @@ History
 		- upgraded LAME to version 3.96
 		- upgraded FAAC to version 1.24.0
 		- upgraded Ogg Vorbis to version 1.1
+		- fixed TwinVQ encoder crashes
 		- added support for ID3V2 tags in AAC files
 		- added FAAD2 AAC decoder support
-		- added MP4 format support (decoder only)
+		- added MP4 format support
 		- upgraded to smooth v0.8.66.0
 		- added support for online program updates
 		- fixes for compiling with GCC 3.4
+		- speed optimizations for most encoders
 
 	Version 1.0 beta 2 (February 2004)
 

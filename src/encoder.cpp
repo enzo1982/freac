@@ -28,6 +28,7 @@
 #include <output/filter-out-bonk.h>
 #include <output/filter-out-faac.h>
 #include <output/filter-out-lame.h>
+#include <output/filter-out-mp4.h>
 #include <output/filter-out-vorbis.h>
 #include <output/filter-out-tvq.h>
 #include <output/filter-out-wave.h>
@@ -203,11 +204,17 @@ Int bonkEnc::Encoder(Thread *thread)
 		else if (currentConfig->encoder == ENCODER_BLADEENC)	out_filename.Append(".mp3");
 		else if (currentConfig->encoder == ENCODER_LAMEENC)	out_filename.Append(".mp3");
 		else if (currentConfig->encoder == ENCODER_VORBISENC)	out_filename.Append(".ogg");
-		else if (currentConfig->encoder == ENCODER_FAAC)	out_filename.Append(".aac");
 		else if (currentConfig->encoder == ENCODER_TVQ)		out_filename.Append(".vqf");
 		else if (currentConfig->encoder == ENCODER_WAVE)	out_filename.Append(".wav");
 
-		if (trackInfo->outfile != NIL) out_filename = trackInfo->outfile;
+		if (encoder == ENCODER_FAAC)
+		{
+			if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)	out_filename.Append(".mp4");
+			else									out_filename.Append(".aac");
+		}
+
+		if (trackInfo->outfile != NIL)	out_filename = trackInfo->outfile;
+		else				trackInfo->outfile = out_filename;
 
 		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE)
 		{
@@ -293,11 +300,25 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		if (encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(currentConfig, trackInfo);
 		if (encoder == ENCODER_BONKENC)		filter_out = new FilterOutBONK(currentConfig, trackInfo);
-		if (encoder == ENCODER_FAAC)		filter_out = new FilterOutFAAC(currentConfig, trackInfo);
 		if (encoder == ENCODER_TVQ)		filter_out = new FilterOutTVQ(currentConfig, trackInfo);
 		if (encoder == ENCODER_LAMEENC)		filter_out = new FilterOutLAME(currentConfig, trackInfo);
 		if (encoder == ENCODER_VORBISENC)	filter_out = new FilterOutVORBIS(currentConfig, trackInfo);
 		if (encoder == ENCODER_WAVE)		filter_out = new FilterOutWAVE(currentConfig, trackInfo);
+
+		if (encoder == ENCODER_FAAC)
+		{
+			if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)	filter_out = new FilterOutMP4(currentConfig, trackInfo);
+			else									filter_out = new FilterOutFAAC(currentConfig, trackInfo);
+
+			if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)
+			{
+				delete f_out;
+				delete driver_out;
+
+				driver_out = new IOLibDriverZero();
+				f_out = new OutStream(STREAM_DRIVER, driver_out);
+			}
+		}
 
 		debug_out->OutputLine("Creating output filter...done.");
 
@@ -322,12 +343,10 @@ Int bonkEnc::Encoder(Thread *thread)
 
 					for (Int i = 0; i < step; i++)
 					{
-						if ((loop == (n_loops - 1)) && (i == (step - 1))) filter_out->PrepareLastPacket();
-
 						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
 						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
-						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { filter_out->PrepareLastPacket(); step = i; break; }
+						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { step = i; break; }
 
 						f_out->OutputNumber(sample, int16(trackInfo->bits / 8));
 					}
@@ -386,7 +405,7 @@ Int bonkEnc::Encoder(Thread *thread)
 						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
 						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
-						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { filter_out->PrepareLastPacket(); step = i; break; }
+						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { step = i; break; }
 
 						if (sample != -1)	f_out->OutputNumber(sample, int16(trackInfo->bits / 8));
 						else			i--;
@@ -509,8 +528,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			frame.left	= realPos.x;
 			frame.top	= realPos.y;
-			frame.right	= realPos.x + joblist->GetObjectProperties()->size.cx - 1;
-			frame.bottom	= realPos.y + joblist->GetObjectProperties()->size.cy - 1;
+			frame.right	= realPos.x + joblist->size.cx - 1;
+			frame.bottom	= realPos.y + joblist->size.cy - 1;
 
 			surface->StartPaint(frame);
 

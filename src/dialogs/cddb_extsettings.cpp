@@ -76,10 +76,10 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 	http_edit_submit	= new EditBox(currentConfig->freedb_submit_path, pos, size, 0);
 
-	Int	 maxTextSize = max(http_text_query->GetObjectProperties()->textSize.cx, http_text_submit->GetObjectProperties()->textSize.cx);
+	Int	 maxTextSize = max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
 
-	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->GetObjectProperties()->pos.y), Size(285 - maxTextSize, http_edit_query->GetObjectProperties()->size.cy));
-	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->GetObjectProperties()->pos.y), Size(285 - maxTextSize, http_edit_submit->GetObjectProperties()->size.cy));
+	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->pos.y), Size(285 - maxTextSize, http_edit_query->size.cy));
+	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->pos.y), Size(285 - maxTextSize, http_edit_submit->size.cy));
 
 	pos.x = 7;
 	pos.y = 11;
@@ -121,7 +121,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.y += 3;
 
 	proxy_text_port		= new Text(bonkEnc::i18n->TranslateString("Port:"), pos);
-	proxy_text_port->SetPosition(Point(264 - proxy_text_port->GetObjectProperties()->textSize.cx, proxy_text_port->GetObjectProperties()->pos.y));
+	proxy_text_port->SetPosition(Point(264 - proxy_text_port->textSize.cx, proxy_text_port->pos.y));
 
 	pos.x += 46;
 	pos.y -= 3;
@@ -130,10 +130,10 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_edit_port		= new EditBox(String::FromInt(currentConfig->freedb_proxy_port), pos, size, 5);
 	proxy_edit_port->SetFlags(EDB_NUMERIC);
 
-	maxTextSize = max(proxy_text_mode->GetObjectProperties()->textSize.cx, proxy_text_server->GetObjectProperties()->textSize.cx);
+	maxTextSize = max(proxy_text_mode->textSize.cx, proxy_text_server->textSize.cx);
 
-	proxy_combo_mode->SetMetrics(Point(maxTextSize + 24, proxy_combo_mode->GetObjectProperties()->pos.y), Size(285 - maxTextSize, proxy_combo_mode->GetObjectProperties()->size.cy));
-	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->GetObjectProperties()->pos.y), Size(233 - maxTextSize - proxy_text_port->GetObjectProperties()->textSize.cx, proxy_edit_server->GetObjectProperties()->size.cy));
+	proxy_combo_mode->SetMetrics(Point(maxTextSize + 24, proxy_combo_mode->pos.y), Size(285 - maxTextSize, proxy_combo_mode->size.cy));
+	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->pos.y), Size(233 - maxTextSize - proxy_text_port->textSize.cx, proxy_edit_server->size.cy));
 
 	SetProxyMode();
 
@@ -165,10 +165,10 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	switch (tab)
 	{
 		case 0:
-			reg_register->SelectTab(register_layer_http->handle);
+			reg_register->SelectTab(register_layer_http->GetHandle());
 			break;
 		case 1:
-			reg_register->SelectTab(register_layer_proxy->handle);
+			reg_register->SelectTab(register_layer_proxy->GetHandle());
 			break;
 	}
 

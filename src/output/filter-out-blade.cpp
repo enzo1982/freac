@@ -8,10 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib-cxx.h>
 #include <output/filter-out-blade.h>
 #include <dllinterfaces.h>
-#include <memory.h>
 
 FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
@@ -50,10 +48,6 @@ FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkEncTrack *format) : Ou
 	beConfig.format.mp3.bCRC	= currentConfig->blade_crc;
 	beConfig.format.mp3.bOriginal	= currentConfig->blade_original;
 	beConfig.format.mp3.bPrivate	= currentConfig->blade_private;
-
-	ex_beInitStream(&beConfig, &samples_size, &buffersize, &handle);
-
-	packageSize = samples_size * (format->bits / 8);
 }
 
 FilterOutBLADE::~FilterOutBLADE()
@@ -62,14 +56,22 @@ FilterOutBLADE::~FilterOutBLADE()
 
 bool FilterOutBLADE::Activate()
 {
+	unsigned long	 bufferSize	= 0;
+	unsigned long	 samplesSize	= 0;
+
+	ex_beInitStream(&beConfig, &samplesSize, &bufferSize, &handle);
+
+	outBuffer.Resize(bufferSize);
+	samplesBuffer.Resize(samplesSize);
+
+	packageSize = samplesSize * (format->bits / 8);
+
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3)
 	{
-		unsigned char	*buffer	= new unsigned char [32768];
-		Int		 size	= RenderID3V2Tag(buffer);
+		Buffer<unsigned char>	 id3Buffer(32768);
+		Int			 size = RenderID3V2Tag(id3Buffer);
 
-		driver->WriteData(buffer, size);
-
-		delete [] buffer;
+		driver->WriteData(id3Buffer, size);
 	}
 
 	return true;
@@ -77,14 +79,11 @@ bool FilterOutBLADE::Activate()
 
 bool FilterOutBLADE::Deactivate()
 {
-	unsigned char	*outbuffer = new unsigned char [buffersize];
 	unsigned long	 bytes = 0;
 
-	ex_beDeinitStream(handle, outbuffer, &bytes);
+	ex_beDeinitStream(handle, outBuffer, &bytes);
 
-	driver->WriteData(outbuffer, bytes);
-
-	delete [] outbuffer;
+	driver->WriteData(outBuffer, bytes);
 
 	ex_beCloseStream(handle);
 
@@ -93,24 +92,25 @@ bool FilterOutBLADE::Deactivate()
 
 int FilterOutBLADE::WriteData(unsigned char *data, int size)
 {
-	signed short	*samples = new signed short [size / (format->bits / 8)];
-	unsigned char	*outbuffer = new unsigned char [buffersize];
 	unsigned long	 bytes = 0;
 
-	for (int i = 0; i < size / (format->bits / 8); i++)
+	if (format->bits != 16)
 	{
-		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
-		if (format->bits == 16)	samples[i] = ((short *) data)[i];
-		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+		for (int i = 0; i < size / (format->bits / 8); i++)
+		{
+			if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
+			if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
+		}
+
+		ex_beEncodeChunk(handle, size / (format->bits / 8), samplesBuffer, outBuffer, &bytes);
+	}
+	else
+	{
+		ex_beEncodeChunk(handle, size / (format->bits / 8), (short *) data, outBuffer, &bytes);
 	}
 
-	ex_beEncodeChunk(handle, samples_size, samples, outbuffer, &bytes);
-
-	driver->WriteData(outbuffer, bytes);
-
-	delete [] samples;
-	delete [] outbuffer;
+	driver->WriteData(outBuffer, bytes);
 
 	return bytes;
 }

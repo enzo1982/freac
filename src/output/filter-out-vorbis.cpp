@@ -8,16 +8,12 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib-cxx.h>
 #include <output/filter-out-vorbis.h>
 #include <dllinterfaces.h>
-#include <memory.h>
 
 FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
 	packageSize = 0;
-
-	setup = false;
 
 	if (format->channels > 2)
 	{
@@ -97,84 +93,153 @@ FilterOutVORBIS::~FilterOutVORBIS()
 {
 }
 
+bool FilterOutVORBIS::Activate()
+{
+	ogg_packet	 header;
+	ogg_packet	 header_comm;
+	ogg_packet	 header_code;
+
+
+	ex_vorbis_analysis_headerout(&vd, &vc, &header, &header_comm, &header_code);
+
+	ex_ogg_stream_packetin(&os, &header); /* automatically placed in its own page */
+
+	ex_ogg_stream_packetin(&os, &header_comm);
+	ex_ogg_stream_packetin(&os, &header_code);
+
+	int	 dataLength = 0;
+
+	do
+	{
+		int result = ex_ogg_stream_flush(&os, &og);
+
+		if (result == 0) break;
+
+		backBuffer.Resize(dataLength);
+
+		memcpy(backBuffer, dataBuffer, dataLength);
+
+		dataBuffer.Resize(dataLength + og.header_len + og.body_len);
+
+		memcpy(dataBuffer, backBuffer, dataLength);
+		memcpy(((unsigned char *) dataBuffer) + dataLength, og.header, og.header_len);
+		memcpy(((unsigned char *) dataBuffer) + dataLength + og.header_len, og.body, og.body_len);
+
+		dataLength += og.header_len;
+		dataLength += og.body_len;
+	}
+	while (true);
+
+	driver->WriteData(dataBuffer, dataLength);
+
+	return true;
+}
+
+bool FilterOutVORBIS::Deactivate()
+{
+	ex_vorbis_analysis_wrote(&vd, 0);
+
+	int	 dataLength = 0;
+
+	while (ex_vorbis_analysis_blockout(&vd, &vb) == 1)
+	{
+		ex_vorbis_analysis(&vb, NULL);
+		ex_vorbis_bitrate_addblock(&vb);
+
+		while(ex_vorbis_bitrate_flushpacket(&vd, &op))
+		{
+			ex_ogg_stream_packetin(&os, &op);
+
+			do
+			{
+				int	 result = ex_ogg_stream_pageout(&os, &og);
+
+				if (result == 0) break;
+
+				backBuffer.Resize(dataLength);
+
+				memcpy(backBuffer, dataBuffer, dataLength);
+
+				dataBuffer.Resize(dataLength + og.header_len + og.body_len);
+
+				memcpy(dataBuffer, backBuffer, dataLength);
+				memcpy(((unsigned char *) dataBuffer) + dataLength, og.header, og.header_len);
+				memcpy(((unsigned char *) dataBuffer) + dataLength + og.header_len, og.body, og.body_len);
+
+				dataLength += og.header_len;
+				dataLength += og.body_len;
+
+				if (ex_ogg_page_eos(&og)) break;
+			}
+			while (true);
+		}
+	}
+
+	driver->WriteData(dataBuffer, dataLength);
+
+	ex_ogg_stream_clear(&os);
+	ex_vorbis_block_clear(&vb);
+	ex_vorbis_dsp_clear(&vd);
+	ex_vorbis_comment_clear(&vc);
+	ex_vorbis_info_clear(&vi);
+
+	return true;
+}
+
 int FilterOutVORBIS::WriteData(unsigned char *data, int size)
 {
-	unsigned char	*dataBuffer = NIL;
-	int		 dataLength = 0;
-	int		 samples_size = size / (format->bits / 8);
-
-	if (!setup)
-	{
-		setup = true;
-
-		ogg_packet	 header;
-		ogg_packet	 header_comm;
-		ogg_packet	 header_code;
-
-
-		ex_vorbis_analysis_headerout(&vd, &vc, &header, &header_comm, &header_code);
-
-		ex_ogg_stream_packetin(&os, &header); /* automatically placed in its own page */
-
-		ex_ogg_stream_packetin(&os, &header_comm);
-		ex_ogg_stream_packetin(&os, &header_code);
-
-		do
-		{
-			int result = ex_ogg_stream_flush(&os, &og);
-
-			if (result == 0) break;
-
-			unsigned char	*backBuffer = new unsigned char [dataLength];
-
-			memcpy((void *) backBuffer, (void *) dataBuffer, dataLength);
-
-			delete [] dataBuffer;
-
-			dataBuffer = new unsigned char [dataLength + og.header_len + og.body_len];
-
-			memcpy((void *) dataBuffer, (void *) backBuffer, dataLength);
-			memcpy((void *) (dataBuffer + dataLength), og.header, og.header_len);
-			memcpy((void *) (dataBuffer + dataLength + og.header_len), og.body, og.body_len);
-
-			delete [] backBuffer;
-
-			dataLength += og.header_len;
-			dataLength += og.body_len;
-		}
-		while (true);
-	}
-
-	signed short	*samples = new signed short [size / (format->bits / 8)];
-
-	for (int i = 0; i < size / (format->bits / 8); i++)
-	{
-		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
-		if (format->bits == 16)	samples[i] = ((short *) data)[i];
-		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
-	}
+	int	 dataLength = 0;
+	int	 samples_size = size / (format->bits / 8);
 
 	float	**buffer = ex_vorbis_analysis_buffer(&vd, samples_size / format->channels);
 
-	if (format->channels == 1)
+	if (format->bits != 16)
 	{
-		for (int j = 0; j < samples_size; j++)
+		samplesBuffer.Resize(size / (format->bits / 8));
+
+		for (int i = 0; i < size / (format->bits / 8); i++)
 		{
-			buffer[0][j] = ((((signed char *) samples)[j * 2 + 1] << 8) | (0x00ff & ((signed char *) samples)[j * 2 + 0])) / 32768.f;
+			if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
+			if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
+		}
+
+		if (format->channels == 1)
+		{
+			for (int j = 0; j < samples_size; j++)
+			{
+				buffer[0][j] = ((((signed char *) (unsigned short *) samplesBuffer)[j * 2 + 1] << 8) | (0x00ff & ((signed char *) (unsigned short *) samplesBuffer)[j * 2 + 0])) / 32768.f;
+			}
+		}
+
+		if (format->channels == 2)
+		{
+			for (int j = 0; j < samples_size / 2; j++)
+			{
+				buffer[0][j] = ((((signed char *) (unsigned short *) samplesBuffer)[j * 4 + 1] << 8) | (0x00ff & ((signed char *) (unsigned short *) samplesBuffer)[j * 4 + 0])) / 32768.f;
+				buffer[1][j] = ((((signed char *) (unsigned short *) samplesBuffer)[j * 4 + 3] << 8) | (0x00ff & ((signed char *) (unsigned short *) samplesBuffer)[j * 4 + 2])) / 32768.f;
+			}
 		}
 	}
-
-	if (format->channels == 2)
+	else
 	{
-		for (int j = 0; j < samples_size / 2; j++)
+		if (format->channels == 1)
 		{
-			buffer[0][j] = ((((signed char *) samples)[j * 4 + 1] << 8) | (0x00ff & ((signed char *) samples)[j * 4 + 0])) / 32768.f;
-			buffer[1][j] = ((((signed char *) samples)[j * 4 + 3] << 8) | (0x00ff & ((signed char *) samples)[j * 4 + 2])) / 32768.f;
+			for (int j = 0; j < samples_size; j++)
+			{
+				buffer[0][j] = ((((signed char *) data)[j * 2 + 1] << 8) | (0x00ff & ((signed char *) data)[j * 2 + 0])) / 32768.f;
+			}
+		}
+
+		if (format->channels == 2)
+		{
+			for (int j = 0; j < samples_size / 2; j++)
+			{
+				buffer[0][j] = ((((signed char *) data)[j * 4 + 1] << 8) | (0x00ff & ((signed char *) data)[j * 4 + 0])) / 32768.f;
+				buffer[1][j] = ((((signed char *) data)[j * 4 + 3] << 8) | (0x00ff & ((signed char *) data)[j * 4 + 2])) / 32768.f;
+			}
 		}
 	}
-
-	delete [] samples;
 
 	ex_vorbis_analysis_wrote(&vd, samples_size / format->channels);
 
@@ -193,19 +258,15 @@ int FilterOutVORBIS::WriteData(unsigned char *data, int size)
 
 				if (result == 0) break;
 
-				unsigned char	*backBuffer = new unsigned char [dataLength];
+				backBuffer.Resize(dataLength);
 
-				memcpy((void *) backBuffer, (void *) dataBuffer, dataLength);
+				memcpy(backBuffer, dataBuffer, dataLength);
 
-				delete [] dataBuffer;
+				dataBuffer.Resize(dataLength + og.header_len + og.body_len);
 
-				dataBuffer = new unsigned char [dataLength + og.header_len + og.body_len];
-
-				memcpy((void *) dataBuffer, (void *) backBuffer, dataLength);
-				memcpy((void *) (dataBuffer + dataLength), og.header, og.header_len);
-				memcpy((void *) (dataBuffer + dataLength + og.header_len), og.body, og.body_len);
-
-				delete [] backBuffer;
+				memcpy(dataBuffer, backBuffer, dataLength);
+				memcpy(((unsigned char *) dataBuffer) + dataLength, og.header, og.header_len);
+				memcpy(((unsigned char *) dataBuffer) + dataLength + og.header_len, og.body, og.body_len);
 
 				dataLength += og.header_len;
 				dataLength += og.body_len;
@@ -216,59 +277,7 @@ int FilterOutVORBIS::WriteData(unsigned char *data, int size)
 		}
 	}
 
-	if (lastPacket)
-	{
-		ex_vorbis_analysis_wrote(&vd, 0);
-
-		while (ex_vorbis_analysis_blockout(&vd, &vb) == 1)
-		{
-			ex_vorbis_analysis(&vb, NULL);
-			ex_vorbis_bitrate_addblock(&vb);
-
-			while(ex_vorbis_bitrate_flushpacket(&vd, &op))
-			{
-				ex_ogg_stream_packetin(&os, &op);
-
-				do
-				{
-					int	 result = ex_ogg_stream_pageout(&os, &og);
-
-					if (result == 0) break;
-
-					unsigned char	*backBuffer = new unsigned char [dataLength];
-
-					memcpy((void *) backBuffer, (void *) dataBuffer, dataLength);
-
-					delete [] dataBuffer;
-
-					dataBuffer = new unsigned char [dataLength + og.header_len + og.body_len];
-
-					memcpy((void *) dataBuffer, (void *) backBuffer, dataLength);
-					memcpy((void *) (dataBuffer + dataLength), og.header, og.header_len);
-					memcpy((void *) (dataBuffer + dataLength + og.header_len), og.body, og.body_len);
-
-					delete [] backBuffer;
-
-					dataLength += og.header_len;
-					dataLength += og.body_len;
-
-					if (ex_ogg_page_eos(&og)) break;
-				}
-				while (true);
-			}
-		}
-
-		ex_ogg_stream_clear(&os);
-		ex_vorbis_block_clear(&vb);
-		ex_vorbis_dsp_clear(&vd);
-		ex_vorbis_comment_clear(&vc);
-		ex_vorbis_info_clear(&vi);
-	}
-
-
 	driver->WriteData(dataBuffer, dataLength);
-
-	delete [] dataBuffer;
 
 	return dataLength;
 }

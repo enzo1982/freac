@@ -17,8 +17,6 @@
 class OutputFilter : public IOLibFilter
 {
 	protected:
-		bool		 lastPacket;
-
 		bonkEncTrack	*format;
 		bonkEncConfig	*currentConfig;
 
@@ -35,8 +33,6 @@ class OutputFilter : public IOLibFilter
 				~OutputFilter();
 
 		virtual int	 WriteData(unsigned char *, int) = 0;
-
-		void		 PrepareLastPacket();
 };
 
 #endif

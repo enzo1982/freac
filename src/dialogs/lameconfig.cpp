@@ -92,9 +92,9 @@ configureLameEnc::configureLameEnc()
 
 	basic_text_preset	= new Text(bonkEnc::i18n->TranslateString("Use preset:"), pos);
 
-	pos.x += (basic_text_preset->GetObjectProperties()->textSize.cx + 8);
+	pos.x += (basic_text_preset->textSize.cx + 8);
 	pos.y -= 3;
-	size.cx = 340 - basic_text_preset->GetObjectProperties()->textSize.cx;
+	size.cx = 340 - basic_text_preset->textSize.cx;
 	size.cy = 0;
 
 	basic_combo_preset	= new ComboBox(pos, size);
@@ -180,10 +180,10 @@ configureLameEnc::configureLameEnc()
 	pos.y += 17;
 
 	basic_text_quality_worse= new Text(bonkEnc::i18n->TranslateString("worse"), pos);
-	basic_text_quality_worse->SetPosition(Point(105 - (basic_text_quality_worse->GetObjectProperties()->textSize.cx / 2), pos.y));
+	basic_text_quality_worse->SetPosition(Point(105 - (basic_text_quality_worse->textSize.cx / 2), pos.y));
 
 	basic_text_quality_better= new Text(bonkEnc::i18n->TranslateString("better"), pos);
-	basic_text_quality_better->SetPosition(Point(211 - (basic_text_quality_better->GetObjectProperties()->textSize.cx / 2), pos.y));
+	basic_text_quality_better->SetPosition(Point(211 - (basic_text_quality_better->textSize.cx / 2), pos.y));
 
 	pos.x = 247;
 	pos.y = 62;
@@ -256,9 +256,9 @@ configureLameEnc::configureLameEnc()
 
 	vbr_text_setquality	= new Text(bonkEnc::i18n->TranslateString("Quality").Append(":"), pos);
 
-	pos.x += (vbr_text_setquality->GetObjectProperties()->textSize.cx + 8);
+	pos.x += (vbr_text_setquality->textSize.cx + 8);
 	pos.y -= 2;
-	size.cx = 190 - vbr_text_setquality->GetObjectProperties()->textSize.cx;
+	size.cx = 190 - vbr_text_setquality->textSize.cx;
 	size.cy = 0;
 
 	vbr_slider_quality	= new Slider(pos, size, OR_HORZ, &vbrquality, 0, 9);
@@ -273,10 +273,10 @@ configureLameEnc::configureLameEnc()
 	pos.y += 17;
 
 	vbr_text_quality_worse= new Text(bonkEnc::i18n->TranslateString("worse"), pos);
-	vbr_text_quality_worse->SetPosition(Point(vbr_slider_quality->GetObjectProperties()->pos.x + 3 - (vbr_text_quality_worse->GetObjectProperties()->textSize.cx / 2), pos.y));
+	vbr_text_quality_worse->SetPosition(Point(vbr_slider_quality->pos.x + 3 - (vbr_text_quality_worse->textSize.cx / 2), pos.y));
 
 	vbr_text_quality_better= new Text(bonkEnc::i18n->TranslateString("better"), pos);
-	vbr_text_quality_better->SetPosition(Point(346 - (vbr_text_quality_better->GetObjectProperties()->textSize.cx / 2), pos.y));
+	vbr_text_quality_better->SetPosition(Point(346 - (vbr_text_quality_better->textSize.cx / 2), pos.y));
 
 	pos.x = 142;
 	pos.y = 74;
@@ -415,9 +415,9 @@ configureLameEnc::configureLameEnc()
 
 	misc_text_padding	= new Text(bonkEnc::i18n->TranslateString("Set padding type:"), pos);
 
-	pos.x += (misc_text_padding->GetObjectProperties()->textSize.cx + 8);
+	pos.x += (misc_text_padding->textSize.cx + 8);
 	pos.y -= 3;
-	size.cx = 194 - misc_text_padding->GetObjectProperties()->textSize.cx;
+	size.cx = 194 - misc_text_padding->textSize.cx;
 	size.cy = 0;
 
 	misc_combo_padding	= new ComboBox(pos, size);
@@ -440,11 +440,11 @@ configureLameEnc::configureLameEnc()
 
 	expert_check_ath	= new CheckBox(bonkEnc::i18n->TranslateString("Enable ATH:"), pos, size, &enable_ath);
 	expert_check_ath->onClick.Connect(&configureLameEnc::SetEnableATH, this);
-	expert_check_ath->SetMetrics(expert_check_ath->GetObjectProperties()->pos, Size(expert_check_ath->GetObjectProperties()->textSize.cx + 19, expert_check_ath->GetObjectProperties()->size.cy));
+	expert_check_ath->SetMetrics(expert_check_ath->pos, Size(expert_check_ath->textSize.cx + 19, expert_check_ath->size.cy));
 
-	pos.x += (expert_check_ath->GetObjectProperties()->textSize.cx + 28);
+	pos.x += (expert_check_ath->textSize.cx + 28);
 	pos.y -= 1;
-	size.cx = 222 - expert_check_ath->GetObjectProperties()->textSize.cx;
+	size.cx = 222 - expert_check_ath->textSize.cx;
 	size.cy = 0;
 
 	expert_combo_athtype	= new ComboBox(pos, size);

@@ -26,10 +26,15 @@ class FilterOutVORBIS : public OutputFilter
 		vorbis_dsp_state	 vd;
 		vorbis_block		 vb;
 
-		bool			 setup;
+		Buffer<unsigned char>	 dataBuffer;
+		Buffer<unsigned char>	 backBuffer;
+		Buffer<unsigned short>	 samplesBuffer;
 	public:
 					 FilterOutVORBIS(bonkEncConfig *, bonkEncTrack *);
 					~FilterOutVORBIS();
+
+		bool			 Activate();
+		bool			 Deactivate();
 
 		int			 WriteData(unsigned char *, int);
 };

@@ -8,10 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib-cxx.h>
 #include <output/filter-out-lame.h>
 #include <dllinterfaces.h>
-#include <memory.h>
 
 FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
@@ -251,14 +249,14 @@ bool FilterOutLAME::Activate()
 {
 	debug_out->EnterMethod("FilterOutLAME::Activate()");
 
+	outBuffer.Resize(131072);
+
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3)
 	{
-		unsigned char	*buffer	= new unsigned char [32768];
-		Int		 size	= RenderID3V2Tag(buffer);
+		Buffer<unsigned char>	 id3Buffer(32768);
+		Int			 size = RenderID3V2Tag(id3Buffer);
 
-		driver->WriteData(buffer, size);
-
-		delete [] buffer;
+		driver->WriteData(id3Buffer, size);
 	}
 
 	ex_lame_set_bWriteVbrTag(lameFlags, 1);
@@ -272,13 +270,9 @@ bool FilterOutLAME::Deactivate()
 {
 	debug_out->EnterMethod("FilterOutLAME::Deactivate()");
 
-	long		 buffersize = 131072;
-	unsigned char	*outbuffer = new unsigned char [buffersize];
-	unsigned long	 bytes = ex_lame_encode_flush(lameFlags, outbuffer, buffersize);
+	unsigned long	 bytes = ex_lame_encode_flush(lameFlags, outBuffer, outBuffer.Size());
 
-	driver->WriteData(outbuffer, bytes);
-
-	delete [] outbuffer;
+	driver->WriteData(outBuffer, bytes);
 
 	if (currentConfig->lame_vbrmode != vbr_off)
 	{
@@ -286,28 +280,23 @@ bool FilterOutLAME::Deactivate()
 
 		if (f_out != NIL)
 		{
-			Int		 size = driver->GetSize();
-			unsigned char	*buffer = new unsigned char [size];
+			Buffer<unsigned char>	 buffer(driver->GetSize());
 
 			driver->Seek(0);
-			driver->ReadData(buffer, size);
+			driver->ReadData(buffer, buffer.Size());
 
-			fwrite((void *) buffer, 1, size, f_out);
+			fwrite(buffer, 1, buffer.Size(), f_out);
 
 			ex_lame_mp3_tags_fid(lameFlags, f_out);
 
-			size = ftell(f_out);
+			buffer.Resize(ftell(f_out));
+
 			fseek(f_out, 0, SEEK_SET);
 
-			delete [] buffer;
-			buffer = new unsigned char [size];
-
-			fread((void *) buffer, 1, size, f_out);
+			fread((void *) buffer, 1, buffer.Size(), f_out);
 
 			driver->Seek(0);
-			driver->WriteData(buffer, size);
-
-			delete [] buffer;
+			driver->WriteData(buffer, buffer.Size());
 
 			fclose(f_out);
 			remove(Application::GetApplicationDirectory().Append("xing.tmp"));
@@ -325,26 +314,31 @@ int FilterOutLAME::WriteData(unsigned char *data, int size)
 {
 	debug_out->EnterMethod("FilterOutLAME::WriteData(unsigned char *, int)");
 
-	signed short	*samples = new signed short [size / (format->bits / 8)];
-	long		 buffersize = size + 7200;
-	unsigned char	*outbuffer = new unsigned char [buffersize];
-	unsigned long	 bytes;
+	unsigned long	 bytes = 0;
 
-	for (int i = 0; i < size / (format->bits / 8); i++)
+	outBuffer.Resize(size + 7200);
+
+	if (format->bits != 16)
 	{
-		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
-		if (format->bits == 16)	samples[i] = ((short *) data)[i];
-		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+		samplesBuffer.Resize(size / (format->bits / 8));
+
+		for (int i = 0; i < size / (format->bits / 8); i++)
+		{
+			if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
+			if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
+		}
+
+		if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, samplesBuffer, size / (format->bits / 8) / format->channels, outBuffer, outBuffer.Size());
+		else				bytes = ex_lame_encode_buffer(lameFlags, samplesBuffer, samplesBuffer, size / (format->bits / 8), outBuffer, outBuffer.Size());
+	}
+	else
+	{
+		if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, (signed short *) data, size / (format->bits / 8) / format->channels, outBuffer, outBuffer.Size());
+		else				bytes = ex_lame_encode_buffer(lameFlags, (signed short *) data, (signed short *) data, size / (format->bits / 8), outBuffer, outBuffer.Size());
 	}
 
-	if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, samples, size / (format->bits / 8) / format->channels, outbuffer, buffersize);
-	else				bytes = ex_lame_encode_buffer(lameFlags, samples, samples, size / (format->bits / 8), outbuffer, buffersize);
-
-	driver->WriteData(outbuffer, bytes);
-
-	delete [] samples;
-	delete [] outbuffer;
+	driver->WriteData(outBuffer, bytes);
 
 	debug_out->LeaveMethod();
 

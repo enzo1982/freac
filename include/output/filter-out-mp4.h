@@ -8,8 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_OUT_FAAC_
-#define _H_FILTER_OUT_FAAC_
+#ifndef _H_FILTER_OUT_MP4_
+#define _H_FILTER_OUT_MP4_
 
 #include "outputfilter.h"
 
@@ -19,19 +19,30 @@
 #define int32_t long
 #endif
 
+#include <3rdparty/mp4/mp4.h>
 #include <3rdparty/faac/faac.h>
 
-class FilterOutFAAC : public OutputFilter
+class FilterOutMP4 : public OutputFilter
 {
 	private:
+		MP4FileHandle		 mp4File;
 		faacEncHandle		 handle;
 		faacEncConfigurationPtr	 fConfig;
+
+		Int			 mp4Track;
+		Int			 sampleId;
+
+		Int			 frameSize;
+
+		Int			 totalSamples;
+		Int			 encodedSamples;
+		Int			 delaySamples;
 
 		Buffer<unsigned char>	 outBuffer;
 		Buffer<int32_t>		 samplesBuffer;
 	public:
-					 FilterOutFAAC(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutFAAC();
+					 FilterOutMP4(bonkEncConfig *, bonkEncTrack *);
+					~FilterOutMP4();
 
 		bool			 Activate();
 		bool			 Deactivate();

@@ -17,19 +17,19 @@
 class FilterOutBLADE : public OutputFilter
 {
 	private:
-		BE_CONFIG	 beConfig;
+		BE_CONFIG		 beConfig;
+		unsigned long		 handle;
 
-		unsigned long	 samples_size;
-		unsigned long	 buffersize;
-		unsigned long	 handle;
+		Buffer<unsigned char>	 outBuffer;
+		Buffer<signed short>	 samplesBuffer;
 	public:
-				 FilterOutBLADE(bonkEncConfig *, bonkEncTrack *);
-				~FilterOutBLADE();
+					 FilterOutBLADE(bonkEncConfig *, bonkEncTrack *);
+					~FilterOutBLADE();
 
-		bool		 Activate();
-		bool		 Deactivate();
+		bool			 Activate();
+		bool			 Deactivate();
 
-		int		 WriteData(unsigned char *, int);
+		int			 WriteData(unsigned char *, int);
 };
 
 #endif

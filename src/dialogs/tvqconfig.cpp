@@ -49,9 +49,9 @@ configureTVQ::configureTVQ()
 
 	text_bitrate		= new Text(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos);
 
-	pos.x += (text_bitrate->GetObjectProperties()->textSize.cx + 8);
+	pos.x += (text_bitrate->textSize.cx + 8);
 	pos.y -= 3;
-	size.cx = 176 - text_bitrate->GetObjectProperties()->textSize.cx;
+	size.cx = 176 - text_bitrate->textSize.cx;
 	size.cy = 0;
 
 	combo_bitrate		= new ComboBox(pos, size);
@@ -89,9 +89,9 @@ configureTVQ::configureTVQ()
 
 	text_precand		= new Text(bonkEnc::i18n->TranslateString("Number of preselection candidates:"), pos);
 
-	pos.x += (text_precand->GetObjectProperties()->textSize.cx + 8);
+	pos.x += (text_precand->textSize.cx + 8);
 	pos.y -= 3;
-	size.cx = 206 - text_precand->GetObjectProperties()->textSize.cx;
+	size.cx = 206 - text_precand->textSize.cx;
 	size.cy = 0;
 
 	combo_precand		= new ComboBox(pos, size);

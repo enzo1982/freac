@@ -322,8 +322,8 @@ Void bonkEncGUI::RemoveFile()
 
 	frame.left	= realPos.x;
 	frame.top	= realPos.y;
-	frame.right	= realPos.x + joblist->GetObjectProperties()->size.cx - 1;
-	frame.bottom	= realPos.y + joblist->GetObjectProperties()->size.cy - 1;
+	frame.right	= realPos.x + joblist->size.cx - 1;
+	frame.bottom	= realPos.y + joblist->size.cy - 1;
 
 	surface->StartPaint(frame);
 
@@ -468,7 +468,7 @@ Void bonkEncGUI::JoblistSelectAll()
 		if (!joblist->GetNthEntry(i)->selected) joblist->GetNthEntry(i)->selected = True;
 	}
 
-	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetObjectProperties()->size));
+	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->size));
 	joblist->Paint(SP_PAINT);
 	mainWnd->GetDrawSurface()->EndPaint();
 }
@@ -480,7 +480,7 @@ Void bonkEncGUI::JoblistSelectNone()
 		if (joblist->GetNthEntry(i)->selected) joblist->GetNthEntry(i)->selected = False;
 	}
 
-	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetObjectProperties()->size));
+	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->size));
 	joblist->Paint(SP_PAINT);
 	mainWnd->GetDrawSurface()->EndPaint();
 }
@@ -493,7 +493,7 @@ Void bonkEncGUI::JoblistToggleSelection()
 		else					joblist->GetNthEntry(i)->selected = True;
 	}
 
-	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetObjectProperties()->size));
+	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->size));
 	joblist->Paint(SP_PAINT);
 	mainWnd->GetDrawSurface()->EndPaint();
 }

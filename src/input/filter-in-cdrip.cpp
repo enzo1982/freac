@@ -192,6 +192,8 @@ S::Bool FilterInCDRip::SetTrack(Int newTrack)
 	params.nParanoiaMode = nParanoiaMode;
 	params.bSwapLefRightChannel = currentConfig->cdrip_swapchannels;
 	params.bJitterCorrection = currentConfig->cdrip_jitter;
+	params.bEnableMultiRead = true;
+	params.nMultiReadCount = 2;
 
 	ex_CR_SetCDROMParameters(&params);
 

@@ -18,18 +18,12 @@
 OutputFilter::OutputFilter(bonkEncConfig *config, bonkEncTrack *iFormat)
 {
 	error		= 0;
-	lastPacket	= false;
 	format		= iFormat;
 	currentConfig	= config;
 }
 
 OutputFilter::~OutputFilter()
 {
-}
-
-void OutputFilter::PrepareLastPacket()
-{
-	lastPacket = true;
 }
 
 OutStream *OutputFilter::CreateFile(String fileName)

@@ -8,14 +8,14 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib-cxx.h>
 #include <output/filter-out-tvq.h>
 
 #define __THROW_BAD_ALLOC exit(1)
 #undef V2
 
 #include <dllinterfaces.h>
-#include <memory.h>
+
+#define V2 0
 
 #include <3rdparty/twinvq/bstream_e.h>
 #include <3rdparty/twinvq/bstream_e.cxx>
@@ -26,8 +26,6 @@
 
 FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
-	setup = false;
-
 	switch (format->rate)
 	{
 		case 22050:
@@ -71,84 +69,92 @@ FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkEncTrack *format) : Output
 
 	ex_TvqEncInitialize(&setupInfo, &encInfo, &index, 0);
 
-	samples_size	= ex_TvqEncGetFrameSize() * ex_TvqEncGetNumChannels();
-	buffersize	= samples_size * (format->bits / 8);
-	packageSize	= samples_size * (format->bits / 8);
+	unsigned long	 samples_size = ex_TvqEncGetFrameSize() * ex_TvqEncGetNumChannels();
+
+	packageSize = samples_size * (format->bits / 8);
+
+	outBuffer.Resize(samples_size * (format->bits / 8));
+	frame.Resize(samples_size);
 }
 
 FilterOutTVQ::~FilterOutTVQ()
 {
 }
 
+bool FilterOutTVQ::Activate()
+{
+	TvqInitBsWriter();
+
+	CChunkChunk	*twinChunk	= TvqCreateHeaderChunk(&setupInfo, "header_info");
+	OutStream	*d_out		= new OutStream(STREAM_BUFFER, outBuffer, outBuffer.Size());
+
+	TvqPutBsHeaderInfo(d_out, *twinChunk);
+
+	d_out->Flush();
+
+	driver->WriteData(outBuffer, d_out->GetPos());
+
+	delete twinChunk;
+	delete d_out;
+
+	return true;
+}
+
+bool FilterOutTVQ::Deactivate()
+{
+	OutStream	*d_out = new OutStream(STREAM_BUFFER, outBuffer, outBuffer.Size());
+
+	frame.Zero();
+
+	ex_TvqEncodeFrame(frame, &index);
+	TvqWriteBsFrame(&index, d_out);
+
+	ex_TvqEncodeFrame(frame, &index);
+	TvqWriteBsFrame(&index, d_out);
+
+	TvqFinishBsOutput(d_out);
+
+	ex_TvqEncTerminate(&index);
+
+	d_out->Flush();
+
+	driver->WriteData(outBuffer, d_out->GetPos());
+
+	delete d_out;
+
+	return true;
+}
+
 int FilterOutTVQ::WriteData(unsigned char *data, int size)
 {
-	float		*frame		= new float [samples_size];
-	char		*outbuffer	= new char [buffersize];
-	OutStream	*d_out		= new OutStream(STREAM_BUFFER, (void *) outbuffer, 131072);
+	OutStream	*d_out = new OutStream(STREAM_BUFFER, outBuffer, outBuffer.Size());
 
-	if (!setup)
-	{
-		setup = true;
-
-		TvqInitBsWriter();
-
-		CChunkChunk* twinChunk = TvqCreateHeaderChunk(&setupInfo, "header_info");
-
-		TvqPutBsHeaderInfo(d_out, *twinChunk);
-
-		delete twinChunk;
-
-		d_out->Flush();
-	}
-
-	signed short	*samples = new signed short [size / (format->bits / 8)];
+	samplesBuffer.Resize(size / (format->bits / 8));
 
 	for (int i = 0; i < size / (format->bits / 8); i++)
 	{
-		if (format->bits == 8)	samples[i] = (data[i] - 128) * 256;
-		if (format->bits == 16)	samples[i] = ((short *) data)[i];
-		if (format->bits == 24) samples[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-		if (format->bits == 32)	samples[i] = (int) ((long *) data)[i] / 65536;
+		if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
+		if (format->bits == 16)	samplesBuffer[i] = ((short *) data)[i];
+		if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+		if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
 	}
 
 	for (int ch = 0; ch < format->channels; ch++)
 	{
 		for (int i = 0; i < int(size / (format->bits / 8) / format->channels); i++)
 		{
-			frame[ch * int(samples_size / format->channels) + i] = (float) samples[i * format->channels + ch];
+			frame[ch * int(frame.Size() / format->channels) + i] = (float) samplesBuffer[i * format->channels + ch];
 		}
 	}
-
-	delete [] samples;
 
 	ex_TvqEncodeFrame(frame, &index);
 	TvqWriteBsFrame(&index, d_out);
 
-	if (lastPacket)
-	{
-		memset((void *) frame, 0, sizeof(float) * samples_size);
-
-		ex_TvqEncodeFrame(frame, &index);
-		TvqWriteBsFrame(&index, d_out);
-
-		ex_TvqEncodeFrame(frame, &index);
-		TvqWriteBsFrame(&index, d_out);
-
-		TvqFinishBsOutput(d_out);
-
-		ex_TvqEncTerminate(&index);
-	}
-
-	d_out->Flush();
-
 	size = d_out->GetPos();
-
-	driver->WriteData((unsigned char *) outbuffer, size);
 
 	delete d_out;
 
-	delete [] frame;
-	delete [] outbuffer;
+	driver->WriteData(outBuffer, size);
 
 	return size;
 }

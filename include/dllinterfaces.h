@@ -269,12 +269,14 @@
 	typedef faacEncHandle			(FAACAPI *FAACENCOPEN)				(unsigned long, unsigned int, unsigned long *, unsigned long *);
 	typedef faacEncConfigurationPtr		(FAACAPI *FAACENCGETCURRENTCONFIGURATION)	(faacEncHandle);
 	typedef int				(FAACAPI *FAACENCSETCONFIGURATION)		(faacEncHandle, faacEncConfigurationPtr);
+	typedef int				(FAACAPI *FAACENCGETDECODERSPECIFICINFO)	(faacEncHandle, unsigned char **, unsigned long *);
 	typedef int				(FAACAPI *FAACENCENCODE)			(faacEncHandle, int32_t *, unsigned int, unsigned char *, unsigned int);
 	typedef int				(FAACAPI *FAACENCCLOSE)				(faacEncHandle);
 
 	extern FAACENCOPEN			 ex_faacEncOpen;
 	extern FAACENCGETCURRENTCONFIGURATION	 ex_faacEncGetCurrentConfiguration;
 	extern FAACENCSETCONFIGURATION		 ex_faacEncSetConfiguration;
+	extern FAACENCGETDECODERSPECIFICINFO	 ex_faacEncGetDecoderSpecificInfo;
 	extern FAACENCENCODE			 ex_faacEncEncode;
 	extern FAACENCCLOSE			 ex_faacEncClose;
 
@@ -355,6 +357,9 @@
 	typedef bool				(*MP4GETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, u_int8_t **, u_int32_t *);
 	typedef bool				(*MP4SETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t);
 	typedef MP4SampleId			(*MP4GETTRACKNUMBEROFSAMPLES)			(MP4FileHandle, MP4TrackId);
+	typedef bool				(*MP4SETTIMESCALE)				(MP4FileHandle, u_int32_t);
+	typedef bool				(*MP4SETAUDIOPROFILELEVEL)			(MP4FileHandle, u_int8_t);
+	typedef MP4TrackId			(*MP4ADDAUDIOTRACK)				(MP4FileHandle, u_int32_t, MP4Duration, u_int8_t);
 	typedef bool				(*MP4READSAMPLE)				(MP4FileHandle, MP4TrackId, MP4SampleId, u_int8_t **, u_int32_t *, MP4Timestamp *, MP4Duration *,
  MP4Duration *, bool *);
 	typedef bool				(*MP4WRITESAMPLE)				(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t, MP4Duration,
@@ -383,6 +388,9 @@
 	extern MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration;
 	extern MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
 	extern MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples;
+	extern MP4SETTIMESCALE			 ex_MP4SetTimeScale;
+	extern MP4SETAUDIOPROFILELEVEL		 ex_MP4SetAudioProfileLevel;
+	extern MP4ADDAUDIOTRACK			 ex_MP4AddAudioTrack;
 	extern MP4READSAMPLE			 ex_MP4ReadSample;
 	extern MP4WRITESAMPLE			 ex_MP4WriteSample;
 

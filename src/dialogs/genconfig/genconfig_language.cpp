@@ -46,9 +46,9 @@ configureGeneralSettingsLayerLanguage::configureGeneralSettingsLayerLanguage() :
 
 	text_language	= new Text(bonkEnc::i18n->TranslateString("Select language:"), pos);
 
-	pos.x	+= (text_language->GetObjectProperties()->textSize.cx + 8);
+	pos.x	+= (text_language->textSize.cx + 8);
 	pos.y	= 23;
-	size.cx	= (503 - text_language->GetObjectProperties()->textSize.cx);
+	size.cx	= (503 - text_language->textSize.cx);
 	size.cy	= 0;
 
 	combo_language	= new ComboBox(pos, size);

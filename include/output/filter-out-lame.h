@@ -18,6 +18,9 @@ class FilterOutLAME : public OutputFilter
 {
 	private:
 		lame_global_flags	*lameFlags;
+
+		Buffer<unsigned char>	 outBuffer;
+		Buffer<signed short>	 samplesBuffer;
 	public:
 					 FilterOutLAME(bonkEncConfig *, bonkEncTrack *);
 					~FilterOutLAME();

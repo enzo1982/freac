@@ -33,15 +33,15 @@ configureGeneralSettingsLayerTags::configureGeneralSettingsLayerTags() : Layer(b
 
 	check_enable	= new CheckBox(bonkEnc::i18n->TranslateString("Write ID3V2/Vorbis info tags"), pos, size, &enableTags);
 	check_enable->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleTags, this);
-	check_enable->SetMetrics(pos, Size(check_enable->GetObjectProperties()->textSize.cx + 20, check_enable->GetObjectProperties()->size.cy));
+	check_enable->SetMetrics(pos, Size(check_enable->textSize.cx + 20, check_enable->size.cy));
 
 	pos.y += 28;
 
 	text_defcomment	= new Text(bonkEnc::i18n->TranslateString("Default comment string:"), pos);
 
-	pos.x	+= (7 + text_defcomment->GetObjectProperties()->textSize.cx);
+	pos.x	+= (7 + text_defcomment->textSize.cx);
 	pos.y	-= 3;
-	size.cx	= 503 - text_defcomment->GetObjectProperties()->textSize.cx;
+	size.cx	= 503 - text_defcomment->textSize.cx;
 	size.cy	= 0;
 
 	edit_defcomment	= new EditBox(currentConfig->default_comment, pos, size, 0);
