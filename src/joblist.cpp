@@ -304,7 +304,7 @@ Void bonkEnc::ClearList()
 
 	for (int i = 0; i < sa_formatinfo.GetNOfEntries(); i++) delete sa_formatinfo.GetNthEntry(i);
 	sa_formatinfo.RemoveAll();
-	joblist->Cleanup();
+	joblist->RemoveAll();
 
 	if (!currentConfig->enable_console) txt_joblist->SetText(String("0").Append(i18n->TranslateString(" file(s) in joblist:")));
 
@@ -357,6 +357,8 @@ Void bonkEnc::SelectJoblistEntry()
 Void bonkEnc::UpdateTitleInfo()
 {
 	if (dontUpdateInfo) return;
+
+	if (joblist->GetSelectedEntry() == NIL) return;
 
 	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
 

@@ -44,7 +44,7 @@ configureGeneralSettings::configureGeneralSettings()
 	enable_tags = currentConfig->enable_tags;
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("General settings setup"));
-	mainWnd_titlebar	= new Titlebar(false, false, true);
+	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	register_layer_encoders	= new Layer(bonkEnc::i18n->TranslateString("Encoders"));
@@ -579,6 +579,8 @@ configureGeneralSettings::~configureGeneralSettings()
 
 Int configureGeneralSettings::ShowDialog()
 {
+	mainWnd->SetParentWindow(parentWindow);
+
 	mainWnd->Stay();
 
 	return mainWnd->value;

@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class cddbSubmitDlg : public Application
+class cddbSubmitDlg : public Dialog
 {
 	private:
 		Divider		*divbar;

@@ -242,7 +242,7 @@ bonkEnc::bonkEnc()
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
 	mainWnd			= new Window("BonkEnc v1.0 beta 1");
-	mainWnd_titlebar	= new Titlebar(true, true, true);
+	mainWnd_titlebar	= new Titlebar();
 	mainWnd_statusbar	= new Statusbar("BonkEnc v1.0 beta 1 - Copyright (C) 2001-2003 Robert Kausch");
 	menu_file		= new Menu();
 	menu_options		= new Menu();
@@ -1039,58 +1039,26 @@ Void bonkEnc::ConfigureEncoder()
 		return;
 	}
 
-	if (currentConfig->encoder == ENCODER_BONKENC)
-	{
-		configureBonkEnc	*dlg = new configureBonkEnc();
-
-		dlg->ShowDialog();
-
-		delete dlg;
-	}
-	else if (currentConfig->encoder == ENCODER_BLADEENC)
-	{
-		configureBladeEnc	*dlg = new configureBladeEnc();
-
-		dlg->ShowDialog();
-
-		delete dlg;
-	}
-	else if (currentConfig->encoder == ENCODER_LAMEENC)
-	{
-		configureLameEnc	*dlg = new configureLameEnc();
-
-		dlg->ShowDialog();
-
-		delete dlg;
-	}
-	else if (currentConfig->encoder == ENCODER_VORBISENC)
-	{
-		configureVorbisEnc	*dlg = new configureVorbisEnc();
-
-		dlg->ShowDialog();
-
-		delete dlg;
-	}
-	else if (currentConfig->encoder == ENCODER_FAAC)
-	{
-		configureFAAC	*dlg = new configureFAAC();
-
-		dlg->ShowDialog();
-
-		delete dlg;
-	}
-	else if (currentConfig->encoder == ENCODER_TVQ)
-	{
-		configureTVQ	*dlg = new configureTVQ();
-
-		dlg->ShowDialog();
-
-		delete dlg;
-	}
-	else if (currentConfig->encoder == ENCODER_WAVE)
+	if (currentConfig->encoder == ENCODER_WAVE)
 	{
 		SMOOTH::MessageBox(i18n->TranslateString("No options can be configured for the WAVE Out filter!"), i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+
+		return;
 	}
+
+	Dialog	*dlg = NIL;
+
+	if (currentConfig->encoder == ENCODER_BONKENC)		dlg = new configureBonkEnc();
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	dlg = new configureBladeEnc();
+	else if (currentConfig->encoder == ENCODER_LAMEENC)	dlg = new configureLameEnc();
+	else if (currentConfig->encoder == ENCODER_VORBISENC)	dlg = new configureVorbisEnc();
+	else if (currentConfig->encoder == ENCODER_FAAC)	dlg = new configureFAAC();
+	else if (currentConfig->encoder == ENCODER_TVQ)		dlg = new configureTVQ();
+
+	dlg->SetParentWindow(mainWnd);
+	dlg->ShowDialog();
+
+	DeleteObject(dlg);
 }
 
 Void bonkEnc::ConfigureGeneral()

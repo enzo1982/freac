@@ -47,7 +47,7 @@ configureLameEnc::configureLameEnc()
 	set_highpass_width = currentConfig->lame_set_highpass_width;
 
 	mainWnd			= new Window(String("LAME MP3 ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
-	mainWnd_titlebar	= new Titlebar(false, false, true);
+	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 
 	register_layer_basic	= new Layer(bonkEnc::i18n->TranslateString("Basic"));
 	register_layer_vbr	= new Layer("VBR");
@@ -821,6 +821,8 @@ configureLameEnc::~configureLameEnc()
 
 Int configureLameEnc::ShowDialog()
 {
+	mainWnd->SetParentWindow(parentWindow);
+
 	mainWnd->Stay();
 
 	return mainWnd->value;

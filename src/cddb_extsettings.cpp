@@ -19,7 +19,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	Size	 size;
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("Extended CDDB settings"));
-	mainWnd_titlebar	= new Titlebar(false, false, true);
+	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	register_layer_http	= new Layer(bonkEnc::i18n->TranslateString("HTTP settings"));
@@ -227,6 +227,8 @@ cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 
 Int cddbExtendedSettingsDlg::ShowDialog()
 {
+	mainWnd->SetParentWindow(parentWindow);
+
 	mainWnd->Stay();
 
 	return mainWnd->value;

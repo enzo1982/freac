@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureFAAC : public Application
+class configureFAAC : public Dialog
 {
 	private:
 		GroupBox	*group_version;

@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureGeneralSettings : public Application
+class configureGeneralSettings : public Dialog
 {
 	private:
 		TabWidget	*reg_register;

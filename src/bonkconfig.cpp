@@ -25,7 +25,7 @@ configureBonkEnc::configureBonkEnc()
 	lossless = currentConfig->bonk_lossless;
 
 	mainWnd			= new Window(String("Bonk ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
-	mainWnd_titlebar	= new Titlebar(false, false, true);
+	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 175;
@@ -191,6 +191,8 @@ configureBonkEnc::~configureBonkEnc()
 
 Int configureBonkEnc::ShowDialog()
 {
+	mainWnd->SetParentWindow(parentWindow);
+
 	mainWnd->Stay();
 
 	return mainWnd->value;

@@ -143,8 +143,6 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 		nFormat->trackInfo->outfile = NIL;
 		nFormat->trackInfo->hasText = True;
 
-		String::SetInputFormat("ISO-8859-1");
-
 		abuffer[0] = 0;
 		wbuffer[0] = 0;
 		if ((frame = tag->Find(ID3FID_LEADARTIST)) != NIL)
@@ -274,8 +272,6 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 
 		delete [] abuffer;
 		delete [] wbuffer;
-
-		String::SetInputFormat("UTF-8");
 	}
 
 	delete tag;

@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureBladeEnc : public Application
+class configureBladeEnc : public Dialog
 {
 	private:
 		GroupBox	*group_bit;

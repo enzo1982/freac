@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureBonkEnc : public Application
+class configureBonkEnc : public Dialog
 {
 	private:
 		GroupBox	*group_quant;

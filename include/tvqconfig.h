@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureTVQ : public Application
+class configureTVQ : public Dialog
 {
 	private:
 		GroupBox	*group_bitrate;

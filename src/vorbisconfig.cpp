@@ -23,7 +23,7 @@ configureVorbisEnc::configureVorbisEnc()
 	mode = currentConfig->vorbis_mode;
 
 	mainWnd			= new Window(String("Ogg Vorbis ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
-	mainWnd_titlebar	= new Titlebar(false, false, true);
+	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 	mainWnd_layer_vbr	= new Layer();
 	mainWnd_layer_abr	= new Layer();
@@ -199,6 +199,8 @@ configureVorbisEnc::~configureVorbisEnc()
 
 Int configureVorbisEnc::ShowDialog()
 {
+	mainWnd->SetParentWindow(parentWindow);
+
 	mainWnd->Stay();
 
 	return mainWnd->value;

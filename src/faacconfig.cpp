@@ -25,7 +25,7 @@ configureFAAC::configureFAAC()
 	usetns = currentConfig->faac_usetns;
 
 	mainWnd			= new Window(String("FAAC ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
-	mainWnd_titlebar	= new Titlebar(false, false, true);
+	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 175;
@@ -255,6 +255,8 @@ configureFAAC::~configureFAAC()
 
 Int configureFAAC::ShowDialog()
 {
+	mainWnd->SetParentWindow(parentWindow);
+
 	mainWnd->Stay();
 
 	return mainWnd->value;

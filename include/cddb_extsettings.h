@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class cddbExtendedSettingsDlg : public Application
+class cddbExtendedSettingsDlg : public Dialog
 {
 	private:
 		TabWidget	*reg_register;

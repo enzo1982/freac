@@ -19,7 +19,7 @@ languageDlg::languageDlg()
 	Size	 size;
 
 	mainWnd			= new Window("Welcome to BonkEnc v1.0");
-	mainWnd_titlebar	= new Titlebar(false, false, false);
+	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 87;
@@ -83,6 +83,8 @@ languageDlg::~languageDlg()
 
 Int languageDlg::ShowDialog()
 {
+	mainWnd->SetParentWindow(parentWindow);
+
 	mainWnd->Stay();
 
 	return Success;

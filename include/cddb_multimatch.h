@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class cddbMultiMatchDlg : public Application
+class cddbMultiMatchDlg : public Dialog
 {
 	private:
 		GroupBox	*group_match;

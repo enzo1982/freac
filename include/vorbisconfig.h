@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureVorbisEnc : public Application
+class configureVorbisEnc : public Dialog
 {
 	private:
 		GroupBox	*group_mode;

@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureLameEnc : public Application
+class configureLameEnc : public Dialog
 {
 	private:
 		Window		*mainWnd;

@@ -17,7 +17,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class languageDlg : public Application
+class languageDlg : public Dialog
 {
 	private:
 		Divider		*divbar;

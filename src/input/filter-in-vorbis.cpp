@@ -256,8 +256,6 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 		nFormat->trackInfo->outfile = NIL;
 		nFormat->trackInfo->hasText = True;
 
-		String::SetInputFormat("ISO-8859-1");
-
 		for (Int j = 0; j < fvc.comments; j++)
 		{
 			if (String("TITLE").CompareN(fvc.user_comments[j], 5) == 0)
@@ -311,8 +309,6 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 				nFormat->trackInfo->track = track.ToInt();
 			}
 		}
-
-		String::SetInputFormat("UTF-8");
 	}
 
 	ex_ogg_stream_clear(&fos);

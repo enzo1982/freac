@@ -25,7 +25,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	Size	 size;
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("CDDB data"));
-	mainWnd_titlebar	= new Titlebar(false, false, true);
+	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 175;
@@ -385,6 +385,8 @@ Int cddbSubmitDlg::ShowDialog()
 {
 	ChangeDrive();
 
+	mainWnd->SetParentWindow(parentWindow);
+
 	mainWnd->Stay();
 
 	return Success;
@@ -482,7 +484,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_year->SetText("");
 		combo_genre->SelectEntry(0);
 
-		list_tracks->Cleanup();
+		list_tracks->RemoveAll();
 		titles.RemoveAll();
 
 		edit_track->SetText("");
@@ -553,7 +555,7 @@ Void cddbSubmitDlg::ChangeDrive()
 			}
 		}
 
-		list_tracks->Cleanup();
+		list_tracks->RemoveAll();
 
 		edit_track->SetText("");
 		edit_title->SetText("");
@@ -572,7 +574,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_year->SetText("");
 		combo_genre->SelectEntry(0);
 
-		list_tracks->Cleanup();
+		list_tracks->RemoveAll();
 
 		edit_track->SetText("");
 		edit_title->SetText("");
@@ -610,7 +612,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_year->SetText("");
 		combo_genre->SelectEntry(0);
 
-		list_tracks->Cleanup();
+		list_tracks->RemoveAll();
 
 		edit_track->SetText("");
 		edit_title->SetText("");
