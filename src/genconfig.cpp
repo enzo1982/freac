@@ -378,8 +378,7 @@ configureGeneralSettings::configureGeneralSettings()
 	reg_register->RegisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
-
-	reg_register->RegisterObject(register_layer_cddb);
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cddb);
 
 	register_layer_encoders->RegisterObject(encoders_group_encoder);
 	register_layer_encoders->RegisterObject(encoders_combo_encoder);
@@ -439,8 +438,7 @@ configureGeneralSettings::~configureGeneralSettings()
 	reg_register->UnregisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->UnregisterObject(register_layer_cdrip);
-
-	reg_register->UnregisterObject(register_layer_cddb);
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->UnregisterObject(register_layer_cddb);
 
 	register_layer_encoders->UnregisterObject(encoders_group_encoder);
 	register_layer_encoders->UnregisterObject(encoders_combo_encoder);

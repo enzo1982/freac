@@ -699,6 +699,8 @@ bonkEnc::bonkEnc()
 	mainWnd->onPaint.Connect(&bonkEnc::DrawProc, this);
 	mainWnd->doQuit.Connect(&bonkEnc::ExitProc, this);
 	mainWnd->SetMinimumSize(Size(530, 300 + n));
+
+	if (currentConfig->maximized) mainWnd->Maximize();
 }
 
 bonkEnc::~bonkEnc()
@@ -816,8 +818,11 @@ Bool bonkEnc::ExitProc()
 		StopEncoding();
 	}
 
-	currentConfig->wndPos = mainWnd->GetObjectProperties()->pos;
-	currentConfig->wndSize = mainWnd->GetObjectProperties()->size;
+	Rect	 wndRect = mainWnd->GetWindowRect();
+
+	currentConfig->wndPos = Point(wndRect.left, wndRect.top);
+	currentConfig->wndSize = Size(wndRect.right - wndRect.left, wndRect.bottom - wndRect.top);
+	currentConfig->maximized = mainWnd->IsMaximized();
 
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);

@@ -20,6 +20,9 @@ using namespace smooth::GUI;
 class bonkEncConfig
 {
 	private:
+		char		*rVal_a;
+		wchar_t		*rVal_w;
+
 		String		 iniFile;
 
 		String		 getINIValue(String, String, String);
@@ -29,6 +32,7 @@ class bonkEncConfig
 
 		Point		 wndPos;
 		Size		 wndSize;
+		Bool		 maximized;
 
 		Int		 tab_width_track;
 		Int		 tab_width_length;

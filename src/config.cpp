@@ -33,29 +33,31 @@ extern "C"
 
 bonkEncConfig::bonkEncConfig()
 {
+	rVal_w = new wchar_t [1024];
+	rVal_a = new char [1024];
+
+	languageChanged = False;
 }
 
 bonkEncConfig::~bonkEncConfig()
 {
+	delete [] rVal_w;
+	delete [] rVal_a;
 }
 
 String bonkEncConfig::getINIValue(String section, String value, String def)
 {
 	if (Setup::enableUnicode)
 	{
-		wchar_t	*rvalw = new wchar_t [256];
+		GetPrivateProfileStringW(section, value, def, rVal_w, 1024, iniFile);
 
-		GetPrivateProfileStringW(section, value, def, rvalw, 256, iniFile);
-
-		return rvalw;
+		return rVal_w;
 	}
 	else
 	{
-		char	*rvala = new char [256];
+		GetPrivateProfileStringA(section, value, def, rVal_a, 1024, iniFile);
 
-		GetPrivateProfileStringA(section, value, def, rvala, 256, iniFile);
-
-		return rvala;
+		return rVal_a;
 	}
 }
 
@@ -97,6 +99,8 @@ Bool bonkEncConfig::LoadSettings()
 	wndPos.y = getINIValue("Settings", "WindowPosY", "100").ToInt();
 	wndSize.cx = getINIValue("Settings", "WindowSizeX", "650").ToInt();
 	wndSize.cy = getINIValue("Settings", "WindowSizeY", "400").ToInt();
+
+	maximized = getINIValue("Settings", "WindowMaximized", "0").ToInt();
 
 	encoder = getINIValue("Settings", "Encoder", "0").ToInt();
 	enc_outdir = getINIValue("Settings", "EncoderOutdir", pDir);
@@ -229,6 +233,10 @@ Bool bonkEncConfig::SaveSettings()
 
 		str = "WindowSizeY=";
 		str.Append(String::IntToString(wndSize.cy));
+		out->OutputLine(str);
+
+		str = "WindowMaximized=";
+		str.Append(String::IntToString(maximized));
 		out->OutputLine(str);
 
 		str = "TabWidthTrack=";
