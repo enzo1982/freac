@@ -31,36 +31,6 @@ int FilterInWAVE::ReadData(unsigned char **data, int size)
 
 	if (setup == false)
 	{
-		// Add more checking to this!
-
-		InStream	*file = new InStream(STREAM_BUFFER, (void *) *data, size);
-    
-		format.order = BYTE_INTEL;
-
-		// Read RIFF chunk
-		for(int i = 0; i < 12; i++)
-			file->InputNumber(1);
-    
-		// Read FMT chunk
-		for(int j = 0; j < 10; j++)
-			file->InputNumber(1);
-
-		format.channels = uint16(file->InputNumber(2));
-		format.rate = uint32(file->InputNumber(4));
-
-		for(int k = 0; k < 6; k++)
-			file->InputNumber(1);
-
-		format.bits = uint16(file->InputNumber(2));
-
-		// Read DATA chunk
-		for(int l = 0; l < 4; l++)
-			file->InputNumber(1);
-
-		format.length = uint32(file->InputNumber(4)) / (format.bits / 8);
-
-		delete file;
-
 		setup = true;
 
 		size -= 44;
@@ -86,13 +56,33 @@ bonkFormatInfo *FilterInWAVE::GetFileInfo(String inFile)
 	bonkFormatInfo	*nFormat = new bonkFormatInfo;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
+	// Add more checking to this!
+
 	nFormat->trackInfo = NIL;
 	nFormat->fileSize = f_in->Size();
-	nFormat->order = format.order;
-	nFormat->rate = format.rate;
-	nFormat->channels = format.channels;
-	nFormat->length = format.length;
-	nFormat->bits = format.bits;
+	nFormat->order = BYTE_INTEL;
+
+	// Read RIFF chunk
+	for (Int i = 0; i < 12; i++)
+		f_in->InputNumber(1);
+
+	// Read FMT chunk
+	for (Int j = 0; j < 10; j++)
+		f_in->InputNumber(1);
+
+	nFormat->channels = uint16(f_in->InputNumber(2));
+	nFormat->rate = uint32(f_in->InputNumber(4));
+
+	for (Int k = 0; k < 6; k++)
+		f_in->InputNumber(1);
+
+	nFormat->bits = uint16(f_in->InputNumber(2));
+
+	// Read DATA chunk
+	for (Int l = 0; l < 4; l++)
+		f_in->InputNumber(1);
+
+	nFormat->length = uint32(f_in->InputNumber(4)) / (nFormat->bits / 8);
 
 	delete f_in;
 

@@ -30,7 +30,6 @@ class FilterInVORBIS : public InputFilter
 		char			*buffer;
 
 		Bool			 setup;
-		bonkFormatInfo		 format;
 	public:
 					 FilterInVORBIS(bonkEncConfig *);
 					~FilterInVORBIS();

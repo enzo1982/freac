@@ -32,38 +32,6 @@ int FilterInAIFF::ReadData(unsigned char **data, int size)
 
 	if (setup == False)
 	{
-		// Add more checking to this!
-
-		InStream	*file = new InStream(STREAM_BUFFER, (void *) *data, size);
-    
-		format.order = BYTE_RAW;
-
-		// Read magic number
-		for(int i = 0; i < 20; i++)
-			file->InputNumber(1);
-
-		format.channels = uint16(file->InputNumberRaw(2));
-
-		for(int j = 0; j < 4; j++)
-			file->InputNumber(1);
-
-		format.bits = uint16(file->InputNumberRaw(2));
-
-		for(int k = 0; k < 2; k++)
-			file->InputNumber(1);
-
-		format.rate = uint16(file->InputNumberRaw(2));
-
-		for(int l = 0; l < 10; l++)
-			file->InputNumber(1);
-
-		format.length = uint32(file->InputNumberRaw(4) - 8) / (format.bits / 8);
-
-		for(int m = 0; m < 8; m++)
-			file->InputNumber(m);
-
-		delete file;
-
 		setup = True;
 
 		size -= 54;
@@ -89,13 +57,32 @@ bonkFormatInfo *FilterInAIFF::GetFileInfo(String inFile)
 	bonkFormatInfo	*nFormat = new bonkFormatInfo;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
+	// Add more checking to this!
+
 	nFormat->trackInfo = NIL;
 	nFormat->fileSize = f_in->Size();
-	nFormat->order = format.order;
-	nFormat->rate = format.rate;
-	nFormat->channels = format.channels;
-	nFormat->length = format.length;
-	nFormat->bits = format.bits;
+	nFormat->order = BYTE_RAW;
+
+	// Read magic number
+	for (Int i = 0; i < 20; i++)
+		f_in->InputNumber(1);
+
+	nFormat->channels = uint16(f_in->InputNumberRaw(2));
+
+	for (Int j = 0; j < 4; j++)
+		f_in->InputNumber(1);
+
+	nFormat->bits = uint16(f_in->InputNumberRaw(2));
+
+	for (Int k = 0; k < 2; k++)
+		f_in->InputNumber(1);
+
+	nFormat->rate = uint16(f_in->InputNumberRaw(2));
+
+	for (Int l = 0; l < 10; l++)
+		f_in->InputNumber(1);
+
+	nFormat->length = uint32(f_in->InputNumberRaw(4) - 8) / (nFormat->bits / 8);
 
 	delete f_in;
 

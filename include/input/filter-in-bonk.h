@@ -18,7 +18,6 @@ class FilterInBONK : public InputFilter
 	private:
 		void		*decoder;
 		Bool		 setup;
-		bonkFormatInfo	 format;
 		InStream	*f_in;
 	public:
 				 FilterInBONK(bonkEncConfig *);

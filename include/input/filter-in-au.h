@@ -16,7 +16,6 @@
 class FilterInAU : public InputFilter
 {
 	private:
-		bonkFormatInfo	 format;
 		Bool		 setup;
 	public:
 				 FilterInAU(bonkEncConfig *);

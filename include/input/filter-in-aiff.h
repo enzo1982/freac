@@ -16,7 +16,6 @@
 class FilterInAIFF : public InputFilter
 {
 	private:
-		bonkFormatInfo	 format;
 		Bool		 setup;
 	public:
 				 FilterInAIFF(bonkEncConfig *);

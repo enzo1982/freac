@@ -35,28 +35,13 @@ int FilterInVOC::ReadData(unsigned char **data, int size)
 
 	if (setup == false)
 	{
-		// Add more checking to this!
-
 		InStream	*file = new InStream(STREAM_BUFFER, (void *) *data, size);
     
-		format.order = BYTE_INTEL;
-
 		// Read magic number
-		for(int i = 0; i < 27; i++)
+		for (Int i = 0; i < 27; i++)
 			file->InputNumber(1);
 
 		bytesleft = file->InputNumber(3) - 12;
-
-		format.rate = uint32(file->InputNumber(4));
-
-		format.bits = uint8(file->InputNumber(1));
-
-		format.channels = uint8(file->InputNumber(1));
-
-		format.length = (fileSize - 42 - 4 * int((fileSize - 42) / 7340032)) / (format.bits / 8);
-
-		for(int j = 0; j < 6; j++)
-			file->InputNumber(1);
 
 		delete file;
 
@@ -117,13 +102,23 @@ bonkFormatInfo *FilterInVOC::GetFileInfo(String inFile)
 	bonkFormatInfo	*nFormat = new bonkFormatInfo;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
+	// Add more checking to this!
+
 	nFormat->trackInfo = NIL;
 	nFormat->fileSize = f_in->Size();
-	nFormat->order = format.order;
-	nFormat->rate = format.rate;
-	nFormat->channels = format.channels;
-	nFormat->length = format.length;
-	nFormat->bits = format.bits;
+	nFormat->order = BYTE_INTEL;
+
+	// Read magic number
+	for (Int i = 0; i < 27; i++)
+		f_in->InputNumber(1);
+
+	bytesleft = f_in->InputNumber(3) - 12;
+
+	nFormat->rate = uint32(f_in->InputNumber(4));
+	nFormat->bits = uint8(f_in->InputNumber(1));
+	nFormat->channels = uint8(f_in->InputNumber(1));
+
+	nFormat->length = (nFormat->fileSize - 42 - 4 * int((nFormat->fileSize - 42) / 7340032)) / (nFormat->bits / 8);
 
 	delete f_in;
 

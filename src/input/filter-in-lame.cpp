@@ -41,12 +41,6 @@ bool FilterInLAME::Activate()
 
 		ex_lame_decode_headers(data, size, pcm_l, pcm_r, &mp3data);
 
-		format.order = BYTE_INTEL;
-		format.channels = mp3data.stereo;
-		format.rate = mp3data.samplerate;
-		format.bits = 16;
-		format.length = -1;
-
 		delete [] data;
 
 		if (mp3data.stereo <= 2) break;

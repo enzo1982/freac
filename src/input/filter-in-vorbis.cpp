@@ -97,12 +97,6 @@ int FilterInVORBIS::ReadData(unsigned char **data, int size)
 			}
 		}
 
-		format.rate = vi.rate;
-		format.channels = vi.channels;
-		format.bits = 16;
-		format.order = BYTE_INTEL;
-		format.length = -1;
-
 		ex_vorbis_synthesis_init(&vd, &vi);
 		ex_vorbis_block_init(&vd, &vb);
 	}

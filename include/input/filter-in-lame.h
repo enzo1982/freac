@@ -15,8 +15,6 @@
 
 class FilterInLAME : public InputFilter
 {
-	private:
-		bonkFormatInfo	 format;
 	public:
 				 FilterInLAME(bonkEncConfig *);
 				~FilterInLAME();

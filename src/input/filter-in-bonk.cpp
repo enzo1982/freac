@@ -40,10 +40,11 @@ int FilterInBONK::ReadData(unsigned char **data, int size)
 
 		f_in = new InStream(STREAM_DRIVER, driver);
 
-		decoder = ex_bonk_create_decoder(f_in, (uint32 *) &format.length, (uint32 *) &format.rate, (int *) &format.channels);
+		Int	 length = 0;
+		Int	 rate = 0;
+		Int	 channels = 0;
 
-		format.order = BYTE_INTEL;
-		format.bits = 16;
+		decoder = ex_bonk_create_decoder(f_in, (uint32 *) &length, (uint32 *) &rate, (int *) &channels);
 
 		setup = true;
 	}

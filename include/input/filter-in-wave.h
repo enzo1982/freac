@@ -17,7 +17,6 @@ class FilterInWAVE : public InputFilter
 {
 	private:
 		Bool		 setup;
-		bonkFormatInfo	 format;
 	public:
 				 FilterInWAVE(bonkEncConfig *);
 				~FilterInWAVE();

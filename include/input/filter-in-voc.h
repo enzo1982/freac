@@ -16,7 +16,6 @@
 class FilterInVOC : public InputFilter
 {
 	private:
-		bonkFormatInfo	 format;
 		Bool		 setup;
 		Int		 bytesleft;
 	public:
