@@ -179,6 +179,64 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 			format->trackInfo->track	= -1;
 			format->trackInfo->hasText	= False;
+
+			if (file.CompareN("/cda", 4) != 0)
+			{
+				String	 fileName;
+				Int	 in_len = file.Length();
+				Int	 lastBs = -1;
+				Int	 firstDot = 0;
+
+				for (Int i = 0; i < in_len; i++)
+				{
+					if (file[i] == '\\') lastBs = i;
+				}
+
+				for (Int j = in_len - 1; j >= 0; j--)
+				{
+					if (file[j] == '.') { firstDot = in_len - j; break; }
+					if (file[j] == '\\') break;
+				}
+
+				for (Int k = 0; k < (in_len - lastBs - firstDot - 1); k++)
+				{
+					fileName[k] = file[k + lastBs + 1];
+				}
+
+				Bool	 goodFormat = False;
+
+				for (Int l = 1; l < fileName.Length() - 1; l++)
+				{
+					if (fileName[l - 1] == ' ' &&
+					    fileName[  l  ] == '-' &&
+					    fileName[l + 1] == ' ')
+					{
+						goodFormat = True;
+
+						break;
+					}
+				}
+
+				if (goodFormat)
+				{
+					Int	 artistComplete = 0;
+
+					for (Int m = 0; m < fileName.Length(); m++)
+					{
+						if (fileName[  m  ] == ' ' &&
+						    fileName[m + 1] == '-' &&
+						    fileName[m + 2] == ' ')
+						{
+							artistComplete = m + 3;
+
+							m += 3;
+						}
+
+						if (!artistComplete)	format->trackInfo->artist[m] = fileName[m];
+						else			format->trackInfo->title[m - artistComplete] = fileName[m];
+					}
+				}
+			}
 		}
 
 		if (format->fileSize > 0)
