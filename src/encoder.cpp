@@ -553,6 +553,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		debug_out->OutputLine("Cleaning up...OK.");
 
+		trackInfo->outfile = NIL;
+
 		if (stop_encoding) break;
 	}
 

@@ -270,7 +270,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		ListEntry	*entry	= joblist->AddEntry(jlEntry);
 		Int		 id	= entry->id;
 
-		entry->SetTooltipText(tooltip);
+		if (currentConfig->showTooltips) entry->SetTooltipText(tooltip);
 
 		joblist->GetEntry(id)->selected = True;
 		joblist->Paint(SP_UPDATE);
@@ -453,7 +453,7 @@ Void bonkEncGUI::UpdateTitleInfo()
 
 	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
 
-	if (joblist->GetSelectedEntry()->name != jlEntry) joblist->ModifyEntry(joblist->GetSelectedEntry()->id, jlEntry);
+	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->ModifyEntry(joblist->GetSelectedEntry()->id, jlEntry);
 }
 
 Void bonkEncGUI::JoblistSelectAll()

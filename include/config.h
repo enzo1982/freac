@@ -40,6 +40,7 @@ class bonkEncConfig
 		Int		 output_plugin;
 
 		Bool		 showTitleInfo;
+		Bool		 showTooltips;
 
 		Bool		 showTips;
 		Int		 tipOffset;

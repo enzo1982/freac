@@ -86,7 +86,7 @@ bonkEncTrack *FilterInVOC::GetFileInfo(String inFile)
 	bonkEncTrack	*nFormat = new bonkEncTrack;
 	InStream	*f_in = OpenFile(inFile);
 
-	// Add more checking to this!
+	// TODO: Add more checking to this!
 
 	nFormat->fileSize = f_in->Size();
 	nFormat->order = BYTE_INTEL;

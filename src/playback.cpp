@@ -44,8 +44,12 @@ Void bonkEnc::PlayItem(Int entry)
 
 	if (playing) StopPlayback();
 
-	joblist->GetNthEntry(entry)->font.SetColor(RGB(255, 0, 0));
-	joblist->Paint(SP_PAINT);
+	Font	 font = joblist->GetNthEntry(entry)->GetFont();
+
+	font.SetColor(RGB(255, 0, 0));
+
+	joblist->GetNthEntry(entry)->SetFont(font);
+	joblist->Paint(SP_PAINT); // TODO: remove this line once ListEntries are real widgets
 
 	play_thread = new Thread();
 	play_thread->threadMain.Connect(&bonkEncGUI::PlayThread, this);
@@ -63,9 +67,7 @@ Void bonkEnc::PlaySelectedItem()
 {
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		if (!joblist->GetNthEntry(i)->clicked) continue;
-
-		PlayItem(i);
+		if (joblist->GetSelectedEntry() == joblist->GetNthEntry(i)) PlayItem(i);
 	}
 }
 
@@ -225,8 +227,12 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 	currentConfig->cdrip_activedrive = player_activedrive;
 
-	joblist->GetNthEntry(player_entry)->font.SetColor(Setup::ClientTextColor);
-	joblist->Paint(SP_PAINT);
+	Font	 font = joblist->GetNthEntry(player_entry)->GetFont();
+
+	font.SetColor(Setup::ClientTextColor);
+
+	joblist->GetNthEntry(player_entry)->SetFont(font);
+	joblist->Paint(SP_PAINT); // TODO: remove this line once ListEntries are real widgets
 
 	playing = false;
 

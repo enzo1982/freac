@@ -1026,6 +1026,8 @@ Void bonkEncGUI::ResizeProc()
 	joblist->size = Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
 	droparea->size = Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
 
+	joblist->SetMetrics(joblist->pos, joblist->size);
+
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
 	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
@@ -1180,7 +1182,7 @@ Void bonkEncGUI::QueryCDDB()
 
 					jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
 
-					joblist->GetNthEntry(k)->name = jlEntry;
+					joblist->GetNthEntry(k)->SetText(jlEntry);
 				}
 			}
 		}

@@ -94,6 +94,7 @@ Bool bonkEncConfig::LoadSettings()
 	enc_keepWaves = config->GetIntValue("Settings", "KeepWaveFiles", 0);
 	useUnicodeNames = config->GetIntValue("Settings", "UseUnicodeFilenames", 1);
 	showTitleInfo = config->GetIntValue("Settings", "ShowTitleInfo", 0);
+	showTooltips = config->GetIntValue("Settings", "ShowTooltips", 1);
 	wndPos.x = config->GetIntValue("Settings", "WindowPosX", 100);
 	wndPos.y = config->GetIntValue("Settings", "WindowPosY", 100);
 	wndSize.cx = config->GetIntValue("Settings", "WindowSizeX", 650);
@@ -221,6 +222,7 @@ Bool bonkEncConfig::SaveSettings()
 		config->SetIntValue("Settings", "KeepWaveFiles", enc_keepWaves);
 		config->SetIntValue("Settings", "UseUnicodeFilenames", useUnicodeNames);
 		config->SetIntValue("Settings", "ShowTitleInfo", showTitleInfo);
+		config->SetIntValue("Settings", "ShowTooltips", showTooltips);
 		config->SetIntValue("Settings", "WindowPosX", wndPos.x);
 		config->SetIntValue("Settings", "WindowPosY", wndPos.y);
 		config->SetIntValue("Settings", "WindowSizeX", wndSize.cx);

@@ -642,7 +642,7 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		for (Int m = 0; m < titles.GetNOfEntries(); m++)
 		{
-			if (trackInfo->track == list_tracks->GetNthEntry(m)->name.ToInt() && trackInfo->title != "" && trackInfo->title != titles.GetNthEntry(m))
+			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->title != "" && trackInfo->title != titles.GetNthEntry(m))
 			{
 				titles.SetEntry(titles.GetNthEntryIndex(m), trackInfo->title);
 				cddbInfo->GetNthEntry(trackInfo->cdTrack)->title = trackInfo->title;
@@ -726,7 +726,7 @@ Int cddbSubmitDlg::FreeCDText()
 Void cddbSubmitDlg::SelectTrack()
 {
 	String	 title = titles.GetEntry(list_tracks->GetSelectedEntry()->id);
-	Int	 track = list_tracks->GetSelectedEntry()->name.ToInt();
+	Int	 track = list_tracks->GetSelectedEntry()->GetText().ToInt();
 
 	dontUpdateInfo = True;
 
@@ -736,7 +736,7 @@ Void cddbSubmitDlg::SelectTrack()
 	if (track > 0 && track < 10)	edit_track->SetText(String("0").Append(String::FromInt(track)));
 	else if (track >= 10)		edit_track->SetText(String::FromInt(track));
 
-//	edit_title->checked = True;
+//	edit_title->checked = True;  // TODO: replace this block with something like edit_title->MarkAll();
 	edit_title->Process(SM_LBUTTONDOWN, 0, 0);
 	edit_title->Process(WM_KEYDOWN, VK_END, 0);
 
@@ -752,7 +752,7 @@ Void cddbSubmitDlg::UpdateTrack()
 
 	list_tracks->ModifyEntry(list_tracks->GetSelectedEntry()->id, String(track < 10 ? "0" : "").Append(String::FromInt(track)).Append("\t").Append(edit_title->GetText() == "" ? bonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
 
-	if (list_tracks->GetSelectedEntry()->name != edit_title->GetText()) titles.SetEntry(list_tracks->GetSelectedEntry()->id, edit_title->GetText());
+	if (list_tracks->GetSelectedEntry()->GetText() != edit_title->GetText()) titles.SetEntry(list_tracks->GetSelectedEntry()->id, edit_title->GetText());
 }
 
 Void cddbSubmitDlg::FinishTrack()

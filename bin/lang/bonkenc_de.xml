@@ -93,7 +93,7 @@
     <entry id="81" string="Copyright bit">Copyright Bit</entry>
     <entry id="82" string="CRC">CRC</entry>
     <entry id="83" string="Original bit">Original Bit</entry>
-    <entry id="84" string="Channels">Kanäle</entry>
+    <entry id="84" string="Channels">Audiokanäle</entry>
     <entry id="85" string="Private bit">Privat Bit</entry>
     <entry id="86" string="Set Copyright bit">Copyright Bit setzen</entry>
     <entry id="87" string="Enable CRC">CRC aktivieren</entry>
