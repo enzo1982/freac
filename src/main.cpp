@@ -51,19 +51,6 @@ bonkEncGUI::bonkEncGUI()
 	currentConfig->enable_console = false;
 	currentConfig->appMain = this;
 
-	i18n = new bonkTranslator();
-
-	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
-	{
-		languageDlg	*dlg = new languageDlg();
-
-		dlg->ShowDialog();
-
-		delete dlg;
-	}
-
-	i18n->ActivateLanguage(currentConfig->language);
-
 	dontUpdateInfo = False;
 	cddbRetry = True;
 	cddbInfo = NIL;
@@ -83,6 +70,7 @@ bonkEncGUI::bonkEncGUI()
 	menu_drives		= new Menu();
 	menu_seldrive		= new Menu();
 	menu_database		= new Menu();
+	menu_trackmenu		= new Menu();
 
 	pos.x = 91;
 	pos.y = -22;
@@ -498,9 +486,23 @@ bonkEncGUI::bonkEncGUI()
 
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)..."))->onClick.Connect(&bonkEncGUI::AddFile, this);
 
+	Menu::Entry	*entry;
+
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
+		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
+		{
+			entry = menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
+			entry->onClick.Connect(&bonkEncGUI::ReadSpecificCD, this);
+		}
+
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"))->onClick.Connect(&bonkEnc::ReadCD, (bonkEnc *) this);
+
+		if (currentConfig->cdrip_numdrives > 1)
+		{
+			menu_addsubmenu->AddEntry();
+			menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
+		}
 	}
 
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
@@ -515,6 +517,10 @@ bonkEncGUI::bonkEncGUI()
 		menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
 	}
 
+	menu_trackmenu->AddEntry(i18n->TranslateString("Remove"))->onClick.Connect(&bonkEncGUI::RemoveFile, this);
+	menu_trackmenu->AddEntry();
+	menu_trackmenu->AddEntry(i18n->TranslateString("Clear joblist"))->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 
@@ -522,8 +528,6 @@ bonkEncGUI::bonkEncGUI()
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-
-	Menu::Entry	*entry;
 
 	entry = mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), NIL, NIL, NIL, 0, OR_RIGHT);
 	entry->onClick.Connect(&bonkEncGUI::About, this);
@@ -535,13 +539,7 @@ bonkEncGUI::bonkEncGUI()
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
-		{
-			entry = menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
-			entry->onClick.Connect(&bonkEncGUI::ReadSpecificCD, this);
-		}
-
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), menu_drives);
+		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onClick.Connect(&bonkEnc::ReadCD, (bonkEnc *) this);
 		entry->SetStatusText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
@@ -636,6 +634,7 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->onResize.Connect(&bonkEncGUI::ResizeProc, this);
 	mainWnd->doQuit.Connect(&bonkEncGUI::ExitProc, this);
+	mainWnd->getTrackMenu.Connect(&bonkEncGUI::GetTrackMenu, this);
 	mainWnd->SetMinimumSize(Size(530, 300 + n));
 
 	if (currentConfig->maximized) mainWnd->Maximize();
@@ -727,6 +726,7 @@ bonkEncGUI::~bonkEncGUI()
 	delete menu_drives;
 	delete menu_seldrive;
 	delete menu_database;
+	delete menu_trackmenu;
 	delete hyperlink;
 
 	delete i18n;
@@ -1136,6 +1136,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	menu_addsubmenu->Clear();
 	menu_encode->Clear();
 	menu_database->Clear();
+	menu_trackmenu->Clear();
 	mainWnd_menubar->Clear();
 	mainWnd_iconbar->Clear();
 
@@ -1158,9 +1159,17 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)..."))->onClick.Connect(&bonkEncGUI::AddFile, this);
 
+	Menu::Entry	*entry;
+
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"))->onClick.Connect(&bonkEnc::ReadCD, (bonkEnc *) this);
+
+		if (currentConfig->cdrip_numdrives > 1)
+		{
+			menu_addsubmenu->AddEntry();
+			menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
+		}
 	}
 
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
@@ -1175,6 +1184,10 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 		menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
 	}
 
+	menu_trackmenu->AddEntry(i18n->TranslateString("Remove"))->onClick.Connect(&bonkEncGUI::RemoveFile, this);
+	menu_trackmenu->AddEntry();
+	menu_trackmenu->AddEntry(i18n->TranslateString("Clear joblist"))->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 
@@ -1182,8 +1195,6 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-
-	Menu::Entry	*entry;
 
 	entry = mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), NIL, NIL, NIL, 0, OR_RIGHT);
 	entry->onClick.Connect(&bonkEncGUI::About, this);
@@ -1195,7 +1206,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), menu_drives);
+		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onClick.Connect(&bonkEnc::ReadCD, (bonkEnc *) this);
 		entry->SetStatusText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
@@ -1235,4 +1246,19 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	hyperlink->Show();
 
 	return true;
+}
+
+Menu *bonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)
+{
+	if (mouseX > mainWnd->GetMainLayer()->GetObjectProperties()->pos.x + joblist->GetObjectProperties()->pos.x + 1 &&
+	    mouseX < mainWnd->GetMainLayer()->GetObjectProperties()->pos.x + joblist->GetObjectProperties()->pos.x + joblist->GetObjectProperties()->size.cx - 1 &&
+	    mouseY > mainWnd->GetMainLayer()->GetObjectProperties()->pos.y + joblist->GetObjectProperties()->pos.y + 17 &&
+	    mouseY < mainWnd->GetMainLayer()->GetObjectProperties()->pos.y + joblist->GetObjectProperties()->pos.y + joblist->GetObjectProperties()->size.cy - 1)
+	{
+		joblist->Process(SM_LBUTTONDOWN, 0, 0);
+
+		if (joblist->GetSelectedEntry() != NIL) return menu_trackmenu;
+	}
+
+	return NIL;
 }

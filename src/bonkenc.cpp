@@ -45,7 +45,7 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig	*bonkEnc::currentConfig	= NIL;
 bonkTranslator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "CVS-20030426";
+String	 bonkEnc::version = "CVS-20030503";
 String	 bonkEnc::cddbVersion = "v0.9";
 String	 bonkEnc::shortVersion = "v0.9";
 
@@ -62,6 +62,19 @@ bonkEnc::bonkEnc()
 
 	currentConfig->SetIniFile(iniFile);
 	currentConfig->LoadSettings();
+
+	i18n = new bonkTranslator();
+
+	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
+	{
+		languageDlg	*dlg = new languageDlg();
+
+		dlg->ShowDialog();
+
+		delete dlg;
+	}
+
+	i18n->ActivateLanguage(currentConfig->language);
 
 	if (LoadBonkDLL() == false)	currentConfig->enable_bonk = false;
 	else				currentConfig->enable_bonk = true;
@@ -252,6 +265,7 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 	bonkEncCDDB	 cddb(currentConfig);
 	String		 result;
 	String		 read = NIL;
+	Bool		 fuzzy = False;
 
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
@@ -289,7 +303,12 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 			dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
 		}
 
-		if (result == "fuzzy") dlg->AddEntry(i18n->TranslateString("none"), "");
+		if (result == "fuzzy")
+		{
+			dlg->AddEntry(i18n->TranslateString("none"), "");
+
+			fuzzy = True;
+		}
 
 		Int index = dlg->ShowDialog();
 
@@ -323,6 +342,8 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 		cddbInfo->discid = cddb.GetDiscIDString();
 		cddbInfo->category = cddb.GetCategory();
 
+		if (fuzzy) cddbInfo->revision = -1;
+
 		for (Int j = 0; j < result.Length();)
 		{
 			for (Int i = 0; i >= 0; i++, j++)
@@ -349,7 +370,7 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 				cddbInfo->artist = info->artist;
 				cddbInfo->album = info->album;
 
-				array->AddEntry(info);
+				array->AddEntry(info, 0);
 			}
 			else if (cLine.CompareN("DGENRE", 6) == 0)
 			{
@@ -387,11 +408,46 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 				info->track = track.ToInt() + 1;
 
 				cddbInfo->titles.AddEntry(info->title);
-				cddbInfo->nOfTracks++;
 
 				array->AddEntry(info, info->track);
 			}
-			else if (cLine.CompareN("# Revision: ", 12) == 0)
+			else if (cLine.CompareN("EXTD", 4) == 0)
+			{
+				bonkFormatInfo::bonkTrackInfo	*info = array->GetEntry(0);
+
+				for (Int k = 5; k < cLine.Length(); k++) info->comment[k - 5] = cLine[k];
+
+				cddbInfo->comment = info->comment;
+			}
+			else if (cLine.CompareN("EXTT", 4) == 0)
+			{
+				String	 track;
+				Int	 k;
+
+				for (k = 4; k >= 0; k++)
+				{
+					if (cLine[k] == '=')	break;
+					else			track[k - 4] = cLine[k];
+				}
+
+				bonkFormatInfo::bonkTrackInfo	*info = array->GetEntry(track.ToInt() + 1);
+
+				if (info != NIL)
+				{
+					for (Int l = k + 1; l < cLine.Length(); l++) info->comment[l - k - 1] = cLine[l];
+				}
+
+				cddbInfo->comments.AddEntry(info->comment);
+			}
+			else if (cLine.CompareN("PLAYORDER", 9) == 0)
+			{
+				bonkFormatInfo::bonkTrackInfo	*info = array->GetEntry(0);
+
+				for (Int k = 10; k < cLine.Length(); k++) info->playorder[k - 10] = cLine[k];
+
+				cddbInfo->playorder = info->playorder;
+			}
+			else if (cLine.CompareN("# Revision: ", 12) == 0 && !fuzzy)
 			{
 				String	 revision;
 

@@ -143,8 +143,9 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 		nFormat->trackInfo->outfile = NIL;
 		nFormat->trackInfo->hasText = True;
 
-		abuffer[0] = 0;
-		wbuffer[0] = 0;
+		ZeroMemory(abuffer, tbufsize);
+		ZeroMemory(wbuffer, 2 * tbufsize);
+
 		if ((frame = tag->Find(ID3FID_LEADARTIST)) != NIL)
 			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
 				if (field->Get() == ID3TE_ASCII)
@@ -160,8 +161,9 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 					nFormat->trackInfo->artist = wbuffer;
 				}
 
-		abuffer[0] = 0;
-		wbuffer[0] = 0;
+		ZeroMemory(abuffer, tbufsize);
+		ZeroMemory(wbuffer, 2 * tbufsize);
+
 		if ((frame = tag->Find(ID3FID_TITLE)) != NIL)
 			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
 				if (field->Get() == ID3TE_ASCII)
@@ -177,8 +179,9 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 					nFormat->trackInfo->title = wbuffer;
 				}
 
-		abuffer[0] = 0;
-		wbuffer[0] = 0;
+		ZeroMemory(abuffer, tbufsize);
+		ZeroMemory(wbuffer, 2 * tbufsize);
+
 		if ((frame = tag->Find(ID3FID_ALBUM)) != NIL)
 			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
 				if (field->Get() == ID3TE_ASCII)
@@ -194,8 +197,9 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 					nFormat->trackInfo->album = wbuffer;
 				}
 
-		abuffer[0] = 0;
-		wbuffer[0] = 0;
+		ZeroMemory(abuffer, tbufsize);
+		ZeroMemory(wbuffer, 2 * tbufsize);
+
 		if ((frame = tag->Find(ID3FID_CONTENTTYPE)) != NIL)
 			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
 				if (field->Get() == ID3TE_ASCII)
@@ -236,8 +240,9 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 					nFormat->trackInfo->genre = wbuffer;
 				}
 
-		abuffer[0] = 0;
-		wbuffer[0] = 0;
+		ZeroMemory(abuffer, tbufsize);
+		ZeroMemory(wbuffer, 2 * tbufsize);
+
 		if ((frame = tag->Find(ID3FID_YEAR)) != NIL)
 			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
 				if (field->Get() == ID3TE_ASCII)
@@ -253,8 +258,9 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 					nFormat->trackInfo->year = String(wbuffer).ToInt();
 				}
 
-		abuffer[0] = 0;
-		wbuffer[0] = 0;
+		ZeroMemory(abuffer, tbufsize);
+		ZeroMemory(wbuffer, 2 * tbufsize);
+
 		if ((frame = tag->Find(ID3FID_TRACKNUM)) != NIL)
 			if ((field = frame->GetField(ID3FN_TEXTENC)) != NIL)
 				if (field->Get() == ID3TE_ASCII)

@@ -127,6 +127,8 @@
 	typedef int				(*LAME_DECODE)					(unsigned char *, int, short [], short []);
 	typedef int				(*LAME_DECODE_HEADERS)				(unsigned char *, int, short [], short [], mp3data_struct *);
 	typedef char *				(*GET_LAME_SHORT_VERSION)			();
+	typedef void				(*LAME_MP3_TAGS_FID)				(lame_global_flags *, FILE *);
+	typedef int				(*LAME_SET_BWRITEVBRTAG)			(lame_global_flags *, int);
 
 	extern LAME_INIT			 ex_lame_init;
 	extern LAME_SET_PRESET			 ex_lame_set_preset;
@@ -162,6 +164,8 @@
 	extern LAME_DECODE			 ex_lame_decode;
 	extern LAME_DECODE_HEADERS		 ex_lame_decode_headers;
 	extern GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
+	extern LAME_MP3_TAGS_FID		 ex_lame_mp3_tags_fid;
+	extern LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag;
 
 // Ogg Vorbis API
 

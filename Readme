@@ -13,8 +13,11 @@ History
 		- the command line tool is now in a separate executable
 		- the genre field is now editable
 		- invalid characters in filenames are now replaced
+		- improved freedb support
 		- upgraded to smooth v0.8.62.0
 		- added support for Windows 95
+		- upgraded to CDRip v118 (own build)
+		- added support for MSLU (Unicode support for Windows 9x/ME)
 		- some bugfixes
 
 	Version 0.9 (March 2003)
@@ -104,6 +107,7 @@ Requirements
 		- BladeEnc is used if installed (http://bladeenc.mp3.no)
 		- FAAC is used if installed (http://www.audiocoding.com)
 		- TwinVQ is used if installed (http://www.twinvq.org)
+		- MSLU is used if installed on Windows 9x/ME systems (http://www.microsoft.com)
 
 Problems
 --------

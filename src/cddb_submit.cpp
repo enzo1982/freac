@@ -423,7 +423,7 @@ Void cddbSubmitDlg::Submit()
 	cddbInfo->year = edit_year->GetText();
 	cddbInfo->genre = edit_genre->GetText();
 
-	for (Int j = 0; j < cddbInfo->nOfTracks; j++)
+	for (Int j = 0; j < cddbInfo->titles.GetNOfEntries(); j++)
 	{
 		cddbInfo->titles.SetEntry(cddbInfo->titles.GetNthEntryIndex(j), titles.GetNthEntry(j));
 	}
@@ -575,7 +575,6 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		cddbInfo = new CDDBInfo;
 
-		cddbInfo->nOfTracks = numTocEntries;
 		cddbInfo->discid = discid;
 		cddbInfo->revision = -1;
 
@@ -613,7 +612,6 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		cddbInfo = new CDDBInfo;
 
-		cddbInfo->nOfTracks = numTocEntries;
 		cddbInfo->discid = discid;
 		cddbInfo->revision = -1;
 

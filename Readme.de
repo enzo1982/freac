@@ -13,8 +13,11 @@ Geschichte
 		- Das Kommandozeilentool ist jetzt eine eigene EXE Datei
 		- Das Genre Feld ist jetzt editierbar
 		- Ungültige Zeichen in Dateinamen werden jetzt ersetzt
+		- Verbesserte freedb Unterstützung
 		- Update auf smooth v0.8.62.0
 		- Unterstützung für Windows 95 hinzugefügt
+		- CDRip auf Version 118 aktualisiert (eigenes Build)
+		- Unterstützung für MSLU (Unicode unter Windows 9x/ME) hinzugefügt
 		- Einige Bugfixes
 
 	Version 0.9 (März 2003)
@@ -104,6 +107,7 @@ Voraussetzungen
 		- BladeEnc wird verwendet, wenn es installiert ist (http://bladeenc.mp3.no)
 		- FAAC wird verwendet, wenn es installiert ist (http://www.audiocoding.com)
 		- TwinVQ wird verwendet, wenn es installiert ist (http://www.twinvq.org)
+		- MSLU wird verwendet, wenn es auf Windows 9x/ME installiert ist (http://www.microsoft.com)
 
 Probleme
 --------

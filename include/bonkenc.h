@@ -64,6 +64,7 @@ class bonkFormatInfo
 				String	 genre;
 				Int	 year;
 				String	 comment;
+				String	 playorder;
 
 				String	 length;
 				String	 fileSize;

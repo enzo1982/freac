@@ -331,6 +331,8 @@ bool FilterOutLAME::Activate()
 		delete comment;
 	}
 
+	ex_lame_set_bWriteVbrTag(lameFlags, 1);
+
 	return true;
 }
 
@@ -341,6 +343,44 @@ bool FilterOutLAME::Deactivate()
 	unsigned long	 bytes = ex_lame_encode_flush(lameFlags, outbuffer, buffersize);
 
 	driver->WriteData(outbuffer, bytes);
+
+	if (currentConfig->lame_vbrmode != vbr_off)
+	{
+		String	 file = SMOOTH::StartDirectory;
+
+		file.Append("xing.tmp");
+
+		FILE	*f_out = fopen(file, "w+b");
+
+		if (f_out != NIL)
+		{
+			Int		 size = driver->GetSize();
+			unsigned char	*buffer = new unsigned char [size];
+
+			driver->Seek(0);
+			driver->ReadData(buffer, size);
+
+			fwrite((void *) buffer, 1, size, f_out);
+
+			ex_lame_mp3_tags_fid(lameFlags, f_out);
+
+			size = ftell(f_out);
+			fseek(f_out, 0, SEEK_SET);
+
+			delete [] buffer;
+			buffer = new unsigned char [size];
+
+			fread((void *) buffer, 1, size, f_out);
+
+			driver->Seek(0);
+			driver->WriteData(buffer, size);
+
+			delete [] buffer;
+
+			fclose(f_out);
+			remove(file);
+		}
+	}
 
 	ex_lame_close(lameFlags);
 

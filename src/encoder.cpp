@@ -328,9 +328,10 @@ Int bonkEnc::Encoder(Thread *thread)
 						if (format->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(format->bits / 8));
 						else if (format->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(format->bits / 8));
 
-						if (sample == -1) { filter_out->PrepareLastPacket(); step = i; break; }
+						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { filter_out->PrepareLastPacket(); step = i; break; }
 
-						f_out->OutputNumber(sample, int16(format->bits / 8));
+						if (sample != -1)	f_out->OutputNumber(sample, int16(format->bits / 8));
+						else			i--;
 					}
 
 					position = filter_in->GetInBytes();

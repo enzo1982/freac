@@ -9,9 +9,9 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/language.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
-EXEOBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/language.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o
+EXEOBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o $(OBJECTDIR)/console.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -23,8 +23,8 @@ LINKER = gcc
 REMOVER = rm
 ECHO = echo
 COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -O6 -g0 -Wall -Wno-pmf-conversions -fno-exceptions -DUNICODE -D_UNICODE -c
-LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lshell32 -lwsock32 -mwindows -o$(EXENAME)
-CMDLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lshell32 -lwsock32 -o$(CMDNAME)
+LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lwsock32 -mwindows -o$(EXENAME)
+CMDLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lwsock32 -o$(CMDNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all

@@ -14,7 +14,7 @@
 #include <cddb.h>
 #include <dllinterfaces.h>
 
-//#define LOG_CDDB
+#define LOG_CDDB
 
 Array<Array<bonkFormatInfo::bonkTrackInfo *> *>	 bonkEncCDDB::titleCache;
 Array<CDDBInfo *>				 bonkEncCDDB::infoCache;
@@ -469,7 +469,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	content.Append("# ").Append("\n");
 	content.Append("# Track frame offsets:").Append("\n");
 
-	for (int i = 0; i < cddbInfo->nOfTracks; i++)
+	for (int i = 0; i < cddbInfo->titles.GetNOfEntries(); i++)
 	{
 		content.Append("#     ").Append(String::FromInt(cddbInfo->offsets.GetNthEntry(i))).Append("\n");
 	}
@@ -486,19 +486,19 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	content.Append("DYEAR=").Append(cddbInfo->year).Append("\n");
 	content.Append("DGENRE=").Append(cddbInfo->genre).Append("\n");
 
-	for (int j = 0; j < cddbInfo->nOfTracks; j++)
+	for (int j = 0; j < cddbInfo->titles.GetNOfEntries(); j++)
 	{
 		content.Append("TTITLE").Append(String::FromInt(j)).Append("=").Append(cddbInfo->titles.GetNthEntry(j)).Append("\n");
 	}
 
-	content.Append("EXTD=").Append("\n");
+	content.Append("EXTD=").Append(cddbInfo->comment).Append("\n");
 
-	for (int k = 0; k < cddbInfo->nOfTracks; k++)
+	for (int k = 0; k < cddbInfo->titles.GetNOfEntries(); k++)
 	{
-		content.Append("EXTT").Append(String::FromInt(k)).Append("=").Append("\n");
+		content.Append("EXTT").Append(String::FromInt(k)).Append("=").Append(cddbInfo->comments.GetNthEntry(k)).Append("\n");
 	}
 
-	content.Append("PLAYORDER=").Append("\n");
+	content.Append("PLAYORDER=").Append(cddbInfo->playorder).Append("\n");
 
 #ifdef LOG_CDDB
 	OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
@@ -508,7 +508,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
 	str.Append("Discid: ").Append(cddbInfo->discid).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append("submit").Append("\n");
+	str.Append("Submit-Mode: ").Append("test").Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(content.Length())).Append("\n");
 	str.Append("Charset: ISO-8859-1\n");
 	str.Append("\n");

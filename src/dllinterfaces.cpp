@@ -77,6 +77,8 @@ LAME_DECODE_INIT		 ex_lame_decode_init;
 LAME_DECODE			 ex_lame_decode;
 LAME_DECODE_HEADERS		 ex_lame_decode_headers;
 GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
+LAME_MP3_TAGS_FID		 ex_lame_mp3_tags_fid;
+LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag;
 
 VORBISINFOINIT			 ex_vorbis_info_init;
 VORBISENCODEINIT		 ex_vorbis_encode_init;
@@ -241,6 +243,8 @@ Bool bonkEnc::LoadLAMEDLL()
 	ex_lame_decode				= (LAME_DECODE) GetProcAddress(lamedll, "lame_decode");
 	ex_lame_decode_headers			= (LAME_DECODE_HEADERS) GetProcAddress(lamedll, "lame_decode_headers");
 	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) GetProcAddress(lamedll, "get_lame_short_version");
+	ex_lame_mp3_tags_fid			= (LAME_MP3_TAGS_FID) GetProcAddress(lamedll, "lame_mp3_tags_fid");
+	ex_lame_set_bWriteVbrTag		= (LAME_SET_BWRITEVBRTAG) GetProcAddress(lamedll, "lame_set_bWriteVbrTag");
 
 	if (ex_lame_init == NULL)			{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_set_preset == NULL)			{ FreeLibrary(lamedll); return false; }
@@ -276,6 +280,8 @@ Bool bonkEnc::LoadLAMEDLL()
 	if (ex_lame_decode == NULL)			{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_decode_headers == NULL)		{ FreeLibrary(lamedll); return false; }
 	if (ex_get_lame_short_version == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_mp3_tags_fid == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_bWriteVbrTag == NULL)		{ FreeLibrary(lamedll); return false; }
 
 	return true;
 }

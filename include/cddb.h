@@ -22,14 +22,13 @@ class CDDBInfo
 	public:
 				 CDDBInfo()
 				{
-					nOfTracks = 0;
 					revision = 0;
 					disclength = 0;
 				}
 
-		Int		 nOfTracks;
 		Array<Int>	 offsets;
 		Array<String>	 titles;
+		Array<String>	 comments;
 		String		 artist;
 		String		 album;
 		String		 year;
@@ -39,6 +38,8 @@ class CDDBInfo
 		String		 category;
 		Int		 revision;
 		Int		 disclength;
+		String		 comment;
+		String		 playorder;
 };
 
 
