@@ -8,6 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
+#include <direct.h>
+
 #include <main.h>
 #include <iolib/drivers/driver_zero.h>
 #include <dllinterfaces.h>
