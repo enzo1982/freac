@@ -394,10 +394,8 @@ Void cddbSubmitDlg::Submit()
 {
 	Bool	 sane = True;
 
-	if (edit_artist->GetText() == "")		sane = False;
-	if (edit_album->GetText() == "")		sane = False;
-	if (edit_year->GetText() == "")			sane = False;
-	if (combo_genre->GetSelectedEntry() == 0)	sane = False;
+	if (edit_artist->GetText() == "")	sane = False;
+	if (edit_album->GetText() == "")	sane = False;
 
 	for (Int i = 0; i < titles.GetNOfEntries(); i++)
 	{
@@ -492,7 +490,13 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		dontUpdateInfo = False;
 
+		btn_submit->Deactivate();
+
 		return;
+	}
+	else
+	{
+		btn_submit->Activate();
 	}
 
 	text_cdstatus->SetText("");
@@ -536,7 +540,7 @@ Void cddbSubmitDlg::ChangeDrive()
 	{
 		edit_artist->SetText(cdInfo->GetEntry(0)->artist);
 		edit_album->SetText(cdInfo->GetEntry(0)->album);
-		edit_year->SetText(String::IntToString(cdInfo->GetEntry(0)->year));
+		edit_year->SetText(String::IntToString(cdInfo->GetEntry(0)->year) == "0" ? String("") : String::IntToString(cdInfo->GetEntry(0)->year));
 		combo_genre->SelectEntry(0);
 
 		for (int i = 0; i < combo_genre->GetNOfEntries(); i++)
