@@ -53,6 +53,9 @@ class bonkEncConfig
 		Bool		 enable_id3;
 		String		 enc_outdir;
 
+		Bool		 enable_tags;
+		String		 default_comment;
+
 		Array<String>	 cdrip_drives;
 		Int		 cdrip_numdrives;
 		Int		 cdrip_activedrive;

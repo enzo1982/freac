@@ -26,6 +26,7 @@ class configureGeneralSettings : public Application
 		Layer		*register_layer_language;
 		Layer		*register_layer_cdrip;
 		Layer		*register_layer_cddb;
+		Layer		*register_layer_tags;
 
 		GroupBox	*encoders_group_encoder;
 		ComboBox	*encoders_combo_encoder;
@@ -65,6 +66,11 @@ class configureGeneralSettings : public Application
 		Button		*cddb_button_http;
 		Button		*cddb_button_proxy;
 
+		GroupBox	*tags_group_tags;
+		CheckBox	*tags_check_enable;
+		Text		*tags_text_defcomment;
+		EditBox		*tags_edit_defcomment;
+
 		Divider		*divbar;
 
 		Window		*mainWnd;
@@ -79,6 +85,7 @@ class configureGeneralSettings : public Application
 		Bool		 locktray;
 		Bool		 ntscsi;
 		Bool		 cddb;
+		Bool		 enable_tags;
  
 		bonkEncConfig	*currentConfig;
 
@@ -93,6 +100,7 @@ class configureGeneralSettings : public Application
 		Void		 SetCDDBMode();
 		Void		 HTTPSettings();
 		Void		 ProxySettings();
+		Void		 ToggleTags();
 	public:
 				 configureGeneralSettings();
 				~configureGeneralSettings();

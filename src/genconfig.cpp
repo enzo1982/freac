@@ -41,6 +41,7 @@ configureGeneralSettings::configureGeneralSettings()
 	locktray = currentConfig->cdrip_locktray;
 	ntscsi = currentConfig->cdrip_ntscsi;
 	cddb = currentConfig->enable_cddb;
+	enable_tags = currentConfig->enable_tags;
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("General settings setup"));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
@@ -50,6 +51,7 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_language	= new Layer(bonkEnc::i18n->TranslateString("Language"));
 	register_layer_cdrip	= new Layer("CDRip");
 	register_layer_cddb	= new Layer("CDDB");
+	register_layer_tags	= new Layer(bonkEnc::i18n->TranslateString("Info tags"));
 
 	pos.x = 175;
 	pos.y = 29;
@@ -366,6 +368,35 @@ configureGeneralSettings::configureGeneralSettings()
 	cddb_edit_server->SetMetrics(Point(maxTextSize + 24, cddb_edit_server->GetObjectProperties()->pos.y), Size(265 - maxTextSize - cddb_text_port->GetObjectProperties()->textSize.cx, cddb_edit_server->GetObjectProperties()->size.cy));
 	cddb_edit_email->SetMetrics(Point(maxTextSize + 24, cddb_edit_email->GetObjectProperties()->pos.y), Size(317 - maxTextSize, cddb_edit_email->GetObjectProperties()->size.cy));
 
+	pos.x = 7;
+	pos.y = 11;
+	size.cx = 344;
+	size.cy = 67;
+
+	tags_group_tags		= new GroupBox(bonkEnc::i18n->TranslateString("Info tags"), pos, size);
+
+	pos.x = 16;
+	pos.y = 24;
+	size.cx = 163;
+	size.cy = 0;
+
+	tags_check_enable	= new CheckBox(bonkEnc::i18n->TranslateString("Write ID3V2/Vorbis info tags"), pos, size, &enable_tags);
+	tags_check_enable->onClick.Connect(&configureGeneralSettings::ToggleTags, this);
+	tags_check_enable->SetMetrics(pos, Size(tags_check_enable->GetObjectProperties()->textSize.cx + 20, tags_check_enable->GetObjectProperties()->size.cy));
+
+	pos.y += 28;
+
+	tags_text_defcomment	= new Text(bonkEnc::i18n->TranslateString("Default comment string:"), pos);
+
+	pos.x += (7 + tags_text_defcomment->GetObjectProperties()->textSize.cx);
+	pos.y -= 3;
+	size.cx = 320 - tags_text_defcomment->GetObjectProperties()->textSize.cx;
+	size.cy = 0;
+
+	tags_edit_defcomment	= new EditBox(currentConfig->default_comment, pos, size, EDB_ALPHANUMERIC, 0);
+
+	ToggleTags();
+
 	RegisterObject(mainWnd);
 
 	mainWnd->RegisterObject(mainWnd_titlebar);
@@ -379,6 +410,8 @@ configureGeneralSettings::configureGeneralSettings()
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cddb);
+
+	reg_register->RegisterObject(register_layer_tags);
 
 	register_layer_encoders->RegisterObject(encoders_group_encoder);
 	register_layer_encoders->RegisterObject(encoders_combo_encoder);
@@ -417,6 +450,11 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_cddb->RegisterObject(cddb_button_http);
 	register_layer_cddb->RegisterObject(cddb_button_proxy);
 
+	register_layer_tags->RegisterObject(tags_group_tags);
+	register_layer_tags->RegisterObject(tags_check_enable);
+	register_layer_tags->RegisterObject(tags_text_defcomment);
+	register_layer_tags->RegisterObject(tags_edit_defcomment);
+
 	cddb_layer_background->RegisterObject(cddb_check_enable);
 
 	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
@@ -439,6 +477,8 @@ configureGeneralSettings::~configureGeneralSettings()
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->UnregisterObject(register_layer_cdrip);
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->UnregisterObject(register_layer_cddb);
+
+	reg_register->UnregisterObject(register_layer_tags);
 
 	register_layer_encoders->UnregisterObject(encoders_group_encoder);
 	register_layer_encoders->UnregisterObject(encoders_combo_encoder);
@@ -477,6 +517,11 @@ configureGeneralSettings::~configureGeneralSettings()
 	register_layer_cddb->UnregisterObject(cddb_button_http);
 	register_layer_cddb->UnregisterObject(cddb_button_proxy);
 
+	register_layer_tags->UnregisterObject(tags_group_tags);
+	register_layer_tags->UnregisterObject(tags_check_enable);
+	register_layer_tags->UnregisterObject(tags_text_defcomment);
+	register_layer_tags->UnregisterObject(tags_edit_defcomment);
+
 	cddb_layer_background->UnregisterObject(cddb_check_enable);
 
 	UnregisterObject(mainWnd);
@@ -489,6 +534,7 @@ configureGeneralSettings::~configureGeneralSettings()
 	delete register_layer_language;
 	delete register_layer_cdrip;
 	delete register_layer_cddb;
+	delete register_layer_tags;
 	delete encoders_group_encoder;
 	delete encoders_combo_encoder;
 	delete encoders_button_config;
@@ -523,6 +569,10 @@ configureGeneralSettings::~configureGeneralSettings()
 	delete cddb_edit_email;
 	delete cddb_button_http;
 	delete cddb_button_proxy;
+	delete tags_group_tags;
+	delete tags_check_enable;
+	delete tags_text_defcomment;
+	delete tags_edit_defcomment;
 	delete btn_ok;
 	delete btn_cancel;
 }
@@ -572,6 +622,9 @@ Void configureGeneralSettings::OK()
 	currentConfig->cdrip_locktray = locktray;
 	currentConfig->cdrip_ntscsi = ntscsi;
 	currentConfig->enable_cddb = cddb;
+	currentConfig->enable_tags = enable_tags;
+
+	currentConfig->default_comment = tags_edit_defcomment->GetText();
 
 	currentConfig->freedb_mode = cddb_combo_mode->GetSelectedEntry();
 	currentConfig->freedb_server = cddb_edit_server->GetText();
@@ -745,4 +798,18 @@ Void configureGeneralSettings::ProxySettings()
 	dlg->ShowDialog();
 
 	delete dlg;
+}
+
+Void configureGeneralSettings::ToggleTags()
+{
+	if (enable_tags)
+	{
+		tags_text_defcomment->Activate();
+		tags_edit_defcomment->Activate();
+	}
+	else
+	{
+		tags_text_defcomment->Deactivate();
+		tags_edit_defcomment->Deactivate();
+	}
 }

@@ -198,5 +198,8 @@
     <entry id="187" string="Year">Jahr</entry>
     <entry id="188" string="Genre">Genre</entry>
     <entry id="189" string="Album">Album</entry>
+    <entry id="190" string="Info tags">Info Tags</entry>
+    <entry id="191" string="Write ID3V2/Vorbis info tags">ID3V2/Vorbis Info Tags schreiben</entry>
+    <entry id="192" string="Default comment string:">Standardkommentar:</entry>
   </data>
 </LangFile>

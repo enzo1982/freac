@@ -52,9 +52,10 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 	}
 
 	ex_vorbis_comment_init(&vc);
-	ex_vorbis_comment_add_tag(&vc, "COMMENT", "BonkEnc v0.9 <http://www.bonkenc.org>");
 
-	if (format->trackInfo->cdText)
+	if (currentConfig->enable_tags) ex_vorbis_comment_add_tag(&vc, "COMMENT", currentConfig->default_comment);
+
+	if (format->trackInfo->cdText && currentConfig->enable_tags)
 	{
 		if (format->trackInfo->title != NIL && format->trackInfo->title != "")
 		{

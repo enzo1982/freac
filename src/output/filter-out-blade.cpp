@@ -72,8 +72,7 @@ FilterOutBLADE::~FilterOutBLADE()
 
 bool FilterOutBLADE::Activate()
 {
-#ifndef _MSC_VER
-	if (format->trackInfo->cdText)
+	if (format->trackInfo->cdText && currentConfig->enable_tags)
 	{
 		ID3_Tag		*tag = new ID3_Tag();
 
@@ -82,7 +81,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->artist != NIL && format->trackInfo->artist != "")
 		{
-			artist_text.Set(format->trackInfo->artist);
+			artist_text.Set((wchar_t *) format->trackInfo->artist);
 
 			tag->AddFrame(artist);
 		}
@@ -92,7 +91,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->title != NIL && format->trackInfo->title != "")
 		{
-			title_text.Set(format->trackInfo->title);
+			title_text.Set((wchar_t *) format->trackInfo->title);
 
 			tag->AddFrame(title);
 		}
@@ -102,7 +101,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->album != NIL && format->trackInfo->album != "")
 		{
-			album_text.Set(format->trackInfo->album);
+			album_text.Set((wchar_t *) format->trackInfo->album);
 
 			tag->AddFrame(album);
 		}
@@ -112,8 +111,8 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->track > 0)
 		{
-			if (format->trackInfo->track < 10)	track_text.Set(String("0").Append(String::IntToString(format->trackInfo->track)));
-			else					track_text.Set(String::IntToString(format->trackInfo->track));
+			if (format->trackInfo->track < 10)	track_text.Set((wchar_t *) String("0").Append(String::IntToString(format->trackInfo->track)));
+			else					track_text.Set((wchar_t *) String::IntToString(format->trackInfo->track));
 
 			tag->AddFrame(track);
 		}
@@ -123,7 +122,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->year > 0)
 		{
-			year_text.Set(String::IntToString(format->trackInfo->year));
+			year_text.Set((wchar_t *) String::IntToString(format->trackInfo->year));
 
 			tag->AddFrame(year);
 		}
@@ -133,7 +132,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->genre != NIL && format->trackInfo->genre != "")
 		{
-			genre_text.Set(format->trackInfo->genre);
+			genre_text.Set((wchar_t *) format->trackInfo->genre);
 
 			tag->AddFrame(genre);
 		}
@@ -141,7 +140,7 @@ bool FilterOutBLADE::Activate()
 		ID3_Frame	*comment = new ID3_Frame(ID3FID_COMMENT);
 		ID3_Field	&comment_text = comment->Field(ID3FN_TEXT);
 
-		comment_text.Set("BonkEnc v0.9 <http://www.bonkenc.org>");
+		comment_text.Set((wchar_t *) currentConfig->default_comment);
 
 		tag->AddFrame(comment);
 
@@ -161,7 +160,6 @@ bool FilterOutBLADE::Activate()
 		delete genre;
 		delete comment;
 	}
-#endif
 
 	return true;
 }

@@ -110,6 +110,9 @@ Bool bonkEncConfig::LoadSettings()
 	tab_width_length = getINIValue("Settings", "TabWidthLength", "80").ToInt();
 	tab_width_size = getINIValue("Settings", "TabWidthSize", "80").ToInt();
 
+	enable_tags = getINIValue("Settings", "EnableTags", "1").ToInt();
+	default_comment = getINIValue("Settings", "DefaultComment", "BonkEnc v0.9 <http://www.bonkenc.org>");
+
 	enable_cddb = getINIValue("freedb", "EnableCDDB", "0").ToInt();
 	freedb_server = getINIValue("freedb", "Server", "freedb.freedb.org");
 	freedb_mode = getINIValue("freedb", "Mode", "0").ToInt();
@@ -122,11 +125,11 @@ Bool bonkEncConfig::LoadSettings()
 	freedb_proxy = getINIValue("freedb", "Proxy", "");
 	freedb_proxy_port = getINIValue("freedb", "ProxyPort", "1080").ToInt();
 
-	bonk_quantization = getINIValue("bonkEnc", "Quantization", "8").ToInt();
-	bonk_predictor = getINIValue("bonkEnc", "Predictor", "32").ToInt();
-	bonk_downsampling = getINIValue("bonkEnc", "Downsampling", "2").ToInt();
-	bonk_jstereo = getINIValue("bonkEnc", "JointStereo", "0").ToInt();
-	bonk_lossless = getINIValue("bonkEnc", "Lossless", "0").ToInt();
+	bonk_quantization = getINIValue("bonk", "Quantization", "8").ToInt();
+	bonk_predictor = getINIValue("bonk", "Predictor", "32").ToInt();
+	bonk_downsampling = getINIValue("bonk", "Downsampling", "2").ToInt();
+	bonk_jstereo = getINIValue("bonk", "JointStereo", "0").ToInt();
+	bonk_lossless = getINIValue("bonk", "Lossless", "0").ToInt();
 
 	blade_bitrate = getINIValue("bladeEnc", "Bitrate", "192").ToInt();
 	blade_crc = getINIValue("bladeEnc", "CRC", "0").ToInt();
@@ -251,6 +254,14 @@ Bool bonkEncConfig::SaveSettings()
 		str.Append(String::IntToString(tab_width_size));
 		out->OutputLine(str);
 
+		str = "EnableTags=";
+		str.Append(String::IntToString(enable_tags));
+		out->OutputLine(str);
+
+		str = "DefaultComment=";
+		str.Append(default_comment);
+		out->OutputLine(str);
+
 		out->OutputLine("");
 		out->OutputLine("[CDRip]");
 
@@ -334,7 +345,7 @@ Bool bonkEncConfig::SaveSettings()
 		out->OutputLine(str);
 
 		out->OutputLine("");
-		out->OutputLine("[bonkEnc]");
+		out->OutputLine("[bonk]");
 
 		str = "Quantization=";
 		str.Append(String::IntToString(bonk_quantization));
