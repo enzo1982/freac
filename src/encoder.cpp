@@ -545,6 +545,10 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			nRemoved++;
 		}
+		else if (stop_encoding)
+		{
+			trackInfo->outfile = NIL;
+		}
 
 		if (!currentConfig->enc_onTheFly && step == 1 && !currentConfig->enc_keepWaves && encoder != ENCODER_WAVE)
 		{
@@ -552,8 +556,6 @@ Int bonkEnc::Encoder(Thread *thread)
 		}
 
 		debug_out->OutputLine("Cleaning up...OK.");
-
-		trackInfo->outfile = NIL;
 
 		if (stop_encoding) break;
 	}

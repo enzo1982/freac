@@ -70,8 +70,6 @@ bool FilterOutMP4::Activate()
 
 	ex_MP4SetTrackESConfiguration(mp4File, mp4Track, buffer, bufferSize);
 
-	delete [] buffer;
-
 	frameSize	= samplesSize / format->channels;
 
 	totalSamples	= 0;
