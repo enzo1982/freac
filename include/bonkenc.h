@@ -12,7 +12,6 @@
 #define _H_BONKENC_
 
 #include <smooth.h>
-#include "i18n.h"
 #include "config.h"
 #include "winamp/in2.h"
 
@@ -205,7 +204,7 @@ class bonkEnc : public Application
 		static String		 shortVersion;
 
 		static bonkEncConfig	*currentConfig;
-		static bonkTranslator	*i18n;
+		static I18n::Translator	*i18n;
 
 		HINSTANCE		 bonkdll;
 		HINSTANCE		 bladedll;

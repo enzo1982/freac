@@ -235,5 +235,6 @@
     <entry id="223" string="Psycho acoustic model"/>
     <entry id="224" string="Use Temporal Masking Effect"/>
     <entry id="225" string="Expert"/>
+    <entry id="226" string="Cannot configure encoder while encoding!"/>
   </data>
 </LangFile>

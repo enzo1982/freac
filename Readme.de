@@ -15,6 +15,7 @@ Geschichte
 		- Update auf smooth v0.8.63.0
 		- Kompatibilität des Setups mit Windows 9x/ME verbessert
 		- Allemeine Stabilität besonders unter Windows 9x/ME verbessert
+		- I18N Funktionen jetzt in smooth
 		- Einige kleinere Verbesserungen
 		- Einige Fehler wurden behoben
 

@@ -15,6 +15,7 @@ History
 		- upgraded to smooth v0.8.63.0
 		- improved setup compatibility with Windows 9x/ME
 		- improved overall stability especially on Windows 9x/ME
+		- moved I18N capabilities to smooth
 		- some small improvements
 		- some bugfixes
 

@@ -52,8 +52,8 @@ Int	 ENCODER_FAAC		= -1;
 Int	 ENCODER_TVQ		= -1;
 Int	 ENCODER_WAVE		= -1;
 
-bonkEncConfig	*bonkEnc::currentConfig	= NIL;
-bonkTranslator	*bonkEnc::i18n		= NIL;
+bonkEncConfig		*bonkEnc::currentConfig	= NIL;
+I18n::Translator	*bonkEnc::i18n		= NIL;
 
 String	 bonkEnc::version = "v1.0 beta 2";
 String	 bonkEnc::cddbVersion = "v1.0beta2";
@@ -69,7 +69,8 @@ bonkEnc::bonkEnc()
 	currentConfig->SetIniFile(GetApplicationDirectory().Append("bonkenc.ini"));
 	currentConfig->LoadSettings();
 
-	i18n = new bonkTranslator();
+	i18n = new I18n::Translator();
+	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@gmx.net>", "http://www.bonkenc.org", False);
 
 	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
 	{
@@ -234,6 +235,7 @@ bonkEnc::~bonkEnc()
 
 	FreeWinampDLLs();
 
+	delete i18n;
 	delete currentConfig;
 }
 

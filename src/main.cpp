@@ -803,8 +803,6 @@ bonkEncGUI::~bonkEncGUI()
 	delete menu_trackmenu;
 	delete menu_help;
 	delete hyperlink;
-
-	delete i18n;
 }
 
 Bool bonkEncGUI::ExitProc()

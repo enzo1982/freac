@@ -12,7 +12,6 @@
 #define _H_CONFIG_
 
 #include <smooth.h>
-#include "i18n.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
