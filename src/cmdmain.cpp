@@ -8,11 +8,27 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <main.h>
+#define __THROW_BAD_ALLOC exit(1)
+#define MAKEUNICODESTR(x) L##x
+
+#include <smooth/main.h>
+#include <cmdmain.h>
 #include <console.h>
 
-Void bonkEnc::ConsoleMode()
+Int smooth::Main()
 {
+	bonkEncCommandline	*app = new bonkEncCommandline();
+
+	delete app;
+
+	return 0;
+}
+
+bonkEncCommandline::bonkEncCommandline()
+{
+	currentConfig->enable_console = true;
+	currentConfig->appMain = this;
+
 	joblist = new ListBox(Point(0, 0), Size(0, 0));
 
 	bool		 quiet = ScanForParameter("-q", NULL);
@@ -32,13 +48,13 @@ Void bonkEnc::ConsoleMode()
 	bonkEncConsole	*con;
 
 	if (!quiet)	con = new bonkEncConsole("BonkEnc v1.0 beta 1");
-	else		con = new bonkEncConsole((char *) NULL);
+	else		con = new bonkEncConsole((char *) NIL);
 
-	con->OutputString("BonkEnc Audio Encoder v1.0 console interface\nCopyright (C) 2001-2003 Robert Kausch\n\n");
+	con->OutputString("BonkEnc Audio Encoder v1.0 command line interface\nCopyright (C) 2001-2003 Robert Kausch\n\n");
 
 	if ((files.GetNOfEntries() == 0 && helpenc == "") || !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "TVQ" || encoder == "WAVE") || (files.GetNOfEntries() > 1 && outfile != ""))
 	{
-		con->OutputString("Usage:\tbonkenc --console [options] [file(s)]\n\n");
+		con->OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
 		con->OutputString("\t-e <encoder>\tSpecify the encoder to use (default is BONK)\n");
 		con->OutputString("\t-d <outdir>\tSpecify output directory for encoded files\n");
 		con->OutputString("\t-o <outfile>\tSpecify output file name in single file mode\n");
@@ -48,6 +64,7 @@ Void bonkEnc::ConsoleMode()
 
 		con->OutputString("-- Press any key to continue --");
 		con->WaitKey();
+		con->OutputString("\n");
 	}
 	else if (helpenc != "")
 	{
@@ -62,6 +79,7 @@ Void bonkEnc::ConsoleMode()
 
 		con->OutputString("-- Press any key to continue --");
 		con->WaitKey();
+		con->OutputString("\n");
 	}
 	else
 	{
@@ -78,6 +96,7 @@ Void bonkEnc::ConsoleMode()
 
 			con->OutputString("-- Press any key to continue --");
 			con->WaitKey();
+			con->OutputString("\n");
 
 			broken = true;
 		}
@@ -95,6 +114,7 @@ Void bonkEnc::ConsoleMode()
 
 			con->OutputString("-- Press any key to continue --");
 			con->WaitKey();
+			con->OutputString("\n");
 
 			broken = true;
 		}
@@ -182,6 +202,7 @@ Void bonkEnc::ConsoleMode()
 			{
 				con->OutputString("\n-- Press any key to continue --");
 				con->WaitKey();
+				con->OutputString("\n");
 			}
 		}
 	}
@@ -191,7 +212,11 @@ Void bonkEnc::ConsoleMode()
 	delete joblist;
 }
 
-Bool bonkEnc::ScanForParameter(String param, String *option)
+bonkEncCommandline::~bonkEncCommandline()
+{
+}
+
+Bool bonkEncCommandline::ScanForParameter(String param, String *option)
 {
 	for (int i = 0; i < szCmdLine.Length(); i++)
 	{
@@ -233,7 +258,7 @@ Bool bonkEnc::ScanForParameter(String param, String *option)
 	return false;
 }
 
-Void bonkEnc::ScanForFiles(Array<String> *files)
+Void bonkEncCommandline::ScanForFiles(Array<String> *files)
 {
 	String	 param;
 	String	 prevParam;

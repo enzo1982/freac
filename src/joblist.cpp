@@ -20,7 +20,7 @@
 #include <input/filter-in-vorbis.h>
 #include <input/filter-in-bonk.h>
 
-Void bonkEnc::AddFile()
+Void bonkEncGUI::AddFile()
 {
 	if (encoding)
 	{
@@ -78,7 +78,7 @@ Void bonkEnc::AddFile()
 	delete dialog;
 }
 
-Void bonkEnc::AddDragDropFile(String *iFile)
+Void bonkEncGUI::AddDragDropFile(String *iFile)
 {
 	String	 file = *iFile;
 
@@ -224,7 +224,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 	txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
 }
 
-Void bonkEnc::RemoveFile()
+Void bonkEncGUI::RemoveFile()
 {
 	if (encoding)
 	{
@@ -320,7 +320,7 @@ Void bonkEnc::ClearList()
 	dontUpdateInfo = False;
 }
 
-Void bonkEnc::SelectJoblistEntry()
+Void bonkEncGUI::SelectJoblistEntry()
 {
 	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
 
@@ -344,7 +344,7 @@ Void bonkEnc::SelectJoblistEntry()
 	dontUpdateInfo = False;
 }
 
-Void bonkEnc::UpdateTitleInfo()
+Void bonkEncGUI::UpdateTitleInfo()
 {
 	if (dontUpdateInfo) return;
 

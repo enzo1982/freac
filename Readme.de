@@ -5,14 +5,12 @@ Es kann MP3, Ogg Vorbis, BONK, AAC und VQF Dateien erzeugen.
 
 BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 
-Das Kommandozeileninterface ist verfügbar, wenn
-BonkEnc mit der '--console' Option aufgerufen wird.
-
 Geschichte
 ----------
 
 	Version 1.0 beta 1 CVS (April 2003)
 
+		- Das Kommandozeilentool ist jetzt eine eigene EXE Datei
 		- Das Genre Feld ist jetzt editierbar
 		- Ungültige Zeichen in Dateinamen werden jetzt ersetzt
 		- Update auf smooth v0.8.62.0
@@ -145,7 +143,6 @@ Pläne für zukünftige Versionen
 	- Kommandozeilenoptionen zum Konfigurieren der Encoder erlauben
 	- Onlinedokumentation für BonkEnc schreiben
 	- Unterstützung für rechts-nach-links Schriften verbessern
-	- Kommandozeileininterface in eigener exe Datei
 	- Online Update unterstützen
 
 -----------------------------------------------------------------------------------

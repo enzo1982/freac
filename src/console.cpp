@@ -13,13 +13,11 @@
 
 bonkEncConsole::bonkEncConsole(String title)
 {
-	if (title != (int) NIL)	consoleWindow = true;
-	else			consoleWindow = false;
+	if (title != NIL)	consoleWindow = True;
+	else			consoleWindow = False;
 
 	if (consoleWindow)
 	{
-		AllocConsole();
-
 		if (Setup::enableUnicode)	SetConsoleTitleW(title);
 		else				SetConsoleTitleA(title);
 	}
@@ -27,10 +25,6 @@ bonkEncConsole::bonkEncConsole(String title)
 
 bonkEncConsole::~bonkEncConsole()
 {
-	if (consoleWindow)
-	{
-		FreeConsole();
-	}
 }
 
 void bonkEncConsole::OutputString(String string)

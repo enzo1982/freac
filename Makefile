@@ -9,10 +9,13 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/console.o $(OBJECTDIR)/console_interface.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/language.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
+EXEOBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/language.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o
+CMDOBJECTS = $(OBJECTDIR)/cmdmain.o $(OBJECTDIR)/console.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
+CMDNAME = $(BINDIR)/BEcmd.exe
 
 COMPILER = gcc
 RESCOMP = windres
@@ -21,6 +24,7 @@ REMOVER = rm
 ECHO = echo
 COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -O6 -g0 -Wall -Wno-pmf-conversions -fno-exceptions -DUNICODE -D_UNICODE -c
 LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lshell32 -lwsock32 -mwindows -o$(EXENAME)
+CMDLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lshell32 -lwsock32 -o$(CMDNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
@@ -31,20 +35,27 @@ RESCOMP_OPTS = -O coff
 .PHONY: all install clean
 .SILENT:
 
-all: $(OBJECTS) $(RESOURCES) $(EXENAME)
+all: $(OBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOURCES) $(EXENAME) $(CMDNAME)
 
 install:
 
 clean:
 	$(ECHO) -n Cleaning directories...
-	$(REMOVER) $(REMOVER_OPTS) $(OBJECTS) $(RESOURCES) $(EXENAME)
+	$(REMOVER) $(REMOVER_OPTS) $(OBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOURCES) $(EXENAME) $(CMDNAME)
 	$(ECHO) done.
 
-$(EXENAME): $(OBJECTS)
+$(EXENAME): $(OBJECTS) $(EXEOBJECTS)
 	$(ECHO) -n Linking $(EXENAME)...
-	$(LINKER) $(OBJECTS) $(OBJECTDIR)/libid3dll.a $(RESOURCES) $(LINKER_OPTS)
+	$(LINKER) $(OBJECTS) $(EXEOBJECTS) $(OBJECTDIR)/libid3dll.a $(RESOURCES) $(LINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(EXENAME)
 	$(PACKER) $(PACKER_OPTS) $(EXENAME)
+	$(ECHO) done.
+
+$(CMDNAME): $(OBJECTS) $(CMDOBJECTS)
+	$(ECHO) -n Linking $(CMDNAME)...
+	$(LINKER) $(OBJECTS) $(CMDOBJECTS) $(OBJECTDIR)/libid3dll.a $(RESOURCES) $(CMDLINKER_OPTS)
+	$(STRIP) $(STRIP_OPTS) $(CMDNAME)
+	$(PACKER) $(PACKER_OPTS) $(CMDNAME)
 	$(ECHO) done.
 
 $(OBJECTDIR)/bladeconfig.o: $(SRCDIR)/bladeconfig.cpp
@@ -55,6 +66,11 @@ $(OBJECTDIR)/bladeconfig.o: $(SRCDIR)/bladeconfig.cpp
 $(OBJECTDIR)/bonkconfig.o: $(SRCDIR)/bonkconfig.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/bonkconfig.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/bonkconfig.cpp -o $(OBJECTDIR)/bonkconfig.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/bonkenc.o: $(SRCDIR)/bonkenc.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/bonkenc.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/bonkenc.cpp -o $(OBJECTDIR)/bonkenc.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/cddb.o: $(SRCDIR)/cddb.cpp
@@ -82,6 +98,11 @@ $(OBJECTDIR)/cdtext.o: $(SRCDIR)/cdtext.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cdtext.cpp -o $(OBJECTDIR)/cdtext.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/cmdmain.o: $(SRCDIR)/cmdmain.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/cmdmain.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cmdmain.cpp -o $(OBJECTDIR)/cmdmain.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/config.o: $(SRCDIR)/config.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/config.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/config.cpp -o $(OBJECTDIR)/config.o
@@ -90,11 +111,6 @@ $(OBJECTDIR)/config.o: $(SRCDIR)/config.cpp
 $(OBJECTDIR)/console.o: $(SRCDIR)/console.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/console.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/console.cpp -o $(OBJECTDIR)/console.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/console_interface.o: $(SRCDIR)/console_interface.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/console_interface.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/console_interface.cpp -o $(OBJECTDIR)/console_interface.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/dllinterfaces.o: $(SRCDIR)/dllinterfaces.cpp
