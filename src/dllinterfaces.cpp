@@ -10,6 +10,7 @@
 
 #include <main.h>
 #include <dllinterfaces.h>
+#include <direct.h>
 
 CR_INIT				 ex_CR_Init;
 CR_DEINIT			 ex_CR_DeInit;
@@ -576,11 +577,11 @@ Void bonkEnc::FreeWinampDLLs()
 	winamp_in_plugins.RemoveAll();
 	winamp_in_modules.RemoveAll();
 
-	for (Int i = 0; i < winamp_out_plugins.GetNOfEntries(); i++)
+	for (Int j = 0; j < winamp_out_plugins.GetNOfEntries(); j++)
 	{
-		winamp_out_modules.GetNthEntry(i)->Quit();
+		winamp_out_modules.GetNthEntry(j)->Quit();
 
-		FreeLibrary(winamp_out_plugins.GetNthEntry(i));
+		FreeLibrary(winamp_out_plugins.GetNthEntry(j));
 	}
 
 	winamp_out_plugins.RemoveAll();

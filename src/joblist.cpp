@@ -110,7 +110,7 @@ Void bonkEncGUI::AddFile()
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) dialog->AddFilter(i18n->TranslateString("Windows CD Audio Track").Append(" (*.cda)"), "*.cda");
 
-	for (Int l = 0; l < types.GetNOfEntries(); l++) dialog->AddFilter(types.GetNthEntry(l), extensions.GetNthEntry(l));
+	for (Int m = 0; m < types.GetNOfEntries(); m++) dialog->AddFilter(types.GetNthEntry(m), extensions.GetNthEntry(m));
 
 	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 

@@ -243,7 +243,7 @@ Void bonkEnc::StopPlayback()
 
 	currentConfig->cdrip_activedrive = player_activedrive;
 
-	if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_locktray) ex_CR_LockCD(false);
 }
 
 Void bonkEnc::PlayPrevious()

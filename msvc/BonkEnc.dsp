@@ -126,6 +126,10 @@ SOURCE="..\src\input\filter-in-wave.cpp"
 # End Source File
 # Begin Source File
 
+SOURCE="..\src\input\filter-in-winamp.cpp"
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\input\inputfilter.cpp
 # End Source File
 # End Group
@@ -175,6 +179,10 @@ SOURCE=..\src\bonkconfig.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\bonkenc.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\cddb.cpp
 # End Source File
 # Begin Source File
@@ -195,15 +203,33 @@ SOURCE=..\src\cdtext.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\cmdmain.cpp
+
+!IF  "$(CFG)" == "BonkEnc - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
+
+# PROP Exclude_From_Build 1
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\config.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=..\src\console.cpp
-# End Source File
-# Begin Source File
 
-SOURCE=..\src\console_interface.cpp
+!IF  "$(CFG)" == "BonkEnc - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
+
+# PROP Exclude_From_Build 1
+
+!ENDIF 
+
 # End Source File
 # Begin Source File
 
@@ -240,6 +266,10 @@ SOURCE=..\src\language.cpp
 # Begin Source File
 
 SOURCE=..\src\main.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\playback.cpp
 # End Source File
 # Begin Source File
 
@@ -287,6 +317,10 @@ SOURCE="..\include\input\filter-in-vorbis.h"
 # Begin Source File
 
 SOURCE="..\include\input\filter-in-wave.h"
+# End Source File
+# Begin Source File
+
+SOURCE="..\include\input\filter-in-winamp.h"
 # End Source File
 # Begin Source File
 
@@ -339,6 +373,10 @@ SOURCE=..\include\bonkconfig.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\include\bonkenc.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\include\cddb.h
 # End Source File
 # Begin Source File
@@ -352,6 +390,10 @@ SOURCE=..\include\cddb_multimatch.h
 # Begin Source File
 
 SOURCE=..\include\cddb_submit.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\cmdmain.h
 # End Source File
 # Begin Source File
 
@@ -414,8 +456,8 @@ SOURCE=..\resources\icon.rc
 !ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
 
 # PROP Exclude_From_Build 1
-# ADD BASE RSC /l 0x407 /i "\devel\projects\mpsd\src\bonkenc\resources"
-# ADD RSC /l 0x407 /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
+# ADD BASE RSC /l 0x407 /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources"
+# ADD RSC /l 0x407 /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
 
 !ENDIF 
 
@@ -430,8 +472,8 @@ SOURCE=..\resources\resources.rc
 
 !ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
 
-# ADD BASE RSC /l 0x407 /i "\devel\projects\mpsd\src\bonkenc\resources"
-# ADD RSC /l 0x407 /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
+# ADD BASE RSC /l 0x407 /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources"
+# ADD RSC /l 0x407 /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
 
 !ENDIF 
 

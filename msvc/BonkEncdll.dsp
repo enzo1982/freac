@@ -78,7 +78,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 iolib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /out:"Bonk.dll" /pdbtype:sept /libpath:"../../smooth/msvc/build"
+# ADD LINK32 iolib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /out:"Debug/Bonk.dll" /pdbtype:sept /libpath:"../../smooth/msvc/build"
 
 !ENDIF 
 
@@ -91,15 +91,15 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\encoders\bonkenc\api.cpp
+SOURCE=..\encoders\bonk\api.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\encoders\bonkenc\codec.cpp
+SOURCE=..\encoders\bonk\codec.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\encoders\bonkenc\utility.cpp
+SOURCE=..\encoders\bonk\utility.cpp
 # End Source File
 # End Group
 # Begin Group "Header-Dateien"
@@ -107,15 +107,15 @@ SOURCE=..\encoders\bonkenc\utility.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\encoders\bonkenc\bonk.h
+SOURCE=..\encoders\bonk\bonk.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\encoders\bonkenc\codec.h
+SOURCE=..\encoders\bonk\codec.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\encoders\bonkenc\utility.h
+SOURCE=..\encoders\bonk\utility.h
 # End Source File
 # End Group
 # Begin Group "Ressourcendateien"

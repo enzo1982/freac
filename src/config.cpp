@@ -216,6 +216,7 @@ Bool bonkEncConfig::LoadSettings()
 	cdrip_swapchannels = getINIValue("CDRip", "SwapChannels", "0").ToInt();
 	cdrip_locktray = getINIValue("CDRip", "LockTray", "1").ToInt();
 	cdrip_ntscsi = getINIValue("CDRip", "UseNTSCSI", "0").ToInt();
+	cdrip_numdrives = 0;
 
 	return True;
 }

@@ -647,11 +647,16 @@ bonkEncGUI::bonkEncGUI()
 
 	mainWnd->RegisterObject(joblist);
 	mainWnd->RegisterObject(droparea);
-	mainWnd->RegisterObject(button_play);
-	mainWnd->RegisterObject(button_pause);
-	mainWnd->RegisterObject(button_stop);
-	mainWnd->RegisterObject(button_prev);
-	mainWnd->RegisterObject(button_next);
+
+	if (winamp_out_modules.GetNOfEntries() > 0)
+	{
+		mainWnd->RegisterObject(button_play);
+		mainWnd->RegisterObject(button_pause);
+		mainWnd->RegisterObject(button_stop);
+		mainWnd->RegisterObject(button_prev);
+		mainWnd->RegisterObject(button_next);
+	}
+
 	mainWnd->RegisterObject(txt_joblist);
 	mainWnd->RegisterObject(info_divider);
 	mainWnd->RegisterObject(info_bottom);
@@ -718,6 +723,8 @@ bonkEncGUI::bonkEncGUI()
 
 bonkEncGUI::~bonkEncGUI()
 {
+	ClearList();
+
 	delete mainWnd_menubar;
 	delete mainWnd_iconbar;
 	delete mainWnd_titlebar;
@@ -725,11 +732,16 @@ bonkEncGUI::~bonkEncGUI()
 	delete mainWnd;
 	delete joblist;
 	delete droparea;
-	delete button_play;
-	delete button_pause;
-	delete button_stop;
-	delete button_prev;
-	delete button_next;
+
+	if (winamp_out_modules.GetNOfEntries() > 0)
+	{
+		delete button_play;
+		delete button_pause;
+		delete button_stop;
+		delete button_prev;
+		delete button_next;
+	}
+
 	delete txt_joblist;
 	delete info_divider;
 	delete info_bottom;

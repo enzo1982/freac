@@ -11,11 +11,26 @@ Package=<5>
 
 Package=<4>
 {{{
+    Begin Project Dependency
+    Project_Dep_Name BonkEncdll
+    End Project Dependency
 }}}
 
 ###############################################################################
 
 Project: "BonkEncdll"=.\BonkEncdll.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "CDRip"=.\CDRip.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

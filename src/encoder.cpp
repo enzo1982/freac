@@ -447,7 +447,7 @@ Void bonkEnc::StopEncoding()
 
 	currentConfig->cdrip_activedrive = encoder_activedrive;
 
-	if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_locktray) ex_CR_LockCD(false);
 
 	edb_filename->SetText(i18n->TranslateString("none"));
 	edb_percent->SetText("0%");

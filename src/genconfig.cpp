@@ -200,7 +200,7 @@ configureGeneralSettings::configureGeneralSettings()
 	language_combo_language	= new ComboBox(pos, size);
 	language_combo_language->onClick.Connect(&configureGeneralSettings::SelectLanguage, this);
 
-	for (int i = 0; i < bonkEnc::i18n->GetNOfLanguages(); i++)
+	for (Int i = 0; i < bonkEnc::i18n->GetNOfLanguages(); i++)
 	{
 		language_combo_language->AddEntry(bonkEnc::i18n->GetNthLanguageName(i));
 
@@ -223,7 +223,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	cdrip_combo_drive	= new ComboBox(pos, size);
 
-	for (int j = 0; j < currentConfig->cdrip_numdrives; j++)
+	for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
 	{
 		cdrip_combo_drive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
 	}
@@ -393,9 +393,9 @@ configureGeneralSettings::configureGeneralSettings()
 	plugins_list_input	= new ListBox(pos, size);
 	plugins_list_input->onClick.Connect(&configureGeneralSettings::SelectInputPlugin, this);
 
-	for (Int i = 0; i < currentConfig->appMain->winamp_in_modules.GetNOfEntries(); i++)
+	for (Int k = 0; k < currentConfig->appMain->winamp_in_modules.GetNOfEntries(); k++)
 	{
-		plugins_list_input->AddEntry(currentConfig->appMain->winamp_in_modules.GetNthEntry(i)->description);
+		plugins_list_input->AddEntry(currentConfig->appMain->winamp_in_modules.GetNthEntry(k)->description);
 	}
 
 	pos.x += 247;
@@ -423,11 +423,11 @@ configureGeneralSettings::configureGeneralSettings()
 	plugins_list_output->SetFlags(LF_MULTICHECKBOX);
 	plugins_list_output->onClick.Connect(&configureGeneralSettings::SelectOutputPlugin, this);
 
-	for (Int i = 0; i < currentConfig->appMain->winamp_out_modules.GetNOfEntries(); i++)
+	for (Int l = 0; l < currentConfig->appMain->winamp_out_modules.GetNOfEntries(); l++)
 	{
-		ListEntry	*entry = plugins_list_output->AddEntry(currentConfig->appMain->winamp_out_modules.GetNthEntry(i)->description);
+		ListEntry	*entry = plugins_list_output->AddEntry(currentConfig->appMain->winamp_out_modules.GetNthEntry(l)->description);
 
-		if (i == currentConfig->output_plugin) entry->selected = True;
+		if (l == currentConfig->output_plugin) entry->selected = True;
 	}
 
 	pos.x += 247;
@@ -624,10 +624,10 @@ Int configureGeneralSettings::ShowDialog()
 
 Void configureGeneralSettings::OK()
 {
-	bool	 valid = false;
+	Bool	 valid = False;
 	String	 email = cddb_edit_email->GetText();
 
-	for (int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = true;
+	for (Int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = True;
 
 	if (!valid)
 	{
@@ -664,9 +664,9 @@ Void configureGeneralSettings::OK()
 	if (cddb_combo_mode->GetSelectedEntry()->id == FREEDB_MODE_CDDBP)	currentConfig->freedb_cddbp_port = cddb_edit_port->GetText().ToInt();
 	else if (cddb_combo_mode->GetSelectedEntry()->id == FREEDB_MODE_HTTP)	currentConfig->freedb_http_port = cddb_edit_port->GetText().ToInt();
 
-	for (Int i = 0; i < plugins_list_output->GetNOfEntries(); i++) if (plugins_list_output->GetNthEntry(i)->selected) currentConfig->output_plugin = i;
+	for (Int j = 0; j < plugins_list_output->GetNOfEntries(); j++) if (plugins_list_output->GetNthEntry(j)->selected) currentConfig->output_plugin = j;
 
-	int	 len = currentConfig->enc_outdir.Length() - 1;
+	Int	 len = currentConfig->enc_outdir.Length() - 1;
 
 	if (currentConfig->enc_outdir[len] != '\\') currentConfig->enc_outdir[++len] = '\\';
 
