@@ -35,7 +35,7 @@ extern HINSTANCE hAspiLib;
 #define MP3RUNINTHREAD
 
 // possible values for UNDERSAMPLING: 1, 2, 3, 4, 6, 7, 12, 14, 28, 49 
-// Sample Frequency      		      44 22 14 11 8  6  3.7  3           KHz 
+// Sample Frequency      		      44 22 14 11 8  6  3.7  3 KHz 
 
 #define UNDERSAMPLING	1
 

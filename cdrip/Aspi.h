@@ -19,9 +19,9 @@
 #ifndef ASPI_INCLUDED
 #define ASPI_INCLUDED
 
-#include <Windows.h>
-#include <Stdio.h>
-#include <Stdlib.h>
+#include <windows.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "CDRip.h"
 
 // Handle to the ASPI libaray

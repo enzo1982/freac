@@ -50,7 +50,7 @@ BOOL CIni::SetValue(String strSection, String strItem, const DWORD dwVal)
 
 String CIni::GetValue(String strSection, String strItem, String strDefault)
 {
-	TCHAR lpszValue[1024] = {'\0',};
+	TCHAR lpszValue[1024] = { '\0', };
 
 	::GetPrivateProfileString(strSection, strItem, strDefault, lpszValue, sizeof(lpszValue), m_strFileName);
 

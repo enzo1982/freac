@@ -8,9 +8,10 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 1 CVS (June 2003)
+	Version 1.0 beta 1 (July 2003)
 
 		- the command line tool is now in a separate executable
+		- CDDB querying has been improved (dialog with abort button)
 		- the genre field is now editable
 		- invalid characters in filenames are now replaced
 		- improved freedb support
@@ -137,9 +138,6 @@ Problems
 
 Future plans
 ------------
-
-	- Sheduled for v1.0 beta 1
-		* improve CDDB querying (dialog with abort button)
 
 	- Sheduled for v1.0
 		* shell integration

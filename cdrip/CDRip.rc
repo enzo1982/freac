@@ -13,7 +13,7 @@
       BEGIN
         VALUE "Comments", "\0"
         VALUE "CompanyName", "Albert L Faber\0"
-        VALUE "FileDescription", "CDex Ripping Library\0"
+        VALUE "FileDescription", "CDRip Ripping Library\0"
         VALUE "FileVersion", "118\0"
         VALUE "InternalName", "CDRip\0"
         VALUE "LegalCopyright", "Copyright (C) 1999-2003\0"
