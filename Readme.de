@@ -11,7 +11,7 @@ Geschichte
 
 	Version 1.0 RC1 CVS (Februar 2005)
 
-		- Sprachunterstützung für Tschechisch und Portugisisch (Brasilianisch) hinzugefügt
+		- Sprachunterstützung für Tschechisch, Koreanisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
 		- Update auf MPEG4IP v1.2
 		- Verwende smooth v0.8.67.0
@@ -243,7 +243,8 @@ Besonderen Dank
 		   Marko Djordjevic (Serbisch),
 		   Krisu (Finnisch),
 		   Vladimir Kytyr (Tschechisch),
-		   Escada (Portugiesisch, Brasilianisch)
+		   Escada (Portugiesisch, Brasilianisch),
+		   Odyssey (Koreanisch)
 
 - Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 - allen Testern und jedem der Fehlerberichte eingeschickt hat

@@ -11,7 +11,7 @@ History
 
 	Version 1.0 RC1 CVS (February 2005)
 
-		- added Czech and Portuguese (Brazilian) language support
+		- added Czech, Korean and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
 		- upgrade to MPEG4IP v1.2
 		- use smooth v0.8.67.0
@@ -243,7 +243,8 @@ Special thanks to
 		   Marko Djordjevic (Serbian),
 		   Krisu (Finnish),
 		   Vladimir Kytyr (Czech),
-		   Escada (Portuguese, Brazilian)
+		   Escada (Portuguese, Brazilian),
+		   Odyssey (Korean)
 
 - Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 - all the testers and everyone who submitted bug reports
