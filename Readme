@@ -20,6 +20,7 @@ History
 		- added support for MSLU (Unicode support for Windows 9x/ME)
 		- many smaller improvements
 		- added support for Winamp Input Plugins
+		- upgraded FAAC to version 1.17
 		- some bugfixes
 
 	Version 0.9 (March 2003)

@@ -263,7 +263,7 @@
 	typedef faacEncHandle			(FAACAPI *FAACENCOPEN)				(unsigned long, unsigned int, unsigned long *, unsigned long *);
 	typedef faacEncConfigurationPtr		(FAACAPI *FAACENCGETCURRENTCONFIGURATION)	(faacEncHandle);
 	typedef int				(FAACAPI *FAACENCSETCONFIGURATION)		(faacEncHandle, faacEncConfigurationPtr);
-	typedef int				(FAACAPI *FAACENCENCODE)			(faacEncHandle, short *, unsigned int, void *, unsigned int);
+	typedef int				(FAACAPI *FAACENCENCODE)			(faacEncHandle, short *, unsigned int, unsigned char *, unsigned int);
 	typedef int				(FAACAPI *FAACENCCLOSE)				(faacEncHandle);
 
 	extern FAACENCOPEN			 ex_faacEncOpen;

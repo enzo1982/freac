@@ -103,7 +103,21 @@ configureGeneralSettings::configureGeneralSettings()
 	}
 
 	if (currentConfig->enable_bonk)		encoders_combo_encoder->AddEntry(String("Bonk v").Append(ex_bonk_get_version_string()));
-	if (currentConfig->enable_faac)		encoders_combo_encoder->AddEntry(String("FAAC v").Append(FAACENC_VERSION));
+
+	if (currentConfig->enable_faac)
+	{
+		String		 faacVersion = "";
+		UnsignedInt	 samples;
+		UnsignedInt	 buffer_size;
+		faacEncHandle	 faac = ex_faacEncOpen(44100, 2, &samples, &buffer_size);
+
+		faacVersion.Append("v").Append(ex_faacEncGetCurrentConfiguration(faac)->name);
+
+		ex_faacEncClose(faac);
+
+		encoders_combo_encoder->AddEntry(String("FAAC ").Append(faacVersion));
+	}
+
 	if (currentConfig->enable_lame)		encoders_combo_encoder->AddEntry(String("LAME v").Append(ex_get_lame_short_version()));
 	if (currentConfig->enable_vorbis)	encoders_combo_encoder->AddEntry(String("Ogg Vorbis v1.0"));
 

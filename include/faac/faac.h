@@ -27,7 +27,7 @@ extern "C" {
 #endif /* __cplusplus */
 
 #ifdef WIN32
-  #pragma pack(push, 8)
+  #pragma pack(push, 1)
   #ifndef FAACAPI
     #define FAACAPI __stdcall
   #endif
@@ -37,7 +37,7 @@ extern "C" {
   #endif
 #endif
 
-#define FAACENC_VERSION "1.14 (beta)"
+#define FAAC_CFG_VERSION 100
 
 /* MPEG ID's */
 #define MPEG2 1
@@ -51,6 +51,12 @@ extern "C" {
 
 typedef struct faacEncConfiguration
 {
+    /* config version */
+    /*const*/ int version;
+
+    /* library version */
+    /*const*/ char *name;
+
 	/* MPEG version, 2 or 4 */
 	unsigned int mpegVersion;
 
@@ -72,6 +78,9 @@ typedef struct faacEncConfiguration
 	/* AAC file frequency bandwidth */
 	unsigned int bandWidth;
 
+    /* Quantizer quality */
+    unsigned long quantqual;
+
 	/*
 		Bitstream output format, meaning:
 		0 - Raw
@@ -81,7 +90,7 @@ typedef struct faacEncConfiguration
 	unsigned int outputFormat;
 
 	// psychoacoustic model list
-	const struct {
+	/*const*/ struct {
 	  void *ptr;
 	  char *name;
 	} *psymodellist;
@@ -107,7 +116,7 @@ int FAACAPI faacEncGetDecoderSpecificInfo(faacEncHandle hEncoder,
 int FAACAPI faacEncEncode(faacEncHandle hEncoder,
 						  short *inputBuffer,
 						  unsigned int samplesInput,
-						  void *outputBuffer,
+						  unsigned char *outputBuffer,
 						  unsigned int bufferSize
 						  );
 
