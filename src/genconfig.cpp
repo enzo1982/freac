@@ -606,17 +606,17 @@ Void configureGeneralSettings::OK()
 		}
 	}
 
-	currentConfig->encoder = encoders_combo_encoder->GetSelectedEntry();
+	currentConfig->encoder = encoders_combo_encoder->GetSelectedEntry()->id;
 
-	if (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry())) currentConfig->languageChanged = true;
+	if (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry()->id)) currentConfig->languageChanged = true;
 
-	currentConfig->language = bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry());
+	currentConfig->language = bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry()->id);
 	currentConfig->enc_outdir = encoders_edit_outdir->GetText();
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) currentConfig->cdrip_activedrive = cdrip_combo_drive->GetSelectedEntry();
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) currentConfig->cdrip_activedrive = cdrip_combo_drive->GetSelectedEntry()->id;
 
 	currentConfig->cdrip_paranoia = cdparanoia;
-	currentConfig->cdrip_paranoia_mode = cdrip_combo_paranoia_mode->GetSelectedEntry();
+	currentConfig->cdrip_paranoia_mode = cdrip_combo_paranoia_mode->GetSelectedEntry()->id;
 	currentConfig->cdrip_jitter = jitter;
 	currentConfig->cdrip_swapchannels = swapchannels;
 	currentConfig->cdrip_locktray = locktray;
@@ -626,12 +626,12 @@ Void configureGeneralSettings::OK()
 
 	currentConfig->default_comment = tags_edit_defcomment->GetText();
 
-	currentConfig->freedb_mode = cddb_combo_mode->GetSelectedEntry();
+	currentConfig->freedb_mode = cddb_combo_mode->GetSelectedEntry()->id;
 	currentConfig->freedb_server = cddb_edit_server->GetText();
 	currentConfig->freedb_email = cddb_edit_email->GetText();
 
-	if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_CDDBP)		currentConfig->freedb_cddbp_port = cddb_edit_port->GetText().ToInt();
-	else if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_HTTP)	currentConfig->freedb_http_port = cddb_edit_port->GetText().ToInt();
+	if (cddb_combo_mode->GetSelectedEntry()->id == FREEDB_MODE_CDDBP)	currentConfig->freedb_cddbp_port = cddb_edit_port->GetText().ToInt();
+	else if (cddb_combo_mode->GetSelectedEntry()->id == FREEDB_MODE_HTTP)	currentConfig->freedb_http_port = cddb_edit_port->GetText().ToInt();
 
 	int	 len = currentConfig->enc_outdir.Length() - 1;
 
@@ -662,7 +662,7 @@ Void configureGeneralSettings::SelectDir()
 
 Void configureGeneralSettings::ConfigureEncoder()
 {
-	if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_BONKENC)
+	if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_BONKENC)
 	{
 		configureBonkEnc	*dlg = new configureBonkEnc();
 
@@ -670,7 +670,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		delete dlg;
 	}
-	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_BLADEENC)
+	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_BLADEENC)
 	{
 		configureBladeEnc	*dlg = new configureBladeEnc();
 
@@ -678,7 +678,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		delete dlg;
 	}
-	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_LAMEENC)
+	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_LAMEENC)
 	{
 		configureLameEnc	*dlg = new configureLameEnc();
 
@@ -686,7 +686,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		delete dlg;
 	}
-	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_VORBISENC)
+	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_VORBISENC)
 	{
 		configureVorbisEnc	*dlg = new configureVorbisEnc();
 
@@ -694,7 +694,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		delete dlg;
 	}
-	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_FAAC)
+	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_FAAC)
 	{
 		configureFAAC	*dlg = new configureFAAC();
 
@@ -702,7 +702,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		delete dlg;
 	}
-	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_TVQ)
+	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_TVQ)
 	{
 		configureTVQ	*dlg = new configureTVQ();
 
@@ -710,7 +710,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		delete dlg;
 	}
-	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_WAVE)
+	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_WAVE)
 	{
 		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), bonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
 	}
@@ -724,13 +724,13 @@ Void configureGeneralSettings::SetParanoia()
 
 Void configureGeneralSettings::SelectLanguage()
 {
-	language_text_info->SetText(bonkEnc::i18n->TranslateString("Language").Append(": ").Append(bonkEnc::i18n->GetNthLanguageName(language_combo_language->GetSelectedEntry()))
-					.Append("\n").Append(bonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageEncoding(language_combo_language->GetSelectedEntry()))
-					.Append("\n").Append(bonkEnc::i18n->TranslateString("Author")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageAuthor(language_combo_language->GetSelectedEntry()))
+	language_text_info->SetText(bonkEnc::i18n->TranslateString("Language").Append(": ").Append(bonkEnc::i18n->GetNthLanguageName(language_combo_language->GetSelectedEntry()->id))
+					.Append("\n").Append(bonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageEncoding(language_combo_language->GetSelectedEntry()->id))
+					.Append("\n").Append(bonkEnc::i18n->TranslateString("Author")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageAuthor(language_combo_language->GetSelectedEntry()->id))
 					.Append("\n").Append(bonkEnc::i18n->TranslateString("URL")).Append(": "));
 
-	language_link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()));
-	language_link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()));
+	language_link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()->id));
+	language_link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()->id));
 }
 
 Void configureGeneralSettings::SetCDDB()
@@ -766,12 +766,12 @@ Void configureGeneralSettings::SetCDDB()
 
 Void configureGeneralSettings::SetCDDBMode()
 {
-	if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_CDDBP)
+	if (cddb_combo_mode->GetSelectedEntry()->id == FREEDB_MODE_CDDBP)
 	{
 		cddb_edit_port->Activate();
 		cddb_edit_port->SetText(String::FromInt(currentConfig->freedb_cddbp_port));
 	}
-	else if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_HTTP)
+	else if (cddb_combo_mode->GetSelectedEntry()->id == FREEDB_MODE_HTTP)
 	{
 		cddb_edit_port->Deactivate();
 		cddb_edit_port->SetText(String::FromInt(currentConfig->freedb_http_port));

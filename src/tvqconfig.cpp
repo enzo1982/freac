@@ -175,8 +175,8 @@ Int configureTVQ::ShowDialog()
 
 Void configureTVQ::OK()
 {
-	currentConfig->tvq_bitrate = combo_bitrate->GetSelectedEntryName().ToInt();
-	currentConfig->tvq_presel_candidates = combo_precand->GetSelectedEntryName().ToInt();
+	currentConfig->tvq_bitrate = combo_bitrate->GetSelectedEntry()->name.ToInt();
+	currentConfig->tvq_presel_candidates = combo_precand->GetSelectedEntry()->name.ToInt();
 
 	mainWnd->Close();
 }

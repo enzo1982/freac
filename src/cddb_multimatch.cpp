@@ -107,7 +107,7 @@ Int cddbMultiMatchDlg::ShowDialog()
 
 Void cddbMultiMatchDlg::OK()
 {
-	mainWnd->value = combo_match->GetSelectedEntry();
+	mainWnd->value = combo_match->GetSelectedEntry()->id;
 
 	mainWnd->Close();
 }
@@ -119,5 +119,5 @@ Void cddbMultiMatchDlg::Cancel()
 
 Int cddbMultiMatchDlg::AddEntry(String category, String title)
 {
-	return combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title))->code;
+	return combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title))->id;
 }

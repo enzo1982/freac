@@ -214,7 +214,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 		format->trackInfo->outfile = outfile;
 
-		sa_formatinfo.AddEntry(format, joblist->AddEntry(jlEntry)->code);
+		sa_formatinfo.AddEntry(format, joblist->AddEntry(jlEntry)->id);
 	}
 	else
 	{
@@ -233,7 +233,7 @@ Void bonkEnc::RemoveFile()
 		return;
 	}
 
-	Int	 entry = joblist->GetSelectedEntry();
+	Int	 entry = joblist->GetSelectedEntry()->id;
 
 	if (entry != -1)
 	{
@@ -241,11 +241,11 @@ Void bonkEnc::RemoveFile()
 
 		for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 		{
-			if (joblist->GetNthEntry(i) == entry) n = i;
+			if (joblist->GetNthEntry(i)->id == entry) n = i;
 		}
 
 		delete sa_formatinfo.GetEntry(entry);
-		sa_formatinfo.DeleteEntry(entry);
+		sa_formatinfo.RemoveEntry(entry);
 		joblist->RemoveEntry(entry);
 
 		txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
@@ -263,8 +263,8 @@ Void bonkEnc::RemoveFile()
 
 		if (joblist->GetNOfEntries() > 0)
 		{
-			if (n < joblist->GetNOfEntries())	joblist->SelectEntry(joblist->GetNthEntry(n));
-			else					joblist->SelectEntry(joblist->GetNthEntry(n - 1));
+			if (n < joblist->GetNOfEntries())	joblist->SelectEntry(joblist->GetNthEntry(n)->id);
+			else					joblist->SelectEntry(joblist->GetNthEntry(n - 1)->id);
 
 			SelectJoblistEntry();
 		}
@@ -285,7 +285,7 @@ Void bonkEnc::ClearList()
 	}
 
 	for (int i = 0; i < sa_formatinfo.GetNOfEntries(); i++) delete sa_formatinfo.GetNthEntry(i);
-	sa_formatinfo.DeleteAll();
+	sa_formatinfo.RemoveAll();
 	joblist->Cleanup();
 
 	if (!currentConfig->enable_console) txt_joblist->SetText(String("0").Append(i18n->TranslateString(" file(s) in joblist:")));
@@ -304,7 +304,7 @@ Void bonkEnc::ClearList()
 
 Void bonkEnc::SelectJoblistEntry()
 {
-	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry());
+	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
 
 	dontUpdateInfo = True;
 
@@ -325,7 +325,7 @@ Void bonkEnc::SelectJoblistEntry()
 
 	for (int i = 0; i < info_combo_genre->GetNOfEntries(); i++)
 	{
-		if (info_combo_genre->GetNthEntryName(i) == format->trackInfo->genre)
+		if (info_combo_genre->GetNthEntry(i)->name == format->trackInfo->genre)
 		{
 			info_combo_genre->SelectEntry(i);
 
@@ -340,7 +340,7 @@ Void bonkEnc::UpdateTitleInfo()
 {
 	if (dontUpdateInfo) return;
 
-	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry());
+	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
 
 	if (format == NIL) return;
 
@@ -349,7 +349,7 @@ Void bonkEnc::UpdateTitleInfo()
 	format->trackInfo->album = info_edit_album->GetText();
 	format->trackInfo->track = info_edit_track->GetText().ToInt();
 	format->trackInfo->year = info_edit_year->GetText().ToInt();
-	format->trackInfo->genre = info_combo_genre->GetSelectedEntryName();
+	format->trackInfo->genre = info_combo_genre->GetSelectedEntry()->name;
 
 	if (format->trackInfo->artist.Length() == 0 && format->trackInfo->title.Length() == 0)	format->trackInfo->hasText = False;
 	else											format->trackInfo->hasText = True;
@@ -362,5 +362,5 @@ Void bonkEnc::UpdateTitleInfo()
 
 	jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
 
-	joblist->ModifyEntry(joblist->GetSelectedEntry(), jlEntry);
+	joblist->ModifyEntry(joblist->GetSelectedEntry()->id, jlEntry);
 }

@@ -1446,12 +1446,21 @@ Void bonkEnc::ShowHideTitleInfo()
 		info_combo_genre->Hide();
 	}
 
+	if (mainWnd->IsMaximized())
+	{
+		joblist->SetMetrics(joblist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0)));
+		droparea->SetMetrics(droparea->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0)));
+	}
+
 	info_divider->SetPos(info_divider->GetPos() + n);
 	info_background->SetMetrics(Point(info_background->GetObjectProperties()->pos.x, info_background->GetObjectProperties()->pos.y + n), info_background->GetObjectProperties()->size);
 
 	joblist->Paint(SP_PAINT);
 
-	mainWnd->SetMetrics(mainWnd->GetObjectProperties()->pos, Size(mainWnd->GetObjectProperties()->size.cx, mainWnd->GetObjectProperties()->size.cy + n));
+	if (!mainWnd->IsMaximized())
+	{
+		mainWnd->SetMetrics(mainWnd->GetObjectProperties()->pos, Size(mainWnd->GetObjectProperties()->size.cx, mainWnd->GetObjectProperties()->size.cy + n));
+	}
 
 	info_checkbox->Paint(SP_PAINT);
 
@@ -1548,13 +1557,13 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		Int		 code = joblist->GetNthEntry(i);
-		bonkFormatInfo	*format = sa_formatinfo.GetEntry(code);
+		Int		 id = joblist->GetNthEntry(i)->id;
+		bonkFormatInfo	*format = sa_formatinfo.GetEntry(id);
 
 		if ((format->trackInfo->artist.Length() == 0 && format->trackInfo->title.Length() != 0) ||
 		    (format->trackInfo->artist.Length() != 0 && format->trackInfo->title.Length() == 0))
 		{
-			joblist->ModifyEntry(code, String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t").Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize));
+			joblist->ModifyEntry(id, String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t").Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize));
 		}
 	}
 

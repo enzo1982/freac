@@ -237,7 +237,7 @@ Void cddbExtendedSettingsDlg::OK()
 	currentConfig->freedb_query_path = http_edit_query->GetText();
 	currentConfig->freedb_submit_path = http_edit_submit->GetText();
 
-	currentConfig->freedb_proxy_mode = proxy_combo_mode->GetSelectedEntry();
+	currentConfig->freedb_proxy_mode = proxy_combo_mode->GetSelectedEntry()->id;
 	currentConfig->freedb_proxy = proxy_edit_server->GetText();
 	currentConfig->freedb_proxy_port = proxy_edit_port->GetText().ToInt();
 

@@ -92,7 +92,7 @@ Int bonkEnc::ReadCDText()
 
 Int bonkEnc::FreeCDText()
 {
-	cdText.DeleteAll();
+	cdText.RemoveAll();
 
 	return Success;
 }

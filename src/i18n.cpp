@@ -25,7 +25,7 @@ bonkTranslator::~bonkTranslator()
 		delete languages.GetNthEntry(i);
 	}
 
-	languages.DeleteAll();
+	languages.RemoveAll();
 }
 
 Int bonkTranslator::GetSupportedLanguages()

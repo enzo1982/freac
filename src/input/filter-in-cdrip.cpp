@@ -350,10 +350,10 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 
 		cdInfo = currentConfig->appMain->GetCDDBData();
 
-		bonkEncCDDB::titleCache.DeleteEntry(cddb.ComputeDiscID());
+		bonkEncCDDB::titleCache.RemoveEntry(cddb.ComputeDiscID());
 		bonkEncCDDB::titleCache.AddEntry(cdInfo, cddb.ComputeDiscID());
 
-		bonkEncCDDB::infoCache.DeleteEntry(cddb.ComputeDiscID());
+		bonkEncCDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
 		bonkEncCDDB::infoCache.AddEntry(currentConfig->appMain->cddbInfo, cddb.ComputeDiscID());
 
 		currentConfig->cdrip_activedrive = oDrive;

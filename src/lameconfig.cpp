@@ -886,7 +886,7 @@ Void configureLameEnc::OK()
 	currentConfig->lame_private = set_private;
 	currentConfig->lame_crc = set_crc;
 	currentConfig->lame_strict_iso = set_iso;
-	currentConfig->lame_padding_type = misc_combo_padding->GetSelectedEntry();
+	currentConfig->lame_padding_type = misc_combo_padding->GetSelectedEntry()->id;
 	currentConfig->lame_disable_filtering = disable_filtering;
 	currentConfig->lame_set_lowpass = set_lowpass;
 	currentConfig->lame_set_lowpass_width = set_lowpass_width;
@@ -897,7 +897,7 @@ Void configureLameEnc::OK()
 	currentConfig->lame_highpass = filtering_edit_highpass->GetText().ToInt();
 	currentConfig->lame_highpass_width = filtering_edit_highpass_width->GetText().ToInt();
 
-	switch (filtering_combo_resample->GetSelectedEntry())
+	switch (filtering_combo_resample->GetSelectedEntry()->id)
 	{
 		case 0:
 			currentConfig->lame_resample = 0;
@@ -941,7 +941,7 @@ Void configureLameEnc::Cancel()
 
 Void configureLameEnc::SetPreset()
 {
-	preset = basic_combo_preset->GetSelectedEntry();
+	preset = basic_combo_preset->GetSelectedEntry()->id;
 
 	if (preset == 0)
 	{
