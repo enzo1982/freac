@@ -309,8 +309,8 @@ configureGeneralSettings::configureGeneralSettings()
 
 	cddb_combo_mode		= new ComboBox(pos, size);
 	cddb_combo_mode->onClick.Connect(&configureGeneralSettings::SetCDDBMode, this);
-	cddb_combo_mode->AddEntry("CDDBP");
 	cddb_combo_mode->AddEntry("HTTP");
+	cddb_combo_mode->AddEntry("CDDBP/HTTP");
 	cddb_combo_mode->SelectEntry(currentConfig->freedb_mode);
 
 	pos.x -= 106;
@@ -591,7 +591,7 @@ Void configureGeneralSettings::DrawProc()
 
 Void configureGeneralSettings::OK()
 {
-	if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_HTTP)
+	if (cddb)
 	{
 		bool	 valid = false;
 		String	 email = cddb_edit_email->GetText();
@@ -742,7 +742,9 @@ Void configureGeneralSettings::SetCDDB()
 		cddb_text_server->Activate();
 		cddb_edit_server->Activate();
 		cddb_text_port->Activate();
-		cddb_edit_port->Activate();
+		cddb_text_email->Activate();
+		cddb_edit_email->Activate();
+		cddb_button_http->Activate();
 		cddb_button_proxy->Activate();
 
 		SetCDDBMode();
@@ -766,19 +768,13 @@ Void configureGeneralSettings::SetCDDBMode()
 {
 	if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_CDDBP)
 	{
+		cddb_edit_port->Activate();
 		cddb_edit_port->SetText(String::IntToString(currentConfig->freedb_cddbp_port));
-
-		cddb_text_email->Deactivate();
-		cddb_edit_email->Deactivate();
-		cddb_button_http->Deactivate();
 	}
 	else if (cddb_combo_mode->GetSelectedEntry() == FREEDB_MODE_HTTP)
 	{
+		cddb_edit_port->Deactivate();
 		cddb_edit_port->SetText(String::IntToString(currentConfig->freedb_http_port));
-
-		cddb_text_email->Activate();
-		cddb_edit_email->Activate();
-		cddb_button_http->Activate();
 	}
 }
 

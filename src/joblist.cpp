@@ -326,6 +326,8 @@ Void bonkEnc::UpdateTitleInfo()
 
 	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry());
 
+	if (format == NIL) return;
+
 	format->trackInfo->artist = info_edit_artist->GetText();
 	format->trackInfo->title = info_edit_title->GetText();
 	format->trackInfo->album = info_edit_album->GetText();

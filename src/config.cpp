@@ -118,7 +118,7 @@ Bool bonkEncConfig::LoadSettings()
 	enable_cddb = getINIValue("freedb", "EnableCDDB", "0").ToInt();
 	enable_cddb_cache = getINIValue("freedb", "EnableCDDBCache", "1").ToInt();
 	freedb_server = getINIValue("freedb", "Server", "freedb.freedb.org");
-	freedb_mode = getINIValue("freedb", "Mode", "0").ToInt();
+	freedb_mode = getINIValue("freedb", "ReadMode", "0").ToInt();
 	freedb_cddbp_port = getINIValue("freedb", "CDDBPPort", "8880").ToInt();
 	freedb_http_port = getINIValue("freedb", "HTTPPort", "80").ToInt();
 	freedb_query_path = getINIValue("freedb", "QueryPath", "/~cddb/cddb.cgi");

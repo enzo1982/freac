@@ -17,8 +17,8 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-const Int	 FREEDB_MODE_CDDBP	= 0;
-const Int	 FREEDB_MODE_HTTP	= 1;
+const Int	 FREEDB_MODE_HTTP	= 0;
+const Int	 FREEDB_MODE_CDDBP	= 1;
 
 class bonkEncCDDB
 {

@@ -166,7 +166,7 @@
     <entry id="155" string="Connecting to freedb server at">Verbinde mit freedb Server an</entry>
     <entry id="156" string="Requesting CD information">Abfrage der CD Informationen</entry>
     <entry id="157" string="eMail address:">eMail Adresse:</entry>
-    <entry id="158" string="Please enter a valid eMail address.">Bitte geben sie eine gültige eMail Adresse ein.</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Bitte geben sie eine gültige eMail Adresse an.</entry>
     <entry id="159" string="No exact matches found">Keine genauen Übereinstimmungen gefunden</entry>
     <entry id="160" string="Multiple matches found">Mehrere Übereinstimmungen gefunden</entry>
     <entry id="161" string="Matches">Übereinstimmungen</entry>
@@ -208,5 +208,8 @@
     <entry id="197" string="Submit CDDB data...">CDDB Daten senden...</entry>
     <entry id="198" string="Enable CDDB cache">CDDB Cache aktivieren</entry>
     <entry id="199" string="CDDB data">CDDB Daten</entry>
+    <entry id="200" string="Submit">Senden</entry>
+    <entry id="201" string="No audio CD in drive!">Keine Audio-CD im Laufwerk!</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Bitte füllen Sie alle Felder und Titelnamen vor dem Senden aus.</entry>
   </data>
 </LangFile>

@@ -32,17 +32,38 @@ class cddbSubmitDlg : public Application
 		EditBox		*edit_artist;
 		Text		*text_album;
 		EditBox		*edit_album;
+		Text		*text_year;
+		EditBox		*edit_year;
+		Text		*text_genre;
+		ComboBox	*combo_genre;
+
+		ListBox		*list_tracks;
+		Text		*text_track;
+		EditBox		*edit_track;
+		Text		*text_title;
+		EditBox		*edit_title;
+
+		Text		*text_cdstatus;
+		Text		*text_status;
 
 		Button		*btn_cancel;
-		Button		*btn_ok;
+		Button		*btn_submit;
 
 		bonkEncConfig	*currentConfig;
 
 		Int		 activedrive;
 
-		Void		 OK();
+		Bool		 dontUpdateInfo;
+
+		String		 discid;
+		String		 genre;
+		Array<String>	 titles;
+
+		Void		 Submit();
 		Void		 Cancel();
 		Void		 ChangeDrive();
+		Void		 SelectTrack();
+		Void		 UpdateTrack();
 	public:
 				 cddbSubmitDlg();
 				~cddbSubmitDlg();

@@ -303,7 +303,7 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 
 	Array<bonkFormatInfo::bonkTrackInfo *>	*cdInfo = NIL;
 
-	if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
+	if (currentConfig->enable_cddb_cache && currentConfig->enable_cddb) cdInfo = bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
 
 	if (cdInfo == NIL)
 	{
