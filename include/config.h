@@ -30,6 +30,10 @@ class bonkEncConfig
 		Point		 wndPos;
 		Size		 wndSize;
 
+		Int		 tab_width_track;
+		Int		 tab_width_length;
+		Int		 tab_width_size;
+
 		Bool		 showTitleInfo;
 
 		Int		 encoder;

@@ -223,9 +223,9 @@ bonkEnc::bonkEnc()
 	joblist			= new ListBox(pos, size);
 	joblist->onClick.Connect(&bonkEnc::SelectJoblistEntry, this);
 	joblist->AddTab(i18n->TranslateString("Title"));
-	joblist->AddTab(i18n->TranslateString("Track"), 50);
-	joblist->AddTab(i18n->TranslateString("Length"), 80);
-	joblist->AddTab(i18n->TranslateString("Size"), 80);
+	joblist->AddTab(i18n->TranslateString("Track"), currentConfig->tab_width_track);
+	joblist->AddTab(i18n->TranslateString("Length"), currentConfig->tab_width_length);
+	joblist->AddTab(i18n->TranslateString("Size"), currentConfig->tab_width_size);
 
 	droparea		= new DropArea(pos, size);
 	droparea->onDropFile.Connect(&bonkEnc::AddDragDropFile, this);
@@ -558,7 +558,7 @@ bonkEnc::bonkEnc()
 	menu_options->AddEntry(i18n->TranslateString("General settings..."))->onClick.Connect(&bonkEnc::ConfigureGeneral, this);
 	menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."))->onClick.Connect(&bonkEnc::ConfigureEncoder, this);
 
-	if (currentConfig->enable_cdrip)
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
 		menu_options->AddEntry();
 
@@ -572,7 +572,7 @@ bonkEnc::bonkEnc()
 
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)..."))->onClick.Connect(&bonkEnc::AddFile, this);
 
-	if (currentConfig->enable_cdrip)
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"))->onClick.Connect(&bonkEnc::ReadCD, this);
 	}
@@ -811,13 +811,17 @@ Bool bonkEnc::ExitProc()
 {
 	if (encoding)
 	{
-		if (IDNO == SMOOTH::MessageBox(i18n->TranslateString("The encoding thread is still running!\nDo you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return false;
+		if (IDNO == SMOOTH::MessageBox(i18n->TranslateString("The encoding thread is still running!\nDo you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
 
 		StopEncoding();
 	}
 
 	currentConfig->wndPos = mainWnd->GetObjectProperties()->pos;
 	currentConfig->wndSize = mainWnd->GetObjectProperties()->size;
+
+	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
+	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
+	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
 
 	currentConfig->SaveSettings();
 
@@ -876,6 +880,10 @@ Void bonkEnc::DrawProc()
 
 	joblist->SetMetrics(joblist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0)));
 	droparea->SetMetrics(droparea->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0)));
+
+	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
+	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
+	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
 
 	if (currentConfig->showTitleInfo)
 	{
@@ -1384,12 +1392,16 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 
 	joblist->Hide();
 
+	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
+	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
+	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
+
 	joblist->ClearTabs();
 
 	joblist->AddTab(i18n->TranslateString("Title"));
-	joblist->AddTab(i18n->TranslateString("Track"), 50);
-	joblist->AddTab(i18n->TranslateString("Length"), 80);
-	joblist->AddTab(i18n->TranslateString("Size"), 80);
+	joblist->AddTab(i18n->TranslateString("Track"), currentConfig->tab_width_track);
+	joblist->AddTab(i18n->TranslateString("Length"), currentConfig->tab_width_length);
+	joblist->AddTab(i18n->TranslateString("Size"), currentConfig->tab_width_size);
 
 	joblist->Show();
 
@@ -1463,9 +1475,21 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	menu_options->AddEntry(i18n->TranslateString("General settings..."))->onClick.Connect(&bonkEnc::ConfigureGeneral, this);
 	menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."))->onClick.Connect(&bonkEnc::ConfigureEncoder, this);
 
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	{
+		menu_options->AddEntry();
+
+		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
+		{
+			menu_seldrive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &currentConfig->cdrip_activedrive, j);
+		}
+
+		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
+	}
+
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)..."))->onClick.Connect(&bonkEnc::AddFile, this);
 
-	if (currentConfig->enable_cdrip)
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"))->onClick.Connect(&bonkEnc::ReadCD, this);
 	}
@@ -1490,7 +1514,13 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
+		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
+		{
+			entry = menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
+			entry->onClick.Connect(&bonkEnc::ReadSpecificCD, this);
+		}
+
+		entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL), menu_drives);
 		entry->onClick.Connect(&bonkEnc::ReadCD, this);
 		entry->SetStatusText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}

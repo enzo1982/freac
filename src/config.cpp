@@ -102,6 +102,10 @@ Bool bonkEncConfig::LoadSettings()
 	enc_outdir = getINIValue("Settings", "EncoderOutdir", pDir);
 	showTitleInfo = getINIValue("Settings", "ShowTitleInfo", "0").ToInt();
 
+	tab_width_track = getINIValue("Settings", "TabWidthTrack", "50").ToInt();
+	tab_width_length = getINIValue("Settings", "TabWidthLength", "80").ToInt();
+	tab_width_size = getINIValue("Settings", "TabWidthSize", "80").ToInt();
+
 	enable_cddb = getINIValue("freedb", "EnableCDDB", "0").ToInt();
 	freedb_server = getINIValue("freedb", "Server", "freedb.freedb.org");
 	freedb_mode = getINIValue("freedb", "Mode", "0").ToInt();
@@ -225,6 +229,18 @@ Bool bonkEncConfig::SaveSettings()
 
 		str = "WindowSizeY=";
 		str.Append(String::IntToString(wndSize.cy));
+		out->OutputLine(str);
+
+		str = "TabWidthTrack=";
+		str.Append(String::IntToString(tab_width_track));
+		out->OutputLine(str);
+
+		str = "TabWidthLength=";
+		str.Append(String::IntToString(tab_width_length));
+		out->OutputLine(str);
+
+		str = "TabWidthSize=";
+		str.Append(String::IntToString(tab_width_size));
 		out->OutputLine(str);
 
 		out->OutputLine("");

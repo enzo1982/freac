@@ -187,7 +187,7 @@ int FilterInVORBIS::ReadData(unsigned char **data, int size)
 bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 {
 	bonkFormatInfo	 nFormat;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	nFormat.order = BYTE_INTEL;
 	nFormat.bits = 16;

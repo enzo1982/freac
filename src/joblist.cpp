@@ -37,7 +37,7 @@ Void bonkEnc::AddFile()
 	String	 fileTypes = "*.aif; *.aiff; *.au";
 
 	if (currentConfig->enable_bonk) fileTypes.Append("; *.bonk");
-	if (currentConfig->enable_cdrip) fileTypes.Append("; *.cda");
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) fileTypes.Append("; *.cda");
 	if (currentConfig->enable_lame) fileTypes.Append("; *.mp3");
 	if (currentConfig->enable_vorbis) fileTypes.Append("; *.ogg");
 
@@ -57,7 +57,7 @@ Void bonkEnc::AddFile()
 	dialog->AddFilter(i18n->TranslateString("Sun Audio Files").Append(" (*.au)"), "*.au");
 	dialog->AddFilter(i18n->TranslateString("Wave Files").Append(" (*.wav)"), "*.wav");
 
-	if (currentConfig->enable_cdrip) dialog->AddFilter(i18n->TranslateString("Windows CD Audio Track").Append(" (*.cda)"), "*.cda");
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) dialog->AddFilter(i18n->TranslateString("Windows CD Audio Track").Append(" (*.cda)"), "*.cda");
 
 	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
@@ -99,7 +99,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 	extension[2] = file[file.Length() - 2];
 	extension[3] = file[file.Length() - 1];
 
-	if (extension == ".cda" && currentConfig->enable_cdrip)
+	if (extension == ".cda" && currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
 		FILE		*afile = fopen(file, "r");
 		InStream	*in = new InStream(STREAM_ANSI, afile);
@@ -320,7 +320,11 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		}
 		else
 		{
-			sa_joblist.AddEntry(file, joblist->AddEntry(file)->code);
+			String	 jlEntry = String(file).Append("\t\t")
+					  .Append(length).Append("\t")
+					  .Append(fileSize);
+
+			sa_joblist.AddEntry(jlEntry, joblist->AddEntry(jlEntry)->code);
 
 			trackInfo = new bonkTrackInfo;
 

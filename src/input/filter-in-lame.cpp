@@ -100,7 +100,7 @@ bonkFormatInfo FilterInLAME::GetFileInfo(S::String inFile)
 	ex_lame_decode_init();
 
 	bonkFormatInfo	 nFormat;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	nFormat.order = BYTE_INTEL;
 	nFormat.bits = 16;
@@ -141,7 +141,7 @@ bonkFormatInfo FilterInLAME::GetFileInfo(S::String inFile)
 		ID3_Frame	*frame;
 		ID3_Field	*field;
 		int		 tbufsize = 1024;
-		char		*tbuffer = new char [tbufsize];
+		wchar_t		*tbuffer = new wchar_t [tbufsize];
 
 		nFormat.trackInfo = new bonkTrackInfo;
 
@@ -151,13 +151,33 @@ bonkFormatInfo FilterInLAME::GetFileInfo(S::String inFile)
 
 		tbuffer[0] = 0;
 		if ((frame = tag->Find(ID3FID_LEADARTIST)) != NIL)
-			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) tbuffer, tbufsize);
 		nFormat.trackInfo->artist = tbuffer;
 
 		tbuffer[0] = 0;
 		if ((frame = tag->Find(ID3FID_TITLE)) != NIL)
-			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) tbuffer, tbufsize);
 		nFormat.trackInfo->title = tbuffer;
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_ALBUM)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) tbuffer, tbufsize);
+		nFormat.trackInfo->album = tbuffer;
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_CONTENTTYPE)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) tbuffer, tbufsize);
+		nFormat.trackInfo->genre = tbuffer;
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_YEAR)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) tbuffer, tbufsize);
+		nFormat.trackInfo->year = String(tbuffer).ToInt();
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_TRACKNUM)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get((unicode_t *) tbuffer, tbufsize);
+		nFormat.trackInfo->track = String(tbuffer).ToInt();
 
 		if (nFormat.trackInfo->artist.Length() != 0 || nFormat.trackInfo->title.Length() != 0)
 		{

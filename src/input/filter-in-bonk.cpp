@@ -64,7 +64,7 @@ int FilterInBONK::ReadData(unsigned char **data, int size)
 bonkFormatInfo FilterInBONK::GetFileInfo(S::String inFile)
 {
 	bonkFormatInfo	 nFormat;
-	InStream	*in = new InStream(STREAM_FILE, inFile);
+	InStream	*in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat.length, (uint32 *) &nFormat.rate, (int *) &nFormat.channels);
 
 	nFormat.order = BYTE_INTEL;
@@ -148,6 +148,26 @@ bonkFormatInfo FilterInBONK::GetFileInfo(S::String inFile)
 		if ((frame = tag->Find(ID3FID_TITLE)) != NIL)
 			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
 		nFormat.trackInfo->title = tbuffer;
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_ALBUM)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
+		nFormat.trackInfo->album = tbuffer;
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_CONTENTTYPE)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
+		nFormat.trackInfo->genre = tbuffer;
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_YEAR)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
+		nFormat.trackInfo->year = String(tbuffer).ToInt();
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_TRACKNUM)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
+		nFormat.trackInfo->track = String(tbuffer).ToInt();
 
 		if (nFormat.trackInfo->artist.Length() != 0 || nFormat.trackInfo->title.Length() != 0)
 		{
