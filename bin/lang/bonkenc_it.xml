@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -213,6 +213,7 @@
     <entry id="201" string="No audio CD in drive!">Nessun CD audio nell'unità.</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Prima di inviare le informazioni, è necessario compilare tutti i campi e immettere i titoli delle tracce.</entry>
     <entry id="203" string="CD ripping disabled!">Estrazione dati audio da CD disattivata.</entry>
+    <entry id="204" string="CD options">Opzioni CD</entry>
     <entry id="205" string="Submitting CD information">Invio informazioni sul CD...</entry>
     <entry id="206" string="Cannot open file:">Impossibile aprire il seguente file:</entry>
     <entry id="207" string="Query CDDB database">Interroga database CDDB</entry>
@@ -255,5 +256,28 @@
     <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">È disponibile su Internet una nuova versione di BonkEnc.&#10;Effettuare il download ed installare la nuova versione?</entry>
     <entry id="245" string="There are no updates available at the moment!">Al momento non sono disponibili nuovi aggiornamenti del programma.</entry>
     <entry id="246" string="Check for updates at startup">Verifica la disponibilità di aggiornamenti all'avvio</entry>
+    <entry id="247" string="Read CD contents on insert">Leggi CD una volta inserito</entry>
+    <entry id="248" string="Eject disk after ripping">Espelli disco al termine</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">Codifica 'al volo'</entry>
+    <entry id="250" string="Keep ripped wave files">Non eliminare file audio estratti</entry>
+    <entry id="251" string="ripping/decoding">estrazione/decodifica</entry>
+    <entry id="252" string="encoding">codifica</entry>
+    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="254" string="Use Unicode filenames">Nomi di file in formato Unicode</entry>
+    <entry id="255" string="AAC Files">File AAC</entry>
+    <entry id="256" string="MP4 Files">File MP4</entry>
+    <entry id="257" string="Format">Formato</entry>
+    <entry id="258" string="File format">Formato file</entry>
+    <entry id="259" string="Allow ID3V2 tags in AAC files">Consenti tag ID3V2 nei file AAC</entry>
+    <entry id="260" string="Note:">Nota:</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">È possibile che vengano riscontrati problemi durante la riproduzione&#10;di file AAC che contengono tag ID3. Selezionare questa casella&#10;di controllo solamente se il riproduttore è in grado di gestire tali tag.</entry>
+    <entry id="262" string="FLAC Files">File FLAC</entry>
+    <entry id="263" string="Sampling rate">Frequenza</entry>
+    <entry id="264" string="Sample resolution">Risoluzione</entry>
+    <entry id="265" string="Number of samples">Numero campioni</entry>
+    <entry id="266" string="Mono">Mono</entry>
+    <entry id="267" string="bytes">byte</entry>
+    <entry id="268" string="bit">bit</entry>
+    <entry id="269" string="min">min</entry>
   </data>
 </LangFile>
