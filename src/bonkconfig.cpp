@@ -24,7 +24,7 @@ configureBonkEnc::configureBonkEnc()
 	jstereo = currentConfig->bonk_jstereo;
 	lossless = currentConfig->bonk_lossless;
 
-	mainWnd			= new Window(String("BonkEnc ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(String("Bonk ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

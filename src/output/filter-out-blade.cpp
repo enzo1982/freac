@@ -81,7 +81,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->artist != NIL && format->trackInfo->artist != "")
 		{
-			artist_text.Set((wchar_t *) format->trackInfo->artist);
+			artist_text.Set((unicode_t *) (wchar_t *) format->trackInfo->artist);
 
 			tag->AddFrame(artist);
 		}
@@ -91,7 +91,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->title != NIL && format->trackInfo->title != "")
 		{
-			title_text.Set((wchar_t *) format->trackInfo->title);
+			title_text.Set((unicode_t *) (wchar_t *) format->trackInfo->title);
 
 			tag->AddFrame(title);
 		}
@@ -101,7 +101,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->album != NIL && format->trackInfo->album != "")
 		{
-			album_text.Set((wchar_t *) format->trackInfo->album);
+			album_text.Set((unicode_t *) (wchar_t *) format->trackInfo->album);
 
 			tag->AddFrame(album);
 		}
@@ -111,8 +111,8 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->track > 0)
 		{
-			if (format->trackInfo->track < 10)	track_text.Set((wchar_t *) String("0").Append(String::IntToString(format->trackInfo->track)));
-			else					track_text.Set((wchar_t *) String::IntToString(format->trackInfo->track));
+			if (format->trackInfo->track < 10)	track_text.Set((unicode_t *) (wchar_t *) String("0").Append(String::IntToString(format->trackInfo->track)));
+			else					track_text.Set((unicode_t *) (wchar_t *) String::IntToString(format->trackInfo->track));
 
 			tag->AddFrame(track);
 		}
@@ -122,7 +122,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->year > 0)
 		{
-			year_text.Set((wchar_t *) String::IntToString(format->trackInfo->year));
+			year_text.Set((unicode_t *) (wchar_t *) String::IntToString(format->trackInfo->year));
 
 			tag->AddFrame(year);
 		}
@@ -132,7 +132,7 @@ bool FilterOutBLADE::Activate()
 
 		if (format->trackInfo->genre != NIL && format->trackInfo->genre != "")
 		{
-			genre_text.Set((wchar_t *) format->trackInfo->genre);
+			genre_text.Set((unicode_t *) (wchar_t *) format->trackInfo->genre);
 
 			tag->AddFrame(genre);
 		}
@@ -140,7 +140,7 @@ bool FilterOutBLADE::Activate()
 		ID3_Frame	*comment = new ID3_Frame(ID3FID_COMMENT);
 		ID3_Field	&comment_text = comment->Field(ID3FN_TEXT);
 
-		comment_text.Set((wchar_t *) currentConfig->default_comment);
+		comment_text.Set((unicode_t *) (wchar_t *) currentConfig->default_comment);
 
 		tag->AddFrame(comment);
 

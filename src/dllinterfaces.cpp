@@ -135,7 +135,7 @@ Bool bonkEnc::LoadBonkDLL()
 {
 	String	 file = SMOOTH::StartDirectory;
 
-	file.Append("BonkEnc.dll");
+	file.Append("Bonk.dll");
 
 	bonkdll = LoadLibraryA(file);
 
