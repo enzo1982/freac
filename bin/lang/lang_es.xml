@@ -1,10 +1,10 @@
-Ôªø<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">0.8</property>
-    <property name="language">Espa√±ol</property>
-    <property name="encoding">UTF-8</property>
+    <property name="language">EspaÒol</property>
+    <property name="encoding">ISO-8859-1</property>
     <property name="author">Pablo Acevedo Noda &lt;pablo@acevedo.tk&gt;</property>
     <property name="url">http://www.acevedo.tk</property>
   </info>
@@ -22,7 +22,7 @@
   </entry>
   <entry id="4">
     <property name="string">Add</property>
-    <property name="translation">A√±adir</property>
+    <property name="translation">AÒadir</property>
   </entry>
   <entry id="5">
     <property name="string">Remove</property>
@@ -38,7 +38,7 @@
   </entry>
   <entry id="8">
     <property name="string">General settings...</property>
-    <property name="translation">Configuraci√≥n general...</property>
+    <property name="translation">ConfiguraciÛn general...</property>
   </entry>
   <entry id="9">
     <property name="string">Configure selected encoder...</property>
@@ -54,11 +54,11 @@
   </entry>
   <entry id="12">
     <property name="string">Start encoding</property>
-    <property name="translation">Empezar compresi√≥n</property>
+    <property name="translation">Empezar compresiÛn</property>
   </entry>
   <entry id="13">
     <property name="string">Stop encoding</property>
-    <property name="translation">Parar compresi√≥n</property>
+    <property name="translation">Parar compresiÛn</property>
   </entry>
   <entry id="14">
     <property name="string">Encoding file:</property>
@@ -94,15 +94,15 @@
   </entry>
   <entry id="22">
     <property name="string">Display information about BonkEnc</property>
-    <property name="translation">Mostrar informaci√≥n sobre BonkEnc</property>
+    <property name="translation">Mostrar informaciÛn sobre BonkEnc</property>
   </entry>
   <entry id="23">
     <property name="string">Add audio file(s) to the joblist</property>
-    <property name="translation">A√±adir archivo(s) de audio a la lista</property>
+    <property name="translation">AÒadir archivo(s) de audio a la lista</property>
   </entry>
   <entry id="24">
     <property name="string">Add audio CD contents to the joblist</property>
-    <property name="translation">A√±adir contenido de CD Audio a la lista</property>
+    <property name="translation">AÒadir contenido de CD Audio a la lista</property>
   </entry>
   <entry id="25">
     <property name="string">Remove the selected entry from the joblist</property>
@@ -114,7 +114,7 @@
   </entry>
   <entry id="27">
     <property name="string">Configure general settings</property>
-    <property name="translation">Configuraci√≥n general</property>
+    <property name="translation">ConfiguraciÛn general</property>
   </entry>
   <entry id="28">
     <property name="string">Configure the selected audio encoder</property>
@@ -122,11 +122,11 @@
   </entry>
   <entry id="29">
     <property name="string">Start the encoding process</property>
-    <property name="translation">Empezar el proceso de compresi√≥n</property>
+    <property name="translation">Empezar el proceso de compresiÛn</property>
   </entry>
   <entry id="30">
     <property name="string">Cannot modify the joblist while encoding!</property>
-    <property name="translation">¬°No se puede modificar la lista durante la compresi√≥n!</property>
+    <property name="translation">°No se puede modificar la lista durante la compresiÛn!</property>
   </entry>
   <entry id="31">
     <property name="string">Error</property>
@@ -162,19 +162,19 @@
   </entry>
   <entry id="39">
     <property name="string">You have not selected a file!</property>
-    <property name="translation">¬°No ha selecionado ning√∫n fichero!</property>
+    <property name="translation">°No ha selecionado ning˙n fichero!</property>
   </entry>
   <entry id="40">
     <property name="string">The encoding thread is still running!\nDo you really want to quit?</property>
-    <property name="translation">¬°El proceso de compresi√≥n contin√∫a!\n¬øDe verdad quiere salir?</property>
+    <property name="translation">°El proceso de compresiÛn contin˙a!\nøDe verdad quiere salir?</property>
   </entry>
   <entry id="41">
     <property name="string">Currently encoding</property>
-    <property name="translation">Iniciado proceso de compresi√≥n</property>
+    <property name="translation">Iniciado proceso de compresiÛn</property>
   </entry>
   <entry id="42">
     <property name="string">This program is being distributed under the terms</property>
-    <property name="translation">Este programa se distribuye bajo la cl√°usula</property>
+    <property name="translation">Este programa se distribuye bajo la cl·usula</property>
   </entry>
   <entry id="43">
     <property name="string">of the GNU General Public License (GPL).</property>
@@ -186,7 +186,7 @@
   </entry>
   <entry id="45">
     <property name="string">No options can be configured for the WAVE Out filter!</property>
-    <property name="translation">¬°El filtro de Salida de Ondas (Wave Out) no tiene opciones de configuraci√≥n!</property>
+    <property name="translation">°El filtro de Salida de Ondas (Wave Out) no tiene opciones de configuraciÛn!</property>
   </entry>
   <entry id="46">
     <property name="string">WAVE Out filter</property>
@@ -194,11 +194,11 @@
   </entry>
   <entry id="47">
     <property name="string">Cannot change settings while encoding!</property>
-    <property name="translation">¬°No se puede modificar la configuraci√≥n durante la compresi√≥n!</property>
+    <property name="translation">°No se puede modificar la configuraciÛn durante la compresiÛn!</property>
   </entry>
   <entry id="48">
     <property name="string">encoder configuration</property>
-    <property name="translation">Configuraci√≥n de comrpesor</property>
+    <property name="translation">ConfiguraciÛn de comrpesor</property>
   </entry>
   <entry id="49">
     <property name="string">OK</property>
@@ -210,7 +210,7 @@
   </entry>
   <entry id="51">
     <property name="string">Encoding Mode</property>
-    <property name="translation">Modo de compresi√≥n</property>
+    <property name="translation">Modo de compresiÛn</property>
   </entry>
   <entry id="52">
     <property name="string">Variable Bitrate</property>
@@ -262,7 +262,7 @@
   </entry>
   <entry id="64">
     <property name="string">Encoding</property>
-    <property name="translation">Codificaci√≥n</property>
+    <property name="translation">CodificaciÛn</property>
   </entry>
   <entry id="65">
     <property name="string">Author</property>
@@ -286,7 +286,7 @@
   </entry>
   <entry id="70">
     <property name="string">Ripper settings</property>
-    <property name="translation">Configuraciones del extraci√≥n de audio</property>
+    <property name="translation">Configuraciones del extraciÛn de audio</property>
   </entry>
   <entry id="71">
     <property name="string">Activate cdparanoia mode:</property>
@@ -294,7 +294,7 @@
   </entry>
   <entry id="72">
     <property name="string">Activate jitter correction</property>
-    <property name="translation">Activar correci√≥n Jitter</property>
+    <property name="translation">Activar correciÛn Jitter</property>
   </entry>
   <entry id="73">
     <property name="string">Swap left/right channel</property>
@@ -314,7 +314,7 @@
   </entry>
   <entry id="77">
     <property name="string">No verify</property>
-    <property name="translation">Sin verificaci√≥n</property>
+    <property name="translation">Sin verificaciÛn</property>
   </entry>
   <entry id="78">
     <property name="string">No scratch repair</property>
@@ -374,23 +374,23 @@
   </entry>
   <entry id="92">
     <property name="string">Stereo mode</property>
-    <property name="translation">Modo Est√©reo</property>
+    <property name="translation">Modo EstÈreo</property>
   </entry>
   <entry id="93">
     <property name="string">Quantization</property>
-    <property name="translation">Cuantizaci√≥n</property>
+    <property name="translation">CuantizaciÛn</property>
   </entry>
   <entry id="94">
     <property name="string">Downsampling ratio</property>
-    <property name="translation">√çndice de resampleado</property>
+    <property name="translation">Õndice de resampleado</property>
   </entry>
   <entry id="95">
     <property name="string">Predictor size</property>
-    <property name="translation">Tama√±o de predictor</property>
+    <property name="translation">TamaÒo de predictor</property>
   </entry>
   <entry id="96">
     <property name="string">Enable lossless encoding</property>
-    <property name="translation">Compresi√≥n sin p√©rdidas</property>
+    <property name="translation">CompresiÛn sin pÈrdidas</property>
   </entry>
   <entry id="97">
     <property name="string">Enable Joint Stereo</property>
@@ -402,15 +402,15 @@
   </entry>
   <entry id="99">
     <property name="string">Preselection</property>
-    <property name="translation">Preselecci√≥n</property>
+    <property name="translation">PreselecciÛn</property>
   </entry>
   <entry id="100">
     <property name="string">Number of preselection candidates:</property>
-    <property name="translation">N¬∫ de candidatos de preselecci√≥n:</property>
+    <property name="translation">N∫ de candidatos de preselecciÛn:</property>
   </entry>
   <entry id="101">
     <property name="string">MPEG version</property>
-    <property name="translation">Versi√≥n MPEG</property>
+    <property name="translation">VersiÛn MPEG</property>
   </entry>
   <entry id="102">
     <property name="string">AAC object type</property>
@@ -422,7 +422,7 @@
   </entry>
   <entry id="104">
     <property name="string">Temporal Noise Shaping</property>
-    <property name="translation">Perfilaci√≥n de Ruido Temporal</property>
+    <property name="translation">PerfilaciÛn de Ruido Temporal</property>
   </entry>
   <entry id="105">
     <property name="string">Use Temporal Noise Shaping</property>
@@ -430,19 +430,19 @@
   </entry>
   <entry id="106">
     <property name="string">Maximum bandwidth</property>
-    <property name="translation">Ancho de banda m√°ximo</property>
+    <property name="translation">Ancho de banda m·ximo</property>
   </entry>
   <entry id="107">
     <property name="string">Maximum AAC frequency bandwidth to use (Hz):</property>
-    <property name="translation">Frecuencia m√°xima para AAC en Hz:</property>
+    <property name="translation">Frecuencia m·xima para AAC en Hz:</property>
   </entry>
   <entry id="108">
     <property name="string">Basic</property>
-    <property name="translation">B√°sico</property>
+    <property name="translation">B·sico</property>
   </entry>
   <entry id="109">
     <property name="string">Misc</property>
-    <property name="translation">Miscel√°nea</property>
+    <property name="translation">Miscel·nea</property>
   </entry>
   <entry id="110">
     <property name="string">Audio processing</property>
@@ -454,7 +454,7 @@
   </entry>
   <entry id="112">
     <property name="string">Set ratio:</property>
-    <property name="translation">Relaci√≥n:</property>
+    <property name="translation">RelaciÛn:</property>
   </entry>
   <entry id="113">
     <property name="string">Set quality:</property>
@@ -474,7 +474,7 @@
   </entry>
   <entry id="117">
     <property name="string">Stereo</property>
-    <property name="translation">Est√©reo</property>
+    <property name="translation">EstÈreo</property>
   </entry>
   <entry id="118">
     <property name="string">Joint Stereo</property>
@@ -506,11 +506,11 @@
   </entry>
   <entry id="125">
     <property name="string">Set minimum VBR bitrate:</property>
-    <property name="translation">VBR bitrate m√≠nimo:</property>
+    <property name="translation">VBR bitrate mÌnimo:</property>
   </entry>
   <entry id="126">
     <property name="string">Set maximum VBR bitrate:</property>
-    <property name="translation">VBR bitrate m√°ximo:</property>
+    <property name="translation">VBR bitrate m·ximo:</property>
   </entry>
   <entry id="127">
     <property name="string">Control bits</property>
@@ -595,5 +595,101 @@
   <entry id="147">
     <property name="string">BONK Files</property>
     <property name="translation">Archivos de Audio BONK</property>
+  </entry>
+  <entry id="148">
+    <property name="string">Enable CDDB</property>
+    <property name="translation">Activar CDDB</property>
+  </entry>
+  <entry id="149">
+    <property name="string">CDDB access mode:</property>
+    <property name="translation">Modo de acceso CDDB:</property>
+  </entry>
+  <entry id="150">
+    <property name="string">CDDB server:</property>
+    <property name="translation">Servidor CDDB</property>
+  </entry>
+  <entry id="151">
+    <property name="string">Port:</property>
+    <property name="translation">Puerto:</property>
+  </entry>
+  <entry id="152">
+    <property name="string">Info</property>
+    <property name="translation">Info</property>
+  </entry>
+  <entry id="153">
+    <property name="string">No freedb entry for this disk.</property>
+    <property name="translation">No hay un registro de este CD</property>
+  </entry>
+  <entry id="154">
+    <property name="string">Some error occurred trying to connect to the freedb server.</property>
+    <property name="translation">Ha ocurrido un error al intentar conectar con el servidor.</property>
+  </entry>
+  <entry id="155">
+    <property name="string">Connecting to freedb server at</property>
+    <property name="translation">Conectando al servidor freedb a</property>
+  </entry>
+  <entry id="156">
+    <property name="string">Requesting CD information</property>
+    <property name="translation">Pidiendo informaciÛn del CD</property>
+  </entry>
+  <entry id="157">
+    <property name="string">eMail address:</property>
+    <property name="translation">direcciÛn de eMail:</property>
+  </entry>
+  <entry id="158">
+    <property name="string">Please enter a valid eMail address.</property>
+    <property name="translation">Introduce un eMail valido.</property>
+  </entry>
+  <entry id="159">
+    <property name="string">No exact matches found</property>
+    <property name="translation">Sin resultados exactos</property>
+  </entry>
+  <entry id="160">
+    <property name="string">Multiple matches found</property>
+    <property name="translation">Varios resultados encontrados</property>
+  </entry>
+  <entry id="161">
+    <property name="string">Matches</property>
+    <property name="translation">Resultados</property>
+  </entry>
+  <entry id="162">
+    <property name="string">Select the entry that best fits your CD:</property>
+    <property name="translation">Selecciona la entrada que coincide con tu CD:</property>
+  </entry>
+  <entry id="163">
+    <property name="string">Extended CDDB settings</property>
+    <property name="translation">Configuraciones CDDB ampliadas</property>
+  </entry>
+  <entry id="164">
+    <property name="string">CGI scripts</property>
+    <property name="translation">Scripts CGI</property>
+  </entry>
+  <entry id="165">
+    <property name="string">CDDB query script:</property>
+    <property name="translation">Script de llamada al CDDB:</property>
+  </entry>
+  <entry id="166">
+    <property name="string">CDDB submit script:</property>
+    <property name="translation">Script de peticiÛn al CDDB:</property>
+  </entry>
+  <entry id="167">
+    <property name="string">HTTP settings</property>
+    <property name="translation">Configuraciones HTTP</property>
+  </entry>
+  <entry id="168">
+    <property name="string">Proxy settings</property>
+    <property name="translation">ConfiguraciÛn del Proxy</property>
+  </entry>
+  <entry id="169">
+    <property name="string">no proxy</property>
+    <property name="translation">no proxy</property>
+  </entry>
+  <entry id="170">
+    <property name="string">Proxy type:</property>
+    <property name="translation">Tipo de proxy:</property>
+  </entry>
+  <entry id="171">
+    <property name="string">Proxy server:</property>
+    <property name="translation">Servidor proxy:</property>
   </entry>
 </LangFile>
