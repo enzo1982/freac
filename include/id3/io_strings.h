@@ -28,9 +28,13 @@
 #ifndef _ID3LIB_IO_STRINGS_H_
 #define _ID3LIB_IO_STRINGS_H_
 
-#include "strings.h"
+#include "id3/id3lib_strings.h"
 #include "reader.h"
 #include "writer.h"
+
+#ifndef min
+#define min(a,b)            (((a) < (b)) ? (a) : (b))
+#endif
 
 namespace dami
 {
@@ -63,7 +67,7 @@ namespace dami
       }
       virtual size_type readChars(char_type buf[], size_type len)
       {
-        size_type size = min(len, _string.size() - _cur);
+        size_type size = min((unsigned int)len, (unsigned int)(_string.size() - _cur));
         _string.copy(reinterpret_cast<String::value_type *>(buf), size, _cur);
         _cur += size;
         return size;
@@ -100,7 +104,7 @@ namespace dami
 
       virtual size_type skipChars(size_type len)
       {
-        size_type size = min(len, _string.size() - _cur);
+        size_type size = min((unsigned int)len, (unsigned int)(_string.size() - _cur));
         _cur += size;
         return size;
       }
@@ -133,7 +137,7 @@ namespace dami
       }
       virtual size_type readChars(char_type buf[], size_type len)
       {
-        size_type size = min(len, _string.size() - _cur);
+        size_type size = min((unsigned int)len, (unsigned int)(_string.size() - _cur));
         _string.copy(reinterpret_cast<BString::value_type *>(buf), size, _cur);
         _cur += size;
         return size;
@@ -170,7 +174,7 @@ namespace dami
 
       virtual size_type skipChars(size_type len)
       {
-        size_type size = min(len, _string.size() - _cur);
+        size_type size = min((unsigned int)len,(unsigned int)( _string.size() - _cur));
         _cur += size;
         return size;
       }
@@ -231,3 +235,4 @@ namespace dami
 };
 
 #endif /* _ID3LIB_IO_STRINGS_H_ */
+

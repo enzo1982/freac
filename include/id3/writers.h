@@ -28,10 +28,9 @@
 #ifndef _ID3LIB_WRITERS_H_
 #define _ID3LIB_WRITERS_H_
 
-#include <id3/writer.h>
-#include <fstream.h>
-#include <iostream.h>
-#include <string.h>
+#include "id3/writer.h"
+#include "id3/id3lib_streams.h"
+//#include <string.h>
 
 class ID3_CPP_EXPORT ID3_OStreamWriter : public ID3_Writer
 {
@@ -191,3 +190,4 @@ class ID3_CPP_EXPORT ID3_MemoryWriter : public ID3_Writer
 };
 
 #endif /* _ID3LIB_WRITERS_H_ */
+

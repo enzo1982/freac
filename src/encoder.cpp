@@ -127,8 +127,8 @@ Int bonkEnc::Encoder(Thread *thread)
 			{
 				if (dir[i] == '\\' || dir[i] == '/')
 				{
-					if (Setup::enableUnicode)	_wmkdir(tmp);
-					else				_mkdir(tmp);
+					if (Setup::enableUnicode)	CreateDirectoryW(tmp, NIL);
+					else				CreateDirectoryA(tmp, NIL);
 				}
 
 				tmp[i] = dir[i];
@@ -147,6 +147,7 @@ Int bonkEnc::Encoder(Thread *thread)
 				else if (bak_filename[k] == '<')		out_filename[k + b] = '(';
 				else if (bak_filename[k] == '>')		out_filename[k + b] = ')';
 				else if (bak_filename[k] == ':' && k > 1)	b--;
+				else if (bak_filename[k] >= 256)		out_filename[k + b] = '#';
 				else						out_filename[k + b] = bak_filename[k];
 			}
 		}

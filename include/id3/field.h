@@ -28,7 +28,7 @@
 #ifndef _ID3LIB_FIELD_H_
 #define _ID3LIB_FIELD_H_
 
-#include <id3/globals.h>
+#include "id3/globals.h" //has <stdlib.h> "id3/sized_types.h"
 
 class ID3_Reader;
 class ID3_Writer;
@@ -51,18 +51,18 @@ public:
   virtual ID3_Field&    operator= (const char* s) = 0;
   virtual size_t        Set(const char*) = 0;
   virtual size_t        Get(char*, size_t) const = 0;
-  virtual size_t        Get(char*, size_t, index_t) const = 0;
+  virtual size_t        Get(char*, size_t, size_t) const = 0;
   virtual const char*   GetRawText() const = 0;
-  virtual const char*   GetRawTextItem(index_t) const = 0;
+  virtual const char*   GetRawTextItem(size_t) const = 0;
   virtual size_t        Add(const char*) = 0;
 
   // Unicode string field functions
   virtual ID3_Field&    operator= (const unicode_t* s) = 0;
   virtual size_t        Set(const unicode_t*) = 0;
   virtual size_t        Get(unicode_t *buffer, size_t) const = 0;
-  virtual size_t        Get(unicode_t *buffer, size_t, index_t) const = 0;
+  virtual size_t        Get(unicode_t *buffer, size_t, size_t) const = 0;
   virtual const unicode_t* GetRawUnicodeText() const = 0;
-  virtual const unicode_t* GetRawUnicodeTextItem(index_t) const = 0;
+  virtual const unicode_t* GetRawUnicodeTextItem(size_t) const = 0;
   virtual size_t        Add(const unicode_t*) = 0;
 
   // binary field functions
@@ -110,3 +110,4 @@ public:
 };
 
 #endif /* _ID3LIB_FIELD_H_ */
+

@@ -22,7 +22,7 @@ RESCOMP = windres
 LINKER = gcc
 REMOVER = rm
 ECHO = echo
-COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -O6 -g0 -Wall -Wno-pmf-conversions -fno-exceptions -DUNICODE -D_UNICODE -c
+COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -O6 -g0 -Wall -Wno-pmf-conversions -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
 LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lwsock32 -mwindows -o$(EXENAME)
 CMDLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lwsock32 -o$(CMDNAME)
 REMOVER_OPTS = -f
@@ -46,7 +46,7 @@ clean:
 
 $(EXENAME): $(OBJECTS) $(EXEOBJECTS)
 	$(ECHO) -n Linking $(EXENAME)...
-	$(LINKER) $(OBJECTS) $(EXEOBJECTS) $(OBJECTDIR)/libid3dll.a $(OBJECTDIR)/libeupdate.a $(RESOURCES) $(LINKER_OPTS)
+	$(LINKER) $(OBJECTS) $(EXEOBJECTS) $(OBJECTDIR)/libid3dll.a $(RESOURCES) $(LINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(EXENAME)
 	$(PACKER) $(PACKER_OPTS) $(EXENAME)
 	$(ECHO) done.

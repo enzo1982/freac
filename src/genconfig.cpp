@@ -655,7 +655,7 @@ Int configureGeneralSettings::ShowDialog()
 
 Void configureGeneralSettings::OK()
 {
-	if (Setup::enableUnicode ? _wchdir(encoders_edit_outdir->GetText()) : _chdir(encoders_edit_outdir->GetText()) != 0)
+	if ((Setup::enableUnicode ? SetCurrentDirectoryW(encoders_edit_outdir->GetText()) : SetCurrentDirectoryA(encoders_edit_outdir->GetText())) == False)
 	{
 		if (QuickMessage(bonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), bonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION) == IDYES)
 		{
@@ -666,8 +666,8 @@ Void configureGeneralSettings::OK()
 			{
 				if (dir[i] == '\\' || dir[i] == '/' || dir[i] == 0)
 				{
-					if (Setup::enableUnicode)	_wmkdir(tmp);
-					else				_mkdir(tmp);
+					if (Setup::enableUnicode)	CreateDirectoryW(tmp, NIL);
+					else				CreateDirectoryA(tmp, NIL);
 				}
 
 				tmp[i] = dir[i];
@@ -679,8 +679,8 @@ Void configureGeneralSettings::OK()
 		}
 	}
 
-	if (Setup::enableUnicode)	_wchdir(GetApplicationDirectory());
-	else				_chdir(GetApplicationDirectory());
+	if (Setup::enableUnicode)	SetCurrentDirectoryW(GetApplicationDirectory());
+	else				SetCurrentDirectoryA(GetApplicationDirectory());
 
 	Bool	 valid = False;
 	String	 email = cddb_edit_email->GetText();

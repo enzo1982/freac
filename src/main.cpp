@@ -35,8 +35,6 @@
 
 #include <language.h>
 
-#include <eUpdate/eUpdate.h>
-
 Int smooth::Main()
 {
 	bonkEncGUI	*app = new bonkEncGUI();
@@ -562,15 +560,14 @@ bonkEncGUI::bonkEncGUI()
 	menu_options->AddEntry(i18n->TranslateString("General settings..."))->onClick.Connect(&bonkEncGUI::ConfigureGeneral, this);
 	menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."))->onClick.Connect(&bonkEncGUI::ConfigureEncoder, this);
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives > 1)
 	{
-		menu_options->AddEntry();
-
 		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
 		{
 			menu_seldrive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &currentConfig->cdrip_activedrive, j);
 		}
 
+		menu_options->AddEntry();
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
 	}
 
@@ -637,9 +634,14 @@ bonkEncGUI::bonkEncGUI()
 	menu_help->AddEntry(i18n->TranslateString("Help topics..."))->onClick.Connect(&bonkEncGUI::ShowHelp, this);
 	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("Show Tip of the Day").Append("..."))->onClick.Connect(&bonkEncGUI::ShowTipOfTheDay, this);
-	menu_help->AddEntry();
-	menu_help->AddEntry(i18n->TranslateString("Check for updates now").Append("..."))->onClick.Connect(&bonkEncGUI::CheckForUpdates, this);
-	menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &currentConfig->checkUpdatesAtStartup);
+
+	if (currentConfig->enable_eUpdate)
+	{
+		menu_help->AddEntry();
+		menu_help->AddEntry(i18n->TranslateString("Check for updates now").Append("..."))->onClick.Connect(&bonkEncGUI::CheckForUpdates, this);
+		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &currentConfig->checkUpdatesAtStartup);
+	}
+
 	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onClick.Connect(&bonkEncGUI::About, this);
 
@@ -1105,6 +1107,32 @@ Void bonkEncGUI::QueryCDDB()
 	}
 
 	joblist->Paint(SP_PAINT);
+
+	ListEntry	*entry = joblist->GetSelectedEntry();
+
+	if (entry != NIL)
+	{
+		bonkFormatInfo	*format = sa_formatinfo.GetEntry(entry->id);
+
+		dontUpdateInfo = True;
+
+		info_edit_artist->SetText(format->trackInfo->artist);
+		info_edit_title->SetText(format->trackInfo->title);
+		info_edit_album->SetText(format->trackInfo->album);
+
+		info_edit_track->SetText("");
+
+		if (format->trackInfo->track > 0 && format->trackInfo->track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(format->trackInfo->track)));
+		else if (format->trackInfo->track >= 10)				info_edit_track->SetText(String::FromInt(format->trackInfo->track));
+
+		info_edit_year->SetText("");
+
+		if (format->trackInfo->year > 0) info_edit_year->SetText(String::FromInt(format->trackInfo->year));
+
+		info_edit_genre->SetText(format->trackInfo->genre);
+
+		dontUpdateInfo = False;
+	}
 }
 
 Void bonkEncGUI::SubmitCDDBData()
@@ -1405,10 +1433,9 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	menu_options->AddEntry(i18n->TranslateString("General settings..."))->onClick.Connect(&bonkEncGUI::ConfigureGeneral, this);
 	menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."))->onClick.Connect(&bonkEncGUI::ConfigureEncoder, this);
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives > 1)
 	{
 		menu_options->AddEntry();
-
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
 	}
 
@@ -1456,9 +1483,14 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	menu_help->AddEntry(i18n->TranslateString("Help topics..."))->onClick.Connect(&bonkEncGUI::ShowHelp, this);
 	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("Show Tip of the Day").Append("..."))->onClick.Connect(&bonkEncGUI::ShowTipOfTheDay, this);
-	menu_help->AddEntry();
-	menu_help->AddEntry(i18n->TranslateString("Check for updates now").Append("..."))->onClick.Connect(&bonkEncGUI::CheckForUpdates, this);
-	menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &currentConfig->checkUpdatesAtStartup);
+
+	if (currentConfig->enable_eUpdate)
+	{
+		menu_help->AddEntry();
+		menu_help->AddEntry(i18n->TranslateString("Check for updates now").Append("..."))->onClick.Connect(&bonkEncGUI::CheckForUpdates, this);
+		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &currentConfig->checkUpdatesAtStartup);
+	}
+
 	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onClick.Connect(&bonkEncGUI::About, this);
 
@@ -1578,7 +1610,7 @@ Void bonkEncGUI::ShowTipOfTheDay()
 	TipOfTheDay	*dlg = new TipOfTheDay();
 
 	dlg->AddTip(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.").Replace("%1", String::FromInt(i18n->GetNOfLanguages())));
-	dlg->AddTip(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis and Bonk\nencoders. Encoders for AAC and VQF formats are available at\nthe BonkEnc website: %1").Replace("%1", "http://www.bonkenc.org/"));
+	dlg->AddTip(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC\nand Bonk encoders. An encoder for the VQF format is available\nat the BonkEnc website: %1").Replace("%1", "http://www.bonkenc.org/"));
 	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
 	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));
 	dlg->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the CDRip tab of BonkEnc's configuration\ndialog. If that does not help, try using one of the Paranoia modes."));
@@ -1601,12 +1633,14 @@ Void bonkEncGUI::CheckForUpdates()
 
 Int bonkEncGUI::CheckForUpdatesThread(Thread *self)
 {
-	Void	*context = eUpdate_CreateUpdateContext("BonkEnc Audio Encoder");
+	if (!currentConfig->enable_eUpdate) return Success;
+
+	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder");
 	String	 latest;
 
-	if (eUpdate_CheckForUpdates(context, "http://www.bonkenc.org/eUpdate/eUpdate.xml") >= 0)
+	if (ex_eUpdate_CheckForUpdates(context, "http://www.bonkenc.org/eUpdate/eUpdate.xml") >= 0)
 	{
-		if (eUpdate_GetNumberOfVersions(context) > 0) latest = eUpdate_GetLatestPossibleUpdateID(context, version);
+		if (ex_eUpdate_GetNumberOfVersions(context) > 0) latest = ex_eUpdate_GetLatestPossibleUpdateID(context, version);
 	}
 
 	if (latest != NIL && latest != version)
@@ -1615,9 +1649,9 @@ Int bonkEncGUI::CheckForUpdatesThread(Thread *self)
 
 		if (msgBox->ShowDialog() == IDYES)
 		{
-			eUpdate_DownloadVersion(context, version, latest);
+			ex_eUpdate_DownloadVersion(context, version, latest);
 
-			eUpdate_PerformUpdate(context);
+			ex_eUpdate_PerformUpdate(context);
 		}
 
 		DeleteObject(msgBox);
@@ -1631,7 +1665,7 @@ Int bonkEncGUI::CheckForUpdatesThread(Thread *self)
 		DeleteObject(msgBox);
 	}
 
-	eUpdate_FreeUpdateContext(context);
+	ex_eUpdate_FreeUpdateContext(context);
 
 	return Success;
 }

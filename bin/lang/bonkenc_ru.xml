@@ -3,10 +3,10 @@
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
-    <property name="language">Русский</property>
+    <property name="language">Russian / Русский</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="author">Dimonis</property>
+    <property name="author">Dimonis &lt;dimonis@users.sf.net&gt;</property>
     <property name="url">http://www.bonkenc.org/</property>
   </info>
   <data>
@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Выбор кодека:</entry>
     <entry id="18" string="File progress:">Процесс:</entry>
     <entry id="19" string="Output dir.:">Директория:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1 Файл(ы) в списке:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 Файл(ов) в списке:</entry>
     <entry id="21" string="none">пусто</entry>
     <entry id="22" string="Help topics...">Помощь...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Добавить аудио файл(ы) в список</entry>
@@ -105,7 +105,7 @@
     <entry id="93" string="Quantization">Квантование</entry>
     <entry id="94" string="Downsampling ratio">Нижне-дискретный коэфф.</entry>
     <entry id="95" string="Predictor size">Прогноз размера</entry>
-    <entry id="96" string="Enable lossless encoding">Сминимум потерями</entry>
+    <entry id="96" string="Enable lossless encoding">С минимум потерями</entry>
     <entry id="97" string="Enable Joint Stereo">Соединять стерео</entry>
     <entry id="98" string="Bitrate per channel:">Bitrate по каналам:</entry>
     <entry id="99" string="Preselection">Предварительная выборка</entry>
@@ -182,7 +182,7 @@
     <entry id="170" string="Proxy type:">Тип прокси:</entry>
     <entry id="171" string="Proxy server:">Прокси сервер:</entry>
     <entry id="172" string="Presets">Настройка</entry>
-    <entry id="173" string="Use preset:">Выберете вариант</entry>
+    <entry id="173" string="Use preset:">Выберите вариант</entry>
     <entry id="174" string="Custom settings">Указать настройки в ручную</entry>
     <entry id="175" string="Medium">Средний</entry>
     <entry id="176" string="Standard">Стандартный</entry>
@@ -235,5 +235,26 @@
     <entry id="223" string="Psycho acoustic model">Психо-акустическая модель</entry>
     <entry id="224" string="Use Temporal Masking Effect">Использовать эффект маски</entry>
     <entry id="225" string="Expert">Эксперт</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">Нельзя настраивать кодек во время кодирования!</entry>
+    <entry id="227" string="The output directory does not exist! Do you want to create it?">Директории для сохранения не существует! Создать?</entry>
+    <entry id="228" string="Filename pattern"/>
+    <entry id="229" string="unknown album">unknown album</entry>
+    <entry id="230" string="Translated by %1.">Переведенно %1</entry>
+    <entry id="231" string="Select all">Выбрать все</entry>
+    <entry id="232" string="Select none">Ничего не выбрать</entry>
+    <entry id="233" string="Toggle selection"/>
+    <entry id="234" string="Show Tip of the Day">Совет дня</entry>
+    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc содержит языков: %1. Вы можете легко перевести&#10;BonkEnc используя утилиту 'smooth Translator'.</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC&#10;and Bonk encoders. An encoder for the VQF format is available&#10;at the BonkEnc website: %1">BonkEnc содержит кодеки LAME, Ogg Vorbis и Bonk.&#10;Кодеки AAC и VQF доступны на сайте BonkEnc:&#10;%1</entry>
+    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc может использовать плагины (input plug-ins)&#10;Winamp 2 для работы с другими форматами файлов.&#10;Скопируйте файлы in_*.dll в директорию BonkEnc/plugins для&#10;того, чтобы BonkEnc смог читать новые форматы.</entry>
+    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">С BonkEnc Вы можете добавить информацию о CD в базу&#10;данных содержащих символы юникода.&#10;И если диск содержит не латинские названия, можно&#10;корректно их добавить в freedb с помощью BonkEnc.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Для корректного чтения испорченных дисков надо включить&#10;Jitter коррекцию в настройках BonkEnc.&#10;Если даже это не поможет, попробуйте режим паранойя.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">У Вас есть идей как улучшить BonkEnc?&#10;Вы можете изложить их в форуме проекта BonkEnc&#10;на SourceForge - %1 или послать&#10;по е-майлу на %2.</entry>
+    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Вам нравиться BonkEnc?&#10;BonkEnc полностью свободен, но Вы можете&#10;профинансировать разработки проекта.&#10;И переслать средства на %1 через PayPal.&#10;Подробности на %2.</entry>
+    <entry id="242" string="Bitrate / Quality">Bitrate/Качество</entry>
+    <entry id="243" string="Check for updates now">Проверить сейчас обновления</entry>
+    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">Новая версия BonkEnc доступна!</entry>
+    <entry id="245" string="There are no updates available at the moment!">На данный момент обновлений нет!</entry>
+    <entry id="246" string="Check for updates at startup">Проверять обновления при запуске программы</entry>
   </data>
 </LangFile>

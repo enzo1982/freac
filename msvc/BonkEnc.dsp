@@ -68,7 +68,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /Gm /GX /ZI /Od /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /YX /FD /GZ /c
+# ADD CPP /nologo /Gm /GX /ZI /Od /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
@@ -449,21 +449,6 @@ SOURCE=..\include\vorbisconfig.h
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 # Begin Source File
 
-SOURCE=..\resources\icon.rc
-
-!IF  "$(CFG)" == "BonkEnc - Win32 Release"
-
-!ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
-
-# PROP Exclude_From_Build 1
-# ADD BASE RSC /l 0x407 /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources"
-# ADD RSC /l 0x407 /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
-
-!ENDIF 
-
-# End Source File
-# Begin Source File
-
 SOURCE=..\resources\resources.rc
 
 !IF  "$(CFG)" == "BonkEnc - Win32 Release"
@@ -472,16 +457,11 @@ SOURCE=..\resources\resources.rc
 
 !ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
 
-# ADD BASE RSC /l 0x407 /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources"
-# ADD RSC /l 0x407 /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
+# ADD BASE RSC /l 0x407 /i "\devel\projects\private\bonkenc\resources" /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources"
+# ADD RSC /l 0x407 /i "\devel\projects\private\bonkenc\resources" /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
 
 !ENDIF 
 
-# End Source File
-# Begin Source File
-
-SOURCE=..\resources\version.rc
-# PROP Exclude_From_Build 1
 # End Source File
 # End Group
 # End Target

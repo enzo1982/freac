@@ -160,6 +160,8 @@ Problems
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
 
+	- Unicode characters are replaced with '#' in file names, as IOLib does not support Unicode filenames, yet.
+
 	- The command line interface doesn't support options for modifying encoder settings, yet.
 
 Future plans

@@ -3,6 +3,7 @@
 
 // id3lib: a software library for creating and manipulating id3v1/v2 tags
 // Copyright 1999, 2000  Scott Thomas Haug
+// Copyright 2002 Thijmen Klok (thijmen@id3lib.org)
 
 // This library is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Library General Public License as published by
@@ -28,8 +29,9 @@
 #ifndef _ID3LIB_TAG_H_
 #define _ID3LIB_TAG_H_
 
-#include <id3/frame.h>
+#include <id3/id3lib_frame.h>
 #include <id3/field.h>
+#include <id3/utils.h>//for ID3_PATH_LENGTH
 
 class ID3_Reader;
 class ID3_Writer;
@@ -39,6 +41,7 @@ class ID3_Tag;
 class ID3_CPP_EXPORT ID3_Tag
 {
   ID3_TagImpl* _impl;
+  char _tmp_filename[ID3_PATH_LENGTH];
 public:
 
   class Iterator
@@ -58,15 +61,15 @@ public:
   ID3_Tag(const char *name = NULL);
   ID3_Tag(const ID3_Tag &tag);
   virtual ~ID3_Tag();
-  
+
   void       Clear();
   bool       HasChanged() const;
   size_t     Size() const;
-  
+
   bool       SetUnsync(bool);
   bool       SetExtendedHeader(bool);
   bool       SetExperimental(bool);
-  
+
   bool       GetUnsync() const;
   bool       GetExtendedHeader() const;
   bool       GetExperimental() const;
@@ -75,42 +78,45 @@ public:
 
   void       AddFrame(const ID3_Frame&);
   void       AddFrame(const ID3_Frame*);
-  void       AttachFrame(ID3_Frame*);
+  bool       AttachFrame(ID3_Frame*);
   ID3_Frame* RemoveFrame(const ID3_Frame *);
-  
+
   size_t     Parse(const uchar*, size_t);
   bool       Parse(ID3_Reader& reader);
   size_t     Render(uchar*, ID3_TagType = ID3TT_ID3V2) const;
   size_t     Render(ID3_Writer&, ID3_TagType = ID3TT_ID3V2) const;
-  
+
   size_t     Link(const char *fileInfo, flags_t = (flags_t) ID3TT_ALL);
+  size_t     Link(ID3_Reader &reader, flags_t = (flags_t) ID3TT_ALL);
   flags_t    Update(flags_t = (flags_t) ID3TT_ALL);
   flags_t    Strip(flags_t = (flags_t) ID3TT_ALL);
-  
+
   size_t     GetPrependedBytes() const;
   size_t     GetAppendedBytes() const;
   size_t     GetFileSize() const;
   const char* GetFileName() const;
-  
+
   ID3_Frame* Find(ID3_FrameID) const;
   ID3_Frame* Find(ID3_FrameID, ID3_FieldID, uint32) const;
   ID3_Frame* Find(ID3_FrameID, ID3_FieldID, const char*) const;
   ID3_Frame* Find(ID3_FrameID, ID3_FieldID, const unicode_t*) const;
-  
+
   size_t     NumFrames() const;
+
+  const Mp3_Headerinfo* GetMp3HeaderInfo() const;
 
   Iterator*  CreateIterator();
   ConstIterator* CreateIterator() const;
 
   ID3_Tag&   operator=( const ID3_Tag & );
-  
-  bool       HasTagType(uint16 tt) const;
+
+  bool       HasTagType(ID3_TagType tt) const;
   ID3_V2Spec GetSpec() const;
   bool       SetSpec(ID3_V2Spec);
-  
+
   static size_t IsV2Tag(const uchar*);
   static size_t IsV2Tag(ID3_Reader&);
-  
+
   /* Deprecated! */
   void       AddNewFrame(ID3_Frame* f);
   size_t     Link(const char *fileInfo, bool parseID3v1, bool parseLyrics3);
@@ -120,11 +126,16 @@ public:
   bool       HasV2Tag()  const;
   bool       HasV1Tag()  const;
   size_t     Parse(const uchar header[ID3_TAGHEADERSIZE], const uchar *buffer);
-  //ID3_Frame* operator[](index_t) const;
-  //ID3_Frame* GetFrameNum(index_t) const;
+  //ID3_Frame* operator[](size_t) const;
+  //ID3_Frame* GetFrameNum(size_t) const;
 
   ID3_Tag&   operator<<(const ID3_Frame &);
   ID3_Tag&   operator<<(const ID3_Frame *);
 };
 
+// deprecated!
+int32 ID3_C_EXPORT ID3_IsTagHeader(const uchar header[ID3_TAGHEADERSIZE]);
+
+
 #endif /* _ID3LIB_TAG_H_ */
+

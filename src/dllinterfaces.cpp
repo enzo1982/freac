@@ -140,6 +140,21 @@ TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo			= NIL;
 TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo		= NIL;
 TVQENCODEFRAME			 ex_TvqEncodeFrame			= NIL;
 
+EUCREATEUPDATECONTEXT		 ex_eUpdate_CreateUpdateContext		= NIL;
+EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext		= NIL;
+EUCHECKFORUPDATES		 ex_eUpdate_CheckForUpdates		= NIL;
+EUGETLATESTVERSIONID		 ex_eUpdate_GetLatestVersionID		= NIL;
+EUGETLATESTPOSSIBLEUPDATEID	 ex_eUpdate_GetLatestPossibleUpdateID	= NIL;
+EUGETNUMBEROFVERSIONS		 ex_eUpdate_GetNumberOfVersions		= NIL;
+EUGETNTHVERSIONID		 ex_eUpdate_GetNthVersionID		= NIL;
+EUGETNTHVERSIONDESCRIPTION	 ex_eUpdate_GetNthVersionDescription	= NIL;
+EUGETNUMBEROFOPTIONS		 ex_eUpdate_GetNumberOfOptions		= NIL;
+EUGETNTHOPTIONID		 ex_eUpdate_GetNthOptionID		= NIL;
+EUGETNTHOPTIONDESCRIPTION	 ex_eUpdate_GetNthOptionDescription	= NIL;
+EUDOWNLOADVERSION		 ex_eUpdate_DownloadVersion		= NIL;
+EUDOWNLOADOPTION		 ex_eUpdate_DownloadOption		= NIL;
+EUPERFORMUPDATE			 ex_eUpdate_PerformUpdate		= NIL;
+
 Array<HMODULE>		 winamp_plugins;
 Array<In_Module *>	 winamp_modules;
 
@@ -504,6 +519,50 @@ Bool bonkEnc::LoadID3DLL()
 
 Void bonkEnc::FreeID3DLL()
 {
+}
+
+Bool bonkEnc::LoadEUpdateDLL()
+{
+	eupdatedll = LoadLibraryA(GetApplicationDirectory().Append("eUpdate.dll"));
+
+	if (eupdatedll == NIL) return false;
+
+	ex_eUpdate_CreateUpdateContext		= (EUCREATEUPDATECONTEXT) GetProcAddress(eupdatedll, "eUpdate_CreateUpdateContext");
+	ex_eUpdate_FreeUpdateContext		= (EUFREEUPDATECONTEXT) GetProcAddress(eupdatedll, "eUpdate_FreeUpdateContext");
+	ex_eUpdate_CheckForUpdates		= (EUCHECKFORUPDATES) GetProcAddress(eupdatedll, "eUpdate_CheckForUpdates");
+	ex_eUpdate_GetLatestVersionID		= (EUGETLATESTVERSIONID) GetProcAddress(eupdatedll, "eUpdate_GetLatestVersionID");
+	ex_eUpdate_GetLatestPossibleUpdateID	= (EUGETLATESTPOSSIBLEUPDATEID) GetProcAddress(eupdatedll, "eUpdate_GetLatestPossibleUpdateID");
+	ex_eUpdate_GetNumberOfVersions		= (EUGETNUMBEROFVERSIONS) GetProcAddress(eupdatedll, "eUpdate_GetNumberOfVersions");
+	ex_eUpdate_GetNthVersionID		= (EUGETNTHVERSIONID) GetProcAddress(eupdatedll, "eUpdate_GetNthVersionID");
+	ex_eUpdate_GetNthVersionDescription	= (EUGETNTHVERSIONDESCRIPTION) GetProcAddress(eupdatedll, "eUpdate_GetNthVersionDescription");
+	ex_eUpdate_GetNumberOfOptions		= (EUGETNUMBEROFOPTIONS) GetProcAddress(eupdatedll, "eUpdate_GetNumberOfOptions");
+	ex_eUpdate_GetNthOptionID		= (EUGETNTHOPTIONID) GetProcAddress(eupdatedll, "eUpdate_GetNthOptionID");
+	ex_eUpdate_GetNthOptionDescription	= (EUGETNTHOPTIONDESCRIPTION) GetProcAddress(eupdatedll, "eUpdate_GetNthOptionDescription");
+	ex_eUpdate_DownloadVersion		= (EUDOWNLOADVERSION) GetProcAddress(eupdatedll, "eUpdate_DownloadVersion");
+	ex_eUpdate_DownloadOption		= (EUDOWNLOADOPTION) GetProcAddress(eupdatedll, "eUpdate_DownloadOption");
+	ex_eUpdate_PerformUpdate		= (EUPERFORMUPDATE) GetProcAddress(eupdatedll, "eUpdate_PerformUpdate");
+
+	if (ex_eUpdate_CreateUpdateContext == NULL)		{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_FreeUpdateContext == NULL)		{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_CheckForUpdates == NULL)			{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_GetLatestVersionID == NULL)		{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_GetLatestPossibleUpdateID == NULL)	{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_GetNumberOfVersions == NULL)		{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_GetNthVersionID == NULL)			{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_GetNthVersionDescription == NULL)	{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_GetNumberOfOptions == NULL)		{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_GetNthOptionID == NULL)			{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_GetNthOptionDescription == NULL)		{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_DownloadVersion == NULL)			{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_DownloadOption == NULL)			{ FreeLibrary(eupdatedll); return false; }
+	if (ex_eUpdate_PerformUpdate == NULL)			{ FreeLibrary(eupdatedll); return false; }
+
+	return true;
+}
+
+Void bonkEnc::FreeEUpdateDLL()
+{
+	FreeLibrary(eupdatedll);
 }
 
 Bool bonkEnc::LoadWinampDLLs()

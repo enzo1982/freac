@@ -111,6 +111,9 @@ bonkEnc::bonkEnc()
 	if (LoadID3DLL() == false)	currentConfig->enable_id3 = false;
 	else				currentConfig->enable_id3 = true;
 
+	if (LoadEUpdateDLL() == false)	currentConfig->enable_eUpdate = false;
+	else				currentConfig->enable_eUpdate = true;
+
 	LoadWinampDLLs();
 
 	int	 nextEC = 0;
@@ -236,6 +239,8 @@ bonkEnc::~bonkEnc()
 	if (currentConfig->enable_tvq)		FreeTVQDLL();
 	if (currentConfig->enable_vorbis)	FreeVorbisDLL();
 	if (currentConfig->enable_cdrip)	FreeCDRipDLL();
+	if (currentConfig->enable_id3)		FreeID3DLL();
+	if (currentConfig->enable_eUpdate)	FreeEUpdateDLL();
 
 	FreeWinampDLLs();
 

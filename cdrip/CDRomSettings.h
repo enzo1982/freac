@@ -55,8 +55,7 @@ public:
 	DWORD	GetStartSector(int nIndex)		const {return m_dwaStartSector[nIndex];}
 	BYTE	GetFlags(int nIndex)			const {return m_btaFlags[nIndex];}
 	BYTE	GetTrackNumber(int nIndex)		const {return m_btaTrackNumber[nIndex];}
-	INT		GetNumTracks()					const {return m_nNumTracks-1;}
-	void	DumpToc(LPBYTE pbtBuffer,int nSize);
+	INT	GetNumTracks()				const {return m_nNumTracks-1;}
 	BOOL	IsAudioTrack(int p_track);
 	DWORD	GetSize(int nTrack);
 };
@@ -65,11 +64,11 @@ public:
 class CDRomSettings
 {
 private:
-	int							m_nActive;
+	int				m_nActive;
 	vector<CDSETTINGSPARAMS>	m_CDParams;
-	vector<CToc>				m_Toc;
-	CHAR						m_lpszIniFname[255];
-	INT							m_nTransportLayer;
+	vector<CToc>			m_Toc;
+	CHAR				m_lpszIniFname[255];
+	INT				m_nTransportLayer;
 public:
 	CToc&	GetToc() {return m_Toc[m_nActive];}
 
@@ -82,10 +81,8 @@ public:
 	void UpdateDriveSettings();
 
 	void LoadSettings( BOOL bUpdateDriveSettings  );
-	void SaveSettings();
 
 	int	GetNumDrives() const {return m_CDParams.size();}
-	void LoadCDSettingsEntry( CDSETTINGSPARAMS& cdSettings, const char* lpszKey );
 
 	// Set the active CDROM device
 	void SetActiveCDROM( BYTE nValue );

@@ -28,7 +28,7 @@
 #ifndef _ID3LIB_READER_H_
 #define _ID3LIB_READER_H_
 
-#include <id3/globals.h>
+#include "id3/globals.h" //has <stdlib.h> "id3/sized_types.h"
 
 class ID3_CPP_EXPORT ID3_Reader
 {
@@ -126,3 +126,4 @@ class ID3_CPP_EXPORT ID3_Reader
 };
 
 #endif /* _ID3LIB_READER_H_ */
+

@@ -1,9 +1,9 @@
-OBJECTS = Aspi.o AspiCD.o CDExtract.o CDRip.o CDRomSettings.o Ini.o NTScsi.o resources.o
+OBJECTS = Aspi.o AspiCD.o CDExtract.o CDRip.o CDRomSettings.o NTScsi.o resources.o
 
 all : CDRip.dll
 
 CDRip.dll : $(OBJECTS)
-	dllwrap -mwindows -o CDRip.dll --output-lib libcdrip.a $(OBJECTS) -L../../smooth/lib -L./paranoia -lsmooth -lparanoia -lstdc++
+	dllwrap -mwindows -o CDRip.dll --output-lib libcdrip.a $(OBJECTS) -L./paranoia -lparanoia -lstdc++
 	strip --strip-all CDRip.dll
 	upx -9 -q CDRip.dll
 
@@ -23,10 +23,7 @@ CDRip.o: CDRip.cpp
 	gcc -O6 -march=i586 -DCDEX_DLL -c CDRip.cpp
 
 CDRomSettings.o: CDRomSettings.cpp
-	gcc -O6 -march=i586 -I../../smooth/include -c CDRomSettings.cpp
-
-Ini.o: Ini.cpp
-	gcc -O6 -march=i586 -I../../smooth/include -c Ini.cpp
+	gcc -O6 -march=i586 -c CDRomSettings.cpp
 
 NTScsi.o: NTScsi.cpp
 	gcc -O6 -march=i586 -c NTScsi.cpp

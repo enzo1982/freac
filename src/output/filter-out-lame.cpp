@@ -248,75 +248,110 @@ bool FilterOutLAME::Activate()
 	{
 		ID3_Tag		*tag = new ID3_Tag();
 
-		ID3_Frame	*artist = new ID3_Frame(ID3FID_LEADARTIST);
-		ID3_Field	&artist_text = artist->Field(ID3FN_TEXT);
+		tag->SetPadding(false);
 
-		if (format->trackInfo->artist != NIL && format->trackInfo->artist != "")
+		ID3_Frame	*artist = new ID3_Frame(ID3FID_LEADARTIST);
+
+		if (format->trackInfo->artist != NIL)
 		{
-			artist_text.Set((char *) format->trackInfo->artist);
+			if (String::IsUnicode(format->trackInfo->artist))
+			{
+				artist->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
+				artist->Field(ID3FN_TEXT).Set((char *) format->trackInfo->artist.ConvertTo("UTF-8"));
+			}
+			else
+			{
+				artist->Field(ID3FN_TEXT).Set((char *) format->trackInfo->artist);
+			}
 
 			tag->AddFrame(artist);
 		}
 
 		ID3_Frame	*title = new ID3_Frame(ID3FID_TITLE);
-		ID3_Field	&title_text = title->Field(ID3FN_TEXT);
 
-		if (format->trackInfo->title != NIL && format->trackInfo->title != "")
+		if (format->trackInfo->title != NIL)
 		{
-			title_text.Set((char *) format->trackInfo->title);
+			if (String::IsUnicode(format->trackInfo->title))
+			{
+				title->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
+				title->Field(ID3FN_TEXT).Set((char *) format->trackInfo->title.ConvertTo("UTF-8"));
+			}
+			else
+			{
+				title->Field(ID3FN_TEXT).Set((char *) format->trackInfo->title);
+			}
 
 			tag->AddFrame(title);
 		}
 
 		ID3_Frame	*album = new ID3_Frame(ID3FID_ALBUM);
-		ID3_Field	&album_text = album->Field(ID3FN_TEXT);
 
-		if (format->trackInfo->album != NIL && format->trackInfo->album != "")
+		if (format->trackInfo->album != NIL)
 		{
-			album_text.Set((char *) format->trackInfo->album);
+			if (String::IsUnicode(format->trackInfo->album))
+			{
+				album->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
+				album->Field(ID3FN_TEXT).Set((char *) format->trackInfo->album.ConvertTo("UTF-8"));
+			}
+			else
+			{
+				album->Field(ID3FN_TEXT).Set((char *) format->trackInfo->album);
+			}
 
 			tag->AddFrame(album);
 		}
 
 		ID3_Frame	*track = new ID3_Frame(ID3FID_TRACKNUM);
-		ID3_Field	&track_text = track->Field(ID3FN_TEXT);
 
 		if (format->trackInfo->track > 0)
 		{
-			if (format->trackInfo->track < 10)	track_text.Set((char *) String("0").Append(String::FromInt(format->trackInfo->track)));
-			else					track_text.Set((char *) String::FromInt(format->trackInfo->track));
+			if (format->trackInfo->track < 10)	track->Field(ID3FN_TEXT).Set((char *) String("0").Append(String::FromInt(format->trackInfo->track)));
+			else					track->Field(ID3FN_TEXT).Set((char *) String::FromInt(format->trackInfo->track));
 
 			tag->AddFrame(track);
 		}
 
 		ID3_Frame	*year = new ID3_Frame(ID3FID_YEAR);
-		ID3_Field	&year_text = year->Field(ID3FN_TEXT);
 
 		if (format->trackInfo->year > 0)
 		{
-			year_text.Set((char *) String::FromInt(format->trackInfo->year));
+			year->Field(ID3FN_TEXT).Set((char *) String::FromInt(format->trackInfo->year));
 
 			tag->AddFrame(year);
 		}
 
 		ID3_Frame	*genre = new ID3_Frame(ID3FID_CONTENTTYPE);
-		ID3_Field	&genre_text = genre->Field(ID3FN_TEXT);
 
-		if (format->trackInfo->genre != NIL && format->trackInfo->genre != "")
+		if (format->trackInfo->genre != NIL)
 		{
-			genre_text.Set((char *) format->trackInfo->genre);
+			if (String::IsUnicode(format->trackInfo->genre))
+			{
+				genre->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
+				genre->Field(ID3FN_TEXT).Set((char *) format->trackInfo->genre.ConvertTo("UTF-8"));
+			}
+			else
+			{
+				genre->Field(ID3FN_TEXT).Set((char *) format->trackInfo->genre);
+			}
 
 			tag->AddFrame(genre);
 		}
 
 		ID3_Frame	*comment = new ID3_Frame(ID3FID_COMMENT);
-		ID3_Field	&comment_text = comment->Field(ID3FN_TEXT);
 
-		comment_text.Set((char *) currentConfig->default_comment);
+		if (String::IsUnicode(currentConfig->default_comment))
+		{
+			comment->Field(ID3FN_TEXT).SetEncoding(ID3TE_UTF8);
+			comment->Field(ID3FN_TEXT).Set((char *) currentConfig->default_comment.ConvertTo("UTF-8"));
+		}
+		else
+		{
+			comment->Field(ID3FN_TEXT).Set((char *) currentConfig->default_comment);
+		}
 
 		tag->AddFrame(comment);
 
-		unsigned char	*buffer = new unsigned char [tag->Size()];
+		unsigned char	*buffer = new unsigned char [32768];
 		int		 size = tag->Render(buffer);
 
 		driver->WriteData(buffer, size);

@@ -28,8 +28,8 @@
 #ifndef _ID3LIB_HELPERS_H_
 #define _ID3LIB_HELPERS_H_
 
-#include "strings.h"
-#include "globals.h"
+#include "id3/id3lib_strings.h"
+#include "id3/globals.h" //has <stdlib.h> "id3/sized_types.h"
 
 class ID3_TagImpl;
 class ID3_Frame;
@@ -41,7 +41,7 @@ namespace dami
     namespace v2
     {
       ID3_C_EXPORT String     getString(const ID3_Frame*, ID3_FieldID);
-      ID3_C_EXPORT String     getStringAtIndex(const ID3_Frame*, ID3_FieldID, index_t);
+      ID3_C_EXPORT String     getStringAtIndex(const ID3_Frame*, ID3_FieldID, size_t);
       
       ID3_C_EXPORT String     getFrameText(const ID3_TagImpl&, ID3_FrameID);
       ID3_C_EXPORT ID3_Frame* setFrameText(ID3_TagImpl&, ID3_FrameID, String);
@@ -106,3 +106,4 @@ namespace dami
 };
       
 #endif /* _ID3LIB_HELPERS_H_ */
+

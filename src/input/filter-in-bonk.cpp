@@ -147,7 +147,7 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 				{
 					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
 						
-					nFormat->trackInfo->artist = abuffer;
+					nFormat->trackInfo->artist.ImportFrom("UTF-8", abuffer);
 				}
 				else if (field->Get() == ID3TE_UNICODE)
 				{
@@ -165,7 +165,7 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 				{
 					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
 					
-					nFormat->trackInfo->title = abuffer;
+					nFormat->trackInfo->title.ImportFrom("UTF-8", abuffer);
 				}
 				else if (field->Get() == ID3TE_UNICODE)
 				{
@@ -183,7 +183,7 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 				{
 					if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(abuffer, tbufsize);
 					
-					nFormat->trackInfo->album = abuffer;
+					nFormat->trackInfo->album.ImportFrom("UTF-8", abuffer);
 				}
 				else if (field->Get() == ID3TE_UNICODE)
 				{
@@ -213,7 +213,7 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 						}
 					}
 
-					if ((abuffer + startByte)[0] != 0)	nFormat->trackInfo->genre = abuffer + startByte;
+					if ((abuffer + startByte)[0] != 0)	nFormat->trackInfo->genre.ImportFrom("UTF-8", abuffer + startByte);
 					else if (startByte > 0)			nFormat->trackInfo->genre = GetID3CategoryName(String(abuffer + 1).ToInt());
 				}
 				else if (field->Get() == ID3TE_UNICODE)

@@ -1,5 +1,0 @@
-#include <windows.h>
-#include "../include/resources.h"
-
-IDI_ICON ICON MOVEABLE PURE LOADONCALL DISCARDABLE "resources/binary/bonkenc.ico"
-

@@ -3,7 +3,7 @@
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
-    <property name="language">Italiano</property>
+    <property name="language">Italian / Italiano</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Marco D'Amato &lt;md@swzone.it&gt;</property>
@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">Elaborazione in corso</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">La distribuzione di questo programma è soggetta&#10;ai termini della GNU General Public License (GPL).</entry>
     <entry id="43" string="CDDB query">Interrogazione CDDB</entry>
-    <entry id="44" string="About BonkEnc">Informazioni su BonkEnc</entry>
+    <entry id="44" string="About BonkEnc">Informazioni su</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Nessuna opzione disponibile per il filtro WAVE Out.</entry>
     <entry id="46" string="WAVE Out filter">Filtro WAVE Out</entry>
     <entry id="47" string="Cannot change settings while encoding!">Impossibile modificare le impostazioni durante l'elaborazione.</entry>
@@ -239,5 +239,22 @@
     <entry id="227" string="The output directory does not exist! Do you want to create it?">La cartella di destinazione non esiste. Crearla?</entry>
     <entry id="228" string="Filename pattern">Modello per il nome di file</entry>
     <entry id="229" string="unknown album">album sconosciuto</entry>
+    <entry id="230" string="Translated by %1.">Traduzione a cura di %1.</entry>
+    <entry id="231" string="Select all">Seleziona tutto</entry>
+    <entry id="232" string="Select none">Deseleziona tutto</entry>
+    <entry id="233" string="Toggle selection">Inverti selezione</entry>
+    <entry id="234" string="Show Tip of the Day">Mostra suggerimenti</entry>
+    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc è disponibile in %1 lingue. Se la propria lingua non è&#10;supportata dal programma, utilizzare lo strumento 'smooth&#10;Translator' per tradurre l'interfaccia grafica di BonkEnc.</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC&#10;and Bonk encoders. An encoder for the VQF format is available&#10;at the BonkEnc website: %1">Il pacchetto di distribuzione di BonkEnc include i codificatori&#10;LAME, Ogg Vorbis e Bonk. I codificatori per i formati audio&#10;AAC e VQF sono disponibili sul sito Web di BonkEnc:&#10;%1.</entry>
+    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc supporta i plugin di WinAmp 2. Ciò consente la&#10;riproduzione di numerosi altri tipi di file. Per aggiungere un&#10;plugin di WinAmp, copiare il relativo file in_*.dll nella cartella&#10;BonkEnc/plugins.</entry>
+    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">BonkEnc supporta i caratteri Unicode. Se si dispone di CD con&#10;titoli o interpreti non latini, BonkEnc è in grado di importare in modo&#10;corretto le voci contenute nel database dei CD freedb.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per correggere gli errori di lettura durante la copia dei brani da CD&#10;aprire la finestra di dialogo Impostazioni generali, scegliere la&#10;scheda CDRip, quindi selezionare la casella di controllo Attiva&#10;correzione Jitter. Se gli errori di lettura persistono, utilizzare una delle&#10;modalità Paranoia.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Per commenti o suggerimenti su come migliorare BonkEnc,&#10;compilare il modulo Tracker, disponibile sulla pagina Web&#10;SourceForge project di BonkEnc oppure inviare un'e-mail&#10;all'indirizzo %2.</entry>
+    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Trovate utile BonkEnc? BonkEnc è disponibile gratutitamente, ma&#10;potete finanziare lo sviluppo del programma effettuando una&#10;donazione. Per inviare denaro all'indirizzo %1&#10;utilizzare il servizio offerto da PayPal. Per ulteriori informazioni&#10;consultare la seguente pagina Web:&#10;%2.</entry>
+    <entry id="242" string="Bitrate / Quality">Bitrate / Qualità</entry>
+    <entry id="243" string="Check for updates now">Verifica la disponibilità di aggiornamenti</entry>
+    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">È disponibile su Internet una nuova versione di BonkEnc.&#10;Effettuare il download ed installare la nuova versione?</entry>
+    <entry id="245" string="There are no updates available at the moment!">Al momento non sono disponibili nuovi aggiornamenti del programma.</entry>
+    <entry id="246" string="Check for updates at startup">Verifica la disponibilità di aggiornamenti all'avvio</entry>
   </data>
 </LangFile>

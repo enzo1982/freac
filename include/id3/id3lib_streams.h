@@ -1,8 +1,5 @@
-// -*- C++ -*-
-// $Id$
-
-// id3lib: a software library for creating and manipulating id3v1/v2 tags
-// Copyright 1999, 2000  Scott Thomas Haug
+// id3lib: a C++ library for creating and manipulating id3v1/v2 tags
+// Copyright 2002 Thijmen Klok
 
 // This library is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Library General Public License as published by
@@ -25,16 +22,22 @@
 // id3lib.  These files are distributed with id3lib at
 // http://download.sourceforge.net/id3lib/
 
-#ifndef _ID3LIB_STRINGS_H_
-#define _ID3LIB_STRINGS_H_
+#ifndef STREAMS_H_DEFINE
+#define STREAMS_H_DEFINE
+#include <fstream>
+#include <iostream>
+#include <iosfwd>
 
-#include <string>
+using std::ifstream;
+using std::ofstream;
+using std::fstream;
 
-namespace dami
-{
-  typedef std::basic_string<char>           String;
-  typedef std::basic_string<unsigned char> BString;
-  typedef std::basic_string<wchar_t>       WString;
-};
+using std::iostream;
+using std::ostream;
+using std::istream;
+using std::ios;
 
-#endif /* _ID3LIB_STRINGS_H_ */
+using std::streamoff;
+
+#endif // STREAMS_H_DEFINE
+

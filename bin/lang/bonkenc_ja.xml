@@ -3,7 +3,7 @@
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
-    <property name="language">日本語</property>
+    <property name="language">Japanese / 日本語</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Sirakaba &lt;BonkEncJpnLang@sirk.tn.st&gt;</property>
@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">エンコーダ:</entry>
     <entry id="18" string="File progress:">処理状況:</entry>
     <entry id="19" string="Output dir.:">出力先:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1のファイルがリストに存在します:</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1個のファイルがリストに存在します:</entry>
     <entry id="21" string="none">なし</entry>
     <entry id="22" string="Help topics...">トピックの検索</entry>
     <entry id="23" string="Add audio file(s) to the joblist">ジョブリストに追加</entry>
@@ -37,7 +37,7 @@
     <entry id="25" string="Remove the selected entry from the joblist">選択ファイルをジョブリストから削除</entry>
     <entry id="26" string="Clear the entire joblist">ジョブリストを初期化</entry>
     <entry id="27" string="Configure general settings">一般設定</entry>
-    <entry id="28" string="Configure the selected audio encoder">選択したエンコーダに設定</entry>
+    <entry id="28" string="Configure the selected audio encoder">選択したエンコーダの設定</entry>
     <entry id="29" string="Start the encoding process">エンコードを開始する</entry>
     <entry id="30" string="Cannot modify the joblist while encoding!">エンコード中にジョブリストの修正は出来ません！</entry>
     <entry id="31" string="Error">エラー</entry>
@@ -102,21 +102,21 @@
     <entry id="90" string="Set Private bit">非公開ビットの設定</entry>
     <entry id="91" string="Encoder mode">エンコーダのモード</entry>
     <entry id="92" string="Stereo mode">ステレオ</entry>
-    <entry id="93" string="Quantization"></entry>
+    <entry id="93" string="Quantization">量子化</entry>
     <entry id="94" string="Downsampling ratio"></entry>
     <entry id="95" string="Predictor size">予測サイズ</entry>
     <entry id="96" string="Enable lossless encoding">可逆圧縮を使用</entry>
     <entry id="97" string="Enable Joint Stereo">ジョイントステレオを使用</entry>
-    <entry id="98" string="Bitrate per channel:"></entry>
+    <entry id="98" string="Bitrate per channel:">ビットレートチャンネル:</entry>
     <entry id="99" string="Preselection">初期選択</entry>
     <entry id="100" string="Number of preselection candidates:"></entry>
     <entry id="101" string="MPEG version">MPEGのバージョン</entry>
     <entry id="102" string="AAC object type"></entry>
-    <entry id="103" string="Allow Joint Stereo">ジョイントステレオを許可する</entry>
-    <entry id="104" string="Temporal Noise Shaping"></entry>
-    <entry id="105" string="Use Temporal Noise Shaping"></entry>
-    <entry id="106" string="Maximum bandwidth"></entry>
-    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):"></entry>
+    <entry id="103" string="Allow Joint Stereo">ジョイントステレオを許可</entry>
+    <entry id="104" string="Temporal Noise Shaping">ノイズ除去</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">ノイズ除去を使用</entry>
+    <entry id="106" string="Maximum bandwidth">最大帯域幅</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">使用するAAC最大周波数帯域幅(Hz):</entry>
     <entry id="108" string="Basic">基本</entry>
     <entry id="109" string="Misc">その他</entry>
     <entry id="110" string="Audio processing">処理</entry>
@@ -146,14 +146,14 @@
     <entry id="134" string="adjust padding">自動設定</entry>
     <entry id="135" string="Output sampling rate">サンプリングレートを出力</entry>
     <entry id="136" string="no resampling">リサンプルしない</entry>
-    <entry id="137" string="Highpass filter"></entry>
-    <entry id="138" string="Set Highpass frequency (Hz):"></entry>
-    <entry id="139" string="Set Highpass width (Hz):"></entry>
-    <entry id="140" string="Lowpass filter"></entry>
-    <entry id="141" string="Set Lowpass frequency (Hz):"></entry>
-    <entry id="142" string="Set Lowpass width (Hz):"></entry>
+    <entry id="137" string="Highpass filter">高域フィルタ</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">高域周波数(Hz):</entry>
+    <entry id="139" string="Set Highpass width (Hz):">高域幅(Hz):</entry>
+    <entry id="140" string="Lowpass filter">低域フィルタ</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">低域周波数(Hz):</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">低域幅(Hz):</entry>
     <entry id="143" string="Misc settings">その他の設定</entry>
-    <entry id="144" string="Disable all filtering">全てのフィルタを使用しない</entry>
+    <entry id="144" string="Disable all filtering">フィルタを使用しない</entry>
     <entry id="145" string="MP3 Files">MP3ファイル</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbisファイル</entry>
     <entry id="147" string="BONK Files">Bonkファイル</entry>
@@ -232,12 +232,29 @@
     <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">ATHを使用する:</entry>
     <entry id="222" string="Use default setting">初期設定を使う</entry>
-    <entry id="223" string="Psycho acoustic model"></entry>
-    <entry id="224" string="Use Temporal Masking Effect"></entry>
+    <entry id="223" string="Psycho acoustic model">精神音響モデル</entry>
+    <entry id="224" string="Use Temporal Masking Effect">一時遮断効果を使用</entry>
     <entry id="225" string="Expert">高度な設定</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">エンコード中にエンコーダの設定を変更できません！</entry>
     <entry id="227" string="The output directory does not exist! Do you want to create it?">出力先が存在しません！ディレクトリを作成しますか？</entry>
     <entry id="228" string="Filename pattern">ファイル名パターン</entry>
     <entry id="229" string="unknown album">(不明なアルバム)</entry>
+    <entry id="230" string="Translated by %1.">%1によって翻訳されました。</entry>
+    <entry id="231" string="Select all">すべて選択</entry>
+    <entry id="232" string="Select none">すべて選択解除</entry>
+    <entry id="233" string="Toggle selection"></entry>
+    <entry id="234" string="Show Tip of the Day">今日のTipを表示</entry>
+    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEncは%1個の言語で公開されています。もしあなたの言語が&#10;公開されていない場合、'smooth Translator'を使う事で、簡単に&#10;BonkEncを翻訳する事が出来ます。</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC&#10;and Bonk encoders. An encoder for the VQF format is available&#10;at the BonkEnc website: %1">BonkEncはLAMEやOgg Vorbis、Bonkなどのエンコーダをサポート&#10;しています。AACやVQFのエンコーダはBonkEncのウェブサイトで&#10;公開されています。&#10;BonkEncのウェブサイト:%1</entry>
+    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEncはWinamp 2のinputプラグインをサポートしています。&#10;inputプラグインを使う事で、他のフォーマットにも対応できます。&#10;BonkEncで他のフォーマットを使用するには、in_*.dllを&#10;BonkEnc/pluginsにコピーしてください。</entry>
+    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">BonkEncでfreedb CDデータベースにUnicode文字列を含む&#10;エントリーを送信できます。だから、あなたの持っているCDの&#10;non-Latinアーティストやタイトルを、BonkEncでfreedbの&#10;エントリーを送信できます。</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."></entry>
+    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">BonkEncを改善するための提案があれば、SourceForgeにある&#10;BonkEncのプロジェクトページ(%1)の&#10;トラッカーか、%2へのメールを通して&#10;あなたの提案を送信する事が出来ます。</entry>
+    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">BonkEncを好きですか？BonkEncは無料で公開されていますが、&#10;あなたはBonkEncプロジェクトに開発費を寄付する事が出来ます。&#10;あなたは%1へPayPalを通して送金できます。&#10;詳細は%2を参照してください。</entry>
+    <entry id="242" string="Bitrate / Quality">ビットレート/音質</entry>
+    <entry id="243" string="Check for updates now">更新を確認する</entry>
+    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">新しいバージョンのBonkEncがオンラインで公開されています。&#10;新しいバージョンをインストールしますか？</entry>
+    <entry id="245" string="There are no updates available at the moment!">現在公開されている更新はありません。</entry>
+    <entry id="246" string="Check for updates at startup">起動時に更新を確認する</entry>
   </data>
 </LangFile>

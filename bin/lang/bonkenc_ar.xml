@@ -3,7 +3,7 @@
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
-    <property name="language">عربي</property>
+    <property name="language">Arabic / عربي</property>
     <property name="righttoleft">true</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Robert Kausch &lt;robert.kausch@bonkenc.org&gt;</property>

@@ -28,7 +28,7 @@
 #ifndef _ID3LIB_IO_HELPERS_H_
 #define _ID3LIB_IO_HELPERS_H_
 
-#include "strings.h"
+#include "id3/id3lib_strings.h"
 #include "reader.h"
 #include "writer.h"
 
@@ -79,3 +79,4 @@ namespace dami
 };
 
 #endif /* _ID3LIB_IO_HELPERS_H_ */
+

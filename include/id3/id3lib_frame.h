@@ -28,7 +28,7 @@
 #ifndef _ID3LIB_FRAME_H_
 #define _ID3LIB_FRAME_H_
 
-#include <id3/globals.h>
+#include "id3/globals.h" //has <stdlib.h> "id3/sized_types.h"
 
 class ID3_Field;
 class ID3_FrameImpl;
@@ -96,7 +96,8 @@ public:
 
   // Deprecated
   ID3_Field&  Field(ID3_FieldID name) const;
-  //ID3_Field*  GetFieldNum(index_t) const;
+  //ID3_Field*  GetFieldNum(size_t) const;
 };
 
 #endif /* _ID3LIB_FRAME_H_ */
+

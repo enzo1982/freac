@@ -3,7 +3,8 @@
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
-    <property name="language">Ελληνικά</property>
+    <property name="language">Greek / Ελληνικά</property>
+    <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Φώτης Ευαγγέλου (Fotis Evangelou) &lt;fevangelou@msn.com&gt;</property>
     <property name="url">http://www.bonkenc.org/</property>
@@ -81,7 +82,7 @@
     <entry id="70" string="Ripper settings">Επιλογές Εξαγωγής CD</entry>
     <entry id="71" string="Activate cdparanoia mode:">Επιλογή cdparanoia:</entry>
     <entry id="72" string="Activate jitter correction">Διόρθωση jitter</entry>
-    <entry id="73" string="Swap left/right channel">Swap left/right channel</entry>
+    <entry id="73" string="Swap left/right channel">Εναλλαγή καναλιού Α/Δ</entry>
     <entry id="74" string="Lock CD tray while ripping">Κλείδωμα πόρτας CD</entry>
     <entry id="75" string="Use native NT SCSI library">Χρήση NT SCSI Library</entry>
     <entry id="76" string="Overlap only">Μόνο Υπέρθεση</entry>
@@ -91,14 +92,14 @@
     <entry id="80" string="Bitrate">Ρυθμός Διαμεταγωγής Δεδομένων (Bitrate)</entry>
     <entry id="81" string="Copyright bit">Copyright bit</entry>
     <entry id="82" string="CRC">CRC</entry>
-    <entry id="83" string="Original bit">Original bit</entry>
+    <entry id="83" string="Original bit">Αυθεντικό</entry>
     <entry id="84" string="Channels">Κανάλια</entry>
-    <entry id="85" string="Private bit">Private bit</entry>
-    <entry id="86" string="Set Copyright bit">Set Copyright bit</entry>
+    <entry id="85" string="Private bit">Κλειστό</entry>
+    <entry id="86" string="Set Copyright bit">Ενεργοποίηση Copyright bit</entry>
     <entry id="87" string="Enable CRC">Ενεργοποίηση CRC</entry>
-    <entry id="88" string="Set Original bit">Set Original bit</entry>
+    <entry id="88" string="Set Original bit">Ενεργοποίηση Αυθεντκότητας</entry>
     <entry id="89" string="Dual channel encoding">Δικάναλη Κωδικοποίηση</entry>
-    <entry id="90" string="Set Private bit">Set Private bit</entry>
+    <entry id="90" string="Set Private bit">Ενεργοποίηση κλειστής προστασίας</entry>
     <entry id="91" string="Encoder mode">Επιλογές Κωδικοποιητή</entry>
     <entry id="92" string="Stereo mode">Επιλογή Stereo</entry>
     <entry id="93" string="Quantization">Κβαντισμός (Quantization)</entry>
@@ -119,8 +120,8 @@
     <entry id="108" string="Basic">Βασικό</entry>
     <entry id="109" string="Misc">Διάφορα</entry>
     <entry id="110" string="Audio processing">Επεξεργασία Ήχου</entry>
-    <entry id="111" string="Set bitrate:">Set bitrate:</entry>
-    <entry id="112" string="Set ratio:">Set ratio:</entry>
+    <entry id="111" string="Set bitrate:">Bitrate:</entry>
+    <entry id="112" string="Set ratio:">Δειγματοληψία:</entry>
     <entry id="113" string="Set quality:">Ρύθμιση:</entry>
     <entry id="114" string="worse">Χειρότερη</entry>
     <entry id="115" string="better">Καλύτερη</entry>
@@ -143,8 +144,8 @@
     <entry id="132" string="pad no frames">pad no frames</entry>
     <entry id="133" string="pad all frames">pad all frames</entry>
     <entry id="134" string="adjust padding">adjust padding</entry>
-    <entry id="135" string="Output sampling rate">Output sampling rate</entry>
-    <entry id="136" string="no resampling">No resampling</entry>
+    <entry id="135" string="Output sampling rate">Δειγματοληψία</entry>
+    <entry id="136" string="no resampling">Όχι νέα δειγματοληψία</entry>
     <entry id="137" string="Highpass filter">Φίλτρο Highpass</entry>
     <entry id="138" string="Set Highpass frequency (Hz):">Ρύθμιση συχνοτήτων (Hz):</entry>
     <entry id="139" string="Set Highpass width (Hz):">Ρύθμιση εύρους (Hz):</entry>
@@ -198,7 +199,7 @@
     <entry id="187" string="Year">Έτος</entry>
     <entry id="188" string="Genre">Κατηγορία</entry>
     <entry id="189" string="Album">Άλμπουμ</entry>
-    <entry id="190" string="Info tags">Info Tags</entry>
+    <entry id="190" string="Info tags">Ετικέτες</entry>
     <entry id="191" string="Write ID3V2/Vorbis info tags">Εγγραφή ετικεττών πληροφοριών ID3v2 ή Vorbis</entry>
     <entry id="192" string="Default comment string:">Προεπιλεγμένο Σχόλιο:</entry>
     <entry id="193" string="unknown artist">Άγνωστος Καλλιτέχνης</entry>
@@ -206,10 +207,10 @@
     <entry id="195" string="Unable to load ASPI drivers!">Αδύνατο να φορτωθούν οι οδηγοί ASPI!</entry>
     <entry id="196" string="Database">Βάση Πληροφοριών</entry>
     <entry id="197" string="Submit CDDB data...">Καταχώρηση πληροφοριών CDDB...</entry>
-    <entry id="198" string="Enable CDDB cache">Ενεργοποίηση CDDB cache</entry>
+    <entry id="198" string="Enable CDDB cache">Αποθήκευση δεδομένων CDDB</entry>
     <entry id="199" string="CDDB data">Πληροφορίες CDDB</entry>
     <entry id="200" string="Submit">Καταχώρηση</entry>
-    <entry id="201" string="No audio CD in drive!">Δεν έχετε τοποθετήσει κανένα CD!</entry>
+    <entry id="201" string="No audio CD in drive!">Δεν έχετε τοποθετήσει CD!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Παρακαλώ συμπληρώστε όλα τα πεδία πριν την καταχώρηση</entry>
     <entry id="203" string="CD ripping disabled!">Αδύνατη η εξαγωγή από το CD!</entry>
     <entry id="204" string="Do you want to use native NT SCSI instead?">Προτιμάτε τη χρήση επιλογής NT SCSI;</entry>

@@ -137,6 +137,8 @@ int FilterOutVORBIS::WriteData(unsigned char *data, int size)
 			memcpy((void *) (dataBuffer + dataLength), og.header, og.header_len);
 			memcpy((void *) (dataBuffer + dataLength + og.header_len), og.body, og.body_len);
 
+			delete [] backBuffer;
+
 			dataLength += og.header_len;
 			dataLength += og.body_len;
 		}
@@ -203,6 +205,8 @@ int FilterOutVORBIS::WriteData(unsigned char *data, int size)
 				memcpy((void *) (dataBuffer + dataLength), og.header, og.header_len);
 				memcpy((void *) (dataBuffer + dataLength + og.header_len), og.body, og.body_len);
 
+				delete [] backBuffer;
+
 				dataLength += og.header_len;
 				dataLength += og.body_len;
 
@@ -242,6 +246,8 @@ int FilterOutVORBIS::WriteData(unsigned char *data, int size)
 					memcpy((void *) dataBuffer, (void *) backBuffer, dataLength);
 					memcpy((void *) (dataBuffer + dataLength), og.header, og.header_len);
 					memcpy((void *) (dataBuffer + dataLength + og.header_len), og.body, og.body_len);
+
+					delete [] backBuffer;
 
 					dataLength += og.header_len;
 					dataLength += og.body_len;

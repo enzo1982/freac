@@ -1,19 +1,20 @@
 // -*- C++ -*-
 /* $Id$
 
- * id3lib: a C++ library for creating and manipulating id3v1/v2 tags Copyright
- * 1999, 2000 Scott Thomas Haug
+ * id3lib: a C++ library for creating and manipulating id3v1/v2 tags
+ * Copyright 1999, 2000 Scott Thomas Haug
+ * Copyright 2002 Thijmen Klok (thijmen@id3lib.org)
 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Library General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or (at your
  * option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Library General Public
  * License for more details.
- * 
+ *
  * You should have received a copy of the GNU Library General Public License
  * along with this library; if not, write to the Free Software Foundation,
  * Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -23,7 +24,7 @@
  * send such submissions.  See the AUTHORS file for a list of people who have
  * contributed to id3lib.  See the ChangeLog file for a list of changes to
  * id3lib.  These files are distributed with id3lib at
- * http://download.sourceforge.net/id3lib/ 
+ * http://download.sourceforge.net/id3lib/
  */
 
 /** This file defines common macros, types, constants, and enums used
@@ -34,25 +35,51 @@
 #define _ID3LIB_GLOBALS_H_
 
 #include <stdlib.h>
-#include <id3/sized_types.h>
+#include "id3/sized_types.h"
 
 /* id3lib version.
  * we prefix variable declarations so they can
  * properly get exported in windows dlls.
- * (borrowed from glib.h http://www.gtk.org)
  */
 #ifdef WIN32
-#  ifdef ID3LIB_COMPILATION
-#    define ID3_C_EXPORT extern __declspec(dllexport)
-#    define ID3_CPP_EXPORT __declspec(dllexport)
-#  else /* !ID3LIB_COMPILATION */
-#    define ID3_C_EXPORT extern __declspec(dllimport)
-#    define ID3_CPP_EXPORT __declspec(dllimport)
-#  endif /* !ID3LIB_COMPILATION */
+#  define LINKOPTION_STATIC         1 //both for use and creation of static lib
+#  define LINKOPTION_CREATE_DYNAMIC 2 //should only be used by prj/id3lib.dsp
+#  define LINKOPTION_USE_DYNAMIC    3 //if your project links id3lib dynamic
+#  ifndef ID3LIB_LINKOPTION
+#    pragma message("*** NOTICE *** (not a real error)")
+#    pragma message("* You should include a define in your project which reflect how you link the library")
+#    pragma message("* If you use id3lib.lib or libprj/id3lib.dsp (you link static) you should add")
+#    pragma message("* ID3LIB_LINKOPTION=1 to your preprocessor definitions of your project.")
+#    pragma message("* If you use id3lib.dll (you link dynamic) you should add ID3LIB_LINKOPTION=3")
+#    pragma message("* to your preprocessor definitions of your project.")
+#    pragma message("***")
+#    error read message above or win32.readme.first.txt
+#  else
+#    if (ID3LIB_LINKOPTION == LINKOPTION_CREATE_DYNAMIC)
+       //used for creating a dynamic dll
+#      define ID3_C_EXPORT extern __declspec(dllexport)
+#      define ID3_CPP_EXPORT __declspec(dllexport)
+#      define CCONV
+#    endif
+#    if (ID3LIB_LINKOPTION == LINKOPTION_STATIC)
+       //used for creating a static lib and using a static lib
+#      define ID3_C_EXPORT
+#      define ID3_CPP_EXPORT
+#      define CCONV
+#    endif
+#    if (ID3LIB_LINKOPTION == LINKOPTION_USE_DYNAMIC)
+       //used for those that do not link static and are using the dynamic dll by including a id3lib header
+#      define ID3_C_EXPORT extern __declspec(dllimport)
+#      define ID3_CPP_EXPORT __declspec(dllimport) //functions like these shouldn't be used by vb and delphi,
+#      define CCONV
+#    endif
+#  endif
 #else /* !WIN32 */
 #  define ID3_C_EXPORT
 #  define ID3_CPP_EXPORT
+#  define CCONV
 #endif /* !WIN32 */
+
 #define ID3_C_VAR extern
 
 #ifndef __cplusplus
@@ -85,18 +112,10 @@ ID3_C_VAR const int          ID3LIB_BINARY_AGE;
 
 
 typedef       unsigned char   uchar;
-typedef short   signed int    ssint;
-typedef short unsigned int    suint;
-typedef long    signed int    lsint;
 typedef long  unsigned int    luint;
-typedef long           double ldoub;
 
 typedef uint16                unicode_t;
 typedef uint16                flags_t;
-/* this needs to be done for compatibility with Sun Solaris */
-#if !defined index_t
-#  define index_t               size_t
-#endif
 
 #define NULL_UNICODE ((unicode_t) '\0')
 
@@ -123,9 +142,12 @@ ID3_ENUM(ID3_TextEnc)
   ID3TE_UTF16BE,
   ID3TE_UTF8,
   ID3TE_NUMENCODINGS,
-  ID3TE_ASCII = ID3TE_ISO8859_1,
-  ID3TE_UNICODE = ID3TE_UTF16
+  ID3TE_ASCII = ID3TE_ISO8859_1, // do not use this -> use ID3TE_IS_SINGLE_BYTE_ENC(enc) instead
+  ID3TE_UNICODE = ID3TE_UTF16    // do not use this -> use ID3TE_IS_DOUBLE_BYTE_ENC(enc) instead
 };
+
+#define ID3TE_IS_SINGLE_BYTE_ENC(enc)    ((enc) == ID3TE_ISO8859_1 || (enc) == ID3TE_UTF8)
+#define ID3TE_IS_DOUBLE_BYTE_ENC(enc)    ((enc) == ID3TE_UTF16 || (enc) == ID3TE_UTF16BE)
 
 /** Enumeration of the various id3 specifications
  **/
@@ -144,7 +166,7 @@ ID3_ENUM(ID3_V2Spec)
   ID3V2_3_0,
   ID3V2_4_0,
   ID3V2_EARLIEST = ID3V2_2_0,
-  ID3V2_LATEST = ID3V2_3_0  
+  ID3V2_LATEST = ID3V2_3_0
 };
 
 /** The various types of tags that id3lib can handle
@@ -209,9 +231,11 @@ ID3_ENUM(ID3_FrameID)
   /* ???? */ ID3FID_NOFRAME = 0,       /**< No known frame */
   /* AENC */ ID3FID_AUDIOCRYPTO,       /**< Audio encryption */
   /* APIC */ ID3FID_PICTURE,           /**< Attached picture */
+  /* ASPI */ ID3FID_AUDIOSEEKPOINT,    /**< Audio seek point index */
   /* COMM */ ID3FID_COMMENT,           /**< Comments */
   /* COMR */ ID3FID_COMMERCIAL,        /**< Commercial frame */
   /* ENCR */ ID3FID_CRYPTOREG,         /**< Encryption method registration */
+  /* EQU2 */ ID3FID_EQUALIZATION2,     /**< Equalisation (2) */
   /* EQUA */ ID3FID_EQUALIZATION,      /**< Equalization */
   /* ETCO */ ID3FID_EVENTTIMING,       /**< Event timing codes */
   /* GEOB */ ID3FID_GENERALOBJECT,     /**< General encapsulated object */
@@ -226,8 +250,11 @@ ID3_ENUM(ID3_FrameID)
   /* POPM */ ID3FID_POPULARIMETER,     /**< Popularimeter */
   /* POSS */ ID3FID_POSITIONSYNC,      /**< Position synchronisation frame */
   /* RBUF */ ID3FID_BUFFERSIZE,        /**< Recommended buffer size */
+  /* RVA2 */ ID3FID_VOLUMEADJ2,        /**< Relative volume adjustment (2) */
   /* RVAD */ ID3FID_VOLUMEADJ,         /**< Relative volume adjustment */
   /* RVRB */ ID3FID_REVERB,            /**< Reverb */
+  /* SEEK */ ID3FID_SEEKFRAME,         /**< Seek frame */
+  /* SIGN */ ID3FID_SIGNATURE,         /**< Signature frame */
   /* SYLT */ ID3FID_SYNCEDLYRICS,      /**< Synchronized lyric/text */
   /* SYTC */ ID3FID_SYNCEDTEMPO,       /**< Synchronized tempo codes */
   /* TALB */ ID3FID_ALBUM,             /**< Album/Movie/Show title */
@@ -236,7 +263,13 @@ ID3_ENUM(ID3_FrameID)
   /* TCON */ ID3FID_CONTENTTYPE,       /**< Content type */
   /* TCOP */ ID3FID_COPYRIGHT,         /**< Copyright message */
   /* TDAT */ ID3FID_DATE,              /**< Date */
+  /* TDEN */ ID3FID_ENCODINGTIME,      /**< Encoding time */
   /* TDLY */ ID3FID_PLAYLISTDELAY,     /**< Playlist delay */
+  /* TDOR */ ID3FID_ORIGRELEASETIME,   /**< Original release time */
+  /* TDRC */ ID3FID_RECORDINGTIME,     /**< Recording time */
+  /* TDRL */ ID3FID_RELEASETIME,       /**< Release time */
+  /* TDTG */ ID3FID_TAGGINGTIME,       /**< Tagging time */
+  /* TIPL */ ID3FID_INVOLVEDPEOPLE2,   /**< Involved people list */
   /* TENC */ ID3FID_ENCODEDBY,         /**< Encoded by */
   /* TEXT */ ID3FID_LYRICIST,          /**< Lyricist/Text writer */
   /* TFLT */ ID3FID_FILETYPE,          /**< File type */
@@ -247,7 +280,9 @@ ID3_ENUM(ID3_FrameID)
   /* TKEY */ ID3FID_INITIALKEY,        /**< Initial key */
   /* TLAN */ ID3FID_LANGUAGE,          /**< Language(s) */
   /* TLEN */ ID3FID_SONGLEN,           /**< Length */
+  /* TMCL */ ID3FID_MUSICIANCREDITLIST,/**< Musician credits list */
   /* TMED */ ID3FID_MEDIATYPE,         /**< Media type */
+  /* TMOO */ ID3FID_MOOD,              /**< Mood */
   /* TOAL */ ID3FID_ORIGALBUM,         /**< Original album/movie/show title */
   /* TOFN */ ID3FID_ORIGFILENAME,      /**< Original filename */
   /* TOLY */ ID3FID_ORIGLYRICIST,      /**< Original lyricist(s)/text writer(s) */
@@ -259,14 +294,19 @@ ID3_ENUM(ID3_FrameID)
   /* TPE3 */ ID3FID_CONDUCTOR,         /**< Conductor/performer refinement */
   /* TPE4 */ ID3FID_MIXARTIST,         /**< Interpreted, remixed, or otherwise modified by */
   /* TPOS */ ID3FID_PARTINSET,         /**< Part of a set */
+  /* TPRO */ ID3FID_PRODUCEDNOTICE,    /**< Produced notice */
   /* TPUB */ ID3FID_PUBLISHER,         /**< Publisher */
   /* TRCK */ ID3FID_TRACKNUM,          /**< Track number/Position in set */
   /* TRDA */ ID3FID_RECORDINGDATES,    /**< Recording dates */
   /* TRSN */ ID3FID_NETRADIOSTATION,   /**< Internet radio station name */
   /* TRSO */ ID3FID_NETRADIOOWNER,     /**< Internet radio station owner */
   /* TSIZ */ ID3FID_SIZE,              /**< Size */
+  /* TSOA */ ID3FID_ALBUMSORTORDER,    /**< Album sort order */
+  /* TSOP */ ID3FID_PERFORMERSORTORDER,/**< Performer sort order */
+  /* TSOT */ ID3FID_TITLESORTORDER,    /**< Title sort order */
   /* TSRC */ ID3FID_ISRC,              /**< ISRC (international standard recording code) */
   /* TSSE */ ID3FID_ENCODERSETTINGS,   /**< Software/Hardware and settings used for encoding */
+  /* TSST */ ID3FID_SETSUBTITLE,       /**< Set subtitle */
   /* TXXX */ ID3FID_USERTEXT,          /**< User defined text information */
   /* TYER */ ID3FID_YEAR,              /**< Year */
   /* UFID */ ID3FID_UNIQUEFILEID,      /**< Unique file identifier */
@@ -349,11 +389,155 @@ ID3_ENUM(ID3_ContentType)
   ID3CT_TRIVIA
 };
 
+ID3_ENUM(ID3_PictureType)
+{
+  ID3PT_OTHER = 0,
+  ID3PT_PNG32ICON = 1,     //  32x32 pixels 'file icon' (PNG only)
+  ID3PT_OTHERICON = 2,     // Other file icon
+  ID3PT_COVERFRONT = 3,    // Cover (front)
+  ID3PT_COVERBACK = 4,     // Cover (back)
+  ID3PT_LEAFLETPAGE = 5,   // Leaflet page
+  ID3PT_MEDIA = 6,         // Media (e.g. lable side of CD)
+  ID3PT_LEADARTIST = 7,    // Lead artist/lead performer/soloist
+  ID3PT_ARTIST = 8,        // Artist/performer
+  ID3PT_CONDUCTOR = 9,     // Conductor
+  ID3PT_BAND = 10,         // Band/Orchestra
+  ID3PT_COMPOSER = 11,     // Composer
+  ID3PT_LYRICIST = 12,     // Lyricist/text writer
+  ID3PT_REC_LOCATION = 13, // Recording Location
+  ID3PT_RECORDING = 14,    // During recording
+  ID3PT_PERFORMANCE = 15,  // During performance
+  ID3PT_VIDEO = 16,        // Movie/video screen capture
+  ID3PT_FISH = 17,         // A bright coloured fish
+  ID3PT_ILLUSTRATION = 18, // Illustration
+  ID3PT_ARTISTLOGO = 19,   // Band/artist logotype
+  ID3PT_PUBLISHERLOGO = 20 // Publisher/Studio logotype
+};
+
 ID3_ENUM(ID3_TimeStampFormat)
 {
   ID3TSF_FRAME  = 1,
   ID3TSF_MS
 };
+
+ID3_ENUM(MP3_BitRates)
+{
+  MP3BITRATE_FALSE = -1,
+  MP3BITRATE_NONE = 0,
+  MP3BITRATE_8K   = 8000,
+  MP3BITRATE_16K  = 16000,
+  MP3BITRATE_24K  = 24000,
+  MP3BITRATE_32K  = 32000,
+  MP3BITRATE_40K  = 40000,
+  MP3BITRATE_48K  = 48000,
+  MP3BITRATE_56K  = 56000,
+  MP3BITRATE_64K  = 64000,
+  MP3BITRATE_80K  = 80000,
+  MP3BITRATE_96K  = 96000,
+  MP3BITRATE_112K = 112000,
+  MP3BITRATE_128K = 128000,
+  MP3BITRATE_144K = 144000,
+  MP3BITRATE_160K = 160000,
+  MP3BITRATE_176K = 176000,
+  MP3BITRATE_192K = 192000,
+  MP3BITRATE_224K = 224000,
+  MP3BITRATE_256K = 256000,
+  MP3BITRATE_288K = 288000,
+  MP3BITRATE_320K = 320000,
+  MP3BITRATE_352K = 352000,
+  MP3BITRATE_384K = 384000,
+  MP3BITRATE_416K = 416000,
+  MP3BITRATE_448K = 448000
+};
+
+ID3_ENUM(Mpeg_Layers)
+{
+  MPEGLAYER_FALSE = -1,
+  MPEGLAYER_UNDEFINED,
+  MPEGLAYER_III,
+  MPEGLAYER_II,
+  MPEGLAYER_I
+};
+
+ID3_ENUM(Mpeg_Version)
+{
+  MPEGVERSION_FALSE = -1,
+  MPEGVERSION_2_5,
+  MPEGVERSION_Reserved,
+  MPEGVERSION_2,
+  MPEGVERSION_1
+};
+
+ID3_ENUM(Mp3_Frequencies)
+{
+  MP3FREQUENCIES_FALSE = -1,
+  MP3FREQUENCIES_Reserved = 0,
+  MP3FREQUENCIES_8000HZ = 8000,
+  MP3FREQUENCIES_11025HZ = 11025,
+  MP3FREQUENCIES_12000HZ = 12000,
+  MP3FREQUENCIES_16000HZ = 16000,
+  MP3FREQUENCIES_22050HZ = 22050,
+  MP3FREQUENCIES_24000HZ = 24000,
+  MP3FREQUENCIES_32000HZ = 32000,
+  MP3FREQUENCIES_48000HZ = 48000,
+  MP3FREQUENCIES_44100HZ = 44100,
+};
+
+ID3_ENUM(Mp3_ChannelMode)
+{
+  MP3CHANNELMODE_FALSE = -1,
+  MP3CHANNELMODE_STEREO,
+  MP3CHANNELMODE_JOINT_STEREO,
+  MP3CHANNELMODE_DUAL_CHANNEL,
+  MP3CHANNELMODE_SINGLE_CHANNEL
+};
+
+ID3_ENUM(Mp3_ModeExt)
+{
+  MP3MODEEXT_FALSE = -1,
+  MP3MODEEXT_0,
+  MP3MODEEXT_1,
+  MP3MODEEXT_2,
+  MP3MODEEXT_3
+};
+
+ID3_ENUM(Mp3_Emphasis)
+{
+  MP3EMPHASIS_FALSE = -1,
+  MP3EMPHASIS_NONE,
+  MP3EMPHASIS_50_15MS,
+  MP3EMPHASIS_Reserved,
+  MP3EMPHASIS_CCIT_J17
+};
+
+ID3_ENUM(Mp3_Crc)
+{
+  MP3CRC_ERROR_SIZE = -2,
+  MP3CRC_MISMATCH = -1,
+  MP3CRC_NONE = 0,
+  MP3CRC_OK = 1
+};
+
+ID3_STRUCT(Mp3_Headerinfo)
+{
+  Mpeg_Layers layer;
+  Mpeg_Version version;
+  MP3_BitRates bitrate;
+  Mp3_ChannelMode channelmode;
+  Mp3_ModeExt modeext;
+  Mp3_Emphasis emphasis;
+  Mp3_Crc crc;
+  uint32 vbr_bitrate;           // avg bitrate from xing header
+  uint32 frequency;             // samplerate
+  uint32 framesize;
+  uint32 frames;                // nr of frames
+  uint32 time;                  // nr of seconds in song
+  bool privatebit;
+  bool copyrighted;
+  bool original;
+};
+
+#define ID3_V1GENRE2DESCRIPTION(x) (x < ID3_NR_OF_V1_GENRES && x >= 0) ? ID3_v1_genre_description[x] : NULL
 
 #define MASK(bits) ((1 << (bits)) - 1)
 #define MASK1 MASK(1)
@@ -405,3 +589,4 @@ ID3_ENUM(ID3_TimeStampFormat)
 #endif
 
 #endif /* _ID3LIB_GLOBALS_H_ */
+

@@ -3,7 +3,7 @@
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
-    <property name="language">Français</property>
+    <property name="language">French / Français</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;</property>
@@ -31,6 +31,7 @@
     <entry id="19" string="Output dir.:">Répertoire de sortie :</entry>
     <entry id="20" string="%1 file(s) in joblist:">%1 fichier(s) à traiter :</entry>
     <entry id="21" string="none">aucun</entry>
+    <entry id="22" string="Help topics...">Rubriques d'aide...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Ajouter le(s) fichier(s) à la liste</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Ajouter le contenu du CD audio à la liste</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Supprimer l'entrée sélectionnée de la liste</entry>
@@ -51,6 +52,7 @@
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Le thread d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
     <entry id="41" string="Currently encoding">Encodage en cours</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ce programme est diffusé selon les termes&#10;de la licence GNU GPL (General Public License).</entry>
+    <entry id="43" string="CDDB query">Requête CDDB</entry>
     <entry id="44" string="About BonkEnc">A propos de BonkEnc</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Aucune option ne peut être configurée pour le filtre WAVE Out !</entry>
     <entry id="46" string="WAVE Out filter">Filtre WAVE Out</entry>
@@ -112,7 +114,7 @@
     <entry id="102" string="AAC object type">Type d'objet AAC</entry>
     <entry id="103" string="Allow Joint Stereo">Stéréo combinée</entry>
     <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
-    <entry id="105" string="Use Temporal Noise Shaping">Utiliser le Temporal Noise Shaping</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Utiliser Temporal Noise Shaping</entry>
     <entry id="106" string="Maximum bandwidth">Bande passante maximale</entry>
     <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Bande de fréquence AAC maximale à utiliser (Hz) :</entry>
     <entry id="108" string="Basic">Elémentaire</entry>
@@ -154,6 +156,7 @@
     <entry id="144" string="Disable all filtering">Désactiver filtrage</entry>
     <entry id="145" string="MP3 Files">Fichiers MP3</entry>
     <entry id="146" string="Ogg Vorbis Files">Fichiers Ogg Vorbis</entry>
+    <entry id="148" string="Automatic CDDB queries">Requêtes CDDB automatiques</entry>
     <entry id="147" string="BONK Files">Fichiers BONK</entry>
     <entry id="149" string="CDDB access mode:">Mode d'accès CDDB :</entry>
     <entry id="150" string="CDDB server:">Serveur CDDB :</entry>
@@ -212,5 +215,46 @@
     <entry id="203" string="CD ripping disabled!">Extraction du CD désactivée !</entry>
     <entry id="204" string="Do you want to use native NT SCSI instead?">Voulez-vous utiliser SCSI NT natif à la place ?</entry>
     <entry id="205" string="Submitting CD information">Soumission des informations du CD</entry>
+    <entry id="206" string="Cannot open file:">Impossible d'ouvrir le fichier :</entry>
+    <entry id="207" string="Query CDDB database">Interroger la base de données CDDB</entry>
+    <entry id="208" string="Help">Aide</entry>
+    <entry id="209" string="index.html">index.html</entry>
+    <entry id="210" string="Plug-ins">Plug-ins</entry>
+    <entry id="211" string="Input plug-ins">Plug-ins d'entrée</entry>
+    <entry id="212" string="Output plug-ins">Plug-ins de sortie</entry>
+    <entry id="213" string="Configure">Configurer</entry>
+    <entry id="214" string="About">A propos de</entry>
+    <entry id="215" string="Play">Lire</entry>
+    <entry id="216" string="Stop">Arrêter</entry>
+    <entry id="217" string="Cannot play a file while encoding!">Impossible de lire un fichier lors de l'encodage !</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">Impossible de lancer l'encodage lorsqu'un fichier est en cours de lecture !</entry>
+    <entry id="219" string="CDDB Settings">Paramètres CDDB</entry>
+    <entry id="220" string="ATH">ATH</entry>
+    <entry id="221" string="Enable ATH:">Activer ATH :</entry>
+    <entry id="222" string="Use default setting">Utiliser le paramètre par défaut</entry>
+    <entry id="223" string="Psycho acoustic model">Modèle acoustique psycho</entry>
+    <entry id="224" string="Use Temporal Masking Effect">Utiliser l'effet de masquage temporel</entry>
+    <entry id="225" string="Expert">Expert</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">Impossible de configurer l'encodeur lors de l'encodage !</entry>
+    <entry id="227" string="The output directory does not exist! Do you want to create it?">Le répertoire de sortie n'existe pas. Voulez-vous le créer ?</entry>
+    <entry id="228" string="Filename pattern">Modèle de nom de fichier</entry>
+    <entry id="229" string="unknown album">album inconnu</entry>
+    <entry id="230" string="Translated by %1.">Traduit par %1.</entry>
+    <entry id="231" string="Select all">Tout sélectionner</entry>
+    <entry id="232" string="Select none">Ne rien sélectionner</entry>
+    <entry id="233" string="Toggle selection">Basculer la sélection</entry>
+    <entry id="234" string="Show Tip of the Day">Afficher l'astuce du jour</entry>
+    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc est disponible en %1 langues. Si votre langue n'est pas&#10;disponible, vous pouvez facilement traduire BonkEnc à l'aide de&#10;l'application 'smooth Translator'.</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC&#10;and Bonk encoders. An encoder for the VQF format is available&#10;at the BonkEnc website: %1">BonkEnc prend en charge les encodeurs LAME, Ogg Vorbis et&#10;Bonk. Les encodeurs pour les formats AAC et VQF sont&#10;disponibles sur le site Web de BonkEnc:</entry>
+    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc peut exploiter les plug-ins d'entrée de Winamp 2 afin de&#10;prendre en charge un plus grand nombre de formats de fichiers.&#10;Copiez les fichiers in_*.dll dans le répertoire BonkEnc/plugins pour&#10;faire en sorte que BonkEnc lise ces formats.</entry>
+    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">BonkEnc vous permet de soumettre des entrées de base de&#10;données de CD freedb comportant des caractères Unicode.&#10;Si vous avez des CD comportant des noms d'artistes ou des&#10;titres non latins, vous pouvez soumettre les bonnes entrées&#10;freedb avec BonkEnc.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pour corriger les erreurs de lecture lors de l'extraction, vous pouvez&#10;activer la correction d'instabilité dans l'onglet CDRip de la boîte&#10;de dialogue de configuration de BonkEnc. Si cela ne marche pas,&#10;essayez d'utiliser l'un des modes Paranoïa.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Vous avez des idées sur la manière d'améliorer BonkEnc?&#10;Vous pouvez les soumettre à l'aide du Tracker sur la page du&#10;projet BonkEnc chez SourceForge - %1&#10;ou envoyer un message à %2.</entry>
+    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Vous appréciez BonkEnc? BonkEnc est disponible gratuitement,&#10;mais vous pouvez aider à son financement en faisant un don&#10;au projet BonkEnc. Vous pouvez envoyer de l'argent à&#10;%1 grâce à PayPal.&#10;Voir %2 pour plus de détails.</entry>
+    <entry id="242" string="Bitrate / Quality">Débit binaire / Qualité</entry>
+    <entry id="243" string="Check for updates now">Rechercher des mises à jours maintenant</entry>
+    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">Une nouvelle version de BonkEnc est disponible en ligne ! Voulez-vous l'installer maintenant ?</entry>
+    <entry id="245" string="There are no updates available at the moment!">Actuellement, aucune mise à jour n'est disponible !</entry>
+    <entry id="246" string="Check for updates at startup">Rechercher des mises à jours au démarrage</entry>
   </data>
 </LangFile>

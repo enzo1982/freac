@@ -32,9 +32,9 @@
 #include <config.h>
 #endif
 
-#include <fstream.h>
-#include "globals.h"
-#include "strings.h"
+#include "id3/id3lib_streams.h"
+#include "id3/globals.h" //has <stdlib.h> "id3/sized_types.h"
+#include "id3/id3lib_strings.h"
 
 namespace dami
 {
@@ -100,3 +100,4 @@ namespace dami
 };
   
 #endif /* _ID3LIB_UTILS_H_ */
+

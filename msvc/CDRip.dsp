@@ -67,8 +67,8 @@ LINK32=link.exe
 # PROP Intermediate_Dir "CDRip___Win32_Debug"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "CDRIP_EXPORTS" /YX /FD /GZ  /c
-# ADD CPP /nologo /MTd /W1 /Gm /GX /ZI /Od /I "../../smooth/include" /D "WIN32" /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "CDRIP_EXPORTS" /YX /FD /GZ  /c
+# ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "CDRIP_EXPORTS" /YX /FD /GZ /c
+# ADD CPP /nologo /MTd /Gm /GX /ZI /Od /D "WIN32" /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "CDRIP_EXPORTS" /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
@@ -78,7 +78,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 smooth.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /out:"Debug/CDRip.dll" /pdbtype:sept /libpath:"../../smooth/msvc/Build"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /out:"Debug/CDRip.dll" /pdbtype:sept /libpath:"../../smooth/msvc/Build"
 
 !ENDIF 
 
@@ -153,10 +153,6 @@ SOURCE=..\cdrip\CDRomSettings.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\cdrip\Ini.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\cdrip\NTScsi.cpp
 # End Source File
 # End Group
@@ -214,10 +210,6 @@ SOURCE=..\cdrip\CDRip.h
 # Begin Source File
 
 SOURCE=..\cdrip\CDRomSettings.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\cdrip\Ini.h
 # End Source File
 # Begin Source File
 
