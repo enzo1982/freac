@@ -66,11 +66,9 @@ bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 
 	if (trackId >= 0)
 	{
-	        MP4Duration	 length = ex_MP4GetTrackDuration(mp4File, trackId);
-
 		nFormat->rate		= 44100;
 		nFormat->channels	= 2;
-		nFormat->length		= Int(Float(nFormat->rate / 1000) * nFormat->channels * ex_MP4ConvertFromTrackDuration(mp4File, trackId, length, MP4_MILLISECONDS_TIME_SCALE));
+		nFormat->length		= ex_MP4GetTrackNumberOfSamples(mp4File, trackId) * 2048;
 		nFormat->order		= BYTE_INTEL;
 		nFormat->bits		= 16;
 	}

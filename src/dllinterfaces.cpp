@@ -108,6 +108,7 @@ VORBISBLOCKCLEAR		 ex_vorbis_block_clear			= NIL;
 VORBISDSPCLEAR			 ex_vorbis_dsp_clear			= NIL;
 VORBISCOMMENTCLEAR		 ex_vorbis_comment_clear		= NIL;
 VORBISINFOCLEAR			 ex_vorbis_info_clear			= NIL;
+
 OGGSTREAMINIT			 ex_ogg_stream_init			= NIL;
 OGGSTREAMPACKETIN		 ex_ogg_stream_packetin			= NIL;
 OGGSTREAMPACKETOUT		 ex_ogg_stream_packetout		= NIL;
@@ -131,6 +132,7 @@ FAACENCCLOSE			 ex_faacEncClose			= NIL;
 
 FAACDECOPEN			 ex_faacDecOpen				= NIL;
 FAACDECINIT			 ex_faacDecInit				= NIL;
+FAACDECINIT2			 ex_faacDecInit2			= NIL;
 FAACDECGETCURRENTCONFIGURATION	 ex_faacDecGetCurrentConfiguration	= NIL;
 FAACDECSETCONFIGURATION		 ex_faacDecSetConfiguration		= NIL;
 FAACDECDECODE			 ex_faacDecDecode			= NIL;
@@ -171,6 +173,9 @@ MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks		= NIL;
 MP4FINDTRACKID			 ex_MP4FindTrackId			= NIL;
 MP4GETTRACKTYPE			 ex_MP4GetTrackType			= NIL;
 MP4GETTRACKDURATION		 ex_MP4GetTrackDuration			= NIL;
+MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration		= NIL;
+MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration		= NIL;
+MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples		= NIL;
 MP4CONVERTFROMTRACKDURATION	 ex_MP4ConvertFromTrackDuration		= NIL;
 
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
@@ -506,6 +511,7 @@ Bool bonkEnc::LoadFAAD2DLL()
 
 	ex_faacDecOpen				= (FAACDECOPEN) GetProcAddress(faad2dll, "faacDecOpen");
 	ex_faacDecInit				= (FAACDECINIT) GetProcAddress(faad2dll, "faacDecInit");
+	ex_faacDecInit2				= (FAACDECINIT2) GetProcAddress(faad2dll, "faacDecInit2");
 	ex_faacDecGetCurrentConfiguration	= (FAACDECGETCURRENTCONFIGURATION) GetProcAddress(faad2dll, "faacDecGetCurrentConfiguration");
 	ex_faacDecSetConfiguration		= (FAACDECSETCONFIGURATION) GetProcAddress(faad2dll, "faacDecSetConfiguration");
 	ex_faacDecDecode			= (FAACDECDECODE) GetProcAddress(faad2dll, "faacDecDecode");
@@ -513,6 +519,7 @@ Bool bonkEnc::LoadFAAD2DLL()
 
 	if (ex_faacDecOpen == NULL)			{ FreeLibrary(faad2dll); return false; }
 	if (ex_faacDecInit == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_faacDecInit2 == NULL)			{ FreeLibrary(faad2dll); return false; }
 	if (ex_faacDecGetCurrentConfiguration == NULL)	{ FreeLibrary(faad2dll); return false; }
 	if (ex_faacDecSetConfiguration == NULL)		{ FreeLibrary(faad2dll); return false; }
 	if (ex_faacDecDecode == NULL)			{ FreeLibrary(faad2dll); return false; }
@@ -674,6 +681,9 @@ Bool bonkEnc::LoadMP4V2DLL()
 	ex_MP4FindTrackId		= (MP4FINDTRACKID) GetProcAddress(mp4v2dll, "MP4FindTrackId");
 	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) GetProcAddress(mp4v2dll, "MP4GetTrackType");
 	ex_MP4GetTrackDuration		= (MP4GETTRACKDURATION) GetProcAddress(mp4v2dll, "MP4GetTrackDuration");
+	ex_MP4GetTrackESConfiguration	= (MP4GETTRACKESCONFIGURATION) GetProcAddress(mp4v2dll, "MP4GetTrackESConfiguration");
+	ex_MP4SetTrackESConfiguration	= (MP4SETTRACKESCONFIGURATION) GetProcAddress(mp4v2dll, "MP4SetTrackESConfiguration");
+	ex_MP4GetTrackNumberOfSamples	= (MP4GETTRACKNUMBEROFSAMPLES) GetProcAddress(mp4v2dll, "MP4GetTrackNumberOfSamples");
 	ex_MP4ConvertFromTrackDuration	= (MP4CONVERTFROMTRACKDURATION) GetProcAddress(mp4v2dll, "MP4ConvertFromTrackDuration");
 
 	if (ex_MP4Read == NULL)				{ FreeLibrary(mp4v2dll); return false; }
@@ -696,6 +706,9 @@ Bool bonkEnc::LoadMP4V2DLL()
 	if (ex_MP4FindTrackId == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4GetTrackType == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4GetTrackDuration == NULL)		{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetTrackESConfiguration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4SetTrackESConfiguration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4GetTrackNumberOfSamples == NULL)	{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4ConvertFromTrackDuration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
 
 	return true;

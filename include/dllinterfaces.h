@@ -282,6 +282,7 @@
 
 	typedef faacDecHandle			(FAADAPI *FAACDECOPEN)				();
 	typedef long				(FAADAPI *FAACDECINIT)				(faacDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
+	typedef long				(FAADAPI *FAACDECINIT2)				(faacDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
 	typedef faacDecConfigurationPtr		(FAADAPI *FAACDECGETCURRENTCONFIGURATION)	(faacDecHandle);
 	typedef unsigned char			(FAADAPI *FAACDECSETCONFIGURATION)		(faacDecHandle, faacDecConfigurationPtr);
 	typedef void *				(FAADAPI *FAACDECDECODE)			(faacDecHandle, faacDecFrameInfo *, unsigned char *, unsigned long);
@@ -289,6 +290,7 @@
 
 	extern FAACDECOPEN			 ex_faacDecOpen;
 	extern FAACDECINIT			 ex_faacDecInit;
+	extern FAACDECINIT2			 ex_faacDecInit2;
 	extern FAACDECGETCURRENTCONFIGURATION	 ex_faacDecGetCurrentConfiguration;
 	extern FAACDECSETCONFIGURATION		 ex_faacDecSetConfiguration;
 	extern FAACDECDECODE			 ex_faacDecDecode;
@@ -350,6 +352,9 @@
 	typedef MP4TrackId			(*MP4FINDTRACKID)				(MP4FileHandle, u_int16_t, const char *, u_int8_t);
 	typedef const char *			(*MP4GETTRACKTYPE)				(MP4FileHandle, MP4TrackId);
 	typedef MP4Duration			(*MP4GETTRACKDURATION)				(MP4FileHandle, MP4TrackId);
+	typedef bool				(*MP4GETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, u_int8_t **, u_int32_t *);
+	typedef bool				(*MP4SETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t);
+	typedef MP4SampleId			(*MP4GETTRACKNUMBEROFSAMPLES)			(MP4FileHandle, MP4TrackId);
 	typedef u_int64_t			(*MP4CONVERTFROMTRACKDURATION)			(MP4FileHandle, MP4TrackId, MP4Duration,
  u_int32_t);
 
@@ -373,6 +378,9 @@
 	extern MP4FINDTRACKID			 ex_MP4FindTrackId;
 	extern MP4GETTRACKTYPE			 ex_MP4GetTrackType;
 	extern MP4GETTRACKDURATION		 ex_MP4GetTrackDuration;
+	extern MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration;
+	extern MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
+	extern MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples;
 	extern MP4CONVERTFROMTRACKDURATION	 ex_MP4ConvertFromTrackDuration;
 
 // ID3Lib DLL API
