@@ -231,7 +231,7 @@ bonkEnc::bonkEnc()
 	pos.x = 7;
 	pos.y += 19;
 	size.cx = currentConfig->wndSize.cx - 20;
-	size.cy = currentConfig->wndSize.cy - 221;
+	size.cy = currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0);
 
 	joblist			= new ListBox(pos, size);
 	joblist->AddTab(i18n->TranslateString("Title"));
@@ -241,6 +241,277 @@ bonkEnc::bonkEnc()
 
 	droparea		= new DropArea(pos, size);
 	droparea->onDropFile.Connect(&bonkEnc::AddDragDropFile, this);
+
+	Int	 n = 0;
+
+	if (currentConfig->showTitleInfo) n = 65;
+
+	info_divider		= new Divider(136 + n, OR_HORZ | OR_BOTTOM);
+	info_bottom		= new Divider(136, OR_HORZ | OR_BOTTOM);
+
+	pos.y = 144 + n;
+	pos.x = 8;
+	size.cx = 90;
+	size.cy = 17;
+
+	info_background		= new Layer();
+	info_background->SetMetrics(pos, size);
+	info_background->SetOrientation(OR_LOWERLEFT);
+	info_background->SetColor(Setup::BackgroundColor);
+
+	pos.y = 0;
+	pos.x = 2;
+	size.cx = 85;
+	size.cy = 0;
+
+	info_checkbox		= new CheckBox(i18n->TranslateString("Show title info"), pos, size, &currentConfig->showTitleInfo);
+	info_checkbox->onClick.Connect(&bonkEnc::ShowHideTitleInfo, this);
+	info_checkbox->SetMetrics(pos, Size(info_checkbox->GetObjectProperties()->textSize.cx + 19, info_checkbox->GetObjectProperties()->size.cy));
+
+	info_background->SetMetrics(info_background->GetObjectProperties()->pos, Size(info_checkbox->GetObjectProperties()->textSize.cx + 24, info_background->GetObjectProperties()->size.cy));
+
+	pos.x = 7;
+	pos.y = 161;
+
+	info_text_artist	= new Text(i18n->TranslateString("Artist").Append(":"), pos);
+	info_text_artist->SetOrientation(OR_LOWERLEFT);
+
+	pos.y -= 24;
+
+	info_text_album		= new Text(i18n->TranslateString("Album").Append(":"), pos);
+	info_text_album->SetOrientation(OR_LOWERLEFT);
+
+	pos.x += (7 + (Int) Math::Max(info_text_album->GetObjectProperties()->textSize.cx, info_text_artist->GetObjectProperties()->textSize.cx));
+	pos.y += 27;
+	size.cx = 180;
+	size.cy = 0;
+
+	info_edit_artist	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_artist->SetOrientation(OR_LOWERLEFT);
+
+	pos.y -= 24;
+
+	info_edit_album	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_album->SetOrientation(OR_LOWERLEFT);
+
+	pos.x += (7 + info_edit_artist->GetObjectProperties()->size.cx);
+	pos.y += 21;
+
+	info_text_title		= new Text(i18n->TranslateString("Title").Append(":"), pos);
+	info_text_title->SetOrientation(OR_LOWERLEFT);
+
+	pos.y -= 24;
+
+	info_text_track		= new Text(i18n->TranslateString("Track").Append(":"), pos);
+	info_text_track->SetOrientation(OR_LOWERLEFT);
+
+	pos.x += (7 + (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx));
+	pos.y += 27;
+	size.cx = 100;
+
+	info_edit_title		= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_title->SetOrientation(OR_LOWERLEFT);
+
+	pos.y -= 24;
+	size.cx = 25;
+
+	info_edit_track		= new EditBox("", pos, size, EDB_NUMERIC, 3);
+	info_edit_track->SetOrientation(OR_LOWERLEFT);
+
+	pos.x += (7 + info_edit_track->GetObjectProperties()->size.cx);
+	pos.y -= 3;
+
+	info_text_date		= new Text(i18n->TranslateString("Date").Append(":"), pos);
+	info_text_date->SetOrientation(OR_LOWERLEFT);
+
+	pos.x += (7 + info_text_date->GetObjectProperties()->textSize.cx);
+	pos.y += 3;
+	size.cx = 61;
+
+	info_edit_date		= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_date->SetOrientation(OR_LOWERLEFT);
+
+	pos.x += (7 + info_edit_date->GetObjectProperties()->size.cx);
+	pos.y -= 3;
+
+	info_text_genre		= new Text(i18n->TranslateString("Genre").Append(":"), pos);
+	info_text_genre->SetOrientation(OR_LOWERLEFT);
+
+	pos.x += (7 + info_text_genre->GetObjectProperties()->textSize.cx);
+	pos.y += 3;
+	size.cx = 120;
+
+	info_combo_genre	= new ComboBox(pos, size);
+	info_combo_genre->SetOrientation(OR_LOWERLEFT);
+	info_combo_genre->AddEntry("");
+	info_combo_genre->AddEntry("A Cappella");
+	info_combo_genre->AddEntry("Acid");
+	info_combo_genre->AddEntry("Acid Jazz");
+	info_combo_genre->AddEntry("Acid Punk");
+	info_combo_genre->AddEntry("Acoustic");
+	info_combo_genre->AddEntry("Alt. Rock");
+	info_combo_genre->AddEntry("Alternative");
+	info_combo_genre->AddEntry("Ambient");
+	info_combo_genre->AddEntry("Anime");
+	info_combo_genre->AddEntry("Avantgarde");
+	info_combo_genre->AddEntry("Ballad");
+	info_combo_genre->AddEntry("Bass");
+	info_combo_genre->AddEntry("Beat");
+	info_combo_genre->AddEntry("Bebob");
+	info_combo_genre->AddEntry("Big Band");
+	info_combo_genre->AddEntry("Black Metal");
+	info_combo_genre->AddEntry("Bluegrass");
+	info_combo_genre->AddEntry("Blues");
+	info_combo_genre->AddEntry("Booty Bass");
+	info_combo_genre->AddEntry("BritPop");
+	info_combo_genre->AddEntry("Cabaret");
+	info_combo_genre->AddEntry("Celtic");
+	info_combo_genre->AddEntry("Chamber Music");
+	info_combo_genre->AddEntry("Chanson");
+	info_combo_genre->AddEntry("Chorus");
+	info_combo_genre->AddEntry("Christian Gangsta Rap");
+	info_combo_genre->AddEntry("Christian Rap");
+	info_combo_genre->AddEntry("Christian Rock");
+	info_combo_genre->AddEntry("Classic Rock");
+	info_combo_genre->AddEntry("Classical");
+	info_combo_genre->AddEntry("Club");
+	info_combo_genre->AddEntry("Club-House");
+	info_combo_genre->AddEntry("Comedy");
+	info_combo_genre->AddEntry("Contemporary Christian");
+	info_combo_genre->AddEntry("Country");
+	info_combo_genre->AddEntry("Cover");
+	info_combo_genre->AddEntry("Crossover");
+	info_combo_genre->AddEntry("Cult");
+	info_combo_genre->AddEntry("Dance");
+	info_combo_genre->AddEntry("Dance Hall");
+	info_combo_genre->AddEntry("Darkwave");
+	info_combo_genre->AddEntry("Death Metal");
+	info_combo_genre->AddEntry("Disco");
+	info_combo_genre->AddEntry("Dream");
+	info_combo_genre->AddEntry("Drum && Bass");
+	info_combo_genre->AddEntry("Drum Solo");
+	info_combo_genre->AddEntry("Duet");
+	info_combo_genre->AddEntry("Easy Listening");
+	info_combo_genre->AddEntry("Electronic");
+	info_combo_genre->AddEntry("Ethnic");
+	info_combo_genre->AddEntry("Eurodance");
+	info_combo_genre->AddEntry("Euro-House");
+	info_combo_genre->AddEntry("Euro-Techno");
+	info_combo_genre->AddEntry("Fast-Fusion");
+	info_combo_genre->AddEntry("Folk");
+	info_combo_genre->AddEntry("Folk/Rock");
+	info_combo_genre->AddEntry("Folklore");
+	info_combo_genre->AddEntry("Freestyle");
+	info_combo_genre->AddEntry("Funk");
+	info_combo_genre->AddEntry("Fusion");
+	info_combo_genre->AddEntry("Game");
+	info_combo_genre->AddEntry("Gangsta Rap");
+	info_combo_genre->AddEntry("Goa");
+	info_combo_genre->AddEntry("Gospel");
+	info_combo_genre->AddEntry("Gothic");
+	info_combo_genre->AddEntry("Gothic Rock");
+	info_combo_genre->AddEntry("Grunge");
+	info_combo_genre->AddEntry("Hard Rock");
+	info_combo_genre->AddEntry("Hardcore");
+	info_combo_genre->AddEntry("Heavy Metal");
+	info_combo_genre->AddEntry("Hip-Hop");
+	info_combo_genre->AddEntry("House");
+	info_combo_genre->AddEntry("Humour");
+	info_combo_genre->AddEntry("Indie");
+	info_combo_genre->AddEntry("Industrial");
+	info_combo_genre->AddEntry("Instrumental");
+	info_combo_genre->AddEntry("Instrumental Pop");
+	info_combo_genre->AddEntry("Instrumental Rock");
+	info_combo_genre->AddEntry("Jazz");
+	info_combo_genre->AddEntry("Jazz+Funk");
+	info_combo_genre->AddEntry("JPop");
+	info_combo_genre->AddEntry("Jungle");
+	info_combo_genre->AddEntry("Latin");
+	info_combo_genre->AddEntry("Lo-Fi");
+	info_combo_genre->AddEntry("Meditative");
+	info_combo_genre->AddEntry("Merengue");
+	info_combo_genre->AddEntry("Metal");
+	info_combo_genre->AddEntry("Musical");
+	info_combo_genre->AddEntry("National Folk");
+	info_combo_genre->AddEntry("Native American");
+	info_combo_genre->AddEntry("Negerpunk");
+	info_combo_genre->AddEntry("New Age");
+	info_combo_genre->AddEntry("New Wave");
+	info_combo_genre->AddEntry("Noise");
+	info_combo_genre->AddEntry("Oldies");
+	info_combo_genre->AddEntry("Opera");
+	info_combo_genre->AddEntry("Other");
+	info_combo_genre->AddEntry("Polka");
+	info_combo_genre->AddEntry("Polsk Punk");
+	info_combo_genre->AddEntry("Pop");
+	info_combo_genre->AddEntry("Pop/Funk");
+	info_combo_genre->AddEntry("Pop-Folk");
+	info_combo_genre->AddEntry("Porn Groove");
+	info_combo_genre->AddEntry("Power Ballad");
+	info_combo_genre->AddEntry("Pranks");
+	info_combo_genre->AddEntry("Primus");
+	info_combo_genre->AddEntry("Progressive Rock");
+	info_combo_genre->AddEntry("Psychedelic");
+	info_combo_genre->AddEntry("Psychedelic Rock");
+	info_combo_genre->AddEntry("Punk");
+	info_combo_genre->AddEntry("Punk Rock");
+	info_combo_genre->AddEntry("R&&B");
+	info_combo_genre->AddEntry("Rap");
+	info_combo_genre->AddEntry("Rave");
+	info_combo_genre->AddEntry("Reggae");
+	info_combo_genre->AddEntry("Remix");
+	info_combo_genre->AddEntry("Retro");
+	info_combo_genre->AddEntry("Revival");
+	info_combo_genre->AddEntry("Rhythmic Soul");
+	info_combo_genre->AddEntry("Rock");
+	info_combo_genre->AddEntry("Rock && Roll");
+	info_combo_genre->AddEntry("Salsa");
+	info_combo_genre->AddEntry("Samba");
+	info_combo_genre->AddEntry("Satire");
+	info_combo_genre->AddEntry("Showtunes");
+	info_combo_genre->AddEntry("Ska");
+	info_combo_genre->AddEntry("Slow Jam");
+	info_combo_genre->AddEntry("Slow Rock");
+	info_combo_genre->AddEntry("Sonata");
+	info_combo_genre->AddEntry("Soul");
+	info_combo_genre->AddEntry("Sound Clip");
+	info_combo_genre->AddEntry("Soundtrack");
+	info_combo_genre->AddEntry("Southern Rock");
+	info_combo_genre->AddEntry("Space");
+	info_combo_genre->AddEntry("Speech");
+	info_combo_genre->AddEntry("Swing");
+	info_combo_genre->AddEntry("Symphonic Rock");
+	info_combo_genre->AddEntry("Symphony");
+	info_combo_genre->AddEntry("Synthpop");
+	info_combo_genre->AddEntry("Tango");
+	info_combo_genre->AddEntry("Techno");
+	info_combo_genre->AddEntry("Techno-Industrial");
+	info_combo_genre->AddEntry("Terror");
+	info_combo_genre->AddEntry("Thrash-Metal");
+	info_combo_genre->AddEntry("Top 40");
+	info_combo_genre->AddEntry("Trailer");
+	info_combo_genre->AddEntry("Trance");
+	info_combo_genre->AddEntry("Tribal");
+	info_combo_genre->AddEntry("Trip-Hop");
+	info_combo_genre->AddEntry("Vocal");
+
+	info_edit_title->SetMetrics(info_edit_title->GetObjectProperties()->pos, Size(234 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_date->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
+
+	Int	 bias = info_edit_artist->GetObjectProperties()->size.cx;
+
+	info_edit_artist->SetMetrics(info_edit_artist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - (Int) Math::Max(info_text_album->GetObjectProperties()->textSize.cx, info_text_artist->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - info_text_date->GetObjectProperties()->textSize.cx - info_text_genre->GetObjectProperties()->textSize.cx - 275, info_edit_artist->GetObjectProperties()->size.cy));
+	info_edit_album->SetMetrics(info_edit_album->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - (Int) Math::Max(info_text_album->GetObjectProperties()->textSize.cx, info_text_artist->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - info_text_date->GetObjectProperties()->textSize.cx - info_text_genre->GetObjectProperties()->textSize.cx - 275, info_edit_album->GetObjectProperties()->size.cy));
+
+	bias = info_edit_artist->GetObjectProperties()->size.cx - bias;
+
+	info_text_title->SetMetrics(Point(info_text_title->GetObjectProperties()->pos.x + bias, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
+	info_edit_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x + bias, info_edit_title->GetObjectProperties()->pos.y), info_edit_title->GetObjectProperties()->size);
+	info_text_track->SetMetrics(Point(info_text_track->GetObjectProperties()->pos.x + bias, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
+	info_edit_track->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + bias, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
+	info_text_date->SetMetrics(Point(info_text_date->GetObjectProperties()->pos.x + bias, info_text_date->GetObjectProperties()->pos.y), info_text_date->GetObjectProperties()->size);
+	info_edit_date->SetMetrics(Point(info_edit_date->GetObjectProperties()->pos.x + bias, info_edit_date->GetObjectProperties()->pos.y), info_edit_date->GetObjectProperties()->size);
+	info_text_genre->SetMetrics(Point(info_text_genre->GetObjectProperties()->pos.x + bias, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
+	info_combo_genre->SetMetrics(Point(info_combo_genre->GetObjectProperties()->pos.x + bias, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
 
 	pos.y = 99;
 	pos.x = maxTextLength + 14;
@@ -371,6 +642,21 @@ bonkEnc::bonkEnc()
 	mainWnd->RegisterObject(joblist);
 	mainWnd->RegisterObject(droparea);
 	mainWnd->RegisterObject(txt_joblist);
+	mainWnd->RegisterObject(info_divider);
+	mainWnd->RegisterObject(info_bottom);
+	mainWnd->RegisterObject(info_background);
+	mainWnd->RegisterObject(info_text_artist);
+	mainWnd->RegisterObject(info_edit_artist);
+	mainWnd->RegisterObject(info_text_title);
+	mainWnd->RegisterObject(info_edit_title);
+	mainWnd->RegisterObject(info_text_album);
+	mainWnd->RegisterObject(info_edit_album);
+	mainWnd->RegisterObject(info_text_track);
+	mainWnd->RegisterObject(info_edit_track);
+	mainWnd->RegisterObject(info_text_date);
+	mainWnd->RegisterObject(info_edit_date);
+	mainWnd->RegisterObject(info_text_genre);
+	mainWnd->RegisterObject(info_combo_genre);
 	mainWnd->RegisterObject(enc_filename);
 	mainWnd->RegisterObject(enc_time);
 	mainWnd->RegisterObject(enc_percent);
@@ -389,12 +675,31 @@ bonkEnc::bonkEnc()
 	mainWnd->RegisterObject(mainWnd_menubar);
 	mainWnd->RegisterObject(mainWnd_iconbar);
 
+	info_background->RegisterObject(info_checkbox);
+
+	if (!currentConfig->showTitleInfo)
+	{
+		info_bottom->Hide();
+		info_text_artist->Hide();
+		info_edit_artist->Hide();
+		info_text_title->Hide();
+		info_edit_title->Hide();
+		info_text_album->Hide();
+		info_edit_album->Hide();
+		info_text_track->Hide();
+		info_edit_track->Hide();
+		info_text_date->Hide();
+		info_edit_date->Hide();
+		info_text_genre->Hide();
+		info_combo_genre->Hide();
+	}
+
 	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(IDI_ICON);
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->onPaint.Connect(&bonkEnc::DrawProc, this);
 	mainWnd->doQuit.Connect(&bonkEnc::ExitProc, this);
-	mainWnd->SetMinimumSize(Size(390, 284));
+	mainWnd->SetMinimumSize(Size(530, 300 + n));
 }
 
 bonkEnc::~bonkEnc()
@@ -409,6 +714,8 @@ bonkEnc::~bonkEnc()
 
 	if (!currentConfig->enable_console)
 	{
+		info_background->UnregisterObject(info_checkbox);
+
 		mainWnd->UnregisterObject(mainWnd_menubar);
 		mainWnd->UnregisterObject(mainWnd_iconbar);
 		mainWnd->UnregisterObject(mainWnd_titlebar);
@@ -416,6 +723,21 @@ bonkEnc::~bonkEnc()
 		mainWnd->UnregisterObject(joblist);
 		mainWnd->UnregisterObject(droparea);
 		mainWnd->UnregisterObject(txt_joblist);
+		mainWnd->UnregisterObject(info_divider);
+		mainWnd->UnregisterObject(info_bottom);
+		mainWnd->UnregisterObject(info_background);
+		mainWnd->UnregisterObject(info_text_artist);
+		mainWnd->UnregisterObject(info_edit_artist);
+		mainWnd->UnregisterObject(info_text_title);
+		mainWnd->UnregisterObject(info_edit_title);
+		mainWnd->UnregisterObject(info_text_album);
+		mainWnd->UnregisterObject(info_edit_album);
+		mainWnd->UnregisterObject(info_text_track);
+		mainWnd->UnregisterObject(info_edit_track);
+		mainWnd->UnregisterObject(info_text_date);
+		mainWnd->UnregisterObject(info_edit_date);
+		mainWnd->UnregisterObject(info_text_genre);
+		mainWnd->UnregisterObject(info_combo_genre);
 		mainWnd->UnregisterObject(enc_filename);
 		mainWnd->UnregisterObject(enc_time);
 		mainWnd->UnregisterObject(enc_percent);
@@ -440,6 +762,22 @@ bonkEnc::~bonkEnc()
 		delete joblist;
 		delete droparea;
 		delete txt_joblist;
+		delete info_divider;
+		delete info_bottom;
+		delete info_background;
+		delete info_checkbox;
+		delete info_text_artist;
+		delete info_edit_artist;
+		delete info_text_title;
+		delete info_edit_title;
+		delete info_text_album;
+		delete info_edit_album;
+		delete info_text_track;
+		delete info_edit_track;
+		delete info_text_date;
+		delete info_edit_date;
+		delete info_text_genre;
+		delete info_combo_genre;
 		delete enc_filename;
 		delete enc_time;
 		delete enc_percent;
@@ -778,13 +1116,30 @@ Void bonkEnc::DrawProc()
 
 	Int	 maxTextLength = max(max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
 
-	edb_filename->SetMetrics(edb_filename->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 28 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
-	edb_encoder->SetMetrics(edb_encoder->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
-	edb_outdir->SetMetrics(edb_outdir->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 28 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
+	edb_filename->SetMetrics(edb_filename->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
+	edb_encoder->SetMetrics(edb_encoder->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
+	edb_outdir->SetMetrics(edb_outdir->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
 
-	progress->SetMetrics(progress->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 29 - maxTextLength, progress->GetObjectProperties()->size.cy));
+	progress->SetMetrics(progress->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 28 - maxTextLength, progress->GetObjectProperties()->size.cy));
 
-	joblist->SetMetrics(joblist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 221));
+	joblist->SetMetrics(joblist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0)));
+	droparea->SetMetrics(droparea->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0)));
+
+	Int	 bias = info_edit_artist->GetObjectProperties()->size.cx;
+
+	info_edit_artist->SetMetrics(info_edit_artist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - (Int) Math::Max(info_text_album->GetObjectProperties()->textSize.cx, info_text_artist->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - info_text_date->GetObjectProperties()->textSize.cx - info_text_genre->GetObjectProperties()->textSize.cx - 275, info_edit_artist->GetObjectProperties()->size.cy));
+	info_edit_album->SetMetrics(info_edit_album->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - (Int) Math::Max(info_text_album->GetObjectProperties()->textSize.cx, info_text_artist->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - info_text_date->GetObjectProperties()->textSize.cx - info_text_genre->GetObjectProperties()->textSize.cx - 275, info_edit_album->GetObjectProperties()->size.cy));
+
+	bias = info_edit_artist->GetObjectProperties()->size.cx - bias;
+
+	info_text_title->SetMetrics(Point(info_text_title->GetObjectProperties()->pos.x + bias, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
+	info_edit_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x + bias, info_edit_title->GetObjectProperties()->pos.y), info_edit_title->GetObjectProperties()->size);
+	info_text_track->SetMetrics(Point(info_text_track->GetObjectProperties()->pos.x + bias, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
+	info_edit_track->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + bias, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
+	info_text_date->SetMetrics(Point(info_text_date->GetObjectProperties()->pos.x + bias, info_text_date->GetObjectProperties()->pos.y), info_text_date->GetObjectProperties()->size);
+	info_edit_date->SetMetrics(Point(info_edit_date->GetObjectProperties()->pos.x + bias, info_edit_date->GetObjectProperties()->pos.y), info_edit_date->GetObjectProperties()->size);
+	info_text_genre->SetMetrics(Point(info_text_genre->GetObjectProperties()->pos.x + bias, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
+	info_combo_genre->SetMetrics(Point(info_combo_genre->GetObjectProperties()->pos.x + bias, info_combo_genre->GetObjectProperties()->pos.y), info_combo_genre->GetObjectProperties()->size);
 }
 
 Void bonkEnc::About()
@@ -1519,6 +1874,64 @@ Array<bonkTrackInfo *> *bonkEnc::GetCDDBData()
 	return array;
 }
 
+Void bonkEnc::ShowHideTitleInfo()
+{
+	Int	 n = 0;
+
+	if (currentConfig->showTitleInfo)
+	{
+		n = 65;
+
+		mainWnd->SetMinimumSize(Size(530, 300 + n));
+	}
+	else
+	{
+		n = -65;
+
+		mainWnd->SetMinimumSize(Size(530, 300));
+	}
+
+	info_divider->SetPos(info_divider->GetPos() + n);
+	info_background->SetMetrics(Point(info_background->GetObjectProperties()->pos.x, info_background->GetObjectProperties()->pos.y + n), info_background->GetObjectProperties()->size);
+
+	mainWnd->SetMetrics(mainWnd->GetObjectProperties()->pos, Size(mainWnd->GetObjectProperties()->size.cx, mainWnd->GetObjectProperties()->size.cy + n));
+
+	info_checkbox->Paint(SP_PAINT);
+
+	if (currentConfig->showTitleInfo)
+	{
+		info_bottom->Show();
+		info_text_artist->Show();
+		info_edit_artist->Show();
+		info_text_title->Show();
+		info_edit_title->Show();
+		info_text_album->Show();
+		info_edit_album->Show();
+		info_text_track->Show();
+		info_edit_track->Show();
+		info_text_date->Show();
+		info_edit_date->Show();
+		info_text_genre->Show();
+		info_combo_genre->Show();
+	}
+	else
+	{
+		info_bottom->Hide();
+		info_text_artist->Hide();
+		info_edit_artist->Hide();
+		info_text_title->Hide();
+		info_edit_title->Hide();
+		info_text_album->Hide();
+		info_edit_album->Hide();
+		info_text_track->Hide();
+		info_edit_track->Hide();
+		info_text_date->Hide();
+		info_edit_date->Hide();
+		info_text_genre->Hide();
+		info_combo_genre->Hide();
+	}
+}
+
 Bool bonkEnc::SetLanguage(String newLanguage)
 {
 	i18n->ActivateLanguage(currentConfig->language);
@@ -1539,6 +1952,8 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	edb_outdir->Hide();
 
 	progress->Hide();
+
+	info_checkbox->Hide();
 
 	enc_filename->SetText(i18n->TranslateString("Encoding file:"));
 	enc_time->SetText(i18n->TranslateString("Time left:"));
@@ -1566,6 +1981,11 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 
 	progress->SetMetrics(Point(maxTextLength + 14, progress->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 28 - maxTextLength, progress->GetObjectProperties()->size.cy));
  
+	info_checkbox->SetText(i18n->TranslateString("Show title info"));
+	info_checkbox->SetMetrics(info_checkbox->GetObjectProperties()->pos, Size(info_checkbox->GetObjectProperties()->textSize.cx + 19, info_checkbox->GetObjectProperties()->size.cy));
+
+	info_background->SetMetrics(info_background->GetObjectProperties()->pos, Size(info_checkbox->GetObjectProperties()->textSize.cx + 24, info_background->GetObjectProperties()->size.cy));
+
 	enc_filename->Show();
 	enc_time->Show();
 	enc_percent->Show();
@@ -1580,6 +2000,8 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	edb_outdir->Show();
 
 	progress->Show();
+
+	info_checkbox->Show();
 
 	joblist->Hide();
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -64,8 +64,7 @@
     <entry id="53" string="Average Bitrate">Bitrate medio</entry>
     <entry id="54" string="Quality">Qualità</entry>
     <entry id="55" string="Encoders">Encoder</entry>
-    <entry id="56" string="Directories">Cartelle</entry>
-    <entry id="57" string="Language">Lingua</entry>
+    <entry id="56" string="Language">Lingua</entry>
     <entry id="58" string="General settings setup">Impostazioni generali</entry>
     <entry id="59" string="Configure encoder">Configurazione...</entry>
     <entry id="60" string="Encoder">Encoder</entry>

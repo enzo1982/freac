@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -64,8 +64,7 @@
     <entry id="53" string="Average Bitrate">Gemiddelde Bitrate</entry>
     <entry id="54" string="Quality">Kwaliteit</entry>
     <entry id="55" string="Encoders">Encoders</entry>
-    <entry id="56" string="Directories">Mappen</entry>
-    <entry id="57" string="Language">Taal</entry>
+    <entry id="56" string="Language">Taal</entry>
     <entry id="58" string="General settings setup">Algemene instellingen</entry>
     <entry id="59" string="Configure encoder">Encoder configureren</entry>
     <entry id="60" string="Encoder">Encoder</entry>

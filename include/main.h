@@ -84,6 +84,23 @@ class bonkEnc : public Application
 		Hyperlink		*hyperlink;
 		DropArea		*droparea;
 
+		Divider			*info_divider;
+		Layer			*info_background;
+		CheckBox		*info_checkbox;
+		Divider			*info_bottom;
+		Text			*info_text_artist;
+		EditBox			*info_edit_artist;
+		Text			*info_text_title;
+		EditBox			*info_edit_title;
+		Text			*info_text_album;
+		EditBox			*info_edit_album;
+		Text			*info_text_track;
+		EditBox			*info_edit_track;
+		Text			*info_text_date;
+		EditBox			*info_edit_date;
+		Text			*info_text_genre;
+		ComboBox		*info_combo_genre;
+
 		Text			*enc_filename;
 		Text			*enc_time;
 		Text			*enc_percent;
@@ -169,6 +186,7 @@ class bonkEnc : public Application
 		Void			 StopEncoding();
 		Bool			 ExitProc();
 		Void			 DrawProc();
+		Void			 ShowHideTitleInfo();
 
 		Bool			 SetLanguage(String);
 	public:

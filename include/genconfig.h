@@ -23,7 +23,6 @@ class configureGeneralSettings : public Application
 		TabWidget	*reg_register;
 
 		Layer		*register_layer_encoders;
-		Layer		*register_layer_dirs;
 		Layer		*register_layer_language;
 		Layer		*register_layer_cdrip;
 		Layer		*register_layer_cddb;
@@ -31,10 +30,9 @@ class configureGeneralSettings : public Application
 		GroupBox	*encoders_group_encoder;
 		ComboBox	*encoders_combo_encoder;
 		Button		*encoders_button_config;
-
-		GroupBox	*dirs_group_outdir;
-		EditBox		*dirs_edit_outdir;
-		Button		*dirs_button_outdir_browse;
+		GroupBox	*encoders_group_outdir;
+		EditBox		*encoders_edit_outdir;
+		Button		*encoders_button_outdir_browse;
 
 		GroupBox	*language_group_language;
 		Text		*language_text_language;
@@ -55,6 +53,7 @@ class configureGeneralSettings : public Application
 
 		GroupBox	*cddb_group_cddb;
 		CheckBox	*cddb_check_enable;
+		Layer		*cddb_layer_background;
 		Text		*cddb_text_mode;
 		ComboBox	*cddb_combo_mode;
 		Text		*cddb_text_server;

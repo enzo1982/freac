@@ -96,10 +96,11 @@ Bool bonkEncConfig::LoadSettings()
 	wndPos.x = getINIValue("Settings", "WindowPosX", "100").ToInt();
 	wndPos.y = getINIValue("Settings", "WindowPosY", "100").ToInt();
 	wndSize.cx = getINIValue("Settings", "WindowSizeX", "650").ToInt();
-	wndSize.cy = getINIValue("Settings", "WindowSizeY", "450").ToInt();
+	wndSize.cy = getINIValue("Settings", "WindowSizeY", "400").ToInt();
 
 	encoder = getINIValue("Settings", "Encoder", "0").ToInt();
 	enc_outdir = getINIValue("Settings", "EncoderOutdir", pDir);
+	showTitleInfo = getINIValue("Settings", "ShowTitleInfo", "0").ToInt();
 
 	enable_cddb = getINIValue("freedb", "EnableCDDB", "0").ToInt();
 	freedb_server = getINIValue("freedb", "Server", "freedb.freedb.org");
@@ -204,6 +205,10 @@ Bool bonkEncConfig::SaveSettings()
 
 		str = "EncoderOutdir=";
 		str.Append(enc_outdir);
+		out->OutputLine(str);
+
+		str = "ShowTitleInfo=";
+		str.Append(String::IntToString(showTitleInfo));
 		out->OutputLine(str);
 
 		str = "WindowPosX=";

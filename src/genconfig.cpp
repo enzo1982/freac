@@ -47,7 +47,6 @@ configureGeneralSettings::configureGeneralSettings()
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	register_layer_encoders	= new Layer(bonkEnc::i18n->TranslateString("Encoders"));
-	register_layer_dirs	= new Layer(bonkEnc::i18n->TranslateString("Directories"));
 	register_layer_language	= new Layer(bonkEnc::i18n->TranslateString("Language"));
 	register_layer_cdrip	= new Layer("CDRip");
 	register_layer_cddb	= new Layer("CDDB");
@@ -126,25 +125,25 @@ configureGeneralSettings::configureGeneralSettings()
 	encoders_button_config->onClick.Connect(&configureGeneralSettings::ConfigureEncoder, this);
 
 	pos.x = 7;
-	pos.y = 11;
+	pos.y = 66;
 	size.cx = 344;
 	size.cy = 43;
 
-	dirs_group_outdir	= new GroupBox(bonkEnc::i18n->TranslateString("Output directory"), pos, size);
+	encoders_group_outdir	= new GroupBox(bonkEnc::i18n->TranslateString("Output directory"), pos, size);
 
 	pos.x = 17;
-	pos.y = 23;
+	pos.y += 12;
 	size.cx = 236;
 	size.cy = 0;
 
-	dirs_edit_outdir	= new EditBox(currentConfig->enc_outdir, pos, size, EDB_ALPHANUMERIC, 0);
+	encoders_edit_outdir	= new EditBox(currentConfig->enc_outdir, pos, size, EDB_ALPHANUMERIC, 0);
 
 	pos.x += 244;
 	pos.y -= 1;
 	size.cx = 0;
 
-	dirs_button_outdir_browse= new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
-	dirs_button_outdir_browse->onClick.Connect(&configureGeneralSettings::SelectDir, this);
+	encoders_button_outdir_browse= new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	encoders_button_outdir_browse->onClick.Connect(&configureGeneralSettings::SelectDir, this);
 
 	pos.x = 7;
 	pos.y = 66;
@@ -275,10 +274,19 @@ configureGeneralSettings::configureGeneralSettings()
 	size.cx = 344;
 	size.cy = 123;
 
-	cddb_group_cddb		= new GroupBox(String("      ").Append(bonkEnc::i18n->TranslateString("Enable CDDB")).Append(" "), pos, size);
+	cddb_group_cddb		= new GroupBox("", pos, size);
 
-	pos.x += 12;
+	pos.x += 10;
 	pos.y -= 8;
+	size.cx = 89;
+	size.cy = 17;
+
+	cddb_layer_background	= new Layer();
+	cddb_layer_background->SetMetrics(pos, size);
+	cddb_layer_background->SetColor(Setup::BackgroundColor);
+
+	pos.x = 2;
+	pos.y = 0;
 	size.cx = 84;
 	size.cy = 0;
 
@@ -286,8 +294,10 @@ configureGeneralSettings::configureGeneralSettings()
 	cddb_check_enable->onClick.Connect(&configureGeneralSettings::SetCDDB, this);
 	cddb_check_enable->SetMetrics(pos, Size(cddb_check_enable->GetObjectProperties()->textSize.cx + 19, cddb_check_enable->GetObjectProperties()->size.cy));
 
-	pos.x -= 3;
-	pos.y += 21;
+	cddb_layer_background->SetMetrics(cddb_layer_background->GetObjectProperties()->pos, Size(cddb_check_enable->GetObjectProperties()->textSize.cx + 24, cddb_layer_background->GetObjectProperties()->size.cy));
+
+	pos.x = 16;
+	pos.y = 24;
 
 	cddb_text_mode		= new Text(bonkEnc::i18n->TranslateString("CDDB access mode:"), pos);
 
@@ -365,7 +375,6 @@ configureGeneralSettings::configureGeneralSettings()
 	mainWnd->RegisterObject(reg_register);
 
 	reg_register->RegisterObject(register_layer_encoders);
-	reg_register->RegisterObject(register_layer_dirs);
 	reg_register->RegisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
@@ -375,10 +384,9 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_encoders->RegisterObject(encoders_group_encoder);
 	register_layer_encoders->RegisterObject(encoders_combo_encoder);
 	register_layer_encoders->RegisterObject(encoders_button_config);
-
-	register_layer_dirs->RegisterObject(dirs_group_outdir);
-	register_layer_dirs->RegisterObject(dirs_edit_outdir);
-	register_layer_dirs->RegisterObject(dirs_button_outdir_browse);
+	register_layer_encoders->RegisterObject(encoders_group_outdir);
+	register_layer_encoders->RegisterObject(encoders_edit_outdir);
+	register_layer_encoders->RegisterObject(encoders_button_outdir_browse);
 
 	register_layer_language->RegisterObject(language_group_language);
 	register_layer_language->RegisterObject(language_text_language);
@@ -398,7 +406,7 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_cdrip->RegisterObject(cdrip_check_ntscsi);
 
 	register_layer_cddb->RegisterObject(cddb_group_cddb);
-	register_layer_cddb->RegisterObject(cddb_check_enable);
+	register_layer_cddb->RegisterObject(cddb_layer_background);
 	register_layer_cddb->RegisterObject(cddb_text_mode);
 	register_layer_cddb->RegisterObject(cddb_combo_mode);
 	register_layer_cddb->RegisterObject(cddb_text_server);
@@ -409,6 +417,8 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_cddb->RegisterObject(cddb_edit_email);
 	register_layer_cddb->RegisterObject(cddb_button_http);
 	register_layer_cddb->RegisterObject(cddb_button_proxy);
+
+	cddb_layer_background->RegisterObject(cddb_check_enable);
 
 	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
@@ -426,7 +436,6 @@ configureGeneralSettings::~configureGeneralSettings()
 	mainWnd->UnregisterObject(reg_register);
 
 	reg_register->UnregisterObject(register_layer_encoders);
-	reg_register->UnregisterObject(register_layer_dirs);
 	reg_register->UnregisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->UnregisterObject(register_layer_cdrip);
@@ -436,10 +445,9 @@ configureGeneralSettings::~configureGeneralSettings()
 	register_layer_encoders->UnregisterObject(encoders_group_encoder);
 	register_layer_encoders->UnregisterObject(encoders_combo_encoder);
 	register_layer_encoders->UnregisterObject(encoders_button_config);
-
-	register_layer_dirs->UnregisterObject(dirs_group_outdir);
-	register_layer_dirs->UnregisterObject(dirs_edit_outdir);
-	register_layer_dirs->UnregisterObject(dirs_button_outdir_browse);
+	register_layer_encoders->UnregisterObject(encoders_group_outdir);
+	register_layer_encoders->UnregisterObject(encoders_edit_outdir);
+	register_layer_encoders->UnregisterObject(encoders_button_outdir_browse);
 
 	register_layer_language->UnregisterObject(language_group_language);
 	register_layer_language->UnregisterObject(language_text_language);
@@ -459,7 +467,7 @@ configureGeneralSettings::~configureGeneralSettings()
 	register_layer_cdrip->UnregisterObject(cdrip_check_ntscsi);
 
 	register_layer_cddb->UnregisterObject(cddb_group_cddb);
-	register_layer_cddb->UnregisterObject(cddb_check_enable);
+	register_layer_cddb->UnregisterObject(cddb_layer_background);
 	register_layer_cddb->UnregisterObject(cddb_text_mode);
 	register_layer_cddb->UnregisterObject(cddb_combo_mode);
 	register_layer_cddb->UnregisterObject(cddb_text_server);
@@ -471,6 +479,8 @@ configureGeneralSettings::~configureGeneralSettings()
 	register_layer_cddb->UnregisterObject(cddb_button_http);
 	register_layer_cddb->UnregisterObject(cddb_button_proxy);
 
+	cddb_layer_background->UnregisterObject(cddb_check_enable);
+
 	UnregisterObject(mainWnd);
 
 	delete mainWnd_titlebar;
@@ -478,16 +488,15 @@ configureGeneralSettings::~configureGeneralSettings()
 	delete divbar;
 	delete reg_register;
 	delete register_layer_encoders;
-	delete register_layer_dirs;
 	delete register_layer_language;
 	delete register_layer_cdrip;
 	delete register_layer_cddb;
 	delete encoders_group_encoder;
 	delete encoders_combo_encoder;
 	delete encoders_button_config;
-	delete dirs_group_outdir;
-	delete dirs_edit_outdir;
-	delete dirs_button_outdir_browse;
+	delete encoders_group_outdir;
+	delete encoders_edit_outdir;
+	delete encoders_button_outdir_browse;
 	delete language_group_language;
 	delete language_text_language;
 	delete language_combo_language;
@@ -504,6 +513,7 @@ configureGeneralSettings::~configureGeneralSettings()
 	delete cdrip_check_locktray;
 	delete cdrip_check_ntscsi;
 	delete cddb_group_cddb;
+	delete cddb_layer_background;
 	delete cddb_check_enable;
 	delete cddb_text_mode;
 	delete cddb_combo_mode;
@@ -553,7 +563,7 @@ Void configureGeneralSettings::OK()
 	if (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry())) currentConfig->languageChanged = true;
 
 	currentConfig->language = bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry());
-	currentConfig->enc_outdir = dirs_edit_outdir->GetText();
+	currentConfig->enc_outdir = encoders_edit_outdir->GetText();
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) currentConfig->cdrip_activedrive = cdrip_combo_drive->GetSelectedEntry();
 
@@ -593,7 +603,7 @@ Void configureGeneralSettings::SelectDir()
 
 	if (dialog->ShowDialog() == Success)
 	{
-		dirs_edit_outdir->SetText(dialog->GetDirName());
+		encoders_edit_outdir->SetText(dialog->GetDirName());
 	}
 
 	delete dialog;

@@ -64,8 +64,7 @@
     <entry id="53" string="Average Bitrate">Average Bitrate</entry>
     <entry id="54" string="Quality">Качество</entry>
     <entry id="55" string="Encoders">Кодировщики</entry>
-    <entry id="56" string="Directories">Каталоги</entry>
-    <entry id="57" string="Language">Язык</entry>
+    <entry id="56" string="Language">Язык</entry>
     <entry id="58" string="General settings setup">Основные параметры</entry>
     <entry id="59" string="Configure encoder">Настроить</entry>
     <entry id="60" string="Encoder">Кодировщик</entry>

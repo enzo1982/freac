@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -64,8 +64,7 @@
     <entry id="53" string="Average Bitrate">Átlagos bitráta</entry>
     <entry id="54" string="Quality">Minõség</entry>
     <entry id="55" string="Encoders">Tömörítõk</entry>
-    <entry id="56" string="Directories">Könyvtárak</entry>
-    <entry id="57" string="Language">Nyelv</entry>
+    <entry id="56" string="Language">Nyelv</entry>
     <entry id="58" string="General settings setup">Általános beállítások</entry>
     <entry id="59" string="Configure encoder">Tömörítõ beállítása</entry>
     <entry id="60" string="Encoder">Tömörítõ</entry>

@@ -30,6 +30,8 @@ class bonkEncConfig
 		Point		 wndPos;
 		Size		 wndSize;
 
+		Bool		 showTitleInfo;
+
 		Int		 encoder;
 		Bool		 enable_console;
 		Bool		 enable_bonk;
