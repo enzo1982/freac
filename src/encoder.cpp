@@ -190,7 +190,7 @@ Int bonkEnc::Encoder(Thread *thread)
 			}
 			else
 			{
-				int magic = f_in->InputNumber(4);
+				Int magic = f_in->InputNumber(4);
 
 				f_in->Seek(0);
 

@@ -11,13 +11,14 @@ BonkEnc with the '--console' parameter.
 History
 -------
 
-	Version 0.9
+	Version 0.9-CVS (February 2003)
 
 		- added Drag & Drop functionality
 		- added support for LAME presets
 		- added Hungarian, French, Russian, Serbian and Finnish language support
 		- removed support for the META tag in BONK files
 		- added support for ID3V2 tags in BONK files
+		- added support for reading ID3V2 and Vorbis comment tags
 		- simplified the language file format
 		- upgraded to smooth v0.8.61.0
 		- upgraded to CDRip v117 to fix some ASPI issues
@@ -29,9 +30,8 @@ History
 
 		- full freedb support
 		- greatly improved joblist
-		- ID3V2 reading
 
-	Version 0.8
+	Version 0.8 (November 2002)
 
 		- added CDDB/freedb support (read only)
 		- added support for decoding MP3, Ogg Vorbis and BONK files
@@ -44,7 +44,7 @@ History
 		- some small improvements
 		- some bugfixes
 
-	Version 0.7
+	Version 0.7 (September 2002)
 
 		- added support for CD text
 		- added support for encoding TwinVQ (VQF) files
@@ -52,7 +52,7 @@ History
 		- made binary distribution with Progressive Setup
 		- upgraded to smooth v0.8.59.0
 
-	Version 0.6
+	Version 0.6 (August 2002)
 
 		- upgraded to smooth v0.8.58.1
 		- upgraded to Ogg Vorbis v1.0
@@ -65,7 +65,7 @@ History
 		- all encoder DLLs are now optional
 		- some minor bugfixes
 
-	Version 0.5-pre2
+	Version 0.5-pre2 (Juni 2002)
 
 		- added support for ripping audio CDs
 		- added support for Ogg Vorbis files
@@ -77,7 +77,7 @@ History
 		- allowed more options for BladeEnc
 		- upgraded to smooth v0.8.58.0
 
-	Version 0.4
+	Version 0.4 (Juni 2001)
 
 		- initial release
 
@@ -139,6 +139,7 @@ Future plans
 	- allow command line options to configure encoder settings
 	- write online documentation for BonkEnc
 	- improve support for right-to-left scripts
+	- put the command line interface in its own exe
 
 -----------------------------------------------------------------------------------
 

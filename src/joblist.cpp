@@ -72,8 +72,15 @@ Void bonkEnc::AddFile()
 	}
 
 	delete dialog;
+}
 
-	txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+Void bonkEnc::AddDragDropFile(String *iFile)
+{
+	String	 file = *iFile;
+
+	delete iFile;
+
+	AddFileByName(file);
 }
 
 Void bonkEnc::AddFileByName(String file, String outfile)
@@ -216,49 +223,73 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 			delete cdInfo;
 		}
 	}
-	else if (extension == "bonk" || extension == "BONK")
-	{
-		FilterInBONK	*filter_in = new FilterInBONK(currentConfig);
-		bonkTrackInfo	*trackInfo = filter_in->GetFileInfo(file).trackInfo;
-
-		delete filter_in;
-
-		sa_joblist.AddEntry(String(trackInfo->artist).Append(" - ").Append(trackInfo->title), joblist->AddEntry(String(trackInfo->artist).Append(" - ").Append(trackInfo->title).Append("\t01\t3:32"))->code);
-
-		trackInfo->outfile	= outfile;
-		trackInfo->origFilename	= file;
-
-		sa_trackinfo.AddEntry(trackInfo);
-	}
 	else
 	{
-		sa_joblist.AddEntry(file, joblist->AddEntry(file)->code);
+		InputFilter	*filter_in = NIL;
+		bonkTrackInfo	*trackInfo = NIL;
 
-		bonkTrackInfo	*trackInfo = new bonkTrackInfo;
+		if (extension == ".mp3" || extension == ".MP3")
+		{
+			filter_in = new FilterInLAME(currentConfig);
+		}
+		else if (extension == ".ogg" || extension == ".OGG")
+		{
+			filter_in = new FilterInVORBIS(currentConfig);
+		}
+		else if (extension == "bonk" || extension == "BONK")
+		{
+			filter_in = new FilterInBONK(currentConfig);
+		}
+		else
+		{
+			InStream	*f_in = new InStream(STREAM_FILE, file);
+			Int		 magic = f_in->InputNumber(4);
 
-		trackInfo->track	= -1;
+			delete f_in;
+
+			switch (magic)
+			{
+				case 1297239878:
+					filter_in = new FilterInAIFF(currentConfig);
+					break;
+				case 1684960046:
+					filter_in = new FilterInAU(currentConfig);
+					break;
+				case 1634038339:
+					filter_in = new FilterInVOC(currentConfig);
+					break;
+				case 1179011410:
+					filter_in = new FilterInWAVE(currentConfig);
+					break;
+			}
+		}
+
+		if (filter_in != NIL)
+		{
+			trackInfo = filter_in->GetFileInfo(file).trackInfo;
+
+			delete filter_in;
+		}
+
+		if (trackInfo != NIL)
+		{
+			sa_joblist.AddEntry(String(trackInfo->artist).Append(" - ").Append(trackInfo->title), joblist->AddEntry(String(trackInfo->artist).Append(" - ").Append(trackInfo->title))->code);
+		}
+		else
+		{
+			sa_joblist.AddEntry(file, joblist->AddEntry(file)->code);
+
+			trackInfo = new bonkTrackInfo;
+
+			trackInfo->track	= -1;
+			trackInfo->cdText	= False;
+		}
+
 		trackInfo->outfile	= outfile;
 		trackInfo->origFilename	= file;
-		trackInfo->cdText	= False;
 
 		sa_trackinfo.AddEntry(trackInfo);
 	}
-}
-
-Void bonkEnc::AddDragDropFile(String *iFile)
-{
-	String	 file = *iFile;
-
-	delete iFile;
-
-	if (encoding)
-	{
-		SMOOTH::MessageBox(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-
-		return;
-	}
-
-	AddFileByName(file);
 
 	txt_joblist->SetText(String::IntToString(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
 }
