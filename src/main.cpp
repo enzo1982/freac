@@ -317,7 +317,9 @@ bonkEnc::bonkEnc()
 
 	joblist			= new ListBox(pos, size);
 	joblist->AddTab("Title");
-	joblist->AddTab("Length");
+	joblist->AddTab("Track", 50);
+	joblist->AddTab("Length", 80);
+	joblist->AddTab("Size", 80);
 
 	pos.y = 99;
 	pos.x = maxTextLength + 14;
