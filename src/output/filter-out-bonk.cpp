@@ -36,7 +36,7 @@ FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 		return;
 	}
 
-	int	 packet_size = int(1024.0 * currentConfig->bonk_downsampling * format->rate / 44100);
+	int	 packet_size = int(1024.0 * (currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling) * format->rate / 44100);
 
 	packageSize = packet_size * format->channels * (format->bits / 8);
 }

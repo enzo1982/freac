@@ -174,9 +174,12 @@ void BONKencoder::finish()
 	f_out->OutputNumber(14 + 5 * int((sample_count + samples_size - 1) / samples_size), 4);
 	f_out->OutputString("info");
 
-	f_out->Flush();
-	f_out->Seek(bonk_tag + 6);
-	f_out->OutputNumber(sample_count, 4);
+	if (length == 0)
+	{
+		f_out->Flush();
+		f_out->Seek(bonk_tag + 6);
+		f_out->OutputNumber(sample_count, 4);
+	}
 
 	delete [] infoData;
 }

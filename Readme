@@ -18,6 +18,14 @@ History
 		- added support for ID3V2 tags in BONK files
 		- upgraded to smooth v0.8.61.0
 		- upgraded CDRip.dll to fix some ASPI issues
+		- some minor bugfixes
+
+		Still to be done, but definitely in 0.9:
+
+		- full freedb support
+		- greatly improved joblist
+		- support for LAME presets
+		- ID3V2 reading
 
 	Version 0.8
 
