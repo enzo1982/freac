@@ -333,8 +333,8 @@ bool BONKdecoder::begin(InStream *f_in, uint32 *_length, uint32 *_rate, int *_ch
 	length			= uint32(bit_in.f_in->InputNumber(4));
 	rate			= uint32(bit_in.f_in->InputNumber(4)); 
 	channels		= uint8(bit_in.f_in->InputNumber(1));
-	lossless		= uint8(bit_in.f_in->InputNumber(1));
-	mid_side		= uint8(bit_in.f_in->InputNumber(1));
+	lossless		= uint8(bit_in.f_in->InputNumber(1)) != 0;
+	mid_side		= uint8(bit_in.f_in->InputNumber(1)) != 0;
 	n_taps			= uint16(bit_in.f_in->InputNumber(2));
 	down_sampling		= uint8(bit_in.f_in->InputNumber(1));
 	samples_per_packet	= uint16(bit_in.f_in->InputNumber(2));

@@ -59,7 +59,7 @@ inline int divide(int a,int b) {
 }
 
 inline int shift(int a,int b) {
-  return a+(1<<b-1) >> b;
+  return (a+(1<<(b-1))) >> b;
 }
 
 inline int shift_down(int a,int b) {
