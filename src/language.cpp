@@ -59,7 +59,7 @@ languageDlg::languageDlg()
 	mainWnd->RegisterObject(divbar);
 
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(IDI_ICON);
+	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(120, 120), Size(240, 182));
 }
 
@@ -83,8 +83,6 @@ languageDlg::~languageDlg()
 
 Int languageDlg::ShowDialog()
 {
-	mainWnd->SetParentWindow(parentWindow);
-
 	mainWnd->Stay();
 
 	return Success;

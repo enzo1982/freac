@@ -457,9 +457,9 @@ configureGeneralSettings::configureGeneralSettings()
 
 	cddb_layer_background->RegisterObject(cddb_check_enable);
 
-	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
+	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(IDI_ICON);
+	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(120, 120), Size(384, 271));
 	mainWnd->onPaint.Connect(&configureGeneralSettings::DrawProc, this);
 }
@@ -579,8 +579,6 @@ configureGeneralSettings::~configureGeneralSettings()
 
 Int configureGeneralSettings::ShowDialog()
 {
-	mainWnd->SetParentWindow(parentWindow);
-
 	mainWnd->Stay();
 
 	return mainWnd->value;

@@ -796,7 +796,7 @@ bonkEnc::bonkEnc()
 	}
 
 	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(IDI_ICON);
+	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->onPaint.Connect(&bonkEnc::DrawProc, this);
 	mainWnd->doQuit.Connect(&bonkEnc::ExitProc, this);

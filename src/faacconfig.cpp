@@ -193,9 +193,9 @@ configureFAAC::configureFAAC()
 	mainWnd->RegisterObject(mainWnd_titlebar);
 	mainWnd->RegisterObject(divbar);
 
-	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
+	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(IDI_ICON);
+	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(140, 140), Size(468, 256));
 }
 
@@ -255,8 +255,6 @@ configureFAAC::~configureFAAC()
 
 Int configureFAAC::ShowDialog()
 {
-	mainWnd->SetParentWindow(parentWindow);
-
 	mainWnd->Stay();
 
 	return mainWnd->value;

@@ -14,6 +14,8 @@
 #include <cddb.h>
 #include <dllinterfaces.h>
 
+#define LOG_CDDB
+
 Array<Array<bonkFormatInfo::bonkTrackInfo *> *>	 bonkEncCDDB::titleCache;
 Array<CDDBInfo *>				 bonkEncCDDB::infoCache;
 Array<Bool>					 bonkEncCDDB::requestedDiscs;

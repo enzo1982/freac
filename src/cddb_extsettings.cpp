@@ -170,9 +170,9 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 			break;
 	}
 
-	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
+	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(IDI_ICON);
+	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(140, 140), Size(350, 192));
 }
 
@@ -227,8 +227,6 @@ cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 
 Int cddbExtendedSettingsDlg::ShowDialog()
 {
-	mainWnd->SetParentWindow(parentWindow);
-
 	mainWnd->Stay();
 
 	return mainWnd->value;

@@ -133,9 +133,9 @@ configureVorbisEnc::configureVorbisEnc()
 	mainWnd->RegisterObject(mainWnd_layer_abr);
 	mainWnd->RegisterObject(divbar);
 
-	mainWnd->SetExStyle(WS_EX_TOOLWINDOW);
+	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(IDI_ICON);
+	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(140, 140), Size(364, 173));
 
 	switch (mode)
@@ -199,8 +199,6 @@ configureVorbisEnc::~configureVorbisEnc()
 
 Int configureVorbisEnc::ShowDialog()
 {
-	mainWnd->SetParentWindow(parentWindow);
-
 	mainWnd->Stay();
 
 	return mainWnd->value;

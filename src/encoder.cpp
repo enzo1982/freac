@@ -44,7 +44,7 @@ Void bonkEnc::Encode()
 
 	encoding = true;
 
-	encoder_thread->SetWaitFlag(THREAD_WAITFLAG_START);
+	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
 	encoder_thread->Start();
 }
 
