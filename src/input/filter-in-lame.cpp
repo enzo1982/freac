@@ -57,6 +57,8 @@ bool FilterInLAME::Activate()
 
 bool FilterInLAME::Deactivate()
 {
+	ex_lame_decode_exit();
+
 	return true;
 }
 
@@ -132,6 +134,8 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 	while (f_in->GetPos() < f_in->Size());
 
 	delete f_in;
+
+	ex_lame_decode_exit();
 
 	ID3_Tag	*tag = new ID3_Tag(inFile);
 
