@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LangFile>
+<LangFile>
+	<info>
+		<property name="program">BonkEnc</property>
+		<property name="version">0.7</property>
+		<property name="language">日本語</property>
+		<property name="encoding">UTF-8</property>
+		<property name="magic">Q6AZC-R5FAZ-9UALD-XZ7J9-PW09A</property>
+		<property name="author">Robert Kausch &lt;robert.kausch@gmx.net&gt;</property>
+		<property name="url">http://bonkenc.sf.net</property>
+	</info>
+	<entry id="1">
+		<property name="string">File</property>
+		<property name="translation">ファイル</property>
+	</entry>
+	<entry id="2">
+		<property name="string">Options</property>
+		<property name="translation">オプション</property>
+	</entry>
+	<entry id="7">
+		<property name="string">Exit</property>
+		<property name="translation">終了</property>
+	</entry>
+	<entry id="8">
+		<property name="string">General settings...</property>
+		<property name="translation">一般的な設定...</property>
+	</entry>
+	<entry id="21">
+		<property name="string">none</property>
+		<property name="translation">なし</property>
+	</entry>
+	<entry id="49">
+		<property name="string">OK</property>
+		<property name="translation">はい</property>
+	</entry>
+	<entry id="50">
+		<property name="string">Cancel</property>
+		<property name="translation">キャンセル</property>
+	</entry>
+	<entry id="56">
+		<property name="string">Directories</property>
+		<property name="translation">ディレクトリ</property>
+	</entry>
+	<entry id="57">
+		<property name="string">Language</property>
+		<property name="translation">言語</property>
+	</entry>
+	<entry id="58">
+		<property name="string">General settings setup</property>
+		<property name="translation">一般的な設定</property>
+	</entry>
+	<entry id="61">
+		<property name="string">Output directory</property>
+		<property name="translation">出力先ディレクトリを選択</property>
+	</entry>
+	<entry id="62">
+		<property name="string">Browse</property>
+		<property name="translation">ブラウズ</property>
+	</entry>
+	<entry id="63">
+		<property name="string">Select the folder in which the encoded files will be placed:</property>
+		<property name="translation">出力先ディレクトリを選択:</property>
+	</entry>
+	<entry id="64">
+		<property name="string">Encoding</property>
+		<property name="translation">エンコーディング</property>
+	</entry>
+	<entry id="65">
+		<property name="string">Author</property>
+		<property name="translation">著者</property>
+	</entry>
+	<entry id="66">
+		<property name="string">URL</property>
+		<property name="translation">URL</property>
+	</entry>
+	<entry id="67">
+		<property name="string">Information</property>
+		<property name="translation">情報</property>
+	</entry>
+	<entry id="68">
+		<property name="string">Select language:</property>
+		<property name="translation">言語を選択して下さい:</property>
+	</entry>
+</LangFile>
+

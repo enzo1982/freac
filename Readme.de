@@ -1,0 +1,114 @@
+BonkEnc Version 0.7
+
+BonkEnc ist ein Codierer für verschiedene Audioformate.
+Es kann MP3, Ogg Vorbis, BONK, AAC und VQF Dateien erzeugen.
+
+BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
+
+Geschichte
+----------
+
+	Version 0.7
+
+		- Unterstützung für CD-Text hinzugefügt
+		- Unterstützung für TwinVQ (VQF) Dateien hinzugefügt
+		- Internationalisierung mit XML Sprachdateien
+		- Binärdistribution mit Progressive Setup
+		- Update auf smooth v0.8.59.0
+
+	Version 0.6
+
+		- Update auf smooth v0.8.58.1
+		- Update auf Ogg Vorbis v1.0
+		- Update auf BONK v0.6
+		- Update auf CDRip v116
+		- Unterstützung für PCM WAVE Dateien hinzugefügt
+		- Unterstützung für verlustfreie BONK Dateien hinzugefügt
+		- BONK Dateien um den META-Tag erweitert
+		- alle Codierer und Decodierer sind jetzt als IOLib-Filter implementiert
+		- alle Codierungs-DLLs sind jetzt optional
+		- einige kleine Fehler wurden behoben
+
+	Version 0.5-pre2
+
+		- Unterstützung für das Rippen von Audio-CDs hinzugefügt
+		- Unterstützung für Ogg Vorbis Dateien hinzugefügt
+		- Unterstützung für FAAC (AAC Codierer) hinzugefügt
+		- Unterstützung für LAME hinzugefügt
+		- Unterstützung für Mono und verschiedene Samplingraten
+		- das BONK Format wurde um die Möglichkeit zum Skipping erweitert
+		- Unterstützung für Apple AIFF, Creative Voice und Sun Audio Dateien
+		- mehr Optionen für BladeEnc
+		- Update auf smooth v0.8.58.0
+
+	Version 0.4
+
+		- ursprüngliche Version
+
+Voraussetzungen
+---------------
+
+	- Windows NT/2000/XP, Windows 95/98/SE/ME
+	- Ein 200MHz Prozessor oder besser, um BONK Dateien abzuspielen
+	- Winamp wird benötigt um BONK Dateien unter Windows abzuspielen
+	- Zum CD-Rippen werden korrekt installierte ASPI-Treiber benötigt
+
+	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
+
+		- MinGW32 v1.0 oder besser (http://mingw.sf.net/)
+		- smooth v0.8.59.0 (http://smooth.sf.net/)
+		- IOLib v5.x (http://iolib.sf.net/ - bei smooth dabei)
+
+	Zusätzliche optionale Software:
+
+		- BladeEnc wird verwendet, wenn es installiert ist (http://bladeenc.mp3.no)
+		- FAAC wird verwendet, wenn es installiert ist (http://faac.sf.net)
+		- TwinVQ wird verwendet, wenn es installiert ist (http://www.twinvq.org)
+
+Probleme
+--------
+
+	- Die aktuelle Version von Paul Harrisons BONK Codierer hat noch ein paar Fehler. Bitte
+	  kontaktieren sie ihn (pfh@csse.monash.edu.au), falls BonkEnc BONK Dateien mit Fehlern erzeugt.
+
+	- Es gibt folgende Einschränkungen für das Eingabeformat:
+
+		- BonkEnc:
+				- Daten müssen 16 Bit haben
+		- BladeEnc:
+				- Daten müssen 16 Bit bei 32, 44.1 oder 48kHz haben
+		- LAME:
+				- Daten müssen 16 Bit bei Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48kHz) haben
+		- Ogg Vorbis:
+				- Daten müssen 16 Bit, Stereo sein
+		- FAAC:
+				- Daten müssen 16 Bit, Stereo sein
+		- TwinVQ:
+				- Daten müssen 16 Bit, bei 22.05kHz (24 und 32kBit) oder 44.1kHz (48kBit) haben
+
+	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
+	  Ausgabe-Samplingrate haben, wenn sie nicht LAME verwenden.
+
+Pläne für zukünftige Versionen
+------------------------------
+
+	- das BONK Format um ID3V2 Unterstützung erweitern
+	- Künstler und Titel aus Dateinamen extrahieren und in ID3V2 Tags schreiben
+	- Eingabefilter für MP3, Ogg Vorbis, BONK, AAC, VQF
+	- mehr Audioformate unterstützen (FLAC, MAC, ...)
+	- Experteneinstellungen für LAME (ATH, Zeitliche Maskierung, Psy-Modelle)
+	- ein IOLib-Filters basierendes PlugIn System entwickeln
+	- ein Kommandozeileninterface, um Scripting zu ermöglichen
+	- mehr Sprachen unterstützen
+	- den Sourcecode überarbeiten
+	- CDDB Unterstützung hinzufügen
+
+-----------------------------------------------------------------------------------
+
+Die offizielle BonkEnc Homepage: http://bonkenc.sf.net/
+Paul F. Harrisons BONK Homepage: http://yoyo.cc.monash.edu.au/~pfh/bonk/
+
+robert.kausch@gmx.net,
+Robert Kausch
+
+ICQ#23891569

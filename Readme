@@ -1,0 +1,115 @@
+BonkEnc version 0.7
+
+BonkEnc is an encoder for various audio formats. It can
+produce MP3, Ogg Vorbis, BONK, AAC and VQF files.
+
+BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
+
+History
+-------
+
+	Version 0.7
+
+		- added support for CD text
+		- added support for encoding TwinVQ (VQF) files
+		- added internationalization support through XML language files
+		- made binary distribution with Progressive Setup
+		- upgraded to smooth v0.8.59.0
+
+	Version 0.6
+
+		- upgraded to smooth v0.8.58.1
+		- upgraded to Ogg Vorbis v1.0
+		- upgraded to BONK v0.6
+		- upgraded to CDRip v116
+		- added support for ripping to PCM WAVE files
+		- added support for encoding lossless BONK files
+		- the BONK format has been extended by the META-tag
+		- all encoders and decoders are now implemented as IOLib filters
+		- all encoder DLLs are now optional
+		- some minor bugfixes
+
+	Version 0.5-pre2
+
+		- added support for ripping audio CDs
+		- added support for Ogg Vorbis files
+		- added support for FAAC (AAC encoder)
+		- added support for LAME
+		- added support for mono and different sampling rates
+		- the BONK format has been extended to support instant skipping
+		- added preliminary support for Apple AIFF, Creative Voice and Sun Audio files
+		- allowed more options for BladeEnc
+		- upgraded to smooth v0.8.58.0
+
+	Version 0.4
+
+		- initial release
+
+Requirements
+------------
+
+	- Windows NT/2000/XP, Windows 95/98/SE/ME
+	- A 200MHz processor or better for playing BONK files
+	- Winamp is required to play BONK files in Windows
+	- You'll need properly installed ASPI drivers for
+	  CD ripping.
+
+	Additional requirements for compiling the sources:
+
+		- MinGW32 v1.0 or greater (http://mingw.sf.net/)
+		- smooth v0.8.59.0 (http://smooth.sf.net/)
+		- IOLib v5.x (http://iolib.sf.net/ - included with smooth)
+
+	Additional optional software:
+
+		- BladeEnc is used if installed (http://bladeenc.mp3.no)
+		- FAAC is used if installed (http://faac.sf.net)
+		- TwinVQ is used if installed (http://www.twinvq.org)
+
+Problems
+--------
+
+	- The current version of Paul Harrison's BONK encoder still has a few bugs.
+	  Please contact him (pfh@csse.monash.edu.au) if BonkEnc generates BONK files with errors.
+
+	- There are the following restrictions on the input file format:
+
+		- BonkEnc:
+				- files must be 16 bit
+		- BladeEnc:
+				- files must be 16 bit at 32, 44.1 or 48kHz
+		- LAME:
+				- files must be 16 bit at standard rates (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48kHz)
+		- Ogg Vorbis:
+				- files must be 16 bit, stereo
+		- FAAC:
+				- files must be 16 bit, stereo
+		- TwinVQ:
+				- files must be 16 bit, at 22.05kHz (24 and 32kBit) or 44.1kHz (48kBit)
+
+	- Resampling is only supported with LAME. Input files must be at the desired output
+	  sampling rate unless you are encoding with LAME.
+
+Future plans
+------------
+
+	- extend the BONK format to support ID3V2 tags
+	- extract artist and title from the filename and write ID3V2 or similar
+	- input filters for MP3, Ogg Vorbis, BONK, AAC, VQF
+	- support more audio formats (FLAC, MAC, ...)
+	- allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
+	- develop an IOLib-Filters based plugin system
+	- add a command line interface to allow scripting
+	- support more languages
+	- cleanup the code
+	- add CDDB support
+
+-----------------------------------------------------------------------------------
+
+The official BonkEnc homepage: http://bonkenc.sf.net/
+Paul F. Harrison's BONK page: http://yoyo.cc.monash.edu.au/~pfh/bonk/
+
+robert.kausch@gmx.net,
+Robert Kausch
+
+ICQ#23891569
