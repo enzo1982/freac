@@ -67,6 +67,7 @@ class cddbSubmitDlg : public Dialog
 		Void		 ChangeDrive();
 		Void		 SelectTrack();
 		Void		 UpdateTrack();
+		Void		 FinishTrack();
 		String		 GetCDDBGenre(String);
 	public:
 				 cddbSubmitDlg();

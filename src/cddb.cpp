@@ -476,15 +476,6 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 	for (int i = 0; i < cddbInfo->titles.GetNOfEntries(); i++)
 	{
-		if (cddbInfo->offsets.GetNthEntry(i) == 0)
-		{
-			QuickMessage("A CDDB error occurred! CDDB data cannot be submitted.\n\nPlease report this error to cddb@bonkenc.org and\ninclude detailed information about the corresponding CD.", "CDDB Error #001", MB_OK, IDI_HAND);
-
-			str = "error";
-
-			return str;
-		}
-
 		content.Append("#     ").Append(String::FromInt(cddbInfo->offsets.GetNthEntry(i))).Append("\n");
 	}
 
@@ -502,15 +493,6 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 	for (int j = 0; j < cddbInfo->titles.GetNOfEntries(); j++)
 	{
-		if (cddbInfo->titles.GetNthEntry(j) == "")
-		{
-			QuickMessage("A CDDB error occurred! CDDB data cannot be submitted.\n\nPlease report this error to cddb@bonkenc.org and\ninclude detailed information about the corresponding CD.", "CDDB Error #002", MB_OK, IDI_HAND);
-
-			str = "error";
-
-			return str;
-		}
-
 		content.Append("TTITLE").Append(String::FromInt(j)).Append("=").Append(cddbInfo->titles.GetNthEntry(j)).Append("\n");
 	}
 
