@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">BonkEnc</property>
+    <property name="version">0.8</property>
+    <property name="language">Français</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">Loïc Lefèvre &lt;loic_lefevre@caramail.com&gt;</property>
+    <property name="url">http://www.bonkenc.org</property>
+  </info>
+  <entry id="1">
+    <property name="string">File</property>
+    <property name="translation">Fichier</property>
+  </entry>
+  <entry id="2">
+    <property name="string">Options</property>
+    <property name="translation">Options</property>
+  </entry>
+  <entry id="4">
+    <property name="string">Add</property>
+    <property name="translation">Ajouter</property>
+  </entry>
+  <entry id="5">
+    <property name="string">Remove</property>
+    <property name="translation">Retirer</property>
+  </entry>
+  <entry id="6">
+    <property name="string">Clear joblist</property>
+    <property name="translation">Supprimer les tâches</property>
+  </entry>
+  <entry id="7">
+    <property name="string">Exit</property>
+    <property name="translation">Quitter</property>
+  </entry>
+  <entry id="8">
+    <property name="string">General settings...</property>
+    <property name="translation">Configuration...</property>
+  </entry>
+  <entry id="12">
+    <property name="string">Start encoding</property>
+    <property name="translation">Démarrer l'encodage</property>
+  </entry>
+  <entry id="13">
+    <property name="string">Stop encoding</property>
+    <property name="translation">Arrêter l'encodage</property>
+  </entry>
+  <entry id="19">
+    <property name="string">Output dir.:</property>
+    <property name="translation">Rép. cible:</property>
+  </entry>
+  <entry id="21">
+    <property name="string">none</property>
+    <property name="translation">aucun</property>
+  </entry>
+  <entry id="31">
+    <property name="string">Error</property>
+    <property name="translation">Erreur</property>
+  </entry>
+  <entry id="38">
+    <property name="string">All Files</property>
+    <property name="translation">Tous les fichiers</property>
+  </entry>
+  <entry id="49">
+    <property name="string">OK</property>
+    <property name="translation">OK</property>
+  </entry>
+  <entry id="50">
+    <property name="string">Cancel</property>
+    <property name="translation">Annuler</property>
+  </entry>
+  <entry id="54">
+    <property name="string">Quality</property>
+    <property name="translation">Qualité</property>
+  </entry>
+  <entry id="56">
+    <property name="string">Directories</property>
+    <property name="translation">Répertoires</property>
+  </entry>
+  <entry id="57">
+    <property name="string">Language</property>
+    <property name="translation">Langage</property>
+  </entry>
+  <entry id="58">
+    <property name="string">General settings setup</property>
+    <property name="translation">Configuration</property>
+  </entry>
+  <entry id="62">
+    <property name="string">Browse</property>
+    <property name="translation">Naviguer</property>
+  </entry>
+  <entry id="64">
+    <property name="string">Encoding</property>
+    <property name="translation">Encodage en cours</property>
+  </entry>
+  <entry id="65">
+    <property name="string">Author</property>
+    <property name="translation">Auteur</property>
+  </entry>
+  <entry id="66">
+    <property name="string">URL</property>
+    <property name="translation">URL</property>
+  </entry>
+  <entry id="67">
+    <property name="string">Information</property>
+    <property name="translation">Information</property>
+  </entry>
+  <entry id="68">
+    <property name="string">Select language:</property>
+    <property name="translation">Choisir la langue:</property>
+  </entry>
+</LangFile>
