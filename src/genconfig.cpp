@@ -577,7 +577,6 @@ configureGeneralSettings::configureGeneralSettings()
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(120, 120), Size(384, 277));
 }
 
@@ -913,26 +912,26 @@ Void configureGeneralSettings::ConfigureInputPlugin()
 {
 	if (plugins_list_input->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_in_modules.GetNthEntry(plugins_list_input->GetSelectedEntry()->id)->Config(mainWnd->hwnd);
+	currentConfig->appMain->winamp_in_modules.GetNthEntry(plugins_list_input->GetSelectedEntry()->id)->Config((HWND) mainWnd->GetSystemWindow());
 }
 
 Void configureGeneralSettings::ConfigureOutputPlugin()
 {
 	if (plugins_list_output->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_out_modules.GetNthEntry(plugins_list_output->GetSelectedEntry()->id)->Config(mainWnd->hwnd);
+	currentConfig->appMain->winamp_out_modules.GetNthEntry(plugins_list_output->GetSelectedEntry()->id)->Config((HWND) mainWnd->GetSystemWindow());
 }
 
 Void configureGeneralSettings::AboutInputPlugin()
 {
 	if (plugins_list_input->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_in_modules.GetNthEntry(plugins_list_input->GetSelectedEntry()->id)->About(mainWnd->hwnd);
+	currentConfig->appMain->winamp_in_modules.GetNthEntry(plugins_list_input->GetSelectedEntry()->id)->About((HWND) mainWnd->GetSystemWindow());
 }
 
 Void configureGeneralSettings::AboutOutputPlugin()
 {
 	if (plugins_list_output->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_out_modules.GetNthEntry(plugins_list_output->GetSelectedEntry()->id)->About(mainWnd->hwnd);
+	currentConfig->appMain->winamp_out_modules.GetNthEntry(plugins_list_output->GetSelectedEntry()->id)->About((HWND) mainWnd->GetSystemWindow());
 }

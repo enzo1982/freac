@@ -200,13 +200,13 @@ String bonkEncCDDB::SendCommand(String command)
 
 			str.Append("POST ").Append(config->freedb_query_path).Append(" HTTP/1.0\n");
 			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=5\n").Length())).Append("\n");
-			str.Append("Charset: ISO-8859-1\n");
+			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
+			str.Append("Charset: UTF-8\n");
 			str.Append("\n");
 
 			for (int i = 0; i < command.Length(); i++) if (command[i] == ' ') command[i] = '+';
 
-			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=5\n");
+			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=6\n");
 
 			delete [] buffer;
 
@@ -321,7 +321,7 @@ Bool bonkEncCDDB::ConnectToServer()
 	}
 
 	SendCommand("");
-	SendCommand("proto 5");
+	SendCommand("proto 6");
 
 	char	*buffer = new char [256];
 
@@ -372,7 +372,10 @@ String bonkEncCDDB::Query(String discid)
 
 		do
 		{
-			String	 val = in->InputLine();
+			String	 val;
+
+			val.ImportFrom("UTF-8", in->InputLine());
+
 			String	 id;
 			String	 title;
 			String	 category;
@@ -435,7 +438,9 @@ String bonkEncCDDB::Read(String query)
 
 		do
 		{
-			String	 val = in->InputLine();
+			String	 val;
+
+			val.ImportFrom("UTF-8", in->InputLine());
 
 #ifdef LOG_CDDB
 			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
@@ -484,7 +489,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	}
 
 	content.Append("# ").Append("\n");
-	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->disclength)).Append(" seconds").Append("\n");
+	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->disclength)).Append("\n");
 	content.Append("# ").Append("\n");
 	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->revision)).Append("\n");
 	content.Append("# Submitted via: ").Append("BonkEnc ").Append(bonkEnc::cddbVersion).Append("\n");
@@ -527,8 +532,8 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	str.Append("Discid: ").Append(cddbInfo->discid).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
 	str.Append("Submit-Mode: ").Append("submit").Append("\n");
-	str.Append("Content-Length: ").Append(String::FromInt(content.Length())).Append("\n");
-	str.Append("Charset: ISO-8859-1\n");
+	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
+	str.Append("Charset: UTF-8\n");
 	str.Append("\n");
 
 	str.Append(content);
@@ -555,11 +560,11 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 #ifdef LOG_CDDB
 	log->OutputString("\n");
-	log->OutputString(str);
+	log->OutputString(str.ConvertTo("UTF-8"));
 	log->OutputString("\n");
 #endif
 
-	out->OutputString(str);
+	out->OutputString(str.ConvertTo("UTF-8"));
 
 	do
 	{

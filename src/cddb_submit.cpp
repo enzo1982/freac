@@ -332,7 +332,6 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(Point(120, 120), Size(500, 346));
 }
 

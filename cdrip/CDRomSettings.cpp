@@ -473,6 +473,8 @@ void CDRomSettings::SetTransportLayer( int nValue )
 
 void CDRomSettings::SetIniFileName( LPCSTR lpszIniFname)
 {
+	if (lpszIniFname == NIL) return;
+
 	strcpy( m_lpszIniFname, lpszIniFname );
 }
 

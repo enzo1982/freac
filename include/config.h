@@ -23,8 +23,6 @@ class bonkEncConfig
 	private:
 		char		*rVal_a;
 		wchar_t		*rVal_w;
-
-		String		 iniFile;
 	public:
 		bonkEnc		*appMain;
 
@@ -147,9 +145,6 @@ class bonkEncConfig
 
 				 bonkEncConfig();
 				~bonkEncConfig();
-
-		Bool		 SetIniFile(String);
-		String		 GetIniFile();
 
 		Bool		 LoadSettings();
 		Bool		 SaveSettings();

@@ -760,7 +760,6 @@ bonkEncGUI::bonkEncGUI()
 	}
 
 	mainWnd->SetIcon(Bitmap::LoadBitmap("BonkEnc.pci", 0, NIL));
-	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->onResize.Connect(&bonkEncGUI::ResizeProc, this);
 	mainWnd->doQuit.Connect(&bonkEncGUI::ExitProc, this);
@@ -847,7 +846,7 @@ Bool bonkEncGUI::ExitProc()
 
 	if (playing) StopPlayback();
 
-	Rect	 wndRect = mainWnd->GetWindowRect();
+	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
 
 	currentConfig->wndPos = Point(wndRect.left, wndRect.top);
 	currentConfig->wndSize = Size(wndRect.right - wndRect.left, wndRect.bottom - wndRect.top);

@@ -25,6 +25,7 @@ History
 		- upgraded LAME to version 3.94 beta
 		- upgraded Ogg Vorbis to version 1.0.1
 		- upgraded FAAC to version 1.23.1
+		- added support for CDDB protocol version 6 (UTF-8 support)
 		- some small improvements
 		- some bugfixes
 

@@ -55,9 +55,9 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig		*bonkEnc::currentConfig	= NIL;
 I18n::Translator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "CVS 20040107";
+String	 bonkEnc::version = "CVS 20040130";
 String	 bonkEnc::cddbVersion = "v1.0beta1";
-String	 bonkEnc::shortVersion = "20040107";
+String	 bonkEnc::shortVersion = "20040130";
 
 bonkEnc::bonkEnc()
 {
@@ -69,7 +69,6 @@ bonkEnc::bonkEnc()
 
 	currentConfig = new bonkEncConfig;
 
-	currentConfig->SetIniFile(GetApplicationDirectory().Append("bonkenc.ini"));
 	currentConfig->LoadSettings();
 
 	i18n = new I18n::Translator();
@@ -129,7 +128,7 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->enable_cdrip)
 	{
-		Long		 error = ex_CR_Init(currentConfig->GetIniFile());
+		Long		 error = ex_CR_Init(NIL);
 		Int		 choice = IDYES;
 		OSVERSIONINFOA	 vInfo;
 
@@ -143,7 +142,7 @@ bonkEnc::bonkEnc()
 
 			ex_CR_SaveSettings();
 
-			error = ex_CR_Init(currentConfig->GetIniFile());
+			error = ex_CR_Init(NIL);
 		}
 
 		if (error != CDEX_OK)
@@ -178,7 +177,7 @@ bonkEnc::bonkEnc()
 
 						ex_CR_SaveSettings();
 
-						error = ex_CR_Init(currentConfig->GetIniFile());
+						error = ex_CR_Init(NIL);
 
 						if (error != CDEX_OK)
 						{

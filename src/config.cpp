@@ -45,22 +45,8 @@ bonkEncConfig::~bonkEncConfig()
 	delete [] rVal_a;
 }
 
-Bool bonkEncConfig::SetIniFile(String file)
-{
-	iniFile = file;
-
-	return True;
-}
-
-String bonkEncConfig::GetIniFile()
-{
-	return iniFile;
-}
-
 Bool bonkEncConfig::LoadSettings()
 {
-	if (iniFile == NIL) return False;
-
 	HMODULE		 shelldll = LoadLibraryA("shell32.dll");
 	BOOL		 (WINAPI *ex_SHGetPathFromIDListA)(LPCITEMIDLIST, LPSTR);
 	BOOL		 (WINAPI *ex_SHGetPathFromIDListW)(LPCITEMIDLIST, LPWSTR);
