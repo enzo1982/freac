@@ -10,6 +10,7 @@ History
 
 	Version 1.0 beta 2 CVS (July 2003)
 
+		- added support for right-to-left scripts like Arabic or Hebrew
 		- upgraded to smooth v0.8.63.0
 		- some small improvements
 
@@ -157,7 +158,6 @@ Future plans
 		* support more audio formats (FLAC, MAC, WMA, ...)
 		* develop an IOLib-Filters based plugin system
 		* add musicbrainz.org support
-		* improve support for right-to-left scripts
 		* allow command line options to configure encoder settings
 
 	- All time tasks

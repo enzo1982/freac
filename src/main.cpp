@@ -87,7 +87,7 @@ bonkEncGUI::bonkEncGUI()
 
 	if (winamp_out_modules.GetNOfEntries() > 0)
 	{
-		pos.x = 116;
+		pos.x = 116 - (Setup::rightToLeft ? 88 : 0);
 		pos.y = -1;
 		size.cx = 25;
 		size.cy = 25;
@@ -97,28 +97,28 @@ bonkEncGUI::bonkEncGUI()
 		button_play->SetOrientation(OR_UPPERRIGHT);
 		button_play->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22;
+		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
 
 		button_pause	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 12, NIL), pos, size);
 		button_pause->onClick.Connect(&bonkEnc::PausePlayback, (bonkEnc *) this);
 		button_pause->SetOrientation(OR_UPPERRIGHT);
 		button_pause->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22;
+		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
 
 		button_stop	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 13, NIL), pos, size);
 		button_stop->onClick.Connect(&bonkEnc::StopPlayback, (bonkEnc *) this);
 		button_stop->SetOrientation(OR_UPPERRIGHT);
 		button_stop->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22;
+		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
 
 		button_prev	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 14, NIL), pos, size);
 		button_prev->onClick.Connect(&bonkEnc::PlayPrevious, (bonkEnc *) this);
 		button_prev->SetOrientation(OR_UPPERRIGHT);
 		button_prev->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22;
+		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
 
 		button_next	= new Button(NIL, SMOOTH::LoadImage("BonkEnc.pci", 15, NIL), pos, size);
 		button_next->onClick.Connect(&bonkEnc::PlayNext, (bonkEnc *) this);

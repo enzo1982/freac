@@ -10,6 +10,7 @@ Geschichte
 
 	Version 1.0 beta 2 CVS (Juli 2003)
 
+		- Unterstützung für Schriften von rechts nach links hinzugefügt
 		- Update auf smooth v0.8.63.0
 		- Einige kleinere Verbesserungen
 
@@ -157,7 +158,6 @@ Pläne für zukünftige Versionen
 		* mehr Audioformate unterstützen (FLAC, MAC, WMA, ...)
 		* ein IOLib-Filters basierendes PlugIn System entwickeln
 		* Unterstützung für musicbrainz.org
-		* Unterstützung für rechts-nach-links Schriften verbessern
 		* Kommandozeilenoptionen zum Konfigurieren der Encoder erlauben
 
 	- Ständige Aufgaben
