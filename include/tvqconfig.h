@@ -39,6 +39,7 @@ class configureTVQ : public Application
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
+		Void		 Cancel();
 	public:
 				 configureTVQ(bonkEncConfig *);
 				~configureTVQ();

@@ -29,12 +29,14 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(bonkEncConfig *currentConfig, Bool fuzzy)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onClick.Connect(&cddbMultiMatchDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&cddbMultiMatchDlg::OK), this);
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onClick.Connect(&cddbMultiMatchDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -54,7 +56,7 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(bonkEncConfig *currentConfig, Bool fuzzy)
 	size.cx = 310;
 	size.cy = 0;
 
-	combo_match		= new ComboBox(pos, size, NULLPROC);
+	combo_match		= new ComboBox(pos, size);
 
 	RegisterObject(mainWnd);
 
@@ -110,7 +112,12 @@ Void cddbMultiMatchDlg::OK()
 	mainWnd->Close();
 }
 
+Void cddbMultiMatchDlg::Cancel()
+{
+	mainWnd->Close();
+}
+
 Int cddbMultiMatchDlg::AddEntry(String category, String title)
 {
-	return combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title), NULLPROC)->code;
+	return combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title))->code;
 }

@@ -30,12 +30,14 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onClick.Connect(&cddbExtendedSettingsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&cddbExtendedSettingsDlg::OK), this);
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onClick.Connect(&cddbExtendedSettingsDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -62,7 +64,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	size.cx = 192;
 	size.cy = 0;
 
-	http_edit_query		= new EditBox(currentConfig->freedb_query_path, pos, size, EDB_ALPHANUMERIC, 0, NULLPROC);
+	http_edit_query		= new EditBox(currentConfig->freedb_query_path, pos, size, EDB_ALPHANUMERIC, 0);
 
 	pos.x = 16;
 	pos.y += 30;
@@ -72,7 +74,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	pos.x += 101;
 	pos.y -= 3;
 
-	http_edit_submit	= new EditBox(currentConfig->freedb_submit_path, pos, size, EDB_ALPHANUMERIC, 0, NULLPROC);
+	http_edit_submit	= new EditBox(currentConfig->freedb_submit_path, pos, size, EDB_ALPHANUMERIC, 0);
 
 	Int	 maxTextSize = max(http_text_query->GetObjectProperties()->textSize.cx, http_text_submit->GetObjectProperties()->textSize.cx);
 
@@ -96,10 +98,11 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	size.cx = 185;
 	size.cy = 0;
 
-	proxy_combo_mode	= new ComboBox(pos, size, Proc(&cddbExtendedSettingsDlg::SetProxyMode), this);
-	proxy_combo_mode->AddEntry(currentConfig->i18n->TranslateString("no proxy"), NULLPROC);
-	proxy_combo_mode->AddEntry("SOCKS4", NULLPROC);
-	proxy_combo_mode->AddEntry("SOCKS5", NULLPROC);
+	proxy_combo_mode	= new ComboBox(pos, size);
+	proxy_combo_mode->onClick.Connect(&cddbExtendedSettingsDlg::SetProxyMode, this);
+	proxy_combo_mode->AddEntry(currentConfig->i18n->TranslateString("no proxy"));
+	proxy_combo_mode->AddEntry("SOCKS4");
+	proxy_combo_mode->AddEntry("SOCKS5");
 	proxy_combo_mode->SelectEntry(currentConfig->freedb_proxy_mode);
 
 	pos.x = 16;
@@ -111,7 +114,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	pos.y -= 3;
 	size.cx = 100;
 
-	proxy_edit_server	= new EditBox(currentConfig->freedb_proxy, pos, size, EDB_ALPHANUMERIC, 0, NULLPROC);
+	proxy_edit_server	= new EditBox(currentConfig->freedb_proxy, pos, size, EDB_ALPHANUMERIC, 0);
 
 	pos.x += 110;
 	pos.y += 3;
@@ -123,7 +126,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	pos.y -= 3;
 	size.cx = 37;
 
-	proxy_edit_port		= new EditBox(String::IntToString(currentConfig->freedb_proxy_port), pos, size, EDB_NUMERIC, 5, NULLPROC);
+	proxy_edit_port		= new EditBox(String::IntToString(currentConfig->freedb_proxy_port), pos, size, EDB_NUMERIC, 5);
 
 	maxTextSize = max(proxy_text_mode->GetObjectProperties()->textSize.cx, proxy_text_server->GetObjectProperties()->textSize.cx);
 
@@ -238,6 +241,11 @@ Void cddbExtendedSettingsDlg::OK()
 	currentConfig->freedb_proxy = proxy_edit_server->GetText();
 	currentConfig->freedb_proxy_port = proxy_edit_port->GetText().ToInt();
 
+	mainWnd->Close();
+}
+
+Void cddbExtendedSettingsDlg::Cancel()
+{
 	mainWnd->Close();
 }
 

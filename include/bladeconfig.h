@@ -56,6 +56,7 @@ class configureBladeEnc : public Application
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
+		Void		 Cancel();
 		Void		 SetBitrate();
 		Int		 GetBitrate();
 		Int		 GetSliderValue();

@@ -253,6 +253,7 @@ class bonkEnc : public Application
 		Bool			 ScanForParameter(String, String *);
 		Void			 ScanForFiles(Array<String> *);
 
+		Void			 Close();
 		Void			 About();
 		Void			 AddFile();
 		Void			 AddFileByName(String, String out = NIL);

@@ -48,6 +48,7 @@ class configureVorbisEnc : public Application
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
+		Void		 Cancel();
 		Void		 SetMode();
 		Void		 SetQuality();
 		Void		 SetBitrate();

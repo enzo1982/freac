@@ -138,6 +138,7 @@ class configureLameEnc : public Application
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
+		Void		 Cancel();
 		Void		 SetBitrateOption();
 		Void		 SetBitrate();
 		Void		 SetQualityOption();

@@ -32,6 +32,7 @@ class cddbMultiMatchDlg : public Application
 		Button		*btn_ok;
 
 		Void		 OK();
+		Void		 Cancel();
 	public:
 				 cddbMultiMatchDlg(bonkEncConfig *, Bool);
 				~cddbMultiMatchDlg();

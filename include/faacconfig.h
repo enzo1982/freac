@@ -61,6 +61,7 @@ class configureFAAC : public Application
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
+		Void		 Cancel();
 		Void		 SetMPEGVersion();
 		Void		 SetBitrate();
 		Void		 SetBitrateByEditBox();

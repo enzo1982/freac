@@ -27,12 +27,14 @@ configureTVQ::configureTVQ(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onClick.Connect(&configureTVQ::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureTVQ::OK), this);
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onClick.Connect(&configureTVQ::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -52,10 +54,10 @@ configureTVQ::configureTVQ(bonkEncConfig *config)
 	size.cx = 176 - text_bitrate->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	combo_bitrate		= new ComboBox(pos, size, NULLPROC);
-	combo_bitrate->AddEntry("24", NULLPROC);
-	combo_bitrate->AddEntry("32", NULLPROC);
-	combo_bitrate->AddEntry("48", NULLPROC);
+	combo_bitrate		= new ComboBox(pos, size);
+	combo_bitrate->AddEntry("24");
+	combo_bitrate->AddEntry("32");
+	combo_bitrate->AddEntry("48");
 
 	switch (currentConfig->tvq_bitrate)
 	{
@@ -92,11 +94,11 @@ configureTVQ::configureTVQ(bonkEncConfig *config)
 	size.cx = 206 - text_precand->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	combo_precand		= new ComboBox(pos, size, NULLPROC);
-	combo_precand->AddEntry("4", NULLPROC);
-	combo_precand->AddEntry("8", NULLPROC);
-	combo_precand->AddEntry("16", NULLPROC);
-	combo_precand->AddEntry("32", NULLPROC);
+	combo_precand		= new ComboBox(pos, size);
+	combo_precand->AddEntry("4");
+	combo_precand->AddEntry("8");
+	combo_precand->AddEntry("16");
+	combo_precand->AddEntry("32");
 
 	switch (currentConfig->tvq_presel_candidates)
 	{
@@ -176,5 +178,10 @@ Void configureTVQ::OK()
 	currentConfig->tvq_bitrate = combo_bitrate->GetSelectedEntryName().ToInt();
 	currentConfig->tvq_presel_candidates = combo_precand->GetSelectedEntryName().ToInt();
 
+	mainWnd->Close();
+}
+
+Void configureTVQ::Cancel()
+{
 	mainWnd->Close();
 }

@@ -49,6 +49,7 @@ class cddbExtendedSettingsDlg : public Application
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
+		Void		 Cancel();
 		Void		 SetProxyMode();
 	public:
 				 cddbExtendedSettingsDlg(bonkEncConfig *, Int);

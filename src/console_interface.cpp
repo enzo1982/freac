@@ -13,7 +13,7 @@
 
 Void bonkEnc::ConsoleMode()
 {
-	joblist = new ListBox(Point(0, 0), Size(0, 0), NULLPROC);
+	joblist = new ListBox(Point(0, 0), Size(0, 0));
 
 	bool		 quiet = ScanForParameter("-q", NULL);
 	Array<String>	 files;

@@ -33,12 +33,14 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onClick.Connect(&configureBonkEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureBonkEnc::OK), this);
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onClick.Connect(&configureBonkEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -72,18 +74,20 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	size.cx = 147;
 	size.cy = 0;
 
-	check_lossless		= new CheckBox(currentConfig->i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless, Proc(&configureBonkEnc::SetEncoderMode), this);
+	check_lossless		= new CheckBox(currentConfig->i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless);
+	check_lossless->onClick.Connect(&configureBonkEnc::SetEncoderMode, this);
 
 	pos.x += 176;
 
-	check_joint		= new CheckBox(currentConfig->i18n->TranslateString("Enable Joint Stereo"), pos, size, &jstereo, NULLPROC);
+	check_joint		= new CheckBox(currentConfig->i18n->TranslateString("Enable Joint Stereo"), pos, size, &jstereo);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 120;
 	size.cy = 0;
 
-	slider_quant		= new Slider(pos, size, OR_HORZ, &quant, 0, 40, Proc(&configureBonkEnc::SetQuantization), this);
+	slider_quant		= new Slider(pos, size, OR_HORZ, &quant, 0, 40);
+	slider_quant->onClick.Connect(&configureBonkEnc::SetQuantization, this);
 
 	pos.x += 127;
 	pos.y += 2;
@@ -94,7 +98,8 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	pos.x += 49;
 	pos.y -= 2;
 
-	slider_downsampling	= new Slider(pos, size, OR_HORZ, &downsampling, 1, 10, Proc(&configureBonkEnc::SetDownsamplingRatio), this);
+	slider_downsampling	= new Slider(pos, size, OR_HORZ, &downsampling, 1, 10);
+	slider_downsampling->onClick.Connect(&configureBonkEnc::SetDownsamplingRatio, this);
 
 	pos.x += 127;
 	pos.y += 2;
@@ -106,7 +111,8 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	pos.y += 53;
 	size.cx += 176;
 
-	slider_predictor	= new Slider(pos, size, OR_HORZ, &predictor, 0, 512, Proc(&configureBonkEnc::SetPredictorSize), this);
+	slider_predictor	= new Slider(pos, size, OR_HORZ, &predictor, 0, 512);
+	slider_predictor->onClick.Connect(&configureBonkEnc::SetPredictorSize, this);
 
 	pos.x += 303;
 	pos.y += 2;
@@ -198,6 +204,11 @@ Void configureBonkEnc::OK()
 	currentConfig->bonk_jstereo = jstereo;
 	currentConfig->bonk_lossless = lossless;
 
+	mainWnd->Close();
+}
+
+Void configureBonkEnc::Cancel()
+{
 	mainWnd->Close();
 }
 

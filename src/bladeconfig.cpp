@@ -34,12 +34,14 @@ configureBladeEnc::configureBladeEnc(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onClick.Connect(&configureBladeEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureBladeEnc::OK), this);
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onClick.Connect(&configureBladeEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -76,7 +78,8 @@ configureBladeEnc::configureBladeEnc(bonkEncConfig *config)
 	size.cx = 103;
 	size.cy = 0;
 
-	slider_bit		= new Slider(pos, size, OR_HORZ, &bitrate, 0, 13, Proc(&configureBladeEnc::SetBitrate), this);
+	slider_bit		= new Slider(pos, size, OR_HORZ, &bitrate, 0, 13);
+	slider_bit->onClick.Connect(&configureBladeEnc::SetBitrate, this);
 
 	pos.x += 110;
 	pos.y += 2;
@@ -88,29 +91,29 @@ configureBladeEnc::configureBladeEnc(bonkEncConfig *config)
 	pos.y -= 2;
 	size.cx += 44;
 
-	check_copyright		= new CheckBox(currentConfig->i18n->TranslateString("Set Copyright bit"), pos, size, &copyright, NULLPROC);
+	check_copyright		= new CheckBox(currentConfig->i18n->TranslateString("Set Copyright bit"), pos, size, &copyright);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_crc		= new CheckBox(currentConfig->i18n->TranslateString("Enable CRC"), pos, size, &crc, NULLPROC);
+	check_crc		= new CheckBox(currentConfig->i18n->TranslateString("Enable CRC"), pos, size, &crc);
 
 	pos.x += 176;
 
-	check_original		= new CheckBox(currentConfig->i18n->TranslateString("Set Original bit"), pos, size, &original, NULLPROC);
+	check_original		= new CheckBox(currentConfig->i18n->TranslateString("Set Original bit"), pos, size, &original);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_dualchannel	= new CheckBox(currentConfig->i18n->TranslateString("Dual channel encoding"), pos, size, &dualchannel, NULLPROC);
+	check_dualchannel	= new CheckBox(currentConfig->i18n->TranslateString("Dual channel encoding"), pos, size, &dualchannel);
 
 	pos.x += 176;
 
-	check_private		= new CheckBox(currentConfig->i18n->TranslateString("Set Private bit"), pos, size, &priv, NULLPROC);
+	check_private		= new CheckBox(currentConfig->i18n->TranslateString("Set Private bit"), pos, size, &priv);
 
 	RegisterObject(mainWnd);
 
@@ -196,6 +199,11 @@ Void configureBladeEnc::OK()
 	currentConfig->blade_private = priv;
 	currentConfig->blade_dualchannel = dualchannel;
 
+	mainWnd->Close();
+}
+
+Void configureBladeEnc::Cancel()
+{
 	mainWnd->Close();
 }
 

@@ -33,12 +33,14 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size, Proc(mainWnd->*(&Window::Close)), mainWnd);
+	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onClick.Connect(&configureFAAC::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size, Proc(&configureFAAC::OK), this);
+	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onClick.Connect(&configureFAAC::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -53,11 +55,13 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 99;
 	size.cy = 0;
 
-	option_version_mpeg2	= new OptionBox("MPEG 2", pos, size, &mpegVersion, 1, Proc(&configureFAAC::SetMPEGVersion), this);
+	option_version_mpeg2	= new OptionBox("MPEG 2", pos, size, &mpegVersion, 1);
+	option_version_mpeg2->onClick.Connect(&configureFAAC::SetMPEGVersion, this);
 
 	pos.y += 25;
 
-	option_version_mpeg4	= new OptionBox("MPEG 4", pos, size, &mpegVersion, 0, Proc(&configureFAAC::SetMPEGVersion), this);
+	option_version_mpeg4	= new OptionBox("MPEG 4", pos, size, &mpegVersion, 0);
+	option_version_mpeg4->onClick.Connect(&configureFAAC::SetMPEGVersion, this);
 
 	pos.x = 7;
 	pos.y = 88;
@@ -71,15 +75,15 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 99;
 	size.cy = 0;
 
-	option_aactype_main	= new OptionBox("MAIN", pos, size, &aacType, 0, NULLPROC);
+	option_aactype_main	= new OptionBox("MAIN", pos, size, &aacType, 0);
 
 	pos.y += 25;
 
-	option_aactype_low	= new OptionBox("LOW", pos, size, &aacType, 1, NULLPROC);
+	option_aactype_low	= new OptionBox("LOW", pos, size, &aacType, 1);
 
 	pos.y += 25;
 
-	option_aactype_ltp	= new OptionBox("LTP", pos, size, &aacType, 3, NULLPROC);
+	option_aactype_ltp	= new OptionBox("LTP", pos, size, &aacType, 3);
 	if (mpegVersion == 1) option_aactype_ltp->Deactivate();
 
 	pos.x = 135;
@@ -99,13 +103,15 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 228 - text_bitrate->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	slider_bitrate		= new Slider(pos, size, OR_HORZ, &bitrate, 8, 256, Proc(&configureFAAC::SetBitrate), this);
+	slider_bitrate		= new Slider(pos, size, OR_HORZ, &bitrate, 8, 256);
+	slider_bitrate->onClick.Connect(&configureFAAC::SetBitrate, this);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
 	size.cx = 25;
 
-	edit_bitrate		= new EditBox("", pos, size, EDB_NUMERIC, 3, Proc(&configureFAAC::SetBitrateByEditBox), this);
+	edit_bitrate		= new EditBox("", pos, size, EDB_NUMERIC, 3);
+	edit_bitrate->onClick.Connect(&configureFAAC::SetBitrateByEditBox, this);
 
 	pos.x += 32;
 	pos.y += 3;
@@ -124,7 +130,7 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 108;
 	size.cy = 0;
 
-	check_js		= new CheckBox(currentConfig->i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs, NULLPROC);
+	check_js		= new CheckBox(currentConfig->i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
 
 	pos.x = 272;
 	pos.y = 66;
@@ -138,7 +144,7 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 162;
 	size.cy = 0;
 
-	check_tns		= new CheckBox(currentConfig->i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns, NULLPROC);
+	check_tns		= new CheckBox(currentConfig->i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
 
 	pos.x = 135;
 	pos.y = 121;
@@ -157,7 +163,7 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 291 - text_bandwidth->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	edit_bandwidth		= new EditBox(String::IntToString(currentConfig->faac_bandwidth), pos, size, EDB_NUMERIC, 5, NULLPROC);
+	edit_bandwidth		= new EditBox(String::IntToString(currentConfig->faac_bandwidth), pos, size, EDB_NUMERIC, 5);
 
 	SetBitrate();
 
@@ -266,6 +272,11 @@ Void configureFAAC::OK()
 	currentConfig->faac_usetns = usetns;
 	currentConfig->faac_bandwidth = edit_bandwidth->GetText().ToInt();
 
+	mainWnd->Close();
+}
+
+Void configureFAAC::Cancel()
+{
 	mainWnd->Close();
 }
 

@@ -54,6 +54,7 @@ class configureBonkEnc : public Application
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
+		Void		 Cancel();
 		Void		 SetQuantization();
 		Void		 SetPredictorSize();
 		Void		 SetDownsamplingRatio();

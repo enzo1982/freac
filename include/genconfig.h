@@ -83,6 +83,7 @@ class configureGeneralSettings : public Application
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
+		Void		 Cancel();
 		Void		 DrawProc();
 		Void		 SelectDir();
 		Void		 SelectLanguage();
