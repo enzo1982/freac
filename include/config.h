@@ -25,8 +25,6 @@ class bonkEncConfig
 		wchar_t		*rVal_w;
 
 		String		 iniFile;
-
-		String		 getINIValue(String, String, String);
 	public:
 		bonkEnc		*appMain;
 

@@ -45,22 +45,6 @@ bonkEncConfig::~bonkEncConfig()
 	delete [] rVal_a;
 }
 
-String bonkEncConfig::getINIValue(String section, String value, String def)
-{
-	if (Setup::enableUnicode)
-	{
-		GetPrivateProfileStringW(section, value, def, rVal_w, 1024, iniFile);
-
-		return rVal_w;
-	}
-	else
-	{
-		GetPrivateProfileStringA(section, value, def, rVal_a, 1024, iniFile);
-
-		return rVal_a;
-	}
-}
-
 Bool bonkEncConfig::SetIniFile(String file)
 {
 	iniFile = file;
@@ -114,521 +98,231 @@ Bool bonkEncConfig::LoadSettings()
 
 	if (pDir == "\\") pDir = "C:\\";
 
-	language = getINIValue("Settings", "Language", "");
+	Configuration	*config = new Configuration("config.xml", False);
 
-	wndPos.x = getINIValue("Settings", "WindowPosX", "100").ToInt();
-	wndPos.y = getINIValue("Settings", "WindowPosY", "100").ToInt();
-	wndSize.cx = getINIValue("Settings", "WindowSizeX", "650").ToInt();
-	wndSize.cy = getINIValue("Settings", "WindowSizeY", "400").ToInt();
+	language = config->GetStringValue("Settings", "Language", "");
+	encoder = config->GetIntValue("Settings", "Encoder", 0);
+	enc_outdir = config->GetStringValue("Settings", "EncoderOutDir", pDir);
+	enc_filePattern = config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
+	showTitleInfo = config->GetIntValue("Settings", "ShowTitleInfo", 0);
+	wndPos.x = config->GetIntValue("Settings", "WindowPosX", 100);
+	wndPos.y = config->GetIntValue("Settings", "WindowPosY", 100);
+	wndSize.cx = config->GetIntValue("Settings", "WindowSizeX", 650);
+	wndSize.cy = config->GetIntValue("Settings", "WindowSizeY", 400);
+	maximized = config->GetIntValue("Settings", "WindowMaximized", 0);
+	tab_width_track = config->GetIntValue("Settings", "TabWidthTrack", 50);
+	tab_width_length = config->GetIntValue("Settings", "TabWidthLength", 80);
+	tab_width_size = config->GetIntValue("Settings", "TabWidthSize", 80);
+	output_plugin = config->GetIntValue("Settings", "OutputPlugin", 0);
+	enable_tags = config->GetIntValue("Settings", "EnableTags", 1);
+	default_comment = config->GetStringValue("Settings", "DefaultComment", String("BonkEnc ").Append(bonkEnc::shortVersion).Append(" <http://www.bonkenc.org/>"));
 
-	maximized = getINIValue("Settings", "WindowMaximized", "0").ToInt();
-
-	encoder = getINIValue("Settings", "Encoder", "0").ToInt();
-	enc_outdir = getINIValue("Settings", "EncoderOutdir", pDir);
-	enc_filePattern = getINIValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
-	showTitleInfo = getINIValue("Settings", "ShowTitleInfo", "0").ToInt();
-
-	tab_width_track = getINIValue("Settings", "TabWidthTrack", "50").ToInt();
-	tab_width_length = getINIValue("Settings", "TabWidthLength", "80").ToInt();
-	tab_width_size = getINIValue("Settings", "TabWidthSize", "80").ToInt();
-
-	output_plugin = getINIValue("Settings", "OutputPlugin", "0").ToInt();
-
-	enable_tags = getINIValue("Settings", "EnableTags", "1").ToInt();
-	default_comment = getINIValue("Settings", "DefaultComment", String("BonkEnc ").Append(bonkEnc::shortVersion).Append(" <http://www.bonkenc.org>"));
-
-	enable_auto_cddb = getINIValue("freedb", "AutoCDDBQueries", "0").ToInt();
-	enable_cddb_cache = getINIValue("freedb", "EnableCDDBCache", "1").ToInt();
-	freedb_server = getINIValue("freedb", "Server", "freedb.freedb.org");
-	freedb_mode = getINIValue("freedb", "ReadMode", "0").ToInt();
-	freedb_cddbp_port = getINIValue("freedb", "CDDBPPort", "8880").ToInt();
-	freedb_http_port = 80;
-	freedb_query_path = getINIValue("freedb", "QueryPath", "/~cddb/cddb.cgi");
-	freedb_submit_path = getINIValue("freedb", "SubmitPath", "/~cddb/submit.cgi");
-	freedb_email = getINIValue("freedb", "eMail", "cddb@bonkenc.org");
-	freedb_proxy_mode = getINIValue("freedb", "ProxyMode", "0").ToInt();
-	freedb_proxy = getINIValue("freedb", "Proxy", "localhost");
-	freedb_proxy_port = getINIValue("freedb", "ProxyPort", "1080").ToInt();
-
-	bonk_quantization = getINIValue("bonk", "Quantization", "8").ToInt();
-	bonk_predictor = getINIValue("bonk", "Predictor", "32").ToInt();
-	bonk_downsampling = getINIValue("bonk", "Downsampling", "2").ToInt();
-	bonk_jstereo = getINIValue("bonk", "JointStereo", "0").ToInt();
-	bonk_lossless = getINIValue("bonk", "Lossless", "0").ToInt();
-
-	blade_bitrate = getINIValue("bladeEnc", "Bitrate", "192").ToInt();
-	blade_crc = getINIValue("bladeEnc", "CRC", "0").ToInt();
-	blade_copyright = getINIValue("bladeEnc", "Copyright", "0").ToInt();
-	blade_original = getINIValue("bladeEnc", "Original", "1").ToInt();
-	blade_private = getINIValue("bladeEnc", "Private", "0").ToInt();
-	blade_dualchannel = getINIValue("bladeEnc", "DualChannel", "0").ToInt();
-
-	lame_preset = getINIValue("lameMP3", "Preset", "0").ToInt();
-	lame_set_bitrate = getINIValue("lameMP3", "SetBitrate", "1").ToInt();
-	lame_bitrate = getINIValue("lameMP3", "Bitrate", "192").ToInt();
-	lame_ratio = getINIValue("lameMP3", "Ratio", "1100").ToInt();
-	lame_set_quality = getINIValue("lameMP3", "SetQuality", "0").ToInt();
-	lame_quality = getINIValue("lameMP3", "Quality", "5").ToInt();
-	lame_stereomode = getINIValue("lameMP3", "StereoMode", "0").ToInt();
-	lame_forcejs = getINIValue("lameMP3", "ForceJS", "0").ToInt();
-	lame_vbrmode = getINIValue("lameMP3", "VBRMode", "0").ToInt();
-	lame_vbrquality = getINIValue("lameMP3", "VBRQuality", "5").ToInt();
-	lame_abrbitrate = getINIValue("lameMP3", "ABRBitrate", "192").ToInt();
-	lame_set_min_vbr_bitrate = getINIValue("lameMP3", "SetMinVBRBitrate", "0").ToInt();
-	lame_min_vbr_bitrate = getINIValue("lameMP3", "MinVBRBitrate", "128").ToInt();
-	lame_set_max_vbr_bitrate = getINIValue("lameMP3", "SetMaxVBRBitrate", "0").ToInt();
-	lame_max_vbr_bitrate = getINIValue("lameMP3", "MaxVBRBitrate", "256").ToInt();
-	lame_crc = getINIValue("lameMP3", "CRC", "0").ToInt();
-	lame_copyright = getINIValue("lameMP3", "Copyright", "0").ToInt();
-	lame_original = getINIValue("lameMP3", "Original", "1").ToInt();
-	lame_private = getINIValue("lameMP3", "Private", "0").ToInt();
-	lame_strict_iso = getINIValue("lameMP3", "StrictISO", "0").ToInt();
-	lame_padding_type = getINIValue("lameMP3", "PaddingType", "2").ToInt();
-	lame_resample = getINIValue("lameMP3", "Resample", "0").ToInt();
-	lame_disable_filtering = getINIValue("lameMP3", "DisableFiltering", "0").ToInt();
-	lame_set_lowpass = getINIValue("lameMP3", "SetLowpass", "0").ToInt();
-	lame_lowpass = getINIValue("lameMP3", "Lowpass", "0").ToInt();
-	lame_set_lowpass_width = getINIValue("lameMP3", "SetLowpassWidth", "0").ToInt();
-	lame_lowpass_width = getINIValue("lameMP3", "LowpassWidth", "0").ToInt();
-	lame_set_highpass = getINIValue("lameMP3", "SetHighpass", "0").ToInt();
-	lame_highpass = getINIValue("lameMP3", "Highpass", "0").ToInt();
-	lame_set_highpass_width = getINIValue("lameMP3", "SetHighpassWidth", "0").ToInt();
-	lame_highpass_width = getINIValue("lameMP3", "HighpassWidth", "0").ToInt();
-	lame_enable_ath = getINIValue("lameMP3", "EnableATH", "1").ToInt();
-	lame_athtype = getINIValue("lameMP3", "ATHType", "-1").ToInt();
-	lame_use_tns = getINIValue("lameMP3", "UseTNS", "1").ToInt();
-
-	vorbis_mode = getINIValue("oggVorbis", "Mode", "0").ToInt();
-	vorbis_quality = getINIValue("oggVorbis", "Quality", "60").ToInt();
-	vorbis_bitrate = getINIValue("oggVorbis", "Bitrate", "192").ToInt();
-
-	faac_mpegversion = getINIValue("FAAC", "MPEGVersion", "0").ToInt();
-	faac_type = getINIValue("FAAC", "AACType", "1").ToInt();
-	faac_bitrate = getINIValue("FAAC", "Bitrate", "96").ToInt();
-	faac_bandwidth = getINIValue("FAAC", "BandWidth", "22050").ToInt();
-	faac_allowjs = getINIValue("FAAC", "AllowJS", "1").ToInt();
-	faac_usetns = getINIValue("FAAC", "UseTNS", "1").ToInt();
-
-	tvq_bitrate = getINIValue("TwinVQ", "Bitrate", "48").ToInt();
-	tvq_presel_candidates = getINIValue("TwinVQ", "PreselectionCandidates", "32").ToInt();
-
-	cdrip_debuglevel = getINIValue("CDRip", "DebugCDRip", "0").ToInt();
-	cdrip_paranoia = getINIValue("CDRip", "CDParanoia", "0").ToInt();
-	cdrip_paranoia_mode = getINIValue("CDRip", "CDParanoiaMode", "3").ToInt();
-	cdrip_jitter = getINIValue("CDRip", "Jitter", "0").ToInt();
-	cdrip_activedrive = getINIValue("CDRip", "ActiveCDROM", "0").ToInt();
-	cdrip_swapchannels = getINIValue("CDRip", "SwapChannels", "0").ToInt();
-	cdrip_locktray = getINIValue("CDRip", "LockTray", "1").ToInt();
-	cdrip_ntscsi = getINIValue("CDRip", "UseNTSCSI", "0").ToInt();
+	cdrip_activedrive = config->GetIntValue("CDRip", "ActiveCDROM", 0);
+	cdrip_debuglevel = config->GetIntValue("CDRip", "DebugCDRip", 0);
+	cdrip_paranoia = config->GetIntValue("CDRip", "CDParanoia", 0);
+	cdrip_paranoia_mode = config->GetIntValue("CDRip", "CDParanoiaMode", 3);
+	cdrip_jitter = config->GetIntValue("CDRip", "Jitter", 0);
+	cdrip_swapchannels = config->GetIntValue("CDRip", "SwapChannels", 0);
+	cdrip_locktray = config->GetIntValue("CDRip", "LockTray", 1);
+	cdrip_ntscsi = config->GetIntValue("CDRip", "UseNTSCSI", 0);
 	cdrip_numdrives = 0;
+
+	enable_auto_cddb = config->GetIntValue("freedb", "AutoCDDBQueries", 0);
+	enable_cddb_cache = config->GetIntValue("freedb", "EnableCDDBCache", 1);
+	freedb_server = config->GetStringValue("freedb", "Server", "freedb.freedb.org");
+	freedb_mode = config->GetIntValue("freedb", "Mode", 0);
+	freedb_cddbp_port = config->GetIntValue("freedb", "CDDBPPort", 8880);
+	freedb_http_port = 80;
+	freedb_query_path = config->GetStringValue("freedb", "QueryPath", "/~cddb/cddb.cgi");
+	freedb_submit_path = config->GetStringValue("freedb", "SubmitPath", "/~cddb/submit.cgi");
+	freedb_email = config->GetStringValue("freedb", "eMail", "cddb@bonkenc.org");
+	freedb_proxy_mode = config->GetIntValue("freedb", "ProxyMode", 0);
+	freedb_proxy = config->GetStringValue("freedb", "Proxy", "localhost");
+	freedb_proxy_port = config->GetIntValue("freedb", "ProxyPort", 1080);
+
+	bonk_quantization = config->GetIntValue("bonk", "Quantization", 8);
+	bonk_predictor = config->GetIntValue("bonk", "Predictor", 32);
+	bonk_downsampling = config->GetIntValue("bonk", "Downsampling", 2);
+	bonk_jstereo = config->GetIntValue("bonk", "JointStereo", 0);
+	bonk_lossless = config->GetIntValue("bonk", "Lossless", 0);
+
+	blade_bitrate = config->GetIntValue("bladeEnc", "Bitrate", 192);
+	blade_crc = config->GetIntValue("bladeEnc", "CRC", 0);
+	blade_copyright = config->GetIntValue("bladeEnc", "Copyright", 0);
+	blade_original = config->GetIntValue("bladeEnc", "Original", 1);
+	blade_private = config->GetIntValue("bladeEnc", "Private", 0);
+	blade_dualchannel = config->GetIntValue("bladeEnc", "DualChannel", 0);
+
+	lame_preset = config->GetIntValue("lameMP3", "Preset", 0);
+	lame_set_bitrate = config->GetIntValue("lameMP3", "SetBitrate", 1);
+	lame_bitrate = config->GetIntValue("lameMP3", "Bitrate", 192);
+	lame_ratio = config->GetIntValue("lameMP3", "Ratio", 1100);
+	lame_set_quality = config->GetIntValue("lameMP3", "SetQuality", 0);
+	lame_quality = config->GetIntValue("lameMP3", "Quality", 5);
+	lame_stereomode = config->GetIntValue("lameMP3", "StereoMode", 0);
+	lame_forcejs = config->GetIntValue("lameMP3", "ForceJS", 0);
+	lame_vbrmode = config->GetIntValue("lameMP3", "VBRMode", 0);
+	lame_vbrquality = config->GetIntValue("lameMP3", "VBRQuality", 5);
+	lame_abrbitrate = config->GetIntValue("lameMP3", "ABRBitrate", 192);
+	lame_set_min_vbr_bitrate = config->GetIntValue("lameMP3", "SetMinVBRBitrate", 0);
+	lame_min_vbr_bitrate = config->GetIntValue("lameMP3", "MinVBRBitrate", 128);
+	lame_set_max_vbr_bitrate = config->GetIntValue("lameMP3", "SetMaxVBRBitrate", 0);
+	lame_max_vbr_bitrate = config->GetIntValue("lameMP3", "MaxVBRBitrate", 256);
+	lame_crc = config->GetIntValue("lameMP3", "CRC", 0);
+	lame_copyright = config->GetIntValue("lameMP3", "Copyright", 0);
+	lame_original = config->GetIntValue("lameMP3", "Original", 1);
+	lame_private = config->GetIntValue("lameMP3", "Private", 0);
+	lame_strict_iso = config->GetIntValue("lameMP3", "StrictISO", 0);
+	lame_padding_type = config->GetIntValue("lameMP3", "PaddingType", 2);
+	lame_resample = config->GetIntValue("lameMP3", "Resample", 0);
+	lame_disable_filtering = config->GetIntValue("lameMP3", "DisableFiltering", 0);
+	lame_set_lowpass = config->GetIntValue("lameMP3", "SetLowpass", 0);
+	lame_lowpass = config->GetIntValue("lameMP3", "Lowpass", 0);
+	lame_set_lowpass_width = config->GetIntValue("lameMP3", "SetLowpassWidth", 0);
+	lame_lowpass_width = config->GetIntValue("lameMP3", "LowpassWidth", 0);
+	lame_set_highpass = config->GetIntValue("lameMP3", "SetHighpass", 0);
+	lame_highpass = config->GetIntValue("lameMP3", "Highpass", 0);
+	lame_set_highpass_width = config->GetIntValue("lameMP3", "SetHighpassWidth", 0);
+	lame_highpass_width = config->GetIntValue("lameMP3", "HighpassWidth", 0);
+	lame_enable_ath = config->GetIntValue("lameMP3", "EnableATH", 1);
+	lame_athtype = config->GetIntValue("lameMP3", "ATHType", -1);
+	lame_use_tns = config->GetIntValue("lameMP3", "UseTNS", 1);
+
+	vorbis_mode = config->GetIntValue("oggVorbis", "Mode", 0);
+	vorbis_quality = config->GetIntValue("oggVorbis", "Quality", 60);
+	vorbis_bitrate = config->GetIntValue("oggVorbis", "Bitrate", 192);
+
+	faac_mpegversion = config->GetIntValue("FAAC", "MPEGVersion", 0);
+	faac_type = config->GetIntValue("FAAC", "AACType", 1);
+	faac_bitrate = config->GetIntValue("FAAC", "Bitrate", 96);
+	faac_bandwidth = config->GetIntValue("FAAC", "BandWidth", 22050);
+	faac_allowjs = config->GetIntValue("FAAC", "AllowJS", 1);
+	faac_usetns = config->GetIntValue("FAAC", "UseTNS", 1);
+
+	tvq_bitrate = config->GetIntValue("TwinVQ", "Bitrate", 48);
+	tvq_presel_candidates = config->GetIntValue("TwinVQ", "PreselectionCandidates", 32);
+
+	delete config;
 
 	return True;
 }
 
 Bool bonkEncConfig::SaveSettings()
 {
-	OutStream	*out = new OutStream(STREAM_FILE, iniFile, OS_OVERWRITE);
+	Configuration	*config = new Configuration();
 	Bool		 retVal = True;
 	String		 str;
 
-	if (out->GetLastError() == IOLIB_ERROR_OK)
+	if (config->Open("config.xml", True) == Success)
 	{
-		out->OutputLine("[Settings]");
-
-		str = "Language=";
-		str.Append(language);
-		out->OutputLine(str);
-
-		str = "Encoder=";
-		str.Append(String::FromInt(encoder));
-		out->OutputLine(str);
-
-		str = "EncoderOutdir=";
-		str.Append(enc_outdir);
-		out->OutputLine(str);
-
-		str = "EncoderFilenamePattern=";
-		str.Append(enc_filePattern);
-		out->OutputLine(str);
-
-		str = "ShowTitleInfo=";
-		str.Append(String::FromInt(showTitleInfo));
-		out->OutputLine(str);
-
-		str = "WindowPosX=";
-		str.Append(String::FromInt(wndPos.x));
-		out->OutputLine(str);
-
-		str = "WindowPosY=";
-		str.Append(String::FromInt(wndPos.y));
-		out->OutputLine(str);
-
-		str = "WindowSizeX=";
-		str.Append(String::FromInt(wndSize.cx));
-		out->OutputLine(str);
-
-		str = "WindowSizeY=";
-		str.Append(String::FromInt(wndSize.cy));
-		out->OutputLine(str);
-
-		str = "WindowMaximized=";
-		str.Append(String::FromInt(maximized));
-		out->OutputLine(str);
-
-		str = "TabWidthTrack=";
-		str.Append(String::FromInt(tab_width_track));
-		out->OutputLine(str);
-
-		str = "TabWidthLength=";
-		str.Append(String::FromInt(tab_width_length));
-		out->OutputLine(str);
-
-		str = "TabWidthSize=";
-		str.Append(String::FromInt(tab_width_size));
-		out->OutputLine(str);
-
-		str = "OutputPlugin=";
-		str.Append(String::FromInt(output_plugin));
-		out->OutputLine(str);
-
-		str = "EnableTags=";
-		str.Append(String::FromInt(enable_tags));
-		out->OutputLine(str);
-
-		str = "DefaultComment=";
-		str.Append(default_comment);
-		out->OutputLine(str);
-
-		out->OutputLine("");
-		out->OutputLine("[CDRip]");
-
-		str = "ActiveCDROM=";
-		str.Append(String::FromInt(cdrip_activedrive));
-		out->OutputLine(str);
-
-		str = "DebugCDRip=";
-		str.Append(String::FromInt(cdrip_debuglevel));
-		out->OutputLine(str);
-
-		str = "CDParanoia=";
-		str.Append(String::FromInt(cdrip_paranoia));
-		out->OutputLine(str);
-
-		str = "CDParanoiaMode=";
-		str.Append(String::FromInt(cdrip_paranoia_mode));
-		out->OutputLine(str);
-
-		str = "Jitter=";
-		str.Append(String::FromInt(cdrip_jitter));
-		out->OutputLine(str);
-
-		str = "SwapChannels=";
-		str.Append(String::FromInt(cdrip_swapchannels));
-		out->OutputLine(str);
-
-		str = "LockTray=";
-		str.Append(String::FromInt(cdrip_locktray));
-		out->OutputLine(str);
-
-		str = "UseNTSCSI=";
-		str.Append(String::FromInt(cdrip_ntscsi));
-		out->OutputLine(str);
-
-		out->OutputLine("");
-		out->OutputLine("[freedb]");
-
-		str = "AutoCDDBQueries=";
-		str.Append(String::FromInt(enable_auto_cddb));
-		out->OutputLine(str);
-
-		str = "EnableCDDBCache=";
-		str.Append(String::FromInt(enable_cddb_cache));
-		out->OutputLine(str);
-
-		str = "Server=";
-		str.Append(freedb_server);
-		out->OutputLine(str);
-
-		str = "Mode=";
-		str.Append(String::FromInt(freedb_mode));
-		out->OutputLine(str);
-
-		str = "CDDBPPort=";
-		str.Append(String::FromInt(freedb_cddbp_port));
-		out->OutputLine(str);
-
-		str = "QueryPath=";
-		str.Append(freedb_query_path);
-		out->OutputLine(str);
-
-		str = "SubmitPath=";
-		str.Append(freedb_submit_path);
-		out->OutputLine(str);
-
-		str = "eMail=";
-		str.Append(freedb_email);
-		out->OutputLine(str);
-
-		str = "ProxyMode=";
-		str.Append(String::FromInt(freedb_proxy_mode));
-		out->OutputLine(str);
-
-		str = "Proxy=";
-		str.Append(freedb_proxy);
-		out->OutputLine(str);
-
-		str = "ProxyPort=";
-		str.Append(String::FromInt(freedb_proxy_port));
-		out->OutputLine(str);
-
-		out->OutputLine("");
-		out->OutputLine("[bonk]");
-
-		str = "Quantization=";
-		str.Append(String::FromInt(bonk_quantization));
-		out->OutputLine(str);
-
-		str = "Predictor=";
-		str.Append(String::FromInt(bonk_predictor));
-		out->OutputLine(str);
-
-		str = "Downsampling=";
-		str.Append(String::FromInt(bonk_downsampling));
-		out->OutputLine(str);
-
-		str = "JointStereo=";
-		str.Append(String::FromInt(bonk_jstereo));
-		out->OutputLine(str);
-
-		str = "Lossless=";
-		str.Append(String::FromInt(bonk_lossless));
-		out->OutputLine(str);
-
-		out->OutputLine("");
-		out->OutputLine("[bladeEnc]");
-
-		str = "Bitrate=";
-		str.Append(String::FromInt(blade_bitrate));
-		out->OutputLine(str);
-
-		str = "CRC=";
-		str.Append(String::FromInt(blade_crc));
-		out->OutputLine(str);
-
-		str = "Copyright=";
-		str.Append(String::FromInt(blade_copyright));
-		out->OutputLine(str);
-
-		str = "Original=";
-		str.Append(String::FromInt(blade_original));
-		out->OutputLine(str);
-
-		str = "Private=";
-		str.Append(String::FromInt(blade_private));
-		out->OutputLine(str);
-
-		str = "DualChannel=";
-		str.Append(String::FromInt(blade_dualchannel));
-		out->OutputLine(str);
-
-		out->OutputLine("");
-		out->OutputLine("[lameMP3]");
-
-		str = "Preset=";
-		str.Append(String::FromInt(lame_preset));
-		out->OutputLine(str);
-
-		str = "SetBitrate=";
-		str.Append(String::FromInt(lame_set_bitrate));
-		out->OutputLine(str);
-
-		str = "Bitrate=";
-		str.Append(String::FromInt(lame_bitrate));
-		out->OutputLine(str);
-
-		str = "Ratio=";
-		str.Append(String::FromInt(lame_ratio));
-		out->OutputLine(str);
-
-		str = "SetQuality=";
-		str.Append(String::FromInt(lame_set_quality));
-		out->OutputLine(str);
-
-		str = "Quality=";
-		str.Append(String::FromInt(lame_quality));
-		out->OutputLine(str);
-
-		str = "StereoMode=";
-		str.Append(String::FromInt(lame_stereomode));
-		out->OutputLine(str);
-
-		str = "ForceJS=";
-		str.Append(String::FromInt(lame_forcejs));
-		out->OutputLine(str);
-
-		str = "VBRMode=";
-		str.Append(String::FromInt(lame_vbrmode));
-		out->OutputLine(str);
-
-		str = "VBRQuality=";
-		str.Append(String::FromInt(lame_vbrquality));
-		out->OutputLine(str);
-
-		str = "ABRBitrate=";
-		str.Append(String::FromInt(lame_abrbitrate));
-		out->OutputLine(str);
-
-		str = "SetMinVBRBitrate=";
-		str.Append(String::FromInt(lame_set_min_vbr_bitrate));
-		out->OutputLine(str);
-
-		str = "MinVBRBitrate=";
-		str.Append(String::FromInt(lame_min_vbr_bitrate));
-		out->OutputLine(str);
-
-		str = "SetMaxVBRBitrate=";
-		str.Append(String::FromInt(lame_set_max_vbr_bitrate));
-		out->OutputLine(str);
-
-		str = "MaxVBRBitrate=";
-		str.Append(String::FromInt(lame_max_vbr_bitrate));
-		out->OutputLine(str);
-
-		str = "CRC=";
-		str.Append(String::FromInt(lame_crc));
-		out->OutputLine(str);
-
-		str = "Copyright=";
-		str.Append(String::FromInt(lame_copyright));
-		out->OutputLine(str);
-
-		str = "Original=";
-		str.Append(String::FromInt(lame_original));
-		out->OutputLine(str);
-
-		str = "Private=";
-		str.Append(String::FromInt(lame_private));
-		out->OutputLine(str);
-
-		str = "StrictISO=";
-		str.Append(String::FromInt(lame_strict_iso));
-		out->OutputLine(str);
-
-		str = "PaddingType=";
-		str.Append(String::FromInt(lame_padding_type));
-		out->OutputLine(str);
-
-		str = "Resample=";
-		str.Append(String::FromInt(lame_resample));
-		out->OutputLine(str);
-
-		str = "DisableFiltering=";
-		str.Append(String::FromInt(lame_disable_filtering));
-		out->OutputLine(str);
-
-		str = "SetLowpass=";
-		str.Append(String::FromInt(lame_set_lowpass));
-		out->OutputLine(str);
-
-		str = "Lowpass=";
-		str.Append(String::FromInt(lame_lowpass));
-		out->OutputLine(str);
-
-		str = "SetLowpassWidth=";
-		str.Append(String::FromInt(lame_set_lowpass_width));
-		out->OutputLine(str);
-
-		str = "LowpassWidth=";
-		str.Append(String::FromInt(lame_lowpass_width));
-		out->OutputLine(str);
-
-		str = "SetHighpass=";
-		str.Append(String::FromInt(lame_set_highpass));
-		out->OutputLine(str);
-
-		str = "Highpass=";
-		str.Append(String::FromInt(lame_highpass));
-		out->OutputLine(str);
-
-		str = "SetHighpassWidth=";
-		str.Append(String::FromInt(lame_set_highpass_width));
-		out->OutputLine(str);
-
-		str = "HighpassWidth=";
-		str.Append(String::FromInt(lame_highpass_width));
-		out->OutputLine(str);
-
-		str = "EnableATH=";
-		str.Append(String::FromInt(lame_enable_ath));
-		out->OutputLine(str);
-
-		str = "ATHType=";
-		str.Append(String::FromInt(lame_athtype));
-		out->OutputLine(str);
-
-		str = "UseTNS=";
-		str.Append(String::FromInt(lame_use_tns));
-		out->OutputLine(str);
-
-		out->OutputLine("");
-		out->OutputLine("[oggVorbis]");
-
-		str = "Mode=";
-		str.Append(String::FromInt(vorbis_mode));
-		out->OutputLine(str);
-
-		str = "Quality=";
-		str.Append(String::FromInt(vorbis_quality));
-		out->OutputLine(str);
-
-		str = "Bitrate=";
-		str.Append(String::FromInt(vorbis_bitrate));
-		out->OutputLine(str);
-
-		out->OutputLine("");
-		out->OutputLine("[FAAC]");
-
-		str = "MPEGVersion=";
-		str.Append(String::FromInt(faac_mpegversion));
-		out->OutputLine(str);
-
-		str = "AACType=";
-		str.Append(String::FromInt(faac_type));
-		out->OutputLine(str);
-
-		str = "Bitrate=";
-		str.Append(String::FromInt(faac_bitrate));
-		out->OutputLine(str);
-
-		str = "BandWidth=";
-		str.Append(String::FromInt(faac_bandwidth));
-		out->OutputLine(str);
-
-		str = "AllowJS=";
-		str.Append(String::FromInt(faac_allowjs));
-		out->OutputLine(str);
-
-		str = "UseTNS=";
-		str.Append(String::FromInt(faac_usetns));
-		out->OutputLine(str);
-
-		out->OutputLine("");
-		out->OutputLine("[TwinVQ]");
-
-		str = "Bitrate=";
-		str.Append(String::FromInt(tvq_bitrate));
-		out->OutputLine(str);
-
-		str = "PreselectionCandidates=";
-		str.Append(String::FromInt(tvq_presel_candidates));
-		out->OutputLine(str);
+		config->SetStringValue("Settings", "Language", language);
+		config->SetIntValue("Settings", "Encoder", encoder);
+		config->SetStringValue("Settings", "EncoderOutDir", enc_outdir);
+		config->SetStringValue("Settings", "EncoderFilenamePattern", enc_filePattern);
+		config->SetIntValue("Settings", "ShowTitleInfo", showTitleInfo);
+		config->SetIntValue("Settings", "WindowPosX", wndPos.x);
+		config->SetIntValue("Settings", "WindowPosY", wndPos.y);
+		config->SetIntValue("Settings", "WindowSizeX", wndSize.cx);
+		config->SetIntValue("Settings", "WindowSizeY", wndSize.cy);
+		config->SetIntValue("Settings", "WindowMaximized", maximized);
+		config->SetIntValue("Settings", "TabWidthTrack", tab_width_track);
+		config->SetIntValue("Settings", "TabWidthLength", tab_width_length);
+		config->SetIntValue("Settings", "TabWidthSize", tab_width_size);
+		config->SetIntValue("Settings", "OutputPlugin", output_plugin);
+		config->SetIntValue("Settings", "EnableTags", enable_tags);
+		config->SetStringValue("Settings", "DefaultComment", default_comment);
+
+		config->SetIntValue("CDRip", "ActiveCDROM", cdrip_activedrive);
+		config->SetIntValue("CDRip", "DebugCDRip", cdrip_debuglevel);
+		config->SetIntValue("CDRip", "CDParanoia", cdrip_paranoia);
+		config->SetIntValue("CDRip", "CDParanoiaMode", cdrip_paranoia_mode);
+		config->SetIntValue("CDRip", "Jitter", cdrip_jitter);
+		config->SetIntValue("CDRip", "SwapChannels", cdrip_swapchannels);
+		config->SetIntValue("CDRip", "LockTray", cdrip_locktray);
+		config->SetIntValue("CDRip", "UseNTSCSI", cdrip_ntscsi);
+
+		config->SetIntValue("freedb", "AutoCDDBQueries", enable_auto_cddb);
+		config->SetIntValue("freedb", "EnableCDDBCache", enable_cddb_cache);
+		config->SetStringValue("freedb", "Server", freedb_server);
+		config->SetIntValue("freedb", "Mode", freedb_mode);
+		config->SetIntValue("freedb", "CDDBPPort", freedb_cddbp_port);
+		config->SetStringValue("freedb", "QueryPath", freedb_query_path);
+		config->SetStringValue("freedb", "SubmitPath", freedb_submit_path);
+		config->SetStringValue("freedb", "eMail", freedb_email);
+		config->SetIntValue("freedb", "ProxyMode", freedb_proxy_mode);
+		config->SetStringValue("freedb", "Proxy", freedb_proxy);
+		config->SetIntValue("freedb", "ProxyPort", freedb_proxy_port);
+
+		config->SetIntValue("bonk", "Quantization", bonk_quantization);
+		config->SetIntValue("bonk", "Predictor", bonk_predictor);
+		config->SetIntValue("bonk", "Downsampling", bonk_downsampling);
+		config->SetIntValue("bonk", "JointStereo", bonk_jstereo);
+		config->SetIntValue("bonk", "Lossless", bonk_lossless);
+
+		config->SetIntValue("bladeEnc", "Bitrate", blade_bitrate);
+		config->SetIntValue("bladeEnc", "CRC", blade_crc);
+		config->SetIntValue("bladeEnc", "Copyright", blade_copyright);
+		config->SetIntValue("bladeEnc", "Original", blade_original);
+		config->SetIntValue("bladeEnc", "Private", blade_private);
+		config->SetIntValue("bladeEnc", "DualChannel", blade_dualchannel);
+
+		config->SetIntValue("lameMP3", "Preset", lame_preset);
+		config->SetIntValue("lameMP3", "SetBitrate", lame_set_bitrate);
+		config->SetIntValue("lameMP3", "Bitrate", lame_bitrate);
+		config->SetIntValue("lameMP3", "Ratio", lame_ratio);
+		config->SetIntValue("lameMP3", "SetQuality", lame_set_quality);
+		config->SetIntValue("lameMP3", "Quality", lame_quality);
+		config->SetIntValue("lameMP3", "StereoMode", lame_stereomode);
+		config->SetIntValue("lameMP3", "ForceJS", lame_forcejs);
+		config->SetIntValue("lameMP3", "VBRMode", lame_vbrmode);
+		config->SetIntValue("lameMP3", "VBRQuality", lame_vbrquality);
+		config->SetIntValue("lameMP3", "ABRBitrate", lame_abrbitrate);
+		config->SetIntValue("lameMP3", "SetMinVBRBitrate", lame_set_min_vbr_bitrate);
+		config->SetIntValue("lameMP3", "MinVBRBitrate", lame_min_vbr_bitrate);
+		config->SetIntValue("lameMP3", "SetMaxVBRBitrate", lame_set_max_vbr_bitrate);
+		config->SetIntValue("lameMP3", "MaxVBRBitrate", lame_max_vbr_bitrate);
+		config->SetIntValue("lameMP3", "CRC", lame_crc);
+		config->SetIntValue("lameMP3", "Copyright", lame_copyright);
+		config->SetIntValue("lameMP3", "Original", lame_original);
+		config->SetIntValue("lameMP3", "Private", lame_private);
+		config->SetIntValue("lameMP3", "StrictISO", lame_strict_iso);
+		config->SetIntValue("lameMP3", "PaddingType", lame_padding_type);
+		config->SetIntValue("lameMP3", "Resample", lame_resample);
+		config->SetIntValue("lameMP3", "DisableFiltering", lame_disable_filtering);
+		config->SetIntValue("lameMP3", "SetLowpass", lame_set_lowpass);
+		config->SetIntValue("lameMP3", "Lowpass", lame_lowpass);
+		config->SetIntValue("lameMP3", "SetLowpassWidth", lame_set_lowpass_width);
+		config->SetIntValue("lameMP3", "LowpassWidth", lame_lowpass_width);
+		config->SetIntValue("lameMP3", "SetHighpass", lame_set_highpass);
+		config->SetIntValue("lameMP3", "Highpass", lame_highpass);
+		config->SetIntValue("lameMP3", "SetHighpassWidth", lame_set_highpass_width);
+		config->SetIntValue("lameMP3", "HighpassWidth", lame_highpass_width);
+		config->SetIntValue("lameMP3", "EnableATH", lame_enable_ath);
+		config->SetIntValue("lameMP3", "ATHType", lame_athtype);
+		config->SetIntValue("lameMP3", "UseTNS", lame_use_tns);
+
+		config->SetIntValue("oggVorbis", "Mode", vorbis_mode);
+		config->SetIntValue("oggVorbis", "Quality", vorbis_quality);
+		config->SetIntValue("oggVorbis", "Bitrate", vorbis_bitrate);
+
+		config->SetIntValue("FAAC", "MPEGVersion", faac_mpegversion);
+		config->SetIntValue("FAAC", "AACType", faac_type);
+		config->SetIntValue("FAAC", "Bitrate", faac_bitrate);
+		config->SetIntValue("FAAC", "BandWidth", faac_bandwidth);
+		config->SetIntValue("FAAC", "AllowJS", faac_allowjs);
+		config->SetIntValue("FAAC", "UseTNS", faac_usetns);
+
+		config->SetIntValue("TwinVQ", "Bitrate", tvq_bitrate);
+		config->SetIntValue("TwinVQ", "PreselectionCandidates", tvq_presel_candidates);
+
+		config->Close();
 	}
 	else
 	{
 		retVal = False;
 	}
 
-	delete out;
+	delete config;
 
 	return retVal;
 }

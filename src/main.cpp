@@ -617,8 +617,6 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help, NIL, NIL, 0, OR_RIGHT);
 
-	mainWnd_iconbar->SetBitmapSize(24);
-
 	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 1, NIL));
 	entry->onClick.Connect(&bonkEncGUI::AddFile, this);
 	entry->SetStatusText(i18n->TranslateString("Add audio file(s) to the joblist"));

@@ -425,7 +425,7 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 Void bonkEnc::SelectDir()
 {
-	DialogDirSelection	*dialog = new DialogDirSelection();
+	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(mainWnd);
 	dialog->SetCaption(String("\n").Append(bonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));

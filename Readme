@@ -8,19 +8,20 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 2 CVS (December 2003)
+	Version 1.0 beta 2 CVS (January 2004)
 
 		- added support for filename generation patterns
-		- added Greek, Japanese and Chinese (simplified) language support
+		- added Greek, Japanese, Chinese (simplified) and Polish language support
 		- added support for right-to-left scripts like Arabic or Hebrew
 		- new (partial) Arabic translation (for demonstration purpose)
-		- upgraded to smooth v0.8.63.0
+		- upgraded to smooth v0.8.64.0
 		- improved setup compatibility with Windows 9x/ME
 		- improved overall stability especially on Windows 9x/ME
 		- moved I18n capabilities to smooth
 		- config dialog asks to create missing output directory
 		- output directory can be changed from the main screen
 		- read and write Vorbis comments in UTF-8 format
+		- now using an XML based config system
 		- upgraded LAME to version 3.94 beta
 		- upgraded Ogg Vorbis to version 1.0.1
 		- upgraded FAAC to version 1.23.1

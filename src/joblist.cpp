@@ -21,7 +21,7 @@ Void bonkEncGUI::AddFile()
 		return;
 	}
 
-	DialogFileSelection	*dialog = new DialogFileSelection();
+	FileSelection	*dialog = new FileSelection();
 
 	dialog->SetParentWindow(mainWnd);
 	dialog->SetFlags(SFD_ALLOWMULTISELECT);
