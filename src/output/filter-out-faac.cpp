@@ -55,12 +55,12 @@ FilterOutFAAC::~FilterOutFAAC()
 
 int FilterOutFAAC::WriteData(unsigned char *data, int size)
 {
-	char		*outbuffer = new char [buffersize];
+	unsigned char	*outbuffer = new unsigned char [buffersize];
 	unsigned long	 bytes;
 
 	bytes = ex_faacEncEncode(handle, (signed short *) data, samples_size, outbuffer, buffersize);
 
-	driver->WriteData((unsigned char *) outbuffer, bytes);
+	driver->WriteData(outbuffer, bytes);
 
 	size = bytes;
 
@@ -68,7 +68,7 @@ int FilterOutFAAC::WriteData(unsigned char *data, int size)
 	{
 		bytes = ex_faacEncEncode(handle, NULL, 0, outbuffer, buffersize);
 
-		driver->WriteData((unsigned char *) outbuffer, bytes);
+		driver->WriteData(outbuffer, bytes);
 
 		size += bytes;
 

@@ -34,6 +34,12 @@ class bonkEncGUI : public bonkEnc
 		Menubar		*mainWnd_iconbar;
 		Titlebar	*mainWnd_titlebar;
 
+		Button		*button_play;
+		Button		*button_pause;
+		Button		*button_stop;
+		Button		*button_prev;
+		Button		*button_next;
+
 		Bool		 ExitProc();
 		Void		 ResizeProc();
 		Void		 Close();

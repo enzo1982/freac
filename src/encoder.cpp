@@ -32,6 +32,13 @@ Void bonkEnc::Encode()
 {
 	if (encoding) return;
 
+	if (playing)
+	{
+		SMOOTH::MessageBox(i18n->TranslateString("Cannot start encoding while playing a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+
+		return;
+	}
+
 	if (encoder_thread != NIL)
 	{
 		delete encoder_thread;
@@ -173,7 +180,7 @@ Int bonkEnc::Encoder(Thread *thread)
 		{
 			filter_in = CreateInputFilter(in_filename);
 
-			f_in = new InStream(STREAM_FILE, in_filename);
+			f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
 			f_in->SetPackageSize(4096);
 
 			if (filter_in != NIL)

@@ -8,7 +8,7 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 beta 1 CVS (Mai 2003)
+	Version 1.0 beta 1 CVS (Juni 2003)
 
 		- Das Kommandozeilentool ist jetzt eine eigene EXE Datei
 		- Das Genre Feld ist jetzt editierbar
@@ -20,6 +20,7 @@ Geschichte
 		- Unterstützung für MSLU (Unicode unter Windows 9x/ME) hinzugefügt
 		- Viele kleinere Verbesserungen
 		- Unterstützung für Winamp Input Plugins hinzugefügt
+		- Unterstützung für Audiowiedergabe durch Winamp Output Plugins hinzugefügt
 		- FAAC auf Version 1.17 aktualisiert
 		- Einige Bugfixes
 
@@ -110,7 +111,7 @@ Voraussetzungen
 		- BladeEnc wird verwendet, wenn es installiert ist (http://bladeenc.mp3.no)
 		- FAAC wird verwendet, wenn es installiert ist (http://www.audiocoding.com)
 		- TwinVQ wird verwendet, wenn es installiert ist (http://www.twinvq.org)
-		- Winamp 2 Input Plugins werden verwendet, wenn sie im plugins Verzeichnis vorhanden sind
+		- Winamp 2 input und output Plugins werden verwendet, wenn sie im plugins Verzeichnis vorhanden sind
 		- MSLU wird verwendet, wenn es auf Windows 9x/ME installiert ist (http://www.microsoft.com)
 
 Probleme
@@ -139,20 +140,27 @@ Probleme
 Pläne für zukünftige Versionen
 ------------------------------
 
-	- Künstler und Titel aus Dateinamen extrahieren
-	- Eingabefilter für AAC, VQF
-	- mehr Audioformate unterstützen (FLAC, MAC, WMA, ...)
-	- Experteneinstellungen für LAME (ATH, Zeitliche Maskierung, Psy-Modelle)
-	- ein IOLib-Filters basierendes PlugIn System entwickeln
-	- mehr Sprachen unterstützen
-	- den Sourcecode überarbeiten
-	- Shell Integration
-	- Unterstützung für musicbrainz.org
-	- Lokale CDDB Datenbank
-	- Kommandozeilenoptionen zum Konfigurieren der Encoder erlauben
-	- Onlinedokumentation für BonkEnc schreiben
-	- Unterstützung für rechts-nach-links Schriften verbessern
-	- Online Update unterstützen
+	- Geplant für v1.0 beta 1
+		* Künstler und Titel aus Dateinamen extrahieren
+		* Experteneinstellungen für LAME (ATH, Zeitliche Maskierung, Psy-Modelle)
+
+	- Geplant für v1.0
+		* Shell Integration
+		* Lokale CDDB Datenbank
+		* Onlinedokumentation für BonkEnc schreiben
+		* Online Update unterstützen
+
+	- Spätere Versionen
+		* Eingabefilter für AAC, VQF
+		* mehr Audioformate unterstützen (FLAC, MAC, WMA, ...)
+		* ein IOLib-Filters basierendes PlugIn System entwickeln
+		* Unterstützung für musicbrainz.org
+		* Unterstützung für rechts-nach-links Schriften verbessern
+		* Kommandozeilenoptionen zum Konfigurieren der Encoder erlauben
+
+	- Ständige Aufgaben
+		* mehr Sprachen unterstützen
+		* den Sourcecode überarbeiten
 
 -----------------------------------------------------------------------------------
 

@@ -152,6 +152,14 @@ class bonkEnc : public Application
 		Bool			 encoding;
 		Thread			*encoder_thread;
 
+		Bool			 playing;
+		Bool			 paused;
+		Thread			*play_thread;
+
+		Int			 player_activedrive;
+		Int			 player_plugin;
+		Int			 player_entry;
+
 		Bool			 dontUpdateInfo;
 		Bool			 cddbRetry;
 		Int			 encoder_activedrive;
@@ -183,6 +191,13 @@ class bonkEnc : public Application
 		Int			 Encoder(Thread *);
 		Void			 StopEncoding();
 		InputFilter		*CreateInputFilter(String);
+		Void			 PlayItem(Int);
+		Void			 PlaySelectedItem();
+		Int			 PlayThread(Thread *);
+		Void			 PausePlayback();
+		Void			 StopPlayback();
+		Void			 PlayPrevious();
+		Void			 PlayNext();
 	public:
 		static String		 version;
 		static String		 cddbVersion;

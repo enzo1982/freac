@@ -8,7 +8,7 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 1 CVS (May 2003)
+	Version 1.0 beta 1 CVS (June 2003)
 
 		- the command line tool is now in a separate executable
 		- the genre field is now editable
@@ -20,6 +20,7 @@ History
 		- added support for MSLU (Unicode support for Windows 9x/ME)
 		- many smaller improvements
 		- added support for Winamp Input Plugins
+		- added support for audio playback through Winamp Output Plugins
 		- upgraded FAAC to version 1.17
 		- some bugfixes
 
@@ -75,7 +76,7 @@ History
 		- all encoder DLLs are now optional
 		- some minor bugfixes
 
-	Version 0.5-pre2 (Juni 2002)
+	Version 0.5-pre2 (June 2002)
 
 		- added support for ripping audio CDs
 		- added support for Ogg Vorbis files
@@ -87,7 +88,7 @@ History
 		- allowed more options for BladeEnc
 		- upgraded to smooth v0.8.58.0
 
-	Version 0.4 (Juni 2001)
+	Version 0.4 (June 2001)
 
 		- initial release
 
@@ -110,7 +111,7 @@ Requirements
 		- BladeEnc is used if installed (http://bladeenc.mp3.no)
 		- FAAC is used if installed (http://www.audiocoding.com)
 		- TwinVQ is used if installed (http://www.twinvq.org)
-		- Winamp 2 Input Plugins are used if they are found in the plugins directory
+		- Winamp 2 input and output plug-ins are used if they are found in the plugins directory
 		- MSLU is used if installed on Windows 9x/ME systems (http://www.microsoft.com)
 
 Problems
@@ -139,20 +140,27 @@ Problems
 Future plans
 ------------
 
-	- extract artist and title from the filename
-	- input filters for AAC, VQF
-	- support more audio formats (FLAC, MAC, WMA, ...)
-	- allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
-	- develop an IOLib-Filters based plugin system
-	- support more languages
-	- cleanup the code
-	- shell integration
-	- add musicbrainz.org support
-	- local CDDB support
-	- allow command line options to configure encoder settings
-	- write online documentation for BonkEnc
-	- improve support for right-to-left scripts
-	- add online update functionality
+	- Sheduled for v1.0 beta 1
+		* extract artist and title from the filename
+		* allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
+
+	- Sheduled for v1.0
+		* shell integration
+		* local CDDB support
+		* write online documentation for BonkEnc
+		* add online update functionality
+
+	- Some later release
+		* input filters for AAC, VQF
+		* support more audio formats (FLAC, MAC, WMA, ...)
+		* develop an IOLib-Filters based plugin system
+		* add musicbrainz.org support
+		* improve support for right-to-left scripts
+		* allow command line options to configure encoder settings
+
+	- All time tasks
+		* support more languages
+		* cleanup the code
 
 -----------------------------------------------------------------------------------
 

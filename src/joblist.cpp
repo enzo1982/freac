@@ -258,6 +258,9 @@ Void bonkEncGUI::RemoveFile()
 		if (joblist->GetNthEntry(i)->id == entry) n = i;
 	}
 
+	if (playing && player_entry == n) StopPlayback();
+	if (playing && player_entry > n) player_entry--;
+
 	Surface	*surface = mainWnd->GetDrawSurface();
 	Point	 realPos = joblist->GetRealPosition();
 	Rect	 frame;
@@ -309,7 +312,6 @@ Void bonkEncGUI::RemoveFile()
 	}
 }
 
-
 Void bonkEnc::ClearList()
 {
 	if (encoding)
@@ -318,6 +320,8 @@ Void bonkEnc::ClearList()
 
 		return;
 	}
+
+	if (playing) StopPlayback();
 
 	for (int i = 0; i < sa_formatinfo.GetNOfEntries(); i++) delete sa_formatinfo.GetNthEntry(i);
 	sa_formatinfo.RemoveAll();
