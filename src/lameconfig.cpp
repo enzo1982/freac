@@ -20,6 +20,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 
 	currentConfig = config;
 
+	preset = currentConfig->lame_preset;
 	set_bitrate = currentConfig->lame_set_bitrate;
 	bitrate = GetSliderValue();
 	ratio = currentConfig->lame_ratio;
@@ -78,6 +79,28 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 
 	pos.x = 7;
 	pos.y = 11;
+	size.cx = 367;
+	size.cy = 39;
+
+	basic_preset		= new GroupBox(currentConfig->i18n->TranslateString("Presets"), pos, size);
+
+	pos.x += 9;
+	pos.y += 13;
+
+	basic_text_preset	= new Text(currentConfig->i18n->TranslateString("Use preset:"), pos);
+
+	pos.x += (basic_text_preset->GetObjectProperties()->textSize.cx + 8);
+	pos.y -= 3;
+	size.cx = 340 - basic_text_preset->GetObjectProperties()->textSize.cx;
+	size.cy = 0;
+
+	basic_combo_preset	= new ComboBox(pos, size);
+	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Custom settings"));
+	basic_combo_preset->SelectEntry(currentConfig->lame_preset);
+	basic_combo_preset->onClick.Connect(&configureLameEnc::SetPreset, this);
+
+	pos.x = 7;
+	pos.y = 62;
 	size.cx = 232;
 	size.cy = 63;
 
@@ -124,7 +147,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	if (vbrmode != vbr_off) basic_edit_ratio->Deactivate();
 
 	pos.x = 7;
-	pos.y = 86;
+	pos.y = 137;
 	size.cx = 232;
 	size.cy = 51;
 
@@ -163,7 +186,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	if (!set_quality) basic_text_quality_better->Deactivate();
 
 	pos.x = 247;
-	pos.y = 11;
+	pos.y = 62;
 	size.cx = 127;
 	size.cy = 126;
 
@@ -564,6 +587,10 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 //	reg_register->RegisterObject(register_layer_expert);
 	reg_register->RegisterObject(register_layer_filtering);
 
+	register_layer_basic->RegisterObject(basic_preset);
+	register_layer_basic->RegisterObject(basic_text_preset);
+	register_layer_basic->RegisterObject(basic_combo_preset);
+
 	register_layer_basic->RegisterObject(basic_bitrate);
 	register_layer_basic->RegisterObject(basic_option_set_bitrate);
 	register_layer_basic->RegisterObject(basic_option_set_ratio);
@@ -651,6 +678,10 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 
 configureLameEnc::~configureLameEnc()
 {
+	register_layer_basic->UnregisterObject(basic_preset);
+	register_layer_basic->UnregisterObject(basic_text_preset);
+	register_layer_basic->UnregisterObject(basic_combo_preset);
+
 	register_layer_basic->UnregisterObject(basic_bitrate);
 	register_layer_basic->UnregisterObject(basic_option_set_bitrate);
 	register_layer_basic->UnregisterObject(basic_option_set_ratio);
@@ -753,6 +784,9 @@ configureLameEnc::~configureLameEnc()
 	DeleteObject(register_layer_misc);
 	DeleteObject(register_layer_expert);
 	DeleteObject(register_layer_filtering);
+	DeleteObject(basic_preset);
+	DeleteObject(basic_text_preset);
+	DeleteObject(basic_combo_preset);
 	DeleteObject(basic_bitrate);
 	DeleteObject(basic_option_set_bitrate);
 	DeleteObject(basic_option_set_ratio);
@@ -866,6 +900,7 @@ Void configureLameEnc::OK()
 		return;
 	}
 
+	currentConfig->lame_preset = preset;
 	currentConfig->lame_set_bitrate = set_bitrate;
 	currentConfig->lame_bitrate = GetBitrate();
 	currentConfig->lame_ratio = (int) (basic_edit_ratio->GetText().ToDouble() * 100);
@@ -936,6 +971,10 @@ Void configureLameEnc::OK()
 Void configureLameEnc::Cancel()
 {
 	mainWnd->Close();
+}
+
+Void configureLameEnc::SetPreset()
+{
 }
 
 Void configureLameEnc::SetBitrateOption()

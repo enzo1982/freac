@@ -119,6 +119,7 @@ bonkEnc::bonkEnc()
 	currentConfig->blade_private = getINIValue("bladeEnc", "Private", "0").ToInt();
 	currentConfig->blade_dualchannel = getINIValue("bladeEnc", "DualChannel", "0").ToInt();
 
+	currentConfig->lame_preset = getINIValue("lameMP3", "Preset", "0").ToInt();
 	currentConfig->lame_set_bitrate = getINIValue("lameMP3", "SetBitrate", "1").ToInt();
 	currentConfig->lame_bitrate = getINIValue("lameMP3", "Bitrate", "192").ToInt();
 	currentConfig->lame_ratio = getINIValue("lameMP3", "Ratio", "1100").ToInt();
@@ -301,8 +302,8 @@ bonkEnc::bonkEnc()
 	enc_outdir->SetPosition(Point(maxTextLength + 7 - enc_outdir->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->pos.y));
 	enc_filename->SetPosition(Point(maxTextLength + 7 - enc_filename->GetObjectProperties()->textSize.cx, enc_filename->GetObjectProperties()->pos.y));
 	enc_time->SetPosition(Point(maxTextLength + 7 - enc_time->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->pos.y));
-	enc_percent->SetPosition(Point(maxTextLength + 56, enc_percent->GetObjectProperties()->pos.y));
-	enc_encoder->SetPosition(Point(maxTextLength + 104 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
+	enc_percent->SetPosition(Point(maxTextLength + 55, enc_percent->GetObjectProperties()->pos.y));
+	enc_encoder->SetPosition(Point(maxTextLength + 102 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
 
 	pos.x = 7;
 	pos.y = 5;
@@ -319,8 +320,8 @@ bonkEnc::bonkEnc()
 	joblist->AddTab("Length");
 
 	pos.y = 99;
-	pos.x = maxTextLength + 15;
-	size.cx = currentConfig->wndSize.cx - 28 - maxTextLength;
+	pos.x = maxTextLength + 14;
+	size.cx = currentConfig->wndSize.cx - 27 - maxTextLength;
 	size.cy = 0;
 
 	edb_filename		= new EditBox(currentConfig->i18n->TranslateString("none"), pos, size, EDB_ALPHANUMERIC, 1024);
@@ -334,15 +335,15 @@ bonkEnc::bonkEnc()
 	edb_time->SetOrientation(OR_LOWERLEFT);
 	edb_time->Deactivate();
 
-	pos.x += (49 + enc_percent->GetObjectProperties()->textSize.cx);
+	pos.x += (48 + enc_percent->GetObjectProperties()->textSize.cx);
 	size.cx = 33;
 
 	edb_percent		= new EditBox("0%", pos, size, EDB_ALPHANUMERIC, 4);
 	edb_percent->SetOrientation(OR_LOWERLEFT);
 	edb_percent->Deactivate();
 
-	pos.x += (48 + enc_encoder->GetObjectProperties()->textSize.cx);
-	size.cx = currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx;
+	pos.x += (47 + enc_encoder->GetObjectProperties()->textSize.cx);
+	size.cx = currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx;
 
 	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("BonkEnc", pos, size, EDB_ALPHANUMERIC, 4);
 	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new EditBox("BladeEnc", pos, size, EDB_ALPHANUMERIC, 4);
@@ -355,17 +356,17 @@ bonkEnc::bonkEnc()
 	edb_encoder->SetOrientation(OR_LOWERLEFT);
 	edb_encoder->Deactivate();
 
-	pos.x = maxTextLength + 15;
+	pos.x = maxTextLength + 14;
 	pos.y -= 48;
-	size.cx = currentConfig->wndSize.cx - 28 - maxTextLength;
+	size.cx = currentConfig->wndSize.cx - 27 - maxTextLength;
 
 	edb_outdir		= new EditBox(currentConfig->enc_outdir, pos, size, EDB_ALPHANUMERIC, 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->Deactivate();
 
-	pos.x = maxTextLength + 15;
+	pos.x = maxTextLength + 14;
 	pos.y = 51;
-	size.cx = currentConfig->wndSize.cx - 29 - maxTextLength;
+	size.cx = currentConfig->wndSize.cx - 28 - maxTextLength;
 	size.cy = 18;
 
 	progress		= new Progressbar(pos, size, OR_HORZ, PB_NOTEXT, 0, 1000, 0);
@@ -973,6 +974,10 @@ Bool bonkEnc::ExitProc()
 
 		out->OutputLine("");
 		out->OutputLine("[lameMP3]");
+
+		str = "Preset=";
+		str.Append(String::IntToString(currentConfig->lame_preset));
+		out->OutputLine(str);
 
 		str = "SetBitrate=";
 		str.Append(String::IntToString(currentConfig->lame_set_bitrate));
@@ -1927,18 +1932,18 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	enc_outdir->SetPosition(Point(maxTextLength + 7 - enc_outdir->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->pos.y));
 	enc_filename->SetPosition(Point(maxTextLength + 7 - enc_filename->GetObjectProperties()->textSize.cx, enc_filename->GetObjectProperties()->pos.y));
 	enc_time->SetPosition(Point(maxTextLength + 7 - enc_time->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->pos.y));
-	enc_percent->SetPosition(Point(maxTextLength + 56, enc_percent->GetObjectProperties()->pos.y));
-	enc_encoder->SetPosition(Point(maxTextLength + 104 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
+	enc_percent->SetPosition(Point(maxTextLength + 55, enc_percent->GetObjectProperties()->pos.y));
+	enc_encoder->SetPosition(Point(maxTextLength + 102 + enc_percent->GetObjectProperties()->textSize.cx, enc_encoder->GetObjectProperties()->pos.y));
 
 	edb_filename->SetText(currentConfig->i18n->TranslateString("none"));
 
-	edb_filename->SetMetrics(Point(maxTextLength + 15, edb_filename->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 28 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
-	edb_time->SetMetrics(Point(maxTextLength + 15, edb_time->GetObjectProperties()->pos.y), Size(34, edb_time->GetObjectProperties()->size.cy));
-	edb_percent->SetMetrics(Point(maxTextLength + 64 + enc_percent->GetObjectProperties()->textSize.cx, edb_percent->GetObjectProperties()->pos.y), Size(33, edb_percent->GetObjectProperties()->size.cy));
-	edb_encoder->SetMetrics(Point(maxTextLength + 112 + enc_percent->GetObjectProperties()->textSize.cx + enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 125 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
-	edb_outdir->SetMetrics(Point(maxTextLength + 15, edb_outdir->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 28 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
+	edb_filename->SetMetrics(Point(maxTextLength + 14, edb_filename->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
+	edb_time->SetMetrics(Point(maxTextLength + 14, edb_time->GetObjectProperties()->pos.y), Size(34, edb_time->GetObjectProperties()->size.cy));
+	edb_percent->SetMetrics(Point(maxTextLength + 62 + enc_percent->GetObjectProperties()->textSize.cx, edb_percent->GetObjectProperties()->pos.y), Size(33, edb_percent->GetObjectProperties()->size.cy));
+	edb_encoder->SetMetrics(Point(maxTextLength + 109 + enc_percent->GetObjectProperties()->textSize.cx + enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
+	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
 
-	progress->SetMetrics(Point(maxTextLength + 15, progress->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 29 - maxTextLength, progress->GetObjectProperties()->size.cy));
+	progress->SetMetrics(Point(maxTextLength + 14, progress->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 28 - maxTextLength, progress->GetObjectProperties()->size.cy));
  
 	enc_filename->Show();
 	enc_time->Show();

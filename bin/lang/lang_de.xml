@@ -692,4 +692,16 @@
     <property name="string">Proxy server:</property>
     <property name="translation">Proxyserver:</property>
   </entry>
+  <entry id="172">
+    <property name="string">Presets</property>
+    <property name="translation">Voreinstellungen</property>
+  </entry>
+  <entry id="173">
+    <property name="string">Use preset:</property>
+    <property name="translation">Voreinstellung verwenden:</property>
+  </entry>
+  <entry id="174">
+    <property name="string">Custom settings</property>
+    <property name="translation">Eigene Einstellungen</property>
+  </entry>
 </LangFile>

@@ -34,9 +34,13 @@ class configureLameEnc : public Application
 		Layer		*register_layer_expert;
 		Layer		*register_layer_filtering;
 
+		GroupBox	*basic_preset;
 		GroupBox	*basic_bitrate;
 		GroupBox	*basic_quality;
 		GroupBox	*basic_stereomode;
+
+		Text		*basic_text_preset;
+		ComboBox	*basic_combo_preset;
 
 		OptionBox	*basic_option_set_bitrate;
 		OptionBox	*basic_option_set_ratio;
@@ -111,6 +115,7 @@ class configureLameEnc : public Application
 		CheckBox	*filtering_set_highpass_width;
 		EditBox		*filtering_edit_highpass_width;
 
+		Int		 preset;
 		Int		 set_bitrate;
 		Int		 bitrate;
 		Int		 ratio;
@@ -140,6 +145,7 @@ class configureLameEnc : public Application
 
 		Void		 OK();
 		Void		 Cancel();
+		Void		 SetPreset();
 		Void		 SetBitrateOption();
 		Void		 SetBitrate();
 		Void		 SetQualityOption();

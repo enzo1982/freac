@@ -89,6 +89,7 @@ typedef struct
 	Bool		 blade_private;
 	Bool		 blade_dualchannel;
 
+	Int		 lame_preset;
 	Bool		 lame_set_bitrate;
 	Int		 lame_bitrate;
 	Int		 lame_ratio;
