@@ -12,10 +12,12 @@ Geschichte
 
 		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
 		- Einige Fehler in der CDDB Implementierung wurden behoben
+		- Sprachunterstützung für Ukrainisch hinzugefügt
 		- Fehler im WAVE Input Plugin wurde behoben
 		- Die BonkEnc Standardversion enthält jetzt das in_flac.dll Plugin für FLAC Unterstützung
 		- Ein Uninstaller wurde hinzugefügt
 		- Einige andere Fehler wurden behoben
+		- Update auf smooth v0.8.65.0
 
 	Version 1.0 beta 2 (Februar 2004)
 
@@ -144,7 +146,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v1.x oder v3.2+ (http://www.mingw.org/) oder MSVC v6.0
-		- smooth v0.8.64.0 CVS (http://www.smooth-project.org/)
+		- smooth v0.8.65.0 CVS (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - bei smooth dabei)
 
 	Zusätzliche optionale Software:
