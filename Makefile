@@ -9,7 +9,7 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/parseini.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/console.o $(OBJECTDIR)/console_interface.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/i18n.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/parseini.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -60,6 +60,16 @@ $(OBJECTDIR)/bonkconfig.o: $(SRCDIR)/bonkconfig.cpp
 $(OBJECTDIR)/cdtext.o: $(SRCDIR)/cdtext.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/cdtext.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cdtext.cpp -o $(OBJECTDIR)/cdtext.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/console.o: $(SRCDIR)/console.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/console.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/console.cpp -o $(OBJECTDIR)/console.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/console_interface.o: $(SRCDIR)/console_interface.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/console_interface.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/console_interface.cpp -o $(OBJECTDIR)/console_interface.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/dllinterfaces.o: $(SRCDIR)/dllinterfaces.cpp

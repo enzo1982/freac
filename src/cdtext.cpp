@@ -64,12 +64,13 @@ SMOOTHInt bonkEnc::ReadCDText()
 
 				if (pCDtextPacks->packType == 0x80) // Album/Track title
 				{
-					if (pCDtextPacks->trackNumber != 0) cdText.AddEntry(lpszBuffer, pCDtextPacks->trackNumber); //SetTrackName(CString(lpszBuffer), pCDtextPacks->trackNumber - 1);
+					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 100);
+					if (pCDtextPacks->trackNumber != 0) cdText.AddEntry(lpszBuffer, pCDtextPacks->trackNumber);
 				}
 
 				if (pCDtextPacks->packType == 0x81) // Artist name
 				{
-					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 0); //SetArtist(CString(lpszBuffer));
+					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 0);
 				}
 
 				nInsertPos -= nOut;

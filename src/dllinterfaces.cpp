@@ -143,6 +143,11 @@ SMOOTHBool bonkEnc::LoadBonkDLL()
 	ex_bonk_encode_packet		= (BONKENCODEPACKET) GetProcAddress(bonkdll, "bonk_encode_packet");
 	ex_bonk_get_version_string	= (BONKGETVERSIONSTRING) GetProcAddress(bonkdll, "bonk_get_version_string");
 
+	if (ex_bonk_create_encoder == NULL)	{ FreeLibrary(bonkdll); return false; }
+	if (ex_bonk_close_encoder == NULL)	{ FreeLibrary(bonkdll); return false; }
+	if (ex_bonk_encode_packet == NULL)	{ FreeLibrary(bonkdll); return false; }
+	if (ex_bonk_get_version_string == NULL)	{ FreeLibrary(bonkdll); return false; }
+
 	return true;
 }
 
@@ -166,6 +171,12 @@ SMOOTHBool bonkEnc::LoadBladeDLL()
 	ex_beDeinitStream	= (BEDEINITSTREAM) GetProcAddress(bladedll, "beDeinitStream");
 	ex_beCloseStream	= (BECLOSESTREAM) GetProcAddress(bladedll, "beCloseStream");
 	ex_beVersion		= (BEVERSION) GetProcAddress(bladedll, "beVersion");
+
+	if (ex_beInitStream == NULL)	{ FreeLibrary(bladedll); return false; }
+	if (ex_beEncodeChunk == NULL)	{ FreeLibrary(bladedll); return false; }
+	if (ex_beDeinitStream == NULL)	{ FreeLibrary(bladedll); return false; }
+	if (ex_beCloseStream == NULL)	{ FreeLibrary(bladedll); return false; }
+	if (ex_beVersion == NULL)	{ FreeLibrary(bladedll); return false; }
 
 	return true;
 }
@@ -218,6 +229,39 @@ SMOOTHBool bonkEnc::LoadLAMEDLL()
 	ex_lame_decode_headers			= (LAME_DECODE_HEADERS) GetProcAddress(lamedll, "lame_decode_headers");
 	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) GetProcAddress(lamedll, "get_lame_short_version");
 
+	if (ex_lame_init == NULL)			{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_in_samplerate == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_num_channels == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_copyright == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_original == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_extension == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_error_protection == NULL)	{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_strict_ISO == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_padding_type == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_out_samplerate == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_brate == NULL)			{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_compression_ratio == NULL)	{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_quality == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_lowpassfreq == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_highpassfreq == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_lowpasswidth == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_highpasswidth == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_mode == NULL)			{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_force_ms == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_close == NULL)			{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_VBR == NULL)			{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_VBR_q == NULL)			{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_VBR_mean_bitrate_kbps == NULL)	{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_VBR_min_bitrate_kbps == NULL)	{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_VBR_max_bitrate_kbps == NULL)	{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_init_params == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_encode_buffer == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_encode_buffer_interleaved == NULL)	{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_encode_flush == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_decode_init == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_decode_headers == NULL)		{ FreeLibrary(lamedll); return false; }
+	if (ex_get_lame_short_version == NULL)		{ FreeLibrary(lamedll); return false; }
+
 	return true;
 }
 
@@ -245,6 +289,16 @@ SMOOTHBool bonkEnc::LoadTVQDLL()
 	ex_TvqEncGetVectorInfo		= (TVQENCGETVECTORINFO) GetProcAddress(tvqdll, "TvqEncGetVectorInfo");
 	ex_TvqEncUpdateVectorInfo	= (TVQENCUPDATEVECTORINFO) GetProcAddress(tvqdll, "TvqEncUpdateVectorInfo");
 	ex_TvqEncodeFrame		= (TVQENCODEFRAME) GetProcAddress(tvqdll, "TvqEncodeFrame");
+
+	if (ex_TvqGetVersionID == NULL)		{ FreeLibrary(tvqdll); return false; }
+	if (ex_TvqEncInitialize == NULL)	{ FreeLibrary(tvqdll); return false; }
+	if (ex_TvqEncTerminate == NULL)		{ FreeLibrary(tvqdll); return false; }
+	if (ex_TvqEncGetFrameSize == NULL)	{ FreeLibrary(tvqdll); return false; }
+	if (ex_TvqEncGetNumChannels == NULL)	{ FreeLibrary(tvqdll); return false; }
+	if (ex_TvqEncGetConfInfo == NULL)	{ FreeLibrary(tvqdll); return false; }
+	if (ex_TvqEncGetVectorInfo == NULL)	{ FreeLibrary(tvqdll); return false; }
+	if (ex_TvqEncUpdateVectorInfo == NULL)	{ FreeLibrary(tvqdll); return false; }
+	if (ex_TvqEncodeFrame == NULL)		{ FreeLibrary(tvqdll); return false; }
 
 	return true;
 }
@@ -303,6 +357,45 @@ SMOOTHBool bonkEnc::LoadVorbisDLL()
 	ex_ogg_sync_pageout		= (OGGSYNCPAGEOUT) GetProcAddress(vorbisdll, "ogg_sync_pageout");
 	ex_ogg_sync_clear		= (OGGSYNCCLEAR) GetProcAddress(vorbisdll, "ogg_sync_clear");
 
+	if (ex_vorbis_info_init == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_encode_init == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_encode_init_vbr == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_comment_init == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_comment_add_tag == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_analysis_init == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_block_init == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_analysis_headerout == NULL)	{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_analysis_buffer == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_analysis_wrote == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_analysis_blockout == NULL)	{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_analysis == NULL)			{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_bitrate_addblock == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_bitrate_flushpacket == NULL)	{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_synthesis_init == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_synthesis == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_synthesis_blockin == NULL)	{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_synthesis_pcmout == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_synthesis_read == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_synthesis_headerin == NULL)	{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_block_clear == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_dsp_clear == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_comment_clear == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_vorbis_info_clear == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_stream_init == NULL)			{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_stream_packetin == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_stream_packetout == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_stream_flush == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_stream_pagein == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_stream_pageout == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_page_eos == NULL)			{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_page_serialno == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_stream_clear == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_sync_init == NULL)			{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_sync_buffer == NULL)			{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_sync_wrote == NULL)			{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_sync_pageout == NULL)		{ FreeLibrary(vorbisdll); return false; }
+	if (ex_ogg_sync_clear == NULL)			{ FreeLibrary(vorbisdll); return false; }
+
 	return true;
 }
 
@@ -326,6 +419,12 @@ SMOOTHBool bonkEnc::LoadFAACDLL()
 	ex_faacEncSetConfiguration		= (FAACENCSETCONFIGURATION) GetProcAddress(faacdll, "faacEncSetConfiguration@8");
 	ex_faacEncEncode			= (FAACENCENCODE) GetProcAddress(faacdll, "faacEncEncode@20");
 	ex_faacEncClose				= (FAACENCCLOSE) GetProcAddress(faacdll, "faacEncClose@4");
+
+	if (ex_faacEncOpen == NULL)			{ FreeLibrary(faacdll); return false; }
+	if (ex_faacEncGetCurrentConfiguration == NULL)	{ FreeLibrary(faacdll); return false; }
+	if (ex_faacEncSetConfiguration == NULL)		{ FreeLibrary(faacdll); return false; }
+	if (ex_faacEncEncode == NULL)			{ FreeLibrary(faacdll); return false; }
+	if (ex_faacEncClose == NULL)			{ FreeLibrary(faacdll); return false; }
 
 	return true;
 }
@@ -361,6 +460,23 @@ SMOOTHBool bonkEnc::LoadCDRipDLL()
 	ex_CR_SetTransportLayer		= (CR_SETTRANSPORTLAYER) GetProcAddress(cdripdll, "CR_SetTransportLayer");
 	ex_CR_LockCD			= (CR_LOCKCD) GetProcAddress(cdripdll, "CR_LockCD");
 	ex_CR_ReadCDText		= (CR_READCDTEXT) GetProcAddress(cdripdll, "CR_ReadCDText");
+
+	if (ex_CR_Init == NULL)			{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_DeInit == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_ReadToc == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_GetNumTocEntries == NULL)	{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_GetTocEntry == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_OpenRipper == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_CloseRipper == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_RipChunk == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_GetNumCDROM == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_GetActiveCDROM == NULL)	{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_SetActiveCDROM == NULL)	{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_GetCDROMParameters == NULL)	{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_SetCDROMParameters == NULL)	{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_SetTransportLayer == NULL)	{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_LockCD == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_ReadCDText == NULL)		{ FreeLibrary(cdripdll); return false; }
 
 	return true;
 }

@@ -36,6 +36,7 @@ typedef struct
 	SMOOTHBool	 languageChanged;
 
 	SMOOTHInt	 encoder;
+	SMOOTHBool	 enable_console;
 	SMOOTHBool	 enable_bonk;
 	SMOOTHBool	 enable_blade;
 	SMOOTHBool	 enable_lame;
@@ -45,6 +46,7 @@ typedef struct
 	SMOOTHBool	 enable_cdrip;
 	SMOOTHString	 enc_outdir;
 
+	SMOOTHArray<SMOOTHString>	 cdrip_drives;
 	SMOOTHInt	 cdrip_numdrives;
 	SMOOTHInt	 cdrip_activedrive;
 	SMOOTHInt	 cdrip_debuglevel;
@@ -133,6 +135,10 @@ typedef struct
 	SMOOTHBool	 cdText;
 	SMOOTHString	 artist;
 	SMOOTHString	 title;
+	SMOOTHString	 album;
+	SMOOTHString	 comment;
+
+	SMOOTHString	 outfile;
 }
 bonkTrackInfo;
 
@@ -219,8 +225,13 @@ class bonkEnc : public SMOOTHApplication
 		SMOOTHInt			 ReadCDText();
 		SMOOTHInt			 FreeCDText();
 
+		SMOOTHVoid			 ConsoleMode();
+		SMOOTHBool			 ScanForParameter(SMOOTHString, SMOOTHString *);
+		SMOOTHVoid			 ScanForFiles(SMOOTHArray<SMOOTHString> *);
+
 		SMOOTHVoid			 About();
 		SMOOTHVoid			 AddFile();
+		SMOOTHVoid			 AddFileByName(SMOOTHString, SMOOTHString out = "");
 		SMOOTHVoid			 RemoveFile();
 		SMOOTHVoid			 ClearList();
 		SMOOTHVoid			 Exit();

@@ -68,11 +68,16 @@ bonkEnc::bonkEnc()
 	encoder_thread = NIL;
 
 	currentConfig = new bonkEncConfig;
-	currentConfig->i18n = new bonkTranslator();
+
+	if (ScanForParameter("--console", NULL))	currentConfig->enable_console = true;
+	else						currentConfig->enable_console = false;
+
+	if (!currentConfig->enable_console)	currentConfig->i18n = new bonkTranslator();
+	else					currentConfig->i18n = NULL;
 
 	currentConfig->language = getINIValue("Settings", "Language", "english-internal");
 
-	currentConfig->i18n->ActivateLanguage(currentConfig->language);
+	if (!currentConfig->enable_console) currentConfig->i18n->ActivateLanguage(currentConfig->language);
 
 	currentConfig->encoder = getINIValue("Settings", "Encoder", "0").ToInt();
 	currentConfig->enc_outdir = getINIValue("Settings", "EncoderOutdir", "C:\\");
@@ -188,6 +193,20 @@ bonkEnc::bonkEnc()
 
 		currentConfig->cdrip_numdrives = ex_CR_GetNumCDROM();
 
+		if (currentConfig->cdrip_numdrives >= 1)
+		{
+			for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
+			{
+				ex_CR_SetActiveCDROM(i);
+
+				CDROMPARAMS	 params;
+
+				ex_CR_GetCDROMParameters(&params);
+
+				currentConfig->cdrip_drives.AddEntry(params.lpszCDROMID);
+			}
+		}
+
 		ex_CR_DeInit();
 
 		if (currentConfig->cdrip_numdrives <= currentConfig->cdrip_activedrive) currentConfig->cdrip_activedrive = 0;
@@ -195,6 +214,13 @@ bonkEnc::bonkEnc()
 
 	int	 len = currentConfig->enc_outdir.Length() - 1;
 	if (currentConfig->enc_outdir[len] != '\\') currentConfig->enc_outdir[++len] = '\\';
+
+	if (currentConfig->enable_console)
+	{
+		ConsoleMode();
+
+		return;
+	}
 
 	SMOOTHPoint	 pos;
 	SMOOTHSize	 size;
@@ -384,55 +410,58 @@ bonkEnc::~bonkEnc()
 	if (currentConfig->enable_vorbis) FreeVorbisDLL();
 	if (currentConfig->enable_cdrip) FreeCDRipDLL();
 
-	mainWnd->UnregisterObject(mainWnd_menubar);
-	mainWnd->UnregisterObject(mainWnd_iconbar);
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(mainWnd_statusbar);
-	mainWnd->UnregisterObject(mainWnd_layer);
+	if (!currentConfig->enable_console)
+	{
+		mainWnd->UnregisterObject(mainWnd_menubar);
+		mainWnd->UnregisterObject(mainWnd_iconbar);
+		mainWnd->UnregisterObject(mainWnd_titlebar);
+		mainWnd->UnregisterObject(mainWnd_statusbar);
+		mainWnd->UnregisterObject(mainWnd_layer);
 
-	mainWnd_layer->UnregisterObject(joblist);
-	mainWnd_layer->UnregisterObject(txt_joblist);
-	mainWnd_layer->UnregisterObject(enc_filename);
-	mainWnd_layer->UnregisterObject(enc_time);
-	mainWnd_layer->UnregisterObject(enc_percent);
-	mainWnd_layer->UnregisterObject(enc_encoder);
-	mainWnd_layer->UnregisterObject(enc_progress);
-	mainWnd_layer->UnregisterObject(enc_outdir);
-	mainWnd_layer->UnregisterObject(edb_filename);
-	mainWnd_layer->UnregisterObject(edb_time);
-	mainWnd_layer->UnregisterObject(edb_percent);
-	mainWnd_layer->UnregisterObject(edb_encoder);
-	mainWnd_layer->UnregisterObject(edb_outdir);
-	mainWnd_layer->UnregisterObject(progress);
-	mainWnd_layer->UnregisterObject(hyperlink);
+		mainWnd_layer->UnregisterObject(joblist);
+		mainWnd_layer->UnregisterObject(txt_joblist);
+		mainWnd_layer->UnregisterObject(enc_filename);
+		mainWnd_layer->UnregisterObject(enc_time);
+		mainWnd_layer->UnregisterObject(enc_percent);
+		mainWnd_layer->UnregisterObject(enc_encoder);
+		mainWnd_layer->UnregisterObject(enc_progress);
+		mainWnd_layer->UnregisterObject(enc_outdir);
+		mainWnd_layer->UnregisterObject(edb_filename);
+		mainWnd_layer->UnregisterObject(edb_time);
+		mainWnd_layer->UnregisterObject(edb_percent);
+		mainWnd_layer->UnregisterObject(edb_encoder);
+		mainWnd_layer->UnregisterObject(edb_outdir);
+		mainWnd_layer->UnregisterObject(progress);
+		mainWnd_layer->UnregisterObject(hyperlink);
 
-	UnregisterObject(mainWnd);
+		UnregisterObject(mainWnd);
 
-	delete mainWnd_menubar;
-	delete mainWnd_iconbar;
-	delete mainWnd_titlebar;
-	delete mainWnd_statusbar;
-	delete mainWnd_layer;
-	delete mainWnd;
-	delete joblist;
-	delete txt_joblist;
-	delete enc_filename;
-	delete enc_time;
-	delete enc_percent;
-	delete enc_encoder;
-	delete enc_progress;
-	delete enc_outdir;
-	delete edb_filename;
-	delete edb_time;
-	delete edb_percent;
-	delete edb_encoder;
-	delete edb_outdir;
-	delete progress;
-	delete menu_file;
-	delete menu_options;
-	delete menu_addsubmenu;
-	delete menu_encode;
-	delete hyperlink;
+		delete mainWnd_menubar;
+		delete mainWnd_iconbar;
+		delete mainWnd_titlebar;
+		delete mainWnd_statusbar;
+		delete mainWnd_layer;
+		delete mainWnd;
+		delete joblist;
+		delete txt_joblist;
+		delete enc_filename;
+		delete enc_time;
+		delete enc_percent;
+		delete enc_encoder;
+		delete enc_progress;
+		delete enc_outdir;
+		delete edb_filename;
+		delete edb_time;
+		delete edb_percent;
+		delete edb_encoder;
+		delete edb_outdir;
+		delete progress;
+		delete menu_file;
+		delete menu_options;
+		delete menu_addsubmenu;
+		delete menu_encode;
+		delete hyperlink;
+	}
 
 	delete currentConfig->i18n;
 	delete currentConfig;
@@ -482,112 +511,130 @@ SMOOTHVoid bonkEnc::AddFile()
 		{
 			SMOOTHString	 file = dialog->GetNthFileName(i);
 
-			if (file[file.Length() - 3] == 'c' &&
-			    file[file.Length() - 2] == 'd' &&
-			    file[file.Length() - 1] == 'a' &&
-			    currentConfig->enable_cdrip)
-			{
-				FILE		*afile = fopen(file, "r");
-				InStream	*in = new InStream(STREAM_ANSI, afile);
-				SMOOTHInt	 trackNumber;
-				SMOOTHInt	 trackLength;
-
-				in->Seek(22);
-
-				trackNumber = in->InputNumber(2);
-
-				in->Seek(32);
-
-				trackLength = in->InputNumber(4);
-
-				delete in;
-
-				fclose(afile);
-
-				SMOOTHInt	 audiodrive = 0;
-				SMOOTHBool	 done = false;
-
-				ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
-
-				SMOOTHString	 inifile = SMOOTH::StartDirectory;
-
-				inifile.Append("BonkEnc.ini");
-
-				ex_CR_Init(inifile);
-
-				for (audiodrive = 0; audiodrive < currentConfig->cdrip_numdrives; audiodrive++)
-				{
-					ex_CR_SetActiveCDROM(audiodrive);
-
-					ex_CR_ReadToc();
-
-					SMOOTHInt	 numTocEntries = ex_CR_GetNumTocEntries();
-
-					ReadCDText();
-
-					for (int j = 0; j < numTocEntries; j++)
-					{
-						TOCENTRY	 entry = ex_CR_GetTocEntry(j);
-						TOCENTRY	 nextentry = ex_CR_GetTocEntry(j + 1);
-						SMOOTHInt	 length = nextentry.dwStartSector - entry.dwStartSector;
-
-						if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == trackNumber && length == trackLength)
-						{
-							done = true;
-							break;
-						}
-					}
-
-					if (done) break;
-				}
-
-				if (cdText.GetEntry(trackNumber) != NIL)
-				{
-					sa_joblist.AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), joblist->AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), NULLPROC));
-
-					bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-					trackInfo->track	= trackNumber;
-					trackInfo->drive	= audiodrive;
-					trackInfo->cdText	= SMOOTH::True;
-					trackInfo->artist	= cdText.GetEntry(0);
-					trackInfo->title	= cdText.GetEntry(trackNumber);
-
-					sa_trackinfo.AddEntry(trackInfo);
-				}
-				else
-				{
-					sa_joblist.AddEntry(SMOOTHString("Audio CD ").Append(SMOOTHString::IntToString(audiodrive)).Append(" track ").Append(SMOOTHString::IntToString(trackNumber)), joblist->AddEntry(SMOOTHString("Audio CD ").Append(SMOOTHString::IntToString(audiodrive)).Append(" track ").Append(SMOOTHString::IntToString(trackNumber)), NULLPROC));
-
-					bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-					trackInfo->track	= trackNumber;
-					trackInfo->drive	= audiodrive;
-					trackInfo->cdText	= SMOOTH::False;
-
-					sa_trackinfo.AddEntry(trackInfo);
-				}
-
-				FreeCDText();
-
-				ex_CR_DeInit();
-			}
-			else
-			{
-				sa_joblist.AddEntry(file, joblist->AddEntry(file, NULLPROC));
-
-				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
-
-				trackInfo->track	= -1;
-
-				sa_trackinfo.AddEntry(trackInfo);
-			}
+			AddFileByName(file);
 		}
 	}
 
 	delete dialog;
 
 	txt_joblist->SetText(SMOOTHString::IntToString(joblist->GetNOfEntries()).Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
+}
+
+SMOOTHVoid bonkEnc::AddFileByName(SMOOTHString file, SMOOTHString outfile)
+{
+	if (encoding)
+	{
+		SMOOTH::MessageBox(currentConfig->i18n->TranslateString("Cannot modify the joblist while encoding!"), currentConfig->i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+
+		return;
+	}
+
+	SMOOTHString	 extension;
+
+	extension[0] = file[file.Length() - 4];
+	extension[1] = file[file.Length() - 3];
+	extension[2] = file[file.Length() - 2];
+	extension[3] = file[file.Length() - 1];
+
+	if (extension == ".cda" && currentConfig->enable_cdrip)
+	{
+		FILE		*afile = fopen(file, "r");
+		InStream	*in = new InStream(STREAM_ANSI, afile);
+		SMOOTHInt	 trackNumber;
+		SMOOTHInt	 trackLength;
+
+		in->Seek(22);
+
+		trackNumber = in->InputNumber(2);
+
+		in->Seek(32);
+
+		trackLength = in->InputNumber(4);
+
+		delete in;
+
+		fclose(afile);
+
+		SMOOTHInt	 audiodrive = 0;
+		SMOOTHBool	 done = false;
+
+		ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
+
+		SMOOTHString	 inifile = SMOOTH::StartDirectory;
+
+		inifile.Append("BonkEnc.ini");
+
+		ex_CR_Init(inifile);
+
+		for (audiodrive = 0; audiodrive < currentConfig->cdrip_numdrives; audiodrive++)
+		{
+			ex_CR_SetActiveCDROM(audiodrive);
+
+			ex_CR_ReadToc();
+
+			SMOOTHInt	 numTocEntries = ex_CR_GetNumTocEntries();
+
+			ReadCDText();
+
+			for (int j = 0; j < numTocEntries; j++)
+			{
+				TOCENTRY	 entry = ex_CR_GetTocEntry(j);
+				TOCENTRY	 nextentry = ex_CR_GetTocEntry(j + 1);
+				SMOOTHInt	 length = nextentry.dwStartSector - entry.dwStartSector;
+
+				if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == trackNumber && length == trackLength)
+				{
+					done = true;
+					break;
+				}
+			}
+
+			if (done) break;
+		}
+
+		if (cdText.GetEntry(trackNumber) != NIL)
+		{
+			sa_joblist.AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), joblist->AddEntry(SMOOTHString(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), NULLPROC));
+
+			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
+
+			trackInfo->track	= trackNumber;
+			trackInfo->drive	= audiodrive;
+			trackInfo->cdText	= SMOOTH::True;
+			trackInfo->artist	= cdText.GetEntry(0);
+			trackInfo->title	= cdText.GetEntry(trackNumber);
+			trackInfo->album	= cdText.GetEntry(100);
+
+			sa_trackinfo.AddEntry(trackInfo);
+		}
+		else
+		{
+			sa_joblist.AddEntry(SMOOTHString("Audio CD ").Append(SMOOTHString::IntToString(audiodrive)).Append(" track ").Append(SMOOTHString::IntToString(trackNumber)), joblist->AddEntry(SMOOTHString("Audio CD ").Append(SMOOTHString::IntToString(audiodrive)).Append(" track ").Append(SMOOTHString::IntToString(trackNumber)), NULLPROC));
+
+			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
+
+			trackInfo->track	= trackNumber;
+			trackInfo->drive	= audiodrive;
+			trackInfo->cdText	= SMOOTH::False;
+
+			sa_trackinfo.AddEntry(trackInfo);
+		}
+
+		FreeCDText();
+
+		ex_CR_DeInit();
+	}
+	else
+	{
+		sa_joblist.AddEntry(file, joblist->AddEntry(file, NULLPROC));
+
+		bonkTrackInfo	*trackInfo = new bonkTrackInfo;
+
+		trackInfo->track	= -1;
+		trackInfo->outfile	= outfile;
+
+		sa_trackinfo.AddEntry(trackInfo);
+	}
 }
 
 SMOOTHVoid bonkEnc::RemoveFile()
@@ -628,7 +675,7 @@ SMOOTHVoid bonkEnc::ClearList()
 	sa_trackinfo.DeleteAll();
 	joblist->Cleanup();
 
-	txt_joblist->SetText(SMOOTHString("0").Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
+	if (!currentConfig->enable_console) txt_joblist->SetText(SMOOTHString("0").Append(currentConfig->i18n->TranslateString(" file(s) in joblist:")));
 }
 
 SMOOTHBool bonkEnc::KillProc()
@@ -1055,6 +1102,7 @@ SMOOTHVoid bonkEnc::Encode()
 
 	RegisterObject(encoder_thread);
 
+	encoder_thread->SetWaitFlag(THREAD_WAITFLAG_START);
 	encoder_thread->Start();
 }
 
@@ -1073,16 +1121,19 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		if (i == 0)	trackInfo = sa_trackinfo.GetFirstEntry();
 		else		trackInfo = sa_trackinfo.GetNextEntry();
 
-		edb_filename->SetText(in_filename);
-		progress->SetValue(0);
-		edb_time->SetText("00:00");
+		if (!currentConfig->enable_console)
+		{
+			edb_filename->SetText(in_filename);
+			progress->SetValue(0);
+			edb_time->SetText("00:00");
+		}
 
 		SMOOTHString	 compString;
 		SMOOTHInt	 trackNumber = -1;
 		SMOOTHInt	 audiodrive = -1;
 		SMOOTHBool	 cdTrack = SMOOTH::False;
 
-		out_filename.Copy(edb_outdir->GetText());
+		out_filename.Copy(currentConfig->enc_outdir);
 
 		if (trackInfo->track != -1)
 		{
@@ -1120,7 +1171,7 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		{
 			int	 in_len = in_filename.Length();
 			int	 out_len = out_filename.Length();
-			int	 lastbs = 0;
+			int	 lastbs = -1;
 			int	 firstdot = 0;
 
 			for (int i = 0; i < in_len; i++)
@@ -1148,6 +1199,8 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		else if (currentConfig->encoder == ENCODER_TVQ)		out_filename.Append(".vqf");
 		else if (currentConfig->encoder == ENCODER_WAVE)	out_filename.Append(".wav");
 
+		if (trackInfo->outfile != "") out_filename = trackInfo->outfile;
+
 		SMOOTHInStream	*f_in;
 		InputFilter	*filter_in = NIL;
 		bonkFormatInfo	 format;
@@ -1167,19 +1220,20 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 		{
 			SMOOTHString	 extension;
 
-			extension[0] = in_filename[in_filename.Length() - 3];
-			extension[1] = in_filename[in_filename.Length() - 2];
-			extension[2] = in_filename[in_filename.Length() - 1];
+			extension[0] = in_filename[in_filename.Length() - 4];
+			extension[1] = in_filename[in_filename.Length() - 3];
+			extension[2] = in_filename[in_filename.Length() - 2];
+			extension[3] = in_filename[in_filename.Length() - 1];
 
 			f_in = new SMOOTHInStream(STREAM_FILE, in_filename);
 
-			if (extension == "mp3")
+			if (extension == ".mp3")
 			{
 				filter_in = new FilterInLAME(currentConfig);
 
 				f_in->SetPackageSize(4096);
 			}
-			else if (extension == "ogg")
+			else if (extension == ".ogg")
 			{
 				filter_in = new FilterInVORBIS(currentConfig);
 
@@ -1262,37 +1316,40 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 
 					position += step;
 
-					progress->SetValue((int) ((position * 100.0 / format.length) * 10.0));
-
-					if ((int) (position * 100.0 / format.length) != lastpercent)
+					if (!currentConfig->enable_console)
 					{
-						lastpercent = (int) (position * 100.0 / format.length);
+						progress->SetValue((int) ((position * 100.0 / format.length) * 10.0));
 
-						edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
-					}
+						if ((int) (position * 100.0 / format.length) != lastpercent)
+						{
+							lastpercent = (int) (position * 100.0 / format.length);
 
-					ticks = clock() - startticks;
+							edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
+						}
 
-					ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / format.length) * 10.0)) / ((position * 100.0 / format.length) * 10.0))) / 1000 + 1;
+						ticks = clock() - startticks;
 
-					if (ticks != lastticks)
-					{
-						lastticks = ticks;
+						ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / format.length) * 10.0)) / ((position * 100.0 / format.length) * 10.0))) / 1000 + 1;
 
-						SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
-						SMOOTHString	 txt = "0";
+						if (ticks != lastticks)
+						{
+							lastticks = ticks;
 
-						if (buf.Length() == 1)	txt.Append(buf);
-						else			txt.Copy(buf);
+							SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
+							SMOOTHString	 txt = "0";
 
-						txt.Append(":");
+							if (buf.Length() == 1)	txt.Append(buf);
+							else			txt.Copy(buf);
 
-						buf = SMOOTHString::IntToString(ticks % 60);
+							txt.Append(":");
 
-						if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
-						else			txt.Append(buf);
+							buf = SMOOTHString::IntToString(ticks % 60);
 
-						edb_time->SetText(txt);
+							if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
+							else			txt.Append(buf);
+
+							edb_time->SetText(txt);
+						}
 					}
 				}
 			}
@@ -1316,37 +1373,40 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 
 					position = filter_in->GetInBytes();
 
-					progress->SetValue((int) ((position * 100.0 / f_in->Size()) * 10.0));
-
-					if ((int) (position * 100.0 / f_in->Size()) != lastpercent)
+					if (!currentConfig->enable_console)
 					{
-						lastpercent = (int) (position * 100.0 / f_in->Size());
+						progress->SetValue((int) ((position * 100.0 / f_in->Size()) * 10.0));
 
-						edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
-					}
+						if ((int) (position * 100.0 / f_in->Size()) != lastpercent)
+						{
+							lastpercent = (int) (position * 100.0 / f_in->Size());
 
-					ticks = clock() - startticks;
+							edb_percent->SetText(SMOOTHString::IntToString(lastpercent).Append("%"));
+						}
 
-					ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / f_in->Size()) * 10.0)) / ((position * 100.0 / f_in->Size()) * 10.0))) / 1000 + 1;
+						ticks = clock() - startticks;
 
-					if (ticks != lastticks)
-					{
-						lastticks = ticks;
+						ticks = (int) (ticks * ((1000.0 - ((position * 100.0 / f_in->Size()) * 10.0)) / ((position * 100.0 / f_in->Size()) * 10.0))) / 1000 + 1;
 
-						SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
-						SMOOTHString	 txt = "0";
+						if (ticks != lastticks)
+						{
+							lastticks = ticks;
 
-						if (buf.Length() == 1)	txt.Append(buf);
-						else			txt.Copy(buf);
+							SMOOTHString	 buf = SMOOTHString::IntToString(ticks / 60);
+							SMOOTHString	 txt = "0";
 
-						txt.Append(":");
+							if (buf.Length() == 1)	txt.Append(buf);
+							else			txt.Copy(buf);
 
-						buf = SMOOTHString::IntToString(ticks % 60);
+							txt.Append(":");
 
-						if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
-						else			txt.Append(buf);
+							buf = SMOOTHString::IntToString(ticks % 60);
 
-						edb_time->SetText(txt);
+							if (buf.Length() == 1)	txt.Append(SMOOTHString("0").Append(buf));
+							else			txt.Append(buf);
+
+							edb_time->SetText(txt);
+						}
 					}
 				}
 			}
@@ -1376,10 +1436,13 @@ SMOOTHVoid bonkEnc::Encoder(SMOOTHThread *thread)
 
 	ClearList();
 
-	edb_filename->SetText(currentConfig->i18n->TranslateString("none"));
-	edb_percent->SetText("0%");
-	progress->SetValue(0);
-	edb_time->SetText("00:00");
+	if (!currentConfig->enable_console)
+	{
+		edb_filename->SetText(currentConfig->i18n->TranslateString("none"));
+		edb_percent->SetText("0%");
+		progress->SetValue(0);
+		edb_time->SetText("00:00");
+	}
 }
 
 SMOOTHVoid bonkEnc::StopEncoding()
@@ -1444,6 +1507,7 @@ SMOOTHVoid bonkEnc::ReadCD()
 				trackInfo->cdText	= SMOOTH::True;
 				trackInfo->artist	= cdText.GetEntry(0);
 				trackInfo->title	= cdText.GetEntry(entry.btTrackNumber);
+				trackInfo->album	= cdText.GetEntry(100);
 
 				sa_trackinfo.AddEntry(trackInfo);
 			}

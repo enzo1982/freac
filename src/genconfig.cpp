@@ -199,29 +199,15 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 
 	cdrip_combo_drive	= new SMOOTHComboBox(pos, size, NULLPROC);
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
 	{
-		SMOOTHString	 file = SMOOTH::StartDirectory;
-
-		file.Append("bonkenc.ini");
-
-		ex_CR_Init(file);
-
-		for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
-		{
-			ex_CR_SetActiveCDROM(i);
-
-			CDROMPARAMS	 params;
-
-			ex_CR_GetCDROMParameters(&params);
-
-			cdrip_combo_drive->AddEntry(params.lpszCDROMID, NULLPROC);
-		}
-
-		ex_CR_DeInit();
-
-		cdrip_combo_drive->SelectEntry(currentConfig->cdrip_activedrive);
+		cdrip_combo_drive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(i), NULLPROC);
 	}
+
+	ex_CR_DeInit();
+
+	cdrip_combo_drive->SelectEntry(currentConfig->cdrip_activedrive);
+
 
 	pos.x = 7;
 	pos.y = 66;
