@@ -316,10 +316,10 @@ bonkEnc::bonkEnc()
 	size.cy = currentConfig->wndSize.cy - 221;
 
 	joblist			= new ListBox(pos, size);
-	joblist->AddTab("Title");
-	joblist->AddTab("Track", 50);
-	joblist->AddTab("Length", 80);
-	joblist->AddTab("Size", 80);
+	joblist->AddTab(currentConfig->i18n->TranslateString("Title"));
+	joblist->AddTab(currentConfig->i18n->TranslateString("Track"), 50);
+	joblist->AddTab(currentConfig->i18n->TranslateString("Length"), 80);
+	joblist->AddTab(currentConfig->i18n->TranslateString("Size"), 80);
 
 	pos.y = 99;
 	pos.x = maxTextLength + 14;
@@ -1961,6 +1961,17 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	edb_outdir->Show();
 
 	progress->Show();
+
+	joblist->Hide();
+
+	joblist->ClearTabs();
+
+	joblist->AddTab(currentConfig->i18n->TranslateString("Title"));
+	joblist->AddTab(currentConfig->i18n->TranslateString("Track"), 50);
+	joblist->AddTab(currentConfig->i18n->TranslateString("Length"), 80);
+	joblist->AddTab(currentConfig->i18n->TranslateString("Size"), 80);
+
+	joblist->Show();
 
 	mainWnd_menubar->Hide();
 	mainWnd_iconbar->Hide();

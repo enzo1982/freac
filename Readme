@@ -13,9 +13,11 @@ History
 
 	Version 0.9
 
+		- added support for LAME presets
 		- added Hungarian, French, Russian and Serbian language support
 		- removed support for the META tag in BONK files
 		- added support for ID3V2 tags in BONK files
+		- simplified the language file format
 		- upgraded to smooth v0.8.61.0
 		- upgraded CDRip.dll to fix some ASPI issues
 		- some minor bugfixes
@@ -24,7 +26,6 @@ History
 
 		- full freedb support
 		- greatly improved joblist
-		- support for LAME presets
 		- ID3V2 reading
 
 	Version 0.8

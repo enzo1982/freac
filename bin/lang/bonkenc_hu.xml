@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">BonkEnc</property>
+    <property name="version">0.9</property>
+    <property name="language">Magyar</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">Tóth Péter &lt;golbat@freemail.hu&gt;</property>
+    <property name="url">http://www.bonkenc.org</property>
+  </info>
+  <data>
+    <entry id="1" string="File">Fájl</entry>
+    <entry id="2" string="Options">Beállítások</entry>
+    <entry id="3" string="Encode">Tömörítés</entry>
+    <entry id="4" string="Add">Hozzáadás</entry>
+    <entry id="5" string="Remove">Eltávolítás</entry>
+    <entry id="6" string="Clear joblist">Mindet töröl</entry>
+    <entry id="7" string="Exit">Befejezés</entry>
+    <entry id="8" string="General settings...">Általános beállítások</entry>
+    <entry id="9" string="Configure selected encoder...">Választott tömörítõ beállításai</entry>
+    <entry id="10" string="Audio file(s)...">Audio fájl(ok)</entry>
+    <entry id="11" string="Audio CD contents">Audio CD tartalma</entry>
+    <entry id="12" string="Start encoding">Tömörítés indítása</entry>
+    <entry id="13" string="Stop encoding">Tömörítés megszakítása</entry>
+    <entry id="14" string="Encoding file:">Jelenleg tömörítés alatt:</entry>
+    <entry id="15" string="Time left:">Hátralévõ idõ:</entry>
+    <entry id="16" string="Percent done:">Készenlét %:</entry>
+    <entry id="17" string="Selected encoder:">Választott tömörítõ:</entry>
+    <entry id="18" string="File progress:">Folyamat állapot:</entry>
+    <entry id="19" string="Output dir.:">Cél könyvtár:</entry>
+    <entry id="20" string=" file(s) in joblist:"> fájl(ok) a listán:</entry>
+    <entry id="21" string="none">nincs</entry>
+    <entry id="22" string="Display information about BonkEnc">Információk a BonkEnc-rõl</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Audiofájlok hozzáadása a listához </entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Audio CD tartalma a listához</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Kiválasztott elem törlése a listából</entry>
+    <entry id="26" string="Clear the entire joblist">Teljes lista törlése</entry>
+    <entry id="27" string="Configure general settings">Általános beállítások módosítása</entry>
+    <entry id="28" string="Configure the selected audio encoder">Kiválasztott tömörítõ beállításai</entry>
+    <entry id="29" string="Start the encoding process">Tömörítés indítása</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Tömörítés közben a lista nem módosítható!</entry>
+    <entry id="31" string="Error">Hiba!</entry>
+    <entry id="32" string="Audio Files">Audio fájlok</entry>
+    <entry id="33" string="Apple Audio Files">Apple Audio fájlok</entry>
+    <entry id="34" string="Creative Voice Files">Creative Voice fájlok</entry>
+    <entry id="35" string="Sun Audio Files">Sun Audio fájlok</entry>
+    <entry id="36" string="Wave Files">Wave fájlok</entry>
+    <entry id="37" string="Windows CD Audio Track">Windows Audio CD szám</entry>
+    <entry id="38" string="All Files">Összes fájl</entry>
+    <entry id="39" string="You have not selected a file!">Nem választottál ki még egy fájlt sem!</entry>
+    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">A tömörítés még fut! Megállítsam?</entry>
+    <entry id="41" string="Currently encoding">Tömörítés folyamatban</entry>
+    <entry id="42" string="This program is being distributed under the terms">Ez a program szabadon terjeszthetõ</entry>
+    <entry id="43" string="of the GNU General Public License (GPL).">a GNU (General Public License) elõírásai szerint.</entry>
+    <entry id="44" string="About BonkEnc">A BonkEnc-rõl röviden</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">A WAVE Out Filter-nek nincsenek beállítási lehetõségei!</entry>
+    <entry id="46" string="WAVE Out filter">WAVE Out Filter</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Tömörítés közben a beállítások nem változtathatók meg!</entry>
+    <entry id="48" string="encoder configuration">Tömörítõ beállításai</entry>
+    <entry id="49" string="OK">Rendben!</entry>
+    <entry id="50" string="Cancel">Mégsem</entry>
+    <entry id="51" string="Encoding Mode">Tömörítési mód</entry>
+    <entry id="52" string="Variable Bitrate">Változó bitráta</entry>
+    <entry id="53" string="Average Bitrate">Átlagos bitráta</entry>
+    <entry id="54" string="Quality">Minõség</entry>
+    <entry id="55" string="Encoders">Tömörítõk</entry>
+    <entry id="56" string="Directories">Könyvtárak</entry>
+    <entry id="57" string="Language">Nyelv</entry>
+    <entry id="58" string="General settings setup">Általános beállítások</entry>
+    <entry id="59" string="Configure encoder">Tömörítõ beállítása</entry>
+    <entry id="60" string="Encoder">Tömörítõ</entry>
+    <entry id="61" string="Output directory">Célkönyvtár</entry>
+    <entry id="62" string="Browse">Keresés</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Célkönyvtár megadása:</entry>
+    <entry id="64" string="Encoding">Tömörítés</entry>
+    <entry id="65" string="Author">Szerzõ</entry>
+    <entry id="66" string="URL">URL</entry>
+    <entry id="67" string="Information">Információk</entry>
+    <entry id="68" string="Select language:">Válassz nyelvet:</entry>
+    <entry id="69" string="Active CD-ROM drive">Aktív CD-ROM meghajtó</entry>
+    <entry id="70" string="Ripper settings">Másoló beállítások</entry>
+    <entry id="71" string="Activate cdparanoia mode:">CdParanoia mód be</entry>
+    <entry id="72" string="Activate jitter correction">Jitter korrekció be</entry>
+    <entry id="73" string="Swap left/right channel">Csatornák felcserélése</entry>
+    <entry id="74" string="Lock CD tray while ripping">Tálca zárás másoláskor</entry>
+    <entry id="75" string="Use native NT SCSI library">NT SCSI DLL használat</entry>
+    <entry id="76" string="Overlap only">Csak Overlap</entry>
+    <entry id="77" string="No verify">Nincs ellenõrzés</entry>
+    <entry id="78" string="No scratch repair">Pattogás nincs javítva</entry>
+    <entry id="79" string="Full cdparanoia mode">Teljes ellenõrzés mód</entry>
+    <entry id="80" string="Bitrate">Bitráta</entry>
+    <entry id="81" string="Copyright bit">Copyright Bit</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">Original Bit</entry>
+    <entry id="84" string="Channels">Csatornák</entry>
+    <entry id="85" string="Private bit">Private Bit</entry>
+    <entry id="86" string="Set Copyright bit">Copyright Bit be</entry>
+    <entry id="87" string="Enable CRC">CRC engedélyezés</entry>
+    <entry id="88" string="Set Original bit">Original Bit be</entry>
+    <entry id="89" string="Dual channel encoding">Bal/jobb csatorna szétválasztás</entry>
+    <entry id="90" string="Set Private bit">Private Bit be</entry>
+    <entry id="91" string="Encoder mode">Tömörítõ mód</entry>
+    <entry id="92" string="Stereo mode">Sztereó mód</entry>
+    <entry id="93" string="Quantization">Kvantálás</entry>
+    <entry id="94" string="Downsampling ratio">Downsampling ráta</entry>
+    <entry id="95" string="Predictor size">Predictor mérete</entry>
+    <entry id="96" string="Enable lossless encoding">Veszteségmentes tömörítés</entry>
+    <entry id="97" string="Enable Joint Stereo">Joint Stereo be</entry>
+    <entry id="98" string="Bitrate per channel:">Bitráta csatornánként:</entry>
+    <entry id="99" string="Preselection">Elõválasztás</entry>
+    <entry id="100" string="Number of preselection candidates:">Elõválasztási jelöltek száma:</entry>
+    <entry id="101" string="MPEG version">MPEG verzió</entry>
+    <entry id="102" string="AAC object type">AAC objektum típus</entry>
+    <entry id="103" string="Allow Joint Stereo">Joint Stereo be</entry>
+    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">TNS használat</entry>
+    <entry id="106" string="Maximum bandwidth">Maximális sávszélesség</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maximum AAC frekvencia sávszélesség Hz:</entry>
+    <entry id="108" string="Basic">Alap</entry>
+    <entry id="109" string="Misc">Egyéb</entry>
+    <entry id="110" string="Audio processing">Audio feldolgozás</entry>
+    <entry id="111" string="Set bitrate:">Bitráta:</entry>
+    <entry id="112" string="Set ratio:">Szint beállítás:</entry>
+    <entry id="113" string="Set quality:">Minõség:</entry>
+    <entry id="114" string="worse">rosszabb</entry>
+    <entry id="115" string="better">jobb</entry>
+    <entry id="116" string="Auto">Automatikus</entry>
+    <entry id="117" string="Stereo">Stereo</entry>
+    <entry id="118" string="Joint Stereo">Joint Stereo</entry>
+    <entry id="119" string="Force Joint Stereo">Csak Joint Stereo mód</entry>
+    <entry id="120" string="VBR mode">VBR mód</entry>
+    <entry id="121" string="no VBR">VBR mód ki</entry>
+    <entry id="122" string="VBR quality">VBR minõségi szint</entry>
+    <entry id="123" string="ABR target bitrate">ABR cél bitráta</entry>
+    <entry id="124" string="VBR bitrate range">VBR Bitráta szélesség</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Minimum VBR Bitráta:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Maximális VBR Bitráta:</entry>
+    <entry id="127" string="Control bits">Kontroll bitek</entry>
+    <entry id="128" string="Stream format">Stream formátum</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Szigorúan ISO kompatibilis kimenet</entry>
+    <entry id="130" string="Padding">Padding</entry>
+    <entry id="131" string="Set padding type:">Padding típusa:</entry>
+    <entry id="132" string="pad no frames">nincs Padding</entry>
+    <entry id="133" string="pad all frames">minden Frame</entry>
+    <entry id="134" string="adjust padding">Padding beállítása</entry>
+    <entry id="135" string="Output sampling rate">Kimenet mintavételezése</entry>
+    <entry id="136" string="no resampling">nincs újramintavételezés</entry>
+    <entry id="137" string="Highpass filter">Felüláteresztõ szûrõ</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Felüláteresztõ szûrõ frekv. Hz:</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Felüláteresztõ szûrõ sávszél. Hz:</entry>
+    <entry id="140" string="Lowpass filter">Aluláteresztõ szûrõ</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Aluláteresztõ szûrõ frekv. Hz:</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Aluláteresztõ szûrõ sávszél. Hz:</entry>
+    <entry id="143" string="Misc settings">Egyéb beállítások</entry>
+    <entry id="144" string="Disable all filtering">Minden szûrõ ki</entry>
+    <entry id="145" string="MP3 Files">MP3 fájlok</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis fájlok</entry>
+    <entry id="147" string="BONK Files">BONK fájlok</entry>
+    <entry id="148" string="Enable CDDB">CDDB aktiválása</entry>
+    <entry id="149" string="CDDB access mode:">CDDB hozzáférési mód:</entry>
+    <entry id="150" string="CDDB server:">CDDB szerver:</entry>
+    <entry id="151" string="Port:">Port:</entry>
+    <entry id="152" string="Info">Info</entry>
+    <entry id="153" string="No freedb entry for this disk.">Nem találtam bejegyzést ehhez a CD-hez.</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Hiba történt a freedb szervehez kapcsolódás közben.</entry>
+    <entry id="155" string="Connecting to freedb server at">Kapcsoldás a freedb szerverhez</entry>
+    <entry id="156" string="Requesting CD information">CD Információ kérése</entry>
+    <entry id="157" string="eMail address:">eMail cím:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Kérem adjon meg egy élõ e-mail cimet</entry>
+    <entry id="159" string="No exact matches found">Nem találtam pontos megfelelelõ</entry>
+    <entry id="160" string="Multiple matches found">Több azonosságot találtam</entry>
+    <entry id="161" string="Matches">Találatok</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Válassza ki a CD-nek leginkább megfelelõ bejegyzést</entry>
+    <entry id="163" string="Extended CDDB settings">Részletes CDDB beállítások</entry>
+    <entry id="164" string="CGI scripts">CGI Scripts</entry>
+    <entry id="165" string="CDDB query script:">CDDB kezdõ script:</entry>
+    <entry id="166" string="CDDB submit script:">CDDB küldõ script:</entry>
+    <entry id="167" string="HTTP settings">HTTP beállítások</entry>
+    <entry id="168" string="Proxy settings">Proxy beállítások</entry>
+    <entry id="169" string="no proxy">nincs Proxy</entry>
+    <entry id="170" string="Proxy type:">Proxy típusa:</entry>
+    <entry id="171" string="Proxy server:">Proxy szerver:</entry>
+  </data>
+</LangFile>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="CP1251"?>
+<LangFile>
+  <info>
+    <property name="program">BonkEnc</property>
+    <property name="version">0.9</property>
+    <property name="language">Русский</property>
+    <property name="encoding">CP1251</property>
+    <property name="author">Roman Sabanin &lt;accounter@xaker.ru&gt;</property>
+    <property name="url">http://www.bonkenc.org</property>
+  </info>
+  <data>
+    <entry id="1" string="File">Файл</entry>
+    <entry id="2" string="Options">Настройки</entry>
+    <entry id="3" string="Encode">Кодирование</entry>
+    <entry id="4" string="Add">Добавить</entry>
+    <entry id="5" string="Remove">Удалить</entry>
+    <entry id="6" string="Clear joblist">Очистить лист</entry>
+    <entry id="7" string="Exit">Выход</entry>
+    <entry id="8" string="General settings...">Основные настройки</entry>
+    <entry id="9" string="Configure selected encoder...">Настроить текущий кодировщик...</entry>
+    <entry id="10" string="Audio file(s)...">Аудио файл(ы)...</entry>
+    <entry id="11" string="Audio CD contents">Содержимое Аудио CD</entry>
+    <entry id="12" string="Start encoding">Начать кодирование</entry>
+    <entry id="13" string="Stop encoding">Остановить кодирование</entry>
+    <entry id="14" string="Encoding file:">Кодируемый файл:</entry>
+    <entry id="15" string="Time left:">Осталось времени:</entry>
+    <entry id="16" string="Percent done:">Статус:</entry>
+    <entry id="17" string="Selected encoder:">Кодировщик:</entry>
+    <entry id="18" string="File progress:">Прогресс:</entry>
+    <entry id="19" string="Output dir.:">Директория:</entry>
+    <entry id="20" string=" file(s) in joblist:"> Файл(а/ов) в листе:</entry>
+    <entry id="21" string="none">пусто</entry>
+    <entry id="22" string="Display information about BonkEnc">Информация о BonkEnc</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Добавить аудио файл(ы) в лист</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Добавить содержимое Аудио CD в лист</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Удалить текущую позицию из листа</entry>
+    <entry id="26" string="Clear the entire joblist">Очистить весь лист</entry>
+    <entry id="27" string="Configure general settings">Настройка основных параметров</entry>
+    <entry id="28" string="Configure the selected audio encoder">Настройка выбранного кодировщика</entry>
+    <entry id="29" string="Start the encoding process">Начать процесс кодирования</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Невозможно изменить лист в процессе кодирования</entry>
+    <entry id="31" string="Error">Ошибка</entry>
+    <entry id="32" string="Audio Files">Аудио файлы</entry>
+    <entry id="33" string="Apple Audio Files">Аудио файлы Apple </entry>
+    <entry id="34" string="Creative Voice Files">Creative Voice файлы</entry>
+    <entry id="35" string="Sun Audio Files">Sun Audio файлы</entry>
+    <entry id="36" string="Wave Files">Wave файлы</entry>
+    <entry id="37" string="Windows CD Audio Track">Audio CD Track</entry>
+    <entry id="38" string="All Files">Все файлы</entry>
+    <entry id="39" string="You have not selected a file!">Файл не выбран!</entry>
+    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">Процесс кодироания всё ещё запущен!\nВы действительно хотите выйти?</entry>
+    <entry id="41" string="Currently encoding">Сейчас кодируется</entry>
+    <entry id="42" string="This program is being distributed under the terms">Эта программа была разработана на правах</entry>
+    <entry id="43" string="of the GNU General Public License (GPL).">GNU General Public License (GPL).</entry>
+    <entry id="44" string="About BonkEnc">О BonkEnc</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">Для WAVE Out фильтра нет настроек!</entry>
+    <entry id="46" string="WAVE Out filter">WAVE Out фильтр</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Невозможно изменить настройки в процессе кодирования!</entry>
+    <entry id="48" string="encoder configuration">Настройка кодировщика</entry>
+    <entry id="49" string="OK">OK</entry>
+    <entry id="50" string="Cancel">Отмена</entry>
+    <entry id="51" string="Encoding Mode">Способ кодирования</entry>
+    <entry id="52" string="Variable Bitrate">Variable Bitrate</entry>
+    <entry id="53" string="Average Bitrate">Average Bitrate</entry>
+    <entry id="54" string="Quality">Качество</entry>
+    <entry id="55" string="Encoders">Кодировщики</entry>
+    <entry id="56" string="Directories">Каталоги</entry>
+    <entry id="57" string="Language">Язык</entry>
+    <entry id="58" string="General settings setup">Основные параметры</entry>
+    <entry id="59" string="Configure encoder">Настроить</entry>
+    <entry id="60" string="Encoder">Кодировщик</entry>
+    <entry id="61" string="Output directory">Каталог для сохранения</entry>
+    <entry id="62" string="Browse">Выбрать</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Выбрать каталог, куда сохранять кодированные файлы:</entry>
+    <entry id="64" string="Encoding">Кодировка</entry>
+    <entry id="65" string="Author">Автор</entry>
+    <entry id="66" string="URL">URL</entry>
+    <entry id="67" string="Information">Информация</entry>
+    <entry id="68" string="Select language:">Выбрать язык</entry>
+    <entry id="69" string="Active CD-ROM drive">Активный CD-ROM</entry>
+    <entry id="70" string="Ripper settings">Настройки захвата данных</entry>
+    <entry id="71" string="Activate cdparanoia mode:">cdparanoia mode:</entry>
+    <entry id="72" string="Activate jitter correction">Jitter correction</entry>
+    <entry id="73" string="Swap left/right channel">Поменять каналы местами</entry>
+    <entry id="74" string="Lock CD tray while ripping">Блокировать CD tray </entry>
+    <entry id="75" string="Use native NT SCSI library">NT SCSI библиотеки</entry>
+    <entry id="76" string="Overlap only">Overlap only</entry>
+    <entry id="77" string="No verify">No verify</entry>
+    <entry id="78" string="No scratch repair">No scratch repair</entry>
+    <entry id="79" string="Full cdparanoia mode">Full cdparanoia mode</entry>
+    <entry id="80" string="Bitrate">Bitrate</entry>
+    <entry id="81" string="Copyright bit">Copyright Bit</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">Исходный Bit</entry>
+    <entry id="84" string="Channels">Каналы</entry>
+    <entry id="85" string="Private bit">Private Bit</entry>
+    <entry id="86" string="Set Copyright bit">Copyright Bit</entry>
+    <entry id="87" string="Enable CRC">Разрешить CRC</entry>
+    <entry id="88" string="Set Original bit">Original Bit</entry>
+    <entry id="89" string="Dual channel encoding">2-канальное кодирование</entry>
+    <entry id="90" string="Set Private bit">Private Bit</entry>
+    <entry id="91" string="Encoder mode">Способ кодирования</entry>
+    <entry id="92" string="Stereo mode">Стерео</entry>
+    <entry id="93" string="Quantization">Quantization</entry>
+    <entry id="94" string="Downsampling ratio">Downsampling ratio</entry>
+    <entry id="95" string="Predictor size">Predictor size</entry>
+    <entry id="96" string="Enable lossless encoding">Побайтовое кодирование</entry>
+    <entry id="97" string="Enable Joint Stereo">Joint стерео</entry>
+    <entry id="98" string="Bitrate per channel:">Bitrate per channel:</entry>
+    <entry id="99" string="Preselection">Предварительно</entry>
+    <entry id="100" string="Number of preselection candidates:">Number of preselection candidates:</entry>
+    <entry id="101" string="MPEG version">Версия MPEG</entry>
+    <entry id="102" string="AAC object type">AAC object type</entry>
+    <entry id="103" string="Allow Joint Stereo">Joint стерео</entry>
+    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Use Temporal Noise Shaping</entry>
+    <entry id="106" string="Maximum bandwidth">Maximum bandwidth</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maximum AAC frequency bandwidth to use (Hz):</entry>
+    <entry id="108" string="Basic">Основное</entry>
+    <entry id="109" string="Misc">Прочее</entry>
+    <entry id="110" string="Audio processing">Аудиопроцесс</entry>
+    <entry id="111" string="Set bitrate:">Bitrate:</entry>
+    <entry id="112" string="Set ratio:">Ratio:</entry>
+    <entry id="113" string="Set quality:">Качество:</entry>
+    <entry id="114" string="worse">хуже</entry>
+    <entry id="115" string="better">лучше</entry>
+    <entry id="116" string="Auto">Авто</entry>
+    <entry id="117" string="Stereo">Стерео</entry>
+    <entry id="118" string="Joint Stereo">Joint стерео</entry>
+    <entry id="119" string="Force Joint Stereo">Force Joint стерео</entry>
+    <entry id="120" string="VBR mode">VBR режим</entry>
+    <entry id="121" string="no VBR">нет VBR</entry>
+    <entry id="122" string="VBR quality">Качество VBR</entry>
+    <entry id="123" string="ABR target bitrate">ABR target bitrate</entry>
+    <entry id="124" string="VBR bitrate range">диапазон VBR bitrate</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Минимальный VBR bitrate:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Максимальный VBR bitrate:</entry>
+    <entry id="127" string="Control bits">Control bits</entry>
+    <entry id="128" string="Stream format">Формат потока</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Строгое ISO согласование</entry>
+    <entry id="130" string="Padding">Заполнение</entry>
+    <entry id="131" string="Set padding type:">Тип заполнения:</entry>
+    <entry id="132" string="pad no frames">pad no frames</entry>
+    <entry id="133" string="pad all frames">pad all frames</entry>
+    <entry id="134" string="adjust padding">adjust padding</entry>
+    <entry id="135" string="Output sampling rate">Выходной Sample Rate</entry>
+    <entry id="136" string="no resampling">Без ресемплинга</entry>
+    <entry id="137" string="Highpass filter">Highpass filter</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Highpass frequency (Hz):</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Highpass width (Hz):</entry>
+    <entry id="140" string="Lowpass filter">Lowpass filter</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Lowpass frequency (Hz):</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Lowpass width (Hz):</entry>
+    <entry id="143" string="Misc settings">Прочие настройки</entry>
+    <entry id="144" string="Disable all filtering">Запретить фильтры</entry>
+    <entry id="145" string="MP3 Files">MP3 файлы</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis файлы</entry>
+    <entry id="147" string="BONK Files">BONK файлы</entry>
+    <entry id="148" string="Enable CDDB">Разрешить CDDB</entry>
+    <entry id="149" string="CDDB access mode:">CDDB способ доступа:</entry>
+    <entry id="150" string="CDDB server:">CDDB сервер:</entry>
+    <entry id="151" string="Port:">Порт:</entry>
+    <entry id="152" string="Info">Информация</entry>
+    <entry id="153" string="No freedb entry for this disk.">База для этого диска не найдена.</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу.</entry>
+    <entry id="155" string="Connecting to freedb server at">Подключение к серверу</entry>
+    <entry id="156" string="Requesting CD information">Получение информации о CD</entry>
+    <entry id="157" string="eMail address:">E-mail:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Пожалуйста, введите правильный почтовый адрес.</entry>
+    <entry id="159" string="No exact matches found">Не найдено точного соответствия</entry>
+    <entry id="160" string="Multiple matches found">Найдено несколько соответствий</entry>
+    <entry id="161" string="Matches">Соответствия</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Выбрать наиболее подходящий список для CD:</entry>
+    <entry id="163" string="Extended CDDB settings">Расширенные установки CDDB</entry>
+    <entry id="164" string="CGI scripts">CGI скрипты</entry>
+    <entry id="165" string="CDDB query script:">Скрипт CDDB запроса:</entry>
+    <entry id="166" string="CDDB submit script:">Подтверждающий CDDB скрипт:</entry>
+    <entry id="167" string="HTTP settings">Установки HTTP</entry>
+    <entry id="168" string="Proxy settings">Установки прокси</entry>
+    <entry id="169" string="no proxy">Не использовать прокси</entry>
+    <entry id="170" string="Proxy type:">Тип прокси:</entry>
+    <entry id="171" string="Proxy server:">Прокси сервер:</entry>
+  </data>
+</LangFile>

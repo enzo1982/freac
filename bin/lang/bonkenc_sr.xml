@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">BonkEnc</property>
+    <property name="version">0.9</property>
+    <property name="language">Srpski</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">Marko DJorDJevic &lt;djolenba@yahoo.com&gt;</property>
+    <property name="url">http://www.bonkenc.org</property>
+  </info>
+  <data>
+    <entry id="1" string="File">Fajl</entry>
+    <entry id="2" string="Options">Opcije</entry>
+    <entry id="3" string="Encode">Enkodovati</entry>
+    <entry id="4" string="Add">Dodati</entry>
+    <entry id="5" string="Remove">Ukloniti</entry>
+    <entry id="6" string="Clear joblist">Ukloni listu</entry>
+    <entry id="7" string="Exit">Izadji</entry>
+    <entry id="8" string="General settings...">Opsta podesavanja...</entry>
+    <entry id="9" string="Configure selected encoder...">Podesiti odabrani enkoder</entry>
+    <entry id="10" string="Audio file(s)...">Audio fajl (ove)</entry>
+    <entry id="11" string="Audio CD contents">Sadrzaj Audio CD-a</entry>
+    <entry id="12" string="Start encoding">Startuj enkodovanje</entry>
+    <entry id="13" string="Stop encoding">Prekini enkodovanje</entry>
+    <entry id="14" string="Encoding file:">Enkodovani fajl:</entry>
+    <entry id="15" string="Time left:">Preostalo vreme:</entry>
+    <entry id="16" string="Percent done:">Procenat:</entry>
+    <entry id="17" string="Selected encoder:">Odabrani enkoder:</entry>
+    <entry id="18" string="File progress:">Progres:</entry>
+    <entry id="19" string="Output dir.:">Izlazni direktorijum:</entry>
+    <entry id="20" string=" file(s) in joblist:"> fajlova u listi:</entry>
+    <entry id="21" string="none">nijedan</entry>
+    <entry id="22" string="Display information about BonkEnc">Informacije o BonkEnc-u</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Dodati fajl (ove) u listu</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Dodati sadrzaj Audio CD-a u listu</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Ukloniti odabrani fajl sa liste</entry>
+    <entry id="26" string="Clear the entire joblist">Ukloniti kompletnu listu</entry>
+    <entry id="27" string="Configure general settings">Opsta podesavanja</entry>
+    <entry id="28" string="Configure the selected audio encoder">Podesiti odabrani audio enkoder</entry>
+    <entry id="29" string="Start the encoding process">Startuj enkodovanje</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Ne mozete menjati sastav liste dok traje enkodovanje!</entry>
+    <entry id="31" string="Error">Greska</entry>
+    <entry id="32" string="Audio Files">Audio Fajlovi</entry>
+    <entry id="33" string="Apple Audio Files">Apple Audio Fajlovi</entry>
+    <entry id="34" string="Creative Voice Files">Creative Voice Fajlovi</entry>
+    <entry id="35" string="Sun Audio Files">Sun Audio Fajlovi</entry>
+    <entry id="36" string="Wave Files">Wave Fajlovi</entry>
+    <entry id="37" string="Windows CD Audio Track">Windows Audio CD Fajl</entry>
+    <entry id="38" string="All Files">Svi Fajlovi</entry>
+    <entry id="39" string="You have not selected a file!">Niste izabrali fajl!</entry>
+    <entry id="40" string="The encoding thread is still running!\nDo you really want to quit?">Enkodovanje jos uvek traje!\nDa li zaista zelite da izadjete iz programa?</entry>
+    <entry id="41" string="Currently encoding">Trenutno enkodovani fajl</entry>
+    <entry id="42" string="This program is being distributed under the terms">Ovaj program je distributovan pod termama</entry>
+    <entry id="43" string="of the GNU General Public License (GPL).">GNU General Public Licence (GPL) licence</entry>
+    <entry id="44" string="About BonkEnc">O BonkEnc-u</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE Out filter se ne moze podesavati!</entry>
+    <entry id="46" string="WAVE Out filter">WAVE Out Filter</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Ne mozete promeniti podesavanja za vreme enkodovanja!</entry>
+    <entry id="48" string="encoder configuration">konfiguracija enkodera</entry>
+    <entry id="49" string="OK">OK</entry>
+    <entry id="50" string="Cancel">Prekini</entry>
+    <entry id="51" string="Encoding Mode">Rezim rada enkodera</entry>
+    <entry id="52" string="Variable Bitrate">Varirajuci Bitrate</entry>
+    <entry id="53" string="Average Bitrate">Prosecni Bitrate</entry>
+    <entry id="54" string="Quality">Kvalitet</entry>
+    <entry id="55" string="Encoders">Enkoderi</entry>
+    <entry id="56" string="Directories">Direktorijumi</entry>
+    <entry id="57" string="Language">Jezik</entry>
+    <entry id="58" string="General settings setup">Opsta podesavanja</entry>
+    <entry id="59" string="Configure encoder">Podesavanje enkodera</entry>
+    <entry id="60" string="Encoder">Enkoder</entry>
+    <entry id="61" string="Output directory">Izlazni direktorijum</entry>
+    <entry id="62" string="Browse">Pretrazivanje</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Izaberite direktorijum u koji zelite da smestite enkodovane fajlove:</entry>
+    <entry id="64" string="Encoding">Enkodovanje</entry>
+    <entry id="65" string="Author">Autor</entry>
+    <entry id="66" string="URL">URL</entry>
+    <entry id="67" string="Information">Informacije</entry>
+    <entry id="68" string="Select language:">Izaberite jezik:</entry>
+    <entry id="69" string="Active CD-ROM drive">Aktivna CD-ROM jedinica</entry>
+    <entry id="70" string="Ripper settings">Podesavanje CD ekstraktora</entry>
+    <entry id="71" string="Activate cdparanoia mode:">Aktivirati cdparanoia rezim rada:</entry>
+    <entry id="72" string="Activate jitter correction">Aktivirati korekciju &quot;tresanja&quot;</entry>
+    <entry id="73" string="Swap left/right channel">Promeni levi/desni kanal</entry>
+    <entry id="74" string="Lock CD tray while ripping">Zakljucaj CD prilikom ekstrakcije</entry>
+    <entry id="75" string="Use native NT SCSI library">Koristi NT SCSI arhivu</entry>
+    <entry id="76" string="Overlap only">Samo Overlap</entry>
+    <entry id="77" string="No verify">Nema provere</entry>
+    <entry id="78" string="No scratch repair">Nema popravke izgrebanih delova</entry>
+    <entry id="79" string="Full cdparanoia mode">Kompletan cdparanoia rezim rada</entry>
+    <entry id="80" string="Bitrate">Bitrate</entry>
+    <entry id="81" string="Copyright bit">Copyright Bit</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">Originalni Bit</entry>
+    <entry id="84" string="Channels">Kanali</entry>
+    <entry id="85" string="Private bit">Licni Bit</entry>
+    <entry id="86" string="Set Copyright bit">Podesiti Copyright Bit</entry>
+    <entry id="87" string="Enable CRC">Aktivirati CRC</entry>
+    <entry id="88" string="Set Original bit">Podesiti Originalni Bit</entry>
+    <entry id="89" string="Dual channel encoding">Duplokanalno enkodovanje</entry>
+    <entry id="90" string="Set Private bit">Podesiti Privatni Bit</entry>
+    <entry id="91" string="Encoder mode">Rezim rada enkodera</entry>
+    <entry id="92" string="Stereo mode">Stereo</entry>
+    <entry id="93" string="Quantization">Quantization</entry>
+    <entry id="94" string="Downsampling ratio">Downsampling ratio</entry>
+    <entry id="95" string="Predictor size">Predictor size</entry>
+    <entry id="96" string="Enable lossless encoding">Aktivirati lossless enkodovanje</entry>
+    <entry id="97" string="Enable Joint Stereo">Aktivirati Joint Stereo</entry>
+    <entry id="98" string="Bitrate per channel:">Bitrate po kanalu:</entry>
+    <entry id="99" string="Preselection">Preizbor</entry>
+    <entry id="100" string="Number of preselection candidates:">Number of preselection candidates:</entry>
+    <entry id="101" string="MPEG version">MPEG verzija</entry>
+    <entry id="102" string="AAC object type">AAC object type</entry>
+    <entry id="103" string="Allow Joint Stereo">Joint Stereo</entry>
+    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Koristi Temporal Noise Shaping</entry>
+    <entry id="106" string="Maximum bandwidth">Maksimalni bandwith</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maksimalna AAC frekvencija u hercima:</entry>
+    <entry id="108" string="Basic">Osnovna podesavanja</entry>
+    <entry id="109" string="Misc">Razno</entry>
+    <entry id="110" string="Audio processing">Audio proces</entry>
+    <entry id="111" string="Set bitrate:">Podesiti Bitrate:</entry>
+    <entry id="112" string="Set ratio:">Set ratio:</entry>
+    <entry id="113" string="Set quality:">Podesiti kvalitet:</entry>
+    <entry id="114" string="worse">losiji</entry>
+    <entry id="115" string="better">bolji</entry>
+    <entry id="116" string="Auto">Automatski</entry>
+    <entry id="117" string="Stereo">Stereo</entry>
+    <entry id="118" string="Joint Stereo">Joint Stereo</entry>
+    <entry id="119" string="Force Joint Stereo">Force Joint Stereo</entry>
+    <entry id="120" string="VBR mode">VBR (Varirajuci bitrate)</entry>
+    <entry id="121" string="no VBR">bez VBR-a</entry>
+    <entry id="122" string="VBR quality">Kvalitet VBR-a</entry>
+    <entry id="123" string="ABR target bitrate">ABR target bitrate</entry>
+    <entry id="124" string="VBR bitrate range">Opseg VBR-a</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Minimalni VBR:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Maksimalni VBR:</entry>
+    <entry id="127" string="Control bits">Kontrolni bitovi</entry>
+    <entry id="128" string="Stream format">Stream format</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Enforce strict ISO compliance</entry>
+    <entry id="130" string="Padding">Padding</entry>
+    <entry id="131" string="Set padding type:">Podesiti tip padding-a:</entry>
+    <entry id="132" string="pad no frames">Bez Padding-a</entry>
+    <entry id="133" string="pad all frames">Sa Padding-om</entry>
+    <entry id="134" string="adjust padding">Podesiti padding</entry>
+    <entry id="135" string="Output sampling rate">Output sampling rate</entry>
+    <entry id="136" string="no resampling">no resampling</entry>
+    <entry id="137" string="Highpass filter">Filter za visoke tonove</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Frekvencija filtera za visoke tonove (Hz):</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Set Highpass width (Hz):</entry>
+    <entry id="140" string="Lowpass filter">Filter niskih tonova</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Frekvencija filtera za niske tonove (Hz):</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Set Lowpass width (Hz):</entry>
+    <entry id="143" string="Misc settings">Razna podesavanja</entry>
+    <entry id="144" string="Disable all filtering">Iskljuciti sve filtere</entry>
+    <entry id="145" string="MP3 Files">MP3 Fajlovi</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis Fajlovi</entry>
+    <entry id="147" string="BONK Files">BONK Fajlovi</entry>
+    <entry id="148" string="Enable CDDB">Aktivirati CDDB</entry>
+    <entry id="149" string="CDDB access mode:">Rezim rada CDDB-a:</entry>
+    <entry id="150" string="CDDB server:">CDDB Server:</entry>
+    <entry id="151" string="Port:">Port:</entry>
+    <entry id="152" string="Info">Info</entry>
+    <entry id="153" string="No freedb entry for this disk.">Za ovaj CD ne postoji freedb.</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Greska pri uspostavljanju veze sa freedb serverom.</entry>
+    <entry id="155" string="Connecting to freedb server at">Konektujem se sa freedb serverom</entry>
+    <entry id="156" string="Requesting CD information">Trazim informacije o CD-u</entry>
+    <entry id="157" string="eMail address:">eMail adresa:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Molimo vas da unesete validnu eMail adresu.</entry>
+    <entry id="159" string="No exact matches found">Nisu pronadjeni nikakvi rezultati</entry>
+    <entry id="160" string="Multiple matches found">Pronadjeno je nekoliko rezultata</entry>
+    <entry id="161" string="Matches">Rezultati</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Izaberite rezultat koji je najpriblizniji vasem CD-u:</entry>
+    <entry id="163" string="Extended CDDB settings">Prosirena CDDB podesavanja</entry>
+    <entry id="164" string="CGI scripts">CGI Scripts</entry>
+    <entry id="165" string="CDDB query script:">CDDB Anfragescript:</entry>
+    <entry id="166" string="CDDB submit script:">CDDB Sendescript:</entry>
+    <entry id="167" string="HTTP settings">Podesavanje HTTP-a</entry>
+    <entry id="168" string="Proxy settings">Podesavanje Proxy-ja</entry>
+    <entry id="169" string="no proxy">nema Proxy-ja</entry>
+    <entry id="170" string="Proxy type:">Tip Proxy-ja:</entry>
+    <entry id="171" string="Proxy server:">Proxy Server:</entry>
+  </data>
+</LangFile>

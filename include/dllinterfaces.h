@@ -92,6 +92,7 @@
 // LAME DLL API
 
 	typedef lame_global_flags *		(*LAME_INIT)					();
+	typedef int				(*LAME_SET_PRESET)				(lame_global_flags *, int);
 	typedef int				(*LAME_SET_IN_SAMPLERATE)			(lame_global_flags *, int);
 	typedef int				(*LAME_SET_NUM_CHANNELS)			(lame_global_flags *, int);
 	typedef int				(*LAME_SET_COPYRIGHT)				(lame_global_flags *, int);
@@ -125,6 +126,7 @@
 	typedef char *				(*GET_LAME_SHORT_VERSION)			();
 
 	extern LAME_INIT			 ex_lame_init;
+	extern LAME_SET_PRESET			 ex_lame_set_preset;
 	extern LAME_SET_IN_SAMPLERATE		 ex_lame_set_in_samplerate;
 	extern LAME_SET_NUM_CHANNELS		 ex_lame_set_num_channels;
 	extern LAME_SET_COPYRIGHT		 ex_lame_set_copyright;

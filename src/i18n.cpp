@@ -52,7 +52,7 @@ Int bonkTranslator::GetSupportedLanguages()
 	dir.Append("lang\\");
 	chdir(dir);
 
-	if ((handle = _findfirst("lang_*.xml", &fileData)) != -1)
+	if ((handle = _findfirst("bonkenc_*.xml", &fileData)) != -1)
 	{
 		do
 		{
@@ -203,35 +203,13 @@ String bonkTranslator::TranslateString(String string)
 
 Int bonkTranslator::ReadStrings(Document *language, bonkEncLanguageInfo *info)
 {
-	Node	*entry = language->GetRootNode()->GetNodeByName("entry");
+	Node	*entry = language->GetRootNode()->GetNodeByName("data")->GetNodeByName("entry");
 
 	while (entry != NIL)
 	{
 		if (entry->GetName() == "entry")
 		{
-			Node	*property = entry->GetNodeByName("property");
-			String	 translation;
-			Int	 checksum = 0;
-
-			do
-			{
-				if (property->GetName() == "property")
-				{
-					if (property->GetAttributeByName("name")->GetContent() == "string")
-					{
-						checksum = GetStringChecksum(property->GetContent());
-					}
-					else if (property->GetAttributeByName("name")->GetContent() == "translation")
-					{
-						translation = property->GetContent();
-					}
-				}
-
-				property = property->GetNextNode();
-			}
-			while (property != NIL);
-
-			info->strings.AddEntry(translation, checksum);
+			info->strings.AddEntry(entry->GetContent(), GetStringChecksum(entry->GetAttributeByName("string")->GetContent()));
 		}
 
 		entry = entry->GetNextNode();

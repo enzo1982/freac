@@ -43,6 +43,7 @@ BECLOSESTREAM			 ex_beCloseStream;
 BEVERSION			 ex_beVersion;
 
 LAME_INIT			 ex_lame_init;
+LAME_SET_PRESET			 ex_lame_set_preset;
 LAME_SET_IN_SAMPLERATE		 ex_lame_set_in_samplerate;
 LAME_SET_NUM_CHANNELS		 ex_lame_set_num_channels;
 LAME_SET_COPYRIGHT		 ex_lame_set_copyright;
@@ -205,6 +206,7 @@ Bool bonkEnc::LoadLAMEDLL()
 	if (lamedll == NIL) return false;
 
 	ex_lame_init				= (LAME_INIT) GetProcAddress(lamedll, "lame_init");
+	ex_lame_set_preset			= (LAME_SET_PRESET) GetProcAddress(lamedll, "lame_set_preset");
 	ex_lame_set_in_samplerate		= (LAME_SET_IN_SAMPLERATE) GetProcAddress(lamedll, "lame_set_in_samplerate");
 	ex_lame_set_num_channels		= (LAME_SET_NUM_CHANNELS) GetProcAddress(lamedll, "lame_set_num_channels");
 	ex_lame_set_copyright			= (LAME_SET_COPYRIGHT) GetProcAddress(lamedll, "lame_set_copyright");
@@ -238,6 +240,7 @@ Bool bonkEnc::LoadLAMEDLL()
 	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) GetProcAddress(lamedll, "get_lame_short_version");
 
 	if (ex_lame_init == NULL)			{ FreeLibrary(lamedll); return false; }
+	if (ex_lame_set_preset == NULL)			{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_set_in_samplerate == NULL)		{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_set_num_channels == NULL)		{ FreeLibrary(lamedll); return false; }
 	if (ex_lame_set_copyright == NULL)		{ FreeLibrary(lamedll); return false; }

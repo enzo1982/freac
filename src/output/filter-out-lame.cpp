@@ -119,86 +119,119 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 	ex_lame_set_in_samplerate(lameFlags, format->rate);
 	ex_lame_set_num_channels(lameFlags, format->channels);
 
-	ex_lame_set_copyright(lameFlags, currentConfig->lame_copyright);
-	ex_lame_set_original(lameFlags, currentConfig->lame_original);
-	ex_lame_set_extension(lameFlags, currentConfig->lame_private);
-	ex_lame_set_error_protection(lameFlags, currentConfig->lame_crc);
-	ex_lame_set_strict_ISO(lameFlags, currentConfig->lame_strict_iso);
-	ex_lame_set_padding_type(lameFlags, (Padding_type) currentConfig->lame_padding_type);
-
-	if (currentConfig->lame_resample) ex_lame_set_out_samplerate(lameFlags, currentConfig->lame_resample);
-
-	if (currentConfig->lame_vbrmode == vbr_off)
+	switch (currentConfig->lame_preset)
 	{
-		if (currentConfig->lame_set_bitrate)	ex_lame_set_brate(lameFlags, currentConfig->lame_bitrate);
-		else					ex_lame_set_compression_ratio(lameFlags, ((double)currentConfig->lame_ratio) / 100);
-	}
+		case 0:
+			ex_lame_set_copyright(lameFlags, currentConfig->lame_copyright);
+			ex_lame_set_original(lameFlags, currentConfig->lame_original);
+			ex_lame_set_extension(lameFlags, currentConfig->lame_private);
+			ex_lame_set_error_protection(lameFlags, currentConfig->lame_crc);
+			ex_lame_set_strict_ISO(lameFlags, currentConfig->lame_strict_iso);
+			ex_lame_set_padding_type(lameFlags, (Padding_type) currentConfig->lame_padding_type);
 
-	if (currentConfig->lame_set_quality)	ex_lame_set_quality(lameFlags, currentConfig->lame_quality);
-	else					ex_lame_set_quality(lameFlags, 5);
+			if (currentConfig->lame_resample) ex_lame_set_out_samplerate(lameFlags, currentConfig->lame_resample);
 
-	if (currentConfig->lame_disable_filtering)
-	{
-		ex_lame_set_lowpassfreq(lameFlags, -1);
-		ex_lame_set_highpassfreq(lameFlags, -1);
-	}
-	else
-	{
-		if (currentConfig->lame_set_lowpass) ex_lame_set_lowpassfreq(lameFlags, currentConfig->lame_lowpass);
-		if (currentConfig->lame_set_highpass) ex_lame_set_highpassfreq(lameFlags, currentConfig->lame_highpass);
+			if (currentConfig->lame_vbrmode == vbr_off)
+			{
+				if (currentConfig->lame_set_bitrate)	ex_lame_set_brate(lameFlags, currentConfig->lame_bitrate);
+				else					ex_lame_set_compression_ratio(lameFlags, ((double)currentConfig->lame_ratio) / 100);
+			}
 
-		if (currentConfig->lame_set_lowpass && currentConfig->lame_set_lowpass_width) ex_lame_set_lowpasswidth(lameFlags, currentConfig->lame_lowpass_width);
-		if (currentConfig->lame_set_highpass && currentConfig->lame_set_highpass_width) ex_lame_set_highpasswidth(lameFlags, currentConfig->lame_highpass_width);
-	}
+			if (currentConfig->lame_set_quality)	ex_lame_set_quality(lameFlags, currentConfig->lame_quality);
+			else					ex_lame_set_quality(lameFlags, 5);
 
-	if (format->channels == 2)
-	{
-		if (currentConfig->lame_stereomode == 1)	ex_lame_set_mode(lameFlags, STEREO);
-		else if (currentConfig->lame_stereomode == 2)	ex_lame_set_mode(lameFlags, JOINT_STEREO);
-		else						ex_lame_set_mode(lameFlags, NOT_SET);
+			if (currentConfig->lame_disable_filtering)
+			{
+				ex_lame_set_lowpassfreq(lameFlags, -1);
+				ex_lame_set_highpassfreq(lameFlags, -1);
+			}
+			else
+			{
+				if (currentConfig->lame_set_lowpass) ex_lame_set_lowpassfreq(lameFlags, currentConfig->lame_lowpass);
+				if (currentConfig->lame_set_highpass) ex_lame_set_highpassfreq(lameFlags, currentConfig->lame_highpass);
 
-		if (currentConfig->lame_stereomode == 2)
-		{
-			if (currentConfig->lame_forcejs)	ex_lame_set_force_ms(lameFlags, 1);
-			else					ex_lame_set_force_ms(lameFlags, 0);
-		}
-	}
-	else if (format->channels == 1)
-	{
-		ex_lame_set_mode(lameFlags, MONO);
-	}
-	else
-	{
-		ex_lame_close(lameFlags);
+				if (currentConfig->lame_set_lowpass && currentConfig->lame_set_lowpass_width) ex_lame_set_lowpasswidth(lameFlags, currentConfig->lame_lowpass_width);
+				if (currentConfig->lame_set_highpass && currentConfig->lame_set_highpass_width) ex_lame_set_highpasswidth(lameFlags, currentConfig->lame_highpass_width);
+			}
 
-		SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+			if (format->channels == 2)
+			{
+				if (currentConfig->lame_stereomode == 1)	ex_lame_set_mode(lameFlags, STEREO);
+				else if (currentConfig->lame_stereomode == 2)	ex_lame_set_mode(lameFlags, JOINT_STEREO);
+				else						ex_lame_set_mode(lameFlags, NOT_SET);
 
-		error = 1;
+				if (currentConfig->lame_stereomode == 2)
+				{
+					if (currentConfig->lame_forcejs)	ex_lame_set_force_ms(lameFlags, 1);
+					else					ex_lame_set_force_ms(lameFlags, 0);
+				}
+			}
+			else if (format->channels == 1)
+			{
+				ex_lame_set_mode(lameFlags, MONO);
+			}
+			else
+			{
+				ex_lame_close(lameFlags);
 
-		return;
-	}
+				SMOOTH::MessageBox("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
 
-	switch (currentConfig->lame_vbrmode)
-	{
-		default:
-		case vbr_off:
+				error = 1;
+
+				return;
+			}
+
+			switch (currentConfig->lame_vbrmode)
+			{
+				default:
+				case vbr_off:
+					break;
+				case vbr_abr:
+					ex_lame_set_VBR(lameFlags, vbr_abr);
+					ex_lame_set_VBR_mean_bitrate_kbps(lameFlags, currentConfig->lame_abrbitrate);
+					break;
+				case vbr_rh:
+					ex_lame_set_VBR(lameFlags, vbr_rh);
+					ex_lame_set_VBR_q(lameFlags, currentConfig->lame_vbrquality);
+					break;
+				case vbr_mtrh:
+					ex_lame_set_VBR(lameFlags, vbr_mtrh);
+					ex_lame_set_VBR_q(lameFlags, currentConfig->lame_vbrquality);
+					break;
+			}
+
+			if (currentConfig->lame_vbrmode != vbr_off && currentConfig->lame_set_min_vbr_bitrate) ex_lame_set_VBR_min_bitrate_kbps(lameFlags, currentConfig->lame_min_vbr_bitrate);
+			if (currentConfig->lame_vbrmode != vbr_off && currentConfig->lame_set_max_vbr_bitrate) ex_lame_set_VBR_max_bitrate_kbps(lameFlags, currentConfig->lame_max_vbr_bitrate);
+
 			break;
-		case vbr_abr:
-			ex_lame_set_VBR(lameFlags, vbr_abr);
-			ex_lame_set_VBR_mean_bitrate_kbps(lameFlags, currentConfig->lame_abrbitrate);
+		case 1:
+			ex_lame_set_preset(lameFlags, MEDIUM);
 			break;
-		case vbr_rh:
-			ex_lame_set_VBR(lameFlags, vbr_rh);
-			ex_lame_set_VBR_q(lameFlags, currentConfig->lame_vbrquality);
+		case 2:
+			ex_lame_set_preset(lameFlags, STANDARD);
 			break;
-		case vbr_mtrh:
-			ex_lame_set_VBR(lameFlags, vbr_mtrh);
-			ex_lame_set_VBR_q(lameFlags, currentConfig->lame_vbrquality);
+		case 3:
+			ex_lame_set_preset(lameFlags, EXTREME);
+			break;
+		case 4:
+			ex_lame_set_preset(lameFlags, INSANE);
+			break;
+		case 5:
+			ex_lame_set_preset(lameFlags, MEDIUM_FAST);
+			break;
+		case 6:
+			ex_lame_set_preset(lameFlags, STANDARD_FAST);
+			break;
+		case 7:
+			ex_lame_set_preset(lameFlags, EXTREME_FAST);
+			break;
+		case 8:
+			ex_lame_set_preset(lameFlags, R3MIX);
+			break;
+		case 9:
+			ex_lame_set_preset(lameFlags, currentConfig->lame_abrbitrate);
 			break;
 	}
-
-	if (currentConfig->lame_vbrmode != vbr_off && currentConfig->lame_set_min_vbr_bitrate) ex_lame_set_VBR_min_bitrate_kbps(lameFlags, currentConfig->lame_min_vbr_bitrate);
-	if (currentConfig->lame_vbrmode != vbr_off && currentConfig->lame_set_max_vbr_bitrate) ex_lame_set_VBR_max_bitrate_kbps(lameFlags, currentConfig->lame_max_vbr_bitrate);
 
 	ex_lame_init_params(lameFlags);
 }
