@@ -97,7 +97,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v1.x (http://www.mingw.org/) oder MSVC v6.0
-		- smooth v0.8.61.0 (http://www.smooth-project.org/)
+		- smooth v0.8.62.0 CVS (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - bei smooth dabei)
 
 	Zusätzliche optionale Software:
@@ -146,6 +146,7 @@ Pläne für zukünftige Versionen
 	- Onlinedokumentation für BonkEnc schreiben
 	- Unterstützung für rechts-nach-links Schriften verbessern
 	- Kommandozeileininterface in eigener exe Datei
+	- Online Update unterstützen
 
 -----------------------------------------------------------------------------------
 

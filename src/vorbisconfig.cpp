@@ -92,7 +92,7 @@ configureVorbisEnc::configureVorbisEnc()
 	pos.y -= 2;
 	size.cx = 248 - text_abr->GetObjectProperties()->textSize.cx;
 
-	slider_abr		= new Slider(pos, size, OR_HORZ, &abr, 32, 512);
+	slider_abr		= new Slider(pos, size, OR_HORZ, &abr, 45, 500);
 	slider_abr->onClick.Connect(&configureVorbisEnc::SetBitrate, this);
 
 	pos.x += (size.cx + 8);

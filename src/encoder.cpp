@@ -96,14 +96,14 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			for (Int k = 0, b = 0; k < bak_filename.Length(); k++)
 			{
-				if (bak_filename[k] == '\"')		{ out_filename[k + b] = '\''; out_filename[k + ++b] = '\''; }
-				else if (bak_filename[k] == '?')	b--;
-				else if (bak_filename[k] == '|')	out_filename[k + b] = '_';
-				else if (bak_filename[k] == '*')	b--;
-				else if (bak_filename[k] == '<')	out_filename[k + b] = '(';
-				else if (bak_filename[k] == '>')	out_filename[k + b] = ')';
-				else if (bak_filename[k] == ':')	b--;
-				else					out_filename[k + b] = bak_filename[k];
+				if (bak_filename[k] == '\"')			{ out_filename[k + b] = '\''; out_filename[k + ++b] = '\''; }
+				else if (bak_filename[k] == '?')		b--;
+				else if (bak_filename[k] == '|')		out_filename[k + b] = '_';
+				else if (bak_filename[k] == '*')		b--;
+				else if (bak_filename[k] == '<')		out_filename[k + b] = '(';
+				else if (bak_filename[k] == '>')		out_filename[k + b] = ')';
+				else if (bak_filename[k] == ':' && k > 1)	b--;
+				else						out_filename[k + b] = bak_filename[k];
 			}
 		}
 		else if (trackInfo->isCDTrack)
