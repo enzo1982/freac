@@ -131,13 +131,13 @@ FAACENCGETDECODERSPECIFICINFO	 ex_faacEncGetDecoderSpecificInfo	= NIL;
 FAACENCENCODE			 ex_faacEncEncode			= NIL;
 FAACENCCLOSE			 ex_faacEncClose			= NIL;
 
-FAACDECOPEN			 ex_faacDecOpen				= NIL;
-FAACDECINIT			 ex_faacDecInit				= NIL;
-FAACDECINIT2			 ex_faacDecInit2			= NIL;
-FAACDECGETCURRENTCONFIGURATION	 ex_faacDecGetCurrentConfiguration	= NIL;
-FAACDECSETCONFIGURATION		 ex_faacDecSetConfiguration		= NIL;
-FAACDECDECODE			 ex_faacDecDecode			= NIL;
-FAACDECCLOSE			 ex_faacDecClose			= NIL;
+NEAACDECOPEN			 ex_NeAACDecOpen			= NIL;
+NEAACDECINIT			 ex_NeAACDecInit			= NIL;
+NEAACDECINIT2			 ex_NeAACDecInit2			= NIL;
+NEAACDECGETCURRENTCONFIGURATION	 ex_NeAACDecGetCurrentConfiguration	= NIL;
+NEAACDECSETCONFIGURATION		 ex_NeAACDecSetConfiguration		= NIL;
+NEAACDECDECODE			 ex_NeAACDecDecode			= NIL;
+NEAACDECCLOSE			 ex_NeAACDecClose			= NIL;
 
 TVQGETVERSIONID			 ex_TvqGetVersionID			= NIL;
 TVQENCINITIALIZE		 ex_TvqEncInitialize			= NIL;
@@ -532,21 +532,21 @@ Bool bonkEnc::LoadFAAD2DLL()
 
 	if (faad2dll == NIL) return false;
 
-	ex_faacDecOpen				= (FAACDECOPEN) GetProcAddress(faad2dll, "faacDecOpen");
-	ex_faacDecInit				= (FAACDECINIT) GetProcAddress(faad2dll, "faacDecInit");
-	ex_faacDecInit2				= (FAACDECINIT2) GetProcAddress(faad2dll, "faacDecInit2");
-	ex_faacDecGetCurrentConfiguration	= (FAACDECGETCURRENTCONFIGURATION) GetProcAddress(faad2dll, "faacDecGetCurrentConfiguration");
-	ex_faacDecSetConfiguration		= (FAACDECSETCONFIGURATION) GetProcAddress(faad2dll, "faacDecSetConfiguration");
-	ex_faacDecDecode			= (FAACDECDECODE) GetProcAddress(faad2dll, "faacDecDecode");
-	ex_faacDecClose				= (FAACDECCLOSE) GetProcAddress(faad2dll, "faacDecClose");
+	ex_NeAACDecOpen				= (NEAACDECOPEN) GetProcAddress(faad2dll, "NeAACDecOpen");
+	ex_NeAACDecInit				= (NEAACDECINIT) GetProcAddress(faad2dll, "NeAACDecInit");
+	ex_NeAACDecInit2			= (NEAACDECINIT2) GetProcAddress(faad2dll, "NeAACDecInit2");
+	ex_NeAACDecGetCurrentConfiguration	= (NEAACDECGETCURRENTCONFIGURATION) GetProcAddress(faad2dll, "NeAACDecGetCurrentConfiguration");
+	ex_NeAACDecSetConfiguration		= (NEAACDECSETCONFIGURATION) GetProcAddress(faad2dll, "NeAACDecSetConfiguration");
+	ex_NeAACDecDecode			= (NEAACDECDECODE) GetProcAddress(faad2dll, "NeAACDecDecode");
+	ex_NeAACDecClose			= (NEAACDECCLOSE) GetProcAddress(faad2dll, "NeAACDecClose");
 
-	if (ex_faacDecOpen == NULL)			{ FreeLibrary(faad2dll); return false; }
-	if (ex_faacDecInit == NULL)			{ FreeLibrary(faad2dll); return false; }
-	if (ex_faacDecInit2 == NULL)			{ FreeLibrary(faad2dll); return false; }
-	if (ex_faacDecGetCurrentConfiguration == NULL)	{ FreeLibrary(faad2dll); return false; }
-	if (ex_faacDecSetConfiguration == NULL)		{ FreeLibrary(faad2dll); return false; }
-	if (ex_faacDecDecode == NULL)			{ FreeLibrary(faad2dll); return false; }
-	if (ex_faacDecClose == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_NeAACDecOpen == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_NeAACDecInit == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_NeAACDecInit2 == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_NeAACDecGetCurrentConfiguration == NULL)	{ FreeLibrary(faad2dll); return false; }
+	if (ex_NeAACDecSetConfiguration == NULL)	{ FreeLibrary(faad2dll); return false; }
+	if (ex_NeAACDecDecode == NULL)			{ FreeLibrary(faad2dll); return false; }
+	if (ex_NeAACDecClose == NULL)			{ FreeLibrary(faad2dll); return false; }
 
 	return true;
 }

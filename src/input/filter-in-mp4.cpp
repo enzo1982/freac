@@ -26,14 +26,14 @@ bool FilterInMP4::Activate()
 
 	if (mp4Track >= 0)
 	{
-		handle	= ex_faacDecOpen();
-		fConfig	= ex_faacDecGetCurrentConfiguration(handle);
+		handle	= ex_NeAACDecOpen();
+		fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
 		fConfig->defSampleRate	= 44100;
 		fConfig->defObjectType	= LOW;
 		fConfig->outputFormat	= FAAD_FMT_16BIT;
 
-		ex_faacDecSetConfiguration(handle, fConfig);
+		ex_NeAACDecSetConfiguration(handle, fConfig);
 
 		char		*buffer		= NIL;
 		unsigned long	 buffer_size	= 0;
@@ -43,7 +43,7 @@ bool FilterInMP4::Activate()
 		unsigned long	 rate;
 		unsigned char	 channels;
 
-		ex_faacDecInit2(handle, (unsigned char *) buffer, buffer_size,
+		ex_NeAACDecInit2(handle, (unsigned char *) buffer, buffer_size,
  &rate, &channels);
 
 		sampleId = 0;
@@ -56,7 +56,7 @@ bool FilterInMP4::Activate()
 
 bool FilterInMP4::Deactivate()
 {
-	if (mp4Track >= 0) ex_faacDecClose(handle);
+	if (mp4Track >= 0) ex_NeAACDecClose(handle);
 
 	ex_MP4Close(mp4File);
 
@@ -80,9 +80,9 @@ int FilterInMP4::ReadData(unsigned char **data, int size)
 
 		ex_MP4ReadSample(mp4File, mp4Track, sampleId++, &buffer, &buffer_size, NIL, NIL, NIL, NIL);
 
-		faacDecFrameInfo frameInfo;
+		NeAACDecFrameInfo frameInfo;
 
-		samples = ex_faacDecDecode(handle, &frameInfo, buffer, buffer_size);
+		samples = ex_NeAACDecDecode(handle, &frameInfo, buffer, buffer_size);
 
 		free(buffer);
 
@@ -153,21 +153,21 @@ bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 
 	if (mp4Track >= 0)
 	{
-		handle	= ex_faacDecOpen();
-		fConfig	= ex_faacDecGetCurrentConfiguration(handle);
+		handle	= ex_NeAACDecOpen();
+		fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
 		fConfig->defSampleRate	= 44100;
 		fConfig->defObjectType	= LOW;
 		fConfig->outputFormat	= FAAD_FMT_16BIT;
 
-		ex_faacDecSetConfiguration(handle, fConfig);
+		ex_NeAACDecSetConfiguration(handle, fConfig);
 
 		buffer		= NIL;
 		buffer_size	= 0;
 
 		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (unsigned char **) &buffer, &buffer_size);
 
-		ex_faacDecInit2(handle, (unsigned char *) buffer, buffer_size,
+		ex_NeAACDecInit2(handle, (unsigned char *) buffer, buffer_size,
  (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
 
 		nFormat->length		= ex_MP4GetTrackNumberOfSamples(mp4File, mp4Track) * 2048;
@@ -176,7 +176,7 @@ bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 
 		free(buffer);
 
-		ex_faacDecClose(handle);
+		ex_NeAACDecClose(handle);
 	}
 
 	ex_MP4Close(mp4File);

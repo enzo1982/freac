@@ -19,26 +19,26 @@
 #define int32_t long
 #endif
 
-#include <3rdparty/faad2/faad.h>
+#include <3rdparty/faad2/neaacdec.h>
 
 class FilterInFAAD2 : public InputFilter
 {
 	private:
-		faacDecHandle		 handle;
-		faacDecConfigurationPtr	 fConfig;
+		NeAACDecHandle			 handle;
+		NeAACDecConfigurationPtr	 fConfig;
 
-		Int			 backBufferBytes;
-		unsigned char		*backBuffer;
+		Int				 backBufferBytes;
+		unsigned char			*backBuffer;
 	public:
-					 FilterInFAAD2(bonkEncConfig *, bonkEncTrack *);
-					~FilterInFAAD2();
+						 FilterInFAAD2(bonkEncConfig *, bonkEncTrack *);
+						~FilterInFAAD2();
 
-		bool			 Activate();
-		bool			 Deactivate();
+		bool				 Activate();
+		bool				 Deactivate();
 
-		int			 ReadData(unsigned char **, int);
+		int				 ReadData(unsigned char **, int);
 
-		bonkEncTrack		*GetFileInfo(String);
+		bonkEncTrack			*GetFileInfo(String);
 };
 
 #endif

@@ -23,14 +23,14 @@ bool FilterInFAAD2::Activate()
 {
 	backBufferBytes = 0;
 
-	handle	= ex_faacDecOpen();
-	fConfig	= ex_faacDecGetCurrentConfiguration(handle);
+	handle	= ex_NeAACDecOpen();
+	fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
 	fConfig->defSampleRate	= 44100;
 	fConfig->defObjectType	= LOW;
 	fConfig->outputFormat	= FAAD_FMT_16BIT;
 
-	ex_faacDecSetConfiguration(handle, fConfig);
+	ex_NeAACDecSetConfiguration(handle, fConfig);
 
 	Int		 size = 4096;
 	unsigned char	*data = new unsigned char [size];
@@ -40,7 +40,7 @@ bool FilterInFAAD2::Activate()
 	unsigned long	 rate;
 	unsigned char	 channels;
 
-	ex_faacDecInit(handle, data, size,
+	ex_NeAACDecInit(handle, data, size,
  &rate, &channels);
 
 	delete [] data;
@@ -52,7 +52,7 @@ bool FilterInFAAD2::Activate()
 
 bool FilterInFAAD2::Deactivate()
 {
-	ex_faacDecClose(handle);
+	ex_NeAACDecClose(handle);
 
 	return true;
 }
@@ -85,9 +85,9 @@ int FilterInFAAD2::ReadData(unsigned char **data, int size)
 
 	do
 	{
-		faacDecFrameInfo	 frameInfo;
+		NeAACDecFrameInfo	 frameInfo;
 
-		samples = ex_faacDecDecode(handle, &frameInfo, *data + bytesConsumed, size - bytesConsumed);
+		samples = ex_NeAACDecDecode(handle, &frameInfo, *data + bytesConsumed, size - bytesConsumed);
 
 	        if ((frameInfo.error == 0) && (frameInfo.samples > 0))
 		{
@@ -137,14 +137,14 @@ int FilterInFAAD2::ReadData(unsigned char **data, int size)
 
 bonkEncTrack *FilterInFAAD2::GetFileInfo(String inFile)
 {
-	handle	= ex_faacDecOpen();
-	fConfig	= ex_faacDecGetCurrentConfiguration(handle);
+	handle	= ex_NeAACDecOpen();
+	fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
 	fConfig->defSampleRate	= 44100;
 	fConfig->defObjectType	= LOW;
 	fConfig->outputFormat	= FAAD_FMT_16BIT;
 
-	ex_faacDecSetConfiguration(handle, fConfig);
+	ex_NeAACDecSetConfiguration(handle, fConfig);
 
 	bonkEncTrack	*nFormat = new bonkEncTrack;
 	InStream	*f_in = OpenFile(inFile);
@@ -159,14 +159,14 @@ bonkEncTrack *FilterInFAAD2::GetFileInfo(String inFile)
 
 	f_in->InputData((void *) data, size);
 
-	ex_faacDecInit(handle, data, size,
+	ex_NeAACDecInit(handle, data, size,
  (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
 
 	delete [] data;
 
 	CloseFile(f_in);
 
-	ex_faacDecClose(handle);
+	ex_NeAACDecClose(handle);
 
 	if (currentConfig->enable_id3)
 	{

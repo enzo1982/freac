@@ -20,29 +20,29 @@
 #endif
 
 #include <3rdparty/mp4/mp4.h>
-#include <3rdparty/faad2/faad.h>
+#include <3rdparty/faad2/neaacdec.h>
 
 class FilterInMP4 : public InputFilter
 {
 	private:
-		MP4FileHandle		 mp4File;
-		faacDecHandle		 handle;
-		faacDecConfigurationPtr	 fConfig;
+		MP4FileHandle			 mp4File;
+		NeAACDecHandle			 handle;
+		NeAACDecConfigurationPtr	 fConfig;
 
-		Int			 mp4Track;
-		Int			 sampleId;
+		Int				 mp4Track;
+		Int				 sampleId;
 
-		Int			 GetAudioTrack();
+		Int				 GetAudioTrack();
 	public:
-					 FilterInMP4(bonkEncConfig *, bonkEncTrack *);
-					~FilterInMP4();
+						 FilterInMP4(bonkEncConfig *, bonkEncTrack *);
+						~FilterInMP4();
 
-		bool			 Activate();
-		bool			 Deactivate();
+		bool				 Activate();
+		bool				 Deactivate();
 
-		int			 ReadData(unsigned char **, int);
+		int				 ReadData(unsigned char **, int);
 
-		bonkEncTrack		*GetFileInfo(String);
+		bonkEncTrack			*GetFileInfo(String);
 };
 
 #endif

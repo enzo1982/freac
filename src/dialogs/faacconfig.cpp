@@ -88,15 +88,15 @@ configureFAAC::configureFAAC()
 	size.cx = 99;
 	size.cy = 0;
 
-	option_aactype_main	= new OptionBox("MAIN", pos, size, &aacType, 0);
+	option_aactype_main	= new OptionBox("MAIN", pos, size, &aacType, 1);
 
 	pos.y += 25;
 
-	option_aactype_low	= new OptionBox("LOW", pos, size, &aacType, 1);
+	option_aactype_low	= new OptionBox("LOW", pos, size, &aacType, 2);
 
 	pos.y += 25;
 
-	option_aactype_ltp	= new OptionBox("LTP", pos, size, &aacType, 3);
+	option_aactype_ltp	= new OptionBox("LTP", pos, size, &aacType, 4);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -407,9 +407,9 @@ Void configureFAAC::SetMPEGVersion()
 	}
 	else if (mpegVersion == 1) // MPEG2;
 	{
-		if (aacType == 3) // LTP
+		if (aacType == 4) // LTP
 		{
-			aacType = 0;
+			aacType = 2;
 
 			option_aactype_main->Process(SM_CHECKOPTIONBOXES, 0, 0);
 			option_aactype_low->Process(SM_CHECKOPTIONBOXES, 0, 0);
@@ -452,6 +452,16 @@ Void configureFAAC::SetFileFormat()
 		check_id3v2->Deactivate();
 		text_id3v2->Deactivate();
 		text_note->Deactivate();
+
+		option_aactype_ltp->Activate();
+
+		if (mpegVersion == 1) // MPEG2
+		{
+			mpegVersion = 0;
+
+			option_version_mpeg2->Process(SM_CHECKOPTIONBOXES, 0, 0);
+			option_version_mpeg4->Process(SM_CHECKOPTIONBOXES, 0, 0);
+		}
 	}
 	else			// raw AAC file format
 	{
@@ -463,6 +473,20 @@ Void configureFAAC::SetFileFormat()
 		check_id3v2->Activate();
 		text_id3v2->Activate();
 		text_note->Activate();
+
+		if (mpegVersion == 1) // MPEG2
+		{
+			if (aacType == 4) // LTP
+			{
+				aacType = 2;
+
+				option_aactype_main->Process(SM_CHECKOPTIONBOXES, 0, 0);
+				option_aactype_low->Process(SM_CHECKOPTIONBOXES, 0, 0);
+				option_aactype_ltp->Process(SM_CHECKOPTIONBOXES, 0, 0);
+			}
+
+			option_aactype_ltp->Deactivate();
+		}
 	}
 }
 

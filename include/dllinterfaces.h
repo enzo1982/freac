@@ -23,7 +23,7 @@
 #include <3rdparty/bladedll/bladedll.h>
 #include <3rdparty/vorbis/vorbisenc.h>
 #include <3rdparty/faac/faac.h>
-#include <3rdparty/faad2/faad.h>
+#include <3rdparty/faad2/neaacdec.h>
 #include <3rdparty/cdrip/cdrip.h>
 #include <3rdparty/lame/lame.h>
 #include <3rdparty/twinvq/twinvq.h>
@@ -283,21 +283,21 @@
 
 // FAAD2 DLL API
 
-	typedef faacDecHandle			(FAADAPI *FAACDECOPEN)				();
-	typedef long				(FAADAPI *FAACDECINIT)				(faacDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
-	typedef long				(FAADAPI *FAACDECINIT2)				(faacDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
-	typedef faacDecConfigurationPtr		(FAADAPI *FAACDECGETCURRENTCONFIGURATION)	(faacDecHandle);
-	typedef unsigned char			(FAADAPI *FAACDECSETCONFIGURATION)		(faacDecHandle, faacDecConfigurationPtr);
-	typedef void *				(FAADAPI *FAACDECDECODE)			(faacDecHandle, faacDecFrameInfo *, unsigned char *, unsigned long);
-	typedef void				(FAADAPI *FAACDECCLOSE)				(faacDecHandle);
+	typedef NeAACDecHandle			(NEAACDECAPI *NEAACDECOPEN)			();
+	typedef long				(NEAACDECAPI *NEAACDECINIT)			(NeAACDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
+	typedef long				(NEAACDECAPI *NEAACDECINIT2)			(NeAACDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
+	typedef NeAACDecConfigurationPtr	(NEAACDECAPI *NEAACDECGETCURRENTCONFIGURATION)	(NeAACDecHandle);
+	typedef unsigned char			(NEAACDECAPI *NEAACDECSETCONFIGURATION)		(NeAACDecHandle, NeAACDecConfigurationPtr);
+	typedef void *				(NEAACDECAPI *NEAACDECDECODE)			(NeAACDecHandle, NeAACDecFrameInfo *, unsigned char *, unsigned long);
+	typedef void				(NEAACDECAPI *NEAACDECCLOSE)			(NeAACDecHandle);
 
-	extern FAACDECOPEN			 ex_faacDecOpen;
-	extern FAACDECINIT			 ex_faacDecInit;
-	extern FAACDECINIT2			 ex_faacDecInit2;
-	extern FAACDECGETCURRENTCONFIGURATION	 ex_faacDecGetCurrentConfiguration;
-	extern FAACDECSETCONFIGURATION		 ex_faacDecSetConfiguration;
-	extern FAACDECDECODE			 ex_faacDecDecode;
-	extern FAACDECCLOSE			 ex_faacDecClose;
+	extern NEAACDECOPEN			 ex_NeAACDecOpen;
+	extern NEAACDECINIT			 ex_NeAACDecInit;
+	extern NEAACDECINIT2			 ex_NeAACDecInit2;
+	extern NEAACDECGETCURRENTCONFIGURATION	 ex_NeAACDecGetCurrentConfiguration;
+	extern NEAACDECSETCONFIGURATION		 ex_NeAACDecSetConfiguration;
+	extern NEAACDECDECODE			 ex_NeAACDecDecode;
+	extern NEAACDECCLOSE			 ex_NeAACDecClose;
 
 // TwinVQ DLL API
 

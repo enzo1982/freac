@@ -24,7 +24,7 @@ History
 		- added an uninstaller
 		- some other bugfixes
 		- upgraded LAME to version 3.96.1
-		- upgraded FAAC to version 1.24.0
+		- upgraded FAAC to version 1.24.1
 		- upgraded Ogg Vorbis to version 1.1
 		- fixed TwinVQ encoder crashes
 		- added support for ID3V2 tags in AAC files
