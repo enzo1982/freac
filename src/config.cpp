@@ -87,7 +87,7 @@ Bool bonkEncConfig::LoadSettings()
 	Configuration	*config = new Configuration("config.xml", False);
 
 	language = config->GetStringValue("Settings", "Language", "");
-	encoder = config->GetIntValue("Settings", "Encoder", 0);
+	encoder = config->GetIntValue("Settings", "Encoder", 2);
 	enc_outdir = config->GetStringValue("Settings", "EncoderOutDir", pDir);
 	enc_filePattern = config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
 	showTitleInfo = config->GetIntValue("Settings", "ShowTitleInfo", 0);
