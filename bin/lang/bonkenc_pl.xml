@@ -239,6 +239,22 @@
     <entry id="227" string="The output directory does not exist! Do you want to create it?">Katalog docelowy nie istnieje! Utworzyć go?</entry>
     <entry id="228" string="Filename pattern">Wzór nazw plików</entry>
     <entry id="229" string="unknown album">nieznany album</entry>
-    <entry id="230" string="Translated by %1.">Przetłumaczone %1.</entry>
+    <entry id="230" string="Translated by %1.">Tłumaczenie: %1.</entry>
+    <entry id="231" string="Select all">Wybierz wszystko</entry>
+    <entry id="232" string="Select none">Anuluj wybór</entry>
+    <entry id="233" string="Toggle selection">Odwróć wybór</entry>
+    <entry id="234" string="Show Tip of the Day">Wyświetl poradę</entry>
+    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">Program BonkEnc jest dostępny w %1 wersjach językowych.&#10;Łatwo można przetłumaczyć go na dowolny język wykorzystując&#10;dołączony program 'smooth Translator'</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis and Bonk&#10;encoders. Encoders for AAC and VQF formats are available at&#10;the BonkEnc website: %1">Dystrybucja programu zawiera konwertery dla formatów LAME,&#10;Ogg Vorbis oraz Bonk. Konwertery formatów AAC oraz VQF można&#10;pobrać z witryny programu: %1.</entry>
+    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">Program BonkEnc może korzystać z modułów wejściowych&#10;programu WinAmp 2 do obsługi innych formatów plików audio.&#10;W tym celu pliki in_*.dll WinAmp należy skopiować do katalogu&#10;BonkEnc/plugins.</entry>
+    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Możliwe jest wysyłanie do bazy CD freedb danych zawierających&#10;znaki w formacie Unicode. Dzięki temu można wysyłać dane CD&#10;w których nazwa wykonawcy czy tytuł utworu zawiera znaki&#10;spoza podstawowego zestawu, na przykład akcentowane&#10;specyficzne dla danego języka.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Jeśli podczas ekstrakcji z CD występują błędy odczytu, można to&#10;skorygować włączając korekcję drżenia na zakładce CDRip&#10;konfiguracji programu. Jeśli to nie pomoże, można użyć któregoś z&#10;trybów 'cdparanoia'</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Czy masz jakiś pomysł, jak ulepszyć program BonkEnc?&#10;Swoje sugestie możesz przekazać poprzez stronę WWW projektu&#10;BonkEnc w serwisie SourceForge - %1&#10;lub poprzez eMail do %2</entry>
+    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Czy podoba się Tobie program BonkEnc? Jest on dostępny&#10;bezpłatnie, ale możesz wspomóc jego rozwój dotując projekt&#10;BonkEnc. Pieniądze możesz przesłać do %1&#10;poprzez serwis PayPal. Więcej szczegółów znajdziesz na&#10;stronie %2.</entry>
+    <entry id="242" string="Bitrate / Quality">Przepływność / jakość</entry>
+    <entry id="243" string="Check for updates now">Sprawdź uaktualnienia</entry>
+    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">Dostępna jest nowa wersja programu!</entry>
+    <entry id="245" string="There are no updates available at the moment!">Nie ma nowej wersji programu BonkEnc</entry>
+    <entry id="246" string="Check for updates at startup">Sprawdzaj przy uruchomieniu</entry>
   </data>
 </LangFile>
