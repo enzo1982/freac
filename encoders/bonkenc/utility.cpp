@@ -1,4 +1,7 @@
 #include "utility.h"
+#include <vector>
+
+using namespace std;
 
 int bits_to_store(uint32 i)
 {

@@ -2,10 +2,7 @@
 #define UTILITY_H
 
 #include <stdlib.h>
-#include <vector>
 #include <iolib-cxx.h>
-
-using namespace std;
 
 typedef unsigned long  uint32;
 typedef unsigned short uint16;
@@ -114,8 +111,5 @@ struct bitstream_out {
       write(0);
   }
 };
-
-void write_list(const vector<int> &, bool, bitstream_out &);
-bool read_list(vector<int> &, bool, bitstream_in &);
 
 #endif

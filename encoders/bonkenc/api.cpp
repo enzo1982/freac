@@ -21,9 +21,9 @@ bool bonk_close_encoder(void *encoder)
 	return true;
 }
 
-bool bonk_encode_packet(void *encoder, vector<int> &samples)
+bool bonk_encode_packet(void *encoder, void *buffer, int bytes)
 {
-	((BONKencoder *) encoder)->store_packet(samples);
+	((BONKencoder *) encoder)->store_packet(buffer, bytes);
 
 	return true;
 }
@@ -46,9 +46,9 @@ bool bonk_close_decoder(void *decoder)
 	return true;
 }
 
-bool bonk_decode_packet(void *decoder, vector<int> &samples)
+int bonk_decode_packet(void *decoder, void *buffer, int bytes)
 {
-	return ((BONKdecoder *) decoder)->read_packet(samples);
+	return ((BONKdecoder *) decoder)->read_packet(buffer, bytes);
 }
 
 const char *bonk_get_version_string()

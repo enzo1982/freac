@@ -1,7 +1,7 @@
 /* Bonk - lossy/lossless audio compressor
-   Copyright (C) 2001  Paul Francis Harrison
+   Copyright (C) 2001 Paul Francis Harrison
 
-   Slightly modified by Robert Kausch for use with BonkEnc.
+   Modified by Robert Kausch for use with BonkEnc.
 
   This program is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by the
@@ -46,47 +46,53 @@
 // copes better with quantization, and calculates the
 // actual whitened result as it goes.
 
-void modified_levinson_durbin(vector<int> &x, 
-                              int channels, bool lossless,
-                              vector<int> &k_out) {
-  vector<int> state = x;
+void modified_levinson_durbin(vector<int> &x, int channels, bool lossless, vector<int> &k_out)
+{
+	vector<int>	 state = x;
 
-  for(int i=0;i<k_out.size();i++) {
-    int step = (i+1)*channels;
+	for (int i = 0; i < k_out.size(); i++)
+	{
+		int	 step		= (i + 1) * channels;
+		double	 xx		= 0.0;
+		double	 xy		= 0.0;
+		int	 n		= x.size() - step;
+		int	*x_ptr		= &(x[step]);
+		int	*state_ptr	= &(state[0]);
 
-    double xx=0.0, xy=0.0;
-    int n         = x.size()-step,
-       *x_ptr     = &(x[step]),
-       *state_ptr = &(state[0]);
-    for(;n>=0;n--,x_ptr++,state_ptr++) {
-      double x_value     = *x_ptr,
-             state_value = *state_ptr;
-      xx += state_value*state_value;
-      xy += x_value*state_value;
-    }
+		for( ; n > 0; n--, x_ptr++, state_ptr++)
+		{
+			double	 x_value	= *x_ptr;
+			double	 state_value	= *state_ptr;
 
-    int k;
-    if (xx == 0.0)
-      k = 0;
-    else
-      k = int(floor( -xy/xx *double(lattice_factor)/double(tap_quant[i]) +0.5 ));
+			xx += state_value * state_value;
+			xy += x_value * state_value;
+		}
 
-    if (k  > lattice_factor/tap_quant[i]) k =   lattice_factor/tap_quant[i];
-    if (-k > lattice_factor/tap_quant[i]) k = -(lattice_factor/tap_quant[i]);
+		int	 k;
 
-    k_out[i] = k;
-    k *= tap_quant[i];
+		if (xx == 0.0)	k = 0;
+		else		k = int(floor(-xy / xx * double(lattice_factor) / double(tap_quant[i]) + 0.5));
 
-    n         = x.size()-step;
-    x_ptr     = &(x[step]);
-    state_ptr = &(state[0]);
-    for(;n>=0;n--,x_ptr++,state_ptr++) {
-      int x_value     = *x_ptr,
-          state_value = *state_ptr;
-      *x_ptr     = x_value     + shift_down(k*state_value,lattice_shift);
-      *state_ptr = state_value + shift_down(k*x_value,lattice_shift);
-    }
-  }
+		if (k  > lattice_factor / tap_quant[i]) k =   lattice_factor / tap_quant[i];
+		if (-k > lattice_factor / tap_quant[i]) k = -(lattice_factor / tap_quant[i]);
+
+		k_out[i] = k;
+
+		k *= tap_quant[i];
+
+		n		= x.size() - step;
+		x_ptr		= &(x[step]);
+		state_ptr	= &(state[0]);
+
+		for( ; n > 0; n--, x_ptr++, state_ptr++)
+		{
+			int	 x_value	= *x_ptr;
+			int	 state_value	= *state_ptr;
+
+			*x_ptr		= x_value + shift_down(k * state_value, lattice_shift);
+			*state_ptr	= state_value + shift_down(k * x_value, lattice_shift);
+		}
+	}
 }
 
 void BONKencoder::begin(OutStream *_f_out, uint32 _length, uint32 _rate, int _channels, bool _lossless, bool _mid_side, int _n_taps, int _down_sampling, int _samples_per_packet, double _quant_level)
@@ -184,14 +190,19 @@ void BONKencoder::finish()
 	delete [] infoData;
 }
 
-void BONKencoder::store_packet(vector<int> &samples)
+void BONKencoder::store_packet(void *samples_buffer, int buffer_size)
 {
+	vector<int> samples(buffer_size / 2);
+
+	int i;
+
+	for (i = 0; i < buffer_size / 2; i++) samples[i] = ((short *) samples_buffer)[i];
+
 	sample_count += samples.size();
 
 	// save encoder state
 
 	int out_pos = f_out->GetPos();
-	int i;
 	int channel;
 
 	if (bit_out.bit_no == 0)
@@ -205,7 +216,7 @@ void BONKencoder::store_packet(vector<int> &samples)
 		i_out->OutputNumber(bit_out.bit_no, 1);
 	}
 
-	//samples must be correct size (samples_size)
+	// samples must be correct size (samples_size)
 
 	if (!lossless)
 		for (i = 0; i < samples.size(); i++)
@@ -367,13 +378,12 @@ void BONKdecoder::finish()
 {
 }
 
-bool BONKdecoder::read_packet(vector<int> &samples)
+int BONKdecoder::read_packet(void *samples_buffer, int buffer_size)
 {
-	if (!isBonk) return false;
-	if (!length_remaining) return false;
+	if (!isBonk) return -1;
+	if (!length_remaining) return -1;
 
-	samples.resize(samples_per_packet * down_sampling * channels);
-
+	vector<int> samples(samples_per_packet * down_sampling * channels);
 	vector<int> input_samples(samples_per_packet);
 
 	read_list(predictor.k, false, bit_in);
@@ -436,5 +446,9 @@ bool BONKdecoder::read_packet(vector<int> &samples)
 		length_remaining -= samples.size();
 	}
 
-	return true;
+	int i;
+
+	for (i = 0; i < samples.size(); i++) ((short *) samples_buffer)[i] = max(min(samples[i], 32767), -32768);
+
+	return samples.size() * 2;
 }
