@@ -147,7 +147,7 @@ bool FilterOutBONK::Activate()
 	encoder	= ex_bonk_create_encoder(d_out,
 		max((int) format->length, 0), format->rate, format->channels,
 		currentConfig->bonk_lossless, currentConfig->bonk_jstereo,
-		currentConfig->bonk_predictor, currentConfig->bonk_downsampling,
+		currentConfig->bonk_predictor, currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling,
 		int(1024.0 * format->rate / 44100),
 		0.05 * (double) currentConfig->bonk_quantization);
 

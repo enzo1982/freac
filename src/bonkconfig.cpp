@@ -246,11 +246,19 @@ Void configureBonkEnc::SetEncoderMode()
 		group_quant->Deactivate();
 		slider_quant->Deactivate();
 		text_quant->Deactivate();
+
+		group_downsampling->Deactivate();
+		slider_downsampling->Deactivate();
+		text_downsampling->Deactivate();
 	}
 	else
 	{
 		group_quant->Activate();
 		slider_quant->Activate();
 		text_quant->Activate();
+
+		group_downsampling->Activate();
+		slider_downsampling->Activate();
+		text_downsampling->Activate();
 	}
 }
