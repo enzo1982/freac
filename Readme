@@ -122,6 +122,7 @@ Future plans
 	- finish CDDB support
 	- allow command line options to configure encoder settings
 	- write online documentation for BonkEnc
+	- improve support for right-to-left scripts
 
 -----------------------------------------------------------------------------------
 

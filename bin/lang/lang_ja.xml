@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -47,6 +47,10 @@
   <entry id="58">
     <property name="string">General settings setup</property>
     <property name="translation">一般的な設定</property>
+  </entry>
+  <entry id="60">
+    <property name="string">Encoder</property>
+    <property name="translation">エンコーダー</property>
   </entry>
   <entry id="61">
     <property name="string">Output directory</property>
