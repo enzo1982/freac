@@ -35,7 +35,7 @@ class cddbMultiMatchDlg : public Application
 		Void		 OK();
 		Void		 Cancel();
 	public:
-				 cddbMultiMatchDlg(bonkEncConfig *, Bool);
+				 cddbMultiMatchDlg(Bool);
 				~cddbMultiMatchDlg();
 
 		Int		 ShowDialog();

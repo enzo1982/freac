@@ -84,7 +84,7 @@ int FilterInAIFF::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo FilterInAIFF::GetAudioFormat()
+bonkFormatInfo FilterInAIFF::GetFileInfo(S::String inFile)
 {
 	return format;
 }

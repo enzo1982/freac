@@ -29,7 +29,7 @@ class InputFilter : public IOLibFilter
 
 		virtual int		 ReadData(unsigned char **, int) = 0;
 
-		virtual bonkFormatInfo	 GetAudioFormat() = 0;
+		virtual bonkFormatInfo	 GetFileInfo(S::String) = 0;
 
 		virtual bool		 SetFileSize(unsigned int);
 

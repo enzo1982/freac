@@ -11,12 +11,12 @@
 #include <bladeconfig.h>
 #include <resources.h>
 
-configureBladeEnc::configureBladeEnc(bonkEncConfig *config)
+configureBladeEnc::configureBladeEnc()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = config;
+	currentConfig = bonkEnc::currentConfig;
 
 	bitrate = GetSliderValue();
 	crc = currentConfig->blade_crc;
@@ -25,7 +25,7 @@ configureBladeEnc::configureBladeEnc(bonkEncConfig *config)
 	priv = currentConfig->blade_private;
 	dualchannel = currentConfig->blade_dualchannel;
 
-	mainWnd			= new Window(String("BladeEnc ").Append(currentConfig->i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(String("BladeEnc ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -34,13 +34,13 @@ configureBladeEnc::configureBladeEnc(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&configureBladeEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&configureBladeEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -49,29 +49,29 @@ configureBladeEnc::configureBladeEnc(bonkEncConfig *config)
 	size.cx = 168;
 	size.cy = 43;
 
-	group_bit		= new GroupBox(currentConfig->i18n->TranslateString("Bitrate"), pos, size);
+	group_bit		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 176;
 
-	group_copyright		= new GroupBox(currentConfig->i18n->TranslateString("Copyright bit"), pos, size);
+	group_copyright		= new GroupBox(bonkEnc::i18n->TranslateString("Copyright bit"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 
-	group_crc		= new GroupBox(currentConfig->i18n->TranslateString("CRC"), pos, size);
+	group_crc		= new GroupBox(bonkEnc::i18n->TranslateString("CRC"), pos, size);
 
 	pos.x += 176;
 
-	group_original		= new GroupBox(currentConfig->i18n->TranslateString("Original bit"), pos, size);
+	group_original		= new GroupBox(bonkEnc::i18n->TranslateString("Original bit"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 
-	group_dualchannel	= new GroupBox(currentConfig->i18n->TranslateString("Channels"), pos, size);
+	group_dualchannel	= new GroupBox(bonkEnc::i18n->TranslateString("Channels"), pos, size);
 
 	pos.x += 176;
 
-	group_private		= new GroupBox(currentConfig->i18n->TranslateString("Private bit"), pos, size);
+	group_private		= new GroupBox(bonkEnc::i18n->TranslateString("Private bit"), pos, size);
 
 	pos.x = 17;
 	pos.y = 24;
@@ -91,29 +91,29 @@ configureBladeEnc::configureBladeEnc(bonkEncConfig *config)
 	pos.y -= 2;
 	size.cx += 44;
 
-	check_copyright		= new CheckBox(currentConfig->i18n->TranslateString("Set Copyright bit"), pos, size, &copyright);
+	check_copyright		= new CheckBox(bonkEnc::i18n->TranslateString("Set Copyright bit"), pos, size, &copyright);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_crc		= new CheckBox(currentConfig->i18n->TranslateString("Enable CRC"), pos, size, &crc);
+	check_crc		= new CheckBox(bonkEnc::i18n->TranslateString("Enable CRC"), pos, size, &crc);
 
 	pos.x += 176;
 
-	check_original		= new CheckBox(currentConfig->i18n->TranslateString("Set Original bit"), pos, size, &original);
+	check_original		= new CheckBox(bonkEnc::i18n->TranslateString("Set Original bit"), pos, size, &original);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_dualchannel	= new CheckBox(currentConfig->i18n->TranslateString("Dual channel encoding"), pos, size, &dualchannel);
+	check_dualchannel	= new CheckBox(bonkEnc::i18n->TranslateString("Dual channel encoding"), pos, size, &dualchannel);
 
 	pos.x += 176;
 
-	check_private		= new CheckBox(currentConfig->i18n->TranslateString("Set Private bit"), pos, size, &priv);
+	check_private		= new CheckBox(bonkEnc::i18n->TranslateString("Set Private bit"), pos, size, &priv);
 
 	RegisterObject(mainWnd);
 

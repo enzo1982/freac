@@ -81,7 +81,7 @@ int FilterInWAVE::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo FilterInWAVE::GetAudioFormat()
+bonkFormatInfo FilterInWAVE::GetFileInfo(S::String inFile)
 {
 	return format;
 }

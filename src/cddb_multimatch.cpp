@@ -11,14 +11,14 @@
 #include <cddb_multimatch.h>
 #include <resources.h>
 
-cddbMultiMatchDlg::cddbMultiMatchDlg(bonkEncConfig *currentConfig, Bool fuzzy)
+cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 {
 	Point	 pos;
 	Size	 size;
 	String	 title;
 
-	if (fuzzy)	title = currentConfig->i18n->TranslateString("No exact matches found");
-	else		title = currentConfig->i18n->TranslateString("Multiple matches found");
+	if (fuzzy)	title = bonkEnc::i18n->TranslateString("No exact matches found");
+	else		title = bonkEnc::i18n->TranslateString("Multiple matches found");
 
 	mainWnd			= new Window(title);
 	mainWnd_titlebar	= new Titlebar(false, false, true);
@@ -29,13 +29,13 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(bonkEncConfig *currentConfig, Bool fuzzy)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&cddbMultiMatchDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&cddbMultiMatchDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -44,12 +44,12 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(bonkEncConfig *currentConfig, Bool fuzzy)
 	size.cx = 330;
 	size.cy = 59;
 
-	group_match		= new GroupBox(currentConfig->i18n->TranslateString("Matches"), pos, size);
+	group_match		= new GroupBox(bonkEnc::i18n->TranslateString("Matches"), pos, size);
 
 	pos.x += 13;
 	pos.y += 11;
 
-	text_match		= new Text(currentConfig->i18n->TranslateString("Select the entry that best fits your CD:"), pos);
+	text_match		= new Text(bonkEnc::i18n->TranslateString("Select the entry that best fits your CD:"), pos);
 
 	pos.x -= 3;
 	pos.y += 19;

@@ -13,6 +13,7 @@ History
 
 	Version 0.9
 
+		- added Drag & Drop functionality
 		- added support for LAME presets
 		- added Hungarian, French, Russian and Serbian language support
 		- removed support for the META tag in BONK files
@@ -21,7 +22,7 @@ History
 		- upgraded to smooth v0.8.61.0
 		- upgraded CDRip.dll to fix some ASPI issues
 		- upgraded LAME to version 3.93.1
-		- some minor bugfixes
+		- some minor enhancements and bugfixes
 
 		Still to be done, but definitely in 0.9:
 
@@ -127,12 +128,13 @@ Future plans
 
 	- extract artist and title from the filename
 	- input filters for AAC, VQF
-	- support more audio formats (FLAC, MAC, ...)
+	- support more audio formats (FLAC, MAC, WMA, ...)
 	- allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
 	- develop an IOLib-Filters based plugin system
 	- support more languages
 	- cleanup the code
 	- finish CDDB support
+	- shell integration
 	- allow command line options to configure encoder settings
 	- write online documentation for BonkEnc
 	- improve support for right-to-left scripts

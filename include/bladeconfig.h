@@ -62,7 +62,7 @@ class configureBladeEnc : public Application
 		Int		 GetBitrate();
 		Int		 GetSliderValue();
 	public:
-				 configureBladeEnc(bonkEncConfig *);
+				 configureBladeEnc();
 				~configureBladeEnc();
 		Int		 ShowDialog();
 };

@@ -11,18 +11,18 @@
 #include <vorbisconfig.h>
 #include <resources.h>
 
-configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
+configureVorbisEnc::configureVorbisEnc()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = config;
+	currentConfig = bonkEnc::currentConfig;
 
 	quality = currentConfig->vorbis_quality;
 	abr = currentConfig->vorbis_bitrate;
 	mode = currentConfig->vorbis_mode;
 
-	mainWnd			= new Window(String("Ogg Vorbis ").Append(currentConfig->i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(String("Ogg Vorbis ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 	mainWnd_layer_vbr	= new Layer();
@@ -33,13 +33,13 @@ configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&configureVorbisEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&configureVorbisEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -48,29 +48,29 @@ configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
 	size.cx = 344;
 	size.cy = 43;
 
-	group_mode		= new GroupBox(currentConfig->i18n->TranslateString("Encoding Mode"), pos, size);
+	group_mode		= new GroupBox(bonkEnc::i18n->TranslateString("Encoding Mode"), pos, size);
 
 	size.cy = 84;
 
-	group_mode2		= new GroupBox(currentConfig->i18n->TranslateString("Encoding Mode"), pos, size);
+	group_mode2		= new GroupBox(bonkEnc::i18n->TranslateString("Encoding Mode"), pos, size);
 
 	pos.x = 17;
 	pos.y = 24;
 	size.cx = 157;
 	size.cy = 0;
 
-	option_mode_vbr		= new OptionBox(String("VBR (").Append(currentConfig->i18n->TranslateString("Variable Bitrate")).Append(")"), pos, size, &mode, 0);
+	option_mode_vbr		= new OptionBox(String("VBR (").Append(bonkEnc::i18n->TranslateString("Variable Bitrate")).Append(")"), pos, size, &mode, 0);
 	option_mode_vbr->onClick.Connect(&configureVorbisEnc::SetMode, this);
 
 	pos.x += 166;
 
-	option_mode_abr		= new OptionBox(String("ABR (").Append(currentConfig->i18n->TranslateString("Average Bitrate")).Append(")"), pos, size, &mode, 1);
+	option_mode_abr		= new OptionBox(String("ABR (").Append(bonkEnc::i18n->TranslateString("Average Bitrate")).Append(")"), pos, size, &mode, 1);
 	option_mode_abr->onClick.Connect(&configureVorbisEnc::SetMode, this);
 
 	pos.x = 19;
 	pos.y += 43;
 
-	text_quality		= new Text(currentConfig->i18n->TranslateString("Quality").Append(":"), pos);
+	text_quality		= new Text(bonkEnc::i18n->TranslateString("Quality").Append(":"), pos);
 
 	pos.x += (text_quality->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 2;
@@ -86,7 +86,7 @@ configureVorbisEnc::configureVorbisEnc(bonkEncConfig *config)
 
 	pos.x = 19;
 
-	text_abr		= new Text(currentConfig->i18n->TranslateString("Average Bitrate").Append(":"), pos);
+	text_abr		= new Text(bonkEnc::i18n->TranslateString("Average Bitrate").Append(":"), pos);
 
 	pos.x += (text_abr->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 2;

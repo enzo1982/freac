@@ -42,7 +42,7 @@ class configureTVQ : public Application
 		Void		 OK();
 		Void		 Cancel();
 	public:
-				 configureTVQ(bonkEncConfig *);
+				 configureTVQ();
 				~configureTVQ();
 		Int		 ShowDialog();
 };

@@ -61,7 +61,7 @@ class configureBonkEnc : public Application
 		Void		 SetDownsamplingRatio();
 		Void		 SetEncoderMode();
 	public:
-				 configureBonkEnc(bonkEncConfig *);
+				 configureBonkEnc();
 				~configureBonkEnc();
 		Int		 ShowDialog();
 };

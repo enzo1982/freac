@@ -11,12 +11,12 @@
 #include <faacconfig.h>
 #include <resources.h>
 
-configureFAAC::configureFAAC(bonkEncConfig *config)
+configureFAAC::configureFAAC()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = config;
+	currentConfig = bonkEnc::currentConfig;
 
 	mpegVersion = currentConfig->faac_mpegversion;
 	aacType = currentConfig->faac_type;
@@ -24,7 +24,7 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	allowjs = currentConfig->faac_allowjs;
 	usetns = currentConfig->faac_usetns;
 
-	mainWnd			= new Window(String("FAAC ").Append(currentConfig->i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(String("FAAC ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -33,13 +33,13 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&configureFAAC::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&configureFAAC::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -48,7 +48,7 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 120;
 	size.cy = 65;
 
-	group_version		= new GroupBox(currentConfig->i18n->TranslateString("MPEG version"), pos, size);
+	group_version		= new GroupBox(bonkEnc::i18n->TranslateString("MPEG version"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -68,7 +68,7 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 120;
 	size.cy = 90;
 
-	group_aactype		= new GroupBox(currentConfig->i18n->TranslateString("AAC object type"), pos, size);
+	group_aactype		= new GroupBox(bonkEnc::i18n->TranslateString("AAC object type"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -91,12 +91,12 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 320;
 	size.cy = 43;
 
-	group_bitrate		= new GroupBox(currentConfig->i18n->TranslateString("Bitrate"), pos, size);
+	group_bitrate		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 11;
 	pos.y += 15;
 
-	text_bitrate		= new Text(currentConfig->i18n->TranslateString("Bitrate per channel:"), pos);
+	text_bitrate		= new Text(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos);
 
 	pos.x += (text_bitrate->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 2;
@@ -123,40 +123,40 @@ configureFAAC::configureFAAC(bonkEncConfig *config)
 	size.cx = 129;
 	size.cy = 43;
 
-	group_js		= new GroupBox(currentConfig->i18n->TranslateString("Stereo mode"), pos, size);
+	group_js		= new GroupBox(bonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 108;
 	size.cy = 0;
 
-	check_js		= new CheckBox(currentConfig->i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
+	check_js		= new CheckBox(bonkEnc::i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
 
 	pos.x = 272;
 	pos.y = 66;
 	size.cx = 183;
 	size.cy = 43;
 
-	group_tns		= new GroupBox(currentConfig->i18n->TranslateString("Temporal Noise Shaping"), pos, size);
+	group_tns		= new GroupBox(bonkEnc::i18n->TranslateString("Temporal Noise Shaping"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 162;
 	size.cy = 0;
 
-	check_tns		= new CheckBox(currentConfig->i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
+	check_tns		= new CheckBox(bonkEnc::i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
 
 	pos.x = 135;
 	pos.y = 121;
 	size.cx = 320;
 	size.cy = 43;
 
-	group_bandwidth		= new GroupBox(currentConfig->i18n->TranslateString("Maximum bandwidth"), pos, size);
+	group_bandwidth		= new GroupBox(bonkEnc::i18n->TranslateString("Maximum bandwidth"), pos, size);
 
 	pos.x += 11;
 	pos.y += 15;
 
-	text_bandwidth		= new Text(currentConfig->i18n->TranslateString("Maximum AAC frequency bandwidth to use (Hz):"), pos);
+	text_bandwidth		= new Text(bonkEnc::i18n->TranslateString("Maximum AAC frequency bandwidth to use (Hz):"), pos);
 
 	pos.x += (text_bandwidth->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 3;

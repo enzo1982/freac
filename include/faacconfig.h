@@ -67,7 +67,7 @@ class configureFAAC : public Application
 		Void		 SetBitrate();
 		Void		 SetBitrateByEditBox();
 	public:
-				 configureFAAC(bonkEncConfig *);
+				 configureFAAC();
 				~configureFAAC();
 		Int		 ShowDialog();
 };

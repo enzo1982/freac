@@ -80,7 +80,7 @@ int FilterInAU::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo FilterInAU::GetAudioFormat()
+bonkFormatInfo FilterInAU::GetFileInfo(S::String inFile)
 {
 	return format;
 }

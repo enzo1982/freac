@@ -11,20 +11,25 @@
 #include <iolib-cxx.h>
 #include <input/filter-in-bonk.h>
 #include <dllinterfaces.h>
+#include <id3/tag.h>
 
 FilterInBONK::FilterInBONK(bonkEncConfig *config) : InputFilter(config)
 {
 	setup	= false;
-	f_in	= NULL;
+	f_in	= NIL;
+	decoder	= NIL;
 
 	packageSize = 0;
 }
 
 FilterInBONK::~FilterInBONK()
 {
-	ex_bonk_close_decoder(decoder);
+	if (decoder != NIL)
+	{
+		ex_bonk_close_decoder(decoder);
 
-	delete f_in;
+		delete f_in;
+	}
 }
 
 int FilterInBONK::ReadData(unsigned char **data, int size)
@@ -56,7 +61,103 @@ int FilterInBONK::ReadData(unsigned char **data, int size)
 	return samples.size() * 2;
 }
 
-bonkFormatInfo FilterInBONK::GetAudioFormat()
+bonkFormatInfo FilterInBONK::GetFileInfo(S::String inFile)
 {
-	return format;
+	bonkFormatInfo	 nFormat;
+	InStream	*in = new InStream(STREAM_FILE, inFile);
+	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat.length, (uint32 *) &nFormat.rate, (int *) &nFormat.channels);
+
+	nFormat.order = BYTE_INTEL;
+	nFormat.bits = 16;
+	nFormat.trackInfo = NIL;
+
+	ex_bonk_close_decoder(decoder);
+
+	in->Seek(in->Size() - 4);
+
+	bool		 loop = true;
+	unsigned char	*id3tag = NIL;
+	int		 id3tag_size = 0;
+
+	do
+	{
+		switch (in->InputNumber(4))
+		{
+			case 862218528: // ' id3' string
+			{
+				in->RelSeek(-8);
+
+				id3tag_size = in->InputNumber(4) - 10;
+
+				in->RelSeek(-id3tag_size - 4);
+
+				id3tag = new unsigned char [id3tag_size];
+
+				for (int j = 0; j < id3tag_size; j++) id3tag[j] = in->InputNumber(1);
+
+				in->RelSeek(-id3tag_size - 2);
+
+				break;
+			}
+			case 1802399586: // 'bonk' string
+			case 1868983913: // 'info' string
+			{
+				in->RelSeek(-8);
+				in->RelSeek(4 - in->InputNumber(4));
+
+				break;
+			}
+			default:
+			{
+				loop = false;
+
+				break;
+			}
+		}
+
+		if (in->GetPos() == 0)	loop = false;
+		else if (loop)		in->RelSeek(-4);
+	}
+	while (loop);
+
+	delete in;
+
+	if (id3tag_size > 0) 
+	{
+		ID3_Tag		*tag = new ID3_Tag();
+		ID3_Frame	*frame;
+		ID3_Field	*field;
+		int		 tbufsize = 1024;
+		char		*tbuffer = new char [tbufsize];
+
+		nFormat.trackInfo = new bonkTrackInfo;
+
+		nFormat.trackInfo->track = -1;
+		nFormat.trackInfo->outfile = NIL;
+		nFormat.trackInfo->cdText = True;
+
+		tag->Parse(id3tag, id3tag_size);
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_LEADARTIST)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
+		nFormat.trackInfo->artist = tbuffer;
+
+		tbuffer[0] = 0;
+		if ((frame = tag->Find(ID3FID_TITLE)) != NIL)
+			if ((field = frame->GetField(ID3FN_TEXT)) != NIL) field->Get(tbuffer, tbufsize);
+		nFormat.trackInfo->title = tbuffer;
+
+		if (nFormat.trackInfo->artist.Length() != 0 || nFormat.trackInfo->title.Length() != 0)
+		{
+			if (nFormat.trackInfo->artist.Length() == 0) nFormat.trackInfo->artist = "unknown artist";
+			if (nFormat.trackInfo->title.Length() == 0) nFormat.trackInfo->title = "unknown title";
+		}
+
+		delete [] tbuffer;
+		delete [] id3tag;
+		delete tag;
+	}
+
+	return nFormat;
 }

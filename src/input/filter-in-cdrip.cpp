@@ -193,7 +193,7 @@ int FilterInCDRip::GetTrackSize()
 	return trackSize;
 }
 
-bonkFormatInfo FilterInCDRip::GetAudioFormat()
+bonkFormatInfo FilterInCDRip::GetFileInfo(S::String inFile)
 {
 	bonkFormatInfo	 format;
 

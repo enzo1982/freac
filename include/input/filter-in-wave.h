@@ -24,7 +24,7 @@ class FilterInWAVE : public InputFilter
 
 		int		 ReadData(unsigned char **, int);
 
-		bonkFormatInfo	 GetAudioFormat();
+		bonkFormatInfo	 GetFileInfo(S::String);
 };
 
 #endif

@@ -95,7 +95,7 @@ class configureGeneralSettings : public Application
 		Void		 HTTPSettings();
 		Void		 ProxySettings();
 	public:
-				 configureGeneralSettings(bonkEncConfig *);
+				 configureGeneralSettings();
 				~configureGeneralSettings();
 		Int		 ShowDialog();
 };

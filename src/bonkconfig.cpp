@@ -11,12 +11,12 @@
 #include <bonkconfig.h>
 #include <resources.h>
 
-configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
+configureBonkEnc::configureBonkEnc()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = config;
+	currentConfig = bonkEnc::currentConfig;
 
 	quant = currentConfig->bonk_quantization;
 	predictor = currentConfig->bonk_predictor;
@@ -24,7 +24,7 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	jstereo = currentConfig->bonk_jstereo;
 	lossless = currentConfig->bonk_lossless;
 
-	mainWnd			= new Window(String("BonkEnc ").Append(currentConfig->i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(String("BonkEnc ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -33,13 +33,13 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&configureBonkEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&configureBonkEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -48,38 +48,38 @@ configureBonkEnc::configureBonkEnc(bonkEncConfig *config)
 	size.cx = 168;
 	size.cy = 43;
 
-	group_mode		= new GroupBox(currentConfig->i18n->TranslateString("Encoder mode"), pos, size);
+	group_mode		= new GroupBox(bonkEnc::i18n->TranslateString("Encoder mode"), pos, size);
 
 	pos.x += 176;
 
-	group_stereo		= new GroupBox(currentConfig->i18n->TranslateString("Stereo mode"), pos, size);
+	group_stereo		= new GroupBox(bonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 
-	group_quant		= new GroupBox(currentConfig->i18n->TranslateString("Quantization"), pos, size);
+	group_quant		= new GroupBox(bonkEnc::i18n->TranslateString("Quantization"), pos, size);
 
 	pos.x += 176;
 
-	group_downsampling	= new GroupBox(currentConfig->i18n->TranslateString("Downsampling ratio"), pos, size);
+	group_downsampling	= new GroupBox(bonkEnc::i18n->TranslateString("Downsampling ratio"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 	size.cx += 176;
 
-	group_predictor		= new GroupBox(currentConfig->i18n->TranslateString("Predictor size"), pos, size);
+	group_predictor		= new GroupBox(bonkEnc::i18n->TranslateString("Predictor size"), pos, size);
 
 	pos.x = 17;
 	pos.y = 24;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_lossless		= new CheckBox(currentConfig->i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless);
+	check_lossless		= new CheckBox(bonkEnc::i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless);
 	check_lossless->onClick.Connect(&configureBonkEnc::SetEncoderMode, this);
 
 	pos.x += 176;
 
-	check_joint		= new CheckBox(currentConfig->i18n->TranslateString("Enable Joint Stereo"), pos, size, &jstereo);
+	check_joint		= new CheckBox(bonkEnc::i18n->TranslateString("Enable Joint Stereo"), pos, size, &jstereo);
 
 	pos.x = 17;
 	pos.y += 55;

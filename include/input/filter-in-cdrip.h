@@ -29,7 +29,7 @@ class FilterInCDRip : public InputFilter
 		bool		 SetTrack(int);
 		int		 GetTrackSize();
 
-		bonkFormatInfo	 GetAudioFormat();
+		bonkFormatInfo	 GetFileInfo(S::String);
 };
 
 #endif

@@ -112,7 +112,7 @@ int FilterInVOC::ReadData(unsigned char **data, int size)
 	return outsize;
 }
 
-bonkFormatInfo FilterInVOC::GetAudioFormat()
+bonkFormatInfo FilterInVOC::GetFileInfo(S::String inFile)
 {
 	return format;
 }

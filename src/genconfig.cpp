@@ -28,12 +28,12 @@
 #include <cddb.h>
 #include <cddb_extsettings.h>
 
-configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
+configureGeneralSettings::configureGeneralSettings()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = config;
+	currentConfig = bonkEnc::currentConfig;
 
 	cdparanoia = currentConfig->cdrip_paranoia;
 	jitter = currentConfig->cdrip_jitter;
@@ -42,13 +42,13 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	ntscsi = currentConfig->cdrip_ntscsi;
 	cddb = currentConfig->enable_cddb;
 
-	mainWnd			= new Window(currentConfig->i18n->TranslateString("General settings setup"));
+	mainWnd			= new Window(bonkEnc::i18n->TranslateString("General settings setup"));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
-	register_layer_encoders	= new Layer(currentConfig->i18n->TranslateString("Encoders"));
-	register_layer_dirs	= new Layer(currentConfig->i18n->TranslateString("Directories"));
-	register_layer_language	= new Layer(currentConfig->i18n->TranslateString("Language"));
+	register_layer_encoders	= new Layer(bonkEnc::i18n->TranslateString("Encoders"));
+	register_layer_dirs	= new Layer(bonkEnc::i18n->TranslateString("Directories"));
+	register_layer_language	= new Layer(bonkEnc::i18n->TranslateString("Language"));
 	register_layer_cdrip	= new Layer("CDRip");
 	register_layer_cddb	= new Layer("CDDB");
 
@@ -57,13 +57,13 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&configureGeneralSettings::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&configureGeneralSettings::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -79,7 +79,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 344;
 	size.cy = 43;
 
-	encoders_group_encoder	= new GroupBox(currentConfig->i18n->TranslateString("Encoder"), pos, size);
+	encoders_group_encoder	= new GroupBox(bonkEnc::i18n->TranslateString("Encoder"), pos, size);
 
 	pos.x = 17;
 	pos.y = 23;
@@ -88,7 +88,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 
 	encoders_combo_encoder	= new ComboBox(pos, size);
 
-	if (config->enable_blade)
+	if (currentConfig->enable_blade)
 	{
 		String		 bladeVersion = "";
 		BE_VERSION	 beVer;
@@ -100,12 +100,12 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 		encoders_combo_encoder->AddEntry(String("BladeEnc ").Append(bladeVersion));
 	}
 
-	if (config->enable_bonk)	encoders_combo_encoder->AddEntry(String("BonkEnc v").Append(ex_bonk_get_version_string()));
-	if (config->enable_faac)	encoders_combo_encoder->AddEntry(String("FAAC v").Append(String::DoubleToString(FAACENC_VERSION)));
-	if (config->enable_lame)	encoders_combo_encoder->AddEntry(String("LAME v").Append(ex_get_lame_short_version()));
-	if (config->enable_vorbis)	encoders_combo_encoder->AddEntry(String("Ogg Vorbis v1.0"));
+	if (currentConfig->enable_bonk)		encoders_combo_encoder->AddEntry(String("BonkEnc v").Append(ex_bonk_get_version_string()));
+	if (currentConfig->enable_faac)		encoders_combo_encoder->AddEntry(String("FAAC v").Append(String::DoubleToString(FAACENC_VERSION)));
+	if (currentConfig->enable_lame)		encoders_combo_encoder->AddEntry(String("LAME v").Append(ex_get_lame_short_version()));
+	if (currentConfig->enable_vorbis)	encoders_combo_encoder->AddEntry(String("Ogg Vorbis v1.0"));
 
-	if (config->enable_tvq)
+	if (currentConfig->enable_tvq)
 	{
 		char		 tvqVersionID[13];
 
@@ -116,13 +116,13 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 
 	encoders_combo_encoder->AddEntry(String("WAVE Out Filter v0.9"));
 
-	encoders_combo_encoder->SelectEntry(config->encoder);
+	encoders_combo_encoder->SelectEntry(currentConfig->encoder);
 
 	pos.y -= 1;
 	pos.x += 194;
 	size.cx = 130;
 
-	encoders_button_config	= new Button(currentConfig->i18n->TranslateString("Configure encoder"), NIL, pos, size);
+	encoders_button_config	= new Button(bonkEnc::i18n->TranslateString("Configure encoder"), NIL, pos, size);
 	encoders_button_config->onClick.Connect(&configureGeneralSettings::ConfigureEncoder, this);
 
 	pos.x = 7;
@@ -130,7 +130,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 344;
 	size.cy = 43;
 
-	dirs_group_outdir	= new GroupBox(currentConfig->i18n->TranslateString("Output directory"), pos, size);
+	dirs_group_outdir	= new GroupBox(bonkEnc::i18n->TranslateString("Output directory"), pos, size);
 
 	pos.x = 17;
 	pos.y = 23;
@@ -143,7 +143,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.y -= 1;
 	size.cx = 0;
 
-	dirs_button_outdir_browse= new Button(currentConfig->i18n->TranslateString("Browse"), NIL, pos, size);
+	dirs_button_outdir_browse= new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
 	dirs_button_outdir_browse->onClick.Connect(&configureGeneralSettings::SelectDir, this);
 
 	pos.x = 7;
@@ -151,7 +151,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 344;
 	size.cy = 77;
 
-	language_group_info	= new GroupBox(currentConfig->i18n->TranslateString("Information"), pos, size);
+	language_group_info	= new GroupBox(bonkEnc::i18n->TranslateString("Information"), pos, size);
 
 	pos.x += 9;
 	pos.y += 11;
@@ -168,12 +168,12 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 344;
 	size.cy = 43;
 
-	language_group_language	= new GroupBox(currentConfig->i18n->TranslateString("Language"), pos, size);
+	language_group_language	= new GroupBox(bonkEnc::i18n->TranslateString("Language"), pos, size);
 
 	pos.x += 9;
 	pos.y += 15;
 
-	language_text_language	= new Text(currentConfig->i18n->TranslateString("Select language:"), pos);
+	language_text_language	= new Text(bonkEnc::i18n->TranslateString("Select language:"), pos);
 
 	pos.x += (language_text_language->GetObjectProperties()->textSize.cx + 8);
 	pos.y = 23;
@@ -183,11 +183,11 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	language_combo_language	= new ComboBox(pos, size);
 	language_combo_language->onClick.Connect(&configureGeneralSettings::SelectLanguage, this);
 
-	for (int i = 0; i < currentConfig->i18n->GetNOfLanguages(); i++)
+	for (int i = 0; i < bonkEnc::i18n->GetNOfLanguages(); i++)
 	{
-		language_combo_language->AddEntry(currentConfig->i18n->GetNthLanguageName(i));
+		language_combo_language->AddEntry(bonkEnc::i18n->GetNthLanguageName(i));
 
-		if (currentConfig->language == currentConfig->i18n->GetNthLanguageID(i)) language_combo_language->SelectEntry(i);
+		if (currentConfig->language == bonkEnc::i18n->GetNthLanguageID(i)) language_combo_language->SelectEntry(i);
 	}
 
 	SelectLanguage();
@@ -197,7 +197,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 344;
 	size.cy = 43;
 
-	cdrip_group_drive	= new GroupBox(currentConfig->i18n->TranslateString("Active CD-ROM drive"), pos, size);
+	cdrip_group_drive	= new GroupBox(bonkEnc::i18n->TranslateString("Active CD-ROM drive"), pos, size);
 
 	pos.x = 17;
 	pos.y = 23;
@@ -219,14 +219,14 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 344;
 	size.cy = 90;
 
-	cdrip_group_ripping	= new GroupBox(currentConfig->i18n->TranslateString("Ripper settings"), pos, size);
+	cdrip_group_ripping	= new GroupBox(bonkEnc::i18n->TranslateString("Ripper settings"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 157;
 	size.cy = 0;
 
-	cdrip_check_paranoia	= new CheckBox(currentConfig->i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia);
+	cdrip_check_paranoia	= new CheckBox(bonkEnc::i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia);
 	cdrip_check_paranoia->onClick.Connect(&configureGeneralSettings::SetParanoia, this);
 
 	pos.x += 166;
@@ -235,10 +235,10 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cy = 0;
 
 	cdrip_combo_paranoia_mode= new ComboBox(pos, size);
-	cdrip_combo_paranoia_mode->AddEntry(currentConfig->i18n->TranslateString("Overlap only"));
-	cdrip_combo_paranoia_mode->AddEntry(currentConfig->i18n->TranslateString("No verify"));
-	cdrip_combo_paranoia_mode->AddEntry(currentConfig->i18n->TranslateString("No scratch repair"));
-	cdrip_combo_paranoia_mode->AddEntry(currentConfig->i18n->TranslateString("Full cdparanoia mode"));
+	cdrip_combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("Overlap only"));
+	cdrip_combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("No verify"));
+	cdrip_combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("No scratch repair"));
+	cdrip_combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("Full cdparanoia mode"));
 	cdrip_combo_paranoia_mode->SelectEntry(currentConfig->cdrip_paranoia_mode);
 	if (!cdparanoia) cdrip_combo_paranoia_mode->Deactivate();
 
@@ -247,20 +247,20 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 157;
 	size.cy = 0;
 
-	cdrip_check_jitter	= new CheckBox(currentConfig->i18n->TranslateString("Activate jitter correction"), pos, size, &jitter);
+	cdrip_check_jitter	= new CheckBox(bonkEnc::i18n->TranslateString("Activate jitter correction"), pos, size, &jitter);
 
 	pos.x += 166;
 
-	cdrip_check_swapchannels= new CheckBox(currentConfig->i18n->TranslateString("Swap left/right channel"), pos, size, &swapchannels);
+	cdrip_check_swapchannels= new CheckBox(bonkEnc::i18n->TranslateString("Swap left/right channel"), pos, size, &swapchannels);
 
 	pos.x -= 166;
 	pos.y += 25;
 
-	cdrip_check_locktray	= new CheckBox(currentConfig->i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
+	cdrip_check_locktray	= new CheckBox(bonkEnc::i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
 
 	pos.x += 166;
 
-	cdrip_check_ntscsi	= new CheckBox(currentConfig->i18n->TranslateString("Use native NT SCSI library"), pos, size, &ntscsi);
+	cdrip_check_ntscsi	= new CheckBox(bonkEnc::i18n->TranslateString("Use native NT SCSI library"), pos, size, &ntscsi);
 
 	OSVERSIONINFOA	 vInfo;
 
@@ -275,21 +275,21 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	size.cx = 344;
 	size.cy = 123;
 
-	cddb_group_cddb		= new GroupBox(String("      ").Append(currentConfig->i18n->TranslateString("Enable CDDB")).Append(" "), pos, size);
+	cddb_group_cddb		= new GroupBox(String("      ").Append(bonkEnc::i18n->TranslateString("Enable CDDB")).Append(" "), pos, size);
 
 	pos.x += 12;
 	pos.y -= 8;
 	size.cx = 84;
 	size.cy = 0;
 
-	cddb_check_enable	= new CheckBox(currentConfig->i18n->TranslateString("Enable CDDB"), pos, size, &cddb);
+	cddb_check_enable	= new CheckBox(bonkEnc::i18n->TranslateString("Enable CDDB"), pos, size, &cddb);
 	cddb_check_enable->onClick.Connect(&configureGeneralSettings::SetCDDB, this);
 	cddb_check_enable->SetMetrics(pos, Size(cddb_check_enable->GetObjectProperties()->textSize.cx + 19, cddb_check_enable->GetObjectProperties()->size.cy));
 
 	pos.x -= 3;
 	pos.y += 21;
 
-	cddb_text_mode		= new Text(currentConfig->i18n->TranslateString("CDDB access mode:"), pos);
+	cddb_text_mode		= new Text(bonkEnc::i18n->TranslateString("CDDB access mode:"), pos);
 
 	pos.x += 106;
 	pos.y -= 3;
@@ -304,7 +304,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.x -= 106;
 	pos.y += 30;
 
-	cddb_text_server	= new Text(currentConfig->i18n->TranslateString("CDDB server:"), pos);
+	cddb_text_server	= new Text(bonkEnc::i18n->TranslateString("CDDB server:"), pos);
 
 	pos.x += 106;
 	pos.y -= 3;
@@ -315,7 +315,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.x += 153;
 	pos.y += 3;
 
-	cddb_text_port		= new Text(currentConfig->i18n->TranslateString("Port:"), pos);
+	cddb_text_port		= new Text(bonkEnc::i18n->TranslateString("Port:"), pos);
 	cddb_text_port->SetPosition(Point(296 - cddb_text_port->GetObjectProperties()->textSize.cx, cddb_text_port->GetObjectProperties()->pos.y));
 
 	pos.x += 29;
@@ -327,7 +327,7 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.x = 16;
 	pos.y += 30;
 
-	cddb_text_email		= new Text(currentConfig->i18n->TranslateString("eMail address:"), pos);
+	cddb_text_email		= new Text(bonkEnc::i18n->TranslateString("eMail address:"), pos);
 
 	pos.x += 106;
 	pos.y -= 3;
@@ -339,12 +339,12 @@ configureGeneralSettings::configureGeneralSettings(bonkEncConfig *config)
 	pos.y += 27;
 	size.cx = 158;
 
-	cddb_button_http	= new Button(currentConfig->i18n->TranslateString("HTTP settings"), NULL, pos, size);
+	cddb_button_http	= new Button(bonkEnc::i18n->TranslateString("HTTP settings"), NULL, pos, size);
 	cddb_button_http->onClick.Connect(&configureGeneralSettings::HTTPSettings, this);
 
 	pos.x += 166;
 
-	cddb_button_proxy	= new Button(currentConfig->i18n->TranslateString("Proxy settings"), NULL, pos, size);
+	cddb_button_proxy	= new Button(bonkEnc::i18n->TranslateString("Proxy settings"), NULL, pos, size);
 	cddb_button_proxy->onClick.Connect(&configureGeneralSettings::ProxySettings, this);
 
 	SetCDDBMode();
@@ -542,7 +542,7 @@ Void configureGeneralSettings::OK()
 
 		if (!valid)
 		{
-			SMOOTH::MessageBox(currentConfig->i18n->TranslateString("Please enter a valid eMail address."), currentConfig->i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+			SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Please enter a valid eMail address."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 			return;
 		}
@@ -550,9 +550,9 @@ Void configureGeneralSettings::OK()
 
 	currentConfig->encoder = encoders_combo_encoder->GetSelectedEntry();
 
-	if (currentConfig->language != currentConfig->i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry())) currentConfig->languageChanged = true;
+	if (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry())) currentConfig->languageChanged = true;
 
-	currentConfig->language = currentConfig->i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry());
+	currentConfig->language = bonkEnc::i18n->GetNthLanguageID(language_combo_language->GetSelectedEntry());
 	currentConfig->enc_outdir = dirs_edit_outdir->GetText();
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) currentConfig->cdrip_activedrive = cdrip_combo_drive->GetSelectedEntry();
@@ -589,7 +589,7 @@ Void configureGeneralSettings::SelectDir()
 	DialogDirSelection	*dialog = new DialogDirSelection();
 
 	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(currentConfig->i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetCaption(String("\n").Append(bonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
 
 	if (dialog->ShowDialog() == Success)
 	{
@@ -603,7 +603,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 {
 	if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_BONKENC)
 	{
-		configureBonkEnc	*dlg = new configureBonkEnc(currentConfig);
+		configureBonkEnc	*dlg = new configureBonkEnc();
 
 		dlg->ShowDialog();
 
@@ -611,7 +611,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_BLADEENC)
 	{
-		configureBladeEnc	*dlg = new configureBladeEnc(currentConfig);
+		configureBladeEnc	*dlg = new configureBladeEnc();
 
 		dlg->ShowDialog();
 
@@ -619,7 +619,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_LAMEENC)
 	{
-		configureLameEnc	*dlg = new configureLameEnc(currentConfig);
+		configureLameEnc	*dlg = new configureLameEnc();
 
 		dlg->ShowDialog();
 
@@ -627,7 +627,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_VORBISENC)
 	{
-		configureVorbisEnc	*dlg = new configureVorbisEnc(currentConfig);
+		configureVorbisEnc	*dlg = new configureVorbisEnc();
 
 		dlg->ShowDialog();
 
@@ -635,7 +635,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_FAAC)
 	{
-		configureFAAC	*dlg = new configureFAAC(currentConfig);
+		configureFAAC	*dlg = new configureFAAC();
 
 		dlg->ShowDialog();
 
@@ -643,7 +643,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_TVQ)
 	{
-		configureTVQ	*dlg = new configureTVQ(currentConfig);
+		configureTVQ	*dlg = new configureTVQ();
 
 		dlg->ShowDialog();
 
@@ -651,7 +651,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry() == ENCODER_WAVE)
 	{
-		SMOOTH::MessageBox(currentConfig->i18n->TranslateString("No options can be configured for the WAVE Out filter!"), currentConfig->i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), bonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
 	}
 }
 
@@ -663,13 +663,13 @@ Void configureGeneralSettings::SetParanoia()
 
 Void configureGeneralSettings::SelectLanguage()
 {
-	language_text_info->SetText(currentConfig->i18n->TranslateString("Language").Append(": ").Append(currentConfig->i18n->GetNthLanguageName(language_combo_language->GetSelectedEntry()))
-					.Append("\n").Append(currentConfig->i18n->TranslateString("Encoding")).Append(": ").Append(currentConfig->i18n->GetNthLanguageEncoding(language_combo_language->GetSelectedEntry()))
-					.Append("\n").Append(currentConfig->i18n->TranslateString("Author")).Append(": ").Append(currentConfig->i18n->GetNthLanguageAuthor(language_combo_language->GetSelectedEntry()))
-					.Append("\n").Append(currentConfig->i18n->TranslateString("URL")).Append(": "));
+	language_text_info->SetText(bonkEnc::i18n->TranslateString("Language").Append(": ").Append(bonkEnc::i18n->GetNthLanguageName(language_combo_language->GetSelectedEntry()))
+					.Append("\n").Append(bonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageEncoding(language_combo_language->GetSelectedEntry()))
+					.Append("\n").Append(bonkEnc::i18n->TranslateString("Author")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageAuthor(language_combo_language->GetSelectedEntry()))
+					.Append("\n").Append(bonkEnc::i18n->TranslateString("URL")).Append(": "));
 
-	language_link_url->SetText(currentConfig->i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()));
-	language_link_url->SetURL(currentConfig->i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()));
+	language_link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()));
+	language_link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()));
 }
 
 Void configureGeneralSettings::SetCDDB()
@@ -723,7 +723,7 @@ Void configureGeneralSettings::SetCDDBMode()
 
 Void configureGeneralSettings::HTTPSettings()
 {
-	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(currentConfig, 0);
+	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(0);
 
 	dlg->ShowDialog();
 
@@ -732,7 +732,7 @@ Void configureGeneralSettings::HTTPSettings()
 
 Void configureGeneralSettings::ProxySettings()
 {
-	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(currentConfig, 1);
+	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(1);
 
 	dlg->ShowDialog();
 

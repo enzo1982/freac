@@ -11,14 +11,14 @@
 #include <tvqconfig.h>
 #include <resources.h>
 
-configureTVQ::configureTVQ(bonkEncConfig *config)
+configureTVQ::configureTVQ()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = config;
+	currentConfig = bonkEnc::currentConfig;
 
-	mainWnd			= new Window(String("TwinVQ ").Append(currentConfig->i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(String("TwinVQ ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -27,13 +27,13 @@ configureTVQ::configureTVQ(bonkEncConfig *config)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&configureTVQ::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&configureTVQ::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -42,12 +42,12 @@ configureTVQ::configureTVQ(bonkEncConfig *config)
 	size.cx = 233;
 	size.cy = 39;
 
-	group_bitrate		= new GroupBox(currentConfig->i18n->TranslateString("Bitrate"), pos, size);
+	group_bitrate		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_bitrate		= new Text(currentConfig->i18n->TranslateString("Bitrate per channel:"), pos);
+	text_bitrate		= new Text(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos);
 
 	pos.x += (text_bitrate->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 3;
@@ -82,12 +82,12 @@ configureTVQ::configureTVQ(bonkEncConfig *config)
 	size.cx = 233;
 	size.cy = 39;
 
-	group_precand		= new GroupBox(currentConfig->i18n->TranslateString("Preselection"), pos, size);
+	group_precand		= new GroupBox(bonkEnc::i18n->TranslateString("Preselection"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_precand		= new Text(currentConfig->i18n->TranslateString("Number of preselection candidates:"), pos);
+	text_precand		= new Text(bonkEnc::i18n->TranslateString("Number of preselection candidates:"), pos);
 
 	pos.x += (text_precand->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 3;

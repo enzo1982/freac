@@ -173,7 +173,7 @@ class configureLameEnc : public Application
 		Int		 SliderValueToBitrate(Int);
 		Int		 BitrateToSliderValue(Int);
 	public:
-				 configureLameEnc(bonkEncConfig *);
+				 configureLameEnc();
 				~configureLameEnc();
 		Int		 ShowDialog();
 };

@@ -55,7 +55,7 @@ class configureVorbisEnc : public Application
 		Void		 SetBitrate();
 		Void		 SetBitrateByEditBox();
 	public:
-				 configureVorbisEnc(bonkEncConfig *);
+				 configureVorbisEnc();
 				~configureVorbisEnc();
 		Int		 ShowDialog();
 };

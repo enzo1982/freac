@@ -13,12 +13,12 @@
 
 #include <lame/lame.h>
 
-configureLameEnc::configureLameEnc(bonkEncConfig *config)
+configureLameEnc::configureLameEnc()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = config;
+	currentConfig = bonkEnc::currentConfig;
 
 	preset = currentConfig->lame_preset;
 	set_bitrate = currentConfig->lame_set_bitrate;
@@ -46,27 +46,27 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	set_highpass = currentConfig->lame_set_highpass;
 	set_highpass_width = currentConfig->lame_set_highpass_width;
 
-	mainWnd			= new Window(String("LAME MP3 ").Append(currentConfig->i18n->TranslateString("encoder configuration")));
+	mainWnd			= new Window(String("LAME MP3 ").Append(bonkEnc::i18n->TranslateString("encoder configuration")));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 
-	register_layer_basic	= new Layer(currentConfig->i18n->TranslateString("Basic"));
+	register_layer_basic	= new Layer(bonkEnc::i18n->TranslateString("Basic"));
 	register_layer_vbr	= new Layer("VBR");
-	register_layer_misc	= new Layer(currentConfig->i18n->TranslateString("Misc"));
+	register_layer_misc	= new Layer(bonkEnc::i18n->TranslateString("Misc"));
 	register_layer_expert	= new Layer("Expert");
-	register_layer_filtering= new Layer(currentConfig->i18n->TranslateString("Audio processing"));
+	register_layer_filtering= new Layer(bonkEnc::i18n->TranslateString("Audio processing"));
 
 	pos.x = 175;
 	pos.y = 29;
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&configureLameEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&configureLameEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -82,12 +82,12 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 367;
 	size.cy = 39;
 
-	basic_preset		= new GroupBox(currentConfig->i18n->TranslateString("Presets"), pos, size);
+	basic_preset		= new GroupBox(bonkEnc::i18n->TranslateString("Presets"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	basic_text_preset	= new Text(currentConfig->i18n->TranslateString("Use preset:"), pos);
+	basic_text_preset	= new Text(bonkEnc::i18n->TranslateString("Use preset:"), pos);
 
 	pos.x += (basic_text_preset->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 3;
@@ -95,14 +95,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cy = 0;
 
 	basic_combo_preset	= new ComboBox(pos, size);
-	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Custom settings"));
-	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Medium"));
-	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Standard"));
-	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Extreme"));
-	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Insane"));
-	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Medium, Fast"));
-	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Standard, Fast"));
-	basic_combo_preset->AddEntry(currentConfig->i18n->TranslateString("Extreme, Fast"));
+	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Custom settings"));
+	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Medium"));
+	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Standard"));
+	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Extreme"));
+	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Insane"));
+	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Medium, Fast"));
+	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Standard, Fast"));
+	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Extreme, Fast"));
 	basic_combo_preset->AddEntry("R3Mix");
 	basic_combo_preset->AddEntry("ABR");
 	basic_combo_preset->SelectEntry(currentConfig->lame_preset);
@@ -113,19 +113,19 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 232;
 	size.cy = 63;
 
-	basic_bitrate		= new GroupBox(currentConfig->i18n->TranslateString("Bitrate"), pos, size);
+	basic_bitrate		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 76;
 	size.cy = 0;
 
-	basic_option_set_bitrate= new OptionBox(currentConfig->i18n->TranslateString("Set bitrate:"), pos, size, &set_bitrate, 1);
+	basic_option_set_bitrate= new OptionBox(bonkEnc::i18n->TranslateString("Set bitrate:"), pos, size, &set_bitrate, 1);
 	basic_option_set_bitrate->onClick.Connect(&configureLameEnc::SetBitrateOption, this);
 
 	pos.y += 25;
 
-	basic_option_set_ratio	= new OptionBox(currentConfig->i18n->TranslateString("Set ratio:"), pos, size, &set_bitrate, 0);
+	basic_option_set_ratio	= new OptionBox(bonkEnc::i18n->TranslateString("Set ratio:"), pos, size, &set_bitrate, 0);
 	basic_option_set_ratio->onClick.Connect(&configureLameEnc::SetBitrateOption, this);
 
 	pos.y -= 25;
@@ -151,14 +151,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 232;
 	size.cy = 51;
 
-	basic_quality		= new GroupBox(currentConfig->i18n->TranslateString("Quality"), pos, size);
+	basic_quality		= new GroupBox(bonkEnc::i18n->TranslateString("Quality"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 76;
 	size.cy = 0;
 
-	basic_check_set_quality	= new CheckBox(currentConfig->i18n->TranslateString("Set quality:"), pos, size, &set_quality);
+	basic_check_set_quality	= new CheckBox(bonkEnc::i18n->TranslateString("Set quality:"), pos, size, &set_quality);
 	basic_check_set_quality->onClick.Connect(&configureLameEnc::SetQualityOption, this);
 
 	pos.x += 85;
@@ -175,10 +175,10 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 
 	pos.y += 17;
 
-	basic_text_quality_worse= new Text(currentConfig->i18n->TranslateString("worse"), pos);
+	basic_text_quality_worse= new Text(bonkEnc::i18n->TranslateString("worse"), pos);
 	basic_text_quality_worse->SetPosition(Point(105 - (basic_text_quality_worse->GetObjectProperties()->textSize.cx / 2), pos.y));
 
-	basic_text_quality_better= new Text(currentConfig->i18n->TranslateString("better"), pos);
+	basic_text_quality_better= new Text(bonkEnc::i18n->TranslateString("better"), pos);
 	basic_text_quality_better->SetPosition(Point(211 - (basic_text_quality_better->GetObjectProperties()->textSize.cx / 2), pos.y));
 
 	pos.x = 247;
@@ -186,43 +186,43 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 127;
 	size.cy = 126;
 
-	basic_stereomode	= new GroupBox(currentConfig->i18n->TranslateString("Stereo mode"), pos, size);
+	basic_stereomode	= new GroupBox(bonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 106;
 	size.cy = 0;
 
-	basic_option_autostereo	= new OptionBox(currentConfig->i18n->TranslateString("Auto"), pos, size, &stereomode, 0);
+	basic_option_autostereo	= new OptionBox(bonkEnc::i18n->TranslateString("Auto"), pos, size, &stereomode, 0);
 	basic_option_autostereo->onClick.Connect(&configureLameEnc::SetStereoMode, this);
 
 	pos.y += 25;
 
-	basic_option_stereo	= new OptionBox(currentConfig->i18n->TranslateString("Stereo"), pos, size, &stereomode, 1);
+	basic_option_stereo	= new OptionBox(bonkEnc::i18n->TranslateString("Stereo"), pos, size, &stereomode, 1);
 	basic_option_stereo->onClick.Connect(&configureLameEnc::SetStereoMode, this);
 
 	pos.y += 25;
 
-	basic_option_jstereo	= new OptionBox(currentConfig->i18n->TranslateString("Joint Stereo"), pos, size, &stereomode, 2);
+	basic_option_jstereo	= new OptionBox(bonkEnc::i18n->TranslateString("Joint Stereo"), pos, size, &stereomode, 2);
 	basic_option_jstereo->onClick.Connect(&configureLameEnc::SetStereoMode, this);
 
 	pos.y += 31;
 
-	basic_check_forcejs	= new CheckBox(currentConfig->i18n->TranslateString("Force Joint Stereo"), pos, size, &forcejs);
+	basic_check_forcejs	= new CheckBox(bonkEnc::i18n->TranslateString("Force Joint Stereo"), pos, size, &forcejs);
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 127;
 	size.cy = 106;
 
-	vbr_vbrmode		= new GroupBox(currentConfig->i18n->TranslateString("VBR mode"), pos, size);
+	vbr_vbrmode		= new GroupBox(bonkEnc::i18n->TranslateString("VBR mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 107;
 	size.cy = 0;
 
-	vbr_option_cbr		= new OptionBox(String("CBR (").Append(currentConfig->i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off);
+	vbr_option_cbr		= new OptionBox(String("CBR (").Append(bonkEnc::i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off);
 	vbr_option_cbr->onClick.Connect(&configureLameEnc::SetVBRMode, this);
 
 	pos.y += 23;
@@ -245,12 +245,12 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 232;
 	size.cy = 51;
 
-	vbr_quality		= new GroupBox(currentConfig->i18n->TranslateString("VBR quality"), pos, size);
+	vbr_quality		= new GroupBox(bonkEnc::i18n->TranslateString("VBR quality"), pos, size);
 
 	pos.x += 11;
 	pos.y += 13;
 
-	vbr_text_setquality	= new Text(currentConfig->i18n->TranslateString("Quality").Append(":"), pos);
+	vbr_text_setquality	= new Text(bonkEnc::i18n->TranslateString("Quality").Append(":"), pos);
 
 	pos.x += (vbr_text_setquality->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 2;
@@ -268,10 +268,10 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 
 	pos.y += 17;
 
-	vbr_text_quality_worse= new Text(currentConfig->i18n->TranslateString("worse"), pos);
+	vbr_text_quality_worse= new Text(bonkEnc::i18n->TranslateString("worse"), pos);
 	vbr_text_quality_worse->SetPosition(Point(vbr_slider_quality->GetObjectProperties()->pos.x + 3 - (vbr_text_quality_worse->GetObjectProperties()->textSize.cx / 2), pos.y));
 
-	vbr_text_quality_better= new Text(currentConfig->i18n->TranslateString("better"), pos);
+	vbr_text_quality_better= new Text(bonkEnc::i18n->TranslateString("better"), pos);
 	vbr_text_quality_better->SetPosition(Point(346 - (vbr_text_quality_better->GetObjectProperties()->textSize.cx / 2), pos.y));
 
 	pos.x = 142;
@@ -279,7 +279,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 232;
 	size.cy = 43;
 
-	vbr_abrbitrate		= new GroupBox(currentConfig->i18n->TranslateString("ABR target bitrate"), pos, size);
+	vbr_abrbitrate		= new GroupBox(bonkEnc::i18n->TranslateString("ABR target bitrate"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -307,14 +307,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 367;
 	size.cy = 63;
 
-	vbr_bitrate		= new GroupBox(currentConfig->i18n->TranslateString("VBR bitrate range"), pos, size);
+	vbr_bitrate		= new GroupBox(bonkEnc::i18n->TranslateString("VBR bitrate range"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 146;
 	size.cy = 0;
 
-	vbr_check_set_min_brate	= new CheckBox(currentConfig->i18n->TranslateString("Set minimum VBR bitrate:"), pos, size, &set_min_vbr_brate);
+	vbr_check_set_min_brate	= new CheckBox(bonkEnc::i18n->TranslateString("Set minimum VBR bitrate:"), pos, size, &set_min_vbr_brate);
 	vbr_check_set_min_brate->onClick.Connect(&configureLameEnc::SetMinVBRBitrateOption, this);
 
 	pos.x += 155;
@@ -333,7 +333,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	pos.y += 23;
 	size.cx = 146;
 
-	vbr_check_set_max_brate	= new CheckBox(currentConfig->i18n->TranslateString("Set maximum VBR bitrate:"), pos, size, &set_max_vbr_brate);
+	vbr_check_set_max_brate	= new CheckBox(bonkEnc::i18n->TranslateString("Set maximum VBR bitrate:"), pos, size, &set_max_vbr_brate);
 	vbr_check_set_max_brate->onClick.Connect(&configureLameEnc::SetMaxVBRBitrateOption, this);
 
 	pos.x += 155;
@@ -353,62 +353,62 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 138;
 	size.cy = 89;
 
-	misc_bits		= new GroupBox(currentConfig->i18n->TranslateString("Control bits"), pos, size);
+	misc_bits		= new GroupBox(bonkEnc::i18n->TranslateString("Control bits"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 117;
 	size.cy = 0;
 
-	misc_check_copyright	= new CheckBox(currentConfig->i18n->TranslateString("Set Copyright bit"), pos, size, &set_copyright);
+	misc_check_copyright	= new CheckBox(bonkEnc::i18n->TranslateString("Set Copyright bit"), pos, size, &set_copyright);
 
 	pos.y += 25;
 
-	misc_check_original	= new CheckBox(currentConfig->i18n->TranslateString("Set Original bit"), pos, size, &set_original);
+	misc_check_original	= new CheckBox(bonkEnc::i18n->TranslateString("Set Original bit"), pos, size, &set_original);
 
 	pos.y += 25;
 
-	misc_check_private	= new CheckBox(currentConfig->i18n->TranslateString("Set Private bit"), pos, size, &set_private);
+	misc_check_private	= new CheckBox(bonkEnc::i18n->TranslateString("Set Private bit"), pos, size, &set_private);
 
 	pos.x = 7;
 	pos.y = 112;
 	size.cx = 138;
 	size.cy = 39;
 
-	misc_crc		= new GroupBox(currentConfig->i18n->TranslateString("CRC"), pos, size);
+	misc_crc		= new GroupBox(bonkEnc::i18n->TranslateString("CRC"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 117;
 	size.cy = 0;
 
-	misc_check_crc		= new CheckBox(currentConfig->i18n->TranslateString("Enable CRC"), pos, size, &set_crc);
+	misc_check_crc		= new CheckBox(bonkEnc::i18n->TranslateString("Enable CRC"), pos, size, &set_crc);
 
 	pos.x = 153;
 	pos.y = 11;
 	size.cx = 221;
 	size.cy = 39;
 
-	misc_format		= new GroupBox(currentConfig->i18n->TranslateString("Stream format"), pos, size);
+	misc_format		= new GroupBox(bonkEnc::i18n->TranslateString("Stream format"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 200;
 	size.cy = 0;
 
-	misc_check_iso		= new CheckBox(currentConfig->i18n->TranslateString("Enforce strict ISO compliance"), pos, size, &set_iso);
+	misc_check_iso		= new CheckBox(bonkEnc::i18n->TranslateString("Enforce strict ISO compliance"), pos, size, &set_iso);
 
 	pos.x = 153;
 	pos.y = 61;
 	size.cx = 221;
 	size.cy = 39;
 
-	misc_padding		= new GroupBox(currentConfig->i18n->TranslateString("Padding"), pos, size);
+	misc_padding		= new GroupBox(bonkEnc::i18n->TranslateString("Padding"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	misc_text_padding	= new Text(currentConfig->i18n->TranslateString("Set padding type:"), pos);
+	misc_text_padding	= new Text(bonkEnc::i18n->TranslateString("Set padding type:"), pos);
 
 	pos.x += (misc_text_padding->GetObjectProperties()->textSize.cx + 8);
 	pos.y -= 3;
@@ -416,9 +416,9 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cy = 0;
 
 	misc_combo_padding	= new ComboBox(pos, size);
-	misc_combo_padding->AddEntry(currentConfig->i18n->TranslateString("pad no frames"));
-	misc_combo_padding->AddEntry(currentConfig->i18n->TranslateString("pad all frames"));
-	misc_combo_padding->AddEntry(currentConfig->i18n->TranslateString("adjust padding"));
+	misc_combo_padding->AddEntry(bonkEnc::i18n->TranslateString("pad no frames"));
+	misc_combo_padding->AddEntry(bonkEnc::i18n->TranslateString("pad all frames"));
+	misc_combo_padding->AddEntry(bonkEnc::i18n->TranslateString("adjust padding"));
 	misc_combo_padding->SelectEntry(currentConfig->lame_padding_type);
 
 	pos.x = 7;
@@ -426,7 +426,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 138;
 	size.cy = 39;
 
-	filtering_resample	= new GroupBox(currentConfig->i18n->TranslateString("Output sampling rate"), pos, size);
+	filtering_resample	= new GroupBox(bonkEnc::i18n->TranslateString("Output sampling rate"), pos, size);
 
 	pos.x += 10;
 	pos.y += 10;
@@ -434,7 +434,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cy = 0;
 
 	filtering_combo_resample= new ComboBox(pos, size);
-	filtering_combo_resample->AddEntry(currentConfig->i18n->TranslateString("no resampling"));
+	filtering_combo_resample->AddEntry(bonkEnc::i18n->TranslateString("no resampling"));
 	filtering_combo_resample->AddEntry("8 kHz");
 	filtering_combo_resample->AddEntry("11.025 kHz");
 	filtering_combo_resample->AddEntry("12 kHz");
@@ -460,14 +460,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 221;
 	size.cy = 64;
 
-	filtering_highpass	= new GroupBox(currentConfig->i18n->TranslateString("Highpass filter"), pos, size);
+	filtering_highpass	= new GroupBox(bonkEnc::i18n->TranslateString("Highpass filter"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 155;
 	size.cy = 0;
 
-	filtering_set_highpass	= new CheckBox(currentConfig->i18n->TranslateString("Set Highpass frequency (Hz):"), pos, size, &set_highpass);
+	filtering_set_highpass	= new CheckBox(bonkEnc::i18n->TranslateString("Set Highpass frequency (Hz):"), pos, size, &set_highpass);
 	filtering_set_highpass->onClick.Connect(&configureLameEnc::SetHighpass, this);
 
 	pos.x += 164;
@@ -480,7 +480,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	pos.y += 26;
 	size.cx = 155;
 
-	filtering_set_highpass_width= new CheckBox(currentConfig->i18n->TranslateString("Set Highpass width (Hz):"), pos, size, &set_highpass_width);
+	filtering_set_highpass_width= new CheckBox(bonkEnc::i18n->TranslateString("Set Highpass width (Hz):"), pos, size, &set_highpass_width);
 	filtering_set_highpass_width->onClick.Connect(&configureLameEnc::SetHighpassWidth, this);
 
 	pos.x += 164;
@@ -494,14 +494,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 221;
 	size.cy = 64;
 
-	filtering_lowpass	= new GroupBox(currentConfig->i18n->TranslateString("Lowpass filter"), pos, size);
+	filtering_lowpass	= new GroupBox(bonkEnc::i18n->TranslateString("Lowpass filter"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 155;
 	size.cy = 0;
 
-	filtering_set_lowpass	= new CheckBox(currentConfig->i18n->TranslateString("Set Lowpass frequency (Hz):"), pos, size, &set_lowpass);
+	filtering_set_lowpass	= new CheckBox(bonkEnc::i18n->TranslateString("Set Lowpass frequency (Hz):"), pos, size, &set_lowpass);
 	filtering_set_lowpass->onClick.Connect(&configureLameEnc::SetLowpass, this);
 
 	pos.x += 164;
@@ -514,7 +514,7 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	pos.y += 26;
 	size.cx = 155;
 
-	filtering_set_lowpass_width= new CheckBox(currentConfig->i18n->TranslateString("Set Lowpass width (Hz):"), pos, size, &set_lowpass_width);
+	filtering_set_lowpass_width= new CheckBox(bonkEnc::i18n->TranslateString("Set Lowpass width (Hz):"), pos, size, &set_lowpass_width);
 	filtering_set_lowpass_width->onClick.Connect(&configureLameEnc::SetLowpassWidth, this);
 
 	pos.x += 164;
@@ -528,14 +528,14 @@ configureLameEnc::configureLameEnc(bonkEncConfig *config)
 	size.cx = 138;
 	size.cy = 39;
 
-	filtering_misc		= new GroupBox(currentConfig->i18n->TranslateString("Misc settings"), pos, size);
+	filtering_misc		= new GroupBox(bonkEnc::i18n->TranslateString("Misc settings"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 117;
 	size.cy = 0;
 
-	filtering_check_disable_all= new CheckBox(currentConfig->i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering);
+	filtering_check_disable_all= new CheckBox(bonkEnc::i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering);
 	filtering_check_disable_all->onClick.Connect(&configureLameEnc::SetDisableFiltering, this);
 
 	SetPreset();

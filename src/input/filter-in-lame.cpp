@@ -94,7 +94,7 @@ int FilterInLAME::ReadData(unsigned char **data, int size)
 	return nsamples * 4;
 }
 
-bonkFormatInfo FilterInLAME::GetAudioFormat()
+bonkFormatInfo FilterInLAME::GetFileInfo(S::String inFile)
 {
 	return format;
 }

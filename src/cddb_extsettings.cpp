@@ -11,32 +11,32 @@
 #include <cddb_extsettings.h>
 #include <resources.h>
 
-cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
+cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 {
-	currentConfig = config;
+	currentConfig = bonkEnc::currentConfig;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(currentConfig->i18n->TranslateString("Extended CDDB settings"));
+	mainWnd			= new Window(bonkEnc::i18n->TranslateString("Extended CDDB settings"));
 	mainWnd_titlebar	= new Titlebar(false, false, true);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
-	register_layer_http	= new Layer(currentConfig->i18n->TranslateString("HTTP settings"));
-	register_layer_proxy	= new Layer(currentConfig->i18n->TranslateString("Proxy settings"));
+	register_layer_http	= new Layer(bonkEnc::i18n->TranslateString("HTTP settings"));
+	register_layer_proxy	= new Layer(bonkEnc::i18n->TranslateString("Proxy settings"));
 
 	pos.x = 175;
 	pos.y = 29;
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(currentConfig->i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onClick.Connect(&cddbExtendedSettingsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(currentConfig->i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onClick.Connect(&cddbExtendedSettingsDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -52,12 +52,12 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	size.cx = 312;
 	size.cy = 66;
 
-	http_group_scripts	= new GroupBox(currentConfig->i18n->TranslateString("CGI scripts"), pos, size);
+	http_group_scripts	= new GroupBox(bonkEnc::i18n->TranslateString("CGI scripts"), pos, size);
 
 	pos.x = 16;
 	pos.y = 24;
 
-	http_text_query		= new Text(currentConfig->i18n->TranslateString("CDDB query script:"), pos);
+	http_text_query		= new Text(bonkEnc::i18n->TranslateString("CDDB query script:"), pos);
 
 	pos.x += 101;
 	pos.y -= 3;
@@ -69,7 +69,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	pos.x = 16;
 	pos.y += 30;
 
-	http_text_submit	= new Text(currentConfig->i18n->TranslateString("CDDB submit script:"), pos);
+	http_text_submit	= new Text(bonkEnc::i18n->TranslateString("CDDB submit script:"), pos);
 
 	pos.x += 101;
 	pos.y -= 3;
@@ -86,12 +86,12 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	size.cx = 312;
 	size.cy = 66;
 
-	proxy_group_proxy	= new GroupBox(currentConfig->i18n->TranslateString("Proxy settings"), pos, size);
+	proxy_group_proxy	= new GroupBox(bonkEnc::i18n->TranslateString("Proxy settings"), pos, size);
 
 	pos.x = 16;
 	pos.y = 24;
 
-	proxy_text_mode		= new Text(currentConfig->i18n->TranslateString("Proxy type:"), pos);
+	proxy_text_mode		= new Text(bonkEnc::i18n->TranslateString("Proxy type:"), pos);
 
 	pos.x += 100;
 	pos.y -= 3;
@@ -100,7 +100,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 
 	proxy_combo_mode	= new ComboBox(pos, size);
 	proxy_combo_mode->onClick.Connect(&cddbExtendedSettingsDlg::SetProxyMode, this);
-	proxy_combo_mode->AddEntry(currentConfig->i18n->TranslateString("no proxy"));
+	proxy_combo_mode->AddEntry(bonkEnc::i18n->TranslateString("no proxy"));
 	proxy_combo_mode->AddEntry("SOCKS4");
 	proxy_combo_mode->AddEntry("SOCKS5");
 	proxy_combo_mode->SelectEntry(currentConfig->freedb_proxy_mode);
@@ -108,7 +108,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	pos.x = 16;
 	pos.y += 30;
 
-	proxy_text_server	= new Text(currentConfig->i18n->TranslateString("Proxy server:"), pos);
+	proxy_text_server	= new Text(bonkEnc::i18n->TranslateString("Proxy server:"), pos);
 
 	pos.x += 100;
 	pos.y -= 3;
@@ -119,7 +119,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(bonkEncConfig *config, Int tab)
 	pos.x += 110;
 	pos.y += 3;
 
-	proxy_text_port		= new Text(currentConfig->i18n->TranslateString("Port:"), pos);
+	proxy_text_port		= new Text(bonkEnc::i18n->TranslateString("Port:"), pos);
 	proxy_text_port->SetPosition(Point(264 - proxy_text_port->GetObjectProperties()->textSize.cx, proxy_text_port->GetObjectProperties()->pos.y));
 
 	pos.x += 46;

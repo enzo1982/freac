@@ -181,7 +181,7 @@ int FilterInVORBIS::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo FilterInVORBIS::GetAudioFormat()
+bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 {
 	return format;
 }
