@@ -117,6 +117,8 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->enable_cdrip)
 	{
+		ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
+
 		ex_CR_Init(inifile);
 
 		currentConfig->cdrip_numdrives = ex_CR_GetNumCDROM();

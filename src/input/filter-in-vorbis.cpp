@@ -18,21 +18,26 @@ FilterInVORBIS::FilterInVORBIS(bonkEncConfig *config) : InputFilter(config)
 
 	packageSize = 0;
 
+	buffer = NIL;
+
 	ex_ogg_sync_init(&oy);
 }
 
 FilterInVORBIS::~FilterInVORBIS()
 {
-	ex_ogg_stream_clear(&os);
+	if (buffer != NIL)
+	{
+		ex_ogg_stream_clear(&os);
 
-	ex_vorbis_block_clear(&vb);
-	ex_vorbis_dsp_clear(&vd);
-	ex_vorbis_comment_clear(&vc);
-	ex_vorbis_info_clear(&vi);
+		ex_vorbis_block_clear(&vb);
+		ex_vorbis_dsp_clear(&vd);
+		ex_vorbis_comment_clear(&vc);
+		ex_vorbis_info_clear(&vi);
+
+		delete [] buffer;
+	}
 
 	ex_ogg_sync_clear(&oy);
-
-	delete [] buffer;
 }
 
 int FilterInVORBIS::ReadData(unsigned char **data, int size)
@@ -183,5 +188,116 @@ int FilterInVORBIS::ReadData(unsigned char **data, int size)
 
 bonkFormatInfo FilterInVORBIS::GetFileInfo(S::String inFile)
 {
-	return format;
+	bonkFormatInfo	 nFormat;
+	InStream	*f_in = new InStream(STREAM_FILE, inFile);
+
+	nFormat.order = BYTE_INTEL;
+	nFormat.bits = 16;
+	nFormat.trackInfo = NIL;
+
+	ogg_sync_state		 foy;
+	ogg_stream_state	 fos;
+	ogg_page		 fog;
+	ogg_packet		 fop;
+
+	vorbis_info		 fvi;
+	vorbis_comment		 fvc;
+
+	ex_ogg_sync_init(&foy);
+
+	Int		 size = 32768;
+	unsigned char	*data = new unsigned char [size];
+
+	f_in->InputData((void *) data, size);
+
+	char	*fbuffer = ex_ogg_sync_buffer(&foy, size);
+
+	memcpy((void *) fbuffer, (void *) data, size);
+
+	delete [] data;
+
+	ex_ogg_sync_wrote(&foy, size);
+
+	size = 0;
+
+	ex_ogg_sync_pageout(&foy, &fog);
+
+	ex_ogg_stream_init(&fos, ex_ogg_page_serialno(&fog)); 
+
+	ex_vorbis_info_init(&fvi);
+	ex_vorbis_comment_init(&fvc);
+
+	ex_ogg_stream_pagein(&fos, &fog);
+	ex_ogg_stream_packetout(&fos, &fop);
+
+	ex_vorbis_synthesis_headerin(&fvi, &fvc, &fop);
+
+	Int	 i = 0;
+
+	while (i < 2)
+	{
+		if (ex_ogg_sync_pageout(&foy, &fog) == 1)
+		{
+			ex_ogg_stream_pagein(&fos, &fog);
+
+			while (i < 2)
+			{
+				if (ex_ogg_stream_packetout(&fos, &fop) == 0) break;
+
+				ex_vorbis_synthesis_headerin(&fvi, &fvc, &fop); 
+
+				i++;
+			}
+		}
+	}
+
+	nFormat.rate = fvi.rate;
+	nFormat.channels = fvi.channels;
+	nFormat.length = -1;
+
+	if (fvc.comments > 0)
+	{
+		nFormat.trackInfo = new bonkTrackInfo;
+
+		nFormat.trackInfo->track = -1;
+		nFormat.trackInfo->outfile = NIL;
+		nFormat.trackInfo->cdText = True;
+
+		for (Int j = 0; j < fvc.comments; j++)
+		{
+			if (String("TITLE").CompareN(fvc.user_comments[j], 5) == 0)
+			{
+				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
+				{
+					nFormat.trackInfo->title[p] = fvc.user_comments[j][p + 6];
+				}
+			}
+			else if (String("ARTIST").CompareN(fvc.user_comments[j], 6) == 0)
+			{
+				for (Int p = 0; p < fvc.comment_lengths[j] - 7; p++)
+				{
+					nFormat.trackInfo->artist[p] = fvc.user_comments[j][p + 7];
+				}
+			}
+		}
+
+		if (nFormat.trackInfo->artist.Length() != 0 || nFormat.trackInfo->title.Length() != 0)
+		{
+			if (nFormat.trackInfo->artist.Length() == 0) nFormat.trackInfo->artist = "unknown artist";
+			if (nFormat.trackInfo->title.Length() == 0) nFormat.trackInfo->title = "unknown title";
+		}
+	}
+
+	ex_ogg_stream_clear(&fos);
+
+	ex_vorbis_comment_clear(&fvc);
+	ex_vorbis_info_clear(&fvi);
+
+	ex_ogg_sync_clear(&foy);
+
+	delete f_in;
+
+	delete [] fbuffer;
+
+	return nFormat;
 }
