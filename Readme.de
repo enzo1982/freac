@@ -20,6 +20,7 @@ Geschichte
 		- I18n Funktionalität jetzt in smooth
 		- Konfigurationsdialog fragt jetzt, ob ein fehlendes Ausgabeverzeichnis erzeugt werden soll
 		- Ausgabeverzeichnis kann vom Hauptbildschirm aus verändert werden
+		- Lesen und Schreiben von Vorbis-Comments im UTF-8 Format
 		- Einige kleinere Verbesserungen
 		- Einige Fehler wurden behoben
 

@@ -235,5 +235,9 @@
     <entry id="223" string="Psycho acoustic model">Modello psico-acustico</entry>
     <entry id="224" string="Use Temporal Masking Effect">Usa effetto di mascheramento temporale</entry>
     <entry id="225" string="Expert">Avanzate</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">Non è possibile configurare il codificatore durante la fase di codifica.</entry>
+    <entry id="227" string="The output directory does not exist! Do you want to create it?">La cartella di destinazione non esiste. Crearla?</entry>
+    <entry id="228" string="Filename pattern">Modello per il nome di file</entry>
+    <entry id="229" string="unknown album">album sconosciuto</entry>
   </data>
 </LangFile>

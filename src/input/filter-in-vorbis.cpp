@@ -256,35 +256,47 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 		nFormat->trackInfo->outfile = NIL;
 		nFormat->trackInfo->hasText = True;
 
+		String	 prevInFormat = String::SetInputFormat("UTF-8");
+
 		for (Int j = 0; j < fvc.comments; j++)
 		{
+			char	*buffer = new char [fvc.comment_lengths[j]];
+
 			if (String("TITLE").CompareN(fvc.user_comments[j], 5) == 0)
 			{
-				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
+				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
 				{
-					nFormat->trackInfo->title[p] = fvc.user_comments[j][p + 6];
+					buffer[p] = fvc.user_comments[j][p + 6];
 				}
+
+				nFormat->trackInfo->title = buffer;
 			}
 			else if (String("ARTIST").CompareN(fvc.user_comments[j], 6) == 0)
 			{
-				for (Int p = 0; p < fvc.comment_lengths[j] - 7; p++)
+				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
 				{
-					nFormat->trackInfo->artist[p] = fvc.user_comments[j][p + 7];
+					buffer[p] = fvc.user_comments[j][p + 7];
 				}
+
+				nFormat->trackInfo->artist = buffer;
 			}
 			else if (String("ALBUM").CompareN(fvc.user_comments[j], 5) == 0)
 			{
-				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
+				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
 				{
-					nFormat->trackInfo->album[p] = fvc.user_comments[j][p + 6];
+					buffer[p] = fvc.user_comments[j][p + 6];
 				}
+
+				nFormat->trackInfo->album = buffer;
 			}
 			else if (String("GENRE").CompareN(fvc.user_comments[j], 5) == 0)
 			{
-				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
+				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
 				{
-					nFormat->trackInfo->genre[p] = fvc.user_comments[j][p + 6];
+					buffer[p] = fvc.user_comments[j][p + 6];
 				}
+
+				nFormat->trackInfo->genre = buffer;
 			}
 			else if (String("DATE").CompareN(fvc.user_comments[j], 4) == 0)
 			{
@@ -308,7 +320,11 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 
 				nFormat->trackInfo->track = track.ToInt();
 			}
+
+			delete [] buffer;
 		}
+
+		String::SetInputFormat(prevInFormat);
 	}
 
 	ex_ogg_stream_clear(&fos);

@@ -906,7 +906,7 @@ Void bonkEncGUI::Close()
 
 Void bonkEncGUI::About()
 {
-	SMOOTH::MessageBox(String("BonkEnc ").Append(bonkEnc::version).Append("\nCopyright (C) 2001-2003 Robert Kausch\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	SMOOTH::MessageBox(String("BonkEnc ").Append(bonkEnc::version).Append("\nCopyright (C) 2001-2003 Robert Kausch\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void bonkEncGUI::ConfigureEncoder()

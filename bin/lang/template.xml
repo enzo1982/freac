@@ -239,5 +239,6 @@
     <entry id="227" string="The output directory does not exist! Do you want to create it?"/>
     <entry id="228" string="Filename pattern"/>
     <entry id="229" string="unknown album"/>
+    <entry id="230" string="Translated by %1."/>
   </data>
 </LangFile>
