@@ -45,6 +45,10 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig	*bonkEnc::currentConfig	= NIL;
 bonkTranslator	*bonkEnc::i18n		= NIL;
 
+String	 bonkEnc::version = "CVS-20030426";
+String	 bonkEnc::cddbVersion = "v0.9";
+String	 bonkEnc::shortVersion = "v0.9";
+
 bonkEnc::bonkEnc()
 {
 	encoding = false;
@@ -452,7 +456,7 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 	if (currentConfig->freedb_mode == FREEDB_MODE_CDDBP) cddb.CloseConnection();
 
-	mainWnd_statusbar->SetText("BonkEnc v1.0 beta 1 - Copyright (C) 2001-2003 Robert Kausch");
+	if (!currentConfig->enable_console) mainWnd_statusbar->SetText(String("BonkEnc ").Append(bonkEnc::version).Append(" - Copyright (C) 2001-2003 Robert Kausch"));
 
 	return array;
 }

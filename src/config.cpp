@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <config.h>
+#include <bonkenc.h>
 
 extern "C"
 {
@@ -24,9 +25,6 @@ extern "C"
 	} ITEMIDLIST, *LPITEMIDLIST;
 
 	typedef const ITEMIDLIST *LPCITEMIDLIST;
-
-	BOOL WINAPI SHGetPathFromIDListA(LPCITEMIDLIST, LPSTR);
-	BOOL WINAPI SHGetPathFromIDListW(LPCITEMIDLIST, LPWSTR);
 
 	HRESULT WINAPI SHGetSpecialFolderLocation(HWND, int, LPITEMIDLIST *);
 }
@@ -79,21 +77,42 @@ Bool bonkEncConfig::LoadSettings()
 {
 	if (iniFile == NIL) return False;
 
+	HMODULE		 shelldll = LoadLibraryA("shell32.dll");
+	BOOL		 (WINAPI *ex_SHGetPathFromIDListA)(LPCITEMIDLIST, LPSTR);
+	BOOL		 (WINAPI *ex_SHGetPathFromIDListW)(LPCITEMIDLIST, LPWSTR);
+
+	ex_SHGetPathFromIDListA = (BOOL (WINAPI *)(LPCITEMIDLIST, LPSTR)) GetProcAddress(shelldll, "SHGetPathFromIDListA");
+	ex_SHGetPathFromIDListW = (BOOL (WINAPI *)(LPCITEMIDLIST, LPWSTR)) GetProcAddress(shelldll, "SHGetPathFromIDListW");
+
 	String		 pDir;
-	wchar_t		*bufferw = new wchar_t [MAX_PATH];
-	char		*buffera = new char [MAX_PATH];
 	ITEMIDLIST	*idlist;
 
 	SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
 
-	if (Setup::enableUnicode)	SHGetPathFromIDListW(idlist, bufferw);
-	else				SHGetPathFromIDListA(idlist, buffera);
+	if (Setup::enableUnicode && ex_SHGetPathFromIDListW != NIL)
+	{
+		wchar_t	*bufferw = new wchar_t [MAX_PATH];
 
-	if (Setup::enableUnicode)	pDir = bufferw;
-	else				pDir = buffera;
+		ex_SHGetPathFromIDListW(idlist, bufferw);
 
-	delete [] buffera;
-	delete [] bufferw;
+		pDir = bufferw;
+
+		delete [] bufferw;
+	}
+	else if (ex_SHGetPathFromIDListA != NIL)
+	{
+		char	*buffera = new char [MAX_PATH];
+
+		ex_SHGetPathFromIDListA(idlist, buffera);
+
+		pDir = buffera;
+
+		delete [] buffera;
+	}
+
+	FreeLibrary(shelldll);
+
+	if (pDir == "\\") pDir = "C:\\";
 
 	language = getINIValue("Settings", "Language", "");
 
@@ -113,7 +132,7 @@ Bool bonkEncConfig::LoadSettings()
 	tab_width_size = getINIValue("Settings", "TabWidthSize", "80").ToInt();
 
 	enable_tags = getINIValue("Settings", "EnableTags", "1").ToInt();
-	default_comment = getINIValue("Settings", "DefaultComment", "BonkEnc v1.0 <http://www.bonkenc.org>");
+	default_comment = getINIValue("Settings", "DefaultComment", String("BonkEnc ").Append(bonkEnc::shortVersion).Append(" <http://www.bonkenc.org>"));
 
 	enable_cddb = getINIValue("freedb", "EnableCDDB", "0").ToInt();
 	enable_cddb_cache = getINIValue("freedb", "EnableCDDBCache", "1").ToInt();

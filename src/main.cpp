@@ -73,9 +73,9 @@ bonkEncGUI::bonkEncGUI()
 
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd			= new Window("BonkEnc v1.0 beta 1");
+	mainWnd			= new Window(String("BonkEnc ").Append(bonkEnc::version));
 	mainWnd_titlebar	= new Titlebar();
-	mainWnd_statusbar	= new Statusbar("BonkEnc v1.0 beta 1 - Copyright (C) 2001-2003 Robert Kausch");
+	mainWnd_statusbar	= new Statusbar(String("BonkEnc ").Append(bonkEnc::version).Append(" - Copyright (C) 2001-2003 Robert Kausch"));
 	menu_file		= new Menu();
 	menu_options		= new Menu();
 	menu_addsubmenu		= new Menu();
@@ -468,8 +468,7 @@ bonkEncGUI::bonkEncGUI()
 
 	pos.x = maxTextLength + 14;
 	pos.y = 51;
-	size.cx = currentConfig->wndSize.cx - 28 - maxTextLength;
-	size.cy = 18;
+	size.cx = currentConfig->wndSize.cx - 27 - maxTextLength;
 
 	progress		= new Progressbar(pos, size, OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 	progress->SetOrientation(OR_LOWERLEFT);
@@ -635,7 +634,7 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd->SetIcon(SMOOTH::LoadImage("BonkEnc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
 	mainWnd->SetMetrics(currentConfig->wndPos, currentConfig->wndSize);
-	mainWnd->onPaint.Connect(&bonkEncGUI::DrawProc, this);
+	mainWnd->onResize.Connect(&bonkEncGUI::ResizeProc, this);
 	mainWnd->doQuit.Connect(&bonkEncGUI::ExitProc, this);
 	mainWnd->SetMinimumSize(Size(530, 300 + n));
 
@@ -757,85 +756,39 @@ Bool bonkEncGUI::ExitProc()
 	return True;
 }
 
-Void bonkEncGUI::DrawProc()
+Void bonkEncGUI::ResizeProc()
 {
-	mainWnd_statusbar->SetText("BonkEnc v1.0 beta 1 - Copyright (C) 2001-2003 Robert Kausch");
-
-	if (mainWnd->GetObjectProperties()->size.cx == currentConfig->wndSize.cx && mainWnd->GetObjectProperties()->size.cy == currentConfig->wndSize.cy) return;
+	mainWnd_statusbar->GetObjectProperties()->text = String("BonkEnc ").Append(bonkEnc::version).Append(" - Copyright (C) 2001-2003 Robert Kausch");
 
 	currentConfig->wndPos = mainWnd->GetObjectProperties()->pos;
 	currentConfig->wndSize = mainWnd->GetObjectProperties()->size;
 
-	joblist->GetObjectProperties()->size.cx = (Int) Math::Min(currentConfig->wndSize.cx - 20, joblist->GetObjectProperties()->size.cx);
-	joblist->GetObjectProperties()->size.cy = (Int) Math::Min(currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0), joblist->GetObjectProperties()->size.cy);
-
-	edb_filename->Hide();
-	edb_encoder->Hide();
-	edb_outdir->Hide();
-	progress->Hide();
-	joblist->Hide();
-	droparea->Hide();
-
-	if (currentConfig->showTitleInfo)
-	{
-		info_edit_artist->Hide();
-		info_text_title->Hide();
-		info_edit_title->Hide();
-		info_edit_album->Hide();
-		info_text_track->Hide();
-		info_edit_track->Hide();
-		info_text_year->Hide();
-		info_edit_year->Hide();
-		info_text_genre->Hide();
-		info_edit_genre->Hide();
-	}
-
-	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y), Size(214 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy));
-	info_edit_track->SetMetrics(Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y), info_edit_track->GetObjectProperties()->size);
-	info_text_year->SetMetrics(Point(info_edit_track->GetObjectProperties()->pos.x + 32, info_text_year->GetObjectProperties()->pos.y), info_text_year->GetObjectProperties()->size);
-	info_edit_year->SetMetrics(Point(info_text_year->GetObjectProperties()->pos.x + info_text_year->GetObjectProperties()->textSize.cx + 7, info_edit_year->GetObjectProperties()->pos.y), info_edit_year->GetObjectProperties()->size);
-	info_text_genre->SetMetrics(Point(info_edit_year->GetObjectProperties()->pos.x + 38, info_text_genre->GetObjectProperties()->pos.y), info_text_genre->GetObjectProperties()->size);
-	info_text_title->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_title->GetObjectProperties()->pos.y), info_text_title->GetObjectProperties()->size);
-	info_text_track->SetMetrics(Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y), info_text_track->GetObjectProperties()->size);
-	info_edit_artist->SetMetrics(info_edit_artist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy));
-	info_edit_album->SetMetrics(info_edit_album->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
-	info_edit_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_edit_genre->GetObjectProperties()->pos.y), info_edit_genre->GetObjectProperties()->size);
+	info_edit_title->GetObjectProperties()->pos = Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->pos.y);
+	info_edit_title->GetObjectProperties()->size = Size(214 + info_text_genre->GetObjectProperties()->textSize.cx + info_text_year->GetObjectProperties()->textSize.cx, info_edit_title->GetObjectProperties()->size.cy);
+	info_edit_track->GetObjectProperties()->pos = Point(currentConfig->wndSize.cx - 227 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx, info_edit_track->GetObjectProperties()->pos.y);
+	info_text_year->GetObjectProperties()->pos = Point(info_edit_track->GetObjectProperties()->pos.x + 32, info_text_year->GetObjectProperties()->pos.y);
+	info_edit_year->GetObjectProperties()->pos = Point(info_text_year->GetObjectProperties()->pos.x + info_text_year->GetObjectProperties()->textSize.cx + 7, info_edit_year->GetObjectProperties()->pos.y);
+	info_text_genre->GetObjectProperties()->pos = Point(info_edit_year->GetObjectProperties()->pos.x + 38, info_text_genre->GetObjectProperties()->pos.y);
+	info_text_title->GetObjectProperties()->pos = Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_title->GetObjectProperties()->pos.y);
+	info_text_track->GetObjectProperties()->pos = Point(info_edit_title->GetObjectProperties()->pos.x - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx) - 7, info_text_track->GetObjectProperties()->pos.y);
+	info_edit_artist->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_artist->GetObjectProperties()->size.cy);
+	info_edit_album->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy);
+	info_edit_genre->GetObjectProperties()->pos = Point(currentConfig->wndSize.cx - 143, info_edit_genre->GetObjectProperties()->pos.y);
 
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->GetObjectProperties()->textSize.cx, enc_outdir->GetObjectProperties()->textSize.cx), Math::Max(enc_filename->GetObjectProperties()->textSize.cx, enc_time->GetObjectProperties()->textSize.cx));
 
-	edb_filename->SetMetrics(edb_filename->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_filename->GetObjectProperties()->size.cy));
-	edb_encoder->SetMetrics(edb_encoder->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
-	edb_outdir->SetMetrics(edb_outdir->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
+	edb_filename->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_filename->GetObjectProperties()->size.cy);
+	edb_encoder->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy);
+	edb_outdir->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy);
 
-	progress->SetMetrics(progress->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 28 - maxTextLength, progress->GetObjectProperties()->size.cy));
+	progress->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->GetObjectProperties()->size.cy);
 
-	joblist->SetMetrics(joblist->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0)));
-	droparea->SetMetrics(droparea->GetObjectProperties()->pos, Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0)));
+	joblist->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0));
+	droparea->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0));
 
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
 	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
-
-	if (currentConfig->showTitleInfo)
-	{
-		info_edit_artist->Show();
-		info_text_title->Show();
-		info_edit_title->Show();
-		info_edit_album->Show();
-		info_text_track->Show();
-		info_edit_track->Show();
-		info_text_year->Show();
-		info_edit_year->Show();
-		info_text_genre->Show();
-		info_edit_genre->Show();
-	}
-
-	edb_filename->Show();
-	edb_encoder->Show();
-	edb_outdir->Show();
-	progress->Show();
-	joblist->Show();
-	droparea->Show();
 }
 
 Void bonkEncGUI::Close()
@@ -845,7 +798,7 @@ Void bonkEncGUI::Close()
 
 Void bonkEncGUI::About()
 {
-	SMOOTH::MessageBox(String("BonkEnc v1.0 beta 1\nCopyright (C) 2001-2003 Robert Kausch\n\n").Append(i18n->TranslateString("This program is being distributed under the terms")).Append("\n").Append(i18n->TranslateString("of the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	SMOOTH::MessageBox(String("BonkEnc ").Append(bonkEnc::version).Append("\nCopyright (C) 2001-2003 Robert Kausch\n\n").Append(i18n->TranslateString("This program is being distributed under the terms")).Append("\n").Append(i18n->TranslateString("of the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void bonkEncGUI::ConfigureEncoder()
@@ -1074,7 +1027,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	edb_encoder->SetMetrics(Point(maxTextLength + 109 + enc_percent->GetObjectProperties()->textSize.cx + enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx, edb_encoder->GetObjectProperties()->size.cy));
 	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_outdir->GetObjectProperties()->size.cy));
 
-	progress->SetMetrics(Point(maxTextLength + 14, progress->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 28 - maxTextLength, progress->GetObjectProperties()->size.cy));
+	progress->SetMetrics(Point(maxTextLength + 14, progress->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->GetObjectProperties()->size.cy));
  
 	info_checkbox->SetText(i18n->TranslateString("Show title info"));
 	info_checkbox->SetMetrics(info_checkbox->GetObjectProperties()->pos, Size(info_checkbox->GetObjectProperties()->textSize.cx + 19, info_checkbox->GetObjectProperties()->size.cy));

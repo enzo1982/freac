@@ -18,7 +18,7 @@ languageDlg::languageDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window("Welcome to BonkEnc v1.0");
+	mainWnd			= new Window(String("Welcome to BonkEnc ").Append(bonkEnc::shortVersion));
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

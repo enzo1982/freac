@@ -47,10 +47,10 @@ bonkEncCommandline::bonkEncCommandline()
 
 	bonkEncConsole	*con;
 
-	if (!quiet)	con = new bonkEncConsole("BonkEnc v1.0 beta 1");
+	if (!quiet)	con = new bonkEncConsole(String("BonkEnc ").Append(bonkEnc::version));
 	else		con = new bonkEncConsole((char *) NIL);
 
-	con->OutputString("BonkEnc Audio Encoder v1.0 command line interface\nCopyright (C) 2001-2003 Robert Kausch\n\n");
+	con->OutputString(String("BonkEnc Audio Encoder ").Append(bonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2003 Robert Kausch\n\n"));
 
 	if ((files.GetNOfEntries() == 0 && helpenc == "") || !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "TVQ" || encoder == "WAVE") || (files.GetNOfEntries() > 1 && outfile != ""))
 	{
@@ -61,10 +61,6 @@ bonkEncCommandline::bonkEncCommandline()
 		con->OutputString("\t-h <encoder>\tPrint help for encoder specific options\n");
 		con->OutputString("\t-q\t\tDo not print any messages\n\n");
 		con->OutputString("<encoder> can be one of LAME, VORBIS, BONK, BLADE, FAAC, TVQ or WAVE.\n\n");
-
-		con->OutputString("-- Press any key to continue --");
-		con->WaitKey();
-		con->OutputString("\n");
 	}
 	else if (helpenc != "")
 	{
@@ -76,10 +72,6 @@ bonkEncCommandline::bonkEncCommandline()
 		else if (helpenc == "TVQ")	con->OutputString("There are no TwinVQ options on the BonkEnc console interface!\n\n");
 		else if (helpenc == "WAVE")	con->OutputString("No options can be configured for the WAVE Out filter!\n\n");
 		else				con->OutputString(String("Encoder ").Append(helpenc).Append(" is not supported by BonkEnc!\n\n"));
-
-		con->OutputString("-- Press any key to continue --");
-		con->WaitKey();
-		con->OutputString("\n");
 	}
 	else
 	{
@@ -94,10 +86,6 @@ bonkEncCommandline::bonkEncCommandline()
 		{
 			con->OutputString(String("Encoder ").Append(encoder).Append(" is not available!\n\n"));
 
-			con->OutputString("-- Press any key to continue --");
-			con->WaitKey();
-			con->OutputString("\n");
-
 			broken = true;
 		}
 
@@ -111,10 +99,6 @@ bonkEncCommandline::bonkEncCommandline()
 		else
 		{
 			con->OutputString(String("Encoder ").Append(encoder).Append(" is not supported by BonkEnc!\n\n"));
-
-			con->OutputString("-- Press any key to continue --");
-			con->WaitKey();
-			con->OutputString("\n");
 
 			broken = true;
 		}
@@ -197,13 +181,6 @@ bonkEncCommandline::bonkEncCommandline()
 			}
 
 			if (!lferror) con->OutputString("done.\n");
-
-			if (broken)
-			{
-				con->OutputString("\n-- Press any key to continue --");
-				con->WaitKey();
-				con->OutputString("\n");
-			}
 		}
 	}
 

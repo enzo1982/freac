@@ -200,13 +200,13 @@ String bonkEncCDDB::SendCommand(String command)
 
 			str.Append("POST ").Append(config->freedb_query_path).Append(" HTTP/1.0\n");
 			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v1.0beta1&proto=5\n").Length())).Append("\n");
+			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=5\n").Length())).Append("\n");
 			str.Append("Charset: ISO-8859-1\n");
 			str.Append("\n");
 
 			for (int i = 0; i < command.Length(); i++) if (command[i] == ' ') command[i] = '+';
 
-			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+v1.0beta1&proto=5\n");
+			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=5\n");
 
 			delete [] buffer;
 
@@ -327,7 +327,7 @@ Bool bonkEncCDDB::ConnectToServer()
 
 	gethostname(buffer, 256);
 
-	SendCommand(String("cddb hello user ").Append(buffer).Append(" BonkEnc v1.0beta1"));
+	SendCommand(String("cddb hello user ").Append(buffer).Append(" BonkEnc ").Append(bonkEnc::cddbVersion));
 
 	delete [] buffer;
 
@@ -478,7 +478,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->disclength)).Append(" seconds").Append("\n");
 	content.Append("# ").Append("\n");
 	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->revision)).Append("\n");
-	content.Append("# Submitted via: ").Append("BonkEnc v1.0beta1").Append("\n");
+	content.Append("# Submitted via: ").Append("BonkEnc ").Append(bonkEnc::cddbVersion).Append("\n");
 	content.Append("# ").Append("\n");
 
 	content.Append("DISCID=").Append(cddbInfo->discid).Append("\n");

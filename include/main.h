@@ -33,7 +33,7 @@ class bonkEncGUI : public bonkEnc
 		Titlebar	*mainWnd_titlebar;
 
 		Bool		 ExitProc();
-		Void		 DrawProc();
+		Void		 ResizeProc();
 		Void		 Close();
 		Void		 About();
 		Void		 ConfigureEncoder();

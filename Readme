@@ -14,6 +14,7 @@ History
 		- the genre field is now editable
 		- invalid characters in filenames are now replaced
 		- upgraded to smooth v0.8.62.0
+		- added support for Windows 95
 		- some bugfixes
 
 	Version 0.9 (March 2003)
@@ -87,7 +88,7 @@ History
 Requirements
 ------------
 
-	- Windows 2000/XP, Windows 98/SE/ME
+	- Windows 2000/XP, Windows 95/98/SE/ME
 	- A 200MHz processor or better for playing BONK files
 	- Winamp is required to play BONK files in Windows
 	- You'll need properly installed ASPI drivers for CD ripping.

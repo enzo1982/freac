@@ -199,6 +199,10 @@ class bonkEnc : public Application
 		Int			 Encoder(Thread *);
 		Void			 StopEncoding();
 	public:
+		static String		 version;
+		static String		 cddbVersion;
+		static String		 shortVersion;
+
 		static bonkEncConfig	*currentConfig;
 		static bonkTranslator	*i18n;
 
