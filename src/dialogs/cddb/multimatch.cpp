@@ -8,7 +8,7 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <dialogs/cddb_multimatch.h>
+#include <dialogs/cddb/multimatch.h>
 #include <resources.h>
 
 cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
@@ -96,7 +96,7 @@ Int cddbMultiMatchDlg::ShowDialog()
 
 Void cddbMultiMatchDlg::OK()
 {
-	mainWnd->value = combo_match->GetSelectedEntry()->id;
+	mainWnd->value = combo_match->GetSelectedEntryNumber();
 
 	mainWnd->Close();
 }
@@ -108,5 +108,7 @@ Void cddbMultiMatchDlg::Cancel()
 
 Int cddbMultiMatchDlg::AddEntry(String category, String title)
 {
-	return combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title))->id;
+	combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title));
+
+	return Success;
 }

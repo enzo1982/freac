@@ -28,16 +28,19 @@
 #ifdef WIN32
 #define HAVE_IN_PORT_T
 #define HAVE_SOCKLEN_T
-#include "win32_ver.h"
 #define NEED_SDL_VIDEO_IN_MAIN_THREAD
 #else
 #undef PACKAGE
 #undef VERSION
 #include <mpeg4ip_config.h>
+#undef PACKAGE
+#undef VERSION
+// so these don't propogate
 #endif
 
-
-
+// the mpeg4ip_package and mpeg4ip_version are always in this
+// file 
+#include "mpeg4ip_version.h"
 
 #ifdef WIN32
 
@@ -50,25 +53,30 @@
 #include <time.h>
 #include <limits.h>
 
-typedef unsigned __int64 uint64_t;
-typedef unsigned int uint32_t;
-typedef unsigned short uint16_t;
-typedef unsigned char uint8_t;
-typedef unsigned __int64 u_int64_t;
-typedef unsigned long u_int32_t;
-typedef unsigned short u_int16_t;
-typedef unsigned char u_int8_t;
+#ifndef __GNUC__
+typedef __int8 int8_t;
+typedef __int16 int16_t;
 typedef __int64 int64_t;
-typedef int int32_t;
-typedef short int16_t;
-typedef signed char  int8_t;
+
+typedef unsigned char	 uint8_t;
+typedef unsigned short	 uint16_t;
+typedef unsigned long	 uint32_t;
+typedef unsigned __int64 uint64_t;
+#endif
+
+typedef unsigned __int64 u_int64_t;
+typedef unsigned long	 u_int32_t;
+typedef unsigned short	 u_int16_t;
+typedef unsigned char	 u_int8_t;
+
 typedef unsigned short in_port_t;
 typedef int socklen_t;
 
-#ifndef _SSIZE_T_
+#ifndef __GNUC__
 typedef int ssize_t;
 #endif
 
+typedef unsigned int uint;
 #define snprintf _snprintf
 #define strncasecmp _strnicmp
 #define strcasecmp _stricmp
@@ -100,7 +108,7 @@ int gettimeofday(struct timeval *t, void *);
 }
 #endif
 
-#ifndef PATH_MAX
+#ifndef __GNUC__
 #define PATH_MAX MAX_PATH
 #endif
 
@@ -108,9 +116,9 @@ int gettimeofday(struct timeval *t, void *);
 #define D64F "I64d"
 #define U64F  "I64u"
 #define X64F "I64x"
-#define M_64 1000i64
-#define C_64 100i64
-#define I_64 1i64
+
+#define TO_D64(a) (a##I64)
+#define TO_U64(a) (a##UI64)
 
 #define LOG_EMERG 0
 #define LOG_ALERT 1
@@ -121,12 +129,12 @@ int gettimeofday(struct timeval *t, void *);
 #define LOG_INFO 6
 #define LOG_DEBUG 7
 
-#if     (!__STDC__ && _INTEGRAL_MAX_BITS >= 64) || defined __MINGW32__
-#define VAR_TO_FPOS(fpos, var) (fpos) = (var)
-#define FPOS_TO_VAR(fpos, typed, var) (var) = (typed)(_FPOSOFF(fpos))
+#ifdef HAVE_FPOS_T___POS
+#define FPOS_TO_VAR(fpos, typed, var) (var) = (typed)((fpos).__pos)
+#define VAR_TO_FPOS(fpos, var) (fpos).__pos = (var)
 #else
-#define VAR_TO_FPOS(fpos, var) (fpos).lopart = ((var) & UINT_MAX); (fpos).hipart = ((var) >> 32)
-#define FPOS_TO_VAR(fpos, typed, var) (var) = (typed)((uint64_t)((fpos).hipart ) << 32 | (fpos).lopart)
+#define FPOS_TO_VAR(fpos, typed, var) (var) = (typed)(fpos)
+#define VAR_TO_FPOS(fpos, var) (fpos) = (var)
 #endif
 
 #define __STRING(expr) #expr
@@ -135,6 +143,17 @@ int gettimeofday(struct timeval *t, void *);
 #define FOPEN_WRITE_BINARY "wb"
 
 #define UINT64_TO_DOUBLE(a) ((double)((int64_t)(a)))
+#ifdef __cplusplus
+extern "C" {
+#endif
+char *strcasestr(const char *haystack, const char *needle);
+#ifdef __cplusplus
+}
+#endif
+
+
+#define SIZEOF_BOOL 1
+
 #else /* UNIX */
 /*****************************************************************************
  *   UNIX LIKE DEFINES BELOW THIS POINT
@@ -162,12 +181,12 @@ int gettimeofday(struct timeval *t, void *);
 
 #ifdef HAVE_INTTYPES_H
 #include <inttypes.h>
-#else
+#endif
 #ifdef HAVE_STDINT_H
 #include <stdint.h>
-#else
-#error "Don't have stdint.h or inttypes.h - no way to get uint8_t"
 #endif
+#if !defined(HAVE_INTTYPES_H) && !defined(HAVE_STDINT_H)
+#error "Don't have stdint.h or inttypes.h - no way to get uint8_t"
 #endif
 
 #include <unistd.h>
@@ -194,6 +213,14 @@ int gettimeofday(struct timeval *t, void *);
 #endif
 #include <sys/param.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+char *strcasestr(const char *haystack, const char *needle);
+#ifdef __cplusplus
+}
+#endif
+
 #define OPEN_RDWR O_RDWR
 #define OPEN_CREAT O_CREAT 
 #define OPEN_RDONLY O_RDONLY
@@ -207,23 +234,19 @@ int gettimeofday(struct timeval *t, void *);
 #define U64F  "lu"
 #define X64F "lx"
 
-#define MM_64 1000000LU
-#define M_64 1000LU
-#define C_64 100LU
-#define I_64 1LU
+#define TO_D64(a) (a##L)
+#define TO_U64(a) (a##LU)
 #else
 #define MAX_UINT64 -1LLU
 #define D64F "lld"
 #define U64F  "llu"
 #define X64F "llx"
 
-#define MM_64 1000000LLU
-#define M_64 1000LLU
-#define C_64 100LLU
-#define I_64 1LLU
+#define TO_D64(a) (a##LL)
+#define TO_U64(a) (a##LLU)
 #endif
 
-#ifdef HAVE_FPOS_T_POS
+#ifdef HAVE_FPOS_T___POS
 #define FPOS_TO_VAR(fpos, typed, var) (var) = (typed)((fpos).__pos)
 #define VAR_TO_FPOS(fpos, var) (fpos).__pos = (var)
 #else
@@ -242,6 +265,10 @@ int gettimeofday(struct timeval *t, void *);
 #define D64  "%"D64F
 #define U64  "%"U64F
 #define X64 "%"X64F
+
+#define M_LLU TO_U64(1000)
+#define M_64 TO_U64(1000)
+#define LLU  U64
 
 #include <stdarg.h>
 typedef void (*error_msg_func_t)(int loglevel,
@@ -299,34 +326,6 @@ char *strsep(char **strp, const char *delim);
 
 #define ADV_SPACE(a) {while (isspace(*(a)) && (*(a) != '\0'))(a)++;}
 
-#ifndef HAVE_GTK
-typedef char gchar;
-typedef unsigned char guchar;
-
-typedef int gint;
-typedef unsigned int guint;
-
-typedef long glong;
-typedef unsigned long gulong;
-
-typedef double gdouble;
-
-typedef int gboolean;
-
-typedef int16_t gint16;
-typedef uint16_t guint16;
-
-typedef int32_t gint32;
-typedef uint32_t guint32;
-
-typedef int64_t gint64;
-typedef uint64_t guint64;
-
-typedef uint8_t  guint8;
-typedef int8_t gint8;
-
-#endif
-
 #ifndef FALSE
 #define FALSE 0
 #endif
@@ -336,9 +335,29 @@ typedef int8_t gint8;
 #endif
 
 #ifndef __cplusplus
+
 #ifndef bool
-typedef unsigned char bool;
+ #if SIZEOF_BOOL == 8
+  typedef uint64_t bool;
+ #else
+   #if SIZEOF_BOOL == 4
+    typedef uint32_t bool;
+   #else
+     #if SIZEOF_BOOL == 2
+      typedef uint16_t bool;
+     #else
+      typedef unsigned char bool;
+     #endif
+   #endif
+ #endif
+ #ifndef false
+ #define false FALSE
+ #endif
+ #ifndef true
+ #define true TRUE
+ #endif
 #endif
+
 #endif
 
 #ifndef ROUND
@@ -348,6 +367,34 @@ typedef unsigned char bool;
 # define ROUND(f) (int)(floor((f) + 0.5))
 # endif
 #endif
+
+#ifndef INT16_MAX
+# define INT16_MAX (32767)
+#endif
+#ifndef INT16_MIN 
+# define INT16_MIN (-32767-1)
+#endif 
+
+#ifndef UINT32_MAX
+# define UINT32_MAX             (4294967295U)
+#endif
+
+#ifndef UINT64_MAX
+# define UINT64_MAX TO_U64(0xffffffffffffffff)
+#endif
+
+typedef enum audio_format_t {
+  AUDIO_FMT_U8 = 0,
+  AUDIO_FMT_S8,
+  AUDIO_FMT_U16LSB,
+  AUDIO_FMT_S16LSB,
+  AUDIO_FMT_U16MSB,
+  AUDIO_FMT_S16MSB,
+  AUDIO_FMT_U16,
+  AUDIO_FMT_S16,
+  AUDIO_FMT_FLOAT,
+  AUDIO_FMT_HW_AC3,
+} audio_format_t;
 
 #endif /* __MPEG4IP_INCLUDED__ */
 

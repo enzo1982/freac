@@ -44,7 +44,7 @@ configureGeneralSettingsLayerCDRip::configureGeneralSettingsLayerCDRip() : Layer
 		combo_drive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
 	}
 
-	combo_drive->SelectEntry(currentConfig->cdrip_activedrive);
+	combo_drive->SelectNthEntry(currentConfig->cdrip_activedrive);
 
 	pos.x	= 7;
 	pos.y	= 66;
@@ -71,7 +71,7 @@ configureGeneralSettingsLayerCDRip::configureGeneralSettingsLayerCDRip() : Layer
 	combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("No verify"));
 	combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("No scratch repair"));
 	combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("Full cdparanoia mode"));
-	combo_paranoia_mode->SelectEntry(currentConfig->cdrip_paranoia_mode);
+	combo_paranoia_mode->SelectNthEntry(currentConfig->cdrip_paranoia_mode);
 
 	if (!cdparanoia) combo_paranoia_mode->Deactivate();
 
@@ -158,14 +158,14 @@ Void configureGeneralSettingsLayerCDRip::SetParanoia()
 
 Int configureGeneralSettingsLayerCDRip::GetActiveDrive()
 {
-	return combo_drive->GetSelectedEntry()->id;
+	return combo_drive->GetSelectedEntryNumber();
 }
 
 Int configureGeneralSettingsLayerCDRip::GetCDParanoiaMode()
 {
 	if (!cdparanoia) return -1;
 
-	return combo_paranoia_mode->GetSelectedEntry()->id;
+	return combo_paranoia_mode->GetSelectedEntryNumber();
 }
 
 Bool configureGeneralSettingsLayerCDRip::GetJitter()

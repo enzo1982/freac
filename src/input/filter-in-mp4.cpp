@@ -145,7 +145,7 @@ bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 	if (ex_MP4GetMetadataYear(mp4File, &buffer)) { nFormat->year = String(buffer).ToInt(); free(buffer); }
 	if (ex_MP4GetMetadataAlbum(mp4File, &buffer)) { nFormat->album = buffer; free(buffer); }
 	if (ex_MP4GetMetadataGenre(mp4File, &buffer)) { nFormat->genre = buffer; free(buffer); }
-	if (ex_MP4GetMetadataTrack(mp4File, &trackNr, &nOfTracks)) { nFormat->track = trackNr; }
+	if (ex_MP4GetMetadataTrack(mp4File, (u_int16_t *) &trackNr, (u_int16_t *) &nOfTracks)) { nFormat->track = trackNr; }
 
 	String::SetInputFormat(prevInFormat);
 

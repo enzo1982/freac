@@ -62,13 +62,13 @@ configureTVQ::configureTVQ()
 	switch (currentConfig->tvq_bitrate)
 	{
 		case 24:
-			combo_bitrate->SelectEntry(0);
+			combo_bitrate->SelectNthEntry(0);
 			break;
 		case 32:
-			combo_bitrate->SelectEntry(1);
+			combo_bitrate->SelectNthEntry(1);
 			break;
 		case 48:
-			combo_bitrate->SelectEntry(2);
+			combo_bitrate->SelectNthEntry(2);
 			break;
 	}
 
@@ -103,16 +103,16 @@ configureTVQ::configureTVQ()
 	switch (currentConfig->tvq_presel_candidates)
 	{
 		case 4:
-			combo_precand->SelectEntry(0);
+			combo_precand->SelectNthEntry(0);
 			break;
 		case 8:
-			combo_precand->SelectEntry(1);
+			combo_precand->SelectNthEntry(1);
 			break;
 		case 16:
-			combo_precand->SelectEntry(2);
+			combo_precand->SelectNthEntry(2);
 			break;
 		case 32:
-			combo_precand->SelectEntry(3);
+			combo_precand->SelectNthEntry(3);
 			break;
 	}
 

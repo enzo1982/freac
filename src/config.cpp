@@ -11,23 +11,7 @@
 #include <config.h>
 #include <bonkenc.h>
 
-extern "C"
-{
-	#define CSIDL_PERSONAL	5
-
-	typedef struct _SHITEMID {
-		USHORT	cb;
-		BYTE	abID[1];
-	} SHITEMID, *LPSHITEMID;
-
-	typedef struct _ITEMIDLIST {
-		SHITEMID mkid;
-	} ITEMIDLIST, *LPITEMIDLIST;
-
-	typedef const ITEMIDLIST *LPCITEMIDLIST;
-
-	HRESULT WINAPI SHGetSpecialFolderLocation(HWND, int, LPITEMIDLIST *);
-}
+#include <shlobj.h>
 
 bonkEncConfig::bonkEncConfig()
 {
@@ -47,40 +31,33 @@ bonkEncConfig::~bonkEncConfig()
 
 Bool bonkEncConfig::LoadSettings()
 {
-	HMODULE		 shelldll = LoadLibraryA("shell32.dll");
-	BOOL		 (WINAPI *ex_SHGetPathFromIDListA)(LPCITEMIDLIST, LPSTR);
-	BOOL		 (WINAPI *ex_SHGetPathFromIDListW)(LPCITEMIDLIST, LPWSTR);
-
-	ex_SHGetPathFromIDListA = (BOOL (WINAPI *)(LPCITEMIDLIST, LPSTR)) GetProcAddress(shelldll, "SHGetPathFromIDListA");
-	ex_SHGetPathFromIDListW = (BOOL (WINAPI *)(LPCITEMIDLIST, LPWSTR)) GetProcAddress(shelldll, "SHGetPathFromIDListW");
-
 	String		 pDir;
 	ITEMIDLIST	*idlist;
 
 	SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
 
-	if (Setup::enableUnicode && ex_SHGetPathFromIDListW != NIL)
+	if (Setup::enableUnicode)
 	{
 		wchar_t	*bufferw = new wchar_t [MAX_PATH];
 
-		ex_SHGetPathFromIDListW(idlist, bufferw);
+		SHGetPathFromIDListW(idlist, bufferw);
 
 		pDir = bufferw;
 
 		delete [] bufferw;
 	}
-	else if (ex_SHGetPathFromIDListA != NIL)
+	else
 	{
 		char	*buffera = new char [MAX_PATH];
 
-		ex_SHGetPathFromIDListA(idlist, buffera);
+		SHGetPathFromIDListA(idlist, buffera);
 
 		pDir = buffera;
 
 		delete [] buffera;
 	}
 
-	FreeLibrary(shelldll);
+	CoTaskMemFree(idlist);
 
 	if (pDir == "\\") pDir = "C:\\";
 

@@ -9,9 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/genconfig/genconfig_cddb.h>
-
-#include <dialogs/cddb_extsettings.h>
-
+#include <dialogs/cddb/extsettings.h>
 #include <cddb.h>
 
 configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("CDDB")
@@ -45,7 +43,7 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	combo_mode->onClick.Connect(&configureGeneralSettingsLayerCDDB::SetCDDBMode, this);
 	combo_mode->AddEntry("HTTP");
 	combo_mode->AddEntry("CDDBP/HTTP");
-	combo_mode->SelectEntry(currentConfig->freedb_mode);
+	combo_mode->SelectNthEntry(currentConfig->freedb_mode);
 
 	pos.x -= 106;
 	pos.y += 30;
@@ -156,12 +154,12 @@ configureGeneralSettingsLayerCDDB::~configureGeneralSettingsLayerCDDB()
 
 Void configureGeneralSettingsLayerCDDB::SetCDDBMode()
 {
-	if (combo_mode->GetSelectedEntry()->id == FREEDB_MODE_CDDBP)
+	if (combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
 	{
 		edit_port->Activate();
 		edit_port->SetText(String::FromInt(currentConfig->freedb_cddbp_port));
 	}
-	else if (combo_mode->GetSelectedEntry()->id == FREEDB_MODE_HTTP)
+	else if (combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_HTTP)
 	{
 		edit_port->Deactivate();
 		edit_port->SetText(String::FromInt(currentConfig->freedb_http_port));
@@ -188,7 +186,7 @@ Void configureGeneralSettingsLayerCDDB::ProxySettings()
 
 Int configureGeneralSettingsLayerCDDB::GetFreedbMode()
 {
-	return combo_mode->GetSelectedEntry()->id;
+	return combo_mode->GetSelectedEntryNumber();
 }
 
 Int configureGeneralSettingsLayerCDDB::GetFreedbPort()

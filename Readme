@@ -9,9 +9,14 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 RC1 CVS (January 2005)
+	Version 1.0 RC1 CVS (February 2005)
 
-		- added Czech and Portuguese (Brazil) language support
+		- added Czech and Portuguese (Brazilian) language support
+		- directory browsing now starts at the currently selected directory
+		- upgrade to MPEG4IP v1.2
+		- use smooth v0.8.67.0
+		- removed support for MinGW 1.x
+		- some bugfixes
 
 	Version 1.0 beta 3 (January 2005)
 
@@ -167,8 +172,8 @@ Requirements
 
 	Additional requirements for compiling the sources:
 
-		- MinGW v1.x or v3.2+ (http://www.mingw.org/) or MSVC v6.0
-		- smooth v0.8.66.0 CVS (http://www.smooth-project.org/)
+		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v6.0
+		- smooth v0.8.67.0 CVS (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - included with smooth)
 
 	Additional optional software:
@@ -236,7 +241,9 @@ Special thanks to
 		   Andrij Ilechko (Ukrainian),
 		   Wim Garreyn (Dutch),
 		   Marko Djordjevic (Serbian),
-		   Krisu (Finnish)
+		   Krisu (Finnish),
+		   Vladimir Kytyr (Czech),
+		   Escada (Portuguese, Brazilian)
 
 - Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 - all the testers and everyone who submitted bug reports

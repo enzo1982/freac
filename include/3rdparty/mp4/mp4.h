@@ -13,11 +13,18 @@
  * 
  * The Initial Developer of the Original Code is Cisco Systems Inc.
  * Portions created by Cisco Systems Inc. are
- * Copyright (C) Cisco Systems Inc. 2001.  All Rights Reserved.
+ * Copyright (C) Cisco Systems Inc. 2001 - 2004.  All Rights Reserved.
  * 
+ * 3GPP features implementation is based on 3GPP's TS26.234-v5.60,
+ * and was contributed by Ximpo Group Ltd.
+ *
+ * Portions created by Ximpo Group Ltd. are
+ * Copyright (C) Ximpo Group Ltd. 2003, 2004.  All Rights Reserved.
+ *
  * Contributor(s): 
  *		Dave Mackie			dmackie@cisco.com
  *		Alix Marchandise-Franquet	alix@cisco.com
+ *              Ximpo Group Ltd.                mp4v2@ximpo.com
  */
 
 #ifndef __MP4_INCLUDED__
@@ -25,9 +32,6 @@
 
 /* include system and project specific headers */
 #include "mpeg4ip.h"
-#ifdef ISMACRYP
-#include "../ismacryp/ismacryplib.h"
-#endif
 
 #include <math.h>	/* to define float HUGE_VAL and/or NAN */
 #ifndef NAN
@@ -151,6 +155,7 @@ typedef u_int32_t	MP4EditId;
 #define MP4_MPEG4_AAC_LC_AUDIO_TYPE			2
 #define MP4_MPEG4_AAC_SSR_AUDIO_TYPE		3
 #define MP4_MPEG4_AAC_LTP_AUDIO_TYPE		4
+#define MP4_MPEG4_AAC_HE_AUDIO_TYPE             5
 #define MP4_MPEG4_AAC_SCALABLE_AUDIO_TYPE	6
 #define MP4_MPEG4_CELP_AUDIO_TYPE			8
 #define MP4_MPEG4_HVXC_AUDIO_TYPE			9
@@ -192,7 +197,6 @@ typedef u_int32_t	MP4EditId;
 #define MP4_JPEG_VIDEO_TYPE				0x6C
 #define MP4_PRIVATE_VIDEO_TYPE			0xD0
 #define MP4_YUV12_VIDEO_TYPE			0xF0	/* a private definition */
-#define MP4_H264_VIDEO_TYPE				0xF1	/* a private definition */
 #define MP4_H263_VIDEO_TYPE				0xF2	/* a private definition */
 #define MP4_H261_VIDEO_TYPE				0xF3	/* a private definition */
 
@@ -283,7 +287,13 @@ extern "C" {
 MP4FileHandle MP4Create(
 	const char* fileName, 
 	u_int32_t verbosity DEFAULT(0),
-	u_int32_t flags DEFAULT(0));
+	u_int32_t flags DEFAULT(0),
+	int add_ftyp DEFAULT(1),
+	int add_iods DEFAULT(1),
+	char* majorBrand DEFAULT(0),
+	u_int32_t minorVersion DEFAULT(0),
+	char** supportedBrands DEFAULT(0),
+	u_int32_t supportedBrandsCount DEFAULT(0));
 
 MP4FileHandle MP4Modify(
 	const char* fileName, 
@@ -355,6 +365,10 @@ u_int64_t MP4GetIntegerProperty(
 	MP4FileHandle hFile, 
 	const char* propName);
 
+bool MP4HaveTrackIntegerProperty(
+	MP4FileHandle hFile, MP4TrackId trackId, 
+	const char* propName);
+
 float MP4GetFloatProperty(
 	MP4FileHandle hFile, 
 	const char* propName);
@@ -408,14 +422,42 @@ MP4TrackId MP4AddAudioTrack(
 	MP4Duration sampleDuration,
 	u_int8_t audioType DEFAULT(MP4_MPEG4_AUDIO_TYPE));
 
-#ifdef ISMACRYP
+typedef struct mp4v2_ismacryp_session_params {
+  u_int32_t  scheme_type;
+  u_int16_t  scheme_version;
+  u_int8_t  key_ind_len;
+  u_int8_t  iv_len;
+  u_int8_t  selective_enc;
+  char      *kms_uri;
+} mp4v2_ismacrypParams;
+
+
 MP4TrackId MP4AddEncAudioTrack(
 	MP4FileHandle hFile, 
 	u_int32_t timeScale, 
 	MP4Duration sampleDuration,
-	ismacryp_session_id_t ismaCryptSId,
+        mp4v2_ismacrypParams *icPp,
 	u_int8_t audioType DEFAULT(MP4_MPEG4_AUDIO_TYPE));
-#endif
+MP4TrackId MP4AddAmrAudioTrack(
+		MP4FileHandle hFile,
+		u_int32_t timeScale,
+		u_int16_t modeSet,
+		u_int8_t modeChangePeriod,
+		u_int8_t framesPerSample,
+		bool isAmrWB);
+
+void MP4SetAmrVendor(
+		MP4FileHandle hFile,
+		MP4TrackId trackId,
+		u_int32_t vendor);
+
+void MP4SetAmrDecoderVersion(
+		MP4FileHandle hFile,
+		MP4TrackId trackId,
+		u_int8_t decoderVersion);
+
+void MP4SetAmrModeSet(MP4FileHandle hFile, MP4TrackId trakId, uint16_t modeSet);
+uint16_t MP4GetAmrModeSet(MP4FileHandle hFile, MP4TrackId trackId);
 
 MP4TrackId MP4AddVideoTrack(
 	MP4FileHandle hFile, 
@@ -425,16 +467,59 @@ MP4TrackId MP4AddVideoTrack(
 	u_int16_t height,
 	u_int8_t videoType DEFAULT(MP4_MPEG4_VIDEO_TYPE));
 
-#ifdef ISMACRYP
 MP4TrackId MP4AddEncVideoTrack(
 	MP4FileHandle hFile, 
 	u_int32_t timeScale, 
 	MP4Duration sampleDuration,
 	u_int16_t width, 
 	u_int16_t height,
-	ismacryp_session_id_t ismaCryptSId, 
+        mp4v2_ismacrypParams *icPp,
 	u_int8_t videoType DEFAULT(MP4_MPEG4_VIDEO_TYPE));
-#endif
+
+MP4TrackId MP4AddH264VideoTrack(
+				MP4FileHandle hFile,
+				u_int32_t timeScale, 
+				MP4Duration sampleDuration, 
+				u_int16_t width, 
+				u_int16_t height, 
+				uint8_t AVCProfileIndication,
+				uint8_t profile_compat,
+				uint8_t AVCLevelIndication,
+				uint8_t sampleLenFieldSizeMinusOne);
+bool MP4AddH264SequenceParameterSet(MP4FileHandle hFile,
+				    MP4TrackId trackId,
+				    uint8_t *pSequence,
+				    uint16_t sequenceLen);
+bool MP4AddH264PictureParameterSet(MP4FileHandle hFile,
+				   MP4TrackId trackId,
+				   uint8_t *pPict,
+				    uint16_t pictLen);
+void MP4SetH263Vendor(
+		MP4FileHandle hFile,
+		MP4TrackId trackId,
+		u_int32_t vendor);
+
+void  MP4SetH263DecoderVersion(
+		MP4FileHandle hFile,
+		MP4TrackId trackId,
+		u_int8_t decoderVersion);
+
+void MP4SetH263Bitrates(
+		MP4FileHandle hFile,
+		MP4TrackId trackId,
+		u_int32_t avgBitrate,
+		u_int32_t maxBitrate);
+
+MP4TrackId MP4AddH263VideoTrack(
+		MP4FileHandle hFile,
+		u_int32_t timeScale,
+		MP4Duration sampleDuration,
+		u_int16_t width,
+		u_int16_t height,
+		u_int8_t h263Level,
+		u_int8_t h263Profile,
+		u_int32_t avgBitrate,
+		u_int32_t maxBitrate);
 
 MP4TrackId MP4AddHintTrack(
 	MP4FileHandle hFile, 
@@ -447,9 +532,11 @@ MP4TrackId MP4CloneTrack(
 	MP4TrackId dstHintTrackReferenceTrack DEFAULT(MP4_INVALID_TRACK_ID));
 
 MP4TrackId MP4EncAndCloneTrack(
-	MP4FileHandle srcFile, 
-	MP4TrackId srcTrackId,
-	MP4FileHandle dstFile DEFAULT(MP4_INVALID_FILE_HANDLE));
+        MP4FileHandle srcFile,
+        MP4TrackId srcTrackId,
+        mp4v2_ismacrypParams *icPp,
+        MP4FileHandle dstFile DEFAULT(MP4_INVALID_FILE_HANDLE),
+        MP4TrackId dstHintTrackReferenceTrack DEFAULT(MP4_INVALID_TRACK_ID));
 
 MP4TrackId MP4CopyTrack(
 	MP4FileHandle srcFile, 
@@ -458,14 +545,17 @@ MP4TrackId MP4CopyTrack(
 	bool applyEdits DEFAULT(false),
 	MP4TrackId dstHintTrackReferenceTrack DEFAULT(MP4_INVALID_TRACK_ID));
 
-#ifdef ISMACRYP
+typedef u_int32_t (*encryptFunc_t)(u_int32_t, u_int32_t, u_int8_t*, u_int32_t*, u_int8_t **);
+
 MP4TrackId MP4EncAndCopyTrack(
 	MP4FileHandle srcFile, 
 	MP4TrackId srcTrackId,
-	ismacryp_session_id_t ismaCryptSId,
+        mp4v2_ismacrypParams *icPp,
+        encryptFunc_t encfcnp,
+        u_int32_t encfcnparam1,
 	MP4FileHandle dstFile DEFAULT(MP4_INVALID_FILE_HANDLE),
-	bool applyEdits DEFAULT(false));
-#endif
+	bool applyEdits DEFAULT(false),
+	MP4TrackId dstHintTrackReferenceTrack DEFAULT(MP4_INVALID_TRACK_ID));
 
 bool MP4DeleteTrack(
 	MP4FileHandle hFile, 
@@ -494,6 +584,8 @@ const char* MP4GetTrackType(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
 
+const char *MP4GetTrackMediaDataName(MP4FileHandle hFile,
+				     MP4TrackId trackId);
 MP4Duration MP4GetTrackDuration(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
@@ -507,17 +599,7 @@ bool MP4SetTrackTimeScale(
 	MP4TrackId trackId, 
 	u_int32_t value);
 
-// Should not be used, replace with MP4GetTrackEsdsObjectTypeId
-u_int8_t MP4GetTrackAudioType(
-	MP4FileHandle hFile, 
-	MP4TrackId trackId);
-
 u_int8_t MP4GetTrackAudioMpeg4Type(
-	MP4FileHandle hFile, 
-	MP4TrackId trackId);
-
-// Should not be used, replace with MP4GetTrackEsdsObjectTypeId
-u_int8_t MP4GetTrackVideoType(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
 
@@ -534,6 +616,11 @@ u_int32_t MP4GetTrackBitRate(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
 
+bool MP4GetTrackVideoMetadata(MP4FileHandle hFile,
+			      MP4TrackId trackId,
+			      uint8_t **ppConfig,
+			      uint32_t *pConfigSize);
+
 bool MP4GetTrackESConfiguration(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId, 
@@ -546,6 +633,20 @@ bool MP4SetTrackESConfiguration(
 	const u_int8_t* pConfig, 
 	u_int32_t configSize);
 
+/* h264 information routines */
+bool MP4GetTrackH264ProfileLevel(MP4FileHandle hFile,
+				 MP4TrackId trackId,
+				 uint8_t *pProfile,
+				 uint8_t *pLevel);
+bool MP4GetTrackH264SeqPictHeaders(MP4FileHandle hFile,
+				   MP4TrackId trackId,
+				   uint8_t ***pSeqHeaders,
+				   uint32_t **pSeqHeaderSize,
+				   uint8_t ***pPictHeader,
+				   uint32_t **pPictHeaderSize);
+bool MP4GetTrackH264LengthSize(MP4FileHandle hFile,
+			       MP4TrackId trackId,
+			       uint32_t *pLength);
 MP4SampleId MP4GetTrackNumberOfSamples(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
@@ -561,6 +662,13 @@ u_int16_t MP4GetTrackVideoHeight(
 float MP4GetTrackVideoFrameRate(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
+
+int MP4GetTrackAudioChannels(MP4FileHandle hFile, 
+				  MP4TrackId trackId);
+
+bool MP4IsIsmaCrypMediaTrack(
+        MP4FileHandle hFile,
+        MP4TrackId trackId);
 
 /* generic track properties */
 
@@ -659,16 +767,15 @@ bool MP4CopySample(
 	MP4TrackId dstTrackId DEFAULT(MP4_INVALID_TRACK_ID),
 	MP4Duration dstSampleDuration DEFAULT(MP4_INVALID_DURATION));
 
-#ifdef ISMACRYP
 bool MP4EncAndCopySample(
 	MP4FileHandle srcFile,
 	MP4TrackId srcTrackId, 
 	MP4SampleId srcSampleId,
-	ismacryp_session_id_t ismaCryptSId,
+        encryptFunc_t encfcnp,
+        u_int32_t encfcnparam1,
 	MP4FileHandle dstFile DEFAULT(MP4_INVALID_FILE_HANDLE),
 	MP4TrackId dstTrackId DEFAULT(MP4_INVALID_TRACK_ID),
 	MP4Duration dstSampleDuration DEFAULT(MP4_INVALID_DURATION));
-#endif
 
 /* Note this function is not yet implemented */
 bool MP4ReferenceSample(
@@ -848,6 +955,17 @@ bool MP4WriteRtpHint(
 	MP4TrackId hintTrackId,
 	MP4Duration duration,
 	bool isSyncSample DEFAULT(true));
+
+/* 3GP specific utilities */
+
+bool MP4Make3GPCompliant(
+	const char* fileName,
+	u_int32_t verbosity DEFAULT(0),
+	char* majorBrand DEFAULT(0),
+	u_int32_t minorVersion DEFAULT(0),
+	char** supportedBrands DEFAULT(NULL),
+	u_int32_t supportedBrandsCount DEFAULT(0),
+	bool deleteIodsAtom DEFAULT(true));
 
 /* ISMA specific utilities */
 
@@ -1044,6 +1162,10 @@ char* MP4BinaryToBase16(
 char* MP4BinaryToBase64(
 	const u_int8_t* pData, 
 	u_int32_t dataSize);
+
+uint8_t *Base64ToBinary(const char *pData, 
+			uint32_t decodeSize, 
+			uint32_t *pDataSize);
 
 #ifdef __cplusplus
 }

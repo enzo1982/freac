@@ -28,8 +28,7 @@
 #include <dialogs/tvqconfig.h>
 
 #include <cddb.h>
-#include <dialogs/cddb_multimatch.h>
-#include <dialogs/cddb_submit.h>
+#include <dialogs/cddb/submit.h>
 
 #include <dialogs/language.h>
 
@@ -238,7 +237,7 @@ bonkEncGUI::bonkEncGUI()
 	info_background		= new Layer();
 	info_background->SetMetrics(pos, size);
 	info_background->SetOrientation(OR_LOWERLEFT);
-	info_background->SetColor(Setup::BackgroundColor);
+	info_background->SetBackgroundColor(Setup::BackgroundColor);
 
 	pos.y = 0;
 	pos.x = 2;
@@ -1197,7 +1196,7 @@ Void bonkEncGUI::QueryCDDB()
 
 	if (entry != NIL)
 	{
-		bonkEncTrack	*format = sa_formatinfo.GetEntry(entry->id);
+		bonkEncTrack	*format = sa_formatinfo.GetEntry(entry->GetHandle());
 
 		dontUpdateInfo = True;
 
@@ -1422,12 +1421,12 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		Int		 id = joblist->GetNthEntry(i)->id;
-		bonkEncTrack	*format = sa_formatinfo.GetEntry(id);
+		ListEntry	*entry = joblist->GetNthEntry(i);
+		bonkEncTrack	*format = sa_formatinfo.GetEntry(entry->GetHandle());
 
 		if (format->artist == NIL || format->title == NIL)
 		{
-			joblist->ModifyEntry(id, String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t").Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString));
+			entry->SetText(String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t").Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString));
 		}
 	}
 

@@ -47,7 +47,7 @@ languageDlg::languageDlg()
 	{
 		list_language->AddEntry(bonkEnc::i18n->GetNthLanguageName(i));
 
-		if (bonkEnc::i18n->GetNthLanguageID(i) == "english-internal") list_language->SelectEntry(i);
+		if (bonkEnc::i18n->GetNthLanguageID(i) == "english-internal") list_language->SelectNthEntry(i);
 	}
 
 	RegisterObject(mainWnd);
@@ -81,7 +81,7 @@ Int languageDlg::ShowDialog()
 
 Void languageDlg::OK()
 {
-	if (list_language->GetSelectedEntry() != NIL) currentConfig->language = bonkEnc::i18n->GetNthLanguageID(list_language->GetSelectedEntry()->id);
+	if (list_language->GetSelectedEntry() != NIL) currentConfig->language = bonkEnc::i18n->GetNthLanguageID(list_language->GetSelectedEntryNumber());
 
 	mainWnd->Close();
 }

@@ -108,7 +108,7 @@ configureLameEnc::configureLameEnc()
 	basic_combo_preset->AddEntry(bonkEnc::i18n->TranslateString("Extreme, Fast"));
 	basic_combo_preset->AddEntry("R3Mix");
 	basic_combo_preset->AddEntry("ABR");
-	basic_combo_preset->SelectEntry(currentConfig->lame_preset);
+	basic_combo_preset->SelectNthEntry(currentConfig->lame_preset);
 	basic_combo_preset->onClick.Connect(&configureLameEnc::SetPreset, this);
 
 	pos.x = 7;
@@ -424,7 +424,7 @@ configureLameEnc::configureLameEnc()
 	misc_combo_padding->AddEntry(bonkEnc::i18n->TranslateString("pad no frames"));
 	misc_combo_padding->AddEntry(bonkEnc::i18n->TranslateString("pad all frames"));
 	misc_combo_padding->AddEntry(bonkEnc::i18n->TranslateString("adjust padding"));
-	misc_combo_padding->SelectEntry(currentConfig->lame_padding_type);
+	misc_combo_padding->SelectNthEntry(currentConfig->lame_padding_type);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -455,7 +455,7 @@ configureLameEnc::configureLameEnc()
 	expert_combo_athtype->AddEntry("Roel Van Den Berghe");
 	expert_combo_athtype->AddEntry("Gabriel Bouvigne VBR");
 	expert_combo_athtype->AddEntry("John Dahlstrom");
-	expert_combo_athtype->SelectEntry(currentConfig->lame_athtype + 1);
+	expert_combo_athtype->SelectNthEntry(currentConfig->lame_athtype + 1);
 
 	if (!enable_ath) expert_combo_athtype->Deactivate();
 
@@ -497,15 +497,15 @@ configureLameEnc::configureLameEnc()
 	filtering_combo_resample->AddEntry("44.1 kHz");
 	filtering_combo_resample->AddEntry("48 kHz");
 
-	if (currentConfig->lame_resample == 8000)	filtering_combo_resample->SelectEntry(1);
-	else if (currentConfig->lame_resample == 11025)	filtering_combo_resample->SelectEntry(2);
-	else if (currentConfig->lame_resample == 12000)	filtering_combo_resample->SelectEntry(3);
-	else if (currentConfig->lame_resample == 16000)	filtering_combo_resample->SelectEntry(4);
-	else if (currentConfig->lame_resample == 22050)	filtering_combo_resample->SelectEntry(5);
-	else if (currentConfig->lame_resample == 24000)	filtering_combo_resample->SelectEntry(6);
-	else if (currentConfig->lame_resample == 32000)	filtering_combo_resample->SelectEntry(7);
-	else if (currentConfig->lame_resample == 44100)	filtering_combo_resample->SelectEntry(8);
-	else if (currentConfig->lame_resample == 48000)	filtering_combo_resample->SelectEntry(9);
+	if (currentConfig->lame_resample == 8000)	filtering_combo_resample->SelectNthEntry(1);
+	else if (currentConfig->lame_resample == 11025)	filtering_combo_resample->SelectNthEntry(2);
+	else if (currentConfig->lame_resample == 12000)	filtering_combo_resample->SelectNthEntry(3);
+	else if (currentConfig->lame_resample == 16000)	filtering_combo_resample->SelectNthEntry(4);
+	else if (currentConfig->lame_resample == 22050)	filtering_combo_resample->SelectNthEntry(5);
+	else if (currentConfig->lame_resample == 24000)	filtering_combo_resample->SelectNthEntry(6);
+	else if (currentConfig->lame_resample == 32000)	filtering_combo_resample->SelectNthEntry(7);
+	else if (currentConfig->lame_resample == 44100)	filtering_combo_resample->SelectNthEntry(8);
+	else if (currentConfig->lame_resample == 48000)	filtering_combo_resample->SelectNthEntry(9);
 
 	pos.x = 153;
 	pos.y = 11;
@@ -859,7 +859,7 @@ Void configureLameEnc::OK()
 	currentConfig->lame_private = set_private;
 	currentConfig->lame_crc = set_crc;
 	currentConfig->lame_strict_iso = set_iso;
-	currentConfig->lame_padding_type = misc_combo_padding->GetSelectedEntry()->id;
+	currentConfig->lame_padding_type = misc_combo_padding->GetSelectedEntryNumber();
 	currentConfig->lame_disable_filtering = disable_filtering;
 	currentConfig->lame_set_lowpass = set_lowpass;
 	currentConfig->lame_set_lowpass_width = set_lowpass_width;
@@ -870,10 +870,10 @@ Void configureLameEnc::OK()
 	currentConfig->lame_highpass = filtering_edit_highpass->GetText().ToInt();
 	currentConfig->lame_highpass_width = filtering_edit_highpass_width->GetText().ToInt();
 	currentConfig->lame_enable_ath = enable_ath;
-	currentConfig->lame_athtype = expert_combo_athtype->GetSelectedEntry()->id - 1;
+	currentConfig->lame_athtype = expert_combo_athtype->GetSelectedEntryNumber() - 1;
 	currentConfig->lame_use_tns = enable_tempmask;
 
-	switch (filtering_combo_resample->GetSelectedEntry()->id)
+	switch (filtering_combo_resample->GetSelectedEntryNumber())
 	{
 		case 0:
 			currentConfig->lame_resample = 0;
@@ -917,7 +917,7 @@ Void configureLameEnc::Cancel()
 
 Void configureLameEnc::SetPreset()
 {
-	preset = basic_combo_preset->GetSelectedEntry()->id;
+	preset = basic_combo_preset->GetSelectedEntryNumber();
 
 	if (preset == 0)
 	{

@@ -58,7 +58,7 @@ configureGeneralSettingsLayerLanguage::configureGeneralSettingsLayerLanguage() :
 	{
 		combo_language->AddEntry(bonkEnc::i18n->GetNthLanguageName(i));
 
-		if (currentConfig->language == bonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectEntry(i);
+		if (currentConfig->language == bonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
 	SelectLanguage();
@@ -87,22 +87,22 @@ Void configureGeneralSettingsLayerLanguage::SelectLanguage()
 {
 	if (combo_language->GetSelectedEntry() != NIL)
 	{
-		text_info->SetText(bonkEnc::i18n->TranslateString("Language").Append(": ").Append(bonkEnc::i18n->GetNthLanguageName(combo_language->GetSelectedEntry()->id))
-				.Append("\n").Append(bonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntry()->id))
-				.Append("\n").Append(bonkEnc::i18n->TranslateString("Author")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntry()->id))
+		text_info->SetText(bonkEnc::i18n->TranslateString("Language").Append(": ").Append(bonkEnc::i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber()))
+				.Append("\n").Append(bonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntryNumber()))
+				.Append("\n").Append(bonkEnc::i18n->TranslateString("Author")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber()))
 				.Append("\n").Append(bonkEnc::i18n->TranslateString("URL")).Append(": "));
 
-		link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntry()->id));
-		link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntry()->id));
+		link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
+		link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 	}
 }
 
 Bool configureGeneralSettingsLayerLanguage::IsLanguageChanged()
 {
-	return (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntry()->id));
+	return (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
 }
 
 String configureGeneralSettingsLayerLanguage::GetSelectedLanguageID()
 {
-	return bonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntry()->id);
+	return bonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber());
 }

@@ -8,7 +8,7 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <dialogs/cddb_extsettings.h>
+#include <dialogs/cddb/extsettings.h>
 #include <resources.h>
 
 cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
@@ -104,7 +104,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_combo_mode->AddEntry("HTTP");
 	proxy_combo_mode->AddEntry("SOCKS4");
 	proxy_combo_mode->AddEntry("SOCKS5");
-	proxy_combo_mode->SelectEntry(currentConfig->freedb_proxy_mode);
+	proxy_combo_mode->SelectNthEntry(currentConfig->freedb_proxy_mode);
 
 	pos.x = 16;
 	pos.y += 30;
@@ -213,7 +213,7 @@ Void cddbExtendedSettingsDlg::OK()
 	currentConfig->freedb_query_path = http_edit_query->GetText();
 	currentConfig->freedb_submit_path = http_edit_submit->GetText();
 
-	currentConfig->freedb_proxy_mode = proxy_combo_mode->GetSelectedEntry()->id;
+	currentConfig->freedb_proxy_mode = proxy_combo_mode->GetSelectedEntryNumber();
 	currentConfig->freedb_proxy = proxy_edit_server->GetText();
 	currentConfig->freedb_proxy_port = proxy_edit_port->GetText().ToInt();
 
@@ -227,7 +227,7 @@ Void cddbExtendedSettingsDlg::Cancel()
 
 Void cddbExtendedSettingsDlg::SetProxyMode()
 {
-	if (proxy_combo_mode->GetSelectedEntry()->id == 0)
+	if (proxy_combo_mode->GetSelectedEntryNumber() == 0)
 	{
 		proxy_text_server->Deactivate();
 		proxy_edit_server->Deactivate();
@@ -242,12 +242,12 @@ Void cddbExtendedSettingsDlg::SetProxyMode()
 		proxy_edit_port->Activate();
 	}
 
-	if (proxy_combo_mode->GetSelectedEntry()->id == 1 && proxy_edit_port->GetText().ToInt() == 1080)
+	if (proxy_combo_mode->GetSelectedEntryNumber() == 1 && proxy_edit_port->GetText().ToInt() == 1080)
 	{
 		proxy_edit_port->SetText("80");
 	}
 
-	if (proxy_combo_mode->GetSelectedEntry()->id >= 2 && proxy_edit_port->GetText().ToInt() == 80)
+	if (proxy_combo_mode->GetSelectedEntryNumber() >= 2 && proxy_edit_port->GetText().ToInt() == 80)
 	{
 		proxy_edit_port->SetText("1080");
 	}

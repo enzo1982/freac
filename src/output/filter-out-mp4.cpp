@@ -56,7 +56,7 @@ bool FilterOutMP4::Activate()
 
 	ex_faacEncSetConfiguration(handle, fConfig);
 
-	mp4File		= ex_MP4Create(format->outfile, 0, 0);
+	mp4File		= ex_MP4Create(format->outfile, 0, 0, 1, 1, NIL, 0, NIL, 0);
 
 	ex_MP4SetTimeScale(mp4File, 90000);
 

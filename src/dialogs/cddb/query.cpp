@@ -8,11 +8,11 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <dialogs/cddb_query.h>
+#include <dialogs/cddb/query.h>
 #include <resources.h>
 #include <dllinterfaces.h>
 #include <cddb.h>
-#include <dialogs/cddb_multimatch.h>
+#include <dialogs/cddb/multimatch.h>
 
 cddbQueryDlg::cddbQueryDlg()
 {

@@ -29,8 +29,8 @@
 #include <dialogs/tvqconfig.h>
 
 #include <cddb.h>
-#include <dialogs/cddb_query.h>
-#include <dialogs/cddb_submit.h>
+#include <dialogs/cddb/query.h>
+#include <dialogs/cddb/submit.h>
 
 #include <dialogs/language.h>
 
@@ -66,6 +66,8 @@ String	 bonkEnc::shortVersion = "v1.0";
 
 bonkEnc::bonkEnc()
 {
+	CoInitialize(NIL);
+
 	encoding = False;
 	encoder_thread = NIL;
 
@@ -227,6 +229,8 @@ bonkEnc::~bonkEnc()
 
 	delete i18n;
 	delete currentConfig;
+
+	CoUninitialize();
 }
 
 InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
@@ -431,6 +435,7 @@ Void bonkEnc::SelectDir()
 
 	dialog->SetParentWindow(mainWnd);
 	dialog->SetCaption(String("\n").Append(bonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetDirName(currentConfig->enc_outdir);
 
 	if (dialog->ShowDialog() == Success)
 	{

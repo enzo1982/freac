@@ -30,7 +30,7 @@
 #include <3rdparty/twinvq/tvqenc.h>
 #include <3rdparty/winamp/in2.h>
 #include <3rdparty/id3.h>
-#include <3rdparty/mp4/mp4av.h>
+#include <3rdparty/mp4/mp4.h>
 #include <3rdparty/flac/stream_decoder.h>
 
 // CDRip DLL API
@@ -336,7 +336,7 @@
 // MP4V2 DLL API
 
 	typedef MP4FileHandle			(*MP4READ)					(const char *, u_int32_t);
-	typedef MP4FileHandle			(*MP4CREATE)					(const char *, u_int32_t, u_int32_t);
+	typedef MP4FileHandle			(*MP4CREATE)					(const char *, u_int32_t, u_int32_t, int, int, char *, u_int32_t, char **, u_int32_t);
 	typedef bool				(*MP4CLOSE)					(MP4FileHandle);
 	typedef bool				(*MP4OPTIMIZE)					(const char *, const char *, u_int32_t);
 	typedef bool				(*MP4SETMETADATANAME)				(MP4FileHandle, const char *);

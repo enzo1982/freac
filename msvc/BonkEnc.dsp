@@ -220,6 +220,26 @@ SOURCE=..\src\dialogs\genconfig\genconfig_plugins.cpp
 SOURCE=..\src\dialogs\genconfig\genconfig_tags.cpp
 # End Source File
 # End Group
+# Begin Group "cddb"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\src\dialogs\cddb\extsettings.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\cddb\multimatch.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\cddb\query.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\cddb\submit.cpp
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\src\dialogs\bladeconfig.cpp
@@ -227,22 +247,6 @@ SOURCE=..\src\dialogs\bladeconfig.cpp
 # Begin Source File
 
 SOURCE=..\src\dialogs\bonkconfig.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\dialogs\cddb_extsettings.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\dialogs\cddb_multimatch.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\dialogs\cddb_query.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\dialogs\cddb_submit.cpp
 # End Source File
 # Begin Source File
 
@@ -466,6 +470,26 @@ SOURCE=..\include\dialogs\genconfig\genconfig_plugins.h
 SOURCE=..\include\dialogs\genconfig\genconfig_tags.h
 # End Source File
 # End Group
+# Begin Group "cddb-headers"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb\extsettings.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb\multimatch.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb\query.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb\submit.h
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\include\dialogs\bladeconfig.h
@@ -473,22 +497,6 @@ SOURCE=..\include\dialogs\bladeconfig.h
 # Begin Source File
 
 SOURCE=..\include\dialogs\bonkconfig.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\dialogs\cddb_extsettings.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\dialogs\cddb_multimatch.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\dialogs\cddb_query.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\dialogs\cddb_submit.h
 # End Source File
 # Begin Source File
 

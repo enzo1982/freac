@@ -84,7 +84,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 	for (Int i = 0; i < num; (step == 1) ? i++ : i)
 	{
-		if (!joblist->GetNthEntry(i - nRemoved)->selected) continue;
+		if (!joblist->GetNthEntry(i - nRemoved)->IsMarked()) continue;
 
 		debug_out->OutputLine("Encoding a file...");
 
@@ -488,7 +488,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			for (Int j = i + 1; j < num; j++)
 			{
-				if (!joblist->GetNthEntry(j - nRemoved)->selected) continue;
+				if (!joblist->GetNthEntry(j - nRemoved)->IsMarked()) continue;
 
 				if (sa_formatinfo.GetNthEntry(j - nRemoved)->drive == trackInfo->drive) { ejectDisk = False; break; }
 			}
@@ -498,11 +498,11 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		if (!currentConfig->enable_console && !stop_encoding && step == 1)
 		{
-			Int	 entry = joblist->GetNthEntry(i - nRemoved)->id;
+			ListEntry	*entry = joblist->GetNthEntry(i - nRemoved);
 
 			if (joblist->GetSelectedEntry() != NIL)
 			{
-				if (entry == joblist->GetSelectedEntry()->id)
+				if (entry == joblist->GetSelectedEntry())
 				{
 					dontUpdateInfo = True;
 
@@ -535,8 +535,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			surface->StartPaint(frame);
 
-			delete sa_formatinfo.GetEntry(entry);
-			sa_formatinfo.RemoveEntry(entry);
+			delete sa_formatinfo.GetEntry(entry->GetHandle());
+			sa_formatinfo.RemoveEntry(entry->GetHandle());
 			joblist->RemoveEntry(entry);
 
 			surface->EndPaint();

@@ -268,13 +268,12 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		format->outfile = outfile;
 
 		ListEntry	*entry	= joblist->AddEntry(jlEntry);
-		Int		 id	= entry->id;
 
 		if (currentConfig->showTooltips) entry->SetTooltipText(tooltip);
 
-		joblist->GetEntry(id)->selected = True;
+		entry->SetMark(True);
 		joblist->Paint(SP_UPDATE);
-		sa_formatinfo.AddEntry(format, id);
+		sa_formatinfo.AddEntry(format, entry->GetHandle());
 	}
 	else
 	{
@@ -300,12 +299,12 @@ Void bonkEncGUI::RemoveFile()
 		return;
 	}
 
-	Int	 entry = joblist->GetSelectedEntry()->id;
-	Int	 n = 0;
+	ListEntry	*entry = joblist->GetSelectedEntry();
+	Int		 n = 0;
 
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		if (joblist->GetNthEntry(i)->id == entry) n = i;
+		if (joblist->GetNthEntry(i) == entry) n = i;
 	}
 
 	if (playing && player_entry == n) StopPlayback();
@@ -322,14 +321,14 @@ Void bonkEncGUI::RemoveFile()
 
 	surface->StartPaint(frame);
 
-	delete sa_formatinfo.GetEntry(entry);
-	sa_formatinfo.RemoveEntry(entry);
+	delete sa_formatinfo.GetEntry(entry->GetHandle());
+	sa_formatinfo.RemoveEntry(entry->GetHandle());
 	joblist->RemoveEntry(entry);
 
 	if (joblist->GetNOfEntries() > 0)
 	{
-		if (n < joblist->GetNOfEntries())	joblist->SelectEntry(joblist->GetNthEntry(n)->id);
-		else					joblist->SelectEntry(joblist->GetNthEntry(n - 1)->id);
+		if (n < joblist->GetNOfEntries())	joblist->SelectEntry(joblist->GetNthEntry(n));
+		else					joblist->SelectEntry(joblist->GetNthEntry(n - 1));
 	}
 
 	surface->EndPaint();
@@ -375,7 +374,7 @@ Void bonkEnc::ClearList()
 
 	for (int i = 0; i < sa_formatinfo.GetNOfEntries(); i++) delete sa_formatinfo.GetNthEntry(i);
 	sa_formatinfo.RemoveAll();
-	joblist->RemoveAll();
+	joblist->Clear();
 
 	if (!currentConfig->enable_console) txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", "0"));
 
@@ -400,7 +399,7 @@ Void bonkEnc::ClearList()
 
 Void bonkEncGUI::SelectJoblistEntry()
 {
-	bonkEncTrack	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
+	bonkEncTrack	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->GetHandle());
 
 	dontUpdateInfo = True;
 
@@ -435,7 +434,7 @@ Void bonkEncGUI::UpdateTitleInfo()
 
 	if (joblist->GetSelectedEntry() == NIL) return;
 
-	bonkEncTrack	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
+	bonkEncTrack	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->GetHandle());
 
 	if (format == NIL) return;
 
@@ -453,14 +452,14 @@ Void bonkEncGUI::UpdateTitleInfo()
 
 	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
 
-	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->ModifyEntry(joblist->GetSelectedEntry()->id, jlEntry);
+	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->GetSelectedEntry()->SetText(jlEntry);
 }
 
 Void bonkEncGUI::JoblistSelectAll()
 {
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		if (!joblist->GetNthEntry(i)->selected) joblist->GetNthEntry(i)->selected = True;
+		if (!joblist->GetNthEntry(i)->IsMarked()) joblist->GetNthEntry(i)->SetMark(True);
 	}
 
 	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->size));
@@ -472,7 +471,7 @@ Void bonkEncGUI::JoblistSelectNone()
 {
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		if (joblist->GetNthEntry(i)->selected) joblist->GetNthEntry(i)->selected = False;
+		if (joblist->GetNthEntry(i)->IsMarked()) joblist->GetNthEntry(i)->SetMark(False);
 	}
 
 	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->size));
@@ -484,8 +483,8 @@ Void bonkEncGUI::JoblistToggleSelection()
 {
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		if (joblist->GetNthEntry(i)->selected)	joblist->GetNthEntry(i)->selected = False;
-		else					joblist->GetNthEntry(i)->selected = True;
+		if (joblist->GetNthEntry(i)->IsMarked())	joblist->GetNthEntry(i)->SetMark(False);
+		else						joblist->GetNthEntry(i)->SetMark(True);
 	}
 
 	mainWnd->GetDrawSurface()->StartPaint(Rect(joblist->GetRealPosition(), joblist->size));

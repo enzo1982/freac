@@ -68,7 +68,7 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	{
 		ListEntry	*entry = list_output->AddEntry(currentConfig->appMain->winamp_out_modules.GetNthEntry(l)->description);
 
-		if (l == currentConfig->output_plugin) entry->selected = True;
+		if (l == currentConfig->output_plugin) entry->SetMark(True);
 	}
 
 	pos.x	+= 433;
@@ -123,11 +123,11 @@ Void configureGeneralSettingsLayerPlugins::SelectOutputPlugin()
 	button_output->Activate();
 	button_output_about->Activate();
 
-	if (list_output->GetSelectedEntry()->selected)
+	if (list_output->GetSelectedEntry()->IsMarked())
 	{
-		for (Int i = 0; i < list_output->GetNOfEntries(); i++) list_output->GetNthEntry(i)->selected = False;
+		for (Int i = 0; i < list_output->GetNOfEntries(); i++) list_output->GetNthEntry(i)->SetMark(False);
 
-		list_output->GetSelectedEntry()->selected = True;
+		list_output->GetSelectedEntry()->SetMark(True);
 		list_output->Paint(SP_PAINT);
 		list_output->Paint(SP_MOUSEIN);
 	}
@@ -135,11 +135,11 @@ Void configureGeneralSettingsLayerPlugins::SelectOutputPlugin()
 	{
 		Bool	 selected = False;
 
-		for (Int i = 0; i < list_output->GetNOfEntries(); i++) if (list_output->GetNthEntry(i)->selected) selected = True;
+		for (Int i = 0; i < list_output->GetNOfEntries(); i++) if (list_output->GetNthEntry(i)->IsMarked()) selected = True;
 
 		if (!selected)
 		{
-			list_output->GetSelectedEntry()->selected = True;
+			list_output->GetSelectedEntry()->SetMark(True);
 			list_output->Paint(SP_PAINT);
 			list_output->Paint(SP_MOUSEIN);
 		}
@@ -150,33 +150,33 @@ Void configureGeneralSettingsLayerPlugins::ConfigureInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_in_modules.GetNthEntry(list_input->GetSelectedEntry()->id)->Config((HWND) GetContainerWindow()->GetSystemWindow());
+	currentConfig->appMain->winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void configureGeneralSettingsLayerPlugins::ConfigureOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_out_modules.GetNthEntry(list_output->GetSelectedEntry()->id)->Config((HWND) GetContainerWindow()->GetSystemWindow());
+	currentConfig->appMain->winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void configureGeneralSettingsLayerPlugins::AboutInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_in_modules.GetNthEntry(list_input->GetSelectedEntry()->id)->About((HWND) GetContainerWindow()->GetSystemWindow());
+	currentConfig->appMain->winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void configureGeneralSettingsLayerPlugins::AboutOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_out_modules.GetNthEntry(list_output->GetSelectedEntry()->id)->About((HWND) GetContainerWindow()->GetSystemWindow());
+	currentConfig->appMain->winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Int configureGeneralSettingsLayerPlugins::GetSelectedOutputPlugin()
 {
-	for (Int i = 0; i < list_output->GetNOfEntries(); i++) if (list_output->GetNthEntry(i)->selected) return i;
+	for (Int i = 0; i < list_output->GetNOfEntries(); i++) if (list_output->GetNthEntry(i)->IsMarked()) return i;
 
 	return -1;
 }

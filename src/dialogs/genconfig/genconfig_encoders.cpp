@@ -91,7 +91,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 
 	combo_encoder->AddEntry(String("WAVE Out Filter v1.0"));
 
-	combo_encoder->SelectEntry(currentConfig->encoder);
+	combo_encoder->SelectNthEntry(currentConfig->encoder);
 
 	pos.y	-= 1;
 	pos.x	+= 194;
@@ -222,6 +222,7 @@ Void configureGeneralSettingsLayerEncoders::SelectDir()
 
 	dialog->SetParentWindow(GetContainerWindow());
 	dialog->SetCaption(String("\n").Append(bonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetDirName(edit_outdir->GetText());
 
 	if (dialog->ShowDialog() == Success)
 	{
@@ -233,7 +234,7 @@ Void configureGeneralSettingsLayerEncoders::SelectDir()
 
 Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
 {
-	if (combo_encoder->GetSelectedEntry()->id == ENCODER_BONKENC)
+	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BONKENC)
 	{
 		configureBonkEnc	*dlg = new configureBonkEnc();
 
@@ -241,7 +242,7 @@ Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
 
 		DeleteObject(dlg);
 	}
-	else if (combo_encoder->GetSelectedEntry()->id == ENCODER_BLADEENC)
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BLADEENC)
 	{
 		configureBladeEnc	*dlg = new configureBladeEnc();
 
@@ -249,7 +250,7 @@ Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
 
 		DeleteObject(dlg);
 	}
-	else if (combo_encoder->GetSelectedEntry()->id == ENCODER_LAMEENC)
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_LAMEENC)
 	{
 		configureLameEnc	*dlg = new configureLameEnc();
 
@@ -257,7 +258,7 @@ Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
 
 		DeleteObject(dlg);
 	}
-	else if (combo_encoder->GetSelectedEntry()->id == ENCODER_VORBISENC)
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_VORBISENC)
 	{
 		configureVorbisEnc	*dlg = new configureVorbisEnc();
 
@@ -265,7 +266,7 @@ Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
 
 		DeleteObject(dlg);
 	}
-	else if (combo_encoder->GetSelectedEntry()->id == ENCODER_FAAC)
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FAAC)
 	{
 		configureFAAC	*dlg = new configureFAAC();
 
@@ -273,7 +274,7 @@ Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
 
 		DeleteObject(dlg);
 	}
-	else if (combo_encoder->GetSelectedEntry()->id == ENCODER_TVQ)
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_TVQ)
 	{
 		configureTVQ	*dlg = new configureTVQ();
 
@@ -281,7 +282,7 @@ Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
 
 		DeleteObject(dlg);
 	}
-	else if (combo_encoder->GetSelectedEntry()->id == ENCODER_WAVE)
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WAVE)
 	{
 		QuickMessage(bonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), bonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
 	}
@@ -295,7 +296,7 @@ Void configureGeneralSettingsLayerEncoders::ToggleOnTheFly()
 
 Int configureGeneralSettingsLayerEncoders::GetSelectedEncoder()
 {
-	return combo_encoder->GetSelectedEntry()->id;
+	return combo_encoder->GetSelectedEntryNumber();
 }
 
 Bool configureGeneralSettingsLayerEncoders::GetOnTheFly()
