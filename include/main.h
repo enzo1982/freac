@@ -14,6 +14,9 @@
 #include <smooth.h>
 #include "i18n.h"
 
+using namespace smooth;
+using namespace smooth::GUI;
+
 extern Int	 ENCODER_BONKENC;
 extern Int	 ENCODER_BLADEENC;
 extern Int	 ENCODER_LAMEENC;

@@ -15,6 +15,7 @@
 #include <main.h>
 
 using namespace smooth;
+using namespace smooth::GUI;
 
 class configureGeneralSettings : public Application
 {

@@ -21,8 +21,6 @@
 #include <twinvq/twinvq.h>
 #include <twinvq/tvqenc.h>
 
-using namespace smooth;
-
 // CDRip DLL API
 
 	typedef CDEX_ERR			(CCONV *CR_INIT)				(LPCSTR);
