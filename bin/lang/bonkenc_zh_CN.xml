@@ -3,7 +3,7 @@
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
-    <property name="language">Chinese (simplified) / 繁体中文</property>
+    <property name="language">Chinese (simplified) / 簡体中文</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">nimin &lt;s_eye@sohu.com&gt;</property>
@@ -156,7 +156,7 @@
     <entry id="144" string="Disable all filtering">禁止所有过滤</entry>
     <entry id="145" string="MP3 Files">MP3文件</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis文件</entry>
-    <entry id="147" string="Bonk Files">Bonk文件</entry>
+    <entry id="147" string="BONK Files">BONK文件</entry>
     <entry id="148" string="Automatic CDDB queries">自动CDDB文件</entry>
     <entry id="149" string="CDDB access mode:">CDDB存取模式:</entry>
     <entry id="150" string="CDDB server:">CDDB服务器:</entry>
@@ -213,6 +213,7 @@
     <entry id="201" string="No audio CD in drive!">驱动器中没有音频CD!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">请填充所有域和音轨标题再提交.</entry>
     <entry id="203" string="CD ripping disabled!">CD翻录被禁止!</entry>
+    <entry id="204" string="Do you want to use native NT SCSI instead?">你想使用原生NT SCSI吗?</entry>
     <entry id="205" string="Submitting CD information">提交CD信息</entry>
     <entry id="206" string="Cannot open file:">不能打开文件:</entry>
     <entry id="207" string="Query CDDB database">查询CDDB数据库</entry>

@@ -13,7 +13,7 @@ Geschichte
 
 		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
 		- Einige Fehler in der CDDB Implementierung wurden behoben
-		- Sprachunterstützung für Ukrainisch hinzugefügt
+		- Sprachunterstützung für Ukrainisch, Spanisch (Lateinamerikanisch) und Chinesisch (traditionell) hinzugefügt
 		- Unterstützung für automatisches Einlesen von CDs beim Einlegen hinzugefügt
 		- Automatisches Auswerfen von CDs hinzugefügt
 		- Unterstützung für nicht-'on-the-fly' Codierung hinzugefügt
@@ -212,6 +212,30 @@ Pläne für zukünftige Versionen
 	- Ständige Aufgaben
 		* mehr Sprachen unterstützen
 		* den Sourcecode überarbeiten
+
+Besonderen Dank
+---------------
+
+- Albert L. Faber für seine excellente CDRip Ripper DLL
+
+- den Übersetzern: Eric Le Carre (Französisch),
+		   Marco D'Amato (Italienisch),
+		   Sirakaba (Japanisch),
+		   Federico Reddig (Spanisch),
+		   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
+		   Fotis Evangelou (Griechisch),
+		   Dmitry Gusakov (Russisch),
+		   Henryk Ning (Chinesisch, traditionell),
+		   Nimin (Chinesisch, vereinfacht),
+		   Wojtek Wasilewski (Polnisch),
+		   Peter Toth (Ungarisch),
+		   Andrij Iletschko (Ukrainisch),
+		   Wim Garreyn (Niederländisch),
+		   Marko Djordjevic (Serbisch),
+		   Krisu (Finnisch)
+
+- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
+- allen Testern und jedem der Fehlerberichte eingeschickt hat
 
 -----------------------------------------------------------------------------------
 

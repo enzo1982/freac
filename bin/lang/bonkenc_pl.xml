@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -213,6 +213,7 @@
     <entry id="201" string="No audio CD in drive!">Brak płyty audio CD w napędzie!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Przed wysłaniem należy wypełnić wszystkie pola i tytuły utworów.</entry>
     <entry id="203" string="CD ripping disabled!">Ekstrakcja z płyt CD jest wyłączona!</entry>
+    <entry id="204" string="CD options">Opcje CD</entry>
     <entry id="205" string="Submitting CD information">Wysyłanie danych płyty CD</entry>
     <entry id="206" string="Cannot open file:">Nie można otworzyć pliku:</entry>
     <entry id="207" string="Query CDDB database">Zapytanie do bazy danych CDDB</entry>
@@ -244,7 +245,7 @@
     <entry id="233" string="Toggle selection">Odwróć wybór</entry>
     <entry id="234" string="Show Tip of the Day">Wyświetl poradę</entry>
     <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">Program BonkEnc jest dostępny w %1 wersjach językowych.&#10;Łatwo można przetłumaczyć go na dowolny język wykorzystując&#10;dołączony program 'smooth Translator'</entry>
-    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis and Bonk&#10;encoders. Encoders for AAC and VQF formats are available at&#10;the BonkEnc website: %1">Dystrybucja programu zawiera konwertery dla formatów LAME,&#10;Ogg Vorbis oraz Bonk. Konwertery formatów AAC oraz VQF można&#10;pobrać z witryny programu: %1.</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC&#10;and Bonk encoders. An encoder for the VQF format is available&#10;at the BonkEnc website: %1">Dystrybucja programu zawiera konwertery dla formatów LAME,&#10;Ogg Vorbis, FAAC oraz Bonk. Konwerter formatu VQF można&#10;pobrać z witryny programu: %1.</entry>
     <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">Program BonkEnc może korzystać z modułów wejściowych&#10;programu WinAmp 2 do obsługi innych formatów plików audio.&#10;W tym celu pliki in_*.dll WinAmp należy skopiować do katalogu&#10;BonkEnc/plugins.</entry>
     <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Możliwe jest wysyłanie do bazy CD freedb danych zawierających&#10;znaki w formacie Unicode. Dzięki temu można wysyłać dane CD&#10;w których nazwa wykonawcy czy tytuł utworu zawiera znaki&#10;spoza podstawowego zestawu, na przykład akcentowane&#10;specyficzne dla danego języka.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Jeśli podczas ekstrakcji z CD występują błędy odczytu, można to&#10;skorygować włączając korekcję drżenia na zakładce CDRip&#10;konfiguracji programu. Jeśli to nie pomoże, można użyć któregoś z&#10;trybów 'cdparanoia'</entry>
@@ -255,5 +256,28 @@
     <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Dostępna jest nowa wersja programu!</entry>
     <entry id="245" string="There are no updates available at the moment!">Nie ma nowej wersji programu BonkEnc</entry>
     <entry id="246" string="Check for updates at startup">Sprawdzaj przy uruchomieniu</entry>
+    <entry id="247" string="Read CD contents on insert">Odczytaj CD po włożeniu</entry>
+    <entry id="248" string="Eject disk after ripping">Wysuń CD po ekstrakcji</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">Konwertuj &quot;w locie&quot;</entry>
+    <entry id="250" string="Keep ripped wave files">Zachowaj pliki .wav</entry>
+    <entry id="251" string="ripping/decoding">ekstrakcja/dekodowanie</entry>
+    <entry id="252" string="encoding">konwersja</entry>
+    <entry id="253" string="Unicode">Znaki w Unicode</entry>
+    <entry id="254" string="Use Unicode filenames">Wykorzystaj w nazwach plików</entry>
+    <entry id="255" string="AAC Files">Pliki AAC</entry>
+    <entry id="256" string="MP4 Files">Pliki MP4</entry>
+    <entry id="257" string="Format">Format</entry>
+    <entry id="258" string="File format">Format pliku</entry>
+    <entry id="259" string="Allow ID3V2 tags in AAC files">Wykorzystaj identyfikatory ID3V2 w plikach AAC</entry>
+    <entry id="260" string="Note:">Uwaga:</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Niektóre odtwarzacze mają problemy z odtwarzaniem&#10;plików AAC zawierających identyfikatory ID3.</entry>
+    <entry id="262" string="FLAC Files">Pliki FLAC</entry>
+    <entry id="263" string="Sampling rate">Próbkowanie</entry>
+    <entry id="264" string="Sample resolution">Rozdzielczość próbki</entry>
+    <entry id="265" string="Number of samples">Ilość próbek</entry>
+    <entry id="266" string="Mono">Mono</entry>
+    <entry id="267" string="bytes">bajty</entry>
+    <entry id="268" string="bit">bit</entry>
+    <entry id="269" string="min">min</entry>
   </data>
 </LangFile>

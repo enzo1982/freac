@@ -9,11 +9,11 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 3 (Januar 2005)
+	Version 1.0 beta 3 (January 2005)
 
 		- NT SCSI support is working again
 		- fixed some bugs in the CDDB implementation
-		- added Ukrainian language support
+		- added Ukrainian, Spanish (Latin American) and Chinese (traditional) language support
 		- added support for reading CD contents automatically on insert
 		- added auto-eject feature
 		- added support for non-'on-the-fly' encoding
@@ -212,6 +212,30 @@ Future plans
 	- All time tasks
 		* support more languages
 		* cleanup the code
+
+Special thanks to
+-----------------
+
+- Albert L. Faber for his excellent CDRip ripping library
+
+- the translators: Eric Le Carre (French),
+		   Marco D'Amato (Italian),
+		   Sirakaba (Japanese),
+		   Federico Reddig (Spanish),
+		   Jose Maria Vera Somoza (Spanish, Latin American),
+		   Fotis Evangelou (Greek),
+		   Dmitry Gusakov (Russian),
+		   Henryk Ning (Chinese, traditional),
+		   Nimin (Chinese, simplified),
+		   Wojtek Wasilewski (Polish),
+		   Peter Toth (Hungarian),
+		   Andrij Ilechko (Ukrainian),
+		   Wim Garreyn (Dutch),
+		   Marko Djordjevic (Serbian),
+		   Krisu (Finnish)
+
+- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
+- all the testers and everyone who submitted bug reports
 
 -----------------------------------------------------------------------------------
 
