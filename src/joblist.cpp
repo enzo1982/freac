@@ -289,7 +289,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		SMOOTH::MessageBox(i18n->TranslateString("Cannot open file:").Append(" ").Append(file), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 	}
 
-	txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
+	if (!currentConfig->enable_console) txt_joblist->SetText(String::FromInt(joblist->GetNOfEntries()).Append(i18n->TranslateString(" file(s) in joblist:")));
 }
 
 Void bonkEncGUI::RemoveFile()

@@ -25,6 +25,7 @@ Geschichte
 		- Verbesserte ASPI Erkennung
 		- Für den LAME Encoder können jetzt einige Experteneinstellungen verändert werden
 		- Viele Einschränkungen des Eingabeformats behoben
+		- Titelinformationen können jetzt aus Dateinamen extrahiert werden
 		- Viele Fehler und Speicherfehler wurden behoben
 
 	Version 0.9 (März 2003)
@@ -138,7 +139,6 @@ Pläne für zukünftige Versionen
 ------------------------------
 
 	- Geplant für v1.0 beta 1
-		* Künstler und Titel aus Dateinamen extrahieren
 		* CDDB Abfrage verbessern (Dialog mit Abbechen Button)
 
 	- Geplant für v1.0
