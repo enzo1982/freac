@@ -409,6 +409,13 @@ bonkEncGUI::bonkEncGUI()
 	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) + 15, info_edit_album->GetObjectProperties()->pos.y), Size(currentConfig->wndSize.cx - 256 - info_text_genre->GetObjectProperties()->textSize.cx - info_text_year->GetObjectProperties()->textSize.cx - (Int) Math::Max(info_text_artist->GetObjectProperties()->textSize.cx, info_text_album->GetObjectProperties()->textSize.cx) - (Int) Math::Max(info_text_title->GetObjectProperties()->textSize.cx, info_text_track->GetObjectProperties()->textSize.cx), info_edit_album->GetObjectProperties()->size.cy));
 	info_edit_genre->SetMetrics(Point(currentConfig->wndSize.cx - 143, info_edit_genre->GetObjectProperties()->pos.y), info_edit_genre->GetObjectProperties()->size);
 
+	info_edit_artist->Deactivate();
+	info_edit_title->Deactivate();
+	info_edit_album->Deactivate();
+	info_edit_track->Deactivate();
+	info_edit_year->Deactivate();
+	info_edit_genre->Deactivate();
+
 	pos.y = 99;
 	pos.x = maxTextLength + 14;
 	size.cx = currentConfig->wndSize.cx - 27 - maxTextLength;

@@ -288,6 +288,13 @@ Void bonkEncGUI::RemoveFile()
 		info_edit_year->SetText("");
 		info_edit_genre->SetText("");
 
+		info_edit_artist->Deactivate();
+		info_edit_title->Deactivate();
+		info_edit_album->Deactivate();
+		info_edit_track->Deactivate();
+		info_edit_year->Deactivate();
+		info_edit_genre->Deactivate();
+
 		dontUpdateInfo = False;
 	}
 }
@@ -317,6 +324,13 @@ Void bonkEnc::ClearList()
 	info_edit_year->SetText("");
 	info_edit_genre->SetText("");
 
+	info_edit_artist->Deactivate();
+	info_edit_title->Deactivate();
+	info_edit_album->Deactivate();
+	info_edit_track->Deactivate();
+	info_edit_year->Deactivate();
+	info_edit_genre->Deactivate();
+
 	dontUpdateInfo = False;
 }
 
@@ -325,6 +339,13 @@ Void bonkEncGUI::SelectJoblistEntry()
 	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
 
 	dontUpdateInfo = True;
+
+	info_edit_artist->Activate();
+	info_edit_title->Activate();
+	info_edit_album->Activate();
+	info_edit_track->Activate();
+	info_edit_year->Activate();
+	info_edit_genre->Activate();
 
 	info_edit_artist->SetText(format->trackInfo->artist);
 	info_edit_title->SetText(format->trackInfo->title);
