@@ -47,7 +47,7 @@
 #define     CDEX_FAILEDTOLOADASPIDRIVERS        0x00000009
 #define     CDEX_NATIVEEASPINOTSUPPORTED        0x0000000A
 #define     CDEX_FAILEDTOGETASPISTATUS          0x0000000B
-
+#define		CDEX_NATIVEEASPISUPPORTEDNOTSELECTED 0x0000000C
 
 
 #define HASTAT_OK					0x00	 // Host adapter did not detect an error.
@@ -155,9 +155,9 @@ enum SETSPEED
 
 enum ENDIAN
 {
-	CR_BIGENDIAN=0,
-	CR_LITTLEENDIAN,
-	CR_NUMENDIAN
+	BIGENDIAN=0,
+	LITTLEENDIAN,
+	NUMENDIAN
 };
 
 enum ENABLEMODE
@@ -373,6 +373,11 @@ DLLEXPORT CDEX_ERR CCONV CR_ScanForC2Errors(
 	DWORD	dwNumSectors,
 	DWORD&	dwErrors,
 	DWORD*	pdwErrorSectors );
+
+DLLEXPORT CDEX_ERR CCONV CR_GetDetailedDriveInfo( 
+	LPSTR lpszInfo, 
+	DWORD dwInfoSize );
+
 
 
 #pragma pack(pop)

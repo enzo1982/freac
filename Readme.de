@@ -14,7 +14,10 @@ Geschichte
 	Version 0.9
 
 		- Sprachunterstützung für Ungarisch, Französisch und Russisch hinzugefügt
+		- Unterstützung für META Tags in BONK Dateien entfernt
+		- Unterstützung für ID3V2 Tags in BONK Dateien hinzugefügt
 		- Update auf smooth v0.8.61.0
+		- CDRip.dll aktualisiert, um einige ASPI Probleme zu beheben
 
 	Version 0.8
 
@@ -76,7 +79,7 @@ Voraussetzungen
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
-		- MinGW32 v1.0 oder besser (http://www.mingw.org/)
+		- MinGW v1.x (http://www.mingw.org/)
 		- smooth v0.8.61.0 (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - bei smooth dabei)
 
@@ -112,7 +115,6 @@ Probleme
 Pläne für zukünftige Versionen
 ------------------------------
 
-	- das BONK Format um ID3V2 Unterstützung erweitern
 	- Künstler und Titel aus Dateinamen extrahieren
 	- Eingabefilter für AAC, VQF
 	- mehr Audioformate unterstützen (FLAC, MAC, ...)

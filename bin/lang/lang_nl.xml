@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
-    <property name="version">0.8</property>
+    <property name="version">0.9</property>
     <property name="language">Nederlands</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Wim Garreyn &lt;wim.garreyn@pandora.be&gt;</property>

@@ -85,7 +85,7 @@ Int bonkTranslator::GetSupportedLanguages()
 			}
 			else
 			{
-				if (version[0] == '0' && version[2] < '8' && version[3] == 0)	language->isOutOfDate = true;
+				if (version[0] == '0' && version[2] < '9' && version[3] == 0)	language->isOutOfDate = true;
 				else								language->isOutOfDate = false;
 
 				bool	 done = false;

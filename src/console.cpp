@@ -13,8 +13,8 @@
 
 bonkEncConsole::bonkEncConsole(String title)
 {
-	if (title != (char *) NULL)	consoleWindow = true;
-	else				consoleWindow = false;
+	if (title != (int) NIL)	consoleWindow = true;
+	else			consoleWindow = false;
 
 	if (consoleWindow)
 	{

@@ -118,4 +118,4 @@ struct bitstream_out {
 void write_list(const vector<int> &, bool, bitstream_out &);
 bool read_list(vector<int> &, bool, bitstream_in &);
 
-#endif UTILITY_H
+#endif

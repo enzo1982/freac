@@ -112,5 +112,5 @@ Void cddbMultiMatchDlg::OK()
 
 Int cddbMultiMatchDlg::AddEntry(String category, String title)
 {
-	return combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title), NULLPROC);
+	return combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title), NULLPROC)->code;
 }

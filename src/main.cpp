@@ -638,7 +638,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 		if (cdInfo != NIL)
 		{
-			sa_joblist.AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), joblist->AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), NULLPROC));
+			sa_joblist.AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), joblist->AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(trackNumber)->title), NULLPROC)->code);
 
 			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
@@ -660,7 +660,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 			GetSystemTime(&systime);
 
-			sa_joblist.AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), joblist->AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), NULLPROC));
+			sa_joblist.AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), joblist->AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(trackNumber)), NULLPROC)->code);
 
 			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
@@ -678,7 +678,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		}
 		else
 		{
-			sa_joblist.AddEntry(String("Audio CD ").Append(String::IntToString(audiodrive)).Append(" track ").Append(String::IntToString(trackNumber)), joblist->AddEntry(String("Audio CD ").Append(String::IntToString(audiodrive)).Append(" track ").Append(String::IntToString(trackNumber)), NULLPROC));
+			sa_joblist.AddEntry(String("Audio CD ").Append(String::IntToString(audiodrive)).Append(" track ").Append(String::IntToString(trackNumber)), joblist->AddEntry(String("Audio CD ").Append(String::IntToString(audiodrive)).Append(" track ").Append(String::IntToString(trackNumber)), NULLPROC)->code);
 
 			bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
@@ -703,7 +703,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 	}
 	else
 	{
-		sa_joblist.AddEntry(file, joblist->AddEntry(file, NULLPROC));
+		sa_joblist.AddEntry(file, joblist->AddEntry(file, NULLPROC)->code);
 
 		bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
@@ -1664,7 +1664,7 @@ Void bonkEnc::ReadCD()
 		{
 			if (cdInfo != NIL)
 			{
-				sa_joblist.AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), joblist->AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), NULLPROC));
+				sa_joblist.AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), joblist->AddEntry(String(cdInfo->GetEntry(0)->artist).Append(" - ").Append(cdInfo->GetEntry(entry.btTrackNumber)->title), NULLPROC)->code);
 
 				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
@@ -1686,7 +1686,7 @@ Void bonkEnc::ReadCD()
 
 				GetSystemTime(&systime);
 
-				sa_joblist.AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), joblist->AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), NULLPROC));
+				sa_joblist.AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), joblist->AddEntry(String(cdText.GetEntry(0)).Append(" - ").Append(cdText.GetEntry(entry.btTrackNumber)), NULLPROC)->code);
 
 				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 
@@ -1704,7 +1704,7 @@ Void bonkEnc::ReadCD()
 			}
 			else
 			{
-				sa_joblist.AddEntry(String("Audio CD ").Append(String::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(String::IntToString(entry.btTrackNumber)), joblist->AddEntry(String("Audio CD ").Append(String::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(String::IntToString(entry.btTrackNumber)), NULLPROC));
+				sa_joblist.AddEntry(String("Audio CD ").Append(String::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(String::IntToString(entry.btTrackNumber)), joblist->AddEntry(String("Audio CD ").Append(String::IntToString(currentConfig->cdrip_activedrive)).Append(" track ").Append(String::IntToString(entry.btTrackNumber)), NULLPROC)->code);
 
 				bonkTrackInfo	*trackInfo = new bonkTrackInfo;
 

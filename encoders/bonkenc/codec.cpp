@@ -119,6 +119,8 @@ void BONKencoder::begin(OutStream *_f_out, uint32 _length, uint32 _rate, int _ch
 	if (length == 0)	i_out = new OutStream(STREAM_BUFFER, (void *) infoData, 524288);
 	else			i_out = new OutStream(STREAM_BUFFER, (void *) infoData, 5 * int((length + samples_size - 1) / samples_size));
 
+	bonk_tag = f_out->GetPos();
+
 	f_out->OutputNumber(0, 1);
 	f_out->OutputString("BONK");
 	f_out->OutputNumber(0, 1); // version
@@ -154,6 +156,11 @@ void BONKencoder::finish()
 
 	bit_out.flush();
 
+	f_out->Flush();
+
+	f_out->OutputNumber(data_pos + 30, 4);
+	f_out->OutputString("bonk");
+
 	f_out->OutputNumber(0, 1);
 	f_out->OutputString("INFO");
 	f_out->OutputNumber(0, 1); // info tag version
@@ -162,22 +169,13 @@ void BONKencoder::finish()
 
 	delete i_out;
 
-	if (length == 0)	f_out->OutputData((void *) infoData, 5 * int((sample_count + samples_size - 1) / samples_size));
-	else			f_out->OutputData((void *) infoData, 5 * int((length + samples_size - 1) / samples_size));
+	f_out->OutputData((void *) infoData, 5 * int((sample_count + samples_size - 1) / samples_size));
 
-	f_out->OutputNumber(0, 1);
-	f_out->OutputString("META");
-	f_out->OutputNumber(0, 1);
-	f_out->OutputString("bonk");
-	f_out->OutputNumber(0, 4);
+	f_out->OutputNumber(14 + 5 * int((sample_count + samples_size - 1) / samples_size), 4);
 	f_out->OutputString("info");
-	f_out->OutputNumber(data_pos + 22, 4);
-	f_out->OutputNumber(30, 4);
-	f_out->OutputString("meta");
 
 	f_out->Flush();
-
-	f_out->Seek(6);
+	f_out->Seek(bonk_tag + 6);
 	f_out->OutputNumber(sample_count, 4);
 
 	delete [] infoData;
@@ -185,6 +183,8 @@ void BONKencoder::finish()
 
 void BONKencoder::store_packet(vector<int> &samples)
 {
+	sample_count += samples.size();
+
 	// save encoder state
 
 	int out_pos = f_out->GetPos();
@@ -205,33 +205,33 @@ void BONKencoder::store_packet(vector<int> &samples)
 	//samples must be correct size (samples_size)
 
 	if (!lossless)
-		for(i=0;i<samples.size();i++)
+		for (i = 0; i < samples.size(); i++)
 			samples[i] <<= sample_shift;
 
 	if (mid_side)
-		for(i=0;i<samples.size();i+=channels)
+		for (i = 0; i < samples.size(); i += channels)
 		{
-			samples[i]   += samples[i+1];
-			samples[i+1] -= shift(samples[i],1);
+			samples[i]	+= samples[i + 1];
+			samples[i + 1]	-= shift(samples[i], 1);
 		}  
 
-	vector<int> window(tail.size()*2+samples_size);
+	vector<int> window(tail.size() * 2 + samples_size);
 	int *ptr = &(window[0]);
 
-	for(i=0;i<tail.size();i++)
+	for (i = 0; i < tail.size(); i++)
 		*(ptr++) = tail[i];
 
-	for(i=0;i<samples_size;i++)
+	for (i = 0; i < samples_size; i++)
 		*(ptr++) = samples[i];
    
-	for(i=0;i<tail.size();i++)
+	for (i = 0; i < tail.size(); i++)
 		*(ptr++) = 0;
     
-	for(i=0;i<tail.size();i++)
-		tail[i] = samples[samples_size-tail.size()+i];
+	for (i = 0; i < tail.size(); i++)
+		tail[i] = samples[samples_size - tail.size() + i];
 
 	vector<int> k(n_taps);
-	modified_levinson_durbin(window,channels,lossless,k);
+	modified_levinson_durbin(window, channels, lossless, k);
 
 	write_list(k, false, bit_out);
 
@@ -294,8 +294,6 @@ void BONKencoder::store_packet(vector<int> &samples)
 	}
 
 	data_pos += (f_out->GetPos() - out_pos);
-
-	sample_count += samples_size;
 }
 
 bool BONKdecoder::begin(InStream *f_in, uint32 *_length, uint32 *_rate, int *_channels)

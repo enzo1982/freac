@@ -136,6 +136,7 @@ class BONKencoder
 		int		 sample_count;
 		unsigned char	*infoData;
 		int		 data_pos;
+		int		 bonk_tag;
 		uint32		 length;
 		vector<int>	 tail;
 

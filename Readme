@@ -14,7 +14,10 @@ History
 	Version 0.9
 
 		- added Hungarian, French and Russian language support
+		- removed support for the META tag in BONK files
+		- added support for ID3V2 tags in BONK files
 		- upgraded to smooth v0.8.61.0
+		- upgraded CDRip.dll to fix some ASPI issues
 
 	Version 0.8
 
@@ -76,7 +79,7 @@ Requirements
 
 	Additional requirements for compiling the sources:
 
-		- MinGW32 v1.0 or greater (http://www.mingw.org/)
+		- MinGW v1.x (http://www.mingw.org/)
 		- smooth v0.8.61.0 (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - included with smooth)
 
@@ -112,7 +115,6 @@ Problems
 Future plans
 ------------
 
-	- extend the BONK format to support ID3V2 tags
 	- extract artist and title from the filename
 	- input filters for AAC, VQF
 	- support more audio formats (FLAC, MAC, ...)

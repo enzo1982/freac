@@ -217,23 +217,32 @@ bool FilterOutLAME::Activate()
 		ID3_Frame	*artist = new ID3_Frame(ID3FID_LEADARTIST);
 		ID3_Field	&artist_text = artist->Field(ID3FN_TEXT);
 
-		artist_text.Set(format->trackInfo->artist);
+		if (format->trackInfo->artist != NIL && format->trackInfo->artist != "")
+		{
+			artist_text.Set(format->trackInfo->artist);
 
-		tag->AddFrame(artist);
+			tag->AddFrame(artist);
+		}
 
 		ID3_Frame	*title = new ID3_Frame(ID3FID_TITLE);
 		ID3_Field	&title_text = title->Field(ID3FN_TEXT);
 
-		title_text.Set(format->trackInfo->title);
+		if (format->trackInfo->title != NIL && format->trackInfo->title != "")
+		{
+			title_text.Set(format->trackInfo->title);
 
-		tag->AddFrame(title);
+			tag->AddFrame(title);
+		}
 
 		ID3_Frame	*album = new ID3_Frame(ID3FID_ALBUM);
 		ID3_Field	&album_text = album->Field(ID3FN_TEXT);
 
-		album_text.Set(format->trackInfo->album);
+		if (format->trackInfo->album != NIL && format->trackInfo->album != "")
+		{
+			album_text.Set(format->trackInfo->album);
 
-		tag->AddFrame(album);
+			tag->AddFrame(album);
+		}
 
 		ID3_Frame	*track = new ID3_Frame(ID3FID_TRACKNUM);
 		ID3_Field	&track_text = track->Field(ID3FN_TEXT);
@@ -249,16 +258,22 @@ bool FilterOutLAME::Activate()
 		ID3_Frame	*year = new ID3_Frame(ID3FID_YEAR);
 		ID3_Field	&year_text = year->Field(ID3FN_TEXT);
 
-		year_text.Set(format->trackInfo->year);
+		if (format->trackInfo->year != NIL && format->trackInfo->year != "")
+		{
+			year_text.Set(format->trackInfo->year);
 
-		tag->AddFrame(year);
+			tag->AddFrame(year);
+		}
 
 		ID3_Frame	*genre = new ID3_Frame(ID3FID_CONTENTTYPE);
 		ID3_Field	&genre_text = genre->Field(ID3FN_TEXT);
 
-		genre_text.Set(format->trackInfo->genre);
+		if (format->trackInfo->genre != NIL && format->trackInfo->genre != "")
+		{
+			genre_text.Set(format->trackInfo->genre);
 
-		tag->AddFrame(genre);
+			tag->AddFrame(genre);
+		}
 
 		ID3_Frame	*comment = new ID3_Frame(ID3FID_COMMENT);
 		ID3_Field	&comment_text = comment->Field(ID3FN_TEXT);
