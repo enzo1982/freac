@@ -138,7 +138,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	combo_genre->AddEntry("Death Metal");
 	combo_genre->AddEntry("Disco");
 	combo_genre->AddEntry("Dream");
-	combo_genre->AddEntry("Drum && Bass");
+	combo_genre->AddEntry("Drum & Bass");
 	combo_genre->AddEntry("Drum Solo");
 	combo_genre->AddEntry("Duet");
 	combo_genre->AddEntry("Easy Listening");
@@ -205,7 +205,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	combo_genre->AddEntry("Psychedelic Rock");
 	combo_genre->AddEntry("Punk");
 	combo_genre->AddEntry("Punk Rock");
-	combo_genre->AddEntry("R&&B");
+	combo_genre->AddEntry("R&B");
 	combo_genre->AddEntry("Rap");
 	combo_genre->AddEntry("Rave");
 	combo_genre->AddEntry("Reggae");
@@ -214,7 +214,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	combo_genre->AddEntry("Revival");
 	combo_genre->AddEntry("Rhythmic Soul");
 	combo_genre->AddEntry("Rock");
-	combo_genre->AddEntry("Rock && Roll");
+	combo_genre->AddEntry("Rock & Roll");
 	combo_genre->AddEntry("Salsa");
 	combo_genre->AddEntry("Samba");
 	combo_genre->AddEntry("Satire");
@@ -411,6 +411,40 @@ Void cddbSubmitDlg::Submit()
 		return;
 	}
 
+	bonkEncCDDB	 cddb(currentConfig);
+	String		 result;
+
+	cddbInfo->artist = edit_artist->GetText();
+	cddbInfo->album = edit_album->GetText();
+	cddbInfo->year = edit_year->GetText();
+	cddbInfo->genre = combo_genre->GetSelectedEntryName();
+
+	for (Int j = 0; j < cddbInfo->nOfTracks; j++)
+	{
+		cddbInfo->titles.SetEntry(cddbInfo->titles.GetNthEntryIndex(j), titles.GetNthEntry(j));
+	}
+
+	if (cddbInfo->category == "") cddbInfo->category = GetCDDBGenre(combo_genre->GetSelectedEntryName());
+
+	cddbInfo->revision++;
+
+	text_status->SetText(bonkEnc::i18n->TranslateString("Submitting CD information").Append("..."));
+
+	result = cddb.Submit(cddbInfo);
+
+	if (result == "error")
+	{
+		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+
+		text_status->SetText("");
+
+		cddbInfo->revision--;
+
+		return;
+	}
+
+	text_status->SetText("");
+
 	mainWnd->Close();
 }
 
@@ -473,7 +507,11 @@ Void cddbSubmitDlg::ChangeDrive()
 
 	Array<bonkFormatInfo::bonkTrackInfo *>	*cdInfo = NIL;
 
-	if (currentConfig->enable_cddb_cache && currentConfig->enable_cddb) cdInfo = bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
+	if (currentConfig->enable_cddb_cache && currentConfig->enable_cddb)
+	{
+		cdInfo = bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
+		currentConfig->appMain->cddbInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
+	}
 
 	if (cdInfo == NIL)
 	{
@@ -485,6 +523,9 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		bonkEncCDDB::titleCache.DeleteEntry(cddb.ComputeDiscID());
 		bonkEncCDDB::titleCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+
+		bonkEncCDDB::infoCache.DeleteEntry(cddb.ComputeDiscID());
+		bonkEncCDDB::infoCache.AddEntry(currentConfig->appMain->cddbInfo, cddb.ComputeDiscID());
 
 		currentConfig->cdrip_activedrive = oDrive;
 	}
@@ -517,6 +558,8 @@ Void cddbSubmitDlg::ChangeDrive()
 		{
 			titles.AddEntry(cdInfo->GetEntry(j)->title, list_tracks->AddEntry(String(j < 10 ? "0" : "").Append(String::IntToString(j)).Append("\t").Append(cdInfo->GetEntry(j)->title == "" ? bonkEnc::i18n->TranslateString("unknown title") : cdInfo->GetEntry(j)->title))->code);
 		}
+
+		cddbInfo = currentConfig->appMain->cddbInfo;
 	}
 	else if (currentConfig->appMain->cdText.GetEntry(0) != NIL)
 	{
@@ -530,11 +573,30 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_track->SetText("");
 		edit_title->SetText("");
 
-		for (int j = 0; j < numTocEntries; j++)
+		cddbInfo = new CDDBInfo;
+
+		cddbInfo->nOfTracks = numTocEntries;
+		cddbInfo->discid = discid;
+		cddbInfo->revision = -1;
+
+		cddbInfo->artist = currentConfig->appMain->cdText.GetEntry(0);
+		cddbInfo->album = currentConfig->appMain->cdText.GetEntry(100);
+
+		for (int j = 0; j <= numTocEntries; j++)
 		{
 			TOCENTRY entry = ex_CR_GetTocEntry(j);
 
-			if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == j + 1) titles.AddEntry(currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber), list_tracks->AddEntry(String(entry.btTrackNumber < 10 ? "0" : "").Append(String::IntToString(entry.btTrackNumber)).Append("\t").Append(currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber) == "" ? bonkEnc::i18n->TranslateString("unknown title") : currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber)))->code);
+			cddbInfo->titles.AddEntry("", j);
+			cddbInfo->offsets.AddEntry(entry.dwStartSector + 150, j);
+
+			if (j == numTocEntries) cddbInfo->disclength = (entry.dwStartSector + 150) / 75;
+
+			if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == j + 1)
+			{
+				cddbInfo->titles.SetEntry(j, currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber));
+
+				titles.AddEntry(currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber), list_tracks->AddEntry(String(entry.btTrackNumber < 10 ? "0" : "").Append(String::IntToString(entry.btTrackNumber)).Append("\t").Append(currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber) == "" ? bonkEnc::i18n->TranslateString("unknown title") : currentConfig->appMain->cdText.GetEntry(entry.btTrackNumber)))->code);
+			}
 		}
 	}
 	else
@@ -549,9 +611,20 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_track->SetText("");
 		edit_title->SetText("");
 
-		for (int j = 0; j < numTocEntries; j++)
+		cddbInfo = new CDDBInfo;
+
+		cddbInfo->nOfTracks = numTocEntries;
+		cddbInfo->discid = discid;
+		cddbInfo->revision = -1;
+
+		for (int j = 0; j <= numTocEntries; j++)
 		{
 			TOCENTRY entry = ex_CR_GetTocEntry(j);
+
+			cddbInfo->titles.AddEntry("", j);
+			cddbInfo->offsets.AddEntry(entry.dwStartSector + 150, j);
+
+			if (j == numTocEntries) cddbInfo->disclength = (entry.dwStartSector + 150) / 75;
 
 			if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == j + 1) titles.AddEntry("", list_tracks->AddEntry(String(entry.btTrackNumber < 10 ? "0" : "").Append(String::IntToString(entry.btTrackNumber)).Append("\t").Append(bonkEnc::i18n->TranslateString("unknown title")))->code);
 		}
@@ -586,4 +659,59 @@ Void cddbSubmitDlg::UpdateTrack()
 	list_tracks->ModifyEntry(list_tracks->GetSelectedEntry(), String(track < 10 ? "0" : "").Append(String::IntToString(track)).Append("\t").Append(edit_title->GetText() == "" ? bonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
 
 	titles.SetEntry(list_tracks->GetSelectedEntry(), edit_title->GetText());
+}
+
+String cddbSubmitDlg::GetCDDBGenre(String genre)
+{
+	String	 cddbGenre = "misc";
+
+	if (genre == "Alt. Rock")		cddbGenre = "rock";
+	if (genre == "Anime")			cddbGenre = "soundtrack";
+	if (genre == "Big Band")		cddbGenre = "jazz";
+	if (genre == "Black Metal")		cddbGenre = "rock";
+	if (genre == "Blues")			cddbGenre = "blues";
+	if (genre == "BritPop")			cddbGenre = "rock";
+	if (genre == "Celtic")			cddbGenre = "folk";
+	if (genre == "Chamber Music")		cddbGenre = "classical";
+	if (genre == "Christian Rock")		cddbGenre = "rock";
+	if (genre == "Classic Rock")		cddbGenre = "rock";
+	if (genre == "Classical")		cddbGenre = "classical";
+	if (genre == "Country")			cddbGenre = "country";
+	if (genre == "Death Metal")		cddbGenre = "rock";
+	if (genre == "Ethnic")			cddbGenre = "folk";
+	if (genre == "Folk")			cddbGenre = "folk";
+	if (genre == "Folk/Rock")		cddbGenre = "folk";
+	if (genre == "Folklore")		cddbGenre = "folk";
+	if (genre == "Gothic Rock")		cddbGenre = "rock";
+	if (genre == "Hard Rock")		cddbGenre = "rock";
+	if (genre == "Heavy Metal")		cddbGenre = "rock";
+	if (genre == "Instrumental Pop")	cddbGenre = "rock";
+	if (genre == "Instrumental Rock")	cddbGenre = "rock";
+	if (genre == "Jazz")			cddbGenre = "jazz";
+	if (genre == "Jazz+Funk")		cddbGenre = "jazz";
+	if (genre == "JPop")			cddbGenre = "rock";
+	if (genre == "Metal")			cddbGenre = "rock";
+	if (genre == "National Folk")		cddbGenre = "folk";
+	if (genre == "Native American")		cddbGenre = "folk";
+	if (genre == "New Age")			cddbGenre = "newage";
+	if (genre == "Pop")			cddbGenre = "rock";
+	if (genre == "Pop/Funk")		cddbGenre = "rock";
+	if (genre == "Pop-Folk")		cddbGenre = "folk";
+	if (genre == "Progressive Rock")	cddbGenre = "rock";
+	if (genre == "Psychedelic Rock")	cddbGenre = "rock";
+	if (genre == "Punk")			cddbGenre = "rock";
+	if (genre == "Punk Rock")		cddbGenre = "rock";
+	if (genre == "Reggae")			cddbGenre = "reggae";
+	if (genre == "Rock")			cddbGenre = "rock";
+	if (genre == "Rock & Roll")		cddbGenre = "rock";
+	if (genre == "Slow Rock")		cddbGenre = "rock";
+	if (genre == "Soundtrack")		cddbGenre = "soundtrack";
+	if (genre == "Southern Rock")		cddbGenre = "rock";
+	if (genre == "Symphonic Rock")		cddbGenre = "rock";
+	if (genre == "Symphony")		cddbGenre = "classical";
+	if (genre == "Thrash-Metal")		cddbGenre = "rock";
+	if (genre == "Top 40")			cddbGenre = "rock";
+	if (genre == "Tribal")			cddbGenre = "folk";
+
+	return cddbGenre;
 }

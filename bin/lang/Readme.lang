@@ -36,7 +36,7 @@ Right-to-left scripts
 	It's a (very incomplete) Arabic translation for BonkEnc.
 
 	Left-to-right scripts are fully supported though - including Asian scripts with
-	CJK symbols. See bonkenc_jp.xml for an example.
+	CJK symbols. See bonkenc_ja.xml for an example.
 
 The 'info' node
 ---------------

@@ -97,6 +97,8 @@ class bonkFormatInfo
 		Int		 order;
 };
 
+class CDDBInfo;
+
 // bonkEnc Application class definition
 
 class bonkEnc : public Application
@@ -233,6 +235,7 @@ class bonkEnc : public Application
 		static bonkTranslator	*i18n;
 
 		Array<String>		 cdText;
+		CDDBInfo		*cddbInfo;
 
 					 bonkEnc();
 					~bonkEnc();

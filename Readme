@@ -15,7 +15,7 @@ History
 
 		- added Drag & Drop functionality
 		- added support for LAME presets
-		- added Hungarian, French, Russian, Serbian and Finnish language support
+		- added Hungarian, French, Russian, Serbian, Swedish, Bulgarian and Finnish language support
 		- removed support for the META tag in BONK files
 		- added support for ID3V2 tags in BONK files
 		- added support for reading ID3V2 and Vorbis comment tags

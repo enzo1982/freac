@@ -55,6 +55,8 @@ class cddbSubmitDlg : public Application
 
 		Bool		 dontUpdateInfo;
 
+		CDDBInfo	*cddbInfo;
+
 		String		 discid;
 		String		 genre;
 		Array<String>	 titles;
@@ -64,6 +66,7 @@ class cddbSubmitDlg : public Application
 		Void		 ChangeDrive();
 		Void		 SelectTrack();
 		Void		 UpdateTrack();
+		String		 GetCDDBGenre(String);
 	public:
 				 cddbSubmitDlg();
 				~cddbSubmitDlg();

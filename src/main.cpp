@@ -120,9 +120,22 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->enable_cdrip)
 	{
-		ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
+		Long		 error = ex_CR_Init(inifile);
+		Int		 choice = IDYES;
+		OSVERSIONINFOA	 vInfo;
 
-		Long	 error = ex_CR_Init(inifile);
+		vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
+
+		GetVersionExA(&vInfo);
+
+		if (currentConfig->cdrip_ntscsi && vInfo.dwPlatformId == VER_PLATFORM_WIN32_NT)
+		{
+			ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
+
+			ex_CR_SaveSettings();
+
+			error = ex_CR_Init(inifile);
+		}
 
 		if (error != CDEX_OK)
 		{
@@ -130,14 +143,48 @@ bonkEnc::bonkEnc()
 			{
 				case CDEX_NATIVEEASPINOTSUPPORTED:
 				case CDEX_FAILEDTOLOADASPIDRIVERS:
+				case CDEX_FAILEDTOGETASPISTATUS:
+					SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+
+					currentConfig->enable_cdrip = false;
+
+					break;
+				case CDEX_NOCDROMDEVICES:
+					if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT)
+					{
+						SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+
+						currentConfig->enable_cdrip = false;
+
+						break;
+					}
 				case CDEX_NATIVEEASPISUPPORTEDNOTSELECTED:
-					SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers! CD ripping disabled!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+					if (error == CDEX_NATIVEEASPISUPPORTEDNOTSELECTED) choice = SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("Do you want to use native NT SCSI instead?")), i18n->TranslateString("Error"), MB_YESNO, IDI_QUESTION);
+
+					if (choice == IDYES)
+					{
+						currentConfig->cdrip_ntscsi = True;
+	
+						ex_CR_SetTransportLayer(currentConfig->cdrip_ntscsi);
+
+						ex_CR_SaveSettings();
+
+						error = ex_CR_Init(inifile);
+
+						if (error != CDEX_OK)
+						{
+							SMOOTH::MessageBox(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+
+							currentConfig->enable_cdrip = False;
+							currentConfig->cdrip_ntscsi = False;
+						}
+					}
+
 					break;
 			}
-
-			currentConfig->enable_cdrip = false;
 		}
-		else
+
+		if (error == CDEX_OK)
 		{
 			currentConfig->cdrip_numdrives = ex_CR_GetNumCDROM();
 
@@ -172,6 +219,7 @@ bonkEnc::bonkEnc()
 
 	dontUpdateInfo = False;
 	cddbRetry = True;
+	cddbInfo = NIL;
 
 	Point	 pos;
 	Size	 size;
@@ -403,7 +451,7 @@ bonkEnc::bonkEnc()
 	info_combo_genre->AddEntry("Death Metal");
 	info_combo_genre->AddEntry("Disco");
 	info_combo_genre->AddEntry("Dream");
-	info_combo_genre->AddEntry("Drum && Bass");
+	info_combo_genre->AddEntry("Drum & Bass");
 	info_combo_genre->AddEntry("Drum Solo");
 	info_combo_genre->AddEntry("Duet");
 	info_combo_genre->AddEntry("Easy Listening");
@@ -470,7 +518,7 @@ bonkEnc::bonkEnc()
 	info_combo_genre->AddEntry("Psychedelic Rock");
 	info_combo_genre->AddEntry("Punk");
 	info_combo_genre->AddEntry("Punk Rock");
-	info_combo_genre->AddEntry("R&&B");
+	info_combo_genre->AddEntry("R&B");
 	info_combo_genre->AddEntry("Rap");
 	info_combo_genre->AddEntry("Rave");
 	info_combo_genre->AddEntry("Reggae");
@@ -479,7 +527,7 @@ bonkEnc::bonkEnc()
 	info_combo_genre->AddEntry("Revival");
 	info_combo_genre->AddEntry("Rhythmic Soul");
 	info_combo_genre->AddEntry("Rock");
-	info_combo_genre->AddEntry("Rock && Roll");
+	info_combo_genre->AddEntry("Rock & Roll");
 	info_combo_genre->AddEntry("Salsa");
 	info_combo_genre->AddEntry("Samba");
 	info_combo_genre->AddEntry("Satire");
@@ -749,6 +797,7 @@ bonkEnc::~bonkEnc()
 	for (Int i = 0; i < bonkEncCDDB::titleCache.GetNOfEntries(); i++)
 	{
 		delete bonkEncCDDB::titleCache.GetNthEntry(i);
+		delete bonkEncCDDB::infoCache.GetNthEntry(i);
 	}
 
 	if (currentConfig->enable_bonk)		FreeBonkDLL();
@@ -1120,13 +1169,18 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 	if (discid == "ffffffff" || discid == "00000000") return NIL; // no disc in drive or read error
 
-	if (bonkEncCDDB::requestedDiscs.GetEntry(cddb.ComputeDiscID()) == True && !cddbRetry) return bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
+	if (bonkEncCDDB::requestedDiscs.GetEntry(cddb.ComputeDiscID()) == True && !cddbRetry)
+	{
+		cddbInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
+
+		return bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
+	}
 
 	bonkEncCDDB::requestedDiscs.AddEntry(True, cddb.ComputeDiscID());
 
 	mainWnd_statusbar->SetText(i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
-	cddb.ConnectToServer();
+	if (currentConfig->freedb_mode == FREEDB_MODE_CDDBP) cddb.ConnectToServer();
 
 	mainWnd_statusbar->SetText(i18n->TranslateString("Requesting CD information").Append("..."));
 
@@ -1169,10 +1223,15 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 	if (read != NIL)
 	{
+		cddbInfo = new CDDBInfo();
+
 		String	 result = cddb.Read(read);
 		String	 cLine;
 
 		array = new Array<bonkFormatInfo::bonkTrackInfo *>;
+
+		cddbInfo->discid = cddb.GetDiscIDString();
+		cddbInfo->category = cddb.GetCategory();
 
 		for (Int j = 0; j < result.Length();)
 		{
@@ -1197,6 +1256,9 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 				info->track = -1;
 
+				cddbInfo->artist = info->artist;
+				cddbInfo->album = info->album;
+
 				array->AddEntry(info);
 			}
 			else if (cLine.CompareN("DGENRE", 6) == 0)
@@ -1204,6 +1266,8 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 				bonkFormatInfo::bonkTrackInfo	*info = array->GetEntry(0);
 
 				for (Int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
+
+				cddbInfo->genre = info->genre;
 			}
 			else if (cLine.CompareN("DYEAR", 5) == 0)
 			{
@@ -1213,6 +1277,8 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 				for (Int l = 6; l < cLine.Length(); l++) year[l - 6] = cLine[l];
 
 				info->year = year.ToInt();
+
+				cddbInfo->year = year;
 			}
 			else if (cLine.CompareN("TTITLE", 6) == 0)
 			{
@@ -1230,12 +1296,75 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 				info->track = track.ToInt() + 1;
 
+				cddbInfo->titles.AddEntry(info->title);
+				cddbInfo->nOfTracks++;
+
 				array->AddEntry(info, info->track);
+			}
+			else if (cLine.CompareN("# Revision: ", 12) == 0)
+			{
+				String	 revision;
+
+				for (Int l = 12; l < cLine.Length(); l++) revision[l - 12] = cLine[l];
+
+				cddbInfo->revision = revision.ToInt();
+			}
+			else if (cLine.CompareN("# Track frame offsets:", 22) == 0)
+			{
+				do
+				{
+					for (Int m = 0; m >= 0; m++, j++)
+					{
+						if (result[j] == '\n' || result[j] == 0)	{ cLine[m] = 0; j++; break; }
+						else						cLine[m] = result[j];
+					}
+
+					if (cLine[0] == '#' && cLine.Length() <= 2) break;
+
+					Int	 firstDigit = 0;
+					String	 offset;
+
+					for (Int n = 2; n < cLine.Length(); n++)
+					{
+						if (cLine[n] != ' ' && cLine[n] != '\t')
+						{
+							firstDigit = n;
+
+							break;
+						}
+					}
+
+					for (Int l = firstDigit; l < cLine.Length(); l++) offset[l - firstDigit] = cLine[l];
+
+					cddbInfo->offsets.AddEntry(offset.ToInt());
+				}
+				while (True);
+			}
+			else if (cLine.CompareN("# Disc length: ", 15) == 0)
+			{
+				String	 disclength;
+
+				for (Int l = 15; l < cLine.Length(); l++) disclength[l - 15] = cLine[l];
+
+				cddbInfo->disclength = disclength.ToInt();
+			}
+			else if (cLine.CompareN("210 ", 4) == 0)
+			{
+				String	 category;
+
+				for (Int l = 4; l < cLine.Length(); l++)
+				{
+					if (cLine[l] == ' ') break;
+
+					category[l - 4] = cLine[l];
+				}
+
+				cddbInfo->category = category;
 			}
 		}
 	}
 
-	cddb.CloseConnection();
+	if (currentConfig->freedb_mode == FREEDB_MODE_CDDBP) cddb.CloseConnection();
 
 	mainWnd_statusbar->SetText("BonkEnc v0.9 - Copyright (C) 2001-2003 Robert Kausch");
 

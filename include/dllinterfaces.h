@@ -39,6 +39,7 @@
 	typedef void				(CCONV *CR_LOCKCD)				(BOOL);
 	typedef void				(CCONV *CR_SETTRANSPORTLAYER)			(int);
 	typedef CDEX_ERR			(CCONV *CR_READCDTEXT)				(BYTE *, int, LPINT);
+	typedef CDEX_ERR			(CCONV *CR_SAVESETTINGS)			();
 
 	extern CR_INIT				 ex_CR_Init;
 	extern CR_DEINIT			 ex_CR_DeInit;
@@ -56,6 +57,7 @@
 	extern CR_SETTRANSPORTLAYER		 ex_CR_SetTransportLayer;
 	extern CR_LOCKCD			 ex_CR_LockCD;
 	extern CR_READCDTEXT			 ex_CR_ReadCDText;
+	extern CR_SAVESETTINGS			 ex_CR_SaveSettings;
 
 // Bonk DLL API
 

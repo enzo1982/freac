@@ -27,6 +27,7 @@ CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters;
 CR_SETTRANSPORTLAYER		 ex_CR_SetTransportLayer;
 CR_LOCKCD			 ex_CR_LockCD;
 CR_READCDTEXT			 ex_CR_ReadCDText;
+CR_SAVESETTINGS			 ex_CR_SaveSettings;
 
 BONKCREATEENCODER		 ex_bonk_create_encoder;
 BONKCLOSEENCODER		 ex_bonk_close_encoder;
@@ -471,6 +472,7 @@ Bool bonkEnc::LoadCDRipDLL()
 	ex_CR_SetTransportLayer		= (CR_SETTRANSPORTLAYER) GetProcAddress(cdripdll, "CR_SetTransportLayer");
 	ex_CR_LockCD			= (CR_LOCKCD) GetProcAddress(cdripdll, "CR_LockCD");
 	ex_CR_ReadCDText		= (CR_READCDTEXT) GetProcAddress(cdripdll, "CR_ReadCDText");
+	ex_CR_SaveSettings		= (CR_SAVESETTINGS) GetProcAddress(cdripdll, "CR_SaveSettings");
 
 	if (ex_CR_Init == NULL)			{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_DeInit == NULL)		{ FreeLibrary(cdripdll); return false; }
@@ -488,6 +490,7 @@ Bool bonkEnc::LoadCDRipDLL()
 	if (ex_CR_SetTransportLayer == NULL)	{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_LockCD == NULL)		{ FreeLibrary(cdripdll); return false; }
 	if (ex_CR_ReadCDText == NULL)		{ FreeLibrary(cdripdll); return false; }
+	if (ex_CR_SaveSettings == NULL)		{ FreeLibrary(cdripdll); return false; }
 
 	return true;
 }
