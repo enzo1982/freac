@@ -157,6 +157,8 @@ String bonkEncCDDB::SendCommand(String command)
 				out->OutputLine(command);
 			}
 
+			String::SetInputFormat("ISO-8859-1");
+
 			do
 			{
 				str = in->InputLine();
@@ -167,6 +169,8 @@ String bonkEncCDDB::SendCommand(String command)
 #endif
 			}
 			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
+
+			String::SetInputFormat("UTF-8");
 
 			break;
 		case FREEDB_MODE_HTTP:
@@ -228,6 +232,8 @@ String bonkEncCDDB::SendCommand(String command)
 
 			out->OutputString(str);
 
+			String::SetInputFormat("ISO-8859-1");
+
 			do
 			{
 				str = in->InputLine();
@@ -249,6 +255,8 @@ String bonkEncCDDB::SendCommand(String command)
 #endif
 			}
 			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
+
+			String::SetInputFormat("UTF-8");
 
 			if (str[1] == '1')
 			{
@@ -356,6 +364,8 @@ String bonkEncCDDB::Query(String discid)
 	// multiple exact matches
 	if (str[0] == '2' && str[1] == '1' && (str[2] == '0' || str[2] == '1'))
 	{
+		String::SetInputFormat("ISO-8859-1");
+
 		ids.DeleteAll();
 		titles.DeleteAll();
 		categories.DeleteAll();
@@ -399,6 +409,8 @@ String bonkEncCDDB::Query(String discid)
 		}
 		while (true);
 
+		String::SetInputFormat("UTF-8");
+
 		if (str[2] == '0')	return "multiple";
 		else			return "fuzzy";
 	}
@@ -412,6 +424,8 @@ String bonkEncCDDB::Read(String query)
 
 	if (str[0] == '2' && str[1] == '1' && str[2] == '0')
 	{
+		String::SetInputFormat("ISO-8859-1");
+
 		str = "";
 
 		do
@@ -432,6 +446,8 @@ String bonkEncCDDB::Read(String query)
 			str.Append(val).Append("\n");
 		}
 		while (true);
+
+		String::SetInputFormat("UTF-8");
 
 		return str;
 	}

@@ -25,13 +25,24 @@ class cddbSubmitDlg : public Application
 		Window		*mainWnd;
 		Titlebar	*mainWnd_titlebar;
 
+		GroupBox	*group_drive;
+		ComboBox	*combo_drive;
+
+		Text		*text_artist;
+		EditBox		*edit_artist;
+		Text		*text_album;
+		EditBox		*edit_album;
+
 		Button		*btn_cancel;
 		Button		*btn_ok;
 
 		bonkEncConfig	*currentConfig;
 
+		Int		 activedrive;
+
 		Void		 OK();
 		Void		 Cancel();
+		Void		 ChangeDrive();
 	public:
 				 cddbSubmitDlg();
 				~cddbSubmitDlg();

@@ -207,5 +207,6 @@
     <entry id="196" string="Database">Datenbank</entry>
     <entry id="197" string="Submit CDDB data...">CDDB Daten senden...</entry>
     <entry id="198" string="Enable CDDB cache">CDDB Cache aktivieren</entry>
+    <entry id="199" string="CDDB data">CDDB Daten</entry>
   </data>
 </LangFile>

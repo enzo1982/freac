@@ -607,14 +607,21 @@ bonkEnc::bonkEnc()
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, this);
 
-	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEnc::SubmitCDDBData, this);
-	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB"), NIL, NIL, &currentConfig->enable_cddb)->onClick.Connect(&bonkEnc::ToggleCDDB, this);
+
+	if (currentConfig->enable_cddb)
+	{
+		menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+		menu_database->AddEntry();
+		menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEnc::SubmitCDDBData, this);
+	}
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
+
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
-	mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 
 	Menu::Entry	*entry;
@@ -1053,6 +1060,8 @@ Void bonkEnc::ConfigureGeneral()
 	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out");
 
 	edb_outdir->SetText(currentConfig->enc_outdir);
+
+	ToggleCDDB();
 }
 
 Void bonkEnc::ReadSpecificCD()
@@ -1111,7 +1120,7 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 	if (discid == "ffffffff" || discid == "00000000") return NIL; // no disc in drive or read error
 
-	if (bonkEncCDDB::requestedDiscs.GetEntry(cddb.ComputeDiscID()) == True && !cddbRetry) return NIL;
+	if (bonkEncCDDB::requestedDiscs.GetEntry(cddb.ComputeDiscID()) == True && !cddbRetry) return bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
 
 	bonkEncCDDB::requestedDiscs.AddEntry(True, cddb.ComputeDiscID());
 
@@ -1235,11 +1244,31 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 Void bonkEnc::SubmitCDDBData()
 {
-	cddbSubmitDlg	*dlg = new cddbSubmitDlg();
+	if (currentConfig->enable_cddb)
+	{
+		cddbSubmitDlg	*dlg = new cddbSubmitDlg();
 
-	dlg->ShowDialog();
+		dlg->ShowDialog();
 
-	delete dlg;
+		delete dlg;
+	}
+}
+
+Void bonkEnc::ToggleCDDB()
+{
+	menu_database->Clear();
+
+	if (currentConfig->enable_cddb)
+	{
+		menu_database->AddEntry(i18n->TranslateString("Enable CDDB"), NIL, NIL, &currentConfig->enable_cddb)->onClick.Connect(&bonkEnc::ToggleCDDB, this);
+		menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+		menu_database->AddEntry();
+		menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEnc::SubmitCDDBData, this);
+	}
+	else
+	{
+		menu_database->AddEntry(i18n->TranslateString("Enable CDDB"), NIL, NIL, &currentConfig->enable_cddb)->onClick.Connect(&bonkEnc::ToggleCDDB, this);
+	}
 }
 
 Void bonkEnc::ShowHideTitleInfo()
@@ -1486,14 +1515,21 @@ Bool bonkEnc::SetLanguage(String newLanguage)
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, this);
 
-	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEnc::SubmitCDDBData, this);
-	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB"), NIL, NIL, &currentConfig->enable_cddb)->onClick.Connect(&bonkEnc::ToggleCDDB, this);
+
+	if (currentConfig->enable_cddb)
+	{
+		menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+		menu_database->AddEntry();
+		menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEnc::SubmitCDDBData, this);
+	}
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
+
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
-	mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 
 	Menu::Entry	*entry;

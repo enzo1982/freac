@@ -225,6 +225,7 @@ class bonkEnc : public Application
 		Void			 UpdateTitleInfo();
 		Void			 SelectJoblistEntry();
 		Void			 SubmitCDDBData();
+		Void			 ToggleCDDB();
 
 		Bool			 SetLanguage(String);
 	public:

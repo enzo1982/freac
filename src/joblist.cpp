@@ -204,7 +204,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 			}
 		}
 
-		if (format->length > 0)	format->trackInfo->length = String::IntToString(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append(String::IntToString(format->length / (format->rate * format->channels) % 60));
+		if (format->length > 0)	format->trackInfo->length = String::IntToString(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::IntToString(format->length / (format->rate * format->channels) % 60));
 		else			format->trackInfo->length = "?";
 
 		if (format->trackInfo->origFilename == NIL) format->trackInfo->origFilename = file;

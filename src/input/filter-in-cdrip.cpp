@@ -313,7 +313,8 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 
 		cdInfo = currentConfig->appMain->GetCDDBData();
 
-		if (currentConfig->enable_cddb_cache) bonkEncCDDB::titleCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+		bonkEncCDDB::titleCache.DeleteEntry(cddb.ComputeDiscID());
+		bonkEncCDDB::titleCache.AddEntry(cdInfo, cddb.ComputeDiscID());
 
 		currentConfig->cdrip_activedrive = oDrive;
 	}

@@ -125,7 +125,7 @@ Bool bonkEncConfig::LoadSettings()
 	freedb_submit_path = getINIValue("freedb", "SubmitPath", "/~cddb/submit.cgi");
 	freedb_email = getINIValue("freedb", "eMail", "");
 	freedb_proxy_mode = getINIValue("freedb", "ProxyMode", "0").ToInt();
-	freedb_proxy = getINIValue("freedb", "Proxy", "");
+	freedb_proxy = getINIValue("freedb", "Proxy", "localhost");
 	freedb_proxy_port = getINIValue("freedb", "ProxyPort", "1080").ToInt();
 
 	bonk_quantization = getINIValue("bonk", "Quantization", "8").ToInt();
