@@ -20,6 +20,7 @@ History
 		- simplified the language file format
 		- upgraded to smooth v0.8.61.0
 		- upgraded CDRip.dll to fix some ASPI issues
+		- upgraded LAME to version 3.93.1
 		- some minor bugfixes
 
 		Still to be done, but definitely in 0.9:
