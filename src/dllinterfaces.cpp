@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -190,6 +190,7 @@ FLAC__STREAM_DECODER_SET_READ_CALLBACK			 ex_FLAC__stream_decoder_set_read_callb
 FLAC__STREAM_DECODER_SET_WRITE_CALLBACK			 ex_FLAC__stream_decoder_set_write_callback		= NIL;
 FLAC__STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__stream_decoder_set_metadata_callback		= NIL;
 FLAC__STREAM_DECODER_SET_ERROR_CALLBACK			 ex_FLAC__stream_decoder_set_error_callback		= NIL;
+FLAC__STREAM_DECODER_SET_CLIENT_DATA			 ex_FLAC__stream_decoder_set_client_data		= NIL;
 FLAC__STREAM_DECODER_INIT				 ex_FLAC__stream_decoder_init				= NIL;
 FLAC__STREAM_DECODER_FINISH				 ex_FLAC__stream_decoder_finish				= NIL;
 FLAC__STREAM_DECODER_GET_CHANNELS			 ex_FLAC__stream_decoder_get_channels			= NIL;
@@ -763,6 +764,7 @@ Bool bonkEnc::LoadFLACDLL()
 	ex_FLAC__stream_decoder_set_write_callback		= (FLAC__STREAM_DECODER_SET_WRITE_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_write_callback");
 	ex_FLAC__stream_decoder_set_metadata_callback		= (FLAC__STREAM_DECODER_SET_METADATA_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_metadata_callback");
 	ex_FLAC__stream_decoder_set_error_callback		= (FLAC__STREAM_DECODER_SET_ERROR_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_error_callback");
+	ex_FLAC__stream_decoder_set_client_data			= (FLAC__STREAM_DECODER_SET_CLIENT_DATA) GetProcAddress(flacdll, "FLAC__stream_decoder_set_client_data");
 	ex_FLAC__stream_decoder_init				= (FLAC__STREAM_DECODER_INIT) GetProcAddress(flacdll, "FLAC__stream_decoder_init");
 	ex_FLAC__stream_decoder_finish				= (FLAC__STREAM_DECODER_FINISH) GetProcAddress(flacdll, "FLAC__stream_decoder_finish");
 	ex_FLAC__stream_decoder_get_channels			= (FLAC__STREAM_DECODER_GET_CHANNELS) GetProcAddress(flacdll, "FLAC__stream_decoder_get_channels");
@@ -777,6 +779,7 @@ Bool bonkEnc::LoadFLACDLL()
 	if (ex_FLAC__stream_decoder_set_write_callback == NULL)			{ FreeLibrary(flacdll); return false; }
 	if (ex_FLAC__stream_decoder_set_metadata_callback == NULL)		{ FreeLibrary(flacdll); return false; }
 	if (ex_FLAC__stream_decoder_set_error_callback == NULL)			{ FreeLibrary(flacdll); return false; }
+	if (ex_FLAC__stream_decoder_set_client_data == NULL)			{ FreeLibrary(flacdll); return false; }
 	if (ex_FLAC__stream_decoder_init == NULL)				{ FreeLibrary(flacdll); return false; }
 	if (ex_FLAC__stream_decoder_finish == NULL)				{ FreeLibrary(flacdll); return false; }
 	if (ex_FLAC__stream_decoder_get_channels == NULL)			{ FreeLibrary(flacdll); return false; }

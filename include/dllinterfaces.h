@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -405,6 +405,7 @@
 	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_WRITE_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderWriteCallback);
 	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_METADATA_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderMetadataCallback);
 	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_ERROR_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderErrorCallback);
+	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_CLIENT_DATA)			(FLAC__StreamDecoder *, void *);
 	typedef FLAC__StreamDecoderState	(*FLAC__STREAM_DECODER_INIT)				(FLAC__StreamDecoder *);
 	typedef void				(*FLAC__STREAM_DECODER_FINISH)				(FLAC__StreamDecoder *);
 	typedef unsigned			(*FLAC__STREAM_DECODER_GET_CHANNELS)			(const FLAC__StreamDecoder *);
@@ -419,6 +420,7 @@
 	extern FLAC__STREAM_DECODER_SET_WRITE_CALLBACK			 ex_FLAC__stream_decoder_set_write_callback;
 	extern FLAC__STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__stream_decoder_set_metadata_callback;
 	extern FLAC__STREAM_DECODER_SET_ERROR_CALLBACK			 ex_FLAC__stream_decoder_set_error_callback;
+	extern FLAC__STREAM_DECODER_SET_CLIENT_DATA			 ex_FLAC__stream_decoder_set_client_data;
 	extern FLAC__STREAM_DECODER_INIT				 ex_FLAC__stream_decoder_init;
 	extern FLAC__STREAM_DECODER_FINISH				 ex_FLAC__stream_decoder_finish;
 	extern FLAC__STREAM_DECODER_GET_CHANNELS			 ex_FLAC__stream_decoder_get_channels;

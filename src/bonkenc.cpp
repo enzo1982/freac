@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -308,7 +308,7 @@ InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
 	{
 		filter_in = new FilterInLAME(currentConfig, trackInfo);
 	}
-	else if ((extension3 == "mp4" || extension3 == "m4a") && currentConfig->enable_mp4 && currentConfig->enable_faad2)
+	else if ((extension3 == "mp4" || extension3 == "m4a" || extension3 == "m4b") && currentConfig->enable_mp4 && currentConfig->enable_faad2)
 	{
 		filter_in = new FilterInMP4(currentConfig, trackInfo);
 	}

@@ -22,7 +22,7 @@ Geschichte
 		- Unterstützung für Unicode Dateinamen hinzugefügt
 		- Ein Uninstaller wurde hinzugefügt
 		- Einige andere Fehler wurden behoben
-		- LAME auf Version 3.96 aktualisiert
+		- LAME auf Version 3.96.1 aktualisiert
 		- FAAC auf Version 1.24.0 aktualisiert
 		- Ogg Vorbis auf Version 1.1 aktualisiert
 		- TwinVQ Abstürze behoben
@@ -157,12 +157,12 @@ Voraussetzungen
 	- Windows NT/2000/XP/2003, Windows 95/98/SE/ME
 	- Ein 200MHz Prozessor oder besser, um Bonk Dateien abzuspielen
 	- Winamp wird benötigt um Bonk Dateien unter Windows abzuspielen
-	- Zum CD-Rippen werden korrekt installierte ASPI-Treiber benötigt
+	- Zum CD-Rippen werden installierte ASPI-Treiber empfohlen
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v1.x oder v3.2+ (http://www.mingw.org/) oder MSVC v6.0
-		- smooth v0.8.65.0 CVS (http://www.smooth-project.org/)
+		- smooth v0.8.66.0 CVS (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - bei smooth dabei)
 
 	Zusätzliche optionale Software:
@@ -202,7 +202,7 @@ Pläne für zukünftige Versionen
 
 	- Spätere Versionen
 		* Eingabefilter für VQF
-		* mehr Audioformate unterstützen (FLAC, MAC, WMA, ...)
+		* mehr Audioformate unterstützen (MAC, WMA, ...)
 		* ein IOLib-Filters basierendes PlugIn System entwickeln
 		* Unterstützung für musicbrainz.org
 		* Kommandozeilenoptionen zum Konfigurieren der Encoder erlauben

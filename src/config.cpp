@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -87,7 +87,7 @@ Bool bonkEncConfig::LoadSettings()
 	Configuration	*config = new Configuration("config.xml", False);
 
 	language = config->GetStringValue("Settings", "Language", "");
-	encoder = config->GetIntValue("Settings", "Encoder", 2);
+	encoder = config->GetIntValue("Settings", "Encoder", 1);
 	enc_outdir = config->GetStringValue("Settings", "EncoderOutDir", pDir);
 	enc_filePattern = config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
 	enc_onTheFly = config->GetIntValue("Settings", "EncodeOnTheFly", 1);
@@ -188,12 +188,12 @@ Bool bonkEncConfig::LoadSettings()
 
 	faac_mpegversion = config->GetIntValue("FAAC", "MPEGVersion", 0);
 	faac_type = config->GetIntValue("FAAC", "AACType", 1);
-	faac_bitrate = config->GetIntValue("FAAC", "Bitrate", 96);
-	faac_bandwidth = config->GetIntValue("FAAC", "BandWidth", 22050);
+	faac_bitrate = config->GetIntValue("FAAC", "Bitrate", 64);
+	faac_bandwidth = config->GetIntValue("FAAC", "BandWidth", 16000);
 	faac_allowjs = config->GetIntValue("FAAC", "AllowJS", 1);
 	faac_usetns = config->GetIntValue("FAAC", "UseTNS", 0);
 	faac_set_quality = config->GetIntValue("FAAC", "SetQuality", 1);
-	faac_aac_quality = config->GetIntValue("FAAC", "AACQuality", 120);
+	faac_aac_quality = config->GetIntValue("FAAC", "AACQuality", 100);
 	faac_enable_id3 = config->GetIntValue("FAAC", "AllowID3V2", 0);
 	faac_enable_mp4 = config->GetIntValue("FAAC", "MP4Container", 1);
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -45,7 +45,6 @@ void	 Out_SetPan(int);
 FilterInWinamp::FilterInWinamp(bonkEncConfig *config, bonkEncTrack *format, In_Module *iPlugin) : InputFilter(config, format)
 {
 	plugin = iPlugin;
-	setup = False;
 
 	plugin->SetInfo = SetInfo;
 	plugin->VSASetInfo = VSASetInfo;
@@ -83,6 +82,8 @@ FilterInWinamp::~FilterInWinamp()
 
 bool FilterInWinamp::Activate()
 {
+	plugin->Play(format->origFilename);
+
 	return true;
 }
 
@@ -95,17 +96,6 @@ bool FilterInWinamp::Deactivate()
 
 int FilterInWinamp::ReadData(unsigned char **data, int size)
 {
-	if (!setup)
-	{
-		setup = True;
-
-		char  file[MAX_PATH];
-
-		strcpy(file, driver->GetStreamID());
-
-		plugin->Play(file);
-	}
-
 	get_more_samples = 32768;
 	n_samples = 0;
 
@@ -167,8 +157,13 @@ void SetInfo(int bitrate, int srate, int stereo, int synched)
 
 void VSASetInfo(int nch, int srate)
 {
-	channels = nch;
-	rate = srate;
+	/* Some plugins pass the sampling rate as the first   *
+	 * parameter, so we just assume that the larger value *
+	 * is the sampling rate, the other is the number of   *
+	 * channels.					      */
+
+	channels	= Math::Min((Int) nch, srate);
+	rate		= Math::Max((Int) nch, srate);
 }
 
 void VSAAddPCMData(void *PCMData, int nch, int bps, int timestamp)
