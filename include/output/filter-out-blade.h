@@ -12,7 +12,7 @@
 #define _H_FILTER_OUT_BLADE_
 
 #include "outputfilter.h"
-#include <bladedll/bladedll.h>
+#include <3rdparty/bladedll/bladedll.h>
 
 class FilterOutBLADE : public OutputFilter
 {
@@ -23,7 +23,7 @@ class FilterOutBLADE : public OutputFilter
 		unsigned long	 buffersize;
 		unsigned long	 handle;
 	public:
-				 FilterOutBLADE(bonkEncConfig *, bonkFormatInfo *);
+				 FilterOutBLADE(bonkEncConfig *, bonkEncTrack *);
 				~FilterOutBLADE();
 
 		bool		 Activate();

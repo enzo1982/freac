@@ -12,14 +12,14 @@
 #define _H_FILTER_OUT_LAME_
 
 #include "outputfilter.h"
-#include <lame/lame.h>
+#include <3rdparty/lame/lame.h>
 
 class FilterOutLAME : public OutputFilter
 {
 	private:
 		lame_global_flags	*lameFlags;
 	public:
-					 FilterOutLAME(bonkEncConfig *, bonkFormatInfo *);
+					 FilterOutLAME(bonkEncConfig *, bonkEncTrack *);
 					~FilterOutLAME();
 
 		bool			 Activate();

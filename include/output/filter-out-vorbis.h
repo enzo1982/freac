@@ -12,7 +12,7 @@
 #define _H_FILTER_OUT_VORBIS_
 
 #include "outputfilter.h"
-#include <vorbis/vorbisenc.h>
+#include <3rdparty/vorbis/vorbisenc.h>
 
 class FilterOutVORBIS : public OutputFilter
 {
@@ -28,7 +28,7 @@ class FilterOutVORBIS : public OutputFilter
 
 		bool			 setup;
 	public:
-					 FilterOutVORBIS(bonkEncConfig *, bonkFormatInfo *);
+					 FilterOutVORBIS(bonkEncConfig *, bonkEncTrack *);
 					~FilterOutVORBIS();
 
 		int			 WriteData(unsigned char *, int);

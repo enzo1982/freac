@@ -10,7 +10,7 @@
 
 #include <iolib-cxx.h>
 #include <input/filter-in-cdrip.h>
-#include <cdrip/cdrip.h>
+#include <3rdparty/cdrip/cdrip.h>
 #include <dllinterfaces.h>
 #include <memory.h>
 #include <main.h>
@@ -18,13 +18,28 @@
 
 #define PARANOIA_MODE_FULL        0xff
 #define PARANOIA_MODE_DISABLE     0
-
 #define PARANOIA_MODE_VERIFY      1
 #define PARANOIA_MODE_FRAGMENT    2
 #define PARANOIA_MODE_OVERLAP     4
 #define PARANOIA_MODE_SCRATCH     8
 #define PARANOIA_MODE_REPAIR      16
 #define PARANOIA_MODE_NEVERSKIP   32
+
+typedef struct
+{
+	unsigned char	 packType;
+	unsigned char	 trackNumber;
+	unsigned char	 sequenceNumber;
+
+	unsigned char	 characterPosition	:4;
+	unsigned char	 block			:3;
+	unsigned char	 bDBC			:1;
+
+	unsigned char	 data[12];
+	unsigned char	 crc0;
+	unsigned char	 crc1;
+}
+cdTextPackage;
 
 FilterInCDRip::FilterInCDRip(bonkEncConfig *config) : InputFilter(config)
 {
@@ -48,6 +63,8 @@ FilterInCDRip::~FilterInCDRip()
 int FilterInCDRip::ReadData(unsigned char **data, int size)
 {
 	if (trackNumber == -1) return true;
+
+	debug_out->EnterMethod("FilterInCDRip::ReadData(unsigned char **, int)");
 
 	if (byteCount >= trackSize)
 	{
@@ -80,6 +97,7 @@ int FilterInCDRip::ReadData(unsigned char **data, int size)
 
 	memcpy((void *) *data, (void *) buffer, size);
 
+	debug_out->LeaveMethod();
 
 	return size;
 }
@@ -193,9 +211,9 @@ S::Int FilterInCDRip::GetTrackSize()
 	return trackSize;
 }
 
-bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
+bonkEncTrack *FilterInCDRip::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	*nFormat = new bonkFormatInfo;
+	bonkEncTrack	*nFormat = new bonkEncTrack;
 
 	nFormat->channels = 2;
 	nFormat->rate = 44100;
@@ -249,7 +267,7 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 	{
 		if (inFile[inFile.Length() - 4] == '.' && inFile[inFile.Length() - 3] == 'c' && inFile[inFile.Length() - 2] == 'd' && inFile[inFile.Length() - 1] == 'a')
 		{
-			InStream	*in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+			InStream	*in = OpenFile(inFile);
 
 			in->Seek(22);
 
@@ -259,7 +277,7 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 
 			trackLength = in->InputNumber(4);
 
-			delete in;
+			CloseFile(in);
 
 			for (audiodrive = 0; audiodrive < currentConfig->cdrip_numdrives; audiodrive++)
 			{
@@ -314,7 +332,7 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 		}
 	}
 
-	currentConfig->appMain->ReadCDText();
+	ReadCDText();
 
 	if (trackNumber == 0)
 	{
@@ -330,15 +348,9 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 
 	cddb.SetActiveDrive(audiodrive);
 
-	Int		 discID = cddb.ComputeDiscID();
+	Array<bonkEncTrack *>	*cdInfo = NIL;
 
-	Array<bonkFormatInfo::bonkTrackInfo *>	*cdInfo = NIL;
-
-	if (currentConfig->enable_cddb_cache)
-	{
-		cdInfo = bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
-		currentConfig->appMain->cddbInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
-	}
+	if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
 
 	if (cdInfo == NIL && currentConfig->enable_auto_cddb)
 	{
@@ -348,60 +360,120 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 
 		cdInfo = currentConfig->appMain->GetCDDBData();
 
-		bonkEncCDDB::titleCache.RemoveEntry(cddb.ComputeDiscID());
-		bonkEncCDDB::titleCache.AddEntry(cdInfo, cddb.ComputeDiscID());
-
 		bonkEncCDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
-		bonkEncCDDB::infoCache.AddEntry(currentConfig->appMain->cddbInfo, cddb.ComputeDiscID());
+		bonkEncCDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
 
 		currentConfig->cdrip_activedrive = oDrive;
 	}
 
 	if (cdInfo != NIL)
 	{
-		nFormat->trackInfo->track	= trackNumber;
-		nFormat->trackInfo->cdTrack	= trackNumber;
-		nFormat->trackInfo->discid	= discID;
-		nFormat->trackInfo->drive	= audiodrive;
-		nFormat->trackInfo->outfile	= NIL;
-		nFormat->trackInfo->hasText	= True;
-		nFormat->trackInfo->artist	= cdInfo->GetEntry(0)->artist;
-		nFormat->trackInfo->title	= cdInfo->GetEntry(trackNumber)->title;
-		nFormat->trackInfo->album	= cdInfo->GetEntry(0)->album;
-		nFormat->trackInfo->genre	= cdInfo->GetEntry(0)->genre;
-		nFormat->trackInfo->year	= cdInfo->GetEntry(0)->year;
+		nFormat->track		= trackNumber;
+		nFormat->cdTrack	= trackNumber;
+		nFormat->discid		= cddb.GetDiscIDString();
+		nFormat->drive		= audiodrive;
+		nFormat->outfile	= NIL;
+		nFormat->artist		= cdInfo->GetEntry(0)->artist;
+		nFormat->title		= cdInfo->GetEntry(trackNumber)->title;
+		nFormat->album		= cdInfo->GetEntry(0)->album;
+		nFormat->genre		= cdInfo->GetEntry(0)->genre;
+		nFormat->year		= cdInfo->GetEntry(0)->year;
 	}
-	else if (currentConfig->appMain->cdText.GetEntry(trackNumber) != NIL)
+	else if (cdText.GetEntry(trackNumber) != NIL)
 	{
-		nFormat->trackInfo->track	= trackNumber;
-		nFormat->trackInfo->cdTrack	= trackNumber;
-		nFormat->trackInfo->discid	= discID;
-		nFormat->trackInfo->drive	= audiodrive;
-		nFormat->trackInfo->outfile	= NIL;
-		nFormat->trackInfo->hasText	= True;
-		nFormat->trackInfo->artist	= currentConfig->appMain->cdText.GetEntry(0);
-		nFormat->trackInfo->title	= currentConfig->appMain->cdText.GetEntry(trackNumber);
-		nFormat->trackInfo->album	= currentConfig->appMain->cdText.GetEntry(100);
+		nFormat->track		= trackNumber;
+		nFormat->cdTrack	= trackNumber;
+		nFormat->discid		= cddb.GetDiscIDString();
+		nFormat->drive		= audiodrive;
+		nFormat->outfile	= NIL;
+		nFormat->artist		= cdText.GetEntry(0);
+		nFormat->title		= cdText.GetEntry(trackNumber);
+		nFormat->album		= cdText.GetEntry(100);
 	}
 	else
 	{
-		nFormat->trackInfo->track	= trackNumber;
-		nFormat->trackInfo->cdTrack	= trackNumber;
-		nFormat->trackInfo->discid	= discID;
-		nFormat->trackInfo->drive	= audiodrive;
-		nFormat->trackInfo->outfile	= NIL;
-		nFormat->trackInfo->hasText	= False;
+		nFormat->track		= trackNumber;
+		nFormat->cdTrack	= trackNumber;
+		nFormat->discid		= cddb.GetDiscIDString();
+		nFormat->drive		= audiodrive;
+		nFormat->outfile	= NIL;
 	}
 
-	nFormat->trackInfo->isCDTrack = True;
+	nFormat->isCDTrack	= True;
+	nFormat->origFilename	= String("Audio CD ").Append(String::FromInt(nFormat->drive)).Append(" - Track ");
 
-	nFormat->trackInfo->origFilename = String("Audio CD ").Append(String::FromInt(nFormat->trackInfo->drive)).Append(" - Track ");
+	if (nFormat->track < 10) nFormat->origFilename.Append("0");
 
-	if (nFormat->trackInfo->track < 10) nFormat->trackInfo->origFilename.Append("0");
+	nFormat->origFilename.Append(String::FromInt(nFormat->track));
 
-	nFormat->trackInfo->origFilename.Append(String::FromInt(nFormat->trackInfo->track));
-
-	currentConfig->appMain->FreeCDText();
+	FreeCDText();
 
 	return nFormat;
+}
+
+Int FilterInCDRip::ReadCDText()
+{
+	FreeCDText();
+
+	const int	 nBufferSize	= 4 + 8 * sizeof(cdTextPackage) * 256;
+	unsigned char	*pbtBuffer	= new unsigned char [nBufferSize];
+	int		 nCDTextSize	= 0;
+	char		*lpZero		= NIL;
+
+	ex_CR_ReadCDText(pbtBuffer, nBufferSize, &nCDTextSize);
+
+	if (nCDTextSize < 4) return Error;
+
+	int		 nNumPacks		= (nCDTextSize - 4) / sizeof(cdTextPackage);
+	cdTextPackage	*pCDtextPacks		= NIL;
+	char		 lpszBuffer[1024]	= {'\0',};
+	int		 nInsertPos		= 0;
+
+	for (Int i = 0; i < nNumPacks; i++)
+	{
+		pCDtextPacks = (cdTextPackage *) &pbtBuffer[i * sizeof(cdTextPackage) + 4];
+
+		if (pCDtextPacks->block == 0)
+		{
+			for (Int j = 0; j < 12; j++) lpszBuffer[nInsertPos++] = pCDtextPacks->data[j];
+
+			while (nInsertPos > 0 && (lpZero = (char *) memchr(lpszBuffer, '\0', nInsertPos)) != NIL)
+			{
+				Int	 nOut = (lpZero - lpszBuffer) + 1;
+
+				if (pCDtextPacks->packType == 0x80) // Album/Track title
+				{
+					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 100);
+					if (pCDtextPacks->trackNumber != 0) cdText.AddEntry(lpszBuffer, pCDtextPacks->trackNumber);
+				}
+				else if (pCDtextPacks->packType == 0x81) // Artist name
+				{
+					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 0);
+				}
+
+				nInsertPos -= nOut;
+
+				memmove(lpszBuffer, lpZero + 1, 1024 - nOut -1);
+
+				pCDtextPacks->trackNumber++;
+
+				while (nInsertPos > 0 && lpszBuffer[ 0 ] == '\0')
+				{
+					memmove(lpszBuffer, lpszBuffer + 1, 1024 -1);
+					nInsertPos--;
+				}
+			}
+		}
+	}
+
+	delete [] pbtBuffer;
+
+	return Success;
+}
+
+Int FilterInCDRip::FreeCDText()
+{
+	cdText.RemoveAll();
+
+	return Success;
 }

@@ -19,7 +19,7 @@
 #define int32_t long
 #endif
 
-#include <faac/faac.h>
+#include <3rdparty/faac/faac.h>
 
 class FilterOutFAAC : public OutputFilter
 {
@@ -30,7 +30,7 @@ class FilterOutFAAC : public OutputFilter
 		unsigned long		 samples_size;
 		unsigned long		 buffersize;
 	public:
-					 FilterOutFAAC(bonkEncConfig *, bonkFormatInfo *);
+					 FilterOutFAAC(bonkEncConfig *, bonkEncTrack *);
 					~FilterOutFAAC();
 
 		int			 WriteData(unsigned char *, int);

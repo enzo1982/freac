@@ -22,6 +22,7 @@ class bonkEncConsole
 	public:
 			 bonkEncConsole(String);
 			~bonkEncConsole();
+
 		void	 OutputString(String);
 		void	 WaitKey();
 };

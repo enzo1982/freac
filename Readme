@@ -8,18 +8,22 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 beta 3 CVS (April 2004)
+	Version 1.0 beta 3 CVS (May 2004)
 
 		- NT SCSI support is working again
 		- fixed some bugs in the CDDB implementation
 		- added Ukrainian language support
 		- added support for reading CD contents automatically on insert
 		- added auto-eject feature
+		- added support for non-'on-the-fly' encoding
+		- added HTTP proxy support
 		- fixed a bug in the WAVE file reader
 		- the BonkEnc distribution now includes the in_flac.dll plug-in for FLAC input
 		- fixed bad rendering right-to-left scripts on Windows NT/2000
+		- added support for Unicode filenames
 		- added an uninstaller
 		- some other bugfixes
+		- upgraded FAAC to version 1.24.0
 		- upgraded to smooth v0.8.65.0
 
 	Version 1.0 beta 2 (February 2004)
@@ -173,8 +177,6 @@ Problems
 
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
-
-	- Unicode characters are replaced with '#' in file names, as IOLib does not support Unicode filenames, yet.
 
 	- The command line interface doesn't support options for modifying encoder settings, yet.
 

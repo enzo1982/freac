@@ -17,14 +17,14 @@
 #include <dllinterfaces.h>
 #include <memory.h>
 
-#include <twinvq/bstream_e.h>
-#include <twinvq/bstream_e.cxx>
-#include <twinvq/Chunk.h>
-#include <twinvq/Chunk.cxx>
-#include <twinvq/ChunkHelper.h>
-#include <twinvq/ChunkHelper.cxx>
+#include <3rdparty/twinvq/bstream_e.h>
+#include <3rdparty/twinvq/bstream_e.cxx>
+#include <3rdparty/twinvq/Chunk.h>
+#include <3rdparty/twinvq/Chunk.cxx>
+#include <3rdparty/twinvq/ChunkHelper.h>
+#include <3rdparty/twinvq/ChunkHelper.cxx>
 
-FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
+FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
 	setup = false;
 

@@ -97,10 +97,10 @@ int FilterInVOC::ReadData(unsigned char **data, int size)
 	return outsize;
 }
 
-bonkFormatInfo *FilterInVOC::GetFileInfo(String inFile)
+bonkEncTrack *FilterInVOC::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	*nFormat = new bonkFormatInfo;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	bonkEncTrack	*nFormat = new bonkEncTrack;
+	InStream	*f_in = OpenFile(inFile);
 
 	// Add more checking to this!
 
@@ -119,7 +119,7 @@ bonkFormatInfo *FilterInVOC::GetFileInfo(String inFile)
 
 	nFormat->length = (nFormat->fileSize - 42 - 4 * int((nFormat->fileSize - 42) / 7340032)) / (nFormat->bits / 8);
 
-	delete f_in;
+	CloseFile(f_in);
 
 	return nFormat;
 }

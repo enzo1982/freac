@@ -24,7 +24,7 @@ class FilterInVOC : public InputFilter
 
 		int		 ReadData(unsigned char **, int);
 
-		bonkFormatInfo	*GetFileInfo(String);
+		bonkEncTrack	*GetFileInfo(String);
 };
 
 #endif

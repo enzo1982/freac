@@ -10,12 +10,15 @@
 
 #include <output/outputfilter.h>
 
-OutputFilter::OutputFilter(bonkEncConfig *config, bonkFormatInfo *iformat)
+#include <iolib/drivers/driver_posix.h>
+#include <iolib/drivers/driver_unicode.h>
+
+OutputFilter::OutputFilter(bonkEncConfig *config, bonkEncTrack *iformat)
 {
-	error = 0;
-	lastPacket = false;
-	format = iformat;
-	currentConfig = config;
+	error		= 0;
+	lastPacket	= false;
+	format		= iformat;
+	currentConfig	= config;
 }
 
 OutputFilter::~OutputFilter()
@@ -25,4 +28,20 @@ OutputFilter::~OutputFilter()
 void OutputFilter::PrepareLastPacket()
 {
 	lastPacket = true;
+}
+
+OutStream *OutputFilter::CreateFile(String fileName)
+{
+	if (Setup::enableUnicode)	iolibDriver = new IOLibDriverUnicode(fileName, OS_OVERWRITE);
+	else				iolibDriver = new IOLibDriverPOSIX(fileName, OS_OVERWRITE);
+
+	return new OutStream(STREAM_DRIVER, iolibDriver);
+}
+
+S::Int OutputFilter::CloseFile(OutStream *stream)
+{
+	delete stream;
+	delete iolibDriver;
+
+	return Success;
 }

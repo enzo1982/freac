@@ -18,7 +18,7 @@ class FilterOutWAVE : public OutputFilter
 	private:
 		int	 nOfSamples;
 	public:
-			 FilterOutWAVE(bonkEncConfig *, bonkFormatInfo *);
+			 FilterOutWAVE(bonkEncConfig *, bonkEncTrack *);
 			~FilterOutWAVE();
 
 		bool	 Activate();

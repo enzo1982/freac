@@ -108,14 +108,9 @@ void BONKencoder::begin(OutStream *_f_out, uint32 _length, uint32 _rate, int _ch
 	quant_level		= _quant_level;
 	length			= _length;
 
-	if (n_taps > max_tap)
-		throw error("Number of taps is very silly");
-
-	if (mid_side && channels <= 1)
-		mid_side = false;
-
-	if (samples_per_packet <= 0)
-		throw error("Bad packet size specified");
+	if (n_taps > max_tap)		throw error("Number of taps is very silly");
+	if (samples_per_packet <= 0)	throw error("Bad packet size specified");
+	if (mid_side && channels <= 1)	mid_side = false;
 
 	samples_size = channels * samples_per_packet * down_sampling;
 
@@ -134,8 +129,8 @@ void BONKencoder::begin(OutStream *_f_out, uint32 _length, uint32 _rate, int _ch
 	f_out->OutputNumber(length, 4);
 	f_out->OutputNumber(rate, 4);
 	f_out->OutputNumber(channels, 1);
-	f_out->OutputNumber(lossless?1:0, 1);
-	f_out->OutputNumber(mid_side?1:0, 1);
+	f_out->OutputNumber(lossless ? 1 : 0, 1);
+	f_out->OutputNumber(mid_side ? 1 : 0, 1);
 	f_out->OutputNumber(n_taps, 2);
 	f_out->OutputNumber(down_sampling, 1);
 	f_out->OutputNumber(samples_per_packet, 2);
@@ -148,8 +143,7 @@ void BONKencoder::begin(OutStream *_f_out, uint32 _length, uint32 _rate, int _ch
 
 	output_samples.resize(channels);
 
-	for(int j = 0; j < channels; j++)
-		output_samples[j].resize(samples_per_packet);
+	for(int j = 0; j < channels; j++) output_samples[j].resize(samples_per_packet);
 
 	sample_count = 0;
 

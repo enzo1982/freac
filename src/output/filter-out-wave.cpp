@@ -12,7 +12,7 @@
 #include <output/filter-out-wave.h>
 #include <main.h>
 
-FilterOutWAVE::FilterOutWAVE(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
+FilterOutWAVE::FilterOutWAVE(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
 	packageSize	= 0;
 	nOfSamples	= 0;

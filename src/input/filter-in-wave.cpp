@@ -53,10 +53,10 @@ int FilterInWAVE::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo *FilterInWAVE::GetFileInfo(String inFile)
+bonkEncTrack *FilterInWAVE::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	*nFormat = new bonkFormatInfo;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	bonkEncTrack	*nFormat = new bonkEncTrack;
+	InStream	*f_in = OpenFile(inFile);
 
 	// Add more checking to this!
 
@@ -75,7 +75,8 @@ bonkFormatInfo *FilterInWAVE::GetFileInfo(String inFile)
 
 	if (f_in->InputNumber(2) != 1)
 	{
-		delete f_in;
+		CloseFile(f_in);
+
 		delete nFormat;
 
 		return NIL;
@@ -99,7 +100,7 @@ bonkFormatInfo *FilterInWAVE::GetFileInfo(String inFile)
 
 	nFormat->length = uint32(f_in->InputNumber(4)) / (nFormat->bits / 8);
 
-	delete f_in;
+	CloseFile(f_in);
 
 	return nFormat;
 }

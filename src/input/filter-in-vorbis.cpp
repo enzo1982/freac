@@ -178,10 +178,10 @@ int FilterInVORBIS::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
+bonkEncTrack *FilterInVORBIS::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	*nFormat = new bonkFormatInfo;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	bonkEncTrack	*nFormat = new bonkEncTrack;
+	InStream	*f_in = OpenFile(inFile);
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
@@ -249,9 +249,8 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 
 	if (fvc.comments > 0)
 	{
-		nFormat->trackInfo->track = -1;
-		nFormat->trackInfo->outfile = NIL;
-		nFormat->trackInfo->hasText = True;
+		nFormat->track = -1;
+		nFormat->outfile = NIL;
 
 		String	 prevInFormat = String::SetInputFormat("UTF-8");
 
@@ -266,7 +265,7 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 					buffer[p] = fvc.user_comments[j][p + 6];
 				}
 
-				nFormat->trackInfo->title = buffer;
+				nFormat->title = buffer;
 			}
 			else if (String("ARTIST").CompareN(fvc.user_comments[j], 6) == 0)
 			{
@@ -275,7 +274,7 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 					buffer[p] = fvc.user_comments[j][p + 7];
 				}
 
-				nFormat->trackInfo->artist = buffer;
+				nFormat->artist = buffer;
 			}
 			else if (String("ALBUM").CompareN(fvc.user_comments[j], 5) == 0)
 			{
@@ -284,7 +283,7 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 					buffer[p] = fvc.user_comments[j][p + 6];
 				}
 
-				nFormat->trackInfo->album = buffer;
+				nFormat->album = buffer;
 			}
 			else if (String("GENRE").CompareN(fvc.user_comments[j], 5) == 0)
 			{
@@ -293,7 +292,7 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 					buffer[p] = fvc.user_comments[j][p + 6];
 				}
 
-				nFormat->trackInfo->genre = buffer;
+				nFormat->genre = buffer;
 			}
 			else if (String("DATE").CompareN(fvc.user_comments[j], 4) == 0)
 			{
@@ -304,7 +303,7 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 					year[p] = fvc.user_comments[j][p + 5];
 				}
 
-				nFormat->trackInfo->year = year.ToInt();
+				nFormat->year = year.ToInt();
 			}
 			else if (String("TRACKNUMBER").CompareN(fvc.user_comments[j], 11) == 0)
 			{
@@ -315,7 +314,7 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 					track[p] = fvc.user_comments[j][p + 12];
 				}
 
-				nFormat->trackInfo->track = track.ToInt();
+				nFormat->track = track.ToInt();
 			}
 
 			delete [] buffer;
@@ -331,7 +330,7 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 
 	ex_ogg_sync_clear(&foy);
 
-	delete f_in;
+	CloseFile(f_in);
 
 	return nFormat;
 }

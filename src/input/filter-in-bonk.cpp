@@ -11,7 +11,7 @@
 #include <iolib-cxx.h>
 #include <input/filter-in-bonk.h>
 #include <dllinterfaces.h>
-#include <id3/tag.h>
+#include <3rdparty/id3/tag.h>
 
 FilterInBONK::FilterInBONK(bonkEncConfig *config) : InputFilter(config)
 {
@@ -65,10 +65,10 @@ int FilterInBONK::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
+bonkEncTrack *FilterInBONK::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	*nFormat = new bonkFormatInfo;
-	InStream	*in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	bonkEncTrack	*nFormat = new bonkEncTrack;
+	InStream	*in = OpenFile(inFile);
 	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat->length, (uint32 *) &nFormat->rate, (int *) &nFormat->channels);
 
 	nFormat->order = BYTE_INTEL;
@@ -124,7 +124,7 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 	}
 	while (loop);
 
-	delete in;
+	CloseFile(in);
 
 	if (id3tag_size > 0 && currentConfig->enable_id3) 
 	{
@@ -135,9 +135,8 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 		char		*abuffer = new char [tbufsize];
 		wchar_t		*wbuffer = new wchar_t [tbufsize];
 
-		nFormat->trackInfo->track = -1;
-		nFormat->trackInfo->outfile = NIL;
-		nFormat->trackInfo->hasText = True;
+		nFormat->track = -1;
+		nFormat->outfile = NIL;
 
 		ex_ID3Tag_ParseBuffer(tag, id3tag, id3tag_size);
 
@@ -150,13 +149,13 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-					nFormat->trackInfo->artist.ImportFrom("UTF-8", abuffer);
+					nFormat->artist.ImportFrom("UTF-8", abuffer);
 				}
 				else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->trackInfo->artist = wbuffer;
+					nFormat->artist = wbuffer;
 				}
 
 		ZeroMemory(abuffer, tbufsize);
@@ -168,13 +167,13 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-					nFormat->trackInfo->title.ImportFrom("UTF-8", abuffer);
+					nFormat->title.ImportFrom("UTF-8", abuffer);
 				}
 				else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->trackInfo->title = wbuffer;
+					nFormat->title = wbuffer;
 				}
 
 		ZeroMemory(abuffer, tbufsize);
@@ -186,13 +185,13 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-					nFormat->trackInfo->album.ImportFrom("UTF-8", abuffer);
+					nFormat->album.ImportFrom("UTF-8", abuffer);
 				}
 				else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->trackInfo->album = wbuffer;
+					nFormat->album = wbuffer;
 				}
 
 		ZeroMemory(abuffer, tbufsize);
@@ -216,8 +215,8 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 						}
 					}
 
-					if ((abuffer + startByte)[0] != 0)	nFormat->trackInfo->genre.ImportFrom("UTF-8", abuffer + startByte);
-					else if (startByte > 0)			nFormat->trackInfo->genre = GetID3CategoryName(String(abuffer + 1).ToInt());
+					if ((abuffer + startByte)[0] != 0)	nFormat->genre.ImportFrom("UTF-8", abuffer + startByte);
+					else if (startByte > 0)			nFormat->genre = GetID3CategoryName(String(abuffer + 1).ToInt());
 				}
 				else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
 				{
@@ -235,7 +234,7 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 						}
 					}
 
-					nFormat->trackInfo->genre = wbuffer;
+					nFormat->genre = wbuffer;
 				}
 
 		ZeroMemory(abuffer, tbufsize);
@@ -247,13 +246,13 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-					nFormat->trackInfo->year = String(abuffer).ToInt();
+					nFormat->year = String(abuffer).ToInt();
 				}
 				else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->trackInfo->year = String(wbuffer).ToInt();
+					nFormat->year = String(wbuffer).ToInt();
 				}
 
 		ZeroMemory(abuffer, tbufsize);
@@ -265,13 +264,13 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-					nFormat->trackInfo->track = String(abuffer).ToInt();
+					nFormat->track = String(abuffer).ToInt();
 				}
 				else if (ex_ID3Field_GetINT(field) == ID3TE_UNICODE)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->trackInfo->track = String(wbuffer).ToInt();
+					nFormat->track = String(wbuffer).ToInt();
 				}
 
 		delete [] abuffer;

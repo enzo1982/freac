@@ -13,7 +13,7 @@
 #include <dllinterfaces.h>
 #include <memory.h>
 
-FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
+FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
 	packageSize = 0;
 
@@ -50,37 +50,37 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkFormatInfo *format) 
 
 		ex_vorbis_comment_add_tag(&vc, "COMMENT", currentConfig->default_comment);
 
-		if (format->trackInfo->hasText)
+		if (format->artist != NIL || format->title != NIL)
 		{
-			if (format->trackInfo->title != NIL && format->trackInfo->title != "")
+			if (format->title != NIL)
 			{
-				ex_vorbis_comment_add_tag(&vc, "TITLE", format->trackInfo->title);
+				ex_vorbis_comment_add_tag(&vc, "TITLE", format->title);
 			}
 
-			if (format->trackInfo->artist != NIL && format->trackInfo->artist != "")
+			if (format->artist != NIL)
 			{
-				ex_vorbis_comment_add_tag(&vc, "ARTIST", format->trackInfo->artist);
+				ex_vorbis_comment_add_tag(&vc, "ARTIST", format->artist);
 			}
 
-			if (format->trackInfo->album != NIL && format->trackInfo->album != "")
+			if (format->album != NIL)
 			{
-				ex_vorbis_comment_add_tag(&vc, "ALBUM", format->trackInfo->album);
+				ex_vorbis_comment_add_tag(&vc, "ALBUM", format->album);
 			}
 
-			if (format->trackInfo->track > 0)
+			if (format->track > 0)
 			{
-				if (format->trackInfo->track < 10)	ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String("0").Append(String::FromInt(format->trackInfo->track)));
-				else					ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String::FromInt(format->trackInfo->track));
+				if (format->track < 10)	ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String("0").Append(String::FromInt(format->track)));
+				else			ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String::FromInt(format->track));
 			}
 
-			if (format->trackInfo->year > 0)
+			if (format->year > 0)
 			{
-				ex_vorbis_comment_add_tag(&vc, "DATE", String::FromInt(format->trackInfo->year));
+				ex_vorbis_comment_add_tag(&vc, "DATE", String::FromInt(format->year));
 			}
 
-			if (format->trackInfo->genre != NIL && format->trackInfo->genre != "")
+			if (format->genre != NIL)
 			{
-				ex_vorbis_comment_add_tag(&vc, "GENRE", format->trackInfo->genre);
+				ex_vorbis_comment_add_tag(&vc, "GENRE", format->genre);
 			}
 		}
 

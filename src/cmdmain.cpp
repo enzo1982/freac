@@ -14,9 +14,24 @@
 
 Int smooth::Main()
 {
+	debug_out = new bonkEncDebug();
+
+	debug_out->OutputLine("");
+	debug_out->OutputLine("=========================================");
+	debug_out->OutputLine("= Starting BonkEnc command line tool... =");
+	debug_out->OutputLine("=========================================");
+	debug_out->OutputLine("");
+
 	bonkEncCommandline	*app = new bonkEncCommandline();
 
 	delete app;
+
+	debug_out->OutputLine("");
+	debug_out->OutputLine("======================================");
+	debug_out->OutputLine("= Leaving BonkEnc command line tool! =");
+	debug_out->OutputLine("======================================");
+
+	delete debug_out;
 
 	return 0;
 }

@@ -149,7 +149,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 		return;
 	}
 
-	bonkFormatInfo	*format = NIL;
+	bonkEncTrack	*format = NIL;
 
 	if (file.CompareN("/cda", 4) == 0)
 	{
@@ -173,7 +173,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 	if (format != NIL)
 	{
-		if (!format->trackInfo->hasText)
+		if (format->artist == NIL && format->title == NIL)
 		{
 			if (file.CompareN("/cda", 4) != 0)
 			{
@@ -228,11 +228,11 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 							m += 3;
 						}
 
-						if (!artistComplete)	format->trackInfo->artist[m] = fileName[m];
-						else			format->trackInfo->title[m - artistComplete] = fileName[m];
+						if (!artistComplete)	format->artist[m] = fileName[m];
+						else			format->title[m - artistComplete] = fileName[m];
 					}
 
-					format->trackInfo->title[m - artistComplete] = 0;
+					format->title[m - artistComplete] = 0;
 				}
 			}
 		}
@@ -255,26 +255,25 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 			for (Int i = 0; i < fSize.Length(); i++)
 			{
-				if ((fSize.Length() - i) % 3 == 0 && i > 0) format->trackInfo->fileSize.Append(separator);
+				if ((fSize.Length() - i) % 3 == 0 && i > 0) format->fileSizeString.Append(separator);
 
-				format->trackInfo->fileSize[format->trackInfo->fileSize.Length()] = fSize[i];
+				format->fileSizeString[format->fileSizeString.Length()] = fSize[i];
 			}
 		}
 
-		if (format->length > 0)	format->trackInfo->length = String::FromInt(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->length / (format->rate * format->channels) % 60));
-		else			format->trackInfo->length = "?";
+		if (format->length > 0)	format->lengthString = String::FromInt(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->length / (format->rate * format->channels) % 60));
+		else			format->lengthString = "?";
 
-		if (format->trackInfo->origFilename == NIL) format->trackInfo->origFilename = file;
+		if (format->origFilename == NIL) format->origFilename = file;
 
 		String	 jlEntry;
 
-		if (format->trackInfo->artist.Length() == 0 &&
-		    format->trackInfo->title.Length() == 0)	jlEntry = String(format->trackInfo->origFilename).Append("\t");
-		else						jlEntry = String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t");
+		if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
+		else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
 
-		jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
+		jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
 
-		format->trackInfo->outfile = outfile;
+		format->outfile = outfile;
 
 		Int	 id = joblist->AddEntry(jlEntry)->id;
 
@@ -406,7 +405,7 @@ Void bonkEnc::ClearList()
 
 Void bonkEncGUI::SelectJoblistEntry()
 {
-	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
+	bonkEncTrack	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
 
 	dontUpdateInfo = True;
 
@@ -417,20 +416,20 @@ Void bonkEncGUI::SelectJoblistEntry()
 	info_edit_year->Activate();
 	info_edit_genre->Activate();
 
-	info_edit_artist->SetText(format->trackInfo->artist);
-	info_edit_title->SetText(format->trackInfo->title);
-	info_edit_album->SetText(format->trackInfo->album);
+	info_edit_artist->SetText(format->artist);
+	info_edit_title->SetText(format->title);
+	info_edit_album->SetText(format->album);
 
 	info_edit_track->SetText("");
 
-	if (format->trackInfo->track > 0 && format->trackInfo->track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(format->trackInfo->track)));
-	else if (format->trackInfo->track >= 10)				info_edit_track->SetText(String::FromInt(format->trackInfo->track));
+	if (format->track > 0 && format->track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(format->track)));
+	else if (format->track >= 10)			info_edit_track->SetText(String::FromInt(format->track));
 
 	info_edit_year->SetText("");
 
-	if (format->trackInfo->year > 0) info_edit_year->SetText(String::FromInt(format->trackInfo->year));
+	if (format->year > 0) info_edit_year->SetText(String::FromInt(format->year));
 
-	info_edit_genre->SetText(format->trackInfo->genre);
+	info_edit_genre->SetText(format->genre);
 
 	dontUpdateInfo = False;
 }
@@ -441,27 +440,23 @@ Void bonkEncGUI::UpdateTitleInfo()
 
 	if (joblist->GetSelectedEntry() == NIL) return;
 
-	bonkFormatInfo	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
+	bonkEncTrack	*format = sa_formatinfo.GetEntry(joblist->GetSelectedEntry()->id);
 
 	if (format == NIL) return;
 
-	format->trackInfo->artist = info_edit_artist->GetText();
-	format->trackInfo->title = info_edit_title->GetText();
-	format->trackInfo->album = info_edit_album->GetText();
-	format->trackInfo->track = info_edit_track->GetText().ToInt();
-	format->trackInfo->year = info_edit_year->GetText().ToInt();
-	format->trackInfo->genre = info_edit_genre->GetText();
-
-	if (format->trackInfo->artist.Length() == 0 && format->trackInfo->title.Length() == 0)	format->trackInfo->hasText = False;
-	else											format->trackInfo->hasText = True;
+	format->artist	= info_edit_artist->GetText();
+	format->title	= info_edit_title->GetText();
+	format->album	= info_edit_album->GetText();
+	format->track	= info_edit_track->GetText().ToInt();
+	format->year	= info_edit_year->GetText().ToInt();
+	format->genre	= info_edit_genre->GetText();
 
 	String	 jlEntry;
 
-	if (format->trackInfo->artist.Length() == 0 &&
-	    format->trackInfo->title.Length() == 0)	jlEntry = String(format->trackInfo->origFilename).Append("\t");
-	else						jlEntry = String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t");
+	if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
+	else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
 
-	jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
+	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
 
 	if (joblist->GetSelectedEntry()->name != jlEntry) joblist->ModifyEntry(joblist->GetSelectedEntry()->id, jlEntry);
 }

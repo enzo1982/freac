@@ -12,8 +12,8 @@
 #define _H_FILTER_OUT_TVQ_
 
 #include "outputfilter.h"
-#include <twinvq/twinvq.h>
-#include <twinvq/tvqenc.h>
+#include <3rdparty/twinvq/twinvq.h>
+#include <3rdparty/twinvq/tvqenc.h>
 
 class FilterOutTVQ : public OutputFilter
 {
@@ -27,7 +27,7 @@ class FilterOutTVQ : public OutputFilter
 		unsigned long		 samples_size;
 		unsigned long		 buffersize;
 	public:
-					 FilterOutTVQ(bonkEncConfig *, bonkFormatInfo *);
+					 FilterOutTVQ(bonkEncConfig *, bonkEncTrack *);
 					~FilterOutTVQ();
 
 		int			 WriteData(unsigned char *, int);

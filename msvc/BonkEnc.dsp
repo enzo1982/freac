@@ -169,14 +169,86 @@ SOURCE="..\src\output\filter-out-wave.cpp"
 SOURCE=..\src\output\outputfilter.cpp
 # End Source File
 # End Group
+# Begin Group "dialogs"
+
+# PROP Default_Filter ""
+# Begin Group "genconfig"
+
+# PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=..\src\bladeconfig.cpp
+SOURCE=..\src\dialogs\genconfig\genconfig.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\bonkconfig.cpp
+SOURCE=..\src\dialogs\genconfig\genconfig_cddb.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\genconfig\genconfig_cdrip.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\genconfig\genconfig_encoders.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\genconfig\genconfig_language.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\genconfig\genconfig_plugins.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\genconfig\genconfig_tags.cpp
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=..\src\dialogs\bladeconfig.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\bonkconfig.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\cddb_extsettings.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\cddb_multimatch.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\cddb_query.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\cddb_submit.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\faacconfig.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\lameconfig.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\language.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\tvqconfig.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\vorbisconfig.cpp
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\src\bonkenc.cpp
@@ -184,26 +256,6 @@ SOURCE=..\src\bonkenc.cpp
 # Begin Source File
 
 SOURCE=..\src\cddb.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\cddb_extsettings.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\cddb_multimatch.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\cddb_query.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\cddb_submit.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\cdtext.cpp
 # End Source File
 # Begin Source File
 
@@ -237,6 +289,10 @@ SOURCE=..\src\console.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\debug.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\dllinterfaces.cpp
 # End Source File
 # Begin Source File
@@ -245,23 +301,7 @@ SOURCE=..\src\encoder.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\faacconfig.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\genconfig.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\src\joblist.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\lameconfig.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\language.cpp
 # End Source File
 # Begin Source File
 
@@ -273,11 +313,7 @@ SOURCE=..\src\playback.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\tvqconfig.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\vorbisconfig.cpp
+SOURCE=..\src\track.cpp
 # End Source File
 # End Group
 # Begin Group "Header-Dateien"
@@ -363,14 +399,86 @@ SOURCE="..\include\output\filter-out-wave.h"
 SOURCE=..\include\output\outputfilter.h
 # End Source File
 # End Group
+# Begin Group "dialogs-headers"
+
+# PROP Default_Filter ""
+# Begin Group "genconfig-headers"
+
+# PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=..\include\bladeconfig.h
+SOURCE=..\include\dialogs\genconfig\genconfig.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\include\bonkconfig.h
+SOURCE=..\include\dialogs\genconfig\genconfig_cddb.h
 # End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\genconfig\genconfig_cdrip.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\genconfig\genconfig_encoders.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\genconfig\genconfig_language.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\genconfig\genconfig_plugins.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\genconfig\genconfig_tags.h
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=..\include\dialogs\bladeconfig.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\bonkconfig.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb_extsettings.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb_multimatch.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb_query.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb_submit.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\faacconfig.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\lameconfig.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\language.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\tvqconfig.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\vorbisconfig.h
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\include\bonkenc.h
@@ -378,22 +486,6 @@ SOURCE=..\include\bonkenc.h
 # Begin Source File
 
 SOURCE=..\include\cddb.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\cddb_extsettings.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\cddb_multimatch.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\cddb_query.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\cddb_submit.h
 # End Source File
 # Begin Source File
 
@@ -409,23 +501,11 @@ SOURCE=..\include\console.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\include\debug.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\include\dllinterfaces.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\faacconfig.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\genconfig.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\lameconfig.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\language.h
 # End Source File
 # Begin Source File
 
@@ -437,11 +517,7 @@ SOURCE=..\include\resources.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\include\tvqconfig.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\vorbisconfig.h
+SOURCE=..\include\track.h
 # End Source File
 # End Group
 # Begin Group "Ressourcendateien"

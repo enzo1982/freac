@@ -9,6 +9,8 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <main.h>
+#include <iolib/drivers/driver_posix.h>
+#include <iolib/drivers/driver_unicode.h>
 #include <iolib/drivers/driver_zero.h>
 #include <dllinterfaces.h>
 
@@ -69,34 +71,32 @@ Void bonkEnc::PlaySelectedItem()
 Int bonkEnc::PlayThread(Thread *thread)
 {
 	String		 in_filename;
-	bonkFormatInfo	*format;
+	bonkEncTrack	*trackInfo;
 
 	player_activedrive = currentConfig->cdrip_activedrive;
  
-	format = sa_formatinfo.GetNthEntry(player_entry);
+	trackInfo = sa_formatinfo.GetNthEntry(player_entry);
 
-	if (format == NIL)
+	if (trackInfo == NIL)
 	{
 		playing = false;
 
 		return Error;
 	}
 
-	bonkFormatInfo::bonkTrackInfo *trackInfo = format->trackInfo;
-
 	in_filename = trackInfo->origFilename;
 
-	IOLibDriver	*d_zero = NIL;
 	InStream	*f_in;
+	IOLibDriver	*driver_in = NIL;
 	InputFilter	*filter_in = NIL;
 
 	if (trackInfo->isCDTrack)
 	{
 		currentConfig->cdrip_activedrive = trackInfo->drive;
 
-		d_zero = new IOLibDriverZero();
-		f_in = new InStream(STREAM_DRIVER, d_zero);
-		filter_in = new FilterInCDRip(currentConfig);
+		driver_in	= new IOLibDriverZero();
+		f_in		= new InStream(STREAM_DRIVER, driver_in);
+		filter_in	= new FilterInCDRip(currentConfig);
 
 		((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
 
@@ -106,7 +106,10 @@ Int bonkEnc::PlayThread(Thread *thread)
 	{
 		filter_in = CreateInputFilter(in_filename);
 
-		f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
+		if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(in_filename, IS_READONLY);
+		else				driver_in = new IOLibDriverPOSIX(in_filename, IS_READONLY);
+
+		f_in = new InStream(STREAM_DRIVER, driver_in);
 		f_in->SetPackageSize(4096);
 
 		if (filter_in != NIL)
@@ -115,41 +118,41 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 			f_in->SetFilter(filter_in);
 		}
+		else
+		{
+			delete f_in;
+			delete driver_in;
+		}
 	}
 
-	if (filter_in == NIL)
-	{
-		delete f_in;
-	}
-	else
+	if (filter_in != NIL)
 	{
 		int		 position = 0;
 		unsigned long	 samples_size = 1024;
-		int		 n_loops = (format->length + samples_size - 1) / samples_size;
+		int		 n_loops = (trackInfo->length + samples_size - 1) / samples_size;
 
 		player_plugin = currentConfig->output_plugin;
 
 		Out_Module	*out = winamp_out_modules.GetNthEntry(currentConfig->output_plugin);
-		Int		 latency = out->Open(format->rate, format->channels, format->bits, 0, 0);
+		Int		 latency = out->Open(trackInfo->rate, trackInfo->channels, trackInfo->bits, 0, 0);
 
 		if (latency >= 0)
 		{
-			if (format->length >= 0)
+			if (trackInfo->length >= 0)
 			{
 				int	 sample = 0;
 				short	*sample_buffer = new short [samples_size];
 
-				for(int loop = 0; loop < n_loops; loop++)
+				for (Int loop = 0; loop < n_loops; loop++)
 				{
 					int	 step = samples_size;
 
-					if (position + step > format->length)
-						step = format->length - position;
+					if (position + step > trackInfo->length) step = trackInfo->length - position;
 
-					for (int i = 0; i < step; i++)
+					for (Int i = 0; i < step; i++)
 					{
-						if (format->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(format->bits / 8));
-						else if (format->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(format->bits / 8));
+						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
+						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
 						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { step = i; break; }
 
@@ -158,7 +161,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 					position += step;
 
-					while (out->CanWrite() < (int16(format->bits / 8) * step))
+					while (out->CanWrite() < (int16(trackInfo->bits / 8) * step))
 					{
 						if (stop_playback) break;
 
@@ -167,12 +170,12 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 					if (stop_playback) break;
 
-					out->Write((char *) sample_buffer, int16(format->bits / 8) * step);
+					out->Write((char *) sample_buffer, int16(trackInfo->bits / 8) * step);
 				}
 
 				delete [] sample_buffer;
 			}
-			else if (format->length == -1)
+			else if (trackInfo->length == -1)
 			{
 				int	 sample = 0;
 				short	*sample_buffer = new short [samples_size];
@@ -183,8 +186,8 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 					for (int i = 0; i < step; i++)
 					{
-						if (format->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(format->bits / 8));
-						else if (format->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(format->bits / 8));
+						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
+						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
 						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { step = i; break; }
 
@@ -192,7 +195,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 						else			i--;
 					}
 
-					while (out->CanWrite() < (int16(format->bits / 8) * step))
+					while (out->CanWrite() < (int16(trackInfo->bits / 8) * step))
 					{
 						if (stop_playback) break;
 
@@ -201,7 +204,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 					if (stop_playback) break;
 
-					out->Write((char *) sample_buffer, int16(format->bits / 8) * step);
+					out->Write((char *) sample_buffer, int16(trackInfo->bits / 8) * step);
 				}
 
 				delete [] sample_buffer;
@@ -215,10 +218,9 @@ Int bonkEnc::PlayThread(Thread *thread)
 		out->Close();
 
 		delete f_in;
+		delete driver_in;
 		delete filter_in;
 	}
-
-	if (trackInfo->isCDTrack) delete d_zero;
 
 	currentConfig->cdrip_activedrive = player_activedrive;
 

@@ -12,7 +12,7 @@
 #define _H_FILTER_IN_VORBIS_
 
 #include "inputfilter.h"
-#include <vorbis/vorbisenc.h>
+#include <3rdparty/vorbis/vorbisenc.h>
 
 class FilterInVORBIS : public InputFilter
 {
@@ -36,7 +36,7 @@ class FilterInVORBIS : public InputFilter
 
 		int			 ReadData(unsigned char **, int);
 
-		bonkFormatInfo		*GetFileInfo(String);
+		bonkEncTrack		*GetFileInfo(String);
 };
 
 #endif

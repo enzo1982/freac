@@ -60,6 +60,9 @@ class bonkEncConfig
 		Bool		 enable_eUpdate;
 		String		 enc_outdir;
 		String		 enc_filePattern;
+		Bool		 enc_onTheFly;
+		Bool		 enc_keepWaves;
+		Bool		 useUnicodeNames;
 
 		Bool		 enable_tags;
 		String		 default_comment;

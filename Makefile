@@ -9,9 +9,9 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/language.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/config.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/language.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/track.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
-EXEOBJECTS = $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o
+EXEOBJECTS = $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o $(OBJECTDIR)/console.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -58,14 +58,14 @@ $(CMDNAME): $(OBJECTS) $(CMDOBJECTS)
 	$(PACKER) $(PACKER_OPTS) $(CMDNAME)
 	$(ECHO) done.
 
-$(OBJECTDIR)/bladeconfig.o: $(SRCDIR)/bladeconfig.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/bladeconfig.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/bladeconfig.cpp -o $(OBJECTDIR)/bladeconfig.o
+$(OBJECTDIR)/bladeconfig.o: $(SRCDIR)/dialogs/bladeconfig.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/bladeconfig.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/bladeconfig.cpp -o $(OBJECTDIR)/bladeconfig.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/bonkconfig.o: $(SRCDIR)/bonkconfig.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/bonkconfig.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/bonkconfig.cpp -o $(OBJECTDIR)/bonkconfig.o
+$(OBJECTDIR)/bonkconfig.o: $(SRCDIR)/dialogs/bonkconfig.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/bonkconfig.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/bonkconfig.cpp -o $(OBJECTDIR)/bonkconfig.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/bonkenc.o: $(SRCDIR)/bonkenc.cpp
@@ -78,29 +78,24 @@ $(OBJECTDIR)/cddb.o: $(SRCDIR)/cddb.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cddb.cpp -o $(OBJECTDIR)/cddb.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/cddb_extsettings.o: $(SRCDIR)/cddb_extsettings.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cddb_extsettings.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cddb_extsettings.cpp -o $(OBJECTDIR)/cddb_extsettings.o
+$(OBJECTDIR)/cddb_extsettings.o: $(SRCDIR)/dialogs/cddb_extsettings.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/cddb_extsettings.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/cddb_extsettings.cpp -o $(OBJECTDIR)/cddb_extsettings.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/cddb_multimatch.o: $(SRCDIR)/cddb_multimatch.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cddb_multimatch.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cddb_multimatch.cpp -o $(OBJECTDIR)/cddb_multimatch.o
+$(OBJECTDIR)/cddb_multimatch.o: $(SRCDIR)/dialogs/cddb_multimatch.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/cddb_multimatch.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/cddb_multimatch.cpp -o $(OBJECTDIR)/cddb_multimatch.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/cddb_query.o: $(SRCDIR)/cddb_query.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cddb_query.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cddb_query.cpp -o $(OBJECTDIR)/cddb_query.o
+$(OBJECTDIR)/cddb_query.o: $(SRCDIR)/dialogs/cddb_query.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/cddb_query.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/cddb_query.cpp -o $(OBJECTDIR)/cddb_query.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/cddb_submit.o: $(SRCDIR)/cddb_submit.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cddb_submit.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cddb_submit.cpp -o $(OBJECTDIR)/cddb_submit.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/cdtext.o: $(SRCDIR)/cdtext.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cdtext.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cdtext.cpp -o $(OBJECTDIR)/cdtext.o
+$(OBJECTDIR)/cddb_submit.o: $(SRCDIR)/dialogs/cddb_submit.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/cddb_submit.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/cddb_submit.cpp -o $(OBJECTDIR)/cddb_submit.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/cmdmain.o: $(SRCDIR)/cmdmain.cpp
@@ -118,6 +113,11 @@ $(OBJECTDIR)/console.o: $(SRCDIR)/console.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/console.cpp -o $(OBJECTDIR)/console.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/debug.o: $(SRCDIR)/debug.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/debug.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DDEBUG $(SRCDIR)/debug.cpp -o $(OBJECTDIR)/debug.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/dllinterfaces.o: $(SRCDIR)/dllinterfaces.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/dllinterfaces.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dllinterfaces.cpp -o $(OBJECTDIR)/dllinterfaces.o
@@ -128,14 +128,9 @@ $(OBJECTDIR)/encoder.o: $(SRCDIR)/encoder.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/encoder.cpp -o $(OBJECTDIR)/encoder.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/faacconfig.o: $(SRCDIR)/faacconfig.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/faacconfig.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/faacconfig.cpp -o $(OBJECTDIR)/faacconfig.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/genconfig.o: $(SRCDIR)/genconfig.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/genconfig.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/genconfig.cpp -o $(OBJECTDIR)/genconfig.o
+$(OBJECTDIR)/faacconfig.o: $(SRCDIR)/dialogs/faacconfig.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/faacconfig.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/faacconfig.cpp -o $(OBJECTDIR)/faacconfig.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/joblist.o: $(SRCDIR)/joblist.cpp
@@ -143,14 +138,14 @@ $(OBJECTDIR)/joblist.o: $(SRCDIR)/joblist.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/joblist.cpp -o $(OBJECTDIR)/joblist.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/lameconfig.o: $(SRCDIR)/lameconfig.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/lameconfig.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/lameconfig.cpp -o $(OBJECTDIR)/lameconfig.o
+$(OBJECTDIR)/lameconfig.o: $(SRCDIR)/dialogs/lameconfig.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/lameconfig.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/lameconfig.cpp -o $(OBJECTDIR)/lameconfig.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/language.o: $(SRCDIR)/language.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/language.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/language.cpp -o $(OBJECTDIR)/language.o
+$(OBJECTDIR)/language.o: $(SRCDIR)/dialogs/language.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/language.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/language.cpp -o $(OBJECTDIR)/language.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/main.o: $(SRCDIR)/main.cpp
@@ -163,14 +158,54 @@ $(OBJECTDIR)/playback.o: $(SRCDIR)/playback.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/playback.cpp -o $(OBJECTDIR)/playback.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/tvqconfig.o: $(SRCDIR)/tvqconfig.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/tvqconfig.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/tvqconfig.cpp -o $(OBJECTDIR)/tvqconfig.o
+$(OBJECTDIR)/track.o: $(SRCDIR)/track.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/track.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/track.cpp -o $(OBJECTDIR)/track.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/vorbisconfig.o: $(SRCDIR)/vorbisconfig.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/vorbisconfig.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/vorbisconfig.cpp -o $(OBJECTDIR)/vorbisconfig.o
+$(OBJECTDIR)/tvqconfig.o: $(SRCDIR)/dialogs/tvqconfig.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/tvqconfig.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/tvqconfig.cpp -o $(OBJECTDIR)/tvqconfig.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/vorbisconfig.o: $(SRCDIR)/dialogs/vorbisconfig.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/vorbisconfig.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/vorbisconfig.cpp -o $(OBJECTDIR)/vorbisconfig.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/genconfig.o: $(SRCDIR)/dialogs/genconfig/genconfig.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/genconfig/genconfig.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/genconfig/genconfig.cpp -o $(OBJECTDIR)/genconfig.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/genconfig_cddb.o: $(SRCDIR)/dialogs/genconfig/genconfig_cddb.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/genconfig/genconfig_cddb.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/genconfig/genconfig_cddb.cpp -o $(OBJECTDIR)/genconfig_cddb.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/genconfig_cdrip.o: $(SRCDIR)/dialogs/genconfig/genconfig_cdrip.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/genconfig/genconfig_cdrip.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/genconfig/genconfig_cdrip.cpp -o $(OBJECTDIR)/genconfig_cdrip.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/genconfig_encoders.o: $(SRCDIR)/dialogs/genconfig/genconfig_encoders.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/genconfig/genconfig_encoders.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/genconfig/genconfig_encoders.cpp -o $(OBJECTDIR)/genconfig_encoders.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/genconfig_language.o: $(SRCDIR)/dialogs/genconfig/genconfig_language.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/genconfig/genconfig_language.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/genconfig/genconfig_language.cpp -o $(OBJECTDIR)/genconfig_language.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/genconfig_plugins.o: $(SRCDIR)/dialogs/genconfig/genconfig_plugins.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/genconfig/genconfig_plugins.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/genconfig/genconfig_plugins.cpp -o $(OBJECTDIR)/genconfig_plugins.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/genconfig_tags.o: $(SRCDIR)/dialogs/genconfig/genconfig_tags.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/genconfig/genconfig_tags.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/genconfig/genconfig_tags.cpp -o $(OBJECTDIR)/genconfig_tags.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/filter-in-aiff.o: $(SRCDIR)/input/filter-in-aiff.cpp

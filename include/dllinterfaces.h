@@ -19,16 +19,16 @@
 #define int32_t long
 #endif
 
-#include <bonk/bonk.h>
-#include <bladedll/bladedll.h>
-#include <vorbis/vorbisenc.h>
-#include <faac/faac.h>
-#include <cdrip/cdrip.h>
-#include <lame/lame.h>
-#include <twinvq/twinvq.h>
-#include <twinvq/tvqenc.h>
-#include <winamp/in2.h>
-#include <id3.h>
+#include <3rdparty/bonk/bonk.h>
+#include <3rdparty/bladedll/bladedll.h>
+#include <3rdparty/vorbis/vorbisenc.h>
+#include <3rdparty/faac/faac.h>
+#include <3rdparty/cdrip/cdrip.h>
+#include <3rdparty/lame/lame.h>
+#include <3rdparty/twinvq/twinvq.h>
+#include <3rdparty/twinvq/tvqenc.h>
+#include <3rdparty/winamp/in2.h>
+#include <3rdparty/id3.h>
 
 // CDRip DLL API
 

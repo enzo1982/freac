@@ -17,19 +17,22 @@
 
 #include <dllinterfaces.h>
 
-#include <genconfig.h>
-#include <bonkconfig.h>
-#include <bladeconfig.h>
-#include <lameconfig.h>
-#include <vorbisconfig.h>
-#include <faacconfig.h>
-#include <tvqconfig.h>
+#include <iolib/drivers/driver_posix.h>
+#include <iolib/drivers/driver_unicode.h>
+
+#include <dialogs/genconfig/genconfig.h>
+#include <dialogs/bonkconfig.h>
+#include <dialogs/bladeconfig.h>
+#include <dialogs/lameconfig.h>
+#include <dialogs/vorbisconfig.h>
+#include <dialogs/faacconfig.h>
+#include <dialogs/tvqconfig.h>
 
 #include <cddb.h>
-#include <cddb_query.h>
-#include <cddb_submit.h>
+#include <dialogs/cddb_query.h>
+#include <dialogs/cddb_submit.h>
 
-#include <language.h>
+#include <dialogs/language.h>
 
 #include <input/filter-in-cdrip.h>
 #include <input/filter-in-wave.h>
@@ -52,7 +55,9 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig		*bonkEnc::currentConfig	= NIL;
 I18n::Translator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "v1.0 beta 3";
+bonkEncDebug	*debug_out;
+
+String	 bonkEnc::version = "v1.0 beta 2.5";
 String	 bonkEnc::cddbVersion = "v1.0beta3";
 String	 bonkEnc::shortVersion = "v1.0";
 
@@ -184,11 +189,7 @@ bonkEnc::~bonkEnc()
 {
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
-	for (Int i = 0; i < bonkEncCDDB::titleCache.GetNOfEntries(); i++)
-	{
-		delete bonkEncCDDB::titleCache.GetNthEntry(i);
-		delete bonkEncCDDB::infoCache.GetNthEntry(i);
-	}
+	for (Int i = 0; i < bonkEncCDDB::infoCache.GetNOfEntries(); i++) delete bonkEncCDDB::infoCache.GetNthEntry(i);
 
 	if (currentConfig->enable_bonk)		FreeBonkDLL();
 	if (currentConfig->enable_blade)	FreeBladeDLL();
@@ -317,10 +318,16 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 
 		if (found == -1)
 		{
-			InStream	*f_in = new InStream(STREAM_FILE, file);
+			IOLibDriver	*driver_in = NIL;
+
+			if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(file, IS_READONLY);
+			else				driver_in = new IOLibDriverPOSIX(file, IS_READONLY);
+
+			InStream	*f_in = new InStream(STREAM_DRIVER, driver_in);
 			Int		 magic = f_in->InputNumber(4);
 
 			delete f_in;
+			delete driver_in;
 
 			switch (magic)
 			{
@@ -374,11 +381,10 @@ Void bonkEnc::ReadCD()
 	cddbRetry = True;
 }
 
-Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
+Array<bonkEncTrack *> *bonkEnc::GetCDDBData()
 {
-	cddbQueryDlg	*dlg = new cddbQueryDlg();
-
-	Array<bonkFormatInfo::bonkTrackInfo *>	*array = dlg->QueryCDDB();
+	cddbQueryDlg		*dlg	= new cddbQueryDlg();
+	Array<bonkEncTrack *>	*array	= dlg->QueryCDDB();
 
 	DeleteObject(dlg);
 

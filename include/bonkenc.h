@@ -13,7 +13,9 @@
 
 #include <smooth.h>
 #include "config.h"
-#include "winamp/in2.h"
+#include "track.h"
+#include "debug.h"
+#include "3rdparty/winamp/in2.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -30,82 +32,11 @@ extern Int	 ENCODER_FAAC;
 extern Int	 ENCODER_TVQ;
 extern Int	 ENCODER_WAVE;
 
-const int	 BYTE_INTEL	= 0;
-const int	 BYTE_RAW	= 1;
-
 typedef unsigned long  uint32;
 typedef unsigned short uint16;
 typedef unsigned char  uint8;
 
-class bonkFormatInfo
-{
-	public:
-		class bonkTrackInfo
-		{
-			public:
-					 bonkTrackInfo()
-					{
-						isCDTrack = False;
-
-						drive	= -1;
-						discid	= 0;
-						cdTrack	= -1;
-
-						hasText	= False;
-						track	= -1;
-						year	= -1;
-					}
-
-				Bool	 isCDTrack;
-				Int	 drive;
-				Int	 discid;
-				Int	 cdTrack;
-
-				Bool	 hasText;
-				String	 artist;
-				String	 title;
-				String	 album;
-				Int	 track;
-				String	 genre;
-				Int	 year;
-				String	 comment;
-				String	 playorder;
-
-				String	 length;
-				String	 fileSize;
-
-				String	 outfile;
-				String	 origFilename;
-		};
-
-				 bonkFormatInfo()
-				{
-					trackInfo = new bonkTrackInfo;
-
-					channels = 0;
-					rate = 0;
-					bits = 0;
-					length = 0;
-					fileSize = -1;
-					order = BYTE_INTEL;
-				}
-
-				~bonkFormatInfo()
-				{
-					delete trackInfo;
-				}
-
-		bonkTrackInfo	*trackInfo;
-
-		Int		 channels;
-		Int		 rate;
-		Int		 bits;
-		Int		 length;
-		Int		 fileSize;
-		Int		 order;
-};
-
-class CDDBInfo;
+extern bonkEncDebug	*debug_out;
 
 class bonkEnc : public Application
 {
@@ -231,17 +162,12 @@ class bonkEnc : public Application
 
 		Bool			 cddbRetry;
 
-		Array<String>		 cdText;
-		CDDBInfo		*cddbInfo;
-		Array<bonkFormatInfo *>	 sa_formatinfo;
+		Array<bonkEncTrack *>	 sa_formatinfo;
 
 					 bonkEnc();
 					~bonkEnc();
 
-		Int			 ReadCDText();
-		Int			 FreeCDText();
-
-		Array<bonkFormatInfo::bonkTrackInfo *>	*GetCDDBData();
+		Array<bonkEncTrack *>	*GetCDDBData();
 };
 
 #endif

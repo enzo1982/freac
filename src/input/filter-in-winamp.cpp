@@ -136,15 +136,15 @@ int FilterInWinamp::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo *FilterInWinamp::GetFileInfo(String inFile)
+bonkEncTrack *FilterInWinamp::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	*nFormat = new bonkFormatInfo;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	bonkEncTrack	*nFormat = new bonkEncTrack;
+	InStream	*f_in = OpenFile(inFile);
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->fileSize = f_in->Size();
 
-	delete f_in;
+	CloseFile(f_in);
 
 	plugin->Play(inFile);
 	plugin->Stop();

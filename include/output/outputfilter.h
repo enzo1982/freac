@@ -19,12 +19,17 @@ class OutputFilter : public IOLibFilter
 	protected:
 		bool		 lastPacket;
 
-		bonkFormatInfo	*format;
+		bonkEncTrack	*format;
 		bonkEncConfig	*currentConfig;
+
+		IOLibDriver	*iolibDriver;
+
+		OutStream	*CreateFile(String);
+		Int		 CloseFile(OutStream *);
 	public:
 		int		 error;
 
-				 OutputFilter(bonkEncConfig *, bonkFormatInfo *);
+				 OutputFilter(bonkEncConfig *, bonkEncTrack *);
 				~OutputFilter();
 
 		virtual int	 WriteData(unsigned char *, int) = 0;

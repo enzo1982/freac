@@ -19,7 +19,7 @@ class FilterOutBONK : public OutputFilter
 		void		*encoder;
 		OutStream	*d_out;
 	public:
-				 FilterOutBONK(bonkEncConfig *, bonkFormatInfo *);
+				 FilterOutBONK(bonkEncConfig *, bonkEncTrack *);
 				~FilterOutBONK();
 
 		bool		 Activate();

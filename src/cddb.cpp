@@ -14,11 +14,8 @@
 #include <cddb.h>
 #include <dllinterfaces.h>
 
-//#define LOG_CDDB
-
-Array<Array<bonkFormatInfo::bonkTrackInfo *> *>	 bonkEncCDDB::titleCache;
-Array<CDDBInfo *>				 bonkEncCDDB::infoCache;
-Array<Bool>					 bonkEncCDDB::requestedDiscs;
+Array<Array<bonkEncTrack *> *>	 bonkEncCDDB::infoCache;
+Array<Bool>			 bonkEncCDDB::requestedDiscs;
 
 int cddb_sum(int n)
 {
@@ -45,6 +42,9 @@ bonkEncCDDB::bonkEncCDDB(bonkEncConfig *iConfig)
 
 bonkEncCDDB::~bonkEncCDDB()
 {
+	ids.RemoveAll();
+	titles.RemoveAll();
+	categories.RemoveAll();
 }
 
 Int bonkEncCDDB::SetActiveDrive(Int driveID)
@@ -129,19 +129,13 @@ String bonkEncCDDB::SendCommand(String command)
 
 	String	 str;
 
-#ifdef LOG_CDDB
-	OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
-#endif
-
 	switch (config->freedb_mode)
 	{
 		case FREEDB_MODE_CDDBP:
 			if (command != "")
 			{
-#ifdef LOG_CDDB
-				log->OutputString("> ");
-				log->OutputLine(command);
-#endif
+				debug_out->OutputString("CDDB: > ");
+				debug_out->OutputLine(command);
 
 				out->OutputLine(command);
 			}
@@ -150,10 +144,8 @@ String bonkEncCDDB::SendCommand(String command)
 			{
 				str = in->InputLine();
 
-#ifdef LOG_CDDB
-				log->OutputString("< ");
-				log->OutputLine(str);
-#endif
+				debug_out->OutputString("CDDB: < ");
+				debug_out->OutputLine(str);
 			}
 			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
 
@@ -177,7 +169,11 @@ String bonkEncCDDB::SendCommand(String command)
 
 			gethostname(buffer, 256);
 
-			str.Append("POST ").Append(config->freedb_query_path).Append(" HTTP/1.0\n");
+			str.Append("POST ");
+
+			if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
+
+			str.Append(config->freedb_query_path).Append(" HTTP/1.0\n");
 			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
 			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
 			str.Append("Charset: UTF-8\n");
@@ -190,14 +186,13 @@ String bonkEncCDDB::SendCommand(String command)
 			delete [] buffer;
 
 			if (config->freedb_proxy_mode == 0)		socket = new IOLibDriverSocket(config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 1)	socket = new IOLibDriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 2)	socket = new IOLibDriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+			else if (config->freedb_proxy_mode == 1)	socket = new IOLibDriverSocket(config->freedb_proxy, config->freedb_proxy_port);
+			else if (config->freedb_proxy_mode == 2)	socket = new IOLibDriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+			else if (config->freedb_proxy_mode == 3)	socket = new IOLibDriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
 
 			if (socket->GetLastError() != IOLIB_ERROR_OK)
 			{
-#ifdef LOG_CDDB
-				log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
-#endif
+				debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 
 				str = "error";
 
@@ -209,11 +204,8 @@ String bonkEncCDDB::SendCommand(String command)
 			in = new InStream(STREAM_DRIVER, socket);
 			out = new OutStream(STREAM_STREAM, in);
 
-#ifdef LOG_CDDB
-			log->OutputString("\n");
-			log->OutputString(str);
-			log->OutputString("\n");
-#endif
+			debug_out->OutputString("CDDB: ");
+			debug_out->OutputLine(str);
 
 			out->OutputString(str);
 
@@ -221,10 +213,8 @@ String bonkEncCDDB::SendCommand(String command)
 			{
 				str = in->InputLine();
 
-#ifdef LOG_CDDB
-				log->OutputString("< ");
-				log->OutputLine(str);
-#endif
+				debug_out->OutputString("CDDB: < ");
+				debug_out->OutputLine(str);
 			}
 			while (str != "");
 
@@ -232,10 +222,8 @@ String bonkEncCDDB::SendCommand(String command)
 			{
 				str = in->InputLine();
 
-#ifdef LOG_CDDB
-				log->OutputString("< ");
-				log->OutputLine(str);
-#endif
+				debug_out->OutputString("CDDB: < ");
+				debug_out->OutputLine(str);
 			}
 			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5' && str != "");
 
@@ -253,10 +241,6 @@ String bonkEncCDDB::SendCommand(String command)
 			break;
 	}
 
-#ifdef LOG_CDDB
-	delete log;
-#endif
-
 	return str;
 }
 
@@ -270,13 +254,7 @@ Bool bonkEncCDDB::ConnectToServer()
 
 		if (socket->GetLastError() != IOLIB_ERROR_OK)
 		{
-#ifdef LOG_CDDB
-			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
-
-			log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_cddbp_port)));
-
-			delete log;
-#endif
+			debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_cddbp_port)));
 
 			connected = false;
 
@@ -285,13 +263,7 @@ Bool bonkEncCDDB::ConnectToServer()
 			return false;
 		}
 
-#ifdef LOG_CDDB
-		OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
-
-		log->OutputLine(String("Connected to CDDB server at ").Append(config->freedb_server).Append(":").Append(config->freedb_cddbp_port));
-
-		delete log;
-#endif
+		debug_out->OutputLine(String("CDDB: Connected to CDDB server at ").Append(config->freedb_server).Append(":").Append(config->freedb_cddbp_port));
 
 		connected = true;
 
@@ -359,14 +331,8 @@ String bonkEncCDDB::Query(String discid)
 			String	 title;
 			String	 category;
 
-#ifdef LOG_CDDB
-			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
-
-			log->OutputString("< ");
-			log->OutputLine(val.ConvertTo("UTF-8"));
-
-			delete log;
-#endif
+			debug_out->OutputString("CDDB: < ");
+			debug_out->OutputLine(val.ConvertTo("UTF-8"));
 
 			if (val == ".") break;
 
@@ -421,14 +387,8 @@ String bonkEncCDDB::Read(String query)
 
 			val.ImportFrom("UTF-8", in->InputLine());
 
-#ifdef LOG_CDDB
-			OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
-
-			log->OutputString("< ");
-			log->OutputLine(val.ConvertTo("UTF-8"));
-
-			delete log;
-#endif
+			debug_out->OutputString("CDDB: < ");
+			debug_out->OutputLine(val.ConvertTo("UTF-8"));
 
 			if (val == ".") break;
 
@@ -444,7 +404,7 @@ String bonkEncCDDB::Read(String query)
 	}
 }
 
-String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
+String bonkEncCDDB::Submit(Array<bonkEncTrack *> *cddbInfo)
 {
 	String	 str;
 	String	 content;
@@ -453,44 +413,40 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	content.Append("# ").Append("\n");
 	content.Append("# Track frame offsets:").Append("\n");
 
-	for (int i = 0; i < cddbInfo->titles.GetNOfEntries(); i++)
+	for (int i = 1; i < cddbInfo->GetNOfEntries(); i++)
 	{
-		content.Append("#     ").Append(String::FromInt(cddbInfo->offsets.GetNthEntry(i))).Append("\n");
+		content.Append("#     ").Append(String::FromInt(cddbInfo->GetNthEntry(i)->offset)).Append("\n");
 	}
 
 	content.Append("# ").Append("\n");
-	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->disclength)).Append("\n");
+	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->GetNthEntry(0)->disclength)).Append("\n");
 	content.Append("# ").Append("\n");
-	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->revision)).Append("\n");
+	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->GetNthEntry(0)->revision)).Append("\n");
 	content.Append("# Submitted via: ").Append("BonkEnc ").Append(bonkEnc::cddbVersion).Append("\n");
 	content.Append("# ").Append("\n");
 
-	content.Append("DISCID=").Append(cddbInfo->discid).Append("\n");
-	content.Append("DTITLE=").Append(cddbInfo->artist).Append(" / ").Append(cddbInfo->album).Append("\n");
-	content.Append("DYEAR=").Append(cddbInfo->year).Append("\n");
-	content.Append("DGENRE=").Append(cddbInfo->genre).Append("\n");
+	content.Append("DISCID=").Append(cddbInfo->GetNthEntry(0)->discid).Append("\n");
+	content.Append("DTITLE=").Append(cddbInfo->GetNthEntry(0)->artist).Append(" / ").Append(cddbInfo->GetNthEntry(0)->album).Append("\n");
+	content.Append("DYEAR=").Append(cddbInfo->GetNthEntry(0)->year).Append("\n");
+	content.Append("DGENRE=").Append(cddbInfo->GetNthEntry(0)->genre).Append("\n");
 
-	for (int j = 0; j < cddbInfo->titles.GetNOfEntries(); j++)
+	for (int j = 1; j < cddbInfo->GetNOfEntries(); j++)
 	{
-		content.Append("TTITLE").Append(String::FromInt(j)).Append("=").Append(cddbInfo->titles.GetNthEntry(j)).Append("\n");
+		content.Append("TTITLE").Append(String::FromInt(j - 1)).Append("=").Append(cddbInfo->GetNthEntry(j)->title).Append("\n");
 	}
 
-	content.Append("EXTD=").Append(cddbInfo->comment).Append("\n");
+	content.Append("EXTD=").Append(cddbInfo->GetNthEntry(0)->comment).Append("\n");
 
-	for (int k = 0; k < cddbInfo->titles.GetNOfEntries(); k++)
+	for (int k = 1; k < cddbInfo->GetNOfEntries(); k++)
 	{
-		content.Append("EXTT").Append(String::FromInt(k)).Append("=").Append(cddbInfo->comments.GetNthEntry(k)).Append("\n");
+		content.Append("EXTT").Append(String::FromInt(k - 1)).Append("=").Append(cddbInfo->GetNthEntry(k)->comment).Append("\n");
 	}
 
-	content.Append("PLAYORDER=").Append(cddbInfo->playorder).Append("\n");
-
-#ifdef LOG_CDDB
-	OutStream	*log = new OutStream(STREAM_FILE, "cddb.log");
-#endif
+	content.Append("PLAYORDER=").Append(cddbInfo->GetNthEntry(0)->playorder).Append("\n");
 
 	str.Append("POST ").Append(config->freedb_submit_path).Append(" HTTP/1.0\n");
-	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
-	str.Append("Discid: ").Append(cddbInfo->discid).Append("\n");
+	str.Append("Category: ").Append(cddbInfo->GetNthEntry(0)->category).Append("\n");
+	str.Append("Discid: ").Append(cddbInfo->GetNthEntry(0)->discid).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
 	str.Append("Submit-Mode: ").Append("submit").Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
@@ -499,11 +455,8 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 	str.Append(content);
 
-#ifdef LOG_CDDB
-	log->OutputString("\n");
-	log->OutputString(str.ConvertTo("UTF-8"));
-	log->OutputString("\n");
-#endif
+	debug_out->OutputString("CDDB: ");
+	debug_out->OutputLine(str.ConvertTo("UTF-8"));
 
 	if (config->freedb_proxy_mode == 0)		socket = new IOLibDriverSocket(config->freedb_server, config->freedb_http_port);
 	else if (config->freedb_proxy_mode == 1)	socket = new IOLibDriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
@@ -511,11 +464,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 
 	if (socket->GetLastError() != IOLIB_ERROR_OK)
 	{
-#ifdef LOG_CDDB
-		log->OutputLine(String("Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
-
-		delete log;
-#endif
+		debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 
 		str = "error";
 
@@ -533,10 +482,8 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	{
 		str = in->InputLine();
 
-#ifdef LOG_CDDB
-		log->OutputString("< ");
-		log->OutputLine(str);
-#endif
+		debug_out->OutputString("CDDB: < ");
+		debug_out->OutputLine(str);
 	}
 	while (str != "");
 
@@ -544,20 +491,14 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	{
 		str = in->InputLine();
 
-#ifdef LOG_CDDB
-		log->OutputString("< ");
-		log->OutputLine(str);
-#endif
+		debug_out->OutputString("CDDB: < ");
+		debug_out->OutputLine(str);
 	}
 	while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
 
 	delete out;
 	delete in;
 	delete socket;
-
-#ifdef LOG_CDDB
-	delete log;
-#endif
 
 	return str;
 }

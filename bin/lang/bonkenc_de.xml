@@ -50,7 +50,7 @@
     <entry id="38" string="All Files">Alle Dateien</entry>
     <entry id="39" string="You have not selected a file!">Es ist kein Eintrag ausgewählt!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Der Codierungsprozess läuft noch! Möchten sie das Programm trotzdem beenden?</entry>
-    <entry id="41" string="Currently encoding">Codierungsprozess aktiv</entry>
+    <entry id="41" string="Currently encoding">Codierungsprozess noch aktiv</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Dieses Programm wird unter den Bedingungen der&#10;GNU General Public License (GPL) vertrieben.</entry>
     <entry id="43" string="CDDB query">CDDB Abfrage</entry>
     <entry id="44" string="About BonkEnc">Über BonkEnc</entry>
@@ -262,5 +262,7 @@
     <entry id="250" string="Keep ripped wave files">Wave Dateien behalten</entry>
     <entry id="251" string="ripping/decoding">Rippen/Decodieren</entry>
     <entry id="252" string="encoding">Codieren</entry>
+    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="254" string="Use Unicode filenames">Dateinamen mit Unicode</entry>
   </data>
 </LangFile>

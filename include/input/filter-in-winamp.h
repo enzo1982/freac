@@ -12,7 +12,7 @@
 #define _H_FILTER_IN_WINAMP_
 
 #include "inputfilter.h"
-#include "../winamp/in2.h"
+#include <3rdparty/winamp/in2.h>
 
 class FilterInWinamp : public InputFilter
 {
@@ -28,7 +28,7 @@ class FilterInWinamp : public InputFilter
 
 		int		 ReadData(unsigned char **, int);
 
-		bonkFormatInfo	*GetFileInfo(String);
+		bonkEncTrack	*GetFileInfo(String);
 };
 
 #endif

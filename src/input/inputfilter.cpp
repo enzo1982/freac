@@ -10,6 +10,9 @@
 
 #include <input/inputfilter.h>
 
+#include <iolib/drivers/driver_posix.h>
+#include <iolib/drivers/driver_unicode.h>
+
 InputFilter::InputFilter(bonkEncConfig *config)
 {
 	error = 0;
@@ -32,6 +35,22 @@ S::Bool InputFilter::SetFileSize(UnsignedInt newFileSize)
 S::Int InputFilter::GetInBytes()
 {
 	return inBytes;
+}
+
+InStream *InputFilter::OpenFile(String fileName)
+{
+	if (Setup::enableUnicode)	iolibDriver = new IOLibDriverUnicode(fileName, IS_READONLY);
+	else				iolibDriver = new IOLibDriverPOSIX(fileName, IS_READONLY);
+
+	return new InStream(STREAM_DRIVER, iolibDriver);
+}
+
+S::Int InputFilter::CloseFile(InStream *stream)
+{
+	delete stream;
+	delete iolibDriver;
+
+	return Success;
 }
 
 S::String InputFilter::GetID3CategoryName(Int id)

@@ -23,6 +23,11 @@ class InputFilter : public IOLibFilter
 		bonkEncConfig		*currentConfig;
 
 		String			 GetID3CategoryName(Int);
+
+		IOLibDriver		*iolibDriver;
+
+		InStream		*OpenFile(String);
+		Int			 CloseFile(InStream *);
 	public:
 		Int			 error;
 
@@ -31,7 +36,7 @@ class InputFilter : public IOLibFilter
 
 		virtual int		 ReadData(unsigned char **, int) = 0;
 
-		virtual bonkFormatInfo	*GetFileInfo(String) = 0;
+		virtual bonkEncTrack	*GetFileInfo(String) = 0;
 		virtual Bool		 SetFileSize(UnsignedInt);
 
 		Int			 GetInBytes();

@@ -13,14 +13,18 @@
 #include <dllinterfaces.h>
 #include <memory.h>
 
-FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
+FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
+	debug_out->EnterMethod("FilterOutLAME::FilterOutLame(bonkEncConfig *, bonkEncTrack *)");
+
 	packageSize = 0;
 
 	int	 effrate;
 
 	if (currentConfig->lame_resample)	effrate = currentConfig->lame_resample;
 	else					effrate = format->rate;
+
+	debug_out->OutputLine("Creating LAME output filter...");
 
 	switch (effrate)
 	{
@@ -235,6 +239,8 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkFormatInfo *format) : Ou
 	}
 
 	ex_lame_init_params(lameFlags);
+
+	debug_out->LeaveMethod();
 }
 
 FilterOutLAME::~FilterOutLAME()
@@ -243,7 +249,9 @@ FilterOutLAME::~FilterOutLAME()
 
 bool FilterOutLAME::Activate()
 {
-	if (format->trackInfo->hasText && currentConfig->enable_tags && currentConfig->enable_id3)
+	debug_out->EnterMethod("FilterOutLAME::Activate()");
+
+	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_tags && currentConfig->enable_id3)
 	{
 		ID3Tag		*tag = ex_ID3Tag_New();
 
@@ -251,16 +259,16 @@ bool FilterOutLAME::Activate()
 
 		ID3Frame	*artist = ex_ID3Frame_NewID(ID3FID_LEADARTIST);
 
-		if (format->trackInfo->artist != NIL)
+		if (format->artist != NIL)
 		{
-			if (String::IsUnicode(format->trackInfo->artist))
+			if (String::IsUnicode(format->artist))
 			{
 				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(artist, ID3FN_TEXT), ID3TE_UTF8);
-				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (char *) format->trackInfo->artist.ConvertTo("UTF-8"));
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (char *) format->artist.ConvertTo("UTF-8"));
 			}
 			else
 			{
-				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (char *) format->trackInfo->artist);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (char *) format->artist);
 			}
 
 			ex_ID3Tag_AddFrame(tag, artist);
@@ -268,16 +276,16 @@ bool FilterOutLAME::Activate()
 
 		ID3Frame	*title = ex_ID3Frame_NewID(ID3FID_TITLE);
 
-		if (format->trackInfo->title != NIL)
+		if (format->title != NIL)
 		{
-			if (String::IsUnicode(format->trackInfo->title))
+			if (String::IsUnicode(format->title))
 			{
 				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(title, ID3FN_TEXT), ID3TE_UTF8);
-				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), (char *) format->trackInfo->title.ConvertTo("UTF-8"));
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), (char *) format->title.ConvertTo("UTF-8"));
 			}
 			else
 			{
-				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), (char *) format->trackInfo->title);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), (char *) format->title);
 			}
 
 			ex_ID3Tag_AddFrame(tag, title);
@@ -285,16 +293,16 @@ bool FilterOutLAME::Activate()
 
 		ID3Frame	*album = ex_ID3Frame_NewID(ID3FID_ALBUM);
 
-		if (format->trackInfo->album != NIL)
+		if (format->album != NIL)
 		{
-			if (String::IsUnicode(format->trackInfo->album))
+			if (String::IsUnicode(format->album))
 			{
 				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(album, ID3FN_TEXT), ID3TE_UTF8);
-				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), (char *) format->trackInfo->album.ConvertTo("UTF-8"));
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), (char *) format->album.ConvertTo("UTF-8"));
 			}
 			else
 			{
-				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), (char *) format->trackInfo->album);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), (char *) format->album);
 			}
 
 			ex_ID3Tag_AddFrame(tag, album);
@@ -302,35 +310,35 @@ bool FilterOutLAME::Activate()
 
 		ID3Frame	*track = ex_ID3Frame_NewID(ID3FID_TRACKNUM);
 
-		if (format->trackInfo->track > 0)
+		if (format->track > 0)
 		{
-			if (format->trackInfo->track < 10)	ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), (char *) String("0").Append(String::FromInt(format->trackInfo->track)));
-			else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), (char *) String::FromInt(format->trackInfo->track));
+			if (format->track < 10)	ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), (char *) String("0").Append(String::FromInt(format->track)));
+			else			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), (char *) String::FromInt(format->track));
 
 			ex_ID3Tag_AddFrame(tag, track);
 		}
 
 		ID3Frame	*year = ex_ID3Frame_NewID(ID3FID_YEAR);
 
-		if (format->trackInfo->year > 0)
+		if (format->year > 0)
 		{
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(year, ID3FN_TEXT), (char *) String::FromInt(format->trackInfo->year));
+			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(year, ID3FN_TEXT), (char *) String::FromInt(format->year));
 
 			ex_ID3Tag_AddFrame(tag, year);
 		}
 
 		ID3Frame	*genre = ex_ID3Frame_NewID(ID3FID_CONTENTTYPE);
 
-		if (format->trackInfo->genre != NIL)
+		if (format->genre != NIL)
 		{
-			if (String::IsUnicode(format->trackInfo->genre))
+			if (String::IsUnicode(format->genre))
 			{
 				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(genre, ID3FN_TEXT), ID3TE_UTF8);
-				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (char *) format->trackInfo->genre.ConvertTo("UTF-8"));
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (char *) format->genre.ConvertTo("UTF-8"));
 			}
 			else
 			{
-				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (char *) format->trackInfo->genre);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (char *) format->genre);
 			}
 
 			ex_ID3Tag_AddFrame(tag, genre);
@@ -369,11 +377,15 @@ bool FilterOutLAME::Activate()
 
 	ex_lame_set_bWriteVbrTag(lameFlags, 1);
 
+	debug_out->LeaveMethod();
+
 	return true;
 }
 
 bool FilterOutLAME::Deactivate()
 {
+	debug_out->EnterMethod("FilterOutLAME::Deactivate()");
+
 	long		 buffersize = 131072;
 	unsigned char	*outbuffer = new unsigned char [buffersize];
 	unsigned long	 bytes = ex_lame_encode_flush(lameFlags, outbuffer, buffersize);
@@ -418,11 +430,15 @@ bool FilterOutLAME::Deactivate()
 
 	ex_lame_close(lameFlags);
 
+	debug_out->LeaveMethod();
+
 	return true;
 }
 
 int FilterOutLAME::WriteData(unsigned char *data, int size)
 {
+	debug_out->EnterMethod("FilterOutLAME::WriteData(unsigned char *, int)");
+
 	signed short	*samples = new signed short [size / (format->bits / 8)];
 	long		 buffersize = size + 7200;
 	unsigned char	*outbuffer = new unsigned char [buffersize];
@@ -443,6 +459,8 @@ int FilterOutLAME::WriteData(unsigned char *data, int size)
 
 	delete [] samples;
 	delete [] outbuffer;
+
+	debug_out->LeaveMethod();
 
 	return bytes;
 }

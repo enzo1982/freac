@@ -13,7 +13,7 @@
 #include <dllinterfaces.h>
 #include <memory.h>
 
-FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkFormatInfo *format) : OutputFilter(config, format)
+FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{

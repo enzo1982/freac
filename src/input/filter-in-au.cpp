@@ -62,10 +62,10 @@ int FilterInAU::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo *FilterInAU::GetFileInfo(String inFile)
+bonkEncTrack *FilterInAU::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	*nFormat = new bonkFormatInfo;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	bonkEncTrack	*nFormat = new bonkEncTrack;
+	InStream	*f_in = OpenFile(inFile);
 
 	// Add more checking to this!
 
@@ -87,7 +87,7 @@ bonkFormatInfo *FilterInAU::GetFileInfo(String inFile)
 	nFormat->rate = uint32(f_in->InputNumberRaw(4));
 	nFormat->channels = uint32(f_in->InputNumberRaw(4));
 
-	delete f_in;
+	CloseFile(f_in);
 
 	return nFormat;
 }

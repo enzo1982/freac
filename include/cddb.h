@@ -17,32 +17,6 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class CDDBInfo
-{
-	public:
-				 CDDBInfo()
-				{
-					revision = 0;
-					disclength = 0;
-				}
-
-		Array<Int>	 offsets;
-		Array<String>	 titles;
-		Array<String>	 comments;
-		String		 artist;
-		String		 album;
-		String		 year;
-		String		 genre;
-
-		String		 discid;
-		String		 category;
-		Int		 revision;
-		Int		 disclength;
-		String		 comment;
-		String		 playorder;
-};
-
-
 const Int	 FREEDB_MODE_HTTP	= 0;
 const Int	 FREEDB_MODE_CDDBP	= 1;
 
@@ -77,7 +51,7 @@ class bonkEncCDDB
 		Bool		 ConnectToServer();
 		String		 Query(String);
 		String		 Read(String);
-		String		 Submit(CDDBInfo *);
+		String		 Submit(Array<bonkEncTrack *> *);
 		Bool		 CloseConnection();
 
 		Int		 GetNOfMatches();
@@ -85,9 +59,8 @@ class bonkEncCDDB
 		String		 GetNthTitle(Int);
 		String		 GetNthCategory(Int);
 
-		static Array<Array<bonkFormatInfo::bonkTrackInfo *> *>	 titleCache;
-		static Array<CDDBInfo *>				 infoCache;
-		static Array<Bool>					 requestedDiscs;
+		static Array<Array<bonkEncTrack *> *>	 infoCache;
+		static Array<Bool>			 requestedDiscs;
 };
 
 #endif

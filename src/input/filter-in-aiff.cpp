@@ -52,10 +52,10 @@ int FilterInAIFF::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkFormatInfo *FilterInAIFF::GetFileInfo(String inFile)
+bonkEncTrack *FilterInAIFF::GetFileInfo(String inFile)
 {
-	bonkFormatInfo	*nFormat = new bonkFormatInfo;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	bonkEncTrack	*nFormat = new bonkEncTrack;
+	InStream	*f_in = OpenFile(inFile);
 
 	// Add more checking to this!
 
@@ -83,7 +83,7 @@ bonkFormatInfo *FilterInAIFF::GetFileInfo(String inFile)
 
 	nFormat->length = uint32(f_in->InputNumberRaw(4) - 8) / (nFormat->bits / 8);
 
-	delete f_in;
+	CloseFile(f_in);
 
 	return nFormat;
 }
