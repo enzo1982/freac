@@ -132,7 +132,7 @@ class bonkEnc : public Application
 		Void			 Encode();
 		Int			 Encoder(Thread *);
 		Void			 StopEncoding();
-		InputFilter		*CreateInputFilter(String);
+		InputFilter		*CreateInputFilter(String, bonkEncTrack *);
 		Void			 PlayItem(Int);
 		Void			 PlaySelectedItem();
 		Int			 PlayThread(Thread *);

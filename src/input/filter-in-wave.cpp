@@ -12,7 +12,7 @@
 #include <input/filter-in-wave.h>
 #include <memory.h>
 
-FilterInWAVE::FilterInWAVE(bonkEncConfig *config) : InputFilter(config)
+FilterInWAVE::FilterInWAVE(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	setup = false;
 

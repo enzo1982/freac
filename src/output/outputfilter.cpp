@@ -15,11 +15,11 @@
 
 #include <dllinterfaces.h>
 
-OutputFilter::OutputFilter(bonkEncConfig *config, bonkEncTrack *iformat)
+OutputFilter::OutputFilter(bonkEncConfig *config, bonkEncTrack *iFormat)
 {
 	error		= 0;
 	lastPacket	= false;
-	format		= iformat;
+	format		= iFormat;
 	currentConfig	= config;
 }
 

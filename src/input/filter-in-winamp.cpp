@@ -43,7 +43,7 @@ int	 Out_IsPlaying();
 void	 Out_SetVolume(int);
 void	 Out_SetPan(int);
 
-FilterInWinamp::FilterInWinamp(bonkEncConfig *config, In_Module *iPlugin) : InputFilter(config)
+FilterInWinamp::FilterInWinamp(bonkEncConfig *config, bonkEncTrack *format, In_Module *iPlugin) : InputFilter(config, format)
 {
 	plugin = iPlugin;
 	setup = False;

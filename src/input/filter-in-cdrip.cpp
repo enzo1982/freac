@@ -41,7 +41,7 @@ typedef struct
 }
 cdTextPackage;
 
-FilterInCDRip::FilterInCDRip(bonkEncConfig *config) : InputFilter(config)
+FilterInCDRip::FilterInCDRip(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 	trackNumber = -1;

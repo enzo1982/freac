@@ -18,7 +18,7 @@ class FilterInWAVE : public InputFilter
 	private:
 		Bool		 setup;
 	public:
-				 FilterInWAVE(bonkEncConfig *);
+				 FilterInWAVE(bonkEncConfig *, bonkEncTrack *);
 				~FilterInWAVE();
 
 		int		 ReadData(unsigned char **, int);

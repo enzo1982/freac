@@ -23,6 +23,7 @@ class InputFilter : public IOLibFilter
 		Int			 inBytes;
 
 		UnsignedInt		 fileSize;
+		bonkEncTrack		*format;
 		bonkEncConfig		*currentConfig;
 
 		Bool			 ParseID3V2Tag(unsigned char *, Int, bonkEncTrack *);
@@ -37,7 +38,7 @@ class InputFilter : public IOLibFilter
 	public:
 		Int			 error;
 
-					 InputFilter(bonkEncConfig *);
+					 InputFilter(bonkEncConfig *, bonkEncTrack *);
 					~InputFilter();
 
 		virtual int		 ReadData(unsigned char **, int) = 0;

@@ -177,6 +177,7 @@ MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration		= NIL;
 MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration		= NIL;
 MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples		= NIL;
 MP4CONVERTFROMTRACKDURATION	 ex_MP4ConvertFromTrackDuration		= NIL;
+MP4READSAMPLE			 ex_MP4ReadSample			= NIL;
 
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
 ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
@@ -685,6 +686,7 @@ Bool bonkEnc::LoadMP4V2DLL()
 	ex_MP4SetTrackESConfiguration	= (MP4SETTRACKESCONFIGURATION) GetProcAddress(mp4v2dll, "MP4SetTrackESConfiguration");
 	ex_MP4GetTrackNumberOfSamples	= (MP4GETTRACKNUMBEROFSAMPLES) GetProcAddress(mp4v2dll, "MP4GetTrackNumberOfSamples");
 	ex_MP4ConvertFromTrackDuration	= (MP4CONVERTFROMTRACKDURATION) GetProcAddress(mp4v2dll, "MP4ConvertFromTrackDuration");
+	ex_MP4ReadSample		= (MP4READSAMPLE) GetProcAddress(mp4v2dll, "MP4ReadSample");
 
 	if (ex_MP4Read == NULL)				{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4Close == NULL)			{ FreeLibrary(mp4v2dll); return false; }
@@ -710,6 +712,7 @@ Bool bonkEnc::LoadMP4V2DLL()
 	if (ex_MP4SetTrackESConfiguration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4GetTrackNumberOfSamples == NULL)	{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4ConvertFromTrackDuration == NULL)	{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4ReadSample == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 
 	return true;
 }

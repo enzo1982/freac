@@ -13,7 +13,7 @@
 #include <main.h>
 #include <memory.h>
 
-FilterInAIFF::FilterInAIFF(bonkEncConfig *config) : InputFilter(config)
+FilterInAIFF::FilterInAIFF(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	setup = False;
 

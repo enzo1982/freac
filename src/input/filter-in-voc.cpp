@@ -13,7 +13,7 @@
 #include <main.h>
 #include <memory.h>
 
-FilterInVOC::FilterInVOC(bonkEncConfig *config) : InputFilter(config)
+FilterInVOC::FilterInVOC(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	setup = false;
 	bytesleft = 0;

@@ -18,7 +18,7 @@ class FilterInAIFF : public InputFilter
 	private:
 		Bool		 setup;
 	public:
-				 FilterInAIFF(bonkEncConfig *);
+				 FilterInAIFF(bonkEncConfig *, bonkEncTrack *);
 				~FilterInAIFF();
 
 		int		 ReadData(unsigned char **, int);

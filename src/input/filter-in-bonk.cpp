@@ -13,7 +13,7 @@
 #include <dllinterfaces.h>
 #include <3rdparty/id3/tag.h>
 
-FilterInBONK::FilterInBONK(bonkEncConfig *config) : InputFilter(config)
+FilterInBONK::FilterInBONK(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	setup	= false;
 	f_in	= NIL;

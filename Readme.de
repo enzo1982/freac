@@ -8,7 +8,7 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 beta 3 CVS (August 2004)
+	Version 1.0 beta 3 CVS (September 2004)
 
 		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
 		- Einige Fehler in der CDDB Implementierung wurden behoben
@@ -26,7 +26,7 @@ Geschichte
 		- FAAC auf Version 1.24.0 aktualisiert
 		- Unterstützung für ID3V2-Tags in AAC-Dateien hinzugefügt
 		- FAAD2 AAC Decoder Unterstützung hinzugefügt
-		- MP4 Unterstützung hinzugefügt
+		- MP4 Unterstützung hinzugefügt (nur Decoder)
 		- Update auf smooth v0.8.65.0
 		- Unterstützung für Online-Programmupdates hinzugefügt
 

@@ -19,7 +19,7 @@ class FilterInVOC : public InputFilter
 		Bool		 setup;
 		Int		 bytesleft;
 	public:
-				 FilterInVOC(bonkEncConfig *);
+				 FilterInVOC(bonkEncConfig *, bonkEncTrack *);
 				~FilterInVOC();
 
 		int		 ReadData(unsigned char **, int);

@@ -12,7 +12,7 @@
 #include <input/filter-in-vorbis.h>
 #include <dllinterfaces.h>
 
-FilterInVORBIS::FilterInVORBIS(bonkEncConfig *config) : InputFilter(config)
+FilterInVORBIS::FilterInVORBIS(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	setup = false;
 

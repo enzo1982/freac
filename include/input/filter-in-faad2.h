@@ -30,7 +30,7 @@ class FilterInFAAD2 : public InputFilter
 		Int			 backBufferBytes;
 		unsigned char		*backBuffer;
 	public:
-					 FilterInFAAD2(bonkEncConfig *);
+					 FilterInFAAD2(bonkEncConfig *, bonkEncTrack *);
 					~FilterInFAAD2();
 
 		bool			 Activate();

@@ -27,7 +27,7 @@ class FilterInCDRip : public InputFilter
 		Int		 ReadCDText();
 		Int		 FreeCDText();
 	public:
-				 FilterInCDRip(bonkEncConfig *);
+				 FilterInCDRip(bonkEncConfig *, bonkEncTrack *);
 				~FilterInCDRip();
 
 		int		 ReadData(unsigned char **, int);

@@ -12,7 +12,6 @@
 #define _H_FILTER_IN_MP4_
 
 #include "inputfilter.h"
-#include "filter-in-faad2.h"
 
 #ifndef _MSC_VER
 #include <stdint.h>
@@ -21,16 +20,21 @@
 #endif
 
 #include <3rdparty/mp4/mp4.h>
+#include <3rdparty/faad2/faad.h>
 
 class FilterInMP4 : public InputFilter
 {
 	private:
 		MP4FileHandle		 mp4File;
-		FilterInFAAD2		*aacFilter;
+		faacDecHandle		 handle;
+		faacDecConfigurationPtr	 fConfig;
+
+		Int			 mp4Track;
+		Int			 sampleId;
 
 		Int			 GetAudioTrack();
 	public:
-					 FilterInMP4(bonkEncConfig *);
+					 FilterInMP4(bonkEncConfig *, bonkEncTrack *);
 					~FilterInMP4();
 
 		bool			 Activate();

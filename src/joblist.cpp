@@ -153,7 +153,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 	if (file.CompareN("/cda", 4) == 0)
 	{
-		InputFilter	*filter_in = new FilterInCDRip(currentConfig);
+		InputFilter	*filter_in = new FilterInCDRip(currentConfig, NIL);
 
 		format = filter_in->GetFileInfo(file);
 
@@ -161,7 +161,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 	}
 	else
 	{
-		InputFilter	*filter_in = CreateInputFilter(file);
+		InputFilter	*filter_in = CreateInputFilter(file, NIL);
 
 		if (filter_in != NIL)
 		{

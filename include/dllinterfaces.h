@@ -357,6 +357,8 @@
 	typedef MP4SampleId			(*MP4GETTRACKNUMBEROFSAMPLES)			(MP4FileHandle, MP4TrackId);
 	typedef u_int64_t			(*MP4CONVERTFROMTRACKDURATION)			(MP4FileHandle, MP4TrackId, MP4Duration,
  u_int32_t);
+	typedef bool				(*MP4READSAMPLE)				(MP4FileHandle, MP4TrackId, MP4SampleId, u_int8_t **, u_int32_t *, MP4Timestamp *, MP4Duration *,
+ MP4Duration *, bool *);
 
 	extern MP4READ				 ex_MP4Read;
 	extern MP4CLOSE				 ex_MP4Close;
@@ -382,6 +384,7 @@
 	extern MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
 	extern MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples;
 	extern MP4CONVERTFROMTRACKDURATION	 ex_MP4ConvertFromTrackDuration;
+	extern MP4READSAMPLE			 ex_MP4ReadSample;
 
 // ID3Lib DLL API
 

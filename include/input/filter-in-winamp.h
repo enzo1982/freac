@@ -20,7 +20,7 @@ class FilterInWinamp : public InputFilter
 		Bool		 setup;
 		In_Module	*plugin;
 	public:
-				 FilterInWinamp(bonkEncConfig *, In_Module *);
+				 FilterInWinamp(bonkEncConfig *, bonkEncTrack *, In_Module *);
 				~FilterInWinamp();
 
 		bool		 Activate();

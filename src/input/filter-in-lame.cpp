@@ -13,7 +13,7 @@
 #include <dllinterfaces.h>
 #include <3rdparty/id3/tag.h>
 
-FilterInLAME::FilterInLAME(bonkEncConfig *config) : InputFilter(config)
+FilterInLAME::FilterInLAME(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }

@@ -224,7 +224,7 @@ bonkEnc::~bonkEnc()
 	delete currentConfig;
 }
 
-InputFilter *bonkEnc::CreateInputFilter(String file)
+InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
 {
 	String	 extension2;
 	String	 extension3;
@@ -297,27 +297,27 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 
 	if (extension3 == "cda" && currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		filter_in = new FilterInCDRip(currentConfig);
+		filter_in = new FilterInCDRip(currentConfig, trackInfo);
 	}
 	else if (extension3 == "mp3" && currentConfig->enable_lame)
 	{
-		filter_in = new FilterInLAME(currentConfig);
+		filter_in = new FilterInLAME(currentConfig, trackInfo);
 	}
-	else if (extension3 == "mp4" && currentConfig->enable_mp4 && currentConfig->enable_faad2)
+	else if ((extension3 == "mp4" || extension3 == "m4a") && currentConfig->enable_mp4 && currentConfig->enable_faad2)
 	{
-		filter_in = new FilterInMP4(currentConfig);
+		filter_in = new FilterInMP4(currentConfig, trackInfo);
 	}
 	else if (extension3 == "ogg" && currentConfig->enable_vorbis)
 	{
-		filter_in = new FilterInVORBIS(currentConfig);
+		filter_in = new FilterInVORBIS(currentConfig, trackInfo);
 	}
 	else if (extension3 == "aac" && currentConfig->enable_faad2)
 	{
-		filter_in = new FilterInFAAD2(currentConfig);
+		filter_in = new FilterInFAAD2(currentConfig, trackInfo);
 	}
 	else if (extension4 == "bonk" && currentConfig->enable_bonk)
 	{
-		filter_in = new FilterInBONK(currentConfig);
+		filter_in = new FilterInBONK(currentConfig, trackInfo);
 	}
 	else
 	{
@@ -357,22 +357,22 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 			switch (magic)
 			{
 				case 1297239878:
-					filter_in = new FilterInAIFF(currentConfig);
+					filter_in = new FilterInAIFF(currentConfig, trackInfo);
 					break;
 				case 1684960046:
-					filter_in = new FilterInAU(currentConfig);
+					filter_in = new FilterInAU(currentConfig, trackInfo);
 					break;
 				case 1634038339:
-					filter_in = new FilterInVOC(currentConfig);
+					filter_in = new FilterInVOC(currentConfig, trackInfo);
 					break;
 				case 1179011410:
-					filter_in = new FilterInWAVE(currentConfig);
+					filter_in = new FilterInWAVE(currentConfig, trackInfo);
 					break;
 			}
 		}
 		else
 		{
-			filter_in = new FilterInWinamp(currentConfig, winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
+			filter_in = new FilterInWinamp(currentConfig, trackInfo, winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
 		}
 	}
 

@@ -31,7 +31,7 @@ class FilterInVORBIS : public InputFilter
 
 		Bool			 setup;
 	public:
-					 FilterInVORBIS(bonkEncConfig *);
+					 FilterInVORBIS(bonkEncConfig *, bonkEncTrack *);
 					~FilterInVORBIS();
 
 		int			 ReadData(unsigned char **, int);

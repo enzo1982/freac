@@ -18,7 +18,7 @@ class FilterInAU : public InputFilter
 	private:
 		Bool		 setup;
 	public:
-				 FilterInAU(bonkEncConfig *);
+				 FilterInAU(bonkEncConfig *, bonkEncTrack *);
 				~FilterInAU();
 
 		int		 ReadData(unsigned char **, int);

@@ -12,7 +12,7 @@
 #include <input/filter-in-faad2.h>
 #include <dllinterfaces.h>
 
-FilterInFAAD2::FilterInFAAD2(bonkEncConfig *config) : InputFilter(config)
+FilterInFAAD2::FilterInFAAD2(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }

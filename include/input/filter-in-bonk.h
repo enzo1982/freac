@@ -20,7 +20,7 @@ class FilterInBONK : public InputFilter
 		Bool		 setup;
 		InStream	*f_in;
 	public:
-				 FilterInBONK(bonkEncConfig *);
+				 FilterInBONK(bonkEncConfig *, bonkEncTrack *);
 				~FilterInBONK();
 
 		int		 ReadData(unsigned char **, int);

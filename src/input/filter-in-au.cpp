@@ -13,7 +13,7 @@
 #include <main.h>
 #include <memory.h>
 
-FilterInAU::FilterInAU(bonkEncConfig *config) : InputFilter(config)
+FilterInAU::FilterInAU(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
 {
 	setup = false;
 

@@ -13,12 +13,13 @@
 #include <iolib/drivers/driver_posix.h>
 #include <iolib/drivers/driver_unicode.h>
 
-InputFilter::InputFilter(bonkEncConfig *config)
+InputFilter::InputFilter(bonkEncConfig *config, bonkEncTrack *iFormat)
 {
-	error = 0;
-	inBytes = 0;
-	fileSize = 0;
-	currentConfig = config;
+	error		= 0;
+	inBytes		= 0;
+	fileSize	= 0;
+	format		= iFormat;
+	currentConfig	= config;
 }
 
 InputFilter::~InputFilter()

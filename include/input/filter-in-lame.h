@@ -16,7 +16,7 @@
 class FilterInLAME : public InputFilter
 {
 	public:
-				 FilterInLAME(bonkEncConfig *);
+				 FilterInLAME(bonkEncConfig *, bonkEncTrack *);
 				~FilterInLAME();
 
 		bool		 Activate();

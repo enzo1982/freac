@@ -241,7 +241,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			driver_in	= new IOLibDriverZero();
 			f_in		= new InStream(STREAM_DRIVER, driver_in);
-			filter_in	= new FilterInCDRip(currentConfig);
+			filter_in	= new FilterInCDRip(currentConfig, trackInfo);
 
 			((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
 
@@ -249,7 +249,7 @@ Int bonkEnc::Encoder(Thread *thread)
 		}
 		else
 		{
-			filter_in = CreateInputFilter(in_filename);
+			filter_in = CreateInputFilter(in_filename, trackInfo);
 
 			if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(in_filename, IS_READONLY);
 			else				driver_in = new IOLibDriverPOSIX(in_filename, IS_READONLY);
