@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
+  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -67,7 +67,7 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd_iconbar		= new Menubar();
 	mainWnd			= new Window(String("BonkEnc ").Append(bonkEnc::version));
 	mainWnd_titlebar	= new Titlebar();
-	mainWnd_statusbar	= new Statusbar(String("BonkEnc ").Append(bonkEnc::version).Append(" - Copyright (C) 2001-2003 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String("BonkEnc ").Append(bonkEnc::version).Append(" - Copyright (C) 2001-2004 Robert Kausch"));
 	menu_file		= new Menu();
 	menu_options		= new Menu();
 	menu_addsubmenu		= new Menu();
@@ -866,7 +866,7 @@ Bool bonkEncGUI::ExitProc()
 
 Void bonkEncGUI::ResizeProc()
 {
-	mainWnd_statusbar->GetObjectProperties()->text = String("BonkEnc ").Append(bonkEnc::version).Append(" - Copyright (C) 2001-2003 Robert Kausch");
+	mainWnd_statusbar->GetObjectProperties()->text = String("BonkEnc ").Append(bonkEnc::version).Append(" - Copyright (C) 2001-2004 Robert Kausch");
 
 	currentConfig->wndPos = mainWnd->GetObjectProperties()->pos;
 	currentConfig->wndSize = mainWnd->GetObjectProperties()->size;
@@ -906,7 +906,7 @@ Void bonkEncGUI::Close()
 
 Void bonkEncGUI::About()
 {
-	SMOOTH::MessageBox(String("BonkEnc ").Append(bonkEnc::version).Append("\nCopyright (C) 2001-2003 Robert Kausch\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	SMOOTH::MessageBox(String("BonkEnc ").Append(bonkEnc::version).Append("\nCopyright (C) 2001-2004 Robert Kausch\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void bonkEncGUI::ConfigureEncoder()

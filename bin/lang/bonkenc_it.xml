@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Marco D'Amato &lt;md@swzone.it&gt;</property>
-    <property name="url">http://mdt.swzone.it</property>
+    <property name="url">http://mdt.swzone.it/</property>
   </info>
   <data>
     <entry id="1" string="File">File</entry>

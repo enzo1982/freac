@@ -6,7 +6,7 @@
     <property name="language">Ελληνικά</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Φώτης Ευαγγέλου (Fotis Evangelou) &lt;fevangelou@msn.com&gt;</property>
-    <property name="url">http://www.bonkenc.org</property>
+    <property name="url">http://www.bonkenc.org/</property>
   </info>
   <data>
     <entry id="1" string="File">Αρχείο</entry>

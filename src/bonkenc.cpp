@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2003 Robert Kausch <robert.kausch@gmx.net>
+  * Copyright (C) 2001-2004 Robert Kausch <robert.kausch@gmx.net>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -55,9 +55,9 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig		*bonkEnc::currentConfig	= NIL;
 I18n::Translator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "CVS 20031003";
+String	 bonkEnc::version = "CVS 20031218";
 String	 bonkEnc::cddbVersion = "v1.0beta1";
-String	 bonkEnc::shortVersion = "20031003";
+String	 bonkEnc::shortVersion = "20031218";
 
 bonkEnc::bonkEnc()
 {

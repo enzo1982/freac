@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Pablo Acevedo Noda &lt;pablo@acevedo.tk&gt;</property>
-    <property name="url">http://www.acevedo.tk</property>
+    <property name="url">http://www.acevedo.tk/</property>
   </info>
   <data>
     <entry id="1" string="File">Archivo</entry>

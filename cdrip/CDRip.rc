@@ -16,7 +16,7 @@
         VALUE "FileDescription", "CDRip Ripping Library\0"
         VALUE "FileVersion", "118\0"
         VALUE "InternalName", "CDRip\0"
-        VALUE "LegalCopyright", "Copyright (C) 1999-2003\0"
+        VALUE "LegalCopyright", "Copyright (C) 1999-2004\0"
         VALUE "LegalTrademarks", "\0"
         VALUE "OriginalFilename", "CDRip.dll\0"
         VALUE "PrivateBuild", "\0"

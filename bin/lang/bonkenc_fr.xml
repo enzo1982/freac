@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;</property>
-    <property name="url">http://www.bonkenc.org</property>
+    <property name="url">http://www.bonkenc.org/</property>
   </info>
   <data>
     <entry id="1" string="File">Fichier</entry>
