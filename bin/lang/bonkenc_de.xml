@@ -234,5 +234,6 @@
     <entry id="223" string="Psycho acoustic model">Psychoakustik Modell</entry>
     <entry id="224" string="Use Temporal Masking Effect">Temporal Masking Effekt verwenden</entry>
     <entry id="225" string="Expert">Experteneinstellungen</entry>
+    <entry id="226" string="CDDB query">CDDB Abfrage</entry>
   </data>
 </LangFile>

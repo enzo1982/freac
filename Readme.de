@@ -26,6 +26,7 @@ Geschichte
 		- Verbesserte ASPI Erkennung
 		- Für den LAME Encoder können jetzt einige Experteneinstellungen verändert werden
 		- Viele Einschränkungen des Eingabeformats behoben
+		- Lange Reaktionszeiten wenn das Programm längere Zeit läuft wurden behoben
 		- Titelinformationen können jetzt aus Dateinamen extrahiert werden
 		- Viele Fehler und Speicherfehler wurden behoben
 

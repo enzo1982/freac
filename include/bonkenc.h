@@ -163,7 +163,6 @@ class bonkEnc : public Application
 		Int			 player_entry;
 
 		Bool			 dontUpdateInfo;
-		Bool			 cddbRetry;
 		Int			 encoder_activedrive;
 
 		Bool			 LoadBonkDLL();
@@ -221,6 +220,8 @@ class bonkEnc : public Application
 		Array<In_Module *>	 winamp_in_modules;
 		Array<HMODULE>		 winamp_out_plugins;
 		Array<Out_Module *>	 winamp_out_modules;
+
+		Bool			 cddbRetry;
 
 		Array<String>		 cdText;
 		CDDBInfo		*cddbInfo;

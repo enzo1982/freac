@@ -1,4 +1,4 @@
-BonkEnc version 1.0 beta
+BonkEnc version 1.0 beta 1
 
 BonkEnc is an encoder for various audio formats. It can
 produce MP3, Ogg Vorbis, BONK, AAC and VQF files.
@@ -26,6 +26,7 @@ History
 		- improved ASPI detection
 		- some expert settings can now be set for the LAME encoder
 		- title information can now be extracted from the filename
+		- fixed BonkEnc lagging when running for a longer time
 		- fixed many input format restrictions
 		- fixed many bugs and memory leaks
 
