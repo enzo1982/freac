@@ -35,6 +35,8 @@
 
 #include <language.h>
 
+#include <eUpdate/eUpdate.h>
+
 Int smooth::Main()
 {
 	bonkEncGUI	*app = new bonkEncGUI();
@@ -82,7 +84,7 @@ bonkEncGUI::bonkEncGUI()
 	pos.x = 91;
 	pos.y = -22;
 
-	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org", pos);
+	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org/", pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 
 	if (winamp_out_modules.GetNOfEntries() > 0)
@@ -636,6 +638,9 @@ bonkEncGUI::bonkEncGUI()
 	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("Show Tip of the Day").Append("..."))->onClick.Connect(&bonkEncGUI::ShowTipOfTheDay, this);
 	menu_help->AddEntry();
+	menu_help->AddEntry(i18n->TranslateString("Check for updates now").Append("..."))->onClick.Connect(&bonkEncGUI::CheckForUpdates, this);
+	menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &currentConfig->checkUpdatesAtStartup);
+	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onClick.Connect(&bonkEncGUI::About, this);
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
@@ -804,10 +809,17 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd->SetMinimumSize(Size(530, 300 + n));
 
 	if (currentConfig->maximized) mainWnd->Maximize();
+
+	checkForUpdates = new Thread();
+	checkForUpdates->threadMain.Connect(&bonkEncGUI::CheckForUpdatesThread, this);
+
+	if (currentConfig->checkUpdatesAtStartup) checkForUpdates->Start();
 }
 
 bonkEncGUI::~bonkEncGUI()
 {
+	DeleteObject(checkForUpdates);
+
 	ClearList();
 
 	DeleteObject(mainWnd_menubar);
@@ -1445,6 +1457,9 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("Show Tip of the Day").Append("..."))->onClick.Connect(&bonkEncGUI::ShowTipOfTheDay, this);
 	menu_help->AddEntry();
+	menu_help->AddEntry(i18n->TranslateString("Check for updates now").Append("..."))->onClick.Connect(&bonkEncGUI::CheckForUpdates, this);
+	menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &currentConfig->checkUpdatesAtStartup);
+	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onClick.Connect(&bonkEncGUI::About, this);
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
@@ -1577,4 +1592,46 @@ Void bonkEncGUI::ShowTipOfTheDay()
 	currentConfig->tipOffset = dlg->GetOffset();
 
 	DeleteObject(dlg);
+}
+
+Void bonkEncGUI::CheckForUpdates()
+{
+	CheckForUpdatesThread(NIL);
+}
+
+Int bonkEncGUI::CheckForUpdatesThread(Thread *self)
+{
+	Void	*context = eUpdate_CreateUpdateContext("BonkEnc Audio Encoder");
+	String	 latest;
+
+	if (eUpdate_CheckForUpdates(context, "http://www.bonkenc.org/eUpdate/eUpdate.xml") >= 0)
+	{
+		if (eUpdate_GetNumberOfVersions(context) > 0) latest = eUpdate_GetLatestPossibleUpdateID(context, version);
+	}
+
+	if (latest != NIL && latest != version)
+	{
+		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("A new version of BonkEnc is available online!\nWould you like to install it now?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
+
+		if (msgBox->ShowDialog() == IDYES)
+		{
+			eUpdate_DownloadVersion(context, version, latest);
+
+			eUpdate_PerformUpdate(context);
+		}
+
+		DeleteObject(msgBox);
+	}
+	else if (self == NIL)
+	{
+		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
+
+		msgBox->ShowDialog();
+
+		DeleteObject(msgBox);
+	}
+
+	eUpdate_FreeUpdateContext(context);
+
+	return Success;
 }

@@ -48,6 +48,8 @@ class bonkEncGUI : public bonkEnc
 		Int		 clicked_drive;
 		Int		 clicked_encoder;
 
+		Thread		*checkForUpdates;
+
 		Bool		 ExitProc();
 		Void		 ResizeProc();
 		Void		 Close();
@@ -70,6 +72,9 @@ class bonkEncGUI : public bonkEnc
 		Menu		*GetTrackMenu(Int, Int);
 		Void		 ShowHelp();
 		Void		 ShowTipOfTheDay();
+
+		Void		 CheckForUpdates();
+		Int		 CheckForUpdatesThread(Thread *);
 
 		Bool		 SetLanguage(String);
 	public:

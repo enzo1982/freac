@@ -44,6 +44,8 @@ class bonkEncConfig
 		Bool		 showTips;
 		Int		 tipOffset;
 
+		Bool		 checkUpdatesAtStartup;
+
 		Int		 encoder;
 		Bool		 enable_console;
 		Bool		 enable_bonk;

@@ -104,6 +104,7 @@ Bool bonkEncConfig::LoadSettings()
 	showTips = config->GetIntValue("Settings", "ShowTips", 1);
 	tipOffset = config->GetIntValue("Settings", "TipOffset", 0);
 	default_comment = config->GetStringValue("Settings", "DefaultComment", String("BonkEnc ").Append(bonkEnc::shortVersion).Append(" <http://www.bonkenc.org/>"));
+	checkUpdatesAtStartup = config->GetIntValue("Settings", "CheckUpdatesAtStartup", 1);
 
 	cdrip_activedrive = config->GetIntValue("CDRip", "ActiveCDROM", 0);
 	cdrip_debuglevel = config->GetIntValue("CDRip", "DebugCDRip", 0);
@@ -187,7 +188,7 @@ Bool bonkEncConfig::LoadSettings()
 	faac_allowjs = config->GetIntValue("FAAC", "AllowJS", 1);
 	faac_usetns = config->GetIntValue("FAAC", "UseTNS", 1);
 	faac_set_quality = config->GetIntValue("FAAC", "SetQuality", 0);
-	faac_aac_quality = config->GetIntValue("FAAC", "AACQuality", 100);
+	faac_aac_quality = config->GetIntValue("FAAC", "AACQuality", 120);
 
 	tvq_bitrate = config->GetIntValue("TwinVQ", "Bitrate", 48);
 	tvq_presel_candidates = config->GetIntValue("TwinVQ", "PreselectionCandidates", 32);
@@ -223,6 +224,7 @@ Bool bonkEncConfig::SaveSettings()
 		config->SetIntValue("Settings", "ShowTips", showTips);
 		config->SetIntValue("Settings", "TipOffset", tipOffset);
 		config->SetStringValue("Settings", "DefaultComment", default_comment);
+		config->SetIntValue("Settings", "CheckUpdatesAtStartup", checkUpdatesAtStartup);
 
 		config->SetIntValue("CDRip", "ActiveCDROM", cdrip_activedrive);
 		config->SetIntValue("CDRip", "DebugCDRip", cdrip_debuglevel);

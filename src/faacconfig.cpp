@@ -285,6 +285,9 @@ Void configureFAAC::OK()
 	if (bitrate < 8)	bitrate = 8;
 	if (bitrate > 256)	bitrate = 256;
 
+	if (aacQuality < 10)	aacQuality = 10;
+	if (aacQuality > 500)	aacQuality = 500;
+
 	currentConfig->faac_mpegversion = mpegVersion;
 	currentConfig->faac_type = aacType;
 	currentConfig->faac_bitrate = bitrate;

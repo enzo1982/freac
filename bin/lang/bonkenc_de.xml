@@ -252,5 +252,9 @@
     <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Haben Sie Vorschläge zur Verbesserung von BonkEnc? Sie&#10;können Ihre Ideen über den Tracker auf der BonkEnc SourceForge&#10;Projectseite eingeben - %1&#10;oder senden sie eine eMail an %2.</entry>
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Mögen Sie BonkEnc? BonkEnc ist kostenlos verfügbar, aber Sie&#10;können mit Spenden an das BonkEnc Projekt helfen, die&#10;Entwicklung zu finanzieren Sie können mit PayPal Geld an&#10;%1 senden.&#10;Besuchen Sie %2, um mehr&#10;Informationen zu erhalten.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate / Qualität</entry>
+    <entry id="243" string="Check for updates now">Jetzt auf Aktualisierungen überprüfen</entry>
+    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">Eine neue BonkEnc Version ist online verfügbar!&#10;Möchten Sie sie jetzt installieren?</entry>
+    <entry id="245" string="There are no updates available at the moment!">Zur Zeit sind keine Aktualisierungen verfügbar!</entry>
+    <entry id="246" string="Check for updates at startup">Beim Start auf Aktualisierungen überprüfen</entry>
   </data>
 </LangFile>

@@ -30,6 +30,7 @@ History
 		- added support for CDDB protocol version 6 (UTF-8 support)
 		- added buttons to select all/none/toggle joblist entries
 		- added 'Tip of the day' dialog
+		- added automatic update notification
 		- some small improvements
 		- some bugfixes
 
@@ -140,7 +141,6 @@ Requirements
 	Additional optional software:
 
 		- BladeEnc is used if installed (http://bladeenc.mp3.no/)
-		- FAAC is used if installed (http://www.audiocoding.com/)
 		- TwinVQ is used if installed (http://www.twinvq.org/)
 		- Winamp 2 input and output plug-ins are used if they are found in the plugins directory
 		- MSLU is used if installed on Windows 9x/ME systems (http://www.microsoft.com/)
@@ -160,6 +160,8 @@ Problems
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
 
+	- The Winamp input filter supports only 16 bit input, yet.
+
 	- The command line interface doesn't support options for modifying encoder settings, yet.
 
 Future plans
@@ -168,6 +170,8 @@ Future plans
 	- v1.0 beta 2
 		* check Windows 98 support
 		* translate missing strings
+		* update to LAME 3.95.1
+		* update to FAAC 1.23.5
 
 	- Sheduled for v1.0
 		* shell integration
@@ -190,7 +194,7 @@ Future plans
 -----------------------------------------------------------------------------------
 
 The official BonkEnc homepage: http://www.bonkenc.org/
-Paul F. Harrison's BONK page: http://yoyo.cc.monash.edu.au/~pfh/bonk/
+Paul F. Harrison's BONK page: http://www.logarithmic.net/pfh/bonk
 
 robert.kausch@gmx.net,
 Robert Kausch

@@ -165,7 +165,7 @@ void SetInfo(int bitrate, int srate, int stereo, int synched)
 {
 }
 
-void VSASetInfo(int srate, int nch)
+void VSASetInfo(int nch, int srate)
 {
 	channels = nch;
 	rate = srate;
