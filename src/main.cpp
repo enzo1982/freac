@@ -1889,10 +1889,26 @@ Void bonkEnc::ShowHideTitleInfo()
 		n = -65;
 
 		mainWnd->SetMinimumSize(Size(530, 300));
+
+		info_bottom->Hide();
+		info_text_artist->Hide();
+		info_edit_artist->Hide();
+		info_text_title->Hide();
+		info_edit_title->Hide();
+		info_text_album->Hide();
+		info_edit_album->Hide();
+		info_text_track->Hide();
+		info_edit_track->Hide();
+		info_text_date->Hide();
+		info_edit_date->Hide();
+		info_text_genre->Hide();
+		info_combo_genre->Hide();
 	}
 
 	info_divider->SetPos(info_divider->GetPos() + n);
 	info_background->SetMetrics(Point(info_background->GetObjectProperties()->pos.x, info_background->GetObjectProperties()->pos.y + n), info_background->GetObjectProperties()->size);
+
+	joblist->Paint(SP_PAINT);
 
 	mainWnd->SetMetrics(mainWnd->GetObjectProperties()->pos, Size(mainWnd->GetObjectProperties()->size.cx, mainWnd->GetObjectProperties()->size.cy + n));
 
@@ -1913,22 +1929,6 @@ Void bonkEnc::ShowHideTitleInfo()
 		info_edit_date->Show();
 		info_text_genre->Show();
 		info_combo_genre->Show();
-	}
-	else
-	{
-		info_bottom->Hide();
-		info_text_artist->Hide();
-		info_edit_artist->Hide();
-		info_text_title->Hide();
-		info_edit_title->Hide();
-		info_text_album->Hide();
-		info_edit_album->Hide();
-		info_text_track->Hide();
-		info_edit_track->Hide();
-		info_text_date->Hide();
-		info_edit_date->Hide();
-		info_text_genre->Hide();
-		info_combo_genre->Hide();
 	}
 }
 
