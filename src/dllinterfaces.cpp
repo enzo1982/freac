@@ -513,9 +513,39 @@ Bool bonkEnc::LoadWinampDLLs()
 
 				if (proc != NIL)
 				{
-					winamp_plugins.AddEntry(dll);
-					winamp_modules.AddEntry(proc());
+					winamp_in_plugins.AddEntry(dll);
+					winamp_in_modules.AddEntry(proc());
 
+					proc()->hDllInstance = dll;
+					proc()->Init();
+				}
+				else
+				{
+					FreeLibrary(dll);
+				}
+			}
+		}
+		while (_findnext(handle, &fileData) == 0);
+	}
+
+	_findclose(handle);
+
+	if ((handle = _findfirst("out_*.dll", &fileData)) != -1)
+	{
+		do
+		{
+			HMODULE	 dll = LoadLibraryA(fileData.name);
+
+			if (dll != NIL)
+			{
+				Out_Module *(*proc)() = (Out_Module *(*)()) GetProcAddress(dll, "winampGetOutModule");
+
+				if (proc != NIL)
+				{
+					winamp_out_plugins.AddEntry(dll);
+					winamp_out_modules.AddEntry(proc());
+
+					proc()->hDllInstance = dll;
 					proc()->Init();
 				}
 				else
@@ -536,13 +566,23 @@ Bool bonkEnc::LoadWinampDLLs()
 
 Void bonkEnc::FreeWinampDLLs()
 {
-	for (Int i = 0; i < winamp_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < winamp_in_plugins.GetNOfEntries(); i++)
 	{
-		winamp_modules.GetNthEntry(i)->Quit();
+		winamp_in_modules.GetNthEntry(i)->Quit();
 
-		FreeLibrary(winamp_plugins.GetNthEntry(i));
+		FreeLibrary(winamp_in_plugins.GetNthEntry(i));
 	}
 
-	winamp_plugins.RemoveAll();
-	winamp_modules.RemoveAll();
+	winamp_in_plugins.RemoveAll();
+	winamp_in_modules.RemoveAll();
+
+	for (Int i = 0; i < winamp_out_plugins.GetNOfEntries(); i++)
+	{
+		winamp_out_modules.GetNthEntry(i)->Quit();
+
+		FreeLibrary(winamp_out_plugins.GetNthEntry(i));
+	}
+
+	winamp_out_plugins.RemoveAll();
+	winamp_out_modules.RemoveAll();
 }

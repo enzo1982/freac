@@ -26,6 +26,7 @@ class configureGeneralSettings : public Dialog
 		Layer		*register_layer_language;
 		Layer		*register_layer_cdrip;
 		Layer		*register_layer_cddb;
+		Layer		*register_layer_plugins;
 		Layer		*register_layer_tags;
 
 		GroupBox	*encoders_group_encoder;
@@ -66,6 +67,16 @@ class configureGeneralSettings : public Dialog
 		Button		*cddb_button_http;
 		Button		*cddb_button_proxy;
 
+		TabWidget	*plugins_tabs_plugins;
+		Layer		*plugins_layer_input;
+		ListBox		*plugins_list_input;
+		Button		*plugins_button_input;
+		Button		*plugins_button_input_about;
+		Layer		*plugins_layer_output;
+		ListBox		*plugins_list_output;
+		Button		*plugins_button_output;
+		Button		*plugins_button_output_about;
+
 		GroupBox	*tags_group_tags;
 		CheckBox	*tags_check_enable;
 		Text		*tags_text_defcomment;
@@ -101,6 +112,10 @@ class configureGeneralSettings : public Dialog
 		Void		 HTTPSettings();
 		Void		 ProxySettings();
 		Void		 ToggleTags();
+		Void		 ConfigureInputPlugin();
+		Void		 ConfigureOutputPlugin();
+		Void		 AboutInputPlugin();
+		Void		 AboutOutputPlugin();
 	public:
 				 configureGeneralSettings();
 				~configureGeneralSettings();

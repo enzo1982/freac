@@ -143,26 +143,6 @@ configureBladeEnc::configureBladeEnc()
 
 configureBladeEnc::~configureBladeEnc()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(btn_ok);
-	mainWnd->UnregisterObject(btn_cancel);
-	mainWnd->UnregisterObject(group_bit);
-	mainWnd->UnregisterObject(slider_bit);
-	mainWnd->UnregisterObject(text_bit);
-	mainWnd->UnregisterObject(group_crc);
-	mainWnd->UnregisterObject(check_crc);
-	mainWnd->UnregisterObject(group_copyright);
-	mainWnd->UnregisterObject(check_copyright);
-	mainWnd->UnregisterObject(group_original);
-	mainWnd->UnregisterObject(check_original);
-	mainWnd->UnregisterObject(group_private);
-	mainWnd->UnregisterObject(check_private);
-	mainWnd->UnregisterObject(group_dualchannel);
-	mainWnd->UnregisterObject(check_dualchannel);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd;
 	delete divbar;

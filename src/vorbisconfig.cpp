@@ -152,29 +152,6 @@ configureVorbisEnc::configureVorbisEnc()
 
 configureVorbisEnc::~configureVorbisEnc()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(mainWnd_layer_abr);
-	mainWnd->UnregisterObject(mainWnd_layer_vbr);
-	mainWnd->UnregisterObject(divbar);
-
-	mainWnd->UnregisterObject(btn_ok);
-	mainWnd->UnregisterObject(btn_cancel);
-	mainWnd->UnregisterObject(group_mode);
-	mainWnd->UnregisterObject(group_mode2);
-	mainWnd->UnregisterObject(option_mode_abr);
-	mainWnd->UnregisterObject(option_mode_vbr);
-
-	mainWnd_layer_vbr->UnregisterObject(slider_quality);
-	mainWnd_layer_vbr->UnregisterObject(text_quality);
-	mainWnd_layer_vbr->UnregisterObject(text_quality_value);
-
-	mainWnd_layer_abr->UnregisterObject(slider_abr);
-	mainWnd_layer_abr->UnregisterObject(text_abr);
-	mainWnd_layer_abr->UnregisterObject(edit_abr);
-	mainWnd_layer_abr->UnregisterObject(text_abr_kbps);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd_layer_abr;
 	delete mainWnd_layer_vbr;

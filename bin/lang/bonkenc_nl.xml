@@ -30,7 +30,6 @@
     <entry id="19" string="Output dir.:">Uitvoermap:</entry>
     <entry id="20" string=" file(s) in joblist:"> bestand(en) in taaklijst</entry>
     <entry id="21" string="none">geen</entry>
-    <entry id="22" string="Display information about BonkEnc">Geef informatie i.v.m. BonkEnc weer</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Voeg audiobestand(en) toe aan taaklijst</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Voeg Audio CD inhoud toe aan taaklijst</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Verwijder geselecteerd item uit de taaklijst</entry>

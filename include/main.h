@@ -28,6 +28,7 @@ class bonkEncGUI : public bonkEnc
 		Menu		*menu_seldrive;
 		Menu		*menu_database;
 		Menu		*menu_trackmenu;
+		Menu		*menu_help;
 
 		Menubar		*mainWnd_menubar;
 		Menubar		*mainWnd_iconbar;
@@ -49,6 +50,7 @@ class bonkEncGUI : public bonkEnc
 		Void		 SubmitCDDBData();
 		Void		 ToggleCDDB();
 		Menu		*GetTrackMenu(Int, Int);
+		Void		 ShowHelp();
 
 		Bool		 SetLanguage(String);
 	public:

@@ -65,14 +65,6 @@ languageDlg::languageDlg()
 
 languageDlg::~languageDlg()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(text_language);
-	mainWnd->UnregisterObject(list_language);
-	mainWnd->UnregisterObject(btn_ok);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd;
 	delete divbar;

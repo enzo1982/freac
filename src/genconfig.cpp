@@ -51,6 +51,7 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_language	= new Layer(bonkEnc::i18n->TranslateString("Language"));
 	register_layer_cdrip	= new Layer("CDRip");
 	register_layer_cddb	= new Layer("CDDB");
+	register_layer_plugins	= new Layer(bonkEnc::i18n->TranslateString("Plug-ins"));
 	register_layer_tags	= new Layer(bonkEnc::i18n->TranslateString("Info tags"));
 
 	pos.x = 175;
@@ -370,6 +371,65 @@ configureGeneralSettings::configureGeneralSettings()
 	cddb_edit_email->SetMetrics(Point(maxTextSize + 24, cddb_edit_email->GetObjectProperties()->pos.y), Size(317 - maxTextSize, cddb_edit_email->GetObjectProperties()->size.cy));
 
 	pos.x = 7;
+	pos.y = 7;
+	size.cx = 343;
+	size.cy = 148;
+
+	plugins_tabs_plugins	= new TabWidget(pos, size);
+
+	plugins_layer_input	= new Layer(bonkEnc::i18n->TranslateString("Input plug-ins"));
+
+	pos.x = 7;
+	pos.y = 7;
+	size.cx = 239;
+	size.cy = 112;
+
+	plugins_list_input	= new ListBox(pos, size);
+
+	for (Int i = 0; i < currentConfig->appMain->winamp_in_modules.GetNOfEntries(); i++)
+	{
+		plugins_list_input->AddEntry(currentConfig->appMain->winamp_in_modules.GetNthEntry(i)->description);
+	}
+
+	pos.x += 247;
+	size.cx = 0;
+	size.cy = 0;
+
+	plugins_button_input	= new Button(bonkEnc::i18n->TranslateString("Configure"), NIL, pos, size);
+	plugins_button_input->onClick.Connect(&configureGeneralSettings::ConfigureInputPlugin, this);
+
+	pos.y += 30;
+
+	plugins_button_input_about	= new Button(bonkEnc::i18n->TranslateString("About"), NIL, pos, size);
+	plugins_button_input_about->onClick.Connect(&configureGeneralSettings::AboutInputPlugin, this);
+
+	plugins_layer_output	= new Layer(bonkEnc::i18n->TranslateString("Output plug-ins"));
+
+	pos.x = 7;
+	pos.y = 7;
+	size.cx = 239;
+	size.cy = 112;
+
+	plugins_list_output	= new ListBox(pos, size);
+
+	for (Int i = 0; i < currentConfig->appMain->winamp_out_modules.GetNOfEntries(); i++)
+	{
+		plugins_list_output->AddEntry(currentConfig->appMain->winamp_out_modules.GetNthEntry(i)->description);
+	}
+
+	pos.x += 247;
+	size.cx = 0;
+	size.cy = 0;
+
+	plugins_button_output	= new Button(bonkEnc::i18n->TranslateString("Configure"), NIL, pos, size);
+	plugins_button_output->onClick.Connect(&configureGeneralSettings::ConfigureOutputPlugin, this);
+
+	pos.y += 30;
+
+	plugins_button_output_about	= new Button(bonkEnc::i18n->TranslateString("About"), NIL, pos, size);
+	plugins_button_output_about->onClick.Connect(&configureGeneralSettings::AboutOutputPlugin, this);
+
+	pos.x = 7;
 	pos.y = 11;
 	size.cx = 344;
 	size.cy = 67;
@@ -412,6 +472,7 @@ configureGeneralSettings::configureGeneralSettings()
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cddb);
 
+	reg_register->RegisterObject(register_layer_plugins);
 	reg_register->RegisterObject(register_layer_tags);
 
 	register_layer_encoders->RegisterObject(encoders_group_encoder);
@@ -451,6 +512,19 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_cddb->RegisterObject(cddb_button_http);
 	register_layer_cddb->RegisterObject(cddb_button_proxy);
 
+	register_layer_plugins->RegisterObject(plugins_tabs_plugins);
+
+	plugins_tabs_plugins->RegisterObject(plugins_layer_input);
+	plugins_tabs_plugins->RegisterObject(plugins_layer_output);
+
+	plugins_layer_input->RegisterObject(plugins_list_input);
+	plugins_layer_input->RegisterObject(plugins_button_input);
+	plugins_layer_input->RegisterObject(plugins_button_input_about);
+
+	plugins_layer_output->RegisterObject(plugins_list_output);
+	plugins_layer_output->RegisterObject(plugins_button_output);
+	plugins_layer_output->RegisterObject(plugins_button_output_about);
+
 	register_layer_tags->RegisterObject(tags_group_tags);
 	register_layer_tags->RegisterObject(tags_check_enable);
 	register_layer_tags->RegisterObject(tags_text_defcomment);
@@ -467,115 +541,65 @@ configureGeneralSettings::configureGeneralSettings()
 
 configureGeneralSettings::~configureGeneralSettings()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(btn_ok);
-	mainWnd->UnregisterObject(btn_cancel);
-	mainWnd->UnregisterObject(reg_register);
-
-	reg_register->UnregisterObject(register_layer_encoders);
-	reg_register->UnregisterObject(register_layer_language);
-
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->UnregisterObject(register_layer_cdrip);
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->UnregisterObject(register_layer_cddb);
-
-	reg_register->UnregisterObject(register_layer_tags);
-
-	register_layer_encoders->UnregisterObject(encoders_group_encoder);
-	register_layer_encoders->UnregisterObject(encoders_combo_encoder);
-	register_layer_encoders->UnregisterObject(encoders_button_config);
-	register_layer_encoders->UnregisterObject(encoders_group_outdir);
-	register_layer_encoders->UnregisterObject(encoders_edit_outdir);
-	register_layer_encoders->UnregisterObject(encoders_button_outdir_browse);
-
-	register_layer_language->UnregisterObject(language_group_language);
-	register_layer_language->UnregisterObject(language_text_language);
-	register_layer_language->UnregisterObject(language_combo_language);
-	register_layer_language->UnregisterObject(language_group_info);
-	register_layer_language->UnregisterObject(language_text_info);
-	register_layer_language->UnregisterObject(language_link_url);
-
-	register_layer_cdrip->UnregisterObject(cdrip_group_drive);
-	register_layer_cdrip->UnregisterObject(cdrip_combo_drive);
-	register_layer_cdrip->UnregisterObject(cdrip_group_ripping);
-	register_layer_cdrip->UnregisterObject(cdrip_check_paranoia);
-	register_layer_cdrip->UnregisterObject(cdrip_combo_paranoia_mode);
-	register_layer_cdrip->UnregisterObject(cdrip_check_jitter);
-	register_layer_cdrip->UnregisterObject(cdrip_check_swapchannels);
-	register_layer_cdrip->UnregisterObject(cdrip_check_locktray);
-	register_layer_cdrip->UnregisterObject(cdrip_check_ntscsi);
-
-	register_layer_cddb->UnregisterObject(cddb_group_cddb);
-	register_layer_cddb->UnregisterObject(cddb_layer_background);
-	register_layer_cddb->UnregisterObject(cddb_text_mode);
-	register_layer_cddb->UnregisterObject(cddb_combo_mode);
-	register_layer_cddb->UnregisterObject(cddb_text_server);
-	register_layer_cddb->UnregisterObject(cddb_edit_server);
-	register_layer_cddb->UnregisterObject(cddb_text_port);
-	register_layer_cddb->UnregisterObject(cddb_edit_port);
-	register_layer_cddb->UnregisterObject(cddb_text_email);
-	register_layer_cddb->UnregisterObject(cddb_edit_email);
-	register_layer_cddb->UnregisterObject(cddb_button_http);
-	register_layer_cddb->UnregisterObject(cddb_button_proxy);
-
-	register_layer_tags->UnregisterObject(tags_group_tags);
-	register_layer_tags->UnregisterObject(tags_check_enable);
-	register_layer_tags->UnregisterObject(tags_text_defcomment);
-	register_layer_tags->UnregisterObject(tags_edit_defcomment);
-
-	cddb_layer_background->UnregisterObject(cddb_check_enable);
-
-	UnregisterObject(mainWnd);
-
-	delete mainWnd_titlebar;
-	delete mainWnd;
-	delete divbar;
-	delete reg_register;
-	delete register_layer_encoders;
-	delete register_layer_language;
-	delete register_layer_cdrip;
-	delete register_layer_cddb;
-	delete register_layer_tags;
-	delete encoders_group_encoder;
-	delete encoders_combo_encoder;
-	delete encoders_button_config;
-	delete encoders_group_outdir;
-	delete encoders_edit_outdir;
-	delete encoders_button_outdir_browse;
-	delete language_group_language;
-	delete language_text_language;
-	delete language_combo_language;
-	delete language_group_info;
-	delete language_text_info;
-	delete language_link_url;
-	delete cdrip_group_drive;
-	delete cdrip_combo_drive;
-	delete cdrip_group_ripping;
-	delete cdrip_check_paranoia;
-	delete cdrip_combo_paranoia_mode;
-	delete cdrip_check_jitter;
-	delete cdrip_check_swapchannels;
-	delete cdrip_check_locktray;
-	delete cdrip_check_ntscsi;
-	delete cddb_group_cddb;
-	delete cddb_layer_background;
-	delete cddb_check_enable;
-	delete cddb_text_mode;
-	delete cddb_combo_mode;
-	delete cddb_text_server;
-	delete cddb_edit_server;
-	delete cddb_text_port;
-	delete cddb_edit_port;
-	delete cddb_text_email;
-	delete cddb_edit_email;
-	delete cddb_button_http;
-	delete cddb_button_proxy;
-	delete tags_group_tags;
-	delete tags_check_enable;
-	delete tags_text_defcomment;
-	delete tags_edit_defcomment;
-	delete btn_ok;
-	delete btn_cancel;
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(divbar);
+	DeleteObject(reg_register);
+	DeleteObject(register_layer_encoders);
+	DeleteObject(register_layer_language);
+	DeleteObject(register_layer_cdrip);
+	DeleteObject(register_layer_cddb);
+	DeleteObject(register_layer_plugins);
+	DeleteObject(register_layer_tags);
+	DeleteObject(encoders_group_encoder);
+	DeleteObject(encoders_combo_encoder);
+	DeleteObject(encoders_button_config);
+	DeleteObject(encoders_group_outdir);
+	DeleteObject(encoders_edit_outdir);
+	DeleteObject(encoders_button_outdir_browse);
+	DeleteObject(language_group_language);
+	DeleteObject(language_text_language);
+	DeleteObject(language_combo_language);
+	DeleteObject(language_group_info);
+	DeleteObject(language_text_info);
+	DeleteObject(language_link_url);
+	DeleteObject(cdrip_group_drive);
+	DeleteObject(cdrip_combo_drive);
+	DeleteObject(cdrip_group_ripping);
+	DeleteObject(cdrip_check_paranoia);
+	DeleteObject(cdrip_combo_paranoia_mode);
+	DeleteObject(cdrip_check_jitter);
+	DeleteObject(cdrip_check_swapchannels);
+	DeleteObject(cdrip_check_locktray);
+	DeleteObject(cdrip_check_ntscsi);
+	DeleteObject(cddb_group_cddb);
+	DeleteObject(cddb_layer_background);
+	DeleteObject(cddb_check_enable);
+	DeleteObject(cddb_text_mode);
+	DeleteObject(cddb_combo_mode);
+	DeleteObject(cddb_text_server);
+	DeleteObject(cddb_edit_server);
+	DeleteObject(cddb_text_port);
+	DeleteObject(cddb_edit_port);
+	DeleteObject(cddb_text_email);
+	DeleteObject(cddb_edit_email);
+	DeleteObject(cddb_button_http);
+	DeleteObject(cddb_button_proxy);
+	DeleteObject(plugins_tabs_plugins);
+	DeleteObject(plugins_layer_input);
+	DeleteObject(plugins_list_input);
+	DeleteObject(plugins_button_input);
+	DeleteObject(plugins_button_input_about);
+	DeleteObject(plugins_layer_output);
+	DeleteObject(plugins_list_output);
+	DeleteObject(plugins_button_output);
+	DeleteObject(plugins_button_output_about);
+	DeleteObject(tags_group_tags);
+	DeleteObject(tags_check_enable);
+	DeleteObject(tags_text_defcomment);
+	DeleteObject(tags_edit_defcomment);
+	DeleteObject(btn_ok);
+	DeleteObject(btn_cancel);
 }
 
 Int configureGeneralSettings::ShowDialog()
@@ -658,7 +682,7 @@ Void configureGeneralSettings::SelectDir()
 		encoders_edit_outdir->SetText(dialog->GetDirName());
 	}
 
-	delete dialog;
+	DeleteObject(dialog);
 }
 
 Void configureGeneralSettings::ConfigureEncoder()
@@ -669,7 +693,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		dlg->ShowDialog();
 
-		delete dlg;
+		DeleteObject(dlg);
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_BLADEENC)
 	{
@@ -677,7 +701,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		dlg->ShowDialog();
 
-		delete dlg;
+		DeleteObject(dlg);
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_LAMEENC)
 	{
@@ -685,7 +709,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		dlg->ShowDialog();
 
-		delete dlg;
+		DeleteObject(dlg);
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_VORBISENC)
 	{
@@ -693,7 +717,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		dlg->ShowDialog();
 
-		delete dlg;
+		DeleteObject(dlg);
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_FAAC)
 	{
@@ -701,7 +725,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		dlg->ShowDialog();
 
-		delete dlg;
+		DeleteObject(dlg);
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_TVQ)
 	{
@@ -709,7 +733,7 @@ Void configureGeneralSettings::ConfigureEncoder()
 
 		dlg->ShowDialog();
 
-		delete dlg;
+		DeleteObject(dlg);
 	}
 	else if (encoders_combo_encoder->GetSelectedEntry()->id == ENCODER_WAVE)
 	{
@@ -785,7 +809,7 @@ Void configureGeneralSettings::HTTPSettings()
 
 	dlg->ShowDialog();
 
-	delete dlg;
+	DeleteObject(dlg);
 }
 
 Void configureGeneralSettings::ProxySettings()
@@ -794,7 +818,7 @@ Void configureGeneralSettings::ProxySettings()
 
 	dlg->ShowDialog();
 
-	delete dlg;
+	DeleteObject(dlg);
 }
 
 Void configureGeneralSettings::ToggleTags()
@@ -809,4 +833,32 @@ Void configureGeneralSettings::ToggleTags()
 		tags_text_defcomment->Deactivate();
 		tags_edit_defcomment->Deactivate();
 	}
+}
+
+Void configureGeneralSettings::ConfigureInputPlugin()
+{
+	if (plugins_list_input->GetSelectedEntry() == NIL) return;
+
+	currentConfig->appMain->winamp_in_modules.GetNthEntry(plugins_list_input->GetSelectedEntry()->id)->Config(mainWnd->hwnd);
+}
+
+Void configureGeneralSettings::ConfigureOutputPlugin()
+{
+	if (plugins_list_output->GetSelectedEntry() == NIL) return;
+
+	currentConfig->appMain->winamp_out_modules.GetNthEntry(plugins_list_output->GetSelectedEntry()->id)->Config(mainWnd->hwnd);
+}
+
+Void configureGeneralSettings::AboutInputPlugin()
+{
+	if (plugins_list_input->GetSelectedEntry() == NIL) return;
+
+	currentConfig->appMain->winamp_in_modules.GetNthEntry(plugins_list_input->GetSelectedEntry()->id)->About(mainWnd->hwnd);
+}
+
+Void configureGeneralSettings::AboutOutputPlugin()
+{
+	if (plugins_list_output->GetSelectedEntry() == NIL) return;
+
+	currentConfig->appMain->winamp_out_modules.GetNthEntry(plugins_list_output->GetSelectedEntry()->id)->About(mainWnd->hwnd);
 }

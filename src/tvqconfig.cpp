@@ -138,20 +138,6 @@ configureTVQ::configureTVQ()
 
 configureTVQ::~configureTVQ()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(btn_ok);
-	mainWnd->UnregisterObject(btn_cancel);
-	mainWnd->UnregisterObject(group_bitrate);
-	mainWnd->UnregisterObject(text_bitrate);
-	mainWnd->UnregisterObject(combo_bitrate);
-	mainWnd->UnregisterObject(text_bitrate_kbps);
-	mainWnd->UnregisterObject(group_precand);
-	mainWnd->UnregisterObject(text_precand);
-	mainWnd->UnregisterObject(combo_precand);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd;
 	delete divbar;

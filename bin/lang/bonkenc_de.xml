@@ -30,7 +30,7 @@
     <entry id="19" string="Output dir.:">Verzeichnis:</entry>
     <entry id="20" string=" file(s) in joblist:"> Datei(en) zu verarbeiten:</entry>
     <entry id="21" string="none">keine</entry>
-    <entry id="22" string="Display information about BonkEnc">Informationen über BonkEnc anzeigen</entry>
+    <entry id="22" string="Help topics...">Hilfeindex...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Audiodatei(en) zur Liste hinzufügen</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Audio CD Inhalt zur Liste hinzufügen</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Den ausgewählten Eintrag aus der Liste entfernen</entry>
@@ -215,5 +215,13 @@
     <entry id="204" string="Do you want to use native NT SCSI instead?">Möchten Sie stattdessen NT SCSI verwenden?</entry>
     <entry id="205" string="Submitting CD information">Sende CD Informationen</entry>
     <entry id="206" string="Cannot open file:">Kann Datei nicht öffnen:</entry>
+    <entry id="207" string="Query CDDB database">CDDB Datenbank abfragen</entry>
+    <entry id="208" string="Help">Hilfe</entry>
+    <entry id="209" string="index.html">index_de.html</entry>
+    <entry id="210" string="Plug-ins">Plugins</entry>
+    <entry id="211" string="Input plug-ins">Eingabeplugins</entry>
+    <entry id="212" string="Output plug-ins">Ausgabeplugins</entry>
+    <entry id="212" string="Configure">Konfigurieren</entry>
+    <entry id="213" string="About">Über</entry>
   </data>
 </LangFile>

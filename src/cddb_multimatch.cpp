@@ -76,16 +76,6 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 
 cddbMultiMatchDlg::~cddbMultiMatchDlg()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(btn_ok);
-	mainWnd->UnregisterObject(btn_cancel);
-	mainWnd->UnregisterObject(group_match);
-	mainWnd->UnregisterObject(combo_match);
-	mainWnd->UnregisterObject(text_match);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd;
 	delete divbar;

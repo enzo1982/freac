@@ -338,30 +338,6 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 cddbSubmitDlg::~cddbSubmitDlg()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(combo_drive);
-	mainWnd->UnregisterObject(group_drive);
-	mainWnd->UnregisterObject(text_artist);
-	mainWnd->UnregisterObject(edit_artist);
-	mainWnd->UnregisterObject(text_album);
-	mainWnd->UnregisterObject(edit_album);
-	mainWnd->UnregisterObject(text_genre);
-	mainWnd->UnregisterObject(edit_genre);
-	mainWnd->UnregisterObject(text_year);
-	mainWnd->UnregisterObject(edit_year);
-	mainWnd->UnregisterObject(list_tracks);
-	mainWnd->UnregisterObject(text_track);
-	mainWnd->UnregisterObject(edit_track);
-	mainWnd->UnregisterObject(text_title);
-	mainWnd->UnregisterObject(edit_title);
-	mainWnd->UnregisterObject(text_cdstatus);
-	mainWnd->UnregisterObject(text_status);
-	mainWnd->UnregisterObject(btn_submit);
-	mainWnd->UnregisterObject(btn_cancel);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd;
 	delete divbar;

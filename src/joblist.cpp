@@ -29,7 +29,7 @@ Void bonkEncGUI::AddFile()
 	Array<String>	 types;
 	Array<String>	 extensions;
 
-	for (Int i = 0; i < winamp_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < winamp_in_plugins.GetNOfEntries(); i++)
 	{
 		Int		 n = 1;
 		Int		 k = 0;
@@ -40,9 +40,9 @@ Void bonkEncGUI::AddFile()
 		{
 			if (!(n & 1))
 			{
-				type[k++] = winamp_modules.GetNthEntry(i)->FileExtensions[j];
+				type[k++] = winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
 
-				if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
 					types.AddEntry(type);
 					k = 0;
@@ -52,9 +52,9 @@ Void bonkEncGUI::AddFile()
 			}
 			else
 			{
-				extension[k++] = winamp_modules.GetNthEntry(i)->FileExtensions[j];
+				extension[k++] = winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
 
-				if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
 					String	 extension2 = String("*.").Append(extension);
 					Int	 o = 0;		
@@ -79,7 +79,7 @@ Void bonkEncGUI::AddFile()
 				}
 			}
 
-			if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0 && winamp_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
+			if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
 		}
 	}
 

@@ -30,7 +30,6 @@
     <entry id="19" string="Output dir.:">Dir. de salida:</entry>
     <entry id="20" string=" file(s) in joblist:"> archivo(s) en lista:</entry>
     <entry id="21" string="none">ninguno</entry>
-    <entry id="22" string="Display information about BonkEnc">Mostrar información sobre BonkEnc</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Añadir archivo(s) de audio a la lista</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Añadir contenido de CD Audio a la lista</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Eliminar la entrada selecionada de la lista</entry>

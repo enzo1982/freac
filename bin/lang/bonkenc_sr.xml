@@ -30,7 +30,6 @@
     <entry id="19" string="Output dir.:">Izlazni direktorijum:</entry>
     <entry id="20" string=" file(s) in joblist:"> fajlova u listi:</entry>
     <entry id="21" string="none">nijedan</entry>
-    <entry id="22" string="Display information about BonkEnc">Informacije o BonkEnc-u</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Dodati fajl (ove) u listu</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Dodati sadrzaj Audio CD-a u listu</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Ukloniti odabrani fajl sa liste</entry>

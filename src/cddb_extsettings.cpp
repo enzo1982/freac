@@ -179,31 +179,6 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(btn_ok);
-	mainWnd->UnregisterObject(btn_cancel);
-	mainWnd->UnregisterObject(reg_register);
-
-	reg_register->UnregisterObject(register_layer_http);
-	reg_register->UnregisterObject(register_layer_proxy);
-
-	register_layer_http->UnregisterObject(http_group_scripts);
-	register_layer_http->UnregisterObject(http_text_query);
-	register_layer_http->UnregisterObject(http_edit_query);
-	register_layer_http->UnregisterObject(http_text_submit);
-	register_layer_http->UnregisterObject(http_edit_submit);
-
-	register_layer_proxy->UnregisterObject(proxy_group_proxy);
-	register_layer_proxy->UnregisterObject(proxy_text_mode);
-	register_layer_proxy->UnregisterObject(proxy_combo_mode);
-	register_layer_proxy->UnregisterObject(proxy_text_server);
-	register_layer_proxy->UnregisterObject(proxy_edit_server);
-	register_layer_proxy->UnregisterObject(proxy_text_port);
-	register_layer_proxy->UnregisterObject(proxy_edit_port);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd;
 	delete divbar;

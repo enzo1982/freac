@@ -156,48 +156,22 @@ class bonkEnc : public Application
 		Bool			 cddbRetry;
 		Int			 encoder_activedrive;
 
-		HINSTANCE		 bonkdll;
-
 		Bool			 LoadBonkDLL();
 		Void			 FreeBonkDLL();
-
-		HINSTANCE		 bladedll;
-
 		Bool			 LoadBladeDLL();
 		Void			 FreeBladeDLL();
-
-		HINSTANCE		 lamedll;
-
 		Bool			 LoadLAMEDLL();
 		Void			 FreeLAMEDLL();
-
-		HINSTANCE		 vorbisdll;
-
 		Bool			 LoadVorbisDLL();
 		Void			 FreeVorbisDLL();
-
-		HINSTANCE		 faacdll;
-
 		Bool			 LoadFAACDLL();
 		Void			 FreeFAACDLL();
-
-		HINSTANCE		 tvqdll;
-
 		Bool			 LoadTVQDLL();
 		Void			 FreeTVQDLL();
-
-		HINSTANCE		 cdripdll;
-
 		Bool			 LoadCDRipDLL();
 		Void			 FreeCDRipDLL();
-
-		HINSTANCE		 id3dll;
-
 		Bool			 LoadID3DLL();
 		Void			 FreeID3DLL();
-
-		Array<HMODULE>		 winamp_plugins;
-		Array<In_Module *>	 winamp_modules;
 
 		Bool			 LoadWinampDLLs();
 		Void			 FreeWinampDLLs();
@@ -216,6 +190,20 @@ class bonkEnc : public Application
 
 		static bonkEncConfig	*currentConfig;
 		static bonkTranslator	*i18n;
+
+		HINSTANCE		 bonkdll;
+		HINSTANCE		 bladedll;
+		HINSTANCE		 lamedll;
+		HINSTANCE		 vorbisdll;
+		HINSTANCE		 faacdll;
+		HINSTANCE		 tvqdll;
+		HINSTANCE		 cdripdll;
+		HINSTANCE		 id3dll;
+
+		Array<HMODULE>		 winamp_in_plugins;
+		Array<In_Module *>	 winamp_in_modules;
+		Array<HMODULE>		 winamp_out_plugins;
+		Array<Out_Module *>	 winamp_out_modules;
 
 		Array<String>		 cdText;
 		CDDBInfo		*cddbInfo;

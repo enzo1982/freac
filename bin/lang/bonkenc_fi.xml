@@ -30,7 +30,6 @@
     <entry id="19" string="Output dir.:">Hakemisto:</entry>
     <entry id="20" string=" file(s) in joblist:"> tiedosto(a) listassa:</entry>
     <entry id="21" string="none">ei mitään</entry>
-    <entry id="22" string="Display information about BonkEnc">Näytä tietoja kohteesta BonkEnc</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Lisää äänitiedosto(t) listalle</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Lisää äänilevyn sisältö listalle</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Poista valittu kohta listalta</entry>

@@ -30,7 +30,6 @@
     <entry id="19" string="Output dir.:">Директория:</entry>
     <entry id="20" string=" file(s) in joblist:"> Файл(а/ов) в листе:</entry>
     <entry id="21" string="none">пусто</entry>
-    <entry id="22" string="Display information about BonkEnc">Информация о BonkEnc</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Добавить аудио файл(ы) в лист</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Добавить содержимое Аудио CD в лист</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Удалить текущую позицию из листа</entry>

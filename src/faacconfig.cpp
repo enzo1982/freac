@@ -203,32 +203,6 @@ configureFAAC::configureFAAC()
 
 configureFAAC::~configureFAAC()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(btn_ok);
-	mainWnd->UnregisterObject(btn_cancel);
-	mainWnd->UnregisterObject(group_version);
-	mainWnd->UnregisterObject(option_version_mpeg2);
-	mainWnd->UnregisterObject(option_version_mpeg4);
-	mainWnd->UnregisterObject(group_aactype);
-	mainWnd->UnregisterObject(option_aactype_main);
-	mainWnd->UnregisterObject(option_aactype_low);
-	mainWnd->UnregisterObject(option_aactype_ltp);
-	mainWnd->UnregisterObject(group_bitrate);
-	mainWnd->UnregisterObject(text_bitrate);
-	mainWnd->UnregisterObject(slider_bitrate);
-	mainWnd->UnregisterObject(edit_bitrate);
-	mainWnd->UnregisterObject(text_bitrate_kbps);
-	mainWnd->UnregisterObject(group_js);
-	mainWnd->UnregisterObject(check_js);
-	mainWnd->UnregisterObject(group_tns);
-	mainWnd->UnregisterObject(check_tns);
-	mainWnd->UnregisterObject(group_bandwidth);
-	mainWnd->UnregisterObject(text_bandwidth);
-	mainWnd->UnregisterObject(edit_bandwidth);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd;
 	delete divbar;

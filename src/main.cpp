@@ -71,6 +71,7 @@ bonkEncGUI::bonkEncGUI()
 	menu_seldrive		= new Menu();
 	menu_database		= new Menu();
 	menu_trackmenu		= new Menu();
+	menu_help		= new Menu();
 
 	pos.x = 91;
 	pos.y = -22;
@@ -122,7 +123,7 @@ bonkEncGUI::bonkEncGUI()
 	pos.x = 7;
 	pos.y += 19;
 	size.cx = currentConfig->wndSize.cx - 20;
-	size.cy = currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0);
+	size.cy = currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0);
 
 	joblist			= new ListBox(pos, size);
 	joblist->onClick.Connect(&bonkEncGUI::SelectJoblistEntry, this);
@@ -529,17 +530,20 @@ bonkEncGUI::bonkEncGUI()
 	menu_trackmenu->AddEntry();
 	menu_trackmenu->AddEntry(i18n->TranslateString("Clear joblist"))->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
 
+	menu_help->AddEntry(i18n->TranslateString("Help topics..."))->onClick.Connect(&bonkEncGUI::ShowHelp, this);
+	menu_help->AddEntry();
+	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onClick.Connect(&bonkEncGUI::About, this);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
-	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 
+	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
+	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help, NIL, NIL, 0, OR_RIGHT);
 
-	entry = mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), NIL, NIL, NIL, 0, OR_RIGHT);
-	entry->onClick.Connect(&bonkEncGUI::About, this);
-	entry->SetStatusText(i18n->TranslateString("Display information about BonkEnc"));
+	mainWnd_iconbar->SetBitmapSize(24);
 
 	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL));
 	entry->onClick.Connect(&bonkEncGUI::AddFile, this);
@@ -559,6 +563,16 @@ bonkEncGUI::bonkEncGUI()
 	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 3, NIL));
 	entry->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
 	entry->SetStatusText(i18n->TranslateString("Clear the entire joblist"));
+
+	mainWnd_iconbar->AddEntry();
+
+	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));
+//	entry->onClick.Connect(&bonkEnc::QueryCDDB, (bonkEnc *) this);
+	entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
+
+	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 11, NIL));
+	entry->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
+	entry->SetStatusText(i18n->TranslateString("Submit CDDB data..."));
 
 	mainWnd_iconbar->AddEntry();
 
@@ -650,46 +664,6 @@ bonkEncGUI::bonkEncGUI()
 
 bonkEncGUI::~bonkEncGUI()
 {
-	info_background->UnregisterObject(info_checkbox);
-
-	mainWnd->UnregisterObject(mainWnd_menubar);
-	mainWnd->UnregisterObject(mainWnd_iconbar);
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(mainWnd_statusbar);
-	mainWnd->UnregisterObject(joblist);
-	mainWnd->UnregisterObject(droparea);
-	mainWnd->UnregisterObject(txt_joblist);
-	mainWnd->UnregisterObject(info_divider);
-	mainWnd->UnregisterObject(info_bottom);
-	mainWnd->UnregisterObject(info_background);
-	mainWnd->UnregisterObject(info_text_artist);
-	mainWnd->UnregisterObject(info_edit_artist);
-	mainWnd->UnregisterObject(info_text_title);
-	mainWnd->UnregisterObject(info_edit_title);
-	mainWnd->UnregisterObject(info_text_album);
-	mainWnd->UnregisterObject(info_edit_album);
-	mainWnd->UnregisterObject(info_text_track);
-	mainWnd->UnregisterObject(info_edit_track);
-	mainWnd->UnregisterObject(info_text_year);
-	mainWnd->UnregisterObject(info_edit_year);
-	mainWnd->UnregisterObject(info_text_genre);
-	mainWnd->UnregisterObject(info_edit_genre);
-	mainWnd->UnregisterObject(enc_filename);
-	mainWnd->UnregisterObject(enc_time);
-	mainWnd->UnregisterObject(enc_percent);
-	mainWnd->UnregisterObject(enc_encoder);
-	mainWnd->UnregisterObject(enc_progress);
-	mainWnd->UnregisterObject(enc_outdir);
-	mainWnd->UnregisterObject(edb_filename);
-	mainWnd->UnregisterObject(edb_time);
-	mainWnd->UnregisterObject(edb_percent);
-	mainWnd->UnregisterObject(edb_encoder);
-	mainWnd->UnregisterObject(edb_outdir);
-	mainWnd->UnregisterObject(progress);
-	mainWnd->UnregisterObject(hyperlink);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_menubar;
 	delete mainWnd_iconbar;
 	delete mainWnd_titlebar;
@@ -735,6 +709,7 @@ bonkEncGUI::~bonkEncGUI()
 	delete menu_seldrive;
 	delete menu_database;
 	delete menu_trackmenu;
+	delete menu_help;
 	delete hyperlink;
 
 	delete i18n;
@@ -791,8 +766,8 @@ Void bonkEncGUI::ResizeProc()
 
 	progress->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->GetObjectProperties()->size.cy);
 
-	joblist->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0));
-	droparea->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 239 - (currentConfig->showTitleInfo ? 65 : 0));
+	joblist->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
+	droparea->GetObjectProperties()->size = Size(currentConfig->wndSize.cx - 20, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
 
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
@@ -1145,6 +1120,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	menu_encode->Clear();
 	menu_database->Clear();
 	menu_trackmenu->Clear();
+	menu_help->Clear();
 	mainWnd_menubar->Clear();
 	mainWnd_iconbar->Clear();
 
@@ -1196,17 +1172,18 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	menu_trackmenu->AddEntry();
 	menu_trackmenu->AddEntry(i18n->TranslateString("Clear joblist"))->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
 
+	menu_help->AddEntry(i18n->TranslateString("Help topics..."))->onClick.Connect(&bonkEncGUI::ShowHelp, this);
+	menu_help->AddEntry();
+	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onClick.Connect(&bonkEncGUI::About, this);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
-	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 
+	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-
-	entry = mainWnd_menubar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 6, NIL), NIL, NIL, NIL, 0, OR_RIGHT);
-	entry->onClick.Connect(&bonkEncGUI::About, this);
-	entry->SetStatusText(i18n->TranslateString("Display information about BonkEnc"));
+	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help, NIL, NIL, 0, OR_RIGHT);
 
 	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 1, NIL));
 	entry->onClick.Connect(&bonkEncGUI::AddFile, this);
@@ -1269,4 +1246,9 @@ Menu *bonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)
 	}
 
 	return NIL;
+}
+
+Void bonkEncGUI::ShowHelp()
+{
+	ShellExecuteA(NIL, "open", GetApplicationDirectory().Append("manual/").Append(i18n->TranslateString("index.html")), NIL, NIL, 0);
 }

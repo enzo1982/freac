@@ -259,7 +259,7 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 	Array<String>	 extensions;
 	Array<Int>	 indexes;
 
-	for (Int i = 0; i < winamp_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < winamp_in_plugins.GetNOfEntries(); i++)
 	{
 		Int	 n = 1;
 		Int	 k = 0;
@@ -269,13 +269,13 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 		{
 			if (!(n & 1))
 			{
-				if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0) n++;
+				if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0) n++;
 			}
 			else
 			{
-				extension[k++] = winamp_modules.GetNthEntry(i)->FileExtensions[j];
+				extension[k++] = winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
 
-				if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
 					String	 extension2 = extension;
 					Int	 o = 0;		
@@ -303,7 +303,7 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 				}
 			}
 
-			if (winamp_modules.GetNthEntry(i)->FileExtensions[j] == 0 && winamp_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
+			if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
 		}
 	}
 
@@ -372,7 +372,7 @@ InputFilter *bonkEnc::CreateInputFilter(String file)
 		}
 		else
 		{
-			filter_in = new FilterInWinamp(currentConfig, winamp_modules.GetNthEntry(indexes.GetNthEntry(found)));
+			filter_in = new FilterInWinamp(currentConfig, winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
 		}
 	}
 

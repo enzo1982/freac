@@ -30,7 +30,6 @@
     <entry id="19" string="Output dir.:">Cél könyvtár:</entry>
     <entry id="20" string=" file(s) in joblist:"> fájl(ok) a listán:</entry>
     <entry id="21" string="none">nincs</entry>
-    <entry id="22" string="Display information about BonkEnc">Információk a BonkEnc-rõl</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Audiofájlok hozzáadása a listához </entry>
     <entry id="24" string="Add audio CD contents to the joblist">Audio CD tartalma a listához</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Kiválasztott elem törlése a listából</entry>

@@ -149,26 +149,6 @@ configureBonkEnc::configureBonkEnc()
 
 configureBonkEnc::~configureBonkEnc()
 {
-	mainWnd->UnregisterObject(mainWnd_titlebar);
-	mainWnd->UnregisterObject(divbar);
-	mainWnd->UnregisterObject(btn_ok);
-	mainWnd->UnregisterObject(btn_cancel);
-	mainWnd->UnregisterObject(group_quant);
-	mainWnd->UnregisterObject(slider_quant);
-	mainWnd->UnregisterObject(text_quant);
-	mainWnd->UnregisterObject(group_stereo);
-	mainWnd->UnregisterObject(check_joint);
-	mainWnd->UnregisterObject(group_mode);
-	mainWnd->UnregisterObject(check_lossless);
-	mainWnd->UnregisterObject(group_downsampling);
-	mainWnd->UnregisterObject(slider_downsampling);
-	mainWnd->UnregisterObject(text_downsampling);
-	mainWnd->UnregisterObject(group_predictor);
-	mainWnd->UnregisterObject(slider_predictor);
-	mainWnd->UnregisterObject(text_predictor);
-
-	UnregisterObject(mainWnd);
-
 	delete mainWnd_titlebar;
 	delete mainWnd;
 	delete divbar;
