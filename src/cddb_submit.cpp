@@ -83,11 +83,11 @@ cddbSubmitDlg::cddbSubmitDlg()
 	size.cx = 186 - (Int) Math::Max(text_artist->GetObjectProperties()->textSize.cx, Math::Max(text_album->GetObjectProperties()->textSize.cx, text_genre->GetObjectProperties()->textSize.cx));
 	size.cy = 0;
 
-	edit_artist	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	edit_artist	= new EditBox("", pos, size, 0);
 
 	pos.y += 28;
 
-	edit_album	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	edit_album	= new EditBox("", pos, size, 0);
 
 	list_genre	= new ListBox(pos, size);
 	list_genre->AddEntry("");
@@ -244,7 +244,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	pos.y += 28;
 
-	edit_genre	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	edit_genre	= new EditBox("", pos, size, 0);
 	edit_genre->SetDropDownList(list_genre);
 
 	pos.x = 6;
@@ -261,7 +261,8 @@ cddbSubmitDlg::cddbSubmitDlg()
 	pos.y -= 3;
 	size.cx = 31;
 
-	edit_year	= new EditBox("", pos, size, EDB_NUMERIC, 4);
+	edit_year	= new EditBox("", pos, size, 4);
+	edit_year->SetFlags(EDB_NUMERIC);
 
 	pos.x = 7;
 	pos.y += 28;
@@ -283,7 +284,8 @@ cddbSubmitDlg::cddbSubmitDlg()
 	size.cx = 25;
 	size.cy = 0;
 
-	edit_track	= new EditBox("", pos, size, EDB_NUMERIC, 3);
+	edit_track	= new EditBox("", pos, size, 3);
+	edit_track->SetFlags(EDB_NUMERIC);
 	edit_track->Deactivate();
 
 	pos.x += 32;
@@ -295,7 +297,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	pos.y -= 3;
 	size.cx = 435 - text_title->GetObjectProperties()->textSize.cx - text_track->GetObjectProperties()->textSize.cx;
 
-	edit_title	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	edit_title	= new EditBox("", pos, size, 0);
 	edit_title->onClick.Connect(&cddbSubmitDlg::UpdateTrack, this);
 
 	pos.x = 6;
@@ -660,6 +662,10 @@ Void cddbSubmitDlg::SelectTrack()
 
 	if (track > 0 && track < 10)	edit_track->SetText(String("0").Append(String::FromInt(track)));
 	else if (track >= 10)		edit_track->SetText(String::FromInt(track));
+
+	edit_title->GetObjectProperties()->checked = True;
+	edit_title->Process(SM_LBUTTONDOWN, 0, 0);
+	edit_title->Process(WM_KEYDOWN, VK_END, 0);
 
 	dontUpdateInfo = False;
 }

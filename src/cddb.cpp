@@ -258,7 +258,7 @@ String bonkEncCDDB::SendCommand(String command)
 				log->OutputLine(str);
 #endif
 			}
-			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
+			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5' && str != "");
 
 			if (str[1] == '1')
 			{
@@ -508,7 +508,7 @@ String bonkEncCDDB::Submit(CDDBInfo *cddbInfo)
 	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
 	str.Append("Discid: ").Append(cddbInfo->discid).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append("submit").Append("\n");
+	str.Append("Submit-Mode: ").Append("test").Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(content.Length())).Append("\n");
 	str.Append("Charset: ISO-8859-1\n");
 	str.Append("\n");

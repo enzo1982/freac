@@ -99,7 +99,8 @@ configureVorbisEnc::configureVorbisEnc()
 	pos.y -= 1;
 	size.cx = 25;
 
-	edit_abr		= new EditBox("", pos, size, EDB_NUMERIC, 3);
+	edit_abr		= new EditBox("", pos, size, 3);
+	edit_abr->SetFlags(EDB_NUMERIC);
 	edit_abr->onClick.Connect(&configureVorbisEnc::SetBitrateByEditBox, this);
 
 	pos.x += 32;

@@ -138,7 +138,7 @@ configureGeneralSettings::configureGeneralSettings()
 	size.cx = 236;
 	size.cy = 0;
 
-	encoders_edit_outdir	= new EditBox(currentConfig->enc_outdir, pos, size, EDB_ALPHANUMERIC, 0);
+	encoders_edit_outdir	= new EditBox(currentConfig->enc_outdir, pos, size, 0);
 
 	pos.x += 244;
 	pos.y -= 1;
@@ -322,7 +322,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.y -= 3;
 	size.cx = 146;
 
-	cddb_edit_server	= new EditBox(currentConfig->freedb_server, pos, size, EDB_ALPHANUMERIC, 0);
+	cddb_edit_server	= new EditBox(currentConfig->freedb_server, pos, size, 0);
 
 	pos.x += 153;
 	pos.y += 3;
@@ -334,7 +334,8 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.y -= 3;
 	size.cx = 37;
 
-	cddb_edit_port		= new EditBox("", pos, size, EDB_NUMERIC, 5);
+	cddb_edit_port		= new EditBox("", pos, size, 5);
+	cddb_edit_port->SetFlags(EDB_NUMERIC);
 
 	pos.x = 16;
 	pos.y += 30;
@@ -345,7 +346,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.y -= 3;
 	size.cx = 146;
 
-	cddb_edit_email		= new EditBox(currentConfig->freedb_email, pos, size, EDB_ALPHANUMERIC, 0);
+	cddb_edit_email		= new EditBox(currentConfig->freedb_email, pos, size, 0);
 
 	pos.x = 17;
 	pos.y += 27;
@@ -393,7 +394,7 @@ configureGeneralSettings::configureGeneralSettings()
 	size.cx = 320 - tags_text_defcomment->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	tags_edit_defcomment	= new EditBox(currentConfig->default_comment, pos, size, EDB_ALPHANUMERIC, 0);
+	tags_edit_defcomment	= new EditBox(currentConfig->default_comment, pos, size, 0);
 
 	ToggleTags();
 

@@ -358,13 +358,13 @@ bonkEnc::bonkEnc()
 	size.cx = 180;
 	size.cy = 0;
 
-	info_edit_artist	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_artist	= new EditBox("", pos, size, 0);
 	info_edit_artist->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_artist->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	info_edit_album	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_album	= new EditBox("", pos, size, 0);
 	info_edit_album->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_album->SetOrientation(OR_LOWERLEFT);
 
@@ -383,14 +383,15 @@ bonkEnc::bonkEnc()
 	pos.y += 27;
 	size.cx = 100;
 
-	info_edit_title		= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_title		= new EditBox("", pos, size, 0);
 	info_edit_title->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_title->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 	size.cx = 25;
 
-	info_edit_track		= new EditBox("", pos, size, EDB_NUMERIC, 3);
+	info_edit_track		= new EditBox("", pos, size, 3);
+	info_edit_track->SetFlags(EDB_NUMERIC);
 	info_edit_track->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_track->SetOrientation(OR_LOWERLEFT);
 
@@ -404,7 +405,8 @@ bonkEnc::bonkEnc()
 	pos.y += 3;
 	size.cx = 31;
 
-	info_edit_year		= new EditBox("", pos, size, EDB_NUMERIC, 4);
+	info_edit_year		= new EditBox("", pos, size, 4);
+	info_edit_year->SetFlags(EDB_NUMERIC);
 	info_edit_year->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_year->SetOrientation(OR_LOWERLEFT);
 
@@ -571,7 +573,7 @@ bonkEnc::bonkEnc()
 	pos.y += 3;
 	size.cx = 130;
 
-	info_edit_genre	= new EditBox("", pos, size, EDB_ALPHANUMERIC, 0);
+	info_edit_genre	= new EditBox("", pos, size, 0);
 	info_edit_genre->onClick.Connect(&bonkEnc::UpdateTitleInfo, this);
 	info_edit_genre->SetOrientation(OR_LOWERLEFT);
 	info_edit_genre->SetDropDownList(info_list_genre);
@@ -592,34 +594,34 @@ bonkEnc::bonkEnc()
 	size.cx = currentConfig->wndSize.cx - 27 - maxTextLength;
 	size.cy = 0;
 
-	edb_filename		= new EditBox(i18n->TranslateString("none"), pos, size, EDB_ALPHANUMERIC, 1024);
+	edb_filename		= new EditBox(i18n->TranslateString("none"), pos, size, 1024);
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
 	pos.y -= 24;
 	size.cx = 34;
 
-	edb_time		= new EditBox("00:00", pos, size, EDB_ALPHANUMERIC, 5);
+	edb_time		= new EditBox("00:00", pos, size, 5);
 	edb_time->SetOrientation(OR_LOWERLEFT);
 	edb_time->Deactivate();
 
 	pos.x += (48 + enc_percent->GetObjectProperties()->textSize.cx);
 	size.cx = 33;
 
-	edb_percent		= new EditBox("0%", pos, size, EDB_ALPHANUMERIC, 4);
+	edb_percent		= new EditBox("0%", pos, size, 4);
 	edb_percent->SetOrientation(OR_LOWERLEFT);
 	edb_percent->Deactivate();
 
 	pos.x += (47 + enc_encoder->GetObjectProperties()->textSize.cx);
 	size.cx = currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->GetObjectProperties()->textSize.cx - enc_encoder->GetObjectProperties()->textSize.cx;
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("Bonk", pos, size, EDB_ALPHANUMERIC, 4);
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new EditBox("BladeEnc", pos, size, EDB_ALPHANUMERIC, 4);
-	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder = new EditBox("LAME", pos, size, EDB_ALPHANUMERIC, 4);
-	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder = new EditBox("Ogg Vorbis", pos, size, EDB_ALPHANUMERIC, 4);
-	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder = new EditBox("FAAC", pos, size, EDB_ALPHANUMERIC, 4);
-	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder = new EditBox("TwinVQ", pos, size, EDB_ALPHANUMERIC, 4);
-	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder = new EditBox("WAVE Out", pos, size, EDB_ALPHANUMERIC, 4);
+	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("Bonk", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new EditBox("BladeEnc", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder = new EditBox("LAME", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder = new EditBox("Ogg Vorbis", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder = new EditBox("FAAC", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder = new EditBox("TwinVQ", pos, size, 4);
+	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder = new EditBox("WAVE Out", pos, size, 4);
 
 	edb_encoder->SetOrientation(OR_LOWERLEFT);
 	edb_encoder->Deactivate();
@@ -628,7 +630,7 @@ bonkEnc::bonkEnc()
 	pos.y -= 48;
 	size.cx = currentConfig->wndSize.cx - 27 - maxTextLength;
 
-	edb_outdir		= new EditBox(currentConfig->enc_outdir, pos, size, EDB_ALPHANUMERIC, 1024);
+	edb_outdir		= new EditBox(currentConfig->enc_outdir, pos, size, 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->Deactivate();
 

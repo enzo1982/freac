@@ -110,7 +110,8 @@ configureFAAC::configureFAAC()
 	pos.y -= 1;
 	size.cx = 25;
 
-	edit_bitrate		= new EditBox("", pos, size, EDB_NUMERIC, 3);
+	edit_bitrate		= new EditBox("", pos, size, 3);
+	edit_bitrate->SetFlags(EDB_NUMERIC);
 	edit_bitrate->onClick.Connect(&configureFAAC::SetBitrateByEditBox, this);
 
 	pos.x += 32;
@@ -163,7 +164,8 @@ configureFAAC::configureFAAC()
 	size.cx = 291 - text_bandwidth->GetObjectProperties()->textSize.cx;
 	size.cy = 0;
 
-	edit_bandwidth		= new EditBox(String::FromInt(currentConfig->faac_bandwidth), pos, size, EDB_NUMERIC, 5);
+	edit_bandwidth		= new EditBox(String::FromInt(currentConfig->faac_bandwidth), pos, size, 5);
+	edit_bandwidth->SetFlags(EDB_NUMERIC);
 
 	SetBitrate();
 

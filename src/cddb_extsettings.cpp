@@ -64,7 +64,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	size.cx = 192;
 	size.cy = 0;
 
-	http_edit_query		= new EditBox(currentConfig->freedb_query_path, pos, size, EDB_ALPHANUMERIC, 0);
+	http_edit_query		= new EditBox(currentConfig->freedb_query_path, pos, size, 0);
 
 	pos.x = 16;
 	pos.y += 30;
@@ -74,7 +74,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.x += 101;
 	pos.y -= 3;
 
-	http_edit_submit	= new EditBox(currentConfig->freedb_submit_path, pos, size, EDB_ALPHANUMERIC, 0);
+	http_edit_submit	= new EditBox(currentConfig->freedb_submit_path, pos, size, 0);
 
 	Int	 maxTextSize = max(http_text_query->GetObjectProperties()->textSize.cx, http_text_submit->GetObjectProperties()->textSize.cx);
 
@@ -114,7 +114,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.y -= 3;
 	size.cx = 100;
 
-	proxy_edit_server	= new EditBox(currentConfig->freedb_proxy, pos, size, EDB_ALPHANUMERIC, 0);
+	proxy_edit_server	= new EditBox(currentConfig->freedb_proxy, pos, size, 0);
 
 	pos.x += 110;
 	pos.y += 3;
@@ -126,7 +126,8 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.y -= 3;
 	size.cx = 37;
 
-	proxy_edit_port		= new EditBox(String::FromInt(currentConfig->freedb_proxy_port), pos, size, EDB_NUMERIC, 5);
+	proxy_edit_port		= new EditBox(String::FromInt(currentConfig->freedb_proxy_port), pos, size, 5);
+	proxy_edit_port->SetFlags(EDB_NUMERIC);
 
 	maxTextSize = max(proxy_text_mode->GetObjectProperties()->textSize.cx, proxy_text_server->GetObjectProperties()->textSize.cx);
 

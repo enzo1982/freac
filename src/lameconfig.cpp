@@ -144,7 +144,8 @@ configureLameEnc::configureLameEnc()
 	pos.y += 22;
 	size.cx = 34;
 
-	basic_edit_ratio	= new EditBox(String::FromFloat(((double) ratio) / 100), pos, size, EDB_NUMERIC, 5);
+	basic_edit_ratio	= new EditBox(String::FromFloat(((double) ratio) / 100), pos, size, 5);
+	basic_edit_ratio->SetFlags(EDB_NUMERIC);
 
 	pos.x = 7;
 	pos.y = 137;
@@ -293,7 +294,8 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 25;
 
-	vbr_edit_abrbitrate	= new EditBox("", pos, size, EDB_NUMERIC, 3);
+	vbr_edit_abrbitrate	= new EditBox("", pos, size, 3);
+	vbr_edit_abrbitrate->SetFlags(EDB_NUMERIC);
 	vbr_edit_abrbitrate->onClick.Connect(&configureLameEnc::SetABRBitrateByEditBox, this);
 	SetABRBitrate();
 
@@ -474,7 +476,8 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_highpass	= new EditBox(String::FromInt(currentConfig->lame_highpass), pos, size, EDB_NUMERIC, 5);
+	filtering_edit_highpass	= new EditBox(String::FromInt(currentConfig->lame_highpass), pos, size, 5);
+	filtering_edit_highpass->SetFlags(EDB_NUMERIC);
 
 	pos.x -= 164;
 	pos.y += 26;
@@ -487,7 +490,8 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_highpass_width= new EditBox(String::FromInt(currentConfig->lame_highpass_width), pos, size, EDB_NUMERIC, 5);
+	filtering_edit_highpass_width= new EditBox(String::FromInt(currentConfig->lame_highpass_width), pos, size, 5);
+	filtering_edit_highpass_width->SetFlags(EDB_NUMERIC);
 
 	pos.x = 153;
 	pos.y = 87;
@@ -508,7 +512,8 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_lowpass	= new EditBox(String::FromInt(currentConfig->lame_lowpass), pos, size, EDB_NUMERIC, 5);
+	filtering_edit_lowpass	= new EditBox(String::FromInt(currentConfig->lame_lowpass), pos, size, 5);
+	filtering_edit_lowpass->SetFlags(EDB_NUMERIC);
 
 	pos.x -= 164;
 	pos.y += 26;
@@ -521,7 +526,8 @@ configureLameEnc::configureLameEnc()
 	pos.y -= 1;
 	size.cx = 37;
 
-	filtering_edit_lowpass_width= new EditBox(String::FromInt(currentConfig->lame_lowpass_width), pos, size, EDB_NUMERIC, 5);
+	filtering_edit_lowpass_width= new EditBox(String::FromInt(currentConfig->lame_lowpass_width), pos, size, 5);
+	filtering_edit_lowpass_width->SetFlags(EDB_NUMERIC);
 
 	pos.x = 7;
 	pos.y = 62;
