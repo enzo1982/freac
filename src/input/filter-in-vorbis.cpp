@@ -185,7 +185,6 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
-	nFormat->trackInfo = NIL;
 	nFormat->fileSize = f_in->Size();
 
 	ogg_sync_state		 foy;
@@ -250,8 +249,6 @@ bonkFormatInfo *FilterInVORBIS::GetFileInfo(String inFile)
 
 	if (fvc.comments > 0)
 	{
-		nFormat->trackInfo = new bonkFormatInfo::bonkTrackInfo;
-
 		nFormat->trackInfo->track = -1;
 		nFormat->trackInfo->outfile = NIL;
 		nFormat->trackInfo->hasText = True;

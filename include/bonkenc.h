@@ -45,12 +45,13 @@ class bonkFormatInfo
 					{
 						isCDTrack = False;
 
-						track = -1;
-						drive = -1;
-						discid = 0;
+						drive	= -1;
+						discid	= 0;
+						cdTrack	= -1;
 
-						hasText = False;
-						year = -1;
+						hasText	= False;
+						track	= -1;
+						year	= -1;
 					}
 
 				Bool	 isCDTrack;
@@ -77,7 +78,7 @@ class bonkFormatInfo
 
 				 bonkFormatInfo()
 				{
-					trackInfo = NIL;
+					trackInfo = new bonkTrackInfo;
 
 					channels = 0;
 					rate = 0;
@@ -89,7 +90,7 @@ class bonkFormatInfo
 
 				~bonkFormatInfo()
 				{
-					if (trackInfo != NIL) delete trackInfo;
+					delete trackInfo;
 				}
 
 		bonkTrackInfo	*trackInfo;

@@ -104,7 +104,6 @@ bonkFormatInfo *FilterInVOC::GetFileInfo(String inFile)
 
 	// Add more checking to this!
 
-	nFormat->trackInfo = NIL;
 	nFormat->fileSize = f_in->Size();
 	nFormat->order = BYTE_INTEL;
 

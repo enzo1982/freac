@@ -142,7 +142,6 @@ bonkFormatInfo *FilterInWinamp::GetFileInfo(String inFile)
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
-	nFormat->trackInfo = NIL;
 	nFormat->fileSize = f_in->Size();
 
 	delete f_in;

@@ -70,7 +70,6 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
-	nFormat->trackInfo = NIL;
 	nFormat->fileSize = in->Size();
 
 	ex_bonk_close_decoder(decoder);
@@ -132,8 +131,6 @@ bonkFormatInfo *FilterInBONK::GetFileInfo(String inFile)
 		int		 tbufsize = 1024;
 		char		*abuffer = new char [tbufsize];
 		wchar_t		*wbuffer = new wchar_t [tbufsize];
-
-		nFormat->trackInfo = new bonkFormatInfo::bonkTrackInfo;
 
 		nFormat->trackInfo->track = -1;
 		nFormat->trackInfo->outfile = NIL;

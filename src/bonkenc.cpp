@@ -415,7 +415,7 @@ Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 
 	Array<bonkFormatInfo::bonkTrackInfo *>	*array = dlg->QueryCDDB();
 
-	delete dlg;
+	DeleteObject(dlg);
 
 	return array;
 }

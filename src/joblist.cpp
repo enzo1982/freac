@@ -173,13 +173,8 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 	if (format != NIL)
 	{
-		if (format->trackInfo == NIL)
+		if (!format->trackInfo->hasText)
 		{
-			format->trackInfo = new bonkFormatInfo::bonkTrackInfo;
-
-			format->trackInfo->track	= -1;
-			format->trackInfo->hasText	= False;
-
 			if (file.CompareN("/cda", 4) != 0)
 			{
 				String	 fileName;

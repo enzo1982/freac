@@ -79,7 +79,7 @@ Int cddbQueryDlg::ShowDialog()
 
 	queryThread->Stop();
 
-	delete queryThread;
+	DeleteObject(queryThread);
 
 	return Success;
 }
@@ -160,7 +160,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 			read = String(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthID(index));
 		}
 
-		delete dlg;
+		DeleteObject(dlg);
 	}
 	else if (result == "error")
 	{

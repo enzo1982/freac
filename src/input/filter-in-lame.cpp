@@ -102,7 +102,6 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
-	nFormat->trackInfo = NIL;
 	nFormat->fileSize = f_in->Size();
 
 	Int	 size = 4096;
@@ -146,8 +145,6 @@ bonkFormatInfo *FilterInLAME::GetFileInfo(String inFile)
 		int		 tbufsize = 1024;
 		char		*abuffer = new char [tbufsize];
 		wchar_t		*wbuffer = new wchar_t [tbufsize];
-
-		nFormat->trackInfo = new bonkFormatInfo::bonkTrackInfo;
 
 		nFormat->trackInfo->track = -1;
 		nFormat->trackInfo->outfile = NIL;

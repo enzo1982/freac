@@ -200,7 +200,6 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 	nFormat->channels = 2;
 	nFormat->rate = 44100;
 	nFormat->bits = 16;
-	nFormat->trackInfo = NIL;
 	nFormat->order = BYTE_INTEL;
 
 	Int	 trackNumber = 0;
@@ -323,8 +322,6 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 
 		return NIL;
 	}
-
-	nFormat->trackInfo = new bonkFormatInfo::bonkTrackInfo;
 
 	nFormat->length = (trackLength * 2352) / (nFormat->bits / 8);
 	nFormat->fileSize = trackLength * 2352;
