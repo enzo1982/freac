@@ -1,4 +1,4 @@
-BonkEnc version 1.0 beta 1
+BonkEnc version 1.0 beta 2
 
 BonkEnc is an encoder for various audio formats. It can
 produce MP3, Ogg Vorbis, BONK, AAC and VQF files.
@@ -7,6 +7,11 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 
 History
 -------
+
+	Version 1.0 beta 2 CVS (July 2003)
+
+		- upgraded to smooth v0.8.63.0
+		- some small improvements
 
 	Version 1.0 beta 1 (July 2003)
 
@@ -109,7 +114,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW v1.x (http://www.mingw.org/) or MSVC v6.0
-		- smooth v0.8.62.0 (http://www.smooth-project.org/)
+		- smooth v0.8.63.0 CVS (http://www.smooth-project.org/)
 		- IOLib v5.x (http://www.iolib.org/ - included with smooth)
 
 	Additional optional software:

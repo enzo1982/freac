@@ -352,14 +352,24 @@ Int bonkEnc::Encoder(Thread *thread)
 				}
 			}
 		}
+		else
+		{
+			stop_encoding = True;
+		}
 
 		delete f_in;
 		delete filter_in;
 
-		if (f_out->Size() == 0) remove(out_filename);
-
 		delete f_out;
 		delete filter_out;
+
+		f_in = new InStream(STREAM_FILE, out_filename, IS_READONLY);
+
+		Int	 f_size = f_in->Size();
+
+		delete f_in;
+
+		if (f_size == 0) remove(out_filename);
 
 		if (trackInfo->isCDTrack) delete d_zero;
 
