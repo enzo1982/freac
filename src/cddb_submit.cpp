@@ -493,7 +493,7 @@ Void cddbSubmitDlg::ChangeDrive()
 
 	Array<bonkFormatInfo::bonkTrackInfo *>	*cdInfo = NIL;
 
-	if (currentConfig->enable_cddb_cache && currentConfig->enable_cddb)
+	if (currentConfig->enable_cddb_cache)
 	{
 		cdInfo = bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
 		currentConfig->appMain->cddbInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());

@@ -330,19 +330,20 @@ bonkFormatInfo *FilterInCDRip::GetFileInfo(String inFile)
 	nFormat->fileSize = trackLength * 2352;
 
 	bonkEncCDDB	 cddb(currentConfig);
-	Int		 discID = cddb.ComputeDiscID();
 
 	cddb.SetActiveDrive(audiodrive);
 
+	Int		 discID = cddb.ComputeDiscID();
+
 	Array<bonkFormatInfo::bonkTrackInfo *>	*cdInfo = NIL;
 
-	if (currentConfig->enable_cddb_cache && currentConfig->enable_cddb)
+	if (currentConfig->enable_cddb_cache)
 	{
 		cdInfo = bonkEncCDDB::titleCache.GetEntry(cddb.ComputeDiscID());
 		currentConfig->appMain->cddbInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
 	}
 
-	if (cdInfo == NIL)
+	if (cdInfo == NIL && currentConfig->enable_auto_cddb)
 	{
 		Int	 oDrive = currentConfig->cdrip_activedrive;
 

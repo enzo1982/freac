@@ -40,8 +40,9 @@ configureGeneralSettings::configureGeneralSettings()
 	swapchannels = currentConfig->cdrip_swapchannels;
 	locktray = currentConfig->cdrip_locktray;
 	ntscsi = currentConfig->cdrip_ntscsi;
-	cddb = currentConfig->enable_cddb;
 	enable_tags = currentConfig->enable_tags;
+	cddb_auto = currentConfig->enable_auto_cddb;
+	cddb_cache = currentConfig->enable_cddb_cache;
 
 	mainWnd			= new Window(bonkEnc::i18n->TranslateString("General settings setup"));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -72,7 +73,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.x = 7;
 	pos.y = 7;
 	size.cx = 361;
-	size.cy = 185;
+	size.cy = 191;
 
 	reg_register		= new TabWidget(pos, size);
 
@@ -289,38 +290,30 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 344;
-	size.cy = 125;
+	size.cy = 151;
 
-	cddb_group_cddb		= new GroupBox("", pos, size);
+	cddb_group_cddb		= new GroupBox(bonkEnc::i18n->TranslateString("CDDB Settings"), pos, size);
 
-	pos.x += 10;
-	pos.y -= 8;
-	size.cx = 89;
-	size.cy = 17;
-
-	cddb_layer_background	= new Layer();
-	cddb_layer_background->SetMetrics(pos, size);
-	cddb_layer_background->SetColor(Setup::BackgroundColor);
-
-	pos.x = 2;
-	pos.y = 0;
-	size.cx = 84;
+	pos.x = 17;
+	pos.y = 24;
+	size.cx = 157;
 	size.cy = 0;
 
-	cddb_check_enable	= new CheckBox(bonkEnc::i18n->TranslateString("Enable CDDB"), pos, size, &cddb);
-	cddb_check_enable->onClick.Connect(&configureGeneralSettings::SetCDDB, this);
-	cddb_check_enable->SetMetrics(pos, Size(cddb_check_enable->GetObjectProperties()->textSize.cx + 19, cddb_check_enable->GetObjectProperties()->size.cy));
+	cddb_check_auto		= new CheckBox(bonkEnc::i18n->TranslateString("Automatic CDDB queries"), pos, size, &cddb_auto);
 
-	cddb_layer_background->SetMetrics(cddb_layer_background->GetObjectProperties()->pos, Size(cddb_check_enable->GetObjectProperties()->textSize.cx + 24, cddb_layer_background->GetObjectProperties()->size.cy));
+	pos.x += 166;
+
+	cddb_check_cache	= new CheckBox(bonkEnc::i18n->TranslateString("Enable CDDB cache"), pos, size, &cddb_cache);
 
 	pos.x = 16;
-	pos.y = 26;
+	pos.y += 28;
 
 	cddb_text_mode		= new Text(bonkEnc::i18n->TranslateString("CDDB access mode:"), pos);
 
 	pos.x += 106;
 	pos.y -= 3;
 	size.cx = 219;
+	size.cy = 0;
 
 	cddb_combo_mode		= new ComboBox(pos, size);
 	cddb_combo_mode->onClick.Connect(&configureGeneralSettings::SetCDDBMode, this);
@@ -376,7 +369,6 @@ configureGeneralSettings::configureGeneralSettings()
 	cddb_button_proxy->onClick.Connect(&configureGeneralSettings::ProxySettings, this);
 
 	SetCDDBMode();
-	SetCDDB();
 
 	Int	 maxTextSize = max(cddb_text_email->GetObjectProperties()->textSize.cx, max(cddb_text_mode->GetObjectProperties()->textSize.cx, cddb_text_server->GetObjectProperties()->textSize.cx));
 
@@ -387,7 +379,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.x = 7;
 	pos.y = 7;
 	size.cx = 343;
-	size.cy = 148;
+	size.cy = 154;
 
 	plugins_tabs_plugins	= new TabWidget(pos, size);
 
@@ -396,7 +388,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.x = 7;
 	pos.y = 7;
 	size.cx = 239;
-	size.cy = 112;
+	size.cy = 118;
 
 	plugins_list_input	= new ListBox(pos, size);
 	plugins_list_input->onClick.Connect(&configureGeneralSettings::SelectInputPlugin, this);
@@ -425,7 +417,7 @@ configureGeneralSettings::configureGeneralSettings()
 	pos.x = 7;
 	pos.y = 7;
 	size.cx = 239;
-	size.cy = 112;
+	size.cy = 118;
 
 	plugins_list_output	= new ListBox(pos, size);
 	plugins_list_output->SetFlags(LF_MULTICHECKBOX);
@@ -459,7 +451,7 @@ configureGeneralSettings::configureGeneralSettings()
 
 	tags_group_tags		= new GroupBox(bonkEnc::i18n->TranslateString("Info tags"), pos, size);
 
-	pos.x = 16;
+	pos.x = 17;
 	pos.y = 24;
 	size.cx = 163;
 	size.cy = 0;
@@ -523,7 +515,8 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_cdrip->RegisterObject(cdrip_check_ntscsi);
 
 	register_layer_cddb->RegisterObject(cddb_group_cddb);
-	register_layer_cddb->RegisterObject(cddb_layer_background);
+	register_layer_cddb->RegisterObject(cddb_check_auto);
+	register_layer_cddb->RegisterObject(cddb_check_cache);
 	register_layer_cddb->RegisterObject(cddb_text_mode);
 	register_layer_cddb->RegisterObject(cddb_combo_mode);
 	register_layer_cddb->RegisterObject(cddb_text_server);
@@ -553,13 +546,10 @@ configureGeneralSettings::configureGeneralSettings()
 	register_layer_tags->RegisterObject(tags_text_defcomment);
 	register_layer_tags->RegisterObject(tags_edit_defcomment);
 
-	cddb_layer_background->RegisterObject(cddb_check_enable);
-
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(SMOOTH::LoadImage("bonkenc.pci", 0, NIL));
 	mainWnd->SetApplicationIcon(MAKEINTRESOURCE(IDI_ICON));
-	mainWnd->SetMetrics(Point(120, 120), Size(384, 271));
-	mainWnd->onPaint.Connect(&configureGeneralSettings::DrawProc, this);
+	mainWnd->SetMetrics(Point(120, 120), Size(384, 277));
 }
 
 configureGeneralSettings::~configureGeneralSettings()
@@ -596,8 +586,8 @@ configureGeneralSettings::~configureGeneralSettings()
 	DeleteObject(cdrip_check_locktray);
 	DeleteObject(cdrip_check_ntscsi);
 	DeleteObject(cddb_group_cddb);
-	DeleteObject(cddb_layer_background);
-	DeleteObject(cddb_check_enable);
+	DeleteObject(cddb_check_auto);
+	DeleteObject(cddb_check_cache);
 	DeleteObject(cddb_text_mode);
 	DeleteObject(cddb_combo_mode);
 	DeleteObject(cddb_text_server);
@@ -632,26 +622,18 @@ Int configureGeneralSettings::ShowDialog()
 	return mainWnd->value;
 }
 
-Void configureGeneralSettings::DrawProc()
-{
-	cddb_check_enable->Paint(SP_PAINT);
-}
-
 Void configureGeneralSettings::OK()
 {
-	if (cddb)
+	bool	 valid = false;
+	String	 email = cddb_edit_email->GetText();
+
+	for (int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = true;
+
+	if (!valid)
 	{
-		bool	 valid = false;
-		String	 email = cddb_edit_email->GetText();
+		SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Please enter a valid eMail address."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
-		for (int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = true;
-
-		if (!valid)
-		{
-			SMOOTH::MessageBox(bonkEnc::i18n->TranslateString("Please enter a valid eMail address."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-
-			return;
-		}
+		return;
 	}
 
 	currentConfig->encoder = encoders_combo_encoder->GetSelectedEntry()->id;
@@ -669,8 +651,9 @@ Void configureGeneralSettings::OK()
 	currentConfig->cdrip_swapchannels = swapchannels;
 	currentConfig->cdrip_locktray = locktray;
 	currentConfig->cdrip_ntscsi = ntscsi;
-	currentConfig->enable_cddb = cddb;
 	currentConfig->enable_tags = enable_tags;
+	currentConfig->enable_auto_cddb = cddb_auto;
+	currentConfig->enable_cddb_cache = cddb_cache;
 
 	currentConfig->default_comment = tags_edit_defcomment->GetText();
 
@@ -781,37 +764,6 @@ Void configureGeneralSettings::SelectLanguage()
 
 	language_link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()->id));
 	language_link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(language_combo_language->GetSelectedEntry()->id));
-}
-
-Void configureGeneralSettings::SetCDDB()
-{
-	if (cddb)
-	{
-		cddb_text_mode->Activate();
-		cddb_combo_mode->Activate();
-		cddb_text_server->Activate();
-		cddb_edit_server->Activate();
-		cddb_text_port->Activate();
-		cddb_text_email->Activate();
-		cddb_edit_email->Activate();
-		cddb_button_http->Activate();
-		cddb_button_proxy->Activate();
-
-		SetCDDBMode();
-	}
-	else
-	{
-		cddb_text_mode->Deactivate();
-		cddb_combo_mode->Deactivate();
-		cddb_text_server->Deactivate();
-		cddb_edit_server->Deactivate();
-		cddb_text_port->Deactivate();
-		cddb_edit_port->Deactivate();
-		cddb_text_email->Deactivate();
-		cddb_edit_email->Deactivate();
-		cddb_button_http->Deactivate();
-		cddb_button_proxy->Deactivate();
-	}
 }
 
 Void configureGeneralSettings::SetCDDBMode()

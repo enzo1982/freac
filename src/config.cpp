@@ -136,7 +136,7 @@ Bool bonkEncConfig::LoadSettings()
 	enable_tags = getINIValue("Settings", "EnableTags", "1").ToInt();
 	default_comment = getINIValue("Settings", "DefaultComment", String("BonkEnc ").Append(bonkEnc::shortVersion).Append(" <http://www.bonkenc.org>"));
 
-	enable_cddb = getINIValue("freedb", "EnableCDDB", "0").ToInt();
+	enable_auto_cddb = getINIValue("freedb", "AutoCDDBQueries", "0").ToInt();
 	enable_cddb_cache = getINIValue("freedb", "EnableCDDBCache", "1").ToInt();
 	freedb_server = getINIValue("freedb", "Server", "freedb.freedb.org");
 	freedb_mode = getINIValue("freedb", "ReadMode", "0").ToInt();
@@ -328,8 +328,8 @@ Bool bonkEncConfig::SaveSettings()
 		out->OutputLine("");
 		out->OutputLine("[freedb]");
 
-		str = "EnableCDDB=";
-		str.Append(String::FromInt(enable_cddb));
+		str = "AutoCDDBQueries=";
+		str.Append(String::FromInt(enable_auto_cddb));
 		out->OutputLine(str);
 
 		str = "EnableCDDBCache=";

@@ -155,7 +155,6 @@
     <entry id="145" string="MP3 Files">Fichiers MP3</entry>
     <entry id="146" string="Ogg Vorbis Files">Fichiers Ogg Vorbis</entry>
     <entry id="147" string="BONK Files">Fichiers BONK</entry>
-    <entry id="148" string="Enable CDDB">Activer CDDB</entry>
     <entry id="149" string="CDDB access mode:">Mode d'accès CDDB :</entry>
     <entry id="150" string="CDDB server:">Serveur CDDB :</entry>
     <entry id="151" string="Port:">Port:</entry>

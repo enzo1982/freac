@@ -143,6 +143,7 @@ Future plans
 	- Sheduled for v1.0 beta 1
 		* extract artist and title from the filename
 		* allow expert settings for LAME (ATH, Temporal Masking, Psy-Models)
+		* improve CDDB querying (dialog with abort button)
 
 	- Sheduled for v1.0
 		* shell integration

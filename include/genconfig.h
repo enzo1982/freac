@@ -54,8 +54,8 @@ class configureGeneralSettings : public Dialog
 		CheckBox	*cdrip_check_ntscsi;
 
 		GroupBox	*cddb_group_cddb;
-		CheckBox	*cddb_check_enable;
-		Layer		*cddb_layer_background;
+		CheckBox	*cddb_check_auto;
+		CheckBox	*cddb_check_cache;
 		Text		*cddb_text_mode;
 		ComboBox	*cddb_combo_mode;
 		Text		*cddb_text_server;
@@ -95,19 +95,18 @@ class configureGeneralSettings : public Dialog
 		Bool		 swapchannels;
 		Bool		 locktray;
 		Bool		 ntscsi;
-		Bool		 cddb;
 		Bool		 enable_tags;
+		Bool		 cddb_auto;
+		Bool		 cddb_cache;
  
 		bonkEncConfig	*currentConfig;
 
 		Void		 OK();
 		Void		 Cancel();
-		Void		 DrawProc();
 		Void		 SelectDir();
 		Void		 SelectLanguage();
 		Void		 ConfigureEncoder();
 		Void		 SetParanoia();
-		Void		 SetCDDB();
 		Void		 SetCDDBMode();
 		Void		 HTTPSettings();
 		Void		 ProxySettings();

@@ -55,7 +55,7 @@ class bonkEncConfig
 		Bool		 enable_faac;
 		Bool		 enable_tvq;
 		Bool		 enable_cdrip;
-		Bool		 enable_cddb;
+		Bool		 enable_auto_cddb;
 		Bool		 enable_id3;
 		String		 enc_outdir;
 

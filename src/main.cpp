@@ -57,6 +57,7 @@ bonkEncGUI::bonkEncGUI()
 	dontUpdateInfo = False;
 	cddbRetry = True;
 	cddbInfo = NIL;
+	clicked_drive = -1;
 
 	Point	 pos;
 	Size	 size;
@@ -545,7 +546,7 @@ bonkEncGUI::bonkEncGUI()
 	{
 		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
 		{
-			entry = menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
+			entry = menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &clicked_drive, j);
 			entry->onClick.Connect(&bonkEncGUI::ReadSpecificCD, this);
 		}
 
@@ -561,14 +562,11 @@ bonkEncGUI::bonkEncGUI()
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, (bonkEnc *) this);
 
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB"), NIL, NIL, &currentConfig->enable_cddb)->onClick.Connect(&bonkEncGUI::ToggleCDDB, this);
-
-	if (currentConfig->enable_cddb)
-	{
-		menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
-		menu_database->AddEntry();
-		menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
-	}
+	menu_database->AddEntry(i18n->TranslateString("Query CDDB database"))->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
+	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
 
 	if (winamp_out_modules.GetNOfEntries() > 0)
 	{
@@ -618,7 +616,7 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd_iconbar->AddEntry();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
-//	entry->onClick.Connect(&bonkEnc::QueryCDDB, (bonkEnc *) this);
+	entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
 	entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));
@@ -909,54 +907,99 @@ Void bonkEncGUI::ConfigureGeneral()
 	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out");
 
 	edb_outdir->SetText(currentConfig->enc_outdir);
-
-	ToggleCDDB();
 }
 
 Void bonkEncGUI::ReadSpecificCD()
 {
-	Int	 driveID = menu_drives->GetLastClickedEntry();
+	currentConfig->cdrip_activedrive = clicked_drive;
 
-	for (Int i = 0; i < menu_drives->GetNOfEntries(); i++)
-	{
-		if (menu_drives->entries.GetNthEntry(i)->id == driveID)
-		{
-			currentConfig->cdrip_activedrive = i;
-
-			break;
-		}
-	}
+	clicked_drive = -1;
 
 	ReadCD();
 }
 
-Void bonkEncGUI::ToggleCDDB()
+Void bonkEncGUI::QueryCDDB()
 {
-	menu_database->Clear();
+	Array<Int>	 discIDs;
 
-	if (currentConfig->enable_cddb)
+	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		menu_database->AddEntry(i18n->TranslateString("Enable CDDB"), NIL, NIL, &currentConfig->enable_cddb)->onClick.Connect(&bonkEncGUI::ToggleCDDB, this);
-		menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
-		menu_database->AddEntry();
-		menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
+		bonkFormatInfo	*format = sa_formatinfo.GetNthEntry(i);
+
+		if (format->trackInfo->isCDTrack) discIDs.AddEntry(format->trackInfo->discid, format->trackInfo->drive);
 	}
-	else
+
+	for (Int j = 0; j < discIDs.GetNOfEntries(); j++)
 	{
-		menu_database->AddEntry(i18n->TranslateString("Enable CDDB"), NIL, NIL, &currentConfig->enable_cddb)->onClick.Connect(&bonkEncGUI::ToggleCDDB, this);
+		bonkEncCDDB	 cddb(currentConfig);
+		Int		 discID = discIDs.GetNthEntry(j);
+
+		Array<bonkFormatInfo::bonkTrackInfo *>	*cdInfo = NIL;
+
+		if (currentConfig->enable_cddb_cache)
+		{
+			cdInfo = bonkEncCDDB::titleCache.GetEntry(discID);
+			currentConfig->appMain->cddbInfo = bonkEncCDDB::infoCache.GetEntry(discID);
+		}
+
+		if (cdInfo == NIL)
+		{
+			Int	 oDrive = currentConfig->cdrip_activedrive;
+
+			currentConfig->cdrip_activedrive = discIDs.GetNthEntryIndex(j);
+
+			cdInfo = currentConfig->appMain->GetCDDBData();
+
+			bonkEncCDDB::titleCache.RemoveEntry(discID);
+			bonkEncCDDB::titleCache.AddEntry(cdInfo, discID);
+
+			bonkEncCDDB::infoCache.RemoveEntry(discID);
+			bonkEncCDDB::infoCache.AddEntry(currentConfig->appMain->cddbInfo, discID);
+
+			currentConfig->cdrip_activedrive = oDrive;
+		}
+
+		if (cdInfo != NIL)
+		{
+			for (Int k = 0; k < joblist->GetNOfEntries(); k++)
+			{
+				bonkFormatInfo	*format = sa_formatinfo.GetNthEntry(k);
+
+				if (format->trackInfo->isCDTrack && format->trackInfo->discid == discID)
+				{
+					format->trackInfo->track	= format->trackInfo->cdTrack;
+					format->trackInfo->outfile	= NIL;
+					format->trackInfo->hasText	= True;
+					format->trackInfo->artist	= cdInfo->GetEntry(0)->artist;
+					format->trackInfo->title	= cdInfo->GetEntry(format->trackInfo->cdTrack)->title;
+					format->trackInfo->album	= cdInfo->GetEntry(0)->album;
+					format->trackInfo->genre	= cdInfo->GetEntry(0)->genre;
+					format->trackInfo->year		= cdInfo->GetEntry(0)->year;
+
+					String	 jlEntry;
+
+					if (format->trackInfo->artist.Length() == 0 &&
+					    format->trackInfo->title.Length() == 0)	jlEntry = String(format->trackInfo->origFilename).Append("\t");
+					else						jlEntry = String(format->trackInfo->artist.Length() > 0 ? format->trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->trackInfo->title.Length() > 0 ? format->trackInfo->title : i18n->TranslateString("unknown title")).Append("\t");
+
+					jlEntry.Append(format->trackInfo->track > 0 ? (format->trackInfo->track < 10 ? String("0").Append(String::FromInt(format->trackInfo->track)) : String::FromInt(format->trackInfo->track)) : String("")).Append("\t").Append(format->trackInfo->length).Append("\t").Append(format->trackInfo->fileSize);
+
+					joblist->GetNthEntry(k)->name = jlEntry;
+				}
+			}
+		}
 	}
+
+	joblist->Paint(SP_PAINT);
 }
 
 Void bonkEncGUI::SubmitCDDBData()
 {
-	if (currentConfig->enable_cddb)
-	{
-		cddbSubmitDlg	*dlg = new cddbSubmitDlg();
+	cddbSubmitDlg	*dlg = new cddbSubmitDlg();
 
-		dlg->ShowDialog();
+	dlg->ShowDialog();
 
-		delete dlg;
-	}
+	delete dlg;
 }
 
 Void bonkEncGUI::ShowHideTitleInfo()
@@ -1222,14 +1265,11 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onClick.Connect(&bonkEnc::StopEncoding, (bonkEnc *) this);
 
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB"), NIL, NIL, &currentConfig->enable_cddb)->onClick.Connect(&bonkEncGUI::ToggleCDDB, this);
-
-	if (currentConfig->enable_cddb)
-	{
-		menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
-		menu_database->AddEntry();
-		menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
-	}
+	menu_database->AddEntry(i18n->TranslateString("Query CDDB database"))->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
+	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
 
 	if (winamp_out_modules.GetNOfEntries() > 0)
 	{
@@ -1277,7 +1317,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	mainWnd_iconbar->AddEntry();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 9, NIL));
-//	entry->onClick.Connect(&bonkEnc::QueryCDDB, (bonkEnc *) this);
+	entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
 	entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, SMOOTH::LoadImage("BonkEnc.pci", 10, NIL));

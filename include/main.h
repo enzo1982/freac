@@ -40,6 +40,8 @@ class bonkEncGUI : public bonkEnc
 		Button		*button_prev;
 		Button		*button_next;
 
+		Int		 clicked_drive;
+
 		Bool		 ExitProc();
 		Void		 ResizeProc();
 		Void		 Close();
@@ -53,8 +55,8 @@ class bonkEncGUI : public bonkEnc
 		Void		 ShowHideTitleInfo();
 		Void		 UpdateTitleInfo();
 		Void		 ReadSpecificCD();
+		Void		 QueryCDDB();
 		Void		 SubmitCDDBData();
-		Void		 ToggleCDDB();
 		Menu		*GetTrackMenu(Int, Int);
 		Void		 ShowHelp();
 

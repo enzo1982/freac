@@ -207,6 +207,9 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 	currentConfig->cdrip_activedrive = player_activedrive;
 
+	joblist->GetNthEntry(player_entry)->font.SetColor(Setup::ClientTextColor);
+	joblist->Paint(SP_PAINT);
+
 	playing = false;
 
 	return Success;

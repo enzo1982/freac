@@ -55,7 +55,7 @@ Int	 ENCODER_WAVE		= -1;
 bonkEncConfig	*bonkEnc::currentConfig	= NIL;
 bonkTranslator	*bonkEnc::i18n		= NIL;
 
-String	 bonkEnc::version = "CVS-20030607";
+String	 bonkEnc::version = "CVS-20030608";
 String	 bonkEnc::cddbVersion = "v0.9";
 String	 bonkEnc::shortVersion = "v0.9";
 
@@ -408,8 +408,6 @@ Void bonkEnc::ReadCD()
 
 Array<bonkFormatInfo::bonkTrackInfo *> *bonkEnc::GetCDDBData()
 {
-	if (!currentConfig->enable_cddb) return NIL;
-
 	bonkEncCDDB	 cddb(currentConfig);
 	String		 result;
 	String		 read = NIL;
