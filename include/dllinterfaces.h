@@ -33,6 +33,57 @@
 #include <3rdparty/mp4/mp4.h>
 #include <3rdparty/flac/stream_decoder.h>
 
+class bonkEncDLLInterfaces
+{
+	private:
+		static HINSTANCE		 bonkdll;
+		static HINSTANCE		 bladedll;
+		static HINSTANCE		 lamedll;
+		static HINSTANCE		 vorbisdll;
+		static HINSTANCE		 faacdll;
+		static HINSTANCE		 faad2dll;
+		static HINSTANCE		 tvqdll;
+		static HINSTANCE		 cdripdll;
+		static HINSTANCE		 id3dll;
+		static HINSTANCE		 eupdatedll;
+		static HINSTANCE		 mp4v2dll;
+		static HINSTANCE		 flacdll;
+	public:
+		static Bool			 LoadBonkDLL();
+		static Bool			 LoadBladeDLL();
+		static Bool			 LoadLAMEDLL();
+		static Bool			 LoadVorbisDLL();
+		static Bool			 LoadFAACDLL();
+		static Bool			 LoadFAAD2DLL();
+		static Bool			 LoadTVQDLL();
+		static Bool			 LoadCDRipDLL();
+		static Bool			 LoadID3DLL();
+		static Bool			 LoadEUpdateDLL();
+		static Bool			 LoadMP4V2DLL();
+		static Bool			 LoadFLACDLL();
+
+		static Void			 FreeBonkDLL();
+		static Void			 FreeBladeDLL();
+		static Void			 FreeLAMEDLL();
+		static Void			 FreeVorbisDLL();
+		static Void			 FreeFAACDLL();
+		static Void			 FreeFAAD2DLL();
+		static Void			 FreeTVQDLL();
+		static Void			 FreeCDRipDLL();
+		static Void			 FreeID3DLL();
+		static Void			 FreeEUpdateDLL();
+		static Void			 FreeMP4V2DLL();
+		static Void			 FreeFLACDLL();
+
+		static Bool			 LoadWinampDLLs();
+		static Void			 FreeWinampDLLs();
+
+		static Array<HMODULE>		 winamp_in_plugins;
+		static Array<In_Module *>	 winamp_in_modules;
+		static Array<HMODULE>		 winamp_out_plugins;
+		static Array<Out_Module *>	 winamp_out_modules;
+};
+
 // CDRip DLL API
 
 	typedef CDEX_ERR			(*CR_INIT)					(int);
@@ -468,9 +519,5 @@
 	extern ID3FIELDGETASCII			 ex_ID3Field_GetASCII;
 	extern ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE;
 	extern ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE;
-
-// Winamp Plugin DLL API
-
-	extern Array<In_Module *>	 input_plugins;
 
 #endif

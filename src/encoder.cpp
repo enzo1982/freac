@@ -110,37 +110,17 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		if (trackInfo->artist != NIL || trackInfo->title != NIL)
 		{
-			Int i = 0;
-
-			for (i = 0; i < trackInfo->artist.Length(); i++)
-			{
-				if (trackInfo->artist[i] == '/' ||
-				    trackInfo->artist[i] == '\\') trackInfo->artist[i] = '_';
-			}
-
-			for (i = 0; i < trackInfo->title.Length(); i++)
-			{
-				if (trackInfo->title[i] == '/' ||
-				    trackInfo->title[i] == '\\') trackInfo->title[i] = '_';
-			}
-
-			for (i = 0; i < trackInfo->album.Length(); i++)
-			{
-				if (trackInfo->album[i] == '/' ||
-				    trackInfo->album[i] == '\\') trackInfo->album[i] = '_';
-			}
-
 			out_filename.Append(currentConfig->enc_filePattern);
 
-			out_filename.Replace("<artist>", trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"));
-			out_filename.Replace("<title>", trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"));
-			out_filename.Replace("<album>", trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
+			out_filename.Replace("<artist>", trackInfo->artist.Length() > 0 ? ReplaceIncompatibleChars(trackInfo->artist) : i18n->TranslateString("unknown artist"));
+			out_filename.Replace("<title>", trackInfo->title.Length() > 0 ? ReplaceIncompatibleChars(trackInfo->title) : i18n->TranslateString("unknown title"));
+			out_filename.Replace("<album>", trackInfo->album.Length() > 0 ? ReplaceIncompatibleChars(trackInfo->album) : i18n->TranslateString("unknown album"));
 			out_filename.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
 
 			String	 dir = out_filename;
 			String	 tmp;
 
-			for (i = 0; i < dir.Length(); i++)
+			for (Int i = 0; i < dir.Length(); i++)
 			{
 				if (dir[i] == '\\' || dir[i] == '/')
 				{
@@ -149,25 +129,6 @@ Int bonkEnc::Encoder(Thread *thread)
 				}
 
 				tmp[i] = dir[i];
-			}
-
-			String	 bak_filename = out_filename;
-
-			out_filename = String();
-
-			for (Int k = 0, b = 0; k < bak_filename.Length(); k++)
-			{
-				if (bak_filename[k] == '\"')			{ out_filename[k + b] = '\''; out_filename[k + ++b] = '\''; }
-				else if (bak_filename[k] == '?')		b--;
-				else if (bak_filename[k] == '|')		out_filename[k + b] = '_';
-				else if (bak_filename[k] == '*')		b--;
-				else if (bak_filename[k] == '<')		out_filename[k + b] = '(';
-				else if (bak_filename[k] == '>')		out_filename[k + b] = ')';
-				else if (bak_filename[k] == ':' && k > 1)	b--;
-				else if (bak_filename[k] >= 256 &&
-					 (!currentConfig->useUnicodeNames ||
-					  !Setup::enableUnicode))		out_filename[k + b] = '#';
-				else						out_filename[k + b] = bak_filename[k];
 			}
 		}
 		else if (trackInfo->isCDTrack)
@@ -588,4 +549,28 @@ Void bonkEnc::StopEncoding()
 	delete encoder_thread;
 
 	encoder_thread = NIL;
+}
+
+String bonkEnc::ReplaceIncompatibleChars(String &string)
+{
+	String	 rVal;
+
+	for (Int k = 0, b = 0; k < string.Length(); k++)
+	{
+		if (string[k] == '\"')			{ rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
+		else if (string[k] == '?')		b--;
+		else if (string[k] == '|')		rVal[k + b] = '_';
+		else if (string[k] == '*')		b--;
+		else if (string[k] == '<')		rVal[k + b] = '(';
+		else if (string[k] == '>')		rVal[k + b] = ')';
+		else if (string[k] == ':')		b--;
+		else if (string[k] == '/')		rVal[k + b] = '_';
+		else if (string[k] == '\\')		rVal[k + b] = '_';
+		else if (string[k] >= 256 &&
+			 (!currentConfig->useUnicodeNames ||
+			  !Setup::enableUnicode))	rVal[k + b] = '#';
+		else					rVal[k + b] = string[k];
+	}
+
+	return rVal;
 }

@@ -100,7 +100,7 @@ bonkEncGUI::bonkEncGUI()
 	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org/", pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 
-	if (winamp_out_modules.GetNOfEntries() > 0)
+	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		pos.x = 116 - (Setup::rightToLeft ? 88 : 0);
 		pos.y = -1;
@@ -631,7 +631,7 @@ bonkEncGUI::bonkEncGUI()
 	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
 
-	if (winamp_out_modules.GetNOfEntries() > 0)
+	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onClick.Connect(&bonkEnc::PlaySelectedItem, (bonkEnc *) this);
 		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onClick.Connect(&bonkEnc::StopPlayback, (bonkEnc *) this);
@@ -726,7 +726,7 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd->RegisterObject(joblist);
 	mainWnd->RegisterObject(droparea);
 
-	if (winamp_out_modules.GetNOfEntries() > 0)
+	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		mainWnd->RegisterObject(button_play);
 		mainWnd->RegisterObject(button_pause);
@@ -849,7 +849,7 @@ bonkEncGUI::~bonkEncGUI()
 	DeleteObject(joblist);
 	DeleteObject(droparea);
 
-	if (winamp_out_modules.GetNOfEntries() > 0)
+	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		DeleteObject(button_play);
 		DeleteObject(button_pause);
@@ -1306,7 +1306,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->size));
 		mainWnd->Paint(SP_PAINT);
 
-		if (winamp_out_modules.GetNOfEntries() > 0)
+		if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 		{
 			button_play->Hide();
 			button_pause->Hide();
@@ -1552,7 +1552,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
 
-	if (winamp_out_modules.GetNOfEntries() > 0)
+	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onClick.Connect(&bonkEnc::PlaySelectedItem, (bonkEnc *) this);
 		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onClick.Connect(&bonkEnc::StopPlayback, (bonkEnc *) this);

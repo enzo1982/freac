@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/genconfig/genconfig_plugins.h>
+#include <dllinterfaces.h>
 
 configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : Layer(bonkEnc::i18n->TranslateString("Plug-ins"))
 {
@@ -34,9 +35,9 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	list_input		= new ListBox(pos, size);
 	list_input->onClick.Connect(&configureGeneralSettingsLayerPlugins::SelectInputPlugin, this);
 
-	for (Int k = 0; k < currentConfig->appMain->winamp_in_modules.GetNOfEntries(); k++)
+	for (Int k = 0; k < bonkEncDLLInterfaces::winamp_in_modules.GetNOfEntries(); k++)
 	{
-		list_input->AddEntry(currentConfig->appMain->winamp_in_modules.GetNthEntry(k)->description);
+		list_input->AddEntry(bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(k)->description);
 	}
 
 	pos.x	+= 433;
@@ -64,9 +65,9 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	list_output->SetFlags(LF_MULTICHECKBOX);
 	list_output->onClick.Connect(&configureGeneralSettingsLayerPlugins::SelectOutputPlugin, this);
 
-	for (Int l = 0; l < currentConfig->appMain->winamp_out_modules.GetNOfEntries(); l++)
+	for (Int l = 0; l < bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries(); l++)
 	{
-		ListEntry	*entry = list_output->AddEntry(currentConfig->appMain->winamp_out_modules.GetNthEntry(l)->description);
+		ListEntry	*entry = list_output->AddEntry(bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(l)->description);
 
 		if (l == currentConfig->output_plugin) entry->SetMark(True);
 	}
@@ -150,28 +151,28 @@ Void configureGeneralSettingsLayerPlugins::ConfigureInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
+	bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void configureGeneralSettingsLayerPlugins::ConfigureOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
+	bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void configureGeneralSettingsLayerPlugins::AboutInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
+	bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void configureGeneralSettingsLayerPlugins::AboutOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
-	currentConfig->appMain->winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
+	bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Int configureGeneralSettingsLayerPlugins::GetSelectedOutputPlugin()

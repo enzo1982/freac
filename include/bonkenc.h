@@ -100,34 +100,6 @@ class bonkEnc : public Application
 		Bool			 dontUpdateInfo;
 		Int			 encoder_activedrive;
 
-		Bool			 LoadBonkDLL();
-		Void			 FreeBonkDLL();
-		Bool			 LoadBladeDLL();
-		Void			 FreeBladeDLL();
-		Bool			 LoadLAMEDLL();
-		Void			 FreeLAMEDLL();
-		Bool			 LoadVorbisDLL();
-		Void			 FreeVorbisDLL();
-		Bool			 LoadFAACDLL();
-		Void			 FreeFAACDLL();
-		Bool			 LoadFAAD2DLL();
-		Void			 FreeFAAD2DLL();
-		Bool			 LoadTVQDLL();
-		Void			 FreeTVQDLL();
-		Bool			 LoadCDRipDLL();
-		Void			 FreeCDRipDLL();
-		Bool			 LoadID3DLL();
-		Void			 FreeID3DLL();
-		Bool			 LoadEUpdateDLL();
-		Void			 FreeEUpdateDLL();
-		Bool			 LoadMP4V2DLL();
-		Void			 FreeMP4V2DLL();
-		Bool			 LoadFLACDLL();
-		Void			 FreeFLACDLL();
-
-		Bool			 LoadWinampDLLs();
-		Void			 FreeWinampDLLs();
-
 		Void			 AddFileByName(String, String out = NIL);
 		Int			 Encoder(Thread *);
 		InputFilter		*CreateInputFilter(String, bonkEncTrack *);
@@ -135,6 +107,7 @@ class bonkEnc : public Application
 		Int			 PlayThread(Thread *);
 
 		String			 LocalizeNumber(Int);
+		String			 ReplaceIncompatibleChars(String &);
 	public:
 		static String		 version;
 		static String		 cddbVersion;
@@ -142,24 +115,6 @@ class bonkEnc : public Application
 
 		static bonkEncConfig	*currentConfig;
 		static I18n::Translator	*i18n;
-
-		HINSTANCE		 bonkdll;
-		HINSTANCE		 bladedll;
-		HINSTANCE		 lamedll;
-		HINSTANCE		 vorbisdll;
-		HINSTANCE		 faacdll;
-		HINSTANCE		 faad2dll;
-		HINSTANCE		 tvqdll;
-		HINSTANCE		 cdripdll;
-		HINSTANCE		 id3dll;
-		HINSTANCE		 eupdatedll;
-		HINSTANCE		 mp4v2dll;
-		HINSTANCE		 flacdll;
-
-		Array<HMODULE>		 winamp_in_plugins;
-		Array<In_Module *>	 winamp_in_modules;
-		Array<HMODULE>		 winamp_out_plugins;
-		Array<Out_Module *>	 winamp_out_modules;
 
 		Bool			 cddbRetry;
 

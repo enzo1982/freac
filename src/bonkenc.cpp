@@ -94,50 +94,50 @@ bonkEnc::bonkEnc()
 
 	i18n->ActivateLanguage(currentConfig->language);
 
-	if (LoadBonkDLL() == false)	currentConfig->enable_bonk = false;
-	else				currentConfig->enable_bonk = true;
+	if (bonkEncDLLInterfaces::LoadBonkDLL() == False)	currentConfig->enable_bonk = False;
+	else							currentConfig->enable_bonk = True;
 
-	if (LoadBladeDLL() == false)	currentConfig->enable_blade = false;
-	else				currentConfig->enable_blade = true;
+	if (bonkEncDLLInterfaces::LoadBladeDLL() == False)	currentConfig->enable_blade = False;
+	else							currentConfig->enable_blade = True;
 
-	if (LoadLAMEDLL() == false)	currentConfig->enable_lame = false;
-	else				currentConfig->enable_lame = true;
+	if (bonkEncDLLInterfaces::LoadLAMEDLL() == False)	currentConfig->enable_lame = False;
+	else							currentConfig->enable_lame = True;
 
-	if (LoadVorbisDLL() == false)	currentConfig->enable_vorbis = false;
-	else				currentConfig->enable_vorbis = true;
+	if (bonkEncDLLInterfaces::LoadVorbisDLL() == False)	currentConfig->enable_vorbis = False;
+	else							currentConfig->enable_vorbis = True;
 
-	if (LoadFAACDLL() == false)	currentConfig->enable_faac = false;
-	else				currentConfig->enable_faac = true;
+	if (bonkEncDLLInterfaces::LoadFAACDLL() == False)	currentConfig->enable_faac = False;
+	else							currentConfig->enable_faac = True;
 
-	if (LoadFAAD2DLL() == false)	currentConfig->enable_faad2 = false;
-	else				currentConfig->enable_faad2 = true;
+	if (bonkEncDLLInterfaces::LoadFAAD2DLL() == False)	currentConfig->enable_faad2 = False;
+	else							currentConfig->enable_faad2 = True;
 
-	if (LoadTVQDLL() == false)	currentConfig->enable_tvq = false;
-	else				currentConfig->enable_tvq = true;
+	if (bonkEncDLLInterfaces::LoadTVQDLL() == False)	currentConfig->enable_tvq = False;
+	else							currentConfig->enable_tvq = True;
 
-	if (LoadCDRipDLL() == false)	currentConfig->enable_cdrip = false;
-	else				currentConfig->enable_cdrip = true;
+	if (bonkEncDLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;
+	else							currentConfig->enable_cdrip = True;
 
-	if (LoadID3DLL() == false)	currentConfig->enable_id3 = false;
-	else				currentConfig->enable_id3 = true;
+	if (bonkEncDLLInterfaces::LoadID3DLL() == False)	currentConfig->enable_id3 = False;
+	else							currentConfig->enable_id3 = True;
 
-	if (LoadEUpdateDLL() == false)	currentConfig->enable_eUpdate = false;
-	else				currentConfig->enable_eUpdate = true;
+	if (bonkEncDLLInterfaces::LoadEUpdateDLL() == False)	currentConfig->enable_eUpdate = False;
+	else							currentConfig->enable_eUpdate = True;
 
-	if (LoadFLACDLL() == false)	currentConfig->enable_flac = false;
-	else				currentConfig->enable_flac = true;
+	if (bonkEncDLLInterfaces::LoadFLACDLL() == False)	currentConfig->enable_flac = False;
+	else							currentConfig->enable_flac = True;
 
 	if (currentConfig->enable_faac || currentConfig->enable_faad2)
 	{
-		if (LoadMP4V2DLL() == false)	currentConfig->enable_mp4 = false;
-		else				currentConfig->enable_mp4 = true;
+		if (bonkEncDLLInterfaces::LoadMP4V2DLL() == False)	currentConfig->enable_mp4 = False;
+		else							currentConfig->enable_mp4 = True;
 	}
 	else
 	{
-		currentConfig->enable_mp4 = false;
+		currentConfig->enable_mp4 = False;
 	}
 
-	LoadWinampDLLs();
+	bonkEncDLLInterfaces::LoadWinampDLLs();
 
 	int	 nextEC = 0;
 
@@ -201,9 +201,7 @@ bonkEnc::bonkEnc()
 		}
 	}
 
-	int	 len = currentConfig->enc_outdir.Length() - 1;
-
-	if (currentConfig->enc_outdir[len] != '\\') currentConfig->enc_outdir[++len] = '\\';
+	if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
 }
 
 bonkEnc::~bonkEnc()
@@ -220,20 +218,20 @@ bonkEnc::~bonkEnc()
 		delete bonkEncCDDB::infoCache.GetNthEntry(i);
 	}
 
-	if (currentConfig->enable_bonk)		FreeBonkDLL();
-	if (currentConfig->enable_blade)	FreeBladeDLL();
-	if (currentConfig->enable_faac)		FreeFAACDLL();
-	if (currentConfig->enable_faad2)	FreeFAAD2DLL();
-	if (currentConfig->enable_lame)		FreeLAMEDLL();
-	if (currentConfig->enable_tvq)		FreeTVQDLL();
-	if (currentConfig->enable_vorbis)	FreeVorbisDLL();
-	if (currentConfig->enable_cdrip)	FreeCDRipDLL();
-	if (currentConfig->enable_id3)		FreeID3DLL();
-	if (currentConfig->enable_eUpdate)	FreeEUpdateDLL();
-	if (currentConfig->enable_mp4)		FreeMP4V2DLL();
-	if (currentConfig->enable_flac)		FreeFLACDLL();
+	if (currentConfig->enable_bonk)		bonkEncDLLInterfaces::FreeBonkDLL();
+	if (currentConfig->enable_blade)	bonkEncDLLInterfaces::FreeBladeDLL();
+	if (currentConfig->enable_faac)		bonkEncDLLInterfaces::FreeFAACDLL();
+	if (currentConfig->enable_faad2)	bonkEncDLLInterfaces::FreeFAAD2DLL();
+	if (currentConfig->enable_lame)		bonkEncDLLInterfaces::FreeLAMEDLL();
+	if (currentConfig->enable_tvq)		bonkEncDLLInterfaces::FreeTVQDLL();
+	if (currentConfig->enable_vorbis)	bonkEncDLLInterfaces::FreeVorbisDLL();
+	if (currentConfig->enable_cdrip)	bonkEncDLLInterfaces::FreeCDRipDLL();
+	if (currentConfig->enable_id3)		bonkEncDLLInterfaces::FreeID3DLL();
+	if (currentConfig->enable_eUpdate)	bonkEncDLLInterfaces::FreeEUpdateDLL();
+	if (currentConfig->enable_mp4)		bonkEncDLLInterfaces::FreeMP4V2DLL();
+	if (currentConfig->enable_flac)		bonkEncDLLInterfaces::FreeFLACDLL();
 
-	FreeWinampDLLs();
+	bonkEncDLLInterfaces::FreeWinampDLLs();
 
 	delete i18n;
 	delete currentConfig;
@@ -262,7 +260,7 @@ InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
 	Array<String>	 extensions;
 	Array<Int>	 indexes;
 
-	for (Int i = 0; i < winamp_in_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < bonkEncDLLInterfaces::winamp_in_plugins.GetNOfEntries(); i++)
 	{
 		Int	 n = 1;
 		Int	 k = 0;
@@ -272,13 +270,13 @@ InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
 		{
 			if (!(n & 1))
 			{
-				if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0) n++;
+				if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0) n++;
 			}
 			else
 			{
-				extension[k++] = winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
+				extension[k++] = bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
 
-				if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
 					String	 extension2 = extension;
 					Int	 o = 0;		
@@ -306,7 +304,7 @@ InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
 				}
 			}
 
-			if (winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
+			if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
 		}
 	}
 
@@ -393,7 +391,7 @@ InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
 		}
 		else
 		{
-			filter_in = new FilterInWinamp(currentConfig, trackInfo, winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
+			filter_in = new FilterInWinamp(currentConfig, trackInfo, bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
 		}
 	}
 
