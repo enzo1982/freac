@@ -141,7 +141,7 @@ bonkEncGUI::bonkEncGUI()
 		button_next->SetFlags(BF_NOFRAME);
 	}
 
-	pos.x = -4;
+	pos.x = -3;
 	pos.y = 20;
 	size.cx = 21;
 	size.cy = 21;
@@ -241,12 +241,12 @@ bonkEncGUI::bonkEncGUI()
 
 	pos.y = 0;
 	pos.x = 2;
-	size.cx = 85;
+	size.cx = 86;
 	size.cy = 0;
 
 	info_checkbox		= new CheckBox(i18n->TranslateString("Show title info"), pos, size, &currentConfig->showTitleInfo);
 	info_checkbox->onClick.Connect(&bonkEncGUI::ShowHideTitleInfo, this);
-	info_checkbox->SetMetrics(pos, Size(info_checkbox->textSize.cx + 19, info_checkbox->size.cy));
+	info_checkbox->SetMetrics(pos, Size(info_checkbox->textSize.cx + 20, info_checkbox->size.cy));
 
 	info_background->SetMetrics(info_background->pos, Size(info_checkbox->textSize.cx + 24, info_background->size.cy));
 
@@ -1391,7 +1391,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	progress->SetMetrics(Point(maxTextLength + 14, progress->pos.y), Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->size.cy));
  
 	info_checkbox->SetText(i18n->TranslateString("Show title info"));
-	info_checkbox->SetMetrics(info_checkbox->pos, Size(info_checkbox->textSize.cx + 19, info_checkbox->size.cy));
+	info_checkbox->SetMetrics(info_checkbox->pos, Size(info_checkbox->textSize.cx + 20, info_checkbox->size.cy));
 
 	info_background->Hide();
 	info_divider->Paint(SP_PAINT);

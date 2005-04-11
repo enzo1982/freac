@@ -57,8 +57,8 @@ configureGeneralSettings::configureGeneralSettings()
 
 	pos.x	= 7;
 	pos.y	= 7;
-	size.cx	= 547;
-	size.cy	= 212;
+	size.cx	= 548;
+	size.cy	= 213;
 
 	reg_register		= new TabWidget(pos, size);
 

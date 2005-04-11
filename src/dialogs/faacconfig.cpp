@@ -49,8 +49,8 @@ configureFAAC::configureFAAC()
 
 	pos.x = 7;
 	pos.y = 7;
-	size.cx = 524;
-	size.cy = 207;
+	size.cx = 525;
+	size.cy = 208;
 
 	tabwidget		= new TabWidget(pos, size);
 

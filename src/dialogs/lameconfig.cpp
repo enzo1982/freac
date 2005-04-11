@@ -75,8 +75,8 @@ configureLameEnc::configureLameEnc()
 
 	pos.x = 7;
 	pos.y = 7;
-	size.cx = 384;
-	size.cy = 221;
+	size.cx = 385;
+	size.cy = 222;
 
 	reg_register		= new TabWidget(pos, size);
 

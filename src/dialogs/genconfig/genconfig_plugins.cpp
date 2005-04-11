@@ -20,8 +20,8 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 
 	pos.x	= 7;
 	pos.y	= 7;
-	size.cx	= 529;
-	size.cy	= 175;
+	size.cx	= 530;
+	size.cy	= 176;
 
 	tabs_plugins		= new TabWidget(pos, size);
 
