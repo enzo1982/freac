@@ -1588,22 +1588,22 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 1, NIL));
 	entry->onClick.Connect(&bonkEncGUI::AddFile, this);
-	entry->SetStatusText(i18n->TranslateString("Add audio file(s) to the joblist"));
+	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
 		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 2, NIL), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onClick.Connect(&bonkEnc::ReadCD, (bonkEnc *) this);
-		entry->SetStatusText(i18n->TranslateString("Add audio CD contents to the joblist"));
+		entry->SetTooltipText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
 	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 3, NIL));
 	entry->onClick.Connect(&bonkEncGUI::RemoveFile, this);
-	entry->SetStatusText(i18n->TranslateString("Remove the selected entry from the joblist"));
+	entry->SetTooltipText(i18n->TranslateString("Remove the selected entry from the joblist"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 4, NIL));
 	entry->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
-	entry->SetStatusText(i18n->TranslateString("Clear the entire joblist"));
+	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
@@ -1611,32 +1611,32 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 
 		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 9, NIL));
 		entry->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
-		entry->SetStatusText(i18n->TranslateString("Query CDDB database"));
+		entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
 
 		entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 10, NIL));
 		entry->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
-		entry->SetStatusText(i18n->TranslateString("Submit CDDB data..."));
+		entry->SetTooltipText(i18n->TranslateString("Submit CDDB data..."));
 	}
 
 	mainWnd_iconbar->AddEntry();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 5, NIL));
 	entry->onClick.Connect(&bonkEncGUI::ConfigureGeneral, this);
-	entry->SetStatusText(i18n->TranslateString("Configure general settings"));
+	entry->SetTooltipText(i18n->TranslateString("Configure general settings"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 6, NIL));
 	entry->onClick.Connect(&bonkEncGUI::ConfigureEncoder, this);
-	entry->SetStatusText(i18n->TranslateString("Configure the selected audio encoder"));
+	entry->SetTooltipText(i18n->TranslateString("Configure the selected audio encoder"));
 
 	mainWnd_iconbar->AddEntry();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 7, NIL), ENCODER_WAVE > 0 ? menu_encoders : NIL);
 	entry->onClick.Connect(&bonkEnc::Encode, (bonkEnc *) this);
-	entry->SetStatusText(i18n->TranslateString("Start the encoding process"));
+	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 8, NIL));
 	entry->onClick.Connect(&bonkEnc::StopEncoding, (bonkEnc *) this);
-	entry->SetStatusText(i18n->TranslateString("Stop encoding"));
+	entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
 
 	mainWnd_menubar->Show();
 	mainWnd_iconbar->Show();

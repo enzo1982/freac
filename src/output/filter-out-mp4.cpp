@@ -175,9 +175,31 @@ int FilterOutMP4::WriteData(unsigned char *data, int size)
 
 String FilterOutMP4::GetTempFile(const String &oFileName)
 {
-	String	 rVal = oFileName;
+	String	 rVal	= oFileName;
+	Int	 lastBs	= -1;
 
-	for (Int i = 0; i < rVal.Length(); i++) if (rVal[i] > 255) rVal[i] = '#';
+	for (Int i = 0; i < rVal.Length(); i++)
+	{
+		if (rVal[i] > 255)	rVal[i] = '#';
+		if (rVal[i] == '\\')	lastBs = i;
+	}
 
-	return rVal == oFileName ? rVal : rVal.Append(".temp");
+	if (rVal == oFileName) return rVal;
+
+	char	*tempa = new char [MAX_PATH];
+
+	GetTempPathA(MAX_PATH, tempa);
+
+	String	 tempDir = tempa;
+
+	delete [] tempa;
+
+	if (tempDir[tempDir.Length() - 1] != '\\') tempDir.Append("\\");
+
+	for (Int i = lastBs + 1; i < rVal.Length(); i++)
+	{
+		tempDir[tempDir.Length()] = rVal[i];
+	}
+
+	return tempDir.Append(".out.temp");
 }
