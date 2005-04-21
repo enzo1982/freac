@@ -200,8 +200,7 @@
     <entry id="188" string="Genre">分野</entry>
     <entry id="189" string="Album">アルバム</entry>
     <entry id="190" string="Info tags">タグ情報</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">ID3V2/Vorbis情報の書き込み</entry>
-    <entry id="192" string="Default comment string:">初期コメント:</entry>
+     <entry id="192" string="Default comment string:">初期コメント:</entry>
     <entry id="193" string="unknown artist">(不明なアーティスト)</entry>
     <entry id="194" string="unknown title">(不明な題名)</entry>
     <entry id="195" string="Unable to load ASPI drivers!">ASPIドライバがロードできません！</entry>

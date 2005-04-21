@@ -196,9 +196,9 @@ String FilterOutMP4::GetTempFile(const String &oFileName)
 
 	if (tempDir[tempDir.Length() - 1] != '\\') tempDir.Append("\\");
 
-	for (Int i = lastBs + 1; i < rVal.Length(); i++)
+	for (Int j = lastBs + 1; j < rVal.Length(); j++)
 	{
-		tempDir[tempDir.Length()] = rVal[i];
+		tempDir[tempDir.Length()] = rVal[j];
 	}
 
 	return tempDir.Append(".out.temp");

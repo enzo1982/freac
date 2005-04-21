@@ -200,7 +200,6 @@
     <entry id="188" string="Genre">Κατηγορία</entry>
     <entry id="189" string="Album">Άλμπουμ</entry>
     <entry id="190" string="Info tags">Ετικέτες ID3</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">Προσθήκη ετικετών ID3v2/Vorbis</entry>
     <entry id="192" string="Default comment string:">Προεπιλεγμένο Σχόλιο:</entry>
     <entry id="193" string="unknown artist">Άγνωστος Καλλιτέχνης</entry>
     <entry id="194" string="unknown title">Άγνωστος Τίτλος</entry>

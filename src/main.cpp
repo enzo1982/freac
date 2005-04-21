@@ -209,7 +209,7 @@ bonkEncGUI::bonkEncGUI()
 	pos.x = 16;
 	pos.y += 19;
 	size.cx = currentConfig->wndSize.cx - 29;
-	size.cy = currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0);
+	size.cy = currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0);
 
 	joblist			= new ListBox(pos, size);
 	joblist->onClick.Connect(&bonkEncGUI::SelectJoblistEntry, this);
@@ -221,6 +221,22 @@ bonkEncGUI::bonkEncGUI()
 
 	droparea		= new DropArea(pos, size);
 	droparea->onDropFile.Connect(&bonkEncGUI::AddDragDropFile, this);
+
+	pos.x = 200;
+	pos.y += joblist->size.cy + 4;
+	size.cx = 90;
+	size.cy = 0;
+
+	check_playlist		= new CheckBox(i18n->TranslateString("Create playlist"), pos, size, &currentConfig->createPlaylist);
+	check_playlist->SetOrientation(OR_UPPERRIGHT);
+
+	pos.x -= 100;
+
+	check_cuesheet		= new CheckBox(i18n->TranslateString("Create cue sheet"), pos, size, &currentConfig->createCueSheet);
+	check_cuesheet->SetOrientation(OR_UPPERRIGHT);
+
+	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, check_cuesheet->pos.y), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->size.cy));
+	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, check_playlist->pos.y), Size(check_playlist->textSize.cx + 21, check_playlist->size.cy));
 
 	Int	 n = 0;
 
@@ -726,6 +742,9 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd->RegisterObject(joblist);
 	mainWnd->RegisterObject(droparea);
 
+	mainWnd->RegisterObject(check_cuesheet);
+	mainWnd->RegisterObject(check_playlist);
+
 	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		mainWnd->RegisterObject(button_play);
@@ -825,7 +844,7 @@ bonkEncGUI::bonkEncGUI()
 
 	mainWnd->doQuit.Connect(&bonkEncGUI::ExitProc, this);
 	mainWnd->getTrackMenu.Connect(&bonkEncGUI::GetTrackMenu, this);
-	mainWnd->SetMinimumSize(Size(530, 300 + n));
+	mainWnd->SetMinimumSize(Size(530, 340 + n));
 
 	if (currentConfig->maximized) mainWnd->Maximize();
 
@@ -848,6 +867,9 @@ bonkEncGUI::~bonkEncGUI()
 	DeleteObject(mainWnd);
 	DeleteObject(joblist);
 	DeleteObject(droparea);
+
+	DeleteObject(check_cuesheet);
+	DeleteObject(check_playlist);
 
 	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
@@ -1022,10 +1044,13 @@ Void bonkEncGUI::ResizeProc()
 
 	progress->size = Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->size.cy);
 
-	joblist->size = Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
-	droparea->size = Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0));
+	joblist->size = Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0));
+	droparea->size = Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0));
 
 	joblist->SetMetrics(joblist->pos, joblist->size);
+
+	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->pos.y + joblist->size.cy + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->size.cy));
+	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->pos.y + joblist->size.cy + 4), Size(check_playlist->textSize.cx + 21, check_playlist->size.cy));
 
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
@@ -1236,13 +1261,13 @@ Void bonkEncGUI::ShowHideTitleInfo()
 	{
 		n = 65;
 
-		mainWnd->SetMinimumSize(Size(530, 300 + n));
+		mainWnd->SetMinimumSize(Size(530, 340 + n));
 	}
 	else
 	{
 		n = -65;
 
-		mainWnd->SetMinimumSize(Size(530, 300));
+		mainWnd->SetMinimumSize(Size(530, 340));
 
 		info_bottom->Hide();
 		info_text_artist->Hide();
@@ -1261,8 +1286,11 @@ Void bonkEncGUI::ShowHideTitleInfo()
 
 	if (mainWnd->IsMaximized())
 	{
-		joblist->SetMetrics(joblist->pos, Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0)));
-		droparea->SetMetrics(droparea->pos, Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 251 - (currentConfig->showTitleInfo ? 65 : 0)));
+		joblist->SetMetrics(joblist->pos, Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0)));
+		droparea->SetMetrics(droparea->pos, Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0)));
+
+		check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->pos.y + joblist->size.cy + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->size.cy));
+		check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->pos.y + joblist->size.cy + 4), Size(check_playlist->textSize.cx + 21, check_playlist->size.cy));
 	}
 
 	info_divider->SetPos(info_divider->GetPos() + n);
@@ -1442,6 +1470,18 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	joblist->AddTab(i18n->TranslateString("Size"), currentConfig->tab_width_size);
 
 	joblist->Show();
+
+	check_cuesheet->Hide();
+	check_playlist->Hide();
+
+	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
+	check_playlist->SetText(i18n->TranslateString("Create playlist"));
+
+	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, check_cuesheet->pos.y), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->size.cy));
+	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, check_playlist->pos.y), Size(check_playlist->textSize.cx + 21, check_playlist->size.cy));
+
+	check_cuesheet->Show();
+	check_playlist->Show();
 
 	if (currentConfig->showTitleInfo)
 	{

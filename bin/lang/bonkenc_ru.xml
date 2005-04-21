@@ -200,7 +200,6 @@
     <entry id="188" string="Genre">Жанр</entry>
     <entry id="189" string="Album">Альбом</entry>
     <entry id="190" string="Info tags">Заголовки</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">Запись ID3V2/Vorbis заголовков</entry>
     <entry id="192" string="Default comment string:">Комментарии по умолчанию</entry>
     <entry id="193" string="unknown artist">unknown artist</entry>
     <entry id="194" string="unknown title">unknown title</entry>

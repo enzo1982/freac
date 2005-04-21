@@ -44,10 +44,12 @@ class bonkEnc : public Application
 		Window			*mainWnd;
 		Statusbar		*mainWnd_statusbar;
 
-		ListBox			*joblist;
 		Text			*txt_joblist;
 		Hyperlink		*hyperlink;
 		DropArea		*droparea;
+
+		CheckBox		*check_playlist;
+		CheckBox		*check_cuesheet;
 
 		Divider			*info_divider;
 		Layer			*info_background;
@@ -117,6 +119,8 @@ class bonkEnc : public Application
 		static I18n::Translator	*i18n;
 
 		Bool			 cddbRetry;
+
+		ListBox			*joblist;
 
 		Array<bonkEncTrack *>	 sa_formatinfo;
 

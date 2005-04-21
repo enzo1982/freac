@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -200,7 +200,6 @@
     <entry id="188" string="Genre">Rodzaj</entry>
     <entry id="189" string="Album">Album</entry>
     <entry id="190" string="Info tags">Identyfikatory</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">Identyfikatory ID3v2/Vorbis</entry>
     <entry id="192" string="Default comment string:">Domyślny opis:</entry>
     <entry id="193" string="unknown artist">nieznany artysta</entry>
     <entry id="194" string="unknown title">nieznany tytuł</entry>

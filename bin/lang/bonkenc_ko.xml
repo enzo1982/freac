@@ -200,7 +200,6 @@
     <entry id="188" string="Genre">장르</entry>
     <entry id="189" string="Album">앨범</entry>
     <entry id="190" string="Info tags">정보 태그</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">ID3V2/Vorbis 정보태그 작성</entry>
     <entry id="192" string="Default comment string:">초기 멘트:</entry>
     <entry id="193" string="unknown artist">(알수없는 아티스트)</entry>
     <entry id="194" string="unknown title">(알수없는 제목)</entry>

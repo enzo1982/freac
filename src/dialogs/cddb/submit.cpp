@@ -451,6 +451,36 @@ Void cddbSubmitDlg::Submit()
 
 	text_status->SetText("");
 
+	for (Int l = 0; l < currentConfig->appMain->sa_formatinfo.GetNOfEntries(); l++)
+	{
+		bonkEncTrack	*trackInfo = currentConfig->appMain->sa_formatinfo.GetNthEntry(l);
+
+		cddb.SetActiveDrive(activedrive);
+
+		if (trackInfo->discid != cddb.GetDiscIDString()) continue;
+
+		for (Int m = 0; m < titles.GetNOfEntries(); m++)
+		{
+			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->title != titles.GetNthEntry(m))
+			{
+				trackInfo->artist	= edit_artist->GetText();
+				trackInfo->title	= titles.GetNthEntry(m);
+				trackInfo->album	= edit_album->GetText();
+				trackInfo->year		= edit_year->GetText().ToInt();
+				trackInfo->genre	= edit_genre->GetText();
+
+				String	 jlEntry;
+
+				if (trackInfo->artist == NIL && trackInfo->title == NIL)	jlEntry = String(trackInfo->origFilename).Append("\t");
+				else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : currentConfig->appMain->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : currentConfig->appMain->i18n->TranslateString("unknown title")).Append("\t");
+
+				jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String("")).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
+
+				if (currentConfig->appMain->joblist->GetNthEntry(l)->GetText() != jlEntry) currentConfig->appMain->joblist->GetNthEntry(l)->SetText(jlEntry);
+			}
+		}
+	}
+
 	mainWnd->Close();
 }
 
@@ -529,8 +559,11 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		cdInfo = currentConfig->appMain->GetCDDBData();
 
-		bonkEncCDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
-		bonkEncCDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+		if (cdInfo != NIL)
+		{
+			bonkEncCDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
+			bonkEncCDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+		}
 
 		currentConfig->cdrip_activedrive = oDrive;
 	}

@@ -467,7 +467,7 @@ String bonkEncCDDB::Submit(Array<bonkEncTrack *> *cddbInfo)
 	str.Append("Category: ").Append(cddbInfo->GetNthEntry(0)->category).Append("\n");
 	str.Append("Discid: ").Append(cddbInfo->GetNthEntry(0)->discid).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append("submit").Append("\n");
+	str.Append("Submit-Mode: ").Append("test").Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
 	str.Append("Charset: UTF-8\n");
 	str.Append("\n");

@@ -39,6 +39,9 @@ class bonkEncConfig
 
 		Int		 output_plugin;
 
+		Bool		 createPlaylist;
+		Bool		 createCueSheet;
+
 		Bool		 showTitleInfo;
 		Bool		 showTooltips;
 

@@ -200,7 +200,7 @@
     <entry id="188" string="Genre">Genre</entry>
     <entry id="189" string="Album">Album</entry>
     <entry id="190" string="Info tags">Info Tags</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">ID3V2/Vorbis Info Tags schreiben</entry>
+    <entry id="191" string="Default information">Standardinformationen</entry>
     <entry id="192" string="Default comment string:">Standardkommentar:</entry>
     <entry id="193" string="unknown artist">unbekannter Künstler</entry>
     <entry id="194" string="unknown title">unbekannter Titel</entry>
@@ -279,5 +279,16 @@
     <entry id="267" string="bytes">Bytes</entry>
     <entry id="268" string="bit">Bit</entry>
     <entry id="269" string="min">min</entry>
+    <entry id="270" string="Create playlist">Playlist erzeugen</entry>
+    <entry id="271" string="Create cue sheet">Cuesheet erzeugen</entry>
+    <entry id="272" string="Write ID3V1 tags">ID3V1-Tags schreiben</entry>
+    <entry id="273" string="Write ID3V2 tags">ID3V2-Tags schreiben</entry>
+    <entry id="274" string="Write Vorbis Comment tags">Vorbis Comment-Tags schreiben</entry>
+    <entry id="275" string="Write MP4 metadata info">MP4-Metadaten schreiben</entry>
+    <entry id="276" string="ID3V1 tag encoding:">ID3V1-Codierung:</entry>
+    <entry id="277" string="ID3V2 tag encoding:">ID3V2-Codierung:</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Vorbis Comment-Codierung:</entry>
+    <entry id="279" string="MP4 metadata encoding:">MP4-Metadaten-Codierung:</entry>
+    <entry id="280" string="Tag encodings">Tag-Codierungen</entry>
   </data>
 </LangFile>

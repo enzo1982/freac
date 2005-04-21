@@ -84,6 +84,8 @@ Bool bonkEncConfig::LoadSettings()
 	showTips		= config->GetIntValue("Settings", "ShowTips", 1);
 	tipOffset		= config->GetIntValue("Settings", "TipOffset", 0);
 	checkUpdatesAtStartup	= config->GetIntValue("Settings", "CheckUpdatesAtStartup", 1);
+	createPlaylist		= config->GetIntValue("Settings", "CreatePlaylist", 0);
+	createCueSheet		= config->GetIntValue("Settings", "CreateCueSheet", 0);
 
 	enable_id3v1		= config->GetIntValue("Settings", "EnableID3V1", 0);
 	enable_id3v2		= config->GetIntValue("Settings", "EnableID3V2", 1);
@@ -220,6 +222,8 @@ Bool bonkEncConfig::SaveSettings()
 		config->SetIntValue("Settings", "ShowTips", showTips);
 		config->SetIntValue("Settings", "TipOffset", tipOffset);
 		config->SetIntValue("Settings", "CheckUpdatesAtStartup", checkUpdatesAtStartup);
+		config->SetIntValue("Settings", "CreatePlaylist", createPlaylist);
+		config->SetIntValue("Settings", "CreateCueSheet", createCueSheet);
 
 		config->SetIntValue("Settings", "EnableID3V1", enable_id3v1);
 		config->SetIntValue("Settings", "EnableID3V2", enable_id3v2);

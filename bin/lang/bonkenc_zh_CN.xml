@@ -200,7 +200,6 @@
     <entry id="188" string="Genre">流派</entry>
     <entry id="189" string="Album">专辑</entry>
     <entry id="190" string="Info tags">信息标签</entry>
-    <entry id="191" string="Write ID3V2/Vorbis info tags">写入ID3V2/Vorbis信息标签</entry>
     <entry id="192" string="Default comment string:">缺省备注:</entry>
     <entry id="193" string="unknown artist">未知艺术家</entry>
     <entry id="194" string="unknown title">未知标题</entry>

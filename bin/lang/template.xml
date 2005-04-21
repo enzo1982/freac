@@ -200,7 +200,7 @@
     <entry id="188" string="Genre"/>
     <entry id="189" string="Album"/>
     <entry id="190" string="Info tags"/>
-    <entry id="191" string="Write ID3V2/Vorbis info tags"/>
+    <entry id="191" string="Default information"/>
     <entry id="192" string="Default comment string:"/>
     <entry id="193" string="unknown artist"/>
     <entry id="194" string="unknown title"/>
@@ -279,5 +279,16 @@
     <entry id="267" string="bytes"/>
     <entry id="268" string="bit"/>
     <entry id="269" string="min"/>
+    <entry id="270" string="Create playlist"/>
+    <entry id="271" string="Create cue sheet"/>
+    <entry id="272" string="Write ID3V1 tags"/>
+    <entry id="273" string="Write ID3V2 tags"/>
+    <entry id="274" string="Write Vorbis Comment tags"/>
+    <entry id="275" string="Write MP4 metadata info"/>
+    <entry id="276" string="ID3V1 tag encoding:"/>
+    <entry id="277" string="ID3V2 tag encoding:"/>
+    <entry id="278" string="Vorbis Comment tag encoding:"/>
+    <entry id="279" string="MP4 metadata encoding:"/>
+    <entry id="280" string="Tag encodings"/>
   </data>
 </LangFile>
