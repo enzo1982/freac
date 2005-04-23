@@ -289,6 +289,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 	size.cy = 150;
 
 	list_tracks	= new ListBox(pos, size);
+	list_tracks->SetFlags(LF_ALLOWRESELECT);
 	list_tracks->AddTab(bonkEnc::i18n->TranslateString("Track"), 50);
 	list_tracks->AddTab(bonkEnc::i18n->TranslateString("Title"));
 	list_tracks->onClick.Connect(&cddbSubmitDlg::SelectTrack, this);

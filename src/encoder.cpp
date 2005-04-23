@@ -106,6 +106,21 @@ Int bonkEnc::Encoder(Thread *thread)
 			edb_time->SetText("00:00");
 		}
 
+		Int	 lastBs = -1;
+		Int	 firstDot = 0;
+
+		for (Int j = 0; j < in_filename.Length(); j++) if (in_filename[j] == '\\') lastBs = j;
+
+		for (Int k = in_filename.Length() - 1; k >= 0; k--)
+		{
+			if (in_filename[k] == '.') { firstDot = in_filename.Length() - k; break; }
+			if (in_filename[k] == '\\') break;
+		}
+
+		String	 shortInFileName;
+
+		for (Int l = 0; l < (in_filename.Length() - lastBs - firstDot - 1); l++) shortInFileName[l] = in_filename[l + lastBs + 1];
+
 		out_filename.Copy(currentConfig->enc_outdir);
 
 		if (trackInfo->artist != NIL || trackInfo->title != NIL)
@@ -116,6 +131,7 @@ Int bonkEnc::Encoder(Thread *thread)
 			out_filename.Replace("<title>", trackInfo->title.Length() > 0 ? ReplaceIncompatibleChars(trackInfo->title) : i18n->TranslateString("unknown title"));
 			out_filename.Replace("<album>", trackInfo->album.Length() > 0 ? ReplaceIncompatibleChars(trackInfo->album) : i18n->TranslateString("unknown album"));
 			out_filename.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
+			out_filename.Replace("<filename>", shortInFileName);
 
 			String	 dir = out_filename;
 			String	 tmp;
@@ -141,26 +157,7 @@ Int bonkEnc::Encoder(Thread *thread)
 		}
 		else
 		{
-			Int	 in_len = in_filename.Length();
-			Int	 out_len = out_filename.Length();
-			Int	 lastBs = -1;
-			Int	 firstDot = 0;
-
-			for (Int i = 0; i < in_len; i++)
-			{
-				if (in_filename[i] == '\\') lastBs = i;
-			}
-
-			for (Int j = in_len - 1; j >= 0; j--)
-			{
-				if (in_filename[j] == '.') { firstDot = in_len - j; break; }
-				if (in_filename[j] == '\\') break;
-			}
-
-			for (Int k = out_len; k < (in_len + out_len - lastBs - firstDot - 1); k++)
-			{
-				out_filename[k] = in_filename[(k - out_len) + lastBs + 1];
-			}
+			out_filename.Append(shortInFileName);
 		}
 
 		if (currentConfig->encoder == ENCODER_BONKENC)		out_filename.Append(".bonk");

@@ -17,6 +17,8 @@ History
 		- fixed a crash when opening protected MP4 files
 		- added support for MP4 files with Unicode
 		- fixed bad default AAC profile setting
+		- submitted freedb entries can now be used to update the joblist
+		- the <filename> token can be used in the file name pattern
 		- added support for ID3V1 tags
 		- upgrade to MPEG4IP v1.2
 		- use smooth v0.8.67.0

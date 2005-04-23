@@ -17,6 +17,8 @@ Geschichte
 		- Absturz beim Öffnen von geschützten MP4-Dateien behoben
 		- Unterstützung für MP4-Dateinamen mit Unicode hinzugefügt
 		- Falsche AAC-Profil Einstellung korrigiert
+		- Die Jobliste kann nun mit gesendeten freedb-Informationen aktualisiert werden
+		- Der Token <filename> kann nun in der Dateinamensvorlage verwendet werden 
 		- Unterstützung für ID3V1-Tags hinzugefügt
 		- Update auf MPEG4IP v1.2
 		- Verwende smooth v0.8.67.0
