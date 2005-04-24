@@ -31,11 +31,12 @@ cdTextPackage;
 
 cddbSubmitDlg::cddbSubmitDlg()
 {
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig	= bonkEnc::currentConfig;
 
-	activedrive = currentConfig->cdrip_activedrive;
+	activedrive	= currentConfig->cdrip_activedrive;
+	updateJoblist	= currentConfig->update_joblist;
 
-	dontUpdateInfo = False;
+	dontUpdateInfo	= False;
 
 	cddbInfo	= NIL;
 	ownCddbInfo	= False;
@@ -61,6 +62,13 @@ cddbSubmitDlg::cddbSubmitDlg()
 	btn_submit		= new Button(bonkEnc::i18n->TranslateString("Submit"), NIL, pos, size);
 	btn_submit->onClick.Connect(&cddbSubmitDlg::Submit, this);
 	btn_submit->SetOrientation(OR_LOWERRIGHT);
+
+	pos.x = 7;
+	pos.y = 27;
+
+	check_updateJoblist	= new CheckBox(bonkEnc::i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
+	check_updateJoblist->SetMetrics(check_updateJoblist->pos, Size(check_updateJoblist->textSize.cx + 21, check_updateJoblist->size.cy));
+	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -331,6 +339,7 @@ cddbSubmitDlg::cddbSubmitDlg()
 
 	mainWnd->RegisterObject(btn_submit);
 	mainWnd->RegisterObject(btn_cancel);
+	mainWnd->RegisterObject(check_updateJoblist);
 	mainWnd->RegisterObject(combo_drive);
 	mainWnd->RegisterObject(group_drive);
 	mainWnd->RegisterObject(text_artist);
@@ -379,6 +388,7 @@ cddbSubmitDlg::~cddbSubmitDlg()
 	DeleteObject(edit_title);
 	DeleteObject(text_cdstatus);
 	DeleteObject(text_status);
+	DeleteObject(check_updateJoblist);
 	DeleteObject(btn_submit);
 	DeleteObject(btn_cancel);
 
@@ -435,6 +445,7 @@ Void cddbSubmitDlg::Submit()
 
 	cddbInfo->GetFirstEntry()->revision++;
 
+	check_updateJoblist->Hide();
 	text_status->SetText(bonkEnc::i18n->TranslateString("Submitting CD information").Append("..."));
 
 	result = cddb.Submit(cddbInfo);
@@ -444,6 +455,7 @@ Void cddbSubmitDlg::Submit()
 		QuickMessage(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		text_status->SetText("");
+		check_updateJoblist->Show();
 
 		cddbInfo->GetFirstEntry()->revision--;
 
@@ -452,35 +464,40 @@ Void cddbSubmitDlg::Submit()
 
 	text_status->SetText("");
 
-	for (Int l = 0; l < currentConfig->appMain->sa_formatinfo.GetNOfEntries(); l++)
+	if (updateJoblist)
 	{
-		bonkEncTrack	*trackInfo = currentConfig->appMain->sa_formatinfo.GetNthEntry(l);
-
-		cddb.SetActiveDrive(activedrive);
-
-		if (trackInfo->discid != cddb.GetDiscIDString()) continue;
-
-		for (Int m = 0; m < titles.GetNOfEntries(); m++)
+		for (Int l = 0; l < currentConfig->appMain->sa_formatinfo.GetNOfEntries(); l++)
 		{
-			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->title != titles.GetNthEntry(m))
+			bonkEncTrack	*trackInfo = currentConfig->appMain->sa_formatinfo.GetNthEntry(l);
+
+			cddb.SetActiveDrive(activedrive);
+
+			if (trackInfo->discid != cddb.GetDiscIDString()) continue;
+
+			for (Int m = 0; m < titles.GetNOfEntries(); m++)
 			{
-				trackInfo->artist	= edit_artist->GetText();
-				trackInfo->title	= titles.GetNthEntry(m);
-				trackInfo->album	= edit_album->GetText();
-				trackInfo->year		= edit_year->GetText().ToInt();
-				trackInfo->genre	= edit_genre->GetText();
+				if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->title != titles.GetNthEntry(m))
+				{
+					trackInfo->artist	= edit_artist->GetText();
+					trackInfo->title	= titles.GetNthEntry(m);
+					trackInfo->album	= edit_album->GetText();
+					trackInfo->year		= edit_year->GetText().ToInt();
+					trackInfo->genre	= edit_genre->GetText();
 
-				String	 jlEntry;
+					String	 jlEntry;
 
-				if (trackInfo->artist == NIL && trackInfo->title == NIL)	jlEntry = String(trackInfo->origFilename).Append("\t");
-				else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : currentConfig->appMain->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : currentConfig->appMain->i18n->TranslateString("unknown title")).Append("\t");
+					if (trackInfo->artist == NIL && trackInfo->title == NIL)	jlEntry = String(trackInfo->origFilename).Append("\t");
+					else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : currentConfig->appMain->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : currentConfig->appMain->i18n->TranslateString("unknown title")).Append("\t");
 
-				jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String("")).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
+					jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String("")).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
 
-				if (currentConfig->appMain->joblist->GetNthEntry(l)->GetText() != jlEntry) currentConfig->appMain->joblist->GetNthEntry(l)->SetText(jlEntry);
+					if (currentConfig->appMain->joblist->GetNthEntry(l)->GetText() != jlEntry) currentConfig->appMain->joblist->GetNthEntry(l)->SetText(jlEntry);
+				}
 			}
 		}
 	}
+
+	currentConfig->update_joblist = updateJoblist;
 
 	mainWnd->Close();
 }

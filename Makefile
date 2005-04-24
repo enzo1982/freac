@@ -9,7 +9,7 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/config.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/track.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/language.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
+OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/language.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o $(OBJECTDIR)/console.o
@@ -113,6 +113,11 @@ $(OBJECTDIR)/console.o: $(SRCDIR)/console.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/console.cpp -o $(OBJECTDIR)/console.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/cuesheet.o: $(SRCDIR)/cuesheet.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/cuesheet.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cuesheet.cpp -o $(OBJECTDIR)/cuesheet.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/debug.o: $(SRCDIR)/debug.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/debug.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/debug.cpp -o $(OBJECTDIR)/debug.o
@@ -156,6 +161,11 @@ $(OBJECTDIR)/main.o: $(SRCDIR)/main.cpp
 $(OBJECTDIR)/playback.o: $(SRCDIR)/playback.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/playback.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/playback.cpp -o $(OBJECTDIR)/playback.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/playlist.o: $(SRCDIR)/playlist.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/playlist.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/playlist.cpp -o $(OBJECTDIR)/playlist.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/track.o: $(SRCDIR)/track.cpp

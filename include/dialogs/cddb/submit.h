@@ -47,6 +47,8 @@ class cddbSubmitDlg : public Dialog
 		Text			*text_cdstatus;
 		Text			*text_status;
 
+		CheckBox		*check_updateJoblist;
+
 		Button			*btn_cancel;
 		Button			*btn_submit;
 
@@ -55,6 +57,7 @@ class cddbSubmitDlg : public Dialog
 		Int			 activedrive;
 
 		Bool			 dontUpdateInfo;
+		Bool			 updateJoblist;
 
 		Array<bonkEncTrack *>	*cddbInfo;
 		Bool			 ownCddbInfo;

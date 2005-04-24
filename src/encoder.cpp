@@ -11,10 +11,14 @@
 #include <direct.h>
 
 #include <main.h>
+#include <dllinterfaces.h>
+
+#include <cuesheet.h>
+#include <playlist.h>
+
 #include <iolib/drivers/driver_posix.h>
 #include <iolib/drivers/driver_unicode.h>
 #include <iolib/drivers/driver_zero.h>
-#include <dllinterfaces.h>
 
 #include <input/filter-in-cdrip.h>
 #include <input/filter-in-wave.h>
@@ -77,10 +81,12 @@ Int bonkEnc::Encoder(Thread *thread)
 
 	encoder_activedrive = currentConfig->cdrip_activedrive;
 
-	Int		 num = joblist->GetNOfEntries();
-	Int		 nRemoved = 0;
-	Int		 step = 1;
-	Int		 encoder = currentConfig->encoder;
+	Int		 num		= joblist->GetNOfEntries();
+	Int		 nRemoved	= 0;
+	Int		 step		= 1;
+	Int		 encoder	= currentConfig->encoder;
+	bonkEncPlaylist	 playlist;
+	bonkEncCueSheet	 cueSheet;
 
 	for (Int i = 0; i < num; (step == 1) ? i++ : i)
 	{
@@ -282,6 +288,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		debug_out->OutputLine("Creating output filter...done.");
 
+		Int	 trackLength = 0;
+
 		if (!filter_out->error)
 		{
 			f_out->SetPackageSize(samples_size * (trackInfo->bits / 8) * trackInfo->channels);
@@ -309,6 +317,8 @@ Int bonkEnc::Encoder(Thread *thread)
 						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { step = i; break; }
 
 						f_out->OutputNumber(sample, int16(trackInfo->bits / 8));
+
+						trackLength++;
 					}
 
 					position += step;
@@ -369,6 +379,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 						if (sample != -1)	f_out->OutputNumber(sample, int16(trackInfo->bits / 8));
 						else			i--;
+
+						if (sample != -1)	trackLength++;
 					}
 
 					position = filter_in->GetInBytes();
@@ -439,6 +451,16 @@ Int bonkEnc::Encoder(Thread *thread)
 		delete driver_in;
 
 		if (f_size == 0) remove(out_filename);
+
+		if (currentConfig->enc_onTheFly || step == 1 || encoder == ENCODER_WAVE)
+		{
+			String	 relativeFileName;
+
+			for (Int m = 0; m < out_filename.Length() - currentConfig->enc_outdir.Length(); m++) relativeFileName[m] = out_filename[m + currentConfig->enc_outdir.Length()];
+
+			playlist.AddTrack(relativeFileName, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (trackInfo->rate * trackInfo->channels)));
+			cueSheet.AddTrack(relativeFileName, trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
+		}
 
 		if (trackInfo->isCDTrack && currentConfig->cdrip_autoEject && step == 1)
 		{
@@ -519,6 +541,9 @@ Int bonkEnc::Encoder(Thread *thread)
 	}
 
 	currentConfig->cdrip_activedrive = encoder_activedrive;
+
+	if (currentConfig->createPlaylist) playlist.Save(String(currentConfig->enc_outdir).Append("playlist.m3u"));
+	if (currentConfig->createCueSheet) cueSheet.Save(String(currentConfig->enc_outdir).Append("cuesheet.cue"));
 
 	if (!currentConfig->enable_console)
 	{

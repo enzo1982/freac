@@ -1,4 +1,4 @@
-BonkEnc Version 1.0 RC1
+BonkEnc Version 1.0 CVS
 
 BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann MP3,
 MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC lesen
@@ -9,7 +9,7 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 RC1 CVS (April 2005)
+	Version 1.0 CVS (April 2005)
 
 		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
@@ -18,12 +18,15 @@ Geschichte
 		- Unterstützung für MP4-Dateinamen mit Unicode hinzugefügt
 		- Falsche AAC-Profil Einstellung korrigiert
 		- Die Jobliste kann nun mit gesendeten freedb-Informationen aktualisiert werden
-		- Der Token <filename> kann nun in der Dateinamensvorlage verwendet werden 
+		- Der Token <filename> kann nun in der Dateinamensvorlage verwendet werden
+		- Text in inaktiven Editboxen kann jetzt ausgewählt und kopiert werden
+		- Unterstützung zum Erzeugen von M3U-Playlisten hinzugefügt
+		- Unterstützung zum Erzeugen von einfachen Cuesheets hinzugefügt
 		- Unterstützung für ID3V1-Tags hinzugefügt
 		- Update auf MPEG4IP v1.2
 		- Verwende smooth v0.8.67.0
 		- Unterstützung für MinGW 1.x entfernt
-		- Einige Bugfixes
+		- Sehr viele Bugfixes
 
 	Version 1.0 beta 3 (Januar 2005)
 

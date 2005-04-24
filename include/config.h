@@ -105,6 +105,7 @@ class bonkEncConfig
 		String		 freedb_proxy;
 		Int		 freedb_proxy_port;
 		Bool		 enable_cddb_cache;
+		Bool		 update_joblist;
 
 		Int		 bonk_quantization;
 		Int		 bonk_predictor;

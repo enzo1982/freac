@@ -121,6 +121,7 @@ Bool bonkEncConfig::LoadSettings()
 	freedb_proxy_mode	= config->GetIntValue("freedb", "ProxyMode", 0);
 	freedb_proxy		= config->GetStringValue("freedb", "Proxy", "localhost");
 	freedb_proxy_port	= config->GetIntValue("freedb", "ProxyPort", 1080);
+	update_joblist		= config->GetIntValue("freedb", "UpdateJoblistOnSubmit", 1);
 
 	bonk_quantization	= config->GetIntValue("bonk", "Quantization", 8);
 	bonk_predictor		= config->GetIntValue("bonk", "Predictor", 32);
@@ -257,6 +258,7 @@ Bool bonkEncConfig::SaveSettings()
 		config->SetIntValue("freedb", "ProxyMode", freedb_proxy_mode);
 		config->SetStringValue("freedb", "Proxy", freedb_proxy);
 		config->SetIntValue("freedb", "ProxyPort", freedb_proxy_port);
+		config->SetIntValue("freedb", "UpdateJoblistOnSubmit", update_joblist);
 
 		config->SetIntValue("bonk", "Quantization", bonk_quantization);
 		config->SetIntValue("bonk", "Predictor", bonk_predictor);

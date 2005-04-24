@@ -309,6 +309,10 @@ SOURCE=..\src\console.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\cuesheet.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\debug.cpp
 # End Source File
 # Begin Source File
@@ -330,6 +334,10 @@ SOURCE=..\src\main.cpp
 # Begin Source File
 
 SOURCE=..\src\playback.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\playlist.cpp
 # End Source File
 # Begin Source File
 
@@ -541,6 +549,10 @@ SOURCE=..\include\console.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\include\cuesheet.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\include\debug.h
 # End Source File
 # Begin Source File
@@ -550,6 +562,10 @@ SOURCE=..\include\dllinterfaces.h
 # Begin Source File
 
 SOURCE=..\include\main.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\playlist.h
 # End Source File
 # Begin Source File
 
