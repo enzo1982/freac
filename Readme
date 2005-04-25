@@ -23,6 +23,7 @@ History
 		- added support for creating M3U playlists
 		- added basic support for creating cue sheets
 		- added support for ID3V1 tags
+		- the encoding used for ID3 tags can now be selected
 		- upgrade to MPEG4IP v1.2
 		- use smooth v0.8.67.0
 		- removed support for MinGW 1.x

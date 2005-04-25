@@ -59,7 +59,7 @@
        //used for creating a dynamic dll
 #      define ID3_C_EXPORT extern __declspec(dllexport)
 #      define ID3_CPP_EXPORT __declspec(dllexport)
-#      define CCONV
+#      define CCONV __stdcall // Added for VB & Delphi Compatibility - By FrogPrince Advised By Lothar
 #    endif
 #    if (ID3LIB_LINKOPTION == LINKOPTION_STATIC)
        //used for creating a static lib and using a static lib
@@ -71,7 +71,7 @@
        //used for those that do not link static and are using the dynamic dll by including a id3lib header
 #      define ID3_C_EXPORT extern __declspec(dllimport)
 #      define ID3_CPP_EXPORT __declspec(dllimport) //functions like these shouldn't be used by vb and delphi,
-#      define CCONV
+#      define CCONV __stdcall // Added for VB & Delphi Compatibility - By FrogPrince Advised By Lothar
 #    endif
 #  endif
 #else /* !WIN32 */
@@ -536,8 +536,6 @@ ID3_STRUCT(Mp3_Headerinfo)
   bool copyrighted;
   bool original;
 };
-
-#define ID3_V1GENRE2DESCRIPTION(x) (x < ID3_NR_OF_V1_GENRES && x >= 0) ? ID3_v1_genre_description[x] : NULL
 
 #define MASK(bits) ((1 << (bits)) - 1)
 #define MASK1 MASK(1)

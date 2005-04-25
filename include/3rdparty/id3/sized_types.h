@@ -64,12 +64,7 @@ typedef short            int16;
 #endif /* UINT_MAX == 0xffff */
 
 /* Define 32-bit types */
-#if UINT_MAX == 0xfffffffful
-
-typedef unsigned long    uint32;
-typedef long              int32;
-
-#elif ULONG_MAX == 0xfffffffful
+#if ULONG_MAX == 0xfffffffful
 
 typedef unsigned long   uint32;
 typedef long             int32;
@@ -78,6 +73,11 @@ typedef long             int32;
 
 typedef unsigned short  uint32;
 typedef short            int32;
+
+#elif UINT_MAX == 0xfffffffful
+
+typedef unsigned int    uint32;
+typedef int              int32;
 
 #else
 #error This machine has no 32-bit type; report compiler, and the contents of your limits.h to the persons in the AUTHORS file

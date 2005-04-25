@@ -494,6 +494,7 @@ class bonkEncDLLInterfaces
 	typedef ID3Frame *			(*ID3FRAMENEWID)				(ID3_FrameID);
 	typedef void				(*ID3FRAMEDELETE)				(ID3Frame *);
 	typedef ID3Field *			(*ID3FRAMEGETFIELD)				(const ID3Frame *, ID3_FieldID);
+	typedef void				(*ID3FIELDSETINT)				(const ID3Field *, uint32);
 	typedef uint32				(*ID3FIELDGETINT)				(const ID3Field *);
 	typedef bool				(*ID3FIELDSETENCODING)				(ID3Field *, ID3_TextEnc);
 	typedef void				(*ID3FIELDSETASCII)				(ID3Field *, const char *);
@@ -513,6 +514,7 @@ class bonkEncDLLInterfaces
 	extern ID3FRAMENEWID			 ex_ID3Frame_NewID;
 	extern ID3FRAMEDELETE			 ex_ID3Frame_Delete;
 	extern ID3FRAMEGETFIELD			 ex_ID3Frame_GetField;
+	extern ID3FIELDSETINT			 ex_ID3Field_SetINT;
 	extern ID3FIELDGETINT			 ex_ID3Field_GetINT;
 	extern ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding;
 	extern ID3FIELDSETASCII			 ex_ID3Field_SetASCII;

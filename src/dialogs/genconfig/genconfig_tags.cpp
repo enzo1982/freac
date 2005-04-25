@@ -92,37 +92,48 @@ configureGeneralSettingsLayerTags::configureGeneralSettingsLayerTags() : Layer(b
 	size.cx	= group_encodings->size.cx - Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)) - 27;
 	size.cy	= 0;
 
-	list_encodings		= new List();
+	list_encodings_id3v1	= new List();
 
-	list_encodings->AddEntry("CP1251");
-	list_encodings->AddEntry("ISO-8859-1");
-	list_encodings->AddEntry("ISO-8859-2");
-	list_encodings->AddEntry("ISO-8859-3");
-	list_encodings->AddEntry("ISO-8859-4");
-	list_encodings->AddEntry("ISO-8859-5");
-	list_encodings->AddEntry("ISO-8859-6");
-	list_encodings->AddEntry("ISO-8859-7");
-	list_encodings->AddEntry("ISO-8859-8");
-	list_encodings->AddEntry("ISO-8859-9");
-	list_encodings->AddEntry("UTF-8");
+	list_encodings_id3v1->AddEntry("CP1251");
+	list_encodings_id3v1->AddEntry("ISO-8859-1");
+	list_encodings_id3v1->AddEntry("ISO-8859-2");
+	list_encodings_id3v1->AddEntry("ISO-8859-5");
+	list_encodings_id3v1->AddEntry("ISO-8859-7");
 
 	edit_id3v1_encoding	= new EditBox(currentConfig->id3v1_encoding, pos, size);
-	edit_id3v1_encoding->SetDropDownList(list_encodings);
+	edit_id3v1_encoding->SetDropDownList(list_encodings_id3v1);
 
 	pos.y += 26;
+
+	list_encodings_id3v2	= new List();
+
+	list_encodings_id3v2->AddEntry("ISO-8859-1");
+	list_encodings_id3v2->AddEntry("UTF-8");
+	list_encodings_id3v2->AddEntry("UTF-16LE");
+	list_encodings_id3v2->AddEntry("UTF-16BE");
 
 	edit_id3v2_encoding	= new EditBox(currentConfig->id3v2_encoding, pos, size);
-	edit_id3v2_encoding->SetDropDownList(list_encodings);
+	edit_id3v2_encoding->SetDropDownList(list_encodings_id3v2);
 
 	pos.y += 26;
+
+	list_encodings_vc	= new List();
+
+	list_encodings_vc->AddEntry("ISO-8859-1");
+	list_encodings_vc->AddEntry("UTF-8");
 
 	edit_vctags_encoding	= new EditBox(currentConfig->vctag_encoding, pos, size);
-	edit_vctags_encoding->SetDropDownList(list_encodings);
+	edit_vctags_encoding->SetDropDownList(list_encodings_vc);
 
 	pos.y += 26;
 
+	list_encodings_mp4	= new List();
+
+	list_encodings_mp4->AddEntry("ISO-8859-1");
+	list_encodings_mp4->AddEntry("UTF-8");
+
 	edit_mp4meta_encoding	= new EditBox(currentConfig->mp4meta_encoding, pos, size);
-	edit_mp4meta_encoding->SetDropDownList(list_encodings);
+	edit_mp4meta_encoding->SetDropDownList(list_encodings_mp4);
 
 	pos.x	= 7;
 	pos.y	= 141;
@@ -201,6 +212,11 @@ configureGeneralSettingsLayerTags::~configureGeneralSettingsLayerTags()
 	DeleteObject(group_definfo);
 	DeleteObject(text_defcomment);
 	DeleteObject(edit_defcomment);
+
+	DeleteObject(list_encodings_id3v1);
+	DeleteObject(list_encodings_id3v2);
+	DeleteObject(list_encodings_vc);
+	DeleteObject(list_encodings_mp4);
 }
 
 Void configureGeneralSettingsLayerTags::ToggleID3V1()

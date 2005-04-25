@@ -23,6 +23,7 @@ Geschichte
 		- Unterstützung zum Erzeugen von M3U-Playlisten hinzugefügt
 		- Unterstützung zum Erzeugen von einfachen Cuesheets hinzugefügt
 		- Unterstützung für ID3V1-Tags hinzugefügt
+		- Der Zeichensatz für ID3-Tags kann jetzt gewählt werden
 		- Update auf MPEG4IP v1.2
 		- Verwende smooth v0.8.67.0
 		- Unterstützung für MinGW 1.x entfernt

@@ -40,7 +40,10 @@ class configureGeneralSettingsLayerTags : public Layer
 		Text		*text_defcomment;
 		EditBox		*edit_defcomment;
 
-		List		*list_encodings;
+		List		*list_encodings_id3v1;
+		List		*list_encodings_id3v2;
+		List		*list_encodings_vc;
+		List		*list_encodings_mp4;
 
 		Bool		 enableID3V1;
 		Bool		 enableID3V2;

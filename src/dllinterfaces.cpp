@@ -211,6 +211,7 @@ ID3TAGRENDER			 ex_ID3Tag_Render			= NIL;
 ID3FRAMENEWID			 ex_ID3Frame_NewID			= NIL;
 ID3FRAMEDELETE			 ex_ID3Frame_Delete			= NIL;
 ID3FRAMEGETFIELD		 ex_ID3Frame_GetField			= NIL;
+ID3FIELDSETINT			 ex_ID3Field_SetINT			= NIL;
 ID3FIELDGETINT			 ex_ID3Field_GetINT			= NIL;
 ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding		= NIL;
 ID3FIELDSETASCII		 ex_ID3Field_SetASCII			= NIL;
@@ -638,6 +639,7 @@ Bool bonkEncDLLInterfaces::LoadID3DLL()
 	ex_ID3Frame_NewID		= (ID3FRAMENEWID) GetProcAddress(id3dll, "ID3Frame_NewID");
 	ex_ID3Frame_Delete		= (ID3FRAMEDELETE) GetProcAddress(id3dll, "ID3Frame_Delete");
 	ex_ID3Frame_GetField		= (ID3FRAMEGETFIELD) GetProcAddress(id3dll, "ID3Frame_GetField");
+	ex_ID3Field_SetINT		= (ID3FIELDSETINT) GetProcAddress(id3dll, "ID3Field_SetINT");
 	ex_ID3Field_GetINT		= (ID3FIELDGETINT) GetProcAddress(id3dll, "ID3Field_GetINT");
 	ex_ID3Field_SetEncoding		= (ID3FIELDSETENCODING) GetProcAddress(id3dll, "ID3Field_SetEncoding");
 	ex_ID3Field_SetASCII		= (ID3FIELDSETASCII) GetProcAddress(id3dll, "ID3Field_SetASCII");
@@ -657,6 +659,7 @@ Bool bonkEncDLLInterfaces::LoadID3DLL()
 	if (ex_ID3Frame_NewID == NULL)		{ FreeLibrary(id3dll); return false; }
 	if (ex_ID3Frame_Delete == NULL)		{ FreeLibrary(id3dll); return false; }
 	if (ex_ID3Frame_GetField == NULL)	{ FreeLibrary(id3dll); return false; }
+	if (ex_ID3Field_SetINT == NULL)		{ FreeLibrary(id3dll); return false; }
 	if (ex_ID3Field_GetINT == NULL)		{ FreeLibrary(id3dll); return false; }
 	if (ex_ID3Field_SetEncoding == NULL)	{ FreeLibrary(id3dll); return false; }
 	if (ex_ID3Field_SetASCII == NULL)	{ FreeLibrary(id3dll); return false; }
