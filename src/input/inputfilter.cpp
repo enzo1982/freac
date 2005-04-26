@@ -109,7 +109,7 @@ S::Bool InputFilter::ParseID3V2Tag(ID3Tag *tag, bonkEncTrack *nFormat)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->artist.ImportFrom("UTF-16LE", (char *) wbuffer);
+					nFormat->artist.ImportFrom("UTF-16BE", (char *) wbuffer);
 				}
 			}
 
@@ -132,7 +132,7 @@ S::Bool InputFilter::ParseID3V2Tag(ID3Tag *tag, bonkEncTrack *nFormat)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->title.ImportFrom("UTF-16LE", (char *) wbuffer);
+					nFormat->title.ImportFrom("UTF-16BE", (char *) wbuffer);
 				}
 			}
 
@@ -155,7 +155,7 @@ S::Bool InputFilter::ParseID3V2Tag(ID3Tag *tag, bonkEncTrack *nFormat)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-					nFormat->album.ImportFrom("UTF-16LE", (char *) wbuffer);
+					nFormat->album.ImportFrom("UTF-16BE", (char *) wbuffer);
 				}
 			}
 
@@ -203,7 +203,7 @@ S::Bool InputFilter::ParseID3V2Tag(ID3Tag *tag, bonkEncTrack *nFormat)
 						}
 					}
 
-					nFormat->genre.ImportFrom("UTF-16LE", (char *) wbuffer);
+					nFormat->genre.ImportFrom("UTF-16BE", (char *) wbuffer);
 				}
 			}
 
@@ -232,7 +232,7 @@ S::Bool InputFilter::ParseID3V2Tag(ID3Tag *tag, bonkEncTrack *nFormat)
 
 					String	 year;
 
-					year.ImportFrom("UTF-16LE", (char *) wbuffer);
+					year.ImportFrom("UTF-16BE", (char *) wbuffer);
 
 					nFormat->year = year.ToInt();
 				}
@@ -263,7 +263,7 @@ S::Bool InputFilter::ParseID3V2Tag(ID3Tag *tag, bonkEncTrack *nFormat)
 
 					String	 track;
 
-					track.ImportFrom("UTF-16LE", (char *) wbuffer);
+					track.ImportFrom("UTF-16BE", (char *) wbuffer);
 
 					nFormat->track = track.ToInt();
 				}
