@@ -200,6 +200,7 @@
     <entry id="188" string="Genre">Mûfaj</entry>
     <entry id="189" string="Album">Album</entry>
     <entry id="190" string="Info tags">Info Tag-ek</entry>
+    <entry id="191" string="Default information">Alap információ</entry>
     <entry id="192" string="Default comment string:">Alap megjegyzés:</entry>
     <entry id="193" string="unknown artist">ismeretlen elöadó</entry>
     <entry id="194" string="unknown title">ismeretlen cím</entry>
@@ -278,5 +279,17 @@
     <entry id="267" string="bytes">byte-ok</entry>
     <entry id="268" string="bit">bit</entry>
     <entry id="269" string="min">min</entry>
+    <entry id="270" string="Create playlist">Lejátszási lista készítés</entry>
+    <entry id="271" string="Create cue sheet">Vágólap készítés</entry>
+    <entry id="272" string="Write ID3V1 tags">ID3V1 infó rögzítés</entry>
+    <entry id="273" string="Write ID3V2 tags">ID3V2 infó rögzítés</entry>
+    <entry id="274" string="Write Vorbis Comment tags">Vorbis megjegyzés rögzítés</entry>
+    <entry id="275" string="Write MP4 metadata info">MP4 metaadat infó rögzítés</entry>
+    <entry id="276" string="ID3V1 tag encoding:">ID3V1 infó kódolása:</entry>
+    <entry id="277" string="ID3V2 tag encoding:">ID3V2 infó kódolása:</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Vorbis megjegyzés kódolása:</entry>
+    <entry id="279" string="MP4 metadata encoding:">MP4 metaadat kódolása:</entry>
+    <entry id="280" string="Tag encodings">Megjegyzés kódolása:       </entry>
+    <entry id="281" string="Update joblist with this information">Feladatlista bővítése ezzel az infóval</entry>
   </data>
 </LangFile>
