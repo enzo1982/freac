@@ -9,7 +9,7 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 CVS (April 2005)
+	Version 1.0 CVS (June 2005)
 
 		- added Czech, Korean, Danish and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
@@ -18,12 +18,13 @@ History
 		- added support for MP4 files with Unicode
 		- fixed bad default AAC profile setting
 		- submitted freedb entries can now be used to update the joblist
-		- the <filename> token can be used in the file name pattern
+		- the <filename> and <genre> tokens can now be used in the file name pattern
 		- text in inactive edit boxes can now be selected and copied
 		- added support for creating M3U playlists
 		- added basic support for creating cue sheets
 		- added support for ID3V1 tags
 		- the encoding used for ID3 tags can now be selected
+		- added options for configuring encoders to BEcmd
 		- upgrade to MPEG4IP v1.2
 		- use smooth v0.8.67.0
 		- removed support for MinGW 1.x
