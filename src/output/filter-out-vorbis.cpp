@@ -49,7 +49,7 @@ bool FilterOutVORBIS::Activate()
 	{
 		String	 prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
 
-		ex_vorbis_comment_add_tag(&vc, "COMMENT", currentConfig->default_comment);
+		if (currentConfig->default_comment != NIL) ex_vorbis_comment_add_tag(&vc, "COMMENT", currentConfig->default_comment);
 
 		if (format->artist != NIL || format->title != NIL)
 		{

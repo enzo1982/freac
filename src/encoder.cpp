@@ -133,11 +133,12 @@ Int bonkEnc::Encoder(Thread *thread)
 		{
 			out_filename.Append(currentConfig->enc_filePattern);
 
-			out_filename.Replace("<artist>", trackInfo->artist.Length() > 0 ? ReplaceIncompatibleChars(trackInfo->artist) : i18n->TranslateString("unknown artist"));
-			out_filename.Replace("<title>", trackInfo->title.Length() > 0 ? ReplaceIncompatibleChars(trackInfo->title) : i18n->TranslateString("unknown title"));
-			out_filename.Replace("<album>", trackInfo->album.Length() > 0 ? ReplaceIncompatibleChars(trackInfo->album) : i18n->TranslateString("unknown album"));
+			out_filename.Replace("<artist>", ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")));
+			out_filename.Replace("<title>", ReplaceIncompatibleChars(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
+			out_filename.Replace("<album>", ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album")));
+			out_filename.Replace("<genre>", ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre")));
 			out_filename.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
-			out_filename.Replace("<filename>", shortInFileName);
+			out_filename.Replace("<filename>", ReplaceIncompatibleChars(shortInFileName));
 
 			String	 dir = out_filename;
 			String	 tmp;
@@ -573,7 +574,7 @@ Void bonkEnc::StopEncoding()
 	encoder_thread = NIL;
 }
 
-String bonkEnc::ReplaceIncompatibleChars(String &string)
+String bonkEnc::ReplaceIncompatibleChars(String string)
 {
 	String	 rVal;
 

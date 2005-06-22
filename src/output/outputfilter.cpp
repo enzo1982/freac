@@ -142,13 +142,16 @@ S::Int OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)
 
 	ID3Frame	*comment = ex_ID3Frame_NewID(ID3FID_COMMENT);
 
-	ex_ID3Field_SetINT(ex_ID3Frame_GetField(comment, ID3FN_TEXTENC), encoding);
-	ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(comment, ID3FN_TEXT), encoding);
+	if (currentConfig->default_comment != NIL) 
+	{
+		ex_ID3Field_SetINT(ex_ID3Frame_GetField(comment, ID3FN_TEXTENC), encoding);
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(comment, ID3FN_TEXT), encoding);
 
-	if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) currentConfig->default_comment.ConvertTo("UTF-16BE"));
-	else								ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), currentConfig->default_comment);
+		if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) currentConfig->default_comment.ConvertTo("UTF-16BE"));
+		else								ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), currentConfig->default_comment);
 
-	ex_ID3Tag_AddFrame(tag, comment);
+		ex_ID3Tag_AddFrame(tag, comment);
+	}
 
 	String::SetOutputFormat(prevOutFormat);
 

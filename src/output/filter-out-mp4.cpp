@@ -107,7 +107,7 @@ bool FilterOutMP4::Deactivate()
 	{
 		String	 prevOutFormat = String::SetOutputFormat(currentConfig->mp4meta_encoding);
 
-		ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
+		if (currentConfig->default_comment != NIL) ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
 
 		if (format->artist != NIL || format->title != NIL)
 		{

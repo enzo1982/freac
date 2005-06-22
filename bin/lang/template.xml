@@ -291,5 +291,6 @@
     <entry id="279" string="MP4 metadata encoding:"/>
     <entry id="280" string="Tag encodings"/>
     <entry id="281" string="Update joblist with this information"/>
+    <entry id="282" string="unknown genre"/>
   </data>
 </LangFile>

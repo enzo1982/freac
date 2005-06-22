@@ -92,7 +92,7 @@ Bool bonkEncConfig::LoadSettings()
 	enable_vctags		= config->GetIntValue("Settings", "EnableVorbisCommentTags", 1);
 	enable_mp4meta		= config->GetIntValue("Settings", "EnableMP4Metadata", 1);
 	id3v1_encoding		= config->GetStringValue("Settings", "ID3V1Encoding", "ISO-8859-1");
-	id3v2_encoding		= config->GetStringValue("Settings", "ID3V2Encoding", "UTF-8");
+	id3v2_encoding		= config->GetStringValue("Settings", "ID3V2Encoding", "UTF-16LE");
 	vctag_encoding		= config->GetStringValue("Settings", "VorbisCommentTagEncoding", "UTF-8");
 	mp4meta_encoding	= config->GetStringValue("Settings", "MP4MetadataEncoding", "UTF-8");
 	default_comment		= config->GetStringValue("Settings", "DefaultComment", String("BonkEnc ").Append(bonkEnc::shortVersion).Append(" <http://www.bonkenc.org/>"));

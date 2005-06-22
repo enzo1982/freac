@@ -143,6 +143,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	list_filename->AddEntry("<artist> - <album>\\<artist> - <album> - <track> - <title>");
 	list_filename->AddEntry("<track> - <artist> - <title>");
 	list_filename->AddEntry("<album>\\<track> - <artist> - <title>");
+	list_filename->AddEntry("<genre>\\<artist> - <title>");
 	list_filename->AddEntry("<filename>");
 
 	edit_filename->SetDropDownList(list_filename);

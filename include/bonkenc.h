@@ -109,7 +109,7 @@ class bonkEnc : public Application
 		Int			 PlayThread(Thread *);
 
 		String			 LocalizeNumber(Int);
-		String			 ReplaceIncompatibleChars(String &);
+		String			 ReplaceIncompatibleChars(String);
 	public:
 		static String		 version;
 		static String		 cddbVersion;

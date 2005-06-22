@@ -291,5 +291,6 @@
     <entry id="279" string="MP4 metadata encoding:">MP4-Metadaten-Codierung:</entry>
     <entry id="280" string="Tag encodings">Tag-Codierungen</entry>
     <entry id="281" string="Update joblist with this information">Jobliste mit diesen Informationen aktualisieren</entry>
+    <entry id="282" string="unknown genre">unbekanntes Genre</entry>
   </data>
 </LangFile>

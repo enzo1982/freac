@@ -411,9 +411,7 @@ Void configureFAAC::SetMPEGVersion()
 		{
 			aacType = 2;
 
-			option_aactype_main->Process(SM_CHECKOPTIONBOXES, 0, 0);
-			option_aactype_low->Process(SM_CHECKOPTIONBOXES, 0, 0);
-			option_aactype_ltp->Process(SM_CHECKOPTIONBOXES, 0, 0);
+			OptionBox::internalCheckValues.Emit();
 		}
 
 		option_aactype_ltp->Deactivate();
@@ -459,8 +457,7 @@ Void configureFAAC::SetFileFormat()
 		{
 			mpegVersion = 0;
 
-			option_version_mpeg2->Process(SM_CHECKOPTIONBOXES, 0, 0);
-			option_version_mpeg4->Process(SM_CHECKOPTIONBOXES, 0, 0);
+			OptionBox::internalCheckValues.Emit();
 		}
 	}
 	else			// raw AAC file format
@@ -480,9 +477,7 @@ Void configureFAAC::SetFileFormat()
 			{
 				aacType = 2;
 
-				option_aactype_main->Process(SM_CHECKOPTIONBOXES, 0, 0);
-				option_aactype_low->Process(SM_CHECKOPTIONBOXES, 0, 0);
-				option_aactype_ltp->Process(SM_CHECKOPTIONBOXES, 0, 0);
+				OptionBox::internalCheckValues.Emit();
 			}
 
 			option_aactype_ltp->Deactivate();
