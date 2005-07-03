@@ -17,6 +17,9 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class configureTVQ : public Dialog
 {
 	private:
@@ -37,13 +40,14 @@ class configureTVQ : public Dialog
 		Button		*btn_cancel;
 		Button		*btn_ok;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 
 		Void		 OK();
 		Void		 Cancel();
 	public:
 				 configureTVQ();
 				~configureTVQ();
+
 		Int		 ShowDialog();
 };
 

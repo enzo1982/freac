@@ -8,25 +8,19 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_OUT_WAVE_
-#define _H_FILTER_OUT_WAVE_
+#ifndef _H_UTILITIES_
+#define _H_UTILITIES_
 
-#include "outputfilter.h"
+#include <smooth.h>
+
+using namespace smooth;
 
 namespace BonkEnc
 {
-	class FilterOutWAVE : public OutputFilter
+	class Utilities
 	{
-		private:
-			int	 nOfSamples;
 		public:
-				 FilterOutWAVE(Config *, Track *);
-				~FilterOutWAVE();
-
-			bool	 Activate();
-			bool	 Deactivate();
-
-			int	 WriteData(unsigned char *, int);
+			static String	 LocalizeNumber(Int);
 	};
 };
 

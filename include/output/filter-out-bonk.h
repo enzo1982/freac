@@ -13,21 +13,24 @@
 
 #include "outputfilter.h"
 
-class FilterOutBONK : public OutputFilter
+namespace BonkEnc
 {
-	private:
-		void			*encoder;
-		OutStream		*d_out;
+	class FilterOutBONK : public OutputFilter
+	{
+		private:
+			void			*encoder;
+			OutStream		*d_out;
 
-		Buffer<unsigned char>	 buffer;
-	public:
-					 FilterOutBONK(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutBONK();
+			Buffer<unsigned char>	 buffer;
+		public:
+						 FilterOutBONK(Config *, Track *);
+						~FilterOutBONK();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 WriteData(unsigned char *, int);
+			int			 WriteData(unsigned char *, int);
+	};
 };
 
 #endif

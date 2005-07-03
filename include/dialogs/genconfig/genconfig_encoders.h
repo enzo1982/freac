@@ -17,7 +17,10 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureGeneralSettingsLayerEncoders : public Layer
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
+class GeneralSettingsLayerEncoders : public Layer
 {
 	private:
 		GroupBox	*group_encoder;
@@ -40,14 +43,14 @@ class configureGeneralSettingsLayerEncoders : public Layer
 
 		Bool		 unicode_files;
  
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 	slots:
 		Void		 SelectDir();
 		Void		 ConfigureEncoder();
 		Void		 ToggleOnTheFly();
 	public:
-				 configureGeneralSettingsLayerEncoders();
-				~configureGeneralSettingsLayerEncoders();
+				 GeneralSettingsLayerEncoders();
+				~GeneralSettingsLayerEncoders();
 
 		Int		 GetSelectedEncoder();
 

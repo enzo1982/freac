@@ -14,7 +14,7 @@ BEGIN
     BEGIN
         BLOCK "000004B0"	// Block: language ID = Multilingual, char set = Unicode
         BEGIN
-            VALUE	"FileDescription",	"BonkEnc audio encoder\0"
+            VALUE	"FileDescription",	"BonkEnc Audio Encoder\0"
             VALUE	"FileVersion",		"1.0\0"
             VALUE	"InternalName",		"BONKENC\0"
             VALUE	"OriginalFilename",	"bonkenc.exe\0"

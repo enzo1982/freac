@@ -10,16 +10,16 @@
 
 #include <input/filter-in-au.h>
 
-FilterInAU::FilterInAU(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInAU::FilterInAU(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-FilterInAU::~FilterInAU()
+BonkEnc::FilterInAU::~FilterInAU()
 {
 }
 
-bool FilterInAU::Activate()
+bool BonkEnc::FilterInAU::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -34,12 +34,12 @@ bool FilterInAU::Activate()
 	return true;
 }
 
-bool FilterInAU::Deactivate()
+bool BonkEnc::FilterInAU::Deactivate()
 {
 	return true;
 }
 
-int FilterInAU::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInAU::ReadData(unsigned char **data, int size)
 {
 	*data = new unsigned char [size];
 
@@ -48,9 +48,9 @@ int FilterInAU::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkEncTrack *FilterInAU::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInAU::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	// TODO: Add more checking to this!

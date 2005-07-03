@@ -387,7 +387,7 @@ class bonkEncDLLInterfaces
 // MP4V2 DLL API
 
 	typedef MP4FileHandle			(*MP4READ)					(const char *, u_int32_t);
-	typedef MP4FileHandle			(*MP4CREATE)					(const char *, u_int32_t, u_int32_t, int, int, char *, u_int32_t, char **, u_int32_t);
+	typedef MP4FileHandle			(*MP4CREATEEX)					(const char *, u_int32_t, u_int32_t, int, int, char *, u_int32_t, char **, u_int32_t);
 	typedef bool				(*MP4CLOSE)					(MP4FileHandle);
 	typedef bool				(*MP4OPTIMIZE)					(const char *, const char *, u_int32_t);
 	typedef bool				(*MP4SETMETADATANAME)				(MP4FileHandle, const char *);
@@ -419,7 +419,7 @@ class bonkEncDLLInterfaces
  MP4Duration, bool);
 
 	extern MP4READ				 ex_MP4Read;
-	extern MP4CREATE			 ex_MP4Create;
+	extern MP4CREATEEX			 ex_MP4CreateEx;
 	extern MP4CLOSE				 ex_MP4Close;
 	extern MP4OPTIMIZE			 ex_MP4Optimize;
 	extern MP4SETMETADATANAME		 ex_MP4SetMetadataName;

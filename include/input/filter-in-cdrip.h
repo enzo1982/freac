@@ -13,29 +13,32 @@
 
 #include "inputfilter.h"
 
-class FilterInCDRip : public InputFilter
+namespace BonkEnc
 {
-	private:
-		Int		 trackNumber;
-		Int		 trackSize;
+	class FilterInCDRip : public InputFilter
+	{
+		private:
+			Int		 trackNumber;
+			Int		 trackSize;
 
-		Int		 byteCount;
-		unsigned char	*buffer;
+			Int		 byteCount;
+			unsigned char	*buffer;
 
-		Array<String>	 cdText;
+			Array<String>	 cdText;
 
-		Int		 ReadCDText();
-		Int		 FreeCDText();
-	public:
-				 FilterInCDRip(bonkEncConfig *, bonkEncTrack *);
-				~FilterInCDRip();
+			Int		 ReadCDText();
+			Int		 FreeCDText();
+		public:
+					 FilterInCDRip(Config *, Track *);
+					~FilterInCDRip();
 
-		int		 ReadData(unsigned char **, int);
+			int		 ReadData(unsigned char **, int);
 
-		Bool		 SetTrack(Int);
-		Int		 GetTrackSize();
+			Bool		 SetTrack(Int);
+			Int		 GetTrackSize();
 
-		bonkEncTrack	*GetFileInfo(String);
+			Track		*GetFileInfo(String);
+	};
 };
 
 #endif

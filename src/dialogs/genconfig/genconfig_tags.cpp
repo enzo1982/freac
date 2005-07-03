@@ -10,7 +10,7 @@
 
 #include <dialogs/genconfig/genconfig_tags.h>
 
-configureGeneralSettingsLayerTags::configureGeneralSettingsLayerTags() : Layer(bonkEnc::i18n->TranslateString("Info tags"))
+GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(bonkEnc::i18n->TranslateString("Info tags"))
 {
 	Point	 pos;
 	Size	 size;
@@ -35,26 +35,26 @@ configureGeneralSettingsLayerTags::configureGeneralSettingsLayerTags() : Layer(b
 	size.cy	= 0;
 
 	check_id3v1	= new CheckBox(bonkEnc::i18n->TranslateString("Write ID3V1 tags"), pos, size, &enableID3V1);
-	check_id3v1->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleID3V1, this);
-	check_id3v1->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleTags, this);
+	check_id3v1->onClick.Connect(&GeneralSettingsLayerTags::ToggleID3V1, this);
+	check_id3v1->onClick.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
 	check_id3v2	= new CheckBox(bonkEnc::i18n->TranslateString("Write ID3V2 tags"), pos, size, &enableID3V2);
-	check_id3v2->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleID3V2, this);
-	check_id3v2->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleTags, this);
+	check_id3v2->onClick.Connect(&GeneralSettingsLayerTags::ToggleID3V2, this);
+	check_id3v2->onClick.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
 	check_vctags	= new CheckBox(bonkEnc::i18n->TranslateString("Write Vorbis Comment tags"), pos, size, &enableVCTags);
-	check_vctags->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleVCTags, this);
-	check_vctags->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleTags, this);
+	check_vctags->onClick.Connect(&GeneralSettingsLayerTags::ToggleVCTags, this);
+	check_vctags->onClick.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
 	check_mp4meta	= new CheckBox(bonkEnc::i18n->TranslateString("Write MP4 metadata info"), pos, size, &enableMP4Meta);
-	check_mp4meta->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleMP4Meta, this);
-	check_mp4meta->onClick.Connect(&configureGeneralSettingsLayerTags::ToggleTags, this);
+	check_mp4meta->onClick.Connect(&GeneralSettingsLayerTags::ToggleMP4Meta, this);
+	check_mp4meta->onClick.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	check_id3v1->SetMetrics(check_id3v1->pos, Size(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20, check_id3v1->size.cy));
 	check_id3v2->SetMetrics(check_id3v2->pos, Size(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20, check_id3v2->size.cy));
@@ -191,7 +191,7 @@ configureGeneralSettingsLayerTags::configureGeneralSettingsLayerTags() : Layer(b
 	RegisterObject(edit_defcomment);
 }
 
-configureGeneralSettingsLayerTags::~configureGeneralSettingsLayerTags()
+GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
 {
 	DeleteObject(group_tags);
 	DeleteObject(check_id3v1);
@@ -219,7 +219,7 @@ configureGeneralSettingsLayerTags::~configureGeneralSettingsLayerTags()
 	DeleteObject(list_encodings_mp4);
 }
 
-Void configureGeneralSettingsLayerTags::ToggleID3V1()
+Void GeneralSettingsLayerTags::ToggleID3V1()
 {
 	if (enableID3V1)
 	{
@@ -233,7 +233,7 @@ Void configureGeneralSettingsLayerTags::ToggleID3V1()
 	}
 }
 
-Void configureGeneralSettingsLayerTags::ToggleID3V2()
+Void GeneralSettingsLayerTags::ToggleID3V2()
 {
 	if (enableID3V2)
 	{
@@ -247,7 +247,7 @@ Void configureGeneralSettingsLayerTags::ToggleID3V2()
 	}
 }
 
-Void configureGeneralSettingsLayerTags::ToggleVCTags()
+Void GeneralSettingsLayerTags::ToggleVCTags()
 {
 	if (enableVCTags)
 	{
@@ -261,7 +261,7 @@ Void configureGeneralSettingsLayerTags::ToggleVCTags()
 	}
 }
 
-Void configureGeneralSettingsLayerTags::ToggleMP4Meta()
+Void GeneralSettingsLayerTags::ToggleMP4Meta()
 {
 	if (enableMP4Meta)
 	{
@@ -275,7 +275,7 @@ Void configureGeneralSettingsLayerTags::ToggleMP4Meta()
 	}
 }
 
-Void configureGeneralSettingsLayerTags::ToggleTags()
+Void GeneralSettingsLayerTags::ToggleTags()
 {
 	if (!enableID3V1 && !enableID3V2 && !enableVCTags && !enableMP4Meta)
 	{
@@ -289,47 +289,47 @@ Void configureGeneralSettingsLayerTags::ToggleTags()
 	}
 }
 
-Bool configureGeneralSettingsLayerTags::GetEnableID3V1()
+Bool GeneralSettingsLayerTags::GetEnableID3V1()
 {
 	return enableID3V1;
 }
 
-Bool configureGeneralSettingsLayerTags::GetEnableID3V2()
+Bool GeneralSettingsLayerTags::GetEnableID3V2()
 {
 	return enableID3V2;
 }
 
-Bool configureGeneralSettingsLayerTags::GetEnableVCTags()
+Bool GeneralSettingsLayerTags::GetEnableVCTags()
 {
 	return enableVCTags;
 }
 
-Bool configureGeneralSettingsLayerTags::GetEnableMP4Meta()
+Bool GeneralSettingsLayerTags::GetEnableMP4Meta()
 {
 	return enableMP4Meta;
 }
 
-String configureGeneralSettingsLayerTags::GetID3V1Encoding()
+String GeneralSettingsLayerTags::GetID3V1Encoding()
 {
 	return edit_id3v1_encoding->GetText();
 }
 
-String configureGeneralSettingsLayerTags::GetID3V2Encoding()
+String GeneralSettingsLayerTags::GetID3V2Encoding()
 {
 	return edit_id3v2_encoding->GetText();
 }
 
-String configureGeneralSettingsLayerTags::GetVCTagEncoding()
+String GeneralSettingsLayerTags::GetVCTagEncoding()
 {
 	return edit_vctags_encoding->GetText();
 }
 
-String configureGeneralSettingsLayerTags::GetMP4MetaEncoding()
+String GeneralSettingsLayerTags::GetMP4MetaEncoding()
 {
 	return edit_mp4meta_encoding->GetText();
 }
 
-String configureGeneralSettingsLayerTags::GetDefaultComment()
+String GeneralSettingsLayerTags::GetDefaultComment()
 {
 	return edit_defcomment->GetText();
 }

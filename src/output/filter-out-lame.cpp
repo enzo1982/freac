@@ -11,7 +11,7 @@
 #include <output/filter-out-lame.h>
 #include <dllinterfaces.h>
 
-FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
+BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFilter(config, format)
 {
 	debug_out->EnterMethod("FilterOutLAME::FilterOutLame(bonkEncConfig *, bonkEncTrack *)");
 
@@ -116,11 +116,11 @@ FilterOutLAME::FilterOutLAME(bonkEncConfig *config, bonkEncTrack *format) : Outp
 	debug_out->LeaveMethod();
 }
 
-FilterOutLAME::~FilterOutLAME()
+BonkEnc::FilterOutLAME::~FilterOutLAME()
 {
 }
 
-bool FilterOutLAME::Activate()
+bool BonkEnc::FilterOutLAME::Activate()
 {
 	debug_out->EnterMethod("FilterOutLAME::Activate()");
 
@@ -263,7 +263,7 @@ bool FilterOutLAME::Activate()
 	return true;
 }
 
-bool FilterOutLAME::Deactivate()
+bool BonkEnc::FilterOutLAME::Deactivate()
 {
 	debug_out->EnterMethod("FilterOutLAME::Deactivate()");
 
@@ -315,7 +315,7 @@ bool FilterOutLAME::Deactivate()
 	return true;
 }
 
-int FilterOutLAME::WriteData(unsigned char *data, int size)
+int BonkEnc::FilterOutLAME::WriteData(unsigned char *data, int size)
 {
 	debug_out->EnterMethod("FilterOutLAME::WriteData(unsigned char *, int)");
 

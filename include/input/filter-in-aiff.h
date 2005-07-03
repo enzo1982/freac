@@ -13,18 +13,21 @@
 
 #include "inputfilter.h"
 
-class FilterInAIFF : public InputFilter
+namespace BonkEnc
 {
-	public:
-				 FilterInAIFF(bonkEncConfig *, bonkEncTrack *);
+	class FilterInAIFF : public InputFilter
+	{
+		public:
+				 FilterInAIFF(Config *, Track *);
 				~FilterInAIFF();
 
-		bool		 Activate();
-		bool		 Deactivate();
+			bool	 Activate();
+			bool	 Deactivate();
 
-		int		 ReadData(unsigned char **, int);
+			int	 ReadData(unsigned char **, int);
 
-		bonkEncTrack	*GetFileInfo(String);
+			Track	*GetFileInfo(String);
+	};
 };
 
 #endif

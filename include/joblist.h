@@ -8,25 +8,37 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_OUT_WAVE_
-#define _H_FILTER_OUT_WAVE_
+#ifndef _H_JOBLIST_
+#define _H_JOBLIST_
 
-#include "outputfilter.h"
+#include <smooth.h>
+#include "config.h"
+#include "track.h"
+
+using namespace smooth;
+using namespace smooth::GUI;
 
 namespace BonkEnc
 {
-	class FilterOutWAVE : public OutputFilter
+	class JobList : public ListBox
 	{
 		private:
-			int	 nOfSamples;
+			DropArea	*droparea;
+
+			Array<Track *>	 tracks;
 		public:
-				 FilterOutWAVE(Config *, Track *);
-				~FilterOutWAVE();
+					 JobList(Point, Size);
+			virtual		~JobList();
 
-			bool	 Activate();
-			bool	 Deactivate();
+			Int		 GetNOfTracks();
+			Track		*GetNthTrack(Int);
 
-			int	 WriteData(unsigned char *, int);
+			Bool		 AddTrack(Track *);
+
+			Bool		 RemoveNthTrack(Int);
+			Bool		 RemoveAllTracks();
+
+			Track		*GetSelectedTrack();
 	};
 };
 

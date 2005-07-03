@@ -14,25 +14,28 @@
 #include <iolib-cxx.h>
 #include "../bonkenc.h"
 
-class OutputFilter : public IOLibFilter
+namespace BonkEnc
 {
-	protected:
-		bonkEncTrack	*format;
-		bonkEncConfig	*currentConfig;
+	class OutputFilter : public IOLibFilter
+	{
+		protected:
+			Track		*format;
+			Config		*currentConfig;
 
-		Int		 RenderID3Tag(Int, unsigned char *);
+			Int		 RenderID3Tag(Int, unsigned char *);
 
-		IOLibDriver	*iolibDriver;
+			IOLibDriver	*iolibDriver;
 
-		OutStream	*CreateFile(String);
-		Int		 CloseFile(OutStream *);
-	public:
-		int		 error;
+			OutStream	*CreateFile(String);
+			Int		 CloseFile(OutStream *);
+		public:
+			int		 error;
 
-				 OutputFilter(bonkEncConfig *, bonkEncTrack *);
-				~OutputFilter();
+					 OutputFilter(Config *, Track *);
+					~OutputFilter();
 
-		virtual int	 WriteData(unsigned char *, int) = 0;
+			virtual int	 WriteData(unsigned char *, int) = 0;
+	};
 };
 
 #endif

@@ -17,30 +17,33 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class cddbQueryDlg : public Dialog
 {
 	private:
-		Window			*mainWnd;
-		Titlebar		*mainWnd_titlebar;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		Text			*text_status;
-		Progressbar		*prog_status;
-		Button			*btn_cancel;
+		Text		*text_status;
+		Progressbar	*prog_status;
+		Button		*btn_cancel;
 
-		bonkEncConfig		*currentConfig;
+		Config		*currentConfig;
 
-		Array<bonkEncTrack *>	*rArray;
+		Array<Track *>	*rArray;
 
-		Thread			*queryThread;
+		Thread		*queryThread;
 
-		Void			 Cancel();
-		Int			 QueryThread(Thread *);
+		Void		 Cancel();
+		Int		 QueryThread(Thread *);
 	public:
-					 cddbQueryDlg();
-					~cddbQueryDlg();
+				 cddbQueryDlg();
+				~cddbQueryDlg();
 
-		Int			 ShowDialog();
-		Array<bonkEncTrack *>	*QueryCDDB();
+		Int		 ShowDialog();
+		Array<Track *>	*QueryCDDB();
 };
 
 #endif

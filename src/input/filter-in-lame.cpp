@@ -11,16 +11,16 @@
 #include <input/filter-in-lame.h>
 #include <3rdparty/id3/tag.h>
 
-FilterInLAME::FilterInLAME(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInLAME::FilterInLAME(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-FilterInLAME::~FilterInLAME()
+BonkEnc::FilterInLAME::~FilterInLAME()
 {
 }
 
-bool FilterInLAME::Activate()
+bool BonkEnc::FilterInLAME::Activate()
 {
 	ex_lame_decode_init();
 
@@ -56,14 +56,14 @@ bool FilterInLAME::Activate()
 	return true;
 }
 
-bool FilterInLAME::Deactivate()
+bool BonkEnc::FilterInLAME::Deactivate()
 {
 	ex_lame_decode_exit();
 
 	return true;
 }
 
-int FilterInLAME::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInLAME::ReadData(unsigned char **data, int size)
 {
 	if (size <= 0) return -1;
 
@@ -94,11 +94,11 @@ int FilterInLAME::ReadData(unsigned char **data, int size)
 	return nsamples * 4;
 }
 
-bonkEncTrack *FilterInLAME::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInLAME::GetFileInfo(String inFile)
 {
 	ex_lame_decode_init();
 
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	nFormat->order		= BYTE_INTEL;

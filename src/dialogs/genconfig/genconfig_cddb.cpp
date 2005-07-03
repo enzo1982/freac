@@ -12,7 +12,7 @@
 #include <dialogs/cddb/extsettings.h>
 #include <cddb.h>
 
-configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("CDDB")
+GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 {
 	Point	 pos;
 	Size	 size;
@@ -40,7 +40,7 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	size.cy	= 0;
 
 	combo_mode	= new ComboBox(pos, size);
-	combo_mode->onClick.Connect(&configureGeneralSettingsLayerCDDB::SetCDDBMode, this);
+	combo_mode->onClick.Connect(&GeneralSettingsLayerCDDB::SetCDDBMode, this);
 	combo_mode->AddEntry("HTTP");
 	combo_mode->AddEntry("CDDBP/HTTP");
 	combo_mode->SelectNthEntry(currentConfig->freedb_mode);
@@ -85,12 +85,12 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	size.cx	= 158;
 
 	button_http	= new Button(bonkEnc::i18n->TranslateString("HTTP settings"), NIL, pos, size);
-	button_http->onClick.Connect(&configureGeneralSettingsLayerCDDB::HTTPSettings, this);
+	button_http->onClick.Connect(&GeneralSettingsLayerCDDB::HTTPSettings, this);
 
 	pos.x += 166;
 
 	button_proxy	= new Button(bonkEnc::i18n->TranslateString("Proxy settings"), NIL, pos, size);
-	button_proxy->onClick.Connect(&configureGeneralSettingsLayerCDDB::ProxySettings, this);
+	button_proxy->onClick.Connect(&GeneralSettingsLayerCDDB::ProxySettings, this);
 
 	pos.x	= 359;
 	pos.y	= 11;
@@ -134,7 +134,7 @@ configureGeneralSettingsLayerCDDB::configureGeneralSettingsLayerCDDB() : Layer("
 	RegisterObject(check_cache);
 }
 
-configureGeneralSettingsLayerCDDB::~configureGeneralSettingsLayerCDDB()
+GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()
 {
 	DeleteObject(group_cddb);
 	DeleteObject(text_mode);
@@ -152,7 +152,7 @@ configureGeneralSettingsLayerCDDB::~configureGeneralSettingsLayerCDDB()
 	DeleteObject(check_cache);
 }
 
-Void configureGeneralSettingsLayerCDDB::SetCDDBMode()
+Void GeneralSettingsLayerCDDB::SetCDDBMode()
 {
 	if (combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
 	{
@@ -166,7 +166,7 @@ Void configureGeneralSettingsLayerCDDB::SetCDDBMode()
 	}
 }
 
-Void configureGeneralSettingsLayerCDDB::HTTPSettings()
+Void GeneralSettingsLayerCDDB::HTTPSettings()
 {
 	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(0);
 
@@ -175,7 +175,7 @@ Void configureGeneralSettingsLayerCDDB::HTTPSettings()
 	DeleteObject(dlg);
 }
 
-Void configureGeneralSettingsLayerCDDB::ProxySettings()
+Void GeneralSettingsLayerCDDB::ProxySettings()
 {
 	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(1);
 
@@ -184,32 +184,32 @@ Void configureGeneralSettingsLayerCDDB::ProxySettings()
 	DeleteObject(dlg);
 }
 
-Int configureGeneralSettingsLayerCDDB::GetFreedbMode()
+Int GeneralSettingsLayerCDDB::GetFreedbMode()
 {
 	return combo_mode->GetSelectedEntryNumber();
 }
 
-Int configureGeneralSettingsLayerCDDB::GetFreedbPort()
+Int GeneralSettingsLayerCDDB::GetFreedbPort()
 {
 	return edit_port->GetText().ToInt();
 }
 
-String configureGeneralSettingsLayerCDDB::GetFreedbServer()
+String GeneralSettingsLayerCDDB::GetFreedbServer()
 {
 	return edit_server->GetText();
 }
 
-String configureGeneralSettingsLayerCDDB::GetFreedbEMail()
+String GeneralSettingsLayerCDDB::GetFreedbEMail()
 {
 	return edit_email->GetText();
 }
 
-Bool configureGeneralSettingsLayerCDDB::GetCDDBAutoQuery()
+Bool GeneralSettingsLayerCDDB::GetCDDBAutoQuery()
 {
 	return cddb_auto;
 }
 
-Bool configureGeneralSettingsLayerCDDB::GetCDDBCache()
+Bool GeneralSettingsLayerCDDB::GetCDDBCache()
 {
 	return cddb_cache;
 }

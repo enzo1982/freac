@@ -17,6 +17,9 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class languageDlg : public Dialog
 {
 	private:
@@ -30,7 +33,7 @@ class languageDlg : public Dialog
 
 		Button		*btn_ok;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 
 		Void		 OK();
 	public:

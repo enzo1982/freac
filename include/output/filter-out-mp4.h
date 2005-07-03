@@ -22,34 +22,37 @@
 #include <3rdparty/mp4/mp4.h>
 #include <3rdparty/faac/faac.h>
 
-class FilterOutMP4 : public OutputFilter
+namespace BonkEnc
 {
-	private:
-		MP4FileHandle		 mp4File;
-		faacEncHandle		 handle;
-		faacEncConfigurationPtr	 fConfig;
+	class FilterOutMP4 : public OutputFilter
+	{
+		private:
+			MP4FileHandle		 mp4File;
+			faacEncHandle		 handle;
+			faacEncConfigurationPtr	 fConfig;
 
-		Int			 mp4Track;
-		Int			 sampleId;
+			Int			 mp4Track;
+			Int			 sampleId;
 
-		Int			 frameSize;
+			Int			 frameSize;
 
-		Int			 totalSamples;
-		Int			 encodedSamples;
-		Int			 delaySamples;
+			Int			 totalSamples;
+			Int			 encodedSamples;
+			Int			 delaySamples;
 
-		Buffer<unsigned char>	 outBuffer;
-		Buffer<int32_t>		 samplesBuffer;
+			Buffer<unsigned char>	 outBuffer;
+			Buffer<int32_t>		 samplesBuffer;
 
-		String			 GetTempFile(const String &);
-	public:
-					 FilterOutMP4(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutMP4();
+			String			 GetTempFile(const String &);
+		public:
+						 FilterOutMP4(Config *, Track *);
+						~FilterOutMP4();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 WriteData(unsigned char *, int);
+			int			 WriteData(unsigned char *, int);
+	};
 };
 
 #endif

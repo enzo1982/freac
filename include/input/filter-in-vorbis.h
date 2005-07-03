@@ -14,30 +14,33 @@
 #include "inputfilter.h"
 #include <3rdparty/vorbis/vorbisenc.h>
 
-class FilterInVORBIS : public InputFilter
+namespace BonkEnc
 {
-	private:
-		ogg_sync_state		 oy;
-		ogg_stream_state	 os;
-		ogg_page		 og;
-		ogg_packet		 op;
+	class FilterInVORBIS : public InputFilter
+	{
+		private:
+			ogg_sync_state		 oy;
+			ogg_stream_state	 os;
+			ogg_page		 og;
+			ogg_packet		 op;
 
-		vorbis_info		 vi;
-		vorbis_comment		 vc;
-		vorbis_dsp_state	 vd;
-		vorbis_block		 vb;
+			vorbis_info		 vi;
+			vorbis_comment		 vc;
+			vorbis_dsp_state	 vd;
+			vorbis_block		 vb;
 
-		char			*buffer;
-	public:
-					 FilterInVORBIS(bonkEncConfig *, bonkEncTrack *);
-					~FilterInVORBIS();
+			char			*buffer;
+		public:
+						 FilterInVORBIS(Config *, Track *);
+						~FilterInVORBIS();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 ReadData(unsigned char **, int);
+			int			 ReadData(unsigned char **, int);
 
-		bonkEncTrack		*GetFileInfo(String);
+			Track			*GetFileInfo(String);
+	};
 };
 
 #endif

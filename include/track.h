@@ -18,49 +18,52 @@ using namespace smooth;
 const int	 BYTE_INTEL	= 0;
 const int	 BYTE_RAW	= 1;
 
-class bonkEncTrack
+namespace BonkEnc
 {
-	public:
-			 bonkEncTrack();
-			~bonkEncTrack();
+	class Track
+	{
+		public:
+				 Track();
+				~Track();
 
-	    // Audio format information:
-		Int	 channels;
-		Int	 rate;
-		Int	 bits;
-		Int	 length;
-		Int	 fileSize;
-		Int	 order;
+		    // Audio format information:
+			Int	 channels;
+			Int	 rate;
+			Int	 bits;
+			Int	 length;
+			Int	 fileSize;
+			Int	 order;
 
-	    // CD track information:
-		Bool	 isCDTrack;
-		Int	 drive;
-		Int	 cdTrack;
+		    // CD track information:
+			Bool	 isCDTrack;
+			Int	 drive;
+			Int	 cdTrack;
 
-	    // Title information:
-		String	 artist;
-		String	 title;
-		String	 album;
-		Int	 track;
-		String	 genre;
-		Int	 year;
-		String	 comment;
+		    // Title information:
+			String	 artist;
+			String	 title;
+			String	 album;
+			Int	 track;
+			String	 genre;
+			Int	 year;
+			String	 comment;
 
-	    // CDDB information:
-		Int	 offset;
-		String	 discid;
-		String	 category;
-		Int	 revision;
-		Int	 disclength;
-		String	 discComment;
-		String	 playorder;
+		    // CDDB information:
+			Int	 offset;
+			String	 discid;
+			String	 category;
+			Int	 revision;
+			Int	 disclength;
+			String	 discComment;
+			String	 playorder;
 
-	    // Other information:
-		String	 fileSizeString;
-		String	 lengthString;
+		    // Other information:
+			String	 fileSizeString;
+			String	 lengthString;
 
-		String	 outfile;
-		String	 origFilename;
+			String	 outfile;
+			String	 origFilename;
+	};
 };
 
 #endif

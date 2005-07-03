@@ -13,7 +13,7 @@
  * 
  * The Initial Developer of the Original Code is Cisco Systems Inc.
  * Portions created by Cisco Systems Inc. are
- * Copyright (C) Cisco Systems Inc. 2001 - 2004.  All Rights Reserved.
+ * Copyright (C) Cisco Systems Inc. 2001 - 2005.  All Rights Reserved.
  * 
  * 3GPP features implementation is based on 3GPP's TS26.234-v5.60,
  * and was contributed by Ximpo Group Ltd.
@@ -25,6 +25,7 @@
  *		Dave Mackie			dmackie@cisco.com
  *		Alix Marchandise-Franquet	alix@cisco.com
  *              Ximpo Group Ltd.                mp4v2@ximpo.com
+ *              Bill May                        wmay@cisco.com
  */
 
 #ifndef __MP4_INCLUDED__
@@ -98,6 +99,7 @@ typedef u_int32_t	MP4EditId;
 #define MP4_AUDIO_TRACK_TYPE	"soun"
 #define MP4_VIDEO_TRACK_TYPE	"vide"
 #define MP4_HINT_TRACK_TYPE		"hint"
+#define MP4_CNTL_TRACK_TYPE     "cntl"
 /*
  * This second set of track types should be created 
  * via MP4AddSystemsTrack(type)
@@ -113,6 +115,9 @@ typedef u_int32_t	MP4EditId;
 
 #define MP4_IS_AUDIO_TRACK_TYPE(type) \
 	(!strcasecmp(type, MP4_AUDIO_TRACK_TYPE))
+
+#define MP4_IS_CNTL_TRACK_TYPE(type) \
+        (!strcasecmp(type, MP4_CNTL_TRACK_TYPE))
 
 #define MP4_IS_OD_TRACK_TYPE(type) \
 	(!strcasecmp(type, MP4_OD_TRACK_TYPE))
@@ -175,7 +180,7 @@ typedef u_int32_t	MP4EditId;
 
 #define MP4_IS_MPEG4_AAC_AUDIO_TYPE(mpeg4Type) \
 	(((mpeg4Type) >= MP4_MPEG4_AAC_MAIN_AUDIO_TYPE \
-		&& (mpeg4Type) <= MP4_MPEG4_AAC_LTP_AUDIO_TYPE) \
+		&& (mpeg4Type) <= MP4_MPEG4_AAC_HE_AUDIO_TYPE) \
 	  || (mpeg4Type) == MP4_MPEG4_AAC_SCALABLE_AUDIO_TYPE \
           || (mpeg4Type) == 17)
 
@@ -286,6 +291,10 @@ extern "C" {
 
 MP4FileHandle MP4Create(
 	const char* fileName, 
+	u_int32_t verbosity DEFAULT(0),
+	u_int32_t flags DEFAULT(0));
+MP4FileHandle MP4CreateEx(
+        const char *fileName,
 	u_int32_t verbosity DEFAULT(0),
 	u_int32_t flags DEFAULT(0),
 	int add_ftyp DEFAULT(1),
@@ -459,6 +468,10 @@ void MP4SetAmrDecoderVersion(
 void MP4SetAmrModeSet(MP4FileHandle hFile, MP4TrackId trakId, uint16_t modeSet);
 uint16_t MP4GetAmrModeSet(MP4FileHandle hFile, MP4TrackId trackId);
 
+MP4TrackId MP4AddHrefTrack(MP4FileHandle hFile, 
+			   uint32_t timeScale, 
+			   MP4Duration sampleDuration);
+
 MP4TrackId MP4AddVideoTrack(
 	MP4FileHandle hFile, 
 	u_int32_t timeScale, 
@@ -488,12 +501,12 @@ MP4TrackId MP4AddH264VideoTrack(
 				uint8_t sampleLenFieldSizeMinusOne);
 bool MP4AddH264SequenceParameterSet(MP4FileHandle hFile,
 				    MP4TrackId trackId,
-				    uint8_t *pSequence,
+				    const uint8_t *pSequence,
 				    uint16_t sequenceLen);
 bool MP4AddH264PictureParameterSet(MP4FileHandle hFile,
 				   MP4TrackId trackId,
-				   uint8_t *pPict,
-				    uint16_t pictLen);
+				   const uint8_t *pPict,
+				   uint16_t pictLen);
 void MP4SetH263Vendor(
 		MP4FileHandle hFile,
 		MP4TrackId trackId,
@@ -659,7 +672,7 @@ u_int16_t MP4GetTrackVideoHeight(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
 
-float MP4GetTrackVideoFrameRate(
+double MP4GetTrackVideoFrameRate(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
 
@@ -1077,40 +1090,57 @@ bool MP4GetMetadataByIndex(MP4FileHandle hFile, u_int32_t index,
 			   u_int8_t** ppValue, u_int32_t* pValueSize);
 bool MP4SetMetadataName(MP4FileHandle hFile, const char* value);
 bool MP4GetMetadataName(MP4FileHandle hFile, char** value);
+bool MP4DeleteMetadataName(MP4FileHandle hFile);
 bool MP4SetMetadataArtist(MP4FileHandle hFile, const char* value);
 bool MP4GetMetadataArtist(MP4FileHandle hFile, char** value);
+bool MP4DeleteMetadataArtist(MP4FileHandle hFile);
 bool MP4SetMetadataWriter(MP4FileHandle hFile, const char* value);
 bool MP4GetMetadataWriter(MP4FileHandle hFile, char** value);
+bool MP4DeleteMetadataWriter(MP4FileHandle hFile);
 bool MP4SetMetadataComment(MP4FileHandle hFile, const char* value);
 bool MP4GetMetadataComment(MP4FileHandle hFile, char** value);
+bool MP4DeleteMetadataComment(MP4FileHandle hFile);
 bool MP4SetMetadataTool(MP4FileHandle hFile, const char* value);
 bool MP4GetMetadataTool(MP4FileHandle hFile, char** value);
+bool MP4DeleteMetadataTool(MP4FileHandle hFile);
 bool MP4SetMetadataYear(MP4FileHandle hFile, const char* value);
 bool MP4GetMetadataYear(MP4FileHandle hFile, char** value);
+bool MP4DeleteMetadataYear(MP4FileHandle hFile);
 bool MP4SetMetadataAlbum(MP4FileHandle hFile, const char* value);
 bool MP4GetMetadataAlbum(MP4FileHandle hFile, char** value);
+bool MP4DeleteMetadataAlbum(MP4FileHandle hFile);
 bool MP4SetMetadataTrack(MP4FileHandle hFile,
 			 u_int16_t track, u_int16_t totalTracks);
 bool MP4GetMetadataTrack(MP4FileHandle hFile,
 			 u_int16_t* track, u_int16_t* totalTracks);
+bool MP4DeleteMetadataTrack(MP4FileHandle hFile);
 bool MP4SetMetadataDisk(MP4FileHandle hFile,
 			u_int16_t disk, u_int16_t totalDisks);
 bool MP4GetMetadataDisk(MP4FileHandle hFile,
 			u_int16_t* disk, u_int16_t* totalDisks);
+bool MP4DeleteMetadataDisk(MP4FileHandle hFile);
 bool MP4SetMetadataGenre(MP4FileHandle hFile, const char *genre);
 bool MP4GetMetadataGenre(MP4FileHandle hFile, char **genre);
+bool MP4DeleteMetadataGenre(MP4FileHandle hFile);
+bool MP4SetMetadataGrouping(MP4FileHandle hFile, const char *grouping);
+bool MP4GetMetadataGrouping(MP4FileHandle hFile, char **grouping);
+bool MP4DeleteMetadataGrouping(MP4FileHandle hFile);
 bool MP4SetMetadataTempo(MP4FileHandle hFile, u_int16_t tempo);
 bool MP4GetMetadataTempo(MP4FileHandle hFile, u_int16_t* tempo);
+bool MP4DeleteMetadataTempo(MP4FileHandle hFile);
 bool MP4SetMetadataCompilation(MP4FileHandle hFile, u_int8_t cpl);
 bool MP4GetMetadataCompilation(MP4FileHandle hFile, u_int8_t* cpl);
+bool MP4DeleteMetadataCompilation(MP4FileHandle hFile);
 bool MP4SetMetadataCoverArt(MP4FileHandle hFile,
 			    u_int8_t *coverArt, u_int32_t size);
 bool MP4GetMetadataCoverArt(MP4FileHandle hFile,
 			    u_int8_t **coverArt, u_int32_t* size);
+bool MP4DeleteMetadataCoverArt(MP4FileHandle hFile);
 bool MP4SetMetadataFreeForm(MP4FileHandle hFile, char *name,
 			    u_int8_t* pValue, u_int32_t valueSize);
 bool MP4GetMetadataFreeForm(MP4FileHandle hFile, char *name,
 			    u_int8_t** pValue, u_int32_t* valueSize);
+bool MP4DeleteMetadataFreeForm(MP4FileHandle hFile, char *name);
  
 
 /* time conversion utilties */

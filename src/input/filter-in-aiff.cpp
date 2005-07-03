@@ -10,28 +10,28 @@
 
 #include <input/filter-in-aiff.h>
 
-FilterInAIFF::FilterInAIFF(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInAIFF::FilterInAIFF(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-FilterInAIFF::~FilterInAIFF()
+BonkEnc::FilterInAIFF::~FilterInAIFF()
 {
 }
 
-bool FilterInAIFF::Activate()
+bool BonkEnc::FilterInAIFF::Activate()
 {
 	driver->Seek(54); // Skip the header
 
 	return true;
 }
 
-bool FilterInAIFF::Deactivate()
+bool BonkEnc::FilterInAIFF::Deactivate()
 {
 	return true;
 }
 
-int FilterInAIFF::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInAIFF::ReadData(unsigned char **data, int size)
 {
 	*data = new unsigned char [size];
 
@@ -40,9 +40,9 @@ int FilterInAIFF::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkEncTrack *FilterInAIFF::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInAIFF::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	// TODO: Add more checking to this!

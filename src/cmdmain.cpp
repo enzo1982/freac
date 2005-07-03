@@ -12,6 +12,7 @@
 #include <smooth/args.h>
 #include <cmdmain.h>
 #include <console.h>
+#include <joblist.h>
 
 Int smooth::Main(Array<String> &args)
 {
@@ -42,7 +43,7 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 	currentConfig->enable_console = true;
 	currentConfig->appMain = this;
 
-	joblist	= new ListBox(Point(0, 0), Size(0, 0));
+	joblist	= new JobList(Point(0, 0), Size(0, 0));
 
 	bool		 quiet		= ScanForParameter("-quiet", NULL);
 	Array<String>	 files;
@@ -264,7 +265,7 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 
 				lferror = false;
 
-				InStream	*in = new InStream(STREAM_FILE, files.GetNthEntry(i));
+				InStream	*in = new InStream(STREAM_FILE, files.GetNthEntry(i), IS_READONLY);
 
 				if (in->GetLastError() != IOLIB_ERROR_OK)
 				{

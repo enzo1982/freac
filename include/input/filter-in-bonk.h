@@ -13,23 +13,26 @@
 
 #include "inputfilter.h"
 
-class FilterInBONK : public InputFilter
+namespace BonkEnc
 {
-	private:
-		void			*decoder;
-		InStream		*f_in;
+	class FilterInBONK : public InputFilter
+	{
+		private:
+			void			*decoder;
+			InStream		*f_in;
 
-		Buffer<unsigned char>	 buffer;
-	public:
-					 FilterInBONK(bonkEncConfig *, bonkEncTrack *);
-					~FilterInBONK();
+			Buffer<unsigned char>	 buffer;
+		public:
+						 FilterInBONK(Config *, Track *);
+						~FilterInBONK();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 ReadData(unsigned char **, int);
+			int			 ReadData(unsigned char **, int);
 
-		bonkEncTrack		*GetFileInfo(String);
+			Track			*GetFileInfo(String);
+	};
 };
 
 #endif

@@ -24,7 +24,7 @@
 #include <3rdparty/twinvq/ChunkHelper.h>
 #include <3rdparty/twinvq/ChunkHelper.cxx>
 
-FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
+BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilter(config, format)
 {
 	switch (format->rate)
 	{
@@ -66,11 +66,11 @@ FilterOutTVQ::FilterOutTVQ(bonkEncConfig *config, bonkEncTrack *format) : Output
 	}
 }
 
-FilterOutTVQ::~FilterOutTVQ()
+BonkEnc::FilterOutTVQ::~FilterOutTVQ()
 {
 }
 
-bool FilterOutTVQ::Activate()
+bool BonkEnc::FilterOutTVQ::Activate()
 {
 	memset(&setupInfo, 0, sizeof(headerInfo));
 	memset(&encInfo, 0, sizeof(encSpecificInfo));
@@ -109,7 +109,7 @@ bool FilterOutTVQ::Activate()
 	return true;
 }
 
-bool FilterOutTVQ::Deactivate()
+bool BonkEnc::FilterOutTVQ::Deactivate()
 {
 	OutStream	*d_out = new OutStream(STREAM_BUFFER, outBuffer, outBuffer.Size());
 
@@ -134,7 +134,7 @@ bool FilterOutTVQ::Deactivate()
 	return true;
 }
 
-int FilterOutTVQ::WriteData(unsigned char *data, int size)
+int BonkEnc::FilterOutTVQ::WriteData(unsigned char *data, int size)
 {
 	OutStream	*d_out = new OutStream(STREAM_BUFFER, outBuffer, outBuffer.Size());
 

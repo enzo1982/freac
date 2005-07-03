@@ -11,12 +11,12 @@
 #ifndef _H_GENCONFIG_
 #define _H_GENCONFIG_
 
-class configureGeneralSettingsLayerEncoders;
-class configureGeneralSettingsLayerLanguage;
-class configureGeneralSettingsLayerCDRip;
-class configureGeneralSettingsLayerCDDB;
-class configureGeneralSettingsLayerPlugins;
-class configureGeneralSettingsLayerTags;
+class GeneralSettingsLayerEncoders;
+class GeneralSettingsLayerLanguage;
+class GeneralSettingsLayerCDRip;
+class GeneralSettingsLayerCDDB;
+class GeneralSettingsLayerPlugins;
+class GeneralSettingsLayerTags;
 
 #include <smooth.h>
 #include <main.h>
@@ -24,35 +24,38 @@ class configureGeneralSettingsLayerTags;
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureGeneralSettings : public Dialog
+namespace BonkEnc
 {
-	private:
-		TabWidget				*reg_register;
+	class GeneralSettingsDialog : public Dialog
+	{
+		private:
+			TabWidget			*reg_register;
 
-		configureGeneralSettingsLayerEncoders	*register_layer_encoders;
-		configureGeneralSettingsLayerLanguage	*register_layer_language;
-		configureGeneralSettingsLayerCDRip	*register_layer_cdrip;
-		configureGeneralSettingsLayerCDDB	*register_layer_cddb;
-		configureGeneralSettingsLayerPlugins	*register_layer_plugins;
-		configureGeneralSettingsLayerTags	*register_layer_tags;
+			GeneralSettingsLayerEncoders	*register_layer_encoders;
+			GeneralSettingsLayerLanguage	*register_layer_language;
+			GeneralSettingsLayerCDRip	*register_layer_cdrip;
+			GeneralSettingsLayerCDDB	*register_layer_cddb;
+			GeneralSettingsLayerPlugins	*register_layer_plugins;
+			GeneralSettingsLayerTags	*register_layer_tags;
 
-		Divider					*divbar;
+			Divider				*divbar;
 
-		Window					*mainWnd;
-		Titlebar				*mainWnd_titlebar;
+			Window				*mainWnd;
+			Titlebar			*mainWnd_titlebar;
 
-		Button					*btn_cancel;
-		Button					*btn_ok;
+			Button				*btn_cancel;
+			Button				*btn_ok;
 
- 		bonkEncConfig				*currentConfig;
-	slots:
-		Void					 OK();
-		Void					 Cancel();
-	public:
-							 configureGeneralSettings();
-							~configureGeneralSettings();
+	 		Config				*currentConfig;
+		slots:
+			Void				 OK();
+			Void				 Cancel();
+		public:
+							 GeneralSettingsDialog();
+							~GeneralSettingsDialog();
 
-		Int					 ShowDialog();
+			Int				 ShowDialog();
+	};
 };
 
 #endif

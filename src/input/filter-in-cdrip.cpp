@@ -37,14 +37,14 @@ typedef struct
 }
 cdTextPackage;
 
-FilterInCDRip::FilterInCDRip(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 	trackNumber = -1;
 	buffer = NIL;
 }
 
-FilterInCDRip::~FilterInCDRip()
+BonkEnc::FilterInCDRip::~FilterInCDRip()
 {
 	if (buffer != NIL)
 	{
@@ -56,7 +56,7 @@ FilterInCDRip::~FilterInCDRip()
 	}
 }
 
-int FilterInCDRip::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInCDRip::ReadData(unsigned char **data, int size)
 {
 	if (trackNumber == -1) return true;
 
@@ -98,7 +98,7 @@ int FilterInCDRip::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-S::Bool FilterInCDRip::SetTrack(Int newTrack)
+Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 {
 	if (buffer != NIL)
 	{
@@ -202,16 +202,16 @@ S::Bool FilterInCDRip::SetTrack(Int newTrack)
 	return true;
 }
 
-S::Int FilterInCDRip::GetTrackSize()
+Int BonkEnc::FilterInCDRip::GetTrackSize()
 {
 	if (trackNumber == -1) return 0;
 
 	return trackSize;
 }
 
-bonkEncTrack *FilterInCDRip::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track	*nFormat = new Track;
 
 	nFormat->channels = 2;
 	nFormat->rate = 44100;
@@ -346,7 +346,7 @@ bonkEncTrack *FilterInCDRip::GetFileInfo(String inFile)
 
 	cddb.SetActiveDrive(audiodrive);
 
-	Array<bonkEncTrack *>	*cdInfo = NIL;
+	Array<Track *>	*cdInfo = NIL;
 
 	if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
 
@@ -412,7 +412,7 @@ bonkEncTrack *FilterInCDRip::GetFileInfo(String inFile)
 	return nFormat;
 }
 
-Int FilterInCDRip::ReadCDText()
+Int BonkEnc::FilterInCDRip::ReadCDText()
 {
 	FreeCDText();
 
@@ -472,7 +472,7 @@ Int FilterInCDRip::ReadCDText()
 	return Success;
 }
 
-Int FilterInCDRip::FreeCDText()
+Int BonkEnc::FilterInCDRip::FreeCDText()
 {
 	cdText.RemoveAll();
 

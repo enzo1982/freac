@@ -18,6 +18,7 @@
 #include <dbt.h>
 
 #include <dllinterfaces.h>
+#include <joblist.h>
 
 #include <dialogs/genconfig/genconfig.h>
 #include <dialogs/bonkconfig.h>
@@ -211,7 +212,7 @@ bonkEncGUI::bonkEncGUI()
 	size.cx = currentConfig->wndSize.cx - 29;
 	size.cy = currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0);
 
-	joblist			= new ListBox(pos, size);
+	joblist			= new JobList(pos, size);
 	joblist->onClick.Connect(&bonkEncGUI::SelectJoblistEntry, this);
 	joblist->SetFlags(LF_MULTICHECKBOX);
 	joblist->AddTab(i18n->TranslateString("Title"));
@@ -583,6 +584,9 @@ bonkEncGUI::bonkEncGUI()
 
 	menu_file->AddEntry(i18n->TranslateString("Add"), NIL, menu_addsubmenu);
 	menu_file->AddEntry(i18n->TranslateString("Remove"))->onClick.Connect(&bonkEncGUI::RemoveFile, this);
+	menu_file->AddEntry();
+	menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onClick.Connect(&bonkEncGUI::LoadList, this);
+	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onClick.Connect(&bonkEncGUI::SaveList, this);
 	menu_file->AddEntry();
 	menu_file->AddEntry(i18n->TranslateString("Clear joblist"))->onClick.Connect(&bonkEnc::ClearList, (bonkEnc *) this);
 	menu_file->AddEntry();
@@ -1067,6 +1071,14 @@ Void bonkEncGUI::About()
 	QuickMessage(String("BonkEnc ").Append(bonkEnc::version).Append("\nCopyright (C) 2001-2005 Robert Kausch\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
+Void bonkEncGUI::LoadList()
+{
+}
+
+Void bonkEncGUI::SaveList()
+{
+}
+
 Void bonkEncGUI::ConfigureEncoder()
 {
 	if (encoding)
@@ -1107,7 +1119,7 @@ Void bonkEncGUI::ConfigureGeneral()
 		return;
 	}
 
-	configureGeneralSettings	*dlg = new configureGeneralSettings();
+	GeneralSettingsDialog	*dlg = new GeneralSettingsDialog();
 
 	dlg->ShowDialog();
 
@@ -1147,8 +1159,8 @@ Void bonkEncGUI::QueryCDDB()
 
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
-		bonkEncTrack	*format = sa_formatinfo.GetNthEntry(i);
-		Int		 discID = 0;
+		Track	*format = joblist->GetNthTrack(i);
+		Int	 discID = 0;
 
 		for (Int i = 0; i < 8; i++)
 		{
@@ -1162,10 +1174,10 @@ Void bonkEncGUI::QueryCDDB()
 
 	for (Int j = 0; j < discIDs.GetNOfEntries(); j++)
 	{
-		bonkEncCDDB		 cddb(currentConfig);
-		Int			 discID = discIDs.GetNthEntry(j);
-		String			 discIDString = discIDStrings.GetNthEntry(j);
-		Array<bonkEncTrack *>	*cdInfo = NIL;
+		bonkEncCDDB	 cddb(currentConfig);
+		Int		 discID = discIDs.GetNthEntry(j);
+		String		 discIDString = discIDStrings.GetNthEntry(j);
+		Array<Track *>	*cdInfo = NIL;
 
 		if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::infoCache.GetEntry(discID);
 
@@ -1190,7 +1202,7 @@ Void bonkEncGUI::QueryCDDB()
 		{
 			for (Int k = 0; k < joblist->GetNOfEntries(); k++)
 			{
-				bonkEncTrack	*format = sa_formatinfo.GetNthEntry(k);
+				Track	*format = joblist->GetNthTrack(k);
 
 				if (format->isCDTrack && format->discid == discIDString)
 				{
@@ -1217,12 +1229,10 @@ Void bonkEncGUI::QueryCDDB()
 
 	joblist->Paint(SP_PAINT);
 
-	ListEntry	*entry = joblist->GetSelectedEntry();
+	Track	*format = joblist->GetSelectedTrack();
 
-	if (entry != NIL)
+	if (format != NIL)
 	{
-		bonkEncTrack	*format = sa_formatinfo.GetEntry(entry->GetHandle());
-
 		dontUpdateInfo = True;
 
 		info_edit_artist->SetText(format->artist);
@@ -1450,7 +1460,7 @@ Bool bonkEncGUI::SetLanguage(String newLanguage)
 	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
 	{
 		ListEntry	*entry = joblist->GetNthEntry(i);
-		bonkEncTrack	*format = sa_formatinfo.GetEntry(entry->GetHandle());
+		Track		*format = joblist->GetNthTrack(i);
 
 		if (format->artist == NIL || format->title == NIL)
 		{

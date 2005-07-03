@@ -10,16 +10,16 @@
 
 #include <input/filter-in-faad2.h>
 
-FilterInFAAD2::FilterInFAAD2(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInFAAD2::FilterInFAAD2(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-FilterInFAAD2::~FilterInFAAD2()
+BonkEnc::FilterInFAAD2::~FilterInFAAD2()
 {
 }
 
-bool FilterInFAAD2::Activate()
+bool BonkEnc::FilterInFAAD2::Activate()
 {
 	backBufferBytes = 0;
 
@@ -50,14 +50,14 @@ bool FilterInFAAD2::Activate()
 	return true;
 }
 
-bool FilterInFAAD2::Deactivate()
+bool BonkEnc::FilterInFAAD2::Deactivate()
 {
 	ex_NeAACDecClose(handle);
 
 	return true;
 }
 
-int FilterInFAAD2::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInFAAD2::ReadData(unsigned char **data, int size)
 {
 	if (size <= 0) return -1;
 
@@ -135,7 +135,7 @@ int FilterInFAAD2::ReadData(unsigned char **data, int size)
 	return samplesRead * 2;
 }
 
-bonkEncTrack *FilterInFAAD2::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInFAAD2::GetFileInfo(String inFile)
 {
 	handle	= ex_NeAACDecOpen();
 	fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
@@ -146,7 +146,7 @@ bonkEncTrack *FilterInFAAD2::GetFileInfo(String inFile)
 
 	ex_NeAACDecSetConfiguration(handle, fConfig);
 
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	nFormat->order		= BYTE_INTEL;

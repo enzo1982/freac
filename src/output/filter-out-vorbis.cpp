@@ -11,7 +11,7 @@
 #include <output/filter-out-vorbis.h>
 #include <dllinterfaces.h>
 
-FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
+BonkEnc::FilterOutVORBIS::FilterOutVORBIS(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
@@ -23,11 +23,11 @@ FilterOutVORBIS::FilterOutVORBIS(bonkEncConfig *config, bonkEncTrack *format) : 
 	}
 }
 
-FilterOutVORBIS::~FilterOutVORBIS()
+BonkEnc::FilterOutVORBIS::~FilterOutVORBIS()
 {
 }
 
-bool FilterOutVORBIS::Activate()
+bool BonkEnc::FilterOutVORBIS::Activate()
 {
 	srand(clock());
 
@@ -133,7 +133,7 @@ bool FilterOutVORBIS::Activate()
 	return true;
 }
 
-bool FilterOutVORBIS::Deactivate()
+bool BonkEnc::FilterOutVORBIS::Deactivate()
 {
 	ex_vorbis_analysis_wrote(&vd, 0);
 
@@ -184,7 +184,7 @@ bool FilterOutVORBIS::Deactivate()
 	return true;
 }
 
-int FilterOutVORBIS::WriteData(unsigned char *data, int size)
+int BonkEnc::FilterOutVORBIS::WriteData(unsigned char *data, int size)
 {
 	int	 dataLength = 0;
 	int	 samples_size = size / (format->bits / 8);

@@ -15,24 +15,27 @@
 #include <3rdparty/twinvq/twinvq.h>
 #include <3rdparty/twinvq/tvqenc.h>
 
-class FilterOutTVQ : public OutputFilter
+namespace BonkEnc
 {
-	private:
-		headerInfo		 setupInfo;
-		encSpecificInfo		 encInfo;
-		INDEX			 index;
+	class FilterOutTVQ : public OutputFilter
+	{
+		private:
+			headerInfo		 setupInfo;
+			encSpecificInfo		 encInfo;
+			INDEX			 index;
 
-		Buffer<unsigned char>	 outBuffer;
-		Buffer<signed short>	 samplesBuffer;
-		Buffer<float>		 frame;
-	public:
-					 FilterOutTVQ(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutTVQ();
+			Buffer<unsigned char>	 outBuffer;
+			Buffer<signed short>	 samplesBuffer;
+			Buffer<float>		 frame;
+		public:
+						 FilterOutTVQ(Config *, Track *);
+						~FilterOutTVQ();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 WriteData(unsigned char *, int);
+			int			 WriteData(unsigned char *, int);
+	};
 };
 
 #endif

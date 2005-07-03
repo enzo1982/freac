@@ -17,6 +17,9 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class configureFAAC : public Dialog
 {
 	private:
@@ -82,7 +85,7 @@ class configureFAAC : public Dialog
 		Bool		 allowID3;
 		Int		 fileFormat;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 
 		Void		 OK();
 		Void		 Cancel();
@@ -96,6 +99,7 @@ class configureFAAC : public Dialog
 	public:
 				 configureFAAC();
 				~configureFAAC();
+
 		Int		 ShowDialog();
 };
 

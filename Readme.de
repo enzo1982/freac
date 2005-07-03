@@ -9,7 +9,7 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 CVS (Juni 2005)
+	Version 1.0 CVS (Juli 2005)
 
 		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
@@ -20,12 +20,12 @@ Geschichte
 		- Die Jobliste kann nun mit gesendeten freedb-Informationen aktualisiert werden
 		- Die Token <filename> und <genre> können nun in der Dateinamensvorlage verwendet werden
 		- Text in inaktiven Editboxen kann jetzt ausgewählt und kopiert werden
+		- Ogg Vorbis auf Version 1.1.1 aktualisiert
 		- Unterstützung zum Erzeugen von M3U-Playlisten hinzugefügt
 		- Unterstützung zum Erzeugen von einfachen Cuesheets hinzugefügt
 		- Unterstützung für ID3V1-Tags hinzugefügt
-		- Der Zeichensatz für ID3-Tags kann jetzt gewählt werden
 		- Optionen zum Konfigurieren der Codierer zu BEcmd hinzugefügt
-		- Update auf MPEG4IP v1.2
+		- Update auf MPEG4IP v1.3
 		- Verwende smooth v0.8.67.0
 		- Unterstützung für MinGW 1.x entfernt
 		- Sehr viele Bugfixes
@@ -210,29 +210,7 @@ Bekannte Probleme
 	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
 	  Ausgabe-Samplingrate haben, wenn sie nicht LAME verwenden.
 
-	- Das Kommandozeileninterface unterstützt bisher noch keine Optionen um Encodereinstellungen zu verändern.
-
 	- Arabische (und andere RTL Schriften) Sprachunterstützung benötigt zur Zeit noch mindestens Windows XP.
-
-Pläne für zukünftige Versionen
-------------------------------
-
-	- Geplant für v1.0
-		* Shell Integration
-		* Lokale CDDB Datenbank
-		* Onlinedokumentation für BonkEnc schreiben
-		* CDDB Code aufräumen
-
-	- Spätere Versionen
-		* Eingabefilter für VQF
-		* mehr Audioformate unterstützen (MAC, WMA, ...)
-		* ein IOLib-Filters basierendes PlugIn System entwickeln
-		* Unterstützung für musicbrainz.org
-		* Kommandozeilenoptionen zum Konfigurieren der Encoder erlauben
-
-	- Ständige Aufgaben
-		* mehr Sprachen unterstützen
-		* den Sourcecode überarbeiten
 
 Besonderen Dank
 ---------------

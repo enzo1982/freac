@@ -17,7 +17,10 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureGeneralSettingsLayerCDRip : public Layer
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
+class GeneralSettingsLayerCDRip : public Layer
 {
 	private:
 		GroupBox	*group_drive;
@@ -41,12 +44,12 @@ class configureGeneralSettingsLayerCDRip : public Layer
 		Bool		 autoRead;
 		Bool		 autoEject;
  
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 	slots:
 		Void		 SetParanoia();
 	public:
-				 configureGeneralSettingsLayerCDRip();
-				~configureGeneralSettingsLayerCDRip();
+				 GeneralSettingsLayerCDRip();
+				~GeneralSettingsLayerCDRip();
 
 		Int		 GetActiveDrive();
 		Int		 GetCDParanoiaMode();

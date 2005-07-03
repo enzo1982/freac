@@ -10,16 +10,16 @@
 
 #include <input/filter-in-mp4.h>
 
-FilterInMP4::FilterInMP4(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInMP4::FilterInMP4(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-FilterInMP4::~FilterInMP4()
+BonkEnc::FilterInMP4::~FilterInMP4()
 {
 }
 
-bool FilterInMP4::Activate()
+bool BonkEnc::FilterInMP4::Activate()
 {
 	if (GetTempFile(format->origFilename) != format->origFilename)
 	{
@@ -61,7 +61,7 @@ bool FilterInMP4::Activate()
 	return true;
 }
 
-bool FilterInMP4::Deactivate()
+bool BonkEnc::FilterInMP4::Deactivate()
 {
 	if (mp4Track >= 0) ex_NeAACDecClose(handle);
 
@@ -77,7 +77,7 @@ bool FilterInMP4::Deactivate()
 	return true;
 }
 
-int FilterInMP4::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInMP4::ReadData(unsigned char **data, int size)
 {
 	if (size <= 0) return -1;
 
@@ -134,7 +134,7 @@ int FilterInMP4::ReadData(unsigned char **data, int size)
 	return samplesRead * 2;
 }
 
-bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInMP4::GetFileInfo(String inFile)
 {
 	if (GetTempFile(inFile) != inFile)
 	{
@@ -143,7 +143,7 @@ bonkEncTrack *FilterInMP4::GetFileInfo(String inFile)
 		mp4File.Copy(GetTempFile(inFile));
 	}
 
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(GetTempFile(inFile));
 
 	nFormat->fileSize	= f_in->Size();

@@ -13,10 +13,11 @@
  * 
  * The Initial Developer of the Original Code is Cisco Systems Inc.
  * Portions created by Cisco Systems Inc. are
- * Copyright (C) Cisco Systems Inc. 2000, 2001.  All Rights Reserved.
+ * Copyright (C) Cisco Systems Inc. 2000-2005.  All Rights Reserved.
  * 
  * Contributor(s): 
  *		Dave Mackie		dmackie@cisco.com
+ *              Bill May                wmay@cisco.com
  */
 
 #ifndef __MPEG4IP_INCLUDED__
@@ -25,135 +26,41 @@
 /* project wide applicable stuff here */
 
 
-#ifdef WIN32
-#define HAVE_IN_PORT_T
-#define HAVE_SOCKLEN_T
-#define NEED_SDL_VIDEO_IN_MAIN_THREAD
-#else
-#undef PACKAGE
-#undef VERSION
+#ifndef _WIN32
+#ifdef PACKAGE_BUGREPORT
+#define TEMP_PACKAGE_BUGREPORT PACKAGE_BUGREPORT
+#define TEMP_PACKAGE_NAME PACKAGE_NAME
+#define TEMP_PACKAGE_STRING PACKAGE_STRING
+#define TEMP_PACKAGE_TARNAME PACKAGE_TARNAME
+#define TEMP_PACKAGE_VERSION PACKAGE_VERSION
+#undef PACKAGE_BUGREPORT
+#undef PACKAGE_NAME
+#undef PACKAGE_STRING
+#undef PACKAGE_TARNAME
+#undef PACKAGE_VERSION
 #include <mpeg4ip_config.h>
-#undef PACKAGE
-#undef VERSION
-// so these don't propogate
+#undef PACKAGE_BUGREPORT
+#undef PACKAGE_NAME
+#undef PACKAGE_STRING
+#undef PACKAGE_TARNAME
+#undef PACKAGE_VERSION
+#define PACKAGE_BUGREPORT TEMP_PACKAGE_BUGREPORT
+#define PACKAGE_NAME TEMP_PACKAGE_NAME
+#define PACKAGE_STRING TEMP_PACKAGE_STRING
+#define PACKAGE_TARNAME TEMP_PACKAGE_TARNAME
+#define PACKAGE_VERSION TEMP_PACKAGE_VERSION
+#else
+#include <mpeg4ip_config.h>
+#endif
 #endif
 
 // the mpeg4ip_package and mpeg4ip_version are always in this
 // file 
 #include "mpeg4ip_version.h"
 
-#ifdef WIN32
-
-#define _WINSOCKAPI_
-#include <windows.h>
-#include <winsock2.h>
-#include <stdio.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <time.h>
-#include <limits.h>
-
-#ifndef __GNUC__
-typedef __int8 int8_t;
-typedef __int16 int16_t;
-typedef __int64 int64_t;
-
-typedef unsigned char	 uint8_t;
-typedef unsigned short	 uint16_t;
-typedef unsigned long	 uint32_t;
-typedef unsigned __int64 uint64_t;
-#endif
-
-typedef unsigned __int64 u_int64_t;
-typedef unsigned long	 u_int32_t;
-typedef unsigned short	 u_int16_t;
-typedef unsigned char	 u_int8_t;
-
-typedef unsigned short in_port_t;
-typedef int socklen_t;
-
-#ifndef __GNUC__
-typedef int ssize_t;
-#endif
-
-typedef unsigned int uint;
-#define snprintf _snprintf
-#define strncasecmp _strnicmp
-#define strcasecmp _stricmp
-
-#include <io.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#define write _write
-#define lseek _lseek
-#define close _close
-#define open _open
-#define access _access
-#define vsnprintf _vsnprintf
-#define F_OK 0
-#define OPEN_RDWR (_O_RDWR | _O_BINARY)
-#define OPEN_CREAT (_O_CREAT | _O_BINARY)
-#define OPEN_RDONLY (_O_RDONLY | _O_BINARY)
-#define srandom srand
-#define random rand
-
-#define IOSBINARY ios::binary
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-int gettimeofday(struct timeval *t, void *);
-#ifdef __cplusplus
-}
-#endif
-
-#ifndef __GNUC__
-#define PATH_MAX MAX_PATH
-#endif
-
-#define MAX_UINT64 -1
-#define D64F "I64d"
-#define U64F  "I64u"
-#define X64F "I64x"
-
-#define TO_D64(a) (a##I64)
-#define TO_U64(a) (a##UI64)
-
-#define LOG_EMERG 0
-#define LOG_ALERT 1
-#define LOG_CRIT 2
-#define LOG_ERR 3
-#define LOG_WARNING 4
-#define LOG_NOTICE 5
-#define LOG_INFO 6
-#define LOG_DEBUG 7
-
-#ifdef HAVE_FPOS_T___POS
-#define FPOS_TO_VAR(fpos, typed, var) (var) = (typed)((fpos).__pos)
-#define VAR_TO_FPOS(fpos, var) (fpos).__pos = (var)
-#else
-#define FPOS_TO_VAR(fpos, typed, var) (var) = (typed)(fpos)
-#define VAR_TO_FPOS(fpos, var) (fpos) = (var)
-#endif
-
-#define __STRING(expr) #expr
-
-#define FOPEN_READ_BINARY "rb"
-#define FOPEN_WRITE_BINARY "wb"
-
-#define UINT64_TO_DOUBLE(a) ((double)((int64_t)(a)))
-#ifdef __cplusplus
-extern "C" {
-#endif
-char *strcasestr(const char *haystack, const char *needle);
-#ifdef __cplusplus
-}
-#endif
-
-
-#define SIZEOF_BOOL 1
-
+#ifdef _WIN32
+#include "mpeg4ip_win32.h"
+#include "mpeg4ip_version.h"
 #else /* UNIX */
 /*****************************************************************************
  *   UNIX LIKE DEFINES BELOW THIS POINT
@@ -325,6 +232,34 @@ char *strsep(char **strp, const char *delim);
 #define NUM_ELEMENTS_IN_ARRAY(name) ((sizeof((name))) / (sizeof(*(name))))
 
 #define ADV_SPACE(a) {while (isspace(*(a)) && (*(a) != '\0'))(a)++;}
+
+#ifndef HAVE_GTK
+typedef char gchar;
+typedef unsigned char guchar;
+
+typedef int gint;
+typedef unsigned int guint;
+
+typedef long glong;
+typedef unsigned long gulong;
+
+typedef double gdouble;
+
+typedef int gboolean;
+
+typedef int16_t gint16;
+typedef uint16_t guint16;
+
+typedef int32_t gint32;
+typedef uint32_t guint32;
+
+typedef int64_t gint64;
+typedef uint64_t guint64;
+
+typedef uint8_t  guint8;
+typedef int8_t gint8;
+
+#endif
 
 #ifndef FALSE
 #define FALSE 0

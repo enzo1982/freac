@@ -42,7 +42,7 @@ int	 Out_IsPlaying();
 void	 Out_SetVolume(int);
 void	 Out_SetPan(int);
 
-FilterInWinamp::FilterInWinamp(bonkEncConfig *config, bonkEncTrack *format, In_Module *iPlugin) : InputFilter(config, format)
+BonkEnc::FilterInWinamp::FilterInWinamp(Config *config, Track *format, In_Module *iPlugin) : InputFilter(config, format)
 {
 	plugin = iPlugin;
 
@@ -75,26 +75,26 @@ FilterInWinamp::FilterInWinamp(bonkEncConfig *config, bonkEncTrack *format, In_M
 	packageSize = 0;
 }
 
-FilterInWinamp::~FilterInWinamp()
+BonkEnc::FilterInWinamp::~FilterInWinamp()
 {
 	delete plugin->outMod;
 }
 
-bool FilterInWinamp::Activate()
+bool BonkEnc::FilterInWinamp::Activate()
 {
 	plugin->Play(format->origFilename);
 
 	return true;
 }
 
-bool FilterInWinamp::Deactivate()
+bool BonkEnc::FilterInWinamp::Deactivate()
 {
 	plugin->Stop();
 
 	return true;
 }
 
-int FilterInWinamp::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInWinamp::ReadData(unsigned char **data, int size)
 {
 	get_more_samples = 32768;
 	n_samples = 0;
@@ -125,9 +125,9 @@ int FilterInWinamp::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkEncTrack *FilterInWinamp::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInWinamp::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	nFormat->order = BYTE_INTEL;

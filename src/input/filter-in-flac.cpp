@@ -10,21 +10,24 @@
 
 #include <input/filter-in-flac.h>
 
-FLAC__StreamDecoderReadStatus	 BonkEncFLACStreamDecoderReadCallback(const FLAC__StreamDecoder *, FLAC__byte [], unsigned *, void *);
-FLAC__StreamDecoderWriteStatus	 BonkEncFLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
-void				 BonkEncFLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *, const FLAC__StreamMetadata *, void *);
-void				 BonkEncFLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *, FLAC__StreamDecoderErrorStatus, void *);
+namespace BonkEnc
+{
+	FLAC__StreamDecoderReadStatus	 FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *, FLAC__byte [], unsigned *, void *);
+	FLAC__StreamDecoderWriteStatus	 FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
+	void				 FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *, const FLAC__StreamMetadata *, void *);
+	void				 FLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *, FLAC__StreamDecoderErrorStatus, void *);
+};
 
-FilterInFLAC::FilterInFLAC(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInFLAC::FilterInFLAC(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-FilterInFLAC::~FilterInFLAC()
+BonkEnc::FilterInFLAC::~FilterInFLAC()
 {
 }
 
-bool FilterInFLAC::Activate()
+bool BonkEnc::FilterInFLAC::Activate()
 {
 	finished = False;
 
@@ -41,7 +44,7 @@ bool FilterInFLAC::Activate()
 	return true;
 }
 
-bool FilterInFLAC::Deactivate()
+bool BonkEnc::FilterInFLAC::Deactivate()
 {
 	Object::DeleteObject(inputBufferMutex);
 	Object::DeleteObject(samplesBufferMutex);
@@ -50,7 +53,7 @@ bool FilterInFLAC::Deactivate()
 	return true;
 }
 
-int FilterInFLAC::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInFLAC::ReadData(unsigned char **data, int size)
 {
 	if (size <= 0) return -1;
 
@@ -99,15 +102,15 @@ int FilterInFLAC::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkEncTrack *FilterInFLAC::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInFLAC::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	nFormat->order		= BYTE_INTEL;
 	nFormat->fileSize	= f_in->Size();
 
-	format = new bonkEncTrack;
+	format = new Track;
 	finished = False;
 
 	inputBufferMutex	= new Mutex();
@@ -144,14 +147,14 @@ bonkEncTrack *FilterInFLAC::GetFileInfo(String inFile)
 	return nFormat;
 }
 
-Int FilterInFLAC::ReadFLACData(Thread *self)
+Int BonkEnc::FilterInFLAC::ReadFLACData(Thread *self)
 {
 	decoder = ex_FLAC__stream_decoder_new();
 
-	ex_FLAC__stream_decoder_set_read_callback(decoder, &BonkEncFLACStreamDecoderReadCallback);
-	ex_FLAC__stream_decoder_set_write_callback(decoder, &BonkEncFLACStreamDecoderWriteCallback);
-	ex_FLAC__stream_decoder_set_metadata_callback(decoder, &BonkEncFLACStreamDecoderMetadataCallback);
-	ex_FLAC__stream_decoder_set_error_callback(decoder, &BonkEncFLACStreamDecoderErrorCallback);
+	ex_FLAC__stream_decoder_set_read_callback(decoder, &FLACStreamDecoderReadCallback);
+	ex_FLAC__stream_decoder_set_write_callback(decoder, &FLACStreamDecoderWriteCallback);
+	ex_FLAC__stream_decoder_set_metadata_callback(decoder, &FLACStreamDecoderMetadataCallback);
+	ex_FLAC__stream_decoder_set_error_callback(decoder, &FLACStreamDecoderErrorCallback);
 
 	ex_FLAC__stream_decoder_set_client_data(decoder, this);
 
@@ -165,14 +168,14 @@ Int FilterInFLAC::ReadFLACData(Thread *self)
 	return Success;
 }
 
-Int FilterInFLAC::ReadFLACMetadata(Thread *self)
+Int BonkEnc::FilterInFLAC::ReadFLACMetadata(Thread *self)
 {
 	decoder = ex_FLAC__stream_decoder_new();
 
-	ex_FLAC__stream_decoder_set_read_callback(decoder, &BonkEncFLACStreamDecoderReadCallback);
-	ex_FLAC__stream_decoder_set_write_callback(decoder, &BonkEncFLACStreamDecoderWriteCallback);
-	ex_FLAC__stream_decoder_set_metadata_callback(decoder, &BonkEncFLACStreamDecoderMetadataCallback);
-	ex_FLAC__stream_decoder_set_error_callback(decoder, &BonkEncFLACStreamDecoderErrorCallback);
+	ex_FLAC__stream_decoder_set_read_callback(decoder, &FLACStreamDecoderReadCallback);
+	ex_FLAC__stream_decoder_set_write_callback(decoder, &FLACStreamDecoderWriteCallback);
+	ex_FLAC__stream_decoder_set_metadata_callback(decoder, &FLACStreamDecoderMetadataCallback);
+	ex_FLAC__stream_decoder_set_error_callback(decoder, &FLACStreamDecoderErrorCallback);
 
 	ex_FLAC__stream_decoder_set_client_data(decoder, this);
 
@@ -186,7 +189,7 @@ Int FilterInFLAC::ReadFLACMetadata(Thread *self)
 	return Success;
 }
 
-FLAC__StreamDecoderReadStatus BonkEncFLACStreamDecoderReadCallback(const FLAC__StreamDecoder *decoder, FLAC__byte buffer[], unsigned *bytes, void *client_data)
+FLAC__StreamDecoderReadStatus BonkEnc::FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *decoder, FLAC__byte buffer[], unsigned *bytes, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -212,7 +215,7 @@ FLAC__StreamDecoderReadStatus BonkEncFLACStreamDecoderReadCallback(const FLAC__S
 	else								return FLAC__STREAM_DECODER_READ_STATUS_END_OF_STREAM;
 }
 
-FLAC__StreamDecoderWriteStatus BonkEncFLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *decoder, const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)
+FLAC__StreamDecoderWriteStatus BonkEnc::FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *decoder, const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -242,7 +245,7 @@ FLAC__StreamDecoderWriteStatus BonkEncFLACStreamDecoderWriteCallback(const FLAC_
 	return FLAC__STREAM_DECODER_WRITE_STATUS_CONTINUE;
 }
 
-void BonkEncFLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decoder, const FLAC__StreamMetadata *metadata, void *client_data)
+void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decoder, const FLAC__StreamMetadata *metadata, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -258,6 +261,6 @@ void BonkEncFLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decoder
 	}
 }
 
-void BonkEncFLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *decoder, FLAC__StreamDecoderErrorStatus status, void *client_data)
+void BonkEnc::FLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *decoder, FLAC__StreamDecoderErrorStatus status, void *client_data)
 {
 }

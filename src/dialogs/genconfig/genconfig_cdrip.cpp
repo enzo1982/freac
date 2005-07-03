@@ -10,7 +10,7 @@
 
 #include <dialogs/genconfig/genconfig_cdrip.h>
 
-configureGeneralSettingsLayerCDRip::configureGeneralSettingsLayerCDRip() : Layer("CDRip")
+GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 {
 	Point	 pos;
 	Size	 size;
@@ -59,7 +59,7 @@ configureGeneralSettingsLayerCDRip::configureGeneralSettingsLayerCDRip() : Layer
 	size.cy	= 0;
 
 	check_paranoia	= new CheckBox(bonkEnc::i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia);
-	check_paranoia->onClick.Connect(&configureGeneralSettingsLayerCDRip::SetParanoia, this);
+	check_paranoia->onClick.Connect(&GeneralSettingsLayerCDRip::SetParanoia, this);
 
 	pos.x	+= 166;
 	pos.y	-= 1;
@@ -134,7 +134,7 @@ configureGeneralSettingsLayerCDRip::configureGeneralSettingsLayerCDRip() : Layer
 	RegisterObject(check_ntscsi);
 }
 
-configureGeneralSettingsLayerCDRip::~configureGeneralSettingsLayerCDRip()
+GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 {
 	DeleteObject(group_drive);
 	DeleteObject(combo_drive);
@@ -150,50 +150,50 @@ configureGeneralSettingsLayerCDRip::~configureGeneralSettingsLayerCDRip()
 	DeleteObject(check_ntscsi);
 }
 
-Void configureGeneralSettingsLayerCDRip::SetParanoia()
+Void GeneralSettingsLayerCDRip::SetParanoia()
 {
 	if (cdparanoia)	combo_paranoia_mode->Activate();
 	else		combo_paranoia_mode->Deactivate();
 }
 
-Int configureGeneralSettingsLayerCDRip::GetActiveDrive()
+Int GeneralSettingsLayerCDRip::GetActiveDrive()
 {
 	return combo_drive->GetSelectedEntryNumber();
 }
 
-Int configureGeneralSettingsLayerCDRip::GetCDParanoiaMode()
+Int GeneralSettingsLayerCDRip::GetCDParanoiaMode()
 {
 	if (!cdparanoia) return -1;
 
 	return combo_paranoia_mode->GetSelectedEntryNumber();
 }
 
-Bool configureGeneralSettingsLayerCDRip::GetJitter()
+Bool GeneralSettingsLayerCDRip::GetJitter()
 {
 	return jitter;
 }
 
-Bool configureGeneralSettingsLayerCDRip::GetSwapChannels()
+Bool GeneralSettingsLayerCDRip::GetSwapChannels()
 {
 	return swapchannels;
 }
 
-Bool configureGeneralSettingsLayerCDRip::GetLockTray()
+Bool GeneralSettingsLayerCDRip::GetLockTray()
 {
 	return locktray;
 }
 
-Bool configureGeneralSettingsLayerCDRip::GetNTSCSI()
+Bool GeneralSettingsLayerCDRip::GetNTSCSI()
 {
 	return ntscsi;
 }
 
-Bool configureGeneralSettingsLayerCDRip::GetAutoRead()
+Bool GeneralSettingsLayerCDRip::GetAutoRead()
 {
 	return autoRead;
 }
 
-Bool configureGeneralSettingsLayerCDRip::GetAutoEject()
+Bool GeneralSettingsLayerCDRip::GetAutoEject()
 {
 	return autoEject;
 }

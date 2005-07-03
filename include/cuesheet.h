@@ -15,17 +15,20 @@
 
 using namespace smooth;
 
-class bonkEncCueSheet
+namespace BonkEnc
 {
-	private:
-		Array<String>	 fileNames;
-		Array<String>	 trackTitles;
-		Array<String>	 trackArtists;
-		Array<String>	 trackAlbums;
-	public:
-		Bool		 AddTrack(String, String, String, String);
+	class CueSheet
+	{
+		private:
+			Array<String>	 fileNames;
+			Array<String>	 trackTitles;
+			Array<String>	 trackArtists;
+			Array<String>	 trackAlbums;
+		public:
+			Bool		 AddTrack(String, String, String, String);
 
-		Bool		 Save(String);
+			Bool		 Save(String);
+	};
 };
 
 #endif

@@ -11,7 +11,7 @@
 #include <output/filter-out-faac.h>
 #include <dllinterfaces.h>
 
-FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
+BonkEnc::FilterOutFAAC::FilterOutFAAC(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
@@ -23,11 +23,11 @@ FilterOutFAAC::FilterOutFAAC(bonkEncConfig *config, bonkEncTrack *format) : Outp
 	}
 }
 
-FilterOutFAAC::~FilterOutFAAC()
+BonkEnc::FilterOutFAAC::~FilterOutFAAC()
 {
 }
 
-bool FilterOutFAAC::Activate()
+bool BonkEnc::FilterOutFAAC::Activate()
 {
 	unsigned long	 samplesSize	= 0;
 	unsigned long	 bufferSize	= 0;
@@ -68,7 +68,7 @@ bool FilterOutFAAC::Activate()
 	return true;
 }
 
-bool FilterOutFAAC::Deactivate()
+bool BonkEnc::FilterOutFAAC::Deactivate()
 {
 	unsigned long	 bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
 
@@ -79,7 +79,7 @@ bool FilterOutFAAC::Deactivate()
 	return true;
 }
 
-int FilterOutFAAC::WriteData(unsigned char *data, int size)
+int BonkEnc::FilterOutFAAC::WriteData(unsigned char *data, int size)
 {
 	unsigned long	 bytes = 0;
 

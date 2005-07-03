@@ -13,35 +13,39 @@
 
 #include "inputfilter.h"
 
-class FilterInFLAC : public InputFilter
+namespace BonkEnc
 {
-	friend FLAC__StreamDecoderReadStatus	 BonkEncFLACStreamDecoderReadCallback(const FLAC__StreamDecoder *, FLAC__byte [], unsigned *, void *);
-	friend FLAC__StreamDecoderWriteStatus	 BonkEncFLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
-	friend void				 BonkEncFLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *, const FLAC__StreamMetadata *, void *);
-	friend void				 BonkEncFLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *, FLAC__StreamDecoderErrorStatus, void *);
-	private:
-		FLAC__StreamDecoder	*decoder;
-		Bool			 finished;
+	class FilterInFLAC : public InputFilter
+	{
+		friend FLAC__StreamDecoderReadStatus	 FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *, FLAC__byte [], unsigned *, void *);
+		friend FLAC__StreamDecoderWriteStatus	 FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
+		friend void				 FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *, const FLAC__StreamMetadata *, void *);
+		friend void				 FLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *, FLAC__StreamDecoderErrorStatus, void *);
 
-		Buffer<unsigned char>	 inputBuffer;
-		Buffer<unsigned short>	 samplesBuffer;
+		private:
+			FLAC__StreamDecoder	*decoder;
+			Bool			 finished;
 
-		Thread			*decoderThread;
-		Mutex			*inputBufferMutex;
-		Mutex			*samplesBufferMutex;
+			Buffer<unsigned char>	 inputBuffer;
+			Buffer<unsigned short>	 samplesBuffer;
 
-		Int			 ReadFLACMetadata(Thread *);
-		Int			 ReadFLACData(Thread *);
-	public:
-					 FilterInFLAC(bonkEncConfig *, bonkEncTrack *);
-					~FilterInFLAC();
+			Thread			*decoderThread;
+			Mutex			*inputBufferMutex;
+			Mutex			*samplesBufferMutex;
 
-		bool			 Activate();
-		bool			 Deactivate();
+			Int			 ReadFLACMetadata(Thread *);
+			Int			 ReadFLACData(Thread *);
+		public:
+						 FilterInFLAC(Config *, Track *);
+						~FilterInFLAC();
 
-		int			 ReadData(unsigned char **, int);
+			bool			 Activate();
+			bool			 Deactivate();
 
-		bonkEncTrack		*GetFileInfo(String);
+			int			 ReadData(unsigned char **, int);
+
+			Track			*GetFileInfo(String);
+	};
 };
 
 #endif

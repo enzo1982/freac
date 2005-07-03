@@ -21,24 +21,27 @@
 
 #include <3rdparty/faad2/neaacdec.h>
 
-class FilterInFAAD2 : public InputFilter
+namespace BonkEnc
 {
-	private:
-		NeAACDecHandle			 handle;
-		NeAACDecConfigurationPtr	 fConfig;
+	class FilterInFAAD2 : public InputFilter
+	{
+		private:
+			NeAACDecHandle			 handle;
+			NeAACDecConfigurationPtr	 fConfig;
 
-		Int				 backBufferBytes;
-		unsigned char			*backBuffer;
-	public:
-						 FilterInFAAD2(bonkEncConfig *, bonkEncTrack *);
-						~FilterInFAAD2();
+			Int				 backBufferBytes;
+			unsigned char			*backBuffer;
+		public:
+							 FilterInFAAD2(Config *, Track *);
+							~FilterInFAAD2();
 
-		bool				 Activate();
-		bool				 Deactivate();
+			bool				 Activate();
+			bool				 Deactivate();
 
-		int				 ReadData(unsigned char **, int);
+			int				 ReadData(unsigned char **, int);
 
-		bonkEncTrack			*GetFileInfo(String);
+			Track				*GetFileInfo(String);
+	};
 };
 
 #endif

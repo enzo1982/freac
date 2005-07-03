@@ -13,7 +13,7 @@
 #include <iolib/drivers/driver_posix.h>
 #include <iolib/drivers/driver_unicode.h>
 
-Bool bonkEncCueSheet::AddTrack(String fileName, String trackTitle, String trackArtist, String trackAlbum)
+Bool BonkEnc::CueSheet::AddTrack(String fileName, String trackTitle, String trackArtist, String trackAlbum)
 {
 	fileNames.AddEntry(fileName);
 	trackArtists.AddEntry(trackArtist);
@@ -23,7 +23,7 @@ Bool bonkEncCueSheet::AddTrack(String fileName, String trackTitle, String trackA
 	return True;
 }
 
-Bool bonkEncCueSheet::Save(String fileName)
+Bool BonkEnc::CueSheet::Save(String fileName)
 {
 	if (fileNames.GetNOfEntries() == 0) return False;
 

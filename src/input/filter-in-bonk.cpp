@@ -11,7 +11,7 @@
 #include <input/filter-in-bonk.h>
 #include <3rdparty/id3/tag.h>
 
-FilterInBONK::FilterInBONK(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInBONK::FilterInBONK(Config *config, Track *format) : InputFilter(config, format)
 {
 	f_in	= NIL;
 	decoder	= NIL;
@@ -19,11 +19,11 @@ FilterInBONK::FilterInBONK(bonkEncConfig *config, bonkEncTrack *format) : InputF
 	packageSize = 0;
 }
 
-FilterInBONK::~FilterInBONK()
+BonkEnc::FilterInBONK::~FilterInBONK()
 {
 }
 
-bool FilterInBONK::Activate()
+bool BonkEnc::FilterInBONK::Activate()
 {
 	Int	 length = 0;
 	Int	 rate = 0;
@@ -38,7 +38,7 @@ bool FilterInBONK::Activate()
 	return true;
 }
 
-bool FilterInBONK::Deactivate()
+bool BonkEnc::FilterInBONK::Deactivate()
 {
 	ex_bonk_close_decoder(decoder);
 
@@ -47,7 +47,7 @@ bool FilterInBONK::Deactivate()
 	return true;
 }
 
-int FilterInBONK::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInBONK::ReadData(unsigned char **data, int size)
 {
 	size = ex_bonk_decode_packet(decoder, buffer, buffer.Size());
 
@@ -60,9 +60,9 @@ int FilterInBONK::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkEncTrack *FilterInBONK::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInBONK::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*in = OpenFile(inFile);
 	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat->length, (uint32 *) &nFormat->rate, (int *) &nFormat->channels);
 

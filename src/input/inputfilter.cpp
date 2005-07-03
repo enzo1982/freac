@@ -13,7 +13,7 @@
 #include <iolib/drivers/driver_posix.h>
 #include <iolib/drivers/driver_unicode.h>
 
-InputFilter::InputFilter(bonkEncConfig *config, bonkEncTrack *iFormat)
+BonkEnc::InputFilter::InputFilter(Config *config, Track *iFormat)
 {
 	error		= 0;
 	inBytes		= 0;
@@ -22,23 +22,23 @@ InputFilter::InputFilter(bonkEncConfig *config, bonkEncTrack *iFormat)
 	currentConfig	= config;
 }
 
-InputFilter::~InputFilter()
+BonkEnc::InputFilter::~InputFilter()
 {
 }
 
-S::Bool InputFilter::SetFileSize(UnsignedInt newFileSize)
+Bool BonkEnc::InputFilter::SetFileSize(UnsignedInt newFileSize)
 {
 	fileSize = newFileSize;
 
 	return true;
 }
 
-S::Int InputFilter::GetInBytes()
+Int BonkEnc::InputFilter::GetInBytes()
 {
 	return inBytes;
 }
 
-InStream *InputFilter::OpenFile(String fileName)
+InStream *BonkEnc::InputFilter::OpenFile(String fileName)
 {
 	if (Setup::enableUnicode)	iolibDriver = new IOLibDriverUnicode(fileName, IS_READONLY);
 	else				iolibDriver = new IOLibDriverPOSIX(fileName, IS_READONLY);
@@ -46,7 +46,7 @@ InStream *InputFilter::OpenFile(String fileName)
 	return new InStream(STREAM_DRIVER, iolibDriver);
 }
 
-S::Int InputFilter::CloseFile(InStream *stream)
+Int BonkEnc::InputFilter::CloseFile(InStream *stream)
 {
 	delete stream;
 	delete iolibDriver;
@@ -54,7 +54,7 @@ S::Int InputFilter::CloseFile(InStream *stream)
 	return Success;
 }
 
-S::Bool InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, bonkEncTrack *nFormat)
+Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track *nFormat)
 {
 	ID3Tag		*tag = ex_ID3Tag_New();
 
@@ -67,7 +67,7 @@ S::Bool InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, bonkEncTrack
 	return retVal;
 }
 
-S::Bool InputFilter::ParseID3V2Tag(String fileName, bonkEncTrack *nFormat)
+Bool BonkEnc::InputFilter::ParseID3V2Tag(String fileName, Track *nFormat)
 {
 	ID3Tag	*tag = ex_ID3Tag_New();
 
@@ -80,7 +80,7 @@ S::Bool InputFilter::ParseID3V2Tag(String fileName, bonkEncTrack *nFormat)
 	return retVal;
 }
 
-S::Bool InputFilter::ParseID3V2Tag(ID3Tag *tag, bonkEncTrack *nFormat)
+Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 {
 	if (ex_ID3Tag_NumFrames(tag) > 0)
 	{
@@ -276,7 +276,7 @@ S::Bool InputFilter::ParseID3V2Tag(ID3Tag *tag, bonkEncTrack *nFormat)
 	return True;
 }
 
-S::String InputFilter::GetID3CategoryName(Int id)
+String BonkEnc::InputFilter::GetID3CategoryName(Int id)
 {
 	if (id == 0)	return "Blues";
 	if (id == 1)	return "Classic Rock";

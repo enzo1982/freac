@@ -10,16 +10,16 @@
 
 #include <input/filter-in-vorbis.h>
 
-FilterInVORBIS::FilterInVORBIS(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInVORBIS::FilterInVORBIS(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-FilterInVORBIS::~FilterInVORBIS()
+BonkEnc::FilterInVORBIS::~FilterInVORBIS()
 {
 }
 
-bool FilterInVORBIS::Activate()
+bool BonkEnc::FilterInVORBIS::Activate()
 {
 	ex_ogg_sync_init(&oy);
 
@@ -68,7 +68,7 @@ bool FilterInVORBIS::Activate()
 	return true;
 }
 
-bool FilterInVORBIS::Deactivate()
+bool BonkEnc::FilterInVORBIS::Deactivate()
 {
 	ex_ogg_stream_clear(&os);
 
@@ -82,7 +82,7 @@ bool FilterInVORBIS::Deactivate()
 	return true;
 }
 
-int FilterInVORBIS::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInVORBIS::ReadData(unsigned char **data, int size)
 {
 	if (size <= 0) return -1;
 
@@ -175,9 +175,9 @@ int FilterInVORBIS::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkEncTrack *FilterInVORBIS::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	nFormat->order = BYTE_INTEL;

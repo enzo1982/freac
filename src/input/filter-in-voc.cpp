@@ -10,17 +10,17 @@
 
 #include <input/filter-in-voc.h>
 
-FilterInVOC::FilterInVOC(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInVOC::FilterInVOC(Config *config, Track *format) : InputFilter(config, format)
 {
 	bytesLeft	= 0;
 	packageSize	= 0;
 }
 
-FilterInVOC::~FilterInVOC()
+BonkEnc::FilterInVOC::~FilterInVOC()
 {
 }
 
-bool FilterInVOC::Activate()
+bool BonkEnc::FilterInVOC::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -35,12 +35,12 @@ bool FilterInVOC::Activate()
 	return true;
 }
 
-bool FilterInVOC::Deactivate()
+bool BonkEnc::FilterInVOC::Deactivate()
 {
 	return true;
 }
 
-int FilterInVOC::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInVOC::ReadData(unsigned char **data, int size)
 {
 	*data = new unsigned char [size];
 
@@ -81,9 +81,9 @@ int FilterInVOC::ReadData(unsigned char **data, int size)
 	return outSize;
 }
 
-bonkEncTrack *FilterInVOC::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInVOC::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	// TODO: Add more checking to this!

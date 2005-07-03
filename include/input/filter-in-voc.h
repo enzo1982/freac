@@ -13,20 +13,23 @@
 
 #include "inputfilter.h"
 
-class FilterInVOC : public InputFilter
+namespace BonkEnc
 {
-	private:
-		Int		 bytesLeft;
-	public:
-				 FilterInVOC(bonkEncConfig *, bonkEncTrack *);
+	class FilterInVOC : public InputFilter
+	{
+		private:
+			Int	 bytesLeft;
+		public:
+				 FilterInVOC(Config *, Track *);
 				~FilterInVOC();
 
-		bool		 Activate();
-		bool		 Deactivate();
+			bool	 Activate();
+			bool	 Deactivate();
 
-		int		 ReadData(unsigned char **, int);
+			int	 ReadData(unsigned char **, int);
 
-		bonkEncTrack	*GetFileInfo(String);
+			Track	*GetFileInfo(String);
+	};
 };
 
 #endif

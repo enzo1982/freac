@@ -47,7 +47,7 @@ class cddbExtendedSettingsDlg : public Dialog
 		Button		*btn_cancel;
 		Button		*btn_ok;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 
 		Void		 OK();
 		Void		 Cancel();

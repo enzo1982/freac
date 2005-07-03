@@ -17,7 +17,10 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureGeneralSettingsLayerCDDB : public Layer
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
+class GeneralSettingsLayerCDDB : public Layer
 {
 	private:
 		GroupBox	*group_cddb;
@@ -38,14 +41,14 @@ class configureGeneralSettingsLayerCDDB : public Layer
 		Bool		 cddb_auto;
 		Bool		 cddb_cache;
  
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 	slots:
 		Void		 SetCDDBMode();
 		Void		 HTTPSettings();
 		Void		 ProxySettings();
 	public:
-				 configureGeneralSettingsLayerCDDB();
-				~configureGeneralSettingsLayerCDDB();
+				 GeneralSettingsLayerCDDB();
+				~GeneralSettingsLayerCDDB();
 
 		Int		 GetFreedbMode();
 		Int		 GetFreedbPort();

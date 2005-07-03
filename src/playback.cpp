@@ -9,10 +9,13 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <main.h>
+#include <dllinterfaces.h>
+
+#include <joblist.h>
+
 #include <iolib/drivers/driver_posix.h>
 #include <iolib/drivers/driver_unicode.h>
 #include <iolib/drivers/driver_zero.h>
-#include <dllinterfaces.h>
 
 #include <input/filter-in-cdrip.h>
 #include <input/filter-in-wave.h>
@@ -72,12 +75,12 @@ Void bonkEnc::PlaySelectedItem()
 
 Int bonkEnc::PlayThread(Thread *thread)
 {
-	String		 in_filename;
-	bonkEncTrack	*trackInfo;
+	String	 in_filename;
+	Track	*trackInfo;
 
 	player_activedrive = currentConfig->cdrip_activedrive;
  
-	trackInfo = sa_formatinfo.GetNthEntry(player_entry);
+	trackInfo = joblist->GetNthTrack(player_entry);
 
 	if (trackInfo == NIL)
 	{

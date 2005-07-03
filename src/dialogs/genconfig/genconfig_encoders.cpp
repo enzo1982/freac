@@ -24,7 +24,7 @@
 #include <3rdparty/vorbis/vorbisenc.h>
 #include <3rdparty/faac/faac.h>
 
-configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() : Layer(bonkEnc::i18n->TranslateString("Encoders"))
+GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i18n->TranslateString("Encoders"))
 {
 	Point	 pos;
 	Size	 size;
@@ -78,7 +78,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	}
 
 	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME MP3 Encoder v").Append(ex_get_lame_short_version()));
-	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.1"));
+	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.1.1"));
 
 	if (currentConfig->enable_tvq)
 	{
@@ -98,7 +98,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	size.cx	= 130;
 
 	button_config	= new Button(bonkEnc::i18n->TranslateString("Configure encoder"), NIL, pos, size);
-	button_config->onClick.Connect(&configureGeneralSettingsLayerEncoders::ConfigureEncoder, this);
+	button_config->onClick.Connect(&GeneralSettingsLayerEncoders::ConfigureEncoder, this);
 
 	pos.x	= 7;
 	pos.y	= 66;
@@ -119,7 +119,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	size.cx	= 0;
 
 	button_outdir_browse= new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
-	button_outdir_browse->onClick.Connect(&configureGeneralSettingsLayerEncoders::SelectDir, this);
+	button_outdir_browse->onClick.Connect(&GeneralSettingsLayerEncoders::SelectDir, this);
 
 	pos.x	= 7;
 	pos.y	= 121;
@@ -161,7 +161,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	size.cy	= 0;
 
 	check_onTheFly	= new CheckBox(bonkEnc::i18n->TranslateString("Encode \'On-The-Fly\'"), pos, size, &onTheFly);
-	check_onTheFly->onClick.Connect(&configureGeneralSettingsLayerEncoders::ToggleOnTheFly, this);
+	check_onTheFly->onClick.Connect(&GeneralSettingsLayerEncoders::ToggleOnTheFly, this);
 
 	pos.y += 26;
 
@@ -200,7 +200,7 @@ configureGeneralSettingsLayerEncoders::configureGeneralSettingsLayerEncoders() :
 	RegisterObject(check_unicode_files);
 }
 
-configureGeneralSettingsLayerEncoders::~configureGeneralSettingsLayerEncoders()
+GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
 {
 	DeleteObject(group_encoder);
 	DeleteObject(combo_encoder);
@@ -218,7 +218,7 @@ configureGeneralSettingsLayerEncoders::~configureGeneralSettingsLayerEncoders()
 	DeleteObject(check_unicode_files);
 }
 
-Void configureGeneralSettingsLayerEncoders::SelectDir()
+Void GeneralSettingsLayerEncoders::SelectDir()
 {
 	DirSelection	*dialog = new DirSelection();
 
@@ -234,7 +234,7 @@ Void configureGeneralSettingsLayerEncoders::SelectDir()
 	DeleteObject(dialog);
 }
 
-Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
+Void GeneralSettingsLayerEncoders::ConfigureEncoder()
 {
 	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BONKENC)
 	{
@@ -290,38 +290,38 @@ Void configureGeneralSettingsLayerEncoders::ConfigureEncoder()
 	}
 }
 
-Void configureGeneralSettingsLayerEncoders::ToggleOnTheFly()
+Void GeneralSettingsLayerEncoders::ToggleOnTheFly()
 {
 	if (onTheFly)	check_keepWaves->Deactivate();
 	else		check_keepWaves->Activate();
 }
 
-Int configureGeneralSettingsLayerEncoders::GetSelectedEncoder()
+Int GeneralSettingsLayerEncoders::GetSelectedEncoder()
 {
 	return combo_encoder->GetSelectedEntryNumber();
 }
 
-Bool configureGeneralSettingsLayerEncoders::GetOnTheFly()
+Bool GeneralSettingsLayerEncoders::GetOnTheFly()
 {
 	return onTheFly;
 }
 
-Bool configureGeneralSettingsLayerEncoders::GetKeepWaveFiles()
+Bool GeneralSettingsLayerEncoders::GetKeepWaveFiles()
 {
 	return keepWaves;
 }
 
-Bool configureGeneralSettingsLayerEncoders::GetUnicodeFilenames()
+Bool GeneralSettingsLayerEncoders::GetUnicodeFilenames()
 {
 	return unicode_files;
 }
 
-String configureGeneralSettingsLayerEncoders::GetOutputDirectory()
+String GeneralSettingsLayerEncoders::GetOutputDirectory()
 {
 	return edit_outdir->GetText();
 }
 
-String configureGeneralSettingsLayerEncoders::GetFilenamePattern()
+String GeneralSettingsLayerEncoders::GetFilenamePattern()
 {
 	return edit_filename->GetText();
 }

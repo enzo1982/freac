@@ -14,8 +14,8 @@
 #include <cddb.h>
 #include <dllinterfaces.h>
 
-Array<Array<bonkEncTrack *> *>	 bonkEncCDDB::infoCache;
-Array<Bool>			 bonkEncCDDB::requestedDiscs;
+Array<Array<Track *> *>	 bonkEncCDDB::infoCache;
+Array<Bool>		 bonkEncCDDB::requestedDiscs;
 
 int cddb_sum(int n)
 {
@@ -30,7 +30,7 @@ int cddb_sum(int n)
 	return ret;
 }
 
-bonkEncCDDB::bonkEncCDDB(bonkEncConfig *iConfig)
+bonkEncCDDB::bonkEncCDDB(Config *iConfig)
 {
 	activeDriveID = 0;
 	connected = False;
@@ -423,7 +423,7 @@ String bonkEncCDDB::Read(String query)
 	}
 }
 
-String bonkEncCDDB::Submit(Array<bonkEncTrack *> *cddbInfo)
+String bonkEncCDDB::Submit(Array<Track *> *cddbInfo)
 {
 	String	 str;
 	String	 content;

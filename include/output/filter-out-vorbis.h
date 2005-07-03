@@ -14,29 +14,32 @@
 #include "outputfilter.h"
 #include <3rdparty/vorbis/vorbisenc.h>
 
-class FilterOutVORBIS : public OutputFilter
+namespace BonkEnc
 {
-	private:
-		ogg_stream_state	 os;
-		ogg_page		 og;
-		ogg_packet		 op;
+	class FilterOutVORBIS : public OutputFilter
+	{
+		private:
+			ogg_stream_state	 os;
+			ogg_page		 og;
+			ogg_packet		 op;
 
-		vorbis_info		 vi;
-		vorbis_comment		 vc;
-		vorbis_dsp_state	 vd;
-		vorbis_block		 vb;
+			vorbis_info		 vi;
+			vorbis_comment		 vc;
+			vorbis_dsp_state	 vd;
+			vorbis_block		 vb;
 
-		Buffer<unsigned char>	 dataBuffer;
-		Buffer<unsigned char>	 backBuffer;
-		Buffer<unsigned short>	 samplesBuffer;
-	public:
-					 FilterOutVORBIS(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutVORBIS();
+			Buffer<unsigned char>	 dataBuffer;
+			Buffer<unsigned char>	 backBuffer;
+			Buffer<unsigned short>	 samplesBuffer;
+		public:
+						 FilterOutVORBIS(Config *, Track *);
+						~FilterOutVORBIS();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 WriteData(unsigned char *, int);
+			int			 WriteData(unsigned char *, int);
+	};
 };
 
 #endif

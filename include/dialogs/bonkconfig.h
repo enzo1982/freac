@@ -17,6 +17,9 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class configureBonkEnc : public Dialog
 {
 	private:
@@ -52,7 +55,7 @@ class configureBonkEnc : public Dialog
 		Bool		 jstereo;
 		Bool		 lossless;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 
 		Void		 OK();
 		Void		 Cancel();
@@ -63,6 +66,7 @@ class configureBonkEnc : public Dialog
 	public:
 				 configureBonkEnc();
 				~configureBonkEnc();
+
 		Int		 ShowDialog();
 };
 

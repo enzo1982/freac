@@ -12,7 +12,7 @@
 #include <dllinterfaces.h>
 #include <3rdparty/id3/tag.h>
 
-FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
+BonkEnc::FilterOutBONK::FilterOutBONK(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
@@ -24,11 +24,11 @@ FilterOutBONK::FilterOutBONK(bonkEncConfig *config, bonkEncTrack *format) : Outp
 	}
 }
 
-FilterOutBONK::~FilterOutBONK()
+BonkEnc::FilterOutBONK::~FilterOutBONK()
 {
 }
 
-bool FilterOutBONK::Activate()
+bool BonkEnc::FilterOutBONK::Activate()
 {
 	d_out	= new OutStream(STREAM_DRIVER, driver);
 
@@ -56,7 +56,7 @@ bool FilterOutBONK::Activate()
 	return true;
 }
 
-bool FilterOutBONK::Deactivate()
+bool BonkEnc::FilterOutBONK::Deactivate()
 {
 	ex_bonk_close_encoder(encoder);
 
@@ -65,7 +65,7 @@ bool FilterOutBONK::Deactivate()
 	return true;
 }
 
-int FilterOutBONK::WriteData(unsigned char *data, int size)
+int BonkEnc::FilterOutBONK::WriteData(unsigned char *data, int size)
 {
 	int	 pos = d_out->GetPos();
 

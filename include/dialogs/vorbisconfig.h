@@ -17,6 +17,9 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class configureVorbisEnc : public Dialog
 {
 	private:
@@ -46,7 +49,7 @@ class configureVorbisEnc : public Dialog
 		Int		 abr;
 		Int		 mode;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 
 		Void		 OK();
 		Void		 Cancel();
@@ -57,6 +60,7 @@ class configureVorbisEnc : public Dialog
 	public:
 				 configureVorbisEnc();
 				~configureVorbisEnc();
+
 		Int		 ShowDialog();
 };
 

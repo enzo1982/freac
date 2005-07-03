@@ -10,16 +10,16 @@
 
 #include <input/filter-in-wave.h>
 
-FilterInWAVE::FilterInWAVE(bonkEncConfig *config, bonkEncTrack *format) : InputFilter(config, format)
+BonkEnc::FilterInWAVE::FilterInWAVE(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-FilterInWAVE::~FilterInWAVE()
+BonkEnc::FilterInWAVE::~FilterInWAVE()
 {
 }
 
-bool FilterInWAVE::Activate()
+bool BonkEnc::FilterInWAVE::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -34,12 +34,12 @@ bool FilterInWAVE::Activate()
 	return true;
 }
 
-bool FilterInWAVE::Deactivate()
+bool BonkEnc::FilterInWAVE::Deactivate()
 {
 	return true;
 }
 
-int FilterInWAVE::ReadData(unsigned char **data, int size)
+int BonkEnc::FilterInWAVE::ReadData(unsigned char **data, int size)
 {
 	*data = new unsigned char [size];
 
@@ -48,9 +48,9 @@ int FilterInWAVE::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-bonkEncTrack *FilterInWAVE::GetFileInfo(String inFile)
+Track *BonkEnc::FilterInWAVE::GetFileInfo(String inFile)
 {
-	bonkEncTrack	*nFormat = new bonkEncTrack;
+	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
 	// TODO: Add more checking to this!

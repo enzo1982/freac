@@ -13,7 +13,7 @@
 
 #include <shlobj.h>
 
-bonkEncConfig::bonkEncConfig()
+BonkEnc::Config::Config()
 {
 	rVal_w = new wchar_t [1024];
 	rVal_a = new char [1024];
@@ -23,13 +23,13 @@ bonkEncConfig::bonkEncConfig()
 	appMain = NIL;
 }
 
-bonkEncConfig::~bonkEncConfig()
+BonkEnc::Config::~Config()
 {
 	delete [] rVal_w;
 	delete [] rVal_a;
 }
 
-Bool bonkEncConfig::LoadSettings()
+Bool BonkEnc::Config::LoadSettings()
 {
 	String		 pDir;
 	ITEMIDLIST	*idlist;
@@ -194,7 +194,7 @@ Bool bonkEncConfig::LoadSettings()
 	return True;
 }
 
-Bool bonkEncConfig::SaveSettings()
+Bool BonkEnc::Config::SaveSettings()
 {
 	Configuration	*config = new Configuration();
 	Bool		 retVal = True;

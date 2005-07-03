@@ -13,18 +13,21 @@
 
 #include "inputfilter.h"
 
-class FilterInWAVE : public InputFilter
+namespace BonkEnc
 {
-	public:
-				 FilterInWAVE(bonkEncConfig *, bonkEncTrack *);
+	class FilterInWAVE : public InputFilter
+	{
+		public:
+				 FilterInWAVE(Config *, Track *);
 				~FilterInWAVE();
 
-		bool		 Activate();
-		bool		 Deactivate();
+			bool	 Activate();
+			bool	 Deactivate();
 
-		int		 ReadData(unsigned char **, int);
+			int	 ReadData(unsigned char **, int);
 
-		bonkEncTrack	*GetFileInfo(String);
+			Track	*GetFileInfo(String);
+	};
 };
 
 #endif

@@ -15,38 +15,41 @@
 #include "../bonkenc.h"
 #include "../dllinterfaces.h"
 
-class InputFilter : public IOLibFilter
+namespace BonkEnc
 {
-	private:
-		Bool			 ParseID3V2Tag(ID3Tag *, bonkEncTrack *);
-	protected:
-		Int			 inBytes;
+	class InputFilter : public IOLibFilter
+	{
+		private:
+			Bool		 ParseID3V2Tag(ID3Tag *, Track *);
+		protected:
+			Int		 inBytes;
 
-		UnsignedInt		 fileSize;
-		bonkEncTrack		*format;
-		bonkEncConfig		*currentConfig;
+			UnsignedInt	 fileSize;
+			Track		*format;
+			Config		*currentConfig;
 
-		Bool			 ParseID3V2Tag(unsigned char *, Int, bonkEncTrack *);
-		Bool			 ParseID3V2Tag(String, bonkEncTrack *);
+			Bool		 ParseID3V2Tag(unsigned char *, Int, Track *);
+			Bool		 ParseID3V2Tag(String, Track *);
 
-		String			 GetID3CategoryName(Int);
+			String		 GetID3CategoryName(Int);
 
-		IOLibDriver		*iolibDriver;
+			IOLibDriver	*iolibDriver;
 
-		InStream		*OpenFile(String);
-		Int			 CloseFile(InStream *);
-	public:
-		Int			 error;
+			InStream	*OpenFile(String);
+			Int		 CloseFile(InStream *);
+		public:
+			Int		 error;
 
-					 InputFilter(bonkEncConfig *, bonkEncTrack *);
+					 InputFilter(Config *, Track *);
 					~InputFilter();
 
-		virtual int		 ReadData(unsigned char **, int) = 0;
+			virtual int	 ReadData(unsigned char **, int) = 0;
 
-		virtual bonkEncTrack	*GetFileInfo(String) = 0;
-		virtual Bool		 SetFileSize(UnsignedInt);
+			virtual Track	*GetFileInfo(String) = 0;
+			virtual Bool	 SetFileSize(UnsignedInt);
 
-		Int			 GetInBytes();
+			Int		 GetInBytes();
+	};
 };
 
 #endif

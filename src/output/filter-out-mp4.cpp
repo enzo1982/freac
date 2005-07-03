@@ -11,7 +11,7 @@
 #include <output/filter-out-mp4.h>
 #include <dllinterfaces.h>
 
-FilterOutMP4::FilterOutMP4(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
+BonkEnc::FilterOutMP4::FilterOutMP4(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
@@ -23,11 +23,11 @@ FilterOutMP4::FilterOutMP4(bonkEncConfig *config, bonkEncTrack *format) : Output
 	}
 }
 
-FilterOutMP4::~FilterOutMP4()
+BonkEnc::FilterOutMP4::~FilterOutMP4()
 {
 }
 
-bool FilterOutMP4::Activate()
+bool BonkEnc::FilterOutMP4::Activate()
 {
 	if (GetTempFile(format->outfile) != format->outfile)
 	{
@@ -63,7 +63,7 @@ bool FilterOutMP4::Activate()
 
 	ex_faacEncSetConfiguration(handle, fConfig);
 
-	mp4File		= ex_MP4Create(GetTempFile(format->outfile), 0, 0, 1, 1, NIL, 0, NIL, 0);
+	mp4File		= ex_MP4CreateEx(GetTempFile(format->outfile), 0, 0, 1, 1, NIL, 0, NIL, 0);
 
 	ex_MP4SetTimeScale(mp4File, 90000);
 
@@ -88,7 +88,7 @@ bool FilterOutMP4::Activate()
 	return true;
 }
 
-bool FilterOutMP4::Deactivate()
+bool BonkEnc::FilterOutMP4::Deactivate()
 {
 	unsigned long	 bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
 
@@ -136,7 +136,7 @@ bool FilterOutMP4::Deactivate()
 	return true;
 }
 
-int FilterOutMP4::WriteData(unsigned char *data, int size)
+int BonkEnc::FilterOutMP4::WriteData(unsigned char *data, int size)
 {
 	unsigned long	 bytes = 0;
 	Int		 samplesRead = size / (format->bits / 8);
@@ -173,7 +173,7 @@ int FilterOutMP4::WriteData(unsigned char *data, int size)
 	return bytes;
 }
 
-String FilterOutMP4::GetTempFile(const String &oFileName)
+String BonkEnc::FilterOutMP4::GetTempFile(const String &oFileName)
 {
 	String	 rVal	= oFileName;
 	Int	 lastBs	= -1;

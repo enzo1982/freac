@@ -15,18 +15,18 @@
 
 #include <dllinterfaces.h>
 
-OutputFilter::OutputFilter(bonkEncConfig *config, bonkEncTrack *iFormat)
+BonkEnc::OutputFilter::OutputFilter(Config *config, Track *iFormat)
 {
 	error		= 0;
 	format		= iFormat;
 	currentConfig	= config;
 }
 
-OutputFilter::~OutputFilter()
+BonkEnc::OutputFilter::~OutputFilter()
 {
 }
 
-OutStream *OutputFilter::CreateFile(String fileName)
+OutStream *BonkEnc::OutputFilter::CreateFile(String fileName)
 {
 	if (Setup::enableUnicode)	iolibDriver = new IOLibDriverUnicode(fileName, OS_OVERWRITE);
 	else				iolibDriver = new IOLibDriverPOSIX(fileName, OS_OVERWRITE);
@@ -34,7 +34,7 @@ OutStream *OutputFilter::CreateFile(String fileName)
 	return new OutStream(STREAM_DRIVER, iolibDriver);
 }
 
-S::Int OutputFilter::CloseFile(OutStream *stream)
+Int BonkEnc::OutputFilter::CloseFile(OutStream *stream)
 {
 	delete stream;
 	delete iolibDriver;
@@ -42,7 +42,7 @@ S::Int OutputFilter::CloseFile(OutStream *stream)
 	return Success;
 }
 
-S::Int OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)
+Int BonkEnc::OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)
 {
 	ID3Tag		*tag = ex_ID3Tag_New();
 

@@ -11,7 +11,7 @@
 #include <output/filter-out-blade.h>
 #include <dllinterfaces.h>
 
-FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
+BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->rate != 32000 && format->rate != 44100 && format->rate != 48000)
 	{
@@ -32,11 +32,11 @@ FilterOutBLADE::FilterOutBLADE(bonkEncConfig *config, bonkEncTrack *format) : Ou
 	}
 }
 
-FilterOutBLADE::~FilterOutBLADE()
+BonkEnc::FilterOutBLADE::~FilterOutBLADE()
 {
 }
 
-bool FilterOutBLADE::Activate()
+bool BonkEnc::FilterOutBLADE::Activate()
 {
 	beConfig.dwConfig			= BE_CONFIG_MP3;
 	beConfig.format.mp3.dwSampleRate	= format->rate;
@@ -78,7 +78,7 @@ bool FilterOutBLADE::Activate()
 	return true;
 }
 
-bool FilterOutBLADE::Deactivate()
+bool BonkEnc::FilterOutBLADE::Deactivate()
 {
 	unsigned long	 bytes = 0;
 
@@ -99,7 +99,7 @@ bool FilterOutBLADE::Deactivate()
 	return true;
 }
 
-int FilterOutBLADE::WriteData(unsigned char *data, int size)
+int BonkEnc::FilterOutBLADE::WriteData(unsigned char *data, int size)
 {
 	unsigned long	 bytes = 0;
 

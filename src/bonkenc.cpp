@@ -55,12 +55,12 @@ Int	 ENCODER_FAAC		= -1;
 Int	 ENCODER_TVQ		= -1;
 Int	 ENCODER_WAVE		= -1;
 
-bonkEncConfig		*bonkEnc::currentConfig	= NIL;
+Config			*bonkEnc::currentConfig	= NIL;
 I18n::Translator	*bonkEnc::i18n		= NIL;
 
 bonkEncDebug	*debug_out;
 
-String	 bonkEnc::version = "CVS 20050622";
+String	 bonkEnc::version = "CVS 20050703";
 String	 bonkEnc::cddbVersion = "v1.0beta3";
 String	 bonkEnc::shortVersion = "v1.0";
 
@@ -74,7 +74,7 @@ bonkEnc::bonkEnc()
 	playing = False;
 	play_thread = NIL;
 
-	currentConfig = new bonkEncConfig;
+	currentConfig = new Config;
 
 	currentConfig->LoadSettings();
 
@@ -239,7 +239,7 @@ bonkEnc::~bonkEnc()
 	CoUninitialize();
 }
 
-InputFilter *bonkEnc::CreateInputFilter(String file, bonkEncTrack *trackInfo)
+InputFilter *bonkEnc::CreateInputFilter(String file, Track *trackInfo)
 {
 	String	 extension2;
 	String	 extension3;
@@ -425,10 +425,10 @@ Void bonkEnc::ReadCD()
 	cddbRetry = True;
 }
 
-Array<bonkEncTrack *> *bonkEnc::GetCDDBData()
+Array<Track *> *bonkEnc::GetCDDBData()
 {
-	cddbQueryDlg		*dlg	= new cddbQueryDlg();
-	Array<bonkEncTrack *>	*array	= dlg->QueryCDDB();
+	cddbQueryDlg	*dlg	= new cddbQueryDlg();
+	Array<Track *>	*array	= dlg->QueryCDDB();
 
 	DeleteObject(dlg);
 
@@ -450,32 +450,4 @@ Void bonkEnc::SelectDir()
 	}
 
 	DeleteObject(dialog);
-}
-
-String bonkEnc::LocalizeNumber(Int number)
-{
-	String	 nString = String::FromInt(number);
-	String	 retVal;
-	String	 separator;
-
-	char	*buffer_a = new char [256];
-	wchar_t	*buffer_w = new wchar_t [256];
-
-	if (Setup::enableUnicode)	GetLocaleInfoW(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_w, 256);
-	else				GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_a, 256);
-
-	if (Setup::enableUnicode)	separator = buffer_w;
-	else				separator = buffer_a;
-
-	delete [] buffer_a;
-	delete [] buffer_w;
-
-	for (Int i = 0; i < nString.Length(); i++)
-	{
-		if ((nString.Length() - i) % 3 == 0 && i > 0) retVal.Append(separator);
-
-		retVal[retVal.Length()] = nString[i];
-	}
-
-	return retVal;
 }

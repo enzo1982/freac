@@ -14,22 +14,25 @@
 #include "outputfilter.h"
 #include <3rdparty/bladedll/bladedll.h>
 
-class FilterOutBLADE : public OutputFilter
+namespace BonkEnc
 {
-	private:
-		BE_CONFIG		 beConfig;
-		unsigned long		 handle;
+	class FilterOutBLADE : public OutputFilter
+	{
+		private:
+			BE_CONFIG		 beConfig;
+			unsigned long		 handle;
 
-		Buffer<unsigned char>	 outBuffer;
-		Buffer<signed short>	 samplesBuffer;
-	public:
-					 FilterOutBLADE(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutBLADE();
+			Buffer<unsigned char>	 outBuffer;
+			Buffer<signed short>	 samplesBuffer;
+		public:
+						 FilterOutBLADE(Config *, Track *);
+						~FilterOutBLADE();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 WriteData(unsigned char *, int);
+			int			 WriteData(unsigned char *, int);
+	};
 };
 
 #endif

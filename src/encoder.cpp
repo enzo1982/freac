@@ -15,6 +15,7 @@
 
 #include <cuesheet.h>
 #include <playlist.h>
+#include <joblist.h>
 
 #include <iolib/drivers/driver_posix.h>
 #include <iolib/drivers/driver_unicode.h>
@@ -38,6 +39,9 @@
 #include <output/filter-out-vorbis.h>
 #include <output/filter-out-tvq.h>
 #include <output/filter-out-wave.h>
+
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
 
 Void bonkEnc::Encode()
 {
@@ -77,7 +81,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 	String		 in_filename;
 	String		 out_filename;
-	bonkEncTrack	*trackInfo;
+	Track		*trackInfo;
 
 	encoder_activedrive = currentConfig->cdrip_activedrive;
 
@@ -85,8 +89,8 @@ Int bonkEnc::Encoder(Thread *thread)
 	Int		 nRemoved	= 0;
 	Int		 step		= 1;
 	Int		 encoder	= currentConfig->encoder;
-	bonkEncPlaylist	 playlist;
-	bonkEncCueSheet	 cueSheet;
+	Playlist	 playlist;
+	CueSheet	 cueSheet;
 
 	for (Int i = 0; i < num; (step == 1) ? i++ : i)
 	{
@@ -94,7 +98,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		debug_out->OutputLine("Encoding a file...");
 
-		trackInfo	= sa_formatinfo.GetNthEntry(i - nRemoved);
+		trackInfo	= joblist->GetNthTrack(i - nRemoved);
 		in_filename	= trackInfo->origFilename;
 
 		debug_out->OutputLine(String("Encoding from: ").Append(in_filename));
@@ -127,61 +131,67 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		for (Int l = 0; l < (in_filename.Length() - lastBs - firstDot - 1); l++) shortInFileName[l] = in_filename[l + lastBs + 1];
 
-		out_filename.Copy(currentConfig->enc_outdir);
-
-		if (trackInfo->artist != NIL || trackInfo->title != NIL)
+		if (trackInfo->outfile == NIL)
 		{
-			out_filename.Append(currentConfig->enc_filePattern);
+			out_filename.Copy(currentConfig->enc_outdir);
 
-			out_filename.Replace("<artist>", ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")));
-			out_filename.Replace("<title>", ReplaceIncompatibleChars(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
-			out_filename.Replace("<album>", ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album")));
-			out_filename.Replace("<genre>", ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre")));
-			out_filename.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
-			out_filename.Replace("<filename>", ReplaceIncompatibleChars(shortInFileName));
-
-			String	 dir = out_filename;
-			String	 tmp;
-
-			for (Int i = 0; i < dir.Length(); i++)
+			if (trackInfo->artist != NIL || trackInfo->title != NIL)
 			{
-				if (dir[i] == '\\' || dir[i] == '/')
+				out_filename.Append(currentConfig->enc_filePattern);
+
+				out_filename.Replace("<artist>", ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")));
+				out_filename.Replace("<title>", ReplaceIncompatibleChars(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
+				out_filename.Replace("<album>", ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album")));
+				out_filename.Replace("<genre>", ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre")));
+				out_filename.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
+				out_filename.Replace("<filename>", ReplaceIncompatibleChars(shortInFileName));
+
+				String	 dir = out_filename;
+				String	 tmp;
+
+				for (Int i = 0; i < dir.Length(); i++)
 				{
-					if (Setup::enableUnicode)	CreateDirectoryW(tmp, NIL);
-					else				CreateDirectoryA(tmp, NIL);
+					if (dir[i] == '\\' || dir[i] == '/')
+					{
+						if (Setup::enableUnicode)	CreateDirectoryW(tmp, NIL);
+						else				CreateDirectoryA(tmp, NIL);
+					}
+
+					tmp[i] = dir[i];
 				}
-
-				tmp[i] = dir[i];
 			}
-		}
-		else if (trackInfo->isCDTrack)
-		{
-			out_filename.Append("cd").Append(String::FromInt(trackInfo->drive)).Append("track");
+			else if (trackInfo->isCDTrack)
+			{
+				out_filename.Append("cd").Append(String::FromInt(trackInfo->drive)).Append("track");
 
-			if (trackInfo->track < 10) out_filename.Append("0");
+				if (trackInfo->track < 10) out_filename.Append("0");
 
-			out_filename.Append(String::FromInt(trackInfo->track));
+				out_filename.Append(String::FromInt(trackInfo->track));
+			}
+			else
+			{
+				out_filename.Append(shortInFileName);
+			}
+
+			if (currentConfig->encoder == ENCODER_BONKENC)		out_filename.Append(".bonk");
+			else if (currentConfig->encoder == ENCODER_BLADEENC)	out_filename.Append(".mp3");
+			else if (currentConfig->encoder == ENCODER_LAMEENC)	out_filename.Append(".mp3");
+			else if (currentConfig->encoder == ENCODER_VORBISENC)	out_filename.Append(".ogg");
+			else if (currentConfig->encoder == ENCODER_TVQ)		out_filename.Append(".vqf");
+			else if (currentConfig->encoder == ENCODER_WAVE)	out_filename.Append(".wav");
+
+			if (encoder == ENCODER_FAAC)
+			{
+				if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)	out_filename.Append(".m4a");
+				else									out_filename.Append(".aac");
+			}
+
+			trackInfo->outfile = out_filename;
 		}
 		else
 		{
-			out_filename.Append(shortInFileName);
+			out_filename = trackInfo->outfile;
 		}
-
-		if (currentConfig->encoder == ENCODER_BONKENC)		out_filename.Append(".bonk");
-		else if (currentConfig->encoder == ENCODER_BLADEENC)	out_filename.Append(".mp3");
-		else if (currentConfig->encoder == ENCODER_LAMEENC)	out_filename.Append(".mp3");
-		else if (currentConfig->encoder == ENCODER_VORBISENC)	out_filename.Append(".ogg");
-		else if (currentConfig->encoder == ENCODER_TVQ)		out_filename.Append(".vqf");
-		else if (currentConfig->encoder == ENCODER_WAVE)	out_filename.Append(".wav");
-
-		if (encoder == ENCODER_FAAC)
-		{
-			if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)	out_filename.Append(".m4a");
-			else									out_filename.Append(".aac");
-		}
-
-		if (trackInfo->outfile != NIL)	out_filename = trackInfo->outfile;
-		else				trackInfo->outfile = out_filename;
 
 		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE)
 		{
@@ -471,7 +481,7 @@ Int bonkEnc::Encoder(Thread *thread)
 			{
 				if (!joblist->GetNthEntry(j - nRemoved)->IsMarked()) continue;
 
-				if (sa_formatinfo.GetNthEntry(j - nRemoved)->drive == trackInfo->drive) { ejectDisk = False; break; }
+				if (joblist->GetNthTrack(j - nRemoved)->drive == trackInfo->drive) { ejectDisk = False; break; }
 			}
 
 			if (ejectDisk) ex_CR_EjectCD(True);
@@ -516,9 +526,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 			surface->StartPaint(frame);
 
-			delete sa_formatinfo.GetEntry(entry->GetHandle());
-			sa_formatinfo.RemoveEntry(entry->GetHandle());
-			joblist->RemoveEntry(entry);
+			joblist->RemoveNthTrack(i - nRemoved);
 
 			surface->EndPaint();
 

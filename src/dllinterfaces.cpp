@@ -135,7 +135,7 @@ NEAACDECOPEN			 ex_NeAACDecOpen			= NIL;
 NEAACDECINIT			 ex_NeAACDecInit			= NIL;
 NEAACDECINIT2			 ex_NeAACDecInit2			= NIL;
 NEAACDECGETCURRENTCONFIGURATION	 ex_NeAACDecGetCurrentConfiguration	= NIL;
-NEAACDECSETCONFIGURATION		 ex_NeAACDecSetConfiguration		= NIL;
+NEAACDECSETCONFIGURATION	 ex_NeAACDecSetConfiguration		= NIL;
 NEAACDECDECODE			 ex_NeAACDecDecode			= NIL;
 NEAACDECCLOSE			 ex_NeAACDecClose			= NIL;
 
@@ -155,7 +155,7 @@ EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates		= NIL;
 EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
 
 MP4READ				 ex_MP4Read				= NIL;
-MP4CREATE			 ex_MP4Create				= NIL;
+MP4CREATEEX			 ex_MP4CreateEx				= NIL;
 MP4CLOSE			 ex_MP4Close				= NIL;
 MP4OPTIMIZE			 ex_MP4Optimize				= NIL;
 MP4SETMETADATANAME		 ex_MP4SetMetadataName			= NIL;
@@ -706,7 +706,7 @@ Bool bonkEncDLLInterfaces::LoadMP4V2DLL()
 	if (mp4v2dll == NIL) return false;
 
 	ex_MP4Read			= (MP4READ) GetProcAddress(mp4v2dll, "MP4Read");
-	ex_MP4Create			= (MP4CREATE) GetProcAddress(mp4v2dll, "MP4Create");
+	ex_MP4CreateEx			= (MP4CREATEEX) GetProcAddress(mp4v2dll, "MP4CreateEx");
 	ex_MP4Close			= (MP4CLOSE) GetProcAddress(mp4v2dll, "MP4Close");
 	ex_MP4Optimize			= (MP4OPTIMIZE) GetProcAddress(mp4v2dll, "MP4Optimize");
 	ex_MP4SetMetadataName		= (MP4SETMETADATANAME) GetProcAddress(mp4v2dll, "MP4SetMetadataName");
@@ -736,7 +736,7 @@ Bool bonkEncDLLInterfaces::LoadMP4V2DLL()
 	ex_MP4WriteSample		= (MP4WRITESAMPLE) GetProcAddress(mp4v2dll, "MP4WriteSample");
 
 	if (ex_MP4Read == NULL)				{ FreeLibrary(mp4v2dll); return false; }
-	if (ex_MP4Create == NULL)			{ FreeLibrary(mp4v2dll); return false; }
+	if (ex_MP4CreateEx == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4Close == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4Optimize == NULL)			{ FreeLibrary(mp4v2dll); return false; }
 	if (ex_MP4SetMetadataName == NULL)		{ FreeLibrary(mp4v2dll); return false; }

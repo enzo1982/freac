@@ -17,72 +17,75 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class cddbSubmitDlg : public Dialog
 {
 	private:
-		Divider			*divbar;
+		Divider		*divbar;
 
-		Window			*mainWnd;
-		Titlebar		*mainWnd_titlebar;
+		Window		*mainWnd;
+		Titlebar	*mainWnd_titlebar;
 
-		GroupBox		*group_drive;
-		ComboBox		*combo_drive;
+		GroupBox	*group_drive;
+		ComboBox	*combo_drive;
 
-		Text			*text_artist;
-		EditBox			*edit_artist;
-		Text			*text_album;
-		EditBox			*edit_album;
-		Text			*text_year;
-		EditBox			*edit_year;
-		Text			*text_genre;
-		EditBox			*edit_genre;
-		ListBox			*list_genre;
+		Text		*text_artist;
+		EditBox		*edit_artist;
+		Text		*text_album;
+		EditBox		*edit_album;
+		Text		*text_year;
+		EditBox		*edit_year;
+		Text		*text_genre;
+		EditBox		*edit_genre;
+		ListBox		*list_genre;
 
-		ListBox			*list_tracks;
-		Text			*text_track;
-		EditBox			*edit_track;
-		Text			*text_title;
-		EditBox			*edit_title;
+		ListBox		*list_tracks;
+		Text		*text_track;
+		EditBox		*edit_track;
+		Text		*text_title;
+		EditBox		*edit_title;
 
-		Text			*text_cdstatus;
-		Text			*text_status;
+		Text		*text_cdstatus;
+		Text		*text_status;
 
-		CheckBox		*check_updateJoblist;
+		CheckBox	*check_updateJoblist;
 
-		Button			*btn_cancel;
-		Button			*btn_submit;
+		Button		*btn_cancel;
+		Button		*btn_submit;
 
-		bonkEncConfig		*currentConfig;
+		Config		*currentConfig;
 
-		Int			 activedrive;
+		Int		 activedrive;
 
-		Bool			 dontUpdateInfo;
-		Bool			 updateJoblist;
+		Bool		 dontUpdateInfo;
+		Bool		 updateJoblist;
 
-		Array<bonkEncTrack *>	*cddbInfo;
-		Bool			 ownCddbInfo;
+		Array<Track *>	*cddbInfo;
+		Bool		 ownCddbInfo;
 
-		String			 discid;
-		String			 genre;
-		Array<String>		 titles;
+		String		 discid;
+		String		 genre;
+		Array<String>	 titles;
 
-		Array<String>		 cdText;
+		Array<String>	 cdText;
 
-		Int			 ReadCDText();
-		Int			 FreeCDText();
+		Int		 ReadCDText();
+		Int		 FreeCDText();
 
-		Void			 Submit();
-		Void			 Cancel();
-		Void			 ChangeDrive();
-		Void			 SelectTrack();
-		Void			 UpdateTrack();
-		Void			 FinishTrack();
-		String			 GetCDDBGenre(String);
+		Void		 Submit();
+		Void		 Cancel();
+		Void		 ChangeDrive();
+		Void		 SelectTrack();
+		Void		 UpdateTrack();
+		Void		 FinishTrack();
+		String		 GetCDDBGenre(String);
 	public:
-					 cddbSubmitDlg();
-					~cddbSubmitDlg();
+				 cddbSubmitDlg();
+				~cddbSubmitDlg();
 
-		Int			 ShowDialog();
+		Int		 ShowDialog();
 };
 
 #endif

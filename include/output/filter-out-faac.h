@@ -21,22 +21,25 @@
 
 #include <3rdparty/faac/faac.h>
 
-class FilterOutFAAC : public OutputFilter
+namespace BonkEnc
 {
-	private:
-		faacEncHandle		 handle;
-		faacEncConfigurationPtr	 fConfig;
+	class FilterOutFAAC : public OutputFilter
+	{
+		private:
+			faacEncHandle		 handle;
+			faacEncConfigurationPtr	 fConfig;
 
-		Buffer<unsigned char>	 outBuffer;
-		Buffer<int32_t>		 samplesBuffer;
-	public:
-					 FilterOutFAAC(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutFAAC();
+			Buffer<unsigned char>	 outBuffer;
+			Buffer<int32_t>		 samplesBuffer;
+		public:
+						 FilterOutFAAC(Config *, Track *);
+						~FilterOutFAAC();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 WriteData(unsigned char *, int);
+			int			 WriteData(unsigned char *, int);
+	};
 };
 
 #endif

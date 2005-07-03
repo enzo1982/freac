@@ -14,21 +14,24 @@
 #include "outputfilter.h"
 #include <3rdparty/lame/lame.h>
 
-class FilterOutLAME : public OutputFilter
+namespace BonkEnc
 {
-	private:
-		lame_global_flags	*lameFlags;
+	class FilterOutLAME : public OutputFilter
+	{
+		private:
+			lame_global_flags	*lameFlags;
 
-		Buffer<unsigned char>	 outBuffer;
-		Buffer<signed short>	 samplesBuffer;
-	public:
-					 FilterOutLAME(bonkEncConfig *, bonkEncTrack *);
-					~FilterOutLAME();
+			Buffer<unsigned char>	 outBuffer;
+			Buffer<signed short>	 samplesBuffer;
+		public:
+						 FilterOutLAME(Config *, Track *);
+						~FilterOutLAME();
 
-		bool			 Activate();
-		bool			 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-		int			 WriteData(unsigned char *, int);
+			int			 WriteData(unsigned char *, int);
+	};
 };
 
 #endif

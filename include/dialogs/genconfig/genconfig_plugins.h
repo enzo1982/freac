@@ -17,7 +17,10 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureGeneralSettingsLayerPlugins : public Layer
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
+class GeneralSettingsLayerPlugins : public Layer
 {
 	private:
 		TabWidget	*tabs_plugins;
@@ -30,7 +33,7 @@ class configureGeneralSettingsLayerPlugins : public Layer
 		Button		*button_output;
 		Button		*button_output_about;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 	slots:
 		Void		 SelectInputPlugin();
 		Void		 SelectOutputPlugin();
@@ -39,8 +42,8 @@ class configureGeneralSettingsLayerPlugins : public Layer
 		Void		 AboutInputPlugin();
 		Void		 AboutOutputPlugin();
 	public:
-				 configureGeneralSettingsLayerPlugins();
-				~configureGeneralSettingsLayerPlugins();
+				 GeneralSettingsLayerPlugins();
+				~GeneralSettingsLayerPlugins();
 
 		Int		 GetSelectedOutputPlugin();
 };

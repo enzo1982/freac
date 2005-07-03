@@ -9,7 +9,7 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 CVS (June 2005)
+	Version 1.0 CVS (July 2005)
 
 		- added Czech, Korean, Danish and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
@@ -20,12 +20,12 @@ History
 		- submitted freedb entries can now be used to update the joblist
 		- the <filename> and <genre> tokens can now be used in the file name pattern
 		- text in inactive edit boxes can now be selected and copied
+		- upgraded Ogg Vorbis to version 1.1.1
 		- added support for creating M3U playlists
 		- added basic support for creating cue sheets
 		- added support for ID3V1 tags
-		- the encoding used for ID3 tags can now be selected
-		- added options for configuring encoders to BEcmd
-		- upgrade to MPEG4IP v1.2
+		- added encoder configuration options to BEcmd
+		- upgrade to MPEG4IP v1.3
 		- use smooth v0.8.67.0
 		- removed support for MinGW 1.x
 		- lots of bugfixes
@@ -210,29 +210,7 @@ Known problems
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
 
-	- The command line interface doesn't support options for modifying encoder settings, yet.
-
 	- Arabic (and other RTL script) language support currently requires Windows XP or later.
-
-Future plans
-------------
-
-	- Sheduled for v1.0
-		* shell integration
-		* local CDDB support
-		* write online documentation for BonkEnc
-		* clean CDDB code
-
-	- Some later release
-		* input filter for VQF
-		* support more audio formats (MAC, WMA, ...)
-		* develop an IOLib-Filters based plugin system
-		* add musicbrainz.org support
-		* allow command line options to configure encoder settings
-
-	- All time tasks
-		* support more languages
-		* cleanup the code
 
 Special thanks to
 -----------------

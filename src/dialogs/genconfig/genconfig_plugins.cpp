@@ -11,7 +11,7 @@
 #include <dialogs/genconfig/genconfig_plugins.h>
 #include <dllinterfaces.h>
 
-configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : Layer(bonkEnc::i18n->TranslateString("Plug-ins"))
+GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(bonkEnc::i18n->TranslateString("Plug-ins"))
 {
 	Point	 pos;
 	Size	 size;
@@ -33,7 +33,7 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	size.cy	= 139;
 
 	list_input		= new ListBox(pos, size);
-	list_input->onClick.Connect(&configureGeneralSettingsLayerPlugins::SelectInputPlugin, this);
+	list_input->onClick.Connect(&GeneralSettingsLayerPlugins::SelectInputPlugin, this);
 
 	for (Int k = 0; k < bonkEncDLLInterfaces::winamp_in_modules.GetNOfEntries(); k++)
 	{
@@ -45,13 +45,13 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	size.cy	= 0;
 
 	button_input		= new Button(bonkEnc::i18n->TranslateString("Configure"), NIL, pos, size);
-	button_input->onClick.Connect(&configureGeneralSettingsLayerPlugins::ConfigureInputPlugin, this);
+	button_input->onClick.Connect(&GeneralSettingsLayerPlugins::ConfigureInputPlugin, this);
 	button_input->Deactivate();
 
 	pos.y += 30;
 
 	button_input_about	= new Button(bonkEnc::i18n->TranslateString("About"), NIL, pos, size);
-	button_input_about->onClick.Connect(&configureGeneralSettingsLayerPlugins::AboutInputPlugin, this);
+	button_input_about->onClick.Connect(&GeneralSettingsLayerPlugins::AboutInputPlugin, this);
 	button_input_about->Deactivate();
 
 	layer_output		= new Layer(bonkEnc::i18n->TranslateString("Output plug-ins"));
@@ -63,7 +63,7 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 
 	list_output		= new ListBox(pos, size);
 	list_output->SetFlags(LF_MULTICHECKBOX);
-	list_output->onClick.Connect(&configureGeneralSettingsLayerPlugins::SelectOutputPlugin, this);
+	list_output->onClick.Connect(&GeneralSettingsLayerPlugins::SelectOutputPlugin, this);
 
 	for (Int l = 0; l < bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries(); l++)
 	{
@@ -77,13 +77,13 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	size.cy	= 0;
 
 	button_output		= new Button(bonkEnc::i18n->TranslateString("Configure"), NIL, pos, size);
-	button_output->onClick.Connect(&configureGeneralSettingsLayerPlugins::ConfigureOutputPlugin, this);
+	button_output->onClick.Connect(&GeneralSettingsLayerPlugins::ConfigureOutputPlugin, this);
 	button_output->Deactivate();
 
 	pos.y += 30;
 
 	button_output_about	= new Button(bonkEnc::i18n->TranslateString("About"), NIL, pos, size);
-	button_output_about->onClick.Connect(&configureGeneralSettingsLayerPlugins::AboutOutputPlugin, this);
+	button_output_about->onClick.Connect(&GeneralSettingsLayerPlugins::AboutOutputPlugin, this);
 	button_output_about->Deactivate();
 
 	RegisterObject(tabs_plugins);
@@ -100,7 +100,7 @@ configureGeneralSettingsLayerPlugins::configureGeneralSettingsLayerPlugins() : L
 	layer_output->RegisterObject(button_output_about);
 }
 
-configureGeneralSettingsLayerPlugins::~configureGeneralSettingsLayerPlugins()
+GeneralSettingsLayerPlugins::~GeneralSettingsLayerPlugins()
 {
 	DeleteObject(tabs_plugins);
 	DeleteObject(layer_input);
@@ -113,13 +113,13 @@ configureGeneralSettingsLayerPlugins::~configureGeneralSettingsLayerPlugins()
 	DeleteObject(button_output_about);
 }
 
-Void configureGeneralSettingsLayerPlugins::SelectInputPlugin()
+Void GeneralSettingsLayerPlugins::SelectInputPlugin()
 {
 	button_input->Activate();
 	button_input_about->Activate();
 }
 
-Void configureGeneralSettingsLayerPlugins::SelectOutputPlugin()
+Void GeneralSettingsLayerPlugins::SelectOutputPlugin()
 {
 	button_output->Activate();
 	button_output_about->Activate();
@@ -147,35 +147,35 @@ Void configureGeneralSettingsLayerPlugins::SelectOutputPlugin()
 	}
 }
 
-Void configureGeneralSettingsLayerPlugins::ConfigureInputPlugin()
+Void GeneralSettingsLayerPlugins::ConfigureInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
 	bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
-Void configureGeneralSettingsLayerPlugins::ConfigureOutputPlugin()
+Void GeneralSettingsLayerPlugins::ConfigureOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
 	bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
-Void configureGeneralSettingsLayerPlugins::AboutInputPlugin()
+Void GeneralSettingsLayerPlugins::AboutInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
 	bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
-Void configureGeneralSettingsLayerPlugins::AboutOutputPlugin()
+Void GeneralSettingsLayerPlugins::AboutOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
 	bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
-Int configureGeneralSettingsLayerPlugins::GetSelectedOutputPlugin()
+Int GeneralSettingsLayerPlugins::GetSelectedOutputPlugin()
 {
 	for (Int i = 0; i < list_output->GetNOfEntries(); i++) if (list_output->GetNthEntry(i)->IsMarked()) return i;
 

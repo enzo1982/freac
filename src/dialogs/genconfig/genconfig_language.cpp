@@ -10,7 +10,7 @@
 
 #include <dialogs/genconfig/genconfig_language.h>
 
-configureGeneralSettingsLayerLanguage::configureGeneralSettingsLayerLanguage() : Layer(bonkEnc::i18n->TranslateString("Language"))
+GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(bonkEnc::i18n->TranslateString("Language"))
 {
 	Point	 pos;
 	Size	 size;
@@ -52,7 +52,7 @@ configureGeneralSettingsLayerLanguage::configureGeneralSettingsLayerLanguage() :
 	size.cy	= 0;
 
 	combo_language	= new ComboBox(pos, size);
-	combo_language->onClick.Connect(&configureGeneralSettingsLayerLanguage::SelectLanguage, this);
+	combo_language->onClick.Connect(&GeneralSettingsLayerLanguage::SelectLanguage, this);
 
 	for (Int i = 0; i < bonkEnc::i18n->GetNOfLanguages(); i++)
 	{
@@ -72,7 +72,7 @@ configureGeneralSettingsLayerLanguage::configureGeneralSettingsLayerLanguage() :
 	RegisterObject(link_url);
 }
 
-configureGeneralSettingsLayerLanguage::~configureGeneralSettingsLayerLanguage()
+GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()
 {
 	DeleteObject(group_language);
 	DeleteObject(text_language);
@@ -83,7 +83,7 @@ configureGeneralSettingsLayerLanguage::~configureGeneralSettingsLayerLanguage()
 	DeleteObject(link_url);
 }
 
-Void configureGeneralSettingsLayerLanguage::SelectLanguage()
+Void GeneralSettingsLayerLanguage::SelectLanguage()
 {
 	if (combo_language->GetSelectedEntry() != NIL)
 	{
@@ -97,12 +97,12 @@ Void configureGeneralSettingsLayerLanguage::SelectLanguage()
 	}
 }
 
-Bool configureGeneralSettingsLayerLanguage::IsLanguageChanged()
+Bool GeneralSettingsLayerLanguage::IsLanguageChanged()
 {
 	return (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
 }
 
-String configureGeneralSettingsLayerLanguage::GetSelectedLanguageID()
+String GeneralSettingsLayerLanguage::GetSelectedLanguageID()
 {
 	return bonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber());
 }

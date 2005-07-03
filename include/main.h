@@ -57,6 +57,8 @@ class bonkEncGUI : public bonkEnc
 		Void		 AddFile();
 		Void		 AddDragDropFile(String *);
 		Void		 RemoveFile();
+		Void		 LoadList();
+		Void		 SaveList();
 		Void		 SelectJoblistEntry();
 		Void		 JoblistSelectAll();
 		Void		 JoblistSelectNone();

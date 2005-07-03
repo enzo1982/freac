@@ -15,16 +15,19 @@
 
 using namespace smooth;
 
-class bonkEncPlaylist
+namespace BonkEnc
 {
-	private:
-		Array<String>	 fileNames;
-		Array<String>	 trackNames;
-		Array<Int>	 trackLengths;
-	public:
-		Bool		 AddTrack(String, String, Int);
+	class Playlist
+	{
+		private:
+			Array<String>	 fileNames;
+			Array<String>	 trackNames;
+			Array<Int>	 trackLengths;
+		public:
+			Bool		 AddTrack(String, String, Int);
 
-		Bool		 Save(String);
+			Bool		 Save(String);
+	};
 };
 
 #endif

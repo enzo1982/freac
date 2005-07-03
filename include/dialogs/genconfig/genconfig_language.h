@@ -17,7 +17,10 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureGeneralSettingsLayerLanguage : public Layer
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
+class GeneralSettingsLayerLanguage : public Layer
 {
 	private:
 		GroupBox	*group_language;
@@ -27,12 +30,12 @@ class configureGeneralSettingsLayerLanguage : public Layer
 		Text		*text_info;
 		Hyperlink	*link_url;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 	slots:
 		Void		 SelectLanguage();
 	public:
-				 configureGeneralSettingsLayerLanguage();
-				~configureGeneralSettingsLayerLanguage();
+				 GeneralSettingsLayerLanguage();
+				~GeneralSettingsLayerLanguage();
 
 		Bool		 IsLanguageChanged();
 		String		 GetSelectedLanguageID();

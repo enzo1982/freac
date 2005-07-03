@@ -11,6 +11,7 @@
 #include <dialogs/cddb/submit.h>
 #include <resources.h>
 #include <dllinterfaces.h>
+#include <joblist.h>
 #include <cddb.h>
 
 typedef struct
@@ -466,9 +467,9 @@ Void cddbSubmitDlg::Submit()
 
 	if (updateJoblist)
 	{
-		for (Int l = 0; l < currentConfig->appMain->sa_formatinfo.GetNOfEntries(); l++)
+		for (Int l = 0; l < currentConfig->appMain->joblist->GetNOfTracks(); l++)
 		{
-			bonkEncTrack	*trackInfo = currentConfig->appMain->sa_formatinfo.GetNthEntry(l);
+			Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
 
 			cddb.SetActiveDrive(activedrive);
 
@@ -565,7 +566,7 @@ Void cddbSubmitDlg::ChangeDrive()
 
 	discid = cddb.GetDiscIDString();
 
-	Array<bonkEncTrack *>	*cdInfo = NIL;
+	Array<Track *>	*cdInfo = NIL;
 
 	if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
 
@@ -620,10 +621,10 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_track->SetText("");
 		edit_title->SetText("");
 
-		cddbInfo	= new Array<bonkEncTrack *>;
+		cddbInfo	= new Array<Track *>;
 		ownCddbInfo	= True;
 
-		cddbInfo->AddEntry(new bonkEncTrack);
+		cddbInfo->AddEntry(new Track);
 
 		cddbInfo->GetFirstEntry()->discid = discid;
 		cddbInfo->GetFirstEntry()->revision = -1;
@@ -635,7 +636,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		{
 			TOCENTRY entry = ex_CR_GetTocEntry(j);
 
-			cddbInfo->AddEntry(new bonkEncTrack);
+			cddbInfo->AddEntry(new Track);
 
 			cddbInfo->GetNthEntry(j + 1)->title = cdText.GetEntry(entry.btTrackNumber);
 			cddbInfo->GetNthEntry(j + 1)->offset = entry.dwStartSector + 150;
@@ -660,10 +661,10 @@ Void cddbSubmitDlg::ChangeDrive()
 		edit_track->SetText("");
 		edit_title->SetText("");
 
-		cddbInfo	= new Array<bonkEncTrack *>;
+		cddbInfo	= new Array<Track *>;
 		ownCddbInfo	= True;
 
-		cddbInfo->AddEntry(new bonkEncTrack);
+		cddbInfo->AddEntry(new Track);
 
 		cddbInfo->GetFirstEntry()->discid = discid;
 		cddbInfo->GetFirstEntry()->revision = -1;
@@ -672,7 +673,7 @@ Void cddbSubmitDlg::ChangeDrive()
 		{
 			TOCENTRY entry = ex_CR_GetTocEntry(j);
 
-			cddbInfo->AddEntry(new bonkEncTrack);
+			cddbInfo->AddEntry(new Track);
 
 			cddbInfo->GetNthEntry(j + 1)->offset = entry.dwStartSector + 150;
 
@@ -685,9 +686,9 @@ Void cddbSubmitDlg::ChangeDrive()
 		cddbInfo->GetFirstEntry()->disclength = (entry.dwStartSector + 150) / 75;
 	}
 
-	for (Int l = 0; l < currentConfig->appMain->sa_formatinfo.GetNOfEntries(); l++)
+	for (Int l = 0; l < currentConfig->appMain->joblist->GetNOfTracks(); l++)
 	{
-		bonkEncTrack	*trackInfo = currentConfig->appMain->sa_formatinfo.GetNthEntry(l);
+		Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
 
 		if (trackInfo->discid != cddb.GetDiscIDString()) continue;
 

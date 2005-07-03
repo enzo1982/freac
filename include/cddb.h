@@ -20,12 +20,15 @@ using namespace smooth::GUI;
 const Int	 FREEDB_MODE_HTTP	= 0;
 const Int	 FREEDB_MODE_CDDBP	= 1;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class bonkEncCDDB
 {
 	private:
 		Int		 activeDriveID;
 		Bool		 connected;
-		bonkEncConfig	*config;
+		Config		*config;
 
 		IOLibDriver	*socket;
 		InStream	*in;
@@ -40,7 +43,7 @@ class bonkEncCDDB
 		String		 GetCDDBQueryString();
 		String		 SendCommand(String);
 	public:
-				 bonkEncCDDB(bonkEncConfig *);
+				 bonkEncCDDB(Config *);
 				~bonkEncCDDB();
 
 		Int		 SetActiveDrive(Int);
@@ -51,7 +54,7 @@ class bonkEncCDDB
 		Bool		 ConnectToServer();
 		String		 Query(String);
 		String		 Read(String);
-		String		 Submit(Array<bonkEncTrack *> *);
+		String		 Submit(Array<Track *> *);
 		Bool		 CloseConnection();
 
 		Int		 GetNOfMatches();
@@ -59,8 +62,8 @@ class bonkEncCDDB
 		String		 GetNthTitle(Int);
 		String		 GetNthCategory(Int);
 
-		static Array<Array<bonkEncTrack *> *>	 infoCache;
-		static Array<Bool>			 requestedDiscs;
+		static Array<Array<Track *> *>	 infoCache;
+		static Array<Bool>		 requestedDiscs;
 };
 
 #endif

@@ -17,12 +17,11 @@
 #include <dialogs/genconfig/genconfig_tags.h>
 
 #include <cddb.h>
-
 #include <resources.h>
 
 #include <direct.h>
 
-configureGeneralSettings::configureGeneralSettings()
+BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 {
 	Point	 pos;
 	Size	 size;
@@ -33,12 +32,12 @@ configureGeneralSettings::configureGeneralSettings()
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
-	register_layer_encoders	= new configureGeneralSettingsLayerEncoders();
-	register_layer_language	= new configureGeneralSettingsLayerLanguage();
-	register_layer_cdrip	= new configureGeneralSettingsLayerCDRip();
-	register_layer_cddb	= new configureGeneralSettingsLayerCDDB();
-	register_layer_plugins	= new configureGeneralSettingsLayerPlugins();
-	register_layer_tags	= new configureGeneralSettingsLayerTags();
+	register_layer_encoders	= new GeneralSettingsLayerEncoders();
+	register_layer_language	= new GeneralSettingsLayerLanguage();
+	register_layer_cdrip	= new GeneralSettingsLayerCDRip();
+	register_layer_cddb	= new GeneralSettingsLayerCDDB();
+	register_layer_plugins	= new GeneralSettingsLayerPlugins();
+	register_layer_tags	= new GeneralSettingsLayerTags();
 
 	pos.x	= 175;
 	pos.y	= 29;
@@ -46,13 +45,13 @@ configureGeneralSettings::configureGeneralSettings()
 	size.cy	= 0;
 
 	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&configureGeneralSettings::Cancel, this);
+	btn_cancel->onClick.Connect(&GeneralSettingsDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
 	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&configureGeneralSettings::OK, this);
+	btn_ok->onClick.Connect(&GeneralSettingsDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x	= 7;
@@ -85,7 +84,7 @@ configureGeneralSettings::configureGeneralSettings()
 	mainWnd->SetMetrics(Point(120, 120), Size(568, 298));
 }
 
-configureGeneralSettings::~configureGeneralSettings()
+BonkEnc::GeneralSettingsDialog::~GeneralSettingsDialog()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -101,14 +100,14 @@ configureGeneralSettings::~configureGeneralSettings()
 	DeleteObject(btn_cancel);
 }
 
-Int configureGeneralSettings::ShowDialog()
+Int BonkEnc::GeneralSettingsDialog::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return mainWnd->value;
 }
 
-Void configureGeneralSettings::OK()
+Void BonkEnc::GeneralSettingsDialog::OK()
 {
 	if ((Setup::enableUnicode ? SetCurrentDirectoryW(register_layer_encoders->GetOutputDirectory()) : SetCurrentDirectoryA(register_layer_encoders->GetOutputDirectory())) == False)
 	{
@@ -206,7 +205,7 @@ Void configureGeneralSettings::OK()
 	mainWnd->Close();
 }
 
-Void configureGeneralSettings::Cancel()
+Void BonkEnc::GeneralSettingsDialog::Cancel()
 {
 	mainWnd->Close();
 }

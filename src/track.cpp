@@ -10,7 +10,7 @@
 
 #include <track.h>
 
-bonkEncTrack::bonkEncTrack()
+BonkEnc::Track::Track()
 {
 	channels	= 0;
 	rate		= 0;
@@ -29,6 +29,6 @@ bonkEncTrack::bonkEncTrack()
 	year		= -1;
 }
 
-bonkEncTrack::~bonkEncTrack()
+BonkEnc::Track::~Track()
 {
 }

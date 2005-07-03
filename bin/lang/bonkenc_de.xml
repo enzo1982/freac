@@ -292,5 +292,7 @@
     <entry id="280" string="Tag encodings">Tag-Codierungen</entry>
     <entry id="281" string="Update joblist with this information">Jobliste mit diesen Informationen aktualisieren</entry>
     <entry id="282" string="unknown genre">unbekanntes Genre</entry>
+    <entry id="283" string="Load joblist...">Jobliste laden...</entry>
+    <entry id="284" string="Save joblist...">Jobliste sichern...</entry>
   </data>
 </LangFile>

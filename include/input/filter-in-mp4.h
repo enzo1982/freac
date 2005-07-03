@@ -22,29 +22,32 @@
 #include <3rdparty/mp4/mp4.h>
 #include <3rdparty/faad2/neaacdec.h>
 
-class FilterInMP4 : public InputFilter
+namespace BonkEnc
 {
-	private:
-		MP4FileHandle			 mp4File;
-		NeAACDecHandle			 handle;
-		NeAACDecConfigurationPtr	 fConfig;
+	class FilterInMP4 : public InputFilter
+	{
+		private:
+			MP4FileHandle			 mp4File;
+			NeAACDecHandle			 handle;
+			NeAACDecConfigurationPtr	 fConfig;
 
-		Int				 mp4Track;
-		Int				 sampleId;
+			Int				 mp4Track;
+			Int				 sampleId;
 
-		Int				 GetAudioTrack();
+			Int				 GetAudioTrack();
 
-		String				 GetTempFile(const String &);
-	public:
-						 FilterInMP4(bonkEncConfig *, bonkEncTrack *);
-						~FilterInMP4();
+			String				 GetTempFile(const String &);
+		public:
+							 FilterInMP4(Config *, Track *);
+							~FilterInMP4();
 
-		bool				 Activate();
-		bool				 Deactivate();
+			bool				 Activate();
+			bool				 Deactivate();
 
-		int				 ReadData(unsigned char **, int);
+			int				 ReadData(unsigned char **, int);
 
-		bonkEncTrack			*GetFileInfo(String);
+			Track				*GetFileInfo(String);
+	};
 };
 
 #endif

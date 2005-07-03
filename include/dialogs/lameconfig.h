@@ -17,6 +17,9 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
 class configureLameEnc : public Dialog
 {
 	private:
@@ -153,7 +156,7 @@ class configureLameEnc : public Dialog
 		Bool		 set_highpass;
 		Bool		 set_highpass_width;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 
 		Void		 OK();
 		Void		 Cancel();
@@ -188,6 +191,7 @@ class configureLameEnc : public Dialog
 	public:
 				 configureLameEnc();
 				~configureLameEnc();
+
 		Int		 ShowDialog();
 };
 

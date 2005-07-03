@@ -22,7 +22,12 @@ using namespace smooth::GUI;
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::Threads;
 
-class InputFilter;
+namespace BonkEnc
+{
+	class JobList;
+
+	class InputFilter;
+};
 
 extern Int	 ENCODER_BONKENC;
 extern Int	 ENCODER_BLADEENC;
@@ -37,6 +42,9 @@ typedef unsigned short uint16;
 typedef unsigned char  uint8;
 
 extern bonkEncDebug	*debug_out;
+
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
 
 class bonkEnc : public Application
 {
@@ -104,7 +112,7 @@ class bonkEnc : public Application
 
 		Void			 AddFileByName(String, String out = NIL);
 		Int			 Encoder(Thread *);
-		InputFilter		*CreateInputFilter(String, bonkEncTrack *);
+		InputFilter		*CreateInputFilter(String, Track *);
 		Void			 PlayItem(Int);
 		Int			 PlayThread(Thread *);
 
@@ -115,19 +123,17 @@ class bonkEnc : public Application
 		static String		 cddbVersion;
 		static String		 shortVersion;
 
-		static bonkEncConfig	*currentConfig;
+		static Config		*currentConfig;
 		static I18n::Translator	*i18n;
 
 		Bool			 cddbRetry;
 
-		ListBox			*joblist;
-
-		Array<bonkEncTrack *>	 sa_formatinfo;
+		JobList			*joblist;
 
 					 bonkEnc();
 					~bonkEnc();
 
-		Array<bonkEncTrack *>	*GetCDDBData();
+		Array<Track *>		*GetCDDBData();
 	slots:
 		Void			 ClearList();
 

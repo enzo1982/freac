@@ -17,7 +17,10 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class configureGeneralSettingsLayerTags : public Layer
+// TODO: remove this line once everything is in namespace BonkEnc
+using namespace BonkEnc;
+
+class GeneralSettingsLayerTags : public Layer
 {
 	private:
 		GroupBox	*group_tags;
@@ -50,7 +53,7 @@ class configureGeneralSettingsLayerTags : public Layer
 		Bool		 enableVCTags;
 		Bool		 enableMP4Meta;
 
-		bonkEncConfig	*currentConfig;
+		Config		*currentConfig;
 	slots:
 		Void		 ToggleID3V1();
 		Void		 ToggleID3V2();
@@ -59,8 +62,8 @@ class configureGeneralSettingsLayerTags : public Layer
 
 		Void		 ToggleTags();
 	public:
-				 configureGeneralSettingsLayerTags();
-				~configureGeneralSettingsLayerTags();
+				 GeneralSettingsLayerTags();
+				~GeneralSettingsLayerTags();
 
 		Bool		 GetEnableID3V1();
 		Bool		 GetEnableID3V2();

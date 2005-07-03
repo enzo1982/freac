@@ -14,20 +14,23 @@
 #include "inputfilter.h"
 #include <3rdparty/winamp/in2.h>
 
-class FilterInWinamp : public InputFilter
+namespace BonkEnc
 {
-	private:
-		In_Module	*plugin;
-	public:
-				 FilterInWinamp(bonkEncConfig *, bonkEncTrack *, In_Module *);
-				~FilterInWinamp();
+	class FilterInWinamp : public InputFilter
+	{
+		private:
+			In_Module	*plugin;
+		public:
+					 FilterInWinamp(Config *, Track *, In_Module *);
+					~FilterInWinamp();
 
-		bool		 Activate();
-		bool		 Deactivate();
+			bool		 Activate();
+			bool		 Deactivate();
 
-		int		 ReadData(unsigned char **, int);
+			int		 ReadData(unsigned char **, int);
 
-		bonkEncTrack	*GetFileInfo(String);
+			Track		*GetFileInfo(String);
+	};
 };
 
 #endif

@@ -10,16 +10,16 @@
 
 #include <output/filter-out-wave.h>
 
-FilterOutWAVE::FilterOutWAVE(bonkEncConfig *config, bonkEncTrack *format) : OutputFilter(config, format)
+BonkEnc::FilterOutWAVE::FilterOutWAVE(Config *config, Track *format) : OutputFilter(config, format)
 {
 	nOfSamples = 0;
 }
 
-FilterOutWAVE::~FilterOutWAVE()
+BonkEnc::FilterOutWAVE::~FilterOutWAVE()
 {
 }
 
-bool FilterOutWAVE::Activate()
+bool BonkEnc::FilterOutWAVE::Activate()
 {
 	Buffer<unsigned char>	 buffer(44);
 	OutStream		*out = new OutStream(STREAM_BUFFER, buffer, 44);
@@ -45,7 +45,7 @@ bool FilterOutWAVE::Activate()
 	return true;
 }
 
-bool FilterOutWAVE::Deactivate()
+bool BonkEnc::FilterOutWAVE::Deactivate()
 {
 	int	 size = nOfSamples * (format->bits / 8) + 36;
 
@@ -60,7 +60,7 @@ bool FilterOutWAVE::Deactivate()
 	return true;
 }
 
-int FilterOutWAVE::WriteData(unsigned char *data, int size)
+int BonkEnc::FilterOutWAVE::WriteData(unsigned char *data, int size)
 {
 	nOfSamples += (size / (format->bits / 8));
 

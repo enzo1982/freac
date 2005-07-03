@@ -83,7 +83,7 @@ Int cddbQueryDlg::ShowDialog()
 	return Success;
 }
 
-Array<bonkEncTrack *> *cddbQueryDlg::QueryCDDB()
+Array<Track *> *cddbQueryDlg::QueryCDDB()
 {
 	ShowDialog();
 
@@ -175,7 +175,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 	prog_status->SetValue(60);
 
-	Array<bonkEncTrack *>	*array = NIL;
+	Array<Track *>	*array = NIL;
 
 	if (read != NIL)
 	{
@@ -189,9 +189,9 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 		{
 			String	 cLine;
 
-			array = new Array<bonkEncTrack *>;
+			array = new Array<Track *>;
 
-			array->AddEntry(new bonkEncTrack);
+			array->AddEntry(new Track);
 
 			array->GetFirstEntry()->discid = cddb.GetDiscIDString();
 			array->GetFirstEntry()->category = cddb.GetCategory();
@@ -215,8 +215,8 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 				if (cLine.CompareN("DTITLE", 6) == 0)
 				{
-					bonkEncTrack	*info = array->GetFirstEntry();
-					Int		 k;
+					Track	*info = array->GetFirstEntry();
+					Int	 k;
 
 					for (k = 7; k >= 0; k++)
 					{
@@ -230,7 +230,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 				}
 				else if (cLine.CompareN("DGENRE", 6) == 0)
 				{
-					bonkEncTrack	*info = array->GetFirstEntry();
+					Track	*info = array->GetFirstEntry();
 
 					for (Int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
 				}
@@ -253,7 +253,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 						else			track[k - 6] = cLine[k];
 					}
 
-					bonkEncTrack	*info = array->GetEntry(track.ToInt() + 1);
+					Track	*info = array->GetEntry(track.ToInt() + 1);
 
 					if (info != NIL)
 					{
@@ -262,7 +262,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 				}
 				else if (cLine.CompareN("EXTD", 4) == 0)
 				{
-					bonkEncTrack	*info = array->GetFirstEntry();
+					Track	*info = array->GetFirstEntry();
 
 					for (Int k = 5; k < cLine.Length(); k++) info->comment[k - 5] = cLine[k];
 				}
@@ -277,7 +277,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 						else			track[k - 4] = cLine[k];
 					}
 
-					bonkEncTrack	*info = array->GetEntry(track.ToInt() + 1);
+					Track	*info = array->GetEntry(track.ToInt() + 1);
 
 					if (info != NIL)
 					{
@@ -286,7 +286,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 				}
 				else if (cLine.CompareN("PLAYORDER", 9) == 0)
 				{
-					bonkEncTrack	*info = array->GetFirstEntry();
+					Track	*info = array->GetFirstEntry();
 
 					for (Int k = 10; k < cLine.Length(); k++) info->playorder[k - 10] = cLine[k];
 				}
@@ -334,7 +334,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 							break;
 						}
 
-						bonkEncTrack	*info = new bonkEncTrack;
+						Track	*info = new Track;
 
 						info->offset = offset.ToInt();
 						info->track = ++track;
