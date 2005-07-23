@@ -14,13 +14,40 @@
 #include <utilities.h>
 #include <input/filter-in-cdrip.h>
 
-BonkEnc::JobList::JobList(Point pos, Size size) : ListBox(pos, size)
+BonkEnc::JobList::JobList(Point iPos, Size iSize) : ListBox(iPos, iSize)
 {
-	droparea = NIL;
+	onRegister.Connect(&JobList::OnRegister, this);
+	onUnregister.Connect(&JobList::OnUnregister, this);
+
+	droparea = new DropArea(iPos, iSize);
+	droparea->onDropFile.Connect(&JobList::AddTrackByDragAndDrop, this);
+
+	text = new Text(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", "0"), iPos - Point(9, 19));
+
+	button_sel_all		= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 16, NIL), iPos - Point(19, 4), Size(21, 21));
+	button_sel_all->onClick.Connect(&JobList::SelectAll, this);
+	button_sel_all->SetFlags(BF_NOFRAME);
+	button_sel_all->SetTooltipText(bonkEnc::i18n->TranslateString("Select all"));
+
+	button_sel_none		= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 17, NIL), iPos - Point(19, -10), Size(21, 21));
+	button_sel_none->onClick.Connect(&JobList::SelectNone, this);
+	button_sel_none->SetFlags(BF_NOFRAME);
+	button_sel_none->SetTooltipText(bonkEnc::i18n->TranslateString("Select none"));
+
+	button_sel_toggle	= new Button(NIL, Bitmap::LoadBitmap("BonkEnc.pci", 18, NIL), iPos - Point(19, -24), Size(21, 21));
+	button_sel_toggle->onClick.Connect(&JobList::ToggleSelection, this);
+	button_sel_toggle->SetFlags(BF_NOFRAME);
+	button_sel_toggle->SetTooltipText(bonkEnc::i18n->TranslateString("Toggle selection"));
 }
 
 BonkEnc::JobList::~JobList()
 {
+	DeleteObject(droparea);
+	DeleteObject(text);
+
+	DeleteObject(button_sel_all);
+	DeleteObject(button_sel_none);
+	DeleteObject(button_sel_toggle);
 }
 
 Int BonkEnc::JobList::GetNOfTracks()
@@ -31,28 +58,6 @@ Int BonkEnc::JobList::GetNOfTracks()
 Track *BonkEnc::JobList::GetNthTrack(Int n)
 {
 	return tracks.GetNthEntry(n);
-}
-
-Bool BonkEnc::JobList::RemoveNthTrack(Int n)
-{
-	delete GetNthTrack(n);
-
-	tracks.RemoveEntry(n);
-
-	RemoveEntry(GetNthEntry(n));
-
-	return True;
-}
-
-Bool BonkEnc::JobList::RemoveAllTracks()
-{
-	for (Int i = 0; i < GetNOfTracks(); i++) delete GetNthTrack(i);
-
-	tracks.RemoveAll();
-
-	Clear();
-
-	return True;
 }
 
 Bool BonkEnc::JobList::AddTrack(Track *track)
@@ -87,6 +92,43 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 	return True;
 }
 
+Bool BonkEnc::JobList::RemoveNthTrack(Int n)
+{
+	delete GetNthTrack(n);
+
+	tracks.RemoveEntry(n);
+
+	RemoveEntry(GetNthEntry(n));
+
+	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfEntries())));
+
+	return True;
+}
+
+Bool BonkEnc::JobList::RemoveAllTracks()
+{
+	if (bonkEnc::currentConfig->appMain->encoding)
+	{
+		QuickMessage(bonkEnc::i18n->TranslateString("Cannot modify the joblist while encoding!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+
+		return False;
+	}
+
+	if (bonkEnc::currentConfig->appMain->playing) bonkEnc::currentConfig->appMain->StopPlayback();
+
+	for (Int i = 0; i < GetNOfTracks(); i++) delete GetNthTrack(i);
+
+	tracks.RemoveAll();
+
+	Clear();
+
+	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", "0"));
+
+	((bonkEncGUI *) bonkEnc::currentConfig->appMain)->ClearEditFields();
+
+	return True;
+}
+
 Track *BonkEnc::JobList::GetSelectedTrack()
 {
 	ListEntry	*entry = GetSelectedEntry();
@@ -100,18 +142,25 @@ Track *BonkEnc::JobList::GetSelectedTrack()
 	return GetNthTrack(n);
 }
 
-Void bonkEncGUI::AddFile()
+Int BonkEnc::JobList::SetMetrics(Point nPos, Size nSize)
 {
-	if (encoding)
+	droparea->SetMetrics(nPos, nSize);
+
+	return ListBox::SetMetrics(nPos, nSize);
+}
+
+Void BonkEnc::JobList::AddTrackByDialog()
+{
+	if (bonkEnc::currentConfig->appMain->encoding)
 	{
-		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Cannot modify the joblist while encoding!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
 
 	FileSelection	*dialog = new FileSelection();
 
-	dialog->SetParentWindow(mainWnd);
+	dialog->SetParentWindow(container->GetContainerWindow());
 	dialog->SetFlags(SFD_ALLOWMULTISELECT);
 
 	Array<String>	 types;
@@ -175,34 +224,34 @@ Void bonkEncGUI::AddFile()
 
 	String	 fileTypes;
 
-	if (currentConfig->enable_faad2)					fileTypes.Append("*.aac; ");
-										fileTypes.Append("*.aif; *.aiff; *.au");
-	if (currentConfig->enable_bonk)						fileTypes.Append("; *.bonk");
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
-	if (currentConfig->enable_flac)						fileTypes.Append("; *.flac");
-	if (currentConfig->enable_lame)						fileTypes.Append("; *.mp3");
-	if (currentConfig->enable_mp4 && currentConfig->enable_faad2)		fileTypes.Append("; *.m4a; *.m4b; *.mp4");
-	if (currentConfig->enable_vorbis)					fileTypes.Append("; *.ogg");
-										fileTypes.Append("; *.voc; *.wav");
+	if (bonkEnc::currentConfig->enable_faad2)							fileTypes.Append("*.aac; ");
+													fileTypes.Append("*.aif; *.aiff; *.au");
+	if (bonkEnc::currentConfig->enable_bonk)							fileTypes.Append("; *.bonk");
+	if (bonkEnc::currentConfig->enable_cdrip && bonkEnc::currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
+	if (bonkEnc::currentConfig->enable_flac)							fileTypes.Append("; *.flac");
+	if (bonkEnc::currentConfig->enable_lame)							fileTypes.Append("; *.mp3");
+	if (bonkEnc::currentConfig->enable_mp4 && bonkEnc::currentConfig->enable_faad2)			fileTypes.Append("; *.m4a; *.m4b; *.mp4");
+	if (bonkEnc::currentConfig->enable_vorbis)							fileTypes.Append("; *.ogg");
+													fileTypes.Append("; *.voc; *.wav");
 
 	for (Int l = 0; l < extensions.GetNOfEntries(); l++) fileTypes.Append("; ").Append(extensions.GetNthEntry(l));
 
-										dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
-	if (currentConfig->enable_faad2)					dialog->AddFilter(i18n->TranslateString("AAC Files").Append(" (*.aac)"), "*.aac");
-										dialog->AddFilter(i18n->TranslateString("Apple Audio Files").Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
-	if (currentConfig->enable_bonk)						dialog->AddFilter(i18n->TranslateString("Bonk Files").Append(" (*.bonk)"), "*.bonk");
-										dialog->AddFilter(i18n->TranslateString("Creative Voice Files").Append(" (*.voc)"), "*.voc");
-	if (currentConfig->enable_flac)						dialog->AddFilter(i18n->TranslateString("FLAC Files").Append(" (*.flac)"), "*.flac");
-	if (currentConfig->enable_lame)						dialog->AddFilter(i18n->TranslateString("MP3 Files").Append(" (*.mp3)"), "*.mp3");
-	if (currentConfig->enable_mp4 && currentConfig->enable_faad2)		dialog->AddFilter(i18n->TranslateString("MP4 Files").Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
-	if (currentConfig->enable_vorbis)					dialog->AddFilter(i18n->TranslateString("Ogg Vorbis Files").Append(" (*.ogg)"), "*.ogg");
-										dialog->AddFilter(i18n->TranslateString("Sun Audio Files").Append(" (*.au)"), "*.au");
-										dialog->AddFilter(i18n->TranslateString("Wave Files").Append(" (*.wav)"), "*.wav");
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(i18n->TranslateString("Windows CD Audio Track").Append(" (*.cda)"), "*.cda");
+													dialog->AddFilter(bonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
+	if (bonkEnc::currentConfig->enable_faad2)							dialog->AddFilter(bonkEnc::i18n->TranslateString("AAC Files").Append(" (*.aac)"), "*.aac");
+													dialog->AddFilter(bonkEnc::i18n->TranslateString("Apple Audio Files").Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
+	if (bonkEnc::currentConfig->enable_bonk)							dialog->AddFilter(bonkEnc::i18n->TranslateString("Bonk Files").Append(" (*.bonk)"), "*.bonk");
+													dialog->AddFilter(bonkEnc::i18n->TranslateString("Creative Voice Files").Append(" (*.voc)"), "*.voc");
+	if (bonkEnc::currentConfig->enable_flac)							dialog->AddFilter(bonkEnc::i18n->TranslateString("FLAC Files").Append(" (*.flac)"), "*.flac");
+	if (bonkEnc::currentConfig->enable_lame)							dialog->AddFilter(bonkEnc::i18n->TranslateString("MP3 Files").Append(" (*.mp3)"), "*.mp3");
+	if (bonkEnc::currentConfig->enable_mp4 && bonkEnc::currentConfig->enable_faad2)			dialog->AddFilter(bonkEnc::i18n->TranslateString("MP4 Files").Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
+	if (bonkEnc::currentConfig->enable_vorbis)							dialog->AddFilter(bonkEnc::i18n->TranslateString("Ogg Vorbis Files").Append(" (*.ogg)"), "*.ogg");
+													dialog->AddFilter(bonkEnc::i18n->TranslateString("Sun Audio Files").Append(" (*.au)"), "*.au");
+													dialog->AddFilter(bonkEnc::i18n->TranslateString("Wave Files").Append(" (*.wav)"), "*.wav");
+	if (bonkEnc::currentConfig->enable_cdrip && bonkEnc::currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(bonkEnc::i18n->TranslateString("Windows CD Audio Track").Append(" (*.cda)"), "*.cda");
 
 	for (Int m = 0; m < types.GetNOfEntries(); m++) dialog->AddFilter(types.GetNthEntry(m), extensions.GetNthEntry(m));
 
-	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(bonkEnc::i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog->ShowDialog() == Success)
 	{
@@ -210,31 +259,22 @@ Void bonkEncGUI::AddFile()
 		{
 			String	 file = dialog->GetNthFileName(i);
 
-			AddFileByName(file);
+			AddTrackByFileName(file);
 
-			cddbRetry = False;
+			bonkEnc::currentConfig->appMain->cddbRetry = False;
 		}
 
-		cddbRetry = True;
+		bonkEnc::currentConfig->appMain->cddbRetry = True;
 	}
 
 	delete dialog;
 }
 
-Void bonkEncGUI::AddDragDropFile(String *iFile)
+Void BonkEnc::JobList::AddTrackByFileName(String file, String outfile)
 {
-	String	 file = *iFile;
-
-	delete iFile;
-
-	AddFileByName(file);
-}
-
-Void bonkEnc::AddFileByName(String file, String outfile)
-{
-	if (encoding)
+	if (bonkEnc::currentConfig->appMain->encoding)
 	{
-		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Cannot modify the joblist while encoding!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
@@ -243,7 +283,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 	if (file.CompareN("/cda", 4) == 0)
 	{
-		InputFilter	*filter_in = new FilterInCDRip(currentConfig, NIL);
+		InputFilter	*filter_in = new FilterInCDRip(bonkEnc::currentConfig, NIL);
 
 		format = filter_in->GetFileInfo(file);
 
@@ -251,7 +291,7 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 	}
 	else
 	{
-		InputFilter	*filter_in = CreateInputFilter(file, NIL);
+		InputFilter	*filter_in = Utilities::CreateInputFilter(file, NIL);
 
 		if (filter_in != NIL)
 		{
@@ -263,13 +303,13 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 	if (format == NIL)
 	{
-		QuickMessage(i18n->TranslateString("Cannot open file:").Append(" ").Append(file), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
 	else if (format->rate == 0 || format->channels == 0)
 	{
-		QuickMessage(i18n->TranslateString("Cannot open file:").Append(" ").Append(file), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
@@ -347,201 +387,134 @@ Void bonkEnc::AddFileByName(String file, String outfile)
 
 	format->outfile = outfile;
 
-	joblist->AddTrack(format);
-	joblist->Paint(SP_UPDATE);
+	AddTrack(format);
+	Paint(SP_UPDATE);
 
-	if (!currentConfig->enable_console) txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(joblist->GetNOfEntries())));
+	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfTracks())));
 }
 
-Void bonkEncGUI::RemoveFile()
+Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
 {
-	if (encoding)
+	AddTrackByFileName(file);
+}
+
+Void BonkEnc::JobList::RemoveSelectedTrack()
+{
+	if (bonkEnc::currentConfig->appMain->encoding)
 	{
-		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("Cannot modify the joblist while encoding!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
 
-	if (joblist->GetSelectedEntry() == NIL)
+	if (GetSelectedEntry() == NIL)
 	{
-		QuickMessage(i18n->TranslateString("You have not selected a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		QuickMessage(bonkEnc::i18n->TranslateString("You have not selected a file!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 
 		return;
 	}
 
-	ListEntry	*entry = joblist->GetSelectedEntry();
+	ListEntry	*entry = GetSelectedEntry();
 	Int		 n = 0;
 
-	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+	for (Int i = 0; i < GetNOfEntries(); i++)
 	{
-		if (joblist->GetNthEntry(i) == entry) n = i;
+		if (GetNthEntry(i) == entry) n = i;
 	}
 
-	if (playing && player_entry == n) StopPlayback();
-	if (playing && player_entry > n) player_entry--;
+	if (bonkEnc::currentConfig->appMain->playing && bonkEnc::currentConfig->appMain->player_entry == n) bonkEnc::currentConfig->appMain->StopPlayback();
+	if (bonkEnc::currentConfig->appMain->playing && bonkEnc::currentConfig->appMain->player_entry > n) bonkEnc::currentConfig->appMain->player_entry--;
 
-	Surface	*surface = mainWnd->GetDrawSurface();
-	Point	 realPos = joblist->GetRealPosition();
+	Surface	*surface = container->GetDrawSurface();
+	Point	 realPos = GetRealPosition();
 	Rect	 frame;
 
 	frame.left	= realPos.x;
 	frame.top	= realPos.y;
-	frame.right	= realPos.x + joblist->size.cx - 1;
-	frame.bottom	= realPos.y + joblist->size.cy - 1;
+	frame.right	= realPos.x + size.cx - 1;
+	frame.bottom	= realPos.y + size.cy - 1;
 
 	surface->StartPaint(frame);
 
-	joblist->RemoveNthTrack(n);
+	RemoveNthTrack(n);
 
-	if (joblist->GetNOfEntries() > 0)
+	if (GetNOfEntries() > 0)
 	{
-		if (n < joblist->GetNOfEntries())	joblist->SelectEntry(joblist->GetNthEntry(n));
-		else					joblist->SelectEntry(joblist->GetNthEntry(n - 1));
+		if (n < GetNOfEntries())	SelectEntry(GetNthEntry(n));
+		else				SelectEntry(GetNthEntry(n - 1));
 	}
 
 	surface->EndPaint();
 
-	txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(joblist->GetNOfEntries())));
+	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfEntries())));
 
-	if (joblist->GetNOfEntries() > 0)
+	if (GetNOfEntries() > 0)	((bonkEncGUI *) bonkEnc::currentConfig->appMain)->SelectJoblistEntry();
+	else				((bonkEncGUI *) bonkEnc::currentConfig->appMain)->ClearEditFields();
+}
+
+
+Void BonkEnc::JobList::SelectAll()
+{
+	for (Int i = 0; i < GetNOfEntries(); i++)
 	{
-		SelectJoblistEntry();
-	}
-	else
-	{
-		dontUpdateInfo = True;
-
-		info_edit_artist->SetText("");
-		info_edit_title->SetText("");
-		info_edit_album->SetText("");
-		info_edit_track->SetText("");
-		info_edit_year->SetText("");
-		info_edit_genre->SetText("");
-
-		info_edit_artist->Deactivate();
-		info_edit_title->Deactivate();
-		info_edit_album->Deactivate();
-		info_edit_track->Deactivate();
-		info_edit_year->Deactivate();
-		info_edit_genre->Deactivate();
-
-		dontUpdateInfo = False;
+		if (!GetNthEntry(i)->IsMarked()) GetNthEntry(i)->SetMark(True);
 	}
 }
 
-Void bonkEnc::ClearList()
+Void BonkEnc::JobList::SelectNone()
 {
-	if (encoding)
+	for (Int i = 0; i < GetNOfEntries(); i++)
 	{
-		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-
-		return;
-	}
-
-	if (playing) StopPlayback();
-
-	joblist->RemoveAllTracks();
-
-	if (!currentConfig->enable_console) txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", "0"));
-
-	dontUpdateInfo = True;
-
-	info_edit_artist->SetText("");
-	info_edit_title->SetText("");
-	info_edit_album->SetText("");
-	info_edit_track->SetText("");
-	info_edit_year->SetText("");
-	info_edit_genre->SetText("");
-
-	info_edit_artist->Deactivate();
-	info_edit_title->Deactivate();
-	info_edit_album->Deactivate();
-	info_edit_track->Deactivate();
-	info_edit_year->Deactivate();
-	info_edit_genre->Deactivate();
-
-	dontUpdateInfo = False;
-}
-
-Void bonkEncGUI::SelectJoblistEntry()
-{
-	Track	*format = joblist->GetSelectedTrack();
-
-	dontUpdateInfo = True;
-
-	info_edit_artist->Activate();
-	info_edit_title->Activate();
-	info_edit_album->Activate();
-	info_edit_track->Activate();
-	info_edit_year->Activate();
-	info_edit_genre->Activate();
-
-	info_edit_artist->SetText(format->artist);
-	info_edit_title->SetText(format->title);
-	info_edit_album->SetText(format->album);
-
-	info_edit_track->SetText("");
-
-	if (format->track > 0 && format->track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(format->track)));
-	else if (format->track >= 10)			info_edit_track->SetText(String::FromInt(format->track));
-
-	info_edit_year->SetText("");
-
-	if (format->year > 0) info_edit_year->SetText(String::FromInt(format->year));
-
-	info_edit_genre->SetText(format->genre);
-
-	dontUpdateInfo = False;
-}
-
-Void bonkEncGUI::UpdateTitleInfo()
-{
-	if (dontUpdateInfo) return;
-
-	if (joblist->GetSelectedEntry() == NIL) return;
-
-	Track	*format = joblist->GetSelectedTrack();
-
-	if (format == NIL) return;
-
-	format->artist	= info_edit_artist->GetText();
-	format->title	= info_edit_title->GetText();
-	format->album	= info_edit_album->GetText();
-	format->track	= info_edit_track->GetText().ToInt();
-	format->year	= info_edit_year->GetText().ToInt();
-	format->genre	= info_edit_genre->GetText();
-
-	String	 jlEntry;
-
-	if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
-	else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
-
-	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
-
-	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->GetSelectedEntry()->SetText(jlEntry);
-}
-
-Void bonkEncGUI::JoblistSelectAll()
-{
-	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
-	{
-		if (!joblist->GetNthEntry(i)->IsMarked()) joblist->GetNthEntry(i)->SetMark(True);
+		if (GetNthEntry(i)->IsMarked()) GetNthEntry(i)->SetMark(False);
 	}
 }
 
-Void bonkEncGUI::JoblistSelectNone()
+Void BonkEnc::JobList::ToggleSelection()
 {
-	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+	for (Int i = 0; i < GetNOfEntries(); i++)
 	{
-		if (joblist->GetNthEntry(i)->IsMarked()) joblist->GetNthEntry(i)->SetMark(False);
+		if (GetNthEntry(i)->IsMarked())	GetNthEntry(i)->SetMark(False);
+		else				GetNthEntry(i)->SetMark(True);
 	}
 }
 
-Void bonkEncGUI::JoblistToggleSelection()
+Void BonkEnc::JobList::LoadList()
 {
-	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
-	{
-		if (joblist->GetNthEntry(i)->IsMarked())	joblist->GetNthEntry(i)->SetMark(False);
-		else						joblist->GetNthEntry(i)->SetMark(True);
-	}
+}
+
+Void BonkEnc::JobList::SaveList()
+{
+}
+
+Void BonkEnc::JobList::OnRegister(Container *container)
+{
+	container->RegisterObject(droparea);
+	container->RegisterObject(text);
+
+	container->RegisterObject(button_sel_all);
+	container->RegisterObject(button_sel_none);
+	container->RegisterObject(button_sel_toggle);
+
+	((bonkEncGUI *) bonkEnc::currentConfig->appMain)->onChangeLanguageSettings.Connect(&JobList::OnChangeLanguageSettings, this);
+}
+
+Void BonkEnc::JobList::OnUnregister(Container *container)
+{
+	container->UnregisterObject(droparea);
+	container->UnregisterObject(text);
+
+	container->UnregisterObject(button_sel_all);
+	container->UnregisterObject(button_sel_none);
+	container->UnregisterObject(button_sel_toggle);
+
+	((bonkEncGUI *) bonkEnc::currentConfig->appMain)->onChangeLanguageSettings.Disconnect(&JobList::OnChangeLanguageSettings, this);
+}
+
+Void BonkEnc::JobList::OnChangeLanguageSettings()
+{
+	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfEntries())));
+
+	button_sel_all->SetTooltipText(bonkEnc::i18n->TranslateString("Select all"));
+	button_sel_none->SetTooltipText(bonkEnc::i18n->TranslateString("Select none"));
+	button_sel_toggle->SetTooltipText(bonkEnc::i18n->TranslateString("Toggle selection"));
 }

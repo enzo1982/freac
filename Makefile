@@ -12,7 +12,7 @@ BINRESDIR = $(RESOURCEDIR)/binary
 OBJECTS = $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cddb.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/language.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o
 RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o
-CMDOBJECTS = $(OBJECTDIR)/cmdmain.o $(OBJECTDIR)/console.o
+CMDOBJECTS = $(OBJECTDIR)/cmdmain.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
 CMDNAME = $(BINDIR)/BEcmd.exe
@@ -106,11 +106,6 @@ $(OBJECTDIR)/cmdmain.o: $(SRCDIR)/cmdmain.cpp
 $(OBJECTDIR)/config.o: $(SRCDIR)/config.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/config.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/config.cpp -o $(OBJECTDIR)/config.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/console.o: $(SRCDIR)/console.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/console.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/console.cpp -o $(OBJECTDIR)/console.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/cuesheet.o: $(SRCDIR)/cuesheet.cpp

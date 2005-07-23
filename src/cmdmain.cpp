@@ -11,8 +11,9 @@
 #include <smooth/main.h>
 #include <smooth/args.h>
 #include <cmdmain.h>
-#include <console.h>
 #include <joblist.h>
+
+using namespace smooth::System;
 
 Int smooth::Main(Array<String> &args)
 {
@@ -59,73 +60,71 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 
 	ScanForFiles(&files);
 
-	bonkEncConsole	*con;
-
-	if (!quiet)	con = new bonkEncConsole(String("BonkEnc ").Append(bonkEnc::version));
-	else		con = new bonkEncConsole((char *) NIL);
-
-	con->OutputString(String("BonkEnc Audio Encoder ").Append(bonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2005 Robert Kausch\n\n"));
+	Console::SetTitle(String("BonkEnc ").Append(bonkEnc::version));
 
 	if ((files.GetNOfEntries() == 0 && helpenc == "") || !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "TVQ" || encoder == "WAVE" || encoder == "lame" || encoder == "vorbis" || encoder == "bonk" || encoder == "blade" || encoder == "faac" || encoder == "tvq" || encoder == "wave") || (files.GetNOfEntries() > 1 && outfile != ""))
 	{
-		con->OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
-		con->OutputString("\t-e <encoder>\tSpecify the encoder to use (default is FAAC)\n");
-		con->OutputString("\t-d <outdir>\tSpecify output directory for encoded files\n");
-		con->OutputString("\t-o <outfile>\tSpecify output file name in single file mode\n");
-		con->OutputString("\t-h <encoder>\tPrint help for encoder specific options\n");
-		con->OutputString("\t-quiet\t\tDo not print any messages\n\n");
-		con->OutputString("<encoder> can be one of LAME, VORBIS, BONK, BLADE, FAAC, TVQ or WAVE.\n\n");
+		Console::OutputString(String("BonkEnc Audio Encoder ").Append(bonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2005 Robert Kausch\n\n"));
+		Console::OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
+		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is FAAC)\n");
+		Console::OutputString("\t-d <outdir>\tSpecify output directory for encoded files\n");
+		Console::OutputString("\t-o <outfile>\tSpecify output file name in single file mode\n");
+		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n");
+		Console::OutputString("\t-quiet\t\tDo not print any messages\n\n");
+		Console::OutputString("<encoder> can be one of LAME, VORBIS, BONK, BLADE, FAAC, TVQ or WAVE.\n\n");
 	}
 	else if (helpenc != "")
 	{
+		Console::OutputString(String("BonkEnc Audio Encoder ").Append(bonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2005 Robert Kausch\n\n"));
+
 		if (helpenc == "LAME" || helpenc == "lame")
 		{
-			con->OutputString("Options for LAME MP3 encoder:\n\n");
-			con->OutputString("\t-m <mode>\t\t(CBR, VBR or ABR, default: VBR)\n");
-			con->OutputString("\t-b <CBR/ABR bitrate>\t(8 - 320, default: 192)\n");
-			con->OutputString("\t-q <VBR quality>\t(0 = best, 9 = worst, default: 5)\n\n");
+			Console::OutputString("Options for LAME MP3 encoder:\n\n");
+			Console::OutputString("\t-m <mode>\t\t(CBR, VBR or ABR, default: VBR)\n");
+			Console::OutputString("\t-b <CBR/ABR bitrate>\t(8 - 320, default: 192)\n");
+			Console::OutputString("\t-q <VBR quality>\t(0 = best, 9 = worst, default: 5)\n\n");
 		}
 		else if (helpenc == "VORBIS" || helpenc == "vorbis")
 		{
-			con->OutputString("Options for Ogg Vorbis encoder:\n\n");
-			con->OutputString("\t-q <quality>\t\t(0 - 100, default: 60, VBR mode)\n");
-			con->OutputString("\t-b <target bitrate>\t(45 - 500, default: 192, ABR mode)\n\n");
+			Console::OutputString("Options for Ogg Vorbis encoder:\n\n");
+			Console::OutputString("\t-q <quality>\t\t(0 - 100, default: 60, VBR mode)\n");
+			Console::OutputString("\t-b <target bitrate>\t(45 - 500, default: 192, ABR mode)\n\n");
 		}
 		else if (helpenc == "BONK" || helpenc == "bonk")
 		{
-			con->OutputString("Options for Bonk encoder:\n\n");
-			con->OutputString("\t-q <quantization factor>\t(0 - 2, default: 0.4)\n");
-			con->OutputString("\t-p <predictor size>\t\t(0 - 512, default: 32)\n");
-			con->OutputString("\t-r <downsampling ratio>\t\t(1 - 10, default: 2)\n");
-			con->OutputString("\t-js\t\t\t\t(use Joint Stereo)\n");
-			con->OutputString("\t-lossless\t\t\t(use lossless compression)\n\n");
+			Console::OutputString("Options for Bonk encoder:\n\n");
+			Console::OutputString("\t-q <quantization factor>\t(0 - 2, default: 0.4)\n");
+			Console::OutputString("\t-p <predictor size>\t\t(0 - 512, default: 32)\n");
+			Console::OutputString("\t-r <downsampling ratio>\t\t(1 - 10, default: 2)\n");
+			Console::OutputString("\t-js\t\t\t\t(use Joint Stereo)\n");
+			Console::OutputString("\t-lossless\t\t\t(use lossless compression)\n\n");
 		}
 		else if (helpenc == "BLADE" || helpenc == "blade")
 		{
-			con->OutputString("Options for BladeEnc encoder:\n\n");
-			con->OutputString("\t-b <bitrate>\t(32, 40, 48, 56, 64, 80, 96, 112, 128,\n");
-			con->OutputString("\t\t\t 160, 192, 224, 256 or 320, default: 192)\n\n");
+			Console::OutputString("Options for BladeEnc encoder:\n\n");
+			Console::OutputString("\t-b <bitrate>\t(32, 40, 48, 56, 64, 80, 96, 112, 128,\n");
+			Console::OutputString("\t\t\t 160, 192, 224, 256 or 320, default: 192)\n\n");
 		}
 		else if (helpenc == "FAAC" || helpenc == "faac")
 		{
-			con->OutputString("Options for FAAC AAC/MP4 encoder:\n\n");
-			con->OutputString("\t-q <quality>\t\t\t(10 - 500, default: 100, VBR mode)\n");
-			con->OutputString("\t-b <bitrate per channel>\t(8 - 256, default: 64, ABR mode)\n");
-			con->OutputString("\t-mp4\t\t\t\t(use MP4 container format)\n\n");
+			Console::OutputString("Options for FAAC AAC/MP4 encoder:\n\n");
+			Console::OutputString("\t-q <quality>\t\t\t(10 - 500, default: 100, VBR mode)\n");
+			Console::OutputString("\t-b <bitrate per channel>\t(8 - 256, default: 64, ABR mode)\n");
+			Console::OutputString("\t-mp4\t\t\t\t(use MP4 container format)\n\n");
 		}
 		else if (helpenc == "TVQ" || helpenc == "tvq")
 		{
-			con->OutputString("Options for TwinVQ encoder:\n\n");
-			con->OutputString("\t-b <bitrate per channel>\t(24, 32 or 48, default: 48)\n");
-			con->OutputString("\t-c <preselection candidates>\t(4, 8, 16 or 32, default: 32)\n\n");
+			Console::OutputString("Options for TwinVQ encoder:\n\n");
+			Console::OutputString("\t-b <bitrate per channel>\t(24, 32 or 48, default: 48)\n");
+			Console::OutputString("\t-c <preselection candidates>\t(4, 8, 16 or 32, default: 32)\n\n");
 		}
 		else if (helpenc == "WAVE" || helpenc == "wave")
 		{
-			con->OutputString("No options can be configured for the WAVE Out filter!\n\n");
+			Console::OutputString("No options can be configured for the WAVE Out filter!\n\n");
 		}
 		else
 		{
-			con->OutputString(String("Encoder ").Append(helpenc).Append(" is not supported by BonkEnc!\n\n"));
+			Console::OutputString(String("Encoder ").Append(helpenc).Append(" is not supported by BonkEnc!\n\n"));
 		}
 	}
 	else
@@ -139,7 +138,7 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 		    ((encoder == "FAAC" || encoder == "faac")	  && !currentConfig->enable_faac)   ||
 		    ((encoder == "TVQ" || encoder == "tvq")	  && !currentConfig->enable_tvq))
 		{
-			con->OutputString(String("Encoder ").Append(encoder).Append(" is not available!\n\n"));
+			Console::OutputString(String("Encoder ").Append(encoder).Append(" is not available!\n\n"));
 
 			broken = true;
 		}
@@ -244,7 +243,7 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 		}
 		else
 		{
-			con->OutputString(String("Encoder ").Append(encoder).Append(" is not supported by BonkEnc!\n\n"));
+			Console::OutputString(String("Encoder ").Append(encoder).Append(" is not supported by BonkEnc!\n\n"));
 
 			broken = true;
 		}
@@ -257,23 +256,16 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 
 			if (currentConfig->enc_outdir[len] != '\\') currentConfig->enc_outdir[++len] = '\\';
 
-			bool	 lferror = false;
-
-			for (int i = 0; i < files.GetNOfEntries(); i++)
+			for (Int i = 0; i < files.GetNOfEntries(); i++)
 			{
-				if (i != 0 && !lferror) con->OutputString("done.\n");
-
-				lferror = false;
-
 				InStream	*in = new InStream(STREAM_FILE, files.GetNthEntry(i), IS_READONLY);
 
 				if (in->GetLastError() != IOLIB_ERROR_OK)
 				{
 					delete in;
 
-					con->OutputString(String("File not found: ").Append(files.GetNthEntry(i)).Append("\n"));
+					Console::OutputString(String("File not found: ").Append(files.GetNthEntry(i)).Append("\n"));
 
-					lferror = true;
 					broken = true;
 
 					continue;
@@ -292,17 +284,16 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 
 				if ((extension == ".mp3" && !currentConfig->enable_lame) || (extension == ".ogg" && !currentConfig->enable_vorbis))
 				{
-					con->OutputString(String("Cannot process file: ").Append(files.GetNthEntry(i)).Append("\n"));
+					Console::OutputString(String("Cannot process file: ").Append(files.GetNthEntry(i)).Append("\n"));
 
-					lferror = true;
 					broken = true;
 
 					continue;
 				}
 
-				con->OutputString(String("Processing file: ").Append(files.GetNthEntry(i)).Append("..."));
+				if (!quiet) Console::OutputString(String("Processing file: ").Append(files.GetNthEntry(i)).Append("..."));
 
-				AddFileByName(files.GetNthEntry(i), outfile);
+				joblist->AddTrackByFileName(files.GetNthEntry(i), outfile);
 
 				Encode();
 
@@ -324,13 +315,11 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 
 					Sleep(10);
 				}
-			}
 
-			if (!lferror) con->OutputString("done.\n");
+				if (!quiet) Console::OutputString("done.\n");
+			}
 		}
 	}
-
-	delete con;
 
 	delete joblist;
 }

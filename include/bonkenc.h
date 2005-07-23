@@ -52,9 +52,7 @@ class bonkEnc : public Application
 		Window			*mainWnd;
 		Statusbar		*mainWnd_statusbar;
 
-		Text			*txt_joblist;
 		Hyperlink		*hyperlink;
-		DropArea		*droparea;
 
 		CheckBox		*check_playlist;
 		CheckBox		*check_cuesheet;
@@ -94,30 +92,22 @@ class bonkEnc : public Application
 
 		Progressbar		*progress;
 
-		Bool			 encoding;
 		Thread			*encoder_thread;
+		Bool			 pause_encoding;
 		Bool			 stop_encoding;
 
-		Bool			 playing;
-		Bool			 paused;
 		Thread			*play_thread;
 		Bool			 stop_playback;
 
 		Int			 player_activedrive;
 		Int			 player_plugin;
-		Int			 player_entry;
 
 		Bool			 dontUpdateInfo;
 		Int			 encoder_activedrive;
 
-		Void			 AddFileByName(String, String out = NIL);
 		Int			 Encoder(Thread *);
-		InputFilter		*CreateInputFilter(String, Track *);
 		Void			 PlayItem(Int);
 		Int			 PlayThread(Thread *);
-
-		String			 LocalizeNumber(Int);
-		String			 ReplaceIncompatibleChars(String);
 	public:
 		static String		 version;
 		static String		 cddbVersion;
@@ -130,16 +120,21 @@ class bonkEnc : public Application
 
 		JobList			*joblist;
 
+		Bool			 encoding;
+		Bool			 playing;
+		Bool			 paused;
+
+		Int			 player_entry;
+
 					 bonkEnc();
 					~bonkEnc();
 
 		Array<Track *>		*GetCDDBData();
 	slots:
-		Void			 ClearList();
-
 		Void			 ReadCD();
 
 		Void			 Encode();
+		Void			 PauseEncoding();
 		Void			 StopEncoding();
 
 		Void			 PlaySelectedItem();

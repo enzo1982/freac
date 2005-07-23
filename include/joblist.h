@@ -24,8 +24,15 @@ namespace BonkEnc
 	{
 		private:
 			DropArea	*droparea;
+			Text		*text;
+
+			Button		*button_sel_all;
+			Button		*button_sel_none;
+			Button		*button_sel_toggle;
 
 			Array<Track *>	 tracks;
+
+			Bool		 AddTrack(Track *);
 		public:
 					 JobList(Point, Size);
 			virtual		~JobList();
@@ -33,12 +40,31 @@ namespace BonkEnc
 			Int		 GetNOfTracks();
 			Track		*GetNthTrack(Int);
 
-			Bool		 AddTrack(Track *);
-
 			Bool		 RemoveNthTrack(Int);
 			Bool		 RemoveAllTracks();
 
 			Track		*GetSelectedTrack();
+
+			Int		 SetMetrics(Point, Size);
+
+			Void		 AddTrackByDialog();
+			Void		 AddTrackByFileName(String, String out = NIL);
+
+			Void		 RemoveSelectedTrack();
+		slots:
+			Void		 AddTrackByDragAndDrop(const String &);
+
+			Void		 SelectAll();
+			Void		 SelectNone();
+			Void		 ToggleSelection();
+
+			Void		 LoadList();
+			Void		 SaveList();
+
+			Void		 OnRegister(Container *);
+			Void		 OnUnregister(Container *);
+
+			Void		 OnChangeLanguageSettings();
 	};
 };
 

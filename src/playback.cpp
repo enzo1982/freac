@@ -12,6 +12,7 @@
 #include <dllinterfaces.h>
 
 #include <joblist.h>
+#include <utilities.h>
 
 #include <iolib/drivers/driver_posix.h>
 #include <iolib/drivers/driver_unicode.h>
@@ -67,9 +68,9 @@ Void bonkEnc::PlayItem(Int entry)
 
 Void bonkEnc::PlaySelectedItem()
 {
-	for (Int i = 0; i < joblist->GetNOfEntries(); i++)
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
-		if (joblist->GetSelectedEntry() == joblist->GetNthEntry(i)) PlayItem(i);
+		if (joblist->GetSelectedTrack() == joblist->GetNthTrack(i)) PlayItem(i);
 	}
 }
 
@@ -109,7 +110,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 	}
 	else
 	{
-		filter_in = CreateInputFilter(in_filename, trackInfo);
+		filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
 
 		if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(in_filename, IS_READONLY);
 		else				driver_in = new IOLibDriverPOSIX(in_filename, IS_READONLY);
@@ -243,11 +244,11 @@ Int bonkEnc::PlayThread(Thread *thread)
 Void bonkEnc::PausePlayback()
 {
 	if (!playing) return;
-	if (paused) return;
 
-	bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(1);
+	if (paused) bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(0);
+	else	    bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(1);
 
-	paused = True;
+	paused = !paused;
 }
 
 Void bonkEnc::StopPlayback()
@@ -274,5 +275,5 @@ Void bonkEnc::PlayNext()
 {
 	if (!playing) return;
 
-	if (player_entry < joblist->GetNOfEntries() - 1) PlayItem(player_entry + 1);
+	if (player_entry < joblist->GetNOfTracks() - 1) PlayItem(player_entry + 1);
 }

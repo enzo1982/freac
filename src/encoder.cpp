@@ -16,6 +16,7 @@
 #include <cuesheet.h>
 #include <playlist.h>
 #include <joblist.h>
+#include <utilities.h>
 
 #include <iolib/drivers/driver_posix.h>
 #include <iolib/drivers/driver_unicode.h>
@@ -67,6 +68,7 @@ Void bonkEnc::Encode()
 	encoder_thread->threadMain.Connect(&bonkEnc::Encoder, this);
 
 	encoding = True;
+	pause_encoding = False;
 	stop_encoding = False;
 
 	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
@@ -85,7 +87,7 @@ Int bonkEnc::Encoder(Thread *thread)
 
 	encoder_activedrive = currentConfig->cdrip_activedrive;
 
-	Int		 num		= joblist->GetNOfEntries();
+	Int		 num		= joblist->GetNOfTracks();
 	Int		 nRemoved	= 0;
 	Int		 step		= 1;
 	Int		 encoder	= currentConfig->encoder;
@@ -139,12 +141,12 @@ Int bonkEnc::Encoder(Thread *thread)
 			{
 				out_filename.Append(currentConfig->enc_filePattern);
 
-				out_filename.Replace("<artist>", ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")));
-				out_filename.Replace("<title>", ReplaceIncompatibleChars(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
-				out_filename.Replace("<album>", ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album")));
-				out_filename.Replace("<genre>", ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre")));
+				out_filename.Replace("<artist>", Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")));
+				out_filename.Replace("<title>", Utilities::ReplaceIncompatibleChars(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
+				out_filename.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album")));
+				out_filename.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre")));
 				out_filename.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
-				out_filename.Replace("<filename>", ReplaceIncompatibleChars(shortInFileName));
+				out_filename.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName));
 
 				String	 dir = out_filename;
 				String	 tmp;
@@ -233,7 +235,7 @@ Int bonkEnc::Encoder(Thread *thread)
 		}
 		else
 		{
-			filter_in = CreateInputFilter(in_filename, trackInfo);
+			filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
 
 			if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(in_filename, IS_READONLY);
 			else				driver_in = new IOLibDriverPOSIX(in_filename, IS_READONLY);
@@ -333,6 +335,8 @@ Int bonkEnc::Encoder(Thread *thread)
 					}
 
 					position += step;
+
+					while (pause_encoding && !stop_encoding) Sleep(50);
 
 					if (stop_encoding) break;
 
@@ -489,11 +493,11 @@ Int bonkEnc::Encoder(Thread *thread)
 
 		if (!currentConfig->enable_console && !stop_encoding && step == 1)
 		{
-			ListEntry	*entry = joblist->GetNthEntry(i - nRemoved);
+			Track	*entry = joblist->GetNthTrack(i - nRemoved);
 
-			if (joblist->GetSelectedEntry() != NIL)
+			if (joblist->GetSelectedTrack() != NIL)
 			{
-				if (entry == joblist->GetSelectedEntry())
+				if (entry == joblist->GetSelectedTrack())
 				{
 					dontUpdateInfo = True;
 
@@ -529,8 +533,6 @@ Int bonkEnc::Encoder(Thread *thread)
 			joblist->RemoveNthTrack(i - nRemoved);
 
 			surface->EndPaint();
-
-			txt_joblist->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(joblist->GetNOfEntries())));
 
 			nRemoved++;
 		}
@@ -569,6 +571,13 @@ Int bonkEnc::Encoder(Thread *thread)
 	return Success;
 }
 
+Void bonkEnc::PauseEncoding()
+{
+	if (!encoding) return;
+
+	pause_encoding = !pause_encoding;
+}
+
 Void bonkEnc::StopEncoding()
 {
 	if (!encoding) return;
@@ -580,28 +589,4 @@ Void bonkEnc::StopEncoding()
 	delete encoder_thread;
 
 	encoder_thread = NIL;
-}
-
-String bonkEnc::ReplaceIncompatibleChars(String string)
-{
-	String	 rVal;
-
-	for (Int k = 0, b = 0; k < string.Length(); k++)
-	{
-		if (string[k] == '\"')			{ rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
-		else if (string[k] == '?')		b--;
-		else if (string[k] == '|')		rVal[k + b] = '_';
-		else if (string[k] == '*')		b--;
-		else if (string[k] == '<')		rVal[k + b] = '(';
-		else if (string[k] == '>')		rVal[k + b] = ')';
-		else if (string[k] == ':')		b--;
-		else if (string[k] == '/')		rVal[k + b] = '_';
-		else if (string[k] == '\\')		rVal[k + b] = '_';
-		else if (string[k] >= 256 &&
-			 (!currentConfig->useUnicodeNames ||
-			  !Setup::enableUnicode))	rVal[k + b] = '#';
-		else					rVal[k + b] = string[k];
-	}
-
-	return rVal;
 }

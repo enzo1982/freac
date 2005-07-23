@@ -11,14 +11,11 @@
 #include <bonkenc.h>
 #include <resources.h>
 #include <stdlib.h>
-#include <string>
 #include <vector>
 #include <time.h>
 
 #include <dllinterfaces.h>
-
-#include <iolib/drivers/driver_posix.h>
-#include <iolib/drivers/driver_unicode.h>
+#include <joblist.h>
 
 #include <dialogs/genconfig/genconfig.h>
 #include <dialogs/bonkconfig.h>
@@ -33,19 +30,6 @@
 #include <dialogs/cddb/submit.h>
 
 #include <dialogs/language.h>
-
-#include <input/filter-in-cdrip.h>
-#include <input/filter-in-wave.h>
-#include <input/filter-in-voc.h>
-#include <input/filter-in-aiff.h>
-#include <input/filter-in-au.h>
-#include <input/filter-in-lame.h>
-#include <input/filter-in-mp4.h>
-#include <input/filter-in-vorbis.h>
-#include <input/filter-in-bonk.h>
-#include <input/filter-in-faad2.h>
-#include <input/filter-in-flac.h>
-#include <input/filter-in-winamp.h>
 
 Int	 ENCODER_BONKENC	= -1;
 Int	 ENCODER_BLADEENC	= -1;
@@ -239,165 +223,6 @@ bonkEnc::~bonkEnc()
 	CoUninitialize();
 }
 
-InputFilter *bonkEnc::CreateInputFilter(String file, Track *trackInfo)
-{
-	String	 extension2;
-	String	 extension3;
-	String	 extension4;
-
-	extension2[0] = tolower(file[file.Length() - 2]);
-	extension2[1] = tolower(file[file.Length() - 1]);
-
-	extension3[0] = tolower(file[file.Length() - 3]);
-	extension3[1] = tolower(file[file.Length() - 2]);
-	extension3[2] = tolower(file[file.Length() - 1]);
-
-	extension4[0] = tolower(file[file.Length() - 4]);
-	extension4[1] = tolower(file[file.Length() - 3]);
-	extension4[2] = tolower(file[file.Length() - 2]);
-	extension4[3] = tolower(file[file.Length() - 1]);
-
-	Array<String>	 extensions;
-	Array<Int>	 indexes;
-
-	for (Int i = 0; i < bonkEncDLLInterfaces::winamp_in_plugins.GetNOfEntries(); i++)
-	{
-		Int	 n = 1;
-		Int	 k = 0;
-		String	 extension;
-
-		for (Int j = 0; true; j++)
-		{
-			if (!(n & 1))
-			{
-				if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0) n++;
-			}
-			else
-			{
-				extension[k++] = bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
-
-				if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
-				{
-					String	 extension2 = extension;
-					Int	 o = 0;		
-
-					for (Int m = 0; m <= extension2.Length(); m++)
-					{
-						if (extension2[m] == ';' || extension2[m] == 0)
-						{
-							extension[m - o] = 0;
-
-							extensions.AddEntry(extension);
-							indexes.AddEntry(i);
-
-							o = m + 1;
-						}
-						else
-						{
-							extension[m - o] = tolower(extension2[m]);
-						}
-					}
-
-					k = 0;
-					n++;
-					extension = "";
-				}
-			}
-
-			if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
-		}
-	}
-
-	InputFilter	*filter_in = NIL;
-
-	if (extension3 == "cda" && currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
-	{
-		filter_in = new FilterInCDRip(currentConfig, trackInfo);
-	}
-	else if (extension3 == "mp3" && currentConfig->enable_lame)
-	{
-		filter_in = new FilterInLAME(currentConfig, trackInfo);
-	}
-	else if ((extension3 == "mp4" || extension3 == "m4a" || extension3 == "m4b") && currentConfig->enable_mp4 && currentConfig->enable_faad2)
-	{
-		filter_in = new FilterInMP4(currentConfig, trackInfo);
-	}
-	else if (extension3 == "ogg" && currentConfig->enable_vorbis)
-	{
-		filter_in = new FilterInVORBIS(currentConfig, trackInfo);
-	}
-	else if (extension3 == "aac" && currentConfig->enable_faad2)
-	{
-		filter_in = new FilterInFAAD2(currentConfig, trackInfo);
-	}
-	else if (extension4 == "bonk" && currentConfig->enable_bonk)
-	{
-		filter_in = new FilterInBONK(currentConfig, trackInfo);
-	}
-	else if (extension4 == "flac" && currentConfig->enable_flac)
-	{
-		filter_in = new FilterInFLAC(currentConfig, trackInfo);
-	}
-	else
-	{
-		Int	 found = -1;
-
-		for (Int i = 0; i < extensions.GetNOfEntries(); i++)
-		{
-			switch (extensions.GetNthEntry(i).Length())
-			{
-				case 2:
-					if (extension2 == extensions.GetNthEntry(i)) found = i;
-					break;
-				case 3:
-					if (extension3 == extensions.GetNthEntry(i)) found = i;
-					break;
-				case 4:
-					if (extension4 == extensions.GetNthEntry(i)) found = i;
-					break;
-			}
-
-			if (found >= 0) break;
-		}
-
-		if (found == -1)
-		{
-			IOLibDriver	*driver_in = NIL;
-
-			if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(file, IS_READONLY);
-			else				driver_in = new IOLibDriverPOSIX(file, IS_READONLY);
-
-			InStream	*f_in = new InStream(STREAM_DRIVER, driver_in);
-			Int		 magic = f_in->InputNumber(4);
-
-			delete f_in;
-			delete driver_in;
-
-			switch (magic)
-			{
-				case 1297239878:
-					filter_in = new FilterInAIFF(currentConfig, trackInfo);
-					break;
-				case 1684960046:
-					filter_in = new FilterInAU(currentConfig, trackInfo);
-					break;
-				case 1634038339:
-					filter_in = new FilterInVOC(currentConfig, trackInfo);
-					break;
-				case 1179011410:
-					filter_in = new FilterInWAVE(currentConfig, trackInfo);
-					break;
-			}
-		}
-		else
-		{
-			filter_in = new FilterInWinamp(currentConfig, trackInfo, bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
-		}
-	}
-
-	return filter_in;
-}
-
 Void bonkEnc::ReadCD()
 {
 	if (encoding)
@@ -417,7 +242,7 @@ Void bonkEnc::ReadCD()
 	{
 		TOCENTRY entry = ex_CR_GetTocEntry(i);
 
-		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1) AddFileByName(String("/cda").Append(String::FromInt(i + 1)));
+		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1) joblist->AddTrackByFileName(String("/cda").Append(String::FromInt(i + 1)));
 
 		cddbRetry = False;
 	}

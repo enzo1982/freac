@@ -294,5 +294,6 @@
     <entry id="282" string="unknown genre"/>
     <entry id="283" string="Load joblist..."/>
     <entry id="284" string="Save joblist..."/>
+    <entry id="285" string="Pause/resume encoding"/>
   </data>
 </LangFile>

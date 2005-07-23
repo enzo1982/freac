@@ -297,19 +297,6 @@ SOURCE=..\src\config.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\console.cpp
-
-!IF  "$(CFG)" == "BonkEnc - Win32 Release"
-
-!ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
-
-# PROP Exclude_From_Build 1
-
-!ENDIF 
-
-# End Source File
-# Begin Source File
-
 SOURCE=..\src\cuesheet.cpp
 # End Source File
 # Begin Source File
@@ -343,6 +330,10 @@ SOURCE=..\src\playlist.cpp
 # Begin Source File
 
 SOURCE=..\src\track.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\utilities.cpp
 # End Source File
 # End Group
 # Begin Group "Header-Dateien"
@@ -546,10 +537,6 @@ SOURCE=..\include\config.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\include\console.h
-# End Source File
-# Begin Source File
-
 SOURCE=..\include\cuesheet.h
 # End Source File
 # Begin Source File
@@ -559,6 +546,10 @@ SOURCE=..\include\debug.h
 # Begin Source File
 
 SOURCE=..\include\dllinterfaces.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\joblist.h
 # End Source File
 # Begin Source File
 
@@ -575,6 +566,10 @@ SOURCE=..\include\resources.h
 # Begin Source File
 
 SOURCE=..\include\track.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\utilities.h
 # End Source File
 # End Group
 # Begin Group "Ressourcendateien"

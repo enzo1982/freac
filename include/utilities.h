@@ -11,16 +11,29 @@
 #ifndef _H_UTILITIES_
 #define _H_UTILITIES_
 
+namespace BonkEnc
+{
+	class InputFilter;
+
+	class Track;
+};
+
 #include <smooth.h>
 
 using namespace smooth;
+using namespace smooth::GUI;
 
 namespace BonkEnc
 {
 	class Utilities
 	{
 		public:
-			static String	 LocalizeNumber(Int);
+			static InputFilter	*CreateInputFilter(String &, Track *);
+			static Void		 FillGenreList(List *);
+
+			static String		 LocalizeNumber(Int);
+
+			static String		 ReplaceIncompatibleChars(String);
 	};
 };
 

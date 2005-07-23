@@ -25,6 +25,7 @@ History
 		- added basic support for creating cue sheets
 		- added support for ID3V1 tags
 		- added encoder configuration options to BEcmd
+		- added a button to pause/resume the encoding process
 		- upgrade to MPEG4IP v1.3
 		- use smooth v0.8.67.0
 		- removed support for MinGW 1.x

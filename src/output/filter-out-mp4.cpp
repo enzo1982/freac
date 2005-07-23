@@ -75,7 +75,7 @@ bool BonkEnc::FilterOutMP4::Activate()
 
 	ex_faacEncGetDecoderSpecificInfo(handle, &buffer, &bufferSize);
 
-	ex_MP4SetTrackESConfiguration(mp4File, mp4Track, buffer, bufferSize);
+	ex_MP4SetTrackESConfiguration(mp4File, mp4Track, (u_int8_t *) buffer, bufferSize);
 
 	frameSize	= samplesSize / format->channels;
 
@@ -98,7 +98,7 @@ bool BonkEnc::FilterOutMP4::Deactivate()
 		MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
 		MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
 
-		ex_MP4WriteSample(mp4File, mp4Track, bytes > 0 ? outBuffer : NIL, bytes, dur, ofs, true);
+		ex_MP4WriteSample(mp4File, mp4Track, bytes > 0 ? (u_int8_t *) (unsigned char *) outBuffer : NIL, bytes, dur, ofs, true);
 	}
 
 	ex_faacEncClose(handle);
@@ -165,7 +165,7 @@ int BonkEnc::FilterOutMP4::WriteData(unsigned char *data, int size)
 		MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
 		MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
 
-		ex_MP4WriteSample(mp4File, mp4Track, outBuffer, bytes, dur, ofs, true);
+		ex_MP4WriteSample(mp4File, mp4Track, (u_int8_t *) (unsigned char *) outBuffer, bytes, dur, ofs, true);
 
 		encodedSamples += dur;
 	}

@@ -42,16 +42,15 @@ bool BonkEnc::FilterInMP4::Activate()
 
 		ex_NeAACDecSetConfiguration(handle, fConfig);
 
-		char		*buffer		= NIL;
+		unsigned char	*buffer		= NIL;
 		unsigned long	 buffer_size	= 0;
 
-		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (unsigned char **) &buffer, &buffer_size);
+		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (u_int8_t **) &buffer, (u_int32_t *) &buffer_size);
 
 		unsigned long	 rate;
 		unsigned char	 channels;
 
-		ex_NeAACDecInit2(handle, (unsigned char *) buffer, buffer_size,
- &rate, &channels);
+		ex_NeAACDecInit2(handle, (unsigned char *) buffer, buffer_size, &rate, &channels);
 
 		sampleId = 0;
 
@@ -92,7 +91,7 @@ int BonkEnc::FilterInMP4::ReadData(unsigned char **data, int size)
 		unsigned char	*buffer		= NIL;
 		unsigned long	 buffer_size	= 0;
 
-		ex_MP4ReadSample(mp4File, mp4Track, sampleId++, &buffer, &buffer_size, NIL, NIL, NIL, NIL);
+		ex_MP4ReadSample(mp4File, mp4Track, sampleId++, (u_int8_t **) &buffer, (u_int32_t *) &buffer_size, NIL, NIL, NIL, NIL);
 
 		NeAACDecFrameInfo frameInfo;
 
@@ -186,7 +185,7 @@ Track *BonkEnc::FilterInMP4::GetFileInfo(String inFile)
 		buffer		= NIL;
 		buffer_size	= 0;
 
-		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (unsigned char **) &buffer, &buffer_size);
+		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (u_int8_t **) &buffer, (u_int32_t *) &buffer_size);
 
 		ex_NeAACDecInit2(handle, (unsigned char *) buffer, buffer_size,
  (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);

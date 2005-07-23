@@ -41,10 +41,6 @@ class bonkEncGUI : public bonkEnc
 		Button		*button_prev;
 		Button		*button_next;
 
-		Button		*button_sel_all;
-		Button		*button_sel_none;
-		Button		*button_sel_toggle;
-
 		Int		 clicked_drive;
 		Int		 clicked_encoder;
 
@@ -54,15 +50,6 @@ class bonkEncGUI : public bonkEnc
 		Void		 About();
 		Void		 ConfigureEncoder();
 		Void		 ConfigureGeneral();
-		Void		 AddFile();
-		Void		 AddDragDropFile(String *);
-		Void		 RemoveFile();
-		Void		 LoadList();
-		Void		 SaveList();
-		Void		 SelectJoblistEntry();
-		Void		 JoblistSelectAll();
-		Void		 JoblistSelectNone();
-		Void		 JoblistToggleSelection();
 		Void		 ShowHideTitleInfo();
 		Void		 UpdateTitleInfo();
 		Void		 ReadSpecificCD();
@@ -76,7 +63,10 @@ class bonkEncGUI : public bonkEnc
 		Void		 CheckForUpdates();
 		Int		 CheckForUpdatesThread(Thread *);
 
-		Bool		 SetLanguage(String);
+		Bool		 SetLanguage();
+		Void		 FillMenus();
+	signals:
+		Signal0<Void>	 onChangeLanguageSettings;
 	slots:
 		Bool		 ExitProc();
 
@@ -85,6 +75,9 @@ class bonkEncGUI : public bonkEnc
 	public:
 				 bonkEncGUI();
 				~bonkEncGUI();
+
+		Void		 ClearEditFields();
+		Void		 SelectJoblistEntry();
 };
 
 #endif
