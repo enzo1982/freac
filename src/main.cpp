@@ -36,7 +36,7 @@
 
 Int smooth::Main()
 {
-	debug_out = new bonkEncDebug("BonkEnc.log");
+	debug_out = new Debug("BonkEnc.log");
 
 	debug_out->OutputLine("");
 	debug_out->OutputLine("=======================");
@@ -102,7 +102,7 @@ bonkEncGUI::bonkEncGUI()
 	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org/", pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 
-	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		pos.x = 116 - (Setup::rightToLeft ? 88 : 0);
 		pos.y = -1;
@@ -176,8 +176,13 @@ bonkEncGUI::bonkEncGUI()
 	size.cy = currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0);
 
 	joblist			= new JobList(pos, size);
-	joblist->onClick.Connect(&bonkEncGUI::SelectJoblistEntry, this);
+	joblist->onSelectEntry.Connect(&bonkEncGUI::OnJoblistSelectEntry, this);
+	joblist->onSelectNone.Connect(&bonkEncGUI::OnJoblistSelectNone, this);
 	joblist->SetFlags(LF_MULTICHECKBOX);
+	joblist->AddTab("Title");
+	joblist->AddTab("Track", currentConfig->tab_width_track);
+	joblist->AddTab("Length", currentConfig->tab_width_length);
+	joblist->AddTab("Size", currentConfig->tab_width_size);
 
 	pos.x = 200;
 	pos.y += joblist->size.cy + 4;
@@ -214,18 +219,18 @@ bonkEncGUI::bonkEncGUI()
 	size.cx = 86;
 	size.cy = 0;
 
-	info_checkbox		= new CheckBox("Show title info", pos, size, &currentConfig->showTitleInfo);
+	info_checkbox = new CheckBox("Show title info", pos, size, &currentConfig->showTitleInfo);
 	info_checkbox->onClick.Connect(&bonkEncGUI::ShowHideTitleInfo, this);
 
 	pos.x = 7;
 	pos.y = 161;
 
-	info_text_artist	= new Text("Artist:", pos);
+	info_text_artist = new Text("Artist:", pos);
 	info_text_artist->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	info_text_album		= new Text("Album:", pos);
+	info_text_album = new Text("Album:", pos);
 	info_text_album->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + (Int) Math::Max(info_text_album->textSize.cx, info_text_artist->textSize.cx));
@@ -233,39 +238,39 @@ bonkEncGUI::bonkEncGUI()
 	size.cx = 180;
 	size.cy = 0;
 
-	info_edit_artist	= new EditBox("", pos, size, 0);
+	info_edit_artist = new EditBox("", pos, size, 0);
 	info_edit_artist->onClick.Connect(&bonkEncGUI::UpdateTitleInfo, this);
 	info_edit_artist->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	info_edit_album	= new EditBox("", pos, size, 0);
+	info_edit_album = new EditBox("", pos, size, 0);
 	info_edit_album->onClick.Connect(&bonkEncGUI::UpdateTitleInfo, this);
 	info_edit_album->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + info_edit_artist->size.cx);
 	pos.y += 21;
 
-	info_text_title		= new Text("Title:", pos);
+	info_text_title = new Text("Title:", pos);
 	info_text_title->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	info_text_track		= new Text("Track:", pos);
+	info_text_track = new Text("Track:", pos);
 	info_text_track->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
 	pos.y += 27;
 	size.cx = 100;
 
-	info_edit_title		= new EditBox("", pos, size, 0);
+	info_edit_title = new EditBox("", pos, size, 0);
 	info_edit_title->onClick.Connect(&bonkEncGUI::UpdateTitleInfo, this);
 	info_edit_title->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 	size.cx = 25;
 
-	info_edit_track		= new EditBox("", pos, size, 3);
+	info_edit_track = new EditBox("", pos, size, 3);
 	info_edit_track->SetFlags(EDB_NUMERIC);
 	info_edit_track->onClick.Connect(&bonkEncGUI::UpdateTitleInfo, this);
 	info_edit_track->SetOrientation(OR_LOWERLEFT);
@@ -273,14 +278,14 @@ bonkEncGUI::bonkEncGUI()
 	pos.x += (7 + info_edit_track->size.cx);
 	pos.y -= 3;
 
-	info_text_year		= new Text("Year:", pos);
+	info_text_year = new Text("Year:", pos);
 	info_text_year->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + info_text_year->textSize.cx);
 	pos.y += 3;
 	size.cx = 31;
 
-	info_edit_year		= new EditBox("", pos, size, 4);
+	info_edit_year = new EditBox("", pos, size, 4);
 	info_edit_year->SetFlags(EDB_NUMERIC);
 	info_edit_year->onClick.Connect(&bonkEncGUI::UpdateTitleInfo, this);
 	info_edit_year->SetOrientation(OR_LOWERLEFT);
@@ -288,17 +293,17 @@ bonkEncGUI::bonkEncGUI()
 	pos.x += (7 + info_edit_year->size.cx);
 	pos.y -= 3;
 
-	info_text_genre		= new Text("Genre:", pos);
+	info_text_genre = new Text("Genre:", pos);
 	info_text_genre->SetOrientation(OR_LOWERLEFT);
 
-	info_list_genre		= new ListBox(pos, size);
+	info_list_genre = new ListBox(pos, size);
 	Utilities::FillGenreList(info_list_genre);
 
 	pos.x += (7 + info_text_genre->textSize.cx);
 	pos.y += 3;
 	size.cx = 135;
 
-	info_edit_genre	= new EditBox("", pos, size, 0);
+	info_edit_genre = new EditBox("", pos, size, 0);
 	info_edit_genre->onClick.Connect(&bonkEncGUI::UpdateTitleInfo, this);
 	info_edit_genre->SetOrientation(OR_LOWERLEFT);
 	info_edit_genre->SetDropDownList(info_list_genre);
@@ -310,64 +315,33 @@ bonkEncGUI::bonkEncGUI()
 	info_edit_year->Deactivate();
 	info_edit_genre->Deactivate();
 
-	pos.y = 99;
-	pos.x = 14;
-	size.cx = currentConfig->wndSize.cx - 27;
-	size.cy = 0;
-
-	edb_filename		= new EditBox("none", pos, size, 1024);
+	edb_filename = new EditBox("none", Point(0, 99), Size(0, 0), 1024);
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
-	pos.y -= 24;
-	size.cx = 34;
-
-	edb_time		= new EditBox("00:00", pos, size, 5);
+	edb_time = new EditBox("00:00", Point(0, 75), Size(0, 0), 5);
 	edb_time->SetOrientation(OR_LOWERLEFT);
 	edb_time->Deactivate();
 
-	pos.x += (48 + enc_percent->textSize.cx);
-	size.cx = 33;
-
-	edb_percent		= new EditBox("0%", pos, size, 4);
+	edb_percent = new EditBox("0%", Point(0, 75), Size(0, 0), 4);
 	edb_percent->SetOrientation(OR_LOWERLEFT);
 	edb_percent->Deactivate();
 
-	pos.x += (47 + enc_encoder->textSize.cx);
-	size.cx = currentConfig->wndSize.cx - 122 - enc_percent->textSize.cx - enc_encoder->textSize.cx;
-
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder = new EditBox("Bonk Audio Encoder", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder = new EditBox("BladeEnc MP3 Encoder", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder = new EditBox("LAME MP3 Encoder", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder = new EditBox("Ogg Vorbis Encoder", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder = new EditBox("FAAC MP4/AAC Encoder", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder = new EditBox("TwinVQ VQF Encoder", pos, size, 4);
-	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder = new EditBox("WAVE Out Filter", pos, size, 4);
-
+	edb_encoder = new EditBox("", Point(0, 75), Size(0, 0), 4);
 	edb_encoder->SetOrientation(OR_LOWERLEFT);
 	edb_encoder->Deactivate();
 
-	pos.x = 14;
-	pos.y -= 48;
-	size.cx = currentConfig->wndSize.cx - 113;
+	SetEncoderText();
 
-	edb_outdir		= new EditBox(currentConfig->enc_outdir, pos, size, 1024);
+	edb_outdir = new EditBox(currentConfig->enc_outdir, Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->Deactivate();
 
-	pos.x = 87;
-	pos.y += 1;
-	size.cx = 0;
-
-	btn_outdir		= new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	btn_outdir = new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
 	btn_outdir->SetOrientation(OR_LOWERRIGHT);
 	btn_outdir->onClick.Connect(&bonkEnc::SelectDir, (bonkEnc *) this);
 
-	pos.x = 14;
-	pos.y = 51;
-	size.cx = currentConfig->wndSize.cx - 27;
-
-	progress		= new Progressbar(pos, size, OR_HORZ, PB_NOTEXT, 0, 1000, 0);
+	progress = new Progressbar(Point(0, 51), Size(0, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 	progress->SetOrientation(OR_LOWERLEFT);
 	progress->Deactivate();
 
@@ -380,7 +354,7 @@ bonkEncGUI::bonkEncGUI()
 	mainWnd->RegisterObject(check_cuesheet);
 	mainWnd->RegisterObject(check_playlist);
 
-	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		mainWnd->RegisterObject(button_play);
 		mainWnd->RegisterObject(button_pause);
@@ -500,7 +474,7 @@ bonkEncGUI::~bonkEncGUI()
 	DeleteObject(check_cuesheet);
 	DeleteObject(check_playlist);
 
-	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		DeleteObject(button_play);
 		DeleteObject(button_pause);
@@ -743,13 +717,7 @@ Void bonkEncGUI::ConfigureGeneral()
 		currentConfig->languageChanged = false;
 	}
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk Audio Encoder");
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc MP3 Encoder");
-	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME MP3 Encoder");
-	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder->SetText("Ogg Vorbis Encoder");
-	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder->SetText("FAAC MP4/AAC Encoder");
-	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ VQF Encoder");
-	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out Filter");
+	SetEncoderText();
 
 	edb_outdir->SetText(currentConfig->enc_outdir);
 }
@@ -785,12 +753,12 @@ Void bonkEncGUI::QueryCDDB()
 
 	for (Int j = 0; j < discIDs.GetNOfEntries(); j++)
 	{
-		bonkEncCDDB	 cddb(currentConfig);
+		CDDB		 cddb(currentConfig);
 		Int		 discID = discIDs.GetNthEntry(j);
 		String		 discIDString = discIDStrings.GetNthEntry(j);
 		Array<Track *>	*cdInfo = NIL;
 
-		if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::infoCache.GetEntry(discID);
+		if (currentConfig->enable_cddb_cache) cdInfo = CDDB::infoCache.GetEntry(discID);
 
 		if (cdInfo == NIL)
 		{
@@ -802,8 +770,8 @@ Void bonkEncGUI::QueryCDDB()
 
 			if (cdInfo != NIL)
 			{
-				bonkEncCDDB::infoCache.RemoveEntry(discID);
-				bonkEncCDDB::infoCache.AddEntry(cdInfo, discID);
+				CDDB::infoCache.RemoveEntry(discID);
+				CDDB::infoCache.AddEntry(cdInfo, discID);
 			}
 
 			currentConfig->cdrip_activedrive = oDrive;
@@ -954,7 +922,7 @@ Bool bonkEncGUI::SetLanguage()
 		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->size));
 		mainWnd->Paint(SP_PAINT);
 
-		if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+		if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 		{
 			button_play->Hide();
 			button_pause->Hide();
@@ -1242,13 +1210,16 @@ Void bonkEncGUI::FillMenus()
 		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
 	}
 
+	menu_encode->AddEntry();
+	menu_encode->AddEntry(i18n->TranslateString("Shutdown after encoding"), NIL, NIL, &currentConfig->shutdownAfterEncoding);
+
 	menu_database->AddEntry(i18n->TranslateString("Query CDDB database"))->onClick.Connect(&bonkEncGUI::QueryCDDB, this);
 	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onClick.Connect(&bonkEncGUI::SubmitCDDBData, this);
 	menu_database->AddEntry();
 	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
 
-	if (bonkEncDLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
 		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onClick.Connect(&bonkEnc::PlaySelectedItem, (bonkEnc *) this);
 		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onClick.Connect(&bonkEnc::StopPlayback, (bonkEnc *) this);
@@ -1350,6 +1321,15 @@ Void bonkEncGUI::EncodeSpecific()
 {
 	currentConfig->encoder = clicked_encoder;
 
+	SetEncoderText();
+
+	clicked_encoder = -1;
+
+	Encode();
+}
+
+Void bonkEncGUI::SetEncoderText()
+{
 	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk Audio Encoder");
 	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc MP3 Encoder");
 	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME MP3 Encoder");
@@ -1357,37 +1337,10 @@ Void bonkEncGUI::EncodeSpecific()
 	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder->SetText("FAAC MP4/AAC Encoder");
 	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ VQF Encoder");
 	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out Filter");
-
-	clicked_encoder = -1;
-
-	Encode();
 }
 
-Void bonkEncGUI::ClearEditFields()
+Void bonkEncGUI::OnJoblistSelectEntry(Track *format)
 {
-	dontUpdateInfo = True;
-
-	info_edit_artist->SetText("");
-	info_edit_title->SetText("");
-	info_edit_album->SetText("");
-	info_edit_track->SetText("");
-	info_edit_year->SetText("");
-	info_edit_genre->SetText("");
-
-	info_edit_artist->Deactivate();
-	info_edit_title->Deactivate();
-	info_edit_album->Deactivate();
-	info_edit_track->Deactivate();
-	info_edit_year->Deactivate();
-	info_edit_genre->Deactivate();
-
-	dontUpdateInfo = False;
-}
-
-Void bonkEncGUI::SelectJoblistEntry()
-{
-	Track	*format = joblist->GetSelectedTrack();
-
 	dontUpdateInfo = True;
 
 	info_edit_artist->Activate();
@@ -1411,6 +1364,27 @@ Void bonkEncGUI::SelectJoblistEntry()
 	if (format->year > 0) info_edit_year->SetText(String::FromInt(format->year));
 
 	info_edit_genre->SetText(format->genre);
+
+	dontUpdateInfo = False;
+}
+
+Void bonkEncGUI::OnJoblistSelectNone()
+{
+	dontUpdateInfo = True;
+
+	info_edit_artist->SetText("");
+	info_edit_title->SetText("");
+	info_edit_album->SetText("");
+	info_edit_track->SetText("");
+	info_edit_year->SetText("");
+	info_edit_genre->SetText("");
+
+	info_edit_artist->Deactivate();
+	info_edit_title->Deactivate();
+	info_edit_album->Deactivate();
+	info_edit_track->Deactivate();
+	info_edit_year->Deactivate();
+	info_edit_genre->Deactivate();
 
 	dontUpdateInfo = False;
 }

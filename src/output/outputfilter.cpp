@@ -60,7 +60,7 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)
 	else if (encString == "UTF-16BE" ||
 		 encString == "UCS-2BE")	encoding = ID3TE_UTF16BE;
 
-	String	 prevOutFormat = String::SetOutputFormat(encString);
+	char	*prevOutFormat = String::SetOutputFormat(encString);
 
 	ID3Frame	*artist = ex_ID3Frame_NewID(ID3FID_LEADARTIST);
 

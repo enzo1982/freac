@@ -36,14 +36,18 @@ class GeneralSettingsLayerCDDB : public Layer
 		Button		*button_proxy;
 		GroupBox	*group_cddb_options;
 		CheckBox	*check_auto;
+		CheckBox	*check_cdtext;
 		CheckBox	*check_cache;
 
 		Bool		 cddb_auto;
+		Bool		 cddb_cdtext;
 		Bool		 cddb_cache;
  
 		Config		*currentConfig;
 	slots:
 		Void		 SetCDDBMode();
+		Void		 ToggleAutoCDDB();
+
 		Void		 HTTPSettings();
 		Void		 ProxySettings();
 	public:
@@ -57,6 +61,7 @@ class GeneralSettingsLayerCDDB : public Layer
 		String		 GetFreedbEMail();
 
 		Bool		 GetCDDBAutoQuery();
+		Bool		 GetCDDBOverwriteCDText();
 		Bool		 GetCDDBCache();
 };
 

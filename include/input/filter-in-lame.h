@@ -17,16 +17,21 @@ namespace BonkEnc
 {
 	class FilterInLAME : public InputFilter
 	{
+		private:
+			Buffer<unsigned char>	 buffer;
+
+			Buffer<short>		 pcm_l;
+			Buffer<short>		 pcm_r;
 		public:
-				 FilterInLAME(Config *, Track *);
-				~FilterInLAME();
+						 FilterInLAME(Config *, Track *);
+						~FilterInLAME();
 
-			bool	 Activate();
-			bool	 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-			int	 ReadData(unsigned char **, int);
+			int			 ReadData(unsigned char **, int);
 
-			Track	*GetFileInfo(String);
+			Track			*GetFileInfo(String);
 	};
 };
 

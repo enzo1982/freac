@@ -295,5 +295,8 @@
     <entry id="283" string="Load joblist...">Jobliste laden...</entry>
     <entry id="284" string="Save joblist...">Jobliste sichern...</entry>
     <entry id="285" string="Pause/resume encoding">Codierung unterbrechen/fortsetzen</entry>
+    <entry id="286" string="Shutdown after encoding">Nach der Codierung herunterfahren</entry>
+    <entry id="287" string="Playlist Files">Playlist Dateien</entry>
+    <entry id="288" string="Prefer CDDB over CD Text">CD-Text Infos überschreiben</entry>
   </data>
 </LangFile>

@@ -18,26 +18,28 @@ namespace BonkEnc
 	class FilterInCDRip : public InputFilter
 	{
 		private:
-			Int		 trackNumber;
-			Int		 trackSize;
+			Int			 trackNumber;
+			Int			 trackSize;
 
-			Int		 byteCount;
-			unsigned char	*buffer;
+			Int			 byteCount;
+			unsigned char		*buffer;
 
-			Array<String>	 cdText;
+			Array<String>		 cdText;
 
-			Int		 ReadCDText();
-			Int		 FreeCDText();
+			Buffer<unsigned char>	 dataBuffer;
+
+			Int			 ReadCDText();
+			Int			 FreeCDText();
 		public:
-					 FilterInCDRip(Config *, Track *);
-					~FilterInCDRip();
+						 FilterInCDRip(Config *, Track *);
+						~FilterInCDRip();
 
-			int		 ReadData(unsigned char **, int);
+			int			 ReadData(unsigned char **, int);
 
-			Bool		 SetTrack(Int);
-			Int		 GetTrackSize();
+			Bool			 SetTrack(Int);
+			Int			 GetTrackSize();
 
-			Track		*GetFileInfo(String);
+			Track			*GetFileInfo(String);
 	};
 };
 

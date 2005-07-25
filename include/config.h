@@ -52,6 +52,8 @@ namespace BonkEnc
 
 			Bool		 checkUpdatesAtStartup;
 
+			Bool		 shutdownAfterEncoding;
+
 			Int		 encoder;
 			Bool		 enable_console;
 			Bool		 enable_bonk;
@@ -62,7 +64,6 @@ namespace BonkEnc
 			Bool		 enable_faad2;
 			Bool		 enable_tvq;
 			Bool		 enable_cdrip;
-			Bool		 enable_auto_cddb;
 			Bool		 enable_eUpdate;
 			Bool		 enable_mp4;
 			Bool		 enable_flac;
@@ -106,6 +107,8 @@ namespace BonkEnc
 			Int		 freedb_proxy_mode;
 			String		 freedb_proxy;
 			Int		 freedb_proxy_port;
+			Bool		 enable_auto_cddb;
+			Bool		 enable_overwrite_cdtext;
 			Bool		 enable_cddb_cache;
 			Bool		 update_joblist;
 

@@ -21,8 +21,6 @@ BonkEnc::FilterInFAAD2::~FilterInFAAD2()
 
 bool BonkEnc::FilterInFAAD2::Activate()
 {
-	backBufferBytes = 0;
-
 	handle	= ex_NeAACDecOpen();
 	fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
@@ -63,40 +61,41 @@ int BonkEnc::FilterInFAAD2::ReadData(unsigned char **data, int size)
 
 	inBytes += size;
 
-	*data = new unsigned char [size + backBufferBytes];
+	dataBuffer.Resize(size + backBuffer.Size());
 
-	driver->ReadData(*data + backBufferBytes, size);
+	driver->ReadData((unsigned char *) dataBuffer + backBuffer.Size(), size);
 
-	if (backBufferBytes > 0)
+	if (backBuffer.Size() > 0)
 	{
-		memcpy((Void *) *data, (Void *) backBuffer, backBufferBytes);
+		memcpy(dataBuffer, backBuffer, backBuffer.Size());
 
-		delete [] backBuffer;
+		size += backBuffer.Size();
 
-		size += backBufferBytes;
-
-		backBufferBytes = 0;
+		backBuffer.Resize(0);
 	}
 
 	Void		*samples = NIL;
 	Int		 bytesConsumed = 0;
 	Int		 samplesRead = 0;
-	unsigned char	*samplesBuffer = new unsigned char [0];
+
+	samplesBuffer.Resize(0);
 
 	do
 	{
 		NeAACDecFrameInfo	 frameInfo;
 
-		samples = ex_NeAACDecDecode(handle, &frameInfo, *data + bytesConsumed, size - bytesConsumed);
+		samples = ex_NeAACDecDecode(handle, &frameInfo, (unsigned char *) dataBuffer + bytesConsumed, size - bytesConsumed);
 
 	        if ((frameInfo.error == 0) && (frameInfo.samples > 0))
 		{
-			unsigned char	*buffer = samplesBuffer;
+			unsigned char	*buffer = new unsigned char [samplesRead * 2];
 
-			samplesBuffer = new unsigned char [(samplesRead + frameInfo.samples) * 2];
+			memcpy(buffer, samplesBuffer, samplesRead * 2);
 
-			memcpy((Void *) samplesBuffer, (Void *) buffer, samplesRead * 2);
-			memcpy((Void *) (samplesBuffer + samplesRead * 2), samples, frameInfo.samples * 2);
+			samplesBuffer.Resize((samplesRead + frameInfo.samples) * 2);
+
+			memcpy(samplesBuffer, buffer, samplesRead * 2);
+			memcpy(samplesBuffer + samplesRead * 2, samples, frameInfo.samples * 2);
 
 			delete [] buffer;
 
@@ -111,26 +110,19 @@ int BonkEnc::FilterInFAAD2::ReadData(unsigned char **data, int size)
 
 	if ((size - bytesConsumed) > 0)
 	{
-		backBufferBytes = size - bytesConsumed;
-		backBuffer = new unsigned char [backBufferBytes];
+		backBuffer.Resize(size - bytesConsumed);
 
-		memcpy((Void *) backBuffer, (Void *) (*data + bytesConsumed), backBufferBytes);
+		memcpy(backBuffer, (unsigned char *) dataBuffer + bytesConsumed, backBuffer.Size());
 	}
-
-	delete [] *data;
 
         if (samplesRead > 0)
 	{
-		*data = new unsigned char [samplesRead * 2];
+		dataBuffer.Resize(samplesRead * 2);
 
-		memcpy((Void *) *data, (Void *) samplesBuffer, samplesRead * 2);
-	}
-	else
-	{
-		*data = new unsigned char [0];
+		memcpy(dataBuffer, samplesBuffer, samplesRead * 2);
 	}
 
-	delete [] samplesBuffer;
+	*data = dataBuffer;
 
 	return samplesRead * 2;
 }

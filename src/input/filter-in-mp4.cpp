@@ -84,7 +84,8 @@ int BonkEnc::FilterInMP4::ReadData(unsigned char **data, int size)
 
 	Void		*samples = NIL;
 	Int		 samplesRead = 0;
-	unsigned char	*samplesBuffer = new unsigned char [0];
+
+	samplesBuffer.Resize(0);
 
 	do
 	{
@@ -101,12 +102,14 @@ int BonkEnc::FilterInMP4::ReadData(unsigned char **data, int size)
 
 	        if ((frameInfo.error == 0) && (frameInfo.samples > 0))
 		{
-			unsigned char	*backBuffer = samplesBuffer;
+			unsigned char	*backBuffer = new unsigned char [samplesRead * 2];
 
-			samplesBuffer = new unsigned char [(samplesRead + frameInfo.samples) * 2];
+			memcpy(backBuffer, samplesBuffer, samplesRead * 2);
 
-			memcpy((Void *) samplesBuffer, (Void *) backBuffer, samplesRead * 2);
-			memcpy((Void *) (samplesBuffer + samplesRead * 2), samples, frameInfo.samples * 2);
+			samplesBuffer.Resize((samplesRead + frameInfo.samples) * 2);
+
+			memcpy(samplesBuffer, backBuffer, samplesRead * 2);
+			memcpy(samplesBuffer + samplesRead * 2, samples, frameInfo.samples * 2);
 
 			delete [] backBuffer;
 
@@ -115,20 +118,14 @@ int BonkEnc::FilterInMP4::ReadData(unsigned char **data, int size)
 	}
 	while (samples != NIL && sampleId < ((format->length / 2048) * (double(inBytes) / format->fileSize)));
 
-	delete [] *data;
-
         if (samplesRead > 0)
 	{
-		*data = new unsigned char [samplesRead * 2];
+		dataBuffer.Resize(samplesRead * 2);
 
-		memcpy((Void *) *data, (Void *) samplesBuffer, samplesRead * 2);
-	}
-	else
-	{
-		*data = new unsigned char [0];
+		memcpy(dataBuffer, samplesBuffer, samplesRead * 2);
 	}
 
-	delete [] samplesBuffer;
+	*data = dataBuffer;
 
 	return samplesRead * 2;
 }
@@ -157,7 +154,7 @@ Track *BonkEnc::FilterInMP4::GetFileInfo(String inFile)
 	unsigned short	 trackNr	= 0;
 	unsigned short	 nOfTracks	= 0;
 
-	String	 prevInFormat = String::SetInputFormat("UTF-8");
+	char	*prevInFormat = String::SetInputFormat("UTF-8");
 
 	if (ex_MP4GetMetadataName(mp4File, &buffer)) { nFormat->title = buffer; free(buffer); }
 	if (ex_MP4GetMetadataArtist(mp4File, &buffer)) { nFormat->artist = buffer; free(buffer); }

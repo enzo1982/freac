@@ -34,6 +34,9 @@ namespace BonkEnc
 			Int				 mp4Track;
 			Int				 sampleId;
 
+			Buffer<unsigned char>		 dataBuffer;
+			Buffer<unsigned char>		 samplesBuffer;
+
 			Int				 GetAudioTrack();
 
 			String				 GetTempFile(const String &);

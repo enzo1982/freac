@@ -29,6 +29,8 @@ namespace BonkEnc
 			Buffer<unsigned char>	 inputBuffer;
 			Buffer<unsigned short>	 samplesBuffer;
 
+			Buffer<unsigned char>	 dataBuffer;
+
 			Thread			*decoderThread;
 			Mutex			*inputBufferMutex;
 			Mutex			*samplesBufferMutex;

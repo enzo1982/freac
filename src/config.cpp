@@ -19,6 +19,7 @@ BonkEnc::Config::Config()
 	rVal_a = new char [1024];
 
 	languageChanged = False;
+	shutdownAfterEncoding = False;
 
 	appMain = NIL;
 }
@@ -110,6 +111,7 @@ Bool BonkEnc::Config::LoadSettings()
 	cdrip_numdrives		= 0;
 
 	enable_auto_cddb	= config->GetIntValue("freedb", "AutoCDDBQueries", 0);
+	enable_overwrite_cdtext	= config->GetIntValue("freedb", "OverwriteCDText", 1);
 	enable_cddb_cache	= config->GetIntValue("freedb", "EnableCDDBCache", 1);
 	freedb_server		= config->GetStringValue("freedb", "Server", "freedb.freedb.org");
 	freedb_mode		= config->GetIntValue("freedb", "Mode", 0);
@@ -248,6 +250,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("CDRip", "EjectAfterRipping", cdrip_autoEject);
 
 		config->SetIntValue("freedb", "AutoCDDBQueries", enable_auto_cddb);
+		config->SetIntValue("freedb", "OverwriteCDText", enable_overwrite_cdtext);
 		config->SetIntValue("freedb", "EnableCDDBCache", enable_cddb_cache);
 		config->SetStringValue("freedb", "Server", freedb_server);
 		config->SetIntValue("freedb", "Mode", freedb_mode);

@@ -53,9 +53,7 @@ int BonkEnc::FilterInBONK::ReadData(unsigned char **data, int size)
 
 	if (size == -1) return 0;
 
-	*data = new unsigned char [size];
-
-	memcpy(*data, buffer, size);
+	*data = buffer;
 
 	return size;
 }

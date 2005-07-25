@@ -41,9 +41,11 @@ bool BonkEnc::FilterInWAVE::Deactivate()
 
 int BonkEnc::FilterInWAVE::ReadData(unsigned char **data, int size)
 {
-	*data = new unsigned char [size];
+	buffer.Resize(size);
 
-	driver->ReadData(*data, size);
+	driver->ReadData(buffer, size);
+
+	*data = buffer;
 
 	return size;
 }

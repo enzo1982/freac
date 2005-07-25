@@ -185,6 +185,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->mp4meta_encoding		= register_layer_tags->GetMP4MetaEncoding();
 
 	currentConfig->enable_auto_cddb		= register_layer_cddb->GetCDDBAutoQuery();
+	currentConfig->enable_overwrite_cdtext	= register_layer_cddb->GetCDDBOverwriteCDText();
 	currentConfig->enable_cddb_cache	= register_layer_cddb->GetCDDBCache();
 
 	currentConfig->default_comment		= register_layer_tags->GetDefaultComment();

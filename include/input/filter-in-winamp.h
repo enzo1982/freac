@@ -19,17 +19,19 @@ namespace BonkEnc
 	class FilterInWinamp : public InputFilter
 	{
 		private:
-			In_Module	*plugin;
+			In_Module		*plugin;
+
+			Buffer<unsigned char>	 buffer;
 		public:
-					 FilterInWinamp(Config *, Track *, In_Module *);
-					~FilterInWinamp();
+						 FilterInWinamp(Config *, Track *, In_Module *);
+						~FilterInWinamp();
 
-			bool		 Activate();
-			bool		 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-			int		 ReadData(unsigned char **, int);
+			int			 ReadData(unsigned char **, int);
 
-			Track		*GetFileInfo(String);
+			Track			*GetFileInfo(String);
 	};
 };
 

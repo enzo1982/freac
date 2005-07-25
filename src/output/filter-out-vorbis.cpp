@@ -47,7 +47,7 @@ bool BonkEnc::FilterOutVORBIS::Activate()
 
 	if (currentConfig->enable_vctags)
 	{
-		String	 prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
+		char	*prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
 
 		if (currentConfig->default_comment != NIL) ex_vorbis_comment_add_tag(&vc, "COMMENT", currentConfig->default_comment);
 

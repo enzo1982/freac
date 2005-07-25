@@ -29,8 +29,9 @@ namespace BonkEnc
 			NeAACDecHandle			 handle;
 			NeAACDecConfigurationPtr	 fConfig;
 
-			Int				 backBufferBytes;
-			unsigned char			*backBuffer;
+			Buffer<unsigned char>		 dataBuffer;
+			Buffer<unsigned char>		 samplesBuffer;
+			Buffer<unsigned char>		 backBuffer;
 		public:
 							 FilterInFAAD2(Config *, Track *);
 							~FilterInFAAD2();

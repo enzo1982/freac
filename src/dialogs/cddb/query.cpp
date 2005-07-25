@@ -99,10 +99,10 @@ Void cddbQueryDlg::Cancel()
 
 Int cddbQueryDlg::QueryThread(Thread *myThread)
 {
-	bonkEncCDDB	 cddb(currentConfig);
-	String		 result;
-	String		 read = NIL;
-	Bool		 fuzzy = False;
+	CDDB	 cddb(currentConfig);
+	String	 result;
+	String	 read = NIL;
+	Bool	 fuzzy = False;
 
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
@@ -110,21 +110,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 	if (discid == "ffffffff" || discid == "00000000") return NIL; // no disc in drive or read error
 
-	if (bonkEncCDDB::requestedDiscs.GetEntry(cddb.ComputeDiscID()) == True)
-	{
-		if (!currentConfig->appMain->cddbRetry)
-		{
-			rArray = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
-
-			mainWnd->Close();
-
-			return Success;
-		}
-	}
-	else
-	{
-		bonkEncCDDB::requestedDiscs.AddEntry(True, cddb.ComputeDiscID());
-	}
+	CDDB::requestedDiscs.AddEntry(True, cddb.ComputeDiscID());
 
 	text_status->SetText(bonkEnc::i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
 

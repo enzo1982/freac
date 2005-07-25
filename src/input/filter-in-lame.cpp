@@ -24,25 +24,18 @@ bool BonkEnc::FilterInLAME::Activate()
 {
 	ex_lame_decode_init();
 
-	Int	 size = 4096;
+	buffer.Resize(4096);
 
 	do
 	{
-		unsigned char	*data = new unsigned char [size];
+		driver->ReadData(buffer, buffer.Size());
 
-		driver->ReadData(data, size);
-
-		short	*pcm_l = new short [size * 64];
-		short	*pcm_r = new short [size * 64];
+		pcm_l.Resize(buffer.Size() * 64);
+		pcm_r.Resize(buffer.Size() * 64);
 
 		mp3data_struct	 mp3data;
 
-		ex_lame_decode_headers(data, size, pcm_l, pcm_r, &mp3data);
-
-		delete [] pcm_l;
-		delete [] pcm_r;
-
-		delete [] data;
+		ex_lame_decode_headers(buffer, buffer.Size(), pcm_l, pcm_r, &mp3data);
 
 		if (mp3data.stereo <= 2 && mp3data.stereo > 0) break;
 	}
@@ -69,29 +62,26 @@ int BonkEnc::FilterInLAME::ReadData(unsigned char **data, int size)
 
 	inBytes += size;
 
-	*data = new unsigned char [size];
+	buffer.Resize(size);
 
-	driver->ReadData(*data, size);
+	driver->ReadData(buffer, size);
 
-	short	*pcm_l = new short [size * 64];
-	short	*pcm_r = new short [size * 64];
+	pcm_l.Resize(size * 64);
+	pcm_r.Resize(size * 64);
 
-	int	 nsamples = ex_lame_decode(*data, size, pcm_l, pcm_r);
+	int	 nsamples = ex_lame_decode(buffer, size, pcm_l, pcm_r);
 
-	delete [] *data;
-
-	*data = new unsigned char [nsamples * 4];
+	buffer.Resize(nsamples * 4);
 
 	for (Int i = 0; i < nsamples; i++)
 	{
-		((short *) *data)[2 * i]	= pcm_l[i];
-		((short *) *data)[2 * i + 1]	= pcm_r[i];
+		((short *) (unsigned char *) buffer)[2 * i]	= pcm_l[i];
+		((short *) (unsigned char *) buffer)[2 * i + 1]	= pcm_r[i];
 	}
 
-	delete [] pcm_l;
-	delete [] pcm_r;
+	*data = buffer;
 
-	return nsamples * 4;
+	return buffer.Size();
 }
 
 Track *BonkEnc::FilterInLAME::GetFileInfo(String inFile)
@@ -106,28 +96,21 @@ Track *BonkEnc::FilterInLAME::GetFileInfo(String inFile)
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
 
-	Int	 size = 4096;
+	buffer.Resize(4096);
 
 	do
 	{
-		unsigned char	*data = new unsigned char [size];
+		f_in->InputData((void *) buffer, buffer.Size());
 
-		f_in->InputData((void *) data, size);
-
-		short	*pcm_l = new short [size * 64];
-		short	*pcm_r = new short [size * 64];
+		pcm_l.Resize(buffer.Size() * 64);
+		pcm_r.Resize(buffer.Size() * 64);
 
 		mp3data_struct	 mp3data;
 
-		ex_lame_decode_headers(data, size, pcm_l, pcm_r, &mp3data);
-
-		delete [] pcm_l;
-		delete [] pcm_r;
+		ex_lame_decode_headers(buffer, buffer.Size(), pcm_l, pcm_r, &mp3data);
 
 		nFormat->channels	= mp3data.stereo;
 		nFormat->rate		= mp3data.samplerate;
-
-		delete [] data;
 
 		if (mp3data.stereo <= 2 && mp3data.stereo > 0) break;
 	}

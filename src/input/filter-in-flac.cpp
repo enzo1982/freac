@@ -68,7 +68,7 @@ int BonkEnc::FilterInFLAC::ReadData(unsigned char **data, int size)
 
 	memcpy(inputBuffer, backBuffer, oSize);
 
-	Int	 bytes = driver->ReadData(inputBuffer + oSize, size);
+	Int	 bytes = driver->ReadData((unsigned char *) inputBuffer + oSize, size);
 
 	inputBufferMutex->Release();
 
@@ -90,14 +90,16 @@ int BonkEnc::FilterInFLAC::ReadData(unsigned char **data, int size)
 
 	size = samplesBuffer.Size() * 2;
 
-	*data = new unsigned char [size];
+	dataBuffer.Resize(size);
 
-	memcpy(*data, samplesBuffer, size);
+	memcpy(dataBuffer, samplesBuffer, size);
 
 	samplesBuffer.Resize(0);
 
 	samplesBufferMutex->Release();
 	inputBufferMutex->Lock();
+
+	*data = dataBuffer;
 
 	return size;
 }
@@ -203,7 +205,7 @@ FLAC__StreamDecoderReadStatus BonkEnc::FLACStreamDecoderReadCallback(const FLAC_
 
 	backBuffer.Resize(filter->inputBuffer.Size() - *bytes);
 
-	memcpy(backBuffer, filter->inputBuffer + *bytes, backBuffer.Size());
+	memcpy(backBuffer, (unsigned char *) filter->inputBuffer + *bytes, backBuffer.Size());
 
 	filter->inputBuffer.Resize(backBuffer.Size());
 

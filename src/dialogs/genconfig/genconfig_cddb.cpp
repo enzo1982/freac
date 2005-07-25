@@ -20,6 +20,7 @@ GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	currentConfig = bonkEnc::currentConfig;
 
 	cddb_auto	= currentConfig->enable_auto_cddb;
+	cddb_cdtext	= currentConfig->enable_overwrite_cdtext;
 	cddb_cache	= currentConfig->enable_cddb_cache;
 
 	pos.x	= 7;
@@ -95,7 +96,7 @@ GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	pos.x	= 359;
 	pos.y	= 11;
 	size.cx	= 178;
-	size.cy	= 68;
+	size.cy	= 94;
 
 	group_cddb_options = new GroupBox(bonkEnc::i18n->TranslateString("Options"), pos, size);
 
@@ -105,12 +106,18 @@ GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	size.cy	= 0;
 
 	check_auto	= new CheckBox(bonkEnc::i18n->TranslateString("Automatic CDDB queries"), pos, size, &cddb_auto);
+	check_auto->onClick.Connect(&GeneralSettingsLayerCDDB::ToggleAutoCDDB, this);
+
+	pos.y += 26;
+
+	check_cdtext	= new CheckBox(bonkEnc::i18n->TranslateString("Prefer CDDB over CD Text"), pos, size, &cddb_cdtext);
 
 	pos.y += 26;
 
 	check_cache	= new CheckBox(bonkEnc::i18n->TranslateString("Enable CDDB cache"), pos, size, &cddb_cache);
 
 	SetCDDBMode();
+	ToggleAutoCDDB();
 
 	Int	 maxTextSize = max(text_email->textSize.cx, max(text_mode->textSize.cx, text_server->textSize.cx));
 
@@ -131,6 +138,7 @@ GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	RegisterObject(button_proxy);
 	RegisterObject(group_cddb_options);
 	RegisterObject(check_auto);
+	RegisterObject(check_cdtext);
 	RegisterObject(check_cache);
 }
 
@@ -149,6 +157,7 @@ GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()
 	DeleteObject(button_proxy);
 	DeleteObject(group_cddb_options);
 	DeleteObject(check_auto);
+	DeleteObject(check_cdtext);
 	DeleteObject(check_cache);
 }
 
@@ -164,6 +173,12 @@ Void GeneralSettingsLayerCDDB::SetCDDBMode()
 		edit_port->Deactivate();
 		edit_port->SetText(String::FromInt(currentConfig->freedb_http_port));
 	}
+}
+
+Void GeneralSettingsLayerCDDB::ToggleAutoCDDB()
+{
+	if (cddb_auto)	check_cdtext->Activate();
+	else		check_cdtext->Deactivate();
 }
 
 Void GeneralSettingsLayerCDDB::HTTPSettings()
@@ -207,6 +222,11 @@ String GeneralSettingsLayerCDDB::GetFreedbEMail()
 Bool GeneralSettingsLayerCDDB::GetCDDBAutoQuery()
 {
 	return cddb_auto;
+}
+
+Bool GeneralSettingsLayerCDDB::GetCDDBOverwriteCDText()
+{
+	return cddb_cdtext;
 }
 
 Bool GeneralSettingsLayerCDDB::GetCDDBCache()

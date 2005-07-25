@@ -41,6 +41,10 @@
 #include <output/filter-out-tvq.h>
 #include <output/filter-out-wave.h>
 
+#ifndef EWX_FORCEIFHUNG
+#define EWX_FORCEIFHUNG 16
+#endif
+
 // TODO: remove this line once everything is in namespace BonkEnc
 using namespace BonkEnc;
 
@@ -400,6 +404,8 @@ Int bonkEnc::Encoder(Thread *thread)
 
 					position = filter_in->GetInBytes();
 
+					while (pause_encoding && !stop_encoding) Sleep(50);
+
 					if (stop_encoding) break;
 
 					if (!currentConfig->enable_console)
@@ -519,20 +525,7 @@ Int bonkEnc::Encoder(Thread *thread)
 				}
 			}
 
-			Surface	*surface = mainWnd->GetDrawSurface();
-			Point	 realPos = joblist->GetRealPosition();
-			Rect	 frame;
-
-			frame.left	= realPos.x;
-			frame.top	= realPos.y;
-			frame.right	= realPos.x + joblist->size.cx - 1;
-			frame.bottom	= realPos.y + joblist->size.cy - 1;
-
-			surface->StartPaint(frame);
-
 			joblist->RemoveNthTrack(i - nRemoved);
-
-			surface->EndPaint();
 
 			nRemoved++;
 		}
@@ -553,9 +546,6 @@ Int bonkEnc::Encoder(Thread *thread)
 
 	currentConfig->cdrip_activedrive = encoder_activedrive;
 
-	if (currentConfig->createPlaylist) playlist.Save(String(currentConfig->enc_outdir).Append("playlist.m3u"));
-	if (currentConfig->createCueSheet) cueSheet.Save(String(currentConfig->enc_outdir).Append("cuesheet.cue"));
-
 	if (!currentConfig->enable_console)
 	{
 		edb_filename->SetText(i18n->TranslateString("none"));
@@ -565,6 +555,19 @@ Int bonkEnc::Encoder(Thread *thread)
 	}
 
 	encoding = false;
+
+	if (!stop_encoding && nRemoved > 0)
+	{
+		if (currentConfig->createPlaylist) playlist.Save(String(currentConfig->enc_outdir).Append("playlist.m3u"));
+		if (currentConfig->createCueSheet) cueSheet.Save(String(currentConfig->enc_outdir).Append("cuesheet.cue"));
+
+		if (currentConfig->shutdownAfterEncoding)
+		{
+			Utilities::GainShutdownPrivilege();
+
+			ExitWindowsEx(EWX_POWEROFF | EWX_FORCEIFHUNG, 0);
+		}
+	}
 
 	debug_out->LeaveMethod();
 

@@ -30,6 +30,9 @@ namespace BonkEnc
 			vorbis_block		 vb;
 
 			char			*buffer;
+
+			Buffer<unsigned char>	 dataBuffer;
+			Buffer<unsigned char>	 backBuffer;
 		public:
 						 FilterInVORBIS(Config *, Track *);
 						~FilterInVORBIS();

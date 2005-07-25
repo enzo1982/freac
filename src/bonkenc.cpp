@@ -42,9 +42,9 @@ Int	 ENCODER_WAVE		= -1;
 Config			*bonkEnc::currentConfig	= NIL;
 I18n::Translator	*bonkEnc::i18n		= NIL;
 
-bonkEncDebug	*debug_out;
+Debug	*debug_out;
 
-String	 bonkEnc::version = "CVS 20050703";
+String	 bonkEnc::version = "CVS 20050725";
 String	 bonkEnc::cddbVersion = "v1.0beta3";
 String	 bonkEnc::shortVersion = "v1.0";
 
@@ -78,50 +78,50 @@ bonkEnc::bonkEnc()
 
 	i18n->ActivateLanguage(currentConfig->language);
 
-	if (bonkEncDLLInterfaces::LoadBonkDLL() == False)	currentConfig->enable_bonk = False;
-	else							currentConfig->enable_bonk = True;
+	if (DLLInterfaces::LoadBonkDLL() == False)	currentConfig->enable_bonk = False;
+	else						currentConfig->enable_bonk = True;
 
-	if (bonkEncDLLInterfaces::LoadBladeDLL() == False)	currentConfig->enable_blade = False;
-	else							currentConfig->enable_blade = True;
+	if (DLLInterfaces::LoadBladeDLL() == False)	currentConfig->enable_blade = False;
+	else						currentConfig->enable_blade = True;
 
-	if (bonkEncDLLInterfaces::LoadLAMEDLL() == False)	currentConfig->enable_lame = False;
-	else							currentConfig->enable_lame = True;
+	if (DLLInterfaces::LoadLAMEDLL() == False)	currentConfig->enable_lame = False;
+	else						currentConfig->enable_lame = True;
 
-	if (bonkEncDLLInterfaces::LoadVorbisDLL() == False)	currentConfig->enable_vorbis = False;
-	else							currentConfig->enable_vorbis = True;
+	if (DLLInterfaces::LoadVorbisDLL() == False)	currentConfig->enable_vorbis = False;
+	else						currentConfig->enable_vorbis = True;
 
-	if (bonkEncDLLInterfaces::LoadFAACDLL() == False)	currentConfig->enable_faac = False;
-	else							currentConfig->enable_faac = True;
+	if (DLLInterfaces::LoadFAACDLL() == False)	currentConfig->enable_faac = False;
+	else						currentConfig->enable_faac = True;
 
-	if (bonkEncDLLInterfaces::LoadFAAD2DLL() == False)	currentConfig->enable_faad2 = False;
-	else							currentConfig->enable_faad2 = True;
+	if (DLLInterfaces::LoadFAAD2DLL() == False)	currentConfig->enable_faad2 = False;
+	else						currentConfig->enable_faad2 = True;
 
-	if (bonkEncDLLInterfaces::LoadTVQDLL() == False)	currentConfig->enable_tvq = False;
-	else							currentConfig->enable_tvq = True;
+	if (DLLInterfaces::LoadTVQDLL() == False)	currentConfig->enable_tvq = False;
+	else						currentConfig->enable_tvq = True;
 
-	if (bonkEncDLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;
-	else							currentConfig->enable_cdrip = True;
+	if (DLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;
+	else						currentConfig->enable_cdrip = True;
 
-	if (bonkEncDLLInterfaces::LoadID3DLL() == False)	currentConfig->enable_id3 = False;
-	else							currentConfig->enable_id3 = True;
+	if (DLLInterfaces::LoadID3DLL() == False)	currentConfig->enable_id3 = False;
+	else						currentConfig->enable_id3 = True;
 
-	if (bonkEncDLLInterfaces::LoadEUpdateDLL() == False)	currentConfig->enable_eUpdate = False;
-	else							currentConfig->enable_eUpdate = True;
+	if (DLLInterfaces::LoadEUpdateDLL() == False)	currentConfig->enable_eUpdate = False;
+	else						currentConfig->enable_eUpdate = True;
 
-	if (bonkEncDLLInterfaces::LoadFLACDLL() == False)	currentConfig->enable_flac = False;
-	else							currentConfig->enable_flac = True;
+	if (DLLInterfaces::LoadFLACDLL() == False)	currentConfig->enable_flac = False;
+	else						currentConfig->enable_flac = True;
 
 	if (currentConfig->enable_faac || currentConfig->enable_faad2)
 	{
-		if (bonkEncDLLInterfaces::LoadMP4V2DLL() == False)	currentConfig->enable_mp4 = False;
-		else							currentConfig->enable_mp4 = True;
+		if (DLLInterfaces::LoadMP4V2DLL() == False)	currentConfig->enable_mp4 = False;
+		else						currentConfig->enable_mp4 = True;
 	}
 	else
 	{
 		currentConfig->enable_mp4 = False;
 	}
 
-	bonkEncDLLInterfaces::LoadWinampDLLs();
+	DLLInterfaces::LoadWinampDLLs();
 
 	int	 nextEC = 0;
 
@@ -192,30 +192,30 @@ bonkEnc::~bonkEnc()
 {
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
-	for (Int i = 0; i < bonkEncCDDB::infoCache.GetNOfEntries(); i++)
+	for (Int i = 0; i < CDDB::infoCache.GetNOfEntries(); i++)
 	{
-		for (Int j = 0; j < bonkEncCDDB::infoCache.GetNthEntry(i)->GetNOfEntries(); j++)
+		for (Int j = 0; j < CDDB::infoCache.GetNthEntry(i)->GetNOfEntries(); j++)
 		{
-			delete bonkEncCDDB::infoCache.GetNthEntry(i)->GetNthEntry(j);
+			delete CDDB::infoCache.GetNthEntry(i)->GetNthEntry(j);
 		}
 
-		delete bonkEncCDDB::infoCache.GetNthEntry(i);
+		delete CDDB::infoCache.GetNthEntry(i);
 	}
 
-	if (currentConfig->enable_bonk)		bonkEncDLLInterfaces::FreeBonkDLL();
-	if (currentConfig->enable_blade)	bonkEncDLLInterfaces::FreeBladeDLL();
-	if (currentConfig->enable_faac)		bonkEncDLLInterfaces::FreeFAACDLL();
-	if (currentConfig->enable_faad2)	bonkEncDLLInterfaces::FreeFAAD2DLL();
-	if (currentConfig->enable_lame)		bonkEncDLLInterfaces::FreeLAMEDLL();
-	if (currentConfig->enable_tvq)		bonkEncDLLInterfaces::FreeTVQDLL();
-	if (currentConfig->enable_vorbis)	bonkEncDLLInterfaces::FreeVorbisDLL();
-	if (currentConfig->enable_cdrip)	bonkEncDLLInterfaces::FreeCDRipDLL();
-	if (currentConfig->enable_id3)		bonkEncDLLInterfaces::FreeID3DLL();
-	if (currentConfig->enable_eUpdate)	bonkEncDLLInterfaces::FreeEUpdateDLL();
-	if (currentConfig->enable_mp4)		bonkEncDLLInterfaces::FreeMP4V2DLL();
-	if (currentConfig->enable_flac)		bonkEncDLLInterfaces::FreeFLACDLL();
+	if (currentConfig->enable_bonk)		DLLInterfaces::FreeBonkDLL();
+	if (currentConfig->enable_blade)	DLLInterfaces::FreeBladeDLL();
+	if (currentConfig->enable_faac)		DLLInterfaces::FreeFAACDLL();
+	if (currentConfig->enable_faad2)	DLLInterfaces::FreeFAAD2DLL();
+	if (currentConfig->enable_lame)		DLLInterfaces::FreeLAMEDLL();
+	if (currentConfig->enable_tvq)		DLLInterfaces::FreeTVQDLL();
+	if (currentConfig->enable_vorbis)	DLLInterfaces::FreeVorbisDLL();
+	if (currentConfig->enable_cdrip)	DLLInterfaces::FreeCDRipDLL();
+	if (currentConfig->enable_id3)		DLLInterfaces::FreeID3DLL();
+	if (currentConfig->enable_eUpdate)	DLLInterfaces::FreeEUpdateDLL();
+	if (currentConfig->enable_mp4)		DLLInterfaces::FreeMP4V2DLL();
+	if (currentConfig->enable_flac)		DLLInterfaces::FreeFLACDLL();
 
-	bonkEncDLLInterfaces::FreeWinampDLLs();
+	DLLInterfaces::FreeWinampDLLs();
 
 	delete i18n;
 	delete currentConfig;

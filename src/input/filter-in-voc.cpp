@@ -42,33 +42,28 @@ bool BonkEnc::FilterInVOC::Deactivate()
 
 int BonkEnc::FilterInVOC::ReadData(unsigned char **data, int size)
 {
-	*data = new unsigned char [size];
+	buffer.Resize(size);
 
-	driver->ReadData(*data, size);
+	driver->ReadData(buffer, size);
 
 	int	 outSize = size;
 
 	if (size > bytesLeft)
 	{
-		if (((char *) (*data + bytesLeft))[0] == 2)
+		if (((unsigned char *) buffer + bytesLeft)[0] == 2)
 		{
-			Int newBytesLeft = ((char *) (*data + bytesLeft + 1))[0] + 256 * ((char *) (*data + bytesLeft + 2))[0] + 65536 * ((char *) (*data + bytesLeft + 3))[0];
+			Int newBytesLeft = ((unsigned char *) buffer + bytesLeft + 1)[0] + 256 * ((unsigned char *) buffer + bytesLeft + 2)[0] + 65536 * ((unsigned char *) buffer + bytesLeft + 3)[0];
 
 			outSize = size - 4;
 
-			unsigned char *buffer = new unsigned char [outSize];
+			backBuffer.Resize(outSize);
 
-			memcpy((void *) buffer, (void *) *data, bytesLeft);
+			memcpy(backBuffer, buffer, bytesLeft);
+			memcpy((unsigned char *) backBuffer + bytesLeft, (unsigned char *) buffer + bytesLeft + 4, size - bytesLeft - 4);
 
-			memcpy((void *) (buffer + bytesLeft), (void *) (*data + bytesLeft + 4), size - bytesLeft - 4);
+			buffer.Resize(outSize);
 
-			delete [] *data;
-
-			*data = new unsigned char [outSize];
-
-			memcpy((void *) *data, (void *) buffer, outSize);
-
-			delete [] buffer;
+			memcpy(buffer, backBuffer, outSize);
 
 			bytesLeft = newBytesLeft - (size - bytesLeft - 4);
 		}
@@ -77,6 +72,8 @@ int BonkEnc::FilterInVOC::ReadData(unsigned char **data, int size)
 	{
 		bytesLeft -= size;
 	}
+
+	*data = buffer;
 
 	return outSize;
 }
@@ -92,8 +89,7 @@ Track *BonkEnc::FilterInVOC::GetFileInfo(String inFile)
 	nFormat->order = BYTE_INTEL;
 
 	// Read magic number
-	for (Int i = 0; i < 27; i++)
-		f_in->InputNumber(1);
+	for (Int i = 0; i < 27; i++) f_in->InputNumber(1);
 
 	bytesLeft = f_in->InputNumber(3) - 12;
 

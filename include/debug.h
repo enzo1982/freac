@@ -15,27 +15,30 @@
 
 using namespace smooth;
 
-class bonkEncDebug
+namespace BonkEnc
 {
-	private:
-		OutStream	*file_out;
-		IOLibDriver	*driver_out;
+	class Debug
+	{
+		private:
+			OutStream	*file_out;
+			IOLibDriver	*driver_out;
 
-		Int		 tabLevel;
+			Int		 tabLevel;
 
-		Array<String>	 methods;
-	public:
-				 bonkEncDebug(String);
-				~bonkEncDebug();
+			Array<String>	 methods;
+		public:
+					 Debug(String);
+					~Debug();
 
-		Int		 OutputString(String);
-		Int		 OutputLine(String);
+			Int		 OutputString(String);
+			Int		 OutputLine(String);
 
-		Int		 OutputVariable(String, Int);
-		Int		 OutputVariable(String, String);
+			Int		 OutputVariable(String, Int);
+			Int		 OutputVariable(String, String);
 
-		Int		 EnterMethod(String);
-		Int		 LeaveMethod();
+			Int		 EnterMethod(String);
+			Int		 LeaveMethod();
+	};
 };
 
 #endif

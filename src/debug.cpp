@@ -13,7 +13,7 @@
 
 #include <debug.h>
 
-bonkEncDebug::bonkEncDebug(String fileName)
+BonkEnc::Debug::Debug(String fileName)
 {
 	tabLevel = 0;
 
@@ -28,14 +28,14 @@ bonkEncDebug::bonkEncDebug(String fileName)
 	file_out->SetPackageSize(1);
 }
 
-bonkEncDebug::~bonkEncDebug()
+BonkEnc::Debug::~Debug()
 {
 	delete file_out;
 
 	delete driver_out;
 }
 
-Int bonkEncDebug::OutputString(String string)
+Int BonkEnc::Debug::OutputString(String string)
 {
 	for (Int i = 0; i < tabLevel; i++) file_out->OutputString("\t");
 
@@ -44,12 +44,12 @@ Int bonkEncDebug::OutputString(String string)
 	return Success;
 }
 
-Int bonkEncDebug::OutputLine(String string)
+Int BonkEnc::Debug::OutputLine(String string)
 {
 	return OutputString(string.Append("\n"));
 }
 
-Int bonkEncDebug::OutputVariable(String name, Int value)
+Int BonkEnc::Debug::OutputVariable(String name, Int value)
 {
 	for (Int i = 0; i < tabLevel; i++) file_out->OutputString("\t");
 
@@ -58,7 +58,7 @@ Int bonkEncDebug::OutputVariable(String name, Int value)
 	return Success;
 }
 
-Int bonkEncDebug::OutputVariable(String name, String value)
+Int BonkEnc::Debug::OutputVariable(String name, String value)
 {
 	for (Int i = 0; i < tabLevel; i++) file_out->OutputString("\t");
 
@@ -67,7 +67,7 @@ Int bonkEncDebug::OutputVariable(String name, String value)
 	return Success;
 }
 
-Int bonkEncDebug::EnterMethod(String name)
+Int BonkEnc::Debug::EnterMethod(String name)
 {
 	for (Int i = 0; i < tabLevel; i++) file_out->OutputString("\t");
 
@@ -80,7 +80,7 @@ Int bonkEncDebug::EnterMethod(String name)
 	return Success;
 }
 
-Int bonkEncDebug::LeaveMethod()
+Int BonkEnc::Debug::LeaveMethod()
 {
 	tabLevel--;
 

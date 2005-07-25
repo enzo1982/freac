@@ -17,16 +17,18 @@ namespace BonkEnc
 {
 	class FilterInWAVE : public InputFilter
 	{
+		private:
+			Buffer<unsigned char>	 buffer;
 		public:
-				 FilterInWAVE(Config *, Track *);
-				~FilterInWAVE();
+						 FilterInWAVE(Config *, Track *);
+						~FilterInWAVE();
 
-			bool	 Activate();
-			bool	 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-			int	 ReadData(unsigned char **, int);
+			int			 ReadData(unsigned char **, int);
 
-			Track	*GetFileInfo(String);
+			Track			*GetFileInfo(String);
 	};
 };
 

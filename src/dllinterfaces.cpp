@@ -219,25 +219,25 @@ ID3FIELDGETASCII		 ex_ID3Field_GetASCII			= NIL;
 ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE			= NIL;
 ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE			= NIL;
 
-HINSTANCE	 bonkEncDLLInterfaces::bonkdll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::bladedll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::lamedll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::vorbisdll	= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::faacdll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::faad2dll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::tvqdll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::cdripdll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::id3dll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::eupdatedll	= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::mp4v2dll		= NIL;
-HINSTANCE	 bonkEncDLLInterfaces::flacdll		= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::bonkdll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::bladedll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::lamedll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::vorbisdll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::faacdll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::faad2dll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::tvqdll		= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::cdripdll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::id3dll		= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::eupdatedll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::mp4v2dll	= NIL;
+HINSTANCE	 BonkEnc::DLLInterfaces::flacdll	= NIL;
 
-Array<HMODULE>		 bonkEncDLLInterfaces::winamp_in_plugins;
-Array<In_Module *>	 bonkEncDLLInterfaces::winamp_in_modules;
-Array<HMODULE>		 bonkEncDLLInterfaces::winamp_out_plugins;
-Array<Out_Module *>	 bonkEncDLLInterfaces::winamp_out_modules;
+Array<HMODULE>		 BonkEnc::DLLInterfaces::winamp_in_plugins;
+Array<In_Module *>	 BonkEnc::DLLInterfaces::winamp_in_modules;
+Array<HMODULE>		 BonkEnc::DLLInterfaces::winamp_out_plugins;
+Array<Out_Module *>	 BonkEnc::DLLInterfaces::winamp_out_modules;
 
-Bool bonkEncDLLInterfaces::LoadBonkDLL()
+Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
 {
 	bonkdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/Bonk.dll"));
 
@@ -262,12 +262,12 @@ Bool bonkEncDLLInterfaces::LoadBonkDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeBonkDLL()
+Void BonkEnc::DLLInterfaces::FreeBonkDLL()
 {
 	FreeLibrary(bonkdll);
 }
 
-Bool bonkEncDLLInterfaces::LoadBladeDLL()
+Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
 {
 	bladedll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/BladeEnc.dll"));
 
@@ -288,12 +288,12 @@ Bool bonkEncDLLInterfaces::LoadBladeDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeBladeDLL()
+Void BonkEnc::DLLInterfaces::FreeBladeDLL()
 {
 	FreeLibrary(bladedll);
 }
 
-Bool bonkEncDLLInterfaces::LoadLAMEDLL()
+Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 {
 	lamedll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/LAME.dll"));
 
@@ -384,12 +384,12 @@ Bool bonkEncDLLInterfaces::LoadLAMEDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeLAMEDLL()
+Void BonkEnc::DLLInterfaces::FreeLAMEDLL()
 {
 	FreeLibrary(lamedll);
 }
 
-Bool bonkEncDLLInterfaces::LoadTVQDLL()
+Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
 {
 	tvqdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/TVQenc.dll"));
 
@@ -418,12 +418,12 @@ Bool bonkEncDLLInterfaces::LoadTVQDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeTVQDLL()
+Void BonkEnc::DLLInterfaces::FreeTVQDLL()
 {
 	FreeLibrary(tvqdll);
 }
 
-Bool bonkEncDLLInterfaces::LoadVorbisDLL()
+Bool BonkEnc::DLLInterfaces::LoadVorbisDLL()
 {
 	vorbisdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/OggVorbis.dll"));
 
@@ -510,12 +510,12 @@ Bool bonkEncDLLInterfaces::LoadVorbisDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeVorbisDLL()
+Void BonkEnc::DLLInterfaces::FreeVorbisDLL()
 {
 	FreeLibrary(vorbisdll);
 }
 
-Bool bonkEncDLLInterfaces::LoadFAACDLL()
+Bool BonkEnc::DLLInterfaces::LoadFAACDLL()
 {
 	faacdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/FAAC.dll"));
 
@@ -538,12 +538,12 @@ Bool bonkEncDLLInterfaces::LoadFAACDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeFAACDLL()
+Void BonkEnc::DLLInterfaces::FreeFAACDLL()
 {
 	FreeLibrary(faacdll);
 }
 
-Bool bonkEncDLLInterfaces::LoadFAAD2DLL()
+Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
 {
 	faad2dll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/FAAD2.dll"));
 
@@ -568,12 +568,12 @@ Bool bonkEncDLLInterfaces::LoadFAAD2DLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeFAAD2DLL()
+Void BonkEnc::DLLInterfaces::FreeFAAD2DLL()
 {
 	FreeLibrary(faad2dll);
 }
 
-Bool bonkEncDLLInterfaces::LoadCDRipDLL()
+Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 {
 	cdripdll = LoadLibraryA(Application::GetApplicationDirectory().Append("CDRip.dll"));
 
@@ -616,12 +616,12 @@ Bool bonkEncDLLInterfaces::LoadCDRipDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeCDRipDLL()
+Void BonkEnc::DLLInterfaces::FreeCDRipDLL()
 {
 	FreeLibrary(cdripdll);
 }
 
-Bool bonkEncDLLInterfaces::LoadID3DLL()
+Bool BonkEnc::DLLInterfaces::LoadID3DLL()
 {
 	id3dll = LoadLibraryA(Application::GetApplicationDirectory().Append("id3lib.dll"));
 
@@ -670,12 +670,12 @@ Bool bonkEncDLLInterfaces::LoadID3DLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeID3DLL()
+Void BonkEnc::DLLInterfaces::FreeID3DLL()
 {
 	FreeLibrary(id3dll);
 }
 
-Bool bonkEncDLLInterfaces::LoadEUpdateDLL()
+Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 {
 	eupdatedll = LoadLibraryA(Application::GetApplicationDirectory().Append("eUpdate.dll"));
 
@@ -694,12 +694,12 @@ Bool bonkEncDLLInterfaces::LoadEUpdateDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeEUpdateDLL()
+Void BonkEnc::DLLInterfaces::FreeEUpdateDLL()
 {
 	FreeLibrary(eupdatedll);
 }
 
-Bool bonkEncDLLInterfaces::LoadMP4V2DLL()
+Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 {
 	mp4v2dll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/MP4v2.dll"));
 
@@ -768,12 +768,12 @@ Bool bonkEncDLLInterfaces::LoadMP4V2DLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeMP4V2DLL()
+Void BonkEnc::DLLInterfaces::FreeMP4V2DLL()
 {
 	FreeLibrary(mp4v2dll);
 }
 
-Bool bonkEncDLLInterfaces::LoadFLACDLL()
+Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 {
 	flacdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/FLAC.dll"));
 
@@ -812,12 +812,12 @@ Bool bonkEncDLLInterfaces::LoadFLACDLL()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeFLACDLL()
+Void BonkEnc::DLLInterfaces::FreeFLACDLL()
 {
 	FreeLibrary(flacdll);
 }
 
-Bool bonkEncDLLInterfaces::LoadWinampDLLs()
+Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 {
 	String		 dir = Application::GetApplicationDirectory().Append("plugins\\");
 	_finddata_t	 fileData;
@@ -890,7 +890,7 @@ Bool bonkEncDLLInterfaces::LoadWinampDLLs()
 	return true;
 }
 
-Void bonkEncDLLInterfaces::FreeWinampDLLs()
+Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
 {
 	for (Int i = 0; i < winamp_in_plugins.GetNOfEntries(); i++)
 	{

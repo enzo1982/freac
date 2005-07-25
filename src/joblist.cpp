@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <joblist.h>
+#include <playlist.h>
 #include <main.h>
 #include <dllinterfaces.h>
 #include <utilities.h>
@@ -18,6 +19,8 @@ BonkEnc::JobList::JobList(Point iPos, Size iSize) : ListBox(iPos, iSize)
 {
 	onRegister.Connect(&JobList::OnRegister, this);
 	onUnregister.Connect(&JobList::OnUnregister, this);
+
+	onClick.Connect(&JobList::OnSelectEntry, this);
 
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFile.Connect(&JobList::AddTrackByDragAndDrop, this);
@@ -89,6 +92,8 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 
 	tracks.AddEntry(track);
 
+	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfTracks())));
+
 	return True;
 }
 
@@ -96,11 +101,11 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 {
 	delete GetNthTrack(n);
 
-	tracks.RemoveEntry(n);
+	tracks.RemoveEntry(tracks.GetNthEntryIndex(n));
 
 	RemoveEntry(GetNthEntry(n));
 
-	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfEntries())));
+	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfTracks())));
 
 	return True;
 }
@@ -124,7 +129,7 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 
 	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", "0"));
 
-	((bonkEncGUI *) bonkEnc::currentConfig->appMain)->ClearEditFields();
+	onSelectNone.Emit();
 
 	return True;
 }
@@ -166,7 +171,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	Array<String>	 types;
 	Array<String>	 extensions;
 
-	for (Int i = 0; i < bonkEncDLLInterfaces::winamp_in_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < DLLInterfaces::winamp_in_plugins.GetNOfEntries(); i++)
 	{
 		Int		 n = 1;
 		Int		 k = 0;
@@ -177,9 +182,9 @@ Void BonkEnc::JobList::AddTrackByDialog()
 		{
 			if (!(n & 1))
 			{
-				type[k++] = bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
+				type[k++] = DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
 
-				if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
 					types.AddEntry(type);
 
@@ -190,9 +195,9 @@ Void BonkEnc::JobList::AddTrackByDialog()
 			}
 			else
 			{
-				extension[k++] = bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
+				extension[k++] = DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
 
-				if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
 					String	 extension2 = String("*.").Append(extension);
 					Int	 o = 0;		
@@ -218,7 +223,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 				}
 			}
 
-			if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
+			if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
 		}
 	}
 
@@ -389,8 +394,6 @@ Void BonkEnc::JobList::AddTrackByFileName(String file, String outfile)
 
 	AddTrack(format);
 	Paint(SP_UPDATE);
-
-	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfTracks())));
 }
 
 Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
@@ -414,27 +417,16 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 		return;
 	}
 
-	ListEntry	*entry = GetSelectedEntry();
-	Int		 n = 0;
+	Track	*track = GetSelectedTrack();
+	Int	 n = 0;
 
-	for (Int i = 0; i < GetNOfEntries(); i++)
+	for (Int i = 0; i < GetNOfTracks(); i++)
 	{
-		if (GetNthEntry(i) == entry) n = i;
+		if (GetNthTrack(i) == track) n = i;
 	}
 
 	if (bonkEnc::currentConfig->appMain->playing && bonkEnc::currentConfig->appMain->player_entry == n) bonkEnc::currentConfig->appMain->StopPlayback();
 	if (bonkEnc::currentConfig->appMain->playing && bonkEnc::currentConfig->appMain->player_entry > n) bonkEnc::currentConfig->appMain->player_entry--;
-
-	Surface	*surface = container->GetDrawSurface();
-	Point	 realPos = GetRealPosition();
-	Rect	 frame;
-
-	frame.left	= realPos.x;
-	frame.top	= realPos.y;
-	frame.right	= realPos.x + size.cx - 1;
-	frame.bottom	= realPos.y + size.cy - 1;
-
-	surface->StartPaint(frame);
 
 	RemoveNthTrack(n);
 
@@ -444,12 +436,8 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 		else				SelectEntry(GetNthEntry(n - 1));
 	}
 
-	surface->EndPaint();
-
-	text->SetText(bonkEnc::i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfEntries())));
-
-	if (GetNOfEntries() > 0)	((bonkEncGUI *) bonkEnc::currentConfig->appMain)->SelectJoblistEntry();
-	else				((bonkEncGUI *) bonkEnc::currentConfig->appMain)->ClearEditFields();
+	if (GetNOfEntries() > 0)	onSelectEntry.Emit(GetSelectedTrack());
+	else				onSelectNone.Emit();
 }
 
 
@@ -484,6 +472,31 @@ Void BonkEnc::JobList::LoadList()
 
 Void BonkEnc::JobList::SaveList()
 {
+	FileSelection	*dialog = new FileSelection();
+
+	dialog->SetParentWindow(container->GetContainerWindow());
+	dialog->SetMode(SFM_SAVE);
+	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
+	dialog->SetDefaultExtension("m3u");
+
+	dialog->AddFilter(bonkEnc::i18n->TranslateString("Playlist Files").Append(" (*.m3u)"), "*.m3u");
+	dialog->AddFilter(bonkEnc::i18n->TranslateString("All Files"), "*.*");
+
+	if (dialog->ShowDialog() == Success)
+	{
+		Playlist playlist;
+
+		for (Int i = 0; i < GetNOfTracks(); i++)
+		{
+			Track	*trackInfo = GetNthTrack(i);
+
+			playlist.AddTrack(trackInfo->origFilename, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : bonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : bonkEnc::i18n->TranslateString("unknown title")), trackInfo->length == -1 ? -1 : Math::Round((Float) trackInfo->length / (trackInfo->rate * trackInfo->channels)));
+		}
+
+		playlist.Save(dialog->GetFileName());
+	}
+
+	delete dialog;
 }
 
 Void BonkEnc::JobList::OnRegister(Container *container)
@@ -508,6 +521,11 @@ Void BonkEnc::JobList::OnUnregister(Container *container)
 	container->UnregisterObject(button_sel_toggle);
 
 	((bonkEncGUI *) bonkEnc::currentConfig->appMain)->onChangeLanguageSettings.Disconnect(&JobList::OnChangeLanguageSettings, this);
+}
+
+Void BonkEnc::JobList::OnSelectEntry()
+{
+	onSelectEntry.Emit(GetSelectedTrack());
 }
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()

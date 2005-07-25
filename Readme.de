@@ -26,6 +26,7 @@ Geschichte
 		- Unterstützung für ID3V1-Tags hinzugefügt
 		- Optionen zum Konfigurieren der Codierer zu BEcmd hinzugefügt
 		- Button zum Unterbrechen/Fortsetzen der Codierung hinzugefügt
+		- Option zum Herunterfahren des Computers nach der Codierung hinzugefügt
 		- Update auf MPEG4IP v1.3
 		- Verwende smooth v0.8.67.0
 		- Unterstützung für MinGW 1.x entfernt

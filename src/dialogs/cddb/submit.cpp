@@ -280,8 +280,8 @@ Void cddbSubmitDlg::Submit()
 		return;
 	}
 
-	bonkEncCDDB	 cddb(currentConfig);
-	String		 result;
+	CDDB	 cddb(currentConfig);
+	String	 result;
 
 	cddbInfo->GetFirstEntry()->artist = edit_artist->GetText();
 	cddbInfo->GetFirstEntry()->album = edit_album->GetText();
@@ -411,7 +411,7 @@ Void cddbSubmitDlg::ChangeDrive()
 
 	ReadCDText();
 
-	bonkEncCDDB	 cddb(currentConfig);
+	CDDB		 cddb(currentConfig);
 
 	cddb.SetActiveDrive(activedrive);
 
@@ -419,7 +419,7 @@ Void cddbSubmitDlg::ChangeDrive()
 
 	Array<Track *>	*cdInfo = NIL;
 
-	if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
+	if (currentConfig->enable_cddb_cache) cdInfo = CDDB::infoCache.GetEntry(cddb.ComputeDiscID());
 
 	if (cdInfo == NIL)
 	{
@@ -431,8 +431,8 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		if (cdInfo != NIL)
 		{
-			bonkEncCDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
-			bonkEncCDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+			CDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
+			CDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
 		}
 
 		currentConfig->cdrip_activedrive = oDrive;

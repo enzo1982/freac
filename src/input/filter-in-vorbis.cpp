@@ -142,25 +142,21 @@ int BonkEnc::FilterInVORBIS::ReadData(unsigned char **data, int size)
 				{
 					dataBufferLen += ((bout * vi.channels * 2) + 131072);
 
-					unsigned char *backbuffer = new unsigned char [size];
+					backBuffer.Resize(size);
 
-					memcpy((void *) backbuffer, (void *) *data, size);
+					memcpy(backBuffer, dataBuffer, size);
 
-					delete [] *data;
+					dataBuffer.Resize(dataBufferLen);
 
-					*data = new unsigned char [dataBufferLen];
+					memcpy(dataBuffer, backBuffer, size);
 
-					memcpy((void *) *data, (void *) backbuffer, size);
-
-					delete [] backbuffer;
-
-					memcpy((void *) (*data + size), (void *) convbuffer, bout * vi.channels * 2);
+					memcpy(dataBuffer + size, convbuffer, bout * vi.channels * 2);
 
 					size += (bout * vi.channels * 2);
 				}
 				else
 				{
-					memcpy((void *) (*data + size), (void *) convbuffer, bout * vi.channels * 2);
+					memcpy(dataBuffer + size, convbuffer, bout * vi.channels * 2);
 
 					size += (bout * vi.channels * 2);
 				}
@@ -171,6 +167,8 @@ int BonkEnc::FilterInVORBIS::ReadData(unsigned char **data, int size)
 
 		if (ex_ogg_page_eos(&og)) break;
 	}
+
+	*data = dataBuffer;
 
 	return size;
 }
@@ -197,11 +195,11 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 	Int		 size = 32768;
 	unsigned char	*data = new unsigned char [size];
 
-	f_in->InputData((void *) data, size);
+	f_in->InputData(data, size);
 
 	char	*fbuffer = ex_ogg_sync_buffer(&foy, size);
 
-	memcpy((void *) fbuffer, (void *) data, size);
+	memcpy(fbuffer, data, size);
 
 	delete [] data;
 
@@ -249,13 +247,13 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 		nFormat->track = -1;
 		nFormat->outfile = NIL;
 
-		String	 prevInFormat = String::SetInputFormat("UTF-8");
+		char	*prevInFormat = String::SetInputFormat("UTF-8");
 
 		for (Int j = 0; j < fvc.comments; j++)
 		{
 			char	*buffer = new char [fvc.comment_lengths[j]];
 
-			if (String("TITLE").CompareN(fvc.user_comments[j], 5) == 0)
+			if (String("TITLE").CompareN(String(fvc.user_comments[j]).ToUpper(), 5) == 0)
 			{
 				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
 				{
@@ -264,7 +262,7 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 
 				nFormat->title = buffer;
 			}
-			else if (String("ARTIST").CompareN(fvc.user_comments[j], 6) == 0)
+			else if (String("ARTIST").CompareN(String(fvc.user_comments[j]).ToUpper(), 6) == 0)
 			{
 				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
 				{
@@ -273,7 +271,7 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 
 				nFormat->artist = buffer;
 			}
-			else if (String("ALBUM").CompareN(fvc.user_comments[j], 5) == 0)
+			else if (String("ALBUM").CompareN(String(fvc.user_comments[j]).ToUpper(), 5) == 0)
 			{
 				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
 				{
@@ -282,7 +280,7 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 
 				nFormat->album = buffer;
 			}
-			else if (String("GENRE").CompareN(fvc.user_comments[j], 5) == 0)
+			else if (String("GENRE").CompareN(String(fvc.user_comments[j]).ToUpper(), 5) == 0)
 			{
 				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
 				{
@@ -291,7 +289,7 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 
 				nFormat->genre = buffer;
 			}
-			else if (String("DATE").CompareN(fvc.user_comments[j], 4) == 0)
+			else if (String("DATE").CompareN(String(fvc.user_comments[j]).ToUpper(), 4) == 0)
 			{
 				String	 year;
 
@@ -302,7 +300,7 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 
 				nFormat->year = year.ToInt();
 			}
-			else if (String("TRACKNUMBER").CompareN(fvc.user_comments[j], 11) == 0)
+			else if (String("TRACKNUMBER").CompareN(String(fvc.user_comments[j]).ToUpper(), 11) == 0)
 			{
 				String	 track;
 

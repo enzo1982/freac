@@ -10,37 +10,37 @@
 
 #include <input/filter-in-winamp.h>
 
-int	 channels = 0;
-int	 rate = 0;
-int	 bits = 16;
+int		 channels = 0;
+int		 rate = 0;
+int		 bits = 16;
 
-int	 get_more_samples = 0;
-int	 n_samples = 0;
-char	*sample_buffer;
+int		 get_more_samples = 0;
+int		 n_samples = 0;
+Buffer<char>	 sampleBuffer;
 
-void	 SetInfo(int, int, int, int);
-void	 VSASetInfo(int, int);
-void	 VSAAddPCMData(void *, int, int, int);
-int	 VSAGetMode(int *, int *);
-void	 VSAAdd(void *, int);
-void	 SAVSAInit(int, int);
-void	 SAVSADeInit();
-void	 SAAddPCMData(void *, int, int, int);
-int	 SAGetMode();
-void	 SAAdd(void *, int, int);
-int	 dsp_isactive();
-int	 dsp_dosamples(short int *, int, int, int, int);
-void	 SetVolume(int);
-void	 SetPan(int);
+void		 SetInfo(int, int, int, int);
+void		 VSASetInfo(int, int);
+void		 VSAAddPCMData(void *, int, int, int);
+int		 VSAGetMode(int *, int *);
+void		 VSAAdd(void *, int);
+void		 SAVSAInit(int, int);
+void		 SAVSADeInit();
+void		 SAAddPCMData(void *, int, int, int);
+int		 SAGetMode();
+void		 SAAdd(void *, int, int);
+int		 dsp_isactive();
+int		 dsp_dosamples(short int *, int, int, int, int);
+void		 SetVolume(int);
+void		 SetPan(int);
 
-int	 Out_Open(int, int, int, int, int);
-void	 Out_Close();
-void	 Out_Flush(int);
-int	 Out_Write(char *, int);
-int	 Out_CanWrite();
-int	 Out_IsPlaying();
-void	 Out_SetVolume(int);
-void	 Out_SetPan(int);
+int		 Out_Open(int, int, int, int, int);
+void		 Out_Close();
+void		 Out_Flush(int);
+int		 Out_Write(char *, int);
+int		 Out_CanWrite();
+int		 Out_IsPlaying();
+void		 Out_SetVolume(int);
+void		 Out_SetPan(int);
 
 BonkEnc::FilterInWinamp::FilterInWinamp(Config *config, Track *format, In_Module *iPlugin) : InputFilter(config, format)
 {
@@ -116,11 +116,11 @@ int BonkEnc::FilterInWinamp::ReadData(unsigned char **data, int size)
 
 	size = n_samples * (bits / 8) * channels;
 
-	*data = new unsigned char [size];
+	buffer.Resize(size);
 
-	memcpy((void *) *data, (void *) sample_buffer, size);
+	memcpy(buffer, sampleBuffer, size);
 
-	delete [] sample_buffer;
+	*data = buffer;
 
 	return size;
 }
@@ -130,23 +130,23 @@ Track *BonkEnc::FilterInWinamp::GetFileInfo(String inFile)
 	Track		*nFormat = new Track;
 	InStream	*f_in = OpenFile(inFile);
 
-	nFormat->order = BYTE_INTEL;
-	nFormat->fileSize = f_in->Size();
+	nFormat->order		= BYTE_INTEL;
+	nFormat->fileSize	= f_in->Size();
 
 	CloseFile(f_in);
 
 	plugin->Play(inFile);
 	plugin->Stop();
 
-	nFormat->rate = rate;
-	nFormat->channels = channels;
-	nFormat->bits = bits;
+	nFormat->rate		= rate;
+	nFormat->channels	= channels;
+	nFormat->bits		= bits;
 
 	int	 length_ms;
 
 	plugin->GetFileInfo(inFile, NIL, &length_ms);
 
-	nFormat->length = (Int) (Float(length_ms) * Float(rate * channels) / 1000.0);
+	nFormat->length		= (Int) (Float(length_ms) * Float(rate * channels) / 1000.0);
 
 	return nFormat;
 }
@@ -207,9 +207,9 @@ int dsp_isactive()
 
 int dsp_dosamples(short int *samples, int numsamples, int bps, int nch, int srate)
 {
-	if (n_samples == 0) sample_buffer = new char [32768 * (bps / 8) * nch];
+	if (n_samples == 0) sampleBuffer.Resize(32768 * (bps / 8) * nch);
 
-	memcpy((void *) (sample_buffer + n_samples * (bps / 8) * nch), (void *) samples, numsamples * (bps / 8) * nch);
+	memcpy(sampleBuffer + n_samples * (bps / 8) * nch, samples, numsamples * (bps / 8) * nch);
 
 	get_more_samples -= numsamples;
 	n_samples	 += numsamples;

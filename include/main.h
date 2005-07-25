@@ -65,6 +65,8 @@ class bonkEncGUI : public bonkEnc
 
 		Bool		 SetLanguage();
 		Void		 FillMenus();
+
+		Void		 SetEncoderText();
 	signals:
 		Signal0<Void>	 onChangeLanguageSettings;
 	slots:
@@ -72,12 +74,12 @@ class bonkEncGUI : public bonkEnc
 
 		Void		 MessageProc(Int, Int, Int);
 		Void		 ResizeProc();
+
+		Void		 OnJoblistSelectEntry(Track *);
+		Void		 OnJoblistSelectNone();
 	public:
 				 bonkEncGUI();
 				~bonkEncGUI();
-
-		Void		 ClearEditFields();
-		Void		 SelectJoblistEntry();
 };
 
 #endif

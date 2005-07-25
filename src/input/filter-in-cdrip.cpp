@@ -89,9 +89,11 @@ int BonkEnc::FilterInCDRip::ReadData(unsigned char **data, int size)
 
 	size = nBytes;
 
-	*data = new unsigned char [size];
+	dataBuffer.Resize(size);
 
-	memcpy((void *) *data, (void *) buffer, size);
+	memcpy(dataBuffer, buffer, size);
+
+	*data = dataBuffer;
 
 	debug_out->LeaveMethod();
 
@@ -342,15 +344,15 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 	nFormat->length = (trackLength * 2352) / (nFormat->bits / 8);
 	nFormat->fileSize = trackLength * 2352;
 
-	bonkEncCDDB	 cddb(currentConfig);
+	CDDB		 cddb(currentConfig);
 
 	cddb.SetActiveDrive(audiodrive);
 
 	Array<Track *>	*cdInfo = NIL;
 
-	if (currentConfig->enable_cddb_cache) cdInfo = bonkEncCDDB::infoCache.GetEntry(cddb.ComputeDiscID());
+	if (currentConfig->enable_cddb_cache || !currentConfig->appMain->cddbRetry) cdInfo = CDDB::infoCache.GetEntry(cddb.ComputeDiscID());
 
-	if (cdInfo == NIL && currentConfig->enable_auto_cddb)
+	if (cdInfo == NIL && currentConfig->enable_auto_cddb && !(cdText.GetEntry(trackNumber) != NIL && !currentConfig->enable_overwrite_cdtext))
 	{
 		Int	 oDrive = currentConfig->cdrip_activedrive;
 
@@ -360,8 +362,8 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 
 		if (cdInfo != NIL)
 		{
-			bonkEncCDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
-			bonkEncCDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+			CDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
+			CDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
 		}
 
 		currentConfig->cdrip_activedrive = oDrive;

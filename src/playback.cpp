@@ -39,7 +39,7 @@ Void bonkEnc::PlayItem(Int entry)
 
 	if (playing && paused && player_entry == entry)
 	{
-		bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(0);
+		DLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(0);
 
 		paused = False;
 
@@ -139,7 +139,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 		player_plugin = currentConfig->output_plugin;
 
-		Out_Module	*out = bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(currentConfig->output_plugin);
+		Out_Module	*out = DLLInterfaces::winamp_out_modules.GetNthEntry(currentConfig->output_plugin);
 		Int		 latency = out->Open(trackInfo->rate, trackInfo->channels, trackInfo->bits, 0, 0);
 
 		if (latency >= 0)
@@ -245,8 +245,8 @@ Void bonkEnc::PausePlayback()
 {
 	if (!playing) return;
 
-	if (paused) bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(0);
-	else	    bonkEncDLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(1);
+	if (paused) DLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(0);
+	else	    DLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(1);
 
 	paused = !paused;
 }

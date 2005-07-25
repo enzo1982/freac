@@ -34,6 +34,8 @@ namespace BonkEnc
 			static String		 LocalizeNumber(Int);
 
 			static String		 ReplaceIncompatibleChars(String);
+
+			static Void		 GainShutdownPrivilege();
 	};
 };
 

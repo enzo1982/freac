@@ -105,7 +105,7 @@ bool BonkEnc::FilterOutMP4::Deactivate()
 
 	if (currentConfig->enable_mp4meta)
 	{
-		String	 prevOutFormat = String::SetOutputFormat(currentConfig->mp4meta_encoding);
+		char	*prevOutFormat = String::SetOutputFormat(currentConfig->mp4meta_encoding);
 
 		if (currentConfig->default_comment != NIL) ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
 

@@ -18,17 +18,20 @@ namespace BonkEnc
 	class FilterInVOC : public InputFilter
 	{
 		private:
-			Int	 bytesLeft;
+			Int			 bytesLeft;
+
+			Buffer<unsigned char>	 buffer;
+			Buffer<unsigned char>	 backBuffer;
 		public:
-				 FilterInVOC(Config *, Track *);
-				~FilterInVOC();
+						 FilterInVOC(Config *, Track *);
+						~FilterInVOC();
 
-			bool	 Activate();
-			bool	 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-			int	 ReadData(unsigned char **, int);
+			int			 ReadData(unsigned char **, int);
 
-			Track	*GetFileInfo(String);
+			Track			*GetFileInfo(String);
 	};
 };
 

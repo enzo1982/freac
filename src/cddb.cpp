@@ -14,8 +14,8 @@
 #include <cddb.h>
 #include <dllinterfaces.h>
 
-Array<Array<Track *> *>	 bonkEncCDDB::infoCache;
-Array<Bool>		 bonkEncCDDB::requestedDiscs;
+Array<Array<Track *> *>	 BonkEnc::CDDB::infoCache;
+Array<Bool>		 BonkEnc::CDDB::requestedDiscs;
 
 int cddb_sum(int n)
 {
@@ -30,7 +30,7 @@ int cddb_sum(int n)
 	return ret;
 }
 
-bonkEncCDDB::bonkEncCDDB(Config *iConfig)
+BonkEnc::CDDB::CDDB(Config *iConfig)
 {
 	activeDriveID = 0;
 	connected = False;
@@ -40,14 +40,14 @@ bonkEncCDDB::bonkEncCDDB(Config *iConfig)
 	config = iConfig;
 }
 
-bonkEncCDDB::~bonkEncCDDB()
+BonkEnc::CDDB::~CDDB()
 {
 	ids.RemoveAll();
 	titles.RemoveAll();
 	categories.RemoveAll();
 }
 
-Int bonkEncCDDB::SetActiveDrive(Int driveID)
+Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 {
 	if (driveID >= ex_CR_GetNumCDROM())
 	{
@@ -61,7 +61,7 @@ Int bonkEncCDDB::SetActiveDrive(Int driveID)
 	}
 }
 
-Int bonkEncCDDB::ComputeDiscID()
+Int BonkEnc::CDDB::ComputeDiscID()
 {
 	ex_CR_SetActiveCDROM(activeDriveID);
 
@@ -77,7 +77,7 @@ Int bonkEncCDDB::ComputeDiscID()
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
 
-String bonkEncCDDB::GetDiscIDString()
+String BonkEnc::CDDB::GetDiscIDString()
 {
 	int	 id = ComputeDiscID();
 	String	 str;
@@ -91,12 +91,12 @@ String bonkEncCDDB::GetDiscIDString()
 	return str;
 }
 
-String bonkEncCDDB::GetCategory()
+String BonkEnc::CDDB::GetCategory()
 {
 	return category;
 }
 
-String bonkEncCDDB::GetCDDBQueryString()
+String BonkEnc::CDDB::GetCDDBQueryString()
 {
 	String	 str = String("cddb query ").Append(GetDiscIDString());
 
@@ -123,7 +123,7 @@ String bonkEncCDDB::GetCDDBQueryString()
 	return str;
 }
 
-String bonkEncCDDB::SendCommand(String command)
+String BonkEnc::CDDB::SendCommand(String command)
 {
 	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return "error not connected";
 
@@ -256,7 +256,7 @@ String bonkEncCDDB::SendCommand(String command)
 	return str;
 }
 
-Bool bonkEncCDDB::ConnectToServer()
+Bool BonkEnc::CDDB::ConnectToServer()
 {
 	if (config->freedb_mode == FREEDB_MODE_CDDBP)
 	{
@@ -297,7 +297,7 @@ Bool bonkEncCDDB::ConnectToServer()
 	return true;
 }
 
-String bonkEncCDDB::Query(String discid)
+String BonkEnc::CDDB::Query(String discid)
 {
 	String	 str = SendCommand(GetCDDBQueryString());
 
@@ -379,7 +379,7 @@ String bonkEncCDDB::Query(String discid)
 	return "error";
 }
 
-String bonkEncCDDB::Read(String query)
+String BonkEnc::CDDB::Read(String query)
 {
 	String	 str = SendCommand(String("cddb read ").Append(query));
 
@@ -423,7 +423,7 @@ String bonkEncCDDB::Read(String query)
 	}
 }
 
-String bonkEncCDDB::Submit(Array<Track *> *cddbInfo)
+String BonkEnc::CDDB::Submit(Array<Track *> *cddbInfo)
 {
 	String	 str;
 	String	 content;
@@ -522,7 +522,7 @@ String bonkEncCDDB::Submit(Array<Track *> *cddbInfo)
 	return str;
 }
 
-Bool bonkEncCDDB::CloseConnection()
+Bool BonkEnc::CDDB::CloseConnection()
 {
 	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return false;
 
@@ -538,22 +538,22 @@ Bool bonkEncCDDB::CloseConnection()
 	return true;
 }
 
-Int bonkEncCDDB::GetNOfMatches()
+Int BonkEnc::CDDB::GetNOfMatches()
 {
 	return ids.GetNOfEntries();
 }
 
-String bonkEncCDDB::GetNthID(Int n)
+String BonkEnc::CDDB::GetNthID(Int n)
 {
 	return ids.GetNthEntry(n);
 }
 
-String bonkEncCDDB::GetNthTitle(Int n)
+String BonkEnc::CDDB::GetNthTitle(Int n)
 {
 	return titles.GetNthEntry(n);
 }
 
-String bonkEncCDDB::GetNthCategory(Int n)
+String BonkEnc::CDDB::GetNthCategory(Int n)
 {
 	return categories.GetNthEntry(n);
 }

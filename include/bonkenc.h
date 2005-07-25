@@ -41,10 +41,10 @@ typedef unsigned long  uint32;
 typedef unsigned short uint16;
 typedef unsigned char  uint8;
 
-extern bonkEncDebug	*debug_out;
-
 // TODO: remove this line once everything is in namespace BonkEnc
 using namespace BonkEnc;
+
+extern Debug	*debug_out;
 
 class bonkEnc : public Application
 {

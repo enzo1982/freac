@@ -17,16 +17,18 @@ namespace BonkEnc
 {
 	class FilterInAIFF : public InputFilter
 	{
+		private:
+			Buffer<unsigned char>	 buffer;
 		public:
-				 FilterInAIFF(Config *, Track *);
-				~FilterInAIFF();
+						 FilterInAIFF(Config *, Track *);
+						~FilterInAIFF();
 
-			bool	 Activate();
-			bool	 Deactivate();
+			bool			 Activate();
+			bool			 Deactivate();
 
-			int	 ReadData(unsigned char **, int);
+			int			 ReadData(unsigned char **, int);
 
-			Track	*GetFileInfo(String);
+			Track			*GetFileInfo(String);
 	};
 };
 

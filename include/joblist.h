@@ -23,48 +23,53 @@ namespace BonkEnc
 	class JobList : public ListBox
 	{
 		private:
-			DropArea	*droparea;
-			Text		*text;
+			DropArea		*droparea;
+			Text			*text;
 
-			Button		*button_sel_all;
-			Button		*button_sel_none;
-			Button		*button_sel_toggle;
+			Button			*button_sel_all;
+			Button			*button_sel_none;
+			Button			*button_sel_toggle;
 
-			Array<Track *>	 tracks;
+			Array<Track *>		 tracks;
 
-			Bool		 AddTrack(Track *);
+			Bool			 AddTrack(Track *);
 		public:
-					 JobList(Point, Size);
-			virtual		~JobList();
+						 JobList(Point, Size);
+			virtual			~JobList();
 
-			Int		 GetNOfTracks();
-			Track		*GetNthTrack(Int);
+			Int			 GetNOfTracks();
+			Track			*GetNthTrack(Int);
 
-			Bool		 RemoveNthTrack(Int);
-			Bool		 RemoveAllTracks();
+			Bool			 RemoveNthTrack(Int);
+			Bool			 RemoveAllTracks();
 
-			Track		*GetSelectedTrack();
+			Track			*GetSelectedTrack();
 
-			Int		 SetMetrics(Point, Size);
+			Int			 SetMetrics(Point, Size);
 
-			Void		 AddTrackByDialog();
-			Void		 AddTrackByFileName(String, String out = NIL);
+			Void			 AddTrackByDialog();
+			Void			 AddTrackByFileName(String, String out = NIL);
 
-			Void		 RemoveSelectedTrack();
+			Void			 RemoveSelectedTrack();
+		signals:
+			Signal1<Void, Track *>	 onSelectEntry;
+			Signal0<Void>		 onSelectNone;
 		slots:
-			Void		 AddTrackByDragAndDrop(const String &);
+			Void			 AddTrackByDragAndDrop(const String &);
 
-			Void		 SelectAll();
-			Void		 SelectNone();
-			Void		 ToggleSelection();
+			Void			 SelectAll();
+			Void			 SelectNone();
+			Void			 ToggleSelection();
 
-			Void		 LoadList();
-			Void		 SaveList();
+			Void			 LoadList();
+			Void			 SaveList();
 
-			Void		 OnRegister(Container *);
-			Void		 OnUnregister(Container *);
+			Void			 OnRegister(Container *);
+			Void			 OnUnregister(Container *);
 
-			Void		 OnChangeLanguageSettings();
+			Void			 OnSelectEntry();
+
+			Void			 OnChangeLanguageSettings();
 	};
 };
 

@@ -49,7 +49,7 @@ InputFilter *BonkEnc::Utilities::CreateInputFilter(String &file, Track *trackInf
 	Array<String>	 extensions;
 	Array<Int>	 indexes;
 
-	for (Int i = 0; i < bonkEncDLLInterfaces::winamp_in_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < DLLInterfaces::winamp_in_plugins.GetNOfEntries(); i++)
 	{
 		Int	 n = 1;
 		Int	 k = 0;
@@ -59,13 +59,13 @@ InputFilter *BonkEnc::Utilities::CreateInputFilter(String &file, Track *trackInf
 		{
 			if (!(n & 1))
 			{
-				if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0) n++;
+				if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0) n++;
 			}
 			else
 			{
-				extension[k++] = bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
+				extension[k++] = DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
 
-				if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
 				{
 					String	 extension2 = extension;
 					Int	 o = 0;		
@@ -93,7 +93,7 @@ InputFilter *BonkEnc::Utilities::CreateInputFilter(String &file, Track *trackInf
 				}
 			}
 
-			if (bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
+			if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
 		}
 	}
 
@@ -180,7 +180,7 @@ InputFilter *BonkEnc::Utilities::CreateInputFilter(String &file, Track *trackInf
 		}
 		else
 		{
-			filter_in = new FilterInWinamp(bonkEnc::currentConfig, trackInfo, bonkEncDLLInterfaces::winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
+			filter_in = new FilterInWinamp(bonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
 		}
 	}
 
@@ -392,4 +392,31 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(String string)
 	}
 
 	return rVal;
+}
+
+Void BonkEnc::Utilities::GainShutdownPrivilege()
+{
+	OSVERSIONINFOA	 vInfo;
+
+	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
+
+	GetVersionExA(&vInfo);
+
+	if (vInfo.dwPlatformId == VER_PLATFORM_WIN32_NT)
+	{
+		LUID			 value;
+		TOKEN_PRIVILEGES	 token;
+		HANDLE			 htoken;
+
+		OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, &htoken);
+
+		if (Setup::enableUnicode)	LookupPrivilegeValueW(NULL, SE_SHUTDOWN_NAME, &value);
+		else				LookupPrivilegeValueA(NULL, "SeShutdownPrivilege", &value);
+
+		token.PrivilegeCount = 1;
+		token.Privileges[0].Luid = value;
+		token.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+
+		AdjustTokenPrivileges(htoken, false, &token, 0, NULL, NULL);
+	}
 }
