@@ -23,13 +23,15 @@ bool BonkEnc::FilterInVORBIS::Activate()
 {
 	ex_ogg_sync_init(&oy);
 
-	inBytes = 4096;
+	Int	 size = 4096;
 
-	buffer = ex_ogg_sync_buffer(&oy, inBytes);
+	inBytes += size;
 
-	driver->ReadData((unsigned char *) buffer, inBytes);
+	buffer = ex_ogg_sync_buffer(&oy, size);
 
-	ex_ogg_sync_wrote(&oy, inBytes);
+	driver->ReadData((unsigned char *) buffer, size);
+
+	ex_ogg_sync_wrote(&oy, size);
 
 	ex_ogg_sync_pageout(&oy, &og);
 
@@ -59,6 +61,16 @@ bool BonkEnc::FilterInVORBIS::Activate()
 
 				i++;
 			}
+		}
+		else
+		{
+			inBytes += size;
+
+			buffer = ex_ogg_sync_buffer(&oy, size);
+
+			driver->ReadData((unsigned char *) buffer, size);
+
+			ex_ogg_sync_wrote(&oy, size);
 		}
 	}
 
@@ -192,20 +204,12 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 
 	ex_ogg_sync_init(&foy);
 
-	Int		 size = 32768;
-	unsigned char	*data = new unsigned char [size];
-
-	f_in->InputData(data, size);
-
+	Int	 size = 4096;
 	char	*fbuffer = ex_ogg_sync_buffer(&foy, size);
 
-	memcpy(fbuffer, data, size);
-
-	delete [] data;
+	f_in->InputData(fbuffer, size);
 
 	ex_ogg_sync_wrote(&foy, size);
-
-	size = 0;
 
 	ex_ogg_sync_pageout(&foy, &fog);
 
@@ -235,6 +239,14 @@ Track *BonkEnc::FilterInVORBIS::GetFileInfo(String inFile)
 
 				i++;
 			}
+		}
+		else
+		{
+			fbuffer = ex_ogg_sync_buffer(&foy, size);
+
+			f_in->InputData(fbuffer, size);
+
+			ex_ogg_sync_wrote(&foy, size);
 		}
 	}
 
