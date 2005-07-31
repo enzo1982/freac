@@ -171,7 +171,7 @@
     <entry id="159" string="No exact matches found">該当する物がありませんでした。</entry>
     <entry id="160" string="Multiple matches found">複数の物が該当しました。</entry>
     <entry id="161" string="Matches">該当</entry>
-    <entry id="162" string="Select the entry that best fits your CD:"></entry>
+    <entry id="162" string="Select the entry that best fits your CD:">CDに最適な項目を選択:</entry>
     <entry id="163" string="Extended CDDB settings"></entry>
     <entry id="164" string="CGI scripts">CGIスクリプト</entry>
     <entry id="165" string="CDDB query script:">CDDBクエリスクリプト:</entry>
@@ -294,5 +294,9 @@
     <entry id="282" string="unknown genre">不明なジャンル</entry>
     <entry id="283" string="Load joblist...">ジョブリストを開く</entry>
     <entry id="284" string="Save joblist...">ジョブリストを保存</entry>
+    <entry id="285" string="Pause/resume encoding">エンコードを中断/再開</entry>
+    <entry id="286" string="Shutdown after encoding">エンコード終了後にシャットダウン</entry>
+    <entry id="287" string="Playlist Files">再生リスト</entry>
+    <entry id="288" string="Prefer CDDB over CD Text"/>
   </data>
 </LangFile>
