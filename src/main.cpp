@@ -73,7 +73,7 @@ bonkEncGUI::bonkEncGUI()
 	currentConfig->appMain = this;
 
 	dontUpdateInfo = False;
-	cddbRetry = True;
+
 	clicked_drive = -1;
 	clicked_encoder = -1;
 
@@ -603,8 +603,11 @@ Void bonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 							if (ok)
 							{
 								currentConfig->cdrip_activedrive = drive;
+								currentConfig->cdrip_autoRead_active = True;
 
 								ReadCD();
+
+								currentConfig->cdrip_autoRead_active = False;
 							}
 						}
 					}
@@ -668,7 +671,7 @@ Void bonkEncGUI::ConfigureEncoder()
 {
 	if (encoding)
 	{
-		QuickMessage(i18n->TranslateString("Cannot configure encoder while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot configure encoder while encoding!");
 
 		return;
 	}
@@ -682,12 +685,12 @@ Void bonkEncGUI::ConfigureEncoder()
 
 	Dialog	*dlg = NIL;
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		dlg = new configureBonkEnc();
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	dlg = new configureBladeEnc();
-	else if (currentConfig->encoder == ENCODER_LAMEENC)	dlg = new configureLameEnc();
-	else if (currentConfig->encoder == ENCODER_VORBISENC)	dlg = new configureVorbisEnc();
-	else if (currentConfig->encoder == ENCODER_FAAC)	dlg = new configureFAAC();
-	else if (currentConfig->encoder == ENCODER_TVQ)		dlg = new configureTVQ();
+	if (currentConfig->encoder == ENCODER_BONKENC)		dlg = new ConfigureBonkEnc();
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	dlg = new ConfigureBladeEnc();
+	else if (currentConfig->encoder == ENCODER_LAMEENC)	dlg = new ConfigureLameEnc();
+	else if (currentConfig->encoder == ENCODER_VORBISENC)	dlg = new ConfigureVorbisEnc();
+	else if (currentConfig->encoder == ENCODER_FAAC)	dlg = new ConfigureFAAC();
+	else if (currentConfig->encoder == ENCODER_TVQ)		dlg = new ConfigureTVQ();
 
 	dlg->SetParentWindow(mainWnd);
 	dlg->ShowDialog();
@@ -699,7 +702,7 @@ Void bonkEncGUI::ConfigureGeneral()
 {
 	if (encoding)
 	{
-		QuickMessage(i18n->TranslateString("Cannot change settings while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot change settings while encoding!");
 
 		return;
 	}

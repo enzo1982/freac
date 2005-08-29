@@ -11,7 +11,7 @@
 #include <dialogs/vorbisconfig.h>
 #include <resources.h>
 
-configureVorbisEnc::configureVorbisEnc()
+BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 {
 	Point	 pos;
 	Size	 size;
@@ -34,13 +34,13 @@ configureVorbisEnc::configureVorbisEnc()
 	size.cy = 0;
 
 	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&configureVorbisEnc::Cancel, this);
+	btn_cancel->onClick.Connect(&ConfigureVorbisEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
 	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&configureVorbisEnc::OK, this);
+	btn_ok->onClick.Connect(&ConfigureVorbisEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -60,12 +60,12 @@ configureVorbisEnc::configureVorbisEnc()
 	size.cy = 0;
 
 	option_mode_vbr		= new OptionBox(String("VBR (").Append(bonkEnc::i18n->TranslateString("Variable Bitrate")).Append(")"), pos, size, &mode, 0);
-	option_mode_vbr->onClick.Connect(&configureVorbisEnc::SetMode, this);
+	option_mode_vbr->onClick.Connect(&ConfigureVorbisEnc::SetMode, this);
 
 	pos.x += 166;
 
 	option_mode_abr		= new OptionBox(String("ABR (").Append(bonkEnc::i18n->TranslateString("Average Bitrate")).Append(")"), pos, size, &mode, 1);
-	option_mode_abr->onClick.Connect(&configureVorbisEnc::SetMode, this);
+	option_mode_abr->onClick.Connect(&ConfigureVorbisEnc::SetMode, this);
 
 	pos.x = 19;
 	pos.y += 43;
@@ -77,7 +77,7 @@ configureVorbisEnc::configureVorbisEnc()
 	size.cx = 283 - text_quality->textSize.cx;
 
 	slider_quality		= new Slider(pos, size, OR_HORZ, &quality, 0, 100);
-	slider_quality->onClick.Connect(&configureVorbisEnc::SetQuality, this);
+	slider_quality->onClick.Connect(&ConfigureVorbisEnc::SetQuality, this);
 
 	pos.x += (size.cx + 7);
 	pos.y += 2;
@@ -93,7 +93,7 @@ configureVorbisEnc::configureVorbisEnc()
 	size.cx = 248 - text_abr->textSize.cx;
 
 	slider_abr		= new Slider(pos, size, OR_HORZ, &abr, 45, 500);
-	slider_abr->onClick.Connect(&configureVorbisEnc::SetBitrate, this);
+	slider_abr->onClick.Connect(&ConfigureVorbisEnc::SetBitrate, this);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
@@ -101,7 +101,7 @@ configureVorbisEnc::configureVorbisEnc()
 
 	edit_abr		= new EditBox("", pos, size, 3);
 	edit_abr->SetFlags(EDB_NUMERIC);
-	edit_abr->onClick.Connect(&configureVorbisEnc::SetBitrateByEditBox, this);
+	edit_abr->onClick.Connect(&ConfigureVorbisEnc::SetBitrateByEditBox, this);
 
 	pos.x += 32;
 	pos.y += 3;
@@ -149,7 +149,7 @@ configureVorbisEnc::configureVorbisEnc()
 	}
 }
 
-configureVorbisEnc::~configureVorbisEnc()
+BonkEnc::ConfigureVorbisEnc::~ConfigureVorbisEnc()
 {
 	delete mainWnd_titlebar;
 	delete mainWnd_layer_abr;
@@ -174,14 +174,14 @@ configureVorbisEnc::~configureVorbisEnc()
 	delete text_abr_kbps;
 }
 
-Int configureVorbisEnc::ShowDialog()
+Int BonkEnc::ConfigureVorbisEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return mainWnd->value;
 }
 
-Void configureVorbisEnc::OK()
+Void BonkEnc::ConfigureVorbisEnc::OK()
 {
 	currentConfig->vorbis_mode = mode;
 	currentConfig->vorbis_quality = quality;
@@ -190,12 +190,12 @@ Void configureVorbisEnc::OK()
 	mainWnd->Close();
 }
 
-Void configureVorbisEnc::Cancel()
+Void BonkEnc::ConfigureVorbisEnc::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void configureVorbisEnc::SetMode()
+Void BonkEnc::ConfigureVorbisEnc::SetMode()
 {
 	switch (mode)
 	{
@@ -210,7 +210,7 @@ Void configureVorbisEnc::SetMode()
 	}
 }
 
-Void configureVorbisEnc::SetQuality()
+Void BonkEnc::ConfigureVorbisEnc::SetQuality()
 {
 	String	 txt = String::FromFloat(((double) quality) / 100);
 
@@ -220,12 +220,12 @@ Void configureVorbisEnc::SetQuality()
 	text_quality_value->SetText(txt);
 }
 
-Void configureVorbisEnc::SetBitrate()
+Void BonkEnc::ConfigureVorbisEnc::SetBitrate()
 {
 	edit_abr->SetText(String::FromInt(abr));
 }
 
-Void configureVorbisEnc::SetBitrateByEditBox()
+Void BonkEnc::ConfigureVorbisEnc::SetBitrateByEditBox()
 {
 	slider_abr->SetValue(edit_abr->GetText().ToInt());
 }

@@ -26,13 +26,12 @@ namespace BonkEnc
 			FLAC__StreamDecoder	*decoder;
 			Bool			 finished;
 
-			Buffer<unsigned char>	 inputBuffer;
 			Buffer<unsigned short>	 samplesBuffer;
 
 			Buffer<unsigned char>	 dataBuffer;
 
 			Thread			*decoderThread;
-			Mutex			*inputBufferMutex;
+			Mutex			*readDataMutex;
 			Mutex			*samplesBufferMutex;
 
 			Int			 ReadFLACMetadata(Thread *);

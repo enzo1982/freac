@@ -203,7 +203,7 @@
     <entry id="192" string="Default comment string:">預設說明內容:</entry>
     <entry id="193" string="unknown artist">未知演出者</entry>
     <entry id="194" string="unknown title">未知曲名</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">無法載入 ASPI 驅動程式!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入 ASPI 驅動程式! CD 音軌讀取功能失效!</entry>
     <entry id="196" string="Database">資料庫</entry>
     <entry id="197" string="Submit CDDB data...">上傳 CDDB 資訊...</entry>
     <entry id="198" string="Enable CDDB cache">啟用 CDDB 暫存快取</entry>
@@ -211,7 +211,6 @@
     <entry id="200" string="Submit">上傳</entry>
     <entry id="201" string="No audio CD in drive!">光碟機中沒有 CD 音軌!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">請輸入完所有的專輯資訊再上傳.</entry>
-    <entry id="203" string="CD ripping disabled!">CD 音軌讀取功能失效!</entry>
     <entry id="204" string="Do you want to use native NT SCSI instead?">您是否想要以內建之 NT SCSI 函式庫取代?</entry>
     <entry id="205" string="Submitting CD information">專輯資訊上傳中</entry>
     <entry id="206" string="Cannot open file:">無法開啟檔案:</entry>

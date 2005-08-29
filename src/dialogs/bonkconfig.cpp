@@ -11,7 +11,7 @@
 #include <dialogs/bonkconfig.h>
 #include <resources.h>
 
-configureBonkEnc::configureBonkEnc()
+BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 {
 	Point	 pos;
 	Size	 size;
@@ -34,13 +34,13 @@ configureBonkEnc::configureBonkEnc()
 	size.cy = 0;
 
 	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&configureBonkEnc::Cancel, this);
+	btn_cancel->onClick.Connect(&ConfigureBonkEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
 	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&configureBonkEnc::OK, this);
+	btn_ok->onClick.Connect(&ConfigureBonkEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -75,7 +75,7 @@ configureBonkEnc::configureBonkEnc()
 	size.cy = 0;
 
 	check_lossless		= new CheckBox(bonkEnc::i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless);
-	check_lossless->onClick.Connect(&configureBonkEnc::SetEncoderMode, this);
+	check_lossless->onClick.Connect(&ConfigureBonkEnc::SetEncoderMode, this);
 
 	pos.x += 176;
 
@@ -87,7 +87,7 @@ configureBonkEnc::configureBonkEnc()
 	size.cy = 0;
 
 	slider_quant		= new Slider(pos, size, OR_HORZ, &quant, 0, 40);
-	slider_quant->onClick.Connect(&configureBonkEnc::SetQuantization, this);
+	slider_quant->onClick.Connect(&ConfigureBonkEnc::SetQuantization, this);
 
 	pos.x += 127;
 	pos.y += 2;
@@ -99,7 +99,7 @@ configureBonkEnc::configureBonkEnc()
 	pos.y -= 2;
 
 	slider_downsampling	= new Slider(pos, size, OR_HORZ, &downsampling, 1, 10);
-	slider_downsampling->onClick.Connect(&configureBonkEnc::SetDownsamplingRatio, this);
+	slider_downsampling->onClick.Connect(&ConfigureBonkEnc::SetDownsamplingRatio, this);
 
 	pos.x += 127;
 	pos.y += 2;
@@ -112,7 +112,7 @@ configureBonkEnc::configureBonkEnc()
 	size.cx += 176;
 
 	slider_predictor	= new Slider(pos, size, OR_HORZ, &predictor, 0, 512);
-	slider_predictor->onClick.Connect(&configureBonkEnc::SetPredictorSize, this);
+	slider_predictor->onClick.Connect(&ConfigureBonkEnc::SetPredictorSize, this);
 
 	pos.x += 303;
 	pos.y += 2;
@@ -146,7 +146,7 @@ configureBonkEnc::configureBonkEnc()
 	mainWnd->SetMetrics(Point(140, 140), Size(364, 242));
 }
 
-configureBonkEnc::~configureBonkEnc()
+BonkEnc::ConfigureBonkEnc::~ConfigureBonkEnc()
 {
 	delete mainWnd_titlebar;
 	delete mainWnd;
@@ -168,14 +168,14 @@ configureBonkEnc::~configureBonkEnc()
 	delete text_predictor;
 }
 
-Int configureBonkEnc::ShowDialog()
+Int BonkEnc::ConfigureBonkEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return mainWnd->value;
 }
 
-Void configureBonkEnc::OK()
+Void BonkEnc::ConfigureBonkEnc::OK()
 {
 	currentConfig->bonk_quantization = quant;
 	currentConfig->bonk_predictor = predictor;
@@ -186,12 +186,12 @@ Void configureBonkEnc::OK()
 	mainWnd->Close();
 }
 
-Void configureBonkEnc::Cancel()
+Void BonkEnc::ConfigureBonkEnc::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void configureBonkEnc::SetQuantization()
+Void BonkEnc::ConfigureBonkEnc::SetQuantization()
 {
 	String	 val = String::FromFloat(0.05 * (double) quant);
 
@@ -208,17 +208,17 @@ Void configureBonkEnc::SetQuantization()
 	text_quant->SetText(val);
 }
 
-Void configureBonkEnc::SetPredictorSize()
+Void BonkEnc::ConfigureBonkEnc::SetPredictorSize()
 {
 	text_predictor->SetText(String::FromInt(predictor));
 }
 
-Void configureBonkEnc::SetDownsamplingRatio()
+Void BonkEnc::ConfigureBonkEnc::SetDownsamplingRatio()
 {
 	text_downsampling->SetText(String::FromInt(downsampling).Append(":1"));
 }
 
-Void configureBonkEnc::SetEncoderMode()
+Void BonkEnc::ConfigureBonkEnc::SetEncoderMode()
 {
 	if (lossless)
 	{

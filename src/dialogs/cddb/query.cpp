@@ -12,6 +12,7 @@
 #include <resources.h>
 #include <dllinterfaces.h>
 #include <cddb.h>
+#include <utilities.h>
 #include <dialogs/cddb/multimatch.h>
 
 cddbQueryDlg::cddbQueryDlg()
@@ -152,7 +153,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 	}
 	else if (result == "error")
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
 	}
 	else
 	{
@@ -169,7 +170,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 		if (result == "error")
 		{
-			QuickMessage(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+			Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
 		}
 		else
 		{

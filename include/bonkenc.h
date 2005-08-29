@@ -116,8 +116,6 @@ class bonkEnc : public Application
 		static Config		*currentConfig;
 		static I18n::Translator	*i18n;
 
-		Bool			 cddbRetry;
-
 		JobList			*joblist;
 
 		Bool			 encoding;

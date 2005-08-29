@@ -204,7 +204,7 @@
     <entry id="192" string="Default comment string:">初期コメント:</entry>
     <entry id="193" string="unknown artist">(不明なアーティスト)</entry>
     <entry id="194" string="unknown title">(不明な題名)</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">ASPIドライバがロードできません！</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">ASPIドライバがロードできません！ CDリッピングが使えません！</entry>
     <entry id="196" string="Database">データベース</entry>
     <entry id="197" string="Submit CDDB data...">CDDBデータを送信</entry>
     <entry id="198" string="Enable CDDB cache">CDDBキャッシュを使用</entry>
@@ -212,7 +212,7 @@
     <entry id="200" string="Submit">送信</entry>
     <entry id="201" string="No audio CD in drive!">CDに音楽がありません！</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting."></entry>
-    <entry id="203" string="CD ripping disabled!">CDリッピングが使えません！</entry>
+    <entry id="203" string="Prefer CDDB over CD Text"/>
     <entry id="204" string="CD options">CD設定</entry>
     <entry id="205" string="Submitting CD information">CD情報を送信</entry>
     <entry id="206" string="Cannot open file:">ファイルが開けません:</entry>
@@ -297,6 +297,5 @@
     <entry id="285" string="Pause/resume encoding">エンコードを中断/再開</entry>
     <entry id="286" string="Shutdown after encoding">エンコード終了後にシャットダウン</entry>
     <entry id="287" string="Playlist Files">再生リスト</entry>
-    <entry id="288" string="Prefer CDDB over CD Text"/>
   </data>
 </LangFile>

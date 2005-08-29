@@ -18,6 +18,7 @@
 
 #include <cddb.h>
 #include <resources.h>
+#include <utilities.h>
 
 #include <direct.h>
 
@@ -143,7 +144,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1 && !valid)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Please enter a valid eMail address."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Please enter a valid eMail address.");
 
 		return;
 	}

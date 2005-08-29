@@ -21,6 +21,9 @@ BonkEnc::Config::Config()
 	languageChanged = False;
 	shutdownAfterEncoding = False;
 
+	cdrip_autoRead_active = False;
+	cdrip_read_active = False;
+
 	appMain = NIL;
 }
 

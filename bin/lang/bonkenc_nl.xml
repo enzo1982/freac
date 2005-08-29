@@ -203,7 +203,7 @@
     <entry id="192" string="Default comment string:">Standaardcommentaar:</entry>
     <entry id="193" string="unknown artist">onbekende artiest</entry>
     <entry id="194" string="unknown title">onbekende titel</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">ASPI drivers kunnen niet geladen worden!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI drivers kunnen niet geladen worden! CD rippen gedeactiveerd!</entry>
     <entry id="196" string="Database">Databank</entry>
     <entry id="197" string="Submit CDDB data...">CDDB data verzenden...</entry>
     <entry id="198" string="Enable CDDB cache">CDDB cache activeren</entry>
@@ -211,7 +211,6 @@
     <entry id="200" string="Submit">Verzenden</entry>
     <entry id="201" string="No audio CD in drive!">Geen Audio CD in het station!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Gelieve alle velden en de titels in te vullen alvorens te verzenden.</entry>
-    <entry id="203" string="CD ripping disabled!">CD rippen gedeactiveerd!</entry>
     <entry id="204" string="CD options">CD opties</entry>
     <entry id="205" string="Submitting CD information">CD info wordt verzonden</entry>
     <entry id="206" string="Cannot open file:">Kan het bestand niet openen:</entry>

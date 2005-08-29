@@ -236,58 +236,25 @@ Void GeneralSettingsLayerEncoders::SelectDir()
 
 Void GeneralSettingsLayerEncoders::ConfigureEncoder()
 {
-	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BONKENC)
-	{
-		configureBonkEnc	*dlg = new configureBonkEnc();
-
-		dlg->ShowDialog();
-
-		DeleteObject(dlg);
-	}
-	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BLADEENC)
-	{
-		configureBladeEnc	*dlg = new configureBladeEnc();
-
-		dlg->ShowDialog();
-
-		DeleteObject(dlg);
-	}
-	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_LAMEENC)
-	{
-		configureLameEnc	*dlg = new configureLameEnc();
-
-		dlg->ShowDialog();
-
-		DeleteObject(dlg);
-	}
-	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_VORBISENC)
-	{
-		configureVorbisEnc	*dlg = new configureVorbisEnc();
-
-		dlg->ShowDialog();
-
-		DeleteObject(dlg);
-	}
-	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FAAC)
-	{
-		configureFAAC	*dlg = new configureFAAC();
-
-		dlg->ShowDialog();
-
-		DeleteObject(dlg);
-	}
-	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_TVQ)
-	{
-		configureTVQ	*dlg = new configureTVQ();
-
-		dlg->ShowDialog();
-
-		DeleteObject(dlg);
-	}
-	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WAVE)
+	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WAVE)
 	{
 		QuickMessage(bonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), bonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+
+		return;
 	}
+
+	Dialog	*dlg = NIL;
+
+	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BONKENC)		dlg = new ConfigureBonkEnc();
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BLADEENC)	dlg = new ConfigureBladeEnc();
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_LAMEENC)	dlg = new ConfigureLameEnc();
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_VORBISENC)	dlg = new ConfigureVorbisEnc();
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FAAC)	dlg = new ConfigureFAAC();
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_TVQ)	dlg = new ConfigureTVQ();
+
+	dlg->ShowDialog();
+
+	DeleteObject(dlg);
 }
 
 Void GeneralSettingsLayerEncoders::ToggleOnTheFly()

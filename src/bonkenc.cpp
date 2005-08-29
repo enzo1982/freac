@@ -14,6 +14,7 @@
 #include <vector>
 #include <time.h>
 
+#include <utilities.h>
 #include <dllinterfaces.h>
 #include <joblist.h>
 
@@ -44,7 +45,7 @@ I18n::Translator	*bonkEnc::i18n		= NIL;
 
 Debug	*debug_out;
 
-String	 bonkEnc::version = "CVS 20050725";
+String	 bonkEnc::version = "CVS 20050829";
 String	 bonkEnc::cddbVersion = "v1.0beta3";
 String	 bonkEnc::shortVersion = "v1.0";
 
@@ -67,7 +68,7 @@ bonkEnc::bonkEnc()
 
 	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
 	{
-		languageDlg	*dlg = new languageDlg();
+		LanguageDlg	*dlg = new LanguageDlg();
 
 		dlg->ShowDialog();
 
@@ -158,7 +159,7 @@ bonkEnc::bonkEnc()
 
 		if (error != CDEX_OK)
 		{
-			QuickMessage(i18n->TranslateString("Unable to load ASPI drivers!").Append(" ").Append(i18n->TranslateString("CD ripping disabled!")), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+			Utilities::ErrorMessage("Unable to load ASPI drivers! CD ripping disabled!");
 
 			currentConfig->enable_cdrip = false;
 		}
@@ -227,7 +228,7 @@ Void bonkEnc::ReadCD()
 {
 	if (encoding)
 	{
-		QuickMessage(i18n->TranslateString("Cannot modify the joblist while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
 		return;
 	}
@@ -238,16 +239,18 @@ Void bonkEnc::ReadCD()
 
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
+	currentConfig->cdrip_read_active = True;
+
 	for (Int i = 0; i < numTocEntries; i++)
 	{
 		TOCENTRY entry = ex_CR_GetTocEntry(i);
 
 		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1) joblist->AddTrackByFileName(String("/cda").Append(String::FromInt(i + 1)));
-
-		cddbRetry = False;
 	}
 
-	cddbRetry = True;
+	currentConfig->cdrip_read_active = False;
+	currentConfig->cdrip_read_discids.RemoveAll();
+	currentConfig->cdrip_read_results.RemoveAll();
 }
 
 Array<Track *> *bonkEnc::GetCDDBData()

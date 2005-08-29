@@ -37,6 +37,9 @@ typedef struct
 }
 cdTextPackage;
 
+Array<String>	 BonkEnc::FilterInCDRip::cdText;
+Int		 BonkEnc::FilterInCDRip::cdTextDiscID;
+
 BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
@@ -123,13 +126,14 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 	numTocEntries = ex_CR_GetNumTocEntries();
 
 	entry.btTrackNumber = 0;
+	entry.dwStartSector = 0;
 
 	for (int i = 0; i < numTocEntries; i++)
 	{
 		entry = ex_CR_GetTocEntry(i);
 
-		if (!(entry.btFlag & CDROMDATAFLAG) && (entry.btTrackNumber == trackNumber)) break;
-		else entry.btTrackNumber = 0;
+		if (!(entry.btFlag & CDROMDATAFLAG) && (entry.btTrackNumber == trackNumber))	break;
+		else										entry.btTrackNumber = 0;
 	}
 
 	if (entry.btTrackNumber == 0)
@@ -139,9 +143,9 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 		return false;
 	}
 
-	int	 startSector = entry.dwStartSector;
-	int	 endSector = 0;
-	TOCENTRY entry2 = ex_CR_GetTocEntry(0);
+	int	 startSector	= entry.dwStartSector;
+	int	 endSector	= 0;
+	TOCENTRY entry2		= ex_CR_GetTocEntry(0);
 
 	for (int j = 1; j <= numTocEntries; j++)
 	{
@@ -332,8 +336,6 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 		}
 	}
 
-	ReadCDText();
-
 	if (trackNumber == 0)
 	{
 		delete nFormat;
@@ -348,11 +350,31 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 
 	cddb.SetActiveDrive(audiodrive);
 
+	Int		 discid = cddb.ComputeDiscID();
+
+	if (cdTextDiscID != discid)
+	{
+		ReadCDText();
+
+		cdTextDiscID = discid;
+	}
+
 	Array<Track *>	*cdInfo = NIL;
+	Bool		 getCDDBFromCache = currentConfig->enable_cddb_cache;
+	Bool		 discIsInResults = False;
 
-	if (currentConfig->enable_cddb_cache || !currentConfig->appMain->cddbRetry) cdInfo = CDDB::infoCache.GetEntry(cddb.ComputeDiscID());
+	if (currentConfig->cdrip_read_active)
+	{
+		for (Int i = 0; i < currentConfig->cdrip_read_discids.GetNOfEntries(); i++)
+		{
+			if (currentConfig->cdrip_read_discids.GetNthEntry(i) == discid)		 discIsInResults = True;
+			if (discIsInResults && currentConfig->cdrip_read_results.GetNthEntry(i)) getCDDBFromCache = True;
+		}
+	}
 
-	if (cdInfo == NIL && currentConfig->enable_auto_cddb && !(cdText.GetEntry(trackNumber) != NIL && !currentConfig->enable_overwrite_cdtext))
+	if (getCDDBFromCache) cdInfo = CDDB::infoCache.GetEntry(discid);
+
+	if (cdInfo == NIL && currentConfig->enable_auto_cddb && !discIsInResults && !(cdText.GetEntry(trackNumber) != NIL && !currentConfig->enable_overwrite_cdtext))
 	{
 		Int	 oDrive = currentConfig->cdrip_activedrive;
 
@@ -362,8 +384,14 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 
 		if (cdInfo != NIL)
 		{
-			CDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
-			CDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+			CDDB::infoCache.RemoveEntry(discid);
+			CDDB::infoCache.AddEntry(cdInfo, discid);
+		}
+
+		if (currentConfig->cdrip_read_active)
+		{
+			currentConfig->cdrip_read_discids.AddEntry(discid);
+			currentConfig->cdrip_read_results.AddEntry(cdInfo != NIL ? True : False);
 		}
 
 		currentConfig->cdrip_activedrive = oDrive;
@@ -409,14 +437,12 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 
 	nFormat->origFilename.Append(String::FromInt(nFormat->track));
 
-	FreeCDText();
-
 	return nFormat;
 }
 
 Int BonkEnc::FilterInCDRip::ReadCDText()
 {
-	FreeCDText();
+	cdText.RemoveAll();
 
 	const int	 nBufferSize	= 4 + 8 * sizeof(cdTextPackage) * 256;
 	unsigned char	*pbtBuffer	= new unsigned char [nBufferSize];
@@ -470,13 +496,6 @@ Int BonkEnc::FilterInCDRip::ReadCDText()
 	}
 
 	delete [] pbtBuffer;
-
-	return Success;
-}
-
-Int BonkEnc::FilterInCDRip::FreeCDText()
-{
-	cdText.RemoveAll();
 
 	return Success;
 }

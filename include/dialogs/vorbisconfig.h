@@ -17,51 +17,51 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class configureVorbisEnc : public Dialog
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_mode;
-		GroupBox	*group_mode2;
-		OptionBox	*option_mode_vbr;
-		OptionBox	*option_mode_abr;
-		Slider		*slider_quality;
-		Text		*text_quality;
-		Text		*text_quality_value;
-		Slider		*slider_abr;
-		Text		*text_abr;
-		EditBox		*edit_abr;
-		Text		*text_abr_kbps;
+	class ConfigureVorbisEnc : public Dialog
+	{
+		private:
+			GroupBox	*group_mode;
+			GroupBox	*group_mode2;
+			OptionBox	*option_mode_vbr;
+			OptionBox	*option_mode_abr;
+			Slider		*slider_quality;
+			Text		*text_quality;
+			Text		*text_quality_value;
+			Slider		*slider_abr;
+			Text		*text_abr;
+			EditBox		*edit_abr;
+			Text		*text_abr_kbps;
 
-		Divider		*divbar;
+			Divider		*divbar;
 
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
-		Layer		*mainWnd_layer_vbr;
-		Layer		*mainWnd_layer_abr;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
+			Layer		*mainWnd_layer_vbr;
+			Layer		*mainWnd_layer_abr;
 
-		Button		*btn_cancel;
-		Button		*btn_ok;
+			Button		*btn_cancel;
+			Button		*btn_ok;
 
-		Int		 quality;
-		Int		 abr;
-		Int		 mode;
+			Int		 quality;
+			Int		 abr;
+			Int		 mode;
 
-		Config		*currentConfig;
+			Config		*currentConfig;
 
-		Void		 OK();
-		Void		 Cancel();
-		Void		 SetMode();
-		Void		 SetQuality();
-		Void		 SetBitrate();
-		Void		 SetBitrateByEditBox();
-	public:
-				 configureVorbisEnc();
-				~configureVorbisEnc();
+			Void		 OK();
+			Void		 Cancel();
+			Void		 SetMode();
+			Void		 SetQuality();
+			Void		 SetBitrate();
+			Void		 SetBitrateByEditBox();
+		public:
+					 ConfigureVorbisEnc();
+					~ConfigureVorbisEnc();
 
-		Int		 ShowDialog();
+			Int		 ShowDialog();
+	};
 };
 
 #endif

@@ -17,38 +17,38 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class configureTVQ : public Dialog
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_bitrate;
-		ComboBox	*combo_bitrate;
-		Text		*text_bitrate;
-		Text		*text_bitrate_kbps;
+	class ConfigureTVQ : public Dialog
+	{
+		private:
+			GroupBox	*group_bitrate;
+			ComboBox	*combo_bitrate;
+			Text		*text_bitrate;
+			Text		*text_bitrate_kbps;
 
-		GroupBox	*group_precand;
-		ComboBox	*combo_precand;
-		Text		*text_precand;
+			GroupBox	*group_precand;
+			ComboBox	*combo_precand;
+			Text		*text_precand;
 
-		Divider		*divbar;
+			Divider		*divbar;
 
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-		Button		*btn_cancel;
-		Button		*btn_ok;
+			Button		*btn_cancel;
+			Button		*btn_ok;
 
-		Config		*currentConfig;
+			Config		*currentConfig;
 
-		Void		 OK();
-		Void		 Cancel();
-	public:
-				 configureTVQ();
-				~configureTVQ();
+			Void		 OK();
+			Void		 Cancel();
+		public:
+					 ConfigureTVQ();
+					~ConfigureTVQ();
 
-		Int		 ShowDialog();
+			Int		 ShowDialog();
+	};
 };
 
 #endif

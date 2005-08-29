@@ -203,7 +203,7 @@
     <entry id="192" string="Default comment string:">Προεπιλεγμένο Σχόλιο:</entry>
     <entry id="193" string="unknown artist">Άγνωστος Καλλιτέχνης</entry>
     <entry id="194" string="unknown title">Άγνωστος Τίτλος</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">Αδύνατο να φορτωθούν οι οδηγοί ASPI!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Αδύνατο να φορτωθούν οι οδηγοί ASPI! Αδύνατη η εξαγωγή από το CD!</entry>
     <entry id="196" string="Database">Βάση Πληροφοριών</entry>
     <entry id="197" string="Submit CDDB data...">Καταχώρηση στοιχείων CDDB...</entry>
     <entry id="198" string="Enable CDDB cache">Αποθήκευση στοιχείων CDDB</entry>
@@ -211,7 +211,6 @@
     <entry id="200" string="Submit">Καταχώρηση</entry>
     <entry id="201" string="No audio CD in drive!">Δεν έχετε τοποθετήσει CD!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Παρακαλώ συμπληρώστε όλα τα πεδία πριν την καταχώρηση</entry>
-    <entry id="203" string="CD ripping disabled!">Αδύνατη η εξαγωγή από το CD!</entry>
     <entry id="204" string="CD options">Επιλογές CD</entry>
     <entry id="205" string="Submitting CD information">Καταχώρηση πληροφοριών CD</entry>
     <entry id="206" string="Cannot open file:">Αδύνατο το άνοιγμα του αρχείου:</entry>

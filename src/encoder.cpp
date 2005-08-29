@@ -54,7 +54,7 @@ Void bonkEnc::Encode()
 
 	if (playing)
 	{
-		QuickMessage(i18n->TranslateString("Cannot start encoding while playing a file!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot start encoding while playing a file!");
 
 		return;
 	}
@@ -154,16 +154,46 @@ Int bonkEnc::Encoder(Thread *thread)
 
 				String	 dir = out_filename;
 				String	 tmp;
+				String	 tmp2;
+				Int	 lastBS = 0;
 
 				for (Int i = 0; i < dir.Length(); i++)
 				{
 					if (dir[i] == '\\' || dir[i] == '/')
 					{
+						if (tmp.Length() - lastBS > 96)
+						{
+							tmp2 = String().CopyN(tmp, lastBS + 96);
+
+							for (Int j = tmp2.Length() - 1; j > 0; j--)
+							{
+								if (tmp2[j] == ' ')	{ tmp2[j] = 0; i--; }
+								else			break;
+							}
+
+							out_filename.Replace(tmp, tmp2);
+
+							i -= (tmp.Length() - lastBS - 96);
+
+							tmp = tmp2;
+							dir = out_filename;
+						}
+
 						if (Setup::enableUnicode)	CreateDirectoryW(tmp, NIL);
 						else				CreateDirectoryA(tmp, NIL);
+
+						lastBS = i;
 					}
 
 					tmp[i] = dir[i];
+				}
+
+				if (out_filename.Length() - lastBS > 96) out_filename = String().CopyN(out_filename, lastBS + 96);
+
+				for (Int j = out_filename.Length() - 1; j > 0; j--)
+				{
+					if (out_filename[j] == ' ')	out_filename[j] = 0;
+					else				break;
 				}
 			}
 			else if (trackInfo->isCDTrack)

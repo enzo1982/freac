@@ -22,6 +22,16 @@ Bool BonkEnc::Playlist::AddTrack(String fileName, String trackName, Int trackLen
 	return True;
 }
 
+Int BonkEnc::Playlist::GetNOfTracks()
+{
+	return fileNames.GetNOfEntries();
+}
+
+String BonkEnc::Playlist::GetNthTrackFileName(Int n)
+{
+	return fileNames.GetNthEntry(n);
+}
+
 Bool BonkEnc::Playlist::Save(String fileName)
 {
 	if (fileNames.GetNOfEntries() == 0) return False;
@@ -39,6 +49,35 @@ Bool BonkEnc::Playlist::Save(String fileName)
 	{
 		file->OutputLine(String("#EXTINF:").Append(String::FromInt(trackLengths.GetNthEntry(i))).Append(",").Append(trackNames.GetNthEntry(i)));
 		file->OutputLine(fileNames.GetNthEntry(i));
+	}
+
+	file->Close();
+
+	delete file;
+	delete driver;
+
+	return True;
+}
+
+Bool BonkEnc::Playlist::Load(String fileName)
+{
+	IOLibDriver	*driver = NIL;
+
+	if (Setup::enableUnicode)	driver = new IOLibDriverUnicode(fileName, IS_READONLY);
+	else				driver = new IOLibDriverPOSIX(fileName, IS_READONLY);
+
+	InStream	*file = new InStream(STREAM_DRIVER, driver);
+
+	if (String(file->InputLine()) == "#EXTM3U")
+	{
+		while (true)
+		{
+			String	 line = file->InputLine();
+
+			if (line == "") break;
+
+			if (line.CompareN("#EXTINF", 7) != 0) AddTrack(line, "", 0);
+		}
 	}
 
 	file->Close();

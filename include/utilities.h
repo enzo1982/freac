@@ -28,6 +28,8 @@ namespace BonkEnc
 	class Utilities
 	{
 		public:
+			static Void		 ErrorMessage(String);
+
 			static InputFilter	*CreateInputFilter(String &, Track *);
 			static Void		 FillGenreList(List *);
 

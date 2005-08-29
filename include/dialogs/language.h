@@ -17,30 +17,30 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class languageDlg : public Dialog
+namespace BonkEnc
 {
-	private:
-		Divider		*divbar;
+	class LanguageDlg : public Dialog
+	{
+		private:
+			Divider		*divbar;
 
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-		Text		*text_language;
-		ListBox		*list_language;
+			Text		*text_language;
+			ListBox		*list_language;
 
-		Button		*btn_ok;
+			Button		*btn_ok;
 
-		Config		*currentConfig;
+			Config		*currentConfig;
 
-		Void		 OK();
-	public:
-				 languageDlg();
-				~languageDlg();
+			Void		 OK();
+		public:
+					 LanguageDlg();
+					~LanguageDlg();
 
-		Int		 ShowDialog();
+			Int		 ShowDialog();
+	};
 };
 
 #endif

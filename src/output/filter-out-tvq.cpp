@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <output/filter-out-tvq.h>
+#include <utilities.h>
 
 #define __THROW_BAD_ALLOC exit(1)
 #undef V2
@@ -31,7 +32,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 		case 22050:
 			if (currentConfig->tvq_bitrate == 48)
 			{
-				QuickMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
 
 				error = 1;
 
@@ -41,7 +42,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 		case 44100:
 			if (currentConfig->tvq_bitrate != 48)
 			{
-				QuickMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.", "Error", MB_OK, IDI_HAND);
+				Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
 
 				error = 1;
 
@@ -49,7 +50,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 			}
 			break;
 		default:
-			QuickMessage("Bad sampling rate! The selected sampling rate is not supported.", "Error", MB_OK, IDI_HAND);
+			Utilities::ErrorMessage("Bad sampling rate! The selected sampling rate is not supported.");
 
 			error = 1;
 
@@ -58,7 +59,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 
 	if (format->channels > 2)
 	{
-		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
 		error = 1;
 

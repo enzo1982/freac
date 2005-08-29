@@ -203,7 +203,7 @@
     <entry id="192" string="Default comment string:">Comentário padrão:</entry>
     <entry id="193" string="unknown artist">artista desconhecido</entry>
     <entry id="194" string="unknown title">título desconhecido</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">Drivers ASPI não puderam ser carregados!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Drivers ASPI não puderam ser carregados! Extração de CD desabilitada!</entry>
     <entry id="196" string="Database">Base de dados</entry>
     <entry id="197" string="Submit CDDB data...">Enviar dados CDDB...</entry>
     <entry id="198" string="Enable CDDB cache">Permitir cache CDDB</entry>
@@ -211,7 +211,6 @@
     <entry id="200" string="Submit">Enviar</entry>
     <entry id="201" string="No audio CD in drive!">Sem CD de áudio na unidade!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Preencha todos os campos e nomes antes de enviar.</entry>
-    <entry id="203" string="CD ripping disabled!">Extração de CD desabilitada!</entry>
     <entry id="204" string="CD options">Opções do CD</entry>
     <entry id="205" string="Submitting CD information">Enviando informações do CD</entry>
     <entry id="206" string="Cannot open file:">Não consegue abrir o arquivo:</entry>

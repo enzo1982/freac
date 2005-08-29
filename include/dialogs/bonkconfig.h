@@ -17,57 +17,57 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class configureBonkEnc : public Dialog
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_quant;
-		Slider		*slider_quant;
-		Text		*text_quant;
+	class ConfigureBonkEnc : public Dialog
+	{
+		private:
+			GroupBox	*group_quant;
+			Slider		*slider_quant;
+			Text		*text_quant;
 
-		GroupBox	*group_stereo;
-		CheckBox	*check_joint;
+			GroupBox	*group_stereo;
+			CheckBox	*check_joint;
 
-		GroupBox	*group_mode;
-		CheckBox	*check_lossless;
+			GroupBox	*group_mode;
+			CheckBox	*check_lossless;
 
-		GroupBox	*group_downsampling;
-		Slider		*slider_downsampling;
-		Text		*text_downsampling;
+			GroupBox	*group_downsampling;
+			Slider		*slider_downsampling;
+			Text		*text_downsampling;
 
-		GroupBox	*group_predictor;
-		Slider		*slider_predictor;
-		Text		*text_predictor;
+			GroupBox	*group_predictor;
+			Slider		*slider_predictor;
+			Text		*text_predictor;
 
-		Divider		*divbar;
+			Divider		*divbar;
 
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-		Button		*btn_cancel;
-		Button		*btn_ok;
+			Button		*btn_cancel;
+			Button		*btn_ok;
 
-		Int		 quant;
-		Int		 predictor;
-		Int		 downsampling;
-		Bool		 jstereo;
-		Bool		 lossless;
+			Int		 quant;
+			Int		 predictor;
+			Int		 downsampling;
+			Bool		 jstereo;
+			Bool		 lossless;
 
-		Config		*currentConfig;
+			Config		*currentConfig;
 
-		Void		 OK();
-		Void		 Cancel();
-		Void		 SetQuantization();
-		Void		 SetPredictorSize();
-		Void		 SetDownsamplingRatio();
-		Void		 SetEncoderMode();
-	public:
-				 configureBonkEnc();
-				~configureBonkEnc();
+			Void		 OK();
+			Void		 Cancel();
+			Void		 SetQuantization();
+			Void		 SetPredictorSize();
+			Void		 SetDownsamplingRatio();
+			Void		 SetEncoderMode();
+		public:
+					 ConfigureBonkEnc();
+					~ConfigureBonkEnc();
 
-		Int		 ShowDialog();
+			Int		 ShowDialog();
+	};
 };
 
 #endif

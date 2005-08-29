@@ -9,13 +9,14 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <output/filter-out-blade.h>
+#include <utilities.h>
 #include <dllinterfaces.h>
 
 BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->rate != 32000 && format->rate != 44100 && format->rate != 48000)
 	{
-		QuickMessage("Bad sampling rate! BladeEnc supports only 32, 44.1 or 48kHz.", "Error", MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Bad sampling rate! BladeEnc supports only 32, 44.1 or 48kHz.");
 
 		error = 1;
 
@@ -24,7 +25,7 @@ BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputF
 
 	if (format->channels > 2)
 	{
-		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
 		error = 1;
 

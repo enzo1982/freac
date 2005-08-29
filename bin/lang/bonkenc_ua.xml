@@ -203,7 +203,7 @@
     <entry id="192" string="Default comment string:">Коментарі за замовчуванням:</entry>
     <entry id="193" string="unknown artist">артист невідомий</entry>
     <entry id="194" string="unknown title">заголовок невідомий</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">Не можу завантажити ASPI драйвери!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Не можу завантажити ASPI драйвери! CD захоплення відмінено!</entry>
     <entry id="196" string="Database">База даних</entry>
     <entry id="197" string="Submit CDDB data...">Підтвердити CDDB дані...</entry>
     <entry id="198" string="Enable CDDB cache">Включити CDDB кеш</entry>
@@ -211,7 +211,6 @@
     <entry id="200" string="Submit">Підтвердити</entry>
     <entry id="201" string="No audio CD in drive!">Немає аудіо CD у приводі!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Будь-ласка заповніть всі поля та заголовок доріжки</entry>
-    <entry id="203" string="CD ripping disabled!">CD захоплення відмінено!</entry>
     <entry id="204" string="CD options">CD опції</entry>
     <entry id="205" string="Submitting CD information">Підтвердіть інформацію про CD</entry>
     <entry id="206" string="Cannot open file:">Не можу відкрити файл</entry>

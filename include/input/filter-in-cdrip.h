@@ -24,12 +24,12 @@ namespace BonkEnc
 			Int			 byteCount;
 			unsigned char		*buffer;
 
-			Array<String>		 cdText;
-
 			Buffer<unsigned char>	 dataBuffer;
 
 			Int			 ReadCDText();
-			Int			 FreeCDText();
+
+			static Array<String>	 cdText;
+			static Int		 cdTextDiscID;
 		public:
 						 FilterInCDRip(Config *, Track *);
 						~FilterInCDRip();

@@ -275,7 +275,7 @@ Void cddbSubmitDlg::Submit()
 
 	if (!sane)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Please fill all fields and track titles before submitting."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Please fill all fields and track titles before submitting.");
 
 		return;
 	}
@@ -304,7 +304,7 @@ Void cddbSubmitDlg::Submit()
 
 	if (result == "error")
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server."), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
 
 		text_status->SetText("");
 		check_updateJoblist->Show();
@@ -412,6 +412,7 @@ Void cddbSubmitDlg::ChangeDrive()
 	ReadCDText();
 
 	CDDB		 cddb(currentConfig);
+	Int		 iDiscid = cddb.ComputeDiscID();
 
 	cddb.SetActiveDrive(activedrive);
 
@@ -419,7 +420,7 @@ Void cddbSubmitDlg::ChangeDrive()
 
 	Array<Track *>	*cdInfo = NIL;
 
-	if (currentConfig->enable_cddb_cache) cdInfo = CDDB::infoCache.GetEntry(cddb.ComputeDiscID());
+	if (currentConfig->enable_cddb_cache) cdInfo = CDDB::infoCache.GetEntry(iDiscid);
 
 	if (cdInfo == NIL)
 	{
@@ -431,8 +432,8 @@ Void cddbSubmitDlg::ChangeDrive()
 
 		if (cdInfo != NIL)
 		{
-			CDDB::infoCache.RemoveEntry(cddb.ComputeDiscID());
-			CDDB::infoCache.AddEntry(cdInfo, cddb.ComputeDiscID());
+			CDDB::infoCache.RemoveEntry(iDiscid);
+			CDDB::infoCache.AddEntry(cdInfo, iDiscid);
 		}
 
 		currentConfig->cdrip_activedrive = oDrive;

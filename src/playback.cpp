@@ -32,7 +32,7 @@ Void bonkEnc::PlayItem(Int entry)
 {
 	if (encoding)
 	{
-		QuickMessage(i18n->TranslateString("Cannot play a file while encoding!"), i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot play a file while encoding!");
 
 		return;
 	}

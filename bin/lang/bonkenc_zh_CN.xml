@@ -203,7 +203,7 @@
     <entry id="192" string="Default comment string:">缺省备注:</entry>
     <entry id="193" string="unknown artist">未知艺术家</entry>
     <entry id="194" string="unknown title">未知标题</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">不能加载ASPI驱动!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">不能加载ASPI驱动! CD翻录被禁止!</entry>
     <entry id="196" string="Database">数据库</entry>
     <entry id="197" string="Submit CDDB data...">提交CDDB数据...</entry>
     <entry id="198" string="Enable CDDB cache">激活CDDB缓存</entry>
@@ -211,7 +211,6 @@
     <entry id="200" string="Submit">提交</entry>
     <entry id="201" string="No audio CD in drive!">驱动器中没有音频CD!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">请填充所有域和音轨标题再提交.</entry>
-    <entry id="203" string="CD ripping disabled!">CD翻录被禁止!</entry>
     <entry id="204" string="Do you want to use native NT SCSI instead?">你想使用原生NT SCSI吗?</entry>
     <entry id="205" string="Submitting CD information">提交CD信息</entry>
     <entry id="206" string="Cannot open file:">不能打开文件:</entry>

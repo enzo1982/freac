@@ -204,7 +204,7 @@
     <entry id="192" string="Default comment string:"/>
     <entry id="193" string="unknown artist"/>
     <entry id="194" string="unknown title"/>
-    <entry id="195" string="Unable to load ASPI drivers!"/>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!"/>
     <entry id="196" string="Database"/>
     <entry id="197" string="Submit CDDB data..."/>
     <entry id="198" string="Enable CDDB cache"/>
@@ -212,7 +212,7 @@
     <entry id="200" string="Submit"/>
     <entry id="201" string="No audio CD in drive!"/>
     <entry id="202" string="Please fill all fields and track titles before submitting."/>
-    <entry id="203" string="CD ripping disabled!"/>
+    <entry id="203" string="Prefer CDDB over CD Text"/>
     <entry id="204" string="CD options"/>
     <entry id="205" string="Submitting CD information"/>
     <entry id="206" string="Cannot open file:"/>
@@ -297,6 +297,5 @@
     <entry id="285" string="Pause/resume encoding"/>
     <entry id="286" string="Shutdown after encoding"/>
     <entry id="287" string="Playlist Files"/>
-    <entry id="288" string="Prefer CDDB over CD Text"/>
   </data>
 </LangFile>

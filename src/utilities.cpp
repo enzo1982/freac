@@ -28,6 +28,14 @@
 #include <input/filter-in-flac.h>
 #include <input/filter-in-winamp.h>
 
+using namespace smooth::System;
+
+Void BonkEnc::Utilities::ErrorMessage(String message)
+{
+	if (!bonkEnc::currentConfig->enable_console)	QuickMessage(bonkEnc::i18n->TranslateString(message), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+	else						Console::OutputString(bonkEnc::i18n->TranslateString(message).Append("\n"));
+}
+
 InputFilter *BonkEnc::Utilities::CreateInputFilter(String &file, Track *trackInfo)
 {
 	String	 extension2;
@@ -97,9 +105,33 @@ InputFilter *BonkEnc::Utilities::CreateInputFilter(String &file, Track *trackInf
 		}
 	}
 
+	Int	 found = -1;
+
+	for (Int j = 0; j < extensions.GetNOfEntries(); j++)
+	{
+		switch (extensions.GetNthEntry(j).Length())
+		{
+			case 2:
+				if (extension2 == extensions.GetNthEntry(j)) found = j;
+				break;
+			case 3:
+				if (extension3 == extensions.GetNthEntry(j)) found = j;
+				break;
+			case 4:
+				if (extension4 == extensions.GetNthEntry(j)) found = j;
+				break;
+		}
+
+		if (found >= 0) break;
+	}
+
 	InputFilter	*filter_in = NIL;
 
-	if (extension3 == "cda" && bonkEnc::currentConfig->enable_cdrip && bonkEnc::currentConfig->cdrip_numdrives >= 1)
+	if (found != -1)
+	{
+		filter_in = new FilterInWinamp(bonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
+	}
+	else if (extension3 == "cda" && bonkEnc::currentConfig->enable_cdrip && bonkEnc::currentConfig->cdrip_numdrives >= 1)
 	{
 		filter_in = new FilterInCDRip(bonkEnc::currentConfig, trackInfo);
 	}
@@ -129,58 +161,31 @@ InputFilter *BonkEnc::Utilities::CreateInputFilter(String &file, Track *trackInf
 	}
 	else
 	{
-		Int	 found = -1;
+		IOLibDriver	*driver_in = NIL;
 
-		for (Int i = 0; i < extensions.GetNOfEntries(); i++)
+		if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(file, IS_READONLY);
+		else				driver_in = new IOLibDriverPOSIX(file, IS_READONLY);
+
+		InStream	*f_in = new InStream(STREAM_DRIVER, driver_in);
+		Int		 magic = f_in->InputNumber(4);
+
+		delete f_in;
+		delete driver_in;
+
+		switch (magic)
 		{
-			switch (extensions.GetNthEntry(i).Length())
-			{
-				case 2:
-					if (extension2 == extensions.GetNthEntry(i)) found = i;
-					break;
-				case 3:
-					if (extension3 == extensions.GetNthEntry(i)) found = i;
-					break;
-				case 4:
-					if (extension4 == extensions.GetNthEntry(i)) found = i;
-					break;
-			}
-
-			if (found >= 0) break;
-		}
-
-		if (found == -1)
-		{
-			IOLibDriver	*driver_in = NIL;
-
-			if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(file, IS_READONLY);
-			else				driver_in = new IOLibDriverPOSIX(file, IS_READONLY);
-
-			InStream	*f_in = new InStream(STREAM_DRIVER, driver_in);
-			Int		 magic = f_in->InputNumber(4);
-
-			delete f_in;
-			delete driver_in;
-
-			switch (magic)
-			{
-				case 1297239878:
-					filter_in = new FilterInAIFF(bonkEnc::currentConfig, trackInfo);
-					break;
-				case 1684960046:
-					filter_in = new FilterInAU(bonkEnc::currentConfig, trackInfo);
-					break;
-				case 1634038339:
-					filter_in = new FilterInVOC(bonkEnc::currentConfig, trackInfo);
-					break;
-				case 1179011410:
-					filter_in = new FilterInWAVE(bonkEnc::currentConfig, trackInfo);
-					break;
-			}
-		}
-		else
-		{
-			filter_in = new FilterInWinamp(bonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
+			case 1297239878:
+				filter_in = new FilterInAIFF(bonkEnc::currentConfig, trackInfo);
+				break;
+			case 1684960046:
+				filter_in = new FilterInAU(bonkEnc::currentConfig, trackInfo);
+				break;
+			case 1634038339:
+				filter_in = new FilterInVOC(bonkEnc::currentConfig, trackInfo);
+				break;
+			case 1179011410:
+				filter_in = new FilterInWAVE(bonkEnc::currentConfig, trackInfo);
+				break;
 		}
 	}
 

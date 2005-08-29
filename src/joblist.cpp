@@ -114,7 +114,7 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 {
 	if (bonkEnc::currentConfig->appMain->encoding)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Cannot modify the joblist while encoding!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
 		return False;
 	}
@@ -158,7 +158,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 {
 	if (bonkEnc::currentConfig->appMain->encoding)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Cannot modify the joblist while encoding!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
 		return;
 	}
@@ -215,7 +215,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 						}
 					}
 
-					if (extension != "*.AAC") extensions.AddEntry(extension);
+					extensions.AddEntry(extension);
 
 					k = 0;
 					n++;
@@ -260,16 +260,18 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	if (dialog->ShowDialog() == Success)
 	{
+		bonkEnc::currentConfig->cdrip_read_active = True;
+
 		for (int i = 0; i < dialog->GetNumberOfFiles(); i++)
 		{
 			String	 file = dialog->GetNthFileName(i);
 
 			AddTrackByFileName(file);
-
-			bonkEnc::currentConfig->appMain->cddbRetry = False;
 		}
 
-		bonkEnc::currentConfig->appMain->cddbRetry = True;
+		bonkEnc::currentConfig->cdrip_read_active = False;
+		bonkEnc::currentConfig->cdrip_read_discids.RemoveAll();
+		bonkEnc::currentConfig->cdrip_read_results.RemoveAll();
 	}
 
 	delete dialog;
@@ -279,7 +281,7 @@ Void BonkEnc::JobList::AddTrackByFileName(String file, String outfile)
 {
 	if (bonkEnc::currentConfig->appMain->encoding)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Cannot modify the joblist while encoding!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
 		return;
 	}
@@ -293,6 +295,16 @@ Void BonkEnc::JobList::AddTrackByFileName(String file, String outfile)
 		format = filter_in->GetFileInfo(file);
 
 		delete filter_in;
+
+		if (bonkEnc::currentConfig->cdrip_autoRead_active)
+		{
+			for (Int i = 0; i < tracks.GetNOfEntries(); i++)
+			{
+				Track	*track = tracks.GetNthEntry(i);
+
+				if (track->discid == format->discid && track->cdTrack == format->cdTrack) return;
+			}
+		}
 	}
 	else
 	{
@@ -308,13 +320,13 @@ Void BonkEnc::JobList::AddTrackByFileName(String file, String outfile)
 
 	if (format == NIL)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage(bonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file));
 
 		return;
 	}
 	else if (format->rate == 0 || format->channels == 0)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage(bonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file));
 
 		return;
 	}
@@ -344,41 +356,28 @@ Void BonkEnc::JobList::AddTrackByFileName(String file, String outfile)
 				fileName[k] = file[k + lastBs + 1];
 			}
 
-			Bool	 goodFormat = False;
+			Int	 artistComplete = 0;
+			Int	 m = 0;
 
-			for (Int l = 1; l < fileName.Length() - 1; l++)
+			for (m = 0; m < fileName.Length(); m++)
 			{
-				if (fileName[l - 1] == ' ' &&
-				    fileName[  l  ] == '-' &&
-				    fileName[l + 1] == ' ')
+				if (fileName[  m  ] == ' ' &&
+				    fileName[m + 1] == '-' &&
+				    fileName[m + 2] == ' ')
 				{
-					goodFormat = True;
+					artistComplete = m + 3;
 
-					break;
+					m += 3;
 				}
+
+				if (!artistComplete)	format->artist[m] = fileName[m];
+				else			format->title[m - artistComplete] = fileName[m];
 			}
 
-			if (goodFormat)
+			if (artistComplete == 0)
 			{
-				Int	 artistComplete = 0;
-				Int	 m = 0;
-
-				for (m = 0; m < fileName.Length(); m++)
-				{
-					if (fileName[  m  ] == ' ' &&
-					    fileName[m + 1] == '-' &&
-					    fileName[m + 2] == ' ')
-					{
-						artistComplete = m + 3;
-
-						m += 3;
-					}
-
-					if (!artistComplete)	format->artist[m] = fileName[m];
-					else			format->title[m - artistComplete] = fileName[m];
-				}
-
-				format->title[m - artistComplete] = 0;
+				format->artist = NIL;
+				format->title = NIL;
 			}
 		}
 	}
@@ -405,14 +404,14 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 {
 	if (bonkEnc::currentConfig->appMain->encoding)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("Cannot modify the joblist while encoding!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
 		return;
 	}
 
 	if (GetSelectedEntry() == NIL)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("You have not selected a file!"), bonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("You have not selected a file!");
 
 		return;
 	}
@@ -468,6 +467,32 @@ Void BonkEnc::JobList::ToggleSelection()
 
 Void BonkEnc::JobList::LoadList()
 {
+	FileSelection	*dialog = new FileSelection();
+
+	dialog->SetParentWindow(container->GetContainerWindow());
+
+	dialog->AddFilter(bonkEnc::i18n->TranslateString("Playlist Files").Append(" (*.m3u)"), "*.m3u");
+	dialog->AddFilter(bonkEnc::i18n->TranslateString("All Files"), "*.*");
+
+	if (dialog->ShowDialog() == Success)
+	{
+		Playlist playlist;
+
+		playlist.Load(dialog->GetFileName());
+
+		bonkEnc::currentConfig->cdrip_read_active = True;
+
+		for (Int i = 0; i < playlist.GetNOfTracks(); i++)
+		{
+			AddTrackByFileName(playlist.GetNthTrackFileName(i));
+		}
+
+		bonkEnc::currentConfig->cdrip_read_active = False;
+		bonkEnc::currentConfig->cdrip_read_discids.RemoveAll();
+		bonkEnc::currentConfig->cdrip_read_results.RemoveAll();
+	}
+
+	delete dialog;
 }
 
 Void BonkEnc::JobList::SaveList()
@@ -489,8 +514,34 @@ Void BonkEnc::JobList::SaveList()
 		for (Int i = 0; i < GetNOfTracks(); i++)
 		{
 			Track	*trackInfo = GetNthTrack(i);
+			String	 fileName = trackInfo->origFilename;
 
-			playlist.AddTrack(trackInfo->origFilename, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : bonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : bonkEnc::i18n->TranslateString("unknown title")), trackInfo->length == -1 ? -1 : Math::Round((Float) trackInfo->length / (trackInfo->rate * trackInfo->channels)));
+			if (trackInfo->isCDTrack)
+			{
+				for (Int drive = 2; drive < 26; drive++)
+				{
+					String	 trackCDA = String(" ").Append(":\\track").Append(trackInfo->cdTrack < 10 ? "0" : "").Append(String::FromInt(trackInfo->cdTrack)).Append(".cda");
+
+					trackCDA[0] = drive + 'A';
+
+					InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READONLY);
+
+					in->Seek(32);
+
+					Int	 trackLength = in->InputNumber(4);
+
+					delete in;
+
+					if (trackInfo->length == (trackLength * 2352) / (trackInfo->bits / 8))
+					{
+						fileName = trackCDA;
+
+						break;
+					}
+				}
+			}
+
+			playlist.AddTrack(fileName, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : bonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : bonkEnc::i18n->TranslateString("unknown title")), trackInfo->length == -1 ? -1 : Math::Round((Float) trackInfo->length / (trackInfo->rate * trackInfo->channels)));
 		}
 
 		playlist.Save(dialog->GetFileName());

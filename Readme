@@ -9,7 +9,7 @@ BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
 History
 -------
 
-	Version 1.0 CVS (July 2005)
+	Version 1.0 CVS (August 2005)
 
 		- added Czech, Korean, Danish and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
@@ -27,8 +27,14 @@ History
 		- added encoder configuration options to BEcmd
 		- added a button to pause/resume the encoding process
 		- added an option to shutdown the computer after encoding
+		- fixed FLAC decoder bugs
+		- fixed popup boxes appearing in command line version
+		- the joblist can now be saved to/loaded from M3U playlist files
+		- tracks are no longer added automatically when they are already in the joblist
+		- fixed slow title reading with some CD drives
 		- upgrade to MPEG4IP v1.3
 		- use smooth v0.8.67.0
+		- fixes for compiling with GCC 4.0
 		- removed support for MinGW 1.x
 		- lots of bugfixes
 

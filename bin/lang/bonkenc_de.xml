@@ -204,7 +204,7 @@
     <entry id="192" string="Default comment string:">Standardkommentar:</entry>
     <entry id="193" string="unknown artist">unbekannter Künstler</entry>
     <entry id="194" string="unknown title">unbekannter Titel</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">Kann ASPI Treiber nicht laden!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Kann ASPI Treiber nicht laden! CD-Rippen deaktiviert!</entry>
     <entry id="196" string="Database">Datenbank</entry>
     <entry id="197" string="Submit CDDB data...">CDDB Daten senden...</entry>
     <entry id="198" string="Enable CDDB cache">CDDB Cache aktivieren</entry>
@@ -212,7 +212,7 @@
     <entry id="200" string="Submit">Senden</entry>
     <entry id="201" string="No audio CD in drive!">Keine Audio-CD im Laufwerk!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Bitte füllen Sie alle Felder und Titelnamen vor dem Senden aus.</entry>
-    <entry id="203" string="CD ripping disabled!">CD-Rippen deaktiviert!</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">CD-Text Infos überschreiben</entry>
     <entry id="204" string="CD options">CD Optionen</entry>
     <entry id="205" string="Submitting CD information">Sende CD Informationen</entry>
     <entry id="206" string="Cannot open file:">Kann Datei nicht öffnen:</entry>
@@ -297,6 +297,5 @@
     <entry id="285" string="Pause/resume encoding">Codierung unterbrechen/fortsetzen</entry>
     <entry id="286" string="Shutdown after encoding">Nach der Codierung herunterfahren</entry>
     <entry id="287" string="Playlist Files">Playlist Dateien</entry>
-    <entry id="288" string="Prefer CDDB over CD Text">CD-Text Infos überschreiben</entry>
   </data>
 </LangFile>

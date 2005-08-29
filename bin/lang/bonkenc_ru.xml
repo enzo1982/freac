@@ -203,7 +203,7 @@
     <entry id="192" string="Default comment string:">Комментарии по умолчанию</entry>
     <entry id="193" string="unknown artist">unknown artist</entry>
     <entry id="194" string="unknown title">unknown title</entry>
-    <entry id="195" string="Unable to load ASPI drivers!">Не могу загрузить драйвер ASPI!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Не могу загрузить драйвер ASPI! CD граббер отключен!</entry>
     <entry id="196" string="Database">База данных</entry>
     <entry id="197" string="Submit CDDB data...">Вставить данные в CDDB...</entry>
     <entry id="198" string="Enable CDDB cache">Кэширование CDDB</entry>
@@ -211,7 +211,6 @@
     <entry id="200" string="Submit">Подтвердить</entry>
     <entry id="201" string="No audio CD in drive!">Нету диска в CDROMе</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Пожалуйста заполните все поля перед подтверждением.</entry>
-    <entry id="203" string="CD ripping disabled!">CD граббер отключен!</entry>
     <entry id="204" string="CD options">Настройка CD</entry>
     <entry id="205" string="Submitting CD information">Подтвердить информацию о CD</entry>
     <entry id="206" string="Cannot open file:">Не могу открыть файл:</entry>

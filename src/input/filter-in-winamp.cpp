@@ -143,10 +143,39 @@ Track *BonkEnc::FilterInWinamp::GetFileInfo(String inFile)
 	nFormat->bits		= bits;
 
 	int	 length_ms;
+	char	*title = new char [1024];
 
-	plugin->GetFileInfo(inFile, NIL, &length_ms);
+	plugin->GetFileInfo(inFile, title, &length_ms);
 
 	nFormat->length		= (Int) (Float(length_ms) * Float(rate * channels) / 1000.0);
+
+	String	 trackTitle = title;
+
+	delete [] title;
+
+	Int	 artistComplete = 0;
+	Int	 m = 0;
+
+	for (m = 0; m < trackTitle.Length(); m++)
+	{
+		if (trackTitle[  m  ] == ' ' &&
+		    trackTitle[m + 1] == '-' &&
+		    trackTitle[m + 2] == ' ')
+		{
+			artistComplete = m + 3;
+
+			m += 3;
+		}
+
+		if (!artistComplete)	nFormat->artist[m] = trackTitle[m];
+		else			nFormat->title[m - artistComplete] = trackTitle[m];
+	}
+
+	if (artistComplete == 0)
+	{
+		nFormat->artist = NIL;
+		nFormat->title = NIL;
+	}
 
 	return nFormat;
 }

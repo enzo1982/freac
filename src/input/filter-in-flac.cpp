@@ -31,10 +31,10 @@ bool BonkEnc::FilterInFLAC::Activate()
 {
 	finished = False;
 
-	inputBufferMutex	= new Mutex();
-	samplesBufferMutex	= new Mutex();
+	readDataMutex = new Mutex();
+	samplesBufferMutex = new Mutex();
 
-	inputBufferMutex->Lock();
+	readDataMutex->Lock();
 
 	decoderThread = new Thread();
 	decoderThread->threadMain.Connect(&FilterInFLAC::ReadFLACData, this);
@@ -46,7 +46,7 @@ bool BonkEnc::FilterInFLAC::Activate()
 
 bool BonkEnc::FilterInFLAC::Deactivate()
 {
-	Object::DeleteObject(inputBufferMutex);
+	Object::DeleteObject(readDataMutex);
 	Object::DeleteObject(samplesBufferMutex);
 	Object::DeleteObject(decoderThread);
 
@@ -57,34 +57,11 @@ int BonkEnc::FilterInFLAC::ReadData(unsigned char **data, int size)
 {
 	if (size <= 0) return -1;
 
-	Buffer<unsigned char>	 backBuffer;
-	Int			 oSize = inputBuffer.Size();
+	readDataMutex->Release();
 
-	backBuffer.Resize(oSize);
+	while (decoderThread->GetStatus() == THREAD_RUNNING && samplesBuffer.Size() <= 0) Sleep(10);
 
-	memcpy(backBuffer, inputBuffer, oSize);
-
-	inputBuffer.Resize(oSize + size);
-
-	memcpy(inputBuffer, backBuffer, oSize);
-
-	Int	 bytes = driver->ReadData((unsigned char *) inputBuffer + oSize, size);
-
-	inputBufferMutex->Release();
-
-	if (bytes < size)
-	{
-		finished = True;
-
-		while (decoderThread->GetStatus() == THREAD_RUNNING) Sleep(10);
-	}
-
-	if (samplesBuffer.Size() == 0 && !finished)
-	{
-		inputBufferMutex->Lock();
-
-		return ReadData(data, size);
-	}
+	readDataMutex->Lock();
 
 	samplesBufferMutex->Lock();
 
@@ -97,7 +74,6 @@ int BonkEnc::FilterInFLAC::ReadData(unsigned char **data, int size)
 	samplesBuffer.Resize(0);
 
 	samplesBufferMutex->Release();
-	inputBufferMutex->Lock();
 
 	*data = dataBuffer;
 
@@ -115,30 +91,24 @@ Track *BonkEnc::FilterInFLAC::GetFileInfo(String inFile)
 	format = new Track;
 	finished = False;
 
-	inputBufferMutex	= new Mutex();
-	samplesBufferMutex	= new Mutex();
+	driver = iolibDriver;
 
-	inputBufferMutex->Lock();
+	readDataMutex = new Mutex();
+	samplesBufferMutex = new Mutex();
 
 	decoderThread = new Thread();
 	decoderThread->threadMain.Connect(&FilterInFLAC::ReadFLACMetadata, this);
 	decoderThread->SetFlags(THREAD_WAITFLAG_START);
 	decoderThread->Start();
 
-	inputBuffer.Resize(131072);
-
-	f_in->InputData(inputBuffer, inputBuffer.Size());
-
-	inputBufferMutex->Release();
-
 	while (format->length == 0) Sleep(10);
 
-	Object::DeleteObject(inputBufferMutex);
+	Object::DeleteObject(readDataMutex);
 	Object::DeleteObject(samplesBufferMutex);
 	Object::DeleteObject(decoderThread);
 
 	CloseFile(f_in);
- 
+
 	nFormat->length		= format->length;
 	nFormat->bits		= format->bits;
 	nFormat->channels	= format->channels;
@@ -195,26 +165,14 @@ FLAC__StreamDecoderReadStatus BonkEnc::FLACStreamDecoderReadCallback(const FLAC_
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
-	filter->inputBufferMutex->Lock();
+	filter->readDataMutex->Lock();
 
-	*bytes = Math::Min(filter->inputBuffer.Size(), *bytes);
+	*bytes = filter->driver->ReadData(buffer, *bytes);
 
-	memcpy(buffer, filter->inputBuffer, *bytes);
+	filter->readDataMutex->Release();
 
-	Buffer<unsigned char>	 backBuffer;
-
-	backBuffer.Resize(filter->inputBuffer.Size() - *bytes);
-
-	memcpy(backBuffer, (unsigned char *) filter->inputBuffer + *bytes, backBuffer.Size());
-
-	filter->inputBuffer.Resize(backBuffer.Size());
-
-	memcpy(filter->inputBuffer, backBuffer, filter->inputBuffer.Size());
-
-	filter->inputBufferMutex->Release();
-
-	if (!filter->finished || filter->inputBuffer.Size() > 0)	return FLAC__STREAM_DECODER_READ_STATUS_CONTINUE;
-	else								return FLAC__STREAM_DECODER_READ_STATUS_END_OF_STREAM;
+	if (*bytes == 0)	return FLAC__STREAM_DECODER_READ_STATUS_END_OF_STREAM;
+	else			return FLAC__STREAM_DECODER_READ_STATUS_CONTINUE;
 }
 
 FLAC__StreamDecoderWriteStatus BonkEnc::FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *decoder, const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)

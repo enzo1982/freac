@@ -17,58 +17,58 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class configureBladeEnc : public Dialog
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_bit;
-		Slider		*slider_bit;
-		Text		*text_bit;
+	class ConfigureBladeEnc : public Dialog
+	{
+		private:
+			GroupBox	*group_bit;
+			Slider		*slider_bit;
+			Text		*text_bit;
 
-		GroupBox	*group_crc;
-		CheckBox	*check_crc;
+			GroupBox	*group_crc;
+			CheckBox	*check_crc;
 
-		GroupBox	*group_copyright;
-		CheckBox	*check_copyright;
+			GroupBox	*group_copyright;
+			CheckBox	*check_copyright;
 
-		GroupBox	*group_original;
-		CheckBox	*check_original;
+			GroupBox	*group_original;
+			CheckBox	*check_original;
 
-		GroupBox	*group_private;
-		CheckBox	*check_private;
+			GroupBox	*group_private;
+			CheckBox	*check_private;
 
-		GroupBox	*group_dualchannel;
-		CheckBox	*check_dualchannel;
+			GroupBox	*group_dualchannel;
+			CheckBox	*check_dualchannel;
 
-		Divider		*divbar;
+			Divider		*divbar;
 
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-		Button		*btn_cancel;
-		Button		*btn_ok;
+			Button		*btn_cancel;
+			Button		*btn_ok;
 
-		Int		 bitrate;
-		Bool		 crc;
-		Bool		 copyright;
-		Bool		 original;
-		Bool		 priv;
-		Bool		 dualchannel;
+			Int		 bitrate;
+			Bool		 crc;
+			Bool		 copyright;
+			Bool		 original;
+			Bool		 priv;
+			Bool		 dualchannel;
 
-		Config	*currentConfig;
+			Config		*currentConfig;
 
-		Void		 OK();
-		Void		 Cancel();
-		Void		 SetBitrate();
-		Int		 GetBitrate();
-		Int		 GetSliderValue();
-	public:
-				 configureBladeEnc();
-				~configureBladeEnc();
+			Void		 OK();
+			Void		 Cancel();
+			Void		 SetBitrate();
+			Int		 GetBitrate();
+			Int		 GetSliderValue();
+		public:
+					 ConfigureBladeEnc();
+					~ConfigureBladeEnc();
 
-		Int		 ShowDialog();
+			Int		 ShowDialog();
+	};
 };
 
 #endif

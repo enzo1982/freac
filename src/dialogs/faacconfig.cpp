@@ -11,7 +11,7 @@
 #include <dialogs/faacconfig.h>
 #include <resources.h>
 
-configureFAAC::configureFAAC()
+BonkEnc::ConfigureFAAC::ConfigureFAAC()
 {
 	Point	 pos;
 	Size	 size;
@@ -38,13 +38,13 @@ configureFAAC::configureFAAC()
 	size.cy = 0;
 
 	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&configureFAAC::Cancel, this);
+	btn_cancel->onClick.Connect(&ConfigureFAAC::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
 	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&configureFAAC::OK, this);
+	btn_ok->onClick.Connect(&ConfigureFAAC::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -69,12 +69,12 @@ configureFAAC::configureFAAC()
 	size.cy = 0;
 
 	option_version_mpeg2	= new OptionBox("MPEG 2", pos, size, &mpegVersion, 1);
-	option_version_mpeg2->onClick.Connect(&configureFAAC::SetMPEGVersion, this);
+	option_version_mpeg2->onClick.Connect(&ConfigureFAAC::SetMPEGVersion, this);
 
 	pos.y += 25;
 
 	option_version_mpeg4	= new OptionBox("MPEG 4", pos, size, &mpegVersion, 0);
-	option_version_mpeg4->onClick.Connect(&configureFAAC::SetMPEGVersion, this);
+	option_version_mpeg4->onClick.Connect(&ConfigureFAAC::SetMPEGVersion, this);
 
 	pos.x = 7;
 	pos.y = 88;
@@ -111,7 +111,7 @@ configureFAAC::configureFAAC()
 	size.cy = 0;
 
 	option_mp4		= new OptionBox("MP4", pos, size, &fileFormat, 1);
-	option_mp4->onClick.Connect(&configureFAAC::SetFileFormat, this);
+	option_mp4->onClick.Connect(&ConfigureFAAC::SetFileFormat, this);
 
 	if (!currentConfig->enable_mp4)
 	{
@@ -123,7 +123,7 @@ configureFAAC::configureFAAC()
 	pos.y += 25;
 
 	option_aac		= new OptionBox("AAC", pos, size, &fileFormat, 0);
-	option_aac->onClick.Connect(&configureFAAC::SetFileFormat, this);
+	option_aac->onClick.Connect(&ConfigureFAAC::SetFileFormat, this);
 
 	pos.x = 135;
 	pos.y = 88;
@@ -165,7 +165,7 @@ configureFAAC::configureFAAC()
 	size.cy = 0;
 
 	option_bitrate		= new OptionBox(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos, size, &setQuality, 0);
-	option_bitrate->onClick.Connect(&configureFAAC::ToggleBitrateQuality, this);
+	option_bitrate->onClick.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
 	option_bitrate->SetMetrics(option_bitrate->pos, Size(option_bitrate->textSize.cx + 19, option_bitrate->size.cy));
 
 	pos.x += (option_bitrate->size.cx + 9);
@@ -173,7 +173,7 @@ configureFAAC::configureFAAC()
 	size.cy = 0;
 
 	slider_bitrate		= new Slider(pos, size, OR_HORZ, &bitrate, 8, 256);
-	slider_bitrate->onClick.Connect(&configureFAAC::SetBitrate, this);
+	slider_bitrate->onClick.Connect(&ConfigureFAAC::SetBitrate, this);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
@@ -181,7 +181,7 @@ configureFAAC::configureFAAC()
 
 	edit_bitrate		= new EditBox("", pos, size, 3);
 	edit_bitrate->SetFlags(EDB_NUMERIC);
-	edit_bitrate->onClick.Connect(&configureFAAC::SetBitrateByEditBox, this);
+	edit_bitrate->onClick.Connect(&ConfigureFAAC::SetBitrateByEditBox, this);
 
 	pos.x += 32;
 	pos.y += 3;
@@ -194,7 +194,7 @@ configureFAAC::configureFAAC()
 	size.cy = 0;
 
 	option_quality		= new OptionBox(bonkEnc::i18n->TranslateString("Set quality:"), pos, size, &setQuality, 1);
-	option_quality->onClick.Connect(&configureFAAC::ToggleBitrateQuality, this);
+	option_quality->onClick.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
 	option_quality->SetMetrics(option_quality->pos, Size(option_bitrate->textSize.cx + 19, option_quality->size.cy));
 
 	pos.x += (option_quality->size.cx + 9);
@@ -202,7 +202,7 @@ configureFAAC::configureFAAC()
 	size.cy = 0;
 
 	slider_quality		= new Slider(pos, size, OR_HORZ, &aacQuality, 10, 500);
-	slider_quality->onClick.Connect(&configureFAAC::SetQuality, this);
+	slider_quality->onClick.Connect(&ConfigureFAAC::SetQuality, this);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
@@ -210,7 +210,7 @@ configureFAAC::configureFAAC()
 
 	edit_quality		= new EditBox("", pos, size, 3);
 	edit_quality->SetFlags(EDB_NUMERIC);
-	edit_quality->onClick.Connect(&configureFAAC::SetQualityByEditBox, this);
+	edit_quality->onClick.Connect(&ConfigureFAAC::SetQualityByEditBox, this);
 
 	pos.x += 32;
 	pos.y += 3;
@@ -320,7 +320,7 @@ configureFAAC::configureFAAC()
 	mainWnd->SetMetrics(Point(140, 140), Size(545, 293));
 }
 
-configureFAAC::~configureFAAC()
+BonkEnc::ConfigureFAAC::~ConfigureFAAC()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -365,14 +365,14 @@ configureFAAC::~configureFAAC()
 	DeleteObject(edit_bandwidth);
 }
 
-Int configureFAAC::ShowDialog()
+Int BonkEnc::ConfigureFAAC::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return mainWnd->value;
 }
 
-Void configureFAAC::OK()
+Void BonkEnc::ConfigureFAAC::OK()
 {
 	if (bitrate < 8)	bitrate = 8;
 	if (bitrate > 256)	bitrate = 256;
@@ -394,12 +394,12 @@ Void configureFAAC::OK()
 	mainWnd->Close();
 }
 
-Void configureFAAC::Cancel()
+Void BonkEnc::ConfigureFAAC::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void configureFAAC::SetMPEGVersion()
+Void BonkEnc::ConfigureFAAC::SetMPEGVersion()
 {
 	if (mpegVersion == 0) // MPEG4;
 	{
@@ -418,27 +418,27 @@ Void configureFAAC::SetMPEGVersion()
 	}
 }
 
-Void configureFAAC::SetBitrate()
+Void BonkEnc::ConfigureFAAC::SetBitrate()
 {
 	edit_bitrate->SetText(String::FromInt(bitrate));
 }
 
-Void configureFAAC::SetBitrateByEditBox()
+Void BonkEnc::ConfigureFAAC::SetBitrateByEditBox()
 {
 	slider_bitrate->SetValue(edit_bitrate->GetText().ToInt());
 }
 
-Void configureFAAC::SetQuality()
+Void BonkEnc::ConfigureFAAC::SetQuality()
 {
 	edit_quality->SetText(String::FromInt(aacQuality));
 }
 
-Void configureFAAC::SetQualityByEditBox()
+Void BonkEnc::ConfigureFAAC::SetQualityByEditBox()
 {
 	slider_quality->SetValue(edit_quality->GetText().ToInt());
 }
 
-Void configureFAAC::SetFileFormat()
+Void BonkEnc::ConfigureFAAC::SetFileFormat()
 {
 	if (fileFormat == 1)	// MP4 container
 	{
@@ -485,7 +485,7 @@ Void configureFAAC::SetFileFormat()
 	}
 }
 
-Void configureFAAC::ToggleBitrateQuality()
+Void BonkEnc::ConfigureFAAC::ToggleBitrateQuality()
 {
 	if (setQuality)
 	{

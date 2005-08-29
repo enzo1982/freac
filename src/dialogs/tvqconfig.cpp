@@ -11,7 +11,7 @@
 #include <dialogs/tvqconfig.h>
 #include <resources.h>
 
-configureTVQ::configureTVQ()
+BonkEnc::ConfigureTVQ::ConfigureTVQ()
 {
 	Point	 pos;
 	Size	 size;
@@ -28,13 +28,13 @@ configureTVQ::configureTVQ()
 	size.cy = 0;
 
 	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&configureTVQ::Cancel, this);
+	btn_cancel->onClick.Connect(&ConfigureTVQ::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
 	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&configureTVQ::OK, this);
+	btn_ok->onClick.Connect(&ConfigureTVQ::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -135,7 +135,7 @@ configureTVQ::configureTVQ()
 	mainWnd->SetMetrics(Point(140, 140), Size(253, 179));
 }
 
-configureTVQ::~configureTVQ()
+BonkEnc::ConfigureTVQ::~ConfigureTVQ()
 {
 	delete mainWnd_titlebar;
 	delete mainWnd;
@@ -151,14 +151,14 @@ configureTVQ::~configureTVQ()
 	delete combo_precand;
 }
 
-Int configureTVQ::ShowDialog()
+Int BonkEnc::ConfigureTVQ::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return mainWnd->value;
 }
 
-Void configureTVQ::OK()
+Void BonkEnc::ConfigureTVQ::OK()
 {
 	currentConfig->tvq_bitrate = combo_bitrate->GetSelectedEntry()->GetText().ToInt();
 	currentConfig->tvq_presel_candidates = combo_precand->GetSelectedEntry()->GetText().ToInt();
@@ -166,7 +166,7 @@ Void configureTVQ::OK()
 	mainWnd->Close();
 }
 
-Void configureTVQ::Cancel()
+Void BonkEnc::ConfigureTVQ::Cancel()
 {
 	mainWnd->Close();
 }

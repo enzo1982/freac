@@ -9,13 +9,14 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <output/filter-out-vorbis.h>
+#include <utilities.h>
 #include <dllinterfaces.h>
 
 BonkEnc::FilterOutVORBIS::FilterOutVORBIS(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
-		QuickMessage("BonkEnc does not support more than 2 channels!", "Error", MB_OK, IDI_HAND);
+		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
 		error = 1;
 

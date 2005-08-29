@@ -11,7 +11,7 @@
 #include <dialogs/bladeconfig.h>
 #include <resources.h>
 
-configureBladeEnc::configureBladeEnc()
+BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 {
 	Point	 pos;
 	Size	 size;
@@ -35,13 +35,13 @@ configureBladeEnc::configureBladeEnc()
 	size.cy = 0;
 
 	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&configureBladeEnc::Cancel, this);
+	btn_cancel->onClick.Connect(&ConfigureBladeEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
 	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&configureBladeEnc::OK, this);
+	btn_ok->onClick.Connect(&ConfigureBladeEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -79,7 +79,7 @@ configureBladeEnc::configureBladeEnc()
 	size.cy = 0;
 
 	slider_bit		= new Slider(pos, size, OR_HORZ, &bitrate, 0, 13);
-	slider_bit->onClick.Connect(&configureBladeEnc::SetBitrate, this);
+	slider_bit->onClick.Connect(&ConfigureBladeEnc::SetBitrate, this);
 
 	pos.x += 110;
 	pos.y += 2;
@@ -140,7 +140,7 @@ configureBladeEnc::configureBladeEnc()
 	mainWnd->SetMetrics(Point(140, 140), Size(364, 242));
 }
 
-configureBladeEnc::~configureBladeEnc()
+BonkEnc::ConfigureBladeEnc::~ConfigureBladeEnc()
 {
 	delete mainWnd_titlebar;
 	delete mainWnd;
@@ -162,14 +162,14 @@ configureBladeEnc::~configureBladeEnc()
 	delete check_dualchannel;
 }
 
-Int configureBladeEnc::ShowDialog()
+Int BonkEnc::ConfigureBladeEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return mainWnd->value;
 }
 
-Void configureBladeEnc::OK()
+Void BonkEnc::ConfigureBladeEnc::OK()
 {
 	currentConfig->blade_bitrate = GetBitrate();
 	currentConfig->blade_crc = crc;
@@ -181,17 +181,17 @@ Void configureBladeEnc::OK()
 	mainWnd->Close();
 }
 
-Void configureBladeEnc::Cancel()
+Void BonkEnc::ConfigureBladeEnc::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void configureBladeEnc::SetBitrate()
+Void BonkEnc::ConfigureBladeEnc::SetBitrate()
 {
 	text_bit->SetText(String::FromInt(GetBitrate()).Append(" kbit"));
 }
 
-Int configureBladeEnc::GetBitrate()
+Int BonkEnc::ConfigureBladeEnc::GetBitrate()
 {
 	switch (bitrate)
 	{
@@ -228,7 +228,7 @@ Int configureBladeEnc::GetBitrate()
 	}
 }
 
-Int configureBladeEnc::GetSliderValue()
+Int BonkEnc::ConfigureBladeEnc::GetSliderValue()
 {
 	switch (currentConfig->blade_bitrate)
 	{

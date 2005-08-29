@@ -26,7 +26,11 @@ namespace BonkEnc
 		public:
 			Bool		 AddTrack(String, String, Int);
 
+			Int		 GetNOfTracks();
+			String		 GetNthTrackFileName(Int);
+
 			Bool		 Save(String);
+			Bool		 Load(String);
 	};
 };
 

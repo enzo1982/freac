@@ -11,7 +11,7 @@
 #include <dialogs/language.h>
 #include <resources.h>
 
-languageDlg::languageDlg()
+BonkEnc::LanguageDlg::LanguageDlg()
 {
 	currentConfig = bonkEnc::currentConfig;
 
@@ -28,7 +28,7 @@ languageDlg::languageDlg()
 	size.cy = 0;
 
 	btn_ok			= new Button("OK", NIL, pos, size);
-	btn_ok->onClick.Connect(&languageDlg::OK, this);
+	btn_ok->onClick.Connect(&LanguageDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 6;
@@ -62,7 +62,7 @@ languageDlg::languageDlg()
 	mainWnd->SetMetrics(Point(120, 120), Size(300, 196));
 }
 
-languageDlg::~languageDlg()
+BonkEnc::LanguageDlg::~LanguageDlg()
 {
 	delete mainWnd_titlebar;
 	delete mainWnd;
@@ -72,14 +72,14 @@ languageDlg::~languageDlg()
 	delete btn_ok;
 }
 
-Int languageDlg::ShowDialog()
+Int BonkEnc::LanguageDlg::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return Success;
 }
 
-Void languageDlg::OK()
+Void BonkEnc::LanguageDlg::OK()
 {
 	if (list_language->GetSelectedEntry() != NIL) currentConfig->language = bonkEnc::i18n->GetNthLanguageID(list_language->GetSelectedEntryNumber());
 
