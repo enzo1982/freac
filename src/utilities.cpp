@@ -375,7 +375,7 @@ String BonkEnc::Utilities::LocalizeNumber(Int number)
 	return retVal;
 }
 
-String BonkEnc::Utilities::ReplaceIncompatibleChars(String string)
+String BonkEnc::Utilities::ReplaceIncompatibleChars(String string, Bool repSlash)
 {
 	String	 rVal;
 
@@ -388,8 +388,8 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(String string)
 		else if (string[k] == '<')		rVal[k + b] = '(';
 		else if (string[k] == '>')		rVal[k + b] = ')';
 		else if (string[k] == ':')		b--;
-		else if (string[k] == '/')		rVal[k + b] = '_';
-		else if (string[k] == '\\')		rVal[k + b] = '_';
+		else if (string[k] == '/' && repSlash)	rVal[k + b] = '_';
+		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '_';
 		else if (string[k] >= 256 &&
 			(!bonkEnc::currentConfig->useUnicodeNames ||
 			 !Setup::enableUnicode))	rVal[k + b] = '#';

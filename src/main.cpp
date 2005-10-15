@@ -1123,10 +1123,10 @@ Bool bonkEncGUI::SetLanguage()
 		info_edit_genre->Show();
 	}
 
+	FillMenus();
+
 	hyperlink->Hide();
 	hyperlink->Show();
-
-	FillMenus();
 
 	return true;
 }

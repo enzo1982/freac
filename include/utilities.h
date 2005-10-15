@@ -35,7 +35,7 @@ namespace BonkEnc
 
 			static String		 LocalizeNumber(Int);
 
-			static String		 ReplaceIncompatibleChars(String);
+			static String		 ReplaceIncompatibleChars(String, Bool);
 
 			static Void		 GainShutdownPrivilege();
 	};

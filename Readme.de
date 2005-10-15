@@ -9,7 +9,7 @@ BonkEnc verwendet Albert L. Fabers CDRip DLL zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 CVS (August 2005)
+	Version 1.0 CVS (September 2005)
 
 		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
@@ -18,7 +18,7 @@ Geschichte
 		- Unterstützung für MP4-Dateinamen mit Unicode hinzugefügt
 		- Falsche AAC-Profil Einstellung korrigiert
 		- Die Jobliste kann nun mit gesendeten freedb-Informationen aktualisiert werden
-		- Die Token <filename> und <genre> können nun in der Dateinamensvorlage verwendet werden
+		- Die Token <filename>, <genre> und <year> können nun in der Dateinamensvorlage verwendet werden
 		- Text in inaktiven Editboxen kann jetzt ausgewählt und kopiert werden
 		- Ogg Vorbis auf Version 1.1.1 aktualisiert
 		- Unterstützung zum Erzeugen von M3U-Playlisten hinzugefügt
