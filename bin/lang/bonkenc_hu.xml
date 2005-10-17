@@ -212,6 +212,7 @@
     <entry id="200" string="Submit">Küldés</entry>
     <entry id="201" string="No audio CD in drive!">Nincs Audio-CD a meghajtóban!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Feltöltés elött tölts ki minden mezöt és számcímet!</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">CDDB helyett CD Text használata</entry>
     <entry id="204" string="CD options">Cd beállítások</entry>
     <entry id="205" string="Submitting CD information">CD infók küldése</entry>
     <entry id="206" string="Cannot open file:">A fájl megnyithatatlan:</entry>
@@ -288,7 +289,14 @@
     <entry id="277" string="ID3V2 tag encoding:">ID3V2 infó kódolása:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Vorbis megjegyzés kódolása:</entry>
     <entry id="279" string="MP4 metadata encoding:">MP4 metaadat kódolása:</entry>
-    <entry id="280" string="Tag encodings">Megjegyzés kódolása:       </entry>
+    <entry id="280" string="Tag encodings">Megjegyzés kódolása</entry>
     <entry id="281" string="Update joblist with this information">Feladatlista bővítése ezzel az infóval</entry>
+    <entry id="282" string="unknown genre">ismeretlen műfaj</entry>
+    <entry id="283" string="Load joblist...">Feladatlista betöltés</entry>
+    <entry id="284" string="Save joblist...">Feladatlista mentés</entry>
+    <entry id="285" string="Pause/resume encoding">Tömörítés szünet/folytatás</entry>
+    <entry id="286" string="Shutdown after encoding">Lekapcsolás a tömörítés végén</entry>
+    <entry id="287" string="Playlist Files">Lejátszási listák</entry>
+
   </data>
 </LangFile>
