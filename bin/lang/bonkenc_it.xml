@@ -32,9 +32,9 @@
     <entry id="20" string="%1 file(s) in joblist:">%1 file da processare:</entry>
     <entry id="21" string="none">nessuno</entry>
     <entry id="22" string="Help topics...">Guida in linea</entry>    
-    <entry id="23" string="Add audio file(s) to the joblist">Aggiunge file audio all'elenco</entry>
-    <entry id="24" string="Add audio CD contents to the joblist">Aggiunge brani da CD audio all'elenco</entry>
-    <entry id="25" string="Remove the selected entry from the joblist">Rimuove le voci selezionate in elenco</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Aggiungi file audio all'elenco</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Aggiungi brani da CD audio all'elenco</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Rimuovi le voci selezionate in elenco</entry>
     <entry id="26" string="Clear the entire joblist">Reimposta l'elenco dei brani</entry>
     <entry id="27" string="Configure general settings">Configura le opzioni generali del programma</entry>
     <entry id="28" string="Configure the selected audio encoder">Configura il codificatore selezionato</entry>
@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">Elaborazione in corso</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">La distribuzione di questo programma è soggetta&#10;ai termini della GNU General Public License (GPL).</entry>
     <entry id="43" string="CDDB query">Interrogazione CDDB</entry>
-    <entry id="44" string="About BonkEnc">Informazioni su</entry>
+    <entry id="44" string="About BonkEnc">Informazioni su BonkEnc</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Nessuna opzione disponibile per il filtro WAVE Out.</entry>
     <entry id="46" string="WAVE Out filter">Filtro WAVE Out</entry>
     <entry id="47" string="Cannot change settings while encoding!">Impossibile modificare le impostazioni durante l'elaborazione.</entry>
@@ -200,6 +200,7 @@
     <entry id="188" string="Genre">Genere</entry>
     <entry id="189" string="Album">Album</entry>
     <entry id="190" string="Info tags">Tag</entry>
+    <entry id="191" string="Default information">Informazione predefinita</entry>    
     <entry id="192" string="Default comment string:">Commento predefinito:</entry>
     <entry id="193" string="unknown artist">artista sconosciuto</entry>
     <entry id="194" string="unknown title">titolo sconosciuto</entry>
@@ -211,6 +212,7 @@
     <entry id="200" string="Submit">Invia</entry>
     <entry id="201" string="No audio CD in drive!">Nessun CD audio nell'unità.</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Prima di inviare le informazioni, è necessario compilare tutti i campi e immettere i titoli delle tracce.</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">Preferisci CDDB a CD Text</entry>    
     <entry id="204" string="CD options">Opzioni CD</entry>
     <entry id="205" string="Submitting CD information">Invio informazioni sul CD...</entry>
     <entry id="206" string="Cannot open file:">Impossibile aprire il seguente file:</entry>
@@ -245,7 +247,7 @@
     <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc è disponibile in %1 lingue. Se la propria lingua non è&#10;supportata dal programma, utilizzare lo strumento 'smooth&#10;Translator' per tradurre l'interfaccia grafica di BonkEnc.</entry>
     <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC&#10;and Bonk encoders. An encoder for the VQF format is available&#10;at the BonkEnc website: %1">Il pacchetto di distribuzione di BonkEnc include i codificatori&#10;LAME, Ogg Vorbis e Bonk. I codificatori per i formati audio&#10;AAC e VQF sono disponibili sul sito Web di BonkEnc:&#10;%1.</entry>
     <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc supporta i plugin di WinAmp 2. Ciò consente la&#10;riproduzione di numerosi altri tipi di file. Per aggiungere un&#10;plugin di WinAmp, copiare il relativo file in_*.dll nella cartella&#10;BonkEnc/plugins.</entry>
-    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">BonkEnc supporta i caratteri Unicode. Se si dispone di CD con&#10;titoli o interpreti non latini, BonkEnc è in grado di importare in modo&#10;corretto le voci contenute nel database dei CD freedb.</entry>
+    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Con BonkEnc è possibile inviare al database di freedb informazioni&#10;che includono i caratteri Unicode. Se si dispone di CD i cui titoli dei&#10;brani o i nomi degli interpreti contengono caratteri non latini,&#10;BonkEnc è in grado di importare in modo corretto le voci contenute&#10;nel database di freedb.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per correggere gli errori di lettura durante la copia dei brani da CD&#10;aprire la finestra di dialogo Impostazioni generali, scegliere la&#10;scheda CDRip, quindi selezionare la casella di controllo Attiva&#10;correzione Jitter. Se gli errori di lettura persistono, utilizzare una delle&#10;modalità Paranoia.</entry>
     <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Per commenti o suggerimenti su come migliorare BonkEnc,&#10;compilare il modulo Tracker, disponibile sulla pagina Web&#10;SourceForge project di BonkEnc oppure inviare un'e-mail&#10;all'indirizzo %2.</entry>
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Trovate utile BonkEnc? BonkEnc è disponibile gratutitamente, ma&#10;potete finanziare lo sviluppo del programma effettuando una&#10;donazione. Per inviare denaro all'indirizzo %1&#10;utilizzare il servizio offerto da PayPal. Per ulteriori informazioni&#10;consultare la seguente pagina Web:&#10;%2.</entry>
@@ -277,5 +279,23 @@
     <entry id="267" string="bytes">byte</entry>
     <entry id="268" string="bit">bit</entry>
     <entry id="269" string="min">min</entry>
+    <entry id="270" string="Create playlist">Crea playlist</entry>
+    <entry id="271" string="Create cue sheet">Crea cue sheet</entry>
+    <entry id="272" string="Write ID3V1 tags">Scrivi tag ID3V1</entry>
+    <entry id="273" string="Write ID3V2 tags">Scrivi tag ID3V2</entry>
+    <entry id="274" string="Write Vorbis Comment tags">Scrivi tag di commento Vorbis</entry>
+    <entry id="275" string="Write MP4 metadata info">Scrivi metadati MP4</entry>
+    <entry id="276" string="ID3V1 tag encoding:">Codifica tag ID3V1:</entry>
+    <entry id="277" string="ID3V2 tag encoding:">Codifica tag ID3V2:</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Codifica tag di commento Vorbis:</entry>
+    <entry id="279" string="MP4 metadata encoding:">Codifica metadati MP4:</entry>
+    <entry id="280" string="Tag encodings">Codifica tag</entry>
+    <entry id="281" string="Update joblist with this information">Aggiorna elenco con questa informazione</entry>
+    <entry id="282" string="unknown genre">genere sconosciuto</entry>
+    <entry id="283" string="Load joblist...">Carica elenco...</entry>
+    <entry id="284" string="Save joblist...">Salva elenco...</entry>
+    <entry id="285" string="Pause/resume encoding">Sospendi/riprendi codifica</entry>
+    <entry id="286" string="Shutdown after encoding">Arresta il sistema al termine della codifica</entry>
+    <entry id="287" string="Playlist Files">File della playlist</entry>    
   </data>
 </LangFile>
