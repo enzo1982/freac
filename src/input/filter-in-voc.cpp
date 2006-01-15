@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,7 +20,7 @@ BonkEnc::FilterInVOC::~FilterInVOC()
 {
 }
 
-bool BonkEnc::FilterInVOC::Activate()
+Bool BonkEnc::FilterInVOC::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -35,12 +35,12 @@ bool BonkEnc::FilterInVOC::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterInVOC::Deactivate()
+Bool BonkEnc::FilterInVOC::Deactivate()
 {
 	return true;
 }
 
-int BonkEnc::FilterInVOC::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInVOC::ReadData(UnsignedByte **data, Int size)
 {
 	buffer.Resize(size);
 
@@ -78,10 +78,10 @@ int BonkEnc::FilterInVOC::ReadData(unsigned char **data, int size)
 	return outSize;
 }
 
-Track *BonkEnc::FilterInVOC::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInVOC::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = OpenFile(inFile);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	// TODO: Add more checking to this!
 
@@ -99,7 +99,7 @@ Track *BonkEnc::FilterInVOC::GetFileInfo(String inFile)
 
 	nFormat->length = (nFormat->fileSize - 42 - 4 * int((nFormat->fileSize - 42) / 7340032)) / (nFormat->bits / 8);
 
-	CloseFile(f_in);
+	delete f_in;
 
 	return nFormat;
 }

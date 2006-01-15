@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,33 +11,33 @@
 #include <dialogs/cddb/extsettings.h>
 #include <resources.h>
 
-cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
+BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 {
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(bonkEnc::i18n->TranslateString("Extended CDDB settings"));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Point(140, 140), Size(350, 192));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
-	register_layer_http	= new Layer(bonkEnc::i18n->TranslateString("HTTP settings"));
-	register_layer_proxy	= new Layer(bonkEnc::i18n->TranslateString("Proxy settings"));
+	register_layer_http	= new Layer(BonkEnc::i18n->TranslateString("HTTP settings"));
+	register_layer_proxy	= new Layer(BonkEnc::i18n->TranslateString("Proxy settings"));
 
 	pos.x = 175;
 	pos.y = 29;
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&cddbExtendedSettingsDlg::Cancel, this);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onAction.Connect(&cddbExtendedSettingsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&cddbExtendedSettingsDlg::OK, this);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onAction.Connect(&cddbExtendedSettingsDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -52,12 +52,12 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	size.cx = 312;
 	size.cy = 66;
 
-	http_group_scripts	= new GroupBox(bonkEnc::i18n->TranslateString("CGI scripts"), pos, size);
+	http_group_scripts	= new GroupBox(BonkEnc::i18n->TranslateString("CGI scripts"), pos, size);
 
 	pos.x = 16;
 	pos.y = 24;
 
-	http_text_query		= new Text(bonkEnc::i18n->TranslateString("CDDB query script:"), pos);
+	http_text_query		= new Text(BonkEnc::i18n->TranslateString("CDDB query script:"), pos);
 
 	pos.x += 101;
 	pos.y -= 3;
@@ -69,7 +69,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.x = 16;
 	pos.y += 30;
 
-	http_text_submit	= new Text(bonkEnc::i18n->TranslateString("CDDB submit script:"), pos);
+	http_text_submit	= new Text(BonkEnc::i18n->TranslateString("CDDB submit script:"), pos);
 
 	pos.x += 101;
 	pos.y -= 3;
@@ -78,20 +78,20 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 	Int	 maxTextSize = max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
 
-	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->pos.y), Size(285 - maxTextSize, http_edit_query->size.cy));
-	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->pos.y), Size(285 - maxTextSize, http_edit_submit->size.cy));
+	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->GetY()), Size(285 - maxTextSize, http_edit_query->GetHeight()));
+	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->GetX()), Size(285 - maxTextSize, http_edit_submit->GetHeight()));
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 312;
 	size.cy = 66;
 
-	proxy_group_proxy	= new GroupBox(bonkEnc::i18n->TranslateString("Proxy settings"), pos, size);
+	proxy_group_proxy	= new GroupBox(BonkEnc::i18n->TranslateString("Proxy settings"), pos, size);
 
 	pos.x = 16;
 	pos.y = 24;
 
-	proxy_text_mode		= new Text(bonkEnc::i18n->TranslateString("Proxy type:"), pos);
+	proxy_text_mode		= new Text(BonkEnc::i18n->TranslateString("Proxy type:"), pos);
 
 	pos.x += 100;
 	pos.y -= 3;
@@ -99,8 +99,8 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	size.cy = 0;
 
 	proxy_combo_mode	= new ComboBox(pos, size);
-	proxy_combo_mode->onClick.Connect(&cddbExtendedSettingsDlg::SetProxyMode, this);
-	proxy_combo_mode->AddEntry(bonkEnc::i18n->TranslateString("no proxy"));
+	proxy_combo_mode->onSelectEntry.Connect(&cddbExtendedSettingsDlg::SetProxyMode, this);
+	proxy_combo_mode->AddEntry(BonkEnc::i18n->TranslateString("no proxy"));
 	proxy_combo_mode->AddEntry("HTTP");
 	proxy_combo_mode->AddEntry("SOCKS4");
 	proxy_combo_mode->AddEntry("SOCKS5");
@@ -109,7 +109,7 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.x = 16;
 	pos.y += 30;
 
-	proxy_text_server	= new Text(bonkEnc::i18n->TranslateString("Proxy server:"), pos);
+	proxy_text_server	= new Text(BonkEnc::i18n->TranslateString("Proxy server:"), pos);
 
 	pos.x += 100;
 	pos.y -= 3;
@@ -120,8 +120,8 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.x += 110;
 	pos.y += 3;
 
-	proxy_text_port		= new Text(bonkEnc::i18n->TranslateString("Port:"), pos);
-	proxy_text_port->SetPosition(Point(264 - proxy_text_port->textSize.cx, proxy_text_port->pos.y));
+	proxy_text_port		= new Text(BonkEnc::i18n->TranslateString("Port:"), pos);
+	proxy_text_port->SetPosition(Point(264 - proxy_text_port->textSize.cx, proxy_text_port->GetY()));
 
 	pos.x += 46;
 	pos.y -= 3;
@@ -132,8 +132,8 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 	maxTextSize = max(proxy_text_mode->textSize.cx, proxy_text_server->textSize.cx);
 
-	proxy_combo_mode->SetMetrics(Point(maxTextSize + 24, proxy_combo_mode->pos.y), Size(285 - maxTextSize, proxy_combo_mode->size.cy));
-	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->pos.y), Size(233 - maxTextSize - proxy_text_port->textSize.cx, proxy_edit_server->size.cy));
+	proxy_combo_mode->SetMetrics(Point(maxTextSize + 24, proxy_combo_mode->GetY()), Size(285 - maxTextSize, proxy_combo_mode->GetHeight()));
+	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->GetY()), Size(233 - maxTextSize - proxy_text_port->textSize.cx, proxy_edit_server->GetHeight()));
 
 	SetProxyMode();
 
@@ -173,11 +173,10 @@ cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	}
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(350, 192));
+	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
-cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
+BonkEnc::cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -201,14 +200,14 @@ cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 	DeleteObject(btn_cancel);
 }
 
-Int cddbExtendedSettingsDlg::ShowDialog()
+const Error &BonkEnc::cddbExtendedSettingsDlg::ShowDialog()
 {
 	mainWnd->Stay();
 
-	return mainWnd->value;
+	return error;
 }
 
-Void cddbExtendedSettingsDlg::OK()
+Void BonkEnc::cddbExtendedSettingsDlg::OK()
 {
 	currentConfig->freedb_query_path = http_edit_query->GetText();
 	currentConfig->freedb_submit_path = http_edit_submit->GetText();
@@ -220,12 +219,12 @@ Void cddbExtendedSettingsDlg::OK()
 	mainWnd->Close();
 }
 
-Void cddbExtendedSettingsDlg::Cancel()
+Void BonkEnc::cddbExtendedSettingsDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void cddbExtendedSettingsDlg::SetProxyMode()
+Void BonkEnc::cddbExtendedSettingsDlg::SetProxyMode()
 {
 	if (proxy_combo_mode->GetSelectedEntryNumber() == 0)
 	{

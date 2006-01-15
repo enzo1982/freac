@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,19 +10,19 @@
 
 #include <dialogs/genconfig/genconfig_language.h>
 
-GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(bonkEnc::i18n->TranslateString("Language"))
+BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(BonkEnc::i18n->TranslateString("Language"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	pos.x	= 7;
 	pos.y	= 66;
 	size.cx	= 530;
 	size.cy	= 77;
 
-	group_info	= new GroupBox(bonkEnc::i18n->TranslateString("Information"), pos, size);
+	group_info	= new GroupBox(BonkEnc::i18n->TranslateString("Information"), pos, size);
 
 	pos.x += 9;
 	pos.y += 11;
@@ -39,12 +39,12 @@ GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(bonkEnc::i1
 	size.cx	= 530;
 	size.cy	= 43;
 
-	group_language	= new GroupBox(bonkEnc::i18n->TranslateString("Language"), pos, size);
+	group_language	= new GroupBox(BonkEnc::i18n->TranslateString("Language"), pos, size);
 
 	pos.x += 9;
 	pos.y += 15;
 
-	text_language	= new Text(bonkEnc::i18n->TranslateString("Select language:"), pos);
+	text_language	= new Text(BonkEnc::i18n->TranslateString("Select language:"), pos);
 
 	pos.x	+= (text_language->textSize.cx + 8);
 	pos.y	= 23;
@@ -52,13 +52,13 @@ GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(bonkEnc::i1
 	size.cy	= 0;
 
 	combo_language	= new ComboBox(pos, size);
-	combo_language->onClick.Connect(&GeneralSettingsLayerLanguage::SelectLanguage, this);
+	combo_language->onSelectEntry.Connect(&GeneralSettingsLayerLanguage::SelectLanguage, this);
 
-	for (Int i = 0; i < bonkEnc::i18n->GetNOfLanguages(); i++)
+	for (Int i = 0; i < BonkEnc::i18n->GetNOfLanguages(); i++)
 	{
-		combo_language->AddEntry(bonkEnc::i18n->GetNthLanguageName(i));
+		combo_language->AddEntry(BonkEnc::i18n->GetNthLanguageName(i));
 
-		if (currentConfig->language == bonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
+		if (currentConfig->language == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
 	SelectLanguage();
@@ -72,7 +72,7 @@ GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(bonkEnc::i1
 	RegisterObject(link_url);
 }
 
-GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()
+BonkEnc::GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()
 {
 	DeleteObject(group_language);
 	DeleteObject(text_language);
@@ -83,26 +83,26 @@ GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()
 	DeleteObject(link_url);
 }
 
-Void GeneralSettingsLayerLanguage::SelectLanguage()
+Void BonkEnc::GeneralSettingsLayerLanguage::SelectLanguage()
 {
 	if (combo_language->GetSelectedEntry() != NIL)
 	{
-		text_info->SetText(bonkEnc::i18n->TranslateString("Language").Append(": ").Append(bonkEnc::i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber()))
-				.Append("\n").Append(bonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntryNumber()))
-				.Append("\n").Append(bonkEnc::i18n->TranslateString("Author")).Append(": ").Append(bonkEnc::i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber()))
-				.Append("\n").Append(bonkEnc::i18n->TranslateString("URL")).Append(": "));
+		text_info->SetText(BonkEnc::i18n->TranslateString("Language").Append(": ").Append(BonkEnc::i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber()))
+				.Append("\n").Append(BonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(BonkEnc::i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntryNumber()))
+				.Append("\n").Append(BonkEnc::i18n->TranslateString("Author")).Append(": ").Append(BonkEnc::i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber()))
+				.Append("\n").Append(BonkEnc::i18n->TranslateString("URL")).Append(": "));
 
-		link_url->SetText(bonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
-		link_url->SetURL(bonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
+		link_url->SetText(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
+		link_url->SetURL(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 	}
 }
 
-Bool GeneralSettingsLayerLanguage::IsLanguageChanged()
+Bool BonkEnc::GeneralSettingsLayerLanguage::IsLanguageChanged()
 {
-	return (currentConfig->language != bonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
+	return (currentConfig->language != BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
 }
 
-String GeneralSettingsLayerLanguage::GetSelectedLanguageID()
+String BonkEnc::GeneralSettingsLayerLanguage::GetSelectedLanguageID()
 {
-	return bonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber());
+	return BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber());
 }

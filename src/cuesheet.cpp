@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,10 +10,9 @@
 
 #include <cuesheet.h>
 
-#include <iolib/drivers/driver_posix.h>
-#include <iolib/drivers/driver_unicode.h>
+using namespace smooth::IO;
 
-Bool BonkEnc::CueSheet::AddTrack(String fileName, String trackTitle, String trackArtist, String trackAlbum)
+Bool BonkEnc::CueSheet::AddTrack(const String &fileName, const String &trackTitle, const String &trackArtist, const String &trackAlbum)
 {
 	fileNames.AddEntry(fileName);
 	trackArtists.AddEntry(trackArtist);
@@ -23,16 +22,11 @@ Bool BonkEnc::CueSheet::AddTrack(String fileName, String trackTitle, String trac
 	return True;
 }
 
-Bool BonkEnc::CueSheet::Save(String fileName)
+Bool BonkEnc::CueSheet::Save(const String &fileName)
 {
 	if (fileNames.GetNOfEntries() == 0) return False;
 
-	IOLibDriver	*driver	= NIL;
-
-	if (Setup::enableUnicode)	driver = new IOLibDriverUnicode(fileName, OS_OVERWRITE);
-	else				driver = new IOLibDriverPOSIX(fileName, OS_OVERWRITE);
-
-	OutStream	*file	= new OutStream(STREAM_DRIVER, driver);
+	OutStream	*file	= new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
 	Bool		 album	= True;
 
 	for (Int c = 0; c < fileNames.GetNOfEntries() - 1; c++)
@@ -63,7 +57,6 @@ Bool BonkEnc::CueSheet::Save(String fileName)
 	file->Close();
 
 	delete file;
-	delete driver;
 
 	return True;
 }

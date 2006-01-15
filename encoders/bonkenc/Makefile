@@ -3,7 +3,7 @@ OBJECTS = api.o codec.o utility.o
 all : Bonk.dll
 
 Bonk.dll : $(OBJECTS)
-	dllwrap -mwindows -o Bonk.dll --output-lib libbonk.a $(OBJECTS) -L../../../smooth/lib -liolib
+	gcc -mwindows --shared -o Bonk.dll $(OBJECTS) -L../../../smooth/lib -lsmooth -lstdc++
 	strip --strip-all Bonk.dll
 	upx -9 -q Bonk.dll
 

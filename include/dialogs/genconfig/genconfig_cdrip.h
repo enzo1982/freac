@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,49 +17,49 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class GeneralSettingsLayerCDRip : public Layer
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_drive;
-		ComboBox	*combo_drive;
-		GroupBox	*group_ripping;
-		CheckBox	*check_paranoia;
-		ComboBox	*combo_paranoia_mode;
-		CheckBox	*check_jitter;
-		CheckBox	*check_swapchannels;
-		GroupBox	*group_cdoptions;
-		CheckBox	*check_locktray;
-		CheckBox	*check_ntscsi;
-		CheckBox	*check_autoRead;
-		CheckBox	*check_autoEject;
+	class GeneralSettingsLayerCDRip : public Layer
+	{
+		private:
+			GroupBox	*group_drive;
+			ComboBox	*combo_drive;
+			GroupBox	*group_ripping;
+			CheckBox	*check_paranoia;
+			ComboBox	*combo_paranoia_mode;
+			CheckBox	*check_jitter;
+			CheckBox	*check_swapchannels;
+			GroupBox	*group_cdoptions;
+			CheckBox	*check_locktray;
+			CheckBox	*check_ntscsi;
+			CheckBox	*check_autoRead;
+			CheckBox	*check_autoEject;
 
-		Bool		 cdparanoia;
-		Bool		 jitter;
-		Bool		 swapchannels;
-		Bool		 locktray;
-		Bool		 ntscsi;
-		Bool		 autoRead;
-		Bool		 autoEject;
+			Bool		 cdparanoia;
+			Bool		 jitter;
+			Bool		 swapchannels;
+			Bool		 locktray;
+			Bool		 ntscsi;
+			Bool		 autoRead;
+			Bool		 autoEject;
  
-		Config		*currentConfig;
-	slots:
-		Void		 SetParanoia();
-	public:
-				 GeneralSettingsLayerCDRip();
-				~GeneralSettingsLayerCDRip();
+			Config		*currentConfig;
+		slots:
+			Void		 SetParanoia();
+		public:
+					 GeneralSettingsLayerCDRip();
+					~GeneralSettingsLayerCDRip();
 
-		Int		 GetActiveDrive();
-		Int		 GetCDParanoiaMode();
+			Int		 GetActiveDrive();
+			Int		 GetCDParanoiaMode();
 
-		Bool		 GetJitter();
-		Bool		 GetSwapChannels();
-		Bool		 GetLockTray();
-		Bool		 GetNTSCSI();
-		Bool		 GetAutoRead();
-		Bool		 GetAutoEject();
+			Bool		 GetJitter();
+			Bool		 GetSwapChannels();
+			Bool		 GetLockTray();
+			Bool		 GetNTSCSI();
+			Bool		 GetAutoRead();
+			Bool		 GetAutoEject();
+	};
 };
 
 #endif

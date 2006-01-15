@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,46 +17,49 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class cddbExtendedSettingsDlg : public Dialog
+namespace BonkEnc
 {
-	private:
-		TabWidget	*reg_register;
+	class cddbExtendedSettingsDlg : public Dialog
+	{
+		private:
+			TabWidget	*reg_register;
 
-		Layer		*register_layer_http;
-		Layer		*register_layer_proxy;
+			Layer		*register_layer_http;
+			Layer		*register_layer_proxy;
 
-		GroupBox	*http_group_scripts;
-		Text		*http_text_query;
-		EditBox		*http_edit_query;
-		Text		*http_text_submit;
-		EditBox		*http_edit_submit;
+			GroupBox	*http_group_scripts;
+			Text		*http_text_query;
+			EditBox		*http_edit_query;
+			Text		*http_text_submit;
+			EditBox		*http_edit_submit;
 
-		GroupBox	*proxy_group_proxy;
-		Text		*proxy_text_mode;
-		ComboBox	*proxy_combo_mode;
-		Text		*proxy_text_server;
-		EditBox		*proxy_edit_server;
-		Text		*proxy_text_port;
-		EditBox		*proxy_edit_port;
+			GroupBox	*proxy_group_proxy;
+			Text		*proxy_text_mode;
+			ComboBox	*proxy_combo_mode;
+			Text		*proxy_text_server;
+			EditBox		*proxy_edit_server;
+			Text		*proxy_text_port;
+			EditBox		*proxy_edit_port;
 
-		Divider		*divbar;
+			Divider		*divbar;
 
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-		Button		*btn_cancel;
-		Button		*btn_ok;
+			Button		*btn_cancel;
+			Button		*btn_ok;
 
-		Config		*currentConfig;
+			Config		*currentConfig;
 
-		Void		 OK();
-		Void		 Cancel();
-		Void		 SetProxyMode();
-	public:
-				 cddbExtendedSettingsDlg(Int);
-				~cddbExtendedSettingsDlg();
+			Void		 OK();
+			Void		 Cancel();
+			Void		 SetProxyMode();
+		public:
+					 cddbExtendedSettingsDlg(Int);
+					~cddbExtendedSettingsDlg();
 
-		Int		 ShowDialog();
+			const Error	&ShowDialog();
+	};
 };
 
 #endif

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,19 +19,19 @@ BonkEnc::FilterInAIFF::~FilterInAIFF()
 {
 }
 
-bool BonkEnc::FilterInAIFF::Activate()
+Bool BonkEnc::FilterInAIFF::Activate()
 {
 	driver->Seek(54); // Skip the header
 
 	return true;
 }
 
-bool BonkEnc::FilterInAIFF::Deactivate()
+Bool BonkEnc::FilterInAIFF::Deactivate()
 {
 	return true;
 }
 
-int BonkEnc::FilterInAIFF::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInAIFF::ReadData(UnsignedByte **data, Int size)
 {
 	buffer.Resize(size);
 
@@ -42,10 +42,10 @@ int BonkEnc::FilterInAIFF::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-Track *BonkEnc::FilterInAIFF::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInAIFF::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = OpenFile(inFile);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	// TODO: Add more checking to this!
 
@@ -73,7 +73,7 @@ Track *BonkEnc::FilterInAIFF::GetFileInfo(String inFile)
 
 	nFormat->length = uint32(f_in->InputNumberRaw(4) - 8) / (nFormat->bits / 8);
 
-	CloseFile(f_in);
+	delete f_in;
 
 	return nFormat;
 }

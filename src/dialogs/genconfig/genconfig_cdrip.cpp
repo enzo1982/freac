@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,12 +10,12 @@
 
 #include <dialogs/genconfig/genconfig_cdrip.h>
 
-GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
+BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	cdparanoia	= currentConfig->cdrip_paranoia;
 	jitter		= currentConfig->cdrip_jitter;
@@ -30,7 +30,7 @@ GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	size.cx	= 344;
 	size.cy	= 43;
 
-	group_drive	= new GroupBox(bonkEnc::i18n->TranslateString("Active CD-ROM drive"), pos, size);
+	group_drive	= new GroupBox(BonkEnc::i18n->TranslateString("Active CD-ROM drive"), pos, size);
 
 	pos.x	= 17;
 	pos.y	= 23;
@@ -51,15 +51,15 @@ GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	size.cx	= 344;
 	size.cy	= 65;
 
-	group_ripping	= new GroupBox(bonkEnc::i18n->TranslateString("Ripper settings"), pos, size);
+	group_ripping	= new GroupBox(BonkEnc::i18n->TranslateString("Ripper settings"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 13;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_paranoia	= new CheckBox(bonkEnc::i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia);
-	check_paranoia->onClick.Connect(&GeneralSettingsLayerCDRip::SetParanoia, this);
+	check_paranoia	= new CheckBox(BonkEnc::i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia);
+	check_paranoia->onAction.Connect(&GeneralSettingsLayerCDRip::SetParanoia, this);
 
 	pos.x	+= 166;
 	pos.y	-= 1;
@@ -67,10 +67,10 @@ GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	size.cy	= 0;
 
 	combo_paranoia_mode= new ComboBox(pos, size);
-	combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("Overlap only"));
-	combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("No verify"));
-	combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("No scratch repair"));
-	combo_paranoia_mode->AddEntry(bonkEnc::i18n->TranslateString("Full cdparanoia mode"));
+	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("Overlap only"));
+	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("No verify"));
+	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("No scratch repair"));
+	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("Full cdparanoia mode"));
 	combo_paranoia_mode->SelectNthEntry(currentConfig->cdrip_paranoia_mode);
 
 	if (!cdparanoia) combo_paranoia_mode->Deactivate();
@@ -80,37 +80,37 @@ GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_jitter	= new CheckBox(bonkEnc::i18n->TranslateString("Activate jitter correction"), pos, size, &jitter);
+	check_jitter	= new CheckBox(BonkEnc::i18n->TranslateString("Activate jitter correction"), pos, size, &jitter);
 
 	pos.x += 166;
 
-	check_swapchannels	= new CheckBox(bonkEnc::i18n->TranslateString("Swap left/right channel"), pos, size, &swapchannels);
+	check_swapchannels	= new CheckBox(BonkEnc::i18n->TranslateString("Swap left/right channel"), pos, size, &swapchannels);
 
 	pos.x	= 359;
 	pos.y	= 11;
 	size.cx	= 178;
 	size.cy	= 120;
 
-	group_cdoptions	= new GroupBox(bonkEnc::i18n->TranslateString("CD options"), pos, size);
+	group_cdoptions	= new GroupBox(BonkEnc::i18n->TranslateString("CD options"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_autoRead	= new CheckBox(bonkEnc::i18n->TranslateString("Read CD contents on insert"), pos, size, &autoRead);
+	check_autoRead	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD contents on insert"), pos, size, &autoRead);
 
 	pos.y += 26;
 
-	check_autoEject	= new CheckBox(bonkEnc::i18n->TranslateString("Eject disk after ripping"), pos, size, &autoEject);
+	check_autoEject	= new CheckBox(BonkEnc::i18n->TranslateString("Eject disk after ripping"), pos, size, &autoEject);
 
 	pos.y += 26;
 
-	check_locktray	= new CheckBox(bonkEnc::i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
+	check_locktray	= new CheckBox(BonkEnc::i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
 
 	pos.y += 26;
 
-	check_ntscsi	= new CheckBox(bonkEnc::i18n->TranslateString("Use native NT SCSI library"), pos, size, &ntscsi);
+	check_ntscsi	= new CheckBox(BonkEnc::i18n->TranslateString("Use native NT SCSI library"), pos, size, &ntscsi);
 
 	OSVERSIONINFOA	 vInfo;
 
@@ -134,7 +134,7 @@ GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	RegisterObject(check_ntscsi);
 }
 
-GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
+BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 {
 	DeleteObject(group_drive);
 	DeleteObject(combo_drive);
@@ -150,50 +150,50 @@ GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 	DeleteObject(check_ntscsi);
 }
 
-Void GeneralSettingsLayerCDRip::SetParanoia()
+Void BonkEnc::GeneralSettingsLayerCDRip::SetParanoia()
 {
 	if (cdparanoia)	combo_paranoia_mode->Activate();
 	else		combo_paranoia_mode->Deactivate();
 }
 
-Int GeneralSettingsLayerCDRip::GetActiveDrive()
+Int BonkEnc::GeneralSettingsLayerCDRip::GetActiveDrive()
 {
 	return combo_drive->GetSelectedEntryNumber();
 }
 
-Int GeneralSettingsLayerCDRip::GetCDParanoiaMode()
+Int BonkEnc::GeneralSettingsLayerCDRip::GetCDParanoiaMode()
 {
 	if (!cdparanoia) return -1;
 
 	return combo_paranoia_mode->GetSelectedEntryNumber();
 }
 
-Bool GeneralSettingsLayerCDRip::GetJitter()
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetJitter()
 {
 	return jitter;
 }
 
-Bool GeneralSettingsLayerCDRip::GetSwapChannels()
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetSwapChannels()
 {
 	return swapchannels;
 }
 
-Bool GeneralSettingsLayerCDRip::GetLockTray()
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetLockTray()
 {
 	return locktray;
 }
 
-Bool GeneralSettingsLayerCDRip::GetNTSCSI()
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetNTSCSI()
 {
 	return ntscsi;
 }
 
-Bool GeneralSettingsLayerCDRip::GetAutoRead()
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoRead()
 {
 	return autoRead;
 }
 
-Bool GeneralSettingsLayerCDRip::GetAutoEject()
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoEject()
 {
 	return autoEject;
 }

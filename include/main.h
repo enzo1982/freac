@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,69 +17,87 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class bonkEncGUI : public bonkEnc
+namespace BonkEnc
 {
-	private:
-		Menu		*menu_file;
-		Menu		*menu_options;
-		Menu		*menu_addsubmenu;
-		Menu		*menu_encode;
-		Menu		*menu_drives;
-		Menu		*menu_seldrive;
-		Menu		*menu_database;
-		Menu		*menu_trackmenu;
-		Menu		*menu_help;
-		Menu		*menu_encoders;
+	class BonkEncGUI : public BonkEnc
+	{
+		private:
+			PopupMenu	*menu_file;
+			PopupMenu	*menu_options;
+			PopupMenu	*menu_addsubmenu;
+			PopupMenu	*menu_encode;
+			PopupMenu	*menu_drives;
+			PopupMenu	*menu_seldrive;
+			PopupMenu	*menu_database;
+			PopupMenu	*menu_trackmenu;
+			PopupMenu	*menu_help;
+			PopupMenu	*menu_encoders;
 
-		Menubar		*mainWnd_menubar;
-		Menubar		*mainWnd_iconbar;
-		Titlebar	*mainWnd_titlebar;
+			Menubar		*mainWnd_menubar;
+			Menubar		*mainWnd_iconbar;
+			Titlebar	*mainWnd_titlebar;
 
-		Button		*button_play;
-		Button		*button_pause;
-		Button		*button_stop;
-		Button		*button_prev;
-		Button		*button_next;
+			Button		*button_play;
+			Button		*button_pause;
+			Button		*button_stop;
+			Button		*button_prev;
+			Button		*button_next;
+			Button		*button_open;
 
-		Int		 clicked_drive;
-		Int		 clicked_encoder;
+			Int		 clicked_drive;
+			Int		 clicked_encoder;
 
-		Thread		*checkForUpdates;
+			Thread		*checkForUpdates;
 
-		Void		 Close();
-		Void		 About();
-		Void		 ConfigureEncoder();
-		Void		 ConfigureGeneral();
-		Void		 ShowHideTitleInfo();
-		Void		 UpdateTitleInfo();
-		Void		 ReadSpecificCD();
-		Void		 QueryCDDB();
-		Void		 SubmitCDDBData();
-		Void		 EncodeSpecific();
-		Menu		*GetTrackMenu(Int, Int);
-		Void		 ShowHelp();
-		Void		 ShowTipOfTheDay();
+			Void		 Close();
+			Void		 About();
+			Void		 ConfigureEncoder();
+			Void		 ConfigureGeneral();
+			Void		 ShowHideTitleInfo();
+			Void		 UpdateTitleInfo();
+			Void		 ReadSpecificCD();
 
-		Void		 CheckForUpdates();
-		Int		 CheckForUpdatesThread(Thread *);
+			Void		 QueryCDDB();
+			Void		 SubmitCDDBData();
 
-		Bool		 SetLanguage();
-		Void		 FillMenus();
+			Void		 EncodeSpecific();
+			PopupMenu	*GetTrackMenu(Int, Int);
+			Void		 ShowHelp();
+			Void		 ShowTipOfTheDay();
 
-		Void		 SetEncoderText();
-	signals:
-		Signal0<Void>	 onChangeLanguageSettings;
-	slots:
-		Bool		 ExitProc();
+			Void		 CheckForUpdates();
+			Int		 CheckForUpdatesThread(Thread *);
 
-		Void		 MessageProc(Int, Int, Int);
-		Void		 ResizeProc();
+			Bool		 SetLanguage();
+			Void		 FillMenus();
 
-		Void		 OnJoblistSelectEntry(Track *);
-		Void		 OnJoblistSelectNone();
-	public:
-				 bonkEncGUI();
-				~bonkEncGUI();
+			Void		 SetEncoderText();
+
+			Void		 PlayItem(Int);
+			Int		 PlayThread(Thread *);
+		signals:
+			Signal0<Void>	 onChangeLanguageSettings;
+		slots:
+			Bool		 ExitProc();
+
+			Void		 MessageProc(Int, Int, Int);
+			Void		 ResizeProc();
+
+			Void		 PlaySelectedItem();
+			Void		 PausePlayback();
+			Void		 StopPlayback();
+			Void		 PlayPrevious();
+			Void		 PlayNext();
+			Void		 OpenCDTray();
+
+			Void		 OnJoblistSelectTrack(Track *);
+			Void		 OnJoblistSelectNone();
+		public:
+					 BonkEncGUI();
+					~BonkEncGUI();
+
+			Array<Track *>	*GetCDDBData();
+	};
 };
 
 #endif

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,7 +20,7 @@ using namespace smooth::GUI;
 
 namespace BonkEnc
 {
-	class JobList : public ListBox
+	class BEEXPORT JobList : public ListBox
 	{
 		private:
 			DropArea		*droparea;
@@ -34,7 +34,7 @@ namespace BonkEnc
 
 			Bool			 AddTrack(Track *);
 		public:
-						 JobList(Point, Size);
+						 JobList(const Point &, const Size &);
 			virtual			~JobList();
 
 			Int			 GetNOfTracks();
@@ -45,15 +45,17 @@ namespace BonkEnc
 
 			Track			*GetSelectedTrack();
 
-			Int			 SetMetrics(Point, Size);
+			Int			 SetMetrics(const Point &, const Size &);
 
 			Void			 AddTrackByDialog();
-			Void			 AddTrackByFileName(String, String out = NIL);
+			Void			 AddTrackByFileName(const String &, const String &out = NIL);
 
 			Void			 RemoveSelectedTrack();
 		signals:
-			Signal1<Void, Track *>	 onSelectEntry;
+			Signal1<Void, Track *>	 onSelectTrack;
 			Signal0<Void>		 onSelectNone;
+
+			Signal0<Void>		 onRemovePlayingTrack;
 		slots:
 			Void			 AddTrackByDragAndDrop(const String &);
 
@@ -64,8 +66,8 @@ namespace BonkEnc
 			Void			 LoadList();
 			Void			 SaveList();
 
-			Void			 OnRegister(Container *);
-			Void			 OnUnregister(Container *);
+			Void			 OnRegister(Widget *);
+			Void			 OnUnregister(Widget *);
 
 			Void			 OnSelectEntry();
 

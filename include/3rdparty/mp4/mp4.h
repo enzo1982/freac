@@ -1135,6 +1135,7 @@ bool MP4SetMetadataCoverArt(MP4FileHandle hFile,
 			    u_int8_t *coverArt, u_int32_t size);
 bool MP4GetMetadataCoverArt(MP4FileHandle hFile,
 			    u_int8_t **coverArt, u_int32_t* size);
+u_int32_t MP4GetMetadataCoverArtCount(MP4FileHandle hFile);
 bool MP4DeleteMetadataCoverArt(MP4FileHandle hFile);
 bool MP4SetMetadataFreeForm(MP4FileHandle hFile, char *name,
 			    u_int8_t* pValue, u_int32_t valueSize);

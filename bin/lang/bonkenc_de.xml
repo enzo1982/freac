@@ -245,7 +245,7 @@
     <entry id="233" string="Toggle selection">Auswahl umkehren</entry>
     <entry id="234" string="Show Tip of the Day">Tipp des Tages anzeigen</entry>
     <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc ist in %1 Sprachen verfügbar. Wenn Ihre Sprache nicht&#10;verfügbar ist, können Sie BonkEnc mit dem 'smooth Translator'&#10;leicht übersetzen.</entry>
-    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC&#10;and Bonk encoders. An encoder for the VQF format is available&#10;at the BonkEnc website: %1">BonkEnc kommt mit den LAME, Ogg Vorbis, FAAC und Bonk&#10;Codierern. Ein Codierer für das VQF Format ist auf der BonkEnc&#10;Webseite verfügbar: %1</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc kommt mit den LAME, Ogg Vorbis, FAAC und Bonk&#10;Codierern. Ein Codierer für das VQF Format ist auf der BonkEnc&#10;Webseite verfügbar: %1</entry>
     <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc kann Winamp 2 Input Plugins verwenden, um mehr&#10;Dateiformate zu lesen. Kopieren Sie die in_*.dll Dateien in das&#10;BonkEnc/plugins Verzeichnis, um diese Formate für BonkEnc&#10;verfügbar zu machen.</entry>
     <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Mit BonkEnc können Sie freedb CD Datenbankeinträge mit&#10;Unicode Zeichen verarbeiten. Wenn Sie also CDs mit&#10;nicht-Lateinischen Zeichen im Künstler- oder Titelnamen besitzen,&#10;können Sie mit BonkEnc korrekte freedb Einträge erstellen.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Um Lesefehler beim Rippen zu korrigieren, können Sie die Jitter&#10;Korrektur auf der CDRip Seite in BonkEnc's Konfigurationsdialog&#10;aktivieren. Falls das nicht hilft, versuchen Sie einen der&#10;Paranoia Modi zu verwenden.</entry>
@@ -297,5 +297,12 @@
     <entry id="285" string="Pause/resume encoding">Codierung unterbrechen/fortsetzen</entry>
     <entry id="286" string="Shutdown after encoding">Nach der Codierung herunterfahren</entry>
     <entry id="287" string="Playlist Files">Playlist Dateien</entry>
+    <entry id="288" string="unknown year">unbekanntes Jahr</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Konnte den %1 Codierer nicht initialisieren! Bitte überprüfen Sie die Konfiguration!</entry>
+    <entry id="290" string="Blocksize:">Blockgröße:</entry>
+    <entry id="291" string="Use streamable subset">Streamable Subset verwenden</entry>
+    <entry id="292" string="Adaptive Joint Stereo">Adaptives Joint Stereo</entry>
+    <entry id="293" string="Fastest encoding">Schnellste Codierung</entry>
+    <entry id="294" string="Best compression">Beste Komprimierung</entry>
   </data>
 </LangFile>

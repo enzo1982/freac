@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,7 +16,7 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	quant = currentConfig->bonk_quantization;
 	predictor = currentConfig->bonk_predictor;
@@ -24,7 +24,7 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	jstereo = currentConfig->bonk_jstereo;
 	lossless = currentConfig->bonk_lossless;
 
-	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "Bonk"));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "Bonk"), Point(140, 140), Size(364, 242));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -33,14 +33,14 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&ConfigureBonkEnc::Cancel, this);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onAction.Connect(&ConfigureBonkEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&ConfigureBonkEnc::OK, this);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onAction.Connect(&ConfigureBonkEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -48,38 +48,38 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	size.cx = 168;
 	size.cy = 43;
 
-	group_mode		= new GroupBox(bonkEnc::i18n->TranslateString("Encoder mode"), pos, size);
+	group_mode		= new GroupBox(BonkEnc::i18n->TranslateString("Encoder mode"), pos, size);
 
 	pos.x += 176;
 
-	group_stereo		= new GroupBox(bonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
+	group_stereo		= new GroupBox(BonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 
-	group_quant		= new GroupBox(bonkEnc::i18n->TranslateString("Quantization"), pos, size);
+	group_quant		= new GroupBox(BonkEnc::i18n->TranslateString("Quantization"), pos, size);
 
 	pos.x += 176;
 
-	group_downsampling	= new GroupBox(bonkEnc::i18n->TranslateString("Downsampling ratio"), pos, size);
+	group_downsampling	= new GroupBox(BonkEnc::i18n->TranslateString("Downsampling ratio"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 	size.cx += 176;
 
-	group_predictor		= new GroupBox(bonkEnc::i18n->TranslateString("Predictor size"), pos, size);
+	group_predictor		= new GroupBox(BonkEnc::i18n->TranslateString("Predictor size"), pos, size);
 
 	pos.x = 17;
 	pos.y = 24;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_lossless		= new CheckBox(bonkEnc::i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless);
-	check_lossless->onClick.Connect(&ConfigureBonkEnc::SetEncoderMode, this);
+	check_lossless		= new CheckBox(BonkEnc::i18n->TranslateString("Enable lossless encoding"), pos, size, &lossless);
+	check_lossless->onAction.Connect(&ConfigureBonkEnc::SetEncoderMode, this);
 
 	pos.x += 176;
 
-	check_joint		= new CheckBox(bonkEnc::i18n->TranslateString("Enable Joint Stereo"), pos, size, &jstereo);
+	check_joint		= new CheckBox(BonkEnc::i18n->TranslateString("Enable Joint Stereo"), pos, size, &jstereo);
 
 	pos.x = 17;
 	pos.y += 55;
@@ -87,7 +87,7 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	size.cy = 0;
 
 	slider_quant		= new Slider(pos, size, OR_HORZ, &quant, 0, 40);
-	slider_quant->onClick.Connect(&ConfigureBonkEnc::SetQuantization, this);
+	slider_quant->onValueChange.Connect(&ConfigureBonkEnc::SetQuantization, this);
 
 	pos.x += 127;
 	pos.y += 2;
@@ -99,7 +99,7 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	pos.y -= 2;
 
 	slider_downsampling	= new Slider(pos, size, OR_HORZ, &downsampling, 1, 10);
-	slider_downsampling->onClick.Connect(&ConfigureBonkEnc::SetDownsamplingRatio, this);
+	slider_downsampling->onValueChange.Connect(&ConfigureBonkEnc::SetDownsamplingRatio, this);
 
 	pos.x += 127;
 	pos.y += 2;
@@ -112,7 +112,7 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	size.cx += 176;
 
 	slider_predictor	= new Slider(pos, size, OR_HORZ, &predictor, 0, 512);
-	slider_predictor->onClick.Connect(&ConfigureBonkEnc::SetPredictorSize, this);
+	slider_predictor->onValueChange.Connect(&ConfigureBonkEnc::SetPredictorSize, this);
 
 	pos.x += 303;
 	pos.y += 2;
@@ -142,37 +142,36 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	mainWnd->RegisterObject(divbar);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(364, 242));
+	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
 BonkEnc::ConfigureBonkEnc::~ConfigureBonkEnc()
 {
-	delete mainWnd_titlebar;
-	delete mainWnd;
-	delete divbar;
-	delete group_quant;
-	delete slider_quant;
-	delete text_quant;
-	delete btn_ok;
-	delete btn_cancel;
-	delete group_stereo;
-	delete check_joint;
-	delete group_mode;
-	delete check_lossless;
-	delete group_downsampling;
-	delete slider_downsampling;
-	delete text_downsampling;
-	delete group_predictor;
-	delete slider_predictor;
-	delete text_predictor;
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(divbar);
+	DeleteObject(group_quant);
+	DeleteObject(slider_quant);
+	DeleteObject(text_quant);
+	DeleteObject(btn_ok);
+	DeleteObject(btn_cancel);
+	DeleteObject(group_stereo);
+	DeleteObject(check_joint);
+	DeleteObject(group_mode);
+	DeleteObject(check_lossless);
+	DeleteObject(group_downsampling);
+	DeleteObject(slider_downsampling);
+	DeleteObject(text_downsampling);
+	DeleteObject(group_predictor);
+	DeleteObject(slider_predictor);
+	DeleteObject(text_predictor);
 }
 
-Int BonkEnc::ConfigureBonkEnc::ShowDialog()
+const Error &BonkEnc::ConfigureBonkEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
-	return mainWnd->value;
+	return error;
 }
 
 Void BonkEnc::ConfigureBonkEnc::OK()

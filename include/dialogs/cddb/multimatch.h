@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,30 +17,34 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class cddbMultiMatchDlg : public Dialog
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_match;
-		Text		*text_match;
-		ComboBox	*combo_match;
+	class cddbMultiMatchDlg : public Dialog
+	{
+		private:
+			GroupBox	*group_match;
+			Text		*text_match;
+			ComboBox	*combo_match;
 
-		Divider		*divbar;
+			Divider		*divbar;
 
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-		Button		*btn_cancel;
-		Button		*btn_ok;
+			Button		*btn_cancel;
+			Button		*btn_ok;
 
-		Void		 OK();
-		Void		 Cancel();
-	public:
-				 cddbMultiMatchDlg(Bool);
-				~cddbMultiMatchDlg();
+			Void		 OK();
+			Void		 Cancel();
+		public:
+					 cddbMultiMatchDlg(Bool);
+					~cddbMultiMatchDlg();
 
-		Int		 ShowDialog();
+			const Error	&ShowDialog();
 
-		Int		 AddEntry(String, String);
+			Int		 AddEntry(const String &, const String &);
+			Int		 GetSelectedEntryNumber();
+	};
 };
 
 #endif

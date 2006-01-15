@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,14 +8,14 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <iolib/drivers/driver_socket.h>
-#include <iolib/drivers/driver_socks4.h>
-#include <iolib/drivers/driver_socks5.h>
+#include <smooth/io/drivers/driver_socket.h>
+#include <smooth/io/drivers/driver_socks4.h>
+#include <smooth/io/drivers/driver_socks5.h>
 #include <cddb.h>
 #include <dllinterfaces.h>
 
-Array<Array<Track *> *>	 BonkEnc::CDDB::infoCache;
-Array<Bool>		 BonkEnc::CDDB::requestedDiscs;
+Array<Array<BonkEnc::Track *> *>	 BonkEnc::CDDB::infoCache;
+Array<Bool>			 BonkEnc::CDDB::requestedDiscs;
 
 int cddb_sum(int n)
 {
@@ -49,16 +49,11 @@ BonkEnc::CDDB::~CDDB()
 
 Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 {
-	if (driveID >= ex_CR_GetNumCDROM())
-	{
-		return Failure;
-	}
-	else
-	{
-		activeDriveID = driveID;
+	if (driveID >= ex_CR_GetNumCDROM()) return Error();
 
-		return Success;
-	}
+	activeDriveID = driveID;
+
+	return Success();
 }
 
 Int BonkEnc::CDDB::ComputeDiscID()
@@ -123,11 +118,12 @@ String BonkEnc::CDDB::GetCDDBQueryString()
 	return str;
 }
 
-String BonkEnc::CDDB::SendCommand(String command)
+String BonkEnc::CDDB::SendCommand(const String &iCommand)
 {
 	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return "error not connected";
 
 	String	 str;
+	String	 command = iCommand;
 
 	switch (config->freedb_mode)
 	{
@@ -142,11 +138,7 @@ String BonkEnc::CDDB::SendCommand(String command)
 
 			do
 			{
-				char	*buffer = in->InputLine();
-
-				str = buffer;
-
-				delete [] buffer;
+				str = in->InputLine();
 
 				debug_out->OutputString("CDDB: < ");
 				debug_out->OutputLine(str);
@@ -179,22 +171,22 @@ String BonkEnc::CDDB::SendCommand(String command)
 
 			str.Append(config->freedb_query_path).Append(" HTTP/1.0\n");
 			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
+			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(BonkEnc::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
 			str.Append("Charset: UTF-8\n");
 			str.Append("\n");
 
 			for (int i = 0; i < command.Length(); i++) if (command[i] == ' ') command[i] = '+';
 
-			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(bonkEnc::cddbVersion).Append("&proto=6\n");
+			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(BonkEnc::cddbVersion).Append("&proto=6\n");
 
 			delete [] buffer;
 
-			if (config->freedb_proxy_mode == 0)		socket = new IOLibDriverSocket(config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 1)	socket = new IOLibDriverSocket(config->freedb_proxy, config->freedb_proxy_port);
-			else if (config->freedb_proxy_mode == 2)	socket = new IOLibDriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 3)	socket = new IOLibDriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+			if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
+			else if (config->freedb_proxy_mode == 1)	socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
+			else if (config->freedb_proxy_mode == 2)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+			else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
 
-			if (socket->GetLastError() != IOLIB_ERROR_OK)
+			if (socket->GetLastError() != IO_ERROR_OK)
 			{
 				debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 
@@ -215,11 +207,7 @@ String BonkEnc::CDDB::SendCommand(String command)
 
 			do
 			{
-				char	*buffer = in->InputLine();
-
-				str = buffer;
-
-				delete [] buffer;
+				str = in->InputLine();
 
 				debug_out->OutputString("CDDB: < ");
 				debug_out->OutputLine(str);
@@ -228,11 +216,7 @@ String BonkEnc::CDDB::SendCommand(String command)
 
 			do
 			{
-				char	*buffer = in->InputLine();
-
-				str = buffer;
-
-				delete [] buffer;
+				str = in->InputLine();
 
 				debug_out->OutputString("CDDB: < ");
 				debug_out->OutputLine(str);
@@ -260,11 +244,11 @@ Bool BonkEnc::CDDB::ConnectToServer()
 {
 	if (config->freedb_mode == FREEDB_MODE_CDDBP)
 	{
-		if (config->freedb_proxy_mode == 0)		socket = new IOLibDriverSocket(config->freedb_server, config->freedb_cddbp_port);
-		else if (config->freedb_proxy_mode == 1)	socket = new IOLibDriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
-		else if (config->freedb_proxy_mode == 2)	socket = new IOLibDriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
+		if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_cddbp_port);
+		else if (config->freedb_proxy_mode == 1)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
+		else if (config->freedb_proxy_mode == 2)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
 
-		if (socket->GetLastError() != IOLIB_ERROR_OK)
+		if (socket->GetLastError() != IO_ERROR_OK)
 		{
 			debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_cddbp_port)));
 
@@ -290,14 +274,14 @@ Bool BonkEnc::CDDB::ConnectToServer()
 
 	gethostname(buffer, 256);
 
-	SendCommand(String("cddb hello user ").Append(buffer).Append(" BonkEnc ").Append(bonkEnc::cddbVersion));
+	SendCommand(String("cddb hello user ").Append(buffer).Append(" BonkEnc ").Append(BonkEnc::cddbVersion));
 
 	delete [] buffer;
 
 	return true;
 }
 
-String BonkEnc::CDDB::Query(String discid)
+String BonkEnc::CDDB::Query(const String &discid)
 {
 	String	 str = SendCommand(GetCDDBQueryString());
 
@@ -336,11 +320,8 @@ String BonkEnc::CDDB::Query(String discid)
 		do
 		{
 			String	 val;
-			char	*buffer = in->InputLine();
 
-			val.ImportFrom("UTF-8", buffer);
-
-			delete [] buffer;
+			val.ImportFrom("UTF-8", in->InputLine());
 
 			String	 id;
 			String	 title;
@@ -379,7 +360,7 @@ String BonkEnc::CDDB::Query(String discid)
 	return "error";
 }
 
-String BonkEnc::CDDB::Read(String query)
+String BonkEnc::CDDB::Read(const String &query)
 {
 	String	 str = SendCommand(String("cddb read ").Append(query));
 
@@ -400,11 +381,7 @@ String BonkEnc::CDDB::Read(String query)
 		{
 			String	 val;
 
-			char	*buffer = in->InputLine();
-
-			val.ImportFrom("UTF-8", buffer);
-
-			delete [] buffer;
+			val.ImportFrom("UTF-8", in->InputLine());
 
 			debug_out->OutputString("CDDB: < ");
 			debug_out->OutputLine(val.ConvertTo("UTF-8"));
@@ -441,7 +418,7 @@ String BonkEnc::CDDB::Submit(Array<Track *> *cddbInfo)
 	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->GetNthEntry(0)->disclength)).Append("\n");
 	content.Append("# ").Append("\n");
 	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->GetNthEntry(0)->revision)).Append("\n");
-	content.Append("# Submitted via: ").Append("BonkEnc ").Append(bonkEnc::cddbVersion).Append("\n");
+	content.Append("# Submitted via: ").Append("BonkEnc ").Append(BonkEnc::cddbVersion).Append("\n");
 	content.Append("# ").Append("\n");
 
 	content.Append("DISCID=").Append(cddbInfo->GetNthEntry(0)->discid).Append("\n");
@@ -477,11 +454,11 @@ String BonkEnc::CDDB::Submit(Array<Track *> *cddbInfo)
 	debug_out->OutputString("CDDB: ");
 	debug_out->OutputLine(str.ConvertTo("UTF-8"));
 
-	if (config->freedb_proxy_mode == 0)		socket = new IOLibDriverSocket(config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 1)	socket = new IOLibDriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 2)	socket = new IOLibDriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+	if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
+	else if (config->freedb_proxy_mode == 1)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+	else if (config->freedb_proxy_mode == 2)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
 
-	if (socket->GetLastError() != IOLIB_ERROR_OK)
+	if (socket->GetLastError() != IO_ERROR_OK)
 	{
 		debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 

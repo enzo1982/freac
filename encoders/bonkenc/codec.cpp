@@ -28,7 +28,7 @@
 
 #define __THROW_BAD_ALLOC exit(1)
 
-#include <smooth/array.h>
+#include <smooth/definitions.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

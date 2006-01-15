@@ -40,9 +40,10 @@ RSC=rc.exe
 # PROP Use_Debug_Libraries 0
 # PROP Output_Dir "Release"
 # PROP Intermediate_Dir "Release"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O1 /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=1 /D "FLAC__NO_DLL" /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
@@ -52,7 +53,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
+# ADD LINK32 smooth.lib kernel32.lib ws2_32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386 /libpath:"../../smooth/msvc/build" /libpath:"../objects"
 
 !ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
 
@@ -68,7 +69,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /Gm /GX /ZI /Od /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=1 /D "FLAC__NO_DLL" /YX /FD /GZ /c
+# ADD CPP /nologo /Gm /GX /ZI /Od /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=1 /D "FLAC__NO_DLL" /D BEEXPORT= /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
@@ -78,7 +79,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 iolib.lib smooth.lib kernel32.lib wsock32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"../../smooth/msvc/build" /libpath:"../objects"
+# ADD LINK32 smooth.lib kernel32.lib ws2_32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept /libpath:"../../smooth/msvc/build" /libpath:"../objects"
 # SUBTRACT LINK32 /pdb:none
 
 !ENDIF 
@@ -160,6 +161,10 @@ SOURCE="..\src\output\filter-out-bonk.cpp"
 # Begin Source File
 
 SOURCE="..\src\output\filter-out-faac.cpp"
+# End Source File
+# Begin Source File
+
+SOURCE="..\src\output\filter-out-flac.cpp"
 # End Source File
 # Begin Source File
 
@@ -252,6 +257,10 @@ SOURCE=..\src\dialogs\bonkconfig.cpp
 # Begin Source File
 
 SOURCE=..\src\dialogs\faacconfig.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\flacconfig.cpp
 # End Source File
 # Begin Source File
 
@@ -412,6 +421,10 @@ SOURCE="..\include\output\filter-out-faac.h"
 # End Source File
 # Begin Source File
 
+SOURCE="..\include\output\filter-out-flac.h"
+# End Source File
+# Begin Source File
+
 SOURCE="..\include\output\filter-out-lame.h"
 # End Source File
 # Begin Source File
@@ -504,6 +517,10 @@ SOURCE=..\include\dialogs\faacconfig.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\include\dialogs\flacconfig.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\include\dialogs\lameconfig.h
 # End Source File
 # Begin Source File
@@ -589,8 +606,8 @@ SOURCE=..\resources\resources.rc
 
 !ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
 
-# ADD BASE RSC /l 0x407 /i "\devel\projects\private\bonkenc\resources" /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources"
-# ADD RSC /l 0x407 /i "\devel\projects\private\bonkenc\resources" /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
+# ADD BASE RSC /l 0x407 /i "\devel\projects\private\bonkenc\resources" /i "\devel\projects\private\bonkenc-hotspots\resources" /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources"
+# ADD RSC /l 0x407 /i "\devel\projects\private\bonkenc\resources" /i "\devel\projects\private\bonkenc-hotspots\resources" /i "\devel\projects\mpsd\bonkenc\resources" /i "\devel\projects\mpsd\src\bonkenc\resources" /i "..\resources" /i ".."
 
 !ENDIF 
 

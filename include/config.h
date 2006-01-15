@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,17 +16,14 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class bonkEnc;
-
 namespace BonkEnc
 {
-	class Config
+	class BonkEnc;
+
+	class BEEXPORT Config
 	{
-		private:
-			char		*rVal_a;
-			wchar_t		*rVal_w;
 		public:
-			bonkEnc		*appMain;
+			BonkEnc		*appMain;
 
 			String		 language;
 			Bool		 languageChanged;
@@ -178,6 +175,18 @@ namespace BonkEnc
 			Int		 faac_aac_quality;
 			Bool		 faac_enable_id3;
 			Bool		 faac_enable_mp4;
+
+			Int		 flac_preset;
+			Bool		 flac_streamable_subset;
+			Bool		 flac_do_mid_side_stereo;
+			Bool		 flac_loose_mid_side_stereo;
+			Int		 flac_blocksize;
+			Int		 flac_max_lpc_order;
+			Int		 flac_qlp_coeff_precision;
+			Bool		 flac_do_qlp_coeff_prec_search;
+			Bool		 flac_do_exhaustive_model_search;
+			Int		 flac_min_residual_partition_order;
+			Int		 flac_max_residual_partition_order;
 
 			Int		 tvq_bitrate;
 			Int		 tvq_presel_candidates;

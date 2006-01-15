@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,12 +10,12 @@
 
 #include <dialogs/genconfig/genconfig_tags.h>
 
-GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(bonkEnc::i18n->TranslateString("Info tags"))
+BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i18n->TranslateString("Info tags"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	enableID3V1	= currentConfig->enable_id3v1;
 	enableID3V2	= currentConfig->enable_id3v2;
@@ -27,69 +27,69 @@ GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(bonkEnc::i18n->Tran
 	size.cx	= 530;
 	size.cy	= 118;
 
-	group_tags	= new GroupBox(bonkEnc::i18n->TranslateString("Info tags"), pos, size);
+	group_tags	= new GroupBox(BonkEnc::i18n->TranslateString("Info tags"), pos, size);
 
 	pos.x	= 17;
 	pos.y	= 24;
 	size.cx	= 163;
 	size.cy	= 0;
 
-	check_id3v1	= new CheckBox(bonkEnc::i18n->TranslateString("Write ID3V1 tags"), pos, size, &enableID3V1);
-	check_id3v1->onClick.Connect(&GeneralSettingsLayerTags::ToggleID3V1, this);
-	check_id3v1->onClick.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
+	check_id3v1	= new CheckBox(BonkEnc::i18n->TranslateString("Write ID3V1 tags"), pos, size, &enableID3V1);
+	check_id3v1->onAction.Connect(&GeneralSettingsLayerTags::ToggleID3V1, this);
+	check_id3v1->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
-	check_id3v2	= new CheckBox(bonkEnc::i18n->TranslateString("Write ID3V2 tags"), pos, size, &enableID3V2);
-	check_id3v2->onClick.Connect(&GeneralSettingsLayerTags::ToggleID3V2, this);
-	check_id3v2->onClick.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
+	check_id3v2	= new CheckBox(BonkEnc::i18n->TranslateString("Write ID3V2 tags"), pos, size, &enableID3V2);
+	check_id3v2->onAction.Connect(&GeneralSettingsLayerTags::ToggleID3V2, this);
+	check_id3v2->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
-	check_vctags	= new CheckBox(bonkEnc::i18n->TranslateString("Write Vorbis Comment tags"), pos, size, &enableVCTags);
-	check_vctags->onClick.Connect(&GeneralSettingsLayerTags::ToggleVCTags, this);
-	check_vctags->onClick.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
+	check_vctags	= new CheckBox(BonkEnc::i18n->TranslateString("Write Vorbis Comment tags"), pos, size, &enableVCTags);
+	check_vctags->onAction.Connect(&GeneralSettingsLayerTags::ToggleVCTags, this);
+	check_vctags->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
-	check_mp4meta	= new CheckBox(bonkEnc::i18n->TranslateString("Write MP4 metadata info"), pos, size, &enableMP4Meta);
-	check_mp4meta->onClick.Connect(&GeneralSettingsLayerTags::ToggleMP4Meta, this);
-	check_mp4meta->onClick.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
+	check_mp4meta	= new CheckBox(BonkEnc::i18n->TranslateString("Write MP4 metadata info"), pos, size, &enableMP4Meta);
+	check_mp4meta->onAction.Connect(&GeneralSettingsLayerTags::ToggleMP4Meta, this);
+	check_mp4meta->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
-	check_id3v1->SetMetrics(check_id3v1->pos, Size(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20, check_id3v1->size.cy));
-	check_id3v2->SetMetrics(check_id3v2->pos, Size(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20, check_id3v2->size.cy));
-	check_vctags->SetMetrics(check_vctags->pos, Size(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20, check_vctags->size.cy));
-	check_mp4meta->SetMetrics(check_mp4meta->pos, Size(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20, check_mp4meta->size.cy));
+	check_id3v1->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20);
+	check_id3v2->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20);
+	check_vctags->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20);
+	check_mp4meta->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20);
 
-	group_tags->SetMetrics(group_tags->pos, Size(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 41, group_tags->size.cy));
+	group_tags->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 41);
 
 	pos.x	+= Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 39;
 	pos.y	= 11;
 	size.cx	= 530 - Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) - 49;
 	size.cy	= 118;
 
-	group_encodings	= new GroupBox(bonkEnc::i18n->TranslateString("Tag encodings"), pos, size);
+	group_encodings	= new GroupBox(BonkEnc::i18n->TranslateString("Tag encodings"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	= 26;
 
-	text_id3v1_encoding	= new Text(bonkEnc::i18n->TranslateString("ID3V1 tag encoding:"), pos);
+	text_id3v1_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3V1 tag encoding:"), pos);
 
 	pos.y += 26;
 
-	text_id3v2_encoding	= new Text(bonkEnc::i18n->TranslateString("ID3V2 tag encoding:"), pos);
+	text_id3v2_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3V2 tag encoding:"), pos);
 
 	pos.y += 26;
 
-	text_vctags_encoding	= new Text(bonkEnc::i18n->TranslateString("Vorbis Comment tag encoding:"), pos);
+	text_vctags_encoding	= new Text(BonkEnc::i18n->TranslateString("Vorbis Comment tag encoding:"), pos);
 
 	pos.y += 26;
 
-	text_mp4meta_encoding	= new Text(bonkEnc::i18n->TranslateString("MP4 metadata encoding:"), pos);
+	text_mp4meta_encoding	= new Text(BonkEnc::i18n->TranslateString("MP4 metadata encoding:"), pos);
 
 	pos.x	+= Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)) + 7;
 	pos.y	= 23;
-	size.cx	= group_encodings->size.cx - Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)) - 27;
+	size.cx	= group_encodings->GetWidth() - Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)) - 27;
 	size.cy	= 0;
 
 	list_encodings_id3v1	= new List();
@@ -140,12 +140,12 @@ GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(bonkEnc::i18n->Tran
 	size.cx	= 530;
 	size.cy	= 42;
 
-	group_definfo	= new GroupBox(bonkEnc::i18n->TranslateString("Default information"), pos, size);
+	group_definfo	= new GroupBox(BonkEnc::i18n->TranslateString("Default information"), pos, size);
 
 	pos.x	= 17;
 	pos.y	= 156;
 
-	text_defcomment	= new Text(bonkEnc::i18n->TranslateString("Default comment string:"), pos);
+	text_defcomment	= new Text(BonkEnc::i18n->TranslateString("Default comment string:"), pos);
 
 	pos.x	+= (7 + text_defcomment->textSize.cx);
 	pos.y	-= 3;
@@ -191,7 +191,7 @@ GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(bonkEnc::i18n->Tran
 	RegisterObject(edit_defcomment);
 }
 
-GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
+BonkEnc::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
 {
 	DeleteObject(group_tags);
 	DeleteObject(check_id3v1);
@@ -219,7 +219,7 @@ GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
 	DeleteObject(list_encodings_mp4);
 }
 
-Void GeneralSettingsLayerTags::ToggleID3V1()
+Void BonkEnc::GeneralSettingsLayerTags::ToggleID3V1()
 {
 	if (enableID3V1)
 	{
@@ -233,7 +233,7 @@ Void GeneralSettingsLayerTags::ToggleID3V1()
 	}
 }
 
-Void GeneralSettingsLayerTags::ToggleID3V2()
+Void BonkEnc::GeneralSettingsLayerTags::ToggleID3V2()
 {
 	if (enableID3V2)
 	{
@@ -247,7 +247,7 @@ Void GeneralSettingsLayerTags::ToggleID3V2()
 	}
 }
 
-Void GeneralSettingsLayerTags::ToggleVCTags()
+Void BonkEnc::GeneralSettingsLayerTags::ToggleVCTags()
 {
 	if (enableVCTags)
 	{
@@ -261,7 +261,7 @@ Void GeneralSettingsLayerTags::ToggleVCTags()
 	}
 }
 
-Void GeneralSettingsLayerTags::ToggleMP4Meta()
+Void BonkEnc::GeneralSettingsLayerTags::ToggleMP4Meta()
 {
 	if (enableMP4Meta)
 	{
@@ -275,7 +275,7 @@ Void GeneralSettingsLayerTags::ToggleMP4Meta()
 	}
 }
 
-Void GeneralSettingsLayerTags::ToggleTags()
+Void BonkEnc::GeneralSettingsLayerTags::ToggleTags()
 {
 	if (!enableID3V1 && !enableID3V2 && !enableVCTags && !enableMP4Meta)
 	{
@@ -289,47 +289,47 @@ Void GeneralSettingsLayerTags::ToggleTags()
 	}
 }
 
-Bool GeneralSettingsLayerTags::GetEnableID3V1()
+Bool BonkEnc::GeneralSettingsLayerTags::GetEnableID3V1()
 {
 	return enableID3V1;
 }
 
-Bool GeneralSettingsLayerTags::GetEnableID3V2()
+Bool BonkEnc::GeneralSettingsLayerTags::GetEnableID3V2()
 {
 	return enableID3V2;
 }
 
-Bool GeneralSettingsLayerTags::GetEnableVCTags()
+Bool BonkEnc::GeneralSettingsLayerTags::GetEnableVCTags()
 {
 	return enableVCTags;
 }
 
-Bool GeneralSettingsLayerTags::GetEnableMP4Meta()
+Bool BonkEnc::GeneralSettingsLayerTags::GetEnableMP4Meta()
 {
 	return enableMP4Meta;
 }
 
-String GeneralSettingsLayerTags::GetID3V1Encoding()
+String BonkEnc::GeneralSettingsLayerTags::GetID3V1Encoding()
 {
 	return edit_id3v1_encoding->GetText();
 }
 
-String GeneralSettingsLayerTags::GetID3V2Encoding()
+String BonkEnc::GeneralSettingsLayerTags::GetID3V2Encoding()
 {
 	return edit_id3v2_encoding->GetText();
 }
 
-String GeneralSettingsLayerTags::GetVCTagEncoding()
+String BonkEnc::GeneralSettingsLayerTags::GetVCTagEncoding()
 {
 	return edit_vctags_encoding->GetText();
 }
 
-String GeneralSettingsLayerTags::GetMP4MetaEncoding()
+String BonkEnc::GeneralSettingsLayerTags::GetMP4MetaEncoding()
 {
 	return edit_mp4meta_encoding->GetText();
 }
 
-String GeneralSettingsLayerTags::GetDefaultComment()
+String BonkEnc::GeneralSettingsLayerTags::GetDefaultComment()
 {
 	return edit_defcomment->GetText();
 }

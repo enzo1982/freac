@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,49 +17,49 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class GeneralSettingsLayerEncoders : public Layer
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_encoder;
-		ComboBox	*combo_encoder;
-		Button		*button_config;
-		GroupBox	*group_outdir;
-		EditBox		*edit_outdir;
-		Button		*button_outdir_browse;
-		GroupBox	*group_filename;
-		EditBox		*edit_filename;
-		ListBox		*list_filename;
-		GroupBox	*group_options;
-		CheckBox	*check_onTheFly;
-		CheckBox	*check_keepWaves;
-		GroupBox	*group_unicode;
-		CheckBox	*check_unicode_files;
+	class GeneralSettingsLayerEncoders : public Layer
+	{
+		private:
+			GroupBox	*group_encoder;
+			ComboBox	*combo_encoder;
+			Button		*button_config;
+			GroupBox	*group_outdir;
+			EditBox		*edit_outdir;
+			Button		*button_outdir_browse;
+			GroupBox	*group_filename;
+			EditBox		*edit_filename;
+			ListBox		*list_filename;
+			GroupBox	*group_options;
+			CheckBox	*check_onTheFly;
+			CheckBox	*check_keepWaves;
+			GroupBox	*group_unicode;
+			CheckBox	*check_unicode_files;
 
-		Bool		 onTheFly;
-		Bool		 keepWaves;
+			Bool		 onTheFly;
+			Bool		 keepWaves;
 
-		Bool		 unicode_files;
+			Bool		 unicode_files;
  
-		Config		*currentConfig;
-	slots:
-		Void		 SelectDir();
-		Void		 ConfigureEncoder();
-		Void		 ToggleOnTheFly();
-	public:
-				 GeneralSettingsLayerEncoders();
-				~GeneralSettingsLayerEncoders();
+			Config		*currentConfig;
+		slots:
+			Void		 SelectDir();
+			Void		 ConfigureEncoder();
+			Void		 ToggleOnTheFly();
+		public:
+					 GeneralSettingsLayerEncoders();
+					~GeneralSettingsLayerEncoders();
 
-		Int		 GetSelectedEncoder();
+			Int		 GetSelectedEncoder();
 
-		Bool		 GetOnTheFly();
-		Bool		 GetKeepWaveFiles();
-		Bool		 GetUnicodeFilenames();
+			Bool		 GetOnTheFly();
+			Bool		 GetKeepWaveFiles();
+			Bool		 GetUnicodeFilenames();
 
-		String		 GetOutputDirectory();
-		String		 GetFilenamePattern();
+			String		 GetOutputDirectory();
+			String		 GetFilenamePattern();
+	};
 };
 
 #endif

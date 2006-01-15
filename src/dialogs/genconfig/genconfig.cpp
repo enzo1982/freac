@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -27,9 +27,9 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
-	mainWnd			= new Window(bonkEnc::i18n->TranslateString("General settings setup"));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(120, 120), Size(568, 298));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -45,14 +45,14 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	size.cx	= 0;
 	size.cy	= 0;
 
-	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&GeneralSettingsDialog::Cancel, this);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onAction.Connect(&GeneralSettingsDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&GeneralSettingsDialog::OK, this);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onAction.Connect(&GeneralSettingsDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x	= 7;
@@ -72,7 +72,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 
 	reg_register->RegisterObject(register_layer_encoders);
 
-	if (bonkEnc::i18n->GetNOfLanguages() > 1) reg_register->RegisterObject(register_layer_language);
+	if (BonkEnc::i18n->GetNOfLanguages() > 1) reg_register->RegisterObject(register_layer_language);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cddb);
@@ -81,8 +81,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	reg_register->RegisterObject(register_layer_tags);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(120, 120), Size(568, 298));
+	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
 BonkEnc::GeneralSettingsDialog::~GeneralSettingsDialog()
@@ -101,18 +100,18 @@ BonkEnc::GeneralSettingsDialog::~GeneralSettingsDialog()
 	DeleteObject(btn_cancel);
 }
 
-Int BonkEnc::GeneralSettingsDialog::ShowDialog()
+const Error &BonkEnc::GeneralSettingsDialog::ShowDialog()
 {
 	mainWnd->Stay();
 
-	return mainWnd->value;
+	return error;
 }
 
 Void BonkEnc::GeneralSettingsDialog::OK()
 {
 	if ((Setup::enableUnicode ? SetCurrentDirectoryW(register_layer_encoders->GetOutputDirectory()) : SetCurrentDirectoryA(register_layer_encoders->GetOutputDirectory())) == False)
 	{
-		if (QuickMessage(bonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), bonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION) == IDYES)
+		if (QuickMessage(BonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION) == IDYES)
 		{
 			String	 dir = register_layer_encoders->GetOutputDirectory();
 			String	 tmp;
@@ -151,7 +150,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 
 	currentConfig->encoder = register_layer_encoders->GetSelectedEncoder();
 
-	if (bonkEnc::i18n->GetNOfLanguages() > 1)
+	if (BonkEnc::i18n->GetNOfLanguages() > 1)
 	{
 		if (register_layer_language->IsLanguageChanged()) currentConfig->languageChanged = true;
 

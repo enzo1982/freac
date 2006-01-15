@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,10 +9,6 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <output/outputfilter.h>
-
-#include <iolib/drivers/driver_posix.h>
-#include <iolib/drivers/driver_unicode.h>
-
 #include <dllinterfaces.h>
 
 BonkEnc::OutputFilter::OutputFilter(Config *config, Track *iFormat)
@@ -24,22 +20,6 @@ BonkEnc::OutputFilter::OutputFilter(Config *config, Track *iFormat)
 
 BonkEnc::OutputFilter::~OutputFilter()
 {
-}
-
-OutStream *BonkEnc::OutputFilter::CreateFile(String fileName)
-{
-	if (Setup::enableUnicode)	iolibDriver = new IOLibDriverUnicode(fileName, OS_OVERWRITE);
-	else				iolibDriver = new IOLibDriverPOSIX(fileName, OS_OVERWRITE);
-
-	return new OutStream(STREAM_DRIVER, iolibDriver);
-}
-
-Int BonkEnc::OutputFilter::CloseFile(OutStream *stream)
-{
-	delete stream;
-	delete iolibDriver;
-
-	return Success;
 }
 
 Int BonkEnc::OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)

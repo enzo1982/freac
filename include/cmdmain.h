@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,16 +17,19 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-class bonkEncCommandline : public bonkEnc
+namespace BonkEnc
 {
-	private:
-		Array<String>	&args; 
+	class BonkEncCommandline : public BonkEnc
+	{
+		private:
+			const Array<String>	&args; 
 
-		Bool		 ScanForParameter(String, String *);
-		Void		 ScanForFiles(Array<String> *);
-	public:
-				 bonkEncCommandline(Array<String> &);
-				~bonkEncCommandline();
+			Bool			 ScanForParameter(const String &, String *);
+			Void			 ScanForFiles(Array<String> *);
+		public:
+						 BonkEncCommandline(const Array<String> &);
+						~BonkEncCommandline();
+	};
 };
 
 #endif

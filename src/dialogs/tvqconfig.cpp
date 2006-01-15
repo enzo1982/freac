@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,9 +16,9 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
-	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "TwinVQ"));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "TwinVQ"), Point(140, 140), Size(253, 179));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -27,14 +27,14 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&ConfigureTVQ::Cancel, this);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onAction.Connect(&ConfigureTVQ::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&ConfigureTVQ::OK, this);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onAction.Connect(&ConfigureTVQ::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -42,12 +42,12 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	size.cx = 233;
 	size.cy = 39;
 
-	group_bitrate		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate"), pos, size);
+	group_bitrate		= new GroupBox(BonkEnc::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_bitrate		= new Text(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos);
+	text_bitrate		= new Text(BonkEnc::i18n->TranslateString("Bitrate per channel:"), pos);
 
 	pos.x += (text_bitrate->textSize.cx + 8);
 	pos.y -= 3;
@@ -82,12 +82,12 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	size.cx = 233;
 	size.cy = 39;
 
-	group_precand		= new GroupBox(bonkEnc::i18n->TranslateString("Preselection"), pos, size);
+	group_precand		= new GroupBox(BonkEnc::i18n->TranslateString("Preselection"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_precand		= new Text(bonkEnc::i18n->TranslateString("Number of preselection candidates:"), pos);
+	text_precand		= new Text(BonkEnc::i18n->TranslateString("Number of preselection candidates:"), pos);
 
 	pos.x += (text_precand->textSize.cx + 8);
 	pos.y -= 3;
@@ -131,8 +131,7 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	mainWnd->RegisterObject(divbar);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(253, 179));
+	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
 BonkEnc::ConfigureTVQ::~ConfigureTVQ()
@@ -151,11 +150,11 @@ BonkEnc::ConfigureTVQ::~ConfigureTVQ()
 	delete combo_precand;
 }
 
-Int BonkEnc::ConfigureTVQ::ShowDialog()
+const Error &BonkEnc::ConfigureTVQ::ShowDialog()
 {
 	mainWnd->Stay();
 
-	return mainWnd->value;
+	return error;
 }
 
 Void BonkEnc::ConfigureTVQ::OK()

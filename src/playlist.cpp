@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,10 +10,9 @@
 
 #include <playlist.h>
 
-#include <iolib/drivers/driver_posix.h>
-#include <iolib/drivers/driver_unicode.h>
+using namespace smooth::IO;
 
-Bool BonkEnc::Playlist::AddTrack(String fileName, String trackName, Int trackLength)
+Bool BonkEnc::Playlist::AddTrack(const String &fileName, const String &trackName, Int trackLength)
 {
 	fileNames.AddEntry(fileName);
 	trackNames.AddEntry(trackName);
@@ -32,16 +31,11 @@ String BonkEnc::Playlist::GetNthTrackFileName(Int n)
 	return fileNames.GetNthEntry(n);
 }
 
-Bool BonkEnc::Playlist::Save(String fileName)
+Bool BonkEnc::Playlist::Save(const String &fileName)
 {
 	if (fileNames.GetNOfEntries() == 0) return False;
 
-	IOLibDriver	*driver = NIL;
-
-	if (Setup::enableUnicode)	driver = new IOLibDriverUnicode(fileName, OS_OVERWRITE);
-	else				driver = new IOLibDriverPOSIX(fileName, OS_OVERWRITE);
-
-	OutStream	*file = new OutStream(STREAM_DRIVER, driver);
+	OutStream	*file = new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
 
 	file->OutputLine("#EXTM3U");
 
@@ -54,19 +48,13 @@ Bool BonkEnc::Playlist::Save(String fileName)
 	file->Close();
 
 	delete file;
-	delete driver;
 
 	return True;
 }
 
-Bool BonkEnc::Playlist::Load(String fileName)
+Bool BonkEnc::Playlist::Load(const String &fileName)
 {
-	IOLibDriver	*driver = NIL;
-
-	if (Setup::enableUnicode)	driver = new IOLibDriverUnicode(fileName, IS_READONLY);
-	else				driver = new IOLibDriverPOSIX(fileName, IS_READONLY);
-
-	InStream	*file = new InStream(STREAM_DRIVER, driver);
+	InStream	*file = new InStream(STREAM_FILE, fileName, IS_READONLY);
 
 	if (String(file->InputLine()) == "#EXTM3U")
 	{
@@ -76,14 +64,13 @@ Bool BonkEnc::Playlist::Load(String fileName)
 
 			if (line == "") break;
 
-			if (line.CompareN("#EXTINF", 7) != 0) AddTrack(line, "", 0);
+			if (!line.StartsWith("#EXTINF")) AddTrack(line, "", 0);
 		}
 	}
 
 	file->Close();
 
 	delete file;
-	delete driver;
 
 	return True;
 }

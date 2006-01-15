@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,12 +11,15 @@
 #ifndef _H_GENCONFIG_
 #define _H_GENCONFIG_
 
-class GeneralSettingsLayerEncoders;
-class GeneralSettingsLayerLanguage;
-class GeneralSettingsLayerCDRip;
-class GeneralSettingsLayerCDDB;
-class GeneralSettingsLayerPlugins;
-class GeneralSettingsLayerTags;
+namespace BonkEnc
+{
+	class GeneralSettingsLayerEncoders;
+	class GeneralSettingsLayerLanguage;
+	class GeneralSettingsLayerCDRip;
+	class GeneralSettingsLayerCDDB;
+	class GeneralSettingsLayerPlugins;
+	class GeneralSettingsLayerTags;
+};
 
 #include <smooth.h>
 #include <main.h>
@@ -54,7 +57,7 @@ namespace BonkEnc
 							 GeneralSettingsDialog();
 							~GeneralSettingsDialog();
 
-			Int				 ShowDialog();
+			const Error			&ShowDialog();
 	};
 };
 

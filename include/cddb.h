@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,20 +16,21 @@
 
 using namespace smooth;
 using namespace smooth::GUI;
+using namespace smooth::IO;
 
 const Int	 FREEDB_MODE_HTTP	= 0;
 const Int	 FREEDB_MODE_CDDBP	= 1;
 
 namespace BonkEnc
 {
-	class CDDB
+	class BEEXPORT CDDB
 	{
 		private:
 			Int				 activeDriveID;
 			Bool				 connected;
 			Config				*config;
 
-			IOLibDriver			*socket;
+			Driver				*socket;
 			InStream			*in;
 			OutStream			*out;
 
@@ -40,7 +41,7 @@ namespace BonkEnc
 			String				 category;
 
 			String				 GetCDDBQueryString();
-			String				 SendCommand(String);
+			String				 SendCommand(const String &);
 		public:
 							 CDDB(Config *);
 							~CDDB();
@@ -51,8 +52,8 @@ namespace BonkEnc
 			String				 GetCategory();
 
 			Bool				 ConnectToServer();
-			String				 Query(String);
-			String				 Read(String);
+			String				 Query(const String &);
+			String				 Read(const String &);
 			String				 Submit(Array<Track *> *);
 			Bool				 CloseConnection();
 

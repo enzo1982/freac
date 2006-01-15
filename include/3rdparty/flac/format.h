@@ -1,20 +1,32 @@
 /* libFLAC - Free Lossless Audio Codec library
- * Copyright (C) 2000,2001,2002,2003  Josh Coalson
+ * Copyright (C) 2000,2001,2002,2003,2004,2005  Josh Coalson
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Library General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Library General Public License for more details.
+ * - Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
  *
- * You should have received a copy of the GNU Library General Public
- * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA  02111-1307, USA.
+ * - Redistributions in binary form must reproduce the above copyright
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
+ *
+ * - Neither the name of the Xiph.org Foundation nor the names of its
+ * contributors may be used to endorse or promote products derived from
+ * this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
 #ifndef FLAC__FORMAT_H
@@ -75,6 +87,9 @@ extern "C" {
 	Most of the values described in this file are defined by the FLAC
 	format specification.  There is nothing to tune here.
 */
+
+/** The largest legal metadata type code. */
+#define FLAC__MAX_METADATA_TYPE_CODE (126u)
 
 /** The minimum block size, in samples, permitted by the format. */
 #define FLAC__MIN_BLOCK_SIZE (16u)
@@ -568,6 +583,10 @@ typedef struct {
 
 
 /** Vorbis comment entry structure used in VORBIS_COMMENT blocks.  (c.f. <A HREF="../format.html#metadata_block_vorbis_comment">format specification</A>)
+ *
+ *  For convenience, the APIs maintain a trailing NUL character at the end of
+ *  \a entry which is not counted toward \a length, i.e.
+ *  \code strlen(entry) == length \endcode
  */
 typedef struct {
 	FLAC__uint32 length;
@@ -728,7 +747,6 @@ extern FLAC_API const unsigned FLAC__STREAM_METADATA_LENGTH_LEN; /**< == 24 (bit
  *
  *****************************************************************************/
 
-/* @@@@ add to unit tests; it is already indirectly tested by the metadata_object tests */
 /** Tests that a sample rate is valid for FLAC.  Since the rules for valid
  *  sample rates are slightly complex, they are encapsulated in this function.
  *
@@ -738,6 +756,52 @@ extern FLAC_API const unsigned FLAC__STREAM_METADATA_LENGTH_LEN; /**< == 24 (bit
  *    \c false.
  */
 FLAC_API FLAC__bool FLAC__format_sample_rate_is_valid(unsigned sample_rate);
+
+/** Check a Vorbis comment entry name to see if it conforms to the Vorbis
+ *  comment specification.
+ *
+ *  Vorbis comment names must be composed only of characters from
+ *  [0x20-0x3C,0x3E-0x7D].
+ *
+ * \param name       A NUL-terminated string to be checked.
+ * \assert
+ *    \code name != NULL \endcode
+ * \retval FLAC__bool
+ *    \c false if entry name is illegal, else \c true.
+ */
+FLAC_API FLAC__bool FLAC__format_vorbiscomment_entry_name_is_legal(const char *name);
+
+/** Check a Vorbis comment entry value to see if it conforms to the Vorbis
+ *  comment specification.
+ *
+ *  Vorbis comment values must be valid UTF-8 sequences.
+ *
+ * \param value      A string to be checked.
+ * \param length     A the length of \a value in bytes.  May be
+ *                   \c (unsigned)(-1) to indicate that \a value is a plain
+ *                   UTF-8 NUL-terminated string.
+ * \assert
+ *    \code value != NULL \endcode
+ * \retval FLAC__bool
+ *    \c false if entry name is illegal, else \c true.
+ */
+FLAC_API FLAC__bool FLAC__format_vorbiscomment_entry_value_is_legal(const FLAC__byte *value, unsigned length);
+
+/** Check a Vorbis comment entry to see if it conforms to the Vorbis
+ *  comment specification.
+ *
+ *  Vorbis comment entries must be of the form 'name=value', and 'name' and
+ *  'value' must be legal according to
+ *  FLAC__format_vorbiscomment_entry_name_is_legal() and
+ *  FLAC__format_vorbiscomment_entry_value_is_legal() respectively.
+ *
+ * \param value      A string to be checked.
+ * \assert
+ *    \code value != NULL \endcode
+ * \retval FLAC__bool
+ *    \c false if entry name is illegal, else \c true.
+ */
+FLAC_API FLAC__bool FLAC__format_vorbiscomment_entry_is_legal(const FLAC__byte *entry, unsigned length);
 
 /* @@@@ add to unit tests; it is already indirectly tested by the metadata_object tests */
 /** Check a seek table to see if it conforms to the FLAC specification.

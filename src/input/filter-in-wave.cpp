@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,7 +19,7 @@ BonkEnc::FilterInWAVE::~FilterInWAVE()
 {
 }
 
-bool BonkEnc::FilterInWAVE::Activate()
+Bool BonkEnc::FilterInWAVE::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -34,12 +34,12 @@ bool BonkEnc::FilterInWAVE::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterInWAVE::Deactivate()
+Bool BonkEnc::FilterInWAVE::Deactivate()
 {
 	return true;
 }
 
-int BonkEnc::FilterInWAVE::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInWAVE::ReadData(UnsignedByte **data, Int size)
 {
 	buffer.Resize(size);
 
@@ -50,10 +50,10 @@ int BonkEnc::FilterInWAVE::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-Track *BonkEnc::FilterInWAVE::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = OpenFile(inFile);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	// TODO: Add more checking to this!
 
@@ -72,7 +72,7 @@ Track *BonkEnc::FilterInWAVE::GetFileInfo(String inFile)
 
 	if (f_in->InputNumber(2) != 1)
 	{
-		CloseFile(f_in);
+		delete f_in;
 
 		delete nFormat;
 
@@ -97,7 +97,7 @@ Track *BonkEnc::FilterInWAVE::GetFileInfo(String inFile)
 
 	nFormat->length = uint32(f_in->InputNumber(4)) / (nFormat->bits / 8);
 
-	CloseFile(f_in);
+	delete f_in;
 
 	return nFormat;
 }

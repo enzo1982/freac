@@ -1,8 +1,12 @@
 #ifndef __BONK__
 #define __BONK__
 
-#include <iolib-cxx.h>
+#include <smooth/io/instream.h>
+#include <smooth/io/outstream.h>
+
 #include "utility.h"
+
+using namespace smooth::IO;
 
 extern "C"
 {

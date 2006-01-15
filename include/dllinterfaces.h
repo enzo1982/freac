@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -31,25 +31,28 @@
 #include <3rdparty/winamp/in2.h>
 #include <3rdparty/id3.h>
 #include <3rdparty/mp4/mp4.h>
-#include <3rdparty/flac/stream_decoder.h>
+#include <3rdparty/flac/seekable_stream_encoder.h>
+#include <3rdparty/flac/seekable_stream_decoder.h>
+
+using namespace smooth::System;
 
 namespace BonkEnc
 {
-	class DLLInterfaces
+	class BEEXPORT DLLInterfaces
 	{
 		private:
-			static HINSTANCE		 bonkdll;
-			static HINSTANCE		 bladedll;
-			static HINSTANCE		 lamedll;
-			static HINSTANCE		 vorbisdll;
-			static HINSTANCE		 faacdll;
-			static HINSTANCE		 faad2dll;
-			static HINSTANCE		 tvqdll;
-			static HINSTANCE		 cdripdll;
-			static HINSTANCE		 id3dll;
-			static HINSTANCE		 eupdatedll;
-			static HINSTANCE		 mp4v2dll;
-			static HINSTANCE		 flacdll;
+			static DynamicLoader		*bonkdll;
+			static DynamicLoader		*bladedll;
+			static DynamicLoader		*lamedll;
+			static DynamicLoader		*vorbisdll;
+			static DynamicLoader		*faacdll;
+			static DynamicLoader		*faad2dll;
+			static DynamicLoader		*tvqdll;
+			static DynamicLoader		*cdripdll;
+			static DynamicLoader		*id3dll;
+			static DynamicLoader		*eupdatedll;
+			static DynamicLoader		*mp4v2dll;
+			static DynamicLoader		*flacdll;
 		public:
 			static Bool			 LoadBonkDLL();
 			static Bool			 LoadBladeDLL();
@@ -80,48 +83,48 @@ namespace BonkEnc
 			static Bool			 LoadWinampDLLs();
 			static Void			 FreeWinampDLLs();
 
-			static Array<HMODULE>		 winamp_in_plugins;
+			static Array<DynamicLoader *>	 winamp_in_plugins;
 			static Array<In_Module *>	 winamp_in_modules;
-			static Array<HMODULE>		 winamp_out_plugins;
+			static Array<DynamicLoader *>	 winamp_out_plugins;
 			static Array<Out_Module *>	 winamp_out_modules;
 	};
 };
 
 // CDRip DLL API
 
-	typedef CDEX_ERR			(*CR_INIT)					(int);
-	typedef CDEX_ERR			(*CR_DEINIT)					();
-	typedef LONG				(*CR_GETNUMCDROM)				();
-	typedef LONG				(*CR_GETACTIVECDROM)				();
-	typedef void				(*CR_SETACTIVECDROM)				(LONG);
-	typedef CDEX_ERR			(*CR_GETCDROMPARAMETERS)			(CDROMPARAMS *);
-	typedef CDEX_ERR			(*CR_SETCDROMPARAMETERS)			(CDROMPARAMS *);
-	typedef CDEX_ERR			(*CR_OPENRIPPER)				(LONG *, LONG, LONG);
-	typedef CDEX_ERR			(*CR_CLOSERIPPER)				();
-	typedef CDEX_ERR			(*CR_RIPCHUNK)					(BYTE *, LONG *, BOOL &);
-	typedef CDEX_ERR			(*CR_READTOC)					();
-	typedef LONG				(*CR_GETNUMTOCENTRIES)				();
-	typedef TOCENTRY			(*CR_GETTOCENTRY)				(LONG);
-	typedef void				(*CR_LOCKCD)					(BOOL);
-	typedef BOOL				(*CR_EJECTCD)					(BOOL);
-	typedef CDEX_ERR			(*CR_READCDTEXT)				(BYTE *, int, LPINT);
+	typedef CDEX_ERR			(_stdcall *CR_INIT)				(int);
+	typedef CDEX_ERR			(_stdcall *CR_DEINIT)				();
+	typedef LONG				(_stdcall *CR_GETNUMCDROM)			();
+	typedef LONG				(_stdcall *CR_GETACTIVECDROM)			();
+	typedef void				(_stdcall *CR_SETACTIVECDROM)			(LONG);
+	typedef CDEX_ERR			(_stdcall *CR_GETCDROMPARAMETERS)		(CDROMPARAMS *);
+	typedef CDEX_ERR			(_stdcall *CR_SETCDROMPARAMETERS)		(CDROMPARAMS *);
+	typedef CDEX_ERR			(_stdcall *CR_OPENRIPPER)			(LONG *, LONG, LONG);
+	typedef CDEX_ERR			(_stdcall *CR_CLOSERIPPER)			();
+	typedef CDEX_ERR			(_stdcall *CR_RIPCHUNK)				(BYTE *, LONG *, BOOL &);
+	typedef CDEX_ERR			(_stdcall *CR_READTOC)				();
+	typedef LONG				(_stdcall *CR_GETNUMTOCENTRIES)			();
+	typedef TOCENTRY			(_stdcall *CR_GETTOCENTRY)			(LONG);
+	typedef void				(_stdcall *CR_LOCKCD)				(BOOL);
+	typedef BOOL				(_stdcall *CR_EJECTCD)				(BOOL);
+	typedef CDEX_ERR			(_stdcall *CR_READCDTEXT)			(BYTE *, int, LPINT);
 
-	extern CR_INIT				 ex_CR_Init;
-	extern CR_DEINIT			 ex_CR_DeInit;
-	extern CR_READTOC			 ex_CR_ReadToc;
-	extern CR_GETNUMTOCENTRIES		 ex_CR_GetNumTocEntries;
-	extern CR_GETTOCENTRY			 ex_CR_GetTocEntry;
-	extern CR_OPENRIPPER			 ex_CR_OpenRipper;
-	extern CR_CLOSERIPPER			 ex_CR_CloseRipper;
-	extern CR_RIPCHUNK			 ex_CR_RipChunk;
-	extern CR_GETNUMCDROM			 ex_CR_GetNumCDROM;
-	extern CR_GETACTIVECDROM		 ex_CR_GetActiveCDROM;
-	extern CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM;
-	extern CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters;
-	extern CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters;
-	extern CR_LOCKCD			 ex_CR_LockCD;
-	extern CR_EJECTCD			 ex_CR_EjectCD;
-	extern CR_READCDTEXT			 ex_CR_ReadCDText;
+	extern BEEXPORT CR_INIT			 ex_CR_Init;
+	extern BEEXPORT CR_DEINIT		 ex_CR_DeInit;
+	extern BEEXPORT CR_READTOC		 ex_CR_ReadToc;
+	extern BEEXPORT CR_GETNUMTOCENTRIES	 ex_CR_GetNumTocEntries;
+	extern BEEXPORT CR_GETTOCENTRY		 ex_CR_GetTocEntry;
+	extern BEEXPORT CR_OPENRIPPER		 ex_CR_OpenRipper;
+	extern BEEXPORT CR_CLOSERIPPER		 ex_CR_CloseRipper;
+	extern BEEXPORT CR_RIPCHUNK		 ex_CR_RipChunk;
+	extern BEEXPORT CR_GETNUMCDROM		 ex_CR_GetNumCDROM;
+	extern BEEXPORT CR_GETACTIVECDROM	 ex_CR_GetActiveCDROM;
+	extern BEEXPORT CR_SETACTIVECDROM	 ex_CR_SetActiveCDROM;
+	extern BEEXPORT CR_GETCDROMPARAMETERS	 ex_CR_GetCDROMParameters;
+	extern BEEXPORT CR_SETCDROMPARAMETERS	 ex_CR_SetCDROMParameters;
+	extern BEEXPORT CR_LOCKCD		 ex_CR_LockCD;
+	extern BEEXPORT CR_EJECTCD		 ex_CR_EjectCD;
+	extern BEEXPORT CR_READCDTEXT		 ex_CR_ReadCDText;
 
 // Bonk DLL API
 
@@ -133,13 +136,13 @@ namespace BonkEnc
 	typedef int				(*BONKDECODEPACKET)				(void *, void *, int);
 	typedef const char *			(*BONKGETVERSIONSTRING)				();
 
-	extern BONKCREATEENCODER		 ex_bonk_create_encoder;
-	extern BONKCLOSEENCODER			 ex_bonk_close_encoder;
-	extern BONKENCODEPACKET			 ex_bonk_encode_packet;
-	extern BONKCREATEDECODER		 ex_bonk_create_decoder;
-	extern BONKCLOSEDECODER			 ex_bonk_close_decoder;
-	extern BONKDECODEPACKET			 ex_bonk_decode_packet;
-	extern BONKGETVERSIONSTRING		 ex_bonk_get_version_string;
+	extern BEEXPORT BONKCREATEENCODER	 ex_bonk_create_encoder;
+	extern BEEXPORT BONKCLOSEENCODER	 ex_bonk_close_encoder;
+	extern BEEXPORT BONKENCODEPACKET	 ex_bonk_encode_packet;
+	extern BEEXPORT BONKCREATEDECODER	 ex_bonk_create_decoder;
+	extern BEEXPORT BONKCLOSEDECODER	 ex_bonk_close_decoder;
+	extern BEEXPORT BONKDECODEPACKET	 ex_bonk_decode_packet;
+	extern BEEXPORT BONKGETVERSIONSTRING	 ex_bonk_get_version_string;
 
 // BladeEnc DLL API
 
@@ -149,11 +152,11 @@ namespace BonkEnc
 	typedef BE_ERR				(*BECLOSESTREAM)				(HBE_STREAM);
 	typedef VOID				(*BEVERSION)					(PBE_VERSION);
 
-	extern BEINITSTREAM			 ex_beInitStream;
-	extern BEENCODECHUNK			 ex_beEncodeChunk;
-	extern BEDEINITSTREAM			 ex_beDeinitStream;
-	extern BECLOSESTREAM			 ex_beCloseStream;
-	extern BEVERSION			 ex_beVersion;
+	extern BEEXPORT BEINITSTREAM		 ex_beInitStream;
+	extern BEEXPORT BEENCODECHUNK		 ex_beEncodeChunk;
+	extern BEEXPORT BEDEINITSTREAM		 ex_beDeinitStream;
+	extern BEEXPORT BECLOSESTREAM		 ex_beCloseStream;
+	extern BEEXPORT BEVERSION		 ex_beVersion;
 
 // LAME DLL API
 
@@ -198,46 +201,46 @@ namespace BonkEnc
 	typedef void				(*LAME_MP3_TAGS_FID)				(lame_global_flags *, FILE *);
 	typedef int				(*LAME_SET_BWRITEVBRTAG)			(lame_global_flags *, int);
 
-	extern LAME_INIT			 ex_lame_init;
-	extern LAME_SET_PRESET			 ex_lame_set_preset;
-	extern LAME_SET_IN_SAMPLERATE		 ex_lame_set_in_samplerate;
-	extern LAME_SET_NUM_CHANNELS		 ex_lame_set_num_channels;
-	extern LAME_SET_COPYRIGHT		 ex_lame_set_copyright;
-	extern LAME_SET_ORIGINAL		 ex_lame_set_original;
-	extern LAME_SET_EXTENSION		 ex_lame_set_extension;
-	extern LAME_SET_ERROR_PROTECTION	 ex_lame_set_error_protection;
-	extern LAME_SET_STRICT_ISO		 ex_lame_set_strict_ISO;
-	extern LAME_SET_PADDING_TYPE		 ex_lame_set_padding_type;
-	extern LAME_SET_OUT_SAMPLERATE		 ex_lame_set_out_samplerate;
-	extern LAME_SET_BRATE			 ex_lame_set_brate;
-	extern LAME_SET_COMPRESSION_RATIO	 ex_lame_set_compression_ratio;
-	extern LAME_SET_QUALITY			 ex_lame_set_quality;
-	extern LAME_SET_LOWPASSFREQ		 ex_lame_set_lowpassfreq;
-	extern LAME_SET_HIGHPASSFREQ		 ex_lame_set_highpassfreq;
-	extern LAME_SET_LOWPASSWIDTH		 ex_lame_set_lowpasswidth;
-	extern LAME_SET_HIGHPASSWIDTH		 ex_lame_set_highpasswidth;
-	extern LAME_SET_MODE			 ex_lame_set_mode;
-	extern LAME_SET_FORCE_MS		 ex_lame_set_force_ms;
-	extern LAME_CLOSE			 ex_lame_close;
-	extern LAME_SET_VBR			 ex_lame_set_VBR;
-	extern LAME_SET_VBR_Q			 ex_lame_set_VBR_q;
-	extern LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps;
-	extern LAME_SET_VBR_MIN_BITRATE_KBPS	 ex_lame_set_VBR_min_bitrate_kbps;
-	extern LAME_SET_VBR_MAX_BITRATE_KBPS	 ex_lame_set_VBR_max_bitrate_kbps;
-	extern LAME_SET_NOATH			 ex_lame_set_noATH;
-	extern LAME_SET_ATHTYPE			 ex_lame_set_ATHtype;
-	extern LAME_SET_USETEMPORAL		 ex_lame_set_useTemporal;
-	extern LAME_INIT_PARAMS			 ex_lame_init_params;
-	extern LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
-	extern LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
-	extern LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
-	extern LAME_DECODE_INIT			 ex_lame_decode_init;
-	extern LAME_DECODE_EXIT			 ex_lame_decode_exit;
-	extern LAME_DECODE			 ex_lame_decode;
-	extern LAME_DECODE_HEADERS		 ex_lame_decode_headers;
-	extern GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
-	extern LAME_MP3_TAGS_FID		 ex_lame_mp3_tags_fid;
-	extern LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag;
+	extern BEEXPORT LAME_INIT			 ex_lame_init;
+	extern BEEXPORT LAME_SET_PRESET			 ex_lame_set_preset;
+	extern BEEXPORT LAME_SET_IN_SAMPLERATE		 ex_lame_set_in_samplerate;
+	extern BEEXPORT LAME_SET_NUM_CHANNELS		 ex_lame_set_num_channels;
+	extern BEEXPORT LAME_SET_COPYRIGHT		 ex_lame_set_copyright;
+	extern BEEXPORT LAME_SET_ORIGINAL		 ex_lame_set_original;
+	extern BEEXPORT LAME_SET_EXTENSION		 ex_lame_set_extension;
+	extern BEEXPORT LAME_SET_ERROR_PROTECTION	 ex_lame_set_error_protection;
+	extern BEEXPORT LAME_SET_STRICT_ISO		 ex_lame_set_strict_ISO;
+	extern BEEXPORT LAME_SET_PADDING_TYPE		 ex_lame_set_padding_type;
+	extern BEEXPORT LAME_SET_OUT_SAMPLERATE		 ex_lame_set_out_samplerate;
+	extern BEEXPORT LAME_SET_BRATE			 ex_lame_set_brate;
+	extern BEEXPORT LAME_SET_COMPRESSION_RATIO	 ex_lame_set_compression_ratio;
+	extern BEEXPORT LAME_SET_QUALITY		 ex_lame_set_quality;
+	extern BEEXPORT LAME_SET_LOWPASSFREQ		 ex_lame_set_lowpassfreq;
+	extern BEEXPORT LAME_SET_HIGHPASSFREQ		 ex_lame_set_highpassfreq;
+	extern BEEXPORT LAME_SET_LOWPASSWIDTH		 ex_lame_set_lowpasswidth;
+	extern BEEXPORT LAME_SET_HIGHPASSWIDTH		 ex_lame_set_highpasswidth;
+	extern BEEXPORT LAME_SET_MODE			 ex_lame_set_mode;
+	extern BEEXPORT LAME_SET_FORCE_MS		 ex_lame_set_force_ms;
+	extern BEEXPORT LAME_CLOSE			 ex_lame_close;
+	extern BEEXPORT LAME_SET_VBR			 ex_lame_set_VBR;
+	extern BEEXPORT LAME_SET_VBR_Q			 ex_lame_set_VBR_q;
+	extern BEEXPORT LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps;
+	extern BEEXPORT LAME_SET_VBR_MIN_BITRATE_KBPS	 ex_lame_set_VBR_min_bitrate_kbps;
+	extern BEEXPORT LAME_SET_VBR_MAX_BITRATE_KBPS	 ex_lame_set_VBR_max_bitrate_kbps;
+	extern BEEXPORT LAME_SET_NOATH			 ex_lame_set_noATH;
+	extern BEEXPORT LAME_SET_ATHTYPE		 ex_lame_set_ATHtype;
+	extern BEEXPORT LAME_SET_USETEMPORAL		 ex_lame_set_useTemporal;
+	extern BEEXPORT LAME_INIT_PARAMS		 ex_lame_init_params;
+	extern BEEXPORT LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
+	extern BEEXPORT LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
+	extern BEEXPORT LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
+	extern BEEXPORT LAME_DECODE_INIT		 ex_lame_decode_init;
+	extern BEEXPORT LAME_DECODE_EXIT		 ex_lame_decode_exit;
+	extern BEEXPORT LAME_DECODE			 ex_lame_decode;
+	extern BEEXPORT LAME_DECODE_HEADERS		 ex_lame_decode_headers;
+	extern BEEXPORT GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
+	extern BEEXPORT LAME_MP3_TAGS_FID		 ex_lame_mp3_tags_fid;
+	extern BEEXPORT LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag;
 
 // Ogg Vorbis API
 
@@ -280,44 +283,44 @@ namespace BonkEnc
 	typedef int				(*OGGSYNCPAGEOUT)				 (ogg_sync_state *, ogg_page *);
 	typedef int				(*OGGSYNCCLEAR)					 (ogg_sync_state *);
 
-	extern VORBISINFOINIT			 ex_vorbis_info_init;
-	extern VORBISENCODEINIT			 ex_vorbis_encode_init;
-	extern VORBISENCODEINITVBR		 ex_vorbis_encode_init_vbr;
-	extern VORBISCOMMENTINIT		 ex_vorbis_comment_init;
-	extern VORBISCOMMENTADDTAG		 ex_vorbis_comment_add_tag;
-	extern VORBISANALYSISINIT		 ex_vorbis_analysis_init;
-	extern VORBISBLOCKINIT			 ex_vorbis_block_init;
-	extern VORBISANALYSISHEADEROUT		 ex_vorbis_analysis_headerout;
-	extern VORBISANALYSISBUFFER		 ex_vorbis_analysis_buffer;
-	extern VORBISANALYSISWROTE		 ex_vorbis_analysis_wrote;
-	extern VORBISANALYSISBLOCKOUT		 ex_vorbis_analysis_blockout;
-	extern VORBISANALYSIS			 ex_vorbis_analysis;
-	extern VORBISBITRATEADDBLOCK		 ex_vorbis_bitrate_addblock;
-	extern VORBISBITRATEFLUSHPACKET		 ex_vorbis_bitrate_flushpacket;
-	extern VORBISSYNTHESISINIT		 ex_vorbis_synthesis_init;
-	extern VORBISSYNTHESIS			 ex_vorbis_synthesis;
-	extern VORBISSYNTHESISBLOCKIN		 ex_vorbis_synthesis_blockin;
-	extern VORBISSYNTHESISPCMOUT		 ex_vorbis_synthesis_pcmout;
-	extern VORBISSYNTHESISREAD		 ex_vorbis_synthesis_read;
-	extern VORBISSYNTHESISHEADERIN		 ex_vorbis_synthesis_headerin;
-	extern VORBISBLOCKCLEAR			 ex_vorbis_block_clear;
-	extern VORBISDSPCLEAR			 ex_vorbis_dsp_clear;
-	extern VORBISCOMMENTCLEAR		 ex_vorbis_comment_clear;
-	extern VORBISINFOCLEAR			 ex_vorbis_info_clear;
-	extern OGGSTREAMINIT			 ex_ogg_stream_init;
-	extern OGGSTREAMPACKETIN		 ex_ogg_stream_packetin;
-	extern OGGSTREAMPACKETOUT		 ex_ogg_stream_packetout;
-	extern OGGSTREAMFLUSH			 ex_ogg_stream_flush;
-	extern OGGSTREAMPAGEIN			 ex_ogg_stream_pagein;
-	extern OGGSTREAMPAGEOUT			 ex_ogg_stream_pageout;
-	extern OGGPAGEEOS			 ex_ogg_page_eos;
-	extern OGGPAGESERIALNO			 ex_ogg_page_serialno;
-	extern OGGSTREAMCLEAR			 ex_ogg_stream_clear;
-	extern OGGSYNCINIT			 ex_ogg_sync_init;
-	extern OGGSYNCBUFFER			 ex_ogg_sync_buffer;
-	extern OGGSYNCWROTE			 ex_ogg_sync_wrote;
-	extern OGGSYNCPAGEOUT			 ex_ogg_sync_pageout;
-	extern OGGSYNCCLEAR			 ex_ogg_sync_clear;
+	extern BEEXPORT VORBISINFOINIT			 ex_vorbis_info_init;
+	extern BEEXPORT VORBISENCODEINIT		 ex_vorbis_encode_init;
+	extern BEEXPORT VORBISENCODEINITVBR		 ex_vorbis_encode_init_vbr;
+	extern BEEXPORT VORBISCOMMENTINIT		 ex_vorbis_comment_init;
+	extern BEEXPORT VORBISCOMMENTADDTAG		 ex_vorbis_comment_add_tag;
+	extern BEEXPORT VORBISANALYSISINIT		 ex_vorbis_analysis_init;
+	extern BEEXPORT VORBISBLOCKINIT			 ex_vorbis_block_init;
+	extern BEEXPORT VORBISANALYSISHEADEROUT		 ex_vorbis_analysis_headerout;
+	extern BEEXPORT VORBISANALYSISBUFFER		 ex_vorbis_analysis_buffer;
+	extern BEEXPORT VORBISANALYSISWROTE		 ex_vorbis_analysis_wrote;
+	extern BEEXPORT VORBISANALYSISBLOCKOUT		 ex_vorbis_analysis_blockout;
+	extern BEEXPORT VORBISANALYSIS			 ex_vorbis_analysis;
+	extern BEEXPORT VORBISBITRATEADDBLOCK		 ex_vorbis_bitrate_addblock;
+	extern BEEXPORT VORBISBITRATEFLUSHPACKET	 ex_vorbis_bitrate_flushpacket;
+	extern BEEXPORT VORBISSYNTHESISINIT		 ex_vorbis_synthesis_init;
+	extern BEEXPORT VORBISSYNTHESIS			 ex_vorbis_synthesis;
+	extern BEEXPORT VORBISSYNTHESISBLOCKIN		 ex_vorbis_synthesis_blockin;
+	extern BEEXPORT VORBISSYNTHESISPCMOUT		 ex_vorbis_synthesis_pcmout;
+	extern BEEXPORT VORBISSYNTHESISREAD		 ex_vorbis_synthesis_read;
+	extern BEEXPORT VORBISSYNTHESISHEADERIN		 ex_vorbis_synthesis_headerin;
+	extern BEEXPORT VORBISBLOCKCLEAR		 ex_vorbis_block_clear;
+	extern BEEXPORT VORBISDSPCLEAR			 ex_vorbis_dsp_clear;
+	extern BEEXPORT VORBISCOMMENTCLEAR		 ex_vorbis_comment_clear;
+	extern BEEXPORT VORBISINFOCLEAR			 ex_vorbis_info_clear;
+	extern BEEXPORT OGGSTREAMINIT			 ex_ogg_stream_init;
+	extern BEEXPORT OGGSTREAMPACKETIN		 ex_ogg_stream_packetin;
+	extern BEEXPORT OGGSTREAMPACKETOUT		 ex_ogg_stream_packetout;
+	extern BEEXPORT OGGSTREAMFLUSH			 ex_ogg_stream_flush;
+	extern BEEXPORT OGGSTREAMPAGEIN			 ex_ogg_stream_pagein;
+	extern BEEXPORT OGGSTREAMPAGEOUT		 ex_ogg_stream_pageout;
+	extern BEEXPORT OGGPAGEEOS			 ex_ogg_page_eos;
+	extern BEEXPORT OGGPAGESERIALNO			 ex_ogg_page_serialno;
+	extern BEEXPORT OGGSTREAMCLEAR			 ex_ogg_stream_clear;
+	extern BEEXPORT OGGSYNCINIT			 ex_ogg_sync_init;
+	extern BEEXPORT OGGSYNCBUFFER			 ex_ogg_sync_buffer;
+	extern BEEXPORT OGGSYNCWROTE			 ex_ogg_sync_wrote;
+	extern BEEXPORT OGGSYNCPAGEOUT			 ex_ogg_sync_pageout;
+	extern BEEXPORT OGGSYNCCLEAR			 ex_ogg_sync_clear;
 
 // FAAC DLL API
 
@@ -328,12 +331,12 @@ namespace BonkEnc
 	typedef int				(FAACAPI *FAACENCENCODE)			(faacEncHandle, int32_t *, unsigned int, unsigned char *, unsigned int);
 	typedef int				(FAACAPI *FAACENCCLOSE)				(faacEncHandle);
 
-	extern FAACENCOPEN			 ex_faacEncOpen;
-	extern FAACENCGETCURRENTCONFIGURATION	 ex_faacEncGetCurrentConfiguration;
-	extern FAACENCSETCONFIGURATION		 ex_faacEncSetConfiguration;
-	extern FAACENCGETDECODERSPECIFICINFO	 ex_faacEncGetDecoderSpecificInfo;
-	extern FAACENCENCODE			 ex_faacEncEncode;
-	extern FAACENCCLOSE			 ex_faacEncClose;
+	extern BEEXPORT FAACENCOPEN			 ex_faacEncOpen;
+	extern BEEXPORT FAACENCGETCURRENTCONFIGURATION	 ex_faacEncGetCurrentConfiguration;
+	extern BEEXPORT FAACENCSETCONFIGURATION		 ex_faacEncSetConfiguration;
+	extern BEEXPORT FAACENCGETDECODERSPECIFICINFO	 ex_faacEncGetDecoderSpecificInfo;
+	extern BEEXPORT FAACENCENCODE			 ex_faacEncEncode;
+	extern BEEXPORT FAACENCCLOSE			 ex_faacEncClose;
 
 // FAAD2 DLL API
 
@@ -345,13 +348,13 @@ namespace BonkEnc
 	typedef void *				(NEAACDECAPI *NEAACDECDECODE)			(NeAACDecHandle, NeAACDecFrameInfo *, unsigned char *, unsigned long);
 	typedef void				(NEAACDECAPI *NEAACDECCLOSE)			(NeAACDecHandle);
 
-	extern NEAACDECOPEN			 ex_NeAACDecOpen;
-	extern NEAACDECINIT			 ex_NeAACDecInit;
-	extern NEAACDECINIT2			 ex_NeAACDecInit2;
-	extern NEAACDECGETCURRENTCONFIGURATION	 ex_NeAACDecGetCurrentConfiguration;
-	extern NEAACDECSETCONFIGURATION		 ex_NeAACDecSetConfiguration;
-	extern NEAACDECDECODE			 ex_NeAACDecDecode;
-	extern NEAACDECCLOSE			 ex_NeAACDecClose;
+	extern BEEXPORT NEAACDECOPEN			 ex_NeAACDecOpen;
+	extern BEEXPORT NEAACDECINIT			 ex_NeAACDecInit;
+	extern BEEXPORT NEAACDECINIT2			 ex_NeAACDecInit2;
+	extern BEEXPORT NEAACDECGETCURRENTCONFIGURATION	 ex_NeAACDecGetCurrentConfiguration;
+	extern BEEXPORT NEAACDECSETCONFIGURATION	 ex_NeAACDecSetConfiguration;
+	extern BEEXPORT NEAACDECDECODE			 ex_NeAACDecDecode;
+	extern BEEXPORT NEAACDECCLOSE			 ex_NeAACDecClose;
 
 // TwinVQ DLL API
 
@@ -365,27 +368,27 @@ namespace BonkEnc
 	typedef void				(*TVQENCUPDATEVECTORINFO)			(int, int *, int [], int []);
 	typedef void				(*TVQENCODEFRAME)				(float [], INDEX *);
 
-	extern TVQGETVERSIONID			 ex_TvqGetVersionID;
-	extern TVQENCINITIALIZE			 ex_TvqEncInitialize;
-	extern TVQENCTERMINATE			 ex_TvqEncTerminate;
-	extern TVQENCGETFRAMESIZE		 ex_TvqEncGetFrameSize;
-	extern TVQENCGETNUMCHANNELS		 ex_TvqEncGetNumChannels;
-	extern TVQENCGETCONFINFO		 ex_TvqEncGetConfInfo;
-	extern TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo;
-	extern TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo;
-	extern TVQENCODEFRAME			 ex_TvqEncodeFrame;
+	extern BEEXPORT TVQGETVERSIONID		 ex_TvqGetVersionID;
+	extern BEEXPORT TVQENCINITIALIZE	 ex_TvqEncInitialize;
+	extern BEEXPORT TVQENCTERMINATE		 ex_TvqEncTerminate;
+	extern BEEXPORT TVQENCGETFRAMESIZE	 ex_TvqEncGetFrameSize;
+	extern BEEXPORT TVQENCGETNUMCHANNELS	 ex_TvqEncGetNumChannels;
+	extern BEEXPORT TVQENCGETCONFINFO	 ex_TvqEncGetConfInfo;
+	extern BEEXPORT TVQENCGETVECTORINFO	 ex_TvqEncGetVectorInfo;
+	extern BEEXPORT TVQENCUPDATEVECTORINFO	 ex_TvqEncUpdateVectorInfo;
+	extern BEEXPORT TVQENCODEFRAME		 ex_TvqEncodeFrame;
 
 // eUpdate DLL API
 
-	typedef S::Void *			(*EUCREATEUPDATECONTEXT)			(const char *, const char *, const char *);
-	typedef S::Int				(*EUFREEUPDATECONTEXT)				(S::Void *);
-	typedef S::Int				(*EUCHECKFORNEWUPDATES)				(S::Void *, S::Bool);
-	typedef S::Void				(*EUAUTOMATICUPDATE)				(S::Void *);
+	typedef S::Void *			(_stdcall *EUCREATEUPDATECONTEXT)		(const char *, const char *, const char *);
+	typedef S::Int				(_stdcall *EUFREEUPDATECONTEXT)			(S::Void *);
+	typedef S::Int				(_stdcall *EUCHECKFORNEWUPDATES)		(S::Void *, S::Bool);
+	typedef S::Void				(_stdcall *EUAUTOMATICUPDATE)			(S::Void *);
 
-	extern EUCREATEUPDATECONTEXT		 ex_eUpdate_CreateUpdateContext;
-	extern EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext;
-	extern EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates;
-	extern EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate;
+	extern BEEXPORT EUCREATEUPDATECONTEXT	 ex_eUpdate_CreateUpdateContext;
+	extern BEEXPORT EUFREEUPDATECONTEXT	 ex_eUpdate_FreeUpdateContext;
+	extern BEEXPORT EUCHECKFORNEWUPDATES	 ex_eUpdate_CheckForNewUpdates;
+	extern BEEXPORT EUAUTOMATICUPDATE	 ex_eUpdate_AutomaticUpdate;
 
 // MP4V2 DLL API
 
@@ -421,67 +424,131 @@ namespace BonkEnc
 	typedef bool				(*MP4WRITESAMPLE)				(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t, MP4Duration,
  MP4Duration, bool);
 
-	extern MP4READ				 ex_MP4Read;
-	extern MP4CREATEEX			 ex_MP4CreateEx;
-	extern MP4CLOSE				 ex_MP4Close;
-	extern MP4OPTIMIZE			 ex_MP4Optimize;
-	extern MP4SETMETADATANAME		 ex_MP4SetMetadataName;
-	extern MP4GETMETADATANAME		 ex_MP4GetMetadataName;
-	extern MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist;
-	extern MP4GETMETADATAARTIST		 ex_MP4GetMetadataArtist;
-	extern MP4SETMETADATACOMMENT		 ex_MP4SetMetadataComment;
-	extern MP4GETMETADATACOMMENT		 ex_MP4GetMetadataComment;
-	extern MP4SETMETADATAYEAR		 ex_MP4SetMetadataYear;
-	extern MP4GETMETADATAYEAR		 ex_MP4GetMetadataYear;
-	extern MP4SETMETADATAALBUM		 ex_MP4SetMetadataAlbum;
-	extern MP4GETMETADATAALBUM		 ex_MP4GetMetadataAlbum;
-	extern MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre;
-	extern MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre;
-	extern MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack;
-	extern MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack;
-	extern MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
-	extern MP4FINDTRACKID			 ex_MP4FindTrackId;
-	extern MP4GETTRACKTYPE			 ex_MP4GetTrackType;
-	extern MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration;
-	extern MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
-	extern MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples;
-	extern MP4SETTIMESCALE			 ex_MP4SetTimeScale;
-	extern MP4SETAUDIOPROFILELEVEL		 ex_MP4SetAudioProfileLevel;
-	extern MP4ADDAUDIOTRACK			 ex_MP4AddAudioTrack;
-	extern MP4READSAMPLE			 ex_MP4ReadSample;
-	extern MP4WRITESAMPLE			 ex_MP4WriteSample;
+	extern BEEXPORT MP4READ				 ex_MP4Read;
+	extern BEEXPORT MP4CREATEEX			 ex_MP4CreateEx;
+	extern BEEXPORT MP4CLOSE			 ex_MP4Close;
+	extern BEEXPORT MP4OPTIMIZE			 ex_MP4Optimize;
+	extern BEEXPORT MP4SETMETADATANAME		 ex_MP4SetMetadataName;
+	extern BEEXPORT MP4GETMETADATANAME		 ex_MP4GetMetadataName;
+	extern BEEXPORT MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist;
+	extern BEEXPORT MP4GETMETADATAARTIST		 ex_MP4GetMetadataArtist;
+	extern BEEXPORT MP4SETMETADATACOMMENT		 ex_MP4SetMetadataComment;
+	extern BEEXPORT MP4GETMETADATACOMMENT		 ex_MP4GetMetadataComment;
+	extern BEEXPORT MP4SETMETADATAYEAR		 ex_MP4SetMetadataYear;
+	extern BEEXPORT MP4GETMETADATAYEAR		 ex_MP4GetMetadataYear;
+	extern BEEXPORT MP4SETMETADATAALBUM		 ex_MP4SetMetadataAlbum;
+	extern BEEXPORT MP4GETMETADATAALBUM		 ex_MP4GetMetadataAlbum;
+	extern BEEXPORT MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre;
+	extern BEEXPORT MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre;
+	extern BEEXPORT MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack;
+	extern BEEXPORT MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack;
+	extern BEEXPORT MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
+	extern BEEXPORT MP4FINDTRACKID			 ex_MP4FindTrackId;
+	extern BEEXPORT MP4GETTRACKTYPE			 ex_MP4GetTrackType;
+	extern BEEXPORT MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration;
+	extern BEEXPORT MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
+	extern BEEXPORT MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples;
+	extern BEEXPORT MP4SETTIMESCALE			 ex_MP4SetTimeScale;
+	extern BEEXPORT MP4SETAUDIOPROFILELEVEL		 ex_MP4SetAudioProfileLevel;
+	extern BEEXPORT MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack;
+	extern BEEXPORT MP4READSAMPLE			 ex_MP4ReadSample;
+	extern BEEXPORT MP4WRITESAMPLE			 ex_MP4WriteSample;
 
 // FLAC DLL API
 
-	typedef FLAC__StreamDecoder *		(*FLAC__STREAM_DECODER_NEW)				();
-	typedef void				(*FLAC__STREAM_DECODER_DELETE)				(FLAC__StreamDecoder *);
-	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_READ_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderReadCallback);
-	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_WRITE_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderWriteCallback);
-	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_METADATA_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderMetadataCallback);
-	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_ERROR_CALLBACK)		(FLAC__StreamDecoder *, FLAC__StreamDecoderErrorCallback);
-	typedef FLAC__bool			(*FLAC__STREAM_DECODER_SET_CLIENT_DATA)			(FLAC__StreamDecoder *, void *);
-	typedef FLAC__StreamDecoderState	(*FLAC__STREAM_DECODER_INIT)				(FLAC__StreamDecoder *);
-	typedef void				(*FLAC__STREAM_DECODER_FINISH)				(FLAC__StreamDecoder *);
-	typedef unsigned			(*FLAC__STREAM_DECODER_GET_CHANNELS)			(const FLAC__StreamDecoder *);
-	typedef unsigned			(*FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE)		(const FLAC__StreamDecoder *);
-	typedef unsigned			(*FLAC__STREAM_DECODER_GET_SAMPLE_RATE)			(const FLAC__StreamDecoder *);
-	typedef FLAC__bool			(*FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA)	(FLAC__StreamDecoder *);
-	typedef FLAC__bool			(*FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM)	(FLAC__StreamDecoder *);
+	typedef FLAC__SeekableStreamEncoder *	(*FLAC__SEEKABLE_STREAM_ENCODER_NEW)					();
+	typedef void				(*FLAC__SEEKABLE_STREAM_ENCODER_DELETE)					(FLAC__SeekableStreamEncoder *);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_WRITE_CALLBACK)			(FLAC__SeekableStreamEncoder *, FLAC__SeekableStreamEncoderWriteCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_SEEK_CALLBACK)			(FLAC__SeekableStreamEncoder *, FLAC__SeekableStreamEncoderSeekCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_TELL_CALLBACK)			(FLAC__SeekableStreamEncoder *, FLAC__SeekableStreamEncoderTellCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_CLIENT_DATA)			(FLAC__SeekableStreamEncoder *, void *);
+	typedef FLAC__SeekableStreamEncoderState(*FLAC__SEEKABLE_STREAM_ENCODER_INIT)					(FLAC__SeekableStreamEncoder *);
+	typedef void				(*FLAC__SEEKABLE_STREAM_ENCODER_FINISH)					(FLAC__SeekableStreamEncoder *);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_CHANNELS)				(FLAC__SeekableStreamEncoder *, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_BITS_PER_SAMPLE)			(FLAC__SeekableStreamEncoder *, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_SAMPLE_RATE)			(FLAC__SeekableStreamEncoder *, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_STREAMABLE_SUBSET)			(FLAC__SeekableStreamEncoder *, FLAC__bool);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_MID_SIDE_STEREO)			(FLAC__SeekableStreamEncoder *, FLAC__bool);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO)		(FLAC__SeekableStreamEncoder *, FLAC__bool);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_BLOCKSIZE)				(FLAC__SeekableStreamEncoder *, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_LPC_ORDER)			(FLAC__SeekableStreamEncoder *, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_QLP_COEFF_PRECISION)		(FLAC__SeekableStreamEncoder *, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH)		(FLAC__SeekableStreamEncoder *, FLAC__bool);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH)		(FLAC__SeekableStreamEncoder *, FLAC__bool);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER)	(FLAC__SeekableStreamEncoder *, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER)	(FLAC__SeekableStreamEncoder *, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_SET_METADATA)				(FLAC__SeekableStreamEncoder *, FLAC__StreamMetadata **, unsigned);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_ENCODER_PROCESS_INTERLEAVED)			(FLAC__SeekableStreamEncoder *, const FLAC__int32[], unsigned);
+	typedef FLAC__SeekableStreamDecoder *	(*FLAC__SEEKABLE_STREAM_DECODER_NEW)					();
+	typedef void				(*FLAC__SEEKABLE_STREAM_DECODER_DELETE)					(FLAC__SeekableStreamDecoder *);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_READ_CALLBACK)			(FLAC__SeekableStreamDecoder *, FLAC__SeekableStreamDecoderReadCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_WRITE_CALLBACK)			(FLAC__SeekableStreamDecoder *, FLAC__SeekableStreamDecoderWriteCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_SEEK_CALLBACK)			(FLAC__SeekableStreamDecoder *, FLAC__SeekableStreamDecoderSeekCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_TELL_CALLBACK)			(FLAC__SeekableStreamDecoder *, FLAC__SeekableStreamDecoderTellCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_LENGTH_CALLBACK)			(FLAC__SeekableStreamDecoder *, FLAC__SeekableStreamDecoderLengthCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_EOF_CALLBACK)			(FLAC__SeekableStreamDecoder *, FLAC__SeekableStreamDecoderEofCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_CALLBACK)			(FLAC__SeekableStreamDecoder *, FLAC__SeekableStreamDecoderMetadataCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_ERROR_CALLBACK)			(FLAC__SeekableStreamDecoder *, FLAC__SeekableStreamDecoderErrorCallback);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_SET_CLIENT_DATA)			(FLAC__SeekableStreamDecoder *, void *);
+	typedef FLAC__bool 			(*FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_RESPOND)			(FLAC__SeekableStreamDecoder *, FLAC__MetadataType);
+	typedef FLAC__SeekableStreamDecoderState(*FLAC__SEEKABLE_STREAM_DECODER_INIT)					(FLAC__SeekableStreamDecoder *);
+	typedef void				(*FLAC__SEEKABLE_STREAM_DECODER_FINISH)					(FLAC__SeekableStreamDecoder *);
+	typedef unsigned			(*FLAC__SEEKABLE_STREAM_DECODER_GET_CHANNELS)				(const FLAC__SeekableStreamDecoder *);
+	typedef unsigned			(*FLAC__SEEKABLE_STREAM_DECODER_GET_BITS_PER_SAMPLE)			(const FLAC__SeekableStreamDecoder *);
+	typedef unsigned			(*FLAC__SEEKABLE_STREAM_DECODER_GET_SAMPLE_RATE)			(const FLAC__SeekableStreamDecoder *);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA)		(FLAC__SeekableStreamDecoder *);
+	typedef FLAC__bool			(*FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM)		(FLAC__SeekableStreamDecoder *);
+	typedef FLAC__StreamMetadata *	 	(*FLAC__METADATA_OBJECT_NEW)						(FLAC__MetadataType);
+	typedef void			 	(*FLAC__METADATA_OBJECT_DELETE)						(FLAC__StreamMetadata *);
+	typedef FLAC__bool 			(*FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT)			(FLAC__StreamMetadata *, FLAC__StreamMetadata_VorbisComment_Entry, FLAC__bool);
+	typedef FLAC__bool 			(*FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR)	(FLAC__StreamMetadata_VorbisComment_Entry *, const char *, const char *);
 
-	extern FLAC__STREAM_DECODER_NEW					 ex_FLAC__stream_decoder_new;
-	extern FLAC__STREAM_DECODER_DELETE				 ex_FLAC__stream_decoder_delete;
-	extern FLAC__STREAM_DECODER_SET_READ_CALLBACK			 ex_FLAC__stream_decoder_set_read_callback;
-	extern FLAC__STREAM_DECODER_SET_WRITE_CALLBACK			 ex_FLAC__stream_decoder_set_write_callback;
-	extern FLAC__STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__stream_decoder_set_metadata_callback;
-	extern FLAC__STREAM_DECODER_SET_ERROR_CALLBACK			 ex_FLAC__stream_decoder_set_error_callback;
-	extern FLAC__STREAM_DECODER_SET_CLIENT_DATA			 ex_FLAC__stream_decoder_set_client_data;
-	extern FLAC__STREAM_DECODER_INIT				 ex_FLAC__stream_decoder_init;
-	extern FLAC__STREAM_DECODER_FINISH				 ex_FLAC__stream_decoder_finish;
-	extern FLAC__STREAM_DECODER_GET_CHANNELS			 ex_FLAC__stream_decoder_get_channels;
-	extern FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE			 ex_FLAC__stream_decoder_get_bits_per_sample;
-	extern FLAC__STREAM_DECODER_GET_SAMPLE_RATE			 ex_FLAC__stream_decoder_get_sample_rate;
-	extern FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA	 ex_FLAC__stream_decoder_process_until_end_of_metadata;
-	extern FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM		 ex_FLAC__stream_decoder_process_until_end_of_stream;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_NEW				 ex_FLAC__seekable_stream_encoder_new;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_DELETE				 ex_FLAC__seekable_stream_encoder_delete;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_WRITE_CALLBACK		 ex_FLAC__seekable_stream_encoder_set_write_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_SEEK_CALLBACK			 ex_FLAC__seekable_stream_encoder_set_seek_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_TELL_CALLBACK			 ex_FLAC__seekable_stream_encoder_set_tell_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_CLIENT_DATA			 ex_FLAC__seekable_stream_encoder_set_client_data;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_INIT				 ex_FLAC__seekable_stream_encoder_init;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_FINISH				 ex_FLAC__seekable_stream_encoder_finish;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_CHANNELS			 ex_FLAC__seekable_stream_encoder_set_channels;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_BITS_PER_SAMPLE		 ex_FLAC__seekable_stream_encoder_set_bits_per_sample;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_SAMPLE_RATE			 ex_FLAC__seekable_stream_encoder_set_sample_rate;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_STREAMABLE_SUBSET		 ex_FLAC__seekable_stream_encoder_set_streamable_subset;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_MID_SIDE_STEREO		 ex_FLAC__seekable_stream_encoder_set_do_mid_side_stereo;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO		 ex_FLAC__seekable_stream_encoder_set_loose_mid_side_stereo;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_BLOCKSIZE			 ex_FLAC__seekable_stream_encoder_set_blocksize;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_LPC_ORDER			 ex_FLAC__seekable_stream_encoder_set_max_lpc_order;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_QLP_COEFF_PRECISION		 ex_FLAC__seekable_stream_encoder_set_qlp_coeff_precision;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH	 ex_FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH	 ex_FLAC__seekable_stream_encoder_set_do_exhaustive_model_search;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER	 ex_FLAC__seekable_stream_encoder_set_min_residual_partition_order;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER	 ex_FLAC__seekable_stream_encoder_set_max_residual_partition_order;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_SET_METADATA			 ex_FLAC__seekable_stream_encoder_set_metadata;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_ENCODER_PROCESS_INTERLEAVED		 ex_FLAC__seekable_stream_encoder_process_interleaved;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_NEW				 ex_FLAC__seekable_stream_decoder_new;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_DELETE				 ex_FLAC__seekable_stream_decoder_delete;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_READ_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_read_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_WRITE_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_write_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_SEEK_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_seek_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_TELL_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_tell_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_LENGTH_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_length_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_EOF_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_eof_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_metadata_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_ERROR_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_error_callback;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_CLIENT_DATA			 ex_FLAC__seekable_stream_decoder_set_client_data;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_RESPOND		 ex_FLAC__seekable_stream_decoder_set_metadata_respond;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_INIT				 ex_FLAC__seekable_stream_decoder_init;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_FINISH				 ex_FLAC__seekable_stream_decoder_finish;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_GET_CHANNELS			 ex_FLAC__seekable_stream_decoder_get_channels;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_GET_BITS_PER_SAMPLE		 ex_FLAC__seekable_stream_decoder_get_bits_per_sample;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_GET_SAMPLE_RATE			 ex_FLAC__seekable_stream_decoder_get_sample_rate;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA	 ex_FLAC__seekable_stream_decoder_process_until_end_of_metadata;
+	extern BEEXPORT FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM	 ex_FLAC__seekable_stream_decoder_process_until_end_of_stream;
+	extern BEEXPORT FLAC__METADATA_OBJECT_NEW					 ex_FLAC__metadata_object_new;
+	extern BEEXPORT FLAC__METADATA_OBJECT_DELETE					 ex_FLAC__metadata_object_delete;
+	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment;
+	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair;
 
 // ID3Lib DLL API
 
@@ -505,24 +572,24 @@ namespace BonkEnc
 	typedef void				(*ID3FIELDSETUNICODE)				(ID3Field *, unicode_t *);
 	typedef size_t				(*ID3FIELDGETUNICODE)				(const ID3Field *, unicode_t *, size_t);
 
-	extern ID3TAGNEW			 ex_ID3Tag_New;
-	extern ID3TAGDELETE			 ex_ID3Tag_Delete;
-	extern ID3TAGSETPADDING			 ex_ID3Tag_SetPadding;
-	extern ID3TAGADDFRAME			 ex_ID3Tag_AddFrame;
-	extern ID3TAGLINK			 ex_ID3Tag_Link;
-	extern ID3TAGNUMFRAMES			 ex_ID3Tag_NumFrames;
-	extern ID3TAGFINDFRAMEWITHID		 ex_ID3Tag_FindFrameWithID;
-	extern ID3TAGPARSEBUFFER		 ex_ID3Tag_ParseBuffer;
-	extern ID3TAGRENDER			 ex_ID3Tag_Render;
-	extern ID3FRAMENEWID			 ex_ID3Frame_NewID;
-	extern ID3FRAMEDELETE			 ex_ID3Frame_Delete;
-	extern ID3FRAMEGETFIELD			 ex_ID3Frame_GetField;
-	extern ID3FIELDSETINT			 ex_ID3Field_SetINT;
-	extern ID3FIELDGETINT			 ex_ID3Field_GetINT;
-	extern ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding;
-	extern ID3FIELDSETASCII			 ex_ID3Field_SetASCII;
-	extern ID3FIELDGETASCII			 ex_ID3Field_GetASCII;
-	extern ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE;
-	extern ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE;
+	extern BEEXPORT ID3TAGNEW			 ex_ID3Tag_New;
+	extern BEEXPORT ID3TAGDELETE			 ex_ID3Tag_Delete;
+	extern BEEXPORT ID3TAGSETPADDING		 ex_ID3Tag_SetPadding;
+	extern BEEXPORT ID3TAGADDFRAME			 ex_ID3Tag_AddFrame;
+	extern BEEXPORT ID3TAGLINK			 ex_ID3Tag_Link;
+	extern BEEXPORT ID3TAGNUMFRAMES			 ex_ID3Tag_NumFrames;
+	extern BEEXPORT ID3TAGFINDFRAMEWITHID		 ex_ID3Tag_FindFrameWithID;
+	extern BEEXPORT ID3TAGPARSEBUFFER		 ex_ID3Tag_ParseBuffer;
+	extern BEEXPORT ID3TAGRENDER			 ex_ID3Tag_Render;
+	extern BEEXPORT ID3FRAMENEWID			 ex_ID3Frame_NewID;
+	extern BEEXPORT ID3FRAMEDELETE			 ex_ID3Frame_Delete;
+	extern BEEXPORT ID3FRAMEGETFIELD		 ex_ID3Frame_GetField;
+	extern BEEXPORT ID3FIELDSETINT			 ex_ID3Field_SetINT;
+	extern BEEXPORT ID3FIELDGETINT			 ex_ID3Field_GetINT;
+	extern BEEXPORT ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding;
+	extern BEEXPORT ID3FIELDSETASCII		 ex_ID3Field_SetASCII;
+	extern BEEXPORT ID3FIELDGETASCII		 ex_ID3Field_GetASCII;
+	extern BEEXPORT ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE;
+	extern BEEXPORT ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE;
 
 #endif

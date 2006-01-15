@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,9 +14,7 @@
 #include <joblist.h>
 #include <utilities.h>
 
-#include <iolib/drivers/driver_posix.h>
-#include <iolib/drivers/driver_unicode.h>
-#include <iolib/drivers/driver_zero.h>
+#include <smooth/io/drivers/driver_zero.h>
 
 #include <input/filter-in-cdrip.h>
 #include <input/filter-in-wave.h>
@@ -28,7 +26,7 @@
 #include <input/filter-in-bonk.h>
 #include <input/filter-in-flac.h>
 
-Void bonkEnc::PlayItem(Int entry)
+Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 {
 	if (encoding)
 	{
@@ -55,7 +53,7 @@ Void bonkEnc::PlayItem(Int entry)
 	joblist->GetNthEntry(entry)->SetFont(font);
 
 	play_thread = new Thread();
-	play_thread->threadMain.Connect(&bonkEncGUI::PlayThread, this);
+	play_thread->threadMain.Connect(&BonkEncGUI::PlayThread, this);
 
 	playing = True;
 	paused = False;
@@ -66,7 +64,7 @@ Void bonkEnc::PlayItem(Int entry)
 	play_thread->Start();
 }
 
-Void bonkEnc::PlaySelectedItem()
+Void BonkEnc::BonkEncGUI::PlaySelectedItem()
 {
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
@@ -74,7 +72,7 @@ Void bonkEnc::PlaySelectedItem()
 	}
 }
 
-Int bonkEnc::PlayThread(Thread *thread)
+Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 {
 	String	 in_filename;
 	Track	*trackInfo;
@@ -87,47 +85,42 @@ Int bonkEnc::PlayThread(Thread *thread)
 	{
 		playing = false;
 
-		return Failure;
+		return Error();
 	}
 
 	in_filename = trackInfo->origFilename;
 
 	InStream	*f_in;
-	IOLibDriver	*driver_in = NIL;
+	Driver		*driver_in = new DriverZero();
 	InputFilter	*filter_in = NIL;
 
 	if (trackInfo->isCDTrack)
 	{
 		currentConfig->cdrip_activedrive = trackInfo->drive;
 
-		driver_in	= new IOLibDriverZero();
 		f_in		= new InStream(STREAM_DRIVER, driver_in);
 		filter_in	= new FilterInCDRip(currentConfig, trackInfo);
 
 		((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
 
-		f_in->SetFilter(filter_in);
+		f_in->AddFilter(filter_in);
 	}
 	else
 	{
 		filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
 
-		if (Setup::enableUnicode)	driver_in = new IOLibDriverUnicode(in_filename, IS_READONLY);
-		else				driver_in = new IOLibDriverPOSIX(in_filename, IS_READONLY);
-
-		f_in = new InStream(STREAM_DRIVER, driver_in);
+		f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
 		f_in->SetPackageSize(4096);
 
 		if (filter_in != NIL)
 		{
 			filter_in->SetFileSize(f_in->Size());
 
-			f_in->SetFilter(filter_in);
+			f_in->AddFilter(filter_in);
 		}
 		else
 		{
 			delete f_in;
-			delete driver_in;
 		}
 	}
 
@@ -160,7 +153,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
 						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
-						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { step = i; break; }
+						if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
 
 						sample_buffer[i] = (short) sample;
 					}
@@ -195,7 +188,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
 						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
-						if (sample == -1 && f_in->GetLastError() != IOLIB_ERROR_NODATA) { step = i; break; }
+						if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
 
 						if (sample != -1)	sample_buffer[i] = (short) sample;
 						else			i--;
@@ -216,7 +209,7 @@ Int bonkEnc::PlayThread(Thread *thread)
 				delete [] sample_buffer;
 			}
 
-			f_in->RemoveFilter();
+			f_in->RemoveFilter(filter_in);
 		}
 
 		if (!stop_playback) while (out->IsPlaying()) Sleep(20);
@@ -238,10 +231,10 @@ Int bonkEnc::PlayThread(Thread *thread)
 
 	playing = false;
 
-	return Success;
+	return Success();
 }
 
-Void bonkEnc::PausePlayback()
+Void BonkEnc::BonkEncGUI::PausePlayback()
 {
 	if (!playing) return;
 
@@ -251,7 +244,7 @@ Void bonkEnc::PausePlayback()
 	paused = !paused;
 }
 
-Void bonkEnc::StopPlayback()
+Void BonkEnc::BonkEncGUI::StopPlayback()
 {
 	if (!playing) return;
 
@@ -264,16 +257,22 @@ Void bonkEnc::StopPlayback()
 	play_thread = NIL;
 }
 
-Void bonkEnc::PlayPrevious()
+Void BonkEnc::BonkEncGUI::PlayPrevious()
 {
 	if (!playing) return;
 
 	if (player_entry > 0) PlayItem(player_entry - 1);
 }
 
-Void bonkEnc::PlayNext()
+Void BonkEnc::BonkEncGUI::PlayNext()
 {
 	if (!playing) return;
 
 	if (player_entry < joblist->GetNOfTracks() - 1) PlayItem(player_entry + 1);
+}
+
+Void BonkEnc::BonkEncGUI::OpenCDTray()
+{
+	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
+ 	ex_CR_EjectCD(True);
 }

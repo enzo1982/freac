@@ -4,10 +4,12 @@
 #define __THROW_BAD_ALLOC exit(1)
 
 #include "utility.h"
-#include <iolib-cxx.h>
+#include <smooth/io/instream.h>
+#include <smooth/io/outstream.h>
 #include <vector>
 
 using namespace std;
+using namespace smooth::IO;
 
 void write_list(const vector<int> &, bool, bitstream_out &);
 bool read_list(vector<int> &, bool, bitstream_in &);

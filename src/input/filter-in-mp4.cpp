@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,6 +10,8 @@
 
 #include <input/filter-in-mp4.h>
 
+#include <dllinterfaces.h>
+
 BonkEnc::FilterInMP4::FilterInMP4(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
@@ -19,7 +21,7 @@ BonkEnc::FilterInMP4::~FilterInMP4()
 {
 }
 
-bool BonkEnc::FilterInMP4::Activate()
+Bool BonkEnc::FilterInMP4::Activate()
 {
 	if (GetTempFile(format->origFilename) != format->origFilename)
 	{
@@ -60,7 +62,7 @@ bool BonkEnc::FilterInMP4::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterInMP4::Deactivate()
+Bool BonkEnc::FilterInMP4::Deactivate()
 {
 	if (mp4Track >= 0) ex_NeAACDecClose(handle);
 
@@ -76,7 +78,7 @@ bool BonkEnc::FilterInMP4::Deactivate()
 	return true;
 }
 
-int BonkEnc::FilterInMP4::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInMP4::ReadData(UnsignedByte **data, Int size)
 {
 	if (size <= 0) return -1;
 
@@ -130,7 +132,7 @@ int BonkEnc::FilterInMP4::ReadData(unsigned char **data, int size)
 	return samplesRead * 2;
 }
 
-Track *BonkEnc::FilterInMP4::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 {
 	if (GetTempFile(inFile) != inFile)
 	{
@@ -140,19 +142,19 @@ Track *BonkEnc::FilterInMP4::GetFileInfo(String inFile)
 	}
 
 	Track		*nFormat = new Track;
-	InStream	*f_in = OpenFile(GetTempFile(inFile));
+	InStream	*f_in = new InStream(STREAM_FILE, GetTempFile(inFile), IS_READONLY);
 
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
 
-	CloseFile(f_in);
+	delete f_in;
 
 	mp4File = ex_MP4Read(GetTempFile(inFile), 0);
 
 	char		*buffer		= NIL;
 	unsigned long	 buffer_size	= 0;
-	unsigned short	 trackNr	= 0;
-	unsigned short	 nOfTracks	= 0;
+	unsigned long	 trackNr	= 0;
+	unsigned long	 nOfTracks	= 0;
 
 	char	*prevInFormat = String::SetInputFormat("UTF-8");
 
@@ -208,7 +210,7 @@ Track *BonkEnc::FilterInMP4::GetFileInfo(String inFile)
 	return nFormat;
 }
 
-Int FilterInMP4::GetAudioTrack()
+Int BonkEnc::FilterInMP4::GetAudioTrack()
 {
 	Int nOfTracks = ex_MP4GetNumberOfTracks(mp4File, NIL, 0);
 
@@ -223,7 +225,7 @@ Int FilterInMP4::GetAudioTrack()
 	return -1;
 } 
 
-String FilterInMP4::GetTempFile(const String &oFileName)
+String BonkEnc::FilterInMP4::GetTempFile(const String &oFileName)
 {
 	String	 rVal	= oFileName;
 	Int	 lastBs	= -1;

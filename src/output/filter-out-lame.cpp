@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -121,7 +121,7 @@ BonkEnc::FilterOutLAME::~FilterOutLAME()
 {
 }
 
-bool BonkEnc::FilterOutLAME::Activate()
+Bool BonkEnc::FilterOutLAME::Activate()
 {
 	debug_out->EnterMethod("FilterOutLAME::Activate()");
 
@@ -264,7 +264,7 @@ bool BonkEnc::FilterOutLAME::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterOutLAME::Deactivate()
+Bool BonkEnc::FilterOutLAME::Deactivate()
 {
 	debug_out->EnterMethod("FilterOutLAME::Deactivate()");
 
@@ -316,7 +316,7 @@ bool BonkEnc::FilterOutLAME::Deactivate()
 	return true;
 }
 
-int BonkEnc::FilterOutLAME::WriteData(unsigned char *data, int size)
+Int BonkEnc::FilterOutLAME::WriteData(UnsignedByte *data, Int size)
 {
 	debug_out->EnterMethod("FilterOutLAME::WriteData(unsigned char *, int)");
 

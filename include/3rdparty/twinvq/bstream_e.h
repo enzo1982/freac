@@ -7,7 +7,9 @@
 #define bitstream_e_h
 
 #include "Chunk.h"
-#include <iolib-cxx.h>
+#include <smooth/io/outstream.h>
+
+using namespace smooth::IO;
 
 #define	BYTE_BITS	8
 #define	BBUFSIZ		1

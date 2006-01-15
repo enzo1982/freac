@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,8 +10,7 @@
 
 #include <input/inputfilter.h>
 
-#include <iolib/drivers/driver_posix.h>
-#include <iolib/drivers/driver_unicode.h>
+#include <dllinterfaces.h>
 
 BonkEnc::InputFilter::InputFilter(Config *config, Track *iFormat)
 {
@@ -38,22 +37,6 @@ Int BonkEnc::InputFilter::GetInBytes()
 	return inBytes;
 }
 
-InStream *BonkEnc::InputFilter::OpenFile(String fileName)
-{
-	if (Setup::enableUnicode)	iolibDriver = new IOLibDriverUnicode(fileName, IS_READONLY);
-	else				iolibDriver = new IOLibDriverPOSIX(fileName, IS_READONLY);
-
-	return new InStream(STREAM_DRIVER, iolibDriver);
-}
-
-Int BonkEnc::InputFilter::CloseFile(InStream *stream)
-{
-	delete stream;
-	delete iolibDriver;
-
-	return Success;
-}
-
 Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track *nFormat)
 {
 	ID3Tag		*tag = ex_ID3Tag_New();
@@ -67,7 +50,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track 
 	return retVal;
 }
 
-Bool BonkEnc::InputFilter::ParseID3V2Tag(String fileName, Track *nFormat)
+Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 {
 	ID3Tag	*tag = ex_ID3Tag_New();
 

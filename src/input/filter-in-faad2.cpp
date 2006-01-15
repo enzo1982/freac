@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,6 +10,8 @@
 
 #include <input/filter-in-faad2.h>
 
+#include <dllinterfaces.h>
+
 BonkEnc::FilterInFAAD2::FilterInFAAD2(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
@@ -19,7 +21,7 @@ BonkEnc::FilterInFAAD2::~FilterInFAAD2()
 {
 }
 
-bool BonkEnc::FilterInFAAD2::Activate()
+Bool BonkEnc::FilterInFAAD2::Activate()
 {
 	handle	= ex_NeAACDecOpen();
 	fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
@@ -48,14 +50,14 @@ bool BonkEnc::FilterInFAAD2::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterInFAAD2::Deactivate()
+Bool BonkEnc::FilterInFAAD2::Deactivate()
 {
 	ex_NeAACDecClose(handle);
 
 	return true;
 }
 
-int BonkEnc::FilterInFAAD2::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInFAAD2::ReadData(UnsignedByte **data, Int size)
 {
 	if (size <= 0) return -1;
 
@@ -127,7 +129,7 @@ int BonkEnc::FilterInFAAD2::ReadData(unsigned char **data, int size)
 	return samplesRead * 2;
 }
 
-Track *BonkEnc::FilterInFAAD2::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 {
 	handle	= ex_NeAACDecOpen();
 	fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
@@ -139,14 +141,14 @@ Track *BonkEnc::FilterInFAAD2::GetFileInfo(String inFile)
 	ex_NeAACDecSetConfiguration(handle, fConfig);
 
 	Track		*nFormat = new Track;
-	InStream	*f_in = OpenFile(inFile);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	nFormat->order		= BYTE_INTEL;
 	nFormat->bits		= 16;
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
 
-	Int		 size = 4096;
+	Int		 size = Math::Min(32768, nFormat->fileSize);
 	unsigned char	*data = new unsigned char [size];
 
 	f_in->InputData((void *) data, size);
@@ -154,9 +156,34 @@ Track *BonkEnc::FilterInFAAD2::GetFileInfo(String inFile)
 	ex_NeAACDecInit(handle, data, size,
  (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
 
+	Void		*samples = NIL;
+	Int		 bytesConsumed = 0;
+	Int		 samplesRead = 0;
+	Int		 samplesBytes = 0;
+
+	do
+	{
+		NeAACDecFrameInfo	 frameInfo;
+
+		samples = ex_NeAACDecDecode(handle, &frameInfo, data + bytesConsumed, size - bytesConsumed);
+
+		bytesConsumed += frameInfo.bytesconsumed;
+
+		if (bytesConsumed >= 8192)
+		{
+			samplesRead += frameInfo.samples;
+			samplesBytes += frameInfo.bytesconsumed;
+		}
+
+		if (size - bytesConsumed < bytesConsumed) samples = NIL;
+	}
+	while (samples != NIL);
+
+	nFormat->approxLength = samplesRead * (nFormat->fileSize / samplesBytes);
+
 	delete [] data;
 
-	CloseFile(f_in);
+	delete f_in;
 
 	ex_NeAACDecClose(handle);
 

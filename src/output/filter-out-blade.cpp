@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,7 +37,7 @@ BonkEnc::FilterOutBLADE::~FilterOutBLADE()
 {
 }
 
-bool BonkEnc::FilterOutBLADE::Activate()
+Bool BonkEnc::FilterOutBLADE::Activate()
 {
 	beConfig.dwConfig			= BE_CONFIG_MP3;
 	beConfig.format.mp3.dwSampleRate	= format->rate;
@@ -79,7 +79,7 @@ bool BonkEnc::FilterOutBLADE::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterOutBLADE::Deactivate()
+Bool BonkEnc::FilterOutBLADE::Deactivate()
 {
 	unsigned long	 bytes = 0;
 
@@ -100,7 +100,7 @@ bool BonkEnc::FilterOutBLADE::Deactivate()
 	return true;
 }
 
-int BonkEnc::FilterOutBLADE::WriteData(unsigned char *data, int size)
+Int BonkEnc::FilterOutBLADE::WriteData(UnsignedByte *data, Int size)
 {
 	unsigned long	 bytes = 0;
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,7 +16,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	mpegVersion = currentConfig->faac_mpegversion;
 	aacType = currentConfig->faac_type;
@@ -28,7 +28,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	allowID3 = currentConfig->faac_enable_id3;
 	fileFormat = currentConfig->faac_enable_mp4;
 
-	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "FAAC"));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "FAAC"), Point(140, 140), Size(545, 293));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -37,14 +37,14 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&ConfigureFAAC::Cancel, this);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onAction.Connect(&ConfigureFAAC::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&ConfigureFAAC::OK, this);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onAction.Connect(&ConfigureFAAC::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -54,14 +54,14 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	tabwidget		= new TabWidget(pos, size);
 
-	layer_format		= new Layer(bonkEnc::i18n->TranslateString("Format"));
+	layer_format		= new Layer(BonkEnc::i18n->TranslateString("Format"));
 
 	pos.x = 135;
 	pos.y = 11;
 	size.cx = 120;
 	size.cy = 65;
 
-	group_version		= new GroupBox(bonkEnc::i18n->TranslateString("MPEG version"), pos, size);
+	group_version		= new GroupBox(BonkEnc::i18n->TranslateString("MPEG version"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -69,19 +69,19 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cy = 0;
 
 	option_version_mpeg2	= new OptionBox("MPEG 2", pos, size, &mpegVersion, 1);
-	option_version_mpeg2->onClick.Connect(&ConfigureFAAC::SetMPEGVersion, this);
+	option_version_mpeg2->onAction.Connect(&ConfigureFAAC::SetMPEGVersion, this);
 
 	pos.y += 25;
 
 	option_version_mpeg4	= new OptionBox("MPEG 4", pos, size, &mpegVersion, 0);
-	option_version_mpeg4->onClick.Connect(&ConfigureFAAC::SetMPEGVersion, this);
+	option_version_mpeg4->onAction.Connect(&ConfigureFAAC::SetMPEGVersion, this);
 
 	pos.x = 7;
 	pos.y = 88;
 	size.cx = 120;
 	size.cy = 90;
 
-	group_aactype		= new GroupBox(bonkEnc::i18n->TranslateString("AAC object type"), pos, size);
+	group_aactype		= new GroupBox(BonkEnc::i18n->TranslateString("AAC object type"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -103,7 +103,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 120;
 	size.cy = 65;
 
-	group_mp4		= new GroupBox(bonkEnc::i18n->TranslateString("File format"), pos, size);
+	group_mp4		= new GroupBox(BonkEnc::i18n->TranslateString("File format"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -111,7 +111,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cy = 0;
 
 	option_mp4		= new OptionBox("MP4", pos, size, &fileFormat, 1);
-	option_mp4->onClick.Connect(&ConfigureFAAC::SetFileFormat, this);
+	option_mp4->onAction.Connect(&ConfigureFAAC::SetFileFormat, this);
 
 	if (!currentConfig->enable_mp4)
 	{
@@ -123,57 +123,57 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	pos.y += 25;
 
 	option_aac		= new OptionBox("AAC", pos, size, &fileFormat, 0);
-	option_aac->onClick.Connect(&ConfigureFAAC::SetFileFormat, this);
+	option_aac->onAction.Connect(&ConfigureFAAC::SetFileFormat, this);
 
 	pos.x = 135;
 	pos.y = 88;
 	size.cx = 279;
 	size.cy = 90;
 
-	group_id3v2		= new GroupBox(bonkEnc::i18n->TranslateString("Info tags"), pos, size);
+	group_id3v2		= new GroupBox(BonkEnc::i18n->TranslateString("Info tags"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 200;
 	size.cy = 0;
 
-	check_id3v2		= new CheckBox(bonkEnc::i18n->TranslateString("Allow ID3V2 tags in AAC files"), pos, size, &allowID3);
-	check_id3v2->SetMetrics(check_id3v2->pos, Size(check_id3v2->textSize.cx + 20, check_id3v2->size.cy));
+	check_id3v2		= new CheckBox(BonkEnc::i18n->TranslateString("Allow ID3V2 tags in AAC files"), pos, size, &allowID3);
+	check_id3v2->SetWidth(check_id3v2->textSize.cx + 20);
 
 	pos.y += 25;
 
-	text_note		= new Text(bonkEnc::i18n->TranslateString("Note:"), pos);
+	text_note		= new Text(BonkEnc::i18n->TranslateString("Note:"), pos);
 
 	pos.x += text_note->textSize.cx + 2;
 
-	text_id3v2		= new Text(bonkEnc::i18n->TranslateString("Some players may have problems playing AAC\nfiles with ID3 tags attached. Please use this option only\nif you are sure that your player can handle these tags."), pos);
+	text_id3v2		= new Text(BonkEnc::i18n->TranslateString("Some players may have problems playing AAC\nfiles with ID3 tags attached. Please use this option only\nif you are sure that your player can handle these tags."), pos);
 
-	group_id3v2->SetMetrics(group_id3v2->pos, Size(text_note->textSize.cx + text_id3v2->textSize.cx + 22, group_id3v2->size.cy));
+	group_id3v2->SetWidth(text_note->textSize.cx + text_id3v2->textSize.cx + 22);
 
-	layer_quality		= new Layer(bonkEnc::i18n->TranslateString("Quality"));
+	layer_quality		= new Layer(BonkEnc::i18n->TranslateString("Quality"));
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 320;
 	size.cy = 65;
 
-	group_bitrate		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate / Quality"), pos, size);
+	group_bitrate		= new GroupBox(BonkEnc::i18n->TranslateString("Bitrate / Quality"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 150;
 	size.cy = 0;
 
-	option_bitrate		= new OptionBox(bonkEnc::i18n->TranslateString("Bitrate per channel:"), pos, size, &setQuality, 0);
-	option_bitrate->onClick.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
-	option_bitrate->SetMetrics(option_bitrate->pos, Size(option_bitrate->textSize.cx + 19, option_bitrate->size.cy));
+	option_bitrate		= new OptionBox(BonkEnc::i18n->TranslateString("Bitrate per channel:"), pos, size, &setQuality, 0);
+	option_bitrate->onAction.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
+	option_bitrate->SetWidth(option_bitrate->textSize.cx + 19);
 
-	pos.x += (option_bitrate->size.cx + 9);
-	size.cx = 227 - option_bitrate->size.cx;
+	pos.x += (option_bitrate->GetWidth() + 9);
+	size.cx = 227 - option_bitrate->GetWidth();
 	size.cy = 0;
 
 	slider_bitrate		= new Slider(pos, size, OR_HORZ, &bitrate, 8, 256);
-	slider_bitrate->onClick.Connect(&ConfigureFAAC::SetBitrate, this);
+	slider_bitrate->onValueChange.Connect(&ConfigureFAAC::SetBitrate, this);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
@@ -181,7 +181,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	edit_bitrate		= new EditBox("", pos, size, 3);
 	edit_bitrate->SetFlags(EDB_NUMERIC);
-	edit_bitrate->onClick.Connect(&ConfigureFAAC::SetBitrateByEditBox, this);
+	edit_bitrate->onInput.Connect(&ConfigureFAAC::SetBitrateByEditBox, this);
 
 	pos.x += 32;
 	pos.y += 3;
@@ -193,16 +193,16 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 150;
 	size.cy = 0;
 
-	option_quality		= new OptionBox(bonkEnc::i18n->TranslateString("Set quality:"), pos, size, &setQuality, 1);
-	option_quality->onClick.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
-	option_quality->SetMetrics(option_quality->pos, Size(option_bitrate->textSize.cx + 19, option_quality->size.cy));
+	option_quality		= new OptionBox(BonkEnc::i18n->TranslateString("Set quality:"), pos, size, &setQuality, 1);
+	option_quality->onAction.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
+	option_quality->SetWidth(option_bitrate->textSize.cx + 19);
 
-	pos.x += (option_quality->size.cx + 9);
-	size.cx = 227 - option_quality->size.cx;
+	pos.x += (option_quality->GetWidth() + 9);
+	size.cx = 227 - option_quality->GetWidth();
 	size.cy = 0;
 
 	slider_quality		= new Slider(pos, size, OR_HORZ, &aacQuality, 10, 500);
-	slider_quality->onClick.Connect(&ConfigureFAAC::SetQuality, this);
+	slider_quality->onValueChange.Connect(&ConfigureFAAC::SetQuality, this);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
@@ -210,7 +210,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	edit_quality		= new EditBox("", pos, size, 3);
 	edit_quality->SetFlags(EDB_NUMERIC);
-	edit_quality->onClick.Connect(&ConfigureFAAC::SetQualityByEditBox, this);
+	edit_quality->onInput.Connect(&ConfigureFAAC::SetQualityByEditBox, this);
 
 	pos.x += 32;
 	pos.y += 3;
@@ -222,40 +222,40 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 179;
 	size.cy = 42;
 
-	group_js		= new GroupBox(bonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
+	group_js		= new GroupBox(BonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 158;
 	size.cy = 0;
 
-	check_js		= new CheckBox(bonkEnc::i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
+	check_js		= new CheckBox(BonkEnc::i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
 
 	pos.x = 335;
 	pos.y = 65;
 	size.cx = 179;
 	size.cy = 42;
 
-	group_tns		= new GroupBox(bonkEnc::i18n->TranslateString("Temporal Noise Shaping"), pos, size);
+	group_tns		= new GroupBox(BonkEnc::i18n->TranslateString("Temporal Noise Shaping"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 158;
 	size.cy = 0;
 
-	check_tns		= new CheckBox(bonkEnc::i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
+	check_tns		= new CheckBox(BonkEnc::i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
 
 	pos.x = 7;
 	pos.y = 88;
 	size.cx = 320;
 	size.cy = 43;
 
-	group_bandwidth		= new GroupBox(bonkEnc::i18n->TranslateString("Maximum bandwidth"), pos, size);
+	group_bandwidth		= new GroupBox(BonkEnc::i18n->TranslateString("Maximum bandwidth"), pos, size);
 
 	pos.x += 11;
 	pos.y += 15;
 
-	text_bandwidth		= new Text(bonkEnc::i18n->TranslateString("Maximum AAC frequency bandwidth to use (Hz):"), pos);
+	text_bandwidth		= new Text(BonkEnc::i18n->TranslateString("Maximum AAC frequency bandwidth to use (Hz):"), pos);
 
 	pos.x += (text_bandwidth->textSize.cx + 8);
 	pos.y -= 3;
@@ -316,8 +316,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	layer_quality->RegisterObject(edit_bandwidth);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(545, 293));
+	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
 BonkEnc::ConfigureFAAC::~ConfigureFAAC()
@@ -365,11 +364,11 @@ BonkEnc::ConfigureFAAC::~ConfigureFAAC()
 	DeleteObject(edit_bandwidth);
 }
 
-Int BonkEnc::ConfigureFAAC::ShowDialog()
+const Error &BonkEnc::ConfigureFAAC::ShowDialog()
 {
 	mainWnd->Stay();
 
-	return mainWnd->value;
+	return error;
 }
 
 Void BonkEnc::ConfigureFAAC::OK()

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -184,20 +184,52 @@ MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack			= NIL;
 MP4READSAMPLE			 ex_MP4ReadSample			= NIL;
 MP4WRITESAMPLE			 ex_MP4WriteSample			= NIL;
 
-FLAC__STREAM_DECODER_NEW				 ex_FLAC__stream_decoder_new				= NIL;
-FLAC__STREAM_DECODER_DELETE				 ex_FLAC__stream_decoder_delete				= NIL;
-FLAC__STREAM_DECODER_SET_READ_CALLBACK			 ex_FLAC__stream_decoder_set_read_callback		= NIL;
-FLAC__STREAM_DECODER_SET_WRITE_CALLBACK			 ex_FLAC__stream_decoder_set_write_callback		= NIL;
-FLAC__STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__stream_decoder_set_metadata_callback		= NIL;
-FLAC__STREAM_DECODER_SET_ERROR_CALLBACK			 ex_FLAC__stream_decoder_set_error_callback		= NIL;
-FLAC__STREAM_DECODER_SET_CLIENT_DATA			 ex_FLAC__stream_decoder_set_client_data		= NIL;
-FLAC__STREAM_DECODER_INIT				 ex_FLAC__stream_decoder_init				= NIL;
-FLAC__STREAM_DECODER_FINISH				 ex_FLAC__stream_decoder_finish				= NIL;
-FLAC__STREAM_DECODER_GET_CHANNELS			 ex_FLAC__stream_decoder_get_channels			= NIL;
-FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE		 ex_FLAC__stream_decoder_get_bits_per_sample		= NIL;
-FLAC__STREAM_DECODER_GET_SAMPLE_RATE			 ex_FLAC__stream_decoder_get_sample_rate		= NIL;
-FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA	 ex_FLAC__stream_decoder_process_until_end_of_metadata	= NIL;
-FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM	 ex_FLAC__stream_decoder_process_until_end_of_stream	= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_NEW				 ex_FLAC__seekable_stream_encoder_new					= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_DELETE				 ex_FLAC__seekable_stream_encoder_delete				= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_WRITE_CALLBACK		 ex_FLAC__seekable_stream_encoder_set_write_callback			= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_SEEK_CALLBACK			 ex_FLAC__seekable_stream_encoder_set_seek_callback			= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_TELL_CALLBACK			 ex_FLAC__seekable_stream_encoder_set_tell_callback			= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_CLIENT_DATA			 ex_FLAC__seekable_stream_encoder_set_client_data			= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_INIT				 ex_FLAC__seekable_stream_encoder_init					= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_FINISH				 ex_FLAC__seekable_stream_encoder_finish				= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_CHANNELS			 ex_FLAC__seekable_stream_encoder_set_channels				= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_BITS_PER_SAMPLE		 ex_FLAC__seekable_stream_encoder_set_bits_per_sample			= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_SAMPLE_RATE			 ex_FLAC__seekable_stream_encoder_set_sample_rate			= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_STREAMABLE_SUBSET		 ex_FLAC__seekable_stream_encoder_set_streamable_subset			= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_MID_SIDE_STEREO		 ex_FLAC__seekable_stream_encoder_set_do_mid_side_stereo		= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO		 ex_FLAC__seekable_stream_encoder_set_loose_mid_side_stereo		= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_BLOCKSIZE			 ex_FLAC__seekable_stream_encoder_set_blocksize				= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_LPC_ORDER			 ex_FLAC__seekable_stream_encoder_set_max_lpc_order			= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_QLP_COEFF_PRECISION		 ex_FLAC__seekable_stream_encoder_set_qlp_coeff_precision		= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH	 ex_FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search		= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH	 ex_FLAC__seekable_stream_encoder_set_do_exhaustive_model_search	= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER	 ex_FLAC__seekable_stream_encoder_set_min_residual_partition_order	= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER	 ex_FLAC__seekable_stream_encoder_set_max_residual_partition_order	= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_SET_METADATA			 ex_FLAC__seekable_stream_encoder_set_metadata				= NIL;
+FLAC__SEEKABLE_STREAM_ENCODER_PROCESS_INTERLEAVED		 ex_FLAC__seekable_stream_encoder_process_interleaved			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_NEW				 ex_FLAC__seekable_stream_decoder_new					= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_DELETE				 ex_FLAC__seekable_stream_decoder_delete				= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_READ_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_read_callback			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_WRITE_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_write_callback			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_SEEK_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_seek_callback			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_TELL_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_tell_callback			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_LENGTH_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_length_callback			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_EOF_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_eof_callback			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_metadata_callback			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_ERROR_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_error_callback			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_CLIENT_DATA			 ex_FLAC__seekable_stream_decoder_set_client_data			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_RESPOND		 ex_FLAC__seekable_stream_decoder_set_metadata_respond			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_INIT				 ex_FLAC__seekable_stream_decoder_init					= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_FINISH				 ex_FLAC__seekable_stream_decoder_finish				= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_GET_CHANNELS			 ex_FLAC__seekable_stream_decoder_get_channels				= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_GET_BITS_PER_SAMPLE		 ex_FLAC__seekable_stream_decoder_get_bits_per_sample			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_GET_SAMPLE_RATE			 ex_FLAC__seekable_stream_decoder_get_sample_rate			= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA	 ex_FLAC__seekable_stream_decoder_process_until_end_of_metadata		= NIL;
+FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM	 ex_FLAC__seekable_stream_decoder_process_until_end_of_stream		= NIL;
+FLAC__METADATA_OBJECT_NEW					 ex_FLAC__metadata_object_new						= NIL;
+FLAC__METADATA_OBJECT_DELETE					 ex_FLAC__metadata_object_delete					= NIL;
+FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment			= NIL;
+FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= NIL;
 
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
 ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
@@ -219,602 +251,642 @@ ID3FIELDGETASCII		 ex_ID3Field_GetASCII			= NIL;
 ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE			= NIL;
 ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE			= NIL;
 
-HINSTANCE	 BonkEnc::DLLInterfaces::bonkdll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::bladedll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::lamedll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::vorbisdll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::faacdll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::faad2dll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::tvqdll		= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::cdripdll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::id3dll		= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::eupdatedll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::mp4v2dll	= NIL;
-HINSTANCE	 BonkEnc::DLLInterfaces::flacdll	= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::bonkdll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::bladedll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::lamedll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::vorbisdll	= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::faacdll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::faad2dll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::tvqdll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::cdripdll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::id3dll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::mp4v2dll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::flacdll		= NIL;
 
-Array<HMODULE>		 BonkEnc::DLLInterfaces::winamp_in_plugins;
+Array<DynamicLoader *>	 BonkEnc::DLLInterfaces::winamp_in_plugins;
 Array<In_Module *>	 BonkEnc::DLLInterfaces::winamp_in_modules;
-Array<HMODULE>		 BonkEnc::DLLInterfaces::winamp_out_plugins;
+Array<DynamicLoader *>	 BonkEnc::DLLInterfaces::winamp_out_plugins;
 Array<Out_Module *>	 BonkEnc::DLLInterfaces::winamp_out_modules;
 
 Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
 {
-	bonkdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/Bonk.dll"));
+	bonkdll = new DynamicLoader("encoders/Bonk");
 
-	if (bonkdll == NIL) return false;
+	ex_bonk_create_encoder		= (BONKCREATEENCODER) bonkdll->GetFunctionAddress("bonk_create_encoder");
+	ex_bonk_close_encoder		= (BONKCLOSEENCODER) bonkdll->GetFunctionAddress("bonk_close_encoder");
+	ex_bonk_encode_packet		= (BONKENCODEPACKET) bonkdll->GetFunctionAddress("bonk_encode_packet");
+	ex_bonk_create_decoder		= (BONKCREATEDECODER) bonkdll->GetFunctionAddress("bonk_create_decoder");
+	ex_bonk_close_decoder		= (BONKCLOSEDECODER) bonkdll->GetFunctionAddress("bonk_close_decoder");
+	ex_bonk_decode_packet		= (BONKDECODEPACKET) bonkdll->GetFunctionAddress("bonk_decode_packet");
+	ex_bonk_get_version_string	= (BONKGETVERSIONSTRING) bonkdll->GetFunctionAddress("bonk_get_version_string");
 
-	ex_bonk_create_encoder		= (BONKCREATEENCODER) GetProcAddress(bonkdll, "bonk_create_encoder");
-	ex_bonk_close_encoder		= (BONKCLOSEENCODER) GetProcAddress(bonkdll, "bonk_close_encoder");
-	ex_bonk_encode_packet		= (BONKENCODEPACKET) GetProcAddress(bonkdll, "bonk_encode_packet");
-	ex_bonk_create_decoder		= (BONKCREATEDECODER) GetProcAddress(bonkdll, "bonk_create_decoder");
-	ex_bonk_close_decoder		= (BONKCLOSEDECODER) GetProcAddress(bonkdll, "bonk_close_decoder");
-	ex_bonk_decode_packet		= (BONKDECODEPACKET) GetProcAddress(bonkdll, "bonk_decode_packet");
-	ex_bonk_get_version_string	= (BONKGETVERSIONSTRING) GetProcAddress(bonkdll, "bonk_get_version_string");
+	if (ex_bonk_create_encoder	== NIL ||
+	    ex_bonk_close_encoder	== NIL ||
+	    ex_bonk_encode_packet	== NIL ||
+	    ex_bonk_create_decoder	== NIL ||
+	    ex_bonk_close_decoder	== NIL ||
+	    ex_bonk_decode_packet	== NIL ||
+	    ex_bonk_get_version_string	== NIL) { FreeBonkDLL(); return False; }
 
-	if (ex_bonk_create_encoder	== NULL ||
-	    ex_bonk_close_encoder	== NULL ||
-	    ex_bonk_encode_packet	== NULL ||
-	    ex_bonk_create_decoder	== NULL ||
-	    ex_bonk_close_decoder	== NULL ||
-	    ex_bonk_decode_packet	== NULL ||
-	    ex_bonk_get_version_string	== NULL) { FreeLibrary(bonkdll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeBonkDLL()
 {
-	FreeLibrary(bonkdll);
+	Object::DeleteObject(bonkdll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
 {
-	bladedll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/BladeEnc.dll"));
+	bladedll = new DynamicLoader("encoders/BladeEnc");
 
-	if (bladedll == NIL) return false;
+	ex_beInitStream		= (BEINITSTREAM) bladedll->GetFunctionAddress("beInitStream");
+	ex_beEncodeChunk	= (BEENCODECHUNK) bladedll->GetFunctionAddress("beEncodeChunk");
+	ex_beDeinitStream	= (BEDEINITSTREAM) bladedll->GetFunctionAddress("beDeinitStream");
+	ex_beCloseStream	= (BECLOSESTREAM) bladedll->GetFunctionAddress("beCloseStream");
+	ex_beVersion		= (BEVERSION) bladedll->GetFunctionAddress("beVersion");
 
-	ex_beInitStream		= (BEINITSTREAM) GetProcAddress(bladedll, "beInitStream");
-	ex_beEncodeChunk	= (BEENCODECHUNK) GetProcAddress(bladedll, "beEncodeChunk");
-	ex_beDeinitStream	= (BEDEINITSTREAM) GetProcAddress(bladedll, "beDeinitStream");
-	ex_beCloseStream	= (BECLOSESTREAM) GetProcAddress(bladedll, "beCloseStream");
-	ex_beVersion		= (BEVERSION) GetProcAddress(bladedll, "beVersion");
+	if (ex_beInitStream	== NIL ||
+	    ex_beEncodeChunk	== NIL ||
+	    ex_beDeinitStream	== NIL ||
+	    ex_beCloseStream	== NIL ||
+	    ex_beVersion	== NIL) { FreeBladeDLL(); return False; }
 
-	if (ex_beInitStream	== NULL ||
-	    ex_beEncodeChunk	== NULL ||
-	    ex_beDeinitStream	== NULL ||
-	    ex_beCloseStream	== NULL ||
-	    ex_beVersion	== NULL) { FreeLibrary(bladedll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeBladeDLL()
 {
-	FreeLibrary(bladedll);
+	Object::DeleteObject(bladedll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 {
-	lamedll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/LAME.dll"));
+	lamedll = new DynamicLoader("encoders/LAME");
 
-	if (lamedll == NIL) return false;
+	ex_lame_init				= (LAME_INIT) lamedll->GetFunctionAddress("lame_init");
+	ex_lame_set_preset			= (LAME_SET_PRESET) lamedll->GetFunctionAddress("lame_set_preset");
+	ex_lame_set_in_samplerate		= (LAME_SET_IN_SAMPLERATE) lamedll->GetFunctionAddress("lame_set_in_samplerate");
+	ex_lame_set_num_channels		= (LAME_SET_NUM_CHANNELS) lamedll->GetFunctionAddress("lame_set_num_channels");
+	ex_lame_set_copyright			= (LAME_SET_COPYRIGHT) lamedll->GetFunctionAddress("lame_set_copyright");
+	ex_lame_set_original			= (LAME_SET_ORIGINAL) lamedll->GetFunctionAddress("lame_set_original");
+	ex_lame_set_extension			= (LAME_SET_EXTENSION) lamedll->GetFunctionAddress("lame_set_extension");
+	ex_lame_set_error_protection		= (LAME_SET_ERROR_PROTECTION) lamedll->GetFunctionAddress("lame_set_error_protection");
+	ex_lame_set_strict_ISO			= (LAME_SET_STRICT_ISO) lamedll->GetFunctionAddress("lame_set_strict_ISO");
+	ex_lame_set_padding_type		= (LAME_SET_PADDING_TYPE) lamedll->GetFunctionAddress("lame_set_padding_type");
+	ex_lame_set_out_samplerate		= (LAME_SET_OUT_SAMPLERATE) lamedll->GetFunctionAddress("lame_set_out_samplerate");
+	ex_lame_set_brate			= (LAME_SET_BRATE) lamedll->GetFunctionAddress("lame_set_brate");
+	ex_lame_set_compression_ratio		= (LAME_SET_COMPRESSION_RATIO) lamedll->GetFunctionAddress("lame_set_compression_ratio");
+	ex_lame_set_quality			= (LAME_SET_QUALITY) lamedll->GetFunctionAddress("lame_set_quality");
+	ex_lame_set_lowpassfreq			= (LAME_SET_LOWPASSFREQ) lamedll->GetFunctionAddress("lame_set_lowpassfreq");
+	ex_lame_set_highpassfreq		= (LAME_SET_HIGHPASSFREQ) lamedll->GetFunctionAddress("lame_set_highpassfreq");
+	ex_lame_set_lowpasswidth		= (LAME_SET_LOWPASSWIDTH) lamedll->GetFunctionAddress("lame_set_lowpasswidth");
+	ex_lame_set_highpasswidth		= (LAME_SET_HIGHPASSWIDTH) lamedll->GetFunctionAddress("lame_set_highpasswidth");
+	ex_lame_set_mode			= (LAME_SET_MODE) lamedll->GetFunctionAddress("lame_set_mode");
+	ex_lame_set_force_ms			= (LAME_SET_FORCE_MS) lamedll->GetFunctionAddress("lame_set_force_ms");
+	ex_lame_close				= (LAME_CLOSE) lamedll->GetFunctionAddress("lame_close");
+	ex_lame_set_VBR				= (LAME_SET_VBR) lamedll->GetFunctionAddress("lame_set_VBR");
+	ex_lame_set_VBR_q			= (LAME_SET_VBR_Q) lamedll->GetFunctionAddress("lame_set_VBR_q");
+	ex_lame_set_VBR_mean_bitrate_kbps	= (LAME_SET_VBR_MEAN_BITRATE_KBPS) lamedll->GetFunctionAddress("lame_set_VBR_mean_bitrate_kbps");
+	ex_lame_set_VBR_min_bitrate_kbps	= (LAME_SET_VBR_MIN_BITRATE_KBPS) lamedll->GetFunctionAddress("lame_set_VBR_min_bitrate_kbps");
+	ex_lame_set_VBR_max_bitrate_kbps	= (LAME_SET_VBR_MAX_BITRATE_KBPS) lamedll->GetFunctionAddress("lame_set_VBR_max_bitrate_kbps");
+	ex_lame_set_noATH			= (LAME_SET_NOATH) lamedll->GetFunctionAddress("lame_set_noATH");
+	ex_lame_set_ATHtype			= (LAME_SET_ATHTYPE) lamedll->GetFunctionAddress("lame_set_ATHtype");
+	ex_lame_set_useTemporal			= (LAME_SET_USETEMPORAL) lamedll->GetFunctionAddress("lame_set_useTemporal");
+	ex_lame_init_params			= (LAME_INIT_PARAMS) lamedll->GetFunctionAddress("lame_init_params");
+	ex_lame_encode_buffer			= (LAME_ENCODE_BUFFER) lamedll->GetFunctionAddress("lame_encode_buffer");
+	ex_lame_encode_buffer_interleaved	= (LAME_ENCODE_BUFFER_INTERLEAVED) lamedll->GetFunctionAddress("lame_encode_buffer_interleaved");
+	ex_lame_encode_flush			= (LAME_ENCODE_FLUSH) lamedll->GetFunctionAddress("lame_encode_flush");
+	ex_lame_decode_init			= (LAME_DECODE_INIT) lamedll->GetFunctionAddress("lame_decode_init");
+	ex_lame_decode_exit			= (LAME_DECODE_EXIT) lamedll->GetFunctionAddress("lame_decode_exit");
+	ex_lame_decode				= (LAME_DECODE) lamedll->GetFunctionAddress("lame_decode");
+	ex_lame_decode_headers			= (LAME_DECODE_HEADERS) lamedll->GetFunctionAddress("lame_decode_headers");
+	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) lamedll->GetFunctionAddress("get_lame_short_version");
+	ex_lame_mp3_tags_fid			= (LAME_MP3_TAGS_FID) lamedll->GetFunctionAddress("lame_mp3_tags_fid");
+	ex_lame_set_bWriteVbrTag		= (LAME_SET_BWRITEVBRTAG) lamedll->GetFunctionAddress("lame_set_bWriteVbrTag");
 
-	ex_lame_init				= (LAME_INIT) GetProcAddress(lamedll, "lame_init");
-	ex_lame_set_preset			= (LAME_SET_PRESET) GetProcAddress(lamedll, "lame_set_preset");
-	ex_lame_set_in_samplerate		= (LAME_SET_IN_SAMPLERATE) GetProcAddress(lamedll, "lame_set_in_samplerate");
-	ex_lame_set_num_channels		= (LAME_SET_NUM_CHANNELS) GetProcAddress(lamedll, "lame_set_num_channels");
-	ex_lame_set_copyright			= (LAME_SET_COPYRIGHT) GetProcAddress(lamedll, "lame_set_copyright");
-	ex_lame_set_original			= (LAME_SET_ORIGINAL) GetProcAddress(lamedll, "lame_set_original");
-	ex_lame_set_extension			= (LAME_SET_EXTENSION) GetProcAddress(lamedll, "lame_set_extension");
-	ex_lame_set_error_protection		= (LAME_SET_ERROR_PROTECTION) GetProcAddress(lamedll, "lame_set_error_protection");
-	ex_lame_set_strict_ISO			= (LAME_SET_STRICT_ISO) GetProcAddress(lamedll, "lame_set_strict_ISO");
-	ex_lame_set_padding_type		= (LAME_SET_PADDING_TYPE) GetProcAddress(lamedll, "lame_set_padding_type");
-	ex_lame_set_out_samplerate		= (LAME_SET_OUT_SAMPLERATE) GetProcAddress(lamedll, "lame_set_out_samplerate");
-	ex_lame_set_brate			= (LAME_SET_BRATE) GetProcAddress(lamedll, "lame_set_brate");
-	ex_lame_set_compression_ratio		= (LAME_SET_COMPRESSION_RATIO) GetProcAddress(lamedll, "lame_set_compression_ratio");
-	ex_lame_set_quality			= (LAME_SET_QUALITY) GetProcAddress(lamedll, "lame_set_quality");
-	ex_lame_set_lowpassfreq			= (LAME_SET_LOWPASSFREQ) GetProcAddress(lamedll, "lame_set_lowpassfreq");
-	ex_lame_set_highpassfreq		= (LAME_SET_HIGHPASSFREQ) GetProcAddress(lamedll, "lame_set_highpassfreq");
-	ex_lame_set_lowpasswidth		= (LAME_SET_LOWPASSWIDTH) GetProcAddress(lamedll, "lame_set_lowpasswidth");
-	ex_lame_set_highpasswidth		= (LAME_SET_HIGHPASSWIDTH) GetProcAddress(lamedll, "lame_set_highpasswidth");
-	ex_lame_set_mode			= (LAME_SET_MODE) GetProcAddress(lamedll, "lame_set_mode");
-	ex_lame_set_force_ms			= (LAME_SET_FORCE_MS) GetProcAddress(lamedll, "lame_set_force_ms");
-	ex_lame_close				= (LAME_CLOSE) GetProcAddress(lamedll, "lame_close");
-	ex_lame_set_VBR				= (LAME_SET_VBR) GetProcAddress(lamedll, "lame_set_VBR");
-	ex_lame_set_VBR_q			= (LAME_SET_VBR_Q) GetProcAddress(lamedll, "lame_set_VBR_q");
-	ex_lame_set_VBR_mean_bitrate_kbps	= (LAME_SET_VBR_MEAN_BITRATE_KBPS) GetProcAddress(lamedll, "lame_set_VBR_mean_bitrate_kbps");
-	ex_lame_set_VBR_min_bitrate_kbps	= (LAME_SET_VBR_MIN_BITRATE_KBPS) GetProcAddress(lamedll, "lame_set_VBR_min_bitrate_kbps");
-	ex_lame_set_VBR_max_bitrate_kbps	= (LAME_SET_VBR_MAX_BITRATE_KBPS) GetProcAddress(lamedll, "lame_set_VBR_max_bitrate_kbps");
-	ex_lame_set_noATH			= (LAME_SET_NOATH) GetProcAddress(lamedll, "lame_set_noATH");
-	ex_lame_set_ATHtype			= (LAME_SET_ATHTYPE) GetProcAddress(lamedll, "lame_set_ATHtype");
-	ex_lame_set_useTemporal			= (LAME_SET_USETEMPORAL) GetProcAddress(lamedll, "lame_set_useTemporal");
-	ex_lame_init_params			= (LAME_INIT_PARAMS) GetProcAddress(lamedll, "lame_init_params");
-	ex_lame_encode_buffer			= (LAME_ENCODE_BUFFER) GetProcAddress(lamedll, "lame_encode_buffer");
-	ex_lame_encode_buffer_interleaved	= (LAME_ENCODE_BUFFER_INTERLEAVED) GetProcAddress(lamedll, "lame_encode_buffer_interleaved");
-	ex_lame_encode_flush			= (LAME_ENCODE_FLUSH) GetProcAddress(lamedll, "lame_encode_flush");
-	ex_lame_decode_init			= (LAME_DECODE_INIT) GetProcAddress(lamedll, "lame_decode_init");
-	ex_lame_decode_exit			= (LAME_DECODE_EXIT) GetProcAddress(lamedll, "lame_decode_exit");
-	ex_lame_decode				= (LAME_DECODE) GetProcAddress(lamedll, "lame_decode");
-	ex_lame_decode_headers			= (LAME_DECODE_HEADERS) GetProcAddress(lamedll, "lame_decode_headers");
-	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) GetProcAddress(lamedll, "get_lame_short_version");
-	ex_lame_mp3_tags_fid			= (LAME_MP3_TAGS_FID) GetProcAddress(lamedll, "lame_mp3_tags_fid");
-	ex_lame_set_bWriteVbrTag		= (LAME_SET_BWRITEVBRTAG) GetProcAddress(lamedll, "lame_set_bWriteVbrTag");
+	if (ex_lame_init			== NIL ||
+	    ex_lame_set_preset			== NIL ||
+	    ex_lame_set_in_samplerate		== NIL ||
+	    ex_lame_set_num_channels		== NIL ||
+	    ex_lame_set_copyright		== NIL ||
+	    ex_lame_set_original		== NIL ||
+	    ex_lame_set_extension		== NIL ||
+	    ex_lame_set_error_protection	== NIL ||
+	    ex_lame_set_strict_ISO		== NIL ||
+	    ex_lame_set_padding_type		== NIL ||
+	    ex_lame_set_out_samplerate		== NIL ||
+	    ex_lame_set_brate			== NIL ||
+	    ex_lame_set_compression_ratio	== NIL ||
+	    ex_lame_set_quality			== NIL ||
+	    ex_lame_set_lowpassfreq		== NIL ||
+	    ex_lame_set_highpassfreq		== NIL ||
+	    ex_lame_set_lowpasswidth		== NIL ||
+	    ex_lame_set_highpasswidth		== NIL ||
+	    ex_lame_set_mode			== NIL ||
+	    ex_lame_set_force_ms		== NIL ||
+	    ex_lame_close			== NIL ||
+	    ex_lame_set_VBR			== NIL ||
+	    ex_lame_set_VBR_q			== NIL ||
+	    ex_lame_set_VBR_mean_bitrate_kbps	== NIL ||
+	    ex_lame_set_VBR_min_bitrate_kbps	== NIL ||
+	    ex_lame_set_VBR_max_bitrate_kbps	== NIL ||
+	    ex_lame_set_noATH			== NIL ||
+	    ex_lame_set_ATHtype			== NIL ||
+	    ex_lame_set_useTemporal		== NIL ||
+	    ex_lame_init_params			== NIL ||
+	    ex_lame_encode_buffer		== NIL ||
+	    ex_lame_encode_buffer_interleaved	== NIL ||
+	    ex_lame_encode_flush		== NIL ||
+	    ex_lame_decode_init			== NIL ||
+	    ex_lame_decode_exit			== NIL ||
+	    ex_lame_decode			== NIL ||
+	    ex_lame_decode_headers		== NIL ||
+	    ex_get_lame_short_version		== NIL ||
+	    ex_lame_mp3_tags_fid		== NIL ||
+	    ex_lame_set_bWriteVbrTag		== NIL) { FreeLAMEDLL(); return False; }
 
-	if (ex_lame_init			== NULL ||
-	    ex_lame_set_preset			== NULL ||
-	    ex_lame_set_in_samplerate		== NULL ||
-	    ex_lame_set_num_channels		== NULL ||
-	    ex_lame_set_copyright		== NULL ||
-	    ex_lame_set_original		== NULL ||
-	    ex_lame_set_extension		== NULL ||
-	    ex_lame_set_error_protection	== NULL ||
-	    ex_lame_set_strict_ISO		== NULL ||
-	    ex_lame_set_padding_type		== NULL ||
-	    ex_lame_set_out_samplerate		== NULL ||
-	    ex_lame_set_brate			== NULL ||
-	    ex_lame_set_compression_ratio	== NULL ||
-	    ex_lame_set_quality			== NULL ||
-	    ex_lame_set_lowpassfreq		== NULL ||
-	    ex_lame_set_highpassfreq		== NULL ||
-	    ex_lame_set_lowpasswidth		== NULL ||
-	    ex_lame_set_highpasswidth		== NULL ||
-	    ex_lame_set_mode			== NULL ||
-	    ex_lame_set_force_ms		== NULL ||
-	    ex_lame_close			== NULL ||
-	    ex_lame_set_VBR			== NULL ||
-	    ex_lame_set_VBR_q			== NULL ||
-	    ex_lame_set_VBR_mean_bitrate_kbps	== NULL ||
-	    ex_lame_set_VBR_min_bitrate_kbps	== NULL ||
-	    ex_lame_set_VBR_max_bitrate_kbps	== NULL ||
-	    ex_lame_set_noATH			== NULL ||
-	    ex_lame_set_ATHtype			== NULL ||
-	    ex_lame_set_useTemporal		== NULL ||
-	    ex_lame_init_params			== NULL ||
-	    ex_lame_encode_buffer		== NULL ||
-	    ex_lame_encode_buffer_interleaved	== NULL ||
-	    ex_lame_encode_flush		== NULL ||
-	    ex_lame_decode_init			== NULL ||
-	    ex_lame_decode_exit			== NULL ||
-	    ex_lame_decode			== NULL ||
-	    ex_lame_decode_headers		== NULL ||
-	    ex_get_lame_short_version		== NULL ||
-	    ex_lame_mp3_tags_fid		== NULL ||
-	    ex_lame_set_bWriteVbrTag		== NULL) { FreeLibrary(lamedll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeLAMEDLL()
 {
-	FreeLibrary(lamedll);
+	Object::DeleteObject(lamedll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
 {
-	tvqdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/TVQenc.dll"));
+	tvqdll = new DynamicLoader("encoders/TVQenc");
 
-	if (tvqdll == NIL) return false;
+	ex_TvqGetVersionID		= (TVQGETVERSIONID) tvqdll->GetFunctionAddress("TvqGetVersionID");
+	ex_TvqEncInitialize		= (TVQENCINITIALIZE) tvqdll->GetFunctionAddress("TvqEncInitialize");
+	ex_TvqEncTerminate		= (TVQENCTERMINATE) tvqdll->GetFunctionAddress("TvqEncTerminate");
+	ex_TvqEncGetFrameSize		= (TVQENCGETFRAMESIZE) tvqdll->GetFunctionAddress("TvqEncGetFrameSize");
+	ex_TvqEncGetNumChannels		= (TVQENCGETNUMCHANNELS) tvqdll->GetFunctionAddress("TvqEncGetNumChannels");
+	ex_TvqEncGetConfInfo		= (TVQENCGETCONFINFO) tvqdll->GetFunctionAddress("TvqEncGetConfInfo");
+	ex_TvqEncGetVectorInfo		= (TVQENCGETVECTORINFO) tvqdll->GetFunctionAddress("TvqEncGetVectorInfo");
+	ex_TvqEncUpdateVectorInfo	= (TVQENCUPDATEVECTORINFO) tvqdll->GetFunctionAddress("TvqEncUpdateVectorInfo");
+	ex_TvqEncodeFrame		= (TVQENCODEFRAME) tvqdll->GetFunctionAddress("TvqEncodeFrame");
 
-	ex_TvqGetVersionID		= (TVQGETVERSIONID) GetProcAddress(tvqdll, "TvqGetVersionID");
-	ex_TvqEncInitialize		= (TVQENCINITIALIZE) GetProcAddress(tvqdll, "TvqEncInitialize");
-	ex_TvqEncTerminate		= (TVQENCTERMINATE) GetProcAddress(tvqdll, "TvqEncTerminate");
-	ex_TvqEncGetFrameSize		= (TVQENCGETFRAMESIZE) GetProcAddress(tvqdll, "TvqEncGetFrameSize");
-	ex_TvqEncGetNumChannels		= (TVQENCGETNUMCHANNELS) GetProcAddress(tvqdll, "TvqEncGetNumChannels");
-	ex_TvqEncGetConfInfo		= (TVQENCGETCONFINFO) GetProcAddress(tvqdll, "TvqEncGetConfInfo");
-	ex_TvqEncGetVectorInfo		= (TVQENCGETVECTORINFO) GetProcAddress(tvqdll, "TvqEncGetVectorInfo");
-	ex_TvqEncUpdateVectorInfo	= (TVQENCUPDATEVECTORINFO) GetProcAddress(tvqdll, "TvqEncUpdateVectorInfo");
-	ex_TvqEncodeFrame		= (TVQENCODEFRAME) GetProcAddress(tvqdll, "TvqEncodeFrame");
+	if (ex_TvqGetVersionID		== NIL ||
+	    ex_TvqEncInitialize		== NIL ||
+	    ex_TvqEncTerminate		== NIL ||
+	    ex_TvqEncGetFrameSize	== NIL ||
+	    ex_TvqEncGetNumChannels	== NIL ||
+	    ex_TvqEncGetConfInfo	== NIL ||
+	    ex_TvqEncGetVectorInfo	== NIL ||
+	    ex_TvqEncUpdateVectorInfo	== NIL ||
+	    ex_TvqEncodeFrame		== NIL) { FreeTVQDLL(); return False; }
 
-	if (ex_TvqGetVersionID		== NULL ||
-	    ex_TvqEncInitialize		== NULL ||
-	    ex_TvqEncTerminate		== NULL ||
-	    ex_TvqEncGetFrameSize	== NULL ||
-	    ex_TvqEncGetNumChannels	== NULL ||
-	    ex_TvqEncGetConfInfo	== NULL ||
-	    ex_TvqEncGetVectorInfo	== NULL ||
-	    ex_TvqEncUpdateVectorInfo	== NULL ||
-	    ex_TvqEncodeFrame		== NULL) { FreeLibrary(tvqdll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeTVQDLL()
 {
-	FreeLibrary(tvqdll);
+	Object::DeleteObject(tvqdll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadVorbisDLL()
 {
-	vorbisdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/OggVorbis.dll"));
+	vorbisdll = new DynamicLoader("encoders/OggVorbis");
 
-	if (vorbisdll == NIL) return false;
+	ex_vorbis_info_init		= (VORBISINFOINIT) vorbisdll->GetFunctionAddress("vorbis_info_init");
+	ex_vorbis_encode_init		= (VORBISENCODEINIT) vorbisdll->GetFunctionAddress("vorbis_encode_init");
+	ex_vorbis_encode_init_vbr	= (VORBISENCODEINITVBR) vorbisdll->GetFunctionAddress("vorbis_encode_init_vbr");
+	ex_vorbis_comment_init		= (VORBISCOMMENTINIT) vorbisdll->GetFunctionAddress("vorbis_comment_init");
+	ex_vorbis_comment_add_tag	= (VORBISCOMMENTADDTAG) vorbisdll->GetFunctionAddress("vorbis_comment_add_tag");
+	ex_vorbis_analysis_init		= (VORBISANALYSISINIT) vorbisdll->GetFunctionAddress("vorbis_analysis_init");
+	ex_vorbis_block_init		= (VORBISBLOCKINIT) vorbisdll->GetFunctionAddress("vorbis_block_init");
+	ex_vorbis_analysis_headerout	= (VORBISANALYSISHEADEROUT) vorbisdll->GetFunctionAddress("vorbis_analysis_headerout");
+	ex_vorbis_analysis_buffer	= (VORBISANALYSISBUFFER) vorbisdll->GetFunctionAddress("vorbis_analysis_buffer");
+	ex_vorbis_analysis_wrote	= (VORBISANALYSISWROTE) vorbisdll->GetFunctionAddress("vorbis_analysis_wrote");
+	ex_vorbis_analysis_blockout	= (VORBISANALYSISBLOCKOUT) vorbisdll->GetFunctionAddress("vorbis_analysis_blockout");
+	ex_vorbis_analysis		= (VORBISANALYSIS) vorbisdll->GetFunctionAddress("vorbis_analysis");
+	ex_vorbis_bitrate_addblock	= (VORBISBITRATEADDBLOCK) vorbisdll->GetFunctionAddress("vorbis_bitrate_addblock");
+	ex_vorbis_bitrate_flushpacket	= (VORBISBITRATEFLUSHPACKET) vorbisdll->GetFunctionAddress("vorbis_bitrate_flushpacket");
+	ex_vorbis_synthesis_init	= (VORBISSYNTHESISINIT) vorbisdll->GetFunctionAddress("vorbis_synthesis_init");
+	ex_vorbis_synthesis		= (VORBISSYNTHESIS) vorbisdll->GetFunctionAddress("vorbis_synthesis");
+	ex_vorbis_synthesis_blockin	= (VORBISSYNTHESISBLOCKIN) vorbisdll->GetFunctionAddress("vorbis_synthesis_blockin");
+	ex_vorbis_synthesis_pcmout	= (VORBISSYNTHESISPCMOUT) vorbisdll->GetFunctionAddress("vorbis_synthesis_pcmout");
+	ex_vorbis_synthesis_read	= (VORBISSYNTHESISREAD) vorbisdll->GetFunctionAddress("vorbis_synthesis_read");
+	ex_vorbis_synthesis_headerin	= (VORBISSYNTHESISHEADERIN) vorbisdll->GetFunctionAddress("vorbis_synthesis_headerin");
+	ex_vorbis_block_clear		= (VORBISBLOCKCLEAR) vorbisdll->GetFunctionAddress("vorbis_block_clear");
+	ex_vorbis_dsp_clear		= (VORBISDSPCLEAR) vorbisdll->GetFunctionAddress("vorbis_dsp_clear");
+	ex_vorbis_comment_clear		= (VORBISCOMMENTCLEAR) vorbisdll->GetFunctionAddress("vorbis_comment_clear");
+	ex_vorbis_info_clear		= (VORBISINFOCLEAR) vorbisdll->GetFunctionAddress("vorbis_info_clear");
+	ex_ogg_stream_init		= (OGGSTREAMINIT) vorbisdll->GetFunctionAddress("ogg_stream_init");
+	ex_ogg_stream_packetin		= (OGGSTREAMPACKETIN) vorbisdll->GetFunctionAddress("ogg_stream_packetin");
+	ex_ogg_stream_packetout		= (OGGSTREAMPACKETOUT) vorbisdll->GetFunctionAddress("ogg_stream_packetout");
+	ex_ogg_stream_flush		= (OGGSTREAMFLUSH) vorbisdll->GetFunctionAddress("ogg_stream_flush");
+	ex_ogg_stream_pagein		= (OGGSTREAMPAGEIN) vorbisdll->GetFunctionAddress("ogg_stream_pagein");
+	ex_ogg_stream_pageout		= (OGGSTREAMPAGEOUT) vorbisdll->GetFunctionAddress("ogg_stream_pageout");
+	ex_ogg_page_eos			= (OGGPAGEEOS) vorbisdll->GetFunctionAddress("ogg_page_eos");
+	ex_ogg_page_serialno		= (OGGPAGESERIALNO) vorbisdll->GetFunctionAddress("ogg_page_serialno");
+	ex_ogg_stream_clear		= (OGGSTREAMCLEAR) vorbisdll->GetFunctionAddress("ogg_stream_clear");
+	ex_ogg_sync_init		= (OGGSYNCINIT) vorbisdll->GetFunctionAddress("ogg_sync_init");
+	ex_ogg_sync_buffer		= (OGGSYNCBUFFER) vorbisdll->GetFunctionAddress("ogg_sync_buffer");
+	ex_ogg_sync_wrote		= (OGGSYNCWROTE) vorbisdll->GetFunctionAddress("ogg_sync_wrote");
+	ex_ogg_sync_pageout		= (OGGSYNCPAGEOUT) vorbisdll->GetFunctionAddress("ogg_sync_pageout");
+	ex_ogg_sync_clear		= (OGGSYNCCLEAR) vorbisdll->GetFunctionAddress("ogg_sync_clear");
 
-	ex_vorbis_info_init		= (VORBISINFOINIT) GetProcAddress(vorbisdll, "vorbis_info_init");
-	ex_vorbis_encode_init		= (VORBISENCODEINIT) GetProcAddress(vorbisdll, "vorbis_encode_init");
-	ex_vorbis_encode_init_vbr	= (VORBISENCODEINITVBR) GetProcAddress(vorbisdll, "vorbis_encode_init_vbr");
-	ex_vorbis_comment_init		= (VORBISCOMMENTINIT) GetProcAddress(vorbisdll, "vorbis_comment_init");
-	ex_vorbis_comment_add_tag	= (VORBISCOMMENTADDTAG) GetProcAddress(vorbisdll, "vorbis_comment_add_tag");
-	ex_vorbis_analysis_init		= (VORBISANALYSISINIT) GetProcAddress(vorbisdll, "vorbis_analysis_init");
-	ex_vorbis_block_init		= (VORBISBLOCKINIT) GetProcAddress(vorbisdll, "vorbis_block_init");
-	ex_vorbis_analysis_headerout	= (VORBISANALYSISHEADEROUT) GetProcAddress(vorbisdll, "vorbis_analysis_headerout");
-	ex_vorbis_analysis_buffer	= (VORBISANALYSISBUFFER) GetProcAddress(vorbisdll, "vorbis_analysis_buffer");
-	ex_vorbis_analysis_wrote	= (VORBISANALYSISWROTE) GetProcAddress(vorbisdll, "vorbis_analysis_wrote");
-	ex_vorbis_analysis_blockout	= (VORBISANALYSISBLOCKOUT) GetProcAddress(vorbisdll, "vorbis_analysis_blockout");
-	ex_vorbis_analysis		= (VORBISANALYSIS) GetProcAddress(vorbisdll, "vorbis_analysis");
-	ex_vorbis_bitrate_addblock	= (VORBISBITRATEADDBLOCK) GetProcAddress(vorbisdll, "vorbis_bitrate_addblock");
-	ex_vorbis_bitrate_flushpacket	= (VORBISBITRATEFLUSHPACKET) GetProcAddress(vorbisdll, "vorbis_bitrate_flushpacket");
-	ex_vorbis_synthesis_init	= (VORBISSYNTHESISINIT) GetProcAddress(vorbisdll, "vorbis_synthesis_init");
-	ex_vorbis_synthesis		= (VORBISSYNTHESIS) GetProcAddress(vorbisdll, "vorbis_synthesis");
-	ex_vorbis_synthesis_blockin	= (VORBISSYNTHESISBLOCKIN) GetProcAddress(vorbisdll, "vorbis_synthesis_blockin");
-	ex_vorbis_synthesis_pcmout	= (VORBISSYNTHESISPCMOUT) GetProcAddress(vorbisdll, "vorbis_synthesis_pcmout");
-	ex_vorbis_synthesis_read	= (VORBISSYNTHESISREAD) GetProcAddress(vorbisdll, "vorbis_synthesis_read");
-	ex_vorbis_synthesis_headerin	= (VORBISSYNTHESISHEADERIN) GetProcAddress(vorbisdll, "vorbis_synthesis_headerin");
-	ex_vorbis_block_clear		= (VORBISBLOCKCLEAR) GetProcAddress(vorbisdll, "vorbis_block_clear");
-	ex_vorbis_dsp_clear		= (VORBISDSPCLEAR) GetProcAddress(vorbisdll, "vorbis_dsp_clear");
-	ex_vorbis_comment_clear		= (VORBISCOMMENTCLEAR) GetProcAddress(vorbisdll, "vorbis_comment_clear");
-	ex_vorbis_info_clear		= (VORBISINFOCLEAR) GetProcAddress(vorbisdll, "vorbis_info_clear");
-	ex_ogg_stream_init		= (OGGSTREAMINIT) GetProcAddress(vorbisdll, "ogg_stream_init");
-	ex_ogg_stream_packetin		= (OGGSTREAMPACKETIN) GetProcAddress(vorbisdll, "ogg_stream_packetin");
-	ex_ogg_stream_packetout		= (OGGSTREAMPACKETOUT) GetProcAddress(vorbisdll, "ogg_stream_packetout");
-	ex_ogg_stream_flush		= (OGGSTREAMFLUSH) GetProcAddress(vorbisdll, "ogg_stream_flush");
-	ex_ogg_stream_pagein		= (OGGSTREAMPAGEIN) GetProcAddress(vorbisdll, "ogg_stream_pagein");
-	ex_ogg_stream_pageout		= (OGGSTREAMPAGEOUT) GetProcAddress(vorbisdll, "ogg_stream_pageout");
-	ex_ogg_page_eos			= (OGGPAGEEOS) GetProcAddress(vorbisdll, "ogg_page_eos");
-	ex_ogg_page_serialno		= (OGGPAGESERIALNO) GetProcAddress(vorbisdll, "ogg_page_serialno");
-	ex_ogg_stream_clear		= (OGGSTREAMCLEAR) GetProcAddress(vorbisdll, "ogg_stream_clear");
-	ex_ogg_sync_init		= (OGGSYNCINIT) GetProcAddress(vorbisdll, "ogg_sync_init");
-	ex_ogg_sync_buffer		= (OGGSYNCBUFFER) GetProcAddress(vorbisdll, "ogg_sync_buffer");
-	ex_ogg_sync_wrote		= (OGGSYNCWROTE) GetProcAddress(vorbisdll, "ogg_sync_wrote");
-	ex_ogg_sync_pageout		= (OGGSYNCPAGEOUT) GetProcAddress(vorbisdll, "ogg_sync_pageout");
-	ex_ogg_sync_clear		= (OGGSYNCCLEAR) GetProcAddress(vorbisdll, "ogg_sync_clear");
+	if (ex_vorbis_info_init			== NIL ||
+	    ex_vorbis_encode_init		== NIL ||
+	    ex_vorbis_encode_init_vbr		== NIL ||
+	    ex_vorbis_comment_init		== NIL ||
+	    ex_vorbis_comment_add_tag		== NIL ||
+	    ex_vorbis_analysis_init		== NIL ||
+	    ex_vorbis_block_init		== NIL ||
+	    ex_vorbis_analysis_headerout	== NIL ||
+	    ex_vorbis_analysis_buffer		== NIL ||
+	    ex_vorbis_analysis_wrote		== NIL ||
+	    ex_vorbis_analysis_blockout		== NIL ||
+	    ex_vorbis_analysis			== NIL ||
+	    ex_vorbis_bitrate_addblock		== NIL ||
+	    ex_vorbis_bitrate_flushpacket	== NIL ||
+	    ex_vorbis_synthesis_init		== NIL ||
+	    ex_vorbis_synthesis			== NIL ||
+	    ex_vorbis_synthesis_blockin		== NIL ||
+	    ex_vorbis_synthesis_pcmout		== NIL ||
+	    ex_vorbis_synthesis_read		== NIL ||
+	    ex_vorbis_synthesis_headerin	== NIL ||
+	    ex_vorbis_block_clear		== NIL ||
+	    ex_vorbis_dsp_clear			== NIL ||
+	    ex_vorbis_comment_clear		== NIL ||
+	    ex_vorbis_info_clear		== NIL ||
+	    ex_ogg_stream_init			== NIL ||
+	    ex_ogg_stream_packetin		== NIL ||
+	    ex_ogg_stream_packetout		== NIL ||
+	    ex_ogg_stream_flush			== NIL ||
+	    ex_ogg_stream_pagein		== NIL ||
+	    ex_ogg_stream_pageout		== NIL ||
+	    ex_ogg_page_eos			== NIL ||
+	    ex_ogg_page_serialno		== NIL ||
+	    ex_ogg_stream_clear			== NIL ||
+	    ex_ogg_sync_init			== NIL ||
+	    ex_ogg_sync_buffer			== NIL ||
+	    ex_ogg_sync_wrote			== NIL ||
+	    ex_ogg_sync_pageout			== NIL ||
+	    ex_ogg_sync_clear			== NIL) { FreeVorbisDLL(); return False; }
 
-	if (ex_vorbis_info_init			== NULL ||
-	    ex_vorbis_encode_init		== NULL ||
-	    ex_vorbis_encode_init_vbr		== NULL ||
-	    ex_vorbis_comment_init		== NULL ||
-	    ex_vorbis_comment_add_tag		== NULL ||
-	    ex_vorbis_analysis_init		== NULL ||
-	    ex_vorbis_block_init		== NULL ||
-	    ex_vorbis_analysis_headerout	== NULL ||
-	    ex_vorbis_analysis_buffer		== NULL ||
-	    ex_vorbis_analysis_wrote		== NULL ||
-	    ex_vorbis_analysis_blockout		== NULL ||
-	    ex_vorbis_analysis			== NULL ||
-	    ex_vorbis_bitrate_addblock		== NULL ||
-	    ex_vorbis_bitrate_flushpacket	== NULL ||
-	    ex_vorbis_synthesis_init		== NULL ||
-	    ex_vorbis_synthesis			== NULL ||
-	    ex_vorbis_synthesis_blockin		== NULL ||
-	    ex_vorbis_synthesis_pcmout		== NULL ||
-	    ex_vorbis_synthesis_read		== NULL ||
-	    ex_vorbis_synthesis_headerin	== NULL ||
-	    ex_vorbis_block_clear		== NULL ||
-	    ex_vorbis_dsp_clear			== NULL ||
-	    ex_vorbis_comment_clear		== NULL ||
-	    ex_vorbis_info_clear		== NULL ||
-	    ex_ogg_stream_init			== NULL ||
-	    ex_ogg_stream_packetin		== NULL ||
-	    ex_ogg_stream_packetout		== NULL ||
-	    ex_ogg_stream_flush			== NULL ||
-	    ex_ogg_stream_pagein		== NULL ||
-	    ex_ogg_stream_pageout		== NULL ||
-	    ex_ogg_page_eos			== NULL ||
-	    ex_ogg_page_serialno		== NULL ||
-	    ex_ogg_stream_clear			== NULL ||
-	    ex_ogg_sync_init			== NULL ||
-	    ex_ogg_sync_buffer			== NULL ||
-	    ex_ogg_sync_wrote			== NULL ||
-	    ex_ogg_sync_pageout			== NULL ||
-	    ex_ogg_sync_clear			== NULL) { FreeLibrary(vorbisdll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeVorbisDLL()
 {
-	FreeLibrary(vorbisdll);
+	Object::DeleteObject(vorbisdll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadFAACDLL()
 {
-	faacdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/FAAC.dll"));
+	faacdll = new DynamicLoader("encoders/FAAC");
 
-	if (faacdll == NIL) return false;
+	ex_faacEncOpen				= (FAACENCOPEN) faacdll->GetFunctionAddress("faacEncOpen");
+	ex_faacEncGetCurrentConfiguration	= (FAACENCGETCURRENTCONFIGURATION) faacdll->GetFunctionAddress("faacEncGetCurrentConfiguration");
+	ex_faacEncSetConfiguration		= (FAACENCSETCONFIGURATION) faacdll->GetFunctionAddress("faacEncSetConfiguration");
+	ex_faacEncGetDecoderSpecificInfo	= (FAACENCGETDECODERSPECIFICINFO) faacdll->GetFunctionAddress("faacEncGetDecoderSpecificInfo");
+	ex_faacEncEncode			= (FAACENCENCODE) faacdll->GetFunctionAddress("faacEncEncode");
+	ex_faacEncClose				= (FAACENCCLOSE) faacdll->GetFunctionAddress("faacEncClose");
 
-	ex_faacEncOpen				= (FAACENCOPEN) GetProcAddress(faacdll, "faacEncOpen");
-	ex_faacEncGetCurrentConfiguration	= (FAACENCGETCURRENTCONFIGURATION) GetProcAddress(faacdll, "faacEncGetCurrentConfiguration");
-	ex_faacEncSetConfiguration		= (FAACENCSETCONFIGURATION) GetProcAddress(faacdll, "faacEncSetConfiguration");
-	ex_faacEncGetDecoderSpecificInfo	= (FAACENCGETDECODERSPECIFICINFO) GetProcAddress(faacdll, "faacEncGetDecoderSpecificInfo");
-	ex_faacEncEncode			= (FAACENCENCODE) GetProcAddress(faacdll, "faacEncEncode");
-	ex_faacEncClose				= (FAACENCCLOSE) GetProcAddress(faacdll, "faacEncClose");
+	if (ex_faacEncOpen			== NIL ||
+	    ex_faacEncGetCurrentConfiguration	== NIL ||
+	    ex_faacEncSetConfiguration		== NIL ||
+	    ex_faacEncGetDecoderSpecificInfo	== NIL ||
+	    ex_faacEncEncode			== NIL ||
+	    ex_faacEncClose			== NIL) { FreeFAACDLL(); return False; }
 
-	if (ex_faacEncOpen			== NULL ||
-	    ex_faacEncGetCurrentConfiguration	== NULL ||
-	    ex_faacEncSetConfiguration		== NULL ||
-	    ex_faacEncGetDecoderSpecificInfo	== NULL ||
-	    ex_faacEncEncode			== NULL ||
-	    ex_faacEncClose			== NULL) { FreeLibrary(faacdll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeFAACDLL()
 {
-	FreeLibrary(faacdll);
+	Object::DeleteObject(faacdll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
 {
-	faad2dll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/FAAD2.dll"));
+	faad2dll = new DynamicLoader("encoders/FAAD2");
 
-	if (faad2dll == NIL) return false;
+	ex_NeAACDecOpen				= (NEAACDECOPEN) faad2dll->GetFunctionAddress("NeAACDecOpen");
+	ex_NeAACDecInit				= (NEAACDECINIT) faad2dll->GetFunctionAddress("NeAACDecInit");
+	ex_NeAACDecInit2			= (NEAACDECINIT2) faad2dll->GetFunctionAddress("NeAACDecInit2");
+	ex_NeAACDecGetCurrentConfiguration	= (NEAACDECGETCURRENTCONFIGURATION) faad2dll->GetFunctionAddress("NeAACDecGetCurrentConfiguration");
+	ex_NeAACDecSetConfiguration		= (NEAACDECSETCONFIGURATION) faad2dll->GetFunctionAddress("NeAACDecSetConfiguration");
+	ex_NeAACDecDecode			= (NEAACDECDECODE) faad2dll->GetFunctionAddress("NeAACDecDecode");
+	ex_NeAACDecClose			= (NEAACDECCLOSE) faad2dll->GetFunctionAddress("NeAACDecClose");
 
-	ex_NeAACDecOpen				= (NEAACDECOPEN) GetProcAddress(faad2dll, "NeAACDecOpen");
-	ex_NeAACDecInit				= (NEAACDECINIT) GetProcAddress(faad2dll, "NeAACDecInit");
-	ex_NeAACDecInit2			= (NEAACDECINIT2) GetProcAddress(faad2dll, "NeAACDecInit2");
-	ex_NeAACDecGetCurrentConfiguration	= (NEAACDECGETCURRENTCONFIGURATION) GetProcAddress(faad2dll, "NeAACDecGetCurrentConfiguration");
-	ex_NeAACDecSetConfiguration		= (NEAACDECSETCONFIGURATION) GetProcAddress(faad2dll, "NeAACDecSetConfiguration");
-	ex_NeAACDecDecode			= (NEAACDECDECODE) GetProcAddress(faad2dll, "NeAACDecDecode");
-	ex_NeAACDecClose			= (NEAACDECCLOSE) GetProcAddress(faad2dll, "NeAACDecClose");
+	if (ex_NeAACDecOpen			== NIL ||
+	    ex_NeAACDecInit			== NIL ||
+	    ex_NeAACDecInit2			== NIL ||
+	    ex_NeAACDecGetCurrentConfiguration	== NIL ||
+	    ex_NeAACDecSetConfiguration		== NIL ||
+	    ex_NeAACDecDecode			== NIL ||
+	    ex_NeAACDecClose			== NIL) { FreeFAAD2DLL(); return False; }
 
-	if (ex_NeAACDecOpen			== NULL ||
-	    ex_NeAACDecInit			== NULL ||
-	    ex_NeAACDecInit2			== NULL ||
-	    ex_NeAACDecGetCurrentConfiguration	== NULL ||
-	    ex_NeAACDecSetConfiguration		== NULL ||
-	    ex_NeAACDecDecode			== NULL ||
-	    ex_NeAACDecClose			== NULL) { FreeLibrary(faad2dll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeFAAD2DLL()
 {
-	FreeLibrary(faad2dll);
+	Object::DeleteObject(faad2dll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 {
-	cdripdll = LoadLibraryA(Application::GetApplicationDirectory().Append("CDRip.dll"));
+	cdripdll = new DynamicLoader("CDRip");
 
-	if (cdripdll == NIL) return false;
+	ex_CR_Init			= (CR_INIT) cdripdll->GetFunctionAddress("CR_Init");
+	ex_CR_DeInit			= (CR_DEINIT) cdripdll->GetFunctionAddress("CR_DeInit");
+	ex_CR_ReadToc			= (CR_READTOC) cdripdll->GetFunctionAddress("CR_ReadToc");
+	ex_CR_GetNumTocEntries		= (CR_GETNUMTOCENTRIES) cdripdll->GetFunctionAddress("CR_GetNumTocEntries");
+	ex_CR_GetTocEntry		= (CR_GETTOCENTRY) cdripdll->GetFunctionAddress("CR_GetTocEntry");
+	ex_CR_OpenRipper		= (CR_OPENRIPPER) cdripdll->GetFunctionAddress("CR_OpenRipper");
+	ex_CR_CloseRipper		= (CR_CLOSERIPPER) cdripdll->GetFunctionAddress("CR_CloseRipper");
+	ex_CR_RipChunk			= (CR_RIPCHUNK) cdripdll->GetFunctionAddress("CR_RipChunk");
+	ex_CR_GetNumCDROM		= (CR_GETNUMCDROM) cdripdll->GetFunctionAddress("CR_GetNumCDROM");
+	ex_CR_GetActiveCDROM		= (CR_GETACTIVECDROM) cdripdll->GetFunctionAddress("CR_GetActiveCDROM");
+	ex_CR_SetActiveCDROM		= (CR_SETACTIVECDROM) cdripdll->GetFunctionAddress("CR_SetActiveCDROM");
+	ex_CR_GetCDROMParameters	= (CR_GETCDROMPARAMETERS) cdripdll->GetFunctionAddress("CR_GetCDROMParameters");
+	ex_CR_SetCDROMParameters	= (CR_SETCDROMPARAMETERS) cdripdll->GetFunctionAddress("CR_SetCDROMParameters");
+	ex_CR_LockCD			= (CR_LOCKCD) cdripdll->GetFunctionAddress("CR_LockCD");
+	ex_CR_EjectCD			= (CR_EJECTCD) cdripdll->GetFunctionAddress("CR_EjectCD");
+	ex_CR_ReadCDText		= (CR_READCDTEXT) cdripdll->GetFunctionAddress("CR_ReadCDText");
 
-	ex_CR_Init			= (CR_INIT) GetProcAddress(cdripdll, "CR_Init");
-	ex_CR_DeInit			= (CR_DEINIT) GetProcAddress(cdripdll, "CR_DeInit");
-	ex_CR_ReadToc			= (CR_READTOC) GetProcAddress(cdripdll, "CR_ReadToc");
-	ex_CR_GetNumTocEntries		= (CR_GETNUMTOCENTRIES) GetProcAddress(cdripdll, "CR_GetNumTocEntries");
-	ex_CR_GetTocEntry		= (CR_GETTOCENTRY) GetProcAddress(cdripdll, "CR_GetTocEntry");
-	ex_CR_OpenRipper		= (CR_OPENRIPPER) GetProcAddress(cdripdll, "CR_OpenRipper");
-	ex_CR_CloseRipper		= (CR_CLOSERIPPER) GetProcAddress(cdripdll, "CR_CloseRipper");
-	ex_CR_RipChunk			= (CR_RIPCHUNK) GetProcAddress(cdripdll, "CR_RipChunk");
-	ex_CR_GetNumCDROM		= (CR_GETNUMCDROM) GetProcAddress(cdripdll, "CR_GetNumCDROM");
-	ex_CR_GetActiveCDROM		= (CR_GETACTIVECDROM) GetProcAddress(cdripdll, "CR_GetActiveCDROM");
-	ex_CR_SetActiveCDROM		= (CR_SETACTIVECDROM) GetProcAddress(cdripdll, "CR_SetActiveCDROM");
-	ex_CR_GetCDROMParameters	= (CR_GETCDROMPARAMETERS) GetProcAddress(cdripdll, "CR_GetCDROMParameters");
-	ex_CR_SetCDROMParameters	= (CR_SETCDROMPARAMETERS) GetProcAddress(cdripdll, "CR_SetCDROMParameters");
-	ex_CR_LockCD			= (CR_LOCKCD) GetProcAddress(cdripdll, "CR_LockCD");
-	ex_CR_EjectCD			= (CR_EJECTCD) GetProcAddress(cdripdll, "CR_EjectCD");
-	ex_CR_ReadCDText		= (CR_READCDTEXT) GetProcAddress(cdripdll, "CR_ReadCDText");
+	if (ex_CR_Init			== NIL ||
+	    ex_CR_DeInit		== NIL ||
+	    ex_CR_ReadToc		== NIL ||
+	    ex_CR_GetNumTocEntries	== NIL ||
+	    ex_CR_GetTocEntry		== NIL ||
+	    ex_CR_OpenRipper		== NIL ||
+	    ex_CR_CloseRipper		== NIL ||
+	    ex_CR_RipChunk		== NIL ||
+	    ex_CR_GetNumCDROM		== NIL ||
+	    ex_CR_GetActiveCDROM	== NIL ||
+	    ex_CR_SetActiveCDROM	== NIL ||
+	    ex_CR_GetCDROMParameters	== NIL ||
+	    ex_CR_SetCDROMParameters	== NIL ||
+	    ex_CR_LockCD		== NIL ||
+	    ex_CR_EjectCD		== NIL ||
+	    ex_CR_ReadCDText		== NIL) { FreeCDRipDLL(); return False; }
 
-	if (ex_CR_Init			== NULL ||
-	    ex_CR_DeInit		== NULL ||
-	    ex_CR_ReadToc		== NULL ||
-	    ex_CR_GetNumTocEntries	== NULL ||
-	    ex_CR_GetTocEntry		== NULL ||
-	    ex_CR_OpenRipper		== NULL ||
-	    ex_CR_CloseRipper		== NULL ||
-	    ex_CR_RipChunk		== NULL ||
-	    ex_CR_GetNumCDROM		== NULL ||
-	    ex_CR_GetActiveCDROM	== NULL ||
-	    ex_CR_SetActiveCDROM	== NULL ||
-	    ex_CR_GetCDROMParameters	== NULL ||
-	    ex_CR_SetCDROMParameters	== NULL ||
-	    ex_CR_LockCD		== NULL ||
-	    ex_CR_EjectCD		== NULL ||
-	    ex_CR_ReadCDText		== NULL) { FreeLibrary(cdripdll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeCDRipDLL()
 {
-	FreeLibrary(cdripdll);
+	Object::DeleteObject(cdripdll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadID3DLL()
 {
-	id3dll = LoadLibraryA(Application::GetApplicationDirectory().Append("id3lib.dll"));
+	id3dll = new DynamicLoader("ID3lib");
 
-	if (id3dll == NIL) return false;
+	ex_ID3Tag_New			= (ID3TAGNEW) id3dll->GetFunctionAddress("ID3Tag_New");
+	ex_ID3Tag_Delete		= (ID3TAGDELETE) id3dll->GetFunctionAddress("ID3Tag_Delete");
+	ex_ID3Tag_SetPadding		= (ID3TAGSETPADDING) id3dll->GetFunctionAddress("ID3Tag_SetPadding");
+	ex_ID3Tag_AddFrame		= (ID3TAGADDFRAME) id3dll->GetFunctionAddress("ID3Tag_AddFrame");
+	ex_ID3Tag_Link			= (ID3TAGLINK) id3dll->GetFunctionAddress("ID3Tag_Link");
+	ex_ID3Tag_NumFrames		= (ID3TAGNUMFRAMES) id3dll->GetFunctionAddress("ID3Tag_NumFrames");
+	ex_ID3Tag_FindFrameWithID	= (ID3TAGFINDFRAMEWITHID) id3dll->GetFunctionAddress("ID3Tag_FindFrameWithID");
+	ex_ID3Tag_ParseBuffer		= (ID3TAGPARSEBUFFER) id3dll->GetFunctionAddress("ID3Tag_ParseBuffer");
+	ex_ID3Tag_Render		= (ID3TAGRENDER) id3dll->GetFunctionAddress("ID3Tag_Render");
+	ex_ID3Frame_NewID		= (ID3FRAMENEWID) id3dll->GetFunctionAddress("ID3Frame_NewID");
+	ex_ID3Frame_Delete		= (ID3FRAMEDELETE) id3dll->GetFunctionAddress("ID3Frame_Delete");
+	ex_ID3Frame_GetField		= (ID3FRAMEGETFIELD) id3dll->GetFunctionAddress("ID3Frame_GetField");
+	ex_ID3Field_SetINT		= (ID3FIELDSETINT) id3dll->GetFunctionAddress("ID3Field_SetINT");
+	ex_ID3Field_GetINT		= (ID3FIELDGETINT) id3dll->GetFunctionAddress("ID3Field_GetINT");
+	ex_ID3Field_SetEncoding		= (ID3FIELDSETENCODING) id3dll->GetFunctionAddress("ID3Field_SetEncoding");
+	ex_ID3Field_SetASCII		= (ID3FIELDSETASCII) id3dll->GetFunctionAddress("ID3Field_SetASCII");
+	ex_ID3Field_GetASCII		= (ID3FIELDGETASCII) id3dll->GetFunctionAddress("ID3Field_GetASCII");
+	ex_ID3Field_SetUNICODE		= (ID3FIELDSETUNICODE) id3dll->GetFunctionAddress("ID3Field_SetUNICODE");
+	ex_ID3Field_GetUNICODE		= (ID3FIELDGETUNICODE) id3dll->GetFunctionAddress("ID3Field_GetUNICODE");
 
-	ex_ID3Tag_New			= (ID3TAGNEW) GetProcAddress(id3dll, "ID3Tag_New");
-	ex_ID3Tag_Delete		= (ID3TAGDELETE) GetProcAddress(id3dll, "ID3Tag_Delete");
-	ex_ID3Tag_SetPadding		= (ID3TAGSETPADDING) GetProcAddress(id3dll, "ID3Tag_SetPadding");
-	ex_ID3Tag_AddFrame		= (ID3TAGADDFRAME) GetProcAddress(id3dll, "ID3Tag_AddFrame");
-	ex_ID3Tag_Link			= (ID3TAGLINK) GetProcAddress(id3dll, "ID3Tag_Link");
-	ex_ID3Tag_NumFrames		= (ID3TAGNUMFRAMES) GetProcAddress(id3dll, "ID3Tag_NumFrames");
-	ex_ID3Tag_FindFrameWithID	= (ID3TAGFINDFRAMEWITHID) GetProcAddress(id3dll, "ID3Tag_FindFrameWithID");
-	ex_ID3Tag_ParseBuffer		= (ID3TAGPARSEBUFFER) GetProcAddress(id3dll, "ID3Tag_ParseBuffer");
-	ex_ID3Tag_Render		= (ID3TAGRENDER) GetProcAddress(id3dll, "ID3Tag_Render");
-	ex_ID3Frame_NewID		= (ID3FRAMENEWID) GetProcAddress(id3dll, "ID3Frame_NewID");
-	ex_ID3Frame_Delete		= (ID3FRAMEDELETE) GetProcAddress(id3dll, "ID3Frame_Delete");
-	ex_ID3Frame_GetField		= (ID3FRAMEGETFIELD) GetProcAddress(id3dll, "ID3Frame_GetField");
-	ex_ID3Field_SetINT		= (ID3FIELDSETINT) GetProcAddress(id3dll, "ID3Field_SetINT");
-	ex_ID3Field_GetINT		= (ID3FIELDGETINT) GetProcAddress(id3dll, "ID3Field_GetINT");
-	ex_ID3Field_SetEncoding		= (ID3FIELDSETENCODING) GetProcAddress(id3dll, "ID3Field_SetEncoding");
-	ex_ID3Field_SetASCII		= (ID3FIELDSETASCII) GetProcAddress(id3dll, "ID3Field_SetASCII");
-	ex_ID3Field_GetASCII		= (ID3FIELDGETASCII) GetProcAddress(id3dll, "ID3Field_GetASCII");
-	ex_ID3Field_SetUNICODE		= (ID3FIELDSETUNICODE) GetProcAddress(id3dll, "ID3Field_SetUNICODE");
-	ex_ID3Field_GetUNICODE		= (ID3FIELDGETUNICODE) GetProcAddress(id3dll, "ID3Field_GetUNICODE");
+	if (ex_ID3Tag_New		== NIL ||
+	    ex_ID3Tag_Delete		== NIL ||
+	    ex_ID3Tag_SetPadding	== NIL ||
+	    ex_ID3Tag_AddFrame		== NIL ||
+	    ex_ID3Tag_Link		== NIL ||
+	    ex_ID3Tag_NumFrames		== NIL ||
+	    ex_ID3Tag_FindFrameWithID	== NIL ||
+	    ex_ID3Tag_ParseBuffer	== NIL ||
+	    ex_ID3Tag_Render		== NIL ||
+	    ex_ID3Frame_NewID		== NIL ||
+	    ex_ID3Frame_Delete		== NIL ||
+	    ex_ID3Frame_GetField	== NIL ||
+	    ex_ID3Field_SetINT		== NIL ||
+	    ex_ID3Field_GetINT		== NIL ||
+	    ex_ID3Field_SetEncoding	== NIL ||
+	    ex_ID3Field_SetASCII	== NIL ||
+	    ex_ID3Field_GetASCII	== NIL ||
+	    ex_ID3Field_SetUNICODE	== NIL ||
+	    ex_ID3Field_GetUNICODE	== NIL) { FreeID3DLL(); return False; }
 
-	if (ex_ID3Tag_New		== NULL ||
-	    ex_ID3Tag_Delete		== NULL ||
-	    ex_ID3Tag_SetPadding	== NULL ||
-	    ex_ID3Tag_AddFrame		== NULL ||
-	    ex_ID3Tag_Link		== NULL ||
-	    ex_ID3Tag_NumFrames		== NULL ||
-	    ex_ID3Tag_FindFrameWithID	== NULL ||
-	    ex_ID3Tag_ParseBuffer	== NULL ||
-	    ex_ID3Tag_Render		== NULL ||
-	    ex_ID3Frame_NewID		== NULL ||
-	    ex_ID3Frame_Delete		== NULL ||
-	    ex_ID3Frame_GetField	== NULL ||
-	    ex_ID3Field_SetINT		== NULL ||
-	    ex_ID3Field_GetINT		== NULL ||
-	    ex_ID3Field_SetEncoding	== NULL ||
-	    ex_ID3Field_SetASCII	== NULL ||
-	    ex_ID3Field_GetASCII	== NULL ||
-	    ex_ID3Field_SetUNICODE	== NULL ||
-	    ex_ID3Field_GetUNICODE	== NULL) { FreeLibrary(id3dll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeID3DLL()
 {
-	FreeLibrary(id3dll);
+	Object::DeleteObject(id3dll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 {
-	eupdatedll = LoadLibraryA(Application::GetApplicationDirectory().Append("eUpdate.dll"));
+	eupdatedll = new DynamicLoader("eUpdate");
 
-	if (eupdatedll == NIL) return false;
+	ex_eUpdate_CreateUpdateContext	= (EUCREATEUPDATECONTEXT) eupdatedll->GetFunctionAddress("eUpdate_CreateUpdateContext");
+	ex_eUpdate_FreeUpdateContext	= (EUFREEUPDATECONTEXT) eupdatedll->GetFunctionAddress("eUpdate_FreeUpdateContext");
+	ex_eUpdate_CheckForNewUpdates	= (EUCHECKFORNEWUPDATES) eupdatedll->GetFunctionAddress("eUpdate_CheckForNewUpdates");
+	ex_eUpdate_AutomaticUpdate	= (EUAUTOMATICUPDATE) eupdatedll->GetFunctionAddress("eUpdate_AutomaticUpdate");
 
-	ex_eUpdate_CreateUpdateContext	= (EUCREATEUPDATECONTEXT) GetProcAddress(eupdatedll, "eUpdate_CreateUpdateContext");
-	ex_eUpdate_FreeUpdateContext	= (EUFREEUPDATECONTEXT) GetProcAddress(eupdatedll, "eUpdate_FreeUpdateContext");
-	ex_eUpdate_CheckForNewUpdates	= (EUCHECKFORNEWUPDATES) GetProcAddress(eupdatedll, "eUpdate_CheckForNewUpdates");
-	ex_eUpdate_AutomaticUpdate	= (EUAUTOMATICUPDATE) GetProcAddress(eupdatedll, "eUpdate_AutomaticUpdate");
+	if (ex_eUpdate_CreateUpdateContext	== NIL ||
+	    ex_eUpdate_FreeUpdateContext	== NIL ||
+	    ex_eUpdate_CheckForNewUpdates	== NIL ||
+	    ex_eUpdate_AutomaticUpdate		== NIL) { FreeEUpdateDLL(); return False; }
 
-	if (ex_eUpdate_CreateUpdateContext	== NULL ||
-	    ex_eUpdate_FreeUpdateContext	== NULL ||
-	    ex_eUpdate_CheckForNewUpdates	== NULL ||
-	    ex_eUpdate_AutomaticUpdate		== NULL) { FreeLibrary(eupdatedll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeEUpdateDLL()
 {
-	FreeLibrary(eupdatedll);
+	Object::DeleteObject(eupdatedll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 {
-	mp4v2dll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/MP4v2.dll"));
+	mp4v2dll = new DynamicLoader("encoders/MP4v2");
 
-	if (mp4v2dll == NIL) return false;
+	ex_MP4Read			= (MP4READ) mp4v2dll->GetFunctionAddress("MP4Read");
+	ex_MP4CreateEx			= (MP4CREATEEX) mp4v2dll->GetFunctionAddress("MP4CreateEx");
+	ex_MP4Close			= (MP4CLOSE) mp4v2dll->GetFunctionAddress("MP4Close");
+	ex_MP4Optimize			= (MP4OPTIMIZE) mp4v2dll->GetFunctionAddress("MP4Optimize");
+	ex_MP4SetMetadataName		= (MP4SETMETADATANAME) mp4v2dll->GetFunctionAddress("MP4SetMetadataName");
+	ex_MP4GetMetadataName		= (MP4GETMETADATANAME) mp4v2dll->GetFunctionAddress("MP4GetMetadataName");
+	ex_MP4SetMetadataArtist		= (MP4SETMETADATAARTIST) mp4v2dll->GetFunctionAddress("MP4SetMetadataArtist");
+	ex_MP4GetMetadataArtist		= (MP4GETMETADATAARTIST) mp4v2dll->GetFunctionAddress("MP4GetMetadataArtist");
+	ex_MP4SetMetadataComment	= (MP4SETMETADATACOMMENT) mp4v2dll->GetFunctionAddress("MP4SetMetadataComment");
+	ex_MP4GetMetadataComment	= (MP4GETMETADATACOMMENT) mp4v2dll->GetFunctionAddress("MP4GetMetadataComment");
+	ex_MP4SetMetadataYear		= (MP4SETMETADATAYEAR) mp4v2dll->GetFunctionAddress("MP4SetMetadataYear");
+	ex_MP4GetMetadataYear		= (MP4GETMETADATAYEAR) mp4v2dll->GetFunctionAddress("MP4GetMetadataYear");
+	ex_MP4SetMetadataAlbum		= (MP4SETMETADATAALBUM) mp4v2dll->GetFunctionAddress("MP4SetMetadataAlbum");
+	ex_MP4GetMetadataAlbum		= (MP4GETMETADATAALBUM) mp4v2dll->GetFunctionAddress("MP4GetMetadataAlbum");
+	ex_MP4SetMetadataGenre		= (MP4SETMETADATAGENRE) mp4v2dll->GetFunctionAddress("MP4SetMetadataGenre");
+	ex_MP4GetMetadataGenre		= (MP4GETMETADATAGENRE) mp4v2dll->GetFunctionAddress("MP4GetMetadataGenre");
+	ex_MP4SetMetadataTrack		= (MP4SETMETADATATRACK) mp4v2dll->GetFunctionAddress("MP4SetMetadataTrack");
+	ex_MP4GetMetadataTrack		= (MP4GETMETADATATRACK) mp4v2dll->GetFunctionAddress("MP4GetMetadataTrack");
+	ex_MP4GetNumberOfTracks		= (MP4GETNUMBEROFTRACKS) mp4v2dll->GetFunctionAddress("MP4GetNumberOfTracks");
+	ex_MP4FindTrackId		= (MP4FINDTRACKID) mp4v2dll->GetFunctionAddress("MP4FindTrackId");
+	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) mp4v2dll->GetFunctionAddress("MP4GetTrackType");
+	ex_MP4GetTrackESConfiguration	= (MP4GETTRACKESCONFIGURATION) mp4v2dll->GetFunctionAddress("MP4GetTrackESConfiguration");
+	ex_MP4SetTrackESConfiguration	= (MP4SETTRACKESCONFIGURATION) mp4v2dll->GetFunctionAddress("MP4SetTrackESConfiguration");
+	ex_MP4GetTrackNumberOfSamples	= (MP4GETTRACKNUMBEROFSAMPLES) mp4v2dll->GetFunctionAddress("MP4GetTrackNumberOfSamples");
+	ex_MP4SetTimeScale		= (MP4SETTIMESCALE) mp4v2dll->GetFunctionAddress("MP4SetTimeScale");
+	ex_MP4SetAudioProfileLevel	= (MP4SETAUDIOPROFILELEVEL) mp4v2dll->GetFunctionAddress("MP4SetAudioProfileLevel");
+	ex_MP4AddAudioTrack		= (MP4ADDAUDIOTRACK) mp4v2dll->GetFunctionAddress("MP4AddAudioTrack");
+	ex_MP4ReadSample		= (MP4READSAMPLE) mp4v2dll->GetFunctionAddress("MP4ReadSample");
+	ex_MP4WriteSample		= (MP4WRITESAMPLE) mp4v2dll->GetFunctionAddress("MP4WriteSample");
 
-	ex_MP4Read			= (MP4READ) GetProcAddress(mp4v2dll, "MP4Read");
-	ex_MP4CreateEx			= (MP4CREATEEX) GetProcAddress(mp4v2dll, "MP4CreateEx");
-	ex_MP4Close			= (MP4CLOSE) GetProcAddress(mp4v2dll, "MP4Close");
-	ex_MP4Optimize			= (MP4OPTIMIZE) GetProcAddress(mp4v2dll, "MP4Optimize");
-	ex_MP4SetMetadataName		= (MP4SETMETADATANAME) GetProcAddress(mp4v2dll, "MP4SetMetadataName");
-	ex_MP4GetMetadataName		= (MP4GETMETADATANAME) GetProcAddress(mp4v2dll, "MP4GetMetadataName");
-	ex_MP4SetMetadataArtist		= (MP4SETMETADATAARTIST) GetProcAddress(mp4v2dll, "MP4SetMetadataArtist");
-	ex_MP4GetMetadataArtist		= (MP4GETMETADATAARTIST) GetProcAddress(mp4v2dll, "MP4GetMetadataArtist");
-	ex_MP4SetMetadataComment	= (MP4SETMETADATACOMMENT) GetProcAddress(mp4v2dll, "MP4SetMetadataComment");
-	ex_MP4GetMetadataComment	= (MP4GETMETADATACOMMENT) GetProcAddress(mp4v2dll, "MP4GetMetadataComment");
-	ex_MP4SetMetadataYear		= (MP4SETMETADATAYEAR) GetProcAddress(mp4v2dll, "MP4SetMetadataYear");
-	ex_MP4GetMetadataYear		= (MP4GETMETADATAYEAR) GetProcAddress(mp4v2dll, "MP4GetMetadataYear");
-	ex_MP4SetMetadataAlbum		= (MP4SETMETADATAALBUM) GetProcAddress(mp4v2dll, "MP4SetMetadataAlbum");
-	ex_MP4GetMetadataAlbum		= (MP4GETMETADATAALBUM) GetProcAddress(mp4v2dll, "MP4GetMetadataAlbum");
-	ex_MP4SetMetadataGenre		= (MP4SETMETADATAGENRE) GetProcAddress(mp4v2dll, "MP4SetMetadataGenre");
-	ex_MP4GetMetadataGenre		= (MP4GETMETADATAGENRE) GetProcAddress(mp4v2dll, "MP4GetMetadataGenre");
-	ex_MP4SetMetadataTrack		= (MP4SETMETADATATRACK) GetProcAddress(mp4v2dll, "MP4SetMetadataTrack");
-	ex_MP4GetMetadataTrack		= (MP4GETMETADATATRACK) GetProcAddress(mp4v2dll, "MP4GetMetadataTrack");
-	ex_MP4GetNumberOfTracks		= (MP4GETNUMBEROFTRACKS) GetProcAddress(mp4v2dll, "MP4GetNumberOfTracks");
-	ex_MP4FindTrackId		= (MP4FINDTRACKID) GetProcAddress(mp4v2dll, "MP4FindTrackId");
-	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) GetProcAddress(mp4v2dll, "MP4GetTrackType");
-	ex_MP4GetTrackESConfiguration	= (MP4GETTRACKESCONFIGURATION) GetProcAddress(mp4v2dll, "MP4GetTrackESConfiguration");
-	ex_MP4SetTrackESConfiguration	= (MP4SETTRACKESCONFIGURATION) GetProcAddress(mp4v2dll, "MP4SetTrackESConfiguration");
-	ex_MP4GetTrackNumberOfSamples	= (MP4GETTRACKNUMBEROFSAMPLES) GetProcAddress(mp4v2dll, "MP4GetTrackNumberOfSamples");
-	ex_MP4SetTimeScale		= (MP4SETTIMESCALE) GetProcAddress(mp4v2dll, "MP4SetTimeScale");
-	ex_MP4SetAudioProfileLevel	= (MP4SETAUDIOPROFILELEVEL) GetProcAddress(mp4v2dll, "MP4SetAudioProfileLevel");
-	ex_MP4AddAudioTrack		= (MP4ADDAUDIOTRACK) GetProcAddress(mp4v2dll, "MP4AddAudioTrack");
-	ex_MP4ReadSample		= (MP4READSAMPLE) GetProcAddress(mp4v2dll, "MP4ReadSample");
-	ex_MP4WriteSample		= (MP4WRITESAMPLE) GetProcAddress(mp4v2dll, "MP4WriteSample");
+	if (ex_MP4Read				== NIL ||
+	    ex_MP4CreateEx			== NIL ||
+	    ex_MP4Close				== NIL ||
+	    ex_MP4Optimize			== NIL ||
+	    ex_MP4SetMetadataName		== NIL ||
+	    ex_MP4GetMetadataName		== NIL ||
+	    ex_MP4SetMetadataArtist		== NIL ||
+	    ex_MP4GetMetadataArtist		== NIL ||
+	    ex_MP4SetMetadataComment		== NIL ||
+	    ex_MP4GetMetadataComment		== NIL ||
+	    ex_MP4SetMetadataYear		== NIL ||
+	    ex_MP4GetMetadataYear		== NIL ||
+	    ex_MP4SetMetadataAlbum		== NIL ||
+	    ex_MP4GetMetadataAlbum		== NIL ||
+	    ex_MP4SetMetadataGenre		== NIL ||
+	    ex_MP4GetMetadataGenre		== NIL ||
+	    ex_MP4SetMetadataTrack		== NIL ||
+	    ex_MP4GetMetadataTrack		== NIL ||
+	    ex_MP4GetNumberOfTracks		== NIL ||
+	    ex_MP4FindTrackId			== NIL ||
+	    ex_MP4GetTrackType			== NIL ||
+	    ex_MP4GetTrackESConfiguration	== NIL ||
+	    ex_MP4SetTrackESConfiguration	== NIL ||
+	    ex_MP4GetTrackNumberOfSamples	== NIL ||
+	    ex_MP4SetTimeScale			== NIL ||
+	    ex_MP4SetAudioProfileLevel		== NIL ||
+	    ex_MP4AddAudioTrack			== NIL ||
+	    ex_MP4ReadSample			== NIL ||
+	    ex_MP4WriteSample			== NIL) { FreeMP4V2DLL(); return False; }
 
-	if (ex_MP4Read				== NULL ||
-	    ex_MP4CreateEx			== NULL ||
-	    ex_MP4Close				== NULL ||
-	    ex_MP4Optimize			== NULL ||
-	    ex_MP4SetMetadataName		== NULL ||
-	    ex_MP4GetMetadataName		== NULL ||
-	    ex_MP4SetMetadataArtist		== NULL ||
-	    ex_MP4GetMetadataArtist		== NULL ||
-	    ex_MP4SetMetadataComment		== NULL ||
-	    ex_MP4GetMetadataComment		== NULL ||
-	    ex_MP4SetMetadataYear		== NULL ||
-	    ex_MP4GetMetadataYear		== NULL ||
-	    ex_MP4SetMetadataAlbum		== NULL ||
-	    ex_MP4GetMetadataAlbum		== NULL ||
-	    ex_MP4SetMetadataGenre		== NULL ||
-	    ex_MP4GetMetadataGenre		== NULL ||
-	    ex_MP4SetMetadataTrack		== NULL ||
-	    ex_MP4GetMetadataTrack		== NULL ||
-	    ex_MP4GetNumberOfTracks		== NULL ||
-	    ex_MP4FindTrackId			== NULL ||
-	    ex_MP4GetTrackType			== NULL ||
-	    ex_MP4GetTrackESConfiguration	== NULL ||
-	    ex_MP4SetTrackESConfiguration	== NULL ||
-	    ex_MP4GetTrackNumberOfSamples	== NULL ||
-	    ex_MP4SetTimeScale			== NULL ||
-	    ex_MP4SetAudioProfileLevel		== NULL ||
-	    ex_MP4AddAudioTrack			== NULL ||
-	    ex_MP4ReadSample			== NULL ||
-	    ex_MP4WriteSample			== NULL) { FreeLibrary(mp4v2dll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeMP4V2DLL()
 {
-	FreeLibrary(mp4v2dll);
+	Object::DeleteObject(mp4v2dll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 {
-	flacdll = LoadLibraryA(Application::GetApplicationDirectory().Append("encoders/FLAC.dll"));
+	flacdll = new DynamicLoader("encoders/FLAC");
 
-	if (flacdll == NIL) return false;
+	ex_FLAC__seekable_stream_encoder_new					= (FLAC__SEEKABLE_STREAM_ENCODER_NEW) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_new");
+	ex_FLAC__seekable_stream_encoder_delete					= (FLAC__SEEKABLE_STREAM_ENCODER_DELETE) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_delete");
+	ex_FLAC__seekable_stream_encoder_set_write_callback			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_WRITE_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_write_callback");
+	ex_FLAC__seekable_stream_encoder_set_seek_callback			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_SEEK_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_seek_callback");
+	ex_FLAC__seekable_stream_encoder_set_tell_callback			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_TELL_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_tell_callback");
+	ex_FLAC__seekable_stream_encoder_set_client_data			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_CLIENT_DATA) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_client_data");
+	ex_FLAC__seekable_stream_encoder_init					= (FLAC__SEEKABLE_STREAM_ENCODER_INIT) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_init");
+	ex_FLAC__seekable_stream_encoder_finish					= (FLAC__SEEKABLE_STREAM_ENCODER_FINISH) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_finish");
+	ex_FLAC__seekable_stream_encoder_set_channels				= (FLAC__SEEKABLE_STREAM_ENCODER_SET_CHANNELS) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_channels");
+	ex_FLAC__seekable_stream_encoder_set_bits_per_sample			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_BITS_PER_SAMPLE) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_bits_per_sample");
+	ex_FLAC__seekable_stream_encoder_set_sample_rate			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_SAMPLE_RATE) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_sample_rate");
+	ex_FLAC__seekable_stream_encoder_set_streamable_subset			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_STREAMABLE_SUBSET) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_streamable_subset");
+	ex_FLAC__seekable_stream_encoder_set_do_mid_side_stereo			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_MID_SIDE_STEREO) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_do_mid_side_stereo");
+	ex_FLAC__seekable_stream_encoder_set_loose_mid_side_stereo		= (FLAC__SEEKABLE_STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_loose_mid_side_stereo");
+	ex_FLAC__seekable_stream_encoder_set_blocksize				= (FLAC__SEEKABLE_STREAM_ENCODER_SET_BLOCKSIZE) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_blocksize");
+	ex_FLAC__seekable_stream_encoder_set_max_lpc_order			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_LPC_ORDER) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_max_lpc_order");
+	ex_FLAC__seekable_stream_encoder_set_qlp_coeff_precision		= (FLAC__SEEKABLE_STREAM_ENCODER_SET_QLP_COEFF_PRECISION) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_qlp_coeff_precision");
+	ex_FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search		= (FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search");
+	ex_FLAC__seekable_stream_encoder_set_do_exhaustive_model_search		= (FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_do_exhaustive_model_search");
+	ex_FLAC__seekable_stream_encoder_set_min_residual_partition_order	= (FLAC__SEEKABLE_STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_min_residual_partition_order");
+	ex_FLAC__seekable_stream_encoder_set_max_residual_partition_order	= (FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_max_residual_partition_order");
+	ex_FLAC__seekable_stream_encoder_set_metadata				= (FLAC__SEEKABLE_STREAM_ENCODER_SET_METADATA) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_metadata");
+	ex_FLAC__seekable_stream_encoder_process_interleaved			= (FLAC__SEEKABLE_STREAM_ENCODER_PROCESS_INTERLEAVED) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_process_interleaved");
+	ex_FLAC__seekable_stream_decoder_new					= (FLAC__SEEKABLE_STREAM_DECODER_NEW) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_new");
+	ex_FLAC__seekable_stream_decoder_delete					= (FLAC__SEEKABLE_STREAM_DECODER_DELETE) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_delete");
+	ex_FLAC__seekable_stream_decoder_set_read_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_READ_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_read_callback");
+	ex_FLAC__seekable_stream_decoder_set_write_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_WRITE_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_write_callback");
+	ex_FLAC__seekable_stream_decoder_set_seek_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_SEEK_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_seek_callback");
+	ex_FLAC__seekable_stream_decoder_set_tell_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_TELL_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_tell_callback");
+	ex_FLAC__seekable_stream_decoder_set_length_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_LENGTH_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_length_callback");
+	ex_FLAC__seekable_stream_decoder_set_eof_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_EOF_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_eof_callback");
+	ex_FLAC__seekable_stream_decoder_set_metadata_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_metadata_callback");
+	ex_FLAC__seekable_stream_decoder_set_error_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_ERROR_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_error_callback");
+	ex_FLAC__seekable_stream_decoder_set_client_data			= (FLAC__SEEKABLE_STREAM_DECODER_SET_CLIENT_DATA) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_client_data");
+	ex_FLAC__seekable_stream_decoder_set_metadata_respond			= (FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_RESPOND) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_metadata_respond");
+	ex_FLAC__seekable_stream_decoder_init					= (FLAC__SEEKABLE_STREAM_DECODER_INIT) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_init");
+	ex_FLAC__seekable_stream_decoder_finish					= (FLAC__SEEKABLE_STREAM_DECODER_FINISH) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_finish");
+	ex_FLAC__seekable_stream_decoder_get_channels				= (FLAC__SEEKABLE_STREAM_DECODER_GET_CHANNELS) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_get_channels");
+	ex_FLAC__seekable_stream_decoder_get_bits_per_sample			= (FLAC__SEEKABLE_STREAM_DECODER_GET_BITS_PER_SAMPLE) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_get_bits_per_sample");
+	ex_FLAC__seekable_stream_decoder_get_sample_rate			= (FLAC__SEEKABLE_STREAM_DECODER_GET_SAMPLE_RATE) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_get_sample_rate");
+	ex_FLAC__seekable_stream_decoder_process_until_end_of_metadata		= (FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_process_until_end_of_metadata");
+	ex_FLAC__seekable_stream_decoder_process_until_end_of_stream		= (FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_process_until_end_of_stream");
+	ex_FLAC__metadata_object_new						= (FLAC__METADATA_OBJECT_NEW) flacdll->GetFunctionAddress("FLAC__metadata_object_new");
+	ex_FLAC__metadata_object_delete						= (FLAC__METADATA_OBJECT_DELETE) flacdll->GetFunctionAddress("FLAC__metadata_object_delete");
+	ex_FLAC__metadata_object_vorbiscomment_append_comment			= (FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT) flacdll->GetFunctionAddress("FLAC__metadata_object_vorbiscomment_append_comment");
+	ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= (FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR) flacdll->GetFunctionAddress("FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair");
 
-	ex_FLAC__stream_decoder_new				= (FLAC__STREAM_DECODER_NEW) GetProcAddress(flacdll, "FLAC__stream_decoder_new");
-	ex_FLAC__stream_decoder_delete				= (FLAC__STREAM_DECODER_DELETE) GetProcAddress(flacdll, "FLAC__stream_decoder_delete");
-	ex_FLAC__stream_decoder_set_read_callback		= (FLAC__STREAM_DECODER_SET_READ_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_read_callback");
-	ex_FLAC__stream_decoder_set_write_callback		= (FLAC__STREAM_DECODER_SET_WRITE_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_write_callback");
-	ex_FLAC__stream_decoder_set_metadata_callback		= (FLAC__STREAM_DECODER_SET_METADATA_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_metadata_callback");
-	ex_FLAC__stream_decoder_set_error_callback		= (FLAC__STREAM_DECODER_SET_ERROR_CALLBACK) GetProcAddress(flacdll, "FLAC__stream_decoder_set_error_callback");
-	ex_FLAC__stream_decoder_set_client_data			= (FLAC__STREAM_DECODER_SET_CLIENT_DATA) GetProcAddress(flacdll, "FLAC__stream_decoder_set_client_data");
-	ex_FLAC__stream_decoder_init				= (FLAC__STREAM_DECODER_INIT) GetProcAddress(flacdll, "FLAC__stream_decoder_init");
-	ex_FLAC__stream_decoder_finish				= (FLAC__STREAM_DECODER_FINISH) GetProcAddress(flacdll, "FLAC__stream_decoder_finish");
-	ex_FLAC__stream_decoder_get_channels			= (FLAC__STREAM_DECODER_GET_CHANNELS) GetProcAddress(flacdll, "FLAC__stream_decoder_get_channels");
-	ex_FLAC__stream_decoder_get_bits_per_sample		= (FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE) GetProcAddress(flacdll, "FLAC__stream_decoder_get_bits_per_sample");
-	ex_FLAC__stream_decoder_get_sample_rate			= (FLAC__STREAM_DECODER_GET_SAMPLE_RATE) GetProcAddress(flacdll, "FLAC__stream_decoder_get_sample_rate");
-	ex_FLAC__stream_decoder_process_until_end_of_metadata	= (FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA) GetProcAddress(flacdll, "FLAC__stream_decoder_process_until_end_of_metadata");
-	ex_FLAC__stream_decoder_process_until_end_of_stream	= (FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM) GetProcAddress(flacdll, "FLAC__stream_decoder_process_until_end_of_stream");
+	if (ex_FLAC__seekable_stream_encoder_new				== NIL ||
+	    ex_FLAC__seekable_stream_encoder_delete				== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_write_callback			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_seek_callback			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_tell_callback			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_client_data			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_init				== NIL ||
+	    ex_FLAC__seekable_stream_encoder_finish				== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_channels			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_bits_per_sample		== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_sample_rate			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_streamable_subset		== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_do_mid_side_stereo		== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_loose_mid_side_stereo		== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_blocksize			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_max_lpc_order			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_qlp_coeff_precision		== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search	== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_do_exhaustive_model_search	== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_min_residual_partition_order	== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_max_residual_partition_order	== NIL ||
+	    ex_FLAC__seekable_stream_encoder_set_metadata			== NIL ||
+	    ex_FLAC__seekable_stream_encoder_process_interleaved		== NIL ||
+	    ex_FLAC__seekable_stream_decoder_new				== NIL ||
+	    ex_FLAC__seekable_stream_decoder_delete				== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_read_callback			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_write_callback			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_seek_callback			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_tell_callback			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_length_callback		== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_eof_callback			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_metadata_callback		== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_error_callback			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_client_data			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_set_metadata_respond		== NIL ||
+	    ex_FLAC__seekable_stream_decoder_init				== NIL ||
+	    ex_FLAC__seekable_stream_decoder_finish				== NIL ||
+	    ex_FLAC__seekable_stream_decoder_get_channels			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_get_bits_per_sample		== NIL ||
+	    ex_FLAC__seekable_stream_decoder_get_sample_rate			== NIL ||
+	    ex_FLAC__seekable_stream_decoder_process_until_end_of_metadata	== NIL ||
+	    ex_FLAC__seekable_stream_decoder_process_until_end_of_stream	== NIL ||
+	    ex_FLAC__metadata_object_new					== NIL ||
+	    ex_FLAC__metadata_object_delete					== NIL ||
+	    ex_FLAC__metadata_object_vorbiscomment_append_comment		== NIL ||
+	    ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	== NIL) { FreeFLACDLL(); return False; }
 
-	if (ex_FLAC__stream_decoder_new					== NULL ||
-	    ex_FLAC__stream_decoder_delete				== NULL ||
-	    ex_FLAC__stream_decoder_set_read_callback			== NULL ||
-	    ex_FLAC__stream_decoder_set_write_callback			== NULL ||
-	    ex_FLAC__stream_decoder_set_metadata_callback		== NULL ||
-	    ex_FLAC__stream_decoder_set_error_callback			== NULL ||
-	    ex_FLAC__stream_decoder_set_client_data			== NULL ||
-	    ex_FLAC__stream_decoder_init				== NULL ||
-	    ex_FLAC__stream_decoder_finish				== NULL ||
-	    ex_FLAC__stream_decoder_get_channels			== NULL ||
-	    ex_FLAC__stream_decoder_get_bits_per_sample			== NULL ||
-	    ex_FLAC__stream_decoder_get_sample_rate			== NULL ||
-	    ex_FLAC__stream_decoder_process_until_end_of_metadata	== NULL ||
-	    ex_FLAC__stream_decoder_process_until_end_of_stream		== NULL) { FreeLibrary(flacdll); return false; }
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeFLACDLL()
 {
-	FreeLibrary(flacdll);
+	Object::DeleteObject(flacdll);
 }
 
 Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
@@ -831,23 +903,23 @@ Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 	{
 		do
 		{
-			HMODULE	 dll = LoadLibraryA(fileData.name);
+			DynamicLoader	*dll = new DynamicLoader(fileData.name);
 
 			if (dll != NIL)
 			{
-				In_Module *(*proc)() = (In_Module *(*)()) GetProcAddress(dll, "winampGetInModule2");
+				In_Module *(*proc)() = (In_Module *(*)()) dll->GetFunctionAddress("winampGetInModule2");
 
 				if (proc != NIL)
 				{
 					winamp_in_plugins.AddEntry(dll);
 					winamp_in_modules.AddEntry(proc());
 
-					proc()->hDllInstance = dll;
+					proc()->hDllInstance = (HINSTANCE) dll->GetSystemModuleHandle();
 					proc()->Init();
 				}
 				else
 				{
-					FreeLibrary(dll);
+					Object::DeleteObject(dll);
 				}
 			}
 		}
@@ -860,23 +932,23 @@ Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 	{
 		do
 		{
-			HMODULE	 dll = LoadLibraryA(fileData.name);
+			DynamicLoader	*dll = new DynamicLoader(fileData.name);
 
 			if (dll != NIL)
 			{
-				Out_Module *(*proc)() = (Out_Module *(*)()) GetProcAddress(dll, "winampGetOutModule");
+				Out_Module *(*proc)() = (Out_Module *(*)()) dll->GetFunctionAddress("winampGetOutModule");
 
 				if (proc != NIL)
 				{
 					winamp_out_plugins.AddEntry(dll);
 					winamp_out_modules.AddEntry(proc());
 
-					proc()->hDllInstance = dll;
+					proc()->hDllInstance = (HINSTANCE) dll->GetSystemModuleHandle();
 					proc()->Init();
 				}
 				else
 				{
-					FreeLibrary(dll);
+					Object::DeleteObject(dll);
 				}
 			}
 		}
@@ -896,7 +968,7 @@ Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
 	{
 		winamp_in_modules.GetNthEntry(i)->Quit();
 
-		FreeLibrary(winamp_in_plugins.GetNthEntry(i));
+		Object::DeleteObject(winamp_in_plugins.GetNthEntry(i));
 	}
 
 	winamp_in_plugins.RemoveAll();
@@ -906,7 +978,7 @@ Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
 	{
 		winamp_out_modules.GetNthEntry(j)->Quit();
 
-		FreeLibrary(winamp_out_plugins.GetNthEntry(j));
+		Object::DeleteObject(winamp_out_plugins.GetNthEntry(j));
 	}
 
 	winamp_out_plugins.RemoveAll();

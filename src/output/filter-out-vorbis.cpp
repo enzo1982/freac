@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -28,7 +28,7 @@ BonkEnc::FilterOutVORBIS::~FilterOutVORBIS()
 {
 }
 
-bool BonkEnc::FilterOutVORBIS::Activate()
+Bool BonkEnc::FilterOutVORBIS::Activate()
 {
 	srand(clock());
 
@@ -134,7 +134,7 @@ bool BonkEnc::FilterOutVORBIS::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterOutVORBIS::Deactivate()
+Bool BonkEnc::FilterOutVORBIS::Deactivate()
 {
 	ex_vorbis_analysis_wrote(&vd, 0);
 
@@ -185,7 +185,7 @@ bool BonkEnc::FilterOutVORBIS::Deactivate()
 	return true;
 }
 
-int BonkEnc::FilterOutVORBIS::WriteData(unsigned char *data, int size)
+Int BonkEnc::FilterOutVORBIS::WriteData(UnsignedByte *data, Int size)
 {
 	int	 dataLength = 0;
 	int	 samples_size = size / (format->bits / 8);

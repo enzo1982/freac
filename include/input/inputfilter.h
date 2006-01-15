@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,13 +11,17 @@
 #ifndef _H_INPUTFILTER_
 #define _H_INPUTFILTER_
 
-#include <iolib-cxx.h>
+#include <smooth/io/filter.h>
+#include <smooth/io/driver.h>
 #include "../bonkenc.h"
-#include "../dllinterfaces.h"
+
+#include <3rdparty/id3.h>
+
+using namespace smooth::IO;
 
 namespace BonkEnc
 {
-	class InputFilter : public IOLibFilter
+	class BEEXPORT InputFilter : public Filter
 	{
 		private:
 			Bool		 ParseID3V2Tag(ID3Tag *, Track *);
@@ -29,23 +33,18 @@ namespace BonkEnc
 			Config		*currentConfig;
 
 			Bool		 ParseID3V2Tag(unsigned char *, Int, Track *);
-			Bool		 ParseID3V2Tag(String, Track *);
+			Bool		 ParseID3V2Tag(const String &, Track *);
 
 			String		 GetID3CategoryName(Int);
-
-			IOLibDriver	*iolibDriver;
-
-			InStream	*OpenFile(String);
-			Int		 CloseFile(InStream *);
 		public:
 			Int		 error;
 
 					 InputFilter(Config *, Track *);
-					~InputFilter();
+			virtual		~InputFilter();
 
-			virtual int	 ReadData(unsigned char **, int) = 0;
+			virtual Int	 ReadData(UnsignedByte **, Int) = 0;
 
-			virtual Track	*GetFileInfo(String) = 0;
+			virtual Track	*GetFileInfo(const String &) = 0;
 			virtual Bool	 SetFileSize(UnsignedInt);
 
 			Int		 GetInBytes();

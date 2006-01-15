@@ -2,7 +2,11 @@
 #define UTILITY_H
 
 #include <stdlib.h>
-#include <iolib-cxx.h>
+
+#include <smooth/io/instream.h>
+#include <smooth/io/outstream.h>
+
+using namespace smooth::IO;
 
 typedef unsigned long  uint32;
 typedef unsigned short uint16;

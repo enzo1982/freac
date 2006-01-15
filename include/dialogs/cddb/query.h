@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,33 +17,34 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class cddbQueryDlg : public Dialog
+namespace BonkEnc
 {
-	private:
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
+	class cddbQueryDlg : public Dialog
+	{
+		private:
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-		Text		*text_status;
-		Progressbar	*prog_status;
-		Button		*btn_cancel;
+			Text		*text_status;
+			Progressbar	*prog_status;
+			Button		*btn_cancel;
 
-		Config		*currentConfig;
+			Config		*currentConfig;
 
-		Array<Track *>	*rArray;
+			Array<Track *>	*rArray;
 
-		Thread		*queryThread;
+			Thread		*queryThread;
 
-		Void		 Cancel();
-		Int		 QueryThread(Thread *);
-	public:
-				 cddbQueryDlg();
-				~cddbQueryDlg();
+			Void		 Cancel();
+			Int		 QueryThread(Thread *);
+		public:
+					 cddbQueryDlg();
+					~cddbQueryDlg();
 
-		Int		 ShowDialog();
-		Array<Track *>	*QueryCDDB();
+			const Error	&ShowDialog();
+
+			Array<Track *>	*QueryCDDB();
+	};
 };
 
 #endif

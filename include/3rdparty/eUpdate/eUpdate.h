@@ -1,3 +1,9 @@
+ /* easyUpdate online update system
+  * Copyright (C) 2004-2006 chapter.0 software solutions
+  *
+  * This file may be distributed freely. There are no license
+  * terms or any other legal requirements for this file. */
+
 #ifndef _H_EASYUPDATE_
 #define _H_EASYUPDATE_
 
@@ -7,38 +13,27 @@
 	#define DLLAPI __declspec (dllimport)
 #endif
 
+#define EUCCONV _stdcall
+
 extern "C"
 {
-/* Use this function to automate the update process.
-   easyUpdate will show a dialog box presenting the
-   available updates and let the user choose what
-   packages to install. */
+/* Use these functions to create and destroy an update context. */
 
-	DLLAPI void	 eUpdate_AutomaticUpdate		(const char *, const char *, const char *, bool, int);
+	DLLAPI EUCCONV void	*eUpdate_CreateUpdateContext		(const char *, const char *, const char *);
+	DLLAPI EUCCONV int	 eUpdate_FreeUpdateContext		(void *);
 
-/* Use these functions to implement your own GUI for
-   updating your software. */
+/* Use this function to set the name of the language file to be used by easyUpdate. */
 
-	DLLAPI void	*eUpdate_CreateUpdateContext		(const char *);
-	DLLAPI int	 eUpdate_FreeUpdateContext		(void *);
+	DLLAPI EUCCONV bool	 eUpdate_SetLanguage			(void *, const char *);
 
-	DLLAPI int	 eUpdate_CheckForUpdates		(void *, const char *);
+/* Use this function to check if new updates are available. It will return the number of available new updates. */
 
-	DLLAPI char	*eUpdate_GetLatestVersionID		(void *);
-	DLLAPI char	*eUpdate_GetLatestPossibleUpdateID	(void *, char *);
+	DLLAPI EUCCONV int	 eUpdate_CheckForNewUpdates		(void *, bool);
 
-	DLLAPI int	 eUpdate_GetNumberOfVersions		(void *);
-	DLLAPI char	*eUpdate_GetNthVersionID		(void *, int);
-	DLLAPI char	*eUpdate_GetNthVersionDescription	(void *, int);
+/* Use this function to automate the update process. easyUpdate will show a dialog box presenting the
+   available updates and let the user choose what packages to install. */
 
-	DLLAPI int	 eUpdate_GetNumberOfOptions		(void *);
-	DLLAPI char	*eUpdate_GetNthOptionID			(void *, int);
-	DLLAPI char	*eUpdate_GetNthOptionDescription	(void *, int);
-
-	DLLAPI int	 eUpdate_DownloadVersion		(void *, const char *, const char *);
-	DLLAPI int	 eUpdate_DownloadOption			(void *, const char *, const char *);
-
-	DLLAPI void	 eUpdate_PerformUpdate			(void *);
+	DLLAPI EUCCONV void	 eUpdate_AutomaticUpdate		(void *);
 }
 
 #endif

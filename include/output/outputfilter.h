@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,30 +11,28 @@
 #ifndef _H_OUTPUTFILTER_
 #define _H_OUTPUTFILTER_
 
-#include <iolib-cxx.h>
+#include <smooth/io/driver.h>
+#include <smooth/io/filter.h>
 #include "../bonkenc.h"
+
+using namespace smooth::IO;
 
 namespace BonkEnc
 {
-	class OutputFilter : public IOLibFilter
+	class BEEXPORT OutputFilter : public Filter
 	{
 		protected:
 			Track		*format;
 			Config		*currentConfig;
 
 			Int		 RenderID3Tag(Int, unsigned char *);
-
-			IOLibDriver	*iolibDriver;
-
-			OutStream	*CreateFile(String);
-			Int		 CloseFile(OutStream *);
 		public:
 			int		 error;
 
 					 OutputFilter(Config *, Track *);
-					~OutputFilter();
+			virtual		~OutputFilter();
 
-			virtual int	 WriteData(unsigned char *, int) = 0;
+			virtual Int	 WriteData(UnsignedByte *, Int) = 0;
 	};
 };
 

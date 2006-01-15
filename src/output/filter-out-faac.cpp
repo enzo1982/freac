@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -28,7 +28,7 @@ BonkEnc::FilterOutFAAC::~FilterOutFAAC()
 {
 }
 
-bool BonkEnc::FilterOutFAAC::Activate()
+Bool BonkEnc::FilterOutFAAC::Activate()
 {
 	unsigned long	 samplesSize	= 0;
 	unsigned long	 bufferSize	= 0;
@@ -69,7 +69,7 @@ bool BonkEnc::FilterOutFAAC::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterOutFAAC::Deactivate()
+Bool BonkEnc::FilterOutFAAC::Deactivate()
 {
 	unsigned long	 bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
 
@@ -80,7 +80,7 @@ bool BonkEnc::FilterOutFAAC::Deactivate()
 	return true;
 }
 
-int BonkEnc::FilterOutFAAC::WriteData(unsigned char *data, int size)
+Int BonkEnc::FilterOutFAAC::WriteData(UnsignedByte *data, Int size)
 {
 	unsigned long	 bytes = 0;
 

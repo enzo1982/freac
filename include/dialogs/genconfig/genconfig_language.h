@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,28 +17,28 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class GeneralSettingsLayerLanguage : public Layer
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_language;
-		Text		*text_language;
-		ComboBox	*combo_language;
-		GroupBox	*group_info;
-		Text		*text_info;
-		Hyperlink	*link_url;
+	class GeneralSettingsLayerLanguage : public Layer
+	{
+		private:
+			GroupBox	*group_language;
+			Text		*text_language;
+			ComboBox	*combo_language;
+			GroupBox	*group_info;
+			Text		*text_info;
+			Hyperlink	*link_url;
 
-		Config		*currentConfig;
-	slots:
-		Void		 SelectLanguage();
-	public:
-				 GeneralSettingsLayerLanguage();
-				~GeneralSettingsLayerLanguage();
+			Config		*currentConfig;
+		slots:
+			Void		 SelectLanguage();
+		public:
+					 GeneralSettingsLayerLanguage();
+					~GeneralSettingsLayerLanguage();
 
-		Bool		 IsLanguageChanged();
-		String		 GetSelectedLanguageID();
+			Bool		 IsLanguageChanged();
+			String		 GetSelectedLanguageID();
+	};
 };
 
 #endif

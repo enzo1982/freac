@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,35 +17,35 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class GeneralSettingsLayerPlugins : public Layer
+namespace BonkEnc
 {
-	private:
-		TabWidget	*tabs_plugins;
-		Layer		*layer_input;
-		ListBox		*list_input;
-		Button		*button_input;
-		Button		*button_input_about;
-		Layer		*layer_output;
-		ListBox		*list_output;
-		Button		*button_output;
-		Button		*button_output_about;
+	class GeneralSettingsLayerPlugins : public Layer
+	{
+		private:
+			TabWidget	*tabs_plugins;
+			Layer		*layer_input;
+			ListBox		*list_input;
+			Button		*button_input;
+			Button		*button_input_about;
+			Layer		*layer_output;
+			ListBox		*list_output;
+			Button		*button_output;
+			Button		*button_output_about;
 
-		Config		*currentConfig;
-	slots:
-		Void		 SelectInputPlugin();
-		Void		 SelectOutputPlugin();
-		Void		 ConfigureInputPlugin();
-		Void		 ConfigureOutputPlugin();
-		Void		 AboutInputPlugin();
-		Void		 AboutOutputPlugin();
-	public:
-				 GeneralSettingsLayerPlugins();
-				~GeneralSettingsLayerPlugins();
+			Config		*currentConfig;
+		slots:
+			Void		 SelectInputPlugin();
+			Void		 SelectOutputPlugin();
+			Void		 ConfigureInputPlugin();
+			Void		 ConfigureOutputPlugin();
+			Void		 AboutInputPlugin();
+			Void		 AboutOutputPlugin();
+		public:
+					 GeneralSettingsLayerPlugins();
+					~GeneralSettingsLayerPlugins();
 
-		Int		 GetSelectedOutputPlugin();
+			Int		 GetSelectedOutputPlugin();
+	};
 };
 
 #endif

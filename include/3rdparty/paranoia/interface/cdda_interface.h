@@ -10,6 +10,10 @@
 #ifndef _cdda_interface_h_
 #define _cdda_interface_h_
 
+#ifndef _MSC_VER
+#include <stdint.h>
+#endif
+
 #ifndef CD_FRAMESIZE
 #define CD_FRAMESIZE 2048
 #endif

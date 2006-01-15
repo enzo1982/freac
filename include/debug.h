@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,29 +14,30 @@
 #include <smooth.h>
 
 using namespace smooth;
+using namespace smooth::IO;
 
 namespace BonkEnc
 {
-	class Debug
+	class BEEXPORT Debug
 	{
 		private:
 			OutStream	*file_out;
-			IOLibDriver	*driver_out;
+			Driver		*driver_out;
 
 			Int		 tabLevel;
 
 			Array<String>	 methods;
 		public:
-					 Debug(String);
+					 Debug(const String &);
 					~Debug();
 
-			Int		 OutputString(String);
-			Int		 OutputLine(String);
+			Int		 OutputString(const String &);
+			Int		 OutputLine(const String &);
 
-			Int		 OutputVariable(String, Int);
-			Int		 OutputVariable(String, String);
+			Int		 OutputVariable(const String &, Int);
+			Int		 OutputVariable(const String &, const String &);
 
-			Int		 EnterMethod(String);
+			Int		 EnterMethod(const String &);
 			Int		 LeaveMethod();
 	};
 };

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,7 +19,7 @@ BonkEnc::FilterOutWAVE::~FilterOutWAVE()
 {
 }
 
-bool BonkEnc::FilterOutWAVE::Activate()
+Bool BonkEnc::FilterOutWAVE::Activate()
 {
 	Buffer<unsigned char>	 buffer(44);
 	OutStream		*out = new OutStream(STREAM_BUFFER, buffer, 44);
@@ -45,7 +45,7 @@ bool BonkEnc::FilterOutWAVE::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterOutWAVE::Deactivate()
+Bool BonkEnc::FilterOutWAVE::Deactivate()
 {
 	int	 size = nOfSamples * (format->bits / 8) + 36;
 
@@ -60,7 +60,7 @@ bool BonkEnc::FilterOutWAVE::Deactivate()
 	return true;
 }
 
-int BonkEnc::FilterOutWAVE::WriteData(unsigned char *data, int size)
+Int BonkEnc::FilterOutWAVE::WriteData(UnsignedByte *data, Int size)
 {
 	nOfSamples += (size / (format->bits / 8));
 

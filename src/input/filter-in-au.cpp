@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,7 +19,7 @@ BonkEnc::FilterInAU::~FilterInAU()
 {
 }
 
-bool BonkEnc::FilterInAU::Activate()
+Bool BonkEnc::FilterInAU::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -34,12 +34,12 @@ bool BonkEnc::FilterInAU::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterInAU::Deactivate()
+Bool BonkEnc::FilterInAU::Deactivate()
 {
 	return true;
 }
 
-int BonkEnc::FilterInAU::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInAU::ReadData(UnsignedByte **data, Int size)
 {
 	buffer.Resize(size);
 
@@ -50,10 +50,10 @@ int BonkEnc::FilterInAU::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-Track *BonkEnc::FilterInAU::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInAU::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = OpenFile(inFile);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	// TODO: Add more checking to this!
 
@@ -75,7 +75,7 @@ Track *BonkEnc::FilterInAU::GetFileInfo(String inFile)
 	nFormat->rate = uint32(f_in->InputNumberRaw(4));
 	nFormat->channels = uint32(f_in->InputNumberRaw(4));
 
-	CloseFile(f_in);
+	delete f_in;
 
 	return nFormat;
 }

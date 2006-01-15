@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,7 +16,7 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	bitrate = GetSliderValue();
 	crc = currentConfig->blade_crc;
@@ -25,7 +25,7 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	priv = currentConfig->blade_private;
 	dualchannel = currentConfig->blade_dualchannel;
 
-	mainWnd			= new Window(bonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "BladeEnc"));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "BladeEnc"), Point(140, 140), Size(364, 242));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -34,14 +34,14 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&ConfigureBladeEnc::Cancel, this);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onAction.Connect(&ConfigureBladeEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&ConfigureBladeEnc::OK, this);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onAction.Connect(&ConfigureBladeEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -49,29 +49,29 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	size.cx = 168;
 	size.cy = 43;
 
-	group_bit		= new GroupBox(bonkEnc::i18n->TranslateString("Bitrate"), pos, size);
+	group_bit		= new GroupBox(BonkEnc::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 176;
 
-	group_copyright		= new GroupBox(bonkEnc::i18n->TranslateString("Copyright bit"), pos, size);
+	group_copyright		= new GroupBox(BonkEnc::i18n->TranslateString("Copyright bit"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 
-	group_crc		= new GroupBox(bonkEnc::i18n->TranslateString("CRC"), pos, size);
+	group_crc		= new GroupBox(BonkEnc::i18n->TranslateString("CRC"), pos, size);
 
 	pos.x += 176;
 
-	group_original		= new GroupBox(bonkEnc::i18n->TranslateString("Original bit"), pos, size);
+	group_original		= new GroupBox(BonkEnc::i18n->TranslateString("Original bit"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 
-	group_dualchannel	= new GroupBox(bonkEnc::i18n->TranslateString("Channels"), pos, size);
+	group_dualchannel	= new GroupBox(BonkEnc::i18n->TranslateString("Channels"), pos, size);
 
 	pos.x += 176;
 
-	group_private		= new GroupBox(bonkEnc::i18n->TranslateString("Private bit"), pos, size);
+	group_private		= new GroupBox(BonkEnc::i18n->TranslateString("Private bit"), pos, size);
 
 	pos.x = 17;
 	pos.y = 24;
@@ -79,7 +79,7 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	size.cy = 0;
 
 	slider_bit		= new Slider(pos, size, OR_HORZ, &bitrate, 0, 13);
-	slider_bit->onClick.Connect(&ConfigureBladeEnc::SetBitrate, this);
+	slider_bit->onValueChange.Connect(&ConfigureBladeEnc::SetBitrate, this);
 
 	pos.x += 110;
 	pos.y += 2;
@@ -91,29 +91,29 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	pos.y -= 2;
 	size.cx += 44;
 
-	check_copyright		= new CheckBox(bonkEnc::i18n->TranslateString("Set Copyright bit"), pos, size, &copyright);
+	check_copyright		= new CheckBox(BonkEnc::i18n->TranslateString("Set Copyright bit"), pos, size, &copyright);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_crc		= new CheckBox(bonkEnc::i18n->TranslateString("Enable CRC"), pos, size, &crc);
+	check_crc		= new CheckBox(BonkEnc::i18n->TranslateString("Enable CRC"), pos, size, &crc);
 
 	pos.x += 176;
 
-	check_original		= new CheckBox(bonkEnc::i18n->TranslateString("Set Original bit"), pos, size, &original);
+	check_original		= new CheckBox(BonkEnc::i18n->TranslateString("Set Original bit"), pos, size, &original);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_dualchannel	= new CheckBox(bonkEnc::i18n->TranslateString("Dual channel encoding"), pos, size, &dualchannel);
+	check_dualchannel	= new CheckBox(BonkEnc::i18n->TranslateString("Dual channel encoding"), pos, size, &dualchannel);
 
 	pos.x += 176;
 
-	check_private		= new CheckBox(bonkEnc::i18n->TranslateString("Set Private bit"), pos, size, &priv);
+	check_private		= new CheckBox(BonkEnc::i18n->TranslateString("Set Private bit"), pos, size, &priv);
 
 	RegisterObject(mainWnd);
 
@@ -136,37 +136,36 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	mainWnd->RegisterObject(divbar);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(364, 242));
+	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
 BonkEnc::ConfigureBladeEnc::~ConfigureBladeEnc()
 {
-	delete mainWnd_titlebar;
-	delete mainWnd;
-	delete divbar;
-	delete group_bit;
-	delete slider_bit;
-	delete text_bit;
-	delete btn_ok;
-	delete btn_cancel;
-	delete group_crc;
-	delete check_crc;
-	delete group_copyright;
-	delete check_copyright;
-	delete group_original;
-	delete check_original;
-	delete group_private;
-	delete check_private;
-	delete group_dualchannel;
-	delete check_dualchannel;
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(divbar);
+	DeleteObject(group_bit);
+	DeleteObject(slider_bit);
+	DeleteObject(text_bit);
+	DeleteObject(btn_ok);
+	DeleteObject(btn_cancel);
+	DeleteObject(group_crc);
+	DeleteObject(check_crc);
+	DeleteObject(group_copyright);
+	DeleteObject(check_copyright);
+	DeleteObject(group_original);
+	DeleteObject(check_original);
+	DeleteObject(group_private);
+	DeleteObject(check_private);
+	DeleteObject(group_dualchannel);
+	DeleteObject(check_dualchannel);
 }
 
-Int BonkEnc::ConfigureBladeEnc::ShowDialog()
+const Error &BonkEnc::ConfigureBladeEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
-	return mainWnd->value;
+	return error;
 }
 
 Void BonkEnc::ConfigureBladeEnc::OK()

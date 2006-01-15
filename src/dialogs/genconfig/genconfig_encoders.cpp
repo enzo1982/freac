@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,6 +17,7 @@
 #include <dialogs/lameconfig.h>
 #include <dialogs/vorbisconfig.h>
 #include <dialogs/faacconfig.h>
+#include <dialogs/flacconfig.h>
 #include <dialogs/tvqconfig.h>
 
 #include <3rdparty/bladedll/bladedll.h>
@@ -24,12 +25,12 @@
 #include <3rdparty/vorbis/vorbisenc.h>
 #include <3rdparty/faac/faac.h>
 
-GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i18n->TranslateString("Encoders"))
+BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(BonkEnc::i18n->TranslateString("Encoders"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	onTheFly	= currentConfig->enc_onTheFly;
 	keepWaves	= currentConfig->enc_keepWaves;
@@ -40,7 +41,7 @@ GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i1
 	size.cx	= 344;
 	size.cy	= 43;
 
-	group_encoder	= new GroupBox(bonkEnc::i18n->TranslateString("Encoder"), pos, size);
+	group_encoder	= new GroupBox(BonkEnc::i18n->TranslateString("Encoder"), pos, size);
 
 	pos.x	= 17;
 	pos.y	= 23;
@@ -77,8 +78,9 @@ GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i1
 		combo_encoder->AddEntry(String("FAAC MP4/AAC Encoder ").Append(faacVersion));
 	}
 
+	if (currentConfig->enable_flac)		combo_encoder->AddEntry(String("FLAC Audio Encoder v1.1.2"));
 	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME MP3 Encoder v").Append(ex_get_lame_short_version()));
-	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.1.1"));
+	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.1.2"));
 
 	if (currentConfig->enable_tvq)
 	{
@@ -97,15 +99,15 @@ GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i1
 	pos.x	+= 194;
 	size.cx	= 130;
 
-	button_config	= new Button(bonkEnc::i18n->TranslateString("Configure encoder"), NIL, pos, size);
-	button_config->onClick.Connect(&GeneralSettingsLayerEncoders::ConfigureEncoder, this);
+	button_config	= new Button(BonkEnc::i18n->TranslateString("Configure encoder"), NIL, pos, size);
+	button_config->onAction.Connect(&GeneralSettingsLayerEncoders::ConfigureEncoder, this);
 
 	pos.x	= 7;
 	pos.y	= 66;
 	size.cx	= 344;
 	size.cy	= 43;
 
-	group_outdir	= new GroupBox(bonkEnc::i18n->TranslateString("Output directory"), pos, size);
+	group_outdir	= new GroupBox(BonkEnc::i18n->TranslateString("Output directory"), pos, size);
 
 	pos.x	= 17;
 	pos.y	+= 12;
@@ -118,15 +120,15 @@ GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i1
 	pos.y	-= 1;
 	size.cx	= 0;
 
-	button_outdir_browse= new Button(bonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
-	button_outdir_browse->onClick.Connect(&GeneralSettingsLayerEncoders::SelectDir, this);
+	button_outdir_browse= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	button_outdir_browse->onAction.Connect(&GeneralSettingsLayerEncoders::SelectDir, this);
 
 	pos.x	= 7;
 	pos.y	= 121;
 	size.cx	= 344;
 	size.cy	= 43;
 
-	group_filename	= new GroupBox(bonkEnc::i18n->TranslateString("Filename pattern"), pos, size);
+	group_filename	= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), pos, size);
 
 	pos.x	= 17;
 	pos.y	+= 12;
@@ -153,19 +155,19 @@ GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i1
 	size.cx	= 178;
 	size.cy	= 68;
 
-	group_options	= new GroupBox(bonkEnc::i18n->TranslateString("Options"), pos, size);
+	group_options	= new GroupBox(BonkEnc::i18n->TranslateString("Options"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_onTheFly	= new CheckBox(bonkEnc::i18n->TranslateString("Encode \'On-The-Fly\'"), pos, size, &onTheFly);
-	check_onTheFly->onClick.Connect(&GeneralSettingsLayerEncoders::ToggleOnTheFly, this);
+	check_onTheFly	= new CheckBox(BonkEnc::i18n->TranslateString("Encode \'On-The-Fly\'"), pos, size, &onTheFly);
+	check_onTheFly->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleOnTheFly, this);
 
 	pos.y += 26;
 
-	check_keepWaves	= new CheckBox(bonkEnc::i18n->TranslateString("Keep ripped wave files"), pos, size, &keepWaves);
+	check_keepWaves	= new CheckBox(BonkEnc::i18n->TranslateString("Keep ripped wave files"), pos, size, &keepWaves);
 
 	ToggleOnTheFly();
 
@@ -174,14 +176,14 @@ GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i1
 	size.cx	= 178;
 	size.cy	= 43;
 
-	group_unicode	= new GroupBox(bonkEnc::i18n->TranslateString("Unicode"), pos, size);
+	group_unicode	= new GroupBox(BonkEnc::i18n->TranslateString("Unicode"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_unicode_files= new CheckBox(bonkEnc::i18n->TranslateString("Use Unicode filenames"), pos, size, &unicode_files);
+	check_unicode_files= new CheckBox(BonkEnc::i18n->TranslateString("Use Unicode filenames"), pos, size, &unicode_files);
 
 	if (!Setup::enableUnicode) check_unicode_files->Deactivate();
 
@@ -200,7 +202,7 @@ GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(bonkEnc::i1
 	RegisterObject(check_unicode_files);
 }
 
-GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
+BonkEnc::GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
 {
 	DeleteObject(group_encoder);
 	DeleteObject(combo_encoder);
@@ -218,15 +220,15 @@ GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
 	DeleteObject(check_unicode_files);
 }
 
-Void GeneralSettingsLayerEncoders::SelectDir()
+Void BonkEnc::GeneralSettingsLayerEncoders::SelectDir()
 {
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(bonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
 	dialog->SetDirName(edit_outdir->GetText());
 
-	if (dialog->ShowDialog() == Success)
+	if (dialog->ShowDialog() == Success())
 	{
 		edit_outdir->SetText(dialog->GetDirName());
 	}
@@ -234,11 +236,11 @@ Void GeneralSettingsLayerEncoders::SelectDir()
 	DeleteObject(dialog);
 }
 
-Void GeneralSettingsLayerEncoders::ConfigureEncoder()
+Void BonkEnc::GeneralSettingsLayerEncoders::ConfigureEncoder()
 {
 	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WAVE)
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), bonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), BonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
 
 		return;
 	}
@@ -250,6 +252,7 @@ Void GeneralSettingsLayerEncoders::ConfigureEncoder()
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_LAMEENC)	dlg = new ConfigureLameEnc();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_VORBISENC)	dlg = new ConfigureVorbisEnc();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FAAC)	dlg = new ConfigureFAAC();
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FLAC)	dlg = new ConfigureFLAC();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_TVQ)	dlg = new ConfigureTVQ();
 
 	dlg->ShowDialog();
@@ -257,38 +260,38 @@ Void GeneralSettingsLayerEncoders::ConfigureEncoder()
 	DeleteObject(dlg);
 }
 
-Void GeneralSettingsLayerEncoders::ToggleOnTheFly()
+Void BonkEnc::GeneralSettingsLayerEncoders::ToggleOnTheFly()
 {
 	if (onTheFly)	check_keepWaves->Deactivate();
 	else		check_keepWaves->Activate();
 }
 
-Int GeneralSettingsLayerEncoders::GetSelectedEncoder()
+Int BonkEnc::GeneralSettingsLayerEncoders::GetSelectedEncoder()
 {
 	return combo_encoder->GetSelectedEntryNumber();
 }
 
-Bool GeneralSettingsLayerEncoders::GetOnTheFly()
+Bool BonkEnc::GeneralSettingsLayerEncoders::GetOnTheFly()
 {
 	return onTheFly;
 }
 
-Bool GeneralSettingsLayerEncoders::GetKeepWaveFiles()
+Bool BonkEnc::GeneralSettingsLayerEncoders::GetKeepWaveFiles()
 {
 	return keepWaves;
 }
 
-Bool GeneralSettingsLayerEncoders::GetUnicodeFilenames()
+Bool BonkEnc::GeneralSettingsLayerEncoders::GetUnicodeFilenames()
 {
 	return unicode_files;
 }
 
-String GeneralSettingsLayerEncoders::GetOutputDirectory()
+String BonkEnc::GeneralSettingsLayerEncoders::GetOutputDirectory()
 {
 	return edit_outdir->GetText();
 }
 
-String GeneralSettingsLayerEncoders::GetFilenamePattern()
+String BonkEnc::GeneralSettingsLayerEncoders::GetFilenamePattern()
 {
 	return edit_filename->GetText();
 }

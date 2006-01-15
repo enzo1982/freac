@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -28,7 +28,7 @@ BonkEnc::FilterOutMP4::~FilterOutMP4()
 {
 }
 
-bool BonkEnc::FilterOutMP4::Activate()
+Bool BonkEnc::FilterOutMP4::Activate()
 {
 	if (GetTempFile(format->outfile) != format->outfile)
 	{
@@ -89,7 +89,7 @@ bool BonkEnc::FilterOutMP4::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterOutMP4::Deactivate()
+Bool BonkEnc::FilterOutMP4::Deactivate()
 {
 	unsigned long	 bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
 
@@ -137,7 +137,7 @@ bool BonkEnc::FilterOutMP4::Deactivate()
 	return true;
 }
 
-int BonkEnc::FilterOutMP4::WriteData(unsigned char *data, int size)
+Int BonkEnc::FilterOutMP4::WriteData(UnsignedByte *data, Int size)
 {
 	unsigned long	 bytes = 0;
 	Int		 samplesRead = size / (format->bits / 8);

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,6 +9,8 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-winamp.h>
+
+#include <dllinterfaces.h>
 
 int		 channels = 0;
 int		 rate = 0;
@@ -80,21 +82,21 @@ BonkEnc::FilterInWinamp::~FilterInWinamp()
 	delete plugin->outMod;
 }
 
-bool BonkEnc::FilterInWinamp::Activate()
+Bool BonkEnc::FilterInWinamp::Activate()
 {
 	plugin->Play(format->origFilename);
 
 	return true;
 }
 
-bool BonkEnc::FilterInWinamp::Deactivate()
+Bool BonkEnc::FilterInWinamp::Deactivate()
 {
 	plugin->Stop();
 
 	return true;
 }
 
-int BonkEnc::FilterInWinamp::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInWinamp::ReadData(UnsignedByte **data, Int size)
 {
 	get_more_samples = 32768;
 	n_samples = 0;
@@ -125,15 +127,15 @@ int BonkEnc::FilterInWinamp::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-Track *BonkEnc::FilterInWinamp::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = OpenFile(inFile);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 	nFormat->order		= BYTE_INTEL;
 	nFormat->fileSize	= f_in->Size();
 
-	CloseFile(f_in);
+	delete f_in;
 
 	plugin->Play(inFile);
 	plugin->Stop();

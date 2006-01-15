@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,17 +25,17 @@ using namespace smooth::GUI;
 
 namespace BonkEnc
 {
-	class Utilities
+	class BEEXPORT Utilities
 	{
 		public:
-			static Void		 ErrorMessage(String);
+			static Void		 ErrorMessage(const String &, const String & = NIL);
 
-			static InputFilter	*CreateInputFilter(String &, Track *);
+			static InputFilter	*CreateInputFilter(const String &, Track *);
 			static Void		 FillGenreList(List *);
 
 			static String		 LocalizeNumber(Int);
 
-			static String		 ReplaceIncompatibleChars(String, Bool);
+			static String		 ReplaceIncompatibleChars(const String &, Bool);
 
 			static Void		 GainShutdownPrivilege();
 	};

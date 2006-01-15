@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,16 +11,16 @@
 #include <dialogs/cddb/multimatch.h>
 #include <resources.h>
 
-cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
+BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 {
 	Point	 pos;
 	Size	 size;
 	String	 title;
 
-	if (fuzzy)	title = bonkEnc::i18n->TranslateString("No exact matches found");
-	else		title = bonkEnc::i18n->TranslateString("Multiple matches found");
+	if (fuzzy)	title = BonkEnc::i18n->TranslateString("No exact matches found");
+	else		title = BonkEnc::i18n->TranslateString("Multiple matches found");
 
-	mainWnd			= new Window(title);
+	mainWnd			= new Window(title, Point(120, 120), Size(350, 148));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -29,14 +29,14 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&cddbMultiMatchDlg::Cancel, this);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onAction.Connect(&cddbMultiMatchDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(bonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
-	btn_ok->onClick.Connect(&cddbMultiMatchDlg::OK, this);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok->onAction.Connect(&cddbMultiMatchDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -44,12 +44,12 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	size.cx = 330;
 	size.cy = 59;
 
-	group_match		= new GroupBox(bonkEnc::i18n->TranslateString("Matches"), pos, size);
+	group_match		= new GroupBox(BonkEnc::i18n->TranslateString("Matches"), pos, size);
 
 	pos.x += 13;
 	pos.y += 11;
 
-	text_match		= new Text(bonkEnc::i18n->TranslateString("Select the entry that best fits your CD:"), pos);
+	text_match		= new Text(BonkEnc::i18n->TranslateString("Select the entry that best fits your CD:"), pos);
 
 	pos.x -= 3;
 	pos.y += 19;
@@ -69,11 +69,10 @@ cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	mainWnd->RegisterObject(divbar);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(120, 120), Size(350, 148));
+	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
-cddbMultiMatchDlg::~cddbMultiMatchDlg()
+BonkEnc::cddbMultiMatchDlg::~cddbMultiMatchDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -85,30 +84,31 @@ cddbMultiMatchDlg::~cddbMultiMatchDlg()
 	DeleteObject(btn_cancel);
 }
 
-Int cddbMultiMatchDlg::ShowDialog()
+const Error &BonkEnc::cddbMultiMatchDlg::ShowDialog()
 {
-	mainWnd->value = -1;
-
 	mainWnd->Stay();
 
-	return mainWnd->value;
+	return error;
 }
 
-Void cddbMultiMatchDlg::OK()
-{
-	mainWnd->value = combo_match->GetSelectedEntryNumber();
-
-	mainWnd->Close();
-}
-
-Void cddbMultiMatchDlg::Cancel()
+Void BonkEnc::cddbMultiMatchDlg::OK()
 {
 	mainWnd->Close();
 }
 
-Int cddbMultiMatchDlg::AddEntry(String category, String title)
+Void BonkEnc::cddbMultiMatchDlg::Cancel()
+{
+	mainWnd->Close();
+}
+
+Int BonkEnc::cddbMultiMatchDlg::AddEntry(const String &category, const String &title)
 {
 	combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title));
 
-	return Success;
+	return Success();
+}
+
+Int BonkEnc::cddbMultiMatchDlg::GetSelectedEntryNumber()
+{
+	return combo_match->GetSelectedEntryNumber();
 }

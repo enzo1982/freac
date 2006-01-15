@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,16 +15,16 @@
 #include <utilities.h>
 #include <dialogs/cddb/multimatch.h>
 
-cddbQueryDlg::cddbQueryDlg()
+BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
-	currentConfig = bonkEnc::currentConfig;
+	currentConfig = BonkEnc::currentConfig;
 
 	rArray = NIL;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(bonkEnc::i18n->TranslateString("CDDB query"));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB query"), Point(140, 140), Size(308, 82));
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 
 	pos.x = 7;
@@ -43,8 +43,8 @@ cddbQueryDlg::cddbQueryDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(bonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
-	btn_cancel->onClick.Connect(&cddbQueryDlg::Cancel, this);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel->onAction.Connect(&cddbQueryDlg::Cancel, this);
 
 	RegisterObject(mainWnd);
 
@@ -54,11 +54,10 @@ cddbQueryDlg::cddbQueryDlg()
 	mainWnd->RegisterObject(mainWnd_titlebar);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(Bitmap::LoadBitmap("bonkenc.pci", 0, NIL));
-	mainWnd->SetMetrics(Point(140, 140), Size(308, 82));
+	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
-cddbQueryDlg::~cddbQueryDlg()
+BonkEnc::cddbQueryDlg::~cddbQueryDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -67,7 +66,7 @@ cddbQueryDlg::~cddbQueryDlg()
 	DeleteObject(btn_cancel);
 }
 
-Int cddbQueryDlg::ShowDialog()
+const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 {
 	mainWnd->Show();
 
@@ -81,24 +80,24 @@ Int cddbQueryDlg::ShowDialog()
 
 	DeleteObject(queryThread);
 
-	return Success;
+	return error;
 }
 
-Array<Track *> *cddbQueryDlg::QueryCDDB()
+Array<BonkEnc::Track *> *BonkEnc::cddbQueryDlg::QueryCDDB()
 {
 	ShowDialog();
 
 	return rArray;
 }
 
-Void cddbQueryDlg::Cancel()
+Void BonkEnc::cddbQueryDlg::Cancel()
 {
 	queryThread->Stop();
 
 	mainWnd->Close();
 }
 
-Int cddbQueryDlg::QueryThread(Thread *myThread)
+Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 {
 	CDDB	 cddb(currentConfig);
 	String	 result;
@@ -113,18 +112,18 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 	CDDB::requestedDiscs.AddEntry(True, cddb.ComputeDiscID());
 
-	text_status->SetText(bonkEnc::i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
+	text_status->SetText(BonkEnc::i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
 	cddb.ConnectToServer();
 
 	prog_status->SetValue(20);
-	text_status->SetText(bonkEnc::i18n->TranslateString("Requesting CD information").Append("..."));
+	text_status->SetText(BonkEnc::i18n->TranslateString("Requesting CD information").Append("..."));
 
 	result = cddb.Query(discid);
 
 	if (result == "none")
 	{
-		QuickMessage(bonkEnc::i18n->TranslateString("No freedb entry for this disk."), bonkEnc::i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
+		QuickMessage(BonkEnc::i18n->TranslateString("No freedb entry for this disk."), BonkEnc::i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
 	}
 	else if (result == "multiple" || result == "fuzzy")
 	{
@@ -137,12 +136,14 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 		if (result == "fuzzy")
 		{
-			dlg->AddEntry(bonkEnc::i18n->TranslateString("none"), "");
+			dlg->AddEntry(BonkEnc::i18n->TranslateString("none"), "");
 
 			fuzzy = True;
 		}
 
-		Int index = dlg->ShowDialog();
+		dlg->ShowDialog();
+
+		Int index = dlg->GetSelectedEntryNumber();
 
 		if (index < cddb.GetNOfMatches() && index >= 0)
 		{
@@ -200,7 +201,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 				parseAgain = False;
 
-				if (cLine.CompareN("DTITLE", 6) == 0)
+				if (cLine.StartsWith("DTITLE"))
 				{
 					Track	*info = array->GetFirstEntry();
 					Int	 k;
@@ -215,13 +216,13 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 					info->track = -1;
 				}
-				else if (cLine.CompareN("DGENRE", 6) == 0)
+				else if (cLine.StartsWith("DGENRE"))
 				{
 					Track	*info = array->GetFirstEntry();
 
 					for (Int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
 				}
-				else if (cLine.CompareN("DYEAR", 5) == 0)
+				else if (cLine.StartsWith("DYEAR"))
 				{
 					String	 year;
 
@@ -229,7 +230,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 					array->GetFirstEntry()->year = year.ToInt();
 				}
-				else if (cLine.CompareN("TTITLE", 6) == 0)
+				else if (cLine.StartsWith("TTITLE"))
 				{
 					String	 track;
 					Int	 k;
@@ -247,13 +248,13 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 						for (Int l = k + 1; l < cLine.Length(); l++) info->title[l - k - 1] = cLine[l];
 					}
 				}
-				else if (cLine.CompareN("EXTD", 4) == 0)
+				else if (cLine.StartsWith("EXTD"))
 				{
 					Track	*info = array->GetFirstEntry();
 
 					for (Int k = 5; k < cLine.Length(); k++) info->comment[k - 5] = cLine[k];
 				}
-				else if (cLine.CompareN("EXTT", 4) == 0)
+				else if (cLine.StartsWith("EXTT"))
 				{
 					String	 track;
 					Int	 k;
@@ -271,13 +272,13 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 						for (Int l = k + 1; l < cLine.Length(); l++) info->comment[l - k - 1] = cLine[l];
 					}
 				}
-				else if (cLine.CompareN("PLAYORDER", 9) == 0)
+				else if (cLine.StartsWith("PLAYORDER"))
 				{
 					Track	*info = array->GetFirstEntry();
 
 					for (Int k = 10; k < cLine.Length(); k++) info->playorder[k - 10] = cLine[k];
 				}
-				else if (cLine.CompareN("# Revision: ", 12) == 0 && !fuzzy)
+				else if (cLine.StartsWith("# Revision: ") && !fuzzy)
 				{
 					String	 revision;
 
@@ -285,7 +286,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 					array->GetFirstEntry()->revision = revision.ToInt();
 				}
-				else if (cLine.CompareN("# Track frame offsets:", 22) == 0)
+				else if (cLine.StartsWith("# Track frame offsets:"))
 				{
 					Int	 track = 0;
 
@@ -330,7 +331,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 					}
 					while (True);
 				}
-				else if (cLine.CompareN("# Disc length: ", 15) == 0)
+				else if (cLine.StartsWith("# Disc length: "))
 				{
 					String	 disclength;
 
@@ -338,7 +339,7 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 					array->GetFirstEntry()->disclength = disclength.ToInt();
 				}
-				else if (cLine.CompareN("210 ", 4) == 0)
+				else if (cLine.StartsWith("210 "))
 				{
 					String	 category;
 
@@ -364,5 +365,5 @@ Int cddbQueryDlg::QueryThread(Thread *myThread)
 
 	mainWnd->Close();
 
-	return Success;
+	return Success();
 }

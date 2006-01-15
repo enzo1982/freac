@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,7 +16,7 @@
 
 namespace BonkEnc
 {
-	class FilterOutVORBIS : public OutputFilter
+	class BEEXPORT FilterOutVORBIS : public OutputFilter
 	{
 		private:
 			ogg_stream_state	 os;
@@ -35,10 +35,10 @@ namespace BonkEnc
 						 FilterOutVORBIS(Config *, Track *);
 						~FilterOutVORBIS();
 
-			bool			 Activate();
-			bool			 Deactivate();
+			Bool			 Activate();
+			Bool			 Deactivate();
 
-			int			 WriteData(unsigned char *, int);
+			Int			 WriteData(UnsignedByte *, Int);
 	};
 };
 

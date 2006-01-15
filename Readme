@@ -4,23 +4,26 @@ BonkEnc is an encoder for various audio formats. It can read MP3,
 MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC and
 produce MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, VQF and WAV files.
 
-BonkEnc uses Albert L. Fabers CDRip DLL for audio ripping.
+BonkEnc uses the CDRip Ripping Library for audio ripping.
 
 History
 -------
 
-	Version 1.0 CVS (September 2005)
+	Version 1.0 CVS (January 2006)
 
-		- added Czech, Korean, Danish and Portuguese (Brazilian) language support
+		- added Czech, Korean, Danish, Swedish and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
 		- info tag encodings can now be set in the configuration dialog
 		- fixed a crash when opening protected MP4 files
-		- added support for MP4 files with Unicode
+		- added support for MP4 files with Unicode file names
 		- fixed bad default AAC profile setting
+		- added support for FLAC audio encoder
+		- display approximate title length when correct length is not known
 		- submitted freedb entries can now be used to update the joblist
 		- the <filename>, <genre> and <year> tokens can now be used in the file name pattern
 		- text in inactive edit boxes can now be selected and copied
-		- upgraded Ogg Vorbis to version 1.1.1
+		- upgraded Ogg Vorbis to version 1.1.2
+		- upgraded FLAC to version 1.1.2
 		- added support for creating M3U playlists
 		- added basic support for creating cue sheets
 		- added support for ID3V1 tags
@@ -28,11 +31,17 @@ History
 		- added a button to pause/resume the encoding process
 		- added an option to shutdown the computer after encoding
 		- fixed FLAC decoder bugs
+		- added support for reading Vorbis Comment tags from FLAC files
 		- fixed popup boxes appearing in command line version
 		- the joblist can now be saved to/loaded from M3U playlist files
 		- tracks are no longer added automatically when they are already in the joblist
 		- fixed slow title reading with some CD drives
-		- upgrade to MPEG4IP v1.3
+		- added a button to open the CD tray
+		- splitted BonkEnc into frontends and a backend DLL
+		- faster startup time (due to improved iconv usage in the smooth library)
+		- fixed Arabic script display on Windows 2000/NT
+		- upgrade to MPEG4IP v1.4.1
+		- upgrade to easyUpdate v0.3
 		- use smooth v0.8.67.0
 		- fixes for compiling with GCC 4.0
 		- removed support for MinGW 1.x
@@ -194,10 +203,10 @@ Requirements
 
 		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v6.0
 		- smooth v0.8.67.0 CVS (http://www.smooth-project.org/)
-		- IOLib v5.x (http://www.iolib.org/ - included with smooth)
 
 	Additional optional software:
 
+		- The CDRip Ripping Library is used if installed (http://www.cdrip.org/)
 		- BladeEnc is used if installed (http://bladeenc.mp3.no/)
 		- TwinVQ is used if installed (http://www.twinvq.org/)
 		- Winamp 2 input and output plug-ins are used if they are found in the plugins directory
@@ -218,35 +227,34 @@ Known problems
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
 
-	- Arabic (and other RTL script) language support currently requires Windows XP or later.
-
 Special thanks to
 -----------------
 
-- Albert L. Faber for his excellent CDRip ripping library
+	- Albert L. Faber for his excellent CDRip Ripping Library
 
-- the translators: Eric Le Carre (French),
-		   Marco D'Amato (Italian),
-		   Silky (Japanese),
-		   Federico Reddig (Spanish),
-		   Jose Maria Vera Somoza (Spanish, Latin American),
-		   Fotis Evangelou (Greek),
-		   Dmitry Gusakov (Russian),
-		   Henryk Ning (Chinese, traditional),
-		   Nimin (Chinese, simplified),
-		   Wojtek Wasilewski (Polish),
-		   Peter Toth (Hungarian),
-		   Andrij Ilechko (Ukrainian),
-		   Wim Garreyn (Dutch),
-		   Marko Djordjevic (Serbian),
-		   Krisu (Finnish),
-		   Vladimir Kytyr (Czech),
-		   Escada (Portuguese, Brazilian),
-		   Odyssey (Korean),
-		   Jan Arni Jacobsen (Danish)
+	- the translators: Eric Le Carre (French),
+			   Marco D'Amato (Italian),
+			   Silky (Japanese),
+			   Federico Reddig (Spanish),
+			   Jose Maria Vera Somoza (Spanish, Latin American),
+			   Fotis Evangelou (Greek),
+			   Dmitry Gusakov (Russian),
+			   Henryk Ning (Chinese, traditional),
+			   Nimin (Chinese, simplified),
+			   Wojtek Wasilewski (Polish),
+			   Peter Toth (Hungarian),
+			   Andrij Ilechko (Ukrainian),
+			   Wim Garreyn (Dutch),
+			   Marko Djordjevic (Serbian),
+			   Krisu (Finnish),
+			   Vladimir Kytyr (Czech),
+			   Escada (Portuguese, Brazilian),
+			   Odyssey (Korean),
+			   Jan Arni Jacobsen (Danish),
+			   Anton Mjoernebrant (Swedish)
 
-- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
-- all the testers and everyone who submitted bug reports
+	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
+	- all the testers and everyone who submitted bug reports
 
 -----------------------------------------------------------------------------------
 

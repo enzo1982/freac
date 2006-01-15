@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,16 +10,10 @@
 
 #include <input/filter-in-cdrip.h>
 #include <3rdparty/cdrip/cdrip.h>
+#include <3rdparty/paranoia/cdda_paranoia.h>
 #include <cddb.h>
 
-#define PARANOIA_MODE_FULL        0xff
-#define PARANOIA_MODE_DISABLE     0
-#define PARANOIA_MODE_VERIFY      1
-#define PARANOIA_MODE_FRAGMENT    2
-#define PARANOIA_MODE_OVERLAP     4
-#define PARANOIA_MODE_SCRATCH     8
-#define PARANOIA_MODE_REPAIR      16
-#define PARANOIA_MODE_NEVERSKIP   32
+#include <dllinterfaces.h>
 
 typedef struct
 {
@@ -59,7 +53,7 @@ BonkEnc::FilterInCDRip::~FilterInCDRip()
 	}
 }
 
-int BonkEnc::FilterInCDRip::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInCDRip::ReadData(UnsignedByte **data, Int size)
 {
 	if (trackNumber == -1) return true;
 
@@ -215,7 +209,7 @@ Int BonkEnc::FilterInCDRip::GetTrackSize()
 	return trackSize;
 }
 
-Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 {
 	Track	*nFormat = new Track;
 
@@ -228,7 +222,7 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 	Int	 trackLength = 0;
 	Int	 audiodrive = 0;
 
-	if (inFile.CompareN("/cda", 4) == 0)
+	if (inFile.StartsWith("/cda"))
 	{
 		String	 track;
 
@@ -271,7 +265,7 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 	{
 		if (inFile[inFile.Length() - 4] == '.' && inFile[inFile.Length() - 3] == 'c' && inFile[inFile.Length() - 2] == 'd' && inFile[inFile.Length() - 1] == 'a')
 		{
-			InStream	*in = OpenFile(inFile);
+			InStream	*in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
 			in->Seek(22);
 
@@ -281,7 +275,7 @@ Track *BonkEnc::FilterInCDRip::GetFileInfo(String inFile)
 
 			trackLength = in->InputNumber(4);
 
-			CloseFile(in);
+			delete in;
 
 			for (audiodrive = 0; audiodrive < currentConfig->cdrip_numdrives; audiodrive++)
 			{
@@ -451,7 +445,7 @@ Int BonkEnc::FilterInCDRip::ReadCDText()
 
 	ex_CR_ReadCDText(pbtBuffer, nBufferSize, &nCDTextSize);
 
-	if (nCDTextSize < 4) return Failure;
+	if (nCDTextSize < 4) return Error();
 
 	int		 nNumPacks		= (nCDTextSize - 4) / sizeof(cdTextPackage);
 	cdTextPackage	*pCDtextPacks		= NIL;
@@ -497,5 +491,5 @@ Int BonkEnc::FilterInCDRip::ReadCDText()
 
 	delete [] pbtBuffer;
 
-	return Success;
+	return Success();
 }

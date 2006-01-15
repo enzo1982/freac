@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,52 +17,52 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class GeneralSettingsLayerCDDB : public Layer
+namespace BonkEnc
 {
-	private:
-		GroupBox	*group_cddb;
-		Text		*text_mode;
-		ComboBox	*combo_mode;
-		Text		*text_server;
-		EditBox		*edit_server;
-		Text		*text_port;
-		EditBox		*edit_port;
-		Text		*text_email;
-		EditBox		*edit_email;
-		Button		*button_http;
-		Button		*button_proxy;
-		GroupBox	*group_cddb_options;
-		CheckBox	*check_auto;
-		CheckBox	*check_cdtext;
-		CheckBox	*check_cache;
+	class GeneralSettingsLayerCDDB : public Layer
+	{
+		private:
+			GroupBox	*group_cddb;
+			Text		*text_mode;
+			ComboBox	*combo_mode;
+			Text		*text_server;
+			EditBox		*edit_server;
+			Text		*text_port;
+			EditBox		*edit_port;
+			Text		*text_email;
+			EditBox		*edit_email;
+			Button		*button_http;
+			Button		*button_proxy;
+			GroupBox	*group_cddb_options;
+			CheckBox	*check_auto;
+			CheckBox	*check_cdtext;
+			CheckBox	*check_cache;
 
-		Bool		 cddb_auto;
-		Bool		 cddb_cdtext;
-		Bool		 cddb_cache;
+			Bool		 cddb_auto;
+			Bool		 cddb_cdtext;
+			Bool		 cddb_cache;
  
-		Config		*currentConfig;
-	slots:
-		Void		 SetCDDBMode();
-		Void		 ToggleAutoCDDB();
+			Config		*currentConfig;
+		slots:
+			Void		 SetCDDBMode();
+			Void		 ToggleAutoCDDB();
 
-		Void		 HTTPSettings();
-		Void		 ProxySettings();
-	public:
-				 GeneralSettingsLayerCDDB();
-				~GeneralSettingsLayerCDDB();
+			Void		 HTTPSettings();
+			Void		 ProxySettings();
+		public:
+					 GeneralSettingsLayerCDDB();
+					~GeneralSettingsLayerCDDB();
 
-		Int		 GetFreedbMode();
-		Int		 GetFreedbPort();
+			Int		 GetFreedbMode();
+			Int		 GetFreedbPort();
 
-		String		 GetFreedbServer();
-		String		 GetFreedbEMail();
+			String		 GetFreedbServer();
+			String		 GetFreedbEMail();
 
-		Bool		 GetCDDBAutoQuery();
-		Bool		 GetCDDBOverwriteCDText();
-		Bool		 GetCDDBCache();
+			Bool		 GetCDDBAutoQuery();
+			Bool		 GetCDDBOverwriteCDText();
+			Bool		 GetCDDBCache();
+	};
 };
 
 #endif

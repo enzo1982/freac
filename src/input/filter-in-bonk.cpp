@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,6 +9,8 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-bonk.h>
+
+#include <dllinterfaces.h>
 
 BonkEnc::FilterInBONK::FilterInBONK(Config *config, Track *format) : InputFilter(config, format)
 {
@@ -22,7 +24,7 @@ BonkEnc::FilterInBONK::~FilterInBONK()
 {
 }
 
-bool BonkEnc::FilterInBONK::Activate()
+Bool BonkEnc::FilterInBONK::Activate()
 {
 	Int	 length = 0;
 	Int	 rate = 0;
@@ -37,7 +39,7 @@ bool BonkEnc::FilterInBONK::Activate()
 	return true;
 }
 
-bool BonkEnc::FilterInBONK::Deactivate()
+Bool BonkEnc::FilterInBONK::Deactivate()
 {
 	ex_bonk_close_decoder(decoder);
 
@@ -46,7 +48,7 @@ bool BonkEnc::FilterInBONK::Deactivate()
 	return true;
 }
 
-int BonkEnc::FilterInBONK::ReadData(unsigned char **data, int size)
+Int BonkEnc::FilterInBONK::ReadData(UnsignedByte **data, Int size)
 {
 	size = ex_bonk_decode_packet(decoder, buffer, buffer.Size());
 
@@ -57,10 +59,10 @@ int BonkEnc::FilterInBONK::ReadData(unsigned char **data, int size)
 	return size;
 }
 
-Track *BonkEnc::FilterInBONK::GetFileInfo(String inFile)
+BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*in = OpenFile(inFile);
+	InStream	*in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat->length, (uint32 *) &nFormat->rate, (int *) &nFormat->channels);
 
 	nFormat->order = BYTE_INTEL;
@@ -116,7 +118,7 @@ Track *BonkEnc::FilterInBONK::GetFileInfo(String inFile)
 	}
 	while (loop);
 
-	CloseFile(in);
+	delete in;
 
 	if (id3tag_size > 0 && currentConfig->enable_id3) 
 	{

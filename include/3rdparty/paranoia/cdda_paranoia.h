@@ -7,6 +7,8 @@
 #ifndef _CDROM_PARANOIA_
 #define _CDROM_PARANOIA_
 
+#include "interface/cdda_interface.h"
+
 #define CD_FRAMEWORDS (CD_FRAMESIZE_RAW/2)
 
 #define PARANOIA_CB_READ           0
@@ -37,11 +39,15 @@
 typedef void cdrom_paranoia;
 #endif
 
+#ifndef int16_t
+typedef __int16 int16_t;
+#endif
+
 extern cdrom_paranoia *paranoia_init(cdrom_drive *d);
 extern void paranoia_modeset(cdrom_paranoia *p,int mode);
 extern long paranoia_seek(cdrom_paranoia *p,long seek,int mode);
-extern short *paranoia_read(cdrom_paranoia *p,void(*callback)(long,int), int* pbAbort );
-extern short *paranoia_read_limited(cdrom_paranoia *p,void(*callback)(long,int),int maxretries, int* pbAbort);
+extern int16_t *paranoia_read(cdrom_paranoia *p,void(*callback)(long,int));
+extern int16_t *paranoia_read_limited(cdrom_paranoia *p,void(*callback)(long,int),int maxretries);
 extern void paranoia_free(cdrom_paranoia *p);
 extern void paranoia_overlapset(cdrom_paranoia *p,long overlap);
 extern void paranoia_set_range(cdrom_paranoia *p, long start, long end);

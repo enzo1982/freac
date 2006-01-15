@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,75 +17,75 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-// TODO: remove this line once everything is in namespace BonkEnc
-using namespace BonkEnc;
-
-class cddbSubmitDlg : public Dialog
+namespace BonkEnc
 {
-	private:
-		Divider		*divbar;
+	class cddbSubmitDlg : public Dialog
+	{
+		private:
+			Divider		*divbar;
 
-		Window		*mainWnd;
-		Titlebar	*mainWnd_titlebar;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-		GroupBox	*group_drive;
-		ComboBox	*combo_drive;
+			GroupBox	*group_drive;
+			ComboBox	*combo_drive;
 
-		Text		*text_artist;
-		EditBox		*edit_artist;
-		Text		*text_album;
-		EditBox		*edit_album;
-		Text		*text_year;
-		EditBox		*edit_year;
-		Text		*text_genre;
-		EditBox		*edit_genre;
-		ListBox		*list_genre;
+			Text		*text_artist;
+			EditBox		*edit_artist;
+			Text		*text_album;
+			EditBox		*edit_album;
+			Text		*text_year;
+			EditBox		*edit_year;
+			Text		*text_genre;
+			EditBox		*edit_genre;
+			ListBox		*list_genre;
 
-		ListBox		*list_tracks;
-		Text		*text_track;
-		EditBox		*edit_track;
-		Text		*text_title;
-		EditBox		*edit_title;
+			ListBox		*list_tracks;
+			Text		*text_track;
+			EditBox		*edit_track;
+			Text		*text_title;
+			EditBox		*edit_title;
 
-		Text		*text_cdstatus;
-		Text		*text_status;
+			Text		*text_cdstatus;
+			Text		*text_status;
 
-		CheckBox	*check_updateJoblist;
+			CheckBox	*check_updateJoblist;
 
-		Button		*btn_cancel;
-		Button		*btn_submit;
+			Button		*btn_cancel;
+			Button		*btn_submit;
 
-		Config		*currentConfig;
+			Config		*currentConfig;
 
-		Int		 activedrive;
+			Int		 activedrive;
 
-		Bool		 dontUpdateInfo;
-		Bool		 updateJoblist;
+			Bool		 dontUpdateInfo;
+			Bool		 updateJoblist;
 
-		Array<Track *>	*cddbInfo;
-		Bool		 ownCddbInfo;
+			Array<Track *>	*cddbInfo;
+			Bool		 ownCddbInfo;
 
-		String		 discid;
-		String		 genre;
-		Array<String>	 titles;
+			String		 discid;
+			String		 genre;
+			Array<String>	 titles;
 
-		Array<String>	 cdText;
+			Array<String>	 cdText;
 
-		Int		 ReadCDText();
-		Int		 FreeCDText();
+			Int		 ReadCDText();
+			Int		 FreeCDText();
 
-		Void		 Submit();
-		Void		 Cancel();
-		Void		 ChangeDrive();
-		Void		 SelectTrack();
-		Void		 UpdateTrack();
-		Void		 FinishTrack();
-		String		 GetCDDBGenre(String);
-	public:
-				 cddbSubmitDlg();
-				~cddbSubmitDlg();
+			Void		 Submit();
+			Void		 Cancel();
+			Void		 ChangeDrive();
+			Void		 SelectTrack();
+			Void		 UpdateTrack();
+			Void		 FinishTrack();
+			String		 GetCDDBGenre(const String &);
+		public:
+					 cddbSubmitDlg();
+					~cddbSubmitDlg();
 
-		Int		 ShowDialog();
+			const Error	&ShowDialog();
+	};
 };
 
 #endif

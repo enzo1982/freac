@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -18,38 +18,29 @@
 #include <dllinterfaces.h>
 #include <joblist.h>
 
-#include <dialogs/genconfig/genconfig.h>
-#include <dialogs/bonkconfig.h>
-#include <dialogs/bladeconfig.h>
-#include <dialogs/lameconfig.h>
-#include <dialogs/vorbisconfig.h>
-#include <dialogs/faacconfig.h>
-#include <dialogs/tvqconfig.h>
-
 #include <cddb.h>
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
-
-#include <dialogs/language.h>
 
 Int	 ENCODER_BONKENC	= -1;
 Int	 ENCODER_BLADEENC	= -1;
 Int	 ENCODER_LAMEENC	= -1;
 Int	 ENCODER_VORBISENC	= -1;
 Int	 ENCODER_FAAC		= -1;
+Int	 ENCODER_FLAC		= -1;
 Int	 ENCODER_TVQ		= -1;
 Int	 ENCODER_WAVE		= -1;
 
-Config			*bonkEnc::currentConfig	= NIL;
-I18n::Translator	*bonkEnc::i18n		= NIL;
+BonkEnc::Config		*BonkEnc::BonkEnc::currentConfig	= NIL;
+I18n::Translator	*BonkEnc::BonkEnc::i18n			= NIL;
 
-Debug	*debug_out;
+BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 bonkEnc::version = "CVS 20050829";
-String	 bonkEnc::cddbVersion = "v1.0beta3";
-String	 bonkEnc::shortVersion = "v1.0";
+String	 BonkEnc::BonkEnc::version = "CVS 20060101";
+String	 BonkEnc::BonkEnc::cddbVersion = "v1.0beta3";
+String	 BonkEnc::BonkEnc::shortVersion = "v1.0";
 
-bonkEnc::bonkEnc()
+BonkEnc::BonkEnc::BonkEnc()
 {
 	CoInitialize(NIL);
 
@@ -63,21 +54,8 @@ bonkEnc::bonkEnc()
 
 	currentConfig->LoadSettings();
 
-	i18n = new I18n::Translator();
+	i18n = new I18n::Translator("BonkEnc");
 	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@bonkenc.org>", "http://www.bonkenc.org/", False);
-
-	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
-	{
-		LanguageDlg	*dlg = new LanguageDlg();
-
-		dlg->ShowDialog();
-
-		DeleteObject(dlg);
-	}
-
-	if (currentConfig->language == "") currentConfig->language = "internal";
-
-	i18n->ActivateLanguage(currentConfig->language);
 
 	if (DLLInterfaces::LoadBonkDLL() == False)	currentConfig->enable_bonk = False;
 	else						currentConfig->enable_bonk = True;
@@ -129,6 +107,7 @@ bonkEnc::bonkEnc()
 	if (currentConfig->enable_blade)	ENCODER_BLADEENC = nextEC++;
 	if (currentConfig->enable_bonk)		ENCODER_BONKENC = nextEC++;
 	if (currentConfig->enable_faac)		ENCODER_FAAC = nextEC++;
+	if (currentConfig->enable_flac)		ENCODER_FLAC = nextEC++;
 	if (currentConfig->enable_lame)		ENCODER_LAMEENC = nextEC++;
 	if (currentConfig->enable_vorbis)	ENCODER_VORBISENC = nextEC++;
 	if (currentConfig->enable_tvq)		ENCODER_TVQ = nextEC++;
@@ -189,7 +168,7 @@ bonkEnc::bonkEnc()
 	if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
 }
 
-bonkEnc::~bonkEnc()
+BonkEnc::BonkEnc::~BonkEnc()
 {
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
@@ -224,7 +203,7 @@ bonkEnc::~bonkEnc()
 	CoUninitialize();
 }
 
-Void bonkEnc::ReadCD()
+Void BonkEnc::BonkEnc::ReadCD()
 {
 	if (encoding)
 	{
@@ -253,25 +232,20 @@ Void bonkEnc::ReadCD()
 	currentConfig->cdrip_read_results.RemoveAll();
 }
 
-Array<Track *> *bonkEnc::GetCDDBData()
+Array<BonkEnc::Track *> *BonkEnc::BonkEnc::GetCDDBData()
 {
-	cddbQueryDlg	*dlg	= new cddbQueryDlg();
-	Array<Track *>	*array	= dlg->QueryCDDB();
-
-	DeleteObject(dlg);
-
-	return array;
+	return NIL;
 }
 
-Void bonkEnc::SelectDir()
+Void BonkEnc::BonkEnc::SelectDir()
 {
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(bonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
 	dialog->SetDirName(currentConfig->enc_outdir);
 
-	if (dialog->ShowDialog() == Success)
+	if (dialog->ShowDialog() == Success())
 	{
 		edb_outdir->SetText(dialog->GetDirName());
 		currentConfig->enc_outdir = dialog->GetDirName();

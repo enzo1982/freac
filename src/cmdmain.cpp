@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2005 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,34 +15,38 @@
 
 using namespace smooth::System;
 
-Int smooth::Main(Array<String> &args)
+Int smooth::Main(const Array<String> &args)
 {
-	debug_out = new Debug("BonkEnc.log");
+	BonkEnc::debug_out = new BonkEnc::Debug("BonkEnc.log");
 
-	debug_out->OutputLine("");
-	debug_out->OutputLine("=========================================");
-	debug_out->OutputLine("= Starting BonkEnc command line tool... =");
-	debug_out->OutputLine("=========================================");
-	debug_out->OutputLine("");
+	BonkEnc::debug_out->OutputLine("");
+	BonkEnc::debug_out->OutputLine("=========================================");
+	BonkEnc::debug_out->OutputLine("= Starting BonkEnc command line tool... =");
+	BonkEnc::debug_out->OutputLine("=========================================");
+	BonkEnc::debug_out->OutputLine("");
 
-	bonkEncCommandline	*app = new bonkEncCommandline(args);
+	BonkEnc::BonkEncCommandline	*app = new BonkEnc::BonkEncCommandline(args);
 
 	delete app;
 
-	debug_out->OutputLine("");
-	debug_out->OutputLine("======================================");
-	debug_out->OutputLine("= Leaving BonkEnc command line tool! =");
-	debug_out->OutputLine("======================================");
+	BonkEnc::debug_out->OutputLine("");
+	BonkEnc::debug_out->OutputLine("======================================");
+	BonkEnc::debug_out->OutputLine("= Leaving BonkEnc command line tool! =");
+	BonkEnc::debug_out->OutputLine("======================================");
 
-	delete debug_out;
+	delete BonkEnc::debug_out;
 
 	return 0;
 }
 
-bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(arguments)
+BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) : args(arguments)
 {
 	currentConfig->enable_console = true;
 	currentConfig->appMain = this;
+
+	if (currentConfig->language == "") i18n->ActivateLanguage("internal");
+
+	i18n->ActivateLanguage(currentConfig->language);
 
 	joblist	= new JobList(Point(0, 0), Size(0, 0));
 
@@ -60,22 +64,22 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 
 	ScanForFiles(&files);
 
-	Console::SetTitle(String("BonkEnc ").Append(bonkEnc::version));
+	Console::SetTitle(String("BonkEnc ").Append(BonkEnc::version));
 
-	if ((files.GetNOfEntries() == 0 && helpenc == "") || !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "TVQ" || encoder == "WAVE" || encoder == "lame" || encoder == "vorbis" || encoder == "bonk" || encoder == "blade" || encoder == "faac" || encoder == "tvq" || encoder == "wave") || (files.GetNOfEntries() > 1 && outfile != ""))
+	if ((files.GetNOfEntries() == 0 && helpenc == "") || !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "FLAC" || encoder == "TVQ" || encoder == "WAVE" || encoder == "lame" || encoder == "vorbis" || encoder == "bonk" || encoder == "blade" || encoder == "faac" || encoder == "flac" || encoder == "tvq" || encoder == "wave") || (files.GetNOfEntries() > 1 && outfile != ""))
 	{
-		Console::OutputString(String("BonkEnc Audio Encoder ").Append(bonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2005 Robert Kausch\n\n"));
+		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2006 Robert Kausch\n\n"));
 		Console::OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
 		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is FAAC)\n");
 		Console::OutputString("\t-d <outdir>\tSpecify output directory for encoded files\n");
 		Console::OutputString("\t-o <outfile>\tSpecify output file name in single file mode\n");
 		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n");
 		Console::OutputString("\t-quiet\t\tDo not print any messages\n\n");
-		Console::OutputString("<encoder> can be one of LAME, VORBIS, BONK, BLADE, FAAC, TVQ or WAVE.\n\n");
+		Console::OutputString("<encoder> can be one of LAME, VORBIS, BONK, BLADE, FAAC, FLAC, TVQ or WAVE.\n\n");
 	}
 	else if (helpenc != "")
 	{
-		Console::OutputString(String("BonkEnc Audio Encoder ").Append(bonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2005 Robert Kausch\n\n"));
+		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2006 Robert Kausch\n\n"));
 
 		if (helpenc == "LAME" || helpenc == "lame")
 		{
@@ -112,6 +116,17 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 			Console::OutputString("\t-b <bitrate per channel>\t(8 - 256, default: 64, ABR mode)\n");
 			Console::OutputString("\t-mp4\t\t\t\t(use MP4 container format)\n\n");
 		}
+		else if (helpenc == "FLAC" || helpenc == "flac")
+		{
+			Console::OutputString("Options for FLAC encoder:\n\n");
+			Console::OutputString("\t-b <blocksize>\t\t\t(192 - 32768, default: 4608)\n");
+			Console::OutputString("\t-m\t\t\t\t(use mid-side stereo)\n");
+			Console::OutputString("\t-e\t\t\t\t(do exhaustive model search)\n");
+			Console::OutputString("\t-l <max LPC order>\t\t(0 - 32, default: 8)\n");
+			Console::OutputString("\t-q <QLP coeff precision>\t(0 - 16, default: 0)\n");
+			Console::OutputString("\t-p\t\t\t\t(do exhaustive QLP coeff optimization)\n");
+			Console::OutputString("\t-r <min Rice>,<max Rice>\t(0 - 16, default: 3,3)\n\n");
+		}
 		else if (helpenc == "TVQ" || helpenc == "tvq")
 		{
 			Console::OutputString("Options for TwinVQ encoder:\n\n");
@@ -136,6 +151,7 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 		    ((encoder == "BONK" || encoder == "bonk")	  && !currentConfig->enable_bonk)   ||
 		    ((encoder == "BLADE" || encoder == "blade")	  && !currentConfig->enable_blade)  ||
 		    ((encoder == "FAAC" || encoder == "faac")	  && !currentConfig->enable_faac)   ||
+		    ((encoder == "FLAC" || encoder == "flac")	  && !currentConfig->enable_flac)   ||
 		    ((encoder == "TVQ" || encoder == "tvq")	  && !currentConfig->enable_tvq))
 		{
 			Console::OutputString(String("Encoder ").Append(encoder).Append(" is not available!\n\n"));
@@ -189,8 +205,8 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 			ScanForParameter("-p", &predictor);
 			ScanForParameter("-r", &downsampling);
 
-			currentConfig->bonk_jstereo = ScanForParameter("-js", NULL);
-			currentConfig->bonk_lossless = ScanForParameter("-lossless", NULL);
+			currentConfig->bonk_jstereo	 = ScanForParameter("-js", NULL);
+			currentConfig->bonk_lossless	 = ScanForParameter("-lossless", NULL);
 
 			currentConfig->bonk_quantization = Math::Max(0, Math::Min(40, Math::Round(quantization.ToFloat() * 20)));
 			currentConfig->bonk_predictor	 = Math::Max(0, Math::Min(512, predictor.ToInt()));
@@ -217,12 +233,44 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 			else if (ScanForParameter("-q", &quality))	currentConfig->faac_set_quality = True;
 			else						currentConfig->faac_set_quality = True;
 
-			currentConfig->faac_enable_mp4 = ScanForParameter("-mp4", NULL);
+			currentConfig->faac_enable_mp4	= ScanForParameter("-mp4", NULL);
 
-			currentConfig->faac_aac_quality = Math::Max(10, Math::Min(500, quality.ToInt()));
+			currentConfig->faac_aac_quality	= Math::Max(10, Math::Min(500, quality.ToInt()));
 			currentConfig->faac_bitrate	= Math::Max(8, Math::Min(256, bitrate.ToInt()));
 
 			currentConfig->encoder = ENCODER_FAAC;
+		}
+		else if (encoder == "FLAC" || encoder == "flac")
+		{
+			String	 blocksize = "4608";
+			String	 lpc = "8";
+			String	 qlp = "0";
+			String	 rice = "3,3";
+			String	 minrice;
+			String	 maxrice;
+
+			ScanForParameter("-b", &blocksize);
+			ScanForParameter("-l", &lpc);
+			ScanForParameter("-q", &qlp);
+			ScanForParameter("-r", &rice);
+
+			Int	 i = 0;
+			Int	 j = 0;
+
+			for (i = 0; i < rice.Length(); i++)	{ if (rice[i] == ',') break; minrice[i] = rice[i]; }
+			for (j = i + 1; j < rice.Length(); j++)	{ maxrice[j - i - 1] = rice[j]; }
+
+			currentConfig->flac_do_mid_side_stereo		 = ScanForParameter("-m", NULL);
+			currentConfig->flac_do_exhaustive_model_search	 = ScanForParameter("-e", NULL);
+			currentConfig->flac_do_qlp_coeff_prec_search	 = ScanForParameter("-p", NULL);
+
+			currentConfig->flac_blocksize			 = Math::Max(192, Math::Min(32768, blocksize.ToInt()));
+			currentConfig->flac_max_lpc_order		 = Math::Max(0, Math::Min(32, lpc.ToInt()));
+			currentConfig->flac_qlp_coeff_precision		 = Math::Max(0, Math::Min(16, qlp.ToInt()));
+			currentConfig->flac_min_residual_partition_order = Math::Max(0, Math::Min(16, minrice.ToInt()));
+			currentConfig->flac_max_residual_partition_order = Math::Max(0, Math::Min(16, maxrice.ToInt()));
+
+			currentConfig->encoder = ENCODER_FLAC;
 		}
 		else if (encoder == "TVQ" || encoder == "tvq")
 		{
@@ -260,7 +308,7 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 			{
 				InStream	*in = new InStream(STREAM_FILE, files.GetNthEntry(i), IS_READONLY);
 
-				if (in->GetLastError() != IOLIB_ERROR_OK)
+				if (in->GetLastError() != IO_ERROR_OK)
 				{
 					delete in;
 
@@ -324,11 +372,11 @@ bonkEncCommandline::bonkEncCommandline(Array<String> &arguments) : args(argument
 	delete joblist;
 }
 
-bonkEncCommandline::~bonkEncCommandline()
+BonkEnc::BonkEncCommandline::~BonkEncCommandline()
 {
 }
 
-Bool bonkEncCommandline::ScanForParameter(String param, String *option)
+Bool BonkEnc::BonkEncCommandline::ScanForParameter(const String &param, String *option)
 {
 	for (Int i = 0; i < args.GetNOfEntries(); i++)
 	{
@@ -343,7 +391,7 @@ Bool bonkEncCommandline::ScanForParameter(String param, String *option)
 	return False;
 }
 
-Void bonkEncCommandline::ScanForFiles(Array<String> *files)
+Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 {
 	String	 param;
 	String	 prevParam;
