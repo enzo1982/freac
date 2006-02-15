@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">Beenden</entry>
     <entry id="8" string="General settings...">Allgemeine Einstellungen...</entry>
     <entry id="9" string="Configure selected encoder...">Ausgewählten Codierer konfigurieren...</entry>
-    <entry id="10" string="Audio file(s)...">Audiodatei(en)...</entry>
+    <entry id="10" string="Audio file(s)">Audiodatei(en)</entry>
     <entry id="11" string="Audio CD contents">Audio CD Inhalt</entry>
     <entry id="12" string="Start encoding">Codierung starten</entry>
     <entry id="13" string="Stop encoding">Codierung abbrechen</entry>
@@ -304,5 +304,25 @@
     <entry id="292" string="Adaptive Joint Stereo">Adaptives Joint Stereo</entry>
     <entry id="293" string="Fastest encoding">Schnellste Codierung</entry>
     <entry id="294" string="Best compression">Beste Komprimierung</entry>
+    <entry id="295" string="Linear predictor">Linearer Predictor</entry>
+    <entry id="296" string="Maximum LPC order">Maximaler LPC-Grad</entry>
+    <entry id="297" string="Quantized LPC precision">Quant. LPC-Genauigkeit</entry>
+    <entry id="298" string="Exhaustive model search">LPC-Grad optimieren</entry>
+    <entry id="299" string="Optimize LPC quantization">LPC-Quant. optimieren</entry>
+    <entry id="300" string="disabled">deaktiviert</entry>
+    <entry id="301" string="auto">automatisch</entry>
+    <entry id="302" string="Residual coding">Differenzsignal-Codierung</entry>
+    <entry id="303" string="Minimum partition order">Minimaler Teilungsgrad</entry>
+    <entry id="304" string="Maximum partition order">Maximaler Teilungsgrad</entry>
+    <entry id="305" string="By pattern">Nach Vorlage</entry>
+    <entry id="306" string="From directory">Aus Verzeichnis</entry>
+    <entry id="307" string="Directory">Verzeichnis</entry>
+    <entry id="308" string="Add directory">Verzeichnis hinzufügen</entry>
+    <entry id="309" string="Choose directory:">Verzeichnis wählen:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">Wählen Sie das Verzeichnis, welches zur Jobliste hinzugefügt werden soll:</entry>
+    <entry id="311" string="Add files by pattern">Dateien nach Vorlage hinzufügen</entry>
+    <entry id="312" string="Pattern">Vorlage</entry>
+    <entry id="313" string="Start directory">Ausgangsverzeichnis</entry>
+    <entry id="314" string="No files found matching pattern:">Keine Dateien entsprechen der Vorlage:</entry>
   </data>
 </LangFile>

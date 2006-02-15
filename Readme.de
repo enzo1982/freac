@@ -9,7 +9,7 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 CVS (Januar 2006)
+	Version 1.0 CVS (Februar 2006)
 
 		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch, Schwedisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
@@ -32,6 +32,9 @@ Geschichte
 		- Option zum Herunterfahren des Computers nach der Codierung hinzugefügt
 		- Fehler im FLAC-Decoder behoben
 		- Unterstützung für das Lesen von Vorbis Comment Tags auss FLAC-Dateien hinzugefügt
+		- Unterstützung für Drag & Drop von Verzeichnissen hinzugefügt
+		- Dialog zum Hinzufügen von Verzeichnissen mit Audiodateien hinzugefügt
+		- Dialog zum Hinzufügen von Audiodateien nach Namensvorlage hinzugefügt
 		- Anzeige von Popupboxen in Kommandozeilenversion behoben
 		- Die Jobliste kann jetzt als M3U-Datei gespeichert/geladen werden
 		- Tracks werden nicht mehr automatisch eingelesen, wenn sie bereits in der Jobliste sind

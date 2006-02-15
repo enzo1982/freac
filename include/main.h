@@ -27,6 +27,7 @@ namespace BonkEnc
 			PopupMenu	*menu_addsubmenu;
 			PopupMenu	*menu_encode;
 			PopupMenu	*menu_drives;
+			PopupMenu	*menu_files;
 			PopupMenu	*menu_seldrive;
 			PopupMenu	*menu_database;
 			PopupMenu	*menu_trackmenu;
@@ -90,13 +91,18 @@ namespace BonkEnc
 			Void		 PlayNext();
 			Void		 OpenCDTray();
 
+			Void		 SelectDir();
+
+			Void		 AddFilesFromDirectory();
+			Void		 AddFilesByPattern();
+
 			Void		 OnJoblistSelectTrack(Track *);
 			Void		 OnJoblistSelectNone();
 		public:
 					 BonkEncGUI();
 					~BonkEncGUI();
 
-			Array<Track *>	*GetCDDBData();
+			CDDBInfo	*GetCDDBData();
 	};
 };
 

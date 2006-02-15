@@ -48,7 +48,9 @@ namespace BonkEnc
 			Int			 SetMetrics(const Point &, const Size &);
 
 			Void			 AddTrackByDialog();
-			Void			 AddTrackByFileName(const String &, const String &out = NIL);
+			Void			 AddTracksByPattern(const String &, const String &);
+
+			Void			 AddTrackByFileName(const String &, const String & = NIL, Bool = True);
 
 			Void			 RemoveSelectedTrack();
 		signals:

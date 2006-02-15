@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">종료</entry>
     <entry id="8" string="General settings...">일반설정...</entry>
     <entry id="9" string="Configure selected encoder...">선택된 인코더 설정...</entry>
-    <entry id="10" string="Audio file(s)...">오디오 파일...</entry>
+    <entry id="10" string="Audio file(s)">오디오 파일</entry>
     <entry id="11" string="Audio CD contents">오디오CD 트랙</entry>
     <entry id="12" string="Start encoding">인코딩 시작</entry>
     <entry id="13" string="Stop encoding">인코딩 정지</entry>

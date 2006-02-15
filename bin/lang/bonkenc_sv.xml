@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">Avsluta</entry>
     <entry id="8" string="General settings...">Generella inställningar...</entry>
     <entry id="9" string="Configure selected encoder...">Konfigurera markerad avkodare...</entry>
-    <entry id="10" string="Audio file(s)...">Ljud fil(er)...</entry>
+    <entry id="10" string="Audio file(s)">Ljud fil(er)</entry>
     <entry id="11" string="Audio CD contents">Ljud CD inehåll</entry>
     <entry id="12" string="Start encoding">Starta avkodning</entry>
     <entry id="13" string="Stop encoding">Stoppa avkodning</entry>

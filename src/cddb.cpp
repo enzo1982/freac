@@ -14,7 +14,7 @@
 #include <cddb.h>
 #include <dllinterfaces.h>
 
-Array<Array<BonkEnc::Track *> *>	 BonkEnc::CDDB::infoCache;
+Array<BonkEnc::CDDBInfo *>	 BonkEnc::CDDB::infoCache;
 Array<Bool>			 BonkEnc::CDDB::requestedDiscs;
 
 int cddb_sum(int n)
@@ -72,18 +72,30 @@ Int BonkEnc::CDDB::ComputeDiscID()
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
 
-String BonkEnc::CDDB::GetDiscIDString()
+String BonkEnc::CDDB::DiscIDToString(Int discID)
 {
-	int	 id = ComputeDiscID();
-	String	 str;
+	String	 result;
 
-	for (int i = 28; i >= 0; i -= 4)
+	for (Int i = 28; i >= 0; i -= 4)
 	{
-		if (((id >> i) & 15) <= 9)	str[(28 - i) / 4] = '0' + ((id >> i) & 15);
-		else				str[(28 - i) / 4] = 'a' + ((id >> i) & 15) - 10;
+		if (((discID >> i) & 15) <= 9)	result[(28 - i) / 4] = '0' + ((discID >> i) & 15);
+		else				result[(28 - i) / 4] = 'a' + ((discID >> i) & 15) - 10;
 	}
 
-	return str;
+	return result;
+}
+
+Int BonkEnc::CDDB::StringToDiscID(const String &string)
+{
+	Int	 result = 0;
+
+	for (Int i = 0; i < 8; i++)
+	{
+		if (string[i] >= '0' && string[i] <= '9')	result += ((string[i] - '0') << ((7 - i) * 4));
+		else if (string[i] >= 'a' && string[i] <= 'f')	result += ((string[i] - 'a' + 10) << ((7 - i) * 4));
+	}
+
+	return result;
 }
 
 String BonkEnc::CDDB::GetCategory()
@@ -93,7 +105,7 @@ String BonkEnc::CDDB::GetCategory()
 
 String BonkEnc::CDDB::GetCDDBQueryString()
 {
-	String	 str = String("cddb query ").Append(GetDiscIDString());
+	String	 str = String("cddb query ").Append(DiscIDToString(ComputeDiscID()));
 
 	ex_CR_SetActiveCDROM(activeDriveID);
 
@@ -252,16 +264,16 @@ Bool BonkEnc::CDDB::ConnectToServer()
 		{
 			debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_cddbp_port)));
 
-			connected = false;
+			connected = False;
 
 			delete socket;
 
-			return false;
+			return False;
 		}
 
 		debug_out->OutputLine(String("CDDB: Connected to CDDB server at ").Append(config->freedb_server).Append(":").Append(config->freedb_cddbp_port));
 
-		connected = true;
+		connected = True;
 
 		in = new InStream(STREAM_DRIVER, socket);
 		out = new OutStream(STREAM_STREAM, in);
@@ -270,15 +282,13 @@ Bool BonkEnc::CDDB::ConnectToServer()
 	SendCommand("");
 	SendCommand("proto 6");
 
-	char	*buffer = new char [256];
+	hostNameBuffer.Resize(256);
 
-	gethostname(buffer, 256);
+	gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-	SendCommand(String("cddb hello user ").Append(buffer).Append(" BonkEnc ").Append(BonkEnc::cddbVersion));
+	SendCommand(String("cddb hello user ").Append(hostNameBuffer).Append(" BonkEnc ").Append(BonkEnc::cddbVersion));
 
-	delete [] buffer;
-
-	return true;
+	return True;
 }
 
 String BonkEnc::CDDB::Query(const String &discid)
@@ -360,47 +370,206 @@ String BonkEnc::CDDB::Query(const String &discid)
 	return "error";
 }
 
-String BonkEnc::CDDB::Read(const String &query)
+Bool BonkEnc::CDDB::Read(const String &read, CDDBInfo *cddbInfo)
 {
-	String	 str = SendCommand(String("cddb read ").Append(query));
+	String	 result = SendCommand(String("cddb read ").Append(read));
 
-	if (str[0] == '2' && str[1] == '1' && str[2] == '0')
+	if (!result.StartsWith("210")) return False;
+
+	cddbInfo->discID = ComputeDiscID();
+
+	for (Int i = 4; i < result.Length(); i++)
 	{
-		category = "";
+		if (result[i] == ' ') break;
 
-		for (int i = 4; i < str.Length(); i++)
-		{
-			if (str[i] == ' ') break;
-
-			category[i - 4] = str[i];
-		}
-
-		str = "";
-
-		do
-		{
-			String	 val;
-
-			val.ImportFrom("UTF-8", in->InputLine());
-
-			debug_out->OutputString("CDDB: < ");
-			debug_out->OutputLine(val.ConvertTo("UTF-8"));
-
-			if (val == ".") break;
-
-			str.Append(val).Append("\n");
-		}
-		while (true);
-
-		return str;
+		cddbInfo->category[i - 4] = result[i];
 	}
-	else
+
+	result = "";
+
+	do
 	{
-		return "error";
+		String	 val;
+
+		val.ImportFrom("UTF-8", in->InputLine());
+
+		debug_out->OutputString("CDDB: < ");
+		debug_out->OutputLine(val.ConvertTo("UTF-8"));
+
+		if (val == ".") break;
+
+		result.Append(val).Append("\n");
 	}
+	while (True);
+
+	Int	 index = 0;
+
+	while (index < result.Length())
+	{
+		String	 line = ParseCDDBEntry(result, index);
+
+		if (line.StartsWith("DTITLE"))
+		{
+			Int	 k;
+
+			for (k = 7; k < line.Length(); k++)
+			{
+				if (line[k] == ' ' && line[k + 1] == '/' && line[k + 2] == ' ') break;
+
+				cddbInfo->dArtist[k - 7] = line[k];
+			}
+
+			for (Int l = k + 3; l < line.Length(); l++) cddbInfo->dTitle[l - k - 3] = line[l];
+
+			if (cddbInfo->dTitle == "") cddbInfo->dTitle = cddbInfo->dArtist;
+		}
+		else if (line.StartsWith("DGENRE"))
+		{
+			for (Int l = 7; l < line.Length(); l++) cddbInfo->dGenre[l - 7] = line[l];
+		}
+		else if (line.StartsWith("DYEAR"))
+		{
+			String	 year;
+
+			for (Int l = 6; l < line.Length(); l++) year[l - 6] = line[l];
+
+			cddbInfo->dYear = year.ToInt();
+		}
+		else if (line.StartsWith("TTITLE"))
+		{
+			String	 track;
+			Int	 k;
+
+			for (k = 6; k >= 0; k++)
+			{
+				if (line[k] == '=')	break;
+				else			track[k - 6] = line[k];
+			}
+
+			String	 artist;
+			String	 title;
+
+			if (cddbInfo->dArtist == "Various")
+			{
+				Int	 l;
+
+				for (l = k + 1; l < line.Length(); l++)
+				{
+					if (line[l] == ' ' && line[l + 1] == '/' && line[l + 2] == ' ') break;
+
+					artist[l - k - 1] = line[l];
+				}
+
+				for (Int m = l + 3; m < line.Length(); m++) title[m - l - 3] = line[m];
+
+				if (title == "") { title = artist; artist = ""; }
+			}
+			else
+			{
+				for (Int l = k + 1; l < line.Length(); l++) title[l - k - 1] = line[l];
+			}
+
+			cddbInfo->trackArtists.AddEntry(artist, track.ToInt());
+			cddbInfo->trackTitles.AddEntry(title, track.ToInt());
+		}
+		else if (line.StartsWith("EXTD"))
+		{
+			for (Int k = 5; k < line.Length(); k++) cddbInfo->comment[k - 5] = line[k];
+		}
+		else if (line.StartsWith("EXTT"))
+		{
+			String	 track;
+			Int	 k;
+
+			for (k = 4; k >= 0; k++)
+			{
+				if (line[k] == '=')	break;
+				else			track[k - 4] = line[k];
+			}
+
+			String	 comment;
+
+			for (Int l = k + 1; l < line.Length(); l++) comment[l - k - 1] = line[l];
+
+			cddbInfo->trackComments.AddEntry(comment, track.ToInt());
+		}
+		else if (line.StartsWith("PLAYORDER"))
+		{
+			for (Int k = 10; k < line.Length(); k++) cddbInfo->playOrder[k - 10] = line[k];
+		}
+		else if (line.StartsWith("# Revision: "))
+		{
+			String	 revision;
+
+			for (Int l = 12; l < line.Length(); l++) revision[l - 12] = line[l];
+
+			cddbInfo->revision = revision.ToInt();
+		}
+		else if (line.StartsWith("# Track frame offsets:"))
+		{
+			Int	 track = 0;
+
+			do
+			{
+				Int	 oldIndex = index;
+
+				line = ParseCDDBEntry(result, index);
+
+				if (line[0] == '#' && line.Length() <= 2) break;
+
+				Int	 firstDigit = 0;
+				String	 offset;
+
+				for (Int n = 2; n < line.Length(); n++)
+				{
+					if (line[n] != ' ' && line[n] != '\t')
+					{
+						firstDigit = n;
+
+						break;
+					}
+				}
+
+				for (Int l = firstDigit; l < line.Length(); l++) offset[l - firstDigit] = line[l];
+
+				if (offset.ToInt() == 0)
+				{
+					index = oldIndex;
+
+					break;
+				}
+
+				cddbInfo->trackOffsets.AddEntry(offset.ToInt(), track++);
+			}
+			while (True);
+		}
+		else if (line.StartsWith("# Disc length: "))
+		{
+			String	 discLength;
+
+			for (Int l = 15; l < line.Length(); l++) discLength[l - 15] = line[l];
+
+			cddbInfo->discLength = discLength.ToInt();
+		}
+		else if (line.StartsWith("210 "))
+		{
+			String	 category;
+
+			for (Int l = 4; l < line.Length(); l++)
+			{
+				if (line[l] == ' ') break;
+
+				category[l - 4] = line[l];
+			}
+
+			cddbInfo->category = category;
+		}
+	}
+
+	return True;
 }
 
-String BonkEnc::CDDB::Submit(Array<Track *> *cddbInfo)
+Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 {
 	String	 str;
 	String	 content;
@@ -409,42 +578,43 @@ String BonkEnc::CDDB::Submit(Array<Track *> *cddbInfo)
 	content.Append("# ").Append("\n");
 	content.Append("# Track frame offsets:").Append("\n");
 
-	for (int i = 1; i < cddbInfo->GetNOfEntries(); i++)
+	for (int i = 1; i < cddbInfo->trackOffsets.GetNOfEntries(); i++)
 	{
-		content.Append("#     ").Append(String::FromInt(cddbInfo->GetNthEntry(i)->offset)).Append("\n");
+		content.Append("#     ").Append(String::FromInt(cddbInfo->trackOffsets.GetNthEntry(i))).Append("\n");
 	}
 
 	content.Append("# ").Append("\n");
-	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->GetNthEntry(0)->disclength)).Append("\n");
+	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->discLength)).Append("\n");
 	content.Append("# ").Append("\n");
-	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->GetNthEntry(0)->revision)).Append("\n");
+	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->revision)).Append("\n");
 	content.Append("# Submitted via: ").Append("BonkEnc ").Append(BonkEnc::cddbVersion).Append("\n");
 	content.Append("# ").Append("\n");
 
-	content.Append("DISCID=").Append(cddbInfo->GetNthEntry(0)->discid).Append("\n");
-	content.Append("DTITLE=").Append(cddbInfo->GetNthEntry(0)->artist).Append(" / ").Append(cddbInfo->GetNthEntry(0)->album).Append("\n");
-	content.Append("DYEAR=").Append(cddbInfo->GetNthEntry(0)->year).Append("\n");
-	content.Append("DGENRE=").Append(cddbInfo->GetNthEntry(0)->genre).Append("\n");
+	content.Append(FormatCDDBEntry("DISCID", cddbInfo->DiscIDToString()));
+	content.Append(FormatCDDBEntry("DTITLE", String(cddbInfo->dArtist).Append(" / ").Append(cddbInfo->dTitle)));
+	content.Append(FormatCDDBEntry("DYEAR", cddbInfo->dYear));
+	content.Append(FormatCDDBEntry("DGENRE", cddbInfo->dGenre));
 
-	for (int j = 1; j < cddbInfo->GetNOfEntries(); j++)
+	for (Int j = 0; j < cddbInfo->trackTitles.GetNOfEntries(); j++)
 	{
-		content.Append("TTITLE").Append(String::FromInt(j - 1)).Append("=").Append(cddbInfo->GetNthEntry(j)->title).Append("\n");
+		if (cddbInfo->dArtist == "Various")	content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), String(cddbInfo->trackArtists.GetNthEntry(j)).Append(" / ").Append(cddbInfo->trackTitles.GetNthEntry(j))));
+		else					content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), cddbInfo->trackTitles.GetNthEntry(j)));
 	}
 
-	content.Append("EXTD=").Append(cddbInfo->GetNthEntry(0)->comment).Append("\n");
+	content.Append(FormatCDDBEntry("EXTD", cddbInfo->comment));
 
-	for (int k = 1; k < cddbInfo->GetNOfEntries(); k++)
+	for (Int k = 0; k < cddbInfo->trackComments.GetNOfEntries(); k++)
 	{
-		content.Append("EXTT").Append(String::FromInt(k - 1)).Append("=").Append(cddbInfo->GetNthEntry(k)->comment).Append("\n");
+		content.Append(FormatCDDBEntry(String("EXTT").Append(String::FromInt(k)), cddbInfo->trackComments.GetNthEntry(k)));
 	}
 
-	content.Append("PLAYORDER=").Append(cddbInfo->GetNthEntry(0)->playorder).Append("\n");
+	content.Append(FormatCDDBEntry("PLAYORDER", cddbInfo->playOrder));
 
 	str.Append("POST ").Append(config->freedb_submit_path).Append(" HTTP/1.0\n");
-	str.Append("Category: ").Append(cddbInfo->GetNthEntry(0)->category).Append("\n");
-	str.Append("Discid: ").Append(cddbInfo->GetNthEntry(0)->discid).Append("\n");
+	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
+	str.Append("Discid: ").Append(cddbInfo->discID).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append("submit").Append("\n");
+	str.Append("Submit-Mode: ").Append("test").Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
 	str.Append("Charset: UTF-8\n");
 	str.Append("\n");
@@ -462,11 +632,9 @@ String BonkEnc::CDDB::Submit(Array<Track *> *cddbInfo)
 	{
 		debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 
-		str = "error";
-
 		delete socket;
 
-		return str;
+		return False;
 	}
 
 	in = new InStream(STREAM_DRIVER, socket);
@@ -496,12 +664,13 @@ String BonkEnc::CDDB::Submit(Array<Track *> *cddbInfo)
 	delete in;
 	delete socket;
 
-	return str;
+	if (str.StartsWith("200"))	return True;
+	else				return False;
 }
 
 Bool BonkEnc::CDDB::CloseConnection()
 {
-	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return false;
+	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return False;
 
 	SendCommand("quit");
 
@@ -512,15 +681,106 @@ Bool BonkEnc::CDDB::CloseConnection()
 		delete socket;
 	}
 
-	return true;
+	return True;
 }
 
-Int BonkEnc::CDDB::GetNOfMatches()
+/* Format a CDDB entry according to the rules
+   from the freedb how-to. Replace special
+   characters and split lines at 256 chars. */
+
+String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
+{
+	String	 result;
+
+	for (Int i = 0; i < value.Length(); )
+	{
+		String	 line = String(entry).Append("=");
+
+		for (Int c = 0; c < 254 - entry.Length() && i < value.Length(); c++, i++)
+		{
+			if (value[i] == '\n' || value[i] == '\t' || value[i] == '\\')
+			{
+				if (c >= 253 - entry.Length()) break;
+
+				if (value[i] == '\n') line.Append("\\n");
+				if (value[i] == '\t') line.Append("\\t");
+				if (value[i] == '\\') line.Append("\\\\");
+
+				c++;
+			}
+			else
+			{
+				line[line.Length()] = value[i];
+			}
+		}
+
+		result.Append(line).Append("\n");
+	}
+
+	return result;
+}
+
+/* Parse the next CDDB entry according to the
+   rules from the freedb how-to. Substitute
+   special character sequences and concatenate
+   multiline entries. */
+
+String BonkEnc::CDDB::ParseCDDBEntry(const String &cddb, Int &index)
+{
+	String	 result;
+	String	 entry;
+
+	while (index < cddb.Length())
+	{
+		if (cddb[index] == '=')		break;
+		if (cddb[index] == '\n')	{ index++; return entry; }
+
+		entry[entry.Length()] = cddb[index++];
+	}
+
+	result.Append(entry).Append("=");
+
+	index -= entry.Length();
+
+	while (index < cddb.Length())
+	{
+		String	 line;
+		Int	 oldIndex = index;
+
+		while (index < cddb.Length())
+		{
+			if (cddb[index] == '\n') break;
+
+			if (cddb[index] == '\\')
+			{
+				if (cddb[index + 1] == 'n') line[line.Length()] = '\n';
+				if (cddb[index + 1] == 't') line[line.Length()] = '\t';
+				if (cddb[index + 1] == '\\') line[line.Length()] = '\\';
+
+				index += 2;
+			}
+			else
+			{
+				line[line.Length()] = cddb[index++];
+			}
+		}
+
+		if (!line.StartsWith(String(entry).Append("="))) { index = oldIndex; break; }
+
+		for (Int j = entry.Length() + 1; j < line.Length(); j++) result[result.Length()] = line[j];
+
+		index++;
+	}
+
+	return result;
+}
+
+Int BonkEnc::CDDB::GetNumberOfMatches()
 {
 	return ids.GetNOfEntries();
 }
 
-String BonkEnc::CDDB::GetNthID(Int n)
+String BonkEnc::CDDB::GetNthDiscID(Int n)
 {
 	return ids.GetNthEntry(n);
 }

@@ -248,6 +248,14 @@ SOURCE=..\src\dialogs\cddb\submit.cpp
 # End Group
 # Begin Source File
 
+SOURCE=..\src\dialogs\adddirectory.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\dialogs\addpattern.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\dialogs\bladeconfig.cpp
 # End Source File
 # Begin Source File
@@ -286,6 +294,10 @@ SOURCE=..\src\bonkenc.cpp
 # Begin Source File
 
 SOURCE=..\src\cddb.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\cddbinfo.cpp
 # End Source File
 # Begin Source File
 
@@ -505,6 +517,14 @@ SOURCE=..\include\dialogs\cddb\submit.h
 # End Group
 # Begin Source File
 
+SOURCE=..\include\dialogs\adddirectory.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\addpattern.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\include\dialogs\bladeconfig.h
 # End Source File
 # Begin Source File
@@ -543,6 +563,10 @@ SOURCE=..\include\bonkenc.h
 # Begin Source File
 
 SOURCE=..\include\cddb.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\cddbinfo.h
 # End Source File
 # Begin Source File
 

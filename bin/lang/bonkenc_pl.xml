@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">Wyjdź</entry>
     <entry id="8" string="General settings...">Ustawienia podstawowe...</entry>
     <entry id="9" string="Configure selected encoder...">Konfiguracja bieżącego konwertera...</entry>
-    <entry id="10" string="Audio file(s)...">Plik(i) audio...</entry>
+    <entry id="10" string="Audio file(s)">Plik(i) audio</entry>
     <entry id="11" string="Audio CD contents">Zawartość płyty audio CD</entry>
     <entry id="12" string="Start encoding">Rozpoczęcie konwersji</entry>
     <entry id="13" string="Stop encoding">Zatrzymanie konwersji</entry>

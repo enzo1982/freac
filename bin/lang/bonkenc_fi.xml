@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">Lopeta</entry>
     <entry id="8" string="General settings...">Yleiset asetukset...</entry>
     <entry id="9" string="Configure selected encoder...">Konfiguroi valittu pakkaaja...</entry>
-    <entry id="10" string="Audio file(s)...">Äänitiedosto(t)...</entry>
+    <entry id="10" string="Audio file(s)">Äänitiedosto(t)</entry>
     <entry id="11" string="Audio CD contents">Äänilevyn sisältö</entry>
     <entry id="12" string="Start encoding">Aloita pakkaus</entry>
     <entry id="13" string="Stop encoding">Pysäytä pakkaus</entry>

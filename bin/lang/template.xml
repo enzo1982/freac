@@ -19,7 +19,7 @@
     <entry id="7" string="Exit"/>
     <entry id="8" string="General settings..."/>
     <entry id="9" string="Configure selected encoder..."/>
-    <entry id="10" string="Audio file(s)..."/>
+    <entry id="10" string="Audio file(s)"/>
     <entry id="11" string="Audio CD contents"/>
     <entry id="12" string="Start encoding"/>
     <entry id="13" string="Stop encoding"/>
@@ -304,5 +304,25 @@
     <entry id="292" string="Adaptive Joint Stereo"/>
     <entry id="293" string="Fastest encoding"/>
     <entry id="294" string="Best compression"/>
+    <entry id="295" string="Linear predictor"/>
+    <entry id="296" string="Maximum LPC order"/>
+    <entry id="297" string="Quantized LPC precision"/>
+    <entry id="298" string="Exhaustive model search"/>
+    <entry id="299" string="Optimize LPC quantization"/>
+    <entry id="300" string="disabled"/>
+    <entry id="301" string="auto"/>
+    <entry id="302" string="Residual coding"/>
+    <entry id="303" string="Minimum partition order"/>
+    <entry id="304" string="Maximum partition order"/>
+    <entry id="305" string="By pattern"/>
+    <entry id="306" string="From directory"/>
+    <entry id="307" string="Directory"/>
+    <entry id="308" string="Add directory"/>
+    <entry id="309" string="Choose directory:"/>
+    <entry id="310" string="Select the folder to add to the joblist:"/>
+    <entry id="311" string="Add files by pattern"/>
+    <entry id="312" string="Pattern"/>
+    <entry id="313" string="Start directory"/>
+    <entry id="314" string="No files found matching pattern:"/>
   </data>
 </LangFile>

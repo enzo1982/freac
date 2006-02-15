@@ -12,9 +12,11 @@
 #define _H_BONKENC_
 
 #include <smooth.h>
+
 #include "config.h"
 #include "track.h"
 #include "debug.h"
+#include "cddbinfo.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -124,15 +126,13 @@ namespace BonkEnc
 						 BonkEnc();
 						~BonkEnc();
 
-			virtual Array<Track *>	*GetCDDBData();
+			virtual CDDBInfo	*GetCDDBData();
 		slots:
 			Void			 ReadCD();
 
 			Void			 Encode();
 			Void			 PauseEncoding();
 			Void			 StopEncoding();
-
-			Void			 SelectDir();
 	};
 };
 

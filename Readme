@@ -9,7 +9,7 @@ BonkEnc uses the CDRip Ripping Library for audio ripping.
 History
 -------
 
-	Version 1.0 CVS (January 2006)
+	Version 1.0 CVS (February 2006)
 
 		- added Czech, Korean, Danish, Swedish and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
@@ -32,6 +32,9 @@ History
 		- added an option to shutdown the computer after encoding
 		- fixed FLAC decoder bugs
 		- added support for reading Vorbis Comment tags from FLAC files
+		- added support for drag & drop of directories
+		- added a dialog to add a directory of audio files to the joblist
+		- added a dialog to add audio files by name pattern
 		- fixed popup boxes appearing in command line version
 		- the joblist can now be saved to/loaded from M3U playlist files
 		- tracks are no longer added automatically when they are already in the joblist

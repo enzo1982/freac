@@ -63,12 +63,13 @@ BonkEnc::LanguageDlg::LanguageDlg()
 
 BonkEnc::LanguageDlg::~LanguageDlg()
 {
-	delete mainWnd_titlebar;
-	delete mainWnd;
-	delete divbar;
-	delete text_language;
-	delete list_language;
-	delete btn_ok;
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(divbar);
+
+	DeleteObject(text_language);
+	DeleteObject(list_language);
+	DeleteObject(btn_ok);
 }
 
 const Error &BonkEnc::LanguageDlg::ShowDialog()

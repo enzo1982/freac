@@ -353,7 +353,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		cdTextDiscID = discid;
 	}
 
-	Array<Track *>	*cdInfo = NIL;
+	CDDBInfo	*cdInfo = NIL;
 	Bool		 getCDDBFromCache = currentConfig->enable_cddb_cache;
 	Bool		 discIsInResults = False;
 
@@ -395,20 +395,20 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= cddb.GetDiscIDString();
+		nFormat->discid		= cddb.DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
-		nFormat->artist		= cdInfo->GetEntry(0)->artist;
-		nFormat->title		= cdInfo->GetEntry(trackNumber)->title;
-		nFormat->album		= cdInfo->GetEntry(0)->album;
-		nFormat->genre		= cdInfo->GetEntry(0)->genre;
-		nFormat->year		= cdInfo->GetEntry(0)->year;
+		nFormat->artist		= cdInfo->dArtist;
+		nFormat->title		= cdInfo->trackTitles.GetNthEntry(trackNumber - 1);
+		nFormat->album		= cdInfo->dTitle;
+		nFormat->genre		= cdInfo->dGenre;
+		nFormat->year		= cdInfo->dYear;
 	}
 	else if (cdText.GetEntry(trackNumber) != NIL)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= cddb.GetDiscIDString();
+		nFormat->discid		= cddb.DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
 		nFormat->artist		= cdText.GetEntry(0);
@@ -419,7 +419,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= cddb.GetDiscIDString();
+		nFormat->discid		= cddb.DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
 	}

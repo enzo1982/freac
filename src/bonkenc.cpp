@@ -36,8 +36,8 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n			= NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version = "CVS 20060101";
-String	 BonkEnc::BonkEnc::cddbVersion = "v1.0beta3";
+String	 BonkEnc::BonkEnc::version = "CVS 20060215";
+String	 BonkEnc::BonkEnc::cddbVersion = "v1.0beta4pre";
 String	 BonkEnc::BonkEnc::shortVersion = "v1.0";
 
 BonkEnc::BonkEnc::BonkEnc()
@@ -172,15 +172,7 @@ BonkEnc::BonkEnc::~BonkEnc()
 {
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
-	for (Int i = 0; i < CDDB::infoCache.GetNOfEntries(); i++)
-	{
-		for (Int j = 0; j < CDDB::infoCache.GetNthEntry(i)->GetNOfEntries(); j++)
-		{
-			delete CDDB::infoCache.GetNthEntry(i)->GetNthEntry(j);
-		}
-
-		delete CDDB::infoCache.GetNthEntry(i);
-	}
+	for (Int i = 0; i < CDDB::infoCache.GetNOfEntries(); i++) delete CDDB::infoCache.GetNthEntry(i);
 
 	if (currentConfig->enable_bonk)		DLLInterfaces::FreeBonkDLL();
 	if (currentConfig->enable_blade)	DLLInterfaces::FreeBladeDLL();
@@ -232,24 +224,7 @@ Void BonkEnc::BonkEnc::ReadCD()
 	currentConfig->cdrip_read_results.RemoveAll();
 }
 
-Array<BonkEnc::Track *> *BonkEnc::BonkEnc::GetCDDBData()
+BonkEnc::CDDBInfo *BonkEnc::BonkEnc::GetCDDBData()
 {
 	return NIL;
-}
-
-Void BonkEnc::BonkEnc::SelectDir()
-{
-	DirSelection	*dialog = new DirSelection();
-
-	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
-	dialog->SetDirName(currentConfig->enc_outdir);
-
-	if (dialog->ShowDialog() == Success())
-	{
-		edb_outdir->SetText(dialog->GetDirName());
-		currentConfig->enc_outdir = dialog->GetDirName();
-	}
-
-	DeleteObject(dialog);
 }

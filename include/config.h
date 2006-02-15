@@ -51,6 +51,9 @@ namespace BonkEnc
 
 			Bool		 shutdownAfterEncoding;
 
+			String		 lastAddedDir;
+			String		 lastAddedPattern;
+
 			Int		 encoder;
 			Bool		 enable_console;
 			Bool		 enable_bonk;

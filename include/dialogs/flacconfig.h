@@ -43,25 +43,22 @@ namespace BonkEnc
 			EditBox		*edit_blocksize;
 			Text		*text_blocksize_bytes;
 
-			GroupBox	*group_parameters;
-			CheckBox	*check_exhaustive_model;
-
-			GroupBox	*group_qlp;
-			Text		*text_qlp_precision;
-			Slider		*slider_qlp_precision;
-			Text		*text_qlp_precision_value;
-
 			GroupBox	*group_lpc;
 			Text		*text_max_lpc_order;
 			Slider		*slider_max_lpc_order;
 			Text		*text_max_lpc_order_value;
+			CheckBox	*check_exhaustive_model;
+			Text		*text_qlp_precision;
+			Slider		*slider_qlp_precision;
+			Text		*text_qlp_precision_value;
+			CheckBox	*check_qlp_precision_search;
 
 			GroupBox	*group_rice;
 			Text		*text_min_part_order;
-			Slider		*edit_min_part_order;
+			Slider		*slider_min_part_order;
 			Text		*text_min_part_order_value;
 			Text		*text_max_part_order;
-			Slider		*edit_max_part_order;
+			Slider		*slider_max_part_order;
 			Text		*text_max_part_order_value;
 
 			Divider		*divbar;
@@ -95,6 +92,10 @@ namespace BonkEnc
 			const Error	&ShowDialog();
 		slots:
 			Void		 SetPreset();
+			Void		 SetLPCOrder();
+			Void		 SetQLPSearch();
+			Void		 SetQLPPrecision();
+			Void		 SetRiceOrder();
 			Void		 SetStereoMode();
 			Void		 SetStreamableSubset();
 			Void		 SetBlockSize();

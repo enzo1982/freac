@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">離開</entry>
     <entry id="8" string="General settings...">一般設定...</entry>
     <entry id="9" string="Configure selected encoder...">設定目前編碼器...</entry>
-    <entry id="10" string="Audio file(s)...">音訊檔案...</entry>
+    <entry id="10" string="Audio file(s)">音訊檔案</entry>
     <entry id="11" string="Audio CD contents">CD音軌</entry>
     <entry id="12" string="Start encoding">開始編碼</entry>
     <entry id="13" string="Stop encoding">停止編碼</entry>

@@ -12,7 +12,9 @@
 #define _H_CDDB_
 
 #include <smooth.h>
+
 #include <main.h>
+#include <cddbinfo.h>
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -26,44 +28,51 @@ namespace BonkEnc
 	class BEEXPORT CDDB
 	{
 		private:
-			Int				 activeDriveID;
-			Bool				 connected;
-			Config				*config;
+			Int			 activeDriveID;
+			Bool			 connected;
+			Config			*config;
 
-			Driver				*socket;
-			InStream			*in;
-			OutStream			*out;
+			Buffer<char>		 hostNameBuffer;
 
-			Array<String>			 ids;
-			Array<String>			 titles;
-			Array<String>			 categories;
+			Driver			*socket;
+			InStream		*in;
+			OutStream		*out;
 
-			String				 category;
+			Array<String>		 ids;
+			Array<String>		 titles;
+			Array<String>		 categories;
 
-			String				 GetCDDBQueryString();
-			String				 SendCommand(const String &);
+			String			 category;
+
+			String			 GetCDDBQueryString();
+			String			 SendCommand(const String &);
+
+			String			 FormatCDDBEntry(const String &, const String &);
+			String			 ParseCDDBEntry(const String &, Int &);
 		public:
-							 CDDB(Config *);
-							~CDDB();
+						 CDDB(Config *);
+			virtual			~CDDB();
 
-			Int				 SetActiveDrive(Int);
-			Int				 ComputeDiscID();
-			String				 GetDiscIDString();
-			String				 GetCategory();
+			Int			 SetActiveDrive(Int);
+			Int			 ComputeDiscID();
+			String			 GetCategory();
 
-			Bool				 ConnectToServer();
-			String				 Query(const String &);
-			String				 Read(const String &);
-			String				 Submit(Array<Track *> *);
-			Bool				 CloseConnection();
+			Bool			 ConnectToServer();
+			String			 Query(const String &);
+			Bool			 Read(const String &, CDDBInfo *);
+			Bool			 Submit(CDDBInfo *);
+			Bool			 CloseConnection();
 
-			Int				 GetNOfMatches();
-			String				 GetNthID(Int);
-			String				 GetNthTitle(Int);
-			String				 GetNthCategory(Int);
+			Int			 GetNumberOfMatches();
+			String			 GetNthDiscID(Int);
+			String			 GetNthTitle(Int);
+			String			 GetNthCategory(Int);
 
-			static Array<Array<Track *> *>	 infoCache;
-			static Array<Bool>		 requestedDiscs;
+			static String		 DiscIDToString(Int);
+			static Int		 StringToDiscID(const String &);
+
+			static Array<CDDBInfo *> infoCache;
+			static Array<Bool>	 requestedDiscs;
 	};
 };
 

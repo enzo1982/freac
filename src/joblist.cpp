@@ -277,7 +277,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	delete dialog;
 }
 
-Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outfile)
+Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outfile, Bool displayErrors)
 {
 	if (BonkEnc::currentConfig->appMain->encoding)
 	{
@@ -296,6 +296,13 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 		delete filter_in;
 	}
 
+	if (format == NIL)
+	{
+		if (displayErrors) Utilities::ErrorMessage(BonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file));
+
+		return;
+	}
+
 	if (format->isCDTrack && BonkEnc::currentConfig->cdrip_autoRead_active)
 	{
 		for (Int i = 0; i < tracks.GetNOfEntries(); i++)
@@ -306,15 +313,9 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 		}
 	}
 
-	if (format == NIL)
+	if (format->rate == 0 || format->channels == 0)
 	{
-		Utilities::ErrorMessage(BonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file));
-
-		return;
-	}
-	else if (format->rate == 0 || format->channels == 0)
-	{
-		Utilities::ErrorMessage(BonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file));
+		if (displayErrors) Utilities::ErrorMessage(BonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file));
 
 		return;
 	}
@@ -385,12 +386,44 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 	format->outfile = outfile;
 
 	AddTrack(format);
-	Paint(SP_UPDATE);
 }
 
 Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
 {
-	AddTrackByFileName(file);
+	if (BonkEnc::currentConfig->appMain->encoding)
+	{
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
+
+		return;
+	}
+
+	if (File(file).Exists())
+	{
+		AddTrackByFileName(file);
+	}
+	else if (Directory(file).Exists())
+	{
+		Directory		 directory = Directory(file);
+		const Array<Directory>	&directories = directory.GetDirectories();
+		const Array<File>	&files = directory.GetFiles();
+
+		for (Int i = 0; i < directories.GetNOfEntries(); i++) AddTrackByDragAndDrop(directories.GetNthEntry(i));
+		for (Int j = 0; j < files.GetNOfEntries(); j++) AddTrackByFileName(files.GetNthEntry(j), NIL, False);
+	}
+	else
+	{
+		Utilities::ErrorMessage(BonkEnc::i18n->TranslateString("Cannot open file:").Append(" ").Append(file));
+	}
+}
+
+Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String &pattern)
+{
+	Directory		 dir = Directory(directory);
+	const Array<File>	&files = dir.GetFilesByPattern(pattern);
+
+	for (Int j = 0; j < files.GetNOfEntries(); j++) AddTrackByFileName(files.GetNthEntry(j), NIL, False);
+
+	if (files.GetNOfEntries() == 0) Utilities::ErrorMessage(BonkEnc::i18n->TranslateString("No files found matching pattern:").Append(" ").Append(pattern));
 }
 
 Void BonkEnc::JobList::RemoveSelectedTrack()

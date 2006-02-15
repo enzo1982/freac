@@ -12,7 +12,9 @@
 #define _H_CDDB_SUBMIT_
 
 #include <smooth.h>
+
 #include <main.h>
+#include <cddbinfo.h>
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -61,7 +63,7 @@ namespace BonkEnc
 			Bool		 dontUpdateInfo;
 			Bool		 updateJoblist;
 
-			Array<Track *>	*cddbInfo;
+			CDDBInfo	*cddbInfo;
 			Bool		 ownCddbInfo;
 
 			String		 discid;

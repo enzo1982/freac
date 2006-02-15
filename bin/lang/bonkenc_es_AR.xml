@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">Salir</entry>
     <entry id="8" string="General settings...">Configuración general...</entry>
     <entry id="9" string="Configure selected encoder...">Configuración del codificador seleccionado...</entry>
-    <entry id="10" string="Audio file(s)...">Archivo(s) de audio...</entry>
+    <entry id="10" string="Audio file(s)">Archivo(s) de audio</entry>
     <entry id="11" string="Audio CD contents">Contenido del CD de Audio</entry>
     <entry id="12" string="Start encoding">Comenzar codificación</entry>
     <entry id="13" string="Stop encoding">Detener codificación</entry>

@@ -8,44 +8,50 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_CDDB_QUERY_
-#define _H_CDDB_QUERY_
+#ifndef _H_DIALOG_PATTERN_
+#define _H_DIALOG_PATTERN_
 
 #include <smooth.h>
-
 #include <main.h>
-#include <cddbinfo.h>
 
 using namespace smooth;
 using namespace smooth::GUI;
 
 namespace BonkEnc
 {
-	class cddbQueryDlg : public Dialog
+	class AddPatternDialog : public Dialog
 	{
 		private:
+			Divider		*divbar;
+
 			Window		*mainWnd;
 			Titlebar	*mainWnd_titlebar;
 
-			Text		*text_status;
-			Progressbar	*prog_status;
+			GroupBox	*group_pattern;
+			Text		*text_directory;
+			EditBox		*edit_directory;
+			Button		*btn_browse;
+
+			Text		*text_pattern;
+			EditBox		*edit_pattern;
+
+			Button		*btn_ok;
 			Button		*btn_cancel;
 
 			Config		*currentConfig;
-
-			CDDBInfo	*rCDDBInfo;
-
-			Thread		*queryThread;
-
-			Void		 Cancel();
-			Int		 QueryThread(Thread *);
 		public:
-					 cddbQueryDlg();
-					~cddbQueryDlg();
+					 AddPatternDialog();
+					~AddPatternDialog();
 
 			const Error	&ShowDialog();
+		accessors:
+			String		 GetDirectory();
+			String		 GetPattern();
+		slots:
+			Void		 OK();
+			Void		 Cancel();
 
-			CDDBInfo	*QueryCDDB();
+			Void		 Browse();
 	};
 };
 

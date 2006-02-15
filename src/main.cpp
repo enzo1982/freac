@@ -22,6 +22,10 @@
 #include <utilities.h>
 
 #include <dialogs/genconfig/genconfig.h>
+
+#include <dialogs/adddirectory.h>
+#include <dialogs/addpattern.h>
+
 #include <dialogs/bonkconfig.h>
 #include <dialogs/bladeconfig.h>
 #include <dialogs/lameconfig.h>
@@ -124,6 +128,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_addsubmenu		= new PopupMenu();
 	menu_encode		= new PopupMenu();
 	menu_drives		= new PopupMenu();
+	menu_files		= new PopupMenu();
 	menu_seldrive		= new PopupMenu();
 	menu_database		= new PopupMenu();
 	menu_trackmenu		= new PopupMenu();
@@ -380,7 +385,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	btn_outdir = new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
 	btn_outdir->SetOrientation(OR_LOWERRIGHT);
-	btn_outdir->onAction.Connect(&BonkEnc::SelectDir, (BonkEnc *) this);
+	btn_outdir->onAction.Connect(&BonkEncGUI::SelectDir, this);
 
 	progress = new Progressbar(Point(0, 51), Size(0, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 	progress->SetOrientation(OR_LOWERLEFT);
@@ -535,16 +540,17 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(progress);
 	DeleteObject(hyperlink);
 
-	delete menu_file;
-	delete menu_options;
-	delete menu_addsubmenu;
-	delete menu_encode;
-	delete menu_drives;
-	delete menu_seldrive;
-	delete menu_encoders;
-	delete menu_database;
-	delete menu_trackmenu;
-	delete menu_help;
+	DeleteObject(menu_file);
+	DeleteObject(menu_options);
+	DeleteObject(menu_addsubmenu);
+	DeleteObject(menu_encode);
+	DeleteObject(menu_drives);
+	DeleteObject(menu_files);
+	DeleteObject(menu_seldrive);
+	DeleteObject(menu_encoders);
+	DeleteObject(menu_database);
+	DeleteObject(menu_trackmenu);
+	DeleteObject(menu_help);
 }
 
 Bool BonkEnc::BonkEncGUI::ExitProc()
@@ -645,30 +651,33 @@ Void BonkEnc::BonkEncGUI::ResizeProc()
 	currentConfig->wndPos = mainWnd->GetPosition();
 	currentConfig->wndSize = mainWnd->GetSize();
 
+	Rect	 clientRect = mainWnd->GetClientRect();
+	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
+
 	info_divider->SetPos(136 + (currentConfig->showTitleInfo ? 65 : 0));
 	info_background->SetY(121 + (currentConfig->showTitleInfo ? 65 : 0));
 
-	info_edit_title->SetX(currentConfig->wndSize.cx - 232 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
+	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
 	info_edit_title->SetWidth(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx);
-	info_edit_track->SetX(currentConfig->wndSize.cx - 232 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
+	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
 	info_text_year->SetX(info_edit_track->GetX() + 32);
 	info_edit_year->SetX(info_text_year->GetX() + info_text_year->textSize.cx + 7);
 	info_text_genre->SetX(info_edit_year->GetX() + 38);
 	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
 	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
-	info_edit_artist->SetWidth(currentConfig->wndSize.cx - 261 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
-	info_edit_album->SetWidth(currentConfig->wndSize.cx - 261 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
-	info_edit_genre->SetX(currentConfig->wndSize.cx - 148);
+	info_edit_artist->SetWidth(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
+	info_edit_album->SetWidth(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
+	info_edit_genre->SetX(clientSize.cx - 142);
 
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
 
-	edb_filename->SetWidth(currentConfig->wndSize.cx - 27 - maxTextLength);
-	edb_encoder->SetWidth(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx);
-	edb_outdir->SetWidth(currentConfig->wndSize.cx - 113 - maxTextLength);
+	edb_filename->SetWidth(clientSize.cx - 21 - maxTextLength);
+	edb_encoder->SetWidth(clientSize.cx - 116 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx);
+	edb_outdir->SetWidth(clientSize.cx - 107 - maxTextLength);
 
-	progress->SetWidth(currentConfig->wndSize.cx - 27 - maxTextLength);
+	progress->SetWidth(clientSize.cx - 21 - maxTextLength);
 
-	joblist->SetSize(Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0)));
+	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 65 : 0)));
 
 	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
 	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
@@ -747,6 +756,23 @@ Void BonkEnc::BonkEncGUI::ConfigureGeneral()
 	edb_outdir->SetText(currentConfig->enc_outdir);
 }
 
+Void BonkEnc::BonkEncGUI::SelectDir()
+{
+	DirSelection	*dialog = new DirSelection();
+
+	dialog->SetParentWindow(mainWnd);
+	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetDirName(currentConfig->enc_outdir);
+
+	if (dialog->ShowDialog() == Success())
+	{
+		edb_outdir->SetText(dialog->GetDirName());
+		currentConfig->enc_outdir = dialog->GetDirName();
+	}
+
+	DeleteObject(dialog);
+}
+
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
 {
 	currentConfig->cdrip_activedrive = clicked_drive;
@@ -764,13 +790,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
 		Track	*format = joblist->GetNthTrack(i);
-		Int	 discID = 0;
-
-		for (Int i = 0; i < 8; i++)
-		{
-			if (format->discid[i] >= '0' && format->discid[i] <= '9') discID += ((format->discid[i] - '0') << ((7 - i) * 4));
-			if (format->discid[i] >= 'a' && format->discid[i] <= 'f') discID += ((format->discid[i] - 'a' + 10) << ((7 - i) * 4));
-		}
+		Int	 discID = CDDB::StringToDiscID(format->discid);
 
 		if (format->isCDTrack) discIDs.AddEntry(discID, format->drive);
 		if (format->isCDTrack) discIDStrings.AddEntry(format->discid, format->drive);
@@ -781,7 +801,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		CDDB		 cddb(currentConfig);
 		Int		 discID = discIDs.GetNthEntry(j);
 		String		 discIDString = discIDStrings.GetNthEntry(j);
-		Array<Track *>	*cdInfo = NIL;
+		CDDBInfo	*cdInfo = NIL;
 
 		if (currentConfig->enable_cddb_cache) cdInfo = CDDB::infoCache.GetEntry(discID);
 
@@ -812,11 +832,11 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 				{
 					format->track	= format->cdTrack;
 					format->outfile	= NIL;
-					format->artist	= cdInfo->GetEntry(0)->artist;
-					format->title	= cdInfo->GetEntry(format->cdTrack)->title;
-					format->album	= cdInfo->GetEntry(0)->album;
-					format->genre	= cdInfo->GetEntry(0)->genre;
-					format->year	= cdInfo->GetEntry(0)->year;
+					format->artist	= cdInfo->dArtist;
+					format->title	= cdInfo->trackTitles.GetNthEntry(format->cdTrack - 1);
+					format->album	= cdInfo->dTitle;
+					format->genre	= cdInfo->dGenre;
+					format->year	= cdInfo->dYear;
 
 					String	 jlEntry;
 
@@ -858,14 +878,14 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 	}
 }
 
-Array<BonkEnc::Track *> *BonkEnc::BonkEncGUI::GetCDDBData()
+BonkEnc::CDDBInfo *BonkEnc::BonkEncGUI::GetCDDBData()
 {
-	cddbQueryDlg	*dlg	= new cddbQueryDlg();
-	Array<Track *>	*array	= dlg->QueryCDDB();
+	cddbQueryDlg	*dlg		= new cddbQueryDlg();
+	CDDBInfo	*cddbInfo	= dlg->QueryCDDB();
 
 	DeleteObject(dlg);
 
-	return array;
+	return cddbInfo;
 }
 
 Void BonkEnc::BonkEncGUI::SubmitCDDBData()
@@ -910,7 +930,10 @@ Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 
 	if (mainWnd->IsMaximized())
 	{
-		joblist->SetSize(Size(currentConfig->wndSize.cx - 29, currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0)));
+		Rect	 clientRect = mainWnd->GetClientRect();
+		Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
+
+		joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 65 : 0)));
 
 		check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
 		check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
@@ -1027,6 +1050,9 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
 
+	Rect	 clientRect = mainWnd->GetClientRect();
+	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
+
 	enc_progress->SetX(maxTextLength + 7 - enc_progress->textSize.cx);
 	enc_outdir->SetX(maxTextLength + 7 - enc_outdir->textSize.cx);
 	enc_filename->SetX(maxTextLength + 7 - enc_filename->textSize.cx);
@@ -1036,13 +1062,13 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	edb_filename->SetText(i18n->TranslateString("none"));
 
-	edb_filename->SetMetrics(Point(maxTextLength + 14, edb_filename->GetY()), Size(currentConfig->wndSize.cx - 27 - maxTextLength, edb_filename->GetHeight()));
+	edb_filename->SetMetrics(Point(maxTextLength + 14, edb_filename->GetY()), Size(clientSize.cx - 21 - maxTextLength, edb_filename->GetHeight()));
 	edb_time->SetMetrics(Point(maxTextLength + 14, edb_time->GetY()), Size(34, edb_time->GetHeight()));
 	edb_percent->SetMetrics(Point(maxTextLength + 62 + enc_percent->textSize.cx, edb_percent->GetY()), Size(33, edb_percent->GetHeight()));
-	edb_encoder->SetMetrics(Point(maxTextLength + 109 + enc_percent->textSize.cx + enc_encoder->textSize.cx, edb_encoder->GetY()), Size(currentConfig->wndSize.cx - 122 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx, edb_encoder->GetHeight()));
-	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetY()), Size(currentConfig->wndSize.cx - 113 - maxTextLength, edb_outdir->GetHeight()));
+	edb_encoder->SetMetrics(Point(maxTextLength + 109 + enc_percent->textSize.cx + enc_encoder->textSize.cx, edb_encoder->GetY()), Size(clientSize.cx - 116 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx, edb_encoder->GetHeight()));
+	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_outdir->GetHeight()));
 
-	progress->SetMetrics(Point(maxTextLength + 14, progress->GetY()), Size(currentConfig->wndSize.cx - 27 - maxTextLength, progress->GetHeight()));
+	progress->SetMetrics(Point(maxTextLength + 14, progress->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress->GetHeight()));
  
 	info_checkbox->SetText(i18n->TranslateString("Show title info"));
 	info_checkbox->SetWidth(info_checkbox->textSize.cx + 20);
@@ -1131,16 +1157,16 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	info_text_year->SetText(i18n->TranslateString("Year").Append(":"));
 	info_text_genre->SetText(i18n->TranslateString("Genre").Append(":"));
 
-	info_edit_title->SetMetrics(Point(currentConfig->wndSize.cx - 232 - info_text_genre->textSize.cx - info_text_year->textSize.cx, info_edit_title->GetY()), Size(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx, info_edit_title->GetHeight()));
-	info_edit_track->SetX(currentConfig->wndSize.cx - 232 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
+	info_edit_title->SetMetrics(Point(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx, info_edit_title->GetY()), Size(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx, info_edit_title->GetHeight()));
+	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
 	info_text_year->SetX(info_edit_track->GetX() + 32);
 	info_edit_year->SetX(info_text_year->GetX() + info_text_year->textSize.cx + 7);
 	info_text_genre->SetX(info_edit_year->GetX() + 38);
 	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
 	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
-	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_artist->GetY()), Size(currentConfig->wndSize.cx - 261 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_artist->GetHeight()));
-	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_album->GetY()), Size(currentConfig->wndSize.cx - 261 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_album->GetHeight()));
-	info_edit_genre->SetX(currentConfig->wndSize.cx - 148);
+	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_artist->GetY()), Size(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_artist->GetHeight()));
+	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_album->GetY()), Size(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_album->GetHeight()));
+	info_edit_genre->SetX(clientSize.cx - 142);
 
 	if (currentConfig->showTitleInfo)
 	{
@@ -1174,6 +1200,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_file->Clear();
 	menu_options->Clear();
 	menu_drives->Clear();
+	menu_files->Clear();
 	menu_seldrive->Clear();
 	menu_addsubmenu->Clear();
 	menu_encode->Clear();
@@ -1208,7 +1235,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
 	}
 
-	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)..."))->onAction.Connect(&JobList::AddTrackByDialog, joblist);
+	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)").Append("..."))->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 
 	MenuEntry	*entry;
 
@@ -1216,17 +1243,21 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
 		{
-			entry = menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &clicked_drive, j);
-			entry->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
+			menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
 		}
 
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"))->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
+	}
 
-		if (currentConfig->cdrip_numdrives > 1)
-		{
-			menu_addsubmenu->AddEntry();
-			menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
-		}
+	menu_files->AddEntry(i18n->TranslateString("By pattern").Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);
+	menu_files->AddEntry(i18n->TranslateString("From directory").Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesFromDirectory, this);
+
+	menu_addsubmenu->AddEntry();
+	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
+
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives > 1)
+	{
+		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
 
 	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
@@ -1296,7 +1327,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help)->SetOrientation(OR_RIGHT);
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:1"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:1"), menu_files);
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
@@ -1377,6 +1408,24 @@ Void BonkEnc::BonkEncGUI::SetEncoderText()
 	else if (currentConfig->encoder == ENCODER_FLAC)	edb_encoder->SetText("FLAC Audio Encoder");
 	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ VQF Encoder");
 	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out Filter");
+}
+
+Void BonkEnc::BonkEncGUI::AddFilesByPattern()
+{
+	AddPatternDialog	*dialog = new AddPatternDialog();
+
+	if (dialog->ShowDialog() == Success()) joblist->AddTracksByPattern(dialog->GetDirectory(), dialog->GetPattern());
+
+	DeleteObject(dialog);
+}
+
+Void BonkEnc::BonkEncGUI::AddFilesFromDirectory()
+{
+	AddDirectoryDialog	*dialog = new AddDirectoryDialog();
+
+	if (dialog->ShowDialog() == Success()) joblist->AddTrackByDragAndDrop(dialog->GetDirectory());
+
+	DeleteObject(dialog);
 }
 
 Void BonkEnc::BonkEncGUI::OnJoblistSelectTrack(Track *format)

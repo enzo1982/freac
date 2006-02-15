@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">終了</entry>
     <entry id="8" string="General settings...">オプション</entry>
     <entry id="9" string="Configure selected encoder...">エンコーダの設定</entry>
-    <entry id="10" string="Audio file(s)...">音声ファイル</entry>
+    <entry id="10" string="Audio file(s)">音声ファイル</entry>
     <entry id="11" string="Audio CD contents">音声CDの目次</entry>
     <entry id="12" string="Start encoding">開始</entry>
     <entry id="13" string="Stop encoding">停止</entry>

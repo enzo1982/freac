@@ -19,7 +19,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
 	currentConfig = BonkEnc::currentConfig;
 
-	rArray = NIL;
+	rCDDBInfo = NIL;
 
 	Point	 pos;
 	Size	 size;
@@ -83,11 +83,11 @@ const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 	return error;
 }
 
-Array<BonkEnc::Track *> *BonkEnc::cddbQueryDlg::QueryCDDB()
+BonkEnc::CDDBInfo *BonkEnc::cddbQueryDlg::QueryCDDB()
 {
 	ShowDialog();
 
-	return rArray;
+	return rCDDBInfo;
 }
 
 Void BonkEnc::cddbQueryDlg::Cancel()
@@ -106,7 +106,7 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
-	String		 discid = cddb.GetDiscIDString();
+	String		 discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
 
 	if (discid == "ffffffff" || discid == "00000000") return NIL; // no disc in drive or read error
 
@@ -129,7 +129,7 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 	{
 		cddbMultiMatchDlg	*dlg = new cddbMultiMatchDlg(false);
 
-		for (int i = 0; i < cddb.GetNOfMatches(); i++)
+		for (int i = 0; i < cddb.GetNumberOfMatches(); i++)
 		{
 			dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
 		}
@@ -145,9 +145,9 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 		Int index = dlg->GetSelectedEntryNumber();
 
-		if (index < cddb.GetNOfMatches() && index >= 0)
+		if (index < cddb.GetNumberOfMatches() && index >= 0)
 		{
-			read = String(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthID(index));
+			read = String(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthDiscID(index));
 		}
 
 		DeleteObject(dlg);
@@ -163,205 +163,20 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 	prog_status->SetValue(60);
 
-	Array<Track *>	*array = NIL;
+	CDDBInfo	*cddbInfo = new CDDBInfo();
 
 	if (read != NIL)
 	{
-		String	 result = cddb.Read(read);
+		if (!cddb.Read(read, cddbInfo))	Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
+		else 				rCDDBInfo = cddbInfo;
 
-		if (result == "error")
-		{
-			Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
-		}
-		else
-		{
-			String	 cLine;
-
-			array = new Array<Track *>;
-
-			array->AddEntry(new Track);
-
-			array->GetFirstEntry()->discid = cddb.GetDiscIDString();
-			array->GetFirstEntry()->category = cddb.GetCategory();
-
-			if (fuzzy) array->GetFirstEntry()->revision = -1;
-
-			Bool	 parseAgain = False;
-
-			for (Int j = 0; j < result.Length();)
-			{
-				if (!parseAgain)
-				{
-					for (Int i = 0; i >= 0; i++, j++)
-					{
-						if (result[j] == '\n' || result[j] == 0)	{ cLine[i] = 0; j++; break; }
-						else						cLine[i] = result[j];
-					}
-				}
-
-				parseAgain = False;
-
-				if (cLine.StartsWith("DTITLE"))
-				{
-					Track	*info = array->GetFirstEntry();
-					Int	 k;
-
-					for (k = 7; k >= 0; k++)
-					{
-						if (cLine[k] == ' ' && cLine[k + 1] == '/' && cLine[k + 2] == ' ')	break;
-						else									info->artist[k - 7] = cLine[k];
-					}
-
-					for (Int l = k + 3; l < cLine.Length(); l++) info->album[l - k - 3] = cLine[l];
-
-					info->track = -1;
-				}
-				else if (cLine.StartsWith("DGENRE"))
-				{
-					Track	*info = array->GetFirstEntry();
-
-					for (Int l = 7; l < cLine.Length(); l++) info->genre[l - 7] = cLine[l];
-				}
-				else if (cLine.StartsWith("DYEAR"))
-				{
-					String	 year;
-
-					for (Int l = 6; l < cLine.Length(); l++) year[l - 6] = cLine[l];
-
-					array->GetFirstEntry()->year = year.ToInt();
-				}
-				else if (cLine.StartsWith("TTITLE"))
-				{
-					String	 track;
-					Int	 k;
-
-					for (k = 6; k >= 0; k++)
-					{
-						if (cLine[k] == '=')	break;
-						else			track[k - 6] = cLine[k];
-					}
-
-					Track	*info = array->GetEntry(track.ToInt() + 1);
-
-					if (info != NIL)
-					{
-						for (Int l = k + 1; l < cLine.Length(); l++) info->title[l - k - 1] = cLine[l];
-					}
-				}
-				else if (cLine.StartsWith("EXTD"))
-				{
-					Track	*info = array->GetFirstEntry();
-
-					for (Int k = 5; k < cLine.Length(); k++) info->comment[k - 5] = cLine[k];
-				}
-				else if (cLine.StartsWith("EXTT"))
-				{
-					String	 track;
-					Int	 k;
-
-					for (k = 4; k >= 0; k++)
-					{
-						if (cLine[k] == '=')	break;
-						else			track[k - 4] = cLine[k];
-					}
-
-					Track	*info = array->GetEntry(track.ToInt() + 1);
-
-					if (info != NIL)
-					{
-						for (Int l = k + 1; l < cLine.Length(); l++) info->comment[l - k - 1] = cLine[l];
-					}
-				}
-				else if (cLine.StartsWith("PLAYORDER"))
-				{
-					Track	*info = array->GetFirstEntry();
-
-					for (Int k = 10; k < cLine.Length(); k++) info->playorder[k - 10] = cLine[k];
-				}
-				else if (cLine.StartsWith("# Revision: ") && !fuzzy)
-				{
-					String	 revision;
-
-					for (Int l = 12; l < cLine.Length(); l++) revision[l - 12] = cLine[l];
-
-					array->GetFirstEntry()->revision = revision.ToInt();
-				}
-				else if (cLine.StartsWith("# Track frame offsets:"))
-				{
-					Int	 track = 0;
-
-					do
-					{
-						for (Int m = 0; m >= 0; m++, j++)
-						{
-							if (result[j] == '\n' || result[j] == 0)	{ cLine[m] = 0; j++; break; }
-							else						cLine[m] = result[j];
-						}
-
-						if (cLine[0] == '#' && cLine.Length() <= 2) break;
-
-						Int	 firstDigit = 0;
-						String	 offset;
-
-						for (Int n = 2; n < cLine.Length(); n++)
-						{
-							if (cLine[n] != ' ' && cLine[n] != '\t')
-							{
-								firstDigit = n;
-
-								break;
-							}
-						}
-
-						for (Int l = firstDigit; l < cLine.Length(); l++) offset[l - firstDigit] = cLine[l];
-
-						if (offset.ToInt() == 0)
-						{
-							parseAgain = True;
-
-							break;
-						}
-
-						Track	*info = new Track;
-
-						info->offset = offset.ToInt();
-						info->track = ++track;
-
-						array->AddEntry(info, info->track);
-					}
-					while (True);
-				}
-				else if (cLine.StartsWith("# Disc length: "))
-				{
-					String	 disclength;
-
-					for (Int l = 15; l < cLine.Length(); l++) disclength[l - 15] = cLine[l];
-
-					array->GetFirstEntry()->disclength = disclength.ToInt();
-				}
-				else if (cLine.StartsWith("210 "))
-				{
-					String	 category;
-
-					for (Int l = 4; l < cLine.Length(); l++)
-					{
-						if (cLine[l] == ' ') break;
-
-						category[l - 4] = cLine[l];
-					}
-
-					array->GetFirstEntry()->category = category;
-				}
-			}
-		}
+		if (fuzzy) cddbInfo->revision = -1;
 	}
 
 	cddb.CloseConnection();
 
 	prog_status->SetValue(100);
 	text_status->SetText("");
-
-	rArray = array;
 
 	mainWnd->Close();
 

@@ -85,6 +85,8 @@ Bool BonkEnc::Config::LoadSettings()
 	checkUpdatesAtStartup			= config->GetIntValue("Settings", "CheckUpdatesAtStartup", 1);
 	createPlaylist				= config->GetIntValue("Settings", "CreatePlaylist", 0);
 	createCueSheet				= config->GetIntValue("Settings", "CreateCueSheet", 0);
+	lastAddedDir				= config->GetStringValue("Settings", "LastAddedDir", "");
+	lastAddedPattern			= config->GetStringValue("Settings", "LastAddedPattern", "");
 
 	enable_id3v1				= config->GetIntValue("Settings", "EnableID3V1", 0);
 	enable_id3v2				= config->GetIntValue("Settings", "EnableID3V2", 1);
@@ -237,6 +239,8 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("Settings", "CheckUpdatesAtStartup", checkUpdatesAtStartup);
 		config->SetIntValue("Settings", "CreatePlaylist", createPlaylist);
 		config->SetIntValue("Settings", "CreateCueSheet", createCueSheet);
+		config->SetStringValue("Settings", "LastAddedDir", lastAddedDir);
+		config->SetStringValue("Settings", "LastAddedPattern", lastAddedPattern);
 
 		config->SetIntValue("Settings", "EnableID3V1", enable_id3v1);
 		config->SetIntValue("Settings", "EnableID3V2", enable_id3v2);
