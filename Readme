@@ -24,6 +24,7 @@ History
 		- text in inactive edit boxes can now be selected and copied
 		- upgraded Ogg Vorbis to version 1.1.2
 		- upgraded FLAC to version 1.1.2
+		- upgraded LAME to version 3.97 beta 2
 		- added support for creating M3U playlists
 		- added basic support for creating cue sheets
 		- added support for ID3V1 tags
@@ -35,6 +36,7 @@ History
 		- added support for drag & drop of directories
 		- added a dialog to add a directory of audio files to the joblist
 		- added a dialog to add audio files by name pattern
+		- added a button to edit the selected language file
 		- fixed popup boxes appearing in command line version
 		- the joblist can now be saved to/loaded from M3U playlist files
 		- tracks are no longer added automatically when they are already in the joblist

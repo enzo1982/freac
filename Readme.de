@@ -24,6 +24,7 @@ Geschichte
 		- Text in inaktiven Editboxen kann jetzt ausgewählt und kopiert werden
 		- Ogg Vorbis auf Version 1.1.2 aktualisiert
 		- FLAC auf Version 1.1.2 aktualisiert
+		- LAME auf Version 3.97 Beta 2 aktualisiert
 		- Unterstützung zum Erzeugen von M3U-Playlisten hinzugefügt
 		- Unterstützung zum Erzeugen von einfachen Cuesheets hinzugefügt
 		- Unterstützung für ID3V1-Tags hinzugefügt
@@ -35,6 +36,7 @@ Geschichte
 		- Unterstützung für Drag & Drop von Verzeichnissen hinzugefügt
 		- Dialog zum Hinzufügen von Verzeichnissen mit Audiodateien hinzugefügt
 		- Dialog zum Hinzufügen von Audiodateien nach Namensvorlage hinzugefügt
+		- Schaltfläche zum bearbeiten der ausgewählten Sprachdatei hinzugefügt
 		- Anzeige von Popupboxen in Kommandozeilenversion behoben
 		- Die Jobliste kann jetzt als M3U-Datei gespeichert/geladen werden
 		- Tracks werden nicht mehr automatisch eingelesen, wenn sie bereits in der Jobliste sind

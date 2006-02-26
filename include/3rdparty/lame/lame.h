@@ -297,6 +297,14 @@ int CDECL lame_get_ReplayGain_decode(const lame_global_flags *);
 int CDECL lame_set_findPeakSample(lame_global_flags *, int);
 int CDECL lame_get_findPeakSample(const lame_global_flags *);
 
+/* counters for gapless encoding */
+int CDECL lame_set_nogap_total(lame_global_flags*, int);
+int CDECL lame_get_nogap_total(const lame_global_flags*);
+
+int CDECL lame_set_nogap_currentindex(lame_global_flags* , int);
+int CDECL lame_get_nogap_currentindex(const lame_global_flags*);
+
+
 /*
  * OPTIONAL:
  * Set printf like error/debug/message reporting functions.

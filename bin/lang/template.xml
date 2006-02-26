@@ -324,5 +324,6 @@
     <entry id="312" string="Pattern"/>
     <entry id="313" string="Start directory"/>
     <entry id="314" string="No files found matching pattern:"/>
+    <entry id="315" string="Edit language file"/>
   </data>
 </LangFile>

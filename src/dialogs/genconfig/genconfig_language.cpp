@@ -61,6 +61,20 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 		if (currentConfig->language == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
+	pos.x += 276;
+	pos.y -= 1;
+	size.cx = 130;
+
+	btn_edit	= new Button(BonkEnc::i18n->TranslateString("Edit language file"), NIL, pos, size);
+	btn_edit->onAction.Connect(&GeneralSettingsLayerLanguage::EditLanguageFile, this);
+
+	if (File(Application::GetApplicationDirectory().Append("translator.exe")).Exists())
+	{
+		combo_language->SetWidth(combo_language->GetWidth() - 138);
+
+		RegisterObject(btn_edit);
+	}
+
 	SelectLanguage();
 
 	RegisterObject(group_language);
@@ -77,6 +91,7 @@ BonkEnc::GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()
 	DeleteObject(group_language);
 	DeleteObject(text_language);
 	DeleteObject(combo_language);
+	DeleteObject(btn_edit);
 
 	DeleteObject(group_info);
 	DeleteObject(text_info);
@@ -95,6 +110,12 @@ Void BonkEnc::GeneralSettingsLayerLanguage::SelectLanguage()
 		link_url->SetText(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 		link_url->SetURL(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 	}
+}
+
+Void BonkEnc::GeneralSettingsLayerLanguage::EditLanguageFile()
+{
+	if (Setup::enableUnicode)	ShellExecuteW(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), Application::GetApplicationDirectory().Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())), String("."), SW_SHOW);
+	else				ShellExecuteA(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), Application::GetApplicationDirectory().Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())), String("."), SW_SHOW);
 }
 
 Bool BonkEnc::GeneralSettingsLayerLanguage::IsLanguageChanged()

@@ -25,6 +25,8 @@ namespace BonkEnc
 			GroupBox	*group_language;
 			Text		*text_language;
 			ComboBox	*combo_language;
+			Button		*btn_edit;
+
 			GroupBox	*group_info;
 			Text		*text_info;
 			Hyperlink	*link_url;
@@ -32,6 +34,7 @@ namespace BonkEnc
 			Config		*currentConfig;
 		slots:
 			Void		 SelectLanguage();
+			Void		 EditLanguageFile();
 		public:
 					 GeneralSettingsLayerLanguage();
 					~GeneralSettingsLayerLanguage();

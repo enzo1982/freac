@@ -324,5 +324,6 @@
     <entry id="312" string="Pattern">Vorlage</entry>
     <entry id="313" string="Start directory">Ausgangsverzeichnis</entry>
     <entry id="314" string="No files found matching pattern:">Keine Dateien entsprechen der Vorlage:</entry>
+    <entry id="315" string="Edit language file">Sprachdatei bearbeiten</entry>
   </data>
 </LangFile>
