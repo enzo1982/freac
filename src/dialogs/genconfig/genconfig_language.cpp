@@ -109,6 +109,8 @@ Void BonkEnc::GeneralSettingsLayerLanguage::SelectLanguage()
 
 		link_url->SetText(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 		link_url->SetURL(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
+
+		link_url->Paint(SP_PAINT);
 	}
 }
 

@@ -45,6 +45,9 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 
 BonkEnc::JobList::~JobList()
 {
+	onRegister.Disconnect(&JobList::OnRegister, this);
+	onUnregister.Disconnect(&JobList::OnUnregister, this);
+
 	DeleteObject(droparea);
 	DeleteObject(text);
 
