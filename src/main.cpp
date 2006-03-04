@@ -82,6 +82,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	clicked_drive = -1;
 	clicked_encoder = -1;
+	clicked_charset = -1;
+
+	activePopup = 0;
 
 	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
 	{
@@ -134,6 +137,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_trackmenu		= new PopupMenu();
 	menu_help		= new PopupMenu();
 	menu_encoders		= new PopupMenu();
+	menu_charsets		= new PopupMenu();
 
 	Point	 pos;
 	Size	 size;
@@ -222,7 +226,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	pos.x = 16;
 	pos.y = 24;
 	size.cx = currentConfig->wndSize.cx - 29;
-	size.cy = currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 65 : 0);
+	size.cy = currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 68 : 0);
 
 	joblist			= new JobList(pos, size);
 	joblist->onSelectTrack.Connect(&BonkEncGUI::OnJoblistSelectTrack, this);
@@ -247,10 +251,10 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	check_cuesheet		= new CheckBox("Create cue sheet", pos, size, &currentConfig->createCueSheet);
 	check_cuesheet->SetOrientation(OR_UPPERRIGHT);
 
-	info_divider		= new Divider(136 + (currentConfig->showTitleInfo ? 65 : 0), OR_HORZ | OR_BOTTOM);
+	info_divider		= new Divider(136 + (currentConfig->showTitleInfo ? 68 : 0), OR_HORZ | OR_BOTTOM);
 	info_bottom		= new Divider(136, OR_HORZ | OR_BOTTOM);
 
-	pos.y = 121 + (currentConfig->showTitleInfo ? 65 : 0);
+	pos.y = 121 + (currentConfig->showTitleInfo ? 68 : 0);
 	pos.x = 5;
 	size.cx = 90;
 	size.cy = 17;
@@ -269,18 +273,18 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	info_checkbox->onAction.Connect(&BonkEncGUI::ShowHideTitleInfo, this);
 
 	pos.x = 7;
-	pos.y = 161;
+	pos.y = 164;
 
 	info_text_artist = new Text("Artist:", pos);
 	info_text_artist->SetOrientation(OR_LOWERLEFT);
 
-	pos.y -= 24;
+	pos.y -= 27;
 
 	info_text_album = new Text("Album:", pos);
 	info_text_album->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + (Int) Math::Max(info_text_album->textSize.cx, info_text_artist->textSize.cx));
-	pos.y += 27;
+	pos.y += 30;
 	size.cx = 180;
 	size.cy = 0;
 
@@ -288,32 +292,65 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	info_edit_artist->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_artist->SetOrientation(OR_LOWERLEFT);
 
-	pos.y -= 24;
+	menu_edit_artist = new MicroMenu(Point(13, -7), Size(), OR_VERT);
+	menu_edit_artist->SetOrientation(OR_UPPERRIGHT);
+	menu_edit_artist->Hide();
+	menu_edit_artist->onOpenPopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+	menu_edit_artist->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+
+	htsp_edit_artist = new Hotspot(Point(0, -7), Size(info_edit_artist->GetWidth(), info_edit_artist->GetHeight() + 7));
+	htsp_edit_artist->onMouseOver.Connect(&MicroMenu::Show, menu_edit_artist);
+	htsp_edit_artist->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_artist);
+	htsp_edit_artist->onActivate.Connect(&MicroMenu::Hide, menu_edit_artist);
+
+	pos.y -= 27;
 
 	info_edit_album = new EditBox("", pos, size, 0);
 	info_edit_album->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_album->SetOrientation(OR_LOWERLEFT);
 
+	menu_edit_album = new MicroMenu(Point(13, -7), Size(), OR_VERT);
+	menu_edit_album->SetOrientation(OR_UPPERRIGHT);
+	menu_edit_album->Hide();
+	menu_edit_album->onOpenPopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+	menu_edit_album->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+
+	htsp_edit_album = new Hotspot(Point(0, -7), Size(info_edit_album->GetWidth(), info_edit_album->GetHeight() + 7));
+	htsp_edit_album->onMouseOver.Connect(&MicroMenu::Show, menu_edit_album);
+	htsp_edit_album->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_album);
+	htsp_edit_album->onActivate.Connect(&MicroMenu::Hide, menu_edit_album);
+
 	pos.x += (7 + size.cx);
-	pos.y += 21;
+	pos.y += 24;
 
 	info_text_title = new Text("Title:", pos);
 	info_text_title->SetOrientation(OR_LOWERLEFT);
 
-	pos.y -= 24;
+	pos.y -= 27;
 
 	info_text_track = new Text("Track:", pos);
 	info_text_track->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
-	pos.y += 27;
+	pos.y += 30;
 	size.cx = 100;
 
 	info_edit_title = new EditBox("", pos, size, 0);
 	info_edit_title->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_title->SetOrientation(OR_LOWERLEFT);
 
-	pos.y -= 24;
+	menu_edit_title = new MicroMenu(Point(13, -7), Size(), OR_VERT);
+	menu_edit_title->SetOrientation(OR_UPPERRIGHT);
+	menu_edit_title->Hide();
+	menu_edit_title->onOpenPopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+	menu_edit_title->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+
+	htsp_edit_title = new Hotspot(Point(0, -7), Size(info_edit_title->GetWidth(), info_edit_title->GetHeight() + 7));
+	htsp_edit_title->onMouseOver.Connect(&MicroMenu::Show, menu_edit_title);
+	htsp_edit_title->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_title);
+	htsp_edit_title->onActivate.Connect(&MicroMenu::Hide, menu_edit_title);
+
+	pos.y -= 27;
 	size.cx = 25;
 
 	info_edit_track = new EditBox("", pos, size, 3);
@@ -336,6 +373,17 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	info_edit_year->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_year->SetOrientation(OR_LOWERLEFT);
 
+	menu_edit_year = new MicroMenu(Point(13, -7), Size(), OR_VERT);
+	menu_edit_year->SetOrientation(OR_UPPERRIGHT);
+	menu_edit_year->Hide();
+	menu_edit_year->onOpenPopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+	menu_edit_year->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+
+	htsp_edit_year = new Hotspot(Point(0, -7), Size(info_edit_year->GetWidth(), info_edit_year->GetHeight() + 7));
+	htsp_edit_year->onMouseOver.Connect(&MicroMenu::Show, menu_edit_year);
+	htsp_edit_year->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_year);
+	htsp_edit_year->onActivate.Connect(&MicroMenu::Hide, menu_edit_year);
+
 	pos.x += (7 + size.cx);
 	pos.y -= 3;
 
@@ -353,6 +401,17 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	info_edit_genre->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_genre->SetOrientation(OR_LOWERLEFT);
 	info_edit_genre->SetDropDownList(info_list_genre);
+
+	menu_edit_genre = new MicroMenu(Point(13, -7), Size(), OR_VERT);
+	menu_edit_genre->SetOrientation(OR_UPPERRIGHT);
+	menu_edit_genre->Hide();
+	menu_edit_genre->onOpenPopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+	menu_edit_genre->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
+
+	htsp_edit_genre = new Hotspot(Point(0, -7), Size(info_edit_genre->GetWidth(), info_edit_genre->GetHeight() + 7));
+	htsp_edit_genre->onMouseOver.Connect(&MicroMenu::Show, menu_edit_genre);
+	htsp_edit_genre->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_genre);
+	htsp_edit_genre->onActivate.Connect(&MicroMenu::Hide, menu_edit_genre);
 
 	info_edit_artist->Deactivate();
 	info_edit_title->Deactivate();
@@ -444,6 +503,17 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->RegisterObject(mainWnd_menubar);
 	mainWnd->RegisterObject(mainWnd_iconbar);
 
+	info_edit_artist->RegisterObject(menu_edit_artist);
+	info_edit_artist->RegisterObject(htsp_edit_artist);
+	info_edit_title->RegisterObject(menu_edit_title);
+	info_edit_title->RegisterObject(htsp_edit_title);
+	info_edit_album->RegisterObject(menu_edit_album);
+	info_edit_album->RegisterObject(htsp_edit_album);
+	info_edit_year->RegisterObject(menu_edit_year);
+	info_edit_year->RegisterObject(htsp_edit_year);
+	info_edit_genre->RegisterObject(menu_edit_genre);
+	info_edit_genre->RegisterObject(htsp_edit_genre);
+
 	info_background->RegisterObject(info_checkbox);
 
 	if (!currentConfig->showTitleInfo)
@@ -472,7 +542,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	mainWnd->doQuit.Connect(&BonkEncGUI::ExitProc, this);
 	mainWnd->getTrackMenu.Connect(&BonkEncGUI::GetTrackMenu, this);
-	mainWnd->SetMinimumSize(Size(530, 340 + (currentConfig->showTitleInfo ? 65 : 0)));
+	mainWnd->SetMinimumSize(Size(530, 340 + (currentConfig->showTitleInfo ? 68 : 0)));
 
 	if (currentConfig->maximized) mainWnd->Maximize();
 
@@ -539,6 +609,17 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(btn_outdir);
 	DeleteObject(progress);
 	DeleteObject(hyperlink);
+
+	DeleteObject(menu_edit_artist);
+	DeleteObject(htsp_edit_artist);
+	DeleteObject(menu_edit_title);
+	DeleteObject(htsp_edit_title);
+	DeleteObject(menu_edit_album);
+	DeleteObject(htsp_edit_album);
+	DeleteObject(menu_edit_year);
+	DeleteObject(htsp_edit_year);
+	DeleteObject(menu_edit_genre);
+	DeleteObject(htsp_edit_genre);
 
 	DeleteObject(menu_file);
 	DeleteObject(menu_options);
@@ -654,8 +735,8 @@ Void BonkEnc::BonkEncGUI::ResizeProc()
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	info_divider->SetPos(136 + (currentConfig->showTitleInfo ? 65 : 0));
-	info_background->SetY(121 + (currentConfig->showTitleInfo ? 65 : 0));
+	info_divider->SetPos(136 + (currentConfig->showTitleInfo ? 68 : 0));
+	info_background->SetY(121 + (currentConfig->showTitleInfo ? 68 : 0));
 
 	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
 	info_edit_title->SetWidth(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx);
@@ -669,6 +750,10 @@ Void BonkEnc::BonkEncGUI::ResizeProc()
 	info_edit_album->SetWidth(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
 	info_edit_genre->SetX(clientSize.cx - 142);
 
+	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
+	htsp_edit_artist->SetWidth(info_edit_artist->GetWidth());
+	htsp_edit_album->SetWidth(info_edit_album->GetWidth());
+
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
 
 	edb_filename->SetWidth(clientSize.cx - 21 - maxTextLength);
@@ -677,7 +762,7 @@ Void BonkEnc::BonkEncGUI::ResizeProc()
 
 	progress->SetWidth(clientSize.cx - 21 - maxTextLength);
 
-	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 65 : 0)));
+	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
 	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
 	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
@@ -903,13 +988,13 @@ Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 
 	if (currentConfig->showTitleInfo)
 	{
-		n = 65;
+		n = 68;
 
 		mainWnd->SetMinimumSize(Size(530, 340 + n));
 	}
 	else
 	{
-		n = -65;
+		n = -68;
 
 		mainWnd->SetMinimumSize(Size(530, 340));
 
@@ -933,7 +1018,7 @@ Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 		Rect	 clientRect = mainWnd->GetClientRect();
 		Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-		joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 65 : 0)));
+		joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
 		check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
 		check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
@@ -1168,6 +1253,10 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_album->GetY()), Size(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_album->GetHeight()));
 	info_edit_genre->SetX(clientSize.cx - 142);
 
+	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
+	htsp_edit_artist->SetWidth(info_edit_artist->GetWidth());
+	htsp_edit_album->SetWidth(info_edit_album->GetWidth());
+
 	if (currentConfig->showTitleInfo)
 	{
 		info_text_artist->Show();
@@ -1208,8 +1297,6 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database->Clear();
 	menu_trackmenu->Clear();
 	menu_help->Clear();
-	mainWnd_menubar->Clear();
-	mainWnd_iconbar->Clear();
 
 	menu_file->AddEntry(i18n->TranslateString("Add"), NIL, menu_addsubmenu);
 	menu_file->AddEntry(i18n->TranslateString("Remove"))->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
@@ -1318,6 +1405,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onAction.Connect(&BonkEncGUI::About, this);
 
+	mainWnd_menubar->Clear();
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
@@ -1326,6 +1415,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help)->SetOrientation(OR_RIGHT);
+
+	mainWnd_iconbar->Clear();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:1"), menu_files);
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
@@ -1385,6 +1476,41 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_menubar->Show();
 	mainWnd_iconbar->Show();
+
+	menu_charsets->Clear();
+
+	menu_charsets->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1);
+	menu_charsets->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2);
+	menu_charsets->AddEntry("ISO-8859-5", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_5);
+	menu_charsets->AddEntry("ISO-8859-7", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_7);
+	menu_charsets->AddEntry();
+	menu_charsets->AddEntry("CP1251", NIL, NIL, NIL, &clicked_charset, CHARSET_CP1251);
+	menu_charsets->AddEntry();
+	menu_charsets->AddEntry("UTF-8", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_8);
+	menu_charsets->AddEntry("UTF-16LE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16LE);
+	menu_charsets->AddEntry("UTF-16BE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16BE);
+
+	menu_edit_artist->Clear();
+	menu_edit_title->Clear();
+	menu_edit_album->Clear();
+	menu_edit_year->Clear();
+	menu_edit_genre->Clear();
+
+	menu_edit_artist->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
+	menu_edit_artist->AddEntry();
+	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+
+	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+
+	menu_edit_album->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
+	menu_edit_album->AddEntry();
+	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+
+	menu_edit_genre->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
+	menu_edit_genre->AddEntry();
+	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+
+	menu_edit_year->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 }
 
 Void BonkEnc::BonkEncGUI::EncodeSpecific()
@@ -1426,6 +1552,96 @@ Void BonkEnc::BonkEncGUI::AddFilesFromDirectory()
 	if (dialog->ShowDialog() == Success()) joblist->AddTrackByDragAndDrop(dialog->GetDirectory());
 
 	DeleteObject(dialog);
+}
+
+Void BonkEnc::BonkEncGUI::ToggleEditPopup()
+{
+	if (menu_edit_artist->IsVisible())
+	{
+		activePopup = menu_edit_artist->GetHandle();
+
+		if (htsp_edit_artist->IsActive()) htsp_edit_artist->Deactivate();
+		else				  htsp_edit_artist->Activate();
+	}
+	else if (menu_edit_title->IsVisible())
+	{
+		activePopup = menu_edit_title->GetHandle();
+
+		if (htsp_edit_title->IsActive())  htsp_edit_title->Deactivate();
+		else				  htsp_edit_title->Activate();
+	}
+	else if (menu_edit_album->IsVisible())
+	{
+		activePopup = menu_edit_album->GetHandle();
+
+		if (htsp_edit_album->IsActive())  htsp_edit_album->Deactivate();
+		else				  htsp_edit_album->Activate();
+	}
+	else if (menu_edit_genre->IsVisible())
+	{
+		activePopup = menu_edit_genre->GetHandle();
+
+		if (htsp_edit_genre->IsActive())  htsp_edit_genre->Deactivate();
+		else				  htsp_edit_genre->Activate();
+	}
+	else if (menu_edit_year->IsVisible())
+	{
+		activePopup = menu_edit_year->GetHandle();
+
+		if (htsp_edit_year->IsActive())	  htsp_edit_year->Deactivate();
+		else				  htsp_edit_year->Activate();
+	}
+}
+
+Void BonkEnc::BonkEncGUI::UseStringForSelectedTracks()
+{
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
+	{
+		Track		*track = joblist->GetNthTrack(i);
+		ListEntry	*entry = joblist->GetNthEntry(i);
+
+		if (entry->IsMarked())
+		{
+			if (activePopup == menu_edit_artist->GetHandle())	track->artist = info_edit_artist->GetText();
+			else if (activePopup == menu_edit_album->GetHandle())	track->album = info_edit_album->GetText();
+			else if (activePopup == menu_edit_genre->GetHandle())	track->genre = info_edit_genre->GetText();
+			else if (activePopup == menu_edit_year->GetHandle())	track->year = info_edit_year->GetText().ToInt();
+		}
+
+		String		 jlEntry;
+
+		if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
+		else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+
+		jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+
+		if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+	}
+}
+
+Void BonkEnc::BonkEncGUI::InterpretStringAs()
+{
+	String	 charset;
+
+	switch (clicked_charset)
+	{
+		case CHARSET_ISO_8859_1: charset = "ISO-8859-1"; break;
+		case CHARSET_ISO_8859_2: charset = "ISO-8859-2"; break;
+		case CHARSET_ISO_8859_5: charset = "ISO-8859-5"; break;
+		case CHARSET_ISO_8859_7: charset = "ISO-8859-7"; break;
+		case CHARSET_CP1251:	 charset = "CP1251";	 break;
+		case CHARSET_UTF_8:	 charset = "UTF-8";	 break;
+		case CHARSET_UTF_16LE:	 charset = "UTF-16LE";	 break;
+		case CHARSET_UTF_16BE:	 charset = "UTF-16BE";	 break;
+	}
+
+	if (activePopup == menu_edit_artist->GetHandle())	{}
+	else if (activePopup == menu_edit_title->GetHandle())	{}
+	else if (activePopup == menu_edit_album->GetHandle())	{}
+	else if (activePopup == menu_edit_genre->GetHandle())	{}
+	else if (activePopup == menu_edit_year->GetHandle())	{}
+
+	clicked_charset = -1;
 }
 
 Void BonkEnc::BonkEncGUI::OnJoblistSelectTrack(Track *format)

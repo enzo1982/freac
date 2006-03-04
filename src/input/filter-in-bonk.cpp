@@ -26,13 +26,13 @@ BonkEnc::FilterInBONK::~FilterInBONK()
 
 Bool BonkEnc::FilterInBONK::Activate()
 {
-	Int	 length = 0;
-	Int	 rate = 0;
-	Int	 channels = 0;
+	UnsignedInt	 length		= 0;
+	UnsignedInt	 rate		= 0;
+	int		 channels	= 0;
 
 	f_in = new InStream(STREAM_DRIVER, driver);
 
-	decoder = ex_bonk_create_decoder(f_in, (uint32 *) &length, (uint32 *) &rate, (int *) &channels);
+	decoder = ex_bonk_create_decoder(f_in, &length, &rate, &channels);
 
 	buffer.Resize(131072);
 
@@ -63,7 +63,8 @@ BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	InStream	*in = new InStream(STREAM_FILE, inFile, IS_READONLY);
-	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat->length, (uint32 *) &nFormat->rate, (int *) &nFormat->channels);
+	int		 channels = nFormat->channels;
+	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat->length, (uint32 *) &nFormat->rate, &channels);
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;

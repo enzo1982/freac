@@ -9,7 +9,7 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 CVS (Februar 2006)
+	Version 1.0 CVS (März 2006)
 
 		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch, Schwedisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
@@ -22,6 +22,7 @@ Geschichte
 		- Die Jobliste kann nun mit gesendeten freedb-Informationen aktualisiert werden
 		- Die Token <filename>, <genre> und <year> können nun in der Dateinamensvorlage verwendet werden
 		- Text in inaktiven Editboxen kann jetzt ausgewählt und kopiert werden
+		- Menübefehle zum Übernehmen von Künstler/Album/Genre/Jahr für alle Tracks hinzugefügt
 		- Ogg Vorbis auf Version 1.1.2 aktualisiert
 		- FLAC auf Version 1.1.2 aktualisiert
 		- LAME auf Version 3.97 Beta 2 aktualisiert
@@ -48,7 +49,7 @@ Geschichte
 		- Update auf MPEG4IP v1.4.1
 		- Update auf easyUpdate v0.3
 		- Verwende smooth v0.8.67.0
-		- Anpassungen für Kompilierung mit GCC 4.0
+		- Anpassungen für Kompilierung mit GCC 4.1
 		- Unterstützung für MinGW 1.x entfernt
 		- Sehr viele Bugfixes
 

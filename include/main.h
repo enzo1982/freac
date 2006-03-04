@@ -19,6 +19,15 @@ using namespace smooth::GUI;
 
 namespace BonkEnc
 {
+	const Int	 CHARSET_ISO_8859_1	= 0;
+	const Int	 CHARSET_ISO_8859_2	= 1;
+	const Int	 CHARSET_ISO_8859_5	= 2;
+	const Int	 CHARSET_ISO_8859_7	= 3;
+	const Int	 CHARSET_CP1251		= 4;
+	const Int	 CHARSET_UTF_8		= 5;
+	const Int	 CHARSET_UTF_16LE	= 6;
+	const Int	 CHARSET_UTF_16BE	= 7;
+
 	class BonkEncGUI : public BonkEnc
 	{
 		private:
@@ -33,10 +42,23 @@ namespace BonkEnc
 			PopupMenu	*menu_trackmenu;
 			PopupMenu	*menu_help;
 			PopupMenu	*menu_encoders;
+			PopupMenu	*menu_charsets;
 
 			Menubar		*mainWnd_menubar;
 			Menubar		*mainWnd_iconbar;
 			Titlebar	*mainWnd_titlebar;
+
+			MicroMenu	*menu_edit_artist;
+			MicroMenu	*menu_edit_title;
+			MicroMenu	*menu_edit_album;
+			MicroMenu	*menu_edit_year;
+			MicroMenu	*menu_edit_genre;
+
+			Hotspot		*htsp_edit_artist;
+			Hotspot		*htsp_edit_title;
+			Hotspot		*htsp_edit_album;
+			Hotspot		*htsp_edit_year;
+			Hotspot		*htsp_edit_genre;
 
 			Button		*button_play;
 			Button		*button_pause;
@@ -47,6 +69,9 @@ namespace BonkEnc
 
 			Int		 clicked_drive;
 			Int		 clicked_encoder;
+			Int		 clicked_charset;
+
+			Int		 activePopup;
 
 			Thread		*checkForUpdates;
 
@@ -95,6 +120,11 @@ namespace BonkEnc
 
 			Void		 AddFilesFromDirectory();
 			Void		 AddFilesByPattern();
+
+			Void		 ToggleEditPopup();
+
+			Void		 UseStringForSelectedTracks();
+			Void		 InterpretStringAs();
 
 			Void		 OnJoblistSelectTrack(Track *);
 			Void		 OnJoblistSelectNone();

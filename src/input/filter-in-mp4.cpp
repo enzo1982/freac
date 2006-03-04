@@ -152,9 +152,8 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 	mp4File = ex_MP4Read(GetTempFile(inFile), 0);
 
 	char		*buffer		= NIL;
-	unsigned long	 buffer_size	= 0;
-	unsigned long	 trackNr	= 0;
-	unsigned long	 nOfTracks	= 0;
+	unsigned short	 trackNr	= 0;
+	unsigned short	 nOfTracks	= 0;
 
 	char	*prevInFormat = String::SetInputFormat("UTF-8");
 
@@ -181,19 +180,19 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 
 		ex_NeAACDecSetConfiguration(handle, fConfig);
 
-		buffer		= NIL;
-		buffer_size	= 0;
+		unsigned char	*esc_buffer	= NIL;
+		unsigned long	 buffer_size	= 0;
 
-		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (u_int8_t **) &buffer, (u_int32_t *) &buffer_size);
+		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (u_int8_t **) &esc_buffer, (u_int32_t *) &buffer_size);
 
-		ex_NeAACDecInit2(handle, (unsigned char *) buffer, buffer_size,
+		ex_NeAACDecInit2(handle, (unsigned char *) esc_buffer, buffer_size,
  (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
 
 		nFormat->length		= ex_MP4GetTrackNumberOfSamples(mp4File, mp4Track) * 2048;
 		nFormat->order		= BYTE_INTEL;
 		nFormat->bits		= 16;
 
-		free(buffer);
+		free(esc_buffer);
 
 		ex_NeAACDecClose(handle);
 	}
