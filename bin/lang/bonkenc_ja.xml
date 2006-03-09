@@ -1,10 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
     <property name="version">1.0</property>
     <property name="language">Japanese / 日本語</property>
-    <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Silky &lt;BonkEncJpnLang@sirk.tn.st&gt;</property>
     <property name="url">http://sirk.tn.st/</property>
@@ -103,15 +102,15 @@
     <entry id="91" string="Encoder mode">エンコーダのモード</entry>
     <entry id="92" string="Stereo mode">ステレオ</entry>
     <entry id="93" string="Quantization">量子化</entry>
-    <entry id="94" string="Downsampling ratio"></entry>
+    <entry id="94" string="Downsampling ratio"/>
     <entry id="95" string="Predictor size">予測サイズ</entry>
     <entry id="96" string="Enable lossless encoding">可逆圧縮を使用</entry>
     <entry id="97" string="Enable Joint Stereo">ジョイントステレオを使用</entry>
     <entry id="98" string="Bitrate per channel:">ビットレートチャンネル:</entry>
     <entry id="99" string="Preselection">初期選択</entry>
-    <entry id="100" string="Number of preselection candidates:"></entry>
+    <entry id="100" string="Number of preselection candidates:"/>
     <entry id="101" string="MPEG version">MPEGのバージョン</entry>
-    <entry id="102" string="AAC object type"></entry>
+    <entry id="102" string="AAC object type"/>
     <entry id="103" string="Allow Joint Stereo">ジョイントステレオを許可</entry>
     <entry id="104" string="Temporal Noise Shaping">ノイズ除去</entry>
     <entry id="105" string="Use Temporal Noise Shaping">ノイズ除去を使用</entry>
@@ -136,10 +135,10 @@
     <entry id="124" string="VBR bitrate range">VBRビットレートの範囲</entry>
     <entry id="125" string="Set minimum VBR bitrate:">VBR最低ビットレート:</entry>
     <entry id="126" string="Set maximum VBR bitrate:">VBR最高ビットレート:</entry>
-    <entry id="127" string="Control bits"></entry>
-    <entry id="128" string="Stream format"></entry>
-    <entry id="129" string="Enforce strict ISO compliance"></entry>
-    <entry id="130" string="Padding"></entry>
+    <entry id="127" string="Control bits"/>
+    <entry id="128" string="Stream format"/>
+    <entry id="129" string="Enforce strict ISO compliance">厳格なISO規格に準拠する</entry>
+    <entry id="130" string="Padding"/>
     <entry id="131" string="Set padding type:">中間タイプ:</entry>
     <entry id="132" string="pad no frames">フレームを中間に使用しない</entry>
     <entry id="133" string="pad all frames">全てのフレームを使用</entry>
@@ -163,8 +162,8 @@
     <entry id="151" string="Port:">ポート:</entry>
     <entry id="152" string="Info">情報</entry>
     <entry id="153" string="No freedb entry for this disk.">このディスクにはfreedbのエントリがありません。</entry>
-    <entry id="154" string="Some error occurred trying to connect to the freedb server."></entry>
-    <entry id="155" string="Connecting to freedb server at"></entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">freedbサーバに接続する際に問題が発生しました。</entry>
+    <entry id="155" string="Connecting to freedb server at">freedbサーバに接続しています</entry>
     <entry id="156" string="Requesting CD information">CD情報をリクエストする</entry>
     <entry id="157" string="eMail address:">メールアドレス:</entry>
     <entry id="158" string="Please enter a valid eMail address.">正しいメールアドレスを入力してください。</entry>
@@ -172,7 +171,7 @@
     <entry id="160" string="Multiple matches found">複数の物が該当しました。</entry>
     <entry id="161" string="Matches">該当</entry>
     <entry id="162" string="Select the entry that best fits your CD:">CDに最適な項目を選択:</entry>
-    <entry id="163" string="Extended CDDB settings"></entry>
+    <entry id="163" string="Extended CDDB settings">拡張CDDB設定</entry>
     <entry id="164" string="CGI scripts">CGIスクリプト</entry>
     <entry id="165" string="CDDB query script:">CDDBクエリスクリプト:</entry>
     <entry id="166" string="CDDB submit script:">CDDB送信スクリプト:</entry>
@@ -210,9 +209,9 @@
     <entry id="198" string="Enable CDDB cache">CDDBキャッシュを使用</entry>
     <entry id="199" string="CDDB data">CDDBデータ</entry>
     <entry id="200" string="Submit">送信</entry>
-    <entry id="201" string="No audio CD in drive!">CDに音楽がありません！</entry>
-    <entry id="202" string="Please fill all fields and track titles before submitting."></entry>
-    <entry id="203" string="Prefer CDDB over CD Text"/>
+    <entry id="201" string="No audio CD in drive!">ドライブに音楽CDが入っていません！</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">送信前に全てのタイトルを入力してください。</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">CD TextでなくCDDBを使用するようにする</entry>
     <entry id="204" string="CD options">CD設定</entry>
     <entry id="205" string="Submitting CD information">CD情報を送信</entry>
     <entry id="206" string="Cannot open file:">ファイルが開けません:</entry>
@@ -227,7 +226,7 @@
     <entry id="215" string="Play">再生</entry>
     <entry id="216" string="Stop">停止</entry>
     <entry id="217" string="Cannot play a file while encoding!">エンコード中にファイルを再生できません！</entry>
-    <entry id="218" string="Cannot start encoding while playing a file!">ファイルの再生中にエンコードできません！</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">ファイルの再生中にエンコードを開始できません！</entry>
     <entry id="219" string="CDDB Settings">CDDB設定</entry>
     <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">ATHを使用する:</entry>
@@ -244,8 +243,8 @@
     <entry id="232" string="Select none">すべて選択解除</entry>
     <entry id="233" string="Toggle selection">選択の切り替え</entry>
     <entry id="234" string="Show Tip of the Day">今日のTipを表示</entry>
-    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEncは%1個の言語で公開されています。もしあなたの言語が&#10;公開されていない場合、'smooth Translator'を使う事で、簡単に&#10;BonkEncを翻訳する事が出来ます。</entry>
-    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEncはLAMEやOgg Vorbis、Bonkなどのエンコーダをサポート&#10;しています。AACやVQFのエンコーダはBonkEncのウェブサイトで公開&#10;されています。&#10;BonkEncのウェブサイト:%1</entry>
+    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEncは%1個の言語で公開されています。もしあなたの&#10;使用している言語が公開されていない場合、'smooth Translator'を&#10;使う事で、簡単にBonkEncを翻訳する事が出来ます。</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEncはLAMEやOgg Vorbis, FLAC, Bonkなどのエンコーダを&#10;サポートしています。VQFのエンコーダはBonkEncのウェブサイトで公開&#10;されています。&#10;BonkEncのウェブサイト:%1</entry>
     <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEncはWinamp 2のinputプラグインをサポートしています。input&#10;プラグインを使う事で、他のフォーマットにも対応できます。BonkEncで&#10;他のフォーマットを使用するには、in_*.dllをBonkEnc/pluginsにコピー&#10;してください。</entry>
     <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">BonkEncでfreedb CDデータベースにUnicode文字列を含むエントリー&#10;を送信できます。あなたの持っているCDのnon-Latinアーティストや&#10;タイトルを、BonkEncでfreedbに送信できます。</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピング中のエラーを表示したい場合は、BonkEncの設定ダイアログ&#10;にあるCDRipタブの'厳格な修正を使用する'にチェックしてください。&#10;それで解決しない場合は、CD読み取りモードを使用してみてください。</entry>
@@ -273,8 +272,8 @@
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">いくつかのプレーヤーではID3タグが付加されたAACファイルの再生に&#10;問題が発生する可能性が有ります。このオプションはあなたの&#10;プレーヤーでID3タグが使用できる事を確認してから使用してください。</entry>
     <entry id="262" string="FLAC Files">FLACファイル</entry>
     <entry id="263" string="Sampling rate">サンプリングレート</entry>
-    <entry id="264" string="Sample resolution"></entry>
-    <entry id="265" string="Number of samples"></entry>
+    <entry id="264" string="Sample resolution"/>
+    <entry id="265" string="Number of samples"/>
     <entry id="266" string="Mono">モノラル</entry>
     <entry id="267" string="bytes">bytes</entry>
     <entry id="268" string="bit">bit</entry>
@@ -297,5 +296,33 @@
     <entry id="285" string="Pause/resume encoding">エンコードを中断/再開</entry>
     <entry id="286" string="Shutdown after encoding">エンコード終了後にシャットダウン</entry>
     <entry id="287" string="Playlist Files">再生リスト</entry>
+    <entry id="288" string="unknown year">不明な年</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">%1のエンコーダを初期化できませんでした！設定を確認してください！</entry>
+    <entry id="290" string="Blocksize:"/>
+    <entry id="291" string="Use streamable subset"/>
+    <entry id="292" string="Adaptive Joint Stereo"/>
+    <entry id="293" string="Fastest encoding">最高速エンコード</entry>
+    <entry id="294" string="Best compression">最高圧縮</entry>
+    <entry id="295" string="Linear predictor"/>
+    <entry id="296" string="Maximum LPC order"/>
+    <entry id="297" string="Quantized LPC precision"/>
+    <entry id="298" string="Exhaustive model search"/>
+    <entry id="299" string="Optimize LPC quantization"/>
+    <entry id="300" string="disabled">無効化</entry>
+    <entry id="301" string="auto">自動</entry>
+    <entry id="302" string="Residual coding"/>
+    <entry id="303" string="Minimum partition order"/>
+    <entry id="304" string="Maximum partition order"/>
+    <entry id="305" string="By pattern"/>
+    <entry id="306" string="From directory"/>
+    <entry id="307" string="Directory">ディレクトリ</entry>
+    <entry id="308" string="Add directory">ディレクトリを追加</entry>
+    <entry id="309" string="Choose directory:">ディレクトリを選択:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">ジョブリストに追加するフォルダ:</entry>
+    <entry id="311" string="Add files by pattern">パターンによりファイルを追加する</entry>
+    <entry id="312" string="Pattern"/>
+    <entry id="313" string="Start directory"/>
+    <entry id="314" string="No files found matching pattern:">パターンに適合するファイルはありませんでした:</entry>
+    <entry id="315" string="Edit language file">言語ファイルを編集</entry>
   </data>
 </LangFile>
