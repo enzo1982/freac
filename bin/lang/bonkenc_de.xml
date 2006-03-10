@@ -325,5 +325,14 @@
     <entry id="313" string="Start directory">Ausgangsverzeichnis</entry>
     <entry id="314" string="No files found matching pattern:">Keine Dateien entsprechen der Vorlage:</entry>
     <entry id="315" string="Edit language file">Sprachdatei bearbeiten</entry>
+    <entry id="316" string="Use for all selected tracks">Für alle ausgewählten Tracks verwenden</entry>
+    <entry id="317" string="Interpret string as">Text interpretieren als</entry>
+    <entry id="318" string="selected tracks">ausgewählte Tracks</entry>
+    <entry id="319" string="Adjust upper/lower case">Groß- / Kleinschreibung anpassen</entry>
+    <entry id="320" string="all words upper case">alle Wörter groß geschrieben</entry>
+    <entry id="321" string="long words upper case">lange Wörter groß geschrieben</entry>
+    <entry id="322" string="first letter upper case">erster Buchstabe groß geschrieben</entry>
+    <entry id="323" string="all lower case">alles klein geschrieben</entry>
+    <entry id="324" string="all upper case">alles groß geschrieben</entry>
   </data>
 </LangFile>

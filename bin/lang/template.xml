@@ -325,5 +325,14 @@
     <entry id="313" string="Start directory"/>
     <entry id="314" string="No files found matching pattern:"/>
     <entry id="315" string="Edit language file"/>
+    <entry id="316" string="Use for all selected tracks"/>
+    <entry id="317" string="Interpret string as"/>
+    <entry id="318" string="selected tracks"/>
+    <entry id="319" string="Adjust upper/lower case"/>
+    <entry id="320" string="all words upper case"/>
+    <entry id="321" string="long words upper case"/>
+    <entry id="322" string="first letter upper case"/>
+    <entry id="323" string="all lower case"/>
+    <entry id="324" string="all upper case"/>
   </data>
 </LangFile>

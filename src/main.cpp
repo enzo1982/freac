@@ -83,6 +83,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	clicked_drive = -1;
 	clicked_encoder = -1;
 	clicked_charset = -1;
+	clicked_case = -1;
 
 	activePopup = 0;
 
@@ -138,6 +139,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_help		= new PopupMenu();
 	menu_encoders		= new PopupMenu();
 	menu_charsets		= new PopupMenu();
+	menu_charsets_all	= new PopupMenu();
+	menu_case		= new PopupMenu();
+	menu_case_all		= new PopupMenu();
 
 	Point	 pos;
 	Size	 size;
@@ -632,6 +636,11 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(menu_database);
 	DeleteObject(menu_trackmenu);
 	DeleteObject(menu_help);
+
+	DeleteObject(menu_charsets);
+	DeleteObject(menu_charsets_all);
+	DeleteObject(menu_case);
+	DeleteObject(menu_case_all);
 }
 
 Bool BonkEnc::BonkEncGUI::ExitProc()
@@ -1478,17 +1487,29 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_iconbar->Show();
 
 	menu_charsets->Clear();
+	menu_charsets_all->Clear();
 
-	menu_charsets->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1);
-	menu_charsets->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2);
-	menu_charsets->AddEntry("ISO-8859-5", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_5);
-	menu_charsets->AddEntry("ISO-8859-7", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_7);
+	menu_charsets->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_charsets->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_charsets->AddEntry("ISO-8859-5", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_charsets->AddEntry("ISO-8859-7", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_7)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
 	menu_charsets->AddEntry();
-	menu_charsets->AddEntry("CP1251", NIL, NIL, NIL, &clicked_charset, CHARSET_CP1251);
+	menu_charsets->AddEntry("CP1251", NIL, NIL, NIL, &clicked_charset, CHARSET_CP1251)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
 	menu_charsets->AddEntry();
-	menu_charsets->AddEntry("UTF-8", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_8);
-	menu_charsets->AddEntry("UTF-16LE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16LE);
-	menu_charsets->AddEntry("UTF-16BE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16BE);
+	menu_charsets->AddEntry("UTF-8", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_8)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_charsets->AddEntry("UTF-16LE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16LE)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_charsets->AddEntry("UTF-16BE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16BE)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+
+	menu_charsets_all->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("ISO-8859-5", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("ISO-8859-7", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_7)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry();
+	menu_charsets_all->AddEntry("CP1251", NIL, NIL, NIL, &clicked_charset, CHARSET_CP1251)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry();
+	menu_charsets_all->AddEntry("UTF-8", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_8)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("UTF-16LE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16LE)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("UTF-16BE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16BE)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
 
 	menu_edit_artist->Clear();
 	menu_edit_title->Clear();
@@ -1498,17 +1519,30 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	menu_edit_artist->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_edit_artist->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
+	menu_edit_artist->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_artist->AddEntry();
+	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
+	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
-	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_edit_title->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
+	menu_edit_title->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_title->AddEntry();
+	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
+	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_album->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_edit_album->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
+	menu_edit_album->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_album->AddEntry();
+	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
+	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_genre->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 	menu_edit_genre->AddEntry();
-	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
+	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_year->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 }
@@ -1556,25 +1590,27 @@ Void BonkEnc::BonkEncGUI::AddFilesFromDirectory()
 
 Void BonkEnc::BonkEncGUI::ToggleEditPopup()
 {
+	String	 string;
+
 	if (menu_edit_artist->IsVisible())
 	{
 		activePopup = menu_edit_artist->GetHandle();
 
-		if (htsp_edit_artist->IsActive()) htsp_edit_artist->Deactivate();
+		if (htsp_edit_artist->IsActive()) { htsp_edit_artist->Deactivate(); string = info_edit_artist->GetText(); }
 		else				  htsp_edit_artist->Activate();
 	}
 	else if (menu_edit_title->IsVisible())
 	{
 		activePopup = menu_edit_title->GetHandle();
 
-		if (htsp_edit_title->IsActive())  htsp_edit_title->Deactivate();
+		if (htsp_edit_title->IsActive())  { htsp_edit_title->Deactivate(); string = info_edit_title->GetText(); }
 		else				  htsp_edit_title->Activate();
 	}
 	else if (menu_edit_album->IsVisible())
 	{
 		activePopup = menu_edit_album->GetHandle();
 
-		if (htsp_edit_album->IsActive())  htsp_edit_album->Deactivate();
+		if (htsp_edit_album->IsActive())  { htsp_edit_album->Deactivate(); string = info_edit_album->GetText(); }
 		else				  htsp_edit_album->Activate();
 	}
 	else if (menu_edit_genre->IsVisible())
@@ -1591,6 +1627,79 @@ Void BonkEnc::BonkEncGUI::ToggleEditPopup()
 		if (htsp_edit_year->IsActive())	  htsp_edit_year->Deactivate();
 		else				  htsp_edit_year->Activate();
 	}
+
+	if (string != NIL)
+	{
+		menu_case->Clear();
+		menu_case_all->Clear();
+
+		menu_case->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+		menu_case->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+		menu_case->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+		menu_case->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+		menu_case->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+
+		menu_case_all->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+		menu_case_all->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+		menu_case_all->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+		menu_case_all->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+		menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+	}
+}
+
+String BonkEnc::BonkEncGUI::AdjustCaseFirstCapital(const String &string)
+{
+	String	 value = String(string).ToLower();
+	String	 character;
+
+	if (value.Length() > 0)
+	{
+		character[0] = value[0];
+
+		value[0] = character.ToUpper()[0];
+	}
+
+	return value;
+}
+
+String BonkEnc::BonkEncGUI::AdjustCaseWordsFirstCapital(const String &string)
+{
+	String	 value = String(string).ToLower();
+	String	 character;
+
+	for (Int i = 0; i < value.Length(); i++)
+	{
+		character[0] = value[i];
+
+		if (i == 0)			value[i] = character.ToUpper()[0];
+		else if (value[i - 1] == ' '  ||
+			 value[i - 1] == '('  ||
+			 value[i - 1] == '\"') 	value[i] = character.ToUpper()[0];
+	}
+
+	return value;
+}
+
+String BonkEnc::BonkEncGUI::AdjustCaseLongWordsFirstCapital(const String &string)
+{
+	String	 value = AdjustCaseWordsFirstCapital(string);
+	String	 character;
+
+	for (Int i = 1; i < value.Length(); i++)
+	{
+		character[0] = value[i];
+
+		if (value[i + 1] == ' '  || value[i + 2] == ' '  || value[i + 3] == ' '  ||
+		    value[i + 1] == ')'  || value[i + 2] == ')'  || value[i + 3] == ')'  ||
+		    value[i + 1] == '\"' || value[i + 2] == '\"' || value[i + 3] == '\"' ||
+		    value[i + 1] == '\'' || value[i + 2] == '\'' || value[i + 3] == '\'' ||
+		    value[i + 1] == 0    || value[i + 2] == 0    || value[i + 3] == 0)
+		{
+			if (value[i - 1] == ' ') value[i] = character.ToLower()[0];
+		}
+	}
+
+	return value;
 }
 
 Void BonkEnc::BonkEncGUI::UseStringForSelectedTracks()
@@ -1606,16 +1715,16 @@ Void BonkEnc::BonkEncGUI::UseStringForSelectedTracks()
 			else if (activePopup == menu_edit_album->GetHandle())	track->album = info_edit_album->GetText();
 			else if (activePopup == menu_edit_genre->GetHandle())	track->genre = info_edit_genre->GetText();
 			else if (activePopup == menu_edit_year->GetHandle())	track->year = info_edit_year->GetText().ToInt();
+
+			String		 jlEntry;
+
+			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
+			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+
+			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 		}
-
-		String		 jlEntry;
-
-		if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-		else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
-
-		jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
-
-		if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 	}
 }
 
@@ -1635,13 +1744,144 @@ Void BonkEnc::BonkEncGUI::InterpretStringAs()
 		case CHARSET_UTF_16BE:	 charset = "UTF-16BE";	 break;
 	}
 
-	if (activePopup == menu_edit_artist->GetHandle())	{}
-	else if (activePopup == menu_edit_title->GetHandle())	{}
-	else if (activePopup == menu_edit_album->GetHandle())	{}
-	else if (activePopup == menu_edit_genre->GetHandle())	{}
-	else if (activePopup == menu_edit_year->GetHandle())	{}
+	Track		*track = joblist->GetSelectedTrack();
+	ListEntry	*entry = joblist->GetSelectedEntry();
+
+	if (activePopup == menu_edit_artist->GetHandle())	{ track->artist.ImportFrom(charset, track->oArtist); info_edit_artist->SetText(track->artist); }
+	else if (activePopup == menu_edit_title->GetHandle())	{ track->title.ImportFrom(charset, track->oTitle); info_edit_title->SetText(track->title); }
+	else if (activePopup == menu_edit_album->GetHandle())	{ track->album.ImportFrom(charset, track->oAlbum); info_edit_album->SetText(track->album); }
+	else if (activePopup == menu_edit_genre->GetHandle())	{ track->genre.ImportFrom(charset, track->oGenre); info_edit_genre->SetText(track->genre); }
+
+	String		 jlEntry;
+
+	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
+	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+
+	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+
+	if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 
 	clicked_charset = -1;
+}
+
+Void BonkEnc::BonkEncGUI::InterpretStringAsAll()
+{
+	String	 charset;
+
+	switch (clicked_charset)
+	{
+		case CHARSET_ISO_8859_1: charset = "ISO-8859-1"; break;
+		case CHARSET_ISO_8859_2: charset = "ISO-8859-2"; break;
+		case CHARSET_ISO_8859_5: charset = "ISO-8859-5"; break;
+		case CHARSET_ISO_8859_7: charset = "ISO-8859-7"; break;
+		case CHARSET_CP1251:	 charset = "CP1251";	 break;
+		case CHARSET_UTF_8:	 charset = "UTF-8";	 break;
+		case CHARSET_UTF_16LE:	 charset = "UTF-16LE";	 break;
+		case CHARSET_UTF_16BE:	 charset = "UTF-16BE";	 break;
+	}
+
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
+	{
+		Track		*track = joblist->GetNthTrack(i);
+		ListEntry	*entry = joblist->GetNthEntry(i);
+
+		if (entry->IsMarked())
+		{
+			if (activePopup == menu_edit_artist->GetHandle())	{ track->artist.ImportFrom(charset, track->oArtist); if (entry->IsSelected()) info_edit_artist->SetText(track->artist); }
+			else if (activePopup == menu_edit_title->GetHandle())	{ track->title.ImportFrom(charset, track->oTitle); if (entry->IsSelected()) info_edit_title->SetText(track->title); }
+			else if (activePopup == menu_edit_album->GetHandle())	{ track->album.ImportFrom(charset, track->oAlbum); if (entry->IsSelected()) info_edit_album->SetText(track->album); }
+			else if (activePopup == menu_edit_genre->GetHandle())	{ track->genre.ImportFrom(charset, track->oGenre); if (entry->IsSelected()) info_edit_genre->SetText(track->genre); }
+
+			String		 jlEntry;
+
+			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
+			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+
+			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+		}
+	}
+
+	clicked_charset = -1;
+}
+
+Void BonkEnc::BonkEncGUI::AdjustStringCase()
+{
+	String	 string;
+
+	if (activePopup == menu_edit_artist->GetHandle())	{ string = info_edit_artist->GetText(); }
+	else if (activePopup == menu_edit_title->GetHandle())	{ string = info_edit_title->GetText(); }
+	else if (activePopup == menu_edit_album->GetHandle())	{ string = info_edit_album->GetText(); }
+
+	switch (clicked_case)
+	{
+		case 0: string = AdjustCaseWordsFirstCapital(string);	  break;
+		case 1: string = AdjustCaseLongWordsFirstCapital(string); break;
+		case 2: string = AdjustCaseFirstCapital(string);	  break;
+		case 3: string = string.ToLower();			  break;
+		case 4:	string = string.ToUpper();			  break;
+	}
+
+	Track		*track = joblist->GetSelectedTrack();
+	ListEntry	*entry = joblist->GetSelectedEntry();
+
+	if (activePopup == menu_edit_artist->GetHandle())	{ track->artist = string; info_edit_artist->SetText(track->artist); }
+	else if (activePopup == menu_edit_title->GetHandle())	{ track->title = string; info_edit_title->SetText(track->title); }
+	else if (activePopup == menu_edit_album->GetHandle())	{ track->album = string; info_edit_album->SetText(track->album); }
+
+	String		 jlEntry;
+
+	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
+	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+
+	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+
+	if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+
+	clicked_case = -1;
+}
+
+Void BonkEnc::BonkEncGUI::AdjustStringCaseAll()
+{
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
+	{
+		Track		*track = joblist->GetNthTrack(i);
+		ListEntry	*entry = joblist->GetNthEntry(i);
+
+		if (entry->IsMarked())
+		{
+			String	 string;
+
+			if (activePopup == menu_edit_artist->GetHandle())	{ string = track->artist; }
+			else if (activePopup == menu_edit_title->GetHandle())	{ string = track->title; }
+			else if (activePopup == menu_edit_album->GetHandle())	{ string = track->album; }
+
+			switch (clicked_case)
+			{
+				case 0: string = AdjustCaseWordsFirstCapital(string);	  break;
+				case 1: string = AdjustCaseLongWordsFirstCapital(string); break;
+				case 2: string = AdjustCaseFirstCapital(string);	  break;
+				case 3: string = string.ToLower();			  break;
+				case 4:	string = string.ToUpper();			  break;
+			}
+
+			if (activePopup == menu_edit_artist->GetHandle())	{ track->artist = string; if (entry->IsSelected()) info_edit_artist->SetText(track->artist); }
+			else if (activePopup == menu_edit_title->GetHandle())	{ track->title = string; if (entry->IsSelected()) info_edit_title->SetText(track->title); }
+			else if (activePopup == menu_edit_album->GetHandle())	{ track->album = string; if (entry->IsSelected()) info_edit_album->SetText(track->album); }
+
+			String		 jlEntry;
+
+			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
+			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+
+			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+		}
+	}
+
+	clicked_case = -1;
 }
 
 Void BonkEnc::BonkEncGUI::OnJoblistSelectTrack(Track *format)

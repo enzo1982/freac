@@ -43,6 +43,9 @@ namespace BonkEnc
 			PopupMenu	*menu_help;
 			PopupMenu	*menu_encoders;
 			PopupMenu	*menu_charsets;
+			PopupMenu	*menu_charsets_all;
+			PopupMenu	*menu_case;
+			PopupMenu	*menu_case_all;
 
 			Menubar		*mainWnd_menubar;
 			Menubar		*mainWnd_iconbar;
@@ -70,6 +73,7 @@ namespace BonkEnc
 			Int		 clicked_drive;
 			Int		 clicked_encoder;
 			Int		 clicked_charset;
+			Int		 clicked_case;
 
 			Int		 activePopup;
 
@@ -101,6 +105,10 @@ namespace BonkEnc
 
 			Void		 PlayItem(Int);
 			Int		 PlayThread(Thread *);
+
+			String		 AdjustCaseFirstCapital(const String &);
+			String		 AdjustCaseWordsFirstCapital(const String &);
+			String		 AdjustCaseLongWordsFirstCapital(const String &);
 		signals:
 			Signal0<Void>	 onChangeLanguageSettings;
 		slots:
@@ -125,6 +133,9 @@ namespace BonkEnc
 
 			Void		 UseStringForSelectedTracks();
 			Void		 InterpretStringAs();
+			Void		 InterpretStringAsAll();
+			Void		 AdjustStringCase();
+			Void		 AdjustStringCaseAll();
 
 			Void		 OnJoblistSelectTrack(Track *);
 			Void		 OnJoblistSelectNone();

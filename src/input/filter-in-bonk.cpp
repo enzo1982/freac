@@ -66,6 +66,7 @@ BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
 	int		 channels = nFormat->channels;
 	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat->length, (uint32 *) &nFormat->rate, &channels);
 
+	nFormat->channels = channels;
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
 	nFormat->fileSize = in->Size();

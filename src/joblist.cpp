@@ -68,6 +68,11 @@ BonkEnc::Track *BonkEnc::JobList::GetNthTrack(Int n)
 
 Bool BonkEnc::JobList::AddTrack(Track *track)
 {
+	track->oArtist = track->artist;
+	track->oTitle = track->title;
+	track->oAlbum = track->album;
+	track->oGenre = track->genre;
+
 	String	 jlEntry;
 	String	 tooltip;
 

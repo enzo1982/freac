@@ -49,6 +49,11 @@ namespace BonkEnc
 			Int	 year;
 			String	 comment;
 
+			String	 oArtist;
+			String	 oTitle;
+			String	 oAlbum;
+			String	 oGenre;
+
 		    // CDDB information:
 			Int	 offset;
 			String	 discid;
