@@ -62,12 +62,12 @@ Int BonkEnc::CDDB::ComputeDiscID()
 
 	ex_CR_ReadToc();
 
-	int	 numTocEntries = ex_CR_GetNumTocEntries();
-	int	 n = 0;
+	Int	 numTocEntries = ex_CR_GetNumTocEntries();
+	Int	 n = 0;
 
-	for (int i = 0; i < numTocEntries; i++)	n += cddb_sum((ex_CR_GetTocEntry(i).dwStartSector + 150) / 75);
+	for (Int i = 0; i < numTocEntries; i++)	n += cddb_sum((ex_CR_GetTocEntry(i).dwStartSector + 150) / 75);
 
-	int	 t = (ex_CR_GetTocEntry(numTocEntries).dwStartSector - ex_CR_GetTocEntry(0).dwStartSector) / 75;
+	Int	 t = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75;
 
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }

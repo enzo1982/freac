@@ -163,14 +163,20 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 	prog_status->SetValue(60);
 
-	CDDBInfo	*cddbInfo = new CDDBInfo();
-
 	if (read != NIL)
 	{
-		if (!cddb.Read(read, cddbInfo))	Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
-		else 				rCDDBInfo = cddbInfo;
+		rCDDBInfo = new CDDBInfo();
 
-		if (fuzzy) cddbInfo->revision = -1;
+		if (cddb.Read(read, rCDDBInfo))
+		{
+			if (fuzzy) rCDDBInfo->revision = -1;
+		}
+		else
+		{
+			delete rCDDBInfo;
+
+			Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
+		}
 	}
 
 	cddb.CloseConnection();

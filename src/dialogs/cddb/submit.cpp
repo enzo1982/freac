@@ -388,6 +388,8 @@ Void BonkEnc::cddbSubmitDlg::Cancel()
 
 Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 {
+	if (ownCddbInfo && cddbInfo != NIL) delete cddbInfo;
+
 	activedrive = combo_drive->GetSelectedEntryNumber();
 
 	ex_CR_SetActiveCDROM(activedrive);
@@ -537,9 +539,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 			}
 		}
 
-		TOCENTRY entry = ex_CR_GetTocEntry(numTocEntries);
-
-		cddbInfo->discLength = (entry.dwStartSector + 150) / 75;
+		cddbInfo->discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
 	}
 	else
 	{
@@ -586,9 +586,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 			}
 		}
 
-		TOCENTRY entry = ex_CR_GetTocEntry(numTocEntries);
-
-		cddbInfo->discLength = (entry.dwStartSector + 150) / 75;
+		cddbInfo->discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
 	}
 
 	for (Int l = 0; l < currentConfig->appMain->joblist->GetNOfTracks(); l++)
@@ -630,7 +628,7 @@ Int BonkEnc::cddbSubmitDlg::ReadCDText()
 
 	ex_CR_ReadCDText(pbtBuffer, nBufferSize, &nCDTextSize);
 
-	if (nCDTextSize < 4) return Error();
+	if (nCDTextSize < 4) { delete [] pbtBuffer; return Error(); }
 
 	int		 nNumPacks		= (nCDTextSize - 4) / sizeof(cdTextPackage);
 	cdTextPackage	*pCDtextPacks		= NIL;

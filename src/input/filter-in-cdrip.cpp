@@ -445,7 +445,7 @@ Int BonkEnc::FilterInCDRip::ReadCDText()
 
 	ex_CR_ReadCDText(pbtBuffer, nBufferSize, &nCDTextSize);
 
-	if (nCDTextSize < 4) return Error();
+	if (nCDTextSize < 4) { delete [] pbtBuffer; return Error(); }
 
 	int		 nNumPacks		= (nCDTextSize - 4) / sizeof(cdTextPackage);
 	cdTextPackage	*pCDtextPacks		= NIL;
