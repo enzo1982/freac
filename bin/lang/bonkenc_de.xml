@@ -334,5 +334,8 @@
     <entry id="322" string="first letter upper case">erster Buchstabe groß geschrieben</entry>
     <entry id="323" string="all lower case">alles klein geschrieben</entry>
     <entry id="324" string="all upper case">alles groß geschrieben</entry>
+    <entry id="325" string="Status">Status</entry>
+    <entry id="326" string="Successfully read CD!">CD erfolgreich eingelesen!</entry>
+    <entry id="327" string="Comment">Kommentar</entry>
   </data>
 </LangFile>

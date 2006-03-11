@@ -32,7 +32,7 @@ int cddb_sum(int n)
 
 BonkEnc::CDDB::CDDB(Config *iConfig)
 {
-	activeDriveID = 0;
+	activeDriveID = iConfig->cdrip_activedrive;
 	connected = False;
 
 	category = "misc";
@@ -303,11 +303,11 @@ String BonkEnc::CDDB::Query(const String &discid)
 	{
 		String	 ret;
 
-		for (int s = 4; s < 256; s++)
+		for (Int s = 4; s < 256; s++)
 		{
 			if (str[s] == ' ')
 			{
-				for (int i = 0; i < 8; i++) ret[s - 4 + i + 1] = str[s + i + 1];
+				for (Int i = 0; i < 8; i++) ret[s - 4 + i + 1] = str[s + i + 1];
 
 				break;
 			}
@@ -327,27 +327,28 @@ String BonkEnc::CDDB::Query(const String &discid)
 		titles.RemoveAll();
 		categories.RemoveAll();
 
+		String	 inputFormat = String::SetInputFormat("UTF-8");
+		String	 outputFormat = String::SetOutputFormat("UTF-8");
+
 		do
 		{
-			String	 val;
-
-			val.ImportFrom("UTF-8", in->InputLine());
+			String	 val = in->InputLine();
 
 			String	 id;
 			String	 title;
 			String	 category;
 
 			debug_out->OutputString("CDDB: < ");
-			debug_out->OutputLine(val.ConvertTo("UTF-8"));
+			debug_out->OutputLine(val);
 
 			if (val == ".") break;
 
-			for (int s = 0; s < 256; s++)
+			for (Int s = 0; s < 256; s++)
 			{
 				if (val[s] == ' ')
 				{
-					for (int i = 0; i < 8; i++)				id[i] = val[s + i + 1];
-					for (int j = 0; j < (val.Length() - s - 10); j++)	title[j] = val[s + j + 10];
+					for (Int i = 0; i < 8; i++)				id[i] = val[s + i + 1];
+					for (Int j = 0; j < (val.Length() - s - 10); j++)	title[j] = val[s + j + 10];
 
 					break;
 				}
@@ -362,6 +363,9 @@ String BonkEnc::CDDB::Query(const String &discid)
 			categories.AddEntry(category);
 		}
 		while (true);
+
+		String::SetInputFormat(inputFormat);
+		String::SetOutputFormat(outputFormat);
 
 		if (str[2] == '0')	return "multiple";
 		else			return "fuzzy";
@@ -387,20 +391,24 @@ Bool BonkEnc::CDDB::Read(const String &read, CDDBInfo *cddbInfo)
 
 	result = "";
 
+	String	 inputFormat = String::SetInputFormat("UTF-8");
+	String	 outputFormat = String::SetOutputFormat("UTF-8");
+
 	do
 	{
-		String	 val;
-
-		val.ImportFrom("UTF-8", in->InputLine());
+		String	 val = in->InputLine();
 
 		debug_out->OutputString("CDDB: < ");
-		debug_out->OutputLine(val.ConvertTo("UTF-8"));
+		debug_out->OutputLine(val);
 
 		if (val == ".") break;
 
 		result.Append(val).Append("\n");
 	}
 	while (True);
+
+	String::SetInputFormat(inputFormat);
+	String::SetOutputFormat(outputFormat);
 
 	Int	 index = 0;
 
@@ -578,7 +586,7 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 	content.Append("# ").Append("\n");
 	content.Append("# Track frame offsets:").Append("\n");
 
-	for (int i = 1; i < cddbInfo->trackOffsets.GetNOfEntries(); i++)
+	for (Int i = 0; i < cddbInfo->trackOffsets.GetNOfEntries(); i++)
 	{
 		content.Append("#     ").Append(String::FromInt(cddbInfo->trackOffsets.GetNthEntry(i))).Append("\n");
 	}
@@ -592,7 +600,7 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 
 	content.Append(FormatCDDBEntry("DISCID", cddbInfo->DiscIDToString()));
 	content.Append(FormatCDDBEntry("DTITLE", String(cddbInfo->dArtist).Append(" / ").Append(cddbInfo->dTitle)));
-	content.Append(FormatCDDBEntry("DYEAR", cddbInfo->dYear));
+	content.Append(FormatCDDBEntry("DYEAR", String::FromInt(cddbInfo->dYear)));
 	content.Append(FormatCDDBEntry("DGENRE", cddbInfo->dGenre));
 
 	for (Int j = 0; j < cddbInfo->trackTitles.GetNOfEntries(); j++)
@@ -612,7 +620,7 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 
 	str.Append("POST ").Append(config->freedb_submit_path).Append(" HTTP/1.0\n");
 	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
-	str.Append("Discid: ").Append(cddbInfo->discID).Append("\n");
+	str.Append("Discid: ").Append(cddbInfo->DiscIDToString()).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
 	str.Append("Submit-Mode: ").Append("test").Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
@@ -621,8 +629,10 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 
 	str.Append(content);
 
+	String	 outputFormat = String::SetOutputFormat("UTF-8");
+
 	debug_out->OutputString("CDDB: ");
-	debug_out->OutputLine(str.ConvertTo("UTF-8"));
+	debug_out->OutputLine(str);
 
 	if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
 	else if (config->freedb_proxy_mode == 1)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
@@ -640,7 +650,9 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 	in = new InStream(STREAM_DRIVER, socket);
 	out = new OutStream(STREAM_STREAM, in);
 
-	out->OutputString(str.ConvertTo("UTF-8"));
+	out->OutputString(str);
+
+	String::SetOutputFormat(outputFormat);
 
 	do
 	{
@@ -690,6 +702,8 @@ Bool BonkEnc::CDDB::CloseConnection()
 
 String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
 {
+	if (value == "") return String(entry).Append("=\n");
+
 	String	 result;
 
 	for (Int i = 0; i < value.Length(); )

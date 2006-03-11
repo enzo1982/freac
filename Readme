@@ -19,10 +19,13 @@ History
 		- fixed bad default AAC profile setting
 		- added support for FLAC audio encoder
 		- display approximate title length when correct length is not known
+		- redesigned the freedb submit dialog
 		- submitted freedb entries can now be used to update the joblist
 		- the <filename>, <genre> and <year> tokens can now be used in the file name pattern
 		- text in inactive edit boxes can now be selected and copied
 		- added commands to set the same artist/album/genre/year for all tracks
+		- added commands to interpret title information in a different character set
+		- added commands for title info formatting (upper/lower case)
 		- upgraded Ogg Vorbis to version 1.1.2
 		- upgraded FLAC to version 1.1.2
 		- upgraded LAME to version 3.97 beta 2

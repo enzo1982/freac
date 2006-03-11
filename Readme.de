@@ -19,10 +19,13 @@ Geschichte
 		- Falsche AAC-Profil Einstellung korrigiert
 		- Unterstützung für FLAC Encoder hinzugefügt
 		- Zeige ungefähre Titellänge an, wenn die tatsächliche Länge unbekannt ist
+		- Dialog zum Senden von freedb-Informationen umgestaltet
 		- Die Jobliste kann nun mit gesendeten freedb-Informationen aktualisiert werden
 		- Die Token <filename>, <genre> und <year> können nun in der Dateinamensvorlage verwendet werden
 		- Text in inaktiven Editboxen kann jetzt ausgewählt und kopiert werden
 		- Menübefehle zum Übernehmen von Künstler/Album/Genre/Jahr für alle Tracks hinzugefügt
+		- Menübefehle zum Interpretieren von Titelinformationen in einem anderen Zeichensatz hinzugefügt
+		- Menübefehle für Formatierung von Titelinformationen hinzugefügt (Groß- / Kleinschreibung)
 		- Ogg Vorbis auf Version 1.1.2 aktualisiert
 		- FLAC auf Version 1.1.2 aktualisiert
 		- LAME auf Version 3.97 Beta 2 aktualisiert

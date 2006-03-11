@@ -334,5 +334,8 @@
     <entry id="322" string="first letter upper case"/>
     <entry id="323" string="all lower case"/>
     <entry id="324" string="all upper case"/>
+    <entry id="325" string="Status"/>
+    <entry id="326" string="Successfully read CD!"/>
+    <entry id="327" string="Comment"/>
   </data>
 </LangFile>

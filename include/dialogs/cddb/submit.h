@@ -41,12 +41,16 @@ namespace BonkEnc
 			Text		*text_genre;
 			EditBox		*edit_genre;
 			ListBox		*list_genre;
+			Text		*text_disccomment;
+			MultiEdit	*edit_disccomment;
 
 			ListBox		*list_tracks;
 			Text		*text_track;
 			EditBox		*edit_track;
 			Text		*text_title;
 			EditBox		*edit_title;
+			Text		*text_comment;
+			MultiEdit	*edit_comment;
 
 			Text		*text_cdstatus;
 			Text		*text_status;
@@ -66,9 +70,8 @@ namespace BonkEnc
 			CDDBInfo	*cddbInfo;
 			Bool		 ownCddbInfo;
 
-			String		 discid;
-			String		 genre;
 			Array<String>	 titles;
+			Array<String>	 comments;
 
 			Array<String>	 cdText;
 
@@ -81,6 +84,7 @@ namespace BonkEnc
 			Void		 SelectTrack();
 			Void		 UpdateTrack();
 			Void		 FinishTrack();
+			Void		 UpdateComment();
 			String		 GetCDDBGenre(const String &);
 		public:
 					 cddbSubmitDlg();

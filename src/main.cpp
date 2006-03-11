@@ -892,6 +892,10 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 	for (Int j = 0; j < discIDs.GetNOfEntries(); j++)
 	{
+		Int	 oDrive = currentConfig->cdrip_activedrive;
+
+		currentConfig->cdrip_activedrive = discIDs.GetNthEntryIndex(j);
+
 		CDDB		 cddb(currentConfig);
 		Int		 discID = discIDs.GetNthEntry(j);
 		String		 discIDString = discIDStrings.GetNthEntry(j);
@@ -901,10 +905,6 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 		if (cdInfo == NIL)
 		{
-			Int	 oDrive = currentConfig->cdrip_activedrive;
-
-			currentConfig->cdrip_activedrive = discIDs.GetNthEntryIndex(j);
-
 			cdInfo = GetCDDBData();
 
 			if (cdInfo != NIL)
@@ -912,9 +912,9 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 				CDDB::infoCache.RemoveEntry(discID);
 				CDDB::infoCache.AddEntry(cdInfo, discID);
 			}
-
-			currentConfig->cdrip_activedrive = oDrive;
 		}
+
+		currentConfig->cdrip_activedrive = oDrive;
 
 		if (cdInfo != NIL)
 		{
