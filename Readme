@@ -54,7 +54,8 @@ History
 		- use smooth v0.8.67.0
 		- fixes for compiling with GCC 4.1
 		- removed support for MinGW 1.x
-		- lots of bugfixes
+		- lots of freedb fixes
+		- lots of other bugfixes
 
 	Version 1.0 beta 3 (January 2005)
 

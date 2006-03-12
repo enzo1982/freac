@@ -354,7 +354,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 			for (Int m = 0; m < titles.GetNOfEntries(); m++)
 			{
-				if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->title != titles.GetNthEntry(m))
+				if (trackInfo->cdTrack == list_tracks->GetNthEntry(m)->GetText().ToInt())
 				{
 					trackInfo->artist	= edit_artist->GetText();
 					trackInfo->title	= titles.GetNthEntry(m);
