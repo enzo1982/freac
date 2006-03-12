@@ -591,9 +591,11 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 
 		if (query != "none" && query != "error")
 		{
-			if (query == "multiple") cddbInfo->category = GetNthCategory(0);
-
-			if (query != "fuzzy")
+			if (query == "multiple")
+			{
+				cddbInfo->category = GetNthCategory(0);
+			}
+			else if (query != "fuzzy")
 			{
 				for (Int i = 0; i < query.Length(); i++)
 				{
@@ -688,7 +690,7 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
 	str.Append("Discid: ").Append(cddbInfo->DiscIDToString()).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append("test").Append("\n");
+	str.Append("Submit-Mode: ").Append("submit").Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
 	str.Append("Charset: UTF-8\n");
 	str.Append("\n");

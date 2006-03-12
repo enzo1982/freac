@@ -24,7 +24,7 @@ RESCOMP = windres
 LINKER = gcc
 REMOVER = rm
 ECHO = echo
-COMPILER_OPTS = -DDEBUG -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -Os -g0 -Wall -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
+COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -Os -g0 -Wall -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
 LINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -mwindows -o$(EXENAME)
 CMDLINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -o$(CMDNAME)
 DLLLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -mwindows --shared -Xlinker --out-implib -Xlinker $(LIBNAME) -o$(DLLNAME)
