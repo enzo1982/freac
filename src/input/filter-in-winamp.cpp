@@ -12,12 +12,12 @@
 
 #include <dllinterfaces.h>
 
-int		 channels = 0;
-int		 rate = 0;
-int		 bits = 16;
+int		 channels		= 0;
+int		 rate			= 0;
+int		 bits			= 16;
 
-int		 get_more_samples = 0;
-int		 n_samples = 0;
+int		 get_more_samples	= 0;
+int		 n_samples		= 0;
 Buffer<char>	 sampleBuffer;
 
 void		 SetInfo(int, int, int, int);
@@ -41,40 +41,53 @@ void		 Out_Flush(int);
 int		 Out_Write(char *, int);
 int		 Out_CanWrite();
 int		 Out_IsPlaying();
+int		 Out_Pause(int);
 void		 Out_SetVolume(int);
 void		 Out_SetPan(int);
+int		 Out_GetOutputTime();
+int		 Out_GetWrittenTime();
 
 BonkEnc::FilterInWinamp::FilterInWinamp(Config *config, Track *format, In_Module *iPlugin) : InputFilter(config, format)
 {
-	plugin = iPlugin;
+	plugin				= iPlugin;
 
-	plugin->SetInfo = SetInfo;
-	plugin->VSASetInfo = VSASetInfo;
-	plugin->VSAAddPCMData = VSAAddPCMData;
-	plugin->VSAGetMode = VSAGetMode;
-	plugin->VSAAdd = VSAAdd;
-	plugin->SAVSAInit = SAVSAInit;
-	plugin->SAVSADeInit = SAVSADeInit;
-	plugin->SAAddPCMData = SAAddPCMData;
-	plugin->SAGetMode = SAGetMode;
-	plugin->SAAdd = SAAdd;
-	plugin->dsp_isactive = dsp_isactive;
-	plugin->dsp_dosamples = dsp_dosamples;
-	plugin->SetVolume = SetVolume;
-	plugin->SetPan = SetPan;
+	plugin->SetInfo			= SetInfo;
+	plugin->VSASetInfo		= VSASetInfo;
+	plugin->VSAAddPCMData		= VSAAddPCMData;
+	plugin->VSAGetMode		= VSAGetMode;
+	plugin->VSAAdd			= VSAAdd;
+	plugin->SAVSAInit		= SAVSAInit;
+	plugin->SAVSADeInit		= SAVSADeInit;
+	plugin->SAAddPCMData		= SAAddPCMData;
+	plugin->SAGetMode		= SAGetMode;
+	plugin->SAAdd			= SAAdd;
+	plugin->dsp_isactive		= dsp_isactive;
+	plugin->dsp_dosamples		= dsp_dosamples;
+	plugin->SetVolume		= SetVolume;
+	plugin->SetPan			= SetPan;
 
-	plugin->outMod = new Out_Module();
+	plugin->outMod			= new Out_Module();
 
-	plugin->outMod->Open = Out_Open;
-	plugin->outMod->Close = Out_Close;
-	plugin->outMod->Flush = Out_Flush;
-	plugin->outMod->Write = Out_Write;
-	plugin->outMod->CanWrite = Out_CanWrite;
-	plugin->outMod->IsPlaying = Out_IsPlaying;
-	plugin->outMod->SetVolume = Out_SetVolume;
-	plugin->outMod->SetPan = Out_SetPan;
+	plugin->outMod->Open		= Out_Open;
+	plugin->outMod->Close		= Out_Close;
+	plugin->outMod->Flush		= Out_Flush;
+	plugin->outMod->Write		= Out_Write;
+	plugin->outMod->CanWrite	= Out_CanWrite;
+	plugin->outMod->IsPlaying	= Out_IsPlaying;
+	plugin->outMod->Pause		= Out_Pause;
+	plugin->outMod->SetVolume	= Out_SetVolume;
+	plugin->outMod->SetPan		= Out_SetPan;
+	plugin->outMod->GetOutputTime	= Out_GetOutputTime;
+	plugin->outMod->GetWrittenTime	= Out_GetWrittenTime;
 
-	packageSize = 0;
+	channels		= 0;
+	rate			= 0;
+	bits			= 16;
+
+	get_more_samples	= 0;
+	n_samples		= 0;
+
+	packageSize		= 0;
 }
 
 BonkEnc::FilterInWinamp::~FilterInWinamp()
@@ -98,8 +111,8 @@ Bool BonkEnc::FilterInWinamp::Deactivate()
 
 Int BonkEnc::FilterInWinamp::ReadData(UnsignedByte **data, Int size)
 {
-	get_more_samples = 32768;
-	n_samples = 0;
+	get_more_samples	= 32768;
+	n_samples		= 0;
 
 	Int	 count = 0;
 
@@ -138,16 +151,21 @@ BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 	delete f_in;
 
 	plugin->Play(inFile);
+
+	get_more_samples = 1;
+
+	while (rate == 0) Sleep(10);
+
+	int	 length_ms;
+	char	*title = new char [1024];
+
+	plugin->GetFileInfo(NIL, title, &length_ms);
+
 	plugin->Stop();
 
 	nFormat->rate		= rate;
 	nFormat->channels	= channels;
 	nFormat->bits		= bits;
-
-	int	 length_ms;
-	char	*title = new char [1024];
-
-	plugin->GetFileInfo(inFile, title, &length_ms);
 
 	nFormat->length		= (Int) (Float(length_ms) * Float(rate * channels) / 1000.0);
 
@@ -156,21 +174,23 @@ BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 	delete [] title;
 
 	Int	 artistComplete = 0;
-	Int	 m = 0;
 
-	for (m = 0; m < trackTitle.Length(); m++)
+	if (trackTitle != inFile)
 	{
-		if (trackTitle[  m  ] == ' ' &&
-		    trackTitle[m + 1] == '-' &&
-		    trackTitle[m + 2] == ' ')
+		for (Int m = 0; m < trackTitle.Length(); m++)
 		{
-			artistComplete = m + 3;
+			if (trackTitle[  m  ] == ' ' &&
+			    trackTitle[m + 1] == '-' &&
+			    trackTitle[m + 2] == ' ')
+			{
+				artistComplete = m + 3;
 
-			m += 3;
+				m += 3;
+			}
+
+			if (!artistComplete)	nFormat->artist[m] = trackTitle[m];
+			else			nFormat->title[m - artistComplete] = trackTitle[m];
 		}
-
-		if (!artistComplete)	nFormat->artist[m] = trackTitle[m];
-		else			nFormat->title[m - artistComplete] = trackTitle[m];
 	}
 
 	if (artistComplete == 0)
@@ -288,10 +308,25 @@ int Out_IsPlaying()
 	return 1;
 }
 
+int Out_Pause(int pause)
+{
+	return 0;
+}
+
 void Out_SetVolume(int vol)
 {
 }
 
 void Out_SetPan(int pan)
 {
+}
+
+int Out_GetOutputTime()
+{
+	return 0;
+}
+
+int Out_GetWrittenTime()
+{
+	return 0;
 }

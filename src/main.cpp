@@ -37,6 +37,7 @@
 #include <cddb.h>
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
+#include <dialogs/cddb/manage.h>
 
 #include <dialogs/language.h>
 
@@ -991,6 +992,15 @@ Void BonkEnc::BonkEncGUI::SubmitCDDBData()
 	DeleteObject(dlg);
 }
 
+Void BonkEnc::BonkEncGUI::ManageCDDBData()
+{
+	cddbManageDlg	*dlg = new cddbManageDlg();
+
+	dlg->ShowDialog();
+
+	DeleteObject(dlg);
+}
+
 Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 {
 	Int	 n = 0;
@@ -1295,17 +1305,17 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_menubar->Hide();
 	mainWnd_iconbar->Hide();
 
-	menu_file->Clear();
-	menu_options->Clear();
-	menu_drives->Clear();
-	menu_files->Clear();
-	menu_seldrive->Clear();
-	menu_addsubmenu->Clear();
-	menu_encode->Clear();
-	menu_encoders->Clear();
-	menu_database->Clear();
-	menu_trackmenu->Clear();
-	menu_help->Clear();
+	menu_file->RemoveAllEntries();
+	menu_options->RemoveAllEntries();
+	menu_drives->RemoveAllEntries();
+	menu_files->RemoveAllEntries();
+	menu_seldrive->RemoveAllEntries();
+	menu_addsubmenu->RemoveAllEntries();
+	menu_encode->RemoveAllEntries();
+	menu_encoders->RemoveAllEntries();
+	menu_database->RemoveAllEntries();
+	menu_trackmenu->RemoveAllEntries();
+	menu_help->RemoveAllEntries();
 
 	menu_file->AddEntry(i18n->TranslateString("Add"), NIL, menu_addsubmenu);
 	menu_file->AddEntry(i18n->TranslateString("Remove"))->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
@@ -1363,7 +1373,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	if (currentConfig->enable_blade)  menu_encoders->AddEntry("BladeEnc MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_bonk)   menu_encoders->AddEntry("Bonk Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_faac)   menu_encoders->AddEntry("FAAC MP4/AAC Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_FAAC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
-	if (currentConfig->enable_flac)   menu_encoders->AddEntry("FLAC Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_FLAC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
+	if (currentConfig->enable_flac)   menu_encoders->AddEntry("FLAC Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_FLAC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_lame)   menu_encoders->AddEntry("LAME MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_LAMEENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_vorbis) menu_encoders->AddEntry("Ogg Vorbis Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_VORBISENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_tvq)    menu_encoders->AddEntry("TwinVQ VQF Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_TVQ)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
@@ -1382,8 +1392,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database->AddEntry(i18n->TranslateString("Query CDDB database"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
 
 	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
@@ -1414,7 +1426,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_help->AddEntry();
 	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onAction.Connect(&BonkEncGUI::About, this);
 
-	mainWnd_menubar->Clear();
+	mainWnd_menubar->RemoveAllEntries();
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 
@@ -1425,7 +1437,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help)->SetOrientation(OR_RIGHT);
 
-	mainWnd_iconbar->Clear();
+	mainWnd_iconbar->RemoveAllEntries();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:1"), menu_files);
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
@@ -1486,8 +1498,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_menubar->Show();
 	mainWnd_iconbar->Show();
 
-	menu_charsets->Clear();
-	menu_charsets_all->Clear();
+	menu_charsets->RemoveAllEntries();
+	menu_charsets_all->RemoveAllEntries();
 
 	menu_charsets->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
 	menu_charsets->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
@@ -1496,9 +1508,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_charsets->AddEntry();
 	menu_charsets->AddEntry("CP1251", NIL, NIL, NIL, &clicked_charset, CHARSET_CP1251)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
 	menu_charsets->AddEntry();
-	menu_charsets->AddEntry("UTF-8", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_8)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
-	menu_charsets->AddEntry("UTF-16LE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16LE)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
-	menu_charsets->AddEntry("UTF-16BE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16BE)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_charsets->AddEntry("SHIFT-JIS", NIL, NIL, NIL, &clicked_charset, CHARSET_SHIFT_JIS)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_charsets->AddEntry("GBK", NIL, NIL, NIL, &clicked_charset, CHARSET_GBK)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
+	menu_charsets->AddEntry("BIG-5", NIL, NIL, NIL, &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&BonkEncGUI::InterpretStringAs, this);
 
 	menu_charsets_all->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
@@ -1507,15 +1519,15 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_charsets_all->AddEntry();
 	menu_charsets_all->AddEntry("CP1251", NIL, NIL, NIL, &clicked_charset, CHARSET_CP1251)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry();
-	menu_charsets_all->AddEntry("UTF-8", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_8)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
-	menu_charsets_all->AddEntry("UTF-16LE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16LE)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
-	menu_charsets_all->AddEntry("UTF-16BE", NIL, NIL, NIL, &clicked_charset, CHARSET_UTF_16BE)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("SHIFT-JIS", NIL, NIL, NIL, &clicked_charset, CHARSET_SHIFT_JIS)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("GBK", NIL, NIL, NIL, &clicked_charset, CHARSET_GBK)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("BIG-5", NIL, NIL, NIL, &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&BonkEncGUI::InterpretStringAsAll, this);
 
-	menu_edit_artist->Clear();
-	menu_edit_title->Clear();
-	menu_edit_album->Clear();
-	menu_edit_year->Clear();
-	menu_edit_genre->Clear();
+	menu_edit_artist->RemoveAllEntries();
+	menu_edit_title->RemoveAllEntries();
+	menu_edit_album->RemoveAllEntries();
+	menu_edit_year->RemoveAllEntries();
+	menu_edit_genre->RemoveAllEntries();
 
 	menu_edit_artist->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 	menu_edit_artist->AddEntry();
@@ -1630,8 +1642,8 @@ Void BonkEnc::BonkEncGUI::ToggleEditPopup()
 
 	if (string != NIL)
 	{
-		menu_case->Clear();
-		menu_case_all->Clear();
+		menu_case->RemoveAllEntries();
+		menu_case_all->RemoveAllEntries();
 
 		menu_case->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
 		menu_case->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
@@ -1739,9 +1751,9 @@ Void BonkEnc::BonkEncGUI::InterpretStringAs()
 		case CHARSET_ISO_8859_5: charset = "ISO-8859-5"; break;
 		case CHARSET_ISO_8859_7: charset = "ISO-8859-7"; break;
 		case CHARSET_CP1251:	 charset = "CP1251";	 break;
-		case CHARSET_UTF_8:	 charset = "UTF-8";	 break;
-		case CHARSET_UTF_16LE:	 charset = "UTF-16LE";	 break;
-		case CHARSET_UTF_16BE:	 charset = "UTF-16BE";	 break;
+		case CHARSET_SHIFT_JIS:	 charset = "SHIFT-JIS";	 break;
+		case CHARSET_GBK:	 charset = "GBK";	 break;
+		case CHARSET_BIG_5:	 charset = "BIG-5";	 break;
 	}
 
 	Track		*track = joblist->GetSelectedTrack();
@@ -1775,9 +1787,9 @@ Void BonkEnc::BonkEncGUI::InterpretStringAsAll()
 		case CHARSET_ISO_8859_5: charset = "ISO-8859-5"; break;
 		case CHARSET_ISO_8859_7: charset = "ISO-8859-7"; break;
 		case CHARSET_CP1251:	 charset = "CP1251";	 break;
-		case CHARSET_UTF_8:	 charset = "UTF-8";	 break;
-		case CHARSET_UTF_16LE:	 charset = "UTF-16LE";	 break;
-		case CHARSET_UTF_16BE:	 charset = "UTF-16BE";	 break;
+		case CHARSET_SHIFT_JIS:	 charset = "SHIFT-JIS";	 break;
+		case CHARSET_GBK:	 charset = "GBK";	 break;
+		case CHARSET_BIG_5:	 charset = "BIG-5";	 break;
 	}
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)

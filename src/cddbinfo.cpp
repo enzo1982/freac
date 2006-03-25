@@ -11,6 +11,11 @@
 #include <cddbinfo.h>
 #include <cddb.h>
 
+BonkEnc::CDDBInfo::CDDBInfo()
+{
+	charset = "UTF-8";
+}
+
 String BonkEnc::CDDBInfo::DiscIDToString()
 {
 	return CDDB::DiscIDToString(discID);

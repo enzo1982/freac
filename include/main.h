@@ -24,9 +24,9 @@ namespace BonkEnc
 	const Int	 CHARSET_ISO_8859_5	= 2;
 	const Int	 CHARSET_ISO_8859_7	= 3;
 	const Int	 CHARSET_CP1251		= 4;
-	const Int	 CHARSET_UTF_8		= 5;
-	const Int	 CHARSET_UTF_16LE	= 6;
-	const Int	 CHARSET_UTF_16BE	= 7;
+	const Int	 CHARSET_SHIFT_JIS	= 5;
+	const Int	 CHARSET_GBK		= 6;
+	const Int	 CHARSET_BIG_5		= 7;
 
 	class BonkEncGUI : public BonkEnc
 	{
@@ -87,9 +87,6 @@ namespace BonkEnc
 			Void		 UpdateTitleInfo();
 			Void		 ReadSpecificCD();
 
-			Void		 QueryCDDB();
-			Void		 SubmitCDDBData();
-
 			Void		 EncodeSpecific();
 			PopupMenu	*GetTrackMenu(Int, Int);
 			Void		 ShowHelp();
@@ -123,6 +120,10 @@ namespace BonkEnc
 			Void		 PlayPrevious();
 			Void		 PlayNext();
 			Void		 OpenCDTray();
+
+			Void		 QueryCDDB();
+			Void		 SubmitCDDBData();
+			Void		 ManageCDDBData();
 
 			Void		 SelectDir();
 

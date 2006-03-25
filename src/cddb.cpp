@@ -15,7 +15,6 @@
 #include <dllinterfaces.h>
 
 Array<BonkEnc::CDDBInfo *>	 BonkEnc::CDDB::infoCache;
-Array<Bool>			 BonkEnc::CDDB::requestedDiscs;
 
 int cddb_sum(int n)
 {
@@ -430,10 +429,15 @@ Bool BonkEnc::CDDB::Read(const String &read, CDDBInfo *cddbInfo)
 			for (Int l = k + 3; l < line.Length(); l++) cddbInfo->dTitle[l - k - 3] = line[l];
 
 			if (cddbInfo->dTitle == "") cddbInfo->dTitle = cddbInfo->dArtist;
+
+			cddbInfo->oDArtist = cddbInfo->dArtist;
+			cddbInfo->oDTitle = cddbInfo->dTitle;
 		}
 		else if (line.StartsWith("DGENRE"))
 		{
 			for (Int l = 7; l < line.Length(); l++) cddbInfo->dGenre[l - 7] = line[l];
+
+			cddbInfo->oDGenre = cddbInfo->dGenre;
 		}
 		else if (line.StartsWith("DYEAR"))
 		{
@@ -479,10 +483,15 @@ Bool BonkEnc::CDDB::Read(const String &read, CDDBInfo *cddbInfo)
 
 			cddbInfo->trackArtists.AddEntry(artist, track.ToInt());
 			cddbInfo->trackTitles.AddEntry(title, track.ToInt());
+
+			cddbInfo->oTrackArtists.AddEntry(artist, track.ToInt());
+			cddbInfo->oTrackTitles.AddEntry(title, track.ToInt());
 		}
 		else if (line.StartsWith("EXTD"))
 		{
 			for (Int k = 5; k < line.Length(); k++) cddbInfo->comment[k - 5] = line[k];
+
+			cddbInfo->oComment = cddbInfo->comment;
 		}
 		else if (line.StartsWith("EXTT"))
 		{
@@ -500,6 +509,8 @@ Bool BonkEnc::CDDB::Read(const String &read, CDDBInfo *cddbInfo)
 			for (Int l = k + 1; l < line.Length(); l++) comment[l - k - 1] = line[l];
 
 			cddbInfo->trackComments.AddEntry(comment, track.ToInt());
+
+			cddbInfo->oTrackComments.AddEntry(comment, track.ToInt());
 		}
 		else if (line.StartsWith("PLAYORDER"))
 		{

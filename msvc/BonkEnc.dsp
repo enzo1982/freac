@@ -235,6 +235,10 @@ SOURCE=..\src\dialogs\cddb\extsettings.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\dialogs\cddb\manage.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\dialogs\cddb\multimatch.cpp
 # End Source File
 # Begin Source File
@@ -501,6 +505,10 @@ SOURCE=..\include\dialogs\genconfig\genconfig_tags.h
 # Begin Source File
 
 SOURCE=..\include\dialogs\cddb\extsettings.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\cddb\manage.h
 # End Source File
 # Begin Source File
 

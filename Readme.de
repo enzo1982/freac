@@ -49,6 +49,7 @@ Geschichte
 		- BonkEnc wurde in Frontends und eine Backend-DLL aufgeteilt
 		- Schnellere Startzeit (durch verbesserte iconv-Benutzung in der smooth Bibliothek)
 		- Darstellungsfehler bei arabischer Schrift unter Windows 2000/NT behoben
+		- Winamp Input-Plugin Unterstützung verbessert (WMA und MP3-Plugins funktionieren)
 		- Update auf MPEG4IP v1.4.1
 		- Update auf easyUpdate v0.3
 		- Verwende smooth v0.8.67.0

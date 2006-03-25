@@ -337,5 +337,12 @@
     <entry id="325" string="Status"/>
     <entry id="326" string="Successfully read CD!"/>
     <entry id="327" string="Comment"/>
+    <entry id="328" string="Manage CDDB cache entries..."/>
+    <entry id="329" string="Save entry"/>
+    <entry id="330" string="Remove entry"/>
+    <entry id="331" string="Disc name"/>
+    <entry id="332" string="Charset"/>
+    <entry id="333" string="Preview"/>
+    <entry id="334" string="Downloaded CDDB entries:"/>
   </data>
 </LangFile>

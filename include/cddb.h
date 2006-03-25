@@ -72,7 +72,6 @@ namespace BonkEnc
 			static Int		 StringToDiscID(const String &);
 
 			static Array<CDDBInfo *> infoCache;
-			static Array<Bool>	 requestedDiscs;
 	};
 };
 

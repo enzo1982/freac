@@ -110,8 +110,6 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 	if (discid == "ffffffff" || discid == "00000000") return NIL; // no disc in drive or read error
 
-	CDDB::requestedDiscs.AddEntry(True, cddb.ComputeDiscID());
-
 	text_status->SetText(BonkEnc::i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
 	cddb.ConnectToServer();

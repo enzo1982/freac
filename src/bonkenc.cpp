@@ -36,7 +36,7 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n			= NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version = "CVS 20060311";
+String	 BonkEnc::BonkEnc::version = "CVS 20060325";
 String	 BonkEnc::BonkEnc::cddbVersion = "v1.0beta4pre";
 String	 BonkEnc::BonkEnc::shortVersion = "v1.0";
 
@@ -101,6 +101,8 @@ BonkEnc::BonkEnc::BonkEnc()
 	}
 
 	DLLInterfaces::LoadWinampDLLs();
+
+	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() <= currentConfig->output_plugin) currentConfig->output_plugin = 0;
 
 	int	 nextEC = 0;
 

@@ -38,6 +38,19 @@ namespace BonkEnc
 			Array<String>	 trackTitles;
 			Array<String>	 trackComments;
 
+			String		 oDArtist;
+			String		 oDTitle;
+			String		 oDGenre;
+			String		 oComment;
+
+			Array<String>	 oTrackArtists;
+			Array<String>	 oTrackTitles;
+			Array<String>	 oTrackComments;
+
+			String		 charset;
+
+					 CDDBInfo();
+
 			String		 DiscIDToString();
 	};
 };
