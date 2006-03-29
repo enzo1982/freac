@@ -73,11 +73,16 @@ Int BonkEnc::FilterInFLAC::ReadData(UnsignedByte **data, Int size)
 
 	samplesBufferMutex->Lock();
 
-	size = samplesBuffer.Size() * 2;
+	size = samplesBuffer.Size() * (format->bits / 8);
 
 	dataBuffer.Resize(size);
 
-	memcpy(dataBuffer, samplesBuffer, size);
+	for (Int i = 0; i < samplesBuffer.Size(); i++)
+	{
+		if (format->bits == 8)		dataBuffer[i] = samplesBuffer[i] + 128;
+		else if (format->bits == 16)	((Short *) (unsigned char *) dataBuffer)[i] = samplesBuffer[i];
+		else if (format->bits == 24)	{ dataBuffer[3 * i] = samplesBuffer[i] & 255; dataBuffer[3 * i + 1] = (samplesBuffer[i] >> 8) & 255; dataBuffer[3 * i + 2] = (samplesBuffer[i] >> 16) & 255; }
+	}
 
 	samplesBuffer.Resize(0);
 
@@ -208,16 +213,16 @@ FLAC__StreamDecoderWriteStatus BonkEnc::FLACSeekableStreamDecoderWriteCallback(c
 
 	filter->samplesBufferMutex->Lock();
 
-	Buffer<unsigned short>	 backBuffer;
+	Buffer<signed int>	 backBuffer;
 	Int			 oSize = filter->samplesBuffer.Size();
 
 	backBuffer.Resize(oSize);
 
-	memcpy(backBuffer, filter->samplesBuffer, oSize * 2);
+	memcpy(backBuffer, filter->samplesBuffer, oSize * 4);
 
 	filter->samplesBuffer.Resize(oSize + frame->header.blocksize * filter->format->channels);
 
-	memcpy(filter->samplesBuffer, backBuffer, oSize * 2);
+	memcpy(filter->samplesBuffer, backBuffer, oSize * 4);
 
 	for (Int i = 0; i < (signed) frame->header.blocksize; i++)
 	{

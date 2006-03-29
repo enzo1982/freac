@@ -309,7 +309,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	layer_advanced->RegisterObject(slider_max_part_order);
 	layer_advanced->RegisterObject(text_max_part_order_value);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 

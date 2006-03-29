@@ -134,7 +134,7 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	mainWnd->RegisterObject(mainWnd_layer_abr);
 	mainWnd->RegisterObject(divbar);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 
 	switch (mode)

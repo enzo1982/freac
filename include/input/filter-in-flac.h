@@ -32,7 +32,7 @@ namespace BonkEnc
 			FLAC__SeekableStreamDecoder	*decoder;
 			Bool				 finished;
 
-			Buffer<unsigned short>		 samplesBuffer;
+			Buffer<signed int>		 samplesBuffer;
 
 			Buffer<unsigned char>		 dataBuffer;
 

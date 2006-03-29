@@ -29,6 +29,15 @@ BonkEnc::FilterOutFLAC::FilterOutFLAC(Config *config, Track *format) : OutputFil
 
 		return;
 	}
+
+	if (format->bits > 24)
+	{
+		Utilities::ErrorMessage("FLAC does not support more than 24 bit sample resolution!");
+
+		error = 1;
+
+		return;
+	}
 }
 
 BonkEnc::FilterOutFLAC::~FilterOutFLAC()
@@ -286,7 +295,9 @@ Int BonkEnc::FilterOutFLAC::WriteData(UnsignedByte *data, Int size)
 
 	for (Int i = 0; i < size / (format->bits / 8); i++)
 	{
-		buffer[i] = ((UnsignedShort *) data)[i];
+		if (format->bits == 8)		buffer[i] = data[i] - 128;
+		else if (format->bits == 16)	buffer[i] = ((Short *) data)[i];
+		else if (format->bits == 24)	buffer[i] = data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0);
 	}
 
 	ex_FLAC__seekable_stream_encoder_process_interleaved(encoder, buffer, size / (format->bits / 8) / format->channels);

@@ -315,7 +315,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	layer_quality->RegisterObject(text_bandwidth);
 	layer_quality->RegisterObject(edit_bandwidth);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 

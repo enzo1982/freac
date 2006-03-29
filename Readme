@@ -1,8 +1,9 @@
 BonkEnc version 1.0 CVS
 
-BonkEnc is an encoder for various audio formats. It can read MP3,
-MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC and
-produce MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, VQF and WAV files.
+BonkEnc is an encoder for various audio formats. It can read
+MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC
+files and produce MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
+and WAV files.
 
 BonkEnc uses the CDRip Ripping Library for audio ripping.
 
@@ -16,6 +17,7 @@ History
 		- info tag encodings can now be set in the configuration dialog
 		- fixed a crash when opening protected MP4 files
 		- added support for MP4 files with Unicode file names
+		- added support for ID3 tags in files with Unicode file names
 		- fixed bad default AAC profile setting
 		- added support for FLAC audio encoder
 		- display approximate title length when correct length is not known
@@ -220,7 +222,7 @@ Requirements
 		- The CDRip Ripping Library is used if installed (http://www.cdrip.org/)
 		- BladeEnc is used if installed (http://bladeenc.mp3.no/)
 		- TwinVQ is used if installed (http://www.twinvq.org/)
-		- Winamp 2 input and output plug-ins are used if they are found in the plugins directory
+		- Winamp 2/5 input and output plug-ins are used if they are found in the plugins directory
 		- MSLU is used if installed on Windows 9x/ME systems (http://www.microsoft.com/)
 
 Known problems
@@ -229,14 +231,18 @@ Known problems
 	- There are the following restrictions on the input file format:
 
 		- BladeEnc:
-				- files must be at 32, 44.1 or 48kHz
+				- audio must be at 32, 44.1 or 48 kHz
+		- FLAC:
+				- the FLAC reference encoder is limited to a maximum sample resolution of 24 bit
 		- LAME:
-				- files must be at standard rates (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48kHz)
+				- audio must be at standard rates (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz)
 		- TwinVQ:
-				- files must be at 22.05kHz (24 and 32kBit) or 44.1kHz (48kBit)
+				- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
 
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
+
+	- BonkEnc is currently limited to a maximum of 2 audio channels
 
 Special thanks to
 -----------------

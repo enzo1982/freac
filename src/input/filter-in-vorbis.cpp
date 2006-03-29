@@ -114,8 +114,8 @@ Int BonkEnc::FilterInVORBIS::ReadData(UnsignedByte **data, Int size)
 
 	while (true)
 	{
-		short	 convbuffer[4096];
-		int	 convsize = 4096 / vi.channels;
+		short	 convbuffer[6144];
+		int	 convsize = 6144 / vi.channels;
 
 		if (ex_ogg_sync_pageout(&oy, &og) == 0) break;
 

@@ -53,7 +53,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	mainWnd->RegisterObject(prog_status);
 	mainWnd->RegisterObject(mainWnd_titlebar);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
@@ -139,13 +139,14 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 			fuzzy = True;
 		}
 
-		dlg->ShowDialog();
-
-		Int index = dlg->GetSelectedEntryNumber();
-
-		if (index < cddb.GetNumberOfMatches() && index >= 0)
+		if (dlg->ShowDialog() == Success())
 		{
-			read = String(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthDiscID(index));
+			Int	 index = dlg->GetSelectedEntryNumber();
+
+			if (index < cddb.GetNumberOfMatches() && index >= 0)
+			{
+				read = String(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthDiscID(index));
+			}
 		}
 
 		DeleteObject(dlg);

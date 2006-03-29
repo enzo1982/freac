@@ -344,5 +344,6 @@
     <entry id="332" string="Charset">Zeichensatz</entry>
     <entry id="333" string="Preview">Vorschau</entry>
     <entry id="334" string="Downloaded CDDB entries:">Heruntergeladene CDDB-Einträge:</entry>
+    <entry id="335" string="FLAC does not support more than 24 bit sample resolution!">FLAC unterstützt eine maximale Sampleauflösung von 24 bit!</entry>
   </data>
 </LangFile>

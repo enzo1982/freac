@@ -106,7 +106,7 @@ Int BonkEnc::FilterInFAAD2::ReadData(UnsignedByte **data, Int size)
 
 		bytesConsumed += frameInfo.bytesconsumed;
 
-		if ((size - bytesConsumed < bytesConsumed) && (inBytes % 4096) == 0) samples = NIL;
+		if ((size - bytesConsumed < bytesConsumed) && (inBytes % 6144) == 0) samples = NIL;
 	}
 	while (samples != NIL);
 

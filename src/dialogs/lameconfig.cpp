@@ -701,7 +701,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	register_layer_filtering->RegisterObject(filtering_misc);
 	register_layer_filtering->RegisterObject(filtering_check_disable_all);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 

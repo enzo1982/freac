@@ -188,7 +188,7 @@ Bool BonkEnc::Config::LoadSettings()
 	faac_enable_id3				= config->GetIntValue("FAAC", "AllowID3V2", 0);
 	faac_enable_mp4				= config->GetIntValue("FAAC", "MP4Container", 1);
 
-	flac_preset				= config->GetIntValue("FLAC", "Preset", 0);
+	flac_preset				= config->GetIntValue("FLAC", "Preset", -1);
 	flac_streamable_subset			= config->GetIntValue("FLAC", "StreamableSubset", 1);
 	flac_do_mid_side_stereo			= config->GetIntValue("FLAC", "DoMidSideStereo", 1);
 	flac_loose_mid_side_stereo		= config->GetIntValue("FLAC", "LooseMidSideStereo", 0);

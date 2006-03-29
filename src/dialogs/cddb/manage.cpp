@@ -142,7 +142,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	mainWnd->RegisterObject(btn_delete);
 	mainWnd->RegisterObject(btn_save);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 

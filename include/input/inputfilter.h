@@ -25,6 +25,11 @@ namespace BonkEnc
 	{
 		private:
 			Bool		 ParseID3V2Tag(ID3Tag *, Track *);
+
+			String		 GetTempFileName(const String &);
+
+			String		 CreateTempFile(const String &);
+			Bool		 RemoveTempFile(const String &);
 		protected:
 			Int		 inBytes;
 

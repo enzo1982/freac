@@ -110,7 +110,7 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 		filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
 
 		f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
-		f_in->SetPackageSize(4096);
+		f_in->SetPackageSize(6144);
 
 		if (filter_in != NIL)
 		{

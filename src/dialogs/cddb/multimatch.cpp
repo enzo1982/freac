@@ -68,7 +68,7 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	mainWnd->RegisterObject(mainWnd_titlebar);
 	mainWnd->RegisterObject(divbar);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
@@ -99,6 +99,8 @@ Void BonkEnc::cddbMultiMatchDlg::OK()
 Void BonkEnc::cddbMultiMatchDlg::Cancel()
 {
 	mainWnd->Close();
+
+	error = Error();
 }
 
 Int BonkEnc::cddbMultiMatchDlg::AddEntry(const String &category, const String &title)

@@ -54,7 +54,9 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 {
 	ID3Tag	*tag = ex_ID3Tag_New();
 
-	ex_ID3Tag_Link(tag, fileName);
+	ex_ID3Tag_Link(tag, CreateTempFile(fileName));
+
+	RemoveTempFile(fileName);
 
 	Bool	 retVal = ParseID3V2Tag(tag, nFormat);
 
@@ -411,4 +413,74 @@ String BonkEnc::InputFilter::GetID3CategoryName(Int id)
 	if (id == 147)	return "Synthpop";
 
 	return "";
+}
+
+String BonkEnc::InputFilter::GetTempFileName(const String &oFileName)
+{
+	String	 rVal	= oFileName;
+	Int	 lastBs	= -1;
+
+	for (Int i = 0; i < rVal.Length(); i++)
+	{
+		if (rVal[i] > 255)	rVal[i] = '#';
+		if (rVal[i] == '\\')	lastBs = i;
+	}
+
+	if (rVal == oFileName) return rVal;
+
+	char	*tempa = new char [MAX_PATH];
+
+	GetTempPathA(MAX_PATH, tempa);
+
+	String	 tempDir = tempa;
+
+	delete [] tempa;
+
+	if (tempDir[tempDir.Length() - 1] != '\\') tempDir.Append("\\");
+
+	for (Int j = lastBs + 1; j < rVal.Length(); j++)
+	{
+		tempDir[tempDir.Length()] = rVal[j];
+	}
+
+	return tempDir.Append(".out.temp");
+}
+
+String BonkEnc::InputFilter::CreateTempFile(const String &oFileName)
+{
+	String		 tempFileName = GetTempFileName(oFileName);
+
+	if (tempFileName == oFileName) return oFileName;
+
+	InStream	*in = new InStream(STREAM_FILE, oFileName, IS_READONLY);
+	OutStream	*out = new OutStream(STREAM_FILE, tempFileName, OS_OVERWRITE);
+
+	Buffer<unsigned char>	 buffer;
+
+	buffer.Resize(1024);
+
+	Int	 bytesleft = in->Size();
+
+	while (bytesleft > 0)
+	{
+		out->OutputData(in->InputData(buffer, Math::Min(1024, bytesleft)), Math::Min(1024, bytesleft));
+
+		bytesleft -= 1024;
+	}
+
+	delete in;
+	delete out;
+
+	return tempFileName;
+}
+
+Bool BonkEnc::InputFilter::RemoveTempFile(const String &oFileName)
+{
+	String		 tempFileName = GetTempFileName(oFileName);
+
+	if (tempFileName == oFileName) return True;
+
+	remove(tempFileName);
+
+	return True;
 }

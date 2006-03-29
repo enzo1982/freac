@@ -1,8 +1,9 @@
 BonkEnc Version 1.0 CVS
 
-BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann MP3,
-MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC lesen
-und MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, VQF und WAV Dateien erzeugen.
+BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
+MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
+Dateien lesen und MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
+und WAV Dateien erzeugen.
 
 BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 
@@ -16,6 +17,7 @@ Geschichte
 		- Info-Tag-Zeichencodierungen können jetzt im Konfigurationsdialog festgelegt werden
 		- Absturz beim Öffnen von geschützten MP4-Dateien behoben
 		- Unterstützung für MP4-Dateinamen mit Unicode hinzugefügt
+		- Unterstützung für ID3-Tags in Dateinamen mit Unicode hinzugefügt
 		- Falsche AAC-Profil Einstellung korrigiert
 		- Unterstützung für FLAC Encoder hinzugefügt
 		- Zeige ungefähre Titellänge an, wenn die tatsächliche Länge unbekannt ist
@@ -220,7 +222,7 @@ Voraussetzungen
 		- Die CDRip Ripping Library wird verwendet, wenn sie installiert ist (http://www.cdrip.org/)
 		- BladeEnc wird verwendet, wenn es installiert ist (http://bladeenc.mp3.no/)
 		- TwinVQ wird verwendet, wenn es installiert ist (http://www.twinvq.org/)
-		- Winamp 2 input und output Plugins werden verwendet, wenn sie im plugins Verzeichnis vorhanden sind
+		- Winamp 2/5 input und output Plugins werden verwendet, wenn sie im plugins Verzeichnis vorhanden sind
 		- MSLU wird verwendet, wenn es auf Windows 9x/ME installiert ist (http://www.microsoft.com/)
 
 Bekannte Probleme
@@ -229,14 +231,18 @@ Bekannte Probleme
 	- Es gibt folgende Einschränkungen für das Eingabeformat:
 
 		- BladeEnc:
-				- Daten müssen 32, 44.1 oder 48kHz haben
+				- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
+		- FLAC:
+				- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
 		- LAME:
-				- Daten müssen Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48kHz) haben
+				- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen
 		- TwinVQ:
-				- Daten müssen 22.05kHz (24 und 32kBit) oder 44.1kHz (48kBit) haben
+				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
 
 	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
 	  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
+
+	- BonkEnc ist zurzeit auf 2 Audiokanäle beschränkt
 
 Besonderen Dank
 ---------------
