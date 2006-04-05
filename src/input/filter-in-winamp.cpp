@@ -183,9 +183,9 @@ BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 			    trackTitle[m + 1] == '-' &&
 			    trackTitle[m + 2] == ' ')
 			{
-				artistComplete = m + 3;
+				artistComplete = (m += 3);
 
-				m += 3;
+				nFormat->title = NIL;
 			}
 
 			if (!artistComplete)	nFormat->artist[m] = trackTitle[m];

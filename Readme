@@ -1,4 +1,4 @@
-BonkEnc version 1.0 CVS
+BonkEnc version 1.0 Beta 4
 
 BonkEnc is an encoder for various audio formats. It can read
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC
@@ -10,7 +10,7 @@ BonkEnc uses the CDRip Ripping Library for audio ripping.
 History
 -------
 
-	Version 1.0 CVS (March 2006)
+	Version 1.0 Beta 4 CVS (April 2006)
 
 		- added Czech, Korean, Danish, Swedish and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
@@ -52,15 +52,16 @@ History
 		- faster startup time (due to improved iconv usage in the smooth library)
 		- fixed Arabic script display on Windows 2000/NT
 		- fixed Winamp input plugin support (made WMA and MP3 plugin work)
+		- fixed playback through Winamp output plugin
 		- upgrade to MPEG4IP v1.4.1
 		- upgrade to easyUpdate v0.3
-		- use smooth v0.8.67.0
+		- use smooth v0.8.68.0
 		- fixes for compiling with GCC 4.1
 		- removed support for MinGW 1.x
 		- lots of freedb fixes
 		- lots of other bugfixes
 
-	Version 1.0 beta 3 (January 2005)
+	Version 1.0 Beta 3 (January 2005)
 
 		- NT SCSI support is working again
 		- fixed some bugs in the CDDB implementation
@@ -88,7 +89,7 @@ History
 		- added support for spaces in filenames passed to BEcmd
 		- tooltips show more information about joblist entries
 
-	Version 1.0 beta 2 (February 2004)
+	Version 1.0 Beta 2 (February 2004)
 
 		- added support for filename generation patterns
 		- added Greek, Japanese, Chinese (simplified) and Polish language support
@@ -114,7 +115,7 @@ History
 		- many smaller improvements
 		- lots of bugfixes
 
-	Version 1.0 beta 1 (July 2003)
+	Version 1.0 Beta 1 (July 2003)
 
 		- the command line tool is now in a separate executable
 		- CDDB querying has been improved (dialog with abort button)
@@ -188,7 +189,7 @@ History
 		- all encoder DLLs are now optional
 		- some minor bugfixes
 
-	Version 0.5-pre2 (June 2002)
+	Version 0.5 Pre 2 (June 2002)
 
 		- added support for ripping audio CDs
 		- added support for Ogg Vorbis files
@@ -215,7 +216,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v6.0
-		- smooth v0.8.67.0 CVS (http://www.smooth-project.org/)
+		- smooth v0.8.68.0 CVS (http://www.smooth-project.org/)
 
 	Additional optional software:
 
@@ -246,6 +247,8 @@ Known problems
 
 Special thanks to
 -----------------
+
+	- Paul Francis Harrison for developing the Bonk format
 
 	- Albert L. Faber for his excellent CDRip Ripping Library
 

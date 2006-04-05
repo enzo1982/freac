@@ -1,4 +1,4 @@
-BonkEnc Version 1.0 CVS
+BonkEnc Version 1.0 Beta 4
 
 BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
@@ -10,7 +10,7 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 CVS (März 2006)
+	Version 1.0 Beta 4 CVS (April 2006)
 
 		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch, Schwedisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
@@ -52,15 +52,16 @@ Geschichte
 		- Schnellere Startzeit (durch verbesserte iconv-Benutzung in der smooth Bibliothek)
 		- Darstellungsfehler bei arabischer Schrift unter Windows 2000/NT behoben
 		- Winamp Input-Plugin Unterstützung verbessert (WMA und MP3-Plugins funktionieren)
+		- Fehler bei Wiedergabe mit Winamp Output-Plugin behoben
 		- Update auf MPEG4IP v1.4.1
 		- Update auf easyUpdate v0.3
-		- Verwende smooth v0.8.67.0
+		- Verwende smooth v0.8.68.0
 		- Anpassungen für Kompilierung mit GCC 4.1
 		- Unterstützung für MinGW 1.x entfernt
 		- Sehr viele freedb-Fehler behoben
 		- Sehr viele andere Bugfixes
 
-	Version 1.0 beta 3 (Januar 2005)
+	Version 1.0 Beta 3 (Januar 2005)
 
 		- NT SCSI Unterstützung funktioniert wieder fehlerfrei
 		- Einige Fehler in der CDDB Implementierung wurden behoben
@@ -88,7 +89,7 @@ Geschichte
 		- Unterstützung für Dateinamen mit Leerzeichen für BEcmd
 		- Tooltips zeigen mehr Informationen über Joblist-Einträge an
 
-	Version 1.0 beta 2 (Februar 2004)
+	Version 1.0 Beta 2 (Februar 2004)
 
 		- Unterstützung für Vorlagen für Dateinamen hinzugefügt
 		- Sprachunterstützung für Griechisch, Japanisch, Chinesisch (vereinfacht) und Polnisch hinzugefügt
@@ -114,7 +115,7 @@ Geschichte
 		- Viele kleinere Verbesserungen
 		- Sehr viele Fehler wurden behoben
 
-	Version 1.0 beta 1 (Juli 2003)
+	Version 1.0 Beta 1 (Juli 2003)
 
 		- Das Kommandozeilentool ist jetzt eine eigene EXE Datei
 		- CDDB Abfrage wurde verbessert (Dialog mit Abbechen Button)
@@ -188,7 +189,7 @@ Geschichte
 		- alle Codierungs-DLLs sind jetzt optional
 		- einige kleine Fehler wurden behoben
 
-	Version 0.5-pre2 (Juni 2002)
+	Version 0.5 Pre 2 (Juni 2002)
 
 		- Unterstützung für das Rippen von Audio-CDs hinzugefügt
 		- Unterstützung für Ogg Vorbis Dateien hinzugefügt
@@ -215,7 +216,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v6.0
-		- smooth v0.8.67.0 CVS (http://www.smooth-project.org/)
+		- smooth v0.8.68.0 CVS (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
@@ -246,6 +247,8 @@ Bekannte Probleme
 
 Besonderen Dank
 ---------------
+
+	- Paul Francis Harrison für die Entwicklung des Bonk-Formats
 
 	- Albert L. Faber für die exzellente CDRip Ripper Bibliothek
 

@@ -231,7 +231,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	pos.x = 16;
 	pos.y = 24;
 	size.cx = currentConfig->wndSize.cx - 29;
-	size.cy = currentConfig->wndSize.cy - 263 - (currentConfig->showTitleInfo ? 68 : 0);
+	size.cy = currentConfig->wndSize.cy - 264 - (currentConfig->showTitleInfo ? 68 : 0);
 
 	joblist			= new JobList(pos, size);
 	joblist->onSelectTrack.Connect(&BonkEncGUI::OnJoblistSelectTrack, this);

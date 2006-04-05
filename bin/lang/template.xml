@@ -344,6 +344,5 @@
     <entry id="332" string="Charset"/>
     <entry id="333" string="Preview"/>
     <entry id="334" string="Downloaded CDDB entries:"/>
-    <entry id="335" string="FLAC does not support more than 24 bit sample resolution!"/>
   </data>
 </LangFile>

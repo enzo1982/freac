@@ -362,9 +362,9 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 				    fileName[m + 1] == '-' &&
 				    fileName[m + 2] == ' ')
 				{
-					artistComplete = m + 3;
+					artistComplete = (m += 3);
 
-					m += 3;
+					format->title = NIL;
 				}
 
 				if (!artistComplete)	format->artist[m] = fileName[m];

@@ -133,7 +133,7 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 		player_plugin = currentConfig->output_plugin;
 
 		Out_Module	*out = DLLInterfaces::winamp_out_modules.GetNthEntry(currentConfig->output_plugin);
-		Int		 latency = out->Open(trackInfo->rate, trackInfo->channels, trackInfo->bits, 0, 0);
+		Int		 latency = out->Open(trackInfo->rate, trackInfo->channels, 16, 0, 0);
 
 		if (latency >= 0)
 		{
@@ -155,12 +155,15 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 
 						if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
 
-						sample_buffer[i] = (short) sample;
+						if (trackInfo->bits == 8)	sample_buffer[i] = (sample - 128) * 256;
+						else if (trackInfo->bits == 16)	sample_buffer[i] = sample;
+						else if (trackInfo->bits == 24)	sample_buffer[i] = sample / 256;
+						else if (trackInfo->bits == 32)	sample_buffer[i] = sample / 65536;
 					}
 
 					position += step;
 
-					while (out->CanWrite() < (int16(trackInfo->bits / 8) * step))
+					while (out->CanWrite() < (2 * step))
 					{
 						if (stop_playback) break;
 
@@ -169,7 +172,7 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 
 					if (stop_playback) break;
 
-					out->Write((char *) sample_buffer, int16(trackInfo->bits / 8) * step);
+					out->Write((char *) sample_buffer, 2 * step);
 				}
 
 				delete [] sample_buffer;
@@ -190,11 +193,20 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 
 						if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
 
-						if (sample != -1)	sample_buffer[i] = (short) sample;
-						else			i--;
+						if (sample != -1)
+						{
+							if (trackInfo->bits == 8)	sample_buffer[i] = (sample - 128) * 256;
+							else if (trackInfo->bits == 16)	sample_buffer[i] = sample;
+							else if (trackInfo->bits == 24)	sample_buffer[i] = sample / 256;
+							else if (trackInfo->bits == 32)	sample_buffer[i] = sample / 65536;
+						}
+						else
+						{
+							i--;
+						}
 					}
 
-					while (out->CanWrite() < (int16(trackInfo->bits / 8) * step))
+					while (out->CanWrite() < (2 * step))
 					{
 						if (stop_playback) break;
 
@@ -203,7 +215,7 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 
 					if (stop_playback) break;
 
-					out->Write((char *) sample_buffer, int16(trackInfo->bits / 8) * step);
+					out->Write((char *) sample_buffer, 2 * step);
 				}
 
 				delete [] sample_buffer;
