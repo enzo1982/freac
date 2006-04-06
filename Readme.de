@@ -23,6 +23,7 @@ Geschichte
 		- Zeige ungefähre Titellänge an, wenn die tatsächliche Länge unbekannt ist
 		- Dialog zum Senden von freedb-Informationen umgestaltet
 		- Die Jobliste kann nun mit gesendeten freedb-Informationen aktualisiert werden
+		- Unterstützung zum Wechseln zwischen EditBoxen mit dem Tabulator hinzugefügt
 		- Die Token <filename>, <genre> und <year> können nun in der Dateinamensvorlage verwendet werden
 		- Text in inaktiven Editboxen kann jetzt ausgewählt und kopiert werden
 		- Menübefehle zum Übernehmen von Künstler/Album/Genre/Jahr für alle Tracks hinzugefügt

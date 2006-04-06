@@ -23,6 +23,7 @@ History
 		- display approximate title length when correct length is not known
 		- redesigned the freedb submit dialog
 		- submitted freedb entries can now be used to update the joblist
+		- added support for switching between edit boxes with the tabulator
 		- the <filename>, <genre> and <year> tokens can now be used in the file name pattern
 		- text in inactive edit boxes can now be selected and copied
 		- added commands to set the same artist/album/genre/year for all tracks
