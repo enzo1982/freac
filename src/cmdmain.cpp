@@ -169,6 +169,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 			ScanForParameter("-q", &quality);
 			ScanForParameter("-m", &mode);
 
+			currentConfig->lame_preset = 0;
 			currentConfig->lame_set_bitrate = True;
 
 			currentConfig->lame_bitrate    = Math::Max(0, Math::Min(320, bitrate.ToInt()));
@@ -259,6 +260,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			for (i = 0; i < rice.Length(); i++)	{ if (rice[i] == ',') break; minrice[i] = rice[i]; }
 			for (j = i + 1; j < rice.Length(); j++)	{ maxrice[j - i - 1] = rice[j]; }
+
+			currentConfig->flac_preset = -1;
 
 			currentConfig->flac_do_mid_side_stereo		 = ScanForParameter("-m", NULL);
 			currentConfig->flac_do_exhaustive_model_search	 = ScanForParameter("-e", NULL);
