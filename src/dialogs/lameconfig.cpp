@@ -27,7 +27,6 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	ratio = currentConfig->lame_ratio;
 	set_quality = currentConfig->lame_set_quality;
 	quality = 9 - currentConfig->lame_quality;
-	stereomode = currentConfig->lame_stereomode;
 	forcejs = currentConfig->lame_forcejs;
 	vbrmode = currentConfig->lame_vbrmode;
 	vbrquality = 9 - currentConfig->lame_vbrquality;
@@ -50,6 +49,8 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	enable_tempmask = currentConfig->lame_use_tns;
 
 	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "LAME MP3"), Point(140, 140), Size(405, 307));
+	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
@@ -189,29 +190,24 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.x = 247;
 	pos.y = 62;
 	size.cx = 127;
-	size.cy = 126;
+	size.cy = 63;
 
 	basic_stereomode	= new GroupBox(BonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
-	pos.y += 11;
-	size.cx = 106;
+	pos.y += 10;
+	size.cx = 107;
 	size.cy = 0;
 
-	basic_option_autostereo	= new OptionBox(BonkEnc::i18n->TranslateString("Auto"), pos, size, &stereomode, 0);
-	basic_option_autostereo->onAction.Connect(&ConfigureLameEnc::SetStereoMode, this);
+	basic_combo_stereomode	= new ComboBox(pos, size);
+	basic_combo_stereomode->AddEntry(BonkEnc::i18n->TranslateString("Auto"));
+	basic_combo_stereomode->AddEntry(BonkEnc::i18n->TranslateString("Mono"));
+	basic_combo_stereomode->AddEntry(BonkEnc::i18n->TranslateString("Stereo"));
+	basic_combo_stereomode->AddEntry(BonkEnc::i18n->TranslateString("Joint Stereo"));
+	basic_combo_stereomode->SelectNthEntry(currentConfig->lame_stereomode);
+	basic_combo_stereomode->onSelectEntry.Connect(&ConfigureLameEnc::SetStereoMode, this);
 
-	pos.y += 25;
-
-	basic_option_stereo	= new OptionBox(BonkEnc::i18n->TranslateString("Stereo"), pos, size, &stereomode, 1);
-	basic_option_stereo->onAction.Connect(&ConfigureLameEnc::SetStereoMode, this);
-
-	pos.y += 25;
-
-	basic_option_jstereo	= new OptionBox(BonkEnc::i18n->TranslateString("Joint Stereo"), pos, size, &stereomode, 2);
-	basic_option_jstereo->onAction.Connect(&ConfigureLameEnc::SetStereoMode, this);
-
-	pos.y += 31;
+	pos.y += 26;
 
 	basic_check_forcejs	= new CheckBox(BonkEnc::i18n->TranslateString("Force Joint Stereo"), pos, size, &forcejs);
 
@@ -630,9 +626,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	register_layer_basic->RegisterObject(basic_text_quality_better);
 
 	register_layer_basic->RegisterObject(basic_stereomode);
-	register_layer_basic->RegisterObject(basic_option_autostereo);
-	register_layer_basic->RegisterObject(basic_option_stereo);
-	register_layer_basic->RegisterObject(basic_option_jstereo);
+	register_layer_basic->RegisterObject(basic_combo_stereomode);
 	register_layer_basic->RegisterObject(basic_check_forcejs);
 
 	register_layer_vbr->RegisterObject(vbr_vbrmode);
@@ -734,9 +728,7 @@ BonkEnc::ConfigureLameEnc::~ConfigureLameEnc()
 	DeleteObject(basic_text_quality_worse);
 	DeleteObject(basic_text_quality_better);
 	DeleteObject(basic_stereomode);
-	DeleteObject(basic_option_autostereo);
-	DeleteObject(basic_option_stereo);
-	DeleteObject(basic_option_jstereo);
+	DeleteObject(basic_combo_stereomode);
 	DeleteObject(basic_check_forcejs);
 	DeleteObject(vbr_vbrmode);
 	DeleteObject(vbr_option_cbr);
@@ -845,7 +837,7 @@ Void BonkEnc::ConfigureLameEnc::OK()
 	currentConfig->lame_ratio = (int) (basic_edit_ratio->GetText().ToFloat() * 100);
 	currentConfig->lame_set_quality = set_quality;
 	currentConfig->lame_quality = 9 - quality;
-	currentConfig->lame_stereomode = stereomode;
+	currentConfig->lame_stereomode = basic_combo_stereomode->GetSelectedEntryNumber();
 	currentConfig->lame_forcejs = forcejs;
 	currentConfig->lame_vbrmode = vbrmode;
 	currentConfig->lame_vbrquality = 9 - vbrquality;
@@ -934,9 +926,7 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		basic_text_quality_worse->Activate();
 		basic_text_quality_better->Activate();
 		basic_stereomode->Activate();
-		basic_option_autostereo->Activate();
-		basic_option_stereo->Activate();
-		basic_option_jstereo->Activate();
+		basic_combo_stereomode->Activate();
 		basic_check_forcejs->Activate();
 		vbr_vbrmode->Activate();
 		vbr_option_cbr->Activate();
@@ -1019,7 +1009,7 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 			basic_text_quality_better->Deactivate();
 		}
 
-		if (stereomode != 2) basic_check_forcejs->Deactivate();
+		if (basic_combo_stereomode->GetSelectedEntryNumber() != 3) basic_check_forcejs->Deactivate();
 
 		if (vbrmode != vbr_rh && vbrmode != vbr_mtrh)
 		{
@@ -1099,9 +1089,7 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		basic_text_quality_worse->Deactivate();
 		basic_text_quality_better->Deactivate();
 		basic_stereomode->Deactivate();
-		basic_option_autostereo->Deactivate();
-		basic_option_stereo->Deactivate();
-		basic_option_jstereo->Deactivate();
+		basic_combo_stereomode->Deactivate();
 		basic_check_forcejs->Deactivate();
 		vbr_vbrmode->Deactivate();
 		vbr_option_cbr->Deactivate();
@@ -1212,8 +1200,8 @@ Void BonkEnc::ConfigureLameEnc::SetQuality()
 
 Void BonkEnc::ConfigureLameEnc::SetStereoMode()
 {
-	if (stereomode == 2)	basic_check_forcejs->Activate();
-	else			basic_check_forcejs->Deactivate();
+	if (basic_combo_stereomode->GetSelectedEntryNumber() == 3)	basic_check_forcejs->Activate();
+	else								basic_check_forcejs->Deactivate();
 }
 
 Void BonkEnc::ConfigureLameEnc::SetVBRQuality()

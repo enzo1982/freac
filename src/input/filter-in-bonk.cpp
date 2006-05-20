@@ -14,7 +14,6 @@
 
 BonkEnc::FilterInBONK::FilterInBONK(Config *config, Track *format) : InputFilter(config, format)
 {
-	f_in	= NIL;
 	decoder	= NIL;
 
 	packageSize = 0;
@@ -26,58 +25,73 @@ BonkEnc::FilterInBONK::~FilterInBONK()
 
 Bool BonkEnc::FilterInBONK::Activate()
 {
-	UnsignedInt	 length		= 0;
-	UnsignedInt	 rate		= 0;
+	unsigned int	 length		= 0;
+	unsigned int	 rate		= 0;
 	int		 channels	= 0;
 
-	f_in = new InStream(STREAM_DRIVER, driver);
+	decoder = ex_bonk_decoder_create();
 
-	decoder = ex_bonk_create_decoder(f_in, &length, &rate, &channels);
+	samplesBuffer.Resize(131072);
+	dataBuffer.Resize(16384);
 
-	buffer.Resize(131072);
+	driver->ReadData(dataBuffer, 16384);
+
+	ex_bonk_decoder_init(decoder, dataBuffer, 16384, &length, &rate, &channels);
 
 	return true;
 }
 
 Bool BonkEnc::FilterInBONK::Deactivate()
 {
-	ex_bonk_close_decoder(decoder);
+	ex_bonk_decoder_finish(decoder);
 
-	delete f_in;
+	ex_bonk_decoder_close(decoder);
 
 	return true;
 }
 
 Int BonkEnc::FilterInBONK::ReadData(UnsignedByte **data, Int size)
 {
-	size = ex_bonk_decode_packet(decoder, buffer, buffer.Size());
+	size = driver->ReadData(dataBuffer, size >= 0 ? size : 0);
 
-	if (size == -1) return 0;
+	Int	 nSamples = ex_bonk_decoder_decode_packet(decoder, dataBuffer, size, samplesBuffer, samplesBuffer.Size());
 
-	*data = buffer;
+	if (nSamples == -1) return 0;
 
-	return size;
+	*data = (unsigned char *) (short *) samplesBuffer;
+
+	return nSamples * (format->bits / 8);
 }
 
 BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
 {
-	Track		*nFormat = new Track;
-	InStream	*in = new InStream(STREAM_FILE, inFile, IS_READONLY);
-	int		 channels = nFormat->channels;
-	void		*decoder = ex_bonk_create_decoder(in, (uint32 *) &nFormat->length, (uint32 *) &nFormat->rate, &channels);
+	InStream	*in		= new InStream(STREAM_FILE, inFile, IS_READONLY);
+	Track		*nFormat	= new Track;
+	unsigned int	 length		= 0;
+	unsigned int	 rate		= 0;
+	int		 channels	= 0;
+	void		*decoder	= ex_bonk_decoder_create();
 
+	dataBuffer.Resize(16384);
+
+	in->InputData(dataBuffer, 16384);
+
+	ex_bonk_decoder_init(decoder, dataBuffer, 16384, &length, &rate, &channels);
+
+	nFormat->length = length;
+	nFormat->rate = rate;
 	nFormat->channels = channels;
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
 	nFormat->fileSize = in->Size();
 
-	ex_bonk_close_decoder(decoder);
-
-	in->Seek(in->Size() - 4);
+	ex_bonk_decoder_close(decoder);
 
 	bool		 loop = true;
 	unsigned char	*id3tag = NIL;
 	int		 id3tag_size = 0;
+
+	in->Seek(in->Size() - 4);
 
 	do
 	{

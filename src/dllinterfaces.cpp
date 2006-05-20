@@ -29,12 +29,22 @@ CR_LOCKCD			 ex_CR_LockCD				= NIL;
 CR_EJECTCD			 ex_CR_EjectCD				= NIL;
 CR_READCDTEXT			 ex_CR_ReadCDText			= NIL;
 
-BONKCREATEENCODER		 ex_bonk_create_encoder			= NIL;
-BONKCLOSEENCODER		 ex_bonk_close_encoder			= NIL;
-BONKENCODEPACKET		 ex_bonk_encode_packet			= NIL;
-BONKCREATEDECODER		 ex_bonk_create_decoder			= NIL;
-BONKCLOSEDECODER		 ex_bonk_close_decoder			= NIL;
-BONKDECODEPACKET		 ex_bonk_decode_packet			= NIL;
+BONKENCODERCREATE		 ex_bonk_encoder_create			= NIL;
+BONKENCODERINIT			 ex_bonk_encoder_init			= NIL;
+BONKENCODERENCODEPACKET		 ex_bonk_encoder_encode_packet		= NIL;
+BONKENCODERFINISH		 ex_bonk_encoder_finish			= NIL;
+BONKENCODERCLOSE		 ex_bonk_encoder_close			= NIL;
+BONKENCODERGETSAMPLECOUNT	 ex_bonk_encoder_get_sample_count	= NIL;
+BONKENCODERGETSAMPLECOUNTOFFSET	 ex_bonk_encoder_get_sample_count_offset= NIL;
+BONKENCODERSETID3DATA		 ex_bonk_encoder_set_id3_data		= NIL;
+BONKDECODERCREATE		 ex_bonk_decoder_create			= NIL;
+BONKDECODERINIT			 ex_bonk_decoder_init			= NIL;
+BONKDECODERDECODEPACKET		 ex_bonk_decoder_decode_packet		= NIL;
+BONKDECODERFINISH		 ex_bonk_decoder_finish			= NIL;
+BONKDECODERCLOSE		 ex_bonk_decoder_close			= NIL;
+BONKDECODERGETID3DATA		 ex_bonk_decoder_get_id3_data		= NIL;
+BONKDECODERINITSEEKTABLE	 ex_bonk_decoder_init_seektable		= NIL;
+BONKDECODERSEEKTO		 ex_bonk_decoder_seek_to		= NIL;
 BONKGETVERSIONSTRING		 ex_bonk_get_version_string		= NIL;
 
 BEINITSTREAM			 ex_beInitStream			= NIL;
@@ -273,21 +283,41 @@ Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
 {
 	bonkdll = new DynamicLoader("encoders/Bonk");
 
-	ex_bonk_create_encoder		= (BONKCREATEENCODER) bonkdll->GetFunctionAddress("bonk_create_encoder");
-	ex_bonk_close_encoder		= (BONKCLOSEENCODER) bonkdll->GetFunctionAddress("bonk_close_encoder");
-	ex_bonk_encode_packet		= (BONKENCODEPACKET) bonkdll->GetFunctionAddress("bonk_encode_packet");
-	ex_bonk_create_decoder		= (BONKCREATEDECODER) bonkdll->GetFunctionAddress("bonk_create_decoder");
-	ex_bonk_close_decoder		= (BONKCLOSEDECODER) bonkdll->GetFunctionAddress("bonk_close_decoder");
-	ex_bonk_decode_packet		= (BONKDECODEPACKET) bonkdll->GetFunctionAddress("bonk_decode_packet");
-	ex_bonk_get_version_string	= (BONKGETVERSIONSTRING) bonkdll->GetFunctionAddress("bonk_get_version_string");
+	ex_bonk_encoder_create			= (BONKENCODERCREATE) bonkdll->GetFunctionAddress("bonk_encoder_create");
+	ex_bonk_encoder_init			= (BONKENCODERINIT) bonkdll->GetFunctionAddress("bonk_encoder_init");
+	ex_bonk_encoder_encode_packet		= (BONKENCODERENCODEPACKET) bonkdll->GetFunctionAddress("bonk_encoder_encode_packet");
+	ex_bonk_encoder_finish			= (BONKENCODERFINISH) bonkdll->GetFunctionAddress("bonk_encoder_finish");
+	ex_bonk_encoder_close			= (BONKENCODERCLOSE) bonkdll->GetFunctionAddress("bonk_encoder_close");
+	ex_bonk_encoder_get_sample_count	= (BONKENCODERGETSAMPLECOUNT) bonkdll->GetFunctionAddress("bonk_encoder_get_sample_count");
+	ex_bonk_encoder_get_sample_count_offset	= (BONKENCODERGETSAMPLECOUNTOFFSET) bonkdll->GetFunctionAddress("bonk_encoder_get_sample_count_offset");
+	ex_bonk_encoder_set_id3_data		= (BONKENCODERSETID3DATA) bonkdll->GetFunctionAddress("bonk_encoder_set_id3_data");
+	ex_bonk_decoder_create			= (BONKDECODERCREATE) bonkdll->GetFunctionAddress("bonk_decoder_create");
+	ex_bonk_decoder_init			= (BONKDECODERINIT) bonkdll->GetFunctionAddress("bonk_decoder_init");
+	ex_bonk_decoder_decode_packet		= (BONKDECODERDECODEPACKET) bonkdll->GetFunctionAddress("bonk_decoder_decode_packet");
+	ex_bonk_decoder_finish			= (BONKDECODERFINISH) bonkdll->GetFunctionAddress("bonk_decoder_finish");
+	ex_bonk_decoder_close			= (BONKDECODERCLOSE) bonkdll->GetFunctionAddress("bonk_decoder_close");
+	ex_bonk_decoder_get_id3_data		= (BONKDECODERGETID3DATA) bonkdll->GetFunctionAddress("bonk_decoder_get_id3_data");
+	ex_bonk_decoder_init_seektable		= (BONKDECODERINITSEEKTABLE) bonkdll->GetFunctionAddress("bonk_decoder_init_seektable");
+	ex_bonk_decoder_seek_to			= (BONKDECODERSEEKTO) bonkdll->GetFunctionAddress("bonk_decoder_seek_to");
+	ex_bonk_get_version_string		= (BONKGETVERSIONSTRING) bonkdll->GetFunctionAddress("bonk_get_version_string");
 
-	if (ex_bonk_create_encoder	== NIL ||
-	    ex_bonk_close_encoder	== NIL ||
-	    ex_bonk_encode_packet	== NIL ||
-	    ex_bonk_create_decoder	== NIL ||
-	    ex_bonk_close_decoder	== NIL ||
-	    ex_bonk_decode_packet	== NIL ||
-	    ex_bonk_get_version_string	== NIL) { FreeBonkDLL(); return False; }
+	if (ex_bonk_encoder_create			== NIL ||
+	    ex_bonk_encoder_init			== NIL ||
+	    ex_bonk_encoder_encode_packet		== NIL ||
+	    ex_bonk_encoder_finish			== NIL ||
+	    ex_bonk_encoder_close			== NIL ||
+	    ex_bonk_encoder_get_sample_count		== NIL ||
+	    ex_bonk_encoder_get_sample_count_offset	== NIL ||
+	    ex_bonk_encoder_set_id3_data		== NIL ||
+	    ex_bonk_decoder_create			== NIL ||
+	    ex_bonk_decoder_init			== NIL ||
+	    ex_bonk_decoder_decode_packet		== NIL ||
+	    ex_bonk_decoder_finish			== NIL ||
+	    ex_bonk_decoder_close			== NIL ||
+	    ex_bonk_decoder_get_id3_data		== NIL ||
+	    ex_bonk_decoder_init_seektable		== NIL ||
+	    ex_bonk_decoder_seek_to			== NIL ||
+	    ex_bonk_get_version_string			== NIL) { FreeBonkDLL(); return False; }
 
 	return True;
 }

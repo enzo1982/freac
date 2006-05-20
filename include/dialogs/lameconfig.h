@@ -58,9 +58,7 @@ namespace BonkEnc
 			Text		*basic_text_quality_better;
 			Text		*basic_text_quality_worse;
 
-			OptionBox	*basic_option_autostereo;
-			OptionBox	*basic_option_stereo;
-			OptionBox	*basic_option_jstereo;
+			ComboBox	*basic_combo_stereomode;
 			CheckBox	*basic_check_forcejs;
 
 			GroupBox	*vbr_vbrmode;
@@ -133,7 +131,6 @@ namespace BonkEnc
 			Int		 ratio;
 			Bool		 set_quality;
 			Int		 quality;
-			Int		 stereomode;
 			Bool		 forcejs;
 			Int		 vbrmode;
 			Int		 vbrquality;

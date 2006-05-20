@@ -128,21 +128,41 @@ namespace BonkEnc
 
 // Bonk DLL API
 
-	typedef void *				(*BONKCREATEENCODER)				(OutStream *, uint32, uint32, int, bool, bool, int, int, int, double);
-	typedef bool				(*BONKCLOSEENCODER)				(void *);
-	typedef bool				(*BONKENCODEPACKET)				(void *, void *, int);
-	typedef void *				(*BONKCREATEDECODER)				(InStream *, uint32 *, uint32 *, int *);
-	typedef bool				(*BONKCLOSEDECODER)				(void *);
-	typedef int				(*BONKDECODEPACKET)				(void *, void *, int);
-	typedef const char *			(*BONKGETVERSIONSTRING)				();
+	typedef void *		(*BONKENCODERCREATE)			();
+	typedef bool		(*BONKENCODERINIT)			(void *, unsigned int, unsigned int, int, bool, bool, int, int, int, double);
+	typedef int		(*BONKENCODERENCODEPACKET)		(void *, signed short *, int, unsigned char *, int);
+	typedef int		(*BONKENCODERFINISH)			(void *, unsigned char *, int);
+	typedef bool		(*BONKENCODERCLOSE)			(void *);
+	typedef int		(*BONKENCODERGETSAMPLECOUNT)		(void *);
+	typedef int		(*BONKENCODERGETSAMPLECOUNTOFFSET)	(void *);
+	typedef bool		(*BONKENCODERSETID3DATA)		(void *, unsigned char *, int);
+	typedef void *		(*BONKDECODERCREATE)			();
+	typedef bool		(*BONKDECODERINIT)			(void *, unsigned char *, int, unsigned int *, unsigned int *, int *);
+	typedef int		(*BONKDECODERDECODEPACKET)		(void *, unsigned char *, int, signed short *, int);
+	typedef int		(*BONKDECODERFINISH)			(void *);
+	typedef bool		(*BONKDECODERCLOSE)			(void *);
+	typedef bool		(*BONKDECODERGETID3DATA)		(void *, unsigned char **, int *);
+	typedef bool		(*BONKDECODERINITSEEKTABLE)		(void *, unsigned char *, int);
+	typedef bool		(*BONKDECODERSEEKTO)			(void *, int);
+	typedef const char *	(*BONKGETVERSIONSTRING)			();
 
-	extern BEEXPORT BONKCREATEENCODER	 ex_bonk_create_encoder;
-	extern BEEXPORT BONKCLOSEENCODER	 ex_bonk_close_encoder;
-	extern BEEXPORT BONKENCODEPACKET	 ex_bonk_encode_packet;
-	extern BEEXPORT BONKCREATEDECODER	 ex_bonk_create_decoder;
-	extern BEEXPORT BONKCLOSEDECODER	 ex_bonk_close_decoder;
-	extern BEEXPORT BONKDECODEPACKET	 ex_bonk_decode_packet;
-	extern BEEXPORT BONKGETVERSIONSTRING	 ex_bonk_get_version_string;
+	extern BEEXPORT BONKENCODERCREATE		 ex_bonk_encoder_create;
+	extern BEEXPORT BONKENCODERINIT			 ex_bonk_encoder_init;
+	extern BEEXPORT BONKENCODERENCODEPACKET		 ex_bonk_encoder_encode_packet;
+	extern BEEXPORT BONKENCODERFINISH		 ex_bonk_encoder_finish;
+	extern BEEXPORT BONKENCODERCLOSE		 ex_bonk_encoder_close;
+	extern BEEXPORT BONKENCODERGETSAMPLECOUNT	 ex_bonk_encoder_get_sample_count;
+	extern BEEXPORT BONKENCODERGETSAMPLECOUNTOFFSET	 ex_bonk_encoder_get_sample_count_offset;
+	extern BEEXPORT BONKENCODERSETID3DATA		 ex_bonk_encoder_set_id3_data;
+	extern BEEXPORT BONKDECODERCREATE		 ex_bonk_decoder_create;
+	extern BEEXPORT BONKDECODERINIT			 ex_bonk_decoder_init;
+	extern BEEXPORT BONKDECODERDECODEPACKET		 ex_bonk_decoder_decode_packet;
+	extern BEEXPORT BONKDECODERFINISH		 ex_bonk_decoder_finish;
+	extern BEEXPORT BONKDECODERCLOSE		 ex_bonk_decoder_close;
+	extern BEEXPORT BONKDECODERGETID3DATA		 ex_bonk_decoder_get_id3_data;
+	extern BEEXPORT BONKDECODERINITSEEKTABLE	 ex_bonk_decoder_init_seektable;
+	extern BEEXPORT BONKDECODERSEEKTO		 ex_bonk_decoder_seek_to;
+	extern BEEXPORT BONKGETVERSIONSTRING		 ex_bonk_get_version_string;
 
 // BladeEnc DLL API
 

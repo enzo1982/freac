@@ -19,6 +19,8 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	Size	 size;
 
 	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Add directory"), Point(120, 120), Size(400, 126));
+	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

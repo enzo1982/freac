@@ -19,6 +19,8 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	currentConfig = BonkEnc::currentConfig;
 
 	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "TwinVQ"), Point(140, 140), Size(253, 179));
+	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

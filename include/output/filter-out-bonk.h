@@ -19,9 +19,9 @@ namespace BonkEnc
 	{
 		private:
 			void			*encoder;
-			OutStream		*d_out;
 
-			Buffer<unsigned char>	 buffer;
+			Buffer<signed short>	 samplesBuffer;
+			Buffer<unsigned char>	 dataBuffer;
 		public:
 						 FilterOutBONK(Config *, Track *);
 						~FilterOutBONK();

@@ -26,6 +26,8 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	dualchannel = currentConfig->blade_dualchannel;
 
 	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "BladeEnc"), Point(140, 140), Size(364, 242));
+	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

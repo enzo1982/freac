@@ -124,6 +124,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	}
 
 	mainWnd			= new Window(String("BonkEnc ").Append(BonkEnc::version), currentConfig->wndPos, currentConfig->wndSize);
+	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
@@ -155,7 +157,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
-		pos.x = 138 - (Setup::rightToLeft ? 110 : 0);
+		pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
 		pos.y = -1;
 		size.cx = 25;
 		size.cy = 25;
@@ -165,35 +167,35 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		button_play->SetOrientation(OR_UPPERRIGHT);
 		button_play->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 		button_pause	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:12"), pos, size);
 		button_pause->onAction.Connect(&BonkEncGUI::PausePlayback, this);
 		button_pause->SetOrientation(OR_UPPERRIGHT);
 		button_pause->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 		button_stop	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:13"), pos, size);
 		button_stop->onAction.Connect(&BonkEncGUI::StopPlayback, this);
 		button_stop->SetOrientation(OR_UPPERRIGHT);
 		button_stop->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 		button_prev	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:14"), pos, size);
 		button_prev->onAction.Connect(&BonkEncGUI::PlayPrevious, this);
 		button_prev->SetOrientation(OR_UPPERRIGHT);
 		button_prev->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 		button_next	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:15"), pos, size);
 		button_next->onAction.Connect(&BonkEncGUI::PlayNext, this);
 		button_next->SetOrientation(OR_UPPERRIGHT);
 		button_next->SetFlags(BF_NOFRAME);
 
-		pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 		button_open	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:20"), pos, size);
 		button_open->onAction.Connect(&BonkEncGUI::OpenCDTray, this);
@@ -1072,13 +1074,14 @@ Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 
 Bool BonkEnc::BonkEncGUI::SetLanguage()
 {
-	Bool	 prevRTL = Setup::rightToLeft;
+	Bool	 prevRTL = i18n->IsActiveLanguageRightToLeft();
 
 	i18n->ActivateLanguage(currentConfig->language);
 
-	if (Setup::rightToLeft != prevRTL)
+	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
 	{
 		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->GetSize()));
+		mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 		mainWnd->Paint(SP_PAINT);
 
 		if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
@@ -1092,28 +1095,28 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 			Point	 pos;
 
-			pos.x = 138 - (Setup::rightToLeft ? 110 : 0);
+			pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
 			pos.y = -1;
 
 			button_play->SetPosition(pos);
 
-			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 			button_pause->SetPosition(pos);
 
-			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 			button_stop->SetPosition(pos);
 
-			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 			button_prev->SetPosition(pos);
 
-			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 			button_next->SetPosition(pos);
 
-			pos.x -= 22 - (Setup::rightToLeft ? 44 : 0);
+			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 			button_open->SetPosition(pos);
 
@@ -1317,6 +1320,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_trackmenu->RemoveAllEntries();
 	menu_help->RemoveAllEntries();
 
+	MenuEntry	*entry = NIL;
+
 	menu_file->AddEntry(i18n->TranslateString("Add"), NIL, menu_addsubmenu);
 	menu_file->AddEntry(i18n->TranslateString("Remove"))->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	menu_file->AddEntry();
@@ -1341,9 +1346,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
 	}
 
-	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)").Append("..."))->onAction.Connect(&JobList::AddTrackByDialog, joblist);
-
-	MenuEntry	*entry;
+	entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)").Append("..."));
+	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
+	entry->SetShortcut(SC_CTRL, 'O', mainWnd);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
@@ -1352,7 +1357,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 			menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
 		}
 
-		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"))->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
+		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"));
+		entry->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
+		entry->SetShortcut(SC_CTRL, 'D', mainWnd);
 	}
 
 	menu_files->AddEntry(i18n->TranslateString("By pattern").Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);

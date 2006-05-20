@@ -21,6 +21,8 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	else		title = BonkEnc::i18n->TranslateString("Multiple matches found");
 
 	mainWnd			= new Window(title, Point(120, 120), Size(350, 148));
+	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

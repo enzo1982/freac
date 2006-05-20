@@ -30,23 +30,21 @@ BonkEnc::FilterOutBONK::~FilterOutBONK()
 
 Bool BonkEnc::FilterOutBONK::Activate()
 {
-	d_out	= new OutStream(STREAM_DRIVER, driver);
+	packageSize = int(1024.0 * format->rate / 44100) * format->channels * (currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling) * (format->bits / 8);
+
+	dataBuffer.Resize(131072);
+
+	encoder	= ex_bonk_encoder_create();
 
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v2 && currentConfig->enable_id3)
 	{
 		Buffer<unsigned char>	 id3Buffer(32768);
 		Int			 size = RenderID3Tag(2, id3Buffer);
 
-		d_out->OutputNumber(0, 1);
-		d_out->OutputNumber(32, 1);
-		d_out->OutputData((void *) id3Buffer, size);
-		d_out->OutputNumber(size + 10, 4);
-		d_out->OutputString(" id3");
+		ex_bonk_encoder_set_id3_data(encoder, id3Buffer, size);
 	}
 
-	packageSize = int(1024.0 * format->rate / 44100) * format->channels * (currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling) * (format->bits / 8);
-
-	encoder	= ex_bonk_create_encoder(d_out,
+	ex_bonk_encoder_init(encoder,
 		(unsigned int) Math::Max(format->length, 0), format->rate, format->channels,
 		currentConfig->bonk_lossless, currentConfig->bonk_jstereo,
 		currentConfig->bonk_predictor, currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling,
@@ -58,34 +56,46 @@ Bool BonkEnc::FilterOutBONK::Activate()
 
 Bool BonkEnc::FilterOutBONK::Deactivate()
 {
-	ex_bonk_close_encoder(encoder);
+	int	 bytes = ex_bonk_encoder_finish(encoder, dataBuffer, dataBuffer.Size());
 
-	delete d_out;
+	driver->WriteData(dataBuffer, bytes);
+
+	if (format->length == -1)
+	{
+		int	 sample_count = ex_bonk_encoder_get_sample_count(encoder);
+
+		driver->Seek(ex_bonk_encoder_get_sample_count_offset(encoder));
+		driver->WriteData((unsigned char *) &sample_count, 4);
+	}
+
+	ex_bonk_encoder_close(encoder);
 
 	return true;
 }
 
 Int BonkEnc::FilterOutBONK::WriteData(UnsignedByte *data, Int size)
 {
-	int	 pos = d_out->GetPos();
+	int	 bytes = 0;
 
 	if (format->bits != 16)
 	{
-		buffer.Resize(size);
+		samplesBuffer.Resize(size);
 
 		for (int i = 0; i < size / (format->bits / 8); i++)
 		{
-			if (format->bits == 8)	((short *) (unsigned char *) buffer)[i] = (data[i] - 128) * 256;
-			if (format->bits == 24) ((short *) (unsigned char *) buffer)[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-			if (format->bits == 32)	((short *) (unsigned char *) buffer)[i] = (int) ((long *) data)[i] / 65536;
+			if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
+			if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
+			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
 		}
 
-		ex_bonk_encode_packet(encoder, buffer, size);
+		bytes = ex_bonk_encoder_encode_packet(encoder, samplesBuffer, size / (format->bits / 8), dataBuffer, dataBuffer.Size());
 	}
 	else
 	{
-		ex_bonk_encode_packet(encoder, data, size);
+		bytes = ex_bonk_encoder_encode_packet(encoder, (short *) data, size / (format->bits / 8), dataBuffer, dataBuffer.Size());
 	}
 
-	return d_out->GetPos() - pos;
+	driver->WriteData(dataBuffer, bytes);
+
+	return bytes;
 }

@@ -19,6 +19,8 @@ BonkEnc::LanguageDlg::LanguageDlg()
 	Size	 size;
 
 	mainWnd			= new Window(String("Welcome to BonkEnc ").Append(BonkEnc::shortVersion), Point(120, 120), Size(300, 196));
+	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

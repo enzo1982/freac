@@ -356,7 +356,8 @@ u_int8_t MP4GetSceneProfileLevel(MP4FileHandle hFile);
 
 bool MP4SetSceneProfileLevel(MP4FileHandle hFile, u_int8_t value);
 
-u_int8_t MP4GetVideoProfileLevel(MP4FileHandle hFile);
+u_int8_t MP4GetVideoProfileLevel(MP4FileHandle hFile,
+				 MP4TrackId trackId DEFAULT(MP4_INVALID_TRACK_ID));
 
 bool MP4SetVideoProfileLevel(MP4FileHandle hFile, u_int8_t value);
 
@@ -369,24 +370,26 @@ u_int8_t MP4GetGraphicsProfileLevel(MP4FileHandle hFile);
 bool MP4SetGraphicsProfileLevel(MP4FileHandle hFile, u_int8_t value);
 
 /* generic file properties */
+bool MP4HaveAtom(MP4FileHandle hFile, 
+		 const char *atomName);
 
-u_int64_t MP4GetIntegerProperty(
+bool MP4GetIntegerProperty(
 	MP4FileHandle hFile, 
-	const char* propName);
+	const char* propName,
+	u_int64_t *retval );
 
-bool MP4HaveTrackIntegerProperty(
-	MP4FileHandle hFile, MP4TrackId trackId, 
-	const char* propName);
 
-float MP4GetFloatProperty(
+bool MP4GetFloatProperty(
 	MP4FileHandle hFile, 
-	const char* propName);
+	const char* propName,
+	float *retvalue);
 
-const char* MP4GetStringProperty(
+bool MP4GetStringProperty(
 	MP4FileHandle hFile, 
-	const char* propName);
+	const char* propName,
+	const char **retvalue);
 
-void MP4GetBytesProperty(
+bool MP4GetBytesProperty(
 	MP4FileHandle hFile, 
 	const char* propName,
 	u_int8_t** ppValue, 
@@ -593,6 +596,10 @@ u_int16_t MP4FindTrackIndex(
 
 /* specific track properties */
 
+bool MP4HaveTrackAtom(MP4FileHandle hFile, 
+		      MP4TrackId trackId, 
+		      const char *atomname);
+
 const char* MP4GetTrackType(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId);
@@ -685,22 +692,29 @@ bool MP4IsIsmaCrypMediaTrack(
 
 /* generic track properties */
 
-u_int64_t MP4GetTrackIntegerProperty(
+bool MP4HaveTrackAtom(MP4FileHandle hFile, 
+		      MP4TrackId trackId, 
+		      const char *atomName);
+			
+bool MP4GetTrackIntegerProperty(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId, 
-	const char* propName);
+	const char* propName,
+	u_int64_t *retvalue);
 
-float MP4GetTrackFloatProperty(
+bool MP4GetTrackFloatProperty(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId, 
-	const char* propName);
+	const char* propName,
+	float *ret_value);
 
-const char* MP4GetTrackStringProperty(
+bool MP4GetTrackStringProperty(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId, 
-	const char* propName);
+	const char* propName,
+	const char **retvalue);
 
-void MP4GetTrackBytesProperty(
+bool MP4GetTrackBytesProperty(
 	MP4FileHandle hFile, 
 	MP4TrackId trackId, 
 	const char* propName,

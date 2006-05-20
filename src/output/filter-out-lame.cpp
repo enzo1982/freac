@@ -169,11 +169,12 @@ Bool BonkEnc::FilterOutLAME::Activate()
 
 			if (format->channels == 2)
 			{
-				if (currentConfig->lame_stereomode == 1)	ex_lame_set_mode(lameFlags, STEREO);
-				else if (currentConfig->lame_stereomode == 2)	ex_lame_set_mode(lameFlags, JOINT_STEREO);
+				if (currentConfig->lame_stereomode == 1)	ex_lame_set_mode(lameFlags, MONO);
+				else if (currentConfig->lame_stereomode == 2)	ex_lame_set_mode(lameFlags, STEREO);
+				else if (currentConfig->lame_stereomode == 3)	ex_lame_set_mode(lameFlags, JOINT_STEREO);
 				else						ex_lame_set_mode(lameFlags, NOT_SET);
 
-				if (currentConfig->lame_stereomode == 2)
+				if (currentConfig->lame_stereomode == 3)
 				{
 					if (currentConfig->lame_forcejs)	ex_lame_set_force_ms(lameFlags, 1);
 					else					ex_lame_set_force_ms(lameFlags, 0);

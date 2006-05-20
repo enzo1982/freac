@@ -30,6 +30,8 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	currentConfig = BonkEnc::currentConfig;
 
 	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(120, 120), Size(568, 298));
+	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 

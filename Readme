@@ -10,11 +10,12 @@ BonkEnc uses the CDRip Ripping Library for audio ripping.
 History
 -------
 
-	Version 1.0 Beta 4 CVS (April 2006)
+	Version 1.0 Beta 4 CVS (May 2006)
 
 		- added Czech, Korean, Danish, Swedish and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
 		- info tag encodings can now be set in the configuration dialog
+		- added support for keyboard shortcuts (for menu entries)
 		- fixed a crash when opening protected MP4 files
 		- added support for MP4 files with Unicode file names
 		- added support for ID3 tags in files with Unicode file names
@@ -32,6 +33,7 @@ History
 		- upgraded Ogg Vorbis to version 1.1.2
 		- upgraded FLAC to version 1.1.2
 		- upgraded LAME to version 3.97 beta 2
+		- added support for LAME Mono mode
 		- added support for creating M3U playlists
 		- added basic support for creating cue sheets
 		- added support for ID3V1 tags
@@ -54,8 +56,9 @@ History
 		- fixed Arabic script display on Windows 2000/NT
 		- fixed Winamp input plugin support (made WMA and MP3 plugin work)
 		- fixed playback through Winamp output plugin
-		- upgrade to MPEG4IP v1.4.1
+		- upgrade to MPEG4IP v1.5
 		- upgrade to easyUpdate v0.3
+		- upgrade to Bonk v0.10
 		- use smooth v0.8.68.0
 		- fixes for compiling with GCC 4.1
 		- removed support for MinGW 1.x

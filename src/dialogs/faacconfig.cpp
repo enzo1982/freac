@@ -29,6 +29,8 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	fileFormat = currentConfig->faac_enable_mp4;
 
 	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "FAAC"), Point(140, 140), Size(545, 293));
+	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
