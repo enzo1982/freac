@@ -266,7 +266,7 @@
     <entry id="256" string="MP4 Files">Αρχεία MP4</entry>
     <entry id="257" string="Format">Τύπος</entry>
     <entry id="258" string="File format">Τύπος αρχείου</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">Εισαγωγή ετικετών ID3v2 σε αρχεία AAC</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Εισαγωγή ετικετών ID3v2 σε αρχεία AAC</entry>
     <entry id="260" string="Note:">Σημείωση:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Μερικά προγράμματα ίσως αντιμετωπίσουν πρόβλημα&#10;κατά την αναπαραγωγή αρχείων AAC με ετικέτες&#10;ID3v2. Χρησιμοποιήστε τη λειτουργία με επιφύλαξη!</entry>
     <entry id="262" string="FLAC Files">Αρχεία FLAC</entry>

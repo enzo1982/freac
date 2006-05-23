@@ -268,7 +268,7 @@
     <entry id="256" string="MP4 Files">File MP4</entry>
     <entry id="257" string="Format">Formato</entry>
     <entry id="258" string="File format">Formato file</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">Consenti tag ID3V2 nei file AAC</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Consenti tag ID3v2 nei file AAC</entry>
     <entry id="260" string="Note:">Nota:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">È possibile che vengano riscontrati problemi durante la riproduzione&#10;di file AAC che contengono tag ID3. Selezionare questa casella&#10;di controllo solamente se il riproduttore è in grado di gestire tali tag.</entry>
     <entry id="262" string="FLAC Files">File FLAC</entry>
@@ -281,12 +281,12 @@
     <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Crea playlist</entry>
     <entry id="271" string="Create cue sheet">Crea cue sheet</entry>
-    <entry id="272" string="Write ID3V1 tags">Scrivi tag ID3V1</entry>
-    <entry id="273" string="Write ID3V2 tags">Scrivi tag ID3V2</entry>
+    <entry id="272" string="Write ID3v1 tags">Scrivi tag ID3v1</entry>
+    <entry id="273" string="Write ID3v2 tags">Scrivi tag ID3v2</entry>
     <entry id="274" string="Write Vorbis Comment tags">Scrivi tag di commento Vorbis</entry>
     <entry id="275" string="Write MP4 metadata info">Scrivi metadati MP4</entry>
-    <entry id="276" string="ID3V1 tag encoding:">Codifica tag ID3V1:</entry>
-    <entry id="277" string="ID3V2 tag encoding:">Codifica tag ID3V2:</entry>
+    <entry id="276" string="ID3v1 tag encoding:">Codifica tag ID3v1:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">Codifica tag ID3v2:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Codifica tag di commento Vorbis:</entry>
     <entry id="279" string="MP4 metadata encoding:">Codifica metadati MP4:</entry>
     <entry id="280" string="Tag encodings">Codifica tag</entry>

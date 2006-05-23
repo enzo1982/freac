@@ -36,7 +36,7 @@ History
 		- added support for LAME Mono mode
 		- added support for creating M3U playlists
 		- added basic support for creating cue sheets
-		- added support for ID3V1 tags
+		- added support for ID3v1 tags
 		- added encoder configuration options to BEcmd
 		- added a button to pause/resume the encoding process
 		- added an option to shutdown the computer after encoding
@@ -56,6 +56,8 @@ History
 		- fixed Arabic script display on Windows 2000/NT
 		- fixed Winamp input plugin support (made WMA and MP3 plugin work)
 		- fixed playback through Winamp output plugin
+		- added support for freedb connections over HTTPS proxies
+		- added support for HTTP, HTTPS and SOCKS v5 proxy authentication
 		- upgrade to MPEG4IP v1.5
 		- upgrade to easyUpdate v0.3
 		- upgrade to Bonk v0.10
@@ -83,7 +85,7 @@ History
 		- upgraded FAAC to version 1.24.1
 		- upgraded Ogg Vorbis to version 1.1
 		- fixed TwinVQ encoder crashes
-		- added support for ID3V2 tags in AAC files
+		- added support for ID3v2 tags in AAC files
 		- added FAAD2 AAC decoder support
 		- added iTunes compatible MP4 format support
 		- upgraded to smooth v0.8.66.0
@@ -147,8 +149,8 @@ History
 		- added support for LAME presets
 		- added Hungarian, French, Russian, Serbian and Finnish language support
 		- removed support for the META tag in Bonk files
-		- added support for ID3V2 tags in Bonk files
-		- added support for reading ID3V2 and Vorbis comment tags
+		- added support for ID3v2 tags in Bonk files
+		- added support for reading ID3v2 and Vorbis comment tags
 		- added full CDDB/freedb support
 		- added a CDDB cache
 		- simplified the language file format
@@ -165,7 +167,7 @@ History
 		- added support for decoding MP3, Ogg Vorbis and Bonk files
 		- implemented a command line interface
 		- added Spanish, Italian and Dutch language support
-		- added ID3V2 tag support
+		- added ID3v2 tag support
 		- added the smooth Translator utility for editing language files
 		- added mouse wheel support
 		- upgraded to smooth v0.8.60.0

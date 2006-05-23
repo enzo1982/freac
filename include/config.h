@@ -49,6 +49,7 @@ namespace BonkEnc
 
 			Bool		 checkUpdatesAtStartup;
 
+			Bool		 deleteAfterEncoding;
 			Bool		 shutdownAfterEncoding;
 
 			String		 lastAddedDir;
@@ -111,6 +112,8 @@ namespace BonkEnc
 			Int		 freedb_proxy_mode;
 			String		 freedb_proxy;
 			Int		 freedb_proxy_port;
+			String		 freedb_proxy_user;
+			String		 freedb_proxy_password;
 			Bool		 enable_auto_cddb;
 			Bool		 enable_overwrite_cdtext;
 			Bool		 enable_cddb_cache;

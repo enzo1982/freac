@@ -40,6 +40,10 @@ namespace BonkEnc
 			EditBox		*proxy_edit_server;
 			Text		*proxy_text_port;
 			EditBox		*proxy_edit_port;
+			Text		*proxy_text_user;
+			EditBox		*proxy_edit_user;
+			Text		*proxy_text_password;
+			EditBox		*proxy_edit_password;
 
 			Divider		*divbar;
 

@@ -268,7 +268,7 @@
     <entry id="256" string="MP4 Files">MP4 fájlok</entry>
     <entry id="257" string="Format">Formátum</entry>
     <entry id="258" string="File format">Fájl formátum</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">ID3V2 bejegyzések engedélyezése AAC fájlokban</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">ID3v2 bejegyzések engedélyezése AAC fájlokban</entry>
     <entry id="260" string="Note:">Megjegyzés:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Néhány lejátszó nem támogatja az ID3 infókat tartalmazó&#10;AAC fájlok lejátszását. Csak akkor használd ezt a&#10;beállítást, ha a lejátszód biztosan kezeli az ID3 infókat.</entry>
     <entry id="262" string="FLAC Files">FLAC fájlok</entry>

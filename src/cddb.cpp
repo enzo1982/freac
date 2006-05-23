@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <smooth/io/drivers/driver_socket.h>
+#include <smooth/io/drivers/driver_https.h>
 #include <smooth/io/drivers/driver_socks4.h>
 #include <smooth/io/drivers/driver_socks5.h>
 #include <cddb.h>
@@ -181,6 +182,10 @@ String BonkEnc::CDDB::SendCommand(const String &iCommand)
 			if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
 
 			str.Append(config->freedb_query_path).Append(" HTTP/1.0\n");
+			str.Append("Host: ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append("\n");
+
+			if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-authentication: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");
+
 			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
 			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(BonkEnc::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
 			str.Append("Charset: UTF-8\n");
@@ -194,8 +199,9 @@ String BonkEnc::CDDB::SendCommand(const String &iCommand)
 
 			if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
 			else if (config->freedb_proxy_mode == 1)	socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
-			else if (config->freedb_proxy_mode == 2)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+			else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
+			else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+			else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
 
 			if (socket->GetLastError() != IO_ERROR_OK)
 			{
@@ -256,8 +262,10 @@ Bool BonkEnc::CDDB::ConnectToServer()
 	if (config->freedb_mode == FREEDB_MODE_CDDBP)
 	{
 		if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_cddbp_port);
-		else if (config->freedb_proxy_mode == 1)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
-		else if (config->freedb_proxy_mode == 2)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
+		else if (config->freedb_proxy_mode == 1)	{ connected = False; return False; }
+		else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port, config->freedb_proxy_user, config->freedb_proxy_password);
+		else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
+		else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port, config->freedb_proxy_user, config->freedb_proxy_password);
 
 		if (socket->GetLastError() != IO_ERROR_OK)
 		{
@@ -697,7 +705,15 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 
 	content.Append(FormatCDDBEntry("PLAYORDER", cddbInfo->playOrder));
 
-	str.Append("POST ").Append(config->freedb_submit_path).Append(" HTTP/1.0\n");
+	str.Append("POST ");
+
+	if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
+
+	str.Append(config->freedb_query_path).Append(" HTTP/1.0\n");
+	str.Append("Host: ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append("\n");
+
+	if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-authentication: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");
+
 	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
 	str.Append("Discid: ").Append(cddbInfo->DiscIDToString()).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
@@ -714,8 +730,10 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 	debug_out->OutputLine(str);
 
 	if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 1)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 2)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+	else if (config->freedb_proxy_mode == 1)	socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
+	else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
+	else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+	else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
 
 	if (socket->GetLastError() != IO_ERROR_OK)
 	{

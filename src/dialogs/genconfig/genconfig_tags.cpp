@@ -34,13 +34,13 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	size.cx	= 163;
 	size.cy	= 0;
 
-	check_id3v1	= new CheckBox(BonkEnc::i18n->TranslateString("Write ID3V1 tags"), pos, size, &enableID3V1);
+	check_id3v1	= new CheckBox(BonkEnc::i18n->TranslateString("Write ID3v1 tags"), pos, size, &enableID3V1);
 	check_id3v1->onAction.Connect(&GeneralSettingsLayerTags::ToggleID3V1, this);
 	check_id3v1->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
-	check_id3v2	= new CheckBox(BonkEnc::i18n->TranslateString("Write ID3V2 tags"), pos, size, &enableID3V2);
+	check_id3v2	= new CheckBox(BonkEnc::i18n->TranslateString("Write ID3v2 tags"), pos, size, &enableID3V2);
 	check_id3v2->onAction.Connect(&GeneralSettingsLayerTags::ToggleID3V2, this);
 	check_id3v2->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
@@ -73,11 +73,11 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	pos.x	+= 10;
 	pos.y	= 26;
 
-	text_id3v1_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3V1 tag encoding:"), pos);
+	text_id3v1_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3v1 tag encoding:"), pos);
 
 	pos.y += 26;
 
-	text_id3v2_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3V2 tag encoding:"), pos);
+	text_id3v2_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3v2 tag encoding:"), pos);
 
 	pos.y += 26;
 

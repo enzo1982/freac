@@ -266,7 +266,7 @@
     <entry id="256" string="MP4 Files">МР4 файли</entry>
     <entry id="257" string="Format">Формат</entry>
     <entry id="258" string="File format">Файловий формат</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">Дозволити теги ID3V2 у ААС файлах</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Дозволити теги ID3v2 у ААС файлах</entry>
     <entry id="260" string="Note:">Примітка:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">У деяких програвачах можуть виникнути проблеми при відтворенні AAC&#10;файлів з ID3 тегами. Будь-ласка використовуйте тільки цю опцію&#10;якщо ви впевненні, що ваш програвач може обробляти ці теги.</entry>
     <entry id="262" string="FLAC Files">FLAC файли</entry>

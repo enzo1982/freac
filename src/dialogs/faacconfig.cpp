@@ -139,7 +139,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 200;
 	size.cy = 0;
 
-	check_id3v2		= new CheckBox(BonkEnc::i18n->TranslateString("Allow ID3V2 tags in AAC files"), pos, size, &allowID3);
+	check_id3v2		= new CheckBox(BonkEnc::i18n->TranslateString("Allow ID3v2 tags in AAC files"), pos, size, &allowID3);
 	check_id3v2->SetWidth(check_id3v2->textSize.cx + 20);
 
 	pos.y += 25;

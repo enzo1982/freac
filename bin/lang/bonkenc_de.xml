@@ -268,7 +268,7 @@
     <entry id="256" string="MP4 Files">MP4-Dateien</entry>
     <entry id="257" string="Format">Format</entry>
     <entry id="258" string="File format">Dateiformat</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">ID3V2-Tags in AAC-Dateien erlauben</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">ID3v2-Tags in AAC-Dateien erlauben</entry>
     <entry id="260" string="Note:">Hinweis:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
     <entry id="262" string="FLAC Files">FLAC-Dateien</entry>
@@ -281,12 +281,12 @@
     <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Playlist erzeugen</entry>
     <entry id="271" string="Create cue sheet">Cuesheet erzeugen</entry>
-    <entry id="272" string="Write ID3V1 tags">ID3V1-Tags schreiben</entry>
-    <entry id="273" string="Write ID3V2 tags">ID3V2-Tags schreiben</entry>
+    <entry id="272" string="Write ID3v1 tags">ID3v1-Tags schreiben</entry>
+    <entry id="273" string="Write ID3v2 tags">ID3v2-Tags schreiben</entry>
     <entry id="274" string="Write Vorbis Comment tags">Vorbis Comment-Tags schreiben</entry>
     <entry id="275" string="Write MP4 metadata info">MP4-Metadaten schreiben</entry>
-    <entry id="276" string="ID3V1 tag encoding:">ID3V1-Codierung:</entry>
-    <entry id="277" string="ID3V2 tag encoding:">ID3V2-Codierung:</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1-Codierung:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2-Codierung:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Vorbis Comment-Codierung:</entry>
     <entry id="279" string="MP4 metadata encoding:">MP4-Metadaten-Codierung:</entry>
     <entry id="280" string="Tag encodings">Tag-Codierungen</entry>
@@ -344,5 +344,9 @@
     <entry id="332" string="Charset">Zeichensatz</entry>
     <entry id="333" string="Preview">Vorschau</entry>
     <entry id="334" string="Downloaded CDDB entries:">Heruntergeladene CDDB-Einträge:</entry>
+    <entry id="335" string="User name:">Benutzername:</entry>
+    <entry id="336" string="Password:">Passwort:</entry>
+    <entry id="337" string="Delete original files after encoding">Originaldateien nach dem Codieren löschen</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Diese Einstellung entfernt die Originaldateien nach der Codierung&#10;von Ihrem Computer!&#10;&#10;Sind Sie sicher, dass Sie diese Funktion aktivieren möchten?</entry>
   </data>
 </LangFile>

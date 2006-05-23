@@ -266,7 +266,7 @@
     <entry id="256" string="MP4 Files">MP4 bestanden</entry>
     <entry id="257" string="Format">Formaat</entry>
     <entry id="258" string="File format">Bestandsformaat</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">ID3V2 tags in AAC bestanden toelaten</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">ID3v2 tags in AAC bestanden toelaten</entry>
     <entry id="260" string="Note:">Opmerking:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Sommige spelers hebben problemen bij het afspelen van&#10;AAC bestanden met ID3 tags. Gebruik deze optie enkel&#10;wanneer u zeker bent dat uw speler dit ondersteunt.</entry>
     <entry id="262" string="FLAC Files">FLAC bestanden</entry>

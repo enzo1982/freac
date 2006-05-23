@@ -36,7 +36,7 @@ Geschichte
 		- Unterstützung für LAME Mono-Modus hinzugefügt
 		- Unterstützung zum Erzeugen von M3U-Playlisten hinzugefügt
 		- Unterstützung zum Erzeugen von einfachen Cuesheets hinzugefügt
-		- Unterstützung für ID3V1-Tags hinzugefügt
+		- Unterstützung für ID3v1-Tags hinzugefügt
 		- Optionen zum Konfigurieren der Codierer zu BEcmd hinzugefügt
 		- Button zum Unterbrechen/Fortsetzen der Codierung hinzugefügt
 		- Option zum Herunterfahren des Computers nach der Codierung hinzugefügt
@@ -56,6 +56,8 @@ Geschichte
 		- Darstellungsfehler bei arabischer Schrift unter Windows 2000/NT behoben
 		- Winamp Input-Plugin Unterstützung verbessert (WMA und MP3-Plugins funktionieren)
 		- Fehler bei Wiedergabe mit Winamp Output-Plugin behoben
+		- Unterstützung für freedb-Verbindungen über HTTPS-Proxies hinzugefügt
+		- Unterstützung für HTTP, HTTPS und SOCKS v5 Proxy-Authentifizierung hinzugefügt
 		- Update auf MPEG4IP v1.5
 		- Update auf easyUpdate v0.3
 		- Update auf Bonk v0.10
@@ -83,7 +85,7 @@ Geschichte
 		- FAAC auf Version 1.24.1 aktualisiert
 		- Ogg Vorbis auf Version 1.1 aktualisiert
 		- TwinVQ Abstürze behoben
-		- Unterstützung für ID3V2-Tags in AAC-Dateien hinzugefügt
+		- Unterstützung für ID3v2-Tags in AAC-Dateien hinzugefügt
 		- FAAD2 AAC Decoder Unterstützung hinzugefügt
 		- iTunes-kompatible MP4 Unterstützung hinzugefügt
 		- Update auf smooth v0.8.66.0
@@ -147,8 +149,8 @@ Geschichte
 		- Unterstützung für LAME Voreinstellungen hinzugefügt
 		- Sprachunterstützung für Ungarisch, Französisch, Russisch, Serbisch und Finnish hinzugefügt
 		- Unterstützung für META Tags in Bonk Dateien entfernt
-		- Unterstützung für ID3V2 Tags in Bonk Dateien hinzugefügt
-		- Fähigkeit zum Lesen von ID3V2 und Vorbis Comment Tags hinzugefügt
+		- Unterstützung für ID3v2 Tags in Bonk Dateien hinzugefügt
+		- Fähigkeit zum Lesen von ID3v2 und Vorbis Comment Tags hinzugefügt
 		- komplette CDDB/freedb Unterstützung
 		- CDDB Cache hinzugefügt
 		- Format der Sprachdateien vereinfacht
@@ -165,7 +167,7 @@ Geschichte
 		- Unterstützung zur Decodierung von MP3, Ogg Vorbis und Bonk Dateien hinzugefügt
 		- Kommandozeileninterface implementiert
 		- Sprachunterstützung für Spanisch, Italienisch und Niederländisch hinzugefügt
-		- Unterstützung für ID3V2 tags hinzugefügt
+		- Unterstützung für ID3v2 tags hinzugefügt
 		- smooth Translator Utility zum Übersetzen von Sprachdateien hinzugefügt
 		- Mausrad Unterstützung hinzugefügt
 		- Update auf smooth v0.8.60.0

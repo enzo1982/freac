@@ -266,7 +266,7 @@
     <entry id="256" string="MP4 Files">MP4 файлы</entry>
     <entry id="257" string="Format">Формат</entry>
     <entry id="258" string="File format">Тип файла</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">Разрешить ID3V2 заголовки в AAC файлах</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Разрешить ID3v2 заголовки в AAC файлах</entry>
     <entry id="260" string="Note:">Примечание: </entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 заголовками.</entry>
     <entry id="262" string="FLAC Files">FLAC файлы</entry>

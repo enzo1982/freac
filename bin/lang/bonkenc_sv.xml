@@ -266,7 +266,7 @@
     <entry id="256" string="MP4 Files">MP4 Filer</entry>
     <entry id="257" string="Format">Format</entry>
     <entry id="258" string="File format">Fil format</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">Tillåt ID3V2 taggar i AAC filer</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Tillåt ID3v2 taggar i AAC filer</entry>
     <entry id="260" string="Note:">Notering:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Vissa spelare kan få problem att spela AAC filer med&#10;ID3 taggar bifogade. Var god använd endast denn funktion&#10;om du är helt säker på att din spelare klarar av att läsa ID3 taggar.</entry>
     <entry id="262" string="FLAC Files">FLAC Filer</entry>

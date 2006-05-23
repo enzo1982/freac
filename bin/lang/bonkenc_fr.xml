@@ -266,7 +266,7 @@
     <entry id="256" string="MP4 Files">Fichiers MP4</entry>
     <entry id="257" string="Format">Format</entry>
     <entry id="258" string="File format">Format de fichier</entry>
-    <entry id="259" string="Allow ID3V2 tags in AAC files">Autoriser les balises ID3V2 dans les fichiers AAC</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Autoriser les balises ID3v2 dans les fichiers AAC</entry>
     <entry id="260" string="Note:">Remarque :</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Certains lecteurs peuvent avoir des difficultés à lire les fichiers AAC&#10;comportant des balises ID3. Utilisez cette option seulement&#10;si vous êtes certain que votre lecteur sait gérer ces balises.</entry>
     <entry id="262" string="FLAC Files">Fichiers FLAC</entry>

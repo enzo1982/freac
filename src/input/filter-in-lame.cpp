@@ -50,12 +50,14 @@ Int BonkEnc::FilterInLAME::ReadData(UnsignedByte **data, Int size)
 
 	int	 nsamples = ex_lame_decode(buffer, size, pcm_l, pcm_r);
 
-	buffer.Resize(nsamples * 4);
+	buffer.Resize(nsamples * format->channels * (format->bits / 8));
 
 	for (Int i = 0; i < nsamples; i++)
 	{
-		((short *) (unsigned char *) buffer)[2 * i]	= pcm_l[i];
-		((short *) (unsigned char *) buffer)[2 * i + 1]	= pcm_r[i];
+		for (Int j = 0; j < format->channels; j++)
+		{
+			((short *) (unsigned char *) buffer)[format->channels * i + j] = (j == 0) ? pcm_l[i] : pcm_r[i];
+		}
 	}
 
 	*data = buffer;

@@ -128,23 +128,23 @@ namespace BonkEnc
 
 // Bonk DLL API
 
-	typedef void *		(*BONKENCODERCREATE)			();
-	typedef bool		(*BONKENCODERINIT)			(void *, unsigned int, unsigned int, int, bool, bool, int, int, int, double);
-	typedef int		(*BONKENCODERENCODEPACKET)		(void *, signed short *, int, unsigned char *, int);
-	typedef int		(*BONKENCODERFINISH)			(void *, unsigned char *, int);
-	typedef bool		(*BONKENCODERCLOSE)			(void *);
-	typedef int		(*BONKENCODERGETSAMPLECOUNT)		(void *);
-	typedef int		(*BONKENCODERGETSAMPLECOUNTOFFSET)	(void *);
-	typedef bool		(*BONKENCODERSETID3DATA)		(void *, unsigned char *, int);
-	typedef void *		(*BONKDECODERCREATE)			();
-	typedef bool		(*BONKDECODERINIT)			(void *, unsigned char *, int, unsigned int *, unsigned int *, int *);
-	typedef int		(*BONKDECODERDECODEPACKET)		(void *, unsigned char *, int, signed short *, int);
-	typedef int		(*BONKDECODERFINISH)			(void *);
-	typedef bool		(*BONKDECODERCLOSE)			(void *);
-	typedef bool		(*BONKDECODERGETID3DATA)		(void *, unsigned char **, int *);
-	typedef bool		(*BONKDECODERINITSEEKTABLE)		(void *, unsigned char *, int);
-	typedef bool		(*BONKDECODERSEEKTO)			(void *, int);
-	typedef const char *	(*BONKGETVERSIONSTRING)			();
+	typedef void *		(_stdcall *BONKENCODERCREATE)			();
+	typedef bool		(_stdcall *BONKENCODERINIT)			(void *, unsigned int, unsigned int, int, bool, bool, int, int, int, double);
+	typedef int		(_stdcall *BONKENCODERENCODEPACKET)		(void *, signed short *, int, unsigned char *, int);
+	typedef int		(_stdcall *BONKENCODERFINISH)			(void *, unsigned char *, int);
+	typedef bool		(_stdcall *BONKENCODERCLOSE)			(void *);
+	typedef int		(_stdcall *BONKENCODERGETSAMPLECOUNT)		(void *);
+	typedef int		(_stdcall *BONKENCODERGETSAMPLECOUNTOFFSET)	(void *);
+	typedef bool		(_stdcall *BONKENCODERSETID3DATA)		(void *, unsigned char *, int);
+	typedef void *		(_stdcall *BONKDECODERCREATE)			();
+	typedef bool		(_stdcall *BONKDECODERINIT)			(void *, unsigned char *, int, unsigned int *, unsigned int *, int *);
+	typedef int		(_stdcall *BONKDECODERDECODEPACKET)		(void *, unsigned char *, int, signed short *, int);
+	typedef int		(_stdcall *BONKDECODERFINISH)			(void *);
+	typedef bool		(_stdcall *BONKDECODERCLOSE)			(void *);
+	typedef bool		(_stdcall *BONKDECODERGETID3DATA)		(void *, unsigned char **, int *);
+	typedef bool		(_stdcall *BONKDECODERINITSEEKTABLE)		(void *, unsigned char *, int);
+	typedef bool		(_stdcall *BONKDECODERSEEKTO)			(void *, int);
+	typedef const char *	(_stdcall *BONKGETVERSIONSTRING)		();
 
 	extern BEEXPORT BONKENCODERCREATE		 ex_bonk_encoder_create;
 	extern BEEXPORT BONKENCODERINIT			 ex_bonk_encoder_init;

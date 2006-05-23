@@ -266,7 +266,7 @@
     <entry id="256" string="MP4 Files">MP4 音訊檔</entry> 
     <entry id="257" string="Format">格式</entry> 
     <entry id="258" string="File format">檔案格式</entry> 
-    <entry id="259" string="Allow ID3V2 tags in AAC files">允許在 AAC 檔案內使用 ID3V2 標籤</entry> 
+    <entry id="259" string="Allow ID3v2 tags in AAC files">允許在 AAC 檔案內使用 ID3v2 標籤</entry> 
     <entry id="260" string="Note:">注意:</entry> 
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放這些包含 ID3 標籤的 AAC 檔案時會發生問題.&#10;使用這個選項時請留意您的播放器是否支援這個 ID3 標籤.</entry> 
     <entry id="262" string="FLAC Files">FLAC 檔案</entry> 

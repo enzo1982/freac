@@ -138,6 +138,8 @@ namespace BonkEnc
 			Void		 AdjustStringCase();
 			Void		 AdjustStringCaseAll();
 
+			Void		 ConfirmDeleteAfterEncoding();
+
 			Void		 OnJoblistSelectTrack(Track *);
 			Void		 OnJoblistSelectNone();
 		public:

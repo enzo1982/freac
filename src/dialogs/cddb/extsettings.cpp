@@ -18,7 +18,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Point(140, 140), Size(350, 192));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Point(140, 140), Size(350, 219));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -45,7 +45,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.x = 7;
 	pos.y = 7;
 	size.cx = 329;
-	size.cy = 106;
+	size.cy = 134;
 
 	reg_register		= new TabWidget(pos, size);
 
@@ -81,12 +81,12 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	Int	 maxTextSize = max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
 
 	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->GetY()), Size(285 - maxTextSize, http_edit_query->GetHeight()));
-	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->GetX()), Size(285 - maxTextSize, http_edit_submit->GetHeight()));
+	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->GetY()), Size(285 - maxTextSize, http_edit_submit->GetHeight()));
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 312;
-	size.cy = 66;
+	size.cy = 93;
 
 	proxy_group_proxy	= new GroupBox(BonkEnc::i18n->TranslateString("Proxy settings"), pos, size);
 
@@ -103,10 +103,10 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_combo_mode	= new ComboBox(pos, size);
 	proxy_combo_mode->onSelectEntry.Connect(&cddbExtendedSettingsDlg::SetProxyMode, this);
 	proxy_combo_mode->AddEntry(BonkEnc::i18n->TranslateString("no proxy"));
-	proxy_combo_mode->AddEntry("HTTP");
-	proxy_combo_mode->AddEntry("SOCKS4");
-	proxy_combo_mode->AddEntry("SOCKS5");
-	proxy_combo_mode->SelectNthEntry(currentConfig->freedb_proxy_mode);
+	proxy_combo_mode->AddEntry("HTTP Forward");
+	proxy_combo_mode->AddEntry("HTTPS Tunnel");
+	proxy_combo_mode->AddEntry("SOCKS v4/v4a");
+	proxy_combo_mode->AddEntry("SOCKS v5");
 
 	pos.x = 16;
 	pos.y += 30;
@@ -132,10 +132,37 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_edit_port		= new EditBox(String::FromInt(currentConfig->freedb_proxy_port), pos, size, 5);
 	proxy_edit_port->SetFlags(EDB_NUMERIC);
 
-	maxTextSize = max(proxy_text_mode->textSize.cx, proxy_text_server->textSize.cx);
+	pos.x = 16;
+	pos.y += 30;
+
+	proxy_text_user		= new Text(BonkEnc::i18n->TranslateString("User name:"), pos);
+
+	pos.x += 100;
+	pos.y -= 3;
+	size.cx = 100;
+
+	proxy_edit_user		= new EditBox(currentConfig->freedb_proxy_user, pos, size, 0);
+
+	pos.x += 110;
+	pos.y += 3;
+
+	proxy_text_password	= new Text(BonkEnc::i18n->TranslateString("Password:"), pos);
+	proxy_text_password->SetPosition(Point(234 - proxy_text_password->textSize.cx, proxy_text_password->GetY()));
+
+	pos.x += 16;
+	pos.y -= 3;
+	size.cx = 67;
+
+	proxy_edit_password	= new EditBox(currentConfig->freedb_proxy_password, pos, size, 0);
+	proxy_edit_password->SetFlags(EDB_ASTERISK);
+
+	maxTextSize = Math::Max(Math::Max(proxy_text_mode->textSize.cx, proxy_text_server->textSize.cx), proxy_text_user->textSize.cx);
 
 	proxy_combo_mode->SetMetrics(Point(maxTextSize + 24, proxy_combo_mode->GetY()), Size(285 - maxTextSize, proxy_combo_mode->GetHeight()));
 	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->GetY()), Size(233 - maxTextSize - proxy_text_port->textSize.cx, proxy_edit_server->GetHeight()));
+	proxy_edit_user->SetMetrics(Point(maxTextSize + 24, proxy_edit_user->GetY()), Size(203 - maxTextSize - proxy_text_password->textSize.cx, proxy_edit_user->GetHeight()));
+
+	proxy_combo_mode->SelectNthEntry(currentConfig->freedb_proxy_mode);
 
 	SetProxyMode();
 
@@ -163,6 +190,10 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	register_layer_proxy->RegisterObject(proxy_edit_server);
 	register_layer_proxy->RegisterObject(proxy_text_port);
 	register_layer_proxy->RegisterObject(proxy_edit_port);
+	register_layer_proxy->RegisterObject(proxy_text_user);
+	register_layer_proxy->RegisterObject(proxy_edit_user);
+	register_layer_proxy->RegisterObject(proxy_text_password);
+	register_layer_proxy->RegisterObject(proxy_edit_password);
 
 	switch (tab)
 	{
@@ -198,6 +229,10 @@ BonkEnc::cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 	DeleteObject(proxy_edit_server);
 	DeleteObject(proxy_text_port);
 	DeleteObject(proxy_edit_port);
+	DeleteObject(proxy_text_user);
+	DeleteObject(proxy_edit_user);
+	DeleteObject(proxy_text_password);
+	DeleteObject(proxy_edit_password);
 	DeleteObject(btn_ok);
 	DeleteObject(btn_cancel);
 }
@@ -217,6 +252,8 @@ Void BonkEnc::cddbExtendedSettingsDlg::OK()
 	currentConfig->freedb_proxy_mode = proxy_combo_mode->GetSelectedEntryNumber();
 	currentConfig->freedb_proxy = proxy_edit_server->GetText();
 	currentConfig->freedb_proxy_port = proxy_edit_port->GetText().ToInt();
+	currentConfig->freedb_proxy_user = proxy_edit_user->GetText();
+	currentConfig->freedb_proxy_password = proxy_edit_password->GetText();
 
 	mainWnd->Close();
 }
@@ -243,12 +280,27 @@ Void BonkEnc::cddbExtendedSettingsDlg::SetProxyMode()
 		proxy_edit_port->Activate();
 	}
 
-	if (proxy_combo_mode->GetSelectedEntryNumber() == 1 && proxy_edit_port->GetText().ToInt() == 1080)
+	if (proxy_combo_mode->GetSelectedEntryNumber() == 0 || proxy_combo_mode->GetSelectedEntryNumber() == 3)
+	{
+		proxy_text_user->Deactivate();
+		proxy_edit_user->Deactivate();
+		proxy_text_password->Deactivate();
+		proxy_edit_password->Deactivate();
+	}
+	else
+	{
+		proxy_text_user->Activate();
+		proxy_edit_user->Activate();
+		proxy_text_password->Activate();
+		proxy_edit_password->Activate();
+	}
+
+	if ((proxy_combo_mode->GetSelectedEntryNumber() == 1 || proxy_combo_mode->GetSelectedEntryNumber() == 2) && proxy_edit_port->GetText().ToInt() == 1080)
 	{
 		proxy_edit_port->SetText("80");
 	}
 
-	if (proxy_combo_mode->GetSelectedEntryNumber() >= 2 && proxy_edit_port->GetText().ToInt() == 80)
+	if ((proxy_combo_mode->GetSelectedEntryNumber() == 3 || proxy_combo_mode->GetSelectedEntryNumber() == 4) && proxy_edit_port->GetText().ToInt() == 80)
 	{
 		proxy_edit_port->SetText("1080");
 	}

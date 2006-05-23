@@ -268,7 +268,7 @@
     <entry id="256" string="MP4 Files"/>
     <entry id="257" string="Format"/>
     <entry id="258" string="File format"/>
-    <entry id="259" string="Allow ID3V2 tags in AAC files"/>
+    <entry id="259" string="Allow ID3v2 tags in AAC files"/>
     <entry id="260" string="Note:"/>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
     <entry id="262" string="FLAC Files"/>
@@ -281,12 +281,12 @@
     <entry id="269" string="min"/>
     <entry id="270" string="Create playlist"/>
     <entry id="271" string="Create cue sheet"/>
-    <entry id="272" string="Write ID3V1 tags"/>
-    <entry id="273" string="Write ID3V2 tags"/>
+    <entry id="272" string="Write ID3v1 tags"/>
+    <entry id="273" string="Write ID3v2 tags"/>
     <entry id="274" string="Write Vorbis Comment tags"/>
     <entry id="275" string="Write MP4 metadata info"/>
-    <entry id="276" string="ID3V1 tag encoding:"/>
-    <entry id="277" string="ID3V2 tag encoding:"/>
+    <entry id="276" string="ID3v1 tag encoding:"/>
+    <entry id="277" string="ID3v2 tag encoding:"/>
     <entry id="278" string="Vorbis Comment tag encoding:"/>
     <entry id="279" string="MP4 metadata encoding:"/>
     <entry id="280" string="Tag encodings"/>
@@ -344,5 +344,9 @@
     <entry id="332" string="Charset"/>
     <entry id="333" string="Preview"/>
     <entry id="334" string="Downloaded CDDB entries:"/>
+    <entry id="335" string="User name:"/>
+    <entry id="336" string="Password:"/>
+    <entry id="337" string="Delete original files after encoding"/>
+    <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?"/>
   </data>
 </LangFile>

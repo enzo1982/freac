@@ -16,6 +16,7 @@
 BonkEnc::Config::Config()
 {
 	languageChanged = False;
+	deleteAfterEncoding = False;
 	shutdownAfterEncoding = False;
 
 	cdrip_autoRead_active = False;
@@ -123,6 +124,8 @@ Bool BonkEnc::Config::LoadSettings()
 	freedb_proxy_mode			= config->GetIntValue("freedb", "ProxyMode", 0);
 	freedb_proxy				= config->GetStringValue("freedb", "Proxy", "localhost");
 	freedb_proxy_port			= config->GetIntValue("freedb", "ProxyPort", 1080);
+	freedb_proxy_user			= config->GetStringValue("freedb", "ProxyUserName", "");
+	freedb_proxy_password			= config->GetStringValue("freedb", "ProxyPassword", "");
 	update_joblist				= config->GetIntValue("freedb", "UpdateJoblistOnSubmit", 1);
 
 	bonk_quantization			= config->GetIntValue("bonk", "Quantization", 8);
@@ -275,6 +278,8 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("freedb", "ProxyMode", freedb_proxy_mode);
 		config->SetStringValue("freedb", "Proxy", freedb_proxy);
 		config->SetIntValue("freedb", "ProxyPort", freedb_proxy_port);
+		config->SetStringValue("freedb", "ProxyUserName", freedb_proxy_user);
+		config->SetStringValue("freedb", "ProxyPassword", freedb_proxy_password);
 		config->SetIntValue("freedb", "UpdateJoblistOnSubmit", update_joblist);
 
 		config->SetIntValue("bonk", "Quantization", bonk_quantization);

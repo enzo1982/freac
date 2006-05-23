@@ -1323,17 +1323,27 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	MenuEntry	*entry = NIL;
 
 	menu_file->AddEntry(i18n->TranslateString("Add"), NIL, menu_addsubmenu);
-	menu_file->AddEntry(i18n->TranslateString("Remove"))->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
+	entry = menu_file->AddEntry(i18n->TranslateString("Remove"));
+	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
+	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
 	menu_file->AddEntry();
 	menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onAction.Connect(&JobList::LoadList, joblist);
 	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
 	menu_file->AddEntry();
-	menu_file->AddEntry(i18n->TranslateString("Clear joblist"))->onAction.Connect(&JobList::RemoveAllTracks, joblist);
+	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"));
+	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
+	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
 	menu_file->AddEntry();
-	menu_file->AddEntry(i18n->TranslateString("Exit"))->onAction.Connect(&BonkEncGUI::Close, this);
+	entry = menu_file->AddEntry(i18n->TranslateString("Exit"));
+	entry->onAction.Connect(&BonkEncGUI::Close, this);
+	entry->SetShortcut(SC_ALT, VK_F4, mainWnd);
 
-	menu_options->AddEntry(i18n->TranslateString("General settings..."))->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
-	menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."))->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
+	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."));
+	entry->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
+	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'C', mainWnd);
+	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."));
+	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
+	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives > 1)
 	{
@@ -1348,7 +1358,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)").Append("..."));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
-	entry->SetShortcut(SC_CTRL, 'O', mainWnd);
+	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
@@ -1373,7 +1383,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
 
-	menu_encode->AddEntry(i18n->TranslateString("Start encoding"))->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
+	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"));
+	entry->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
+	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
 	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
 
@@ -1394,10 +1406,17 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	}
 
 	menu_encode->AddEntry();
+	menu_encode->AddEntry(i18n->TranslateString("Delete original files after encoding"), NIL, NIL, &currentConfig->deleteAfterEncoding)->onAction.Connect(&BonkEncGUI::ConfirmDeleteAfterEncoding, this);
+
+	menu_encode->AddEntry();
 	menu_encode->AddEntry(i18n->TranslateString("Shutdown after encoding"), NIL, NIL, &currentConfig->shutdownAfterEncoding);
 
-	menu_database->AddEntry(i18n->TranslateString("Query CDDB database"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
-	menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."))->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
+	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"));
+	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
+	entry->SetShortcut(SC_CTRL, 'L', mainWnd);
+	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."));
+	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
+	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
 	menu_database->AddEntry();
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
 	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
@@ -1419,9 +1438,13 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_trackmenu->AddEntry(i18n->TranslateString("Select none"))->onAction.Connect(&JobList::SelectNone, joblist);
 	menu_trackmenu->AddEntry(i18n->TranslateString("Toggle selection"))->onAction.Connect(&JobList::ToggleSelection, joblist);
 
-	menu_help->AddEntry(i18n->TranslateString("Help topics..."))->onAction.Connect(&BonkEncGUI::ShowHelp, this);
+	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."));
+	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
+	entry->SetShortcut(0, VK_F1, mainWnd);
 	menu_help->AddEntry();
-	menu_help->AddEntry(i18n->TranslateString("Show Tip of the Day").Append("..."))->onAction.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
+	entry = menu_help->AddEntry(i18n->TranslateString("Show Tip of the Day").Append("..."));
+	entry->onAction.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
+	entry->SetShortcut(0, VK_F10, mainWnd);
 
 	if (currentConfig->enable_eUpdate)
 	{
@@ -1901,6 +1924,14 @@ Void BonkEnc::BonkEncGUI::AdjustStringCaseAll()
 	}
 
 	clicked_case = -1;
+}
+
+Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
+{
+	if (currentConfig->deleteAfterEncoding)
+	{
+		if (IDNO == QuickMessage(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), MB_YESNO, IDI_QUESTION)) currentConfig->deleteAfterEncoding = False;
+	}
 }
 
 Void BonkEnc::BonkEncGUI::OnJoblistSelectTrack(Track *format)
