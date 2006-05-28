@@ -71,16 +71,22 @@ Bool BonkEnc::FilterOutFAAC::Activate()
 
 Bool BonkEnc::FilterOutFAAC::Deactivate()
 {
-	unsigned long	 bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
+	unsigned long	 bytes = 0;
 
-	driver->WriteData(outBuffer, bytes);
+	do
+	{
+		bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
+
+		driver->WriteData(outBuffer, bytes);
+	}
+	while (bytes > 0);
 
 	ex_faacEncClose(handle);
 
 	return true;
 }
 
-Int BonkEnc::FilterOutFAAC::WriteData(UnsignedByte *data, Int size)
+Int BonkEnc::FilterOutFAAC::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	unsigned long	 bytes = 0;
 
@@ -90,14 +96,14 @@ Int BonkEnc::FilterOutFAAC::WriteData(UnsignedByte *data, Int size)
 		{
 			if (format->bits == 8)	((short *) (int32_t *) samplesBuffer)[i] = (data[i] - 128) * 256;
 			if (format->bits == 24) samplesBuffer[i] = data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0);
-			if (format->bits == 32)	((float *) (int32_t *) samplesBuffer)[i] = (1.0 / 65536) * ((int32_t *) data)[i];
+			if (format->bits == 32)	((float *) (int32_t *) samplesBuffer)[i] = (1.0 / 65536) * ((int32_t *) (unsigned char *) data)[i];
 		}
 
 		bytes = ex_faacEncEncode(handle, samplesBuffer, size / (format->bits / 8), outBuffer, outBuffer.Size());
 	}
 	else
 	{
-		bytes = ex_faacEncEncode(handle, (int32_t *) data, size / (format->bits / 8), outBuffer, outBuffer.Size());
+		bytes = ex_faacEncEncode(handle, (int32_t *) (unsigned char *) data, size / (format->bits / 8), outBuffer, outBuffer.Size());
 	}
 
 	driver->WriteData(outBuffer, bytes);

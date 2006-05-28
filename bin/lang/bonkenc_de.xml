@@ -279,7 +279,7 @@
     <entry id="267" string="bytes">Bytes</entry>
     <entry id="268" string="bit">Bit</entry>
     <entry id="269" string="min">min</entry>
-    <entry id="270" string="Create playlist">Playlist erzeugen</entry>
+    <entry id="270" string="Create playlist">Playliste erzeugen</entry>
     <entry id="271" string="Create cue sheet">Cuesheet erzeugen</entry>
     <entry id="272" string="Write ID3v1 tags">ID3v1-Tags schreiben</entry>
     <entry id="273" string="Write ID3v2 tags">ID3v2-Tags schreiben</entry>
@@ -296,7 +296,7 @@
     <entry id="284" string="Save joblist...">Jobliste sichern...</entry>
     <entry id="285" string="Pause/resume encoding">Codierung unterbrechen/fortsetzen</entry>
     <entry id="286" string="Shutdown after encoding">Nach der Codierung herunterfahren</entry>
-    <entry id="287" string="Playlist Files">Playlist Dateien</entry>
+    <entry id="287" string="Playlist Files">Playlist-Dateien</entry>
     <entry id="288" string="unknown year">unbekanntes Jahr</entry>
     <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Konnte den %1 Codierer nicht initialisieren! Bitte überprüfen Sie die Konfiguration!</entry>
     <entry id="290" string="Blocksize:">Blockgröße:</entry>
@@ -348,5 +348,10 @@
     <entry id="336" string="Password:">Passwort:</entry>
     <entry id="337" string="Delete original files after encoding">Originaldateien nach dem Codieren löschen</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Diese Einstellung entfernt die Originaldateien nach der Codierung&#10;von Ihrem Computer!&#10;&#10;Sind Sie sicher, dass Sie diese Funktion aktivieren möchten?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Das freedb CDDBP-Protokol kann nicht über HTTP&#10;Forward-Proxies verwendet werden!&#10;&#10;Möchten Sie das Protokol auf HTTP ändern?</entry>
+    <entry id="340" string="Playlists">Playlisten</entry>
+    <entry id="341" string="Create playlists">Playlisten erzeugen</entry>
+    <entry id="342" string="Create cue sheets">Cuesheets erzeugen</entry>
+    <entry id="343" string="Use encoder output directory">Codierer-Ausgabeverzeichnis verwenden</entry>
   </data>
 </LangFile>

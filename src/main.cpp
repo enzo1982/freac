@@ -453,9 +453,13 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	btn_outdir->SetOrientation(OR_LOWERRIGHT);
 	btn_outdir->onAction.Connect(&BonkEncGUI::SelectDir, this);
 
-	progress = new Progressbar(Point(0, 51), Size(0, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
+	progress = new Progressbar(Point(0, 51), Size(0, 10), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 	progress->SetOrientation(OR_LOWERLEFT);
 	progress->Deactivate();
+
+	progress_total = new Progressbar(Point(0, 42), Size(0, 10), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
+	progress_total->SetOrientation(OR_LOWERLEFT);
+	progress_total->Deactivate();
 
 	SetLanguage();
 
@@ -503,6 +507,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->RegisterObject(edb_encoder);
 	mainWnd->RegisterObject(edb_outdir);
 	mainWnd->RegisterObject(btn_outdir);
+	mainWnd->RegisterObject(progress_total);
 	mainWnd->RegisterObject(progress);
 	mainWnd->RegisterObject(hyperlink);
 	mainWnd->RegisterObject(mainWnd_titlebar);
@@ -615,6 +620,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(edb_outdir);
 	DeleteObject(btn_outdir);
 	DeleteObject(progress);
+	DeleteObject(progress_total);
 	DeleteObject(hyperlink);
 
 	DeleteObject(menu_edit_artist);
@@ -773,6 +779,7 @@ Void BonkEnc::BonkEncGUI::ResizeProc()
 	edb_outdir->SetWidth(clientSize.cx - 107 - maxTextLength);
 
 	progress->SetWidth(clientSize.cx - 21 - maxTextLength);
+	progress_total->SetWidth(clientSize.cx - 21 - maxTextLength);
 
 	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
@@ -824,6 +831,8 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 	dlg->ShowDialog();
 
 	DeleteObject(dlg);
+
+	currentConfig->SaveSettings();
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureGeneral()
@@ -851,6 +860,10 @@ Void BonkEnc::BonkEncGUI::ConfigureGeneral()
 	SetEncoderText();
 
 	edb_outdir->SetText(currentConfig->enc_outdir);
+
+	CheckBox::internalCheckValues.Emit();
+
+	currentConfig->SaveSettings();
 }
 
 Void BonkEnc::BonkEncGUI::SelectDir()
@@ -1145,6 +1158,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	edb_outdir->Hide();
 
 	progress->Hide();
+	progress_total->Hide();
 
 	info_checkbox->Hide();
 
@@ -1176,7 +1190,8 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_outdir->GetHeight()));
 
 	progress->SetMetrics(Point(maxTextLength + 14, progress->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress->GetHeight()));
- 
+	progress_total->SetMetrics(Point(maxTextLength + 14, progress_total->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress_total->GetHeight()));
+
 	info_checkbox->SetText(i18n->TranslateString("Show title info"));
 	info_checkbox->SetWidth(info_checkbox->textSize.cx + 20);
 
@@ -1200,6 +1215,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	btn_outdir->SetText(BonkEnc::i18n->TranslateString("Browse"));
 
+	progress_total->Show();
 	progress->Show();
 
 	info_checkbox->Show();

@@ -19,19 +19,17 @@ namespace BonkEnc
 	class BEEXPORT FilterInWinamp : public InputFilter
 	{
 		private:
-			In_Module		*plugin;
-
-			Buffer<unsigned char>	 buffer;
+			In_Module	*plugin;
 		public:
-						 FilterInWinamp(Config *, Track *, In_Module *);
-						~FilterInWinamp();
+					 FilterInWinamp(Config *, Track *, In_Module *);
+					~FilterInWinamp();
 
-			Bool			 Activate();
-			Bool			 Deactivate();
+			Bool		 Activate();
+			Bool		 Deactivate();
 
-			Int			 ReadData(UnsignedByte **, Int);
+			Int		 ReadData(Buffer<UnsignedByte> &, Int);
 
-			Track			*GetFileInfo(const String &);
+			Track		*GetFileInfo(const String &);
 	};
 };
 

@@ -19,7 +19,7 @@
     <entry id="7" string="Exit">Afslut</entry>
     <entry id="8" string="General settings...">Almindelige indstillinger</entry>
     <entry id="9" string="Configure selected encoder...">Konfigurer den valgte koder...</entry>
-    <entry id="10" string="Audio file(s)">Lyd fil(er)</entry>
+    <entry id="10" string="Audio file(s)">Lydfil(er)</entry>
     <entry id="11" string="Audio CD contents">Lyd CD indeholder</entry>
     <entry id="12" string="Start encoding">Begynd kodning</entry>
     <entry id="13" string="Stop encoding">Stop kodning</entry>
@@ -37,16 +37,16 @@
     <entry id="25" string="Remove the selected entry from the joblist">Fjen den valgte indgang fra joblisten</entry>
     <entry id="26" string="Clear the entire joblist">Ryd hele joblisten</entry>
     <entry id="27" string="Configure general settings">Konfigurer generelle indstillinger</entry>
-    <entry id="28" string="Configure the selected audio encoder">Konfigurer den valgte lyd koder</entry>
-    <entry id="29" string="Start the encoding process">Begynd kodnings proces</entry>
+    <entry id="28" string="Configure the selected audio encoder">Konfigurer den valgte lydkoder</entry>
+    <entry id="29" string="Start the encoding process">Begynd kodningsproces</entry>
     <entry id="30" string="Cannot modify the joblist while encoding!">Du kan ikke ændre joblisten mens du encoder!</entry>
     <entry id="31" string="Error">FEJL</entry>
-    <entry id="32" string="Audio Files">Lyd Filer</entry>
-    <entry id="33" string="Apple Audio Files">Apple Lyd Filer</entry>
+    <entry id="32" string="Audio Files">Lydfiler</entry>
+    <entry id="33" string="Apple Audio Files">Apple Lydfiler</entry>
     <entry id="34" string="Creative Voice Files">Creative Stemme Filer</entry>
-    <entry id="35" string="Sun Audio Files">Sun Lyd Filer</entry>
+    <entry id="35" string="Sun Audio Files">Sun Lydfiler</entry>
     <entry id="36" string="Wave Files">Wave Filer</entry>
-    <entry id="37" string="Windows CD Audio Track">Windows CD Lyd Spor</entry>
+    <entry id="37" string="Windows CD Audio Track">Windows CD Lydspor</entry>
     <entry id="38" string="All Files">Alle Filer</entry>
     <entry id="39" string="You have not selected a file!">Du har IKKE valgt nogen fil!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Kodnings tråden kører stadig! Vil du virkelig afslutte?</entry>
@@ -60,19 +60,19 @@
     <entry id="48" string="%1 encoder configuration">%1 koder konfiguration</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Annullér</entry>
-    <entry id="51" string="Encoding Mode">Kodnings metode</entry>
+    <entry id="51" string="Encoding Mode">Kodningsmetode</entry>
     <entry id="52" string="Variable Bitrate">Skiftende Bitrate</entry>
     <entry id="53" string="Average Bitrate">Gennemsnitlig Bitrate</entry>
     <entry id="54" string="Quality">Kvalitet</entry>
     <entry id="55" string="Encoders">Kodere</entry>
     <entry id="56" string="Language">Sprog</entry>
-    <entry id="57" string="Show title info">Vis title informationer</entry>
+    <entry id="57" string="Show title info">Vis titleinformationer</entry>
     <entry id="58" string="General settings setup">Generelle indstillingers opsætning</entry>
     <entry id="59" string="Configure encoder">Konfigurer koder</entry>
     <entry id="60" string="Encoder">Koder</entry>
     <entry id="61" string="Output directory">Output mappe</entry>
     <entry id="62" string="Browse">Gennemse</entry>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:">Vælg den folder hvor de kodede filer vil blive placeret:</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Vælg den mappe hvor de kodede filer vil blive placeret:</entry>
     <entry id="64" string="Encoding">Koder</entry>
     <entry id="65" string="Author"/>
     <entry id="66" string="URL"/>
@@ -92,15 +92,15 @@
     <entry id="80" string="Bitrate">Bitrate</entry>
     <entry id="81" string="Copyright bit">Ophavsret bit</entry>
     <entry id="82" string="CRC">CRC</entry>
-    <entry id="83" string="Original bit">Orginal Bit</entry>
+    <entry id="83" string="Original bit">Orginal bit</entry>
     <entry id="84" string="Channels">Kanaler</entry>
-    <entry id="85" string="Private bit">Privat Bit</entry>
-    <entry id="86" string="Set Copyright bit">Sæt ophavsret bit</entry>
+    <entry id="85" string="Private bit">Privat bit</entry>
+    <entry id="86" string="Set Copyright bit">Sæt Ophavsret bit</entry>
     <entry id="87" string="Enable CRC">Slå CRC til</entry>
     <entry id="88" string="Set Original bit">Sæt Orginal bit</entry>
-    <entry id="89" string="Dual channel encoding">Dobbelt kanals kodning</entry>
+    <entry id="89" string="Dual channel encoding">Dual-channel kodning</entry>
     <entry id="90" string="Set Private bit">Sæt Privat bit</entry>
-    <entry id="91" string="Encoder mode">Kodnings metode</entry>
+    <entry id="91" string="Encoder mode">Kodningsmetode</entry>
     <entry id="92" string="Stereo mode">Stereo mode</entry>
     <entry id="93" string="Quantization">Størrelse</entry>
     <entry id="94" string="Downsampling ratio">Downsamplings forhold</entry>
@@ -113,16 +113,16 @@
     <entry id="101" string="MPEG version">MPEG version</entry>
     <entry id="102" string="AAC object type">AAC objekt type</entry>
     <entry id="103" string="Allow Joint Stereo">Tillad Joint Stereo</entry>
-    <entry id="104" string="Temporal Noise Shaping">Tidsmæssig Støj Formning</entry>
-    <entry id="105" string="Use Temporal Noise Shaping">Brug Tidsmæssig Støj Formning</entry>
+    <entry id="104" string="Temporal Noise Shaping">Tidsmæssig Støjformning</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Brug Tidsmæssig Støjformning</entry>
     <entry id="106" string="Maximum bandwidth">Maximum båndbredde</entry>
-    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maximum AAC båndbredde til brug (Hz):</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maximum AAC-båndbredde til brug (Hz):</entry>
     <entry id="108" string="Basic">Grundlæggende</entry>
     <entry id="109" string="Misc">Diverse</entry>
-    <entry id="110" string="Audio processing">Lyd behandling</entry>
+    <entry id="110" string="Audio processing">Lydbehandling</entry>
     <entry id="111" string="Set bitrate:">Sæt bitrate:</entry>
     <entry id="112" string="Set ratio:">Sæt forhold:</entry>
-    <entry id="113" string="Set quality:">Sæt kvaliteten:</entry>
+    <entry id="113" string="Set quality:">Sæt kvalitet:</entry>
     <entry id="114" string="worse">dårligere</entry>
     <entry id="115" string="better">bedre</entry>
     <entry id="116" string="Auto">Automatisk</entry>
@@ -137,20 +137,20 @@
     <entry id="125" string="Set minimum VBR bitrate:">Sæt minimum VBR bitrate:</entry>
     <entry id="126" string="Set maximum VBR bitrate:">Sæt maximum VBR bitrate:</entry>
     <entry id="127" string="Control bits">Kontrol bits</entry>
-    <entry id="128" string="Stream format">Strøm format</entry>
+    <entry id="128" string="Stream format">Stream format</entry>
     <entry id="129" string="Enforce strict ISO compliance">Gennemtving streng ISO overensstemmelse</entry>
     <entry id="130" string="Padding">Udfyld</entry>
     <entry id="131" string="Set padding type:">Sæt udfyldningstype:</entry>
     <entry id="132" string="pad no frames">udfyld ingen rammer</entry>
     <entry id="133" string="pad all frames">udfyld alle rammer</entry>
     <entry id="134" string="adjust padding">justér udfyldning</entry>
-    <entry id="135" string="Output sampling rate">Udskriv sampling rate</entry>
+    <entry id="135" string="Output sampling rate">Udskriv samplingrate</entry>
     <entry id="136" string="no resampling">ingen resampling</entry>
     <entry id="137" string="Highpass filter">Highpass filter</entry>
-    <entry id="138" string="Set Highpass frequency (Hz):">Sæt Highpass frekvens (Hz):</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Sæt Highpass-frekvens (Hz):</entry>
     <entry id="139" string="Set Highpass width (Hz):">Sæt Highpass rækkevidde (Hz):</entry>
     <entry id="140" string="Lowpass filter">Lowpass filter</entry>
-    <entry id="141" string="Set Lowpass frequency (Hz):">Sæt Lowpass frekvens (Hz):</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Sæt Lowpass-frekvens (Hz):</entry>
     <entry id="142" string="Set Lowpass width (Hz):">Sæt Lowpass rækkevidde (Hz):</entry>
     <entry id="143" string="Misc settings">Diverse indsillinger</entry>
     <entry id="144" string="Disable all filtering">Deaktiver al filtrering</entry>
@@ -183,7 +183,7 @@
     <entry id="171" string="Proxy server:">Proxy server:</entry>
     <entry id="172" string="Presets">Forindstilling</entry>
     <entry id="173" string="Use preset:">Brug forindstilling:</entry>
-    <entry id="174" string="Custom settings"/>
+    <entry id="174" string="Custom settings">Bruger indstilling</entry>
     <entry id="175" string="Medium">Mellem</entry>
     <entry id="176" string="Standard">Standard</entry>
     <entry id="177" string="Extreme">Ekstrem</entry>
@@ -238,7 +238,7 @@
     <entry id="228" string="Filename pattern">Filnavn mønster</entry>
     <entry id="229" string="unknown album">ukendt album</entry>
     <entry id="230" string="Translated by %1.">Oversat af %1.</entry>
-    <entry id="231" string="Select all">Vælg Alt</entry>
+    <entry id="231" string="Select all">Vælg alt</entry>
     <entry id="232" string="Select none">Fravælg alt</entry>
     <entry id="233" string="Toggle selection">Skift valg</entry>
     <entry id="234" string="Show Tip of the Day">Vis Dagens Tip</entry>
@@ -248,14 +248,14 @@
     <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Med BonkEnc kan du indsende freedb CD database indgange som&#10;indeholder Unicode karakterer. Så hvis du har nogle CDer med&#10;ikke-Latinske kunster eller titel navne, kan du indsende de rigtige&#10;freedb indgange med BonkEnc.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">For at rette læse fejl mens du ripper kan du aktivere Jitter rettelser i&#10;CDRip skiltet i BonkEnc's konfigurations dialog. Hvis det ikke&#10;hjælper, så prøv at bruge en af Paranoia metoderne.</entry>
     <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Har du nogle forslag til at forbedre BonkEnc? Du kan indsende&#10;ideer igennem Trackeren på BonkEnc SourceForge projekt&#10;side- %1 eller send en eMail til&#10;%2 .</entry>
-    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Kan du lide BonkEnc? BonkEnc er frit tilgængeligt, men du kan&#10;hjælpe ved at donere penge til BonkEnc projktet. Du kan snede&#10;penge til %1 via PayPal.&#10;Se %2 for flere detailjer.</entry>
+    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Kan du lide BonkEnc? BonkEnc er frit tilgængeligt, men du kan&#10;hjælpe ved at donere penge til BonkEnc projektet. Du kan sende&#10;penge til %1 via PayPal.&#10;Se %2 for flere detaljer.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate/Kvalitet</entry>
     <entry id="243" string="Check for updates now">Kontroller for opdateringer nu</entry>
     <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Der er nye opdateringer til BonkEnc tilgængelige online!&#10;Vil du se en liste med de tilgængelige opdateringer nu?</entry>
     <entry id="245" string="There are no updates available at the moment!">Der er ingen opdateringer tilgængelige lige nu!</entry>
     <entry id="246" string="Check for updates at startup">Kontroller for opdateringer ved start af BonkEnc</entry>
     <entry id="247" string="Read CD contents on insert">Læs CD indholdet ved isættelse</entry>
-    <entry id="248" string="Eject disk after ripping">Spyt disk ud efter ripning</entry>
+    <entry id="248" string="Eject disk after ripping">Skub CD ud efter ripning</entry>
     <entry id="249" string="Encode 'On-The-Fly'">Kod 'On-The-Fly'</entry>
     <entry id="250" string="Keep ripped wave files">Behold rippede wave filer</entry>
     <entry id="251" string="ripping/decoding">ripning/dekodning</entry>

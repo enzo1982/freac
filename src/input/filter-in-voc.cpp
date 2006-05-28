@@ -40,30 +40,30 @@ Bool BonkEnc::FilterInVOC::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInVOC::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInVOC::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
-	buffer.Resize(size);
+	data.Resize(size);
 
-	driver->ReadData(buffer, size);
+	driver->ReadData(data, size);
 
 	int	 outSize = size;
 
 	if (size > bytesLeft)
 	{
-		if (((unsigned char *) buffer + bytesLeft)[0] == 2)
+		if (((unsigned char *) data + bytesLeft)[0] == 2)
 		{
-			Int newBytesLeft = ((unsigned char *) buffer + bytesLeft + 1)[0] + 256 * ((unsigned char *) buffer + bytesLeft + 2)[0] + 65536 * ((unsigned char *) buffer + bytesLeft + 3)[0];
+			Int newBytesLeft = ((unsigned char *) data + bytesLeft + 1)[0] + 256 * ((unsigned char *) data + bytesLeft + 2)[0] + 65536 * ((unsigned char *) data + bytesLeft + 3)[0];
 
 			outSize = size - 4;
 
 			backBuffer.Resize(outSize);
 
-			memcpy(backBuffer, buffer, bytesLeft);
-			memcpy((unsigned char *) backBuffer + bytesLeft, (unsigned char *) buffer + bytesLeft + 4, size - bytesLeft - 4);
+			memcpy(backBuffer, data, bytesLeft);
+			memcpy((unsigned char *) backBuffer + bytesLeft, (unsigned char *) data + bytesLeft + 4, size - bytesLeft - 4);
 
-			buffer.Resize(outSize);
+			data.Resize(outSize);
 
-			memcpy(buffer, backBuffer, outSize);
+			memcpy(data, backBuffer, outSize);
 
 			bytesLeft = newBytesLeft - (size - bytesLeft - 4);
 		}
@@ -72,8 +72,6 @@ Int BonkEnc::FilterInVOC::ReadData(UnsignedByte **data, Int size)
 	{
 		bytesLeft -= size;
 	}
-
-	*data = buffer;
 
 	return outSize;
 }

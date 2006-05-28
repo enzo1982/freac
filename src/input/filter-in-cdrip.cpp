@@ -53,7 +53,7 @@ BonkEnc::FilterInCDRip::~FilterInCDRip()
 	}
 }
 
-Int BonkEnc::FilterInCDRip::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (trackNumber == -1) return true;
 
@@ -86,11 +86,9 @@ Int BonkEnc::FilterInCDRip::ReadData(UnsignedByte **data, Int size)
 
 	size = nBytes;
 
-	dataBuffer.Resize(size);
+	data.Resize(size);
 
-	memcpy(dataBuffer, buffer, size);
-
-	*data = dataBuffer;
+	memcpy(data, buffer, size);
 
 	debug_out->LeaveMethod();
 

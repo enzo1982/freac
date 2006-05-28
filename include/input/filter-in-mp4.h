@@ -34,8 +34,8 @@ namespace BonkEnc
 			Int				 mp4Track;
 			Int				 sampleId;
 
-			Buffer<unsigned char>		 dataBuffer;
 			Buffer<unsigned char>		 samplesBuffer;
+			Buffer<unsigned char>		 backBuffer;
 
 			Int				 GetAudioTrack();
 
@@ -47,7 +47,7 @@ namespace BonkEnc
 			Bool				 Activate();
 			Bool				 Deactivate();
 
-			Int				 ReadData(UnsignedByte **, Int);
+			Int				 ReadData(Buffer<UnsignedByte> &, Int);
 
 			Track				*GetFileInfo(const String &);
 	};

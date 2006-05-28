@@ -18,20 +18,18 @@ namespace BonkEnc
 	class BEEXPORT FilterInLAME : public InputFilter
 	{
 		private:
-			Buffer<unsigned char>	 buffer;
-
-			Buffer<short>		 pcm_l;
-			Buffer<short>		 pcm_r;
+			Buffer<short>	 pcm_l;
+			Buffer<short>	 pcm_r;
 		public:
-						 FilterInLAME(Config *, Track *);
-						~FilterInLAME();
+					 FilterInLAME(Config *, Track *);
+					~FilterInLAME();
 
-			Bool			 Activate();
-			Bool			 Deactivate();
+			Bool		 Activate();
+			Bool		 Deactivate();
 
-			Int			 ReadData(UnsignedByte **, Int);
+			Int		 ReadData(Buffer<UnsignedByte> &, Int);
 
-			Track			*GetFileInfo(const String &);
+			Track		*GetFileInfo(const String &);
 	};
 };
 

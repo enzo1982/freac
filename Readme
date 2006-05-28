@@ -22,6 +22,7 @@ History
 		- fixed bad default AAC profile setting
 		- added support for FLAC audio encoder
 		- display approximate title length when correct length is not known
+		- added another progress bar for overall progress
 		- redesigned the freedb submit dialog
 		- submitted freedb entries can now be used to update the joblist
 		- added support for switching between edit boxes with the tabulator
@@ -58,6 +59,7 @@ History
 		- fixed playback through Winamp output plugin
 		- added support for freedb connections over HTTPS proxies
 		- added support for HTTP, HTTPS and SOCKS v5 proxy authentication
+		- configuration is now saved when configuration dialog is closed
 		- upgrade to MPEG4IP v1.5
 		- upgrade to easyUpdate v0.3
 		- upgrade to Bonk v0.10

@@ -69,6 +69,9 @@ Bool BonkEnc::Config::LoadSettings()
 	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
 	enc_onTheFly				= config->GetIntValue("Settings", "EncodeOnTheFly", 1);
 	enc_keepWaves				= config->GetIntValue("Settings", "KeepWaveFiles", 0);
+	playlist_useEncOutdir			= config->GetIntValue("Settings", "PlaylistUseEncOutDir", 1);
+	playlist_outdir				= config->GetStringValue("Settings", "PlaylistOutDir", pDir);
+	playlist_filePattern			= config->GetStringValue("Settings", "PlaylistFilenamePattern", "<artist> - <album>");
 	useUnicodeNames				= config->GetIntValue("Settings", "UseUnicodeFilenames", 1);
 	showTitleInfo				= config->GetIntValue("Settings", "ShowTitleInfo", 0);
 	showTooltips				= config->GetIntValue("Settings", "ShowTooltips", 1);
@@ -208,6 +211,9 @@ Bool BonkEnc::Config::LoadSettings()
 
 	delete config;
 
+	if (enc_outdir[enc_outdir.Length() - 1] != '\\') enc_outdir.Append("\\");
+	if (playlist_outdir[playlist_outdir.Length() - 1] != '\\') playlist_outdir.Append("\\");
+
 	return True;
 }
 
@@ -225,6 +231,9 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetStringValue("Settings", "EncoderFilenamePattern", enc_filePattern);
 		config->SetIntValue("Settings", "EncodeOnTheFly", enc_onTheFly);
 		config->SetIntValue("Settings", "KeepWaveFiles", enc_keepWaves);
+		config->SetIntValue("Settings", "PlaylistUseEncOutDir", playlist_useEncOutdir);
+		config->SetStringValue("Settings", "PlaylistOutDir", playlist_outdir);
+		config->SetStringValue("Settings", "PlaylistFilenamePattern", playlist_filePattern);
 		config->SetIntValue("Settings", "UseUnicodeFilenames", useUnicodeNames);
 		config->SetIntValue("Settings", "ShowTitleInfo", showTitleInfo);
 		config->SetIntValue("Settings", "ShowTooltips", showTooltips);

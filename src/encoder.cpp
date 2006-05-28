@@ -84,6 +84,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	String		 in_filename;
 	String		 out_filename;
 	Track		*trackInfo;
+	Track		*firstTrackInfo = NIL;
 
 	encoder_activedrive = currentConfig->cdrip_activedrive;
 
@@ -94,6 +95,24 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	Playlist	 playlist;
 	CueSheet	 cueSheet;
 
+	Int		 total_length	= 0;
+	Float		 total_done	= 0;
+
+	progress_total->SetValue(0);
+
+	for (Int n = 0; n < num; n++)
+	{
+		if (!joblist->GetNthEntry(n)->IsMarked()) continue;
+
+		trackInfo	= joblist->GetNthTrack(n);
+
+		if (trackInfo->length >= 0)		total_length += trackInfo->length;
+		else if (trackInfo->approxLength >= 0)	total_length += trackInfo->approxLength;
+		else					total_length += (240 * trackInfo->rate * trackInfo->channels);
+	}
+
+	if (!currentConfig->enc_onTheFly && currentConfig->encoder != ENCODER_WAVE) total_length *= 2;
+
 	for (Int i = 0; i < num; (step == 1) ? i++ : i)
 	{
 		if (!joblist->GetNthEntry(i - nRemoved)->IsMarked()) continue;
@@ -102,6 +121,18 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		trackInfo	= joblist->GetNthTrack(i - nRemoved);
 		in_filename	= trackInfo->origFilename;
+
+		if (firstTrackInfo == NIL)
+		{
+			firstTrackInfo = new Track();
+
+			firstTrackInfo->artist = trackInfo->artist;
+			firstTrackInfo->album = trackInfo->album;
+			firstTrackInfo->genre = trackInfo->genre;
+			firstTrackInfo->year = trackInfo->year;
+			firstTrackInfo->isCDTrack = trackInfo->isCDTrack;
+			firstTrackInfo->drive = trackInfo->drive;
+		}
 
 		debug_out->OutputLine(String("Encoding from: ").Append(in_filename));
 
@@ -150,50 +181,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
 
 				out_filename.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
-
-				String	 dir = out_filename;
-				String	 tmp;
-				String	 tmp2;
-				Int	 lastBS = 0;
-
-				for (Int i = 0; i < dir.Length(); i++)
-				{
-					if (dir[i] == '\\' || dir[i] == '/')
-					{
-						if (tmp.Length() - lastBS > 96)
-						{
-							tmp2 = String().CopyN(tmp, lastBS + 96);
-
-							for (Int j = tmp2.Length() - 1; j > 0; j--)
-							{
-								if (tmp2[j] == ' ')	{ tmp2[j] = 0; i--; }
-								else			break;
-							}
-
-							out_filename.Replace(tmp, tmp2);
-
-							i -= (tmp.Length() - lastBS - 96);
-
-							tmp = tmp2;
-							dir = out_filename;
-						}
-
-						if (Setup::enableUnicode)	CreateDirectoryW(tmp, NIL);
-						else				CreateDirectoryA(tmp, NIL);
-
-						lastBS = i;
-					}
-
-					tmp[i] = dir[i];
-				}
-
-				if (out_filename.Length() - lastBS > 96) out_filename = String().CopyN(out_filename, lastBS + 96);
-
-				for (Int j = out_filename.Length() - 1; j > 0; j--)
-				{
-					if (out_filename[j] == ' ')	out_filename[j] = 0;
-					else				break;
-				}
+				out_filename = Utilities::CreateDirectoryForFile(out_filename);
 			}
 			else if (trackInfo->isCDTrack)
 			{
@@ -275,6 +263,21 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			if (filter_in != NIL)
 			{
+				if (!currentConfig->enc_onTheFly && step == 1)
+				{
+					Track	*nTrackInfo = filter_in->GetFileInfo(in_filename);
+
+					if (trackInfo->length >= 0)		total_length -= 2 * trackInfo->length;
+					else if (trackInfo->approxLength >= 0)	total_length -= 2 * trackInfo->approxLength;
+					else					total_length -= 2 * (240 * trackInfo->rate * trackInfo->channels);
+
+					total_length += 2 * nTrackInfo->length;
+
+					trackInfo->length = nTrackInfo->length;
+
+					delete nTrackInfo;
+				}
+
 				filter_in->SetFileSize(f_in->Size());
 
 				f_in->AddFilter(filter_in);
@@ -365,6 +368,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 					if (!currentConfig->enable_console)
 					{
+						progress_total->SetValue((int) (total_done + (position * (trackInfo->length * 100.0 / total_length) / trackInfo->length) * 10.0));
 						progress->SetValue((int) ((position * 100.0 / trackInfo->length) * 10.0));
 
 						if ((int) (position * 100.0 / trackInfo->length) != lastpercent)
@@ -429,6 +433,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 					if (!currentConfig->enable_console)
 					{
+						progress_total->SetValue((int) (total_done + (position * ((trackInfo->approxLength >= 0 ? trackInfo->approxLength : 240 * trackInfo->rate * trackInfo->channels) * 100.0 / total_length) / f_in->Size()) * 10.0));
 						progress->SetValue((int) ((position * 100.0 / f_in->Size()) * 10.0));
 
 						if ((int) (position * 100.0 / f_in->Size()) != lastpercent)
@@ -487,6 +492,10 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		delete f_in;
 
 		if (f_size == 0) remove(out_filename);
+
+		if (trackInfo->length >= 0)		total_done += ((trackInfo->length * 100.0 / total_length) * 10.0);
+		else if (trackInfo->approxLength >= 0)	total_done += ((trackInfo->approxLength * 100.0 / total_length) * 10.0);
+		else					total_done += (((240 * trackInfo->rate * trackInfo->channels) * 100.0 / total_length) * 10.0);
 
 		if (currentConfig->enc_onTheFly || step == 1 || encoder == ENCODER_WAVE)
 		{
@@ -549,10 +558,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			trackInfo->outfile = NIL;
 		}
 
-		if (!currentConfig->enc_onTheFly && step == 1 && !currentConfig->enc_keepWaves && encoder != ENCODER_WAVE)
-		{
-			remove(in_filename);
-		}
+		if (!currentConfig->enc_onTheFly && step == 1 && !currentConfig->enc_keepWaves && encoder != ENCODER_WAVE)						 remove(in_filename);
+		if (currentConfig->deleteAfterEncoding && !stop_encoding && ((currentConfig->enc_onTheFly && step == 1) || (!currentConfig->enc_onTheFly && step == 0))) remove(in_filename);
 
 		debug_out->OutputLine("Cleaning up...OK.");
 
@@ -566,6 +573,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		edb_filename->SetText(i18n->TranslateString("none"));
 		edb_percent->SetText("0%");
 		progress->SetValue(0);
+		progress_total->SetValue(0);
 		edb_time->SetText("00:00");
 	}
 
@@ -573,8 +581,34 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 	if (!stop_encoding && nRemoved > 0)
 	{
-		if (currentConfig->createPlaylist) playlist.Save(String(currentConfig->enc_outdir).Append("playlist.m3u"));
-		if (currentConfig->createCueSheet) cueSheet.Save(String(currentConfig->enc_outdir).Append("cuesheet.cue"));
+		String	 playlist_outdir = (currentConfig->playlist_useEncOutdir ? currentConfig->enc_outdir : currentConfig->playlist_outdir);
+		String	 out_filename = playlist_outdir;
+
+		if (firstTrackInfo->artist != NIL || firstTrackInfo->album != NIL)
+		{
+			String	 shortOutFileName = currentConfig->playlist_filePattern;
+
+			shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(firstTrackInfo->artist.Length() > 0 ? firstTrackInfo->artist : i18n->TranslateString("unknown artist"), True));
+			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(firstTrackInfo->album.Length() > 0 ? firstTrackInfo->album : i18n->TranslateString("unknown album"), True));
+			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(firstTrackInfo->genre.Length() > 0 ? firstTrackInfo->genre : i18n->TranslateString("unknown genre"), True));
+			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(firstTrackInfo->year > 0 ? String::FromInt(firstTrackInfo->year) : i18n->TranslateString("unknown year"), True));
+
+			out_filename.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
+			out_filename = Utilities::CreateDirectoryForFile(out_filename);
+		}
+		else if (firstTrackInfo->isCDTrack)
+		{
+			out_filename.Append("cd").Append(String::FromInt(firstTrackInfo->drive));
+		}
+		else
+		{
+			out_filename.Append(Utilities::ReplaceIncompatibleChars(i18n->TranslateString("unknown playlist"), True));
+		}
+
+		if (currentConfig->createPlaylist) playlist.Save(String(out_filename).Append(".m3u"));
+		if (currentConfig->createCueSheet) cueSheet.Save(String(out_filename).Append(".cue"));
+
+		delete firstTrackInfo;
 
 		if (currentConfig->shutdownAfterEncoding)
 		{

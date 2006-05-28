@@ -31,7 +31,6 @@ Bool BonkEnc::FilterInBONK::Activate()
 
 	decoder = ex_bonk_decoder_create();
 
-	samplesBuffer.Resize(131072);
 	dataBuffer.Resize(16384);
 
 	driver->ReadData(dataBuffer, 16384);
@@ -50,17 +49,15 @@ Bool BonkEnc::FilterInBONK::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInBONK::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInBONK::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	size = driver->ReadData(dataBuffer, size >= 0 ? size : 0);
 
-	Int	 nSamples = ex_bonk_decoder_decode_packet(decoder, dataBuffer, size, samplesBuffer, samplesBuffer.Size());
+	data.Resize(131072);
 
-	if (nSamples == -1) return 0;
+	Int	 nSamples = ex_bonk_decoder_decode_packet(decoder, dataBuffer, size, (signed short *) (unsigned char *) data, data.Size());
 
-	*data = (unsigned char *) (short *) samplesBuffer;
-
-	return nSamples * (format->bits / 8);
+	return (nSamples == -1) ? 0 : nSamples * (format->bits / 8);
 }
 
 BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)

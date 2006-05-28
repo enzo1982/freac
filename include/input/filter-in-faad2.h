@@ -39,7 +39,7 @@ namespace BonkEnc
 			Bool				 Activate();
 			Bool				 Deactivate();
 
-			Int				 ReadData(UnsignedByte **, Int);
+			Int				 ReadData(Buffer<UnsignedByte> &, Int);
 
 			Track				*GetFileInfo(const String &);
 	};

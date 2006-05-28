@@ -73,7 +73,7 @@ Bool BonkEnc::FilterOutBONK::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutBONK::WriteData(UnsignedByte *data, Int size)
+Int BonkEnc::FilterOutBONK::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	int	 bytes = 0;
 
@@ -85,14 +85,14 @@ Int BonkEnc::FilterOutBONK::WriteData(UnsignedByte *data, Int size)
 		{
 			if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
 			if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
+			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) (unsigned char *) data)[i] / 65536;
 		}
 
 		bytes = ex_bonk_encoder_encode_packet(encoder, samplesBuffer, size / (format->bits / 8), dataBuffer, dataBuffer.Size());
 	}
 	else
 	{
-		bytes = ex_bonk_encoder_encode_packet(encoder, (short *) data, size / (format->bits / 8), dataBuffer, dataBuffer.Size());
+		bytes = ex_bonk_encoder_encode_packet(encoder, (short *) (unsigned char *) data, size / (format->bits / 8), dataBuffer, dataBuffer.Size());
 	}
 
 	driver->WriteData(dataBuffer, bytes);

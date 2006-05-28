@@ -15,8 +15,8 @@ BonkEnc::Track::Track()
 	channels	= 0;
 	rate		= 0;
 	bits		= 0;
-	length		= 0;
-	approxLength	= 0;
+	length		= -1;
+	approxLength	= -1;
 	fileSize	= -1;
 	order		= BYTE_INTEL;
 

@@ -135,7 +135,7 @@ Bool BonkEnc::FilterOutTVQ::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutTVQ::WriteData(UnsignedByte *data, Int size)
+Int BonkEnc::FilterOutTVQ::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	OutStream	*d_out = new OutStream(STREAM_BUFFER, outBuffer, outBuffer.Size());
 
@@ -144,9 +144,9 @@ Int BonkEnc::FilterOutTVQ::WriteData(UnsignedByte *data, Int size)
 	for (int i = 0; i < size / (format->bits / 8); i++)
 	{
 		if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
-		if (format->bits == 16)	samplesBuffer[i] = ((short *) data)[i];
+		if (format->bits == 16)	samplesBuffer[i] = ((short *) (unsigned char *) data)[i];
 		if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-		if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
+		if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) (unsigned char *) data)[i] / 65536;
 	}
 
 	for (int ch = 0; ch < format->channels; ch++)

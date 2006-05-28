@@ -57,7 +57,7 @@ Bool BonkEnc::FilterInFAAD2::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInFAAD2::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (size <= 0) return -1;
 
@@ -76,9 +76,9 @@ Int BonkEnc::FilterInFAAD2::ReadData(UnsignedByte **data, Int size)
 		backBuffer.Resize(0);
 	}
 
-	Void		*samples = NIL;
-	Int		 bytesConsumed = 0;
-	Int		 samplesRead = 0;
+	Void	*samples = NIL;
+	Int	 bytesConsumed = 0;
+	Int	 samplesRead = 0;
 
 	samplesBuffer.Resize(0);
 
@@ -119,12 +119,10 @@ Int BonkEnc::FilterInFAAD2::ReadData(UnsignedByte **data, Int size)
 
         if (samplesRead > 0)
 	{
-		dataBuffer.Resize(samplesRead * 2);
+		data.Resize(samplesRead * 2);
 
-		memcpy(dataBuffer, samplesBuffer, samplesRead * 2);
+		memcpy((unsigned char *) data, samplesBuffer, samplesRead * 2);
 	}
-
-	*data = dataBuffer;
 
 	return samplesRead * 2;
 }
@@ -179,7 +177,7 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 	}
 	while (samples != NIL);
 
-	nFormat->approxLength = samplesRead * (nFormat->fileSize / samplesBytes);
+	if (samplesRead > 0 && samplesBytes > 0) nFormat->approxLength = samplesRead * (nFormat->fileSize / samplesBytes);
 
 	delete [] data;
 

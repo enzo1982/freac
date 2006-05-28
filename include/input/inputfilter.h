@@ -47,7 +47,7 @@ namespace BonkEnc
 					 InputFilter(Config *, Track *);
 			virtual		~InputFilter();
 
-			virtual Int	 ReadData(UnsignedByte **, Int) = 0;
+			virtual Int	 ReadData(Buffer<UnsignedByte> &, Int) = 0;
 
 			virtual Track	*GetFileInfo(const String &) = 0;
 			virtual Bool	 SetFileSize(UnsignedInt);

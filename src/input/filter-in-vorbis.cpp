@@ -96,7 +96,7 @@ Bool BonkEnc::FilterInVORBIS::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInVORBIS::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (size <= 0) return -1;
 
@@ -110,7 +110,7 @@ Int BonkEnc::FilterInVORBIS::ReadData(UnsignedByte **data, Int size)
 
 	size = 0;
 
-	int	 dataBufferLen = 0;
+	Int	 dataBufferLen = 0;
 
 	while (true)
 	{
@@ -158,19 +158,19 @@ Int BonkEnc::FilterInVORBIS::ReadData(UnsignedByte **data, Int size)
 
 					backBuffer.Resize(size);
 
-					memcpy(backBuffer, dataBuffer, size);
+					memcpy(backBuffer, data, size);
 
-					dataBuffer.Resize(dataBufferLen);
+					data.Resize(dataBufferLen);
 
-					memcpy(dataBuffer, backBuffer, size);
+					memcpy(data, backBuffer, size);
 
-					memcpy(((unsigned char *) dataBuffer) + size, convbuffer, bout * vi.channels * 2);
+					memcpy(((unsigned char *) data) + size, convbuffer, bout * vi.channels * 2);
 
 					size += (bout * vi.channels * 2);
 				}
 				else
 				{
-					memcpy(((unsigned char *) dataBuffer) + size, convbuffer, bout * vi.channels * 2);
+					memcpy(((unsigned char *) data) + size, convbuffer, bout * vi.channels * 2);
 
 					size += (bout * vi.channels * 2);
 				}
@@ -181,8 +181,6 @@ Int BonkEnc::FilterInVORBIS::ReadData(UnsignedByte **data, Int size)
 
 		if (ex_ogg_page_eos(&og)) break;
 	}
-
-	*data = dataBuffer;
 
 	return size;
 }

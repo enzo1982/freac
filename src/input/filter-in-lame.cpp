@@ -35,34 +35,29 @@ Bool BonkEnc::FilterInLAME::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInLAME::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInLAME::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (size <= 0) return -1;
 
 	inBytes += size;
 
-	buffer.Resize(size);
+	data.Resize(size);
 
-	driver->ReadData(buffer, size);
+	driver->ReadData(data, size);
 
 	pcm_l.Resize(size * 64);
 	pcm_r.Resize(size * 64);
 
-	int	 nsamples = ex_lame_decode(buffer, size, pcm_l, pcm_r);
+	int	 nsamples = ex_lame_decode(data, size, pcm_l, pcm_r);
 
-	buffer.Resize(nsamples * format->channels * (format->bits / 8));
+	data.Resize(nsamples * format->channels * (format->bits / 8));
 
 	for (Int i = 0; i < nsamples; i++)
 	{
-		for (Int j = 0; j < format->channels; j++)
-		{
-			((short *) (unsigned char *) buffer)[format->channels * i + j] = (j == 0) ? pcm_l[i] : pcm_r[i];
-		}
+		for (Int j = 0; j < format->channels; j++) ((short *) (unsigned char *) data)[format->channels * i + j] = (j == 0) ? pcm_l[i] : pcm_r[i];
 	}
 
-	*data = buffer;
-
-	return buffer.Size();
+	return data.Size();
 }
 
 BonkEnc::Track *BonkEnc::FilterInLAME::GetFileInfo(const String &inFile)
@@ -77,7 +72,7 @@ BonkEnc::Track *BonkEnc::FilterInLAME::GetFileInfo(const String &inFile)
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
 
-	buffer.Resize(4096);
+	Buffer<unsigned char>	 buffer(4096);
 
 	do
 	{

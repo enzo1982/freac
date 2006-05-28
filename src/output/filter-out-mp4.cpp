@@ -91,16 +91,24 @@ Bool BonkEnc::FilterOutMP4::Activate()
 
 Bool BonkEnc::FilterOutMP4::Deactivate()
 {
-	unsigned long	 bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
+	unsigned long	 bytes = 0;
 
-	if (bytes > 0)
+	do
 	{
-		Int		 samplesLeft	= totalSamples - encodedSamples + delaySamples;
-		MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
-		MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
+		bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
 
-		ex_MP4WriteSample(mp4File, mp4Track, bytes > 0 ? (u_int8_t *) (unsigned char *) outBuffer : NIL, bytes, dur, ofs, true);
+		if (bytes > 0)
+		{
+			Int		 samplesLeft	= totalSamples - encodedSamples + delaySamples;
+			MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
+			MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
+
+			ex_MP4WriteSample(mp4File, mp4Track, (u_int8_t *) (unsigned char *) outBuffer, bytes, dur, ofs, true);
+
+			encodedSamples += dur;
+		}
 	}
+	while (bytes > 0);
 
 	ex_faacEncClose(handle);
 
@@ -137,7 +145,7 @@ Bool BonkEnc::FilterOutMP4::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutMP4::WriteData(UnsignedByte *data, Int size)
+Int BonkEnc::FilterOutMP4::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	unsigned long	 bytes = 0;
 	Int		 samplesRead = size / (format->bits / 8);
@@ -150,14 +158,14 @@ Int BonkEnc::FilterOutMP4::WriteData(UnsignedByte *data, Int size)
 		{
 			if (format->bits == 8)	((short *) (int32_t *) samplesBuffer)[i] = (data[i] - 128) * 256;
 			if (format->bits == 24) samplesBuffer[i] = data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0);
-			if (format->bits == 32)	((float *) (int32_t *) samplesBuffer)[i] = (1.0 / 65536) * ((int32_t *) data)[i];
+			if (format->bits == 32)	((float *) (int32_t *) samplesBuffer)[i] = (1.0 / 65536) * ((int32_t *) (unsigned char *) data)[i];
 		}
 
 		bytes = ex_faacEncEncode(handle, samplesBuffer, samplesRead, outBuffer, outBuffer.Size());
 	}
 	else
 	{
-		bytes = ex_faacEncEncode(handle, (int32_t *) data, samplesRead, outBuffer, outBuffer.Size());
+		bytes = ex_faacEncEncode(handle, (int32_t *) (unsigned char *) data, samplesRead, outBuffer, outBuffer.Size());
 	}
 
 	if (bytes > 0)

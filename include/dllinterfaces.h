@@ -415,6 +415,7 @@ namespace BonkEnc
 	typedef MP4FileHandle			(*MP4READ)					(const char *, u_int32_t);
 	typedef MP4FileHandle			(*MP4CREATEEX)					(const char *, u_int32_t, u_int32_t, int, int, char *, u_int32_t, char **, u_int32_t);
 	typedef bool				(*MP4CLOSE)					(MP4FileHandle);
+	typedef bool				(*MP4FREEMEMORY)				(u_int8_t *);
 	typedef bool				(*MP4OPTIMIZE)					(const char *, const char *, u_int32_t);
 	typedef bool				(*MP4SETMETADATANAME)				(MP4FileHandle, const char *);
 	typedef bool				(*MP4GETMETADATANAME)				(MP4FileHandle, char **);
@@ -447,6 +448,7 @@ namespace BonkEnc
 	extern BEEXPORT MP4READ				 ex_MP4Read;
 	extern BEEXPORT MP4CREATEEX			 ex_MP4CreateEx;
 	extern BEEXPORT MP4CLOSE			 ex_MP4Close;
+	extern BEEXPORT MP4FREEMEMORY			 ex_MP4FreeMemory;
 	extern BEEXPORT MP4OPTIMIZE			 ex_MP4Optimize;
 	extern BEEXPORT MP4SETMETADATANAME		 ex_MP4SetMetadataName;
 	extern BEEXPORT MP4GETMETADATANAME		 ex_MP4GetMetadataName;

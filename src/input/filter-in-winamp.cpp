@@ -109,7 +109,7 @@ Bool BonkEnc::FilterInWinamp::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInWinamp::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInWinamp::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	get_more_samples	= 32768;
 	n_samples		= 0;
@@ -131,11 +131,9 @@ Int BonkEnc::FilterInWinamp::ReadData(UnsignedByte **data, Int size)
 
 	size = n_samples * (bits / 8) * channels;
 
-	buffer.Resize(size);
+	data.Resize(size);
 
-	memcpy(buffer, sampleBuffer, size);
-
-	*data = buffer;
+	memcpy(data, sampleBuffer, size);
 
 	return size;
 }

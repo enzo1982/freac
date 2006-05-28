@@ -316,6 +316,9 @@ MP4FileHandle MP4Read(
 bool MP4Close(
 	MP4FileHandle hFile);
 
+bool MP4FreeMemory(
+	u_int8_t *pMemory);
+
 bool MP4Optimize(
 	const char* existingFileName, 
 	const char* newFileName DEFAULT(NULL), 

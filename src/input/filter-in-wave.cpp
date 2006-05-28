@@ -39,13 +39,11 @@ Bool BonkEnc::FilterInWAVE::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInWAVE::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
-	buffer.Resize(size);
+	data.Resize(size);
 
-	driver->ReadData(buffer, size);
-
-	*data = buffer;
+	driver->ReadData(data, size);
 
 	return size;
 }

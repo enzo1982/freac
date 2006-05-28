@@ -60,7 +60,7 @@ Bool BonkEnc::FilterOutWAVE::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutWAVE::WriteData(UnsignedByte *data, Int size)
+Int BonkEnc::FilterOutWAVE::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	nOfSamples += (size / (format->bits / 8));
 

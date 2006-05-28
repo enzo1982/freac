@@ -20,7 +20,6 @@ namespace BonkEnc
 		private:
 			Int			 bytesLeft;
 
-			Buffer<unsigned char>	 buffer;
 			Buffer<unsigned char>	 backBuffer;
 		public:
 						 FilterInVOC(Config *, Track *);
@@ -29,7 +28,7 @@ namespace BonkEnc
 			Bool			 Activate();
 			Bool			 Deactivate();
 
-			Int			 ReadData(UnsignedByte **, Int);
+			Int			 ReadData(Buffer<UnsignedByte> &, Int);
 
 			Track			*GetFileInfo(const String &);
 	};

@@ -36,6 +36,7 @@ namespace BonkEnc
 			static String		 LocalizeNumber(Int);
 
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
+			static String		 CreateDirectoryForFile(const String &);
 
 			static Void		 GainShutdownPrivilege();
 	};

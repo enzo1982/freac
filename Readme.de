@@ -22,6 +22,7 @@ Geschichte
 		- Falsche AAC-Profil Einstellung korrigiert
 		- Unterstützung für FLAC Encoder hinzugefügt
 		- Zeige ungefähre Titellänge an, wenn die tatsächliche Länge unbekannt ist
+		- Weitere Fortschrittsleiste für Gesamtfortschritt hinzugefügt
 		- Dialog zum Senden von freedb-Informationen umgestaltet
 		- Die Jobliste kann nun mit gesendeten freedb-Informationen aktualisiert werden
 		- Unterstützung zum Wechseln zwischen EditBoxen mit dem Tabulator hinzugefügt
@@ -58,6 +59,7 @@ Geschichte
 		- Fehler bei Wiedergabe mit Winamp Output-Plugin behoben
 		- Unterstützung für freedb-Verbindungen über HTTPS-Proxies hinzugefügt
 		- Unterstützung für HTTP, HTTPS und SOCKS v5 Proxy-Authentifizierung hinzugefügt
+		- Die Konfiguration wird jetzt beim Schließen des Konfigurationsdialogs gespeichert
 		- Update auf MPEG4IP v1.5
 		- Update auf easyUpdate v0.3
 		- Update auf Bonk v0.10

@@ -20,7 +20,6 @@ namespace BonkEnc
 		private:
 			void			*decoder;
 
-			Buffer<signed short>	 samplesBuffer;
 			Buffer<unsigned char>	 dataBuffer;
 		public:
 						 FilterInBONK(Config *, Track *);
@@ -29,7 +28,7 @@ namespace BonkEnc
 			Bool			 Activate();
 			Bool			 Deactivate();
 
-			Int			 ReadData(UnsignedByte **, Int);
+			Int			 ReadData(Buffer<UnsignedByte> &, Int);
 
 			Track			*GetFileInfo(const String &);
 	};

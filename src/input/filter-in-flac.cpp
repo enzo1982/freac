@@ -61,7 +61,7 @@ Bool BonkEnc::FilterInFLAC::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInFLAC::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInFLAC::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (size <= 0) return -1;
 
@@ -75,20 +75,18 @@ Int BonkEnc::FilterInFLAC::ReadData(UnsignedByte **data, Int size)
 
 	size = samplesBuffer.Size() * (format->bits / 8);
 
-	dataBuffer.Resize(size);
+	data.Resize(size);
 
 	for (Int i = 0; i < samplesBuffer.Size(); i++)
 	{
-		if (format->bits == 8)		dataBuffer[i] = samplesBuffer[i] + 128;
-		else if (format->bits == 16)	((Short *) (unsigned char *) dataBuffer)[i] = samplesBuffer[i];
-		else if (format->bits == 24)	{ dataBuffer[3 * i] = samplesBuffer[i] & 255; dataBuffer[3 * i + 1] = (samplesBuffer[i] >> 8) & 255; dataBuffer[3 * i + 2] = (samplesBuffer[i] >> 16) & 255; }
+		if (format->bits == 8)		data[i] = samplesBuffer[i] + 128;
+		else if (format->bits == 16)	((Short *) (unsigned char *) data)[i] = samplesBuffer[i];
+		else if (format->bits == 24)	{ data[3 * i] = samplesBuffer[i] & 255; data[3 * i + 1] = (samplesBuffer[i] >> 8) & 255; data[3 * i + 2] = (samplesBuffer[i] >> 16) & 255; }
 	}
 
 	samplesBuffer.Resize(0);
 
 	samplesBufferMutex->Release();
-
-	*data = dataBuffer;
 
 	return size;
 }

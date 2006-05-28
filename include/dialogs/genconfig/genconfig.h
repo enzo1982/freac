@@ -14,6 +14,7 @@
 namespace BonkEnc
 {
 	class GeneralSettingsLayerEncoders;
+	class GeneralSettingsLayerPlaylists;
 	class GeneralSettingsLayerLanguage;
 	class GeneralSettingsLayerCDRip;
 	class GeneralSettingsLayerCDDB;
@@ -35,6 +36,7 @@ namespace BonkEnc
 			TabWidget			*reg_register;
 
 			GeneralSettingsLayerEncoders	*register_layer_encoders;
+			GeneralSettingsLayerPlaylists	*register_layer_playlists;
 			GeneralSettingsLayerLanguage	*register_layer_language;
 			GeneralSettingsLayerCDRip	*register_layer_cdrip;
 			GeneralSettingsLayerCDDB	*register_layer_cddb;

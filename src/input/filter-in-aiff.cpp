@@ -31,13 +31,11 @@ Bool BonkEnc::FilterInAIFF::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInAIFF::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInAIFF::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
-	buffer.Resize(size);
+	data.Resize(size);
 
-	driver->ReadData(buffer, size);
-
-	*data = buffer;
+	driver->ReadData(data, size);
 
 	return size;
 }

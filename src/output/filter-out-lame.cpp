@@ -317,7 +317,7 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutLAME::WriteData(UnsignedByte *data, Int size)
+Int BonkEnc::FilterOutLAME::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	debug_out->EnterMethod("FilterOutLAME::WriteData(unsigned char *, int)");
 
@@ -333,7 +333,7 @@ Int BonkEnc::FilterOutLAME::WriteData(UnsignedByte *data, Int size)
 		{
 			if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
 			if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
+			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) (unsigned char *) data)[i] / 65536;
 		}
 
 		if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, samplesBuffer, size / (format->bits / 8) / format->channels, outBuffer, outBuffer.Size());
@@ -341,8 +341,8 @@ Int BonkEnc::FilterOutLAME::WriteData(UnsignedByte *data, Int size)
 	}
 	else
 	{
-		if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, (signed short *) data, size / (format->bits / 8) / format->channels, outBuffer, outBuffer.Size());
-		else				bytes = ex_lame_encode_buffer(lameFlags, (signed short *) data, (signed short *) data, size / (format->bits / 8), outBuffer, outBuffer.Size());
+		if (format->channels == 2)	bytes = ex_lame_encode_buffer_interleaved(lameFlags, (signed short *) (unsigned char *) data, size / (format->bits / 8) / format->channels, outBuffer, outBuffer.Size());
+		else				bytes = ex_lame_encode_buffer(lameFlags, (signed short *) (unsigned char *) data, (signed short *) (unsigned char *) data, size / (format->bits / 8), outBuffer, outBuffer.Size());
 	}
 
 	driver->WriteData(outBuffer, bytes);

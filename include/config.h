@@ -73,6 +73,9 @@ namespace BonkEnc
 			String		 enc_filePattern;
 			Bool		 enc_onTheFly;
 			Bool		 enc_keepWaves;
+			Bool		 playlist_useEncOutdir;
+			String		 playlist_outdir;
+			String		 playlist_filePattern;
 			Bool		 useUnicodeNames;
 
 			Bool		 enable_id3v1;

@@ -35,6 +35,7 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 {
 	if (fileNames.GetNOfEntries() == 0) return False;
 
+	String		 format = String::SetOutputFormat("UTF-8");
 	OutStream	*file = new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
 
 	file->OutputLine("#EXTM3U");
@@ -49,11 +50,14 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 
 	delete file;
 
+	String::SetOutputFormat(format);
+
 	return True;
 }
 
 Bool BonkEnc::Playlist::Load(const String &fileName)
 {
+	String		 format = String::SetInputFormat("UTF-8");
 	InStream	*file = new InStream(STREAM_FILE, fileName, IS_READONLY);
 
 	if (String(file->InputLine()) == "#EXTM3U")
@@ -71,6 +75,8 @@ Bool BonkEnc::Playlist::Load(const String &fileName)
 	file->Close();
 
 	delete file;
+
+	String::SetInputFormat(format);
 
 	return True;
 }

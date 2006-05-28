@@ -24,8 +24,6 @@ namespace BonkEnc
 			Int			 byteCount;
 			unsigned char		*buffer;
 
-			Buffer<unsigned char>	 dataBuffer;
-
 			Int			 ReadCDText();
 
 			static Array<String>	 cdText;
@@ -34,7 +32,7 @@ namespace BonkEnc
 						 FilterInCDRip(Config *, Track *);
 						~FilterInCDRip();
 
-			Int			 ReadData(UnsignedByte **, Int);
+			Int			 ReadData(Buffer<UnsignedByte> &, Int);
 
 			Bool			 SetTrack(Int);
 			Int			 GetTrackSize();

@@ -92,6 +92,7 @@ namespace BonkEnc
 			Button			*btn_outdir;
 
 			Progressbar		*progress;
+			Progressbar		*progress_total;
 
 			Thread			*encoder_thread;
 			Bool			 pause_encoding;

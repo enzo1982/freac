@@ -56,7 +56,7 @@ Bool BonkEnc::FilterInMP4::Activate()
 
 		sampleId = 0;
 
-		free(buffer);
+		ex_MP4FreeMemory((u_int8_t *) buffer);
 	}
 
 	return true;
@@ -78,14 +78,14 @@ Bool BonkEnc::FilterInMP4::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInMP4::ReadData(UnsignedByte **data, Int size)
+Int BonkEnc::FilterInMP4::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (size <= 0) return -1;
 
 	inBytes += size;
 
-	Void		*samples = NIL;
-	Int		 samplesRead = 0;
+	Void	*samples = NIL;
+	Int	 samplesRead = 0;
 
 	samplesBuffer.Resize(0);
 
@@ -100,11 +100,11 @@ Int BonkEnc::FilterInMP4::ReadData(UnsignedByte **data, Int size)
 
 		samples = ex_NeAACDecDecode(handle, &frameInfo, buffer, buffer_size);
 
-		free(buffer);
+		ex_MP4FreeMemory((u_int8_t *) buffer);
 
 	        if ((frameInfo.error == 0) && (frameInfo.samples > 0))
 		{
-			unsigned char	*backBuffer = new unsigned char [samplesRead * 2];
+			backBuffer.Resize(samplesRead * 2);
 
 			memcpy(backBuffer, samplesBuffer, samplesRead * 2);
 
@@ -113,8 +113,6 @@ Int BonkEnc::FilterInMP4::ReadData(UnsignedByte **data, Int size)
 			memcpy(samplesBuffer, backBuffer, samplesRead * 2);
 			memcpy(samplesBuffer + samplesRead * 2, samples, frameInfo.samples * 2);
 
-			delete [] backBuffer;
-
 			samplesRead += frameInfo.samples;
 		}
 	}
@@ -122,12 +120,10 @@ Int BonkEnc::FilterInMP4::ReadData(UnsignedByte **data, Int size)
 
         if (samplesRead > 0)
 	{
-		dataBuffer.Resize(samplesRead * 2);
+		data.Resize(samplesRead * 2);
 
-		memcpy(dataBuffer, samplesBuffer, samplesRead * 2);
+		memcpy((unsigned char *) data, samplesBuffer, samplesRead * 2);
 	}
-
-	*data = dataBuffer;
 
 	return samplesRead * 2;
 }
@@ -157,12 +153,12 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 
 	char	*prevInFormat = String::SetInputFormat("UTF-8");
 
-	if (ex_MP4GetMetadataName(mp4File, &buffer)) { nFormat->title = buffer; free(buffer); }
-	if (ex_MP4GetMetadataArtist(mp4File, &buffer)) { nFormat->artist = buffer; free(buffer); }
-	if (ex_MP4GetMetadataComment(mp4File, &buffer)) { nFormat->comment = buffer; free(buffer); }
-	if (ex_MP4GetMetadataYear(mp4File, &buffer)) { nFormat->year = String(buffer).ToInt(); free(buffer); }
-	if (ex_MP4GetMetadataAlbum(mp4File, &buffer)) { nFormat->album = buffer; free(buffer); }
-	if (ex_MP4GetMetadataGenre(mp4File, &buffer)) { nFormat->genre = buffer; free(buffer); }
+	if (ex_MP4GetMetadataName(mp4File, &buffer)) { nFormat->title = buffer; ex_MP4FreeMemory((u_int8_t *) buffer); }
+	if (ex_MP4GetMetadataArtist(mp4File, &buffer)) { nFormat->artist = buffer; ex_MP4FreeMemory((u_int8_t *) buffer); }
+	if (ex_MP4GetMetadataComment(mp4File, &buffer)) { nFormat->comment = buffer; ex_MP4FreeMemory((u_int8_t *) buffer); }
+	if (ex_MP4GetMetadataYear(mp4File, &buffer)) { nFormat->year = String(buffer).ToInt(); ex_MP4FreeMemory((u_int8_t *) buffer); }
+	if (ex_MP4GetMetadataAlbum(mp4File, &buffer)) { nFormat->album = buffer; ex_MP4FreeMemory((u_int8_t *) buffer); }
+	if (ex_MP4GetMetadataGenre(mp4File, &buffer)) { nFormat->genre = buffer; ex_MP4FreeMemory((u_int8_t *) buffer); }
 	if (ex_MP4GetMetadataTrack(mp4File, (u_int16_t *) &trackNr, (u_int16_t *) &nOfTracks)) { nFormat->track = trackNr; }
 
 	String::SetInputFormat(prevInFormat);
@@ -192,7 +188,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 		nFormat->order		= BYTE_INTEL;
 		nFormat->bits		= 16;
 
-		free(esc_buffer);
+		ex_MP4FreeMemory((u_int8_t *) esc_buffer);
 
 		ex_NeAACDecClose(handle);
 	}

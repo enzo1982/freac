@@ -26,6 +26,7 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 {
 	if (fileNames.GetNOfEntries() == 0) return False;
 
+	String		 format = String::SetOutputFormat("UTF-8");
 	OutStream	*file	= new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
 	Bool		 album	= True;
 
@@ -57,6 +58,8 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 	file->Close();
 
 	delete file;
+
+	String::SetOutputFormat(format);
 
 	return True;
 }

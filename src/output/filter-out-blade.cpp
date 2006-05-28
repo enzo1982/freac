@@ -100,7 +100,7 @@ Bool BonkEnc::FilterOutBLADE::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutBLADE::WriteData(UnsignedByte *data, Int size)
+Int BonkEnc::FilterOutBLADE::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	unsigned long	 bytes = 0;
 
@@ -110,14 +110,14 @@ Int BonkEnc::FilterOutBLADE::WriteData(UnsignedByte *data, Int size)
 		{
 			if (format->bits == 8)	samplesBuffer[i] = (data[i] - 128) * 256;
 			if (format->bits == 24) samplesBuffer[i] = (int) (data[3 * i] + 256 * data[3 * i + 1] + 65536 * data[3 * i + 2] - (data[3 * i + 2] & 128 ? 16777216 : 0)) / 256;
-			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) data)[i] / 65536;
+			if (format->bits == 32)	samplesBuffer[i] = (int) ((long *) (unsigned char *) data)[i] / 65536;
 		}
 
 		ex_beEncodeChunk(handle, size / (format->bits / 8), samplesBuffer, outBuffer, &bytes);
 	}
 	else
 	{
-		ex_beEncodeChunk(handle, size / (format->bits / 8), (short *) data, outBuffer, &bytes);
+		ex_beEncodeChunk(handle, size / (format->bits / 8), (short *) (unsigned char *) data, outBuffer, &bytes);
 	}
 
 	driver->WriteData(outBuffer, bytes);

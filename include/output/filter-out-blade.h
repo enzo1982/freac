@@ -31,7 +31,7 @@ namespace BonkEnc
 			Bool			 Activate();
 			Bool			 Deactivate();
 
-			Int			 WriteData(UnsignedByte *, Int);
+			Int			 WriteData(Buffer<UnsignedByte> &, Int);
 	};
 };
 

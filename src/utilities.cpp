@@ -370,6 +370,55 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 	return rVal;
 }
 
+String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
+{
+	String	 rFileName = fileName;
+	String	 dir = fileName;
+	String	 tmpDir;
+	Int	 lastBS = 0;
+
+	for (Int i = 0; i < dir.Length(); i++)
+	{
+		if (dir[i] == '\\' || dir[i] == '/')
+		{
+			if (tmpDir.Length() - lastBS > 96)
+			{
+				String	 tmpDir2 = String().CopyN(tmpDir, lastBS + 96);
+
+				for (Int j = tmpDir2.Length() - 1; j > 0; j--)
+				{
+					if (tmpDir2[j] == ' ')	{ tmpDir2[j] = 0; i--; }
+					else			break;
+				}
+
+				rFileName.Replace(tmpDir, tmpDir2);
+
+				i -= (tmpDir.Length() - lastBS - 96);
+
+				tmpDir = tmpDir2;
+				dir = rFileName;
+			}
+
+			if (Setup::enableUnicode) CreateDirectoryW(tmpDir, NIL);
+			else			  CreateDirectoryA(tmpDir, NIL);
+
+			lastBS = i;
+		}
+
+		tmpDir[i] = dir[i];
+	}
+
+	if (rFileName.Length() - lastBS > 96) rFileName = String().CopyN(rFileName, lastBS + 96);
+
+	for (Int j = rFileName.Length() - 1; j > 0; j--)
+	{
+		if (rFileName[j] == ' ') rFileName[j] = 0;
+		else			 break;
+	}
+
+	return rFileName;
+}
+
 Void BonkEnc::Utilities::GainShutdownPrivilege()
 {
 	OSVERSIONINFOA	 vInfo;

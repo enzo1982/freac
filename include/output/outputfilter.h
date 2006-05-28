@@ -32,7 +32,7 @@ namespace BonkEnc
 					 OutputFilter(Config *, Track *);
 			virtual		~OutputFilter();
 
-			virtual Int	 WriteData(UnsignedByte *, Int) = 0;
+			virtual Int	 WriteData(Buffer<UnsignedByte> &, Int) = 0;
 	};
 };
 

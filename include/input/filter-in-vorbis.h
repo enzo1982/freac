@@ -31,7 +31,6 @@ namespace BonkEnc
 
 			char			*buffer;
 
-			Buffer<unsigned char>	 dataBuffer;
 			Buffer<unsigned char>	 backBuffer;
 		public:
 						 FilterInVORBIS(Config *, Track *);
@@ -40,7 +39,7 @@ namespace BonkEnc
 			Bool			 Activate();
 			Bool			 Deactivate();
 
-			Int			 ReadData(UnsignedByte **, Int);
+			Int			 ReadData(Buffer<UnsignedByte> &, Int);
 
 			Track			*GetFileInfo(const String &);
 	};

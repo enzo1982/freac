@@ -166,8 +166,6 @@ BonkEnc::BonkEnc::BonkEnc()
 			if (currentConfig->cdrip_numdrives <= currentConfig->cdrip_activedrive) currentConfig->cdrip_activedrive = 0;
 		}
 	}
-
-	if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
 }
 
 BonkEnc::BonkEnc::~BonkEnc()

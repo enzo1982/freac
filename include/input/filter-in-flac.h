@@ -34,8 +34,6 @@ namespace BonkEnc
 
 			Buffer<signed int>		 samplesBuffer;
 
-			Buffer<unsigned char>		 dataBuffer;
-
 			Thread				*decoderThread;
 			Mutex				*readDataMutex;
 			Mutex				*samplesBufferMutex;
@@ -49,7 +47,7 @@ namespace BonkEnc
 			Bool				 Activate();
 			Bool				 Deactivate();
 
-			Int				 ReadData(UnsignedByte **, Int);
+			Int				 ReadData(Buffer<UnsignedByte> &, Int);
 
 			Track				*GetFileInfo(const String &);
 	};

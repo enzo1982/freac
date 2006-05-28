@@ -379,11 +379,11 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 		}
 	}
 
-	if (format->fileSize > 0)	   format->fileSizeString = Utilities::LocalizeNumber(format->fileSize);
+	if (format->fileSize > 0)	    format->fileSizeString = Utilities::LocalizeNumber(format->fileSize);
 
-	if (format->length > 0)		   format->lengthString = String::FromInt(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->length / (format->rate * format->channels) % 60));
-	else if (format->approxLength > 0) format->lengthString = String("~ ").Append(String::FromInt(Math::Floor(format->approxLength / (format->rate * format->channels) / 60)).Append(":").Append((format->approxLength / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->approxLength / (format->rate * format->channels) % 60)));
-	else				   format->lengthString = "?";
+	if (format->length >= 0)	    format->lengthString = String::FromInt(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->length / (format->rate * format->channels) % 60));
+	else if (format->approxLength >= 0) format->lengthString = String("~ ").Append(String::FromInt(Math::Floor(format->approxLength / (format->rate * format->channels) / 60)).Append(":").Append((format->approxLength / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->approxLength / (format->rate * format->channels) % 60)));
+	else				    format->lengthString = "?";
 
 	wchar_t	 sign[2] = { 0x2248, 0 };
 
