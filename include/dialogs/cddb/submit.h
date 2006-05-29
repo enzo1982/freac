@@ -34,6 +34,7 @@ namespace BonkEnc
 
 			Text		*text_artist;
 			EditBox		*edit_artist;
+			List		*list_artist;
 			Text		*text_album;
 			EditBox		*edit_album;
 			Text		*text_year;
@@ -47,6 +48,8 @@ namespace BonkEnc
 			ListBox		*list_tracks;
 			Text		*text_track;
 			EditBox		*edit_track;
+			Text		*text_trackartist;
+			EditBox		*edit_trackartist;
 			Text		*text_title;
 			EditBox		*edit_title;
 			Text		*text_comment;
@@ -70,6 +73,7 @@ namespace BonkEnc
 			CDDBInfo	*cddbInfo;
 			Bool		 ownCddbInfo;
 
+			Array<String>	 artists;
 			Array<String>	 titles;
 			Array<String>	 comments;
 
@@ -78,14 +82,19 @@ namespace BonkEnc
 			Int		 ReadCDText();
 			Int		 FreeCDText();
 
+			String		 GetCDDBGenre(const String &);
+		slots:
 			Void		 Submit();
 			Void		 Cancel();
+
 			Void		 ChangeDrive();
 			Void		 SelectTrack();
 			Void		 UpdateTrack();
 			Void		 FinishTrack();
+			Void		 FinishArtist();
 			Void		 UpdateComment();
-			String		 GetCDDBGenre(const String &);
+
+			Void		 SetArtist();	
 		public:
 					 cddbSubmitDlg();
 					~cddbSubmitDlg();

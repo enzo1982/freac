@@ -31,13 +31,13 @@ Int	 ENCODER_FLAC		= -1;
 Int	 ENCODER_TVQ		= -1;
 Int	 ENCODER_WAVE		= -1;
 
-BonkEnc::Config		*BonkEnc::BonkEnc::currentConfig	= NIL;
-I18n::Translator	*BonkEnc::BonkEnc::i18n			= NIL;
+BonkEnc::Config		*BonkEnc::BonkEnc::currentConfig = NIL;
+I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version = "v1.0 Beta 4";
-String	 BonkEnc::BonkEnc::cddbVersion = "v1.0beta4pre";
+String	 BonkEnc::BonkEnc::version = "v1.0 Beta 4 - Translators Preview";
+String	 BonkEnc::BonkEnc::cddbVersion = "v1.0beta4";
 String	 BonkEnc::BonkEnc::shortVersion = "v1.0";
 
 BonkEnc::BonkEnc::BonkEnc()

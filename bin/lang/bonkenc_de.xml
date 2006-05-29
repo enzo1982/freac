@@ -353,5 +353,6 @@
     <entry id="341" string="Create playlists">Playlisten erzeugen</entry>
     <entry id="342" string="Create cue sheets">Cuesheets erzeugen</entry>
     <entry id="343" string="Use encoder output directory">Codierer-Ausgabeverzeichnis verwenden</entry>
+    <entry id="344" string="Various artists">Verschiedene Künstler</entry>
   </data>
 </LangFile>

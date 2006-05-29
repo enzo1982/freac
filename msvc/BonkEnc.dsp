@@ -219,6 +219,10 @@ SOURCE=..\src\dialogs\genconfig\genconfig_language.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\dialogs\genconfig\genconfig_playlists.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\dialogs\genconfig\genconfig_plugins.cpp
 # End Source File
 # Begin Source File
@@ -489,6 +493,10 @@ SOURCE=..\include\dialogs\genconfig\genconfig_encoders.h
 # Begin Source File
 
 SOURCE=..\include\dialogs\genconfig\genconfig_language.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\dialogs\genconfig\genconfig_playlists.h
 # End Source File
 # Begin Source File
 

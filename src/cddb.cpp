@@ -59,7 +59,6 @@ Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 Int BonkEnc::CDDB::ComputeDiscID()
 {
 	ex_CR_SetActiveCDROM(activeDriveID);
-
 	ex_CR_ReadToc();
 
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
@@ -105,14 +104,12 @@ String BonkEnc::CDDB::GetCategory()
 
 String BonkEnc::CDDB::GetCDDBQueryString()
 {
-	String	 str = String("cddb query ").Append(DiscIDToString(ComputeDiscID()));
-
 	ex_CR_SetActiveCDROM(activeDriveID);
-
 	ex_CR_ReadToc();
 
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 	TOCENTRY entry;
+	String	 str = String("cddb query ").Append(DiscIDToString(ComputeDiscID()));
 
 	str.Append(" ").Append(String::FromInt(numTocEntries));
 
@@ -598,6 +595,7 @@ Bool BonkEnc::CDDB::Read(const String &read, CDDBInfo *cddbInfo)
 
 Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 {
+	Bool		 fuzzy = False;
 	CDDBInfo	*revisionInfo = new CDDBInfo();
 
 	ConnectToServer();
@@ -614,7 +612,11 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 			{
 				cddbInfo->category = GetNthCategory(0);
 			}
-			else if (query != "fuzzy")
+			else if (query == "fuzzy")
+			{
+				fuzzy = True;
+			}
+			else
 			{
 				for (Int i = 0; i < query.Length(); i++)
 				{
@@ -626,7 +628,7 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 		}
 	}
 
-	if (Read(String(cddbInfo->category).Append(" ").Append(cddbInfo->DiscIDToString()), revisionInfo))
+	if (!fuzzy && Read(String(cddbInfo->category).Append(" ").Append(cddbInfo->DiscIDToString()), revisionInfo))
 	{
 		if (cddbInfo->revision == 0)
 		{
@@ -665,6 +667,20 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 	CloseConnection();
 
 	delete revisionInfo;
+
+	ex_CR_SetActiveCDROM(activeDriveID);
+	ex_CR_ReadToc();
+
+	Int	 numTocEntries = ex_CR_GetNumTocEntries();
+
+	for (Int l = 0; l < numTocEntries; l++)
+	{
+		// update track offsets in case we had a fuzzy match
+
+		cddbInfo->trackOffsets.SetEntry(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
+	}
+
+	cddbInfo->discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
 
 	String	 str;
 	String	 content;
