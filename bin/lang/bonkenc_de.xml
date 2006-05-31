@@ -354,5 +354,6 @@
     <entry id="342" string="Create cue sheets">Cuesheets erzeugen</entry>
     <entry id="343" string="Use encoder output directory">Codierer-Ausgabeverzeichnis verwenden</entry>
     <entry id="344" string="Various artists">Verschiedene Künstler</entry>
+    <entry id="345" string="Data track">Datentrack</entry>
   </data>
 </LangFile>

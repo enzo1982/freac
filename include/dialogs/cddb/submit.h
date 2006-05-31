@@ -82,6 +82,8 @@ namespace BonkEnc
 			Int		 ReadCDText();
 			Int		 FreeCDText();
 
+			Void		 UpdateTrackList();
+
 			String		 GetCDDBGenre(const String &);
 		slots:
 			Void		 Submit();

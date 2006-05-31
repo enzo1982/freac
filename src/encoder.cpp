@@ -83,8 +83,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 	String		 in_filename;
 	String		 out_filename;
+	String		 playlist_filename;
 	Track		*trackInfo;
-	Track		*firstTrackInfo = NIL;
 
 	encoder_activedrive = currentConfig->cdrip_activedrive;
 
@@ -122,16 +122,32 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		trackInfo	= joblist->GetNthTrack(i - nRemoved);
 		in_filename	= trackInfo->origFilename;
 
-		if (firstTrackInfo == NIL)
+		if (nRemoved == 0)
 		{
-			firstTrackInfo = new Track();
+			String	 playlist_outdir = (currentConfig->playlist_useEncOutdir ? currentConfig->enc_outdir : currentConfig->playlist_outdir);
 
-			firstTrackInfo->artist = trackInfo->artist;
-			firstTrackInfo->album = trackInfo->album;
-			firstTrackInfo->genre = trackInfo->genre;
-			firstTrackInfo->year = trackInfo->year;
-			firstTrackInfo->isCDTrack = trackInfo->isCDTrack;
-			firstTrackInfo->drive = trackInfo->drive;
+			playlist_filename = playlist_outdir;
+
+			if (trackInfo->artist != NIL || trackInfo->album != NIL)
+			{
+				String	 shortOutFileName = currentConfig->playlist_filePattern;
+
+				shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), True));
+				shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"), True));
+				shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre"), True));
+				shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : i18n->TranslateString("unknown year"), True));
+
+				playlist_filename.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
+				playlist_filename = Utilities::CreateDirectoryForFile(playlist_filename);
+			}
+			else if (trackInfo->isCDTrack)
+			{
+				playlist_filename.Append("cd").Append(String::FromInt(trackInfo->drive));
+			}
+			else
+			{
+				playlist_filename.Append(Utilities::ReplaceIncompatibleChars(i18n->TranslateString("unknown playlist"), True));
+			}
 		}
 
 		debug_out->OutputLine(String("Encoding from: ").Append(in_filename));
@@ -501,7 +517,16 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		{
 			String	 relativeFileName;
 
-			for (Int m = 0; m < out_filename.Length() - currentConfig->enc_outdir.Length(); m++) relativeFileName[m] = out_filename[m + currentConfig->enc_outdir.Length()];
+			if (out_filename.StartsWith(String(File(playlist_filename).GetFilePath()).Append("\\")))
+			{
+				String	 playlist_path = String(File(playlist_filename).GetFilePath()).Append("\\");
+
+				for (Int m = 0; m < out_filename.Length() - playlist_path.Length(); m++) relativeFileName[m] = out_filename[m + playlist_path.Length()];
+			}
+			else
+			{
+				relativeFileName = out_filename;
+			}
 
 			playlist.AddTrack(relativeFileName, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (trackInfo->rate * trackInfo->channels)));
 			cueSheet.AddTrack(relativeFileName, trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
@@ -581,34 +606,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 	if (!stop_encoding && nRemoved > 0)
 	{
-		String	 playlist_outdir = (currentConfig->playlist_useEncOutdir ? currentConfig->enc_outdir : currentConfig->playlist_outdir);
-		String	 out_filename = playlist_outdir;
-
-		if (firstTrackInfo->artist != NIL || firstTrackInfo->album != NIL)
-		{
-			String	 shortOutFileName = currentConfig->playlist_filePattern;
-
-			shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(firstTrackInfo->artist.Length() > 0 ? firstTrackInfo->artist : i18n->TranslateString("unknown artist"), True));
-			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(firstTrackInfo->album.Length() > 0 ? firstTrackInfo->album : i18n->TranslateString("unknown album"), True));
-			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(firstTrackInfo->genre.Length() > 0 ? firstTrackInfo->genre : i18n->TranslateString("unknown genre"), True));
-			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(firstTrackInfo->year > 0 ? String::FromInt(firstTrackInfo->year) : i18n->TranslateString("unknown year"), True));
-
-			out_filename.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
-			out_filename = Utilities::CreateDirectoryForFile(out_filename);
-		}
-		else if (firstTrackInfo->isCDTrack)
-		{
-			out_filename.Append("cd").Append(String::FromInt(firstTrackInfo->drive));
-		}
-		else
-		{
-			out_filename.Append(Utilities::ReplaceIncompatibleChars(i18n->TranslateString("unknown playlist"), True));
-		}
-
-		if (currentConfig->createPlaylist) playlist.Save(String(out_filename).Append(".m3u"));
-		if (currentConfig->createCueSheet) cueSheet.Save(String(out_filename).Append(".cue"));
-
-		delete firstTrackInfo;
+		if (currentConfig->createPlaylist) playlist.Save(String(playlist_filename).Append(".m3u"));
+		if (currentConfig->createCueSheet) cueSheet.Save(String(playlist_filename).Append(".cue"));
 
 		if (currentConfig->shutdownAfterEncoding)
 		{
