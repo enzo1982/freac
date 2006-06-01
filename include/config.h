@@ -52,6 +52,11 @@ namespace BonkEnc
 			Bool		 deleteAfterEncoding;
 			Bool		 shutdownAfterEncoding;
 
+			Bool		 writeToInputDir;
+			Bool		 allowOverwrite;
+
+			Bool		 encodeToSingleFile;
+
 			String		 lastAddedDir;
 			String		 lastAddedPattern;
 
