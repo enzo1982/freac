@@ -355,5 +355,11 @@
     <entry id="343" string="Use encoder output directory"/>
     <entry id="344" string="Various artists"/>
     <entry id="345" string="Data track"/>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:"/>
+    <entry id="347" string="Use input file directory if possible"/>
+    <entry id="348" string="Encode to input file directory if possible"/>
+    <entry id="349" string="Allow overwriting input file"/>
+    <entry id="350" string="Encode to single file"/>
+    <entry id="351" string="Encoder options"/>
   </data>
 </LangFile>

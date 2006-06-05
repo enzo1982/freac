@@ -26,6 +26,8 @@ namespace BonkEnc
 			ComboBox	*combo_encoder;
 			Button		*button_config;
 			GroupBox	*group_outdir;
+			CheckBox	*check_useInputDir;
+			CheckBox	*check_allowOverwrite;
 			EditBox		*edit_outdir;
 			Button		*button_outdir_browse;
 			GroupBox	*group_filename;
@@ -34,11 +36,15 @@ namespace BonkEnc
 			GroupBox	*group_options;
 			CheckBox	*check_onTheFly;
 			CheckBox	*check_keepWaves;
+			CheckBox	*check_singleFile;
 			GroupBox	*group_unicode;
 			CheckBox	*check_unicode_files;
 
 			Bool		 onTheFly;
 			Bool		 keepWaves;
+			Bool		 useInputDir;
+			Bool		 allowOverwrite;
+			Bool		 singleFile;
 
 			Bool		 unicode_files;
  
@@ -46,12 +52,19 @@ namespace BonkEnc
 		slots:
 			Void		 SelectDir();
 			Void		 ConfigureEncoder();
+
 			Void		 ToggleOnTheFly();
+			Void		 ToggleUseInputDir();
+			Void		 ToggleEncodeToSingleFile();
 		public:
 					 GeneralSettingsLayerEncoders();
 					~GeneralSettingsLayerEncoders();
 
 			Int		 GetSelectedEncoder();
+
+			Bool		 GetUseInputDirectory();
+			Bool		 GetAllowOverwrite();
+			Bool		 GetEncodeToSingleFile();
 
 			Bool		 GetOnTheFly();
 			Bool		 GetKeepWaveFiles();

@@ -57,6 +57,9 @@ extern "C"
  * bonk_encoder_encode_packet. The function will write any remaining
  * data to the buffer given as a parameter. The number of bytes written
  * will be returned.
+ *
+ * If the buffer is too small, the function will return the number of
+ * bytes needed in the buffer.
  */
 	BONKAPI int		BONKCONV	 bonk_encoder_finish(void *, unsigned char *, int);
 

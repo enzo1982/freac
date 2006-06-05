@@ -275,7 +275,15 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 
 	if (currentConfig->lame_vbrmode != vbr_off)
 	{
-		FILE	*f_out = fopen(Application::GetApplicationDirectory().Append("xing.tmp"), "w+b");
+		char	*tempa = new char [MAX_PATH];
+
+		GetTempPathA(MAX_PATH, tempa);
+
+		String	 tempFile = String(tempa).Append("xing.tmp");
+
+		delete [] tempa;
+
+		FILE	*f_out = fopen(tempFile, "w+b");
 
 		if (f_out != NIL)
 		{
@@ -298,7 +306,8 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 			driver->WriteData(buffer, buffer.Size());
 
 			fclose(f_out);
-			remove(Application::GetApplicationDirectory().Append("xing.tmp"));
+
+			File(tempFile).Delete();
 		}
 	}
 

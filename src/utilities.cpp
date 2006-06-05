@@ -25,6 +25,16 @@
 #include <input/filter-in-flac.h>
 #include <input/filter-in-winamp.h>
 
+#include <output/filter-out-blade.h>
+#include <output/filter-out-bonk.h>
+#include <output/filter-out-faac.h>
+#include <output/filter-out-flac.h>
+#include <output/filter-out-lame.h>
+#include <output/filter-out-mp4.h>
+#include <output/filter-out-tvq.h>
+#include <output/filter-out-vorbis.h>
+#include <output/filter-out-wave.h>
+
 #include <dllinterfaces.h>
 
 using namespace smooth::System;
@@ -161,6 +171,27 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 	}
 
 	return filter_in;
+}
+
+BonkEnc::OutputFilter *BonkEnc::Utilities::CreateOutputFilter(Int encoder, Track *trackInfo)
+{
+	OutputFilter	*filter_out = NIL;
+
+	if (encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_BONKENC)		filter_out = new FilterOutBONK(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_FLAC)		filter_out = new FilterOutFLAC(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_TVQ)		filter_out = new FilterOutTVQ(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_LAMEENC)		filter_out = new FilterOutLAME(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_VORBISENC)	filter_out = new FilterOutVORBIS(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_WAVE)		filter_out = new FilterOutWAVE(BonkEnc::currentConfig, trackInfo);
+
+	if (encoder == ENCODER_FAAC)
+	{
+		if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->faac_enable_mp4) filter_out = new FilterOutMP4(BonkEnc::currentConfig, trackInfo);
+		else										   filter_out = new FilterOutFAAC(BonkEnc::currentConfig, trackInfo);
+	}
+
+	return filter_out;
 }
 
 Void BonkEnc::Utilities::FillGenreList(List *list)

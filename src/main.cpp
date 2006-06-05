@@ -141,6 +141,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_trackmenu		= new PopupMenu();
 	menu_help		= new PopupMenu();
 	menu_encoders		= new PopupMenu();
+	menu_encoder_options	= new PopupMenu();
 	menu_charsets		= new PopupMenu();
 	menu_charsets_all	= new PopupMenu();
 	menu_case		= new PopupMenu();
@@ -642,6 +643,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(menu_files);
 	DeleteObject(menu_seldrive);
 	DeleteObject(menu_encoders);
+	DeleteObject(menu_encoder_options);
 	DeleteObject(menu_database);
 	DeleteObject(menu_trackmenu);
 	DeleteObject(menu_help);
@@ -862,6 +864,7 @@ Void BonkEnc::BonkEncGUI::ConfigureGeneral()
 	edb_outdir->SetText(currentConfig->enc_outdir);
 
 	CheckBox::internalCheckValues.Emit();
+	ToggleUseInputDirectory();
 
 	currentConfig->SaveSettings();
 }
@@ -1332,6 +1335,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_addsubmenu->RemoveAllEntries();
 	menu_encode->RemoveAllEntries();
 	menu_encoders->RemoveAllEntries();
+	menu_encoder_options->RemoveAllEntries();
 	menu_database->RemoveAllEntries();
 	menu_trackmenu->RemoveAllEntries();
 	menu_help->RemoveAllEntries();
@@ -1421,11 +1425,22 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
 	}
 
-	menu_encode->AddEntry();
-	menu_encode->AddEntry(i18n->TranslateString("Delete original files after encoding"), NIL, NIL, &currentConfig->deleteAfterEncoding)->onAction.Connect(&BonkEncGUI::ConfirmDeleteAfterEncoding, this);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, &currentConfig->encodeToSingleFile);
+
+	menu_encoder_options->AddEntry();
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file directory if possible"), NIL, NIL, &currentConfig->writeToInputDir)->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
+	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, &currentConfig->allowOverwrite);
+
+	menu_encoder_options->AddEntry();
+	menu_encoder_options->AddEntry(i18n->TranslateString("Delete original files after encoding"), NIL, NIL, &currentConfig->deleteAfterEncoding)->onAction.Connect(&BonkEncGUI::ConfirmDeleteAfterEncoding, this);
+
+	menu_encoder_options->AddEntry();
+	menu_encoder_options->AddEntry(i18n->TranslateString("Shutdown after encoding"), NIL, NIL, &currentConfig->shutdownAfterEncoding);
 
 	menu_encode->AddEntry();
-	menu_encode->AddEntry(i18n->TranslateString("Shutdown after encoding"), NIL, NIL, &currentConfig->shutdownAfterEncoding);
+	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), NIL, menu_encoder_options);
+
+	ToggleUseInputDirectory();
 
 	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
@@ -1644,6 +1659,17 @@ Void BonkEnc::BonkEncGUI::AddFilesFromDirectory()
 	if (dialog->ShowDialog() == Success()) joblist->AddTrackByDragAndDrop(dialog->GetDirectory());
 
 	DeleteObject(dialog);
+}
+
+Void BonkEnc::BonkEncGUI::ToggleUseInputDirectory()
+{
+	if (currentConfig->writeToInputDir) allowOverwriteMenuEntry->Activate();
+	else				    allowOverwriteMenuEntry->Deactivate();
+}
+
+Void BonkEnc::BonkEncGUI::ToggleEncodeToSingleFile()
+{
+	if (currentConfig->encodeToSingleFile) currentConfig->enc_onTheFly = True;
 }
 
 Void BonkEnc::BonkEncGUI::ToggleEditPopup()

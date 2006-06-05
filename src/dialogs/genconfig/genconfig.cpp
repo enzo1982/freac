@@ -30,7 +30,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 
 	currentConfig = BonkEnc::currentConfig;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(120, 120), Size(568, 298));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(120, 120), Size(568, 329));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -62,7 +62,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 548;
-	size.cy	= 213;
+	size.cy	= 244;
 
 	reg_register		= new TabWidget(pos, size);
 
@@ -179,6 +179,9 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->enc_outdir		= register_layer_encoders->GetOutputDirectory();
 	currentConfig->enc_filePattern		= register_layer_encoders->GetFilenamePattern();
 	currentConfig->enc_onTheFly		= register_layer_encoders->GetOnTheFly();
+	currentConfig->writeToInputDir		= register_layer_encoders->GetUseInputDirectory();
+	currentConfig->allowOverwrite		= register_layer_encoders->GetAllowOverwrite();
+	currentConfig->encodeToSingleFile	= register_layer_encoders->GetEncodeToSingleFile();
 	currentConfig->enc_keepWaves		= register_layer_encoders->GetKeepWaveFiles();
 	currentConfig->useUnicodeNames		= register_layer_encoders->GetUnicodeFilenames();
 

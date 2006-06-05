@@ -107,7 +107,28 @@ namespace BonkEnc
 			Bool			 dontUpdateInfo;
 			Int			 encoder_activedrive;
 
+			Int			 totalSamples;
+			Float			 totalSamplesDone;
+
+			Int			 startTicks;
+			Int			 lastTicks;
+
+			Int			 lastPercent;
+
 			Int			 Encoder(Thread *);
+
+			String			 GetPlaylistFileName(Track *);
+			String			 GetRelativeFileName(const String &, const String &);
+
+			String			 GetOutputFileName(Track *);
+			String			 GetSingleOutputFileName(Track *);
+
+			Void			 ComputeTotalNumberOfSamples();
+			Void			 FixTotalNumberOfSamples(Track *, Track *);
+
+			Void			 InitProgressValues();
+			Void			 UpdateProgressValues(Track *, Int);
+			Void			 FinishProgressValues(Track *);
 		public:
 			static String		 version;
 			static String		 cddbVersion;

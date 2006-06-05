@@ -41,7 +41,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	prog_status		= new Progressbar(pos, size, OR_HORZ, PB_NOTEXT, 0, 100, 0);
 
 	pos.x += 208;
-	pos.y -= 2;
+	pos.y -= 1;
 	size.cx = 0;
 	size.cy = 0;
 

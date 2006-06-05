@@ -10,9 +10,9 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 Beta 4 CVS (Mai 2006)
+	Version 1.0 Beta 4 CVS (Juni 2006)
 
-		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch, Schwedisch und Portugisisch (Brasilianisch) hinzugefügt
+		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch, Schwedisch, Slowakisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
 		- Info-Tag-Zeichencodierungen können jetzt im Konfigurationsdialog festgelegt werden
 		- Unterstützung für Tastaturkürzel hinzugefügt (für Menüeinträge)
@@ -31,9 +31,8 @@ Geschichte
 		- Menübefehle zum Übernehmen von Künstler/Album/Genre/Jahr für alle Tracks hinzugefügt
 		- Menübefehle zum Interpretieren von Titelinformationen in einem anderen Zeichensatz hinzugefügt
 		- Menübefehle für Formatierung von Titelinformationen hinzugefügt (Groß- / Kleinschreibung)
-		- Ogg Vorbis auf Version 1.1.2 aktualisiert
-		- FLAC auf Version 1.1.2 aktualisiert
-		- LAME auf Version 3.97 Beta 2 aktualisiert
+		- Unterstützung für Ausgabe in das Verzeichnis der Eingabedatei hinzugefügt
+		- Unterstützung für Ausgabe in eine einzelne Datei hinzugefügt
 		- Unterstützung für LAME Mono-Modus hinzugefügt
 		- Unterstützung zum Erzeugen von M3U-Playlisten hinzugefügt
 		- Unterstützung zum Erzeugen von einfachen Cuesheets hinzugefügt
@@ -60,9 +59,12 @@ Geschichte
 		- Unterstützung für freedb-Verbindungen über HTTPS-Proxies hinzugefügt
 		- Unterstützung für HTTP, HTTPS und SOCKS v5 Proxy-Authentifizierung hinzugefügt
 		- Die Konfiguration wird jetzt beim Schließen des Konfigurationsdialogs gespeichert
+		- Ogg Vorbis auf Version 1.1.2 aktualisiert
+		- FLAC auf Version 1.1.2 aktualisiert
+		- LAME auf Version 3.97 Beta 2 aktualisiert
+		- Bonk auf Version 0.10 aktualisiert
 		- Update auf MPEG4IP v1.5
 		- Update auf easyUpdate v0.3
-		- Update auf Bonk v0.10
 		- Verwende smooth v0.8.68.0
 		- Anpassungen für Kompilierung mit GCC 4.1
 		- Unterstützung für MinGW 1.x entfernt
@@ -279,7 +281,8 @@ Besonderen Dank
 			   Escada (Portugiesisch, Brasilianisch),
 			   Odyssey (Koreanisch),
 			   Jan Arni Jacobsen (Dänisch),
-			   Anton Mjörnebrant (Schwedisch)
+			   Anton Mjörnebrant (Schwedisch),
+			   Peter Krajcár (Slowakisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

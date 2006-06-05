@@ -12,9 +12,10 @@
 
 using namespace smooth::IO;
 
-Bool BonkEnc::CueSheet::AddTrack(const String &fileName, const String &trackTitle, const String &trackArtist, const String &trackAlbum)
+Bool BonkEnc::CueSheet::AddTrack(const String &fileName, Int offset, const String &trackTitle, const String &trackArtist, const String &trackAlbum)
 {
 	fileNames.AddEntry(fileName);
+	trackOffsets.AddEntry(offset);
 	trackArtists.AddEntry(trackArtist);
 	trackTitles.AddEntry(trackTitle);
 	trackAlbums.AddEntry(trackAlbum);
@@ -48,11 +49,17 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 
 	for (Int i = 0; i < fileNames.GetNOfEntries(); i++)
 	{
+		Int	 minutes =  trackOffsets.GetNthEntry(i)						/ (75 * 60);
+		Int	 seconds = (trackOffsets.GetNthEntry(i)			 - (minutes * 60 * 75)) /  75	   ;
+		Int	 frames  =  trackOffsets.GetNthEntry(i) - (seconds * 75) - (minutes * 60 * 75)		   ;
+
 		file->OutputLine(String("FILE \"").Append(fileNames.GetNthEntry(i)).Append("\" WAVE"));
 		file->OutputLine(String("  TRACK ").Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(" AUDIO"));
 		file->OutputLine(String("    TITLE \"").Append(trackTitles.GetNthEntry(i)).Append("\""));
 		file->OutputLine(String("    PERFORMER \"").Append(trackArtists.GetNthEntry(i)).Append("\""));
-		file->OutputLine(String("    INDEX 01 00:00:00"));
+		file->OutputLine(String("    INDEX 01 ").Append(minutes < 10 ? "0" : "").Append(String::FromInt(minutes)).Append(":")
+							.Append(seconds < 10 ? "0" : "").Append(String::FromInt(seconds)).Append(":")
+							.Append(frames  < 10 ? "0" : "").Append(String::FromInt(frames )));
 	}
 
 	file->Close();

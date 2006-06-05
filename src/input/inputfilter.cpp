@@ -480,7 +480,7 @@ Bool BonkEnc::InputFilter::RemoveTempFile(const String &oFileName)
 
 	if (tempFileName == oFileName) return True;
 
-	remove(tempFileName);
+	File(tempFileName).Delete();
 
 	return True;
 }

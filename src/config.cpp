@@ -217,6 +217,8 @@ Bool BonkEnc::Config::LoadSettings()
 	if (enc_outdir[enc_outdir.Length() - 1] != '\\') enc_outdir.Append("\\");
 	if (playlist_outdir[playlist_outdir.Length() - 1] != '\\') playlist_outdir.Append("\\");
 
+	if (encodeToSingleFile && !enc_onTheFly) enc_onTheFly = True;
+
 	return True;
 }
 

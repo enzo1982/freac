@@ -58,6 +58,13 @@ Bool BonkEnc::FilterOutBONK::Deactivate()
 {
 	int	 bytes = ex_bonk_encoder_finish(encoder, dataBuffer, dataBuffer.Size());
 
+	if (bytes > dataBuffer.Size())
+	{
+		dataBuffer.Resize(bytes);
+
+		bytes = ex_bonk_encoder_finish(encoder, dataBuffer, dataBuffer.Size());
+	}
+
 	driver->WriteData(dataBuffer, bytes);
 
 	if (format->length == -1)

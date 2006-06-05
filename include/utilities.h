@@ -14,6 +14,7 @@
 namespace BonkEnc
 {
 	class InputFilter;
+	class OutputFilter;
 
 	class Track;
 };
@@ -31,6 +32,8 @@ namespace BonkEnc
 			static Void		 ErrorMessage(const String &, const String & = NIL);
 
 			static InputFilter	*CreateInputFilter(const String &, Track *);
+			static OutputFilter	*CreateOutputFilter(Int, Track *);
+
 			static Void		 FillGenreList(List *);
 
 			static String		 LocalizeNumber(Int);

@@ -21,7 +21,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 530;
-	size.cy	= 176;
+	size.cy	= 207;
 
 	tabs_plugins		= new TabWidget(pos, size);
 
@@ -30,7 +30,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 425;
-	size.cy	= 139;
+	size.cy	= 170;
 
 	list_input		= new ListBox(pos, size);
 	list_input->onSelectEntry.Connect(&GeneralSettingsLayerPlugins::SelectInputPlugin, this);
@@ -59,7 +59,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 425;
-	size.cy	= 139;
+	size.cy	= 170;
 
 	list_output		= new ListBox(pos, size);
 	list_output->SetFlags(LF_MULTICHECKBOX);

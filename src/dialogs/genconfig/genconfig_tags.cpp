@@ -25,12 +25,12 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	pos.x	= 7;
 	pos.y	= 11;
 	size.cx	= 530;
-	size.cy	= 118;
+	size.cy	= 120;
 
 	group_tags	= new GroupBox(BonkEnc::i18n->TranslateString("Info tags"), pos, size);
 
 	pos.x	= 17;
-	pos.y	= 24;
+	pos.y	= 25;
 	size.cx	= 163;
 	size.cy	= 0;
 
@@ -66,12 +66,12 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	pos.x	+= Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 39;
 	pos.y	= 11;
 	size.cx	= 530 - Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) - 49;
-	size.cy	= 118;
+	size.cy	= 120;
 
 	group_encodings	= new GroupBox(BonkEnc::i18n->TranslateString("Tag encodings"), pos, size);
 
 	pos.x	+= 10;
-	pos.y	= 26;
+	pos.y	= 27;
 
 	text_id3v1_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3v1 tag encoding:"), pos);
 
@@ -136,7 +136,7 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	edit_mp4meta_encoding->SetDropDownList(list_encodings_mp4);
 
 	pos.x	= 7;
-	pos.y	= 141;
+	pos.y	= 143;
 	size.cx	= 530;
 	size.cy	= 42;
 

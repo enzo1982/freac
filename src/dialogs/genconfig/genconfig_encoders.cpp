@@ -34,6 +34,9 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 
 	onTheFly	= currentConfig->enc_onTheFly;
 	keepWaves	= currentConfig->enc_keepWaves;
+	useInputDir	= currentConfig->writeToInputDir;
+	allowOverwrite	= currentConfig->allowOverwrite;
+	singleFile	= currentConfig->encodeToSingleFile;
 	unicode_files	= currentConfig->useUnicodeNames;
 
 	pos.x	= 7;
@@ -105,12 +108,29 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	pos.x	= 7;
 	pos.y	= 66;
 	size.cx	= 344;
-	size.cy	= 43;
+	size.cy	= 93;
 
 	group_outdir	= new GroupBox(BonkEnc::i18n->TranslateString("Output directory"), pos, size);
 
+	pos.x	+= 10;
+	pos.y	+= 14;
+	size.cx	= 236;
+	size.cy	= 0;
+
+	check_useInputDir	= new CheckBox(BonkEnc::i18n->TranslateString("Use input file directory if possible"), pos, size, &useInputDir);
+	check_useInputDir->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleUseInputDir, this);
+
+	pos.x	+= 17;
+	pos.y	+= 23;
+	size.cx	= 219;
+	size.cy	= 0;
+
+	check_allowOverwrite	= new CheckBox(BonkEnc::i18n->TranslateString("Allow overwriting input file"), pos, size, &allowOverwrite);
+
+	ToggleUseInputDir();
+
 	pos.x	= 17;
-	pos.y	+= 12;
+	pos.y	+= 25;
 	size.cx	= 236;
 	size.cy	= 0;
 
@@ -124,7 +144,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	button_outdir_browse->onAction.Connect(&GeneralSettingsLayerEncoders::SelectDir, this);
 
 	pos.x	= 7;
-	pos.y	= 121;
+	pos.y	= 171;
 	size.cx	= 344;
 	size.cy	= 43;
 
@@ -153,37 +173,44 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	pos.x	= 359;
 	pos.y	= 11;
 	size.cx	= 178;
-	size.cy	= 68;
+	size.cy	= 94;
 
-	group_options	= new GroupBox(BonkEnc::i18n->TranslateString("Options"), pos, size);
+	group_options		= new GroupBox(BonkEnc::i18n->TranslateString("Options"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_onTheFly	= new CheckBox(BonkEnc::i18n->TranslateString("Encode \'On-The-Fly\'"), pos, size, &onTheFly);
+	check_onTheFly		= new CheckBox(BonkEnc::i18n->TranslateString("Encode \'On-The-Fly\'"), pos, size, &onTheFly);
 	check_onTheFly->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleOnTheFly, this);
 
 	pos.y += 26;
 
-	check_keepWaves	= new CheckBox(BonkEnc::i18n->TranslateString("Keep ripped wave files"), pos, size, &keepWaves);
+	check_keepWaves		= new CheckBox(BonkEnc::i18n->TranslateString("Keep ripped wave files"), pos, size, &keepWaves);
 
 	ToggleOnTheFly();
 
+	pos.y += 26;
+
+	check_singleFile	= new CheckBox(BonkEnc::i18n->TranslateString("Encode to single file"), pos, size, &singleFile);
+	check_singleFile->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleEncodeToSingleFile, this);
+
+	ToggleEncodeToSingleFile();
+
 	pos.x	= 359;
-	pos.y	= 121;
+	pos.y	= 171;
 	size.cx	= 178;
 	size.cy	= 43;
 
-	group_unicode	= new GroupBox(BonkEnc::i18n->TranslateString("Unicode"), pos, size);
+	group_unicode		= new GroupBox(BonkEnc::i18n->TranslateString("Unicode"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_unicode_files= new CheckBox(BonkEnc::i18n->TranslateString("Use Unicode filenames"), pos, size, &unicode_files);
+	check_unicode_files	= new CheckBox(BonkEnc::i18n->TranslateString("Use Unicode filenames"), pos, size, &unicode_files);
 
 	if (!Setup::enableUnicode) check_unicode_files->Deactivate();
 
@@ -191,6 +218,8 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	RegisterObject(combo_encoder);
 	RegisterObject(button_config);
 	RegisterObject(group_outdir);
+	RegisterObject(check_useInputDir);
+	RegisterObject(check_allowOverwrite);
 	RegisterObject(edit_outdir);
 	RegisterObject(button_outdir_browse);
 	RegisterObject(group_filename);
@@ -198,6 +227,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	RegisterObject(group_options);
 	RegisterObject(check_onTheFly);
 	RegisterObject(check_keepWaves);
+	RegisterObject(check_singleFile);
 	RegisterObject(group_unicode);
 	RegisterObject(check_unicode_files);
 }
@@ -208,6 +238,8 @@ BonkEnc::GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
 	DeleteObject(combo_encoder);
 	DeleteObject(button_config);
 	DeleteObject(group_outdir);
+	DeleteObject(check_useInputDir);
+	DeleteObject(check_allowOverwrite);
 	DeleteObject(edit_outdir);
 	DeleteObject(button_outdir_browse);
 	DeleteObject(group_filename);
@@ -216,6 +248,7 @@ BonkEnc::GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
 	DeleteObject(group_options);
 	DeleteObject(check_onTheFly);
 	DeleteObject(check_keepWaves);
+	DeleteObject(check_singleFile);
 	DeleteObject(group_unicode);
 	DeleteObject(check_unicode_files);
 }
@@ -266,9 +299,38 @@ Void BonkEnc::GeneralSettingsLayerEncoders::ToggleOnTheFly()
 	else		check_keepWaves->Activate();
 }
 
+Void BonkEnc::GeneralSettingsLayerEncoders::ToggleUseInputDir()
+{
+	if (useInputDir) check_allowOverwrite->Activate();
+	else		 check_allowOverwrite->Deactivate();
+}
+
+Void BonkEnc::GeneralSettingsLayerEncoders::ToggleEncodeToSingleFile()
+{
+	if (singleFile)	{ onTheFly = True; check_onTheFly->Deactivate(); }
+	else		{ check_onTheFly->Activate(); }
+
+	ToggleOnTheFly();
+}
+
 Int BonkEnc::GeneralSettingsLayerEncoders::GetSelectedEncoder()
 {
 	return combo_encoder->GetSelectedEntryNumber();
+}
+
+Bool BonkEnc::GeneralSettingsLayerEncoders::GetUseInputDirectory()
+{
+	return useInputDir;
+}
+
+Bool BonkEnc::GeneralSettingsLayerEncoders::GetAllowOverwrite()
+{
+	return allowOverwrite;
+}
+
+Bool BonkEnc::GeneralSettingsLayerEncoders::GetEncodeToSingleFile()
+{
+	return singleFile;
 }
 
 Bool BonkEnc::GeneralSettingsLayerEncoders::GetOnTheFly()

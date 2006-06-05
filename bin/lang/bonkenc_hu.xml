@@ -281,12 +281,12 @@
     <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Lejátszási lista készítés</entry>
     <entry id="271" string="Create cue sheet">Vágólap készítés</entry>
-    <entry id="272" string="Write ID3V1 tags">ID3V1 infó rögzítés</entry>
-    <entry id="273" string="Write ID3V2 tags">ID3V2 infó rögzítés</entry>
+    <entry id="272" string="Write ID3v1 tags">ID3v1 infó rögzítés</entry>
+    <entry id="273" string="Write ID3v2 tags">ID3v2 infó rögzítés</entry>
     <entry id="274" string="Write Vorbis Comment tags">Vorbis megjegyzés rögzítés</entry>
     <entry id="275" string="Write MP4 metadata info">MP4 metaadat infó rögzítés</entry>
-    <entry id="276" string="ID3V1 tag encoding:">ID3V1 infó kódolása:</entry>
-    <entry id="277" string="ID3V2 tag encoding:">ID3V2 infó kódolása:</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1 infó kódolása:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2 infó kódolása:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Vorbis megjegyzés kódolása:</entry>
     <entry id="279" string="MP4 metadata encoding:">MP4 metaadat kódolása:</entry>
     <entry id="280" string="Tag encodings">Megjegyzés kódolása</entry>

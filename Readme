@@ -10,9 +10,9 @@ BonkEnc uses the CDRip Ripping Library for audio ripping.
 History
 -------
 
-	Version 1.0 Beta 4 CVS (May 2006)
+	Version 1.0 Beta 4 CVS (June 2006)
 
-		- added Czech, Korean, Danish, Swedish and Portuguese (Brazilian) language support
+		- added Czech, Korean, Danish, Swedish, Slovak and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
 		- info tag encodings can now be set in the configuration dialog
 		- added support for keyboard shortcuts (for menu entries)
@@ -31,9 +31,8 @@ History
 		- added commands to set the same artist/album/genre/year for all tracks
 		- added commands to interpret title information in a different character set
 		- added commands for title info formatting (upper/lower case)
-		- upgraded Ogg Vorbis to version 1.1.2
-		- upgraded FLAC to version 1.1.2
-		- upgraded LAME to version 3.97 beta 2
+		- added support for writing ouput files to the input file directory
+		- added support for ripping to a single file
 		- added support for LAME Mono mode
 		- added support for creating M3U playlists
 		- added basic support for creating cue sheets
@@ -60,9 +59,12 @@ History
 		- added support for freedb connections over HTTPS proxies
 		- added support for HTTP, HTTPS and SOCKS v5 proxy authentication
 		- configuration is now saved when configuration dialog is closed
+		- upgraded Ogg Vorbis to version 1.1.2
+		- upgraded FLAC to version 1.1.2
+		- upgraded LAME to version 3.97 beta 2
+		- upgraded Bonk to version 0.10
 		- upgrade to MPEG4IP v1.5
 		- upgrade to easyUpdate v0.3
-		- upgrade to Bonk v0.10
 		- use smooth v0.8.68.0
 		- fixes for compiling with GCC 4.1
 		- removed support for MinGW 1.x
@@ -279,7 +281,8 @@ Special thanks to
 			   Escada (Portuguese, Brazilian),
 			   Odyssey (Korean),
 			   Jan Arni Jacobsen (Danish),
-			   Anton Mjoernebrant (Swedish)
+			   Anton Mjoernebrant (Swedish),
+			   Peter Krajcar (Slovak)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

@@ -303,6 +303,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		{
 			currentConfig->enc_outdir = outdir;
 
+			currentConfig->encodeToSingleFile = False;
+			currentConfig->writeToInputDir = False;
+
 			if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
 
 			for (Int i = 0; i < files.GetNOfEntries(); i++)

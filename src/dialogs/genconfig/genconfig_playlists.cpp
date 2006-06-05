@@ -44,7 +44,7 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	pos.x	= 193;
 	pos.y	= 11;
 	size.cx	= 344;
-	size.cy	= 70;
+	size.cy	= 69;
 
 	group_outdir	= new GroupBox(BonkEnc::i18n->TranslateString("Output directory"), pos, size);
 
@@ -71,7 +71,7 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	button_outdir_browse->onAction.Connect(&GeneralSettingsLayerPlaylists::SelectDir, this);
 
 	pos.x	= 193;
-	pos.y	= 93;
+	pos.y	= 92;
 	size.cx	= 344;
 	size.cy	= 43;
 

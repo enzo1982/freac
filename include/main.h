@@ -42,10 +42,13 @@ namespace BonkEnc
 			PopupMenu	*menu_trackmenu;
 			PopupMenu	*menu_help;
 			PopupMenu	*menu_encoders;
+			PopupMenu	*menu_encoder_options;
 			PopupMenu	*menu_charsets;
 			PopupMenu	*menu_charsets_all;
 			PopupMenu	*menu_case;
 			PopupMenu	*menu_case_all;
+
+			MenuEntry	*allowOverwriteMenuEntry;
 
 			Menubar		*mainWnd_menubar;
 			Menubar		*mainWnd_iconbar;
@@ -131,6 +134,8 @@ namespace BonkEnc
 			Void		 AddFilesByPattern();
 
 			Void		 ToggleEditPopup();
+			Void		 ToggleUseInputDirectory();
+			Void		 ToggleEncodeToSingleFile();
 
 			Void		 UseStringForSelectedTracks();
 			Void		 InterpretStringAs();

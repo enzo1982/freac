@@ -21,11 +21,12 @@ namespace BonkEnc
 	{
 		private:
 			Array<String>	 fileNames;
+			Array<Int>	 trackOffsets;
 			Array<String>	 trackTitles;
 			Array<String>	 trackArtists;
 			Array<String>	 trackAlbums;
 		public:
-			Bool		 AddTrack(const String &, const String &, const String &, const String &);
+			Bool		 AddTrack(const String &, Int, const String &, const String &, const String &);
 
 			Bool		 Save(const String &);
 	};
