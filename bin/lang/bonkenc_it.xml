@@ -296,6 +296,70 @@
     <entry id="284" string="Save joblist...">Salva elenco...</entry>
     <entry id="285" string="Pause/resume encoding">Sospendi/riprendi codifica</entry>
     <entry id="286" string="Shutdown after encoding">Arresta il sistema al termine della codifica</entry>
-    <entry id="287" string="Playlist Files">File della playlist</entry>    
+    <entry id="287" string="Playlist Files">File della playlist</entry>
+    <entry id="288" string="unknown year">anno sconosciuto</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Impossibile inizializzare il codificatore %1. Verificare i parametri di configurazione.</entry>
+    <entry id="290" string="Blocksize:">Dim. blocco:</entry>
+    <entry id="291" string="Use streamable subset">Usa sotto-set utilizzabile come flusso</entry>
+    <entry id="292" string="Adaptive Joint Stereo"></entry>
+    <entry id="293" string="Fastest encoding">Codifica più rapida</entry>
+    <entry id="294" string="Best compression">Compressione migliore</entry>
+    <entry id="295" string="Linear predictor">Predictor lineare</entry>
+    <entry id="296" string="Maximum LPC order">Ordine LPC massimo</entry>
+    <entry id="297" string="Quantized LPC precision">Precisione LPC quantizzata</entry>
+    <entry id="298" string="Exhaustive model search">Ricerca esaustiva</entry>
+    <entry id="299" string="Optimize LPC quantization">Ottimizza quantizz. LPC</entry>
+    <entry id="300" string="disabled">disattivato</entry>
+    <entry id="301" string="auto">automatico</entry>
+    <entry id="302" string="Residual coding">Codifica residua</entry>
+    <entry id="303" string="Minimum partition order">Ordine partizione minima</entry>
+    <entry id="304" string="Maximum partition order">Ordine partizione massima</entry>
+    <entry id="305" string="By pattern">Per modello</entry>
+    <entry id="306" string="From directory">Dalla cartella</entry>
+    <entry id="307" string="Directory">Cartella</entry>
+    <entry id="308" string="Add directory">Aggiungi cartella</entry>
+    <entry id="309" string="Choose directory:">Scegli cartella:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">Selezionare la cartella da aggiungere:</entry>
+    <entry id="311" string="Add files by pattern">Aggiungi file per modello</entry>
+    <entry id="312" string="Pattern">Modello</entry>
+    <entry id="313" string="Start directory">Cartella iniziale</entry>
+    <entry id="314" string="No files found matching pattern:">Nessun file corrisponde al modello:</entry>
+    <entry id="315" string="Edit language file">Modifica file della lingua</entry>
+    <entry id="316" string="Use for all selected tracks">Applica a tutte le tracce selezionate</entry>
+    <entry id="317" string="Interpret string as">Interpreta stringa come</entry>
+    <entry id="318" string="selected tracks">tracce selezionate</entry>
+    <entry id="319" string="Adjust upper/lower case">Correggi maiuscole/minuscole</entry>
+    <entry id="320" string="all words upper case">tutte parole maiuscole</entry>
+    <entry id="321" string="long words upper case">parole lunghe tutte maiuscole</entry>
+    <entry id="322" string="first letter upper case">Prima lettera in maiuscolo</entry>
+    <entry id="323" string="all lower case">tutte minuscole</entry>
+    <entry id="324" string="all upper case">tutte maiuscole</entry>
+    <entry id="325" string="Status">Stato</entry>
+    <entry id="326" string="Successfully read CD!">CD letto correttamente</entry>
+    <entry id="327" string="Comment">Commenti</entry>
+    <entry id="328" string="Manage CDDB cache entries...">Gestisci voci della cache CDDB...</entry>
+    <entry id="329" string="Save entry">Salva voce</entry>
+    <entry id="330" string="Remove entry">Rimuovi voce</entry>
+    <entry id="331" string="Disc name">Nome disco</entry>
+    <entry id="332" string="Charset">Set caratteri</entry>
+    <entry id="333" string="Preview">Anteprima</entry>
+    <entry id="334" string="Downloaded CDDB entries:">Voci CDDB scaricate:</entry>
+    <entry id="335" string="User name:">Nome utente:</entry>
+    <entry id="336" string="Password:">Password:</entry>
+    <entry id="337" string="Delete original files after encoding">Elimina file originali al termine della codifica</entry>
+    <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Se si seleziona questa opzione, i file originali saranno&#10;eliminati una volta codificati. Si desidera continuare?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Il protocollo CDDBP freedb non può essere utilizzato con i server proxy HTTP.&#10;&#10;Utilizzare il protocollo HTTP, invece?</entry>
+    <entry id="340" string="Playlists">Playlist</entry>
+    <entry id="341" string="Create playlists">Crea playlist</entry>
+    <entry id="342" string="Create cue sheets">Crea cue sheet</entry>
+    <entry id="343" string="Use encoder output directory">Utilizza cartella di destinazione del codificatore</entry>
+    <entry id="344" string="Various artists">Artisti vari</entry>
+    <entry id="345" string="Data track">Dati traccia</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">Selezionare la cartella in cui salvare la playlist:</entry>
+    <entry id="347" string="Use input file directory if possible">Usa cartella dei file di origine se possibile</entry>
+    <entry id="348" string="Encode to input file directory if possible">Codifica nella cartella dei file di origine se possibile</entry>
+    <entry id="349" string="Allow overwriting input file">Consenti sovrascrittura file di origine</entry>
+    <entry id="350" string="Encode to single file">Codifica in un file singolo</entry>
+    <entry id="351" string="Encoder options">Opzioni codificatore</entry>
   </data>
 </LangFile>

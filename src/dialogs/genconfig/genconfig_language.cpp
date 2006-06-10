@@ -61,7 +61,7 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 		if (currentConfig->language == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
-	pos.x += 276;
+	pos.x = 397;
 	pos.y -= 1;
 	size.cx = 130;
 

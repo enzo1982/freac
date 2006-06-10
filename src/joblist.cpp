@@ -620,4 +620,47 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
 	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));
 	button_sel_toggle->SetTooltipText(BonkEnc::i18n->TranslateString("Toggle selection"));
+
+	Hide();
+
+	for (Int i = 0; i < GetNOfTracks(); i++)
+	{
+		Track		*track = GetNthTrack(i);
+		ListEntry	*entry = GetNthEntry(i);
+		String		 jlEntry;
+		String		 tooltip;
+
+		if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
+		else							jlEntry = String(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+
+		jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+
+		if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+
+		tooltip = String(BonkEnc::i18n->TranslateString("File")).Append(": ").Append(track->origFilename).Append("\n").
+			  Append(BonkEnc::i18n->TranslateString("Size")).Append(": ").Append(track->fileSizeString).Append(" ").Append(BonkEnc::i18n->TranslateString("bytes")).Append("\n").
+			  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
+			  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
+			  Append(track->length > 0 || track->approxLength > 0 ? BonkEnc::i18n->TranslateString("Length").Append(": ").Append(track->lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : "").
+			  Append(track->length > 0 ? BonkEnc::i18n->TranslateString("Number of samples").Append(": ").Append(Utilities::LocalizeNumber(track->length)).Append("\n") : "").
+			  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(Utilities::LocalizeNumber(track->rate)).Append(" Hz\n").
+			  Append(BonkEnc::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(BonkEnc::i18n->TranslateString("bit")).Append("\n").
+			  Append(BonkEnc::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? BonkEnc::i18n->TranslateString("Mono") : BonkEnc::i18n->TranslateString("Stereo"))).
+			  Append((track->length > 0 && track->rate > 0 && track->channels > 0) ? BonkEnc::i18n->TranslateString("\nBitrate").Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1024.0))).Append(" kbps") : "");
+
+		if (BonkEnc::currentConfig->showTooltips) entry->SetTooltipText(tooltip);
+	}
+
+	BonkEnc::currentConfig->tab_width_track = GetNthTabWidth(1);
+	BonkEnc::currentConfig->tab_width_length = GetNthTabWidth(2);
+	BonkEnc::currentConfig->tab_width_size = GetNthTabWidth(3);
+
+	RemoveAllTabs();
+
+	AddTab(BonkEnc::i18n->TranslateString("Title"));
+	AddTab(BonkEnc::i18n->TranslateString("Track"), BonkEnc::currentConfig->tab_width_track, OR_RIGHT);
+	AddTab(BonkEnc::i18n->TranslateString("Length"), BonkEnc::currentConfig->tab_width_length, OR_RIGHT);
+	AddTab(BonkEnc::i18n->TranslateString("Size"), BonkEnc::currentConfig->tab_width_size, OR_RIGHT);
+
+	Show();
 }

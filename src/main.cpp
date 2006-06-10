@@ -11,10 +11,6 @@
 #include <smooth/main.h>
 #include <main.h>
 #include <resources.h>
-#include <stdlib.h>
-#include <string>
-#include <vector>
-#include <time.h>
 #include <dbt.h>
 
 #include <dllinterfaces.h>
@@ -1223,31 +1219,6 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	info_checkbox->Show();
 
-	joblist->Hide();
-
-	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
-	{
-		Track	*format = joblist->GetNthTrack(i);
-
-		if (format->artist == NIL || format->title == NIL)
-		{
-			joblist->GetNthEntry(i)->SetText(String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t").Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString));
-		}
-	}
-
-	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
-	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
-	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
-
-	joblist->RemoveAllTabs();
-
-	joblist->AddTab(i18n->TranslateString("Title"));
-	joblist->AddTab(i18n->TranslateString("Track"), currentConfig->tab_width_track, OR_RIGHT);
-	joblist->AddTab(i18n->TranslateString("Length"), currentConfig->tab_width_length, OR_RIGHT);
-	joblist->AddTab(i18n->TranslateString("Size"), currentConfig->tab_width_size, OR_RIGHT);
-
-	joblist->Show();
-
 	check_cuesheet->Hide();
 	check_playlist->Hide();
 
@@ -1711,24 +1682,27 @@ Void BonkEnc::BonkEncGUI::ToggleEditPopup()
 		if (htsp_edit_year->IsActive())	  htsp_edit_year->Deactivate();
 		else				  htsp_edit_year->Activate();
 	}
-
-	if (string != NIL)
+	else
 	{
-		menu_case->RemoveAllEntries();
-		menu_case_all->RemoveAllEntries();
-
-		menu_case->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
-		menu_case->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
-		menu_case->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
-		menu_case->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
-		menu_case->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
-
-		menu_case_all->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
-		menu_case_all->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
-		menu_case_all->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
-		menu_case_all->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
-		menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+		return;
 	}
+
+	if (string == NIL) string = "?";
+
+	menu_case->RemoveAllEntries();
+	menu_case_all->RemoveAllEntries();
+
+	menu_case->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+	menu_case->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+	menu_case->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+	menu_case->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+	menu_case->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&BonkEncGUI::AdjustStringCase, this);
+
+	menu_case_all->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&BonkEncGUI::AdjustStringCaseAll, this);
 }
 
 String BonkEnc::BonkEncGUI::AdjustCaseFirstCapital(const String &string)
@@ -2077,7 +2051,7 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
 	TipOfTheDay	*dlg = new TipOfTheDay(&currentConfig->showTips);
 
-	dlg->AddTip(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.").Replace("%1", String::FromInt(Math::Max(17, i18n->GetNOfLanguages()))));
+	dlg->AddTip(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.").Replace("%1", String::FromInt(Math::Max(24, i18n->GetNOfLanguages()))));
 	dlg->AddTip(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1").Replace("%1", "http://www.bonkenc.org/"));
 	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
 	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));

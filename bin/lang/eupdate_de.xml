@@ -29,6 +29,6 @@
     <entry id="17" string="Update complete">Update vollständig</entry>
     <entry id="18" string="Your application has been successfully updated!">Die Anwendung wurde erfolgreich aktualisiert!</entry>
     <entry id="19" string="Error">Fehler</entry>
-    <entry id="2019" string="Error downloading package!">Fehler beim Herunterladen des Pakets!</entry>
+    <entry id="20" string="Error downloading package!">Fehler beim Herunterladen des Pakets!</entry>
   </data>
 </LangFile>
