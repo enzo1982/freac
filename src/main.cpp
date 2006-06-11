@@ -458,11 +458,11 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	progress_total->SetOrientation(OR_LOWERLEFT);
 	progress_total->Deactivate();
 
-	SetLanguage();
-
 	RegisterObject(mainWnd);
 
 	mainWnd->RegisterObject(joblist);
+
+	SetLanguage();
 
 	mainWnd->RegisterObject(check_cuesheet);
 	mainWnd->RegisterObject(check_playlist);

@@ -10,7 +10,7 @@ BonkEnc uses the CDRip Ripping Library for audio ripping.
 History
 -------
 
-	Version 1.0 Beta 4 CVS (June 2006)
+	Version 1.0 Beta 4 (June 2006)
 
 		- added Czech, Korean, Danish, Swedish, Slovak and Portuguese (Brazilian) language support
 		- directory browsing now starts at the currently selected directory
@@ -218,7 +218,7 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP, Windows 95/98/SE/ME
+	- Windows NT/2000/XP, Windows 95/98/SE/ME, Wine v0.9.14+
 	- A 200MHz processor or better for playing Bonk files
 	- Winamp is required to play Bonk files in Windows
 	- Having ASPI drivers installed is recommended for CD ripping
@@ -226,7 +226,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v6.0
-		- smooth v0.8.68.0 CVS (http://www.smooth-project.org/)
+		- smooth v0.8.68.0 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
@@ -254,6 +254,8 @@ Known problems
 	  sampling rate unless you are encoding with LAME.
 
 	- BonkEnc is currently limited to a maximum of 2 audio channels
+
+	- Edit boxes do not work correctly in Right-to-Left mode
 
 Special thanks to
 -----------------

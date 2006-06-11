@@ -10,7 +10,7 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 Beta 4 CVS (Juni 2006)
+	Version 1.0 Beta 4 (Juni 2006)
 
 		- Sprachunterstützung für Tschechisch, Koreanisch, Dänisch, Schwedisch, Slowakisch und Portugisisch (Brasilianisch) hinzugefügt
 		- Die Verzeichnisauswahl beginnt jetzt beim aktuell gewählten Verzeichnis
@@ -218,7 +218,7 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP/2003, Windows 95/98/SE/ME
+	- Windows NT/2000/XP/2003, Windows 95/98/SE/ME, Wine v0.9.14+
 	- Ein 200MHz Prozessor oder besser, um Bonk Dateien abzuspielen
 	- Winamp wird benötigt um Bonk Dateien unter Windows abzuspielen
 	- Zum CD-Rippen werden installierte ASPI-Treiber empfohlen
@@ -226,7 +226,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v6.0
-		- smooth v0.8.68.0 CVS (http://www.smooth-project.org/)
+		- smooth v0.8.68.0 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
@@ -254,6 +254,8 @@ Bekannte Probleme
 	  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
 
 	- BonkEnc ist zurzeit auf 2 Audiokanäle beschränkt
+
+	- Editboxen funktionieren im Rechts-nach-Links modus nicht korrekt
 
 Besonderen Dank
 ---------------
