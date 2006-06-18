@@ -211,7 +211,6 @@
     <entry id="200" string="Submit">Poslat</entry>
     <entry id="201" string="No audio CD in drive!">Žádné Audio-CD v mechanice!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Vyplňte všechna pole a názvy tracků před odesláním.</entry>
-    <entry id="204" string="Do you want to use native NT SCSI instead?">Chcete místo toho použít NT SCSI?</entry>
     <entry id="205" string="Submitting CD information">Poslat info o CD</entry>
     <entry id="206" string="Cannot open file:">Nemohu otevřít soubor:</entry>
     <entry id="207" string="Query CDDB database">Dotaz na CDDB databázi</entry>
@@ -242,7 +241,7 @@
     <entry id="233" string="Toggle selection">Vybrat cíl</entry>
     <entry id="234" string="Show Tip of the Day">Zobrazit tip dne</entry>
     <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc je dostupný v %1 jazyce. Jestliže váš jazyk není dostupný,&#10;můžete jej vytvořit s využitím &quot;smooth translatoru&quot;.</entry>
-    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc podporuje kódování LAME, Ogg Vorbis, FAAC a Bonk.&#10;VQF kodek najdete na web.stránce BonkEnc.</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc podporuje kódování LAME, Ogg Vorbis, FAAC, FLAC a&#10;Bonk. VQF kodek najdete na web.stránce BonkEnc.</entry>
     <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc může použít vstupní plugin Winampu 2 pro více souborů.&#10;Zkopírujte in_*.dll data do složky BonkEnc pluginů, aby byly pro&#10;BonkEnc dostupné.</entry>
     <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">S BonkEnc můžete zpracovávat data o CD na freedb znak.sadou&#10;Unicode. Když nemáte patřičné znak.sady, můžete s BonkEnc&#10;nastavit správné freedb záznamy.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pro korekci čtení chyb při rippování můžete aktivovat jitter&#10;korekturu na CDrip záložce konfig.dialogu.</entry>
@@ -250,7 +249,7 @@
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Líbí se vám BonkEnc? BonkEnc je volně dostupný, ale můžete&#10;nám pomoci podpořit BonkEnc projekt.&#10;Peníze můžete poslat na %1 cestou PayPal.&#10;Podívej se na %2 pro více&#10;podrobností.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate / Kvalita</entry>
     <entry id="243" string="Check for updates now">Nyní prověřit aktualizaci</entry>
-    <entry id="244" string="A new version of BonkEnc is available online!&#10;Would you like to install it now?">Nová BonkEnc verze je online dostupná!&#10;Chcete ji nyní nyinstalovat?</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to install it now?">Nová BonkEnc verze je online dostupná!&#10;Chcete ji nyní nyinstalovat?</entry>
     <entry id="245" string="There are no updates available at the moment!">Momentálně není žádná aktualizace dostupná!</entry>
     <entry id="246" string="Check for updates at startup">Prověřit aktualizaci po spuštění</entry>
   </data>

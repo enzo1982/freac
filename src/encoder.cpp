@@ -93,7 +93,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	Int		 nRemoved	= 0;
 	Int		 step		= 1;
 	Int		 encoder	= currentConfig->encoder;
-	Int		 encodedSamples	= 0;
+	Int64		 encodedSamples	= 0;
 	Playlist	 playlist;
 	CueSheet	 cueSheet;
 
@@ -274,10 +274,10 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			debug_out->OutputLine("Creating output filter...done.");
 		}
 		
-		Int		 trackLength	= 0;
-		Int		 position	= 0;
+		Int64		 trackLength	= 0;
+		Int64		 position	= 0;
 		UnsignedLong	 samples_size	= 1024;
-		Int		 n_loops	= (trackInfo->length + samples_size - 1) / samples_size;
+		Int64		 n_loops	= (trackInfo->length + samples_size - 1) / samples_size;
 
 		if (!filter_out->error) f_out->SetPackageSize(samples_size * (trackInfo->bits / 8) * trackInfo->channels);
 
@@ -287,7 +287,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		if (trackInfo->length >= 0)
 		{
-			int	 sample = 0;
+			Int	 sample = 0;
 
 			for (Int loop = 0; loop < n_loops; loop++)
 			{
@@ -363,7 +363,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			f_in = new InStream(STREAM_FILE, out_filename, IS_READONLY);
 
-			Int	 f_size = f_in->Size();
+			Int64	 f_size = f_in->Size();
 
 			delete f_in;
 

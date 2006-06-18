@@ -725,7 +725,7 @@ Bool BonkEnc::CDDB::Submit(CDDBInfo *cddbInfo)
 
 	if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
 
-	str.Append(config->freedb_query_path).Append(" HTTP/1.0\n");
+	str.Append(config->freedb_submit_path).Append(" HTTP/1.0\n");
 	str.Append("Host: ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append("\n");
 
 	if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-authentication: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");

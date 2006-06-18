@@ -36,7 +36,7 @@ namespace BonkEnc
 
 			static Void		 FillGenreList(List *);
 
-			static String		 LocalizeNumber(Int);
+			static String		 LocalizeNumber(Int64);
 
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
 			static String		 CreateDirectoryForFile(const String &);

@@ -59,6 +59,7 @@ History
 		- added support for freedb connections over HTTPS proxies
 		- added support for HTTP, HTTPS and SOCKS v5 proxy authentication
 		- configuration is now saved when configuration dialog is closed
+		- added support for files larger than 2GB
 		- upgraded Ogg Vorbis to version 1.1.2
 		- upgraded FLAC to version 1.1.2
 		- upgraded LAME to version 3.97 beta 2
@@ -218,7 +219,7 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP, Windows 95/98/SE/ME, Wine v0.9.14+
+	- Windows NT/2000/XP/Vista, Windows 95/98/SE/ME, Wine v0.9.14+
 	- A 200MHz processor or better for playing Bonk files
 	- Winamp is required to play Bonk files in Windows
 	- Having ASPI drivers installed is recommended for CD ripping
@@ -256,12 +257,12 @@ Known problems
 	- BonkEnc is currently limited to a maximum of 2 audio channels
 
 	- Edit boxes do not work correctly in Right-to-Left mode
+	- On Windows Vista you have to select the Windows Standard theme in order to work with BonkEnc
 
 Special thanks to
 -----------------
 
 	- Paul Francis Harrison for developing the Bonk format
-
 	- Albert L. Faber for his excellent CDRip Ripping Library
 
 	- the translators: Eric Le Carre (French),

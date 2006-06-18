@@ -30,9 +30,9 @@ namespace BonkEnc
 			Int	 channels;
 			Int	 rate;
 			Int	 bits;
-			Int	 length;
-			Int	 approxLength;
-			Int	 fileSize;
+			Int64	 length;
+			Int64	 approxLength;
+			Int64	 fileSize;
 			Int	 order;
 
 		    // CD track information:

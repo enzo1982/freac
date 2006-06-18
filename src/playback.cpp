@@ -126,9 +126,9 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 
 	if (filter_in != NIL)
 	{
-		int		 position = 0;
-		unsigned long	 samples_size = 1024;
-		int		 n_loops = (trackInfo->length + samples_size - 1) / samples_size;
+		Int64		 position = 0;
+		UnsignedInt	 samples_size = 1024;
+		Int64		 n_loops = (trackInfo->length + samples_size - 1) / samples_size;
 
 		player_plugin = currentConfig->output_plugin;
 
@@ -139,12 +139,12 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 		{
 			if (trackInfo->length >= 0)
 			{
-				int	 sample = 0;
+				Int	 sample = 0;
 				short	*sample_buffer = new short [samples_size];
 
 				for (Int loop = 0; loop < n_loops; loop++)
 				{
-					int	 step = samples_size;
+					Int	 step = samples_size;
 
 					if (position + step > trackInfo->length) step = trackInfo->length - position;
 
@@ -179,14 +179,14 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 			}
 			else if (trackInfo->length == -1)
 			{
-				int	 sample = 0;
+				Int	 sample = 0;
 				short	*sample_buffer = new short [samples_size];
 
 				while (sample != -1)
 				{
-					int	 step = samples_size;
+					Int	 step = samples_size;
 
-					for (int i = 0; i < step; i++)
+					for (Int i = 0; i < step; i++)
 					{
 						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
 						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));

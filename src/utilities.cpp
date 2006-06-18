@@ -349,7 +349,7 @@ Void BonkEnc::Utilities::FillGenreList(List *list)
 	list->AddEntry("Vocal");
 }
 
-String BonkEnc::Utilities::LocalizeNumber(Int number)
+String BonkEnc::Utilities::LocalizeNumber(Int64 number)
 {
 	String	 nString = String::FromInt(number);
 	String	 retVal;
