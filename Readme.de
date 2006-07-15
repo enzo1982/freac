@@ -1,4 +1,4 @@
-BonkEnc Version 1.0 Beta 4
+BonkEnc Version 1.0 RC 1
 
 BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
@@ -9,6 +9,11 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 
 Geschichte
 ----------
+
+	Version 1.0 RC 1 CVS (Juli 2006)
+
+		- Sprachunterstützung für Norwegisch hinzugefügt
+		- Button zum Überspringen des Tracks, der gerade codiert wird, hinzugefügt
 
 	Version 1.0 Beta 4 (Juni 2006)
 
@@ -285,7 +290,8 @@ Besonderen Dank
 			   Odyssey (Koreanisch),
 			   Jan Arni Jacobsen (Dänisch),
 			   Anton Mjörnebrant (Schwedisch),
-			   Peter Krajcár (Slowakisch)
+			   Peter Krajcár (Slowakisch),
+			   Wiak (Norwegian)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

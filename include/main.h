@@ -129,6 +129,7 @@ namespace BonkEnc
 			Void		 ManageCDDBData();
 
 			Void		 SelectDir();
+			Void		 SkipTrack();
 
 			Void		 AddFilesFromDirectory();
 			Void		 AddFilesByPattern();

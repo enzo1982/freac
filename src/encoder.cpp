@@ -104,14 +104,28 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 	ComputeTotalNumberOfSamples();
 
+	if (!currentConfig->enable_console)
+	{
+		btn_skip->Activate();
+	}
+
 	for (Int i = 0; i < num; (step == 1) ? i++ : i)
 	{
 		if (!joblist->GetNthEntry(i - nRemoved)->IsMarked()) continue;
+
+		if (skip_track && !currentConfig->enc_onTheFly && step == 0)
+		{
+			step	= 1;
+			encoder	= currentConfig->encoder;
+
+			continue;
+		}
 
 		debug_out->OutputLine("Encoding a file...");
 
 		trackInfo	= joblist->GetNthTrack(i - nRemoved);
 		in_filename	= trackInfo->origFilename;
+		skip_track	= False;
 
 		if (nRemoved == 0 && (currentConfig->enc_onTheFly || currentConfig->encoder == ENCODER_WAVE || step == 0))
 		{
@@ -309,9 +323,9 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				position += step;
 
-				while (pause_encoding && !stop_encoding) Sleep(50);
+				while (pause_encoding && !stop_encoding && !skip_track) Sleep(50);
 
-				if (stop_encoding) break;
+				if (stop_encoding || skip_track) break;
 
 				UpdateProgressValues(trackInfo, position);
 			}
@@ -339,9 +353,9 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				position = filter_in->GetInBytes();
 
-				while (pause_encoding && !stop_encoding) Sleep(50);
+				while (pause_encoding && !stop_encoding && !skip_track) Sleep(50);
 
-				if (stop_encoding) break;
+				if (stop_encoding || skip_track) break;
 
 				UpdateProgressValues(trackInfo, position);
 			}
@@ -367,9 +381,9 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			delete f_in;
 
-			if (f_size == 0) File(out_filename).Delete();
+			if (f_size == 0 || skip_track || stop_encoding) File(out_filename).Delete();
 
-			if (currentConfig->enc_onTheFly || step == 1 || encoder == ENCODER_WAVE)
+			if (!skip_track && (currentConfig->enc_onTheFly || step == 1 || encoder == ENCODER_WAVE))
 			{
 				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
 
@@ -377,7 +391,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				cueSheet.AddTrack(relativeFileName, 0, trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
 			}
 		}
-		else
+		else if (!skip_track)
 		{
 			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (trackInfo->rate * trackInfo->channels) * 75), trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
 		}
@@ -396,7 +410,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			if (ejectDisk) ex_CR_EjectCD(True);
 		}
 
-		if (!currentConfig->enable_console && !stop_encoding && step == 1)
+		if (!currentConfig->enable_console && !stop_encoding && !skip_track && step == 1)
 		{
 			Track	*entry = joblist->GetNthTrack(i - nRemoved);
 
@@ -428,13 +442,13 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			nRemoved++;
 		}
-		else if (stop_encoding)
+		else if (stop_encoding || skip_track)
 		{
 			trackInfo->outfile = NIL;
 		}
 
-		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && !currentConfig->enc_keepWaves)						 File(in_filename).Delete();
-		if (currentConfig->deleteAfterEncoding && !stop_encoding && ((currentConfig->enc_onTheFly && step == 1) || (!currentConfig->enc_onTheFly && step == 0))) File(in_filename).Delete();
+		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && !currentConfig->enc_keepWaves)								File(in_filename).Delete();
+		if (currentConfig->deleteAfterEncoding && !stop_encoding && !skip_track && ((currentConfig->enc_onTheFly && step == 1) || (!currentConfig->enc_onTheFly && step == 0))) File(in_filename).Delete();
 
 		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
 
@@ -474,6 +488,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		progress->SetValue(0);
 		progress_total->SetValue(0);
 		edb_time->SetText("00:00");
+		btn_skip->Deactivate();
 	}
 
 	encoding = false;

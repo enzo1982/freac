@@ -89,6 +89,7 @@ namespace BonkEnc
 			EditBox			*edb_encoder;
 			EditBox			*edb_outdir;
 
+			Button			*btn_skip;
 			Button			*btn_outdir;
 
 			Progressbar		*progress;
@@ -97,6 +98,7 @@ namespace BonkEnc
 			Thread			*encoder_thread;
 			Bool			 pause_encoding;
 			Bool			 stop_encoding;
+			Bool			 skip_track;
 
 			Thread			*play_thread;
 			Bool			 stop_playback;

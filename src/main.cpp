@@ -428,6 +428,11 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
+	btn_skip = new Button(BonkEnc::i18n->TranslateString("Skip"), NIL, Point(87, 100), Size(0, 0));
+	btn_skip->SetOrientation(OR_LOWERRIGHT);
+	btn_skip->onAction.Connect(&BonkEncGUI::SkipTrack, this);
+	btn_skip->Deactivate();
+
 	edb_time = new EditBox("00:00", Point(0, 75), Size(0, 0), 5);
 	edb_time->SetOrientation(OR_LOWERLEFT);
 	edb_time->Deactivate();
@@ -499,6 +504,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->RegisterObject(enc_progress);
 	mainWnd->RegisterObject(enc_outdir);
 	mainWnd->RegisterObject(edb_filename);
+	mainWnd->RegisterObject(btn_skip);
 	mainWnd->RegisterObject(edb_time);
 	mainWnd->RegisterObject(edb_percent);
 	mainWnd->RegisterObject(edb_encoder);
@@ -611,6 +617,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(enc_progress);
 	DeleteObject(enc_outdir);
 	DeleteObject(edb_filename);
+	DeleteObject(btn_skip);
 	DeleteObject(edb_time);
 	DeleteObject(edb_percent);
 	DeleteObject(edb_encoder);
@@ -772,7 +779,7 @@ Void BonkEnc::BonkEncGUI::ResizeProc()
 
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
 
-	edb_filename->SetWidth(clientSize.cx - 21 - maxTextLength);
+	edb_filename->SetWidth(clientSize.cx - 107 - maxTextLength);
 	edb_encoder->SetWidth(clientSize.cx - 116 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx);
 	edb_outdir->SetWidth(clientSize.cx - 107 - maxTextLength);
 
@@ -880,6 +887,11 @@ Void BonkEnc::BonkEncGUI::SelectDir()
 	}
 
 	DeleteObject(dialog);
+}
+
+Void BonkEnc::BonkEncGUI::SkipTrack()
+{
+	skip_track = True;
 }
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
@@ -1182,7 +1194,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	edb_filename->SetText(i18n->TranslateString("none"));
 
-	edb_filename->SetMetrics(Point(maxTextLength + 14, edb_filename->GetY()), Size(clientSize.cx - 21 - maxTextLength, edb_filename->GetHeight()));
+	edb_filename->SetMetrics(Point(maxTextLength + 14, edb_filename->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_filename->GetHeight()));
 	edb_time->SetMetrics(Point(maxTextLength + 14, edb_time->GetY()), Size(34, edb_time->GetHeight()));
 	edb_percent->SetMetrics(Point(maxTextLength + 62 + enc_percent->textSize.cx, edb_percent->GetY()), Size(33, edb_percent->GetHeight()));
 	edb_encoder->SetMetrics(Point(maxTextLength + 109 + enc_percent->textSize.cx + enc_encoder->textSize.cx, edb_encoder->GetY()), Size(clientSize.cx - 116 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx, edb_encoder->GetHeight()));

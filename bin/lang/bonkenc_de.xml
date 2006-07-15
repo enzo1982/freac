@@ -361,5 +361,6 @@
     <entry id="349" string="Allow overwriting input file">Überschreiben der Eingabedatei erlauben</entry>
     <entry id="350" string="Encode to single file">In einzelne Datei codieren</entry>
     <entry id="351" string="Encoder options">Codiereroptionen</entry>
+    <entry id="352" string="Skip">Überspringen</entry>
   </data>
 </LangFile>
