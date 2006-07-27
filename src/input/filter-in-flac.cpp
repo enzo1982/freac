@@ -44,6 +44,8 @@ Bool BonkEnc::FilterInFLAC::Activate()
 
 	readDataMutex->Lock();
 
+	infoFormat = new Track();
+
 	decoderThread = new Thread();
 	decoderThread->threadMain.Connect(&FilterInFLAC::ReadFLACData, this);
 	decoderThread->SetFlags(THREAD_WAITFLAG_START);
@@ -57,6 +59,8 @@ Bool BonkEnc::FilterInFLAC::Deactivate()
 	Object::DeleteObject(readDataMutex);
 	Object::DeleteObject(samplesBufferMutex);
 	Object::DeleteObject(decoderThread);
+
+	delete infoFormat;
 
 	return true;
 }
@@ -100,7 +104,7 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	nFormat->order		= BYTE_INTEL;
 	nFormat->fileSize	= f_in->Size();
 
-	format = new Track;
+	infoFormat = new Track;
 	finished = False;
 
 	driver = ioDriver;
@@ -122,18 +126,18 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	delete f_in;
 	delete ioDriver;
 
-	nFormat->length		= format->length;
-	nFormat->bits		= format->bits;
-	nFormat->channels	= format->channels;
-	nFormat->rate		= format->rate;
-	nFormat->artist		= format->artist;
-	nFormat->title		= format->title;
-	nFormat->album		= format->album;
-	nFormat->genre		= format->genre;
-	nFormat->year		= format->year;
-	nFormat->track		= format->track;
+	nFormat->length		= infoFormat->length;
+	nFormat->bits		= infoFormat->bits;
+	nFormat->channels	= infoFormat->channels;
+	nFormat->rate		= infoFormat->rate;
+	nFormat->artist		= infoFormat->artist;
+	nFormat->title		= infoFormat->title;
+	nFormat->album		= infoFormat->album;
+	nFormat->genre		= infoFormat->genre;
+	nFormat->year		= infoFormat->year;
+	nFormat->track		= infoFormat->track;
 
-	delete format;
+	delete infoFormat;
 
 	return nFormat;
 }
@@ -275,17 +279,17 @@ void BonkEnc::FLACSeekableStreamDecoderMetadataCallback(const FLAC__SeekableStre
 
 	if (metadata->type == FLAC__METADATA_TYPE_STREAMINFO)
 	{
-		filter->format->bits	= metadata->data.stream_info.bits_per_sample;
-		filter->format->channels= metadata->data.stream_info.channels;
-		filter->format->rate	= metadata->data.stream_info.sample_rate;
-		filter->format->length	= metadata->data.stream_info.total_samples * filter->format->channels;
+		filter->infoFormat->bits	= metadata->data.stream_info.bits_per_sample;
+		filter->infoFormat->channels	= metadata->data.stream_info.channels;
+		filter->infoFormat->rate	= metadata->data.stream_info.sample_rate;
+		filter->infoFormat->length	= metadata->data.stream_info.total_samples * filter->infoFormat->channels;
 	}
 	else if (metadata->type == FLAC__METADATA_TYPE_VORBIS_COMMENT)
 	{
 		if (metadata->data.vorbis_comment.num_comments > 0)
 		{
-			filter->format->track = -1;
-			filter->format->outfile = NIL;
+			filter->infoFormat->track = -1;
+			filter->infoFormat->outfile = NIL;
 
 			char	*prevInFormat = String::SetInputFormat("UTF-8");
 
@@ -300,7 +304,7 @@ void BonkEnc::FLACSeekableStreamDecoderMetadataCallback(const FLAC__SeekableStre
 						buffer[p] = metadata->data.vorbis_comment.comments[j].entry[p + 6];
 					}
 
-					filter->format->title = buffer;
+					filter->infoFormat->title = buffer;
 				}
 				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("ARTIST"))
 				{
@@ -309,7 +313,7 @@ void BonkEnc::FLACSeekableStreamDecoderMetadataCallback(const FLAC__SeekableStre
 						buffer[p] = metadata->data.vorbis_comment.comments[j].entry[p + 7];
 					}
 
-					filter->format->artist = buffer;
+					filter->infoFormat->artist = buffer;
 				}
 				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("ALBUM"))
 				{
@@ -318,7 +322,7 @@ void BonkEnc::FLACSeekableStreamDecoderMetadataCallback(const FLAC__SeekableStre
 						buffer[p] = metadata->data.vorbis_comment.comments[j].entry[p + 6];
 					}
 
-					filter->format->album = buffer;
+					filter->infoFormat->album = buffer;
 				}
 				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("GENRE"))
 				{
@@ -327,7 +331,7 @@ void BonkEnc::FLACSeekableStreamDecoderMetadataCallback(const FLAC__SeekableStre
 						buffer[p] = metadata->data.vorbis_comment.comments[j].entry[p + 6];
 					}
 
-					filter->format->genre = buffer;
+					filter->infoFormat->genre = buffer;
 				}
 				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("DATE"))
 				{
@@ -338,7 +342,7 @@ void BonkEnc::FLACSeekableStreamDecoderMetadataCallback(const FLAC__SeekableStre
 						year[p] = metadata->data.vorbis_comment.comments[j].entry[p + 5];
 					}
 
-					filter->format->year = year.ToInt();
+					filter->infoFormat->year = year.ToInt();
 				}
 				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("TRACKNUMBER"))
 				{
@@ -349,7 +353,7 @@ void BonkEnc::FLACSeekableStreamDecoderMetadataCallback(const FLAC__SeekableStre
 						track[p] = metadata->data.vorbis_comment.comments[j].entry[p + 12];
 					}
 
-					filter->format->track = track.ToInt();
+					filter->infoFormat->track = track.ToInt();
 				}
 
 				delete [] buffer;

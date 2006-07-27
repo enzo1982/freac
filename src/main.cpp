@@ -72,6 +72,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	playing = false;
 	play_thread = NIL;
 
+	skip_track = False;
+
 	currentConfig->enable_console = false;
 	currentConfig->appMain = this;
 
@@ -2089,8 +2091,8 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 {
 	if (!currentConfig->enable_eUpdate) return Success();
 
-//	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "file://eUpdate/eUpdate.xml");
-	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "http://www.bonkenc.org/eUpdate/eUpdate.xml");
+	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "file://eUpdate/eUpdate.xml");
+//	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "http://www.bonkenc.org/eUpdate/eUpdate.xml");
 
 	if (ex_eUpdate_CheckForNewUpdates(context, (self == NIL)) > 0)
 	{

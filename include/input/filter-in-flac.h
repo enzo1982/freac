@@ -34,6 +34,8 @@ namespace BonkEnc
 
 			Buffer<signed int>		 samplesBuffer;
 
+			Track				*infoFormat;
+
 			Thread				*decoderThread;
 			Mutex				*readDataMutex;
 			Mutex				*samplesBufferMutex;

@@ -15,6 +15,7 @@ Geschichte
 		- Sprachunterstützung für Norwegisch hinzugefügt
 		- Button zum Überspringen des Tracks, der gerade codiert wird, hinzugefügt
 		- Fehler bei Decodierung von HE-AAC-Tracks behoben
+		- Absturz beim Konvertieren von FLAC nach AAC behoben
 
 	Version 1.0 Beta 4 (Juni 2006)
 

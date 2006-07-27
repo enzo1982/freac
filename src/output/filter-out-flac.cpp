@@ -256,6 +256,8 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 			break;
 	}
 
+	bytesWritten = 0;
+
 	if (ex_FLAC__seekable_stream_encoder_init(encoder) != FLAC__SEEKABLE_STREAM_ENCODER_OK)
 	{
 		Utilities::ErrorMessage("Could not initialize %1 encoder! Please check the configuration!", "FLAC");
