@@ -293,13 +293,15 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		UnsignedLong	 samples_size	= 1024;
 		Int64		 n_loops	= (trackInfo->length + samples_size - 1) / samples_size;
 
-		if (!filter_out->error) f_out->SetPackageSize(samples_size * (trackInfo->bits / 8) * trackInfo->channels);
+		f_out->SetPackageSize(samples_size * (trackInfo->bits / 8) * trackInfo->channels);
 
 		debug_out->OutputLine("Entering encoder loop...");
 
 		InitProgressValues();
 
-		if (trackInfo->length >= 0)
+		if (filter_out->error || filter_in->error) skip_track = True;
+
+		if (!skip_track && trackInfo->length >= 0)
 		{
 			Int	 sample = 0;
 
@@ -330,7 +332,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				UpdateProgressValues(trackInfo, position);
 			}
 		}
-		else if (trackInfo->length == -1)
+		else if (!skip_track && trackInfo->length == -1)
 		{
 			Int	 sample = 0;
 

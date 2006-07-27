@@ -16,6 +16,7 @@ Geschichte
 		- Button zum Überspringen des Tracks, der gerade codiert wird, hinzugefügt
 		- Fehler bei Decodierung von HE-AAC-Tracks behoben
 		- Absturz beim Konvertieren von FLAC nach AAC behoben
+		- Fehler behoben, dass beliebige Samplingraten nicht mit LAME konvertiert werden konnten
 
 	Version 1.0 Beta 4 (Juni 2006)
 
@@ -254,7 +255,8 @@ Bekannte Probleme
 		- FLAC:
 				- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
 		- LAME:
-				- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen
+				- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen,
+				  können von LAME konvertiert werden
 		- TwinVQ:
 				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
 
@@ -265,6 +267,9 @@ Bekannte Probleme
 
 	- Editboxen funktionieren im Rechts-nach-Links modus nicht korrekt
 	- Unter Windows Vista muss das Windows-Standard-Thema ausgewählt sein, um mit BonkEnc arbeiten zu können
+
+	- Die WMA-Eingabeplugins von Winamp 5.22 und später sind nich kompatibel mit BonkEnc. Verwenden
+	  Sie das WMA-Plugin von Winamp 5.21, wenn Sie WMA-Dateien dekodieren möchten.
 
 Besonderen Dank
 ---------------

@@ -96,15 +96,6 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 			return;
 	}
 
-	if (format->rate != 8000 && format->rate != 11025 && format->rate != 12000 && format->rate != 16000 && format->rate != 22050 && format->rate != 24000 && format->rate != 32000 && format->rate != 44100 && format->rate != 48000)
-	{
-		Utilities::ErrorMessage("Bad sampling rate! The selected sampling rate is not supported.");
-
-		error = 1;
-
-		return;
-	}
-
 	if (format->channels > 2)
 	{
 		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
