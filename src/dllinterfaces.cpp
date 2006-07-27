@@ -188,8 +188,7 @@ MP4FINDTRACKID			 ex_MP4FindTrackId			= NIL;
 MP4GETTRACKTYPE			 ex_MP4GetTrackType			= NIL;
 MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration		= NIL;
 MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration		= NIL;
-MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples		= NIL;
-MP4SETTIMESCALE			 ex_MP4SetTimeScale			= NIL;
+MP4GETTRACKDURATION		 ex_MP4GetTrackDuration			= NIL;
 MP4SETAUDIOPROFILELEVEL		 ex_MP4SetAudioProfileLevel		= NIL;
 MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack			= NIL;
 MP4READSAMPLE			 ex_MP4ReadSample			= NIL;
@@ -770,8 +769,7 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) mp4v2dll->GetFunctionAddress("MP4GetTrackType");
 	ex_MP4GetTrackESConfiguration	= (MP4GETTRACKESCONFIGURATION) mp4v2dll->GetFunctionAddress("MP4GetTrackESConfiguration");
 	ex_MP4SetTrackESConfiguration	= (MP4SETTRACKESCONFIGURATION) mp4v2dll->GetFunctionAddress("MP4SetTrackESConfiguration");
-	ex_MP4GetTrackNumberOfSamples	= (MP4GETTRACKNUMBEROFSAMPLES) mp4v2dll->GetFunctionAddress("MP4GetTrackNumberOfSamples");
-	ex_MP4SetTimeScale		= (MP4SETTIMESCALE) mp4v2dll->GetFunctionAddress("MP4SetTimeScale");
+	ex_MP4GetTrackDuration		= (MP4GETTRACKDURATION) mp4v2dll->GetFunctionAddress("MP4GetTrackDuration");
 	ex_MP4SetAudioProfileLevel	= (MP4SETAUDIOPROFILELEVEL) mp4v2dll->GetFunctionAddress("MP4SetAudioProfileLevel");
 	ex_MP4AddAudioTrack		= (MP4ADDAUDIOTRACK) mp4v2dll->GetFunctionAddress("MP4AddAudioTrack");
 	ex_MP4ReadSample		= (MP4READSAMPLE) mp4v2dll->GetFunctionAddress("MP4ReadSample");
@@ -801,8 +799,7 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	    ex_MP4GetTrackType			== NIL ||
 	    ex_MP4GetTrackESConfiguration	== NIL ||
 	    ex_MP4SetTrackESConfiguration	== NIL ||
-	    ex_MP4GetTrackNumberOfSamples	== NIL ||
-	    ex_MP4SetTimeScale			== NIL ||
+	    ex_MP4GetTrackDuration		== NIL ||
 	    ex_MP4SetAudioProfileLevel		== NIL ||
 	    ex_MP4AddAudioTrack			== NIL ||
 	    ex_MP4ReadSample			== NIL ||

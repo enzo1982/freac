@@ -436,8 +436,7 @@ namespace BonkEnc
 	typedef const char *			(*MP4GETTRACKTYPE)				(MP4FileHandle, MP4TrackId);
 	typedef bool				(*MP4GETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, u_int8_t **, u_int32_t *);
 	typedef bool				(*MP4SETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t);
-	typedef MP4SampleId			(*MP4GETTRACKNUMBEROFSAMPLES)			(MP4FileHandle, MP4TrackId);
-	typedef bool				(*MP4SETTIMESCALE)				(MP4FileHandle, u_int32_t);
+	typedef MP4Duration			(*MP4GETTRACKDURATION)				(MP4FileHandle, MP4TrackId);
 	typedef bool				(*MP4SETAUDIOPROFILELEVEL)			(MP4FileHandle, u_int8_t);
 	typedef MP4TrackId			(*MP4ADDAUDIOTRACK)				(MP4FileHandle, u_int32_t, MP4Duration, u_int8_t);
 	typedef bool				(*MP4READSAMPLE)				(MP4FileHandle, MP4TrackId, MP4SampleId, u_int8_t **, u_int32_t *, MP4Timestamp *, MP4Duration *,
@@ -469,8 +468,7 @@ namespace BonkEnc
 	extern BEEXPORT MP4GETTRACKTYPE			 ex_MP4GetTrackType;
 	extern BEEXPORT MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration;
 	extern BEEXPORT MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
-	extern BEEXPORT MP4GETTRACKNUMBEROFSAMPLES	 ex_MP4GetTrackNumberOfSamples;
-	extern BEEXPORT MP4SETTIMESCALE			 ex_MP4SetTimeScale;
+	extern BEEXPORT MP4GETTRACKDURATION		 ex_MP4GetTrackDuration;
 	extern BEEXPORT MP4SETAUDIOPROFILELEVEL		 ex_MP4SetAudioProfileLevel;
 	extern BEEXPORT MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack;
 	extern BEEXPORT MP4READSAMPLE			 ex_MP4ReadSample;

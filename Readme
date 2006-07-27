@@ -14,6 +14,7 @@ History
 
 		- added Norwegian language support
 		- added a button for skipping the track currently being encoded
+		- fixed decoding of HE-AAC tracks
 
 	Version 1.0 Beta 4 (June 2006)
 
