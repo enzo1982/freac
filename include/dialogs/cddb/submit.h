@@ -14,7 +14,7 @@
 #include <smooth.h>
 
 #include <main.h>
-#include <cddbinfo.h>
+#include <cddb/cddbinfo.h>
 
 using namespace smooth;
 using namespace smooth::GUI;

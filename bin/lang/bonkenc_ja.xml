@@ -228,7 +228,6 @@
   <entry id="216" string="Stop">停止</entry>
   <entry id="217" string="Cannot play a file while encoding!">エンコード中にファイルを再生できません！</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">ファイルの再生中にエンコードを開始できません！</entry>
-  <entry id="219" string="CDDB Settings">CDDB設定</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">ATHを使用する:</entry>
   <entry id="222" string="Use default setting">初期設定を使う</entry>

@@ -22,6 +22,17 @@ namespace BonkEnc
 	class GeneralSettingsLayerCDDB : public Layer
 	{
 		private:
+			Layer		*layer_local_background;
+			CheckBox	*check_local;
+
+			Layer		*layer_remote_background;
+			CheckBox	*check_remote;
+
+			GroupBox	*group_local;
+			Text		*text_dir;
+			EditBox		*edit_dir;
+			Button		*button_browse;
+
 			GroupBox	*group_cddb;
 			Text		*text_mode;
 			ComboBox	*combo_mode;
@@ -33,6 +44,7 @@ namespace BonkEnc
 			EditBox		*edit_email;
 			Button		*button_http;
 			Button		*button_proxy;
+
 			GroupBox	*group_cddb_options;
 			CheckBox	*check_auto;
 			CheckBox	*check_cdtext;
@@ -42,10 +54,20 @@ namespace BonkEnc
 			Bool		 cddb_cdtext;
 			Bool		 cddb_cache;
  
+			Bool		 cddb_local;
+			Bool		 cddb_remote;
+
 			Config		*currentConfig;
 		slots:
+			Void		 ToggleLocalCDDB();
+			Void		 ToggleRemoteCDDB();
+
+			Void		 ToggleCDDBSettings();
+
 			Void		 SetCDDBMode();
 			Void		 ToggleAutoCDDB();
+
+			Void		 SelectDir();
 
 			Void		 HTTPSettings();
 			Void		 ProxySettings();
@@ -62,6 +84,11 @@ namespace BonkEnc
 			Bool		 GetCDDBAutoQuery();
 			Bool		 GetCDDBOverwriteCDText();
 			Bool		 GetCDDBCache();
+
+			Bool		 GetLocalCDDB();
+			Bool		 GetRemoteCDDB();
+
+			String		 GetLocalPath();
 	};
 };
 

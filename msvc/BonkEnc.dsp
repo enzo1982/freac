@@ -230,7 +230,7 @@ SOURCE=..\src\dialogs\genconfig\genconfig_plugins.cpp
 SOURCE=..\src\dialogs\genconfig\genconfig_tags.cpp
 # End Source File
 # End Group
-# Begin Group "cddb"
+# Begin Group "cddbdialogs"
 
 # PROP Default_Filter ""
 # Begin Source File
@@ -295,17 +295,29 @@ SOURCE=..\src\dialogs\tvqconfig.cpp
 SOURCE=..\src\dialogs\vorbisconfig.cpp
 # End Source File
 # End Group
+# Begin Group "cddb"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\src\cddb\cddb.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\cddb\cddbinfo.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\cddb\cddblocal.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\cddb\cddbremote.cpp
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\src\bonkenc.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\cddb.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\cddbinfo.cpp
 # End Source File
 # Begin Source File
 
@@ -507,7 +519,7 @@ SOURCE=..\include\dialogs\genconfig\genconfig_plugins.h
 SOURCE=..\include\dialogs\genconfig\genconfig_tags.h
 # End Source File
 # End Group
-# Begin Group "cddb-headers"
+# Begin Group "cddbdialogs-headers"
 
 # PROP Default_Filter ""
 # Begin Source File
@@ -572,17 +584,29 @@ SOURCE=..\include\dialogs\tvqconfig.h
 SOURCE=..\include\dialogs\vorbisconfig.h
 # End Source File
 # End Group
+# Begin Group "cddb-headers"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\include\cddb\cddb.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\cddb\cddbinfo.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\cddb\cddblocal.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\cddb\cddbremote.h
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\include\bonkenc.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\cddb.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\include\cddbinfo.h
 # End Source File
 # Begin Source File
 

@@ -14,7 +14,7 @@
 #include <smooth.h>
 
 #include <main.h>
-#include <cddbinfo.h>
+#include <cddb/cddb.h>
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -39,6 +39,8 @@ namespace BonkEnc
 
 			Void		 Cancel();
 			Int		 QueryThread(Thread *);
+
+			Bool		 QueryCDDB(CDDB &);
 		public:
 					 cddbQueryDlg();
 					~cddbQueryDlg();

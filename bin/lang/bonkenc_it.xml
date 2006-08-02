@@ -228,7 +228,6 @@
     <entry id="216" string="Stop">Interrompi riproduzione</entry>
     <entry id="217" string="Cannot play a file while encoding!">Impossibile riprodurre un file audio durante l'operazione di codifica.</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">Impossibile avviare la codifica di un file durante la riproduzione.</entry>
-    <entry id="219" string="CDDB Settings">Impostazioni CDDB</entry>
     <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">Attiva ATH:</entry>
     <entry id="222" string="Use default setting">Usa impostazione predefinita</entry>

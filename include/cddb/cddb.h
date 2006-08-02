@@ -11,32 +11,19 @@
 #ifndef _H_CDDB_
 #define _H_CDDB_
 
-#include <smooth.h>
-
 #include <main.h>
-#include <cddbinfo.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
-using namespace smooth::IO;
+#include <cddb/cddbinfo.h>
 
 const Int	 FREEDB_MODE_HTTP	= 0;
 const Int	 FREEDB_MODE_CDDBP	= 1;
 
 namespace BonkEnc
 {
-	class BEEXPORT CDDB
+	abstract class BEEXPORT CDDB
 	{
-		private:
+		protected:
 			Int			 activeDriveID;
-			Bool			 connected;
 			Config			*config;
-
-			Buffer<char>		 hostNameBuffer;
-
-			Driver			*socket;
-			InStream		*in;
-			OutStream		*out;
 
 			Array<String>		 ids;
 			Array<String>		 titles;
@@ -44,11 +31,10 @@ namespace BonkEnc
 
 			String			 category;
 
-			String			 GetCDDBQueryString();
-			String			 SendCommand(const String &);
-
 			String			 FormatCDDBEntry(const String &, const String &);
 			String			 ParseCDDBEntry(const String &, Int &);
+
+			Bool			 ParseCDDBRecord(const String &, CDDBInfo *);
 		public:
 						 CDDB(Config *);
 			virtual			~CDDB();
@@ -57,11 +43,11 @@ namespace BonkEnc
 			Int			 ComputeDiscID();
 			String			 GetCategory();
 
-			Bool			 ConnectToServer();
-			String			 Query(const String &);
-			Bool			 Read(const String &, CDDBInfo *);
-			Bool			 Submit(CDDBInfo *);
-			Bool			 CloseConnection();
+			virtual Bool		 ConnectToServer() = 0;
+			virtual String		 Query(const String &) = 0;
+			virtual Bool		 Read(const String &, CDDBInfo *) = 0;
+			virtual Bool		 Submit(CDDBInfo *) = 0;
+			virtual Bool		 CloseConnection() = 0;
 
 			Int			 GetNumberOfMatches();
 			String			 GetNthDiscID(Int);

@@ -228,7 +228,6 @@
   <entry id="216" string="Stop">Zatrzymaj</entry>
   <entry id="217" string="Cannot play a file while encoding!">Nie można odtwarzać pliku podczas kompresji!</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Nie można rozpocząć konwersji podczas odtwarzania pliku!</entry>
-  <entry id="219" string="CDDB Settings">Ustawienia CDDB</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Włącz ATH:</entry>
   <entry id="222" string="Use default setting">ustawienie domyślne</entry>

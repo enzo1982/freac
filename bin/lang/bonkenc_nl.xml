@@ -226,7 +226,6 @@
     <entry id="216" string="Stop">Stoppen</entry>
     <entry id="217" string="Cannot play a file while encoding!">Er kan geen bestand afgespeeld worden tijdens het coderen!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">Er kan niet gestart worden met coderen zolang een bestand afgespeeld wordt!</entry>
-    <entry id="219" string="CDDB Settings">CDDB instellingen</entry>
     <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">ATH activeren:</entry>
     <entry id="222" string="Use default setting">Standaardinstelling gebruiken</entry>

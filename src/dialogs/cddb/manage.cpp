@@ -12,7 +12,7 @@
 #include <resources.h>
 #include <dllinterfaces.h>
 #include <joblist.h>
-#include <cddb.h>
+#include <cddb/cddb.h>
 #include <utilities.h>
 
 BonkEnc::cddbManageDlg::cddbManageDlg()

@@ -8,8 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <cddbinfo.h>
-#include <cddb.h>
+#include <cddb/cddbinfo.h>
+#include <cddb/cddb.h>
 
 BonkEnc::CDDBInfo::CDDBInfo()
 {

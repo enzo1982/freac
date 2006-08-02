@@ -16,7 +16,7 @@
 #include "config.h"
 #include "track.h"
 #include "debug.h"
-#include "cddbinfo.h"
+#include "cddb/cddbinfo.h"
 
 using namespace smooth;
 using namespace smooth::GUI;

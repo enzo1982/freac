@@ -226,7 +226,6 @@
     <entry id="216" string="Stop">정지</entry>
     <entry id="217" string="Cannot play a file while encoding!">인코딩 중에는 파일을 재생할 수 없습니다!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">파일재생 중에는 인코딩을 시작할 수 없습니다!</entry>
-    <entry id="219" string="CDDB Settings">CDDB 설정</entry>
     <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">ATH 허용:</entry>
     <entry id="222" string="Use default setting">초기설정 사용</entry>

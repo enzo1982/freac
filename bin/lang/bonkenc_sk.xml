@@ -228,7 +228,6 @@
   <entry id="216" string="Stop">Zastaviť</entry>
   <entry id="217" string="Cannot play a file while encoding!">Nemožno prehrávať počas kódovania!</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Nemožno začať kódovať počas hrania!</entry>
-  <entry id="219" string="CDDB Settings">CDDB Nastavenia</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Povoliť ATH:</entry>
   <entry id="222" string="Use default setting">Pôovodné nastavenia</entry>

@@ -226,7 +226,6 @@
     <entry id="216" string="Stop">Стоп</entry>
     <entry id="217" string="Cannot play a file while encoding!">Не можу відтворити файл під час кодування!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">Не можу розпочати кодування під час відтворення файлу!</entry>
-    <entry id="219" string="CDDB Settings">Налаштування CDDB</entry>
     <entry id="220" string="ATH"/>
     <entry id="221" string="Enable ATH:">Включити ATH:</entry>
     <entry id="222" string="Use default setting">Використовувати налаштування за замовчуванням</entry>

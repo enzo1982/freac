@@ -226,7 +226,6 @@
     <entry id="216" string="Stop">Διακοπή Αναπαραγωγής</entry>
     <entry id="217" string="Cannot play a file while encoding!">Αδύνατη η αναπαραγωγή αρχείου κατά την κωδικοποίηση!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">Αδύνατη η έναρξη κωδικοποίησης κατά την αναπαραγωγή!</entry>
-    <entry id="219" string="CDDB Settings">Ρυθμίσεις CDDB</entry>
     <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">Ενεργοποίηση:</entry>
     <entry id="222" string="Use default setting">Προεπιλεγμένη ρύθμιση</entry>

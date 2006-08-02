@@ -9,11 +9,13 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/submit.h>
-#include <resources.h>
-#include <dllinterfaces.h>
 #include <joblist.h>
-#include <cddb.h>
+#include <dllinterfaces.h>
 #include <utilities.h>
+#include <resources.h>
+
+#include <cddb/cddblocal.h>
+#include <cddb/cddbremote.h>
 
 typedef struct
 {
@@ -356,7 +358,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	check_updateJoblist->Hide();
 	text_status->SetText(BonkEnc::i18n->TranslateString("Submitting CD information").Append("..."));
 
-	CDDB	 cddb(currentConfig);
+	CDDBRemote	 cddb(currentConfig);
 
 	if (!cddb.Submit(cddbInfo))
 	{
@@ -509,7 +511,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	currentConfig->cdrip_activedrive = activedrive;
 
-	CDDB		 cddb(currentConfig);
+	CDDBRemote	 cddb(currentConfig);
 	Int		 iDiscid = cddb.ComputeDiscID();
 	CDDBInfo	*cdInfo = NIL;
 
@@ -677,7 +679,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	{
 		Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
 
-		if (trackInfo->discid != cddb.DiscIDToString(cddb.ComputeDiscID())) continue;
+		if (trackInfo->discid != CDDB::DiscIDToString(cddb.ComputeDiscID())) continue;
 
 		for (Int m = 0; m < titles.GetNOfEntries(); m++)
 		{

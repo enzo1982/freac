@@ -110,6 +110,7 @@ namespace BonkEnc
 			Array<Int>	 cdrip_read_discids;
 			Array<Bool>	 cdrip_read_results;
 
+			String		 freedb_dir;
 			String		 freedb_server;
 			Int		 freedb_mode;
 			Int		 freedb_cddbp_port;
@@ -122,6 +123,8 @@ namespace BonkEnc
 			Int		 freedb_proxy_port;
 			String		 freedb_proxy_user;
 			String		 freedb_proxy_password;
+			Bool		 enable_local_cddb;
+			Bool		 enable_remote_cddb;
 			Bool		 enable_auto_cddb;
 			Bool		 enable_overwrite_cdtext;
 			Bool		 enable_cddb_cache;

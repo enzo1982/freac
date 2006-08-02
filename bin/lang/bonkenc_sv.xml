@@ -226,7 +226,6 @@
   <entry id="216" string="Stop">Stoppa</entry>
   <entry id="217" string="Cannot play a file while encoding!">Kan inte spela fil under kodning!</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Du kan inte koda när du spelar en fil!</entry>
-  <entry id="219" string="CDDB Settings">CDDB Inställningar</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Aktivera ATH:</entry>
   <entry id="222" string="Use default setting">Använda vanlig intällning</entry>

@@ -228,7 +228,6 @@
   <entry id="216" string="Stop">Arrêter</entry>
   <entry id="217" string="Cannot play a file while encoding!">Impossible de lire un fichier lors de l'encodage !</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Impossible de lancer l'encodage lorsqu'un fichier est en cours de lecture !</entry>
-  <entry id="219" string="CDDB Settings">Paramètres CDDB</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Activer ATH :</entry>
   <entry id="222" string="Use default setting">Utiliser le paramètre par défaut</entry>

@@ -11,7 +11,7 @@
 #include <input/filter-in-cdrip.h>
 #include <3rdparty/cdrip/cdrip.h>
 #include <3rdparty/paranoia/cdda_paranoia.h>
-#include <cddb.h>
+#include <cddb/cddbremote.h>
 
 #include <dllinterfaces.h>
 
@@ -338,7 +338,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	nFormat->length = (trackLength * 2352) / (nFormat->bits / 8);
 	nFormat->fileSize = trackLength * 2352;
 
-	CDDB		 cddb(currentConfig);
+	CDDBRemote	 cddb(currentConfig);
 
 	cddb.SetActiveDrive(audiodrive);
 
@@ -393,7 +393,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= cddb.DiscIDToString(cddb.ComputeDiscID());
+		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
 		nFormat->artist		= cdInfo->dArtist;
@@ -406,7 +406,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= cddb.DiscIDToString(cddb.ComputeDiscID());
+		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
 		nFormat->artist		= cdText.GetEntry(0);
@@ -417,7 +417,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= cddb.DiscIDToString(cddb.ComputeDiscID());
+		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
 	}

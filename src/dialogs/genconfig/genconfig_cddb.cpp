@@ -10,7 +10,7 @@
 
 #include <dialogs/genconfig/genconfig_cddb.h>
 #include <dialogs/cddb/extsettings.h>
-#include <cddb.h>
+#include <cddb/cddb.h>
 
 BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 {
@@ -23,15 +23,67 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	cddb_cdtext	= currentConfig->enable_overwrite_cdtext;
 	cddb_cache	= currentConfig->enable_cddb_cache;
 
+	cddb_local	= currentConfig->enable_local_cddb;
+	cddb_remote	= currentConfig->enable_remote_cddb;
+
+	layer_local_background	= new Layer();
+	layer_local_background->SetBackgroundColor(Setup::BackgroundColor);
+
+	layer_remote_background	= new Layer();
+	layer_remote_background->SetBackgroundColor(Setup::BackgroundColor);
+
+	pos.x	= 2;
+	pos.y	= 0;
+
+	check_local	= new CheckBox(BonkEnc::i18n->TranslateString("Enable local CDDB"), pos, size, &cddb_local);
+	check_local->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleLocalCDDB, this);
+	check_local->SetWidth(check_local->textSize.cx + 20);
+
+	check_remote	= new CheckBox(BonkEnc::i18n->TranslateString("Enable remote CDDB"), pos, size, &cddb_remote);
+	check_remote->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleRemoteCDDB, this);
+	check_remote->SetWidth(check_remote->textSize.cx + 20);
+
+	layer_local_background->SetMetrics(Point(14, 3), check_local->GetSize() + Size(4, 0));
+	layer_remote_background->SetMetrics(Point(14, 58), check_remote->GetSize() + Size(4, 0));
+
+	layer_local_background->RegisterObject(check_local);
+	layer_remote_background->RegisterObject(check_remote);
+
 	pos.x	= 7;
 	pos.y	= 11;
 	size.cx	= 344;
+	size.cy	= 43;
+
+	group_local	= new GroupBox(BonkEnc::i18n->TranslateString("Enable local CDDB"), pos, size);
+
+	pos.x	+= 9;
+	pos.y	+= 15;
+
+	text_dir	= new Text(BonkEnc::i18n->TranslateString("CDDB directory:"), pos);
+
+	pos.x	+= 106;
+	pos.y	-= 3;
+	size.cx	= 119;
+	size.cy	= 0;
+
+	edit_dir	= new EditBox(currentConfig->freedb_dir, pos, size, 0);
+
+	pos.x	= 261;
+	pos.y	-= 1;
+	size.cx	= 0;
+
+	button_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	button_browse->onAction.Connect(&GeneralSettingsLayerCDDB::SelectDir, this);
+
+	pos.x	= 7;
+	pos.y	= 66;
+	size.cx	= 344;
 	size.cy	= 125;
 
-	group_cddb	= new GroupBox(BonkEnc::i18n->TranslateString("CDDB Settings"), pos, size);
+	group_cddb	= new GroupBox(BonkEnc::i18n->TranslateString("Enable remote CDDB"), pos, size);
 
-	pos.x	= 16;
-	pos.y	= 26;
+	pos.x	+= 9;
+	pos.y	+= 15;
 
 	text_mode	= new Text(BonkEnc::i18n->TranslateString("CDDB access mode:"), pos);
 
@@ -120,12 +172,20 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	SetCDDBMode();
 	ToggleAutoCDDB();
 
-	Int	 maxTextSize = max(text_email->textSize.cx, max(text_mode->textSize.cx, text_server->textSize.cx));
+	ToggleLocalCDDB();
+	ToggleRemoteCDDB();
 
+	Int	 maxTextSize = Math::Max(Math::Max(text_dir->textSize.cx, text_email->textSize.cx), Math::Max(text_mode->textSize.cx, text_server->textSize.cx));
+
+	edit_dir->SetMetrics(Point(maxTextSize + 24, edit_dir->GetY()), Size(229 - maxTextSize, edit_dir->GetHeight()));
 	combo_mode->SetMetrics(Point(maxTextSize + 24, combo_mode->GetY()), Size(317 - maxTextSize, combo_mode->GetHeight()));
 	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetY()), Size(265 - maxTextSize - text_port->textSize.cx, edit_server->GetHeight()));
 	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->GetY()), Size(317 - maxTextSize, edit_email->GetHeight()));
 
+	RegisterObject(group_local);
+	RegisterObject(text_dir);
+	RegisterObject(edit_dir);
+	RegisterObject(button_browse);
 	RegisterObject(group_cddb);
 	RegisterObject(text_mode);
 	RegisterObject(combo_mode);
@@ -141,10 +201,16 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	RegisterObject(check_auto);
 	RegisterObject(check_cdtext);
 	RegisterObject(check_cache);
+	RegisterObject(layer_local_background);
+	RegisterObject(layer_remote_background);
 }
 
 BonkEnc::GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()
 {
+	DeleteObject(group_local);
+	DeleteObject(text_dir);
+	DeleteObject(edit_dir);
+	DeleteObject(button_browse);
 	DeleteObject(group_cddb);
 	DeleteObject(text_mode);
 	DeleteObject(combo_mode);
@@ -162,6 +228,22 @@ BonkEnc::GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()
 	DeleteObject(check_cache);
 }
 
+Void BonkEnc::GeneralSettingsLayerCDDB::SelectDir()
+{
+	DirSelection	*dialog = new DirSelection();
+
+	dialog->SetParentWindow(GetContainerWindow());
+	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder of the CDDB database:")));
+	dialog->SetDirName(edit_dir->GetText());
+
+	if (dialog->ShowDialog() == Success())
+	{
+		edit_dir->SetText(dialog->GetDirName());
+	}
+
+	DeleteObject(dialog);
+}
+
 Void BonkEnc::GeneralSettingsLayerCDDB::SetCDDBMode()
 {
 	if (combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
@@ -173,6 +255,62 @@ Void BonkEnc::GeneralSettingsLayerCDDB::SetCDDBMode()
 	{
 		edit_port->Deactivate();
 		edit_port->SetText(String::FromInt(currentConfig->freedb_http_port));
+	}
+}
+
+Void BonkEnc::GeneralSettingsLayerCDDB::ToggleLocalCDDB()
+{
+	if (cddb_local)
+	{
+		edit_dir->Activate();
+		button_browse->Activate();
+	}
+	else
+	{
+		edit_dir->Deactivate();
+		button_browse->Deactivate();
+	}
+
+	ToggleCDDBSettings();
+}
+
+Void BonkEnc::GeneralSettingsLayerCDDB::ToggleRemoteCDDB()
+{
+	if (cddb_remote)
+	{
+		combo_mode->Activate();
+		edit_server->Activate();
+		edit_port->Activate();
+		edit_email->Activate();
+		button_http->Activate();
+		button_proxy->Activate();
+	}
+	else
+	{
+		combo_mode->Deactivate();
+		edit_server->Deactivate();
+		edit_port->Deactivate();
+		edit_email->Deactivate();
+		button_http->Deactivate();
+		button_proxy->Deactivate();
+	}
+
+	ToggleCDDBSettings();
+}
+
+Void BonkEnc::GeneralSettingsLayerCDDB::ToggleCDDBSettings()
+{
+	if (cddb_local || cddb_remote)
+	{
+		check_auto->Activate();
+		check_cdtext->Activate();
+		check_cache->Activate();
+	}
+	else
+	{
+		check_auto->Deactivate();
+		check_cdtext->Deactivate();
+		check_cache->Deactivate();
 	}
 }
 
@@ -233,4 +371,19 @@ Bool BonkEnc::GeneralSettingsLayerCDDB::GetCDDBOverwriteCDText()
 Bool BonkEnc::GeneralSettingsLayerCDDB::GetCDDBCache()
 {
 	return cddb_cache;
+}
+
+Bool BonkEnc::GeneralSettingsLayerCDDB::GetLocalCDDB()
+{
+	return cddb_local;
+}
+
+Bool BonkEnc::GeneralSettingsLayerCDDB::GetRemoteCDDB()
+{
+	return cddb_remote;
+}
+
+String BonkEnc::GeneralSettingsLayerCDDB::GetLocalPath()
+{
+	return edit_dir->GetText();
 }

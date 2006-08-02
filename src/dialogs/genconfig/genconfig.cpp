@@ -17,7 +17,7 @@
 #include <dialogs/genconfig/genconfig_plugins.h>
 #include <dialogs/genconfig/genconfig_tags.h>
 
-#include <cddb.h>
+#include <cddb/cddb.h>
 #include <resources.h>
 #include <utilities.h>
 
@@ -212,12 +212,16 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->vctag_encoding		= register_layer_tags->GetVCTagEncoding();
 	currentConfig->mp4meta_encoding		= register_layer_tags->GetMP4MetaEncoding();
 
+	currentConfig->enable_local_cddb	= register_layer_cddb->GetLocalCDDB();
+	currentConfig->enable_remote_cddb	= register_layer_cddb->GetRemoteCDDB();
+
 	currentConfig->enable_auto_cddb		= register_layer_cddb->GetCDDBAutoQuery();
 	currentConfig->enable_overwrite_cdtext	= register_layer_cddb->GetCDDBOverwriteCDText();
 	currentConfig->enable_cddb_cache	= register_layer_cddb->GetCDDBCache();
 
 	currentConfig->default_comment		= register_layer_tags->GetDefaultComment();
 
+	currentConfig->freedb_dir		= register_layer_cddb->GetLocalPath();
 	currentConfig->freedb_server		= register_layer_cddb->GetFreedbServer();
 	currentConfig->freedb_email		= register_layer_cddb->GetFreedbEMail();
 
@@ -228,6 +232,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 
 	if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
 	if (currentConfig->playlist_outdir[currentConfig->playlist_outdir.Length() - 1] != '\\') currentConfig->playlist_outdir.Append("\\");
+	if (currentConfig->freedb_dir[currentConfig->freedb_dir.Length() - 1] != '\\') currentConfig->freedb_dir.Append("\\");
 
 	mainWnd->Close();
 }

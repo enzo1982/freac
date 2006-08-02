@@ -226,7 +226,6 @@
     <entry id="216" string="Stop">Detener</entry>
     <entry id="217" string="Cannot play a file while encoding!">No se puede reproducir durante el proceso de codificación</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">¡No se puede comenzar la codificación durante la reproducción de un archivo!</entry>
-    <entry id="219" string="CDDB Settings">Configuración de CDDB</entry>
     <entry id="220" string="ATH"/>
     <entry id="221" string="Enable ATH:">Activar ATH:</entry>
     <entry id="222" string="Use default setting">Utilizar ajuste predeterminado</entry>

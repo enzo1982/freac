@@ -225,7 +225,6 @@
     <entry id="216" string="Stop">Stop</entry>
     <entry id="217" string="Cannot play a file while encoding!">Nemohu přehrát soubor z důvodu kódování!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">Nemohu kódovat, soubor je přehráván!</entry>
-    <entry id="219" string="CDDB Settings">Nastavení CDDB</entry>
     <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">Aktivovat ATH:</entry>
     <entry id="222" string="Use default setting">Použít standard nastavení</entry>

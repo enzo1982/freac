@@ -128,7 +128,6 @@
   <entry id="116" string="Auto">自動</entry>
   <entry id="117" string="Stereo">立體聲</entry>
   <entry id="118" string="Joint Stereo">複合立體聲</entry>
-  <entry id="119" string="Force Joint Stereo">強制複合立體聲</entry>
   <entry id="120" string="VBR mode">動態播放率模式</entry>
   <entry id="121" string="no VBR">固定播放率</entry>
   <entry id="122" string="VBR quality">變動式播放率品質</entry>

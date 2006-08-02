@@ -228,7 +228,7 @@
     <entry id="216" string="Stop"/>
     <entry id="217" string="Cannot play a file while encoding!"/>
     <entry id="218" string="Cannot start encoding while playing a file!"/>
-    <entry id="219" string="CDDB Settings"/>
+    <entry id="219" string="Enable remote CDDB"/>
     <entry id="220" string="ATH"/>
     <entry id="221" string="Enable ATH:"/>
     <entry id="222" string="Use default setting"/>
@@ -362,5 +362,8 @@
     <entry id="350" string="Encode to single file"/>
     <entry id="351" string="Encoder options"/>
     <entry id="352" string="Skip"/>
+    <entry id="353" string="Enable local CDDB"/>
+    <entry id="354" string="CDDB directory:"/>
+    <entry id="355" string="Select the folder of the CDDB database:"/>
   </data>
 </LangFile>

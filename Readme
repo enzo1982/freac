@@ -10,13 +10,15 @@ BonkEnc uses the CDRip Ripping Library for audio ripping.
 History
 -------
 
-	Version 1.0 RC 1 CVS (July 2006)
+	Version 1.0 RC 1 CVS (August 2006)
 
 		- added Norwegian language support
 		- added a button for skipping the track currently being encoded
+		- added support for local freedb queries
 		- fixed decoding of HE-AAC tracks
 		- fixed crash when converting from FLAC to AAC
 		- fixed it not being possible to convert arbitrary sampling rates using LAME
+		- upgraded to smooth v0.8.69.0
 
 	Version 1.0 Beta 4 (June 2006)
 

@@ -30,7 +30,7 @@
 #include <dialogs/flacconfig.h>
 #include <dialogs/tvqconfig.h>
 
-#include <cddb.h>
+#include <cddb/cddb.h>
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 #include <dialogs/cddb/manage.h>
@@ -925,7 +925,6 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 		currentConfig->cdrip_activedrive = discIDs.GetNthEntryIndex(j);
 
-		CDDB		 cddb(currentConfig);
 		Int		 discID = discIDs.GetNthEntry(j);
 		String		 discIDString = discIDStrings.GetNthEntry(j);
 		CDDBInfo	*cdInfo = NIL;

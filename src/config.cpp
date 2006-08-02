@@ -120,6 +120,9 @@ Bool BonkEnc::Config::LoadSettings()
 	enable_auto_cddb			= config->GetIntValue("freedb", "AutoCDDBQueries", 0);
 	enable_overwrite_cdtext			= config->GetIntValue("freedb", "OverwriteCDText", 1);
 	enable_cddb_cache			= config->GetIntValue("freedb", "EnableCDDBCache", 1);
+	enable_local_cddb			= config->GetIntValue("freedb", "EnableLocalCDDB", 0);
+	freedb_dir				= config->GetStringValue("freedb", "Directory", "freedb");
+	enable_remote_cddb			= config->GetIntValue("freedb", "EnableRemoteCDDB", 1);
 	freedb_server				= config->GetStringValue("freedb", "Server", "freedb.freedb.org");
 	freedb_mode				= config->GetIntValue("freedb", "Mode", 0);
 	freedb_cddbp_port			= config->GetIntValue("freedb", "CDDBPPort", 8880);
@@ -216,6 +219,7 @@ Bool BonkEnc::Config::LoadSettings()
 
 	if (enc_outdir[enc_outdir.Length() - 1] != '\\') enc_outdir.Append("\\");
 	if (playlist_outdir[playlist_outdir.Length() - 1] != '\\') playlist_outdir.Append("\\");
+	if (freedb_dir[freedb_dir.Length() - 1] != '\\') freedb_dir.Append("\\");
 
 	if (encodeToSingleFile && !enc_onTheFly) enc_onTheFly = True;
 
@@ -286,6 +290,9 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("freedb", "AutoCDDBQueries", enable_auto_cddb);
 		config->SetIntValue("freedb", "OverwriteCDText", enable_overwrite_cdtext);
 		config->SetIntValue("freedb", "EnableCDDBCache", enable_cddb_cache);
+		config->SetIntValue("freedb", "EnableLocalCDDB", enable_local_cddb);
+		config->SetStringValue("freedb", "Directory", freedb_dir);
+		config->SetIntValue("freedb", "EnableRemoteCDDB", enable_remote_cddb);
 		config->SetStringValue("freedb", "Server", freedb_server);
 		config->SetIntValue("freedb", "Mode", freedb_mode);
 		config->SetIntValue("freedb", "CDDBPPort", freedb_cddbp_port);

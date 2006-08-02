@@ -18,7 +18,7 @@
 #include <dllinterfaces.h>
 #include <joblist.h>
 
-#include <cddb.h>
+#include <cddb/cddb.h>
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 

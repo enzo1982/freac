@@ -9,11 +9,13 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/query.h>
-#include <resources.h>
-#include <dllinterfaces.h>
-#include <cddb.h>
-#include <utilities.h>
 #include <dialogs/cddb/multimatch.h>
+#include <dllinterfaces.h>
+#include <utilities.h>
+#include <resources.h>
+
+#include <cddb/cddblocal.h>
+#include <cddb/cddbremote.h>
 
 BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
@@ -101,16 +103,39 @@ Void BonkEnc::cddbQueryDlg::Cancel()
 
 Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 {
-	CDDB	 cddb(currentConfig);
+	Bool	 result = False;
+
+	if (currentConfig->enable_local_cddb)
+	{
+		CDDBLocal	 cddbLocal(currentConfig);
+
+		result = QueryCDDB(cddbLocal);
+	}
+
+	if (!result && currentConfig->enable_remote_cddb)
+	{
+		CDDBRemote	 cddbRemote(currentConfig);
+
+		result = QueryCDDB(cddbRemote);
+	}
+
+	mainWnd->Close();
+
+	if (result) return Success();
+	else	    return Error();
+}
+
+Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
+{
 	String	 result;
 	String	 read = NIL;
 	Bool	 fuzzy = False;
 
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
-	String		 discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
+	String	 discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
 
-	if (discid == "ffffffff" || discid == "00000000") return NIL; // no disc in drive or read error
+	if (discid == "ffffffff" || discid == "00000000") return False; // no disc in drive or read error
 
 	text_status->SetText(BonkEnc::i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
@@ -187,5 +212,5 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 	mainWnd->Close();
 
-	return Success();
+	return True;
 }
