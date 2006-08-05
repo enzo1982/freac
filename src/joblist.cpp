@@ -17,6 +17,8 @@
 
 BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
 {
+	SetFlags(LF_ALLOWREORDER);
+
 	onRegister.Connect(&JobList::OnRegister, this);
 	onUnregister.Connect(&JobList::OnUnregister, this);
 

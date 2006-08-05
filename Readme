@@ -15,6 +15,7 @@ History
 		- added Norwegian language support
 		- added a button for skipping the track currently being encoded
 		- added support for local freedb queries
+		- added a confirmation before overwriting files
 		- fixed decoding of HE-AAC tracks
 		- fixed crash when converting from FLAC to AAC
 		- fixed it not being possible to convert arbitrary sampling rates using LAME

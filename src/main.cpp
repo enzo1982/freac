@@ -69,11 +69,6 @@ Int smooth::Main()
 
 BonkEnc::BonkEncGUI::BonkEncGUI()
 {
-	playing = false;
-	play_thread = NIL;
-
-	skip_track = False;
-
 	currentConfig->enable_console = false;
 	currentConfig->appMain = this;
 

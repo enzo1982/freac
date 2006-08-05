@@ -71,6 +71,8 @@ Void BonkEnc::BonkEnc::Encode()
 	pause_encoding = False;
 	stop_encoding = False;
 
+	overwriteAll = False;
+
 	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
 	encoder_thread->Start();
 
@@ -194,6 +196,24 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		}
 
 		out_filename = GetOutputFileName(trackInfo);
+
+		if (!overwriteAll && File(out_filename).Exists() && !currentConfig->writeToInputDir && !(!currentConfig->enc_onTheFly && step == 0))
+		{
+			MessageDlg	*confirmation = new MessageDlg(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
+
+			confirmation->ShowDialog();
+
+			if (confirmation->GetButtonCode() == IDNO)
+			{
+				overwriteAll = False;
+
+				Object::DeleteObject(confirmation);
+
+				continue;
+			}
+
+			Object::DeleteObject(confirmation);
+		}
 
 		if (out_filename == in_filename) out_filename.Append(".temp");
 
@@ -456,13 +476,14 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		if (out_filename == String(in_filename).Append(".temp"))
 		{
-			if (currentConfig->allowOverwrite || !File(in_filename).Exists())
+			if (!currentConfig->writeToInputDir || currentConfig->allowOverwrite || !File(in_filename).Exists())
 			{
 				File(in_filename).Delete();
 				File(out_filename).Move(in_filename);
 			}
 			else
 			{
+				File(String(in_filename).Append(".new")).Delete();
 				File(out_filename).Move(String(in_filename).Append(".new"));
 			}
 		}

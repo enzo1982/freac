@@ -117,6 +117,8 @@ namespace BonkEnc
 
 			Int			 lastPercent;
 
+			Bool			 overwriteAll;
+
 			Int			 Encoder(Thread *);
 
 			String			 GetPlaylistFileName(Track *);

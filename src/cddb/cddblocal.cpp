@@ -19,7 +19,7 @@ BonkEnc::CDDBLocal::~CDDBLocal()
 {
 }
 
-Void BonkEnc::CDDBLocal::QueryUnixDB(const String &discid)
+Bool BonkEnc::CDDBLocal::QueryUnixDB(const String &discid)
 {
 	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
@@ -73,9 +73,11 @@ Void BonkEnc::CDDBLocal::QueryUnixDB(const String &discid)
 
 	String::SetInputFormat(inputFormat);
 	String::SetOutputFormat(outputFormat);
+
+	return (results.GetNOfEntries() != 0);
 }
 
-Void BonkEnc::CDDBLocal::QueryWinDB(const String &discid)
+Bool BonkEnc::CDDBLocal::QueryWinDB(const String &discid)
 {
 	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
@@ -174,6 +176,8 @@ Void BonkEnc::CDDBLocal::QueryWinDB(const String &discid)
 
 	String::SetInputFormat(inputFormat);
 	String::SetOutputFormat(outputFormat);
+
+	return (results.GetNOfEntries() != 0);
 }
 
 Bool BonkEnc::CDDBLocal::ConnectToServer()
@@ -183,8 +187,8 @@ Bool BonkEnc::CDDBLocal::ConnectToServer()
 
 String BonkEnc::CDDBLocal::Query(const String &discid)
 {
-	if (File(String(config->freedb_dir).Append("misc\\00to00")).Exists()) QueryWinDB(discid);
-	else								      QueryUnixDB(discid);
+	// Try to find Unix style record first; if no match is found, try Windows style
+	if (!QueryUnixDB(discid)) QueryWinDB(discid);
 
 	// no match found
 	if (categories.GetNOfEntries() == 0) return "none";

@@ -20,8 +20,8 @@ namespace BonkEnc
 		private:
 			Array<String>	 results;
 
-			Void		 QueryUnixDB(const String &);
-			Void		 QueryWinDB(const String &);
+			Bool		 QueryUnixDB(const String &);
+			Bool		 QueryWinDB(const String &);
 		public:
 					 CDDBLocal(Config *);
 			virtual		~CDDBLocal();

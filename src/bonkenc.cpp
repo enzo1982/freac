@@ -50,6 +50,9 @@ BonkEnc::BonkEnc::BonkEnc()
 	playing = False;
 	play_thread = NIL;
 
+	skip_track = False;
+	overwriteAll = False;
+
 	currentConfig = new Config;
 
 	currentConfig->LoadSettings();
