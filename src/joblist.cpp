@@ -17,7 +17,7 @@
 
 BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
 {
-	SetFlags(LF_ALLOWREORDER);
+	SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 
 	onRegister.Connect(&JobList::OnRegister, this);
 	onUnregister.Connect(&JobList::OnUnregister, this);

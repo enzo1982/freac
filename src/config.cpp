@@ -114,6 +114,7 @@ Bool BonkEnc::Config::LoadSettings()
 	cdrip_locktray				= config->GetIntValue("CDRip", "LockTray", 1);
 	cdrip_ntscsi				= config->GetIntValue("CDRip", "UseNTSCSI", 0);
 	cdrip_autoRead				= config->GetIntValue("CDRip", "AutoReadContents", 1);
+	cdrip_autoRip				= config->GetIntValue("CDRip", "AutoRip", 0);
 	cdrip_autoEject				= config->GetIntValue("CDRip", "EjectAfterRipping", 0);
 	cdrip_numdrives				= 0;
 
@@ -285,6 +286,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("CDRip", "LockTray", cdrip_locktray);
 		config->SetIntValue("CDRip", "UseNTSCSI", cdrip_ntscsi);
 	 	config->SetIntValue("CDRip", "AutoReadContents", cdrip_autoRead);
+	 	config->SetIntValue("CDRip", "AutoRip", cdrip_autoRip);
 		config->SetIntValue("CDRip", "EjectAfterRipping", cdrip_autoEject);
 
 		config->SetIntValue("freedb", "AutoCDDBQueries", enable_auto_cddb);

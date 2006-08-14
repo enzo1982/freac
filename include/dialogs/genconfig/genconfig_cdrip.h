@@ -24,16 +24,21 @@ namespace BonkEnc
 		private:
 			GroupBox	*group_drive;
 			ComboBox	*combo_drive;
+
 			GroupBox	*group_ripping;
 			CheckBox	*check_paranoia;
 			ComboBox	*combo_paranoia_mode;
 			CheckBox	*check_jitter;
 			CheckBox	*check_swapchannels;
+
+			GroupBox	*group_automatization;
+			CheckBox	*check_autoRead;
+			CheckBox	*check_autoRip;
+			CheckBox	*check_autoEject;
+
 			GroupBox	*group_cdoptions;
 			CheckBox	*check_locktray;
 			CheckBox	*check_ntscsi;
-			CheckBox	*check_autoRead;
-			CheckBox	*check_autoEject;
 
 			Bool		 cdparanoia;
 			Bool		 jitter;
@@ -41,11 +46,14 @@ namespace BonkEnc
 			Bool		 locktray;
 			Bool		 ntscsi;
 			Bool		 autoRead;
+			Bool		 autoRip;
 			Bool		 autoEject;
  
 			Config		*currentConfig;
 		slots:
 			Void		 SetParanoia();
+
+			Void		 ToggleAutoRead();
 		public:
 					 GeneralSettingsLayerCDRip();
 					~GeneralSettingsLayerCDRip();
@@ -58,6 +66,7 @@ namespace BonkEnc
 			Bool		 GetLockTray();
 			Bool		 GetNTSCSI();
 			Bool		 GetAutoRead();
+			Bool		 GetAutoRip();
 			Bool		 GetAutoEject();
 	};
 };

@@ -368,5 +368,6 @@
     <entry id="356" string="File already exists">Datei existiert bereits</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Die Ausgabedatei %1&#10;existiert bereits! Möchten Sie die Datei übersschreiben?</entry>
     <entry id="358" string="Overwrite all further files">Alle weiteren Dateien überschreiben</entry>
+    <entry id="359" string="Start ripping automatically">Ripper automatisch starten</entry>
   </data>
 </LangFile>

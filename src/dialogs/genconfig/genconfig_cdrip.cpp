@@ -23,6 +23,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	locktray	= currentConfig->cdrip_locktray;
 	ntscsi		= currentConfig->cdrip_ntscsi;
 	autoRead	= currentConfig->cdrip_autoRead;
+	autoRip		= currentConfig->cdrip_autoRip;
 	autoEject	= currentConfig->cdrip_autoEject;
 
 	pos.x	= 7;
@@ -89,9 +90,9 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	pos.x	= 359;
 	pos.y	= 11;
 	size.cx	= 178;
-	size.cy	= 120;
+	size.cy	= 94;
 
-	group_cdoptions	= new GroupBox(BonkEnc::i18n->TranslateString("CD options"), pos, size);
+	group_automatization	= new GroupBox(BonkEnc::i18n->TranslateString("Automatization"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
@@ -99,12 +100,26 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	size.cy	= 0;
 
 	check_autoRead	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD contents on insert"), pos, size, &autoRead);
+	check_autoRead->onAction.Connect(&GeneralSettingsLayerCDRip::ToggleAutoRead, this);
+	pos.y += 26;
+
+	check_autoRip	= new CheckBox(BonkEnc::i18n->TranslateString("Start ripping automatically"), pos, size, &autoRip);
 
 	pos.y += 26;
 
 	check_autoEject	= new CheckBox(BonkEnc::i18n->TranslateString("Eject disk after ripping"), pos, size, &autoEject);
 
-	pos.y += 26;
+	pos.x	= 359;
+	pos.y	= 117;
+	size.cx	= 178;
+	size.cy	= 68;
+
+	group_cdoptions	= new GroupBox(BonkEnc::i18n->TranslateString("CD options"), pos, size);
+
+	pos.x	+= 10;
+	pos.y	+= 14;
+	size.cx	= 157;
+	size.cy	= 0;
 
 	check_locktray	= new CheckBox(BonkEnc::i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
 
@@ -120,6 +135,8 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 
 	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) check_ntscsi->Deactivate();
 
+	ToggleAutoRead();
+
 	RegisterObject(group_drive);
 	RegisterObject(combo_drive);
 	RegisterObject(group_ripping);
@@ -127,9 +144,11 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	RegisterObject(combo_paranoia_mode);
 	RegisterObject(check_jitter);
 	RegisterObject(check_swapchannels);
-	RegisterObject(group_cdoptions);
+	RegisterObject(group_automatization);
 	RegisterObject(check_autoRead);
+	RegisterObject(check_autoRip);
 	RegisterObject(check_autoEject);
+	RegisterObject(group_cdoptions);
 	RegisterObject(check_locktray);
 	RegisterObject(check_ntscsi);
 }
@@ -143,9 +162,11 @@ BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 	DeleteObject(combo_paranoia_mode);
 	DeleteObject(check_jitter);
 	DeleteObject(check_swapchannels);
-	DeleteObject(group_cdoptions);
+	DeleteObject(group_automatization);
 	DeleteObject(check_autoRead);
+	DeleteObject(check_autoRip);
 	DeleteObject(check_autoEject);
+	DeleteObject(group_cdoptions);
 	DeleteObject(check_locktray);
 	DeleteObject(check_ntscsi);
 }
@@ -154,6 +175,12 @@ Void BonkEnc::GeneralSettingsLayerCDRip::SetParanoia()
 {
 	if (cdparanoia)	combo_paranoia_mode->Activate();
 	else		combo_paranoia_mode->Deactivate();
+}
+
+Void BonkEnc::GeneralSettingsLayerCDRip::ToggleAutoRead()
+{
+	if (autoRead)	check_autoRip->Activate();
+	else		check_autoRip->Deactivate();
 }
 
 Int BonkEnc::GeneralSettingsLayerCDRip::GetActiveDrive()
@@ -191,6 +218,11 @@ Bool BonkEnc::GeneralSettingsLayerCDRip::GetNTSCSI()
 Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoRead()
 {
 	return autoRead;
+}
+
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoRip()
+{
+	return autoRip;
 }
 
 Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoEject()

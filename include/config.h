@@ -105,6 +105,7 @@ namespace BonkEnc
 			Bool		 cdrip_ntscsi;
 			Bool		 cdrip_autoRead;
 			Bool		 cdrip_autoRead_active;
+			Bool		 cdrip_autoRip;
 			Bool		 cdrip_autoEject;
 			Bool		 cdrip_read_active;
 			Array<Int>	 cdrip_read_discids;

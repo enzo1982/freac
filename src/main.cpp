@@ -94,16 +94,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	i18n->ActivateLanguage(currentConfig->language);
 
-	Rect	 workArea;
-
-	{
-		RECT rect;
-
-		if (Setup::enableUnicode)	SystemParametersInfoW(SPI_GETWORKAREA, 0, &rect, 0);
-		else				SystemParametersInfoA(SPI_GETWORKAREA, 0, &rect, 0);
-
-		workArea = rect;
-	}
+	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
 
 	if (currentConfig->wndPos.x < workArea.left - 2					||
 	    currentConfig->wndPos.y < workArea.top - 2					||
@@ -233,7 +224,6 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	joblist->onSelectTrack.Connect(&BonkEncGUI::OnJoblistSelectTrack, this);
 	joblist->onSelectNone.Connect(&BonkEncGUI::OnJoblistSelectNone, this);
 	joblist->onRemovePlayingTrack.Connect(&BonkEncGUI::StopPlayback, this);
-	joblist->SetFlags(LF_MULTICHECKBOX);
 	joblist->AddTab("Title");
 	joblist->AddTab("Track", currentConfig->tab_width_track, OR_RIGHT);
 	joblist->AddTab("Length", currentConfig->tab_width_length, OR_RIGHT);
@@ -735,6 +725,8 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 								ReadCD();
 
 								currentConfig->cdrip_autoRead_active = False;
+
+								if (currentConfig->cdrip_autoRip) Encode();
 							}
 						}
 					}
@@ -1221,6 +1213,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	edb_outdir->Show();
 
 	btn_outdir->SetText(BonkEnc::i18n->TranslateString("Browse"));
+	btn_skip->SetText(BonkEnc::i18n->TranslateString("Skip"));
 
 	progress_total->Show();
 	progress->Show();

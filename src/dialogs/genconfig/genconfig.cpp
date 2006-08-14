@@ -200,6 +200,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->cdrip_locktray		= register_layer_cdrip->GetLockTray();
 	currentConfig->cdrip_ntscsi		= register_layer_cdrip->GetNTSCSI();
 	currentConfig->cdrip_autoRead		= register_layer_cdrip->GetAutoRead();
+	currentConfig->cdrip_autoRip		= register_layer_cdrip->GetAutoRip();
 	currentConfig->cdrip_autoEject		= register_layer_cdrip->GetAutoEject();
 
 	currentConfig->enable_id3v1		= register_layer_tags->GetEnableID3V1();

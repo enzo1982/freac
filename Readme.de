@@ -16,6 +16,8 @@ Geschichte
 		- Button zum Überspringen des Tracks, der gerade codiert wird, hinzugefügt
 		- Unterstützung für lokale freedb-Abfragen hinzugefügt
 		- Bestätigung vor dem Überschreiben von Dateien hinzugefügt
+		- Unterstützung für automatisches Rippen beim Einlegen der CD hinzugefügt
+		- Unterstützung für Konfigurationen mit mehreren Bildschirmen hinzugefügt
 		- Fehler bei Decodierung von HE-AAC-Tracks behoben
 		- Absturz beim Konvertieren von FLAC nach AAC behoben
 		- Fehler behoben, dass beliebige Samplingraten nicht mit LAME konvertiert werden konnten
