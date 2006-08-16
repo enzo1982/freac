@@ -59,6 +59,7 @@ namespace BonkEnc
 			Text		*text_status;
 
 			CheckBox	*check_updateJoblist;
+			CheckBox	*check_submitLater;
 
 			Button		*btn_cancel;
 			Button		*btn_submit;
@@ -69,6 +70,7 @@ namespace BonkEnc
 
 			Bool		 dontUpdateInfo;
 			Bool		 updateJoblist;
+			Bool		 submitLater;
 
 			CDDBInfo	*cddbInfo;
 			Bool		 ownCddbInfo;
@@ -95,6 +97,7 @@ namespace BonkEnc
 			Void		 FinishTrack();
 			Void		 FinishArtist();
 			Void		 UpdateComment();
+			Void		 ToggleSubmitLater();
 
 			Void		 SetArtist();	
 		public:

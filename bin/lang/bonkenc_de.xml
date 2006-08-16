@@ -228,7 +228,7 @@
     <entry id="216" string="Stop">Anhalten</entry>
     <entry id="217" string="Cannot play a file while encoding!">Kann während des Codierens keine Datei abspielen!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">Kann nicht Codieren, während eine Datei abgespielt wird!</entry>
-    <entry id="219" string="Enable remote CDDB">Entfernte CDDB verwenden</entry>
+    <entry id="219" string="Enable remote CDDB database">Entfernte CDDB-Datenbank verwenden</entry>
     <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">ATH aktivieren:</entry>
     <entry id="222" string="Use default setting">Voreinstellung verwenden</entry>
@@ -362,12 +362,14 @@
     <entry id="350" string="Encode to single file">In einzelne Datei codieren</entry>
     <entry id="351" string="Encoder options">Codiereroptionen</entry>
     <entry id="352" string="Skip">Überspringen</entry>
-    <entry id="353" string="Enable local CDDB">Lokale CDDB verwenden</entry>
+    <entry id="353" string="Enable local CDDB database">Lokale CDDB-Datenbank verwenden</entry>
     <entry id="354" string="CDDB directory:">CDDB-Verzeichnis:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Wählen Sie das Verzeichnis der CDDB-Datenbank:</entry>
     <entry id="356" string="File already exists">Datei existiert bereits</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Die Ausgabedatei %1&#10;existiert bereits! Möchten Sie die Datei übersschreiben?</entry>
     <entry id="358" string="Overwrite all further files">Alle weiteren Dateien überschreiben</entry>
     <entry id="359" string="Start ripping automatically">Ripper automatisch starten</entry>
+    <entry id="360" string="Submit to online database later">Später an Online-Datenbank senden</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Die CDDB-Unterstützung ist deaktiviert! Bitte aktivieren Sie&#10;lokale oder entfernte CDDB-Abfragen im Konfigurationsdialog.</entry>
   </data>
 </LangFile>

@@ -228,7 +228,7 @@
     <entry id="216" string="Stop"/>
     <entry id="217" string="Cannot play a file while encoding!"/>
     <entry id="218" string="Cannot start encoding while playing a file!"/>
-    <entry id="219" string="Enable remote CDDB"/>
+    <entry id="219" string="Enable remote CDDB database"/>
     <entry id="220" string="ATH"/>
     <entry id="221" string="Enable ATH:"/>
     <entry id="222" string="Use default setting"/>
@@ -362,12 +362,14 @@
     <entry id="350" string="Encode to single file"/>
     <entry id="351" string="Encoder options"/>
     <entry id="352" string="Skip"/>
-    <entry id="353" string="Enable local CDDB"/>
+    <entry id="353" string="Enable local CDDB database"/>
     <entry id="354" string="CDDB directory:"/>
     <entry id="355" string="Select the folder of the CDDB database:"/>
     <entry id="356" string="File already exists"/>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
     <entry id="358" string="Overwrite all further files"/>
     <entry id="359" string="Start ripping automatically"/>
+    <entry id="360" string="Submit to online database later"/>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
   </data>
 </LangFile>

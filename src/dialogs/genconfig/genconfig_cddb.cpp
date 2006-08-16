@@ -35,11 +35,11 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	pos.x	= 2;
 	pos.y	= 0;
 
-	check_local	= new CheckBox(BonkEnc::i18n->TranslateString("Enable local CDDB"), pos, size, &cddb_local);
+	check_local	= new CheckBox(BonkEnc::i18n->TranslateString("Enable local CDDB database"), pos, size, &cddb_local);
 	check_local->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleLocalCDDB, this);
 	check_local->SetWidth(check_local->textSize.cx + 20);
 
-	check_remote	= new CheckBox(BonkEnc::i18n->TranslateString("Enable remote CDDB"), pos, size, &cddb_remote);
+	check_remote	= new CheckBox(BonkEnc::i18n->TranslateString("Enable remote CDDB database"), pos, size, &cddb_remote);
 	check_remote->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleRemoteCDDB, this);
 	check_remote->SetWidth(check_remote->textSize.cx + 20);
 

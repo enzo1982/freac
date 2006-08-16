@@ -30,21 +30,16 @@ String BonkEnc::CDDBRemote::GetCDDBQueryString()
 	ex_CR_ReadToc();
 
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-	TOCENTRY entry;
 	String	 str = String("cddb query ").Append(DiscIDToString(ComputeDiscID()));
 
 	str.Append(" ").Append(String::FromInt(numTocEntries));
 
 	for (int i = 0; i < numTocEntries; i++)
 	{
-		entry = ex_CR_GetTocEntry(i);
-
-		str.Append(" ").Append(String::FromInt(entry.dwStartSector + 2 * 75));
+		str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(i).dwStartSector + 150));
 	}
 
-	entry = ex_CR_GetTocEntry(numTocEntries);
-
-	str.Append(" ").Append(String::FromInt(entry.dwStartSector / 75 + 2));
+	str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2));
 
 	return str;
 }
@@ -341,92 +336,7 @@ Bool BonkEnc::CDDBRemote::Read(const String &read, CDDBInfo *cddbInfo)
 
 Bool BonkEnc::CDDBRemote::Submit(CDDBInfo *cddbInfo)
 {
-	Bool		 fuzzy = False;
-	CDDBInfo	*revisionInfo = new CDDBInfo();
-
-	ConnectToServer();
-
-	if (cddbInfo->revision == 0)
-	{
-		// see if the entry already exists in another category
-
-		String	 query = Query(cddbInfo->DiscIDToString());
-
-		if (query != "none" && query != "error")
-		{
-			if (query == "multiple")
-			{
-				cddbInfo->category = GetNthCategory(0);
-			}
-			else if (query == "fuzzy")
-			{
-				fuzzy = True;
-			}
-			else
-			{
-				for (Int i = 0; i < query.Length(); i++)
-				{
-					if (query[i] == ' ') break;
-
-					cddbInfo->category[i] = query[i];
-				}
-			}
-		}
-	}
-
-	if (!fuzzy && Read(String(cddbInfo->category).Append(" ").Append(cddbInfo->DiscIDToString()), revisionInfo))
-	{
-		if (cddbInfo->revision == 0)
-		{
-			for (Int i = 0; i < cddbInfo->trackOffsets.GetNOfEntries(); i++)
-			{
-				if (cddbInfo->trackOffsets.GetNthEntry(i) != revisionInfo->trackOffsets.GetNthEntry(i))
-				{
-					// found disc ID collision
-
-					if	(cddbInfo->category == "rock")		cddbInfo->category = "misc";
-					else if (cddbInfo->category == "misc")		cddbInfo->category = "newage";
-					else if (cddbInfo->category == "newage")	cddbInfo->category = "soundtrack";
-					else if (cddbInfo->category == "soundtrack")	cddbInfo->category = "blues";
-					else if (cddbInfo->category == "blues")		cddbInfo->category = "jazz";
-					else if (cddbInfo->category == "jazz")		cddbInfo->category = "folk";
-					else if (cddbInfo->category == "folk")		cddbInfo->category = "country";
-					else if (cddbInfo->category == "country")	cddbInfo->category = "reggae";
-					else if (cddbInfo->category == "reggae")	cddbInfo->category = "classical";
-					else if (cddbInfo->category == "classical")	cddbInfo->category = "data";
-					else if (cddbInfo->category == "data")		cddbInfo->category = "unknown";
-
-					CloseConnection();
-
-					delete revisionInfo;
-
-					return Submit(cddbInfo);
-				}
-			}
-		}
-
-		// increment revision of old entry
-
-		cddbInfo->revision = revisionInfo->revision + 1;
-	}
-
-	CloseConnection();
-
-	delete revisionInfo;
-
-	ex_CR_SetActiveCDROM(activeDriveID);
-	ex_CR_ReadToc();
-
-	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-
-	for (Int l = 0; l < numTocEntries; l++)
-	{
-		// update track offsets in case we had a fuzzy match
-
-		cddbInfo->trackOffsets.SetEntry(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
-	}
-
-	cddbInfo->discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
+	UpdateEntry(cddbInfo);
 
 	String	 str;
 	String	 content;

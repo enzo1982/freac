@@ -14,7 +14,7 @@ History
 
 		- added Norwegian language support
 		- added a button for skipping the track currently being encoded
-		- added support for local freedb queries
+		- added support for local freedb database
 		- added a confirmation before overwriting files
 		- added support for automatic ripping on disc insert
 		- added support for multi monitor configurations

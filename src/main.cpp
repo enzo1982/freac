@@ -894,6 +894,13 @@ Void BonkEnc::BonkEncGUI::ReadSpecificCD()
 
 Void BonkEnc::BonkEncGUI::QueryCDDB()
 {
+	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
+	{
+		Utilities::ErrorMessage(i18n->TranslateString("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog."));
+
+		return;
+	}
+
 	Array<Int>	 discIDs;
 	Array<String>	 discIDStrings;
 
@@ -999,6 +1006,13 @@ BonkEnc::CDDBInfo *BonkEnc::BonkEncGUI::GetCDDBData()
 
 Void BonkEnc::BonkEncGUI::SubmitCDDBData()
 {
+	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
+	{
+		Utilities::ErrorMessage(i18n->TranslateString("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog."));
+
+		return;
+	}
+
 	cddbSubmitDlg	*dlg = new cddbSubmitDlg();
 
 	dlg->ShowDialog();

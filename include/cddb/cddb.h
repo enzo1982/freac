@@ -31,6 +31,8 @@ namespace BonkEnc
 
 			String			 category;
 
+			Bool			 UpdateEntry(CDDBInfo *);
+
 			String			 FormatCDDBEntry(const String &, const String &);
 			String			 ParseCDDBEntry(const String &, Int &);
 

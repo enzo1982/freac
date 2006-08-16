@@ -40,6 +40,8 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	activedrive	= currentConfig->cdrip_activedrive;
 	updateJoblist	= currentConfig->update_joblist;
 
+	submitLater	= !currentConfig->enable_remote_cddb;
+
 	dontUpdateInfo	= False;
 
 	cddbInfo	= NIL;
@@ -48,14 +50,14 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(120, 120), Size(500, 445));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(120, 120), Size(500, 451));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
-	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
+	divbar			= new Divider(48, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 175;
-	pos.y = 29;
+	pos.y = 32;
 	size.cx = 0;
 	size.cy = 0;
 
@@ -69,12 +71,22 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	btn_submit->onAction.Connect(&cddbSubmitDlg::Submit, this);
 	btn_submit->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x = 7;
-	pos.y = 27;
+	if (!currentConfig->enable_remote_cddb) btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+
+	pos.x = 3;
+	pos.y = 39;
 
 	check_updateJoblist	= new CheckBox(BonkEnc::i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
-	check_updateJoblist->SetWidth(check_updateJoblist->textSize.cx + 21);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
+
+	pos.y -= 19;
+
+	check_submitLater	= new CheckBox(BonkEnc::i18n->TranslateString("Submit to online database later"), pos, size, &submitLater);
+	check_submitLater->onAction.Connect(&cddbSubmitDlg::ToggleSubmitLater, this);
+	check_submitLater->SetOrientation(OR_LOWERLEFT);
+
+	check_updateJoblist->SetWidth(Math::Max(check_updateJoblist->textSize.cx, check_submitLater->textSize.cx) + 21);
+	check_submitLater->SetWidth(Math::Max(check_updateJoblist->textSize.cx, check_submitLater->textSize.cx) + 21);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -226,8 +238,8 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	edit_comment	= new MultiEdit("", pos, size, 0);
 	edit_comment->onInput.Connect(&cddbSubmitDlg::UpdateComment, this);
 
-	pos.x = 6;
-	pos.y = 25;
+	pos.x = 7;
+	pos.y = 28;
 
 	text_status	= new Text("", pos);
 	text_status->SetOrientation(OR_LOWERLEFT);
@@ -239,6 +251,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->RegisterObject(btn_submit);
 	mainWnd->RegisterObject(btn_cancel);
 	mainWnd->RegisterObject(check_updateJoblist);
+	mainWnd->RegisterObject(check_submitLater);
 	mainWnd->RegisterObject(combo_drive);
 	mainWnd->RegisterObject(group_drive);
 	mainWnd->RegisterObject(text_artist);
@@ -301,6 +314,7 @@ BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
 	DeleteObject(text_cdstatus);
 	DeleteObject(text_status);
 	DeleteObject(check_updateJoblist);
+	DeleteObject(check_submitLater);
 	DeleteObject(btn_submit);
 	DeleteObject(btn_cancel);
 
@@ -356,20 +370,34 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	cddbInfo->revision++;
 
 	check_updateJoblist->Hide();
+	check_submitLater->Hide();
 	text_status->SetText(BonkEnc::i18n->TranslateString("Submitting CD information").Append("..."));
 
-	CDDBRemote	 cddb(currentConfig);
-
-	if (!cddb.Submit(cddbInfo))
+	if (currentConfig->enable_local_cddb)
 	{
-		Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
+		CDDBLocal	 cddb(currentConfig);
 
-		text_status->SetText("");
-		check_updateJoblist->Show();
+		cddb.Submit(cddbInfo);
+	}
 
-		cddbInfo->revision--;
+	if (currentConfig->enable_remote_cddb)
+	{
+		if (currentConfig->enable_local_cddb) cddbInfo->revision--;
 
-		return;
+		CDDBRemote	 cddb(currentConfig);
+
+		if (!cddb.Submit(cddbInfo))
+		{
+			Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
+
+			text_status->SetText("");
+			check_updateJoblist->Show();
+			check_submitLater->Show();
+
+			cddbInfo->revision--;
+
+			return;
+		}
 	}
 
 	text_status->SetText("");
@@ -380,9 +408,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		{
 			Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
 
-			cddb.SetActiveDrive(activedrive);
-
-			if (trackInfo->discid != cddb.DiscIDToString(cddb.ComputeDiscID())) continue;
+			if (trackInfo->discid != cddbInfo->DiscIDToString()) continue;
 
 			for (Int m = 0; m < titles.GetNOfEntries(); m++)
 			{
@@ -843,6 +869,12 @@ Void BonkEnc::cddbSubmitDlg::UpdateComment()
 	if (list_tracks->GetSelectedEntry() == NIL) return;
 
 	comments.SetEntry(list_tracks->GetSelectedEntry()->GetHandle(), edit_comment->GetText());
+}
+
+Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()
+{
+	if (!submitLater && currentConfig->enable_remote_cddb)	btn_submit->SetText(BonkEnc::i18n->TranslateString("Submit"));
+	else							btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
 }
 
 String BonkEnc::cddbSubmitDlg::GetCDDBGenre(const String &genre)
