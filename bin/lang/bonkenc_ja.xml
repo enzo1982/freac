@@ -228,6 +228,7 @@
   <entry id="216" string="Stop">停止</entry>
   <entry id="217" string="Cannot play a file while encoding!">エンコード中にファイルを再生できません！</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">ファイルの再生中にエンコードを開始できません！</entry>
+  <entry id="219" string="Enable remote CDDB database">リモートのCDDBを有効にする</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">ATHを使用する:</entry>
   <entry id="222" string="Use default setting">初期設定を使う</entry>
@@ -360,5 +361,15 @@
   <entry id="349" string="Allow overwriting input file">入力ファイルの上書きを許可</entry>
   <entry id="350" string="Encode to single file">単一ファイルにエンコード</entry>
   <entry id="351" string="Encoder options">エンコーダの設定</entry>
+  <entry id="352" string="Skip">スキップ</entry>
+  <entry id="353" string="Enable local CDDB database">ローカルのCDDBを有効にする</entry>
+  <entry id="354" string="CDDB directory:">CDDBディレクトリ:</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">CDDBデータベースが存在するディレクトリを指定してください:</entry>
+  <entry id="356" string="File already exists">ファイルが既に存在しています</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">出力先ファイル(%1)は既に存在しています!上書きしますか?</entry>
+  <entry id="358" string="Overwrite all further files">すべて上書き</entry>
+  <entry id="359" string="Start ripping automatically">自動的にリッピングを開始</entry>
+  <entry id="360" string="Submit to online database later">後でオンラインのデータベースに送信</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB対応が無効になっています!  設定ダイアログで、&#10;ローカルもしくはリモートのCDDB対応を有効にしてください!</entry>
  </data>
 </LangFile>
