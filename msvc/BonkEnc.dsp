@@ -304,6 +304,10 @@ SOURCE=..\src\cddb\cddb.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\cddb\cddbbatch.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\cddb\cddbinfo.cpp
 # End Source File
 # Begin Source File
@@ -590,6 +594,10 @@ SOURCE=..\include\dialogs\vorbisconfig.h
 # Begin Source File
 
 SOURCE=..\include\cddb\cddb.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\cddb\cddbbatch.h
 # End Source File
 # Begin Source File
 

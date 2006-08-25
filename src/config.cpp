@@ -122,7 +122,7 @@ Bool BonkEnc::Config::LoadSettings()
 	enable_overwrite_cdtext			= config->GetIntValue("freedb", "OverwriteCDText", 1);
 	enable_cddb_cache			= config->GetIntValue("freedb", "EnableCDDBCache", 1);
 	enable_local_cddb			= config->GetIntValue("freedb", "EnableLocalCDDB", 0);
-	freedb_dir				= config->GetStringValue("freedb", "Directory", "freedb");
+	freedb_dir				= config->GetStringValue("freedb", "Directory", "freedb\\");
 	enable_remote_cddb			= config->GetIntValue("freedb", "EnableRemoteCDDB", 1);
 	freedb_server				= config->GetStringValue("freedb", "Server", "freedb.freedb.org");
 	freedb_mode				= config->GetIntValue("freedb", "Mode", 0);

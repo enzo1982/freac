@@ -15,6 +15,7 @@ History
 		- added Norwegian language support
 		- added a button for skipping the track currently being encoded
 		- added support for local freedb database
+		- added support for freedb batch submits
 		- added a confirmation before overwriting files
 		- added support for automatic ripping on disc insert
 		- added support for multi monitor configurations
@@ -22,6 +23,7 @@ History
 		- fixed crash when converting from FLAC to AAC
 		- fixed it not being possible to convert arbitrary sampling rates using LAME
 		- upgraded to smooth v0.8.69.0
+		- some smaller bugfixes
 
 	Version 1.0 Beta 4 (June 2006)
 

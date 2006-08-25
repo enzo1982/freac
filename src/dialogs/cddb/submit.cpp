@@ -16,6 +16,7 @@
 
 #include <cddb/cddblocal.h>
 #include <cddb/cddbremote.h>
+#include <cddb/cddbbatch.h>
 
 typedef struct
 {
@@ -373,6 +374,8 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	check_submitLater->Hide();
 	text_status->SetText(BonkEnc::i18n->TranslateString("Submitting CD information").Append("..."));
 
+	Int	 revision = cddbInfo->revision;
+
 	if (currentConfig->enable_local_cddb)
 	{
 		CDDBLocal	 cddb(currentConfig);
@@ -380,11 +383,19 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		cddb.Submit(cddbInfo);
 	}
 
-	if (currentConfig->enable_remote_cddb)
+	if (submitLater)
 	{
-		if (currentConfig->enable_local_cddb) cddbInfo->revision--;
+		CDDBBatch	 cddb(currentConfig);
 
+		cddbInfo->revision = revision;
+
+		cddb.AddEntry(cddbInfo);
+	}
+	else if (currentConfig->enable_remote_cddb)
+	{
 		CDDBRemote	 cddb(currentConfig);
+
+		cddbInfo->revision = revision;
 
 		if (!cddb.Submit(cddbInfo))
 		{

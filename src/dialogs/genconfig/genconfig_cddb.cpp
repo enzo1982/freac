@@ -226,6 +226,10 @@ BonkEnc::GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()
 	DeleteObject(check_auto);
 	DeleteObject(check_cdtext);
 	DeleteObject(check_cache);
+	DeleteObject(layer_local_background);
+	DeleteObject(layer_remote_background);
+	DeleteObject(check_local);
+	DeleteObject(check_remote);
 }
 
 Void BonkEnc::GeneralSettingsLayerCDDB::SelectDir()

@@ -142,8 +142,8 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 
 	group_definfo	= new GroupBox(BonkEnc::i18n->TranslateString("Default information"), pos, size);
 
-	pos.x	= 17;
-	pos.y	= 156;
+	pos.x	+= 10;
+	pos.y	+= 15;
 
 	text_defcomment	= new Text(BonkEnc::i18n->TranslateString("Default comment string:"), pos);
 
@@ -161,13 +161,29 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 
 	ToggleTags();
 
-	if (!currentConfig->enable_id3)
+	if (!currentConfig->enable_id3 || (!currentConfig->enable_lame && !currentConfig->enable_blade))
 	{
 		check_id3v1->Deactivate();
+		text_id3v1_encoding->Deactivate();
 		edit_id3v1_encoding->Deactivate();
 
 		check_id3v2->Deactivate();
+		text_id3v2_encoding->Deactivate();
 		edit_id3v2_encoding->Deactivate();
+	}
+
+	if (!currentConfig->enable_vorbis && !currentConfig->enable_flac)
+	{
+		check_vctags->Deactivate();
+		text_vctags_encoding->Deactivate();
+		edit_vctags_encoding->Deactivate();
+	}
+
+	if (!currentConfig->enable_mp4 || !currentConfig->enable_faac)
+	{
+		check_mp4meta->Deactivate();
+		text_mp4meta_encoding->Deactivate();
+		edit_mp4meta_encoding->Deactivate();
 	}
 
 	RegisterObject(group_tags);
@@ -277,7 +293,7 @@ Void BonkEnc::GeneralSettingsLayerTags::ToggleMP4Meta()
 
 Void BonkEnc::GeneralSettingsLayerTags::ToggleTags()
 {
-	if (!enableID3V1 && !enableID3V2 && !enableVCTags && !enableMP4Meta)
+	if (((!enableID3V1 && !enableID3V2) || (!currentConfig->enable_lame && !currentConfig->enable_blade) || !currentConfig->enable_id3) && (!enableVCTags || (!currentConfig->enable_vorbis && !currentConfig->enable_flac)) && (!enableMP4Meta || (!currentConfig->enable_mp4 || !currentConfig->enable_faac)))
 	{
 		text_defcomment->Deactivate();
 		edit_defcomment->Deactivate();

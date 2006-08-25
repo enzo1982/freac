@@ -15,6 +15,7 @@ Geschichte
 		- Sprachunterstützung für Norwegisch hinzugefügt
 		- Button zum Überspringen des Tracks, der gerade codiert wird, hinzugefügt
 		- Unterstützung für lokale freedb-Datenbank hinzugefügt
+		- Unterstützung für freedb-Batchverarbeitung hinzugefügt
 		- Bestätigung vor dem Überschreiben von Dateien hinzugefügt
 		- Unterstützung für automatisches Rippen beim Einlegen der CD hinzugefügt
 		- Unterstützung für Konfigurationen mit mehreren Bildschirmen hinzugefügt
@@ -22,6 +23,7 @@ Geschichte
 		- Absturz beim Konvertieren von FLAC nach AAC behoben
 		- Fehler behoben, dass beliebige Samplingraten nicht mit LAME konvertiert werden konnten
 		- Update auf smooth v0.8.69.0
+		- Einige kleinere Fehler behoben
 
 	Version 1.0 Beta 4 (Juni 2006)
 
