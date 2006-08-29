@@ -30,7 +30,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	min_residual_partition_order = currentConfig->flac_min_residual_partition_order;
 	max_residual_partition_order = currentConfig->flac_max_residual_partition_order;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("%1 encoder configuration").Replace("%1", "FLAC"), Point(140, 140), Size(518, 340));
+	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FLAC"), Point(140, 140), Size(518, 340));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -160,7 +160,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x += 9;
 	pos.y += 13;
 
-	text_max_lpc_order	= new Text(BonkEnc::i18n->TranslateString("Maximum LPC order").Append(":"), pos);
+	text_max_lpc_order	= new Text(String(BonkEnc::i18n->TranslateString("Maximum LPC order")).Append(":"), pos);
 
 	pos.x += 7;
 	pos.y -= 2;
@@ -184,7 +184,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x -= 314;
 	pos.y += 25;
 
-	text_qlp_precision	= new Text(BonkEnc::i18n->TranslateString("Quantized LPC precision").Append(":"), pos);
+	text_qlp_precision	= new Text(String(BonkEnc::i18n->TranslateString("Quantized LPC precision")).Append(":"), pos);
 
 	pos.x += 7;
 	pos.y -= 2;
@@ -221,7 +221,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x += 9;
 	pos.y += 13;
 
-	text_min_part_order	= new Text(BonkEnc::i18n->TranslateString("Minimum partition order").Append(":"), pos);
+	text_min_part_order	= new Text(String(BonkEnc::i18n->TranslateString("Minimum partition order")).Append(":"), pos);
 
 	pos.x += 7;
 	pos.y -= 2;
@@ -238,7 +238,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x -= 264;
 	pos.y += 23;
 
-	text_max_part_order	= new Text(BonkEnc::i18n->TranslateString("Maximum partition order").Append(":"), pos);
+	text_max_part_order	= new Text(String(BonkEnc::i18n->TranslateString("Maximum partition order")).Append(":"), pos);
 
 	pos.x += 7;
 	pos.y -= 2;

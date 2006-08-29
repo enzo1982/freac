@@ -19,6 +19,7 @@ History
 		- added a confirmation before overwriting files
 		- added support for automatic ripping on disc insert
 		- added support for multi monitor configurations
+		- joblist entries can now be moved by dragging them with the mouse
 		- fixed decoding of HE-AAC tracks
 		- fixed crash when converting from FLAC to AAC
 		- fixed it not being possible to convert arbitrary sampling rates using LAME

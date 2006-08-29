@@ -104,6 +104,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	Driver		*zero_in	= new DriverZero();
 	Driver		*zero_out	= new DriverZero();
 
+	joblist->SetFlags(LF_MULTICHECKBOX);
+
 	ComputeTotalNumberOfSamples();
 
 	if (!currentConfig->enable_console)
@@ -199,7 +201,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		if (!overwriteAll && File(out_filename).Exists() && !currentConfig->writeToInputDir && !(!currentConfig->enc_onTheFly && step == 0))
 		{
-			MessageDlg	*confirmation = new MessageDlg(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
+			MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
 			confirmation->ShowDialog();
 
@@ -531,6 +533,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		}
 	}
 
+	joblist->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
+
 	debug_out->LeaveMethod();
 
 	return Success();
@@ -710,44 +714,44 @@ String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
 
 	if (currentConfig->encoder == ENCODER_BONKENC)
 	{
-		dialog->AddFilter(BonkEnc::i18n->TranslateString("Bonk Files").Append(" (*.bonk)"), "*.bonk");
+		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
 		defaultExtension = "bonk";
 	}
 	else if (currentConfig->encoder == ENCODER_BLADEENC || currentConfig->encoder == ENCODER_LAMEENC)
 	{
-		dialog->AddFilter(BonkEnc::i18n->TranslateString("MP3 Files").Append(" (*.mp3)"), "*.mp3");
+		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP3 Files")).Append(" (*.mp3)"), "*.mp3");
 		defaultExtension = "mp3";
 	}
 	else if (currentConfig->encoder == ENCODER_VORBISENC)
 	{
-		dialog->AddFilter(BonkEnc::i18n->TranslateString("Ogg Vorbis Files").Append(" (*.ogg)"), "*.ogg");
+		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
 		defaultExtension = "ogg";
 	}
 	else if (currentConfig->encoder == ENCODER_FLAC)
 	{
-		dialog->AddFilter(BonkEnc::i18n->TranslateString("FLAC Files").Append(" (*.flac)"), "*.flac");
+		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
 		defaultExtension = "flac";
 	}
 	else if (currentConfig->encoder == ENCODER_TVQ)
 	{
-		dialog->AddFilter(BonkEnc::i18n->TranslateString("VQF Files").Append(" (*.vqf)"), "*.vqf");
+		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("VQF Files")).Append(" (*.vqf)"), "*.vqf");
 		defaultExtension = "vqf";
 	}
 	else if (currentConfig->encoder == ENCODER_WAVE)
 	{
-		dialog->AddFilter(BonkEnc::i18n->TranslateString("Wave Files").Append(" (*.wav)"), "*.wav");
+		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
 		defaultExtension = "wav";
 	}
 	else if (currentConfig->encoder == ENCODER_FAAC)
 	{
 		if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)
 		{
-			dialog->AddFilter(BonkEnc::i18n->TranslateString("MP4 Files").Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
+			dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
 			defaultExtension = "m4a";
 		}
 		else
 		{
-			dialog->AddFilter(BonkEnc::i18n->TranslateString("AAC Files").Append(" (*.aac)"), "*.aac");
+			dialog->AddFilter(String(BonkEnc::i18n->TranslateString("AAC Files")).Append(" (*.aac)"), "*.aac");
 			defaultExtension = "aac";
 		}
 	}

@@ -49,11 +49,11 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	pos.x += 9;
 	pos.y += 12;
 
-	text_directory	= new Text(BonkEnc::i18n->TranslateString("Start directory").Append(":"), pos);
+	text_directory	= new Text(String(BonkEnc::i18n->TranslateString("Start directory")).Append(":"), pos);
 
 	pos.y += 26;
 
-	text_pattern	= new Text(BonkEnc::i18n->TranslateString("Filename pattern").Append(":"), pos);
+	text_pattern	= new Text(String(BonkEnc::i18n->TranslateString("Filename pattern")).Append(":"), pos);
 
 	pos.x += (Math::Max(text_directory->textSize.cx, text_pattern->textSize.cx) + 7);
 	pos.y -= 29;

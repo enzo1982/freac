@@ -677,58 +677,59 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 		case WM_DEVICECHANGE:
 			if (wParam == DBT_DEVICEARRIVAL && currentConfig->enable_cdrip && currentConfig->cdrip_autoRead)
 			{
-				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype == DBT_DEVTYP_VOLUME && ((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)
+				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype != DBT_DEVTYP_VOLUME || !(((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)) break;
+
+				String	 trackCDA = String(" ").Append(":\\track01.cda");
+
+				for (Int drive = 0; drive < 26; drive++)
 				{
-					Int	 drive = 0;
-
-					for (drive = 0; drive <= 26; drive++)
+					if (((DEV_BROADCAST_VOLUME *) lParam)->dbcv_unitmask >> drive & 1)
 					{
-						if (((DEV_BROADCAST_VOLUME *) lParam)->dbcv_unitmask >> drive & 1) break;
-					}
-
-					if (drive < 26)
-					{
-						String	 trackCDA = String(" ").Append(":\\track01.cda");
-
 						trackCDA[0] = drive + 'A';
 
-						InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READONLY);
+						break;
+					}
+				}
 
-						in->Seek(32);
+				if (trackCDA[0] == ' ') break;
 
-						Int	 trackLength = in->InputNumber(4);
+				// Read length of track from .cda file
+				InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READONLY);
 
-						delete in;
+				in->Seek(32);
 
-						if (trackLength > 0)
-						{
-							Bool	 ok = False;
+				Int	 trackLength = in->InputNumber(4);
 
-							for (drive = 0; drive < currentConfig->cdrip_numdrives; drive++)
-							{
-								ex_CR_SetActiveCDROM(drive);
+				delete in;
 
-								ex_CR_ReadToc();
+				if (trackLength > 0)
+				{
+					Bool	 ok = False;
+					Int	 drive = 0;
 
-								TOCENTRY	 entry = ex_CR_GetTocEntry(0);
-								TOCENTRY	 nextentry = ex_CR_GetTocEntry(1);
-								Int		 length = nextentry.dwStartSector - entry.dwStartSector;
+					for (drive = 0; drive < currentConfig->cdrip_numdrives; drive++)
+					{
+						ex_CR_SetActiveCDROM(drive);
 
-								if (!(entry.btFlag & CDROMDATAFLAG) && length == trackLength) { ok = True; break; }
-							}
+						ex_CR_ReadToc();
 
-							if (ok)
-							{
-								currentConfig->cdrip_activedrive = drive;
-								currentConfig->cdrip_autoRead_active = True;
+						TOCENTRY	 entry = ex_CR_GetTocEntry(0);
+						TOCENTRY	 nextentry = ex_CR_GetTocEntry(1);
+						Int		 length = nextentry.dwStartSector - entry.dwStartSector;
 
-								ReadCD();
+						if (!(entry.btFlag & CDROMDATAFLAG) && length == trackLength) { ok = True; break; }
+					}
 
-								currentConfig->cdrip_autoRead_active = False;
+					if (ok)
+					{
+						currentConfig->cdrip_activedrive = drive;
+						currentConfig->cdrip_autoRead_active = True;
 
-								if (currentConfig->cdrip_autoRip) Encode();
-							}
-						}
+						ReadCD();
+
+						currentConfig->cdrip_autoRead_active = False;
+
+						if (currentConfig->cdrip_autoRip) Encode();
 					}
 				}
 			}
@@ -792,7 +793,7 @@ Void BonkEnc::BonkEncGUI::Close()
 
 Void BonkEnc::BonkEncGUI::About()
 {
-	QuickMessage(String("BonkEnc ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2006 Robert Kausch\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String("BonkEnc ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2006 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -1262,12 +1263,12 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 		info_edit_genre->Hide();
 	}
 
-	info_text_artist->SetText(i18n->TranslateString("Artist").Append(":"));
-	info_text_album->SetText(i18n->TranslateString("Album").Append(":"));
-	info_text_title->SetText(i18n->TranslateString("Title").Append(":"));
-	info_text_track->SetText(i18n->TranslateString("Track").Append(":"));
-	info_text_year->SetText(i18n->TranslateString("Year").Append(":"));
-	info_text_genre->SetText(i18n->TranslateString("Genre").Append(":"));
+	info_text_artist->SetText(String(i18n->TranslateString("Artist")).Append(":"));
+	info_text_album->SetText(String(i18n->TranslateString("Album")).Append(":"));
+	info_text_title->SetText(String(i18n->TranslateString("Title")).Append(":"));
+	info_text_track->SetText(String(i18n->TranslateString("Track")).Append(":"));
+	info_text_year->SetText(String(i18n->TranslateString("Year")).Append(":"));
+	info_text_genre->SetText(String(i18n->TranslateString("Genre")).Append(":"));
 
 	info_edit_title->SetMetrics(Point(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx, info_edit_title->GetY()), Size(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx, info_edit_title->GetHeight()));
 	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
@@ -1362,7 +1363,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
 	}
 
-	entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)").Append("..."));
+	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
 
@@ -1378,8 +1379,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		entry->SetShortcut(SC_CTRL, 'D', mainWnd);
 	}
 
-	menu_files->AddEntry(i18n->TranslateString("By pattern").Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);
-	menu_files->AddEntry(i18n->TranslateString("From directory").Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesFromDirectory, this);
+	menu_files->AddEntry(String(i18n->TranslateString("By pattern")).Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);
+	menu_files->AddEntry(String(i18n->TranslateString("From directory")).Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesFromDirectory, this);
 
 	menu_addsubmenu->AddEntry();
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
@@ -1459,19 +1460,19 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
 	entry->SetShortcut(0, VK_F1, mainWnd);
 	menu_help->AddEntry();
-	entry = menu_help->AddEntry(i18n->TranslateString("Show Tip of the Day").Append("..."));
+	entry = menu_help->AddEntry(String(i18n->TranslateString("Show Tip of the Day")).Append("..."));
 	entry->onAction.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 	entry->SetShortcut(0, VK_F10, mainWnd);
 
 	if (currentConfig->enable_eUpdate)
 	{
 		menu_help->AddEntry();
-		menu_help->AddEntry(i18n->TranslateString("Check for updates now").Append("..."))->onAction.Connect(&BonkEncGUI::CheckForUpdates, this);
+		menu_help->AddEntry(String(i18n->TranslateString("Check for updates now")).Append("..."))->onAction.Connect(&BonkEncGUI::CheckForUpdates, this);
 		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &currentConfig->checkUpdatesAtStartup);
 	}
 
 	menu_help->AddEntry();
-	menu_help->AddEntry(i18n->TranslateString("About BonkEnc").Append("..."))->onAction.Connect(&BonkEncGUI::About, this);
+	menu_help->AddEntry(String(i18n->TranslateString("About BonkEnc")).Append("..."))->onAction.Connect(&BonkEncGUI::About, this);
 
 	mainWnd_menubar->RemoveAllEntries();
 
@@ -1578,30 +1579,30 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	menu_edit_artist->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
-	menu_edit_artist->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_artist->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("..."), NIL, menu_case);
+	menu_edit_artist->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
-	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_artist->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("..."), NIL, menu_charsets);
+	menu_edit_artist->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
-	menu_edit_title->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
-	menu_edit_title->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_title->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("..."), NIL, menu_case);
+	menu_edit_title->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_title->AddEntry();
-	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
-	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_title->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("..."), NIL, menu_charsets);
+	menu_edit_title->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_album->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
-	menu_edit_album->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_album->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("..."), NIL, menu_case);
+	menu_edit_album->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
-	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_album->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("..."), NIL, menu_charsets);
+	menu_edit_album->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_genre->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 	menu_edit_genre->AddEntry();
-	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
-	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_genre->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("..."), NIL, menu_charsets);
+	menu_edit_genre->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_year->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&BonkEncGUI::UseStringForSelectedTracks, this);
 }
@@ -2066,13 +2067,13 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
 	TipOfTheDay	*dlg = new TipOfTheDay(&currentConfig->showTips);
 
-	dlg->AddTip(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.").Replace("%1", String::FromInt(Math::Max(23, i18n->GetNOfLanguages()))));
-	dlg->AddTip(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1").Replace("%1", "http://www.bonkenc.org/"));
+	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(23, i18n->GetNOfLanguages()))));
+	dlg->AddTip(String(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1")).Replace("%1", "http://www.bonkenc.org/"));
 	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
 	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));
 	dlg->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the CDRip tab of BonkEnc's configuration\ndialog. If that does not help, try using one of the Paranoia modes."));
-	dlg->AddTip(i18n->TranslateString("Do you have any suggestions on how to improve BonkEnc?\nYou can submit any ideas through the Tracker on the BonkEnc\nSourceForge project page - %1\nor send an eMail to %2.").Replace("%1", "http://sf.net/projects/bonkenc").Replace("%2", "suggestions@bonkenc.org"));
-	dlg->AddTip(i18n->TranslateString("Do you like BonkEnc? BonkEnc is available for free, but you can\nhelp fund the development by donating to the BonkEnc project.\nYou can send money to %1 through PayPal.\nSee %2 for more details.").Replace("%1", "donate@bonkenc.org").Replace("%2", "http://www.bonkenc.org/donating.php"));
+	dlg->AddTip(String(i18n->TranslateString("Do you have any suggestions on how to improve BonkEnc?\nYou can submit any ideas through the Tracker on the BonkEnc\nSourceForge project page - %1\nor send an eMail to %2.")).Replace("%1", "http://sf.net/projects/bonkenc").Replace("%2", "suggestions@bonkenc.org"));
+	dlg->AddTip(String(i18n->TranslateString("Do you like BonkEnc? BonkEnc is available for free, but you can\nhelp fund the development by donating to the BonkEnc project.\nYou can send money to %1 through PayPal.\nSee %2 for more details.")).Replace("%1", "donate@bonkenc.org").Replace("%2", "http://www.bonkenc.org/donating.php"));
 
 	dlg->SetMode(TIP_ORDERED, currentConfig->tipOffset, currentConfig->showTips);
 

@@ -135,93 +135,88 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 		Out_Module	*out = DLLInterfaces::winamp_out_modules.GetNthEntry(currentConfig->output_plugin);
 		Int		 latency = out->Open(trackInfo->rate, trackInfo->channels, 16, 0, 0);
 
-		if (latency >= 0)
+		if (latency >= 0 && trackInfo->length >= 0)
 		{
-			if (trackInfo->length >= 0)
+			Int	 sample = 0;
+			short	*sample_buffer = new short [samples_size];
+
+			for (Int loop = 0; loop < n_loops; loop++)
 			{
-				Int	 sample = 0;
-				short	*sample_buffer = new short [samples_size];
+				Int	 step = samples_size;
 
-				for (Int loop = 0; loop < n_loops; loop++)
+				if (position + step > trackInfo->length) step = trackInfo->length - position;
+
+				for (Int i = 0; i < step; i++)
 				{
-					Int	 step = samples_size;
+					if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
+					else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
-					if (position + step > trackInfo->length) step = trackInfo->length - position;
+					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
 
-					for (Int i = 0; i < step; i++)
+					if (trackInfo->bits == 8)	sample_buffer[i] = (sample - 128) * 256;
+					else if (trackInfo->bits == 16)	sample_buffer[i] = sample;
+					else if (trackInfo->bits == 24)	sample_buffer[i] = sample / 256;
+					else if (trackInfo->bits == 32)	sample_buffer[i] = sample / 65536;
+				}
+
+				position += step;
+
+				while (out->CanWrite() < (2 * step))
+				{
+					if (stop_playback) break;
+
+					Sleep(10);
+				}
+
+				if (stop_playback) break;
+
+				out->Write((char *) sample_buffer, 2 * step);
+			}
+
+			delete [] sample_buffer;
+		}
+		else if (latency >= 0 && trackInfo->length == -1)
+		{
+			Int	 sample = 0;
+			short	*sample_buffer = new short [samples_size];
+
+			while (sample != -1)
+			{
+				Int	 step = samples_size;
+
+				for (Int i = 0; i < step; i++)
+				{
+					if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
+					else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
+
+					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
+
+					if (sample != -1)
 					{
-						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
-						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
-
-						if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
-
 						if (trackInfo->bits == 8)	sample_buffer[i] = (sample - 128) * 256;
 						else if (trackInfo->bits == 16)	sample_buffer[i] = sample;
 						else if (trackInfo->bits == 24)	sample_buffer[i] = sample / 256;
 						else if (trackInfo->bits == 32)	sample_buffer[i] = sample / 65536;
 					}
-
-					position += step;
-
-					while (out->CanWrite() < (2 * step))
+					else
 					{
-						if (stop_playback) break;
-
-						Sleep(10);
+						i--;
 					}
-
-					if (stop_playback) break;
-
-					out->Write((char *) sample_buffer, 2 * step);
 				}
 
-				delete [] sample_buffer;
-			}
-			else if (trackInfo->length == -1)
-			{
-				Int	 sample = 0;
-				short	*sample_buffer = new short [samples_size];
-
-				while (sample != -1)
+				while (out->CanWrite() < (2 * step))
 				{
-					Int	 step = samples_size;
-
-					for (Int i = 0; i < step; i++)
-					{
-						if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
-						else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
-
-						if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
-
-						if (sample != -1)
-						{
-							if (trackInfo->bits == 8)	sample_buffer[i] = (sample - 128) * 256;
-							else if (trackInfo->bits == 16)	sample_buffer[i] = sample;
-							else if (trackInfo->bits == 24)	sample_buffer[i] = sample / 256;
-							else if (trackInfo->bits == 32)	sample_buffer[i] = sample / 65536;
-						}
-						else
-						{
-							i--;
-						}
-					}
-
-					while (out->CanWrite() < (2 * step))
-					{
-						if (stop_playback) break;
-
-						Sleep(10);
-					}
-
 					if (stop_playback) break;
 
-					out->Write((char *) sample_buffer, 2 * step);
+					Sleep(10);
 				}
 
-				delete [] sample_buffer;
+				if (stop_playback) break;
+
+				out->Write((char *) sample_buffer, 2 * step);
 			}
 
-			f_in->RemoveFilter(filter_in);
+			delete [] sample_buffer;
 		}
 
 		if (!stop_playback) while (out->IsPlaying()) Sleep(20);

@@ -41,8 +41,8 @@ using namespace smooth::System;
 
 Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace)
 {
-	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(BonkEnc::i18n->TranslateString(message).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-	else						Console::OutputString(BonkEnc::i18n->TranslateString(message).Replace("%1", replace).Append("\n"));
+	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+	else						Console::OutputString(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace).Append("\n"));
 }
 
 BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile, Track *trackInfo)

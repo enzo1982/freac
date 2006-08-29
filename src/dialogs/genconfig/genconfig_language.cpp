@@ -102,7 +102,7 @@ Void BonkEnc::GeneralSettingsLayerLanguage::SelectLanguage()
 {
 	if (combo_language->GetSelectedEntry() != NIL)
 	{
-		text_info->SetText(BonkEnc::i18n->TranslateString("Language").Append(": ").Append(BonkEnc::i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber()))
+		text_info->SetText(String(BonkEnc::i18n->TranslateString("Language")).Append(": ").Append(BonkEnc::i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber()))
 				.Append("\n").Append(BonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(BonkEnc::i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntryNumber()))
 				.Append("\n").Append(BonkEnc::i18n->TranslateString("Author")).Append(": ").Append(BonkEnc::i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber()))
 				.Append("\n").Append(BonkEnc::i18n->TranslateString("URL")).Append(": "));

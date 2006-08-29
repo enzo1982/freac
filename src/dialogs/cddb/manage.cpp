@@ -76,7 +76,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	pos.x += 269;
 	pos.y -= 19;
 
-	text_preview	= new Text(BonkEnc::i18n->TranslateString("Preview").Append(":"), pos);
+	text_preview	= new Text(String(BonkEnc::i18n->TranslateString("Preview")).Append(":"), pos);
 
 	pos.y += 19;
 
@@ -88,7 +88,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 
 	pos.y += 197;
 
-	text_charset	= new Text(BonkEnc::i18n->TranslateString("Charset").Append(":"), pos);
+	text_charset	= new Text(String(BonkEnc::i18n->TranslateString("Charset")).Append(":"), pos);
 
 	pos.x += (text_charset->textSize.cx + 7);
 	pos.y -= 3;

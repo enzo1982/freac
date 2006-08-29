@@ -137,12 +137,12 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 
 	if (discid == "ffffffff" || discid == "00000000") return False; // no disc in drive or read error
 
-	text_status->SetText(BonkEnc::i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(currentConfig->freedb_server).Append("..."));
+	text_status->SetText(String(BonkEnc::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
 	cddb.ConnectToServer();
 
 	prog_status->SetValue(20);
-	text_status->SetText(BonkEnc::i18n->TranslateString("Requesting CD information").Append("..."));
+	text_status->SetText(String(BonkEnc::i18n->TranslateString("Requesting CD information")).Append("..."));
 
 	result = cddb.Query(discid);
 
