@@ -371,5 +371,12 @@
     <entry id="359" string="Start ripping automatically">Ripper automatisch starten</entry>
     <entry id="360" string="Submit to online database later">Später an Online-Datenbank senden</entry>
     <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Die CDDB-Unterstützung ist deaktiviert! Bitte aktivieren Sie&#10;lokale oder entfernte CDDB-Abfragen im Konfigurationsdialog.</entry>
+    <entry id="362" string="CDDB entries to submit:">Zu sendende CDDB-Einträge:</entry>
+    <entry id="363" string="Show queued CDDB entries...">Gespeicherte CDDB-Einträge anzeigen...</entry>
+    <entry id="364" string="Submit all">Alle senden</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Die Unterstützung für die entfernte CDDB-Datenbank ist deaktiviert!&#10;Bitte aktivieren Sie die entfernte CDDB-Datenbank im Konfigurationsdialog.</entry>
+    <entry id="366" string="Category">Kategorie</entry>
+    <entry id="367" string="Close">Schließen</entry>
+    <entry id="368" string="Automatization">Automatisierung</entry>
   </data>
 </LangFile>

@@ -370,6 +370,6 @@
   <entry id="358" string="Overwrite all further files">すべて上書き</entry>
   <entry id="359" string="Start ripping automatically">自動的にリッピングを開始</entry>
   <entry id="360" string="Submit to online database later">後でオンラインのデータベースに送信</entry>
-  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB対応が無効になっています!  設定ダイアログで、&#10;ローカルもしくはリモートのCDDB対応を有効にしてください!</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB対応が無効になっています! 設定ダイアログで、&#10;ローカルもしくはリモートのCDDB対応を有効にしてください!</entry>
  </data>
 </LangFile>

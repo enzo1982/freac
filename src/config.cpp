@@ -10,8 +10,7 @@
 
 #include <config.h>
 #include <bonkenc.h>
-
-#include <shlobj.h>
+#include <utilities.h>
 
 BonkEnc::Config::Config()
 {
@@ -31,46 +30,28 @@ BonkEnc::Config::~Config()
 
 Bool BonkEnc::Config::LoadSettings()
 {
-	String		 pDir;
-	ITEMIDLIST	*idlist;
+	String		 personalDir = Utilities::GetPersonalFilesDirectory();
+	String		 programsDir = Utilities::GetProgramFilesDirectory();
 
-	SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
-
-	if (Setup::enableUnicode)
+	if (Application::GetApplicationDirectory().ToUpper().StartsWith(programsDir.ToUpper()))
 	{
-		wchar_t	*bufferw = new wchar_t [MAX_PATH];
+		configDir = Utilities::GetApplicationDataDirectory();
 
-		SHGetPathFromIDListW(idlist, bufferw);
+		if (configDir != "") configDir.Append("BonkEnc\\");
 
-		pDir = bufferw;
-
-		delete [] bufferw;
-	}
-	else
-	{
-		char	*buffera = new char [MAX_PATH];
-
-		SHGetPathFromIDListA(idlist, buffera);
-
-		pDir = buffera;
-
-		delete [] buffera;
+		Directory(configDir).Create();
 	}
 
-	CoTaskMemFree(idlist);
-
-	if (pDir == "\\") pDir = "C:\\";
-
-	Configuration	*config = new Configuration("config.xml", False);
+	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);
 
 	language				= config->GetStringValue("Settings", "Language", "");
 	encoder					= config->GetIntValue("Settings", "Encoder", 1);
-	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", pDir);
+	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", personalDir);
 	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
 	enc_onTheFly				= config->GetIntValue("Settings", "EncodeOnTheFly", 1);
 	enc_keepWaves				= config->GetIntValue("Settings", "KeepWaveFiles", 0);
 	playlist_useEncOutdir			= config->GetIntValue("Settings", "PlaylistUseEncOutDir", 1);
-	playlist_outdir				= config->GetStringValue("Settings", "PlaylistOutDir", pDir);
+	playlist_outdir				= config->GetStringValue("Settings", "PlaylistOutDir", personalDir);
 	playlist_filePattern			= config->GetStringValue("Settings", "PlaylistFilenamePattern", "<artist> - <album>");
 	useUnicodeNames				= config->GetIntValue("Settings", "UseUnicodeFilenames", 1);
 	showTitleInfo				= config->GetIntValue("Settings", "ShowTitleInfo", 0);
@@ -233,7 +214,7 @@ Bool BonkEnc::Config::SaveSettings()
 	Bool		 retVal = True;
 	String		 str;
 
-	if (config->Open("config.xml", True) == Success())
+	if (config->Open(String(configDir).Append("config.xml"), True) == Success())
 	{
 		config->SetStringValue("Settings", "Language", language);
 		config->SetIntValue("Settings", "Encoder", encoder);

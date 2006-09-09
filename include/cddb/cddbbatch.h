@@ -15,17 +15,29 @@
 
 namespace BonkEnc
 {
-	class BEEXPORT CDDBBatch
+	class BEEXPORT CDDBBatch : public CDDB
 	{
 		private:
-			Config	*config;
+			Config			*config;
+
+			Array<CDDBInfo *>	 entries;
+
+			Bool			 ConnectToServer();
+			String			 Query(const String &);
+			Bool			 Read(const String &, CDDBInfo *);
+			Bool			 CloseConnection();
 		public:
-				 CDDBBatch(Config *);
-			virtual	~CDDBBatch();
+						 CDDBBatch(Config *);
+			virtual			~CDDBBatch();
 
-			Bool	 AddEntry(CDDBInfo *);
+			Bool			 ReadEntries();
+			const Array<CDDBInfo *>	&GetEntries();
 
-			Bool	 SubmitAll();
+			Bool			 AddEntry(CDDBInfo *);
+			Bool			 DeleteEntry(CDDBInfo *);
+
+			Bool			 Submit(CDDBInfo *);
+			Bool			 SubmitAll();
 	};
 };
 

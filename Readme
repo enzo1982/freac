@@ -10,9 +10,10 @@ BonkEnc uses the CDRip Ripping Library for audio ripping.
 History
 -------
 
-	Version 1.0 RC 1 CVS (August 2006)
+	Version 1.0 RC 1 CVS (September 2006)
 
-		- added Norwegian language support
+		- added Norwegian and Esperanto language support
+		- configuration files are now saved in the users application data directory if BonkEnc is installed in C:\Program Files\
 		- added a button for skipping the track currently being encoded
 		- added support for local freedb database
 		- added support for freedb batch submits
@@ -20,6 +21,7 @@ History
 		- added support for automatic ripping on disc insert
 		- added support for multi monitor configurations
 		- joblist entries can now be moved by dragging them with the mouse
+		- added icons for menu entries
 		- fixed decoding of HE-AAC tracks
 		- fixed crash when converting from FLAC to AAC
 		- fixed it not being possible to convert arbitrary sampling rates using LAME
@@ -306,7 +308,8 @@ Special thanks to
 			   Jan Arni Jacobsen (Danish),
 			   Anton Mjoernebrant (Swedish),
 			   Peter Krajcar (Slovak),
-			   Wiak (Norwegian)
+			   Wiak (Norwegian),
+			   Vincent Rateau (Esperanto)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

@@ -380,6 +380,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	{
 		CDDBLocal	 cddb(currentConfig);
 
+		cddb.SetActiveDrive(activedrive);
 		cddb.Submit(cddbInfo);
 	}
 
@@ -389,6 +390,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 		cddbInfo->revision = revision;
 
+		cddb.SetActiveDrive(activedrive);
 		cddb.AddEntry(cddbInfo);
 	}
 	else if (currentConfig->enable_remote_cddb)
@@ -396,6 +398,8 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		CDDBRemote	 cddb(currentConfig);
 
 		cddbInfo->revision = revision;
+
+		cddb.SetActiveDrive(activedrive);
 
 		if (!cddb.Submit(cddbInfo))
 		{
@@ -520,6 +524,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 		list_tracks->RemoveAllEntries();
 		titles.RemoveAll();
+		artists.RemoveAll();
 		comments.RemoveAll();
 
 		edit_track->SetText("");
@@ -568,6 +573,11 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	currentConfig->cdrip_activedrive = oDrive;
 
 	dontUpdateInfo = True;
+
+	list_tracks->RemoveAllEntries();
+	titles.RemoveAll();
+	artists.RemoveAll();
+	comments.RemoveAll();
 
 	if (cdInfo != NIL)
 	{

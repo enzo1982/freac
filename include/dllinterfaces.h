@@ -401,11 +401,21 @@ namespace BonkEnc
 // eUpdate DLL API
 
 	typedef S::Void *			(_stdcall *EUCREATEUPDATECONTEXT)		(const char *, const char *, const char *);
+	typedef S::Void *			(_stdcall *EUCREATEUPDATECONTEXTW)		(const wchar_t *, const wchar_t *, const wchar_t *);
+	typedef S::Bool				(_stdcall *EUSETCONFIGFILE)			(S::Void *, const char *);
+	typedef S::Bool				(_stdcall *EUSETCONFIGFILEW)			(S::Void *, const wchar_t *);
+	typedef S::Bool				(_stdcall *EUSETLANGUAGE)			(S::Void *, const char *);
+	typedef S::Bool				(_stdcall *EUSETLANGUAGEW)			(S::Void *, const wchar_t *);
 	typedef S::Int				(_stdcall *EUFREEUPDATECONTEXT)			(S::Void *);
 	typedef S::Int				(_stdcall *EUCHECKFORNEWUPDATES)		(S::Void *, S::Bool);
 	typedef S::Void				(_stdcall *EUAUTOMATICUPDATE)			(S::Void *);
 
 	extern BEEXPORT EUCREATEUPDATECONTEXT	 ex_eUpdate_CreateUpdateContext;
+	extern BEEXPORT EUCREATEUPDATECONTEXTW	 ex_eUpdate_CreateUpdateContextW;
+	extern BEEXPORT EUSETCONFIGFILE		 ex_eUpdate_SetConfigFile;
+	extern BEEXPORT EUSETCONFIGFILEW	 ex_eUpdate_SetConfigFileW;
+	extern BEEXPORT EUSETLANGUAGE		 ex_eUpdate_SetLanguage;
+	extern BEEXPORT EUSETLANGUAGEW		 ex_eUpdate_SetLanguageW;
 	extern BEEXPORT EUFREEUPDATECONTEXT	 ex_eUpdate_FreeUpdateContext;
 	extern BEEXPORT EUCHECKFORNEWUPDATES	 ex_eUpdate_CheckForNewUpdates;
 	extern BEEXPORT EUAUTOMATICUPDATE	 ex_eUpdate_AutomaticUpdate;

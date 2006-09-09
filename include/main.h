@@ -127,6 +127,7 @@ namespace BonkEnc
 			Void		 QueryCDDB();
 			Void		 SubmitCDDBData();
 			Void		 ManageCDDBData();
+			Void		 ManageCDDBBatchData();
 
 			Void		 SelectDir();
 			Void		 SkipTrack();

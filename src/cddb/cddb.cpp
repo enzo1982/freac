@@ -29,6 +29,7 @@ int cddb_sum(int n)
 BonkEnc::CDDB::CDDB(Config *iConfig)
 {
 	activeDriveID = iConfig->cdrip_activedrive;
+	updateTrackOffsets = True;
 
 	category = "misc";
 
@@ -102,16 +103,19 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo *cddbInfo)
 	ex_CR_SetActiveCDROM(activeDriveID);
 	ex_CR_ReadToc();
 
-	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-
-	for (Int l = 0; l < numTocEntries; l++)
+	if (updateTrackOffsets)
 	{
-		// update track offsets in case we had a fuzzy match
+		Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
-		cddbInfo->trackOffsets.SetEntry(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
+		for (Int l = 0; l < numTocEntries; l++)
+		{
+			// update track offsets in case we had a fuzzy match
+
+			cddbInfo->trackOffsets.SetEntry(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
+		}
+
+		cddbInfo->discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
 	}
-
-	cddbInfo->discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
 
 	Bool		 fuzzy = False;
 	CDDBInfo	*revisionInfo = new CDDBInfo();
@@ -200,7 +204,15 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo *cddbInfo)
 	{
 		String	 line = ParseCDDBEntry(record, index);
 
-		if (line.StartsWith("DTITLE"))
+		if (line.StartsWith("DISCID"))
+		{
+			String	 discIDString;
+
+			for (Int l = 7; l < line.Length(); l++) discIDString[l - 7] = line[l];
+
+			cddbInfo->discID = StringToDiscID(discIDString);
+		}
+		else if (line.StartsWith("DTITLE"))
 		{
 			Int	 k;
 

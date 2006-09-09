@@ -8,8 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <string>
-
 #include <utilities.h>
 
 #include <input/filter-in-cdrip.h>
@@ -36,6 +34,9 @@
 #include <output/filter-out-wave.h>
 
 #include <dllinterfaces.h>
+
+#include <string>
+#include <shlobj.h>
 
 using namespace smooth::System;
 
@@ -399,6 +400,107 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 	}
 
 	return rVal;
+}
+
+String BonkEnc::Utilities::GetProgramFilesDirectory()
+{
+	String		 programsDir;
+
+	if (Setup::enableUnicode)
+	{
+		wchar_t	*bufferw = new wchar_t [MAX_PATH];
+
+		ExpandEnvironmentStringsW(String("%ProgramFiles%"), bufferw, MAX_PATH);
+
+		programsDir = bufferw;
+
+		delete [] bufferw;
+	}
+	else
+	{
+		char	*buffera = new char [MAX_PATH];
+
+		ExpandEnvironmentStringsA(String("%ProgramFiles%"), buffera, MAX_PATH);
+
+		programsDir = buffera;
+
+		delete [] buffera;
+	}
+
+	if (programsDir[programsDir.Length() - 1] != '\\') programsDir.Append("\\");
+
+	return programsDir;
+}
+
+String BonkEnc::Utilities::GetApplicationDataDirectory()
+{
+	String		 configDir;
+	ITEMIDLIST	*idlist;
+
+	SHGetSpecialFolderLocation(NIL, CSIDL_APPDATA, &idlist);
+
+	if (Setup::enableUnicode)
+	{
+		wchar_t	*bufferw = new wchar_t [MAX_PATH];
+
+		SHGetPathFromIDListW(idlist, bufferw);
+
+		configDir = bufferw;
+
+		delete [] bufferw;
+	}
+	else
+	{
+		char	*buffera = new char [MAX_PATH];
+
+		SHGetPathFromIDListA(idlist, buffera);
+
+		configDir = buffera;
+
+		delete [] buffera;
+	}
+
+	CoTaskMemFree(idlist);
+
+	if (configDir[configDir.Length() - 1] != '\\') configDir.Append("\\");
+	if (configDir == "\\") configDir = "";
+
+	return configDir;
+}
+
+String BonkEnc::Utilities::GetPersonalFilesDirectory()
+{
+	String		 personalDir;
+	ITEMIDLIST	*idlist;
+
+	SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
+
+	if (Setup::enableUnicode)
+	{
+		wchar_t	*bufferw = new wchar_t [MAX_PATH];
+
+		SHGetPathFromIDListW(idlist, bufferw);
+
+		personalDir = bufferw;
+
+		delete [] bufferw;
+	}
+	else
+	{
+		char	*buffera = new char [MAX_PATH];
+
+		SHGetPathFromIDListA(idlist, buffera);
+
+		personalDir = buffera;
+
+		delete [] buffera;
+	}
+
+	CoTaskMemFree(idlist);
+
+	if (personalDir == "\\") personalDir = "C:\\";
+
+	return personalDir;
 }
 
 String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)

@@ -41,6 +41,8 @@ namespace BonkEnc
 						 CDDB(Config *);
 			virtual			~CDDB();
 
+			Bool			 updateTrackOffsets;
+
 			Int			 SetActiveDrive(Int);
 			Int			 ComputeDiscID();
 			String			 GetCategory();

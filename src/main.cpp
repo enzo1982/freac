@@ -34,6 +34,7 @@
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 #include <dialogs/cddb/manage.h>
+#include <dialogs/cddb/managebatch.h>
 
 #include <dialogs/language.h>
 
@@ -1030,6 +1031,22 @@ Void BonkEnc::BonkEncGUI::ManageCDDBData()
 	DeleteObject(dlg);
 }
 
+Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
+{
+	if (!currentConfig->enable_remote_cddb)
+	{
+		Utilities::ErrorMessage(i18n->TranslateString("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog."));
+
+		return;
+	}
+
+	cddbManageBatchDlg	*dlg = new cddbManageBatchDlg();
+
+	dlg->ShowDialog();
+
+	DeleteObject(dlg);
+}
+
 Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 {
 	Int	 n = 0;
@@ -1330,14 +1347,14 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	MenuEntry	*entry = NIL;
 
 	menu_file->AddEntry(i18n->TranslateString("Add"), NIL, menu_addsubmenu);
-	entry = menu_file->AddEntry(i18n->TranslateString("Remove"));
+	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load("BonkEnc.pci:29"));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
 	menu_file->AddEntry();
 	menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onAction.Connect(&JobList::LoadList, joblist);
 	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
 	menu_file->AddEntry();
-	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"));
+	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load("BonkEnc.pci:23"));
 	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
 	menu_file->AddEntry();
@@ -1345,10 +1362,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&BonkEncGUI::Close, this);
 	entry->SetShortcut(SC_ALT, VK_F4, mainWnd);
 
-	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."));
+	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("BonkEnc.pci:27"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'C', mainWnd);
-	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."));
+	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("BonkEnc.pci:24"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
 
@@ -1363,7 +1380,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
 	}
 
-	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."));
+	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."), ImageLoader::Load("BonkEnc.pci:25"));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
 
@@ -1374,7 +1391,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 			menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
 		}
 
-		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"));
+		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("BonkEnc.pci:21"));
 		entry->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
 		entry->SetShortcut(SC_CTRL, 'D', mainWnd);
 	}
@@ -1390,11 +1407,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
 
-	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"));
+	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load("BonkEnc.pci:30"));
 	entry->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
 	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
-	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
-	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
+	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
+	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("BonkEnc.pci:31"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
 
 	if (currentConfig->enable_blade)  menu_encoders->AddEntry("BladeEnc MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_bonk)   menu_encoders->AddEntry("Bonk Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
@@ -1429,12 +1446,14 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	ToggleUseInputDirectory();
 
-	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"));
+	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:28"));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	entry->SetShortcut(SC_CTRL, 'L', mainWnd);
-	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."));
+	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load("BonkEnc.pci:22"));
 	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
 	menu_database->AddEntry();
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
 	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
@@ -2095,6 +2114,25 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 
 	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "file://eUpdate/eUpdate.xml");
 //	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "http://www.bonkenc.org/eUpdate/eUpdate.xml");
+
+	if (currentConfig->configDir != "")
+	{
+		if (Setup::enableUnicode) ex_eUpdate_SetConfigFileW(context, String(currentConfig->configDir).Append("eUpdate.xml"));
+		else			  ex_eUpdate_SetConfigFile(context, String(currentConfig->configDir).Append("eUpdate.xml"));
+	}
+
+	if (currentConfig->language != "internal")
+	{
+		String	 lang;
+
+		for (Int i = 8; i < currentConfig->language.Length(); i++) lang[i - 8] = currentConfig->language[i];
+
+		if (!ex_eUpdate_SetLanguage(context, String("eupdate_").Append(lang))) ex_eUpdate_SetLanguage(context, "internal");
+	}
+	else
+	{
+		ex_eUpdate_SetLanguage(context, "internal");
+	}
 
 	if (ex_eUpdate_CheckForNewUpdates(context, (self == NIL)) > 0)
 	{

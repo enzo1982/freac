@@ -37,7 +37,7 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 BonkEnc::Debug		*BonkEnc::debug_out;
 
 String	 BonkEnc::BonkEnc::version = "v1.0 RC 1";
-String	 BonkEnc::BonkEnc::cddbVersion = "v1.0beta4pl1";
+String	 BonkEnc::BonkEnc::cddbVersion = "v1.0rc1";
 String	 BonkEnc::BonkEnc::shortVersion = "v1.0";
 
 BonkEnc::BonkEnc::BonkEnc()

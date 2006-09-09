@@ -25,6 +25,8 @@ namespace BonkEnc
 		public:
 			BonkEnc		*appMain;
 
+			String		 configDir;
+
 			String		 language;
 			Bool		 languageChanged;
 

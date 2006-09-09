@@ -371,5 +371,12 @@
     <entry id="359" string="Start ripping automatically"/>
     <entry id="360" string="Submit to online database later"/>
     <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
+    <entry id="362" string="CDDB entries to submit:"/>
+    <entry id="363" string="Show queued CDDB entries..."/>
+    <entry id="364" string="Submit all"/>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
+    <entry id="366" string="Category"/>
+    <entry id="367" string="Close"/>
+    <entry id="368" string="Automatization"/>
   </data>
 </LangFile>

@@ -10,9 +10,10 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 RC 1 CVS (August 2006)
+	Version 1.0 RC 1 CVS (September 2006)
 
-		- Sprachunterstützung für Norwegisch hinzugefügt
+		- Sprachunterstützung für Norwegisch und Esperanto hinzugefügt
+		- Konfigurationsdateien werden jetzt im Anwendungsdaten-Verzeichnis des Benutzers gespeichert, wenn BonkEnc unter C:\Programme\ installiert ist
 		- Button zum Überspringen des Tracks, der gerade codiert wird, hinzugefügt
 		- Unterstützung für lokale freedb-Datenbank hinzugefügt
 		- Unterstützung für freedb-Batchverarbeitung hinzugefügt
@@ -20,6 +21,7 @@ Geschichte
 		- Unterstützung für automatisches Rippen beim Einlegen der CD hinzugefügt
 		- Unterstützung für Konfigurationen mit mehreren Bildschirmen hinzugefügt
 		- Joblist-Einträge können jetzt durch Ziehen mit der Maus verschoben werden
+		- Symbole für Menüeinträge hinzugefügt
 		- Fehler bei Decodierung von HE-AAC-Tracks behoben
 		- Absturz beim Konvertieren von FLAC nach AAC behoben
 		- Fehler behoben, dass beliebige Samplingraten nicht mit LAME konvertiert werden konnten
@@ -306,7 +308,8 @@ Besonderen Dank
 			   Jan Arni Jacobsen (Dänisch),
 			   Anton Mjörnebrant (Schwedisch),
 			   Peter Krajcár (Slowakisch),
-			   Wiak (Norwegian)
+			   Wiak (Norwegian),
+			   Vincent Rateau (Esperanto)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
