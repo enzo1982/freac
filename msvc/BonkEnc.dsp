@@ -323,6 +323,14 @@ SOURCE=..\src\cddb\cddblocal.cpp
 SOURCE=..\src\cddb\cddbremote.cpp
 # End Source File
 # End Group
+# Begin Group "cdinfo"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\src\cdinfo\cdtext.cpp
+# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=..\src\bonkenc.cpp
@@ -618,6 +626,14 @@ SOURCE=..\include\cddb\cddblocal.h
 # Begin Source File
 
 SOURCE=..\include\cddb\cddbremote.h
+# End Source File
+# End Group
+# Begin Group "cdinfo-headers"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\include\cdinfo\cdtext.h
 # End Source File
 # End Group
 # Begin Source File

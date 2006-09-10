@@ -22,6 +22,8 @@ Geschichte
 		- Unterstützung für Konfigurationen mit mehreren Bildschirmen hinzugefügt
 		- Joblist-Einträge können jetzt durch Ziehen mit der Maus verschoben werden
 		- Symbole für Menüeinträge hinzugefügt
+		- Offizielle Unterstützung für das Ausführen von einem USB-Stick hinzugefügt
+		- Mit den BonkEnc-Standardeinstellungen erstellte MP3-Dateien sind jetzt mit Windows Media Player kompatibel
 		- Fehler bei Decodierung von HE-AAC-Tracks behoben
 		- Absturz beim Konvertieren von FLAC nach AAC behoben
 		- Fehler behoben, dass beliebige Samplingraten nicht mit LAME konvertiert werden konnten

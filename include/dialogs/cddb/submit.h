@@ -14,6 +14,7 @@
 #include <smooth.h>
 
 #include <main.h>
+#include <cdinfo/cdtext.h>
 #include <cddb/cddbinfo.h>
 
 using namespace smooth;
@@ -79,10 +80,7 @@ namespace BonkEnc
 			Array<String>	 titles;
 			Array<String>	 comments;
 
-			Array<String>	 cdText;
-
-			Int		 ReadCDText();
-			Int		 FreeCDText();
+			CDText		 cdText;
 
 			Void		 UpdateTrackList();
 

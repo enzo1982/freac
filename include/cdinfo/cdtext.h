@@ -8,35 +8,26 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_IN_CDRIP_
-#define _H_FILTER_IN_CDRIP_
+#ifndef _H_CDTEXT_
+#define _H_CDTEXT_
 
-#include "inputfilter.h"
-#include <cdinfo/cdtext.h>
+#include <smooth.h>
+
+using namespace smooth;
 
 namespace BonkEnc
 {
-	class BEEXPORT FilterInCDRip : public InputFilter
+	class BEEXPORT CDText
 	{
 		private:
-			Int		 trackNumber;
-			Int		 trackSize;
-
-			Int		 byteCount;
-			unsigned char	*buffer;
-
-			static CDText	 cdText;
-			static Int	 cdTextDiscID;
+			Array<String>		 cdText;
 		public:
-					 FilterInCDRip(Config *, Track *);
-					~FilterInCDRip();
+						 CDText();
+						~CDText();
 
-			Int		 ReadData(Buffer<UnsignedByte> &, Int);
+			Int			 ReadCDText();
 
-			Bool		 SetTrack(Int);
-			Int		 GetTrackSize();
-
-			Track		*GetFileInfo(const String &);
+			const Array<String>	&GetCDText();
 	};
 };
 

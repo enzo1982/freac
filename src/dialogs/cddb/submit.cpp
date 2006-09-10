@@ -18,22 +18,6 @@
 #include <cddb/cddbremote.h>
 #include <cddb/cddbbatch.h>
 
-typedef struct
-{
-	unsigned char	 packType;
-	unsigned char	 trackNumber;
-	unsigned char	 sequenceNumber;
-
-	unsigned char	 characterPosition	:4;
-	unsigned char	 block			:3;
-	unsigned char	 bDBC			:1;
-
-	unsigned char	 data[12];
-	unsigned char	 crc0;
-	unsigned char	 crc1;
-}
-cdTextPackage;
-
 BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 {
 	currentConfig	= BonkEnc::currentConfig;
@@ -547,7 +531,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		btn_submit->Activate();
 	}
 
-	ReadCDText();
+	cdText.ReadCDText();
 
 	Int	 oDrive = currentConfig->cdrip_activedrive;
 
@@ -611,12 +595,12 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		cddbInfo	= cdInfo;
 		ownCddbInfo	= False;
 	}
-	else if (cdText.GetEntry(0) != NIL)
+	else if (cdText.GetCDText().GetEntry(0) != NIL)
 	{
-		if (cdText.GetEntry(0) == "Various") edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
-		else				     edit_artist->SetText(cdText.GetEntry(0));
+		if (cdText.GetCDText().GetEntry(0) == "Various") edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
+		else						 edit_artist->SetText(cdText.GetCDText().GetEntry(0));
 
-		edit_album->SetText(cdText.GetEntry(100));
+		edit_album->SetText(cdText.GetCDText().GetEntry(100));
 		edit_year->SetText("");
 		edit_genre->SetText("");
 		edit_disccomment->SetText("");
@@ -628,8 +612,8 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		edit_title->SetText("");
 		edit_comment->SetText("");
 
-		if (cdText.GetEntry(0) == "Various") edit_trackartist->Activate();
-		else				     edit_trackartist->Deactivate();
+		if (cdText.GetCDText().GetEntry(0) == "Various") edit_trackartist->Activate();
+		else						 edit_trackartist->Deactivate();
 
 		cddbInfo	= new CDDBInfo();
 		ownCddbInfo	= True;
@@ -637,8 +621,8 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		cddbInfo->discID = iDiscid;
 		cddbInfo->revision = -1;
 
-		cddbInfo->dArtist = cdText.GetEntry(0);
-		cddbInfo->dTitle = cdText.GetEntry(100);
+		cddbInfo->dArtist = cdText.GetCDText().GetEntry(0);
+		cddbInfo->dTitle = cdText.GetCDText().GetEntry(100);
 
 		for (Int j = 0; j < numTocEntries; j++)
 		{
@@ -646,7 +630,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 			cddbInfo->trackOffsets.AddEntry(entry.dwStartSector + 150, j);
 			cddbInfo->trackArtists.AddEntry("", j);
-			cddbInfo->trackTitles.AddEntry(cdText.GetEntry(entry.btTrackNumber), j);
+			cddbInfo->trackTitles.AddEntry(cdText.GetCDText().GetEntry(entry.btTrackNumber), j);
 			cddbInfo->trackComments.AddEntry("", j);
 
 			if (entry.btFlag & CDROMDATAFLAG)
@@ -662,7 +646,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 				Int	 handle = list_tracks->AddEntry("")->GetHandle();
 
 				artists.AddEntry("", handle);
-				titles.AddEntry(cdText.GetEntry(entry.btTrackNumber), handle);
+				titles.AddEntry(cdText.GetCDText().GetEntry(entry.btTrackNumber), handle);
 				comments.AddEntry("", handle);
 			}
 		}
@@ -750,78 +734,9 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		}
 	}
 
-	FreeCDText();
-
 	UpdateTrackList();
 
 	dontUpdateInfo = False;
-}
-
-Int BonkEnc::cddbSubmitDlg::ReadCDText()
-{
-	FreeCDText();
-
-	const int	 nBufferSize	= 4 + 8 * sizeof(cdTextPackage) * 256;
-	unsigned char	*pbtBuffer	= new unsigned char [nBufferSize];
-	int		 nCDTextSize	= 0;
-	char		*lpZero		= NIL;
-
-	ex_CR_ReadCDText(pbtBuffer, nBufferSize, &nCDTextSize);
-
-	if (nCDTextSize < 4) { delete [] pbtBuffer; return Error(); }
-
-	int		 nNumPacks		= (nCDTextSize - 4) / sizeof(cdTextPackage);
-	cdTextPackage	*pCDtextPacks		= NIL;
-	char		 lpszBuffer[1024]	= {'\0',};
-	int		 nInsertPos		= 0;
-
-	for (Int i = 0; i < nNumPacks; i++)
-	{
-		pCDtextPacks = (cdTextPackage *) &pbtBuffer[i * sizeof(cdTextPackage) + 4];
-
-		if (pCDtextPacks->block == 0)
-		{
-			for (Int j = 0; j < 12; j++) lpszBuffer[nInsertPos++] = pCDtextPacks->data[j];
-
-			while (nInsertPos > 0 && (lpZero = (char *) memchr(lpszBuffer, '\0', nInsertPos)) != NIL)
-			{
-				Int	 nOut = (lpZero - lpszBuffer) + 1;
-
-				if (pCDtextPacks->packType == 0x80) // Album/Track title
-				{
-					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 100);
-					if (pCDtextPacks->trackNumber != 0) cdText.AddEntry(lpszBuffer, pCDtextPacks->trackNumber);
-				}
-				else if (pCDtextPacks->packType == 0x81) // Artist name
-				{
-					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 0);
-				}
-
-				nInsertPos -= nOut;
-
-				memmove(lpszBuffer, lpZero + 1, 1024 - nOut -1);
-
-				pCDtextPacks->trackNumber++;
-
-				while (nInsertPos > 0 && lpszBuffer[ 0 ] == '\0')
-				{
-					memmove(lpszBuffer, lpszBuffer + 1, 1024 -1);
-					nInsertPos--;
-				}
-			}
-		}
-	}
-
-	delete [] pbtBuffer;
-
-	return Success();
-}
-
-Int BonkEnc::cddbSubmitDlg::FreeCDText()
-{
-	cdText.RemoveAll();
-
-	return Success();
 }
 
 Void BonkEnc::cddbSubmitDlg::SelectTrack()
