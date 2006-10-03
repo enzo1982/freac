@@ -19,6 +19,7 @@ using namespace smooth::GUI;
 namespace BonkEnc
 {
 	class BonkEnc;
+	class CDDBBatchQueries;
 
 	class BEEXPORT Config
 	{

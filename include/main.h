@@ -39,6 +39,7 @@ namespace BonkEnc
 			PopupMenu	*menu_files;
 			PopupMenu	*menu_seldrive;
 			PopupMenu	*menu_database;
+			PopupMenu	*menu_database_query;
 			PopupMenu	*menu_trackmenu;
 			PopupMenu	*menu_help;
 			PopupMenu	*menu_encoders;
@@ -125,9 +126,12 @@ namespace BonkEnc
 			Void		 OpenCDTray();
 
 			Void		 QueryCDDB();
+			Void		 QueryCDDBLater();
 			Void		 SubmitCDDBData();
+
 			Void		 ManageCDDBData();
 			Void		 ManageCDDBBatchData();
+			Void		 ManageCDDBBatchQueries();
 
 			Void		 SelectDir();
 			Void		 SkipTrack();

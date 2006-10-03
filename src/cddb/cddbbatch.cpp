@@ -15,7 +15,6 @@
 
 BonkEnc::CDDBBatch::CDDBBatch(Config *iConfig) : CDDB(iConfig)
 {
-	config = iConfig;
 }
 
 BonkEnc::CDDBBatch::~CDDBBatch()

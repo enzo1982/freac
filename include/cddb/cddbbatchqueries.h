@@ -8,38 +8,33 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_CDDB_REMOTE_
-#define _H_CDDB_REMOTE_
+#ifndef _H_CDDB_BATCH_QUERIES_
+#define _H_CDDB_BATCH_QUERIES_
 
 #include <cddb/cddb.h>
 
-using namespace smooth::IO;
-
 namespace BonkEnc
 {
-	class BEEXPORT CDDBRemote : public CDDB
+	class CDDBBatchQueries
 	{
 		private:
-			Bool		 connected;
+			Config			*config;
 
-			Buffer<char>	 hostNameBuffer;
+			Array<String>		 queries;
 
-			Driver		*socket;
-			InStream	*in;
-			OutStream	*out;
-
-			String		 SendCommand(const String &);
+			Bool			 ReadEntries();
+			Bool			 SaveEntries();
 		public:
-					 CDDBRemote(Config *);
-			virtual		~CDDBRemote();
+						 CDDBBatchQueries(Config *);
+			virtual			~CDDBBatchQueries();
 
-			Bool		 ConnectToServer();
-			String		 Query(const String &);
-			Bool		 Read(const String &, CDDBInfo *);
-			Bool		 Submit(CDDBInfo *);
-			Bool		 CloseConnection();
+			const Array<String>	&GetQueries();
 
-			String		 GetCDDBQueryString();
+			Bool			 AddQuery(const String &);
+			Bool			 DeleteQuery(Int);
+
+			Bool			 Query(Int);
+			Bool			 QueryAll();
 	};
 };
 

@@ -378,5 +378,12 @@
     <entry id="366" string="Category"/>
     <entry id="367" string="Close"/>
     <entry id="368" string="Automatization"/>
+    <entry id="369" string="Query CDDB database later"/>
+    <entry id="370" string="Show queued CDDB queries..."/>
+    <entry id="371" string="CDDB queries"/>
+    <entry id="372" string="Query"/>
+    <entry id="373" string="Query all"/>
+    <entry id="374" string="Query string"/>
+    <entry id="375" string="CDDB queries to perform:"/>
   </data>
 </LangFile>

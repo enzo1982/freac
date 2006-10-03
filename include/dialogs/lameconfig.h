@@ -50,6 +50,7 @@ namespace BonkEnc
 			OptionBox	*basic_option_set_ratio;
 			Slider		*basic_slider_bitrate;
 			Text		*basic_text_bitrate;
+			Text		*basic_text_ratio;
 			EditBox		*basic_edit_ratio;
 
 			CheckBox	*basic_check_set_quality;

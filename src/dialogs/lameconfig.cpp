@@ -146,10 +146,15 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	SetBitrate();
 
 	pos.x -= 83;
-	pos.y += 22;
-	size.cx = 34;
+	pos.y += 25;
 
-	basic_edit_ratio	= new EditBox(String::FromFloat(((double) ratio) / 100), pos, size, 5);
+	basic_text_ratio	= new Text("1 :", pos);
+
+	pos.x += 16;
+	pos.y -= 3;
+	size.cx = 19;
+
+	basic_edit_ratio	= new EditBox(String::FromFloat(((double) ratio) / 100), pos, size, 2);
 	basic_edit_ratio->SetFlags(EDB_NUMERIC);
 
 	pos.x = 7;
@@ -616,6 +621,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	register_layer_basic->RegisterObject(basic_option_set_ratio);
 	register_layer_basic->RegisterObject(basic_slider_bitrate);
 	register_layer_basic->RegisterObject(basic_text_bitrate);
+	register_layer_basic->RegisterObject(basic_text_ratio);
 	register_layer_basic->RegisterObject(basic_edit_ratio);
 
 	register_layer_basic->RegisterObject(basic_quality);
@@ -720,6 +726,7 @@ BonkEnc::ConfigureLameEnc::~ConfigureLameEnc()
 	DeleteObject(basic_option_set_ratio);
 	DeleteObject(basic_slider_bitrate);
 	DeleteObject(basic_text_bitrate);
+	DeleteObject(basic_text_ratio);
 	DeleteObject(basic_edit_ratio);
 	DeleteObject(basic_quality);
 	DeleteObject(basic_check_set_quality);

@@ -15,7 +15,7 @@
 
 namespace BonkEnc
 {
-	class BEEXPORT CDDBBatch : public CDDB
+	class CDDBBatch : public CDDB
 	{
 		private:
 			Config			*config;

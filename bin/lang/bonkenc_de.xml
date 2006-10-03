@@ -378,5 +378,12 @@
     <entry id="366" string="Category">Kategorie</entry>
     <entry id="367" string="Close">Schließen</entry>
     <entry id="368" string="Automatization">Automatisierung</entry>
+    <entry id="369" string="Query CDDB database later">CDDB-Datenbank später abfragen</entry>
+    <entry id="370" string="Show queued CDDB queries...">Gespeicherte CDDB-Abfragen anzeigen...</entry>
+    <entry id="371" string="CDDB queries">CDDB-Abfragen</entry>
+    <entry id="372" string="Query">Abfragen</entry>
+    <entry id="373" string="Query all">Alle abfragen</entry>
+    <entry id="374" string="Query string">Abfrage-String</entry>
+    <entry id="375" string="CDDB queries to perform:">Geplante CDDB-Abfragen:</entry>
   </data>
 </LangFile>

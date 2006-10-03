@@ -23,13 +23,25 @@ Bool BonkEnc::FilterInWAVE::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
-	in->Seek(16);
+	in->Seek(12);
 
-	Int		 headerSize = in->InputNumber(4) + 28;
+	String		 chunk;
+
+	do
+	{
+		// Read next chunk
+		chunk = in->InputString(4);
+
+		Int	 cSize = in->InputNumber(4);
+
+		if (chunk == "data") in->RelSeek(4);
+		else		     in->RelSeek(cSize);
+	}
+	while (chunk != "data");
+
+	driver->Seek(in->GetPos());
 
 	delete in;
-
-	driver->Seek(headerSize);
 
 	return true;
 }
@@ -51,51 +63,63 @@ Int BonkEnc::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
 BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
-	// TODO: Add more checking to this!
+	Bool		 error	 = False;
 
 	nFormat->fileSize = f_in->Size();
-	nFormat->order = BYTE_INTEL;
+	nFormat->order	  = BYTE_INTEL;
 
 	// Read RIFF chunk
-	for (Int i = 0; i < 12; i++)
-		f_in->InputNumber(1);
+	if (f_in->InputString(4) != "RIFF") error = True;
 
-	// Read FMT chunk
-	for (Int j = 0; j < 4; j++)
-		f_in->InputNumber(1);
+	f_in->RelSeek(4);
 
-	Int	 headerSize = f_in->InputNumber(4) + 28;
+	if (f_in->InputString(4) != "WAVE") error = True;
 
-	if (f_in->InputNumber(2) != 1)
+	String		 chunk;
+
+	do
 	{
-		delete f_in;
+		// Read next chunk
+		chunk = f_in->InputString(4);
 
+		Int	 cSize = f_in->InputNumber(4);
+
+		if (chunk == "fmt ")
+		{
+			if (f_in->InputNumber(2) != 1) error = True;
+
+			nFormat->channels = uint16(f_in->InputNumber(2));
+			nFormat->rate	  = uint32(f_in->InputNumber(4));
+
+			f_in->RelSeek(6);
+
+			nFormat->bits	  = uint16(f_in->InputNumber(2));
+
+			// Skip rest of chunk
+			f_in->RelSeek(cSize - 16);
+		}
+		else if (chunk == "data")
+		{
+			nFormat->length = uint32(cSize) / (nFormat->bits / 8);
+		}
+		else
+		{
+			// Skip chunk
+			f_in->RelSeek(cSize);
+		}
+	}
+	while (!error && chunk != "data");
+
+	delete f_in;
+
+	if (error)
+	{
 		delete nFormat;
 
 		return NIL;
 	}
-
-	nFormat->channels = uint16(f_in->InputNumber(2));
-	nFormat->rate = uint32(f_in->InputNumber(4));
-
-	for (Int k = 0; k < 6; k++)
-		f_in->InputNumber(1);
-
-	nFormat->bits = uint16(f_in->InputNumber(2));
-
-	// Read rest of FMT chunk
-	for (Int l = 0; l < headerSize - 44; l++)
-		f_in->InputNumber(1);
-
-	// Read DATA chunk
-	for (Int m = 0; m < 4; m++)
-		f_in->InputNumber(1);
-
-	nFormat->length = uint32(f_in->InputNumber(4)) / (nFormat->bits / 8);
-
-	delete f_in;
 
 	return nFormat;
 }

@@ -31,10 +31,14 @@
 #include <dialogs/tvqconfig.h>
 
 #include <cddb/cddb.h>
+#include <cddb/cddbremote.h>
+#include <cddb/cddbbatchqueries.h>
+
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 #include <dialogs/cddb/manage.h>
 #include <dialogs/cddb/managebatch.h>
+#include <dialogs/cddb/managequeries.h>
 
 #include <dialogs/language.h>
 
@@ -123,6 +127,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_files		= new PopupMenu();
 	menu_seldrive		= new PopupMenu();
 	menu_database		= new PopupMenu();
+	menu_database_query	= new PopupMenu();
 	menu_trackmenu		= new PopupMenu();
 	menu_help		= new PopupMenu();
 	menu_encoders		= new PopupMenu();
@@ -636,6 +641,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(menu_encoders);
 	DeleteObject(menu_encoder_options);
 	DeleteObject(menu_database);
+	DeleteObject(menu_database_query);
 	DeleteObject(menu_trackmenu);
 	DeleteObject(menu_help);
 
@@ -996,6 +1002,35 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 	}
 }
 
+Void BonkEnc::BonkEncGUI::QueryCDDBLater()
+{
+	Array<Int>	 drives;
+
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
+	{
+		Track	*format = joblist->GetNthTrack(i);
+
+		if (format->isCDTrack) drives.AddEntry(format->drive, format->drive);
+	}
+
+	if (drives.GetNOfEntries() > 0)
+	{
+		CDDBBatchQueries	*queries = new CDDBBatchQueries(currentConfig);
+
+		for (Int j = 0; j < drives.GetNOfEntries(); j++)
+		{
+			Int		 drive = drives.GetNthEntry(j);
+			CDDBRemote	 cddb(currentConfig);
+
+			cddb.SetActiveDrive(drive);
+
+			queries->AddQuery(cddb.GetCDDBQueryString());
+		}
+
+		delete queries;
+	}
+}
+
 BonkEnc::CDDBInfo *BonkEnc::BonkEncGUI::GetCDDBData()
 {
 	cddbQueryDlg	*dlg		= new cddbQueryDlg();
@@ -1041,6 +1076,22 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 	}
 
 	cddbManageBatchDlg	*dlg = new cddbManageBatchDlg();
+
+	dlg->ShowDialog();
+
+	DeleteObject(dlg);
+}
+
+Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
+{
+	if (!currentConfig->enable_remote_cddb)
+	{
+		Utilities::ErrorMessage(i18n->TranslateString("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog."));
+
+		return;
+	}
+
+	cddbManageQueriesDlg	*dlg = new cddbManageQueriesDlg();
 
 	dlg->ShowDialog();
 
@@ -1341,6 +1392,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_encoders->RemoveAllEntries();
 	menu_encoder_options->RemoveAllEntries();
 	menu_database->RemoveAllEntries();
+	menu_database_query->RemoveAllEntries();
 	menu_trackmenu->RemoveAllEntries();
 	menu_help->RemoveAllEntries();
 
@@ -1453,12 +1505,18 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
 	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
+	menu_database->AddEntry();
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
+	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB queries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchQueries, this);
 	menu_database->AddEntry();
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
 	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
 	menu_database->AddEntry();
 	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
+
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:28"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
 
 	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
@@ -1529,7 +1587,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		mainWnd_iconbar->AddEntry();
 
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"));
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), menu_database_query);
 		entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 		entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
 
