@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O1 /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=1 /D "FLAC__NO_DLL" /YX /FD /c
+# ADD CPP /nologo /W1 /GX /O1 /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=1 /D "FLAC__NO_DLL" /D BEEXPORT= /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
@@ -247,6 +247,10 @@ SOURCE=..\src\dialogs\cddb\managebatch.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\dialogs\cddb\managequeries.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\dialogs\cddb\multimatch.cpp
 # End Source File
 # Begin Source File
@@ -312,6 +316,10 @@ SOURCE=..\src\cddb\cddbbatch.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\cddb\cddbbatchqueries.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\cddb\cddbinfo.cpp
 # End Source File
 # Begin Source File
@@ -338,15 +346,7 @@ SOURCE=..\src\bonkenc.cpp
 # Begin Source File
 
 SOURCE=..\src\cmdmain.cpp
-
-!IF  "$(CFG)" == "BonkEnc - Win32 Release"
-
-!ELSEIF  "$(CFG)" == "BonkEnc - Win32 Debug"
-
 # PROP Exclude_From_Build 1
-
-!ENDIF 
-
 # End Source File
 # Begin Source File
 
@@ -552,6 +552,10 @@ SOURCE=..\include\dialogs\cddb\managebatch.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\include\dialogs\cddb\managequeries.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\include\dialogs\cddb\multimatch.h
 # End Source File
 # Begin Source File
@@ -614,6 +618,10 @@ SOURCE=..\include\cddb\cddb.h
 # Begin Source File
 
 SOURCE=..\include\cddb\cddbbatch.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\cddb\cddbbatchqueries.h
 # End Source File
 # Begin Source File
 

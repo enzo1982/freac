@@ -28,6 +28,7 @@ History
 		- fixed crash when converting from FLAC to AAC
 		- fixed it not being possible to convert arbitrary sampling rates using LAME
 		- fixed reading of WAV file headers
+		- upgraded LAME to version 3.97
 		- upgraded to smooth v0.8.69.0
 		- some smaller bugfixes
 
