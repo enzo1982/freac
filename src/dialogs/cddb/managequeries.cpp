@@ -161,14 +161,15 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Querying CD information")).Append("..."));
 
-	cddbQueries->Query(list_entries->GetSelectedEntryNumber());
+	if (cddbQueries->Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
+	{
+		list_entries->RemoveEntry(list_entries->GetSelectedEntry());
+
+		btn_delete->Deactivate();
+		btn_query->Deactivate();
+	}
 
 	text_status->SetText("");
-
-	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
-
-	btn_delete->Deactivate();
-	btn_query->Deactivate();
 }
 
 Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
@@ -177,9 +178,7 @@ Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
 
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Querying CD information")).Append("..."));
 
-	cddbQueries->QueryAll();
+	if (cddbQueries->QueryAll()) mainWnd->Close();
 
 	text_status->SetText("");
-
-	mainWnd->Close();
 }

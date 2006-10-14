@@ -324,7 +324,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 {
 	CDDBInfo cddbInfo = oCddbInfo;
 
-	UpdateEntry(cddbInfo);
+	if (!UpdateEntry(cddbInfo)) return False;
 
 	String	 content = FormatCDDBRecord(cddbInfo);
 	String	 str = "POST ";

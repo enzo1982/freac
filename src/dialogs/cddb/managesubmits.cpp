@@ -194,16 +194,17 @@ Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Submitting CD information")).Append("..."));
 
-	cddbBatch->Submit(cddbBatch->GetSubmits().GetNthEntry(list_entries->GetSelectedEntryNumber()));
+	if (cddbBatch->Submit(cddbBatch->GetSubmits().GetNthEntry(list_entries->GetSelectedEntryNumber())))
+	{
+		list_entries->RemoveEntry(list_entries->GetSelectedEntry());
+
+		edit_preview->SetText("");
+
+		btn_delete->Deactivate();
+		btn_send->Deactivate();
+	}
 
 	text_status->SetText("");
-
-	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
-
-	edit_preview->SetText("");
-
-	btn_delete->Deactivate();
-	btn_send->Deactivate();
 }
 
 Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
@@ -212,9 +213,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
 
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Submitting CD information")).Append("..."));
 
-	cddbBatch->SubmitAll();
+	if (cddbBatch->SubmitAll()) mainWnd->Close();
 
 	text_status->SetText("");
-
-	mainWnd->Close();
 }

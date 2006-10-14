@@ -251,22 +251,27 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 	DeleteObject(dlg);
 
-	// save current freedb path
-	String	 configFreedbDir = config->freedb_dir;
+	if (cddbInfo != NIL)
+	{
+		// save current freedb path
+		String	 configFreedbDir = config->freedb_dir;
 
-	config->freedb_dir = String(config->configDir).Append("cddb\\");
+		config->freedb_dir = String(config->configDir).Append("cddb\\");
 
-	CDDBLocal	 cddb(config);
+		CDDBLocal	 cddb(config);
 
-	// save entry to local cache
-	cddb.Submit(cddbInfo);
+		// save entry to local cache
+		cddb.Submit(cddbInfo);
 
-	// restore real freedb path
-	config->freedb_dir = configFreedbDir;
+		// restore real freedb path
+		config->freedb_dir = configFreedbDir;
 
-	DeleteQuery(n);
+		DeleteQuery(n);
 
-	return QUERY_RESULT_SINGLE;
+		return QUERY_RESULT_SINGLE;
+	}
+
+	return QUERY_RESULT_ERROR;
 }
 
 Bool BonkEnc::CDDBBatch::QueryAll()
