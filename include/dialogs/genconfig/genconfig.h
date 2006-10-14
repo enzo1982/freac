@@ -22,11 +22,7 @@ namespace BonkEnc
 	class GeneralSettingsLayerTags;
 };
 
-#include <smooth.h>
 #include <main.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {

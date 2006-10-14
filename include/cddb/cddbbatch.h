@@ -18,25 +18,33 @@ namespace BonkEnc
 	class CDDBBatch : public CDDB
 	{
 		private:
-			Config			*config;
+			Array<String>		 queries;
+			Array<CDDBInfo>		 submits;
 
-			Array<CDDBInfo *>	 entries;
+			Bool			 ReadEntries();
+			Bool			 SaveEntries();
 
-			Bool			 ConnectToServer();
-			String			 Query(const String &);
-			Bool			 Read(const String &, CDDBInfo *);
-			Bool			 CloseConnection();
+			Bool			 ConnectToServer()			{ return True; }
+			Int			 Query(const String &)			{ return QUERY_RESULT_NONE; }
+			Bool			 Read(const String &, Int, CDDBInfo &)	{ return False; }
+			Bool			 CloseConnection()			{ return True; }
 		public:
 						 CDDBBatch(Config *);
 			virtual			~CDDBBatch();
 
-			Bool			 ReadEntries();
-			const Array<CDDBInfo *>	&GetEntries();
+			const Array<String>	&GetQueries()				{ return queries; }
+			const Array<CDDBInfo>	&GetSubmits()				{ return submits; }
 
-			Bool			 AddEntry(CDDBInfo *);
-			Bool			 DeleteEntry(CDDBInfo *);
+			Bool			 AddQuery(const String &);
+			Bool			 DeleteQuery(Int);
 
-			Bool			 Submit(CDDBInfo *);
+			Bool			 AddSubmit(const CDDBInfo &);
+			Bool			 DeleteSubmit(const CDDBInfo &);
+
+			Int			 Query(Int);
+			Bool			 QueryAll();
+
+			Bool			 Submit(const CDDBInfo &);
 			Bool			 SubmitAll();
 	};
 };

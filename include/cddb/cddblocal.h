@@ -20,16 +20,17 @@ namespace BonkEnc
 		private:
 			Array<String>	 results;
 
-			Bool		 QueryUnixDB(const String &);
-			Bool		 QueryWinDB(const String &);
+			Bool		 QueryUnixDB(Int);
+			Bool		 QueryWinDB(Int);
 		public:
 					 CDDBLocal(Config *);
 			virtual		~CDDBLocal();
 
 			Bool		 ConnectToServer();
-			String		 Query(const String &);
-			Bool		 Read(const String &, CDDBInfo *);
-			Bool		 Submit(CDDBInfo *);
+			Int		 Query(Int);
+			Int		 Query(const String &);
+			Bool		 Read(const String &, Int, CDDBInfo &);
+			Bool		 Submit(const CDDBInfo &);
 			Bool		 CloseConnection();
 	};
 };

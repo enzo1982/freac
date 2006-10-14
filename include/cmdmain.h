@@ -29,6 +29,8 @@ namespace BonkEnc
 		public:
 						 BonkEncCommandline(const Array<String> &);
 						~BonkEncCommandline();
+
+			Void			 ShowHelp(const String &);
 	};
 };
 

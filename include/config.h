@@ -19,12 +19,13 @@ using namespace smooth::GUI;
 namespace BonkEnc
 {
 	class BonkEnc;
-	class CDDBBatchQueries;
+	class CDDBCache;
 
 	class BEEXPORT Config
 	{
 		public:
 			BonkEnc		*appMain;
+			CDDBCache	*cddbCache;
 
 			String		 configDir;
 

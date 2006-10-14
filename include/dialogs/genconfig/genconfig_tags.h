@@ -11,11 +11,7 @@
 #ifndef _H_GENCONFIG_TAGS_
 #define _H_GENCONFIG_TAGS_
 
-#include <smooth.h>
 #include <main.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {

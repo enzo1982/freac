@@ -9,9 +9,9 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
 RESOURCES = $(OBJECTDIR)/resources.o
-EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbbatchqueries.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managebatch.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/language.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/playback.o
+EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/language.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/playback.o
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -114,9 +114,9 @@ $(OBJECTDIR)/cddbbatch.o: $(SRCDIR)/cddb/cddbbatch.cpp
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/cddb/cddbbatch.cpp -o $(OBJECTDIR)/cddbbatch.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/cddbbatchqueries.o: $(SRCDIR)/cddb/cddbbatchqueries.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cddb/cddbbatchqueries.cpp...
-	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/cddb/cddbbatchqueries.cpp -o $(OBJECTDIR)/cddbbatchqueries.o
+$(OBJECTDIR)/cddbcache.o: $(SRCDIR)/cddb/cddbcache.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/cddb/cddbcache.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/cddb/cddbcache.cpp -o $(OBJECTDIR)/cddbcache.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/cddbinfo.o: $(SRCDIR)/cddb/cddbinfo.cpp
@@ -149,14 +149,14 @@ $(OBJECTDIR)/cddb_manage.o: $(SRCDIR)/dialogs/cddb/manage.cpp
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/dialogs/cddb/manage.cpp -o $(OBJECTDIR)/cddb_manage.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/cddb_managebatch.o: $(SRCDIR)/dialogs/cddb/managebatch.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/dialogs/cddb/managebatch.cpp...
-	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/dialogs/cddb/managebatch.cpp -o $(OBJECTDIR)/cddb_managebatch.o
-	$(ECHO) done.
-
 $(OBJECTDIR)/cddb_managequeries.o: $(SRCDIR)/dialogs/cddb/managequeries.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/dialogs/cddb/managequeries.cpp...
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/dialogs/cddb/managequeries.cpp -o $(OBJECTDIR)/cddb_managequeries.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/cddb_managesubmits.o: $(SRCDIR)/dialogs/cddb/managesubmits.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/cddb/managesubmits.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/dialogs/cddb/managesubmits.cpp -o $(OBJECTDIR)/cddb_managesubmits.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/cddb_multimatch.o: $(SRCDIR)/dialogs/cddb/multimatch.cpp

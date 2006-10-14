@@ -9,14 +9,13 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/managequeries.h>
-#include <cddb/cddbbatchqueries.h>
 #include <resources.h>
 
 BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 {
 	currentConfig	= BonkEnc::currentConfig;
 
-	cddbQueries	= new CDDBBatchQueries(currentConfig);
+	cddbQueries	= new CDDBBatch(currentConfig);
 
 	Point	 pos;
 	Size	 size;

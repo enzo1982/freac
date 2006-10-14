@@ -135,8 +135,9 @@ namespace BonkEnc
 			Void			 FinishProgressValues(Track *);
 		public:
 			static String		 version;
-			static String		 cddbVersion;
 			static String		 shortVersion;
+			static String		 cddbVersion;
+			static String		 cddbMode;
 
 			static Config		*currentConfig;
 			static I18n::Translator	*i18n;
@@ -152,7 +153,7 @@ namespace BonkEnc
 						 BonkEnc();
 						~BonkEnc();
 
-			virtual CDDBInfo	*GetCDDBData();
+			virtual CDDBInfo	 GetCDDBData();
 		slots:
 			Void			 ReadCD();
 

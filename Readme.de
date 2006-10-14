@@ -28,6 +28,7 @@ Geschichte
 		- Absturz beim Konvertieren von FLAC nach AAC behoben
 		- Fehler behoben, dass beliebige Samplingraten nicht mit LAME konvertiert werden konnten
 		- Fehler beim Lesen von WAV-Headern behoben
+		- CDDB-Codequalität verbessert
 		- LAME auf Version 3.97 aktualisiert
 		- Update auf smooth v0.8.69.0
 		- Einige kleinere Fehler behoben

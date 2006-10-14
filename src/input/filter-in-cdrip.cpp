@@ -12,6 +12,7 @@
 #include <3rdparty/cdrip/cdrip.h>
 #include <3rdparty/paranoia/cdda_paranoia.h>
 #include <cddb/cddbremote.h>
+#include <cddb/cddbcache.h>
 
 #include <dllinterfaces.h>
 
@@ -20,9 +21,10 @@ Int		 BonkEnc::FilterInCDRip::cdTextDiscID;
 
 BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilter(config, format)
 {
-	packageSize = 0;
-	trackNumber = -1;
-	buffer = NIL;
+	packageSize	= 0;
+
+	trackNumber	= -1;
+	buffer		= NIL;
 }
 
 BonkEnc::FilterInCDRip::~FilterInCDRip()
@@ -335,9 +337,9 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		cdTextDiscID = discid;
 	}
 
-	CDDBInfo	*cdInfo = NIL;
-	Bool		 getCDDBFromCache = currentConfig->enable_cddb_cache;
-	Bool		 discIsInResults = False;
+	CDDBInfo cdInfo;
+	Bool	 getCDDBFromCache = currentConfig->enable_cddb_cache;
+	Bool	 discIsInResults = False;
 
 	if (currentConfig->cdrip_read_active)
 	{
@@ -348,7 +350,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		}
 	}
 
-	if (getCDDBFromCache) cdInfo = CDDB::infoCache.GetEntry(discid);
+	if (getCDDBFromCache) cdInfo = currentConfig->cddbCache->GetCacheEntry(discid);
 
 	if (cdInfo == NIL && currentConfig->enable_auto_cddb && !discIsInResults && !(cdText.GetCDText().GetEntry(trackNumber) != NIL && !currentConfig->enable_overwrite_cdtext))
 	{
@@ -358,11 +360,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 
 		cdInfo = currentConfig->appMain->GetCDDBData();
 
-		if (cdInfo != NIL)
-		{
-			CDDB::infoCache.RemoveEntry(discid);
-			CDDB::infoCache.AddEntry(cdInfo, discid);
-		}
+		if (cdInfo != NIL) currentConfig->cddbCache->AddCacheEntry(cdInfo);
 
 		if (currentConfig->cdrip_read_active)
 		{
@@ -380,11 +378,11 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
-		nFormat->artist		= cdInfo->dArtist;
-		nFormat->title		= cdInfo->trackTitles.GetNthEntry(trackNumber - 1);
-		nFormat->album		= cdInfo->dTitle;
-		nFormat->genre		= cdInfo->dGenre;
-		nFormat->year		= cdInfo->dYear;
+		nFormat->artist		= cdInfo.dArtist;
+		nFormat->title		= cdInfo.trackTitles.GetNthEntry(trackNumber - 1);
+		nFormat->album		= cdInfo.dTitle;
+		nFormat->genre		= cdInfo.dGenre;
+		nFormat->year		= cdInfo.dYear;
 	}
 	else if (cdText.GetCDText().GetEntry(trackNumber) != NIL)
 	{

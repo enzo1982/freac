@@ -36,9 +36,10 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version = "v1.0 RC 1";
-String	 BonkEnc::BonkEnc::cddbVersion = "v1.0rc1";
-String	 BonkEnc::BonkEnc::shortVersion = "v1.0";
+String	 BonkEnc::BonkEnc::version	= "v1.0 RC 1";
+String	 BonkEnc::BonkEnc::shortVersion	= "v1.0";
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0rc1";
+String	 BonkEnc::BonkEnc::cddbMode	= "test";
 
 BonkEnc::BonkEnc::BonkEnc()
 {
@@ -175,8 +176,6 @@ BonkEnc::BonkEnc::~BonkEnc()
 {
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
-	for (Int i = 0; i < CDDB::infoCache.GetNOfEntries(); i++) delete CDDB::infoCache.GetNthEntry(i);
-
 	if (currentConfig->enable_bonk)		DLLInterfaces::FreeBonkDLL();
 	if (currentConfig->enable_blade)	DLLInterfaces::FreeBladeDLL();
 	if (currentConfig->enable_faac)		DLLInterfaces::FreeFAACDLL();
@@ -227,7 +226,7 @@ Void BonkEnc::BonkEnc::ReadCD()
 	currentConfig->cdrip_read_results.RemoveAll();
 }
 
-BonkEnc::CDDBInfo *BonkEnc::BonkEnc::GetCDDBData()
+BonkEnc::CDDBInfo BonkEnc::BonkEnc::GetCDDBData()
 {
 	return NIL;
 }

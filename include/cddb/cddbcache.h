@@ -8,33 +8,30 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_CDDB_BATCH_QUERIES_
-#define _H_CDDB_BATCH_QUERIES_
+#ifndef _H_CDDB_CACHE_
+#define _H_CDDB_CACHE_
 
 #include <cddb/cddb.h>
 
 namespace BonkEnc
 {
-	class CDDBBatchQueries
+	class BEEXPORT CDDBCache
 	{
 		private:
-			Config			*config;
+			Config		*config;
 
-			Array<String>		 queries;
-
-			Bool			 ReadEntries();
-			Bool			 SaveEntries();
+			Array<CDDBInfo>	 infoCache;
 		public:
-						 CDDBBatchQueries(Config *);
-			virtual			~CDDBBatchQueries();
+					 CDDBCache(Config *);
+			virtual		~CDDBCache();
 
-			const Array<String>	&GetQueries();
+			const CDDBInfo	&GetCacheEntry(Int);
+			Bool		 AddCacheEntry(const CDDBInfo &);
 
-			Bool			 AddQuery(const String &);
-			Bool			 DeleteQuery(Int);
+			Int		 GetNOfEntries()	{ return infoCache.GetNOfEntries(); }
+			const CDDBInfo	&GetNthEntry(Int n)	{ return infoCache.GetNthEntry(n); }
 
-			Bool			 Query(Int);
-			Bool			 QueryAll();
+			Int		 RemoveNthEntry(Int);
 	};
 };
 

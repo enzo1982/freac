@@ -8,11 +8,10 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <dialogs/cddb/managebatch.h>
-#include <cddb/cddb.h>
+#include <dialogs/cddb/managesubmits.h>
 #include <resources.h>
 
-BonkEnc::cddbManageBatchDlg::cddbManageBatchDlg()
+BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 {
 	currentConfig	= BonkEnc::currentConfig;
 
@@ -31,7 +30,7 @@ BonkEnc::cddbManageBatchDlg::cddbManageBatchDlg()
 	size.cy = 0;
 
 	btn_cancel	= new Button(BonkEnc::i18n->TranslateString("Close"), NIL, pos, size);
-	btn_cancel->onAction.Connect(&cddbManageBatchDlg::Cancel, this);
+	btn_cancel->onAction.Connect(&cddbManageSubmitsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
@@ -46,7 +45,7 @@ BonkEnc::cddbManageBatchDlg::cddbManageBatchDlg()
 	list_entries	= new ListBox(pos, size);
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Category"), 65);
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Disc name"), 0);
-	list_entries->onSelectEntry.Connect(&cddbManageBatchDlg::SelectEntry, this);
+	list_entries->onSelectEntry.Connect(&cddbManageSubmitsDlg::SelectEntry, this);
 
 	pos.x += 269;
 	pos.y -= 19;
@@ -67,19 +66,19 @@ BonkEnc::cddbManageBatchDlg::cddbManageBatchDlg()
 	size.cy = 0;
 
 	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, pos, size);
-	btn_delete->onAction.Connect(&cddbManageBatchDlg::DeleteEntry, this);
+	btn_delete->onAction.Connect(&cddbManageSubmitsDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 369;
 
 	btn_send	= new Button(BonkEnc::i18n->TranslateString("Submit"), NIL, pos, size);
-	btn_send->onAction.Connect(&cddbManageBatchDlg::SendEntry, this);
+	btn_send->onAction.Connect(&cddbManageSubmitsDlg::SendEntry, this);
 	btn_send->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += 88;
 
 	btn_send_all	= new Button(BonkEnc::i18n->TranslateString("Submit all"), NIL, pos, size);
-	btn_send_all->onAction.Connect(&cddbManageBatchDlg::SendAllEntries, this);
+	btn_send_all->onAction.Connect(&cddbManageSubmitsDlg::SendAllEntries, this);
 	btn_send_all->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 7;
@@ -113,7 +112,7 @@ BonkEnc::cddbManageBatchDlg::cddbManageBatchDlg()
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }
 
-BonkEnc::cddbManageBatchDlg::~cddbManageBatchDlg()
+BonkEnc::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -135,26 +134,26 @@ BonkEnc::cddbManageBatchDlg::~cddbManageBatchDlg()
 	delete cddbBatch;
 }
 
-const Error &BonkEnc::cddbManageBatchDlg::ShowDialog()
+const Error &BonkEnc::cddbManageSubmitsDlg::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::cddbManageBatchDlg::Cancel()
+Void BonkEnc::cddbManageSubmitsDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageBatchDlg::SelectEntry()
+Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
 {
-	CDDBInfo	*cddbInfo = cddbBatch->GetEntries().GetNthEntry(list_entries->GetSelectedEntryNumber());
-	String		 preview = String(cddbInfo->dArtist).Append(" - ").Append(cddbInfo->dTitle).Append("\n\n");
+	const CDDBInfo	&cddbInfo = cddbBatch->GetSubmits().GetNthEntry(list_entries->GetSelectedEntryNumber());
+	String		 preview = String(cddbInfo.dArtist).Append(" - ").Append(cddbInfo.dTitle).Append("\n\n");
 
-	for (Int i = 0; i < cddbInfo->trackTitles.GetNOfEntries(); i++)
+	for (Int i = 0; i < cddbInfo.trackTitles.GetNOfEntries(); i++)
 	{
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo->dArtist == "Various" ? String(cddbInfo->trackArtists.GetNthEntry(i)).Append(" - ") : "").Append(cddbInfo->trackTitles.GetNthEntry(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNthEntry(i)).Append(" - ") : "").Append(cddbInfo.trackTitles.GetNthEntry(i)).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -163,13 +162,9 @@ Void BonkEnc::cddbManageBatchDlg::SelectEntry()
 	btn_send->Activate();
 }
 
-Void BonkEnc::cddbManageBatchDlg::DeleteEntry()
+Void BonkEnc::cddbManageSubmitsDlg::DeleteEntry()
 {
-	CDDBInfo	*cddbInfo = cddbBatch->GetEntries().GetNthEntry(list_entries->GetSelectedEntryNumber());
-
-	File(String("cddb\\").Append(cddbInfo->category).Append("\\").Append(cddbInfo->DiscIDToString())).Delete();
-
-	cddbBatch->DeleteEntry(cddbBatch->GetEntries().GetNthEntry(list_entries->GetSelectedEntryNumber()));
+	cddbBatch->DeleteSubmit(cddbBatch->GetSubmits().GetNthEntry(list_entries->GetSelectedEntryNumber()));
 
 	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
 
@@ -179,29 +174,27 @@ Void BonkEnc::cddbManageBatchDlg::DeleteEntry()
 	btn_send->Deactivate();
 }
 
-Void BonkEnc::cddbManageBatchDlg::ReadEntries()
+Void BonkEnc::cddbManageSubmitsDlg::ReadEntries()
 {
 	// Read all entries from the freedb queue
 
-	cddbBatch->ReadEntries();
-
-	const Array<CDDBInfo *> &entries = cddbBatch->GetEntries();
+	const Array<CDDBInfo> &entries = cddbBatch->GetSubmits();
 
 	for (Int i = 0; i < entries.GetNOfEntries(); i++)
 	{
-		CDDBInfo	*cddbInfo = entries.GetNthEntry(i);
+		const CDDBInfo	&cddbInfo = entries.GetNthEntry(i);
 
-		list_entries->AddEntry(String(cddbInfo->category).Append("\t").Append(cddbInfo->dArtist).Append(" - ").Append(cddbInfo->dTitle));
+		list_entries->AddEntry(String(cddbInfo.category).Append("\t").Append(cddbInfo.dArtist).Append(" - ").Append(cddbInfo.dTitle));
 	}
 }
 
-Void BonkEnc::cddbManageBatchDlg::SendEntry()
+Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 {
 	// Submit selected entry to online CDDB
 
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Submitting CD information")).Append("..."));
 
-	cddbBatch->Submit(cddbBatch->GetEntries().GetNthEntry(list_entries->GetSelectedEntryNumber()));
+	cddbBatch->Submit(cddbBatch->GetSubmits().GetNthEntry(list_entries->GetSelectedEntryNumber()));
 
 	text_status->SetText("");
 
@@ -213,7 +206,7 @@ Void BonkEnc::cddbManageBatchDlg::SendEntry()
 	btn_send->Deactivate();
 }
 
-Void BonkEnc::cddbManageBatchDlg::SendAllEntries()
+Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
 {
 	// Submit all entries to online CDDB
 

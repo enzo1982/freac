@@ -11,13 +11,8 @@
 #ifndef _H_CDDB_MANAGE_
 #define _H_CDDB_MANAGE_
 
-#include <smooth.h>
-
 #include <main.h>
 #include <cddb/cddbinfo.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {

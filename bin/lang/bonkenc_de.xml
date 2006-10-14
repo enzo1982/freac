@@ -385,5 +385,6 @@
     <entry id="373" string="Query all">Alle abfragen</entry>
     <entry id="374" string="Query string">Abfrage-String</entry>
     <entry id="375" string="CDDB queries to perform:">Geplante CDDB-Abfragen:</entry>
+    <entry id="376" string="Would you like to perform this query again later?">Möchten Sie diese Abfrage später erneut durchführen?</entry>
   </data>
 </LangFile>

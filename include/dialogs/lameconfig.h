@@ -11,11 +11,7 @@
 #ifndef _H_LAMECONFIG_
 #define _H_LAMECONFIG_
 
-#include <smooth.h>
 #include <main.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {

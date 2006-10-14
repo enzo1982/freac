@@ -16,12 +16,13 @@
 
 #include <cddb/cddblocal.h>
 #include <cddb/cddbremote.h>
+#include <cddb/cddbbatch.h>
 
 BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
 	currentConfig = BonkEnc::currentConfig;
 
-	rCDDBInfo = NIL;
+	allowAddToBatch = False;
 
 	Point	 pos;
 	Size	 size;
@@ -87,8 +88,17 @@ const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 	return error;
 }
 
-BonkEnc::CDDBInfo *BonkEnc::cddbQueryDlg::QueryCDDB()
+Bool BonkEnc::cddbQueryDlg::SetQueryString(const String &nQueryString)
 {
+	queryString = nQueryString;
+
+	return True;
+}
+
+const BonkEnc::CDDBInfo &BonkEnc::cddbQueryDlg::QueryCDDB(Bool iAllowAddToBatch)
+{
+	allowAddToBatch = iAllowAddToBatch;
+
 	ShowDialog();
 
 	return rCDDBInfo;
@@ -127,15 +137,7 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 {
-	String	 result;
-	String	 read = NIL;
-	Bool	 fuzzy = False;
-
-	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
-
-	String	 discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
-
-	if (discid == "ffffffff" || discid == "00000000") return False; // no disc in drive or read error
+	Int	 result;
 
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
@@ -144,27 +146,42 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 	prog_status->SetValue(20);
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Requesting CD information")).Append("..."));
 
-	result = cddb.Query(discid);
+	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
-	if (result == "none")
+	if (queryString == NIL)
+	{
+		// query by disc ID of inserted disc
+		Int	 discID = cddb.ComputeDiscID();
+
+		if (discID == 0 || discID == -1) return False; // no disc in drive or read error
+
+		result = cddb.Query(discID);
+	}
+	else
+	{
+		// use query string
+		result = cddb.Query(queryString);
+	}
+
+	String	 category;
+	Int	 discID = 0;
+
+	if (result == QUERY_RESULT_NONE)
 	{
 		QuickMessage(BonkEnc::i18n->TranslateString("No freedb entry for this disk."), BonkEnc::i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
 	}
-	else if (result == "multiple" || result == "fuzzy")
+	else if (result == QUERY_RESULT_SINGLE)
+	{
+		category = cddb.GetNthCategory(0);
+		discID	 = cddb.GetNthDiscID(0);
+	}
+	else if (result == QUERY_RESULT_MULTIPLE || result == QUERY_RESULT_FUZZY)
 	{
 		cddbMultiMatchDlg	*dlg = new cddbMultiMatchDlg(false);
 
-		for (int i = 0; i < cddb.GetNumberOfMatches(); i++)
-		{
-			dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
-		}
+		for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
 
-		if (result == "fuzzy")
-		{
-			dlg->AddEntry(BonkEnc::i18n->TranslateString("none"), "");
-
-			fuzzy = True;
-		}
+		if (result == QUERY_RESULT_FUZZY) dlg->AddEntry(BonkEnc::i18n->TranslateString("none"), "");
 
 		if (dlg->ShowDialog() == Success())
 		{
@@ -172,35 +189,43 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 
 			if (index < cddb.GetNumberOfMatches() && index >= 0)
 			{
-				read = String(cddb.GetNthCategory(index)).Append(" ").Append(cddb.GetNthDiscID(index));
+				category = cddb.GetNthCategory(index);
+				discID	 = cddb.GetNthDiscID(index);
 			}
 		}
 
 		DeleteObject(dlg);
 	}
-	else if (result == "error")
-	{
-		Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
-	}
-	else
-	{
-		read = result;
-	}
 
-	prog_status->SetValue(60);
+	Bool	 readError = True;
 
-	if (read != NIL)
+	if (category != NIL && discID != 0)
 	{
-		rCDDBInfo = new CDDBInfo();
+		prog_status->SetValue(60);
 
-		if (cddb.Read(read, rCDDBInfo))
+		if (cddb.Read(category, discID, rCDDBInfo))
 		{
-			if (fuzzy) rCDDBInfo->revision = -1;
+			if (result == QUERY_RESULT_FUZZY) rCDDBInfo.revision = -1;
+
+			readError = False;
+		}
+	}
+
+	if (readError || result == QUERY_RESULT_ERROR)
+	{
+		if (allowAddToBatch)
+		{
+			if (QuickMessage(String(BonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server.")).Append("\n\n").Append(BonkEnc::i18n->TranslateString("Would you like to perform this query again later?")), BonkEnc::i18n->TranslateString("Error"), MB_YESNO, IDI_HAND) == IDYES)
+			{
+				CDDBBatch	*queries = new CDDBBatch(currentConfig);
+
+				queries->AddQuery(cddb.GetCDDBQueryString());
+
+				delete queries;
+			}
 		}
 		else
 		{
-			delete rCDDBInfo;
-
 			Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
 		}
 	}

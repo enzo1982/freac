@@ -34,12 +34,11 @@ namespace BonkEnc
 			virtual		~CDDBRemote();
 
 			Bool		 ConnectToServer();
-			String		 Query(const String &);
-			Bool		 Read(const String &, CDDBInfo *);
-			Bool		 Submit(CDDBInfo *);
+			Int		 Query(Int);
+			Int		 Query(const String &);
+			Bool		 Read(const String &, Int, CDDBInfo &);
+			Bool		 Submit(const CDDBInfo &);
 			Bool		 CloseConnection();
-
-			String		 GetCDDBQueryString();
 	};
 };
 

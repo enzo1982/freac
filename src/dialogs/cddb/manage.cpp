@@ -13,6 +13,7 @@
 #include <dllinterfaces.h>
 #include <joblist.h>
 #include <cddb/cddb.h>
+#include <cddb/cddbcache.h>
 #include <utilities.h>
 
 BonkEnc::cddbManageDlg::cddbManageDlg()
@@ -66,11 +67,11 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Charset"), 100);
 	list_entries->onSelectEntry.Connect(&cddbManageDlg::SelectEntry, this);
 
-	for (Int i = 0; i < CDDB::infoCache.GetNOfEntries(); i++)
+	for (Int i = 0; i < currentConfig->cddbCache->GetNOfEntries(); i++)
 	{
-		CDDBInfo	*entry = CDDB::infoCache.GetNthEntry(i);
+		const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(i);
 
-		list_entries->AddEntry(String(entry->dArtist).Append(" - ").Append(entry->dTitle).Append("\t").Append(entry->charset));
+		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
 	}
 
 	pos.x += 269;
@@ -182,26 +183,26 @@ Void BonkEnc::cddbManageDlg::OK()
 {
 	if (updateJoblist)
 	{
-		for (Int i = 0; i < CDDB::infoCache.GetNOfEntries(); i++)
+		for (Int i = 0; i < currentConfig->cddbCache->GetNOfEntries(); i++)
 		{
-			CDDBInfo	*cddbInfo = CDDB::infoCache.GetNthEntry(i);
+			const CDDBInfo	&cddbInfo = currentConfig->cddbCache->GetNthEntry(i);
 
 			for (Int l = 0; l < currentConfig->appMain->joblist->GetNOfTracks(); l++)
 			{
 				Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
 
-				if (trackInfo->discid != cddbInfo->DiscIDToString()) continue;
+				if (trackInfo->discid != cddbInfo.DiscIDToString()) continue;
 
-				for (Int m = 0; m < cddbInfo->trackTitles.GetNOfEntries(); m++)
+				for (Int m = 0; m < cddbInfo.trackTitles.GetNOfEntries(); m++)
 				{
 					if (trackInfo->cdTrack == m + 1)
 					{
-						trackInfo->artist	= (cddbInfo->dArtist == "Various" ? cddbInfo->trackArtists.GetNthEntry(m) : cddbInfo->dArtist);
-						trackInfo->title	= cddbInfo->trackTitles.GetNthEntry(m);
-						trackInfo->album	= cddbInfo->dTitle;
-						trackInfo->year		= cddbInfo->dYear;
-						trackInfo->genre	= cddbInfo->dGenre;
-						trackInfo->comment	= cddbInfo->trackComments.GetNthEntry(m);
+						trackInfo->artist	= (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNthEntry(m) : cddbInfo.dArtist);
+						trackInfo->title	= cddbInfo.trackTitles.GetNthEntry(m);
+						trackInfo->album	= cddbInfo.dTitle;
+						trackInfo->year		= cddbInfo.dYear;
+						trackInfo->genre	= cddbInfo.dGenre;
+						trackInfo->comment	= cddbInfo.trackComments.GetNthEntry(m);
 
 						String	 jlEntry;
 
@@ -229,24 +230,24 @@ Void BonkEnc::cddbManageDlg::Cancel()
 
 Void BonkEnc::cddbManageDlg::SetCharset()
 {
-	CDDBInfo	*entry = CDDB::infoCache.GetNthEntry(list_entries->GetSelectedEntryNumber());
+	const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
 	String		 dArtist;
 	String		 dTitle;
 
-	dArtist.ImportFrom(edit_charset->GetText(), entry->oDArtist);
-	dTitle.ImportFrom(edit_charset->GetText(), entry->oDTitle);
+	dArtist.ImportFrom(edit_charset->GetText(), entry.oDArtist);
+	dTitle.ImportFrom(edit_charset->GetText(), entry.oDTitle);
 
 	String		 preview = String(dArtist).Append(" - ").Append(dTitle).Append("\n\n");
 
-	for (Int i = 0; i < entry->oTrackTitles.GetNOfEntries(); i++)
+	for (Int i = 0; i < entry.oTrackTitles.GetNOfEntries(); i++)
 	{
 		String	 artist;
 		String	 title;
 
-		artist.ImportFrom(edit_charset->GetText(), entry->oTrackArtists.GetNthEntry(i));
-		title.ImportFrom(edit_charset->GetText(), entry->oTrackTitles.GetNthEntry(i));
+		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNthEntry(i));
+		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNthEntry(i));
 
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry->oDArtist == "Various" ? String(artist).Append(" - ") : "").Append(title).Append("\n");
+		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.oDArtist == "Various" ? String(artist).Append(" - ") : "").Append(title).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -254,16 +255,16 @@ Void BonkEnc::cddbManageDlg::SetCharset()
 
 Void BonkEnc::cddbManageDlg::SelectEntry()
 {
-	CDDBInfo	*entry = CDDB::infoCache.GetNthEntry(list_entries->GetSelectedEntryNumber());
-	String		 preview = String(entry->dArtist).Append(" - ").Append(entry->dTitle).Append("\n\n");
+	const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
+	String		 preview = String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\n\n");
 
-	for (Int i = 0; i < entry->trackTitles.GetNOfEntries(); i++)
+	for (Int i = 0; i < entry.trackTitles.GetNOfEntries(); i++)
 	{
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry->dArtist == "Various" ? String(entry->trackArtists.GetNthEntry(i)).Append(" - ") : "").Append(entry->trackTitles.GetNthEntry(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? String(entry.trackArtists.GetNthEntry(i)).Append(" - ") : "").Append(entry.trackTitles.GetNthEntry(i)).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
-	edit_charset->SetText(entry->charset);
+	edit_charset->SetText(entry.charset);
 
 	edit_charset->Activate();
 	btn_delete->Activate();
@@ -272,7 +273,7 @@ Void BonkEnc::cddbManageDlg::SelectEntry()
 
 Void BonkEnc::cddbManageDlg::DeleteEntry()
 {
-	CDDB::infoCache.RemoveEntry(CDDB::infoCache.GetNthEntryIndex(list_entries->GetSelectedEntryNumber()));
+	currentConfig->cddbCache->RemoveNthEntry(list_entries->GetSelectedEntryNumber());
 
 	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
 
@@ -285,29 +286,32 @@ Void BonkEnc::cddbManageDlg::DeleteEntry()
 
 Void BonkEnc::cddbManageDlg::SaveEntry()
 {
-	CDDBInfo	*entry = CDDB::infoCache.GetNthEntry(list_entries->GetSelectedEntryNumber());
+	CDDBInfo entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
 
-	entry->dArtist.ImportFrom(edit_charset->GetText(), entry->oDArtist);
-	entry->dTitle.ImportFrom(edit_charset->GetText(), entry->oDTitle);
-	entry->dGenre.ImportFrom(edit_charset->GetText(), entry->oDGenre);
-	entry->comment.ImportFrom(edit_charset->GetText(), entry->oComment);
+	entry.dArtist.ImportFrom(edit_charset->GetText(), entry.oDArtist);
+	entry.dTitle.ImportFrom(edit_charset->GetText(), entry.oDTitle);
+	entry.dGenre.ImportFrom(edit_charset->GetText(), entry.oDGenre);
+	entry.comment.ImportFrom(edit_charset->GetText(), entry.oComment);
 
-	for (Int i = 0; i < entry->trackArtists.GetNOfEntries(); i++)
+	for (Int i = 0; i < entry.trackArtists.GetNOfEntries(); i++)
 	{
 		String	 artist;
 		String	 title;
 		String	 comment;
 
-		artist.ImportFrom(edit_charset->GetText(), entry->oTrackArtists.GetNthEntry(i));
-		title.ImportFrom(edit_charset->GetText(), entry->oTrackTitles.GetNthEntry(i));
-		comment.ImportFrom(edit_charset->GetText(), entry->oTrackComments.GetNthEntry(i));
+		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNthEntry(i));
+		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNthEntry(i));
+		comment.ImportFrom(edit_charset->GetText(), entry.oTrackComments.GetNthEntry(i));
 
-		entry->trackArtists.SetEntry(entry->trackArtists.GetNthEntryIndex(i), artist);
-		entry->trackTitles.SetEntry(entry->trackTitles.GetNthEntryIndex(i), title);
-		entry->trackComments.SetEntry(entry->trackComments.GetNthEntryIndex(i), comment);
+		entry.trackArtists.SetEntry(entry.trackArtists.GetNthEntryIndex(i), artist);
+		entry.trackTitles.SetEntry(entry.trackTitles.GetNthEntryIndex(i), title);
+		entry.trackComments.SetEntry(entry.trackComments.GetNthEntryIndex(i), comment);
 	}
 
-	entry->charset = edit_charset->GetText();
+	entry.charset = edit_charset->GetText();
 
-	list_entries->GetSelectedEntry()->SetText(String(entry->dArtist).Append(" - ").Append(entry->dTitle).Append("\t").Append(entry->charset));
+	list_entries->GetSelectedEntry()->SetText(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
+
+	// Save modified entry back to cache (necessary to make changes persistant)
+	currentConfig->cddbCache->AddCacheEntry(entry);
 }

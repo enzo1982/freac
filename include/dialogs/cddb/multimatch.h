@@ -11,11 +11,7 @@
 #ifndef _H_CDDB_MULTIMATCH_
 #define _H_CDDB_MULTIMATCH_
 
-#include <smooth.h>
 #include <main.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {

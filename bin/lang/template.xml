@@ -385,5 +385,6 @@
     <entry id="373" string="Query all"/>
     <entry id="374" string="Query string"/>
     <entry id="375" string="CDDB queries to perform:"/>
+    <entry id="376" string="Would you like to perform this query again later?"/>
   </data>
 </LangFile>

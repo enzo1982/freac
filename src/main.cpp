@@ -32,13 +32,14 @@
 
 #include <cddb/cddb.h>
 #include <cddb/cddbremote.h>
-#include <cddb/cddbbatchqueries.h>
+#include <cddb/cddbbatch.h>
+#include <cddb/cddbcache.h>
 
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 #include <dialogs/cddb/manage.h>
-#include <dialogs/cddb/managebatch.h>
 #include <dialogs/cddb/managequeries.h>
+#include <dialogs/cddb/managesubmits.h>
 
 #include <dialogs/language.h>
 
@@ -927,21 +928,17 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 		currentConfig->cdrip_activedrive = discIDs.GetNthEntryIndex(j);
 
-		Int		 discID = discIDs.GetNthEntry(j);
-		String		 discIDString = discIDStrings.GetNthEntry(j);
-		CDDBInfo	*cdInfo = NIL;
+		Int	 discID = discIDs.GetNthEntry(j);
+		String	 discIDString = discIDStrings.GetNthEntry(j);
+		CDDBInfo cdInfo;
 
-		if (currentConfig->enable_cddb_cache) cdInfo = CDDB::infoCache.GetEntry(discID);
+		if (currentConfig->enable_cddb_cache) cdInfo = currentConfig->cddbCache->GetCacheEntry(discID);
 
 		if (cdInfo == NIL)
 		{
 			cdInfo = GetCDDBData();
 
-			if (cdInfo != NIL)
-			{
-				CDDB::infoCache.RemoveEntry(discID);
-				CDDB::infoCache.AddEntry(cdInfo, discID);
-			}
+			if (cdInfo != NIL) currentConfig->cddbCache->AddCacheEntry(cdInfo);
 		}
 
 		currentConfig->cdrip_activedrive = oDrive;
@@ -956,11 +953,11 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 				{
 					format->track	= format->cdTrack;
 					format->outfile	= NIL;
-					format->artist	= cdInfo->dArtist;
-					format->title	= cdInfo->trackTitles.GetNthEntry(format->cdTrack - 1);
-					format->album	= cdInfo->dTitle;
-					format->genre	= cdInfo->dGenre;
-					format->year	= cdInfo->dYear;
+					format->artist	= cdInfo.dArtist;
+					format->title	= cdInfo.trackTitles.GetNthEntry(format->cdTrack - 1);
+					format->album	= cdInfo.dTitle;
+					format->genre	= cdInfo.dGenre;
+					format->year	= cdInfo.dYear;
 
 					String	 jlEntry;
 
@@ -1015,7 +1012,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 
 	if (drives.GetNOfEntries() > 0)
 	{
-		CDDBBatchQueries	*queries = new CDDBBatchQueries(currentConfig);
+		CDDBBatch	*queries = new CDDBBatch(currentConfig);
 
 		for (Int j = 0; j < drives.GetNOfEntries(); j++)
 		{
@@ -1031,10 +1028,10 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 	}
 }
 
-BonkEnc::CDDBInfo *BonkEnc::BonkEncGUI::GetCDDBData()
+BonkEnc::CDDBInfo BonkEnc::BonkEncGUI::GetCDDBData()
 {
-	cddbQueryDlg	*dlg		= new cddbQueryDlg();
-	CDDBInfo	*cddbInfo	= dlg->QueryCDDB();
+	cddbQueryDlg	*dlg	  = new cddbQueryDlg();
+	CDDBInfo	 cddbInfo = dlg->QueryCDDB(True);
 
 	DeleteObject(dlg);
 
@@ -1075,7 +1072,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 		return;
 	}
 
-	cddbManageBatchDlg	*dlg = new cddbManageBatchDlg();
+	cddbManageSubmitsDlg	*dlg = new cddbManageSubmitsDlg();
 
 	dlg->ShowDialog();
 

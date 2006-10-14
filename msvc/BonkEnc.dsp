@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W1 /GX /O1 /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=1 /D "FLAC__NO_DLL" /D BEEXPORT= /YX /FD /c
+# ADD CPP /nologo /GX /O1 /I "../../smooth/include" /I "../include" /D "WIN32" /D "__WIN32__" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "UNICODE" /D "_UNICODE" /D ID3LIB_LINKOPTION=1 /D "FLAC__NO_DLL" /D BEEXPORT= /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x407 /d "NDEBUG"
@@ -243,11 +243,11 @@ SOURCE=..\src\dialogs\cddb\manage.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\dialogs\cddb\managebatch.cpp
+SOURCE=..\src\dialogs\cddb\managequeries.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\dialogs\cddb\managequeries.cpp
+SOURCE=..\src\dialogs\cddb\managesubmits.cpp
 # End Source File
 # Begin Source File
 
@@ -316,7 +316,7 @@ SOURCE=..\src\cddb\cddbbatch.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\cddb\cddbbatchqueries.cpp
+SOURCE=..\src\cddb\cddbcache.cpp
 # End Source File
 # Begin Source File
 
@@ -548,11 +548,11 @@ SOURCE=..\include\dialogs\cddb\manage.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\include\dialogs\cddb\managebatch.h
+SOURCE=..\include\dialogs\cddb\managequeries.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\include\dialogs\cddb\managequeries.h
+SOURCE=..\include\dialogs\cddb\managesubmits.h
 # End Source File
 # Begin Source File
 
@@ -621,7 +621,7 @@ SOURCE=..\include\cddb\cddbbatch.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\include\cddb\cddbbatchqueries.h
+SOURCE=..\include\cddb\cddbcache.h
 # End Source File
 # Begin Source File
 

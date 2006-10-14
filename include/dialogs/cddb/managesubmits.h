@@ -8,21 +8,14 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_CDDB_MANAGE_BATCH_
-#define _H_CDDB_MANAGE_BATCH_
+#ifndef _H_CDDB_MANAGE_SUBMITS_
+#define _H_CDDB_MANAGE_SUBMITS_
 
-#include <smooth.h>
-
-#include <main.h>
-#include <cddb/cddbinfo.h>
 #include <cddb/cddbbatch.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {
-	class cddbManageBatchDlg : public Dialog
+	class cddbManageSubmitsDlg : public Dialog
 	{
 		private:
 			Divider		*divbar;
@@ -50,8 +43,8 @@ namespace BonkEnc
 
 			Void		 ReadEntries();
 		public:
-					 cddbManageBatchDlg();
-					~cddbManageBatchDlg();
+					 cddbManageSubmitsDlg();
+					~cddbManageSubmitsDlg();
 
 			const Error	&ShowDialog();
 		slots:

@@ -157,7 +157,7 @@ namespace BonkEnc
 					 BonkEncGUI();
 					~BonkEncGUI();
 
-			CDDBInfo	*GetCDDBData();
+			CDDBInfo	 GetCDDBData();
 	};
 };
 

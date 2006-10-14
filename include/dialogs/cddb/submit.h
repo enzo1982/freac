@@ -11,14 +11,9 @@
 #ifndef _H_CDDB_SUBMIT_
 #define _H_CDDB_SUBMIT_
 
-#include <smooth.h>
-
 #include <main.h>
 #include <cdinfo/cdtext.h>
 #include <cddb/cddbinfo.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {
@@ -73,8 +68,7 @@ namespace BonkEnc
 			Bool		 updateJoblist;
 			Bool		 submitLater;
 
-			CDDBInfo	*cddbInfo;
-			Bool		 ownCddbInfo;
+			CDDBInfo	 cddbInfo;
 
 			Array<String>	 artists;
 			Array<String>	 titles;

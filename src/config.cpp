@@ -10,6 +10,7 @@
 
 #include <config.h>
 #include <bonkenc.h>
+#include <cddb/cddbcache.h>
 #include <utilities.h>
 
 BonkEnc::Config::Config()
@@ -22,10 +23,12 @@ BonkEnc::Config::Config()
 	cdrip_read_active = False;
 
 	appMain = NIL;
+	cddbCache = new CDDBCache(this);
 }
 
 BonkEnc::Config::~Config()
 {
+	delete cddbCache;
 }
 
 Bool BonkEnc::Config::LoadSettings()

@@ -11,67 +11,92 @@
 #include <cddb/cddbbatch.h>
 #include <cddb/cddblocal.h>
 #include <cddb/cddbremote.h>
+#include <dialogs/cddb/query.h>
 #include <utilities.h>
 
 BonkEnc::CDDBBatch::CDDBBatch(Config *iConfig) : CDDB(iConfig)
 {
+	ReadEntries();
 }
 
 BonkEnc::CDDBBatch::~CDDBBatch()
 {
-	for (Int i = 0; i < entries.GetNOfEntries(); i++) delete entries.GetNthEntry(i);
-
-	entries.RemoveAll();
-}
-
-Bool BonkEnc::CDDBBatch::ConnectToServer()
-{
-	return True;
-}
-
-String BonkEnc::CDDBBatch::Query(const String &discid)
-{
-	return "none";
-}
-
-Bool BonkEnc::CDDBBatch::Read(const String &read, CDDBInfo *cddbInfo)
-{
-	return False;
-}
-
-Bool BonkEnc::CDDBBatch::CloseConnection()
-{
-	return True;
+	SaveEntries();
 }
 
 Bool BonkEnc::CDDBBatch::ReadEntries()
 {
-	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
-
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	for (Int i = 0; i < 11; i++)
+	// Read saved queries from XML
+
+	XML::Document	*document = new XML::Document();
+
+	if (document->LoadFile(String(config->configDir).Append("cddb\\queries.xml")) == Success())
 	{
-		Directory	   categoryDir(String("cddb\\").Append(array[i]));
-		const Array<File> &files = categoryDir.GetFiles();
+		XML::Node	*root = document->GetRootNode();
 
-		for (Int j = 0; j < files.GetNOfEntries(); j++)
+		if (root != NIL)
 		{
-			InStream	*in = new InStream(STREAM_FILE, files.GetNthEntry(j), IS_READONLY);
-			String		 result = in->InputString(in->Size());
+			for (Int i = 0; i < root->GetNOfNodes(); i++)
+			{
+				XML::Node	*node = root->GetNthNode(i);
 
-			delete in;
-
-			CDDBInfo	*cddbInfo = new CDDBInfo();
-
-			ParseCDDBRecord(result, cddbInfo);
-
-			cddbInfo->category = array[i];
-
-			entries.AddEntry(cddbInfo);
+				if (node->GetName() == "query") queries.AddEntry(node->GetContent());
+			}
 		}
 	}
+
+	delete document;
+
+	// Read saved submits from XML and database cache
+
+	document = new XML::Document();
+
+	if (document->LoadFile(String(config->configDir).Append("cddb\\submits.xml")) == Success())
+	{
+		XML::Node	*root = document->GetRootNode();
+
+		if (root != NIL)
+		{
+			for (Int i = 0; i < root->GetNOfNodes(); i++)
+			{
+				XML::Node	*node = root->GetNthNode(i);
+
+				if (node->GetName() == "submit")
+				{
+					InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb\\").Append(node->GetAttributeByName("category")->GetContent()).Append("\\").Append(node->GetContent()), IS_READONLY);
+
+					if (in->Size() > 0)
+					{
+						String	 result = in->InputString(in->Size());
+						CDDBInfo cddbInfo;
+
+						ParseCDDBRecord(result, cddbInfo);
+
+						cddbInfo.category = node->GetAttributeByName("category")->GetContent();
+
+						for (Int i = 0; i < submits.GetNOfEntries(); i++)
+						{
+							if (submits.GetNthEntry(i) == cddbInfo)
+							{
+								submits.RemoveEntry(submits.GetNthEntryIndex(i));
+
+								break;
+							}
+						}
+
+						submits.AddEntry(cddbInfo);
+					}
+
+					delete in;
+				}
+			}
+		}
+	}
+
+	delete document;
 
 	String::SetInputFormat(inputFormat);
 	String::SetOutputFormat(outputFormat);
@@ -79,21 +104,101 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::AddEntry(CDDBInfo *cddbInfo)
+Bool BonkEnc::CDDBBatch::SaveEntries()
+{
+	// Save queued queries
+
+	if (queries.GetNOfEntries() == 0)
+	{
+		// Delete queries file if no more saved queries exist
+		File(String(config->configDir).Append("cddb\\queries.xml")).Delete();
+	}
+	else
+	{
+		Directory(String(config->configDir).Append("cddb")).Create();
+
+		XML::Document	*document = new XML::Document();
+		XML::Node	*root = new XML::Node("cddbQueries");
+
+		document->SetRootNode(root);
+
+		for (Int i = 0; i < queries.GetNOfEntries(); i++)
+		{
+			root->AddNode("query", queries.GetNthEntry(i));
+		}
+
+		document->SaveFile(String(config->configDir).Append("cddb\\queries.xml"));
+
+		delete document;
+		delete root;
+	}
+
+	// Save queued submits
+
+	if (submits.GetNOfEntries() == 0)
+	{
+		// Delete submits file if no more saved submits exist
+		File(String(config->configDir).Append("cddb\\submits.xml")).Delete();
+	}
+	else
+	{
+		Directory(String(config->configDir).Append("cddb")).Create();
+
+		XML::Document	*document = new XML::Document();
+		XML::Node	*root = new XML::Node("cddbSubmits");
+
+		document->SetRootNode(root);
+
+		for (Int i = 0; i < submits.GetNOfEntries(); i++)
+		{
+			XML::Node	*node = root->AddNode("submit", submits.GetNthEntry(i).DiscIDToString());
+
+			node->SetAttribute("category", submits.GetNthEntry(i).category);
+		}
+
+		document->SaveFile(String(config->configDir).Append("cddb\\submits.xml"));
+
+		delete document;
+		delete root;
+	}
+
+	return True;
+}
+
+Bool BonkEnc::CDDBBatch::AddQuery(const String &query)
+{
+	for (Int i = 0; i < queries.GetNOfEntries(); i++)
+	{
+		if (queries.GetNthEntry(i) == query) return False;
+	}
+
+	queries.AddEntry(query);
+
+	return True;
+}
+
+Bool BonkEnc::CDDBBatch::DeleteQuery(Int n)
+{
+	queries.RemoveEntry(queries.GetNthEntryIndex(n));
+
+	return True;
+}
+
+Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 {
 	// create directory for entry
-	Directory	 cddbDir("cddb");
+	Directory	 cddbDir(String(config->configDir).Append("cddb"));
 
 	if (!cddbDir.Exists()) cddbDir.Create();
 
-	Directory	 categoryDir(String("cddb\\").Append(cddbInfo->category));
+	Directory	 categoryDir(String(config->configDir).Append("cddb\\").Append(cddbInfo.category));
 
 	if (!categoryDir.Exists()) categoryDir.Create();
 
 	// save current freedb path
 	String	 configFreedbDir = config->freedb_dir;
 
-	config->freedb_dir = "cddb\\";
+	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
 	CDDBLocal	 cddb(config);
 
@@ -101,23 +206,31 @@ Bool BonkEnc::CDDBBatch::AddEntry(CDDBInfo *cddbInfo)
 	cddb.SetActiveDrive(activeDriveID);
 	cddb.Submit(cddbInfo);
 
+	for (Int i = 0; i < submits.GetNOfEntries(); i++)
+	{
+		if (submits.GetNthEntry(i) == cddbInfo)
+		{
+			submits.RemoveEntry(submits.GetNthEntryIndex(i));
+
+			break;
+		}
+	}
+
+	submits.AddEntry(cddbInfo);
+
 	// restore real freedb path
 	config->freedb_dir = configFreedbDir;
 
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::DeleteEntry(CDDBInfo *cddbInfo)
+Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 {
-	File(String("cddb\\").Append(cddbInfo->category).Append("\\").Append(cddbInfo->DiscIDToString())).Delete();
-
-	for (Int i = 0; i < entries.GetNOfEntries(); i++)
+	for (Int i = 0; i < submits.GetNOfEntries(); i++)
 	{
-		if (entries.GetNthEntry(i) == cddbInfo)
+		if (submits.GetNthEntry(i) == cddbInfo)
 		{
-			delete entries.GetNthEntry(i);
-
-			entries.RemoveEntry(entries.GetNthEntryIndex(i));
+			submits.RemoveEntry(submits.GetNthEntryIndex(i));
 
 			break;
 		}
@@ -126,11 +239,53 @@ Bool BonkEnc::CDDBBatch::DeleteEntry(CDDBInfo *cddbInfo)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::Submit(CDDBInfo *cddbInfo)
+Int BonkEnc::CDDBBatch::Query(Int n)
 {
-	// Submit entry and delete entry file if successful
+	// Query entry and delete entry if successful
 
-	cddbInfo->revision++;
+	cddbQueryDlg	*dlg		= new cddbQueryDlg();
+
+	dlg->SetQueryString(queries.GetNthEntry(n));
+
+	const CDDBInfo	&cddbInfo	= dlg->QueryCDDB(False);
+
+	DeleteObject(dlg);
+
+	// save current freedb path
+	String	 configFreedbDir = config->freedb_dir;
+
+	config->freedb_dir = String(config->configDir).Append("cddb\\");
+
+	CDDBLocal	 cddb(config);
+
+	// save entry to local cache
+	cddb.Submit(cddbInfo);
+
+	// restore real freedb path
+	config->freedb_dir = configFreedbDir;
+
+	DeleteQuery(n);
+
+	return QUERY_RESULT_SINGLE;
+}
+
+Bool BonkEnc::CDDBBatch::QueryAll()
+{
+	while (queries.GetNOfEntries() > 0)
+	{
+		if (Query(0) == QUERY_RESULT_ERROR) return False;
+	}
+
+	return True;
+}
+
+Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &oCddbInfo)
+{
+	// Submit and delete entry if successful
+
+	CDDBInfo	 cddbInfo = oCddbInfo;
+
+	cddbInfo.revision++;
 
 	CDDBRemote	 cddb(config);
 
@@ -140,27 +295,20 @@ Bool BonkEnc::CDDBBatch::Submit(CDDBInfo *cddbInfo)
 	{
 		Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
 
-		cddbInfo->revision--;
-
 		return False;
 	}
 
-	DeleteEntry(cddbInfo);
+	DeleteSubmit(cddbInfo);
 
 	return True;
 }
 
 Bool BonkEnc::CDDBBatch::SubmitAll()
 {
-	while (entries.GetNOfEntries() > 0)
+	while (submits.GetNOfEntries() > 0)
 	{
-		if (!Submit(entries.GetNthEntry(0))) return False;
+		if (!Submit(submits.GetNthEntry(0))) return False;
 	}
 
 	return True;
-}
-
-const Array<BonkEnc::CDDBInfo *> &BonkEnc::CDDBBatch::GetEntries()
-{
-	return entries;
 }

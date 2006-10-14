@@ -11,49 +11,46 @@
 #ifndef _H_CDDB_MANAGE_QUERIES
 #define _H_CDDB_MANAGE_QUERIES_
 
-#include <main.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
+#include <cddb/cddbbatch.h>
 
 namespace BonkEnc
 {
 	class cddbManageQueriesDlg : public Dialog
 	{
 		private:
-			Divider			*divbar;
+			Divider		*divbar;
 
-			Window			*mainWnd;
-			Titlebar		*mainWnd_titlebar;
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
 
-			Text			*text_entries;
-			ListBox			*list_entries;
+			Text		*text_entries;
+			ListBox		*list_entries;
 
-			Button			*btn_delete;
-			Button			*btn_query;
-			Button			*btn_query_all;
+			Button		*btn_delete;
+			Button		*btn_query;
+			Button		*btn_query_all;
 
-			Button			*btn_cancel;
+			Button		*btn_cancel;
 
-			Text			*text_status;
+			Text		*text_status;
 
-			Config			*currentConfig;
+			Config		*currentConfig;
 
-			CDDBBatchQueries	*cddbQueries;
+			CDDBBatch	*cddbQueries;
 
-			Void			 ReadEntries();
+			Void		 ReadEntries();
 		public:
-						 cddbManageQueriesDlg();
-						~cddbManageQueriesDlg();
+					 cddbManageQueriesDlg();
+					~cddbManageQueriesDlg();
 
-			const Error		&ShowDialog();
+			const Error	&ShowDialog();
 		slots:
-			Void			 SelectEntry();
-			Void			 DeleteEntry();
-			Void			 QueryEntry();
-			Void			 QueryAllEntries();
+			Void		 SelectEntry();
+			Void		 DeleteEntry();
+			Void		 QueryEntry();
+			Void		 QueryAllEntries();
 
-			Void			 Cancel();
+			Void		 Cancel();
 	};
 };
 

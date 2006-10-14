@@ -11,13 +11,7 @@
 #ifndef _H_CDDB_QUERY_
 #define _H_CDDB_QUERY_
 
-#include <smooth.h>
-
-#include <main.h>
 #include <cddb/cddb.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {
@@ -33,7 +27,10 @@ namespace BonkEnc
 
 			Config		*currentConfig;
 
-			CDDBInfo	*rCDDBInfo;
+			CDDBInfo	 rCDDBInfo;
+			String		 queryString;
+
+			Bool		 allowAddToBatch;
 
 			Thread		*queryThread;
 
@@ -47,7 +44,9 @@ namespace BonkEnc
 
 			const Error	&ShowDialog();
 
-			CDDBInfo	*QueryCDDB();
+			Bool		 SetQueryString(const String &);
+
+			const CDDBInfo	&QueryCDDB(Bool);
 	};
 };
 

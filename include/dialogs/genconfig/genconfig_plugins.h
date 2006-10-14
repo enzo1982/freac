@@ -11,11 +11,7 @@
 #ifndef _H_GENCONFIG_PLUGINS_
 #define _H_GENCONFIG_PLUGINS_
 
-#include <smooth.h>
 #include <main.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {

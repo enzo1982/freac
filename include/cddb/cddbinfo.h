@@ -50,8 +50,19 @@ namespace BonkEnc
 			String		 charset;
 
 					 CDDBInfo();
+					 CDDBInfo(int);
+					 CDDBInfo(const CDDBInfo &);
 
-			String		 DiscIDToString();
+			bool		 operator ==(const CDDBInfo &) const;
+			bool		 operator !=(const CDDBInfo &) const;
+
+			bool		 operator ==(int) const;
+			bool		 operator !=(int) const;
+
+			CDDBInfo	&operator =(int);
+			CDDBInfo	&operator =(const CDDBInfo &);
+
+			String		 DiscIDToString() const;
 	};
 };
 

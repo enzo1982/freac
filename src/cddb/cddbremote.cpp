@@ -24,26 +24,6 @@ BonkEnc::CDDBRemote::~CDDBRemote()
 {
 }
 
-String BonkEnc::CDDBRemote::GetCDDBQueryString()
-{
-	ex_CR_SetActiveCDROM(activeDriveID);
-	ex_CR_ReadToc();
-
-	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-	String	 str = String("cddb query ").Append(DiscIDToString(ComputeDiscID()));
-
-	str.Append(" ").Append(String::FromInt(numTocEntries));
-
-	for (int i = 0; i < numTocEntries; i++)
-	{
-		str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(i).dwStartSector + 150));
-	}
-
-	str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2));
-
-	return str;
-}
-
 String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 {
 	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return "error not connected";
@@ -212,42 +192,54 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 	return True;
 }
 
-String BonkEnc::CDDBRemote::Query(const String &discid)
+Int BonkEnc::CDDBRemote::Query(Int discid)
 {
-	String	 str = SendCommand(GetCDDBQueryString());
+	return Query(GetCDDBQueryString());
+}
+
+Int BonkEnc::CDDBRemote::Query(const String &queryString)
+{
+	String	 str = SendCommand(queryString);
+
+	ids.RemoveAll();
+	titles.RemoveAll();
+	categories.RemoveAll();
 
 	// no match found
-	if (str[0] == '2' && str[1] == '0' && str[2] == '2') return "none";
+	if (str[0] == '2' && str[1] == '0' && str[2] == '2') return QUERY_RESULT_NONE;
 
 	// exact match
 	if (str[0] == '2' && str[1] == '0' && str[2] == '0')
 	{
-		String	 ret;
+		String	 id;
+		String	 title;
+		String	 category;
 
 		for (Int s = 4; s < 256; s++)
 		{
 			if (str[s] == ' ')
 			{
-				for (Int i = 0; i < 8; i++) ret[s - 4 + i + 1] = str[s + i + 1];
+				for (Int i = 0; i < 8; i++)				id[i] = str[s + i + 1];
+				for (Int j = 0; j < (str.Length() - s - 14); j++)	title[j] = str[s + j + 10];
 
 				break;
 			}
 			else
 			{
-				ret[s - 4] = str[s];
+				category[s - 4] = str[s];
 			}
 		}
 
-		return ret;
+		ids.AddEntry(StringToDiscID(id));
+		titles.AddEntry(title);
+		categories.AddEntry(category);
+
+		return QUERY_RESULT_SINGLE;
 	}
 
 	// multiple exact matches
 	if (str[0] == '2' && str[1] == '1' && (str[2] == '0' || str[2] == '1'))
 	{
-		ids.RemoveAll();
-		titles.RemoveAll();
-		categories.RemoveAll();
-
 		String	 inputFormat = String::SetInputFormat("UTF-8");
 		String	 outputFormat = String::SetOutputFormat("UTF-8");
 
@@ -279,7 +271,7 @@ String BonkEnc::CDDBRemote::Query(const String &discid)
 				}
 			}
 
-			ids.AddEntry(id);
+			ids.AddEntry(StringToDiscID(id));
 			titles.AddEntry(title);
 			categories.AddEntry(category);
 		}
@@ -288,32 +280,26 @@ String BonkEnc::CDDBRemote::Query(const String &discid)
 		String::SetInputFormat(inputFormat);
 		String::SetOutputFormat(outputFormat);
 
-		if (str[2] == '0')	return "multiple";
-		else			return "fuzzy";
+		if (str[2] == '0')	return QUERY_RESULT_MULTIPLE;
+		else			return QUERY_RESULT_FUZZY;
 	}
 
-	return "error";
+	return QUERY_RESULT_ERROR;
 }
 
-Bool BonkEnc::CDDBRemote::Read(const String &read, CDDBInfo *cddbInfo)
+Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
 {
-	String	 result = SendCommand(String("cddb read ").Append(read));
+	String	 result = SendCommand(String("cddb read ").Append(category).Append(" ").Append(DiscIDToString(discID)));
 
 	if (!result.StartsWith("210")) return False;
 
-	cddbInfo->discID = ComputeDiscID();
-
-	for (Int i = 4; i < result.Length(); i++)
-	{
-		if (result[i] == ' ') break;
-
-		cddbInfo->category[i - 4] = result[i];
-	}
-
-	result = "";
+	cddbInfo.discID   = discID;
+	cddbInfo.category = category;
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
+
+	result = "";
 
 	do
 	{
@@ -334,50 +320,14 @@ Bool BonkEnc::CDDBRemote::Read(const String &read, CDDBInfo *cddbInfo)
 	return ParseCDDBRecord(result, cddbInfo);
 }
 
-Bool BonkEnc::CDDBRemote::Submit(CDDBInfo *cddbInfo)
+Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 {
+	CDDBInfo cddbInfo = oCddbInfo;
+
 	UpdateEntry(cddbInfo);
 
-	String	 str;
-	String	 content;
-
-	content.Append("# xmcd").Append("\n");
-	content.Append("# ").Append("\n");
-	content.Append("# Track frame offsets:").Append("\n");
-
-	for (Int i = 0; i < cddbInfo->trackOffsets.GetNOfEntries(); i++)
-	{
-		content.Append("#     ").Append(String::FromInt(cddbInfo->trackOffsets.GetNthEntry(i))).Append("\n");
-	}
-
-	content.Append("# ").Append("\n");
-	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo->discLength)).Append("\n");
-	content.Append("# ").Append("\n");
-	content.Append("# Revision: ").Append(String::FromInt(cddbInfo->revision)).Append("\n");
-	content.Append("# Submitted via: ").Append("BonkEnc ").Append(BonkEnc::cddbVersion).Append("\n");
-	content.Append("# ").Append("\n");
-
-	content.Append(FormatCDDBEntry("DISCID", cddbInfo->DiscIDToString()));
-	content.Append(FormatCDDBEntry("DTITLE", String(cddbInfo->dArtist).Append(" / ").Append(cddbInfo->dTitle)));
-	content.Append(FormatCDDBEntry("DYEAR", String::FromInt(cddbInfo->dYear)));
-	content.Append(FormatCDDBEntry("DGENRE", cddbInfo->dGenre));
-
-	for (Int j = 0; j < cddbInfo->trackTitles.GetNOfEntries(); j++)
-	{
-		if (cddbInfo->dArtist == "Various")	content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), String(cddbInfo->trackArtists.GetNthEntry(j)).Append(" / ").Append(cddbInfo->trackTitles.GetNthEntry(j))));
-		else					content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), cddbInfo->trackTitles.GetNthEntry(j)));
-	}
-
-	content.Append(FormatCDDBEntry("EXTD", cddbInfo->comment));
-
-	for (Int k = 0; k < cddbInfo->trackComments.GetNOfEntries(); k++)
-	{
-		content.Append(FormatCDDBEntry(String("EXTT").Append(String::FromInt(k)), cddbInfo->trackComments.GetNthEntry(k)));
-	}
-
-	content.Append(FormatCDDBEntry("PLAYORDER", cddbInfo->playOrder));
-
-	str.Append("POST ");
+	String	 content = FormatCDDBRecord(cddbInfo);
+	String	 str = "POST ";
 
 	if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
 
@@ -386,10 +336,10 @@ Bool BonkEnc::CDDBRemote::Submit(CDDBInfo *cddbInfo)
 
 	if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-authentication: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");
 
-	str.Append("Category: ").Append(cddbInfo->category).Append("\n");
-	str.Append("Discid: ").Append(cddbInfo->DiscIDToString()).Append("\n");
+	str.Append("Category: ").Append(cddbInfo.category).Append("\n");
+	str.Append("Discid: ").Append(cddbInfo.DiscIDToString()).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append("test").Append("\n");
+	str.Append("Submit-Mode: ").Append(BonkEnc::cddbMode).Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
 	str.Append("Charset: UTF-8\n");
 	str.Append("\n");

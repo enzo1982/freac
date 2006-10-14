@@ -17,51 +17,56 @@
 const Int	 FREEDB_MODE_HTTP	= 0;
 const Int	 FREEDB_MODE_CDDBP	= 1;
 
+const Int	 QUERY_RESULT_ERROR	= -1;
+const Int	 QUERY_RESULT_NONE	= 0;
+const Int	 QUERY_RESULT_SINGLE	= 1;
+const Int	 QUERY_RESULT_MULTIPLE	= 2;
+const Int	 QUERY_RESULT_FUZZY	= 3;
+
 namespace BonkEnc
 {
 	abstract class BEEXPORT CDDB
 	{
 		protected:
-			Int			 activeDriveID;
-			Config			*config;
+			Int		 activeDriveID;
+			Config		*config;
 
-			Array<String>		 ids;
-			Array<String>		 titles;
-			Array<String>		 categories;
+			Array<Int>	 ids;
+			Array<String>	 titles;
+			Array<String>	 categories;
 
-			String			 category;
+			Bool		 UpdateEntry(CDDBInfo &);
 
-			Bool			 UpdateEntry(CDDBInfo *);
+			String		 FormatCDDBEntry(const String &, const String &);
+			String		 ParseCDDBEntry(const String &, Int &);
 
-			String			 FormatCDDBEntry(const String &, const String &);
-			String			 ParseCDDBEntry(const String &, Int &);
-
-			Bool			 ParseCDDBRecord(const String &, CDDBInfo *);
+			String		 FormatCDDBRecord(const CDDBInfo &);
+			Bool		 ParseCDDBRecord(const String &, CDDBInfo &);
 		public:
-						 CDDB(Config *);
-			virtual			~CDDB();
+					 CDDB(Config *);
+			virtual		~CDDB();
 
-			Bool			 updateTrackOffsets;
+			Bool		 updateTrackOffsets;
 
-			Int			 SetActiveDrive(Int);
-			Int			 ComputeDiscID();
-			String			 GetCategory();
+			Int		 SetActiveDrive(Int);
+			Int		 ComputeDiscID();
 
-			virtual Bool		 ConnectToServer() = 0;
-			virtual String		 Query(const String &) = 0;
-			virtual Bool		 Read(const String &, CDDBInfo *) = 0;
-			virtual Bool		 Submit(CDDBInfo *) = 0;
-			virtual Bool		 CloseConnection() = 0;
+			virtual Bool	 ConnectToServer()			= 0;
+			virtual Int	 Query(Int)				= 0; // Query by disc ID
+			virtual Int	 Query(const String &)			= 0; // Query by query string
+			virtual Bool	 Read(const String &, Int, CDDBInfo &)	= 0;
+			virtual Bool	 Submit(const CDDBInfo &)		= 0;
+			virtual Bool	 CloseConnection()			= 0;
 
-			Int			 GetNumberOfMatches();
-			String			 GetNthDiscID(Int);
-			String			 GetNthTitle(Int);
-			String			 GetNthCategory(Int);
+			Int		 GetNumberOfMatches()	{ return ids.GetNOfEntries(); }
+			Int		 GetNthDiscID(Int n)	{ return ids.GetNthEntry(n); }
+			const String	&GetNthTitle(Int n)	{ return titles.GetNthEntry(n); }
+			const String	&GetNthCategory(Int n)	{ return categories.GetNthEntry(n); }
 
-			static String		 DiscIDToString(Int);
-			static Int		 StringToDiscID(const String &);
+			String		 GetCDDBQueryString();
 
-			static Array<CDDBInfo *> infoCache;
+			static String	 DiscIDToString(Int);
+			static Int	 StringToDiscID(const String &);
 	};
 };
 
