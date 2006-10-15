@@ -16,8 +16,11 @@
 
 #include <dllinterfaces.h>
 
-BonkEnc::CDText	 BonkEnc::FilterInCDRip::cdText;
-Int		 BonkEnc::FilterInCDRip::cdTextDiscID;
+BonkEnc::CDPlayerIni	 BonkEnc::FilterInCDRip::cdPlayerInfo;
+Int			 BonkEnc::FilterInCDRip::cdPlayerInfoDiscID;
+
+BonkEnc::CDText		 BonkEnc::FilterInCDRip::cdText;
+Int			 BonkEnc::FilterInCDRip::cdTextDiscID;
 
 BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilter(config, format)
 {
@@ -42,8 +45,6 @@ BonkEnc::FilterInCDRip::~FilterInCDRip()
 Int BonkEnc::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (trackNumber == -1) return true;
-
-	debug_out->EnterMethod("FilterInCDRip::ReadData(unsigned char **, int)");
 
 	if (byteCount >= trackSize)
 	{
@@ -75,8 +76,6 @@ Int BonkEnc::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
 	data.Resize(size);
 
 	memcpy(data, buffer, size);
-
-	debug_out->LeaveMethod();
 
 	return size;
 }
@@ -337,6 +336,13 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		cdTextDiscID = discid;
 	}
 
+	if (cdPlayerInfoDiscID != discid)
+	{
+		cdPlayerInfo.ReadCDInfo();
+
+		cdPlayerInfoDiscID = discid;
+	}
+
 	CDDBInfo cdInfo;
 	Bool	 getCDDBFromCache = currentConfig->enable_cddb_cache;
 	Bool	 discIsInResults = False;
@@ -352,7 +358,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 
 	if (getCDDBFromCache) cdInfo = currentConfig->cddbCache->GetCacheEntry(discid);
 
-	if (cdInfo == NIL && currentConfig->enable_auto_cddb && !discIsInResults && !(cdText.GetCDText().GetEntry(trackNumber) != NIL && !currentConfig->enable_overwrite_cdtext))
+	if (cdInfo == NIL && currentConfig->enable_auto_cddb && !discIsInResults && !((cdText.GetCDText().GetEntry(trackNumber) != NIL || cdPlayerInfo.GetCDInfo().GetEntry(trackNumber) != NIL) && !currentConfig->enable_overwrite_cdtext))
 	{
 		Int	 oDrive = currentConfig->cdrip_activedrive;
 
@@ -394,6 +400,17 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		nFormat->artist		= cdText.GetCDText().GetEntry(0);
 		nFormat->title		= cdText.GetCDText().GetEntry(trackNumber);
 		nFormat->album		= cdText.GetCDText().GetEntry(100);
+	}
+	else if (cdPlayerInfo.GetCDInfo().GetEntry(trackNumber) != NIL)
+	{
+		nFormat->track		= trackNumber;
+		nFormat->cdTrack	= trackNumber;
+		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
+		nFormat->drive		= audiodrive;
+		nFormat->outfile	= NIL;
+		nFormat->artist		= cdPlayerInfo.GetCDInfo().GetEntry(0);
+		nFormat->title		= cdPlayerInfo.GetCDInfo().GetEntry(trackNumber);
+		nFormat->album		= cdPlayerInfo.GetCDInfo().GetEntry(100);
 	}
 	else
 	{

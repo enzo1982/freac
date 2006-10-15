@@ -41,6 +41,7 @@ namespace BonkEnc
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
 			static String		 CreateDirectoryForFile(const String &);
 
+			static String		 GetWindowsRootDirectory();
 			static String		 GetPersonalFilesDirectory();
 			static String		 GetProgramFilesDirectory();
 			static String		 GetApplicationDataDirectory();

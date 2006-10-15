@@ -386,5 +386,6 @@
     <entry id="374" string="Query string"/>
     <entry id="375" string="CDDB queries to perform:"/>
     <entry id="376" string="Would you like to perform this query again later?"/>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
   </data>
 </LangFile>

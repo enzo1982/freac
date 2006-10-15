@@ -106,6 +106,8 @@ namespace BonkEnc
 			Int		 cdrip_paranoia_mode;
 			Bool		 cdrip_swapchannels;
 			Bool		 cdrip_locktray;
+			Bool		 cdrip_read_cdtext;
+			Bool		 cdrip_read_cdplayerini;
 			Bool		 cdrip_ntscsi;
 			Bool		 cdrip_autoRead;
 			Bool		 cdrip_autoRead_active;

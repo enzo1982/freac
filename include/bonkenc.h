@@ -138,6 +138,7 @@ namespace BonkEnc
 			static String		 shortVersion;
 			static String		 cddbVersion;
 			static String		 cddbMode;
+			static String		 updatePath;
 
 			static Config		*currentConfig;
 			static I18n::Translator	*i18n;

@@ -336,6 +336,10 @@ SOURCE=..\src\cddb\cddbremote.cpp
 # PROP Default_Filter ""
 # Begin Source File
 
+SOURCE=..\src\cdinfo\cdplayerini.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\cdinfo\cdtext.cpp
 # End Source File
 # End Group
@@ -639,6 +643,10 @@ SOURCE=..\include\cddb\cddbremote.h
 # Begin Group "cdinfo-headers"
 
 # PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\include\cdinfo\cdplayerini.h
+# End Source File
 # Begin Source File
 
 SOURCE=..\include\cdinfo\cdtext.h

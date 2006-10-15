@@ -14,14 +14,10 @@
 
 BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFilter(config, format)
 {
-	debug_out->EnterMethod("FilterOutLAME::FilterOutLame(bonkEncConfig *, bonkEncTrack *)");
-
 	int	 effrate;
 
 	if (currentConfig->lame_resample)	effrate = currentConfig->lame_resample;
 	else					effrate = format->rate;
-
-	debug_out->OutputLine("Creating LAME output filter...");
 
 	switch (effrate)
 	{
@@ -104,8 +100,6 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 
 		return;
 	}
-
-	debug_out->LeaveMethod();
 }
 
 BonkEnc::FilterOutLAME::~FilterOutLAME()
@@ -114,8 +108,6 @@ BonkEnc::FilterOutLAME::~FilterOutLAME()
 
 Bool BonkEnc::FilterOutLAME::Activate()
 {
-	debug_out->EnterMethod("FilterOutLAME::Activate()");
-
 	outBuffer.Resize(131072);
 
 	lameFlags = ex_lame_init();
@@ -251,15 +243,11 @@ Bool BonkEnc::FilterOutLAME::Activate()
 
 	ex_lame_set_bWriteVbrTag(lameFlags, 1);
 
-	debug_out->LeaveMethod();
-
 	return true;
 }
 
 Bool BonkEnc::FilterOutLAME::Deactivate()
 {
-	debug_out->EnterMethod("FilterOutLAME::Deactivate()");
-
 	unsigned long	 bytes = ex_lame_encode_flush(lameFlags, outBuffer, outBuffer.Size());
 
 	driver->WriteData(outBuffer, bytes);
@@ -312,15 +300,11 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 		driver->WriteData(id3Buffer, size);
 	}
 
-	debug_out->LeaveMethod();
-
 	return true;
 }
 
 Int BonkEnc::FilterOutLAME::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
-	debug_out->EnterMethod("FilterOutLAME::WriteData(unsigned char *, int)");
-
 	unsigned long	 bytes = 0;
 
 	outBuffer.Resize(size + 7200);
@@ -346,8 +330,6 @@ Int BonkEnc::FilterOutLAME::WriteData(Buffer<UnsignedByte> &data, Int size)
 	}
 
 	driver->WriteData(outBuffer, bytes);
-
-	debug_out->LeaveMethod();
 
 	return bytes;
 }

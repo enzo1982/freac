@@ -13,30 +13,34 @@
 
 #include "inputfilter.h"
 #include <cdinfo/cdtext.h>
+#include <cdinfo/cdplayerini.h>
 
 namespace BonkEnc
 {
 	class BEEXPORT FilterInCDRip : public InputFilter
 	{
 		private:
-			Int		 trackNumber;
-			Int		 trackSize;
+			Int			 trackNumber;
+			Int			 trackSize;
 
-			Int		 byteCount;
-			unsigned char	*buffer;
+			Int			 byteCount;
+			unsigned char		*buffer;
 
-			static CDText	 cdText;
-			static Int	 cdTextDiscID;
+			static CDText		 cdText;
+			static Int		 cdTextDiscID;
+
+			static CDPlayerIni	 cdPlayerInfo;
+			static Int		 cdPlayerInfoDiscID;
 		public:
-					 FilterInCDRip(Config *, Track *);
-					~FilterInCDRip();
+						 FilterInCDRip(Config *, Track *);
+						~FilterInCDRip();
 
-			Int		 ReadData(Buffer<UnsignedByte> &, Int);
+			Int			 ReadData(Buffer<UnsignedByte> &, Int);
 
-			Bool		 SetTrack(Int);
-			Int		 GetTrackSize();
+			Bool			 SetTrack(Int);
+			Int			 GetTrackSize();
 
-			Track		*GetFileInfo(const String &);
+			Track			*GetFileInfo(const String &);
 	};
 };
 

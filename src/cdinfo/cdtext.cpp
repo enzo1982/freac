@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cdinfo/cdtext.h>
+#include <bonkenc.h>
 #include <dllinterfaces.h>
 
 typedef struct
@@ -37,6 +38,8 @@ BonkEnc::CDText::~CDText()
 
 Int BonkEnc::CDText::ReadCDText()
 {
+	if (!BonkEnc::currentConfig->cdrip_read_cdtext) return Success();
+
 	cdText.RemoveAll();
 
 	const int	 nBufferSize	= 4 + 8 * sizeof(cdTextPackage) * 256;

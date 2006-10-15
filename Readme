@@ -20,6 +20,7 @@ History
 		- added a confirmation before overwriting files
 		- added support for automatic ripping on disc insert
 		- added support for multi monitor configurations
+		- added support for cdplayer.ini
 		- joblist entries can now be moved by dragging them with the mouse
 		- added icons for menu entries
 		- added official support for running from a USB stick
@@ -28,6 +29,8 @@ History
 		- fixed crash when converting from FLAC to AAC
 		- fixed it not being possible to convert arbitrary sampling rates using LAME
 		- fixed reading of WAV file headers
+		- fixed LAME performance issues
+		- handling CD-ROM drive access denial
 		- some CDDB code cleanups
 		- upgraded LAME to version 3.97
 		- upgraded to smooth v0.8.69.0

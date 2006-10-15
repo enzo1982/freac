@@ -20,6 +20,7 @@ Geschichte
 		- Bestätigung vor dem Überschreiben von Dateien hinzugefügt
 		- Unterstützung für automatisches Rippen beim Einlegen der CD hinzugefügt
 		- Unterstützung für Konfigurationen mit mehreren Bildschirmen hinzugefügt
+		- Unterstützung für cdplayer.ini hinzugefügt
 		- Joblist-Einträge können jetzt durch Ziehen mit der Maus verschoben werden
 		- Symbole für Menüeinträge hinzugefügt
 		- Offizielle Unterstützung für das Ausführen von einem USB-Stick hinzugefügt
@@ -28,6 +29,8 @@ Geschichte
 		- Absturz beim Konvertieren von FLAC nach AAC behoben
 		- Fehler behoben, dass beliebige Samplingraten nicht mit LAME konvertiert werden konnten
 		- Fehler beim Lesen von WAV-Headern behoben
+		- LAME-Performanceprobleme behoben
+		- Abfangen von CD-ROM-Zugriffsverweigerung
 		- CDDB-Codequalität verbessert
 		- LAME auf Version 3.97 aktualisiert
 		- Update auf smooth v0.8.69.0

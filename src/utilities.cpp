@@ -402,6 +402,36 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 	return rVal;
 }
 
+String BonkEnc::Utilities::GetWindowsRootDirectory()
+{
+	String		 windowsDir;
+
+	if (Setup::enableUnicode)
+	{
+		wchar_t	*bufferw = new wchar_t [MAX_PATH];
+
+		GetWindowsDirectoryW(bufferw, MAX_PATH);
+
+		windowsDir = bufferw;
+
+		delete [] bufferw;
+	}
+	else
+	{
+		char	*buffera = new char [MAX_PATH];
+
+		GetWindowsDirectoryA(buffera, MAX_PATH);
+
+		windowsDir = buffera;
+
+		delete [] buffera;
+	}
+
+	if (windowsDir[windowsDir.Length() - 1] != '\\') windowsDir.Append("\\");
+
+	return windowsDir;
+}
+
 String BonkEnc::Utilities::GetProgramFilesDirectory()
 {
 	String		 programsDir;

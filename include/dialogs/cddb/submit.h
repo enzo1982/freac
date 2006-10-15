@@ -13,6 +13,7 @@
 
 #include <main.h>
 #include <cdinfo/cdtext.h>
+#include <cdinfo/cdplayerini.h>
 #include <cddb/cddbinfo.h>
 
 namespace BonkEnc
@@ -75,6 +76,7 @@ namespace BonkEnc
 			Array<String>	 comments;
 
 			CDText		 cdText;
+			CDPlayerIni	 cdPlayerInfo;
 
 			Void		 UpdateTrackList();
 

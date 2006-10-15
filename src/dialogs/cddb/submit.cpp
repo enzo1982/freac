@@ -529,6 +529,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	}
 
 	cdText.ReadCDText();
+	cdPlayerInfo.ReadCDInfo();
 
 	Int	 oDrive = currentConfig->cdrip_activedrive;
 
@@ -638,6 +639,63 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 				artists.AddEntry("", handle);
 				titles.AddEntry(cdText.GetCDText().GetEntry(entry.btTrackNumber), handle);
+				comments.AddEntry("", handle);
+			}
+		}
+
+		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
+	}
+	else if (cdPlayerInfo.GetCDInfo().GetEntry(0) != NIL)
+	{
+		if (cdPlayerInfo.GetCDInfo().GetEntry(0) == "Various")	edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
+		else							edit_artist->SetText(cdPlayerInfo.GetCDInfo().GetEntry(0));
+
+		edit_album->SetText(cdPlayerInfo.GetCDInfo().GetEntry(100));
+		edit_year->SetText("");
+		edit_genre->SetText("");
+		edit_disccomment->SetText("");
+
+		list_tracks->RemoveAllEntries();
+
+		edit_track->SetText("");
+		edit_trackartist->SetText("");
+		edit_title->SetText("");
+		edit_comment->SetText("");
+
+		if (cdPlayerInfo.GetCDInfo().GetEntry(0) == "Various")	edit_trackartist->Activate();
+		else							edit_trackartist->Deactivate();
+
+		cddbInfo = NIL;
+
+		cddbInfo.discID = iDiscid;
+		cddbInfo.revision = -1;
+
+		cddbInfo.dArtist = cdPlayerInfo.GetCDInfo().GetEntry(0);
+		cddbInfo.dTitle = cdPlayerInfo.GetCDInfo().GetEntry(100);
+
+		for (Int j = 0; j < numTocEntries; j++)
+		{
+			TOCENTRY entry = ex_CR_GetTocEntry(j);
+
+			cddbInfo.trackOffsets.AddEntry(entry.dwStartSector + 150, j);
+			cddbInfo.trackArtists.AddEntry("", j);
+			cddbInfo.trackTitles.AddEntry(cdPlayerInfo.GetCDInfo().GetEntry(entry.btTrackNumber), j);
+			cddbInfo.trackComments.AddEntry("", j);
+
+			if (entry.btFlag & CDROMDATAFLAG)
+			{
+				Int	 handle = list_tracks->AddEntry("")->GetHandle();
+
+				artists.AddEntry("", handle);
+				titles.AddEntry(BonkEnc::i18n->TranslateString("Data track"), handle);
+				comments.AddEntry("", handle);
+			}
+			else
+			{
+				Int	 handle = list_tracks->AddEntry("")->GetHandle();
+
+				artists.AddEntry("", handle);
+				titles.AddEntry(cdPlayerInfo.GetCDInfo().GetEntry(entry.btTrackNumber), handle);
 				comments.AddEntry("", handle);
 			}
 		}

@@ -36,10 +36,15 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version	= "v1.0 RC 1";
+String	 BonkEnc::BonkEnc::version	= "CVS 20061015";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0rc1";
-String	 BonkEnc::BonkEnc::cddbMode	= "test";
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0rc1pre";
+String	 BonkEnc::BonkEnc::cddbMode	= "submit";
+String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
+
+//String	 BonkEnc::BonkEnc::cddbMode	= "test";
+//String	 BonkEnc::BonkEnc::updatePath	= "file://eUpdate/eUpdate.xml";
+
 
 BonkEnc::BonkEnc::BonkEnc()
 {
@@ -121,55 +126,6 @@ BonkEnc::BonkEnc::BonkEnc()
 	ENCODER_WAVE = nextEC++;
 
 	if (currentConfig->encoder >= nextEC) currentConfig->encoder = ENCODER_WAVE;
-
-	if (currentConfig->enable_cdrip)
-	{
-		Long		 error = CDEX_OK;
-		OSVERSIONINFOA	 vInfo;
-
-		vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
-
-		GetVersionExA(&vInfo);
-
-		if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) currentConfig->cdrip_ntscsi = False;
-
-		error = ex_CR_Init(currentConfig->cdrip_ntscsi);
-
-		if (error != CDEX_OK && vInfo.dwPlatformId == VER_PLATFORM_WIN32_NT)
-		{
-			currentConfig->cdrip_ntscsi = !currentConfig->cdrip_ntscsi;
-
-			error = ex_CR_Init(currentConfig->cdrip_ntscsi);
-		}
-
-		if (error != CDEX_OK)
-		{
-			Utilities::ErrorMessage("Unable to load ASPI drivers! CD ripping disabled!");
-
-			currentConfig->enable_cdrip = false;
-		}
-
-		if (error == CDEX_OK)
-		{
-			currentConfig->cdrip_numdrives = ex_CR_GetNumCDROM();
-
-			if (currentConfig->cdrip_numdrives >= 1)
-			{
-				for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
-				{
-					ex_CR_SetActiveCDROM(i);
-
-					CDROMPARAMS	 params;
-
-					ex_CR_GetCDROMParameters(&params);
-
-					currentConfig->cdrip_drives.AddEntry(params.lpszCDROMID);
-				}
-			}
-
-			if (currentConfig->cdrip_numdrives <= currentConfig->cdrip_activedrive) currentConfig->cdrip_activedrive = 0;
-		}
-	}
 }
 
 BonkEnc::BonkEnc::~BonkEnc()

@@ -100,6 +100,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	i18n->ActivateLanguage(currentConfig->language);
 
+	InitCDRip();
+
 	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
 
 	if (currentConfig->wndPos.x < workArea.left - 2					||
@@ -650,6 +652,70 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(menu_charsets_all);
 	DeleteObject(menu_case);
 	DeleteObject(menu_case_all);
+}
+
+Bool BonkEnc::BonkEncGUI::InitCDRip()
+{
+	if (!currentConfig->enable_cdrip) return False;
+
+	Long		 error = CDEX_OK;
+	Bool		 accessDenied = False;
+	OSVERSIONINFOA	 vInfo;
+
+	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
+
+	GetVersionExA(&vInfo);
+
+	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) currentConfig->cdrip_ntscsi = False;
+
+	error = ex_CR_Init(currentConfig->cdrip_ntscsi);
+
+	accessDenied = (error == CDEX_ACCESSDENIED);
+
+	if (error != CDEX_OK && vInfo.dwPlatformId == VER_PLATFORM_WIN32_NT)
+	{
+		currentConfig->cdrip_ntscsi = !currentConfig->cdrip_ntscsi;
+
+		error = ex_CR_Init(currentConfig->cdrip_ntscsi);
+	}
+
+	accessDenied = (error == CDEX_ACCESSDENIED);
+
+	if (accessDenied)
+	{
+		Utilities::ErrorMessage("Access to CD-ROM drives was denied by Windows.\n\nPlease contact your system administrator in order\nto be granted the right to access the CD-ROM drive.");
+
+		currentConfig->enable_cdrip = false;
+	}
+	else if (error != CDEX_OK)
+	{
+		Utilities::ErrorMessage("Unable to load ASPI drivers! CD ripping disabled!");
+
+		currentConfig->enable_cdrip = false;
+	}
+
+	if (error == CDEX_OK)
+	{
+		currentConfig->cdrip_numdrives = ex_CR_GetNumCDROM();
+
+		if (currentConfig->cdrip_numdrives >= 1)
+		{
+			for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
+			{
+				ex_CR_SetActiveCDROM(i);
+
+				CDROMPARAMS	 params;
+
+				ex_CR_GetCDROMParameters(&params);
+
+				currentConfig->cdrip_drives.AddEntry(params.lpszCDROMID);
+			}
+		}
+
+		if (currentConfig->cdrip_numdrives <= currentConfig->cdrip_activedrive) currentConfig->cdrip_activedrive = 0;
+	}
+
+	return currentConfig->enable_cdrip;
 }
 
 Bool BonkEnc::BonkEncGUI::ExitProc()
@@ -2167,8 +2233,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 {
 	if (!currentConfig->enable_eUpdate) return Success();
 
-	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "file://eUpdate/eUpdate.xml");
-//	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, "http://www.bonkenc.org/eUpdate/eUpdate.xml");
+	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, updatePath);
 
 	if (currentConfig->configDir != "")
 	{
