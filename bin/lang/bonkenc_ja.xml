@@ -371,5 +371,21 @@
   <entry id="359" string="Start ripping automatically">自動的にリッピングを開始</entry>
   <entry id="360" string="Submit to online database later">後でオンラインのデータベースに送信</entry>
   <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB対応が無効になっています! 設定ダイアログで、&#10;ローカルもしくはリモートのCDDB対応を有効にしてください!</entry>
+    <entry id="362" string="CDDB entries to submit:">送信するCDDBエントリ:</entry>
+    <entry id="363" string="Show queued CDDB entries...">送信済みのCDDBエントリを表示</entry>
+    <entry id="364" string="Submit all">すべて送信</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">遠隔CDDBサポートは無効化されています！&#10;設定ダイアログで有効にしてください。</entry>
+    <entry id="366" string="Category">カテゴリ</entry>
+    <entry id="367" string="Close">閉じる</entry>
+    <entry id="368" string="Automatization">自動化</entry>
+    <entry id="369" string="Query CDDB database later">後でCDDBデータベースを送信</entry>
+    <entry id="370" string="Show queued CDDB queries...">送信済みのCDDBクエリを表示</entry>
+    <entry id="371" string="CDDB queries">CDDBクエリ</entry>
+    <entry id="372" string="Query">送信</entry>
+    <entry id="373" string="Query all">すべて送信</entry>
+    <entry id="374" string="Query string">文字列を送信</entry>
+    <entry id="375" string="CDDB queries to perform:">実行するCDDBクエリ</entry>
+    <entry id="376" string="Would you like to perform this query again later?">このクエリを後で再び実行しますか？</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROMドライブへの接続はWindowsによって拒否されました。&#10;&#10;CD-ROMドライブへの接続権を&#10;システム管理者に問い合わせてください。</entry>
  </data>
 </LangFile>
