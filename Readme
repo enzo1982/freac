@@ -12,7 +12,7 @@ History
 
 	Version 1.0 RC 1 CVS (October 2006)
 
-		- added Norwegian and Esperanto language support
+		- added Norwegian, Turkish and Esperanto language support
 		- configuration files are now saved in the users application data directory if BonkEnc is installed in C:\Program Files\
 		- added a button for skipping the track currently being encoded
 		- added support for local freedb database
@@ -317,7 +317,8 @@ Special thanks to
 			   Anton Mjoernebrant (Swedish),
 			   Peter Krajcar (Slovak),
 			   Wiak (Norwegian),
-			   Vincent Rateau (Esperanto)
+			   Vincent Rateau (Esperanto),
+			   Murat Ozkan (Turkish)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

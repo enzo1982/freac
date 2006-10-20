@@ -12,7 +12,7 @@ Geschichte
 
 	Version 1.0 RC 1 CVS (Oktober 2006)
 
-		- Sprachunterstützung für Norwegisch und Esperanto hinzugefügt
+		- Sprachunterstützung für Norwegisch, Türkisch und Esperanto hinzugefügt
 		- Konfigurationsdateien werden jetzt im Anwendungsdaten-Verzeichnis des Benutzers gespeichert, wenn BonkEnc unter C:\Programme\ installiert ist
 		- Button zum Überspringen des Tracks, der gerade codiert wird, hinzugefügt
 		- Unterstützung für lokale freedb-Datenbank hinzugefügt
@@ -317,7 +317,8 @@ Besonderen Dank
 			   Anton Mjörnebrant (Schwedisch),
 			   Peter Krajcár (Slowakisch),
 			   Wiak (Norwegian),
-			   Vincent Rateau (Esperanto)
+			   Vincent Rateau (Esperanto),
+			   Murat Ozkan (Türkisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

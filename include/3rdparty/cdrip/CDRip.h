@@ -52,6 +52,7 @@
 #define	CDEX_FAILEDTOGETASPISTATUS		0x0000000B
 #define	CDEX_NATIVEEASPISUPPORTEDNOTSELECTED	0x0000000C
 #define	CDEX_ACCESSDENIED			0x0000000D
+#define	CDEX_SOMEACCESSDENIED			0x0000000E
 
 #define HASTAT_OK			0x00	// Host adapter did not detect an error.
 #define HASTAT_TIMEOUT			0x09	// The time allocated for a bus transaction ran out.

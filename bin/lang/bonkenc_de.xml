@@ -49,7 +49,7 @@
     <entry id="37" string="Windows CD Audio Track">Windows Audio-CD-Track</entry>
     <entry id="38" string="All Files">Alle Dateien</entry>
     <entry id="39" string="You have not selected a file!">Es ist kein Eintrag ausgewählt!</entry>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Der Codierungsprozess läuft noch! Möchten sie das Programm trotzdem beenden?</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Der Codierungsprozess läuft noch! Möchten sie das Programm dennoch beenden?</entry>
     <entry id="41" string="Currently encoding">Codierungsprozess noch aktiv</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Dieses Programm wird unter den Bedingungen der&#10;GNU General Public License (GPL) vertrieben.</entry>
     <entry id="43" string="CDDB query">CDDB-Abfrage</entry>
@@ -79,7 +79,7 @@
     <entry id="67" string="Information">Informationen</entry>
     <entry id="68" string="Select language:">Sprache auswählen:</entry>
     <entry id="69" string="Active CD-ROM drive">Aktives CD-ROM-Laufwerk</entry>
-    <entry id="70" string="Ripper settings">Ripper Einstellungen</entry>
+    <entry id="70" string="Ripper settings">Ripper-Einstellungen</entry>
     <entry id="71" string="Activate cdparanoia mode:">Paranoia-Modus aktivieren:</entry>
     <entry id="72" string="Activate jitter correction">Jitter-Korrektur aktivieren</entry>
     <entry id="73" string="Swap left/right channel">Links/Rechts vertauschen</entry>
@@ -129,7 +129,7 @@
     <entry id="117" string="Stereo">Stereo</entry>
     <entry id="118" string="Joint Stereo">Joint-Stereo</entry>
     <entry id="119" string="Force Joint Stereo">Nur Joint-Stereo</entry>
-    <entry id="120" string="VBR mode">VBR Modus</entry>
+    <entry id="120" string="VBR mode">VBR-Modus</entry>
     <entry id="121" string="no VBR">kein VBR</entry>
     <entry id="122" string="VBR quality">VBR-Qualität</entry>
     <entry id="123" string="ABR target bitrate">ABR-Zielbitrate</entry>
@@ -173,7 +173,7 @@
     <entry id="161" string="Matches">Übereinstimmungen</entry>
     <entry id="162" string="Select the entry that best fits your CD:">Wählen sie den Eintrag, der am besten zu ihrer CD passt:</entry>
     <entry id="163" string="Extended CDDB settings">Erweiterte CDDB-Einstellungen</entry>
-    <entry id="164" string="CGI scripts">CGI-Scripts</entry>
+    <entry id="164" string="CGI scripts">CGI-Scripte</entry>
     <entry id="165" string="CDDB query script:">CDDB-Anfragescript:</entry>
     <entry id="166" string="CDDB submit script:">CDDB-Sendescript:</entry>
     <entry id="167" string="HTTP settings">HTTP-Einstellungen</entry>
@@ -254,7 +254,7 @@
     <entry id="242" string="Bitrate / Quality">Bitrate / Qualität</entry>
     <entry id="243" string="Check for updates now">Jetzt auf Aktualisierungen überprüfen</entry>
     <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Es sind neue Upates für BonkEnc online verfügbar!&#10;Möchten Sie jetzt eine Liste der neuen Updates sehen?</entry>
-    <entry id="245" string="There are no updates available at the moment!">Zur Zeit sind keine Aktualisierungen verfügbar!</entry>
+    <entry id="245" string="There are no updates available at the moment!">Derzeit sind keine Aktualisierungen verfügbar!</entry>
     <entry id="246" string="Check for updates at startup">Beim Start auf Aktualisierungen überprüfen</entry>
     <entry id="247" string="Read CD contents on insert">CD-Inhalt autmatisch lesen</entry>
     <entry id="248" string="Eject disk after ripping">Automatisch auswerfen</entry>
@@ -301,7 +301,7 @@
     <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Konnte den %1 Codierer nicht initialisieren! Bitte überprüfen Sie die Konfiguration!</entry>
     <entry id="290" string="Blocksize:">Blockgröße:</entry>
     <entry id="291" string="Use streamable subset">Streamable Subset verwenden</entry>
-    <entry id="292" string="Adaptive Joint Stereo">Adaptives Joint Stereo</entry>
+    <entry id="292" string="Adaptive Joint Stereo">Adaptives Joint-Stereo</entry>
     <entry id="293" string="Fastest encoding">Schnellste Codierung</entry>
     <entry id="294" string="Best compression">Beste Komprimierung</entry>
     <entry id="295" string="Linear predictor">Linearer Predictor</entry>
