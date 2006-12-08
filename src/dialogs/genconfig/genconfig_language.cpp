@@ -116,8 +116,8 @@ Void BonkEnc::GeneralSettingsLayerLanguage::SelectLanguage()
 
 Void BonkEnc::GeneralSettingsLayerLanguage::EditLanguageFile()
 {
-	if (Setup::enableUnicode)	ShellExecuteW(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), Application::GetApplicationDirectory().Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())), String("."), SW_SHOW);
-	else				ShellExecuteA(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), Application::GetApplicationDirectory().Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())), String("."), SW_SHOW);
+	if (Setup::enableUnicode)	ShellExecuteW(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(Application::GetApplicationDirectory()).Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+	else				ShellExecuteA(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(Application::GetApplicationDirectory()).Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
 }
 
 Bool BonkEnc::GeneralSettingsLayerLanguage::IsLanguageChanged()

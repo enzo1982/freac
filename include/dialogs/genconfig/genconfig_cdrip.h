@@ -36,6 +36,10 @@ namespace BonkEnc
 			CheckBox	*check_locktray;
 			CheckBox	*check_ntscsi;
 
+			GroupBox	*group_cdinfo;
+			CheckBox	*check_readCDText;
+			CheckBox	*check_readCDPlayerIni;
+
 			Bool		 cdparanoia;
 			Bool		 jitter;
 			Bool		 swapchannels;
@@ -44,6 +48,8 @@ namespace BonkEnc
 			Bool		 autoRead;
 			Bool		 autoRip;
 			Bool		 autoEject;
+			Bool		 readCDText;
+			Bool		 readCDPlayerIni;
  
 			Config		*currentConfig;
 		slots:
@@ -64,6 +70,8 @@ namespace BonkEnc
 			Bool		 GetAutoRead();
 			Bool		 GetAutoRip();
 			Bool		 GetAutoEject();
+			Bool		 GetReadCDText();
+			Bool		 GetReadCDPlayerIni();
 	};
 };
 

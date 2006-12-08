@@ -2177,7 +2177,10 @@ PopupMenu *BonkEnc::BonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)
 	    mouseY > mainWnd->GetMainLayer()->GetY() + joblist->GetY() + 17 &&
 	    mouseY < mainWnd->GetMainLayer()->GetY() + joblist->GetY() + joblist->GetHeight() - 1)
 	{
+// TODO: Sending messages on our own is EVIL! Rather implement
+//	 a context menu framework in smooth and use it here.
 		joblist->Process(SM_LBUTTONDOWN, 0, 0);
+		joblist->Process(SM_LBUTTONUP, 0, 0);
 
 		if (joblist->GetSelectedTrack() != NIL) return menu_trackmenu;
 	}

@@ -81,7 +81,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 		combo_encoder->AddEntry(String("FAAC MP4/AAC Encoder ").Append(faacVersion));
 	}
 
-	if (currentConfig->enable_flac)		combo_encoder->AddEntry(String("FLAC Audio Encoder v1.1.2"));
+	if (currentConfig->enable_flac)		combo_encoder->AddEntry(String("FLAC Audio Encoder v1.1.3"));
 	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME MP3 Encoder v").Append(ex_get_lame_short_version()));
 	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.1.2"));
 

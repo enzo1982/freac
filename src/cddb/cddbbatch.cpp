@@ -206,9 +206,13 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 	cddb.SetActiveDrive(activeDriveID);
 	cddb.Submit(cddbInfo);
 
+	CDDBInfo nCddbInfo = cddbInfo;
+
+	nCddbInfo.discID = cddb.ComputeDiscID();
+
 	for (Int i = 0; i < submits.GetNOfEntries(); i++)
 	{
-		if (submits.GetNthEntry(i) == cddbInfo)
+		if (submits.GetNthEntry(i) == nCddbInfo)
 		{
 			submits.RemoveEntry(submits.GetNthEntryIndex(i));
 
@@ -216,7 +220,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 		}
 	}
 
-	submits.AddEntry(cddbInfo);
+	submits.AddEntry(nCddbInfo);
 
 	// restore real freedb path
 	config->freedb_dir = configFreedbDir;

@@ -167,12 +167,14 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 
 	ex_CR_GetCDROMParameters(&params);
 
-	params.nRippingMode = currentConfig->cdrip_paranoia;
-	params.nParanoiaMode = nParanoiaMode;
-	params.bSwapLefRightChannel = currentConfig->cdrip_swapchannels;
-	params.bJitterCorrection = currentConfig->cdrip_jitter;
-	params.bEnableMultiRead = true;
-	params.nMultiReadCount = 2;
+	params.nRippingMode		= currentConfig->cdrip_paranoia;
+	params.nParanoiaMode		= nParanoiaMode;
+	params.bSwapLefRightChannel	= currentConfig->cdrip_swapchannels;
+	params.bJitterCorrection	= currentConfig->cdrip_jitter;
+	params.bDetectJitterErrors	= currentConfig->cdrip_detectJitterErrors;
+	params.bDetectC2Errors		= currentConfig->cdrip_detectC2Errors;
+	params.bEnableMultiRead		= true;
+	params.nMultiReadCount		= 2;
 
 	ex_CR_SetCDROMParameters(&params);
 

@@ -387,5 +387,8 @@
     <entry id="375" string="CDDB queries to perform:">Geplante CDDB-Abfragen:</entry>
     <entry id="376" string="Would you like to perform this query again later?">Möchten Sie diese Abfrage später erneut durchführen?</entry>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Der Zugriff auf CD-ROM-Laufwerke wurde von Windows verweigert.&#10;&#10;Bitte kontaktieren Sie Ihren Systemadministrator, um&#10;das Recht zum Zugriff auf das CD-ROM-Laufwerk zu erhalten.</entry>
+    <entry id="378" string="CD information">CD-Informationen</entry>
+    <entry id="379" string="Read CD Text">CD-Text lesen</entry>
+    <entry id="380" string="Read cdplayer.ini">cdplayer.ini lesen</entry>
   </data>
 </LangFile>

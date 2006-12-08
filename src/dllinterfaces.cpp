@@ -25,6 +25,8 @@ CR_GETACTIVECDROM		 ex_CR_GetActiveCDROM			= NIL;
 CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM			= NIL;
 CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters		= NIL;
 CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters		= NIL;
+CR_GETNUMBEROFJITTERERRORS	 ex_CR_GetNumberOfJitterErrors		= NIL;
+CR_GETNUMBEROFC2ERRORS		 ex_CR_GetNumberOfC2Errors		= NIL;
 CR_LOCKCD			 ex_CR_LockCD				= NIL;
 CR_EJECTCD			 ex_CR_EjectCD				= NIL;
 CR_READCDTEXT			 ex_CR_ReadCDText			= NIL;
@@ -200,48 +202,35 @@ MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack			= NIL;
 MP4READSAMPLE			 ex_MP4ReadSample			= NIL;
 MP4WRITESAMPLE			 ex_MP4WriteSample			= NIL;
 
-FLAC__SEEKABLE_STREAM_ENCODER_NEW				 ex_FLAC__seekable_stream_encoder_new					= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_DELETE				 ex_FLAC__seekable_stream_encoder_delete				= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_WRITE_CALLBACK		 ex_FLAC__seekable_stream_encoder_set_write_callback			= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_SEEK_CALLBACK			 ex_FLAC__seekable_stream_encoder_set_seek_callback			= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_TELL_CALLBACK			 ex_FLAC__seekable_stream_encoder_set_tell_callback			= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_CLIENT_DATA			 ex_FLAC__seekable_stream_encoder_set_client_data			= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_INIT				 ex_FLAC__seekable_stream_encoder_init					= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_FINISH				 ex_FLAC__seekable_stream_encoder_finish				= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_CHANNELS			 ex_FLAC__seekable_stream_encoder_set_channels				= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_BITS_PER_SAMPLE		 ex_FLAC__seekable_stream_encoder_set_bits_per_sample			= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_SAMPLE_RATE			 ex_FLAC__seekable_stream_encoder_set_sample_rate			= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_STREAMABLE_SUBSET		 ex_FLAC__seekable_stream_encoder_set_streamable_subset			= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_MID_SIDE_STEREO		 ex_FLAC__seekable_stream_encoder_set_do_mid_side_stereo		= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO		 ex_FLAC__seekable_stream_encoder_set_loose_mid_side_stereo		= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_BLOCKSIZE			 ex_FLAC__seekable_stream_encoder_set_blocksize				= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_LPC_ORDER			 ex_FLAC__seekable_stream_encoder_set_max_lpc_order			= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_QLP_COEFF_PRECISION		 ex_FLAC__seekable_stream_encoder_set_qlp_coeff_precision		= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH	 ex_FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search		= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH	 ex_FLAC__seekable_stream_encoder_set_do_exhaustive_model_search	= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER	 ex_FLAC__seekable_stream_encoder_set_min_residual_partition_order	= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER	 ex_FLAC__seekable_stream_encoder_set_max_residual_partition_order	= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_SET_METADATA			 ex_FLAC__seekable_stream_encoder_set_metadata				= NIL;
-FLAC__SEEKABLE_STREAM_ENCODER_PROCESS_INTERLEAVED		 ex_FLAC__seekable_stream_encoder_process_interleaved			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_NEW				 ex_FLAC__seekable_stream_decoder_new					= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_DELETE				 ex_FLAC__seekable_stream_decoder_delete				= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_READ_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_read_callback			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_WRITE_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_write_callback			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_SEEK_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_seek_callback			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_TELL_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_tell_callback			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_LENGTH_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_length_callback			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_EOF_CALLBACK			 ex_FLAC__seekable_stream_decoder_set_eof_callback			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_metadata_callback			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_ERROR_CALLBACK		 ex_FLAC__seekable_stream_decoder_set_error_callback			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_CLIENT_DATA			 ex_FLAC__seekable_stream_decoder_set_client_data			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_RESPOND		 ex_FLAC__seekable_stream_decoder_set_metadata_respond			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_INIT				 ex_FLAC__seekable_stream_decoder_init					= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_FINISH				 ex_FLAC__seekable_stream_decoder_finish				= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_GET_CHANNELS			 ex_FLAC__seekable_stream_decoder_get_channels				= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_GET_BITS_PER_SAMPLE		 ex_FLAC__seekable_stream_decoder_get_bits_per_sample			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_GET_SAMPLE_RATE			 ex_FLAC__seekable_stream_decoder_get_sample_rate			= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA	 ex_FLAC__seekable_stream_decoder_process_until_end_of_metadata		= NIL;
-FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM	 ex_FLAC__seekable_stream_decoder_process_until_end_of_stream		= NIL;
+FLAC__STREAM_ENCODER_NEW					 ex_FLAC__stream_encoder_new						= NIL;
+FLAC__STREAM_ENCODER_DELETE					 ex_FLAC__stream_encoder_delete						= NIL;
+FLAC__STREAM_ENCODER_INIT_STREAM				 ex_FLAC__stream_encoder_init_stream					= NIL;
+FLAC__STREAM_ENCODER_FINISH					 ex_FLAC__stream_encoder_finish						= NIL;
+FLAC__STREAM_ENCODER_SET_CHANNELS				 ex_FLAC__stream_encoder_set_channels					= NIL;
+FLAC__STREAM_ENCODER_SET_BITS_PER_SAMPLE			 ex_FLAC__stream_encoder_set_bits_per_sample				= NIL;
+FLAC__STREAM_ENCODER_SET_SAMPLE_RATE				 ex_FLAC__stream_encoder_set_sample_rate				= NIL;
+FLAC__STREAM_ENCODER_SET_STREAMABLE_SUBSET			 ex_FLAC__stream_encoder_set_streamable_subset				= NIL;
+FLAC__STREAM_ENCODER_SET_DO_MID_SIDE_STEREO			 ex_FLAC__stream_encoder_set_do_mid_side_stereo				= NIL;
+FLAC__STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO			 ex_FLAC__stream_encoder_set_loose_mid_side_stereo			= NIL;
+FLAC__STREAM_ENCODER_SET_BLOCKSIZE				 ex_FLAC__stream_encoder_set_blocksize					= NIL;
+FLAC__STREAM_ENCODER_SET_MAX_LPC_ORDER				 ex_FLAC__stream_encoder_set_max_lpc_order				= NIL;
+FLAC__STREAM_ENCODER_SET_QLP_COEFF_PRECISION			 ex_FLAC__stream_encoder_set_qlp_coeff_precision			= NIL;
+FLAC__STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH		 ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search			= NIL;
+FLAC__STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH		 ex_FLAC__stream_encoder_set_do_exhaustive_model_search			= NIL;
+FLAC__STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_min_residual_partition_order		= NIL;
+FLAC__STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_max_residual_partition_order		= NIL;
+FLAC__STREAM_ENCODER_SET_METADATA				 ex_FLAC__stream_encoder_set_metadata					= NIL;
+FLAC__STREAM_ENCODER_PROCESS_INTERLEAVED			 ex_FLAC__stream_encoder_process_interleaved				= NIL;
+FLAC__STREAM_DECODER_NEW					 ex_FLAC__stream_decoder_new						= NIL;
+FLAC__STREAM_DECODER_DELETE					 ex_FLAC__stream_decoder_delete						= NIL;
+FLAC__STREAM_DECODER_SET_METADATA_RESPOND			 ex_FLAC__stream_decoder_set_metadata_respond				= NIL;
+FLAC__STREAM_DECODER_INIT_STREAM				 ex_FLAC__stream_decoder_init_stream					= NIL;
+FLAC__STREAM_DECODER_FINISH					 ex_FLAC__stream_decoder_finish						= NIL;
+FLAC__STREAM_DECODER_GET_CHANNELS				 ex_FLAC__stream_decoder_get_channels					= NIL;
+FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE			 ex_FLAC__stream_decoder_get_bits_per_sample				= NIL;
+FLAC__STREAM_DECODER_GET_SAMPLE_RATE				 ex_FLAC__stream_decoder_get_sample_rate				= NIL;
+FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA		 ex_FLAC__stream_decoder_process_until_end_of_metadata			= NIL;
+FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM		 ex_FLAC__stream_decoder_process_until_end_of_stream			= NIL;
 FLAC__METADATA_OBJECT_NEW					 ex_FLAC__metadata_object_new						= NIL;
 FLAC__METADATA_OBJECT_DELETE					 ex_FLAC__metadata_object_delete					= NIL;
 FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment			= NIL;
@@ -644,26 +633,30 @@ Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 	ex_CR_SetActiveCDROM		= (CR_SETACTIVECDROM) cdripdll->GetFunctionAddress("CR_SetActiveCDROM");
 	ex_CR_GetCDROMParameters	= (CR_GETCDROMPARAMETERS) cdripdll->GetFunctionAddress("CR_GetCDROMParameters");
 	ex_CR_SetCDROMParameters	= (CR_SETCDROMPARAMETERS) cdripdll->GetFunctionAddress("CR_SetCDROMParameters");
+	ex_CR_GetNumberOfJitterErrors	= (CR_GETNUMBEROFJITTERERRORS) cdripdll->GetFunctionAddress("CR_GetNumberOfJitterErrors");
+	ex_CR_GetNumberOfC2Errors	= (CR_GETNUMBEROFC2ERRORS) cdripdll->GetFunctionAddress("CR_GetNumberOfC2Errors");
 	ex_CR_LockCD			= (CR_LOCKCD) cdripdll->GetFunctionAddress("CR_LockCD");
 	ex_CR_EjectCD			= (CR_EJECTCD) cdripdll->GetFunctionAddress("CR_EjectCD");
 	ex_CR_ReadCDText		= (CR_READCDTEXT) cdripdll->GetFunctionAddress("CR_ReadCDText");
 
-	if (ex_CR_Init			== NIL ||
-	    ex_CR_DeInit		== NIL ||
-	    ex_CR_ReadToc		== NIL ||
-	    ex_CR_GetNumTocEntries	== NIL ||
-	    ex_CR_GetTocEntry		== NIL ||
-	    ex_CR_OpenRipper		== NIL ||
-	    ex_CR_CloseRipper		== NIL ||
-	    ex_CR_RipChunk		== NIL ||
-	    ex_CR_GetNumCDROM		== NIL ||
-	    ex_CR_GetActiveCDROM	== NIL ||
-	    ex_CR_SetActiveCDROM	== NIL ||
-	    ex_CR_GetCDROMParameters	== NIL ||
-	    ex_CR_SetCDROMParameters	== NIL ||
-	    ex_CR_LockCD		== NIL ||
-	    ex_CR_EjectCD		== NIL ||
-	    ex_CR_ReadCDText		== NIL) { FreeCDRipDLL(); return False; }
+	if (ex_CR_Init				== NIL ||
+	    ex_CR_DeInit			== NIL ||
+	    ex_CR_ReadToc			== NIL ||
+	    ex_CR_GetNumTocEntries		== NIL ||
+	    ex_CR_GetTocEntry			== NIL ||
+	    ex_CR_OpenRipper			== NIL ||
+	    ex_CR_CloseRipper			== NIL ||
+	    ex_CR_RipChunk			== NIL ||
+	    ex_CR_GetNumCDROM			== NIL ||
+	    ex_CR_GetActiveCDROM		== NIL ||
+	    ex_CR_SetActiveCDROM		== NIL ||
+	    ex_CR_GetCDROMParameters		== NIL ||
+	    ex_CR_SetCDROMParameters		== NIL ||
+	    ex_CR_GetNumberOfJitterErrors	== NIL ||
+	    ex_CR_GetNumberOfC2Errors		== NIL ||
+	    ex_CR_LockCD			== NIL ||
+	    ex_CR_EjectCD			== NIL ||
+	    ex_CR_ReadCDText			== NIL) { FreeCDRipDLL(); return False; }
 
 	return True;
 }
@@ -835,95 +828,69 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 {
 	flacdll = new DynamicLoader("encoders/FLAC");
 
-	ex_FLAC__seekable_stream_encoder_new					= (FLAC__SEEKABLE_STREAM_ENCODER_NEW) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_new");
-	ex_FLAC__seekable_stream_encoder_delete					= (FLAC__SEEKABLE_STREAM_ENCODER_DELETE) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_delete");
-	ex_FLAC__seekable_stream_encoder_set_write_callback			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_WRITE_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_write_callback");
-	ex_FLAC__seekable_stream_encoder_set_seek_callback			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_SEEK_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_seek_callback");
-	ex_FLAC__seekable_stream_encoder_set_tell_callback			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_TELL_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_tell_callback");
-	ex_FLAC__seekable_stream_encoder_set_client_data			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_CLIENT_DATA) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_client_data");
-	ex_FLAC__seekable_stream_encoder_init					= (FLAC__SEEKABLE_STREAM_ENCODER_INIT) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_init");
-	ex_FLAC__seekable_stream_encoder_finish					= (FLAC__SEEKABLE_STREAM_ENCODER_FINISH) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_finish");
-	ex_FLAC__seekable_stream_encoder_set_channels				= (FLAC__SEEKABLE_STREAM_ENCODER_SET_CHANNELS) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_channels");
-	ex_FLAC__seekable_stream_encoder_set_bits_per_sample			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_BITS_PER_SAMPLE) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_bits_per_sample");
-	ex_FLAC__seekable_stream_encoder_set_sample_rate			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_SAMPLE_RATE) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_sample_rate");
-	ex_FLAC__seekable_stream_encoder_set_streamable_subset			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_STREAMABLE_SUBSET) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_streamable_subset");
-	ex_FLAC__seekable_stream_encoder_set_do_mid_side_stereo			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_MID_SIDE_STEREO) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_do_mid_side_stereo");
-	ex_FLAC__seekable_stream_encoder_set_loose_mid_side_stereo		= (FLAC__SEEKABLE_STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_loose_mid_side_stereo");
-	ex_FLAC__seekable_stream_encoder_set_blocksize				= (FLAC__SEEKABLE_STREAM_ENCODER_SET_BLOCKSIZE) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_blocksize");
-	ex_FLAC__seekable_stream_encoder_set_max_lpc_order			= (FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_LPC_ORDER) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_max_lpc_order");
-	ex_FLAC__seekable_stream_encoder_set_qlp_coeff_precision		= (FLAC__SEEKABLE_STREAM_ENCODER_SET_QLP_COEFF_PRECISION) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_qlp_coeff_precision");
-	ex_FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search		= (FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search");
-	ex_FLAC__seekable_stream_encoder_set_do_exhaustive_model_search		= (FLAC__SEEKABLE_STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_do_exhaustive_model_search");
-	ex_FLAC__seekable_stream_encoder_set_min_residual_partition_order	= (FLAC__SEEKABLE_STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_min_residual_partition_order");
-	ex_FLAC__seekable_stream_encoder_set_max_residual_partition_order	= (FLAC__SEEKABLE_STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_max_residual_partition_order");
-	ex_FLAC__seekable_stream_encoder_set_metadata				= (FLAC__SEEKABLE_STREAM_ENCODER_SET_METADATA) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_set_metadata");
-	ex_FLAC__seekable_stream_encoder_process_interleaved			= (FLAC__SEEKABLE_STREAM_ENCODER_PROCESS_INTERLEAVED) flacdll->GetFunctionAddress("FLAC__seekable_stream_encoder_process_interleaved");
-	ex_FLAC__seekable_stream_decoder_new					= (FLAC__SEEKABLE_STREAM_DECODER_NEW) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_new");
-	ex_FLAC__seekable_stream_decoder_delete					= (FLAC__SEEKABLE_STREAM_DECODER_DELETE) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_delete");
-	ex_FLAC__seekable_stream_decoder_set_read_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_READ_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_read_callback");
-	ex_FLAC__seekable_stream_decoder_set_write_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_WRITE_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_write_callback");
-	ex_FLAC__seekable_stream_decoder_set_seek_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_SEEK_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_seek_callback");
-	ex_FLAC__seekable_stream_decoder_set_tell_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_TELL_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_tell_callback");
-	ex_FLAC__seekable_stream_decoder_set_length_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_LENGTH_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_length_callback");
-	ex_FLAC__seekable_stream_decoder_set_eof_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_EOF_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_eof_callback");
-	ex_FLAC__seekable_stream_decoder_set_metadata_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_metadata_callback");
-	ex_FLAC__seekable_stream_decoder_set_error_callback			= (FLAC__SEEKABLE_STREAM_DECODER_SET_ERROR_CALLBACK) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_error_callback");
-	ex_FLAC__seekable_stream_decoder_set_client_data			= (FLAC__SEEKABLE_STREAM_DECODER_SET_CLIENT_DATA) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_client_data");
-	ex_FLAC__seekable_stream_decoder_set_metadata_respond			= (FLAC__SEEKABLE_STREAM_DECODER_SET_METADATA_RESPOND) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_set_metadata_respond");
-	ex_FLAC__seekable_stream_decoder_init					= (FLAC__SEEKABLE_STREAM_DECODER_INIT) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_init");
-	ex_FLAC__seekable_stream_decoder_finish					= (FLAC__SEEKABLE_STREAM_DECODER_FINISH) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_finish");
-	ex_FLAC__seekable_stream_decoder_get_channels				= (FLAC__SEEKABLE_STREAM_DECODER_GET_CHANNELS) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_get_channels");
-	ex_FLAC__seekable_stream_decoder_get_bits_per_sample			= (FLAC__SEEKABLE_STREAM_DECODER_GET_BITS_PER_SAMPLE) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_get_bits_per_sample");
-	ex_FLAC__seekable_stream_decoder_get_sample_rate			= (FLAC__SEEKABLE_STREAM_DECODER_GET_SAMPLE_RATE) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_get_sample_rate");
-	ex_FLAC__seekable_stream_decoder_process_until_end_of_metadata		= (FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_process_until_end_of_metadata");
-	ex_FLAC__seekable_stream_decoder_process_until_end_of_stream		= (FLAC__SEEKABLE_STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM) flacdll->GetFunctionAddress("FLAC__seekable_stream_decoder_process_until_end_of_stream");
+	ex_FLAC__stream_encoder_new						= (FLAC__STREAM_ENCODER_NEW) flacdll->GetFunctionAddress("FLAC__stream_encoder_new");
+	ex_FLAC__stream_encoder_delete						= (FLAC__STREAM_ENCODER_DELETE) flacdll->GetFunctionAddress("FLAC__stream_encoder_delete");
+	ex_FLAC__stream_encoder_init_stream					= (FLAC__STREAM_ENCODER_INIT_STREAM) flacdll->GetFunctionAddress("FLAC__stream_encoder_init_stream");
+	ex_FLAC__stream_encoder_finish						= (FLAC__STREAM_ENCODER_FINISH) flacdll->GetFunctionAddress("FLAC__stream_encoder_finish");
+	ex_FLAC__stream_encoder_set_channels					= (FLAC__STREAM_ENCODER_SET_CHANNELS) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_channels");
+	ex_FLAC__stream_encoder_set_bits_per_sample				= (FLAC__STREAM_ENCODER_SET_BITS_PER_SAMPLE) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_bits_per_sample");
+	ex_FLAC__stream_encoder_set_sample_rate					= (FLAC__STREAM_ENCODER_SET_SAMPLE_RATE) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_sample_rate");
+	ex_FLAC__stream_encoder_set_streamable_subset				= (FLAC__STREAM_ENCODER_SET_STREAMABLE_SUBSET) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_streamable_subset");
+	ex_FLAC__stream_encoder_set_do_mid_side_stereo				= (FLAC__STREAM_ENCODER_SET_DO_MID_SIDE_STEREO) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_do_mid_side_stereo");
+	ex_FLAC__stream_encoder_set_loose_mid_side_stereo			= (FLAC__STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_loose_mid_side_stereo");
+	ex_FLAC__stream_encoder_set_blocksize					= (FLAC__STREAM_ENCODER_SET_BLOCKSIZE) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_blocksize");
+	ex_FLAC__stream_encoder_set_max_lpc_order				= (FLAC__STREAM_ENCODER_SET_MAX_LPC_ORDER) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_max_lpc_order");
+	ex_FLAC__stream_encoder_set_qlp_coeff_precision				= (FLAC__STREAM_ENCODER_SET_QLP_COEFF_PRECISION) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_qlp_coeff_precision");
+	ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search			= (FLAC__STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_do_qlp_coeff_prec_search");
+	ex_FLAC__stream_encoder_set_do_exhaustive_model_search			= (FLAC__STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_do_exhaustive_model_search");
+	ex_FLAC__stream_encoder_set_min_residual_partition_order		= (FLAC__STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_min_residual_partition_order");
+	ex_FLAC__stream_encoder_set_max_residual_partition_order		= (FLAC__STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_max_residual_partition_order");
+	ex_FLAC__stream_encoder_set_metadata					= (FLAC__STREAM_ENCODER_SET_METADATA) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_metadata");
+	ex_FLAC__stream_encoder_process_interleaved				= (FLAC__STREAM_ENCODER_PROCESS_INTERLEAVED) flacdll->GetFunctionAddress("FLAC__stream_encoder_process_interleaved");
+	ex_FLAC__stream_decoder_new						= (FLAC__STREAM_DECODER_NEW) flacdll->GetFunctionAddress("FLAC__stream_decoder_new");
+	ex_FLAC__stream_decoder_delete						= (FLAC__STREAM_DECODER_DELETE) flacdll->GetFunctionAddress("FLAC__stream_decoder_delete");
+	ex_FLAC__stream_decoder_set_metadata_respond				= (FLAC__STREAM_DECODER_SET_METADATA_RESPOND) flacdll->GetFunctionAddress("FLAC__stream_decoder_set_metadata_respond");
+	ex_FLAC__stream_decoder_init_stream					= (FLAC__STREAM_DECODER_INIT_STREAM) flacdll->GetFunctionAddress("FLAC__stream_decoder_init_stream");
+	ex_FLAC__stream_decoder_finish						= (FLAC__STREAM_DECODER_FINISH) flacdll->GetFunctionAddress("FLAC__stream_decoder_finish");
+	ex_FLAC__stream_decoder_get_channels					= (FLAC__STREAM_DECODER_GET_CHANNELS) flacdll->GetFunctionAddress("FLAC__stream_decoder_get_channels");
+	ex_FLAC__stream_decoder_get_bits_per_sample				= (FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE) flacdll->GetFunctionAddress("FLAC__stream_decoder_get_bits_per_sample");
+	ex_FLAC__stream_decoder_get_sample_rate					= (FLAC__STREAM_DECODER_GET_SAMPLE_RATE) flacdll->GetFunctionAddress("FLAC__stream_decoder_get_sample_rate");
+	ex_FLAC__stream_decoder_process_until_end_of_metadata			= (FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA) flacdll->GetFunctionAddress("FLAC__stream_decoder_process_until_end_of_metadata");
+	ex_FLAC__stream_decoder_process_until_end_of_stream			= (FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM) flacdll->GetFunctionAddress("FLAC__stream_decoder_process_until_end_of_stream");
 	ex_FLAC__metadata_object_new						= (FLAC__METADATA_OBJECT_NEW) flacdll->GetFunctionAddress("FLAC__metadata_object_new");
 	ex_FLAC__metadata_object_delete						= (FLAC__METADATA_OBJECT_DELETE) flacdll->GetFunctionAddress("FLAC__metadata_object_delete");
 	ex_FLAC__metadata_object_vorbiscomment_append_comment			= (FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT) flacdll->GetFunctionAddress("FLAC__metadata_object_vorbiscomment_append_comment");
 	ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= (FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR) flacdll->GetFunctionAddress("FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair");
 
-	if (ex_FLAC__seekable_stream_encoder_new				== NIL ||
-	    ex_FLAC__seekable_stream_encoder_delete				== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_write_callback			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_seek_callback			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_tell_callback			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_client_data			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_init				== NIL ||
-	    ex_FLAC__seekable_stream_encoder_finish				== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_channels			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_bits_per_sample		== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_sample_rate			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_streamable_subset		== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_do_mid_side_stereo		== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_loose_mid_side_stereo		== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_blocksize			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_max_lpc_order			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_qlp_coeff_precision		== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_do_qlp_coeff_prec_search	== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_do_exhaustive_model_search	== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_min_residual_partition_order	== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_max_residual_partition_order	== NIL ||
-	    ex_FLAC__seekable_stream_encoder_set_metadata			== NIL ||
-	    ex_FLAC__seekable_stream_encoder_process_interleaved		== NIL ||
-	    ex_FLAC__seekable_stream_decoder_new				== NIL ||
-	    ex_FLAC__seekable_stream_decoder_delete				== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_read_callback			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_write_callback			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_seek_callback			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_tell_callback			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_length_callback		== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_eof_callback			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_metadata_callback		== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_error_callback			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_client_data			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_set_metadata_respond		== NIL ||
-	    ex_FLAC__seekable_stream_decoder_init				== NIL ||
-	    ex_FLAC__seekable_stream_decoder_finish				== NIL ||
-	    ex_FLAC__seekable_stream_decoder_get_channels			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_get_bits_per_sample		== NIL ||
-	    ex_FLAC__seekable_stream_decoder_get_sample_rate			== NIL ||
-	    ex_FLAC__seekable_stream_decoder_process_until_end_of_metadata	== NIL ||
-	    ex_FLAC__seekable_stream_decoder_process_until_end_of_stream	== NIL ||
+	if (ex_FLAC__stream_encoder_new						== NIL ||
+	    ex_FLAC__stream_encoder_delete					== NIL ||
+	    ex_FLAC__stream_encoder_init_stream					== NIL ||
+	    ex_FLAC__stream_encoder_finish					== NIL ||
+	    ex_FLAC__stream_encoder_set_channels				== NIL ||
+	    ex_FLAC__stream_encoder_set_bits_per_sample				== NIL ||
+	    ex_FLAC__stream_encoder_set_sample_rate				== NIL ||
+	    ex_FLAC__stream_encoder_set_streamable_subset			== NIL ||
+	    ex_FLAC__stream_encoder_set_do_mid_side_stereo			== NIL ||
+	    ex_FLAC__stream_encoder_set_loose_mid_side_stereo			== NIL ||
+	    ex_FLAC__stream_encoder_set_blocksize				== NIL ||
+	    ex_FLAC__stream_encoder_set_max_lpc_order				== NIL ||
+	    ex_FLAC__stream_encoder_set_qlp_coeff_precision			== NIL ||
+	    ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search		== NIL ||
+	    ex_FLAC__stream_encoder_set_do_exhaustive_model_search		== NIL ||
+	    ex_FLAC__stream_encoder_set_min_residual_partition_order		== NIL ||
+	    ex_FLAC__stream_encoder_set_max_residual_partition_order		== NIL ||
+	    ex_FLAC__stream_encoder_set_metadata				== NIL ||
+	    ex_FLAC__stream_encoder_process_interleaved				== NIL ||
+	    ex_FLAC__stream_decoder_new						== NIL ||
+	    ex_FLAC__stream_decoder_delete					== NIL ||
+	    ex_FLAC__stream_decoder_set_metadata_respond			== NIL ||
+	    ex_FLAC__stream_decoder_init_stream					== NIL ||
+	    ex_FLAC__stream_decoder_finish					== NIL ||
+	    ex_FLAC__stream_decoder_get_channels				== NIL ||
+	    ex_FLAC__stream_decoder_get_bits_per_sample				== NIL ||
+	    ex_FLAC__stream_decoder_get_sample_rate				== NIL ||
+	    ex_FLAC__stream_decoder_process_until_end_of_metadata		== NIL ||
+	    ex_FLAC__stream_decoder_process_until_end_of_stream			== NIL ||
 	    ex_FLAC__metadata_object_new					== NIL ||
 	    ex_FLAC__metadata_object_delete					== NIL ||
 	    ex_FLAC__metadata_object_vorbiscomment_append_comment		== NIL ||

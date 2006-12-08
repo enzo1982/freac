@@ -196,6 +196,8 @@ typedef struct
 	LONG		 nOffsetEnd;		// Fudge factor at the end of ripping in sectors
 	LONG		 nSpeed;		// CD-ROM speed factor 0 .. 32 x
 	LONG		 nSpinUpTime;		// CD-ROM spin up time in seconds
+	BOOL		 bDetectJitterErrors;	// Try to detect jitter errors or not
+	BOOL		 bDetectC2Errors;	// Try to detect C2 errors or not
 	BOOL		 bJitterCorrection;	// Boolean indicates whether to use Jitter Correction
 	BOOL		 bSwapLefRightChannel;	// Swap left and right channel ? 
 	DRIVETABLE	 DriveTable;		// Drive specific parameters
@@ -277,12 +279,18 @@ extern "C"
 	// Returns the peak value of the ripped section (0..2^15)
 	DLLEXPORT LONG CRCCONV CR_GetPeakValue();
 
-	// Get number of Jitter Errors that have occured during the ripping
-	// This function must be called before CloseRipper is called !
+	// Get number of Jitter errors that have occured during the ripping
+	// This function must be called before CloseRipper is called!
 	DLLEXPORT LONG CRCCONV CR_GetNumberOfJitterErrors();
+	DLLEXPORT void CRCCONV CR_GetLastJitterErrorPosition(DWORD &dwStartSector, DWORD &dwEndSector);
 
 	// Get the jitter position of the extracted track
 	DLLEXPORT LONG CRCCONV CR_GetJitterPosition();
+
+	// Get number of C2 errors that have occured during the ripping
+	// This function must be called before CloseRipper is called!
+	DLLEXPORT LONG CRCCONV CR_GetNumberOfC2Errors();
+	DLLEXPORT void CRCCONV CR_GetLastC2ErrorPosition(DWORD &dwSector);
 
 	// Rip a chunk from the CD, pbtStream contains the ripped data, pNumBytes the
 	// number of bytes that have been ripped and corrected for jitter (if enabled)
@@ -319,8 +327,6 @@ extern "C"
 	DLLEXPORT void CRCCONV CR_LockCD(BOOL bLock);
 
 	DLLEXPORT void CRCCONV CR_GetSubChannelTrackInfo(int &nReadIndex, int &nReadTrack, DWORD &dwReadPos);
-
-	DLLEXPORT void CRCCONV CR_GetLastJitterErrorPosition(DWORD &dwStartSector, DWORD &dwEndSector);
 
 	DLLEXPORT DWORD CRCCONV CR_GetCurrentRipSector();
 

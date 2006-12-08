@@ -1,5 +1,5 @@
 /* libFLAC - Free Lossless Audio Codec library
- * Copyright (C) 2001,2002,2003,2004,2005  Josh Coalson
+ * Copyright (C) 2001,2002,2003,2004,2005,2006 Josh Coalson
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -36,11 +36,11 @@
 #include "callback.h"
 #include "format.h"
 
-/******************************************************************************
-	(For an example of how all these routines are used, see the source
-	code for the unit tests in src/test_libFLAC/metadata_*.c, or metaflac
-	in src/metaflac/)
-******************************************************************************/
+/* --------------------------------------------------------------------
+   (For an example of how all these routines are used, see the source
+   code for the unit tests in src/test_libFLAC/metadata_*.c, or
+   metaflac in src/metaflac/)
+   ------------------------------------------------------------------*/
 
 /** \file include/FLAC/metadata.h
  *
@@ -59,12 +59,16 @@
  *  \brief
  *  This module provides functions for creating and manipulating FLAC
  *  metadata blocks in memory, and three progressively more powerful
- *  interfaces for traversing and editing metadata in FLAC files.
+ *  interfaces for traversing and editing metadata in native FLAC files.
+ *  Note that currently only the Chain interface (level 2) supports Ogg
+ *  FLAC files, and it is read-only i.e. no writing back changed
+ *  metadata to file.
  *
  *  There are three metadata interfaces of increasing complexity:
  *
  *  Level 0:
- *  Read-only access to the STREAMINFO and VORBIS_COMMENT blocks.
+ *  Read-only access to the STREAMINFO, VORBIS_COMMENT, CUESHEET, and
+ *  PICTURE blocks.
  *
  *  Level 1:
  *  Read-write access to all metadata blocks.  This level is write-
@@ -96,7 +100,8 @@
  *
  *  All levels access files via their filenames.  In addition, level 2
  *  has additional alternative read and write functions that take an I/O
- *  handle and callbacks, for times when access by filename is not possible.
+ *  handle and callbacks, for situations where access by filename is not
+ *  possible.
  *
  *  In addition to the three interfaces, this module defines functions for
  *  creating and manipulating various metadata objects in memory.  As we see
@@ -124,15 +129,16 @@ extern "C" {
  *
  *  \brief
  *  The level 0 interface consists of individual routines to read the
- *  STREAMINFO and VORBIS_COMMENT blocks, requiring only a filename.
+ *  STREAMINFO, VORBIS_COMMENT, CUESHEET, and PICTURE blocks, requiring
+ *  only a filename.
  *
- *  It skips any ID3v2 tag at the head of the file.
+ *  They try to skip any ID3v2 tag at the head of the file.
  *
  * \{
  */
 
 /** Read the STREAMINFO metadata block of the given FLAC file.  This function
- *  will skip any ID3v2 tag at the head of the file.
+ *  will try to skip any ID3v2 tag at the head of the file.
  *
  * \param filename    The path to the FLAC file to read.
  * \param streaminfo  A pointer to space for the STREAMINFO block.  Since
@@ -151,7 +157,7 @@ extern "C" {
 FLAC_API FLAC__bool FLAC__metadata_get_streaminfo(const char *filename, FLAC__StreamMetadata *streaminfo);
 
 /** Read the VORBIS_COMMENT metadata block of the given FLAC file.  This
- *  function will skip any ID3v2 tag at the head of the file.
+ *  function will try to skip any ID3v2 tag at the head of the file.
  *
  * \param filename    The path to the FLAC file to read.
  * \param tags        The address where the returned pointer will be
@@ -159,15 +165,74 @@ FLAC_API FLAC__bool FLAC__metadata_get_streaminfo(const char *filename, FLAC__St
  *                    the caller using FLAC__metadata_object_delete().
  * \assert
  *    \code filename != NULL \endcode
- *    \code streaminfo != NULL \endcode
+ *    \code tags != NULL \endcode
  * \retval FLAC__bool
  *    \c true if a valid VORBIS_COMMENT block was read from \a filename,
- *    and \a *tags will be set to the address of the tag structure.
+ *    and \a *tags will be set to the address of the metadata structure.
  *    Returns \c false if there was a memory allocation error, a file
  *    decoder error, or the file contained no VORBIS_COMMENT block, and
  *    \a *tags will be set to \c NULL.
  */
 FLAC_API FLAC__bool FLAC__metadata_get_tags(const char *filename, FLAC__StreamMetadata **tags);
+
+/** Read the CUESHEET metadata block of the given FLAC file.  This
+ *  function will try to skip any ID3v2 tag at the head of the file.
+ *
+ * \param filename    The path to the FLAC file to read.
+ * \param cuesheet    The address where the returned pointer will be
+ *                    stored.  The \a cuesheet object must be deleted by
+ *                    the caller using FLAC__metadata_object_delete().
+ * \assert
+ *    \code filename != NULL \endcode
+ *    \code cuesheet != NULL \endcode
+ * \retval FLAC__bool
+ *    \c true if a valid CUESHEET block was read from \a filename,
+ *    and \a *cuesheet will be set to the address of the metadata
+ *    structure.  Returns \c false if there was a memory allocation
+ *    error, a file decoder error, or the file contained no CUESHEET
+ *    block, and \a *cuesheet will be set to \c NULL.
+ */
+FLAC_API FLAC__bool FLAC__metadata_get_cuesheet(const char *filename, FLAC__StreamMetadata **cuesheet);
+
+/** Read a PICTURE metadata block of the given FLAC file.  This
+ *  function will try to skip any ID3v2 tag at the head of the file.
+ *  Since there can be more than one PICTURE block in a file, this
+ *  function takes a number of parameters that act as constraints to
+ *  the search.  The PICTURE block with the largest area matching all
+ *  the constraints will be returned, or \a *picture will be set to
+ *  \c NULL if there was no such block.
+ *
+ * \param filename    The path to the FLAC file to read.
+ * \param picture     The address where the returned pointer will be
+ *                    stored.  The \a picture object must be deleted by
+ *                    the caller using FLAC__metadata_object_delete().
+ * \param type        The desired picture type.  Use \c -1 to mean
+ *                    "any type".
+ * \param mime_type   The desired MIME type, e.g. "image/jpeg".  The
+ *                    string will be matched exactly.  Use \c NULL to
+ *                    mean "any MIME type".
+ * \param description The desired description.  The string will be
+ *                    matched exactly.  Use \c NULL to mean "any
+ *                    description".
+ * \param max_width   The maximum width in pixels desired.  Use
+ *                    \c (unsigned)(-1) to mean "any width".
+ * \param max_height  The maximum height in pixels desired.  Use
+ *                    \c (unsigned)(-1) to mean "any height".
+ * \param max_depth   The maximum color depth in bits-per-pixel desired.
+ *                    Use \c (unsigned)(-1) to mean "any depth".
+ * \param max_colors  The maximum number of colors desired.  Use
+ *                    \c (unsigned)(-1) to mean "any number of colors".
+ * \assert
+ *    \code filename != NULL \endcode
+ *    \code picture != NULL \endcode
+ * \retval FLAC__bool
+ *    \c true if a valid PICTURE block was read from \a filename,
+ *    and \a *picture will be set to the address of the metadata
+ *    structure.  Returns \c false if there was a memory allocation
+ *    error, a file decoder error, or the file contained no PICTURE
+ *    block, and \a *picture will be set to \c NULL.
+ */
+FLAC_API FLAC__bool FLAC__metadata_get_picture(const char *filename, FLAC__StreamMetadata **picture, FLAC__StreamMetadata_Picture_Type type, const char *mime_type, const FLAC__byte *description, unsigned max_width, unsigned max_height, unsigned max_depth, unsigned max_colors);
 
 /* \} */
 
@@ -184,9 +249,9 @@ FLAC_API FLAC__bool FLAC__metadata_get_tags(const char *filename, FLAC__StreamMe
  * - Create an iterator using FLAC__metadata_simple_iterator_new()
  * - Attach it to a file using FLAC__metadata_simple_iterator_init() and check
  *   the exit code.  Call FLAC__metadata_simple_iterator_is_writable() to
- *   see if the file is writable, or read-only access is allowed.
+ *   see if the file is writable, or only read access is allowed.
  * - Use FLAC__metadata_simple_iterator_next() and
- *   FLAC__metadata_simple_iterator_prev() to move around the blocks.
+ *   FLAC__metadata_simple_iterator_prev() to traverse the blocks.
  *   This is does not read the actual blocks themselves.
  *   FLAC__metadata_simple_iterator_next() is relatively fast.
  *   FLAC__metadata_simple_iterator_prev() is slower since it needs to search
@@ -521,12 +586,17 @@ FLAC_API FLAC__bool FLAC__metadata_simple_iterator_delete_block(FLAC__Metadata_S
  * all metadata is read into memory, operated on in memory, and then written
  * to file, which is more efficient than level 1 when editing multiple blocks.
  *
+ * Currently Ogg FLAC is supported for read only, via
+ * FLAC__metadata_chain_read_ogg() but a subsequent
+ * FLAC__metadata_chain_write() will fail.
+ *
  * The general usage of this interface is:
  *
  * - Create a new chain using FLAC__metadata_chain_new().  A chain is a
  *   linked list of FLAC metadata blocks.
  * - Read all metadata into the the chain from a FLAC file using
- *   FLAC__metadata_chain_read() and check the status.
+ *   FLAC__metadata_chain_read() or FLAC__metadata_chain_read_ogg() and
+ *   check the status.
  * - Optionally, consolidate the padding using
  *   FLAC__metadata_chain_merge_padding() or
  *   FLAC__metadata_chain_sort_padding().
@@ -548,8 +618,8 @@ FLAC_API FLAC__bool FLAC__metadata_simple_iterator_delete_block(FLAC__Metadata_S
  * Even though the FLAC file is not open while the chain is being
  * manipulated, you must not alter the file externally during
  * this time.  The chain assumes the FLAC file will not change
- * between the time of FLAC__metadata_chain_read() and
- * FLAC__metadata_chain_write().
+ * between the time of FLAC__metadata_chain_read()/FLAC__metadata_chain_read_ogg()
+ * and FLAC__metadata_chain_write().
  *
  * \note
  * Do not modify the is_last, length, or type fields of returned
@@ -620,11 +690,12 @@ typedef enum {
 
 	FLAC__METADATA_CHAIN_STATUS_READ_WRITE_MISMATCH,
 	/**< FLAC__metadata_chain_write() was called on a chain read by
-	 *   FLAC__metadata_chain_read_with_callbacks(), or
-	 *   FLAC__metadata_chain_write_with_callbacks() or
-	 *   FLAC__metadata_chain_write_with_callbacks_and_tempfile() was
-	 *   called on a chain read by FLAC__metadata_chain_read().  Matching
-	 *   read/write methods must always be used. */
+	 *   FLAC__metadata_chain_read_with_callbacks()/FLAC__metadata_chain_read_ogg_with_callbacks(),
+	 *   or 
+	 *   FLAC__metadata_chain_write_with_callbacks()/FLAC__metadata_chain_write_with_callbacks_and_tempfile()
+	 *   was called on a chain read by
+	 *   FLAC__metadata_chain_read()/FLAC__metadata_chain_read_ogg().
+	 *   Matching read/write methods must always be used. */
 
 	FLAC__METADATA_CHAIN_STATUS_WRONG_WRITE_CALL
 	/**< FLAC__metadata_chain_write_with_callbacks() was called when the
@@ -688,6 +759,24 @@ FLAC_API FLAC__Metadata_ChainStatus FLAC__metadata_chain_status(FLAC__Metadata_C
  */
 FLAC_API FLAC__bool FLAC__metadata_chain_read(FLAC__Metadata_Chain *chain, const char *filename);
 
+/*@@@@ add to unit tests*/
+/** Read all metadata from an Ogg FLAC file into the chain.
+ *
+ * \note Ogg FLAC metadata data writing is not supported yet and
+ * FLAC__metadata_chain_write() will fail.
+ *
+ * \param chain    A pointer to an existing chain.
+ * \param filename The path to the Ogg FLAC file to read.
+ * \assert
+ *    \code chain != NULL \endcode
+ *    \code filename != NULL \endcode
+ * \retval FLAC__bool
+ *    \c true if a valid list of metadata blocks was read from
+ *    \a filename, else \c false.  On failure, check the status with
+ *    FLAC__metadata_chain_status().
+ */
+FLAC_API FLAC__bool FLAC__metadata_chain_read_ogg(FLAC__Metadata_Chain *chain, const char *filename);
+
 /** Read all metadata from a FLAC stream into the chain via I/O callbacks.
  *
  *  The \a handle need only be open for reading, but must be seekable.
@@ -709,6 +798,32 @@ FLAC_API FLAC__bool FLAC__metadata_chain_read(FLAC__Metadata_Chain *chain, const
  *    FLAC__metadata_chain_status().
  */
 FLAC_API FLAC__bool FLAC__metadata_chain_read_with_callbacks(FLAC__Metadata_Chain *chain, FLAC__IOHandle handle, FLAC__IOCallbacks callbacks);
+
+/*@@@@ add to unit tests*/
+/** Read all metadata from an Ogg FLAC stream into the chain via I/O callbacks.
+ *
+ *  The \a handle need only be open for reading, but must be seekable.
+ *  The equivalent minimum stdio fopen() file mode is \c "r" (or \c "rb"
+ *  for Windows).
+ *
+ * \note Ogg FLAC metadata data writing is not supported yet and
+ * FLAC__metadata_chain_write() will fail.
+ *
+ * \param chain    A pointer to an existing chain.
+ * \param handle   The I/O handle of the Ogg FLAC stream to read.  The
+ *                 handle will NOT be closed after the metadata is read;
+ *                 that is the duty of the caller.
+ * \param callbacks
+ *                 A set of callbacks to use for I/O.  The mandatory
+ *                 callbacks are \a read, \a seek, and \a tell.
+ * \assert
+ *    \code chain != NULL \endcode
+ * \retval FLAC__bool
+ *    \c true if a valid list of metadata blocks was read from
+ *    \a handle, else \c false.  On failure, check the status with
+ *    FLAC__metadata_chain_status().
+ */
+FLAC_API FLAC__bool FLAC__metadata_chain_read_ogg_with_callbacks(FLAC__Metadata_Chain *chain, FLAC__IOHandle handle, FLAC__IOCallbacks callbacks);
 
 /** Checks if writing the given chain would require the use of a
  *  temporary file, or if it could be written in place.
@@ -770,7 +885,8 @@ FLAC_API FLAC__bool FLAC__metadata_chain_check_if_tempfile_needed(FLAC__Metadata
  *  be preserved even if the FLAC file is written.
  *
  *  For this write function to be used, the chain must have been read with
- *  FLAC__metadata_chain_read(), not FLAC__metadata_chain_read_with_callbacks().
+ *  FLAC__metadata_chain_read()/FLAC__metadata_chain_read_ogg(), not
+ *  FLAC__metadata_chain_read_with_callbacks()/FLAC__metadata_chain_read_ogg_with_callbacks().
  *
  * \param chain               A pointer to an existing chain.
  * \param use_padding         See above.
@@ -793,7 +909,8 @@ FLAC_API FLAC__bool FLAC__metadata_chain_write(FLAC__Metadata_Chain *chain, FLAC
  *  for Windows).
  *
  *  For this write function to be used, the chain must have been read with
- *  FLAC__metadata_chain_read_with_callbacks(), not FLAC__metadata_chain_read().
+ *  FLAC__metadata_chain_read_with_callbacks()/FLAC__metadata_chain_read_ogg_with_callbacks(),
+ *  not FLAC__metadata_chain_read()/FLAC__metadata_chain_read_ogg().
  *  Also, FLAC__metadata_chain_check_if_tempfile_needed() must have returned
  *  \c false.
  *
@@ -836,7 +953,8 @@ FLAC_API FLAC__bool FLAC__metadata_chain_write_with_callbacks(FLAC__Metadata_Cha
  *  truncate it on return).
  *
  *  For this write function to be used, the chain must have been read with
- *  FLAC__metadata_chain_read_with_callbacks(), not FLAC__metadata_chain_read().
+ *  FLAC__metadata_chain_read_with_callbacks()/FLAC__metadata_chain_read_ogg_with_callbacks(),
+ *  not FLAC__metadata_chain_read()/FLAC__metadata_chain_read_ogg().
  *  Also, FLAC__metadata_chain_check_if_tempfile_needed() must have returned
  *  \c true.
  *
@@ -1166,7 +1284,11 @@ FLAC_API FLAC__bool FLAC__metadata_object_is_equal(const FLAC__StreamMetadata *b
 /** Sets the application data of an APPLICATION block.
  *
  *  If \a copy is \c true, a copy of the data is stored; otherwise, the object
- *  takes ownership of the pointer.
+ *  takes ownership of the pointer.  The existing data will be freed if this
+ *  function is successful, otherwise the original data will remain if \a copy
+ *  is \c true and malloc() fails.
+ *
+ * \note It is safe to pass a const pointer to \a data if \a copy is \c true.
  *
  * \param object  A pointer to an existing APPLICATION object.
  * \param data    A pointer to the data to set.
@@ -1319,10 +1441,39 @@ FLAC_API FLAC__bool FLAC__metadata_object_seektable_template_append_points(FLAC_
  * \assert
  *    \code object != NULL \endcode
  *    \code object->type == FLAC__METADATA_TYPE_SEEKTABLE \endcode
+ *    \code total_samples > 0 \endcode
  * \retval FLAC__bool
  *    \c false if memory allocation fails, else \c true.
  */
 FLAC_API FLAC__bool FLAC__metadata_object_seektable_template_append_spaced_points(FLAC__StreamMetadata *object, unsigned num, FLAC__uint64 total_samples);
+
+/** Append a set of evenly-spaced seek point templates to the end of a
+ *  seek table.
+ *
+ * \note
+ * As with the other ..._seektable_template_... functions, you should
+ * call FLAC__metadata_object_seektable_template_sort() when finished
+ * to make the seek table legal.
+ *
+ * \param object  A pointer to an existing SEEKTABLE object.
+ * \param samples The number of samples apart to space the placeholder
+ *                points.  The first point will be at sample \c 0, the
+ *                second at sample \a samples, then 2*\a samples, and
+ *                so on.  As long as \a samples and \a total_samples
+ *                are greater than \c 0, there will always be at least
+ *                one seekpoint at sample \c 0.
+ * \param total_samples  The total number of samples to be encoded;
+ *                       the seekpoints will be spaced
+ *                       \a samples samples apart.
+ * \assert
+ *    \code object != NULL \endcode
+ *    \code object->type == FLAC__METADATA_TYPE_SEEKTABLE \endcode
+ *    \code samples > 0 \endcode
+ *    \code total_samples > 0 \endcode
+ * \retval FLAC__bool
+ *    \c false if memory allocation fails, else \c true.
+ */
+FLAC_API FLAC__bool FLAC__metadata_object_seektable_template_append_spaced_points_by_samples(FLAC__StreamMetadata *object, unsigned samples, FLAC__uint64 total_samples);
 
 /** Sort a seek table's seek points according to the format specification,
  *  removing duplicates.
@@ -1848,6 +1999,109 @@ FLAC_API FLAC__bool FLAC__metadata_object_cuesheet_delete_track(FLAC__StreamMeta
  *    \c false if cue sheet is illegal, else \c true.
  */
 FLAC_API FLAC__bool FLAC__metadata_object_cuesheet_is_legal(const FLAC__StreamMetadata *object, FLAC__bool check_cd_da_subset, const char **violation);
+
+/* @@@@ add to unit tests */
+/** Calculate and return the CDDB/freedb ID for a cue sheet.  The function
+ *  assumes the cue sheet corresponds to a CD; the result is undefined
+ *  if the cuesheet's is_cd bit is not set.
+ *
+ * \param object     A pointer to an existing CUESHEET object.
+ * \assert
+ *    \code object != NULL \endcode
+ *    \code object->type == FLAC__METADATA_TYPE_CUESHEET \endcode
+ * \retval FLAC__uint32
+ *    The unsigned integer representation of the CDDB/freedb ID
+ */
+FLAC_API FLAC__uint32 FLAC__metadata_object_cuesheet_calculate_cddb_id(const FLAC__StreamMetadata *object);
+
+/** Sets the MIME type of a PICTURE block.
+ *
+ *  If \a copy is \c true, a copy of the string is stored; otherwise, the object
+ *  takes ownership of the pointer.  The existing string will be freed if this
+ *  function is successful, otherwise the original string will remain if \a copy
+ *  is \c true and malloc() fails.
+ *
+ * \note It is safe to pass a const pointer to \a mime_type if \a copy is \c true.
+ *
+ * \param object      A pointer to an existing PICTURE object.
+ * \param mime_type   A pointer to the MIME type string.  The string must be
+ *                    ASCII characters 0x20-0x7e, NUL-terminated.  No validation
+ *                    is done.
+ * \param copy        See above.
+ * \assert
+ *    \code object != NULL \endcode
+ *    \code object->type == FLAC__METADATA_TYPE_PICTURE \endcode
+ *    \code (mime_type != NULL) \endcode
+ * \retval FLAC__bool
+ *    \c false if \a copy is \c true and malloc() fails, else \c true.
+ */
+FLAC_API FLAC__bool FLAC__metadata_object_picture_set_mime_type(FLAC__StreamMetadata *object, char *mime_type, FLAC__bool copy);
+
+/** Sets the description of a PICTURE block.
+ *
+ *  If \a copy is \c true, a copy of the string is stored; otherwise, the object
+ *  takes ownership of the pointer.  The existing string will be freed if this
+ *  function is successful, otherwise the original string will remain if \a copy
+ *  is \c true and malloc() fails.
+ *
+ * \note It is safe to pass a const pointer to \a description if \a copy is \c true.
+ *
+ * \param object      A pointer to an existing PICTURE object.
+ * \param description A pointer to the description string.  The string must be
+ *                    valid UTF-8, NUL-terminated.  No validation is done.
+ * \param copy        See above.
+ * \assert
+ *    \code object != NULL \endcode
+ *    \code object->type == FLAC__METADATA_TYPE_PICTURE \endcode
+ *    \code (description != NULL) \endcode
+ * \retval FLAC__bool
+ *    \c false if \a copy is \c true and malloc() fails, else \c true.
+ */
+FLAC_API FLAC__bool FLAC__metadata_object_picture_set_description(FLAC__StreamMetadata *object, FLAC__byte *description, FLAC__bool copy);
+
+/** Sets the picture data of a PICTURE block.
+ *
+ *  If \a copy is \c true, a copy of the data is stored; otherwise, the object
+ *  takes ownership of the pointer.  Also sets the \a data_length field of the
+ *  metadata object to what is passed in as the \a length parameter.  The
+ *  existing data will be freed if this function is successful, otherwise the
+ *  original data and data_length will remain if \a copy is \c true and
+ *  malloc() fails.
+ *
+ * \note It is safe to pass a const pointer to \a data if \a copy is \c true.
+ *
+ * \param object  A pointer to an existing PICTURE object.
+ * \param data    A pointer to the data to set.
+ * \param length  The length of \a data in bytes.
+ * \param copy    See above.
+ * \assert
+ *    \code object != NULL \endcode
+ *    \code object->type == FLAC__METADATA_TYPE_PICTURE \endcode
+ *    \code (data != NULL && length > 0) ||
+ * (data == NULL && length == 0 && copy == false) \endcode
+ * \retval FLAC__bool
+ *    \c false if \a copy is \c true and malloc() fails, else \c true.
+ */
+FLAC_API FLAC__bool FLAC__metadata_object_picture_set_data(FLAC__StreamMetadata *object, FLAC__byte *data, FLAC__uint32 length, FLAC__bool copy);
+
+/** Check a PICTURE block to see if it conforms to the FLAC specification.
+ *  See the format specification for limits on the contents of the
+ *  PICTURE block.
+ *
+ * \param object     A pointer to existing PICTURE block to be checked.
+ * \param violation  Address of a pointer to a string.  If there is a
+ *                   violation, a pointer to a string explanation of the
+ *                   violation will be returned here. \a violation may be
+ *                   \c NULL if you don't need the returned string.  Do not
+ *                   free the returned string; it will always point to static
+ *                   data.
+ * \assert
+ *    \code object != NULL \endcode
+ *    \code object->type == FLAC__METADATA_TYPE_PICTURE \endcode
+ * \retval FLAC__bool
+ *    \c false if PICTURE block is illegal, else \c true.
+ */
+FLAC_API FLAC__bool FLAC__metadata_object_picture_is_legal(const FLAC__StreamMetadata *object, const char **violation);
 
 /* \} */
 

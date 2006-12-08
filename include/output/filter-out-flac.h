@@ -13,32 +13,32 @@
 
 #include "outputfilter.h"
 
-#include <3rdparty/flac/seekable_stream_encoder.h>
+#include <3rdparty/flac/stream_encoder.h>
 
 namespace BonkEnc
 {
 	class BEEXPORT FilterOutFLAC : public OutputFilter
 	{
-		friend FLAC__StreamEncoderWriteStatus		 FLACSeekableStreamEncoderWriteCallback(const FLAC__SeekableStreamEncoder *, const FLAC__byte[], unsigned, unsigned, unsigned, void *);
-		friend FLAC__SeekableStreamEncoderSeekStatus	 FLACSeekableStreamEncoderSeekCallback(const FLAC__SeekableStreamEncoder *, FLAC__uint64, void *);
-		friend FLAC__SeekableStreamEncoderTellStatus	 FLACSeekableStreamEncoderTellCallback(const FLAC__SeekableStreamEncoder *, FLAC__uint64 *, void *);
+		friend FLAC__StreamEncoderWriteStatus	 FLACStreamEncoderWriteCallback(const FLAC__StreamEncoder *, const FLAC__byte[], size_t, unsigned, unsigned, void *);
+		friend FLAC__StreamEncoderSeekStatus	 FLACStreamEncoderSeekCallback(const FLAC__StreamEncoder *, FLAC__uint64, void *);
+		friend FLAC__StreamEncoderTellStatus	 FLACStreamEncoderTellCallback(const FLAC__StreamEncoder *, FLAC__uint64 *, void *);
 
 		private:
-			FLAC__SeekableStreamEncoder	*encoder;
+			FLAC__StreamEncoder	*encoder;
 
-			FLAC__StreamMetadata		*metadata[3];
-			Int				 numMetadata;
+			FLAC__StreamMetadata	*metadata[3];
+			Int			 numMetadata;
 
-			Buffer<FLAC__int32>		 buffer;
-			Int				 bytesWritten;
+			Buffer<FLAC__int32>	 buffer;
+			Int			 bytesWritten;
 		public:
-							 FilterOutFLAC(Config *, Track *);
-							~FilterOutFLAC();
+						 FilterOutFLAC(Config *, Track *);
+						~FilterOutFLAC();
 
-			Bool				 Activate();
-			Bool				 Deactivate();
+			Bool			 Activate();
+			Bool			 Deactivate();
 
-			Int				 WriteData(Buffer<UnsignedByte> &, Int);
+			Int			 WriteData(Buffer<UnsignedByte> &, Int);
 	};
 };
 

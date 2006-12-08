@@ -36,13 +36,13 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version	= "CVS 20061015";
+String	 BonkEnc::BonkEnc::version	= "v1.0 Release Candidate 1";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0rc1pre";
-String	 BonkEnc::BonkEnc::cddbMode	= "submit";
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0rc1";
+//String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
 
-//String	 BonkEnc::BonkEnc::cddbMode	= "test";
+String	 BonkEnc::BonkEnc::cddbMode	= "test";
 //String	 BonkEnc::BonkEnc::updatePath	= "file://eUpdate/eUpdate.xml";
 
 

@@ -164,7 +164,8 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 	}
 
 	String	 category;
-	Int	 discID = 0;
+	Int	 discID	= 0;
+	Bool	 fuzzy	= False;
 
 	if (result == QUERY_RESULT_NONE)
 	{
@@ -177,11 +178,13 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 	}
 	else if (result == QUERY_RESULT_MULTIPLE || result == QUERY_RESULT_FUZZY)
 	{
-		cddbMultiMatchDlg	*dlg = new cddbMultiMatchDlg(false);
+		if (result == QUERY_RESULT_FUZZY) fuzzy = True;
+
+		cddbMultiMatchDlg	*dlg	= new cddbMultiMatchDlg(fuzzy);
 
 		for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
 
-		if (result == QUERY_RESULT_FUZZY) dlg->AddEntry(BonkEnc::i18n->TranslateString("none"), "");
+		if (fuzzy) dlg->AddEntry(BonkEnc::i18n->TranslateString("none"), "");
 
 		if (dlg->ShowDialog() == Success())
 		{
@@ -197,18 +200,15 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 		DeleteObject(dlg);
 	}
 
-	Bool	 readError = True;
+	Bool	 readError = False;
 
 	if (category != NIL && discID != 0)
 	{
 		prog_status->SetValue(60);
 
-		if (cddb.Read(category, discID, rCDDBInfo))
-		{
-			if (result == QUERY_RESULT_FUZZY) rCDDBInfo.revision = -1;
+		if (!cddb.Read(category, discID, rCDDBInfo)) readError = True;
 
-			readError = False;
-		}
+		if (fuzzy) rCDDBInfo.revision = -1;
 	}
 
 	if (readError || result == QUERY_RESULT_ERROR)

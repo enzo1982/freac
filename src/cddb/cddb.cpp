@@ -126,6 +126,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 		}
 
 		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
+		cddbInfo.discID = ComputeDiscID();
 	}
 
 	if (ConnectToServer() == False) return False;

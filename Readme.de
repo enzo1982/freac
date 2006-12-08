@@ -10,7 +10,7 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 RC 1 CVS (Oktober 2006)
+	Version 1.0 RC 1 CVS (Dezember 2006)
 
 		- Sprachunterstützung für Norwegisch, Türkisch und Esperanto hinzugefügt
 		- Konfigurationsdateien werden jetzt im Anwendungsdaten-Verzeichnis des Benutzers gespeichert, wenn BonkEnc unter C:\Programme\ installiert ist
@@ -27,11 +27,14 @@ Geschichte
 		- Mit den BonkEnc-Standardeinstellungen erstellte MP3-Dateien sind jetzt mit Windows Media Player kompatibel
 		- Fehler bei Decodierung von HE-AAC-Tracks behoben
 		- Absturz beim Konvertieren von FLAC nach AAC behoben
+		- Absturz beim Öffnen des Translators aus dem Konfigurationsdialog behoben
 		- Fehler behoben, dass beliebige Samplingraten nicht mit LAME konvertiert werden konnten
 		- Fehler beim Lesen von WAV-Headern behoben
 		- LAME-Performanceprobleme behoben
+		- Fehler beim Umgang mit inexakten CDDB-Ergebnissen behoben
 		- Abfangen von CD-ROM-Zugriffsverweigerung
 		- CDDB-Codequalität verbessert
+		- CDRip auf Version 1.21 aktualisiert
 		- LAME auf Version 3.97 aktualisiert
 		- Update auf smooth v0.8.69.0
 		- Einige kleinere Fehler behoben

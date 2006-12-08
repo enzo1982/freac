@@ -25,6 +25,8 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	autoRead	= currentConfig->cdrip_autoRead;
 	autoRip		= currentConfig->cdrip_autoRip;
 	autoEject	= currentConfig->cdrip_autoEject;
+	readCDText	= currentConfig->cdrip_read_cdtext;
+	readCDPlayerIni	= currentConfig->cdrip_read_cdplayerini;
 
 	pos.x	= 7;
 	pos.y	= 11;
@@ -50,12 +52,30 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	pos.x	= 7;
 	pos.y	= 66;
 	size.cx	= 344;
-	size.cy	= 65;
+	size.cy	= 39;
+
+	group_cdinfo	= new GroupBox(BonkEnc::i18n->TranslateString("CD information"), pos, size);
+
+	pos.x	+= 10;
+	pos.y	+= 11;
+	size.cx	= 157;
+	size.cy	= 0;
+
+	check_readCDText	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD Text"), pos, size, &readCDText);
+
+	pos.x += 166;
+
+	check_readCDPlayerIni	= new CheckBox(BonkEnc::i18n->TranslateString("Read cdplayer.ini"), pos, size, &readCDPlayerIni);
+
+	pos.x	= 7;
+	pos.y	= 117;
+	size.cx	= 344;
+	size.cy	= 68;
 
 	group_ripping	= new GroupBox(BonkEnc::i18n->TranslateString("Ripper settings"), pos, size);
 
 	pos.x	+= 10;
-	pos.y	+= 13;
+	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
@@ -77,7 +97,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	if (!cdparanoia) combo_paranoia_mode->Deactivate();
 
 	pos.x	-= 166;
-	pos.y	+= 26;
+	pos.y	+= 27;
 	size.cx	= 157;
 	size.cy	= 0;
 
@@ -151,6 +171,9 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	RegisterObject(group_cdoptions);
 	RegisterObject(check_locktray);
 	RegisterObject(check_ntscsi);
+	RegisterObject(group_cdinfo);
+	RegisterObject(check_readCDText);
+	RegisterObject(check_readCDPlayerIni);
 }
 
 BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
@@ -169,6 +192,9 @@ BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 	DeleteObject(group_cdoptions);
 	DeleteObject(check_locktray);
 	DeleteObject(check_ntscsi);
+	DeleteObject(group_cdinfo);
+	DeleteObject(check_readCDText);
+	DeleteObject(check_readCDPlayerIni);
 }
 
 Void BonkEnc::GeneralSettingsLayerCDRip::SetParanoia()
@@ -228,4 +254,14 @@ Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoRip()
 Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoEject()
 {
 	return autoEject;
+}
+
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetReadCDText()
+{
+	return readCDText;
+}
+
+Bool BonkEnc::GeneralSettingsLayerCDRip::GetReadCDPlayerIni()
+{
+	return readCDPlayerIni;
 }

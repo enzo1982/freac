@@ -202,6 +202,8 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->cdrip_autoRead		= register_layer_cdrip->GetAutoRead();
 	currentConfig->cdrip_autoRip		= register_layer_cdrip->GetAutoRip();
 	currentConfig->cdrip_autoEject		= register_layer_cdrip->GetAutoEject();
+	currentConfig->cdrip_read_cdtext	= register_layer_cdrip->GetReadCDText();
+	currentConfig->cdrip_read_cdplayerini	= register_layer_cdrip->GetReadCDPlayerIni();
 
 	currentConfig->enable_id3v1		= register_layer_tags->GetEnableID3V1();
 	currentConfig->enable_id3v2		= register_layer_tags->GetEnableID3V2();

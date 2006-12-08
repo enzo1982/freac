@@ -34,8 +34,7 @@ Bool BonkEnc::FilterInWAVE::Activate()
 
 		Int	 cSize = in->InputNumber(4);
 
-		if (chunk == "data") in->RelSeek(4);
-		else		     in->RelSeek(cSize);
+		if (chunk != "data") in->RelSeek(cSize);
 	}
 	while (chunk != "data");
 

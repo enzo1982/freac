@@ -55,14 +55,14 @@ $(DLLNAME): $(DLLOBJECTS)
 	countbuild BuildNumber
 	$(ECHO) done.
 
-$(EXENAME): $(EXEOBJECTS)
+$(EXENAME): $(EXEOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(EXENAME)...
 	$(LINKER) $(EXEOBJECTS) $(RESOURCES) $(LINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(EXENAME)
 	$(PACKER) $(PACKER_OPTS) $(EXENAME)
 	$(ECHO) done.
 
-$(CMDNAME): $(CMDOBJECTS)
+$(CMDNAME): $(CMDOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(CMDNAME)...
 	$(LINKER) $(CMDOBJECTS) $(RESOURCES) $(CMDLINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(CMDNAME)
@@ -414,7 +414,7 @@ $(OBJECTDIR)/outputfilter.o: $(SRCDIR)/output/outputfilter.cpp
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/output/outputfilter.cpp -o $(OBJECTDIR)/outputfilter.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/resources.o: $(INCLUDEDIR1)/resources.h $(BINRESDIR)/bonkenc.ico
+$(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR1)/resources.h $(BINRESDIR)/bonkenc.ico
 	$(ECHO) -n Compiling $(RESOURCEDIR)/resources.rc...
 	$(RESCOMP) $(RESCOMP_OPTS) $(RESOURCEDIR)/resources.rc -o $(OBJECTDIR)/resources.o
 	$(ECHO) done.

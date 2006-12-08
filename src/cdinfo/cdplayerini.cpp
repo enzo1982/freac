@@ -43,8 +43,8 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 
 	if (numTocEntries < 3)
 	{
-		discID += ex_CR_GetTocEntry(0).dwStartSector % 75 + 2;
-		discID += ex_CR_GetTocEntry(numTocEntries).dwStartSector % 75;
+		discID += ex_CR_GetTocEntry(0).dwStartSector;
+		discID += ex_CR_GetTocEntry(numTocEntries).dwStartSector;
 	}
 
 	String	 discIDString = CDDB::DiscIDToString(discID);

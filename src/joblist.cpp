@@ -65,6 +65,8 @@ Int BonkEnc::JobList::GetNOfTracks()
 
 BonkEnc::Track *BonkEnc::JobList::GetNthTrack(Int n)
 {
+	if (GetNOfTracks() <= n) return NIL;
+	
 	// Entries might have been moved in the joblist, so get the entry by index instead of position
 	return tracks.GetEntry(GetNthEntry(n)->GetHandle());
 }
@@ -156,6 +158,8 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 
 BonkEnc::Track *BonkEnc::JobList::GetSelectedTrack()
 {
+	if (GetNOfTracks() == 0) return NIL;
+
 	ListEntry	*entry = GetSelectedEntry();
 	Int		 n = 0;
 

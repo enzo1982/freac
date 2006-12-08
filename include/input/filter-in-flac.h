@@ -13,45 +13,45 @@
 
 #include "inputfilter.h"
 
-#include <3rdparty/flac/seekable_stream_decoder.h>
+#include <3rdparty/flac/stream_decoder.h>
 
 namespace BonkEnc
 {
 	class BEEXPORT FilterInFLAC : public InputFilter
 	{
-		friend FLAC__SeekableStreamDecoderReadStatus	 FLACSeekableStreamDecoderReadCallback(const FLAC__SeekableStreamDecoder *, FLAC__byte [], unsigned *, void *);
-		friend FLAC__StreamDecoderWriteStatus		 FLACSeekableStreamDecoderWriteCallback(const FLAC__SeekableStreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
-		friend FLAC__SeekableStreamDecoderSeekStatus	 FLACSeekableStreamDecoderSeekCallback(const FLAC__SeekableStreamDecoder *, FLAC__uint64, void *);
-		friend FLAC__SeekableStreamDecoderTellStatus	 FLACSeekableStreamDecoderTellCallback(const FLAC__SeekableStreamDecoder *, FLAC__uint64 *, void *);
-		friend FLAC__SeekableStreamDecoderLengthStatus	 FLACSeekableStreamDecoderLengthCallback(const FLAC__SeekableStreamDecoder *, FLAC__uint64 *, void *);
-		friend FLAC__bool				 FLACSeekableStreamDecoderEofCallback(const FLAC__SeekableStreamDecoder *, void *);
-		friend void					 FLACSeekableStreamDecoderMetadataCallback(const FLAC__SeekableStreamDecoder *, const FLAC__StreamMetadata *, void *);
-		friend void					 FLACSeekableStreamDecoderErrorCallback(const FLAC__SeekableStreamDecoder *, FLAC__StreamDecoderErrorStatus, void *);
+		friend FLAC__StreamDecoderReadStatus	 FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *, FLAC__byte [], size_t *, void *);
+		friend FLAC__StreamDecoderWriteStatus	 FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
+		friend FLAC__StreamDecoderSeekStatus	 FLACStreamDecoderSeekCallback(const FLAC__StreamDecoder *, FLAC__uint64, void *);
+		friend FLAC__StreamDecoderTellStatus	 FLACStreamDecoderTellCallback(const FLAC__StreamDecoder *, FLAC__uint64 *, void *);
+		friend FLAC__StreamDecoderLengthStatus	 FLACStreamDecoderLengthCallback(const FLAC__StreamDecoder *, FLAC__uint64 *, void *);
+		friend FLAC__bool			 FLACStreamDecoderEofCallback(const FLAC__StreamDecoder *, void *);
+		friend void				 FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *, const FLAC__StreamMetadata *, void *);
+		friend void				 FLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *, FLAC__StreamDecoderErrorStatus, void *);
 
 		private:
-			FLAC__SeekableStreamDecoder	*decoder;
-			Bool				 finished;
+			FLAC__StreamDecoder	*decoder;
+			Bool			 finished;
 
-			Buffer<signed int>		 samplesBuffer;
+			Buffer<signed int>	 samplesBuffer;
 
-			Track				*infoFormat;
+			Track			*infoFormat;
 
-			Thread				*decoderThread;
-			Mutex				*readDataMutex;
-			Mutex				*samplesBufferMutex;
+			Thread			*decoderThread;
+			Mutex			*readDataMutex;
+			Mutex			*samplesBufferMutex;
 
-			Int				 ReadFLACMetadata(Thread *);
-			Int				 ReadFLACData(Thread *);
+			Int			 ReadFLACMetadata(Thread *);
+			Int			 ReadFLACData(Thread *);
 		public:
-							 FilterInFLAC(Config *, Track *);
-							~FilterInFLAC();
+						 FilterInFLAC(Config *, Track *);
+						~FilterInFLAC();
 
-			Bool				 Activate();
-			Bool				 Deactivate();
+			Bool			 Activate();
+			Bool			 Deactivate();
 
-			Int				 ReadData(Buffer<UnsignedByte> &, Int);
+			Int			 ReadData(Buffer<UnsignedByte> &, Int);
 
-			Track				*GetFileInfo(const String &);
+			Track			*GetFileInfo(const String &);
 	};
 };
 

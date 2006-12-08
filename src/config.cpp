@@ -48,7 +48,7 @@ Bool BonkEnc::Config::LoadSettings()
 	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);
 
 	language				= config->GetStringValue("Settings", "Language", "");
-	encoder					= config->GetIntValue("Settings", "Encoder", 1);
+	encoder					= config->GetIntValue("Settings", "Encoder", 3);
 	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", personalDir);
 	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
 	enc_onTheFly				= config->GetIntValue("Settings", "EncodeOnTheFly", 1);
@@ -57,12 +57,12 @@ Bool BonkEnc::Config::LoadSettings()
 	playlist_outdir				= config->GetStringValue("Settings", "PlaylistOutDir", personalDir);
 	playlist_filePattern			= config->GetStringValue("Settings", "PlaylistFilenamePattern", "<artist> - <album>");
 	useUnicodeNames				= config->GetIntValue("Settings", "UseUnicodeFilenames", 1);
-	showTitleInfo				= config->GetIntValue("Settings", "ShowTitleInfo", 0);
+	showTitleInfo				= config->GetIntValue("Settings", "ShowTitleInfo", 1);
 	showTooltips				= config->GetIntValue("Settings", "ShowTooltips", 1);
 	wndPos.x				= config->GetIntValue("Settings", "WindowPosX", 100);
 	wndPos.y				= config->GetIntValue("Settings", "WindowPosY", 100);
 	wndSize.cx				= config->GetIntValue("Settings", "WindowSizeX", 650);
-	wndSize.cy				= config->GetIntValue("Settings", "WindowSizeY", 400);
+	wndSize.cy				= config->GetIntValue("Settings", "WindowSizeY", 472);
 	maximized				= config->GetIntValue("Settings", "WindowMaximized", 0);
 	tab_width_track				= config->GetIntValue("Settings", "TabWidthTrack", 50);
 	tab_width_length			= config->GetIntValue("Settings", "TabWidthLength", 80);
@@ -93,7 +93,9 @@ Bool BonkEnc::Config::LoadSettings()
 	cdrip_debuglevel			= config->GetIntValue("CDRip", "DebugCDRip", 0);
 	cdrip_paranoia				= config->GetIntValue("CDRip", "CDParanoia", 0);
 	cdrip_paranoia_mode			= config->GetIntValue("CDRip", "CDParanoiaMode", 3);
-	cdrip_jitter				= config->GetIntValue("CDRip", "Jitter", 0);
+	cdrip_detectJitterErrors		= config->GetIntValue("CDRip", "DetectJitterErrors", 1);
+	cdrip_detectC2Errors			= config->GetIntValue("CDRip", "DetectC2Errors", 1);
+	cdrip_jitter				= config->GetIntValue("CDRip", "JitterCorrection", 0);
 	cdrip_swapchannels			= config->GetIntValue("CDRip", "SwapChannels", 0);
 	cdrip_locktray				= config->GetIntValue("CDRip", "LockTray", 1);
 	cdrip_read_cdtext			= config->GetIntValue("CDRip", "ReadCDText", 1);
@@ -267,7 +269,9 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("CDRip", "DebugCDRip", cdrip_debuglevel);
 		config->SetIntValue("CDRip", "CDParanoia", cdrip_paranoia);
 		config->SetIntValue("CDRip", "CDParanoiaMode", cdrip_paranoia_mode);
-		config->SetIntValue("CDRip", "Jitter", cdrip_jitter);
+		config->SetIntValue("CDRip", "DetectJitterErrors", cdrip_detectJitterErrors);
+		config->SetIntValue("CDRip", "DetectC2Errors", cdrip_detectC2Errors);
+		config->SetIntValue("CDRip", "JitterCorrection", cdrip_jitter);
 		config->SetIntValue("CDRip", "SwapChannels", cdrip_swapchannels);
 		config->SetIntValue("CDRip", "LockTray", cdrip_locktray);
 		config->SetIntValue("CDRip", "ReadCDText", cdrip_read_cdtext);
