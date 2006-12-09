@@ -24,6 +24,7 @@ History
 		- joblist entries can now be moved by dragging them with the mouse
 		- added icons for menu entries
 		- added official support for running from a USB stick
+		- added a confirmation for online update checks on first startup
 		- MP3 files created with BonkEnc's default settings are now compatible with Windows Media Player
 		- fixed decoding of HE-AAC tracks
 		- fixed crash when converting from FLAC to AAC

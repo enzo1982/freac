@@ -593,17 +593,33 @@ String BonkEnc::BonkEnc::GetPlaylistFileName(Track *trackInfo)
 
 String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const String &baseFileName)
 {
-	String	 relativeFileName;
+	Int	 equalBytes	   = 0;
+	Int	 furtherComponents = 0;
+	Bool	 found		   = False;
 
-	if (trackFileName.StartsWith(String(File(baseFileName).GetFilePath()).Append("\\")))
+	for (Int i = 0; i < baseFileName.Length(); i++)
 	{
-		String	 basePath = String(File(baseFileName).GetFilePath()).Append("\\");
+		if (baseFileName[i] != trackFileName[i]) found = True;
 
-		for (Int m = 0; m < trackFileName.Length() - basePath.Length(); m++) relativeFileName[m] = trackFileName[m + basePath.Length()];
+		if (baseFileName[i] == '\\')
+		{
+			if (!found) equalBytes = i + 1;
+			else	    furtherComponents++;
+		}
 	}
-	else
+
+	String	 relativeFileName = trackFileName;
+
+	if (equalBytes > 0)
 	{
-		relativeFileName = trackFileName;
+		relativeFileName = "";
+
+		for (Int m = 0; m < trackFileName.Length() - equalBytes; m++) relativeFileName[m] = trackFileName[m + equalBytes];
+	}
+
+	if (relativeFileName[1] != ':')
+	{
+		for (Int m = 0; m < furtherComponents; m++) relativeFileName = String("..\\").Append(relativeFileName);
 	}
 
 	return relativeFileName;

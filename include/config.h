@@ -29,6 +29,8 @@ namespace BonkEnc
 
 			String		 configDir;
 
+			Bool		 firstStart;
+
 			String		 language;
 			Bool		 languageChanged;
 

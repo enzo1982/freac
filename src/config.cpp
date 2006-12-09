@@ -47,6 +47,7 @@ Bool BonkEnc::Config::LoadSettings()
 
 	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);
 
+	firstStart				= config->GetIntValue("Settings", "FirstStart", 1);
 	language				= config->GetStringValue("Settings", "Language", "");
 	encoder					= config->GetIntValue("Settings", "Encoder", 3);
 	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", personalDir);
@@ -224,6 +225,7 @@ Bool BonkEnc::Config::SaveSettings()
 
 	if (config->Open(String(configDir).Append("config.xml"), True) == Success())
 	{
+		config->SetIntValue("Settings", "FirstStart", 0);
 		config->SetStringValue("Settings", "Language", language);
 		config->SetIntValue("Settings", "Encoder", encoder);
 		config->SetStringValue("Settings", "EncoderOutDir", enc_outdir);

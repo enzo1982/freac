@@ -2223,6 +2223,16 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 {
 	if (!currentConfig->enable_eUpdate) return Success();
 
+	if (currentConfig->firstStart)
+	{
+		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION) == IDNO)
+		{
+			currentConfig->checkUpdatesAtStartup = False;
+
+			return Success();
+		}
+	}
+
 	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, updatePath);
 
 	if (currentConfig->configDir != "")
@@ -2261,6 +2271,10 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 		msgBox->ShowDialog();
 
 		DeleteObject(msgBox);
+	}
+	else if (currentConfig->firstStart)
+	{
+		QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION);
 	}
 
 	ex_eUpdate_FreeUpdateContext(context);
