@@ -495,7 +495,7 @@ namespace BonkEnc
 	typedef FLAC__StreamEncoder *			(*FLAC__STREAM_ENCODER_NEW)						();
 	typedef void					(*FLAC__STREAM_ENCODER_DELETE)						(FLAC__StreamEncoder *);
 	typedef FLAC__StreamEncoderInitStatus		(*FLAC__STREAM_ENCODER_INIT_STREAM)					(FLAC__StreamEncoder *, FLAC__StreamEncoderWriteCallback, FLAC__StreamEncoderSeekCallback, FLAC__StreamEncoderTellCallback, FLAC__StreamEncoderMetadataCallback, void *);
-	typedef void					(*FLAC__STREAM_ENCODER_FINISH)						(FLAC__StreamEncoder *);
+	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_FINISH)						(FLAC__StreamEncoder *);
 	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_SET_CHANNELS)					(FLAC__StreamEncoder *, unsigned);
 	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_SET_BITS_PER_SAMPLE)				(FLAC__StreamEncoder *, unsigned);
 	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_SET_SAMPLE_RATE)					(FLAC__StreamEncoder *, unsigned);
@@ -510,6 +510,8 @@ namespace BonkEnc
 	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER)		(FLAC__StreamEncoder *, unsigned);
 	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER)		(FLAC__StreamEncoder *, unsigned);
 	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_SET_METADATA)					(FLAC__StreamEncoder *, FLAC__StreamMetadata **, unsigned);
+	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_SET_COMPRESSION_LEVEL)				(FLAC__StreamEncoder *, unsigned);
+	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_SET_APODIZATION)					(FLAC__StreamEncoder *, const char *);
 	typedef FLAC__bool				(*FLAC__STREAM_ENCODER_PROCESS_INTERLEAVED)				(FLAC__StreamEncoder *, const FLAC__int32[], unsigned);
 	typedef FLAC__StreamDecoder *			(*FLAC__STREAM_DECODER_NEW)						();
 	typedef void					(*FLAC__STREAM_DECODER_DELETE)						(FLAC__StreamDecoder *);
@@ -544,6 +546,8 @@ namespace BonkEnc
 	extern BEEXPORT FLAC__STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_min_residual_partition_order;
 	extern BEEXPORT FLAC__STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_max_residual_partition_order;
 	extern BEEXPORT FLAC__STREAM_ENCODER_SET_METADATA				 ex_FLAC__stream_encoder_set_metadata;
+	extern BEEXPORT FLAC__STREAM_ENCODER_SET_COMPRESSION_LEVEL			 ex_FLAC__stream_encoder_set_compression_level;
+	extern BEEXPORT FLAC__STREAM_ENCODER_SET_APODIZATION				 ex_FLAC__stream_encoder_set_apodization;
 	extern BEEXPORT FLAC__STREAM_ENCODER_PROCESS_INTERLEAVED			 ex_FLAC__stream_encoder_process_interleaved;
 	extern BEEXPORT FLAC__STREAM_DECODER_NEW					 ex_FLAC__stream_decoder_new;
 	extern BEEXPORT FLAC__STREAM_DECODER_DELETE					 ex_FLAC__stream_decoder_delete;

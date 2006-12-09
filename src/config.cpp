@@ -194,6 +194,7 @@ Bool BonkEnc::Config::LoadSettings()
 	flac_do_mid_side_stereo			= config->GetIntValue("FLAC", "DoMidSideStereo", 1);
 	flac_loose_mid_side_stereo		= config->GetIntValue("FLAC", "LooseMidSideStereo", 0);
 	flac_blocksize				= config->GetIntValue("FLAC", "Blocksize", 4608);
+	flac_apodization			= config->GetStringValue("FLAC", "Apodization", "tukey(0.5)");
 	flac_max_lpc_order			= config->GetIntValue("FLAC", "MaxLPCOrder", 8);
 	flac_qlp_coeff_precision		= config->GetIntValue("FLAC", "QLPCoeffPrecision", 0);
 	flac_do_qlp_coeff_prec_search		= config->GetIntValue("FLAC", "DoQLPCoeffPrecSearch", 0);
@@ -368,6 +369,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("FLAC", "DoMidSideStereo", flac_do_mid_side_stereo);
 		config->SetIntValue("FLAC", "LooseMidSideStereo", flac_loose_mid_side_stereo);
 		config->SetIntValue("FLAC", "Blocksize", flac_blocksize);
+		config->SetStringValue("FLAC", "Apodization", flac_apodization);
 		config->SetIntValue("FLAC", "MaxLPCOrder", flac_max_lpc_order);
 		config->SetIntValue("FLAC", "QLPCoeffPrecision", flac_qlp_coeff_precision);
 		config->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", flac_do_qlp_coeff_prec_search);

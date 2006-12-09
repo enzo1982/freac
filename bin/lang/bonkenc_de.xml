@@ -390,5 +390,8 @@
     <entry id="378" string="CD information">CD-Informationen</entry>
     <entry id="379" string="Read CD Text">CD-Text lesen</entry>
     <entry id="380" string="Read cdplayer.ini">cdplayer.ini lesen</entry>
+    <entry id="381" string="Apodization">Apodisierung</entry>
+    <entry id="382" string="Apodization function(s):">Apodisierungsfunktion(en):</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">Sie können mehrere Funktionen durch Semikola trennen.</entry>
   </data>
 </LangFile>

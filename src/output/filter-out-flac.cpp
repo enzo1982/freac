@@ -116,138 +116,27 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 	ex_FLAC__stream_encoder_set_sample_rate(encoder, format->rate);
 	ex_FLAC__stream_encoder_set_bits_per_sample(encoder, format->bits == 32 ? 24 : format->bits);
 
-	switch (currentConfig->flac_preset)
+	if (currentConfig->flac_preset < 0)
 	{
-		case 0:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 1152);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 0);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, false);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 2);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 2);
+		ex_FLAC__stream_encoder_set_streamable_subset(encoder, currentConfig->flac_streamable_subset);
+		ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, currentConfig->flac_do_mid_side_stereo);
+		ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, currentConfig->flac_loose_mid_side_stereo);
+		ex_FLAC__stream_encoder_set_blocksize(encoder, currentConfig->flac_blocksize);
+		ex_FLAC__stream_encoder_set_apodization(encoder, currentConfig->flac_apodization);
+		ex_FLAC__stream_encoder_set_max_lpc_order(encoder, currentConfig->flac_max_lpc_order);
+		ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, currentConfig->flac_qlp_coeff_precision);
+		ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, currentConfig->flac_do_qlp_coeff_prec_search);
+		ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, currentConfig->flac_do_exhaustive_model_search);
+		ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, currentConfig->flac_min_residual_partition_order);
+		ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, currentConfig->flac_max_residual_partition_order);
+	}
+	else
+	{
+		ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
+		ex_FLAC__stream_encoder_set_compression_level(encoder, currentConfig->flac_preset);
 
-			break;
-		case 1:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 1152);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 0);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, false);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 2);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 2);
-
-			break;
-		case 2:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 1152);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 0);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, false);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 0);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 3);
-
-			break;
-		case 3:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 4608);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 6);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, false);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 3);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 3);
-
-			break;
-		case 4:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 4608);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 8);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, false);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 3);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 3);
-
-			break;
-		case 5:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 4608);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 8);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, false);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 3);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 3);
-
-			break;
-		case 6:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 4608);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 8);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, false);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 0);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 4);
-
-			break;
-		case 7:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 4608);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 8);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, true);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 0);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 6);
-
-			break;
-		case 8:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, true);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, true);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, false);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, 4608);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, 12);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, 0);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, false);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, true);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, 0);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, 6);
-
-			break;
-		default:
-			ex_FLAC__stream_encoder_set_streamable_subset(encoder, currentConfig->flac_streamable_subset);
-			ex_FLAC__stream_encoder_set_do_mid_side_stereo(encoder, currentConfig->flac_do_mid_side_stereo);
-			ex_FLAC__stream_encoder_set_loose_mid_side_stereo(encoder, currentConfig->flac_loose_mid_side_stereo);
-			ex_FLAC__stream_encoder_set_blocksize(encoder, currentConfig->flac_blocksize);
-			ex_FLAC__stream_encoder_set_max_lpc_order(encoder, currentConfig->flac_max_lpc_order);
-			ex_FLAC__stream_encoder_set_qlp_coeff_precision(encoder, currentConfig->flac_qlp_coeff_precision);
-			ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search(encoder, currentConfig->flac_do_qlp_coeff_prec_search);
-			ex_FLAC__stream_encoder_set_do_exhaustive_model_search(encoder, currentConfig->flac_do_exhaustive_model_search);
-			ex_FLAC__stream_encoder_set_min_residual_partition_order(encoder, currentConfig->flac_min_residual_partition_order);
-			ex_FLAC__stream_encoder_set_max_residual_partition_order(encoder, currentConfig->flac_max_residual_partition_order);
-
-			break;
+		if (currentConfig->flac_preset < 3) ex_FLAC__stream_encoder_set_blocksize(encoder, 1152);
+		else				    ex_FLAC__stream_encoder_set_blocksize(encoder, 4608);
 	}
 
 	bytesWritten = 0;

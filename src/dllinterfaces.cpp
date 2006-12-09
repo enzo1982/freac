@@ -220,6 +220,8 @@ FLAC__STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH		 ex_FLAC__stream_encoder_se
 FLAC__STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_min_residual_partition_order		= NIL;
 FLAC__STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_max_residual_partition_order		= NIL;
 FLAC__STREAM_ENCODER_SET_METADATA				 ex_FLAC__stream_encoder_set_metadata					= NIL;
+FLAC__STREAM_ENCODER_SET_COMPRESSION_LEVEL			 ex_FLAC__stream_encoder_set_compression_level				= NIL;
+FLAC__STREAM_ENCODER_SET_APODIZATION				 ex_FLAC__stream_encoder_set_apodization				= NIL;
 FLAC__STREAM_ENCODER_PROCESS_INTERLEAVED			 ex_FLAC__stream_encoder_process_interleaved				= NIL;
 FLAC__STREAM_DECODER_NEW					 ex_FLAC__stream_decoder_new						= NIL;
 FLAC__STREAM_DECODER_DELETE					 ex_FLAC__stream_decoder_delete						= NIL;
@@ -846,6 +848,8 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 	ex_FLAC__stream_encoder_set_min_residual_partition_order		= (FLAC__STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_min_residual_partition_order");
 	ex_FLAC__stream_encoder_set_max_residual_partition_order		= (FLAC__STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_max_residual_partition_order");
 	ex_FLAC__stream_encoder_set_metadata					= (FLAC__STREAM_ENCODER_SET_METADATA) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_metadata");
+	ex_FLAC__stream_encoder_set_compression_level				= (FLAC__STREAM_ENCODER_SET_COMPRESSION_LEVEL) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_compression_level");
+	ex_FLAC__stream_encoder_set_apodization					= (FLAC__STREAM_ENCODER_SET_APODIZATION) flacdll->GetFunctionAddress("FLAC__stream_encoder_set_apodization");
 	ex_FLAC__stream_encoder_process_interleaved				= (FLAC__STREAM_ENCODER_PROCESS_INTERLEAVED) flacdll->GetFunctionAddress("FLAC__stream_encoder_process_interleaved");
 	ex_FLAC__stream_decoder_new						= (FLAC__STREAM_DECODER_NEW) flacdll->GetFunctionAddress("FLAC__stream_decoder_new");
 	ex_FLAC__stream_decoder_delete						= (FLAC__STREAM_DECODER_DELETE) flacdll->GetFunctionAddress("FLAC__stream_decoder_delete");
@@ -880,6 +884,8 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 	    ex_FLAC__stream_encoder_set_min_residual_partition_order		== NIL ||
 	    ex_FLAC__stream_encoder_set_max_residual_partition_order		== NIL ||
 	    ex_FLAC__stream_encoder_set_metadata				== NIL ||
+	    ex_FLAC__stream_encoder_set_compression_level			== NIL ||
+	    ex_FLAC__stream_encoder_set_apodization				== NIL ||
 	    ex_FLAC__stream_encoder_process_interleaved				== NIL ||
 	    ex_FLAC__stream_decoder_new						== NIL ||
 	    ex_FLAC__stream_decoder_delete					== NIL ||

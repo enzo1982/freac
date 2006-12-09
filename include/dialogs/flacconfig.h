@@ -30,7 +30,7 @@ namespace BonkEnc
 			CheckBox	*check_mid_side_stereo;
 			CheckBox	*check_loose_mid_side;
 
-			Layer		*layer_advanced;
+			Layer		*layer_format;
 
 			GroupBox	*group_format;
 			CheckBox	*check_streamable_subset;
@@ -38,6 +38,14 @@ namespace BonkEnc
 			Slider		*slider_blocksize;
 			EditBox		*edit_blocksize;
 			Text		*text_blocksize_bytes;
+
+			Layer		*layer_advanced;
+
+			GroupBox	*group_apodization;
+			Text		*text_apodization;
+			EditBox		*edit_apodization;
+			ListBox		*list_apodization;
+			Text		*text_apodization_explain;
 
 			GroupBox	*group_lpc;
 			Text		*text_max_lpc_order;

@@ -30,13 +30,14 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	min_residual_partition_order = currentConfig->flac_min_residual_partition_order;
 	max_residual_partition_order = currentConfig->flac_max_residual_partition_order;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FLAC"), Point(140, 140), Size(518, 340));
+	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FLAC"), Point(140, 140), Size(518, 330));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
 
 	layer_simple		= new Layer(BonkEnc::i18n->TranslateString("Basic"));
+	layer_format		= new Layer(BonkEnc::i18n->TranslateString("Format"));
 	layer_advanced		= new Layer(BonkEnc::i18n->TranslateString("Expert"));
 
 	pos.x = 175;
@@ -57,7 +58,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x = 7;
 	pos.y = 7;
 	size.cx = 498;
-	size.cy = 255;
+	size.cy = 245;
 
 	tabwidget		= new TabWidget(pos, size);
 
@@ -151,7 +152,50 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	text_blocksize_bytes	= new Text(BonkEnc::i18n->TranslateString("bytes"), pos);
 
 	pos.x = 7;
-	pos.y = 89;
+	pos.y = 11;
+	size.cx = 480;
+	size.cy = 56;
+
+	group_apodization	= new GroupBox(BonkEnc::i18n->TranslateString("Apodization"), pos, size);
+
+	pos.x += 9;
+	pos.y += 13;
+	size.cy = 0;
+
+	text_apodization	= new Text(BonkEnc::i18n->TranslateString("Apodization function(s):"), pos);
+
+	pos.x += text_apodization->textSize.cx + 7;
+	pos.y -= 3;
+	size.cx = 454 - text_apodization->textSize.cx;
+
+	edit_apodization	= new EditBox(currentConfig->flac_apodization, pos, size);
+
+	list_apodization	= new ListBox(pos, size);
+	list_apodization->AddEntry("bartlett");
+	list_apodization->AddEntry("bartlett_hann");
+	list_apodization->AddEntry("blackman");
+	list_apodization->AddEntry("blackman_harris_4term_92db");
+	list_apodization->AddEntry("connes");
+	list_apodization->AddEntry("flattop");
+	list_apodization->AddEntry("gauss(0.2)");
+	list_apodization->AddEntry("hamming");
+	list_apodization->AddEntry("hann");
+	list_apodization->AddEntry("kaiser_bessel");
+	list_apodization->AddEntry("nuttall");
+	list_apodization->AddEntry("rectangle");
+	list_apodization->AddEntry("triangle");
+	list_apodization->AddEntry("tukey(0.5)");
+	list_apodization->AddEntry("welch");
+
+	edit_apodization->SetDropDownList(list_apodization);
+
+	pos.x += 2;
+	pos.y += 25;
+
+	text_apodization_explain= new Text(String(BonkEnc::i18n->TranslateString("Note:")).Append(" ").Append(BonkEnc::i18n->TranslateString("You can specify multiple functions separated by semicolons.")), pos);
+
+	pos.x = 7;
+	pos.y = 79;
 	size.cx = 480;
 	size.cy = 62;
 
@@ -212,7 +256,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	check_qlp_precision_search->SetX(text_max_lpc_order_value->GetX() + maxTextSize + 8); check_qlp_precision_search->SetWidth(189 - maxTextSize);
 
 	pos.x = 7;
-	pos.y = 163;
+	pos.y = 153;
 	size.cx = 296;
 	size.cy = 62;
 
@@ -277,6 +321,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	mainWnd->RegisterObject(divbar);
 
 	tabwidget->RegisterObject(layer_simple);
+	tabwidget->RegisterObject(layer_format);
 	tabwidget->RegisterObject(layer_advanced);
 
 	layer_simple->RegisterObject(group_preset);
@@ -286,12 +331,17 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	layer_simple->RegisterObject(check_mid_side_stereo);
 	layer_simple->RegisterObject(check_loose_mid_side);
 
-	layer_advanced->RegisterObject(group_format);
-	layer_advanced->RegisterObject(check_streamable_subset);
-	layer_advanced->RegisterObject(text_blocksize);
-	layer_advanced->RegisterObject(slider_blocksize);
-	layer_advanced->RegisterObject(edit_blocksize);
-	layer_advanced->RegisterObject(text_blocksize_bytes);
+	layer_format->RegisterObject(group_format);
+	layer_format->RegisterObject(check_streamable_subset);
+	layer_format->RegisterObject(text_blocksize);
+	layer_format->RegisterObject(slider_blocksize);
+	layer_format->RegisterObject(edit_blocksize);
+	layer_format->RegisterObject(text_blocksize_bytes);
+
+	layer_advanced->RegisterObject(group_apodization);
+	layer_advanced->RegisterObject(text_apodization);
+	layer_advanced->RegisterObject(edit_apodization);
+	layer_advanced->RegisterObject(text_apodization_explain);
 
 	layer_advanced->RegisterObject(group_lpc);
 	layer_advanced->RegisterObject(text_max_lpc_order);
@@ -325,6 +375,7 @@ BonkEnc::ConfigureFLAC::~ConfigureFLAC()
 
 	DeleteObject(tabwidget);
 	DeleteObject(layer_simple);
+	DeleteObject(layer_format);
 	DeleteObject(layer_advanced);
 
 	DeleteObject(group_preset);
@@ -341,6 +392,12 @@ BonkEnc::ConfigureFLAC::~ConfigureFLAC()
 	DeleteObject(slider_blocksize);
 	DeleteObject(edit_blocksize);
 	DeleteObject(text_blocksize_bytes);
+
+	DeleteObject(group_apodization);
+	DeleteObject(text_apodization);
+	DeleteObject(edit_apodization);
+	DeleteObject(list_apodization);
+	DeleteObject(text_apodization_explain);
 
 	DeleteObject(group_lpc);
 	DeleteObject(text_max_lpc_order);
@@ -375,6 +432,7 @@ Void BonkEnc::ConfigureFLAC::OK()
 	currentConfig->flac_do_mid_side_stereo = do_mid_side_stereo;
 	currentConfig->flac_loose_mid_side_stereo = loose_mid_side_stereo;
 	currentConfig->flac_blocksize = (streamable_subset ? blocksize * 8 : Math::Max(0, Math::Min(32768, edit_blocksize->GetText().ToInt())));
+	currentConfig->flac_apodization = edit_apodization->GetText();
 	currentConfig->flac_max_lpc_order = max_lpc_order;
 	currentConfig->flac_qlp_coeff_precision = qlp_coeff_precision;
 	currentConfig->flac_do_qlp_coeff_prec_search = do_qlp_coeff_prec_search;
@@ -402,6 +460,8 @@ Void BonkEnc::ConfigureFLAC::SetPreset()
 		check_streamable_subset->Activate();
 		slider_blocksize->Activate();
 		edit_blocksize->Activate();
+
+		edit_apodization->Activate();
 
 		slider_max_lpc_order->Activate();
 		check_exhaustive_model->Activate();
@@ -432,6 +492,8 @@ Void BonkEnc::ConfigureFLAC::SetPreset()
 		check_streamable_subset->Deactivate();
 		slider_blocksize->Deactivate();
 		edit_blocksize->Deactivate();
+
+		edit_apodization->Deactivate();
 
 		slider_max_lpc_order->Deactivate();
 		check_exhaustive_model->Deactivate();
@@ -499,8 +561,20 @@ Void BonkEnc::ConfigureFLAC::SetStereoMode()
 
 Void BonkEnc::ConfigureFLAC::SetStreamableSubset()
 {
-	if (streamable_subset)	edit_blocksize->Deactivate();
-	else			edit_blocksize->Activate();
+	if (streamable_subset)
+	{
+		edit_blocksize->Deactivate();
+
+		slider_blocksize->SetRange(24, 576);
+		slider_max_lpc_order->SetRange(0, 12);
+	}
+	else
+	{
+		edit_blocksize->Activate();
+
+		slider_blocksize->SetRange(24, 4096);
+		slider_max_lpc_order->SetRange(0, 32);
+	}
 
 	SetBlockSize();
 }

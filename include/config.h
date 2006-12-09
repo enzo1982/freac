@@ -207,6 +207,7 @@ namespace BonkEnc
 			Bool		 flac_do_mid_side_stereo;
 			Bool		 flac_loose_mid_side_stereo;
 			Int		 flac_blocksize;
+			String		 flac_apodization;
 			Int		 flac_max_lpc_order;
 			Int		 flac_qlp_coeff_precision;
 			Bool		 flac_do_qlp_coeff_prec_search;
