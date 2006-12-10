@@ -2228,6 +2228,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION) == IDNO)
 		{
 			currentConfig->checkUpdatesAtStartup = False;
+			currentConfig->firstStart = False;
 
 			return Success();
 		}
@@ -2278,6 +2279,8 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 	}
 
 	ex_eUpdate_FreeUpdateContext(context);
+
+	currentConfig->firstStart = False;
 
 	return Success();
 }
