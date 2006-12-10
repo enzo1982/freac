@@ -26,6 +26,7 @@ namespace BonkEnc
 						~CDText();
 
 			Int			 ReadCDText();
+			Int			 ClearCDText();
 
 			const Array<String>	&GetCDText();
 	};

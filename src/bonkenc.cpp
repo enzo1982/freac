@@ -22,6 +22,8 @@
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 
+#include <input/filter-in-cdrip.h>
+
 Int	 ENCODER_BONKENC	= -1;
 Int	 ENCODER_BLADEENC	= -1;
 Int	 ENCODER_LAMEENC	= -1;
@@ -44,7 +46,6 @@ String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.x
 
 //String	 BonkEnc::BonkEnc::cddbMode	= "test";
 //String	 BonkEnc::BonkEnc::updatePath	= "file://eUpdate/eUpdate.xml";
-
 
 BonkEnc::BonkEnc::BonkEnc()
 {
@@ -168,7 +169,7 @@ Void BonkEnc::BonkEnc::ReadCD()
 
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
-	currentConfig->cdrip_read_active = True;
+	FilterInCDRip::StartDiscRead();
 
 	for (Int i = 0; i < numTocEntries; i++)
 	{
@@ -177,9 +178,7 @@ Void BonkEnc::BonkEnc::ReadCD()
 		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1) joblist->AddTrackByFileName(String("/cda").Append(String::FromInt(i + 1)));
 	}
 
-	currentConfig->cdrip_read_active = False;
-	currentConfig->cdrip_read_discids.RemoveAll();
-	currentConfig->cdrip_read_results.RemoveAll();
+	FilterInCDRip::FinishDiscRead();
 }
 
 BonkEnc::CDDBInfo BonkEnc::BonkEnc::GetCDDBData()

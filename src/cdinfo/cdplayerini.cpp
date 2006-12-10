@@ -112,6 +112,13 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 	return Success();
 }
 
+Int BonkEnc::CDPlayerIni::ClearCDInfo()
+{
+	cdInfo.RemoveAll();
+
+	return Success();
+}
+
 const Array<String> &BonkEnc::CDPlayerIni::GetCDInfo()
 {
 	return cdInfo;

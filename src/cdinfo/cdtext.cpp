@@ -98,6 +98,13 @@ Int BonkEnc::CDText::ReadCDText()
 	return Success();
 }
 
+Int BonkEnc::CDText::ClearCDText()
+{
+	cdText.RemoveAll();
+
+	return Success();
+}
+
 const Array<String> &BonkEnc::CDText::GetCDText()
 {
 	return cdText;

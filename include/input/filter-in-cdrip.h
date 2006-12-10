@@ -26,11 +26,16 @@ namespace BonkEnc
 			Int			 byteCount;
 			unsigned char		*buffer;
 
+			static Bool		 readActive;
+
 			static CDText		 cdText;
 			static Int		 cdTextDiscID;
 
-			static CDPlayerIni	 cdPlayerInfo;
-			static Int		 cdPlayerInfoDiscID;
+			static CDPlayerIni	 cdPlayer;
+			static Int		 cdPlayerDiscID;
+
+			static CDDBInfo		 cdInfo;
+			static Int		 cdInfoDiscID;
 		public:
 						 FilterInCDRip(Config *, Track *);
 						~FilterInCDRip();
@@ -41,6 +46,9 @@ namespace BonkEnc
 			Int			 GetTrackSize();
 
 			Track			*GetFileInfo(const String &);
+
+			static Int		 StartDiscRead();
+			static Int		 FinishDiscRead();
 	};
 };
 

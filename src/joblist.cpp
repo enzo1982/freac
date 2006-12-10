@@ -13,7 +13,9 @@
 #include <main.h>
 #include <dllinterfaces.h>
 #include <utilities.h>
+
 #include <input/inputfilter.h>
+#include <input/filter-in-cdrip.h>
 
 BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
 {
@@ -65,7 +67,7 @@ Int BonkEnc::JobList::GetNOfTracks()
 
 BonkEnc::Track *BonkEnc::JobList::GetNthTrack(Int n)
 {
-	if (GetNOfTracks() <= n) return NIL;
+	if (n < 0 || GetNOfTracks() <= n) return NIL;
 	
 	// Entries might have been moved in the joblist, so get the entry by index instead of position
 	return tracks.GetEntry(GetNthEntry(n)->GetHandle());
@@ -161,12 +163,14 @@ BonkEnc::Track *BonkEnc::JobList::GetSelectedTrack()
 	if (GetNOfTracks() == 0) return NIL;
 
 	ListEntry	*entry = GetSelectedEntry();
-	Int		 n = 0;
+	Int		 n = -1;
 
 	for (Int i = 0; i < GetNOfEntries(); i++)
 	{
 		if (GetNthEntry(i) == entry) n = i;
 	}
+
+	if (n == -1) return NIL;
 
 	return GetNthTrack(n);
 }
@@ -284,7 +288,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	if (dialog->ShowDialog() == Success())
 	{
-		BonkEnc::currentConfig->cdrip_read_active = True;
+		FilterInCDRip::StartDiscRead();
 
 		for (int i = 0; i < dialog->GetNumberOfFiles(); i++)
 		{
@@ -293,9 +297,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 			AddTrackByFileName(file);
 		}
 
-		BonkEnc::currentConfig->cdrip_read_active = False;
-		BonkEnc::currentConfig->cdrip_read_discids.RemoveAll();
-		BonkEnc::currentConfig->cdrip_read_results.RemoveAll();
+		FilterInCDRip::FinishDiscRead();
 	}
 
 	delete dialog;
@@ -530,16 +532,14 @@ Void BonkEnc::JobList::LoadList()
 
 		playlist.Load(dialog->GetFileName());
 
-		BonkEnc::currentConfig->cdrip_read_active = True;
+		FilterInCDRip::StartDiscRead();
 
 		for (Int i = 0; i < playlist.GetNOfTracks(); i++)
 		{
 			AddTrackByFileName(playlist.GetNthTrackFileName(i));
 		}
 
-		BonkEnc::currentConfig->cdrip_read_active = False;
-		BonkEnc::currentConfig->cdrip_read_discids.RemoveAll();
-		BonkEnc::currentConfig->cdrip_read_results.RemoveAll();
+		FilterInCDRip::FinishDiscRead();
 	}
 
 	delete dialog;

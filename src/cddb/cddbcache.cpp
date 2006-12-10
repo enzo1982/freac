@@ -60,8 +60,6 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 {
-	if (!config->enable_cddb_cache) return False;
-
 	const CDDBInfo	&cddbInfo = infoCache.GetEntry(nCddbInfo.discID);
 
 	if (cddbInfo != NIL)
@@ -71,6 +69,8 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 	}
 
 	infoCache.AddEntry(nCddbInfo, nCddbInfo.discID);
+
+	if (!config->enable_cddb_cache) return True;
 
 	// Save new entry to the persistant cache
 

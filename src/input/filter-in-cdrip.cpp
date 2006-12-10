@@ -16,11 +16,16 @@
 
 #include <dllinterfaces.h>
 
-BonkEnc::CDPlayerIni	 BonkEnc::FilterInCDRip::cdPlayerInfo;
-Int			 BonkEnc::FilterInCDRip::cdPlayerInfoDiscID;
+Bool			 BonkEnc::FilterInCDRip::readActive	= False;
+
+BonkEnc::CDPlayerIni	 BonkEnc::FilterInCDRip::cdPlayer;
+Int			 BonkEnc::FilterInCDRip::cdPlayerDiscID	= -1;
 
 BonkEnc::CDText		 BonkEnc::FilterInCDRip::cdText;
-Int			 BonkEnc::FilterInCDRip::cdTextDiscID;
+Int			 BonkEnc::FilterInCDRip::cdTextDiscID	= -1;
+
+BonkEnc::CDDBInfo	 BonkEnc::FilterInCDRip::cdInfo;
+Int			 BonkEnc::FilterInCDRip::cdInfoDiscID	= -1;
 
 BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilter(config, format)
 {
@@ -338,45 +343,34 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		cdTextDiscID = discid;
 	}
 
-	if (cdPlayerInfoDiscID != discid)
+	if (cdPlayerDiscID != discid)
 	{
-		cdPlayerInfo.ReadCDInfo();
+		cdPlayer.ReadCDInfo();
 
-		cdPlayerInfoDiscID = discid;
+		cdPlayerDiscID = discid;
 	}
 
-	CDDBInfo cdInfo;
-	Bool	 getCDDBFromCache = currentConfig->enable_cddb_cache;
-	Bool	 discIsInResults = False;
-
-	if (currentConfig->cdrip_read_active)
+	if (cdInfoDiscID != discid && !((cdText.GetCDText().GetEntry(trackNumber) != NIL || cdPlayer.GetCDInfo().GetEntry(trackNumber) != NIL) && !currentConfig->enable_overwrite_cdtext))
 	{
-		for (Int i = 0; i < currentConfig->cdrip_read_discids.GetNOfEntries(); i++)
+		if (readActive)
 		{
-			if (currentConfig->cdrip_read_discids.GetNthEntry(i) == discid)		 discIsInResults = True;
-			if (discIsInResults && currentConfig->cdrip_read_results.GetNthEntry(i)) getCDDBFromCache = True;
-		}
-	}
+			if (currentConfig->enable_cddb_cache) cdInfo = currentConfig->cddbCache->GetCacheEntry(discid);
 
-	if (getCDDBFromCache) cdInfo = currentConfig->cddbCache->GetCacheEntry(discid);
-
-	if (cdInfo == NIL && currentConfig->enable_auto_cddb && !discIsInResults && !((cdText.GetCDText().GetEntry(trackNumber) != NIL || cdPlayerInfo.GetCDInfo().GetEntry(trackNumber) != NIL) && !currentConfig->enable_overwrite_cdtext))
-	{
-		Int	 oDrive = currentConfig->cdrip_activedrive;
-
-		currentConfig->cdrip_activedrive = audiodrive;
-
-		cdInfo = currentConfig->appMain->GetCDDBData();
-
-		if (cdInfo != NIL) currentConfig->cddbCache->AddCacheEntry(cdInfo);
-
-		if (currentConfig->cdrip_read_active)
-		{
-			currentConfig->cdrip_read_discids.AddEntry(discid);
-			currentConfig->cdrip_read_results.AddEntry(cdInfo != NIL ? True : False);
+			cdInfoDiscID = discid;
 		}
 
-		currentConfig->cdrip_activedrive = oDrive;
+		if (cdInfo == NIL && currentConfig->enable_auto_cddb)
+		{
+			Int	 oDrive = currentConfig->cdrip_activedrive;
+
+			currentConfig->cdrip_activedrive = audiodrive;
+
+			cdInfo = currentConfig->appMain->GetCDDBData();
+
+			if (cdInfo != NIL) currentConfig->cddbCache->AddCacheEntry(cdInfo);
+
+			currentConfig->cdrip_activedrive = oDrive;
+		}
 	}
 
 	if (cdInfo != NIL)
@@ -403,16 +397,16 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		nFormat->title		= cdText.GetCDText().GetEntry(trackNumber);
 		nFormat->album		= cdText.GetCDText().GetEntry(100);
 	}
-	else if (cdPlayerInfo.GetCDInfo().GetEntry(trackNumber) != NIL)
+	else if (cdPlayer.GetCDInfo().GetEntry(trackNumber) != NIL)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
 		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
-		nFormat->artist		= cdPlayerInfo.GetCDInfo().GetEntry(0);
-		nFormat->title		= cdPlayerInfo.GetCDInfo().GetEntry(trackNumber);
-		nFormat->album		= cdPlayerInfo.GetCDInfo().GetEntry(100);
+		nFormat->artist		= cdPlayer.GetCDInfo().GetEntry(0);
+		nFormat->title		= cdPlayer.GetCDInfo().GetEntry(trackNumber);
+		nFormat->album		= cdPlayer.GetCDInfo().GetEntry(100);
 	}
 	else
 	{
@@ -431,4 +425,27 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	nFormat->origFilename.Append(String::FromInt(nFormat->track));
 
 	return nFormat;
+}
+
+Int BonkEnc::FilterInCDRip::StartDiscRead()
+{
+	readActive		= True;
+
+	return Success();
+}
+
+Int BonkEnc::FilterInCDRip::FinishDiscRead()
+{
+	readActive		 = False;
+
+	cdPlayer.ClearCDInfo();
+	cdPlayerDiscID		= -1;
+
+	cdText.ClearCDText();
+	cdTextDiscID		= -1;
+
+	cdInfo			= NIL;
+	cdInfoDiscID		= -1;
+
+	return Success();
 }

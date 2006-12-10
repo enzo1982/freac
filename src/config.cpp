@@ -20,7 +20,6 @@ BonkEnc::Config::Config()
 	shutdownAfterEncoding = False;
 
 	cdrip_autoRead_active = False;
-	cdrip_read_active = False;
 
 	appMain = NIL;
 	cddbCache = new CDDBCache(this);

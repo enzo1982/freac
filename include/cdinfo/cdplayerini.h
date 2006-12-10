@@ -26,6 +26,7 @@ namespace BonkEnc
 						~CDPlayerIni();
 
 			Int			 ReadCDInfo();
+			Int			 ClearCDInfo();
 
 			const Array<String>	&GetCDInfo();
 	};
