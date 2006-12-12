@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
@@ -387,5 +387,12 @@
     <entry id="375" string="CDDB queries to perform:">実行するCDDBクエリ</entry>
     <entry id="376" string="Would you like to perform this query again later?">このクエリを後で再び実行しますか？</entry>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROMドライブへの接続はWindowsによって拒否されました。&#10;&#10;CD-ROMドライブへの接続権を&#10;システム管理者に問い合わせてください。</entry>
+    <entry id="378" string="CD information">CDの情報</entry>
+    <entry id="379" string="Read CD Text">CD Textを読み込む</entry>
+    <entry id="380" string="Read cdplayer.ini">cdplayer.iniを読み込む</entry>
+    <entry id="381" string="Apodization">アポダイゼーション</entry>
+    <entry id="382" string="Apodization function(s):">アポタイゼーションする関数:</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">セミコロンで区切って複数の関数を設定できます。</entry>
+    <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEncは起動時に自動で更新を確認できます。&#10;&#10;起動時に更新を確認しますか？</entry>
   </data>
 </LangFile>
