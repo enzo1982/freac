@@ -228,6 +228,7 @@
   <entry id="216" string="Stop">Állj</entry>
   <entry id="217" string="Cannot play a file while encoding!">Tömörítés alatt nem lehet lejátszani!</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Lejátszás alatt nem lehet tömöríteni!</entry>
+  <entry id="219" string="Enable remote CDDB database">Távoli CDDB adatbázis engedélyezése</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">ATH aktiválása</entry>
   <entry id="222" string="Use default setting">Alapbeállítások használata</entry>
@@ -360,5 +361,38 @@
   <entry id="349" string="Allow overwriting input file">Bemeneti fájl felülírásának engedélyezése</entry>
   <entry id="350" string="Encode to single file">Egy fájlba tömörítés</entry>
   <entry id="351" string="Encoder options">Tömörítő beállításai</entry>
+  <entry id="352" string="Skip">Átugrás</entry>
+  <entry id="353" string="Enable local CDDB database">Helyi CDDB adatbázis engedélyezése</entry>
+  <entry id="354" string="CDDB directory:">CDDB könyvtár:</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">Válassz CDDB adatbázis könyvtárat:</entry>
+  <entry id="356" string="File already exists">A fájl már létezik!</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">A %1 kimeneti fájl&#10;már létezik! Felül szeretnéd írni?</entry>
+  <entry id="358" string="Overwrite all further files">További fájlok felülírása</entry>
+  <entry id="359" string="Start ripping automatically">Automatikus másolás indítása</entry>
+  <entry id="360" string="Submit to online database later">Későbbi rögzítés az online adatbázisba</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">A CDDB támogatás inaktív! Engedélyezd a&#10;helyi vagy távoli CDDB támogatást a konfig. menüben.</entry>
+  <entry id="362" string="CDDB entries to submit:">Rögzítendő CDDB bejegyzések:</entry>
+  <entry id="363" string="Show queued CDDB entries...">Várakoztatott CDDB bejegyzések kijelzése...</entry>
+  <entry id="364" string="Submit all">Mindent közzétesz</entry>
+  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">A távoli CDDB támogatás inaktív! Engedélyezd&#10;a távoli CDDB támogatást a konfig. menüben.</entry>
+  <entry id="366" string="Category">Kategória</entry>
+  <entry id="367" string="Close">Bezár</entry>
+  <entry id="368" string="Automatization">Automatizálás</entry>
+  <entry id="369" string="Query CDDB database later">CDDB adatbázis lekérdezése később</entry>
+  <entry id="370" string="Show queued CDDB queries...">Várakoztatott CDDB bejegyzések kijelzése...</entry>
+  <entry id="371" string="CDDB queries">CDDB lekérdezések</entry>
+  <entry id="372" string="Query">Lekérdezés</entry>
+  <entry id="373" string="Query all">Mind lekérdezni</entry>
+  <entry id="374" string="Query string">Sorozat lekérdezése</entry>
+  <entry id="375" string="CDDB queries to perform:">Végrehajtandó CDDB lekérdezések:</entry>
+  <entry id="376" string="Would you like to perform this query again later?">Később ismét le szeretné futtatni ezt a lekérdezést?</entry>
+  <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">A CD-ROM meghajtók elérését blokkolta a Windows.&#10;&#10;Vedd fel a kapcsolatot a rendszer adminisztrátorral&#10;a CD-ROM-hoz való jogosultság megadásáért.</entry>
+  <entry id="378" string="CD information">CI információ</entry>
+  <entry id="379" string="Read CD Text">CD-Text beolvasás</entry>
+  <entry id="380" string="Read cdplayer.ini">cdplayer.ini beolvasás</entry>
+  <entry id="381" string="Apodization">Apodizáció</entry>
+  <entry id="382" string="Apodization function(s):">Apodizációs funkció(k):</entry>
+  <entry id="383" string="You can specify multiple functions separated by semicolons.">Több, oszlopba rendezett funkciót is választhatsz.</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">A BonkEnc önállóan képes a program újabb verziójának&#10;online keresésére induláskor.&#10;&#10;Szeretnéd, ha a BonkEnc frissítést keresne induláskor?</entry>
  </data>
 </LangFile>

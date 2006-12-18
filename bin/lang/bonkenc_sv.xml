@@ -20,7 +20,7 @@
   <entry id="8" string="General settings...">Generella inställningar...</entry>
   <entry id="9" string="Configure selected encoder...">Konfigurera markerad kodare...</entry>
   <entry id="10" string="Audio file(s)">Ljud fil(er)</entry>
-  <entry id="11" string="Audio CD contents">Ljud CD inehåll</entry>
+  <entry id="11" string="Audio CD contents">Ljud CD innehåll</entry>
   <entry id="12" string="Start encoding">Starta kodning</entry>
   <entry id="13" string="Stop encoding">Stoppa kodning</entry>
   <entry id="14" string="Encoding file:">Kodar fil:</entry>
@@ -33,7 +33,7 @@
   <entry id="21" string="none">ingen</entry>
   <entry id="22" string="Help topics...">Hjälp...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Lägg till ljud fil(er) till jobblistan</entry>
-  <entry id="24" string="Add audio CD contents to the joblist">Lägg till ljud CD inehåll till jobblistan</entry>
+  <entry id="24" string="Add audio CD contents to the joblist">Lägg till ljud CD innehåll till jobblistan</entry>
   <entry id="25" string="Remove the selected entry from the joblist">Ta bort det markerade objektet från jobblistan</entry>
   <entry id="26" string="Clear the entire joblist">Töm hela jobblistan</entry>
   <entry id="27" string="Configure general settings">Konfigurera generella inställningar</entry>
@@ -102,8 +102,8 @@
   <entry id="90" string="Set Private bit">Aktivera Privat bit</entry>
   <entry id="91" string="Encoder mode">Kodnings läge</entry>
   <entry id="92" string="Stereo mode">Stereo läge</entry>
-  <entry id="93" string="Quantization">Kvantisation</entry>
-  <entry id="94" string="Downsampling ratio">Nersamplings ratio</entry>
+  <entry id="93" string="Quantization">Kvantisering</entry>
+  <entry id="94" string="Downsampling ratio">Nersamplings förhållande</entry>
   <entry id="95" string="Predictor size">Prediktor storlek</entry>
   <entry id="96" string="Enable lossless encoding">Aktivera lossless kodning</entry>
   <entry id="97" string="Enable Joint Stereo">Aktivera Joint Stereo</entry>
@@ -144,7 +144,7 @@
   <entry id="132" string="pad no frames">padda inga rutor</entry>
   <entry id="133" string="pad all frames">padda alla rutor</entry>
   <entry id="134" string="adjust padding">justera padding</entry>
-  <entry id="135" string="Output sampling rate">Output sampling rate</entry>
+  <entry id="135" string="Output sampling rate">Utmatning sampling rate</entry>
   <entry id="136" string="no resampling">ingen resampling</entry>
   <entry id="137" string="Highpass filter">Högpass filter</entry>
   <entry id="138" string="Set Highpass frequency (Hz):">Välj Högpass frekvens (Hz):</entry>
@@ -158,7 +158,7 @@
   <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis Filer</entry>
   <entry id="147" string="Bonk Files">Bonk Filer</entry>
   <entry id="148" string="Automatic CDDB queries">Automatisk CDDB avfrågning</entry>
-  <entry id="149" string="CDDB access mode:">CDDB anslutnings mode:</entry>
+  <entry id="149" string="CDDB access mode:">CDDB anslutnings läge:</entry>
   <entry id="150" string="CDDB server:">CDDB server:</entry>
   <entry id="151" string="Port:">Port:</entry>
   <entry id="152" string="Info">Information</entry>
@@ -171,7 +171,7 @@
   <entry id="159" string="No exact matches found">Inga exakta matchningar funna</entry>
   <entry id="160" string="Multiple matches found">Flera matchningar funna</entry>
   <entry id="161" string="Matches">Matchingar</entry>
-  <entry id="162" string="Select the entry that best fits your CD:">Välj den inmatningen som passar bäst till din CD-skiva:</entry>
+  <entry id="162" string="Select the entry that best fits your CD:">Välj den data som passar bäst till din CD-skiva:</entry>
   <entry id="163" string="Extended CDDB settings">Fler CDDB inställningar</entry>
   <entry id="164" string="CGI scripts">CGI Skript</entry>
   <entry id="165" string="CDDB query script:">CDDB avfrågnings skript:</entry>
@@ -181,8 +181,8 @@
   <entry id="169" string="no proxy">ingen proxy</entry>
   <entry id="170" string="Proxy type:">Proxy typ:</entry>
   <entry id="171" string="Proxy server:">Proxy server:</entry>
-  <entry id="172" string="Presets">Inmatningar</entry>
-  <entry id="173" string="Use preset:">Använd inmatning:</entry>
+  <entry id="172" string="Presets">Val</entry>
+  <entry id="173" string="Use preset:">Använd val:</entry>
   <entry id="174" string="Custom settings">Avancerade inställningar</entry>
   <entry id="175" string="Medium">Medium</entry>
   <entry id="176" string="Standard">Standard</entry>
@@ -236,12 +236,12 @@
   <entry id="227" string="The output directory does not exist! Do you want to create it?">Ut mappen existerar inte! Vill du skapa den?</entry>
   <entry id="228" string="Filename pattern">Filnamns pattern</entry>
   <entry id="229" string="unknown album">okänt album</entry>
-  <entry id="230" string="Translated by %1.">Översatt av %!.</entry>
+  <entry id="230" string="Translated by %1.">Översatt av %1.</entry>
   <entry id="231" string="Select all">Markera alla</entry>
   <entry id="232" string="Select none">Markera ingen</entry>
-  <entry id="233" string="Toggle selection">Toggle selection</entry>
+  <entry id="233" string="Toggle selection">Toggle val</entry>
   <entry id="234" string="Show Tip of the Day">Visa tipset för dagen</entry>
-  <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnk är tillgängligt i %1 språk.&#10;Om ditt språk inte finns tillgängligt kan&#10;du lätt översätta BonkEnc med hjälp av&#10;'smooth Translatorn' applikationen</entry>
+  <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnk är tillgängligt i %1 språk.&#10;Om ditt språk inte finns tillgängligt kan&#10;du lätt översätta BonkEnc med hjälp av&#10;'Smooth Translator' applikationen</entry>
   <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc kommer med support för&#10;LAME, Ogg Vorbis, FAAC och Bonk avkodare.&#10;En avkodare för VQF formatet är&#10;tillgänglig på BonkEnc webbsidan: %1</entry>
   <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc kan använda Winamp 2 input plug-ins&#10;för att få support för fler format.&#10;Kopiera in_*.dll filer till BonkEnc/plugins mappen&#10;för att aktivera BonkEnc för att läsa dessa format.</entry>
   <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Med BonkEnc kan du registrera freedb CD&#10;databas registreringar inehållande Unicode bokstäver/symboler.&#10;Så om du har någon CD med non-Latin artist eller titel,&#10;kan du registrera det korrekta namnet i freedb databasen&#10;med BonkEnc.</entry>
@@ -311,16 +311,16 @@
   <entry id="302" string="Residual coding">Residual kodning</entry>
   <entry id="303" string="Minimum partition order">Minimal partition order</entry>
   <entry id="304" string="Maximum partition order">Maximal partition order</entry>
-  <entry id="305" string="By pattern">Av pattern</entry>
+  <entry id="305" string="By pattern">Av mall</entry>
   <entry id="306" string="From directory">Från sökväg</entry>
   <entry id="307" string="Directory">Sökväg</entry>
   <entry id="308" string="Add directory">Lägg till sökväg</entry>
   <entry id="309" string="Choose directory:">Välj sökväg:</entry>
-  <entry id="310" string="Select the folder to add to the joblist:">Välj mappa att lägga till till jobblistan</entry>
-  <entry id="311" string="Add files by pattern">Lägg till filer by pattern</entry>
-  <entry id="312" string="Pattern">Pattern</entry>
+  <entry id="310" string="Select the folder to add to the joblist:">Välj mappa att lägga till till jobblistan:</entry>
+  <entry id="311" string="Add files by pattern">Lägg till filer från mall</entry>
+  <entry id="312" string="Pattern">Mall</entry>
   <entry id="313" string="Start directory">Start sökväg</entry>
-  <entry id="314" string="No files found matching pattern:">Inga filer funna som matchar pattern:</entry>
+  <entry id="314" string="No files found matching pattern:">Inga filer funna som matchar mall:</entry>
   <entry id="315" string="Edit language file">Redigera språkfil</entry>
   <entry id="316" string="Use for all selected tracks">Använd för alla markerade spår</entry>
   <entry id="317" string="Interpret string as">Interpret sträng som</entry>
@@ -332,19 +332,19 @@
   <entry id="323" string="all lower case">alla ord som gemener</entry>
   <entry id="324" string="all upper case">alla ord som VERSALER</entry>
   <entry id="325" string="Status">Status</entry>
-  <entry id="326" string="Successfully read CD!">Avläsning av CD framgångsrik!</entry>
+  <entry id="326" string="Successfully read CD!">Läsning från CD framgångsrik!</entry>
   <entry id="327" string="Comment">Kommentar</entry>
-  <entry id="328" string="Manage CDDB cache entries...">Manage CDDB cache entries...</entry>
+  <entry id="328" string="Manage CDDB cache entries...">Sköt om CDDB cache nycklar...</entry>
   <entry id="329" string="Save entry">Spara inmatning</entry>
   <entry id="330" string="Remove entry">Radera inmatning</entry>
   <entry id="331" string="Disc name">Disk-namn</entry>
   <entry id="332" string="Charset">Tecken-uppsättning</entry>
   <entry id="333" string="Preview">Förhandsvisning</entry>
-  <entry id="334" string="Downloaded CDDB entries:">Nerladdade CDDB inmatningar:</entry>
+  <entry id="334" string="Downloaded CDDB entries:">Nerladdade CDDB nycklar:</entry>
   <entry id="335" string="User name:">Användarnamn:</entry>
   <entry id="336" string="Password:">Lösenord:</entry>
   <entry id="337" string="Delete original files after encoding">Radera originalfiler efter kodning</entry>
-  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Denna funktion kommer att radera originalfilerna&#10;efter att dom har blivit avkodade! Är du säker på att&#10;du vill fortsätta?</entry>
+  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Denna funktion kommer att radera originalfilerna&#10;efter att dom har blivit kodade! Är du säker på att&#10;du vill fortsätta?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokollet kan ej användas över HTTP&#10;proxys!&#10;&#10;Vill du ändra protokollet till HTTP?</entry>
   <entry id="340" string="Playlists">Spelningslistor</entry>
   <entry id="341" string="Create playlists">Skapa spelningslistor</entry>

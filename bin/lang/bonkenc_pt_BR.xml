@@ -6,7 +6,7 @@
   <property name="language">Portuguese (Brazilian) / Português (Brasil)</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
-  <property name="author">Escada</property>
+  <property name="author">J. B. Escada Jr.</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -15,7 +15,7 @@
   <entry id="3" string="Encode">Codificar</entry>
   <entry id="4" string="Add">Adicionar</entry>
   <entry id="5" string="Remove">Remover</entry>
-  <entry id="6" string="Clear joblist">Limpar lista</entry>
+  <entry id="6" string="Clear joblist">Limpar a fila de trabalho</entry>
   <entry id="7" string="Exit">Sair</entry>
   <entry id="8" string="General settings...">Configurações</entry>
   <entry id="9" string="Configure selected encoder...">Configurar codificador selecionado...</entry>
@@ -29,17 +29,17 @@
   <entry id="17" string="Selected encoder:">Selecionar codificador:</entry>
   <entry id="18" string="File progress:">Progresso do arquivo:</entry>
   <entry id="19" string="Output dir.:">Pasta de saída:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 arquivo(s) na lista:</entry>
+  <entry id="20" string="%1 file(s) in joblist:">%1 arquivo(s) na fila:</entry>
   <entry id="21" string="none">nenhum</entry>
   <entry id="22" string="Help topics...">Ajuda...</entry>
-  <entry id="23" string="Add audio file(s) to the joblist">Adicionar arquivo de áudio à lista</entry>
-  <entry id="24" string="Add audio CD contents to the joblist">Adicionar conteúdo do CD à lista</entry>
-  <entry id="25" string="Remove the selected entry from the joblist">Remover os itens selecionados da lista</entry>
-  <entry id="26" string="Clear the entire joblist">Limpar a lista</entry>
+  <entry id="23" string="Add audio file(s) to the joblist">Adicionar arquivo de áudio à fila</entry>
+  <entry id="24" string="Add audio CD contents to the joblist">Adicionar conteúdo do CD à fila</entry>
+  <entry id="25" string="Remove the selected entry from the joblist">Remover os itens selecionados da fila de trabalho</entry>
+  <entry id="26" string="Clear the entire joblist">Limpar a fila de trabalho</entry>
   <entry id="27" string="Configure general settings">Configurar opções</entry>
   <entry id="28" string="Configure the selected audio encoder">Configurar o codificador de áudio selecionado</entry>
   <entry id="29" string="Start the encoding process">Iniciar o processo de codificação</entry>
-  <entry id="30" string="Cannot modify the joblist while encoding!">Não se pode modificar a lista durante a codificação!</entry>
+  <entry id="30" string="Cannot modify the joblist while encoding!">Não se pode modificar a fila durante a codificação!</entry>
   <entry id="31" string="Error">Erro</entry>
   <entry id="32" string="Audio Files">Arquivos de áudio</entry>
   <entry id="33" string="Apple Audio Files">Arquivos de áudio da Apple</entry>
@@ -199,7 +199,7 @@
   <entry id="187" string="Year">Ano</entry>
   <entry id="188" string="Genre">Gênero</entry>
   <entry id="189" string="Album">Álbum</entry>
-  <entry id="190" string="Info tags">Info</entry>
+  <entry id="190" string="Info tags">Campos de texto</entry>
   <entry id="191" string="Default information">Informação padrão</entry>
   <entry id="192" string="Default comment string:">Comentário padrão:</entry>
   <entry id="193" string="unknown artist">artista desconhecido</entry>
@@ -228,6 +228,7 @@
   <entry id="216" string="Stop">Parar</entry>
   <entry id="217" string="Cannot play a file while encoding!">Não se pode tocar um arquivo durante a codificação!</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Não se pode codificar durante a reprodução de um arquivo!</entry>
+  <entry id="219" string="Enable remote CDDB database">Ativar base de dados remota do CDDB</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Permitir ATH:</entry>
   <entry id="222" string="Use default setting">Usar padrão</entry>
@@ -284,30 +285,30 @@
   <entry id="273" string="Write ID3v2 tags">Escrever campos ID3v2</entry>
   <entry id="274" string="Write Vorbis Comment tags">Escrever campos de comentários do Vorbis</entry>
   <entry id="275" string="Write MP4 metadata info">Escrever metadata do MP4</entry>
-  <entry id="276" string="ID3v1 tag encoding:">Codificação dos campos ID3v1:</entry>
-  <entry id="277" string="ID3v2 tag encoding:">Codificação dos campos ID3v2:</entry>
-  <entry id="278" string="Vorbis Comment tag encoding:">Codificação dos campos de comentário do Vorbis:</entry>
-  <entry id="279" string="MP4 metadata encoding:">Codificação do metadata do MP4:</entry>
+  <entry id="276" string="ID3v1 tag encoding:">Campos ID3v1:</entry>
+  <entry id="277" string="ID3v2 tag encoding:">Campos ID3v2:</entry>
+  <entry id="278" string="Vorbis Comment tag encoding:">Campos de comentário do Vorbis:</entry>
+  <entry id="279" string="MP4 metadata encoding:">Metadata do MP4:</entry>
   <entry id="280" string="Tag encodings">Codificação dos campos:</entry>
-  <entry id="281" string="Update joblist with this information">Atualizar a lista de trabalho com este dado</entry>
+  <entry id="281" string="Update joblist with this information">Atualizar a fila com este dado</entry>
   <entry id="282" string="unknown genre">Gênero desconhecido</entry>
-  <entry id="283" string="Load joblist...">Carregar uma lista de trabalho...</entry>
-  <entry id="284" string="Save joblist...">Salvar a lista de trabalho...</entry>
+  <entry id="283" string="Load joblist...">Carregar uma fila de trabalho...</entry>
+  <entry id="284" string="Save joblist...">Salvar a fila de trabalho...</entry>
   <entry id="285" string="Pause/resume encoding">Parar/recomeçar a codificação</entry>
   <entry id="286" string="Shutdown after encoding">Desligar após codificação</entry>
   <entry id="287" string="Playlist Files">Arquivos de listas de execução</entry>
   <entry id="288" string="unknown year">ano desconhecido</entry>
   <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Não consigo inicializar o codificador %1! Verifique a configuração!</entry>
-  <entry id="290" string="Blocksize:">Tamanho do bloco:</entry>
-  <entry id="291" string="Use streamable subset">Usar &quot;streamable subset&quot;</entry>
+  <entry id="290" string="Blocksize:">Bloco de:</entry>
+  <entry id="291" string="Use streamable subset">Use &quot;streamable subset&quot;</entry>
   <entry id="292" string="Adaptive Joint Stereo">Joint-estéreo adaptativo</entry>
   <entry id="293" string="Fastest encoding">Codificação rápida</entry>
   <entry id="294" string="Best compression">Melhor compressão</entry>
   <entry id="295" string="Linear predictor">Preditor linear</entry>
-  <entry id="296" string="Maximum LPC order">Máxima ordem LPC</entry>
-  <entry id="297" string="Quantized LPC precision">Precisão de quantização LPC</entry>
-  <entry id="298" string="Exhaustive model search">Modelo de busca exaustiva</entry>
-  <entry id="299" string="Optimize LPC quantization">Quantização LPC otimizada</entry>
+  <entry id="296" string="Maximum LPC order">Ordem máxima</entry>
+  <entry id="297" string="Quantized LPC precision">Quantização</entry>
+  <entry id="298" string="Exhaustive model search">Busca exaustiva</entry>
+  <entry id="299" string="Optimize LPC quantization">Quantização otimizada</entry>
   <entry id="300" string="disabled">desabilitado</entry>
   <entry id="301" string="auto">auto</entry>
   <entry id="302" string="Residual coding">Codificação residual</entry>
@@ -318,7 +319,7 @@
   <entry id="307" string="Directory">Pasta</entry>
   <entry id="308" string="Add directory">Insere pasta</entry>
   <entry id="309" string="Choose directory:">Escolher pasta:</entry>
-  <entry id="310" string="Select the folder to add to the joblist:">Selecionar a pasta para adicionar à lista de trabalho</entry>
+  <entry id="310" string="Select the folder to add to the joblist:">Selecionar a pasta para adicionar à fila de trabalho:</entry>
   <entry id="311" string="Add files by pattern">Adicionar arquivos por modelo</entry>
   <entry id="312" string="Pattern">Modelo</entry>
   <entry id="313" string="Start directory">Pasta inicial</entry>
@@ -360,5 +361,38 @@
   <entry id="349" string="Allow overwriting input file">Permitir sobrescrever o arquivo de entrada</entry>
   <entry id="350" string="Encode to single file">Codificar num arquivo único</entry>
   <entry id="351" string="Encoder options">Opções do codificador</entry>
+  <entry id="352" string="Skip">Pular</entry>
+  <entry id="353" string="Enable local CDDB database">Ativar base de dados local do CDDB</entry>
+  <entry id="354" string="CDDB directory:">Pasta CDDB:</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">Selecionar a pasta para o CDDB:</entry>
+  <entry id="356" string="File already exists">Arquivo já existe</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">O arquivo %1&#10;já existe! Quer sobrescrevê-lo?</entry>
+  <entry id="358" string="Overwrite all further files">Sobrescreva todos os demais arquivos</entry>
+  <entry id="359" string="Start ripping automatically">Extrair automaticamente</entry>
+  <entry id="360" string="Submit to online database later">Enviar mais tarde para a base de dados online</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suporte CDDB está inativo! Ative o suporte CDDB&#10;local ou remoto no diálogo de configuração.</entry>
+  <entry id="362" string="CDDB entries to submit:">Itens CDDB para enviar:</entry>
+  <entry id="363" string="Show queued CDDB entries...">Mostrar itens CDDB armazenados...</entry>
+  <entry id="364" string="Submit all">Enviar tdo</entry>
+  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB remoto está inativo! Ative o&#10;CDDB no diálogo de configuração.</entry>
+  <entry id="366" string="Category">Categoria</entry>
+  <entry id="367" string="Close">Fechar</entry>
+  <entry id="368" string="Automatization">Automatizar</entry>
+  <entry id="369" string="Query CDDB database later">Pesquisar o CDDB mais tarde</entry>
+  <entry id="370" string="Show queued CDDB queries...">Mostrar pesquisas CDDB na fila...</entry>
+  <entry id="371" string="CDDB queries">Pesquisas CDDB</entry>
+  <entry id="372" string="Query">Pesquisar</entry>
+  <entry id="373" string="Query all">Pesquisar todas</entry>
+  <entry id="374" string="Query string">Comando de pesquisa</entry>
+  <entry id="375" string="CDDB queries to perform:">Pesquisas CDDB a efetuar:</entry>
+  <entry id="376" string="Would you like to perform this query again later?">Gostaria de fazer esta pesquisa de novo no futuro?</entry>
+  <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">O acesso ao drive de CD foi bloqueado pelo Windows.&#10;&#10;Contate o administrador do sistema para permitir&#10;acesso ao drive de CD-ROM.</entry>
+  <entry id="378" string="CD information">Informações do CD:</entry>
+  <entry id="379" string="Read CD Text">Ler o CD-Text</entry>
+  <entry id="380" string="Read cdplayer.ini">Ler cdplayer.ini</entry>
+  <entry id="381" string="Apodization">Apodização</entry>
+  <entry id="382" string="Apodization function(s):">Funções de apodização:</entry>
+  <entry id="383" string="You can specify multiple functions separated by semicolons.">Pode-se especificar várias funções separadas por ponto e vírgula.</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">Ao iniciar, o BonkEnc pode verificar automaticamente&#10;se há alguma atualização disponível.&#10;&#10;Deseja que o BonkEnc verifique as atualizaçãoes&#10;automaticamente ao iniciar?</entry>
  </data>
 </LangFile>
