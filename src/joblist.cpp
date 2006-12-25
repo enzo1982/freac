@@ -519,6 +519,13 @@ Void BonkEnc::JobList::ToggleSelection()
 
 Void BonkEnc::JobList::LoadList()
 {
+	if (BonkEnc::currentConfig->appMain->encoding)
+	{
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
+
+		return;
+	}
+
 	FileSelection	*dialog = new FileSelection();
 
 	dialog->SetParentWindow(container->GetContainerWindow());
