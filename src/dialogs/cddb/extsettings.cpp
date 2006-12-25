@@ -18,11 +18,11 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Point(140, 140), Size(350, 219));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Point(140, 140), Size(352, 221));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
-	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
+	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
 	register_layer_http	= new Layer(BonkEnc::i18n->TranslateString("HTTP settings"));
 	register_layer_proxy	= new Layer(BonkEnc::i18n->TranslateString("Proxy settings"));

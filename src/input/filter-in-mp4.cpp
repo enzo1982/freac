@@ -102,7 +102,7 @@ Int BonkEnc::FilterInMP4::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 		ex_MP4FreeMemory((u_int8_t *) buffer);
 
-	        if ((frameInfo.error == 0) && (frameInfo.samples > 0))
+	        if ((frameInfo.error == 0) && (frameInfo.samples > 0) && (samples != NIL))
 		{
 			backBuffer.Resize(samplesRead * 2);
 

@@ -30,11 +30,11 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 
 	currentConfig = BonkEnc::currentConfig;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(120, 120), Size(568, 329));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(120, 120), Size(570, 331));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
-	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
+	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
 	register_layer_encoders	= new GeneralSettingsLayerEncoders();
 	register_layer_playlists= new GeneralSettingsLayerPlaylists();

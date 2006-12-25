@@ -52,6 +52,8 @@ Bool BonkEnc::FilterInWAVE::Deactivate()
 
 Int BonkEnc::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
+	if (driver->GetPos() == driver->GetSize()) return -1;
+
 	data.Resize(size);
 
 	driver->ReadData(data, size);

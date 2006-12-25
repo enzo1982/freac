@@ -48,11 +48,11 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	enable_ath = currentConfig->lame_enable_ath;
 	enable_tempmask = currentConfig->lame_use_tns;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "LAME MP3"), Point(140, 140), Size(405, 307));
+	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "LAME MP3"), Point(140, 140), Size(407, 309));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
-	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
+	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
 	register_layer_basic	= new Layer(BonkEnc::i18n->TranslateString("Basic"));
 	register_layer_vbr	= new Layer("VBR");

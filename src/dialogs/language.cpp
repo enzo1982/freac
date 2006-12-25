@@ -18,11 +18,11 @@ BonkEnc::LanguageDlg::LanguageDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(String("Welcome to BonkEnc ").Append(BonkEnc::shortVersion), Point(120, 120), Size(300, 196));
+	mainWnd			= new Window(String("Welcome to BonkEnc ").Append(BonkEnc::shortVersion), Point(120, 120), Size(302, 198));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
-	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
+	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 87;
 	pos.y = 29;

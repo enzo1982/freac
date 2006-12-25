@@ -251,8 +251,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	check_cuesheet		= new CheckBox("Create cue sheet", pos, size, &currentConfig->createCueSheet);
 	check_cuesheet->SetOrientation(OR_UPPERRIGHT);
 
-	info_divider		= new Divider(136 + (currentConfig->showTitleInfo ? 68 : 0), OR_HORZ | OR_BOTTOM);
-	info_bottom		= new Divider(136, OR_HORZ | OR_BOTTOM);
+	info_divider		= new Divider(113 + (currentConfig->showTitleInfo ? 68 : 0), OR_HORZ | OR_BOTTOM);
+	info_bottom		= new Divider(113, OR_HORZ | OR_BOTTOM);
 
 	pos.y = 121 + (currentConfig->showTitleInfo ? 68 : 0);
 	pos.x = 5;
@@ -809,7 +809,7 @@ Void BonkEnc::BonkEncGUI::ResizeProc()
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	info_divider->SetPos(136 + (currentConfig->showTitleInfo ? 68 : 0));
+	info_divider->SetPos(113 + (currentConfig->showTitleInfo ? 68 : 0));
 	info_background->SetY(121 + (currentConfig->showTitleInfo ? 68 : 0));
 
 	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);

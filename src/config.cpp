@@ -62,7 +62,7 @@ Bool BonkEnc::Config::LoadSettings()
 	wndPos.x				= config->GetIntValue("Settings", "WindowPosX", 100);
 	wndPos.y				= config->GetIntValue("Settings", "WindowPosY", 100);
 	wndSize.cx				= config->GetIntValue("Settings", "WindowSizeX", 650);
-	wndSize.cy				= config->GetIntValue("Settings", "WindowSizeY", 472);
+	wndSize.cy				= config->GetIntValue("Settings", "WindowSizeY", 474);
 	maximized				= config->GetIntValue("Settings", "WindowMaximized", 0);
 	tab_width_track				= config->GetIntValue("Settings", "TabWidthTrack", 50);
 	tab_width_length			= config->GetIntValue("Settings", "TabWidthLength", 80);

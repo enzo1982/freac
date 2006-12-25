@@ -33,11 +33,11 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(120, 120), Size(500, 451));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(120, 120), Size(502, 453));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
-	divbar			= new Divider(48, OR_HORZ | OR_BOTTOM);
+	divbar			= new Divider(45, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 175;
 	pos.y = 32;

@@ -28,11 +28,11 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	allowID3 = currentConfig->faac_enable_id3;
 	fileFormat = currentConfig->faac_enable_mp4;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FAAC"), Point(140, 140), Size(545, 293));
+	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FAAC"), Point(140, 140), Size(547, 295));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
-	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
+	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 175;
 	pos.y = 29;

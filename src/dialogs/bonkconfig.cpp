@@ -24,11 +24,11 @@ BonkEnc::ConfigureBonkEnc::ConfigureBonkEnc()
 	jstereo = currentConfig->bonk_jstereo;
 	lossless = currentConfig->bonk_lossless;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "Bonk"), Point(140, 140), Size(364, 242));
+	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "Bonk"), Point(140, 140), Size(366, 244));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
-	divbar			= new Divider(42, OR_HORZ | OR_BOTTOM);
+	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
 	pos.x = 175;
 	pos.y = 29;

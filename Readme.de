@@ -10,7 +10,7 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
-	Version 1.0 RC 1 CVS (Dezember 2006)
+	Version 1.0 RC 1 (Dezember 2006)
 
 		- Sprachunterstützung für Norwegisch, Türkisch und Esperanto hinzugefügt
 		- Konfigurationsdateien werden jetzt im Anwendungsdaten-Verzeichnis des Benutzers gespeichert, wenn BonkEnc unter C:\Programme\ installiert ist
@@ -35,6 +35,7 @@ Geschichte
 		- Fehler beim Umgang mit ungenauen CDDB-Ergebnissen behoben
 		- Abfangen von CD-ROM-Zugriffsverweigerung
 		- CDDB-Codequalität verbessert
+		- Mit Windows Vista kompatibel gemacht
 		- CDRip auf Version 1.21 aktualisiert
 		- LAME auf Version 3.97 aktualisiert
 		- FLAC auf Version 1.1.3 aktualisiert
@@ -289,7 +290,6 @@ Bekannte Probleme
 	- BonkEnc ist zurzeit auf 2 Audiokanäle beschränkt
 
 	- Editboxen funktionieren im Rechts-nach-Links modus nicht korrekt
-	- Unter Windows Vista muss das Windows-Standard-Thema ausgewählt sein, um mit BonkEnc arbeiten zu können
 
 	- Die WMA-Eingabeplugins von Winamp 5.22 und später sind nich kompatibel mit BonkEnc. Verwenden
 	  Sie das WMA-Plugin von Winamp 5.21, wenn Sie WMA-Dateien dekodieren möchten.

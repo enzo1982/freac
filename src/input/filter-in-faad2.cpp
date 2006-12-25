@@ -88,7 +88,7 @@ Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 		samples = ex_NeAACDecDecode(handle, &frameInfo, (unsigned char *) dataBuffer + bytesConsumed, size - bytesConsumed);
 
-	        if ((frameInfo.error == 0) && (frameInfo.samples > 0))
+	        if ((frameInfo.error == 0) && (frameInfo.samples > 0) && (samples != NIL))
 		{
 			unsigned char	*buffer = new unsigned char [samplesRead * 2];
 

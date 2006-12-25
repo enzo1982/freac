@@ -228,7 +228,8 @@
     <entry id="216" string="Stop">Detener</entry>
     <entry id="217" string="Cannot play a file while encoding!">No se puede reproducir durante el proceso de codificación</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">¡No se puede comenzar la codificación mientras se reproduce un fichero!</entry>
-    <entry id="220" string="ATH"/>
+    <entry id="219" string="Enable remote CDDB database">Utilizar base de datos CDDB remota</entry>
+    <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">Activar ATH:</entry>
     <entry id="222" string="Use default setting">Utilizar ajustes predeterminado</entry>
     <entry id="223" string="Psycho acoustic model">Modelo acústico-físico</entry>
@@ -360,5 +361,38 @@
     <entry id="349" string="Allow overwriting input file">Permitir sobreescribir el fichero de entrada</entry>
     <entry id="350" string="Encode to single file">Codificar a un solo fichero</entry>
     <entry id="351" string="Encoder options">Opciones de codificador</entry>
+    <entry id="352" string="Skip">Omitir</entry>
+    <entry id="353" string="Enable local CDDB database">Utilizar base de datos CDDB local</entry>
+    <entry id="354" string="CDDB directory:">Carpeta CDDB:</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">Seleccione la carpeta de la base de datos CDDB:</entry>
+    <entry id="356" string="File already exists">Fichero ya existe</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">El fichero de salida %1&#10; ya existe! Desea sobreescribirlo?</entry>
+    <entry id="358" string="Overwrite all further files">Sobreescribir todos los ficheros siguientes</entry>
+    <entry id="359" string="Start ripping automatically">Comenzar automáticamente el rippeo</entry>
+    <entry id="360" string="Submit to online database later">Enviar luego a base de datos remota</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">El soporte CDDB no está activado! Por favor active&#10;soporte CDDB local o remoto en la ventana de configuración.</entry>
+    <entry id="362" string="CDDB entries to submit:">Registros CDDB para enviar:</entry>
+    <entry id="363" string="Show queued CDDB entries...">Mostrar registros CDDB guardados...</entry>
+    <entry id="364" string="Submit all">Enviar todos</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El soporte para la base de datos CDDB remota no está activado!&#10;Por favor active la base de datos CDDB remota en la ventana de configuración.</entry>
+    <entry id="366" string="Category">Categoría</entry>
+    <entry id="367" string="Close">Cerrar</entry>
+    <entry id="368" string="Automatization">Automatización</entry>
+    <entry id="369" string="Query CDDB database later">Consultar base de datos CDDB luego</entry>
+    <entry id="370" string="Show queued CDDB queries...">Mostrar las consultas CDDB guardadas...</entry>
+    <entry id="371" string="CDDB queries">Consultas CDDB</entry>
+    <entry id="372" string="Query">Consultar</entry>
+    <entry id="373" string="Query all">Consultar todas</entry>
+    <entry id="374" string="Query string">String de consulta</entry>
+    <entry id="375" string="CDDB queries to perform:">Consultas CDDB planeadas:</entry>
+    <entry id="376" string="Would you like to perform this query again later?">Desea realizar esta consulta luego nuevamente?</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">El acceso a la unidad de CD-ROM fue denegado por Windows.&#10;&#10;Por favor contacte su administrador de sistemas para&#10;poder acceder a la unidad de CD-ROM.</entry>
+    <entry id="378" string="CD information">Informaciones del CD</entry>
+    <entry id="379" string="Read CD Text">Leer el CD-Text</entry>
+    <entry id="380" string="Read cdplayer.ini">Leer cdplayer.ini</entry>
+    <entry id="381" string="Apodization">Apodización</entry>
+    <entry id="382" string="Apodization function(s):">Función(es) de apodización:</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">Puede especificar varias funciones separadas por punto y coma.</entry>
+    <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">Bonkenc puede buscar actualizaciones automáticamente cada&#10;vez que se inicia.&#10;&#10;Desea que BonkEnc busque actualizaciones al inicio?</entry>
   </data>
 </LangFile>
