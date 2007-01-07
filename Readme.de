@@ -10,6 +10,12 @@ BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 Geschichte
 ----------
 
+	Version 1.0 (Januar 2007)
+
+		- Litauische Übersetzung hinzugefügt
+		- Behandlung von Dateinamensvorlagen bei fehlendem Künstler/Titel verbessert
+		- Bessere Behandlung von FAAD2-Fehlern beim Öffnen von AAC-Dateien
+
 	Version 1.0 RC 1 (Dezember 2006)
 
 		- Sprachunterstützung für Norwegisch, Türkisch und Esperanto hinzugefügt
@@ -259,7 +265,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v6.0
-		- smooth v0.8.68.0 (http://www.smooth-project.org/)
+		- smooth v0.8.69.1 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
@@ -323,7 +329,8 @@ Besonderen Dank
 			   Peter Krajcár (Slowakisch),
 			   Wiak (Norwegian),
 			   Vincent Rateau (Esperanto),
-			   Murat Ozkan (Türkisch)
+			   Murat Ozkan (Türkisch),
+			   Naglis Jonaitis (Litauisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

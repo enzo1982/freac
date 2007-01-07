@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -371,6 +371,7 @@ namespace BonkEnc
 	typedef unsigned char				(NEAACDECAPI *NEAACDECSETCONFIGURATION)		(NeAACDecHandle, NeAACDecConfigurationPtr);
 	typedef void *					(NEAACDECAPI *NEAACDECDECODE)			(NeAACDecHandle, NeAACDecFrameInfo *, unsigned char *, unsigned long);
 	typedef void					(NEAACDECAPI *NEAACDECCLOSE)			(NeAACDecHandle);
+	typedef char *					(NEAACDECAPI *NEAACDECGETERRORMESSAGE)		(unsigned char);
 
 	extern BEEXPORT NEAACDECOPEN			 ex_NeAACDecOpen;
 	extern BEEXPORT NEAACDECINIT			 ex_NeAACDecInit;
@@ -379,6 +380,7 @@ namespace BonkEnc
 	extern BEEXPORT NEAACDECSETCONFIGURATION	 ex_NeAACDecSetConfiguration;
 	extern BEEXPORT NEAACDECDECODE			 ex_NeAACDecDecode;
 	extern BEEXPORT NEAACDECCLOSE			 ex_NeAACDecClose;
+	extern BEEXPORT NEAACDECGETERRORMESSAGE		 ex_NeAACDecGetErrorMessage;
 
 // TwinVQ DLL API
 

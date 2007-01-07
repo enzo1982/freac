@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -150,6 +150,7 @@ NEAACDECGETCURRENTCONFIGURATION	 ex_NeAACDecGetCurrentConfiguration	= NIL;
 NEAACDECSETCONFIGURATION	 ex_NeAACDecSetConfiguration		= NIL;
 NEAACDECDECODE			 ex_NeAACDecDecode			= NIL;
 NEAACDECCLOSE			 ex_NeAACDecClose			= NIL;
+NEAACDECGETERRORMESSAGE		 ex_NeAACDecGetErrorMessage		= NIL;
 
 TVQGETVERSIONID			 ex_TvqGetVersionID			= NIL;
 TVQENCINITIALIZE		 ex_TvqEncInitialize			= NIL;
@@ -601,6 +602,7 @@ Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
 	ex_NeAACDecSetConfiguration		= (NEAACDECSETCONFIGURATION) faad2dll->GetFunctionAddress("NeAACDecSetConfiguration");
 	ex_NeAACDecDecode			= (NEAACDECDECODE) faad2dll->GetFunctionAddress("NeAACDecDecode");
 	ex_NeAACDecClose			= (NEAACDECCLOSE) faad2dll->GetFunctionAddress("NeAACDecClose");
+	ex_NeAACDecGetErrorMessage		= (NEAACDECGETERRORMESSAGE) faad2dll->GetFunctionAddress("NeAACDecGetErrorMessage");
 
 	if (ex_NeAACDecOpen			== NIL ||
 	    ex_NeAACDecInit			== NIL ||
@@ -608,7 +610,8 @@ Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
 	    ex_NeAACDecGetCurrentConfiguration	== NIL ||
 	    ex_NeAACDecSetConfiguration		== NIL ||
 	    ex_NeAACDecDecode			== NIL ||
-	    ex_NeAACDecClose			== NIL) { FreeFAAD2DLL(); return False; }
+	    ex_NeAACDecClose			== NIL ||
+	    ex_NeAACDecGetErrorMessage		== NIL) { FreeFAAD2DLL(); return False; }
 
 	return True;
 }

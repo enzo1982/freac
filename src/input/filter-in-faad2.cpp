@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -164,6 +164,14 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 		NeAACDecFrameInfo	 frameInfo;
 
 		samples = ex_NeAACDecDecode(handle, &frameInfo, data + bytesConsumed, size - bytesConsumed);
+
+		if (frameInfo.error)
+		{
+			nFormat->rate = 0;
+			nFormat->channels = 0;
+
+			break;
+		}
 
 		bytesConsumed += frameInfo.bytesconsumed;
 

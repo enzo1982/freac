@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -666,7 +666,10 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
 		else		     outputFileName.Copy(currentConfig->enc_outdir);
 
-		if (trackInfo->artist != NIL || trackInfo->title != NIL)
+		if ((trackInfo->artist != NIL && currentConfig->enc_filePattern.Find("<artist>")   >= 0) ||
+		    (trackInfo->title  != NIL && currentConfig->enc_filePattern.Find("<title>")	   >= 0) ||
+		    (trackInfo->track  != -1  && currentConfig->enc_filePattern.Find("<track>")	   >= 0) ||
+		    (				 currentConfig->enc_filePattern.Find("<filename>") >= 0))
 		{
 			String	 shortOutFileName = currentConfig->enc_filePattern;
 
