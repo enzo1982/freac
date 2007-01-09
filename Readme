@@ -15,6 +15,7 @@ History
 		- added a Lithuanian translation
 		- improved handling of file name patterns when artist/title are missing
 		- better handling of FAAD2 errors when opening raw AAC files
+		- upgraded Bonk to version 0.11
 
 	Version 1.0 RC 1 (December 2006)
 

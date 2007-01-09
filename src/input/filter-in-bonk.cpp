@@ -82,54 +82,12 @@ BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
 	nFormat->bits = 16;
 	nFormat->fileSize = in->Size();
 
-	ex_bonk_decoder_close(decoder);
-
-	bool		 loop = true;
 	unsigned char	*id3tag = NIL;
 	int		 id3tag_size = 0;
 
-	in->Seek(in->Size() - 4);
+	ex_bonk_decoder_get_id3_data(decoder, &id3tag, &id3tag_size);
 
-	do
-	{
-		switch (in->InputNumber(4))
-		{
-			case 862218528: // ' id3' string
-			{
-				in->RelSeek(-8);
-
-				id3tag_size = in->InputNumber(4) - 10;
-
-				in->RelSeek(-id3tag_size - 4);
-
-				id3tag = new unsigned char [id3tag_size];
-
-				for (int j = 0; j < id3tag_size; j++) id3tag[j] = in->InputNumber(1);
-
-				in->RelSeek(-id3tag_size - 2);
-
-				break;
-			}
-			case 1802399586: // 'bonk' string
-			case 1868983913: // 'info' string
-			{
-				in->RelSeek(-8);
-				in->RelSeek(4 - in->InputNumber(4));
-
-				break;
-			}
-			default:
-			{
-				loop = false;
-
-				break;
-			}
-		}
-
-		if (in->GetPos() == 0)	loop = false;
-		else if (loop)		in->RelSeek(-4);
-	}
-	while (loop);
+	ex_bonk_decoder_close(decoder);
 
 	delete in;
 

@@ -1,4 +1,4 @@
-BonkEnc Version 1.0 RC 1
+BonkEnc Version 1.0
 
 BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
@@ -15,6 +15,7 @@ Geschichte
 		- Litauische Übersetzung hinzugefügt
 		- Behandlung von Dateinamensvorlagen bei fehlendem Künstler/Titel verbessert
 		- Bessere Behandlung von FAAD2-Fehlern beim Öffnen von AAC-Dateien
+		- Bonk auf Version 0.11 aktualisiert
 
 	Version 1.0 RC 1 (Dezember 2006)
 
