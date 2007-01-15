@@ -73,6 +73,7 @@ extern "C"
   ID3_C_EXPORT bool                 CCONV ID3Tag_HasTagType           (const ID3Tag *tag, ID3_TagType);
   ID3_C_EXPORT ID3TagIterator*      CCONV ID3Tag_CreateIterator       (ID3Tag *tag);
   ID3_C_EXPORT ID3TagConstIterator* CCONV ID3Tag_CreateConstIterator  (const ID3Tag *tag);
+  ID3_C_EXPORT size_t               CCONV ID3Tag_Size                 (const ID3Tag *tag);
   ID3_C_EXPORT size_t               CCONV ID3Tag_Render               (const ID3Tag *tag, uchar *buffer, ID3_TagType tt);
 
   ID3_C_EXPORT void                 CCONV ID3TagIterator_Delete       (ID3TagIterator*);

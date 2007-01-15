@@ -7,6 +7,8 @@
 #ifndef _H_EASYUPDATE_
 #define _H_EASYUPDATE_
 
+#include <tchar.h>
+
 #if defined EUPDATE_DLL
 	#define DLLAPI __declspec (dllexport)
 #else
@@ -19,21 +21,29 @@ extern "C"
 {
 /* Use these functions to create and destroy an update context. */
 
-	DLLAPI EUCCONV void	*eUpdate_CreateUpdateContext		(const char *, const char *, const char *);
-	DLLAPI EUCCONV int	 eUpdate_FreeUpdateContext		(void *);
+	DLLAPI void * EUCCONV	eUpdate_CreateUpdateContext		(const char *, const char *, const char *);
+	DLLAPI void * EUCCONV	eUpdate_CreateUpdateContextW		(const wchar_t *, const wchar_t *, const wchar_t *);
+
+	DLLAPI int EUCCONV	 eUpdate_FreeUpdateContext		(void *);
+
+/* Use this function to set the name of the configuration file to be used by easyUpdate. */
+
+	DLLAPI bool EUCCONV	 eUpdate_SetConfigFile			(void *, const char *);
+	DLLAPI bool EUCCONV	 eUpdate_SetConfigFileW			(void *, const wchar_t *);
 
 /* Use this function to set the name of the language file to be used by easyUpdate. */
 
-	DLLAPI EUCCONV bool	 eUpdate_SetLanguage			(void *, const char *);
+	DLLAPI bool EUCCONV	 eUpdate_SetLanguage			(void *, const char *);
+	DLLAPI bool EUCCONV	 eUpdate_SetLanguageW			(void *, const wchar_t *);
 
 /* Use this function to check if new updates are available. It will return the number of available new updates. */
 
-	DLLAPI EUCCONV int	 eUpdate_CheckForNewUpdates		(void *, bool);
+	DLLAPI int EUCCONV	 eUpdate_CheckForNewUpdates		(void *, bool);
 
 /* Use this function to automate the update process. easyUpdate will show a dialog box presenting the
    available updates and let the user choose what packages to install. */
 
-	DLLAPI EUCCONV void	 eUpdate_AutomaticUpdate		(void *);
+	DLLAPI void EUCCONV	 eUpdate_AutomaticUpdate		(void *);
 }
 
 #endif

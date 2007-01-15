@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -70,12 +70,12 @@ Int BonkEnc::CDText::ReadCDText()
 
 				if (pCDtextPacks->packType == 0x80) // Album/Track title
 				{
-					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 100);
-					if (pCDtextPacks->trackNumber != 0) cdText.AddEntry(lpszBuffer, pCDtextPacks->trackNumber);
+					if (pCDtextPacks->trackNumber == 0) cdText.Add(lpszBuffer, 100);
+					if (pCDtextPacks->trackNumber != 0) cdText.Add(lpszBuffer, pCDtextPacks->trackNumber);
 				}
 				else if (pCDtextPacks->packType == 0x81) // Artist name
 				{
-					if (pCDtextPacks->trackNumber == 0) cdText.AddEntry(lpszBuffer, 0);
+					if (pCDtextPacks->trackNumber == 0) cdText.Add(lpszBuffer, 0);
 				}
 
 				nInsertPos -= nOut;

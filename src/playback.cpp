@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,7 +37,7 @@ Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 
 	if (playing && paused && player_entry == entry)
 	{
-		DLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(0);
+		DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(0);
 
 		paused = False;
 
@@ -66,10 +66,7 @@ Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 
 Void BonkEnc::BonkEncGUI::PlaySelectedItem()
 {
-	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
-	{
-		if (joblist->GetSelectedTrack() == joblist->GetNthTrack(i)) PlayItem(i);
-	}
+	PlayItem(joblist->GetSelectedEntryNumber());
 }
 
 Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
@@ -132,7 +129,7 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 
 		player_plugin = currentConfig->output_plugin;
 
-		Out_Module	*out = DLLInterfaces::winamp_out_modules.GetNthEntry(currentConfig->output_plugin);
+		Out_Module	*out = DLLInterfaces::winamp_out_modules.GetNth(currentConfig->output_plugin);
 		Int		 latency = out->Open(trackInfo->rate, trackInfo->channels, 16, 0, 0);
 
 		if (latency >= 0 && trackInfo->length >= 0)
@@ -245,8 +242,8 @@ Void BonkEnc::BonkEncGUI::PausePlayback()
 {
 	if (!playing) return;
 
-	if (paused) DLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(0);
-	else	    DLLInterfaces::winamp_out_modules.GetNthEntry(player_plugin)->Pause(1);
+	if (paused) DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(0);
+	else	    DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(1);
 
 	paused = !paused;
 }

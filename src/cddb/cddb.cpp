@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -122,7 +122,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 		{
 			// update track offsets in case we had a fuzzy match
 
-			cddbInfo.trackOffsets.SetEntry(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
+			cddbInfo.trackOffsets.Set(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
 		}
 
 		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
@@ -153,7 +153,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 		{
 			for (Int i = 0; i < cddbInfo.trackOffsets.GetNOfEntries(); i++)
 			{
-				if (cddbInfo.trackOffsets.GetNthEntry(i) != revisionInfo.trackOffsets.GetNthEntry(i))
+				if (cddbInfo.trackOffsets.GetNth(i) != revisionInfo.trackOffsets.GetNth(i))
 				{
 					// found disc ID collision
 
@@ -199,7 +199,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 
 	for (Int i = 0; i < cddbInfo.trackOffsets.GetNOfEntries(); i++)
 	{
-		content.Append("#     ").Append(String::FromInt(cddbInfo.trackOffsets.GetNthEntry(i))).Append("\n");
+		content.Append("#     ").Append(String::FromInt(cddbInfo.trackOffsets.GetNth(i))).Append("\n");
 	}
 
 	content.Append("# ").Append("\n");
@@ -216,15 +216,15 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 
 	for (Int j = 0; j < cddbInfo.trackTitles.GetNOfEntries(); j++)
 	{
-		if (cddbInfo.dArtist == "Various") content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), String(cddbInfo.trackArtists.GetNthEntry(j)).Append(" / ").Append(cddbInfo.trackTitles.GetNthEntry(j))));
-		else				   content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), cddbInfo.trackTitles.GetNthEntry(j)));
+		if (cddbInfo.dArtist == "Various") content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), String(cddbInfo.trackArtists.GetNth(j)).Append(" / ").Append(cddbInfo.trackTitles.GetNth(j))));
+		else				   content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), cddbInfo.trackTitles.GetNth(j)));
 	}
 
 	content.Append(FormatCDDBEntry("EXTD", cddbInfo.comment));
 
 	for (Int k = 0; k < cddbInfo.trackComments.GetNOfEntries(); k++)
 	{
-		content.Append(FormatCDDBEntry(String("EXTT").Append(String::FromInt(k)), cddbInfo.trackComments.GetNthEntry(k)));
+		content.Append(FormatCDDBEntry(String("EXTT").Append(String::FromInt(k)), cddbInfo.trackComments.GetNth(k)));
 	}
 
 	content.Append(FormatCDDBEntry("PLAYORDER", cddbInfo.playOrder));
@@ -317,11 +317,11 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 				for (Int l = k + 1; l < line.Length(); l++) title[l - k - 1] = line[l];
 			}
 
-			cddbInfo.trackArtists.AddEntry(artist, track.ToInt());
-			cddbInfo.trackTitles.AddEntry(title, track.ToInt());
+			cddbInfo.trackArtists.Add(artist, track.ToInt());
+			cddbInfo.trackTitles.Add(title, track.ToInt());
 
-			cddbInfo.oTrackArtists.AddEntry(artist, track.ToInt());
-			cddbInfo.oTrackTitles.AddEntry(title, track.ToInt());
+			cddbInfo.oTrackArtists.Add(artist, track.ToInt());
+			cddbInfo.oTrackTitles.Add(title, track.ToInt());
 		}
 		else if (line.StartsWith("EXTD"))
 		{
@@ -344,9 +344,9 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 
 			for (Int l = k + 1; l < line.Length(); l++) comment[l - k - 1] = line[l];
 
-			cddbInfo.trackComments.AddEntry(comment, track.ToInt());
+			cddbInfo.trackComments.Add(comment, track.ToInt());
 
-			cddbInfo.oTrackComments.AddEntry(comment, track.ToInt());
+			cddbInfo.oTrackComments.Add(comment, track.ToInt());
 		}
 		else if (line.StartsWith("PLAYORDER"))
 		{
@@ -394,7 +394,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 					break;
 				}
 
-				cddbInfo.trackOffsets.AddEntry(offset.ToInt(), track++);
+				cddbInfo.trackOffsets.Add(offset.ToInt(), track++);
 			}
 			while (True);
 		}

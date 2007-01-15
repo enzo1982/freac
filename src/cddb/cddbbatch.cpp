@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -43,7 +43,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 			{
 				XML::Node	*node = root->GetNthNode(i);
 
-				if (node->GetName() == "query") queries.AddEntry(node->GetContent());
+				if (node->GetName() == "query") queries.Add(node->GetContent());
 			}
 		}
 	}
@@ -79,15 +79,15 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 
 						for (Int i = 0; i < submits.GetNOfEntries(); i++)
 						{
-							if (submits.GetNthEntry(i) == cddbInfo)
+							if (submits.GetNth(i) == cddbInfo)
 							{
-								submits.RemoveEntry(submits.GetNthEntryIndex(i));
+								submits.Remove(submits.GetNthIndex(i));
 
 								break;
 							}
 						}
 
-						submits.AddEntry(cddbInfo);
+						submits.Add(cddbInfo);
 					}
 
 					delete in;
@@ -124,7 +124,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 
 		for (Int i = 0; i < queries.GetNOfEntries(); i++)
 		{
-			root->AddNode("query", queries.GetNthEntry(i));
+			root->AddNode("query", queries.GetNth(i));
 		}
 
 		document->SaveFile(String(config->configDir).Append("cddb\\queries.xml"));
@@ -151,9 +151,9 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 
 		for (Int i = 0; i < submits.GetNOfEntries(); i++)
 		{
-			XML::Node	*node = root->AddNode("submit", submits.GetNthEntry(i).DiscIDToString());
+			XML::Node	*node = root->AddNode("submit", submits.GetNth(i).DiscIDToString());
 
-			node->SetAttribute("category", submits.GetNthEntry(i).category);
+			node->SetAttribute("category", submits.GetNth(i).category);
 		}
 
 		document->SaveFile(String(config->configDir).Append("cddb\\submits.xml"));
@@ -169,17 +169,17 @@ Bool BonkEnc::CDDBBatch::AddQuery(const String &query)
 {
 	for (Int i = 0; i < queries.GetNOfEntries(); i++)
 	{
-		if (queries.GetNthEntry(i) == query) return False;
+		if (queries.GetNth(i) == query) return False;
 	}
 
-	queries.AddEntry(query);
+	queries.Add(query);
 
 	return True;
 }
 
 Bool BonkEnc::CDDBBatch::DeleteQuery(Int n)
 {
-	queries.RemoveEntry(queries.GetNthEntryIndex(n));
+	queries.Remove(queries.GetNthIndex(n));
 
 	return True;
 }
@@ -212,15 +212,15 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	for (Int i = 0; i < submits.GetNOfEntries(); i++)
 	{
-		if (submits.GetNthEntry(i) == nCddbInfo)
+		if (submits.GetNth(i) == nCddbInfo)
 		{
-			submits.RemoveEntry(submits.GetNthEntryIndex(i));
+			submits.Remove(submits.GetNthIndex(i));
 
 			break;
 		}
 	}
 
-	submits.AddEntry(nCddbInfo);
+	submits.Add(nCddbInfo);
 
 	// restore real freedb path
 	config->freedb_dir = configFreedbDir;
@@ -232,9 +232,9 @@ Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 {
 	for (Int i = 0; i < submits.GetNOfEntries(); i++)
 	{
-		if (submits.GetNthEntry(i) == cddbInfo)
+		if (submits.GetNth(i) == cddbInfo)
 		{
-			submits.RemoveEntry(submits.GetNthEntryIndex(i));
+			submits.Remove(submits.GetNthIndex(i));
 
 			break;
 		}
@@ -249,7 +249,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 	cddbQueryDlg	*dlg		= new cddbQueryDlg();
 
-	dlg->SetQueryString(queries.GetNthEntry(n));
+	dlg->SetQueryString(queries.GetNth(n));
 
 	const CDDBInfo	&cddbInfo	= dlg->QueryCDDB(False);
 
@@ -316,7 +316,7 @@ Bool BonkEnc::CDDBBatch::SubmitAll()
 {
 	while (submits.GetNOfEntries() > 0)
 	{
-		if (!Submit(submits.GetNthEntry(0))) return False;
+		if (!Submit(submits.GetNth(0))) return False;
 	}
 
 	return True;

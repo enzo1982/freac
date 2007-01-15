@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -30,7 +30,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 	Array<Int>	 discOffsets;
 	Int		 discLength;
 
-	for (Int l = 0; l < numTocEntries; l++) discOffsets.AddEntry(ex_CR_GetTocEntry(l).dwStartSector + 150);
+	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(ex_CR_GetTocEntry(l).dwStartSector + 150);
 
 	discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
 
@@ -56,15 +56,15 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 
 			for (Int j = 0; j < cddbInfo.trackOffsets.GetNOfEntries(); j++)
 			{
-				if (discOffsets.GetNthEntry(j) != cddbInfo.trackOffsets.GetNthEntry(j)) match = False;
+				if (discOffsets.GetNth(j) != cddbInfo.trackOffsets.GetNth(j)) match = False;
 			}
 
 			if (match)
 			{
-				ids.AddEntry(discid);
-				categories.AddEntry(array[i]);
-				titles.AddEntry(String(cddbInfo.dArtist).Append(" / ").Append(cddbInfo.dTitle));
-				results.AddEntry(result);
+				ids.Add(discid);
+				categories.Add(array[i]);
+				titles.Add(String(cddbInfo.dArtist).Append(" / ").Append(cddbInfo.dTitle));
+				results.Add(result);
 			}
 		}
 	}
@@ -86,7 +86,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 	Array<Int>	 discOffsets;
 	Int		 discLength;
 
-	for (Int l = 0; l < numTocEntries; l++) discOffsets.AddEntry(ex_CR_GetTocEntry(l).dwStartSector + 150);
+	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(ex_CR_GetTocEntry(l).dwStartSector + 150);
 
 	discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
 
@@ -103,7 +103,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 		{
 			const Array<File> &files = dir.GetFilesByPattern(pattern);
 
-			if (files.GetNOfEntries() == 1) found = files.GetFirstEntry();
+			if (files.GetNOfEntries() == 1) found = files.GetFirst();
 
 			if (pattern[1] == 'a')	    pattern[1] = '9';
 			else if (pattern[1] == '0') pattern[1] = 'f';
@@ -158,15 +158,15 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 
 			for (Int j = 0; j < cddbInfo.trackOffsets.GetNOfEntries(); j++)
 			{
-				if (discOffsets.GetNthEntry(j) != cddbInfo.trackOffsets.GetNthEntry(j)) match = False;
+				if (discOffsets.GetNth(j) != cddbInfo.trackOffsets.GetNth(j)) match = False;
 			}
 
 			if (match)
 			{
-				ids.AddEntry(discid);
-				categories.AddEntry(array[i]);
-				titles.AddEntry(String(cddbInfo.dArtist).Append(" / ").Append(cddbInfo.dTitle));
-				results.AddEntry(result);
+				ids.Add(discid);
+				categories.Add(array[i]);
+				titles.Add(String(cddbInfo.dArtist).Append(" / ").Append(cddbInfo.dTitle));
+				results.Add(result);
 			}
 		}
 	}
@@ -217,7 +217,7 @@ Bool BonkEnc::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddb
 
 	String	 result;
 
-	for (Int i = 0; i < categories.GetNOfEntries(); i++) if (categories.GetNthEntry(i) == cddbInfo.category) result = results.GetNthEntry(i);
+	for (Int i = 0; i < categories.GetNOfEntries(); i++) if (categories.GetNth(i) == cddbInfo.category) result = results.GetNth(i);
 
 	if (result == NIL) return False;
 	else		   return ParseCDDBRecord(result, cddbInfo);
@@ -254,7 +254,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 		{
 			const Array<File> &files = dir.GetFilesByPattern(pattern);
 
-			if (files.GetNOfEntries() == 1) found = files.GetFirstEntry();
+			if (files.GetNOfEntries() == 1) found = files.GetFirst();
 
 			if (pattern[1] == 'a')	    pattern[1] = '9';
 			else if (pattern[1] == '0') pattern[1] = 'f';

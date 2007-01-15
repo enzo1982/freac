@@ -527,6 +527,9 @@ namespace BonkEnc
 	typedef FLAC__bool				(*FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM)			(FLAC__StreamDecoder *);
 	typedef FLAC__StreamMetadata *	 		(*FLAC__METADATA_OBJECT_NEW)						(FLAC__MetadataType);
 	typedef void					(*FLAC__METADATA_OBJECT_DELETE)						(FLAC__StreamMetadata *);
+	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_PICTURE_SET_MIME_TYPE)				(FLAC__StreamMetadata *, char *, FLAC__bool);
+	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_PICTURE_SET_DESCRIPTION)			(FLAC__StreamMetadata *, FLAC__byte *, FLAC__bool);
+	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_PICTURE_SET_DATA)				(FLAC__StreamMetadata *, FLAC__byte *, FLAC__uint32, FLAC__bool);
 	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT)			(FLAC__StreamMetadata *, FLAC__StreamMetadata_VorbisComment_Entry, FLAC__bool);
 	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR)	(FLAC__StreamMetadata_VorbisComment_Entry *, const char *, const char *);
 
@@ -563,6 +566,9 @@ namespace BonkEnc
 	extern BEEXPORT FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM		 ex_FLAC__stream_decoder_process_until_end_of_stream;
 	extern BEEXPORT FLAC__METADATA_OBJECT_NEW					 ex_FLAC__metadata_object_new;
 	extern BEEXPORT FLAC__METADATA_OBJECT_DELETE					 ex_FLAC__metadata_object_delete;
+	extern BEEXPORT FLAC__METADATA_OBJECT_PICTURE_SET_MIME_TYPE			 ex_FLAC__metadata_object_picture_set_mime_type;
+	extern BEEXPORT FLAC__METADATA_OBJECT_PICTURE_SET_DESCRIPTION			 ex_FLAC__metadata_object_picture_set_description;
+	extern BEEXPORT FLAC__METADATA_OBJECT_PICTURE_SET_DATA				 ex_FLAC__metadata_object_picture_set_data;
 	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment;
 	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair;
 
@@ -576,10 +582,18 @@ namespace BonkEnc
 	typedef size_t					(*ID3TAGNUMFRAMES)				(ID3Tag *);
 	typedef ID3Frame *				(*ID3TAGFINDFRAMEWITHID)			(const ID3Tag *, ID3_FrameID);
 	typedef size_t					(*ID3TAGPARSEBUFFER)				(ID3Tag *tag, const uchar *buffer, size_t bytes);
+	typedef size_t					(*ID3TAGSIZE)					(const ID3Tag *);
 	typedef size_t					(*ID3TAGRENDER)					(const ID3Tag *, uchar *, ID3_TagType);
+	typedef ID3TagIterator *			(*ID3TAGCREATEITERATOR)				(ID3Tag *);
+	typedef ID3Frame *				(*ID3TAGITERATORGETNEXT)			(ID3TagIterator *);
+	typedef void					(*ID3TAGITERATORDELETE)				(ID3TagIterator *);
+	typedef ID3_FrameID				(*ID3FRAMEGETID)				(const ID3Frame *);
 	typedef ID3Frame *				(*ID3FRAMENEWID)				(ID3_FrameID);
 	typedef void					(*ID3FRAMEDELETE)				(ID3Frame *);
 	typedef ID3Field *				(*ID3FRAMEGETFIELD)				(const ID3Frame *, ID3_FieldID);
+	typedef size_t					(*ID3FIELDSIZE)					(const ID3Field *);
+	typedef void					(*ID3FIELDSETBINARY)				(ID3Field *, const uchar *, size_t);
+	typedef void					(*ID3FIELDGETBINARY)				(const ID3Field *, uchar *, size_t);
 	typedef void					(*ID3FIELDSETINT)				(const ID3Field *, uint32);
 	typedef uint32					(*ID3FIELDGETINT)				(const ID3Field *);
 	typedef bool					(*ID3FIELDSETENCODING)				(ID3Field *, ID3_TextEnc);
@@ -596,10 +610,18 @@ namespace BonkEnc
 	extern BEEXPORT ID3TAGNUMFRAMES			 ex_ID3Tag_NumFrames;
 	extern BEEXPORT ID3TAGFINDFRAMEWITHID		 ex_ID3Tag_FindFrameWithID;
 	extern BEEXPORT ID3TAGPARSEBUFFER		 ex_ID3Tag_ParseBuffer;
+	extern BEEXPORT ID3TAGSIZE			 ex_ID3Tag_Size;
 	extern BEEXPORT ID3TAGRENDER			 ex_ID3Tag_Render;
+	extern BEEXPORT ID3TAGCREATEITERATOR		 ex_ID3Tag_CreateIterator;
+	extern BEEXPORT ID3TAGITERATORGETNEXT		 ex_ID3TagIterator_GetNext;
+	extern BEEXPORT ID3TAGITERATORDELETE		 ex_ID3TagIterator_Delete;
+	extern BEEXPORT ID3FRAMEGETID			 ex_ID3Frame_GetID;
 	extern BEEXPORT ID3FRAMENEWID			 ex_ID3Frame_NewID;
 	extern BEEXPORT ID3FRAMEDELETE			 ex_ID3Frame_Delete;
 	extern BEEXPORT ID3FRAMEGETFIELD		 ex_ID3Frame_GetField;
+	extern BEEXPORT ID3FIELDSIZE			 ex_ID3Field_Size;
+	extern BEEXPORT ID3FIELDSETBINARY		 ex_ID3Field_SetBINARY;
+	extern BEEXPORT ID3FIELDGETBINARY		 ex_ID3Field_GetBINARY;
 	extern BEEXPORT ID3FIELDSETINT			 ex_ID3Field_SetINT;
 	extern BEEXPORT ID3FIELDGETINT			 ex_ID3Field_GetINT;
 	extern BEEXPORT ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding;

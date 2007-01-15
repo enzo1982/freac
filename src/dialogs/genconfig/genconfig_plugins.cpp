@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,7 +37,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 
 	for (Int k = 0; k < DLLInterfaces::winamp_in_modules.GetNOfEntries(); k++)
 	{
-		list_input->AddEntry(DLLInterfaces::winamp_in_modules.GetNthEntry(k)->description);
+		list_input->AddEntry(DLLInterfaces::winamp_in_modules.GetNth(k)->description);
 	}
 
 	pos.x	+= 433;
@@ -68,7 +68,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 
 	for (Int l = 0; l < DLLInterfaces::winamp_out_modules.GetNOfEntries(); l++)
 	{
-		ListEntry	*entry = list_output->AddEntry(DLLInterfaces::winamp_out_modules.GetNthEntry(l)->description);
+		ListEntry	*entry = list_output->AddEntry(DLLInterfaces::winamp_out_modules.GetNth(l)->description);
 
 		if (l == currentConfig->output_plugin) entry->SetMark(True);
 	}
@@ -152,28 +152,28 @@ Void BonkEnc::GeneralSettingsLayerPlugins::ConfigureInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
-	DLLInterfaces::winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
+	DLLInterfaces::winamp_in_modules.GetNth(list_input->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void BonkEnc::GeneralSettingsLayerPlugins::ConfigureOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
-	DLLInterfaces::winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
+	DLLInterfaces::winamp_out_modules.GetNth(list_output->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void BonkEnc::GeneralSettingsLayerPlugins::AboutInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
-	DLLInterfaces::winamp_in_modules.GetNthEntry(list_input->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
+	DLLInterfaces::winamp_in_modules.GetNth(list_input->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Void BonkEnc::GeneralSettingsLayerPlugins::AboutOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
-	DLLInterfaces::winamp_out_modules.GetNthEntry(list_output->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
+	DLLInterfaces::winamp_out_modules.GetNth(list_output->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
 Int BonkEnc::GeneralSettingsLayerPlugins::GetSelectedOutputPlugin()

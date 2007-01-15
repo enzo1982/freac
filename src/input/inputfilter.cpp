@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -67,198 +67,155 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 
 Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 {
-	if (ex_ID3Tag_NumFrames(tag) > 0)
+	ID3TagIterator	*iterator = ex_ID3Tag_CreateIterator(tag);
+
+	for (UnsignedInt i = 0; i < ex_ID3Tag_NumFrames(tag); i++)
 	{
-		ID3Frame	*frame;
-		ID3Field	*field;
-		int		 tbufsize = 1024;
-		char		*abuffer = new char [tbufsize];
-		wchar_t		*wbuffer = new wchar_t [tbufsize];
+		ID3Frame	*frame = ex_ID3TagIterator_GetNext(iterator);
 
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
+		if	(ex_ID3Frame_GetID(frame) == ID3FID_LEADARTIST)	nFormat->artist = GetID3V2FrameString(frame);
+		else if (ex_ID3Frame_GetID(frame) == ID3FID_TITLE)	nFormat->title = GetID3V2FrameString(frame);
+		else if (ex_ID3Frame_GetID(frame) == ID3FID_ALBUM)	nFormat->album = GetID3V2FrameString(frame);
+		else if (ex_ID3Frame_GetID(frame) == ID3FID_TRACKNUM)	nFormat->track = GetID3V2FrameString(frame).ToInt();
+		else if (ex_ID3Frame_GetID(frame) == ID3FID_YEAR)	nFormat->year = GetID3V2FrameString(frame).ToInt();
+		else if (ex_ID3Frame_GetID(frame) == ID3FID_CONTENTTYPE)
+		{
+			String	 genre = GetID3V2FrameString(frame);
+			String	 genreID;
 
-		if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_LEADARTIST)) != NIL)
-			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+			if (genre[0] == '(')
 			{
-				Int	 encoding = ex_ID3Field_GetINT(field);
-
-				if (encoding == ID3TE_ISO8859_1 || encoding == ID3TE_UTF8)
+				for (Int i = 1; i < genre.Length(); i++)
 				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
+					if (genre[i] == ')') break;
 
-					if (encoding == ID3TE_ISO8859_1)	nFormat->artist.ImportFrom("ISO-8859-1", abuffer);
-					else if (encoding == ID3TE_UTF8)	nFormat->artist.ImportFrom("UTF-8", abuffer);
-				}
-				else if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
-
-					nFormat->artist.ImportFrom("UTF-16BE", (char *) wbuffer);
+					genreID[i - 1] = genre[i];
 				}
 			}
 
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
+			if (genreID == NIL)				nFormat->genre = genre;
+			else if (genre.Length() > genreID.Length() + 2)	nFormat->genre = genre.Tail(genre.Length() - genreID.Length() - 2);
+			else if (genreID != NIL)			nFormat->genre = GetID3CategoryName(genreID.ToInt());
+		}
+		else if (ex_ID3Frame_GetID(frame) == ID3FID_PICTURE)
+		{
+			Picture	*picture = new Picture();
 
-		if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_TITLE)) != NIL)
-			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+			int	 tbufsize = 1024;
+			char	*abuffer  = new char [tbufsize];
+			wchar_t	*wbuffer  = new wchar_t [tbufsize];
+
+			ZeroMemory(abuffer, tbufsize);
+			ZeroMemory(wbuffer, tbufsize * 2);
+
+			ID3Field	*field = ex_ID3Frame_GetField(frame, ID3FN_MIMETYPE);
+
+			if (field != NIL)
 			{
-				Int	 encoding = ex_ID3Field_GetINT(field);
+				ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-				if (encoding == ID3TE_ISO8859_1 || encoding == ID3TE_UTF8)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
-
-					if (encoding == ID3TE_ISO8859_1)	nFormat->title.ImportFrom("ISO-8859-1", abuffer);
-					else if (encoding == ID3TE_UTF8)	nFormat->title.ImportFrom("UTF-8", abuffer);
-				}
-				else if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
-
-					nFormat->title.ImportFrom("UTF-16BE", (char *) wbuffer);
-				}
+				picture->mime.ImportFrom("ISO-8859-1", abuffer);
 			}
 
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
+			field = ex_ID3Frame_GetField(frame, ID3FN_PICTURETYPE);
 
-		if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_ALBUM)) != NIL)
-			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+			if (field != NIL)
 			{
-				Int	 encoding = ex_ID3Field_GetINT(field);
-
-				if (encoding == ID3TE_ISO8859_1 || encoding == ID3TE_UTF8)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
-
-					if (encoding == ID3TE_ISO8859_1)	nFormat->album.ImportFrom("ISO-8859-1", abuffer);
-					else if (encoding == ID3TE_UTF8)	nFormat->album.ImportFrom("UTF-8", abuffer);
-				}
-				else if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
-
-					nFormat->album.ImportFrom("UTF-16BE", (char *) wbuffer);
-				}
+				picture->type = ex_ID3Field_GetINT(field);
 			}
 
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
+			ZeroMemory(abuffer, tbufsize);
+			ZeroMemory(wbuffer, tbufsize * 2);
 
-		if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_CONTENTTYPE)) != NIL)
-			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+			field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC);
+
+			if (field != NIL)
 			{
 				Int	 encoding = ex_ID3Field_GetINT(field);
 
 				if (encoding == ID3TE_ISO8859_1 || encoding == ID3TE_UTF8)
 				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
-
-					int startByte = 0;
-
-					if (abuffer[0] == '(')
+					if ((field = ex_ID3Frame_GetField(frame, ID3FN_DESCRIPTION)) != NIL)
 					{
-						for (int i = 0; i < tbufsize; i++)
-						{
-							startByte++;
+						ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-							if (abuffer[i] == ')') break;
-						}
+						if (encoding == ID3TE_ISO8859_1)	picture->description.ImportFrom("ISO-8859-1", abuffer);
+						else if (encoding == ID3TE_UTF8)	picture->description.ImportFrom("UTF-8", abuffer);
 					}
-
-					if ((abuffer + startByte)[0] != 0 && encoding == ID3TE_ISO8859_1)	nFormat->genre.ImportFrom("ISO-8859-1", abuffer + startByte);
-					else if ((abuffer + startByte)[0] != 0 && encoding == ID3TE_UTF8)	nFormat->genre.ImportFrom("UTF-8", abuffer + startByte);
-					else if (startByte > 0)							nFormat->genre = GetID3CategoryName(String(abuffer + 1).ToInt());
 				}
 				else if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)
 				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
-
-					int startByte = 0;
-
-					if (wbuffer[0] == '(')
+					if ((field = ex_ID3Frame_GetField(frame, ID3FN_DESCRIPTION)) != NIL)
 					{
-						for (int i = 0; i < tbufsize; i++)
-						{
-							startByte++;
+						ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-							if (wbuffer[i] == ')') break;
-						}
+						picture->description.ImportFrom("UTF-16BE", (char *) wbuffer);
 					}
-
-					nFormat->genre.ImportFrom("UTF-16BE", (char *) wbuffer);
 				}
 			}
+
+			field = ex_ID3Frame_GetField(frame, ID3FN_DATA);
+
+			if (field != NIL)
+			{
+				picture->data.Resize(ex_ID3Field_Size(field));
+
+				ex_ID3Field_GetBINARY(field, picture->data, picture->data.Size());
+			}
+
+			delete [] abuffer;
+			delete [] wbuffer;
+
+			nFormat->pictures.Add(picture);
+		}
+	}
+
+	ex_ID3TagIterator_Delete(iterator);
+
+	return True;
+}
+
+String BonkEnc::InputFilter::GetID3V2FrameString(ID3Frame *frame)
+{
+	ID3Field	*field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC);
+	String		 result;
+
+	if (field != NIL)
+	{
+		Int	 encoding = ex_ID3Field_GetINT(field);
+
+		int	 tbufsize = 1024;
+		char	*abuffer  = new char [tbufsize];
+		wchar_t	*wbuffer  = new wchar_t [tbufsize];
 
 		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
+		ZeroMemory(wbuffer, tbufsize * 2);
 
-		if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_YEAR)) != NIL)
-			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+		if (encoding == ID3TE_ISO8859_1 || encoding == ID3TE_UTF8)
+		{
+			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL)
 			{
-				Int	 encoding = ex_ID3Field_GetINT(field);
+				ex_ID3Field_GetASCII(field, abuffer, tbufsize);
 
-				if (encoding == ID3TE_ISO8859_1 || encoding == ID3TE_UTF8)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
-
-					String	 year;
-
-					if (encoding == ID3TE_ISO8859_1)	year.ImportFrom("ISO-8859-1", abuffer);
-					else if (encoding == ID3TE_UTF8)	year.ImportFrom("UTF-8", abuffer);
-
-					nFormat->year = year.ToInt();
-				}
-				else if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
-
-					String	 year;
-
-					year.ImportFrom("UTF-16BE", (char *) wbuffer);
-
-					nFormat->year = year.ToInt();
-				}
+				if (encoding == ID3TE_ISO8859_1)	result.ImportFrom("ISO-8859-1", abuffer);
+				else if (encoding == ID3TE_UTF8)	result.ImportFrom("UTF-8", abuffer);
 			}
-
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, 2 * tbufsize);
-
-		if ((frame = ex_ID3Tag_FindFrameWithID(tag, ID3FID_TRACKNUM)) != NIL)
-			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC)) != NIL)
+		}
+		else if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)
+		{
+			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL)
 			{
-				Int	 encoding = ex_ID3Field_GetINT(field);
+				ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
 
-				if (encoding == ID3TE_ISO8859_1 || encoding == ID3TE_UTF8)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetASCII(field, abuffer, tbufsize);
-
-					String	 track;
-
-					if (encoding == ID3TE_ISO8859_1)	track.ImportFrom("ISO-8859-1", abuffer);
-					else if (encoding == ID3TE_UTF8)	track.ImportFrom("UTF-8", abuffer);
-
-					nFormat->track = track.ToInt();
-				}
-				else if (encoding == ID3TE_UTF16 || encoding == ID3TE_UTF16BE)
-				{
-					if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL) ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
-
-					String	 track;
-
-					track.ImportFrom("UTF-16BE", (char *) wbuffer);
-
-					nFormat->track = track.ToInt();
-				}
+				result.ImportFrom("UTF-16BE", (char *) wbuffer);
 			}
+		}
 
 		delete [] abuffer;
 		delete [] wbuffer;
 	}
 
-	return True;
+	return result;
 }
 
 String BonkEnc::InputFilter::GetID3CategoryName(Int id)

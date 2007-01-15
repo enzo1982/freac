@@ -8,30 +8,26 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_CDDB_CACHE_
-#define _H_CDDB_CACHE_
+#ifndef _H_PICTURE_
+#define _H_PICTURE_
 
-#include <cddb/cddb.h>
+#include <smooth.h>
+
+using namespace smooth;
 
 namespace BonkEnc
 {
-	class BEEXPORT CDDBCache
+	class BEEXPORT Picture
 	{
-		private:
-			Config		*config;
-
-			Array<CDDBInfo>	 infoCache;
 		public:
-					 CDDBCache(Config *);
-			virtual		~CDDBCache();
+						 Picture();
+						 Picture(const Picture &);
+						~Picture();
 
-			const CDDBInfo	&GetCacheEntry(Int);
-			Bool		 AddCacheEntry(const CDDBInfo &);
-
-			Int		 GetNOfEntries()	{ return infoCache.GetNOfEntries(); }
-			const CDDBInfo	&GetNthEntry(Int n)	{ return infoCache.GetNth(n); }
-
-			Int		 RemoveNthEntry(Int);
+			Int			 type;
+			String			 mime;
+			String			 description;
+			Buffer<unsigned char>	 data;
 	};
 };
 

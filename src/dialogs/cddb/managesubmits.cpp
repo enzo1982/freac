@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -148,12 +148,12 @@ Void BonkEnc::cddbManageSubmitsDlg::Cancel()
 
 Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
 {
-	const CDDBInfo	&cddbInfo = cddbBatch->GetSubmits().GetNthEntry(list_entries->GetSelectedEntryNumber());
+	const CDDBInfo	&cddbInfo = cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(cddbInfo.dArtist).Append(" - ").Append(cddbInfo.dTitle).Append("\n\n");
 
 	for (Int i = 0; i < cddbInfo.trackTitles.GetNOfEntries(); i++)
 	{
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNthEntry(i)).Append(" - ") : "").Append(cddbInfo.trackTitles.GetNthEntry(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNth(i)).Append(" - ") : "").Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -164,7 +164,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
 
 Void BonkEnc::cddbManageSubmitsDlg::DeleteEntry()
 {
-	cddbBatch->DeleteSubmit(cddbBatch->GetSubmits().GetNthEntry(list_entries->GetSelectedEntryNumber()));
+	cddbBatch->DeleteSubmit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber()));
 
 	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
 
@@ -182,7 +182,7 @@ Void BonkEnc::cddbManageSubmitsDlg::ReadEntries()
 
 	for (Int i = 0; i < entries.GetNOfEntries(); i++)
 	{
-		const CDDBInfo	&cddbInfo = entries.GetNthEntry(i);
+		const CDDBInfo	&cddbInfo = entries.GetNth(i);
 
 		list_entries->AddEntry(String(cddbInfo.category).Append("\t").Append(cddbInfo.dArtist).Append(" - ").Append(cddbInfo.dTitle));
 	}
@@ -194,7 +194,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Submitting CD information")).Append("..."));
 
-	if (cddbBatch->Submit(cddbBatch->GetSubmits().GetNthEntry(list_entries->GetSelectedEntryNumber())))
+	if (cddbBatch->Submit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber())))
 	{
 		list_entries->RemoveEntry(list_entries->GetSelectedEntry());
 

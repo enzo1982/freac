@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -137,6 +137,11 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	nFormat->year		= infoFormat->year;
 	nFormat->track		= infoFormat->track;
 
+	for (Int i = 0; i < infoFormat->pictures.GetNOfEntries(); i++)
+	{
+		nFormat->pictures.Add(new Picture(*(infoFormat->pictures.GetNth(i))));
+	}
+
 	delete infoFormat;
 
 	return nFormat;
@@ -145,8 +150,6 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 Int BonkEnc::FilterInFLAC::ReadFLACData(Thread *self)
 {
 	decoder = ex_FLAC__stream_decoder_new();
-
-	ex_FLAC__stream_decoder_set_metadata_respond(decoder, FLAC__METADATA_TYPE_VORBIS_COMMENT);
 
 	ex_FLAC__stream_decoder_init_stream(decoder, &FLACStreamDecoderReadCallback, &FLACStreamDecoderSeekCallback, &FLACStreamDecoderTellCallback, &FLACStreamDecoderLengthCallback, &FLACStreamDecoderEofCallback, &FLACStreamDecoderWriteCallback, &FLACStreamDecoderMetadataCallback, &FLACStreamDecoderErrorCallback, this);
 
@@ -163,6 +166,7 @@ Int BonkEnc::FilterInFLAC::ReadFLACMetadata(Thread *self)
 	decoder = ex_FLAC__stream_decoder_new();
 
 	ex_FLAC__stream_decoder_set_metadata_respond(decoder, FLAC__METADATA_TYPE_VORBIS_COMMENT);
+	ex_FLAC__stream_decoder_set_metadata_respond(decoder, FLAC__METADATA_TYPE_PICTURE);
 
 	ex_FLAC__stream_decoder_init_stream(decoder, &FLACStreamDecoderReadCallback, &FLACStreamDecoderSeekCallback, &FLACStreamDecoderTellCallback, &FLACStreamDecoderLengthCallback, &FLACStreamDecoderEofCallback, &FLACStreamDecoderWriteCallback, &FLACStreamDecoderMetadataCallback, &FLACStreamDecoderErrorCallback, this);
 
@@ -339,6 +343,20 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 
 			String::SetInputFormat(prevInFormat);
 		}
+	}
+	else if (metadata->type == FLAC__METADATA_TYPE_PICTURE)
+	{
+		Picture	*picture = new Picture();
+
+		picture->type = metadata->data.picture.type;
+		picture->mime = metadata->data.picture.mime_type;
+		picture->description.ImportFrom("UTF-8", (char *) metadata->data.picture.description);
+
+		picture->data.Resize(metadata->data.picture.data_length);
+
+		memcpy(picture->data, metadata->data.picture.data, picture->data.Size());
+
+		filter->infoFormat->pictures.Add(picture);
 	}
 }
 

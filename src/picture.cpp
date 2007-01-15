@@ -8,29 +8,24 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <track.h>
+#include <picture.h>
 
-BonkEnc::Track::Track()
+BonkEnc::Picture::Picture()
 {
-	channels	= 0;
-	rate		= 0;
-	bits		= 0;
-	length		= -1;
-	approxLength	= -1;
-	fileSize	= -1;
-	order		= BYTE_INTEL;
-
-	isCDTrack	= False;
-
-	drive		= -1;
-	discid		= 0;
-	cdTrack		= -1;
-
-	track		= -1;
-	year		= -1;
+	type = 0;
 }
 
-BonkEnc::Track::~Track()
+BonkEnc::Picture::Picture(const Picture &oPicture)
 {
-	for (Int i = 0; i < pictures.GetNOfEntries(); i++) delete pictures.GetNth(i);
+	type = oPicture.type;
+	mime = oPicture.mime;
+	description = oPicture.description;
+
+	data.Resize(oPicture.data.Size());
+
+	memcpy(data, oPicture.data, data.Size());
+}
+
+BonkEnc::Picture::~Picture()
+{
 }

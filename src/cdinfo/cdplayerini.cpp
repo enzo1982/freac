@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -78,7 +78,7 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 
 					for (Int i = 7; i < line.Length(); i++) artist[i - 7] = line[i];
 
-					cdInfo.AddEntry(artist, 0);
+					cdInfo.Add(artist, 0);
 				}
 				else if (line.ToLower().StartsWith("title="))
 				{
@@ -86,7 +86,7 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 
 					for (Int i = 6; i < line.Length(); i++) title[i - 6] = line[i];
 
-					cdInfo.AddEntry(title, 100);
+					cdInfo.Add(title, 100);
 				}
 				else if (line.StartsWith("0=") || line.ToInt() > 0)
 				{
@@ -95,7 +95,7 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 
 					for (Int i = length; i < line.Length(); i++) title[i - length] = line[i];
 
-					cdInfo.AddEntry(title, line.ToInt() + 1);
+					cdInfo.Add(title, line.ToInt() + 1);
 				}
 				else if (line.StartsWith("["))
 				{

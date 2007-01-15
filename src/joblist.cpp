@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -70,7 +70,7 @@ BonkEnc::Track *BonkEnc::JobList::GetNthTrack(Int n)
 	if (n < 0 || GetNOfTracks() <= n) return NIL;
 	
 	// Entries might have been moved in the joblist, so get the entry by index instead of position
-	return tracks.GetEntry(GetNthEntry(n)->GetHandle());
+	return tracks.Get(GetNthEntry(n)->GetHandle());
 }
 
 Bool BonkEnc::JobList::AddTrack(Track *track)
@@ -114,7 +114,7 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 
 	entry->SetMark(True);
 
-	tracks.AddEntry(track, entry->GetHandle());
+	tracks.Add(track, entry->GetHandle());
 
 	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
 
@@ -125,7 +125,7 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 {
 	delete GetNthTrack(n);
 
-	tracks.RemoveEntry(GetNthEntry(n)->GetHandle());
+	tracks.Remove(GetNthEntry(n)->GetHandle());
 
 	RemoveEntry(GetNthEntry(n));
 
@@ -160,19 +160,7 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 
 BonkEnc::Track *BonkEnc::JobList::GetSelectedTrack()
 {
-	if (GetNOfTracks() == 0) return NIL;
-
-	ListEntry	*entry = GetSelectedEntry();
-	Int		 n = -1;
-
-	for (Int i = 0; i < GetNOfEntries(); i++)
-	{
-		if (GetNthEntry(i) == entry) n = i;
-	}
-
-	if (n == -1) return NIL;
-
-	return GetNthTrack(n);
+	return GetNthTrack(GetSelectedEntryNumber());
 }
 
 Int BonkEnc::JobList::SetMetrics(const Point &nPos, const Size &nSize)
@@ -210,11 +198,11 @@ Void BonkEnc::JobList::AddTrackByDialog()
 		{
 			if (!(n & 1))
 			{
-				type[k++] = DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
+				type[k++] = DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j];
 
-				if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0)
 				{
-					types.AddEntry(type);
+					types.Add(type);
 
 					k = 0;
 					n++;
@@ -223,9 +211,9 @@ Void BonkEnc::JobList::AddTrackByDialog()
 			}
 			else
 			{
-				extension[k++] = DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
+				extension[k++] = DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j];
 
-				if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0)
 				{
 					String	 extension2 = String("*.").Append(extension);
 					Int	 o = 0;		
@@ -243,7 +231,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 						}
 					}
 
-					extensions.AddEntry(extension);
+					extensions.Add(extension);
 
 					k = 0;
 					n++;
@@ -251,7 +239,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 				}
 			}
 
-			if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
+			if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0 && DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j + 1] == 0) break;
 		}
 	}
 
@@ -267,7 +255,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	if (BonkEnc::currentConfig->enable_vorbis)							fileTypes.Append("; *.ogg");
 													fileTypes.Append("; *.voc; *.wav");
 
-	for (Int l = 0; l < extensions.GetNOfEntries(); l++) fileTypes.Append("; ").Append(extensions.GetNthEntry(l));
+	for (Int l = 0; l < extensions.GetNOfEntries(); l++) fileTypes.Append("; ").Append(extensions.GetNth(l));
 
 													dialog->AddFilter(BonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
 	if (BonkEnc::currentConfig->enable_faad2)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("AAC Files")).Append(" (*.aac)"), "*.aac");
@@ -282,7 +270,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
 	if (BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows CD Audio Track")).Append(" (*.cda)"), "*.cda");
 
-	for (Int m = 0; m < types.GetNOfEntries(); m++) dialog->AddFilter(types.GetNthEntry(m), extensions.GetNthEntry(m));
+	for (Int m = 0; m < types.GetNOfEntries(); m++) dialog->AddFilter(types.GetNth(m), extensions.GetNth(m));
 
 	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
 
@@ -333,7 +321,7 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 	{
 		for (Int i = 0; i < tracks.GetNOfEntries(); i++)
 		{
-			Track	*track = tracks.GetNthEntry(i);
+			Track	*track = tracks.GetNth(i);
 
 			if (track->discid == format->discid && track->cdTrack == format->cdTrack) return;
 		}
@@ -433,8 +421,8 @@ Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
 		const Array<Directory>	&directories = directory.GetDirectories();
 		const Array<File>	&files = directory.GetFiles();
 
-		for (Int i = 0; i < directories.GetNOfEntries(); i++) AddTrackByDragAndDrop(directories.GetNthEntry(i));
-		for (Int j = 0; j < files.GetNOfEntries(); j++) AddTrackByFileName(files.GetNthEntry(j), NIL, False);
+		for (Int i = 0; i < directories.GetNOfEntries(); i++) AddTrackByDragAndDrop(directories.GetNth(i));
+		for (Int j = 0; j < files.GetNOfEntries(); j++) AddTrackByFileName(files.GetNth(j), NIL, False);
 	}
 	else
 	{
@@ -447,7 +435,7 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 	Directory		 dir = Directory(directory);
 	const Array<File>	&files = dir.GetFilesByPattern(pattern);
 
-	for (Int j = 0; j < files.GetNOfEntries(); j++) AddTrackByFileName(files.GetNthEntry(j), NIL, False);
+	for (Int j = 0; j < files.GetNOfEntries(); j++) AddTrackByFileName(files.GetNth(j), NIL, False);
 
 	if (files.GetNOfEntries() == 0) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
 }

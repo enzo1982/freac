@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,7 +25,7 @@ namespace BonkEnc
 			Track		*format;
 			Config		*currentConfig;
 
-			Int		 RenderID3Tag(Int, unsigned char *);
+			Int		 RenderID3Tag(Int, Buffer<unsigned char> &);
 		public:
 			int		 error;
 

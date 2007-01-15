@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -87,7 +87,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	for (int j = 0; j < currentConfig->cdrip_numdrives; j++)
 	{
-		combo_drive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
+		combo_drive->AddEntry(currentConfig->cdrip_drives.GetNth(j));
 	}
 
 	combo_drive->SelectNthEntry(activedrive);
@@ -320,8 +320,8 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 	for (Int i = 0; i < titles.GetNOfEntries(); i++)
 	{
-		if ((edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") && artists.GetNthEntry(i) == "") sane = False;
-		if (titles.GetNthEntry(i) == "") sane = False;
+		if ((edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") && artists.GetNth(i) == "") sane = False;
+		if (titles.GetNth(i) == "") sane = False;
 	}
 
 	if (!sane)
@@ -342,9 +342,9 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	cddbInfo.trackTitles.RemoveAll();
 	cddbInfo.trackComments.RemoveAll();
 
-	for (Int j = 0; j < artists.GetNOfEntries(); j++) cddbInfo.trackArtists.AddEntry(artists.GetNthEntry(j));
-	for (Int k = 0; k < titles.GetNOfEntries(); k++) cddbInfo.trackTitles.AddEntry((titles.GetNthEntry(k) == BonkEnc::i18n->TranslateString("Data track") ? "Data track" : titles.GetNthEntry(k)));
-	for (Int l = 0; l < comments.GetNOfEntries(); l++) cddbInfo.trackComments.AddEntry(comments.GetNthEntry(l));
+	for (Int j = 0; j < artists.GetNOfEntries(); j++) cddbInfo.trackArtists.Add(artists.GetNth(j));
+	for (Int k = 0; k < titles.GetNOfEntries(); k++) cddbInfo.trackTitles.Add((titles.GetNth(k) == BonkEnc::i18n->TranslateString("Data track") ? "Data track" : titles.GetNth(k)));
+	for (Int l = 0; l < comments.GetNOfEntries(); l++) cddbInfo.trackComments.Add(comments.GetNth(l));
 
 	if (cddbInfo.category == "") cddbInfo.category = GetCDDBGenre(edit_genre->GetText());
 
@@ -412,14 +412,14 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 			{
 				if (trackInfo->cdTrack == list_tracks->GetNthEntry(m)->GetText().ToInt())
 				{
-					if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") trackInfo->artist = artists.GetNthEntry(m);
+					if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") trackInfo->artist = artists.GetNth(m);
 					else															trackInfo->artist = edit_artist->GetText();
 
-					trackInfo->title	= titles.GetNthEntry(m);
+					trackInfo->title	= titles.GetNth(m);
 					trackInfo->album	= edit_album->GetText();
 					trackInfo->year		= edit_year->GetText().ToInt();
 					trackInfo->genre	= edit_genre->GetText();
-					trackInfo->comment	= comments.GetNthEntry(m);
+					trackInfo->comment	= comments.GetNth(m);
 
 					String	 jlEntry;
 
@@ -454,7 +454,7 @@ Void BonkEnc::cddbSubmitDlg::SetArtist()
 
 		UpdateTrackList();
 
-		if (list_tracks->GetSelectedEntry() != NIL) edit_trackartist->SetText(artists.GetEntry(list_tracks->GetSelectedEntry()->GetHandle()));
+		if (list_tracks->GetSelectedEntry() != NIL) edit_trackartist->SetText(artists.Get(list_tracks->GetSelectedEntry()->GetHandle()));
 	}
 	else if ((edit_artist->GetText() != BonkEnc::i18n->TranslateString("Various artists") && edit_artist->GetText() != "Various") && edit_trackartist->IsActive())
 	{
@@ -469,8 +469,8 @@ Void BonkEnc::cddbSubmitDlg::UpdateTrackList()
 {
 	for (Int i = 0; i < list_tracks->GetNOfEntries(); i++)
 	{
-		if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append("\t").Append(artists.GetNthEntry(i).Length() > 0 ? artists.GetNthEntry(i) : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(titles.GetNthEntry(i).Length() > 0 ? titles.GetNthEntry(i) : BonkEnc::i18n->TranslateString("unknown title")));
-		else															list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append("\t").Append(titles.GetNthEntry(i).Length() > 0 ? titles.GetNthEntry(i) : BonkEnc::i18n->TranslateString("unknown title")));
+		if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append("\t").Append(artists.GetNth(i).Length() > 0 ? artists.GetNth(i) : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : BonkEnc::i18n->TranslateString("unknown title")));
+		else															list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append("\t").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : BonkEnc::i18n->TranslateString("unknown title")));
 	}
 }
 
@@ -581,19 +581,19 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		{
 			Int	 handle = list_tracks->AddEntry("")->GetHandle();
 
-			artists.AddEntry(cdInfo.trackArtists.GetNthEntry(j), handle);
-			titles.AddEntry(cdInfo.trackTitles.GetNthEntry(j), handle);
-			comments.AddEntry(cdInfo.trackComments.GetNthEntry(j), handle);
+			artists.Add(cdInfo.trackArtists.GetNth(j), handle);
+			titles.Add(cdInfo.trackTitles.GetNth(j), handle);
+			comments.Add(cdInfo.trackComments.GetNth(j), handle);
 		}
 
 		cddbInfo = cdInfo;
 	}
-	else if (cdText.GetCDText().GetEntry(0) != NIL)
+	else if (cdText.GetCDText().Get(0) != NIL)
 	{
-		if (cdText.GetCDText().GetEntry(0) == "Various") edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
-		else						 edit_artist->SetText(cdText.GetCDText().GetEntry(0));
+		if (cdText.GetCDText().Get(0) == "Various") edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
+		else					    edit_artist->SetText(cdText.GetCDText().Get(0));
 
-		edit_album->SetText(cdText.GetCDText().GetEntry(100));
+		edit_album->SetText(cdText.GetCDText().Get(100));
 		edit_year->SetText("");
 		edit_genre->SetText("");
 		edit_disccomment->SetText("");
@@ -605,52 +605,52 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		edit_title->SetText("");
 		edit_comment->SetText("");
 
-		if (cdText.GetCDText().GetEntry(0) == "Various") edit_trackartist->Activate();
-		else						 edit_trackartist->Deactivate();
+		if (cdText.GetCDText().Get(0) == "Various") edit_trackartist->Activate();
+		else					    edit_trackartist->Deactivate();
 
 		cddbInfo = NIL;
 
 		cddbInfo.discID = iDiscid;
 		cddbInfo.revision = -1;
 
-		cddbInfo.dArtist = cdText.GetCDText().GetEntry(0);
-		cddbInfo.dTitle = cdText.GetCDText().GetEntry(100);
+		cddbInfo.dArtist = cdText.GetCDText().Get(0);
+		cddbInfo.dTitle = cdText.GetCDText().Get(100);
 
 		for (Int j = 0; j < numTocEntries; j++)
 		{
 			TOCENTRY entry = ex_CR_GetTocEntry(j);
 
-			cddbInfo.trackOffsets.AddEntry(entry.dwStartSector + 150, j);
-			cddbInfo.trackArtists.AddEntry("", j);
-			cddbInfo.trackTitles.AddEntry(cdText.GetCDText().GetEntry(entry.btTrackNumber), j);
-			cddbInfo.trackComments.AddEntry("", j);
+			cddbInfo.trackOffsets.Add(entry.dwStartSector + 150, j);
+			cddbInfo.trackArtists.Add("", j);
+			cddbInfo.trackTitles.Add(cdText.GetCDText().Get(entry.btTrackNumber), j);
+			cddbInfo.trackComments.Add("", j);
 
 			if (entry.btFlag & CDROMDATAFLAG)
 			{
 				Int	 handle = list_tracks->AddEntry("")->GetHandle();
 
-				artists.AddEntry("", handle);
-				titles.AddEntry(BonkEnc::i18n->TranslateString("Data track"), handle);
-				comments.AddEntry("", handle);
+				artists.Add("", handle);
+				titles.Add(BonkEnc::i18n->TranslateString("Data track"), handle);
+				comments.Add("", handle);
 			}
 			else
 			{
 				Int	 handle = list_tracks->AddEntry("")->GetHandle();
 
-				artists.AddEntry("", handle);
-				titles.AddEntry(cdText.GetCDText().GetEntry(entry.btTrackNumber), handle);
-				comments.AddEntry("", handle);
+				artists.Add("", handle);
+				titles.Add(cdText.GetCDText().Get(entry.btTrackNumber), handle);
+				comments.Add("", handle);
 			}
 		}
 
 		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
 	}
-	else if (cdPlayerInfo.GetCDInfo().GetEntry(0) != NIL)
+	else if (cdPlayerInfo.GetCDInfo().Get(0) != NIL)
 	{
-		if (cdPlayerInfo.GetCDInfo().GetEntry(0) == "Various")	edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
-		else							edit_artist->SetText(cdPlayerInfo.GetCDInfo().GetEntry(0));
+		if (cdPlayerInfo.GetCDInfo().Get(0) == "Various")	edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
+		else							edit_artist->SetText(cdPlayerInfo.GetCDInfo().Get(0));
 
-		edit_album->SetText(cdPlayerInfo.GetCDInfo().GetEntry(100));
+		edit_album->SetText(cdPlayerInfo.GetCDInfo().Get(100));
 		edit_year->SetText("");
 		edit_genre->SetText("");
 		edit_disccomment->SetText("");
@@ -662,7 +662,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		edit_title->SetText("");
 		edit_comment->SetText("");
 
-		if (cdPlayerInfo.GetCDInfo().GetEntry(0) == "Various")	edit_trackartist->Activate();
+		if (cdPlayerInfo.GetCDInfo().Get(0) == "Various")	edit_trackartist->Activate();
 		else							edit_trackartist->Deactivate();
 
 		cddbInfo = NIL;
@@ -670,33 +670,33 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		cddbInfo.discID = iDiscid;
 		cddbInfo.revision = -1;
 
-		cddbInfo.dArtist = cdPlayerInfo.GetCDInfo().GetEntry(0);
-		cddbInfo.dTitle = cdPlayerInfo.GetCDInfo().GetEntry(100);
+		cddbInfo.dArtist = cdPlayerInfo.GetCDInfo().Get(0);
+		cddbInfo.dTitle = cdPlayerInfo.GetCDInfo().Get(100);
 
 		for (Int j = 0; j < numTocEntries; j++)
 		{
 			TOCENTRY entry = ex_CR_GetTocEntry(j);
 
-			cddbInfo.trackOffsets.AddEntry(entry.dwStartSector + 150, j);
-			cddbInfo.trackArtists.AddEntry("", j);
-			cddbInfo.trackTitles.AddEntry(cdPlayerInfo.GetCDInfo().GetEntry(entry.btTrackNumber), j);
-			cddbInfo.trackComments.AddEntry("", j);
+			cddbInfo.trackOffsets.Add(entry.dwStartSector + 150, j);
+			cddbInfo.trackArtists.Add("", j);
+			cddbInfo.trackTitles.Add(cdPlayerInfo.GetCDInfo().Get(entry.btTrackNumber), j);
+			cddbInfo.trackComments.Add("", j);
 
 			if (entry.btFlag & CDROMDATAFLAG)
 			{
 				Int	 handle = list_tracks->AddEntry("")->GetHandle();
 
-				artists.AddEntry("", handle);
-				titles.AddEntry(BonkEnc::i18n->TranslateString("Data track"), handle);
-				comments.AddEntry("", handle);
+				artists.Add("", handle);
+				titles.Add(BonkEnc::i18n->TranslateString("Data track"), handle);
+				comments.Add("", handle);
 			}
 			else
 			{
 				Int	 handle = list_tracks->AddEntry("")->GetHandle();
 
-				artists.AddEntry("", handle);
-				titles.AddEntry(cdPlayerInfo.GetCDInfo().GetEntry(entry.btTrackNumber), handle);
-				comments.AddEntry("", handle);
+				artists.Add("", handle);
+				titles.Add(cdPlayerInfo.GetCDInfo().Get(entry.btTrackNumber), handle);
+				comments.Add("", handle);
 			}
 		}
 
@@ -728,26 +728,26 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		{
 			TOCENTRY entry = ex_CR_GetTocEntry(j);
 
-			cddbInfo.trackOffsets.AddEntry(entry.dwStartSector + 150, j);
-			cddbInfo.trackArtists.AddEntry("", j);
-			cddbInfo.trackTitles.AddEntry("", j);
-			cddbInfo.trackComments.AddEntry("", j);
+			cddbInfo.trackOffsets.Add(entry.dwStartSector + 150, j);
+			cddbInfo.trackArtists.Add("", j);
+			cddbInfo.trackTitles.Add("", j);
+			cddbInfo.trackComments.Add("", j);
 
 			if (entry.btFlag & CDROMDATAFLAG)
 			{
 				Int	 handle = list_tracks->AddEntry("")->GetHandle();
 
-				artists.AddEntry("", handle);
-				titles.AddEntry(BonkEnc::i18n->TranslateString("Data track"), handle);
-				comments.AddEntry("", handle);
+				artists.Add("", handle);
+				titles.Add(BonkEnc::i18n->TranslateString("Data track"), handle);
+				comments.Add("", handle);
 			}
 			else
 			{
 				Int	 handle = list_tracks->AddEntry("")->GetHandle();
 
-				artists.AddEntry("", handle);
-				titles.AddEntry("", handle);
-				comments.AddEntry("", handle);
+				artists.Add("", handle);
+				titles.Add("", handle);
+				comments.Add("", handle);
 			}
 		}
 
@@ -762,22 +762,22 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 		for (Int m = 0; m < titles.GetNOfEntries(); m++)
 		{
-			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->artist != "" && trackInfo->artist != artists.GetNthEntry(m))
+			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->artist != "" && trackInfo->artist != artists.GetNth(m))
 			{
-				artists.SetEntry(artists.GetNthEntryIndex(m), trackInfo->artist);
-				cddbInfo.trackArtists.SetEntry(cddbInfo.trackArtists.GetNthEntryIndex(trackInfo->cdTrack - 1), trackInfo->artist);
+				artists.Set(artists.GetNthIndex(m), trackInfo->artist);
+				cddbInfo.trackArtists.Set(cddbInfo.trackArtists.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->artist);
 			}
 
-			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->title != "" && trackInfo->title != titles.GetNthEntry(m))
+			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->title != "" && trackInfo->title != titles.GetNth(m))
 			{
-				titles.SetEntry(titles.GetNthEntryIndex(m), trackInfo->title);
-				cddbInfo.trackTitles.SetEntry(cddbInfo.trackTitles.GetNthEntryIndex(trackInfo->cdTrack - 1), trackInfo->title);
+				titles.Set(titles.GetNthIndex(m), trackInfo->title);
+				cddbInfo.trackTitles.Set(cddbInfo.trackTitles.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->title);
 			}
 
-			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->comment != "" && trackInfo->comment != comments.GetNthEntry(m))
+			if (trackInfo->track == list_tracks->GetNthEntry(m)->GetText().ToInt() && trackInfo->comment != "" && trackInfo->comment != comments.GetNth(m))
 			{
-				comments.SetEntry(comments.GetNthEntryIndex(m), trackInfo->comment);
-				cddbInfo.trackComments.SetEntry(cddbInfo.trackComments.GetNthEntryIndex(trackInfo->cdTrack - 1), trackInfo->comment);
+				comments.Set(comments.GetNthIndex(m), trackInfo->comment);
+				cddbInfo.trackComments.Set(cddbInfo.trackComments.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->comment);
 			}
 		}
 	}
@@ -791,9 +791,9 @@ Void BonkEnc::cddbSubmitDlg::SelectTrack()
 {
 	if (list_tracks->GetSelectedEntry() == NIL) return;
 
-	String	 artist = artists.GetEntry(list_tracks->GetSelectedEntry()->GetHandle());
-	String	 title = titles.GetEntry(list_tracks->GetSelectedEntry()->GetHandle());
-	String	 comment = comments.GetEntry(list_tracks->GetSelectedEntry()->GetHandle());
+	String	 artist = artists.Get(list_tracks->GetSelectedEntry()->GetHandle());
+	String	 title = titles.Get(list_tracks->GetSelectedEntry()->GetHandle());
+	String	 comment = comments.Get(list_tracks->GetSelectedEntry()->GetHandle());
 	Int	 track = list_tracks->GetSelectedEntry()->GetText().ToInt();
 
 	dontUpdateInfo = True;
@@ -823,8 +823,8 @@ Void BonkEnc::cddbSubmitDlg::UpdateTrack()
 	if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : "").Append(String::FromInt(track)).Append("\t").Append(edit_trackartist->GetText() == "" ? BonkEnc::i18n->TranslateString("unknown artist") : edit_trackartist->GetText()).Append(" - ").Append(edit_title->GetText() == "" ? BonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
 	else															list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : "").Append(String::FromInt(track)).Append("\t").Append(edit_title->GetText() == "" ? BonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
 
-	artists.SetEntry(list_tracks->GetSelectedEntry()->GetHandle(), edit_trackartist->GetText());
-	titles.SetEntry(list_tracks->GetSelectedEntry()->GetHandle(), edit_title->GetText());
+	artists.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_trackartist->GetText());
+	titles.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_title->GetText());
 }
 
 Void BonkEnc::cddbSubmitDlg::FinishArtist()
@@ -852,7 +852,7 @@ Void BonkEnc::cddbSubmitDlg::UpdateComment()
 	if (dontUpdateInfo) return;
 	if (list_tracks->GetSelectedEntry() == NIL) return;
 
-	comments.SetEntry(list_tracks->GetSelectedEntry()->GetHandle(), edit_comment->GetText());
+	comments.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_comment->GetText());
 }
 
 Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()

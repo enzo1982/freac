@@ -236,6 +236,9 @@ FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA		 ex_FLAC__stream_decoder_pro
 FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM		 ex_FLAC__stream_decoder_process_until_end_of_stream			= NIL;
 FLAC__METADATA_OBJECT_NEW					 ex_FLAC__metadata_object_new						= NIL;
 FLAC__METADATA_OBJECT_DELETE					 ex_FLAC__metadata_object_delete					= NIL;
+FLAC__METADATA_OBJECT_PICTURE_SET_MIME_TYPE			 ex_FLAC__metadata_object_picture_set_mime_type				= NIL;
+FLAC__METADATA_OBJECT_PICTURE_SET_DESCRIPTION			 ex_FLAC__metadata_object_picture_set_description			= NIL;
+FLAC__METADATA_OBJECT_PICTURE_SET_DATA				 ex_FLAC__metadata_object_picture_set_data				= NIL;
 FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment			= NIL;
 FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= NIL;
 
@@ -247,10 +250,18 @@ ID3TAGLINK			 ex_ID3Tag_Link				= NIL;
 ID3TAGNUMFRAMES			 ex_ID3Tag_NumFrames			= NIL;
 ID3TAGFINDFRAMEWITHID		 ex_ID3Tag_FindFrameWithID		= NIL;
 ID3TAGPARSEBUFFER		 ex_ID3Tag_ParseBuffer			= NIL;
+ID3TAGSIZE			 ex_ID3Tag_Size				= NIL;
 ID3TAGRENDER			 ex_ID3Tag_Render			= NIL;
+ID3TAGCREATEITERATOR		 ex_ID3Tag_CreateIterator		= NIL;
+ID3TAGITERATORGETNEXT		 ex_ID3TagIterator_GetNext		= NIL;
+ID3TAGITERATORDELETE		 ex_ID3TagIterator_Delete		= NIL;
+ID3FRAMEGETID			 ex_ID3Frame_GetID			= NIL;
 ID3FRAMENEWID			 ex_ID3Frame_NewID			= NIL;
 ID3FRAMEDELETE			 ex_ID3Frame_Delete			= NIL;
 ID3FRAMEGETFIELD		 ex_ID3Frame_GetField			= NIL;
+ID3FIELDSIZE			 ex_ID3Field_Size			= NIL;
+ID3FIELDSETBINARY		 ex_ID3Field_SetBINARY			= NIL;
+ID3FIELDGETBINARY		 ex_ID3Field_GetBINARY			= NIL;
 ID3FIELDSETINT			 ex_ID3Field_SetINT			= NIL;
 ID3FIELDGETINT			 ex_ID3Field_GetINT			= NIL;
 ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding		= NIL;
@@ -683,10 +694,18 @@ Bool BonkEnc::DLLInterfaces::LoadID3DLL()
 	ex_ID3Tag_NumFrames		= (ID3TAGNUMFRAMES) id3dll->GetFunctionAddress("ID3Tag_NumFrames");
 	ex_ID3Tag_FindFrameWithID	= (ID3TAGFINDFRAMEWITHID) id3dll->GetFunctionAddress("ID3Tag_FindFrameWithID");
 	ex_ID3Tag_ParseBuffer		= (ID3TAGPARSEBUFFER) id3dll->GetFunctionAddress("ID3Tag_ParseBuffer");
+	ex_ID3Tag_Size			= (ID3TAGSIZE) id3dll->GetFunctionAddress("ID3Tag_Size");
 	ex_ID3Tag_Render		= (ID3TAGRENDER) id3dll->GetFunctionAddress("ID3Tag_Render");
+	ex_ID3Tag_CreateIterator	= (ID3TAGCREATEITERATOR) id3dll->GetFunctionAddress("ID3Tag_CreateIterator");
+	ex_ID3TagIterator_GetNext	= (ID3TAGITERATORGETNEXT) id3dll->GetFunctionAddress("ID3TagIterator_GetNext");
+	ex_ID3TagIterator_Delete	= (ID3TAGITERATORDELETE) id3dll->GetFunctionAddress("ID3TagIterator_Delete");
+	ex_ID3Frame_GetID		= (ID3FRAMEGETID) id3dll->GetFunctionAddress("ID3Frame_GetID");
 	ex_ID3Frame_NewID		= (ID3FRAMENEWID) id3dll->GetFunctionAddress("ID3Frame_NewID");
 	ex_ID3Frame_Delete		= (ID3FRAMEDELETE) id3dll->GetFunctionAddress("ID3Frame_Delete");
 	ex_ID3Frame_GetField		= (ID3FRAMEGETFIELD) id3dll->GetFunctionAddress("ID3Frame_GetField");
+	ex_ID3Field_Size		= (ID3FIELDSIZE) id3dll->GetFunctionAddress("ID3Field_Size");
+	ex_ID3Field_SetBINARY		= (ID3FIELDSETBINARY) id3dll->GetFunctionAddress("ID3Field_SetBINARY");
+	ex_ID3Field_GetBINARY		= (ID3FIELDGETBINARY) id3dll->GetFunctionAddress("ID3Field_GetBINARY");
 	ex_ID3Field_SetINT		= (ID3FIELDSETINT) id3dll->GetFunctionAddress("ID3Field_SetINT");
 	ex_ID3Field_GetINT		= (ID3FIELDGETINT) id3dll->GetFunctionAddress("ID3Field_GetINT");
 	ex_ID3Field_SetEncoding		= (ID3FIELDSETENCODING) id3dll->GetFunctionAddress("ID3Field_SetEncoding");
@@ -703,10 +722,18 @@ Bool BonkEnc::DLLInterfaces::LoadID3DLL()
 	    ex_ID3Tag_NumFrames		== NIL ||
 	    ex_ID3Tag_FindFrameWithID	== NIL ||
 	    ex_ID3Tag_ParseBuffer	== NIL ||
+	    ex_ID3Tag_Size		== NIL ||
 	    ex_ID3Tag_Render		== NIL ||
+	    ex_ID3Tag_CreateIterator	== NIL ||
+	    ex_ID3TagIterator_GetNext	== NIL ||
+	    ex_ID3TagIterator_Delete	== NIL ||
+	    ex_ID3Frame_GetID		== NIL ||
 	    ex_ID3Frame_NewID		== NIL ||
 	    ex_ID3Frame_Delete		== NIL ||
 	    ex_ID3Frame_GetField	== NIL ||
+	    ex_ID3Field_Size		== NIL ||
+	    ex_ID3Field_SetBINARY	== NIL ||
+	    ex_ID3Field_GetBINARY	== NIL ||
 	    ex_ID3Field_SetINT		== NIL ||
 	    ex_ID3Field_GetINT		== NIL ||
 	    ex_ID3Field_SetEncoding	== NIL ||
@@ -866,6 +893,9 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 	ex_FLAC__stream_decoder_process_until_end_of_stream			= (FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM) flacdll->GetFunctionAddress("FLAC__stream_decoder_process_until_end_of_stream");
 	ex_FLAC__metadata_object_new						= (FLAC__METADATA_OBJECT_NEW) flacdll->GetFunctionAddress("FLAC__metadata_object_new");
 	ex_FLAC__metadata_object_delete						= (FLAC__METADATA_OBJECT_DELETE) flacdll->GetFunctionAddress("FLAC__metadata_object_delete");
+	ex_FLAC__metadata_object_picture_set_mime_type				= (FLAC__METADATA_OBJECT_PICTURE_SET_MIME_TYPE) flacdll->GetFunctionAddress("FLAC__metadata_object_picture_set_mime_type");
+	ex_FLAC__metadata_object_picture_set_description			= (FLAC__METADATA_OBJECT_PICTURE_SET_DESCRIPTION) flacdll->GetFunctionAddress("FLAC__metadata_object_picture_set_description");
+	ex_FLAC__metadata_object_picture_set_data				= (FLAC__METADATA_OBJECT_PICTURE_SET_DATA) flacdll->GetFunctionAddress("FLAC__metadata_object_picture_set_data");
 	ex_FLAC__metadata_object_vorbiscomment_append_comment			= (FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT) flacdll->GetFunctionAddress("FLAC__metadata_object_vorbiscomment_append_comment");
 	ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= (FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR) flacdll->GetFunctionAddress("FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair");
 
@@ -902,6 +932,9 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 	    ex_FLAC__stream_decoder_process_until_end_of_stream			== NIL ||
 	    ex_FLAC__metadata_object_new					== NIL ||
 	    ex_FLAC__metadata_object_delete					== NIL ||
+	    ex_FLAC__metadata_object_picture_set_mime_type			== NIL ||
+	    ex_FLAC__metadata_object_picture_set_description			== NIL ||
+	    ex_FLAC__metadata_object_picture_set_data				== NIL ||
 	    ex_FLAC__metadata_object_vorbiscomment_append_comment		== NIL ||
 	    ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	== NIL) { FreeFLACDLL(); return False; }
 
@@ -935,8 +968,8 @@ Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 
 				if (proc != NIL)
 				{
-					winamp_in_plugins.AddEntry(dll);
-					winamp_in_modules.AddEntry(proc());
+					winamp_in_plugins.Add(dll);
+					winamp_in_modules.Add(proc());
 
 					proc()->hDllInstance = (HINSTANCE) dll->GetSystemModuleHandle();
 					proc()->Init();
@@ -964,8 +997,8 @@ Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 
 				if (proc != NIL)
 				{
-					winamp_out_plugins.AddEntry(dll);
-					winamp_out_modules.AddEntry(proc());
+					winamp_out_plugins.Add(dll);
+					winamp_out_modules.Add(proc());
 
 					proc()->hDllInstance = (HINSTANCE) dll->GetSystemModuleHandle();
 					proc()->Init();
@@ -990,9 +1023,9 @@ Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
 {
 	for (Int i = 0; i < winamp_in_plugins.GetNOfEntries(); i++)
 	{
-		winamp_in_modules.GetNthEntry(i)->Quit();
+		winamp_in_modules.GetNth(i)->Quit();
 
-		Object::DeleteObject(winamp_in_plugins.GetNthEntry(i));
+		Object::DeleteObject(winamp_in_plugins.GetNth(i));
 	}
 
 	winamp_in_plugins.RemoveAll();
@@ -1000,9 +1033,9 @@ Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
 
 	for (Int j = 0; j < winamp_out_plugins.GetNOfEntries(); j++)
 	{
-		winamp_out_modules.GetNthEntry(j)->Quit();
+		winamp_out_modules.GetNth(j)->Quit();
 
-		Object::DeleteObject(winamp_out_plugins.GetNthEntry(j));
+		Object::DeleteObject(winamp_out_plugins.GetNth(j));
 	}
 
 	winamp_out_plugins.RemoveAll();

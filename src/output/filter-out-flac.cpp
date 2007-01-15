@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -103,6 +103,18 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 		}
 
 		String::SetOutputFormat(prevOutFormat);
+	}
+
+	for (Int i = 0; i < format->pictures.GetNOfEntries(); i++)
+	{
+		FLAC__StreamMetadata	*picture = ex_FLAC__metadata_object_new(FLAC__METADATA_TYPE_PICTURE);
+		Picture			*picInfo = format->pictures.GetNth(i);
+
+		metadata[numMetadata++] = picture;
+
+		ex_FLAC__metadata_object_picture_set_mime_type(picture, picInfo->mime, true);
+		ex_FLAC__metadata_object_picture_set_description(picture, (FLAC__byte *) picInfo->description.ConvertTo("UTF-8"), true);
+		ex_FLAC__metadata_object_picture_set_data(picture, picInfo->data, picInfo->data.Size(), true);
 	}
 
 	FLAC__StreamMetadata	*padding = ex_FLAC__metadata_object_new(FLAC__METADATA_TYPE_PADDING);

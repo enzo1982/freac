@@ -382,6 +382,10 @@ SOURCE=..\src\main.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\picture.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\playback.cpp
 # End Source File
 # Begin Source File
@@ -683,6 +687,10 @@ SOURCE=..\include\joblist.h
 # Begin Source File
 
 SOURCE=..\include\main.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\picture.h
 # End Source File
 # Begin Source File
 

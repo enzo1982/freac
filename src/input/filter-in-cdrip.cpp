@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -350,7 +350,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		cdPlayerDiscID = discid;
 	}
 
-	if (cdInfoDiscID != discid && !((cdText.GetCDText().GetEntry(trackNumber) != NIL || cdPlayer.GetCDInfo().GetEntry(trackNumber) != NIL) && !currentConfig->enable_overwrite_cdtext))
+	if (cdInfoDiscID != discid && !((cdText.GetCDText().Get(trackNumber) != NIL || cdPlayer.GetCDInfo().Get(trackNumber) != NIL) && !currentConfig->enable_overwrite_cdtext))
 	{
 		if (readActive)
 		{
@@ -381,32 +381,32 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
 		nFormat->artist		= cdInfo.dArtist;
-		nFormat->title		= cdInfo.trackTitles.GetNthEntry(trackNumber - 1);
+		nFormat->title		= cdInfo.trackTitles.GetNth(trackNumber - 1);
 		nFormat->album		= cdInfo.dTitle;
 		nFormat->genre		= cdInfo.dGenre;
 		nFormat->year		= cdInfo.dYear;
 	}
-	else if (cdText.GetCDText().GetEntry(trackNumber) != NIL)
+	else if (cdText.GetCDText().Get(trackNumber) != NIL)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
 		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
-		nFormat->artist		= cdText.GetCDText().GetEntry(0);
-		nFormat->title		= cdText.GetCDText().GetEntry(trackNumber);
-		nFormat->album		= cdText.GetCDText().GetEntry(100);
+		nFormat->artist		= cdText.GetCDText().Get(0);
+		nFormat->title		= cdText.GetCDText().Get(trackNumber);
+		nFormat->album		= cdText.GetCDText().Get(100);
 	}
-	else if (cdPlayer.GetCDInfo().GetEntry(trackNumber) != NIL)
+	else if (cdPlayer.GetCDInfo().Get(trackNumber) != NIL)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
 		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
-		nFormat->artist		= cdPlayer.GetCDInfo().GetEntry(0);
-		nFormat->title		= cdPlayer.GetCDInfo().GetEntry(trackNumber);
-		nFormat->album		= cdPlayer.GetCDInfo().GetEntry(100);
+		nFormat->artist		= cdPlayer.GetCDInfo().Get(0);
+		nFormat->title		= cdPlayer.GetCDInfo().Get(trackNumber);
+		nFormat->album		= cdPlayer.GetCDInfo().Get(100);
 	}
 	else
 	{

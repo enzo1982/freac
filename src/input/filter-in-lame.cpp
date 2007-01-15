@@ -87,7 +87,7 @@ BonkEnc::Track *BonkEnc::FilterInLAME::GetFileInfo(const String &inFile)
 
 		ex_lame_decode_headers(buffer, buffer.Size(), pcm_l, pcm_r, &mp3data);
 
-		if (mp3data.header_parsed)
+		if (mp3data.header_parsed && mp3data.framesize == 1152)
 		{
 			nFormat->channels	= mp3data.stereo;
 			nFormat->rate		= mp3data.samplerate;

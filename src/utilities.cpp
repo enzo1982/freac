@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -63,13 +63,13 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 		{
 			if (!(n & 1))
 			{
-				if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0) n++;
+				if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0) n++;
 			}
 			else
 			{
-				extension[k++] = DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j];
+				extension[k++] = DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j];
 
-				if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0)
+				if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0)
 				{
 					String	 extension2 = extension;
 					Int	 o = 0;		
@@ -80,8 +80,8 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 						{
 							extension[m - o] = 0;
 
-							extensions.AddEntry(extension);
-							indexes.AddEntry(i);
+							extensions.Add(extension);
+							indexes.Add(i);
 
 							o = m + 1;
 						}
@@ -97,7 +97,7 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 				}
 			}
 
-			if (DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j] == 0 && DLLInterfaces::winamp_in_modules.GetNthEntry(i)->FileExtensions[j + 1] == 0) break;
+			if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0 && DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j + 1] == 0) break;
 		}
 	}
 
@@ -105,7 +105,7 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 
 	for (Int j = 0; j < extensions.GetNOfEntries(); j++)
 	{
-		if (file.EndsWith(extensions.GetNthEntry(j)))
+		if (file.EndsWith(extensions.GetNth(j)))
 		{
 			found = j;
 
@@ -145,7 +145,7 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 	}
 	else if (found != -1)
 	{
-		filter_in = new FilterInWinamp(BonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNthEntry(indexes.GetNthEntry(found)));
+		filter_in = new FilterInWinamp(BonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNth(indexes.GetNth(found)));
 	}
 	else
 	{

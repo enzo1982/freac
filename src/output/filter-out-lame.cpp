@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -235,7 +235,7 @@ Bool BonkEnc::FilterOutLAME::Activate()
 
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v2 && currentConfig->enable_id3)
 	{
-		Buffer<unsigned char>	 id3Buffer(32768);
+		Buffer<unsigned char>	 id3Buffer;
 		Int			 size = RenderID3Tag(2, id3Buffer);
 
 		driver->WriteData(id3Buffer, size);
@@ -294,7 +294,7 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v1 && currentConfig->enable_id3)
 	{
-		Buffer<unsigned char>	 id3Buffer(32768);
+		Buffer<unsigned char>	 id3Buffer;
 		Int			 size = RenderID3Tag(1, id3Buffer);
 
 		driver->WriteData(id3Buffer, size);

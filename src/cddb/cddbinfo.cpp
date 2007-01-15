@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -72,7 +72,7 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	discID = oInfo.discID;
 	revision = oInfo.revision;
 
-	for (Int i = 0; i < oInfo.trackOffsets.GetNOfEntries(); i++) trackOffsets.AddEntry(oInfo.trackOffsets.GetNthEntry(i), oInfo.trackOffsets.GetNthEntryIndex(i));
+	for (Int i = 0; i < oInfo.trackOffsets.GetNOfEntries(); i++) trackOffsets.Add(oInfo.trackOffsets.GetNth(i), oInfo.trackOffsets.GetNthIndex(i));
 
 	discLength = oInfo.discLength;
 
@@ -83,18 +83,18 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	comment = oInfo.comment;
 	playOrder = oInfo.playOrder;
 
-	for (Int j = 0; j < oInfo.trackArtists.GetNOfEntries(); j++) trackArtists.AddEntry(oInfo.trackArtists.GetNthEntry(j), oInfo.trackArtists.GetNthEntryIndex(j));
-	for (Int k = 0; k < oInfo.trackTitles.GetNOfEntries(); k++) trackTitles.AddEntry(oInfo.trackTitles.GetNthEntry(k), oInfo.trackTitles.GetNthEntryIndex(k));
-	for (Int l = 0; l < oInfo.trackComments.GetNOfEntries(); l++) trackComments.AddEntry(oInfo.trackComments.GetNthEntry(l), oInfo.trackComments.GetNthEntryIndex(l));
+	for (Int j = 0; j < oInfo.trackArtists.GetNOfEntries(); j++) trackArtists.Add(oInfo.trackArtists.GetNth(j), oInfo.trackArtists.GetNthIndex(j));
+	for (Int k = 0; k < oInfo.trackTitles.GetNOfEntries(); k++) trackTitles.Add(oInfo.trackTitles.GetNth(k), oInfo.trackTitles.GetNthIndex(k));
+	for (Int l = 0; l < oInfo.trackComments.GetNOfEntries(); l++) trackComments.Add(oInfo.trackComments.GetNth(l), oInfo.trackComments.GetNthIndex(l));
 
 	oDArtist = oInfo.oDArtist;
 	oDTitle = oInfo.oDTitle;
 	oDGenre = oInfo.oDGenre;
 	oComment = oInfo.oComment;
 
-	for (Int m = 0; m < oInfo.oTrackArtists.GetNOfEntries(); m++) oTrackArtists.AddEntry(oInfo.oTrackArtists.GetNthEntry(m), oInfo.oTrackArtists.GetNthEntryIndex(m));
-	for (Int n = 0; n < oInfo.oTrackTitles.GetNOfEntries(); n++) oTrackTitles.AddEntry(oInfo.oTrackTitles.GetNthEntry(n), oInfo.oTrackTitles.GetNthEntryIndex(n));
-	for (Int o = 0; o < oInfo.oTrackComments.GetNOfEntries(); o++) oTrackComments.AddEntry(oInfo.oTrackComments.GetNthEntry(o), oInfo.oTrackComments.GetNthEntryIndex(o));
+	for (Int m = 0; m < oInfo.oTrackArtists.GetNOfEntries(); m++) oTrackArtists.Add(oInfo.oTrackArtists.GetNth(m), oInfo.oTrackArtists.GetNthIndex(m));
+	for (Int n = 0; n < oInfo.oTrackTitles.GetNOfEntries(); n++) oTrackTitles.Add(oInfo.oTrackTitles.GetNth(n), oInfo.oTrackTitles.GetNthIndex(n));
+	for (Int o = 0; o < oInfo.oTrackComments.GetNOfEntries(); o++) oTrackComments.Add(oInfo.oTrackComments.GetNth(o), oInfo.oTrackComments.GetNthIndex(o));
 
 	charset = oInfo.charset;
 

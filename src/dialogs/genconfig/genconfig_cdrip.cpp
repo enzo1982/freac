@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -44,7 +44,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 
 	for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
 	{
-		combo_drive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j));
+		combo_drive->AddEntry(currentConfig->cdrip_drives.GetNth(j));
 	}
 
 	combo_drive->SelectNthEntry(currentConfig->cdrip_activedrive);

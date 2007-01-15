@@ -15,7 +15,9 @@ Geschichte
 		- Litauische Übersetzung hinzugefügt
 		- Behandlung von Dateinamensvorlagen bei fehlendem Künstler/Titel verbessert
 		- Bessere Behandlung von FAAD2-Fehlern beim Öffnen von AAC-Dateien
+		- Unterstützung für Bild-Tags in ID3v2- und FLAC-Metadaten hinzugefügt
 		- Bonk auf Version 0.11 aktualisiert
+		- Einige Fehler behoben
 
 	Version 1.0 RC 1 (Dezember 2006)
 

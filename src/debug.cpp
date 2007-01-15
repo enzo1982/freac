@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -71,7 +71,7 @@ Int BonkEnc::Debug::EnterMethod(const String &name)
 {
 	for (Int i = 0; i < tabLevel; i++) file_out->OutputString("\t");
 
-	methods.AddEntry(name);
+	methods.Add(name);
 
 	file_out->OutputString(String("Entering method \'").Append(name).Append("\'.\n"));
 
@@ -86,9 +86,9 @@ Int BonkEnc::Debug::LeaveMethod()
 
 	for (Int i = 0; i < tabLevel; i++) file_out->OutputString("\t");
 
-	file_out->OutputString(String("Leaving method \'").Append(methods.GetLastEntry()).Append("\'.\n"));
+	file_out->OutputString(String("Leaving method \'").Append(methods.GetLast()).Append("\'.\n"));
 
-	methods.RemoveEntry(methods.GetNthEntryIndex(methods.GetNOfEntries() - 1));
+	methods.Remove(methods.GetNthIndex(methods.GetNOfEntries() - 1));
 
 	return Success();
 }

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,7 +22,7 @@ BonkEnc::OutputFilter::~OutputFilter()
 {
 }
 
-Int BonkEnc::OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)
+Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buffer)
 {
 	ID3Tag		*tag = ex_ID3Tag_New();
 
@@ -144,7 +144,32 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)
 		ex_ID3Tag_AddFrame(tag, comment);
 	}
 
+	Array<ID3Frame *>	 pictures;
+
+	for (Int i = 0; i < format->pictures.GetNOfEntries(); i++)
+	{
+		ID3Frame	*picture = ex_ID3Frame_NewID(ID3FID_PICTURE);
+		Picture		*picInfo = format->pictures.GetNth(i);
+
+		ex_ID3Field_SetINT(ex_ID3Frame_GetField(picture, ID3FN_TEXTENC), encoding);
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), encoding);
+
+		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) String(leBOM).Append(picInfo->description).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) picInfo->description.ConvertTo("UTF-16BE"));
+		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), picInfo->description);
+
+		ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_MIMETYPE), picInfo->mime);
+		ex_ID3Field_SetINT(ex_ID3Frame_GetField(picture, ID3FN_PICTURETYPE), picInfo->type);
+		ex_ID3Field_SetBINARY(ex_ID3Frame_GetField(picture, ID3FN_DATA), picInfo->data, picInfo->data.Size());
+
+		ex_ID3Tag_AddFrame(tag, picture);
+
+		pictures.Add(picture);
+	}
+
 	String::SetOutputFormat(prevOutFormat);
+
+	buffer.Resize(ex_ID3Tag_Size(tag));
 
 	Int	 size = ex_ID3Tag_Render(tag, buffer, version == 1 ? ID3TT_ID3V1 : ID3TT_ID3V2);
 
@@ -156,6 +181,11 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, unsigned char *buffer)
 	ex_ID3Frame_Delete(year);
 	ex_ID3Frame_Delete(genre);
 	ex_ID3Frame_Delete(comment);
+
+	for (Int j = 0; j < format->pictures.GetNOfEntries(); j++)
+	{
+		ex_ID3Frame_Delete(pictures.GetNth(j));
+	}
 
 	return size;
 }

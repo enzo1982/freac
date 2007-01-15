@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -197,12 +197,12 @@ Void BonkEnc::cddbManageDlg::OK()
 				{
 					if (trackInfo->cdTrack == m + 1)
 					{
-						trackInfo->artist	= (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNthEntry(m) : cddbInfo.dArtist);
-						trackInfo->title	= cddbInfo.trackTitles.GetNthEntry(m);
+						trackInfo->artist	= (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(m) : cddbInfo.dArtist);
+						trackInfo->title	= cddbInfo.trackTitles.GetNth(m);
 						trackInfo->album	= cddbInfo.dTitle;
 						trackInfo->year		= cddbInfo.dYear;
 						trackInfo->genre	= cddbInfo.dGenre;
-						trackInfo->comment	= cddbInfo.trackComments.GetNthEntry(m);
+						trackInfo->comment	= cddbInfo.trackComments.GetNth(m);
 
 						String	 jlEntry;
 
@@ -244,8 +244,8 @@ Void BonkEnc::cddbManageDlg::SetCharset()
 		String	 artist;
 		String	 title;
 
-		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNthEntry(i));
-		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNthEntry(i));
+		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNth(i));
+		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNth(i));
 
 		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.oDArtist == "Various" ? String(artist).Append(" - ") : "").Append(title).Append("\n");
 	}
@@ -260,7 +260,7 @@ Void BonkEnc::cddbManageDlg::SelectEntry()
 
 	for (Int i = 0; i < entry.trackTitles.GetNOfEntries(); i++)
 	{
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? String(entry.trackArtists.GetNthEntry(i)).Append(" - ") : "").Append(entry.trackTitles.GetNthEntry(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? String(entry.trackArtists.GetNth(i)).Append(" - ") : "").Append(entry.trackTitles.GetNth(i)).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -299,13 +299,13 @@ Void BonkEnc::cddbManageDlg::SaveEntry()
 		String	 title;
 		String	 comment;
 
-		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNthEntry(i));
-		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNthEntry(i));
-		comment.ImportFrom(edit_charset->GetText(), entry.oTrackComments.GetNthEntry(i));
+		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNth(i));
+		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNth(i));
+		comment.ImportFrom(edit_charset->GetText(), entry.oTrackComments.GetNth(i));
 
-		entry.trackArtists.SetEntry(entry.trackArtists.GetNthEntryIndex(i), artist);
-		entry.trackTitles.SetEntry(entry.trackTitles.GetNthEntryIndex(i), title);
-		entry.trackComments.SetEntry(entry.trackComments.GetNthEntryIndex(i), comment);
+		entry.trackArtists.Set(entry.trackArtists.GetNthIndex(i), artist);
+		entry.trackTitles.Set(entry.trackTitles.GetNthIndex(i), title);
+		entry.trackComments.Set(entry.trackComments.GetNthIndex(i), comment);
 	}
 
 	entry.charset = edit_charset->GetText();

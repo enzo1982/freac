@@ -109,7 +109,8 @@ extern "C"
  * Be aware that a Bonk file might have an ID3 tag prepended before the
  * BONK tag.
  * The function will write the number of samples, sampling rate and the
- * number of channels to the supplied pointers.
+ * number of channels to the supplied pointers. The pointers can be null
+ * if this information is not needed.
  */
 	BONKAPI bool		BONKCONV	 bonk_decoder_init(void *, unsigned char *, int, unsigned int *, unsigned int *, int *);
 
@@ -138,6 +139,25 @@ extern "C"
  * Call this function after you have finished using the decoder context.
  */
 	BONKAPI bool		BONKCONV	 bonk_decoder_close(void *);
+
+/* bool bonk_decoder_get_stream_format(void *decoder, unsigned int *length, unsigned int *rate, int *channels)
+ * Get information about the audio stream format.
+ *
+ * This function will return information about the format of the currently
+ * open Bonk audio stream. The function will write the number of samples,
+ * sampling rate and the number of channels to the supplied pointers.
+ */
+	BONKAPI bool		BONKCONV	 bonk_decoder_get_stream_format(void *, unsigned int *, unsigned int *, int *);
+
+/* bool bonk_decoder_get_stream_info(void *decoder, bool *lossless, bool *mid_side)
+ * Get stream information for a Bonk stream.
+ *
+ * This function will return information about the currently open Bonk
+ * audio stream. The lossless parameter will be set to true if the stream
+ * is a lossless Bonk stream. The mid_side parameter will be set to true
+ * if the stream is encoded using joint stereo.
+ */
+	BONKAPI bool		BONKCONV	 bonk_decoder_get_stream_info(void *, bool *, bool *);
 
 /* bool bonk_decoder_get_id3_data(void *decoder, unsigned char **id3data, int *bytes)
  * Get ID3v2 tag from a Bonk stream.

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,7 +22,7 @@ BonkEnc::CDDBCache::~CDDBCache()
 
 const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 {
-	const CDDBInfo	&cddbInfo = infoCache.GetEntry(discID);
+	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 
 	if (cddbInfo != NIL)
 	{
@@ -49,26 +49,26 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 		cddbLocal.Read(cddbLocal.GetNthCategory(0), cddbLocal.GetNthDiscID(0), newInfo);
 
 		// Add entry to softcache
-		infoCache.AddEntry(newInfo, discID);
+		infoCache.Add(newInfo, discID);
 	}
 
 	// Restore real freedb path
 	config->freedb_dir = configFreedbDir;
 
-	return infoCache.GetEntry(discID);
+	return infoCache.Get(discID);
 }
 
 Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 {
-	const CDDBInfo	&cddbInfo = infoCache.GetEntry(nCddbInfo.discID);
+	const CDDBInfo	&cddbInfo = infoCache.Get(nCddbInfo.discID);
 
 	if (cddbInfo != NIL)
 	{
 		// Delete existing cache entry
-		infoCache.RemoveEntry(nCddbInfo.discID);
+		infoCache.Remove(nCddbInfo.discID);
 	}
 
-	infoCache.AddEntry(nCddbInfo, nCddbInfo.discID);
+	infoCache.Add(nCddbInfo, nCddbInfo.discID);
 
 	if (!config->enable_cddb_cache) return True;
 
@@ -94,12 +94,12 @@ Int BonkEnc::CDDBCache::RemoveNthEntry(Int n)
 {
 	if (n >= GetNOfEntries()) return Error();
 
-	Int		 discID = infoCache.GetNthEntryIndex(n);
-	const CDDBInfo	&cddbInfo = infoCache.GetEntry(discID);
+	Int		 discID = infoCache.GetNthIndex(n);
+	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 
 	File(String(config->configDir).Append("cddb\\").Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString())).Delete();
 
-	infoCache.RemoveEntry(discID);
+	infoCache.Remove(discID);
 
 	return Success();
 }

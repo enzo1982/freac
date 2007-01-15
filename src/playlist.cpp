@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,9 +14,9 @@ using namespace smooth::IO;
 
 Bool BonkEnc::Playlist::AddTrack(const String &fileName, const String &trackName, Int trackLength)
 {
-	fileNames.AddEntry(fileName);
-	trackNames.AddEntry(trackName);
-	trackLengths.AddEntry(trackLength);
+	fileNames.Add(fileName);
+	trackNames.Add(trackName);
+	trackLengths.Add(trackLength);
 
 	return True;
 }
@@ -28,7 +28,7 @@ Int BonkEnc::Playlist::GetNOfTracks()
 
 String BonkEnc::Playlist::GetNthTrackFileName(Int n)
 {
-	return fileNames.GetNthEntry(n);
+	return fileNames.GetNth(n);
 }
 
 Bool BonkEnc::Playlist::Save(const String &fileName)
@@ -42,8 +42,8 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 
 	for (Int i = 0; i < fileNames.GetNOfEntries(); i++)
 	{
-		file->OutputLine(String("#EXTINF:").Append(String::FromInt(trackLengths.GetNthEntry(i))).Append(",").Append(trackNames.GetNthEntry(i)));
-		file->OutputLine(fileNames.GetNthEntry(i));
+		file->OutputLine(String("#EXTINF:").Append(String::FromInt(trackLengths.GetNth(i))).Append(",").Append(trackNames.GetNth(i)));
+		file->OutputLine(fileNames.GetNth(i));
 	}
 
 	file->Close();

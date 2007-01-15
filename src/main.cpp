@@ -694,7 +694,7 @@ Bool BonkEnc::BonkEncGUI::InitCDRip()
 
 			ex_CR_GetCDROMParameters(&params);
 
-			currentConfig->cdrip_drives.AddEntry(params.lpszCDROMID);
+			currentConfig->cdrip_drives.Add(params.lpszCDROMID);
 		}
 
 		if (currentConfig->cdrip_numdrives <= currentConfig->cdrip_activedrive) currentConfig->cdrip_activedrive = 0;
@@ -971,18 +971,18 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		Track	*format = joblist->GetNthTrack(i);
 		Int	 discID = CDDB::StringToDiscID(format->discid);
 
-		if (format->isCDTrack) discIDs.AddEntry(discID, format->drive);
-		if (format->isCDTrack) discIDStrings.AddEntry(format->discid, format->drive);
+		if (format->isCDTrack) discIDs.Add(discID, format->drive);
+		if (format->isCDTrack) discIDStrings.Add(format->discid, format->drive);
 	}
 
 	for (Int j = 0; j < discIDs.GetNOfEntries(); j++)
 	{
 		Int	 oDrive = currentConfig->cdrip_activedrive;
 
-		currentConfig->cdrip_activedrive = discIDs.GetNthEntryIndex(j);
+		currentConfig->cdrip_activedrive = discIDs.GetNthIndex(j);
 
-		Int	 discID = discIDs.GetNthEntry(j);
-		String	 discIDString = discIDStrings.GetNthEntry(j);
+		Int	 discID = discIDs.GetNth(j);
+		String	 discIDString = discIDStrings.GetNth(j);
 		CDDBInfo cdInfo;
 
 		if (currentConfig->enable_cddb_cache) cdInfo = currentConfig->cddbCache->GetCacheEntry(discID);
@@ -1007,7 +1007,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 					format->track	= format->cdTrack;
 					format->outfile	= NIL;
 					format->artist	= cdInfo.dArtist;
-					format->title	= cdInfo.trackTitles.GetNthEntry(format->cdTrack - 1);
+					format->title	= cdInfo.trackTitles.GetNth(format->cdTrack - 1);
 					format->album	= cdInfo.dTitle;
 					format->genre	= cdInfo.dGenre;
 					format->year	= cdInfo.dYear;
@@ -1060,7 +1060,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 	{
 		Track	*format = joblist->GetNthTrack(i);
 
-		if (format->isCDTrack) drives.AddEntry(format->drive, format->drive);
+		if (format->isCDTrack) drives.Add(format->drive, format->drive);
 	}
 
 	if (drives.GetNOfEntries() > 0)
@@ -1069,7 +1069,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 
 		for (Int j = 0; j < drives.GetNOfEntries(); j++)
 		{
-			Int		 drive = drives.GetNthEntry(j);
+			Int		 drive = drives.GetNth(j);
 			CDDBRemote	 cddb(currentConfig);
 
 			cddb.SetActiveDrive(drive);
@@ -1475,7 +1475,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
 		{
-			menu_seldrive->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &currentConfig->cdrip_activedrive, j);
+			menu_seldrive->AddEntry(currentConfig->cdrip_drives.GetNth(j), NIL, NIL, NIL, &currentConfig->cdrip_activedrive, j);
 		}
 
 		menu_options->AddEntry();
@@ -1490,7 +1490,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
 		{
-			menu_drives->AddEntry(currentConfig->cdrip_drives.GetNthEntry(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
+			menu_drives->AddEntry(currentConfig->cdrip_drives.GetNth(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
 		}
 
 		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("BonkEnc.pci:21"));

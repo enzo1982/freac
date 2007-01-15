@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -239,13 +239,13 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		for (Int i = 0; i < files.GetNOfEntries(); i++)
 		{
-			InStream	*in = new InStream(STREAM_FILE, files.GetNthEntry(i), IS_READONLY);
+			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READONLY);
 
 			if (in->GetLastError() != IO_ERROR_OK)
 			{
 				delete in;
 
-				Console::OutputString(String("File not found: ").Append(files.GetNthEntry(i)).Append("\n"));
+				Console::OutputString(String("File not found: ").Append(files.GetNth(i)).Append("\n"));
 
 				broken = true;
 
@@ -258,23 +258,23 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			String	 extension;
 
-			extension[0] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 4];
-			extension[1] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 3];
-			extension[2] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 2];
-			extension[3] = (files.GetNthEntry(i))[files.GetNthEntry(i).Length() - 1];
+			extension[0] = (files.GetNth(i))[files.GetNth(i).Length() - 4];
+			extension[1] = (files.GetNth(i))[files.GetNth(i).Length() - 3];
+			extension[2] = (files.GetNth(i))[files.GetNth(i).Length() - 2];
+			extension[3] = (files.GetNth(i))[files.GetNth(i).Length() - 1];
 
 			if ((extension == ".mp3" && !currentConfig->enable_lame) || (extension == ".ogg" && !currentConfig->enable_vorbis))
 			{
-				Console::OutputString(String("Cannot process file: ").Append(files.GetNthEntry(i)).Append("\n"));
+				Console::OutputString(String("Cannot process file: ").Append(files.GetNth(i)).Append("\n"));
 
 				broken = true;
 
 				continue;
 			}
 
-			if (!quiet) Console::OutputString(String("Processing file: ").Append(files.GetNthEntry(i)).Append("..."));
+			if (!quiet) Console::OutputString(String("Processing file: ").Append(files.GetNth(i)).Append("..."));
 
-			joblist->AddTrackByFileName(files.GetNthEntry(i), outfile);
+			joblist->AddTrackByFileName(files.GetNth(i), outfile);
 
 			Encode();
 
@@ -312,9 +312,9 @@ Bool BonkEnc::BonkEncCommandline::ScanForParameter(const String &param, String *
 {
 	for (Int i = 0; i < args.GetNOfEntries(); i++)
 	{
-		if (args.GetNthEntry(i) == param)
+		if (args.GetNth(i) == param)
 		{
-			if (option != NULL) *option = args.GetNthEntry(i + 1);
+			if (option != NULL) *option = args.GetNth(i + 1);
 
 			return True;
 		}
@@ -331,9 +331,9 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 	for (Int i = 0; i < args.GetNOfEntries(); i++)
 	{
 		prevParam	= param;
-		param		= args.GetNthEntry(i);
+		param		= args.GetNth(i);
 
-		if (param[0] != '-' && (prevParam[0] != '-' || prevParam == "-q")) (*files).AddEntry(param);
+		if (param[0] != '-' && (prevParam[0] != '-' || prevParam == "-q")) (*files).Add(param);
 	}
 }
 

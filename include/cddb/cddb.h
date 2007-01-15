@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -59,9 +59,9 @@ namespace BonkEnc
 			virtual Bool	 CloseConnection()			= 0;
 
 			Int		 GetNumberOfMatches()	{ return ids.GetNOfEntries(); }
-			Int		 GetNthDiscID(Int n)	{ return ids.GetNthEntry(n); }
-			const String	&GetNthTitle(Int n)	{ return titles.GetNthEntry(n); }
-			const String	&GetNthCategory(Int n)	{ return categories.GetNthEntry(n); }
+			Int		 GetNthDiscID(Int n)	{ return ids.GetNth(n); }
+			const String	&GetNthTitle(Int n)	{ return titles.GetNth(n); }
+			const String	&GetNthCategory(Int n)	{ return categories.GetNth(n); }
 
 			String		 GetCDDBQueryString();
 
