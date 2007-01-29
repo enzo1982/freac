@@ -104,7 +104,7 @@ String BonkEnc::CDDB::GetCDDBQueryString()
 		str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(i).dwStartSector + 150));
 	}
 
-	str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2));
+	str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2));
 
 	return str;
 }
@@ -116,16 +116,12 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	if (updateTrackOffsets)
 	{
+		// Update track offsets and disc ID in case we had a fuzzy match
 		Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
-		for (Int l = 0; l < numTocEntries; l++)
-		{
-			// update track offsets in case we had a fuzzy match
+		for (Int l = 0; l < numTocEntries; l++) cddbInfo.trackOffsets.Set(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
 
-			cddbInfo.trackOffsets.Set(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
-		}
-
-		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
+		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
 		cddbInfo.discID = ComputeDiscID();
 	}
 
@@ -139,7 +135,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	if (cddbInfo.revision == 0)
 	{
-		// see if the entry already exists in another category
+		// This is a new entry; see if it already exists in another category
 
 		if (query == QUERY_RESULT_SINGLE || query == QUERY_RESULT_MULTIPLE)
 		{
@@ -147,10 +143,12 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 		}
 	}
 
-	if (query != QUERY_RESULT_FUZZY && Read(cddbInfo.category, cddbInfo.discID, revisionInfo))
+	if (query != QUERY_RESULT_FUZZY)
 	{
-		if (cddbInfo.revision == 0)
+		while (Read(cddbInfo.category, cddbInfo.discID, revisionInfo))
 		{
+			Bool	 foundCollision = False;
+
 			for (Int i = 0; i < cddbInfo.trackOffsets.GetNOfEntries(); i++)
 			{
 				if (cddbInfo.trackOffsets.GetNth(i) != revisionInfo.trackOffsets.GetNth(i))
@@ -169,16 +167,18 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 					else if (cddbInfo.category == "classical")  cddbInfo.category = "data";
 					else if (cddbInfo.category == "data")	    cddbInfo.category = "unknown";
 
-					CloseConnection();
-
-					return UpdateEntry(cddbInfo);
+					foundCollision = True;
 				}
 			}
+
+			if (!foundCollision)
+			{
+				// increment revision of old entry
+				cddbInfo.revision = revisionInfo.revision + 1;
+
+				break;
+			}
 		}
-
-		// increment revision of old entry
-
-		cddbInfo.revision = revisionInfo.revision + 1;
 	}
 
 	CloseConnection();

@@ -17,6 +17,7 @@ Geschichte
 		- Bessere Behandlung von FAAD2-Fehlern beim Öffnen von AAC-Dateien
 		- Unterstützung für Bild-Tags in ID3v2- und FLAC-Metadaten hinzugefügt
 		- Bonk auf Version 0.11 aktualisiert
+		- MSVC-Project auf MSVC 8.0 konvertiert
 		- Einige Fehler behoben
 
 	Version 1.0 RC 1 (Dezember 2006)

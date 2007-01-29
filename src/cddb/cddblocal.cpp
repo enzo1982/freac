@@ -32,7 +32,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 
 	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(ex_CR_GetTocEntry(l).dwStartSector + 150);
 
-	discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
+	discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
@@ -88,7 +88,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 
 	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(ex_CR_GetTocEntry(l).dwStartSector + 150);
 
-	discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75 + 2;
+	discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");

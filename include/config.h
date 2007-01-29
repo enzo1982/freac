@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -98,6 +98,7 @@ namespace BonkEnc
 			String		 vctag_encoding;
 			String		 mp4meta_encoding;
 			String		 default_comment;
+			Bool		 copy_picture_tags;
 
 			Array<String>	 cdrip_drives;
 			Int		 cdrip_numdrives;

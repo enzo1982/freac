@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -88,6 +88,7 @@ Bool BonkEnc::Config::LoadSettings()
 	vctag_encoding				= config->GetStringValue("Settings", "VorbisCommentTagEncoding", "UTF-8");
 	mp4meta_encoding			= config->GetStringValue("Settings", "MP4MetadataEncoding", "UTF-8");
 	default_comment				= config->GetStringValue("Settings", "DefaultComment", String("BonkEnc ").Append(BonkEnc::shortVersion).Append(" <http://www.bonkenc.org/>"));
+	copy_picture_tags			= config->GetIntValue("Settings", "CopyPictureTags", 1);
 
 	cdrip_activedrive			= config->GetIntValue("CDRip", "ActiveCDROM", 0);
 	cdrip_debuglevel			= config->GetIntValue("CDRip", "DebugCDRip", 0);
@@ -266,6 +267,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetStringValue("Settings", "VorbisCommentTagEncoding", vctag_encoding);
 		config->SetStringValue("Settings", "MP4MetadataEncoding", mp4meta_encoding);
 		config->SetStringValue("Settings", "DefaultComment", default_comment);
+		config->SetIntValue("Settings", "CopyPictureTags", copy_picture_tags);
 
 		config->SetIntValue("CDRip", "ActiveCDROM", cdrip_activedrive);
 		config->SetIntValue("CDRip", "DebugCDRip", cdrip_debuglevel);
