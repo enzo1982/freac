@@ -87,18 +87,18 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	button_output_about->onAction.Connect(&GeneralSettingsLayerPlugins::AboutOutputPlugin, this);
 	button_output_about->Deactivate();
 
-	RegisterObject(tabs_plugins);
+	Add(tabs_plugins);
 
-	tabs_plugins->RegisterObject(layer_input);
-	tabs_plugins->RegisterObject(layer_output);
+	tabs_plugins->Add(layer_input);
+	tabs_plugins->Add(layer_output);
 
-	layer_input->RegisterObject(list_input);
-	layer_input->RegisterObject(button_input);
-	layer_input->RegisterObject(button_input_about);
+	layer_input->Add(list_input);
+	layer_input->Add(button_input);
+	layer_input->Add(button_input_about);
 
-	layer_output->RegisterObject(list_output);
-	layer_output->RegisterObject(button_output);
-	layer_output->RegisterObject(button_output_about);
+	layer_output->Add(list_output);
+	layer_output->Add(button_output);
+	layer_output->Add(button_output_about);
 }
 
 BonkEnc::GeneralSettingsLayerPlugins::~GeneralSettingsLayerPlugins()

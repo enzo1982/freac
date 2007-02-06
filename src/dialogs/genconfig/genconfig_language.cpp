@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -72,18 +72,18 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 	{
 		combo_language->SetWidth(combo_language->GetWidth() - 138);
 
-		RegisterObject(btn_edit);
+		Add(btn_edit);
 	}
 
 	SelectLanguage();
 
-	RegisterObject(group_language);
-	RegisterObject(text_language);
-	RegisterObject(combo_language);
+	Add(group_language);
+	Add(text_language);
+	Add(combo_language);
 
-	RegisterObject(group_info);
-	RegisterObject(text_info);
-	RegisterObject(link_url);
+	Add(group_info);
+	Add(text_info);
+	Add(link_url);
 }
 
 BonkEnc::GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()

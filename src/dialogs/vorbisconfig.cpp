@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -113,28 +113,28 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	SetQuality();
 	SetBitrate();
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(group_mode);
-	mainWnd->RegisterObject(group_mode2);
-	mainWnd->RegisterObject(option_mode_vbr);
-	mainWnd->RegisterObject(option_mode_abr);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(group_mode);
+	mainWnd->Add(group_mode2);
+	mainWnd->Add(option_mode_vbr);
+	mainWnd->Add(option_mode_abr);
 
-	mainWnd_layer_vbr->RegisterObject(slider_quality);
-	mainWnd_layer_vbr->RegisterObject(text_quality);
-	mainWnd_layer_vbr->RegisterObject(text_quality_value);
+	mainWnd_layer_vbr->Add(slider_quality);
+	mainWnd_layer_vbr->Add(text_quality);
+	mainWnd_layer_vbr->Add(text_quality_value);
 
-	mainWnd_layer_abr->RegisterObject(slider_abr);
-	mainWnd_layer_abr->RegisterObject(text_abr);
-	mainWnd_layer_abr->RegisterObject(edit_abr);
-	mainWnd_layer_abr->RegisterObject(text_abr_kbps);
+	mainWnd_layer_abr->Add(slider_abr);
+	mainWnd_layer_abr->Add(text_abr);
+	mainWnd_layer_abr->Add(edit_abr);
+	mainWnd_layer_abr->Add(text_abr_kbps);
 
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(mainWnd_layer_vbr);
-	mainWnd->RegisterObject(mainWnd_layer_abr);
-	mainWnd->RegisterObject(divbar);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(mainWnd_layer_vbr);
+	mainWnd->Add(mainWnd_layer_abr);
+	mainWnd->Add(divbar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

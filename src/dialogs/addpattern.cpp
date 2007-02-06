@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -76,18 +76,18 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 
 	edit_pattern	= new EditBox(currentConfig->lastAddedPattern, pos, size);
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(btn_browse);
-	mainWnd->RegisterObject(group_pattern);
-	mainWnd->RegisterObject(text_directory);
-	mainWnd->RegisterObject(edit_directory);
-	mainWnd->RegisterObject(text_pattern);
-	mainWnd->RegisterObject(edit_pattern);
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(btn_browse);
+	mainWnd->Add(group_pattern);
+	mainWnd->Add(text_directory);
+	mainWnd->Add(edit_directory);
+	mainWnd->Add(text_pattern);
+	mainWnd->Add(edit_pattern);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

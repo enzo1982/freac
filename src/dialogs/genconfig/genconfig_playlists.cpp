@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -96,15 +96,15 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	ToggleUseEncOutdir();
 	ToggleCreatePlaylists();
 
-	RegisterObject(group_outdir);
-	RegisterObject(check_useEncOutdir);
-	RegisterObject(edit_outdir);
-	RegisterObject(button_outdir_browse);
-	RegisterObject(group_filename);
-	RegisterObject(edit_filename);
-	RegisterObject(group_options);
-	RegisterObject(check_createPlaylists);
-	RegisterObject(check_createCueSheets);
+	Add(group_outdir);
+	Add(check_useEncOutdir);
+	Add(edit_outdir);
+	Add(button_outdir_browse);
+	Add(group_filename);
+	Add(edit_filename);
+	Add(group_options);
+	Add(check_createPlaylists);
+	Add(check_createCueSheets);
 }
 
 BonkEnc::GeneralSettingsLayerPlaylists::~GeneralSettingsLayerPlaylists()

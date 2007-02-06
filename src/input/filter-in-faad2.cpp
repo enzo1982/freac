@@ -40,8 +40,7 @@ Bool BonkEnc::FilterInFAAD2::Activate()
 	unsigned long	 rate;
 	unsigned char	 channels;
 
-	ex_NeAACDecInit(handle, data, size,
- &rate, &channels);
+	ex_NeAACDecInit(handle, data, size, &rate, &channels);
 
 	delete [] data;
 
@@ -151,8 +150,7 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 
 	f_in->InputData((void *) data, size);
 
-	ex_NeAACDecInit(handle, data, size,
- (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
+	ex_NeAACDecInit(handle, data, size, (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
 
 	Void		*samples = NIL;
 	Int		 bytesConsumed = 0;

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -118,19 +118,19 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 			break;
 	}
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(group_bitrate);
-	mainWnd->RegisterObject(text_bitrate);
-	mainWnd->RegisterObject(combo_bitrate);
-	mainWnd->RegisterObject(text_bitrate_kbps);
-	mainWnd->RegisterObject(group_precand);
-	mainWnd->RegisterObject(text_precand);
-	mainWnd->RegisterObject(combo_precand);
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(group_bitrate);
+	mainWnd->Add(text_bitrate);
+	mainWnd->Add(combo_bitrate);
+	mainWnd->Add(text_bitrate_kbps);
+	mainWnd->Add(group_precand);
+	mainWnd->Add(text_precand);
+	mainWnd->Add(combo_precand);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

@@ -1,4 +1,4 @@
-BonkEnc version 1.0
+BonkEnc version 1.0 RC 2
 
 BonkEnc is an encoder for various audio formats. It can read
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC
@@ -10,12 +10,13 @@ BonkEnc uses the CDRip Ripping Library for audio ripping.
 History
 -------
 
-	Version 1.0 CVS (January 2007)
+	Version 1.0 RC 2 (February 2007)
 
 		- added a Lithuanian translation
 		- improved handling of file name patterns when artist/title are missing
 		- better handling of FAAD2 errors when opening raw AAC files
 		- added support for picture tags in ID3v2 and FLAC metadata
+		- created new toolbar icons
 		- upgraded Bonk to version 0.11
 		- converted MSVC project to MSVC 8.0
 		- some bug fixes

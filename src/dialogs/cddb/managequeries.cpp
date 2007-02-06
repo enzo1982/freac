@@ -80,17 +80,17 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 
 	ReadEntries();
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
-	mainWnd->RegisterObject(text_entries);
-	mainWnd->RegisterObject(list_entries);
-	mainWnd->RegisterObject(btn_delete);
-	mainWnd->RegisterObject(btn_query);
-	mainWnd->RegisterObject(btn_query_all);
-	mainWnd->RegisterObject(text_status);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
+	mainWnd->Add(text_entries);
+	mainWnd->Add(list_entries);
+	mainWnd->Add(btn_delete);
+	mainWnd->Add(btn_query);
+	mainWnd->Add(btn_query_all);
+	mainWnd->Add(text_status);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

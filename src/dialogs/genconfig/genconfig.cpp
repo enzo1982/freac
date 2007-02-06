@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -66,24 +66,24 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 
 	reg_register		= new TabWidget(pos, size);
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(reg_register);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(reg_register);
 
-	reg_register->RegisterObject(register_layer_encoders);
-	reg_register->RegisterObject(register_layer_playlists);
+	reg_register->Add(register_layer_encoders);
+	reg_register->Add(register_layer_playlists);
 
-	if (BonkEnc::i18n->GetNOfLanguages() > 1) reg_register->RegisterObject(register_layer_language);
+	if (BonkEnc::i18n->GetNOfLanguages() > 1) reg_register->Add(register_layer_language);
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cdrip);
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->RegisterObject(register_layer_cddb);
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->Add(register_layer_cdrip);
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->Add(register_layer_cddb);
 
-	reg_register->RegisterObject(register_layer_plugins);
-	reg_register->RegisterObject(register_layer_tags);
+	reg_register->Add(register_layer_plugins);
+	reg_register->Add(register_layer_tags);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

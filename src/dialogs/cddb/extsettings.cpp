@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -166,34 +166,34 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 	SetProxyMode();
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(reg_register);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(reg_register);
 
-	reg_register->RegisterObject(register_layer_http);
-	reg_register->RegisterObject(register_layer_proxy);
+	reg_register->Add(register_layer_http);
+	reg_register->Add(register_layer_proxy);
 
-	register_layer_http->RegisterObject(http_group_scripts);
-	register_layer_http->RegisterObject(http_text_query);
-	register_layer_http->RegisterObject(http_edit_query);
-	register_layer_http->RegisterObject(http_text_submit);
-	register_layer_http->RegisterObject(http_edit_submit);
+	register_layer_http->Add(http_group_scripts);
+	register_layer_http->Add(http_text_query);
+	register_layer_http->Add(http_edit_query);
+	register_layer_http->Add(http_text_submit);
+	register_layer_http->Add(http_edit_submit);
 
-	register_layer_proxy->RegisterObject(proxy_group_proxy);
-	register_layer_proxy->RegisterObject(proxy_text_mode);
-	register_layer_proxy->RegisterObject(proxy_combo_mode);
-	register_layer_proxy->RegisterObject(proxy_text_server);
-	register_layer_proxy->RegisterObject(proxy_edit_server);
-	register_layer_proxy->RegisterObject(proxy_text_port);
-	register_layer_proxy->RegisterObject(proxy_edit_port);
-	register_layer_proxy->RegisterObject(proxy_text_user);
-	register_layer_proxy->RegisterObject(proxy_edit_user);
-	register_layer_proxy->RegisterObject(proxy_text_password);
-	register_layer_proxy->RegisterObject(proxy_edit_password);
+	register_layer_proxy->Add(proxy_group_proxy);
+	register_layer_proxy->Add(proxy_text_mode);
+	register_layer_proxy->Add(proxy_combo_mode);
+	register_layer_proxy->Add(proxy_text_server);
+	register_layer_proxy->Add(proxy_edit_server);
+	register_layer_proxy->Add(proxy_text_port);
+	register_layer_proxy->Add(proxy_edit_port);
+	register_layer_proxy->Add(proxy_text_user);
+	register_layer_proxy->Add(proxy_edit_user);
+	register_layer_proxy->Add(proxy_text_password);
+	register_layer_proxy->Add(proxy_edit_password);
 
 	switch (tab)
 	{

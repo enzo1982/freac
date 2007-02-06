@@ -31,17 +31,17 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 
 	text = new Text(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", "0"), iPos - Point(9, 19));
 
-	button_sel_all		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:16"), iPos - Point(19, 4), Size(21, 21));
+	button_sel_all		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:18"), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
 	button_sel_all->SetFlags(BF_NOFRAME);
 	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
 
-	button_sel_none		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:17"), iPos - Point(19, -10), Size(21, 21));
+	button_sel_none		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:19"), iPos - Point(19, -10), Size(21, 21));
 	button_sel_none->onAction.Connect(&JobList::SelectNone, this);
 	button_sel_none->SetFlags(BF_NOFRAME);
 	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));
 
-	button_sel_toggle	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:18"), iPos - Point(19, -24), Size(21, 21));
+	button_sel_toggle	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:20"), iPos - Point(19, -24), Size(21, 21));
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
 	button_sel_toggle->SetTooltipText(BonkEnc::i18n->TranslateString("Toggle selection"));
@@ -597,24 +597,24 @@ Void BonkEnc::JobList::SaveList()
 
 Void BonkEnc::JobList::OnRegister(Widget *container)
 {
-	container->RegisterObject(droparea);
-	container->RegisterObject(text);
+	container->Add(droparea);
+	container->Add(text);
 
-	container->RegisterObject(button_sel_all);
-	container->RegisterObject(button_sel_none);
-	container->RegisterObject(button_sel_toggle);
+	container->Add(button_sel_all);
+	container->Add(button_sel_none);
+	container->Add(button_sel_toggle);
 
 	((BonkEncGUI *) BonkEnc::currentConfig->appMain)->onChangeLanguageSettings.Connect(&JobList::OnChangeLanguageSettings, this);
 }
 
 Void BonkEnc::JobList::OnUnregister(Widget *container)
 {
-	container->UnregisterObject(droparea);
-	container->UnregisterObject(text);
+	container->Remove(droparea);
+	container->Remove(text);
 
-	container->UnregisterObject(button_sel_all);
-	container->UnregisterObject(button_sel_none);
-	container->UnregisterObject(button_sel_toggle);
+	container->Remove(button_sel_all);
+	container->Remove(button_sel_none);
+	container->Remove(button_sel_toggle);
 
 	((BonkEncGUI *) BonkEnc::currentConfig->appMain)->onChangeLanguageSettings.Disconnect(&JobList::OnChangeLanguageSettings, this);
 }

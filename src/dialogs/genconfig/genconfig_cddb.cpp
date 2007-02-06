@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -46,8 +46,8 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	layer_local_background->SetMetrics(Point(14, 3), check_local->GetSize() + Size(4, 0));
 	layer_remote_background->SetMetrics(Point(14, 58), check_remote->GetSize() + Size(4, 0));
 
-	layer_local_background->RegisterObject(check_local);
-	layer_remote_background->RegisterObject(check_remote);
+	layer_local_background->Add(check_local);
+	layer_remote_background->Add(check_remote);
 
 	pos.x	= 7;
 	pos.y	= 11;
@@ -182,27 +182,27 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetY()), Size(265 - maxTextSize - text_port->textSize.cx, edit_server->GetHeight()));
 	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->GetY()), Size(317 - maxTextSize, edit_email->GetHeight()));
 
-	RegisterObject(group_local);
-	RegisterObject(text_dir);
-	RegisterObject(edit_dir);
-	RegisterObject(button_browse);
-	RegisterObject(group_cddb);
-	RegisterObject(text_mode);
-	RegisterObject(combo_mode);
-	RegisterObject(text_server);
-	RegisterObject(edit_server);
-	RegisterObject(text_port);
-	RegisterObject(edit_port);
-	RegisterObject(text_email);
-	RegisterObject(edit_email);
-	RegisterObject(button_http);
-	RegisterObject(button_proxy);
-	RegisterObject(group_cddb_options);
-	RegisterObject(check_auto);
-	RegisterObject(check_cdtext);
-	RegisterObject(check_cache);
-	RegisterObject(layer_local_background);
-	RegisterObject(layer_remote_background);
+	Add(group_local);
+	Add(text_dir);
+	Add(edit_dir);
+	Add(button_browse);
+	Add(group_cddb);
+	Add(text_mode);
+	Add(combo_mode);
+	Add(text_server);
+	Add(edit_server);
+	Add(text_port);
+	Add(edit_port);
+	Add(text_email);
+	Add(edit_email);
+	Add(button_http);
+	Add(button_proxy);
+	Add(group_cddb_options);
+	Add(check_auto);
+	Add(check_cdtext);
+	Add(check_cache);
+	Add(layer_local_background);
+	Add(layer_remote_background);
 }
 
 BonkEnc::GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()

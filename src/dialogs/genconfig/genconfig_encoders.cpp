@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -214,22 +214,22 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 
 	if (!Setup::enableUnicode) check_unicode_files->Deactivate();
 
-	RegisterObject(group_encoder);
-	RegisterObject(combo_encoder);
-	RegisterObject(button_config);
-	RegisterObject(group_outdir);
-	RegisterObject(check_useInputDir);
-	RegisterObject(check_allowOverwrite);
-	RegisterObject(edit_outdir);
-	RegisterObject(button_outdir_browse);
-	RegisterObject(group_filename);
-	RegisterObject(edit_filename);
-	RegisterObject(group_options);
-	RegisterObject(check_onTheFly);
-	RegisterObject(check_keepWaves);
-	RegisterObject(check_singleFile);
-	RegisterObject(group_unicode);
-	RegisterObject(check_unicode_files);
+	Add(group_encoder);
+	Add(combo_encoder);
+	Add(button_config);
+	Add(group_outdir);
+	Add(check_useInputDir);
+	Add(check_allowOverwrite);
+	Add(edit_outdir);
+	Add(button_outdir_browse);
+	Add(group_filename);
+	Add(edit_filename);
+	Add(group_options);
+	Add(check_onTheFly);
+	Add(check_keepWaves);
+	Add(check_singleFile);
+	Add(group_unicode);
+	Add(check_unicode_files);
 }
 
 BonkEnc::GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()

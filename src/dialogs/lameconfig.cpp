@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -598,108 +598,108 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	SetPreset();
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(reg_register);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(reg_register);
 
-	reg_register->RegisterObject(register_layer_basic);
-	reg_register->RegisterObject(register_layer_vbr);
-	reg_register->RegisterObject(register_layer_misc);
-	reg_register->RegisterObject(register_layer_expert);
-	reg_register->RegisterObject(register_layer_filtering);
+	reg_register->Add(register_layer_basic);
+	reg_register->Add(register_layer_vbr);
+	reg_register->Add(register_layer_misc);
+	reg_register->Add(register_layer_expert);
+	reg_register->Add(register_layer_filtering);
 
-	register_layer_basic->RegisterObject(basic_preset);
-	register_layer_basic->RegisterObject(basic_text_preset);
-	register_layer_basic->RegisterObject(basic_combo_preset);
+	register_layer_basic->Add(basic_preset);
+	register_layer_basic->Add(basic_text_preset);
+	register_layer_basic->Add(basic_combo_preset);
 
-	register_layer_basic->RegisterObject(basic_bitrate);
-	register_layer_basic->RegisterObject(basic_option_set_bitrate);
-	register_layer_basic->RegisterObject(basic_option_set_ratio);
-	register_layer_basic->RegisterObject(basic_slider_bitrate);
-	register_layer_basic->RegisterObject(basic_text_bitrate);
-	register_layer_basic->RegisterObject(basic_text_ratio);
-	register_layer_basic->RegisterObject(basic_edit_ratio);
+	register_layer_basic->Add(basic_bitrate);
+	register_layer_basic->Add(basic_option_set_bitrate);
+	register_layer_basic->Add(basic_option_set_ratio);
+	register_layer_basic->Add(basic_slider_bitrate);
+	register_layer_basic->Add(basic_text_bitrate);
+	register_layer_basic->Add(basic_text_ratio);
+	register_layer_basic->Add(basic_edit_ratio);
 
-	register_layer_basic->RegisterObject(basic_quality);
-	register_layer_basic->RegisterObject(basic_check_set_quality);
-	register_layer_basic->RegisterObject(basic_slider_quality);
-	register_layer_basic->RegisterObject(basic_text_quality);
-	register_layer_basic->RegisterObject(basic_text_quality_worse);
-	register_layer_basic->RegisterObject(basic_text_quality_better);
+	register_layer_basic->Add(basic_quality);
+	register_layer_basic->Add(basic_check_set_quality);
+	register_layer_basic->Add(basic_slider_quality);
+	register_layer_basic->Add(basic_text_quality);
+	register_layer_basic->Add(basic_text_quality_worse);
+	register_layer_basic->Add(basic_text_quality_better);
 
-	register_layer_basic->RegisterObject(basic_stereomode);
-	register_layer_basic->RegisterObject(basic_combo_stereomode);
-	register_layer_basic->RegisterObject(basic_check_forcejs);
+	register_layer_basic->Add(basic_stereomode);
+	register_layer_basic->Add(basic_combo_stereomode);
+	register_layer_basic->Add(basic_check_forcejs);
 
-	register_layer_vbr->RegisterObject(vbr_vbrmode);
-	register_layer_vbr->RegisterObject(vbr_option_cbr);
-	register_layer_vbr->RegisterObject(vbr_option_abr);
-	register_layer_vbr->RegisterObject(vbr_option_vbrrh);
-	register_layer_vbr->RegisterObject(vbr_option_vbrmtrh);
+	register_layer_vbr->Add(vbr_vbrmode);
+	register_layer_vbr->Add(vbr_option_cbr);
+	register_layer_vbr->Add(vbr_option_abr);
+	register_layer_vbr->Add(vbr_option_vbrrh);
+	register_layer_vbr->Add(vbr_option_vbrmtrh);
 
-	register_layer_vbr->RegisterObject(vbr_quality);
-	register_layer_vbr->RegisterObject(vbr_text_setquality);
-	register_layer_vbr->RegisterObject(vbr_slider_quality);
-	register_layer_vbr->RegisterObject(vbr_text_quality);
-	register_layer_vbr->RegisterObject(vbr_text_quality_worse);
-	register_layer_vbr->RegisterObject(vbr_text_quality_better);
+	register_layer_vbr->Add(vbr_quality);
+	register_layer_vbr->Add(vbr_text_setquality);
+	register_layer_vbr->Add(vbr_slider_quality);
+	register_layer_vbr->Add(vbr_text_quality);
+	register_layer_vbr->Add(vbr_text_quality_worse);
+	register_layer_vbr->Add(vbr_text_quality_better);
 
-	register_layer_vbr->RegisterObject(vbr_abrbitrate);
-	register_layer_vbr->RegisterObject(vbr_slider_abrbitrate);
-	register_layer_vbr->RegisterObject(vbr_edit_abrbitrate);
-	register_layer_vbr->RegisterObject(vbr_text_abrbitrate_kbps);
+	register_layer_vbr->Add(vbr_abrbitrate);
+	register_layer_vbr->Add(vbr_slider_abrbitrate);
+	register_layer_vbr->Add(vbr_edit_abrbitrate);
+	register_layer_vbr->Add(vbr_text_abrbitrate_kbps);
 
-	register_layer_vbr->RegisterObject(vbr_bitrate);
-	register_layer_vbr->RegisterObject(vbr_check_set_min_brate);
-	register_layer_vbr->RegisterObject(vbr_check_set_max_brate);
-	register_layer_vbr->RegisterObject(vbr_slider_min_brate);
-	register_layer_vbr->RegisterObject(vbr_slider_max_brate);
-	register_layer_vbr->RegisterObject(vbr_text_min_brate_kbps);
-	register_layer_vbr->RegisterObject(vbr_text_max_brate_kbps);
+	register_layer_vbr->Add(vbr_bitrate);
+	register_layer_vbr->Add(vbr_check_set_min_brate);
+	register_layer_vbr->Add(vbr_check_set_max_brate);
+	register_layer_vbr->Add(vbr_slider_min_brate);
+	register_layer_vbr->Add(vbr_slider_max_brate);
+	register_layer_vbr->Add(vbr_text_min_brate_kbps);
+	register_layer_vbr->Add(vbr_text_max_brate_kbps);
 
-	register_layer_misc->RegisterObject(misc_bits);
-	register_layer_misc->RegisterObject(misc_check_original);
-	register_layer_misc->RegisterObject(misc_check_copyright);
-	register_layer_misc->RegisterObject(misc_check_private);
+	register_layer_misc->Add(misc_bits);
+	register_layer_misc->Add(misc_check_original);
+	register_layer_misc->Add(misc_check_copyright);
+	register_layer_misc->Add(misc_check_private);
 
-	register_layer_misc->RegisterObject(misc_crc);
-	register_layer_misc->RegisterObject(misc_check_crc);
+	register_layer_misc->Add(misc_crc);
+	register_layer_misc->Add(misc_check_crc);
 
-	register_layer_misc->RegisterObject(misc_format);
-	register_layer_misc->RegisterObject(misc_check_iso);
+	register_layer_misc->Add(misc_format);
+	register_layer_misc->Add(misc_check_iso);
 
-	register_layer_misc->RegisterObject(misc_padding);
-	register_layer_misc->RegisterObject(misc_text_padding);
-	register_layer_misc->RegisterObject(misc_combo_padding);
+	register_layer_misc->Add(misc_padding);
+	register_layer_misc->Add(misc_text_padding);
+	register_layer_misc->Add(misc_combo_padding);
 
-	register_layer_expert->RegisterObject(expert_ath);
-	register_layer_expert->RegisterObject(expert_check_ath);
-	register_layer_expert->RegisterObject(expert_combo_athtype);
+	register_layer_expert->Add(expert_ath);
+	register_layer_expert->Add(expert_check_ath);
+	register_layer_expert->Add(expert_combo_athtype);
 
-	register_layer_expert->RegisterObject(expert_psycho);
-	register_layer_expert->RegisterObject(expert_check_tempmask);
+	register_layer_expert->Add(expert_psycho);
+	register_layer_expert->Add(expert_check_tempmask);
 
-	register_layer_filtering->RegisterObject(filtering_resample);
-	register_layer_filtering->RegisterObject(filtering_combo_resample);
+	register_layer_filtering->Add(filtering_resample);
+	register_layer_filtering->Add(filtering_combo_resample);
 
-	register_layer_filtering->RegisterObject(filtering_lowpass);
-	register_layer_filtering->RegisterObject(filtering_set_lowpass);
-	register_layer_filtering->RegisterObject(filtering_edit_lowpass);
-	register_layer_filtering->RegisterObject(filtering_set_lowpass_width);
-	register_layer_filtering->RegisterObject(filtering_edit_lowpass_width);
+	register_layer_filtering->Add(filtering_lowpass);
+	register_layer_filtering->Add(filtering_set_lowpass);
+	register_layer_filtering->Add(filtering_edit_lowpass);
+	register_layer_filtering->Add(filtering_set_lowpass_width);
+	register_layer_filtering->Add(filtering_edit_lowpass_width);
 
-	register_layer_filtering->RegisterObject(filtering_highpass);
-	register_layer_filtering->RegisterObject(filtering_set_highpass);
-	register_layer_filtering->RegisterObject(filtering_edit_highpass);
-	register_layer_filtering->RegisterObject(filtering_set_highpass_width);
-	register_layer_filtering->RegisterObject(filtering_edit_highpass_width);
+	register_layer_filtering->Add(filtering_highpass);
+	register_layer_filtering->Add(filtering_set_highpass);
+	register_layer_filtering->Add(filtering_edit_highpass);
+	register_layer_filtering->Add(filtering_set_highpass_width);
+	register_layer_filtering->Add(filtering_edit_highpass_width);
 
-	register_layer_filtering->RegisterObject(filtering_misc);
-	register_layer_filtering->RegisterObject(filtering_check_disable_all);
+	register_layer_filtering->Add(filtering_misc);
+	register_layer_filtering->Add(filtering_check_disable_all);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

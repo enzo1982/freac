@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -312,54 +312,54 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	SetQLPPrecision();
 	SetPreset();
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(tabwidget);
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(tabwidget);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
 
-	tabwidget->RegisterObject(layer_simple);
-	tabwidget->RegisterObject(layer_format);
-	tabwidget->RegisterObject(layer_advanced);
+	tabwidget->Add(layer_simple);
+	tabwidget->Add(layer_format);
+	tabwidget->Add(layer_advanced);
 
-	layer_simple->RegisterObject(group_preset);
-	layer_simple->RegisterObject(text_preset);
-	layer_simple->RegisterObject(combo_preset);
-	layer_simple->RegisterObject(group_stereo);
-	layer_simple->RegisterObject(check_mid_side_stereo);
-	layer_simple->RegisterObject(check_loose_mid_side);
+	layer_simple->Add(group_preset);
+	layer_simple->Add(text_preset);
+	layer_simple->Add(combo_preset);
+	layer_simple->Add(group_stereo);
+	layer_simple->Add(check_mid_side_stereo);
+	layer_simple->Add(check_loose_mid_side);
 
-	layer_format->RegisterObject(group_format);
-	layer_format->RegisterObject(check_streamable_subset);
-	layer_format->RegisterObject(text_blocksize);
-	layer_format->RegisterObject(slider_blocksize);
-	layer_format->RegisterObject(edit_blocksize);
-	layer_format->RegisterObject(text_blocksize_bytes);
+	layer_format->Add(group_format);
+	layer_format->Add(check_streamable_subset);
+	layer_format->Add(text_blocksize);
+	layer_format->Add(slider_blocksize);
+	layer_format->Add(edit_blocksize);
+	layer_format->Add(text_blocksize_bytes);
 
-	layer_advanced->RegisterObject(group_apodization);
-	layer_advanced->RegisterObject(text_apodization);
-	layer_advanced->RegisterObject(edit_apodization);
-	layer_advanced->RegisterObject(text_apodization_explain);
+	layer_advanced->Add(group_apodization);
+	layer_advanced->Add(text_apodization);
+	layer_advanced->Add(edit_apodization);
+	layer_advanced->Add(text_apodization_explain);
 
-	layer_advanced->RegisterObject(group_lpc);
-	layer_advanced->RegisterObject(text_max_lpc_order);
-	layer_advanced->RegisterObject(slider_max_lpc_order);
-	layer_advanced->RegisterObject(text_max_lpc_order_value);
-	layer_advanced->RegisterObject(check_exhaustive_model);
-	layer_advanced->RegisterObject(check_qlp_precision_search);
-	layer_advanced->RegisterObject(text_qlp_precision);
-	layer_advanced->RegisterObject(slider_qlp_precision);
-	layer_advanced->RegisterObject(text_qlp_precision_value);
+	layer_advanced->Add(group_lpc);
+	layer_advanced->Add(text_max_lpc_order);
+	layer_advanced->Add(slider_max_lpc_order);
+	layer_advanced->Add(text_max_lpc_order_value);
+	layer_advanced->Add(check_exhaustive_model);
+	layer_advanced->Add(check_qlp_precision_search);
+	layer_advanced->Add(text_qlp_precision);
+	layer_advanced->Add(slider_qlp_precision);
+	layer_advanced->Add(text_qlp_precision_value);
 
-	layer_advanced->RegisterObject(group_rice);
-	layer_advanced->RegisterObject(text_min_part_order);
-	layer_advanced->RegisterObject(text_max_part_order);
-	layer_advanced->RegisterObject(slider_min_part_order);
-	layer_advanced->RegisterObject(text_min_part_order_value);
-	layer_advanced->RegisterObject(slider_max_part_order);
-	layer_advanced->RegisterObject(text_max_part_order_value);
+	layer_advanced->Add(group_rice);
+	layer_advanced->Add(text_min_part_order);
+	layer_advanced->Add(text_max_part_order);
+	layer_advanced->Add(slider_min_part_order);
+	layer_advanced->Add(text_min_part_order_value);
+	layer_advanced->Add(slider_max_part_order);
+	layer_advanced->Add(text_max_part_order_value);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

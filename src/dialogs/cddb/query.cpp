@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -51,12 +51,12 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&cddbQueryDlg::Cancel, this);
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(text_status);
-	mainWnd->RegisterObject(prog_status);
-	mainWnd->RegisterObject(mainWnd_titlebar);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(text_status);
+	mainWnd->Add(prog_status);
+	mainWnd->Add(mainWnd_titlebar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

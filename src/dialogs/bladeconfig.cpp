@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -117,25 +117,25 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 
 	check_private		= new CheckBox(BonkEnc::i18n->TranslateString("Set Private bit"), pos, size, &priv);
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(group_bit);
-	mainWnd->RegisterObject(slider_bit);
-	mainWnd->RegisterObject(text_bit);
-	mainWnd->RegisterObject(group_crc);
-	mainWnd->RegisterObject(check_crc);
-	mainWnd->RegisterObject(group_copyright);
-	mainWnd->RegisterObject(check_copyright);
-	mainWnd->RegisterObject(group_original);
-	mainWnd->RegisterObject(check_original);
-	mainWnd->RegisterObject(group_private);
-	mainWnd->RegisterObject(check_private);
-	mainWnd->RegisterObject(group_dualchannel);
-	mainWnd->RegisterObject(check_dualchannel);
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(group_bit);
+	mainWnd->Add(slider_bit);
+	mainWnd->Add(text_bit);
+	mainWnd->Add(group_crc);
+	mainWnd->Add(check_crc);
+	mainWnd->Add(group_copyright);
+	mainWnd->Add(check_copyright);
+	mainWnd->Add(group_original);
+	mainWnd->Add(check_original);
+	mainWnd->Add(group_private);
+	mainWnd->Add(check_private);
+	mainWnd->Add(group_dualchannel);
+	mainWnd->Add(check_dualchannel);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

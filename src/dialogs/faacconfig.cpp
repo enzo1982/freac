@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -274,48 +274,48 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	ToggleBitrateQuality();
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(btn_cancel);
-	mainWnd->RegisterObject(tabwidget);
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(tabwidget);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
 
-	tabwidget->RegisterObject(layer_quality);
-	tabwidget->RegisterObject(layer_format);
+	tabwidget->Add(layer_quality);
+	tabwidget->Add(layer_format);
 
-	layer_format->RegisterObject(group_version);
-	layer_format->RegisterObject(option_version_mpeg2);
-	layer_format->RegisterObject(option_version_mpeg4);
-	layer_format->RegisterObject(group_aactype);
-	layer_format->RegisterObject(option_aactype_main);
-	layer_format->RegisterObject(option_aactype_low);
-	layer_format->RegisterObject(option_aactype_ltp);
-	layer_format->RegisterObject(group_mp4);
-	layer_format->RegisterObject(option_mp4);
-	layer_format->RegisterObject(option_aac);
-	layer_format->RegisterObject(group_id3v2);
-	layer_format->RegisterObject(check_id3v2);
-	layer_format->RegisterObject(text_note);
-	layer_format->RegisterObject(text_id3v2);
+	layer_format->Add(group_version);
+	layer_format->Add(option_version_mpeg2);
+	layer_format->Add(option_version_mpeg4);
+	layer_format->Add(group_aactype);
+	layer_format->Add(option_aactype_main);
+	layer_format->Add(option_aactype_low);
+	layer_format->Add(option_aactype_ltp);
+	layer_format->Add(group_mp4);
+	layer_format->Add(option_mp4);
+	layer_format->Add(option_aac);
+	layer_format->Add(group_id3v2);
+	layer_format->Add(check_id3v2);
+	layer_format->Add(text_note);
+	layer_format->Add(text_id3v2);
 
-	layer_quality->RegisterObject(group_bitrate);
-	layer_quality->RegisterObject(option_bitrate);
-	layer_quality->RegisterObject(slider_bitrate);
-	layer_quality->RegisterObject(edit_bitrate);
-	layer_quality->RegisterObject(text_bitrate_kbps);
-	layer_quality->RegisterObject(option_quality);
-	layer_quality->RegisterObject(slider_quality);
-	layer_quality->RegisterObject(edit_quality);
-	layer_quality->RegisterObject(text_quality_percent);
-	layer_quality->RegisterObject(group_js);
-	layer_quality->RegisterObject(check_js);
-	layer_quality->RegisterObject(group_tns);
-	layer_quality->RegisterObject(check_tns);
-	layer_quality->RegisterObject(group_bandwidth);
-	layer_quality->RegisterObject(text_bandwidth);
-	layer_quality->RegisterObject(edit_bandwidth);
+	layer_quality->Add(group_bitrate);
+	layer_quality->Add(option_bitrate);
+	layer_quality->Add(slider_bitrate);
+	layer_quality->Add(edit_bitrate);
+	layer_quality->Add(text_bitrate_kbps);
+	layer_quality->Add(option_quality);
+	layer_quality->Add(slider_quality);
+	layer_quality->Add(edit_quality);
+	layer_quality->Add(text_quality_percent);
+	layer_quality->Add(group_js);
+	layer_quality->Add(check_js);
+	layer_quality->Add(group_tns);
+	layer_quality->Add(check_tns);
+	layer_quality->Add(group_bandwidth);
+	layer_quality->Add(text_bandwidth);
+	layer_quality->Add(edit_bandwidth);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));

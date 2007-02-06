@@ -157,23 +157,23 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 
 	ToggleAutoRead();
 
-	RegisterObject(group_drive);
-	RegisterObject(combo_drive);
-	RegisterObject(group_ripping);
-	RegisterObject(check_paranoia);
-	RegisterObject(combo_paranoia_mode);
-	RegisterObject(check_jitter);
-	RegisterObject(check_swapchannels);
-	RegisterObject(group_automatization);
-	RegisterObject(check_autoRead);
-	RegisterObject(check_autoRip);
-	RegisterObject(check_autoEject);
-	RegisterObject(group_cdoptions);
-	RegisterObject(check_locktray);
-	RegisterObject(check_ntscsi);
-	RegisterObject(group_cdinfo);
-	RegisterObject(check_readCDText);
-	RegisterObject(check_readCDPlayerIni);
+	Add(group_drive);
+	Add(combo_drive);
+	Add(group_ripping);
+	Add(check_paranoia);
+	Add(combo_paranoia_mode);
+	Add(check_jitter);
+	Add(check_swapchannels);
+	Add(group_automatization);
+	Add(check_autoRead);
+	Add(check_autoRip);
+	Add(check_autoEject);
+	Add(group_cdoptions);
+	Add(check_locktray);
+	Add(check_ntscsi);
+	Add(group_cdinfo);
+	Add(check_readCDText);
+	Add(check_readCDPlayerIni);
 }
 
 BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()

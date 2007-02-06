@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -52,13 +52,13 @@ BonkEnc::LanguageDlg::LanguageDlg()
 		if (BonkEnc::i18n->GetNthLanguageID(i) == "english-internal") list_language->SelectNthEntry(i);
 	}
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(btn_ok);
-	mainWnd->RegisterObject(text_language);
-	mainWnd->RegisterObject(list_language);
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(text_language);
+	mainWnd->Add(list_language);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
 
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 }

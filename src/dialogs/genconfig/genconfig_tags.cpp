@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -186,25 +186,25 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 		edit_mp4meta_encoding->Deactivate();
 	}
 
-	RegisterObject(group_tags);
-	RegisterObject(check_id3v1);
-	RegisterObject(check_id3v2);
-	RegisterObject(check_vctags);
-	RegisterObject(check_mp4meta);
+	Add(group_tags);
+	Add(check_id3v1);
+	Add(check_id3v2);
+	Add(check_vctags);
+	Add(check_mp4meta);
 
-	RegisterObject(group_encodings);
-	RegisterObject(text_id3v1_encoding);
-	RegisterObject(text_id3v2_encoding);
-	RegisterObject(text_vctags_encoding);
-	RegisterObject(text_mp4meta_encoding);
-	RegisterObject(edit_id3v1_encoding);
-	RegisterObject(edit_id3v2_encoding);
-	RegisterObject(edit_vctags_encoding);
-	RegisterObject(edit_mp4meta_encoding);
+	Add(group_encodings);
+	Add(text_id3v1_encoding);
+	Add(text_id3v2_encoding);
+	Add(text_vctags_encoding);
+	Add(text_mp4meta_encoding);
+	Add(edit_id3v1_encoding);
+	Add(edit_id3v2_encoding);
+	Add(edit_vctags_encoding);
+	Add(edit_mp4meta_encoding);
 
-	RegisterObject(group_definfo);
-	RegisterObject(text_defcomment);
-	RegisterObject(edit_defcomment);
+	Add(group_definfo);
+	Add(text_defcomment);
+	Add(edit_defcomment);
 }
 
 BonkEnc::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()

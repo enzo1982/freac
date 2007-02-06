@@ -57,11 +57,11 @@ Int smooth::Main()
 
 	BonkEnc::debug_out->EnterMethod("smooth::Loop()");
 
-	Loop();
+	app->Loop();
 
 	BonkEnc::debug_out->LeaveMethod();
 
-	delete app;
+	Object::DeleteObject(app);
 
 	BonkEnc::debug_out->OutputLine("");
 	BonkEnc::debug_out->OutputLine("====================");
@@ -156,42 +156,42 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		size.cx = 25;
 		size.cy = 25;
 
-		button_play	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:11"), pos, size);
+		button_play	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:12"), pos, size);
 		button_play->onAction.Connect(&BonkEncGUI::PlaySelectedItem, this);
 		button_play->SetOrientation(OR_UPPERRIGHT);
 		button_play->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_pause	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:12"), pos, size);
+		button_pause	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:13"), pos, size);
 		button_pause->onAction.Connect(&BonkEncGUI::PausePlayback, this);
 		button_pause->SetOrientation(OR_UPPERRIGHT);
 		button_pause->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_stop	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:13"), pos, size);
+		button_stop	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:14"), pos, size);
 		button_stop->onAction.Connect(&BonkEncGUI::StopPlayback, this);
 		button_stop->SetOrientation(OR_UPPERRIGHT);
 		button_stop->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_prev	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:14"), pos, size);
+		button_prev	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:15"), pos, size);
 		button_prev->onAction.Connect(&BonkEncGUI::PlayPrevious, this);
 		button_prev->SetOrientation(OR_UPPERRIGHT);
 		button_prev->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_next	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:15"), pos, size);
+		button_next	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:16"), pos, size);
 		button_next->onAction.Connect(&BonkEncGUI::PlayNext, this);
 		button_next->SetOrientation(OR_UPPERRIGHT);
 		button_next->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_open	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:20"), pos, size);
+		button_open	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:17"), pos, size);
 		button_open->onAction.Connect(&BonkEncGUI::OpenCDTray, this);
 		button_open->SetOrientation(OR_UPPERRIGHT);
 		button_open->SetFlags(BF_NOFRAME);
@@ -459,73 +459,73 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	progress_total->SetOrientation(OR_LOWERLEFT);
 	progress_total->Deactivate();
 
-	RegisterObject(mainWnd);
+	Add(mainWnd);
 
-	mainWnd->RegisterObject(joblist);
+	mainWnd->Add(joblist);
 
 	SetLanguage();
 
-	mainWnd->RegisterObject(check_cuesheet);
-	mainWnd->RegisterObject(check_playlist);
+	mainWnd->Add(check_cuesheet);
+	mainWnd->Add(check_playlist);
 
 	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
 	{
-		mainWnd->RegisterObject(button_play);
-		mainWnd->RegisterObject(button_pause);
-		mainWnd->RegisterObject(button_stop);
-		mainWnd->RegisterObject(button_prev);
-		mainWnd->RegisterObject(button_next);
-		mainWnd->RegisterObject(button_open);
+		mainWnd->Add(button_play);
+		mainWnd->Add(button_pause);
+		mainWnd->Add(button_stop);
+		mainWnd->Add(button_prev);
+		mainWnd->Add(button_next);
+		mainWnd->Add(button_open);
 	}
 
-	mainWnd->RegisterObject(info_divider);
-	mainWnd->RegisterObject(info_bottom);
-	mainWnd->RegisterObject(info_background);
-	mainWnd->RegisterObject(info_text_artist);
-	mainWnd->RegisterObject(info_edit_artist);
-	mainWnd->RegisterObject(info_text_title);
-	mainWnd->RegisterObject(info_edit_title);
-	mainWnd->RegisterObject(info_text_album);
-	mainWnd->RegisterObject(info_edit_album);
-	mainWnd->RegisterObject(info_text_track);
-	mainWnd->RegisterObject(info_edit_track);
-	mainWnd->RegisterObject(info_text_year);
-	mainWnd->RegisterObject(info_edit_year);
-	mainWnd->RegisterObject(info_text_genre);
-	mainWnd->RegisterObject(info_edit_genre);
-	mainWnd->RegisterObject(enc_filename);
-	mainWnd->RegisterObject(enc_time);
-	mainWnd->RegisterObject(enc_percent);
-	mainWnd->RegisterObject(enc_encoder);
-	mainWnd->RegisterObject(enc_progress);
-	mainWnd->RegisterObject(enc_outdir);
-	mainWnd->RegisterObject(edb_filename);
-	mainWnd->RegisterObject(btn_skip);
-	mainWnd->RegisterObject(edb_time);
-	mainWnd->RegisterObject(edb_percent);
-	mainWnd->RegisterObject(edb_encoder);
-	mainWnd->RegisterObject(edb_outdir);
-	mainWnd->RegisterObject(btn_outdir);
-	mainWnd->RegisterObject(progress_total);
-	mainWnd->RegisterObject(progress);
-	mainWnd->RegisterObject(hyperlink);
-	mainWnd->RegisterObject(mainWnd_titlebar);
-	mainWnd->RegisterObject(mainWnd_statusbar);
-	mainWnd->RegisterObject(mainWnd_menubar);
-	mainWnd->RegisterObject(mainWnd_iconbar);
+	mainWnd->Add(info_divider);
+	mainWnd->Add(info_bottom);
+	mainWnd->Add(info_background);
+	mainWnd->Add(info_text_artist);
+	mainWnd->Add(info_edit_artist);
+	mainWnd->Add(info_text_title);
+	mainWnd->Add(info_edit_title);
+	mainWnd->Add(info_text_album);
+	mainWnd->Add(info_edit_album);
+	mainWnd->Add(info_text_track);
+	mainWnd->Add(info_edit_track);
+	mainWnd->Add(info_text_year);
+	mainWnd->Add(info_edit_year);
+	mainWnd->Add(info_text_genre);
+	mainWnd->Add(info_edit_genre);
+	mainWnd->Add(enc_filename);
+	mainWnd->Add(enc_time);
+	mainWnd->Add(enc_percent);
+	mainWnd->Add(enc_encoder);
+	mainWnd->Add(enc_progress);
+	mainWnd->Add(enc_outdir);
+	mainWnd->Add(edb_filename);
+	mainWnd->Add(btn_skip);
+	mainWnd->Add(edb_time);
+	mainWnd->Add(edb_percent);
+	mainWnd->Add(edb_encoder);
+	mainWnd->Add(edb_outdir);
+	mainWnd->Add(btn_outdir);
+	mainWnd->Add(progress_total);
+	mainWnd->Add(progress);
+	mainWnd->Add(hyperlink);
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(mainWnd_statusbar);
+	mainWnd->Add(mainWnd_menubar);
+	mainWnd->Add(mainWnd_iconbar);
 
-	info_edit_artist->RegisterObject(menu_edit_artist);
-	info_edit_artist->RegisterObject(htsp_edit_artist);
-	info_edit_title->RegisterObject(menu_edit_title);
-	info_edit_title->RegisterObject(htsp_edit_title);
-	info_edit_album->RegisterObject(menu_edit_album);
-	info_edit_album->RegisterObject(htsp_edit_album);
-	info_edit_year->RegisterObject(menu_edit_year);
-	info_edit_year->RegisterObject(htsp_edit_year);
-	info_edit_genre->RegisterObject(menu_edit_genre);
-	info_edit_genre->RegisterObject(htsp_edit_genre);
+	info_edit_artist->Add(menu_edit_artist);
+	info_edit_artist->Add(htsp_edit_artist);
+	info_edit_title->Add(menu_edit_title);
+	info_edit_title->Add(htsp_edit_title);
+	info_edit_album->Add(menu_edit_album);
+	info_edit_album->Add(htsp_edit_album);
+	info_edit_year->Add(menu_edit_year);
+	info_edit_year->Add(htsp_edit_year);
+	info_edit_genre->Add(menu_edit_genre);
+	info_edit_genre->Add(htsp_edit_genre);
 
-	info_background->RegisterObject(info_checkbox);
+	info_background->Add(info_checkbox);
 
 	if (!currentConfig->showTitleInfo)
 	{
@@ -1448,26 +1448,26 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	MenuEntry	*entry = NIL;
 
-	menu_file->AddEntry(i18n->TranslateString("Add"), NIL, menu_addsubmenu);
-	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load("BonkEnc.pci:29"));
+	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load("BonkEnc.pci:21"), menu_addsubmenu);
+	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load("BonkEnc.pci:24"));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
 	menu_file->AddEntry();
 	menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onAction.Connect(&JobList::LoadList, joblist);
 	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
 	menu_file->AddEntry();
-	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load("BonkEnc.pci:23"));
+	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load("BonkEnc.pci:25"));
 	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
 	menu_file->AddEntry();
-	entry = menu_file->AddEntry(i18n->TranslateString("Exit"));
+	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("BonkEnc.pci:36"));
 	entry->onAction.Connect(&BonkEncGUI::Close, this);
 	entry->SetShortcut(SC_ALT, VK_F4, mainWnd);
 
-	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("BonkEnc.pci:27"));
+	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("BonkEnc.pci:28"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'C', mainWnd);
-	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("BonkEnc.pci:24"));
+	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("BonkEnc.pci:29"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
 
@@ -1479,10 +1479,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		}
 
 		menu_options->AddEntry();
-		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), NIL, menu_seldrive);
+		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load("BonkEnc.pci:30"), menu_seldrive);
 	}
 
-	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."), ImageLoader::Load("BonkEnc.pci:25"));
+	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."), ImageLoader::Load("BonkEnc.pci:22"));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
 
@@ -1493,7 +1493,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 			menu_drives->AddEntry(currentConfig->cdrip_drives.GetNth(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
 		}
 
-		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("BonkEnc.pci:21"));
+		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("BonkEnc.pci:23"));
 		entry->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
 		entry->SetShortcut(SC_CTRL, 'D', mainWnd);
 	}
@@ -1509,11 +1509,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
 
-	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load("BonkEnc.pci:30"));
+	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load("BonkEnc.pci:31"));
 	entry->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
 	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
-	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
-	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("BonkEnc.pci:31"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
+	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("BonkEnc.pci:32"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
+	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("BonkEnc.pci:33"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
 
 	if (currentConfig->enable_blade)  menu_encoders->AddEntry("BladeEnc MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_bonk)   menu_encoders->AddEntry("Bonk Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
@@ -1544,14 +1544,14 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_encoder_options->AddEntry(i18n->TranslateString("Shutdown after encoding"), NIL, NIL, &currentConfig->shutdownAfterEncoding);
 
 	menu_encode->AddEntry();
-	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), NIL, menu_encoder_options);
+	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load("BonkEnc.pci:29"), menu_encoder_options);
 
 	ToggleUseInputDirectory();
 
-	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:28"));
+	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	entry->SetShortcut(SC_CTRL, 'L', mainWnd);
-	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load("BonkEnc.pci:22"));
+	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load("BonkEnc.pci:27"));
 	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
 	menu_database->AddEntry();
@@ -1565,7 +1565,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database->AddEntry();
 	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
 
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:28"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
 
 	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
@@ -1583,7 +1583,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_trackmenu->AddEntry(i18n->TranslateString("Select none"))->onAction.Connect(&JobList::SelectNone, joblist);
 	menu_trackmenu->AddEntry(i18n->TranslateString("Toggle selection"))->onAction.Connect(&JobList::ToggleSelection, joblist);
 
-	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."));
+	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."), ImageLoader::Load("BonkEnc.pci:34"));
 	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
 	entry->SetShortcut(0, VK_F1, mainWnd);
 	menu_help->AddEntry();
@@ -1599,7 +1599,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	}
 
 	menu_help->AddEntry();
-	menu_help->AddEntry(String(i18n->TranslateString("About BonkEnc")).Append("..."))->onAction.Connect(&BonkEncGUI::About, this);
+	menu_help->AddEntry(String(i18n->TranslateString("About BonkEnc")).Append("..."), ImageLoader::Load("BonkEnc.pci:35"))->onAction.Connect(&BonkEncGUI::About, this);
 
 	mainWnd_menubar->RemoveAllEntries();
 
@@ -1637,36 +1637,36 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		mainWnd_iconbar->AddEntry();
 
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), menu_database_query);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:5"), menu_database_query);
 		entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 		entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
 
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:10"));
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:6"));
 		entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 		entry->SetTooltipText(i18n->TranslateString("Submit CDDB data..."));
 	}
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:5"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:7"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure general settings"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:6"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:8"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure the selected audio encoder"));
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:7"), ENCODER_WAVE > 0 ? menu_encoders : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), ENCODER_WAVE > 0 ? menu_encoders : NIL);
 	entry->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:19"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:10"));
 	entry->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
 	entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:8"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:11"));
 	entry->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
 	entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
 
@@ -1948,10 +1948,10 @@ Void BonkEnc::BonkEncGUI::InterpretStringAs()
 	Track		*track = joblist->GetSelectedTrack();
 	ListEntry	*entry = joblist->GetSelectedEntry();
 
-	if (activePopup == menu_edit_artist->GetHandle())	{ track->artist.ImportFrom(charset, track->oArtist); info_edit_artist->SetText(track->artist); }
-	else if (activePopup == menu_edit_title->GetHandle())	{ track->title.ImportFrom(charset, track->oTitle); info_edit_title->SetText(track->title); }
-	else if (activePopup == menu_edit_album->GetHandle())	{ track->album.ImportFrom(charset, track->oAlbum); info_edit_album->SetText(track->album); }
-	else if (activePopup == menu_edit_genre->GetHandle())	{ track->genre.ImportFrom(charset, track->oGenre); info_edit_genre->SetText(track->genre); }
+	if (activePopup == menu_edit_artist->GetHandle())	{ track->artist.ImportFrom(charset, track->oArtist.ConvertTo("ISO-8859-1")); info_edit_artist->SetText(track->artist); }
+	else if (activePopup == menu_edit_title->GetHandle())	{ track->title.ImportFrom(charset, track->oTitle.ConvertTo("ISO-8859-1")); info_edit_title->SetText(track->title); }
+	else if (activePopup == menu_edit_album->GetHandle())	{ track->album.ImportFrom(charset, track->oAlbum.ConvertTo("ISO-8859-1")); info_edit_album->SetText(track->album); }
+	else if (activePopup == menu_edit_genre->GetHandle())	{ track->genre.ImportFrom(charset, track->oGenre.ConvertTo("ISO-8859-1")); info_edit_genre->SetText(track->genre); }
 
 	String		 jlEntry;
 
@@ -1988,10 +1988,10 @@ Void BonkEnc::BonkEncGUI::InterpretStringAsAll()
 
 		if (entry->IsMarked())
 		{
-			if (activePopup == menu_edit_artist->GetHandle())	{ track->artist.ImportFrom(charset, track->oArtist); if (entry->IsSelected()) info_edit_artist->SetText(track->artist); }
-			else if (activePopup == menu_edit_title->GetHandle())	{ track->title.ImportFrom(charset, track->oTitle); if (entry->IsSelected()) info_edit_title->SetText(track->title); }
-			else if (activePopup == menu_edit_album->GetHandle())	{ track->album.ImportFrom(charset, track->oAlbum); if (entry->IsSelected()) info_edit_album->SetText(track->album); }
-			else if (activePopup == menu_edit_genre->GetHandle())	{ track->genre.ImportFrom(charset, track->oGenre); if (entry->IsSelected()) info_edit_genre->SetText(track->genre); }
+			if (activePopup == menu_edit_artist->GetHandle())	{ track->artist.ImportFrom(charset, track->oArtist.ConvertTo("ISO-8859-1")); if (entry->IsSelected()) info_edit_artist->SetText(track->artist); }
+			else if (activePopup == menu_edit_title->GetHandle())	{ track->title.ImportFrom(charset, track->oTitle.ConvertTo("ISO-8859-1")); if (entry->IsSelected()) info_edit_title->SetText(track->title); }
+			else if (activePopup == menu_edit_album->GetHandle())	{ track->album.ImportFrom(charset, track->oAlbum.ConvertTo("ISO-8859-1")); if (entry->IsSelected()) info_edit_album->SetText(track->album); }
+			else if (activePopup == menu_edit_genre->GetHandle())	{ track->genre.ImportFrom(charset, track->oGenre.ConvertTo("ISO-8859-1")); if (entry->IsSelected()) info_edit_genre->SetText(track->genre); }
 
 			String		 jlEntry;
 

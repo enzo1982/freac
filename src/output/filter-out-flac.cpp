@@ -199,7 +199,7 @@ Int BonkEnc::FilterOutFLAC::WriteData(Buffer<UnsignedByte> &data, Int size)
 	return bytesWritten;
 }
 
-FLAC__StreamEncoderWriteStatus BonkEnc::FLACStreamEncoderWriteCallback(const FLAC__StreamEncoder *encoder, const FLAC__byte buffer[], unsigned bytes, unsigned samples, unsigned current_frame, void *client_data)
+FLAC__StreamEncoderWriteStatus BonkEnc::FLACStreamEncoderWriteCallback(const FLAC__StreamEncoder *encoder, const FLAC__byte buffer[], size_t bytes, unsigned samples, unsigned current_frame, void *client_data)
 {
 	FilterOutFLAC	*filter = (FilterOutFLAC *) client_data;
 
