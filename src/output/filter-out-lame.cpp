@@ -231,7 +231,12 @@ Bool BonkEnc::FilterOutLAME::Activate()
 			break;
 	}
 
-	ex_lame_init_params(lameFlags);
+	if (ex_lame_init_params(lameFlags) < 0)
+	{
+		Utilities::ErrorMessage("Bad LAME encoder settings!\n\nPlease check your encoder settings in the\nconfiguration dialog.");
+
+		return False;
+	}
 
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v2 && currentConfig->enable_id3)
 	{
@@ -243,7 +248,7 @@ Bool BonkEnc::FilterOutLAME::Activate()
 
 	ex_lame_set_bWriteVbrTag(lameFlags, 1);
 
-	return true;
+	return True;
 }
 
 Bool BonkEnc::FilterOutLAME::Deactivate()

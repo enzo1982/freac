@@ -54,19 +54,19 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 	combo_language	= new ComboBox(pos, size);
 	combo_language->onSelectEntry.Connect(&GeneralSettingsLayerLanguage::SelectLanguage, this);
 
-	for (Int i = 0; i < BonkEnc::i18n->GetNOfLanguages(); i++)
-	{
-		combo_language->AddEntry(BonkEnc::i18n->GetNthLanguageName(i));
-
-		if (currentConfig->language == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
-	}
-
 	pos.x = 397;
 	pos.y -= 1;
 	size.cx = 130;
 
 	btn_edit	= new Button(BonkEnc::i18n->TranslateString("Edit language file"), NIL, pos, size);
 	btn_edit->onAction.Connect(&GeneralSettingsLayerLanguage::EditLanguageFile, this);
+
+	for (Int i = 0; i < BonkEnc::i18n->GetNOfLanguages(); i++)
+	{
+		combo_language->AddEntry(BonkEnc::i18n->GetNthLanguageName(i));
+
+		if (currentConfig->language == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
+	}
 
 	if (File(Application::GetApplicationDirectory().Append("translator.exe")).Exists())
 	{
@@ -111,6 +111,9 @@ Void BonkEnc::GeneralSettingsLayerLanguage::SelectLanguage()
 		link_url->SetURL(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 
 		link_url->Paint(SP_PAINT);
+
+		if (BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()) == "internal") btn_edit->Deactivate();
+		else											     btn_edit->Activate();
 	}
 }
 

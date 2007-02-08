@@ -304,7 +304,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				delete f_out;
 				delete filter_out;
 
-				continue;
+				break;
 			}
 
 			debug_out->OutputLine("Creating output filter...done.");

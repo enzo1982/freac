@@ -801,7 +801,7 @@ const Error &BonkEnc::ConfigureLameEnc::ShowDialog()
 Void BonkEnc::ConfigureLameEnc::OK()
 {
 	if (abrbitrate < 8)	abrbitrate = 8;
-	if (abrbitrate > 310)	abrbitrate = 310;
+	if (abrbitrate > 320)	abrbitrate = 320;
 
 	if (set_lowpass && filtering_edit_lowpass->GetText().Length() == 0)
 	{
@@ -1051,6 +1051,10 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		{
 			vbr_slider_min_brate->Deactivate();
 			vbr_text_min_brate_kbps->Deactivate();
+		}
+
+		if (!set_max_vbr_brate)
+		{
 			vbr_slider_max_brate->Deactivate();
 			vbr_text_max_brate_kbps->Deactivate();
 		}

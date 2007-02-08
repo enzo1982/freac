@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -48,11 +48,11 @@ Int BonkEnc::FilterInLAME::ReadData(Buffer<UnsignedByte> &data, Int size)
 	pcm_l.Resize(size * 64);
 	pcm_r.Resize(size * 64);
 
-	int	 nsamples = ex_lame_decode(data, size, pcm_l, pcm_r);
+	Int	 nSamples = ex_lame_decode(data, size, pcm_l, pcm_r);
 
-	data.Resize(nsamples * format->channels * (format->bits / 8));
+	data.Resize(nSamples * format->channels * (format->bits / 8));
 
-	for (Int i = 0; i < nsamples; i++)
+	for (Int i = 0; i < nSamples; i++)
 	{
 		for (Int j = 0; j < format->channels; j++) ((short *) (unsigned char *) data)[format->channels * i + j] = (j == 0) ? pcm_l[i] : pcm_r[i];
 	}
@@ -85,9 +85,9 @@ BonkEnc::Track *BonkEnc::FilterInLAME::GetFileInfo(const String &inFile)
 
 		ZeroMemory(&mp3data, sizeof(mp3data));
 
-		ex_lame_decode_headers(buffer, buffer.Size(), pcm_l, pcm_r, &mp3data);
+		Int	 nSamples = ex_lame_decode_headers(buffer, buffer.Size(), pcm_l, pcm_r, &mp3data);
 
-		if (mp3data.header_parsed && mp3data.framesize == 1152)
+		if (mp3data.header_parsed && nSamples > mp3data.framesize)
 		{
 			nFormat->channels	= mp3data.stereo;
 			nFormat->rate		= mp3data.samplerate;

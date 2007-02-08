@@ -38,9 +38,9 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version	= "v1.0 Release Candidate 2";
+String	 BonkEnc::BonkEnc::version	= "v1.0";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0rc2";
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0";
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
 
