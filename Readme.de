@@ -15,6 +15,7 @@ Geschichte
 		- Sprachunterstützung für Rumänisch hinzugefügt
 		- Absturz beim Klick auf "Sprachdatei bearbeiten" im Konfigurationsdialog behoben
 		- Fehler beim Einlesen von MP3-Dateien mit niedriger Bitrate behoben
+		- FLAC auf Version 1.1.4 aktualisiert
 		- Einige kleinere Fehler behoben
 
 	Version 1.0 RC 2 (Februar 2007)

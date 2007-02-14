@@ -354,6 +354,10 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 
 		picture->data.Resize(metadata->data.picture.data_length);
 
+		// FixMe: I don't know why, but without the memset statement memcpy hangs the process
+		//	  in about 20% of all cases on Windows XP x64 when the buffers are > 1MB.
+
+		memset(picture->data, 0, picture->data.Size());
 		memcpy(picture->data, metadata->data.picture.data, picture->data.Size());
 
 		filter->infoFormat->pictures.Add(picture);

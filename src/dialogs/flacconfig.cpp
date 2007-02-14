@@ -458,18 +458,30 @@ Void BonkEnc::ConfigureFLAC::SetPreset()
 		check_loose_mid_side->Activate();
 
 		check_streamable_subset->Activate();
+		text_blocksize->Activate();
 		slider_blocksize->Activate();
 		edit_blocksize->Activate();
+		text_blocksize_bytes->Activate();
 
+		text_apodization->Activate();
 		edit_apodization->Activate();
+		text_apodization_explain->Activate();
 
+		text_max_lpc_order->Activate();
 		slider_max_lpc_order->Activate();
+		text_max_lpc_order_value->Activate();
 		check_exhaustive_model->Activate();
 		check_qlp_precision_search->Activate();
+		text_qlp_precision->Activate();
 		slider_qlp_precision->Activate();
+		text_qlp_precision_value->Activate();
 
+		text_min_part_order->Activate();
+		text_max_part_order->Activate();
 		slider_min_part_order->Activate();
+		text_min_part_order_value->Activate();
 		slider_max_part_order->Activate();
+		text_max_part_order_value->Activate();
 
 		if (!do_mid_side_stereo) check_loose_mid_side->Deactivate();
 
@@ -477,12 +489,19 @@ Void BonkEnc::ConfigureFLAC::SetPreset()
 
 		if (max_lpc_order == 0)
 		{
+			text_qlp_precision->Deactivate();
 			slider_qlp_precision->Deactivate();
+			text_qlp_precision_value->Deactivate();
 			check_exhaustive_model->Deactivate();
 			check_qlp_precision_search->Deactivate();
 		}
 
-		if (do_qlp_coeff_prec_search) slider_qlp_precision->Deactivate();
+		if (do_qlp_coeff_prec_search)
+		{
+			text_qlp_precision->Deactivate();
+			slider_qlp_precision->Deactivate();
+			text_qlp_precision_value->Deactivate();
+		}
 	}
 	else
 	{
@@ -490,18 +509,30 @@ Void BonkEnc::ConfigureFLAC::SetPreset()
 		check_loose_mid_side->Deactivate();
 
 		check_streamable_subset->Deactivate();
+		text_blocksize->Deactivate();
 		slider_blocksize->Deactivate();
 		edit_blocksize->Deactivate();
+		text_blocksize_bytes->Deactivate();
 
+		text_apodization->Deactivate();
 		edit_apodization->Deactivate();
+		text_apodization_explain->Deactivate();
 
+		text_max_lpc_order->Deactivate();
 		slider_max_lpc_order->Deactivate();
+		text_max_lpc_order_value->Deactivate();
 		check_exhaustive_model->Deactivate();
 		check_qlp_precision_search->Deactivate();
+		text_qlp_precision->Deactivate();
 		slider_qlp_precision->Deactivate();
+		text_qlp_precision_value->Deactivate();
 
+		text_min_part_order->Deactivate();
+		text_max_part_order->Deactivate();
 		slider_min_part_order->Deactivate();
+		text_min_part_order_value->Deactivate();
 		slider_max_part_order->Deactivate();
+		text_max_part_order_value->Deactivate();
 	}
 }
 
@@ -512,13 +543,20 @@ Void BonkEnc::ConfigureFLAC::SetLPCOrder()
 
 	if (max_lpc_order == 0)
 	{
+		text_qlp_precision->Deactivate();
 		slider_qlp_precision->Deactivate();
+		text_qlp_precision_value->Deactivate();
 		check_exhaustive_model->Deactivate();
 		check_qlp_precision_search->Deactivate();
 	}
 	else
 	{
-		if (!do_qlp_coeff_prec_search) slider_qlp_precision->Activate();
+		if (!do_qlp_coeff_prec_search)
+		{
+			text_qlp_precision->Activate();
+			slider_qlp_precision->Activate();
+			text_qlp_precision_value->Activate();
+		}
 
 		check_exhaustive_model->Activate();
 		check_qlp_precision_search->Activate();
@@ -527,8 +565,18 @@ Void BonkEnc::ConfigureFLAC::SetLPCOrder()
 
 Void BonkEnc::ConfigureFLAC::SetQLPSearch()
 {
-	if (do_qlp_coeff_prec_search)	slider_qlp_precision->Deactivate();
-	else				slider_qlp_precision->Activate();
+	if (do_qlp_coeff_prec_search)
+	{
+		text_qlp_precision->Deactivate();
+		slider_qlp_precision->Deactivate();
+		text_qlp_precision_value->Deactivate();
+	}
+	else
+	{
+		text_qlp_precision->Activate();
+		slider_qlp_precision->Activate();
+		text_qlp_precision_value->Activate();
+	}
 }
 
 Void BonkEnc::ConfigureFLAC::SetQLPPrecision()

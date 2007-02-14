@@ -15,6 +15,7 @@ History
 		- added Romanian language support
 		- fixed crash when clicking "Edit language file" in the config dialog
 		- fixed reading of low bitrate MP3 files
+		- upgraded FLAC to version 1.1.4
 		- some minor bug fixes
 
 	Version 1.0 RC 2 (February 2007)

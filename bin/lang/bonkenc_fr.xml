@@ -360,5 +360,38 @@
   <entry id="349" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>
   <entry id="350" string="Encode to single file">Encoder dans fichier unique</entry>
   <entry id="351" string="Encoder options">Options encodeur</entry>
+  <entry id="352" string="Skip">Ignorer</entry>
+  <entry id="353" string="Enable local CDDB database">Activer la base de données CDDB locale</entry>
+  <entry id="354" string="CDDB directory:">Répertoire CDDB :</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">Sélectionnez le dossier de la base de données CDDB :</entry>
+  <entry id="356" string="File already exists">Le fichier existe déjà.</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Le fichier de sortie %1&#10;existe déjà ! Voulez-vous le remplacer ?</entry>
+  <entry id="358" string="Overwrite all further files">Ecraser tous les autres fichiers</entry>
+  <entry id="359" string="Start ripping automatically">Lancer extraction auto.</entry>
+  <entry id="360" string="Submit to online database later">Soumettre dans la base de données en ligne plus tard</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB est désactivée ! Activez la prise en charge locale ou&#10;distante dans la boîte de dialogue de configuration.</entry>
+  <entry id="362" string="CDDB entries to submit:">Entrées CDDB à soumettre :</entry>
+  <entry id="363" string="Show queued CDDB entries...">Afficher les entrées CDDB en file d'attente...</entry>
+  <entry id="364" string="Submit all">Soumettre tout</entry>
+  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB distante est désactivée ! Activez la prise en charge&#10;distante dans la boîte de dialogue de configuration.</entry>
+  <entry id="366" string="Category">Catégorie</entry>
+  <entry id="367" string="Close">Fermer</entry>
+  <entry id="368" string="Automatization">Automatisation</entry>
+  <entry id="369" string="Query CDDB database later">Interroger la base de données CDDB plus tard</entry>
+  <entry id="370" string="Show queued CDDB queries...">Afficher les requêtes CDDB en file d'attente...</entry>
+  <entry id="371" string="CDDB queries">Requêtes CDDB</entry>
+  <entry id="372" string="Query">Requête</entry>
+  <entry id="373" string="Query all">Interroger tout</entry>
+  <entry id="374" string="Query string">Chaîne de requête</entry>
+  <entry id="375" string="CDDB queries to perform:">Requêtes CDDB à exécuter :</entry>
+  <entry id="376" string="Would you like to perform this query again later?">Voulez-vous réexécuter cette requête ultérieurement ?</entry>
+  <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows a refusé l'accès aux lecteurs de CD-ROM.&#10;&#10;Adressez-vous à votre administrateur système pour&#10;obtenir le droit d'accès au lecteur de CD-ROM.</entry>
+  <entry id="378" string="CD information">Informations sur le CD</entry>
+  <entry id="379" string="Read CD Text">Lire texte du CD</entry>
+  <entry id="380" string="Read cdplayer.ini">Lire fichier cdplayer.ini</entry>
+  <entry id="381" string="Apodization">Apodisation</entry>
+  <entry id="382" string="Apodization function(s):">Fonction(s) d'apodisation :</entry>
+  <entry id="383" string="You can specify multiple functions separated by semicolons.">Vous pouvez indiquer plusieurs fonctions séparées par des points-virgules.</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc peut vérifier automatiquement la présence en ligne de mises à jour du programme&#10;au démarrage.&#10;&#10;Voulez-vous que BonkEnc recherche des mises à jour au démarrage ?</entry> 
  </data>
 </LangFile>

@@ -532,6 +532,7 @@ namespace BonkEnc
 	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_PICTURE_SET_DATA)				(FLAC__StreamMetadata *, FLAC__byte *, FLAC__uint32, FLAC__bool);
 	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT)			(FLAC__StreamMetadata *, FLAC__StreamMetadata_VorbisComment_Entry, FLAC__bool);
 	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR)	(FLAC__StreamMetadata_VorbisComment_Entry *, const char *, const char *);
+	typedef char *					 *FLAC__VERSION_STRING_TYPE;
 
 	extern BEEXPORT FLAC__STREAM_ENCODER_NEW					 ex_FLAC__stream_encoder_new;
 	extern BEEXPORT FLAC__STREAM_ENCODER_DELETE					 ex_FLAC__stream_encoder_delete;
@@ -571,6 +572,7 @@ namespace BonkEnc
 	extern BEEXPORT FLAC__METADATA_OBJECT_PICTURE_SET_DATA				 ex_FLAC__metadata_object_picture_set_data;
 	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment;
 	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair;
+	extern BEEXPORT FLAC__VERSION_STRING_TYPE					 ex_FLAC__VERSION_STRING;
 
 // ID3Lib DLL API
 

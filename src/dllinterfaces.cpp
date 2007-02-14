@@ -241,6 +241,7 @@ FLAC__METADATA_OBJECT_PICTURE_SET_DESCRIPTION			 ex_FLAC__metadata_object_pictur
 FLAC__METADATA_OBJECT_PICTURE_SET_DATA				 ex_FLAC__metadata_object_picture_set_data				= NIL;
 FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment			= NIL;
 FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= NIL;
+FLAC__VERSION_STRING_TYPE					 ex_FLAC__VERSION_STRING						= NIL;
 
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
 ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
@@ -898,6 +899,7 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 	ex_FLAC__metadata_object_picture_set_data				= (FLAC__METADATA_OBJECT_PICTURE_SET_DATA) flacdll->GetFunctionAddress("FLAC__metadata_object_picture_set_data");
 	ex_FLAC__metadata_object_vorbiscomment_append_comment			= (FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT) flacdll->GetFunctionAddress("FLAC__metadata_object_vorbiscomment_append_comment");
 	ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= (FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR) flacdll->GetFunctionAddress("FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair");
+	ex_FLAC__VERSION_STRING							= (FLAC__VERSION_STRING_TYPE) flacdll->GetFunctionAddress("FLAC__VERSION_STRING");
 
 	if (ex_FLAC__stream_encoder_new						== NIL ||
 	    ex_FLAC__stream_encoder_delete					== NIL ||
@@ -936,7 +938,8 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 	    ex_FLAC__metadata_object_picture_set_description			== NIL ||
 	    ex_FLAC__metadata_object_picture_set_data				== NIL ||
 	    ex_FLAC__metadata_object_vorbiscomment_append_comment		== NIL ||
-	    ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	== NIL) { FreeFLACDLL(); return False; }
+	    ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	== NIL ||
+	    ex_FLAC__VERSION_STRING						== NIL) { FreeFLACDLL(); return False; }
 
 	return True;
 }
