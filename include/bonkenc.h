@@ -119,6 +119,8 @@ namespace BonkEnc
 
 			Bool			 overwriteAll;
 
+			Bool			 InitCDRip();
+
 			Int			 Encoder(Thread *);
 
 			String			 GetPlaylistFileName(Track *);

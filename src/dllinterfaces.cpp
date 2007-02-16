@@ -10,7 +10,6 @@
 
 #include <main.h>
 #include <dllinterfaces.h>
-#include <direct.h>
 
 CR_INIT				 ex_CR_Init				= NIL;
 CR_DEINIT			 ex_CR_DeInit				= NIL;
@@ -951,75 +950,60 @@ Void BonkEnc::DLLInterfaces::FreeFLACDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 {
-	String		 dir = Application::GetApplicationDirectory().Append("plugins\\");
-	_finddata_t	 fileData;
-	int		 handle;
-
 	MoveFileA(Application::GetApplicationDirectory().Append("plugins\\plugins.ini"), Application::GetApplicationDirectory().Append("BonkEnc.ini"));
 
-	chdir(dir);
+	Directory		 directory = Application::GetApplicationDirectory().Append("plugins\\");
+	const Array<File>	&in_dlls   = directory.GetFilesByPattern("in_*.dll");
 
-	if ((handle = _findfirst("in_*.dll", &fileData)) != -1)
+	for (Int i = 0; i < in_dlls.GetNOfEntries(); i++)
 	{
-		do
+		DynamicLoader	*dll = new DynamicLoader(in_dlls.GetNth(i));
+
+		if (dll != NIL)
 		{
-			DynamicLoader	*dll = new DynamicLoader(fileData.name);
+			In_Module *(*proc)() = (In_Module *(*)()) dll->GetFunctionAddress("winampGetInModule2");
 
-			if (dll != NIL)
+			if (proc != NIL)
 			{
-				In_Module *(*proc)() = (In_Module *(*)()) dll->GetFunctionAddress("winampGetInModule2");
+				winamp_in_plugins.Add(dll);
+				winamp_in_modules.Add(proc());
 
-				if (proc != NIL)
-				{
-					winamp_in_plugins.Add(dll);
-					winamp_in_modules.Add(proc());
-
-					proc()->hDllInstance = (HINSTANCE) dll->GetSystemModuleHandle();
-					proc()->Init();
-				}
-				else
-				{
-					Object::DeleteObject(dll);
-				}
+				proc()->hDllInstance = (HINSTANCE) dll->GetSystemModuleHandle();
+				proc()->Init();
+			}
+			else
+			{
+				Object::DeleteObject(dll);
 			}
 		}
-		while (_findnext(handle, &fileData) == 0);
 	}
 
-	_findclose(handle);
+	const Array<File>	&out_dlls   = directory.GetFilesByPattern("out_*.dll");
 
-	if ((handle = _findfirst("out_*.dll", &fileData)) != -1)
+	for (Int i = 0; i < out_dlls.GetNOfEntries(); i++)
 	{
-		do
+		DynamicLoader	*dll = new DynamicLoader(out_dlls.GetNth(i));
+
+		if (dll != NIL)
 		{
-			DynamicLoader	*dll = new DynamicLoader(fileData.name);
+			Out_Module *(*proc)() = (Out_Module *(*)()) dll->GetFunctionAddress("winampGetOutModule");
 
-			if (dll != NIL)
+			if (proc != NIL)
 			{
-				Out_Module *(*proc)() = (Out_Module *(*)()) dll->GetFunctionAddress("winampGetOutModule");
+				winamp_out_plugins.Add(dll);
+				winamp_out_modules.Add(proc());
 
-				if (proc != NIL)
-				{
-					winamp_out_plugins.Add(dll);
-					winamp_out_modules.Add(proc());
-
-					proc()->hDllInstance = (HINSTANCE) dll->GetSystemModuleHandle();
-					proc()->Init();
-				}
-				else
-				{
-					Object::DeleteObject(dll);
-				}
+				proc()->hDllInstance = (HINSTANCE) dll->GetSystemModuleHandle();
+				proc()->Init();
+			}
+			else
+			{
+				Object::DeleteObject(dll);
 			}
 		}
-		while (_findnext(handle, &fileData) == 0);
 	}
 
-	_findclose(handle);
-
-	chdir(Application::GetApplicationDirectory());
-
-	return true;
+	return True;
 }
 
 Void BonkEnc::DLLInterfaces::FreeWinampDLLs()

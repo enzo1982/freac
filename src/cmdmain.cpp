@@ -48,6 +48,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	i18n->ActivateLanguage(currentConfig->language);
 
+	InitCDRip();
+
 	bool		 quiet		= ScanForParameter("-quiet", NULL);
 	Array<String>	 files;
 	String		 encoder	= "FAAC";

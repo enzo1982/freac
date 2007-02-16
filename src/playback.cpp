@@ -28,6 +28,8 @@
 
 Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 {
+	if (entry < 0) return;
+
 	if (encoding)
 	{
 		Utilities::ErrorMessage("Cannot play a file while encoding!");

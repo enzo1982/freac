@@ -99,8 +99,6 @@ namespace BonkEnc
 			Void		 CheckForUpdates();
 			Int		 CheckForUpdatesThread(Thread *);
 
-			Bool		 InitCDRip();
-
 			Bool		 SetLanguage();
 			Void		 FillMenus();
 
