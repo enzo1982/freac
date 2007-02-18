@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -192,15 +192,7 @@ String BonkEnc::FilterOutMP4::GetTempFile(const String &oFileName)
 
 	if (rVal == oFileName) return rVal;
 
-	char	*tempa = new char [MAX_PATH];
-
-	GetTempPathA(MAX_PATH, tempa);
-
-	String	 tempDir = tempa;
-
-	delete [] tempa;
-
-	if (tempDir[tempDir.Length() - 1] != '\\') tempDir.Append("\\");
+	String	 tempDir = Utilities::GetTempDirectory();
 
 	for (Int j = lastBs + 1; j < rVal.Length(); j++)
 	{

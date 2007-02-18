@@ -13,10 +13,12 @@ Geschichte
 	Version 1.0 (Februar 2007)
 
 		- Sprachunterstützung für Rumänisch hinzugefügt
+		- Benutzerhandbuch hinzugefügt
 		- Absturz beim Klick auf "Sprachdatei bearbeiten" im Konfigurationsdialog behoben
 		- Fehler beim Einlesen von MP3-Dateien mit niedriger Bitrate behoben
 		- Fehler im Kommandozeilencodierer behoben, durch den das Startverzeichnis geändert wurde
 		- Unterstützung zum CD-rippen mit dem Kommandozeilencodierer hinzugefügt
+		- Fehler im graphischen Installationsprogramm behoben
 		- FLAC auf Version 1.1.4 aktualisiert
 		- Einige kleinere Fehler behoben
 

@@ -11,6 +11,7 @@
 #include <input/inputfilter.h>
 
 #include <dllinterfaces.h>
+#include <utilities.h>
 
 BonkEnc::InputFilter::InputFilter(Config *config, Track *iFormat)
 {
@@ -259,15 +260,7 @@ String BonkEnc::InputFilter::GetTempFileName(const String &oFileName)
 
 	if (rVal == oFileName) return rVal;
 
-	char	*tempa = new char [MAX_PATH];
-
-	GetTempPathA(MAX_PATH, tempa);
-
-	String	 tempDir = tempa;
-
-	delete [] tempa;
-
-	if (tempDir[tempDir.Length() - 1] != '\\') tempDir.Append("\\");
+	String	 tempDir = Utilities::GetTempDirectory();
 
 	for (Int j = lastBs + 1; j < rVal.Length(); j++)
 	{

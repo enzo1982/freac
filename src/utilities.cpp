@@ -434,27 +434,51 @@ String BonkEnc::Utilities::GetWindowsRootDirectory()
 
 String BonkEnc::Utilities::GetProgramFilesDirectory()
 {
-	String		 programsDir;
+	String	 programsDir;
+	HKEY	 currentVersion;
 
-	if (Setup::enableUnicode)
+	if (RegOpenKeyExA(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\Windows\\CurrentVersion", 0, KEY_QUERY_VALUE, &currentVersion) == ERROR_SUCCESS)
 	{
-		wchar_t	*bufferw = new wchar_t [MAX_PATH];
+		// We need to use the ANSI version of RegQueryValueEx, because
+		// the Unicode version is not compatible with MSLU.
 
-		ExpandEnvironmentStringsW(String("%ProgramFiles%"), bufferw, MAX_PATH);
+		DWORD	 size = MAX_PATH;
+		char	*buffer = new char [size];
 
-		programsDir = bufferw;
+		RegQueryValueExA(currentVersion, String("ProgramFilesDir"), 0, NIL, (BYTE *) buffer, &size);
 
-		delete [] bufferw;
+		programsDir = buffer;
+
+		delete [] buffer;
+
+		RegCloseKey(currentVersion);
 	}
-	else
+
+	if (programsDir == NIL)
 	{
-		char	*buffera = new char [MAX_PATH];
+		// Failed to get the program files directory from the registry.
+		// Get the directory name from the environment variable.
 
-		ExpandEnvironmentStringsA(String("%ProgramFiles%"), buffera, MAX_PATH);
+		if (Setup::enableUnicode)
+		{
+			wchar_t	*bufferw = new wchar_t [MAX_PATH];
 
-		programsDir = buffera;
+			ExpandEnvironmentStringsW(String("%ProgramFiles%"), bufferw, MAX_PATH);
 
-		delete [] buffera;
+			programsDir = bufferw;
+
+			delete [] bufferw;
+		}
+		else
+		{
+			char	*buffera = new char [MAX_PATH];
+
+			ExpandEnvironmentStringsA(String("%ProgramFiles%"), buffera, MAX_PATH);
+
+			programsDir = buffera;
+
+			delete [] buffera;
+		}
 	}
 
 	if (programsDir[programsDir.Length() - 1] != '\\') programsDir.Append("\\");
@@ -528,9 +552,29 @@ String BonkEnc::Utilities::GetPersonalFilesDirectory()
 
 	CoTaskMemFree(idlist);
 
+	if (personalDir[personalDir.Length() - 1] != '\\') personalDir.Append("\\");
 	if (personalDir == "\\") personalDir = "C:\\";
 
 	return personalDir;
+}
+
+String BonkEnc::Utilities::GetTempDirectory()
+{
+	// We need to use the ANSI version of GetTempPath, because
+	// the Unicode version is not compatible with MSLU.
+
+	String	 tempDir;
+	char	*buffera = new char [MAX_PATH];
+
+	GetTempPathA(MAX_PATH, buffera);
+
+	tempDir = buffera;
+
+	delete [] buffera;
+
+	if (tempDir[tempDir.Length() - 1] != '\\') tempDir.Append("\\");
+
+	return tempDir;
 }
 
 String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)

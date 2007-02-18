@@ -1499,7 +1499,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
-	entry->SetShortcut(SC_CTRL, 'L', mainWnd);
+	entry->SetShortcut(SC_CTRL, 'Q', mainWnd);
 	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load("BonkEnc.pci:27"));
 	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 	entry->SetShortcut(SC_CTRL, 'S', mainWnd);

@@ -13,10 +13,12 @@ History
 	Version 1.0 (February 2007)
 
 		- added Romanian language support
+		- added a user manual
 		- fixed crash when clicking "Edit language file" in the config dialog
 		- fixed reading of low bitrate MP3 files
 		- fixed command line encoder changing the startup directory
 		- added CD ripping support to command line encoder
+		- fixed bugs in the graphical installer
 		- upgraded FLAC to version 1.1.4
 		- some minor bug fixes
 

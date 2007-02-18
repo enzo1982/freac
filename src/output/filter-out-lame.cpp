@@ -259,13 +259,7 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 
 	if (currentConfig->lame_vbrmode != vbr_off)
 	{
-		char	*tempa = new char [MAX_PATH];
-
-		GetTempPathA(MAX_PATH, tempa);
-
-		String	 tempFile = String(tempa).Append("xing.tmp");
-
-		delete [] tempa;
+		String	 tempFile = Utilities::GetTempDirectory().Append("xing.tmp");
 
 		FILE	*f_out = fopen(tempFile, "w+b");
 
