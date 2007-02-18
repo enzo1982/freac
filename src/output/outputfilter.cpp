@@ -160,7 +160,7 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 			else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) picInfo->description.ConvertTo("UTF-16BE"));
 			else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), picInfo->description);
 
-			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_MIMETYPE), picInfo->mime);
+			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_MIMETYPE), picInfo->mime.ConvertTo("ISO-8859-1"));
 			ex_ID3Field_SetINT(ex_ID3Frame_GetField(picture, ID3FN_PICTURETYPE), picInfo->type);
 			ex_ID3Field_SetBINARY(ex_ID3Frame_GetField(picture, ID3FN_DATA), picInfo->data, picInfo->data.Size());
 
