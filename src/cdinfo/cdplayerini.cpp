@@ -11,6 +11,7 @@
 #include <cdinfo/cdplayerini.h>
 #include <cddb/cddb.h>
 #include <utilities.h>
+#include <bonkenc.h>
 #include <dllinterfaces.h>
 
 BonkEnc::CDPlayerIni::CDPlayerIni()

@@ -50,23 +50,35 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	InitCDRip();
 
-	bool		 quiet		= ScanForParameter("-quiet", NULL);
+	Bool		 quiet		= ScanForParameter("-quiet", NULL);
+	Bool		 cddb		= ScanForParameter("-cddb", NULL);
 	Array<String>	 files;
-	String		 encoder	= "FAAC";
+	String		 encoder	= "LAME";
 	String		 helpenc	= "";
 	String		 outdir		= ".";
 	String		 outfile	= "";
+	String		 pattern	= "<artist> - <title>";
+	String		 cdDrive	= "0";
+	String		 tracks		= "";
 
 	ScanForParameter("-e", &encoder);
 	ScanForParameter("-h", &helpenc);
 	ScanForParameter("-d", &outdir);
 	ScanForParameter("-o", &outfile);
+	ScanForParameter("-p", &pattern);
+	ScanForParameter("-cd", &cdDrive);
+	ScanForParameter("-track", &tracks);
 
 	ScanForFiles(&files);
+	TracksToFiles(tracks, &files);
 
 	Console::SetTitle(String("BonkEnc ").Append(BonkEnc::version));
 
-	if (files.GetNOfEntries() == 0 || helpenc != NIL || !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "FLAC" || encoder == "TVQ" || encoder == "WAVE" || encoder == "lame" || encoder == "vorbis" || encoder == "bonk" || encoder == "blade" || encoder == "faac" || encoder == "flac" || encoder == "tvq" || encoder == "wave") || (files.GetNOfEntries() > 1 && outfile != ""))
+	if (files.GetNOfEntries() == 0 ||
+	    helpenc != NIL ||
+	    !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "FLAC" || encoder == "TVQ" || encoder == "WAVE" || encoder == "lame" || encoder == "vorbis" || encoder == "bonk" || encoder == "blade" || encoder == "faac" || encoder == "flac" || encoder == "tvq" || encoder == "wave") ||
+	    (files.GetNOfEntries() > 1 && outfile != "") ||
+	    (cdDrive.ToInt() >= currentConfig->cdrip_numdrives && currentConfig->cdrip_numdrives > 0))
 	{
 		ShowHelp(helpenc);
 
@@ -233,6 +245,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	if (!broken)
 	{
 		currentConfig->enc_outdir = outdir;
+		currentConfig->enc_filePattern = pattern;
+
+		currentConfig->cdrip_activedrive = cdDrive.ToInt();
+		currentConfig->enable_auto_cddb = cddb;
+		currentConfig->enable_cddb_cache = True;
 
 		currentConfig->encodeToSingleFile = False;
 		currentConfig->writeToInputDir = False;
@@ -243,7 +260,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		{
 			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READONLY);
 
-			if (in->GetLastError() != IO_ERROR_OK)
+			if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("/cda"))
 			{
 				delete in;
 
@@ -299,6 +316,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				Sleep(10);
 			}
 
+			joblist->RemoveNthTrack(0);
+
 			if (!quiet) Console::OutputString("done.\n");
 		}
 	}
@@ -335,7 +354,51 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 		prevParam	= param;
 		param		= args.GetNth(i);
 
-		if (param[0] != '-' && (prevParam[0] != '-' || prevParam == "-q")) (*files).Add(param);
+		if (param[0] != '-' && (prevParam[0] != '-' ||
+					prevParam == "-quiet" ||
+					prevParam == "-cddb" ||
+					prevParam == "-js" ||
+					prevParam == "-lossless" ||
+					prevParam == "-mp4" ||
+					prevParam == "-m" ||
+					prevParam == "-extc" ||
+					prevParam == "-extm ||")) (*files).Add(param);
+	}
+}
+
+Void BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<String> *files)
+{
+	String	 rest = tracks;
+
+	while (rest.Length() > 0)
+	{
+		String	 current;
+
+		if (rest.Find(",") != -1)
+		{
+			Int	 comma = rest.Find(",");
+
+			current = rest.Head(comma);
+			rest = rest.Tail(rest.Length() - comma - 1);
+		}
+		else
+		{
+			current = rest;
+			rest = NIL;
+		}
+
+		if (current.Find("-") != -1)
+		{
+			Int	 dash = current.Find("-");
+			Int	 first = current.Head(dash).ToInt();
+			Int	 last = current.Tail(current.Length() - dash - 1).ToInt();
+
+			for (Int i = first; i <= last; i++) (*files).Add(String("/cda").Append(String::FromInt(i)));
+		}
+		else
+		{
+			(*files).Add(String("/cda").Append(current));
+		}
 	}
 }
 
@@ -345,12 +408,17 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	{
 		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2007 Robert Kausch\n\n"));
 		Console::OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
-		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is FAAC)\n");
+		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
+		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
 		Console::OutputString("\t-d <outdir>\tSpecify output directory for encoded files\n");
 		Console::OutputString("\t-o <outfile>\tSpecify output file name in single file mode\n");
-		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n");
+		Console::OutputString("\t-p <pattern>\tSpecify output file name pattern\n\n");
+		Console::OutputString("\t-cd <drive>\tSpecify active CD drive (0..n)\n");
+		Console::OutputString("\t-track <track>\tSpecify input track(s) to rip (e.g. 1-5,7,9)\n");
+		Console::OutputString("\t-cddb\t\tEnable CDDB database lookup\n\n");
 		Console::OutputString("\t-quiet\t\tDo not print any messages\n\n");
 		Console::OutputString("<encoder> can be one of LAME, VORBIS, BONK, BLADE, FAAC, FLAC, TVQ or WAVE.\n\n");
+		Console::OutputString("Default for <pattern> is \"<artist> - <title>\".\n\n");
 	}
 	else
 	{
@@ -396,10 +464,10 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 			Console::OutputString("Options for FLAC encoder:\n\n");
 			Console::OutputString("\t-b <blocksize>\t\t\t(192 - 32768, default: 4608)\n");
 			Console::OutputString("\t-m\t\t\t\t(use mid-side stereo)\n");
-			Console::OutputString("\t-e\t\t\t\t(do exhaustive model search)\n");
 			Console::OutputString("\t-l <max LPC order>\t\t(0 - 32, default: 8)\n");
 			Console::OutputString("\t-q <QLP coeff precision>\t(0 - 16, default: 0)\n");
-			Console::OutputString("\t-p\t\t\t\t(do exhaustive QLP coeff optimization)\n");
+			Console::OutputString("\t-extc\t\t\t\t(do exhaustive QLP coeff optimization)\n");
+			Console::OutputString("\t-extm\t\t\t\t(do exhaustive model search)\n");
 			Console::OutputString("\t-r <min Rice>,<max Rice>\t(0 - 16, default: 3,3)\n\n");
 		}
 		else if (helpenc == "TVQ" || helpenc == "tvq")

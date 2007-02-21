@@ -11,7 +11,7 @@
 #ifndef _H_CDDB_
 #define _H_CDDB_
 
-#include <main.h>
+#include <config.h>
 #include <cddb/cddbinfo.h>
 
 const Int	 FREEDB_MODE_HTTP	= 0;

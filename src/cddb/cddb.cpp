@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cddb/cddb.h>
+#include <bonkenc.h>
 #include <dllinterfaces.h>
 
 int cddb_sum(int n)

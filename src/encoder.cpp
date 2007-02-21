@@ -72,6 +72,8 @@ Void BonkEnc::BonkEnc::Encode()
 	stop_encoding = False;
 
 	overwriteAll = False;
+ 
+	if (currentConfig->enable_console) overwriteAll = True;
 
 	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
 	encoder_thread->Start();

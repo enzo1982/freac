@@ -6,6 +6,9 @@ files and produce MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
 and WAV files.
 
 BonkEnc uses the CDRip Ripping Library for audio ripping.
+BonkEnc uses the FAAD2 AAC decoder for Advanced Audio decoding.
+
+FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
 
 History
 -------
@@ -16,10 +19,13 @@ History
 		- added a user manual
 		- fixed crash when clicking "Edit language file" in the config dialog
 		- fixed reading of low bitrate MP3 files
-		- fixed command line encoder changing the startup directory
 		- added CD ripping support to command line encoder
+		- fixed some command line encoder bugs
 		- fixed bugs in the graphical installer
 		- upgraded FLAC to version 1.1.4
+		- upgraded FAAD2 to version 2.5
+		- upgraded FAAC to version 1.25
+		- upgraded Ogg Vorbis to aoTuV beta 5
 		- some minor bug fixes
 
 	Version 1.0 RC 2 (February 2007)

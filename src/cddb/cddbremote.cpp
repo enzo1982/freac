@@ -13,6 +13,7 @@
 #include <smooth/io/drivers/driver_socks4.h>
 #include <smooth/io/drivers/driver_socks5.h>
 #include <cddb/cddbremote.h>
+#include <bonkenc.h>
 #include <dllinterfaces.h>
 
 BonkEnc::CDDBRemote::CDDBRemote(Config *iConfig) : CDDB(iConfig)

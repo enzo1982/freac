@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cddb/cddblocal.h>
+#include <bonkenc.h>
 #include <dllinterfaces.h>
 
 BonkEnc::CDDBLocal::CDDBLocal(Config *iConfig) : CDDB(iConfig)

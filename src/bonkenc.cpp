@@ -18,7 +18,8 @@
 #include <dllinterfaces.h>
 #include <joblist.h>
 
-#include <cddb/cddb.h>
+#include <cddb/cddblocal.h>
+#include <cddb/cddbremote.h>
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 
@@ -234,5 +235,63 @@ Void BonkEnc::BonkEnc::ReadCD()
 
 BonkEnc::CDDBInfo BonkEnc::BonkEnc::GetCDDBData()
 {
-	return NIL;
+	CDDBInfo	 cddbInfo;
+
+	if (currentConfig->enable_local_cddb)
+	{
+		CDDBLocal	 cddbLocal(currentConfig);
+
+		cddbInfo = QueryCDDB(cddbLocal);
+	}
+
+	if (cddbInfo == NIL && currentConfig->enable_remote_cddb)
+	{
+		CDDBRemote	 cddbRemote(currentConfig);
+
+		cddbInfo = QueryCDDB(cddbRemote);
+	}
+
+	return cddbInfo;
+}
+
+BonkEnc::CDDBInfo BonkEnc::BonkEnc::QueryCDDB(CDDB &cddb)
+{
+	cddb.ConnectToServer();
+	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
+
+	// query by disc ID of inserted disc
+	Int	 discID = cddb.ComputeDiscID();
+
+	if (discID == 0 || discID == -1) return False; // no disc in drive or read error
+
+	Int	 result = cddb.Query(discID);
+
+	String	 category;
+
+	if (result == QUERY_RESULT_NONE)
+	{
+		Console::OutputString(BonkEnc::i18n->TranslateString("No freedb entry for this disk."));
+	}
+	else if (result == QUERY_RESULT_SINGLE || result == QUERY_RESULT_MULTIPLE || result == QUERY_RESULT_FUZZY)
+	{
+		category = cddb.GetNthCategory(0);
+		discID	 = cddb.GetNthDiscID(0);
+	}
+
+	Bool		 readError = False;
+	CDDBInfo	 cddbInfo;
+
+	if (category != NIL && discID != 0)
+	{
+		if (!cddb.Read(category, discID, cddbInfo)) readError = True;
+	}
+
+	if (readError || result == QUERY_RESULT_ERROR)
+	{
+		Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
+	}
+
+	cddb.CloseConnection();
+
+	return cddbInfo;
 }
