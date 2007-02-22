@@ -257,6 +257,14 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 
 	driver->WriteData(outBuffer, bytes);
 
+	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v1 && currentConfig->enable_id3)
+	{
+		Buffer<unsigned char>	 id3Buffer;
+		Int			 size = RenderID3Tag(1, id3Buffer);
+
+		driver->WriteData(id3Buffer, size);
+	}
+
 	if (currentConfig->lame_vbrmode != vbr_off)
 	{
 		String	 tempFile = Utilities::GetTempDirectory().Append("xing.tmp");
@@ -290,14 +298,6 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 	}
 
 	ex_lame_close(lameFlags);
-
-	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v1 && currentConfig->enable_id3)
-	{
-		Buffer<unsigned char>	 id3Buffer;
-		Int			 size = RenderID3Tag(1, id3Buffer);
-
-		driver->WriteData(id3Buffer, size);
-	}
 
 	return true;
 }
