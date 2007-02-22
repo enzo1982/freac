@@ -110,7 +110,7 @@ namespace BonkEnc
 			Bool			 dontUpdateInfo;
 			Int			 encoder_activedrive;
 
-			Int			 totalSamples;
+			Int64			 totalSamples;
 			Float			 totalSamplesDone;
 
 			Int			 startTicks;
