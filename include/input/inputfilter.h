@@ -41,7 +41,7 @@ namespace BonkEnc
 			Bool		 ParseID3V2Tag(unsigned char *, Int, Track *);
 			Bool		 ParseID3V2Tag(const String &, Track *);
 
-			String		 GetID3CategoryName(Int);
+			const String	&GetID3CategoryName(Int);
 		public:
 			Int		 error;
 
