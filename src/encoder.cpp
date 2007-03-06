@@ -73,7 +73,8 @@ Void BonkEnc::BonkEnc::Encode()
 
 	overwriteAll = False;
  
-	if (currentConfig->enable_console) overwriteAll = True;
+	if (currentConfig->enable_console ||
+	    currentConfig->encodeToSingleFile) overwriteAll = True;
 
 	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
 	encoder_thread->Start();
@@ -311,7 +312,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			debug_out->OutputLine("Creating output filter...done.");
 		}
-		
+
 		Int64		 trackLength	= 0;
 		Int64		 position	= 0;
 		UnsignedLong	 samples_size	= 1024;
@@ -497,14 +498,14 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		if (stop_encoding) break;
 	}
 
-	delete zero_in;
-	delete zero_out;
-
 	if (currentConfig->encodeToSingleFile && nRemoved > 0)
 	{
 		delete f_out;
 		delete filter_out;
 	}
+
+	delete zero_in;
+	delete zero_out;
 
 	currentConfig->cdrip_activedrive = encoder_activedrive;
 

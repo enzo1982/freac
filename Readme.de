@@ -13,11 +13,12 @@ FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.1 (Februar 2007)
+	Version 1.0.1 (März 2007)
 
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
+		- Absturz beim Codieren in einzelne MP4-Datei behoben
 
 	Version 1.0 (Februar 2007)
 
