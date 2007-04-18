@@ -16,7 +16,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 {
 	int	 effrate;
 
-	if (currentConfig->lame_resample)	effrate = currentConfig->lame_resample;
+	if (currentConfig->lame_resample > 0)	effrate = currentConfig->lame_resample;
 	else					effrate = format->rate;
 
 	switch (effrate)
@@ -125,7 +125,8 @@ Bool BonkEnc::FilterOutLAME::Activate()
 			ex_lame_set_strict_ISO(lameFlags, currentConfig->lame_strict_iso);
 			ex_lame_set_padding_type(lameFlags, (Padding_type) currentConfig->lame_padding_type);
 
-			if (currentConfig->lame_resample) ex_lame_set_out_samplerate(lameFlags, currentConfig->lame_resample);
+			if (currentConfig->lame_resample == 0)	   ex_lame_set_out_samplerate(lameFlags, format->rate);
+			else if (currentConfig->lame_resample > 0) ex_lame_set_out_samplerate(lameFlags, currentConfig->lame_resample);
 
 			if (currentConfig->lame_vbrmode == vbr_off)
 			{

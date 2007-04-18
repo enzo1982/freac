@@ -488,6 +488,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cy = 0;
 
 	filtering_combo_resample= new ComboBox(pos, size);
+	filtering_combo_resample->AddEntry(BonkEnc::i18n->TranslateString("auto"));
 	filtering_combo_resample->AddEntry(BonkEnc::i18n->TranslateString("no resampling"));
 	filtering_combo_resample->AddEntry("8 kHz");
 	filtering_combo_resample->AddEntry("11.025 kHz");
@@ -499,15 +500,17 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	filtering_combo_resample->AddEntry("44.1 kHz");
 	filtering_combo_resample->AddEntry("48 kHz");
 
-	if (currentConfig->lame_resample == 8000)	filtering_combo_resample->SelectNthEntry(1);
-	else if (currentConfig->lame_resample == 11025)	filtering_combo_resample->SelectNthEntry(2);
-	else if (currentConfig->lame_resample == 12000)	filtering_combo_resample->SelectNthEntry(3);
-	else if (currentConfig->lame_resample == 16000)	filtering_combo_resample->SelectNthEntry(4);
-	else if (currentConfig->lame_resample == 22050)	filtering_combo_resample->SelectNthEntry(5);
-	else if (currentConfig->lame_resample == 24000)	filtering_combo_resample->SelectNthEntry(6);
-	else if (currentConfig->lame_resample == 32000)	filtering_combo_resample->SelectNthEntry(7);
-	else if (currentConfig->lame_resample == 44100)	filtering_combo_resample->SelectNthEntry(8);
-	else if (currentConfig->lame_resample == 48000)	filtering_combo_resample->SelectNthEntry(9);
+	if	(currentConfig->lame_resample == -1)	filtering_combo_resample->SelectNthEntry(0);
+	else if (currentConfig->lame_resample == 0)	filtering_combo_resample->SelectNthEntry(1);
+	else if (currentConfig->lame_resample == 8000)	filtering_combo_resample->SelectNthEntry(2);
+	else if (currentConfig->lame_resample == 11025)	filtering_combo_resample->SelectNthEntry(3);
+	else if (currentConfig->lame_resample == 12000)	filtering_combo_resample->SelectNthEntry(4);
+	else if (currentConfig->lame_resample == 16000)	filtering_combo_resample->SelectNthEntry(5);
+	else if (currentConfig->lame_resample == 22050)	filtering_combo_resample->SelectNthEntry(6);
+	else if (currentConfig->lame_resample == 24000)	filtering_combo_resample->SelectNthEntry(7);
+	else if (currentConfig->lame_resample == 32000)	filtering_combo_resample->SelectNthEntry(8);
+	else if (currentConfig->lame_resample == 44100)	filtering_combo_resample->SelectNthEntry(9);
+	else if (currentConfig->lame_resample == 48000)	filtering_combo_resample->SelectNthEntry(10);
 
 	pos.x = 153;
 	pos.y = 11;
@@ -875,33 +878,36 @@ Void BonkEnc::ConfigureLameEnc::OK()
 	switch (filtering_combo_resample->GetSelectedEntryNumber())
 	{
 		case 0:
-			currentConfig->lame_resample = 0;
+			currentConfig->lame_resample = -1;
 			break;
 		case 1:
-			currentConfig->lame_resample = 8000;
+			currentConfig->lame_resample = 0;
 			break;
 		case 2:
-			currentConfig->lame_resample = 11025;
+			currentConfig->lame_resample = 8000;
 			break;
 		case 3:
-			currentConfig->lame_resample = 12000;
+			currentConfig->lame_resample = 11025;
 			break;
 		case 4:
-			currentConfig->lame_resample = 16000;
+			currentConfig->lame_resample = 12000;
 			break;
 		case 5:
-			currentConfig->lame_resample = 22050;
+			currentConfig->lame_resample = 16000;
 			break;
 		case 6:
-			currentConfig->lame_resample = 24000;
+			currentConfig->lame_resample = 22050;
 			break;
 		case 7:
-			currentConfig->lame_resample = 32000;
+			currentConfig->lame_resample = 24000;
 			break;
 		case 8:
-			currentConfig->lame_resample = 44100;
+			currentConfig->lame_resample = 32000;
 			break;
 		case 9:
+			currentConfig->lame_resample = 44100;
+			break;
+		case 10:
 			currentConfig->lame_resample = 48000;
 			break;
 	}

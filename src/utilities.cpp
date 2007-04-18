@@ -40,10 +40,16 @@
 
 using namespace smooth::System;
 
+Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace)
+{
+	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);
+	else						Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
+}
+
 Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace)
 {
 	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-	else						Console::OutputString(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace).Append("\n"));
+	else						Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
 }
 
 BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile, Track *trackInfo)

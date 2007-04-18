@@ -216,7 +216,7 @@
     <entry id="206" string="Cannot open file:">不能打开文件:</entry>
     <entry id="207" string="Query CDDB database">查询CDDB数据库</entry>
     <entry id="208" string="Help">帮助</entry>
-    <entry id="209" string="index.html">index.html</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
     <entry id="210" string="Plug-ins">插件</entry>
     <entry id="211" string="Input plug-ins">输入插件</entry>
     <entry id="212" string="Output plug-ins">输出插件</entry>

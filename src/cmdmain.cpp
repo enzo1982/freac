@@ -12,6 +12,7 @@
 #include <smooth/args.h>
 #include <cmdmain.h>
 #include <joblist.h>
+#include <dllinterfaces.h>
 
 using namespace smooth::System;
 
@@ -60,6 +61,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	String		 pattern	= "<artist> - <title>";
 	String		 cdDrive	= "0";
 	String		 tracks		= "";
+	String		 timeout	= "120";
 
 	ScanForParameter("-e", &encoder);
 	ScanForParameter("-h", &helpenc);
@@ -68,17 +70,32 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	ScanForParameter("-p", &pattern);
 	ScanForParameter("-cd", &cdDrive);
 	ScanForParameter("-track", &tracks);
+	ScanForParameter("-t", &timeout);
 
 	ScanForFiles(&files);
-	TracksToFiles(tracks, &files);
+
+	currentConfig->cdrip_activedrive = cdDrive.ToInt();
+
+	if (currentConfig->cdrip_activedrive >= ex_CR_GetNumCDROM())
+	{
+		Console::OutputString(String("Warning: Drive #").Append(cdDrive).Append(" does not exist. Using first drive.\n"));
+
+		currentConfig->cdrip_activedrive = 0;
+	}
+
+	if (!TracksToFiles(tracks, &files))
+	{
+		Console::OutputString("Error: Invalid track(s) specified after -track.\n");
+
+		return;
+	}
 
 	Console::SetTitle(String("BonkEnc ").Append(BonkEnc::version));
 
 	if (files.GetNOfEntries() == 0 ||
 	    helpenc != NIL ||
 	    !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "FLAC" || encoder == "TVQ" || encoder == "WAVE" || encoder == "lame" || encoder == "vorbis" || encoder == "bonk" || encoder == "blade" || encoder == "faac" || encoder == "flac" || encoder == "tvq" || encoder == "wave") ||
-	    (files.GetNOfEntries() > 1 && outfile != "") ||
-	    (cdDrive.ToInt() >= currentConfig->cdrip_numdrives && currentConfig->cdrip_numdrives > 0))
+	    (files.GetNOfEntries() > 1 && outfile != ""))
 	{
 		ShowHelp(helpenc);
 
@@ -247,9 +264,10 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		currentConfig->enc_outdir = outdir;
 		currentConfig->enc_filePattern = pattern;
 
-		currentConfig->cdrip_activedrive = cdDrive.ToInt();
 		currentConfig->enable_auto_cddb = cddb;
 		currentConfig->enable_cddb_cache = True;
+		currentConfig->cdrip_locktray = False;
+		currentConfig->cdrip_timeout = timeout.ToInt();
 
 		currentConfig->encodeToSingleFile = False;
 		currentConfig->writeToInputDir = False;
@@ -259,6 +277,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		for (Int i = 0; i < files.GetNOfEntries(); i++)
 		{
 			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READONLY);
+			String		 currentFile = files.GetNth(i);
+
+			if (currentFile.StartsWith("/cda"))
+			{
+				currentFile = String("Audio CD ").Append(String::FromInt(currentConfig->cdrip_activedrive)).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
+			}
 
 			if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("/cda"))
 			{
@@ -284,41 +308,44 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			if ((extension == ".mp3" && !currentConfig->enable_lame) || (extension == ".ogg" && !currentConfig->enable_vorbis))
 			{
-				Console::OutputString(String("Cannot process file: ").Append(files.GetNth(i)).Append("\n"));
+				Console::OutputString(String("Cannot process file: ").Append(currentFile).Append("\n"));
 
 				broken = true;
 
 				continue;
 			}
 
-			if (!quiet) Console::OutputString(String("Processing file: ").Append(files.GetNth(i)).Append("..."));
-
 			joblist->AddTrackByFileName(files.GetNth(i), outfile);
 
-			Encode();
-
-			while (encoding)
+			if (joblist->GetNOfTracks() > 0)
 			{
-				MSG	 msg;
-				bool	 result;
+				if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
 
-				if (Setup::enableUnicode)	result = PeekMessageW(&msg, 0, 0, 0, PM_REMOVE);
-				else				result = PeekMessageA(&msg, 0, 0, 0, PM_REMOVE);
+				Encode();
 
-				if (result)
+				while (encoding)
 				{
-					TranslateMessage(&msg);
+					MSG	 msg;
+					bool	 result;
 
-					if (Setup::enableUnicode)	DispatchMessageW(&msg);
-					else				DispatchMessageA(&msg);
+					if (Setup::enableUnicode)	result = PeekMessageW(&msg, 0, 0, 0, PM_REMOVE);
+					else				result = PeekMessageA(&msg, 0, 0, 0, PM_REMOVE);
+
+					if (result)
+					{
+						TranslateMessage(&msg);
+
+						if (Setup::enableUnicode)	DispatchMessageW(&msg);
+						else				DispatchMessageA(&msg);
+					}
+
+					Sleep(10);
 				}
 
-				Sleep(10);
+				joblist->RemoveNthTrack(0);
+
+				if (!quiet) Console::OutputString("done.\n");
 			}
-
-			joblist->RemoveNthTrack(0);
-
-			if (!quiet) Console::OutputString("done.\n");
 		}
 	}
 
@@ -366,8 +393,27 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 	}
 }
 
-Void BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<String> *files)
+Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<String> *files)
 {
+	if (tracks == "all")
+	{
+		ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
+
+		ex_CR_ReadToc();
+
+		Int	 numTocEntries = ex_CR_GetNumTocEntries();
+
+		for (Int i = 1; i <= numTocEntries; i++) (*files).Add(String("/cda").Append(String::FromInt(i)));
+
+		return True;
+	}
+
+	for (Int i = 0; i < tracks.Length(); i++)
+	{
+		if ((tracks[i] >= 'a' && tracks[i] <= 'z') ||
+		    (tracks[i] >= 'A' && tracks[i] <= 'Z')) return False;
+	}
+
 	String	 rest = tracks;
 
 	while (rest.Length() > 0)
@@ -400,6 +446,8 @@ Void BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 			(*files).Add(String("/cda").Append(current));
 		}
 	}
+
+	return True;
 }
 
 Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
@@ -414,7 +462,8 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 		Console::OutputString("\t-o <outfile>\tSpecify output file name in single file mode\n");
 		Console::OutputString("\t-p <pattern>\tSpecify output file name pattern\n\n");
 		Console::OutputString("\t-cd <drive>\tSpecify active CD drive (0..n)\n");
-		Console::OutputString("\t-track <track>\tSpecify input track(s) to rip (e.g. 1-5,7,9)\n");
+		Console::OutputString("\t-track <track>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
+		Console::OutputString("\t-t <timeout>\tTimeout for CD track ripping (default is 120 seconds)\n");
 		Console::OutputString("\t-cddb\t\tEnable CDDB database lookup\n\n");
 		Console::OutputString("\t-quiet\t\tDo not print any messages\n\n");
 		Console::OutputString("<encoder> can be one of LAME, VORBIS, BONK, BLADE, FAAC, FLAC, TVQ or WAVE.\n\n");

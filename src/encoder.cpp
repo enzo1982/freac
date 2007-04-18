@@ -20,25 +20,10 @@
 
 #include <smooth/io/drivers/driver_zero.h>
 
-#include <input/filter-in-cdrip.h>
-#include <input/filter-in-wave.h>
-#include <input/filter-in-voc.h>
-#include <input/filter-in-aiff.h>
-#include <input/filter-in-au.h>
-#include <input/filter-in-lame.h>
-#include <input/filter-in-vorbis.h>
-#include <input/filter-in-bonk.h>
-#include <input/filter-in-flac.h>
+#include <input/inputfilter.h>
+#include <output/outputfilter.h>
 
-#include <output/filter-out-blade.h>
-#include <output/filter-out-bonk.h>
-#include <output/filter-out-faac.h>
-#include <output/filter-out-flac.h>
-#include <output/filter-out-lame.h>
-#include <output/filter-out-mp4.h>
-#include <output/filter-out-vorbis.h>
-#include <output/filter-out-tvq.h>
-#include <output/filter-out-wave.h>
+#include <input/filter-in-cdrip.h>
 
 #ifndef EWX_FORCEIFHUNG
 #define EWX_FORCEIFHUNG 16
@@ -164,7 +149,15 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo->artist.Length() > 0 ? singleTrackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo->title.Length() > 0 ? singleTrackInfo->title : i18n->TranslateString("unknown title")), Math::Round((Float) totalSamples / (singleTrackInfo->rate * singleTrackInfo->channels)));
 
 				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_OVERWRITE);
-				filter_out	= Utilities::CreateOutputFilter(encoder, singleTrackInfo);
+
+				if (f_out->GetLastError() != IO_ERROR_OK)
+				{
+					Utilities::ErrorMessage("Cannot create output file: %1", singleOutFile);
+
+					delete f_out;
+
+					break;
+				}
 
 				if (encoder == ENCODER_FAAC)
 				{
@@ -175,6 +168,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 						f_out = new OutStream(STREAM_DRIVER, zero_out);
 					}
 				}
+
+				filter_out	= Utilities::CreateOutputFilter(encoder, singleTrackInfo);
 
 				if (f_out->AddFilter(filter_out) == False)
 				{
@@ -262,10 +257,19 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		}
 		else
 		{
-			filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
-
 			f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
 			f_in->SetPackageSize(6144);
+
+			if (f_in->GetLastError() != IO_ERROR_OK)
+			{
+				Utilities::ErrorMessage("Cannot access input file: %1", in_filename);
+
+				delete f_in;
+
+				continue;
+			}
+
+			filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
 
 			if (filter_in == NIL) { delete f_in; continue; }
 
@@ -290,7 +294,18 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			debug_out->OutputLine("Creating output filter...");
 
 			f_out		= new OutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
-			filter_out	= Utilities::CreateOutputFilter(encoder, trackInfo);
+
+			if (f_out->GetLastError() != IO_ERROR_OK)
+			{
+				Utilities::ErrorMessage("Cannot create output file: %1", out_filename);
+
+				delete f_in;
+				delete filter_in;
+
+				delete f_out;
+
+				continue;
+			}
 
 			if (encoder == ENCODER_FAAC)
 			{
@@ -302,8 +317,13 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				}
 			}
 
+			filter_out	= Utilities::CreateOutputFilter(encoder, trackInfo);
+
 			if (f_out->AddFilter(filter_out) == False)
 			{
+				delete f_in;
+				delete filter_in;
+
 				delete f_out;
 				delete filter_out;
 
@@ -350,6 +370,13 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				position += step;
 
+				if (trackInfo->isCDTrack && currentConfig->cdrip_timeout > 0 && clock() - startTicks > currentConfig->cdrip_timeout * 1000)
+				{
+					Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(currentConfig->cdrip_timeout));
+
+					skip_track = True;
+				}
+
 				while (pause_encoding && !stop_encoding && !skip_track) Sleep(50);
 
 				if (stop_encoding || skip_track) break;
@@ -379,6 +406,13 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				}
 
 				position = filter_in->GetInBytes();
+
+				if (trackInfo->isCDTrack && currentConfig->cdrip_timeout > 0 && clock() - startTicks > currentConfig->cdrip_timeout * 1000)
+				{
+					Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(currentConfig->cdrip_timeout));
+
+					skip_track = True;
+				}
 
 				while (pause_encoding && !stop_encoding && !skip_track) Sleep(50);
 
@@ -828,16 +862,17 @@ Void BonkEnc::BonkEnc::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackIn
 
 Void BonkEnc::BonkEnc::InitProgressValues()
 {
-	if (currentConfig->enable_console) return;
-
 	lastPercent = 0;
 
 	startTicks = clock();
 	lastTicks = 0;
 
-	progress->SetValue(0);
-	edb_percent->SetText("0%");
-	edb_time->SetText("00:00");
+	if (!currentConfig->enable_console)
+	{
+		progress->SetValue(0);
+		edb_percent->SetText("0%");
+		edb_time->SetText("00:00");
+	}
 }
 
 Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition)

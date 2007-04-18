@@ -907,7 +907,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 {
 	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
 	{
-		Utilities::ErrorMessage(i18n->TranslateString("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog."));
+		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -1044,7 +1044,7 @@ Void BonkEnc::BonkEncGUI::SubmitCDDBData()
 {
 	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
 	{
-		Utilities::ErrorMessage(i18n->TranslateString("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog."));
+		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -1069,7 +1069,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 {
 	if (!currentConfig->enable_remote_cddb)
 	{
-		Utilities::ErrorMessage(i18n->TranslateString("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog."));
+		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -1085,7 +1085,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
 {
 	if (!currentConfig->enable_remote_cddb)
 	{
-		Utilities::ErrorMessage(i18n->TranslateString("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog."));
+		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -2139,7 +2139,7 @@ PopupMenu *BonkEnc::BonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)
 
 Void BonkEnc::BonkEncGUI::ShowHelp()
 {
-	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index.html")), NIL, NIL, 0);
+	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index_en.html")), NIL, NIL, 0);
 }
 
 Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()

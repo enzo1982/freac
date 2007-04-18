@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+  <title>Anfängeranleitung - BonkEnc-Benutzerhandbuch</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+  <!-- Hack to avoid flash of unstyled content in IE -->
+  <script> </script>
+</head>
+
+<body id="onecolumn">
+  <div id="container">
+    <div class="wrapper">
+      <div id="header">
+        <div class="wrapper">
+          <h1 id="page-title"><div id='g_title'>Anfängeranleitung - BonkEnc-Benutzerhandbuch</div></h1>
+          <div style="clear: both;"></div>
+          <p class="description"><div id='g_description'><p>Die Anfängeranleitung zum CD-Rippen mit BonkEnc</p></div></p>
+          <div style="clear: both"></div>
+        </div>
+      </div>
+      <!-- /editable --><!-- /wrapper --><!-- /header -->
+      <div id="main-content-oc">
+        <div class="wrapper">
+          <div class="content-item"><div id='g_body'><p style="clear: both; text-align: left;" class="separator">
+Laden Sie die neueste Version von BonkEnc von <a href="http://www.sourceforge.net/projects/bonkenc">SourceForge</a> oder
+von der <a href="http://www.bonkenc.org/">BonkEnc-Homepage</a> herunter. Installieren Sie das Programm und starten Sie es. Legen Sie nun
+eine Audio-CD in Ihr CD/DVD-Laufwerk ein. Die einzelnen Titel werden normalerweise automatisch in das Hauptfenster von BonkEnc geladen.
+Falls dies nicht geschieht, klicken Sie das Symbol "Audio-CD-Inhalt zur Liste hinzufügen" in der Toolbar an, um die Tracks zur Jobliste hinzuzufügen.</p><div style="text-align: left;"><img style="margin-left: 1em; margin-right: 1em;" src="images/joblist_plain.png"/></div>
+<p style="text-align: left;">Da wir die Titelinformationen nicht für jeden Track manuell eingeben möchten,
+können wir einfach die freedb-Datenbank im Internet abfragen. Die Titelinformationen werden dann automatisch ergänzt.
+Dazu klicken Sie einfach im Menü "Datenbank" auf den Eintrag "CDDB-Datenbank abfragen". Daraufhin sollte sich folgendes
+Fenster öffnen:<br>
+</p><p style="clear: both; text-align: left;" class="separator"><img style="margin-left: 1em; margin-right: 1em;" src="images/query_cddb.png"/></p><p style="text-align: left;">Das Programm übernimmt die Titelinformationen automatisch:</p>
+<div style="text-align: left;"><img style="margin-left: 1em; margin-right: 1em;" src="images/joblist_info.png"/></div>
+<p style="text-align: left;">
+</p>
+<div style="text-align: left;">
+</div>
+<p style="clear: both; text-align: left;" class="separator">Anschließend sollten wir die allgemeinen Programmeinstellungen anpassen. Wählen Sie den Eintrag "Allgemeine Einstellungen" aus dem Menü "Optionen".
+Daraufhin wird der folgende Dialog angezeigt:</p>
+<div style="text-align: left;">
+</div>
+<p style="clear: both; text-align: left;" class="separator"><img style="margin-left: 1em; margin-right: 1em;" src="images/config_settings.png"/></p>
+<div style="text-align: left;">
+Auf der ersten Seite kann der Codierer ausgewählt werden. BonkEnc verwendet
+standardmäßig den LAME MP3-Codierer, welchen wir
+auch in diesem Tutorial verwenden werden. Überprüfen Sie, ob die Option "'On-The-Fly' codieren" ausgewählt ist, und aktivieren Sie sie gegebenenfalls.
+Stellen Sie dann das Ausgabeverzeichnis auf das Verzeichnis ein, in dem die MP3-Dateien gespeichert werden sollen.<br>
+
+<br>
+
+Im Eingabefeld für die Dateinamensvorlage kann eingestellt werden, wie die Dateinamen
+formatiert werden sollen. Ich lege meine Dateien in Verzeichnissen mit dem Künstler- und
+Albumnamen ab und verwende als Dateinamen die Tracknummern und Titel. Die entsprechende
+Dateinamensvorlage lautet "<b>&lt;artist&gt; - &lt;album&gt;\&lt;track&gt; - &lt;title&gt;</b>".
+In diesem Fall werden die Dateinamen also folgendermaßen aussehen:<br>
+
+
+</div>
+<p style="text-align: center; clear: both;" class="separator"></p><p style="text-align: left;"><img style="margin-left: 1em; margin-right: 1em;" src="images/explorer.png"/><br>
+</p><p style="text-align: left;">Erfahrene Benutzer finden im Konfigurationsdialog noch viele weiter Einstellungsmöglichkeiten,
+die den persönlichen Vorlieben oder Anforderungen angepasst werden können.</p>
+<p style="text-align: left;">Wir sollten jetzt den LAME-Codierer konfigurieren, um qualitativ hochwertige MP3-Dateien zu erhalten.
+Wählen Sie dazu aus dem Menü "Optionen" den Eintrag "Ausgewählten Codierer konfigurieren".<br>
+</p><p style="text-align: center; clear: both;" class="separator"></p><p style="text-align: left;"><img style="margin-left: 1em; margin-right: 1em;" src="images/configure_encoder.png"/><br>
+</p><p style="text-align: left;">So gelangen Sie zu folgendem Dialog:<br>
+</p><p style="text-align: left;"><img style="margin-left: 1em; margin-right: 1em;" src="images/config_lame.png"/><br>
+</p><p style="text-align: left;">BonkEnc kennt einige verschiedene
+Voreinstellungen für den LAME-Codierer.
+Die Voreinstellungen stehen für verschiedene Einstellungen des
+Codierers, die MP3-Dateien mit unterschiedlicher Qualität erzeugen.
+Je höher die Voreinstellung (z.B. "Extrem"), desto mehr Speicherplatz
+werden die MP3-Dateien auf Ihrer Festplatte einnehmen, aber desto besser
+werden sie auch klingen. Ich bevorzuge eigene Einstellungen vorzunehmen und
+alle Optionen einzeln einzustellen. Sie sollten zunächst aber die Voreinstellung
+auf Standard setzen. Klicken Sie auf OK, um die Einstellungen zu speichern.</p>
+<p style="text-align: left;">Im Hauptfenster werden wir nun auswählen, welche
+Tracks gerippt und als MP3 codiert werden sollen. Links neben den einzelnen
+Einträgen der Jobliste befindet sich eine kleine Checkbox. Die Tracks, die in
+dieser Box ein X haben, werden gerippt und codiert. Wenn Sie nur einige Tracks
+rippen wollen, wählen Sie die übrigen mit einem Klick auf diese Box ab.</p>
+<p style="text-align: left;">Sie können jetzt den großen Play-Knopf anklicken und damit die Konvertierung starten.</p><p style="text-align: left;"><img style="margin-left: 1em; margin-right: 1em;" src="images/start_encoding.png"/><br>
+</p><p style="text-align: left;">In der unteren Hälfte des Fensters wird nun eine Fortschrittsleiste angezeigt:<br>
+</p><p style="text-align: center; clear: both;" class="separator"><img style="margin-left: 1em; margin-right: 1em;" src="images/encoding.png"/></p><p style="text-align: left;">Sobald ein Titel fertiggestellt ist, wird die Jobliste (dort wo alle Titel angezeigt werden) automatisch aktualisiert.</p><p style="text-align: left;">Herzlichen Göückwunsch! Sie haben soeben Ihre erste CD mit BonkEnc gerippt und codiert!
+</p><p style="text-align: left;"></p><div style="text-align: left;">
+</div>
+</div></div>
+          <div style="clear: both"></div>
+        </div>
+      </div>
+      <!-- /wrapper --><!-- /main-content -->
+      <div id="footer"><div class="wrapper">
+        <hr />
+        <p><div id='g_footer'><p>Copyright (C) 2006 Joseph Nahmias<br/>Copyright (C) 2007 The BonkEnc Project</p></div></p>
+        <div style="clear: both"></div>
+      </div></div>
+      <!-- /wrapper --><!-- /footer -->
+    </div>
+  </div>
+<!-- /wrapper --><!-- /container -->
+
+<div id="extraDiv1"><span></span></div><div id="extraDiv2"><span></span></div>
+<div id="extraDiv3"><span></span></div><div id="extraDiv4"><span></span></div>
+<div id="extraDiv5"><span></span></div><div id="extraDiv6"><span></span></div>
+
+</body>
+</html>

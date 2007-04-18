@@ -1,4 +1,4 @@
-BonkEnc Version 1.0.1
+BonkEnc Version 1.0.3
 
 BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
@@ -13,12 +13,28 @@ FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
+	Version 1.0.3 (April 2007)
+
+		- Bisher keine Änderungen
+
+	Version 1.0.2 (April 2007)
+
+		- Deutsche und italienische Anleitungen hinzugefügt
+		- Dänische, polnische und rumänische Übersetzung aktualisiert
+		- Timeout-Parameter zum Kommandozeilen-Codierer hinzugefügt
+		- Ungewolltes Downsampling beim Codieren von MP3s mit niedriger Bitrate behoben
+		- Nicht funktionierendes Kontextmenü der Jobliste korrigiert
+		- Verbesserungen beim Installer
+		- Fehler im Kommandozeilen-Codierer behoben
+		- Einige weitere Korrekturen
+
 	Version 1.0.1 (März 2007)
 
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
 		- Absturz beim Codieren in einzelne MP4-Datei behoben
+		- Viele Fehler im Kommandozeilen-Codierer behoben
 
 	Version 1.0 (Februar 2007)
 
@@ -295,7 +311,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v8.0
-		- smooth v0.8.69.3 (http://www.smooth-project.org/)
+		- smooth v0.8.69.4 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
@@ -345,7 +361,7 @@ Besonderen Dank
 			   Dmitry Gusakov (Russisch),
 			   Henryk Ning (Chinesisch, traditionell),
 			   Nimin (Chinesisch, vereinfacht),
-			   Wojtek Wasilewski (Polnisch),
+			   Krzysztof Konopacki (Polnisch),
 			   Peter Toth (Ungarisch),
 			   Andrij Iletschko (Ukrainisch),
 			   Wim Garreyn (Niederländisch),
@@ -361,7 +377,7 @@ Besonderen Dank
 			   Vincent Rateau (Esperanto),
 			   Murat Ozkan (Türkisch),
 			   Naglis Jonaitis (Litauisch),
-			   Laurentiu Florin Bubuianu (Rumänisch)
+			   Borca Alin (Rumänisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
@@ -373,5 +389,3 @@ Paul F. Harrisons Bonk Homepage: http://www.logarithmic.net/pfh/bonk
 
 robert.kausch@bonkenc.org,
 Robert Kausch
-
-ICQ#23891569
