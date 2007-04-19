@@ -216,7 +216,7 @@
     <entry id="206" string="Cannot open file:">Не могу открыть файл:</entry>
     <entry id="207" string="Query CDDB database">Запрос в базу CDDB</entry>
     <entry id="208" string="Help">Помощь</entry>
-    <entry id="209" string="index.html">index.html</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
     <entry id="210" string="Plug-ins">Плагины</entry>
     <entry id="211" string="Input plug-ins">На входе</entry>
     <entry id="212" string="Output plug-ins">На выходе</entry>

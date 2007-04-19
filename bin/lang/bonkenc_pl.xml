@@ -6,7 +6,7 @@
   <property name="language">Polish / Polski</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
-  <property name="author">Wojtek Wasilewski</property>
+  <property name="author">Krzysztof Konopacki</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -218,7 +218,7 @@
   <entry id="206" string="Cannot open file:">Nie można otworzyć pliku:</entry>
   <entry id="207" string="Query CDDB database">Zapytanie do bazy danych CDDB</entry>
   <entry id="208" string="Help">Pomoc</entry>
-  <entry id="209" string="index.html">index.html</entry>
+  <entry id="209" string="index_en.html">index.html</entry>
   <entry id="210" string="Plug-ins">Moduły rozszerzeń</entry>
   <entry id="211" string="Input plug-ins">Moduły wejściowe</entry>
   <entry id="212" string="Output plug-ins">Moduły wyjściowe</entry>
@@ -228,6 +228,7 @@
   <entry id="216" string="Stop">Zatrzymaj</entry>
   <entry id="217" string="Cannot play a file while encoding!">Nie można odtwarzać pliku podczas kompresji!</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Nie można rozpocząć konwersji podczas odtwarzania pliku!</entry>
+  <entry id="219" string="Enable remote CDDB database">Uaktywnij zdalna bazę CDDB</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Włącz ATH:</entry>
   <entry id="222" string="Use default setting">ustawienie domyślne</entry>
@@ -360,5 +361,38 @@
   <entry id="349" string="Allow overwriting input file">Zezwól na nadpisanie pliku wejściowego</entry>
   <entry id="350" string="Encode to single file">Konwertuj do jednego pliku</entry>
   <entry id="351" string="Encoder options">Ustawienia konwertera</entry>
+  <entry id="352" string="Skip">Pomiń</entry>
+  <entry id="353" string="Enable local CDDB database">Uaktywnij lokalna bazę CDDB</entry>
+  <entry id="354" string="CDDB directory:">Katalog bazy CDDB:</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">Wybierz folder dla bazy CDDB</entry>
+  <entry id="356" string="File already exists">Plik o tej nazwie już istnieje</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Plik wynikowy %1&#10;już istnieje! Czy chcesz go nadpisać?</entry>
+  <entry id="358" string="Overwrite all further files"></entry>
+  <entry id="359" string="Start ripping automatically">Rozpocznij Ripowanie automatycznie</entry>
+  <entry id="360" string="Submit to online database later">Wyślij do bazy online później</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Wsparcie CDDB jest wyłączone! Uaktywnij zdalną bądź lokalna bazę CDDB w opcjach konfiguracji.</entry>
+  <entry id="362" string="CDDB entries to submit:">Wpisy CDDB do wysłania:</entry>
+  <entry id="363" string="Show queued CDDB entries...">Wpisy CDDB w kolejce...</entry>
+  <entry id="364" string="Submit all">Wyślij wszystko</entry>
+  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Zdalna baza CDDB jest wyłączona! Uaktywnij zdalną bazę CDDB w opcjach konfiguracji.</entry>
+  <entry id="366" string="Category">Kategoria</entry>
+  <entry id="367" string="Close">Zamknij</entry>
+  <entry id="368" string="Automatization">Autoryzacja</entry>
+  <entry id="369" string="Query CDDB database later">Odpytaj bazę CDDB później</entry>
+  <entry id="370" string="Show queued CDDB queries...">Kolejka zapytań do bazy CDDB...</entry>
+  <entry id="371" string="CDDB queries">Zapytania do bazy CDDB</entry>
+  <entry id="372" string="Query">Zapytanie</entry>
+  <entry id="373" string="Query all">Wszystkie zapytania</entry>
+  <entry id="374" string="Query string">Zapytanie</entry>
+  <entry id="375" string="CDDB queries to perform:">Zapytania do bazy CDDB</entry>
+  <entry id="376" string="Would you like to perform this query again later?">Chcesz ponowić wysłanie tych zapytań później?</entry>
+  <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Dostęp do stacji CD został zablokowany.&#10;&#10;Skontaktuj się z administratorem systemu.&#10;celem uzyskania dostępu do stacji CD-ROM.</entry>
+  <entry id="378" string="CD information">Informacja o CD</entry>
+  <entry id="379" string="Read CD Text">Czytaj dane CD Text</entry>
+  <entry id="380" string="Read cdplayer.ini">Czytaj plik cdplayer.ini</entry>
+  <entry id="381" string="Apodization">Funkcja czasowa</entry>
+  <entry id="382" string="Apodization function(s):">Funkcja czasowa:</entry>
+  <entry id="383" string="You can specify multiple functions separated by semicolons.">Możesz podać kilka funkcji, oddzielając je średnikami.</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc może przeprowadzać automatyczne sprawdzanie&#10;uaktualnień programu podczas startu.&#10;&#10;Czy chcesz włączyć poszukiwanie aktualizacji podczas startu programu?</entry>
  </data>
 </LangFile>

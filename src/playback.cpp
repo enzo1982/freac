@@ -8,7 +8,7 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <main.h>
+#include <playback.h>
 #include <dllinterfaces.h>
 
 #include <joblist.h>
@@ -26,11 +26,21 @@
 #include <input/filter-in-bonk.h>
 #include <input/filter-in-flac.h>
 
-Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
+BonkEnc::Playback::Playback()
+{
+	playing = False;
+	play_thread = NIL;
+}
+
+BonkEnc::Playback::~Playback()
+{
+}
+
+Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 {
 	if (entry < 0) return;
 
-	if (encoding)
+	if (BonkEnc::currentConfig->appMain->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot play a file while encoding!");
 
@@ -39,14 +49,14 @@ Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 
 	if (playing && paused && player_entry == entry)
 	{
-		DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(0);
-
-		paused = False;
+		Resume();
 
 		return;
 	}
 
-	if (playing) StopPlayback();
+	if (playing) Stop();
+
+	joblist = iJoblist;
 
 	Font	 font = joblist->GetNthEntry(entry)->GetFont();
 
@@ -55,7 +65,7 @@ Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 	joblist->GetNthEntry(entry)->SetFont(font);
 
 	play_thread = new Thread();
-	play_thread->threadMain.Connect(&BonkEncGUI::PlayThread, this);
+	play_thread->threadMain.Connect(&Playback::PlayThread, this);
 
 	playing = True;
 	paused = False;
@@ -66,17 +76,12 @@ Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 	play_thread->Start();
 }
 
-Void BonkEnc::BonkEncGUI::PlaySelectedItem()
-{
-	PlayItem(joblist->GetSelectedEntryNumber());
-}
-
-Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
+Int BonkEnc::Playback::PlayThread(Thread *thread)
 {
 	String	 in_filename;
 	Track	*trackInfo;
 
-	player_activedrive = currentConfig->cdrip_activedrive;
+	player_activedrive = BonkEnc::currentConfig->cdrip_activedrive;
  
 	trackInfo = joblist->GetNthTrack(player_entry);
 
@@ -95,10 +100,10 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 
 	if (trackInfo->isCDTrack)
 	{
-		currentConfig->cdrip_activedrive = trackInfo->drive;
+		BonkEnc::currentConfig->cdrip_activedrive = trackInfo->drive;
 
 		f_in		= new InStream(STREAM_DRIVER, driver_in);
-		filter_in	= new FilterInCDRip(currentConfig, trackInfo);
+		filter_in	= new FilterInCDRip(BonkEnc::currentConfig, trackInfo);
 
 		((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
 
@@ -129,9 +134,9 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 		UnsignedInt	 samples_size = 1024;
 		Int64		 n_loops = (trackInfo->length + samples_size - 1) / samples_size;
 
-		player_plugin = currentConfig->output_plugin;
+		player_plugin = BonkEnc::currentConfig->output_plugin;
 
-		Out_Module	*out = DLLInterfaces::winamp_out_modules.GetNth(currentConfig->output_plugin);
+		Out_Module	*out = DLLInterfaces::winamp_out_modules.GetNth(BonkEnc::currentConfig->output_plugin);
 		Int		 latency = out->Open(trackInfo->rate, trackInfo->channels, 16, 0, 0);
 
 		if (latency >= 0 && trackInfo->length >= 0)
@@ -227,7 +232,7 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 		delete filter_in;
 	}
 
-	currentConfig->cdrip_activedrive = player_activedrive;
+	BonkEnc::currentConfig->cdrip_activedrive = player_activedrive;
 
 	Font	 font = joblist->GetNthEntry(player_entry)->GetFont();
 
@@ -240,17 +245,25 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 	return Success();
 }
 
-Void BonkEnc::BonkEncGUI::PausePlayback()
+Void BonkEnc::Playback::Pause()
 {
 	if (!playing) return;
 
-	if (paused) DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(0);
-	else	    DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(1);
+	DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(1);
 
-	paused = !paused;
+	paused = True;
 }
 
-Void BonkEnc::BonkEncGUI::StopPlayback()
+Void BonkEnc::Playback::Resume()
+{
+	if (!playing) return;
+
+	DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(0);
+
+	paused = False;
+}
+
+Void BonkEnc::Playback::Stop()
 {
 	if (!playing) return;
 
@@ -263,22 +276,16 @@ Void BonkEnc::BonkEncGUI::StopPlayback()
 	play_thread = NIL;
 }
 
-Void BonkEnc::BonkEncGUI::PlayPrevious()
+Void BonkEnc::Playback::Previous()
 {
 	if (!playing) return;
 
-	if (player_entry > 0) PlayItem(player_entry - 1);
+	if (player_entry > 0) Play(player_entry - 1, joblist);
 }
 
-Void BonkEnc::BonkEncGUI::PlayNext()
+Void BonkEnc::Playback::Next()
 {
 	if (!playing) return;
 
-	if (player_entry < joblist->GetNOfTracks() - 1) PlayItem(player_entry + 1);
-}
-
-Void BonkEnc::BonkEncGUI::OpenCDTray()
-{
-	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
- 	ex_CR_EjectCD(True);
+	if (player_entry < joblist->GetNOfTracks() - 1) Play(player_entry + 1, joblist);
 }

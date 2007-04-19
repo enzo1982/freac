@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,6 +13,7 @@
 
 #include <smooth.h>
 #include "bonkenc.h"
+#include "playback.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -83,6 +84,8 @@ namespace BonkEnc
 
 			Thread		*checkForUpdates;
 
+			Playback	*player;
+
 			Void		 Close();
 			Void		 About();
 			Void		 ConfigureEncoder();
@@ -104,8 +107,10 @@ namespace BonkEnc
 
 			Void		 SetEncoderText();
 
-			Void		 PlayItem(Int);
-			Int		 PlayThread(Thread *);
+			Void		 Encode();
+
+			Void		 PauseResumeEncoding();
+			Void		 StopEncoding();
 
 			String		 AdjustCaseFirstCapital(const String &);
 			String		 AdjustCaseWordsFirstCapital(const String &);
@@ -119,10 +124,8 @@ namespace BonkEnc
 			Void		 ResizeProc();
 
 			Void		 PlaySelectedItem();
-			Void		 PausePlayback();
+			Void		 PauseResumePlayback();
 			Void		 StopPlayback();
-			Void		 PlayPrevious();
-			Void		 PlayNext();
 			Void		 OpenCDTray();
 
 			Void		 QueryCDDB();
@@ -153,6 +156,14 @@ namespace BonkEnc
 
 			Void		 OnJoblistSelectTrack(Track *);
 			Void		 OnJoblistSelectNone();
+
+			Void		 OnEncoderStartEncoding();
+			Void		 OnEncoderFinishEncoding(Bool);
+
+			Void		 OnEncoderEncodeTrack(const Track *, Int);
+
+			Void		 OnEncoderTrackProgress(Int, Int);
+			Void		 OnEncoderTotalProgress(Int, Int);
 		public:
 					 BonkEncGUI();
 					~BonkEncGUI();

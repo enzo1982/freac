@@ -10,7 +10,7 @@
 
 #include <direct.h>
 
-#include <main.h>
+#include <encoder.h>
 #include <dllinterfaces.h>
 
 #include <cuesheet.h>
@@ -20,41 +20,35 @@
 
 #include <smooth/io/drivers/driver_zero.h>
 
+#include <input/inputfilter.h>
+#include <output/outputfilter.h>
+
 #include <input/filter-in-cdrip.h>
-#include <input/filter-in-wave.h>
-#include <input/filter-in-voc.h>
-#include <input/filter-in-aiff.h>
-#include <input/filter-in-au.h>
-#include <input/filter-in-lame.h>
-#include <input/filter-in-vorbis.h>
-#include <input/filter-in-bonk.h>
-#include <input/filter-in-flac.h>
 
-#include <output/filter-out-blade.h>
-#include <output/filter-out-bonk.h>
-#include <output/filter-out-faac.h>
-#include <output/filter-out-flac.h>
-#include <output/filter-out-lame.h>
-#include <output/filter-out-mp4.h>
-#include <output/filter-out-vorbis.h>
-#include <output/filter-out-tvq.h>
-#include <output/filter-out-wave.h>
+BonkEnc::Encoder::Encoder()
+{
+	encoding = False;
+	encoder_thread = NIL;
 
-#ifndef EWX_FORCEIFHUNG
-#define EWX_FORCEIFHUNG 16
-#endif
+	skip_track = False;
+	overwriteAll = False;
+}
 
-Void BonkEnc::BonkEnc::Encode()
+BonkEnc::Encoder::~Encoder()
+{
+}
+
+Void BonkEnc::Encoder::Encode(JobList *iJoblist)
 {
 	if (encoding) return;
 
-	if (playing)
+/*	if (BonkEnc::currentConfig->appMain->playing)
 	{
 		Utilities::ErrorMessage("Cannot start encoding while playing a file!");
 
 		return;
 	}
-
+*/
 	if (encoder_thread != NIL)
 	{
 		delete encoder_thread;
@@ -62,10 +56,10 @@ Void BonkEnc::BonkEnc::Encode()
 		encoder_thread = NIL;
 	}
 
-	debug_out->EnterMethod("BonkEnc::Encode()");
-
 	encoder_thread = new Thread();
-	encoder_thread->threadMain.Connect(&BonkEnc::Encoder, this);
+	encoder_thread->threadMain.Connect(&Encoder::EncoderThread, this);
+
+	joblist = iJoblist;
 
 	encoding = True;
 	pause_encoding = False;
@@ -73,30 +67,27 @@ Void BonkEnc::BonkEnc::Encode()
 
 	overwriteAll = False;
  
-	if (currentConfig->enable_console) overwriteAll = True;
+	if (BonkEnc::currentConfig->enable_console ||
+	    BonkEnc::currentConfig->encodeToSingleFile) overwriteAll = True;
 
 	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
 	encoder_thread->Start();
-
-	debug_out->LeaveMethod();
 }
 
-Int BonkEnc::BonkEnc::Encoder(Thread *thread)
+Int BonkEnc::Encoder::EncoderThread(Thread *thread)
 {
-	debug_out->EnterMethod("BonkEnc::Encoder(Thread *)");
-
 	String		 in_filename;
 	String		 out_filename;
 	String		 singleOutFile;
 	String		 playlist_filename;
 	Track		*trackInfo;
 
-	encoder_activedrive = currentConfig->cdrip_activedrive;
+	encoder_activedrive = BonkEnc::currentConfig->cdrip_activedrive;
 
 	Int		 num		= joblist->GetNOfTracks();
 	Int		 nRemoved	= 0;
 	Int		 step		= 1;
-	Int		 encoder	= currentConfig->encoder;
+	Int		 encoder	= BonkEnc::currentConfig->encoder;
 	Int64		 encodedSamples	= 0;
 	Playlist	 playlist;
 	CueSheet	 cueSheet;
@@ -106,44 +97,37 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	Driver		*zero_in	= new DriverZero();
 	Driver		*zero_out	= new DriverZero();
 
+	onStartEncoding.Emit();
+
 	joblist->SetFlags(LF_MULTICHECKBOX);
 
 	ComputeTotalNumberOfSamples();
-
-	if (!currentConfig->enable_console)
-	{
-		btn_skip->Activate();
-	}
 
 	for (Int i = 0; i < num; (step == 1) ? i++ : i)
 	{
 		if (!joblist->GetNthEntry(i - nRemoved)->IsMarked()) continue;
 
-		if (skip_track && !currentConfig->enc_onTheFly && step == 0)
+		if (skip_track && !BonkEnc::currentConfig->enc_onTheFly && step == 0)
 		{
 			step	= 1;
-			encoder	= currentConfig->encoder;
+			encoder	= BonkEnc::currentConfig->encoder;
 
 			continue;
 		}
-
-		debug_out->OutputLine("Encoding a file...");
 
 		trackInfo	= joblist->GetNthTrack(i - nRemoved);
 		in_filename	= trackInfo->origFilename;
 		skip_track	= False;
 
-		if (nRemoved == 0 && (currentConfig->enc_onTheFly || currentConfig->encoder == ENCODER_WAVE || step == 0))
+		if (nRemoved == 0 && (BonkEnc::currentConfig->enc_onTheFly || BonkEnc::currentConfig->encoder == ENCODER_WAVE || step == 0))
 		{
 			playlist_filename = GetPlaylistFileName(trackInfo);
 
-			if (currentConfig->encodeToSingleFile)
+			if (BonkEnc::currentConfig->encodeToSingleFile)
 			{
 				singleOutFile = GetSingleOutputFileName(trackInfo);
 
 				if (singleOutFile == NIL) break;
-
-				debug_out->OutputLine("Creating output filter...");
 
 				Track	*singleTrackInfo = new Track();
 
@@ -160,20 +144,30 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				singleTrackInfo->outfile	= singleOutFile;
 
-				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo->artist.Length() > 0 ? singleTrackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo->title.Length() > 0 ? singleTrackInfo->title : i18n->TranslateString("unknown title")), Math::Round((Float) totalSamples / (singleTrackInfo->rate * singleTrackInfo->channels)));
+				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo->artist.Length() > 0 ? singleTrackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo->title.Length() > 0 ? singleTrackInfo->title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) totalSamples / (singleTrackInfo->rate * singleTrackInfo->channels)));
 
 				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_OVERWRITE);
-				filter_out	= Utilities::CreateOutputFilter(encoder, singleTrackInfo);
+
+				if (f_out->GetLastError() != IO_ERROR_OK)
+				{
+					Utilities::ErrorMessage("Cannot create output file: %1", singleOutFile);
+
+					delete f_out;
+
+					break;
+				}
 
 				if (encoder == ENCODER_FAAC)
 				{
-					if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)
+					if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->faac_enable_mp4)
 					{
 						delete f_out;
 
 						f_out = new OutStream(STREAM_DRIVER, zero_out);
 					}
 				}
+
+				filter_out	= Utilities::CreateOutputFilter(encoder, singleTrackInfo);
 
 				if (f_out->AddFilter(filter_out) == False)
 				{
@@ -182,28 +176,24 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 					continue;
 				}
-
-				debug_out->OutputLine("Creating output filter...done.");
 			}
 		}
 
-		debug_out->OutputLine(String("Encoding from: ").Append(in_filename));
+		Int	 mode = ENCODER_MODE_ON_THE_FLY;
 
-		if (!currentConfig->enable_console)
+		if (!BonkEnc::currentConfig->enc_onTheFly && encoder != ENCODER_WAVE)
 		{
-			if (trackInfo->artist.Length() == 0 &&
-			    trackInfo->title.Length() == 0)	edb_filename->SetText(trackInfo->origFilename);
-			else					edb_filename->SetText(String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
-
-			if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE) edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
-			if (!currentConfig->enc_onTheFly && step == 0) edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
+			if	(step == 1) mode = ENCODER_MODE_DECODE;
+			else if (step == 0) mode = ENCODER_MODE_ENCODE;
 		}
+
+		onEncodeTrack.Emit(trackInfo, mode);
 
 		out_filename = GetOutputFileName(trackInfo);
 
-		if (!overwriteAll && File(out_filename).Exists() && !currentConfig->writeToInputDir && !(!currentConfig->enc_onTheFly && step == 0))
+		if (!overwriteAll && File(out_filename).Exists() && !BonkEnc::currentConfig->writeToInputDir && !(!BonkEnc::currentConfig->enc_onTheFly && step == 0))
 		{
-			MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
+			MessageDlg	*confirmation = new MessageDlg(String(BonkEnc::i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), BonkEnc::i18n->TranslateString("File already exists"), MB_YESNO, IDI_QUESTION, BonkEnc::i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
 			confirmation->ShowDialog();
 
@@ -223,7 +213,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		trackInfo->outfile = out_filename;
 
-		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE)
+		if (!BonkEnc::currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE)
 		{
 			step = 0;
 
@@ -231,29 +221,25 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			out_filename.Append(".wav");
 		}
-		else if (!currentConfig->enc_onTheFly && step == 0)
+		else if (!BonkEnc::currentConfig->enc_onTheFly && step == 0)
 		{
 			step = 1;
 
-			encoder = currentConfig->encoder;
+			encoder = BonkEnc::currentConfig->encoder;
 
 			in_filename = out_filename;
 			in_filename.Append(".wav");
 		}
 
-		debug_out->OutputLine(String("Encoding to: ").Append(out_filename));
-
 		InStream	*f_in;
 		InputFilter	*filter_in = NIL;
 
-		debug_out->OutputLine("Creating input filter...");
-
-		if (trackInfo->isCDTrack && (currentConfig->enc_onTheFly || step == 0 || encoder == ENCODER_WAVE))
+		if (trackInfo->isCDTrack && (BonkEnc::currentConfig->enc_onTheFly || step == 0 || encoder == ENCODER_WAVE))
 		{
-			currentConfig->cdrip_activedrive = trackInfo->drive;
+			BonkEnc::currentConfig->cdrip_activedrive = trackInfo->drive;
 
 			f_in		= new InStream(STREAM_DRIVER, zero_in);
-			filter_in	= new FilterInCDRip(currentConfig, trackInfo);
+			filter_in	= new FilterInCDRip(BonkEnc::currentConfig, trackInfo);
 
 			((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
 
@@ -261,14 +247,23 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		}
 		else
 		{
-			filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
-
 			f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
 			f_in->SetPackageSize(6144);
 
+			if (f_in->GetLastError() != IO_ERROR_OK)
+			{
+				Utilities::ErrorMessage("Cannot access input file: %1", in_filename);
+
+				delete f_in;
+
+				continue;
+			}
+
+			filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
+
 			if (filter_in == NIL) { delete f_in; continue; }
 
-			if (!currentConfig->enc_onTheFly && step == 1)
+			if (!BonkEnc::currentConfig->enc_onTheFly && step == 1)
 			{
 				Track	*nTrackInfo = filter_in->GetFileInfo(in_filename);
 
@@ -282,18 +277,25 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			f_in->AddFilter(filter_in);
 		}
 
-		debug_out->OutputLine("Creating input filter...done.");
-
-		if (!currentConfig->encodeToSingleFile)
+		if (!BonkEnc::currentConfig->encodeToSingleFile)
 		{
-			debug_out->OutputLine("Creating output filter...");
-
 			f_out		= new OutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
-			filter_out	= Utilities::CreateOutputFilter(encoder, trackInfo);
+
+			if (f_out->GetLastError() != IO_ERROR_OK)
+			{
+				Utilities::ErrorMessage("Cannot create output file: %1", out_filename);
+
+				delete f_in;
+				delete filter_in;
+
+				delete f_out;
+
+				continue;
+			}
 
 			if (encoder == ENCODER_FAAC)
 			{
-				if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)
+				if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->faac_enable_mp4)
 				{
 					delete f_out;
 
@@ -301,25 +303,26 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				}
 			}
 
+			filter_out	= Utilities::CreateOutputFilter(encoder, trackInfo);
+
 			if (f_out->AddFilter(filter_out) == False)
 			{
+				delete f_in;
+				delete filter_in;
+
 				delete f_out;
 				delete filter_out;
 
 				break;
 			}
-
-			debug_out->OutputLine("Creating output filter...done.");
 		}
-		
+
 		Int64		 trackLength	= 0;
 		Int64		 position	= 0;
 		UnsignedLong	 samples_size	= 1024;
 		Int64		 n_loops	= (trackInfo->length + samples_size - 1) / samples_size;
 
 		f_out->SetPackageSize(samples_size * (trackInfo->bits / 8) * trackInfo->channels);
-
-		debug_out->OutputLine("Entering encoder loop...");
 
 		InitProgressValues();
 
@@ -348,6 +351,13 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				}
 
 				position += step;
+
+				if (trackInfo->isCDTrack && BonkEnc::currentConfig->cdrip_timeout > 0 && clock() - startTicks > BonkEnc::currentConfig->cdrip_timeout * 1000)
+				{
+					Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(BonkEnc::currentConfig->cdrip_timeout));
+
+					skip_track = True;
+				}
 
 				while (pause_encoding && !stop_encoding && !skip_track) Sleep(50);
 
@@ -379,6 +389,13 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				position = filter_in->GetInBytes();
 
+				if (trackInfo->isCDTrack && BonkEnc::currentConfig->cdrip_timeout > 0 && clock() - startTicks > BonkEnc::currentConfig->cdrip_timeout * 1000)
+				{
+					Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(BonkEnc::currentConfig->cdrip_timeout));
+
+					skip_track = True;
+				}
+
 				while (pause_encoding && !stop_encoding && !skip_track) Sleep(50);
 
 				if (stop_encoding || skip_track) break;
@@ -389,14 +406,12 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		FinishProgressValues(trackInfo);
 
-		debug_out->OutputLine("Cleaning up...");
-
 		delete f_in;
 		delete filter_in;
 
 		encodedSamples += trackLength;
 
-		if (!currentConfig->encodeToSingleFile)
+		if (!BonkEnc::currentConfig->encodeToSingleFile)
 		{
 			delete f_out;
 			delete filter_out;
@@ -409,20 +424,20 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			if (f_size == 0 || skip_track || stop_encoding) File(out_filename).Delete();
 
-			if (!skip_track && (currentConfig->enc_onTheFly || step == 1 || encoder == ENCODER_WAVE))
+			if (!skip_track && (BonkEnc::currentConfig->enc_onTheFly || step == 1 || encoder == ENCODER_WAVE))
 			{
 				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
 
-				playlist.AddTrack(relativeFileName, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (trackInfo->rate * trackInfo->channels)));
-				cueSheet.AddTrack(relativeFileName, 0, trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
+				playlist.AddTrack(relativeFileName, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (trackInfo->rate * trackInfo->channels)));
+				cueSheet.AddTrack(relativeFileName, 0, trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : BonkEnc::i18n->TranslateString("unknown album"));
 			}
 		}
 		else if (!skip_track)
 		{
-			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (trackInfo->rate * trackInfo->channels) * 75), trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
+			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (trackInfo->rate * trackInfo->channels) * 75), trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : BonkEnc::i18n->TranslateString("unknown album"));
 		}
 
-		if (trackInfo->isCDTrack && currentConfig->cdrip_autoEject && step == 1)
+		if (trackInfo->isCDTrack && BonkEnc::currentConfig->cdrip_autoEject && step == 1)
 		{
 			Bool	 ejectDisk = True;
 
@@ -436,7 +451,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			if (ejectDisk) ex_CR_EjectCD(True);
 		}
 
-		if (!currentConfig->enable_console && !stop_encoding && !skip_track && step == 1)
+		if (!BonkEnc::currentConfig->enable_console && !stop_encoding && !skip_track && step == 1)
 		{
 			Track	*entry = joblist->GetNthTrack(i - nRemoved);
 
@@ -444,7 +459,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			{
 				if (entry == joblist->GetSelectedTrack())
 				{
-					dontUpdateInfo = True;
+/*					dontUpdateInfo = True;
 
 					info_edit_artist->SetText("");
 					info_edit_title->SetText("");
@@ -461,7 +476,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 					info_edit_genre->Deactivate();
 
 					dontUpdateInfo = False;
-				}
+*/				}
 			}
 
 			joblist->RemoveNthTrack(i - nRemoved);
@@ -473,14 +488,14 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			trackInfo->outfile = NIL;
 		}
 
-		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && !currentConfig->enc_keepWaves)								File(in_filename).Delete();
-		if (currentConfig->deleteAfterEncoding && !stop_encoding && !skip_track && ((currentConfig->enc_onTheFly && step == 1) || (!currentConfig->enc_onTheFly && step == 0))) File(in_filename).Delete();
+		if (!BonkEnc::currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && !BonkEnc::currentConfig->enc_keepWaves)								File(in_filename).Delete();
+		if (BonkEnc::currentConfig->deleteAfterEncoding && !stop_encoding && !skip_track && ((BonkEnc::currentConfig->enc_onTheFly && step == 1) || (!BonkEnc::currentConfig->enc_onTheFly && step == 0))) File(in_filename).Delete();
 
-		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
+		if (!BonkEnc::currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
 
 		if (out_filename == String(in_filename).Append(".temp"))
 		{
-			if (!currentConfig->writeToInputDir || currentConfig->allowOverwrite || !File(in_filename).Exists())
+			if (!BonkEnc::currentConfig->writeToInputDir || BonkEnc::currentConfig->allowOverwrite || !File(in_filename).Exists())
 			{
 				File(in_filename).Delete();
 				File(out_filename).Move(in_filename);
@@ -492,64 +507,52 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			}
 		}
 
-		debug_out->OutputLine("Cleaning up...OK.");
-
 		if (stop_encoding) break;
 	}
 
-	delete zero_in;
-	delete zero_out;
-
-	if (currentConfig->encodeToSingleFile && nRemoved > 0)
+	if (BonkEnc::currentConfig->encodeToSingleFile && nRemoved > 0)
 	{
 		delete f_out;
 		delete filter_out;
 	}
 
-	currentConfig->cdrip_activedrive = encoder_activedrive;
+	delete zero_in;
+	delete zero_out;
 
-	if (!currentConfig->enable_console)
+	BonkEnc::currentConfig->cdrip_activedrive = encoder_activedrive;
+
+	joblist->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
+
+	if (!stop_encoding && nRemoved > 0)
 	{
-		edb_filename->SetText(i18n->TranslateString("none"));
-		edb_percent->SetText("0%");
-		progress->SetValue(0);
-		progress_total->SetValue(0);
-		edb_time->SetText("00:00");
-		btn_skip->Deactivate();
+		if (BonkEnc::currentConfig->createPlaylist) playlist.Save(String(playlist_filename).Append(".m3u"));
+		if (BonkEnc::currentConfig->createCueSheet) cueSheet.Save(String(playlist_filename).Append(".cue"));
+
+		BonkEnc::currentConfig->deleteAfterEncoding = False;
 	}
 
 	encoding = false;
 
-	if (!stop_encoding && nRemoved > 0)
-	{
-		if (currentConfig->createPlaylist) playlist.Save(String(playlist_filename).Append(".m3u"));
-		if (currentConfig->createCueSheet) cueSheet.Save(String(playlist_filename).Append(".cue"));
-
-		currentConfig->deleteAfterEncoding = False;
-
-		if (currentConfig->shutdownAfterEncoding)
-		{
-			Utilities::GainShutdownPrivilege();
-
-			ExitWindowsEx(EWX_POWEROFF | EWX_FORCEIFHUNG, 0);
-		}
-	}
-
-	joblist->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
-
-	debug_out->LeaveMethod();
+	onFinishEncoding.Emit(!stop_encoding && nRemoved > 0);
 
 	return Success();
 }
 
-Void BonkEnc::BonkEnc::PauseEncoding()
+Void BonkEnc::Encoder::Pause()
 {
 	if (!encoding) return;
 
-	pause_encoding = !pause_encoding;
+	pause_encoding = True;
 }
 
-Void BonkEnc::BonkEnc::StopEncoding()
+Void BonkEnc::Encoder::Resume()
+{
+	if (!encoding) return;
+
+	pause_encoding = False;
+}
+
+Void BonkEnc::Encoder::Stop()
 {
 	if (!encoding) return;
 
@@ -562,21 +565,21 @@ Void BonkEnc::BonkEnc::StopEncoding()
 	encoder_thread = NIL;
 }
 
-String BonkEnc::BonkEnc::GetPlaylistFileName(Track *trackInfo)
+String BonkEnc::Encoder::GetPlaylistFileName(Track *trackInfo)
 {
-	if (currentConfig->enable_console) return NIL;
+	if (BonkEnc::currentConfig->enable_console) return NIL;
 
-	String	 playlistOutputDir = (currentConfig->playlist_useEncOutdir ? currentConfig->enc_outdir : currentConfig->playlist_outdir);
+	String	 playlistOutputDir = (BonkEnc::currentConfig->playlist_useEncOutdir ? BonkEnc::currentConfig->enc_outdir : BonkEnc::currentConfig->playlist_outdir);
 	String	 playlistFileName = playlistOutputDir;
 
 	if (trackInfo->artist != NIL || trackInfo->album != NIL)
 	{
-		String	 shortOutFileName = currentConfig->playlist_filePattern;
+		String	 shortOutFileName = BonkEnc::currentConfig->playlist_filePattern;
 
-		shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), True));
-		shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"), True));
-		shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre"), True));
-		shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : i18n->TranslateString("unknown year"), True));
+		shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist"), True));
+		shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : BonkEnc::i18n->TranslateString("unknown album"), True));
+		shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : BonkEnc::i18n->TranslateString("unknown genre"), True));
+		shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : BonkEnc::i18n->TranslateString("unknown year"), True));
 
 		playlistFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
 		playlistFileName = Utilities::CreateDirectoryForFile(playlistFileName);
@@ -587,13 +590,13 @@ String BonkEnc::BonkEnc::GetPlaylistFileName(Track *trackInfo)
 	}
 	else
 	{
-		playlistFileName.Append(Utilities::ReplaceIncompatibleChars(i18n->TranslateString("unknown playlist"), True));
+		playlistFileName.Append(Utilities::ReplaceIncompatibleChars(BonkEnc::i18n->TranslateString("unknown playlist"), True));
 	}
 
 	return playlistFileName;
 }
 
-String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const String &baseFileName)
+String BonkEnc::Encoder::GetRelativeFileName(const String &trackFileName, const String &baseFileName)
 {
 	Int	 equalBytes	   = 0;
 	Int	 furtherComponents = 0;
@@ -627,7 +630,7 @@ String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const 
 	return relativeFileName;
 }
 
-String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
+String BonkEnc::Encoder::GetOutputFileName(Track *trackInfo)
 {
 	String		 outputFileName;
 
@@ -651,7 +654,7 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 
 	inFileDirectory[lastBs + 1] = 0;
 
-	if (currentConfig->writeToInputDir && !trackInfo->isCDTrack)
+	if (BonkEnc::currentConfig->writeToInputDir && !trackInfo->isCDTrack)
 	{
 		String		 file = String(inFileDirectory).Append(String::FromInt(clock())).Append(".temp");
 		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_OVERWRITE);
@@ -666,21 +669,21 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 	if (trackInfo->outfile == NIL)
 	{
 		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
-		else		     outputFileName.Copy(currentConfig->enc_outdir);
+		else		     outputFileName.Copy(BonkEnc::currentConfig->enc_outdir);
 
-		if ((trackInfo->artist != NIL && currentConfig->enc_filePattern.Find("<artist>")   >= 0) ||
-		    (trackInfo->title  != NIL && currentConfig->enc_filePattern.Find("<title>")	   >= 0) ||
-		    (trackInfo->track  != -1  && currentConfig->enc_filePattern.Find("<track>")	   >= 0) ||
-		    (				 currentConfig->enc_filePattern.Find("<filename>") >= 0))
+		if ((trackInfo->artist != NIL && BonkEnc::currentConfig->enc_filePattern.Find("<artist>")   >= 0) ||
+		    (trackInfo->title  != NIL && BonkEnc::currentConfig->enc_filePattern.Find("<title>")	   >= 0) ||
+		    (trackInfo->track  != -1  && BonkEnc::currentConfig->enc_filePattern.Find("<track>")	   >= 0) ||
+		    (				 BonkEnc::currentConfig->enc_filePattern.Find("<filename>") >= 0))
 		{
-			String	 shortOutFileName = currentConfig->enc_filePattern;
+			String	 shortOutFileName = BonkEnc::currentConfig->enc_filePattern;
 
-			shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), True));
-			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), True));
-			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"), True));
-			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre"), True));
+			shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist"), True));
+			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::i18n->TranslateString("unknown title"), True));
+			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : BonkEnc::i18n->TranslateString("unknown album"), True));
+			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : BonkEnc::i18n->TranslateString("unknown genre"), True));
 			shortOutFileName.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
-			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : i18n->TranslateString("unknown year"), True));
+			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : BonkEnc::i18n->TranslateString("unknown year"), True));
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
 
 			outputFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
@@ -699,17 +702,17 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 			outputFileName.Append(shortInFileName);
 		}
 
-		if (currentConfig->encoder == ENCODER_BONKENC)		outputFileName.Append(".bonk");
-		else if (currentConfig->encoder == ENCODER_BLADEENC)	outputFileName.Append(".mp3");
-		else if (currentConfig->encoder == ENCODER_LAMEENC)	outputFileName.Append(".mp3");
-		else if (currentConfig->encoder == ENCODER_VORBISENC)	outputFileName.Append(".ogg");
-		else if (currentConfig->encoder == ENCODER_FLAC)	outputFileName.Append(".flac");
-		else if (currentConfig->encoder == ENCODER_TVQ)		outputFileName.Append(".vqf");
-		else if (currentConfig->encoder == ENCODER_WAVE)	outputFileName.Append(".wav");
+		if (BonkEnc::currentConfig->encoder == ENCODER_BONKENC)		outputFileName.Append(".bonk");
+		else if (BonkEnc::currentConfig->encoder == ENCODER_BLADEENC)	outputFileName.Append(".mp3");
+		else if (BonkEnc::currentConfig->encoder == ENCODER_LAMEENC)	outputFileName.Append(".mp3");
+		else if (BonkEnc::currentConfig->encoder == ENCODER_VORBISENC)	outputFileName.Append(".ogg");
+		else if (BonkEnc::currentConfig->encoder == ENCODER_FLAC)	outputFileName.Append(".flac");
+		else if (BonkEnc::currentConfig->encoder == ENCODER_TVQ)		outputFileName.Append(".vqf");
+		else if (BonkEnc::currentConfig->encoder == ENCODER_WAVE)	outputFileName.Append(".wav");
 
-		if (currentConfig->encoder == ENCODER_FAAC)
+		if (BonkEnc::currentConfig->encoder == ENCODER_FAAC)
 		{
-			if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4) outputFileName.Append(".m4a");
+			if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->faac_enable_mp4) outputFileName.Append(".m4a");
 			else								 outputFileName.Append(".aac");
 		}
 	}
@@ -721,51 +724,51 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 	return outputFileName;
 }
 
-String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
+String BonkEnc::Encoder::GetSingleOutputFileName(Track *trackInfo)
 {
-	if (currentConfig->enable_console) return NIL;
+	if (BonkEnc::currentConfig->enable_console) return NIL;
 
 	String		 singleOutputFileName;
 	String		 defaultExtension;
 	FileSelection	*dialog = new FileSelection();
 
-	dialog->SetParentWindow(mainWnd);
+//	dialog->SetParentWindow(mainWnd);
 	dialog->SetMode(SFM_SAVE);
 	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
 
-	if (currentConfig->encoder == ENCODER_BONKENC)
+	if (BonkEnc::currentConfig->encoder == ENCODER_BONKENC)
 	{
 		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
 		defaultExtension = "bonk";
 	}
-	else if (currentConfig->encoder == ENCODER_BLADEENC || currentConfig->encoder == ENCODER_LAMEENC)
+	else if (BonkEnc::currentConfig->encoder == ENCODER_BLADEENC || BonkEnc::currentConfig->encoder == ENCODER_LAMEENC)
 	{
 		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP3 Files")).Append(" (*.mp3)"), "*.mp3");
 		defaultExtension = "mp3";
 	}
-	else if (currentConfig->encoder == ENCODER_VORBISENC)
+	else if (BonkEnc::currentConfig->encoder == ENCODER_VORBISENC)
 	{
 		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
 		defaultExtension = "ogg";
 	}
-	else if (currentConfig->encoder == ENCODER_FLAC)
+	else if (BonkEnc::currentConfig->encoder == ENCODER_FLAC)
 	{
 		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
 		defaultExtension = "flac";
 	}
-	else if (currentConfig->encoder == ENCODER_TVQ)
+	else if (BonkEnc::currentConfig->encoder == ENCODER_TVQ)
 	{
 		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("VQF Files")).Append(" (*.vqf)"), "*.vqf");
 		defaultExtension = "vqf";
 	}
-	else if (currentConfig->encoder == ENCODER_WAVE)
+	else if (BonkEnc::currentConfig->encoder == ENCODER_WAVE)
 	{
 		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
 		defaultExtension = "wav";
 	}
-	else if (currentConfig->encoder == ENCODER_FAAC)
+	else if (BonkEnc::currentConfig->encoder == ENCODER_FAAC)
 	{
-		if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)
+		if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->faac_enable_mp4)
 		{
 			dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
 			defaultExtension = "m4a";
@@ -780,7 +783,7 @@ String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
 	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
 
 	dialog->SetDefaultExtension(defaultExtension);
-	dialog->SetFileName(String(Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), True)).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
+	dialog->SetFileName(String(Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist"), True)).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : BonkEnc::i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
 
 	if (dialog->ShowDialog() == Success()) singleOutputFileName = dialog->GetFileName();
 
@@ -789,9 +792,9 @@ String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
 	return singleOutputFileName;
 }
 
-Void BonkEnc::BonkEnc::ComputeTotalNumberOfSamples()
+Void BonkEnc::Encoder::ComputeTotalNumberOfSamples()
 {
-	if (currentConfig->enable_console) return;
+	if (BonkEnc::currentConfig->enable_console) return;
 
 	totalSamples = 0;
 	totalSamplesDone = 0;
@@ -807,14 +810,12 @@ Void BonkEnc::BonkEnc::ComputeTotalNumberOfSamples()
 		else					totalSamples += (240 * trackInfo->rate * trackInfo->channels);
 	}
 
-	if (!currentConfig->enc_onTheFly && currentConfig->encoder != ENCODER_WAVE) totalSamples *= 2;
-
-	progress_total->SetValue(0);
+	if (!BonkEnc::currentConfig->enc_onTheFly && BonkEnc::currentConfig->encoder != ENCODER_WAVE) totalSamples *= 2;
 }
 
-Void BonkEnc::BonkEnc::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackInfo)
+Void BonkEnc::Encoder::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackInfo)
 {
-	if (currentConfig->enable_console) return;
+	if (BonkEnc::currentConfig->enable_console) return;
 
 	if (trackInfo->length >= 0)		totalSamples -= 2 * trackInfo->length;
 	else if (trackInfo->approxLength >= 0)	totalSamples -= 2 * trackInfo->approxLength;
@@ -825,79 +826,42 @@ Void BonkEnc::BonkEnc::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackIn
 	trackInfo->length = nTrackInfo->length;
 }
 
-Void BonkEnc::BonkEnc::InitProgressValues()
+Void BonkEnc::Encoder::InitProgressValues()
 {
-	if (currentConfig->enable_console) return;
-
-	lastPercent = 0;
-
 	startTicks = clock();
-	lastTicks = 0;
-
-	progress->SetValue(0);
-	edb_percent->SetText("0%");
-	edb_time->SetText("00:00");
 }
 
-Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition)
+Void BonkEnc::Encoder::UpdateProgressValues(Track *trackInfo, Int samplePosition)
 {
-	if (currentConfig->enable_console) return;
+	if (BonkEnc::currentConfig->enable_console) return;
 
 	Int	 ticks = clock() - startTicks;
 
+	Int	 trackProgress = 0;
+	Int	 totalProgress = 0;
+
 	if (trackInfo->length >= 0)
 	{
-		progress_total->SetValue((Int) (totalSamplesDone + (samplePosition * (trackInfo->length * 100.0 / totalSamples) / trackInfo->length) * 10.0));
-		progress->SetValue((Int) ((samplePosition * 100.0 / trackInfo->length) * 10.0));
-
-		if ((Int) (samplePosition * 100.0 / trackInfo->length) != lastPercent)
-		{
-			lastPercent = (Int) (samplePosition * 100.0 / trackInfo->length);
-
-			edb_percent->SetText(String::FromInt(lastPercent).Append("%"));
-		}
+		trackProgress = Math::Round((samplePosition * 100.0 / trackInfo->length) * 10.0);
+		totalProgress = Math::Round(totalSamplesDone + (samplePosition * (trackInfo->length * 100.0 / totalSamples) / trackInfo->length) * 10.0);
 
 		ticks = (Int) (ticks * ((1000.0 - ((samplePosition * 100.0 / trackInfo->length) * 10.0)) / ((samplePosition * 100.0 / trackInfo->length) * 10.0))) / 1000 + 1;
 	}
 	else if (trackInfo->length == -1)
 	{
-		progress_total->SetValue((Int) (totalSamplesDone + (samplePosition * ((trackInfo->approxLength >= 0 ? trackInfo->approxLength : 240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) / trackInfo->fileSize) * 10.0));
-		progress->SetValue((Int) ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0));
-
-		if ((Int) (samplePosition * 100.0 / trackInfo->fileSize) != lastPercent)
-		{
-			lastPercent = (Int) (samplePosition * 100.0 / trackInfo->fileSize);
-
-			edb_percent->SetText(String::FromInt(lastPercent).Append("%"));
-		}
+		trackProgress = Math::Round((samplePosition * 100.0 / trackInfo->fileSize) * 10.0);
+		totalProgress = Math::Round(totalSamplesDone + (samplePosition * ((trackInfo->approxLength >= 0 ? trackInfo->approxLength : 240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) / trackInfo->fileSize) * 10.0);
 
 		ticks = (Int) (ticks * ((1000.0 - ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0)) / ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0))) / 1000 + 1;
 	}
 
-	if (ticks != lastTicks)
-	{
-		lastTicks = ticks;
-
-		String	 buf = String::FromInt(ticks / 60);
-		String	 txt = "0";
-
-		if (buf.Length() == 1)	txt.Append(buf);
-		else			txt.Copy(buf);
-
-		txt.Append(":");
-
-		buf = String::FromInt(ticks % 60);
-
-		if (buf.Length() == 1)	txt.Append(String("0").Append(buf));
-		else			txt.Append(buf);
-
-		edb_time->SetText(txt);
-	}
+	onTrackProgress.Emit(trackProgress, ticks);
+	onTotalProgress.Emit(totalProgress, 0);
 }
 
-Void BonkEnc::BonkEnc::FinishProgressValues(Track *trackInfo)
+Void BonkEnc::Encoder::FinishProgressValues(Track *trackInfo)
 {
-	if (currentConfig->enable_console) return;
+	if (BonkEnc::currentConfig->enable_console) return;
 
 	if (trackInfo->length >= 0)		totalSamplesDone += ((trackInfo->length * 100.0 / totalSamples) * 10.0);
 	else if (trackInfo->approxLength >= 0)	totalSamplesDone += ((trackInfo->approxLength * 100.0 / totalSamples) * 10.0);

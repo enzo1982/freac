@@ -56,50 +56,56 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 
 	if (document->LoadFile(String(config->configDir).Append("cddb\\submits.xml")) == Success())
 	{
-		XML::Node	*root = document->GetRootNode();
-
-		if (root != NIL)
-		{
-			for (Int i = 0; i < root->GetNOfNodes(); i++)
-			{
-				XML::Node	*node = root->GetNthNode(i);
-
-				if (node->GetName() == "submit")
-				{
-					InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb\\").Append(node->GetAttributeByName("category")->GetContent()).Append("\\").Append(node->GetContent()), IS_READONLY);
-
-					if (in->Size() > 0)
-					{
-						String	 result = in->InputString(in->Size());
-						CDDBInfo cddbInfo;
-
-						ParseCDDBRecord(result, cddbInfo);
-
-						cddbInfo.category = node->GetAttributeByName("category")->GetContent();
-
-						for (Int i = 0; i < submits.GetNOfEntries(); i++)
-						{
-							if (submits.GetNth(i) == cddbInfo)
-							{
-								submits.Remove(submits.GetNthIndex(i));
-
-								break;
-							}
-						}
-
-						submits.Add(cddbInfo);
-					}
-
-					delete in;
-				}
-			}
-		}
+		ReadEntriesXML(document);
 	}
 
 	delete document;
 
 	String::SetInputFormat(inputFormat);
 	String::SetOutputFormat(outputFormat);
+
+	return True;
+}
+
+Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
+{
+	XML::Node	*root = document->GetRootNode();
+
+	if (root == NIL) return False;
+
+	for (Int i = 0; i < root->GetNOfNodes(); i++)
+	{
+		XML::Node	*node = root->GetNthNode(i);
+
+		if (node->GetName() == "submit")
+		{
+			InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb\\").Append(node->GetAttributeByName("category")->GetContent()).Append("\\").Append(node->GetContent()), IS_READONLY);
+
+			if (in->Size() > 0)
+			{
+				String	 result = in->InputString(in->Size());
+				CDDBInfo cddbInfo;
+
+				ParseCDDBRecord(result, cddbInfo);
+
+				cddbInfo.category = node->GetAttributeByName("category")->GetContent();
+
+				for (Int i = 0; i < submits.GetNOfEntries(); i++)
+				{
+					if (submits.GetNth(i) == cddbInfo)
+					{
+						submits.Remove(submits.GetNthIndex(i));
+
+						break;
+					}
+				}
+
+				submits.Add(cddbInfo);
+			}
+
+			delete in;
+		}
+	}
 
 	return True;
 }

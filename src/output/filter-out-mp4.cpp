@@ -192,7 +192,7 @@ String BonkEnc::FilterOutMP4::GetTempFile(const String &oFileName)
 
 	if (rVal == oFileName) return rVal;
 
-	String	 tempDir = Utilities::GetTempDirectory();
+	String	 tempDir = S::System::System::GetTempDirectory();
 
 	for (Int j = lastBs + 1; j < rVal.Length(); j++)
 	{

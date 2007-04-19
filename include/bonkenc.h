@@ -15,6 +15,7 @@
 
 #include "config.h"
 #include "track.h"
+#include "encoder.h"
 #include "debug.h"
 #include "cddb/cddb.h"
 #include "cddb/cddbinfo.h"
@@ -27,6 +28,7 @@ using namespace smooth::Threads;
 namespace BonkEnc
 {
 	class JobList;
+	class Encoder;
 
 	class InputFilter;
 };
@@ -96,46 +98,11 @@ namespace BonkEnc
 			Progressbar		*progress;
 			Progressbar		*progress_total;
 
-			Thread			*encoder_thread;
-			Bool			 pause_encoding;
-			Bool			 stop_encoding;
-			Bool			 skip_track;
-
-			Thread			*play_thread;
-			Bool			 stop_playback;
-
-			Int			 player_activedrive;
-			Int			 player_plugin;
-
 			Bool			 dontUpdateInfo;
-			Int			 encoder_activedrive;
-
-			Int64			 totalSamples;
-			Float			 totalSamplesDone;
-
-			Int			 startTicks;
-			Int			 lastTicks;
-
-			Int			 lastPercent;
 
 			Bool			 overwriteAll;
 
 			Bool			 InitCDRip();
-
-			Int			 Encoder(Thread *);
-
-			String			 GetPlaylistFileName(Track *);
-			String			 GetRelativeFileName(const String &, const String &);
-
-			String			 GetOutputFileName(Track *);
-			String			 GetSingleOutputFileName(Track *);
-
-			Void			 ComputeTotalNumberOfSamples();
-			Void			 FixTotalNumberOfSamples(Track *, Track *);
-
-			Void			 InitProgressValues();
-			Void			 UpdateProgressValues(Track *, Int);
-			Void			 FinishProgressValues(Track *);
 		public:
 			static String		 version;
 			static String		 shortVersion;
@@ -148,11 +115,7 @@ namespace BonkEnc
 
 			JobList			*joblist;
 
-			Bool			 encoding;
-			Bool			 playing;
-			Bool			 paused;
-
-			Int			 player_entry;
+			Encoder			*encoder;
 
 						 BonkEnc();
 						~BonkEnc();
@@ -161,10 +124,6 @@ namespace BonkEnc
 			CDDBInfo		 QueryCDDB(CDDB &);
 		slots:
 			Void			 ReadCD();
-
-			Void			 Encode();
-			Void			 PauseEncoding();
-			Void			 StopEncoding();
 	};
 };
 

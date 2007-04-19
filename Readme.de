@@ -13,11 +13,17 @@ FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Februar 2007)
+	Version 1.1 CVS (April 2007)
 
+		- Deutsche und italienische Anleitungen hinzugefügt
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
+		- Absturz beim Codieren in einzelne MP4-Datei behoben
+		- Ungewolltes Downsampling beim Codieren von MP3s mit niedriger Bitrate behoben
+		- Verbesserungen beim Installer
+		- Viele Fehler im Kommandozeilen-Codierer behoben
+		- Einige weitere Korrekturen
 
 	Version 1.0 (Februar 2007)
 
@@ -344,7 +350,7 @@ Besonderen Dank
 			   Dmitry Gusakov (Russisch),
 			   Henryk Ning (Chinesisch, traditionell),
 			   Nimin (Chinesisch, vereinfacht),
-			   Wojtek Wasilewski (Polnisch),
+			   Krzysztof Konopacki (Polnisch),
 			   Peter Toth (Ungarisch),
 			   Andrij Iletschko (Ukrainisch),
 			   Wim Garreyn (Niederländisch),
@@ -360,7 +366,7 @@ Besonderen Dank
 			   Vincent Rateau (Esperanto),
 			   Murat Ozkan (Türkisch),
 			   Naglis Jonaitis (Litauisch),
-			   Laurentiu Florin Bubuianu (Rumänisch)
+			   Borca Alin (Rumänisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
@@ -372,5 +378,3 @@ Paul F. Harrisons Bonk Homepage: http://www.logarithmic.net/pfh/bonk
 
 robert.kausch@bonkenc.org,
 Robert Kausch
-
-ICQ#23891569

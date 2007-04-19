@@ -61,7 +61,7 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 	}
 
 	// Open cdplayer.ini
-	InStream	*in = new InStream(STREAM_FILE, Utilities::GetWindowsRootDirectory().Append("cdplayer.ini"), IS_READONLY);
+	InStream	*in = new InStream(STREAM_FILE, S::System::System::GetWindowsRootDirectory().Append("cdplayer.ini"), IS_READONLY);
 	String		 idString = String("[").Append(discIDString).Append("]");
 	String		 result;
 

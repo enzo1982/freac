@@ -43,6 +43,10 @@
 
 #include <dialogs/language.h>
 
+#ifndef EWX_FORCEIFHUNG
+# define EWX_FORCEIFHUNG 16
+#endif
+
 Int smooth::Main()
 {
 	BonkEnc::debug_out = new BonkEnc::Debug("BonkEnc.log");
@@ -101,6 +105,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	i18n->ActivateLanguage(currentConfig->language);
 
 	InitCDRip();
+
+	player = new Playback();
 
 	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
 
@@ -164,7 +170,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 		button_pause	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:13"), pos, size);
-		button_pause->onAction.Connect(&BonkEncGUI::PausePlayback, this);
+		button_pause->onAction.Connect(&BonkEncGUI::PauseResumePlayback, this);
 		button_pause->SetOrientation(OR_UPPERRIGHT);
 		button_pause->SetFlags(BF_NOFRAME);
 
@@ -178,14 +184,14 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 		button_prev	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:15"), pos, size);
-		button_prev->onAction.Connect(&BonkEncGUI::PlayPrevious, this);
+		button_prev->onAction.Connect(&Playback::Previous, player);
 		button_prev->SetOrientation(OR_UPPERRIGHT);
 		button_prev->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 		button_next	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:16"), pos, size);
-		button_next->onAction.Connect(&BonkEncGUI::PlayNext, this);
+		button_next->onAction.Connect(&Playback::Next, player);
 		button_next->SetOrientation(OR_UPPERRIGHT);
 		button_next->SetFlags(BF_NOFRAME);
 
@@ -557,6 +563,14 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	if (currentConfig->maximized) mainWnd->Maximize();
 
+	encoder->onStartEncoding.Connect(&BonkEncGUI::OnEncoderStartEncoding, this);
+	encoder->onFinishEncoding.Connect(&BonkEncGUI::OnEncoderFinishEncoding, this);
+
+	encoder->onEncodeTrack.Connect(&BonkEncGUI::OnEncoderEncodeTrack, this);
+
+	encoder->onTrackProgress.Connect(&BonkEncGUI::OnEncoderTrackProgress, this);
+	encoder->onTotalProgress.Connect(&BonkEncGUI::OnEncoderTotalProgress, this);
+
 	checkForUpdates = new Thread();
 	checkForUpdates->threadMain.Connect(&BonkEncGUI::CheckForUpdatesThread, this);
 
@@ -568,6 +582,8 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(checkForUpdates);
 
 	joblist->RemoveAllTracks();
+
+	delete player;
 
 	DeleteObject(mainWnd_menubar);
 	DeleteObject(mainWnd_iconbar);
@@ -656,14 +672,14 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 
 Bool BonkEnc::BonkEncGUI::ExitProc()
 {
-	if (encoding)
+	if (encoder->encoding)
 	{
 		if (IDNO == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
 
-		StopEncoding();
+		encoder->Stop();
 	}
 
-	if (playing) StopPlayback();
+	if (player->playing) StopPlayback();
 
 	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
 
@@ -808,7 +824,7 @@ Void BonkEnc::BonkEncGUI::About()
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 {
-	if (encoding)
+	if (encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot configure encoder while encoding!");
 
@@ -842,7 +858,7 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 
 Void BonkEnc::BonkEncGUI::ConfigureGeneral()
 {
-	if (encoding)
+	if (encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot change settings while encoding!");
 
@@ -891,7 +907,7 @@ Void BonkEnc::BonkEncGUI::SelectDir()
 
 Void BonkEnc::BonkEncGUI::SkipTrack()
 {
-	skip_track = True;
+//	skip_track = True;
 }
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
@@ -907,7 +923,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 {
 	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
 	{
-		Utilities::ErrorMessage(i18n->TranslateString("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog."));
+		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -1044,7 +1060,7 @@ Void BonkEnc::BonkEncGUI::SubmitCDDBData()
 {
 	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
 	{
-		Utilities::ErrorMessage(i18n->TranslateString("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog."));
+		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -1069,7 +1085,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 {
 	if (!currentConfig->enable_remote_cddb)
 	{
-		Utilities::ErrorMessage(i18n->TranslateString("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog."));
+		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -1085,7 +1101,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
 {
 	if (!currentConfig->enable_remote_cddb)
 	{
-		Utilities::ErrorMessage(i18n->TranslateString("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog."));
+		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -1459,10 +1475,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	}
 
 	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load("BonkEnc.pci:31"));
-	entry->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
+	entry->onAction.Connect(&BonkEncGUI::Encode, this);
 	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
-	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("BonkEnc.pci:32"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
-	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("BonkEnc.pci:33"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
+	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("BonkEnc.pci:32"))->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
+	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("BonkEnc.pci:33"))->onAction.Connect(&BonkEncGUI::StopEncoding, this);
 
 	if (currentConfig->enable_blade)  menu_encoders->AddEntry("BladeEnc MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_bonk)   menu_encoders->AddEntry("Bonk Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
@@ -1608,15 +1624,15 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_iconbar->AddEntry();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), ENCODER_WAVE > 0 ? menu_encoders : NIL);
-	entry->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
+	entry->onAction.Connect(&BonkEncGUI::Encode, this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:10"));
-	entry->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
+	entry->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
 	entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:11"));
-	entry->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
+	entry->onAction.Connect(&BonkEncGUI::StopEncoding, this);
 	entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
 
 	mainWnd_menubar->Show();
@@ -1692,6 +1708,52 @@ Void BonkEnc::BonkEncGUI::EncodeSpecific()
 	clicked_encoder = -1;
 
 	Encode();
+}
+
+Void BonkEnc::BonkEncGUI::Encode()
+{
+	encoder->Encode(joblist);
+}
+
+Void BonkEnc::BonkEncGUI::PauseResumeEncoding()
+{
+	if (!encoder->encoding) return;
+
+	if (encoder->paused) encoder->Resume();
+	else		     encoder->Pause();
+}
+
+Void BonkEnc::BonkEncGUI::StopEncoding()
+{
+	if (encoder == NIL) return;
+
+	encoder->Stop();
+}
+
+Void BonkEnc::BonkEncGUI::PlaySelectedItem()
+{
+	player->Play(joblist->GetSelectedEntryNumber(), joblist);
+}
+
+Void BonkEnc::BonkEncGUI::PauseResumePlayback()
+{
+	if (!player->playing) return;
+
+	if (player->paused) player->Resume();
+	else		    player->Pause();
+}
+
+Void BonkEnc::BonkEncGUI::StopPlayback()
+{
+	if (!player->playing) return;
+
+	player->Stop();
+}
+
+Void BonkEnc::BonkEncGUI::OpenCDTray()
+{
+	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
+ 	ex_CR_EjectCD(True);
 }
 
 Void BonkEnc::BonkEncGUI::SetEncoderText()
@@ -2092,6 +2154,83 @@ Void BonkEnc::BonkEncGUI::OnJoblistSelectNone()
 	dontUpdateInfo = False;
 }
 
+Void BonkEnc::BonkEncGUI::OnEncoderStartEncoding()
+{
+	btn_skip->Activate();
+}
+
+Void BonkEnc::BonkEncGUI::OnEncoderFinishEncoding(Bool success)
+{
+	edb_filename->SetText(BonkEnc::i18n->TranslateString("none"));
+
+	edb_percent->SetText("0%");
+	edb_time->SetText("00:00");
+
+	progress->SetValue(0);
+	progress_total->SetValue(0);
+
+	btn_skip->Deactivate();
+
+	if (success && currentConfig->shutdownAfterEncoding)
+	{
+		Utilities::GainShutdownPrivilege();
+
+		ExitWindowsEx(EWX_POWEROFF | EWX_FORCEIFHUNG, 0);
+	}
+}
+
+Void BonkEnc::BonkEncGUI::OnEncoderEncodeTrack(const Track *track, Int mode)
+{
+	edb_percent->SetText("0%");
+	edb_time->SetText("00:00");
+
+	progress->SetValue(0);
+
+	if (track->artist.Length() == 0 &&
+	    track->title.Length()  == 0) edb_filename->SetText(track->origFilename);
+	else				 edb_filename->SetText(String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")));
+
+	switch (mode)
+	{
+		case ENCODER_MODE_ON_THE_FLY:
+			// nothing special in this case
+			break;
+		case ENCODER_MODE_DECODE:
+			edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
+			break;
+		case ENCODER_MODE_ENCODE:
+			edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
+			break;
+	}
+}
+
+Void BonkEnc::BonkEncGUI::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
+{
+	progress->SetValue(progressValue);
+
+	edb_percent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append("%"));
+
+	String	 buffer = String::FromInt(secondsLeft / 60);
+	String	 text = "0";
+
+	if (buffer.Length() == 1) text.Append(buffer);
+	else			  text.Copy(buffer);
+
+	text.Append(":");
+
+	buffer = String::FromInt(secondsLeft % 60);
+
+	if (buffer.Length() == 1) text.Append(String("0").Append(buffer));
+	else			  text.Append(buffer);
+
+	edb_time->SetText(text);
+}
+
+Void BonkEnc::BonkEncGUI::OnEncoderTotalProgress(Int progressValue, Int secondsLeft)
+{
+	progress_total->SetValue(progressValue);
+}
+
 Void BonkEnc::BonkEncGUI::UpdateTitleInfo()
 {
 	if (dontUpdateInfo) return;
@@ -2139,7 +2278,7 @@ PopupMenu *BonkEnc::BonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)
 
 Void BonkEnc::BonkEncGUI::ShowHelp()
 {
-	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index.html")), NIL, NIL, 0);
+	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index_en.html")), NIL, NIL, 0);
 }
 
 Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()

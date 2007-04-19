@@ -52,14 +52,7 @@ BonkEnc::BonkEnc::BonkEnc()
 {
 	CoInitialize(NIL);
 
-	encoding = False;
-	encoder_thread = NIL;
-
-	playing = False;
-	play_thread = NIL;
-
-	skip_track = False;
-	overwriteAll = False;
+	encoder = new Encoder();
 
 	currentConfig = new Config;
 
@@ -132,6 +125,8 @@ BonkEnc::BonkEnc::BonkEnc()
 
 BonkEnc::BonkEnc::~BonkEnc()
 {
+	delete encoder;
+
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
 	if (currentConfig->enable_bonk)		DLLInterfaces::FreeBonkDLL();
@@ -208,7 +203,7 @@ Bool BonkEnc::BonkEnc::InitCDRip()
 
 Void BonkEnc::BonkEnc::ReadCD()
 {
-	if (encoding)
+	if (encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 

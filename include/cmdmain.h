@@ -26,7 +26,7 @@ namespace BonkEnc
 
 			Bool			 ScanForParameter(const String &, String *);
 			Void			 ScanForFiles(Array<String> *);
-			Void			 TracksToFiles(const String &, Array<String> *);
+			Bool			 TracksToFiles(const String &, Array<String> *);
 		public:
 						 BonkEncCommandline(const Array<String> &);
 						~BonkEncCommandline();

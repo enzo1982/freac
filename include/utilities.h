@@ -29,6 +29,7 @@ namespace BonkEnc
 	class BEEXPORT Utilities
 	{
 		public:
+			static Void		 WarningMessage(const String &, const String & = NIL);
 			static Void		 ErrorMessage(const String &, const String & = NIL);
 
 			static InputFilter	*CreateInputFilter(const String &, Track *);
@@ -40,12 +41,6 @@ namespace BonkEnc
 
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
 			static String		 CreateDirectoryForFile(const String &);
-
-			static String		 GetWindowsRootDirectory();
-			static String		 GetPersonalFilesDirectory();
-			static String		 GetProgramFilesDirectory();
-			static String		 GetApplicationDataDirectory();
-			static String		 GetTempDirectory();
 
 			static Void		 GainShutdownPrivilege();
 	};

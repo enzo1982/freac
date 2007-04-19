@@ -136,7 +136,7 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 Bool BonkEnc::JobList::RemoveAllTracks()
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (BonkEnc::currentConfig->appMain->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -172,7 +172,7 @@ Int BonkEnc::JobList::SetMetrics(const Point &nPos, const Size &nSize)
 
 Void BonkEnc::JobList::AddTrackByDialog()
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (BonkEnc::currentConfig->appMain->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -293,7 +293,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outfile, Bool displayErrors)
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (BonkEnc::currentConfig->appMain->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -404,7 +404,7 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 
 Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (BonkEnc::currentConfig->appMain->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -442,7 +442,7 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 
 Void BonkEnc::JobList::RemoveSelectedTrack()
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (BonkEnc::currentConfig->appMain->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -464,8 +464,8 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 		if (GetNthTrack(i) == track) n = i;
 	}
 
-	if (BonkEnc::currentConfig->appMain->playing && BonkEnc::currentConfig->appMain->player_entry == n) onRemovePlayingTrack.Emit();
-	if (BonkEnc::currentConfig->appMain->playing && BonkEnc::currentConfig->appMain->player_entry > n) BonkEnc::currentConfig->appMain->player_entry--;
+//	if (BonkEnc::currentConfig->appMain->playing && BonkEnc::currentConfig->appMain->player_entry == n) onRemovePlayingTrack.Emit();
+//	if (BonkEnc::currentConfig->appMain->playing && BonkEnc::currentConfig->appMain->player_entry > n) BonkEnc::currentConfig->appMain->player_entry--;
 
 	RemoveNthTrack(n);
 
@@ -507,7 +507,7 @@ Void BonkEnc::JobList::ToggleSelection()
 
 Void BonkEnc::JobList::LoadList()
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (BonkEnc::currentConfig->appMain->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 

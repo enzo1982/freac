@@ -118,6 +118,7 @@ namespace BonkEnc
 			Bool		 cdrip_autoEject;
 			Bool		 cdrip_detectJitterErrors;
 			Bool		 cdrip_detectC2Errors;
+			Int		 cdrip_timeout;
 
 			String		 freedb_dir;
 			String		 freedb_server;
