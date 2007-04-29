@@ -15,7 +15,10 @@ Geschichte
 
 	Version 1.0.3 (April 2007)
 
-		- Bisher keine Änderungen
+		- Fehler beim Lesen von Vorbis (und FLAC) Comment Tags behoben
+		- Fehler behoben, durch den Xing-Header bei Verwendung von LAME-Voreinstellungen nicht geschrieben wurden
+		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
+		- Weitere kleinere Korrekturen
 
 	Version 1.0.2 (April 2007)
 

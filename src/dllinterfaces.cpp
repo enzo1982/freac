@@ -75,6 +75,7 @@ LAME_SET_HIGHPASSWIDTH		 ex_lame_set_highpasswidth		= NIL;
 LAME_SET_MODE			 ex_lame_set_mode			= NIL;
 LAME_SET_FORCE_MS		 ex_lame_set_force_ms			= NIL;
 LAME_CLOSE			 ex_lame_close				= NIL;
+LAME_GET_VBR			 ex_lame_get_VBR			= NIL;
 LAME_SET_VBR			 ex_lame_set_VBR			= NIL;
 LAME_SET_VBR_Q			 ex_lame_set_VBR_q			= NIL;
 LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps	= NIL;
@@ -385,6 +386,7 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	ex_lame_set_mode			= (LAME_SET_MODE) lamedll->GetFunctionAddress("lame_set_mode");
 	ex_lame_set_force_ms			= (LAME_SET_FORCE_MS) lamedll->GetFunctionAddress("lame_set_force_ms");
 	ex_lame_close				= (LAME_CLOSE) lamedll->GetFunctionAddress("lame_close");
+	ex_lame_get_VBR				= (LAME_GET_VBR) lamedll->GetFunctionAddress("lame_get_VBR");
 	ex_lame_set_VBR				= (LAME_SET_VBR) lamedll->GetFunctionAddress("lame_set_VBR");
 	ex_lame_set_VBR_q			= (LAME_SET_VBR_Q) lamedll->GetFunctionAddress("lame_set_VBR_q");
 	ex_lame_set_VBR_mean_bitrate_kbps	= (LAME_SET_VBR_MEAN_BITRATE_KBPS) lamedll->GetFunctionAddress("lame_set_VBR_mean_bitrate_kbps");
@@ -426,6 +428,7 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	    ex_lame_set_mode			== NIL ||
 	    ex_lame_set_force_ms		== NIL ||
 	    ex_lame_close			== NIL ||
+	    ex_lame_get_VBR			== NIL ||
 	    ex_lame_set_VBR			== NIL ||
 	    ex_lame_set_VBR_q			== NIL ||
 	    ex_lame_set_VBR_mean_bitrate_kbps	== NIL ||

@@ -15,7 +15,10 @@ History
 
 	Version 1.0.3 (April 2007)
 
-		- no changes yet
+		- fixed Vorbis (and FLAC) comment tag reading
+		- fixed not writing Xing header when using LAME presets
+		- improved support for network files and directories
+		- some smaller improvements
 
 	Version 1.0.2 (April 2007)
 

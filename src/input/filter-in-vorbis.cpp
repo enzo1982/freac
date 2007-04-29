@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -270,68 +270,15 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 
 		for (Int j = 0; j < fvc.comments; j++)
 		{
-			char	*buffer = new char [fvc.comment_lengths[j]];
+			String	 comment = String(fvc.user_comments[j]);
+			String	 id = String().CopyN(comment, comment.Find("=")).ToUpper();
 
-			if (String(fvc.user_comments[j]).ToUpper().StartsWith("TITLE"))
-			{
-				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
-				{
-					buffer[p] = fvc.user_comments[j][p + 6];
-				}
-
-				nFormat->title = buffer;
-			}
-			else if (String(fvc.user_comments[j]).ToUpper().StartsWith("ARTIST"))
-			{
-				for (Int p = 0; p < fvc.comment_lengths[j] - 6; p++)
-				{
-					buffer[p] = fvc.user_comments[j][p + 7];
-				}
-
-				nFormat->artist = buffer;
-			}
-			else if (String(fvc.user_comments[j]).ToUpper().StartsWith("ALBUM"))
-			{
-				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
-				{
-					buffer[p] = fvc.user_comments[j][p + 6];
-				}
-
-				nFormat->album = buffer;
-			}
-			else if (String(fvc.user_comments[j]).ToUpper().StartsWith("GENRE"))
-			{
-				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
-				{
-					buffer[p] = fvc.user_comments[j][p + 6];
-				}
-
-				nFormat->genre = buffer;
-			}
-			else if (String(fvc.user_comments[j]).ToUpper().StartsWith("DATE"))
-			{
-				String	 year;
-
-				for (Int p = 0; p < fvc.comment_lengths[j] - 5; p++)
-				{
-					year[p] = fvc.user_comments[j][p + 5];
-				}
-
-				nFormat->year = year.ToInt();
-			}
-			else if (String(fvc.user_comments[j]).ToUpper().StartsWith("TRACKNUMBER"))
-			{
-				String	 track;
-
-				for (Int p = 0; p < fvc.comment_lengths[j] - 12; p++)
-				{
-					track[p] = fvc.user_comments[j][p + 12];
-				}
-
-				nFormat->track = track.ToInt();
-			}
-
-			delete [] buffer;
+			if	(id == "TITLE")		nFormat->title	= comment.Tail(comment.Length() - 6);
+			else if (id == "ARTIST")	nFormat->artist	= comment.Tail(comment.Length() - 7);
+			else if (id == "ALBUM")		nFormat->album	= comment.Tail(comment.Length() - 6);
+			else if (id == "GENRE")		nFormat->genre	= comment.Tail(comment.Length() - 6);
+			else if (id == "DATE")		nFormat->year	= comment.Tail(comment.Length() - 5).ToInt();
+			else if (id == "TRACKNUMBER")	nFormat->track	= comment.Tail(comment.Length() - 12).ToInt();
 		}
 
 		String::SetInputFormat(prevInFormat);

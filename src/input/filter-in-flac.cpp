@@ -197,8 +197,8 @@ FLAC__StreamDecoderWriteStatus BonkEnc::FLACStreamDecoderWriteCallback(const FLA
 
 	filter->samplesBufferMutex->Lock();
 
-	Buffer<signed int>	 backBuffer;
-	Int			 oSize = filter->samplesBuffer.Size();
+	static Buffer<signed int>	 backBuffer;
+	Int				 oSize = filter->samplesBuffer.Size();
 
 	backBuffer.Resize(oSize);
 
@@ -277,68 +277,15 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 
 			for (Int j = 0; j < (signed) metadata->data.vorbis_comment.num_comments; j++)
 			{
-				char	*buffer = new char [metadata->data.vorbis_comment.comments[j].length];
+				String	 comment = String((char *) metadata->data.vorbis_comment.comments[j].entry);
+				String	 id = String().CopyN(comment, comment.Find("=")).ToUpper();
 
-				if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("TITLE"))
-				{
-					for (Int p = 0; p < (signed) metadata->data.vorbis_comment.comments[j].length - 5; p++)
-					{
-						buffer[p] = metadata->data.vorbis_comment.comments[j].entry[p + 6];
-					}
-
-					filter->infoFormat->title = buffer;
-				}
-				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("ARTIST"))
-				{
-					for (Int p = 0; p < (signed) metadata->data.vorbis_comment.comments[j].length - 6; p++)
-					{
-						buffer[p] = metadata->data.vorbis_comment.comments[j].entry[p + 7];
-					}
-
-					filter->infoFormat->artist = buffer;
-				}
-				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("ALBUM"))
-				{
-					for (Int p = 0; p < (signed) metadata->data.vorbis_comment.comments[j].length - 5; p++)
-					{
-						buffer[p] = metadata->data.vorbis_comment.comments[j].entry[p + 6];
-					}
-
-					filter->infoFormat->album = buffer;
-				}
-				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("GENRE"))
-				{
-					for (Int p = 0; p < (signed) metadata->data.vorbis_comment.comments[j].length - 5; p++)
-					{
-						buffer[p] = metadata->data.vorbis_comment.comments[j].entry[p + 6];
-					}
-
-					filter->infoFormat->genre = buffer;
-				}
-				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("DATE"))
-				{
-					String	 year;
-
-					for (Int p = 0; p < (signed) metadata->data.vorbis_comment.comments[j].length - 5; p++)
-					{
-						year[p] = metadata->data.vorbis_comment.comments[j].entry[p + 5];
-					}
-
-					filter->infoFormat->year = year.ToInt();
-				}
-				else if (String((char *) metadata->data.vorbis_comment.comments[j].entry).ToUpper().StartsWith("TRACKNUMBER"))
-				{
-					String	 track;
-
-					for (Int p = 0; p < (signed) metadata->data.vorbis_comment.comments[j].length - 12; p++)
-					{
-						track[p] = metadata->data.vorbis_comment.comments[j].entry[p + 12];
-					}
-
-					filter->infoFormat->track = track.ToInt();
-				}
-
-				delete [] buffer;
+				if	(id == "TITLE")		filter->infoFormat->title  = comment.Tail(comment.Length() - 6);
+				else if (id == "ARTIST")	filter->infoFormat->artist = comment.Tail(comment.Length() - 7);
+				else if (id == "ALBUM")		filter->infoFormat->album  = comment.Tail(comment.Length() - 6);
+				else if (id == "GENRE")		filter->infoFormat->genre  = comment.Tail(comment.Length() - 6);
+				else if (id == "DATE")		filter->infoFormat->year   = comment.Tail(comment.Length() - 5).ToInt();
+				else if (id == "TRACKNUMBER")	filter->infoFormat->track  = comment.Tail(comment.Length() - 12).ToInt();
 			}
 
 			String::SetInputFormat(prevInFormat);
