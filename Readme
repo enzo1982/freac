@@ -21,6 +21,9 @@ History
 		- fixed total progress bar not working correctly with many tracks in joblist
 		- fixed crash when encoding to single MP4 file
 		- fixed unwanted downsampling when encoding to low bitrate MP3
+		- fixed Vorbis (and FLAC) comment tag reading
+		- fixed not writing Xing header when using LAME presets
+		- improved support for network files and directories
 		- installer improvements
 		- lots of fixes to the command line encoder
 		- some other fixes

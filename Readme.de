@@ -21,6 +21,9 @@ Geschichte
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
 		- Absturz beim Codieren in einzelne MP4-Datei behoben
 		- Ungewolltes Downsampling beim Codieren von MP3s mit niedriger Bitrate behoben
+		- Fehler beim Lesen von Vorbis (und FLAC) Comment Tags behoben
+		- Fehler behoben, durch den Xing-Header bei Verwendung von LAME-Voreinstellungen nicht geschrieben wurden
+		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
 		- Verbesserungen beim Installer
 		- Viele Fehler im Kommandozeilen-Codierer behoben
 		- Einige weitere Korrekturen
