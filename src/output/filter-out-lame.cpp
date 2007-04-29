@@ -266,7 +266,7 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 		driver->WriteData(id3Buffer, size);
 	}
 
-	if (currentConfig->lame_vbrmode != vbr_off)
+	if (ex_lame_get_VBR(lameFlags) != vbr_off)
 	{
 		String	 tempFile = S::System::System::GetTempDirectory().Append("xing.tmp");
 

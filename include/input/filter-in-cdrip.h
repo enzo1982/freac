@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -24,7 +24,12 @@ namespace BonkEnc
 			Int			 trackSize;
 
 			Int			 byteCount;
-			unsigned char		*buffer;
+			Buffer<unsigned char>	 buffer;
+
+			Bool			 ripperOpen;
+
+			Bool			 OpenRipper(Int, Int);
+			Bool			 CloseRipper();
 
 			static Bool		 readActive;
 

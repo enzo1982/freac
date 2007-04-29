@@ -23,7 +23,6 @@
 using namespace smooth;
 using namespace smooth::GUI;
 using namespace smooth::GUI::Dialogs;
-using namespace smooth::Threads;
 
 namespace BonkEnc
 {

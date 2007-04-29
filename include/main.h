@@ -82,8 +82,6 @@ namespace BonkEnc
 
 			Int		 activePopup;
 
-			Thread		*checkForUpdates;
-
 			Playback	*player;
 
 			Void		 Close();
@@ -100,7 +98,7 @@ namespace BonkEnc
 			Void		 ShowTipOfTheDay();
 
 			Void		 CheckForUpdates();
-			Int		 CheckForUpdatesThread(Thread *);
+			Int		 CheckForUpdates(Bool);
 
 			Bool		 SetLanguage();
 			Void		 FillMenus();

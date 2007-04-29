@@ -239,10 +239,6 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	joblist->onSelectTrack.Connect(&BonkEncGUI::OnJoblistSelectTrack, this);
 	joblist->onSelectNone.Connect(&BonkEncGUI::OnJoblistSelectNone, this);
 	joblist->onRemovePlayingTrack.Connect(&BonkEncGUI::StopPlayback, this);
-	joblist->AddTab("Title");
-	joblist->AddTab("Track", currentConfig->tab_width_track, OR_RIGHT);
-	joblist->AddTab("Length", currentConfig->tab_width_length, OR_RIGHT);
-	joblist->AddTab("Size", currentConfig->tab_width_size, OR_RIGHT);
 
 	pos.x = 200;
 	pos.y += size.cy + 4;
@@ -571,16 +567,11 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	encoder->onTrackProgress.Connect(&BonkEncGUI::OnEncoderTrackProgress, this);
 	encoder->onTotalProgress.Connect(&BonkEncGUI::OnEncoderTotalProgress, this);
 
-	checkForUpdates = new Thread();
-	checkForUpdates->threadMain.Connect(&BonkEncGUI::CheckForUpdatesThread, this);
-
-	if (currentConfig->checkUpdatesAtStartup) checkForUpdates->Start();
+	if (currentConfig->checkUpdatesAtStartup) NonBlocking1<Bool>(&BonkEncGUI::CheckForUpdates, this).Call(True);
 }
 
 BonkEnc::BonkEncGUI::~BonkEncGUI()
 {
-	DeleteObject(checkForUpdates);
-
 	joblist->RemoveAllTracks();
 
 	delete player;
@@ -2304,10 +2295,10 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 
 Void BonkEnc::BonkEncGUI::CheckForUpdates()
 {
-	CheckForUpdatesThread(NIL);
+	NonBlocking1<Bool>(&BonkEncGUI::CheckForUpdates, this).Call(False);
 }
 
-Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
+Int BonkEnc::BonkEncGUI::CheckForUpdates(Bool startup)
 {
 	if (!currentConfig->enable_eUpdate) return Success();
 
@@ -2343,7 +2334,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 		ex_eUpdate_SetLanguage(context, "internal");
 	}
 
-	if (ex_eUpdate_CheckForNewUpdates(context, (self == NIL)) > 0)
+	if (ex_eUpdate_CheckForNewUpdates(context, !startup) > 0)
 	{
 		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
 
@@ -2353,7 +2344,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 
 		DeleteObject(msgBox);
 	}
-	else if (self == NIL)
+	else if (!startup)
 	{
 		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
 

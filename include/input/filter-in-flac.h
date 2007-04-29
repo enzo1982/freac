@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,6 +14,8 @@
 #include "inputfilter.h"
 
 #include <3rdparty/flac/stream_decoder.h>
+
+using namespace smooth::Threads;
 
 namespace BonkEnc
 {
@@ -36,12 +38,11 @@ namespace BonkEnc
 
 			Track			*infoFormat;
 
-			Thread			*decoderThread;
 			Mutex			*readDataMutex;
 			Mutex			*samplesBufferMutex;
+			Thread			*decoderThread;
 
-			Int			 ReadFLACMetadata(Thread *);
-			Int			 ReadFLACData(Thread *);
+			Int			 ReadFLAC(Bool);
 		public:
 						 FilterInFLAC(Config *, Track *);
 						~FilterInFLAC();

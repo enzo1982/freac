@@ -28,7 +28,6 @@
 BonkEnc::Encoder::Encoder()
 {
 	encoding = False;
-	encoder_thread = NIL;
 
 	skip_track = False;
 	overwriteAll = False;
@@ -42,23 +41,13 @@ Void BonkEnc::Encoder::Encode(JobList *iJoblist)
 {
 	if (encoding) return;
 
-/*	if (BonkEnc::currentConfig->appMain->playing)
+/*	if (BonkEnc::currentConfig->appMain->player->playing)
 	{
 		Utilities::ErrorMessage("Cannot start encoding while playing a file!");
 
 		return;
 	}
 */
-	if (encoder_thread != NIL)
-	{
-		delete encoder_thread;
-
-		encoder_thread = NIL;
-	}
-
-	encoder_thread = new Thread();
-	encoder_thread->threadMain.Connect(&Encoder::EncoderThread, this);
-
 	joblist = iJoblist;
 
 	encoding = True;
@@ -70,11 +59,10 @@ Void BonkEnc::Encoder::Encode(JobList *iJoblist)
 	if (BonkEnc::currentConfig->enable_console ||
 	    BonkEnc::currentConfig->encodeToSingleFile) overwriteAll = True;
 
-	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
-	encoder_thread->Start();
+	NonBlocking0<>(&Encoder::EncoderThread, this).Call();
 }
 
-Int BonkEnc::Encoder::EncoderThread(Thread *thread)
+Int BonkEnc::Encoder::EncoderThread()
 {
 	String		 in_filename;
 	String		 out_filename;
@@ -559,10 +547,6 @@ Void BonkEnc::Encoder::Stop()
 	stop_encoding = True;
 
 	while (encoding) Sleep(10);
-
-	delete encoder_thread;
-
-	encoder_thread = NIL;
 }
 
 String BonkEnc::Encoder::GetPlaylistFileName(Track *trackInfo)

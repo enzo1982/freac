@@ -29,7 +29,6 @@
 BonkEnc::Playback::Playback()
 {
 	playing = False;
-	play_thread = NIL;
 }
 
 BonkEnc::Playback::~Playback()
@@ -64,19 +63,15 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 
 	joblist->GetNthEntry(entry)->SetFont(font);
 
-	play_thread = new Thread();
-	play_thread->threadMain.Connect(&Playback::PlayThread, this);
-
 	playing = True;
 	paused = False;
 	player_entry = entry;
 	stop_playback = False;
 
-	play_thread->SetFlags(THREAD_WAITFLAG_START);
-	play_thread->Start();
+	NonBlocking0<>(&Playback::PlayThread, this).Call();
 }
 
-Int BonkEnc::Playback::PlayThread(Thread *thread)
+Int BonkEnc::Playback::PlayThread()
 {
 	String	 in_filename;
 	Track	*trackInfo;
@@ -270,10 +265,6 @@ Void BonkEnc::Playback::Stop()
 	stop_playback = True;
 
 	while (playing) Sleep(10);
-
-	delete play_thread;
-
-	play_thread = NIL;
 }
 
 Void BonkEnc::Playback::Previous()

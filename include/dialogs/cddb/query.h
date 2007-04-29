@@ -14,6 +14,8 @@
 #include <cddb/cddb.h>
 #include <bonkenc.h>
 
+using namespace smooth::Threads;
+
 namespace BonkEnc
 {
 	class cddbQueryDlg : public Dialog

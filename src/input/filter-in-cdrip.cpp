@@ -32,19 +32,72 @@ BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilt
 	packageSize	= 0;
 
 	trackNumber	= -1;
-	buffer		= NIL;
+	ripperOpen	= False;
 }
 
 BonkEnc::FilterInCDRip::~FilterInCDRip()
 {
-	if (buffer != NIL)
-	{
-		delete [] buffer;
+	CloseRipper();
+}
 
+Bool BonkEnc::FilterInCDRip::OpenRipper(Int startSector, Int endSector)
+{
+	if (!ripperOpen)
+	{
+		LONG		 bufferSize = 0;
+		CDROMPARAMS	 params;
+		int		 nParanoiaMode = PARANOIA_MODE_FULL ^ PARANOIA_MODE_NEVERSKIP;
+
+		switch (currentConfig->cdrip_paranoia_mode)
+		{
+			case 0:
+				nParanoiaMode = PARANOIA_MODE_OVERLAP;
+				break;
+			case 1:
+				nParanoiaMode &= ~PARANOIA_MODE_VERIFY;
+				break;
+			case 2:
+				nParanoiaMode &= ~(PARANOIA_MODE_SCRATCH | PARANOIA_MODE_REPAIR);
+				break;
+		}	
+ 
+		ex_CR_GetCDROMParameters(&params);
+
+		params.nRippingMode		= currentConfig->cdrip_paranoia;
+		params.nParanoiaMode		= nParanoiaMode;
+		params.bSwapLefRightChannel	= currentConfig->cdrip_swapchannels;
+		params.bJitterCorrection	= currentConfig->cdrip_jitter;
+		params.bDetectJitterErrors	= currentConfig->cdrip_detectJitterErrors;
+		params.bDetectC2Errors		= currentConfig->cdrip_detectC2Errors;
+		params.bEnableMultiRead		= true;
+		params.nMultiReadCount		= 2;
+
+		ex_CR_SetCDROMParameters(&params);
+
+		if (currentConfig->cdrip_locktray) ex_CR_LockCD(true);
+
+		ex_CR_OpenRipper(&bufferSize, startSector, endSector);
+
+		buffer.Resize(bufferSize);
+
+		ripperOpen = True;
+	}
+
+	return True;
+}
+
+Bool BonkEnc::FilterInCDRip::CloseRipper()
+{
+	if (ripperOpen)
+	{
 		ex_CR_CloseRipper();
 
 		if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
+
+		ripperOpen = False;
 	}
+
+	return True;
 }
 
 Int BonkEnc::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
@@ -53,16 +106,7 @@ Int BonkEnc::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	if (byteCount >= trackSize)
 	{
-		if (buffer != NIL)
-		{
-			delete [] buffer;
-
-			buffer = NIL;
-
-			ex_CR_CloseRipper();
-
-			if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
-		}
+		CloseRipper();
 
 		trackNumber = -1;
 
@@ -87,14 +131,7 @@ Int BonkEnc::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 {
-	if (buffer != NIL)
-	{
-		delete [] buffer;
-
-		ex_CR_CloseRipper();
-
-		if (currentConfig->cdrip_locktray) ex_CR_LockCD(false);
-	}
+	CloseRipper();
 
 	trackNumber = newTrack;
 
@@ -152,42 +189,7 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 	trackSize = (endSector - startSector + 1) * 2352;
 	byteCount = 0;
 
-	LONG		 bufferSize = 0;
-	CDROMPARAMS	 params;
-	int		 nParanoiaMode = PARANOIA_MODE_FULL ^ PARANOIA_MODE_NEVERSKIP;
-
-	switch (currentConfig->cdrip_paranoia_mode)
-	{
-		case 0:
-			nParanoiaMode = PARANOIA_MODE_OVERLAP;
-			break;
-		case 1:
-			nParanoiaMode &= ~PARANOIA_MODE_VERIFY;
-			break;
-		case 2:
-			nParanoiaMode &= ~(PARANOIA_MODE_SCRATCH | PARANOIA_MODE_REPAIR);
-			break;
-	}	
- 
-
-	ex_CR_GetCDROMParameters(&params);
-
-	params.nRippingMode		= currentConfig->cdrip_paranoia;
-	params.nParanoiaMode		= nParanoiaMode;
-	params.bSwapLefRightChannel	= currentConfig->cdrip_swapchannels;
-	params.bJitterCorrection	= currentConfig->cdrip_jitter;
-	params.bDetectJitterErrors	= currentConfig->cdrip_detectJitterErrors;
-	params.bDetectC2Errors		= currentConfig->cdrip_detectC2Errors;
-	params.bEnableMultiRead		= true;
-	params.nMultiReadCount		= 2;
-
-	ex_CR_SetCDROMParameters(&params);
-
-	if (currentConfig->cdrip_locktray) ex_CR_LockCD(true);
-
-	ex_CR_OpenRipper(&bufferSize, startSector, endSector);
-
-	buffer = new unsigned char [bufferSize];
+	OpenRipper(startSector, endSector);
 
 	return true;
 }
