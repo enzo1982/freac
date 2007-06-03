@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -34,7 +34,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 			{
 				Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
 
-				error = 1;
+				errorState = True;
 
 				return;
 			}
@@ -44,7 +44,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 			{
 				Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
 
-				error = 1;
+				errorState = True;
 
 				return;
 			}
@@ -52,7 +52,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 		default:
 			Utilities::ErrorMessage("Bad sampling rate! The selected sampling rate is not supported.");
 
-			error = 1;
+			errorState = True;
 
 			return;
 	}
@@ -61,7 +61,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 	{
 		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
-		error = 1;
+		errorState = True;
 
 		return;
 	}

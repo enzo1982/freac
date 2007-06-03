@@ -23,7 +23,7 @@ Bool BonkEnc::Playlist::AddTrack(const String &fileName, const String &trackName
 
 Int BonkEnc::Playlist::GetNOfTracks()
 {
-	return fileNames.GetNOfEntries();
+	return fileNames.Length();
 }
 
 String BonkEnc::Playlist::GetNthTrackFileName(Int n)
@@ -33,14 +33,14 @@ String BonkEnc::Playlist::GetNthTrackFileName(Int n)
 
 Bool BonkEnc::Playlist::Save(const String &fileName)
 {
-	if (fileNames.GetNOfEntries() == 0) return False;
+	if (fileNames.Length() == 0) return False;
 
 	String		 format = String::SetOutputFormat("UTF-8");
 	OutStream	*file = new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
 
 	file->OutputLine("#EXTM3U");
 
-	for (Int i = 0; i < fileNames.GetNOfEntries(); i++)
+	for (Int i = 0; i < fileNames.Length(); i++)
 	{
 		file->OutputLine(String("#EXTINF:").Append(String::FromInt(trackLengths.GetNth(i))).Append(",").Append(trackNames.GetNth(i)));
 		file->OutputLine(fileNames.GetNth(i));

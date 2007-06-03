@@ -13,7 +13,9 @@
 
 BonkEnc::OutputFilter::OutputFilter(Config *config, Track *iFormat)
 {
-	error		= 0;
+	errorState	= False;
+	errorString	= "Unknown error";
+
 	format		= iFormat;
 	currentConfig	= config;
 }
@@ -148,7 +150,7 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 
 	if (currentConfig->copy_picture_tags)
 	{
-		for (Int i = 0; i < format->pictures.GetNOfEntries(); i++)
+		for (Int i = 0; i < format->pictures.Length(); i++)
 		{
 			ID3Frame	*picture = ex_ID3Frame_NewID(ID3FID_PICTURE);
 			Picture		*picInfo = format->pictures.GetNth(i);
@@ -185,7 +187,7 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 	ex_ID3Frame_Delete(genre);
 	ex_ID3Frame_Delete(comment);
 
-	for (Int j = 0; j < format->pictures.GetNOfEntries(); j++)
+	for (Int j = 0; j < format->pictures.Length(); j++)
 	{
 		ex_ID3Frame_Delete(pictures.GetNth(j));
 	}

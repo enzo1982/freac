@@ -58,7 +58,7 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 
 	String		 file = iFile.ToLower();
 
-	for (Int i = 0; i < DLLInterfaces::winamp_in_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < DLLInterfaces::winamp_in_plugins.Length(); i++)
 	{
 		Int	 n = 1;
 		Int	 k = 0;
@@ -108,7 +108,7 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 
 	Int	 found = -1;
 
-	for (Int j = 0; j < extensions.GetNOfEntries(); j++)
+	for (Int j = 0; j < extensions.Length(); j++)
 	{
 		if (file.EndsWith(extensions.GetNth(j)))
 		{

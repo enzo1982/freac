@@ -165,8 +165,8 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 
 		if (frameInfo.error)
 		{
-			nFormat->rate = 0;
-			nFormat->channels = 0;
+			errorState = True;
+			errorString = ex_NeAACDecGetErrorMessage(frameInfo.error);
 
 			break;
 		}
@@ -190,6 +190,13 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 	delete f_in;
 
 	ex_NeAACDecClose(handle);
+
+	if (errorState)
+	{
+		delete nFormat;
+
+		return NIL;
+	}
 
 	if (currentConfig->enable_id3)
 	{

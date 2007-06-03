@@ -28,7 +28,7 @@ namespace BonkEnc
 			const CDDBInfo	&GetCacheEntry(Int);
 			Bool		 AddCacheEntry(const CDDBInfo &);
 
-			Int		 GetNOfEntries()	{ return infoCache.GetNOfEntries(); }
+			Int		 GetNOfEntries()	{ return infoCache.Length(); }
 			const CDDBInfo	&GetNthEntry(Int n)	{ return infoCache.GetNth(n); }
 
 			Int		 RemoveNthEntry(Int);

@@ -213,7 +213,7 @@
     <entry id="202" string="Please fill all fields and track titles before submitting.">Gelieve alle velden en de titels in te vullen alvorens te verzenden.</entry>
     <entry id="204" string="CD options">CD opties</entry>
     <entry id="205" string="Submitting CD information">CD info wordt verzonden</entry>
-    <entry id="206" string="Cannot open file:">Kan het bestand niet openen:</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Kan het bestand niet openen: %1&#10;&#10;%2</entry>
     <entry id="207" string="Query CDDB database">Aanvragen bij CDDB database</entry>
     <entry id="208" string="Help">Help</entry>
     <entry id="209" string="index_en.html">index.html</entry>

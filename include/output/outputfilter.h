@@ -22,17 +22,21 @@ namespace BonkEnc
 	class BEEXPORT OutputFilter : public Filter
 	{
 		protected:
+			Bool		 errorState;
+			String		 errorString;
+
 			Track		*format;
 			Config		*currentConfig;
 
 			Int		 RenderID3Tag(Int, Buffer<unsigned char> &);
 		public:
-			int		 error;
-
 					 OutputFilter(Config *, Track *);
 			virtual		~OutputFilter();
 
 			virtual Int	 WriteData(Buffer<UnsignedByte> &, Int) = 0;
+
+			Bool		 GetErrorState()	{ return errorState; }
+			const String	&GetErrorString()	{ return errorString; }
 	};
 };
 

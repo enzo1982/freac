@@ -129,7 +129,7 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	nFormat->year		= infoFormat->year;
 	nFormat->track		= infoFormat->track;
 
-	for (Int i = 0; i < infoFormat->pictures.GetNOfEntries(); i++)
+	for (Int i = 0; i < infoFormat->pictures.Length(); i++)
 	{
 		nFormat->pictures.Add(new Picture(*(infoFormat->pictures.GetNth(i))));
 	}
@@ -142,6 +142,12 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 Int BonkEnc::FilterInFLAC::ReadFLAC(Bool readData)
 {
 	decoder = ex_FLAC__stream_decoder_new();
+
+	if (!readData)
+	{
+		ex_FLAC__stream_decoder_set_metadata_respond(decoder, FLAC__METADATA_TYPE_VORBIS_COMMENT);
+		ex_FLAC__stream_decoder_set_metadata_respond(decoder, FLAC__METADATA_TYPE_PICTURE);
+	}
 
 	ex_FLAC__stream_decoder_init_stream(decoder, &FLACStreamDecoderReadCallback, &FLACStreamDecoderSeekCallback, &FLACStreamDecoderTellCallback, &FLACStreamDecoderLengthCallback, &FLACStreamDecoderEofCallback, &FLACStreamDecoderWriteCallback, &FLACStreamDecoderMetadataCallback, &FLACStreamDecoderErrorCallback, this);
 

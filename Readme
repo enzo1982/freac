@@ -13,8 +13,9 @@ FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (April 2007)
+	Version 1.1 CVS (June 2007)
 
+		- added Catalan language support
 		- added German and Italian user guides
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
@@ -23,6 +24,7 @@ History
 		- fixed unwanted downsampling when encoding to low bitrate MP3
 		- fixed Vorbis (and FLAC) comment tag reading
 		- fixed not writing Xing header when using LAME presets
+		- fixed crash when trying to open unsupported Sun Audio (.au) files
 		- improved support for network files and directories
 		- installer improvements
 		- lots of fixes to the command line encoder
@@ -349,7 +351,7 @@ Special thanks to
 			   Silky (Japanese),
 			   Federico Reddig (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
-			   Fotis Evangelou (Greek),
+			   Nikolaos-Ioannis Galanis (Greek),
 			   Dmitry Gusakov (Russian),
 			   Henryk Ning (Chinese, traditional),
 			   Nimin (Chinese, simplified),
@@ -369,7 +371,8 @@ Special thanks to
 			   Vincent Rateau (Esperanto),
 			   Murat Ozkan (Turkish),
 			   Naglis Jonaitis (Lithuanian),
-			   Borca Alin (Romanian)
+			   Borca Alin (Romanian),
+			   El libre (Catalan)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

@@ -149,7 +149,7 @@ Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
 
 	const Array<String> &queries = cddbQueries->GetQueries();
 
-	for (Int i = 0; i < queries.GetNOfEntries(); i++)
+	for (Int i = 0; i < queries.Length(); i++)
 	{
 		list_entries->AddEntry(queries.GetNth(i));
 	}

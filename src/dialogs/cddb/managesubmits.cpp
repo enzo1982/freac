@@ -151,7 +151,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
 	const CDDBInfo	&cddbInfo = cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(cddbInfo.dArtist).Append(" - ").Append(cddbInfo.dTitle).Append("\n\n");
 
-	for (Int i = 0; i < cddbInfo.trackTitles.GetNOfEntries(); i++)
+	for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 	{
 		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNth(i)).Append(" - ") : "").Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
 	}
@@ -180,7 +180,7 @@ Void BonkEnc::cddbManageSubmitsDlg::ReadEntries()
 
 	const Array<CDDBInfo> &entries = cddbBatch->GetSubmits();
 
-	for (Int i = 0; i < entries.GetNOfEntries(); i++)
+	for (Int i = 0; i < entries.Length(); i++)
 	{
 		const CDDBInfo	&cddbInfo = entries.GetNth(i);
 

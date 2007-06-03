@@ -25,13 +25,13 @@ Bool BonkEnc::CueSheet::AddTrack(const String &fileName, Int offset, const Strin
 
 Bool BonkEnc::CueSheet::Save(const String &fileName)
 {
-	if (fileNames.GetNOfEntries() == 0) return False;
+	if (fileNames.Length() == 0) return False;
 
 	String		 format = String::SetOutputFormat("UTF-8");
 	OutStream	*file	= new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
 	Bool		 album	= True;
 
-	for (Int c = 0; c < fileNames.GetNOfEntries() - 1; c++)
+	for (Int c = 0; c < fileNames.Length() - 1; c++)
 	{
 		if (trackArtists.GetNth(c) != trackArtists.GetNth(c + 1) || trackAlbums.GetNth(c) != trackAlbums.GetNth(c + 1))
 		{
@@ -47,7 +47,7 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 		file->OutputLine(String("TITLE \"").Append(trackAlbums.GetFirst()).Append("\""));
 	}
 
-	for (Int i = 0; i < fileNames.GetNOfEntries(); i++)
+	for (Int i = 0; i < fileNames.Length(); i++)
 	{
 		Int	 minutes =  trackOffsets.GetNth(i)					   / (75 * 60);
 		Int	 seconds = (trackOffsets.GetNth(i)		    - (minutes * 60 * 75)) /  75      ;

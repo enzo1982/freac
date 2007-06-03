@@ -92,10 +92,10 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	Console::SetTitle(String("BonkEnc ").Append(BonkEnc::version));
 
-	if (files.GetNOfEntries() == 0 ||
+	if (files.Length() == 0 ||
 	    helpenc != NIL ||
 	    !(encoderID == "LAME" || encoderID == "VORBIS" || encoderID == "BONK" || encoderID == "BLADE" || encoderID == "FAAC" || encoderID == "FLAC" || encoderID == "TVQ" || encoderID == "WAVE" || encoderID == "lame" || encoderID == "vorbis" || encoderID == "bonk" || encoderID == "blade" || encoderID == "faac" || encoderID == "flac" || encoderID == "tvq" || encoderID == "wave") ||
-	    (files.GetNOfEntries() > 1 && outfile != ""))
+	    (files.Length() > 1 && outfile != ""))
 	{
 		ShowHelp(helpenc);
 
@@ -274,7 +274,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
 
-		for (Int i = 0; i < files.GetNOfEntries(); i++)
+		for (Int i = 0; i < files.Length(); i++)
 		{
 			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READONLY);
 			String		 currentFile = files.GetNth(i);
@@ -358,7 +358,7 @@ BonkEnc::BonkEncCommandline::~BonkEncCommandline()
 
 Bool BonkEnc::BonkEncCommandline::ScanForParameter(const String &param, String *option)
 {
-	for (Int i = 0; i < args.GetNOfEntries(); i++)
+	for (Int i = 0; i < args.Length(); i++)
 	{
 		if (args.GetNth(i) == param)
 		{
@@ -376,7 +376,7 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 	String	 param;
 	String	 prevParam;
 
-	for (Int i = 0; i < args.GetNOfEntries(); i++)
+	for (Int i = 0; i < args.Length(); i++)
 	{
 		prevParam	= param;
 		param		= args.GetNth(i);

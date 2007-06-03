@@ -66,17 +66,15 @@ BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 	Track		*nFormat = new Track;
 	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
-	Bool		 error	 = False;
-
 	nFormat->fileSize = f_in->Size();
 	nFormat->order	  = BYTE_INTEL;
 
 	// Read RIFF chunk
-	if (f_in->InputString(4) != "RIFF") error = True;
+	if (f_in->InputString(4) != "RIFF") { errorState = True; errorString = "Unknown file type"; }
 
 	f_in->RelSeek(4);
 
-	if (f_in->InputString(4) != "WAVE") error = True;
+	if (f_in->InputString(4) != "WAVE") { errorState = True; errorString = "Unknown file type"; }
 
 	String		 chunk;
 
@@ -89,7 +87,7 @@ BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 
 		if (chunk == "fmt ")
 		{
-			if (f_in->InputNumber(2) != 1) error = True;
+			if (f_in->InputNumber(2) != 1) { errorState = True; errorString = "Unsupported audio format"; }
 
 			nFormat->channels = uint16(f_in->InputNumber(2));
 			nFormat->rate	  = uint32(f_in->InputNumber(4));
@@ -111,11 +109,11 @@ BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 			f_in->RelSeek(cSize);
 		}
 	}
-	while (!error && chunk != "data");
+	while (!errorState && chunk != "data");
 
 	delete f_in;
 
-	if (error)
+	if (errorState)
 	{
 		delete nFormat;
 

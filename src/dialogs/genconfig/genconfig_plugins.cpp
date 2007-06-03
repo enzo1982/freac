@@ -35,7 +35,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	list_input		= new ListBox(pos, size);
 	list_input->onSelectEntry.Connect(&GeneralSettingsLayerPlugins::SelectInputPlugin, this);
 
-	for (Int k = 0; k < DLLInterfaces::winamp_in_modules.GetNOfEntries(); k++)
+	for (Int k = 0; k < DLLInterfaces::winamp_in_modules.Length(); k++)
 	{
 		list_input->AddEntry(DLLInterfaces::winamp_in_modules.GetNth(k)->description);
 	}
@@ -66,7 +66,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	list_output->onSelectEntry.Connect(&GeneralSettingsLayerPlugins::SelectOutputPlugin, this);
 	list_output->onMarkEntry.Connect(&GeneralSettingsLayerPlugins::SelectOutputPlugin, this);
 
-	for (Int l = 0; l < DLLInterfaces::winamp_out_modules.GetNOfEntries(); l++)
+	for (Int l = 0; l < DLLInterfaces::winamp_out_modules.Length(); l++)
 	{
 		ListEntry	*entry = list_output->AddEntry(DLLInterfaces::winamp_out_modules.GetNth(l)->description);
 
@@ -127,7 +127,7 @@ Void BonkEnc::GeneralSettingsLayerPlugins::SelectOutputPlugin()
 
 	if (list_output->GetSelectedEntry()->IsMarked())
 	{
-		for (Int i = 0; i < list_output->GetNOfEntries(); i++) list_output->GetNthEntry(i)->SetMark(False);
+		for (Int i = 0; i < list_output->Length(); i++) list_output->GetNthEntry(i)->SetMark(False);
 
 		list_output->GetSelectedEntry()->SetMark(True);
 		list_output->Paint(SP_PAINT);
@@ -137,7 +137,7 @@ Void BonkEnc::GeneralSettingsLayerPlugins::SelectOutputPlugin()
 	{
 		Bool	 selected = False;
 
-		for (Int i = 0; i < list_output->GetNOfEntries(); i++) if (list_output->GetNthEntry(i)->IsMarked()) selected = True;
+		for (Int i = 0; i < list_output->Length(); i++) if (list_output->GetNthEntry(i)->IsMarked()) selected = True;
 
 		if (!selected)
 		{
@@ -178,7 +178,7 @@ Void BonkEnc::GeneralSettingsLayerPlugins::AboutOutputPlugin()
 
 Int BonkEnc::GeneralSettingsLayerPlugins::GetSelectedOutputPlugin()
 {
-	for (Int i = 0; i < list_output->GetNOfEntries(); i++) if (list_output->GetNthEntry(i)->IsMarked()) return i;
+	for (Int i = 0; i < list_output->Length(); i++) if (list_output->GetNthEntry(i)->IsMarked()) return i;
 
 	return -1;
 }

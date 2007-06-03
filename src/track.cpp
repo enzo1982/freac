@@ -32,5 +32,5 @@ BonkEnc::Track::Track()
 
 BonkEnc::Track::~Track()
 {
-	for (Int i = 0; i < pictures.GetNOfEntries(); i++) delete pictures.GetNth(i);
+	for (Int i = 0; i < pictures.Length(); i++) delete pictures.GetNth(i);
 }

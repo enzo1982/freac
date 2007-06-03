@@ -288,9 +288,12 @@ Void BonkEnc::GeneralSettingsLayerEncoders::ConfigureEncoder()
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FLAC)	dlg = new ConfigureFLAC();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_TVQ)	dlg = new ConfigureTVQ();
 
-	dlg->ShowDialog();
+	if (dlg != NIL)
+	{
+		dlg->ShowDialog();
 
-	DeleteObject(dlg);
+		DeleteObject(dlg);
+	}
 }
 
 Void BonkEnc::GeneralSettingsLayerEncoders::ToggleOnTheFly()

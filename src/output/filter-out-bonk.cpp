@@ -18,7 +18,7 @@ BonkEnc::FilterOutBONK::FilterOutBONK(Config *config, Track *format) : OutputFil
 	{
 		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
-		error = 1;
+		errorState = True;
 
 		return;
 	}

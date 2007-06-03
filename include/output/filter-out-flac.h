@@ -24,21 +24,20 @@ namespace BonkEnc
 		friend FLAC__StreamEncoderTellStatus	 FLACStreamEncoderTellCallback(const FLAC__StreamEncoder *, FLAC__uint64 *, void *);
 
 		private:
-			FLAC__StreamEncoder	*encoder;
+			FLAC__StreamEncoder		*encoder;
 
-			FLAC__StreamMetadata	*metadata[3];
-			Int			 numMetadata;
+			Array<FLAC__StreamMetadata *>	 metadata;
 
-			Buffer<FLAC__int32>	 buffer;
-			Int			 bytesWritten;
+			Buffer<FLAC__int32>		 buffer;
+			Int				 bytesWritten;
 		public:
-						 FilterOutFLAC(Config *, Track *);
-						~FilterOutFLAC();
+							 FilterOutFLAC(Config *, Track *);
+							~FilterOutFLAC();
 
-			Bool			 Activate();
-			Bool			 Deactivate();
+			Bool				 Activate();
+			Bool				 Deactivate();
 
-			Int			 WriteData(Buffer<UnsignedByte> &, Int);
+			Int				 WriteData(Buffer<UnsignedByte> &, Int);
 	};
 };
 

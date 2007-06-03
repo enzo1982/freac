@@ -55,7 +55,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 		{
 			Bool	 match = True;
 
-			for (Int j = 0; j < cddbInfo.trackOffsets.GetNOfEntries(); j++)
+			for (Int j = 0; j < cddbInfo.trackOffsets.Length(); j++)
 			{
 				if (discOffsets.GetNth(j) != cddbInfo.trackOffsets.GetNth(j)) match = False;
 			}
@@ -73,7 +73,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 	String::SetInputFormat(inputFormat);
 	String::SetOutputFormat(outputFormat);
 
-	return (results.GetNOfEntries() != 0);
+	return (results.Length() != 0);
 }
 
 Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
@@ -104,7 +104,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 		{
 			const Array<File> &files = dir.GetFilesByPattern(pattern);
 
-			if (files.GetNOfEntries() == 1) found = files.GetFirst();
+			if (files.Length() == 1) found = files.GetFirst();
 
 			if (pattern[1] == 'a')	    pattern[1] = '9';
 			else if (pattern[1] == '0') pattern[1] = 'f';
@@ -157,7 +157,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 		{
 			Bool	 match = True;
 
-			for (Int j = 0; j < cddbInfo.trackOffsets.GetNOfEntries(); j++)
+			for (Int j = 0; j < cddbInfo.trackOffsets.Length(); j++)
 			{
 				if (discOffsets.GetNth(j) != cddbInfo.trackOffsets.GetNth(j)) match = False;
 			}
@@ -175,7 +175,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 	String::SetInputFormat(inputFormat);
 	String::SetOutputFormat(outputFormat);
 
-	return (results.GetNOfEntries() != 0);
+	return (results.Length() != 0);
 }
 
 Bool BonkEnc::CDDBLocal::ConnectToServer()
@@ -189,13 +189,13 @@ Int BonkEnc::CDDBLocal::Query(Int discid)
 	if (!QueryUnixDB(discid)) QueryWinDB(discid);
 
 	// no match found
-	if (categories.GetNOfEntries() == 0) return QUERY_RESULT_NONE;
+	if (categories.Length() == 0) return QUERY_RESULT_NONE;
 
 	// exact match
-	if (categories.GetNOfEntries() == 1) return QUERY_RESULT_SINGLE;
+	if (categories.Length() == 1) return QUERY_RESULT_SINGLE;
 
 	// multiple exact matches
-	if (categories.GetNOfEntries() >  1) return QUERY_RESULT_MULTIPLE;
+	if (categories.Length() >  1) return QUERY_RESULT_MULTIPLE;
 
 	return QUERY_RESULT_ERROR;
 }
@@ -218,7 +218,7 @@ Bool BonkEnc::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddb
 
 	String	 result;
 
-	for (Int i = 0; i < categories.GetNOfEntries(); i++) if (categories.GetNth(i) == cddbInfo.category) result = results.GetNth(i);
+	for (Int i = 0; i < categories.Length(); i++) if (categories.GetNth(i) == cddbInfo.category) result = results.GetNth(i);
 
 	if (result == NIL) return False;
 	else		   return ParseCDDBRecord(result, cddbInfo);
@@ -241,9 +241,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	// Create directory if it doesn't exist
 	dir.Create();
 
-	const Array<File> &files = dir.GetFilesByPattern(pattern);
-
-	if (files.GetNOfEntries() >= 1) // Windows style DB
+	if (dir.GetFilesByPattern(pattern).Length() >= 1) // Windows style DB
 	{
 		debug_out->OutputLine("Found Windows style DB.");
 
@@ -255,7 +253,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 		{
 			const Array<File> &files = dir.GetFilesByPattern(pattern);
 
-			if (files.GetNOfEntries() == 1) found = files.GetFirst();
+			if (files.Length() == 1) found = files.GetFirst();
 
 			if (pattern[1] == 'a')	    pattern[1] = '9';
 			else if (pattern[1] == '0') pattern[1] = 'f';
@@ -314,7 +312,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 		File(found).Delete();
 		File(String(found).Append(".new")).Move(found);
 	}
-	else				// Unix style DB
+	else						  // Unix style DB
 	{
 		debug_out->OutputLine("Found Unix style DB.");
 		debug_out->OutputLine(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString()));

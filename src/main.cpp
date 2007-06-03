@@ -155,7 +155,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org/", pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
 		pos.y = -1;
@@ -470,7 +470,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->Add(check_cuesheet);
 	mainWnd->Add(check_playlist);
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		mainWnd->Add(button_play);
 		mainWnd->Add(button_pause);
@@ -586,7 +586,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(check_cuesheet);
 	DeleteObject(check_playlist);
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		DeleteObject(button_play);
 		DeleteObject(button_pause);
@@ -839,10 +839,13 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 	else if (currentConfig->encoder == ENCODER_FLAC)	dlg = new ConfigureFLAC();
 	else if (currentConfig->encoder == ENCODER_TVQ)		dlg = new ConfigureTVQ();
 
-	dlg->SetParentWindow(mainWnd);
-	dlg->ShowDialog();
+	if (dlg != NIL)
+	{
+		dlg->SetParentWindow(mainWnd);
+		dlg->ShowDialog();
 
-	DeleteObject(dlg);
+		DeleteObject(dlg);
+	}
 
 	currentConfig->SaveSettings();
 }
@@ -931,7 +934,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		if (format->isCDTrack) discIDStrings.Add(format->discid, format->drive);
 	}
 
-	for (Int j = 0; j < discIDs.GetNOfEntries(); j++)
+	for (Int j = 0; j < discIDs.Length(); j++)
 	{
 		Int	 oDrive = currentConfig->cdrip_activedrive;
 
@@ -1019,11 +1022,11 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 		if (format->isCDTrack) drives.Add(format->drive, format->drive);
 	}
 
-	if (drives.GetNOfEntries() > 0)
+	if (drives.Length() > 0)
 	{
 		CDDBBatch	*queries = new CDDBBatch(currentConfig);
 
-		for (Int j = 0; j < drives.GetNOfEntries(); j++)
+		for (Int j = 0; j < drives.Length(); j++)
 		{
 			Int		 drive = drives.GetNth(j);
 			CDDBRemote	 cddb(currentConfig);
@@ -1185,7 +1188,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 		mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 		mainWnd->Paint(SP_PAINT);
 
-		if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+		if (DLLInterfaces::winamp_out_modules.Length() > 0)
 		{
 			button_play->Hide();
 			button_pause->Hide();
@@ -1524,7 +1527,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&BonkEncGUI::PlaySelectedItem, this);
 		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&BonkEncGUI::StopPlayback, this);
@@ -2276,7 +2279,7 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
 	TipOfTheDay	*dlg = new TipOfTheDay(&currentConfig->showTips);
 
-	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(28, i18n->GetNOfLanguages()))));
+	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(29, i18n->GetNOfLanguages()))));
 	dlg->AddTip(String(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1")).Replace("%1", "http://www.bonkenc.org/"));
 	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
 	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));

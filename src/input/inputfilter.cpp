@@ -15,7 +15,9 @@
 
 BonkEnc::InputFilter::InputFilter(Config *config, Track *iFormat)
 {
-	error		= 0;
+	errorState	= False;
+	errorString	= "Unknown error";
+
 	inBytes		= 0;
 	fileSize	= 0;
 	format		= iFormat;
@@ -31,11 +33,6 @@ Bool BonkEnc::InputFilter::SetFileSize(UnsignedInt newFileSize)
 	fileSize = newFileSize;
 
 	return true;
-}
-
-Int BonkEnc::InputFilter::GetInBytes()
-{
-	return inBytes;
 }
 
 Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track *nFormat)
@@ -86,11 +83,11 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 
 			if (genre[0] == '(')
 			{
-				for (Int i = 1; i < genre.Length(); i++)
+				for (Int j = 1; j < genre.Length(); j++)
 				{
-					if (genre[i] == ')') break;
+					if (genre[j] == ')') break;
 
-					genreID[i - 1] = genre[i];
+					genreID[j - 1] = genre[j];
 				}
 			}
 

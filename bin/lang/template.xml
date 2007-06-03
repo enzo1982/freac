@@ -215,7 +215,7 @@
     <entry id="203" string="Prefer CDDB over CD Text"/>
     <entry id="204" string="CD options"/>
     <entry id="205" string="Submitting CD information"/>
-    <entry id="206" string="Cannot open file:"/>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2"/>
     <entry id="207" string="Query CDDB database"/>
     <entry id="208" string="Help"/>
     <entry id="209" string="index_en.html"/>
@@ -396,5 +396,9 @@
     <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?"/>
     <entry id="385" string="Cannot access input file: %1"/>
     <entry id="386" string="Cannot create output file: %1"/>
+    <entry id="387" string="File not found"/>
+    <entry id="388" string="Unknown file type"/>
+    <entry id="389" string="Unsupported audio format"/>
+    <entry id="390" string="Unknown error"/>
   </data>
 </LangFile>

@@ -13,8 +13,9 @@ FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (April 2007)
+	Version 1.1 CVS (Juni 2007)
 
+		- Sprachunterstützung für Katalanisch hinzugefügt
 		- Deutsche und italienische Anleitungen hinzugefügt
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
@@ -22,7 +23,8 @@ Geschichte
 		- Absturz beim Codieren in einzelne MP4-Datei behoben
 		- Ungewolltes Downsampling beim Codieren von MP3s mit niedriger Bitrate behoben
 		- Fehler beim Lesen von Vorbis (und FLAC) Comment Tags behoben
-		- Fehler behoben, durch den Xing-Header bei Verwendung von LAME-Voreinstellungen nicht geschrieben wurden
+		- Fehlende Xing-Header bei Verwendung von LAME-Voreinstellungen behoben
+		- Absturz beim Lesen von nicht unterstützten Sun Audio Dateien (.au) behoben
 		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
 		- Verbesserungen beim Installer
 		- Viele Fehler im Kommandozeilen-Codierer behoben
@@ -349,7 +351,7 @@ Besonderen Dank
 			   Silky (Japanisch),
 			   Federico Reddig (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
-			   Fotis Evangelou (Griechisch),
+			   Nikolaos-Ioannis Galanis (Griechisch),
 			   Dmitry Gusakov (Russisch),
 			   Henryk Ning (Chinesisch, traditionell),
 			   Nimin (Chinesisch, vereinfacht),
@@ -369,7 +371,8 @@ Besonderen Dank
 			   Vincent Rateau (Esperanto),
 			   Murat Ozkan (Türkisch),
 			   Naglis Jonaitis (Litauisch),
-			   Borca Alin (Rumänisch)
+			   Borca Alin (Rumänisch),
+			   El libre (Katalanisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

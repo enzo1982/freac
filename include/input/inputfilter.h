@@ -34,6 +34,9 @@ namespace BonkEnc
 		protected:
 			Int		 inBytes;
 
+			Bool		 errorState;
+			String		 errorString;
+
 			UnsignedInt	 fileSize;
 			Track		*format;
 			Config		*currentConfig;
@@ -43,8 +46,6 @@ namespace BonkEnc
 
 			const String	&GetID3CategoryName(Int);
 		public:
-			Int		 error;
-
 					 InputFilter(Config *, Track *);
 			virtual		~InputFilter();
 
@@ -53,7 +54,10 @@ namespace BonkEnc
 			virtual Track	*GetFileInfo(const String &) = 0;
 			virtual Bool	 SetFileSize(UnsignedInt);
 
-			Int		 GetInBytes();
+			Int		 GetInBytes()		{ return inBytes; }
+
+			Bool		 GetErrorState()	{ return errorState; }
+			const String	&GetErrorString()	{ return errorString; }
 	};
 };
 

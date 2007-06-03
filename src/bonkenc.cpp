@@ -106,7 +106,7 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	DLLInterfaces::LoadWinampDLLs();
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() <= currentConfig->output_plugin) currentConfig->output_plugin = 0;
+	if (DLLInterfaces::winamp_out_modules.Length() <= currentConfig->output_plugin) currentConfig->output_plugin = 0;
 
 	int	 nextEC = 0;
 

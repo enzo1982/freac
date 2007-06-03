@@ -314,7 +314,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		InitProgressValues();
 
-		if (filter_out->error || filter_in->error) skip_track = True;
+		if (filter_out->GetErrorState() || filter_in->GetErrorState()) skip_track = True;
 
 		if (!skip_track && trackInfo->length >= 0)
 		{

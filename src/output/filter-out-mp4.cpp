@@ -18,7 +18,7 @@ BonkEnc::FilterOutMP4::FilterOutMP4(Config *config, Track *format) : OutputFilte
 	{
 		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
-		error = 1;
+		errorState = True;
 
 		return;
 	}

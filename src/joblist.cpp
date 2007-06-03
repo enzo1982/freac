@@ -67,7 +67,7 @@ BonkEnc::JobList::~JobList()
 
 Int BonkEnc::JobList::GetNOfTracks()
 {
-	return tracks.GetNOfEntries();
+	return tracks.Length();
 }
 
 BonkEnc::Track *BonkEnc::JobList::GetNthTrack(Int n)
@@ -192,7 +192,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	Array<String>	 types;
 	Array<String>	 extensions;
 
-	for (Int i = 0; i < DLLInterfaces::winamp_in_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < DLLInterfaces::winamp_in_plugins.Length(); i++)
 	{
 		Int		 n = 1;
 		Int		 k = 0;
@@ -260,7 +260,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	if (BonkEnc::currentConfig->enable_vorbis)							fileTypes.Append("; *.ogg");
 													fileTypes.Append("; *.voc; *.wav");
 
-	for (Int l = 0; l < extensions.GetNOfEntries(); l++) fileTypes.Append("; ").Append(extensions.GetNth(l));
+	for (Int l = 0; l < extensions.Length(); l++) fileTypes.Append("; ").Append(extensions.GetNth(l));
 
 													dialog->AddFilter(BonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
 	if (BonkEnc::currentConfig->enable_faad2)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("AAC Files")).Append(" (*.aac)"), "*.aac");
@@ -275,7 +275,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
 	if (BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows CD Audio Track")).Append(" (*.cda)"), "*.cda");
 
-	for (Int m = 0; m < types.GetNOfEntries(); m++) dialog->AddFilter(types.GetNth(m), extensions.GetNth(m));
+	for (Int m = 0; m < types.Length(); m++) dialog->AddFilter(types.GetNth(m), extensions.GetNth(m));
 
 	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
 
@@ -308,23 +308,36 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 	Track		*format = NIL;
 	InputFilter	*filter_in = Utilities::CreateInputFilter(file, NIL);
 
-	if (filter_in != NIL)
+	if (filter_in == NIL)
 	{
-		format = filter_in->GetFileInfo(file);
+		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("Unknown file type")));
 
-		delete filter_in;
+		return;
 	}
+
+	format = filter_in->GetFileInfo(file);
+
+	String	 errorString = filter_in->GetErrorString();
+
+	delete filter_in;
 
 	if (format == NIL)
 	{
-		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Cannot open file:")).Append(" ").Append(file));
+		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString(errorString)));
+
+		return;
+	}
+
+	if (format->rate == 0 || format->channels == 0)
+	{
+		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString(errorString)));
 
 		return;
 	}
 
 	if (format->isCDTrack && BonkEnc::currentConfig->cdrip_autoRead_active)
 	{
-		for (Int i = 0; i < tracks.GetNOfEntries(); i++)
+		for (Int i = 0; i < tracks.Length(); i++)
 		{
 			Track	*track = tracks.GetNth(i);
 
@@ -426,12 +439,12 @@ Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
 		const Array<Directory>	&directories = directory.GetDirectories();
 		const Array<File>	&files = directory.GetFiles();
 
-		for (Int i = 0; i < directories.GetNOfEntries(); i++) AddTrackByDragAndDrop(directories.GetNth(i));
-		for (Int j = 0; j < files.GetNOfEntries(); j++) AddTrackByFileName(files.GetNth(j), NIL, False);
+		for (Int i = 0; i < directories.Length(); i++) AddTrackByDragAndDrop(directories.GetNth(i));
+		for (Int j = 0; j < files.Length(); j++) AddTrackByFileName(files.GetNth(j), NIL, False);
 	}
 	else
 	{
-		Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Cannot open file:")).Append(" ").Append(file));
+		Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("File not found")));
 	}
 }
 
@@ -440,9 +453,9 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 	Directory		 dir = Directory(directory);
 	const Array<File>	&files = dir.GetFilesByPattern(pattern);
 
-	for (Int j = 0; j < files.GetNOfEntries(); j++) AddTrackByFileName(files.GetNth(j), NIL, False);
+	for (Int j = 0; j < files.Length(); j++) AddTrackByFileName(files.GetNth(j), NIL, False);
 
-	if (files.GetNOfEntries() == 0) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
+	if (files.Length() == 0) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
 }
 
 Void BonkEnc::JobList::RemoveSelectedTrack()
@@ -474,20 +487,20 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 
 	RemoveNthTrack(n);
 
-	if (GetNOfEntries() > 0)
+	if (Length() > 0)
 	{
-		if (n < GetNOfEntries())	SelectEntry(GetNthEntry(n));
+		if (n < Length())	SelectEntry(GetNthEntry(n));
 		else				SelectEntry(GetNthEntry(n - 1));
 	}
 
-	if (GetNOfEntries() > 0)	onSelectTrack.Emit(GetSelectedTrack());
+	if (Length() > 0)	onSelectTrack.Emit(GetSelectedTrack());
 	else				onSelectNone.Emit();
 }
 
 
 Void BonkEnc::JobList::SelectAll()
 {
-	for (Int i = 0; i < GetNOfEntries(); i++)
+	for (Int i = 0; i < Length(); i++)
 	{
 		if (!GetNthEntry(i)->IsMarked()) GetNthEntry(i)->SetMark(True);
 	}
@@ -495,7 +508,7 @@ Void BonkEnc::JobList::SelectAll()
 
 Void BonkEnc::JobList::SelectNone()
 {
-	for (Int i = 0; i < GetNOfEntries(); i++)
+	for (Int i = 0; i < Length(); i++)
 	{
 		if (GetNthEntry(i)->IsMarked()) GetNthEntry(i)->SetMark(False);
 	}
@@ -503,7 +516,7 @@ Void BonkEnc::JobList::SelectNone()
 
 Void BonkEnc::JobList::ToggleSelection()
 {
-	for (Int i = 0; i < GetNOfEntries(); i++)
+	for (Int i = 0; i < Length(); i++)
 	{
 		if (GetNthEntry(i)->IsMarked())	GetNthEntry(i)->SetMark(False);
 		else				GetNthEntry(i)->SetMark(True);
@@ -631,7 +644,7 @@ Void BonkEnc::JobList::OnSelectEntry()
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()
 {
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfEntries())));
+	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(Length())));
 
 	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
 	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));

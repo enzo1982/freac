@@ -150,7 +150,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 		{
 			Bool	 foundCollision = False;
 
-			for (Int i = 0; i < cddbInfo.trackOffsets.GetNOfEntries(); i++)
+			for (Int i = 0; i < cddbInfo.trackOffsets.Length(); i++)
 			{
 				if (cddbInfo.trackOffsets.GetNth(i) != revisionInfo.trackOffsets.GetNth(i))
 				{
@@ -198,7 +198,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append("# ").Append("\n");
 	content.Append("# Track frame offsets:").Append("\n");
 
-	for (Int i = 0; i < cddbInfo.trackOffsets.GetNOfEntries(); i++)
+	for (Int i = 0; i < cddbInfo.trackOffsets.Length(); i++)
 	{
 		content.Append("#     ").Append(String::FromInt(cddbInfo.trackOffsets.GetNth(i))).Append("\n");
 	}
@@ -215,7 +215,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append(FormatCDDBEntry("DYEAR", String::FromInt(cddbInfo.dYear)));
 	content.Append(FormatCDDBEntry("DGENRE", cddbInfo.dGenre));
 
-	for (Int j = 0; j < cddbInfo.trackTitles.GetNOfEntries(); j++)
+	for (Int j = 0; j < cddbInfo.trackTitles.Length(); j++)
 	{
 		if (cddbInfo.dArtist == "Various") content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), String(cddbInfo.trackArtists.GetNth(j)).Append(" / ").Append(cddbInfo.trackTitles.GetNth(j))));
 		else				   content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), cddbInfo.trackTitles.GetNth(j)));
@@ -223,7 +223,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 
 	content.Append(FormatCDDBEntry("EXTD", cddbInfo.comment));
 
-	for (Int k = 0; k < cddbInfo.trackComments.GetNOfEntries(); k++)
+	for (Int k = 0; k < cddbInfo.trackComments.Length(); k++)
 	{
 		content.Append(FormatCDDBEntry(String("EXTT").Append(String::FromInt(k)), cddbInfo.trackComments.GetNth(k)));
 	}
@@ -289,7 +289,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 			String	 track;
 			Int	 k;
 
-			for (k = 6; k >= 0; k++)
+			for (k = 6; True; k++)
 			{
 				if (line[k] == '=')	break;
 				else			track[k - 6] = line[k];
@@ -335,7 +335,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 			String	 track;
 			Int	 k;
 
-			for (k = 4; k >= 0; k++)
+			for (k = 4; True; k++)
 			{
 				if (line[k] == '=')	break;
 				else			track[k - 4] = line[k];

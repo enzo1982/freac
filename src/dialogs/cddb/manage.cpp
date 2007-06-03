@@ -193,7 +193,7 @@ Void BonkEnc::cddbManageDlg::OK()
 
 				if (trackInfo->discid != cddbInfo.DiscIDToString()) continue;
 
-				for (Int m = 0; m < cddbInfo.trackTitles.GetNOfEntries(); m++)
+				for (Int m = 0; m < cddbInfo.trackTitles.Length(); m++)
 				{
 					if (trackInfo->cdTrack == m + 1)
 					{
@@ -239,7 +239,7 @@ Void BonkEnc::cddbManageDlg::SetCharset()
 
 	String		 preview = String(dArtist).Append(" - ").Append(dTitle).Append("\n\n");
 
-	for (Int i = 0; i < entry.oTrackTitles.GetNOfEntries(); i++)
+	for (Int i = 0; i < entry.oTrackTitles.Length(); i++)
 	{
 		String	 artist;
 		String	 title;
@@ -258,7 +258,7 @@ Void BonkEnc::cddbManageDlg::SelectEntry()
 	const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\n\n");
 
-	for (Int i = 0; i < entry.trackTitles.GetNOfEntries(); i++)
+	for (Int i = 0; i < entry.trackTitles.Length(); i++)
 	{
 		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? String(entry.trackArtists.GetNth(i)).Append(" - ") : "").Append(entry.trackTitles.GetNth(i)).Append("\n");
 	}
@@ -293,7 +293,7 @@ Void BonkEnc::cddbManageDlg::SaveEntry()
 	entry.dGenre.ImportFrom(edit_charset->GetText(), entry.oDGenre);
 	entry.comment.ImportFrom(edit_charset->GetText(), entry.oComment);
 
-	for (Int i = 0; i < entry.trackArtists.GetNOfEntries(); i++)
+	for (Int i = 0; i < entry.trackArtists.Length(); i++)
 	{
 		String	 artist;
 		String	 title;

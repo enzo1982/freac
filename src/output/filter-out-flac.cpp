@@ -25,7 +25,7 @@ BonkEnc::FilterOutFLAC::FilterOutFLAC(Config *config, Track *format) : OutputFil
 	{
 		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
-		error = 1;
+		errorState = True;
 
 		return;
 	}
@@ -39,8 +39,6 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 {
 	encoder = ex_FLAC__stream_encoder_new();
 
-	numMetadata = 0;
-
 	if (currentConfig->enable_vctags)
 	{
 		char	*prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
@@ -48,7 +46,7 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 		FLAC__StreamMetadata				*vorbiscomment = ex_FLAC__metadata_object_new(FLAC__METADATA_TYPE_VORBIS_COMMENT);
 		FLAC__StreamMetadata_VorbisComment_Entry	 comment;
 
-		metadata[numMetadata++] = vorbiscomment;
+		metadata.Add(vorbiscomment);
 
 		if (currentConfig->default_comment != NIL)
 		{
@@ -107,12 +105,12 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 
 	if (currentConfig->copy_picture_tags)
 	{
-		for (Int i = 0; i < format->pictures.GetNOfEntries(); i++)
+		for (Int i = 0; i < format->pictures.Length(); i++)
 		{
 			FLAC__StreamMetadata	*picture = ex_FLAC__metadata_object_new(FLAC__METADATA_TYPE_PICTURE);
 			Picture			*picInfo = format->pictures.GetNth(i);
 
-			metadata[numMetadata++] = picture;
+			metadata.Add(picture);
 
 			ex_FLAC__metadata_object_picture_set_mime_type(picture, picInfo->mime, true);
 			ex_FLAC__metadata_object_picture_set_description(picture, (FLAC__byte *) picInfo->description.ConvertTo("UTF-8"), true);
@@ -126,9 +124,19 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 
 	padding->length = 4096;
 
-	metadata[numMetadata++] = padding;
+	metadata.Add(padding);
 
-	ex_FLAC__stream_encoder_set_metadata(encoder, metadata, numMetadata);
+	// Put metadata in an array and hand it to the encoder
+	{
+		FLAC__StreamMetadata	**metadataArray = new FLAC__StreamMetadata * [metadata.Length()];
+
+		for (Int i = 0; i < metadata.Length(); i++) metadataArray[i] = metadata.GetNth(i);
+
+		ex_FLAC__stream_encoder_set_metadata(encoder, metadataArray, metadata.Length());
+
+		delete [] metadataArray;
+	}
+
 	ex_FLAC__stream_encoder_set_channels(encoder, format->channels);
 	ex_FLAC__stream_encoder_set_sample_rate(encoder, format->rate);
 	ex_FLAC__stream_encoder_set_bits_per_sample(encoder, format->bits == 32 ? 24 : format->bits);
@@ -175,7 +183,7 @@ Bool BonkEnc::FilterOutFLAC::Deactivate()
 	ex_FLAC__stream_encoder_finish(encoder);
 	ex_FLAC__stream_encoder_delete(encoder);
 
-	for (Int i = 0; i < numMetadata; i++) ex_FLAC__metadata_object_delete(metadata[i]);
+	for (Int i = 0; i < metadata.Length(); i++) ex_FLAC__metadata_object_delete(metadata.GetNth(i));
 
 	return true;
 }
