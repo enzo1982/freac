@@ -13,7 +13,9 @@
 
 BonkEnc::OutputFilter::OutputFilter(Config *config, Track *iFormat)
 {
-	error		= 0;
+	errorState	= False;
+	errorString	= "Unknown error";
+
 	format		= iFormat;
 	currentConfig	= config;
 }

@@ -303,16 +303,29 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 	Track		*format = NIL;
 	InputFilter	*filter_in = Utilities::CreateInputFilter(file, NIL);
 
-	if (filter_in != NIL)
+	if (filter_in == NIL)
 	{
-		format = filter_in->GetFileInfo(file);
+		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("Unknown file type")));
 
-		delete filter_in;
+		return;
 	}
+
+	format = filter_in->GetFileInfo(file);
+
+	String	 errorString = filter_in->GetErrorString();
+
+	delete filter_in;
 
 	if (format == NIL)
 	{
-		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Cannot open file:")).Append(" ").Append(file));
+		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString(errorString)));
+
+		return;
+	}
+
+	if (format->rate == 0 || format->channels == 0)
+	{
+		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString(errorString)));
 
 		return;
 	}
@@ -325,13 +338,6 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 
 			if (track->discid == format->discid && track->cdTrack == format->cdTrack) return;
 		}
-	}
-
-	if (format->rate == 0 || format->channels == 0)
-	{
-		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Cannot open file:")).Append(" ").Append(file));
-
-		return;
 	}
 
 	if (format->artist == NIL && format->title == NIL)
@@ -426,7 +432,7 @@ Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
 	}
 	else
 	{
-		Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Cannot open file:")).Append(" ").Append(file));
+		Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("File not found")));
 	}
 }
 

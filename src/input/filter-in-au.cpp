@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -31,12 +31,12 @@ Bool BonkEnc::FilterInAU::Activate()
 
 	driver->Seek(headerSize);
 
-	return true;
+	return True;
 }
 
 Bool BonkEnc::FilterInAU::Deactivate()
 {
-	return true;
+	return True;
 }
 
 Int BonkEnc::FilterInAU::ReadData(Buffer<UnsignedByte> &data, Int size)
@@ -65,15 +65,28 @@ BonkEnc::Track *BonkEnc::FilterInAU::GetFileInfo(const String &inFile)
 	nFormat->length = uint32(f_in->InputNumberRaw(4));
 	nFormat->bits = uint32(f_in->InputNumberRaw(4));
 
-	if (nFormat->bits == 3)		nFormat->bits = 16;
-	else if (nFormat->bits == 2)	nFormat->bits = 8;
+	if	(nFormat->bits == 2) nFormat->bits = 8;
+	else if (nFormat->bits == 3) nFormat->bits = 16;
+	else if (nFormat->bits == 4) nFormat->bits = 24;
+	else if (nFormat->bits == 5) nFormat->bits = 32;
+	else { errorState = True; errorString = "Unsupported audio format"; }
 
-	nFormat->length = nFormat->length / (nFormat->bits / 8);
+	if (!errorState)
+	{
+		nFormat->length = nFormat->length / (nFormat->bits / 8);
 
-	nFormat->rate = uint32(f_in->InputNumberRaw(4));
-	nFormat->channels = uint32(f_in->InputNumberRaw(4));
+		nFormat->rate = uint32(f_in->InputNumberRaw(4));
+		nFormat->channels = uint32(f_in->InputNumberRaw(4));
+	}
 
 	delete f_in;
+
+	if (errorState)
+	{
+		delete nFormat;
+
+		return NIL;
+	}
 
 	return nFormat;
 }

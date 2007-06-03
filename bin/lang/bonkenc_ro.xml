@@ -215,7 +215,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">CDDB în loc de CD Text</entry>
   <entry id="204" string="CD options">Opţiuni CD</entry>
   <entry id="205" string="Submitting CD information">Trimitere informaţii CD</entry>
-  <entry id="206" string="Cannot open file:">Nu pot deschide fişierul:</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Nu pot deschide fişierul: %1&#10;&#10;%2</entry>
   <entry id="207" string="Query CDDB database">Interogare bază CDDB</entry>
   <entry id="208" string="Help">Ajutor</entry>
   <entry id="209" string="index_en.html">index.html</entry>

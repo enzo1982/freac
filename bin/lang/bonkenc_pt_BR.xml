@@ -215,7 +215,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">CDDB preferível ao CD-Text</entry>
   <entry id="204" string="CD options">Opções do CD</entry>
   <entry id="205" string="Submitting CD information">Enviando informações do CD</entry>
-  <entry id="206" string="Cannot open file:">Não consegue abrir o arquivo:</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Não consegue abrir o arquivo: %1&#10;&#10;%2</entry>
   <entry id="207" string="Query CDDB database">Pesquisar a base de dados do CDDB</entry>
   <entry id="208" string="Help">Ajuda</entry>
   <entry id="209" string="index_en.html">index.html</entry>

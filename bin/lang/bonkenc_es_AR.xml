@@ -213,7 +213,7 @@
     <entry id="202" string="Please fill all fields and track titles before submitting.">Por favor, completa todos los campos y títulos de pista antes de enviar.</entry>
     <entry id="204" string="CD options">Opciones de CD</entry>
     <entry id="205" string="Submitting CD information">Enviando información de CD</entry>
-    <entry id="206" string="Cannot open file:">No se puede abrir archivo:</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">No se puede abrir archivo: %1&#10;&#10;%2</entry>
     <entry id="207" string="Query CDDB database">Consultar base de datos CDDB</entry>
     <entry id="208" string="Help">Ayuda</entry>
     <entry id="209" string="index_en.html">index.html</entry>

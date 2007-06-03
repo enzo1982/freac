@@ -213,7 +213,7 @@
     <entry id="202" string="Please fill all fields and track titles before submitting.">Пожалуйста заполните все поля перед подтверждением.</entry>
     <entry id="204" string="CD options">Настройка CD</entry>
     <entry id="205" string="Submitting CD information">Подтвердить информацию о CD</entry>
-    <entry id="206" string="Cannot open file:">Не могу открыть файл:</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Не могу открыть файл: %1&#10;&#10;%2</entry>
     <entry id="207" string="Query CDDB database">Запрос в базу CDDB</entry>
     <entry id="208" string="Help">Помощь</entry>
     <entry id="209" string="index_en.html">index.html</entry>

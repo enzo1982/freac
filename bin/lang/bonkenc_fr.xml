@@ -2,11 +2,11 @@
 <LangFile>
  <info>
   <property name="program">BonkEnc</property>
-  <property name="version">1.0</property>
+  <property name="version">1.0.2</property>
   <property name="language">French / Français</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
-  <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;</property>
+  <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;, Grégoire Chabord</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -49,7 +49,7 @@
   <entry id="37" string="Windows CD Audio Track">Piste de CD audio Windows</entry>
   <entry id="38" string="All Files">Tous les fichiers</entry>
   <entry id="39" string="You have not selected a file!">Aucun fichier n'est sélectionné !</entry>
-  <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Le thread d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
+  <entry id="40" string="The encoding thread is still running! Do you really want to quit?">La tâche d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
   <entry id="41" string="Currently encoding">Encodage en cours</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ce programme est diffusé selon les termes&#10;de la licence GNU GPL (General Public License).</entry>
   <entry id="43" string="CDDB query">Requête CDDB</entry>
@@ -72,7 +72,7 @@
   <entry id="60" string="Encoder">Encodeur</entry>
   <entry id="61" string="Output directory">Répertoire de sortie</entry>
   <entry id="62" string="Browse">Parcourir</entry>
-  <entry id="63" string="Select the folder in which the encoded files will be placed:">Sélectionnez le dossier de stockage des fichiers encodés :</entry>
+  <entry id="63" string="Select the folder in which the encoded files will be placed:">Sélectionnez le dossier de destination des fichiers encodés :</entry>
   <entry id="64" string="Encoding">Encodage</entry>
   <entry id="65" string="Author">Auteur</entry>
   <entry id="66" string="URL">URL</entry>
@@ -215,7 +215,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">Préférer CDDB au texte du CD</entry>
   <entry id="204" string="CD options">Options du CD</entry>
   <entry id="205" string="Submitting CD information">Soumission des informations du CD</entry>
-  <entry id="206" string="Cannot open file:">Impossible d'ouvrir le fichier :</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Impossible d'ouvrir le fichier : %1&#10;&#10;%2</entry>
   <entry id="207" string="Query CDDB database">Interroger la base de données CDDB</entry>
   <entry id="208" string="Help">Aide</entry>
   <entry id="209" string="index_en.html">index.html</entry>
@@ -354,7 +354,7 @@
   <entry id="343" string="Use encoder output directory">Utiliser répertoire sortie encodeur</entry>
   <entry id="344" string="Various artists">Artistes divers</entry>
   <entry id="345" string="Data track">Piste de données</entry>
-  <entry id="346" string="Select the folder in which the playlist files will be placed:">Sélectionnez le dossier de stockage des fichiers de sélections :</entry>
+  <entry id="346" string="Select the folder in which the playlist files will be placed:">Sélectionnez le dossier de destination des fichiers de la playlist :</entry>
   <entry id="347" string="Use input file directory if possible">Utiliser répertoire fichier entrée si possible</entry>
   <entry id="348" string="Encode to input file directory if possible">Encoder dans répertoire fichier entrée si possible</entry>
   <entry id="349" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>

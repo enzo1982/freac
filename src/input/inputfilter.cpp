@@ -15,7 +15,9 @@
 
 BonkEnc::InputFilter::InputFilter(Config *config, Track *iFormat)
 {
-	error		= 0;
+	errorState	= False;
+	errorString	= "Unknown error";
+
 	inBytes		= 0;
 	fileSize	= 0;
 	format		= iFormat;
@@ -31,11 +33,6 @@ Bool BonkEnc::InputFilter::SetFileSize(UnsignedInt newFileSize)
 	fileSize = newFileSize;
 
 	return true;
-}
-
-Int BonkEnc::InputFilter::GetInBytes()
-{
-	return inBytes;
 }
 
 Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track *nFormat)

@@ -18,7 +18,7 @@ BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputF
 	{
 		Utilities::ErrorMessage("Bad sampling rate! BladeEnc supports only 32, 44.1 or 48kHz.");
 
-		error = 1;
+		errorState = True;
 
 		return;
 	}
@@ -27,7 +27,7 @@ BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputF
 	{
 		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
-		error = 1;
+		errorState = True;
 
 		return;
 	}

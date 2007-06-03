@@ -31,7 +31,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 			{
 				Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
 
-				error = 1;
+				errorState = True;
 
 				return;
 			}
@@ -40,7 +40,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 			{
 				Utilities::ErrorMessage("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.");
 
-				error = 1;
+				errorState = True;
 
 				return;
 			}
@@ -49,7 +49,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 			{
 				Utilities::ErrorMessage("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.");
 
-				error = 1;
+				errorState = True;
 
 				return;
 			}
@@ -61,7 +61,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 			{
 				Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
 
-				error = 1;
+				errorState = True;
 
 				return;
 			}
@@ -70,7 +70,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 			{
 				Utilities::ErrorMessage("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.");
 
-				error = 1;
+				errorState = True;
 
 				return;
 			}
@@ -79,7 +79,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 			{
 				Utilities::ErrorMessage("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.");
 
-				error = 1;
+				errorState = True;
 
 				return;
 			}
@@ -87,7 +87,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 		default:
 			Utilities::ErrorMessage("Bad sampling rate! The selected sampling rate is not supported.");
 
-			error = 1;
+			errorState = True;
 
 			return;
 	}
@@ -96,7 +96,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 	{
 		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
 
-		error = 1;
+		errorState = True;
 
 		return;
 	}

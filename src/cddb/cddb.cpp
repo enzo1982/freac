@@ -289,7 +289,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 			String	 track;
 			Int	 k;
 
-			for (k = 6; k >= 0; k++)
+			for (k = 6; True; k++)
 			{
 				if (line[k] == '=')	break;
 				else			track[k - 6] = line[k];
@@ -335,7 +335,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 			String	 track;
 			Int	 k;
 
-			for (k = 4; k >= 0; k++)
+			for (k = 4; True; k++)
 			{
 				if (line[k] == '=')	break;
 				else			track[k - 4] = line[k];

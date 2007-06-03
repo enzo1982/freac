@@ -215,7 +215,7 @@
     <entry id="203" string="Prefer CDDB over CD Text">CD-Text-Infos überschreiben</entry>
     <entry id="204" string="CD options">CD-Optionen</entry>
     <entry id="205" string="Submitting CD information">Sende CD-Informationen</entry>
-    <entry id="206" string="Cannot open file:">Kann Datei nicht öffnen:</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
     <entry id="207" string="Query CDDB database">CDDB-Datenbank abfragen</entry>
     <entry id="208" string="Help">Hilfe</entry>
     <entry id="209" string="index_en.html">index_de.html</entry>
@@ -396,5 +396,9 @@
     <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc kann beim Start eine automatische Onlinesuche nach&#10;Programmaktualisierungen durchführen.&#10;&#10;Möchten Sie, dass BonkEnc beim Start nach Aktualisierungen sucht?</entry>
     <entry id="385" string="Cannot access input file: %1">Kann Eingabedatei nicht lesen: %1</entry>
     <entry id="386" string="Cannot create output file: %1">Kann Ausgabedatei nicht öffnen: %1</entry>
+    <entry id="387" string="File not found">Datei nicht gefunden</entry>
+    <entry id="388" string="Unknown file type">Unbekannter Dateityp</entry>
+    <entry id="389" string="Unsupported audio format">Nicht unterstütztes Audioformat</entry>
+    <entry id="390" string="Unknown error">Unbekannter Fehler</entry>
   </data>
 </LangFile>

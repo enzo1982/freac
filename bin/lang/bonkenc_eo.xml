@@ -215,7 +215,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">Preferi CDDB ol KD-teksto</entry>
   <entry id="204" string="CD options">KD-opcioj</entry>
   <entry id="205" string="Submitting CD information">Sendanta KD-informaĵoj</entry>
-  <entry id="206" string="Cannot open file:">Ne eblas malfermi la dosieron:</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>
   <entry id="207" string="Query CDDB database">Demandi CDDB-datumbankon</entry>
   <entry id="208" string="Help">Helpo</entry>
   <entry id="209" string="index_en.html">index_eo.html</entry>

@@ -215,7 +215,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">Перевага CDDB над CD текстом</entry>
   <entry id="204" string="CD options">CD опції</entry>
   <entry id="205" string="Submitting CD information">Підтвердіть інформацію про CD</entry>
-  <entry id="206" string="Cannot open file:">Не можу відкрити файл</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Не можу відкрити файл %1&#10;&#10;%2</entry>
   <entry id="207" string="Query CDDB database">Запит у базу даних CDDB</entry>
   <entry id="208" string="Help">Допомога</entry>
   <entry id="209" string="index_en.html">index.html</entry>

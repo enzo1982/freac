@@ -215,7 +215,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">Naudoti CDDB virš CD teksto</entry>
   <entry id="204" string="CD options">CD pasirinktys</entry>
   <entry id="205" string="Submitting CD information">Perduoti CD informaciją</entry>
-  <entry id="206" string="Cannot open file:">Nepavyksta atidaryti failo:</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;%2</entry>
   <entry id="207" string="Query CDDB database">Užklausti CDDB duomenų bazę</entry>
   <entry id="208" string="Help">Pagalba</entry>
   <entry id="209" string="index_en.html">index.html</entry>
