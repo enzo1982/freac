@@ -6,7 +6,7 @@
   <property name="language">Slovak / Slovenčina</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
-  <property name="author">Peter Krajcár &lt;krjcr@zmail.sk&gt;</property>
+  <property name="author">Peter Krajcár &lt;krajcar.peter@gmail.com&gt;</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -50,8 +50,8 @@
   <entry id="38" string="All Files">Všetky súbory</entry>
   <entry id="39" string="You have not selected a file!">Nevybrali ste žiaden súbor!</entry>
   <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Proces kódovania stále beží! Skutočne chcete ukončiť program?</entry>
-  <entry id="41" string="Currently encoding">Kódujem...</entry>
-  <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šírený pod General Public License (GPL).</entry>
+  <entry id="41" string="Currently encoding">Práve kódujem</entry>
+  <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šírený pod&#10;General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">Požiadavka na CDDB</entry>
   <entry id="44" string="About BonkEnc">O BonkEnc...</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">Pre WaveOut filter nemožno meniť žiadne nastavenia!</entry>
@@ -73,7 +73,7 @@
   <entry id="61" string="Output directory">Výstupná zložka</entry>
   <entry id="62" string="Browse">Prehľadať</entry>
   <entry id="63" string="Select the folder in which the encoded files will be placed:">Vyberte zložku, v ktorej budú umiestnené zakódované súbory:</entry>
-  <entry id="64" string="Encoding">Kódujem...</entry>
+  <entry id="64" string="Encoding">Kódovanie</entry>
   <entry id="65" string="Author">Autor</entry>
   <entry id="66" string="URL">URL</entry>
   <entry id="67" string="Information">Informácie</entry>
@@ -87,7 +87,7 @@
   <entry id="75" string="Use native NT SCSI library">Použiť natívne NT SCSI knižnice</entry>
   <entry id="76" string="Overlap only">Len overlap</entry>
   <entry id="77" string="No verify">Bez kontroly</entry>
-  <entry id="78" string="No scratch repair">Neopravovať škrabamce</entry>
+  <entry id="78" string="No scratch repair">Neopravovať škrabance</entry>
   <entry id="79" string="Full cdparanoia mode">Plný &quot;cdparanoia&quot; mód</entry>
   <entry id="80" string="Bitrate">Bitrate</entry>
   <entry id="81" string="Copyright bit">Copyright bit</entry>
@@ -215,7 +215,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">Uprednostniť CDDB pred CD-textom</entry>
   <entry id="204" string="CD options">Možnosti CD</entry>
   <entry id="205" string="Submitting CD information">Predkladám CD info</entry>
-  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť sôbor: %1&#10;&#10;%2</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť súbor: %1&#10;&#10;%2</entry>
   <entry id="207" string="Query CDDB database">Požiadať CDDB databázu</entry>
   <entry id="208" string="Help">Pomoc</entry>
   <entry id="209" string="index_en.html">index.html</entry>
@@ -230,7 +230,7 @@
   <entry id="218" string="Cannot start encoding while playing a file!">Nemožno začať kódovať počas hrania!</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Povoliť ATH:</entry>
-  <entry id="222" string="Use default setting">Pôovodné nastavenia</entry>
+  <entry id="222" string="Use default setting">Pôvodné nastavenia</entry>
   <entry id="223" string="Psycho acoustic model">Psycho akustický model</entry>
   <entry id="224" string="Use Temporal Masking Effect">Použiť Efekt Dočasného Maskovania</entry>
   <entry id="225" string="Expert">Expert</entry>
@@ -271,7 +271,7 @@
   <entry id="260" string="Note:">Poznámky:</entry>
   <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Niektoré prehrávače môžu mať problémy pri prehrávaní&#10;AAC súborov s ID3 tagmi. Prosím, použite túto možnosť&#10;len ak ste si istý, že váš prehrávač zvládne tieto tagy.</entry>
   <entry id="262" string="FLAC Files">FLAC súbory</entry>
-  <entry id="263" string="Sampling rate">Sampling rate</entry>
+  <entry id="263" string="Sampling rate">Rýchlosť vzorkovania</entry>
   <entry id="264" string="Sample resolution">Rozlíšenie vzorkov</entry>
   <entry id="265" string="Number of samples">Počet vzorkov</entry>
   <entry id="266" string="Mono">Mono</entry>
@@ -345,7 +345,7 @@
   <entry id="334" string="Downloaded CDDB entries:">Stiahnuté CDDB položky:</entry>
   <entry id="335" string="User name:">Užívateľ:</entry>
   <entry id="336" string="Password:">Heslo:</entry>
-  <entry id="337" string="Delete original files after encoding">Po kódovaní zmazať pôovodné súbory</entry>
+  <entry id="337" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
   <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Táto možnosť zmaže orig. súbory po kódovaní.&#10;Ste si istý že chcete pokračovať?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDB Protocol nemôže byť použitý pre HTTP&#10;Proxy servery!&#10;&#10;Prajete si zmeniť protokol na HTTP?</entry>
   <entry id="340" string="Playlists">Playlisty</entry>
@@ -360,5 +360,44 @@
   <entry id="349" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
   <entry id="350" string="Encode to single file">Kódovať do bežného súboru</entry>
   <entry id="351" string="Encoder options">Možnosti kodeku</entry>
+  <entry id="352" string="Skip">Preskočiť</entry>
+  <entry id="353" string="Enable local CDDB database">Povoliť lokálnu CDDB databázu</entry>
+  <entry id="354" string="CDDB directory:">CDDB adresár:</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">Zvoľte zložku CDDB databázy:</entry>
+  <entry id="356" string="File already exists">Súbor už existuje</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupný súbor %1&#10;už existuje! Chcete ho prepísať?</entry>
+  <entry id="358" string="Overwrite all further files">Prepísať všetky ďaľšie súbory</entry>
+  <entry id="359" string="Start ripping automatically">Začať automaticky rippovať</entry>
+  <entry id="360" string="Submit to online database later">Odoslať do online databázy neskôr</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povoľte lokálnu&#10;alebo vzdialenú CDDB podporu v nastaveniach.</entry>
+  <entry id="362" string="CDDB entries to submit:">CDDB položky na odoslanie:</entry>
+  <entry id="363" string="Show queued CDDB entries...">Ukázať čakajúce CDDB položky...</entry>
+  <entry id="364" string="Submit all">Potvrdiť všetko</entry>
+  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdialená CDDB podpora je vypnutá! Prosím povoľte&#10;vzdialenú CDDB podporu v nastaveniach.</entry>
+  <entry id="366" string="Category">Kategória</entry>
+  <entry id="367" string="Close">Zavrieť</entry>
+  <entry id="368" string="Automatization">Automatizácia</entry>
+  <entry id="369" string="Query CDDB database later">Poslať dotaz na CDDB neskôr</entry>
+  <entry id="370" string="Show queued CDDB queries...">Zobraziť čakajúce CDDB požiadavky...</entry>
+  <entry id="371" string="CDDB queries">CDDB požiadavky</entry>
+  <entry id="372" string="Query">Požiadavka</entry>
+  <entry id="373" string="Query all">Požiadať všetko</entry>
+  <entry id="374" string="Query string">Požadovací reťazec</entry>
+  <entry id="375" string="CDDB queries to perform:">CDDB požiadavky:</entry>
+  <entry id="376" string="Would you like to perform this query again later?">Želáte si previesť túto požiadavku znovu neskôr?</entry>
+  <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Prístup k CD-ROM mechanike bol zamietnutý Windowsom.&#10;&#10;Prosím, kontaktujte vášho systémového administrátora pre&#10;získanie prístupu k CD-ROM mechanike.</entry>
+  <entry id="378" string="CD information">CD info</entry>
+  <entry id="379" string="Read CD Text">Prečítať CD text</entry>
+  <entry id="380" string="Read cdplayer.ini">Prečítať cdplayer.ini</entry>
+  <entry id="381" string="Apodization">Apodizácia</entry>
+  <entry id="382" string="Apodization function(s):">Apodizačná funkcia</entry>
+  <entry id="383" string="You can specify multiple functions separated by semicolons.">Môžete špecifikovať viacero funkcií oddelených bodkočiarkou.</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc môže automaticky zistiť online updaty&#10;pri štarte programu.&#10;&#10;6eláte si aby BonkEnc zisťoval pri štarte updaty?</entry>
+  <entry id="385" string="Cannot access input file: %1">Nemožno pristupovať k súboru: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">Nemožno vytvoriť súbor: %1</entry>
+  <entry id="387" string="File not found">Súbor nebol nájdený</entry>
+  <entry id="388" string="Unknown file type">Neznámy typ súboru</entry>
+  <entry id="389" string="Unsupported audio format">Nepodporovaný audio formát</entry>
+  <entry id="390" string="Unknown error">Neznáma chyba</entry>
  </data>
 </LangFile>

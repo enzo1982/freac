@@ -11,7 +11,7 @@ BINRESDIR = $(RESOURCEDIR)/binary
 
 DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-lame.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/picture.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
 RESOURCES = $(OBJECTDIR)/resources.o
-EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/language.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/playback.o
+EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/language.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/playback.o
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -25,9 +25,9 @@ LINKER = gcc
 REMOVER = rm
 ECHO = echo
 COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -Os -g0 -Wall -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
-LINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -mwindows -o$(EXENAME)
-CMDLINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -o$(CMDNAME)
-DLLLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -mwindows --shared -Xlinker --out-implib -Xlinker $(LIBNAME) -o$(DLLNAME)
+LINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -lsmooth -llisa -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -mwindows -o$(EXENAME)
+CMDLINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -lsmooth -llisa -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -o$(CMDNAME)
+DLLLINKER_OPTS = -L$(LIBDIR1) -lsmooth -llisa -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -mwindows --shared -Xlinker --out-implib -Xlinker $(LIBNAME) -o$(DLLNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
@@ -262,6 +262,11 @@ $(OBJECTDIR)/track.o: $(SRCDIR)/track.cpp
 $(OBJECTDIR)/utilities.o: $(SRCDIR)/utilities.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/utilities.cpp...
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/utilities.cpp -o $(OBJECTDIR)/utilities.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/dialog_config.o: $(SRCDIR)/dialogs/config/config.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/config/config.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/dialogs/config/config.cpp -o $(OBJECTDIR)/dialog_config.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/genconfig.o: $(SRCDIR)/dialogs/genconfig/genconfig.cpp

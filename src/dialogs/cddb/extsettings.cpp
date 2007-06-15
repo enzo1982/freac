@@ -78,7 +78,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 	http_edit_submit	= new EditBox(currentConfig->freedb_submit_path, pos, size, 0);
 
-	Int	 maxTextSize = max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
+	Int	 maxTextSize = Math::Max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
 
 	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->GetY()), Size(285 - maxTextSize, http_edit_query->GetHeight()));
 	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->GetY()), Size(285 - maxTextSize, http_edit_submit->GetHeight()));

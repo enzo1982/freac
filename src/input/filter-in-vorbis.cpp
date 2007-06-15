@@ -133,19 +133,19 @@ Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 			while ((samples = ex_vorbis_synthesis_pcmout(&vd, &pcm)) > 0)
 			{
-				int	 bout = (samples < convsize ? samples : convsize);
+				Int	 bout = (samples < convsize ? samples : convsize);
 
-				for (int i = 0; i < vi.channels; i++)
+				for (Int i = 0; i < vi.channels; i++)
 				{
 					short	*ptr = convbuffer + i;
 					float	*mono = pcm[i];
 
-					for (int j = 0; j < bout; j++)
+					for (Int j = 0; j < bout; j++)
 					{
-						int	 val = int(mono[j] * 32767.f);
+						Int	 val = Int(mono[j] * 32767.f);
 
-						val = min(val, 32767);
-						val = max(val, -32768);
+						val = Math::Min(val, 32767);
+						val = Math::Max(val, -32768);
 
 						*ptr = val;
 						ptr += vi.channels;

@@ -17,6 +17,7 @@
 #include <joblist.h>
 #include <utilities.h>
 
+#include <dialogs/config/config.h>
 #include <dialogs/genconfig/genconfig.h>
 
 #include <dialogs/adddirectory.h>
@@ -236,6 +237,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	size.cy = currentConfig->wndSize.cy - 264 - (currentConfig->showTitleInfo ? 68 : 0);
 
 	joblist			= new JobList(pos, size);
+	joblist->getContextMenu.Connect(&BonkEncGUI::GetContextMenu, this);
 	joblist->onSelectTrack.Connect(&BonkEncGUI::OnJoblistSelectTrack, this);
 	joblist->onSelectNone.Connect(&BonkEncGUI::OnJoblistSelectNone, this);
 	joblist->onRemovePlayingTrack.Connect(&BonkEncGUI::StopPlayback, this);
@@ -554,7 +556,6 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	if (currentConfig->showTips) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
 	mainWnd->doQuit.Connect(&BonkEncGUI::ExitProc, this);
-	mainWnd->getTrackMenu.Connect(&BonkEncGUI::GetTrackMenu, this);
 	mainWnd->SetMinimumSize(Size(530, 340 + (currentConfig->showTitleInfo ? 68 : 0)));
 
 	if (currentConfig->maximized) mainWnd->Maximize();
@@ -860,6 +861,38 @@ Void BonkEnc::BonkEncGUI::ConfigureGeneral()
 	}
 
 	GeneralSettingsDialog	*dlg = new GeneralSettingsDialog();
+
+	dlg->ShowDialog();
+
+	DeleteObject(dlg);
+
+	if (currentConfig->languageChanged)
+	{
+		SetLanguage();
+
+		currentConfig->languageChanged = false;
+	}
+
+	SetEncoderText();
+
+	edb_outdir->SetText(currentConfig->enc_outdir);
+
+	CheckBox::internalCheckValues.Emit();
+	ToggleUseInputDirectory();
+
+	currentConfig->SaveSettings();
+}
+
+Void BonkEnc::BonkEncGUI::ConfigureSettings()
+{
+	if (encoder->encoding)
+	{
+		Utilities::ErrorMessage("Cannot change settings while encoding!");
+
+		return;
+	}
+
+	ConfigDialog	*dlg = new ConfigDialog();
 
 	dlg->ShowDialog();
 
@@ -1426,6 +1459,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("BonkEnc.pci:28"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'C', mainWnd);
+	entry = menu_options->AddEntry(i18n->TranslateString("General settings (new)..."), ImageLoader::Load("BonkEnc.pci:28"));
+	entry->onAction.Connect(&BonkEncGUI::ConfigureSettings, this);
+	entry->SetShortcut(SC_CTRL | SC_SHIFT, '2', mainWnd);
 	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("BonkEnc.pci:29"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
@@ -2252,20 +2288,15 @@ Void BonkEnc::BonkEncGUI::UpdateTitleInfo()
 	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->GetSelectedEntry()->SetText(jlEntry);
 }
 
-PopupMenu *BonkEnc::BonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)
+PopupMenu *BonkEnc::BonkEncGUI::GetContextMenu()
 {
-	if (mouseX > mainWnd->GetMainLayer()->GetX() + joblist->GetX() + 1 &&
-	    mouseX < mainWnd->GetMainLayer()->GetX() + joblist->GetX() + joblist->GetWidth() - 1 &&
-	    mouseY > mainWnd->GetMainLayer()->GetY() + joblist->GetY() + 17 &&
-	    mouseY < mainWnd->GetMainLayer()->GetY() + joblist->GetY() + joblist->GetHeight() - 1)
-	{
-// TODO: Sending messages on our own is EVIL! Rather implement
-//	 a context menu framework in smooth and use it here.
-		joblist->Process(SM_LBUTTONDOWN, 0, 0);
-		joblist->Process(SM_LBUTTONUP, 0, 0);
+// TODO: Sending messages on our own is EVIL! Rather
+//	 use the smooth context menu framework here.
 
-		if (joblist->GetSelectedTrack() != NIL) return menu_trackmenu;
-	}
+	joblist->Process(SM_LBUTTONDOWN, 0, 0);
+	joblist->Process(SM_LBUTTONUP, 0, 0);
+
+	if (joblist->GetSelectedTrack() != NIL) return menu_trackmenu;
 
 	return NIL;
 }

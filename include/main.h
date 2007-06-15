@@ -88,12 +88,13 @@ namespace BonkEnc
 			Void		 About();
 			Void		 ConfigureEncoder();
 			Void		 ConfigureGeneral();
+			Void		 ConfigureSettings();
 			Void		 ShowHideTitleInfo();
 			Void		 UpdateTitleInfo();
 			Void		 ReadSpecificCD();
 
 			Void		 EncodeSpecific();
-			PopupMenu	*GetTrackMenu(Int, Int);
+			PopupMenu	*GetContextMenu();
 			Void		 ShowHelp();
 			Void		 ShowTipOfTheDay();
 
