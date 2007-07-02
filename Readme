@@ -17,6 +17,7 @@ History
 
 		- updated Slovak and Swedish translations
 		- fixed too small fonts displayed when large fonts are selected
+		- NT SCSI mode is now used by default to access CD drives on NT systems
 
 	Version 1.0.3 (June 2007)
 
