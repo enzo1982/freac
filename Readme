@@ -26,6 +26,7 @@ History
 		- fixed not writing Xing header when using LAME presets
 		- fixed crash when trying to open unsupported Sun Audio (.au) files
 		- improved support for network files and directories
+		- NT SCSI mode is now used by default to access CD drives on NT systems
 		- installer improvements
 		- lots of fixes to the command line encoder
 		- some other fixes

@@ -2374,7 +2374,12 @@ Int BonkEnc::BonkEncGUI::CheckForUpdates(Bool startup)
 
 		msgBox->ShowDialog();
 
-		if (msgBox->GetButtonCode() == IDYES) ex_eUpdate_AutomaticUpdate(context);
+		if (msgBox->GetButtonCode() == IDYES)
+		{
+			currentConfig->SaveSettings();
+
+			ex_eUpdate_AutomaticUpdate(context);
+		}
 
 		DeleteObject(msgBox);
 	}

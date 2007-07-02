@@ -26,6 +26,7 @@ Geschichte
 		- Fehlende Xing-Header bei Verwendung von LAME-Voreinstellungen behoben
 		- Absturz beim Lesen von nicht unterstützten Sun Audio Dateien (.au) behoben
 		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
+		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
 		- Verbesserungen beim Installer
 		- Viele Fehler im Kommandozeilen-Codierer behoben
 		- Einige weitere Korrekturen

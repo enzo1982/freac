@@ -54,7 +54,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	size.cx	= 344;
 	size.cy	= 43;
 
-	group_local	= new GroupBox(BonkEnc::i18n->TranslateString("Enable local CDDB"), pos, size);
+	group_local	= new GroupBox(NIL, pos, size);
 
 	pos.x	+= 9;
 	pos.y	+= 15;
@@ -80,7 +80,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
 	size.cx	= 344;
 	size.cy	= 125;
 
-	group_cddb	= new GroupBox(BonkEnc::i18n->TranslateString("Enable remote CDDB"), pos, size);
+	group_cddb	= new GroupBox(NIL, pos, size);
 
 	pos.x	+= 9;
 	pos.y	+= 15;
