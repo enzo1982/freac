@@ -25,6 +25,7 @@ History
 		- fixed Vorbis (and FLAC) comment tag reading
 		- fixed not writing Xing header when using LAME presets
 		- fixed crash when trying to open unsupported Sun Audio (.au) files
+		- fixed encoding empty tracks when no CD is inserted
 		- improved support for network files and directories
 		- NT SCSI mode is now used by default to access CD drives on NT systems
 		- installer improvements
