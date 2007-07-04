@@ -17,7 +17,9 @@ History
 
 		- updated Slovak and Swedish translations
 		- fixed too small fonts displayed when large fonts are selected
+		- fixed encoding empty tracks when no CD is inserted
 		- NT SCSI mode is now used by default to access CD drives on NT systems
+		- smaller improvements and fixes
 
 	Version 1.0.3 (June 2007)
 

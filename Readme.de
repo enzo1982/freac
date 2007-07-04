@@ -17,7 +17,9 @@ Geschichte
 
 		- Slovakische und schwedische ‹bersetzung aktualisiert
 		- Fehlerhafte Schriftdarstellung bei groﬂen Schriftarten behoben
+		- Codierung von leeren Tracks behoben, wenn keine CD eingelegt ist
 		- NT SCSI-Modus wird auf NT-Systemen nun standardm‰ﬂig zum Zugriff auf CD-Laufwerke verwendet
+		- Kleinere Verbesserungen und Korrekturen
 
 	Version 1.0.3 (Juni 2007)
 

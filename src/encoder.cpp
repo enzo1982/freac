@@ -251,7 +251,15 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			f_in		= new InStream(STREAM_DRIVER, zero_in);
 			filter_in	= new FilterInCDRip(currentConfig, trackInfo);
 
-			((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
+			if (!((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack))
+			{
+				Utilities::ErrorMessage("Cannot access input file: %1", in_filename);
+
+				delete f_in;
+				delete filter_in;
+
+				continue;
+			}
 
 			f_in->AddFilter(filter_in);
 		}
