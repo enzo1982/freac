@@ -35,6 +35,8 @@ namespace BonkEnc
 			Array<String>	 titles;
 			Array<String>	 categories;
 
+			Bool		 updateTrackOffsets;
+
 			Bool		 UpdateEntry(CDDBInfo &);
 
 			String		 FormatCDDBEntry(const String &, const String &);
@@ -46,8 +48,6 @@ namespace BonkEnc
 					 CDDB(Config *);
 			virtual		~CDDB();
 
-			Bool		 updateTrackOffsets;
-
 			Int		 SetActiveDrive(Int);
 			Int		 ComputeDiscID();
 
@@ -58,10 +58,12 @@ namespace BonkEnc
 			virtual Bool	 Submit(const CDDBInfo &)		= 0;
 			virtual Bool	 CloseConnection()			= 0;
 
-			Int		 GetNumberOfMatches()	{ return ids.GetNOfEntries(); }
-			Int		 GetNthDiscID(Int n)	{ return ids.GetNth(n); }
-			const String	&GetNthTitle(Int n)	{ return titles.GetNth(n); }
-			const String	&GetNthCategory(Int n)	{ return categories.GetNth(n); }
+			Void		 SetUpdateTrackOffsets(Bool nUpdateTrackOffsets)	{ updateTrackOffsets = nUpdateTrackOffsets; }
+
+			Int		 GetNumberOfMatches()					{ return ids.GetNOfEntries(); }
+			Int		 GetNthDiscID(Int n)					{ return ids.GetNth(n); }
+			const String	&GetNthTitle(Int n)					{ return titles.GetNth(n); }
+			const String	&GetNthCategory(Int n)					{ return categories.GetNth(n); }
 
 			String		 GetCDDBQueryString();
 

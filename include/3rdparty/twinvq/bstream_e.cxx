@@ -127,7 +127,7 @@ void TvqPutBsHeaderInfo(OutStream *bfp,
 	ChunkWriteToFile( twinChunk, bfp );
 
 	/* write keyword of the "DATA" chunk */
-	put_string("DATA", KEYWORD_BYTES, bfp);
+	put_string((char *) "DATA", KEYWORD_BYTES, bfp);
 	
 	return;
 }

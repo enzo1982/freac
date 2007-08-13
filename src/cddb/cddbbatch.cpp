@@ -264,6 +264,8 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 		CDDBLocal	 cddb(config);
 
+		cddb.SetUpdateTrackOffsets(False);
+
 		// save entry to local cache
 		cddb.Submit(cddbInfo);
 
@@ -298,7 +300,7 @@ Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &oCddbInfo)
 
 	CDDBRemote	 cddb(config);
 
-	cddb.updateTrackOffsets = False;
+	cddb.SetUpdateTrackOffsets(False);
 
 	if (!cddb.Submit(cddbInfo))
 	{

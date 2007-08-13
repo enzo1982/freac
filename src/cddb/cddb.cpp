@@ -112,12 +112,12 @@ String BonkEnc::CDDB::GetCDDBQueryString()
 
 Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 {
-	ex_CR_SetActiveCDROM(activeDriveID);
-	ex_CR_ReadToc();
-
 	if (updateTrackOffsets)
 	{
 		// Update track offsets and disc ID in case we had a fuzzy match
+		ex_CR_SetActiveCDROM(activeDriveID);
+		ex_CR_ReadToc();
+
 		Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
 		for (Int l = 0; l < numTocEntries; l++) cddbInfo.trackOffsets.Set(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
@@ -128,7 +128,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	if (ConnectToServer() == False) return False;
 
-	Int	 query = Query(cddbInfo.discID);
+	Int	 query = Query(cddbInfo.GetCDDBQueryString());
 
 	if (query == QUERY_RESULT_ERROR) return False;
 

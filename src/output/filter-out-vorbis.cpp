@@ -50,39 +50,39 @@ Bool BonkEnc::FilterOutVORBIS::Activate()
 	{
 		char	*prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
 
-		if (currentConfig->default_comment != NIL) ex_vorbis_comment_add_tag(&vc, "COMMENT", currentConfig->default_comment);
+		if (currentConfig->default_comment != NIL) ex_vorbis_comment_add_tag(&vc, (char *) "COMMENT", currentConfig->default_comment);
 
 		if (format->artist != NIL || format->title != NIL)
 		{
 			if (format->title != NIL)
 			{
-				ex_vorbis_comment_add_tag(&vc, "TITLE", format->title);
+				ex_vorbis_comment_add_tag(&vc, (char *) "TITLE", format->title);
 			}
 
 			if (format->artist != NIL)
 			{
-				ex_vorbis_comment_add_tag(&vc, "ARTIST", format->artist);
+				ex_vorbis_comment_add_tag(&vc, (char *) "ARTIST", format->artist);
 			}
 
 			if (format->album != NIL)
 			{
-				ex_vorbis_comment_add_tag(&vc, "ALBUM", format->album);
+				ex_vorbis_comment_add_tag(&vc, (char *) "ALBUM", format->album);
 			}
 
 			if (format->track > 0)
 			{
-				if (format->track < 10)	ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String("0").Append(String::FromInt(format->track)));
-				else			ex_vorbis_comment_add_tag(&vc, "TRACKNUMBER", String::FromInt(format->track));
+				if (format->track < 10)	ex_vorbis_comment_add_tag(&vc, (char *) "TRACKNUMBER", String("0").Append(String::FromInt(format->track)));
+				else			ex_vorbis_comment_add_tag(&vc, (char *) "TRACKNUMBER", String::FromInt(format->track));
 			}
 
 			if (format->year > 0)
 			{
-				ex_vorbis_comment_add_tag(&vc, "DATE", String::FromInt(format->year));
+				ex_vorbis_comment_add_tag(&vc, (char *) "DATE", String::FromInt(format->year));
 			}
 
 			if (format->genre != NIL)
 			{
-				ex_vorbis_comment_add_tag(&vc, "GENRE", format->genre);
+				ex_vorbis_comment_add_tag(&vc, (char *) "GENRE", format->genre);
 			}
 		}
 

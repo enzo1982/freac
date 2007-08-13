@@ -313,18 +313,7 @@ const Error &BonkEnc::cddbSubmitDlg::ShowDialog()
 
 Void BonkEnc::cddbSubmitDlg::Submit()
 {
-	Bool	 sane = True;
-
-	if (edit_artist->GetText() == "")	sane = False;
-	if (edit_album->GetText() == "")	sane = False;
-
-	for (Int i = 0; i < titles.GetNOfEntries(); i++)
-	{
-		if ((edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") && artists.GetNth(i) == "") sane = False;
-		if (titles.GetNth(i) == "") sane = False;
-	}
-
-	if (!sane)
+	if (!IsDataValid())
 	{
 		Utilities::ErrorMessage("Please fill all fields and track titles before submitting.");
 
@@ -870,6 +859,49 @@ Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()
 {
 	if (!submitLater && currentConfig->enable_remote_cddb)	btn_submit->SetText(BonkEnc::i18n->TranslateString("Submit"));
 	else							btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+}
+
+Bool BonkEnc::cddbSubmitDlg::IsDataValid()
+{
+	Bool	 sane = True;
+
+	if (!IsStringValid(edit_artist->GetText()) ||
+	    !IsStringValid(edit_album->GetText())) sane = False;
+
+	for (Int i = 0; i < titles.GetNOfEntries(); i++)
+	{
+		if ((edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") ||
+		     edit_artist->GetText() == "Various")					 &&
+		    !IsStringValid(artists.GetNth(i))) sane = False;
+
+		if (!IsStringValid(titles.GetNth(i))) sane = False;
+	}
+
+	return sane;
+}
+
+Bool BonkEnc::cddbSubmitDlg::IsStringValid(const String &text)
+{
+	Bool	 valid = False;
+
+	for (Int i = 0; i < text.Length(); i++)
+	{
+		if (text[i] != ' '  &&
+		    text[i] != '\t' &&
+		    text[i] != '\n' &&
+		    text[i] != '\r')
+		{
+			valid = True;
+
+			break;
+		}
+	}
+
+	if ( text.ToLower() == "new artist" ||
+	     text.ToLower() == "new title"  ||
+	    (text.ToLower().StartsWith("track") && text.Length() <= 8)) valid = False;
+
+	return valid;
 }
 
 String BonkEnc::cddbSubmitDlg::GetCDDBGenre(const String &genre)

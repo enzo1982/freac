@@ -88,46 +88,46 @@ typedef struct {
 } CHUNK_READ_TABLE;
 
 static CHUNK_READ_TABLE primaryReadTable[] = {
-	{ "TRAC", ReadTracChunk },		// トラック番号
-	{ "YEAR", ReadYearChunk },		// 録音された年
-	{ "ENCD", ReadEncdChunk },		// エンコードの日付
-	{ "GUID", ReadRawChunk },		// Globally Unique Identifier
-	{ "ISRC", ReadRawChunk },		// International Standard Record Code
-	{ "ALBM", ReadStringChunk },	// アルバムタイトル
-	{ "LYRC", ReadStringChunk },	// 歌詞
-	{ "WORD", ReadStringChunk },	// 作詞者
-	{ "MUSC", ReadStringChunk },	// 作曲者
-	{ "ARNG", ReadStringChunk },	// 編曲者
-	{ "PROD", ReadStringChunk },	// プロデューサー
-	{ "REMX", ReadStringChunk },	// リミックス
-	{ "CDCT", ReadStringChunk },	// 指揮者
-	{ "SING", ReadStringChunk },	// 歌手
-	{ "LABL", ReadStringChunk },	// レーベル
-	{ "NOTE", ReadStringChunk },	// ライナーノーツ
-	{ "PRSN", ReadStringChunk },	// 演奏メンバー
-	{ "BAND", ReadStringChunk },	// バンド名
+	{ (char *) "TRAC", ReadTracChunk },	// トラック番号
+	{ (char *) "YEAR", ReadYearChunk },	// 録音された年
+	{ (char *) "ENCD", ReadEncdChunk },	// エンコードの日付
+	{ (char *) "GUID", ReadRawChunk },	// Globally Unique Identifier
+	{ (char *) "ISRC", ReadRawChunk },	// International Standard Record Code
+	{ (char *) "ALBM", ReadStringChunk },	// アルバムタイトル
+	{ (char *) "LYRC", ReadStringChunk },	// 歌詞
+	{ (char *) "WORD", ReadStringChunk },	// 作詞者
+	{ (char *) "MUSC", ReadStringChunk },	// 作曲者
+	{ (char *) "ARNG", ReadStringChunk },	// 編曲者
+	{ (char *) "PROD", ReadStringChunk },	// プロデューサー
+	{ (char *) "REMX", ReadStringChunk },	// リミックス
+	{ (char *) "CDCT", ReadStringChunk },	// 指揮者
+	{ (char *) "SING", ReadStringChunk },	// 歌手
+	{ (char *) "LABL", ReadStringChunk },	// レーベル
+	{ (char *) "NOTE", ReadStringChunk },	// ライナーノーツ
+	{ (char *) "PRSN", ReadStringChunk },	// 演奏メンバー
+	{ (char *) "BAND", ReadStringChunk },	// バンド名
 	{ NULL },
 };
 
 static CHUNK_READ_TABLE secondaryReadTable[] = {
-	{ "NAME", ReadStringChunk },	// 曲名
-	{ "AUTH", ReadStringChunk },	// アーティスト
-	{ "COMT", ReadStringChunk },	// コメント
-	{ "(c) ", ReadStringChunk },	// 著作権
+	{ (char *) "NAME", ReadStringChunk },	// 曲名
+	{ (char *) "AUTH", ReadStringChunk },	// アーティスト
+	{ (char *) "COMT", ReadStringChunk },	// コメント
+	{ (char *) "(c) ", ReadStringChunk },	// 著作権
 
-	{ "ALBM", ReadStringChunk },	// アルバムタイトル
-	{ "LYRC", ReadStringChunk },	// 歌詞
-	{ "WORD", ReadStringChunk },	// 作詞者
-	{ "MUSC", ReadStringChunk },	// 作曲者
-	{ "ARNG", ReadStringChunk },	// 編曲者
-	{ "PROD", ReadStringChunk },	// プロデューサー
-	{ "REMX", ReadStringChunk },	// リミックス
-	{ "CDCT", ReadStringChunk },	// 指揮者
-	{ "SING", ReadStringChunk },	// 歌手
-	{ "LABL", ReadStringChunk },	// レーベル
-	{ "NOTE", ReadStringChunk },	// ライナーノーツ
-	{ "PRSN", ReadStringChunk },	// 演奏メンバー
-	{ "BAND", ReadStringChunk },	// バンド名
+	{ (char *) "ALBM", ReadStringChunk },	// アルバムタイトル
+	{ (char *) "LYRC", ReadStringChunk },	// 歌詞
+	{ (char *) "WORD", ReadStringChunk },	// 作詞者
+	{ (char *) "MUSC", ReadStringChunk },	// 作曲者
+	{ (char *) "ARNG", ReadStringChunk },	// 編曲者
+	{ (char *) "PROD", ReadStringChunk },	// プロデューサー
+	{ (char *) "REMX", ReadStringChunk },	// リミックス
+	{ (char *) "CDCT", ReadStringChunk },	// 指揮者
+	{ (char *) "SING", ReadStringChunk },	// 歌手
+	{ (char *) "LABL", ReadStringChunk },	// レーベル
+	{ (char *) "NOTE", ReadStringChunk },	// ライナーノーツ
+	{ (char *) "PRSN", ReadStringChunk },	// 演奏メンバー
+	{ (char *) "BAND", ReadStringChunk },	// バンド名
 	{ NULL },
 };
 
@@ -165,11 +165,11 @@ int PutStandardChunks( headerInfo* info, CChunkChunk* twinChunk )
 	twinChunk->PutChunk( theCommChunk );
 
 	// 標準文字列チャンク情報を作成して TWIN チャンクに付け加える
-	PutTextChunk( "NAME", info->Name, twinChunk );
-	PutTextChunk( "COMT", info->Comt, twinChunk );
-	PutTextChunk( "AUTH", info->Auth, twinChunk );
-	PutTextChunk( "(c) ", info->Cpyr, twinChunk );
-	PutTextChunk( "FILE", info->File, twinChunk );
+	PutTextChunk( (char *) "NAME", info->Name, twinChunk );
+	PutTextChunk( (char *) "COMT", info->Comt, twinChunk );
+	PutTextChunk( (char *) "AUTH", info->Auth, twinChunk );
+	PutTextChunk( (char *) "(c) ", info->Cpyr, twinChunk );
+	PutTextChunk( (char *) "FILE", info->File, twinChunk );
 
 	// データサイズチャンクを作成して付け加える
 	if ( info->Dsiz > 0 ) {

@@ -100,22 +100,24 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 		String	  pattern = String().CopyN(DiscIDToString(discid), 2).Append("to??");
 		String	  found;
 
-		while (found == NIL && !(pattern[0] == '0' && pattern[1] == '0'))
+		do
 		{
 			const Array<File> &files = dir.GetFilesByPattern(pattern);
 
 			if (files.GetNOfEntries() == 1) found = files.GetFirst();
 
-			if (pattern[1] == 'a')	    pattern[1] = '9';
+			if	(pattern[1] == 'a') pattern[1] = '9';
 			else if (pattern[1] == '0') pattern[1] = 'f';
 			else			    pattern[1] -= 1;
 
 			if (pattern[1] == 'f')
 			{
-				if (pattern[0] == 'a') pattern[0] = '9';
-				else		       pattern[0] -= 1;
+				if	(pattern[0] == 'a') pattern[0] = '9';
+				else if (pattern[0] == '0') pattern[0] = 'f';
+				else			    pattern[0] -= 1;
 			}
 		}
+		while (found == NIL && !(pattern[0] == 'f' && pattern[1] == 'f'));
 
 		if (found == NIL) continue;
 

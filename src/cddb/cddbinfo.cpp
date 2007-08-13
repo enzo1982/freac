@@ -105,3 +105,20 @@ String BonkEnc::CDDBInfo::DiscIDToString() const
 {
 	return CDDB::DiscIDToString(discID);
 }
+
+String BonkEnc::CDDBInfo::GetCDDBQueryString() const
+{
+	Int	 numTocEntries = trackTitles.GetNOfEntries();
+	String	 str = String("cddb query ").Append(DiscIDToString());
+
+	str.Append(" ").Append(String::FromInt(numTocEntries));
+
+	for (Int i = 0; i < numTocEntries; i++)
+	{
+		str.Append(" ").Append(String::FromInt(trackOffsets.GetNth(i)));
+	}
+
+	str.Append(" ").Append(String::FromInt(discLength));
+
+	return str;
+}
