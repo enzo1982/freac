@@ -397,8 +397,8 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 		else if (string[k] == '<')		rVal[k + b] = '(';
 		else if (string[k] == '>')		rVal[k + b] = ')';
 		else if (string[k] == ':')		b--;
-		else if (string[k] == '/' && repSlash)	rVal[k + b] = '_';
-		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '_';
+		else if (string[k] == '/' && repSlash)	rVal[k + b] = '-';
+		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '-';
 		else if (string[k] >= 256 &&
 			(!BonkEnc::currentConfig->useUnicodeNames ||
 			 !Setup::enableUnicode))	rVal[k + b] = '#';
@@ -594,19 +594,20 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 	{
 		if (dir[i] == '\\' || dir[i] == '/')
 		{
+			String	 tmpDir2 = tmpDir;
+
 			if (tmpDir.Length() - lastBS > 96)
 			{
-				String	 tmpDir2 = String().CopyN(tmpDir, lastBS + 96);
-
-				for (Int j = tmpDir2.Length() - 1; j > 0; j--)
-				{
-					if (tmpDir2[j] == ' ')	{ tmpDir2[j] = 0; i--; }
-					else			break;
-				}
-
-				rFileName.Replace(tmpDir, tmpDir2);
+				tmpDir2 = String().CopyN(tmpDir, lastBS + 96);
 
 				i -= (tmpDir.Length() - lastBS - 96);
+			}
+
+			while (tmpDir2.EndsWith(".") || tmpDir2.EndsWith(" ")) { tmpDir2[tmpDir2.Length() - 1] = 0; i--; }
+
+			if (tmpDir2 != tmpDir)
+			{
+				rFileName.Replace(tmpDir, tmpDir2);
 
 				tmpDir = tmpDir2;
 				dir = rFileName;
@@ -623,11 +624,7 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 
 	if (rFileName.Length() - lastBS > 96) rFileName = String().CopyN(rFileName, lastBS + 96);
 
-	for (Int j = rFileName.Length() - 1; j > 0; j--)
-	{
-		if (rFileName[j] == ' ') rFileName[j] = 0;
-		else			 break;
-	}
+	while (rFileName.EndsWith(" ")) { rFileName[rFileName.Length() - 1] = 0; }
 
 	return rFileName;
 }
