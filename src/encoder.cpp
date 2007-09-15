@@ -29,7 +29,7 @@
 #define EWX_FORCEIFHUNG 16
 #endif
 
-Void BonkEnc::BonkEnc::Encode()
+Void BonkEnc::BonkEnc::Encode(Bool useThread)
 {
 	if (encoding) return;
 
@@ -49,9 +49,6 @@ Void BonkEnc::BonkEnc::Encode()
 
 	debug_out->EnterMethod("BonkEnc::Encode()");
 
-	encoder_thread = new Thread();
-	encoder_thread->threadMain.Connect(&BonkEnc::Encoder, this);
-
 	encoding = True;
 	pause_encoding = False;
 	stop_encoding = False;
@@ -61,8 +58,18 @@ Void BonkEnc::BonkEnc::Encode()
 	if (currentConfig->enable_console ||
 	    currentConfig->encodeToSingleFile) overwriteAll = True;
 
-	encoder_thread->SetFlags(THREAD_WAITFLAG_START);
-	encoder_thread->Start();
+	if (useThread)
+	{
+		encoder_thread = new Thread();
+		encoder_thread->threadMain.Connect(&BonkEnc::Encoder, this);
+
+		encoder_thread->SetFlags(THREAD_WAITFLAG_START);
+		encoder_thread->Start();
+	}
+	else
+	{
+		Encoder(NIL);
+	}
 
 	debug_out->LeaveMethod();
 }

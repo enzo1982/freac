@@ -74,20 +74,27 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	ScanForFiles(&files);
 
-	currentConfig->cdrip_activedrive = cdDrive.ToInt();
-
-	if (currentConfig->cdrip_activedrive >= ex_CR_GetNumCDROM())
+	if (currentConfig->enable_cdrip)
 	{
-		Console::OutputString(String("Warning: Drive #").Append(cdDrive).Append(" does not exist. Using first drive.\n"));
+		currentConfig->cdrip_activedrive = cdDrive.ToInt();
 
-		currentConfig->cdrip_activedrive = 0;
+		if (currentConfig->cdrip_activedrive >= ex_CR_GetNumCDROM())
+		{
+			Console::OutputString(String("Warning: Drive #").Append(cdDrive).Append(" does not exist. Using first drive.\n"));
+
+			currentConfig->cdrip_activedrive = 0;
+		}
+
+		if (!TracksToFiles(tracks, &files))
+		{
+			Console::OutputString("Error: Invalid track(s) specified after -track.\n");
+
+			return;
+		}
 	}
-
-	if (!TracksToFiles(tracks, &files))
+	else if (tracks != NIL)
 	{
-		Console::OutputString("Error: Invalid track(s) specified after -track.\n");
-
-		return;
+		Console::OutputString("Error: CD ripping disabled!");
 	}
 
 	Console::SetTitle(String("BonkEnc ").Append(BonkEnc::version));
@@ -299,14 +306,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				delete in;
 			}
 
-			String	 extension;
-
-			extension[0] = (files.GetNth(i))[files.GetNth(i).Length() - 4];
-			extension[1] = (files.GetNth(i))[files.GetNth(i).Length() - 3];
-			extension[2] = (files.GetNth(i))[files.GetNth(i).Length() - 2];
-			extension[3] = (files.GetNth(i))[files.GetNth(i).Length() - 1];
-
-			if ((extension == ".mp3" && !currentConfig->enable_lame) || (extension == ".ogg" && !currentConfig->enable_vorbis))
+			if ((files.GetNth(i).EndsWith(".mp3") && !currentConfig->enable_lame) || (files.GetNth(i).EndsWith(".ogg") && !currentConfig->enable_vorbis) || (files.GetNth(i).EndsWith(".cda") && !currentConfig->enable_cdrip))
 			{
 				Console::OutputString(String("Cannot process file: ").Append(currentFile).Append("\n"));
 
@@ -321,26 +321,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 			{
 				if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
 
-				Encode();
-
-				while (encoding)
-				{
-					MSG	 msg;
-					bool	 result;
-
-					if (Setup::enableUnicode)	result = PeekMessageW(&msg, 0, 0, 0, PM_REMOVE);
-					else				result = PeekMessageA(&msg, 0, 0, 0, PM_REMOVE);
-
-					if (result)
-					{
-						TranslateMessage(&msg);
-
-						if (Setup::enableUnicode)	DispatchMessageW(&msg);
-						else				DispatchMessageA(&msg);
-					}
-
-					Sleep(10);
-				}
+				Encode(False);
 
 				joblist->RemoveNthTrack(0);
 

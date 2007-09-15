@@ -162,7 +162,7 @@ namespace BonkEnc
 		slots:
 			Void			 ReadCD();
 
-			Void			 Encode();
+			Void			 Encode(Bool);
 			Void			 PauseEncoding();
 			Void			 StopEncoding();
 	};

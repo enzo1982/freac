@@ -134,6 +134,8 @@ namespace BonkEnc
 			Void		 ManageCDDBBatchQueries();
 
 			Void		 SelectDir();
+
+			Void		 StartEncoding();
 			Void		 SkipTrack();
 
 			Void		 AddFilesFromDirectory();

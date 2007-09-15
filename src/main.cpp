@@ -739,7 +739,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 						currentConfig->cdrip_autoRead_active = False;
 
-						if (currentConfig->cdrip_autoRip) Encode();
+						if (currentConfig->cdrip_autoRip) StartEncoding();
 					}
 				}
 			}
@@ -890,6 +890,11 @@ Void BonkEnc::BonkEncGUI::SelectDir()
 	}
 
 	DeleteObject(dialog);
+}
+
+Void BonkEnc::BonkEncGUI::StartEncoding()
+{
+	Encode(True);
 }
 
 Void BonkEnc::BonkEncGUI::SkipTrack()
@@ -1462,7 +1467,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	}
 
 	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load("BonkEnc.pci:31"));
-	entry->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
+	entry->onAction.Connect(&BonkEncGUI::StartEncoding, this);
 	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
 	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("BonkEnc.pci:32"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("BonkEnc.pci:33"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
@@ -1611,7 +1616,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_iconbar->AddEntry();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), ENCODER_WAVE > 0 ? menu_encoders : NIL);
-	entry->onAction.Connect(&BonkEnc::Encode, (BonkEnc *) this);
+	entry->onAction.Connect(&BonkEncGUI::StartEncoding, this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:10"));
@@ -1694,7 +1699,7 @@ Void BonkEnc::BonkEncGUI::EncodeSpecific()
 
 	clicked_encoder = -1;
 
-	Encode();
+	StartEncoding();
 }
 
 Void BonkEnc::BonkEncGUI::SetEncoderText()
