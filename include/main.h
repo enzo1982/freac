@@ -116,7 +116,9 @@ namespace BonkEnc
 			Bool		 ExitProc();
 
 			Void		 MessageProc(Int, Int, Int);
-			Void		 ResizeProc();
+
+			Void		 OnChangePosition(const Point &);
+			Void		 OnChangeSize(const Size &);
 
 			Void		 PlaySelectedItem();
 			Void		 PausePlayback();

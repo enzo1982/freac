@@ -617,6 +617,9 @@ String BonkEnc::BonkEnc::GetPlaylistFileName(Track *trackInfo)
 	if (currentConfig->enable_console) return NIL;
 
 	String	 playlistOutputDir = (currentConfig->playlist_useEncOutdir ? currentConfig->enc_outdir : currentConfig->playlist_outdir);
+
+	playlistOutputDir.Replace("<installdrive>", Utilities::GetInstallDrive());
+
 	String	 playlistFileName = playlistOutputDir;
 
 	if (trackInfo->artist != NIL || trackInfo->album != NIL)
@@ -716,7 +719,7 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 	if (trackInfo->outfile == NIL)
 	{
 		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
-		else		     outputFileName.Copy(currentConfig->enc_outdir);
+		else		     outputFileName.Copy(String(currentConfig->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
 		if ((trackInfo->artist != NIL && currentConfig->enc_filePattern.Find("<artist>")   >= 0) ||
 		    (trackInfo->title  != NIL && currentConfig->enc_filePattern.Find("<title>")	   >= 0) ||

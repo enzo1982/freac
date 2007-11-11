@@ -629,6 +629,11 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 	return rFileName;
 }
 
+String BonkEnc::Utilities::GetInstallDrive()
+{
+	return Application::GetApplicationDirectory().Head(2);
+}
+
 Void BonkEnc::Utilities::GainShutdownPrivilege()
 {
 	OSVERSIONINFOA	 vInfo;

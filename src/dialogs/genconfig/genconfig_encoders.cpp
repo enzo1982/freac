@@ -11,6 +11,7 @@
 #include <dialogs/genconfig/genconfig_encoders.h>
 
 #include <dllinterfaces.h>
+#include <utilities.h>
 
 #include <dialogs/bonkconfig.h>
 #include <dialogs/bladeconfig.h>
@@ -259,7 +260,7 @@ Void BonkEnc::GeneralSettingsLayerEncoders::SelectDir()
 
 	dialog->SetParentWindow(GetContainerWindow());
 	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
-	dialog->SetDirName(edit_outdir->GetText());
+	dialog->SetDirName(String(edit_outdir->GetText()).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
 	if (dialog->ShowDialog() == Success())
 	{

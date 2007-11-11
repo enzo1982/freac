@@ -30,7 +30,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	min_residual_partition_order = currentConfig->flac_min_residual_partition_order;
 	max_residual_partition_order = currentConfig->flac_max_residual_partition_order;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FLAC"), Point(140, 140), Size(520, 332));
+	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FLAC"), currentConfig->wndPos + Point(80, 80), Size(520, 332));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

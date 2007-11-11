@@ -22,7 +22,7 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	abr = currentConfig->vorbis_bitrate;
 	mode = currentConfig->vorbis_mode;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "Ogg Vorbis"), Point(140, 140), Size(366, 175));
+	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "Ogg Vorbis"), currentConfig->wndPos + Point(80, 80), Size(366, 175));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

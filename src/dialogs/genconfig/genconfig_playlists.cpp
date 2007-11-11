@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/genconfig/genconfig_playlists.h>
+#include <utilities.h>
 
 BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(BonkEnc::i18n->TranslateString("Playlists"))
 {
@@ -127,7 +128,7 @@ Void BonkEnc::GeneralSettingsLayerPlaylists::SelectDir()
 
 	dialog->SetParentWindow(GetContainerWindow());
 	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder in which the playlist files will be placed:")));
-	dialog->SetDirName(edit_outdir->GetText());
+	dialog->SetDirName(String(edit_outdir->GetText()).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
 	if (dialog->ShowDialog() == Success())
 	{

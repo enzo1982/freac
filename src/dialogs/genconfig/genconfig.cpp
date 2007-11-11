@@ -30,7 +30,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 
 	currentConfig = BonkEnc::currentConfig;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(120, 120), Size(570, 331));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(40, 40), Size(570, 331));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -115,28 +115,14 @@ const Error &BonkEnc::GeneralSettingsDialog::ShowDialog()
 
 Void BonkEnc::GeneralSettingsDialog::OK()
 {
-	if ((Setup::enableUnicode ? SetCurrentDirectoryW(register_layer_encoders->GetOutputDirectory()) : SetCurrentDirectoryA(register_layer_encoders->GetOutputDirectory())) == False)
+	Directory	 outputDirectory(register_layer_encoders->GetOutputDirectory().Replace("<installdrive>", Utilities::GetInstallDrive()));
+
+	if ((Setup::enableUnicode ? SetCurrentDirectoryW(String(outputDirectory)) : SetCurrentDirectoryA(String(outputDirectory))) == False)
 	{
 		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
 
-		if (selection == IDYES)
-		{
-			String	 dir = register_layer_encoders->GetOutputDirectory();
-			String	 tmp;
-
-			for (Int i = 0; i <= dir.Length(); i++)
-			{
-				if (dir[i] == '\\' || dir[i] == '/' || dir[i] == 0)
-				{
-					if (Setup::enableUnicode)	CreateDirectoryW(tmp, NIL);
-					else				CreateDirectoryA(tmp, NIL);
-				}
-
-				tmp[i] = dir[i];
-			}
-		}
-
-		if (selection == IDCANCEL) return;
+		if (selection == IDYES)		outputDirectory.Create();
+		else if (selection == IDCANCEL)	return;
 	}
 
 	if (currentConfig->freedb_proxy_mode == 1 && register_layer_cddb->GetFreedbMode() == FREEDB_MODE_CDDBP)

@@ -1,4 +1,4 @@
-BonkEnc version 1.0.5
+BonkEnc version 1.0.6
 
 BonkEnc is an encoder for various audio formats. It can read
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC
@@ -8,17 +8,28 @@ and WAV files.
 BonkEnc uses the CDRip Ripping Library for audio ripping.
 BonkEnc uses the FAAD2 AAC decoder for Advanced Audio decoding.
 
-FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
+Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
 
-	Version 1.0.5 (September 2007)
+	Version 1.0.6 (November 2007)
 
+		- added Valencian language support
+		- updated Turkish translation
+		- dialog window positions are now relative to the main window position
+
+	Version 1.0.5 (November 2007)
+
+		- updated Russian translation
+		- added <installdrive> pattern for use in output directory name
 		- fixed various CDDB issues
 		- fixed BEcmd crashes
 		- improved CDDB data sanity check
-		- upgraded FLAC to version 1.2.0
+		- upgraded FLAC to version 1.2.1
+		- upgraded FAAC to version 1.26
+		- upgraded FAAD2 to version 2.6.1
+		- upgrade to MPEG4IP v1.6.1
 		- fixes for compiling with GCC 4.2
 		- smaller bugfixes
 
@@ -336,7 +347,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v8.0
-		- smooth v0.8.69.4 (http://www.smooth-project.org/)
+		- smooth v0.8.69.9 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
@@ -383,7 +394,7 @@ Special thanks to
 			   Federico Reddig (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
-			   Dmitry Gusakov (Russian),
+			   Dmitry Gusakov, Evgeny Kozlov (Russian),
 			   Henryk Ning (Chinese, traditional),
 			   Nimin (Chinese, simplified),
 			   Krzysztof Konopacki (Polish),
@@ -400,10 +411,11 @@ Special thanks to
 			   Peter Krajcar (Slovak),
 			   Wiak (Norwegian),
 			   Vincent Rateau (Esperanto),
-			   Murat Ozkan (Turkish),
+			   Cako (Turkish),
 			   Naglis Jonaitis (Lithuanian),
 			   Borca Alin (Romanian),
-			   El libre (Catalan)
+			   El libre (Catalan),
+			   Vjatv (Valencian)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

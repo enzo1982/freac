@@ -443,7 +443,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	SetEncoderText();
 
-	edb_outdir = new EditBox(currentConfig->enc_outdir, Point(0, 27), Size(0, 0), 1024);
+	edb_outdir = new EditBox(String(currentConfig->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()), Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->Deactivate();
 
@@ -546,7 +546,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 
-	mainWnd->onResize.Connect(&BonkEncGUI::ResizeProc, this);
+	mainWnd->onChangePosition.Connect(&BonkEncGUI::OnChangePosition, this);
+	mainWnd->onChangeSize.Connect(&BonkEncGUI::OnChangeSize, this);
+
 	mainWnd->onEvent.Connect(&BonkEncGUI::MessageProc, this);
 
 	if (currentConfig->showTips) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
@@ -748,12 +750,16 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 	}
 }
 
-Void BonkEnc::BonkEncGUI::ResizeProc()
+Void BonkEnc::BonkEncGUI::OnChangePosition(const Point &nPos)
 {
-	mainWnd->SetStatusText(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2007 Robert Kausch"));
-
 	currentConfig->wndPos = mainWnd->GetPosition();
+}
+
+Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
+{
 	currentConfig->wndSize = mainWnd->GetSize();
+
+	mainWnd->SetStatusText(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2007 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -867,7 +873,7 @@ Void BonkEnc::BonkEncGUI::ConfigureGeneral()
 
 	SetEncoderText();
 
-	edb_outdir->SetText(currentConfig->enc_outdir);
+	edb_outdir->SetText(String(currentConfig->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
 	CheckBox::internalCheckValues.Emit();
 	ToggleUseInputDirectory();
@@ -881,7 +887,7 @@ Void BonkEnc::BonkEncGUI::SelectDir()
 
 	dialog->SetParentWindow(mainWnd);
 	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
-	dialog->SetDirName(currentConfig->enc_outdir);
+	dialog->SetDirName(String(currentConfig->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -2154,7 +2160,7 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
 	TipOfTheDay	*dlg = new TipOfTheDay(&currentConfig->showTips);
 
-	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(29, i18n->GetNOfLanguages()))));
+	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(30, i18n->GetNOfLanguages()))));
 	dlg->AddTip(String(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1")).Replace("%1", "http://www.bonkenc.org/"));
 	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
 	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));

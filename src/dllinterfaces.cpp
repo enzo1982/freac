@@ -175,7 +175,7 @@ EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
 MP4READ				 ex_MP4Read				= NIL;
 MP4CREATEEX			 ex_MP4CreateEx				= NIL;
 MP4CLOSE			 ex_MP4Close				= NIL;
-MP4FREEMEMORY			 ex_MP4FreeMemory			= NIL;
+MP4FREE				 ex_MP4Free				= NIL;
 MP4OPTIMIZE			 ex_MP4Optimize				= NIL;
 MP4SETMETADATANAME		 ex_MP4SetMetadataName			= NIL;
 MP4GETMETADATANAME		 ex_MP4GetMetadataName			= NIL;
@@ -792,7 +792,7 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	ex_MP4Read			= (MP4READ) mp4v2dll->GetFunctionAddress("MP4Read");
 	ex_MP4CreateEx			= (MP4CREATEEX) mp4v2dll->GetFunctionAddress("MP4CreateEx");
 	ex_MP4Close			= (MP4CLOSE) mp4v2dll->GetFunctionAddress("MP4Close");
-	ex_MP4FreeMemory		= (MP4FREEMEMORY) mp4v2dll->GetFunctionAddress("MP4FreeMemory");
+	ex_MP4Free			= (MP4FREE) mp4v2dll->GetFunctionAddress("MP4Free");
 	ex_MP4Optimize			= (MP4OPTIMIZE) mp4v2dll->GetFunctionAddress("MP4Optimize");
 	ex_MP4SetMetadataName		= (MP4SETMETADATANAME) mp4v2dll->GetFunctionAddress("MP4SetMetadataName");
 	ex_MP4GetMetadataName		= (MP4GETMETADATANAME) mp4v2dll->GetFunctionAddress("MP4GetMetadataName");
@@ -823,7 +823,7 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	if (ex_MP4Read				== NIL ||
 	    ex_MP4CreateEx			== NIL ||
 	    ex_MP4Close				== NIL ||
-	    ex_MP4FreeMemory			== NIL ||
+	    ex_MP4Free				== NIL ||
 	    ex_MP4Optimize			== NIL ||
 	    ex_MP4SetMetadataName		== NIL ||
 	    ex_MP4GetMetadataName		== NIL ||
