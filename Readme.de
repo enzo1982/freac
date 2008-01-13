@@ -13,11 +13,14 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.6 (November 2007)
+	Version 1.0.6 (Januar 2008)
 
-		- Sprachunterstützung für Valencianisch hinzugefügt
+		- Sprachunterstützung für Valencianisch und Portugiesisch hinzugefügt
+		- Griechische Anleitung hinzugefügt
 		- Türkische Übersetzung aktualisiert
 		- Dialogfensterpositionen sind jetzt relativ zur Position des Hauptfensters
+		- Mechanismus zum Anpassen der Hauptfenstergröße an den Bildschirm beim Start verbessert
+		- Kleinere Fehlerkorrekturen
 
 	Version 1.0.5 (November 2007)
 
@@ -415,7 +418,8 @@ Besonderen Dank
 			   Naglis Jonaitis (Litauisch),
 			   Borca Alin (Rumänisch),
 			   El libre (Katalanisch),
-			   Vjatv (Valencianisch)
+			   Vjatv (Valencianisch),
+			   Jose Goncalves (Portugiesisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -43,6 +43,10 @@ Bool BonkEnc::Config::LoadSettings()
 		if (configDir != "") configDir.Append("BonkEnc\\");
 
 		Directory(configDir).Create();
+	}
+	else
+	{
+		configDir = Application::GetApplicationDirectory();
 	}
 
 	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);

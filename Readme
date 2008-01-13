@@ -13,11 +13,14 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.6 (November 2007)
+	Version 1.0.6 (January 2008)
 
-		- added Valencian language support
+		- added Valencian and Portuguese language support
+		- added Greek user guide
 		- updated Turkish translation
 		- dialog window positions are now relative to the main window position
+		- changed resizing mechanism to fit main window to screen on startup
+		- smaller bugfixes
 
 	Version 1.0.5 (November 2007)
 
@@ -415,7 +418,8 @@ Special thanks to
 			   Naglis Jonaitis (Lithuanian),
 			   Borca Alin (Romanian),
 			   El libre (Catalan),
-			   Vjatv (Valencian)
+			   Vjatv (Valencian),
+			   Jose Goncalves (Portuguese)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
