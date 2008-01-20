@@ -1,6 +1,6 @@
  /* Bonk - Lossy/lossless audio codec
   * Copyright (C) 2001 Paul Francis Harrison
-  * Portions Copyright (C) 2004-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Portions Copyright (C) 2004-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This header file is in the public domain; you can redistribute
   * it and/or modify it freely without any limitations.
@@ -17,8 +17,13 @@
 #		define BONKAPI __declspec (dllexport)
 #		define BONKCONV _stdcall
 #	else
-#		define BONKAPI __declspec (dllimport)
-#		define BONKCONV _stdcall
+#		ifdef __BONK_STATIC__
+#			define BONKAPI
+#			define BONKCONV _stdcall
+#		else
+#			define BONKAPI __declspec (dllimport)
+#			define BONKCONV _stdcall
+#		endif
 #	endif
 #else
 #	define BONKAPI

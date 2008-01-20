@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -132,23 +132,23 @@ namespace BonkEnc
 
 // Bonk DLL API
 
-	typedef void *					(_stdcall *BONKENCODERCREATE)			();
-	typedef bool					(_stdcall *BONKENCODERINIT)			(void *, unsigned int, unsigned int, int, bool, bool, int, int, int, double);
-	typedef int					(_stdcall *BONKENCODERENCODEPACKET)		(void *, signed short *, int, unsigned char *, int);
-	typedef int					(_stdcall *BONKENCODERFINISH)			(void *, unsigned char *, int);
-	typedef bool					(_stdcall *BONKENCODERCLOSE)			(void *);
-	typedef int					(_stdcall *BONKENCODERGETSAMPLECOUNT)		(void *);
-	typedef int					(_stdcall *BONKENCODERGETSAMPLECOUNTOFFSET)	(void *);
-	typedef bool					(_stdcall *BONKENCODERSETID3DATA)		(void *, unsigned char *, int);
-	typedef void *					(_stdcall *BONKDECODERCREATE)			();
-	typedef bool					(_stdcall *BONKDECODERINIT)			(void *, unsigned char *, int, unsigned int *, unsigned int *, int *);
-	typedef int					(_stdcall *BONKDECODERDECODEPACKET)		(void *, unsigned char *, int, signed short *, int);
-	typedef int					(_stdcall *BONKDECODERFINISH)			(void *);
-	typedef bool					(_stdcall *BONKDECODERCLOSE)			(void *);
-	typedef bool					(_stdcall *BONKDECODERGETID3DATA)		(void *, unsigned char **, int *);
-	typedef bool					(_stdcall *BONKDECODERINITSEEKTABLE)		(void *, unsigned char *, int);
-	typedef bool					(_stdcall *BONKDECODERSEEKTO)			(void *, int);
-	typedef const char *				(_stdcall *BONKGETVERSIONSTRING)		();
+	typedef void *					(BONKCONV *BONKENCODERCREATE)			();
+	typedef bool					(BONKCONV *BONKENCODERINIT)			(void *, unsigned int, unsigned int, int, bool, bool, int, int, int, double);
+	typedef int					(BONKCONV *BONKENCODERENCODEPACKET)		(void *, signed short *, int, unsigned char *, int);
+	typedef int					(BONKCONV *BONKENCODERFINISH)			(void *, unsigned char *, int);
+	typedef bool					(BONKCONV *BONKENCODERCLOSE)			(void *);
+	typedef int					(BONKCONV *BONKENCODERGETSAMPLECOUNT)		(void *);
+	typedef int					(BONKCONV *BONKENCODERGETSAMPLECOUNTOFFSET)	(void *);
+	typedef bool					(BONKCONV *BONKENCODERSETID3DATA)		(void *, unsigned char *, int);
+	typedef void *					(BONKCONV *BONKDECODERCREATE)			();
+	typedef bool					(BONKCONV *BONKDECODERINIT)			(void *, unsigned char *, int, unsigned int *, unsigned int *, int *);
+	typedef int					(BONKCONV *BONKDECODERDECODEPACKET)		(void *, unsigned char *, int, signed short *, int);
+	typedef int					(BONKCONV *BONKDECODERFINISH)			(void *);
+	typedef bool					(BONKCONV *BONKDECODERCLOSE)			(void *);
+	typedef bool					(BONKCONV *BONKDECODERGETID3DATA)		(void *, unsigned char **, int *);
+	typedef bool					(BONKCONV *BONKDECODERINITSEEKTABLE)		(void *, unsigned char *, int);
+	typedef bool					(BONKCONV *BONKDECODERSEEKTO)			(void *, int);
+	typedef const char *				(BONKCONV *BONKGETVERSIONSTRING)		();
 
 	extern BEEXPORT BONKENCODERCREATE		 ex_bonk_encoder_create;
 	extern BEEXPORT BONKENCODERINIT			 ex_bonk_encoder_init;

@@ -20,6 +20,7 @@ History
 		- updated Turkish translation
 		- dialog window positions are now relative to the main window position
 		- changed resizing mechanism to fit main window to screen on startup
+		- upgraded Bonk to version 0.12
 		- smaller bugfixes
 
 	Version 1.0.5 (November 2007)
