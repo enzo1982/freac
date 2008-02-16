@@ -33,7 +33,7 @@
   <entry id="21" string="none">пусто</entry>
   <entry id="22" string="Help topics...">Помощь...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Добавить аудио файл(ы) в список</entry>
-  <entry id="24" string="Add audio CD contents to the joblist">Добавить содержимое Аудио CD в лист</entry>
+  <entry id="24" string="Add audio CD contents to the joblist">Добавить содержимое Аудио CD в список</entry>
   <entry id="25" string="Remove the selected entry from the joblist">Удалить выбранные элементы из списка</entry>
   <entry id="26" string="Clear the entire joblist">Очистить список</entry>
   <entry id="27" string="Configure general settings">Настройка основных параметров</entry>
