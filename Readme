@@ -8,15 +8,18 @@ and WAV files.
 BonkEnc uses the CDRip Ripping Library for audio ripping.
 BonkEnc uses the FAAD2 AAC decoder for Advanced Audio decoding.
 
-FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
+Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
 
-	Version 1.1 CVS (June 2007)
+	Version 1.1 CVS (February 2008)
 
-		- added Catalan language support
-		- added German and Italian user guides
+		- added Catalan, Valencian and Portuguese language support
+		- added German, Italian, Russian and Greek user guides
+		- converted input and output filters to BoCA components
+		- implemented new configuration dialog
+		- added <installdrive> pattern for use in output directory name
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
 		- fixed total progress bar not working correctly with many tracks in joblist
@@ -26,10 +29,19 @@ History
 		- fixed not writing Xing header when using LAME presets
 		- fixed crash when trying to open unsupported Sun Audio (.au) files
 		- fixed encoding empty tracks when no CD is inserted
+		- fixed various CDDB issues
+		- fixed HTTP proxy authentication
+		- fixed BEcmd crashes
+		- improved CDDB data sanity check
 		- improved support for network files and directories
 		- NT SCSI mode is now used by default to access CD drives on NT systems
 		- installer improvements
 		- lots of fixes to the command line encoder
+		- upgraded Bonk to version 0.12
+		- upgraded FLAC to version 1.2.1
+		- upgraded FAAC to version 1.26
+		- upgraded FAAD2 to version 2.6.1
+		- upgrade to MPEG4IP v1.6.1
 		- some other fixes
 
 	Version 1.0 (February 2007)
@@ -354,7 +366,7 @@ Special thanks to
 			   Federico Reddig (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
-			   Dmitry Gusakov (Russian),
+			   Dmitry Gusakov, Evgeny Kozlov (Russian),
 			   Henryk Ning (Chinese, traditional),
 			   Nimin (Chinese, simplified),
 			   Krzysztof Konopacki (Polish),
@@ -371,10 +383,12 @@ Special thanks to
 			   Peter Krajcar (Slovak),
 			   Wiak (Norwegian),
 			   Vincent Rateau (Esperanto),
-			   Murat Ozkan (Turkish),
+			   Cako (Turkish),
 			   Naglis Jonaitis (Lithuanian),
 			   Borca Alin (Romanian),
-			   El libre (Catalan)
+			   El libre (Catalan),
+			   Vjatv (Valencian),
+			   Jose Goncalves (Portuguese)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

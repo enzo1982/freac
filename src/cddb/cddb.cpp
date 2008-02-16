@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,12 +25,12 @@ int cddb_sum(int n)
 	return ret;
 }
 
-BonkEnc::CDDB::CDDB(Config *iConfig)
+BonkEnc::CDDB::CDDB()
 {
-	activeDriveID = iConfig->cdrip_activedrive;
-	updateTrackOffsets = True;
+	config = Config::Get();
 
-	config = iConfig;
+	activeDriveID = config->cdrip_activedrive;
+	updateTrackOffsets = True;
 }
 
 BonkEnc::CDDB::~CDDB()
@@ -66,28 +66,12 @@ Int BonkEnc::CDDB::ComputeDiscID()
 
 String BonkEnc::CDDB::DiscIDToString(Int discID)
 {
-	String	 result;
-
-	for (Int i = 28; i >= 0; i -= 4)
-	{
-		if (((discID >> i) & 15) <= 9)	result[(28 - i) / 4] = '0' + ((discID >> i) & 15);
-		else				result[(28 - i) / 4] = 'a' + ((discID >> i) & 15) - 10;
-	}
-
-	return result;
+	return Number((Int64) discID).ToHexString();
 }
 
 Int BonkEnc::CDDB::StringToDiscID(const String &string)
 {
-	Int	 result = 0;
-
-	for (Int i = 0; i < 8; i++)
-	{
-		if (string[i] >= '0' && string[i] <= '9')	result += ((string[i] - '0') << ((7 - i) * 4));
-		else if (string[i] >= 'a' && string[i] <= 'f')	result += ((string[i] - 'a' + 10) << ((7 - i) * 4));
-	}
-
-	return result;
+	return (Int64) Number::FromHexString(string);
 }
 
 String BonkEnc::CDDB::GetCDDBQueryString()

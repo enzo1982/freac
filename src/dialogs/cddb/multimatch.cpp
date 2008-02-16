@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,7 +20,7 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	if (fuzzy)	title = BonkEnc::i18n->TranslateString("No exact matches found");
 	else		title = BonkEnc::i18n->TranslateString("Multiple matches found");
 
-	mainWnd			= new Window(title, Point(120, 120), Size(352, 150));
+	mainWnd			= new Window(title, Config::Get()->wndPos + Point(80, 80), Size(352, 150));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

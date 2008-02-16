@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,8 +10,8 @@
 
 #include <config.h>
 #include <bonkenc.h>
-#include <cddb/cddbcache.h>
-#include <utilities.h>
+
+BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
 BonkEnc::Config::Config()
 {
@@ -21,14 +21,32 @@ BonkEnc::Config::Config()
 
 	cdrip_autoRead_active = False;
 	cdrip_timeout = 0;
-
-	appMain = NIL;
-	cddbCache = new CDDBCache(this);
 }
 
 BonkEnc::Config::~Config()
 {
-	delete cddbCache;
+}
+
+BonkEnc::Config *BonkEnc::Config::Get()
+{
+	if (instance == NIL)
+	{
+		instance = new Config();
+
+		instance->LoadSettings();
+	}
+
+	return instance;
+}
+
+Void BonkEnc::Config::Free()
+{
+	if (instance != NIL)
+	{
+		instance->SaveSettings();
+
+		delete instance;
+	}
 }
 
 Bool BonkEnc::Config::LoadSettings()
@@ -44,12 +62,16 @@ Bool BonkEnc::Config::LoadSettings()
 
 		Directory(configDir).Create();
 	}
+	else
+	{
+		configDir = Application::GetApplicationDirectory();
+	}
 
 	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);
 
 	firstStart				= config->GetIntValue("Settings", "FirstStart", 1);
 	language				= config->GetStringValue("Settings", "Language", "");
-	encoder					= config->GetIntValue("Settings", "Encoder", 3);
+	encoderID				= config->GetStringValue("Settings", "Encoder", "wave-out");
 	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", personalDir);
 	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
 	enc_onTheFly				= config->GetIntValue("Settings", "EncodeOnTheFly", 1);
@@ -68,7 +90,6 @@ Bool BonkEnc::Config::LoadSettings()
 	tab_width_track				= config->GetIntValue("Settings", "TabWidthTrack", 50);
 	tab_width_length			= config->GetIntValue("Settings", "TabWidthLength", 80);
 	tab_width_size				= config->GetIntValue("Settings", "TabWidthSize", 80);
-	output_plugin				= config->GetIntValue("Settings", "OutputPlugin", 0);
 	showTips				= config->GetIntValue("Settings", "ShowTips", 1);
 	tipOffset				= config->GetIntValue("Settings", "TipOffset", 0);
 	checkUpdatesAtStartup			= config->GetIntValue("Settings", "CheckUpdatesAtStartup", 1);
@@ -128,85 +149,6 @@ Bool BonkEnc::Config::LoadSettings()
 	freedb_proxy_password			= config->GetStringValue("freedb", "ProxyPassword", "");
 	update_joblist				= config->GetIntValue("freedb", "UpdateJoblistOnSubmit", 1);
 
-	bonk_quantization			= config->GetIntValue("bonk", "Quantization", 8);
-	bonk_predictor				= config->GetIntValue("bonk", "Predictor", 32);
-	bonk_downsampling			= config->GetIntValue("bonk", "Downsampling", 2);
-	bonk_jstereo				= config->GetIntValue("bonk", "JointStereo", 0);
-	bonk_lossless				= config->GetIntValue("bonk", "Lossless", 0);
-
-	blade_bitrate				= config->GetIntValue("bladeEnc", "Bitrate", 192);
-	blade_crc				= config->GetIntValue("bladeEnc", "CRC", 0);
-	blade_copyright				= config->GetIntValue("bladeEnc", "Copyright", 0);
-	blade_original				= config->GetIntValue("bladeEnc", "Original", 1);
-	blade_private				= config->GetIntValue("bladeEnc", "Private", 0);
-	blade_dualchannel			= config->GetIntValue("bladeEnc", "DualChannel", 0);
-
-	lame_preset				= config->GetIntValue("lameMP3", "Preset", 0);
-	lame_set_bitrate			= config->GetIntValue("lameMP3", "SetBitrate", 1);
-	lame_bitrate				= config->GetIntValue("lameMP3", "Bitrate", 192);
-	lame_ratio				= config->GetIntValue("lameMP3", "Ratio", 1100);
-	lame_set_quality			= config->GetIntValue("lameMP3", "SetQuality", 0);
-	lame_quality				= config->GetIntValue("lameMP3", "Quality", 5);
-	lame_stereomode				= config->GetIntValue("lameMP3", "StereoMode", 0);
-	lame_forcejs				= config->GetIntValue("lameMP3", "ForceJS", 0);
-	lame_vbrmode				= config->GetIntValue("lameMP3", "VBRMode", 0);
-	lame_vbrquality				= config->GetIntValue("lameMP3", "VBRQuality", 5);
-	lame_abrbitrate				= config->GetIntValue("lameMP3", "ABRBitrate", 192);
-	lame_set_min_vbr_bitrate		= config->GetIntValue("lameMP3", "SetMinVBRBitrate", 0);
-	lame_min_vbr_bitrate			= config->GetIntValue("lameMP3", "MinVBRBitrate", 128);
-	lame_set_max_vbr_bitrate		= config->GetIntValue("lameMP3", "SetMaxVBRBitrate", 0);
-	lame_max_vbr_bitrate			= config->GetIntValue("lameMP3", "MaxVBRBitrate", 256);
-	lame_crc				= config->GetIntValue("lameMP3", "CRC", 0);
-	lame_copyright				= config->GetIntValue("lameMP3", "Copyright", 0);
-	lame_original				= config->GetIntValue("lameMP3", "Original", 1);
-	lame_private				= config->GetIntValue("lameMP3", "Private", 0);
-	lame_strict_iso				= config->GetIntValue("lameMP3", "StrictISO", 0);
-	lame_padding_type			= config->GetIntValue("lameMP3", "PaddingType", 2);
-	lame_resample				= config->GetIntValue("lameMP3", "Resample", -1);
-	lame_disable_filtering			= config->GetIntValue("lameMP3", "DisableFiltering", 0);
-	lame_set_lowpass			= config->GetIntValue("lameMP3", "SetLowpass", 0);
-	lame_lowpass				= config->GetIntValue("lameMP3", "Lowpass", 0);
-	lame_set_lowpass_width			= config->GetIntValue("lameMP3", "SetLowpassWidth", 0);
-	lame_lowpass_width			= config->GetIntValue("lameMP3", "LowpassWidth", 0);
-	lame_set_highpass			= config->GetIntValue("lameMP3", "SetHighpass", 0);
-	lame_highpass				= config->GetIntValue("lameMP3", "Highpass", 0);
-	lame_set_highpass_width			= config->GetIntValue("lameMP3", "SetHighpassWidth", 0);
-	lame_highpass_width			= config->GetIntValue("lameMP3", "HighpassWidth", 0);
-	lame_enable_ath				= config->GetIntValue("lameMP3", "EnableATH", 1);
-	lame_athtype				= config->GetIntValue("lameMP3", "ATHType", -1);
-	lame_use_tns				= config->GetIntValue("lameMP3", "UseTNS", 1);
-
-	vorbis_mode				= config->GetIntValue("oggVorbis", "Mode", 0);
-	vorbis_quality				= config->GetIntValue("oggVorbis", "Quality", 60);
-	vorbis_bitrate				= config->GetIntValue("oggVorbis", "Bitrate", 192);
-
-	faac_mpegversion			= config->GetIntValue("FAAC", "MPEGVersion", 0);
-	faac_type				= config->GetIntValue("FAAC", "AACType", 2);
-	faac_bitrate				= config->GetIntValue("FAAC", "Bitrate", 64);
-	faac_bandwidth				= config->GetIntValue("FAAC", "BandWidth", 16000);
-	faac_allowjs				= config->GetIntValue("FAAC", "AllowJS", 1);
-	faac_usetns				= config->GetIntValue("FAAC", "UseTNS", 0);
-	faac_set_quality			= config->GetIntValue("FAAC", "SetQuality", 1);
-	faac_aac_quality			= config->GetIntValue("FAAC", "AACQuality", 100);
-	faac_enable_id3				= config->GetIntValue("FAAC", "AllowID3V2", 0);
-	faac_enable_mp4				= config->GetIntValue("FAAC", "MP4Container", 1);
-
-	flac_preset				= config->GetIntValue("FLAC", "Preset", -1);
-	flac_streamable_subset			= config->GetIntValue("FLAC", "StreamableSubset", 1);
-	flac_do_mid_side_stereo			= config->GetIntValue("FLAC", "DoMidSideStereo", 1);
-	flac_loose_mid_side_stereo		= config->GetIntValue("FLAC", "LooseMidSideStereo", 0);
-	flac_blocksize				= config->GetIntValue("FLAC", "Blocksize", 4608);
-	flac_apodization			= config->GetStringValue("FLAC", "Apodization", "tukey(0.5)");
-	flac_max_lpc_order			= config->GetIntValue("FLAC", "MaxLPCOrder", 8);
-	flac_qlp_coeff_precision		= config->GetIntValue("FLAC", "QLPCoeffPrecision", 0);
-	flac_do_qlp_coeff_prec_search		= config->GetIntValue("FLAC", "DoQLPCoeffPrecSearch", 0);
-	flac_do_exhaustive_model_search		= config->GetIntValue("FLAC", "DoExhaustiveModelSearch", 0);
-	flac_min_residual_partition_order	= config->GetIntValue("FLAC", "MinResidualPartitionOrder", 3);
-	flac_max_residual_partition_order	= config->GetIntValue("FLAC", "MaxResidualPartitionOrder", 3);
-
-	tvq_bitrate				= config->GetIntValue("TwinVQ", "Bitrate", 48);
-	tvq_presel_candidates			= config->GetIntValue("TwinVQ", "PreselectionCandidates", 32);
-
 	delete config;
 
 	if (enc_outdir[enc_outdir.Length() - 1] != '\\') enc_outdir.Append("\\");
@@ -228,7 +170,7 @@ Bool BonkEnc::Config::SaveSettings()
 	{
 		config->SetIntValue("Settings", "FirstStart", 0);
 		config->SetStringValue("Settings", "Language", language);
-		config->SetIntValue("Settings", "Encoder", encoder);
+		config->SetStringValue("Settings", "Encoder", encoderID);
 		config->SetStringValue("Settings", "EncoderOutDir", enc_outdir);
 		config->SetStringValue("Settings", "EncoderFilenamePattern", enc_filePattern);
 		config->SetIntValue("Settings", "EncodeOnTheFly", enc_onTheFly);
@@ -247,7 +189,6 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("Settings", "TabWidthTrack", tab_width_track);
 		config->SetIntValue("Settings", "TabWidthLength", tab_width_length);
 		config->SetIntValue("Settings", "TabWidthSize", tab_width_size);
-		config->SetIntValue("Settings", "OutputPlugin", output_plugin);
 		config->SetIntValue("Settings", "ShowTips", showTips);
 		config->SetIntValue("Settings", "TipOffset", tipOffset);
 		config->SetIntValue("Settings", "CheckUpdatesAtStartup", checkUpdatesAtStartup);
@@ -304,85 +245,6 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetStringValue("freedb", "ProxyUserName", freedb_proxy_user);
 		config->SetStringValue("freedb", "ProxyPassword", freedb_proxy_password);
 		config->SetIntValue("freedb", "UpdateJoblistOnSubmit", update_joblist);
-
-		config->SetIntValue("bonk", "Quantization", bonk_quantization);
-		config->SetIntValue("bonk", "Predictor", bonk_predictor);
-		config->SetIntValue("bonk", "Downsampling", bonk_downsampling);
-		config->SetIntValue("bonk", "JointStereo", bonk_jstereo);
-		config->SetIntValue("bonk", "Lossless", bonk_lossless);
-
-		config->SetIntValue("bladeEnc", "Bitrate", blade_bitrate);
-		config->SetIntValue("bladeEnc", "CRC", blade_crc);
-		config->SetIntValue("bladeEnc", "Copyright", blade_copyright);
-		config->SetIntValue("bladeEnc", "Original", blade_original);
-		config->SetIntValue("bladeEnc", "Private", blade_private);
-		config->SetIntValue("bladeEnc", "DualChannel", blade_dualchannel);
-
-		config->SetIntValue("lameMP3", "Preset", lame_preset);
-		config->SetIntValue("lameMP3", "SetBitrate", lame_set_bitrate);
-		config->SetIntValue("lameMP3", "Bitrate", lame_bitrate);
-		config->SetIntValue("lameMP3", "Ratio", lame_ratio);
-		config->SetIntValue("lameMP3", "SetQuality", lame_set_quality);
-		config->SetIntValue("lameMP3", "Quality", lame_quality);
-		config->SetIntValue("lameMP3", "StereoMode", lame_stereomode);
-		config->SetIntValue("lameMP3", "ForceJS", lame_forcejs);
-		config->SetIntValue("lameMP3", "VBRMode", lame_vbrmode);
-		config->SetIntValue("lameMP3", "VBRQuality", lame_vbrquality);
-		config->SetIntValue("lameMP3", "ABRBitrate", lame_abrbitrate);
-		config->SetIntValue("lameMP3", "SetMinVBRBitrate", lame_set_min_vbr_bitrate);
-		config->SetIntValue("lameMP3", "MinVBRBitrate", lame_min_vbr_bitrate);
-		config->SetIntValue("lameMP3", "SetMaxVBRBitrate", lame_set_max_vbr_bitrate);
-		config->SetIntValue("lameMP3", "MaxVBRBitrate", lame_max_vbr_bitrate);
-		config->SetIntValue("lameMP3", "CRC", lame_crc);
-		config->SetIntValue("lameMP3", "Copyright", lame_copyright);
-		config->SetIntValue("lameMP3", "Original", lame_original);
-		config->SetIntValue("lameMP3", "Private", lame_private);
-		config->SetIntValue("lameMP3", "StrictISO", lame_strict_iso);
-		config->SetIntValue("lameMP3", "PaddingType", lame_padding_type);
-		config->SetIntValue("lameMP3", "Resample", lame_resample);
-		config->SetIntValue("lameMP3", "DisableFiltering", lame_disable_filtering);
-		config->SetIntValue("lameMP3", "SetLowpass", lame_set_lowpass);
-		config->SetIntValue("lameMP3", "Lowpass", lame_lowpass);
-		config->SetIntValue("lameMP3", "SetLowpassWidth", lame_set_lowpass_width);
-		config->SetIntValue("lameMP3", "LowpassWidth", lame_lowpass_width);
-		config->SetIntValue("lameMP3", "SetHighpass", lame_set_highpass);
-		config->SetIntValue("lameMP3", "Highpass", lame_highpass);
-		config->SetIntValue("lameMP3", "SetHighpassWidth", lame_set_highpass_width);
-		config->SetIntValue("lameMP3", "HighpassWidth", lame_highpass_width);
-		config->SetIntValue("lameMP3", "EnableATH", lame_enable_ath);
-		config->SetIntValue("lameMP3", "ATHType", lame_athtype);
-		config->SetIntValue("lameMP3", "UseTNS", lame_use_tns);
-
-		config->SetIntValue("oggVorbis", "Mode", vorbis_mode);
-		config->SetIntValue("oggVorbis", "Quality", vorbis_quality);
-		config->SetIntValue("oggVorbis", "Bitrate", vorbis_bitrate);
-
-		config->SetIntValue("FAAC", "MPEGVersion", faac_mpegversion);
-		config->SetIntValue("FAAC", "AACType", faac_type);
-		config->SetIntValue("FAAC", "Bitrate", faac_bitrate);
-		config->SetIntValue("FAAC", "BandWidth", faac_bandwidth);
-		config->SetIntValue("FAAC", "AllowJS", faac_allowjs);
-		config->SetIntValue("FAAC", "UseTNS", faac_usetns);
-		config->SetIntValue("FAAC", "SetQuality", faac_set_quality);
-		config->SetIntValue("FAAC", "AACQuality", faac_aac_quality);
-		config->SetIntValue("FAAC", "AllowID3V2", faac_enable_id3);
-		config->SetIntValue("FAAC", "MP4Container", faac_enable_mp4);
-
-		config->SetIntValue("FLAC", "Preset", flac_preset);
-		config->SetIntValue("FLAC", "StreamableSubset", flac_streamable_subset);
-		config->SetIntValue("FLAC", "DoMidSideStereo", flac_do_mid_side_stereo);
-		config->SetIntValue("FLAC", "LooseMidSideStereo", flac_loose_mid_side_stereo);
-		config->SetIntValue("FLAC", "Blocksize", flac_blocksize);
-		config->SetStringValue("FLAC", "Apodization", flac_apodization);
-		config->SetIntValue("FLAC", "MaxLPCOrder", flac_max_lpc_order);
-		config->SetIntValue("FLAC", "QLPCoeffPrecision", flac_qlp_coeff_precision);
-		config->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", flac_do_qlp_coeff_prec_search);
-		config->SetIntValue("FLAC", "DoExhaustiveModelSearch", flac_do_exhaustive_model_search);
-		config->SetIntValue("FLAC", "MinResidualPartitionOrder", flac_min_residual_partition_order);
-		config->SetIntValue("FLAC", "MaxResidualPartitionOrder", flac_max_residual_partition_order);
-
-		config->SetIntValue("TwinVQ", "Bitrate", tvq_bitrate);
-		config->SetIntValue("TwinVQ", "PreselectionCandidates", tvq_presel_candidates);
 
 		config->Save();
 	}

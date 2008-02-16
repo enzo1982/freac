@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -18,14 +18,14 @@
 
 BonkEnc::cddbManageDlg::cddbManageDlg()
 {
-	currentConfig	= BonkEnc::currentConfig;
+	currentConfig	= Config::Get();
 
 	updateJoblist	= currentConfig->update_joblist;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(120, 120), Size(552, 352));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(552, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -67,9 +67,9 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Charset"), 100);
 	list_entries->onSelectEntry.Connect(&cddbManageDlg::SelectEntry, this);
 
-	for (Int i = 0; i < currentConfig->cddbCache->GetNOfEntries(); i++)
+	for (Int i = 0; i < CDDBCache::Get()->GetNOfEntries(); i++)
 	{
-		const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(i);
+		const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(i);
 
 		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
 	}
@@ -183,13 +183,13 @@ Void BonkEnc::cddbManageDlg::OK()
 {
 	if (updateJoblist)
 	{
-		for (Int i = 0; i < currentConfig->cddbCache->GetNOfEntries(); i++)
+		for (Int i = 0; i < CDDBCache::Get()->GetNOfEntries(); i++)
 		{
-			const CDDBInfo	&cddbInfo = currentConfig->cddbCache->GetNthEntry(i);
+			const CDDBInfo	&cddbInfo = CDDBCache::Get()->GetNthEntry(i);
 
-			for (Int l = 0; l < currentConfig->appMain->joblist->GetNOfTracks(); l++)
+			for (Int l = 0; l < BonkEnc::Get()->joblist->GetNOfTracks(); l++)
 			{
-				Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
+				Track	*trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
 				if (trackInfo->discid != cddbInfo.DiscIDToString()) continue;
 
@@ -207,11 +207,11 @@ Void BonkEnc::cddbManageDlg::OK()
 						String	 jlEntry;
 
 						if (trackInfo->artist == NIL && trackInfo->title == NIL)	jlEntry = String(trackInfo->origFilename).Append("\t");
-						else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : currentConfig->appMain->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : currentConfig->appMain->i18n->TranslateString("unknown title")).Append("\t");
+						else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::Get()->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::Get()->i18n->TranslateString("unknown title")).Append("\t");
 
 						jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String("")).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
 
-						if (currentConfig->appMain->joblist->GetNthEntry(l)->GetText() != jlEntry) currentConfig->appMain->joblist->GetNthEntry(l)->SetText(jlEntry);
+						if (BonkEnc::Get()->joblist->GetNthEntry(l)->GetText() != jlEntry) BonkEnc::Get()->joblist->GetNthEntry(l)->SetText(jlEntry);
 					}
 				}
 			}
@@ -230,7 +230,7 @@ Void BonkEnc::cddbManageDlg::Cancel()
 
 Void BonkEnc::cddbManageDlg::SetCharset()
 {
-	const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
+	const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
 	String		 dArtist;
 	String		 dTitle;
 
@@ -255,7 +255,7 @@ Void BonkEnc::cddbManageDlg::SetCharset()
 
 Void BonkEnc::cddbManageDlg::SelectEntry()
 {
-	const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
+	const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\n\n");
 
 	for (Int i = 0; i < entry.trackTitles.Length(); i++)
@@ -273,7 +273,7 @@ Void BonkEnc::cddbManageDlg::SelectEntry()
 
 Void BonkEnc::cddbManageDlg::DeleteEntry()
 {
-	currentConfig->cddbCache->RemoveNthEntry(list_entries->GetSelectedEntryNumber());
+	CDDBCache::Get()->RemoveNthEntry(list_entries->GetSelectedEntryNumber());
 
 	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
 
@@ -286,7 +286,7 @@ Void BonkEnc::cddbManageDlg::DeleteEntry()
 
 Void BonkEnc::cddbManageDlg::SaveEntry()
 {
-	CDDBInfo entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
+	CDDBInfo entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
 
 	entry.dArtist.ImportFrom(edit_charset->GetText(), entry.oDArtist);
 	entry.dTitle.ImportFrom(edit_charset->GetText(), entry.oDTitle);
@@ -313,5 +313,5 @@ Void BonkEnc::cddbManageDlg::SaveEntry()
 	list_entries->GetSelectedEntry()->SetText(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
 
 	// Save modified entry back to cache (necessary to make changes persistant)
-	currentConfig->cddbCache->AddCacheEntry(entry);
+	CDDBCache::Get()->AddCacheEntry(entry);
 }

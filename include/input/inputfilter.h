@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,22 +15,12 @@
 #include <smooth/io/driver.h>
 #include "../bonkenc.h"
 
-#include <3rdparty/id3.h>
-
 using namespace smooth::IO;
 
 namespace BonkEnc
 {
-	class BEEXPORT InputFilter : public Filter
+	class InputFilter : public Filter
 	{
-		private:
-			Bool		 ParseID3V2Tag(ID3Tag *, Track *);
-			String		 GetID3V2FrameString(ID3Frame *);
-
-			String		 GetTempFileName(const String &);
-
-			String		 CreateTempFile(const String &);
-			Bool		 RemoveTempFile(const String &);
 		protected:
 			Int		 inBytes;
 
@@ -40,13 +30,8 @@ namespace BonkEnc
 			UnsignedInt	 fileSize;
 			Track		*format;
 			Config		*currentConfig;
-
-			Bool		 ParseID3V2Tag(unsigned char *, Int, Track *);
-			Bool		 ParseID3V2Tag(const String &, Track *);
-
-			const String	&GetID3CategoryName(Int);
 		public:
-					 InputFilter(Config *, Track *);
+					 InputFilter(Track *);
 			virtual		~InputFilter();
 
 			virtual Int	 ReadData(Buffer<UnsignedByte> &, Int) = 0;

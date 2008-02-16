@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,14 +17,6 @@
 #include <smooth/io/drivers/driver_zero.h>
 
 #include <input/filter-in-cdrip.h>
-#include <input/filter-in-wave.h>
-#include <input/filter-in-voc.h>
-#include <input/filter-in-aiff.h>
-#include <input/filter-in-au.h>
-#include <input/filter-in-lame.h>
-#include <input/filter-in-vorbis.h>
-#include <input/filter-in-bonk.h>
-#include <input/filter-in-flac.h>
 
 BonkEnc::Playback::Playback()
 {
@@ -39,7 +31,7 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 {
 	if (entry < 0) return;
 
-	if (BonkEnc::currentConfig->appMain->encoder->encoding)
+	if (BonkEnc::Get()->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot play a file while encoding!");
 
@@ -76,7 +68,7 @@ Int BonkEnc::Playback::PlayThread()
 	String	 in_filename;
 	Track	*trackInfo;
 
-	player_activedrive = BonkEnc::currentConfig->cdrip_activedrive;
+	player_activedrive = Config::Get()->cdrip_activedrive;
  
 	trackInfo = joblist->GetNthTrack(player_entry);
 
@@ -95,10 +87,10 @@ Int BonkEnc::Playback::PlayThread()
 
 	if (trackInfo->isCDTrack)
 	{
-		BonkEnc::currentConfig->cdrip_activedrive = trackInfo->drive;
+		Config::Get()->cdrip_activedrive = trackInfo->drive;
 
 		f_in		= new InStream(STREAM_DRIVER, driver_in);
-		filter_in	= new FilterInCDRip(BonkEnc::currentConfig, trackInfo);
+		filter_in	= new FilterInCDRip(trackInfo);
 
 		((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
 
@@ -129,15 +121,14 @@ Int BonkEnc::Playback::PlayThread()
 		UnsignedInt	 samples_size = 1024;
 		Int64		 n_loops = (trackInfo->length + samples_size - 1) / samples_size;
 
-		player_plugin = BonkEnc::currentConfig->output_plugin;
+		output = (OutputComponent *) Registry::Get().CreateComponentByID("winamp-out");
+		output->SetAudioTrackInfo(*trackInfo);
+		output->Activate();
 
-		Out_Module	*out = DLLInterfaces::winamp_out_modules.GetNth(BonkEnc::currentConfig->output_plugin);
-		Int		 latency = out->Open(trackInfo->rate, trackInfo->channels, 16, 0, 0);
-
-		if (latency >= 0 && trackInfo->length >= 0)
+		if (!output->GetErrorState() && trackInfo->length >= 0)
 		{
-			Int	 sample = 0;
-			short	*sample_buffer = new short [samples_size];
+			Int			 sample = 0;
+			Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
 
 			for (Int loop = 0; loop < n_loops; loop++)
 			{
@@ -147,20 +138,20 @@ Int BonkEnc::Playback::PlayThread()
 
 				for (Int i = 0; i < step; i++)
 				{
-					if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
-					else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
+					if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(short(trackInfo->bits / 8));
+					else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(short(trackInfo->bits / 8));
 
 					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
 
-					if (trackInfo->bits == 8)	sample_buffer[i] = (sample - 128) * 256;
-					else if (trackInfo->bits == 16)	sample_buffer[i] = sample;
-					else if (trackInfo->bits == 24)	sample_buffer[i] = sample / 256;
-					else if (trackInfo->bits == 32)	sample_buffer[i] = sample / 65536;
+					if (trackInfo->bits == 8)	((short *) (UnsignedByte *) sample_buffer)[i] = (sample - 128) * 256;
+					else if (trackInfo->bits == 16)	((short *) (UnsignedByte *) sample_buffer)[i] = sample;
+					else if (trackInfo->bits == 24)	((short *) (UnsignedByte *) sample_buffer)[i] = sample / 256;
+					else if (trackInfo->bits == 32)	((short *) (UnsignedByte *) sample_buffer)[i] = sample / 65536;
 				}
 
 				position += step;
 
-				while (out->CanWrite() < (2 * step))
+				while (output->CanWrite() < (2 * step))
 				{
 					if (stop_playback) break;
 
@@ -169,15 +160,13 @@ Int BonkEnc::Playback::PlayThread()
 
 				if (stop_playback) break;
 
-				out->Write((char *) sample_buffer, 2 * step);
+				output->WriteData(sample_buffer, 2 * step);
 			}
-
-			delete [] sample_buffer;
 		}
-		else if (latency >= 0 && trackInfo->length == -1)
+		else if (!output->GetErrorState() && trackInfo->length == -1)
 		{
-			Int	 sample = 0;
-			short	*sample_buffer = new short [samples_size];
+			Int			 sample = 0;
+			Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
 
 			while (sample != -1)
 			{
@@ -185,17 +174,17 @@ Int BonkEnc::Playback::PlayThread()
 
 				for (Int i = 0; i < step; i++)
 				{
-					if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
-					else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
+					if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(short(trackInfo->bits / 8));
+					else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(short(trackInfo->bits / 8));
 
 					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
 
 					if (sample != -1)
 					{
-						if (trackInfo->bits == 8)	sample_buffer[i] = (sample - 128) * 256;
-						else if (trackInfo->bits == 16)	sample_buffer[i] = sample;
-						else if (trackInfo->bits == 24)	sample_buffer[i] = sample / 256;
-						else if (trackInfo->bits == 32)	sample_buffer[i] = sample / 65536;
+						if (trackInfo->bits == 8)	((short *) (UnsignedByte *) sample_buffer)[i] = (sample - 128) * 256;
+						else if (trackInfo->bits == 16)	((short *) (UnsignedByte *) sample_buffer)[i] = sample;
+						else if (trackInfo->bits == 24)	((short *) (UnsignedByte *) sample_buffer)[i] = sample / 256;
+						else if (trackInfo->bits == 32)	((short *) (UnsignedByte *) sample_buffer)[i] = sample / 65536;
 					}
 					else
 					{
@@ -203,7 +192,7 @@ Int BonkEnc::Playback::PlayThread()
 					}
 				}
 
-				while (out->CanWrite() < (2 * step))
+				while (output->CanWrite() < (2 * step))
 				{
 					if (stop_playback) break;
 
@@ -212,22 +201,22 @@ Int BonkEnc::Playback::PlayThread()
 
 				if (stop_playback) break;
 
-				out->Write((char *) sample_buffer, 2 * step);
+				output->WriteData(sample_buffer, 2 * step);
 			}
-
-			delete [] sample_buffer;
 		}
 
-		if (!stop_playback) while (out->IsPlaying()) Sleep(20);
+		if (!stop_playback) while (output->IsPlaying()) Sleep(20);
 
-		out->Close();
+		output->Deactivate();
+
+		Registry::Get().DeleteComponent(output);
 
 		delete f_in;
 		delete driver_in;
 		delete filter_in;
 	}
 
-	BonkEnc::currentConfig->cdrip_activedrive = player_activedrive;
+	Config::Get()->cdrip_activedrive = player_activedrive;
 
 	Font	 font = joblist->GetNthEntry(player_entry)->GetFont();
 
@@ -244,7 +233,7 @@ Void BonkEnc::Playback::Pause()
 {
 	if (!playing) return;
 
-	DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(1);
+	output->SetPause(True);
 
 	paused = True;
 }
@@ -253,7 +242,7 @@ Void BonkEnc::Playback::Resume()
 {
 	if (!playing) return;
 
-	DLLInterfaces::winamp_out_modules.GetNth(player_plugin)->Pause(0);
+	output->SetPause(False);
 
 	paused = False;
 }

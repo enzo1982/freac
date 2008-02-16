@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,29 +11,7 @@
 #include <utilities.h>
 
 #include <input/filter-in-cdrip.h>
-#include <input/filter-in-wave.h>
-#include <input/filter-in-voc.h>
-#include <input/filter-in-aiff.h>
-#include <input/filter-in-au.h>
-#include <input/filter-in-lame.h>
-#include <input/filter-in-mp4.h>
-#include <input/filter-in-vorbis.h>
-#include <input/filter-in-bonk.h>
-#include <input/filter-in-faad2.h>
-#include <input/filter-in-flac.h>
-#include <input/filter-in-winamp.h>
-
-#include <output/filter-out-blade.h>
-#include <output/filter-out-bonk.h>
-#include <output/filter-out-faac.h>
-#include <output/filter-out-flac.h>
-#include <output/filter-out-lame.h>
-#include <output/filter-out-mp4.h>
-#include <output/filter-out-tvq.h>
-#include <output/filter-out-vorbis.h>
-#include <output/filter-out-wave.h>
-
-#include <dllinterfaces.h>
+#include <input/filter-in-boca.h>
 
 #include <string>
 
@@ -41,163 +19,45 @@ using namespace smooth::System;
 
 Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace)
 {
-	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);
-	else						Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
+	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);
+	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
 }
 
 Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace)
 {
-	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-	else						Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
+	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
 }
 
 BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile, Track *trackInfo)
 {
-	Array<String>	 extensions;
-	Array<Int>	 indexes;
-
 	String		 file = iFile.ToLower();
 
-	for (Int i = 0; i < DLLInterfaces::winamp_in_plugins.Length(); i++)
+	if ((file.StartsWith("/cda") || file.EndsWith(".cda")) && Config::Get()->enable_cdrip && Config::Get()->cdrip_numdrives >= 1)
 	{
-		Int	 n = 1;
-		Int	 k = 0;
-		String	 extension;
-
-		for (Int j = 0; true; j++)
-		{
-			if (!(n & 1))
-			{
-				if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0) n++;
-			}
-			else
-			{
-				extension[k++] = DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j];
-
-				if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0)
-				{
-					String	 extension2 = extension;
-					Int	 o = 0;		
-
-					for (Int m = 0; m <= extension2.Length(); m++)
-					{
-						if (extension2[m] == ';' || extension2[m] == 0)
-						{
-							extension[m - o] = 0;
-
-							extensions.Add(extension);
-							indexes.Add(i);
-
-							o = m + 1;
-						}
-						else
-						{
-							extension[m - o] = tolower(extension2[m]);
-						}
-					}
-
-					k = 0;
-					n++;
-					extension = "";
-				}
-			}
-
-			if (DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j] == 0 && DLLInterfaces::winamp_in_modules.GetNth(i)->FileExtensions[j + 1] == 0) break;
-		}
-	}
-
-	Int	 found = -1;
-
-	for (Int j = 0; j < extensions.Length(); j++)
-	{
-		if (file.EndsWith(extensions.GetNth(j)))
-		{
-			found = j;
-
-			break;
-		}
+		return new FilterInCDRip(trackInfo);
 	}
 
 	InputFilter	*filter_in = NIL;
+	Registry	&boca = Registry::Get();
 
-	if ((file.StartsWith("/cda") || file.EndsWith(".cda")) && BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)
+	for (Int j = 0; j < boca.GetNumberOfComponents(); j++)
 	{
-		filter_in = new FilterInCDRip(BonkEnc::currentConfig, trackInfo);
-	}
-	else if (file.EndsWith(".mp3") && BonkEnc::currentConfig->enable_lame)
-	{
-		filter_in = new FilterInLAME(BonkEnc::currentConfig, trackInfo);
-	}
-	else if ((file.EndsWith(".mp4") || file.EndsWith(".m4a") || file.EndsWith(".m4b")) && BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)
-	{
-		filter_in = new FilterInMP4(BonkEnc::currentConfig, trackInfo);
-	}
-	else if (file.EndsWith(".ogg") && BonkEnc::currentConfig->enable_vorbis)
-	{
-		filter_in = new FilterInVORBIS(BonkEnc::currentConfig, trackInfo);
-	}
-	else if (file.EndsWith(".aac") && BonkEnc::currentConfig->enable_faad2)
-	{
-		filter_in = new FilterInFAAD2(BonkEnc::currentConfig, trackInfo);
-	}
-	else if (file.EndsWith(".bonk") && BonkEnc::currentConfig->enable_bonk)
-	{
-		filter_in = new FilterInBONK(BonkEnc::currentConfig, trackInfo);
-	}
-	else if (file.EndsWith(".flac") && BonkEnc::currentConfig->enable_flac)
-	{
-		filter_in = new FilterInFLAC(BonkEnc::currentConfig, trackInfo);
-	}
-	else if (found != -1)
-	{
-		filter_in = new FilterInWinamp(BonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNth(indexes.GetNth(found)));
-	}
-	else
-	{
-		InStream	*f_in = new InStream(STREAM_FILE, file, IS_READONLY);
-		Int		 magic = f_in->InputNumber(4);
+		if (boca.GetComponentType(j) != BoCA::COMPONENT_TYPE_DECODER) continue;
 
-		delete f_in;
+		DecoderComponent	*component = (DecoderComponent *) Registry::Get().CreateComponentByID(boca.GetComponentID(j));
 
-		switch (magic)
+		if (component->CanOpenStream(file))
 		{
-			case 1297239878:
-				filter_in = new FilterInAIFF(BonkEnc::currentConfig, trackInfo);
-				break;
-			case 1684960046:
-				filter_in = new FilterInAU(BonkEnc::currentConfig, trackInfo);
-				break;
-			case 1634038339:
-				filter_in = new FilterInVOC(BonkEnc::currentConfig, trackInfo);
-				break;
-			case 1179011410:
-				filter_in = new FilterInWAVE(BonkEnc::currentConfig, trackInfo);
-				break;
+			filter_in = new FilterInBoCA(trackInfo, boca.GetComponentID(j));
 		}
+
+		boca.DeleteComponent(component);
+
+		if (filter_in != NIL) break;
 	}
 
 	return filter_in;
-}
-
-BonkEnc::OutputFilter *BonkEnc::Utilities::CreateOutputFilter(Int encoder, Track *trackInfo)
-{
-	OutputFilter	*filter_out = NIL;
-
-	if (encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_BONKENC)		filter_out = new FilterOutBONK(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_FLAC)		filter_out = new FilterOutFLAC(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_TVQ)		filter_out = new FilterOutTVQ(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_LAMEENC)		filter_out = new FilterOutLAME(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_VORBISENC)	filter_out = new FilterOutVORBIS(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_WAVE)		filter_out = new FilterOutWAVE(BonkEnc::currentConfig, trackInfo);
-
-	if (encoder == ENCODER_FAAC)
-	{
-		if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->faac_enable_mp4) filter_out = new FilterOutMP4(BonkEnc::currentConfig, trackInfo);
-		else										   filter_out = new FilterOutFAAC(BonkEnc::currentConfig, trackInfo);
-	}
-
-	return filter_out;
 }
 
 Void BonkEnc::Utilities::FillGenreList(List *list)
@@ -355,34 +215,6 @@ Void BonkEnc::Utilities::FillGenreList(List *list)
 	list->AddEntry("Vocal");
 }
 
-String BonkEnc::Utilities::LocalizeNumber(Int64 number)
-{
-	String	 nString = String::FromInt(number);
-	String	 retVal;
-	String	 separator;
-
-	char	*buffer_a = new char [256];
-	wchar_t	*buffer_w = new wchar_t [256];
-
-	if (Setup::enableUnicode)	GetLocaleInfoW(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_w, 256);
-	else				GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_a, 256);
-
-	if (Setup::enableUnicode)	separator = buffer_w;
-	else				separator = buffer_a;
-
-	delete [] buffer_a;
-	delete [] buffer_w;
-
-	for (Int i = 0; i < nString.Length(); i++)
-	{
-		if ((nString.Length() - i) % 3 == 0 && i > 0) retVal.Append(separator);
-
-		retVal[retVal.Length()] = nString[i];
-	}
-
-	return retVal;
-}
-
 String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool repSlash)
 {
 	String	 rVal;
@@ -396,10 +228,10 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 		else if (string[k] == '<')		rVal[k + b] = '(';
 		else if (string[k] == '>')		rVal[k + b] = ')';
 		else if (string[k] == ':')		b--;
-		else if (string[k] == '/' && repSlash)	rVal[k + b] = '_';
-		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '_';
+		else if (string[k] == '/' && repSlash)	rVal[k + b] = '-';
+		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '-';
 		else if (string[k] >= 256 &&
-			(!BonkEnc::currentConfig->useUnicodeNames ||
+			(!Config::Get()->useUnicodeNames ||
 			 !Setup::enableUnicode))	rVal[k + b] = '#';
 		else					rVal[k + b] = string[k];
 	}
@@ -418,19 +250,20 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 	{
 		if (dir[i] == '\\' || dir[i] == '/')
 		{
+			String	 tmpDir2 = tmpDir;
+
 			if (tmpDir.Length() - lastBS > 96)
 			{
-				String	 tmpDir2 = String().CopyN(tmpDir, lastBS + 96);
-
-				for (Int j = tmpDir2.Length() - 1; j > 0; j--)
-				{
-					if (tmpDir2[j] == ' ')	{ tmpDir2[j] = 0; i--; }
-					else			break;
-				}
-
-				rFileName.Replace(tmpDir, tmpDir2);
+				tmpDir2 = String().CopyN(tmpDir, lastBS + 96);
 
 				i -= (tmpDir.Length() - lastBS - 96);
+			}
+
+			while (tmpDir2.EndsWith(".") || tmpDir2.EndsWith(" ")) { tmpDir2[tmpDir2.Length() - 1] = 0; i--; }
+
+			if (tmpDir2 != tmpDir)
+			{
+				rFileName.Replace(tmpDir, tmpDir2);
 
 				tmpDir = tmpDir2;
 				dir = rFileName;
@@ -447,13 +280,14 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 
 	if (rFileName.Length() - lastBS > 96) rFileName = String().CopyN(rFileName, lastBS + 96);
 
-	for (Int j = rFileName.Length() - 1; j > 0; j--)
-	{
-		if (rFileName[j] == ' ') rFileName[j] = 0;
-		else			 break;
-	}
+	while (rFileName.EndsWith(" ")) { rFileName[rFileName.Length() - 1] = 0; }
 
 	return rFileName;
+}
+
+String BonkEnc::Utilities::GetInstallDrive()
+{
+	return Application::GetApplicationDirectory().Head(2);
 }
 
 Void BonkEnc::Utilities::GainShutdownPrivilege()

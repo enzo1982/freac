@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,14 +20,14 @@
 
 BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = Config::Get();
 
 	allowAddToBatch = False;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB query"), Point(140, 140), Size(310, 84));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB query"), currentConfig->wndPos + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -117,14 +117,14 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 	if (currentConfig->enable_local_cddb)
 	{
-		CDDBLocal	 cddbLocal(currentConfig);
+		CDDBLocal	 cddbLocal;
 
 		result = QueryCDDB(cddbLocal);
 	}
 
 	if (!result && currentConfig->enable_remote_cddb)
 	{
-		CDDBRemote	 cddbRemote(currentConfig);
+		CDDBRemote	 cddbRemote;
 
 		result = QueryCDDB(cddbRemote);
 	}
@@ -217,7 +217,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 		{
 			if (QuickMessage(String(BonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server.")).Append("\n\n").Append(BonkEnc::i18n->TranslateString("Would you like to perform this query again later?")), BonkEnc::i18n->TranslateString("Error"), MB_YESNO, IDI_HAND) == IDYES)
 			{
-				CDDBBatch	*queries = new CDDBBatch(currentConfig);
+				CDDBBatch	*queries = new CDDBBatch();
 
 				queries->AddQuery(cddb.GetCDDBQueryString());
 

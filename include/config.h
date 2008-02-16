@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -18,15 +18,16 @@ using namespace smooth::GUI;
 
 namespace BonkEnc
 {
-	class BonkEnc;
-	class CDDBCache;
-
-	class BEEXPORT Config
+	class Config
 	{
-		public:
-			BonkEnc		*appMain;
-			CDDBCache	*cddbCache;
+		private:
+			/* Singleton class, therefore private constructor/destructor
+			 */
+			static Config	*instance;
 
+					 Config();
+					~Config();
+		public:
 			String		 configDir;
 
 			Bool		 firstStart;
@@ -41,8 +42,6 @@ namespace BonkEnc
 			Int		 tab_width_track;
 			Int		 tab_width_length;
 			Int		 tab_width_size;
-
-			Int		 output_plugin;
 
 			Bool		 createPlaylist;
 			Bool		 createCueSheet;
@@ -66,20 +65,10 @@ namespace BonkEnc
 			String		 lastAddedDir;
 			String		 lastAddedPattern;
 
-			Int		 encoder;
+			String		 encoderID;
 			Bool		 enable_console;
-			Bool		 enable_bonk;
-			Bool		 enable_blade;
-			Bool		 enable_lame;
-			Bool		 enable_vorbis;
-			Bool		 enable_faac;
-			Bool		 enable_faad2;
-			Bool		 enable_tvq;
 			Bool		 enable_cdrip;
 			Bool		 enable_eUpdate;
-			Bool		 enable_mp4;
-			Bool		 enable_flac;
-			Bool		 enable_id3;
 			String		 enc_outdir;
 			String		 enc_filePattern;
 			Bool		 enc_onTheFly;
@@ -140,90 +129,16 @@ namespace BonkEnc
 			Bool		 enable_cddb_cache;
 			Bool		 update_joblist;
 
-			Int		 bonk_quantization;
-			Int		 bonk_predictor;
-			Int		 bonk_downsampling;
-			Bool		 bonk_jstereo;
-			Bool		 bonk_lossless;
-
-			Int		 blade_bitrate;
-			Bool		 blade_crc;
-			Bool		 blade_copyright;
-			Bool		 blade_original;
-			Bool		 blade_private;
-			Bool		 blade_dualchannel;
-
-			Int		 lame_preset;
-			Bool		 lame_set_bitrate;
-			Int		 lame_bitrate;
-			Int		 lame_ratio;
-			Bool		 lame_set_quality;
-			Int		 lame_quality;
-			Int		 lame_stereomode;
-			Bool		 lame_forcejs;
-			Int		 lame_vbrmode;
-			Int		 lame_vbrquality;
-			Int		 lame_abrbitrate;
-			Bool		 lame_set_min_vbr_bitrate;
-			Int		 lame_min_vbr_bitrate;
-			Bool		 lame_set_max_vbr_bitrate;
-			Int		 lame_max_vbr_bitrate;
-			Bool		 lame_crc;
-			Bool		 lame_copyright;
-			Bool		 lame_original;
-			Bool		 lame_private;
-			Bool		 lame_strict_iso;
-			Int		 lame_padding_type;
-			Int		 lame_resample;
-			Bool		 lame_set_lowpass;
-			Int		 lame_lowpass;
-			Bool		 lame_set_lowpass_width;
-			Int		 lame_lowpass_width;
-			Bool		 lame_set_highpass;
-			Int		 lame_highpass;
-			Bool		 lame_set_highpass_width;
-			Int		 lame_highpass_width;
-			Bool		 lame_disable_filtering;
-			Bool		 lame_enable_ath;
-			Int		 lame_athtype;
-			Bool		 lame_use_tns;
-
-			Bool		 vorbis_mode;
-			Int		 vorbis_quality;
-			Int		 vorbis_bitrate;
-
-			Int		 faac_mpegversion;
-			Int		 faac_type;
-			Int		 faac_bitrate;
-			Int		 faac_bandwidth;
-			Bool		 faac_allowjs;
-			Bool		 faac_usetns;
-			Int		 faac_set_quality;
-			Int		 faac_aac_quality;
-			Bool		 faac_enable_id3;
-			Bool		 faac_enable_mp4;
-
-			Int		 flac_preset;
-			Bool		 flac_streamable_subset;
-			Bool		 flac_do_mid_side_stereo;
-			Bool		 flac_loose_mid_side_stereo;
-			Int		 flac_blocksize;
-			String		 flac_apodization;
-			Int		 flac_max_lpc_order;
-			Int		 flac_qlp_coeff_precision;
-			Bool		 flac_do_qlp_coeff_prec_search;
-			Bool		 flac_do_exhaustive_model_search;
-			Int		 flac_min_residual_partition_order;
-			Int		 flac_max_residual_partition_order;
-
-			Int		 tvq_bitrate;
-			Int		 tvq_presel_candidates;
-
-					 Config();
-					~Config();
-
 			Bool		 LoadSettings();
 			Bool		 SaveSettings();
+
+			/* Returns a new or existing instance of Config
+			 */
+			static Config	*Get();
+
+			/* Destroys an existing instance of Config
+			 */
+			static Void	 Free();
 	};
 };
 

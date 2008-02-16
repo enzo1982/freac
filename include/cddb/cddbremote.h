@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,7 +17,7 @@ using namespace smooth::IO;
 
 namespace BonkEnc
 {
-	class BEEXPORT CDDBRemote : public CDDB
+	class CDDBRemote : public CDDB
 	{
 		private:
 			Bool		 connected;
@@ -30,7 +30,7 @@ namespace BonkEnc
 
 			String		 SendCommand(const String &);
 		public:
-					 CDDBRemote(Config *);
+					 CDDBRemote();
 			virtual		~CDDBRemote();
 
 			Bool		 ConnectToServer();

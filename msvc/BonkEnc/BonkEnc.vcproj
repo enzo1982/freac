@@ -22,7 +22,7 @@
 			Name="Debug|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="1"
+			ConfigurationType="2"
 			CharacterSet="1"
 			>
 			<Tool
@@ -43,8 +43,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../../smooth/include, ../../include"
-				PreprocessorDefinitions="WIN32;__WIN32__;_DEBUG;_WINDOWS;UNICODE;_UNICODE;BEEXPORT=;ID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC"
+				AdditionalIncludeDirectories="../../../smooth/include, ../../include, ../../cdk/include"
+				PreprocessorDefinitions="WIN32;__WIN32__;_DEBUG;_WINDOWS;UNICODE;_UNICODE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -65,9 +65,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="smooth.lib ws2_32.lib"
+				AdditionalDependencies="smooth.lib boca.1.0.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../../smooth/msvc/smooth/Debug"
+				AdditionalLibraryDirectories="../../../smooth/msvc/smooth/Debug; ../../cdk/msvc/BoCA/debug"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -347,42 +348,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\cmdmain.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|x64"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|x64"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="..\..\src\config.cpp"
 				>
 			</File>
@@ -407,14 +372,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\picture.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\playback.cpp"
 				>
 			</File>
@@ -423,7 +380,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\track.cpp"
+				RelativePath="..\..\src\progress.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\startconsole.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\startgui.cpp"
 				>
 			</File>
 			<File
@@ -569,20 +534,56 @@
 						>
 					</File>
 				</Filter>
+				<Filter
+					Name="config"
+					>
+					<File
+						RelativePath="..\..\src\dialogs\config\config.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\$(InputName)1.obj"
+								XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\$(InputName)1.obj"
+								XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\$(InputName)1.obj"
+								XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\$(InputName)1.obj"
+								XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+							/>
+						</FileConfiguration>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="input"
 				>
 				<File
-					RelativePath="..\..\src\input\filter-in-aiff.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-au.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-bonk.cpp"
+					RelativePath="..\..\src\input\filter-in-boca.cpp"
 					>
 				</File>
 				<File
@@ -590,83 +591,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\input\filter-in-faad2.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-flac.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-lame.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-mp4.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-voc.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-vorbis.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-wave.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-winamp.cpp"
-					>
-				</File>
-				<File
 					RelativePath="..\..\src\input\inputfilter.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="output"
-				>
-				<File
-					RelativePath="..\..\src\output\filter-out-blade.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\filter-out-bonk.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\filter-out-faac.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\filter-out-flac.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\filter-out-lame.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\filter-out-mp4.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\filter-out-tvq.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\filter-out-vorbis.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\filter-out-wave.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\output\outputfilter.cpp"
 					>
 				</File>
 			</Filter>
@@ -693,10 +618,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\include\cmdmain.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\include\config.h"
 				>
 			</File>
@@ -713,15 +634,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\include\encoder.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\include\joblist.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\include\main.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\include\picture.h"
+				RelativePath="..\..\include\playback.h"
 				>
 			</File>
 			<File
@@ -729,11 +650,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\include\progress.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\include\resources.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\include\track.h"
+				RelativePath="..\..\include\startconsole.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\startgui.h"
 				>
 			</File>
 			<File
@@ -744,15 +673,7 @@
 				Name="input"
 				>
 				<File
-					RelativePath="..\..\include\input\filter-in-aiff.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-au.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-bonk.h"
+					RelativePath="..\..\include\input\filter-in-boca.h"
 					>
 				</File>
 				<File
@@ -760,83 +681,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\include\input\filter-in-faad2.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-flac.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-lame.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-mp4.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-voc.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-vorbis.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-wave.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-winamp.h"
-					>
-				</File>
-				<File
 					RelativePath="..\..\include\input\inputfilter.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="output"
-				>
-				<File
-					RelativePath="..\..\include\output\filter-out-blade.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\filter-out-bonk.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\filter-out-faac.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\filter-out-flac.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\filter-out-lame.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\filter-out-mp4.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\filter-out-tvq.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\filter-out-vorbis.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\filter-out-wave.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\output\outputfilter.h"
 					>
 				</File>
 			</Filter>
@@ -948,6 +793,14 @@
 					</File>
 					<File
 						RelativePath="..\..\include\dialogs\cddb\submit.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="config"
+					>
+					<File
+						RelativePath="..\..\include\dialogs\config\config.h"
 						>
 					</File>
 				</Filter>

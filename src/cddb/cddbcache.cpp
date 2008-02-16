@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,17 +11,31 @@
 #include <cddb/cddbcache.h>
 #include <cddb/cddblocal.h>
 
-BonkEnc::CDDBCache::CDDBCache(Config *iConfig)
+BonkEnc::CDDBCache *BonkEnc::CDDBCache::instance = NIL;
+
+BonkEnc::CDDBCache::CDDBCache()
 {
-	config = iConfig;
 }
 
 BonkEnc::CDDBCache::~CDDBCache()
 {
 }
 
+BonkEnc::CDDBCache *BonkEnc::CDDBCache::Get()
+{
+	if (instance == NIL) instance = new CDDBCache();
+
+	return instance;
+}
+
+Void BonkEnc::CDDBCache::Free()
+{
+	if (instance != NIL) delete instance;
+}
+
 const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 {
+	Config		*config = Config::Get();
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 
 	if (cddbInfo != NIL)
@@ -37,7 +51,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
-	CDDBLocal	 cddbLocal(config);
+	CDDBLocal	 cddbLocal;
 
 	// Query cache entry
 	Int	 result = cddbLocal.Query(discID);
@@ -60,6 +74,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 {
+	Config		*config = Config::Get();
 	const CDDBInfo	&cddbInfo = infoCache.Get(nCddbInfo.discID);
 
 	if (cddbInfo != NIL)
@@ -79,7 +94,7 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
-	CDDBLocal	 cddbLocal(config);
+	CDDBLocal	 cddbLocal;
 
 	// Save entry
 	cddbLocal.Submit(nCddbInfo);
@@ -94,6 +109,7 @@ Int BonkEnc::CDDBCache::RemoveNthEntry(Int n)
 {
 	if (n >= GetNOfEntries()) return Error();
 
+	Config		*config = Config::Get();
 	Int		 discID = infoCache.GetNthIndex(n);
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 

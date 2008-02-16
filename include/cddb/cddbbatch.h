@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -31,7 +31,7 @@ namespace BonkEnc
 			Bool			 Read(const String &, Int, CDDBInfo &)	{ return False; }
 			Bool			 CloseConnection()			{ return True; }
 		public:
-						 CDDBBatch(Config *);
+						 CDDBBatch();
 			virtual			~CDDBBatch();
 
 			const Array<String>	&GetQueries()				{ return queries; }

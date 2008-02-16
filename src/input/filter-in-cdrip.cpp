@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -27,7 +27,7 @@ Int			 BonkEnc::FilterInCDRip::cdTextDiscID	= -1;
 BonkEnc::CDDBInfo	 BonkEnc::FilterInCDRip::cdInfo;
 Int			 BonkEnc::FilterInCDRip::cdInfoDiscID	= -1;
 
-BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilter(config, format)
+BonkEnc::FilterInCDRip::FilterInCDRip(Track *format) : InputFilter(format)
 {
 	packageSize	= 0;
 
@@ -201,7 +201,7 @@ Int BonkEnc::FilterInCDRip::GetTrackSize()
 	return trackSize;
 }
 
-BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
+BoCA::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 {
 	Track	*nFormat = new Track;
 
@@ -332,7 +332,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	nFormat->length = (trackLength * 2352) / (nFormat->bits / 8);
 	nFormat->fileSize = trackLength * 2352;
 
-	CDDBRemote	 cddb(currentConfig);
+	CDDBRemote	 cddb;
 
 	cddb.SetActiveDrive(audiodrive);
 
@@ -356,7 +356,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	{
 		if (readActive)
 		{
-			if (currentConfig->enable_cddb_cache) cdInfo = currentConfig->cddbCache->GetCacheEntry(discid);
+			if (currentConfig->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(discid);
 
 			cdInfoDiscID = discid;
 		}
@@ -367,9 +367,9 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 
 			currentConfig->cdrip_activedrive = audiodrive;
 
-			cdInfo = currentConfig->appMain->GetCDDBData();
+			cdInfo = BonkEnc::Get()->GetCDDBData();
 
-			if (cdInfo != NIL) currentConfig->cddbCache->AddCacheEntry(cdInfo);
+			if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 
 			currentConfig->cdrip_activedrive = oDrive;
 		}

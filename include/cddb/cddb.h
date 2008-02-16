@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,7 +25,7 @@ const Int	 QUERY_RESULT_FUZZY	= 3;
 
 namespace BonkEnc
 {
-	abstract class BEEXPORT CDDB
+	abstract class CDDB
 	{
 		protected:
 			Int		 activeDriveID;
@@ -35,6 +35,8 @@ namespace BonkEnc
 			Array<String>	 titles;
 			Array<String>	 categories;
 
+			Bool		 updateTrackOffsets;
+
 			Bool		 UpdateEntry(CDDBInfo &);
 
 			String		 FormatCDDBEntry(const String &, const String &);
@@ -43,10 +45,8 @@ namespace BonkEnc
 			String		 FormatCDDBRecord(const CDDBInfo &);
 			Bool		 ParseCDDBRecord(const String &, CDDBInfo &);
 		public:
-					 CDDB(Config *);
+					 CDDB();
 			virtual		~CDDB();
-
-			Bool		 updateTrackOffsets;
 
 			Int		 SetActiveDrive(Int);
 			Int		 ComputeDiscID();
@@ -58,10 +58,12 @@ namespace BonkEnc
 			virtual Bool	 Submit(const CDDBInfo &)		= 0;
 			virtual Bool	 CloseConnection()			= 0;
 
-			Int		 GetNumberOfMatches()	{ return ids.Length(); }
-			Int		 GetNthDiscID(Int n)	{ return ids.GetNth(n); }
-			const String	&GetNthTitle(Int n)	{ return titles.GetNth(n); }
-			const String	&GetNthCategory(Int n)	{ return categories.GetNth(n); }
+			Void		 SetUpdateTrackOffsets(Bool nUpdateTrackOffsets)	{ updateTrackOffsets = nUpdateTrackOffsets; }
+
+			Int		 GetNumberOfMatches()					{ return ids.Length(); }
+			Int		 GetNthDiscID(Int n)					{ return ids.GetNth(n); }
+			const String	&GetNthTitle(Int n)					{ return titles.GetNth(n); }
+			const String	&GetNthCategory(Int n)					{ return categories.GetNth(n); }
 
 			String		 GetCDDBQueryString();
 

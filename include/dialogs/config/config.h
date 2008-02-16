@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,34 +11,38 @@
 #ifndef _H_CONFIG_DLG_
 #define _H_CONFIG_DLG_
 
-#include <main.h>
+#include <bonkenc.h>
 
 namespace BonkEnc
 {
 	class ConfigDialog : public Dialog
 	{
 		private:
-			Array<Layer *>	 layers;
+			Array<ConfigLayer *>	 layers;
+			ConfigLayer		*selectedLayer;
 
-			Window		*mainWnd;
-			Titlebar	*mainWnd_titlebar;
+			Window			*mainWnd;
+			Titlebar		*mainWnd_titlebar;
 
-			Button		*btn_cancel;
-			Button		*btn_ok;
+			Button			*btn_cancel;
+			Button			*btn_ok;
 
-			Divider		*divbar;
+			Divider			*divbar;
 
-			ListBox		*list_layers;
+			ListBox			*list_layers;
 
-	 		Config		*currentConfig;
+	 		Config			*currentConfig;
 		slots:
-			Void		 OK();
-			Void		 Cancel();
-		public:
-					 ConfigDialog();
-					~ConfigDialog();
+			Void			 OK();
+			Void			 Cancel();
 
-			const Error	&ShowDialog();
+			Void			 OnChangeSize();
+			Void			 OnSelectEntry();
+		public:
+						 ConfigDialog();
+						~ConfigDialog();
+
+			const Error		&ShowDialog();
 	};
 };
 

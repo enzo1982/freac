@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -21,7 +21,7 @@
 
 BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 {
-	currentConfig	= BonkEnc::currentConfig;
+	currentConfig	= Config::Get();
 
 	activedrive	= currentConfig->cdrip_activedrive;
 	updateJoblist	= currentConfig->update_joblist;
@@ -33,7 +33,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(120, 120), Size(502, 453));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(502, 453));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -313,18 +313,7 @@ const Error &BonkEnc::cddbSubmitDlg::ShowDialog()
 
 Void BonkEnc::cddbSubmitDlg::Submit()
 {
-	Bool	 sane = True;
-
-	if (edit_artist->GetText() == "")	sane = False;
-	if (edit_album->GetText() == "")	sane = False;
-
-	for (Int i = 0; i < titles.Length(); i++)
-	{
-		if ((edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") && artists.GetNth(i) == "") sane = False;
-		if (titles.GetNth(i) == "") sane = False;
-	}
-
-	if (!sane)
+	if (!IsDataValid())
 	{
 		Utilities::ErrorMessage("Please fill all fields and track titles before submitting.");
 
@@ -358,7 +347,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 	if (currentConfig->enable_local_cddb)
 	{
-		CDDBLocal	 cddb(currentConfig);
+		CDDBLocal	 cddb;
 
 		cddb.SetActiveDrive(activedrive);
 		cddb.Submit(cddbInfo);
@@ -366,7 +355,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 	if (submitLater)
 	{
-		CDDBBatch	 cddb(currentConfig);
+		CDDBBatch	 cddb;
 
 		cddbInfo.revision = revision;
 
@@ -375,7 +364,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	}
 	else if (currentConfig->enable_remote_cddb)
 	{
-		CDDBRemote	 cddb(currentConfig);
+		CDDBRemote	 cddb;
 
 		cddbInfo.revision = revision;
 
@@ -396,15 +385,15 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	}
 
 	// Save modified entry to CDDB cache
-	currentConfig->cddbCache->AddCacheEntry(cddbInfo);
+	CDDBCache::Get()->AddCacheEntry(cddbInfo);
 
 	text_status->SetText("");
 
 	if (updateJoblist)
 	{
-		for (Int l = 0; l < currentConfig->appMain->joblist->GetNOfTracks(); l++)
+		for (Int l = 0; l < BonkEnc::Get()->joblist->GetNOfTracks(); l++)
 		{
-			Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
+			Track	*trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
 			if (trackInfo->discid != cddbInfo.DiscIDToString()) continue;
 
@@ -428,7 +417,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 					jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String("")).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
 
-					if (currentConfig->appMain->joblist->GetNthEntry(l)->GetText() != jlEntry) currentConfig->appMain->joblist->GetNthEntry(l)->SetText(jlEntry);
+					if (BonkEnc::Get()->joblist->GetNthEntry(l)->GetText() != jlEntry) BonkEnc::Get()->joblist->GetNthEntry(l)->SetText(jlEntry);
 				}
 			}
 		}
@@ -535,17 +524,17 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	currentConfig->cdrip_activedrive = activedrive;
 
-	CDDBRemote	 cddb(currentConfig);
+	CDDBRemote	 cddb;
 	Int		 iDiscid = cddb.ComputeDiscID();
 	CDDBInfo	 cdInfo;
 
-	if (currentConfig->enable_cddb_cache) cdInfo = currentConfig->cddbCache->GetCacheEntry(iDiscid);
+	if (currentConfig->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(iDiscid);
 
 	if (cdInfo == NIL)
 	{
-		cdInfo = currentConfig->appMain->GetCDDBData();
+		cdInfo = BonkEnc::Get()->GetCDDBData();
 
-		if (cdInfo != NIL) currentConfig->cddbCache->AddCacheEntry(cdInfo);
+		if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 	}
 
 	currentConfig->cdrip_activedrive = oDrive;
@@ -754,9 +743,9 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
 	}
 
-	for (Int l = 0; l < currentConfig->appMain->joblist->GetNOfTracks(); l++)
+	for (Int l = 0; l < BonkEnc::Get()->joblist->GetNOfTracks(); l++)
 	{
-		Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
+		Track	*trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
 		if (trackInfo->discid != CDDB::DiscIDToString(cddb.ComputeDiscID())) continue;
 
@@ -870,6 +859,49 @@ Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()
 {
 	if (!submitLater && currentConfig->enable_remote_cddb)	btn_submit->SetText(BonkEnc::i18n->TranslateString("Submit"));
 	else							btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+}
+
+Bool BonkEnc::cddbSubmitDlg::IsDataValid()
+{
+	Bool	 sane = True;
+
+	if (!IsStringValid(edit_artist->GetText()) ||
+	    !IsStringValid(edit_album->GetText())) sane = False;
+
+	for (Int i = 0; i < titles.Length(); i++)
+	{
+		if ((edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") ||
+		     edit_artist->GetText() == "Various")					 &&
+		    !IsStringValid(artists.GetNth(i))) sane = False;
+
+		if (!IsStringValid(titles.GetNth(i))) sane = False;
+	}
+
+	return sane;
+}
+
+Bool BonkEnc::cddbSubmitDlg::IsStringValid(const String &text)
+{
+	Bool	 valid = False;
+
+	for (Int i = 0; i < text.Length(); i++)
+	{
+		if (text[i] != ' '  &&
+		    text[i] != '\t' &&
+		    text[i] != '\n' &&
+		    text[i] != '\r')
+		{
+			valid = True;
+
+			break;
+		}
+	}
+
+	if ( text.ToLower() == "new artist" ||
+	     text.ToLower() == "new title"  ||
+	    (text.ToLower().StartsWith("track") && text.Length() <= 8)) valid = False;
+
+	return valid;
 }
 
 String BonkEnc::cddbSubmitDlg::GetCDDBGenre(const String &genre)

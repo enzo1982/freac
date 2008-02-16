@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,12 +13,12 @@
 
 BonkEnc::LanguageDlg::LanguageDlg()
 {
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = Config::Get();
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(String("Welcome to BonkEnc ").Append(BonkEnc::shortVersion), Point(120, 120), Size(302, 198));
+	mainWnd			= new Window(String("Welcome to BonkEnc ").Append(BonkEnc::shortVersion), currentConfig->wndPos + Point(40, 40), Size(302, 198));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);

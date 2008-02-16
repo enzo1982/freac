@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,7 +15,7 @@
 
 namespace BonkEnc
 {
-	class BEEXPORT CDDBLocal : public CDDB
+	class CDDBLocal : public CDDB
 	{
 		private:
 			Array<String>	 results;
@@ -23,7 +23,7 @@ namespace BonkEnc
 			Bool		 QueryUnixDB(Int);
 			Bool		 QueryWinDB(Int);
 		public:
-					 CDDBLocal(Config *);
+					 CDDBLocal();
 			virtual		~CDDBLocal();
 
 			Bool		 ConnectToServer();

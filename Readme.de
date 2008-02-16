@@ -8,15 +8,18 @@ und WAV Dateien erzeugen.
 BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 BonkEnc verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
 
-FAAD2 AAC/HE-AAC/HE-AACv2/DRM decoder (c) Nero AG, www.nero.com
+Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 Geschichte
 ----------
 
-	Version 1.1 CVS (Juni 2007)
+	Version 1.1 CVS (Februar 2008)
 
-		- Sprachunterstützung für Katalanisch hinzugefügt
-		- Deutsche und italienische Anleitungen hinzugefügt
+		- Sprachunterstützung für Katalanisch, Valencianisch und Portugiesisch hinzugefügt
+		- Deutsche, italienische, russische und griechische Anleitungen hinzugefügt
+		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
+		- Neuen Konfigurationsdialog implementiert
+		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
@@ -26,10 +29,19 @@ Geschichte
 		- Fehlende Xing-Header bei Verwendung von LAME-Voreinstellungen behoben
 		- Absturz beim Lesen von nicht unterstützten Sun Audio Dateien (.au) behoben
 		- Codierung von leeren Tracks behoben, wenn keine CD eingelegt ist
+		- Verschiedene CDDB-Probleme behoben
+		- Fehler bei HTTP-Proxy-Authentifizierung behoben
+		- Abstürze von BEcmd behoben
+		- Gültigkeitsprüfung für CDDB-Daten verbessert
 		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
 		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
 		- Verbesserungen beim Installer
 		- Viele Fehler im Kommandozeilen-Codierer behoben
+		- Bonk auf Version 0.12 aktualisiert
+		- FLAC auf Version 1.2.1 aktualisiert
+		- FAAC auf Version 1.26 aktualisiert
+		- FAAD2 suf Version 2.6.1 aktualisiert
+		- Update auf MPEG4IP v1.6.1
 		- Einige weitere Korrekturen
 
 	Version 1.0 (Februar 2007)
@@ -354,7 +366,7 @@ Besonderen Dank
 			   Federico Reddig (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
 			   Nikolaos-Ioannis Galanis (Griechisch),
-			   Dmitry Gusakov (Russisch),
+			   Dmitry Gusakov, Evgeny Kozlov (Russisch),
 			   Henryk Ning (Chinesisch, traditionell),
 			   Nimin (Chinesisch, vereinfacht),
 			   Krzysztof Konopacki (Polnisch),
@@ -371,10 +383,12 @@ Besonderen Dank
 			   Peter Krajcár (Slowakisch),
 			   Wiak (Norwegian),
 			   Vincent Rateau (Esperanto),
-			   Murat Ozkan (Türkisch),
+			   Cako (Türkisch),
 			   Naglis Jonaitis (Litauisch),
 			   Borca Alin (Rumänisch),
-			   El libre (Katalanisch)
+			   El libre (Katalanisch),
+			   Vjatv (Valencianisch),
+			   Jose Goncalves (Portugiesisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

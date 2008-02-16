@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,15 +12,18 @@
 #define _H_JOBLIST_
 
 #include <smooth.h>
+#include <boca.h>
+
 #include "config.h"
-#include "track.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
 
+using namespace BoCA;
+
 namespace BonkEnc
 {
-	class BEEXPORT JobList : public ListBox
+	class JobList : public ListBox
 	{
 		private:
 			DropArea		*droparea;

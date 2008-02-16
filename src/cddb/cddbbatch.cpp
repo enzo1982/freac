@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,7 +14,7 @@
 #include <dialogs/cddb/query.h>
 #include <utilities.h>
 
-BonkEnc::CDDBBatch::CDDBBatch(Config *iConfig) : CDDB(iConfig)
+BonkEnc::CDDBBatch::CDDBBatch()
 {
 	ReadEntries();
 }
@@ -206,7 +206,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
-	CDDBLocal	 cddb(config);
+	CDDBLocal	 cddb;
 
 	// save entry to batch queue
 	cddb.SetActiveDrive(activeDriveID);
@@ -268,7 +268,9 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 		config->freedb_dir = String(config->configDir).Append("cddb\\");
 
-		CDDBLocal	 cddb(config);
+		CDDBLocal	 cddb;
+
+		cddb.SetUpdateTrackOffsets(False);
 
 		// save entry to local cache
 		cddb.Submit(cddbInfo);
@@ -302,9 +304,9 @@ Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &oCddbInfo)
 
 	cddbInfo.revision++;
 
-	CDDBRemote	 cddb(config);
+	CDDBRemote	 cddb;
 
-	cddb.updateTrackOffsets = False;
+	cddb.SetUpdateTrackOffsets(False);
 
 	if (!cddb.Submit(cddbInfo))
 	{

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,7 +11,7 @@
 #ifndef _H_CDDB_SUBMIT_
 #define _H_CDDB_SUBMIT_
 
-#include <main.h>
+#include <bonkenc.h>
 #include <cdinfo/cdtext.h>
 #include <cdinfo/cdplayerini.h>
 #include <cddb/cddbinfo.h>
@@ -81,6 +81,9 @@ namespace BonkEnc
 			Void		 UpdateTrackList();
 
 			String		 GetCDDBGenre(const String &);
+
+			Bool		 IsDataValid();
+			Bool		 IsStringValid(const String &);
 		slots:
 			Void		 Submit();
 			Void		 Cancel();

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -38,7 +38,7 @@ BonkEnc::CDText::~CDText()
 
 Int BonkEnc::CDText::ReadCDText()
 {
-	if (!BonkEnc::currentConfig->cdrip_read_cdtext) return Success();
+	if (!Config::Get()->cdrip_read_cdtext) return Success();
 
 	cdText.RemoveAll();
 

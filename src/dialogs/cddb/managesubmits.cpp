@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2007 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,12 +13,12 @@
 
 BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 {
-	currentConfig	= BonkEnc::currentConfig;
+	currentConfig	= Config::Get();
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(120, 120), Size(552, 352));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(552, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -90,7 +90,7 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	btn_delete->Deactivate();
 	btn_send->Deactivate();
 
-	cddbBatch = new CDDBBatch(currentConfig);
+	cddbBatch = new CDDBBatch();
 
 	ReadEntries();
 
