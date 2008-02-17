@@ -56,95 +56,57 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 		case FREEDB_MODE_HTTP:
 			if (connected)
 			{
-				delete out;
 				delete in;
-				delete socket;
 
 				connected = false;
 			}
 
-			if (command[0] == 'p' && command[1] == 'r' && command[2] == 'o' && command[3] == 't' && command[4] == 'o')	break;
-			if (command[5] == 'h' && command[6] == 'e' && command[7] == 'l' && command[8] == 'l' && command[9] == 'o')	break;
-			if (command[0] == 'q' && command[1] == 'u' && command[2] == 'i' && command[3] == 't')				break;
-			if (command == "")												break;
+			if (command.StartsWith("proto"))	break;
+			if (command.StartsWith("cddb hello"))	break;
+			if (command.StartsWith("quit"))		break;
+			if (command == "")			break;
 
-			char	*buffer = new char [256];
+			hostNameBuffer.Resize(256);
 
-			gethostname(buffer, 256);
+			gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-			str.Append("POST ");
+			Net::Protocols::HTTP	 http(String("http://").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append(config->freedb_query_path));
 
-			if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
+			http.SetParameter("cmd", String(command).Replace(" ", "+"));
+			http.SetParameter("hello", String("user+").Append(hostNameBuffer).Append("+BonkEnc+").Append(BonkEnc::cddbVersion));
+			http.SetParameter("proto", "6");
 
-			str.Append(config->freedb_query_path).Append(" HTTP/1.0\n");
-			str.Append("Host: ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append("\n");
+			http.SetHeaderField("User-Email", config->freedb_email);
+			http.SetHeaderField("Charset", "UTF-8");
 
-			if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-Authorization: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");
+			http.SetMode(Net::Protocols::HTTP_METHOD_POST);
 
-			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(BonkEnc::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
-			str.Append("Charset: UTF-8\n");
-			str.Append("\n");
+			if (config->freedb_proxy_mode != 0)
+			{
+				http.SetProxy(config->freedb_proxy, config->freedb_proxy_port);
+				http.SetProxyAuth(config->freedb_proxy_user, config->freedb_proxy_password);
 
-			for (int i = 0; i < command.Length(); i++) if (command[i] == ' ') command[i] = '+';
+				if	(config->freedb_proxy_mode == 1) http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTP);
+				else if (config->freedb_proxy_mode == 2) http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTPS);
+				else if (config->freedb_proxy_mode == 3) http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS4);
+				else if (config->freedb_proxy_mode == 4) http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS5);
+			}
 
-			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+BonkEnc+").Append(BonkEnc::cddbVersion).Append("&proto=6\n");
-
-			delete [] buffer;
-
-			if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 1)	socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
-			else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-			else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-
-			if (socket->GetLastError() != IO_ERROR_OK)
+			if (http.DownloadToBuffer(httpResultBuffer) == Error())
 			{
 				debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 
 				str = "error";
 
-				delete socket;
-
 				break;
 			}
 
-			in = new InStream(STREAM_DRIVER, socket);
-			out = new OutStream(STREAM_STREAM, in);
+			in = new InStream(STREAM_BUFFER, httpResultBuffer, httpResultBuffer.Size());
 
-			debug_out->OutputString("CDDB: ");
-			debug_out->OutputLine(str);
+			str = in->InputLine();
 
-			out->OutputString(str);
-
-			do
-			{
-				str = in->InputLine();
-
-				debug_out->OutputString("CDDB: < ");
-				debug_out->OutputLine(str);
-			}
-			while (str != "");
-
-			do
-			{
-				str = in->InputLine();
-
-				debug_out->OutputString("CDDB: < ");
-				debug_out->OutputLine(str);
-			}
-			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5' && str != "");
-
-			if (str[1] == '1')
-			{
-				connected = true;
-			}
-			else
-			{
-				delete out;
-				delete in;
-				delete socket;
-			}
+			if (str.StartsWith("210")) connected = true;
+			else			   delete in;
 
 			break;
 	}
@@ -207,10 +169,10 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 	categories.RemoveAll();
 
 	// no match found
-	if (str[0] == '2' && str[1] == '0' && str[2] == '2') return QUERY_RESULT_NONE;
+	if (str.StartsWith("202")) return QUERY_RESULT_NONE;
 
 	// exact match
-	if (str[0] == '2' && str[1] == '0' && str[2] == '0')
+	if (str.StartsWith("200"))
 	{
 		String	 id;
 		String	 title;
@@ -239,7 +201,7 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 	}
 
 	// multiple exact matches
-	if (str[0] == '2' && str[1] == '1' && (str[2] == '0' || str[2] == '1'))
+	if (str.StartsWith("210") || str.StartsWith("211"))
 	{
 		String	 inputFormat = String::SetInputFormat("UTF-8");
 		String	 outputFormat = String::SetOutputFormat("UTF-8");
@@ -327,77 +289,36 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 	if (!UpdateEntry(cddbInfo)) return False;
 
-	String	 content = FormatCDDBRecord(cddbInfo);
-	String	 str = "POST ";
+	Net::Protocols::HTTP	 http(String("http://").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append(config->freedb_submit_path));
 
-	if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
+	http.SetHeaderField("Category", cddbInfo.category);
+	http.SetHeaderField("Discid", cddbInfo.DiscIDToString());
+	http.SetHeaderField("User-Email", config->freedb_email);
+	http.SetHeaderField("Submit-Mode", BonkEnc::cddbMode);
+	http.SetHeaderField("Charset", "UTF-8");
 
-	str.Append(config->freedb_submit_path).Append(" HTTP/1.0\n");
-	str.Append("Host: ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append("\n");
+	if (config->freedb_proxy_mode != 0)
+	{
+		http.SetProxy(config->freedb_proxy, config->freedb_proxy_port);
+		http.SetProxyAuth(config->freedb_proxy_user, config->freedb_proxy_password);
 
-	if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-Authorization: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");
+		if	(config->freedb_proxy_mode == 1) http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTP);
+		else if (config->freedb_proxy_mode == 2) http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTPS);
+		else if (config->freedb_proxy_mode == 3) http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS4);
+		else if (config->freedb_proxy_mode == 4) http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS5);
+	}
 
-	str.Append("Category: ").Append(cddbInfo.category).Append("\n");
-	str.Append("Discid: ").Append(cddbInfo.DiscIDToString()).Append("\n");
-	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append(BonkEnc::cddbMode).Append("\n");
-	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
-	str.Append("Charset: UTF-8\n");
-	str.Append("\n");
+	http.SetContent(FormatCDDBRecord(cddbInfo));
 
-	str.Append(content);
-
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
-
-	debug_out->OutputString("CDDB: ");
-	debug_out->OutputLine(str);
-
-	if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 1)	socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
-	else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-	else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-
-	if (socket->GetLastError() != IO_ERROR_OK)
+	if (http.DownloadToBuffer(httpResultBuffer) == Error())
 	{
 		debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
-
-		delete socket;
 
 		return False;
 	}
 
-	in = new InStream(STREAM_DRIVER, socket);
-	out = new OutStream(STREAM_STREAM, in);
-
-	out->OutputString(str);
-
-	String::SetOutputFormat(outputFormat);
-
-	do
-	{
-		str = in->InputLine();
-
-		debug_out->OutputString("CDDB: < ");
-		debug_out->OutputLine(str);
-	}
-	while (str != "");
-
-	do
-	{
-		str = in->InputLine();
-
-		debug_out->OutputString("CDDB: < ");
-		debug_out->OutputLine(str);
-	}
-	while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
-
-	delete out;
-	delete in;
-	delete socket;
-
-	if (str.StartsWith("200"))	return True;
-	else				return False;
+	if (String((char *) (UnsignedByte *) httpResultBuffer).StartsWith("200")) return True;
+	else									  return False;
 }
 
 Bool BonkEnc::CDDBRemote::CloseConnection()

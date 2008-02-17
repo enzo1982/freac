@@ -20,25 +20,26 @@ namespace BonkEnc
 	class CDDBRemote : public CDDB
 	{
 		private:
-			Bool		 connected;
+			Bool			 connected;
 
-			Buffer<char>	 hostNameBuffer;
+			Buffer<char>		 hostNameBuffer;
+			Buffer<UnsignedByte>	 httpResultBuffer;
 
-			Driver		*socket;
-			InStream	*in;
-			OutStream	*out;
+			Driver			*socket;
+			InStream		*in;
+			OutStream		*out;
 
-			String		 SendCommand(const String &);
+			String			 SendCommand(const String &);
 		public:
-					 CDDBRemote();
-			virtual		~CDDBRemote();
+						 CDDBRemote();
+			virtual			~CDDBRemote();
 
-			Bool		 ConnectToServer();
-			Int		 Query(Int);
-			Int		 Query(const String &);
-			Bool		 Read(const String &, Int, CDDBInfo &);
-			Bool		 Submit(const CDDBInfo &);
-			Bool		 CloseConnection();
+			Bool			 ConnectToServer();
+			Int			 Query(Int);
+			Int			 Query(const String &);
+			Bool			 Read(const String &, Int, CDDBInfo &);
+			Bool			 Submit(const CDDBInfo &);
+			Bool			 CloseConnection();
 	};
 };
 

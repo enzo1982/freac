@@ -15,7 +15,7 @@ Geschichte
 
 	Version 1.1 CVS (Februar 2008)
 
-		- Sprachunterstützung für Katalanisch, Valencianisch und Portugiesisch hinzugefügt
+		- Sprachunterstützung für Estnisch, Katalanisch, Valencianisch und Portugiesisch hinzugefügt
 		- Deutsche, italienische, russische und griechische Anleitungen hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
 		- Neuen Konfigurationsdialog implementiert
@@ -388,7 +388,8 @@ Besonderen Dank
 			   Borca Alin (Rumänisch),
 			   El libre (Katalanisch),
 			   Vjatv (Valencianisch),
-			   Jose Goncalves (Portugiesisch)
+			   Jose Goncalves (Portugiesisch),
+			   Meelis Pasieko (Estnisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

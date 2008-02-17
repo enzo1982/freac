@@ -15,7 +15,7 @@ History
 
 	Version 1.1 CVS (February 2008)
 
-		- added Catalan, Valencian and Portuguese language support
+		- added Estonian ,Catalan, Valencian and Portuguese language support
 		- added German, Italian, Russian and Greek user guides
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
@@ -388,7 +388,8 @@ Special thanks to
 			   Borca Alin (Romanian),
 			   El libre (Catalan),
 			   Vjatv (Valencian),
-			   Jose Goncalves (Portuguese)
+			   Jose Goncalves (Portuguese),
+			   Meelis Pasieko (Estonian)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
