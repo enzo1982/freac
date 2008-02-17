@@ -15,6 +15,7 @@ History
 
 	Version 1.0.7 (February 2008)
 
+		- added Estonian language support
 		- added Russian tutorial
 		- updated Russian translation
 		- added screenshots for the Greek tutorial
@@ -427,7 +428,8 @@ Special thanks to
 			   Borca Alin (Romanian),
 			   El libre (Catalan),
 			   Vjatv (Valencian),
-			   Jose Goncalves (Portuguese)
+			   Jose Goncalves (Portuguese),
+			   Meelis Pasieko (Estonian)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
