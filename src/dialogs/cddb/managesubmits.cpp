@@ -166,7 +166,7 @@ Void BonkEnc::cddbManageSubmitsDlg::DeleteEntry()
 {
 	cddbBatch->DeleteSubmit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber()));
 
-	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
+	list_entries->Remove(list_entries->GetSelectedEntry());
 
 	edit_preview->SetText("");
 
@@ -196,7 +196,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 
 	if (cddbBatch->Submit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber())))
 	{
-		list_entries->RemoveEntry(list_entries->GetSelectedEntry());
+		list_entries->Remove(list_entries->GetSelectedEntry());
 
 		edit_preview->SetText("");
 

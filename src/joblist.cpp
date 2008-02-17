@@ -134,7 +134,7 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 	tracks.Remove(GetNthEntry(n)->GetHandle());
 
-	RemoveEntry(GetNthEntry(n));
+	Remove(GetNthEntry(n));
 
 	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
 

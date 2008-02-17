@@ -435,35 +435,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\dialogs\bladeconfig.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dialogs\bonkconfig.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dialogs\faacconfig.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dialogs\flacconfig.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dialogs\lameconfig.cpp"
-					>
-				</File>
-				<File
 					RelativePath="..\..\src\dialogs\language.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dialogs\tvqconfig.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\dialogs\vorbisconfig.cpp"
 					>
 				</File>
 				<Filter
@@ -495,42 +467,6 @@
 					</File>
 					<File
 						RelativePath="..\..\src\dialogs\cddb\submit.cpp"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="genconfig"
-					>
-					<File
-						RelativePath="..\..\src\dialogs\genconfig\genconfig.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\dialogs\genconfig\genconfig_cddb.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\dialogs\genconfig\genconfig_cdrip.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\dialogs\genconfig\genconfig_encoders.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\dialogs\genconfig\genconfig_language.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\dialogs\genconfig\genconfig_playlists.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\dialogs\genconfig\genconfig_plugins.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\src\dialogs\genconfig\genconfig_tags.cpp"
 						>
 					</File>
 				</Filter>
@@ -576,6 +512,34 @@
 								XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
 							/>
 						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\dialogs\config\config_cddb.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\dialogs\config\config_cdrip.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\dialogs\config\config_encoders.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\dialogs\config\config_language.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\dialogs\config\config_playlists.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\dialogs\config\config_tags.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\dialogs\config\configentry.cpp"
+						>
 					</File>
 				</Filter>
 			</Filter>
@@ -697,73 +661,9 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\include\dialogs\bladeconfig.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\dialogs\bonkconfig.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\dialogs\faacconfig.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\dialogs\flacconfig.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\dialogs\lameconfig.h"
-					>
-				</File>
-				<File
 					RelativePath="..\..\include\dialogs\language.h"
 					>
 				</File>
-				<File
-					RelativePath="..\..\include\dialogs\tvqconfig.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\dialogs\vorbisconfig.h"
-					>
-				</File>
-				<Filter
-					Name="genconfig"
-					>
-					<File
-						RelativePath="..\..\include\dialogs\genconfig\genconfig.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\include\dialogs\genconfig\genconfig_cddb.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\include\dialogs\genconfig\genconfig_cdrip.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\include\dialogs\genconfig\genconfig_encoders.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\include\dialogs\genconfig\genconfig_language.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\include\dialogs\genconfig\genconfig_playlists.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\include\dialogs\genconfig\genconfig_plugins.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\include\dialogs\genconfig\genconfig_tags.h"
-						>
-					</File>
-				</Filter>
 				<Filter
 					Name="cddb"
 					>
@@ -801,6 +701,34 @@
 					>
 					<File
 						RelativePath="..\..\include\dialogs\config\config.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\dialogs\config\config_cddb.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\dialogs\config\config_cdrip.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\dialogs\config\config_encoders.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\dialogs\config\config_language.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\dialogs\config\config_playlists.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\dialogs\config\config_tags.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\dialogs\config\configentry.h"
 						>
 					</File>
 				</Filter>

@@ -12,12 +12,14 @@
 #define _H_CONFIG_DLG_
 
 #include <bonkenc.h>
+#include "configentry.h"
 
 namespace BonkEnc
 {
 	class ConfigDialog : public Dialog
 	{
 		private:
+			Array<ConfigEntry *>	 entries;
 			Array<ConfigLayer *>	 layers;
 			ConfigLayer		*selectedLayer;
 
@@ -29,7 +31,15 @@ namespace BonkEnc
 
 			Divider			*divbar;
 
-			ListBox			*list_layers;
+			TreeView		*list_layers;
+			Tree			*tree_bonkenc;
+			Tree			*tree_components;
+			Tree			*tree_encoders;
+			Tree			*tree_decoders;
+			Tree			*tree_output;
+			Tree			*tree_dsp;
+			Tree			*tree_extension;
+			Tree			*tree_other;
 
 	 		Config			*currentConfig;
 		slots:
@@ -37,7 +47,7 @@ namespace BonkEnc
 			Void			 Cancel();
 
 			Void			 OnChangeSize();
-			Void			 OnSelectEntry();
+			Void			 OnSelectEntry(ConfigLayer *);
 		public:
 						 ConfigDialog();
 						~ConfigDialog();

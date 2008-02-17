@@ -275,7 +275,7 @@ Void BonkEnc::cddbManageDlg::DeleteEntry()
 {
 	CDDBCache::Get()->RemoveNthEntry(list_entries->GetSelectedEntryNumber());
 
-	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
+	list_entries->Remove(list_entries->GetSelectedEntry());
 
 	edit_preview->SetText("");
 

@@ -54,61 +54,97 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	size.cx	= 250;
 	size.cy	= 244;
 
-	list_layers		= new ListBox(pos, size);
-	list_layers->onSelectEntry.Connect(&ConfigDialog::OnSelectEntry, this);
+	list_layers		= new TreeView(pos, size);
 
 	selectedLayer = NIL;
 
+	tree_bonkenc		= new Tree("BonkEnc");
+
 	layers.Add(new ConfigureEncoders());
-	list_layers->AddEntry(BonkEnc::i18n->TranslateString("Encoders"));
+	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Encoders"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_bonkenc->Add(entries.GetLast());
 
 	layers.Add(new ConfigurePlaylists());
-	list_layers->AddEntry(BonkEnc::i18n->TranslateString("Playlists"));
+	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Playlists"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_bonkenc->Add(entries.GetLast());
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
 		layers.Add(new ConfigureCDRip());
-		list_layers->AddEntry("CDRip");
+		entries.Add(new ConfigEntry("CDRip", layers.GetLast()));
+		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+		tree_bonkenc->Add(entries.GetLast());
+
 		layers.Add(new ConfigureCDDB());
-		list_layers->AddEntry("CDDB");
+		entries.Add(new ConfigEntry("CDDB", layers.GetLast()));
+		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+		tree_bonkenc->Add(entries.GetLast());
 	}
 
 	if (BonkEnc::i18n->GetNOfLanguages() > 1)
 	{
 		layers.Add(new ConfigureLanguage());
-		list_layers->AddEntry(BonkEnc::i18n->TranslateString("Language"));
+		entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Language"), layers.GetLast()));
+		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+		tree_bonkenc->Add(entries.GetLast());
 	}
 
 	layers.Add(new ConfigureTags());
-	list_layers->AddEntry(BonkEnc::i18n->TranslateString("Info tags"));
+	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Info tags"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_bonkenc->Add(entries.GetLast());
 
-// ARGH: Put the list of installed BoCA components here for now - ugly, I know...
+	list_layers->Add(tree_bonkenc);
+
+	tree_components		= new Tree("Components");
+
+	tree_encoders		= new Tree("Encoders");
+	tree_decoders		= new Tree("Decoders");
+	tree_output		= new Tree("Output");
+	tree_dsp		= new Tree("DSP");
+	tree_extension		= new Tree("Extensions");
+	tree_other		= new Tree("Other");
 
 	Registry	&boca = Registry::Get();
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
-		String	 type = "Unknown";
-
-		switch (boca.GetComponentType(i))
-		{
-			case BoCA::COMPONENT_TYPE_DECODER:   type = "Decoder";   break;
-			case BoCA::COMPONENT_TYPE_ENCODER:   type = "Encoder";   break;
-			case BoCA::COMPONENT_TYPE_OUTPUT:    type = "Output";    break;
-			case BoCA::COMPONENT_TYPE_DSP:	     type = "DSP";	 break;
-			case BoCA::COMPONENT_TYPE_EXTENSION: type = "Extension"; break;
-		}
-
 		Component	*component = boca.CreateComponentByID(boca.GetComponentID(i));
 
 		if (component->GetConfigurationLayer() != NIL)
 		{
 			layers.Add(component->GetConfigurationLayer());
-			list_layers->AddEntry(String(boca.GetComponentName(i)).Append(" v").Append(boca.GetComponentVersion(i)).Append(" (").Append(type).Append(")"));
+			entries.Add(new ConfigEntry(component->GetName(), layers.GetLast()));
+			entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+
+			Tree	*tree = NIL;
+
+			switch (component->GetType())
+			{
+				case BoCA::COMPONENT_TYPE_DECODER:   tree = tree_decoders;  break;
+				case BoCA::COMPONENT_TYPE_ENCODER:   tree = tree_encoders;  break;
+				case BoCA::COMPONENT_TYPE_OUTPUT:    tree = tree_output;    break;
+				case BoCA::COMPONENT_TYPE_DSP:	     tree = tree_dsp;	    break;
+				case BoCA::COMPONENT_TYPE_EXTENSION: tree = tree_extension; break;
+				case BoCA::COMPONENT_TYPE_UNKNOWN:   tree = tree_other;	    break;
+			}
+
+			tree->Add(entries.GetLast());
 		}
 
 		boca.DeleteComponent(component);
 	}
+
+	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);
+	if (tree_decoders->Length()  > 0) tree_components->Add(tree_decoders);
+	if (tree_output->Length()    > 0) tree_components->Add(tree_output);
+	if (tree_dsp->Length()	     > 0) tree_components->Add(tree_dsp);
+	if (tree_extension->Length() > 0) tree_components->Add(tree_extension);
+	if (tree_other->Length()     > 0) tree_components->Add(tree_other);
+
+	list_layers->Add(tree_components);
 
 	Add(mainWnd);
 
@@ -127,35 +163,13 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 BonkEnc::ConfigDialog::~ConfigDialog()
 {
-	DeleteObject(layers.GetNth(0));
+	Int	 ownLayers = 3;
 
-	layers.RemoveNth(0);
+	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) ownLayers += 2;
+	if (BonkEnc::i18n->GetNOfLanguages() > 1)				ownLayers += 1;
 
-	DeleteObject(layers.GetNth(0));
-
-	layers.RemoveNth(0);
-
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
-	{
-		DeleteObject(layers.GetNth(0));
-
-		layers.RemoveNth(0);
-
-		DeleteObject(layers.GetNth(0));
-
-		layers.RemoveNth(0);
-	}
-
-	if (BonkEnc::i18n->GetNOfLanguages() > 1)
-	{
-		DeleteObject(layers.GetNth(0));
-
-		layers.RemoveNth(0);
-	}
-
-	DeleteObject(layers.GetNth(0));
-
-	layers.RemoveNth(0);
+	for (Int i = 0; i < ownLayers; i++)  DeleteObject(layers.GetNth(i));
+	for (Int i = 0; i < entries.Length(); i++) DeleteObject(entries.GetNth(i));
 
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -163,6 +177,16 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 	DeleteObject(btn_cancel);
 	DeleteObject(divbar);
 	DeleteObject(list_layers);
+
+	DeleteObject(tree_bonkenc);
+	DeleteObject(tree_components);
+
+	DeleteObject(tree_encoders);
+	DeleteObject(tree_decoders);
+	DeleteObject(tree_output);
+	DeleteObject(tree_dsp);
+	DeleteObject(tree_extension);
+	DeleteObject(tree_other);
 }
 
 const Error &BonkEnc::ConfigDialog::ShowDialog()
@@ -176,8 +200,6 @@ Void BonkEnc::ConfigDialog::OK()
 {
 	for (Int i = 0; i < layers.Length(); i++)
 	{
-		if (layers.GetNth(i) == NIL) continue;
-
 		if (layers.GetNth(i)->SaveSettings() == Error()) return;
 	}
 
@@ -194,10 +216,8 @@ Void BonkEnc::ConfigDialog::OnChangeSize()
 	list_layers->SetSize(Size(250, mainWnd->GetHeight() - 88));
 }
 
-Void BonkEnc::ConfigDialog::OnSelectEntry()
+Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 {
-	Int	 n = list_layers->GetSelectedEntryNumber();
-
 	if (selectedLayer != NIL)
 	{
 		mainWnd->Remove(selectedLayer);
@@ -205,9 +225,9 @@ Void BonkEnc::ConfigDialog::OnSelectEntry()
 		mainWnd->SetMinimumSize(Size(272, 302));
 	}
 
-	if (layers.GetNth(n) != NIL)
+	if (layer != NIL)
 	{
-		selectedLayer = layers.GetNth(n);
+		selectedLayer = layer;
 		selectedLayer->SetPosition(Point(263, 29));
 
 		mainWnd->Add(selectedLayer);
