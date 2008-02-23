@@ -72,7 +72,7 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	discID = oInfo.discID;
 	revision = oInfo.revision;
 
-	for (Int i = 0; i < oInfo.trackOffsets.GetNOfEntries(); i++) trackOffsets.Add(oInfo.trackOffsets.GetNth(i), oInfo.trackOffsets.GetNthIndex(i));
+	for (Int i = 0; i < oInfo.trackOffsets.Length(); i++) trackOffsets.Add(oInfo.trackOffsets.GetNth(i), oInfo.trackOffsets.GetNthIndex(i));
 
 	discLength = oInfo.discLength;
 
@@ -83,18 +83,18 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	comment = oInfo.comment;
 	playOrder = oInfo.playOrder;
 
-	for (Int j = 0; j < oInfo.trackArtists.GetNOfEntries(); j++) trackArtists.Add(oInfo.trackArtists.GetNth(j), oInfo.trackArtists.GetNthIndex(j));
-	for (Int k = 0; k < oInfo.trackTitles.GetNOfEntries(); k++) trackTitles.Add(oInfo.trackTitles.GetNth(k), oInfo.trackTitles.GetNthIndex(k));
-	for (Int l = 0; l < oInfo.trackComments.GetNOfEntries(); l++) trackComments.Add(oInfo.trackComments.GetNth(l), oInfo.trackComments.GetNthIndex(l));
+	for (Int j = 0; j < oInfo.trackArtists.Length(); j++) trackArtists.Add(oInfo.trackArtists.GetNth(j), oInfo.trackArtists.GetNthIndex(j));
+	for (Int k = 0; k < oInfo.trackTitles.Length(); k++) trackTitles.Add(oInfo.trackTitles.GetNth(k), oInfo.trackTitles.GetNthIndex(k));
+	for (Int l = 0; l < oInfo.trackComments.Length(); l++) trackComments.Add(oInfo.trackComments.GetNth(l), oInfo.trackComments.GetNthIndex(l));
 
 	oDArtist = oInfo.oDArtist;
 	oDTitle = oInfo.oDTitle;
 	oDGenre = oInfo.oDGenre;
 	oComment = oInfo.oComment;
 
-	for (Int m = 0; m < oInfo.oTrackArtists.GetNOfEntries(); m++) oTrackArtists.Add(oInfo.oTrackArtists.GetNth(m), oInfo.oTrackArtists.GetNthIndex(m));
-	for (Int n = 0; n < oInfo.oTrackTitles.GetNOfEntries(); n++) oTrackTitles.Add(oInfo.oTrackTitles.GetNth(n), oInfo.oTrackTitles.GetNthIndex(n));
-	for (Int o = 0; o < oInfo.oTrackComments.GetNOfEntries(); o++) oTrackComments.Add(oInfo.oTrackComments.GetNth(o), oInfo.oTrackComments.GetNthIndex(o));
+	for (Int m = 0; m < oInfo.oTrackArtists.Length(); m++) oTrackArtists.Add(oInfo.oTrackArtists.GetNth(m), oInfo.oTrackArtists.GetNthIndex(m));
+	for (Int n = 0; n < oInfo.oTrackTitles.Length(); n++) oTrackTitles.Add(oInfo.oTrackTitles.GetNth(n), oInfo.oTrackTitles.GetNthIndex(n));
+	for (Int o = 0; o < oInfo.oTrackComments.Length(); o++) oTrackComments.Add(oInfo.oTrackComments.GetNth(o), oInfo.oTrackComments.GetNthIndex(o));
 
 	charset = oInfo.charset;
 
@@ -108,7 +108,7 @@ String BonkEnc::CDDBInfo::DiscIDToString() const
 
 String BonkEnc::CDDBInfo::GetCDDBQueryString() const
 {
-	Int	 numTocEntries = trackTitles.GetNOfEntries();
+	Int	 numTocEntries = trackTitles.Length();
 	String	 str = String("cddb query ").Append(DiscIDToString());
 
 	str.Append(" ").Append(String::FromInt(numTocEntries));

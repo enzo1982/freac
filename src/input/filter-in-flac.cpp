@@ -56,8 +56,9 @@ Bool BonkEnc::FilterInFLAC::Activate()
 
 Bool BonkEnc::FilterInFLAC::Deactivate()
 {
-	Object::DeleteObject(readDataMutex);
-	Object::DeleteObject(samplesBufferMutex);
+	delete readDataMutex;
+	delete samplesBufferMutex;
+
 	Object::DeleteObject(decoderThread);
 
 	delete infoFormat;
@@ -119,8 +120,9 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 
 	while (decoderThread->GetStatus() == THREAD_RUNNING) Sleep(10);
 
-	Object::DeleteObject(readDataMutex);
-	Object::DeleteObject(samplesBufferMutex);
+	delete readDataMutex;
+	delete samplesBufferMutex;
+
 	Object::DeleteObject(decoderThread);
 
 	delete f_in;
@@ -137,7 +139,7 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	nFormat->year		= infoFormat->year;
 	nFormat->track		= infoFormat->track;
 
-	for (Int i = 0; i < infoFormat->pictures.GetNOfEntries(); i++)
+	for (Int i = 0; i < infoFormat->pictures.Length(); i++)
 	{
 		nFormat->pictures.Add(new Picture(*(infoFormat->pictures.GetNth(i))));
 	}

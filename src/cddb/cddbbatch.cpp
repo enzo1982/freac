@@ -77,7 +77,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 
 						cddbInfo.category = node->GetAttributeByName("category")->GetContent();
 
-						for (Int i = 0; i < submits.GetNOfEntries(); i++)
+						for (Int i = 0; i < submits.Length(); i++)
 						{
 							if (submits.GetNth(i) == cddbInfo)
 							{
@@ -108,7 +108,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 {
 	// Save queued queries
 
-	if (queries.GetNOfEntries() == 0)
+	if (queries.Length() == 0)
 	{
 		// Delete queries file if no more saved queries exist
 		File(String(config->configDir).Append("cddb\\queries.xml")).Delete();
@@ -122,7 +122,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 
 		document->SetRootNode(root);
 
-		for (Int i = 0; i < queries.GetNOfEntries(); i++)
+		for (Int i = 0; i < queries.Length(); i++)
 		{
 			root->AddNode("query", queries.GetNth(i));
 		}
@@ -135,7 +135,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 
 	// Save queued submits
 
-	if (submits.GetNOfEntries() == 0)
+	if (submits.Length() == 0)
 	{
 		// Delete submits file if no more saved submits exist
 		File(String(config->configDir).Append("cddb\\submits.xml")).Delete();
@@ -149,7 +149,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 
 		document->SetRootNode(root);
 
-		for (Int i = 0; i < submits.GetNOfEntries(); i++)
+		for (Int i = 0; i < submits.Length(); i++)
 		{
 			XML::Node	*node = root->AddNode("submit", submits.GetNth(i).DiscIDToString());
 
@@ -167,7 +167,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 
 Bool BonkEnc::CDDBBatch::AddQuery(const String &query)
 {
-	for (Int i = 0; i < queries.GetNOfEntries(); i++)
+	for (Int i = 0; i < queries.Length(); i++)
 	{
 		if (queries.GetNth(i) == query) return False;
 	}
@@ -210,7 +210,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	nCddbInfo.discID = cddb.ComputeDiscID();
 
-	for (Int i = 0; i < submits.GetNOfEntries(); i++)
+	for (Int i = 0; i < submits.Length(); i++)
 	{
 		if (submits.GetNth(i) == nCddbInfo)
 		{
@@ -230,7 +230,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 {
-	for (Int i = 0; i < submits.GetNOfEntries(); i++)
+	for (Int i = 0; i < submits.Length(); i++)
 	{
 		if (submits.GetNth(i) == cddbInfo)
 		{
@@ -282,7 +282,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 Bool BonkEnc::CDDBBatch::QueryAll()
 {
-	while (queries.GetNOfEntries() > 0)
+	while (queries.Length() > 0)
 	{
 		if (Query(0) == QUERY_RESULT_ERROR) return False;
 	}
@@ -316,7 +316,7 @@ Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &oCddbInfo)
 
 Bool BonkEnc::CDDBBatch::SubmitAll()
 {
-	while (submits.GetNOfEntries() > 0)
+	while (submits.Length() > 0)
 	{
 		if (!Submit(submits.GetNth(0))) return False;
 	}

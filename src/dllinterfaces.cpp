@@ -958,7 +958,7 @@ Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 	Directory		 directory = Application::GetApplicationDirectory().Append("plugins\\");
 	const Array<File>	&in_dlls   = directory.GetFilesByPattern("in_*.dll");
 
-	for (Int i = 0; i < in_dlls.GetNOfEntries(); i++)
+	for (Int i = 0; i < in_dlls.Length(); i++)
 	{
 		DynamicLoader	*dll = new DynamicLoader(in_dlls.GetNth(i));
 
@@ -983,7 +983,7 @@ Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 
 	const Array<File>	&out_dlls   = directory.GetFilesByPattern("out_*.dll");
 
-	for (Int i = 0; i < out_dlls.GetNOfEntries(); i++)
+	for (Int i = 0; i < out_dlls.Length(); i++)
 	{
 		DynamicLoader	*dll = new DynamicLoader(out_dlls.GetNth(i));
 
@@ -1011,7 +1011,7 @@ Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 
 Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
 {
-	for (Int i = 0; i < winamp_in_plugins.GetNOfEntries(); i++)
+	for (Int i = 0; i < winamp_in_plugins.Length(); i++)
 	{
 		winamp_in_modules.GetNth(i)->Quit();
 
@@ -1021,7 +1021,7 @@ Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
 	winamp_in_plugins.RemoveAll();
 	winamp_in_modules.RemoveAll();
 
-	for (Int j = 0; j < winamp_out_plugins.GetNOfEntries(); j++)
+	for (Int j = 0; j < winamp_out_plugins.Length(); j++)
 	{
 		winamp_out_modules.GetNth(j)->Quit();
 

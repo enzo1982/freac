@@ -92,7 +92,7 @@ namespace BonkEnc
 			Void		 ReadSpecificCD();
 
 			Void		 EncodeSpecific();
-			PopupMenu	*GetTrackMenu(Int, Int);
+			PopupMenu	*GetContextMenu();
 			Void		 ShowHelp();
 			Void		 ShowTipOfTheDay();
 

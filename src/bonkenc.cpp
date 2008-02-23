@@ -39,7 +39,7 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version	= "v1.0.7";
+String	 BonkEnc::BonkEnc::version	= "v1.0.7 Beta 1";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.7";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.6";
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
@@ -113,7 +113,7 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	DLLInterfaces::LoadWinampDLLs();
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() <= currentConfig->output_plugin) currentConfig->output_plugin = 0;
+	if (DLLInterfaces::winamp_out_modules.Length() <= currentConfig->output_plugin) currentConfig->output_plugin = 0;
 
 	int	 nextEC = 0;
 

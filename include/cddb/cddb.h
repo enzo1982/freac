@@ -60,7 +60,7 @@ namespace BonkEnc
 
 			Void		 SetUpdateTrackOffsets(Bool nUpdateTrackOffsets)	{ updateTrackOffsets = nUpdateTrackOffsets; }
 
-			Int		 GetNumberOfMatches()					{ return ids.GetNOfEntries(); }
+			Int		 GetNumberOfMatches()					{ return ids.Length(); }
 			Int		 GetNthDiscID(Int n)					{ return ids.GetNth(n); }
 			const String	&GetNthTitle(Int n)					{ return titles.GetNth(n); }
 			const String	&GetNthCategory(Int n)					{ return categories.GetNth(n); }

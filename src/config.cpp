@@ -388,7 +388,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("TwinVQ", "Bitrate", tvq_bitrate);
 		config->SetIntValue("TwinVQ", "PreselectionCandidates", tvq_presel_candidates);
 
-		config->Close();
+		config->Save();
 	}
 	else
 	{

@@ -105,7 +105,7 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 
 	if (currentConfig->copy_picture_tags)
 	{
-		for (Int i = 0; i < format->pictures.GetNOfEntries(); i++)
+		for (Int i = 0; i < format->pictures.Length(); i++)
 		{
 			FLAC__StreamMetadata	*picture = ex_FLAC__metadata_object_new(FLAC__METADATA_TYPE_PICTURE);
 			Picture			*picInfo = format->pictures.GetNth(i);
@@ -128,11 +128,11 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 
 	// Put metadata in an array and hand it to the encoder
 	{
-		FLAC__StreamMetadata	**metadataArray = new FLAC__StreamMetadata * [metadata.GetNOfEntries()];
+		FLAC__StreamMetadata	**metadataArray = new FLAC__StreamMetadata * [metadata.Length()];
 
-		for (Int i = 0; i < metadata.GetNOfEntries(); i++) metadataArray[i] = metadata.GetNth(i);
+		for (Int i = 0; i < metadata.Length(); i++) metadataArray[i] = metadata.GetNth(i);
 
-		ex_FLAC__stream_encoder_set_metadata(encoder, metadataArray, metadata.GetNOfEntries());
+		ex_FLAC__stream_encoder_set_metadata(encoder, metadataArray, metadata.Length());
 
 		delete [] metadataArray;
 	}
@@ -183,7 +183,7 @@ Bool BonkEnc::FilterOutFLAC::Deactivate()
 	ex_FLAC__stream_encoder_finish(encoder);
 	ex_FLAC__stream_encoder_delete(encoder);
 
-	for (Int i = 0; i < metadata.GetNOfEntries(); i++) ex_FLAC__metadata_object_delete(metadata.GetNth(i));
+	for (Int i = 0; i < metadata.Length(); i++) ex_FLAC__metadata_object_delete(metadata.GetNth(i));
 
 	return true;
 }

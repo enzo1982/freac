@@ -137,7 +137,7 @@ Void BonkEnc::cddbManageQueriesDlg::DeleteEntry()
 {
 	cddbQueries->DeleteQuery(list_entries->GetSelectedEntryNumber());
 
-	list_entries->RemoveEntry(list_entries->GetSelectedEntry());
+	list_entries->Remove(list_entries->GetSelectedEntry());
 
 	btn_delete->Deactivate();
 	btn_query->Deactivate();
@@ -149,7 +149,7 @@ Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
 
 	const Array<String> &queries = cddbQueries->GetQueries();
 
-	for (Int i = 0; i < queries.GetNOfEntries(); i++)
+	for (Int i = 0; i < queries.Length(); i++)
 	{
 		list_entries->AddEntry(queries.GetNth(i));
 	}
@@ -163,7 +163,7 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 
 	if (cddbQueries->Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
 	{
-		list_entries->RemoveEntry(list_entries->GetSelectedEntry());
+		list_entries->Remove(list_entries->GetSelectedEntry());
 
 		btn_delete->Deactivate();
 		btn_query->Deactivate();

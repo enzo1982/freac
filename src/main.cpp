@@ -155,7 +155,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org/", pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
 		pos.y = -1;
@@ -236,6 +236,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	size.cy = currentConfig->wndSize.cy - 264 - (currentConfig->showTitleInfo ? 68 : 0);
 
 	joblist			= new JobList(pos, size);
+	joblist->getContextMenu.Connect(&BonkEncGUI::GetContextMenu, this);
 	joblist->onSelectTrack.Connect(&BonkEncGUI::OnJoblistSelectTrack, this);
 	joblist->onSelectNone.Connect(&BonkEncGUI::OnJoblistSelectNone, this);
 	joblist->onRemovePlayingTrack.Connect(&BonkEncGUI::StopPlayback, this);
@@ -474,7 +475,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->Add(check_cuesheet);
 	mainWnd->Add(check_playlist);
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		mainWnd->Add(button_play);
 		mainWnd->Add(button_pause);
@@ -560,7 +561,6 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	if (currentConfig->showTips) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
 	mainWnd->doQuit.Connect(&BonkEncGUI::ExitProc, this);
-	mainWnd->getTrackMenu.Connect(&BonkEncGUI::GetTrackMenu, this);
 	mainWnd->SetMinimumSize(Size(530, 340 + (currentConfig->showTitleInfo ? 68 : 0)));
 
 	if (currentConfig->maximized) mainWnd->Maximize();
@@ -587,7 +587,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(check_cuesheet);
 	DeleteObject(check_playlist);
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		DeleteObject(button_play);
 		DeleteObject(button_pause);
@@ -944,7 +944,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		if (format->isCDTrack) discIDStrings.Add(format->discid, format->drive);
 	}
 
-	for (Int j = 0; j < discIDs.GetNOfEntries(); j++)
+	for (Int j = 0; j < discIDs.Length(); j++)
 	{
 		Int	 oDrive = currentConfig->cdrip_activedrive;
 
@@ -1032,11 +1032,11 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 		if (format->isCDTrack) drives.Add(format->drive, format->drive);
 	}
 
-	if (drives.GetNOfEntries() > 0)
+	if (drives.Length() > 0)
 	{
 		CDDBBatch	*queries = new CDDBBatch(currentConfig);
 
-		for (Int j = 0; j < drives.GetNOfEntries(); j++)
+		for (Int j = 0; j < drives.Length(); j++)
 		{
 			Int		 drive = drives.GetNth(j);
 			CDDBRemote	 cddb(currentConfig);
@@ -1198,7 +1198,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 		mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 		mainWnd->Paint(SP_PAINT);
 
-		if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+		if (DLLInterfaces::winamp_out_modules.Length() > 0)
 		{
 			button_play->Hide();
 			button_pause->Hide();
@@ -1537,7 +1537,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
 
-	if (DLLInterfaces::winamp_out_modules.GetNOfEntries() > 0)
+	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&BonkEncGUI::PlaySelectedItem, this);
 		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&BonkEncGUI::StopPlayback, this);
@@ -2139,20 +2139,15 @@ Void BonkEnc::BonkEncGUI::UpdateTitleInfo()
 	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->GetSelectedEntry()->SetText(jlEntry);
 }
 
-PopupMenu *BonkEnc::BonkEncGUI::GetTrackMenu(Int mouseX, Int mouseY)
+PopupMenu *BonkEnc::BonkEncGUI::GetContextMenu()
 {
-	if (mouseX > mainWnd->GetMainLayer()->GetX() + joblist->GetX() + 1 &&
-	    mouseX < mainWnd->GetMainLayer()->GetX() + joblist->GetX() + joblist->GetWidth() - 1 &&
-	    mouseY > mainWnd->GetMainLayer()->GetY() + joblist->GetY() + 17 &&
-	    mouseY < mainWnd->GetMainLayer()->GetY() + joblist->GetY() + joblist->GetHeight() - 1)
-	{
 // TODO: Sending messages on our own is EVIL! Rather implement
 //	 a context menu framework in smooth and use it here.
-		joblist->Process(SM_LBUTTONDOWN, 0, 0);
-		joblist->Process(SM_LBUTTONUP, 0, 0);
 
-		if (joblist->GetSelectedTrack() != NIL) return menu_trackmenu;
-	}
+	joblist->Process(SM_LBUTTONDOWN, 0, 0);
+	joblist->Process(SM_LBUTTONUP, 0, 0);
+
+	if (joblist->GetSelectedTrack() != NIL) return menu_trackmenu;
 
 	return NIL;
 }
