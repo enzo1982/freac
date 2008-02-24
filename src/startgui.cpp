@@ -1624,7 +1624,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), /*ENCODER_WAVE > 0 ? menu_encoders :*/ NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), /*ENCODER_WAVE > 0 ?*/ menu_encoders /*: NIL*/);
 	entry->onAction.Connect(&BonkEncGUI::Encode, this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
@@ -1702,7 +1702,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 Void BonkEnc::BonkEncGUI::EncodeSpecific()
 {
-//	currentConfig->encoder = clicked_encoder;
+	Registry	&boca = Registry::Get();
+
+	currentConfig->encoderID = boca.GetComponentID(clicked_encoder);
 
 	SetEncoderText();
 

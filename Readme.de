@@ -19,6 +19,7 @@ Geschichte
 		- Deutsche, italienische, russische und griechische Anleitungen hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
 		- Neuen Konfigurationsdialog implementiert
+		- Monkey's Audio-Dekoder hinzugefügt
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben

@@ -91,7 +91,6 @@ Int BonkEnc::Encoder::EncoderThread()
 	OutStream		*f_out		= NIL;
 	EncoderComponent	*filter_out	= NIL;
 	Driver			*zero_in	= new DriverZero();
-	Driver			*zero_out	= new DriverZero();
 
 	onStartEncoding.Emit();
 
@@ -153,16 +152,6 @@ Int BonkEnc::Encoder::EncoderThread()
 					break;
 				}
 
-/*				if (encoder == ENCODER_FAAC)
-				{
-					if (Config::Get()->enable_mp4 && Config::Get()->faac_enable_mp4)
-					{
-						delete f_out;
-
-						f_out = new OutStream(STREAM_DRIVER, zero_out);
-					}
-				}
-*/
 				filter_out = (EncoderComponent *) Registry::Get().CreateComponentByID(encoderID);
 				filter_out->SetAudioTrackInfo(*singleTrackInfo);
 
@@ -299,16 +288,6 @@ Int BonkEnc::Encoder::EncoderThread()
 				continue;
 			}
 
-/*			if (encoder == ENCODER_FAAC)
-			{
-				if (Config::Get()->enable_mp4 && Config::Get()->faac_enable_mp4)
-				{
-					delete f_out;
-
-					f_out = new OutStream(STREAM_DRIVER, zero_out);
-				}
-			}
-*/
 			filter_out = (EncoderComponent *) Registry::Get().CreateComponentByID(encoderID);
 			filter_out->SetAudioTrackInfo(*trackInfo);
 
@@ -527,7 +506,6 @@ Int BonkEnc::Encoder::EncoderThread()
 	}
 
 	delete zero_in;
-	delete zero_out;
 
 	Config::Get()->cdrip_activedrive = encoder_activedrive;
 
@@ -711,20 +689,15 @@ String BonkEnc::Encoder::GetOutputFileName(Track *trackInfo)
 			outputFileName.Append(shortInFileName);
 		}
 
-/*		if (Config::Get()->encoder == ENCODER_BONKENC)		outputFileName.Append(".bonk");
-		else if (Config::Get()->encoder == ENCODER_BLADEENC)	outputFileName.Append(".mp3");
-		else if (Config::Get()->encoder == ENCODER_LAMEENC)	outputFileName.Append(".mp3");
-		else if (Config::Get()->encoder == ENCODER_VORBISENC)	outputFileName.Append(".ogg");
-		else if (Config::Get()->encoder == ENCODER_FLAC)	outputFileName.Append(".flac");
-		else if (Config::Get()->encoder == ENCODER_TVQ)		outputFileName.Append(".vqf");
-		else if (Config::Get()->encoder == ENCODER_WAVE)	outputFileName.Append(".wav");
+		/* Get file extension from selected encoder component
+		 */
+		Registry		&boca = Registry::Get();
+		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(Config::Get()->encoderID);
 
-		if (Config::Get()->encoder == ENCODER_FAAC)
-		{
-			if (Config::Get()->enable_mp4 && Config::Get()->faac_enable_mp4) outputFileName.Append(".m4a");
-			else										   outputFileName.Append(".aac");
-		}
-*/	}
+		outputFileName.Append(".").Append(encoder->GetOutputFileExtension());
+
+		boca.DeleteComponent(encoder);
+	}
 	else
 	{
 		outputFileName = trackInfo->outfile;
@@ -745,6 +718,8 @@ String BonkEnc::Encoder::GetSingleOutputFileName(Track *trackInfo)
 	dialog->SetMode(SFM_SAVE);
 	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
 
+	/* Get list of supported formats from selected encoder
+	 */
 	Registry	&boca = Registry::Get();
 	Component	*encoder = boca.CreateComponentByID(Config::Get()->encoderID);
 

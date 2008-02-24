@@ -19,6 +19,7 @@ History
 		- added German, Italian, Russian and Greek user guides
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
+		- added Monkey's Audio decoder
 		- added <installdrive> pattern for use in output directory name
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
