@@ -56,6 +56,8 @@ Bool BonkEnc::FilterInFLAC::Activate()
 
 Bool BonkEnc::FilterInFLAC::Deactivate()
 {
+	decoderThread->Stop();
+
 	delete readDataMutex;
 	delete samplesBufferMutex;
 
