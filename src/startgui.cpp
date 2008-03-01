@@ -564,7 +564,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	if (currentConfig->showTips) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
-	mainWnd->doQuit.Connect(&BonkEncGUI::ExitProc, this);
+	mainWnd->doClose.Connect(&BonkEncGUI::ExitProc, this);
 	mainWnd->SetMinimumSize(Size(530, 340 + (currentConfig->showTitleInfo ? 68 : 0)));
 
 	if (currentConfig->maximized) mainWnd->Maximize();

@@ -13,7 +13,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Februar 2008)
+	Version 1.1 CVS (März 2008)
 
 		- Sprachunterstützung für Estnisch, Katalanisch, Valencianisch und Portugiesisch hinzugefügt
 		- Deutsche, italienische, russische und griechische Anleitungen hinzugefügt
@@ -56,7 +56,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v8.0
-		- smooth v0.8.70.0 (http://www.smooth-project.org/)
+		- smooth v0.8.71.0 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
