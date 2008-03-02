@@ -10,27 +10,15 @@
 
 #include <input/inputfilter.h>
 
-#include <dllinterfaces.h>
-#include <utilities.h>
-
 BonkEnc::InputFilter::InputFilter(Track *iFormat)
 {
 	errorState	= False;
 	errorString	= "Unknown error";
 
-	inBytes		= 0;
-	fileSize	= 0;
 	format		= iFormat;
 	currentConfig	= Config::Get();
 }
 
 BonkEnc::InputFilter::~InputFilter()
 {
-}
-
-Bool BonkEnc::InputFilter::SetFileSize(UnsignedInt newFileSize)
-{
-	fileSize = newFileSize;
-
-	return true;
 }

@@ -267,8 +267,6 @@ Int BonkEnc::Encoder::EncoderThread()
 				delete nTrackInfo;
 			}
 
-			filter_in->SetFileSize(f_in->Size());
-
 			f_in->AddFilter(filter_in);
 		}
 

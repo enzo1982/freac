@@ -105,8 +105,6 @@ Int BonkEnc::Playback::PlayThread()
 
 		if (filter_in != NIL)
 		{
-			filter_in->SetFileSize(f_in->Size());
-
 			f_in->AddFilter(filter_in);
 		}
 		else

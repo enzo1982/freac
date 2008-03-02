@@ -12,7 +12,6 @@
 #define _H_INPUTFILTER_
 
 #include <smooth/io/filter.h>
-#include <smooth/io/driver.h>
 #include "../bonkenc.h"
 
 using namespace smooth::IO;
@@ -22,12 +21,9 @@ namespace BonkEnc
 	class InputFilter : public Filter
 	{
 		protected:
-			Int		 inBytes;
-
 			Bool		 errorState;
 			String		 errorString;
 
-			UnsignedInt	 fileSize;
 			Track		*format;
 			Config		*currentConfig;
 		public:
@@ -37,9 +33,8 @@ namespace BonkEnc
 			virtual Int	 ReadData(Buffer<UnsignedByte> &, Int) = 0;
 
 			virtual Track	*GetFileInfo(const String &) = 0;
-			virtual Bool	 SetFileSize(UnsignedInt);
 
-			Int		 GetInBytes()		{ return inBytes; }
+			virtual Int64	 GetInBytes()		{ return 0; }
 
 			Bool		 GetErrorState()	{ return errorState; }
 			const String	&GetErrorString()	{ return errorString; }

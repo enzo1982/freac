@@ -33,6 +33,8 @@ namespace BonkEnc
 			Int			 ReadData(Buffer<UnsignedByte> &, Int);
 
 			Track			*GetFileInfo(const String &);
+
+			Int64			 GetInBytes();
 	};
 };
 

@@ -48,3 +48,8 @@ BoCA::Track *BonkEnc::FilterInBoCA::GetFileInfo(const String &inFile)
 
 	return track;
 }
+
+Int64 BonkEnc::FilterInBoCA::GetInBytes()
+{
+	return component->GetInBytes();
+}
