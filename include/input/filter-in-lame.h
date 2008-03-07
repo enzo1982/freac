@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2006 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,6 +20,8 @@ namespace BonkEnc
 		private:
 			Buffer<short>	 pcm_l;
 			Buffer<short>	 pcm_r;
+
+			Bool		 SkipID3v2Tag(InStream *);
 		public:
 					 FilterInLAME(Config *, Track *);
 					~FilterInLAME();

@@ -25,6 +25,12 @@ Bool BonkEnc::FilterInLAME::Activate()
 {
 	ex_lame_decode_init();
 
+	InStream	*f_in = new InStream(STREAM_DRIVER, driver);
+
+	SkipID3v2Tag(f_in);
+
+	delete f_in;
+
 	return true;
 }
 
@@ -60,6 +66,36 @@ Int BonkEnc::FilterInLAME::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return data.Size();
 }
 
+Bool BonkEnc::FilterInLAME::SkipID3v2Tag(InStream *in)
+{
+	/* Check for an ID3v2 tag at the beginning of the
+	 * file and skip it if it exists as LAME may crash
+	 * on unsynchronized tags.
+	 */
+	if (in->InputString(3) == "ID3")
+	{
+		in->InputNumber(2); // ID3 version
+		in->InputNumber(1); // Flags
+
+		/* Read tag size as a 4 byte unsynchronized integer.
+		 */
+		Int	 tagSize = (in->InputNumber(1) << 21) +
+				   (in->InputNumber(1) << 14) +
+				   (in->InputNumber(1) <<  7) +
+				   (in->InputNumber(1)      );
+
+		in->RelSeek(tagSize);
+
+		inBytes += (tagSize + 10);
+	}
+	else
+	{
+		in->Seek(0);
+	}
+
+	return True;
+}
+
 BonkEnc::Track *BonkEnc::FilterInLAME::GetFileInfo(const String &inFile)
 {
 	ex_lame_decode_init();
@@ -71,6 +107,8 @@ BonkEnc::Track *BonkEnc::FilterInLAME::GetFileInfo(const String &inFile)
 	nFormat->bits		= 16;
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
+
+	SkipID3v2Tag(f_in);
 
 	Buffer<unsigned char>	 buffer(4096);
 

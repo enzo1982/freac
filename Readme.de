@@ -15,7 +15,9 @@ Geschichte
 
 	Version 1.0.7 (März 2008)
 
-		- Möglichen Absturz im FLAC-Dekoder behoben
+		- Fehlerhafte Übergabe von unsynchronisierten ID3v2-Tags an den LAME-Decoder behoben
+		- Absturz des FLAC-Codierers in Verbindung mit Bild-Metadaten behoben
+		- Möglichen Absturz im FLAC-Decoder behoben
 
 	Version 1.0.7 Beta 1 (Februar 2008)
 
