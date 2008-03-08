@@ -149,6 +149,10 @@ BonkEnc::BonkEnc::~BonkEnc()
 
 	DLLInterfaces::FreeWinampDLLs();
 
+	/* Cleanup deletable objects before deleting translator.
+	 */
+	Object::ObjectCleanup();
+
 	delete i18n;
 	delete currentConfig;
 
