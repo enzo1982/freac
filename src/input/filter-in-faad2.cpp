@@ -23,6 +23,12 @@ BonkEnc::FilterInFAAD2::~FilterInFAAD2()
 
 Bool BonkEnc::FilterInFAAD2::Activate()
 {
+	InStream	*in = new InStream(STREAM_DRIVER, driver);
+
+	SyncOnAACHeader(in);
+
+	delete in;
+
 	handle	= ex_NeAACDecOpen();
 	fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
@@ -35,7 +41,7 @@ Bool BonkEnc::FilterInFAAD2::Activate()
 	Int		 size = 4096;
 	unsigned char	*data = new unsigned char [size];
 
-	driver->ReadData(data, size);
+	size = driver->ReadData(data, size);
 
 	unsigned long	 rate;
 	unsigned char	 channels;
@@ -44,7 +50,7 @@ Bool BonkEnc::FilterInFAAD2::Activate()
 
 	delete [] data;
 
-	driver->Seek(0);
+	driver->Seek(driver->GetPos() - size);
 
 	return true;
 }
@@ -128,6 +134,25 @@ Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 {
+	Track		*nFormat = new Track;
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+
+	nFormat->order		= BYTE_INTEL;
+	nFormat->bits		= 16;
+	nFormat->fileSize	= f_in->Size();
+	nFormat->length		= -1;
+
+	if (!SyncOnAACHeader(f_in))
+	{
+		delete f_in;
+		delete nFormat;
+
+		errorState = True;
+		errorString = "No AAC file.";
+
+		return NIL;
+	}
+
 	handle	= ex_NeAACDecOpen();
 	fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
@@ -136,14 +161,6 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 	fConfig->outputFormat	= FAAD_FMT_16BIT;
 
 	ex_NeAACDecSetConfiguration(handle, fConfig);
-
-	Track		*nFormat = new Track;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
-
-	nFormat->order		= BYTE_INTEL;
-	nFormat->bits		= 16;
-	nFormat->fileSize	= f_in->Size();
-	nFormat->length		= -1;
 
 	Int		 size = Math::Min(32768, nFormat->fileSize);
 	unsigned char	*data = new unsigned char [size];
@@ -207,4 +224,49 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 	}
 
 	return nFormat;
+}
+
+Bool BonkEnc::FilterInFAAD2::SyncOnAACHeader(InStream *in)
+{
+	in->Seek(0);
+
+	/* Try to sync on ADIF header
+	 */
+	for (Int n = 0; n < 1024; n++)
+	{
+		if (in->InputNumber(1) != 'A') continue;
+		if (in->InputNumber(1) != 'D') continue;
+		if (in->InputNumber(1) != 'I') continue;
+		if (in->InputNumber(1) != 'F') continue;
+
+		/* No ADIF magic word found in the first 1 kB.
+		 */
+		if (n == 1023) break;
+
+		in->RelSeek(-4);
+
+		return True;
+	}
+
+	in->Seek(0);
+
+	/* Try to sync on ADTS header
+	 */
+	for (Int n = 0; n < 1024; n++)
+	{
+		if (  in->InputNumber(1)	       != 0xFF) continue;
+		if ( (in->InputNumber(1) & 0xF6)       != 0xF0) continue;
+		if (((in->InputNumber(1) & 0x3C) >> 2) >=   12) continue;
+
+		/* No ADTS sync found in the first 1 kB;
+		 * probably not an AAC file.
+		 */
+		if (n == 1023) break;
+
+		in->RelSeek(-3);
+
+		return True;
+	}
+
+	return False;
 }

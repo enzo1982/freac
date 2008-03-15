@@ -16,6 +16,7 @@ History
 	Version 1.0.7 (March 2008)
 
 		- updated French and Russian translations
+		- added support for AAC synchronizing (needed to read ripped AAC streams)
 		- fixed support for various artists CDs
 		- fixed passing of unsynchronized ID3v2 tags to the LAME decoder
 		- fixed picture metadata related crash in FLAC encoder
