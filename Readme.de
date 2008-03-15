@@ -15,9 +15,12 @@ Geschichte
 
 	Version 1.0.7 (März 2008)
 
+		- Französische und russische Übersetzungen aktualisiert
+		- Fehler in der Unterstützung von CDs von mehreren Künstlern behoben
 		- Fehlerhafte Übergabe von unsynchronisierten ID3v2-Tags an den LAME-Decoder behoben
 		- Absturz des FLAC-Codierers in Verbindung mit Bild-Metadaten behoben
 		- Möglichen Absturz im FLAC-Decoder behoben
+		- Fehler in der Unterstützung für große Schriftarten behoben
 
 	Version 1.0.7 Beta 1 (Februar 2008)
 

@@ -2,7 +2,7 @@
 <LangFile>
  <info>
   <property name="program">BonkEnc</property>
-  <property name="version">1.0.2</property>
+  <property name="version">1.0.7</property>
   <property name="language">French / Français</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
@@ -392,6 +392,12 @@
   <entry id="381" string="Apodization">Apodisation</entry>
   <entry id="382" string="Apodization function(s):">Fonction(s) d'apodisation :</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">Vous pouvez indiquer plusieurs fonctions séparées par des points-virgules.</entry>
-  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc peut vérifier automatiquement la présence en ligne de mises à jour du programme&#10;au démarrage.&#10;&#10;Voulez-vous que BonkEnc recherche des mises à jour au démarrage ?</entry> 
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc peut vérifier automatiquement la présence en ligne de mises à jour du programme&#10;au démarrage.&#10;&#10;Voulez-vous que BonkEnc recherche des mises à jour au démarrage ?</entry>
+  <entry id="385" string="Cannot access input file: %1">Impossible d'accéder au fichier d'entrée : %1</entry>
+  <entry id="386" string="Cannot create output file: %1">Impossible d'accéder au fichier de sortie : %1</entry>
+  <entry id="387" string="File not found">Fichier non trouvé</entry>
+  <entry id="388" string="Unknown file type">Type de fichier inconnu</entry>
+  <entry id="389" string="Unsupported audio format">Format audio non supporté</entry>
+  <entry id="390" string="Unknown error">Erreur inconnue</entry>
  </data>
 </LangFile>

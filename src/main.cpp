@@ -975,7 +975,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 				{
 					format->track	= format->cdTrack;
 					format->outfile	= NIL;
-					format->artist	= cdInfo.dArtist;
+					format->artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(format->cdTrack - 1) : cdInfo.dArtist);
 					format->title	= cdInfo.trackTitles.GetNth(format->cdTrack - 1);
 					format->album	= cdInfo.dTitle;
 					format->genre	= cdInfo.dGenre;
