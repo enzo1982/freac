@@ -43,9 +43,9 @@
   <entry id="31" string="Error">Ошибка</entry>
   <entry id="32" string="Audio Files">Аудио файлы</entry>
   <entry id="33" string="Apple Audio Files">Аудио файлы Apple</entry>
-  <entry id="34" string="Creative Voice Files">Creative Voice файлы</entry>
-  <entry id="35" string="Sun Audio Files">Sun Audio файлы</entry>
-  <entry id="36" string="Wave Files">Wave файлы</entry>
+  <entry id="34" string="Creative Voice Files">Файлы Creative Voice</entry>
+  <entry id="35" string="Sun Audio Files">Файлы Sun Audio</entry>
+  <entry id="36" string="Wave Files">Файлы Wave</entry>
   <entry id="37" string="Windows CD Audio Track">Аудио CD трек</entry>
   <entry id="38" string="All Files">Все файлы</entry>
   <entry id="39" string="You have not selected a file!">Файл не выбран!</entry>
@@ -171,7 +171,7 @@
   <entry id="159" string="No exact matches found">Не найдено точного соответствия</entry>
   <entry id="160" string="Multiple matches found">Найдены некоторые соответствия</entry>
   <entry id="161" string="Matches">Соответствия</entry>
-  <entry id="162" string="Select the entry that best fits your CD:">Выберите наиболее подходящий список для CD:</entry>
+  <entry id="162" string="Select the entry that best fits your CD:">Выберите пункт наиболее подходящий для CD:</entry>
   <entry id="163" string="Extended CDDB settings">Дополнительные настройки CDDB</entry>
   <entry id="164" string="CGI scripts">CGI скрипты</entry>
   <entry id="165" string="CDDB query script:">Скрипт CDDB запроса:</entry>
@@ -329,11 +329,11 @@
   <entry id="317" string="Interpret string as">Интерпретировать строку как</entry>
   <entry id="318" string="selected tracks">выбранные треки</entry>
   <entry id="319" string="Adjust upper/lower case">Настроить верхний/нижний регистр</entry>
-  <entry id="320" string="all words upper case">Все слова верхним регистром</entry>
-  <entry id="321" string="long words upper case">Длинные слова верхним регистром</entry>
-  <entry id="322" string="first letter upper case">Первая буква верхним регистром</entry>
-  <entry id="323" string="all lower case">Все нижним регистром</entry>
-  <entry id="324" string="all upper case">Все верхним регистром</entry>
+  <entry id="320" string="all words upper case">Все Слова С Большой Буквы</entry>
+  <entry id="321" string="long words upper case">Длинные Слова с Большой Буквы</entry>
+  <entry id="322" string="first letter upper case">Первая буква большая</entry>
+  <entry id="323" string="all lower case">все маленькими буквами</entry>
+  <entry id="324" string="all upper case">ВСЕ БОЛЬШИМИ БУКВАМИ</entry>
   <entry id="325" string="Status">Состояние</entry>
   <entry id="326" string="Successfully read CD!">CD успешно прочитан!</entry>
   <entry id="327" string="Comment">Комментарии</entry>

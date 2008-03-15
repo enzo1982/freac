@@ -69,6 +69,10 @@ BonkEnc::BonkEnc::~BonkEnc()
 	if (currentConfig->enable_cdrip)	DLLInterfaces::FreeCDRipDLL();
 	if (currentConfig->enable_eUpdate)	DLLInterfaces::FreeEUpdateDLL();
 
+	/* Cleanup deletable objects before deleting translator.
+	 */
+	Object::ObjectCleanup();
+
 	delete i18n;
 
 	Config::Free();

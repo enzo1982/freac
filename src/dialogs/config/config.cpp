@@ -28,7 +28,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	currentConfig = Config::Get();
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(40, 40), Size(600, 332));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(30, 30), Size(600, 332));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

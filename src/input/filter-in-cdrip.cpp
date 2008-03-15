@@ -382,7 +382,7 @@ BoCA::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
-		nFormat->artist		= cdInfo.dArtist;
+		nFormat->artist		= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
 		nFormat->title		= cdInfo.trackTitles.GetNth(trackNumber - 1);
 		nFormat->album		= cdInfo.dTitle;
 		nFormat->genre		= cdInfo.dGenre;

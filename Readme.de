@@ -33,6 +33,7 @@ Geschichte
 		- Verschiedene CDDB-Probleme behoben
 		- Fehler bei HTTP-Proxy-Authentifizierung behoben
 		- Abstürze von BEcmd behoben
+		- Fehler in der Unterstützung von CDs von mehreren Künstlern behoben
 		- Gültigkeitsprüfung für CDDB-Daten verbessert
 		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
 		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet

@@ -13,7 +13,10 @@
 
 #include <smooth.h>
 #include "bonkenc.h"
-#include "playback.h"
+
+#include <gui/main_joblist.h>
+#include <gui/main_protocol.h>
+#include <gui/main_threads.h>
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -25,15 +28,6 @@ extern "C"
 
 namespace BonkEnc
 {
-	const Int	 CHARSET_ISO_8859_1	= 0;
-	const Int	 CHARSET_ISO_8859_2	= 1;
-	const Int	 CHARSET_ISO_8859_5	= 2;
-	const Int	 CHARSET_ISO_8859_7	= 3;
-	const Int	 CHARSET_CP1251		= 4;
-	const Int	 CHARSET_SHIFT_JIS	= 5;
-	const Int	 CHARSET_GBK		= 6;
-	const Int	 CHARSET_BIG_5		= 7;
-
 	class BonkEncGUI : public BonkEnc
 	{
 		private:
@@ -51,14 +45,9 @@ namespace BonkEnc
 			PopupMenu		*menu_seldrive;
 			PopupMenu		*menu_database;
 			PopupMenu		*menu_database_query;
-			PopupMenu		*menu_trackmenu;
 			PopupMenu		*menu_help;
 			PopupMenu		*menu_encoders;
 			PopupMenu		*menu_encoder_options;
-			PopupMenu		*menu_charsets;
-			PopupMenu		*menu_charsets_all;
-			PopupMenu		*menu_case;
-			PopupMenu		*menu_case_all;
 
 			MenuEntry		*allowOverwriteMenuEntry;
 
@@ -66,44 +55,21 @@ namespace BonkEnc
 			Menubar			*mainWnd_iconbar;
 			Titlebar		*mainWnd_titlebar;
 
-			MicroMenu		*menu_edit_artist;
-			MicroMenu		*menu_edit_title;
-			MicroMenu		*menu_edit_album;
-			MicroMenu		*menu_edit_year;
-			MicroMenu		*menu_edit_genre;
-
-			Hotspot			*htsp_edit_artist;
-			Hotspot			*htsp_edit_title;
-			Hotspot			*htsp_edit_album;
-			Hotspot			*htsp_edit_year;
-			Hotspot			*htsp_edit_genre;
-
-			Button			*button_play;
-			Button			*button_pause;
-			Button			*button_stop;
-			Button			*button_prev;
-			Button			*button_next;
-			Button			*button_open;
+			TabWidget		*tabs_main;
+			LayerJoblist		*tab_layer_joblist;
+			LayerThreads		*tab_layer_threads;
+			LayerProtocol		*tab_layer_protocol;
 
 			Int			 clicked_drive;
 			Int			 clicked_encoder;
-			Int			 clicked_charset;
-			Int			 clicked_case;
-
-			Int			 activePopup;
-
-			Playback		*player;
 
 			Void			 Close();
 			Void			 About();
 			Void			 ConfigureEncoder();
 			Void			 ConfigureSettings();
-			Void			 ShowHideTitleInfo();
-			Void			 UpdateTitleInfo();
 			Void			 ReadSpecificCD();
 
 			Void			 EncodeSpecific();
-			PopupMenu		*GetContextMenu();
 			Void			 ShowHelp();
 			Void			 ShowTipOfTheDay();
 
@@ -113,16 +79,10 @@ namespace BonkEnc
 			Bool			 SetLanguage();
 			Void			 FillMenus();
 
-			Void			 SetEncoderText();
-
 			Void			 Encode();
 
 			Void			 PauseResumeEncoding();
 			Void			 StopEncoding();
-
-			String			 AdjustCaseFirstCapital(const String &);
-			String			 AdjustCaseWordsFirstCapital(const String &);
-			String			 AdjustCaseLongWordsFirstCapital(const String &);
 		signals:
 			Signal0<Void>		 onChangeLanguageSettings;
 		slots:
@@ -133,11 +93,6 @@ namespace BonkEnc
 			Void			 OnChangePosition(const Point &);
 			Void			 OnChangeSize(const Size &);
 
-			Void			 PlaySelectedItem();
-			Void			 PauseResumePlayback();
-			Void			 StopPlayback();
-			Void			 OpenCDTray();
-
 			Void			 QueryCDDB();
 			Void			 QueryCDDBLater();
 			Void			 SubmitCDDBData();
@@ -146,34 +101,13 @@ namespace BonkEnc
 			Void			 ManageCDDBBatchData();
 			Void			 ManageCDDBBatchQueries();
 
-			Void			 SelectDir();
-			Void			 SkipTrack();
-
 			Void			 AddFilesFromDirectory();
 			Void			 AddFilesByPattern();
 
-			Void			 ToggleEditPopup();
 			Void			 ToggleUseInputDirectory();
 			Void			 ToggleEncodeToSingleFile();
 
-			Void			 UseStringForSelectedTracks();
-			Void			 InterpretStringAs();
-			Void			 InterpretStringAsAll();
-			Void			 AdjustStringCase();
-			Void			 AdjustStringCaseAll();
-
 			Void			 ConfirmDeleteAfterEncoding();
-
-			Void			 OnJoblistSelectTrack(Track *);
-			Void			 OnJoblistSelectNone();
-
-			Void			 OnEncoderStartEncoding();
-			Void			 OnEncoderFinishEncoding(Bool);
-
-			Void			 OnEncoderEncodeTrack(const Track *, Int);
-
-			Void			 OnEncoderTrackProgress(Int, Int);
-			Void			 OnEncoderTotalProgress(Int, Int);
 		public:
 			CDDBInfo		 GetCDDBData();
 

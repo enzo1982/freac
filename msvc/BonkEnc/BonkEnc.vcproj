@@ -538,6 +538,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\dialogs\config\configcomponent.cpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\dialogs\config\configentry.cpp"
 						>
 					</File>
@@ -568,6 +572,22 @@
 				</File>
 				<File
 					RelativePath="..\..\src\cdinfo\cdtext.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="gui"
+				>
+				<File
+					RelativePath="..\..\src\gui\main_joblist.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\main_protocol.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\main_threads.cpp"
 					>
 				</File>
 			</Filter>
@@ -728,6 +748,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\include\dialogs\config\configcomponent.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\include\dialogs\config\configentry.h"
 						>
 					</File>
@@ -770,6 +794,22 @@
 				</File>
 				<File
 					RelativePath="..\..\include\cdinfo\cdtext.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="gui"
+				>
+				<File
+					RelativePath="..\..\include\gui\main_joblist.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\gui\main_protocol.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\gui\main_threads.h"
 					>
 				</File>
 			</Filter>

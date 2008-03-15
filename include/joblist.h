@@ -26,57 +26,57 @@ namespace BonkEnc
 	class JobList : public ListBox
 	{
 		private:
-			DropArea		*droparea;
-			Text			*text;
+			DropArea			*droparea;
+			Text				*text;
 
-			Button			*button_sel_all;
-			Button			*button_sel_none;
-			Button			*button_sel_toggle;
+			Button				*button_sel_all;
+			Button				*button_sel_none;
+			Button				*button_sel_toggle;
 
-			Array<Track *>		 tracks;
+			Array<Track *>			 tracks;
 
-			Bool			 AddTrack(Track *);
+			Bool				 AddTrack(Track *);
 		public:
-						 JobList(const Point &, const Size &);
-			virtual			~JobList();
+							 JobList(const Point &, const Size &);
+			virtual				~JobList();
 
-			Int			 GetNOfTracks();
-			Track			*GetNthTrack(Int);
+			Int				 GetNOfTracks();
+			Track				*GetNthTrack(Int);
 
-			Bool			 RemoveNthTrack(Int);
-			Bool			 RemoveAllTracks();
+			Bool				 RemoveNthTrack(Int);
+			Bool				 RemoveAllTracks();
 
-			Track			*GetSelectedTrack();
+			Track				*GetSelectedTrack();
 
-			Int			 SetMetrics(const Point &, const Size &);
+			Int				 SetMetrics(const Point &, const Size &);
 
-			Void			 AddTrackByDialog();
-			Void			 AddTracksByPattern(const String &, const String &);
+			Void				 AddTrackByDialog();
+			Void				 AddTracksByPattern(const String &, const String &);
 
-			Void			 AddTrackByFileName(const String &, const String & = NIL, Bool = True);
+			Void				 AddTrackByFileName(const String &, const String & = NIL, Bool = True);
 
-			Void			 RemoveSelectedTrack();
+			Void				 RemoveSelectedTrack();
 		signals:
-			Signal1<Void, Track *>	 onSelectTrack;
-			Signal0<Void>		 onSelectNone;
+			Signal1<Void, const Track &>	 onSelectTrack;
+			Signal0<Void>			 onSelectNone;
 
-			Signal0<Void>		 onRemovePlayingTrack;
+			Signal0<Void>			 onRemovePlayingTrack;
 		slots:
-			Void			 AddTrackByDragAndDrop(const String &);
+			Void				 AddTrackByDragAndDrop(const String &);
 
-			Void			 SelectAll();
-			Void			 SelectNone();
-			Void			 ToggleSelection();
+			Void				 SelectAll();
+			Void				 SelectNone();
+			Void				 ToggleSelection();
 
-			Void			 LoadList();
-			Void			 SaveList();
+			Void				 LoadList();
+			Void				 SaveList();
 
-			Void			 OnRegister(Widget *);
-			Void			 OnUnregister(Widget *);
+			Void				 OnRegister(Widget *);
+			Void				 OnUnregister(Widget *);
 
-			Void			 OnSelectEntry();
+			Void				 OnSelectEntry();
 
-			Void			 OnChangeLanguageSettings();
+			Void				 OnChangeLanguageSettings();
 	};
 };
 

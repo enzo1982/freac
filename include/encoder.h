@@ -73,6 +73,8 @@ namespace BonkEnc
 
 			Signal2<Void, Int, Int>			 onTrackProgress;
 			Signal2<Void, Int, Int>			 onTotalProgress;
+		slots:
+			Void					 SkipTrack();
 	};
 };
 

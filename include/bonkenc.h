@@ -55,46 +55,6 @@ namespace BonkEnc
 
 			Hyperlink			*hyperlink;
 
-			CheckBox			*check_playlist;
-			CheckBox			*check_cuesheet;
-
-			Divider				*info_divider;
-			Layer				*info_background;
-			CheckBox			*info_checkbox;
-			Divider				*info_bottom;
-			Text				*info_text_artist;
-			EditBox				*info_edit_artist;
-			Text				*info_text_title;
-			EditBox				*info_edit_title;
-			Text				*info_text_album;
-			EditBox				*info_edit_album;
-			Text				*info_text_track;
-			EditBox				*info_edit_track;
-			Text				*info_text_year;
-			EditBox				*info_edit_year;
-			Text				*info_text_genre;
-			EditBox				*info_edit_genre;
-			ListBox				*info_list_genre;
-
-			Text				*enc_filename;
-			Text				*enc_time;
-			Text				*enc_percent;
-			Text				*enc_encoder;
-			Text				*enc_progress;
-			Text				*enc_outdir;
-
-			EditBox				*edb_filename;
-			EditBox				*edb_time;
-			EditBox				*edb_percent;
-			EditBox				*edb_encoder;
-			EditBox				*edb_outdir;
-
-			Button				*btn_skip;
-			Button				*btn_outdir;
-
-			Progressbar			*progress;
-			Progressbar			*progress_total;
-
 			Config				*currentConfig;
 
 			Bool				 dontUpdateInfo;

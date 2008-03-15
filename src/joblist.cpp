@@ -143,13 +143,13 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 Bool BonkEnc::JobList::RemoveAllTracks()
 {
-	if (BonkEnc::Get()->encoder->encoding)
+/*	if (BonkEnc::Get()->encoder->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
 		return False;
 	}
-
+*/
 	onRemovePlayingTrack.Emit();
 
 	for (Int i = 0; i < GetNOfTracks(); i++) delete GetNthTrack(i);
@@ -446,7 +446,7 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 		else			SelectEntry(GetNthEntry(n - 1));
 	}
 
-	if (Length() > 0)	onSelectTrack.Emit(GetSelectedTrack());
+	if (Length() > 0)	onSelectTrack.Emit(*GetSelectedTrack());
 	else			onSelectNone.Emit();
 }
 
@@ -592,7 +592,7 @@ Void BonkEnc::JobList::OnUnregister(Widget *container)
 
 Void BonkEnc::JobList::OnSelectEntry()
 {
-	onSelectTrack.Emit(GetSelectedTrack());
+	onSelectTrack.Emit(*GetSelectedTrack());
 }
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()

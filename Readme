@@ -33,6 +33,7 @@ History
 		- fixed various CDDB issues
 		- fixed HTTP proxy authentication
 		- fixed BEcmd crashes
+		- fixed support for various artists CDs
 		- improved CDDB data sanity check
 		- improved support for network files and directories
 		- NT SCSI mode is now used by default to access CD drives on NT systems

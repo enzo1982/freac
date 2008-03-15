@@ -547,6 +547,11 @@ Void BonkEnc::Encoder::Stop()
 	while (encoding) Sleep(10);
 }
 
+Void BonkEnc::Encoder::SkipTrack()
+{
+	skip_track = True;
+}
+
 String BonkEnc::Encoder::GetPlaylistFileName(Track *trackInfo)
 {
 	if (Config::Get()->enable_console) return NIL;

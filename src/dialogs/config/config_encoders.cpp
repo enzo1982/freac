@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/config/config_encoders.h>
+#include <dialogs/config/configcomponent.h>
 
 #include <dllinterfaces.h>
 #include <utilities.h>
@@ -285,23 +286,24 @@ Void BonkEnc::ConfigureEncoders::SelectDir()
 
 Void BonkEnc::ConfigureEncoders::ConfigureEncoder()
 {
-/*	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WAVE)
+	Registry	&boca = Registry::Get();
+	Component	*component = boca.CreateComponentByID(currentConfig->encoderID);
+	ConfigLayer	*layer = component->GetConfigurationLayer();
+
+	if (layer != NIL)
 	{
-		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), BonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		ConfigComponentDialog	*dlg = new ConfigComponentDialog(layer);
 
-		return;
-	}
-*/
-	Dialog	*dlg = NIL;
-
-// TODO: Open encoder configuration here
-
-	if (dlg != NIL)
-	{
 		dlg->ShowDialog();
 
 		DeleteObject(dlg);
 	}
+	else
+	{
+		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), BonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+	}
+
+	boca.DeleteComponent(component);
 }
 
 Void BonkEnc::ConfigureEncoders::ToggleOnTheFly()
