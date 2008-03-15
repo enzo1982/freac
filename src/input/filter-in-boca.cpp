@@ -44,7 +44,15 @@ BoCA::Track *BonkEnc::FilterInBoCA::GetFileInfo(const String &inFile)
 {
 	Track		*track = new Track();
 
-	component->GetStreamInfo(inFile, *track);
+	if (component->GetStreamInfo(inFile, *track) == Error())
+	{
+		delete track;
+
+		errorState = True;
+		errorString = component->GetErrorString();
+
+		return NIL;
+	}
 
 	return track;
 }
