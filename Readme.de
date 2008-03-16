@@ -1,4 +1,4 @@
-BonkEnc Version 1.0.7 Beta 2
+BonkEnc Version 1.0.7
 
 BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
@@ -12,6 +12,10 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 Geschichte
 ----------
+
+	Version 1.0.7 (März 2008)
+
+		- In vorangegangenen Versionen nicht funktionierendes easyUpdate repariert
 
 	Version 1.0.7 Beta 2 (März 2008)
 
@@ -122,7 +126,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v8.0
-		- smooth v0.8.70.0 CVS (http://www.smooth-project.org/)
+		- smooth v0.8.70.0 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
