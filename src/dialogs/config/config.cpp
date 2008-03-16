@@ -51,7 +51,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	pos.x	= 7;
 	pos.y	= 7;
-	size.cx	= 250;
+	size.cx	= 210;
 	size.cy	= 244;
 
 	list_layers		= new TreeView(pos, size);
@@ -59,6 +59,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	selectedLayer = NIL;
 
 	tree_bonkenc		= new Tree("BonkEnc");
+	tree_bonkenc->Open();
 
 	layers.Add(new ConfigureEncoders());
 	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Encoders"), layers.GetLast()));
@@ -96,9 +97,12 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
+	tree_bonkenc->SelectNthEntry(0);
+
 	list_layers->Add(tree_bonkenc);
 
 	tree_components		= new Tree("Components");
+	tree_components->Open();
 
 	tree_encoders		= new Tree("Encoders");
 	tree_decoders		= new Tree("Decoders");
@@ -158,7 +162,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 
 	mainWnd->onChangeSize.Connect(&ConfigDialog::OnChangeSize, this);
-	mainWnd->SetMinimumSize(Size(272, 302));
+	mainWnd->SetMinimumSize(Size(232, 302));
 }
 
 BonkEnc::ConfigDialog::~ConfigDialog()
@@ -213,7 +217,7 @@ Void BonkEnc::ConfigDialog::Cancel()
 
 Void BonkEnc::ConfigDialog::OnChangeSize()
 {
-	list_layers->SetSize(Size(250, mainWnd->GetHeight() - 88));
+	list_layers->SetSize(Size(210, mainWnd->GetHeight() - 88));
 }
 
 Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
@@ -222,17 +226,17 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 	{
 		mainWnd->Remove(selectedLayer);
 
-		mainWnd->SetMinimumSize(Size(272, 302));
+		mainWnd->SetMinimumSize(Size(232, 302));
 	}
 
 	if (layer != NIL)
 	{
 		selectedLayer = layer;
-		selectedLayer->SetPosition(Point(263, 29));
+		selectedLayer->SetPosition(Point(223, 29));
 
 		mainWnd->Add(selectedLayer);
-		mainWnd->SetMinimumSize(Size(Math::Max(272, selectedLayer->GetWidth() + 267), Math::Max(302, selectedLayer->GetHeight() + 74)));
-		mainWnd->SetSize(Size(Math::Max(mainWnd->GetWidth(), selectedLayer->GetWidth() + 267), Math::Max(mainWnd->GetHeight(), selectedLayer->GetHeight() + 74)));
+		mainWnd->SetMinimumSize(Size(Math::Max(232, selectedLayer->GetWidth() + 227), Math::Max(302, selectedLayer->GetHeight() + 74)));
+		mainWnd->SetSize(Size(Math::Max(mainWnd->GetWidth(), selectedLayer->GetWidth() + 227), Math::Max(mainWnd->GetHeight(), selectedLayer->GetHeight() + 74)));
 	}
 	else
 	{
