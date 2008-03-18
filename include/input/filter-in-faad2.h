@@ -33,6 +33,7 @@ namespace BonkEnc
 			Buffer<unsigned char>		 samplesBuffer;
 			Buffer<unsigned char>		 backBuffer;
 
+			Bool				 SkipID3v2Tag(InStream *);
 			Bool				 SyncOnAACHeader(InStream *);
 		public:
 							 FilterInFAAD2(Config *, Track *);

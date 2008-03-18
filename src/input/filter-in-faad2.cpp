@@ -25,6 +25,7 @@ Bool BonkEnc::FilterInFAAD2::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
 
+	SkipID3v2Tag(in);
 	SyncOnAACHeader(in);
 
 	delete in;
@@ -70,7 +71,7 @@ Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	dataBuffer.Resize(size + backBuffer.Size());
 
-	driver->ReadData((unsigned char *) dataBuffer + backBuffer.Size(), size);
+	size = driver->ReadData((unsigned char *) dataBuffer + backBuffer.Size(), size);
 
 	if (backBuffer.Size() > 0)
 	{
@@ -111,7 +112,7 @@ Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 		bytesConsumed += frameInfo.bytesconsumed;
 
-		if ((size - bytesConsumed < bytesConsumed) && (inBytes % 6144) == 0) samples = NIL;
+		if ((size - bytesConsumed < bytesConsumed) && (driver->GetPos() < driver->GetSize())) samples = NIL;
 	}
 	while (samples != NIL);
 
@@ -141,6 +142,8 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 	nFormat->bits		= 16;
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
+
+	SkipID3v2Tag(f_in);
 
 	if (!SyncOnAACHeader(f_in))
 	{
@@ -226,9 +229,39 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
+Bool BonkEnc::FilterInFAAD2::SkipID3v2Tag(InStream *in)
+{
+	/* Check for an ID3v2 tag at the beginning of the
+	 * file and skip it if it exists as LAME may crash
+	 * on unsynchronized tags.
+	 */
+	if (in->InputString(3) == "ID3")
+	{
+		in->InputNumber(2); // ID3 version
+		in->InputNumber(1); // Flags
+
+		/* Read tag size as a 4 byte unsynchronized integer.
+		 */
+		Int	 tagSize = (in->InputNumber(1) << 21) +
+				   (in->InputNumber(1) << 14) +
+				   (in->InputNumber(1) <<  7) +
+				   (in->InputNumber(1)      );
+
+		in->RelSeek(tagSize);
+
+		inBytes += (tagSize + 10);
+	}
+	else
+	{
+		in->Seek(0);
+	}
+
+	return True;
+}
+
 Bool BonkEnc::FilterInFAAD2::SyncOnAACHeader(InStream *in)
 {
-	in->Seek(0);
+	Int	 startPos = in->GetPos();
 
 	/* Try to sync on ADIF header
 	 */
@@ -245,10 +278,12 @@ Bool BonkEnc::FilterInFAAD2::SyncOnAACHeader(InStream *in)
 
 		in->RelSeek(-4);
 
+		inBytes += n;
+
 		return True;
 	}
 
-	in->Seek(0);
+	in->Seek(startPos);
 
 	/* Try to sync on ADTS header
 	 */
@@ -264,6 +299,8 @@ Bool BonkEnc::FilterInFAAD2::SyncOnAACHeader(InStream *in)
 		if (n == 1023) break;
 
 		in->RelSeek(-3);
+
+		inBytes += n;
 
 		return True;
 	}

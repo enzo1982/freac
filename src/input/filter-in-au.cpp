@@ -41,6 +41,8 @@ Bool BonkEnc::FilterInAU::Deactivate()
 
 Int BonkEnc::FilterInAU::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
+	if (driver->GetPos() == driver->GetSize()) return -1;
+
 	data.Resize(size);
 
 	driver->ReadData(data, size);

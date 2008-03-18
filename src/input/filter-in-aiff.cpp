@@ -33,6 +33,8 @@ Bool BonkEnc::FilterInAIFF::Deactivate()
 
 Int BonkEnc::FilterInAIFF::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
+	if (driver->GetPos() == driver->GetSize()) return -1;
+
 	data.Resize(size);
 
 	driver->ReadData(data, size);
