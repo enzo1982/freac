@@ -54,7 +54,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	size.cx	= 210;
 	size.cy	= 244;
 
-	list_layers		= new TreeView(pos, size);
+	list_layers		= new ListBox(pos, size);
 
 	selectedLayer = NIL;
 

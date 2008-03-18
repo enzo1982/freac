@@ -130,6 +130,8 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 
 Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 {
+	if (n == GetSelectedEntryNumber()) onSelectNone.Emit();
+
 	delete GetNthTrack(n);
 
 	tracks.Remove(GetNthEntry(n)->GetHandle());

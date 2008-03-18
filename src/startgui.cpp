@@ -154,8 +154,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tab_layer_protocol	= new LayerProtocol();
 
 	tabs_main->Add(tab_layer_joblist);
-	tabs_main->Add(tab_layer_threads);
-	tabs_main->Add(tab_layer_protocol);
+//	tabs_main->Add(tab_layer_threads);
+//	tabs_main->Add(tab_layer_protocol);
 
 	joblist			= tab_layer_joblist->GetJoblist();
 

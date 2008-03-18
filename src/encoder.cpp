@@ -439,32 +439,6 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		if (!Config::Get()->enable_console && !stop_encoding && !skip_track && step == 1)
 		{
-			Track	*entry = joblist->GetNthTrack(i - nRemoved);
-
-			if (joblist->GetSelectedTrack() != NIL)
-			{
-				if (entry == joblist->GetSelectedTrack())
-				{
-/*					dontUpdateInfo = True;
-
-					info_edit_artist->SetText("");
-					info_edit_title->SetText("");
-					info_edit_album->SetText("");
-					info_edit_track->SetText("");
-					info_edit_year->SetText("");
-					info_edit_genre->SetText("");
-
-					info_edit_artist->Deactivate();
-					info_edit_title->Deactivate();
-					info_edit_album->Deactivate();
-					info_edit_track->Deactivate();
-					info_edit_year->Deactivate();
-					info_edit_genre->Deactivate();
-
-					dontUpdateInfo = False;
-*/				}
-			}
-
 			joblist->RemoveNthTrack(i - nRemoved);
 
 			nRemoved++;

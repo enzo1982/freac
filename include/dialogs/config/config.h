@@ -31,7 +31,7 @@ namespace BonkEnc
 
 			Divider			*divbar;
 
-			TreeView		*list_layers;
+			ListBox			*list_layers;
 			Tree			*tree_bonkenc;
 			Tree			*tree_components;
 			Tree			*tree_encoders;
