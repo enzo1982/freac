@@ -19,6 +19,7 @@ History
 		- fixed possibly incomplete FLAC decoding
 		- fixed decoding of AAC files with ID3v2 tags
 		- fixed easyUpdate not working in previous releases
+		- some other fixes
 
 	Version 1.0.7 Beta 2 (March 2008)
 

@@ -19,6 +19,7 @@ Geschichte
 		- Mögliche unvollständige FLAC-Dekodierung behoben
 		- Fehler beim Einlesen von AAC-Dateien mit ID3v2-Tags behoben
 		- In vorangegangenen Versionen nicht funktionierendes easyUpdate repariert
+		- Einige weitere Korrekturen
 
 	Version 1.0.7 Beta 2 (März 2008)
 

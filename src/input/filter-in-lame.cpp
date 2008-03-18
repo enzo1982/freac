@@ -49,7 +49,7 @@ Int BonkEnc::FilterInLAME::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	data.Resize(size);
 
-	driver->ReadData(data, size);
+	size = driver->ReadData(data, size);
 
 	pcm_l.Resize(size * 64);
 	pcm_r.Resize(size * 64);

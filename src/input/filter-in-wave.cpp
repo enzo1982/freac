@@ -56,7 +56,7 @@ Int BonkEnc::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	data.Resize(size);
 
-	driver->ReadData(data, size);
+	size = driver->ReadData(data, size);
 
 	return size;
 }

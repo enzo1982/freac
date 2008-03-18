@@ -104,7 +104,7 @@ Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	buffer = ex_ogg_sync_buffer(&oy, size);
 
-	driver->ReadData((unsigned char *) buffer, size);
+	size = driver->ReadData((unsigned char *) buffer, size);
 
 	ex_ogg_sync_wrote(&oy, size);
 
