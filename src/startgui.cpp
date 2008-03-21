@@ -234,7 +234,9 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 		encoder->Stop();
 	}
 
-//	if (player->playing) StopPlayback();
+	/* Stop playback if playing a track
+	 */
+	tab_layer_joblist->StopPlayback();
 
 	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
 
@@ -491,27 +493,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 	Track	*format = joblist->GetSelectedTrack();
 
-	if (format != NIL)
-	{
-		dontUpdateInfo = True;
-
-/*		info_edit_artist->SetText(format->artist);
-		info_edit_title->SetText(format->title);
-		info_edit_album->SetText(format->album);
-
-		info_edit_track->SetText("");
-
-		if (format->track > 0 && format->track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(format->track)));
-		else if (format->track >= 10)			info_edit_track->SetText(String::FromInt(format->track));
-
-		info_edit_year->SetText("");
-
-		if (format->year > 0) info_edit_year->SetText(String::FromInt(format->year));
-
-		info_edit_genre->SetText(format->genre);
-*/
-		dontUpdateInfo = False;
-	}
+	if (format != NIL) joblist->OnSelectEntry();
 }
 
 Void BonkEnc::BonkEncGUI::QueryCDDBLater()
@@ -729,7 +711,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	}
 
-//	if (currentConfig->nOfEncoders > 0)
+	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0)
 	{
 		menu_encode->AddEntry();
 		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
@@ -847,7 +829,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), /*ENCODER_WAVE > 0 ?*/ menu_encoders /*: NIL*/);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
 	entry->onAction.Connect(&BonkEncGUI::Encode, this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 

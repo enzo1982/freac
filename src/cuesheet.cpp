@@ -30,14 +30,18 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 	String		 format = String::SetOutputFormat("UTF-8");
 	OutStream	*file	= new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
 	Bool		 album	= True;
+	Bool		 oneFile= True;
 
 	for (Int c = 0; c < fileNames.Length() - 1; c++)
 	{
 		if (trackArtists.GetNth(c) != trackArtists.GetNth(c + 1) || trackAlbums.GetNth(c) != trackAlbums.GetNth(c + 1))
 		{
 			album = False;
+		}
 
-			break;
+		if (fileNames.GetNth(c) != fileNames.GetNth(c + 1))
+		{
+			oneFile = False;
 		}
 	}
 
@@ -47,13 +51,19 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 		file->OutputLine(String("TITLE \"").Append(trackAlbums.GetFirst()).Append("\""));
 	}
 
+	if (oneFile)
+	{
+		file->OutputLine(String("FILE \"").Append(fileNames.GetNth(0)).Append("\" WAVE"));
+	}
+
 	for (Int i = 0; i < fileNames.Length(); i++)
 	{
 		Int	 minutes =  trackOffsets.GetNth(i)					   / (75 * 60);
 		Int	 seconds = (trackOffsets.GetNth(i)		    - (minutes * 60 * 75)) /  75      ;
 		Int	 frames  =  trackOffsets.GetNth(i) - (seconds * 75) - (minutes * 60 * 75)	      ;
 
-		file->OutputLine(String("FILE \"").Append(fileNames.GetNth(i)).Append("\" WAVE"));
+		if (!oneFile) file->OutputLine(String("FILE \"").Append(fileNames.GetNth(i)).Append("\" WAVE"));
+
 		file->OutputLine(String("  TRACK ").Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(" AUDIO"));
 		file->OutputLine(String("    TITLE \"").Append(trackTitles.GetNth(i)).Append("\""));
 		file->OutputLine(String("    PERFORMER \"").Append(trackArtists.GetNth(i)).Append("\""));

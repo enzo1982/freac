@@ -35,7 +35,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Point	 pos;
 	Size	 size;
 
-//	if (DLLInterfaces::winamp_out_modules.Length() > 0)
+	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
 		pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
 		pos.y = -1;
@@ -356,7 +356,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Add(check_cuesheet);
 	Add(check_playlist);
 
-//	if (DLLInterfaces::winamp_out_modules.Length() > 0)
+	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
 		Add(button_play);
 		Add(button_pause);
@@ -441,7 +441,7 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 	DeleteObject(check_cuesheet);
 	DeleteObject(check_playlist);
 
-//	if (DLLInterfaces::winamp_out_modules.Length() > 0)
+	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
 		DeleteObject(button_play);
 		DeleteObject(button_pause);
@@ -552,7 +552,7 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 
 	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
 	{
-//		if (DLLInterfaces::winamp_out_modules.Length() > 0)
+		if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 		{
 			button_play->Hide();
 			button_pause->Hide();
@@ -749,7 +749,7 @@ Void BonkEnc::LayerJoblist::FillMenus()
 {
 	menu_trackmenu->RemoveAllEntries();
 
-//	if (DLLInterfaces::winamp_out_modules.Length() > 0)
+	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
 		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&LayerJoblist::PlaySelectedItem, this);
 		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&LayerJoblist::StopPlayback, this);

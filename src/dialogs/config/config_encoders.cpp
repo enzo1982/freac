@@ -287,7 +287,21 @@ Void BonkEnc::ConfigureEncoders::SelectDir()
 Void BonkEnc::ConfigureEncoders::ConfigureEncoder()
 {
 	Registry	&boca = Registry::Get();
-	Component	*component = boca.CreateComponentByID(currentConfig->encoderID);
+	String		 encoderID;
+
+	for (Int i = 0, n = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
+
+		if (n++ == combo_encoder->GetSelectedEntryNumber())
+		{
+			encoderID = boca.GetComponentID(i);
+
+			break;
+		}
+	}
+
+	Component	*component = boca.CreateComponentByID(encoderID);
 	ConfigLayer	*layer = component->GetConfigurationLayer();
 
 	if (layer != NIL)
