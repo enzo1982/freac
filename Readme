@@ -15,6 +15,7 @@ History
 
 	Version 1.0.7 (March 2008)
 
+		- fixed creation of cuesheets for multiple tracks in a single file
 		- fixed crash on trying to decode invalid OGG files
 		- fixed possibly incomplete FLAC decoding
 		- fixed decoding of AAC files with ID3v2 tags

@@ -15,6 +15,7 @@ Geschichte
 
 	Version 1.0.7 (März 2008)
 
+		- Fehler in Cuesheets für mehrere Titel in einer Datei behoben
 		- Absturz beim Versuch, ungültige OGG-Dateien zu dekodieren, behoben
 		- Mögliche unvollständige FLAC-Dekodierung behoben
 		- Fehler beim Einlesen von AAC-Dateien mit ID3v2-Tags behoben
