@@ -96,7 +96,7 @@ Int BonkEnc::Debug::LeaveMethod()
 
 	file_out->OutputString(String("Leaving method \'").Append(methods.GetLast()).Append("\'.\n"));
 
-	methods.Remove(methods.GetNthIndex(methods.GetNOfEntries() - 1));
+	methods.Remove(methods.GetNthIndex(methods.Length() - 1));
 #endif
 
 	return Success();
