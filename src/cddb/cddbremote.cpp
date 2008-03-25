@@ -73,7 +73,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			Net::Protocols::HTTP	 http(String("http://").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append(config->freedb_query_path));
 
 			http.SetParameter("cmd", String(command).Replace(" ", "+"));
-			http.SetParameter("hello", String("user+").Append(hostNameBuffer).Append("+BonkEnc+").Append(BonkEnc::cddbVersion));
+			http.SetParameter("hello", String("user ").Append(hostNameBuffer).Append(" BonkEnc ").Append(BonkEnc::cddbVersion).Replace(" ", "+"));
 			http.SetParameter("proto", "6");
 
 			http.SetHeaderField("User-Email", config->freedb_email);
@@ -104,6 +104,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			in = new InStream(STREAM_BUFFER, httpResultBuffer, httpResultBuffer.Size());
 
 			str = in->InputLine();
+			debug_out->OutputLine(str);
 
 			if (str.StartsWith("210")) connected = true;
 			else			   delete in;

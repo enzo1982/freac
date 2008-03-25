@@ -30,8 +30,8 @@ BoCA::I18n		*BonkEnc::BonkEnc::i18n = NIL;
 BonkEnc::Debug		*BonkEnc::debug_out;
 
 String	 BonkEnc::BonkEnc::version	= "CVS 20080325";
-String	 BonkEnc::BonkEnc::shortVersion	= "CVS 20080325";
-String	 BonkEnc::BonkEnc::cddbVersion	= "CVS 20080325";
+String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
 

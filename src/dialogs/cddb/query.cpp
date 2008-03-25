@@ -235,7 +235,5 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 	prog_status->SetValue(100);
 	text_status->SetText("");
 
-	mainWnd->Close();
-
 	return True;
 }

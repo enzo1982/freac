@@ -51,66 +51,11 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
 
-		combo_encoder->AddEntry(String(boca.GetComponentName(i)).Append(" v").Append(boca.GetComponentVersion(i)));
+		combo_encoder->AddEntry(boca.GetComponentName(i));
 
 		if (currentConfig->encoderID == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
 	}
 
-/*	if (currentConfig->enable_blade)
-	{
-		String		 bladeVersion = "";
-		BE_VERSION	 beVer;
-
-		ex_beVersion(&beVer);
-
-		bladeVersion.Append("v").Append(String::FromInt(beVer.byMajorVersion)).Append(".").Append(String::FromInt(beVer.byMinorVersion));
-
-		combo_encoder->AddEntry(String("BladeEnc MP3 Encoder ").Append(bladeVersion));
-
-		combo_encoder->AddEntry("BladeEnc MP3 Encoder");
-	}
-
-	if (currentConfig->enable_bonk)		combo_encoder->AddEntry(String("Bonk Audio Encoder v").Append(ex_bonk_get_version_string()));
-	if (currentConfig->enable_bonk)		combo_encoder->AddEntry("Bonk Audio Encoder");
-
-	if (currentConfig->enable_faac)
-	{
-		String		 faacVersion = "";
-		UnsignedInt	 samples;
-		UnsignedInt	 buffer_size;
-		faacEncHandle	 faac = ex_faacEncOpen(44100, 2, &samples, &buffer_size);
-
-		faacVersion.Append("v").Append(ex_faacEncGetCurrentConfiguration(faac)->name);
-
-		ex_faacEncClose(faac);
-
-		combo_encoder->AddEntry(String("FAAC MP4/AAC Encoder ").Append(faacVersion));
-
-		combo_encoder->AddEntry("FAAC MP4/AAC Encoder");
-	}
-
-	if (currentConfig->enable_flac)		combo_encoder->AddEntry(String("FLAC Audio Encoder v").Append(*ex_FLAC__VERSION_STRING));
-	if (currentConfig->enable_flac)		combo_encoder->AddEntry("FLAC Audio Encoder");
-
-	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME MP3 Encoder v").Append(ex_get_lame_short_version()));
-	if (currentConfig->enable_lame)		combo_encoder->AddEntry("LAME MP3 Encoder");
-
-	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.1.2"));
-	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry("Ogg Vorbis Encoder");
-
-	if (currentConfig->enable_tvq)
-	{
-		char		 tvqVersionID[13];
-
-		ex_TvqGetVersionID(V2, tvqVersionID);
-
-		combo_encoder->AddEntry(String("TwinVQ VQF Encoder v").Append(tvqVersionID + 4));
-
-		combo_encoder->AddEntry("TwinVQ VQF Encoder");
-	}
-
-	combo_encoder->AddEntry(String("WAVE Out Filter v1.0"));
-*/
 	pos.y	-= 1;
 	pos.x	+= 194;
 	size.cx	= 130;
