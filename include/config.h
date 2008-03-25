@@ -25,6 +25,8 @@ namespace BonkEnc
 			 */
 			static Config	*instance;
 
+			Bool		 saveSettingsOnExit;
+
 					 Config();
 					~Config();
 		public:
@@ -131,6 +133,8 @@ namespace BonkEnc
 
 			Bool		 LoadSettings();
 			Bool		 SaveSettings();
+
+			Void		 SetSaveSettingsOnExit(Bool);
 
 			/* Returns a new or existing instance of Config
 			 */

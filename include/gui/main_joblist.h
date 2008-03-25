@@ -33,7 +33,7 @@ namespace BonkEnc
 	class LayerJoblist : public Layer
 	{
 		private:
-			S::I18n::Translator	*i18n;
+			BoCA::I18n		*i18n;
 			Config			*currentConfig;
 
 			CheckBox		*check_playlist;

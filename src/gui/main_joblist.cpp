@@ -20,7 +20,7 @@
 
 BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
-	i18n		= BonkEnc::i18n;
+	i18n		= BoCA::I18n::Get();
 	currentConfig	= Config::Get();
 
 	player		= new Playback();
@@ -181,7 +181,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	menu_edit_artist->onOpenPopupMenu.Connect(&LayerJoblist::ToggleEditPopup, this);
 	menu_edit_artist->onClosePopupMenu.Connect(&LayerJoblist::ToggleEditPopup, this);
 
-	htsp_edit_artist = new Hotspot(Point(0, -7), Size(info_edit_artist->GetWidth(), info_edit_artist->GetHeight() + 7));
+	htsp_edit_artist = new IndependentHotspot(Point(0, -7), Size(info_edit_artist->GetWidth(), info_edit_artist->GetHeight() + 7));
 	htsp_edit_artist->onMouseOver.Connect(&MicroMenu::Show, menu_edit_artist);
 	htsp_edit_artist->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_artist);
 	htsp_edit_artist->onActivate.Connect(&MicroMenu::Hide, menu_edit_artist);
@@ -198,7 +198,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	menu_edit_album->onOpenPopupMenu.Connect(&LayerJoblist::ToggleEditPopup, this);
 	menu_edit_album->onClosePopupMenu.Connect(&LayerJoblist::ToggleEditPopup, this);
 
-	htsp_edit_album = new Hotspot(Point(0, -7), Size(info_edit_album->GetWidth(), info_edit_album->GetHeight() + 7));
+	htsp_edit_album = new IndependentHotspot(Point(0, -7), Size(info_edit_album->GetWidth(), info_edit_album->GetHeight() + 7));
 	htsp_edit_album->onMouseOver.Connect(&MicroMenu::Show, menu_edit_album);
 	htsp_edit_album->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_album);
 	htsp_edit_album->onActivate.Connect(&MicroMenu::Hide, menu_edit_album);
@@ -228,7 +228,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	menu_edit_title->onOpenPopupMenu.Connect(&LayerJoblist::ToggleEditPopup, this);
 	menu_edit_title->onClosePopupMenu.Connect(&LayerJoblist::ToggleEditPopup, this);
 
-	htsp_edit_title = new Hotspot(Point(0, -7), Size(info_edit_title->GetWidth(), info_edit_title->GetHeight() + 7));
+	htsp_edit_title = new IndependentHotspot(Point(0, -7), Size(info_edit_title->GetWidth(), info_edit_title->GetHeight() + 7));
 	htsp_edit_title->onMouseOver.Connect(&MicroMenu::Show, menu_edit_title);
 	htsp_edit_title->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_title);
 	htsp_edit_title->onActivate.Connect(&MicroMenu::Hide, menu_edit_title);
@@ -262,7 +262,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	menu_edit_year->onOpenPopupMenu.Connect(&LayerJoblist::ToggleEditPopup, this);
 	menu_edit_year->onClosePopupMenu.Connect(&LayerJoblist::ToggleEditPopup, this);
 
-	htsp_edit_year = new Hotspot(Point(0, -7), Size(info_edit_year->GetWidth(), info_edit_year->GetHeight() + 7));
+	htsp_edit_year = new IndependentHotspot(Point(0, -7), Size(info_edit_year->GetWidth(), info_edit_year->GetHeight() + 7));
 	htsp_edit_year->onMouseOver.Connect(&MicroMenu::Show, menu_edit_year);
 	htsp_edit_year->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_year);
 	htsp_edit_year->onActivate.Connect(&MicroMenu::Hide, menu_edit_year);
@@ -296,7 +296,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	menu_case		= new PopupMenu();
 	menu_case_all		= new PopupMenu();
 
-	htsp_edit_genre = new Hotspot(Point(0, -7), Size(info_edit_genre->GetWidth(), info_edit_genre->GetHeight() + 7));
+	htsp_edit_genre = new IndependentHotspot(Point(0, -7), Size(info_edit_genre->GetWidth(), info_edit_genre->GetHeight() + 7));
 	htsp_edit_genre->onMouseOver.Connect(&MicroMenu::Show, menu_edit_genre);
 	htsp_edit_genre->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_genre);
 	htsp_edit_genre->onActivate.Connect(&MicroMenu::Hide, menu_edit_genre);

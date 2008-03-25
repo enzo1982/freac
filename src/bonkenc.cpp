@@ -25,15 +25,13 @@
 
 #include <input/filter-in-cdrip.h>
 
-BonkEnc::BonkEnc *BonkEnc::BonkEnc::instance = NIL;
-
-S::I18n::Translator	*BonkEnc::BonkEnc::i18n = NIL;
-
+BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
+BoCA::I18n		*BonkEnc::BonkEnc::i18n = NIL;
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version	= "v1.1 Beta 1";
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1";
+String	 BonkEnc::BonkEnc::version	= "CVS 20080325";
+String	 BonkEnc::BonkEnc::shortVersion	= "CVS 20080325";
+String	 BonkEnc::BonkEnc::cddbVersion	= "CVS 20080325";
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
 
@@ -43,15 +41,13 @@ String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.x
 BonkEnc::BonkEnc::BonkEnc()
 {
 	instance = this;
+	i18n = BoCA::I18n::Get();
 
 	CoInitialize(NIL);
 
 	encoder = new Encoder();
 
 	currentConfig = Config::Get();
-
-	i18n = new S::I18n::Translator("BonkEnc");
-	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@bonkenc.org>", "http://www.bonkenc.org/", False);
 
 	if (DLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;
 	else						currentConfig->enable_cdrip = True;
@@ -72,8 +68,6 @@ BonkEnc::BonkEnc::~BonkEnc()
 	/* Cleanup deletable objects before deleting translator.
 	 */
 	Object::ObjectCleanup();
-
-	delete i18n;
 
 	Config::Free();
 

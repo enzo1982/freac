@@ -19,8 +19,10 @@ namespace BonkEnc
 	class ConfigDialog : public Dialog
 	{
 		private:
+			Array<AS::Component *>	 components;
 			Array<ConfigEntry *>	 entries;
 			Array<ConfigLayer *>	 layers;
+
 			ConfigLayer		*selectedLayer;
 
 			Window			*mainWnd;

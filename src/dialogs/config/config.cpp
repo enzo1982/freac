@@ -119,6 +119,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 		if (component->GetConfigurationLayer() != NIL)
 		{
+			components.Add(component);
 			layers.Add(component->GetConfigurationLayer());
 			entries.Add(new ConfigEntry(component->GetName(), layers.GetLast()));
 			entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
@@ -137,8 +138,6 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 			tree->Add(entries.GetLast());
 		}
-
-		boca.DeleteComponent(component);
 	}
 
 	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);
@@ -174,6 +173,17 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 
 	for (Int i = 0; i < ownLayers; i++)  DeleteObject(layers.GetNth(i));
 	for (Int i = 0; i < entries.Length(); i++) DeleteObject(entries.GetNth(i));
+
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0; i < components.Length(); i++)
+	{
+		Component	*component = components.GetNth(i);
+
+		component->FreeConfigurationLayer();
+
+		boca.DeleteComponent(component);
+	}
 
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);

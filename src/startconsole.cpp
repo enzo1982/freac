@@ -14,6 +14,8 @@
 
 using namespace smooth::System;
 
+using namespace BoCA::AS;
+
 Int StartConsole(const Array<String> &args)
 {
 	BonkEnc::debug_out = new BonkEnc::Debug("BonkEnc.log");
@@ -56,6 +58,13 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	if (currentConfig->language == "") i18n->ActivateLanguage("internal");
 
 	i18n->ActivateLanguage(currentConfig->language);
+
+	BoCA::Config	*componentsConfig = BoCA::Config::Get();
+
+	/* Don't save configuration settings set via command line.
+	 */
+	currentConfig->SetSaveSettingsOnExit(False);
+	componentsConfig->SetSaveSettingsOnExit(False);
 
 	InitCDRip();
 
@@ -107,9 +116,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	Console::SetTitle(String("BonkEnc ").Append(BonkEnc::version));
 
+	encoderID = encoderID.ToUpper();
+
 	if (files.Length() == 0 ||
 	    helpenc != NIL ||
-	    !(encoderID == "LAME" || encoderID == "VORBIS" || encoderID == "BONK" || encoderID == "BLADE" || encoderID == "FAAC" || encoderID == "FLAC" || encoderID == "TVQ" || encoderID == "WAVE" || encoderID == "lame" || encoderID == "vorbis" || encoderID == "bonk" || encoderID == "blade" || encoderID == "faac" || encoderID == "flac" || encoderID == "tvq" || encoderID == "wave") ||
+	    !(encoderID == "LAME" || encoderID == "VORBIS" || encoderID == "BONK" || encoderID == "BLADE" || encoderID == "FAAC" || encoderID == "FLAC" || encoderID == "TVQ" || encoderID == "WAVE") ||
 	    (files.Length() > 1 && outfile != ""))
 	{
 		ShowHelp(helpenc);
@@ -119,22 +130,23 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	joblist	= new JobList(Point(0, 0), Size(0, 0));
 
-	bool	 broken = false;
+	Registry	&boca = Registry::Get();
+	Bool		 broken = false;
 
-/*	if (((encoderID == "LAME"   || encoderID == "lame")	&& !currentConfig->enable_lame)   ||
-	    ((encoderID == "VORBIS" || encoderID == "vorbis")	&& !currentConfig->enable_vorbis) ||
-	    ((encoderID == "BONK"   || encoderID == "bonk")	&& !currentConfig->enable_bonk)   ||
-	    ((encoderID == "BLADE"  || encoderID == "blade")	&& !currentConfig->enable_blade)  ||
-	    ((encoderID == "FAAC"   || encoderID == "faac")	&& !currentConfig->enable_faac)   ||
-	    ((encoderID == "FLAC"   || encoderID == "flac")	&& !currentConfig->enable_flac)   ||
-	    ((encoderID == "TVQ"    || encoderID == "tvq")	&& !currentConfig->enable_tvq))
+	if (((encoderID == "LAME")	&& !boca.ComponentExists("lame-out"))	  ||
+	    ((encoderID == "VORBIS")	&& !boca.ComponentExists("vorbis-out"))   ||
+	    ((encoderID == "BONK")	&& !boca.ComponentExists("bonk-out"))	  ||
+	    ((encoderID == "BLADE")	&& !boca.ComponentExists("bladeenc-out")) ||
+	    ((encoderID == "FAAC")	&& !boca.ComponentExists("faac-out"))	  ||
+	    ((encoderID == "FLAC")	&& !boca.ComponentExists("flac-out"))	  ||
+	    ((encoderID == "TVQ")	&& !boca.ComponentExists("twinvq-out")))
 	{
 		Console::OutputString(String("Encoder ").Append(encoderID).Append(" is not available!\n\n"));
 
 		broken = true;
 	}
-*/
-	if (encoderID == "LAME" || encoderID == "lame")
+
+	if (encoderID == "LAME")
 	{
 		String	 bitrate = "192";
 		String	 quality = "5";
@@ -144,34 +156,34 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		ScanForParameter("-q", &quality);
 		ScanForParameter("-m", &mode);
 
-/*		currentConfig->lame_preset = 0;
-		currentConfig->lame_set_bitrate = True;
+		componentsConfig->SetIntValue("LAME", "Preset", 0);
+		componentsConfig->SetIntValue("LAME", "SetBitrate", True);
 
-		currentConfig->lame_bitrate    = Math::Max(0, Math::Min(320, bitrate.ToInt()));
-		currentConfig->lame_abrbitrate = Math::Max(0, Math::Min(320, bitrate.ToInt()));
-		currentConfig->lame_vbrquality = Math::Max(0, Math::Min(9, quality.ToInt()));
+		componentsConfig->SetIntValue("LAME", "Bitrate", Math::Max(0, Math::Min(320, bitrate.ToInt())));
+		componentsConfig->SetIntValue("LAME", "ABRBitrate", Math::Max(0, Math::Min(320, bitrate.ToInt())));
+		componentsConfig->SetIntValue("LAME", "VBRQuality", Math::Max(0, Math::Min(9, quality.ToInt())));
 
-		if (mode == "VBR" || mode == "vbr")	 currentConfig->lame_vbrmode = 2;
-		else if (mode == "ABR" || mode == "abr") currentConfig->lame_vbrmode = 3;
-		else if (mode == "CBR" || mode == "cbr") currentConfig->lame_vbrmode = 0;
-*/
+		if	(mode == "VBR" || mode == "vbr") componentsConfig->SetIntValue("LAME", "VBRMode", 2);
+		else if (mode == "ABR" || mode == "abr") componentsConfig->SetIntValue("LAME", "VBRMode", 3);
+		else if (mode == "CBR" || mode == "cbr") componentsConfig->SetIntValue("LAME", "VBRMode", 0);
+
 		currentConfig->encoderID = "lame-out";
 	}
-	else if (encoderID == "VORBIS" || encoderID == "vorbis")
+	else if (encoderID == "VORBIS")
 	{
 		String	 bitrate = "192";
 		String	 quality = "60";
 
-/*		if (ScanForParameter("-b", &bitrate))		currentConfig->vorbis_mode = 1;
-		else if (ScanForParameter("-q", &quality))	currentConfig->vorbis_mode = 0;
-		else						currentConfig->vorbis_mode = 0;
+		if (ScanForParameter("-b", &bitrate))		componentsConfig->SetIntValue("Vorbis", "Mode", 1);
+		else if (ScanForParameter("-q", &quality))	componentsConfig->SetIntValue("Vorbis", "Mode", 0);
+		else						componentsConfig->SetIntValue("Vorbis", "Mode", 0);
 
-		currentConfig->vorbis_quality = Math::Max(0, Math::Min(100, quality.ToInt()));
-		currentConfig->vorbis_bitrate = Math::Max(45, Math::Min(500, bitrate.ToInt()));
-*/
+		componentsConfig->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, quality.ToInt())));
+		componentsConfig->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, bitrate.ToInt())));
+
 		currentConfig->encoderID = "vorbis-out";
 	}
-	else if (encoderID == "BONK" || encoderID == "bonk")
+	else if (encoderID == "BONK")
 	{
 		String	 quantization = "0.4";
 		String	 predictor    = "32";
@@ -181,42 +193,42 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		ScanForParameter("-p", &predictor);
 		ScanForParameter("-r", &downsampling);
 
-/*		currentConfig->bonk_jstereo	 = ScanForParameter("-js", NULL);
-		currentConfig->bonk_lossless	 = ScanForParameter("-lossless", NULL);
+		componentsConfig->SetIntValue("Bonk", "JointStereo", ScanForParameter("-js", NULL));
+		componentsConfig->SetIntValue("Bonk", "Lossless", ScanForParameter("-lossless", NULL));
 
-		currentConfig->bonk_quantization = Math::Max(0, Math::Min(40, Math::Round(quantization.ToFloat() * 20)));
-		currentConfig->bonk_predictor	 = Math::Max(0, Math::Min(512, predictor.ToInt()));
-		currentConfig->bonk_downsampling = Math::Max(0, Math::Min(10, downsampling.ToInt()));
-*/
+		componentsConfig->SetIntValue("Bonk", "Quantization", Math::Max(0, Math::Min(40, Math::Round(quantization.ToFloat() * 20))));
+		componentsConfig->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, predictor.ToInt())));
+		componentsConfig->SetIntValue("Bonk", "Downsampling", Math::Max(0, Math::Min(10, downsampling.ToInt())));
+
 		currentConfig->encoderID = "bonk-out";
 	}
-	else if (encoderID == "BLADE" || encoderID == "blade")
+	else if (encoderID == "BLADE")
 	{
 		String	 bitrate = "192";
 
 		ScanForParameter("-b", &bitrate);
 
-//		currentConfig->blade_bitrate = Math::Max(32, Math::Min(320, bitrate.ToInt()));
+		componentsConfig->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, bitrate.ToInt())));
 
 		currentConfig->encoderID = "blade-out";
 	}
-	else if (encoderID == "FAAC" || encoderID == "faac")
+	else if (encoderID == "FAAC")
 	{
 		String	 bitrate = "64";
 		String	 quality = "100";
 
-/*		if (ScanForParameter("-b", &bitrate))		currentConfig->faac_set_quality = False;
-		else if (ScanForParameter("-q", &quality))	currentConfig->faac_set_quality = True;
-		else						currentConfig->faac_set_quality = True;
+		if (ScanForParameter("-b", &bitrate))		componentsConfig->SetIntValue("FAAC", "SetQuality", False);
+		else if (ScanForParameter("-q", &quality))	componentsConfig->SetIntValue("FAAC", "SetQuality", True);
+		else						componentsConfig->SetIntValue("FAAC", "SetQuality", True);
 
-		currentConfig->faac_enable_mp4	= ScanForParameter("-mp4", NULL);
+		componentsConfig->SetIntValue("FAAC", "MP4Container", ScanForParameter("-mp4", NULL));
 
-		currentConfig->faac_aac_quality	= Math::Max(10, Math::Min(500, quality.ToInt()));
-		currentConfig->faac_bitrate	= Math::Max(8, Math::Min(256, bitrate.ToInt()));
-*/
+		componentsConfig->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, quality.ToInt())));
+		componentsConfig->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, bitrate.ToInt())));
+
 		currentConfig->encoderID = "faac-out";
 	}
-	else if (encoderID == "FLAC" || encoderID == "flac")
+	else if (encoderID == "FLAC")
 	{
 		String	 blocksize = "4608";
 		String	 lpc = "8";
@@ -236,21 +248,21 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		for (i = 0; i < rice.Length(); i++)	{ if (rice[i] == ',') break; minrice[i] = rice[i]; }
 		for (j = i + 1; j < rice.Length(); j++)	{ maxrice[j - i - 1] = rice[j]; }
 
-/*		currentConfig->flac_preset = -1;
+		componentsConfig->SetIntValue("FLAC", "Preset", -1);
 
-		currentConfig->flac_do_mid_side_stereo		 = ScanForParameter("-m", NULL);
-		currentConfig->flac_do_exhaustive_model_search	 = ScanForParameter("-e", NULL);
-		currentConfig->flac_do_qlp_coeff_prec_search	 = ScanForParameter("-p", NULL);
+		componentsConfig->SetIntValue("FLAC", "DoMidSideStereo", ScanForParameter("-m", NULL));
+		componentsConfig->SetIntValue("FLAC", "DoExhaustiveModelSearch", ScanForParameter("-e", NULL));
+		componentsConfig->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", ScanForParameter("-p", NULL));
 
-		currentConfig->flac_blocksize			 = Math::Max(192, Math::Min(32768, blocksize.ToInt()));
-		currentConfig->flac_max_lpc_order		 = Math::Max(0, Math::Min(32, lpc.ToInt()));
-		currentConfig->flac_qlp_coeff_precision		 = Math::Max(0, Math::Min(16, qlp.ToInt()));
-		currentConfig->flac_min_residual_partition_order = Math::Max(0, Math::Min(16, minrice.ToInt()));
-		currentConfig->flac_max_residual_partition_order = Math::Max(0, Math::Min(16, maxrice.ToInt()));
-*/
+		componentsConfig->SetIntValue("FLAC", "Blocksize", Math::Max(192, Math::Min(32768, blocksize.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "MaxLPCOrder", Math::Max(0, Math::Min(32, lpc.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "QLPCoeffPrecision", Math::Max(0, Math::Min(16, qlp.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "MinResidualPartitionOrder", Math::Max(0, Math::Min(16, minrice.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "MaxResidualPartitionOrder", Math::Max(0, Math::Min(16, maxrice.ToInt())));
+
 		currentConfig->encoderID = "flac-out";
 	}
-	else if (encoderID == "TVQ" || encoderID == "tvq")
+	else if (encoderID == "TVQ")
 	{
 		String	 bitrate    = "48";
 		String	 candidates = "32";
@@ -258,12 +270,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		ScanForParameter("-b", &bitrate);
 		ScanForParameter("-c", &candidates);
 
-/*		currentConfig->tvq_presel_candidates = Math::Max(4, Math::Min(32, candidates.ToInt()));
-		currentConfig->tvq_bitrate	     = Math::Max(24, Math::Min(48, bitrate.ToInt()));
-*/
+		componentsConfig->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, candidates.ToInt())));
+		componentsConfig->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, bitrate.ToInt())));
+
 		currentConfig->encoderID = "twinvq-out";
 	}
-	else if (encoderID == "WAVE" || encoderID == "wave")
+	else if (encoderID == "WAVE")
 	{
 		currentConfig->encoderID = "wave-out";
 	}
@@ -314,7 +326,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				delete in;
 			}
 
-/*			if ((files.GetNth(i).EndsWith(".mp3") && !currentConfig->enable_lame) || (files.GetNth(i).EndsWith(".ogg") && !currentConfig->enable_vorbis) || (files.GetNth(i).EndsWith(".cda") && !currentConfig->enable_cdrip))
+			if ((files.GetNth(i).EndsWith(".mp3") && !boca.ComponentExists("lame-out"))   ||
+			    (files.GetNth(i).EndsWith(".ogg") && !boca.ComponentExists("vorbis-out")) ||
+			    (files.GetNth(i).EndsWith(".cda") && !currentConfig->enable_cdrip))
 			{
 				Console::OutputString(String("Cannot process file: ").Append(currentFile).Append("\n"));
 
@@ -322,7 +336,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 				continue;
 			}
-*/
+
 			joblist->AddTrackByFileName(files.GetNth(i), outfile);
 
 			if (joblist->GetNOfTracks() > 0)
@@ -370,15 +384,15 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 		prevParam	= param;
 		param		= args.GetNth(i);
 
-		if (param[0] != '-' && (prevParam[0] != '-' ||
-					prevParam == "-quiet" ||
-					prevParam == "-cddb" ||
-					prevParam == "-js" ||
+		if (param[0] != '-' && (prevParam[0] != '-'	 ||
+					prevParam == "-quiet"	 ||
+					prevParam == "-cddb"	 ||
+					prevParam == "-js"	 ||
 					prevParam == "-lossless" ||
-					prevParam == "-mp4" ||
-					prevParam == "-m" ||
-					prevParam == "-extc" ||
-					prevParam == "-extm ||")) (*files).Add(param);
+					prevParam == "-mp4"	 ||
+					prevParam == "-m"	 ||
+					prevParam == "-extc"	 ||
+					prevParam == "-extm")) (*files).Add(param);
 	}
 }
 

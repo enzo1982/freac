@@ -68,7 +68,7 @@ namespace BonkEnc
 			static String			 cddbMode;
 			static String			 updatePath;
 
-			static S::I18n::Translator	*i18n;
+			static BoCA::I18n		*i18n;
 
 			JobList				*joblist;
 

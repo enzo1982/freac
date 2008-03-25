@@ -15,16 +15,21 @@ BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
 BonkEnc::Config::Config()
 {
-	languageChanged = False;
-	deleteAfterEncoding = False;
-	shutdownAfterEncoding = False;
+	languageChanged		= False;
+	deleteAfterEncoding	= False;
+	shutdownAfterEncoding	= False;
 
-	cdrip_autoRead_active = False;
-	cdrip_timeout = 0;
+	cdrip_autoRead_active	= False;
+	cdrip_timeout		= 0;
+
+	saveSettingsOnExit	= True;
+
+	LoadSettings();
 }
 
 BonkEnc::Config::~Config()
 {
+	if (saveSettingsOnExit) SaveSettings();
 }
 
 BonkEnc::Config *BonkEnc::Config::Get()
@@ -32,8 +37,6 @@ BonkEnc::Config *BonkEnc::Config::Get()
 	if (instance == NIL)
 	{
 		instance = new Config();
-
-		instance->LoadSettings();
 	}
 
 	return instance;
@@ -43,10 +46,15 @@ Void BonkEnc::Config::Free()
 {
 	if (instance != NIL)
 	{
-		instance->SaveSettings();
-
 		delete instance;
+
+		instance = NIL;
 	}
+}
+
+Void BonkEnc::Config::SetSaveSettingsOnExit(Bool nSaveSettingsOnExit)
+{
+	saveSettingsOnExit = nSaveSettingsOnExit;
 }
 
 Bool BonkEnc::Config::LoadSettings()

@@ -375,6 +375,8 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 		QuickMessage(i18n->TranslateString("No options can be configured for the WAVE Out filter!"), i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
 	}
 
+	component->FreeConfigurationLayer();
+
 	boca.DeleteComponent(component);
 }
 
