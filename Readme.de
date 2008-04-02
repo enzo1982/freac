@@ -13,9 +13,11 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.8 (März 2008)
+	Version 1.0.8 (April 2008)
 
 		- Möglichen Absturz beim Beenden des Programms behoben
+		- Fehlerhafte Qualitätslevelanzeige in Vorbis-Codiererkonfiguration behoben
+		- Ogg Vorbis auf aoTuV Beta 5.5 aktualisiert
 
 	Version 1.0.7 (März 2008)
 

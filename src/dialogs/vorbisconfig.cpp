@@ -78,7 +78,7 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	pos.y -= 2;
 	size.cx = 283 - text_quality->textSize.cx;
 
-	slider_quality		= new Slider(pos, size, OR_HORZ, &quality, -10, 100);
+	slider_quality		= new Slider(pos, size, OR_HORZ, &quality, -20, 100);
 	slider_quality->onValueChange.Connect(&ConfigureVorbisEnc::SetQuality, this);
 
 	pos.x += (size.cx + 7);
@@ -213,11 +213,9 @@ Void BonkEnc::ConfigureVorbisEnc::SetMode()
 
 Void BonkEnc::ConfigureVorbisEnc::SetQuality()
 {
-	String	 txt = String::FromFloat(((double) quality) / 100);
+	String	 txt = String::FromFloat(((double) quality) / 10);
 
-	if (txt.Length() == 1)		txt.Append(".00");
-	else if (txt.Length() == 3)	txt.Append("0");
-	else if (txt == "-0.1")		txt.Append("0");
+	if (quality % 10 == 0) txt.Append(".0");
 
 	text_quality_value->SetText(txt);
 }
