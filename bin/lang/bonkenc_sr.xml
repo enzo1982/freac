@@ -177,5 +177,6 @@
     <entry id="169" string="no proxy">nema Proxy-ja</entry>
     <entry id="170" string="Proxy type:">Tip Proxy-ja:</entry>
     <entry id="171" string="Proxy server:">Proxy Server:</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
   </data>
 </LangFile>

@@ -897,9 +897,10 @@ Bool BonkEnc::cddbSubmitDlg::IsStringValid(const String &text)
 		}
 	}
 
-	if ( text.ToLower() == "new artist" ||
-	     text.ToLower() == "new title"  ||
-	    (text.ToLower().StartsWith("track") && text.Length() <= 8)) valid = False;
+	if ( text.ToLower() == "new artist"				     ||
+	     text.ToLower() == "new title"				     ||
+	    (text.ToLower().StartsWith("audiotrack") && text.Length() <= 13) ||
+	    (text.ToLower().StartsWith("track")	     && text.Length() <= 8)) valid = False;
 
 	return valid;
 }

@@ -41,7 +41,7 @@ BonkEnc::Debug		*BonkEnc::debug_out;
 
 String	 BonkEnc::BonkEnc::version	= "v1.0.8";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.8";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.6";
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.8";
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
 

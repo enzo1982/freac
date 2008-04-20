@@ -218,7 +218,7 @@
   <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Не могу открыть файл: %1&#10;&#10;%2</entry>
   <entry id="207" string="Query CDDB database">Запрос в базу CDDB</entry>
   <entry id="208" string="Help">Помощь</entry>
-  <entry id="209" string="index_en.html">index.html</entry>
+  <entry id="209" string="index_en.html">index_ru.html</entry>
   <entry id="210" string="Plug-ins">Плагины</entry>
   <entry id="211" string="Input plug-ins">На входе</entry>
   <entry id="212" string="Output plug-ins">На выходе</entry>
@@ -273,8 +273,8 @@
   <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 заголовками.</entry>
   <entry id="262" string="FLAC Files">FLAC файлы</entry>
   <entry id="263" string="Sampling rate">Частота дискретизации</entry>
-  <entry id="264" string="Sample resolution">Образец разрешения</entry>
-  <entry id="265" string="Number of samples">Количество образцов</entry>
+  <entry id="264" string="Sample resolution">Разрешение сэмпла</entry>
+  <entry id="265" string="Number of samples">Количество сэмплов</entry>
   <entry id="266" string="Mono">Моно</entry>
   <entry id="267" string="bytes">б</entry>
   <entry id="268" string="bit">бит</entry>
