@@ -11,11 +11,6 @@
 #ifndef _H_UTILITIES_
 #define _H_UTILITIES_
 
-namespace BonkEnc
-{
-	class InputFilter;
-};
-
 #include <smooth.h>
 #include <boca.h>
 
@@ -23,6 +18,7 @@ using namespace smooth;
 using namespace smooth::GUI;
 
 using namespace BoCA;
+using namespace BoCA::AS;
 
 namespace BonkEnc
 {
@@ -32,7 +28,7 @@ namespace BonkEnc
 			static Void		 WarningMessage(const String &, const String & = NIL);
 			static Void		 ErrorMessage(const String &, const String & = NIL);
 
-			static InputFilter	*CreateInputFilter(const String &, Track *);
+			static DecoderComponent	*CreateDecoderComponent(const String &);
 
 			static Void		 FillGenreList(List *);
 

@@ -8,33 +8,35 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_IN_BONK_
-#define _H_FILTER_IN_BONK_
+#ifndef _H_CONFIG_COMPONENT_DLG_
+#define _H_CONFIG_COMPONENT_DLG_
 
-#include <boca.h>
-
-#include "inputfilter.h"
-
-using namespace BoCA::AS;
+#include <bonkenc.h>
 
 namespace BonkEnc
 {
-	class FilterInBoCA : public InputFilter
+	class ConfigComponentDialog : public Dialog
 	{
 		private:
-			DecoderComponent	*component;
+			ConfigLayer	*layer;
+
+			Window		*mainWnd;
+			Titlebar	*mainWnd_titlebar;
+
+			Button		*btn_cancel;
+			Button		*btn_ok;
+
+			Divider		*divbar;
+
+	 		Config		*currentConfig;
+		slots:
+			Void		 OK();
+			Void		 Cancel();
 		public:
-						 FilterInBoCA(Track *, const String &);
-						~FilterInBoCA();
+					 ConfigComponentDialog(ConfigLayer *);
+					~ConfigComponentDialog();
 
-			Bool			 Activate();
-			Bool			 Deactivate();
-
-			Int			 ReadData(Buffer<UnsignedByte> &, Int);
-
-			Track			*GetFileInfo(const String &);
-
-			Int64			 GetInBytes();
+			const Error	&ShowDialog();
 	};
 };
 

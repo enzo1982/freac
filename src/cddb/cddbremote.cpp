@@ -19,6 +19,8 @@
 BonkEnc::CDDBRemote::CDDBRemote()
 {
 	connected = False;
+
+	debug = Protocol::Get("Debug");
 }
 
 BonkEnc::CDDBRemote::~CDDBRemote()
@@ -37,8 +39,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 		case FREEDB_MODE_CDDBP:
 			if (command != "")
 			{
-				debug_out->OutputString("CDDB: > ");
-				debug_out->OutputLine(command);
+				debug->Write(String("CDDB: > ").Append(command));
 
 				out->OutputLine(command);
 			}
@@ -47,8 +48,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			{
 				str = in->InputLine();
 
-				debug_out->OutputString("CDDB: < ");
-				debug_out->OutputLine(str);
+				debug->Write(String("CDDB: < ").Append(str));
 			}
 			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
 
@@ -94,7 +94,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 
 			if (http.DownloadToBuffer(httpResultBuffer) == Error())
 			{
-				debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
+				debug->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 
 				str = "error";
 
@@ -104,7 +104,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			in = new InStream(STREAM_BUFFER, httpResultBuffer, httpResultBuffer.Size());
 
 			str = in->InputLine();
-			debug_out->OutputLine(str);
+			debug->Write(str);
 
 			if (str.StartsWith("210")) connected = true;
 			else			   delete in;
@@ -127,7 +127,7 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 
 		if (socket->GetLastError() != IO_ERROR_OK)
 		{
-			debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_cddbp_port)));
+			debug->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_cddbp_port)));
 
 			connected = False;
 
@@ -136,7 +136,7 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 			return False;
 		}
 
-		debug_out->OutputLine(String("CDDB: Connected to CDDB server at ").Append(config->freedb_server).Append(":").Append(config->freedb_cddbp_port));
+		debug->Write(String("CDDB: Connected to CDDB server at ").Append(config->freedb_server).Append(":").Append(config->freedb_cddbp_port));
 
 		connected = True;
 
@@ -215,8 +215,7 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 			String	 title;
 			String	 category;
 
-			debug_out->OutputString("CDDB: < ");
-			debug_out->OutputLine(val);
+			debug->Write(String("CDDB: < ").Append(val));
 
 			if (val == ".") break;
 
@@ -269,8 +268,7 @@ Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cdd
 	{
 		String	 val = in->InputLine();
 
-		debug_out->OutputString("CDDB: < ");
-		debug_out->OutputLine(val);
+		debug->Write(String("CDDB: < ").Append(val));
 
 		if (val == ".") break;
 
@@ -313,7 +311,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 	if (http.DownloadToBuffer(httpResultBuffer) == Error())
 	{
-		debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
+		debug->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 
 		return False;
 	}

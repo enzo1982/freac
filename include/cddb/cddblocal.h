@@ -12,6 +12,7 @@
 #define _H_CDDB_LOCAL_
 
 #include <cddb/cddb.h>
+#include <boca/common/protocol.h>
 
 namespace BonkEnc
 {
@@ -19,6 +20,8 @@ namespace BonkEnc
 	{
 		private:
 			Array<String>	 results;
+
+			BoCA::Protocol	*debug;
 
 			Bool		 QueryUnixDB(Int);
 			Bool		 QueryWinDB(Int);

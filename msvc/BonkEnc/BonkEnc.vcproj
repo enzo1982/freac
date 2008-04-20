@@ -356,10 +356,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\debug.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\dllinterfaces.cpp"
 				>
 			</File>
@@ -548,22 +544,6 @@
 				</Filter>
 			</Filter>
 			<Filter
-				Name="input"
-				>
-				<File
-					RelativePath="..\..\src\input\filter-in-boca.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\filter-in-cdrip.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\input\inputfilter.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
 				Name="cdinfo"
 				>
 				<File
@@ -591,6 +571,14 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="jobs"
+				>
+				<File
+					RelativePath="..\..\src\jobs\job.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Headerdateien"
@@ -607,10 +595,6 @@
 			</File>
 			<File
 				RelativePath="..\..\include\cuesheet.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\include\debug.h"
 				>
 			</File>
 			<File
@@ -653,22 +637,6 @@
 				RelativePath="..\..\include\utilities.h"
 				>
 			</File>
-			<Filter
-				Name="input"
-				>
-				<File
-					RelativePath="..\..\include\input\filter-in-boca.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\filter-in-cdrip.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\input\inputfilter.h"
-					>
-				</File>
-			</Filter>
 			<Filter
 				Name="dialogs"
 				>
@@ -810,6 +778,14 @@
 				</File>
 				<File
 					RelativePath="..\..\include\gui\main_threads.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="jobs"
+				>
+				<File
+					RelativePath="..\..\include\jobs\job.h"
 					>
 				</File>
 			</Filter>

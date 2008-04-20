@@ -14,10 +14,10 @@
 #include <dllinterfaces.h>
 #include <utilities.h>
 
-#include <input/inputfilter.h>
-#include <input/filter-in-cdrip.h>
+#include <cddb/cddbremote.h>
 
 using namespace BoCA::AS;
+using namespace smooth::IO;
 
 BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
 {
@@ -80,8 +80,10 @@ BoCA::Track *BonkEnc::JobList::GetNthTrack(Int n)
 	return tracks.Get(GetNthEntry(n)->GetHandle());
 }
 
-Bool BonkEnc::JobList::AddTrack(Track *track)
+Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 {
+	Track	*track = new Track(iTrack);
+
 	track->oArtist = track->artist;
 	track->oTitle = track->title;
 	track->oAlbum = track->album;
@@ -223,12 +225,9 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	String	 fileTypes;
 
-	if (Config::Get()->enable_cdrip && Config::Get()->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
-
 	for (Int l = 0; l < extensions.Length(); l++) fileTypes.Append("; ").Append(extensions.GetNth(l));
 
-										dialog->AddFilter(BonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
-	if (Config::Get()->enable_cdrip && Config::Get()->cdrip_numdrives >= 1)	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows CD Audio Track")).Append(" (*.cda)"), "*.cda");
+	dialog->AddFilter(BonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
 
 	for (Int m = 0; m < types.Length(); m++) dialog->AddFilter(types.GetNth(m), extensions.GetNth(m));
 
@@ -236,16 +235,12 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	if (dialog->ShowDialog() == Success())
 	{
-		FilterInCDRip::StartDiscRead();
-
 		for (int i = 0; i < dialog->GetNumberOfFiles(); i++)
 		{
 			String	 file = dialog->GetNthFileName(i);
 
 			AddTrackByFileName(file);
 		}
-
-		FilterInCDRip::FinishDiscRead();
 	}
 
 	delete dialog;
@@ -260,8 +255,7 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 		return;
 	}
 
-	Track		*format = NIL;
-	InputFilter	*filter_in = Utilities::CreateInputFilter(file, NIL);
+	DecoderComponent	*filter_in = Utilities::CreateDecoderComponent(file);
 
 	if (filter_in == NIL)
 	{
@@ -270,46 +264,45 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 		return;
 	}
 
-	format = filter_in->GetFileInfo(file);
-
+	Track	 format;
+	Error	 error = filter_in->GetStreamInfo(file, format);
 	String	 errorString = filter_in->GetErrorString();
 
-	delete filter_in;
+	Registry::Get().DeleteComponent(filter_in);
 
-	if (format == NIL)
+	if (error == Error())
 	{
 		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString(errorString)));
 
 		return;
 	}
 
-	if (format->rate == 0 || format->channels == 0)
+	/* Add disc ID to CD tracks
+	 */
+	if (format.isCDTrack)
 	{
-		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString(errorString)));
+		CDDBRemote	 cddb;
 
-		return;
+		cddb.SetActiveDrive(Config::Get()->cdrip_activedrive);
+
+		format.discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
 	}
 
-	if (format->isCDTrack && Config::Get()->cdrip_autoRead_active)
+	/* Exit if we are auto-reading a CD which is already loaded in the joblist.
+	 */
+	if (format.isCDTrack && Config::Get()->cdrip_autoRead_active)
 	{
 		for (Int i = 0; i < tracks.Length(); i++)
 		{
 			Track	*track = tracks.GetNth(i);
 
-			if (track->discid == format->discid && track->cdTrack == format->cdTrack) return;
+			if (track->discid == format.discid && track->cdTrack == format.cdTrack) return;
 		}
 	}
 
-	if (format->rate == 0 || format->channels == 0)
+	if (format.artist == NIL && format.title == NIL)
 	{
-		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Cannot open file:")).Append(" ").Append(file));
-
-		return;
-	}
-
-	if (format->artist == NIL && format->title == NIL)
-	{
-		if (!file.StartsWith("/cda"))
+		if (!file.StartsWith("cdda://"))
 		{
 			String	 fileName;
 			Int	 in_len = file.Length();
@@ -343,34 +336,34 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 				{
 					artistComplete = (m += 3);
 
-					format->title = NIL;
+					format.title = NIL;
 				}
 
-				if (!artistComplete)	format->artist[m] = fileName[m];
-				else			format->title[m - artistComplete] = fileName[m];
+				if (!artistComplete)	format.artist[m] = fileName[m];
+				else			format.title[m - artistComplete] = fileName[m];
 			}
 
 			if (artistComplete == 0)
 			{
-				format->artist = NIL;
-				format->title = NIL;
+				format.artist = NIL;
+				format.title = NIL;
 			}
 		}
 	}
 
-	if (format->fileSize > 0)	    format->fileSizeString = S::I18n::Number::GetLocalizedNumberString(format->fileSize);
+	if (format.fileSize > 0)	    format.fileSizeString = S::I18n::Number::GetLocalizedNumberString(format.fileSize);
 
-	if (format->length >= 0)	    format->lengthString = String::FromInt(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->length / (format->rate * format->channels) % 60));
-	else if (format->approxLength >= 0) format->lengthString = String("~ ").Append(String::FromInt(Math::Floor(format->approxLength / (format->rate * format->channels) / 60)).Append(":").Append((format->approxLength / (format->rate * format->channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format->approxLength / (format->rate * format->channels) % 60)));
-	else				    format->lengthString = "?";
+	if (format.length >= 0)		    format.lengthString = String::FromInt(Math::Floor(format.length / (format.rate * format.channels) / 60)).Append(":").Append((format.length / (format.rate * format.channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format.length / (format.rate * format.channels) % 60));
+	else if (format.approxLength >= 0)  format.lengthString = String("~ ").Append(String::FromInt(Math::Floor(format.approxLength / (format.rate * format.channels) / 60)).Append(":").Append((format.approxLength / (format.rate * format.channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format.approxLength / (format.rate * format.channels) % 60)));
+	else				    format.lengthString = "?";
 
 	wchar_t	 sign[2] = { 0x2248, 0 };
 
-	if (Setup::enableUnicode) format->lengthString.Replace("~", sign);
+	if (Setup::enableUnicode) format.lengthString.Replace("~", sign);
 
-	if (format->origFilename == NIL)   format->origFilename = file;
+	if (format.origFilename == NIL)   format.origFilename = file;
 
-	format->outfile = outfile;
+	format.outfile = outfile;
 
 	AddTrack(format);
 }
@@ -500,14 +493,10 @@ Void BonkEnc::JobList::LoadList()
 
 		playlist.Load(dialog->GetFileName());
 
-		FilterInCDRip::StartDiscRead();
-
 		for (Int i = 0; i < playlist.GetNOfTracks(); i++)
 		{
 			AddTrackByFileName(playlist.GetNthTrackFileName(i));
 		}
-
-		FilterInCDRip::FinishDiscRead();
 	}
 
 	delete dialog;

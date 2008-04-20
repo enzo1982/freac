@@ -177,5 +177,6 @@
     <entry id="169" string="no proxy">Ei välityspalvelinta</entry>
     <entry id="170" string="Proxy type:">Palvelimen tyyppi:</entry>
     <entry id="171" string="Proxy server:">Välityspalvelin:</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
   </data>
 </LangFile>

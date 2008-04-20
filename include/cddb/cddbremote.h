@@ -12,6 +12,7 @@
 #define _H_CDDB_REMOTE_
 
 #include <cddb/cddb.h>
+#include <boca/common/protocol.h>
 
 using namespace smooth::IO;
 
@@ -28,6 +29,8 @@ namespace BonkEnc
 			Driver			*socket;
 			InStream		*in;
 			OutStream		*out;
+
+			BoCA::Protocol		*debug;
 
 			String			 SendCommand(const String &);
 		public:

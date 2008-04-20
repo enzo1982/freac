@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <gui/main_threads.h>
+#include <jobs/job.h>
 
 BonkEnc::LayerThreads::LayerThreads() : Layer("Threads")
 {
@@ -63,10 +64,14 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Threads")
 	Add(button_details);
 
 	onChangeSize.Connect(&LayerThreads::OnChangeSize, this);
+
+	Job::onChange.Connect(&LayerThreads::OnChangeJobs, this);
 }
 
 BonkEnc::LayerThreads::~LayerThreads()
 {
+	Job::onChange.Disconnect(&LayerThreads::OnChangeJobs, this);
+
 	DeleteObject(text_progress);
 	DeleteObject(list_threads);
 
@@ -84,6 +89,18 @@ Void BonkEnc::LayerThreads::OnChangeSize(const Size &nSize)
 	list_threads->SetSize(clientSize - Size(15, 72));
 
 	combo_errors->SetWidth(clientSize.cx - text_errors->textSize.cx - 142);
+}
+
+Void BonkEnc::LayerThreads::OnChangeJobs()
+{
+	list_threads->RemoveAllEntries();
+
+	const Array<Job *>	&jobs = Job::GetAllJobs();
+
+	foreach (Job *job, jobs)
+	{
+		list_threads->Add(job);
+	}
 }
 
 Void BonkEnc::LayerThreads::ShowDetails()

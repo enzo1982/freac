@@ -35,7 +35,7 @@ namespace BonkEnc
 
 			Array<Track *>			 tracks;
 
-			Bool				 AddTrack(Track *);
+			Bool				 AddTrack(const Track &);
 		public:
 							 JobList(const Point &, const Size &);
 			virtual				~JobList();

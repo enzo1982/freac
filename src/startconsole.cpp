@@ -12,29 +12,30 @@
 #include <joblist.h>
 #include <dllinterfaces.h>
 
+using namespace smooth::IO;
 using namespace smooth::System;
 
 using namespace BoCA::AS;
 
 Int StartConsole(const Array<String> &args)
 {
-	BonkEnc::debug_out = new BonkEnc::Debug("BonkEnc.log");
+	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug");
 
-	BonkEnc::debug_out->OutputLine("");
-	BonkEnc::debug_out->OutputLine("=========================================");
-	BonkEnc::debug_out->OutputLine("= Starting BonkEnc command line tool... =");
-	BonkEnc::debug_out->OutputLine("=========================================");
-	BonkEnc::debug_out->OutputLine("");
+	debug->Write("");
+	debug->Write("=========================================");
+	debug->Write("= Starting BonkEnc command line tool... =");
+	debug->Write("=========================================");
+	debug->Write("");
 
 	BonkEnc::BonkEncCommandline::Get(args);
 	BonkEnc::BonkEncCommandline::Free();
 
-	BonkEnc::debug_out->OutputLine("");
-	BonkEnc::debug_out->OutputLine("======================================");
-	BonkEnc::debug_out->OutputLine("= Leaving BonkEnc command line tool! =");
-	BonkEnc::debug_out->OutputLine("======================================");
+	debug->Write("");
+	debug->Write("======================================");
+	debug->Write("= Leaving BonkEnc command line tool! =");
+	debug->Write("======================================");
 
-	delete BonkEnc::debug_out;
+	BoCA::Protocol::Free();
 
 	return 0;
 }
@@ -306,12 +307,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READONLY);
 			String		 currentFile = files.GetNth(i);
 
-			if (currentFile.StartsWith("/cda"))
+			if (currentFile.StartsWith("cdda://"))
 			{
 				currentFile = String("Audio CD ").Append(String::FromInt(currentConfig->cdrip_activedrive)).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
 			}
 
-			if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("/cda"))
+			if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("cdda://"))
 			{
 				delete in;
 
@@ -406,7 +407,7 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 
 		Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
-		for (Int i = 1; i <= numTocEntries; i++) (*files).Add(String("/cda").Append(String::FromInt(i)));
+		for (Int i = 1; i <= numTocEntries; i++) (*files).Add(String("cdda://").Append(String::FromInt(i)));
 
 		return True;
 	}
@@ -442,11 +443,11 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 			Int	 first = current.Head(dash).ToInt();
 			Int	 last = current.Tail(current.Length() - dash - 1).ToInt();
 
-			for (Int i = first; i <= last; i++) (*files).Add(String("/cda").Append(String::FromInt(i)));
+			for (Int i = first; i <= last; i++) (*files).Add(String("cdda://").Append(String::FromInt(i)));
 		}
 		else
 		{
-			(*files).Add(String("/cda").Append(current));
+			(*files).Add(String("cdda://").Append(current));
 		}
 	}
 

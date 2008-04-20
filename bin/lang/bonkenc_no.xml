@@ -1,45 +1,46 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
- <info>
-  <property name="program">BonkEnc</property>
-  <property name="version">1.0</property>
-  <property name="language">Norwegian/ Norsk</property>
-  <property name="righttoleft">false</property>
-  <property name="encoding">UTF-8</property>
-  <property name="author">wiak &lt;wiak@nwgat.net&gt;</property>
-  <property name="url">http://www.bonkenc.org/</property>
- </info>
- <data>
-  <entry id="1" string="File">Fil</entry>
-  <entry id="4" string="Add">Legg til</entry>
-  <entry id="5" string="Remove">Fjern</entry>
-  <entry id="7" string="Exit">avslutt</entry>
-  <entry id="9" string="Configure selected encoder...">konfigurere enkoder</entry>
-  <entry id="10" string="Audio file(s)">lyd file(r)</entry>
-  <entry id="12" string="Start encoding">Start koding</entry>
-  <entry id="13" string="Stop encoding">Stopp koding</entry>
-  <entry id="15" string="Time left:">Tid som er igjen</entry>
-  <entry id="16" string="Percent done:">Prosent ferdig</entry>
-  <entry id="17" string="Selected encoder:">Valgt koder</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 filer(r) som er i jobbliste</entry>
-  <entry id="21" string="none">ingen</entry>
-  <entry id="23" string="Add audio file(s) to the joblist">Legg til lyd fil(er) i jobblisten</entry>
-  <entry id="24" string="Add audio CD contents to the joblist">Legg til lyd CD til joblisten</entry>
-  <entry id="27" string="Configure general settings">Konfigure Vanlige Instillinger</entry>
-  <entry id="29" string="Start the encoding process">Start enkoding </entry>
-  <entry id="30" string="Cannot modify the joblist while encoding!">Kan ikke </entry>
-  <entry id="31" string="Error">Feil</entry>
-  <entry id="32" string="Audio Files">Lyd Filer</entry>
-  <entry id="33" string="Apple Audio Files">Apple Lyd Filer</entry>
-  <entry id="36" string="Wave Files">Wave Filer</entry>
-  <entry id="38" string="All Files">Alle Filer</entry>
-  <entry id="39" string="You have not selected a file!">Du har ikke valgt en fil!</entry>
-  <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Enkoding går fremdeles! vil du virkelig avslutte?</entry>
-  <entry id="41" string="Currently encoding">Enkoder nå</entry>
-  <entry id="44" string="About BonkEnc">Om BonkEnc</entry>
-  <entry id="47" string="Cannot change settings while encoding!">Kan ikke bytte instillinger mens du encoder</entry>
-  <entry id="49" string="OK">OK</entry>
-  <entry id="54" string="Quality">Kvalittet</entry>
-  <entry id="55" string="Encoders">Koder</entry>
- </data>
+  <info>
+    <property name="program">BonkEnc</property>
+    <property name="version">1.0</property>
+    <property name="language">Norwegian/ Norsk</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">wiak &lt;wiak@nwgat.net&gt;</property>
+    <property name="url">http://www.bonkenc.org/</property>
+  </info>
+  <data>
+    <entry id="1" string="File">Fil</entry>
+    <entry id="4" string="Add">Legg til</entry>
+    <entry id="5" string="Remove">Fjern</entry>
+    <entry id="7" string="Exit">avslutt</entry>
+    <entry id="9" string="Configure selected encoder...">konfigurere enkoder</entry>
+    <entry id="10" string="Audio file(s)">lyd file(r)</entry>
+    <entry id="12" string="Start encoding">Start koding</entry>
+    <entry id="13" string="Stop encoding">Stopp koding</entry>
+    <entry id="15" string="Time left:">Tid som er igjen</entry>
+    <entry id="16" string="Percent done:">Prosent ferdig</entry>
+    <entry id="17" string="Selected encoder:">Valgt koder</entry>
+    <entry id="20" string="%1 file(s) in joblist:">%1 filer(r) som er i jobbliste</entry>
+    <entry id="21" string="none">ingen</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Legg til lyd fil(er) i jobblisten</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Legg til lyd CD til joblisten</entry>
+    <entry id="27" string="Configure general settings">Konfigure Vanlige Instillinger</entry>
+    <entry id="29" string="Start the encoding process">Start enkoding </entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Kan ikke </entry>
+    <entry id="31" string="Error">Feil</entry>
+    <entry id="32" string="Audio Files">Lyd Filer</entry>
+    <entry id="33" string="Apple Audio Files">Apple Lyd Filer</entry>
+    <entry id="36" string="Wave Files">Wave Filer</entry>
+    <entry id="38" string="All Files">Alle Filer</entry>
+    <entry id="39" string="You have not selected a file!">Du har ikke valgt en fil!</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Enkoding går fremdeles! vil du virkelig avslutte?</entry>
+    <entry id="41" string="Currently encoding">Enkoder nå</entry>
+    <entry id="44" string="About BonkEnc">Om BonkEnc</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Kan ikke bytte instillinger mens du encoder</entry>
+    <entry id="49" string="OK">OK</entry>
+    <entry id="54" string="Quality">Kvalittet</entry>
+    <entry id="55" string="Encoders">Koder</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
+  </data>
 </LangFile>

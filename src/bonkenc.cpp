@@ -23,13 +23,10 @@
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 
-#include <input/filter-in-cdrip.h>
-
 BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 BoCA::I18n		*BonkEnc::BonkEnc::i18n = NIL;
-BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version	= "CVS 20080325";
+String	 BonkEnc::BonkEnc::version	= "CVS 20080328";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
@@ -145,16 +142,22 @@ Void BonkEnc::BonkEnc::ReadCD()
 
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
-	FilterInCDRip::StartDiscRead();
-
 	for (Int i = 0; i < numTocEntries; i++)
 	{
 		TOCENTRY entry = ex_CR_GetTocEntry(i);
 
-		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1) joblist->AddTrackByFileName(String("/cda").Append(String::FromInt(i + 1)));
+		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1)
+		{
+			/* Add CD track to joblist using a cdda:// URI
+			 */
+			joblist->AddTrackByFileName(
+				String("cdda://")
+					.Append(String::FromInt(currentConfig->cdrip_activedrive))
+					.Append("/")
+					.Append(String::FromInt(entry.btTrackNumber))
+			);
+		}
 	}
-
-	FilterInCDRip::FinishDiscRead();
 }
 
 BonkEnc::CDDBInfo BonkEnc::BonkEnc::GetCDDBData()

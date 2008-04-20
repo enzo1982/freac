@@ -66,7 +66,13 @@ Int BonkEnc::CDDB::ComputeDiscID()
 
 String BonkEnc::CDDB::DiscIDToString(Int discID)
 {
-	return Number((Int64) discID).ToHexString();
+	String	 discIDString = Number((Int64) discID).ToHexString();
+
+	/* Add leading zeros if necessary.
+	 */
+	if (discIDString.Length() < 8) discIDString = String().FillN('0', 8 - discIDString.Length()).Append(discIDString);
+
+	return discIDString;
 }
 
 Int BonkEnc::CDDB::StringToDiscID(const String &string)

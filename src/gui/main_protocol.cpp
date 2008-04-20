@@ -80,11 +80,19 @@ BonkEnc::LayerProtocol::LayerProtocol() : Layer("Protocol")
 	Add(combo_errors);
 	Add(button_details);
 
+	UpdateProtocolList();
+
 	onChangeSize.Connect(&LayerProtocol::OnChangeSize, this);
+
+	Protocol::onUpdateProtocolList.Connect(&LayerProtocol::UpdateProtocolList, this);
+	Protocol::onUpdateProtocol.Connect(&LayerProtocol::UpdateProtocol, this);
 }
 
 BonkEnc::LayerProtocol::~LayerProtocol()
 {
+	Protocol::onUpdateProtocolList.Disconnect(&LayerProtocol::UpdateProtocolList, this);
+	Protocol::onUpdateProtocol.Disconnect(&LayerProtocol::UpdateProtocol, this);
+
 	DeleteObject(text_protocol);
 	DeleteObject(combo_protocol);
 
@@ -102,15 +110,34 @@ Void BonkEnc::LayerProtocol::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	edit_protocol->SetSize(clientSize - Size(15, 83));
+	edit_protocol->SetSize(clientSize - Size(15, 92));
 	edit_status->SetWidth(clientSize.cx - 15);
 
 	combo_errors->SetWidth(clientSize.cx - text_errors->textSize.cx - 142);
 }
 
+Void BonkEnc::LayerProtocol::UpdateProtocolList()
+{
+	combo_protocol->RemoveAllEntries();
+
+	const Array<Protocol *>	&protocols = Protocol::Get();
+
+	foreach (Protocol *protocol, protocols)
+	{
+		combo_protocol->AddEntry(protocol->GetName());
+	}
+}
+
+Void BonkEnc::LayerProtocol::UpdateProtocol(const String &name)
+{
+	if (combo_protocol->GetSelectedEntry() == NIL) return;
+
+	if (name == combo_protocol->GetSelectedEntry()->GetText()) SelectProtocol();
+}
+
 Void BonkEnc::LayerProtocol::SelectProtocol()
 {
-// TODO: Update editbox for selected protocol
+	edit_protocol->SetText(Protocol::Get(combo_protocol->GetSelectedEntry()->GetText())->GetProtocolText());
 }
 
 Void BonkEnc::LayerProtocol::ShowDetails()

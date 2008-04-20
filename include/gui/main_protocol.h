@@ -31,6 +31,9 @@ namespace BonkEnc
 		slots:
 			Void		 OnChangeSize(const Size &);
 
+			Void		 UpdateProtocolList();
+			Void		 UpdateProtocol(const String &);
+
 			Void		 SelectProtocol();
 			Void		 ShowDetails();
 		public:

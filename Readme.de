@@ -19,7 +19,9 @@ Geschichte
 		- Deutsche, italienische, russische und griechische Anleitungen hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
 		- Neuen Konfigurationsdialog implementiert
-		- Monkey's Audio-Dekoder hinzugefügt
+		- Monkey's Audio-Codierer/Decodierer hinzugefügt
+		- Unterstützung für Kommandozeilencodierer/-decodierer hinzugefügt
+		- Unterstützung für den MAD MP3-Decodierer hinzugefügt
 		- Unterstützung für AAC-Synchronisierung hinzugefügt (zum Lesen von AAC-Streamrips benötigt)
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
@@ -45,6 +47,8 @@ Geschichte
 		- FLAC auf Version 1.2.1 aktualisiert
 		- FAAC auf Version 1.26 aktualisiert
 		- FAAD2 suf Version 2.6.1 aktualisiert
+		- LAME suf Version 3.98 aktualisiert
+		- Ogg Vorbis auf aoTuV Beta 5.5 aktualisiert
 		- Update auf MPEG4IP v1.6.1
 		- Viele weitere Korrekturen
 

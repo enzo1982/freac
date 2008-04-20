@@ -21,9 +21,7 @@
 
 #include <smooth/io/drivers/driver_zero.h>
 
-#include <input/inputfilter.h>
-#include <input/filter-in-cdrip.h>
-
+using namespace smooth::IO;
 using namespace BoCA::AS;
 
 BonkEnc::Encoder::Encoder()
@@ -218,57 +216,37 @@ Int BonkEnc::Encoder::EncoderThread()
 			in_filename.Append(".wav");
 		}
 
-		InStream	*f_in;
-		InputFilter	*filter_in = NIL;
+		InStream	*f_in = NIL;
 
-		if (trackInfo->isCDTrack && (Config::Get()->enc_onTheFly || step == 0 || encoderID == "wave-out"))
+		if (in_filename.StartsWith("cdda://"))	f_in = new InStream(STREAM_DRIVER, zero_in);
+		else					f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
+
+		f_in->SetPackageSize(6144);
+
+		if (f_in->GetLastError() != IO_ERROR_OK)
 		{
-			Config::Get()->cdrip_activedrive = trackInfo->drive;
+			Utilities::ErrorMessage("Cannot access input file: %1", in_filename);
 
-			f_in		= new InStream(STREAM_DRIVER, zero_in);
-			filter_in	= new FilterInCDRip(trackInfo);
+			delete f_in;
 
-			if (!((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack))
-			{
-				Utilities::ErrorMessage("Cannot access input file: %1", in_filename);
-
-				delete f_in;
-				delete filter_in;
-
-				continue;
-			}
-
-			f_in->AddFilter(filter_in);
+			continue;
 		}
-		else
+
+		DecoderComponent	*filter_in = Utilities::CreateDecoderComponent(in_filename);
+
+		if (filter_in == NIL) { delete f_in; continue; }
+
+		if (!Config::Get()->enc_onTheFly && step == 1)
 		{
-			f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
-			f_in->SetPackageSize(6144);
+			Track	 nTrackInfo;
 
-			if (f_in->GetLastError() != IO_ERROR_OK)
-			{
-				Utilities::ErrorMessage("Cannot access input file: %1", in_filename);
-
-				delete f_in;
-
-				continue;
-			}
-
-			filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
-
-			if (filter_in == NIL) { delete f_in; continue; }
-
-			if (!Config::Get()->enc_onTheFly && step == 1)
-			{
-				Track	*nTrackInfo = filter_in->GetFileInfo(in_filename);
-
-				progress->FixTotalSamples(trackInfo, nTrackInfo);
-
-				delete nTrackInfo;
-			}
-
-			f_in->AddFilter(filter_in);
+			filter_in->GetStreamInfo(in_filename, nTrackInfo);
+			progress->FixTotalSamples(trackInfo, &nTrackInfo);
 		}
+
+		filter_in->SetInputFormat(*trackInfo);
+
+		f_in->AddFilter(filter_in);
 
 		if (!Config::Get()->encodeToSingleFile)
 		{
@@ -279,9 +257,9 @@ Int BonkEnc::Encoder::EncoderThread()
 				Utilities::ErrorMessage("Cannot create output file: %1", out_filename);
 
 				delete f_in;
-				delete filter_in;
-
 				delete f_out;
+
+				Registry::Get().DeleteComponent(filter_in);
 
 				continue;
 			}
@@ -292,10 +270,9 @@ Int BonkEnc::Encoder::EncoderThread()
 			if (f_out->AddFilter(filter_out) == False)
 			{
 				delete f_in;
-				delete filter_in;
-
 				delete f_out;
 
+				Registry::Get().DeleteComponent(filter_in);
 				Registry::Get().DeleteComponent(filter_out);
 
 				break;
@@ -392,7 +369,8 @@ Int BonkEnc::Encoder::EncoderThread()
 		progress->FinishProgressValues(trackInfo);
 
 		delete f_in;
-		delete filter_in;
+
+		Registry::Get().DeleteComponent(filter_in);
 
 		encodedSamples += trackLength;
 

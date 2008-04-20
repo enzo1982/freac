@@ -27,6 +27,7 @@ namespace BonkEnc
 			Button		*button_details;
 		slots:
 			Void		 OnChangeSize(const Size &);
+			Void		 OnChangeJobs();
 
 			Void		 ShowDetails();
 		public:

@@ -39,30 +39,30 @@ using namespace BoCA::AS;
 
 Int StartGUI(const Array<String> &args)
 {
-	BonkEnc::debug_out = new BonkEnc::Debug("BonkEnc.log");
+	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug");
 
-	BonkEnc::debug_out->OutputLine("");
-	BonkEnc::debug_out->OutputLine("=======================");
-	BonkEnc::debug_out->OutputLine("= Starting BonkEnc... =");
-	BonkEnc::debug_out->OutputLine("=======================");
-	BonkEnc::debug_out->OutputLine("");
+	debug->Write("");
+	debug->Write("=======================");
+	debug->Write("= Starting BonkEnc... =");
+	debug->Write("=======================");
+	debug->Write("");
 
 	BonkEnc::BonkEncGUI	*app = BonkEnc::BonkEncGUI::Get();
 
-	BonkEnc::debug_out->EnterMethod("smooth::Loop()");
+	debug->Write("Entering method: smooth::Loop()");
 
 	app->Loop();
 
-	BonkEnc::debug_out->LeaveMethod();
+	debug->Write("Leaving method.");
 
 	BonkEnc::BonkEncGUI::Free();
 
-	BonkEnc::debug_out->OutputLine("");
-	BonkEnc::debug_out->OutputLine("====================");
-	BonkEnc::debug_out->OutputLine("= Leaving BonkEnc! =");
-	BonkEnc::debug_out->OutputLine("====================");
+	debug->Write("");
+	debug->Write("====================");
+	debug->Write("= Leaving BonkEnc! =");
+	debug->Write("====================");
 
-	delete BonkEnc::debug_out;
+	BoCA::Protocol::Free();
 
 	return 0;
 }
@@ -144,6 +144,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org/", Point(91, -22));
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
+	hyperlink->SetIndependent(True);
 
 	tabs_main		= new TabWidget(Point(6, 7), Size(700, 500));
 
@@ -154,8 +155,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tab_layer_protocol	= new LayerProtocol();
 
 	tabs_main->Add(tab_layer_joblist);
-//	tabs_main->Add(tab_layer_threads);
-//	tabs_main->Add(tab_layer_protocol);
+	tabs_main->Add(tab_layer_threads);
+	tabs_main->Add(tab_layer_protocol);
 
 	joblist			= tab_layer_joblist->GetJoblist();
 

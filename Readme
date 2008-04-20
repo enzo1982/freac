@@ -19,7 +19,9 @@ History
 		- added German, Italian, Russian and Greek user guides
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
-		- added Monkey's Audio decoder
+		- added Monkey's Audio encoder/decoder
+		- added support for command line encoders/decoders
+		- added support for the MAD MP3 decoder
 		- added support for AAC synchronizing (needed to read ripped AAC streams)
 		- added <installdrive> pattern for use in output directory name
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
@@ -45,6 +47,8 @@ History
 		- upgraded FLAC to version 1.2.1
 		- upgraded FAAC to version 1.26
 		- upgraded FAAD2 to version 2.6.1
+		- upgraded LAME to version 3.98
+		- upgraded Ogg Vorbis to aoTuV beta 5.5
 		- upgrade to MPEG4IP v1.6.1
 		- lots of other fixes
 

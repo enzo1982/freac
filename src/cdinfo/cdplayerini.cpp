@@ -14,6 +14,8 @@
 #include <bonkenc.h>
 #include <dllinterfaces.h>
 
+using namespace smooth::IO;
+
 BonkEnc::CDPlayerIni::CDPlayerIni()
 {
 }

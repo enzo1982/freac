@@ -9,9 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <utilities.h>
-
-#include <input/filter-in-cdrip.h>
-#include <input/filter-in-boca.h>
+#include <bonkenc.h>
 
 #include <string>
 
@@ -29,35 +27,24 @@ Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &repla
 	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
 }
 
-BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile, Track *trackInfo)
+BoCA::AS::DecoderComponent *BonkEnc::Utilities::CreateDecoderComponent(const String &iFile)
 {
-	String		 file = iFile.ToLower();
-
-	if ((file.StartsWith("/cda") || file.EndsWith(".cda")) && Config::Get()->enable_cdrip && Config::Get()->cdrip_numdrives >= 1)
-	{
-		return new FilterInCDRip(trackInfo);
-	}
-
-	InputFilter	*filter_in = NIL;
-	Registry	&boca = Registry::Get();
+	String			 file = iFile.ToLower();
+	DecoderComponent	*component = NIL;
+	Registry		&boca = Registry::Get();
 
 	for (Int j = 0; j < boca.GetNumberOfComponents(); j++)
 	{
 		if (boca.GetComponentType(j) != BoCA::COMPONENT_TYPE_DECODER) continue;
 
-		DecoderComponent	*component = (DecoderComponent *) Registry::Get().CreateComponentByID(boca.GetComponentID(j));
+		component = (DecoderComponent *) Registry::Get().CreateComponentByID(boca.GetComponentID(j));
 
-		if (component->CanOpenStream(file))
-		{
-			filter_in = new FilterInBoCA(trackInfo, boca.GetComponentID(j));
-		}
+		if (component->CanOpenStream(file)) return component;
 
 		boca.DeleteComponent(component);
-
-		if (filter_in != NIL) break;
 	}
 
-	return filter_in;
+	return NIL;
 }
 
 Void BonkEnc::Utilities::FillGenreList(List *list)

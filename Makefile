@@ -11,7 +11,7 @@ LIBDIR2 = cdk/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_cdrip.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/language.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_protocol.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/filter-in-boca.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_cdrip.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/language.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_protocol.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/gui.o
 CMDOBJECTS = $(OBJECTDIR)/console.o
@@ -147,14 +147,14 @@ $(OBJECTDIR)/cddb_submit.o: $(SRCDIR)/dialogs/cddb/submit.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/cddb/submit.cpp -o $(OBJECTDIR)/cddb_submit.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/job.o: $(SRCDIR)/jobs/job.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/job.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job.cpp -o $(OBJECTDIR)/job.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/bonkenc.o: $(SRCDIR)/bonkenc.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/bonkenc.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/bonkenc.cpp -o $(OBJECTDIR)/bonkenc.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/cmdmain.o: $(SRCDIR)/cmdmain.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cmdmain.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cmdmain.cpp -o $(OBJECTDIR)/cmdmain.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/config.o: $(SRCDIR)/config.cpp
@@ -165,11 +165,6 @@ $(OBJECTDIR)/config.o: $(SRCDIR)/config.cpp
 $(OBJECTDIR)/cuesheet.o: $(SRCDIR)/cuesheet.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/cuesheet.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cuesheet.cpp -o $(OBJECTDIR)/cuesheet.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/debug.o: $(SRCDIR)/debug.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/debug.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/debug.cpp -o $(OBJECTDIR)/debug.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/dllinterfaces.o: $(SRCDIR)/dllinterfaces.cpp
@@ -290,21 +285,6 @@ $(OBJECTDIR)/main_protocol.o: $(SRCDIR)/gui/main_protocol.cpp
 $(OBJECTDIR)/main_threads.o: $(SRCDIR)/gui/main_threads.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/gui/main_threads.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/gui/main_threads.cpp -o $(OBJECTDIR)/main_threads.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/filter-in-boca.o: $(SRCDIR)/input/filter-in-boca.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-boca.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-boca.cpp -o $(OBJECTDIR)/filter-in-boca.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/filter-in-cdrip.o: $(SRCDIR)/input/filter-in-cdrip.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-cdrip.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/filter-in-cdrip.cpp -o $(OBJECTDIR)/filter-in-cdrip.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/inputfilter.o: $(SRCDIR)/input/inputfilter.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/input/inputfilter.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/input/inputfilter.cpp -o $(OBJECTDIR)/inputfilter.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/console.o: $(SRCDIR)/loader/console.cpp

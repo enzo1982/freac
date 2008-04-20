@@ -16,7 +16,6 @@
 
 #include "config.h"
 #include "encoder.h"
-#include "debug.h"
 #include "cddb/cddb.h"
 #include "cddb/cddbinfo.h"
 
@@ -28,8 +27,6 @@ namespace BonkEnc
 {
 	class JobList;
 	class Encoder;
-
-	class InputFilter;
 };
 
 typedef unsigned long  uint32;
@@ -38,8 +35,6 @@ typedef unsigned char  uint8;
 
 namespace BonkEnc
 {
-	extern Debug	*debug_out;
-
 	abstract class BonkEnc : public Application
 	{
 		protected:

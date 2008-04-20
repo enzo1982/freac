@@ -16,7 +16,7 @@
 
 #include <smooth/io/drivers/driver_zero.h>
 
-#include <input/filter-in-cdrip.h>
+using namespace smooth::IO;
 
 BonkEnc::Playback::Playback()
 {
@@ -81,40 +81,21 @@ Int BonkEnc::Playback::PlayThread()
 
 	in_filename = trackInfo->origFilename;
 
-	InStream	*f_in;
-	Driver		*driver_in = new DriverZero();
-	InputFilter	*filter_in = NIL;
-
-	if (trackInfo->isCDTrack)
-	{
-		Config::Get()->cdrip_activedrive = trackInfo->drive;
-
-		f_in		= new InStream(STREAM_DRIVER, driver_in);
-		filter_in	= new FilterInCDRip(trackInfo);
-
-		((FilterInCDRip *) filter_in)->SetTrack(trackInfo->cdTrack);
-
-		f_in->AddFilter(filter_in);
-	}
-	else
-	{
-		filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
-
-		f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
-		f_in->SetPackageSize(6144);
-
-		if (filter_in != NIL)
-		{
-			f_in->AddFilter(filter_in);
-		}
-		else
-		{
-			delete f_in;
-		}
-	}
+	DecoderComponent	*filter_in = Utilities::CreateDecoderComponent(in_filename);
 
 	if (filter_in != NIL)
 	{
+		InStream	*f_in = NIL;
+		Driver		*driver_in = new DriverZero();
+
+		if (in_filename.StartsWith("cdda://"))	f_in = new InStream(STREAM_DRIVER, driver_in);
+		else					f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
+
+		filter_in->SetInputFormat(*trackInfo);
+
+		f_in->SetPackageSize(6144);
+		f_in->AddFilter(filter_in);
+
 		Int64		 position = 0;
 		UnsignedInt	 samples_size = 1024;
 		Int64		 n_loops = (trackInfo->length + samples_size - 1) / samples_size;
@@ -211,7 +192,8 @@ Int BonkEnc::Playback::PlayThread()
 
 		delete f_in;
 		delete driver_in;
-		delete filter_in;
+
+		Registry::Get().DeleteComponent(filter_in);
 	}
 
 	Config::Get()->cdrip_activedrive = player_activedrive;
