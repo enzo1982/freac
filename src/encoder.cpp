@@ -431,7 +431,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		if (!Config::Get()->enc_onTheFly && step == 1 && encoderID != "wave-out" && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
 
-		if (out_filename == String(in_filename).Append(".temp"))
+		if (out_filename == String(in_filename).Append(".temp") && File(out_filename).Exists())
 		{
 			if (!Config::Get()->writeToInputDir || Config::Get()->allowOverwrite || !File(in_filename).Exists())
 			{

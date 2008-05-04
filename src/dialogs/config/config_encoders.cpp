@@ -256,6 +256,8 @@ Void BonkEnc::ConfigureEncoders::ConfigureEncoder()
 		dlg->ShowDialog();
 
 		DeleteObject(dlg);
+
+		onChangeEncoderSettings.Emit(encoderID);
 	}
 	else
 	{

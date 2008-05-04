@@ -66,6 +66,11 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
+	/* Connect to the onChangeEncoderSettings signal of the encoder configuration
+	 * layer to be notified when settings for a specific encoder are changed.
+	 */
+	((ConfigureEncoders *) layers.GetLast())->onChangeEncoderSettings.Connect(&ConfigDialog::OnChangeEncoderSettings, this);
+
 	layers.Add(new ConfigurePlaylists());
 	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Playlists"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
@@ -251,5 +256,33 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 	else
 	{
 		selectedLayer = NIL;
+	}
+}
+
+Void BonkEnc::ConfigDialog::OnChangeEncoderSettings(const String &encoderID)
+{
+	/* One of the encoder configurations has changed so replace
+	 * the configuration layer of the affected component.
+	 */
+	Component	*component = NIL;
+
+	for (Int i = 0; i < components.Length(); i++)
+	{
+		component = components.GetNth(i);
+
+		if (component->GetID() == encoderID) break;
+	}
+
+	for (Int i = 0; i < layers.Length(); i++)
+	{
+		if (layers.GetNth(i) == component->GetConfigurationLayer())
+		{
+			component->FreeConfigurationLayer();
+
+			layers.SetNth(i, component->GetConfigurationLayer());
+			((ConfigEntry *) entries.GetNth(i))->SetLayer(layers.GetNth(i));
+
+			break;
+		}
 	}
 }

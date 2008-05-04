@@ -151,10 +151,12 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tab_layer_joblist	= new LayerJoblist();
 	tab_layer_joblist->onRequestSkipTrack.Connect(&Encoder::SkipTrack, encoder);
 
+	tab_layer_tags		= new LayerTags();
 	tab_layer_threads	= new LayerThreads();
 	tab_layer_protocol	= new LayerProtocol();
 
 	tabs_main->Add(tab_layer_joblist);
+	tabs_main->Add(tab_layer_tags);
 	tabs_main->Add(tab_layer_threads);
 	tabs_main->Add(tab_layer_protocol);
 
@@ -207,6 +209,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(tabs_main);
 
 	DeleteObject(tab_layer_joblist);
+	DeleteObject(tab_layer_tags);
 	DeleteObject(tab_layer_threads);
 	DeleteObject(tab_layer_protocol);
 
@@ -410,6 +413,42 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	ToggleUseInputDirectory();
 
 	currentConfig->SaveSettings();
+}
+
+
+Void BonkEnc::BonkEncGUI::ReadCD()
+{
+	if (encoder->encoding)
+	{
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
+
+		return;
+	}
+
+	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
+
+	ex_CR_ReadToc();
+
+	Int	 numTocEntries = ex_CR_GetNumTocEntries();
+
+	for (Int i = 0; i < numTocEntries; i++)
+	{
+		TOCENTRY entry = ex_CR_GetTocEntry(i);
+
+		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1)
+		{
+			/* Add CD track to joblist using a cdda:// URI
+			 */
+			joblist->AddTrackByFileName(
+				String("cdda://")
+					.Append(String::FromInt(currentConfig->cdrip_activedrive))
+					.Append("/")
+					.Append(String::FromInt(entry.btTrackNumber))
+			);
+		}
+	}
+
+	if (currentConfig->enable_auto_cddb) QueryCDDB();
 }
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
@@ -684,7 +723,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		}
 
 		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("BonkEnc.pci:23"));
-		entry->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
+		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
 		entry->SetShortcut(SC_CTRL, 'D', mainWnd);
 	}
 
@@ -795,7 +834,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
 		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:2"), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
-		entry->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
+		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
 		entry->SetTooltipText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 

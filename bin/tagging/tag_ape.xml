@@ -1,0 +1,35 @@
+﻿<TagSpec>
+  <name>APEv2</name>
+
+  <fields>
+    <field name="Artist" type="text">Artist</field>
+    <field name="Title" type="text">Title</field>
+    <field name="Album" type="text">Album</field>
+    <field name="Track" type="integer">Track</field>
+    <field name="Genre" type="genre">Genre</field>
+    <field name="Year" type="date">Year</field>
+    <field name="Comment" type="text">Comment</field>
+    <field name="Subtitle" type="text">Subtitle</field>
+    <field name="Debut album" type="text">Debut album</field>
+    <field name="Publisher" type="text">Publisher</field>
+    <field name="Conductor" type="text">Conductor</field>
+    <field name="Composer" type="text">Composer</field>
+    <field name="Copyright info" type="text">Copyright</field>
+    <field name="Publication right info" type="text">Publicationright</field>
+    <field name="File location" type="text">File</field>
+    <field name="EAN-13/UPC-A ID" type="integer">EAN/UPC</field>
+    <field name="ISBN number" type="text">ISBN</field>
+    <field name="Catalog number" type="text">Catalog</field>
+    <field name="Label code" type="integer">LC</field>
+    <field name="Record date" type="date">Record Date</field>
+    <field name="Record location" type="text">Record Location</field>
+    <field name="Source media" type="data">Media</field>
+    <field name="Index list" type="data">Index</field>
+    <field name="Related links" type="text">Related</field>
+    <field name="ISRC number" type="text">ISRC</field>
+    <field name="Abstract" type="text">Abstract</field>
+    <field name="Language" type="text">Language</field>
+    <field name="Bibliography/Discography" type="text">Bibliography</field>
+    <field name="Intro offset" type="integer">Introplay</field>
+  </fields>
+</TagSpec>

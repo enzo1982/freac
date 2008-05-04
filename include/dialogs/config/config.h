@@ -50,6 +50,8 @@ namespace BonkEnc
 
 			Void			 OnChangeSize();
 			Void			 OnSelectEntry(ConfigLayer *);
+
+			Void			 OnChangeEncoderSettings(const String &);
 		public:
 						 ConfigDialog();
 						~ConfigDialog();

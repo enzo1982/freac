@@ -567,6 +567,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\main_tags.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\main_threads.cpp"
 					>
 				</File>
@@ -774,6 +778,10 @@
 				</File>
 				<File
 					RelativePath="..\..\include\gui\main_protocol.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\gui\main_tags.h"
 					>
 				</File>
 				<File

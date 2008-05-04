@@ -69,14 +69,9 @@ namespace BonkEnc
 
 			Encoder				*encoder;
 
-			virtual CDDBInfo		 GetCDDBData();
-			CDDBInfo			 QueryCDDB(CDDB &);
-
 			/* Returns an existing instance of BonkEnc
 			 */
 			static BonkEnc			*Get();
-		slots:
-			Void				 ReadCD();
 	};
 };
 

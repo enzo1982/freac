@@ -22,6 +22,9 @@ namespace BonkEnc
 		public:
 							 ConfigEntry(const String &, ConfigLayer *);
 							~ConfigEntry();
+		accessors:
+			ConfigLayer			*GetLayer()			{ return layer; }
+			Void				 SetLayer(ConfigLayer *nLayer)	{ layer = nLayer; }
 		slots:
 			Void				 OnSelect();
 		signals:

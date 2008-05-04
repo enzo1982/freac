@@ -1,0 +1,23 @@
+﻿<TagSpec>
+  <name>MP4 Metadata</name>
+
+  <fields>
+    <field name="Artist" type="text"/>
+    <field name="Name" type="text"/>
+    <field name="Album" type="text"/>
+    <field name="Track" type="integer"/>
+    <field name="Total tracks" type="integer"/>
+    <field name="Disk" type="integer"/>
+    <field name="Total disks" type="integer"/>
+    <field name="Genre" type="genre"/>
+    <field name="Year" type="integer"/>
+    <field name="Comment" type="text"/>
+    <field name="Writer" type="text"/>
+    <field name="Tool" type="text"/>
+    <field name="Tempo" type="integer"/>
+    <field name="Grouping" type="text"/>
+    <field name="Compilation" type="integer"/>
+    <field name="Cover art" type="picture"/>
+    <field name="Free form" type="data"/>
+  </fields>
+</TagSpec>

@@ -16,6 +16,7 @@
 
 #include <gui/main_joblist.h>
 #include <gui/main_protocol.h>
+#include <gui/main_tags.h>
 #include <gui/main_threads.h>
 
 using namespace smooth;
@@ -57,6 +58,7 @@ namespace BonkEnc
 
 			TabWidget		*tabs_main;
 			LayerJoblist		*tab_layer_joblist;
+			LayerTags		*tab_layer_tags;
 			LayerThreads		*tab_layer_threads;
 			LayerProtocol		*tab_layer_protocol;
 
@@ -92,6 +94,8 @@ namespace BonkEnc
 
 			Void			 OnChangePosition(const Point &);
 			Void			 OnChangeSize(const Size &);
+
+			Void			 ReadCD();
 
 			Void			 QueryCDDB();
 			Void			 QueryCDDBLater();

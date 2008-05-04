@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>How to ...? - BonkEnc User Guide</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">How to ...? - BonkEnc User Guide</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>BonkEnc setup and special features guide</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Contents</h4>
+		<blockquote>
+		  <p><a href="#anchor1">How to compile BonkEnc from source?</a></p>
+		  <p><a href="#anchor2">How to install encoder/decoder xy?</a></p>
+		</blockquote>
+		<h4 id="anchor1">How to compile BonkEnc from source?</h4>
+		<blockquote>
+		  <p>In order to build BonkEnc from source you should download the latest version of the
+		    <b>BonkEnc Component Development Kit</b> (CDK) from <a href="http://www.bonkenc.org/">www.bonkenc.org</a> first.</p>
+		  <p>You will also need the latest <b>smooth Class Library</b> sources from <a href="http://www.smooth-project.org/">www.smooth-project.org</a>
+		    and of course the <b>BonkEnc source code</b> package or BonkEnc sources checked out from CVS.</p>
+		  <ul>
+		    <li>extract the contents of <b>bonkenc-cdk-1.x.zip</b> to anywhere you like</li>
+		    <li>create a directory structure like this:
+		      <blockquote>
+			/cdk (contains directory <b>system</b> and <b>cdk.bat</b>)<br/>
+			/cdk/bonkenc (rename directory from <b>bonkenc-1.1.x.zip</b> package)<br/>
+			/cdk/smooth (rename directory from <b>smooth-0.8.x.y.zip</b> package)
+		      </blockquote>
+		    </li>
+		    <li>move <b>Makefile.mingw</b> from <b>smooth/makefiles</b> to <b>/cdk/smooth/Makefile</b></li>
+		    <li>run <b>cdk.bat</b></li>
+		    <li>enter: <b>cd smooth && make programs && cd ../bonkenc && make</b></li>
+		  </ul>
+		</blockquote>
+		<h4 id="anchor2">How to install encoder/decoder xy?</h4>
+		<blockquote>
+		  <h5>Nero Digital HE-AAC Encoder</h5>
+		  <blockquote>
+		    <p>To install the Nero Digital HE-AAC Encoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Nero AAC Codec ZIP package</b> from <a href="http://www.nero.com/enu/nero-aac-codec.html">www.nero.com</a>.</li>
+		      <li>Copy the file <b>NeroAACEnc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Fraunhofer MP3 Surround Encoder</h5>
+		  <blockquote>
+		    <p>To install the Fraunhofer MP3 Surround Encoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/tools/sw_fhg_cl.html">www.all4mp3.com</a>.</li>
+		      <li>Copy the file <b>mp3sEncoder.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Helix DNA Producer RealAudio Encoder</h5>
+		  <blockquote>
+		    <p>To install the Fraunhofer MP3 Surround Encoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Create a <b>Helix Community account</b> at <a href="https://helixcommunity.org/account/register">helixcommunity.org</a>.
+			You will need this account in order to be able to download the Helix DNA Producer application.</li>
+		      <li>Download the <b>Helix DNA Producer Command Line App ZIP package</b> from <a href="https://helix-producer.helixcommunity.org/Downloads.htm">helix-producer.helixcommunity.org</a>.</li>
+		      <li>Create a new directory named <b>helix</b> inside the <b>codecs/cmdline</b> subdirectory of your
+			BonkEnc installation path.</li>
+		      <li>Copy the contents of the directory <b>producer</b> from the ZIP package to the newly created <b>codecs/cmdline/helix</b>
+			subdirectory of your BonkEnc installation path. The file <b>producer.exe</b> should now reside inside the <b>helix</b> directory
+			along with several other files and directories from the Helix DNA Producer package.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>TiMidity Software MIDI Synthesizer</h5>
+		  <blockquote>
+		    <p>To install the TiMidity Software MIDI Synthesizer for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>TiMidity CVS binary ZIP package</b> from <a href="http://sourceforge.net/project/showfiles.php?group_id=60403">sourceforge.net</a>.</li>
+		      <li>Download the <b>Freepats ZIP package</b> from <a href="http://freepats.opensrc.org/">freepats.opensrc.org</a>.</li>
+		      <li>Create a new directory named <b>timidity</b> inside the <b>codecs/cmdline</b> subdirectory of your
+			BonkEnc installation path.</li>
+		      <li>Copy the file <b>timidity.exe</b> from the TiMidity ZIP package to the newly created <b>codecs/cmdline/timidity</b>
+			subdirectory of your BonkEnc installation path.</li>
+		      <li>Copy the contents of the directory <b>freepats</b> from the Freepats ZIP package to the newly created <b>codecs/cmdline/timidity</b>
+			subdirectory of your BonkEnc installation path. The file <b>crude.cfg</b> should now reside inside the <b>timidity</b> directory
+			along with several other files and directories from the Freepats package.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>TAK Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the TAK Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>TAK ZIP package</b> from <a href="http://thbeck.de/Tak/Tak.html">thbeck.de</a>.</li>
+		      <li>Copy the file <b>takc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>MPEG-4 Audio Lossless Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>There are no instructions on how to install this encoder provided yet.</p>
+		  </blockquote>
+		  <h5>True Audio Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the True Audio Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>TTA compressor for Windows ZIP package</b> from <a href="http://www.true-audio.com/Free_Downloads">www.true-audio.com</a>.</li>
+		      <li>Copy the file <b>ttaenc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Flake FLAC Encoder</h5>
+		  <blockquote>
+		    <p>To install the Flake FLAC Encoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Flake Windows binary ZIP package</b> from <a href="http://flake-enc.sourceforge.net/download.html">flake-enc.sourceforge.net</a>.</li>
+		      <li>Copy the file <b>flake.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>LAME MP3 Command Line Encoder</h5>
+		  <blockquote>
+		    <p>To install the LAME MP3 Command Line Encoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>LAME release ZIP package</b> from <a href="http://rarewares.org/mp3-lame-bundle.php">rarewares.org</a>.</li>
+		      <li>Copy the file <b>lame.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>TwoLAME MP2 Encoder</h5>
+		  <blockquote>
+		    <p>There are no instructions on how to install this encoder provided yet.</p>
+		  </blockquote>
+		  <h5>Aften AC-3 Encoder</h5>
+		  <blockquote>
+		    <p>To install the Aften AC-3 Encoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Aften Win32 binary ZIP package</b> from <a href="http://win32builds.sourceforge.net/aften/index.html">win32builds.sourceforge.net</a>.</li>
+		      <li>Copy the file <b>aften.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Musepack Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>The Musepack Encoder / Decoder is bundled with the original BonkEnc
+		      distribution so you normally do not need to install it manually.</p>
+		    <p>If you still need to install or update the Musepack Encoder / Decoder
+		      manually, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>separate encoder and decoder ZIP packages</b> from <a href="http://www.musepack.net/index.php?pg=win">www.musepack.net</a>.</li>
+		      <li>Copy the files <b>mppenc.exe</b> and <b>mppdec.exe</b> from the ZIP packages to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>WavPack Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>The WavPack Encoder / Decoder is bundled with the original BonkEnc
+		      distribution so you normally do not need to install it manually.</p>
+		    <p>If you still need to install or update the WavPack Encoder / Decoder
+		      manually, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>WavPack Win32 ZIP package</b> from <a href="http://www.wavpack.com/downloads.html">www.wavpack.com</a>.</li>
+		      <li>Copy the files <b>wavpack.exe</b> and <b>wvunpack.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>OptimFROG Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the OptimFROG Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>OptimFROG Win32 console ZIP package</b> from <a href="http://www.losslessaudio.org/Downloads.php">www.losslessaudio.org</a>.</li>
+		      <li>Copy the file <b>ofr.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Shorten Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the Shorten Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Shorten ZIP package</b> from <a href="http://www.free-codecs.com/download/Shorten.htm">www.free-codecs.com</a>.</li>
+		      <li>Copy the file <b>shorten.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>La Lossless Audio Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the La Lossless Audio Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>La Windows setup package</b> from <a href="http://www.lossless-audio.com/download.htm">www.lossless-audio.com</a>.</li>
+		      <li>Run the setup executable and install the La encoder to a directory of your choice.</li>
+		      <li>Copy the file <b>la.exe</b> from the La installation directory to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		      <li>Please note that the La encoder needs to stay installed on your system in order to
+			use it in BonkEnc.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>RK Audio Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the RK Audio Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>RK Audio compressor ZIP package</b> from <a href="http://www.free-codecs.com/download/RK_Audio_compressor.htm">www.free-codecs.com</a>.</li>
+		      <li>Copy the file <b>rkau.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
+		Copyright (C) 2007-2008 The BonkEnc Project</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

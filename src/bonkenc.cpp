@@ -26,7 +26,7 @@
 BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 BoCA::I18n		*BonkEnc::BonkEnc::i18n = NIL;
 
-String	 BonkEnc::BonkEnc::version	= "CVS 20080328";
+String	 BonkEnc::BonkEnc::version	= "CVS 2008xxyy";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
@@ -125,100 +125,4 @@ Bool BonkEnc::BonkEnc::InitCDRip()
 	}
 
 	return False;
-}
-
-Void BonkEnc::BonkEnc::ReadCD()
-{
-	if (encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
-
-		return;
-	}
-
-	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
-
-	ex_CR_ReadToc();
-
-	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-
-	for (Int i = 0; i < numTocEntries; i++)
-	{
-		TOCENTRY entry = ex_CR_GetTocEntry(i);
-
-		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1)
-		{
-			/* Add CD track to joblist using a cdda:// URI
-			 */
-			joblist->AddTrackByFileName(
-				String("cdda://")
-					.Append(String::FromInt(currentConfig->cdrip_activedrive))
-					.Append("/")
-					.Append(String::FromInt(entry.btTrackNumber))
-			);
-		}
-	}
-}
-
-BonkEnc::CDDBInfo BonkEnc::BonkEnc::GetCDDBData()
-{
-	CDDBInfo	 cddbInfo;
-
-	if (currentConfig->enable_local_cddb)
-	{
-		CDDBLocal	 cddbLocal;
-
-		cddbInfo = QueryCDDB(cddbLocal);
-	}
-
-	if (cddbInfo == NIL && currentConfig->enable_remote_cddb)
-	{
-		CDDBRemote	 cddbRemote;
-
-		cddbInfo = QueryCDDB(cddbRemote);
-	}
-
-	return cddbInfo;
-}
-
-BonkEnc::CDDBInfo BonkEnc::BonkEnc::QueryCDDB(CDDB &cddb)
-{
-	cddb.ConnectToServer();
-	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
-
-	// query by disc ID of inserted disc
-	Int	 discID = cddb.ComputeDiscID();
-
-	if (discID == 0 || discID == -1) return False; // no disc in drive or read error
-
-	Int	 result = cddb.Query(discID);
-
-	String	 category;
-
-	if (result == QUERY_RESULT_NONE)
-	{
-		Console::OutputString(BonkEnc::i18n->TranslateString("No freedb entry for this disk."));
-	}
-	else if (result == QUERY_RESULT_SINGLE || result == QUERY_RESULT_MULTIPLE || result == QUERY_RESULT_FUZZY)
-	{
-		category = cddb.GetNthCategory(0);
-		discID	 = cddb.GetNthDiscID(0);
-	}
-
-	Bool		 readError = False;
-	CDDBInfo	 cddbInfo;
-
-	if (category != NIL && discID != 0)
-	{
-		if (!cddb.Read(category, discID, cddbInfo)) readError = True;
-	}
-
-	if (readError || result == QUERY_RESULT_ERROR)
-	{
-		Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
-	}
-
-	cddb.CloseConnection();
-
-	return cddbInfo;
 }

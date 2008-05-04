@@ -12,6 +12,7 @@
 #include <joblist.h>
 #include <dllinterfaces.h>
 #include <utilities.h>
+#include <startgui.h>
 #include <resources.h>
 
 #include <cddb/cddblocal.h>
@@ -532,7 +533,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	if (cdInfo == NIL)
 	{
-		cdInfo = BonkEnc::Get()->GetCDDBData();
+		cdInfo = ((BonkEncGUI *) BonkEnc::Get())->GetCDDBData();
 
 		if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 	}

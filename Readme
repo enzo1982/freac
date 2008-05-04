@@ -13,9 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (March 2008)
+	Version 1.1 CVS (May 2008)
 
-		- added Estonian ,Catalan, Valencian and Portuguese language support
+		- added Estonian, Catalan, Valencian and Portuguese language support
 		- added German, Italian, Russian and Greek user guides
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
@@ -24,6 +24,7 @@ History
 		- added support for the MAD MP3 decoder
 		- added support for AAC synchronizing (needed to read ripped AAC streams)
 		- added <installdrive> pattern for use in output directory name
+		- label/publisher and ISRC information is now preserved during conversion
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
 		- fixed creation of cuesheets for multiple tracks in a single file
