@@ -62,6 +62,8 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 			FLAC__StreamMetadata_VorbisComment_Entry	 genre;
 			FLAC__StreamMetadata_VorbisComment_Entry	 date;
 			FLAC__StreamMetadata_VorbisComment_Entry	 track;
+			FLAC__StreamMetadata_VorbisComment_Entry	 label;
+			FLAC__StreamMetadata_VorbisComment_Entry	 isrc;
 
 			if (format->artist != NIL)
 			{
@@ -97,6 +99,18 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 			{
 				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&track, "TRACKNUMBER", String(format->track < 10 ? "0" : "").Append(String::FromInt(format->track)));
 				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, track, false);
+			}
+
+			if (format->label != NIL)
+			{
+				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&label, "ORGANIZATION", format->label);
+				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, label, false);
+			}
+
+			if (format->isrc != NIL)
+			{
+				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&isrc, "ISRC", format->isrc);
+				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, isrc, false);
 			}
 		}
 

@@ -13,14 +13,16 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.8 (April 2008)
+	Version 1.0.8 (Mai 2008)
 
 		- Russische Übersetzung aktualisiert
 		- Kleinere Verbesserungen der Übersetzungen und der Anleitung
+		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Möglichen Absturz beim Beenden des Programms behoben
 		- Fehlerhafte Qualitätslevelanzeige in Vorbis-Codiererkonfiguration behoben
 		- Gültigkeitsprüfung für CDDB-Einträge leicht verbessert
 		- Ogg Vorbis auf aoTuV Beta 5.5 aktualisiert
+		- Kleinere Fehlerkorrekturen
 
 	Version 1.0.7 (März 2008)
 

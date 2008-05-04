@@ -132,6 +132,34 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Tag_AddFrame(tag, genre);
 	}
 
+	ID3Frame	*label = ex_ID3Frame_NewID(ID3FID_PUBLISHER);
+
+	if (format->label != NIL)
+	{
+		ex_ID3Field_SetINT(ex_ID3Frame_GetField(label, ID3FN_TEXTENC), encoding);
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(label, ID3FN_TEXT), encoding);
+
+		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(label, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->label).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(label, ID3FN_TEXT), (unicode_t *) format->label.ConvertTo("UTF-16BE"));
+		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(label, ID3FN_TEXT), format->label);
+
+		ex_ID3Tag_AddFrame(tag, label);
+	}
+
+	ID3Frame	*isrc = ex_ID3Frame_NewID(ID3FID_ISRC);
+
+	if (format->isrc != NIL)
+	{
+		ex_ID3Field_SetINT(ex_ID3Frame_GetField(isrc, ID3FN_TEXTENC), encoding);
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), encoding);
+
+		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->isrc).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), (unicode_t *) format->isrc.ConvertTo("UTF-16BE"));
+		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), format->isrc);
+
+		ex_ID3Tag_AddFrame(tag, isrc);
+	}
+
 	ID3Frame	*comment = ex_ID3Frame_NewID(ID3FID_COMMENT);
 
 	if (currentConfig->default_comment != NIL) 
@@ -185,6 +213,8 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 	ex_ID3Frame_Delete(track);
 	ex_ID3Frame_Delete(year);
 	ex_ID3Frame_Delete(genre);
+	ex_ID3Frame_Delete(label);
+	ex_ID3Frame_Delete(isrc);
 	ex_ID3Frame_Delete(comment);
 
 	for (Int j = 0; j < format->pictures.Length(); j++)

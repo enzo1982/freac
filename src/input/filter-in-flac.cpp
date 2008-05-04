@@ -290,6 +290,8 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 				else if (id == "GENRE")		filter->infoFormat->genre  = comment.Tail(comment.Length() - 6);
 				else if (id == "DATE")		filter->infoFormat->year   = comment.Tail(comment.Length() - 5).ToInt();
 				else if (id == "TRACKNUMBER")	filter->infoFormat->track  = comment.Tail(comment.Length() - 12).ToInt();
+				else if (id == "ORGANIZATION")	filter->infoFormat->label  = comment.Tail(comment.Length() - 13);
+				else if (id == "ISRC")		filter->infoFormat->isrc   = comment.Tail(comment.Length() - 5);
 			}
 
 			String::SetInputFormat(prevInFormat);

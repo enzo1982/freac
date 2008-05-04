@@ -281,6 +281,8 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 				else if (id == "GENRE")		nFormat->genre	= comment.Tail(comment.Length() - 6);
 				else if (id == "DATE")		nFormat->year	= comment.Tail(comment.Length() - 5).ToInt();
 				else if (id == "TRACKNUMBER")	nFormat->track	= comment.Tail(comment.Length() - 12).ToInt();
+				else if (id == "ORGANIZATION")	nFormat->label	= comment.Tail(comment.Length() - 13);
+				else if (id == "ISRC")		nFormat->isrc	= comment.Tail(comment.Length() - 5);
 			}
 
 			String::SetInputFormat(prevInFormat);

@@ -50,6 +50,9 @@ namespace BonkEnc
 			Int		 year;
 			String		 comment;
 
+			String		 label;
+			String		 isrc;
+
 			String		 oArtist;
 			String		 oTitle;
 			String		 oAlbum;

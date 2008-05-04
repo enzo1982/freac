@@ -84,6 +84,16 @@ Bool BonkEnc::FilterOutVORBIS::Activate()
 			{
 				ex_vorbis_comment_add_tag(&vc, (char *) "GENRE", format->genre);
 			}
+
+			if (format->label != NIL)
+			{
+				ex_vorbis_comment_add_tag(&vc, (char *) "ORGANIZATION", format->label);
+			}
+
+			if (format->isrc != NIL)
+			{
+				ex_vorbis_comment_add_tag(&vc, (char *) "ISRC", format->isrc);
+			}
 		}
 
 		String::SetOutputFormat(prevOutFormat);
