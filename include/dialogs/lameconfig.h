@@ -65,7 +65,6 @@ namespace BonkEnc
 
 			OptionBox	*vbr_option_cbr;
 			OptionBox	*vbr_option_abr;
-			OptionBox	*vbr_option_vbrrh;
 			OptionBox	*vbr_option_vbrmtrh;
 
 			Text		*vbr_text_setquality;

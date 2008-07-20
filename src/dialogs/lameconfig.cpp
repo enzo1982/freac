@@ -219,7 +219,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 127;
-	size.cy = 106;
+	size.cy = 88;
 
 	vbr_vbrmode		= new GroupBox(BonkEnc::i18n->TranslateString("VBR mode"), pos, size);
 
@@ -231,20 +231,15 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	vbr_option_cbr		= new OptionBox(String("CBR (").Append(BonkEnc::i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off);
 	vbr_option_cbr->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
 
-	pos.y += 23;
+	pos.y += 25;
+
+	vbr_option_vbrmtrh	= new OptionBox("VBR", pos, size, &vbrmode, vbr_mtrh);
+	vbr_option_vbrmtrh->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
+
+	pos.y += 25;
 
 	vbr_option_abr		= new OptionBox("ABR", pos, size, &vbrmode, vbr_abr);
 	vbr_option_abr->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
-
-	pos.y += 23;
-
-	vbr_option_vbrrh	= new OptionBox("VBR rh", pos, size, &vbrmode, vbr_rh);
-	vbr_option_vbrrh->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
-
-	pos.y += 23;
-
-	vbr_option_vbrmtrh	= new OptionBox("VBR mtrh", pos, size, &vbrmode, vbr_mtrh);
-	vbr_option_vbrmtrh->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
 
 	pos.x = 142;
 	pos.y = 11;
@@ -641,7 +636,6 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	register_layer_vbr->Add(vbr_vbrmode);
 	register_layer_vbr->Add(vbr_option_cbr);
 	register_layer_vbr->Add(vbr_option_abr);
-	register_layer_vbr->Add(vbr_option_vbrrh);
 	register_layer_vbr->Add(vbr_option_vbrmtrh);
 
 	register_layer_vbr->Add(vbr_quality);
@@ -743,7 +737,6 @@ BonkEnc::ConfigureLameEnc::~ConfigureLameEnc()
 	DeleteObject(vbr_vbrmode);
 	DeleteObject(vbr_option_cbr);
 	DeleteObject(vbr_option_abr);
-	DeleteObject(vbr_option_vbrrh);
 	DeleteObject(vbr_option_vbrmtrh);
 	DeleteObject(vbr_quality);
 	DeleteObject(vbr_text_setquality);
@@ -944,7 +937,6 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		vbr_vbrmode->Activate();
 		vbr_option_cbr->Activate();
 		vbr_option_abr->Activate();
-		vbr_option_vbrrh->Activate();
 		vbr_option_vbrmtrh->Activate();
 		vbr_quality->Activate();
 		vbr_text_setquality->Activate();
@@ -1024,7 +1016,7 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 
 		if (basic_combo_stereomode->GetSelectedEntryNumber() != 3) basic_check_forcejs->Deactivate();
 
-		if (vbrmode != vbr_rh && vbrmode != vbr_mtrh)
+		if (vbrmode != vbr_mtrh)
 		{
 			vbr_quality->Deactivate();
 			vbr_text_setquality->Deactivate();
@@ -1111,7 +1103,6 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		vbr_vbrmode->Deactivate();
 		vbr_option_cbr->Deactivate();
 		vbr_option_abr->Deactivate();
-		vbr_option_vbrrh->Deactivate();
 		vbr_option_vbrmtrh->Deactivate();
 		vbr_quality->Deactivate();
 		vbr_text_setquality->Deactivate();
@@ -1314,7 +1305,6 @@ Void BonkEnc::ConfigureLameEnc::SetVBRMode()
 			basic_edit_ratio->Deactivate();
 
 			break;
-		case vbr_rh:
 		case vbr_mtrh:
 			vbr_quality->Activate();
 			vbr_text_setquality->Activate();

@@ -13,7 +13,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.8 (May 2008)
+	Version 1.0.8 (July 2008)
 
 		- updated Russian translation
 		- minor translation and manual fixes
@@ -21,6 +21,8 @@ History
 		- fixed random crashes at program exit
 		- fixed quality level display in Vorbis encoder configuration
 		- slightly improved CDDB entry validity check
+		- made preset 'Standard' the default for LAME
+		- upgraded LAME to version 3.98
 		- upgraded Ogg Vorbis to aoTuV beta 5.5
 		- minor bug fixes
 
