@@ -567,10 +567,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\main_tags.cpp"
-					>
-				</File>
-				<File
 					RelativePath="..\..\src\gui\main_threads.cpp"
 					>
 				</File>
@@ -580,6 +576,14 @@
 				>
 				<File
 					RelativePath="..\..\src\jobs\job.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\jobs\job_testprogress.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\jobs\jobmanager.cpp"
 					>
 				</File>
 			</Filter>
@@ -781,10 +785,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\include\gui\main_tags.h"
-					>
-				</File>
-				<File
 					RelativePath="..\..\include\gui\main_threads.h"
 					>
 				</File>
@@ -794,6 +794,14 @@
 				>
 				<File
 					RelativePath="..\..\include\jobs\job.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\jobs\job_testprogress.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\jobs\jobmanager.h"
 					>
 				</File>
 			</Filter>

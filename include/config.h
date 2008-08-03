@@ -41,6 +41,8 @@ namespace BonkEnc
 			Size		 wndSize;
 			Bool		 maximized;
 
+			Int		 maxActiveJobs;
+
 			Int		 tab_width_track;
 			Int		 tab_width_length;
 			Int		 tab_width_size;
@@ -130,6 +132,8 @@ namespace BonkEnc
 			Bool		 enable_overwrite_cdtext;
 			Bool		 enable_cddb_cache;
 			Bool		 update_joblist;
+
+			Bool		 CanChangeConfig();
 
 			Bool		 LoadSettings();
 			Bool		 SaveSettings();

@@ -226,7 +226,13 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 	return rVal;
 }
 
-String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
+/* This function takes a file name and normalizes
+ * all the directory names included in the path by
+ * removing spaces and dots at the end. It also
+ * shortens each directory and the file name to a
+ * maximum of 96 characters.
+ */
+String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 {
 	String	 rFileName = fileName;
 	String	 dir = fileName;
@@ -239,6 +245,8 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 		{
 			String	 tmpDir2 = tmpDir;
 
+			/* Shorten to at most 96 characters.
+			 */
 			if (tmpDir.Length() - lastBS > 96)
 			{
 				tmpDir2 = String().CopyN(tmpDir, lastBS + 96);
@@ -246,6 +254,8 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 				i -= (tmpDir.Length() - lastBS - 96);
 			}
 
+			/* Replace trailing dots and spaces.
+			 */
 			while (tmpDir2.EndsWith(".") || tmpDir2.EndsWith(" ")) { tmpDir2[tmpDir2.Length() - 1] = 0; i--; }
 
 			if (tmpDir2 != tmpDir)
@@ -256,18 +266,40 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 				dir = rFileName;
 			}
 
-			if (Setup::enableUnicode) CreateDirectoryW(tmpDir, NIL);
-			else			  CreateDirectoryA(tmpDir, NIL);
-
 			lastBS = i;
 		}
 
 		tmpDir[i] = dir[i];
 	}
 
+	/* Shorten file name to 96 characters.
+	 */
 	if (rFileName.Length() - lastBS > 96) rFileName = String().CopyN(rFileName, lastBS + 96);
 
+	/* Replace trailing spaces.
+	 */
 	while (rFileName.EndsWith(" ")) { rFileName[rFileName.Length() - 1] = 0; }
+
+	return rFileName;
+}
+
+String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
+{
+	String	 rFileName = NormalizeFileName(fileName);
+	String	 tmpPath;
+
+	for (Int i = 0, lastBS = 0; i < rFileName.Length(); i++)
+	{
+		if (rFileName[i] == '\\' || rFileName[i] == '/')
+		{
+			if (Setup::enableUnicode) CreateDirectoryW(tmpPath, NIL);
+			else			  CreateDirectoryA(tmpPath, NIL);
+
+			lastBS = i;
+		}
+
+		tmpPath[i] = rFileName[i];
+	}
 
 	return rFileName;
 }

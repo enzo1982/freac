@@ -33,9 +33,11 @@ namespace BonkEnc
 	class Encoder
 	{
 		protected:
-			Bool					 pause_encoding;
-			Bool					 stop_encoding;
-			Bool					 skip_track;
+			Bool					 encoding;
+			Bool					 paused;
+
+			Bool					 stop;
+			Bool					 skip;
 
 			Int					 encoder_activedrive;
 
@@ -52,9 +54,6 @@ namespace BonkEnc
 
 			Int					 EncoderThread();
 		public:
-			Bool					 encoding;
-			Bool					 paused;
-
 								 Encoder();
 								~Encoder();
 
@@ -64,6 +63,9 @@ namespace BonkEnc
 			Void					 Resume();
 
 			Void					 Stop();
+		accessors:
+			Bool					 IsEncoding() const	{ return encoding; }
+			Bool					 IsPaused() const	{ return paused; }
 		signals:
 			Signal0<Void>				 onStartEncoding;
 			Signal1<Void, Bool>			 onFinishEncoding;

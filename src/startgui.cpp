@@ -35,8 +35,6 @@
 
 #include <dialogs/language.h>
 
-using namespace BoCA::AS;
-
 Int StartGUI(const Array<String> &args)
 {
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug");
@@ -151,12 +149,20 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tab_layer_joblist	= new LayerJoblist();
 	tab_layer_joblist->onRequestSkipTrack.Connect(&Encoder::SkipTrack, encoder);
 
-	tab_layer_tags		= new LayerTags();
+	tabs_main->Add(tab_layer_joblist);
+
+	InitExtensionComponents();
+
+	for (Int i = 0; i < extensionComponents.Length(); i++)
+	{
+		Layer	*mainTabLayer = extensionComponents.GetNth(i)->getMainTabLayer.Emit();
+
+		if (mainTabLayer != NIL) tabs_main->Add(mainTabLayer);
+	}
+
 	tab_layer_threads	= new LayerThreads();
 	tab_layer_protocol	= new LayerProtocol();
 
-	tabs_main->Add(tab_layer_joblist);
-	tabs_main->Add(tab_layer_tags);
 	tabs_main->Add(tab_layer_threads);
 	tabs_main->Add(tab_layer_protocol);
 
@@ -200,6 +206,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 BonkEnc::BonkEncGUI::~BonkEncGUI()
 {
+	FreeExtensionComponents();
+
 	DeleteObject(mainWnd_menubar);
 	DeleteObject(mainWnd_iconbar);
 	DeleteObject(mainWnd_titlebar);
@@ -209,7 +217,6 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(tabs_main);
 
 	DeleteObject(tab_layer_joblist);
-	DeleteObject(tab_layer_tags);
 	DeleteObject(tab_layer_threads);
 	DeleteObject(tab_layer_protocol);
 
@@ -229,9 +236,35 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(menu_help);
 }
 
+Void BonkEnc::BonkEncGUI::InitExtensionComponents()
+{
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_EXTENSION) continue;
+
+		ExtensionComponent	*component = (ExtensionComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
+
+		if (component != NIL) extensionComponents.Add(component);
+	}
+}
+
+Void BonkEnc::BonkEncGUI::FreeExtensionComponents()
+{
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0; i < extensionComponents.Length(); i++)
+	{
+		boca.DeleteComponent(extensionComponents.GetNth(i));
+	}
+
+	extensionComponents.RemoveAll();
+}
+
 Bool BonkEnc::BonkEncGUI::ExitProc()
 {
-	if (encoder->encoding)
+	if (encoder->IsEncoding())
 	{
 		if (IDNO == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
 
@@ -354,12 +387,7 @@ Void BonkEnc::BonkEncGUI::About()
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 {
-	if (encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot configure encoder while encoding!");
-
-		return;
-	}
+	if (!currentConfig->CanChangeConfig()) return;
 
 	Registry	&boca = Registry::Get();
 	Component	*component = boca.CreateComponentByID(currentConfig->encoderID);
@@ -376,7 +404,7 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 	}
 	else
 	{
-		QuickMessage(i18n->TranslateString("No options can be configured for the WAVE Out filter!"), i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		QuickMessage(String(i18n->TranslateString("No configuration dialog available for:\n\n%1")).Replace("%1", component->GetName()), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_INFORMATION);
 	}
 
 	component->FreeConfigurationLayer();
@@ -386,12 +414,7 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 
 Void BonkEnc::BonkEncGUI::ConfigureSettings()
 {
-	if (encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot change settings while encoding!");
-
-		return;
-	}
+	if (!currentConfig->CanChangeConfig()) return;
 
 	ConfigDialog	*dlg = new ConfigDialog();
 
@@ -418,12 +441,7 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 
 Void BonkEnc::BonkEncGUI::ReadCD()
 {
-	if (encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
-
-		return;
-	}
+	if (!joblist->CanModifyJobList()) return;
 
 	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
 
@@ -518,14 +536,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 					format->genre	= cdInfo.dGenre;
 					format->year	= cdInfo.dYear;
 
-					String	 jlEntry;
-
-					if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
-					else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
-
-					jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
-
-					joblist->GetNthEntry(k)->SetText(jlEntry);
+					joblist->UpdateTrackInfo(*format);
 				}
 			}
 		}
@@ -907,10 +918,10 @@ Void BonkEnc::BonkEncGUI::Encode()
 
 Void BonkEnc::BonkEncGUI::PauseResumeEncoding()
 {
-	if (!encoder->encoding) return;
+	if (!encoder->IsEncoding()) return;
 
-	if (encoder->paused) encoder->Resume();
-	else		     encoder->Pause();
+	if (encoder->IsPaused()) encoder->Resume();
+	else			 encoder->Pause();
 }
 
 Void BonkEnc::BonkEncGUI::StopEncoding()

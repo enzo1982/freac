@@ -261,7 +261,7 @@ Void BonkEnc::ConfigureEncoders::ConfigureEncoder()
 	}
 	else
 	{
-		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), BonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		QuickMessage(String(BonkEnc::i18n->TranslateString("No configuration dialog available for:\n\n%1")).Replace("%1", component->GetName()), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_INFORMATION);
 	}
 
 	component->FreeConfigurationLayer();

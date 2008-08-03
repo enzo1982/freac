@@ -40,6 +40,8 @@ namespace BonkEnc
 							 JobList(const Point &, const Size &);
 			virtual				~JobList();
 
+			Bool				 CanModifyJobList();
+
 			Int				 GetNOfTracks();
 			Track				*GetNthTrack(Int);
 
@@ -54,6 +56,8 @@ namespace BonkEnc
 			Void				 AddTracksByPattern(const String &, const String &);
 
 			Void				 AddTrackByFileName(const String &, const String & = NIL, Bool = True);
+
+			Void				 UpdateTrackInfo(const Track &);
 
 			Void				 RemoveSelectedTrack();
 		signals:

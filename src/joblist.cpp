@@ -80,6 +80,18 @@ BoCA::Track *BonkEnc::JobList::GetNthTrack(Int n)
 	return tracks.Get(GetNthEntry(n)->GetHandle());
 }
 
+Bool BonkEnc::JobList::CanModifyJobList()
+{
+	if (BonkEnc::Get()->encoder->IsEncoding())
+	{
+		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
+
+		return False;
+	}
+
+	return True;
+}
+
 Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 {
 	Track	*track = new Track(iTrack);
@@ -92,8 +104,8 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	String	 jlEntry;
 	String	 tooltip;
 
-	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+	if (track->artist == NIL && track->title == NIL) jlEntry = String(track->origFilename).Append("\t");
+	else						 jlEntry = String(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
 
 	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
 
@@ -109,7 +121,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 
 	if (track->rate > 0 && track->channels > 0)
 	{
-		if (track->length > 0)		  tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
+		if	(track->length	     > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
 		else if (track->approxLength > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->approxLength / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
 
 		wchar_t	 sign[2] = { 0x2248, 0 };
@@ -127,6 +139,8 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 
 	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
 
+	BoCA::JobList::Get()->onApplicationAddTrack.Emit(*track);
+
 	return True;
 }
 
@@ -134,7 +148,11 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 {
 	if (n == GetSelectedEntryNumber()) onSelectNone.Emit();
 
-	delete GetNthTrack(n);
+	Track	*track = GetNthTrack(n);
+
+	BoCA::JobList::Get()->onApplicationRemoveTrack.Emit(*track);
+
+	delete track;
 
 	tracks.Remove(GetNthEntry(n)->GetHandle());
 
@@ -147,16 +165,18 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 Bool BonkEnc::JobList::RemoveAllTracks()
 {
-/*	if (BonkEnc::Get()->encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
+	if (!CanModifyJobList()) return False;
 
-		return False;
-	}
-*/
 	onRemovePlayingTrack.Emit();
 
-	for (Int i = 0; i < GetNOfTracks(); i++) delete GetNthTrack(i);
+	for (Int i = 0; i < GetNOfTracks(); i++)
+	{
+		Track	*track = GetNthTrack(i);
+
+		BoCA::JobList::Get()->onApplicationRemoveTrack.Emit(*track);
+
+		delete track;
+	}
 
 	tracks.RemoveAll();
 
@@ -183,12 +203,7 @@ Int BonkEnc::JobList::SetMetrics(const Point &nPos, const Size &nSize)
 
 Void BonkEnc::JobList::AddTrackByDialog()
 {
-	if (BonkEnc::Get()->encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
-
-		return;
-	}
+	if (!CanModifyJobList()) return;
 
 	FileSelection	*dialog = new FileSelection();
 
@@ -248,12 +263,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outfile, Bool displayErrors)
 {
-	if (BonkEnc::Get()->encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
-
-		return;
-	}
+	if (!CanModifyJobList()) return;
 
 	DecoderComponent	*filter_in = Utilities::CreateDecoderComponent(file);
 
@@ -370,12 +380,7 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 
 Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
 {
-	if (BonkEnc::Get()->encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
-
-		return;
-	}
+	if (!CanModifyJobList()) return;
 
 	if (File(file).Exists())
 	{
@@ -406,14 +411,33 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 	if (files.Length() == 0) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
 }
 
+Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
+{
+	String	 jlEntry;
+
+	if (track.artist == NIL && track.title == NIL)	jlEntry = String(track.origFilename).Append("\t");
+	else						jlEntry = String(track.artist.Length() > 0 ? track.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track.title.Length() > 0 ? track.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+
+	jlEntry.Append(track.track > 0 ? (track.track < 10 ? String("0").Append(String::FromInt(track.track)) : String::FromInt(track.track)) : String("")).Append("\t").Append(track.lengthString).Append("\t").Append(track.fileSizeString);
+
+	for (Int i = 0; i < GetNOfTracks(); i++)
+	{
+		Track	*existingTrack = GetNthTrack(i);
+
+		if (existingTrack->GetTrackID() == track.GetTrackID())
+		{
+			GetNthEntry(i)->SetText(jlEntry);
+
+			break;
+		}
+	}
+
+	BoCA::JobList::Get()->onApplicationModifyTrack.Emit(track);
+}
+
 Void BonkEnc::JobList::RemoveSelectedTrack()
 {
-	if (BonkEnc::Get()->encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
-
-		return;
-	}
+	if (!CanModifyJobList()) return;
 
 	if (GetSelectedEntry() == NIL)
 	{
@@ -473,12 +497,7 @@ Void BonkEnc::JobList::ToggleSelection()
 
 Void BonkEnc::JobList::LoadList()
 {
-	if (BonkEnc::Get()->encoder->encoding)
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
-
-		return;
-	}
+	if (!CanModifyJobList()) return;
 
 	FileSelection	*dialog = new FileSelection();
 
@@ -583,7 +602,11 @@ Void BonkEnc::JobList::OnUnregister(Widget *container)
 
 Void BonkEnc::JobList::OnSelectEntry()
 {
-	onSelectTrack.Emit(*GetSelectedTrack());
+	Track	*track = GetSelectedTrack();
+
+	onSelectTrack.Emit(*track);
+
+	BoCA::JobList::Get()->onApplicationSelectTrack.Emit(*track);
 }
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()

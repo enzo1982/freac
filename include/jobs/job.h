@@ -21,7 +21,14 @@ namespace BonkEnc
 	abstract class Job : public ListEntry
 	{
 		private:
+			Text				*progressLabel;
 			Progressbar			*progress;
+			EditBox				*progressValue;
+
+			Text				*timeLabel;
+			EditBox				*timeValue;
+
+			Int				 startTicks;
 
 			static Array<Job *>		 planned;
 			static Array<Job *>		 running;
@@ -31,16 +38,20 @@ namespace BonkEnc
 							 Job();
 			virtual				~Job();
 
+			Int				 Schedule();
 			Int				 Run();
 		accessors:
 			Int				 SetProgress(Int);
+			Int				 GetProgress();
 
 			static const Array<Job *>	&GetPlannedJobs()	{ return planned; }
-			static const Array<Job *>	&GetRunnningJobs()	{ return running; }
+			static const Array<Job *>	&GetRunningJobs()	{ return running; }
 
 			static const Array<Job *>	&GetAllJobs()		{ return all; }
 		slots:
-			virtual Void			 Perform() = 0;
+			Void				 OnChangeSize(const Size &);
+
+			virtual Error			 Perform() = 0;
 		signals:
 			static Signal0<Void>		 onChange;
 

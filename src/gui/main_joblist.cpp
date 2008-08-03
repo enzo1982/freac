@@ -10,6 +10,7 @@
 
 #include <gui/main_joblist.h>
 #include <joblist.h>
+#include <startgui.h>
 #include <playback.h>
 #include <utilities.h>
 #include <dllinterfaces.h>
@@ -86,29 +87,29 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.x = 7;
 	pos.y = 96;
 
-	enc_filename		= new Text("Encoding file:", pos);
-	enc_filename->SetOrientation(OR_LOWERLEFT);
+	txt_filename		= new Text("Encoding file:", pos);
+	txt_filename->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	enc_time		= new Text("Time left:", pos);
-	enc_time->SetOrientation(OR_LOWERLEFT);
+	txt_format		= new Text("File format:", pos);
+	txt_format->SetOrientation(OR_LOWERLEFT);
 
-	enc_percent		= new Text("Percent done:", pos);
-	enc_percent->SetOrientation(OR_LOWERLEFT);
-
-	enc_encoder		= new Text("Selected encoder:", pos);
-	enc_encoder->SetOrientation(OR_LOWERLEFT);
+	txt_encoder		= new Text("Selected encoder:", pos);
+	txt_encoder->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	enc_progress		= new Text("File progress:", pos);
-	enc_progress->SetOrientation(OR_LOWERLEFT);
+	txt_progress		= new Text("File progress:", pos);
+	txt_progress->SetOrientation(OR_LOWERLEFT);
+
+	txt_time		= new Text("Time left:", pos);
+	txt_time->SetOrientation(OR_LOWERRIGHT);
 
 	pos.y -= 24;
 
-	enc_outdir		= new Text("Output dir.:", pos);
-	enc_outdir->SetOrientation(OR_LOWERLEFT);
+	txt_outdir		= new Text("Output dir.:", pos);
+	txt_outdir->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 16;
 	pos.y = 24;
@@ -322,17 +323,22 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	btn_skip->onAction.Connect(&onRequestSkipTrack);
 	btn_skip->Deactivate();
 
-	edb_time = new EditBox("00:00", Point(0, 75), Size(0, 0), 5);
-	edb_time->SetOrientation(OR_LOWERLEFT);
-	edb_time->Deactivate();
+	edb_format = new EditBox("", Point(0, 75), Size(0, 0), 4);
+	edb_format->SetOrientation(OR_LOWERLEFT);
+	edb_format->Deactivate();
 
-	edb_percent = new EditBox("0%", Point(0, 75), Size(0, 0), 4);
-	edb_percent->SetOrientation(OR_LOWERLEFT);
-	edb_percent->Deactivate();
+	combo_encoder = new ComboBox(Point(0, 75), Size(0, 0));
+	combo_encoder->SetOrientation(OR_LOWERLEFT);
+	combo_encoder->onSelectEntry.Connect(&LayerJoblist::OnSelectEncoder, this);
 
-	edb_encoder = new EditBox("", Point(0, 75), Size(0, 0), 4);
-	edb_encoder->SetOrientation(OR_LOWERLEFT);
-	edb_encoder->Deactivate();
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
+
+		combo_encoder->AddEntry(boca.GetComponentName(i));
+	}
 
 	UpdateEncoderText();
 
@@ -342,7 +348,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	btn_outdir = new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
 	btn_outdir->SetOrientation(OR_LOWERRIGHT);
-	btn_outdir->onAction.Connect(&LayerJoblist::SelectDir, this);
+	btn_outdir->onAction.Connect(&LayerJoblist::OnSelectDir, this);
 
 	progress = new Progressbar(Point(0, 51), Size(0, 10), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 	progress->SetOrientation(OR_LOWERLEFT);
@@ -352,11 +358,33 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	progress_total->SetOrientation(OR_LOWERLEFT);
 	progress_total->Deactivate();
 
+	edb_trackPercent = new EditBox("0%", Point(0, 51), Size(33, 0), 4);
+	edb_trackPercent->SetOrientation(OR_LOWERLEFT);
+	edb_trackPercent->Deactivate();
+
+	txt_splitPercent		= new Text("/", Point(0, 48));
+	txt_splitPercent->SetOrientation(OR_LOWERLEFT);
+
+	edb_totalPercent = new EditBox("0%", Point(0, 51), Size(33, 0), 4);
+	edb_totalPercent->SetOrientation(OR_LOWERLEFT);
+	edb_totalPercent->Deactivate();
+
+	edb_trackTime = new EditBox("00:00", Point(87, 51), Size(34, 0), 5);
+	edb_trackTime->SetOrientation(OR_LOWERRIGHT);
+	edb_trackTime->Deactivate();
+
+	txt_splitTime		= new Text("/", Point(50, 48));
+	txt_splitTime->SetOrientation(OR_LOWERRIGHT);
+
+	edb_totalTime = new EditBox("00:00", Point(41, 51), Size(34, 0), 5);
+	edb_totalTime->SetOrientation(OR_LOWERRIGHT);
+	edb_totalTime->Deactivate();
+
 	menu_trackmenu		= new PopupMenu();
 
 	Add(joblist);
 
-	SetLanguage();
+	BonkEncGUI::Get()->onChangeLanguageSettings.Connect(&LayerJoblist::SetLanguage, this);
 
 	Add(check_cuesheet);
 	Add(check_playlist);
@@ -386,18 +414,23 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Add(info_edit_year);
 	Add(info_text_genre);
 	Add(info_edit_genre);
-	Add(enc_filename);
-	Add(enc_time);
-	Add(enc_percent);
-	Add(enc_encoder);
-	Add(enc_progress);
-	Add(enc_outdir);
+	Add(txt_filename);
+	Add(txt_time);
+	Add(txt_format);
+	Add(txt_encoder);
+	Add(txt_progress);
+	Add(txt_outdir);
 	Add(edb_filename);
-	Add(btn_skip);
-	Add(edb_time);
-	Add(edb_percent);
-	Add(edb_encoder);
+	Add(edb_trackTime);
+	Add(txt_splitTime);
+	Add(edb_totalTime);
+	Add(edb_trackPercent);
+	Add(txt_splitPercent);
+	Add(edb_totalPercent);
+	Add(edb_format);
+	Add(combo_encoder);
 	Add(edb_outdir);
+	Add(btn_skip);
 	Add(btn_outdir);
 	Add(progress_total);
 	Add(progress);
@@ -473,18 +506,23 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 	DeleteObject(info_text_genre);
 	DeleteObject(info_edit_genre);
 	DeleteObject(info_list_genre);
-	DeleteObject(enc_filename);
-	DeleteObject(enc_time);
-	DeleteObject(enc_percent);
-	DeleteObject(enc_encoder);
-	DeleteObject(enc_progress);
-	DeleteObject(enc_outdir);
+	DeleteObject(txt_filename);
+	DeleteObject(txt_time);
+	DeleteObject(txt_format);
+	DeleteObject(txt_encoder);
+	DeleteObject(txt_progress);
+	DeleteObject(txt_outdir);
 	DeleteObject(edb_filename);
-	DeleteObject(btn_skip);
-	DeleteObject(edb_time);
-	DeleteObject(edb_percent);
-	DeleteObject(edb_encoder);
+	DeleteObject(edb_trackTime);
+	DeleteObject(txt_splitTime);
+	DeleteObject(edb_totalTime);
+	DeleteObject(edb_trackPercent);
+	DeleteObject(txt_splitPercent);
+	DeleteObject(edb_totalPercent);
+	DeleteObject(edb_format);
+	DeleteObject(combo_encoder);
 	DeleteObject(edb_outdir);
+	DeleteObject(btn_skip);
 	DeleteObject(btn_outdir);
 	DeleteObject(progress);
 	DeleteObject(progress_total);
@@ -532,14 +570,22 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	htsp_edit_artist->SetWidth(info_edit_artist->GetWidth());
 	htsp_edit_album->SetWidth(info_edit_album->GetWidth());
 
-	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
+	Int	 maxTextLength = (Int) Math::Max(Math::Max(txt_progress->textSize.cx, txt_outdir->textSize.cx), Math::Max(txt_filename->textSize.cx, txt_format->textSize.cx));
+
+	txt_encoder->SetX(clientSize.cx / 2 + 7);
+	combo_encoder->SetX(clientSize.cx / 2 + txt_encoder->textSize.cx + 14);
 
 	edb_filename->SetWidth(clientSize.cx - 107 - maxTextLength);
-	edb_encoder->SetWidth(clientSize.cx - 116 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx);
+	edb_format->SetWidth(clientSize.cx / 2 - 14 - maxTextLength);
+	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 21 - txt_encoder->textSize.cx);
 	edb_outdir->SetWidth(clientSize.cx - 107 - maxTextLength);
 
-	progress->SetWidth(clientSize.cx - 21 - maxTextLength);
-	progress_total->SetWidth(clientSize.cx - 21 - maxTextLength);
+	progress->SetWidth(clientSize.cx - 193 - maxTextLength - txt_time->textSize.cx);
+	progress_total->SetWidth(clientSize.cx - 193 - maxTextLength - txt_time->textSize.cx);
+
+	edb_trackPercent->SetX(progress->GetX() + progress->GetWidth());
+	txt_splitPercent->SetX(progress->GetX() + progress->GetWidth() + 36);
+	edb_totalPercent->SetX(progress->GetX() + progress->GetWidth() + 45);
 
 	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
@@ -553,8 +599,10 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 
 Bool BonkEnc::LayerJoblist::SetLanguage()
 {
-	Bool	 prevRTL = i18n->IsActiveLanguageRightToLeft();
+	static Bool	 prevRTL = i18n->IsActiveLanguageRightToLeft();
 
+	/* Rearrange playback buttons if language direction changed.
+	 */
 	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
 	{
 		if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
@@ -600,55 +648,59 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 			button_next->Show();
 			button_open->Show();
 		}
+
+		prevRTL = i18n->IsActiveLanguageRightToLeft();
 	}
 
-	enc_filename->Hide();
-	enc_time->Hide();
-	enc_percent->Hide();
-	enc_encoder->Hide();
-	enc_progress->Hide();
-	enc_outdir->Hide();
+	/* Hide all affected widgets prior to changing
+	 * labels to avoid flickering.
+	 */
+	Hide();
 
-	edb_filename->Hide();
-	edb_time->Hide();
-	edb_percent->Hide();
-	edb_encoder->Hide();
-	edb_outdir->Hide();
+	/* Change labels of joblist  widgets.
+	 */
+	txt_filename->SetText(i18n->TranslateString("Encoding file:"));
+	txt_time->SetText(i18n->TranslateString("Time left:"));
+	txt_format->SetText(i18n->TranslateString("File format:"));
+	txt_encoder->SetText(i18n->TranslateString("Selected encoder:"));
+	txt_progress->SetText(i18n->TranslateString("File progress:"));
+	txt_outdir->SetText(i18n->TranslateString("Output dir.:"));
 
-	progress->Hide();
-	progress_total->Hide();
+	edb_filename->SetText(i18n->TranslateString("none"));
+	edb_format->SetText(i18n->TranslateString("unknown"));
 
-	info_checkbox->Hide();
+	btn_outdir->SetText(BonkEnc::i18n->TranslateString("Browse"));
+	btn_skip->SetText(BonkEnc::i18n->TranslateString("Skip"));
 
-	enc_filename->SetText(i18n->TranslateString("Encoding file:"));
-	enc_time->SetText(i18n->TranslateString("Time left:"));
-	enc_percent->SetText(i18n->TranslateString("Percent done:"));
-	enc_encoder->SetText(i18n->TranslateString("Selected encoder:"));
-	enc_progress->SetText(i18n->TranslateString("File progress:"));
-	enc_outdir->SetText(i18n->TranslateString("Output dir.:"));
+	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
+	check_playlist->SetText(i18n->TranslateString("Create playlist"));
 
-	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
+	info_text_artist->SetText(String(i18n->TranslateString("Artist")).Append(":"));
+	info_text_album->SetText(String(i18n->TranslateString("Album")).Append(":"));
+	info_text_title->SetText(String(i18n->TranslateString("Title")).Append(":"));
+	info_text_track->SetText(String(i18n->TranslateString("Track")).Append(":"));
+	info_text_year->SetText(String(i18n->TranslateString("Year")).Append(":"));
+	info_text_genre->SetText(String(i18n->TranslateString("Genre")).Append(":"));
+
+	/* Now correct position and size of affected widgets.
+	 */
+	Int	 maxTextLength = (Int) Math::Max(Math::Max(txt_progress->textSize.cx, txt_outdir->textSize.cx), Math::Max(txt_filename->textSize.cx, txt_format->textSize.cx));
 
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	enc_progress->SetX(maxTextLength + 7 - enc_progress->textSize.cx);
-	enc_outdir->SetX(maxTextLength + 7 - enc_outdir->textSize.cx);
-	enc_filename->SetX(maxTextLength + 7 - enc_filename->textSize.cx);
-	enc_time->SetX(maxTextLength + 7 - enc_time->textSize.cx);
-	enc_percent->SetX(maxTextLength + 55);
-	enc_encoder->SetX(maxTextLength + 102 + enc_percent->textSize.cx);
+	txt_progress->SetX(maxTextLength + 7 - txt_progress->textSize.cx);
+	txt_outdir->SetX(maxTextLength + 7 - txt_outdir->textSize.cx);
+	txt_filename->SetX(maxTextLength + 7 - txt_filename->textSize.cx);
+	txt_format->SetX(maxTextLength + 7 - txt_format->textSize.cx);
+	txt_time->SetX(94 + txt_time->textSize.cx);
 
-	edb_filename->SetText(i18n->TranslateString("none"));
+	edb_filename->SetX(maxTextLength + 14);
+	edb_format->SetX(maxTextLength + 14);
+	edb_outdir->SetX(maxTextLength + 14);
 
-	edb_filename->SetMetrics(Point(maxTextLength + 14, edb_filename->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_filename->GetHeight()));
-	edb_time->SetMetrics(Point(maxTextLength + 14, edb_time->GetY()), Size(34, edb_time->GetHeight()));
-	edb_percent->SetMetrics(Point(maxTextLength + 62 + enc_percent->textSize.cx, edb_percent->GetY()), Size(33, edb_percent->GetHeight()));
-	edb_encoder->SetMetrics(Point(maxTextLength + 109 + enc_percent->textSize.cx + enc_encoder->textSize.cx, edb_encoder->GetY()), Size(clientSize.cx - 116 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx, edb_encoder->GetHeight()));
-	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_outdir->GetHeight()));
-
-	progress->SetMetrics(Point(maxTextLength + 14, progress->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress->GetHeight()));
-	progress_total->SetMetrics(Point(maxTextLength + 14, progress_total->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress_total->GetHeight()));
+	progress->SetX(maxTextLength + 14);
+	progress_total->SetX(maxTextLength + 14);
 
 	info_checkbox->SetText(i18n->TranslateString("Show title info"));
 	info_checkbox->SetWidth(info_checkbox->textSize.cx + 20);
@@ -658,92 +710,16 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 	info_background->SetWidth(info_checkbox->textSize.cx + 24);
 	info_background->Show();
 
-	enc_filename->Show();
-	enc_time->Show();
-	enc_percent->Show();
-	enc_encoder->Show();
-	enc_progress->Show();
-	enc_outdir->Show();
+	info_edit_artist->SetX((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15);
+	info_edit_album->SetX((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15);
 
-	edb_filename->Show();
-	edb_time->Show();
-	edb_percent->Show();
-	edb_encoder->Show();
-	edb_outdir->Show();
+	/* OnChangeSize will correct sizes of any other widgets.
+	 */
+	OnChangeSize(GetSize());
 
-	btn_outdir->SetText(BonkEnc::i18n->TranslateString("Browse"));
-	btn_skip->SetText(BonkEnc::i18n->TranslateString("Skip"));
-
-	progress_total->Show();
-	progress->Show();
-
-	info_checkbox->Show();
-
-	check_cuesheet->Hide();
-	check_playlist->Hide();
-
-	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
-	check_playlist->SetText(i18n->TranslateString("Create playlist"));
-
-	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, check_cuesheet->GetY()), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, check_playlist->GetY()), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
-
-	check_cuesheet->Show();
-	check_playlist->Show();
-
-	if (currentConfig->showTitleInfo)
-	{
-		info_text_artist->Hide();
-		info_edit_artist->Hide();
-		info_text_title->Hide();
-		info_edit_title->Hide();
-		info_text_album->Hide();
-		info_edit_album->Hide();
-		info_text_track->Hide();
-		info_edit_track->Hide();
-		info_text_year->Hide();
-		info_edit_year->Hide();
-		info_text_genre->Hide();
-		info_edit_genre->Hide();
-	}
-
-	info_text_artist->SetText(String(i18n->TranslateString("Artist")).Append(":"));
-	info_text_album->SetText(String(i18n->TranslateString("Album")).Append(":"));
-	info_text_title->SetText(String(i18n->TranslateString("Title")).Append(":"));
-	info_text_track->SetText(String(i18n->TranslateString("Track")).Append(":"));
-	info_text_year->SetText(String(i18n->TranslateString("Year")).Append(":"));
-	info_text_genre->SetText(String(i18n->TranslateString("Genre")).Append(":"));
-
-	info_edit_title->SetMetrics(Point(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx, info_edit_title->GetY()), Size(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx, info_edit_title->GetHeight()));
-	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
-	info_text_year->SetX(info_edit_track->GetX() + 32);
-	info_edit_year->SetX(info_text_year->GetX() + info_text_year->textSize.cx + 7);
-	info_text_genre->SetX(info_edit_year->GetX() + 38);
-	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
-	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
-	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_artist->GetY()), Size(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_artist->GetHeight()));
-	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_album->GetY()), Size(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_album->GetHeight()));
-	info_edit_genre->SetX(clientSize.cx - 142);
-
-	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
-	htsp_edit_artist->SetWidth(info_edit_artist->GetWidth());
-	htsp_edit_album->SetWidth(info_edit_album->GetWidth());
-
-	if (currentConfig->showTitleInfo)
-	{
-		info_text_artist->Show();
-		info_edit_artist->Show();
-		info_text_title->Show();
-		info_edit_title->Show();
-		info_text_album->Show();
-		info_edit_album->Show();
-		info_text_track->Show();
-		info_edit_track->Show();
-		info_text_year->Show();
-		info_edit_year->Show();
-		info_text_genre->Show();
-		info_edit_genre->Show();
-	}
+	/* Show all widgets again.
+	 */
+	Show();
 
 	FillMenus();
 
@@ -837,7 +813,7 @@ Void BonkEnc::LayerJoblist::UpdateEncoderText()
 
 	if (component != NIL)
 	{
-		edb_encoder->SetText(component->GetName());
+		combo_encoder->SelectEntry(component->GetName());
 
 		boca.DeleteComponent(component);
 	}
@@ -902,8 +878,11 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 {
 	edb_filename->SetText(BonkEnc::i18n->TranslateString("none"));
 
-	edb_percent->SetText("0%");
-	edb_time->SetText("00:00");
+	edb_trackPercent->SetText("0%");
+	edb_trackTime->SetText("00:00");
+
+	edb_totalPercent->SetText("0%");
+	edb_totalTime->SetText("00:00");
 
 	progress->SetValue(0);
 	progress_total->SetValue(0);
@@ -920,8 +899,8 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track *track, Int mode)
 {
-	edb_percent->SetText("0%");
-	edb_time->SetText("00:00");
+	edb_trackPercent->SetText("0%");
+	edb_trackTime->SetText("00:00");
 
 	progress->SetValue(0);
 
@@ -945,30 +924,17 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track *track, Int mode)
 
 Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
 {
+	edb_trackTime->SetText(SecondsToString(secondsLeft));
+
 	if (secondsLeft < 0)
-	{		
-		edb_time->SetText("??:??");
-		edb_percent->SetText("?%");
+	{
+		edb_trackPercent->SetText("?%");
 
 		progress->SetValue(1000);
 	}
 	else
 	{
-		String	 buffer = String::FromInt(secondsLeft / 60);
-		String	 text = "0";
-
-		if (buffer.Length() == 1) text.Append(buffer);
-		else			  text.Copy(buffer);
-
-		text.Append(":");
-
-		buffer = String::FromInt(secondsLeft % 60);
-
-		if (buffer.Length() == 1) text.Append(String("0").Append(buffer));
-		else			  text.Append(buffer);
-
-		edb_time->SetText(text);
-		edb_percent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append("%"));
+		edb_trackPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append("%"));
 
 		progress->SetValue(progressValue);
 	}
@@ -976,7 +942,20 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 
 Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsLeft)
 {
-	progress_total->SetValue(progressValue);
+	edb_totalTime->SetText(SecondsToString(secondsLeft));
+
+	if (secondsLeft < 0)
+	{
+		edb_totalPercent->SetText("?%");
+
+		progress_total->SetValue(1000);
+	}
+	else
+	{
+		edb_totalPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append("%"));
+
+		progress_total->SetValue(progressValue);
+	}
 }
 
 PopupMenu *BonkEnc::LayerJoblist::GetContextMenu()
@@ -1067,14 +1046,7 @@ Void BonkEnc::LayerJoblist::UpdateTitleInfo()
 	format->year	= info_edit_year->GetText().ToInt();
 	format->genre	= info_edit_genre->GetText();
 
-	String	 jlEntry;
-
-	if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
-	else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
-
-	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
-
-	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->GetSelectedEntry()->SetText(jlEntry);
+	joblist->UpdateTrackInfo(*format);
 }
 
 Void BonkEnc::LayerJoblist::UpdateOutputDir()
@@ -1082,8 +1054,10 @@ Void BonkEnc::LayerJoblist::UpdateOutputDir()
 	edb_outdir->SetText(String(currentConfig->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()));
 }
 
-Void BonkEnc::LayerJoblist::SelectDir()
+Void BonkEnc::LayerJoblist::OnSelectDir()
 {
+	if (!Config::Get()->CanChangeConfig()) return;
+
 	DirSelection	*dialog = new DirSelection();
 
 //	dialog->SetParentWindow(mainWnd);
@@ -1097,6 +1071,25 @@ Void BonkEnc::LayerJoblist::SelectDir()
 	}
 
 	DeleteObject(dialog);
+}
+
+Void BonkEnc::LayerJoblist::OnSelectEncoder()
+{
+	if (!Config::Get()->CanChangeConfig()) return;
+
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0, n = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
+
+		if (combo_encoder->GetSelectedEntryNumber() == n++)
+		{
+			currentConfig->encoderID = boca.GetComponentID(i);
+
+			break;
+		}
+	}
 }
 
 Void BonkEnc::LayerJoblist::ToggleEditPopup()
@@ -1187,6 +1180,26 @@ Void BonkEnc::LayerJoblist::OpenCDTray()
  	ex_CR_EjectCD(True);
 }
 
+String BonkEnc::LayerJoblist::SecondsToString(Int seconds)
+{
+	if (seconds < 0 || seconds >= 6000) return "??:??";
+
+	String	 buffer = String::FromInt(seconds / 60);
+	String	 text = "0";
+
+	if (buffer.Length() == 1) text.Append(buffer);
+	else			  text.Copy(buffer);
+
+	text.Append(":");
+
+	buffer = String::FromInt(seconds % 60);
+
+	if (buffer.Length() == 1) text.Append(String("0").Append(buffer));
+	else			  text.Append(buffer);
+
+	return text;
+}
+
 String BonkEnc::LayerJoblist::AdjustCaseFirstCapital(const String &string)
 {
 	String	 value = String(string).ToLower();
@@ -1256,14 +1269,7 @@ Void BonkEnc::LayerJoblist::UseStringForSelectedTracks()
 			else if (activePopup == menu_edit_genre->GetHandle())	track->genre = info_edit_genre->GetText();
 			else if (activePopup == menu_edit_year->GetHandle())	track->year = info_edit_year->GetText().ToInt();
 
-			String		 jlEntry;
-
-			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
-
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
-
-			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+			joblist->UpdateTrackInfo(*track);
 		}
 	}
 }
@@ -1285,21 +1291,13 @@ Void BonkEnc::LayerJoblist::InterpretStringAs()
 	}
 
 	Track		*track = joblist->GetSelectedTrack();
-	ListEntry	*entry = joblist->GetSelectedEntry();
 
 	if (activePopup == menu_edit_artist->GetHandle())	{ track->artist.ImportFrom(charset, track->oArtist.ConvertTo("ISO-8859-1")); info_edit_artist->SetText(track->artist); }
 	else if (activePopup == menu_edit_title->GetHandle())	{ track->title.ImportFrom(charset, track->oTitle.ConvertTo("ISO-8859-1")); info_edit_title->SetText(track->title); }
 	else if (activePopup == menu_edit_album->GetHandle())	{ track->album.ImportFrom(charset, track->oAlbum.ConvertTo("ISO-8859-1")); info_edit_album->SetText(track->album); }
 	else if (activePopup == menu_edit_genre->GetHandle())	{ track->genre.ImportFrom(charset, track->oGenre.ConvertTo("ISO-8859-1")); info_edit_genre->SetText(track->genre); }
 
-	String		 jlEntry;
-
-	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
-
-	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
-
-	if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+	joblist->UpdateTrackInfo(*track);
 
 	clicked_charset = -1;
 }
@@ -1332,14 +1330,7 @@ Void BonkEnc::LayerJoblist::InterpretStringAsAll()
 			else if (activePopup == menu_edit_album->GetHandle())	{ track->album.ImportFrom(charset, track->oAlbum.ConvertTo("ISO-8859-1")); if (entry->IsSelected()) info_edit_album->SetText(track->album); }
 			else if (activePopup == menu_edit_genre->GetHandle())	{ track->genre.ImportFrom(charset, track->oGenre.ConvertTo("ISO-8859-1")); if (entry->IsSelected()) info_edit_genre->SetText(track->genre); }
 
-			String		 jlEntry;
-
-			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
-
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
-
-			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+			joblist->UpdateTrackInfo(*track);
 		}
 	}
 
@@ -1364,20 +1355,12 @@ Void BonkEnc::LayerJoblist::AdjustStringCase()
 	}
 
 	Track		*track = joblist->GetSelectedTrack();
-	ListEntry	*entry = joblist->GetSelectedEntry();
 
 	if (activePopup == menu_edit_artist->GetHandle())	{ track->artist = string; info_edit_artist->SetText(track->artist); }
 	else if (activePopup == menu_edit_title->GetHandle())	{ track->title = string; info_edit_title->SetText(track->title); }
 	else if (activePopup == menu_edit_album->GetHandle())	{ track->album = string; info_edit_album->SetText(track->album); }
 
-	String		 jlEntry;
-
-	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
-
-	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
-
-	if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+	joblist->UpdateTrackInfo(*track);
 
 	clicked_case = -1;
 }
@@ -1410,14 +1393,7 @@ Void BonkEnc::LayerJoblist::AdjustStringCaseAll()
 			else if (activePopup == menu_edit_title->GetHandle())	{ track->title = string; if (entry->IsSelected()) info_edit_title->SetText(track->title); }
 			else if (activePopup == menu_edit_album->GetHandle())	{ track->album = string; if (entry->IsSelected()) info_edit_album->SetText(track->album); }
 
-			String		 jlEntry;
-
-			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
-
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
-
-			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
+			joblist->UpdateTrackInfo(*track);
 		}
 	}
 

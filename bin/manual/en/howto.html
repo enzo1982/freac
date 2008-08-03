@@ -31,10 +31,13 @@
 	      <div id='g_body'>
 		<h4>Contents</h4>
 		<blockquote>
-		  <p><a href="#anchor1">How to compile BonkEnc from source?</a></p>
-		  <p><a href="#anchor2">How to install encoder/decoder xy?</a></p>
+		  <p><a href="#anchor_src">How to compile BonkEnc from source?</a></p>
+		  <p><a href="#anchor_enc">How to install encoder/decoder xy?</a></p>
+		  <p><a href="#anchor_wma">How to enable Windows Media Audio decoding support?</a></p>
+		  <p><a href="#anchor_tra">How to add a new translation to BonkEnc?</a></p>
+		  <p><a href="#anchor_rem">How to remove BonkEnc from my computer?</a></p>
 		</blockquote>
-		<h4 id="anchor1">How to compile BonkEnc from source?</h4>
+		<h4 id="anchor_src">How to compile BonkEnc from source?</h4>
 		<blockquote>
 		  <p>In order to build BonkEnc from source you should download the latest version of the
 		    <b>BonkEnc Component Development Kit</b> (CDK) from <a href="http://www.bonkenc.org/">www.bonkenc.org</a> first.</p>
@@ -54,7 +57,7 @@
 		    <li>enter: <b>cd smooth && make programs && cd ../bonkenc && make</b></li>
 		  </ul>
 		</blockquote>
-		<h4 id="anchor2">How to install encoder/decoder xy?</h4>
+		<h4 id="anchor_enc">How to install encoder/decoder xy?</h4>
 		<blockquote>
 		  <h5>Nero Digital HE-AAC Encoder</h5>
 		  <blockquote>
@@ -219,6 +222,31 @@
 			subdirectory of your BonkEnc installation path.</li>
 		    </ul>
 		  </blockquote>
+		</blockquote>
+		<h4 id="anchor_wma">How to enable Windows Media Audio decoding support?</h4>
+		<blockquote>
+		  <p>To enable <b>Windows Media Audio</b> (WMA) support in BonkEnc, you need the WMA plug-in from Winamp 5.21 (plug-ins from newer versions of Winamp will not work with BonkEnc).
+		    Please follow these steps to install the WMA plug-in for BonkEnc.</p>
+		  <ul>
+		    <li>download and install <b>Winamp 5.21</b> from <a href="http://www.oldversion.com/">www.oldversion.com</a></li>
+		    <li>copy the <b>in_wm.dll</b> file from the <b>Winamp/plugins directory</b> to the <b>BonkEnc/plugins</b> directory</li>
+		  </ul>
+		</blockquote>
+		<h4 id="anchor_tra">How to add a new translation to BonkEnc?</h4>
+		<blockquote>
+		  <p>Please use the <b>smooth Translator</b> utility included in the BonkEnc distribution and open an existing
+		    translation file (found in the <b>BonkEnc/lang</b> directory). Then change the language settings to reflect
+		    the translation you want to create and start translating the individual text strings. Save your translation
+		    as a new file matching the pattern <b>bonkenc_??.xml</b> (replace ?? with your language code), restart BonkEnc
+		    and try selecting the new translation in the configuration dialog.</p>
+		  <p>Please submit your translation to <a href="mailto:translations@bonkenc.org">translations@bonkenc.org</a>, so it can be included in the official distribution.</p>
+		</blockquote>
+		<h4 id="anchor_rem">How to remove BonkEnc from my computer?</h4>
+		<blockquote>
+		  <p>Recent versions of BonkEnc come with an uninstaller that you can execute from the <b>Start</b> menu.</p>
+		  <p>In case you removed the Start menu group or are unable to find it, it is completely sufficient to delete
+		    the application directory to uninstall BonkEnc. BonkEnc does neither create any Windows registry entries
+		    nor store any active components outside its installation directory.</p>
 		</blockquote>
 	      </div>
 	    </div>

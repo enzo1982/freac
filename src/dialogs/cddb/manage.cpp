@@ -204,14 +204,7 @@ Void BonkEnc::cddbManageDlg::OK()
 						trackInfo->genre	= cddbInfo.dGenre;
 						trackInfo->comment	= cddbInfo.trackComments.GetNth(m);
 
-						String	 jlEntry;
-
-						if (trackInfo->artist == NIL && trackInfo->title == NIL)	jlEntry = String(trackInfo->origFilename).Append("\t");
-						else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::Get()->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::Get()->i18n->TranslateString("unknown title")).Append("\t");
-
-						jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String("")).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
-
-						if (BonkEnc::Get()->joblist->GetNthEntry(l)->GetText() != jlEntry) BonkEnc::Get()->joblist->GetNthEntry(l)->SetText(jlEntry);
+						BonkEnc::Get()->joblist->UpdateTrackInfo(*trackInfo);
 					}
 				}
 			}

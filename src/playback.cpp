@@ -31,7 +31,7 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 {
 	if (entry < 0) return;
 
-	if (BonkEnc::Get()->encoder->encoding)
+	if (BonkEnc::Get()->encoder->IsEncoding())
 	{
 		Utilities::ErrorMessage("Cannot play a file while encoding!");
 

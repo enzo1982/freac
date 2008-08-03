@@ -17,6 +17,7 @@
 #include <utilities.h>
 #include <dllinterfaces.h>
 #include <joblist.h>
+#include <jobs/jobmanager.h>
 
 #include <cddb/cddblocal.h>
 #include <cddb/cddbremote.h>
@@ -46,6 +47,8 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	currentConfig = Config::Get();
 
+	JobManager::Start();
+
 	if (DLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;
 	else						currentConfig->enable_cdrip = True;
 
@@ -55,16 +58,18 @@ BonkEnc::BonkEnc::BonkEnc()
 
 BonkEnc::BonkEnc::~BonkEnc()
 {
-	delete encoder;
+	JobManager::Quit();
 
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
 	if (currentConfig->enable_cdrip)	DLLInterfaces::FreeCDRipDLL();
 	if (currentConfig->enable_eUpdate)	DLLInterfaces::FreeEUpdateDLL();
 
-	/* Cleanup deletable objects before deleting translator.
+	/* Cleanup deletable objects before deleting encoder and translator.
 	 */
 	Object::ObjectCleanup();
+
+	delete encoder;
 
 	Config::Free();
 

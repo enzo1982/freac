@@ -411,14 +411,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 					trackInfo->genre	= edit_genre->GetText();
 					trackInfo->comment	= comments.GetNth(m);
 
-					String	 jlEntry;
-
-					if (trackInfo->artist == NIL && trackInfo->title == NIL) jlEntry = String(trackInfo->origFilename).Append("\t");
-					else							 jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
-
-					jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String("")).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
-
-					if (BonkEnc::Get()->joblist->GetNthEntry(l)->GetText() != jlEntry) BonkEnc::Get()->joblist->GetNthEntry(l)->SetText(jlEntry);
+					BonkEnc::Get()->joblist->UpdateTrackInfo(*trackInfo);
 				}
 			}
 		}
@@ -900,6 +893,8 @@ Bool BonkEnc::cddbSubmitDlg::IsStringValid(const String &text)
 
 	if ( text.ToLower() == "new artist"				     ||
 	     text.ToLower() == "new title"				     ||
+	     text == "-"						     ||
+	     text == "--"						     ||
 	    (text.ToLower().StartsWith("audiotrack") && text.Length() <= 13) ||
 	    (text.ToLower().StartsWith("track")	     && text.Length() <= 8)) valid = False;
 

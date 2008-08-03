@@ -53,16 +53,22 @@ Void BonkEnc::Progress::FixTotalSamples(Track *trackInfo, Track *nTrackInfo)
 	trackInfo->length = nTrackInfo->length;
 }
 
-Void BonkEnc::Progress::InitProgressValues()
+Void BonkEnc::Progress::InitTrackProgressValues()
 {
-	startTicks = clock();
+	trackStartTicks = clock();
+}
+
+Void BonkEnc::Progress::InitTotalProgressValues()
+{
+	totalStartTicks = clock();
 }
 
 Void BonkEnc::Progress::UpdateProgressValues(Track *trackInfo, Int samplePosition)
 {
 	if (Config::Get()->enable_console) return;
 
-	Int	 ticks = clock() - startTicks;
+	Int	 trackTicks = clock() - trackStartTicks;
+	Int	 totalTicks = clock() - totalStartTicks;
 
 	Int	 trackProgress = 0;
 	Int	 totalProgress = 0;
@@ -72,25 +78,27 @@ Void BonkEnc::Progress::UpdateProgressValues(Track *trackInfo, Int samplePositio
 		trackProgress = Math::Round((samplePosition * 100.0 / trackInfo->length) * 10.0);
 		totalProgress = Math::Round(totalSamplesDone + (samplePosition * (trackInfo->length * 100.0 / totalSamples) / trackInfo->length) * 10.0);
 
-		ticks = (Int) (ticks * ((1000.0 - ((samplePosition * 100.0 / trackInfo->length) * 10.0)) / ((samplePosition * 100.0 / trackInfo->length) * 10.0))) / 1000 + 1;
+		trackTicks = (Int) (trackTicks * ((1000.0 - ((samplePosition * 100.0 / trackInfo->length) * 10.0)) / ((samplePosition * 100.0 / trackInfo->length) * 10.0))) / 1000 + 1;
+		totalTicks = (Int) (totalTicks * ((1000.0 - (totalSamplesDone + (samplePosition * (trackInfo->length * 100.0 / totalSamples) / trackInfo->length) * 10.0)) / (totalSamplesDone + (samplePosition * (trackInfo->length * 100.0 / totalSamples) / trackInfo->length) * 10.0))) / 1000 + 1;
 	}
 	else if (trackInfo->length == -1)
 	{
 		trackProgress = Math::Round((samplePosition * 100.0 / trackInfo->fileSize) * 10.0);
 		totalProgress = Math::Round(totalSamplesDone + (samplePosition * ((trackInfo->approxLength >= 0 ? trackInfo->approxLength : 240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) / trackInfo->fileSize) * 10.0);
 
-		ticks = (Int) (ticks * ((1000.0 - ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0)) / ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0))) / 1000 + 1;
+		trackTicks = (Int) (trackTicks * ((1000.0 - ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0)) / ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0))) / 1000 + 1;
+		totalTicks = (Int) (totalTicks * ((1000.0 - (totalSamplesDone + (samplePosition * ((trackInfo->approxLength >= 0 ? trackInfo->approxLength : 240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) / trackInfo->fileSize) * 10.0)) / (totalSamplesDone + (samplePosition * ((trackInfo->approxLength >= 0 ? trackInfo->approxLength : 240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) / trackInfo->fileSize) * 10.0))) / 1000 + 1;
 	}
 
-	onTrackProgress.Emit(trackProgress, ticks);
-	onTotalProgress.Emit(totalProgress, 0);
+	onTrackProgress.Emit(trackProgress, trackTicks);
+	onTotalProgress.Emit(totalProgress, totalTicks);
 }
 
-Void BonkEnc::Progress::FinishProgressValues(Track *trackInfo)
+Void BonkEnc::Progress::FinishTrackProgressValues(Track *trackInfo)
 {
 	if (Config::Get()->enable_console) return;
 
-	if (trackInfo->length >= 0)		totalSamplesDone += ((trackInfo->length * 100.0 / totalSamples) * 10.0);
+	if	(trackInfo->length	 >= 0)	totalSamplesDone += ((trackInfo->length * 100.0 / totalSamples) * 10.0);
 	else if (trackInfo->approxLength >= 0)	totalSamplesDone += ((trackInfo->approxLength * 100.0 / totalSamples) * 10.0);
 	else					totalSamplesDone += (((240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) * 10.0);
 }

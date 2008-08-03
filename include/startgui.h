@@ -16,11 +16,12 @@
 
 #include <gui/main_joblist.h>
 #include <gui/main_protocol.h>
-#include <gui/main_tags.h>
 #include <gui/main_threads.h>
 
 using namespace smooth;
 using namespace smooth::GUI;
+
+using namespace BoCA::AS;
 
 extern "C"
 {
@@ -34,94 +35,98 @@ namespace BonkEnc
 		private:
 			/* Singleton class, therefore protected constructor/destructor
 			 */
-						 BonkEncGUI();
-						~BonkEncGUI();
+							 BonkEncGUI();
+							~BonkEncGUI();
 
-			PopupMenu		*menu_file;
-			PopupMenu		*menu_options;
-			PopupMenu		*menu_addsubmenu;
-			PopupMenu		*menu_encode;
-			PopupMenu		*menu_drives;
-			PopupMenu		*menu_files;
-			PopupMenu		*menu_seldrive;
-			PopupMenu		*menu_database;
-			PopupMenu		*menu_database_query;
-			PopupMenu		*menu_help;
-			PopupMenu		*menu_encoders;
-			PopupMenu		*menu_encoder_options;
+			PopupMenu			*menu_file;
+			PopupMenu			*menu_options;
+			PopupMenu			*menu_addsubmenu;
+			PopupMenu			*menu_encode;
+			PopupMenu			*menu_drives;
+			PopupMenu			*menu_files;
+			PopupMenu			*menu_seldrive;
+			PopupMenu			*menu_database;
+			PopupMenu			*menu_database_query;
+			PopupMenu			*menu_help;
+			PopupMenu			*menu_encoders;
+			PopupMenu			*menu_encoder_options;
 
-			MenuEntry		*allowOverwriteMenuEntry;
+			MenuEntry			*allowOverwriteMenuEntry;
 
-			Menubar			*mainWnd_menubar;
-			Menubar			*mainWnd_iconbar;
-			Titlebar		*mainWnd_titlebar;
+			Menubar				*mainWnd_menubar;
+			Menubar				*mainWnd_iconbar;
+			Titlebar			*mainWnd_titlebar;
 
-			TabWidget		*tabs_main;
-			LayerJoblist		*tab_layer_joblist;
-			LayerTags		*tab_layer_tags;
-			LayerThreads		*tab_layer_threads;
-			LayerProtocol		*tab_layer_protocol;
+			TabWidget			*tabs_main;
+			LayerJoblist			*tab_layer_joblist;
+			LayerThreads			*tab_layer_threads;
+			LayerProtocol			*tab_layer_protocol;
 
-			Int			 clicked_drive;
-			Int			 clicked_encoder;
+			Int				 clicked_drive;
+			Int				 clicked_encoder;
 
-			Void			 Close();
-			Void			 About();
-			Void			 ConfigureEncoder();
-			Void			 ConfigureSettings();
-			Void			 ReadSpecificCD();
+			Array<ExtensionComponent *>	 extensionComponents;
 
-			Void			 EncodeSpecific();
-			Void			 ShowHelp();
-			Void			 ShowTipOfTheDay();
+			Void				 InitExtensionComponents();
+			Void				 FreeExtensionComponents();
 
-			Void			 CheckForUpdates();
-			Int			 CheckForUpdates(Bool);
+			Void				 Close();
+			Void				 About();
+			Void				 ConfigureEncoder();
+			Void				 ConfigureSettings();
+			Void				 ReadSpecificCD();
 
-			Bool			 SetLanguage();
-			Void			 FillMenus();
+			Void				 EncodeSpecific();
+			Void				 ShowHelp();
+			Void				 ShowTipOfTheDay();
 
-			Void			 Encode();
+			Void				 CheckForUpdates();
+			Int				 CheckForUpdates(Bool);
 
-			Void			 PauseResumeEncoding();
-			Void			 StopEncoding();
+			Bool				 SetLanguage();
+			Void				 FillMenus();
+
+			Void				 Encode();
+
+			Void				 PauseResumeEncoding();
+			Void				 StopEncoding();
 		signals:
-			Signal0<Void>		 onChangeLanguageSettings;
+			Signal0<Void>			 onChangeLanguageSettings;
 		slots:
-			Bool			 ExitProc();
+			Bool				 ExitProc();
 
-			Void			 MessageProc(Int, Int, Int);
+			Void				 MessageProc(Int, Int, Int);
 
-			Void			 OnChangePosition(const Point &);
-			Void			 OnChangeSize(const Size &);
+			Void				 OnChangePosition(const Point &);
+			Void				 OnChangeSize(const Size &);
 
-			Void			 ReadCD();
+			Void				 ReadCD();
 
-			Void			 QueryCDDB();
-			Void			 QueryCDDBLater();
-			Void			 SubmitCDDBData();
+			Void				 QueryCDDB();
+			Void				 QueryCDDBLater();
+			Void				 SubmitCDDBData();
 
-			Void			 ManageCDDBData();
-			Void			 ManageCDDBBatchData();
-			Void			 ManageCDDBBatchQueries();
+			Void				 ManageCDDBData();
+			Void				 ManageCDDBBatchData();
+			Void				 ManageCDDBBatchQueries();
 
-			Void			 AddFilesFromDirectory();
-			Void			 AddFilesByPattern();
+			Void				 AddFilesFromDirectory();
+			Void				 AddFilesByPattern();
 
-			Void			 ToggleUseInputDirectory();
-			Void			 ToggleEncodeToSingleFile();
+			Void				 ToggleUseInputDirectory();
+			Void				 ToggleEncodeToSingleFile();
 
-			Void			 ConfirmDeleteAfterEncoding();
+			Void				 ConfirmDeleteAfterEncoding();
 		public:
-			CDDBInfo		 GetCDDBData();
+			CDDBInfo			 GetCDDBData();
 
 			/* Returns a new or existing instance of BonkEncGUI
 			 */
-			static BonkEncGUI	*Get();
+			static BonkEncGUI		*Get();
 
 			/* Destroys an existing instance of BonkEncGUI
 			 */
-			static Void		 Free();
+			static Void			 Free();
 	};
 };
 

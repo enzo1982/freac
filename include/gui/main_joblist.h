@@ -57,24 +57,32 @@ namespace BonkEnc
 			EditBox			*info_edit_genre;
 			ListBox			*info_list_genre;
 
-			Text			*enc_filename;
-			Text			*enc_time;
-			Text			*enc_percent;
-			Text			*enc_encoder;
-			Text			*enc_progress;
-			Text			*enc_outdir;
-
+			Text			*txt_filename;
 			EditBox			*edb_filename;
-			EditBox			*edb_time;
-			EditBox			*edb_percent;
-			EditBox			*edb_encoder;
+
+			Text			*txt_format;
+			EditBox			*edb_format;
+
+			Text			*txt_encoder;
+			ComboBox		*combo_encoder;
+
+			Text			*txt_progress;
+			Progressbar		*progress;
+			Progressbar		*progress_total;
+			EditBox			*edb_trackPercent;
+			Text			*txt_splitPercent;
+			EditBox			*edb_totalPercent;
+
+			Text			*txt_time;
+			EditBox			*edb_trackTime;
+			Text			*txt_splitTime;
+			EditBox			*edb_totalTime;
+
+			Text			*txt_outdir;
 			EditBox			*edb_outdir;
 
 			Button			*btn_skip;
 			Button			*btn_outdir;
-
-			Progressbar		*progress;
-			Progressbar		*progress_total;
 
 			MicroMenu		*menu_edit_artist;
 			MicroMenu		*menu_edit_title;
@@ -115,6 +123,8 @@ namespace BonkEnc
 			Bool			 SetLanguage();
 			Void			 FillMenus();
 
+			String			 SecondsToString(Int);
+
 			String			 AdjustCaseFirstCapital(const String &);
 			String			 AdjustCaseWordsFirstCapital(const String &);
 			String			 AdjustCaseLongWordsFirstCapital(const String &);
@@ -147,7 +157,8 @@ namespace BonkEnc
 			Void			 ShowHideTitleInfo();
 			Void			 UpdateTitleInfo();
 
-			Void			 SelectDir();
+			Void			 OnSelectDir();
+			Void			 OnSelectEncoder();
 
 			Void			 ToggleEditPopup();
 

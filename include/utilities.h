@@ -33,6 +33,7 @@ namespace BonkEnc
 			static Void		 FillGenreList(List *);
 
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
+			static String		 NormalizeFileName(const String &);
 			static String		 CreateDirectoryForFile(const String &);
 
 			static String		 GetInstallDrive();
