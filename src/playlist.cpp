@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <playlist.h>
+#include <utilities.h>
 
 using namespace smooth::IO;
 
@@ -35,8 +36,10 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 {
 	if (fileNames.Length() == 0) return False;
 
+	String		 rFileName = Utilities::CreateDirectoryForFile(fileName);
+
 	String		 format = String::SetOutputFormat("UTF-8");
-	OutStream	*file = new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
+	OutStream	*file = new OutStream(STREAM_FILE, rFileName, OS_OVERWRITE);
 
 	file->OutputLine("#EXTM3U");
 

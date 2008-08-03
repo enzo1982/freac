@@ -154,7 +154,7 @@ Bool BonkEnc::Config::LoadSettings()
 	lame_stereomode				= config->GetIntValue("lameMP3", "StereoMode", 0);
 	lame_forcejs				= config->GetIntValue("lameMP3", "ForceJS", 0);
 	lame_vbrmode				= config->GetIntValue("lameMP3", "VBRMode", 4);
-	lame_vbrquality				= config->GetIntValue("lameMP3", "VBRQuality", 5);
+	lame_vbrquality				= config->GetIntValue("lameMP3", "VBRQuality", 50);
 	lame_abrbitrate				= config->GetIntValue("lameMP3", "ABRBitrate", 192);
 	lame_set_min_vbr_bitrate		= config->GetIntValue("lameMP3", "SetMinVBRBitrate", 0);
 	lame_min_vbr_bitrate			= config->GetIntValue("lameMP3", "MinVBRBitrate", 128);

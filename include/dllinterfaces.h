@@ -207,7 +207,7 @@ namespace BonkEnc
 	typedef int					(*LAME_CLOSE)					(lame_global_flags *);
 	typedef vbr_mode				(*LAME_GET_VBR)					(lame_global_flags *);
 	typedef int					(*LAME_SET_VBR)					(lame_global_flags *, vbr_mode);
-	typedef int					(*LAME_SET_VBR_Q)				(lame_global_flags *, int);
+	typedef int					(*LAME_SET_VBR_QUALITY)				(lame_global_flags *, float);
 	typedef int					(*LAME_SET_VBR_MEAN_BITRATE_KBPS)		(lame_global_flags *, int);
 	typedef int					(*LAME_SET_VBR_MIN_BITRATE_KBPS)		(lame_global_flags *, int);
 	typedef int					(*LAME_SET_VBR_MAX_BITRATE_KBPS)		(lame_global_flags *, int);
@@ -249,7 +249,7 @@ namespace BonkEnc
 	extern BEEXPORT LAME_CLOSE			 ex_lame_close;
 	extern BEEXPORT LAME_GET_VBR			 ex_lame_get_VBR;
 	extern BEEXPORT LAME_SET_VBR			 ex_lame_set_VBR;
-	extern BEEXPORT LAME_SET_VBR_Q			 ex_lame_set_VBR_q;
+	extern BEEXPORT LAME_SET_VBR_QUALITY		 ex_lame_set_VBR_quality;
 	extern BEEXPORT LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps;
 	extern BEEXPORT LAME_SET_VBR_MIN_BITRATE_KBPS	 ex_lame_set_VBR_min_bitrate_kbps;
 	extern BEEXPORT LAME_SET_VBR_MAX_BITRATE_KBPS	 ex_lame_set_VBR_max_bitrate_kbps;

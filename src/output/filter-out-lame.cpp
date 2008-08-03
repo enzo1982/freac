@@ -180,11 +180,11 @@ Bool BonkEnc::FilterOutLAME::Activate()
 					break;
 				case vbr_rh:
 					ex_lame_set_VBR(lameFlags, vbr_rh);
-					ex_lame_set_VBR_q(lameFlags, currentConfig->lame_vbrquality);
+					ex_lame_set_VBR_quality(lameFlags, currentConfig->lame_vbrquality / 10);
 					break;
 				case vbr_mtrh:
 					ex_lame_set_VBR(lameFlags, vbr_mtrh);
-					ex_lame_set_VBR_q(lameFlags, currentConfig->lame_vbrquality);
+					ex_lame_set_VBR_quality(lameFlags, currentConfig->lame_vbrquality / 10);
 					break;
 			}
 

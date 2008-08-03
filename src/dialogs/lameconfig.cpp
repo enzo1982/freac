@@ -29,7 +29,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	quality = 9 - currentConfig->lame_quality;
 	forcejs = currentConfig->lame_forcejs;
 	vbrmode = currentConfig->lame_vbrmode;
-	vbrquality = 9 - currentConfig->lame_vbrquality;
+	vbrquality = 90 - currentConfig->lame_vbrquality;
 	abrbitrate = currentConfig->lame_abrbitrate;
 	set_min_vbr_brate = currentConfig->lame_set_min_vbr_bitrate;
 	min_vbr_brate = GetMinVBRSliderValue();
@@ -255,13 +255,13 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.x += (vbr_text_setquality->textSize.cx + 8);
 	pos.y -= 2;
-	size.cx = 190 - vbr_text_setquality->textSize.cx;
+	size.cx = 181 - vbr_text_setquality->textSize.cx;
 	size.cy = 0;
 
-	vbr_slider_quality	= new Slider(pos, size, OR_HORZ, &vbrquality, 0, 9);
+	vbr_slider_quality	= new Slider(pos, size, OR_HORZ, &vbrquality, 0, 90);
 	vbr_slider_quality->onValueChange.Connect(&ConfigureLameEnc::SetVBRQuality, this);
 
-	pos.x = 358;
+	pos.x = 349;
 	pos.y += 2;
 
 	vbr_text_quality	= new Text("", pos);
@@ -273,7 +273,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	vbr_text_quality_worse->SetX(vbr_slider_quality->GetX() + 3 - (vbr_text_quality_worse->textSize.cx / 2));
 
 	vbr_text_quality_better= new Text(BonkEnc::i18n->TranslateString("better"), pos);
-	vbr_text_quality_better->SetX(346 - (vbr_text_quality_better->textSize.cx / 2));
+	vbr_text_quality_better->SetX(337 - (vbr_text_quality_better->textSize.cx / 2));
 
 	pos.x = 142;
 	pos.y = 74;
@@ -843,7 +843,7 @@ Void BonkEnc::ConfigureLameEnc::OK()
 	currentConfig->lame_stereomode = basic_combo_stereomode->GetSelectedEntryNumber();
 	currentConfig->lame_forcejs = forcejs;
 	currentConfig->lame_vbrmode = vbrmode;
-	currentConfig->lame_vbrquality = 9 - vbrquality;
+	currentConfig->lame_vbrquality = 90 - vbrquality;
 	currentConfig->lame_abrbitrate = abrbitrate;
 	currentConfig->lame_set_min_vbr_bitrate = set_min_vbr_brate;
 	currentConfig->lame_min_vbr_bitrate = GetMinVBRBitrate();
@@ -1214,7 +1214,11 @@ Void BonkEnc::ConfigureLameEnc::SetStereoMode()
 
 Void BonkEnc::ConfigureLameEnc::SetVBRQuality()
 {
-	vbr_text_quality->SetText(String::FromInt(9 - vbrquality));
+	String	 txt = String::FromFloat(9 - ((double) vbrquality) / 10);
+
+	if (vbrquality % 10 == 0) txt.Append(".0");
+
+	vbr_text_quality->SetText(txt);
 }
 
 Void BonkEnc::ConfigureLameEnc::SetVBRMode()

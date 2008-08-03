@@ -206,9 +206,16 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		if (!overwriteAll && File(out_filename).Exists() && !currentConfig->writeToInputDir && !(!currentConfig->enc_onTheFly && step == 0))
 		{
-			MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
+			MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNOCANCEL, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
 			confirmation->ShowDialog();
+
+			if (confirmation->GetButtonCode() == IDCANCEL)
+			{
+				Object::DeleteObject(confirmation);
+
+				break;
+			}
 
 			if (confirmation->GetButtonCode() == IDNO)
 			{
@@ -265,6 +272,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				delete f_in;
 				delete filter_in;
 
+				trackInfo->outfile = NIL;
+
 				continue;
 			}
 
@@ -281,12 +290,21 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				delete f_in;
 
+				trackInfo->outfile = NIL;
+
 				continue;
 			}
 
 			filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
 
-			if (filter_in == NIL) { delete f_in; continue; }
+			if (filter_in == NIL)
+			{
+				delete f_in;
+
+				trackInfo->outfile = NIL;
+
+				continue;
+			}
 
 			if (!currentConfig->enc_onTheFly && step == 1)
 			{
@@ -319,6 +337,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				delete f_out;
 
+				trackInfo->outfile = NIL;
+
 				continue;
 			}
 
@@ -341,6 +361,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				delete f_out;
 				delete filter_out;
+
+				trackInfo->outfile = NIL;
 
 				break;
 			}
@@ -632,7 +654,6 @@ String BonkEnc::BonkEnc::GetPlaylistFileName(Track *trackInfo)
 		shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : i18n->TranslateString("unknown year"), True));
 
 		playlistFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
-		playlistFileName = Utilities::CreateDirectoryForFile(playlistFileName);
 	}
 	else if (trackInfo->isCDTrack)
 	{
@@ -643,7 +664,7 @@ String BonkEnc::BonkEnc::GetPlaylistFileName(Track *trackInfo)
 		playlistFileName.Append(Utilities::ReplaceIncompatibleChars(i18n->TranslateString("unknown playlist"), True));
 	}
 
-	return playlistFileName;
+	return Utilities::NormalizeFileName(playlistFileName);
 }
 
 String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const String &baseFileName)

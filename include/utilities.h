@@ -40,6 +40,7 @@ namespace BonkEnc
 			static String		 LocalizeNumber(Int64);
 
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
+			static String		 NormalizeFileName(const String &);
 			static String		 CreateDirectoryForFile(const String &);
 
 			static String		 GetInstallDrive();

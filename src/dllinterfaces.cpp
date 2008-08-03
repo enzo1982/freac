@@ -77,7 +77,7 @@ LAME_SET_FORCE_MS		 ex_lame_set_force_ms			= NIL;
 LAME_CLOSE			 ex_lame_close				= NIL;
 LAME_GET_VBR			 ex_lame_get_VBR			= NIL;
 LAME_SET_VBR			 ex_lame_set_VBR			= NIL;
-LAME_SET_VBR_Q			 ex_lame_set_VBR_q			= NIL;
+LAME_SET_VBR_QUALITY		 ex_lame_set_VBR_quality		= NIL;
 LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps	= NIL;
 LAME_SET_VBR_MIN_BITRATE_KBPS	 ex_lame_set_VBR_min_bitrate_kbps	= NIL;
 LAME_SET_VBR_MAX_BITRATE_KBPS	 ex_lame_set_VBR_max_bitrate_kbps	= NIL;
@@ -388,7 +388,7 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	ex_lame_close				= (LAME_CLOSE) lamedll->GetFunctionAddress("lame_close");
 	ex_lame_get_VBR				= (LAME_GET_VBR) lamedll->GetFunctionAddress("lame_get_VBR");
 	ex_lame_set_VBR				= (LAME_SET_VBR) lamedll->GetFunctionAddress("lame_set_VBR");
-	ex_lame_set_VBR_q			= (LAME_SET_VBR_Q) lamedll->GetFunctionAddress("lame_set_VBR_q");
+	ex_lame_set_VBR_quality			= (LAME_SET_VBR_QUALITY) lamedll->GetFunctionAddress("lame_set_VBR_quality");
 	ex_lame_set_VBR_mean_bitrate_kbps	= (LAME_SET_VBR_MEAN_BITRATE_KBPS) lamedll->GetFunctionAddress("lame_set_VBR_mean_bitrate_kbps");
 	ex_lame_set_VBR_min_bitrate_kbps	= (LAME_SET_VBR_MIN_BITRATE_KBPS) lamedll->GetFunctionAddress("lame_set_VBR_min_bitrate_kbps");
 	ex_lame_set_VBR_max_bitrate_kbps	= (LAME_SET_VBR_MAX_BITRATE_KBPS) lamedll->GetFunctionAddress("lame_set_VBR_max_bitrate_kbps");
@@ -430,7 +430,7 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	    ex_lame_close			== NIL ||
 	    ex_lame_get_VBR			== NIL ||
 	    ex_lame_set_VBR			== NIL ||
-	    ex_lame_set_VBR_q			== NIL ||
+	    ex_lame_set_VBR_quality		== NIL ||
 	    ex_lame_set_VBR_mean_bitrate_kbps	== NIL ||
 	    ex_lame_set_VBR_min_bitrate_kbps	== NIL ||
 	    ex_lame_set_VBR_max_bitrate_kbps	== NIL ||
