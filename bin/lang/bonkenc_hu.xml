@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">Kontroll bitek</entry>
   <entry id="128" string="Stream format">Stream formátum</entry>
   <entry id="129" string="Enforce strict ISO compliance">Szigorúan ISO kompatibilis kimenet</entry>
-  <entry id="130" string="Padding">Padding</entry>
-  <entry id="131" string="Set padding type:">Padding típusa:</entry>
-  <entry id="132" string="pad no frames">nincs Padding</entry>
-  <entry id="133" string="pad all frames">minden Frame</entry>
-  <entry id="134" string="adjust padding">Padding beállítása</entry>
   <entry id="135" string="Output sampling rate">Kimenet mintavételezése</entry>
   <entry id="136" string="no resampling">nincs újramintavételezés</entry>
   <entry id="137" string="Highpass filter">Felüláteresztö szûrö</entry>

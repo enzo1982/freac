@@ -193,7 +193,6 @@ namespace BonkEnc
 	typedef int					(*LAME_SET_EXTENSION)				(lame_global_flags *, int);
 	typedef int					(*LAME_SET_ERROR_PROTECTION)			(lame_global_flags *, int);
 	typedef int					(*LAME_SET_STRICT_ISO)				(lame_global_flags *, int);
-	typedef int					(*LAME_SET_PADDING_TYPE)			(lame_global_flags *, Padding_type);
 	typedef int					(*LAME_SET_OUT_SAMPLERATE)			(lame_global_flags *, int);
 	typedef int					(*LAME_SET_BRATE)				(lame_global_flags *, int);
 	typedef int					(*LAME_SET_COMPRESSION_RATIO)			(lame_global_flags *, float);
@@ -235,7 +234,6 @@ namespace BonkEnc
 	extern BEEXPORT LAME_SET_EXTENSION		 ex_lame_set_extension;
 	extern BEEXPORT LAME_SET_ERROR_PROTECTION	 ex_lame_set_error_protection;
 	extern BEEXPORT LAME_SET_STRICT_ISO		 ex_lame_set_strict_ISO;
-	extern BEEXPORT LAME_SET_PADDING_TYPE		 ex_lame_set_padding_type;
 	extern BEEXPORT LAME_SET_OUT_SAMPLERATE		 ex_lame_set_out_samplerate;
 	extern BEEXPORT LAME_SET_BRATE			 ex_lame_set_brate;
 	extern BEEXPORT LAME_SET_COMPRESSION_RATIO	 ex_lame_set_compression_ratio;

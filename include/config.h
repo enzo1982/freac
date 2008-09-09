@@ -173,7 +173,6 @@ namespace BonkEnc
 			Bool		 lame_original;
 			Bool		 lame_private;
 			Bool		 lame_strict_iso;
-			Int		 lame_padding_type;
 			Int		 lame_resample;
 			Bool		 lame_set_lowpass;
 			Int		 lame_lowpass;

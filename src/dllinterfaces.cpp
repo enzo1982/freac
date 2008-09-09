@@ -63,7 +63,6 @@ LAME_SET_ORIGINAL		 ex_lame_set_original			= NIL;
 LAME_SET_EXTENSION		 ex_lame_set_extension			= NIL;
 LAME_SET_ERROR_PROTECTION	 ex_lame_set_error_protection		= NIL;
 LAME_SET_STRICT_ISO		 ex_lame_set_strict_ISO			= NIL;
-LAME_SET_PADDING_TYPE		 ex_lame_set_padding_type		= NIL;
 LAME_SET_OUT_SAMPLERATE		 ex_lame_set_out_samplerate		= NIL;
 LAME_SET_BRATE			 ex_lame_set_brate			= NIL;
 LAME_SET_COMPRESSION_RATIO	 ex_lame_set_compression_ratio		= NIL;
@@ -374,7 +373,6 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	ex_lame_set_extension			= (LAME_SET_EXTENSION) lamedll->GetFunctionAddress("lame_set_extension");
 	ex_lame_set_error_protection		= (LAME_SET_ERROR_PROTECTION) lamedll->GetFunctionAddress("lame_set_error_protection");
 	ex_lame_set_strict_ISO			= (LAME_SET_STRICT_ISO) lamedll->GetFunctionAddress("lame_set_strict_ISO");
-	ex_lame_set_padding_type		= (LAME_SET_PADDING_TYPE) lamedll->GetFunctionAddress("lame_set_padding_type");
 	ex_lame_set_out_samplerate		= (LAME_SET_OUT_SAMPLERATE) lamedll->GetFunctionAddress("lame_set_out_samplerate");
 	ex_lame_set_brate			= (LAME_SET_BRATE) lamedll->GetFunctionAddress("lame_set_brate");
 	ex_lame_set_compression_ratio		= (LAME_SET_COMPRESSION_RATIO) lamedll->GetFunctionAddress("lame_set_compression_ratio");
@@ -416,7 +414,6 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	    ex_lame_set_extension		== NIL ||
 	    ex_lame_set_error_protection	== NIL ||
 	    ex_lame_set_strict_ISO		== NIL ||
-	    ex_lame_set_padding_type		== NIL ||
 	    ex_lame_set_out_samplerate		== NIL ||
 	    ex_lame_set_brate			== NIL ||
 	    ex_lame_set_compression_ratio	== NIL ||

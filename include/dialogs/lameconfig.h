@@ -29,7 +29,6 @@ namespace BonkEnc
 			TabWidget	*reg_register;
 
 			Layer		*register_layer_basic;
-			Layer		*register_layer_vbr;
 			Layer		*register_layer_misc;
 			Layer		*register_layer_expert;
 			Layer		*register_layer_filtering;
@@ -87,15 +86,12 @@ namespace BonkEnc
 			GroupBox	*misc_bits;
 			GroupBox	*misc_crc;
 			GroupBox	*misc_format;
-			GroupBox	*misc_padding;
 
 			CheckBox	*misc_check_original;
 			CheckBox	*misc_check_copyright;
 			CheckBox	*misc_check_private;
 			CheckBox	*misc_check_crc;
 			CheckBox	*misc_check_iso;
-			Text		*misc_text_padding;
-			ComboBox	*misc_combo_padding;
 
 			GroupBox	*expert_ath;
 			GroupBox	*expert_psycho;

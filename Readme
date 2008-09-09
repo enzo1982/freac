@@ -13,11 +13,14 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.9 (August 2008)
+	Version 1.0.9 (September 2008)
 
+		- updated Polish and Swedish translations
+		- completely reworked LAME configuration dialog
 		- allowed floating point values for LAME VBR quality
 		- allowed to cancel encoding if an output file already exists
 		- fixed playlist directory being created with playlist option unchecked
+		- upgraded LAME to version 3.98.1
 		- some minor bug fixes
 
 	Version 1.0.8 (July 2008)

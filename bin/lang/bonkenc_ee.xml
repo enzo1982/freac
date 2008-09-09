@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">Juhtivad bitid</entry>
   <entry id="128" string="Stream format">Helivoo formaat</entry>
   <entry id="129" string="Enforce strict ISO compliance">Range ISO-le vastavus</entry>
-  <entry id="130" string="Padding">Täitmine</entry>
-  <entry id="131" string="Set padding type:">Täidise tüüp:</entry>
-  <entry id="132" string="pad no frames">Ilma freimideta paneel</entry>
-  <entry id="133" string="pad all frames">Kõikide freimidega paneel</entry>
-  <entry id="134" string="adjust padding">Täitmise reguleerimine</entry>
   <entry id="135" string="Output sampling rate">Väljuv sagedus</entry>
   <entry id="136" string="no resampling">Mitte taastada signeeli vormi (no resampling)</entry>
   <entry id="137" string="Highpass filter">Ülemine filter</entry>

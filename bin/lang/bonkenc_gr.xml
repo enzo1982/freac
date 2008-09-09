@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">Bit ελέγχου</entry>
   <entry id="128" string="Stream format">Μορφή ροής</entry>
   <entry id="129" string="Enforce strict ISO compliance">Επιβολή αυστηρής συμμόρφωσης ISO</entry>
-  <entry id="130" string="Padding">Padding</entry>
-  <entry id="131" string="Set padding type:">Εισάγετε τύπο padding:</entry>
-  <entry id="132" string="pad no frames">Όχι pad frame</entry>
-  <entry id="133" string="pad all frames">Pad όλων των frame</entry>
-  <entry id="134" string="adjust padding">Ρύθμιση padding</entry>
   <entry id="135" string="Output sampling rate">Ρυθμός δειγματοληψίας εξόδου</entry>
   <entry id="136" string="no resampling">Όχι resampling</entry>
   <entry id="137" string="Highpass filter">Ανωδιαβατό φίλτρο</entry>

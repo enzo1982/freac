@@ -48,14 +48,13 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	enable_ath = currentConfig->lame_enable_ath;
 	enable_tempmask = currentConfig->lame_use_tns;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "LAME MP3"), currentConfig->wndPos + Point(80, 80), Size(407, 309));
+	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "LAME MP3"), currentConfig->wndPos + Point(80, 80), Size(430, 305));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
 	register_layer_basic	= new Layer(BonkEnc::i18n->TranslateString("Basic"));
-	register_layer_vbr	= new Layer("VBR");
 	register_layer_misc	= new Layer(BonkEnc::i18n->TranslateString("Misc"));
 	register_layer_expert	= new Layer(BonkEnc::i18n->TranslateString("Expert"));
 	register_layer_filtering= new Layer(BonkEnc::i18n->TranslateString("Audio processing"));
@@ -77,14 +76,14 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.x = 7;
 	pos.y = 7;
-	size.cx = 385;
-	size.cy = 222;
+	size.cx = 408;
+	size.cy = 218;
 
 	reg_register		= new TabWidget(pos, size);
 
 	pos.x = 7;
 	pos.y = 11;
-	size.cx = 367;
+	size.cx = 390;
 	size.cy = 39;
 
 	basic_preset		= new GroupBox(BonkEnc::i18n->TranslateString("Presets"), pos, size);
@@ -96,7 +95,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.x += (basic_text_preset->textSize.cx + 8);
 	pos.y -= 3;
-	size.cx = 340 - basic_text_preset->textSize.cx;
+	size.cx = 363 - basic_text_preset->textSize.cx;
 	size.cy = 0;
 
 	basic_combo_preset	= new ComboBox(pos, size);
@@ -113,9 +112,9 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	basic_combo_preset->SelectNthEntry(currentConfig->lame_preset);
 	basic_combo_preset->onSelectEntry.Connect(&ConfigureLameEnc::SetPreset, this);
 
-	pos.x = 7;
+	pos.x = 142;
 	pos.y = 62;
-	size.cx = 232;
+	size.cx = 255;
 	size.cy = 63;
 
 	basic_bitrate		= new GroupBox(BonkEnc::i18n->TranslateString("Bitrate"), pos, size);
@@ -135,11 +134,12 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.y -= 25;
 	pos.x += 85;
+	size.cx = 99;
 
 	basic_slider_bitrate	= new Slider(pos, size, OR_HORZ, &bitrate, 0, 17);
 	basic_slider_bitrate->onValueChange.Connect(&ConfigureLameEnc::SetBitrate, this);
 
-	pos.x += 83;
+	pos.x += 106;
 	pos.y += 2;
 
 	basic_text_bitrate	= new Text("", pos);
@@ -157,9 +157,9 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	basic_edit_ratio	= new EditBox(String::FromFloat(((double) ratio) / 100), pos, size, 2);
 	basic_edit_ratio->SetFlags(EDB_NUMERIC);
 
-	pos.x = 7;
+	pos.x = 142;
 	pos.y = 137;
-	size.cx = 232;
+	size.cx = 255;
 	size.cy = 51;
 
 	basic_quality		= new GroupBox(BonkEnc::i18n->TranslateString("Quality"), pos, size);
@@ -173,12 +173,12 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	basic_check_set_quality->onAction.Connect(&ConfigureLameEnc::SetQualityOption, this);
 
 	pos.x += 85;
-	size.cx += 38;
+	size.cx = 137;
 
 	basic_slider_quality	= new Slider(pos, size, OR_HORZ, &quality, 0, 9);
 	basic_slider_quality->onValueChange.Connect(&ConfigureLameEnc::SetQuality, this);
 
-	pos.x += 121;
+	pos.x += 144;
 	pos.y += 2;
 
 	basic_text_quality	= new Text("", pos);
@@ -187,21 +187,21 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.y += 17;
 
 	basic_text_quality_worse= new Text(BonkEnc::i18n->TranslateString("worse"), pos);
-	basic_text_quality_worse->SetPosition(Point(105 - (basic_text_quality_worse->textSize.cx / 2), pos.y));
+	basic_text_quality_worse->SetPosition(Point(240 - (basic_text_quality_worse->textSize.cx / 2), pos.y));
 
 	basic_text_quality_better= new Text(BonkEnc::i18n->TranslateString("better"), pos);
-	basic_text_quality_better->SetPosition(Point(211 - (basic_text_quality_better->textSize.cx / 2), pos.y));
+	basic_text_quality_better->SetPosition(Point(369 - (basic_text_quality_better->textSize.cx / 2), pos.y));
 
-	pos.x = 247;
-	pos.y = 62;
-	size.cx = 127;
-	size.cy = 63;
+	pos.x = 153;
+	pos.y = 11;
+	size.cx = 244;
+	size.cy = 39;
 
 	basic_stereomode	= new GroupBox(BonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 10;
-	size.cx = 107;
+	size.cx = 108;
 	size.cy = 0;
 
 	basic_combo_stereomode	= new ComboBox(pos, size);
@@ -212,12 +212,13 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	basic_combo_stereomode->SelectNthEntry(currentConfig->lame_stereomode);
 	basic_combo_stereomode->onSelectEntry.Connect(&ConfigureLameEnc::SetStereoMode, this);
 
-	pos.y += 26;
+	pos.x += 115;
+	pos.y += 1;
 
 	basic_check_forcejs	= new CheckBox(BonkEnc::i18n->TranslateString("Force Joint Stereo"), pos, size, &forcejs);
 
 	pos.x = 7;
-	pos.y = 11;
+	pos.y = 62;
 	size.cx = 127;
 	size.cy = 88;
 
@@ -228,11 +229,6 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 107;
 	size.cy = 0;
 
-	vbr_option_cbr		= new OptionBox(String("CBR (").Append(BonkEnc::i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off);
-	vbr_option_cbr->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
-
-	pos.y += 25;
-
 	vbr_option_vbrmtrh	= new OptionBox("VBR", pos, size, &vbrmode, vbr_mtrh);
 	vbr_option_vbrmtrh->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
 
@@ -241,9 +237,14 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	vbr_option_abr		= new OptionBox("ABR", pos, size, &vbrmode, vbr_abr);
 	vbr_option_abr->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
 
+	pos.y += 25;
+
+	vbr_option_cbr		= new OptionBox(String("CBR (").Append(BonkEnc::i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off);
+	vbr_option_cbr->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
+
 	pos.x = 142;
-	pos.y = 11;
-	size.cx = 232;
+	pos.y = 62;
+	size.cx = 255;
 	size.cy = 51;
 
 	vbr_quality		= new GroupBox(BonkEnc::i18n->TranslateString("VBR quality"), pos, size);
@@ -255,13 +256,13 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.x += (vbr_text_setquality->textSize.cx + 8);
 	pos.y -= 2;
-	size.cx = 181 - vbr_text_setquality->textSize.cx;
+	size.cx = 204 - vbr_text_setquality->textSize.cx;
 	size.cy = 0;
 
 	vbr_slider_quality	= new Slider(pos, size, OR_HORZ, &vbrquality, 0, 90);
 	vbr_slider_quality->onValueChange.Connect(&ConfigureLameEnc::SetVBRQuality, this);
 
-	pos.x = 349;
+	pos.x = 372;
 	pos.y += 2;
 
 	vbr_text_quality	= new Text("", pos);
@@ -273,24 +274,24 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	vbr_text_quality_worse->SetX(vbr_slider_quality->GetX() + 3 - (vbr_text_quality_worse->textSize.cx / 2));
 
 	vbr_text_quality_better= new Text(BonkEnc::i18n->TranslateString("better"), pos);
-	vbr_text_quality_better->SetX(337 - (vbr_text_quality_better->textSize.cx / 2));
+	vbr_text_quality_better->SetX(360 - (vbr_text_quality_better->textSize.cx / 2));
 
 	pos.x = 142;
-	pos.y = 74;
-	size.cx = 232;
-	size.cy = 43;
+	pos.y = 62;
+	size.cx = 255;
+	size.cy = 39;
 
 	vbr_abrbitrate		= new GroupBox(BonkEnc::i18n->TranslateString("ABR target bitrate"), pos, size);
 
 	pos.x += 10;
-	pos.y += 13;
-	size.cx = 146;
+	pos.y += 11;
+	size.cx = 169;
 	size.cy = 0;
 
 	vbr_slider_abrbitrate	= new Slider(pos, size, OR_HORZ, &abrbitrate, 8, 320);
 	vbr_slider_abrbitrate->onValueChange.Connect(&ConfigureLameEnc::SetABRBitrate, this);
 
-	pos.x += 154;
+	pos.x += 177;
 	pos.y -= 1;
 	size.cx = 25;
 
@@ -305,8 +306,8 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	vbr_text_abrbitrate_kbps= new Text("kbps", pos);
 
 	pos.x = 7;
-	pos.y = 129;
-	size.cx = 367;
+	pos.y = 113;
+	size.cx = 390;
 	size.cy = 63;
 
 	vbr_bitrate		= new GroupBox(BonkEnc::i18n->TranslateString("VBR bitrate range"), pos, size);
@@ -320,18 +321,17 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	vbr_check_set_min_brate->onAction.Connect(&ConfigureLameEnc::SetMinVBRBitrateOption, this);
 
 	pos.x += 155;
-	size.cx = 138;
+	size.cx = 161;
 
 	vbr_slider_min_brate	= new Slider(pos, size, OR_HORZ, &min_vbr_brate, 0, 17);
 	vbr_slider_min_brate->onValueChange.Connect(&ConfigureLameEnc::SetMinVBRBitrate, this);
 
-	pos.x += 145;
+	pos.x += 168;
 	pos.y += 2;
 
 	vbr_text_min_brate_kbps	= new Text("kbps", pos);
-	SetMinVBRBitrate();
 
-	pos.x -= 300;
+	pos.x -= 323;
 	pos.y += 23;
 	size.cx = 146;
 
@@ -339,21 +339,24 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	vbr_check_set_max_brate->onAction.Connect(&ConfigureLameEnc::SetMaxVBRBitrateOption, this);
 
 	pos.x += 155;
-	size.cx = 138;
+	size.cx = 161;
 
 	vbr_slider_max_brate	= new Slider(pos, size, OR_HORZ, &max_vbr_brate, 0, 17);
 	vbr_slider_max_brate->onValueChange.Connect(&ConfigureLameEnc::SetMaxVBRBitrate, this);
 
-	pos.x += 145;
+	pos.x += 168;
 	pos.y += 2;
 
 	vbr_text_max_brate_kbps	= new Text("", pos);
+
+	SetMinVBRBitrate();
 	SetMaxVBRBitrate();
+	SetVBRMode();
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 138;
-	size.cy = 89;
+	size.cy = 90;
 
 	misc_bits		= new GroupBox(BonkEnc::i18n->TranslateString("Control bits"), pos, size);
 
@@ -372,60 +375,37 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	misc_check_private	= new CheckBox(BonkEnc::i18n->TranslateString("Set Private bit"), pos, size, &set_private);
 
-	pos.x = 7;
-	pos.y = 112;
-	size.cx = 138;
+	pos.x = 153;
+	pos.y = 62;
+	size.cx = 244;
 	size.cy = 39;
 
 	misc_crc		= new GroupBox(BonkEnc::i18n->TranslateString("CRC"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
-	size.cx = 117;
+	size.cx = 225;
 	size.cy = 0;
 
 	misc_check_crc		= new CheckBox(BonkEnc::i18n->TranslateString("Enable CRC"), pos, size, &set_crc);
 
-	pos.x = 153;
-	pos.y = 11;
-	size.cx = 221;
+	pos.x = 7;
+	pos.y = 113;
+	size.cx = 390;
 	size.cy = 39;
 
 	misc_format		= new GroupBox(BonkEnc::i18n->TranslateString("Stream format"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
-	size.cx = 200;
+	size.cx = 369;
 	size.cy = 0;
 
 	misc_check_iso		= new CheckBox(BonkEnc::i18n->TranslateString("Enforce strict ISO compliance"), pos, size, &set_iso);
 
-	pos.x = 153;
-	pos.y = 61;
-	size.cx = 221;
-	size.cy = 39;
-
-	misc_padding		= new GroupBox(BonkEnc::i18n->TranslateString("Padding"), pos, size);
-
-	pos.x += 9;
-	pos.y += 13;
-
-	misc_text_padding	= new Text(BonkEnc::i18n->TranslateString("Set padding type:"), pos);
-
-	pos.x += (misc_text_padding->textSize.cx + 8);
-	pos.y -= 3;
-	size.cx = 194 - misc_text_padding->textSize.cx;
-	size.cy = 0;
-
-	misc_combo_padding	= new ComboBox(pos, size);
-	misc_combo_padding->AddEntry(BonkEnc::i18n->TranslateString("pad no frames"));
-	misc_combo_padding->AddEntry(BonkEnc::i18n->TranslateString("pad all frames"));
-	misc_combo_padding->AddEntry(BonkEnc::i18n->TranslateString("adjust padding"));
-	misc_combo_padding->SelectNthEntry(currentConfig->lame_padding_type);
-
 	pos.x = 7;
 	pos.y = 11;
-	size.cx = 270;
+	size.cx = 390;
 	size.cy = 39;
 
 	expert_ath		= new GroupBox(BonkEnc::i18n->TranslateString("ATH"), pos, size);
@@ -441,7 +421,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.x += (expert_check_ath->textSize.cx + 28);
 	pos.y -= 1;
-	size.cx = 222 - expert_check_ath->textSize.cx;
+	size.cx = 342 - expert_check_ath->textSize.cx;
 	size.cy = 0;
 
 	expert_combo_athtype	= new ComboBox(pos, size);
@@ -458,28 +438,28 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.x = 7;
 	pos.y = 62;
-	size.cx = 270;
+	size.cx = 390;
 	size.cy = 39;
 
 	expert_psycho		= new GroupBox(BonkEnc::i18n->TranslateString("Psycho acoustic model"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
-	size.cx = 249;
+	size.cx = 369;
 	size.cy = 0;
 
 	expert_check_tempmask	= new CheckBox(BonkEnc::i18n->TranslateString("Use Temporal Masking Effect"), pos, size, &enable_tempmask);
 
 	pos.x = 7;
 	pos.y = 11;
-	size.cx = 138;
+	size.cx = 161;
 	size.cy = 39;
 
 	filtering_resample	= new GroupBox(BonkEnc::i18n->TranslateString("Output sampling rate"), pos, size);
 
 	pos.x += 10;
 	pos.y += 10;
-	size.cx = 118;
+	size.cx = 141;
 	size.cy = 0;
 
 	filtering_combo_resample= new ComboBox(pos, size);
@@ -507,7 +487,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	else if (currentConfig->lame_resample == 44100)	filtering_combo_resample->SelectNthEntry(9);
 	else if (currentConfig->lame_resample == 48000)	filtering_combo_resample->SelectNthEntry(10);
 
-	pos.x = 153;
+	pos.x = 176;
 	pos.y = 11;
 	size.cx = 221;
 	size.cy = 64;
@@ -543,7 +523,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	filtering_edit_highpass_width= new EditBox(String::FromInt(currentConfig->lame_highpass_width), pos, size, 5);
 	filtering_edit_highpass_width->SetFlags(EDB_NUMERIC);
 
-	pos.x = 153;
+	pos.x = 176;
 	pos.y = 87;
 	size.cx = 221;
 	size.cy = 64;
@@ -581,14 +561,14 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.x = 7;
 	pos.y = 62;
-	size.cx = 138;
+	size.cx = 161;
 	size.cy = 39;
 
 	filtering_misc		= new GroupBox(BonkEnc::i18n->TranslateString("Misc settings"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
-	size.cx = 117;
+	size.cx = 140;
 	size.cy = 0;
 
 	filtering_check_disable_all= new CheckBox(BonkEnc::i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering);
@@ -605,7 +585,6 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	mainWnd->Add(reg_register);
 
 	reg_register->Add(register_layer_basic);
-	reg_register->Add(register_layer_vbr);
 	reg_register->Add(register_layer_misc);
 	reg_register->Add(register_layer_expert);
 	reg_register->Add(register_layer_filtering);
@@ -613,6 +592,11 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	register_layer_basic->Add(basic_preset);
 	register_layer_basic->Add(basic_text_preset);
 	register_layer_basic->Add(basic_combo_preset);
+
+	register_layer_basic->Add(vbr_vbrmode);
+	register_layer_basic->Add(vbr_option_cbr);
+	register_layer_basic->Add(vbr_option_abr);
+	register_layer_basic->Add(vbr_option_vbrmtrh);
 
 	register_layer_basic->Add(basic_bitrate);
 	register_layer_basic->Add(basic_option_set_bitrate);
@@ -622,6 +606,18 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	register_layer_basic->Add(basic_text_ratio);
 	register_layer_basic->Add(basic_edit_ratio);
 
+	register_layer_basic->Add(vbr_quality);
+	register_layer_basic->Add(vbr_text_setquality);
+	register_layer_basic->Add(vbr_slider_quality);
+	register_layer_basic->Add(vbr_text_quality);
+	register_layer_basic->Add(vbr_text_quality_worse);
+	register_layer_basic->Add(vbr_text_quality_better);
+
+	register_layer_basic->Add(vbr_abrbitrate);
+	register_layer_basic->Add(vbr_slider_abrbitrate);
+	register_layer_basic->Add(vbr_edit_abrbitrate);
+	register_layer_basic->Add(vbr_text_abrbitrate_kbps);
+
 	register_layer_basic->Add(basic_quality);
 	register_layer_basic->Add(basic_check_set_quality);
 	register_layer_basic->Add(basic_slider_quality);
@@ -629,49 +625,25 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	register_layer_basic->Add(basic_text_quality_worse);
 	register_layer_basic->Add(basic_text_quality_better);
 
-	register_layer_basic->Add(basic_stereomode);
-	register_layer_basic->Add(basic_combo_stereomode);
-	register_layer_basic->Add(basic_check_forcejs);
-
-	register_layer_vbr->Add(vbr_vbrmode);
-	register_layer_vbr->Add(vbr_option_cbr);
-	register_layer_vbr->Add(vbr_option_abr);
-	register_layer_vbr->Add(vbr_option_vbrmtrh);
-
-	register_layer_vbr->Add(vbr_quality);
-	register_layer_vbr->Add(vbr_text_setquality);
-	register_layer_vbr->Add(vbr_slider_quality);
-	register_layer_vbr->Add(vbr_text_quality);
-	register_layer_vbr->Add(vbr_text_quality_worse);
-	register_layer_vbr->Add(vbr_text_quality_better);
-
-	register_layer_vbr->Add(vbr_abrbitrate);
-	register_layer_vbr->Add(vbr_slider_abrbitrate);
-	register_layer_vbr->Add(vbr_edit_abrbitrate);
-	register_layer_vbr->Add(vbr_text_abrbitrate_kbps);
-
-	register_layer_vbr->Add(vbr_bitrate);
-	register_layer_vbr->Add(vbr_check_set_min_brate);
-	register_layer_vbr->Add(vbr_check_set_max_brate);
-	register_layer_vbr->Add(vbr_slider_min_brate);
-	register_layer_vbr->Add(vbr_slider_max_brate);
-	register_layer_vbr->Add(vbr_text_min_brate_kbps);
-	register_layer_vbr->Add(vbr_text_max_brate_kbps);
-
 	register_layer_misc->Add(misc_bits);
 	register_layer_misc->Add(misc_check_original);
 	register_layer_misc->Add(misc_check_copyright);
 	register_layer_misc->Add(misc_check_private);
 
+	register_layer_misc->Add(basic_stereomode);
+	register_layer_misc->Add(basic_combo_stereomode);
+	register_layer_misc->Add(basic_check_forcejs);
+
 	register_layer_misc->Add(misc_crc);
 	register_layer_misc->Add(misc_check_crc);
 
-	register_layer_misc->Add(misc_format);
-	register_layer_misc->Add(misc_check_iso);
-
-	register_layer_misc->Add(misc_padding);
-	register_layer_misc->Add(misc_text_padding);
-	register_layer_misc->Add(misc_combo_padding);
+	register_layer_misc->Add(vbr_bitrate);
+	register_layer_misc->Add(vbr_check_set_min_brate);
+	register_layer_misc->Add(vbr_check_set_max_brate);
+	register_layer_misc->Add(vbr_slider_min_brate);
+	register_layer_misc->Add(vbr_slider_max_brate);
+	register_layer_misc->Add(vbr_text_min_brate_kbps);
+	register_layer_misc->Add(vbr_text_max_brate_kbps);
 
 	register_layer_expert->Add(expert_ath);
 	register_layer_expert->Add(expert_check_ath);
@@ -679,6 +651,9 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	register_layer_expert->Add(expert_psycho);
 	register_layer_expert->Add(expert_check_tempmask);
+
+	register_layer_expert->Add(misc_format);
+	register_layer_expert->Add(misc_check_iso);
 
 	register_layer_filtering->Add(filtering_resample);
 	register_layer_filtering->Add(filtering_combo_resample);
@@ -711,7 +686,6 @@ BonkEnc::ConfigureLameEnc::~ConfigureLameEnc()
 	DeleteObject(btn_cancel);
 	DeleteObject(reg_register);
 	DeleteObject(register_layer_basic);
-	DeleteObject(register_layer_vbr);
 	DeleteObject(register_layer_misc);
 	DeleteObject(register_layer_expert);
 	DeleteObject(register_layer_filtering);
@@ -763,9 +737,6 @@ BonkEnc::ConfigureLameEnc::~ConfigureLameEnc()
 	DeleteObject(misc_check_crc);
 	DeleteObject(misc_format);
 	DeleteObject(misc_check_iso);
-	DeleteObject(misc_padding);
-	DeleteObject(misc_text_padding);
-	DeleteObject(misc_combo_padding);
 	DeleteObject(expert_ath);
 	DeleteObject(expert_check_ath);
 	DeleteObject(expert_combo_athtype);
@@ -854,7 +825,6 @@ Void BonkEnc::ConfigureLameEnc::OK()
 	currentConfig->lame_private = set_private;
 	currentConfig->lame_crc = set_crc;
 	currentConfig->lame_strict_iso = set_iso;
-	currentConfig->lame_padding_type = misc_combo_padding->GetSelectedEntryNumber();
 	currentConfig->lame_disable_filtering = disable_filtering;
 	currentConfig->lame_set_lowpass = set_lowpass;
 	currentConfig->lame_set_lowpass_width = set_lowpass_width;
@@ -922,18 +892,10 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		basic_bitrate->Activate();
 		basic_option_set_bitrate->Activate();
 		basic_option_set_ratio->Activate();
-		basic_slider_bitrate->Activate();
-		basic_text_bitrate->Activate();
-		basic_edit_ratio->Activate();
 		basic_quality->Activate();
 		basic_check_set_quality->Activate();
-		basic_slider_quality->Activate();
-		basic_text_quality->Activate();
-		basic_text_quality_worse->Activate();
-		basic_text_quality_better->Activate();
 		basic_stereomode->Activate();
 		basic_combo_stereomode->Activate();
-		basic_check_forcejs->Activate();
 		vbr_vbrmode->Activate();
 		vbr_option_cbr->Activate();
 		vbr_option_abr->Activate();
@@ -948,13 +910,6 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		vbr_slider_abrbitrate->Activate();
 		vbr_edit_abrbitrate->Activate();
 		vbr_text_abrbitrate_kbps->Activate();
-		vbr_bitrate->Activate();
-		vbr_check_set_min_brate->Activate();
-		vbr_check_set_max_brate->Activate();
-		vbr_slider_min_brate->Activate();
-		vbr_slider_max_brate->Activate();
-		vbr_text_min_brate_kbps->Activate();
-		vbr_text_max_brate_kbps->Activate();
 		misc_bits->Activate();
 		misc_check_original->Activate();
 		misc_check_copyright->Activate();
@@ -963,125 +918,21 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		misc_check_crc->Activate();
 		misc_format->Activate();
 		misc_check_iso->Activate();
-		misc_padding->Activate();
-		misc_text_padding->Activate();
-		misc_combo_padding->Activate();
 		expert_ath->Activate();
 		expert_check_ath->Activate();
-		expert_combo_athtype->Activate();
 		expert_psycho->Activate();
 		expert_check_tempmask->Activate();
 		filtering_resample->Activate();
 		filtering_combo_resample->Activate();
-		filtering_lowpass->Activate();
-		filtering_set_lowpass->Activate();
-		filtering_edit_lowpass->Activate();
-		filtering_set_lowpass_width->Activate();
-		filtering_edit_lowpass_width->Activate();
-		filtering_highpass->Activate();
-		filtering_set_highpass->Activate();
-		filtering_edit_highpass->Activate();
-		filtering_set_highpass_width->Activate();
-		filtering_edit_highpass_width->Activate();
 		filtering_misc->Activate();
 		filtering_check_disable_all->Activate();
 
-		if (vbrmode != vbr_off)
-		{
-			basic_bitrate->Deactivate();
-			basic_option_set_bitrate->Deactivate();
-			basic_option_set_ratio->Deactivate();
-			basic_slider_bitrate->Deactivate();
-			basic_text_bitrate->Deactivate();
-			basic_edit_ratio->Deactivate();
-		}
+		SetVBRMode();
 
-		if (!set_bitrate)
-		{
-			basic_slider_bitrate->Deactivate();
-			basic_text_bitrate->Deactivate();
-		}
-		else
-		{
-			basic_edit_ratio->Deactivate();
-		}
-
-		if (!set_quality)
-		{
-			basic_slider_quality->Deactivate();
-			basic_text_quality->Deactivate();
-			basic_text_quality_worse->Deactivate();
-			basic_text_quality_better->Deactivate();
-		}
-
-		if (basic_combo_stereomode->GetSelectedEntryNumber() != 3) basic_check_forcejs->Deactivate();
-
-		if (vbrmode != vbr_mtrh)
-		{
-			vbr_quality->Deactivate();
-			vbr_text_setquality->Deactivate();
-			vbr_slider_quality->Deactivate();
-			vbr_text_quality->Deactivate();
-			vbr_text_quality_worse->Deactivate();
-			vbr_text_quality_better->Deactivate();
-		}
-
-		if (vbrmode != vbr_abr)
-		{
-			vbr_abrbitrate->Deactivate();
-			vbr_slider_abrbitrate->Deactivate();
-			vbr_edit_abrbitrate->Deactivate();
-			vbr_text_abrbitrate_kbps->Deactivate();
-		}
-
-		if (vbrmode == vbr_off)
-		{
-			vbr_bitrate->Deactivate();
-			vbr_check_set_min_brate->Deactivate();
-			vbr_slider_min_brate->Deactivate();
-			vbr_text_min_brate_kbps->Deactivate();
-			vbr_check_set_max_brate->Deactivate();
-			vbr_slider_max_brate->Deactivate();
-			vbr_text_max_brate_kbps->Deactivate();
-		}
-
-		if (!set_min_vbr_brate)
-		{
-			vbr_slider_min_brate->Deactivate();
-			vbr_text_min_brate_kbps->Deactivate();
-		}
-
-		if (!set_max_vbr_brate)
-		{
-			vbr_slider_max_brate->Deactivate();
-			vbr_text_max_brate_kbps->Deactivate();
-		}
-
-		if (disable_filtering)
-		{
-			filtering_highpass->Deactivate();
-			filtering_set_highpass->Deactivate();
-			filtering_lowpass->Deactivate();
-			filtering_set_lowpass->Deactivate();
-		}
-
-		if (!set_highpass || disable_filtering)
-		{
-			filtering_edit_highpass->Deactivate();
-			filtering_set_highpass_width->Deactivate();
-		}
-
-		if (!set_highpass_width || !set_highpass || disable_filtering) filtering_edit_highpass_width->Deactivate();
-
-		if (!set_lowpass || disable_filtering)
-		{
-			filtering_edit_lowpass->Deactivate();
-			filtering_set_lowpass_width->Deactivate();
-		}
-
-		if (!set_lowpass_width || !set_lowpass || disable_filtering) filtering_edit_lowpass_width->Deactivate();
-
-		if (!enable_ath) expert_combo_athtype->Deactivate();
+		SetQualityOption();
+		SetStereoMode();
+		SetEnableATH();
+		SetDisableFiltering();
 	}
 	else
 	{
@@ -1129,9 +980,6 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		misc_check_crc->Deactivate();
 		misc_format->Deactivate();
 		misc_check_iso->Deactivate();
-		misc_padding->Deactivate();
-		misc_text_padding->Deactivate();
-		misc_combo_padding->Deactivate();
 		expert_ath->Deactivate();
 		expert_check_ath->Deactivate();
 		expert_combo_athtype->Deactivate();
@@ -1154,6 +1002,26 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 
 		if (preset == 9)
 		{
+			basic_bitrate->Hide();
+			basic_option_set_bitrate->Hide();
+			basic_option_set_ratio->Hide();
+			basic_slider_bitrate->Hide();
+			basic_text_bitrate->Hide();
+			basic_text_ratio->Hide();
+			basic_edit_ratio->Hide();
+
+			vbr_quality->Hide();
+			vbr_text_setquality->Hide();
+			vbr_slider_quality->Hide();
+			vbr_text_quality->Hide();
+			vbr_text_quality_worse->Hide();
+			vbr_text_quality_better->Hide();
+
+			vbr_abrbitrate->Show();
+			vbr_slider_abrbitrate->Show();
+			vbr_edit_abrbitrate->Show();
+			vbr_text_abrbitrate_kbps->Show();
+
 			vbr_abrbitrate->Activate();
 			vbr_slider_abrbitrate->Activate();
 			vbr_edit_abrbitrate->Activate();
@@ -1226,17 +1094,17 @@ Void BonkEnc::ConfigureLameEnc::SetVBRMode()
 	switch (vbrmode)
 	{
 		default:
-			vbr_quality->Deactivate();
-			vbr_text_setquality->Deactivate();
-			vbr_slider_quality->Deactivate();
-			vbr_text_quality->Deactivate();
-			vbr_text_quality_worse->Deactivate();
-			vbr_text_quality_better->Deactivate();
+			vbr_quality->Hide();
+			vbr_text_setquality->Hide();
+			vbr_slider_quality->Hide();
+			vbr_text_quality->Hide();
+			vbr_text_quality_worse->Hide();
+			vbr_text_quality_better->Hide();
 
-			vbr_abrbitrate->Deactivate();
-			vbr_slider_abrbitrate->Deactivate();
-			vbr_edit_abrbitrate->Deactivate();
-			vbr_text_abrbitrate_kbps->Deactivate();
+			vbr_abrbitrate->Hide();
+			vbr_slider_abrbitrate->Hide();
+			vbr_edit_abrbitrate->Hide();
+			vbr_text_abrbitrate_kbps->Hide();
 
 			vbr_bitrate->Deactivate();
 			vbr_check_set_min_brate->Deactivate();
@@ -1246,115 +1114,73 @@ Void BonkEnc::ConfigureLameEnc::SetVBRMode()
 			vbr_slider_max_brate->Deactivate();
 			vbr_text_max_brate_kbps->Deactivate();
 
-			basic_bitrate->Activate();
-			basic_option_set_bitrate->Activate();
-			basic_option_set_ratio->Activate();
+			basic_bitrate->Show();
+			basic_option_set_bitrate->Show();
+			basic_option_set_ratio->Show();
+			basic_slider_bitrate->Show();
+			basic_text_bitrate->Show();
+			basic_text_ratio->Show();
+			basic_edit_ratio->Show();
 
-			if (set_bitrate == 1)
-			{
-				basic_slider_bitrate->Activate();
-				basic_text_bitrate->Activate();
-			}
-			else
-			{
-				basic_edit_ratio->Activate();
-			}
+			SetBitrateOption();
 
 			break;
 		case vbr_abr:
-			vbr_quality->Deactivate();
-			vbr_text_setquality->Deactivate();
-			vbr_slider_quality->Deactivate();
-			vbr_text_quality->Deactivate();
-			vbr_text_quality_worse->Deactivate();
-			vbr_text_quality_better->Deactivate();
+			basic_bitrate->Hide();
+			basic_option_set_bitrate->Hide();
+			basic_option_set_ratio->Hide();
+			basic_slider_bitrate->Hide();
+			basic_text_bitrate->Hide();
+			basic_text_ratio->Hide();
+			basic_edit_ratio->Hide();
 
-			vbr_abrbitrate->Activate();
-			vbr_slider_abrbitrate->Activate();
-			vbr_edit_abrbitrate->Activate();
-			vbr_text_abrbitrate_kbps->Activate();
+			vbr_quality->Hide();
+			vbr_text_setquality->Hide();
+			vbr_slider_quality->Hide();
+			vbr_text_quality->Hide();
+			vbr_text_quality_worse->Hide();
+			vbr_text_quality_better->Hide();
+
+			vbr_abrbitrate->Show();
+			vbr_slider_abrbitrate->Show();
+			vbr_edit_abrbitrate->Show();
+			vbr_text_abrbitrate_kbps->Show();
 
 			vbr_bitrate->Activate();
 			vbr_check_set_min_brate->Activate();
-
-			if (set_min_vbr_brate)
-			{
-				vbr_slider_min_brate->Activate();
-				vbr_text_min_brate_kbps->Activate();
-			}
-			else
-			{
-				vbr_slider_min_brate->Deactivate();
-				vbr_text_min_brate_kbps->Deactivate();
-			}
-
 			vbr_check_set_max_brate->Activate();
 
-			if (set_max_vbr_brate)
-			{
-				vbr_slider_max_brate->Activate();
-				vbr_text_max_brate_kbps->Activate();
-			}
-			else
-			{
-				vbr_slider_max_brate->Deactivate();
-				vbr_text_max_brate_kbps->Deactivate();
-			}
-
-			basic_bitrate->Deactivate();
-			basic_option_set_bitrate->Deactivate();
-			basic_option_set_ratio->Deactivate();
-			basic_slider_bitrate->Deactivate();
-			basic_text_bitrate->Deactivate();
-			basic_edit_ratio->Deactivate();
+			SetMinVBRBitrateOption();
+			SetMaxVBRBitrateOption();
 
 			break;
 		case vbr_mtrh:
-			vbr_quality->Activate();
-			vbr_text_setquality->Activate();
-			vbr_slider_quality->Activate();
-			vbr_text_quality->Activate();
-			vbr_text_quality_worse->Activate();
-			vbr_text_quality_better->Activate();
+			basic_bitrate->Hide();
+			basic_option_set_bitrate->Hide();
+			basic_option_set_ratio->Hide();
+			basic_slider_bitrate->Hide();
+			basic_text_bitrate->Hide();
+			basic_text_ratio->Hide();
+			basic_edit_ratio->Hide();
 
-			vbr_abrbitrate->Deactivate();
-			vbr_slider_abrbitrate->Deactivate();
-			vbr_edit_abrbitrate->Deactivate();
-			vbr_text_abrbitrate_kbps->Deactivate();
+			vbr_abrbitrate->Hide();
+			vbr_slider_abrbitrate->Hide();
+			vbr_edit_abrbitrate->Hide();
+			vbr_text_abrbitrate_kbps->Hide();
+
+			vbr_quality->Show();
+			vbr_text_setquality->Show();
+			vbr_slider_quality->Show();
+			vbr_text_quality->Show();
+			vbr_text_quality_worse->Show();
+			vbr_text_quality_better->Show();
 
 			vbr_bitrate->Activate();
 			vbr_check_set_min_brate->Activate();
-
-			if (set_min_vbr_brate)
-			{
-				vbr_slider_min_brate->Activate();
-				vbr_text_min_brate_kbps->Activate();
-			}
-			else
-			{
-				vbr_slider_min_brate->Deactivate();
-				vbr_text_min_brate_kbps->Deactivate();
-			}
-
 			vbr_check_set_max_brate->Activate();
 
-			if (set_max_vbr_brate)
-			{
-				vbr_slider_max_brate->Activate();
-				vbr_text_max_brate_kbps->Activate();
-			}
-			else
-			{
-				vbr_slider_max_brate->Deactivate();
-				vbr_text_max_brate_kbps->Deactivate();
-			}
-
-			basic_bitrate->Deactivate();
-			basic_option_set_bitrate->Deactivate();
-			basic_option_set_ratio->Deactivate();
-			basic_slider_bitrate->Deactivate();
-			basic_text_bitrate->Deactivate();
-			basic_edit_ratio->Deactivate();
+			SetMinVBRBitrateOption();
+			SetMaxVBRBitrateOption();
 
 			break;
 	}
@@ -1537,44 +1363,25 @@ Int BonkEnc::ConfigureLameEnc::SliderValueToBitrate(Int value)
 {
 	switch (value)
 	{
-		case 0:
-			return 8;
-		case 1:
-			return 16;
-		case 2:
-			return 24;
-		case 3:
-			return 32;
-		case 4:
-			return 40;
-		case 5:
-			return 48;
-		case 6:
-			return 56;
-		case 7:
-			return 64;
-		case 8:
-			return 80;
-		case 9:
-			return 96;
-		case 10:
-			return 112;
-		case 11:
-			return 128;
-		case 12:
-			return 144;
-		case 13:
-			return 160;
-		case 14:
-			return 192;
-		case 15:
-			return 224;
-		case 16:
-			return 256;
-		case 17:
-			return 320;
-		default:
-			return 128;
+		case 0:  return 8;
+		case 1:  return 16;
+		case 2:  return 24;
+		case 3:  return 32;
+		case 4:  return 40;
+		case 5:  return 48;
+		case 6:  return 56;
+		case 7:  return 64;
+		case 8:  return 80;
+		case 9:  return 96;
+		case 10: return 112;
+		case 11: return 128;
+		case 12: return 144;
+		case 13: return 160;
+		case 14: return 192;
+		case 15: return 224;
+		case 16: return 256;
+		case 17: return 320;
+		default: return 128;
 	}
 }
 
@@ -1582,43 +1389,24 @@ Int BonkEnc::ConfigureLameEnc::BitrateToSliderValue(Int value)
 {
 	switch (value)
 	{
-		case 8:
-			return 0;
-		case 16:
-			return 1;
-		case 24:
-			return 2;
-		case 32:
-			return 3;
-		case 40:
-			return 4;
-		case 48:
-			return 5;
-		case 56:
-			return 6;
-		case 64:
-			return 7;
-		case 80:
-			return 8;
-		case 96:
-			return 9;
-		case 112:
-			return 10;
-		case 128:
-			return 11;
-		case 144:
-			return 12;
-		case 160:
-			return 13;
-		case 192:
-			return 14;
-		case 224:
-			return 15;
-		case 256:
-			return 16;
-		case 320:
-			return 17;
-		default:
-			return 11;
+		case 8:   return 0;
+		case 16:  return 1;
+		case 24:  return 2;
+		case 32:  return 3;
+		case 40:  return 4;
+		case 48:  return 5;
+		case 56:  return 6;
+		case 64:  return 7;
+		case 80:  return 8;
+		case 96:  return 9;
+		case 112: return 10;
+		case 128: return 11;
+		case 144: return 12;
+		case 160: return 13;
+		case 192: return 14;
+		case 224: return 15;
+		case 256: return 16;
+		case 320: return 17;
+		default:  return 11;
 	}
 }

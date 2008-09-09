@@ -13,11 +13,14 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.9 (August 2008)
+	Version 1.0.9 (September 2008)
 
+		- Polnische und schwedische Übersetzungen aktualisiert
+		- Komplett überarbeiteter LAME-Konfigurationsdialog
 		- Gleitkommawerte für LAME VBR Qualität erlaubt
 		- Codierung kann jetzt abgebrochen werden, falls eine Ausgabedatei bereits existiert
 		- Erstellen des Playlisten-Verzeichnisses trotz abgewählter Playlisten-Option behoben
+		- LAME auf Version 3.98.1 aktualisiert
 		- Einige kleinere Fehlerkorrekturen
 
 	Version 1.0.8 (Juli 2008)

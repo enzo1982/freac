@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">控制位元</entry>
   <entry id="128" string="Stream format">串流格式</entry>
   <entry id="129" string="Enforce strict ISO compliance">強制 ISO 規範限制</entry>
-  <entry id="130" string="Padding">補位</entry>
-  <entry id="131" string="Set padding type:">設定補位類型:</entry>
-  <entry id="132" string="pad no frames">不填補頁框</entry>
-  <entry id="133" string="pad all frames">填補所有頁框</entry>
-  <entry id="134" string="adjust padding">調整填補</entry>
   <entry id="135" string="Output sampling rate">輸出取樣率</entry>
   <entry id="136" string="no resampling">不重新取樣</entry>
   <entry id="137" string="Highpass filter">高通過濾器</entry>

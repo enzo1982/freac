@@ -139,11 +139,6 @@
     <entry id="127" string="Control bits"/>
     <entry id="128" string="Stream format"/>
     <entry id="129" string="Enforce strict ISO compliance"/>
-    <entry id="130" string="Padding"/>
-    <entry id="131" string="Set padding type:"/>
-    <entry id="132" string="pad no frames"/>
-    <entry id="133" string="pad all frames"/>
-    <entry id="134" string="adjust padding"/>
     <entry id="135" string="Output sampling rate"/>
     <entry id="136" string="no resampling"/>
     <entry id="137" string="Highpass filter"/>

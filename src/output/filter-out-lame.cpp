@@ -123,7 +123,6 @@ Bool BonkEnc::FilterOutLAME::Activate()
 			ex_lame_set_extension(lameFlags, currentConfig->lame_private);
 			ex_lame_set_error_protection(lameFlags, currentConfig->lame_crc);
 			ex_lame_set_strict_ISO(lameFlags, currentConfig->lame_strict_iso);
-			ex_lame_set_padding_type(lameFlags, (Padding_type) currentConfig->lame_padding_type);
 
 			if (currentConfig->lame_resample == 0)	   ex_lame_set_out_samplerate(lameFlags, format->rate);
 			else if (currentConfig->lame_resample > 0) ex_lame_set_out_samplerate(lameFlags, currentConfig->lame_resample);

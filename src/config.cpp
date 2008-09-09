@@ -165,7 +165,6 @@ Bool BonkEnc::Config::LoadSettings()
 	lame_original				= config->GetIntValue("lameMP3", "Original", 1);
 	lame_private				= config->GetIntValue("lameMP3", "Private", 0);
 	lame_strict_iso				= config->GetIntValue("lameMP3", "StrictISO", 0);
-	lame_padding_type			= config->GetIntValue("lameMP3", "PaddingType", 2);
 	lame_resample				= config->GetIntValue("lameMP3", "Resample", -1);
 	lame_disable_filtering			= config->GetIntValue("lameMP3", "DisableFiltering", 0);
 	lame_set_lowpass			= config->GetIntValue("lameMP3", "SetLowpass", 0);
@@ -342,7 +341,6 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("lameMP3", "Original", lame_original);
 		config->SetIntValue("lameMP3", "Private", lame_private);
 		config->SetIntValue("lameMP3", "StrictISO", lame_strict_iso);
-		config->SetIntValue("lameMP3", "PaddingType", lame_padding_type);
 		config->SetIntValue("lameMP3", "Resample", lame_resample);
 		config->SetIntValue("lameMP3", "DisableFiltering", lame_disable_filtering);
 		config->SetIntValue("lameMP3", "SetLowpass", lame_set_lowpass);
