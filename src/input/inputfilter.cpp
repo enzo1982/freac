@@ -76,6 +76,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 		else if (ex_ID3Frame_GetID(frame) == ID3FID_ALBUM)	nFormat->album = GetID3V2FrameString(frame);
 		else if (ex_ID3Frame_GetID(frame) == ID3FID_TRACKNUM)	nFormat->track = GetID3V2FrameString(frame).ToInt();
 		else if (ex_ID3Frame_GetID(frame) == ID3FID_YEAR)	nFormat->year = GetID3V2FrameString(frame).ToInt();
+		else if (ex_ID3Frame_GetID(frame) == ID3FID_COMMENT)	nFormat->comment = GetID3V2FrameString(frame);
 		else if (ex_ID3Frame_GetID(frame) == ID3FID_PUBLISHER)	nFormat->label = GetID3V2FrameString(frame);
 		else if (ex_ID3Frame_GetID(frame) == ID3FID_ISRC)	nFormat->isrc = GetID3V2FrameString(frame);
 		else if (ex_ID3Frame_GetID(frame) == ID3FID_CONTENTTYPE)

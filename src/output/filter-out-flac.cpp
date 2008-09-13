@@ -43,27 +43,21 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 	{
 		char	*prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
 
-		FLAC__StreamMetadata				*vorbiscomment = ex_FLAC__metadata_object_new(FLAC__METADATA_TYPE_VORBIS_COMMENT);
-		FLAC__StreamMetadata_VorbisComment_Entry	 comment;
-
-		metadata.Add(vorbiscomment);
-
-		if (currentConfig->default_comment != NIL)
-		{
-			ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&comment, "DESCRIPTION", currentConfig->default_comment);
-			ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, comment, false);
-		}
-
 		if (format->artist != NIL || format->title != NIL)
 		{
+			FLAC__StreamMetadata				*vorbiscomment = ex_FLAC__metadata_object_new(FLAC__METADATA_TYPE_VORBIS_COMMENT);
+
 			FLAC__StreamMetadata_VorbisComment_Entry	 artist;
 			FLAC__StreamMetadata_VorbisComment_Entry	 title;
 			FLAC__StreamMetadata_VorbisComment_Entry	 album;
 			FLAC__StreamMetadata_VorbisComment_Entry	 genre;
 			FLAC__StreamMetadata_VorbisComment_Entry	 date;
 			FLAC__StreamMetadata_VorbisComment_Entry	 track;
+			FLAC__StreamMetadata_VorbisComment_Entry	 comment;
 			FLAC__StreamMetadata_VorbisComment_Entry	 label;
 			FLAC__StreamMetadata_VorbisComment_Entry	 isrc;
+
+			metadata.Add(vorbiscomment);
 
 			if (format->artist != NIL)
 			{
@@ -99,6 +93,17 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 			{
 				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&track, "TRACKNUMBER", String(format->track < 10 ? "0" : "").Append(String::FromInt(format->track)));
 				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, track, false);
+			}
+
+			if (format->comment != NIL)
+			{
+				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&comment, "COMMENT", format->comment);
+				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, comment, false);
+			}
+			else if (currentConfig->default_comment != NIL)
+			{
+				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&comment, "COMMENT", currentConfig->default_comment);
+				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, comment, false);
 			}
 
 			if (format->label != NIL)

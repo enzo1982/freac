@@ -113,16 +113,17 @@ Bool BonkEnc::FilterOutMP4::Deactivate()
 	{
 		char	*prevOutFormat = String::SetOutputFormat(currentConfig->mp4meta_encoding);
 
-		if (currentConfig->default_comment != NIL) ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
-
 		if (format->artist != NIL || format->title != NIL)
 		{
-			if (format->title != NIL)	ex_MP4SetMetadataName(mp4File, format->title);
-			if (format->artist != NIL)	ex_MP4SetMetadataArtist(mp4File, format->artist);
-			if (format->year > 0)		ex_MP4SetMetadataYear(mp4File, String::FromInt(format->year));
-			if (format->album != NIL)	ex_MP4SetMetadataAlbum(mp4File, format->album);
-			if (format->genre != NIL)	ex_MP4SetMetadataGenre(mp4File, format->genre);
-			if (format->track > 0)		ex_MP4SetMetadataTrack(mp4File, format->track, 0);
+			if (format->title != NIL)			ex_MP4SetMetadataName(mp4File, format->title);
+			if (format->artist != NIL)			ex_MP4SetMetadataArtist(mp4File, format->artist);
+			if (format->year > 0)				ex_MP4SetMetadataYear(mp4File, String::FromInt(format->year));
+			if (format->album != NIL)			ex_MP4SetMetadataAlbum(mp4File, format->album);
+			if (format->genre != NIL)			ex_MP4SetMetadataGenre(mp4File, format->genre);
+			if (format->track > 0)				ex_MP4SetMetadataTrack(mp4File, format->track, 0);
+
+			if (format->comment != NIL)			ex_MP4SetMetadataComment(mp4File, format->comment);
+			else if (currentConfig->default_comment != NIL) ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
 		}
 
 		String::SetOutputFormat(prevOutFormat);

@@ -20,7 +20,9 @@ Geschichte
 		- Gleitkommawerte für LAME VBR Qualität erlaubt
 		- Codierung kann jetzt abgebrochen werden, falls eine Ausgabedatei bereits existiert
 		- Erstellen des Playlisten-Verzeichnisses trotz abgewählter Playlisten-Option behoben
+		- Fehlerhaften Umgang mit Kommentaren in Metadaten behoben
 		- LAME auf Version 3.98.1 aktualisiert
+		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
 		- Einige kleinere Fehlerkorrekturen
 
 	Version 1.0.8 (Juli 2008)
