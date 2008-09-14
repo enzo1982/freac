@@ -21,6 +21,7 @@ History
 		- allowed to cancel encoding if an output file already exists
 		- fixed playlist directory being created with playlist option unchecked
 		- fixed handling of comments in metadata
+		- fixed text encoding selection not working when CDDB query was started manually
 		- upgraded LAME to version 3.98.1
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
 		- some minor bug fixes

@@ -20,7 +20,8 @@
 
 #include <sys/types.h>
 #include <signal.h>
-#include <stdint.h>
+
+typedef __int16 int16_t;
 
 #define MAXTRK 100
 

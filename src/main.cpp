@@ -981,6 +981,11 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 					format->genre	= cdInfo.dGenre;
 					format->year	= cdInfo.dYear;
 
+					format->oArtist = format->artist;
+					format->oTitle = format->title;
+					format->oAlbum = format->album;
+					format->oGenre = format->genre;
+
 					String	 jlEntry;
 
 					if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");

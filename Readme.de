@@ -21,6 +21,7 @@ Geschichte
 		- Codierung kann jetzt abgebrochen werden, falls eine Ausgabedatei bereits existiert
 		- Erstellen des Playlisten-Verzeichnisses trotz abgewählter Playlisten-Option behoben
 		- Fehlerhaften Umgang mit Kommentaren in Metadaten behoben
+		- Nicht funktionierende Zeichensatz-Auswahl nach manuell gestarteter CDDB-Abfrage behoben
 		- LAME auf Version 3.98.1 aktualisiert
 		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
 		- Einige kleinere Fehlerkorrekturen
