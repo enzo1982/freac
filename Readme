@@ -15,7 +15,7 @@ History
 
 	Version 1.0.9 (September 2008)
 
-		- updated Polish and Swedish translations
+		- updated Serbian, Polish and Swedish translations
 		- completely reworked LAME configuration dialog
 		- allowed floating point values for LAME VBR quality
 		- allowed to cancel encoding if an output file already exists
@@ -211,7 +211,7 @@ Special thanks to
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn (Dutch),
-			   Marko Djordjevic (Serbian),
+			   Nebojša Nikolic (Serbian),
 			   Krisu (Finnish),
 			   Vladimir Kytyr (Czech),
 			   Escada (Portuguese, Brazilian),
