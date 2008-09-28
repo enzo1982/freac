@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">Kontrolaj bitoj</entry>
   <entry id="128" string="Stream format">Flua (Stream) formato</entry>
   <entry id="129" string="Enforce strict ISO compliance">Forci striktan ISO-konformecon</entry>
-  <entry id="130" string="Padding">Ŝtopado</entry>
-  <entry id="131" string="Set padding type:">Ŝtopadotipo:</entry>
-  <entry id="132" string="pad no frames">remburi neniun framon</entry>
-  <entry id="133" string="pad all frames">remburi ĉiujn framojn</entry>
-  <entry id="134" string="adjust padding">alĝustigi la ŝtopadon</entry>
   <entry id="135" string="Output sampling rate">Samplingkvoto</entry>
   <entry id="136" string="no resampling">ne resampligado</entry>
   <entry id="137" string="Highpass filter">Highpass filtrilo</entry>

@@ -139,11 +139,6 @@
     <entry id="127" string="Control bits">控制位</entry>
     <entry id="128" string="Stream format">流格式</entry>
     <entry id="129" string="Enforce strict ISO compliance">强制ISO兼容</entry>
-    <entry id="130" string="Padding">填充</entry>
-    <entry id="131" string="Set padding type:">设置填充模式:</entry>
-    <entry id="132" string="pad no frames">不填充祯</entry>
-    <entry id="133" string="pad all frames">填充所有祯</entry>
-    <entry id="134" string="adjust padding">调整填充</entry>
     <entry id="135" string="Output sampling rate">输出采样率</entry>
     <entry id="136" string="no resampling">不重新采样</entry>
     <entry id="137" string="Highpass filter">高通滤波</entry>

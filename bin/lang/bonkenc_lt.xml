@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">Kontrolės bitai</entry>
   <entry id="128" string="Stream format">Srauto formatas</entry>
   <entry id="129" string="Enforce strict ISO compliance">Įgalinti griežtą ISO suderinamumą</entry>
-  <entry id="130" string="Padding">Žingsniavimas</entry>
-  <entry id="131" string="Set padding type:">Nustatyti žingsniavimo tipą:</entry>
-  <entry id="132" string="pad no frames">nežingsniuoti atkarpų</entry>
-  <entry id="133" string="pad all frames">žingsniuoti visas atkarpas</entry>
-  <entry id="134" string="adjust padding">suderinti žingsniavimą</entry>
   <entry id="135" string="Output sampling rate">Išvesties atrankos tempas</entry>
   <entry id="136" string="no resampling">jokio perrinkimo</entry>
   <entry id="137" string="Highpass filter">Highpass filtras</entry>

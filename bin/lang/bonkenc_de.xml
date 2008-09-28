@@ -139,11 +139,6 @@
     <entry id="127" string="Control bits">Kontrollbits</entry>
     <entry id="128" string="Stream format">Streamformat</entry>
     <entry id="129" string="Enforce strict ISO compliance">Strikte ISO-Konformität erzwingen</entry>
-    <entry id="130" string="Padding">Padding</entry>
-    <entry id="131" string="Set padding type:">Paddingtyp:</entry>
-    <entry id="132" string="pad no frames">kein Padding</entry>
-    <entry id="133" string="pad all frames">alle Frames</entry>
-    <entry id="134" string="adjust padding">Padding anpassen</entry>
     <entry id="135" string="Output sampling rate">Samplingrate</entry>
     <entry id="136" string="no resampling">kein Resampling</entry>
     <entry id="137" string="Highpass filter">Hochpassfilter</entry>
@@ -400,5 +395,6 @@
     <entry id="388" string="Unknown file type">Unbekannter Dateityp</entry>
     <entry id="389" string="Unsupported audio format">Nicht unterstütztes Audioformat</entry>
     <entry id="390" string="Unknown error">Unbekannter Fehler</entry>
+    <entry id="391" string="Replace existing comments with default comment">Vorhandene Kommentare durch Standardkommentar ersetzen</entry>
   </data>
 </LangFile>

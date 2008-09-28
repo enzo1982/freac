@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">Управляющие биты</entry>
   <entry id="128" string="Stream format">Формат потока</entry>
   <entry id="129" string="Enforce strict ISO compliance">Строгое соответствие ISO</entry>
-  <entry id="130" string="Padding">Заполнение</entry>
-  <entry id="131" string="Set padding type:">Тип:</entry>
-  <entry id="132" string="pad no frames">панель без фреймов</entry>
-  <entry id="133" string="pad all frames">панель со всеми фреймами</entry>
-  <entry id="134" string="adjust padding">регулировка заполнения</entry>
   <entry id="135" string="Output sampling rate">Выходная частота</entry>
   <entry id="136" string="no resampling">Не восстанавливать форму сигнала (без ресемплинга)</entry>
   <entry id="137" string="Highpass filter">Верхний фильтр</entry>

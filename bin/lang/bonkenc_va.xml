@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">Control de bits</entry>
   <entry id="128" string="Stream format">Format de fluix</entry>
   <entry id="129" string="Enforce strict ISO compliance">Forçar conformitat ISO estricta</entry>
-  <entry id="130" string="Padding">Reomplir</entry>
-  <entry id="131" string="Set padding type:">Tipo de reomplida:</entry>
-  <entry id="132" string="pad no frames">sense omplir els marcs</entry>
-  <entry id="133" string="pad all frames">omplir tots els marcs</entry>
-  <entry id="134" string="adjust padding">ajustar reomplida</entry>
   <entry id="135" string="Output sampling rate">Taxa de mostreig d'eixida</entry>
   <entry id="136" string="no resampling">sense remostreig</entry>
   <entry id="137" string="Highpass filter">Filtre Highpass</entry>

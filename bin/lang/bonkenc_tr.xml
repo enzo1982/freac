@@ -139,11 +139,6 @@
     <entry id="127" string="Control bits">Kontrol bitleri</entry>
     <entry id="128" string="Stream format">Akış formatı</entry>
     <entry id="129" string="Enforce strict ISO compliance">Zorla ISO uyumu</entry>
-    <entry id="130" string="Padding">Doldurma</entry>
-    <entry id="131" string="Set padding type:">Dolum tipi:</entry>
-    <entry id="132" string="pad no frames">Boşluk doldurmasız</entry>
-    <entry id="133" string="pad all frames">Hepsi dolu</entry>
-    <entry id="134" string="adjust padding">Dolum ayarları</entry>
     <entry id="135" string="Output sampling rate">çıkış oranları</entry>
     <entry id="136" string="no resampling">Tekrar deneme</entry>
     <entry id="137" string="Highpass filter">Yüksek geçirgen filtre</entry>

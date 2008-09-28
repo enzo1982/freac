@@ -139,11 +139,6 @@
     <entry id="127" string="Control bits">Kontrolní bity</entry>
     <entry id="128" string="Stream format">Streamformát</entry>
     <entry id="129" string="Enforce strict ISO compliance">Vynutit ISO shodu</entry>
-    <entry id="130" string="Padding">Doplnění</entry>
-    <entry id="131" string="Set padding type:">Typ doplnění:</entry>
-    <entry id="132" string="pad no frames">žádné doplnění</entry>
-    <entry id="133" string="pad all frames">všechny framy</entry>
-    <entry id="134" string="adjust padding">Upravit doplnění</entry>
     <entry id="135" string="Output sampling rate">Výstup rychlosti vzorkování</entry>
     <entry id="136" string="no resampling">neobnovovat</entry>
     <entry id="137" string="Highpass filter">Výškový filtr</entry>

@@ -139,11 +139,6 @@
     <entry id="127" string="Control bits">컨트롤 비트</entry>
     <entry id="128" string="Stream format">스트림 포맷</entry>
     <entry id="129" string="Enforce strict ISO compliance">ISO 표준에 따라 제한</entry>
-    <entry id="130" string="Padding">패딩</entry>
-    <entry id="131" string="Set padding type:">패딩 형태 설정:</entry>
-    <entry id="132" string="pad no frames">패드 프레임 없음</entry>
-    <entry id="133" string="pad all frames">모든 프레임 패드</entry>
-    <entry id="134" string="adjust padding">패딩 수정</entry>
     <entry id="135" string="Output sampling rate">출력 샘플레이트</entry>
     <entry id="136" string="no resampling">다시 샘플링 안함</entry>
     <entry id="137" string="Highpass filter">HPF</entry>

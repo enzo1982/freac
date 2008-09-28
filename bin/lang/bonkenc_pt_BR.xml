@@ -139,11 +139,6 @@
   <entry id="127" string="Control bits">Bits de controle</entry>
   <entry id="128" string="Stream format">Formato do stream</entry>
   <entry id="129" string="Enforce strict ISO compliance">Ater-se aos padrões ISO</entry>
-  <entry id="130" string="Padding">Padding</entry>
-  <entry id="131" string="Set padding type:">Tipo de padding:</entry>
-  <entry id="132" string="pad no frames">Sem pad</entry>
-  <entry id="133" string="pad all frames">Pad em todos os frames</entry>
-  <entry id="134" string="adjust padding">Padding variável</entry>
   <entry id="135" string="Output sampling rate">Taxa de amostragem</entry>
   <entry id="136" string="no resampling">sem reamostragem</entry>
   <entry id="137" string="Highpass filter">Filtro passa-alta</entry>
