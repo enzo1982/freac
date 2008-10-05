@@ -37,7 +37,7 @@
 
 Int StartGUI(const Array<String> &args)
 {
-	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug");
+	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug Output");
 
 	debug->Write("");
 	debug->Write("=======================");
@@ -98,8 +98,6 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	if (currentConfig->language == "") currentConfig->language = "internal";
 
 	i18n->ActivateLanguage(currentConfig->language);
-
-	InitCDRip();
 
 	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
 
@@ -295,7 +293,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 	switch (message)
 	{
 		case WM_DEVICECHANGE:
-			if (wParam == DBT_DEVICEARRIVAL && currentConfig->enable_cdrip && currentConfig->cdrip_autoRead)
+			if (wParam == DBT_DEVICEARRIVAL && currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_autoRead)
 			{
 				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype != DBT_DEVTYP_VOLUME || !(((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)) break;
 
@@ -327,7 +325,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 					Bool	 ok = False;
 					Int	 drive = 0;
 
-					for (drive = 0; drive < currentConfig->cdrip_numdrives; drive++)
+					for (drive = 0; drive < BoCA::Config::Get()->cdrip_numdrives; drive++)
 					{
 						ex_CR_SetActiveCDROM(drive);
 
@@ -342,14 +340,14 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 					if (ok)
 					{
-						currentConfig->cdrip_activedrive = drive;
-						currentConfig->cdrip_autoRead_active = True;
+						BoCA::Config::Get()->cdrip_activedrive = drive;
+						BoCA::Config::Get()->cdrip_autoRead_active = True;
 
 						ReadCD();
 
-						currentConfig->cdrip_autoRead_active = False;
+						BoCA::Config::Get()->cdrip_autoRead_active = False;
 
-						if (currentConfig->cdrip_autoRip) Encode();
+						if (BoCA::Config::Get()->cdrip_autoRip) Encode();
 					}
 				}
 			}
@@ -443,7 +441,7 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 {
 	if (!joblist->CanModifyJobList()) return;
 
-	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
+	ex_CR_SetActiveCDROM(BoCA::Config::Get()->cdrip_activedrive);
 
 	ex_CR_ReadToc();
 
@@ -459,7 +457,7 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 			 */
 			joblist->AddTrackByFileName(
 				String("cdda://")
-					.Append(String::FromInt(currentConfig->cdrip_activedrive))
+					.Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive))
 					.Append("/")
 					.Append(String::FromInt(entry.btTrackNumber))
 			);
@@ -471,7 +469,7 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
 {
-	currentConfig->cdrip_activedrive = clicked_drive;
+	BoCA::Config::Get()->cdrip_activedrive = clicked_drive;
 
 	clicked_drive = -1;
 
@@ -492,18 +490,21 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
-		Track	*format = joblist->GetNthTrack(i);
-		Int	 discID = CDDB::StringToDiscID(format->discid);
+		const Track	&track = joblist->GetNthTrack(i);
+		Int		 discID = CDDB::StringToDiscID(track.discid);
 
-		if (format->isCDTrack) discIDs.Add(discID, format->drive);
-		if (format->isCDTrack) discIDStrings.Add(format->discid, format->drive);
+		if (track.isCDTrack)
+		{
+			discIDs.Add(discID, track.drive);
+			discIDStrings.Add(track.discid, track.drive);
+		}
 	}
 
 	for (Int j = 0; j < discIDs.Length(); j++)
 	{
-		Int	 oDrive = currentConfig->cdrip_activedrive;
+		Int	 oDrive = BoCA::Config::Get()->cdrip_activedrive;
 
-		currentConfig->cdrip_activedrive = discIDs.GetNthIndex(j);
+		BoCA::Config::Get()->cdrip_activedrive = discIDs.GetNthIndex(j);
 
 		Int	 discID = discIDs.GetNth(j);
 		String	 discIDString = discIDStrings.GetNth(j);
@@ -518,25 +519,30 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 			if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 		}
 
-		currentConfig->cdrip_activedrive = oDrive;
+		BoCA::Config::Get()->cdrip_activedrive = oDrive;
 
 		if (cdInfo != NIL)
 		{
 			for (Int k = 0; k < joblist->GetNOfTracks(); k++)
 			{
-				Track	*format = joblist->GetNthTrack(k);
+				Track	 track = joblist->GetNthTrack(k);
 
-				if (format->isCDTrack && format->discid == discIDString)
+				if (track.isCDTrack && track.discid == discIDString)
 				{
-					format->track	= format->cdTrack;
-					format->outfile	= NIL;
-					format->artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(format->cdTrack - 1) : cdInfo.dArtist);
-					format->title	= cdInfo.trackTitles.GetNth(format->cdTrack - 1);
-					format->album	= cdInfo.dTitle;
-					format->genre	= cdInfo.dGenre;
-					format->year	= cdInfo.dYear;
+					track.track	= track.cdTrack;
+					track.outfile	= NIL;
+					track.artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(track.cdTrack - 1) : cdInfo.dArtist);
+					track.title	= cdInfo.trackTitles.GetNth(track.cdTrack - 1);
+					track.album	= cdInfo.dTitle;
+					track.genre	= cdInfo.dGenre;
+					track.year	= cdInfo.dYear;
 
-					joblist->UpdateTrackInfo(*format);
+					track.oArtist	= track.artist;
+					track.oTitle	= track.title;
+					track.oAlbum	= track.album;
+					track.oGenre	= track.genre;
+
+					BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 				}
 			}
 		}
@@ -544,9 +550,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 	joblist->Paint(SP_PAINT);
 
-	Track	*format = joblist->GetSelectedTrack();
-
-	if (format != NIL) joblist->OnSelectEntry();
+	if (joblist->GetSelectedTrack() != NIL) joblist->OnSelectEntry();
 }
 
 Void BonkEnc::BonkEncGUI::QueryCDDBLater()
@@ -555,9 +559,9 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
-		Track	*format = joblist->GetNthTrack(i);
+		const Track	&track = joblist->GetNthTrack(i);
 
-		if (format->isCDTrack) drives.Add(format->drive, format->drive);
+		if (track.isCDTrack) drives.Add(track.drive, track.drive);
 	}
 
 	if (drives.Length() > 0)
@@ -711,11 +715,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives > 1)
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives > 1)
 	{
-		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
+		for (Int j = 0; j < BoCA::Config::Get()->cdrip_numdrives; j++)
 		{
-			menu_seldrive->AddEntry(currentConfig->cdrip_drives.GetNth(j), NIL, NIL, NIL, &currentConfig->cdrip_activedrive, j);
+			menu_seldrive->AddEntry(BoCA::Config::Get()->cdrip_drives.GetNth(j), NIL, NIL, NIL, &BoCA::Config::Get()->cdrip_activedrive, j);
 		}
 
 		menu_options->AddEntry();
@@ -726,11 +730,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
 	{
-		for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
+		for (Int j = 0; j < BoCA::Config::Get()->cdrip_numdrives; j++)
 		{
-			menu_drives->AddEntry(currentConfig->cdrip_drives.GetNth(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
+			menu_drives->AddEntry(BoCA::Config::Get()->cdrip_drives.GetNth(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
 		}
 
 		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("BonkEnc.pci:23"));
@@ -744,7 +748,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_addsubmenu->AddEntry();
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives > 1)
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives > 1)
 	{
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
@@ -829,7 +833,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
@@ -842,9 +846,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:2"), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:2"), BoCA::Config::Get()->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
 		entry->SetTooltipText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
@@ -857,7 +861,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
 	{
 		mainWnd_iconbar->AddEntry();
 

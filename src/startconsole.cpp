@@ -19,7 +19,7 @@ using namespace BoCA::AS;
 
 Int StartConsole(const Array<String> &args)
 {
-	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug");
+	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug Output");
 
 	debug->Write("");
 	debug->Write("=========================================");
@@ -67,8 +67,6 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	currentConfig->SetSaveSettingsOnExit(False);
 	componentsConfig->SetSaveSettingsOnExit(False);
 
-	InitCDRip();
-
 	Bool		 quiet		= ScanForParameter("-quiet", NULL);
 	Bool		 cddb		= ScanForParameter("-cddb", NULL);
 	Array<String>	 files;
@@ -94,13 +92,13 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	if (currentConfig->enable_cdrip)
 	{
-		currentConfig->cdrip_activedrive = cdDrive.ToInt();
+		BoCA::Config::Get()->cdrip_activedrive = cdDrive.ToInt();
 
-		if (currentConfig->cdrip_activedrive >= ex_CR_GetNumCDROM())
+		if (BoCA::Config::Get()->cdrip_activedrive >= ex_CR_GetNumCDROM())
 		{
 			Console::OutputString(String("Warning: Drive #").Append(cdDrive).Append(" does not exist. Using first drive.\n"));
 
-			currentConfig->cdrip_activedrive = 0;
+			BoCA::Config::Get()->cdrip_activedrive = 0;
 		}
 
 		if (!TracksToFiles(tracks, &files))
@@ -294,8 +292,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		currentConfig->enable_auto_cddb = cddb;
 		currentConfig->enable_cddb_cache = True;
-		currentConfig->cdrip_locktray = False;
-		currentConfig->cdrip_timeout = timeout.ToInt();
+
+		BoCA::Config::Get()->cdrip_locktray = False;
+		BoCA::Config::Get()->cdrip_timeout = timeout.ToInt();
 
 		currentConfig->encodeToSingleFile = False;
 		currentConfig->writeToInputDir = False;
@@ -309,7 +308,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			if (currentFile.StartsWith("cdda://"))
 			{
-				currentFile = String("Audio CD ").Append(String::FromInt(currentConfig->cdrip_activedrive)).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
+				currentFile = String("Audio CD ").Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive)).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
 			}
 
 			if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("cdda://"))
@@ -401,7 +400,7 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 {
 	if (tracks == "all")
 	{
-		ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
+		ex_CR_SetActiveCDROM(BoCA::Config::Get()->cdrip_activedrive);
 
 		ex_CR_ReadToc();
 

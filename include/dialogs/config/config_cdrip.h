@@ -50,9 +50,7 @@ namespace BonkEnc
 			Bool		 autoEject;
 			Bool		 readCDText;
 			Bool		 readCDPlayerIni;
- 
-			Config		*currentConfig;
-		slots:
+ 		slots:
 			Void		 SetParanoia();
 
 			Void		 ToggleAutoRead();

@@ -30,7 +30,7 @@ namespace BonkEnc
 			InStream		*in;
 			OutStream		*out;
 
-			BoCA::Protocol		*debug;
+			BoCA::Protocol		*protocol;
 
 			String			 SendCommand(const String &);
 		public:

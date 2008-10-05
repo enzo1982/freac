@@ -38,6 +38,10 @@ String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.x
 
 BonkEnc::BonkEnc::BonkEnc()
 {
+#ifdef __WIN64__
+	version.Append(" (x64)");
+#endif
+
 	instance = this;
 	i18n = BoCA::I18n::Get();
 
@@ -79,55 +83,4 @@ BonkEnc::BonkEnc::~BonkEnc()
 BonkEnc::BonkEnc *BonkEnc::BonkEnc::Get()
 {
 	return instance;
-}
-
-Bool BonkEnc::BonkEnc::InitCDRip()
-{
-	if (!currentConfig->enable_cdrip) return False;
-
-	Long		 error = CDEX_OK;
-	OSVERSIONINFOA	 vInfo;
-
-	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
-
-	GetVersionExA(&vInfo);
-
-	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) currentConfig->cdrip_ntscsi = False;
-
-	error = ex_CR_Init(currentConfig->cdrip_ntscsi);
-
-	if (error != CDEX_OK		 && 
-	    error != CDEX_ACCESSDENIED	 &&
-	    vInfo.dwPlatformId == VER_PLATFORM_WIN32_NT)
-	{
-		currentConfig->cdrip_ntscsi = !currentConfig->cdrip_ntscsi;
-
-		error = ex_CR_Init(currentConfig->cdrip_ntscsi);
-	}
-
-	if	(error == CDEX_ACCESSDENIED)	Utilities::ErrorMessage("Access to CD-ROM drives was denied by Windows.\n\nPlease contact your system administrator in order\nto be granted the right to access the CD-ROM drive.");
-	else if (error != CDEX_OK &&
-		 error != CDEX_NOCDROMDEVICES)	Utilities::ErrorMessage("Unable to load ASPI drivers! CD ripping disabled!");
-
-	if (error == CDEX_OK)
-	{
-		currentConfig->cdrip_numdrives = ex_CR_GetNumCDROM();
-
-		for (int i = 0; i < currentConfig->cdrip_numdrives; i++)
-		{
-			ex_CR_SetActiveCDROM(i);
-
-			CDROMPARAMS	 params;
-
-			ex_CR_GetCDROMParameters(&params);
-
-			currentConfig->cdrip_drives.Add(params.lpszCDROMID);
-		}
-
-		if (currentConfig->cdrip_numdrives <= currentConfig->cdrip_activedrive) currentConfig->cdrip_activedrive = 0;
-
-		return True;
-	}
-
-	return False;
 }

@@ -54,8 +54,6 @@ namespace BonkEnc
 
 			Bool				 dontUpdateInfo;
 			Bool				 overwriteAll;
-
-			Bool				 InitCDRip();
 		public:
 			static String			 version;
 			static String			 shortVersion;

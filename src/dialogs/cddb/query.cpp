@@ -146,7 +146,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 	prog_status->SetValue(20);
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Requesting CD information")).Append("..."));
 
-	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
+	cddb.SetActiveDrive(BoCA::Config::Get()->cdrip_activedrive);
 
 	if (queryString == NIL)
 	{

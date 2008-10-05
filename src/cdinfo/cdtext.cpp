@@ -38,7 +38,7 @@ BonkEnc::CDText::~CDText()
 
 Int BonkEnc::CDText::ReadCDText()
 {
-	if (!Config::Get()->cdrip_read_cdtext) return Success();
+	if (!BoCA::Config::Get()->cdrip_read_cdtext) return Success();
 
 	cdText.RemoveAll();
 

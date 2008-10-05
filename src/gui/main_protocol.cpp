@@ -25,6 +25,7 @@ BonkEnc::LayerProtocol::LayerProtocol() : Layer("Protocol")
 	size.cx	= 350;
 
 	combo_protocol	= new ComboBox(pos, size);
+	combo_protocol->onSelectEntry.Connect(&LayerProtocol::SelectProtocol, this);
 	combo_protocol->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x	= 7;

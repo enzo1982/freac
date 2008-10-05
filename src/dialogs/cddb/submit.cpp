@@ -24,7 +24,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 {
 	currentConfig	= Config::Get();
 
-	activedrive	= currentConfig->cdrip_activedrive;
+	activedrive	= BoCA::Config::Get()->cdrip_activedrive;
 	updateJoblist	= currentConfig->update_joblist;
 
 	submitLater	= !currentConfig->enable_remote_cddb;
@@ -86,9 +86,9 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	combo_drive	= new ComboBox(pos, size);
 
-	for (int j = 0; j < currentConfig->cdrip_numdrives; j++)
+	for (int j = 0; j < BoCA::Config::Get()->cdrip_numdrives; j++)
 	{
-		combo_drive->AddEntry(currentConfig->cdrip_drives.GetNth(j));
+		combo_drive->AddEntry(BoCA::Config::Get()->cdrip_drives.GetNth(j));
 	}
 
 	combo_drive->SelectNthEntry(activedrive);
@@ -394,24 +394,26 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	{
 		for (Int l = 0; l < BonkEnc::Get()->joblist->GetNOfTracks(); l++)
 		{
-			Track	*trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
+			const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
-			if (trackInfo->discid != cddbInfo.DiscIDToString()) continue;
+			if (trackInfo.discid != cddbInfo.DiscIDToString()) continue;
 
 			for (Int m = 0; m < titles.Length(); m++)
 			{
-				if (trackInfo->cdTrack == list_tracks->GetNthEntry(m)->GetText().ToInt())
+				if (trackInfo.cdTrack == list_tracks->GetNthEntry(m)->GetText().ToInt())
 				{
-					if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") trackInfo->artist = artists.GetNth(m);
-					else															trackInfo->artist = edit_artist->GetText();
+					Track	 track = BonkEnc::Get()->joblist->GetNthTrack(l);
 
-					trackInfo->title	= titles.GetNth(m);
-					trackInfo->album	= edit_album->GetText();
-					trackInfo->year		= edit_year->GetText().ToInt();
-					trackInfo->genre	= edit_genre->GetText();
-					trackInfo->comment	= comments.GetNth(m);
+					if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") track.artist = artists.GetNth(m);
+					else															track.artist = edit_artist->GetText();
 
-					BonkEnc::Get()->joblist->UpdateTrackInfo(*trackInfo);
+					track.title	= titles.GetNth(m);
+					track.album	= edit_album->GetText();
+					track.year	= edit_year->GetText().ToInt();
+					track.genre	= edit_genre->GetText();
+					track.comment	= comments.GetNth(m);
+
+					BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 				}
 			}
 		}
@@ -514,9 +516,9 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	cdText.ReadCDText();
 	cdPlayerInfo.ReadCDInfo();
 
-	Int	 oDrive = currentConfig->cdrip_activedrive;
+	Int	 oDrive = BoCA::Config::Get()->cdrip_activedrive;
 
-	currentConfig->cdrip_activedrive = activedrive;
+	BoCA::Config::Get()->cdrip_activedrive = activedrive;
 
 	CDDBRemote	 cddb;
 	Int		 iDiscid = cddb.ComputeDiscID();
@@ -531,7 +533,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 	}
 
-	currentConfig->cdrip_activedrive = oDrive;
+	BoCA::Config::Get()->cdrip_activedrive = oDrive;
 
 	dontUpdateInfo = True;
 
@@ -739,28 +741,28 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	for (Int l = 0; l < BonkEnc::Get()->joblist->GetNOfTracks(); l++)
 	{
-		Track	*trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
+		const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
-		if (trackInfo->discid != CDDB::DiscIDToString(cddb.ComputeDiscID())) continue;
+		if (trackInfo.discid != CDDB::DiscIDToString(cddb.ComputeDiscID())) continue;
 
-		if (list_tracks->GetNthEntry(trackInfo->cdTrack - 1) != NIL)
+		if (list_tracks->GetNthEntry(trackInfo.cdTrack - 1) != NIL)
 		{
-			if (trackInfo->artist != "" && trackInfo->artist != artists.GetNth(trackInfo->cdTrack - 1))
+			if (trackInfo.artist != "" && trackInfo.artist != artists.GetNth(trackInfo.cdTrack - 1))
 			{
-				artists.Set(artists.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->artist);
-				cddbInfo.trackArtists.Set(cddbInfo.trackArtists.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->artist);
+				artists.Set(artists.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.artist);
+				cddbInfo.trackArtists.Set(cddbInfo.trackArtists.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.artist);
 			}
 
-			if (trackInfo->title != "" && trackInfo->title != titles.GetNth(trackInfo->cdTrack - 1))
+			if (trackInfo.title != "" && trackInfo.title != titles.GetNth(trackInfo.cdTrack - 1))
 			{
-				titles.Set(titles.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->title);
-				cddbInfo.trackTitles.Set(cddbInfo.trackTitles.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->title);
+				titles.Set(titles.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.title);
+				cddbInfo.trackTitles.Set(cddbInfo.trackTitles.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.title);
 			}
 
-			if (trackInfo->comment != "" && trackInfo->comment != comments.GetNth(trackInfo->cdTrack - 1))
+			if (trackInfo.comment != "" && trackInfo.comment != comments.GetNth(trackInfo.cdTrack - 1))
 			{
-				comments.Set(comments.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->comment);
-				cddbInfo.trackComments.Set(cddbInfo.trackComments.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->comment);
+				comments.Set(comments.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.comment);
+				cddbInfo.trackComments.Set(cddbInfo.trackComments.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.comment);
 			}
 		}
 	}

@@ -364,7 +364,7 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 
 	for (Int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = True;
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1 && !valid)
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1 && !valid)
 	{
 		Utilities::ErrorMessage("Please enter a valid eMail address.");
 

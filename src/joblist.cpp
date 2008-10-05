@@ -33,6 +33,9 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 
 	onSelectEntry.Connect(&JobList::OnSelectEntry, this);
 
+	BoCA::JobList::Get()->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
+	BoCA::JobList::Get()->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
+
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFile.Connect(&JobList::AddTrackByDragAndDrop, this);
 
@@ -56,6 +59,9 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 
 BonkEnc::JobList::~JobList()
 {
+	BoCA::JobList::Get()->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
+	BoCA::JobList::Get()->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
+
 	onRegister.Disconnect(&JobList::OnRegister, this);
 	onUnregister.Disconnect(&JobList::OnUnregister, this);
 
@@ -72,12 +78,16 @@ Int BonkEnc::JobList::GetNOfTracks()
 	return tracks.Length();
 }
 
-BoCA::Track *BonkEnc::JobList::GetNthTrack(Int n)
+const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n)
 {
-	if (n < 0 || GetNOfTracks() <= n) return NIL;
+	static Track	 nil(NIL);
+
+	if (n < 0 || GetNOfTracks() <= n) return nil;
 	
-	// Entries might have been moved in the joblist, so get the entry by index instead of position
-	return tracks.Get(GetNthEntry(n)->GetHandle());
+	/* Entries may have been moved in the joblist,
+	 * so get the entry by index instead of position.
+	 */
+	return *(tracks.Get(GetNthEntry(n)->GetHandle()));
 }
 
 Bool BonkEnc::JobList::CanModifyJobList()
@@ -101,37 +111,9 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	track->oAlbum = track->album;
 	track->oGenre = track->genre;
 
-	String	 jlEntry;
-	String	 tooltip;
+	ListEntry	*entry	= AddEntry(GetEntryText(*track));
 
-	if (track->artist == NIL && track->title == NIL) jlEntry = String(track->origFilename).Append("\t");
-	else						 jlEntry = String(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
-
-	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
-
-	tooltip = String(BonkEnc::i18n->TranslateString("File")).Append(": ").Append(track->origFilename).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Size")).Append(": ").Append(track->fileSizeString).Append(" ").Append(BonkEnc::i18n->TranslateString("bytes")).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
-		  Append(track->length > 0 || track->approxLength > 0 ? String(BonkEnc::i18n->TranslateString("Length")).Append(": ").Append(track->lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : "").
-		  Append(track->length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track->length)).Append("\n") : "").
-		  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track->rate)).Append(" Hz\n").
-		  Append(BonkEnc::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(BonkEnc::i18n->TranslateString("bit")).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? BonkEnc::i18n->TranslateString("Mono") : BonkEnc::i18n->TranslateString("Stereo")));
-
-	if (track->rate > 0 && track->channels > 0)
-	{
-		if	(track->length	     > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
-		else if (track->approxLength > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->approxLength / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
-
-		wchar_t	 sign[2] = { 0x2248, 0 };
-
-		if (Setup::enableUnicode) tooltip.Replace("~", sign);
-	}
-
-	ListEntry	*entry	= AddEntry(jlEntry);
-
-	if (Config::Get()->showTooltips) entry->SetTooltipText(tooltip);
+	if (Config::Get()->showTooltips) entry->SetTooltipText(GetTooltipText(*track));
 
 	entry->SetMark(True);
 
@@ -146,19 +128,22 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 
 Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 {
-	if (n == GetSelectedEntryNumber()) onSelectNone.Emit();
+	ListEntry	*entry = GetNthEntry(n);
+	Track		*track = tracks.Get(entry->GetHandle());
 
-	Track	*track = GetNthTrack(n);
+	/* Remove track from track list and joblist.
+	 */
+	tracks.Remove(entry->GetHandle());
 
+	Remove(entry);
+
+	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
+
+	/* Notify components and delete track.
+	 */
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Emit(*track);
 
 	delete track;
-
-	tracks.Remove(GetNthEntry(n)->GetHandle());
-
-	Remove(GetNthEntry(n));
-
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
 
 	return True;
 }
@@ -167,29 +152,15 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 {
 	if (!CanModifyJobList()) return False;
 
-	onRemovePlayingTrack.Emit();
-
-	for (Int i = 0; i < GetNOfTracks(); i++)
+	while (GetNOfTracks())
 	{
-		Track	*track = GetNthTrack(i);
-
-		BoCA::JobList::Get()->onApplicationRemoveTrack.Emit(*track);
-
-		delete track;
+		RemoveNthTrack(GetNOfTracks() - 1);
 	}
-
-	tracks.RemoveAll();
-
-	RemoveAllEntries();
-
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", "0"));
-
-	onSelectNone.Emit();
 
 	return True;
 }
 
-BoCA::Track *BonkEnc::JobList::GetSelectedTrack()
+const BoCA::Track &BonkEnc::JobList::GetSelectedTrack()
 {
 	return GetNthTrack(GetSelectedEntryNumber());
 }
@@ -219,7 +190,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	{
 		if (boca.GetComponentType(j) != BoCA::COMPONENT_TYPE_DECODER) continue;
 
-		const Array<Format *>	&formats = boca.GetComponentFormats(j);
+		const Array<FileFormat *>	&formats = boca.GetComponentFormats(j);
 
 		for (Int k = 0; k < formats.Length(); k++)
 		{
@@ -240,7 +211,10 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	String	 fileTypes;
 
-	for (Int l = 0; l < extensions.Length(); l++) fileTypes.Append("; ").Append(extensions.GetNth(l));
+	for (Int l = 0; l < extensions.Length(); l++)
+	{
+		if (fileTypes.Find(extensions.GetNth(l)) < 0) fileTypes.Append(l > 0 ? ";" : "").Append(extensions.GetNth(l));
+	}
 
 	dialog->AddFilter(BonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
 
@@ -274,8 +248,8 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 		return;
 	}
 
-	Track	 format;
-	Error	 error = filter_in->GetStreamInfo(file, format);
+	Track	 track;
+	Error	 error = filter_in->GetStreamInfo(file, track);
 	String	 errorString = filter_in->GetErrorString();
 
 	Registry::Get().DeleteComponent(filter_in);
@@ -289,28 +263,28 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 
 	/* Add disc ID to CD tracks
 	 */
-	if (format.isCDTrack)
+	if (track.isCDTrack)
 	{
 		CDDBRemote	 cddb;
 
-		cddb.SetActiveDrive(Config::Get()->cdrip_activedrive);
+		cddb.SetActiveDrive(BoCA::Config::Get()->cdrip_activedrive);
 
-		format.discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
+		track.discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
 	}
 
 	/* Exit if we are auto-reading a CD which is already loaded in the joblist.
 	 */
-	if (format.isCDTrack && Config::Get()->cdrip_autoRead_active)
+	if (track.isCDTrack && BoCA::Config::Get()->cdrip_autoRead_active)
 	{
 		for (Int i = 0; i < tracks.Length(); i++)
 		{
-			Track	*track = tracks.GetNth(i);
+			Track	*cdTrack = tracks.GetNth(i);
 
-			if (track->discid == format.discid && track->cdTrack == format.cdTrack) return;
+			if (cdTrack->discid == track.discid && cdTrack->cdTrack == track.cdTrack) return;
 		}
 	}
 
-	if (format.artist == NIL && format.title == NIL)
+	if (track.artist == NIL && track.title == NIL)
 	{
 		if (!file.StartsWith("cdda://"))
 		{
@@ -346,36 +320,36 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 				{
 					artistComplete = (m += 3);
 
-					format.title = NIL;
+					track.title = NIL;
 				}
 
-				if (!artistComplete)	format.artist[m] = fileName[m];
-				else			format.title[m - artistComplete] = fileName[m];
+				if (!artistComplete)	track.artist[m] = fileName[m];
+				else			track.title[m - artistComplete] = fileName[m];
 			}
 
 			if (artistComplete == 0)
 			{
-				format.artist = NIL;
-				format.title = NIL;
+				track.artist = NIL;
+				track.title = NIL;
 			}
 		}
 	}
 
-	if (format.fileSize > 0)	    format.fileSizeString = S::I18n::Number::GetLocalizedNumberString(format.fileSize);
+	if	(track.fileSize > 0)	   track.fileSizeString = S::I18n::Number::GetLocalizedNumberString(track.fileSize);
 
-	if (format.length >= 0)		    format.lengthString = String::FromInt(Math::Floor(format.length / (format.rate * format.channels) / 60)).Append(":").Append((format.length / (format.rate * format.channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format.length / (format.rate * format.channels) % 60));
-	else if (format.approxLength >= 0)  format.lengthString = String("~ ").Append(String::FromInt(Math::Floor(format.approxLength / (format.rate * format.channels) / 60)).Append(":").Append((format.approxLength / (format.rate * format.channels) % 60) < 10 ? "0" : "").Append(String::FromInt(format.approxLength / (format.rate * format.channels) % 60)));
-	else				    format.lengthString = "?";
+	if	(track.length >= 0)	   track.lengthString = String::FromInt(Math::Floor(track.length / (track.GetFormat().rate * track.GetFormat().channels) / 60)).Append(":").Append((track.length / (track.GetFormat().rate * track.GetFormat().channels) % 60) < 10 ? "0" : "").Append(String::FromInt(track.length / (track.GetFormat().rate * track.GetFormat().channels) % 60));
+	else if (track.approxLength >= 0)  track.lengthString = String("~ ").Append(String::FromInt(Math::Floor(track.approxLength / (track.GetFormat().rate * track.GetFormat().channels) / 60)).Append(":").Append((track.approxLength / (track.GetFormat().rate * track.GetFormat().channels) % 60) < 10 ? "0" : "").Append(String::FromInt(track.approxLength / (track.GetFormat().rate * track.GetFormat().channels) % 60)));
+	else				   track.lengthString = "?";
 
 	wchar_t	 sign[2] = { 0x2248, 0 };
 
-	if (Setup::enableUnicode) format.lengthString.Replace("~", sign);
+	if (Setup::enableUnicode) track.lengthString.Replace("~", sign);
 
-	if (format.origFilename == NIL)   format.origFilename = file;
+	if (track.origFilename == NIL) track.origFilename = file;
 
-	format.outfile = outfile;
+	track.outfile = outfile;
 
-	AddTrack(format);
+	AddTrack(track);
 }
 
 Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
@@ -413,20 +387,15 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 
 Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 {
-	String	 jlEntry;
-
-	if (track.artist == NIL && track.title == NIL)	jlEntry = String(track.origFilename).Append("\t");
-	else						jlEntry = String(track.artist.Length() > 0 ? track.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track.title.Length() > 0 ? track.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
-
-	jlEntry.Append(track.track > 0 ? (track.track < 10 ? String("0").Append(String::FromInt(track.track)) : String::FromInt(track.track)) : String("")).Append("\t").Append(track.lengthString).Append("\t").Append(track.fileSizeString);
-
 	for (Int i = 0; i < GetNOfTracks(); i++)
 	{
-		Track	*existingTrack = GetNthTrack(i);
+		Track	*existingTrack = tracks.Get(GetNthEntry(i)->GetHandle());
 
 		if (existingTrack->GetTrackID() == track.GetTrackID())
 		{
-			GetNthEntry(i)->SetText(jlEntry);
+			GetNthEntry(i)->SetText(GetEntryText(track));
+
+			*existingTrack = track;
 
 			break;
 		}
@@ -446,29 +415,24 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 		return;
 	}
 
-	Track	*track = GetSelectedTrack();
-	Int	 n = 0;
+	const Track	&track = GetSelectedTrack();
 
 	for (Int i = 0; i < GetNOfTracks(); i++)
 	{
-		if (GetNthTrack(i) == track) n = i;
+		if (GetNthTrack(i).GetTrackID() == track.GetTrackID())
+		{
+			RemoveNthTrack(i);
+
+			if (Length() > 0)
+			{
+				if (i < Length()) SelectEntry(GetNthEntry(i));
+				else		  SelectEntry(GetNthEntry(i - 1));
+			}
+
+			break;
+		}
 	}
-
-//	if (BonkEnc::Get()->playing && BonkEnc::Get()->player_entry == n) onRemovePlayingTrack.Emit();
-//	if (BonkEnc::Get()->playing && BonkEnc::Get()->player_entry > n) BonkEnc::Get()->player_entry--;
-
-	RemoveNthTrack(n);
-
-	if (Length() > 0)
-	{
-		if (n < Length())	SelectEntry(GetNthEntry(n));
-		else			SelectEntry(GetNthEntry(n - 1));
-	}
-
-	if (Length() > 0)	onSelectTrack.Emit(*GetSelectedTrack());
-	else			onSelectNone.Emit();
 }
-
 
 Void BonkEnc::JobList::SelectAll()
 {
@@ -539,14 +503,14 @@ Void BonkEnc::JobList::SaveList()
 
 		for (Int i = 0; i < GetNOfTracks(); i++)
 		{
-			Track	*trackInfo = GetNthTrack(i);
-			String	 fileName = trackInfo->origFilename;
+			const Track	&trackInfo = GetNthTrack(i);
+			String		 fileName = trackInfo.origFilename;
 
-			if (trackInfo->isCDTrack)
+			if (trackInfo.isCDTrack)
 			{
 				for (Int drive = 2; drive < 26; drive++)
 				{
-					String	 trackCDA = String(" ").Append(":\\track").Append(trackInfo->cdTrack < 10 ? "0" : "").Append(String::FromInt(trackInfo->cdTrack)).Append(".cda");
+					String	 trackCDA = String(" ").Append(":\\track").Append(trackInfo.cdTrack < 10 ? "0" : "").Append(String::FromInt(trackInfo.cdTrack)).Append(".cda");
 
 					trackCDA[0] = drive + 'A';
 
@@ -558,7 +522,7 @@ Void BonkEnc::JobList::SaveList()
 
 					delete in;
 
-					if (trackInfo->length == (trackLength * 2352) / (trackInfo->bits / 8))
+					if (trackInfo.length == (trackLength * 2352) / (trackInfo.GetFormat().bits / 8))
 					{
 						fileName = trackCDA;
 
@@ -567,7 +531,7 @@ Void BonkEnc::JobList::SaveList()
 				}
 			}
 
-			playlist.AddTrack(fileName, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::i18n->TranslateString("unknown title")), trackInfo->length == -1 ? -1 : Math::Round((Float) trackInfo->length / (trackInfo->rate * trackInfo->channels)));
+			playlist.AddTrack(fileName, String(trackInfo.artist.Length() > 0 ? trackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo.title.Length() > 0 ? trackInfo.title : BonkEnc::i18n->TranslateString("unknown title")), trackInfo.length == -1 ? -1 : Math::Round((Float) trackInfo.length / (trackInfo.GetFormat().rate * trackInfo.GetFormat().channels)));
 		}
 
 		playlist.Save(dialog->GetFileName());
@@ -602,11 +566,22 @@ Void BonkEnc::JobList::OnUnregister(Widget *container)
 
 Void BonkEnc::JobList::OnSelectEntry()
 {
-	Track	*track = GetSelectedTrack();
+	BoCA::JobList::Get()->onApplicationSelectTrack.Emit(GetSelectedTrack());
+}
 
-	onSelectTrack.Emit(*track);
+Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
+{
+	for (Int i = 0; i < GetNOfTracks(); i++)
+	{
+		const Track	&existingTrack = GetNthTrack(i);
 
-	BoCA::JobList::Get()->onApplicationSelectTrack.Emit(*track);
+		if (existingTrack.GetTrackID() == track.GetTrackID())
+		{
+			if (GetSelectedEntryNumber() != i) SelectNthEntry(i);
+
+			break;
+		}
+	}
 }
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()
@@ -621,39 +596,12 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 
 	for (Int i = 0; i < GetNOfTracks(); i++)
 	{
-		Track		*track = GetNthTrack(i);
+		const Track	&track = GetNthTrack(i);
 		ListEntry	*entry = GetNthEntry(i);
-		String		 jlEntry;
-		String		 tooltip;
 
-		if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-		else							jlEntry = String(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+		entry->SetText(GetEntryText(track));
 
-		jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
-
-		if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
-
-		tooltip = String(BonkEnc::i18n->TranslateString("File")).Append(": ").Append(track->origFilename).Append("\n").
-			  Append(BonkEnc::i18n->TranslateString("Size")).Append(": ").Append(track->fileSizeString).Append(" ").Append(BonkEnc::i18n->TranslateString("bytes")).Append("\n").
-			  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
-			  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
-			  Append(track->length > 0 || track->approxLength > 0 ? String(BonkEnc::i18n->TranslateString("Length")).Append(": ").Append(track->lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : "").
-			  Append(track->length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track->length)).Append("\n") : "").
-			  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track->rate)).Append(" Hz\n").
-			  Append(BonkEnc::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(BonkEnc::i18n->TranslateString("bit")).Append("\n").
-			  Append(BonkEnc::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? BonkEnc::i18n->TranslateString("Mono") : BonkEnc::i18n->TranslateString("Stereo")));
-
-		if (track->rate > 0 && track->channels > 0)
-		{
-			if (track->length > 0)		  tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
-			else if (track->approxLength > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->approxLength / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
-
-			wchar_t	 sign[2] = { 0x2248, 0 };
-
-			if (Setup::enableUnicode) tooltip.Replace("~", sign);
-		}
-
-		if (Config::Get()->showTooltips) entry->SetTooltipText(tooltip);
+		if (Config::Get()->showTooltips) entry->SetTooltipText(GetTooltipText(track));
 	}
 
 	Config::Get()->tab_width_track = GetNthTabWidth(1);
@@ -668,4 +616,45 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 	AddTab(BonkEnc::i18n->TranslateString("Size"), Config::Get()->tab_width_size, OR_RIGHT);
 
 	Show();
+}
+
+const String &BonkEnc::JobList::GetEntryText(const Track &track)
+{
+	static String	 jlEntry;
+
+	if (track.artist == NIL && track.title == NIL) jlEntry = String(track.origFilename).Append("\t");
+	else					       jlEntry = String(track.artist.Length() > 0 ? track.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track.title.Length() > 0 ? track.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+
+	jlEntry.Append(track.track > 0 ? (track.track < 10 ? String("0").Append(String::FromInt(track.track)) : String::FromInt(track.track)) : String("")).Append("\t").Append(track.lengthString).Append("\t").Append(track.fileSizeString);
+
+	return jlEntry;
+}
+
+const String &BonkEnc::JobList::GetTooltipText(const Track &track)
+{
+	const Format	&format = track.GetFormat();
+
+	static String	 tooltip;
+
+	tooltip = String(BonkEnc::i18n->TranslateString("File")).Append(": ").Append(track.origFilename).Append("\n").
+		  Append(BonkEnc::i18n->TranslateString("Size")).Append(": ").Append(track.fileSizeString).Append(" ").Append(BonkEnc::i18n->TranslateString("bytes")).Append("\n").
+		  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track.artist.Length() > 0 ? track.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
+		  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track.title.Length() > 0 ? track.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
+		  Append(track.length > 0 || track.approxLength > 0 ? String(BonkEnc::i18n->TranslateString("Length")).Append(": ").Append(track.lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : "").
+		  Append(track.length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track.length)).Append("\n") : "").
+		  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(format.rate)).Append(" Hz\n").
+		  Append(BonkEnc::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(format.bits)).Append(" ").Append(BonkEnc::i18n->TranslateString("bit")).Append("\n").
+		  Append(BonkEnc::i18n->TranslateString("Channels")).Append(": ").Append((format.channels > 2 || format.channels < 1) ? String::FromInt(format.channels) : (format.channels == 1 ? BonkEnc::i18n->TranslateString("Mono") : BonkEnc::i18n->TranslateString("Stereo")));
+
+	if (format.rate > 0 && format.channels > 0)
+	{
+		if	(track.length	    > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.length / (format.rate * format.channels)) * 8.0 / 1000.0))).Append(" kbps"));
+		else if (track.approxLength > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / (format.rate * format.channels)) * 8.0 / 1000.0))).Append(" kbps"));
+
+		wchar_t	 sign[2] = { 0x2248, 0 };
+
+		if (Setup::enableUnicode) tooltip.Replace("~", sign);
+	}
+
+	return tooltip;
 }

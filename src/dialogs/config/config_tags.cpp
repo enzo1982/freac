@@ -12,15 +12,17 @@
 
 BonkEnc::ConfigureTags::ConfigureTags()
 {
-	Point	 pos;
-	Size	 size;
+	Point		 pos;
+	Size		 size;
 
-	currentConfig = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	enableID3V1	= currentConfig->enable_id3v1;
-	enableID3V2	= currentConfig->enable_id3v2;
-	enableVCTags	= currentConfig->enable_vctags;
-	enableMP4Meta	= currentConfig->enable_mp4meta;
+	enableID3V1	= config->enable_id3v1;
+	enableID3V2	= config->enable_id3v2;
+	enableVCTags	= config->enable_vctags;
+	enableMP4Meta	= config->enable_mp4meta;
+
+	replaceComments	= config->replace_comments;
 
 	pos.x	= 7;
 	pos.y	= 11;
@@ -100,7 +102,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	list_encodings_id3v1->AddEntry("ISO-8859-5");
 	list_encodings_id3v1->AddEntry("ISO-8859-7");
 
-	edit_id3v1_encoding	= new EditBox(currentConfig->id3v1_encoding, pos, size);
+	edit_id3v1_encoding	= new EditBox(config->id3v1_encoding, pos, size);
 	edit_id3v1_encoding->SetDropDownList(list_encodings_id3v1);
 
 	pos.y += 26;
@@ -112,7 +114,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	list_encodings_id3v2->AddEntry("UTF-16LE");
 	list_encodings_id3v2->AddEntry("UTF-16BE");
 
-	edit_id3v2_encoding	= new EditBox(currentConfig->id3v2_encoding, pos, size);
+	edit_id3v2_encoding	= new EditBox(config->id3v2_encoding, pos, size);
 	edit_id3v2_encoding->SetDropDownList(list_encodings_id3v2);
 
 	pos.y += 26;
@@ -122,7 +124,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	list_encodings_vc->AddEntry("ISO-8859-1");
 	list_encodings_vc->AddEntry("UTF-8");
 
-	edit_vctags_encoding	= new EditBox(currentConfig->vctag_encoding, pos, size);
+	edit_vctags_encoding	= new EditBox(config->vctag_encoding, pos, size);
 	edit_vctags_encoding->SetDropDownList(list_encodings_vc);
 
 	pos.y += 26;
@@ -132,13 +134,13 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	list_encodings_mp4->AddEntry("ISO-8859-1");
 	list_encodings_mp4->AddEntry("UTF-8");
 
-	edit_mp4meta_encoding	= new EditBox(currentConfig->mp4meta_encoding, pos, size);
+	edit_mp4meta_encoding	= new EditBox(config->mp4meta_encoding, pos, size);
 	edit_mp4meta_encoding->SetDropDownList(list_encodings_mp4);
 
 	pos.x	= 7;
 	pos.y	= 143;
 	size.cx	= 530;
-	size.cy	= 42;
+	size.cy	= 66;
 
 	group_definfo	= new GroupBox(BonkEnc::i18n->TranslateString("Default information"), pos, size);
 
@@ -152,7 +154,13 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	size.cx	= 503 - text_defcomment->textSize.cx;
 	size.cy	= 0;
 
-	edit_defcomment	= new EditBox(currentConfig->default_comment, pos, size, 0);
+	edit_defcomment	= new EditBox(config->default_comment, pos, size, 0);
+
+	pos.x = 17;
+	pos.y += 27;
+	size.cx = 510;
+
+	check_replace	= new CheckBox(BonkEnc::i18n->TranslateString("Replace existing comments with default comment"), pos, size, &replaceComments);
 
 	ToggleID3V1();
 	ToggleID3V2();
@@ -161,7 +169,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	ToggleTags();
 
-/*	if (!currentConfig->enable_id3 || (!currentConfig->enable_lame && !currentConfig->enable_blade))
+/*	if (!config->enable_id3 || (!config->enable_lame && !config->enable_blade))
 	{
 		check_id3v1->Deactivate();
 		text_id3v1_encoding->Deactivate();
@@ -172,14 +180,14 @@ BonkEnc::ConfigureTags::ConfigureTags()
 		edit_id3v2_encoding->Deactivate();
 	}
 
-	if (!currentConfig->enable_vorbis && !currentConfig->enable_flac)
+	if (!config->enable_vorbis && !config->enable_flac)
 	{
 		check_vctags->Deactivate();
 		text_vctags_encoding->Deactivate();
 		edit_vctags_encoding->Deactivate();
 	}
 
-	if (!currentConfig->enable_mp4 || !currentConfig->enable_faac)
+	if (!config->enable_mp4 || !config->enable_faac)
 	{
 		check_mp4meta->Deactivate();
 		text_mp4meta_encoding->Deactivate();
@@ -205,8 +213,9 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	Add(group_definfo);
 	Add(text_defcomment);
 	Add(edit_defcomment);
+	Add(check_replace);
 
-	SetSize(Size(544, 221));
+	SetSize(Size(544, 245));
 }
 
 BonkEnc::ConfigureTags::~ConfigureTags()
@@ -230,6 +239,7 @@ BonkEnc::ConfigureTags::~ConfigureTags()
 	DeleteObject(group_definfo);
 	DeleteObject(text_defcomment);
 	DeleteObject(edit_defcomment);
+	DeleteObject(check_replace);
 
 	DeleteObject(list_encodings_id3v1);
 	DeleteObject(list_encodings_id3v2);
@@ -295,7 +305,7 @@ Void BonkEnc::ConfigureTags::ToggleMP4Meta()
 
 Void BonkEnc::ConfigureTags::ToggleTags()
 {
-/*	if (((!enableID3V1 && !enableID3V2) || (!currentConfig->enable_lame && !currentConfig->enable_blade) || !currentConfig->enable_id3) && (!enableVCTags || (!currentConfig->enable_vorbis && !currentConfig->enable_flac)) && (!enableMP4Meta || (!currentConfig->enable_mp4 || !currentConfig->enable_faac)))
+/*	if (((!enableID3V1 && !enableID3V2) || (!config->enable_lame && !config->enable_blade) || !config->enable_id3) && (!enableVCTags || (!config->enable_vorbis && !config->enable_flac)) && (!enableMP4Meta || (!config->enable_mp4 || !config->enable_faac)))
 	{
 		text_defcomment->Deactivate();
 		edit_defcomment->Deactivate();
@@ -309,17 +319,20 @@ Void BonkEnc::ConfigureTags::ToggleTags()
 
 Int BonkEnc::ConfigureTags::SaveSettings()
 {
-	currentConfig->enable_id3v1		= enableID3V1;
-	currentConfig->enable_id3v2		= enableID3V2;
-	currentConfig->enable_vctags		= enableVCTags;
-	currentConfig->enable_mp4meta		= enableMP4Meta;
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	currentConfig->id3v1_encoding		= edit_id3v1_encoding->GetText();
-	currentConfig->id3v2_encoding		= edit_id3v2_encoding->GetText();
-	currentConfig->vctag_encoding		= edit_vctags_encoding->GetText();
-	currentConfig->mp4meta_encoding		= edit_mp4meta_encoding->GetText();
+	config->enable_id3v1		= enableID3V1;
+	config->enable_id3v2		= enableID3V2;
+	config->enable_vctags		= enableVCTags;
+	config->enable_mp4meta		= enableMP4Meta;
 
-	currentConfig->default_comment		= edit_defcomment->GetText();
+	config->id3v1_encoding		= edit_id3v1_encoding->GetText();
+	config->id3v2_encoding		= edit_id3v2_encoding->GetText();
+	config->vctag_encoding		= edit_vctags_encoding->GetText();
+	config->mp4meta_encoding	= edit_mp4meta_encoding->GetText();
+
+	config->default_comment		= edit_defcomment->GetText();
+	config->replace_comments	= replaceComments;
 
 	return Success();
 }

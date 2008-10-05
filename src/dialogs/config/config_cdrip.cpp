@@ -12,21 +12,21 @@
 
 BonkEnc::ConfigureCDRip::ConfigureCDRip()
 {
-	Point	 pos;
-	Size	 size;
+	Point		 pos;
+	Size		 size;
 
-	currentConfig = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	cdparanoia	= currentConfig->cdrip_paranoia;
-	jitter		= currentConfig->cdrip_jitter;
-	swapchannels	= currentConfig->cdrip_swapchannels;
-	locktray	= currentConfig->cdrip_locktray;
-	ntscsi		= currentConfig->cdrip_ntscsi;
-	autoRead	= currentConfig->cdrip_autoRead;
-	autoRip		= currentConfig->cdrip_autoRip;
-	autoEject	= currentConfig->cdrip_autoEject;
-	readCDText	= currentConfig->cdrip_read_cdtext;
-	readCDPlayerIni	= currentConfig->cdrip_read_cdplayerini;
+	cdparanoia	= config->cdrip_paranoia;
+	jitter		= config->cdrip_jitter;
+	swapchannels	= config->cdrip_swapchannels;
+	locktray	= config->cdrip_locktray;
+	ntscsi		= config->cdrip_ntscsi;
+	autoRead	= config->cdrip_autoRead;
+	autoRip		= config->cdrip_autoRip;
+	autoEject	= config->cdrip_autoEject;
+	readCDText	= config->cdrip_read_cdtext;
+	readCDPlayerIni	= config->cdrip_read_cdplayerini;
 
 	pos.x	= 7;
 	pos.y	= 11;
@@ -42,12 +42,12 @@ BonkEnc::ConfigureCDRip::ConfigureCDRip()
 
 	combo_drive	= new ComboBox(pos, size);
 
-	for (Int j = 0; j < currentConfig->cdrip_numdrives; j++)
+	for (Int j = 0; j < config->cdrip_numdrives; j++)
 	{
-		combo_drive->AddEntry(currentConfig->cdrip_drives.GetNth(j));
+		combo_drive->AddEntry(config->cdrip_drives.GetNth(j));
 	}
 
-	combo_drive->SelectNthEntry(currentConfig->cdrip_activedrive);
+	combo_drive->SelectNthEntry(config->cdrip_activedrive);
 
 	pos.x	= 7;
 	pos.y	= 66;
@@ -92,7 +92,7 @@ BonkEnc::ConfigureCDRip::ConfigureCDRip()
 	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("No verify"));
 	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("No scratch repair"));
 	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("Full cdparanoia mode"));
-	combo_paranoia_mode->SelectNthEntry(currentConfig->cdrip_paranoia_mode);
+	combo_paranoia_mode->SelectNthEntry(config->cdrip_paranoia_mode);
 
 	if (!cdparanoia) combo_paranoia_mode->Deactivate();
 
@@ -213,19 +213,21 @@ Void BonkEnc::ConfigureCDRip::ToggleAutoRead()
 
 Int BonkEnc::ConfigureCDRip::SaveSettings()
 {
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) currentConfig->cdrip_activedrive = combo_drive->GetSelectedEntryNumber();
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	currentConfig->cdrip_paranoia		= cdparanoia;
-	currentConfig->cdrip_paranoia_mode	= combo_paranoia_mode->GetSelectedEntryNumber();
-	currentConfig->cdrip_jitter		= jitter;
-	currentConfig->cdrip_swapchannels	= swapchannels;
-	currentConfig->cdrip_locktray		= locktray;
-	currentConfig->cdrip_ntscsi		= ntscsi;
-	currentConfig->cdrip_autoRead		= autoRead;
-	currentConfig->cdrip_autoRip		= autoRip;
-	currentConfig->cdrip_autoEject		= autoEject;
-	currentConfig->cdrip_read_cdtext	= readCDText;
-	currentConfig->cdrip_read_cdplayerini	= readCDPlayerIni;
+	if (Config::Get()->enable_cdrip && config->cdrip_numdrives >= 1) config->cdrip_activedrive = combo_drive->GetSelectedEntryNumber();
+
+	config->cdrip_paranoia		= cdparanoia;
+	config->cdrip_paranoia_mode	= combo_paranoia_mode->GetSelectedEntryNumber();
+	config->cdrip_jitter		= jitter;
+	config->cdrip_swapchannels	= swapchannels;
+	config->cdrip_locktray		= locktray;
+	config->cdrip_ntscsi		= ntscsi;
+	config->cdrip_autoRead		= autoRead;
+	config->cdrip_autoRip		= autoRip;
+	config->cdrip_autoEject		= autoEject;
+	config->cdrip_read_cdtext	= readCDText;
+	config->cdrip_read_cdplayerini	= readCDPlayerIni;
 
 	return Success();
 }

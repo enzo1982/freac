@@ -21,7 +21,7 @@ namespace BonkEnc
 		private:
 			Array<String>	 results;
 
-			BoCA::Protocol	*debug;
+			BoCA::Protocol	*protocol;
 
 			Bool		 QueryUnixDB(Int);
 			Bool		 QueryWinDB(Int);

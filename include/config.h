@@ -82,37 +82,6 @@ namespace BonkEnc
 			String		 playlist_filePattern;
 			Bool		 useUnicodeNames;
 
-			Bool		 enable_id3v1;
-			Bool		 enable_id3v2;
-			Bool		 enable_vctags;
-			Bool		 enable_mp4meta;
-			String		 id3v1_encoding;
-			String		 id3v2_encoding;
-			String		 vctag_encoding;
-			String		 mp4meta_encoding;
-			String		 default_comment;
-			Bool		 copy_picture_tags;
-
-			Array<String>	 cdrip_drives;
-			Int		 cdrip_numdrives;
-			Int		 cdrip_activedrive;
-			Int		 cdrip_debuglevel;
-			Bool		 cdrip_paranoia;
-			Bool		 cdrip_jitter;
-			Int		 cdrip_paranoia_mode;
-			Bool		 cdrip_swapchannels;
-			Bool		 cdrip_locktray;
-			Bool		 cdrip_read_cdtext;
-			Bool		 cdrip_read_cdplayerini;
-			Bool		 cdrip_ntscsi;
-			Bool		 cdrip_autoRead;
-			Bool		 cdrip_autoRead_active;
-			Bool		 cdrip_autoRip;
-			Bool		 cdrip_autoEject;
-			Bool		 cdrip_detectJitterErrors;
-			Bool		 cdrip_detectC2Errors;
-			Int		 cdrip_timeout;
-
 			String		 freedb_dir;
 			String		 freedb_server;
 			Int		 freedb_mode;

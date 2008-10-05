@@ -37,6 +37,7 @@ namespace BonkEnc
 			GroupBox	*group_definfo;
 			Text		*text_defcomment;
 			EditBox		*edit_defcomment;
+			CheckBox	*check_replace;
 
 			List		*list_encodings_id3v1;
 			List		*list_encodings_id3v2;
@@ -48,7 +49,7 @@ namespace BonkEnc
 			Bool		 enableVCTags;
 			Bool		 enableMP4Meta;
 
-			Config		*currentConfig;
+			Bool		 replaceComments;
 		slots:
 			Void		 ToggleID3V1();
 			Void		 ToggleID3V2();

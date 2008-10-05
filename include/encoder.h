@@ -46,11 +46,11 @@ namespace BonkEnc
 			JobList					*joblist;
 			Progress				*progress;
 
-			String					 GetPlaylistFileName(Track *);
+			String					 GetPlaylistFileName(const Track &);
 			String					 GetRelativeFileName(const String &, const String &);
 
-			String					 GetOutputFileName(Track *);
-			String					 GetSingleOutputFileName(Track *);
+			String					 GetOutputFileName(const Track &);
+			String					 GetSingleOutputFileName(const Track &);
 
 			Int					 EncoderThread();
 		public:
@@ -70,7 +70,7 @@ namespace BonkEnc
 			Signal0<Void>				 onStartEncoding;
 			Signal1<Void, Bool>			 onFinishEncoding;
 
-			Signal2<Void, const Track *, Int>	 onEncodeTrack;
+			Signal2<Void, const Track &, Int>	 onEncodeTrack;
 			Signal0<Void>				 onFinishTrack;
 
 			Signal2<Void, Int, Int>			 onTrackProgress;

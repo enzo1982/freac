@@ -29,7 +29,7 @@ BonkEnc::CDDB::CDDB()
 {
 	config = Config::Get();
 
-	activeDriveID = config->cdrip_activedrive;
+	activeDriveID = BoCA::Config::Get()->cdrip_activedrive;
 	updateTrackOffsets = True;
 }
 
@@ -66,11 +66,7 @@ Int BonkEnc::CDDB::ComputeDiscID()
 
 String BonkEnc::CDDB::DiscIDToString(Int discID)
 {
-	String	 discIDString = Number((Int64) discID).ToHexString();
-
-	/* Add leading zeros if necessary.
-	 */
-	if (discIDString.Length() < 8) discIDString = String().FillN('0', 8 - discIDString.Length()).Append(discIDString);
+	String	 discIDString = Number((Int64) discID).ToHexString(8);
 
 	return discIDString;
 }

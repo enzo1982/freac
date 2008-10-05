@@ -76,7 +76,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
 	{
 		layers.Add(new ConfigureCDRip());
 		entries.Add(new ConfigEntry("CDRip", layers.GetLast()));
@@ -173,8 +173,8 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 {
 	Int	 ownLayers = 3;
 
-	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) ownLayers += 2;
-	if (BonkEnc::i18n->GetNOfLanguages() > 1)				ownLayers += 1;
+	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1) ownLayers += 2;
+	if (BonkEnc::i18n->GetNOfLanguages() > 1)				      ownLayers += 1;
 
 	for (Int i = 0; i < ownLayers; i++)  DeleteObject(layers.GetNth(i));
 	for (Int i = 0; i < entries.Length(); i++) DeleteObject(entries.GetNth(i));

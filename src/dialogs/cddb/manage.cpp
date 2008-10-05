@@ -189,22 +189,24 @@ Void BonkEnc::cddbManageDlg::OK()
 
 			for (Int l = 0; l < BonkEnc::Get()->joblist->GetNOfTracks(); l++)
 			{
-				Track	*trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
+				const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
-				if (trackInfo->discid != cddbInfo.DiscIDToString()) continue;
+				if (trackInfo.discid != cddbInfo.DiscIDToString()) continue;
 
 				for (Int m = 0; m < cddbInfo.trackTitles.Length(); m++)
 				{
-					if (trackInfo->cdTrack == m + 1)
+					if (trackInfo.cdTrack == m + 1)
 					{
-						trackInfo->artist	= (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(m) : cddbInfo.dArtist);
-						trackInfo->title	= cddbInfo.trackTitles.GetNth(m);
-						trackInfo->album	= cddbInfo.dTitle;
-						trackInfo->year		= cddbInfo.dYear;
-						trackInfo->genre	= cddbInfo.dGenre;
-						trackInfo->comment	= cddbInfo.trackComments.GetNth(m);
+						Track	 track = BonkEnc::Get()->joblist->GetNthTrack(l);
 
-						BonkEnc::Get()->joblist->UpdateTrackInfo(*trackInfo);
+						track.artist  = (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(m) : cddbInfo.dArtist);
+						track.title   = cddbInfo.trackTitles.GetNth(m);
+						track.album   = cddbInfo.dTitle;
+						track.year    = cddbInfo.dYear;
+						track.genre   = cddbInfo.dGenre;
+						track.comment = cddbInfo.trackComments.GetNth(m);
+
+						BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 					}
 				}
 			}

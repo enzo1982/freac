@@ -33,14 +33,15 @@ namespace BonkEnc
 			Int					 player_activedrive;
 			OutputComponent				*output;
 
-			Int					 player_entry;
-
 			JobList					*joblist;
 
 			Int					 PlayThread();
 		public:
 			Bool					 playing;
 			Bool					 paused;
+
+			Int					 player_entry;
+			Int					 player_entry_id;
 
 								 Playback();
 								~Playback();

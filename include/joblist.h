@@ -36,6 +36,9 @@ namespace BonkEnc
 			Array<Track *>			 tracks;
 
 			Bool				 AddTrack(const Track &);
+
+			const String			&GetEntryText(const Track &);
+			const String			&GetTooltipText(const Track &);
 		public:
 							 JobList(const Point &, const Size &);
 			virtual				~JobList();
@@ -43,12 +46,12 @@ namespace BonkEnc
 			Bool				 CanModifyJobList();
 
 			Int				 GetNOfTracks();
-			Track				*GetNthTrack(Int);
+			const Track			&GetNthTrack(Int);
 
 			Bool				 RemoveNthTrack(Int);
 			Bool				 RemoveAllTracks();
 
-			Track				*GetSelectedTrack();
+			const Track			&GetSelectedTrack();
 
 			Int				 SetMetrics(const Point &, const Size &);
 
@@ -60,11 +63,6 @@ namespace BonkEnc
 			Void				 UpdateTrackInfo(const Track &);
 
 			Void				 RemoveSelectedTrack();
-		signals:
-			Signal1<Void, const Track &>	 onSelectTrack;
-			Signal0<Void>			 onSelectNone;
-
-			Signal0<Void>			 onRemovePlayingTrack;
 		slots:
 			Void				 AddTrackByDragAndDrop(const String &);
 
@@ -79,6 +77,8 @@ namespace BonkEnc
 			Void				 OnUnregister(Widget *);
 
 			Void				 OnSelectEntry();
+
+			Void				 OnComponentSelectTrack(const Track &);
 
 			Void				 OnChangeLanguageSettings();
 	};

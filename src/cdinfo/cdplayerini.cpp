@@ -26,7 +26,7 @@ BonkEnc::CDPlayerIni::~CDPlayerIni()
 
 Int BonkEnc::CDPlayerIni::ReadCDInfo()
 {
-	if (!Config::Get()->cdrip_read_cdplayerini) return Success();
+	if (!BoCA::Config::Get()->cdrip_read_cdplayerini) return Success();
 
 	cdInfo.RemoveAll();
 

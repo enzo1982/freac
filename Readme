@@ -13,20 +13,24 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (July 2008)
+	Version 1.1 CVS (October 2008)
 
 		- added Estonian, Catalan, Valencian and Portuguese language support
 		- added German, Italian, Russian and Greek user guides
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
 		- redesigned progress display area
+		- completely reworked LAME configuration dialog
 		- added Monkey's Audio encoder/decoder
 		- added support for command line encoders/decoders
 		- added support for the MAD MP3 decoder
+		- added TwinVQ VQF decoder support
 		- added support for AAC synchronizing (needed to read ripped AAC streams)
+		- added support for reading simple audio files using libsndfile
 		- added support for cover art in MP4 files
 		- added <installdrive> pattern for use in output directory name
 		- label/publisher and ISRC information is now preserved during conversion
+		- greatly improved case conversion functions
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
 		- fixed creation of cuesheets for multiple tracks in a single file
@@ -46,12 +50,14 @@ History
 		- NT SCSI mode is now used by default to access CD drives on NT systems
 		- installer improvements
 		- lots of fixes to the command line encoder
+		- added native x64 platform support
 		- upgraded Bonk to version 0.12
 		- upgraded FLAC to version 1.2.1
 		- upgraded FAAC to version 1.26
 		- upgraded FAAD2 to version 2.6.1
-		- upgraded LAME to version 3.98
+		- upgraded LAME to version 3.98.1
 		- upgraded Ogg Vorbis to aoTuV beta 5.5
+		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
 		- upgrade to MPEG4IP v1.6.1
 		- lots of other fixes
 
@@ -120,7 +126,7 @@ Special thanks to
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn (Dutch),
-			   Marko Djordjevic (Serbian),
+			   Nebojša Nikolic (Serbian),
 			   Krisu (Finnish),
 			   Vladimir Kytyr (Czech),
 			   Escada (Portuguese, Brazilian),

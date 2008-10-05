@@ -16,7 +16,7 @@ using namespace smooth::IO;
 
 BonkEnc::CDDBLocal::CDDBLocal()
 {
-	debug = Protocol::Get("Debug");
+	protocol = Protocol::Get("CDDB Communication");
 }
 
 BonkEnc::CDDBLocal::~CDDBLocal()
@@ -231,7 +231,7 @@ Bool BonkEnc::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddb
 
 Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 {
-	debug->Write("Entering method: CDDBLocal::Submit(const CDDBInfo &)");
+	protocol->Write("Entering method: CDDBLocal::Submit(const CDDBInfo &)");
 
 	CDDBInfo  cddbInfo = oCddbInfo;
 
@@ -248,7 +248,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 	if (dir.GetFilesByPattern(pattern).Length() >= 1) // Windows style DB
 	{
-		debug->Write("Found Windows style DB.");
+		protocol->Write("Found Windows style DB.");
 
 		pattern = String().CopyN(cddbInfo.DiscIDToString(), 2).Append("to??");
 
@@ -271,7 +271,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 			}
 		}
 
-		debug->Write(String("Writing to ").Append(found));
+		protocol->Write(String("Writing to ").Append(found));
 
 		InStream	*in	  = new InStream(STREAM_FILE, found, IS_READONLY);
 		OutStream	*out	  = new OutStream(STREAM_FILE, String(found).Append(".new"), OS_OVERWRITE);
@@ -319,8 +319,8 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	}
 	else						  // Unix style DB
 	{
-		debug->Write("Found Unix style DB.");
-		debug->Write(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString()));
+		protocol->Write("Found Unix style DB.");
+		protocol->Write(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString()));
 
 		OutStream	*out = new OutStream(STREAM_FILE, String(config->freedb_dir).Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString()), OS_OVERWRITE);
 
@@ -333,7 +333,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 		delete out;
 	}
 
-	debug->Write("Leaving method.");
+	protocol->Write("Leaving method.");
 
 	return True;
 }

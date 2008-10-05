@@ -142,12 +142,13 @@ namespace BonkEnc
 			Void			 OnChangeSize(const Size &);
 
 			Void			 OnJoblistSelectTrack(const Track &);
-			Void			 OnJoblistSelectNone();
+			Void			 OnJoblistModifyTrack(const Track &);
+			Void			 OnJoblistRemoveTrack(const Track &);
 
 			Void			 OnEncoderStartEncoding();
 			Void			 OnEncoderFinishEncoding(Bool);
 
-			Void			 OnEncoderEncodeTrack(const Track *, Int);
+			Void			 OnEncoderEncodeTrack(const Track &, Int);
 
 			Void			 OnEncoderTrackProgress(Int, Int);
 			Void			 OnEncoderTotalProgress(Int, Int);
