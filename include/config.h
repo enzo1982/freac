@@ -98,6 +98,7 @@ namespace BonkEnc
 			String		 vctag_encoding;
 			String		 mp4meta_encoding;
 			String		 default_comment;
+			Bool		 overwriteComments;
 			Bool		 copy_picture_tags;
 
 			Array<String>	 cdrip_drives;

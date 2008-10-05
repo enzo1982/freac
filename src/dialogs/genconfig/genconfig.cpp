@@ -201,6 +201,8 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->vctag_encoding		= register_layer_tags->GetVCTagEncoding();
 	currentConfig->mp4meta_encoding		= register_layer_tags->GetMP4MetaEncoding();
 
+	currentConfig->overwriteComments	= register_layer_tags->GetOverwriteComments();
+
 	currentConfig->enable_local_cddb	= register_layer_cddb->GetLocalCDDB();
 	currentConfig->enable_remote_cddb	= register_layer_cddb->GetRemoteCDDB();
 

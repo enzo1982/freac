@@ -37,6 +37,7 @@ namespace BonkEnc
 			GroupBox	*group_definfo;
 			Text		*text_defcomment;
 			EditBox		*edit_defcomment;
+			CheckBox	*check_overwrite;
 
 			List		*list_encodings_id3v1;
 			List		*list_encodings_id3v2;
@@ -47,6 +48,8 @@ namespace BonkEnc
 			Bool		 enableID3V2;
 			Bool		 enableVCTags;
 			Bool		 enableMP4Meta;
+
+			Bool		 overwriteExisting;
 
 			Config		*currentConfig;
 		slots:
@@ -71,6 +74,7 @@ namespace BonkEnc
 			String		 GetMP4MetaEncoding();
 
 			String		 GetDefaultComment();
+			Bool		 GetOverwriteComments();
 	};
 };
 

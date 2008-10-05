@@ -22,6 +22,8 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	enableVCTags	= currentConfig->enable_vctags;
 	enableMP4Meta	= currentConfig->enable_mp4meta;
 
+	overwriteExisting = currentConfig->overwriteComments;
+
 	pos.x	= 7;
 	pos.y	= 11;
 	size.cx	= 530;
@@ -138,7 +140,7 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	pos.x	= 7;
 	pos.y	= 143;
 	size.cx	= 530;
-	size.cy	= 42;
+	size.cy	= 66;
 
 	group_definfo	= new GroupBox(BonkEnc::i18n->TranslateString("Default information"), pos, size);
 
@@ -153,6 +155,12 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	size.cy	= 0;
 
 	edit_defcomment	= new EditBox(currentConfig->default_comment, pos, size, 0);
+
+	pos.x = 17;
+	pos.y += 27;
+	size.cx = 510;
+
+	check_overwrite	= new CheckBox(BonkEnc::i18n->TranslateString("Replace existing comments with default comment"), pos, size, &overwriteExisting);
 
 	ToggleID3V1();
 	ToggleID3V2();
@@ -205,6 +213,7 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	Add(group_definfo);
 	Add(text_defcomment);
 	Add(edit_defcomment);
+	Add(check_overwrite);
 }
 
 BonkEnc::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
@@ -228,6 +237,7 @@ BonkEnc::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
 	DeleteObject(group_definfo);
 	DeleteObject(text_defcomment);
 	DeleteObject(edit_defcomment);
+	DeleteObject(check_overwrite);
 
 	DeleteObject(list_encodings_id3v1);
 	DeleteObject(list_encodings_id3v2);
@@ -348,4 +358,9 @@ String BonkEnc::GeneralSettingsLayerTags::GetMP4MetaEncoding()
 String BonkEnc::GeneralSettingsLayerTags::GetDefaultComment()
 {
 	return edit_defcomment->GetText();
+}
+
+Bool BonkEnc::GeneralSettingsLayerTags::GetOverwriteComments()
+{
+	return overwriteExisting;
 }

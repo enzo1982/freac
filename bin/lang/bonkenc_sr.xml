@@ -78,12 +78,12 @@
   <entry id="66" string="URL">URL</entry>
   <entry id="67" string="Information">Info</entry>
   <entry id="68" string="Select language:">Izbor jezika:</entry>
-  <entry id="69" string="Active CD-ROM drive">Aktivan CD-ROM uređaj</entry>
+  <entry id="69" string="Active CD-ROM drive">Aktivan CD/DVD uređaj</entry>
   <entry id="70" string="Ripper settings">Podešavanja ripera</entry>
   <entry id="71" string="Activate cdparanoia mode:">Pokreni cdparanoia režim:</entry>
   <entry id="72" string="Activate jitter correction">Pokreni korekciju preklapanja (jittering)</entry>
   <entry id="73" string="Swap left/right channel">Zameni levi/desni kanal</entry>
-  <entry id="74" string="Lock CD tray while ripping">Zaključaj CD u toku ripovanja</entry>
+  <entry id="74" string="Lock CD tray while ripping">Zaključaj toku ripovanja</entry>
   <entry id="75" string="Use native NT SCSI library">Koristi NT SCSI biblioteku</entry>
   <entry id="76" string="Overlap only">Samo prebacivanje</entry>
   <entry id="77" string="No verify">Bez overe</entry>
@@ -95,7 +95,7 @@
   <entry id="83" string="Original bit">Izvorni bit</entry>
   <entry id="84" string="Channels">Kanali</entry>
   <entry id="85" string="Private bit">Lični bit</entry>
-  <entry id="86" string="Set Copyright bit">Podesi bit prava kopiranja©</entry>
+  <entry id="86" string="Set Copyright bit">Bit prava kopiranja©</entry>
   <entry id="87" string="Enable CRC">Omogući CRC</entry>
   <entry id="88" string="Set Original bit">Podesi izvorni bit</entry>
   <entry id="89" string="Dual channel encoding">Dvokanalno enkodovanje</entry>
@@ -119,10 +119,10 @@
   <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maksimalna AAC frekvencija protoka za korišćenje (Hz):</entry>
   <entry id="108" string="Basic">Osnovno</entry>
   <entry id="109" string="Misc">Razno</entry>
-  <entry id="110" string="Audio processing">Audio obrađivanje</entry>
-  <entry id="111" string="Set bitrate:">Podesi stopu bitova:</entry>
-  <entry id="112" string="Set ratio:">Podesi srazmeru:</entry>
-  <entry id="113" string="Set quality:">Podesi kvalitet:</entry>
+  <entry id="110" string="Audio processing">Audio obrada</entry>
+  <entry id="111" string="Set bitrate:">Stopa bitova:</entry>
+  <entry id="112" string="Set ratio:">Srazmera:</entry>
+  <entry id="113" string="Set quality:">Odredi:</entry>
   <entry id="114" string="worse">lošije</entry>
   <entry id="115" string="better">bolje</entry>
   <entry id="116" string="Auto">Samopodešavanje</entry>
@@ -134,19 +134,19 @@
   <entry id="122" string="VBR quality">VBR kvalitet</entry>
   <entry id="123" string="ABR target bitrate">ciljna ABR stopa bitova</entry>
   <entry id="124" string="VBR bitrate range">VBR opseg stope bitove</entry>
-  <entry id="125" string="Set minimum VBR bitrate:">Podesi minimalnu VBR stopu bitova:</entry>
-  <entry id="126" string="Set maximum VBR bitrate:">Podesi maksimalnu VBR stopu bitova:</entry>
+  <entry id="125" string="Set minimum VBR bitrate:">Podesi MIN. VBR stopu:</entry>
+  <entry id="126" string="Set maximum VBR bitrate:">Podesi MAKS. VBR stopu:</entry>
   <entry id="127" string="Control bits">Kontrolni bitovi</entry>
   <entry id="128" string="Stream format">Format protoka</entry>
   <entry id="129" string="Enforce strict ISO compliance">Forsiraj striktnu ISO primenu</entry>
   <entry id="135" string="Output sampling rate">Izlazna stopa semplovanja</entry>
   <entry id="136" string="no resampling">bez re-semplovanja</entry>
   <entry id="137" string="Highpass filter">Filter visokih tonova</entry>
-  <entry id="138" string="Set Highpass frequency (Hz):">Podesi frekvenciju filtera visokih tonova (Hz):</entry>
-  <entry id="139" string="Set Highpass width (Hz):">Podesi širinu filtera visokih tonova (Hz):</entry>
+  <entry id="138" string="Set Highpass frequency (Hz):">Podesi frekvenciju filtera (Hz):</entry>
+  <entry id="139" string="Set Highpass width (Hz):">Podesi opseg filtera (Hz):</entry>
   <entry id="140" string="Lowpass filter">Filter niskih tonova</entry>
-  <entry id="141" string="Set Lowpass frequency (Hz):">Podesi filter niskih tonova (Hz):</entry>
-  <entry id="142" string="Set Lowpass width (Hz):">Podesi širinu filtera niskih tonova (Hz):</entry>
+  <entry id="141" string="Set Lowpass frequency (Hz):">Podesi frekvenciju filtera (Hz):</entry>
+  <entry id="142" string="Set Lowpass width (Hz):">Podesi opseg filtera (Hz):</entry>
   <entry id="143" string="Misc settings">Razna podešavanja</entry>
   <entry id="144" string="Disable all filtering">Onemogući sve filtere</entry>
   <entry id="145" string="MP3 Files">MP3 fajl(ovi)</entry>
@@ -187,7 +187,7 @@
   <entry id="180" string="Standard, Fast">Standardno, Brzo</entry>
   <entry id="181" string="Extreme, Fast">Krajnje, Brzo</entry>
   <entry id="182" string="Title">Naziv</entry>
-  <entry id="183" string="Track">Pesma</entry>
+  <entry id="183" string="Track">Broj</entry>
   <entry id="184" string="Length">Dužina</entry>
   <entry id="185" string="Size">Veličina</entry>
   <entry id="186" string="Artist">Izvođač</entry>
@@ -208,7 +208,7 @@
   <entry id="201" string="No audio CD in drive!">Nema audio CD-a u uređaju!</entry>
   <entry id="202" string="Please fill all fields and track titles before submitting.">Popunite sva polja i nazive pesama pre prijave.</entry>
   <entry id="203" string="Prefer CDDB over CD Text">Prednost CDDB nad CD tekstom</entry>
-  <entry id="204" string="CD options">CD opcije</entry>
+  <entry id="204" string="CD options">CD/DVD opcije</entry>
   <entry id="205" string="Submitting CD information">Prijava CD informacija</entry>
   <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Nemoguće otvoriti fajl: %1</entry>
   <entry id="207" string="Query CDDB database">Upit CDDB bazi</entry>
@@ -237,7 +237,7 @@
   <entry id="230" string="Translated by %1.">Preveo %1</entry>
   <entry id="231" string="Select all">Izaberi sve</entry>
   <entry id="232" string="Select none">Ne izaberi ništa</entry>
-  <entry id="233" string="Toggle selection">Zemeni izbor</entry>
+  <entry id="233" string="Toggle selection">Zameni izbor</entry>
   <entry id="234" string="Show Tip of the Day">Prikaži savet dana</entry>
   <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc je raspoloživ u %1 jezika. Ako Vaš jezik&#10;nije raspoloživ, možete ga lako prevesti&#10;koristeći aplikaciju: &quot;Laki prevodilac&quot;.</entry>
   <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc dolazi sa podrškom za LAME, Ogg Vorbis, FAAC,&#10;FLAC, i Bonk enkoderima. Enkoder za VQF format je&#10;raspoloživ na BonkEnc vebsajtu: %1</entry>
@@ -254,7 +254,7 @@
   <entry id="247" string="Read CD contents on insert">Pri ubacivanju čitaj CD sadržaj</entry>
   <entry id="248" string="Eject disk after ripping">Izbaci disk nakon ripovanja</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Enkoduj &quot;u letu&quot;</entry>
-  <entry id="250" string="Keep ripped wave files">Zadrži ripovane wave fajlove</entry>
+  <entry id="250" string="Keep ripped wave files">Zadrži ripovane WAV fajlove</entry>
   <entry id="251" string="ripping/decoding">ripovanje / enkodovanje</entry>
   <entry id="252" string="encoding">enkodovanje</entry>
   <entry id="253" string="Unicode">Unikod</entry>
@@ -319,7 +319,7 @@
   <entry id="312" string="Pattern">Šablon</entry>
   <entry id="313" string="Start directory">Pokreni folder</entry>
   <entry id="314" string="No files found matching pattern:">Nisu nađeni fajlovi po šablonu:</entry>
-  <entry id="315" string="Edit language file">Uredi fajl jezika</entry>
+  <entry id="315" string="Edit language file">Uredi   (Laki prevodilac)</entry>
   <entry id="316" string="Use for all selected tracks">Koristi za sve izabrane stavke</entry>
   <entry id="317" string="Interpret string as">Prevedi string kao</entry>
   <entry id="318" string="selected tracks">odabrane stavke</entry>
@@ -333,7 +333,7 @@
   <entry id="326" string="Successfully read CD!">Uspešno pročitan CD!</entry>
   <entry id="327" string="Comment">Komentar</entry>
   <entry id="328" string="Manage CDDB cache entries...">Upravljaj CDDB keš zapisima ...</entry>
-  <entry id="329" string="Save entry">Sačuvaj podatak</entry>
+  <entry id="329" string="Save entry">Sačuvaj</entry>
   <entry id="330" string="Remove entry">Ukloni zapis</entry>
   <entry id="331" string="Disc name">Naziv diska</entry>
   <entry id="332" string="Charset">Karakteri</entry>
@@ -363,7 +363,7 @@
   <entry id="356" string="File already exists">Fajl već postoji</entry>
   <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Izlazni fajl %1&#10;već postoji! Da li želite da ga prepišete?</entry>
   <entry id="358" string="Overwrite all further files">Prepiši sve buduće fajlove</entry>
-  <entry id="359" string="Start ripping automatically">Započi ripovanje automatski</entry>
+  <entry id="359" string="Start ripping automatically">Automatski započni ripovanje</entry>
   <entry id="360" string="Submit to online database later">Prijavi online bazi kasnije</entry>
   <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB podrša je onemogućena! Molimo omogućite&#10;lokalnu ili udaljenu CDDB podršku u konfigurisanju.</entry>
   <entry id="362" string="CDDB entries to submit:">CDDB upisi za prijavu:</entry>

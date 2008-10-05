@@ -95,7 +95,7 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, track, false);
 			}
 
-			if (format->comment != NIL)
+			if (format->comment != NIL && !currentConfig->overwriteComments)
 			{
 				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&comment, "COMMENT", format->comment);
 				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, comment, false);

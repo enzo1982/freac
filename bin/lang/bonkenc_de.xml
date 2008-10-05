@@ -395,5 +395,6 @@
     <entry id="388" string="Unknown file type">Unbekannter Dateityp</entry>
     <entry id="389" string="Unsupported audio format">Nicht unterstütztes Audioformat</entry>
     <entry id="390" string="Unknown error">Unbekannter Fehler</entry>
+    <entry id="391" string="Replace existing comments with default comment">Vorhandene Kommentare durch Standardkommentar ersetzen</entry>
   </data>
 </LangFile>

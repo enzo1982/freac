@@ -93,6 +93,7 @@ Bool BonkEnc::Config::LoadSettings()
 	vctag_encoding				= config->GetStringValue("Settings", "VorbisCommentTagEncoding", "UTF-8");
 	mp4meta_encoding			= config->GetStringValue("Settings", "MP4MetadataEncoding", "UTF-8");
 	default_comment				= config->GetStringValue("Settings", "DefaultComment", String("BonkEnc ").Append(BonkEnc::shortVersion).Append(" <http://www.bonkenc.org/>"));
+	overwriteComments			= config->GetIntValue("Settings", "OverwriteComments", 0);
 	copy_picture_tags			= config->GetIntValue("Settings", "CopyPictureTags", 1);
 
 	cdrip_activedrive			= config->GetIntValue("CDRip", "ActiveCDROM", 0);
@@ -271,6 +272,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetStringValue("Settings", "VorbisCommentTagEncoding", vctag_encoding);
 		config->SetStringValue("Settings", "MP4MetadataEncoding", mp4meta_encoding);
 		config->SetStringValue("Settings", "DefaultComment", default_comment);
+		config->SetIntValue("Settings", "OverwriteComments", overwriteComments);
 		config->SetIntValue("Settings", "CopyPictureTags", copy_picture_tags);
 
 		config->SetIntValue("CDRip", "ActiveCDROM", cdrip_activedrive);

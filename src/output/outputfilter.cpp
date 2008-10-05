@@ -134,7 +134,7 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 
 	ID3Frame	*comment = ex_ID3Frame_NewID(ID3FID_COMMENT);
 
-	if (format->comment != NIL)
+	if (format->comment != NIL && !currentConfig->overwriteComments)
 	{
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(comment, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(comment, ID3FN_TEXT), encoding);
