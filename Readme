@@ -13,7 +13,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (October 2008)
+	Version 1.1 CVS (November 2008)
 
 		- added Estonian, Catalan, Valencian and Portuguese language support
 		- added German, Italian, Russian and Greek user guides
@@ -55,7 +55,7 @@ History
 		- upgraded FLAC to version 1.2.1
 		- upgraded FAAC to version 1.26
 		- upgraded FAAD2 to version 2.6.1
-		- upgraded LAME to version 3.98.1
+		- upgraded LAME to version 3.98.3
 		- upgraded Ogg Vorbis to aoTuV beta 5.5
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
 		- upgrade to MPEG4IP v1.6.1
@@ -134,7 +134,7 @@ Special thanks to
 			   Jan Arni Jacobsen (Danish),
 			   Anton Mjoernebrant (Swedish),
 			   Peter Krajcar (Slovak),
-			   Wiak (Norwegian),
+			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Turkish),
 			   Naglis Jonaitis (Lithuanian),

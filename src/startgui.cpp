@@ -153,9 +153,11 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	for (Int i = 0; i < extensionComponents.Length(); i++)
 	{
-		Layer	*mainTabLayer = extensionComponents.GetNth(i)->getMainTabLayer.Emit();
+		Layer	*mainTabLayer	= extensionComponents.GetNth(i)->getMainTabLayer.Emit();
+		Layer	*statusBarLayer = extensionComponents.GetNth(i)->getStatusBarLayer.Emit();
 
-		if (mainTabLayer != NIL) tabs_main->Add(mainTabLayer);
+		if (mainTabLayer   != NIL) tabs_main->Add(mainTabLayer);
+		if (statusBarLayer != NIL) mainWnd_statusbar->Add(statusBarLayer);
 	}
 
 	tab_layer_threads	= new LayerThreads();

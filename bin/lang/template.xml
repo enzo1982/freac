@@ -395,5 +395,6 @@
     <entry id="388" string="Unknown file type"/>
     <entry id="389" string="Unsupported audio format"/>
     <entry id="390" string="Unknown error"/>
+    <entry id="391" string="Replace existing comments with default comment"/>
   </data>
 </LangFile>

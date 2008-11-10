@@ -29,7 +29,7 @@
   <entry id="17" string="Selected encoder:">Вибраний кодек:</entry>
   <entry id="18" string="File progress:">Прогрес:</entry>
   <entry id="19" string="Output dir.:">Тека:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">файл(а/ів) у листі</entry>
+  <entry id="20" string="%1 file(s) in joblist:">%1 файл(а/ів) у листі:</entry>
   <entry id="21" string="none">порожній</entry>
   <entry id="22" string="Help topics...">Допомога...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Додати аудіо файл(и) у лист</entry>

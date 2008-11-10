@@ -37,6 +37,8 @@ namespace BonkEnc
 
 			Bool				 AddTrack(const Track &);
 
+			Void				 UpdateTextLine();
+
 			const String			&GetEntryText(const Track &);
 			const String			&GetTooltipText(const Track &);
 		public:
@@ -77,6 +79,7 @@ namespace BonkEnc
 			Void				 OnUnregister(Widget *);
 
 			Void				 OnSelectEntry();
+			Void				 OnMarkEntry(ListEntry *);
 
 			Void				 OnComponentSelectTrack(const Track &);
 

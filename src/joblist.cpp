@@ -32,6 +32,7 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	onUnregister.Connect(&JobList::OnUnregister, this);
 
 	onSelectEntry.Connect(&JobList::OnSelectEntry, this);
+	onMarkEntry.Connect(&JobList::OnMarkEntry, this);
 
 	BoCA::JobList::Get()->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
@@ -39,7 +40,7 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFile.Connect(&JobList::AddTrackByDragAndDrop, this);
 
-	text = new Text(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", "0"), iPos - Point(9, 19));
+	text			= new Text("", iPos - Point(9, 19));
 
 	button_sel_all		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:18"), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
@@ -119,7 +120,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 
 	tracks.Add(track, entry->GetHandle());
 
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
+	UpdateTextLine();
 
 	BoCA::JobList::Get()->onApplicationAddTrack.Emit(*track);
 
@@ -137,7 +138,7 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 	Remove(entry);
 
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
+	UpdateTextLine();
 
 	/* Notify components and delete track.
 	 */
@@ -569,6 +570,14 @@ Void BonkEnc::JobList::OnSelectEntry()
 	BoCA::JobList::Get()->onApplicationSelectTrack.Emit(GetSelectedTrack());
 }
 
+Void BonkEnc::JobList::OnMarkEntry(ListEntry *entry)
+{
+	if (tracks.Get(entry->GetHandle()) == NIL) return;
+
+	if (entry->IsMarked())	BoCA::JobList::Get()->onApplicationMarkTrack.Emit(*tracks.Get(entry->GetHandle()));
+	else			BoCA::JobList::Get()->onApplicationUnmarkTrack.Emit(*tracks.Get(entry->GetHandle()));
+}
+
 Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
 {
 	for (Int i = 0; i < GetNOfTracks(); i++)
@@ -586,7 +595,7 @@ Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()
 {
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(Length())));
+	UpdateTextLine();
 
 	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
 	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));
@@ -616,6 +625,11 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 	AddTab(BonkEnc::i18n->TranslateString("Size"), Config::Get()->tab_width_size, OR_RIGHT);
 
 	Show();
+}
+
+Void BonkEnc::JobList::UpdateTextLine()
+{
+	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
 }
 
 const String &BonkEnc::JobList::GetEntryText(const Track &track)

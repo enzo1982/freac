@@ -120,7 +120,7 @@ Bool BonkEnc::Config::LoadSettings()
 	allowOverwrite				= config->GetIntValue("Settings", "AllowOverwriteSource", 0);
 	encodeToSingleFile			= config->GetIntValue("Settings", "EncodeToSingleFile", 0);
 
-	enable_auto_cddb			= config->GetIntValue("freedb", "AutoCDDBQueries", 0);
+	enable_auto_cddb			= config->GetIntValue("freedb", "AutoCDDBQueries", 1);
 	enable_overwrite_cdtext			= config->GetIntValue("freedb", "OverwriteCDText", 1);
 	enable_cddb_cache			= config->GetIntValue("freedb", "EnableCDDBCache", 1);
 	enable_local_cddb			= config->GetIntValue("freedb", "EnableLocalCDDB", 0);
