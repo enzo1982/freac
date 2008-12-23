@@ -29,7 +29,7 @@
   <entry id="17" string="Selected encoder:">Selecionar codificador:</entry>
   <entry id="18" string="File progress:">Progresso do arquivo:</entry>
   <entry id="19" string="Output dir.:">Pasta de saída:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 arquivo(s) na fila:</entry>
+  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 arquivo(s) na fila (%2 min):</entry>
   <entry id="21" string="none">nenhum</entry>
   <entry id="22" string="Help topics...">Ajuda...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Adicionar arquivo de áudio à fila</entry>

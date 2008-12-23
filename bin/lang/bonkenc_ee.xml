@@ -29,7 +29,7 @@
   <entry id="17" string="Selected encoder:">Valitud kodek:</entry>
   <entry id="18" string="File progress:">Protsess:</entry>
   <entry id="19" string="Output dir.:">Kaust:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 Fail(i) nimekirjas:</entry>
+  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 Fail(i) nimekirjas (%2 min):</entry>
   <entry id="21" string="none">ei ole</entry>
   <entry id="22" string="Help topics...">Abi...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Lisa audio fail(id) nimekirja</entry>

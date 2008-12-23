@@ -33,6 +33,10 @@ namespace BonkEnc
 			Array<Track *>		 tracks;
 
 			Bool			 AddTrack(Track *);
+
+			Void			 UpdateTextLine();
+
+			const String		&GetTotalDuration();
 		public:
 						 JobList(const Point &, const Size &);
 			virtual			~JobList();

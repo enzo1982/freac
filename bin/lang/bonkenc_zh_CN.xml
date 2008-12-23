@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">选定的编码器</entry>
     <entry id="18" string="File progress:">文件进度</entry>
     <entry id="19" string="Output dir.:">输出路径</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1任务列表文件:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1任务列表文件:</entry>
     <entry id="21" string="none">无</entry>
     <entry id="22" string="Help topics...">帮助主题...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">添加音频文件到任务列表</entry>

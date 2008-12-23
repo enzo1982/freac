@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Seçilen çevirici:</entry>
     <entry id="18" string="File progress:">İlerleme:</entry>
     <entry id="19" string="Output dir.:">Kaydedilecek yer:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">Görev listesinde %1 dosya var:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">Görev listesinde %1 dosya var (%2 min):</entry>
     <entry id="21" string="none">Hiçbiri</entry>
     <entry id="22" string="Help topics...">Yardım konuları</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Görev listesine ses dosyası ekle</entry>

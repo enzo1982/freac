@@ -66,13 +66,6 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	list_output->onSelectEntry.Connect(&GeneralSettingsLayerPlugins::SelectOutputPlugin, this);
 	list_output->onMarkEntry.Connect(&GeneralSettingsLayerPlugins::SelectOutputPlugin, this);
 
-	for (Int l = 0; l < DLLInterfaces::winamp_out_modules.Length(); l++)
-	{
-		ListEntry	*entry = list_output->AddEntry(DLLInterfaces::winamp_out_modules.GetNth(l)->description);
-
-		if (l == currentConfig->output_plugin) entry->SetMark(True);
-	}
-
 	pos.x	+= 433;
 	size.cx	= 0;
 	size.cy	= 0;
@@ -86,6 +79,13 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	button_output_about	= new Button(BonkEnc::i18n->TranslateString("About"), NIL, pos, size);
 	button_output_about->onAction.Connect(&GeneralSettingsLayerPlugins::AboutOutputPlugin, this);
 	button_output_about->Deactivate();
+
+	for (Int l = 0; l < DLLInterfaces::winamp_out_modules.Length(); l++)
+	{
+		ListEntry	*entry = list_output->AddEntry(DLLInterfaces::winamp_out_modules.GetNth(l)->description);
+
+		if (l == currentConfig->output_plugin) entry->SetMark(True);
+	}
 
 	Add(tabs_plugins);
 
@@ -122,6 +122,8 @@ Void BonkEnc::GeneralSettingsLayerPlugins::SelectInputPlugin()
 
 Void BonkEnc::GeneralSettingsLayerPlugins::SelectOutputPlugin()
 {
+	if (list_output->GetSelectedEntry() == NIL) return;
+
 	button_output->Activate();
 	button_output_about->Activate();
 

@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Geselecteerde encoder:</entry>
     <entry id="18" string="File progress:">Voortgang:</entry>
     <entry id="19" string="Output dir.:">Uitvoermap:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1 bestand(en) in takenlijst:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 bestand(en) in takenlijst (%2 min):</entry>
     <entry id="21" string="none">geen</entry>
     <entry id="22" string="Help topics...">Index...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Audiobestand(en) aan takenlijst toevoegen</entry>

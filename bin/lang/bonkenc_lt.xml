@@ -29,7 +29,7 @@
   <entry id="17" string="Selected encoder:">Pasirinktas koduotojas:</entry>
   <entry id="18" string="File progress:">Failo progresas:</entry>
   <entry id="19" string="Output dir.:">Išvesties aplankas:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 failai(ų, s) darbų sąraše:</entry>
+  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 failai(ų, s) darbų sąraše (%2 min):</entry>
   <entry id="21" string="none">nieko</entry>
   <entry id="22" string="Help topics...">Pagalbos temos...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Pridėti audio failą(us) į darbų sąrašą</entry>

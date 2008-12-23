@@ -113,7 +113,7 @@ Bool BonkEnc::Config::LoadSettings()
 	cdrip_autoEject				= config->GetIntValue("CDRip", "EjectAfterRipping", 0);
 	cdrip_numdrives				= 0;
 
-	enable_auto_cddb			= config->GetIntValue("freedb", "AutoCDDBQueries", 0);
+	enable_auto_cddb			= config->GetIntValue("freedb", "AutoCDDBQueries", 1);
 	enable_overwrite_cdtext			= config->GetIntValue("freedb", "OverwriteCDText", 1);
 	enable_cddb_cache			= config->GetIntValue("freedb", "EnableCDDBCache", 1);
 	enable_local_cddb			= config->GetIntValue("freedb", "EnableLocalCDDB", 0);

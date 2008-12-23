@@ -29,7 +29,7 @@
   <entry id="17" string="Selected encoder:">Zastosowany konwerter:</entry>
   <entry id="18" string="File progress:">Przetwarzanie pliku:</entry>
   <entry id="19" string="Output dir.:">Katalog docelowy:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 plik(i/ów) na liście:</entry>
+  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 plik(i/ów) na liście (%2 min):</entry>
   <entry id="21" string="none">brak</entry>
   <entry id="22" string="Help topics...">Tematy pomocy...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Dodawanie plików audio do listy</entry>

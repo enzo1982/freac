@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:"/>
     <entry id="18" string="File progress:"/>
     <entry id="19" string="Output dir.:"/>
-    <entry id="20" string="%1 file(s) in joblist:"/>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):"/>
     <entry id="21" string="none"/>
     <entry id="22" string="Help topics..."/>
     <entry id="23" string="Add audio file(s) to the joblist"/>
@@ -395,5 +395,7 @@
     <entry id="388" string="Unknown file type"/>
     <entry id="389" string="Unsupported audio format"/>
     <entry id="390" string="Unknown error"/>
+    <entry id="391" string="Replace existing comments with default comment"/>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
   </data>
 </LangFile>

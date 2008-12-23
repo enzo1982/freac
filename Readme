@@ -13,10 +13,21 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.10 (October 2008)
+	Version 1.0.10 (December 2008)
 
-		- updated Serbian translation
+		- updated Japanese, Serbian, Norwegian, Spanish (Latin American) and Serbian translations
 		- added an option to replace existing comments with default comment
+		- added "encode to single file" checkbox to main window
+		- total length of all tracks in joblist is now shown above the joblist
+		- windows can now be closed by pressing escape
+		- CDDB queries are now enabled by default
+		- fixed creation of empty directories when encoding in single file mode
+		- display an error message if tracks have different sample formats in single file mode
+		- disabled compression of uninstaller to fix incorrect threat warnings from virus scanners
+		- added German and Japanese translations for the installer
+		- upgraded LAME to version 3.98.3
+		- upgraded Ogg Vorbis to aoTuV beta 5.61
+		- fixed some crashes
 
 	Version 1.0.9 (September 2008)
 
@@ -162,7 +173,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v8.0
-		- smooth v0.8.70.1 (http://www.smooth-project.org/)
+		- smooth v0.8.70.2 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
@@ -205,7 +216,7 @@ Special thanks to
 
 	- the translators: Eric Le Carre (French),
 			   Marco D'Amato (Italian),
-			   Silky (Japanese),
+			   REIKA (Japanese),
 			   Federico Reddig (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
@@ -224,7 +235,7 @@ Special thanks to
 			   Jan Arni Jacobsen (Danish),
 			   Anton Mjoernebrant (Swedish),
 			   Peter Krajcar (Slovak),
-			   Wiak (Norwegian),
+			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Turkish),
 			   Naglis Jonaitis (Lithuanian),

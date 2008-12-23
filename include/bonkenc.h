@@ -56,6 +56,7 @@ namespace BonkEnc
 
 			Hyperlink		*hyperlink;
 
+			CheckBox		*check_single;
 			CheckBox		*check_playlist;
 			CheckBox		*check_cuesheet;
 

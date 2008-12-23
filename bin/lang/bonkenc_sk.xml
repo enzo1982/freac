@@ -29,7 +29,7 @@
   <entry id="17" string="Selected encoder:">Vybraný kodek:</entry>
   <entry id="18" string="File progress:">Priebeh súboru:</entry>
   <entry id="19" string="Output dir.:">Výstupná zložka:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 súbor(ov) v zozname:</entry>
+  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 súbor(ov) v zozname (%2 min):</entry>
   <entry id="21" string="none">žiadny</entry>
   <entry id="22" string="Help topics...">Pomocné témy...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Pridať Audio súbor(y) do zoznamu</entry>

@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Compressor seleccionat:</entry>
     <entry id="18" string="File progress:">Progrés:</entry>
     <entry id="19" string="Output dir.:">Ruta de sortida:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1 fitxer(s) en llista:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 fitxer(s) en llista (%2 min):</entry>
     <entry id="21" string="none">cap</entry>
     <entry id="22" string="Help topics...">Temes d'ajuda...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Afegir fitxer(s) d'àudio a la llista</entry>

@@ -132,6 +132,31 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			if (currentConfig->encodeToSingleFile)
 			{
+				/* Check if all files to be combined have the same sample format.
+				 */
+				Bool	 formatError = False;
+
+				for (Int j = i + 1; j < num; j++)
+				{
+					if (!joblist->GetNthEntry(j)->IsMarked()) continue;
+
+					Track	*track = joblist->GetNthTrack(j);
+
+					if (track->channels != trackInfo->channels ||
+					    track->rate	    != trackInfo->rate	   ||
+					    track->bits	    != trackInfo->bits	   ||
+					    track->order    != trackInfo->order)
+					{
+						Utilities::ErrorMessage("The selected files cannot be combined into a single\noutput file due to different sample formats.\n\nPlease convert all files to the same sample format first.");
+
+						formatError = True;
+
+						break;
+					}
+				}
+
+				if (formatError) break;
+
 				singleOutFile = GetSingleOutputFileName(trackInfo);
 
 				if (singleOutFile == NIL) break;
@@ -202,36 +227,39 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			if (!currentConfig->enc_onTheFly && step == 0) edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
 		}
 
-		out_filename = GetOutputFileName(trackInfo);
-
-		if (!overwriteAll && File(out_filename).Exists() && !currentConfig->writeToInputDir && !(!currentConfig->enc_onTheFly && step == 0))
+		if (!currentConfig->encodeToSingleFile)
 		{
-			MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNOCANCEL, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
+			out_filename = GetOutputFileName(trackInfo);
 
-			confirmation->ShowDialog();
-
-			if (confirmation->GetButtonCode() == IDCANCEL)
+			if (!overwriteAll && File(out_filename).Exists() && !currentConfig->writeToInputDir && !(!currentConfig->enc_onTheFly && step == 0))
 			{
-				Object::DeleteObject(confirmation);
+				MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNOCANCEL, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
-				break;
+				confirmation->ShowDialog();
+
+				if (confirmation->GetButtonCode() == IDCANCEL)
+				{
+					Object::DeleteObject(confirmation);
+
+					break;
+				}
+
+				if (confirmation->GetButtonCode() == IDNO)
+				{
+					overwriteAll = False;
+
+					Object::DeleteObject(confirmation);
+
+					continue;
+				}
+
+				Object::DeleteObject(confirmation);
 			}
 
-			if (confirmation->GetButtonCode() == IDNO)
-			{
-				overwriteAll = False;
+			if (out_filename == in_filename) out_filename.Append(".temp");
 
-				Object::DeleteObject(confirmation);
-
-				continue;
-			}
-
-			Object::DeleteObject(confirmation);
+			trackInfo->outfile = out_filename;
 		}
-
-		if (out_filename == in_filename) out_filename.Append(".temp");
-
-		trackInfo->outfile = out_filename;
 
 		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE)
 		{

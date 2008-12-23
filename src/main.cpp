@@ -250,6 +250,11 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	size.cx = 90;
 	size.cy = 0;
 
+	check_single		= new CheckBox("Encode to single file", pos, size, &currentConfig->encodeToSingleFile);
+	check_single->SetOrientation(OR_UPPERRIGHT);
+
+	pos.x -= 100;
+
 	check_playlist		= new CheckBox("Create playlist", pos, size, &currentConfig->createPlaylist);
 	check_playlist->SetOrientation(OR_UPPERRIGHT);
 
@@ -472,6 +477,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	SetLanguage();
 
+	mainWnd->Add(check_single);
 	mainWnd->Add(check_cuesheet);
 	mainWnd->Add(check_playlist);
 
@@ -584,6 +590,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(mainWnd);
 	DeleteObject(joblist);
 
+	DeleteObject(check_single);
 	DeleteObject(check_cuesheet);
 	DeleteObject(check_playlist);
 
@@ -800,8 +807,9 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 
 	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
-	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
+	check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
+	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
+	check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
 
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
@@ -1160,8 +1168,9 @@ Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 
 		joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
-		check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-		check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
+		check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
+		check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
+		check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
 
 		info_divider->SetPos(info_divider->GetPos() + n);
 		info_background->SetY(info_background->GetY() + n);
@@ -1327,15 +1336,19 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	info_checkbox->Show();
 
+	check_single->Hide();
 	check_cuesheet->Hide();
 	check_playlist->Hide();
 
+	check_single->SetText(i18n->TranslateString("Encode to single file"));
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
 	check_playlist->SetText(i18n->TranslateString("Create playlist"));
 
-	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, check_cuesheet->GetY()), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, check_playlist->GetY()), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
+	check_single->SetMetrics(Point(check_single->textSize.cx + 28, check_single->GetY()), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
+	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, check_cuesheet->GetY()), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
+	check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, check_playlist->GetY()), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
 
+	check_single->Show();
 	check_cuesheet->Show();
 	check_playlist->Show();
 

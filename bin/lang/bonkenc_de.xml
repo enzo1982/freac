@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Gewählter Codierer:</entry>
     <entry id="18" string="File progress:">Fortschritt:</entry>
     <entry id="19" string="Output dir.:">Verzeichnis:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1 Datei(en) zu verarbeiten:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 Datei(en) zu verarbeiten (%2 min):</entry>
     <entry id="21" string="none">keine</entry>
     <entry id="22" string="Help topics...">Hilfeindex...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Audiodatei(en) zur Liste hinzufügen</entry>
@@ -396,5 +396,6 @@
     <entry id="389" string="Unsupported audio format">Nicht unterstütztes Audioformat</entry>
     <entry id="390" string="Unknown error">Unbekannter Fehler</entry>
     <entry id="391" string="Replace existing comments with default comment">Vorhandene Kommentare durch Standardkommentar ersetzen</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Die ausgewählten Dateien können aufgrund unterschiedlicher&#10;Sample-Formate nicht in eine Datei kombiniert werden.&#10;&#10;Bitte konvertieren Sie zunächst alle Dateien in das gleiche Sample-Format.</entry>
   </data>
 </LangFile>

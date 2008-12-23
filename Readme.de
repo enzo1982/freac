@@ -13,10 +13,21 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.10 (Oktober 2008)
+	Version 1.0.10 (Dezember 2008)
 
-		- Serbische Übersetzung aktualisiert
+		- Japanische, serbische, norwegische, spanische (lateinamerikanisch) und serbische Übersetzungen aktualisiert
 		- Option zum Ersetzen von vorhandenen Kommentaren durch Standardkommentar hinzugefügt
+		- CheckBox für "In einzelne Datei codieren" zum Hauptfenster hinzugefügt
+		- Gesamtlänge aller Tracks in der Jobliste wird nun über der Jobliste angezeigt
+		- Fenster können jetzt durch Drücken von Escape geschlossen werden
+		- CDDB-Abfragen sind jetzt standardmäßig aktiviert
+		- Fehlerhaftes Erstellen von leeren Verzeichnissen im Einzelne-Datei-Modus behoben
+		- Zeige bei unterschiedlichen Sample-Formaten im Einzelne-Datei-Modus eine Fehlermeldung an
+		- Komprimierung des Uninstallers deaktiviert, um falsche Bedrohungs-Warnungen von Virenscannern zu beheben
+		- Deutsche und japanische Übersetzungen für das Installationsprogramm hinzugefügt
+		- LAME auf Version 3.98.3 aktualisiert
+		- Ogg Vorbis auf aoTuV Beta 5.61 aktualisiert
+		- Einige Abstürze behoben
 
 	Version 1.0.9 (September 2008)
 
@@ -162,7 +173,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v8.0
-		- smooth v0.8.70.1 (http://www.smooth-project.org/)
+		- smooth v0.8.70.2 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
@@ -205,7 +216,7 @@ Besonderen Dank
 
 	- den Übersetzern: Eric Le Carre (Französisch),
 			   Marco D'Amato (Italienisch),
-			   Silky (Japanisch),
+			   REIKA (Japanisch),
 			   Federico Reddig (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
 			   Nikolaos-Ioannis Galanis (Griechisch),
@@ -224,7 +235,7 @@ Besonderen Dank
 			   Jan Arni Jacobsen (Dänisch),
 			   Anton Mjörnebrant (Schwedisch),
 			   Peter Krajcár (Slowakisch),
-			   Wiak (Norwegian),
+			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Türkisch),
 			   Naglis Jonaitis (Litauisch),

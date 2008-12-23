@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">인코더:</entry>
     <entry id="18" string="File progress:">파일 진행:</entry>
     <entry id="19" string="Output dir.:">디렉토리:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1개의 파일이 작업목록에 있습니다:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1개의 파일이 작업목록에 있습니다:</entry>
     <entry id="21" string="none">없음</entry>
     <entry id="22" string="Help topics...">도움말...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">오디오 파일 작업목록에 추가</entry>

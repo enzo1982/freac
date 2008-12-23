@@ -27,7 +27,7 @@
     <entry id="17" string="Selected encoder:">المشفر:</entry>
     <entry id="18" string="File progress:">العملية:</entry>
     <entry id="19" string="Output dir.:">دليل:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">عدد المهام في الانتظار: %1</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">عدد المهام في الانتظار: %1</entry>
     <entry id="21" string="none">لا يوجد</entry>
     <entry id="22" string="Help topics...">محتويات...</entry>
     <entry id="31" string="Error">خطأ</entry>

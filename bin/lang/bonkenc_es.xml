@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Compresor seleccionado:</entry>
     <entry id="18" string="File progress:">Progreso:</entry>
     <entry id="19" string="Output dir.:">Dir. de salida:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1 fichero(s) en lista:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 fichero(s) en lista (%2 min):</entry>
     <entry id="21" string="none">ninguno</entry>
     <entry id="22" string="Help topics...">Temas de ayuda...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Añadir fichero(s) de audio a la lista</entry>

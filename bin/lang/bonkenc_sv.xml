@@ -29,7 +29,7 @@
     <entry id="17" string="Selected encoder:">Vald kodare:</entry>
     <entry id="18" string="File progress:">Kodningsförlopp:</entry>
     <entry id="19" string="Output dir.:">Målmapp:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">%1 fil(er) i jobblistan:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 fil(er) i jobblistan (%2 min):</entry>
     <entry id="21" string="none">ingen</entry>
     <entry id="22" string="Help topics...">Hjälp...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Lägg till ljudfil(er) i jobblistan</entry>

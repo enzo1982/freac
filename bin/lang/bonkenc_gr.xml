@@ -29,7 +29,7 @@
   <entry id="17" string="Selected encoder:">Επιλεγμένος κωδικοποιητής:</entry>
   <entry id="18" string="File progress:">Πρόοδος αρχείου:</entry>
   <entry id="19" string="Output dir.:">Φάκελος αποθήκευσης:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 αρχείο(α) στη Λίστα Εργασίας:</entry>
+  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 αρχείο(α) στη Λίστα Εργασίας:</entry>
   <entry id="21" string="none">κανένα</entry>
   <entry id="22" string="Help topics...">Θέματα στη βοήθεια...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Προσθήκη αρχείου(ων) στη λίστα εργασίας</entry>

@@ -29,7 +29,7 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFile.Connect(&JobList::AddTrackByDragAndDrop, this);
 
-	text = new Text(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", "0"), iPos - Point(9, 19));
+	text = new Text("", iPos - Point(9, 19));
 
 	button_sel_all		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:18"), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
@@ -116,7 +116,7 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 
 	tracks.Add(track, entry->GetHandle());
 
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
+	UpdateTextLine();
 
 	return True;
 }
@@ -129,7 +129,7 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 	Remove(GetNthEntry(n));
 
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
+	UpdateTextLine();
 
 	return True;
 }
@@ -151,7 +151,7 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 
 	RemoveAllEntries();
 
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", "0"));
+	UpdateTextLine();
 
 	onSelectNone.Emit();
 
@@ -478,13 +478,54 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 	if (Length() > 0)
 	{
 		if (n < Length())	SelectEntry(GetNthEntry(n));
-		else				SelectEntry(GetNthEntry(n - 1));
+		else			SelectEntry(GetNthEntry(n - 1));
 	}
 
 	if (Length() > 0)	onSelectTrack.Emit(GetSelectedTrack());
-	else				onSelectNone.Emit();
+	else			onSelectNone.Emit();
 }
 
+Void BonkEnc::JobList::UpdateTextLine()
+{
+	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist (%2 min):")).Replace("%2", GetTotalDuration()).Replace("%1", String::FromInt(GetNOfTracks())));
+}
+
+const String &BonkEnc::JobList::GetTotalDuration()
+{
+	static String	 string;
+
+	Int		 seconds = 0;
+	Bool		 approx	 = False;
+	Bool		 unknown = False;
+
+	for (Int i = 0; i < GetNOfTracks(); i++)
+	{
+		const Track	*track = GetNthTrack(i);
+
+		if (track->length >= 0)
+		{
+			seconds += track->length / (track->rate * track->channels);
+		}
+		else if (track->approxLength >= 0)
+		{
+			seconds += track->approxLength / (track->rate * track->channels);
+
+			approx = True;
+		}
+		else
+		{
+			unknown = True;
+		}
+	}
+
+	string = String(unknown ? "> " : "").Append(approx ? "~ " : "").Append(String::FromInt(seconds / 60)).Append(":").Append(seconds % 60 < 10 ? "0" : "").Append(String::FromInt(seconds % 60));
+
+	wchar_t	 sign[2] = { 0x2248, 0 };
+
+	if (Setup::enableUnicode) string.Replace("~", sign);
+
+	return string;
+}
 
 Void BonkEnc::JobList::SelectAll()
 {
@@ -632,7 +673,7 @@ Void BonkEnc::JobList::OnSelectEntry()
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()
 {
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(Length())));
+	UpdateTextLine();
 
 	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
 	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));

@@ -29,7 +29,7 @@
   <entry id="17" string="Selected encoder:">Codec utilizat:</entry>
   <entry id="18" string="File progress:">Progres fişier:</entry>
   <entry id="19" string="Output dir.:">Director salvare:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 fişier(e) în listă:</entry>
+  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 fişier(e) în listă (%2 min):</entry>
   <entry id="21" string="none">nici unul</entry>
   <entry id="22" string="Help topics...">Subiecte...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Adăugare fişier(e) audio la listă</entry>
