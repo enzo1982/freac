@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -26,11 +26,6 @@ namespace BonkEnc
 		private:
 			Bool		 ParseID3V2Tag(ID3Tag *, Track *);
 			String		 GetID3V2FrameString(ID3Frame *);
-
-			String		 GetTempFileName(const String &);
-
-			String		 CreateTempFile(const String &);
-			Bool		 RemoveTempFile(const String &);
 		protected:
 			Int		 inBytes;
 

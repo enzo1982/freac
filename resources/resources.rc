@@ -2,8 +2,8 @@
 #include "../include/resources.h"
 
 IDR_VERSION		VERSIONINFO
-  FILEVERSION		1,0,10,459
-  PRODUCTVERSION	1,0,10,459
+  FILEVERSION		1,0,11,460
+  PRODUCTVERSION	1,0,11,460
   FILEOS		VOS_NT_WINDOWS32
   FILETYPE		VFT_APP
 BEGIN
@@ -12,12 +12,12 @@ BEGIN
         BLOCK "000004B0"	// Block: language ID = Multilingual, char set = Unicode
         BEGIN
             VALUE	"FileDescription",	"BonkEnc Audio Encoder\0"
-            VALUE	"FileVersion",		"1.0.10.459\0"
+            VALUE	"FileVersion",		"1.0.11.460\0"
             VALUE	"InternalName",		"BONKENC\0"
             VALUE	"OriginalFilename",	"bonkenc.exe\0"
             VALUE	"ProductName",		"BonkEnc\0"
-            VALUE	"ProductVersion",	"1.0.10\0"
-            VALUE	"LegalCopyright",	"Copyright © 2001-2008 Robert Kausch\0"
+            VALUE	"ProductVersion",	"1.0.11\0"
+            VALUE	"LegalCopyright",	"Copyright © 2001-2009 Robert Kausch\0"
             VALUE	"Official website",	"http://www.bonkenc.org/\0"
          END
     END

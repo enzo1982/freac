@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -50,17 +50,72 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track 
 
 Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 {
-	ID3Tag	*tag = ex_ID3Tag_New();
+	InStream	 in(STREAM_FILE, fileName, IS_READONLY);
 
-	ex_ID3Tag_Link(tag, CreateTempFile(fileName));
+	/* Look for ID3v2 tag.
+	 */
+	if (in.InputString(3) == "ID3" && in.InputNumber(1) <= 4)
+	{
+		/* Skip minor version and flags.
+		 */
+		in.InputNumber(1);
+		in.InputNumber(1);
 
-	RemoveTempFile(fileName);
+		/* Read tag size as a 4 byte unsynchronized integer.
+		 */
+		Int	 tagSize = (in.InputNumber(1) << 21) +
+				   (in.InputNumber(1) << 14) +
+				   (in.InputNumber(1) <<  7) +
+				   (in.InputNumber(1)      );
 
-	Bool	 retVal = ParseID3V2Tag(tag, nFormat);
+		in.Seek(0);
 
-	ex_ID3Tag_Delete(tag);
+		unsigned char	*buffer = new unsigned char [tagSize + 10];
 
-	return retVal;
+		in.InputData(buffer, tagSize + 10);
+
+		Int	 retVal = ParseID3V2Tag(buffer, tagSize + 10, nFormat);
+
+		delete [] buffer;
+
+		return retVal;
+	}
+
+	in.Seek(in.Size() - 128);
+
+	/* Look for ID3v1 tag.
+	 */
+	if (in.InputString(3) == "TAG")
+	{
+		char	*prevInFormat = String::SetInputFormat("ISO-8859-1");
+
+		nFormat->title	 = in.InputString(30);
+		nFormat->artist	 = in.InputString(30);
+		nFormat->album	 = in.InputString(30);
+		nFormat->year	 = in.InputString(4).ToInt();
+		nFormat->comment = in.InputString(28);
+
+		if (in.InputNumber(1) == 0)
+		{
+			Int	 n = in.InputNumber(1);
+
+			if (n > 0) nFormat->track = n;
+		}
+		else
+		{
+			in.RelSeek(-29);
+
+			nFormat->comment = in.InputString(30);
+		}
+
+		nFormat->genre	 = GetID3CategoryName(in.InputNumber(1));
+
+		String::SetInputFormat(prevInFormat);
+
+		return Success();
+	}
+
+	return Error();
 }
 
 Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
@@ -245,66 +300,4 @@ String BonkEnc::InputFilter::GetID3CategoryName(Int id)
 				"Christian Rock", "Merengue", "Salsa", "Thrash Metal", "Anime", "JPop", "Synthpop" };
 
 	return array[id];
-}
-
-String BonkEnc::InputFilter::GetTempFileName(const String &oFileName)
-{
-	String	 rVal	= oFileName;
-	Int	 lastBs	= -1;
-
-	for (Int i = 0; i < rVal.Length(); i++)
-	{
-		if (rVal[i] > 255)	rVal[i] = '#';
-		if (rVal[i] == '\\')	lastBs = i;
-	}
-
-	if (rVal == oFileName) return rVal;
-
-	String	 tempDir = Utilities::GetTempDirectory();
-
-	for (Int j = lastBs + 1; j < rVal.Length(); j++)
-	{
-		tempDir[tempDir.Length()] = rVal[j];
-	}
-
-	return tempDir.Append(".out.temp");
-}
-
-String BonkEnc::InputFilter::CreateTempFile(const String &oFileName)
-{
-	String		 tempFileName = GetTempFileName(oFileName);
-
-	if (tempFileName == oFileName) return oFileName;
-
-	InStream	*in = new InStream(STREAM_FILE, oFileName, IS_READONLY);
-	OutStream	*out = new OutStream(STREAM_FILE, tempFileName, OS_OVERWRITE);
-
-	Buffer<unsigned char>	 buffer;
-
-	buffer.Resize(1024);
-
-	Int	 bytesleft = in->Size();
-
-	while (bytesleft > 0)
-	{
-		out->OutputData(in->InputData(buffer, Math::Min(1024, bytesleft)), Math::Min(1024, bytesleft));
-
-		bytesleft -= 1024;
-	}
-
-	delete in;
-	delete out;
-
-	return tempFileName;
-}
-
-Bool BonkEnc::InputFilter::RemoveTempFile(const String &oFileName)
-{
-	String		 tempFileName = GetTempFileName(oFileName);
-
-	if (tempFileName == oFileName) return True;
-
-	File(tempFileName).Delete();
-
-	return True;
 }
