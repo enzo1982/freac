@@ -143,6 +143,10 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 			tree->Add(entries.GetLast());
 		}
+		else
+		{
+			boca.DeleteComponent(component);
+		}
 	}
 
 	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);

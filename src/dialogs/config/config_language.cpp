@@ -27,12 +27,12 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 	pos.x += 9;
 	pos.y += 11;
 
-	text_info	= new Text("", pos);
+	text_info	= new Text(NIL, pos);
 
 	pos.x += 28;
 	pos.y += 45;
 
-	link_url	= new Hyperlink("", NIL, "", pos, Size(0, 0));
+	link_url	= new Hyperlink(NIL, NIL, NIL, pos, Size(0, 0));
 
 	pos.x	= 7;
 	pos.y	= 11;

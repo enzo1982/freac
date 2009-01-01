@@ -87,28 +87,28 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.x = 7;
 	pos.y = 96;
 
-	txt_filename		= new Text("Encoding file:", pos);
+	txt_filename		= new Text(NIL, pos);
 	txt_filename->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	txt_format		= new Text("File format:", pos);
+	txt_format		= new Text(NIL, pos);
 	txt_format->SetOrientation(OR_LOWERLEFT);
 
-	txt_encoder		= new Text("Selected encoder:", pos);
+	txt_encoder		= new Text(NIL, pos);
 	txt_encoder->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
-	txt_progress		= new Text("File progress:", pos);
+	txt_progress		= new Text(NIL, pos);
 	txt_progress->SetOrientation(OR_LOWERLEFT);
 
-	txt_time		= new Text("Time left:", pos);
+	txt_time		= new Text(NIL, pos);
 	txt_time->SetOrientation(OR_LOWERRIGHT);
 
 	pos.y -= 24;
 
-	txt_outdir		= new Text("Output dir.:", pos);
+	txt_outdir		= new Text(NIL, pos);
 	txt_outdir->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 16;
@@ -124,12 +124,17 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	size.cx = 90;
 	size.cy = 0;
 
-	check_playlist		= new CheckBox("Create playlist", pos, size, &currentConfig->createPlaylist);
+	check_single		= new CheckBox(NIL, pos, size, &currentConfig->encodeToSingleFile);
+	check_single->SetOrientation(OR_UPPERRIGHT);
+
+	pos.x -= 100;
+
+	check_playlist		= new CheckBox(NIL, pos, size, &currentConfig->createPlaylist);
 	check_playlist->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x -= 100;
 
-	check_cuesheet		= new CheckBox("Create cue sheet", pos, size, &currentConfig->createCueSheet);
+	check_cuesheet		= new CheckBox(NIL, pos, size, &currentConfig->createCueSheet);
 	check_cuesheet->SetOrientation(OR_UPPERRIGHT);
 
 	info_divider		= new Divider(113 + (currentConfig->showTitleInfo ? 68 : 0), OR_HORZ | OR_BOTTOM);
@@ -150,18 +155,18 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	size.cx = 86;
 	size.cy = 0;
 
-	info_checkbox = new CheckBox("Show title info", pos, size, &currentConfig->showTitleInfo);
+	info_checkbox = new CheckBox(NIL, pos, size, &currentConfig->showTitleInfo);
 	info_checkbox->onAction.Connect(&LayerJoblist::ShowHideTitleInfo, this);
 
 	pos.x = 7;
 	pos.y = 164;
 
-	info_text_artist = new Text("Artist:", pos);
+	info_text_artist = new Text(NIL, pos);
 	info_text_artist->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 27;
 
-	info_text_album = new Text("Album:", pos);
+	info_text_album = new Text(NIL, pos);
 	info_text_album->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + (Int) Math::Max(info_text_album->textSize.cx, info_text_artist->textSize.cx));
@@ -169,7 +174,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	size.cx = 180;
 	size.cy = 0;
 
-	info_edit_artist = new EditBox("", pos, size, 0);
+	info_edit_artist = new EditBox(NIL, pos, size, 0);
 	info_edit_artist->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_artist->SetOrientation(OR_LOWERLEFT);
 
@@ -187,7 +192,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	pos.y -= 27;
 
-	info_edit_album = new EditBox("", pos, size, 0);
+	info_edit_album = new EditBox(NIL, pos, size, 0);
 	info_edit_album->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_album->SetOrientation(OR_LOWERLEFT);
 
@@ -206,19 +211,19 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.x += (7 + size.cx);
 	pos.y += 24;
 
-	info_text_title = new Text("Title:", pos);
+	info_text_title = new Text(NIL, pos);
 	info_text_title->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 27;
 
-	info_text_track = new Text("Track:", pos);
+	info_text_track = new Text(NIL, pos);
 	info_text_track->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
 	pos.y += 30;
 	size.cx = 100;
 
-	info_edit_title = new EditBox("", pos, size, 0);
+	info_edit_title = new EditBox(NIL, pos, size, 0);
 	info_edit_title->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_title->SetOrientation(OR_LOWERLEFT);
 
@@ -237,7 +242,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.y -= 27;
 	size.cx = 25;
 
-	info_edit_track = new EditBox("", pos, size, 3);
+	info_edit_track = new EditBox(NIL, pos, size, 3);
 	info_edit_track->SetFlags(EDB_NUMERIC);
 	info_edit_track->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_track->SetOrientation(OR_LOWERLEFT);
@@ -245,14 +250,14 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.x += (7 + size.cx);
 	pos.y -= 3;
 
-	info_text_year = new Text("Year:", pos);
+	info_text_year = new Text(NIL, pos);
 	info_text_year->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += (7 + info_text_year->textSize.cx);
 	pos.y += 3;
 	size.cx = 31;
 
-	info_edit_year = new EditBox("", pos, size, 4);
+	info_edit_year = new EditBox(NIL, pos, size, 4);
 	info_edit_year->SetFlags(EDB_NUMERIC);
 	info_edit_year->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_year->SetOrientation(OR_LOWERLEFT);
@@ -272,7 +277,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.x += (7 + size.cx);
 	pos.y -= 3;
 
-	info_text_genre = new Text("Genre:", pos);
+	info_text_genre = new Text(NIL, pos);
 	info_text_genre->SetOrientation(OR_LOWERLEFT);
 
 	info_list_genre = new ListBox(pos, size);
@@ -282,7 +287,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.y += 3;
 	size.cx = 135;
 
-	info_edit_genre = new EditBox("", pos, size, 0);
+	info_edit_genre = new EditBox(NIL, pos, size, 0);
 	info_edit_genre->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_genre->SetOrientation(OR_LOWERLEFT);
 	info_edit_genre->SetDropDownList(info_list_genre);
@@ -311,7 +316,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	info_edit_year->Deactivate();
 	info_edit_genre->Deactivate();
 
-	edb_filename = new EditBox("none", Point(0, 99), Size(0, 0), 1024);
+	edb_filename = new EditBox(NIL, Point(0, 99), Size(0, 0), 1024);
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
@@ -320,7 +325,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	btn_skip->onAction.Connect(&onRequestSkipTrack);
 	btn_skip->Deactivate();
 
-	edb_format = new EditBox("", Point(0, 75), Size(0, 0), 4);
+	edb_format = new EditBox(NIL, Point(0, 75), Size(0, 0), 4);
 	edb_format->SetOrientation(OR_LOWERLEFT);
 	edb_format->Deactivate();
 
@@ -383,6 +388,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	BonkEncGUI::Get()->onChangeLanguageSettings.Connect(&LayerJoblist::SetLanguage, this);
 
+	Add(check_single);
 	Add(check_cuesheet);
 	Add(check_playlist);
 
@@ -481,6 +487,7 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 
 	DeleteObject(joblist);
 
+	DeleteObject(check_single);
 	DeleteObject(check_cuesheet);
 	DeleteObject(check_playlist);
 
@@ -594,8 +601,9 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
-	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
+	check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
+	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
+	check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
 
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
@@ -677,6 +685,7 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 	btn_outdir->SetText(BonkEnc::i18n->TranslateString("Browse"));
 	btn_skip->SetText(BonkEnc::i18n->TranslateString("Skip"));
 
+	check_single->SetText(i18n->TranslateString("Encode to single file"));
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
 	check_playlist->SetText(i18n->TranslateString("Create playlist"));
 
@@ -846,12 +855,12 @@ Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 	info_edit_title->SetText(track.title);
 	info_edit_album->SetText(track.album);
 
-	info_edit_track->SetText("");
+	info_edit_track->SetText(NIL);
 
 	if	(track.track > 0 && track.track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(track.track)));
 	else if (track.track >= 10)			info_edit_track->SetText(String::FromInt(track.track));
 
-	info_edit_year->SetText("");
+	info_edit_year->SetText(NIL);
 
 	if (track.year > 0) info_edit_year->SetText(String::FromInt(track.year));
 
@@ -875,12 +884,12 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 	{
 		dontUpdateInfo = True;
 
-		info_edit_artist->SetText("");
-		info_edit_title->SetText("");
-		info_edit_album->SetText("");
-		info_edit_track->SetText("");
-		info_edit_year->SetText("");
-		info_edit_genre->SetText("");
+		info_edit_artist->SetText(NIL);
+		info_edit_title->SetText(NIL);
+		info_edit_album->SetText(NIL);
+		info_edit_track->SetText(NIL);
+		info_edit_year->SetText(NIL);
+		info_edit_genre->SetText(NIL);
 
 		info_edit_artist->Deactivate();
 		info_edit_title->Deactivate();
@@ -1045,8 +1054,9 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 
 	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
-	check_cuesheet->SetMetrics(Point(check_cuesheet->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-	check_playlist->SetMetrics(Point(check_cuesheet->textSize.cx + check_playlist->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
+	check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
+	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
+	check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
 
 	info_divider->SetPos(info_divider->GetPos() + n);
 	info_background->SetY(info_background->GetY() + n);

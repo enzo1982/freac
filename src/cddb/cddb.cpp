@@ -251,7 +251,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 
 			for (Int l = k + 3; l < line.Length(); l++) cddbInfo.dTitle[l - k - 3] = line[l];
 
-			if (cddbInfo.dTitle == "") cddbInfo.dTitle = cddbInfo.dArtist;
+			if (cddbInfo.dTitle == NIL) cddbInfo.dTitle = cddbInfo.dArtist;
 
 			cddbInfo.oDArtist = cddbInfo.dArtist;
 			cddbInfo.oDTitle = cddbInfo.dTitle;
@@ -297,7 +297,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 
 				for (Int m = l + 3; m < line.Length(); m++) title[m - l - 3] = line[m];
 
-				if (title == "") { title = artist; artist = ""; }
+				if (title == NIL) { title = artist; artist = NIL; }
 			}
 			else
 			{
@@ -417,7 +417,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 
 String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
 {
-	if (value == "") return String(entry).Append("=\n");
+	if (value == NIL) return String(entry).Append("=\n");
 
 	String	 result;
 

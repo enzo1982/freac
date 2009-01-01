@@ -118,7 +118,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	pos.y	-= 3;
 	size.cx	= 37;
 
-	edit_port	= new EditBox("", pos, size, 5);
+	edit_port	= new EditBox(NIL, pos, size, 5);
 	edit_port->SetFlags(EDB_NUMERIC);
 
 	pos.x = 16;

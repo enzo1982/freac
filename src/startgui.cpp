@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -32,8 +32,6 @@
 #include <dialogs/cddb/manage.h>
 #include <dialogs/cddb/managequeries.h>
 #include <dialogs/cddb/managesubmits.h>
-
-#include <dialogs/language.h>
 
 Int StartGUI(const Array<String> &args)
 {
@@ -74,7 +72,7 @@ BonkEnc::BonkEncGUI *BonkEnc::BonkEncGUI::Get()
 
 Void BonkEnc::BonkEncGUI::Free()
 {
-	if (instance != NIL) Object::DeleteObject(instance);
+	if (instance != NIL) delete (BonkEncGUI *) instance;
 }
 
 BonkEnc::BonkEncGUI::BonkEncGUI()
@@ -86,16 +84,108 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	clicked_drive = -1;
 	clicked_encoder = -1;
 
-	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
+	if (currentConfig->language == NIL && i18n->GetNOfLanguages() > 1)
 	{
-		LanguageDlg	*dlg = new LanguageDlg();
+		switch (PRIMARYLANGID(GetUserDefaultLangID()))
+		{
+			default:
+			case LANG_ARABIC:
+				currentConfig->language = "bonkenc_ar.xml";
+				break;
+			case LANG_CATALAN:
+				currentConfig->language = "bonkenc_ca.xml";
+				break;
+			case LANG_CHINESE:
+				currentConfig->language = "bonkenc_zh_CN.xml";
 
-		dlg->ShowDialog();
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_SIMPLIFIED) currentConfig->language = "bonkenc_zh_CN.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) currentConfig->language = "bonkenc_zh_TW.xml";
+				break;
+			case LANG_CZECH:
+				currentConfig->language = "bonkenc_cz.xml";
+				break;
+			case LANG_DANISH:
+				currentConfig->language = "bonkenc_dk.xml";
+				break;
+			case LANG_DUTCH:
+				currentConfig->language = "bonkenc_nl.xml";
+				break;
+			case LANG_ENGLISH:
+				currentConfig->language = "internal";
+				break;
+			case LANG_ESTONIAN:
+				currentConfig->language = "bonkenc_ee.xml";
+				break;
+			case LANG_FINNISH:
+				currentConfig->language = "bonkenc_fi.xml";
+				break;
+			case LANG_FRENCH:
+				currentConfig->language = "bonkenc_fr.xml";
+				break;
+			case LANG_GERMAN:
+				currentConfig->language = "bonkenc_de.xml";
+				break;
+			case LANG_GREEK:
+				currentConfig->language = "bonkenc_gr.xml";
+				break;
+			case LANG_HUNGARIAN:
+				currentConfig->language = "bonkenc_hu.xml";
+				break;
+			case LANG_ITALIAN:
+				currentConfig->language = "bonkenc_it.xml";
+				break;
+			case LANG_JAPANESE:
+				currentConfig->language = "bonkenc_ja.xml";
+				break;
+			case LANG_KOREAN:
+				currentConfig->language = "bonkenc_ko.xml";
+				break;
+			case LANG_LITHUANIAN:
+				currentConfig->language = "bonkenc_lt.xml";
+				break;
+			case LANG_NORWEGIAN:
+				currentConfig->language = "bonkenc_no.xml";
+				break;
+			case LANG_POLISH:
+				currentConfig->language = "bonkenc_pl.xml";
+				break;
+			case LANG_PORTUGUESE:
+				currentConfig->language = "bonkenc_pt.xml";
 
-		DeleteObject(dlg);
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE) currentConfig->language = "bonkenc_pt.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE_BRAZILIAN) currentConfig->language = "bonkenc_pt_BR.xml";
+				break;
+			case LANG_ROMANIAN:
+				currentConfig->language = "bonkenc_ro.xml";
+				break;
+			case LANG_RUSSIAN:
+				currentConfig->language = "bonkenc_ru.xml";
+				break;
+			case LANG_SERBIAN:
+				currentConfig->language = "bonkenc_sr.xml";
+				break;
+			case LANG_SLOVAK:
+				currentConfig->language = "bonkenc_sk.xml";
+				break;
+			case LANG_SPANISH:
+				currentConfig->language = "bonkenc_es.xml";
+
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH) currentConfig->language = "bonkenc_es.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH_ARGENTINA) currentConfig->language = "bonkenc_es_AR.xml";
+				break;
+			case LANG_SWEDISH:
+				currentConfig->language = "bonkenc_sv.xml";
+				break;
+			case LANG_TURKISH:
+				currentConfig->language = "bonkenc_tr.xml";
+				break;
+			case LANG_UKRAINIAN:
+				currentConfig->language = "bonkenc_ua.xml";
+				break;
+		}
 	}
 
-	if (currentConfig->language == "") currentConfig->language = "internal";
+	if (currentConfig->language == NIL) currentConfig->language = "internal";
 
 	i18n->ActivateLanguage(currentConfig->language);
 
@@ -124,7 +214,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2008 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
 	menu_file		= new PopupMenu();
 	menu_options		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -367,7 +457,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 {
 	currentConfig->wndSize = mainWnd->GetSize();
 
-	mainWnd->SetStatusText(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2008 Robert Kausch"));
+	mainWnd->SetStatusText(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -382,7 +472,7 @@ Void BonkEnc::BonkEncGUI::Close()
 
 Void BonkEnc::BonkEncGUI::About()
 {
-	QuickMessage(String("BonkEnc ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2008 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String("BonkEnc ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2009 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -1022,7 +1112,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdates(Bool startup)
 
 	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, updatePath);
 
-	if (currentConfig->configDir != "")
+	if (currentConfig->configDir != NIL)
 	{
 		if (Setup::enableUnicode) ex_eUpdate_SetConfigFileW(context, String(currentConfig->configDir).Append("eUpdate.xml"));
 		else			  ex_eUpdate_SetConfigFile(context, String(currentConfig->configDir).Append("eUpdate.xml"));

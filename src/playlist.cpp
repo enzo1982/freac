@@ -69,9 +69,9 @@ Bool BonkEnc::Playlist::Load(const String &fileName)
 		{
 			String	 line = file->InputLine();
 
-			if (line == "") break;
+			if (line == NIL) break;
 
-			if (!line.StartsWith("#EXTINF")) AddTrack(line, "", 0);
+			if (!line.StartsWith("#EXTINF")) AddTrack(line, NIL, 0);
 		}
 	}
 

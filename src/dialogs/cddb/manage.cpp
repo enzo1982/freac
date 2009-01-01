@@ -84,7 +84,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	size.cx = 261;
 	size.cy = 186;
 
-	edit_preview	= new MultiEdit("", pos, size, 0);
+	edit_preview	= new MultiEdit(NIL, pos, size, 0);
 	edit_preview->Deactivate();
 
 	pos.y += 197;
@@ -106,7 +106,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	list_charset->AddEntry("GBK");
 	list_charset->AddEntry("BIG-5");
 
-	edit_charset	= new EditBox("", pos, size, 0);
+	edit_charset	= new EditBox(NIL, pos, size, 0);
 	edit_charset->SetDropDownList(list_charset);
 	edit_charset->onInput.Connect(&cddbManageDlg::SetCharset, this);
 
@@ -242,7 +242,7 @@ Void BonkEnc::cddbManageDlg::SetCharset()
 		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNth(i));
 		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNth(i));
 
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.oDArtist == "Various" ? String(artist).Append(" - ") : "").Append(title).Append("\n");
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.oDArtist == "Various" ? String(artist).Append(" - ") : String(NIL)).Append(title).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -255,7 +255,7 @@ Void BonkEnc::cddbManageDlg::SelectEntry()
 
 	for (Int i = 0; i < entry.trackTitles.Length(); i++)
 	{
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? String(entry.trackArtists.GetNth(i)).Append(" - ") : "").Append(entry.trackTitles.GetNth(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? String(entry.trackArtists.GetNth(i)).Append(" - ") : String(NIL)).Append(entry.trackTitles.GetNth(i)).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -272,7 +272,7 @@ Void BonkEnc::cddbManageDlg::DeleteEntry()
 
 	list_entries->Remove(list_entries->GetSelectedEntry());
 
-	edit_preview->SetText("");
+	edit_preview->SetText(NIL);
 
 	edit_charset->Deactivate();
 	btn_delete->Deactivate();

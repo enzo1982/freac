@@ -72,7 +72,7 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	pos.x = 7;
 	pos.y = 26;
 
-	text_status	= new Text("", pos);
+	text_status	= new Text(NIL, pos);
 	text_status->SetOrientation(OR_LOWERLEFT);
 
 	btn_delete->Deactivate();

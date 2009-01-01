@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+ <info>
+  <property name="program">BonkEnc</property>
+  <property name="version">1.0</property>
+  <property name="language">Danish / Dansk</property>
+  <property name="righttoleft">false</property>
+  <property name="encoding">UTF-8</property>
+  <property name="author">Jan Arni Jacobsen &lt;theking1988@gmail.com&gt;</property>
+  <property name="url">http://www.hj.dyndns.dk/jaj/</property>
+ </info>
+ <data>
+  <entry id="1" string="File">Filer</entry>
+  <entry id="2" string="Options">Indstillinger</entry>
+  <entry id="3" string="Encode">Kod</entry>
+  <entry id="4" string="Add">Tilføj</entry>
+  <entry id="5" string="Remove">Fjern</entry>
+  <entry id="6" string="Clear joblist">Ryd jobliste</entry>
+  <entry id="7" string="Exit">Afslut</entry>
+  <entry id="8" string="General settings...">Generelle indstillinger...</entry>
+  <entry id="9" string="Configure selected encoder...">Indstil den valgte koder</entry>
+  <entry id="10" string="Audio file(s)">Lyd fil(er)</entry>
+  <entry id="11" string="Audio CD contents">Lyd CD indhold</entry>
+  <entry id="12" string="Start encoding">Begynd kodning</entry>
+  <entry id="13" string="Stop encoding">Stop kodning</entry>
+  <entry id="14" string="Encoding file:">Koder filen:</entry>
+  <entry id="15" string="Time left:">Tid tilbage:</entry>
+  <entry id="16" string="Percent done:">Procent færdig:</entry>
+  <entry id="17" string="Selected encoder:">Valgt koder:</entry>
+  <entry id="18" string="File progress:">Fil fremgang:</entry>
+  <entry id="19" string="Output dir.:">Ud mappe:</entry>
+  <entry id="20" string="%1 file(s) in joblist:">%1 fil(er) i jobliste:</entry>
+  <entry id="21" string="none">intet</entry>
+  <entry id="22" string="Help topics...">Hjælp emner...</entry>
+  <entry id="23" string="Add audio file(s) to the joblist">Tilføj lyd fil(er) til joblisten</entry>
+  <entry id="24" string="Add audio CD contents to the joblist">Tilføj lyd CD's indhold til joblisten</entry>
+  <entry id="25" string="Remove the selected entry from the joblist">Fjen valgte indgang fra joblisten</entry>
+  <entry id="26" string="Clear the entire joblist">Ryd hele joblisten</entry>
+  <entry id="27" string="Configure general settings">Indstil generelle indstillinger</entry>
+  <entry id="28" string="Configure the selected audio encoder">Indstil den valgte lyd koder</entry>
+  <entry id="29" string="Start the encoding process">Start kodningsprocess</entry>
+  <entry id="30" string="Cannot modify the joblist while encoding!">Du kan IKKE ændre i joblisten mens du koder!</entry>
+  <entry id="31" string="Error">FEJL!</entry>
+  <entry id="32" string="Audio Files">Lyd Filer</entry>
+  <entry id="33" string="Apple Audio Files">Apple Lyd Filer</entry>
+  <entry id="34" string="Creative Voice Files">Creative Voice Filer</entry>
+  <entry id="35" string="Sun Audio Files">Sun Lyd Filer</entry>
+  <entry id="36" string="Wave Files">Wave Filer</entry>
+  <entry id="37" string="Windows CD Audio Track">Windows CD Lyd Spor</entry>
+  <entry id="38" string="All Files">Alle Filer</entry>
+  <entry id="39" string="You have not selected a file!">Du har ikke valgt en fil!</entry>
+  <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Kodningstråden kører stadig! Vil du virkelig afslutte?</entry>
+  <entry id="41" string="Currently encoding">Koder lige nu</entry>
+  <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Dette program bliver uddelt under terminerne&#10;af GNU General Public License (GPL).</entry>
+  <entry id="43" string="CDDB query">CDDB forespørgsel</entry>
+  <entry id="44" string="About BonkEnc">Om BonkEnc</entry>
+  <entry id="45" string="No options can be configured for the WAVE Out filter!">Ingen indstillinger for WAVE ud filter!</entry>
+  <entry id="46" string="WAVE Out filter">Wave ud filter</entry>
+  <entry id="47" string="Cannot change settings while encoding!">Du kan IKKE ændre indstillinger mens du koder!</entry>
+  <entry id="48" string="%1 encoder configuration">%1 koder indstillinger</entry>
+  <entry id="49" string="OK">OK</entry>
+  <entry id="50" string="Cancel">Annullér</entry>
+  <entry id="51" string="Encoding Mode">Kodnings Metode</entry>
+  <entry id="52" string="Variable Bitrate">Variabel Bit hastighed</entry>
+  <entry id="53" string="Average Bitrate">Gennemsnitlig Bit hastighed</entry>
+  <entry id="54" string="Quality">Kvalitet</entry>
+  <entry id="55" string="Encoders">Kodere</entry>
+  <entry id="56" string="Language">Sprog</entry>
+  <entry id="57" string="Show title info">Vis Titel information</entry>
+  <entry id="58" string="General settings setup">Generel indstillinger opstilling</entry>
+  <entry id="59" string="Configure encoder">Indstil koder</entry>
+  <entry id="60" string="Encoder">Koder</entry>
+  <entry id="61" string="Output directory">Ud mappe</entry>
+  <entry id="62" string="Browse">Gennemse</entry>
+  <entry id="63" string="Select the folder in which the encoded files will be placed:">Vælg den mappe som de kodede filer vil blive lagt i:</entry>
+  <entry id="64" string="Encoding">Koder</entry>
+  <entry id="65" string="Author"/>
+  <entry id="66" string="URL"/>
+  <entry id="67" string="Information">Information</entry>
+  <entry id="68" string="Select language:">Vælg sprog:</entry>
+  <entry id="69" string="Active CD-ROM drive">Aktivér CD-ROM drev</entry>
+  <entry id="70" string="Ripper settings">Ripper indstillinger</entry>
+  <entry id="71" string="Activate cdparanoia mode:">Aktivér cdparanoia metode:</entry>
+  <entry id="72" string="Activate jitter correction">Aktivér jitter correction</entry>
+  <entry id="73" string="Swap left/right channel">Skift venstre/højre kanal</entry>
+  <entry id="74" string="Lock CD tray while ripping">Lås CD bakke mens ripning foretages</entry>
+  <entry id="75" string="Use native NT SCSI library">Brug indbyggede NT SCSI bibliotek</entry>
+  <entry id="76" string="Overlap only">Overlap kun</entry>
+  <entry id="77" string="No verify">Ingen bekræftigelse</entry>
+  <entry id="78" string="No scratch repair">Ingen skramme reperation</entry>
+  <entry id="79" string="Full cdparanoia mode">Fuld cdparanoia metode</entry>
+  <entry id="80" string="Bitrate">Bit Hastighed</entry>
+  <entry id="81" string="Copyright bit">Copyright bit</entry>
+  <entry id="82" string="CRC">CRC</entry>
+  <entry id="83" string="Original bit">Orginal bit</entry>
+  <entry id="84" string="Channels">Kanaler</entry>
+  <entry id="85" string="Private bit">Privat bit</entry>
+  <entry id="86" string="Set Copyright bit">Angiv Copyright bit</entry>
+  <entry id="87" string="Enable CRC">Vælg CRC</entry>
+  <entry id="88" string="Set Original bit">Sæt Orginal bit</entry>
+  <entry id="89" string="Dual channel encoding">Dobbelt kanals kodning</entry>
+  <entry id="90" string="Set Private bit">Sæt Privat bit</entry>
+  <entry id="91" string="Encoder mode">Koder metode</entry>
+  <entry id="92" string="Stereo mode">Stereo metode</entry>
+  <entry id="93" string="Quantization">Størrelse</entry>
+  <entry id="94" string="Downsampling ratio">Nedsamplings Ratio</entry>
+  <entry id="95" string="Predictor size">Anslået størrelse</entry>
+  <entry id="96" string="Enable lossless encoding">Brug lossless kodning</entry>
+  <entry id="97" string="Enable Joint Stereo">Brug samlet stereo</entry>
+  <entry id="98" string="Bitrate per channel:">Bit hastighed per kanal:</entry>
+  <entry id="99" string="Preselection">Forvalg</entry>
+  <entry id="100" string="Number of preselection candidates:">Antal af forvalgte kandidater:</entry>
+  <entry id="101" string="MPEG version">MPEG version</entry>
+  <entry id="102" string="AAC object type">AAC objekt type</entry>
+  <entry id="103" string="Allow Joint Stereo">Tillad samlet stereo</entry>
+  <entry id="104" string="Temporal Noise Shaping">Tidsmæssig Støj Dæmpning</entry>
+  <entry id="105" string="Use Temporal Noise Shaping">Brug Tidsmæssig Støj Dæmpning</entry>
+  <entry id="106" string="Maximum bandwidth">Maximalt båndbredde</entry>
+  <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Maximalt AAC frekvens båndbredde der bruges (Hz):</entry>
+  <entry id="108" string="Basic">Grundlæggende</entry>
+  <entry id="109" string="Misc">Misc</entry>
+  <entry id="110" string="Audio processing">Lyd behandling</entry>
+  <entry id="111" string="Set bitrate:">Sæt bit hastigheden:</entry>
+  <entry id="112" string="Set ratio:">Sæt forhold:</entry>
+  <entry id="113" string="Set quality:">Sæt kvalitet:</entry>
+  <entry id="114" string="worse">dårligere</entry>
+  <entry id="115" string="better">bedre</entry>
+  <entry id="116" string="Auto">Automatisk</entry>
+  <entry id="117" string="Stereo">Stereo</entry>
+  <entry id="118" string="Joint Stereo">Samlet Stereo</entry>
+  <entry id="119" string="Force Joint Stereo">Gennemtving Samlet Stereo</entry>
+  <entry id="120" string="VBR mode">VBR metode</entry>
+  <entry id="121" string="no VBR">ingen VBR</entry>
+  <entry id="122" string="VBR quality">VBR Kvalitet</entry>
+  <entry id="123" string="ABR target bitrate">ABR mål bit hastighed</entry>
+  <entry id="124" string="VBR bitrate range">VBR bit hastighed område</entry>
+  <entry id="125" string="Set minimum VBR bitrate:">Sæt minimum VBR bit hastighed:</entry>
+  <entry id="126" string="Set maximum VBR bitrate:">Sæt maximalt VBR bit hastighed:</entry>
+  <entry id="127" string="Control bits">Kontrol bits</entry>
+  <entry id="128" string="Stream format">Stream format</entry>
+  <entry id="129" string="Enforce strict ISO compliance">Tvungen striks ISO overensstemmelse</entry>
+  <entry id="135" string="Output sampling rate">Uddata sampling hastighed</entry>
+  <entry id="136" string="no resampling">ingen resampling</entry>
+  <entry id="137" string="Highpass filter">Highpass filter</entry>
+  <entry id="138" string="Set Highpass frequency (Hz):">Sæt Highpass frekvens (Hz):</entry>
+  <entry id="139" string="Set Highpass width (Hz):">Sæt Highpass bredde (Hz):</entry>
+  <entry id="140" string="Lowpass filter">Lowpass filter</entry>
+  <entry id="141" string="Set Lowpass frequency (Hz):">Sæt Lowpass frekvens (Hz):</entry>
+  <entry id="142" string="Set Lowpass width (Hz):">Sæt Lowpass bredde (Hz):</entry>
+  <entry id="143" string="Misc settings">Forskellige indstillinger</entry>
+  <entry id="144" string="Disable all filtering">Slå al filtrering fra</entry>
+  <entry id="145" string="MP3 Files">MP3 Filer</entry>
+  <entry id="146" string="Ogg Vorbis Files">Ogg Filer</entry>
+  <entry id="147" string="Bonk Files">Bonk Filer</entry>
+  <entry id="148" string="Automatic CDDB queries">Automatiske CDDB forespørgelser</entry>
+  <entry id="149" string="CDDB access mode:">CDDB adgangs metode:</entry>
+  <entry id="150" string="CDDB server:">CDDB Server:</entry>
+  <entry id="151" string="Port:">Port:</entry>
+  <entry id="152" string="Info">Information</entry>
+  <entry id="153" string="No freedb entry for this disk.">Ingen Freedb indgang for denne disk.</entry>
+  <entry id="154" string="Some error occurred trying to connect to the freedb server.">En fejl opstod ved oprettelse af forbindelse til freedb serveren.</entry>
+  <entry id="155" string="Connecting to freedb server at">Forbinder til freedb server ved</entry>
+  <entry id="156" string="Requesting CD information">Henter CD information</entry>
+  <entry id="157" string="eMail address:">eMail adresse:</entry>
+  <entry id="158" string="Please enter a valid eMail address.">Indtast venligst en gyldig email adresse.</entry>
+  <entry id="159" string="No exact matches found">Ingen nøjagtige resultater fundet</entry>
+  <entry id="160" string="Multiple matches found">Flere resultater fundet</entry>
+  <entry id="161" string="Matches">Resultater</entry>
+  <entry id="162" string="Select the entry that best fits your CD:">Vælg den indgang der passer bedst til din CD:</entry>
+  <entry id="163" string="Extended CDDB settings">Udvidede CDDB indstillinger</entry>
+  <entry id="164" string="CGI scripts">CGI scripts</entry>
+  <entry id="165" string="CDDB query script:">CDDB forespørgelses script:</entry>
+  <entry id="166" string="CDDB submit script:">CDDB indsend script:</entry>
+  <entry id="167" string="HTTP settings">HTTP indstillinger</entry>
+  <entry id="168" string="Proxy settings">Proxy indstillinger</entry>
+  <entry id="169" string="no proxy">ingen proxy</entry>
+  <entry id="170" string="Proxy type:">Proxy type:</entry>
+  <entry id="171" string="Proxy server:">Proxy server:</entry>
+  <entry id="172" string="Presets">Forindstillinger</entry>
+  <entry id="173" string="Use preset:">brug forindstillinger:</entry>
+  <entry id="174" string="Custom settings">Dine indstillinger</entry>
+  <entry id="175" string="Medium">Medium</entry>
+  <entry id="176" string="Standard">Standard</entry>
+  <entry id="177" string="Extreme">Ekstrem</entry>
+  <entry id="178" string="Insane">Vanvittig</entry>
+  <entry id="179" string="Medium, Fast">Medium, Hurtig</entry>
+  <entry id="180" string="Standard, Fast">Standard, Hurtig</entry>
+  <entry id="181" string="Extreme, Fast">Ekstrem, Hurtig</entry>
+  <entry id="182" string="Title">Titel</entry>
+  <entry id="183" string="Track">Spor</entry>
+  <entry id="184" string="Length">Længde</entry>
+  <entry id="185" string="Size">Størrelse</entry>
+  <entry id="186" string="Artist">Kunstner</entry>
+  <entry id="187" string="Year">År</entry>
+  <entry id="188" string="Genre">Genre</entry>
+  <entry id="189" string="Album">Album</entry>
+  <entry id="190" string="Info tags">Info skilt</entry>
+  <entry id="191" string="Default information">Standard information</entry>
+  <entry id="192" string="Default comment string:">Standard kommentar streng:</entry>
+  <entry id="193" string="unknown artist">ukendt kunstner</entry>
+  <entry id="194" string="unknown title">ukendt titel</entry>
+  <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Kunne ikke loade ASPI drivere! CD ripning slået fra!</entry>
+  <entry id="196" string="Database">Database</entry>
+  <entry id="197" string="Submit CDDB data...">Indsend CDDB data...</entry>
+  <entry id="198" string="Enable CDDB cache">Brug CDDB cache</entry>
+  <entry id="199" string="CDDB data">CDDB data</entry>
+  <entry id="200" string="Submit">Indsend</entry>
+  <entry id="201" string="No audio CD in drive!">Ingen lyd cd i drevet!</entry>
+  <entry id="202" string="Please fill all fields and track titles before submitting.">Venligst udfyld alle felter og spor titler før du indsender.</entry>
+  <entry id="203" string="Prefer CDDB over CD Text">Foretræk CDDB frem for CD Tekst</entry>
+  <entry id="204" string="CD options">CD Indstillinger</entry>
+  <entry id="205" string="Submitting CD information">Indsender CD information</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åbne filen: %1&#10;&#10;%2</entry>
+  <entry id="207" string="Query CDDB database">Forespørg CDDB databasen</entry>
+  <entry id="208" string="Help">Hjælp</entry>
+  <entry id="209" string="index_en.html">index.html</entry>
+  <entry id="210" string="Plug-ins">Plug-ins</entry>
+  <entry id="211" string="Input plug-ins">Inddata plug-ins</entry>
+  <entry id="212" string="Output plug-ins">Uddata plug-ins</entry>
+  <entry id="213" string="Configure">Konfigurerer</entry>
+  <entry id="214" string="About">Om</entry>
+  <entry id="215" string="Play">Afspil</entry>
+  <entry id="216" string="Stop">Stop</entry>
+  <entry id="217" string="Cannot play a file while encoding!">Kan IKKE afspille en fil under kodning!</entry>
+  <entry id="218" string="Cannot start encoding while playing a file!">Kan IKKE starte kodning under afspilning af fil!</entry>
+  <entry id="219" string="Enable remote CDDB database">Brug ekstern CDDB database</entry>
+  <entry id="220" string="ATH">ATH</entry>
+  <entry id="221" string="Enable ATH:">Brug ATH:</entry>
+  <entry id="222" string="Use default setting">Brug standard indstillinger</entry>
+  <entry id="223" string="Psycho acoustic model">Psycho acoustic model</entry>
+  <entry id="224" string="Use Temporal Masking Effect">Brug tidsmæssig dæknings effekt</entry>
+  <entry id="225" string="Expert">Ekspert</entry>
+  <entry id="226" string="Cannot configure encoder while encoding!">Kan ikke konfigurere koder under kodning!</entry>
+  <entry id="227" string="The output directory does not exist! Do you want to create it?">Uddata mappen eksisterer ikke! Vil du lave den?</entry>
+  <entry id="228" string="Filename pattern">Filnavn mønster</entry>
+  <entry id="229" string="unknown album">ukendt album</entry>
+  <entry id="230" string="Translated by %1.">Oversat af %1.</entry>
+  <entry id="231" string="Select all">Vælg alt</entry>
+  <entry id="232" string="Select none">Vælg ingen</entry>
+  <entry id="233" string="Toggle selection">Skift valg</entry>
+  <entry id="234" string="Show Tip of the Day">Vis dagens tip</entry>
+  <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc kan fås i %1 sprog. Hvis dit sprog ikke er tilgængeligt,&#10;kan du nemt oversætte BonkEnc ved hjælp af det med følgende&#10;'smooth Translator' program.</entry>
+  <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc kommer med support af LAME, Ogg Vorbis, FAAC, FLAC&#10;og Bonk kodere. En koder for VQF formatet er tilængeligt på&#10;BonkEnc hjemmeside: %1</entry>
+  <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc kan bruge Winamp 2 plug-ins for at undstøtte&#10;flere fil formater.Kopier in_*.dll filer til BonkEnc/plugins&#10;mappe for at bruge BonkEnc til at læse disse formater.</entry>
+  <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Med BonkEnc kan du indsende freedb CD database indgange&#10;indholdende Unicode karakterer. Så har du en CD med ikke&#10;latinske kunstner eller titel navne, kan du indsende disse rigtigt&#10;med freedb indgange med BonkEnc.</entry>
+  <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">For at rette læse fejl mens du ripper kan du bruge Jitter correction&#10;under indstillinger af BonkEnc. Hvis dette ikke hjælper, prøv&#10;da at bruge en af Paranoia metoderne.</entry>
+  <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Har du nogen forslag til at forbedre BonkEnc?&#10;Så kan du indsende alle ideer gennem Trackeren på BonkEnc&#10;Sourceforge projekt side - %1&#10;eller send en email til %2.</entry>
+  <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Kan du lide BonkEnc? BonkEnc er gratis, men du kan&#10;hjælpe udviklingen af BonkEnc projektet ved at donere.&#10;Du kan sende penge til %1 via PayPal.&#10;Se %2 for flere detajler.</entry>
+  <entry id="242" string="Bitrate / Quality">Bit hastighed / Kvalitet</entry>
+  <entry id="243" string="Check for updates now">Kontrollér for opdateringer nu</entry>
+  <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Der er nye opdateringer til BonkEnc tilgængelige online!&#10;Vil du se en liste af tilgængelige opdateringer nu?</entry>
+  <entry id="245" string="There are no updates available at the moment!">Der er ingen opdateringer tilgængelige lige nu!</entry>
+  <entry id="246" string="Check for updates at startup">Kontrollér for opdateringer ved opstart</entry>
+  <entry id="247" string="Read CD contents on insert">Læs CD indhold ved isættelse</entry>
+  <entry id="248" string="Eject disk after ripping">Udskyd disk efter ripning</entry>
+  <entry id="249" string="Encode 'On-The-Fly'">Kod 'On-The-Fly'</entry>
+  <entry id="250" string="Keep ripped wave files">Behold rippede wave filer</entry>
+  <entry id="251" string="ripping/decoding">ripning/dekodning</entry>
+  <entry id="252" string="encoding">kodning</entry>
+  <entry id="253" string="Unicode">Unicode</entry>
+  <entry id="254" string="Use Unicode filenames">Brug Unicode filnavne</entry>
+  <entry id="255" string="AAC Files">AAC Filer</entry>
+  <entry id="256" string="MP4 Files">MP4 Filer</entry>
+  <entry id="257" string="Format">Format</entry>
+  <entry id="258" string="File format">Fil format</entry>
+  <entry id="259" string="Allow ID3v2 tags in AAC files">Tillad ID3v2 etikker i AAC filer</entry>
+  <entry id="260" string="Note:">Notat:</entry>
+  <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Nogle afspillere kan have problemer med at afspille AAC&#10;filer med ID3 etikker påsat, Brug venligst kun denne indstilling&#10;hvis du er sikker på at din afspiller kan håndtere disse etikker.</entry>
+  <entry id="262" string="FLAC Files">FLAC filer</entry>
+  <entry id="263" string="Sampling rate">Sampling hastighed</entry>
+  <entry id="264" string="Sample resolution">Sample opløsning</entry>
+  <entry id="265" string="Number of samples">Antal af samples</entry>
+  <entry id="266" string="Mono">Mono</entry>
+  <entry id="267" string="bytes">bytes</entry>
+  <entry id="268" string="bit">bit</entry>
+  <entry id="269" string="min">min</entry>
+  <entry id="270" string="Create playlist">Lav afspilningsliste</entry>
+  <entry id="271" string="Create cue sheet">Lav cue sheet</entry>
+  <entry id="272" string="Write ID3v1 tags">Skriv ID3v1 etiket</entry>
+  <entry id="273" string="Write ID3v2 tags">Skriv IDv2 etiket</entry>
+  <entry id="274" string="Write Vorbis Comment tags">Skriv Vorbis kommentar etiket</entry>
+  <entry id="275" string="Write MP4 metadata info">Skriv MP4 metadata info</entry>
+  <entry id="276" string="ID3v1 tag encoding:">ID3v1 etiket kodning:</entry>
+  <entry id="277" string="ID3v2 tag encoding:">ID3v2 etiket kodning:</entry>
+  <entry id="278" string="Vorbis Comment tag encoding:">Vorbis kommentar etiket kodning:</entry>
+  <entry id="279" string="MP4 metadata encoding:">MP4 metadata kodning:</entry>
+  <entry id="280" string="Tag encodings">Etiket kodninger</entry>
+  <entry id="281" string="Update joblist with this information">Opdater joblisten med denne information</entry>
+  <entry id="282" string="unknown genre">ukendt genre</entry>
+  <entry id="283" string="Load joblist...">Åben jobliste...</entry>
+  <entry id="284" string="Save joblist...">Gem jobliste...</entry>
+  <entry id="285" string="Pause/resume encoding">Pause/forsæt kodning</entry>
+  <entry id="286" string="Shutdown after encoding">Luk computer efter endt kodning</entry>
+  <entry id="287" string="Playlist Files">Afspilningsliste filer</entry>
+  <entry id="288" string="unknown year">ukendt år</entry>
+  <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Kunne ikke initialisere %1 koder! Venligst kontroller din indstillinger!</entry>
+  <entry id="290" string="Blocksize:">Blok størrelse:</entry>
+  <entry id="291" string="Use streamable subset">Brug streamable subset</entry>
+  <entry id="292" string="Adaptive Joint Stereo">Adaptiv Samlet Stereo</entry>
+  <entry id="293" string="Fastest encoding">Hurtigste kodning</entry>
+  <entry id="294" string="Best compression">Bedste kompression</entry>
+  <entry id="295" string="Linear predictor">Linear predictor</entry>
+  <entry id="296" string="Maximum LPC order">Maximalt LPC orden</entry>
+  <entry id="297" string="Quantized LPC precision">Størrelsesmæssig LPC præcision</entry>
+  <entry id="298" string="Exhaustive model search">Udmattende model søgning</entry>
+  <entry id="299" string="Optimize LPC quantization">Optimer LPC Størrelsesmæssigt</entry>
+  <entry id="300" string="disabled">fra</entry>
+  <entry id="301" string="auto">automatisk</entry>
+  <entry id="302" string="Residual coding">Residual kodning</entry>
+  <entry id="303" string="Minimum partition order">Minimum partitions orden</entry>
+  <entry id="304" string="Maximum partition order">Maximal partitions orden</entry>
+  <entry id="305" string="By pattern">Af Mønster</entry>
+  <entry id="306" string="From directory">Fra mappe</entry>
+  <entry id="307" string="Directory">Mappe</entry>
+  <entry id="308" string="Add directory">Tilføj mappe</entry>
+  <entry id="309" string="Choose directory:">Vælg mappe:</entry>
+  <entry id="310" string="Select the folder to add to the joblist:">Vælg folder som skal tilføjes  til joblisten:</entry>
+  <entry id="311" string="Add files by pattern">Tilføj filer pr mønster</entry>
+  <entry id="312" string="Pattern">Mønster</entry>
+  <entry id="313" string="Start directory">Start mappe</entry>
+  <entry id="314" string="No files found matching pattern:">Ingen filer fundet som passer til mønsteret:</entry>
+  <entry id="315" string="Edit language file">Rediger sprog filen</entry>
+  <entry id="316" string="Use for all selected tracks">Brug til alle valgte spor</entry>
+  <entry id="317" string="Interpret string as">Fortolk streng som</entry>
+  <entry id="318" string="selected tracks">valgte spor</entry>
+  <entry id="319" string="Adjust upper/lower case">Juster store/små bogstaver</entry>
+  <entry id="320" string="all words upper case">alle ord i store bogstaver</entry>
+  <entry id="321" string="long words upper case">lange ord i store bogstaver</entry>
+  <entry id="322" string="first letter upper case">første bogstav med stort</entry>
+  <entry id="323" string="all lower case">alt med små bogstaver</entry>
+  <entry id="324" string="all upper case">alt med store bogstaver</entry>
+  <entry id="325" string="Status">Status</entry>
+  <entry id="326" string="Successfully read CD!">CD læst med SUCCES!</entry>
+  <entry id="327" string="Comment">Kommentar</entry>
+  <entry id="328" string="Manage CDDB cache entries...">Rediger CDDB cache indgange...</entry>
+  <entry id="329" string="Save entry">Gem indgang</entry>
+  <entry id="330" string="Remove entry">Fjern indgang</entry>
+  <entry id="331" string="Disc name">Disk navn</entry>
+  <entry id="332" string="Charset">Charsæt</entry>
+  <entry id="333" string="Preview">Forpremiere</entry>
+  <entry id="334" string="Downloaded CDDB entries:">Nedhentede CDDB indgange:</entry>
+  <entry id="335" string="User name:">Brugernavn:</entry>
+  <entry id="336" string="Password:">Kodeord:</entry>
+  <entry id="337" string="Delete original files after encoding">Slet orginale filer efter endt kodning</entry>
+  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Denne indstilling vil slette de orginale filer efter de er blevet kodet! Ønsker du at forsætte?</entry>
+  <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDBP protokol kan ikke bruges over HTTP Forward Proxies!&#10;&#10;Vil du skfite protokollen til HTTP?</entry>
+  <entry id="340" string="Playlists">Afspilningsliste</entry>
+  <entry id="341" string="Create playlists">Lav afspilningsliste</entry>
+  <entry id="342" string="Create cue sheets">Lav cue sheets</entry>
+  <entry id="343" string="Use encoder output directory">Brug koders uddata mappe</entry>
+  <entry id="344" string="Various artists">Forskellige artister</entry>
+  <entry id="345" string="Data track">Data spor</entry>
+  <entry id="346" string="Select the folder in which the playlist files will be placed:">Vælg den mappe hvori afspilningslisterne vil blive placeret:</entry>
+  <entry id="347" string="Use input file directory if possible">Brug inddata fil mappe om muligt</entry>
+  <entry id="348" string="Encode to input file directory if possible">Kod til indata fil mappe om muligt</entry>
+  <entry id="349" string="Allow overwriting input file">Allow overskrivning af inddata filen</entry>
+  <entry id="350" string="Encode to single file">Kod til enkelte filer</entry>
+  <entry id="351" string="Encoder options">Koder indstillinger</entry>
+  <entry id="352" string="Skip">Spring over</entry>
+  <entry id="353" string="Enable local CDDB database">Brug Lokal CDDB database</entry>
+  <entry id="354" string="CDDB directory:">CDDB mappe:</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">Vælg den mappe som indeholder CDDB database:</entry>
+  <entry id="356" string="File already exists">Filen eksisterer allerede</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Uddata filen %1 eksisterer allerede! Vil du virkelig overskrive den?</entry>
+  <entry id="358" string="Overwrite all further files">Overskriv alle tidligere filer</entry>
+  <entry id="359" string="Start ripping automatically">Start ripning automatisk</entry>
+  <entry id="360" string="Submit to online database later">Indsend til online database senere</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB support er slået fra! Venligst slå lokal eller ekstern CDDB support til i indstillinger dialogen.</entry>
+  <entry id="362" string="CDDB entries to submit:">CDDB indgange som skal indsendes:</entry>
+  <entry id="363" string="Show queued CDDB entries...">Vis CDDB indgange som er i kø...</entry>
+  <entry id="364" string="Submit all">Indsend alt</entry>
+  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Ekstern CDDB support er slået fra! Venligst slå det det til igen under ekstern CDDB support under indstillinger.</entry>
+  <entry id="366" string="Category">Kategori</entry>
+  <entry id="367" string="Close">Luk</entry>
+  <entry id="368" string="Automatization">Fuld Automatisk</entry>
+  <entry id="369" string="Query CDDB database later">Forespørg CDDB database senere</entry>
+  <entry id="370" string="Show queued CDDB queries...">Vis CDDB forespørgsler i kø...</entry>
+  <entry id="371" string="CDDB queries">CDDB forspørgelser</entry>
+  <entry id="372" string="Query">Forespørgsel</entry>
+  <entry id="373" string="Query all">Forespørg alt</entry>
+  <entry id="374" string="Query string">Forspørgelses streng</entry>
+  <entry id="375" string="CDDB queries to perform:">CDDB forespørgelser som skal udføres:</entry>
+  <entry id="376" string="Would you like to perform this query again later?">Vil du udføre denne forespørgsel senere?</entry>
+  <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Adgang til CD-ROM drev blev afslået af Windows.&#10;&#10;Kontak din system administrator for at få adgang til CD-ROM drevene.</entry>
+  <entry id="378" string="CD information">CD information</entry>
+  <entry id="379" string="Read CD Text">Læs CD Tekst</entry>
+  <entry id="380" string="Read cdplayer.ini">Læs cdplayer.ini</entry>
+  <entry id="381" string="Apodization">Apodization</entry>
+  <entry id="382" string="Apodization function(s):">Apodization funktion(er):</entry>
+  <entry id="383" string="You can specify multiple functions separated by semicolons.">Du kan angive flere funktioner sepearet af semi kolons.</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc kan udføre automatisk check online efter program opdateringer ved opstart.&#10;&#10;Vil du have BonkEnc til at kigge efter opdateringer ved opstart?</entry>
+ </data>
+</LangFile>

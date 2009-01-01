@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+ <info>
+  <property name="program">BonkEnc</property>
+  <property name="version">1.0</property>
+  <property name="language">Valencian / Valencià</property>
+  <property name="righttoleft">false</property>
+  <property name="encoding">UTF-8</property>
+  <property name="author">vjatv &lt;vjatv@yahoo.es&gt;</property>
+  <property name="url">http://vjatv.iespana.es/</property>
+ </info>
+ <data>
+  <entry id="1" string="File">Archiu</entry>
+  <entry id="2" string="Options">Opcions</entry>
+  <entry id="3" string="Encode">Codificar</entry>
+  <entry id="4" string="Add">Afegir</entry>
+  <entry id="5" string="Remove">Eliminar</entry>
+  <entry id="6" string="Clear joblist">Eliminar llista</entry>
+  <entry id="7" string="Exit">Eixir</entry>
+  <entry id="8" string="General settings...">Configuracio general...</entry>
+  <entry id="9" string="Configure selected encoder...">Configurar codificador seleccionat...</entry>
+  <entry id="10" string="Audio file(s)">Archiu(s) d'audio</entry>
+  <entry id="11" string="Audio CD contents">Contingut CD Audio</entry>
+  <entry id="12" string="Start encoding">Començar codificacio</entry>
+  <entry id="13" string="Stop encoding">Parar codificacio</entry>
+  <entry id="14" string="Encoding file:">Codificant archiu:</entry>
+  <entry id="15" string="Time left:">Temps restant:</entry>
+  <entry id="16" string="Percent done:">Fet:</entry>
+  <entry id="17" string="Selected encoder:">Triar codificador:</entry>
+  <entry id="18" string="File progress:">Progres:</entry>
+  <entry id="19" string="Output dir.:">Dir. d'eixida:</entry>
+  <entry id="20" string="%1 file(s) in joblist:">%1 archiu(s) en llista:</entry>
+  <entry id="21" string="none">cap</entry>
+  <entry id="22" string="Help topics...">Temes d'ajuda...</entry>
+  <entry id="23" string="Add audio file(s) to the joblist">Afegir archiu(s) d'audio a la llista</entry>
+  <entry id="24" string="Add audio CD contents to the joblist">Afegir contingut de CD Audio a la llista</entry>
+  <entry id="25" string="Remove the selected entry from the joblist">Eliminar l'entrada seleccionada de la llista</entry>
+  <entry id="26" string="Clear the entire joblist">Eliminar toda la llista</entry>
+  <entry id="27" string="Configure general settings">Configuracio general</entry>
+  <entry id="28" string="Configure the selected audio encoder">Configurar el codificador triat</entry>
+  <entry id="29" string="Start the encoding process">Començar el proces de codificacio</entry>
+  <entry id="30" string="Cannot modify the joblist while encoding!">¡No se pot modificar la llista durant la codificacio!</entry>
+  <entry id="31" string="Error">Erro</entry>
+  <entry id="32" string="Audio Files">Archius d'Audio</entry>
+  <entry id="33" string="Apple Audio Files">Archius d'Audio Apple</entry>
+  <entry id="34" string="Creative Voice Files">Archius d'Audio Creative Voice</entry>
+  <entry id="35" string="Sun Audio Files">Archius d'Audio Sun</entry>
+  <entry id="36" string="Wave Files">Archius d'Audio Wave</entry>
+  <entry id="37" string="Windows CD Audio Track">Pista de CD Audio de Windows</entry>
+  <entry id="38" string="All Files">Tots els archius</entry>
+  <entry id="39" string="You have not selected a file!">¡No ha selecionat cap d'archiu!</entry>
+  <entry id="40" string="The encoding thread is still running! Do you really want to quit?">¡El proces de codificacio encara no ha finalisat! ¿Realment vols eixir?</entry>
+  <entry id="41" string="Currently encoding">Iniciant proces de codificacio</entry>
+  <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa se distribuix baix els termes&#10;GNU General Public License (GPL).</entry>
+  <entry id="43" string="CDDB query">Consulta a CDDB</entry>
+  <entry id="44" string="About BonkEnc">Al voltant de BonkEnc</entry>
+  <entry id="45" string="No options can be configured for the WAVE Out filter!">¡El filtre d'eixida d'Ones (Wave Out) no te opcions de configuracio!</entry>
+  <entry id="46" string="WAVE Out filter">Filtre d'Eixida d'Ones (WAVE Out)</entry>
+  <entry id="47" string="Cannot change settings while encoding!">¡No se pot modificar la configuracio durant la codificacio!</entry>
+  <entry id="48" string="%1 encoder configuration">Configuracio del codificador %1</entry>
+  <entry id="49" string="OK">Acceptar</entry>
+  <entry id="50" string="Cancel">Cancelar</entry>
+  <entry id="51" string="Encoding Mode">Modo de codificacio</entry>
+  <entry id="52" string="Variable Bitrate">Taxa de bit Variable</entry>
+  <entry id="53" string="Average Bitrate">Mijana de la Taxa de bit</entry>
+  <entry id="54" string="Quality">Calitat</entry>
+  <entry id="55" string="Encoders">Codificadors</entry>
+  <entry id="56" string="Language">Idioma</entry>
+  <entry id="57" string="Show title info">Mostrar Informacio del titul</entry>
+  <entry id="58" string="General settings setup">Configuracions generals</entry>
+  <entry id="59" string="Configure encoder">Configurar codificador</entry>
+  <entry id="60" string="Encoder">Codificador</entry>
+  <entry id="61" string="Output directory">Directori d'eixida</entry>
+  <entry id="62" string="Browse">Buscar</entry>
+  <entry id="63" string="Select the folder in which the encoded files will be placed:">Triar la carpeta per als archius codificats:</entry>
+  <entry id="64" string="Encoding">Codificacio</entry>
+  <entry id="65" string="Author">Autor</entry>
+  <entry id="66" string="URL">URL</entry>
+  <entry id="67" string="Information">Informacio</entry>
+  <entry id="68" string="Select language:">Triar l'idioma:</entry>
+  <entry id="69" string="Active CD-ROM drive">Unitat CD-ROM activa</entry>
+  <entry id="70" string="Ripper settings">Configuracions d'extraccio d'audio</entry>
+  <entry id="71" string="Activate cdparanoia mode:">Activar modo CD paranoia:</entry>
+  <entry id="72" string="Activate jitter correction">Activar correccio Jitter</entry>
+  <entry id="73" string="Swap left/right channel">Intercanviar canals</entry>
+  <entry id="74" string="Lock CD tray while ripping">Bloquejar bandeja del CD</entry>
+  <entry id="75" string="Use native NT SCSI library">Usar llibreria nativa NT SCSI</entry>
+  <entry id="76" string="Overlap only">Nomes sobreposar</entry>
+  <entry id="77" string="No verify">Sense verificar</entry>
+  <entry id="78" string="No scratch repair">No reparar sorolls</entry>
+  <entry id="79" string="Full cdparanoia mode">Modo CD paranoia complet</entry>
+  <entry id="80" string="Bitrate">Taxa de bit</entry>
+  <entry id="81" string="Copyright bit">Copyright Bit</entry>
+  <entry id="82" string="CRC">CRC</entry>
+  <entry id="83" string="Original bit">Original Bit</entry>
+  <entry id="84" string="Channels">Canals</entry>
+  <entry id="85" string="Private bit">Bit Privat</entry>
+  <entry id="86" string="Set Copyright bit">Insertar Copyright Bit</entry>
+  <entry id="87" string="Enable CRC">Activar CRC</entry>
+  <entry id="88" string="Set Original bit">Insertar Bit original</entry>
+  <entry id="89" string="Dual channel encoding">Separar canals d'audio</entry>
+  <entry id="90" string="Set Private bit">Insertar Bit Privat</entry>
+  <entry id="91" string="Encoder mode">Modo del codificador</entry>
+  <entry id="92" string="Stereo mode">Modo Estereo</entry>
+  <entry id="93" string="Quantization">Quantisacio</entry>
+  <entry id="94" string="Downsampling ratio">Taxa de resamplejat</entry>
+  <entry id="95" string="Predictor size">Tamany del predictor</entry>
+  <entry id="96" string="Enable lossless encoding">Codificacio sense perdues</entry>
+  <entry id="97" string="Enable Joint Stereo">Activar en Estereo</entry>
+  <entry id="98" string="Bitrate per channel:">Taxa de bit per canal:</entry>
+  <entry id="99" string="Preselection">Preseleccio</entry>
+  <entry id="100" string="Number of preselection candidates:">Nº de candidats de preseleccio:</entry>
+  <entry id="101" string="MPEG version">Versio MPEG</entry>
+  <entry id="102" string="AAC object type">Tipo d'objecte AAC</entry>
+  <entry id="103" string="Allow Joint Stereo">Permetre Estereo</entry>
+  <entry id="104" string="Temporal Noise Shaping">Perfilacio de Soroll Temporal</entry>
+  <entry id="105" string="Use Temporal Noise Shaping">Utilisar PRT</entry>
+  <entry id="106" string="Maximum bandwidth">Ample de banda maxim</entry>
+  <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Freqüencia maxima per a AAC en Hz:</entry>
+  <entry id="108" string="Basic">Basic</entry>
+  <entry id="109" string="Misc">Varios</entry>
+  <entry id="110" string="Audio processing">Processament d'audio</entry>
+  <entry id="111" string="Set bitrate:">Taxa de bit:</entry>
+  <entry id="112" string="Set ratio:">Relacio:</entry>
+  <entry id="113" string="Set quality:">Calitat:</entry>
+  <entry id="114" string="worse">pijor</entry>
+  <entry id="115" string="better">millor</entry>
+  <entry id="116" string="Auto">Auto</entry>
+  <entry id="117" string="Stereo">Estereo</entry>
+  <entry id="118" string="Joint Stereo">Conexio en Estereo</entry>
+  <entry id="119" string="Force Joint Stereo">Forçar en Estereo</entry>
+  <entry id="120" string="VBR mode">Modo VBR</entry>
+  <entry id="121" string="no VBR">sense VBR</entry>
+  <entry id="122" string="VBR quality">Calitat VBR</entry>
+  <entry id="123" string="ABR target bitrate">Taxa de bit ABR de desti</entry>
+  <entry id="124" string="VBR bitrate range">Ranc de taxa de bit VBR</entry>
+  <entry id="125" string="Set minimum VBR bitrate:">Taxa de bit VBR minina:</entry>
+  <entry id="126" string="Set maximum VBR bitrate:">Taxa de bit VBR maxima:</entry>
+  <entry id="127" string="Control bits">Control de bits</entry>
+  <entry id="128" string="Stream format">Format de fluix</entry>
+  <entry id="129" string="Enforce strict ISO compliance">Forçar conformitat ISO estricta</entry>
+  <entry id="135" string="Output sampling rate">Taxa de mostreig d'eixida</entry>
+  <entry id="136" string="no resampling">sense remostreig</entry>
+  <entry id="137" string="Highpass filter">Filtre Highpass</entry>
+  <entry id="138" string="Set Highpass frequency (Hz):">Freqüencia Highpass (Hz):</entry>
+  <entry id="139" string="Set Highpass width (Hz):">Ample Highpass (Hz):</entry>
+  <entry id="140" string="Lowpass filter">Filtre Lowpass</entry>
+  <entry id="141" string="Set Lowpass frequency (Hz):">Freqüencia Lowpass (Hz):</entry>
+  <entry id="142" string="Set Lowpass width (Hz):">Ample Lowpass (Hz):</entry>
+  <entry id="143" string="Misc settings">Atres Configuracions</entry>
+  <entry id="144" string="Disable all filtering">Deshabilitar filtres</entry>
+  <entry id="145" string="MP3 Files">Archius d'Audio MP3</entry>
+  <entry id="146" string="Ogg Vorbis Files">Archius d'Audio Ogg Vorbis</entry>
+  <entry id="147" string="Bonk Files">Archius d'Audio Bonk</entry>
+  <entry id="148" string="Automatic CDDB queries">Consultes CDDB automatiques</entry>
+  <entry id="149" string="CDDB access mode:">Modo d'acces CDDB:</entry>
+  <entry id="150" string="CDDB server:">Servidor CDDB</entry>
+  <entry id="151" string="Port:">Port:</entry>
+  <entry id="152" string="Info">Info</entry>
+  <entry id="153" string="No freedb entry for this disk.">No hi ha una entrada freedb d'este CD</entry>
+  <entry id="154" string="Some error occurred trying to connect to the freedb server.">Ha ocorregut un erro a l'intentar conectar-se en el servidor.</entry>
+  <entry id="155" string="Connecting to freedb server at">Conectant al servidor freedb a</entry>
+  <entry id="156" string="Requesting CD information">Demanant informacio del CD</entry>
+  <entry id="157" string="eMail address:">Correu electronic:</entry>
+  <entry id="158" string="Please enter a valid eMail address.">Per favor pose una direccio de correu electronic valida.</entry>
+  <entry id="159" string="No exact matches found">Sense trobar resultats exactes</entry>
+  <entry id="160" string="Multiple matches found">S'han trobat varios resultats</entry>
+  <entry id="161" string="Matches">Resultats</entry>
+  <entry id="162" string="Select the entry that best fits your CD:">Seleccione el registre que coincidix en el teu CD:</entry>
+  <entry id="163" string="Extended CDDB settings">Configuracions CDDB ampliades</entry>
+  <entry id="164" string="CGI scripts">Cadenes CGI</entry>
+  <entry id="165" string="CDDB query script:">Cadena de consulta CDDB:</entry>
+  <entry id="166" string="CDDB submit script:">Cadena de peticio CDDB:</entry>
+  <entry id="167" string="HTTP settings">Configuracions HTTP</entry>
+  <entry id="168" string="Proxy settings">Configuracio del Proxy</entry>
+  <entry id="169" string="no proxy">sense proxy</entry>
+  <entry id="170" string="Proxy type:">Tipo de proxy:</entry>
+  <entry id="171" string="Proxy server:">Servidor proxy:</entry>
+  <entry id="172" string="Presets">Predeterminades</entry>
+  <entry id="173" string="Use preset:">Utilisar predeterminada</entry>
+  <entry id="174" string="Custom settings">Configuracions personals</entry>
+  <entry id="175" string="Medium">Mig</entry>
+  <entry id="176" string="Standard">Estandart</entry>
+  <entry id="177" string="Extreme">Extrem</entry>
+  <entry id="178" string="Insane">Loco</entry>
+  <entry id="179" string="Medium, Fast">Mig, Rapit</entry>
+  <entry id="180" string="Standard, Fast">Estandart, Rapit</entry>
+  <entry id="181" string="Extreme, Fast">Extrem, Rapit</entry>
+  <entry id="182" string="Title">Titul</entry>
+  <entry id="183" string="Track">Pista</entry>
+  <entry id="184" string="Length">Duracio</entry>
+  <entry id="185" string="Size">Tamany</entry>
+  <entry id="186" string="Artist">Artiste</entry>
+  <entry id="187" string="Year">Any</entry>
+  <entry id="188" string="Genre">Genero</entry>
+  <entry id="189" string="Album">Album</entry>
+  <entry id="190" string="Info tags">Etiquetes d'informacio</entry>
+  <entry id="191" string="Default information">Informacio per defecte</entry>
+  <entry id="192" string="Default comment string:">Comentari per defecte:</entry>
+  <entry id="193" string="unknown artist">artiste desconegut</entry>
+  <entry id="194" string="unknown title">titul desconegut</entry>
+  <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">¡No s'ha pogut carregar el controlador ASPI! ¡Ripejat de CD desactivat!</entry>
+  <entry id="196" string="Database">Base de senyes</entry>
+  <entry id="197" string="Submit CDDB data...">Enviar senyes CDDB...</entry>
+  <entry id="198" string="Enable CDDB cache">Utilisar cache de CDDB</entry>
+  <entry id="199" string="CDDB data">Senyes CDDB</entry>
+  <entry id="200" string="Submit">Enviar</entry>
+  <entry id="201" string="No audio CD in drive!">No hi ha cap CD d'audio en l'unitat</entry>
+  <entry id="202" string="Please fill all fields and track titles before submitting">Per favor omplir tots els camps i els tituls de les pistes abans d'enviar.</entry>
+  <entry id="203" string="Prefer CDDB over CD Text">Preferir CDDB sobre el CD Text</entry>
+  <entry id="204" string="CD options">Opcions de CD</entry>
+  <entry id="205" string="Submitting CD information">Enviant informacio del CD</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">No se pot obrir l'archiu: %1&#10;&#10;%2</entry>
+  <entry id="207" string="Query CDDB database">Consultar base de senyes CDDB</entry>
+  <entry id="208" string="Help">Ajuda</entry>
+  <entry id="209" string="index_en.html">index.html</entry>
+  <entry id="210" string="Plug-ins">Plugins</entry>
+  <entry id="211" string="Input plug-ins">Plugins d'entrada</entry>
+  <entry id="212" string="Output plug-ins">Plugins d'eixida</entry>
+  <entry id="213" string="Configure">Configurar</entry>
+  <entry id="214" string="About">Al voltant de</entry>
+  <entry id="215" string="Play">Reproduir</entry>
+  <entry id="216" string="Stop">Detindre</entry>
+  <entry id="217" string="Cannot play a file while encoding!">No se pot reproduir durant el proces de codificacio</entry>
+  <entry id="218" string="Cannot start encoding while playing a file!">¡No se pot començar la codificacio mentres es reproduix un archiu!</entry>
+  <entry id="219" string="Enable remote CDDB database">Utilisar base de senyes CDDB remota</entry>
+  <entry id="220" string="ATH">ATH</entry>
+  <entry id="221" string="Enable ATH:">Activar ATH:</entry>
+  <entry id="222" string="Use default setting">Utilisar ajustos predeterminats</entry>
+  <entry id="223" string="Psycho acoustic model">Model acustic-fisic</entry>
+  <entry id="224" string="Use Temporal Masking Effect">Utilisar efecte de caraça temporal</entry>
+  <entry id="225" string="Expert">Expert</entry>
+  <entry id="226" string="Cannot configure encoder while encoding!">¡No se pot configurar el codificador durant el proces de codificacio!</entry>
+  <entry id="227" string="The output directory does not exist! Do you want to create it?">El directori de desti no existix. ¿Desija crear-la?</entry>
+  <entry id="228" string="Filename pattern">Patro del nom d'archiu</entry>
+  <entry id="229" string="unknown album">Album desconegut</entry>
+  <entry id="230" string="Translated by %1.">Traduït per %1.</entry>
+  <entry id="231" string="Select all">Seleccionar-ho tot</entry>
+  <entry id="232" string="Select none">Deseleccionar-ho tot</entry>
+  <entry id="233" string="Toggle selection">Invertir seleccio</entry>
+  <entry id="234" string="Show Tip of the Day">Sugerencia del dia</entry>
+  <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc es troba disponible en %1 idiomes. Si el seu&#10;idioma no es troba disponible, pot traduir BonkEnc facilment&#10;utilisant l'aplicacio 'smooth Translator'.</entry>
+  <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc inclou soport per a codificar LAME, Ogg Vorbis,&#10;FAAC, FLAC i Bonk. Un codificador per al format VQF es troba&#10;disponible en el lloc de BonkEnc: %1</entry>
+  <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc pot utilisar els plugins d'entrada de Winamp 2&#10;per acceptar mes formats. Copie els archius in_*.dll a la carpeta&#10;BonkEnc\plugins per a permetre a BonkEnc llegir eixos formats</entry>
+  <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">En BonkEnc pot enviar registres de CD freedb contenint&#10;caracters Unicode. D'esta manera, si te CDs en noms&#10;d'artistes o tituls que no estan en alfabetisacio llatina, pot&#10;enviar les senyes correctes a freedb en BonkEnc.</entry>
+  <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per a corregir els erros de llectura durant el proces&#10;d'extraccio, pot activar la funcio Correcio de llectura en la&#10;ficha CDRip de la configuracio. Si aixo no ajuda, intente utilisar&#10;algun dels modos paranoia.</entry>
+  <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">¿Te alguna sugerencia per a millorar BonkEnc?&#10;Pot enviar-nos les seus idees a traves del Tracker al lloc de&#10;BonkEnc ubicat en SourceForge - %1&#10;o enviar un correu a %2.</entry>
+  <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">¿Li agrada BonkEnc? BonkEnc es troba disponible&#10;gratuitament, pero pot ajudar al desenroll del proyecte&#10;BonkEnc fent una donacio. Pot enviar diners a&#10;%1 a traves de PayPal.&#10;Veja %2 per a mes detalls.</entry>
+  <entry id="242" string="Bitrate / Quality">Taxa de bits / Calitat</entry>
+  <entry id="243" string="Check for updates now">Comprovar si hi han actualisacions ara</entry>
+  <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">¡Hi han noves actualisacions disponibles per a BonkEnc!&#10;¿Desija vore una llista de les actualisacions disponibles?</entry>
+  <entry id="245" string="There are no updates available at the moment!">No hi han actualisacions disponibles per el moment</entry>
+  <entry id="246" string="Check for updates at startup">Comprovar si hi han actualisacions a l'inici</entry>
+  <entry id="247" string="Read CD contents on insert">Llegir CD a l'insertar-lo</entry>
+  <entry id="248" string="Eject disk after ripping">Expulsar disc despres del ripeig</entry>
+  <entry id="249" string="Encode 'On-The-Fly'">Codificar 'Al vol'</entry>
+  <entry id="250" string="Keep ripped wave files">Mantindre archius wav ripejats</entry>
+  <entry id="251" string="ripping/decoding">ripejant/decodificant</entry>
+  <entry id="252" string="encoding">codificant</entry>
+  <entry id="253" string="Unicode"/>
+  <entry id="254" string="Use Unicode filenames">Utilisar noms d'archiu Unicode</entry>
+  <entry id="255" string="AAC Files">Archius AAC</entry>
+  <entry id="256" string="MP4 Files">Archius MP4</entry>
+  <entry id="257" string="Format">Format</entry>
+  <entry id="258" string="File format">Format d'archiu</entry>
+  <entry id="259" string="Allow ID3v2 tags in AAC files">Permetre etiquetes ID3v2 en archius AAC</entry>
+  <entry id="260" string="Note:">Nota:</entry>
+  <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Alguns reproductors poden aplegar a tindre problemes al reproduir&#10;archius AAC en etiquetes ID3. Nomes utilice esta opcio si esta&#10;segur de que el reproductor pot manejar este tipo d'archius.</entry>
+  <entry id="262" string="FLAC Files">Archius FLAC</entry>
+  <entry id="263" string="Sampling rate">Taxa de mostreig</entry>
+  <entry id="264" string="Sample resolution">Resolucio de la mostra</entry>
+  <entry id="265" string="Number of samples">Numero de mostres</entry>
+  <entry id="266" string="Mono"/>
+  <entry id="267" string="bytes"/>
+  <entry id="268" string="bit"/>
+  <entry id="269" string="min"/>
+  <entry id="270" string="Create playlist">Crear llista de reproduccio</entry>
+  <entry id="271" string="Create cue sheet">Crear cue sheet</entry>
+  <entry id="272" string="Write ID3v1 tags">Gravar Etiquetes ID3v1</entry>
+  <entry id="273" string="Write ID3v2 tags">Gravar Etiquetes ID3v2</entry>
+  <entry id="274" string="Write Vorbis Comment tags">Gravar Etiq. Vorbis Comment</entry>
+  <entry id="275" string="Write MP4 metadata info">Gravar metasenyes MP4</entry>
+  <entry id="276" string="ID3v1 tag encoding:">Codificacio ID3v1:</entry>
+  <entry id="277" string="ID3v2 tag encoding:">Codificacio ID3v2:</entry>
+  <entry id="278" string="Vorbis Comment tag encoding:">Codificacio Vorbis Comment:</entry>
+  <entry id="279" string="MP4 metadata encoding:">Codificacio metasenyes MP4:</entry>
+  <entry id="280" string="Tag encodings">Etiqueta de Codificacio</entry>
+  <entry id="281" string="Update joblist with this information">Actualisar llista de tarees en estes informacions</entry>
+  <entry id="282" string="unknown genre">Genero desconegut</entry>
+  <entry id="283" string="Load joblist...">Carregar llista de tarees...</entry>
+  <entry id="284" string="Save joblist...">Guardar llista de tarees...</entry>
+  <entry id="285" string="Pause/resume encoding">Pausar/continuar codificacio</entry>
+  <entry id="286" string="Shutdown after encoding">Apagar el PC al finalisar la codificacio</entry>
+  <entry id="287" string="Playlist Files">Archius de llista de reproduccio</entry>
+  <entry id="288" string="unknown year">Any desconegut</entry>
+  <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">¡No se pot inicialisar el %1 Codificador! ¡Per favor comprovar la configuracio!</entry>
+  <entry id="290" string="Blocksize:">Tamany de bloc:</entry>
+  <entry id="291" string="Use streamable subset">Utilisar Subconjunt Streamable</entry>
+  <entry id="292" string="Adaptive Joint Stereo">Estereo adaptable</entry>
+  <entry id="293" string="Fastest encoding">Codificacio mes rapida</entry>
+  <entry id="294" string="Best compression">Millor compressio</entry>
+  <entry id="295" string="Linear predictor">Predictor llineal</entry>
+  <entry id="296" string="Maximum LPC order">Maxim grau LPC</entry>
+  <entry id="297" string="Quantized LPC precision">Precisio LPC quantisada</entry>
+  <entry id="298" string="Exhaustive model search">Busca de model exhaustiu</entry>
+  <entry id="299" string="Optimize LPC quantization">Optimisar quantisacio LPC</entry>
+  <entry id="300" string="disabled">desactivat</entry>
+  <entry id="301" string="auto">automatic</entry>
+  <entry id="302" string="Residual coding">Codificacio residual</entry>
+  <entry id="303" string="Minimum partition order">Minin grau de particio</entry>
+  <entry id="304" string="Maximum partition order">Maxim grau de particio</entry>
+  <entry id="305" string="By pattern">Per patro</entry>
+  <entry id="306" string="From directory">Des del directori</entry>
+  <entry id="307" string="Directory">Directori</entry>
+  <entry id="308" string="Add directory">Afegir directori</entry>
+  <entry id="309" string="Choose directory:">Triar directori:</entry>
+  <entry id="310" string="Select the folder to add to the joblist:">Seleccione la carpeta per afegir a la llista de tarees:</entry>
+  <entry id="311" string="Add files by pattern">Afegir archius per patro</entry>
+  <entry id="312" string="Pattern">Patro</entry>
+  <entry id="313" string="Start directory">Directori d'inici</entry>
+  <entry id="314" string="No files found matching pattern:">No s'han trobat archius corresponents al patro:</entry>
+  <entry id="315" string="Edit language file">Editar archiu d'idioma</entry>
+  <entry id="316" string="Use for all selected tracks">Utilisar per a totes les pistes seleccionades</entry>
+  <entry id="317" string="Interpret string as">Interpretar cadena com:</entry>
+  <entry id="318" string="selected tracks">pistes seleccionades</entry>
+  <entry id="319" string="Adjust upper/lower case">Ajustar MAYUSCULES i minuscules</entry>
+  <entry id="320" string="all words upper case">totes les paraules en MAYUSCULES</entry>
+  <entry id="321" string="long words upper case">Pareules llargues en MAYUSCULES</entry>
+  <entry id="322" string="first letter upper case">Primera lletra en MAYUSCULES</entry>
+  <entry id="323" string="all lower case">tot en minuscules</entry>
+  <entry id="324" string="all upper case">tot en MAYUSCULES</entry>
+  <entry id="325" string="Status">Estat</entry>
+  <entry id="326" string="Successfully read CD!">¡El CD s'ha llegit satisfactoriament!</entry>
+  <entry id="327" string="Comment">Comentari</entry>
+  <entry id="328" string="Manage CDDB cache entries...">Administrar entrades de CDDB-Cache...</entry>
+  <entry id="329" string="Save entry">Guardar</entry>
+  <entry id="330" string="Remove entry">Borrar</entry>
+  <entry id="331" string="Disc name">Titul del CD</entry>
+  <entry id="332" string="Charset">Caracters</entry>
+  <entry id="333" string="Preview">Vista previa</entry>
+  <entry id="334" string="Downloaded CDDB entries:">Entrades CDDB descarregats:</entry>
+  <entry id="335" string="User name:">Nom d'usuari:</entry>
+  <entry id="336" string="Password:">Contrasenya:</entry>
+  <entry id="337" string="Delete original files after encoding">Eliminar els archius originals al finalisar la codificacio</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">¡Esta opcio elimina els archius originals al finalisar&#10;la codificacio!&#10;&#10;¿Estas segur d'activar esta funcio?</entry>
+  <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">El protocol CDDBP de freedb no pot ser utilisat a traves&#10;d'un servidor proxy HTTP!&#10;&#10;¿Desija canviar el protocol a HTTP?</entry>
+  <entry id="340" string="Playlists">Llistes de reproduccio</entry>
+  <entry id="341" string="Create playlists">Generar llistes de reproduccio</entry>
+  <entry id="342" string="Create cue sheets">Crear cue sheets</entry>
+  <entry id="343" string="Use encoder output directory">Utilisar directori d'eixida del codificador</entry>
+  <entry id="344" string="Various artists">Artistes varios</entry>
+  <entry id="345" string="Data track">Pista de senyes</entry>
+  <entry id="346" string="Select the folder in which the playlist files will be placed:">Triar una carpeta per a guardar les llistes de reproduccio:</entry>
+  <entry id="347" string="Use input file directory if possible">Utilisar directori d'entrada, si es possible</entry>
+  <entry id="348" string="Encode to input file directory if possible">Codificar l'entrada de l'archiu, si es possible</entry>
+  <entry id="349" string="Allow overwriting input file">Permetre sobreescriure l'archiu d'entrada</entry>
+  <entry id="350" string="Encode to single file">Codificar a un sol archiu</entry>
+  <entry id="351" string="Encoder options">Opcions de codificador</entry>
+  <entry id="352" string="Skip">Ometre</entry>
+  <entry id="353" string="Enable local CDDB database">Utilisar base de senyes CDDB local</entry>
+  <entry id="354" string="CDDB directory:">Directori CDDB:</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">Seleccione la carpeta de la base de senyes CDDB:</entry>
+  <entry id="356" string="File already exists">L'archiu ya existix</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">L'archiu d'eixida %1&#10;ya existix! ¿Desija sobreescriure-lo?</entry>
+  <entry id="358" string="Overwrite all further files">Sobreescriure tots els archius adicionals</entry>
+  <entry id="359" string="Start ripping automatically">Començar ripeig automatic</entry>
+  <entry id="360" string="Submit to online database later">Enviar despres a la base de senyes remota</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">¡El soport CDDB no esta activat! Per favor active&#10;soport CDDB local o remot en la finestra de configuracio.</entry>
+  <entry id="362" string="CDDB entries to submit:">Entrades CDDB per a enviar:</entry>
+  <entry id="363" string="Show queued CDDB entries...">Mostrar entrades CDDB guardades...</entry>
+  <entry id="364" string="Submit all">Enviar-ho tot</entry>
+  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El soport per a la base de senyes CDDB remota no esta activat!&#10;Per favor active la base de senyes CDDB remota en la finestra de configuracio.</entry>
+  <entry id="366" string="Category">Categoria</entry>
+  <entry id="367" string="Close">Tancar</entry>
+  <entry id="368" string="Automatization">Automatisacio</entry>
+  <entry id="369" string="Query CDDB database later">Consultar la base de senyes CDDB mes tart</entry>
+  <entry id="370" string="Show queued CDDB queries...">Mostrar les consultes CDDB guardades...</entry>
+  <entry id="371" string="CDDB queries">Consultes CDDB</entry>
+  <entry id="372" string="Query">Consultar</entry>
+  <entry id="373" string="Query all">Consultar-ho tot</entry>
+  <entry id="374" string="Query string">Cadena de consulta</entry>
+  <entry id="375" string="CDDB queries to perform:">Consultes CDDB planejades:</entry>
+  <entry id="376" string="Would you like to perform this query again later?">¿Desija realisar esta consulta un atra vegada mes tart?</entry>
+  <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">L'acces a l'unitat de CD-ROM ha sigut denegada per Windows.&#10;&#10;Per favor contacte en el seu administrador de sistemes per a&#10;poder accedir a l'unitat de CD-ROM.</entry>
+  <entry id="378" string="CD information">Informacio del CD</entry>
+  <entry id="379" string="Read CD Text">Llegir CD-Text</entry>
+  <entry id="380" string="Read cdplayer.ini">Llegir cdplayer.ini</entry>
+  <entry id="381" string="Apodization">Apodisacio</entry>
+  <entry id="382" string="Apodization function(s):">Funcio(ns) d'apodisacio:</entry>
+  <entry id="383" string="You can specify multiple functions separated by semicolons.">Pot especificar varies funcions separades per punt i coma.</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">Bonkenc pot buscar actualisacions automaticament cada&#10;vegada que s'inicia.&#10;&#10;¿Desija que BonkEnc busque actualisacions a l'inici?</entry>
+  <entry id="385" string="Cannot access input file: %1">No s'ha pogut accedir a l'archiu d'entrada: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">No es pot crear l'archiu d'eixida: %1</entry>
+  <entry id="387" string="File not found">Archiu no trobat</entry>
+  <entry id="388" string="Unknown file type">Tipo d'archiu desconegut</entry>
+  <entry id="389" string="Unsupported audio format">Format d'audio no soportat</entry>
+  <entry id="390" string="Unknown error">Erro desconegut</entry>
+ </data>
+</LangFile>

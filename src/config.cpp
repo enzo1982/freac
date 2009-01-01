@@ -77,7 +77,7 @@ Bool BonkEnc::Config::LoadSettings()
 	{
 		configDir = S::System::System::GetApplicationDataDirectory();
 
-		if (configDir != "") configDir.Append("BonkEnc\\");
+		if (configDir != NIL) configDir.Append("BonkEnc\\");
 
 		Directory(configDir).Create();
 	}
@@ -89,7 +89,7 @@ Bool BonkEnc::Config::LoadSettings()
 	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);
 
 	firstStart				= config->GetIntValue("Settings", "FirstStart", 1);
-	language				= config->GetStringValue("Settings", "Language", "");
+	language				= config->GetStringValue("Settings", "Language", NIL);
 	encoderID				= config->GetStringValue("Settings", "Encoder", "wave-out");
 	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", personalDir);
 	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
@@ -114,8 +114,8 @@ Bool BonkEnc::Config::LoadSettings()
 	checkUpdatesAtStartup			= config->GetIntValue("Settings", "CheckUpdatesAtStartup", 1);
 	createPlaylist				= config->GetIntValue("Settings", "CreatePlaylist", 0);
 	createCueSheet				= config->GetIntValue("Settings", "CreateCueSheet", 0);
-	lastAddedDir				= config->GetStringValue("Settings", "LastAddedDir", "");
-	lastAddedPattern			= config->GetStringValue("Settings", "LastAddedPattern", "");
+	lastAddedDir				= config->GetStringValue("Settings", "LastAddedDir", NIL);
+	lastAddedPattern			= config->GetStringValue("Settings", "LastAddedPattern", NIL);
 	writeToInputDir				= config->GetIntValue("Settings", "WriteToInputDirectory", 0);
 	allowOverwrite				= config->GetIntValue("Settings", "AllowOverwriteSource", 0);
 	encodeToSingleFile			= config->GetIntValue("Settings", "EncodeToSingleFile", 0);
@@ -136,8 +136,8 @@ Bool BonkEnc::Config::LoadSettings()
 	freedb_proxy_mode			= config->GetIntValue("freedb", "ProxyMode", 0);
 	freedb_proxy				= config->GetStringValue("freedb", "Proxy", "localhost");
 	freedb_proxy_port			= config->GetIntValue("freedb", "ProxyPort", 1080);
-	freedb_proxy_user			= config->GetStringValue("freedb", "ProxyUserName", "");
-	freedb_proxy_password			= config->GetStringValue("freedb", "ProxyPassword", "");
+	freedb_proxy_user			= config->GetStringValue("freedb", "ProxyUserName", NIL);
+	freedb_proxy_password			= config->GetStringValue("freedb", "ProxyPassword", NIL);
 	update_joblist				= config->GetIntValue("freedb", "UpdateJoblistOnSubmit", 1);
 
 	delete config;

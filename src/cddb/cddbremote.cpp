@@ -37,7 +37,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 	switch (config->freedb_mode)
 	{
 		case FREEDB_MODE_CDDBP:
-			if (command != "")
+			if (command != NIL)
 			{
 				protocol->Write(String("CDDB: > ").Append(command));
 
@@ -64,7 +64,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			if (command.StartsWith("proto"))	break;
 			if (command.StartsWith("cddb hello"))	break;
 			if (command.StartsWith("quit"))		break;
-			if (command == "")			break;
+			if (command == NIL)			break;
 
 			hostNameBuffer.Resize(256);
 
@@ -144,7 +144,7 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 		out = new OutStream(STREAM_STREAM, in);
 	}
 
-	SendCommand("");
+	SendCommand(NIL);
 	SendCommand("proto 6");
 
 	hostNameBuffer.Resize(256);
@@ -262,7 +262,7 @@ Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cdd
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	result = "";
+	result = NIL;
 
 	do
 	{

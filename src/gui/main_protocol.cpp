@@ -33,13 +33,13 @@ BonkEnc::LayerProtocol::LayerProtocol() : Layer("Protocol")
 	size.cx	= 500;
 	size.cy	= 360;
 
-	edit_protocol	= new MultiEdit("", pos, size);
+	edit_protocol	= new MultiEdit(NIL, pos, size);
 
 	pos.y	= 56;
 	size.cx	= 500;
 	size.cy	= 0;
 
-	edit_status	= new EditBox("", pos, size);
+	edit_status	= new EditBox(NIL, pos, size);
 	edit_status->SetOrientation(OR_LOWERLEFT);
 
 	pos.x	= 7;

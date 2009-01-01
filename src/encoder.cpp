@@ -75,6 +75,20 @@ Void BonkEnc::Encoder::Encode(JobList *iJoblist, Bool useThread)
 
 Int BonkEnc::Encoder::EncoderThread()
 {
+	if (Config::Get()->encodeToSingleFile)
+	{
+		/* Check if all files to be combined have the same sample format.
+		 */
+		if (!CheckSingleFileSampleFormat())
+		{
+			Utilities::ErrorMessage("The selected files cannot be combined into a single\noutput file due to different sample formats.\n\nPlease convert all files to the same sample format first.");
+
+			encoding = False;
+
+			return Error();
+		}
+	}
+
 	String			 singleOutFile;
 	String			 playlist_filename;
 
@@ -178,36 +192,39 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		onEncodeTrack.Emit(trackInfo, mode);
 
-		out_filename = GetOutputFileName(trackInfo);
-
-		if (!overwriteAll && File(out_filename).Exists() && !Config::Get()->writeToInputDir && !(!Config::Get()->enc_onTheFly && step == 0))
+		if (!Config::Get()->encodeToSingleFile)
 		{
-			MessageDlg	*confirmation = new MessageDlg(String(BonkEnc::i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), BonkEnc::i18n->TranslateString("File already exists"), MB_YESNOCANCEL, IDI_QUESTION, BonkEnc::i18n->TranslateString("Overwrite all further files"), &overwriteAll);
+			out_filename = GetOutputFileName(trackInfo);
 
-			confirmation->ShowDialog();
-
-			if (confirmation->GetButtonCode() == IDCANCEL)
+			if (!overwriteAll && File(out_filename).Exists() && !Config::Get()->writeToInputDir && !(!Config::Get()->enc_onTheFly && step == 0))
 			{
-				Object::DeleteObject(confirmation);
+				MessageDlg	*confirmation = new MessageDlg(String(BonkEnc::i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), BonkEnc::i18n->TranslateString("File already exists"), MB_YESNOCANCEL, IDI_QUESTION, BonkEnc::i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
-				break;
+				confirmation->ShowDialog();
+
+				if (confirmation->GetButtonCode() == IDCANCEL)
+				{
+					Object::DeleteObject(confirmation);
+
+					break;
+				}
+
+				if (confirmation->GetButtonCode() == IDNO)
+				{
+					overwriteAll = False;
+
+					Object::DeleteObject(confirmation);
+
+					continue;
+				}
+
+				Object::DeleteObject(confirmation);
 			}
 
-			if (confirmation->GetButtonCode() == IDNO)
-			{
-				overwriteAll = False;
+			if (out_filename == in_filename) out_filename.Append(".temp");
 
-				Object::DeleteObject(confirmation);
-
-				continue;
-			}
-
-			Object::DeleteObject(confirmation);
+			trackInfo.outfile = out_filename;
 		}
-
-		if (out_filename == in_filename) out_filename.Append(".temp");
-
-		trackInfo.outfile = out_filename;
 
 		if (!Config::Get()->enc_onTheFly && step == 1 && encoderID != "wave-out")
 		{
@@ -516,6 +533,31 @@ Void BonkEnc::Encoder::SkipTrack()
 	skip = True;
 }
 
+Bool BonkEnc::Encoder::CheckSingleFileSampleFormat()
+{
+	Int	 numTracks = joblist->GetNOfTracks();
+	Track	 refTrack  = NIL;
+
+	for (Int i = 0; i < numTracks; i++)
+	{
+		if (!joblist->GetNthEntry(i)->IsMarked()) continue;
+
+		const Track	&track = joblist->GetNthTrack(i);
+
+		if (refTrack == NIL) refTrack = track;
+
+		if (track.GetFormat().channels != refTrack.GetFormat().channels ||
+		    track.GetFormat().rate     != refTrack.GetFormat().rate	||
+		    track.GetFormat().bits     != refTrack.GetFormat().bits	||
+		    track.GetFormat().order    != refTrack.GetFormat().order)
+		{
+			return False;
+		}
+	}
+
+	return True;
+}
+
 String BonkEnc::Encoder::GetPlaylistFileName(const Track &trackInfo)
 {
 	if (Config::Get()->enable_console) return NIL;
@@ -570,7 +612,7 @@ String BonkEnc::Encoder::GetRelativeFileName(const String &trackFileName, const 
 
 	if (equalBytes > 0)
 	{
-		relativeFileName = "";
+		relativeFileName = NIL;
 
 		for (Int m = 0; m < trackFileName.Length() - equalBytes; m++) relativeFileName[m] = trackFileName[m + equalBytes];
 	}
@@ -635,7 +677,7 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &trackInfo)
 			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(trackInfo.title.Length() > 0 ? trackInfo.title : BonkEnc::i18n->TranslateString("unknown title"), True));
 			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo.album.Length() > 0 ? trackInfo.album : BonkEnc::i18n->TranslateString("unknown album"), True));
 			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo.genre.Length() > 0 ? trackInfo.genre : BonkEnc::i18n->TranslateString("unknown genre"), True));
-			shortOutFileName.Replace("<track>", String(trackInfo.track < 10 ? "0" : "").Append(String::FromInt(trackInfo.track < 0 ? 0 : trackInfo.track)));
+			shortOutFileName.Replace("<track>", String(trackInfo.track < 10 ? "0" : NIL).Append(String::FromInt(trackInfo.track < 0 ? 0 : trackInfo.track)));
 			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo.year > 0 ? String::FromInt(trackInfo.year) : BonkEnc::i18n->TranslateString("unknown year"), True));
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
 

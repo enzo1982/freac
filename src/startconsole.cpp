@@ -49,14 +49,14 @@ BonkEnc::BonkEncCommandline *BonkEnc::BonkEncCommandline::Get(const Array<String
 
 Void BonkEnc::BonkEncCommandline::Free()
 {
-	if (instance != NIL) Object::DeleteObject(instance);
+	if (instance != NIL) delete (BonkEncCommandline *) instance;
 }
 
 BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) : args(arguments)
 {
 	currentConfig->enable_console = true;
 
-	if (currentConfig->language == "") i18n->ActivateLanguage("internal");
+	if (currentConfig->language == NIL) i18n->ActivateLanguage("internal");
 
 	i18n->ActivateLanguage(currentConfig->language);
 
@@ -71,12 +71,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	Bool		 cddb		= ScanForParameter("-cddb", NULL);
 	Array<String>	 files;
 	String		 encoderID	= "LAME";
-	String		 helpenc	= "";
+	String		 helpenc;
 	String		 outdir		= ".";
-	String		 outfile	= "";
+	String		 outfile;
 	String		 pattern	= "<artist> - <title>";
 	String		 cdDrive	= "0";
-	String		 tracks		= "";
+	String		 tracks;
 	String		 timeout	= "120";
 
 	ScanForParameter("-e", &encoderID);
@@ -120,7 +120,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	if (files.Length() == 0 ||
 	    helpenc != NIL ||
 	    !(encoderID == "LAME" || encoderID == "VORBIS" || encoderID == "BONK" || encoderID == "BLADE" || encoderID == "FAAC" || encoderID == "FLAC" || encoderID == "TVQ" || encoderID == "WAVE") ||
-	    (files.Length() > 1 && outfile != ""))
+	    (files.Length() > 1 && outfile != NIL))
 	{
 		ShowHelp(helpenc);
 

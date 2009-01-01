@@ -13,15 +13,17 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (November 2008)
+	Version 1.1 CVS (Januar 2009)
 
 		- Sprachunterstützung für Estnisch, Katalanisch, Valencianisch und Portugiesisch hinzugefügt
 		- Deutsche, italienische, russische und griechische Anleitungen hinzugefügt
+		- Deutsche und japanische Übersetzungen für das Installationsprogramm hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
 		- Neuen Konfigurationsdialog implementiert
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
-		- Monkey's Audio-Codierer/Decodierer hinzugefügt
+		- Monkey's Audiocodierer/-decodierer hinzugefügt
+		- Speex Sprachcodierer/-decodierer hinzugefügt
 		- Unterstützung für Kommandozeilencodierer/-decodierer hinzugefügt
 		- Unterstützung für den MAD MP3-Decodierer hinzugefügt
 		- Unterstützung für den TwinVQ VQF-Decodierer hinzugefügt
@@ -56,7 +58,7 @@ Geschichte
 		- FAAC auf Version 1.26 aktualisiert
 		- FAAD2 suf Version 2.6.1 aktualisiert
 		- LAME suf Version 3.98.3 aktualisiert
-		- Ogg Vorbis auf aoTuV Beta 5.5 aktualisiert
+		- Ogg Vorbis auf aoTuV Beta 5.61 aktualisiert
 		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MPEG4IP v1.6.1
 		- Viele weitere Korrekturen
@@ -115,7 +117,7 @@ Besonderen Dank
 
 	- den Übersetzern: Eric Le Carre (Französisch),
 			   Marco D'Amato (Italienisch),
-			   Silky (Japanisch),
+			   REIKA (Japanisch),
 			   Federico Reddig (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
 			   Nikolaos-Ioannis Galanis (Griechisch),

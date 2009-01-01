@@ -24,6 +24,8 @@
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 
+#include <boca.h>
+
 BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 BoCA::I18n		*BonkEnc::BonkEnc::i18n = NIL;
 

@@ -46,6 +46,8 @@ namespace BonkEnc
 			JobList					*joblist;
 			Progress				*progress;
 
+			Bool					 CheckSingleFileSampleFormat();
+
 			String					 GetPlaylistFileName(const Track &);
 			String					 GetRelativeFileName(const String &, const String &);
 

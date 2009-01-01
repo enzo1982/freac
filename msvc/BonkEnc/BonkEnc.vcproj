@@ -430,10 +430,6 @@
 					RelativePath="..\..\src\dialogs\addpattern.cpp"
 					>
 				</File>
-				<File
-					RelativePath="..\..\src\dialogs\language.cpp"
-					>
-				</File>
 				<Filter
 					Name="cddb"
 					>
@@ -654,10 +650,6 @@
 				</File>
 				<File
 					RelativePath="..\..\include\dialogs\addpattern.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\dialogs\language.h"
 					>
 				</File>
 				<Filter
