@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>How to ...? - BonkEnc User Guide</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">How to ...? - BonkEnc User Guide</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>BonkEnc setup and special features guide</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Contents</h4>
+		<blockquote>
+		  <p><a href="#anchor_wma">How to enable Windows Media Audio decoding support?</a></p>
+		  <p><a href="#anchor_pat">How to use output file name patterns in BonkEnc?</a></p>
+		  <p><a href="#anchor_tra">How to add a new translation to BonkEnc?</a></p>
+		  <p><a href="#anchor_rem">How to remove BonkEnc from my computer?</a></p>
+		</blockquote>
+		<h4 id="anchor_wma">How to enable Windows Media Audio decoding support?</h4>
+		<blockquote>
+		  <p>To enable <b>Windows Media Audio</b> (WMA) support in BonkEnc, you need the WMA plug-in from Winamp 5.21 (plug-ins from newer versions of Winamp will not work with BonkEnc).
+		    Please follow these steps to install the WMA plug-in for BonkEnc.</p>
+		  <ul>
+		    <li>download and install <b>Winamp 5.21</b> from <a href="http://www.oldversion.com/">www.oldversion.com</a></li>
+		    <li>copy the <b>in_wm.dll</b> file from the <b>Winamp/plugins directory</b> to the <b>BonkEnc/plugins</b> directory</li>
+		  </ul>
+		</blockquote>
+		<h4 id="anchor_pat">How to use output file name patterns in BonkEnc?</h4>
+		<blockquote>
+		  <p>The output file name pattern can be configured on the <b>Encoder</b> page of the configuration dialog. You can
+		    use backslashes to specify directories and placeholders for referring to meta information. The following
+		    placeholders are available:</p>
+		  <ul>
+		    <li><b>&lt;artist&gt;</b> - The song artist</li>
+		    <li><b>&lt;title&gt;</b> - The song title</li>
+		    <li><b>&lt;album&gt;</b> - The album title</li>
+		    <li><b>&lt;track&gt;</b> - The song track number</li>
+		    <li><b>&lt;genre&gt;</b> - The song genre</li>
+		    <li><b>&lt;year&gt;</b> - The year the song was published</li>
+		  </ul>
+		  <p>The above placeholders refer to song and album information. In addition there are two placeholders that refer
+		    to the original file name of a file being encoded in BonkEnc:</p>
+		  <ul>
+		    <li><b>&lt;filename&gt;</b> - The file name of the input file</li>
+		    <li><b>&lt;directory&gt;</b> - The directory the input file is found in</li>
+		  </ul>
+		  <p>The <b>&lt;directory&gt;</b> pattern is special as you can modify its meaning using two numerical arguments.
+		    You can use it like <b>&lt;directory+n&gt;</b> or <b>&lt;directory+n(m)&gt;</b>. In these expressions, the <b>n</b>
+		    specifies the number of path components that should be stripped from the beginning. The <b>m</b> specifies
+		    the number of components to use from what is left. Omitting the <b>(m)</b> part will use all components left in the path after stripping
+		    <b>n</b> components from the beginning. <b>&lt;directory&gt;</b> without any arguments will resolve to the complete path.<p>
+		  <p>So how to use this in practice? Assuming you have your music collection ordered like this:</p>
+		  <blockquote>
+		    <p>C:\Music\[other criteria]\[artist]\[album]\[track] - [title]</p>
+		  </blockquote>
+		  <p>You might have a file called <b>C:\Music\Favorites\Starsailor\Silence is Easy\01 - Music was Saved.flac</b>.</p>
+		  <p>Now let's say you want to encode some music files for use on your portable player and put them in <b>C:\Encoded\</b>.
+		    In order to keep your <b>[other criteria]</b> field, you need to use the <b>&lt;directory&gt;</b> pattern.
+		    If your encoder output directory is set to <b>C:\Encoded\</b>, your complete filename pattern could look like this:</p>
+		  <blockquote>
+		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+		  </blockquote>
+		  <p>This would encode the beforementioned file to <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence
+		    is Easy - 01 - Music was Saved.m4a</b>.</p>
+		</blockquote>
+		<h4 id="anchor_tra">How to add a new translation to BonkEnc?</h4>
+		<blockquote>
+		  <p>Please use the <b>smooth Translator</b> utility included in the BonkEnc distribution and open an existing
+		    translation file (found in the <b>BonkEnc/lang</b> directory). Then change the language settings to reflect
+		    the translation you want to create and start translating the individual text strings. Save your translation
+		    as a new file matching the pattern <b>bonkenc_??.xml</b> (replace ?? with your language code), restart BonkEnc
+		    and try selecting the new translation in the configuration dialog.</p>
+		  <p>Please submit your translation to <a href="mailto:translations@bonkenc.org">translations@bonkenc.org</a>, so it can be included in the official distribution.</p>
+		</blockquote>
+		<h4 id="anchor_rem">How to remove BonkEnc from my computer?</h4>
+		<blockquote>
+		  <p>Recent versions of BonkEnc come with an uninstaller that you can execute from the <b>Start</b> menu.</p>
+		  <p>In case you removed the Start menu group or are unable to find it, it is completely sufficient to delete
+		    the application directory to uninstall BonkEnc. BonkEnc does neither create any Windows registry entries
+		    nor store any active components outside its installation directory.</p>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
+		Copyright (C) 2007-2009 The BonkEnc Project</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>
