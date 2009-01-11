@@ -16,7 +16,8 @@ History
 	Version 1.0.11 (January 2009)
 
 		- updated Italian translation
-		- fixed handling of non-ASCII characters when opening MP3 files multiple tags
+		- added <directory> pattern to allow preserving existing directory structures
+		- fixed handling of non-ASCII characters when opening MP3 files with multiple tags
 
 	Version 1.0.10 (December 2008)
 

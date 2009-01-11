@@ -16,6 +16,7 @@ Geschichte
 	Version 1.0.11 (Januar 2009)
 
 		- Italienische Übersetzung aktualisiert
+		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Fehler beim Umgang mit nicht-ASCII-Zeichen beim Öffnen von MP3-Dateien mit mehreren Tags behoben
 
 	Version 1.0.10 (Dezember 2008)

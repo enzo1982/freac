@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -784,6 +784,50 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 			shortOutFileName.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
 			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : i18n->TranslateString("unknown year"), True));
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
+
+			String	 directory = inFileDirectory;
+
+			if	(directory[1] == ':')	       directory = directory.Tail(directory.Length() - 3);
+			else if (directory.StartsWith("\\\\")) directory = directory.Tail(directory.Length() - 2);
+
+			String	 pattern = String("<directory>");
+			String	 value = directory;
+
+			shortOutFileName.Replace("<directory>", value);
+
+			for (Int i = 0; i < 10; i++)
+			{
+				pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(">");
+				value = directory;
+
+				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find("\\") - 1);
+
+				shortOutFileName.Replace(pattern, value);
+
+				for (Int j = 0; j < 10; j++)
+				{
+					pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(String("(").Append(String::FromInt(j + 1)).Append(")")).Append(">");
+					value = directory;
+
+					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find("\\") - 1);
+
+					Int	 bsCount = 0;
+
+					for (Int n = 0; n < value.Length(); n++)
+					{
+						if (value[n] == '\\') bsCount++;
+
+						if (bsCount == j + 1)
+						{
+							value[n] = 0;
+
+							break;
+						}
+					}
+
+					shortOutFileName.Replace(pattern, value);
+				}
+			}
 
 			outputFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
 			outputFileName = Utilities::CreateDirectoryForFile(outputFileName);
