@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">Actualmente codificando</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa se distribuye bajo los términos de la&#10;GNU General Public License (Licencia Pública General).</entry>
     <entry id="43" string="CDDB query">Consulta a CDDB</entry>
-    <entry id="44" string="About BonkEnc">Acerca de...</entry>
+    <entry id="44" string="About %1">Acerca de %1</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">¡No hay opciones configurables para el filtro de audio de ondas!</entry>
     <entry id="46" string="WAVE Out filter">Filtro de salida de audio de ondas</entry>
     <entry id="47" string="Cannot change settings while encoding!">¡No se puede cambiar la configuración mientras se codifica!</entry>

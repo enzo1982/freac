@@ -53,7 +53,7 @@
   <entry id="41" string="Currently encoding">Tömörítés folyamatban</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ez a program szabadon terjeszthetö&#10;a GNU (General Public License) elöírásai szerint.</entry>
   <entry id="43" string="CDDB query">CDDB lekérdezése</entry>
-  <entry id="44" string="About BonkEnc">A BonkEnc-röl röviden</entry>
+  <entry id="44" string="About %1">A %1-röl röviden</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">A WAVE Out Filter-nek nincsenek beállítási lehetöségei!</entry>
   <entry id="46" string="WAVE Out filter">WAVE Out Filter</entry>
   <entry id="47" string="Cannot change settings while encoding!">Tömörítés közben a beállítások nem változtathatók meg!</entry>

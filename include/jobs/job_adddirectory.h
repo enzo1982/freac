@@ -8,29 +8,26 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_PLAYLIST_
-#define _H_PLAYLIST_
+#ifndef _H_JOB_ADDDIRECTORY_
+#define _H_JOB_ADDDIRECTORY_
 
-#include <smooth.h>
-
-using namespace smooth;
+#include "job_addfiles.h"
 
 namespace BonkEnc
 {
-	class Playlist
+	class JobAddDirectory : public JobAddFiles
 	{
-		private:
-			Array<String>	 fileNames;
-			Array<String>	 trackNames;
-			Array<Int>	 trackLengths;
+		protected:
+			String		 directory;
+
+			Void		 AddDirectory(const Directory &);
 		public:
-			Bool		 AddTrack(const String &, const String &, Int);
+					 JobAddDirectory(const String &);
+			virtual		~JobAddDirectory();
 
-			Int		 GetNOfTracks();
-			String		 GetNthTrackFileName(Int);
-
-			Bool		 Save(const String &);
-			Bool		 Load(const String &);
+			virtual Bool	 ReadyToRun();
+		slots:
+			virtual Error	 Perform();
 	};
 };
 

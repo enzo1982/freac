@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,53 +12,27 @@
 
 BonkEnc::ConfigureLanguage::ConfigureLanguage()
 {
-	Point	 pos;
-	Size	 size;
+	currentConfig = BoCA::Config::Get();
 
-	currentConfig = Config::Get();
+	group_info	= new GroupBox(BonkEnc::i18n->TranslateString("Information"), Point(7, 66), Size(530, 77));
 
-	pos.x	= 7;
-	pos.y	= 66;
-	size.cx	= 530;
-	size.cy	= 77;
+	text_info	= new Text(NIL, Point(9, 11));
+	link_url	= new Hyperlink(NIL, NIL, NIL, Point(37, 56), Size(0, 0));
 
-	group_info	= new GroupBox(BonkEnc::i18n->TranslateString("Information"), pos, size);
+	group_info->Add(text_info);
+	group_info->Add(link_url);
 
-	pos.x += 9;
-	pos.y += 11;
+	group_language	= new GroupBox(BonkEnc::i18n->TranslateString("Language"), Point(7, 11), Size(530, 43));
 
-	text_info	= new Text(NIL, pos);
+	text_language	= new Text(BonkEnc::i18n->TranslateString("Select language:"), Point(9, 15));
 
-	pos.x += 28;
-	pos.y += 45;
-
-	link_url	= new Hyperlink(NIL, NIL, NIL, pos, Size(0, 0));
-
-	pos.x	= 7;
-	pos.y	= 11;
-	size.cx	= 530;
-	size.cy	= 43;
-
-	group_language	= new GroupBox(BonkEnc::i18n->TranslateString("Language"), pos, size);
-
-	pos.x += 9;
-	pos.y += 15;
-
-	text_language	= new Text(BonkEnc::i18n->TranslateString("Select language:"), pos);
-
-	pos.x	+= (text_language->textSize.cx + 8);
-	pos.y	= 23;
-	size.cx	= (503 - text_language->textSize.cx);
-	size.cy	= 0;
-
-	combo_language	= new ComboBox(pos, size);
+	combo_language	= new ComboBox(Point(text_language->textSize.cx + 17, 12), Size(503 - text_language->textSize.cx, 0));
 	combo_language->onSelectEntry.Connect(&ConfigureLanguage::SelectLanguage, this);
 
-	pos.x = 397;
-	pos.y -= 1;
-	size.cx = 130;
+	group_language->Add(text_language);
+	group_language->Add(combo_language);
 
-	btn_edit	= new Button(BonkEnc::i18n->TranslateString("Edit language file"), NIL, pos, size);
+	btn_edit	= new Button(BonkEnc::i18n->TranslateString("Edit language file"), NIL, Point(390, 11), Size(130, 0));
 	btn_edit->onAction.Connect(&ConfigureLanguage::EditLanguageFile, this);
 
 	for (Int i = 0; i < BonkEnc::i18n->GetNOfLanguages(); i++)
@@ -72,18 +46,13 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 	{
 		combo_language->SetWidth(combo_language->GetWidth() - 138);
 
-		Add(btn_edit);
+		group_language->Add(btn_edit);
 	}
 
 	SelectLanguage();
 
 	Add(group_language);
-	Add(text_language);
-	Add(combo_language);
-
 	Add(group_info);
-	Add(text_info);
-	Add(link_url);
 
 	SetSize(Size(544, 150));
 }

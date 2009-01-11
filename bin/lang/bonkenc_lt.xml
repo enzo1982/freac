@@ -53,7 +53,7 @@
   <entry id="41" string="Currently encoding">Šiuo metu koduojama</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ši programa yra platinama su GNU General Public License (GPL) licencija.</entry>
   <entry id="43" string="CDDB query">CDDB užklausa</entry>
-  <entry id="44" string="About BonkEnc">Apie BonkEnk</entry>
+  <entry id="44" string="About %1">Apie %1</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">Konfigūruojamų pasirinkčių WAVE Out filtrui nėra!</entry>
   <entry id="46" string="WAVE Out filter">WAVE out filtras</entry>
   <entry id="47" string="Cannot change settings while encoding!">Negalima keisti nuostatų per kodavimą!</entry>

@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">Çevriliyor</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Bu program General Public License (GPL)&#10;ile dağıtılır.</entry>
     <entry id="43" string="CDDB query">CDDB sorgusu</entry>
-    <entry id="44" string="About BonkEnc">BonkEnc hakkında</entry>
+    <entry id="44" string="About %1">%1 hakkında</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Wave dosyaları için filtre ayarlanamaz!</entry>
     <entry id="46" string="WAVE Out filter">Wave çıkış filtresi</entry>
     <entry id="47" string="Cannot change settings while encoding!">Çevirme yapılırken ayar değiştirilemez!</entry>

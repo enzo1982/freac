@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -40,7 +40,6 @@ namespace BonkEnc
 			Void				 UpdateTextLine();
 
 			const String			&GetEntryText(const Track &);
-			const String			&GetTooltipText(const Track &);
 		public:
 							 JobList(const Point &, const Size &);
 			virtual				~JobList();
@@ -59,8 +58,6 @@ namespace BonkEnc
 
 			Void				 AddTrackByDialog();
 			Void				 AddTracksByPattern(const String &, const String &);
-
-			Void				 AddTrackByFileName(const String &, const String & = NIL, Bool = True);
 
 			Void				 UpdateTrackInfo(const Track &);
 

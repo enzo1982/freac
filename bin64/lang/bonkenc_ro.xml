@@ -53,7 +53,7 @@
   <entry id="41" string="Currently encoding">Proces activ de codare</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Acest program este distribuit sub termenii&#10;Licenţei Generale Publice GNU (GPL).</entry>
   <entry id="43" string="CDDB query">Interogare CDDB</entry>
-  <entry id="44" string="About BonkEnc">Despre BonkEnc</entry>
+  <entry id="44" string="About %1">Despre %1</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">Nici o opţiune nu poate fi configurată pentru filtrul WAVE Out!</entry>
   <entry id="46" string="WAVE Out filter">Filtru WAVE Out</entry>
   <entry id="47" string="Cannot change settings while encoding!">Setările nu pot fi modificate în timpul codării!</entry>

@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">Aktivní proces kódování</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šířen pod General Public Lincence (GPL).</entry>
     <entry id="43" string="CDDB query">Dotaz na CDDB </entry>
-    <entry id="44" string="About BonkEnc">O programu BonkEnc</entry>
+    <entry id="44" string="About %1">O programu %1</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Pro WAVE výstupní filtr nemohou být žádné volby upravovány</entry>
     <entry id="46" string="WAVE Out filter">Výstupní WAVE filtr</entry>
     <entry id="47" string="Cannot change settings while encoding!">Z důvodu kódování nemhou být žádná nastavení změněna</entry>

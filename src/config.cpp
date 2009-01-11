@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,7 +15,7 @@ BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
 BonkEnc::Config::Config()
 {
-	languageChanged		= False;
+//	languageChanged		= False;
 	deleteAfterEncoding	= False;
 	shutdownAfterEncoding	= False;
 
@@ -89,7 +89,6 @@ Bool BonkEnc::Config::LoadSettings()
 	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);
 
 	firstStart				= config->GetIntValue("Settings", "FirstStart", 1);
-	language				= config->GetStringValue("Settings", "Language", NIL);
 	encoderID				= config->GetStringValue("Settings", "Encoder", "wave-out");
 	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", personalDir);
 	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
@@ -160,7 +159,6 @@ Bool BonkEnc::Config::SaveSettings()
 	if (config->Open(String(configDir).Append("config.xml"), True) == Success())
 	{
 		config->SetIntValue("Settings", "FirstStart", 0);
-		config->SetStringValue("Settings", "Language", language);
 		config->SetStringValue("Settings", "Encoder", encoderID);
 		config->SetStringValue("Settings", "EncoderOutDir", enc_outdir);
 		config->SetStringValue("Settings", "EncoderFilenamePattern", enc_filePattern);

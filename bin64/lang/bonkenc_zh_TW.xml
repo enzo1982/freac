@@ -53,7 +53,7 @@
   <entry id="41" string="Currently encoding">目前正在編碼</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">此軟體可在 GNU 的 General Public License&#10;(GPL) 規範之限制下進行散佈.</entry>
   <entry id="43" string="CDDB query">CDDB 查詢</entry>
-  <entry id="44" string="About BonkEnc">關於 BonkEnc</entry>
+  <entry id="44" string="About %1">關於 %1</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE Out 過濾器沒有任何可進行組態的選項!</entry>
   <entry id="46" string="WAVE Out filter">Wave Out 過濾器</entry>
   <entry id="47" string="Cannot change settings while encoding!">當正在編碼時無法無法變更設定!</entry>

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,47 +11,22 @@
 #include <gui/main_threads.h>
 #include <jobs/job.h>
 
-BonkEnc::LayerThreads::LayerThreads() : Layer("Threads")
+BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 {
-	Point	 pos;
-	Size	 size;
+	text_progress	= new Text("Progress:", Point(7, 11));
 
-	pos.x	= 7;
-	pos.y	= 11;
+	list_threads	= new ListBox(Point(7, 35), Size(500, 360));
 
-	text_progress	= new Text("Progress:", pos);
-
-	pos.y	+= 24;
-	size.cx	= 500;
-	size.cy	= 360;
-
-	list_threads	= new ListBox(pos, size);
-
-	pos.x	= 7;
-	pos.y	= 25;
-
-	text_errors	= new Text("Errors / Warnings:", pos);
+	text_errors	= new Text("Errors / Warnings:", Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);
 
-	pos.x	+= text_errors->textSize.cx + 7;
-	pos.y	+= 3;
-	size.cx	= 25;
-	size.cy = 0;
-
-	edit_errors	= new EditBox("0/0", pos, size);
+	edit_errors	= new EditBox("0/0", Point(text_errors->textSize.cx + 14, 28), Size(25, 0));
 	edit_errors->SetOrientation(OR_LOWERLEFT);
 
-	pos.x	+= 33;
-	size.cx	= 250;
-
-	combo_errors	= new ComboBox(pos, size);
+	combo_errors	= new ComboBox(Point(text_errors->textSize.cx + 47, 28), Size(250, 0));
 	combo_errors->SetOrientation(OR_LOWERLEFT);
 
-	pos.x	= 87;
-	pos.y	+= 1;
-	size.cx	= 80;
-
-	button_details	= new Button("Details", NIL, pos, size);
+	button_details	= new Button("Details", NIL, Point(87, 29), Size(80, 0));
 	button_details->onAction.Connect(&LayerThreads::ShowDetails, this);
 	button_details->SetOrientation(OR_LOWERRIGHT);
 

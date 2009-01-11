@@ -53,7 +53,7 @@
   <entry id="41" string="Currently encoding">Кодується</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Дана програма розповсюджується на правах GPL ліценції.</entry>
   <entry id="43" string="CDDB query">CDDB запит</entry>
-  <entry id="44" string="About BonkEnc">Про BonkEnc</entry>
+  <entry id="44" string="About %1">Про %1</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">без налаштувань</entry>
   <entry id="46" string="WAVE Out filter">WAVE Out фільтр</entry>
   <entry id="47" string="Cannot change settings while encoding!">Неможливо змінити налаштування під час кодування!</entry>

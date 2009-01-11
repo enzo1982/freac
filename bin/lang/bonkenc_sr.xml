@@ -53,7 +53,7 @@
   <entry id="41" string="Currently encoding">Trenutno se enkoduje</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ovaj program se distribuira pod uslovima&#10;GNU Opštih Javnih Licenci (tzv. &quot;GPL&quot;).</entry>
   <entry id="43" string="CDDB query">CDDB upit</entry>
-  <entry id="44" string="About BonkEnc">O BonkEnc-u ...</entry>
+  <entry id="44" string="About %1">O %1-u</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">Opcije za WAVE izlazni filter se ne mogu podešavati!</entry>
   <entry id="46" string="WAVE Out filter">WAVE izlazni filter</entry>
   <entry id="47" string="Cannot change settings while encoding!">Ne možete menjati podešavanja za vreme enkodovanja!</entry>

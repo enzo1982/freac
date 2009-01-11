@@ -34,7 +34,7 @@
     <entry id="38" string="All Files">كل الملفات</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">هذا البرنامج يوزع تحت بنود رخصة&#10;GNU General Public License (GPL)</entry>
     <entry id="43" string="CDDB query">أسترجاع CDDB</entry>
-    <entry id="44" string="About BonkEnc">حول BonkEnc</entry>
+    <entry id="44" string="About %1">حول %1</entry>
     <entry id="49" string="OK">موافق</entry>
     <entry id="50" string="Cancel">إلغاء</entry>
     <entry id="54" string="Quality">الجودة</entry>

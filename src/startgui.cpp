@@ -16,6 +16,9 @@
 #include <joblist.h>
 #include <utilities.h>
 
+#include <jobs/job_addfiles.h>
+#include <jobs/job_checkforupdates.h>
+
 #include <dialogs/config/config.h>
 #include <dialogs/config/configcomponent.h>
 
@@ -84,110 +87,114 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	clicked_drive = -1;
 	clicked_encoder = -1;
 
-	if (currentConfig->language == NIL && i18n->GetNOfLanguages() > 1)
+	String	 language = BoCA::Config::Get()->language;
+
+	if (language == NIL && i18n->GetNOfLanguages() > 1)
 	{
 		switch (PRIMARYLANGID(GetUserDefaultLangID()))
 		{
 			default:
 			case LANG_ARABIC:
-				currentConfig->language = "bonkenc_ar.xml";
+				language = "bonkenc_ar.xml";
 				break;
 			case LANG_CATALAN:
-				currentConfig->language = "bonkenc_ca.xml";
+				language = "bonkenc_ca.xml";
 				break;
 			case LANG_CHINESE:
-				currentConfig->language = "bonkenc_zh_CN.xml";
+				language = "bonkenc_zh_CN.xml";
 
-				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_SIMPLIFIED) currentConfig->language = "bonkenc_zh_CN.xml";
-				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) currentConfig->language = "bonkenc_zh_TW.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_SIMPLIFIED) language = "bonkenc_zh_CN.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) language = "bonkenc_zh_TW.xml";
 				break;
 			case LANG_CZECH:
-				currentConfig->language = "bonkenc_cz.xml";
+				language = "bonkenc_cz.xml";
 				break;
 			case LANG_DANISH:
-				currentConfig->language = "bonkenc_dk.xml";
+				language = "bonkenc_dk.xml";
 				break;
 			case LANG_DUTCH:
-				currentConfig->language = "bonkenc_nl.xml";
+				language = "bonkenc_nl.xml";
 				break;
 			case LANG_ENGLISH:
-				currentConfig->language = "internal";
+				language = "internal";
 				break;
 			case LANG_ESTONIAN:
-				currentConfig->language = "bonkenc_ee.xml";
+				language = "bonkenc_ee.xml";
 				break;
 			case LANG_FINNISH:
-				currentConfig->language = "bonkenc_fi.xml";
+				language = "bonkenc_fi.xml";
 				break;
 			case LANG_FRENCH:
-				currentConfig->language = "bonkenc_fr.xml";
+				language = "bonkenc_fr.xml";
 				break;
 			case LANG_GERMAN:
-				currentConfig->language = "bonkenc_de.xml";
+				language = "bonkenc_de.xml";
 				break;
 			case LANG_GREEK:
-				currentConfig->language = "bonkenc_gr.xml";
+				language = "bonkenc_gr.xml";
 				break;
 			case LANG_HUNGARIAN:
-				currentConfig->language = "bonkenc_hu.xml";
+				language = "bonkenc_hu.xml";
 				break;
 			case LANG_ITALIAN:
-				currentConfig->language = "bonkenc_it.xml";
+				language = "bonkenc_it.xml";
 				break;
 			case LANG_JAPANESE:
-				currentConfig->language = "bonkenc_ja.xml";
+				language = "bonkenc_ja.xml";
 				break;
 			case LANG_KOREAN:
-				currentConfig->language = "bonkenc_ko.xml";
+				language = "bonkenc_ko.xml";
 				break;
 			case LANG_LITHUANIAN:
-				currentConfig->language = "bonkenc_lt.xml";
+				language = "bonkenc_lt.xml";
 				break;
 			case LANG_NORWEGIAN:
-				currentConfig->language = "bonkenc_no.xml";
+				language = "bonkenc_no.xml";
 				break;
 			case LANG_POLISH:
-				currentConfig->language = "bonkenc_pl.xml";
+				language = "bonkenc_pl.xml";
 				break;
 			case LANG_PORTUGUESE:
-				currentConfig->language = "bonkenc_pt.xml";
+				language = "bonkenc_pt.xml";
 
-				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE) currentConfig->language = "bonkenc_pt.xml";
-				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE_BRAZILIAN) currentConfig->language = "bonkenc_pt_BR.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE) language = "bonkenc_pt.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE_BRAZILIAN) language = "bonkenc_pt_BR.xml";
 				break;
 			case LANG_ROMANIAN:
-				currentConfig->language = "bonkenc_ro.xml";
+				language = "bonkenc_ro.xml";
 				break;
 			case LANG_RUSSIAN:
-				currentConfig->language = "bonkenc_ru.xml";
+				language = "bonkenc_ru.xml";
 				break;
 			case LANG_SERBIAN:
-				currentConfig->language = "bonkenc_sr.xml";
+				language = "bonkenc_sr.xml";
 				break;
 			case LANG_SLOVAK:
-				currentConfig->language = "bonkenc_sk.xml";
+				language = "bonkenc_sk.xml";
 				break;
 			case LANG_SPANISH:
-				currentConfig->language = "bonkenc_es.xml";
+				language = "bonkenc_es.xml";
 
-				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH) currentConfig->language = "bonkenc_es.xml";
-				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH_ARGENTINA) currentConfig->language = "bonkenc_es_AR.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH) language = "bonkenc_es.xml";
+				if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH_ARGENTINA) language = "bonkenc_es_AR.xml";
 				break;
 			case LANG_SWEDISH:
-				currentConfig->language = "bonkenc_sv.xml";
+				language = "bonkenc_sv.xml";
 				break;
 			case LANG_TURKISH:
-				currentConfig->language = "bonkenc_tr.xml";
+				language = "bonkenc_tr.xml";
 				break;
 			case LANG_UKRAINIAN:
-				currentConfig->language = "bonkenc_ua.xml";
+				language = "bonkenc_ua.xml";
 				break;
 		}
 	}
 
-	if (currentConfig->language == NIL) currentConfig->language = "internal";
+	if (language == NIL) language = "internal";
 
-	i18n->ActivateLanguage(currentConfig->language);
+	i18n->ActivateLanguage(language);
+
+	BoCA::Config::Get()->language = language;
 
 	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
 
@@ -208,13 +215,13 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		currentConfig->wndSize.cy = (Int) Math::Min(workArea.bottom - 20, currentConfig->wndSize.cy);
 	}
 
-	mainWnd			= new Window(String("BonkEnc ").Append(BonkEnc::version), currentConfig->wndPos, currentConfig->wndSize);
+	mainWnd			= new Window(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version), currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
 	menu_file		= new PopupMenu();
 	menu_options		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -251,10 +258,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	}
 
 	tab_layer_threads	= new LayerThreads();
-	tab_layer_protocol	= new LayerProtocol();
 
 	tabs_main->Add(tab_layer_threads);
-	tabs_main->Add(tab_layer_protocol);
 
 	joblist			= tab_layer_joblist->GetJoblist();
 
@@ -291,7 +296,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	encoder->onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, tab_layer_joblist);
 	encoder->onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, tab_layer_joblist);
 
-	if (currentConfig->checkUpdatesAtStartup) NonBlocking1<Bool>(&BonkEncGUI::CheckForUpdates, this).Call(True);
+	if (currentConfig->checkUpdatesAtStartup) (new JobCheckForUpdates(True))->Schedule();
 }
 
 BonkEnc::BonkEncGUI::~BonkEncGUI()
@@ -308,7 +313,6 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 
 	DeleteObject(tab_layer_joblist);
 	DeleteObject(tab_layer_threads);
-	DeleteObject(tab_layer_protocol);
 
 	DeleteObject(hyperlink);
 
@@ -457,7 +461,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 {
 	currentConfig->wndSize = mainWnd->GetSize();
 
-	mainWnd->SetStatusText(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
+	mainWnd->SetStatusText(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -472,7 +476,7 @@ Void BonkEnc::BonkEncGUI::Close()
 
 Void BonkEnc::BonkEncGUI::About()
 {
-	QuickMessage(String("BonkEnc ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2009 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2009 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -512,11 +516,11 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 
 	DeleteObject(dlg);
 
-	if (currentConfig->languageChanged)
+	if (BoCA::Config::Get()->languageChanged)
 	{
 		SetLanguage();
 
-		currentConfig->languageChanged = false;
+		BoCA::Config::Get()->languageChanged = false;
 	}
 
 	tab_layer_joblist->UpdateEncoderText();
@@ -537,6 +541,8 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 
 	ex_CR_ReadToc();
 
+	Array<String>	 files;
+
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
 	for (Int i = 0; i < numTocEntries; i++)
@@ -547,16 +553,19 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 		{
 			/* Add CD track to joblist using a cdda:// URI
 			 */
-			joblist->AddTrackByFileName(
-				String("cdda://")
-					.Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive))
-					.Append("/")
-					.Append(String::FromInt(entry.btTrackNumber))
+			files.Add(String("cdda://")
+				 .Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive))
+				 .Append("/")
+				 .Append(String::FromInt(entry.btTrackNumber))
 			);
 		}
 	}
 
-	if (currentConfig->enable_auto_cddb) QueryCDDB();
+	Job	*job = new JobAddFiles(files);
+
+	job->Schedule();
+
+	if (currentConfig->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
 }
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
@@ -570,6 +579,10 @@ Void BonkEnc::BonkEncGUI::ReadSpecificCD()
 
 Void BonkEnc::BonkEncGUI::QueryCDDB()
 {
+	/* ToDo: Check that this message is not displayed
+	 *	 when QueryCDDB is called from ReadCD because
+	 *	 of auto queries enabled.
+	 */
 	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
 	{
 		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
@@ -745,7 +758,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 {
 	Bool	 prevRTL = i18n->IsActiveLanguageRightToLeft();
 
-	i18n->ActivateLanguage(currentConfig->language);
+	i18n->ActivateLanguage(BoCA::Config::Get()->language);
 
 	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
 	{
@@ -919,7 +932,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	}
 
 	menu_help->AddEntry();
-	menu_help->AddEntry(String(i18n->TranslateString("About BonkEnc")).Append("..."), ImageLoader::Load("BonkEnc.pci:35"))->onAction.Connect(&BonkEncGUI::About, this);
+	menu_help->AddEntry(String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName).Append("..."), ImageLoader::Load("BonkEnc.pci:35"))->onAction.Connect(&BonkEncGUI::About, this);
 
 	mainWnd_menubar->RemoveAllEntries();
 
@@ -1092,76 +1105,5 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 
 Void BonkEnc::BonkEncGUI::CheckForUpdates()
 {
-	NonBlocking1<Bool>(&BonkEncGUI::CheckForUpdates, this).Call(False);
-}
-
-Int BonkEnc::BonkEncGUI::CheckForUpdates(Bool startup)
-{
-	if (!currentConfig->enable_eUpdate) return Success();
-
-	if (currentConfig->firstStart)
-	{
-		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION) == IDNO)
-		{
-			currentConfig->checkUpdatesAtStartup = False;
-			currentConfig->firstStart = False;
-
-			return Success();
-		}
-	}
-
-	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, updatePath);
-
-	if (currentConfig->configDir != NIL)
-	{
-		if (Setup::enableUnicode) ex_eUpdate_SetConfigFileW(context, String(currentConfig->configDir).Append("eUpdate.xml"));
-		else			  ex_eUpdate_SetConfigFile(context, String(currentConfig->configDir).Append("eUpdate.xml"));
-	}
-
-	if (currentConfig->language != "internal")
-	{
-		String	 lang;
-
-		for (Int i = 8; i < currentConfig->language.Length(); i++) lang[i - 8] = currentConfig->language[i];
-
-		if (!ex_eUpdate_SetLanguage(context, String("eupdate_").Append(lang))) ex_eUpdate_SetLanguage(context, "internal");
-	}
-	else
-	{
-		ex_eUpdate_SetLanguage(context, "internal");
-	}
-
-	if (ex_eUpdate_CheckForNewUpdates(context, !startup) > 0)
-	{
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
-
-		msgBox->ShowDialog();
-
-		if (msgBox->GetButtonCode() == IDYES)
-		{
-			currentConfig->SaveSettings();
-
-			ex_eUpdate_AutomaticUpdate(context);
-		}
-
-		DeleteObject(msgBox);
-	}
-	else if (!startup)
-	{
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
-
-		msgBox->ShowDialog();
-
-		DeleteObject(msgBox);
-	}
-	else if (currentConfig->firstStart)
-	{
-		QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION);
-	}
-
-	ex_eUpdate_FreeUpdateContext(context);
-
-	currentConfig->firstStart = False;
-
-	return Success();
+	(new JobCheckForUpdates(False))->Schedule();
 }

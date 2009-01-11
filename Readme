@@ -30,6 +30,7 @@ History
 		- added support for AAC synchronizing (needed to read ripped AAC streams)
 		- added support for reading simple audio files using libsndfile
 		- added support for cover art in MP4 files
+		- added <directory> pattern to allow preserving existing directory structures
 		- added <installdrive> pattern for use in output directory name
 		- label/publisher and ISRC information is now preserved during conversion
 		- greatly improved case conversion functions
@@ -60,7 +61,7 @@ History
 		- upgraded LAME to version 3.98.3
 		- upgraded Ogg Vorbis to aoTuV beta 5.61
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
-		- upgrade to MPEG4IP v1.6.1
+		- upgrade to MP4v2 v2.0
 		- lots of other fixes
 
 Requirements

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -51,6 +51,9 @@ BonkEnc::Job::Job() : ListEntry("Job")
 
 	onChangeSize.Connect(&Job::OnChangeSize, this);
 
+	onMouseOver.Connect(&Job::OnMouseOver, this);
+	onMouseOut.Connect(&Job::OnMouseOut, this);
+
 	all.Add(this, GetHandle());
 
 	onChange.Emit();
@@ -77,7 +80,11 @@ Int BonkEnc::Job::Schedule()
 {
 	planned.Add(this, GetHandle());
 
+	EnterProtectedRegion();
+
 	onPlanJob.Emit(this);
+
+	LeaveProtectedRegion();
 
 	return Success();
 }
@@ -87,7 +94,12 @@ Int BonkEnc::Job::Run()
 	planned.Remove(GetHandle());
 	running.Add(this, GetHandle());
 
+	EnterProtectedRegion();
+
+	onRun.Emit();
 	onRunJob.Emit(this);
+
+	LeaveProtectedRegion();
 
 	startTicks = clock();
 
@@ -95,9 +107,19 @@ Int BonkEnc::Job::Run()
 
 	running.Remove(GetHandle());
 
+	EnterProtectedRegion();
+
+	onFinish.Emit();
 	onFinishJob.Emit(this);
 
+	LeaveProtectedRegion();
+
 	return Success();
+}
+
+Bool BonkEnc::Job::ReadyToRun()
+{
+	return True;
 }
 
 Void BonkEnc::Job::OnChangeSize(const Size &nSize)
@@ -106,6 +128,43 @@ Void BonkEnc::Job::OnChangeSize(const Size &nSize)
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
 	progress->SetWidth(clientSize.cx - progressLabel->textSize.cx - progressValue->GetWidth() - timeLabel->textSize.cx - timeValue->GetWidth() - 36);
+}
+
+Void BonkEnc::Job::OnMouseOver()
+{
+	Font	 font = progressLabel->GetFont();
+
+	font.SetColor(Setup::GradientTextColor);
+
+	progressLabel->SetFont(font);
+
+	Paint(SP_PAINT);
+}
+
+Void BonkEnc::Job::OnMouseOut()
+{
+	Font	 font = progressLabel->GetFont();
+
+	font.SetColor(Setup::TextColor);
+
+	progressLabel->SetFont(font);
+
+	Paint(SP_PAINT);
+}
+
+Int BonkEnc::Job::SetText(const String &newText)
+{
+	if (text == newText) return Success();
+
+	Surface	*surface = container->GetDrawSurface();
+
+	surface->StartPaint(GetVisibleArea());
+
+	Widget::SetText(newText);
+
+	surface->EndPaint();
+
+	return Success();
 }
 
 Int BonkEnc::Job::SetProgress(Int nValue)

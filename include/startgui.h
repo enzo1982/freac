@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,7 +15,6 @@
 #include "bonkenc.h"
 
 #include <gui/main_joblist.h>
-#include <gui/main_protocol.h>
 #include <gui/main_threads.h>
 
 using namespace smooth;
@@ -60,7 +59,6 @@ namespace BonkEnc
 			TabWidget			*tabs_main;
 			LayerJoblist			*tab_layer_joblist;
 			LayerThreads			*tab_layer_threads;
-			LayerProtocol			*tab_layer_protocol;
 
 			Int				 clicked_drive;
 			Int				 clicked_encoder;
@@ -81,7 +79,6 @@ namespace BonkEnc
 			Void				 ShowTipOfTheDay();
 
 			Void				 CheckForUpdates();
-			Int				 CheckForUpdates(Bool);
 
 			Bool				 SetLanguage();
 			Void				 FillMenus();

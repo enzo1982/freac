@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -29,7 +29,8 @@
 BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 BoCA::I18n		*BonkEnc::BonkEnc::i18n = NIL;
 
-String	 BonkEnc::BonkEnc::version	= "CVS 2008xxyy";
+String	 BonkEnc::BonkEnc::appName	= "BonkEnc";
+String	 BonkEnc::BonkEnc::version	= "CVS 2009xxyy";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";

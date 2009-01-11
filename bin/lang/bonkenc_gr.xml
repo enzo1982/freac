@@ -53,7 +53,7 @@
   <entry id="41" string="Currently encoding">Τρέχουσα κωδικοποίηση</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Αυτό το πρόγραμμα διατίθεται σύμφωνα με τους όρους&#10;της GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">Ερώτηση CDDB</entry>
-  <entry id="44" string="About BonkEnc">Σχετικά με το BonkEnc</entry>
+  <entry id="44" string="About %1">Σχετικά με το %1</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">Δεν υπάρχουν ρυθμίσεις για το φίλτρο WAVE Out!</entry>
   <entry id="46" string="WAVE Out filter">Φίλτρο WAVE Out</entry>
   <entry id="47" string="Cannot change settings while encoding!">Αδύνατη αλλαγή των ρυθμίσεων κατά την κωδικοποίηση!</entry>

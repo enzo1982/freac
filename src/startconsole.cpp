@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,6 +11,8 @@
 #include <startconsole.h>
 #include <joblist.h>
 #include <dllinterfaces.h>
+
+#include <jobs/job_addfiles.h>
 
 using namespace smooth::IO;
 using namespace smooth::System;
@@ -56,9 +58,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 {
 	currentConfig->enable_console = true;
 
-	if (currentConfig->language == NIL) i18n->ActivateLanguage("internal");
+	if (BoCA::Config::Get()->language == NIL) i18n->ActivateLanguage("internal");
 
-	i18n->ActivateLanguage(currentConfig->language);
+	i18n->ActivateLanguage(BoCA::Config::Get()->language);
 
 	BoCA::Config	*componentsConfig = BoCA::Config::Get();
 
@@ -337,11 +339,26 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				continue;
 			}
 
-			joblist->AddTrackByFileName(files.GetNth(i), outfile);
+			Array<String>	 jobFiles;
+
+			jobFiles.Add(files.GetNth(i));
+
+			Job	*job = new JobAddFiles(jobFiles);
+
+			job->Schedule();
+
+			while (Job::GetPlannedJobs().Length() > 0) Sleep(10);
+			while (Job::GetRunningJobs().Length() > 0) Sleep(10);
 
 			if (joblist->GetNOfTracks() > 0)
 			{
 				if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+
+				Track	 track = joblist->GetNthTrack(0);
+
+				track.outfile = outfile;
+
+				joblist->UpdateTrackInfo(track);
 
 				encoder->Encode(joblist, False);
 
@@ -457,7 +474,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 {
 	if (helpenc == NIL)
 	{
-		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2008 Robert Kausch\n\n"));
+		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2009 Robert Kausch\n\n"));
 		Console::OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
 		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
 		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
@@ -474,7 +491,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	}
 	else
 	{
-		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2008 Robert Kausch\n\n"));
+		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2009 Robert Kausch\n\n"));
 
 		if (helpenc == "LAME" || helpenc == "lame")
 		{

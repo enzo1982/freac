@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">Iniciat procés de compresió</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Aquest programa es distribueix sota la clàusula&#10;GNU General Public License (GPL).</entry>
     <entry id="43" string="CDDB query">Consulta a CDDB</entry>
-    <entry id="44" string="About BonkEnc">Sobri BonkEnc</entry>
+    <entry id="44" string="About %1">Sobri %1</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">El filtre de Sortida d'Ones (Wave Out) no té opcions de configuració!</entry>
     <entry id="46" string="WAVE Out filter">Filtre de Sortida d'Ones (WAVE Out)</entry>
     <entry id="47" string="Cannot change settings while encoding!">No es pot modificar la configuració durant la compresió!</entry>

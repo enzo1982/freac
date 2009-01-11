@@ -30,6 +30,7 @@ Geschichte
 		- Unterstützung für AAC-Synchronisierung hinzugefügt (zum Lesen von AAC-Streamrips benötigt)
 		- Unterstützung zum Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
 		- Unterstützung für Cover-Bilder in MP4-Dateien hinzugefügt
+		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
@@ -60,7 +61,7 @@ Geschichte
 		- LAME suf Version 3.98.3 aktualisiert
 		- Ogg Vorbis auf aoTuV Beta 5.61 aktualisiert
 		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
-		- Update auf MPEG4IP v1.6.1
+		- Update auf MP4v2 v2.0
 		- Viele weitere Korrekturen
 
 Voraussetzungen

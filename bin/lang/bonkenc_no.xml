@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">Koding pågår</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Dette programmet blir distribuert under vilkårene&#10;for GNU General Public Licence (GPL).</entry>
     <entry id="43" string="CDDB query">CDDB-forespørsel</entry>
-    <entry id="44" string="About BonkEnc">Om BonkEnc</entry>
+    <entry id="44" string="About %1">Om %1</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Ingen alternativer kan konfigureres for Wave Out-filteret</entry>
     <entry id="46" string="WAVE Out filter">WAVE Out-filter</entry>
     <entry id="47" string="Cannot change settings while encoding!">Kan ikke endre innstillinger mens koding pågår</entry>

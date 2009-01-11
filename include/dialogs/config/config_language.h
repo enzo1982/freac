@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -27,7 +27,7 @@ namespace BonkEnc
 			Text		*text_info;
 			Hyperlink	*link_url;
 
-			Config		*currentConfig;
+			BoCA::Config	*currentConfig;
 		slots:
 			Void		 SelectLanguage();
 			Void		 EditLanguageFile();

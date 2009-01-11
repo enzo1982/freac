@@ -555,6 +555,10 @@
 				Name="gui"
 				>
 				<File
+					RelativePath="..\..\src\gui\layer_tooltip.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\main_joblist.cpp"
 					>
 				</File>
@@ -575,7 +579,15 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\jobs\job_testprogress.cpp"
+					RelativePath="..\..\src\jobs\job_adddirectory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\jobs\job_addfiles.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\jobs\job_checkforupdates.cpp"
 					>
 				</File>
 				<File
@@ -769,6 +781,10 @@
 				Name="gui"
 				>
 				<File
+					RelativePath="..\..\include\gui\layer_tooltip.h"
+					>
+				</File>
+				<File
 					RelativePath="..\..\include\gui\main_joblist.h"
 					>
 				</File>
@@ -789,7 +805,15 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\include\jobs\job_testprogress.h"
+					RelativePath="..\..\include\jobs\job_adddirectory.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\jobs\job_addfiles.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\jobs\job_checkforupdates.h"
 					>
 				</File>
 				<File

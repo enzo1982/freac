@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">正在编码</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">本程序在遵守以下规定下被散发&#10;GNU协议</entry>
     <entry id="43" string="CDDB query">CDDB查询</entry>
-    <entry id="44" string="About BonkEnc">关于BonkEnc</entry>
+    <entry id="44" string="About %1">关于%1</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">无法为音频输出过滤器设置选项!</entry>
     <entry id="46" string="WAVE Out filter">音频输出过滤器</entry>
     <entry id="47" string="Cannot change settings while encoding!">不能在编码过程中改变设置!</entry>

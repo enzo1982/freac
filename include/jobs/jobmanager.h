@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,7 +11,8 @@
 #ifndef _H_JOBMANAGER_
 #define _H_JOBMANAGER_
 
-#include "smooth.h"
+#include <smooth.h>
+#include "job.h"
 
 using namespace smooth;
 using namespace smooth::Threads;
@@ -37,6 +38,8 @@ namespace BonkEnc
 			static Error		 Quit();
 		slots:
 			Void			 ManagerThread();
+
+			Void			 OnFinishJob(Job *);
 	};
 };
 

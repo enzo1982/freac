@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,18 +8,23 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <jobs/job_testprogress.h>
+#ifndef _H_JOB_CHECKFORUPDATES_
+#define _H_JOB_CHECKFORUPDATES_
 
-Error BonkEnc::JobTestProgress::Perform()
+#include "job.h"
+
+namespace BonkEnc
 {
-	SetText("Testing job progress indicator...");
-
-	while (GetProgress() < 1000)
+	class JobCheckForUpdates : public Job
 	{
-		Sleep(10);
+		protected:
+			Bool		 startup;
+		public:
+					 JobCheckForUpdates(Bool);
+			virtual		~JobCheckForUpdates();
+		slots:
+			virtual Error	 Perform();
+	};
+};
 
-		SetProgress(GetProgress() + 1);
-	}
-
-	return Success();
-}
+#endif

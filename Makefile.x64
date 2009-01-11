@@ -11,7 +11,7 @@ LIBDIR2 = cdk/lib64
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_cdrip.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_protocol.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_testprogress.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_cdrip.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/gui.o
 CMDOBJECTS = $(OBJECTDIR)/console.o
@@ -146,9 +146,19 @@ $(OBJECTDIR)/job.o: $(SRCDIR)/jobs/job.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job.cpp -o $(OBJECTDIR)/job.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/job_testprogress.o: $(SRCDIR)/jobs/job_testprogress.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_testprogress.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_testprogress.cpp -o $(OBJECTDIR)/job_testprogress.o
+$(OBJECTDIR)/job_adddirectory.o: $(SRCDIR)/jobs/job_adddirectory.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_adddirectory.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_adddirectory.cpp -o $(OBJECTDIR)/job_adddirectory.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/job_addfiles.o: $(SRCDIR)/jobs/job_addfiles.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_addfiles.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_addfiles.cpp -o $(OBJECTDIR)/job_addfiles.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/job_checkforupdates.o: $(SRCDIR)/jobs/job_checkforupdates.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_checkforupdates.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_checkforupdates.cpp -o $(OBJECTDIR)/job_checkforupdates.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/jobmanager.o: $(SRCDIR)/jobs/jobmanager.cpp
@@ -276,14 +286,14 @@ $(OBJECTDIR)/configentry.o: $(SRCDIR)/dialogs/config/configentry.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/config/configentry.cpp -o $(OBJECTDIR)/configentry.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/layer_tooltip.o: $(SRCDIR)/gui/layer_tooltip.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/gui/layer_tooltip.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/gui/layer_tooltip.cpp -o $(OBJECTDIR)/layer_tooltip.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/main_joblist.o: $(SRCDIR)/gui/main_joblist.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/gui/main_joblist.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/gui/main_joblist.cpp -o $(OBJECTDIR)/main_joblist.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/main_protocol.o: $(SRCDIR)/gui/main_protocol.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/gui/main_protocol.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/gui/main_protocol.cpp -o $(OBJECTDIR)/main_protocol.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/main_threads.o: $(SRCDIR)/gui/main_threads.cpp

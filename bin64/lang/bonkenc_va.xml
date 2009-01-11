@@ -53,7 +53,7 @@
   <entry id="41" string="Currently encoding">Iniciant proces de codificacio</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa se distribuix baix els termes&#10;GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">Consulta a CDDB</entry>
-  <entry id="44" string="About BonkEnc">Al voltant de BonkEnc</entry>
+  <entry id="44" string="About %1">Al voltant de %1</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">¡El filtre d'eixida d'Ones (Wave Out) no te opcions de configuracio!</entry>
   <entry id="46" string="WAVE Out filter">Filtre d'Eixida d'Ones (WAVE Out)</entry>
   <entry id="47" string="Cannot change settings while encoding!">¡No se pot modificar la configuracio durant la codificacio!</entry>

@@ -53,7 +53,7 @@
     <entry id="41" string="Currently encoding">현재 인코딩 중</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">이 프로그램은 GNU General Public License (GPL)의&#10;조항에 의거하여 배포되고 있습니다.</entry>
     <entry id="43" string="CDDB query">CDDB 쿼리</entry>
-    <entry id="44" string="About BonkEnc">BonkEnc 정보</entry>
+    <entry id="44" string="About %1">%1 정보</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">Wave출력필터로 설정된 항목이 없습니다!</entry>
     <entry id="46" string="WAVE Out filter">Wave 출력 필터</entry>
     <entry id="47" string="Cannot change settings while encoding!">인코딩 중에는 설정을 변경할 수 없습니다!</entry>

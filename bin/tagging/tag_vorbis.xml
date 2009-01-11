@@ -8,7 +8,7 @@
     <field name="Track number" type="integer">TRACKNUMBER</field>
     <field name="Artist name" type="text">ARTIST</field>
     <field name="Performer" type="text">PERFORMER</field>
-    <field name="Conpyright info" type="text">COPYRIGHT</field>
+    <field name="Copyright info" type="text">COPYRIGHT</field>
     <field name="License" type="text">LICENSE</field>
     <field name="Record label" type="text">ORGANIZATION</field>
     <field name="Description" type="text">DESCRIPTION</field>

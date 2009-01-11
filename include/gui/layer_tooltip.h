@@ -8,29 +8,23 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_PLAYLIST_
-#define _H_PLAYLIST_
+#ifndef _H_LAYER_TOOLTIP_
+#define _H_LAYER_TOOLTIP_
 
-#include <smooth.h>
-
-using namespace smooth;
+#include <bonkenc.h>
 
 namespace BonkEnc
 {
-	class Playlist
+	class LayerTooltip : public Layer
 	{
 		private:
-			Array<String>	 fileNames;
-			Array<String>	 trackNames;
-			Array<Int>	 trackLengths;
+			Image		*cover;
+			Text		*text;
+
+			const String	&GetTooltipText(const Track &);
 		public:
-			Bool		 AddTrack(const String &, const String &, Int);
-
-			Int		 GetNOfTracks();
-			String		 GetNthTrackFileName(Int);
-
-			Bool		 Save(const String &);
-			Bool		 Load(const String &);
+					 LayerTooltip(const Track &);
+			virtual		~LayerTooltip();
 	};
 };
 

@@ -51,7 +51,7 @@
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Pakkaus on edelleen käynnissä! Haluatko silti poistua?</entry>
     <entry id="41" string="Currently encoding">Nyt pakataan</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tätä ohjelmaa levitettäessä noudatetaan&#10;GNU General Public License (GPL).</entry>
-    <entry id="44" string="About BonkEnc">Tietoja BonkEncistä</entry>
+    <entry id="44" string="About %1">Tietoja %1istä</entry>
     <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE Out -suodattimelle ei voida määrittää ehtoja!</entry>
     <entry id="46" string="WAVE Out filter">WAVE Out -suodatin</entry>
     <entry id="47" string="Cannot change settings while encoding!">Pakkauksen aikana ei voida muuttaa asetuksia!</entry>
