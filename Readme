@@ -18,6 +18,8 @@ History
 		- updated Italian translation
 		- added <directory> pattern to allow preserving existing directory structures
 		- fixed handling of non-ASCII characters when opening MP3 files with multiple tags
+		- fixed error opening large MP4 files
+		- upgrade to MP4v2 v2.0 alpha
 
 	Version 1.0.10 (December 2008)
 

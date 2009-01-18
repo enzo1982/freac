@@ -18,6 +18,8 @@ Geschichte
 		- Italienische Übersetzung aktualisiert
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Fehler beim Umgang mit nicht-ASCII-Zeichen beim Öffnen von MP3-Dateien mit mehreren Tags behoben
+		- Fehler beim Öffnen von großen MP4-Dateien behoben
+		- Update auf MP4v2 v2.0 Alpha
 
 	Version 1.0.10 (Dezember 2008)
 
