@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/submit.h>
+#include <dialogs/cddb/query.h>
 #include <joblist.h>
 #include <dllinterfaces.h>
 #include <utilities.h>
@@ -385,7 +386,8 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		}
 	}
 
-	// Save modified entry to CDDB cache
+	/* Save modified entry to CDDB cache
+	 */
 	CDDBCache::Get()->AddCacheEntry(cddbInfo);
 
 	text_status->SetText(NIL);
@@ -403,15 +405,16 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 				if (trackInfo.cdTrack == list_tracks->GetNthEntry(m)->GetText().ToInt())
 				{
 					Track	 track = BonkEnc::Get()->joblist->GetNthTrack(l);
+					Info	&info = track.GetInfo();
 
-					if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") track.artist = artists.GetNth(m);
-					else															track.artist = edit_artist->GetText();
+					if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") info.artist = artists.GetNth(m);
+					else															info.artist = edit_artist->GetText();
 
-					track.title	= titles.GetNth(m);
-					track.album	= edit_album->GetText();
-					track.year	= edit_year->GetText().ToInt();
-					track.genre	= edit_genre->GetText();
-					track.comment	= comments.GetNth(m);
+					info.title	= titles.GetNth(m);
+					info.album	= edit_album->GetText();
+					info.year	= edit_year->GetText().ToInt();
+					info.genre	= edit_genre->GetText();
+					info.comment	= comments.GetNth(m);
 
 					BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 				}
@@ -528,7 +531,13 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	if (cdInfo == NIL)
 	{
-		cdInfo = ((BonkEncGUI *) BonkEnc::Get())->GetCDDBData();
+		cddbQueryDlg	*dlg = new cddbQueryDlg();
+
+		dlg->SetQueryString(cddb.GetCDDBQueryString());
+
+		cdInfo = dlg->QueryCDDB(True);
+
+		DeleteObject(dlg);
 
 		if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 	}
@@ -747,22 +756,24 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 		if (list_tracks->GetNthEntry(trackInfo.cdTrack - 1) != NIL)
 		{
-			if (trackInfo.artist != NIL && trackInfo.artist != artists.GetNth(trackInfo.cdTrack - 1))
+			const Info	&info = trackInfo.GetInfo();
+
+			if (info.artist != NIL && info.artist != artists.GetNth(trackInfo.cdTrack - 1))
 			{
-				artists.Set(artists.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.artist);
-				cddbInfo.trackArtists.Set(cddbInfo.trackArtists.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.artist);
+				artists.Set(artists.GetNthIndex(trackInfo.cdTrack - 1), info.artist);
+				cddbInfo.trackArtists.Set(cddbInfo.trackArtists.GetNthIndex(trackInfo.cdTrack - 1), info.artist);
 			}
 
-			if (trackInfo.title != NIL && trackInfo.title != titles.GetNth(trackInfo.cdTrack - 1))
+			if (info.title != NIL && info.title != titles.GetNth(trackInfo.cdTrack - 1))
 			{
-				titles.Set(titles.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.title);
-				cddbInfo.trackTitles.Set(cddbInfo.trackTitles.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.title);
+				titles.Set(titles.GetNthIndex(trackInfo.cdTrack - 1), info.title);
+				cddbInfo.trackTitles.Set(cddbInfo.trackTitles.GetNthIndex(trackInfo.cdTrack - 1), info.title);
 			}
 
-			if (trackInfo.comment != NIL && trackInfo.comment != comments.GetNth(trackInfo.cdTrack - 1))
+			if (info.comment != NIL && info.comment != comments.GetNth(trackInfo.cdTrack - 1))
 			{
-				comments.Set(comments.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.comment);
-				cddbInfo.trackComments.Set(cddbInfo.trackComments.GetNthIndex(trackInfo.cdTrack - 1), trackInfo.comment);
+				comments.Set(comments.GetNthIndex(trackInfo.cdTrack - 1), info.comment);
+				cddbInfo.trackComments.Set(cddbInfo.trackComments.GetNthIndex(trackInfo.cdTrack - 1), info.comment);
 			}
 		}
 	}

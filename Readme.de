@@ -30,6 +30,7 @@ Geschichte
 		- Unterstützung für AAC-Synchronisierung hinzugefügt (zum Lesen von AAC-Streamrips benötigt)
 		- Unterstützung zum Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
 		- Unterstützung für Cover-Bilder in MP4-Dateien hinzugefügt
+		- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen

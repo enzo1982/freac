@@ -38,13 +38,14 @@ BonkEnc::LayerTooltip::~LayerTooltip()
 const String &BonkEnc::LayerTooltip::GetTooltipText(const Track &track)
 {
 	const Format	&format = track.GetFormat();
+	const Info	&info = track.GetInfo();
 
 	static String	 tooltip;
 
 	tooltip = String(BonkEnc::i18n->TranslateString("File")).Append(": ").Append(track.origFilename).Append("\n").
 		  Append(BonkEnc::i18n->TranslateString("Size")).Append(": ").Append(track.fileSizeString).Append(" ").Append(BonkEnc::i18n->TranslateString("bytes")).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track.artist.Length() > 0 ? track.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track.title.Length() > 0 ? track.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
+		  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
+		  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
 		  Append(track.length > 0 || track.approxLength > 0 ? String(BonkEnc::i18n->TranslateString("Length")).Append(": ").Append(track.lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : String(NIL)).
 		  Append(track.length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track.length)).Append("\n") : String(NIL)).
 		  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(format.rate)).Append(" Hz\n").

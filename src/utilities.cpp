@@ -284,7 +284,13 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 
 			/* Replace trailing dots and spaces.
 			 */
-			while (tmpDir2.EndsWith(".") || tmpDir2.EndsWith(" ")) { tmpDir2[tmpDir2.Length() - 1] = 0; i--; }
+			while ((tmpDir2 != ".." && tmpDir2 != ".") &&
+			       (tmpDir2.EndsWith(".") || tmpDir2.EndsWith(" ")))
+			{
+				tmpDir2[tmpDir2.Length() - 1] = 0;
+
+				i--;
+			}
 
 			if (tmpDir2 != tmpDir)
 			{

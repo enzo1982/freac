@@ -102,8 +102,8 @@ Bool BonkEnc::Config::LoadSettings()
 	showTooltips				= config->GetIntValue("Settings", "ShowTooltips", 1);
 	wndPos.x				= config->GetIntValue("Settings", "WindowPosX", 100);
 	wndPos.y				= config->GetIntValue("Settings", "WindowPosY", 100);
-	wndSize.cx				= config->GetIntValue("Settings", "WindowSizeX", 650);
-	wndSize.cy				= config->GetIntValue("Settings", "WindowSizeY", 474);
+	wndSize.cx				= config->GetIntValue("Settings", "WindowSizeX", 800);
+	wndSize.cy				= config->GetIntValue("Settings", "WindowSizeY", 600);
 	maximized				= config->GetIntValue("Settings", "WindowMaximized", 0);
 	tab_width_track				= config->GetIntValue("Settings", "TabWidthTrack", 50);
 	tab_width_length			= config->GetIntValue("Settings", "TabWidthLength", 80);

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -69,6 +69,12 @@ namespace BonkEnc
 
 			static String	 DiscIDToString(Int);
 			static Int	 StringToDiscID(const String &);
+
+			static Int	 DiscIDFromMCDI(const Buffer<UnsignedByte> &);
+			static String	 QueryStringFromMCDI(const Buffer<UnsignedByte> &);
+
+			static Int	 DiscIDFromOffsets(const String &);
+			static String	 QueryStringFromOffsets(const String &);
 	};
 };
 

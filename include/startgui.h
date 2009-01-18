@@ -115,8 +115,6 @@ namespace BonkEnc
 
 			Void				 ConfirmDeleteAfterEncoding();
 		public:
-			CDDBInfo			 GetCDDBData();
-
 			/* Returns a new or existing instance of BonkEncGUI
 			 */
 			static BonkEncGUI		*Get();

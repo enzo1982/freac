@@ -112,12 +112,9 @@ Bool BonkEnc::JobList::CanModifyJobList()
 
 Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 {
-	Track	*track = new Track(iTrack);
+	Track		*track = new Track(iTrack);
 
-	track->oArtist = track->artist;
-	track->oTitle = track->title;
-	track->oAlbum = track->album;
-	track->oGenre = track->genre;
+	track->SetOriginalInfo(track->GetInfo());
 
 	ListEntry	*entry	= AddEntry(GetEntryText(*track));
 
@@ -415,14 +412,16 @@ Void BonkEnc::JobList::SaveList()
 
 		for (Int i = 0; i < GetNOfTracks(); i++)
 		{
-			const Track	&trackInfo = GetNthTrack(i);
-			String		 fileName = trackInfo.origFilename;
+			const Track	&track = GetNthTrack(i);
+			const Info	&info = track.GetInfo();
 
-			if (trackInfo.isCDTrack)
+			String		 fileName = track.origFilename;
+
+			if (track.isCDTrack)
 			{
 				for (Int drive = 2; drive < 26; drive++)
 				{
-					String	 trackCDA = String(" ").Append(":\\track").Append(trackInfo.cdTrack < 10 ? "0" : NIL).Append(String::FromInt(trackInfo.cdTrack)).Append(".cda");
+					String	 trackCDA = String(" ").Append(":\\track").Append(track.cdTrack < 10 ? "0" : NIL).Append(String::FromInt(track.cdTrack)).Append(".cda");
 
 					trackCDA[0] = drive + 'A';
 
@@ -434,7 +433,7 @@ Void BonkEnc::JobList::SaveList()
 
 					delete in;
 
-					if (trackInfo.length == (trackLength * 2352) / (trackInfo.GetFormat().bits / 8))
+					if (track.length == (trackLength * 2352) / (track.GetFormat().bits / 8))
 					{
 						fileName = trackCDA;
 
@@ -443,7 +442,7 @@ Void BonkEnc::JobList::SaveList()
 				}
 			}
 
-			playlist.AddTrack(fileName, String(trackInfo.artist.Length() > 0 ? trackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo.title.Length() > 0 ? trackInfo.title : BonkEnc::i18n->TranslateString("unknown title")), trackInfo.length == -1 ? -1 : Math::Round((Float) trackInfo.length / (trackInfo.GetFormat().rate * trackInfo.GetFormat().channels)));
+			playlist.AddTrack(fileName, String(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")), track.length == -1 ? -1 : Math::Round((Float) track.length / (track.GetFormat().rate * track.GetFormat().channels)));
 		}
 
 		playlist.Save(dialog->GetFileName());
@@ -550,12 +549,13 @@ Void BonkEnc::JobList::UpdateTextLine()
 
 const String &BonkEnc::JobList::GetEntryText(const Track &track)
 {
+	const Info	&info = track.GetInfo();
 	static String	 jlEntry;
 
-	if (track.artist == NIL && track.title == NIL) jlEntry = String(track.origFilename).Append("\t");
-	else					       jlEntry = String(track.artist.Length() > 0 ? track.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track.title.Length() > 0 ? track.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+	if (info.artist == NIL && info.title == NIL) jlEntry = String(track.origFilename).Append("\t");
+	else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
 
-	jlEntry.Append(track.track > 0 ? (track.track < 10 ? String("0").Append(String::FromInt(track.track)) : String::FromInt(track.track)) : String(NIL)).Append("\t").Append(track.lengthString).Append("\t").Append(track.fileSizeString);
+	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String(NIL)).Append("\t").Append(track.lengthString).Append("\t").Append(track.fileSizeString);
 
 	return jlEntry;
 }

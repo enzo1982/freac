@@ -563,10 +563,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\main_protocol.cpp"
-					>
-				</File>
-				<File
 					RelativePath="..\..\src\gui\main_threads.cpp"
 					>
 				</File>
@@ -786,10 +782,6 @@
 				</File>
 				<File
 					RelativePath="..\..\include\gui\main_joblist.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\gui\main_protocol.h"
 					>
 				</File>
 				<File

@@ -92,7 +92,9 @@ Error BonkEnc::JobAddFiles::Perform()
 //			}
 		}
 
-		if (track.artist == NIL && track.title == NIL)
+		Info	&info = track.GetInfo();
+
+		if (info.artist == NIL && info.title == NIL)
 		{
 			if (!file.StartsWith("cdda://"))
 			{
@@ -128,17 +130,17 @@ Error BonkEnc::JobAddFiles::Perform()
 					{
 						artistComplete = (m += 3);
 
-						track.title = NIL;
+						info.title = NIL;
 					}
 
-					if (!artistComplete)	track.artist[m] = fileName[m];
-					else			track.title[m - artistComplete] = fileName[m];
+					if (!artistComplete)	info.artist[m] = fileName[m];
+					else			info.title[m - artistComplete] = fileName[m];
 				}
 
 				if (artistComplete == 0)
 				{
-					track.artist = NIL;
-					track.title = NIL;
+					info.artist = NIL;
+					info.title = NIL;
 				}
 			}
 		}

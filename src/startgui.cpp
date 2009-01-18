@@ -591,61 +591,79 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 	}
 
 	Array<Int>	 discIDs;
-	Array<String>	 discIDStrings;
+	Array<String>	 queryStrings;
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
 		const Track	&track = joblist->GetNthTrack(i);
-		Int		 discID = CDDB::StringToDiscID(track.discid);
+		const Info	&info = track.GetInfo();
 
-		if (track.isCDTrack)
+		if (info.mcdi.Size() > 0)
 		{
-			discIDs.Add(discID, track.drive);
-			discIDStrings.Add(track.discid, track.drive);
+			Int	 discID	     = CDDB::DiscIDFromMCDI(info.mcdi);
+			String	 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
+
+			discIDs.Add(discID, queryString.ComputeCRC32());
+			queryStrings.Add(queryString, queryString.ComputeCRC32());
+		}
+		else if (info.offsets != NIL)
+		{
+			Int	 discID	     = CDDB::DiscIDFromOffsets(info.offsets);
+			String	 queryString = CDDB::QueryStringFromOffsets(info.offsets);
+
+			discIDs.Add(discID, queryString.ComputeCRC32());
+			queryStrings.Add(queryString, queryString.ComputeCRC32());
 		}
 	}
 
-	for (Int j = 0; j < discIDs.Length(); j++)
+	for (Int j = 0; j < queryStrings.Length(); j++)
 	{
-		Int	 oDrive = BoCA::Config::Get()->cdrip_activedrive;
-
-		BoCA::Config::Get()->cdrip_activedrive = discIDs.GetNthIndex(j);
-
-		Int	 discID = discIDs.GetNth(j);
-		String	 discIDString = discIDStrings.GetNth(j);
+		Int	 discID	     = discIDs.GetNth(j);
+		String	 queryString = queryStrings.GetNth(j);
 		CDDBInfo cdInfo;
 
 		if (currentConfig->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(discID);
 
 		if (cdInfo == NIL)
 		{
-			cdInfo = GetCDDBData();
+			cddbQueryDlg	*dlg = new cddbQueryDlg();
+
+			dlg->SetQueryString(queryString);
+
+			cdInfo = dlg->QueryCDDB(True);
+
+			DeleteObject(dlg);
 
 			if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 		}
-
-		BoCA::Config::Get()->cdrip_activedrive = oDrive;
 
 		if (cdInfo != NIL)
 		{
 			for (Int k = 0; k < joblist->GetNOfTracks(); k++)
 			{
 				Track	 track = joblist->GetNthTrack(k);
+				Info	&info = track.GetInfo();
 
-				if (track.isCDTrack && track.discid == discIDString)
+				if ((info.mcdi.Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi))	      ||
+				    (info.offsets != NIL  && discID == CDDB::DiscIDFromOffsets(info.offsets)))
 				{
-					track.track	= track.cdTrack;
-					track.outfile	= NIL;
-					track.artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(track.cdTrack - 1) : cdInfo.dArtist);
-					track.title	= cdInfo.trackTitles.GetNth(track.cdTrack - 1);
-					track.album	= cdInfo.dTitle;
-					track.genre	= cdInfo.dGenre;
-					track.year	= cdInfo.dYear;
+					Int	 trackNumber = -1;
 
-					track.oArtist	= track.artist;
-					track.oTitle	= track.title;
-					track.oAlbum	= track.album;
-					track.oGenre	= track.genre;
+					if (track.isCDTrack) trackNumber = track.cdTrack;
+					else		     trackNumber = info.track;
+
+					if (trackNumber == -1) continue;
+
+					info.artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
+					info.title	= cdInfo.trackTitles.GetNth(trackNumber - 1);
+					info.album	= cdInfo.dTitle;
+					info.genre	= cdInfo.dGenre;
+					info.year	= cdInfo.dYear;
+					info.track	= trackNumber;
+
+					track.SetOriginalInfo(info);
+
+					track.outfile	= NIL;
 
 					BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 				}
@@ -685,16 +703,6 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 
 		delete queries;
 	}
-}
-
-BonkEnc::CDDBInfo BonkEnc::BonkEncGUI::GetCDDBData()
-{
-	cddbQueryDlg	*dlg	  = new cddbQueryDlg();
-	CDDBInfo	 cddbInfo = dlg->QueryCDDB(True);
-
-	DeleteObject(dlg);
-
-	return cddbInfo;
 }
 
 Void BonkEnc::BonkEncGUI::SubmitCDDBData()

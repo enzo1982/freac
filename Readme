@@ -30,6 +30,7 @@ History
 		- added support for AAC synchronizing (needed to read ripped AAC streams)
 		- added support for reading simple audio files using libsndfile
 		- added support for cover art in MP4 files
+		- added support for MCDI frame in ID3v2 tags
 		- added <directory> pattern to allow preserving existing directory structures
 		- added <installdrive> pattern for use in output directory name
 		- label/publisher and ISRC information is now preserved during conversion

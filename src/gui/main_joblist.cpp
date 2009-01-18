@@ -849,22 +849,24 @@ Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 {
 	if (joblist->GetSelectedTrack() == NIL) return;
 
+	const Info	&info = track.GetInfo();
+
 	dontUpdateInfo = True;
 
-	info_edit_artist->SetText(track.artist);
-	info_edit_title->SetText(track.title);
-	info_edit_album->SetText(track.album);
+	info_edit_artist->SetText(info.artist);
+	info_edit_title->SetText(info.title);
+	info_edit_album->SetText(info.album);
 
 	info_edit_track->SetText(NIL);
 
-	if	(track.track > 0 && track.track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(track.track)));
-	else if (track.track >= 10)			info_edit_track->SetText(String::FromInt(track.track));
+	if	(info.track > 0 && info.track < 10) info_edit_track->SetText(String("0").Append(String::FromInt(info.track)));
+	else if (info.track >= 10)		    info_edit_track->SetText(String::FromInt(info.track));
 
 	info_edit_year->SetText(NIL);
 
-	if (track.year > 0) info_edit_year->SetText(String::FromInt(track.year));
+	if (info.year > 0) info_edit_year->SetText(String::FromInt(info.year));
 
-	info_edit_genre->SetText(track.genre);
+	info_edit_genre->SetText(info.genre);
 
 	dontUpdateInfo = False;
 }
@@ -907,15 +909,16 @@ Void BonkEnc::LayerJoblist::UpdateTitleInfo()
 	if (dontUpdateInfo) return;
 
 	Track	 track = joblist->GetSelectedTrack();
+	Info	&info = track.GetInfo();
 
 	if (track == NIL) return;
 
-	track.artist	= info_edit_artist->GetText();
-	track.title	= info_edit_title->GetText();
-	track.album	= info_edit_album->GetText();
-	track.track	= info_edit_track->GetText().ToInt();
-	track.year	= info_edit_year->GetText().ToInt();
-	track.genre	= info_edit_genre->GetText();
+	info.artist	= info_edit_artist->GetText();
+	info.title	= info_edit_title->GetText();
+	info.album	= info_edit_album->GetText();
+	info.track	= info_edit_track->GetText().ToInt();
+	info.year	= info_edit_year->GetText().ToInt();
+	info.genre	= info_edit_genre->GetText();
 
 	BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 }
@@ -968,9 +971,11 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, Int mode)
 
 	progress->SetValue(0);
 
-	if (track.artist.Length() == 0 &&
-	    track.title.Length()  == 0) edb_filename->SetText(track.origFilename);
-	else				edb_filename->SetText(String(track.artist.Length() > 0 ? track.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track.title.Length() > 0 ? track.title : i18n->TranslateString("unknown title")));
+	const Info	&info = track.GetInfo();
+
+	if (info.artist.Length() == 0 &&
+	    info.title.Length()  == 0)	edb_filename->SetText(track.origFilename);
+	else				edb_filename->SetText(String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
 
 	switch (mode)
 	{
@@ -1304,11 +1309,12 @@ Void BonkEnc::LayerJoblist::UseStringForSelectedTracks()
 		if (entry->IsMarked())
 		{
 			Track	 track = joblist->GetNthTrack(i);
+			Info	&info = track.GetInfo();
 
-			if	(activePopup == menu_edit_artist->GetHandle()) track.artist = info_edit_artist->GetText();
-			else if (activePopup == menu_edit_album->GetHandle())  track.album = info_edit_album->GetText();
-			else if (activePopup == menu_edit_genre->GetHandle())  track.genre = info_edit_genre->GetText();
-			else if (activePopup == menu_edit_year->GetHandle())   track.year = info_edit_year->GetText().ToInt();
+			if	(activePopup == menu_edit_artist->GetHandle()) info.artist = info_edit_artist->GetText();
+			else if (activePopup == menu_edit_album->GetHandle())  info.album = info_edit_album->GetText();
+			else if (activePopup == menu_edit_genre->GetHandle())  info.genre = info_edit_genre->GetText();
+			else if (activePopup == menu_edit_year->GetHandle())   info.year = info_edit_year->GetText().ToInt();
 
 			BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 		}
@@ -1331,12 +1337,14 @@ Void BonkEnc::LayerJoblist::InterpretStringAs()
 		case CHARSET_BIG_5:	 charset = "BIG-5";	 break;
 	}
 
-	Track	 track = joblist->GetSelectedTrack();
+	Track		 track = joblist->GetSelectedTrack();
+	Info		&info = track.GetInfo();
+	const Info	&oInfo = track.GetOriginalInfo();
 
-	if	(activePopup == menu_edit_artist->GetHandle()) track.artist.ImportFrom(charset, track.oArtist.ConvertTo("ISO-8859-1"));
-	else if (activePopup == menu_edit_title->GetHandle())  track.title.ImportFrom(charset, track.oTitle.ConvertTo("ISO-8859-1"));
-	else if (activePopup == menu_edit_album->GetHandle())  track.album.ImportFrom(charset, track.oAlbum.ConvertTo("ISO-8859-1"));
-	else if (activePopup == menu_edit_genre->GetHandle())  track.genre.ImportFrom(charset, track.oGenre.ConvertTo("ISO-8859-1"));
+	if	(activePopup == menu_edit_artist->GetHandle()) info.artist.ImportFrom(charset, oInfo.artist.ConvertTo("ISO-8859-1"));
+	else if (activePopup == menu_edit_title->GetHandle())  info.title.ImportFrom(charset, oInfo.title.ConvertTo("ISO-8859-1"));
+	else if (activePopup == menu_edit_album->GetHandle())  info.album.ImportFrom(charset, oInfo.album.ConvertTo("ISO-8859-1"));
+	else if (activePopup == menu_edit_genre->GetHandle())  info.genre.ImportFrom(charset, oInfo.genre.ConvertTo("ISO-8859-1"));
 
 	BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 
@@ -1365,12 +1373,14 @@ Void BonkEnc::LayerJoblist::InterpretStringAsAll()
 
 		if (entry->IsMarked())
 		{
-			Track	 track = joblist->GetNthTrack(i);
+			Track		 track = joblist->GetNthTrack(i);
+			Info		&info = track.GetInfo();
+			const Info	&oInfo = track.GetOriginalInfo();
 
-			if	(activePopup == menu_edit_artist->GetHandle()) track.artist.ImportFrom(charset, track.oArtist.ConvertTo("ISO-8859-1"));
-			else if (activePopup == menu_edit_title->GetHandle())  track.title.ImportFrom(charset, track.oTitle.ConvertTo("ISO-8859-1"));
-			else if (activePopup == menu_edit_album->GetHandle())  track.album.ImportFrom(charset, track.oAlbum.ConvertTo("ISO-8859-1"));
-			else if (activePopup == menu_edit_genre->GetHandle())  track.genre.ImportFrom(charset, track.oGenre.ConvertTo("ISO-8859-1"));
+			if	(activePopup == menu_edit_artist->GetHandle()) info.artist.ImportFrom(charset, oInfo.artist.ConvertTo("ISO-8859-1"));
+			else if (activePopup == menu_edit_title->GetHandle())  info.title.ImportFrom(charset, oInfo.title.ConvertTo("ISO-8859-1"));
+			else if (activePopup == menu_edit_album->GetHandle())  info.album.ImportFrom(charset, oInfo.album.ConvertTo("ISO-8859-1"));
+			else if (activePopup == menu_edit_genre->GetHandle())  info.genre.ImportFrom(charset, oInfo.genre.ConvertTo("ISO-8859-1"));
 
 			BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 		}
@@ -1397,10 +1407,11 @@ Void BonkEnc::LayerJoblist::AdjustStringCase()
 	}
 
 	Track	 track = joblist->GetSelectedTrack();
+	Info	&info = track.GetInfo();
 
-	if	(activePopup == menu_edit_artist->GetHandle()) track.artist = string;
-	else if (activePopup == menu_edit_title->GetHandle())  track.title  = string;
-	else if (activePopup == menu_edit_album->GetHandle())  track.album  = string;
+	if	(activePopup == menu_edit_artist->GetHandle()) info.artist = string;
+	else if (activePopup == menu_edit_title->GetHandle())  info.title  = string;
+	else if (activePopup == menu_edit_album->GetHandle())  info.album  = string;
 
 	BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 
@@ -1417,10 +1428,11 @@ Void BonkEnc::LayerJoblist::AdjustStringCaseAll()
 		{
 			String	 string;
 			Track	 track = joblist->GetNthTrack(i);
+			Info	&info = track.GetInfo();
 
-			if	(activePopup == menu_edit_artist->GetHandle()) string = track.artist;
-			else if (activePopup == menu_edit_title->GetHandle())  string = track.title;
-			else if (activePopup == menu_edit_album->GetHandle())  string = track.album;
+			if	(activePopup == menu_edit_artist->GetHandle()) string = info.artist;
+			else if (activePopup == menu_edit_title->GetHandle())  string = info.title;
+			else if (activePopup == menu_edit_album->GetHandle())  string = info.album;
 
 			switch (clicked_case)
 			{
@@ -1431,9 +1443,9 @@ Void BonkEnc::LayerJoblist::AdjustStringCaseAll()
 				case 4:	string = string.ToUpper();			  break;
 			}
 
-			if	(activePopup == menu_edit_artist->GetHandle()) track.artist = string;
-			else if (activePopup == menu_edit_title->GetHandle())  track.title  = string;
-			else if (activePopup == menu_edit_album->GetHandle())  track.album  = string;
+			if	(activePopup == menu_edit_artist->GetHandle()) info.artist = string;
+			else if (activePopup == menu_edit_title->GetHandle())  info.title  = string;
+			else if (activePopup == menu_edit_album->GetHandle())  info.album  = string;
 
 			BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 		}

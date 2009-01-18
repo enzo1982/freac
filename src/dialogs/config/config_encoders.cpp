@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -293,7 +293,7 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 {
 	Directory	 outputDirectory(String(edit_outdir->GetText()).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
-	if ((Setup::enableUnicode ? SetCurrentDirectoryW(String(outputDirectory)) : SetCurrentDirectoryA(String(outputDirectory))) == False)
+	if (Directory::SetActiveDirectory(outputDirectory) != Success())
 	{
 		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
 
@@ -301,8 +301,7 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 		else if (selection == IDCANCEL)	return Error();
 	}
 
-	if (Setup::enableUnicode)	SetCurrentDirectoryW(Application::GetApplicationDirectory());
-	else				SetCurrentDirectoryA(Application::GetApplicationDirectory());
+	Directory::SetActiveDirectory(Application::GetApplicationDirectory());
 
 	Registry	&boca = Registry::Get();
 

@@ -125,8 +125,9 @@ Int BonkEnc::Encoder::EncoderThread()
 			continue;
 		}
 
-		Track	 trackInfo = joblist->GetNthTrack(i - nRemoved);
-		Format	&format	   = trackInfo.GetFormat();
+		Track		 trackInfo = joblist->GetNthTrack(i - nRemoved);
+		const Format	&format	   = trackInfo.GetFormat();
+		const Info	&info	   = trackInfo.GetInfo();
 
 		String	 in_filename	= trackInfo.origFilename;
 		String	 out_filename;
@@ -144,18 +145,19 @@ Int BonkEnc::Encoder::EncoderThread()
 				if (singleOutFile == NIL) break;
 
 				Track	 singleTrackInfo;
+				Info	&singleInfo = singleTrackInfo.GetInfo();
 
-				singleTrackInfo.artist	= trackInfo.artist;
-				singleTrackInfo.title	= trackInfo.album;
-				singleTrackInfo.album	= trackInfo.album;
-				singleTrackInfo.year	= trackInfo.year;
-				singleTrackInfo.genre	= trackInfo.genre;
+				singleInfo.artist = info.artist;
+				singleInfo.title  = info.album;
+				singleInfo.album  = info.album;
+				singleInfo.year   = info.year;
+				singleInfo.genre  = info.genre;
 
 				singleTrackInfo.outfile	= singleOutFile;
 
 				singleTrackInfo.SetFormat(trackInfo.GetFormat());
 
-				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo.artist.Length() > 0 ? singleTrackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo.title.Length() > 0 ? singleTrackInfo.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) progress->GetTotalSamples() / (singleTrackInfo.GetFormat().rate * singleTrackInfo.GetFormat().channels)));
+				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleInfo.artist.Length() > 0 ? singleInfo.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(singleInfo.title.Length() > 0 ? singleInfo.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) progress->GetTotalSamples() / (singleTrackInfo.GetFormat().rate * singleTrackInfo.GetFormat().channels)));
 
 				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_OVERWRITE);
 
@@ -425,13 +427,13 @@ Int BonkEnc::Encoder::EncoderThread()
 			{
 				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
 
-				playlist.AddTrack(relativeFileName, String(trackInfo.artist.Length() > 0 ? trackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo.title.Length() > 0 ? trackInfo.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (format.rate * format.channels)));
-				cueSheet.AddTrack(relativeFileName, 0, trackInfo.title.Length() > 0 ? trackInfo.title : BonkEnc::i18n->TranslateString("unknown title"), trackInfo.artist.Length() > 0 ? trackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist"), trackInfo.album.Length() > 0 ? trackInfo.album : BonkEnc::i18n->TranslateString("unknown album"));
+				playlist.AddTrack(relativeFileName, String(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (format.rate * format.channels)));
+				cueSheet.AddTrack(relativeFileName, 0, info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title"), info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), info.album.Length() > 0 ? info.album : BonkEnc::i18n->TranslateString("unknown album"));
 			}
 		}
 		else if (!skip)
 		{
-			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (format.rate * format.channels) * 75), trackInfo.title.Length() > 0 ? trackInfo.title : BonkEnc::i18n->TranslateString("unknown title"), trackInfo.artist.Length() > 0 ? trackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist"), trackInfo.album.Length() > 0 ? trackInfo.album : BonkEnc::i18n->TranslateString("unknown album"));
+			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (format.rate * format.channels) * 75), info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title"), info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), info.album.Length() > 0 ? info.album : BonkEnc::i18n->TranslateString("unknown album"));
 		}
 
 		if (trackInfo.isCDTrack && BoCA::Config::Get()->cdrip_autoEject && step == 1)
@@ -558,9 +560,11 @@ Bool BonkEnc::Encoder::CheckSingleFileSampleFormat()
 	return True;
 }
 
-String BonkEnc::Encoder::GetPlaylistFileName(const Track &trackInfo)
+String BonkEnc::Encoder::GetPlaylistFileName(const Track &track)
 {
 	if (Config::Get()->enable_console) return NIL;
+
+	const Info	&info = track.GetInfo();
 
 	String	 playlistOutputDir = (Config::Get()->playlist_useEncOutdir ? Config::Get()->enc_outdir : Config::Get()->playlist_outdir);
 
@@ -568,20 +572,20 @@ String BonkEnc::Encoder::GetPlaylistFileName(const Track &trackInfo)
 
 	String	 playlistFileName = playlistOutputDir;
 
-	if (trackInfo.artist != NIL || trackInfo.album != NIL)
+	if (info.artist != NIL || info.album != NIL)
 	{
 		String	 shortOutFileName = Config::Get()->playlist_filePattern;
 
-		shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(trackInfo.artist.Length() > 0 ? trackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist"), True));
-		shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo.album.Length() > 0 ? trackInfo.album : BonkEnc::i18n->TranslateString("unknown album"), True));
-		shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo.genre.Length() > 0 ? trackInfo.genre : BonkEnc::i18n->TranslateString("unknown genre"), True));
-		shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo.year > 0 ? String::FromInt(trackInfo.year) : BonkEnc::i18n->TranslateString("unknown year"), True));
+		shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), True));
+		shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : BonkEnc::i18n->TranslateString("unknown album"), True));
+		shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(info.genre.Length() > 0 ? info.genre : BonkEnc::i18n->TranslateString("unknown genre"), True));
+		shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(info.year > 0 ? String::FromInt(info.year) : BonkEnc::i18n->TranslateString("unknown year"), True));
 
 		playlistFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
 	}
-	else if (trackInfo.isCDTrack)
+	else if (track.isCDTrack)
 	{
-		playlistFileName.Append("cd").Append(String::FromInt(trackInfo.drive));
+		playlistFileName.Append("cd").Append(String::FromInt(track.drive));
 	}
 	else
 	{
@@ -625,31 +629,33 @@ String BonkEnc::Encoder::GetRelativeFileName(const String &trackFileName, const 
 	return relativeFileName;
 }
 
-String BonkEnc::Encoder::GetOutputFileName(const Track &trackInfo)
+String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 {
-	String		 outputFileName;
+	const Info	&info = track.GetInfo();
+
+	String	 outputFileName;
 
 	Int	 lastBs = -1;
 	Int	 firstDot = 0;
 
-	for (Int j = 0; j < trackInfo.origFilename.Length(); j++) if (trackInfo.origFilename[j] == '\\') lastBs = j;
+	for (Int j = 0; j < track.origFilename.Length(); j++) if (track.origFilename[j] == '\\') lastBs = j;
 
-	for (Int k = trackInfo.origFilename.Length() - 1; k >= 0; k--)
+	for (Int k = track.origFilename.Length() - 1; k >= 0; k--)
 	{
-		if (trackInfo.origFilename[k] == '.' )	{ firstDot = trackInfo.origFilename.Length() - k; break; }
-		if (trackInfo.origFilename[k] == '\\')	break;
+		if (track.origFilename[k] == '.' ) { firstDot = track.origFilename.Length() - k; break; }
+		if (track.origFilename[k] == '\\') break;
 	}
 
 	String	 shortInFileName;
 
-	for (Int l = 0; l < (trackInfo.origFilename.Length() - lastBs - firstDot - 1); l++) shortInFileName[l] = trackInfo.origFilename[l + lastBs + 1];
+	for (Int l = 0; l < (track.origFilename.Length() - lastBs - firstDot - 1); l++) shortInFileName[l] = track.origFilename[l + lastBs + 1];
 
-	String	 inFileDirectory = trackInfo.origFilename;
+	String	 inFileDirectory = track.origFilename;
 	Bool	 writeToInputDir = False;
 
 	inFileDirectory[lastBs + 1] = 0;
 
-	if (Config::Get()->writeToInputDir && !trackInfo.isCDTrack)
+	if (Config::Get()->writeToInputDir && !track.isCDTrack)
 	{
 		String		 file = String(inFileDirectory).Append(String::FromInt(clock())).Append(".temp");
 		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_OVERWRITE);
@@ -661,24 +667,24 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &trackInfo)
 		File(file).Delete();
 	}
 
-	if (trackInfo.outfile == NIL)
+	if (track.outfile == NIL)
 	{
 		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
 		else		     outputFileName.Copy(String(Config::Get()->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
-		if ((trackInfo.artist != NIL && Config::Get()->enc_filePattern.Find("<artist>")   >= 0) ||
-		    (trackInfo.title  != NIL && Config::Get()->enc_filePattern.Find("<title>")	  >= 0) ||
-		    (trackInfo.track  != -1  && Config::Get()->enc_filePattern.Find("<track>")	  >= 0) ||
-		    (				Config::Get()->enc_filePattern.Find("<filename>") >= 0))
+		if ((info.artist != NIL && Config::Get()->enc_filePattern.Find("<artist>")   >= 0) ||
+		    (info.title  != NIL && Config::Get()->enc_filePattern.Find("<title>")    >= 0) ||
+		    (info.track  != -1  && Config::Get()->enc_filePattern.Find("<track>")    >= 0) ||
+		    (			   Config::Get()->enc_filePattern.Find("<filename>") >= 0))
 		{
 			String	 shortOutFileName = Config::Get()->enc_filePattern;
 
-			shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(trackInfo.artist.Length() > 0 ? trackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist"), True));
-			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(trackInfo.title.Length() > 0 ? trackInfo.title : BonkEnc::i18n->TranslateString("unknown title"), True));
-			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo.album.Length() > 0 ? trackInfo.album : BonkEnc::i18n->TranslateString("unknown album"), True));
-			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo.genre.Length() > 0 ? trackInfo.genre : BonkEnc::i18n->TranslateString("unknown genre"), True));
-			shortOutFileName.Replace("<track>", String(trackInfo.track < 10 ? "0" : NIL).Append(String::FromInt(trackInfo.track < 0 ? 0 : trackInfo.track)));
-			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo.year > 0 ? String::FromInt(trackInfo.year) : BonkEnc::i18n->TranslateString("unknown year"), True));
+			shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), True));
+			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title"), True));
+			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : BonkEnc::i18n->TranslateString("unknown album"), True));
+			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(info.genre.Length() > 0 ? info.genre : BonkEnc::i18n->TranslateString("unknown genre"), True));
+			shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
+			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(info.year > 0 ? String::FromInt(info.year) : BonkEnc::i18n->TranslateString("unknown year"), True));
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
 
 			String	 directory = inFileDirectory;
@@ -728,13 +734,13 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &trackInfo)
 			outputFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
 			outputFileName = Utilities::CreateDirectoryForFile(outputFileName);
 		}
-		else if (trackInfo.isCDTrack)
+		else if (track.isCDTrack)
 		{
-			outputFileName.Append("cd").Append(String::FromInt(trackInfo.drive)).Append("track");
+			outputFileName.Append("cd").Append(String::FromInt(track.drive)).Append("track");
 
-			if (trackInfo.track < 10) outputFileName.Append("0");
+			if (info.track < 10) outputFileName.Append("0");
 
-			outputFileName.Append(String::FromInt(trackInfo.track));
+			outputFileName.Append(String::FromInt(info.track));
 		}
 		else
 		{
@@ -752,15 +758,17 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &trackInfo)
 	}
 	else
 	{
-		outputFileName = trackInfo.outfile;
+		outputFileName = track.outfile;
 	}
 
 	return outputFileName;
 }
 
-String BonkEnc::Encoder::GetSingleOutputFileName(const Track &trackInfo)
+String BonkEnc::Encoder::GetSingleOutputFileName(const Track &track)
 {
 	if (Config::Get()->enable_console) return NIL;
+
+	const Info	&info = track.GetInfo();
 
 	String		 singleOutputFileName;
 	String		 defaultExtension;
@@ -799,7 +807,7 @@ String BonkEnc::Encoder::GetSingleOutputFileName(const Track &trackInfo)
 	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
 
 	dialog->SetDefaultExtension(defaultExtension);
-	dialog->SetFileName(String(Utilities::ReplaceIncompatibleChars(trackInfo.artist.Length() > 0 ? trackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist"), True)).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(trackInfo.album.Length() > 0 ? trackInfo.album : BonkEnc::i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
+	dialog->SetFileName(String(Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), True)).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : BonkEnc::i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
 
 	if (dialog->ShowDialog() == Success()) singleOutputFileName = dialog->GetFileName();
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -57,7 +57,12 @@ Int BonkEnc::CDDB::ComputeDiscID()
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 	Int	 n = 0;
 
-	for (Int i = 0; i < numTocEntries; i++)	n += cddb_sum((ex_CR_GetTocEntry(i).dwStartSector + 150) / 75);
+	for (Int i = 0; i < numTocEntries; i++)
+	{
+		Int	 offset = ex_CR_GetTocEntry(i).dwStartSector + 150;
+
+		n += cddb_sum(offset / 75);
+	}
 
 	Int	 t = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75;
 
@@ -76,6 +81,82 @@ Int BonkEnc::CDDB::StringToDiscID(const String &string)
 	return (Int64) Number::FromHexString(string);
 }
 
+Int BonkEnc::CDDB::DiscIDFromMCDI(const Buffer<UnsignedByte> &mcdi)
+{
+	Int	 numTocEntries = mcdi[3];
+	Int	 n = 0;
+
+	for (Int i = 0; i < numTocEntries; i++)
+	{
+		Int	 offset = ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 2 * i + 1]) + 150;
+
+		n += cddb_sum(offset / 75);
+	}
+
+	Int	 t = ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 2 * numTocEntries + 1]) / 75 - ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 1]) / 75;
+
+	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
+}
+
+String BonkEnc::CDDB::QueryStringFromMCDI(const Buffer<UnsignedByte> &mcdi)
+{
+	Int	 numTocEntries = mcdi[3];
+	String	 str = String("cddb query ").Append(DiscIDToString(DiscIDFromMCDI(mcdi)));
+
+	str.Append(" ").Append(String::FromInt(numTocEntries));
+
+	for (Int i = 0; i < numTocEntries; i++)
+	{
+		str.Append(" ").Append(String::FromInt(ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 2 * i + 1]) + 150));
+	}
+
+	str.Append(" ").Append(String::FromInt(ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 2 * numTocEntries + 1]) / 75 + 2));
+
+	return str;
+}
+
+Int BonkEnc::CDDB::DiscIDFromOffsets(const String &offsets)
+{
+	Int	 numTocEntries = (Int64) Number::FromHexString(offsets);
+	Int	 n = 0;
+
+	String	 remaining = offsets.Tail(offsets.Length() - offsets.Find("+") - 1);
+
+	for (Int i = 0; i < numTocEntries; i++)
+	{
+		Int	 offset = (Int64) Number::FromHexString(remaining);
+
+		n += cddb_sum(offset / 75);
+
+		remaining = remaining.Tail(remaining.Length() - remaining.Find("+") - 1);
+	}
+
+	Int	 t = (Int64) Number::FromHexString(remaining) / 75 - (Int64) Number::FromHexString(offsets.Tail(offsets.Length() - offsets.Find("+") - 1)) / 75;
+
+	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
+}
+
+String BonkEnc::CDDB::QueryStringFromOffsets(const String &offsets)
+{
+	Int	 numTocEntries = (Int64) Number::FromHexString(offsets);
+	String	 str = String("cddb query ").Append(DiscIDToString(DiscIDFromOffsets(offsets)));
+
+	str.Append(" ").Append(String::FromInt(numTocEntries));
+
+	String	 remaining = offsets.Tail(offsets.Length() - offsets.Find("+") - 1);
+
+	for (Int i = 0; i < numTocEntries; i++)
+	{
+		str.Append(" ").Append(String::FromInt((Int64) Number::FromHexString(remaining)));
+
+		remaining = remaining.Tail(remaining.Length() - remaining.Find("+") - 1);
+	}
+
+	str.Append(" ").Append(String::FromInt((Int64) Number::FromHexString(remaining) / 75));
+
+	return str;
+}
+
 String BonkEnc::CDDB::GetCDDBQueryString()
 {
 	ex_CR_SetActiveCDROM(activeDriveID);
@@ -86,7 +167,7 @@ String BonkEnc::CDDB::GetCDDBQueryString()
 
 	str.Append(" ").Append(String::FromInt(numTocEntries));
 
-	for (int i = 0; i < numTocEntries; i++)
+	for (Int i = 0; i < numTocEntries; i++)
 	{
 		str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(i).dwStartSector + 150));
 	}

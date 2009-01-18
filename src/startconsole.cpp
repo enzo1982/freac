@@ -58,11 +58,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 {
 	currentConfig->enable_console = true;
 
-	if (BoCA::Config::Get()->language == NIL) i18n->ActivateLanguage("internal");
-
-	i18n->ActivateLanguage(BoCA::Config::Get()->language);
-
 	BoCA::Config	*componentsConfig = BoCA::Config::Get();
+
+	if (componentsConfig == NIL) i18n->ActivateLanguage("internal");
+
+	i18n->ActivateLanguage(componentsConfig->language);
 
 	/* Don't save configuration settings set via command line.
 	 */
@@ -92,15 +92,17 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	ScanForFiles(&files);
 
+	Registry	&boca = Registry::Get();
+
 	if (currentConfig->enable_cdrip)
 	{
-		BoCA::Config::Get()->cdrip_activedrive = cdDrive.ToInt();
+		componentsConfig->cdrip_activedrive = cdDrive.ToInt();
 
-		if (BoCA::Config::Get()->cdrip_activedrive >= ex_CR_GetNumCDROM())
+		if (componentsConfig->cdrip_activedrive >= componentsConfig->cdrip_numdrives)
 		{
 			Console::OutputString(String("Warning: Drive #").Append(cdDrive).Append(" does not exist. Using first drive.\n"));
 
-			BoCA::Config::Get()->cdrip_activedrive = 0;
+			componentsConfig->cdrip_activedrive = 0;
 		}
 
 		if (!TracksToFiles(tracks, &files))
@@ -131,8 +133,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	joblist	= new JobList(Point(0, 0), Size(0, 0));
 
-	Registry	&boca = Registry::Get();
-	Bool		 broken = false;
+	Bool	 broken = false;
 
 	if (((encoderID == "LAME")	&& !boca.ComponentExists("lame-out"))	  ||
 	    ((encoderID == "VORBIS")	&& !boca.ComponentExists("vorbis-out"))   ||
@@ -295,8 +296,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		currentConfig->enable_auto_cddb = cddb;
 		currentConfig->enable_cddb_cache = True;
 
-		BoCA::Config::Get()->cdrip_locktray = False;
-		BoCA::Config::Get()->cdrip_timeout = timeout.ToInt();
+		componentsConfig->cdrip_locktray = False;
+		componentsConfig->cdrip_timeout = timeout.ToInt();
 
 		currentConfig->encodeToSingleFile = False;
 		currentConfig->writeToInputDir = False;
@@ -310,7 +311,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			if (currentFile.StartsWith("cdda://"))
 			{
-				currentFile = String("Audio CD ").Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive)).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
+				currentFile = String("Audio CD ").Append(String::FromInt(componentsConfig->cdrip_activedrive)).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
 			}
 
 			if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("cdda://"))

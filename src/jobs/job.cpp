@@ -156,13 +156,20 @@ Int BonkEnc::Job::SetText(const String &newText)
 {
 	if (text == newText) return Success();
 
-	Surface	*surface = container->GetDrawSurface();
+	if (IsRegistered() && IsVisible())
+	{
+		Surface	*surface = container->GetDrawSurface();
 
-	surface->StartPaint(GetVisibleArea());
+		surface->StartPaint(GetVisibleArea());
 
-	Widget::SetText(newText);
+		Widget::SetText(newText);
 
-	surface->EndPaint();
+		surface->EndPaint();
+	}
+	else
+	{
+		Widget::SetText(newText);
+	}
 
 	return Success();
 }

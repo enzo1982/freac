@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -198,13 +198,14 @@ Void BonkEnc::cddbManageDlg::OK()
 					if (trackInfo.cdTrack == m + 1)
 					{
 						Track	 track = BonkEnc::Get()->joblist->GetNthTrack(l);
+						Info	&info = track.GetInfo();
 
-						track.artist  = (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(m) : cddbInfo.dArtist);
-						track.title   = cddbInfo.trackTitles.GetNth(m);
-						track.album   = cddbInfo.dTitle;
-						track.year    = cddbInfo.dYear;
-						track.genre   = cddbInfo.dGenre;
-						track.comment = cddbInfo.trackComments.GetNth(m);
+						info.artist  = (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(m) : cddbInfo.dArtist);
+						info.title   = cddbInfo.trackTitles.GetNth(m);
+						info.album   = cddbInfo.dTitle;
+						info.year    = cddbInfo.dYear;
+						info.genre   = cddbInfo.dGenre;
+						info.comment = cddbInfo.trackComments.GetNth(m);
 
 						BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 					}
