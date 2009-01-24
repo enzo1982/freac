@@ -22,6 +22,7 @@ Geschichte
 		- Neuen Konfigurationsdialog implementiert
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
+		- Einfachen Tag-Editor hinzugefügt
 		- Monkey's Audiocodierer/-decodierer hinzugefügt
 		- Speex Sprachcodierer/-decodierer hinzugefügt
 		- Unterstützung für Kommandozeilencodierer/-decodierer hinzugefügt
@@ -34,8 +35,11 @@ Geschichte
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
+		- Unterstützung zum Auslesen von ISRC-Codes von CDs hinzugefügt
+		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
+		- Fehler in ID3lib behoben, um korrektes Lesen und Schreiben von ID3v2.4-Tags zu gewährleisten
 		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
 		- Fehler in Cuesheets für mehrere Titel in einer Datei behoben
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben

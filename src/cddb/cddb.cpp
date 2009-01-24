@@ -255,8 +255,8 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 }
 
 /* Format a complete CDDB record according
-   to the rules from the freedb how-to. */
-
+ * to the rules from the freedb how-to.
+ */
 String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 {
 	String	 content;
@@ -274,7 +274,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo.discLength)).Append("\n");
 	content.Append("# ").Append("\n");
 	content.Append("# Revision: ").Append(String::FromInt(cddbInfo.revision)).Append("\n");
-	content.Append("# Submitted via: ").Append("BonkEnc ").Append(BonkEnc::cddbVersion).Append("\n");
+	content.Append("# Submitted via: ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion).Append("\n");
 	content.Append("# ").Append("\n");
 
 	content.Append(FormatCDDBEntry("DISCID", cddbInfo.DiscIDToString()));
@@ -301,8 +301,8 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 }
 
 /* Parse a complete CDDB record and fill the
-   given CDDBInfo structure. */
-
+ * given CDDBInfo structure.
+ */
 Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 {
 	Int	 index = 0;
@@ -493,9 +493,9 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 }
 
 /* Format a CDDB entry according to the rules
-   from the freedb how-to. Replace special
-   characters and split lines at 256 chars. */
-
+ * from the freedb how-to. Replace special
+ * characters and split lines at 256 chars.
+ */
 String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
 {
 	if (value == NIL) return String(entry).Append("=\n");
@@ -531,10 +531,10 @@ String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
 }
 
 /* Parse the next CDDB entry according to the
-   rules from the freedb how-to. Substitute
-   special character sequences and concatenate
-   multiline entries. */
-
+ * rules from the freedb how-to. Substitute
+ * special character sequences and concatenate
+ * multiline entries.
+ */
 String BonkEnc::CDDB::ParseCDDBEntry(const String &cddb, Int &index)
 {
 	String	 result;

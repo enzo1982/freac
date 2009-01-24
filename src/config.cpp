@@ -141,9 +141,9 @@ Bool BonkEnc::Config::LoadSettings()
 
 	delete config;
 
-	if (enc_outdir[enc_outdir.Length() - 1] != '\\') enc_outdir.Append("\\");
-	if (playlist_outdir[playlist_outdir.Length() - 1] != '\\') playlist_outdir.Append("\\");
-	if (freedb_dir[freedb_dir.Length() - 1] != '\\') freedb_dir.Append("\\");
+	if (!enc_outdir.EndsWith("\\"))	     enc_outdir.Append("\\");
+	if (!playlist_outdir.EndsWith("\\")) playlist_outdir.Append("\\");
+	if (!freedb_dir.EndsWith("\\"))	     freedb_dir.Append("\\");
 
 	if (encodeToSingleFile && !enc_onTheFly) enc_onTheFly = True;
 

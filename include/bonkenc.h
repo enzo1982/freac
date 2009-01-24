@@ -56,10 +56,12 @@ namespace BonkEnc
 			Bool				 overwriteAll;
 		public:
 			static String			 appName;
+			static String			 appLongName;
 			static String			 version;
 			static String			 shortVersion;
 			static String			 cddbVersion;
 			static String			 cddbMode;
+			static String			 website;
 			static String			 updatePath;
 
 			static BoCA::I18n		*i18n;

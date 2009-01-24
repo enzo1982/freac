@@ -22,6 +22,7 @@ History
 		- implemented new configuration dialog
 		- redesigned progress display area
 		- completely reworked LAME configuration dialog
+		- added a simple tag editor
 		- added Monkey's Audio encoder/decoder
 		- added Speex speech encoder/decoder
 		- added support for command line encoders/decoders
@@ -34,8 +35,11 @@ History
 		- added <directory> pattern to allow preserving existing directory structures
 		- added <installdrive> pattern for use in output directory name
 		- label/publisher and ISRC information is now preserved during conversion
+		- added support for reading ISRC codes from CDs
+		- the five last used file name patterns are now saved for later use
 		- greatly improved case conversion functions
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
+		- fixed ID3lib to read and write correct ID3v2.4 tags
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
 		- fixed creation of cuesheets for multiple tracks in a single file
 		- fixed total progress bar not working correctly with many tracks in joblist

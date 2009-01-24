@@ -436,7 +436,7 @@ Int BonkEnc::Encoder::EncoderThread()
 			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (format.rate * format.channels) * 75), info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title"), info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), info.album.Length() > 0 ? info.album : BonkEnc::i18n->TranslateString("unknown album"));
 		}
 
-		if (trackInfo.isCDTrack && BoCA::Config::Get()->cdrip_autoEject && step == 1)
+		if (trackInfo.isCDTrack && BoCA::Config::Get()->GetIntValue("CDRip", "EjectAfterRipping", False) && step == 1)
 		{
 			Bool	 ejectDisk = True;
 
@@ -566,10 +566,7 @@ String BonkEnc::Encoder::GetPlaylistFileName(const Track &track)
 
 	const Info	&info = track.GetInfo();
 
-	String	 playlistOutputDir = (Config::Get()->playlist_useEncOutdir ? Config::Get()->enc_outdir : Config::Get()->playlist_outdir);
-
-	playlistOutputDir.Replace("<installdrive>", Utilities::GetInstallDrive());
-
+	String	 playlistOutputDir = Utilities::GetAbsoluteDirName(Config::Get()->playlist_useEncOutdir ? Config::Get()->enc_outdir : Config::Get()->playlist_outdir);
 	String	 playlistFileName = playlistOutputDir;
 
 	if (info.artist != NIL || info.album != NIL)
@@ -621,7 +618,8 @@ String BonkEnc::Encoder::GetRelativeFileName(const String &trackFileName, const 
 		for (Int m = 0; m < trackFileName.Length() - equalBytes; m++) relativeFileName[m] = trackFileName[m + equalBytes];
 	}
 
-	if (relativeFileName[1] != ':')
+	if ( relativeFileName[1] != ':' &&	  // Absolute local path
+	    !relativeFileName.StartsWith("\\\\")) // Network resource
 	{
 		for (Int m = 0; m < furtherComponents; m++) relativeFileName = String("..\\").Append(relativeFileName);
 	}
@@ -670,7 +668,7 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 	if (track.outfile == NIL)
 	{
 		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
-		else		     outputFileName.Copy(String(Config::Get()->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()));
+		else		     outputFileName.Copy(Utilities::GetAbsoluteDirName(Config::Get()->enc_outdir));
 
 		if ((info.artist != NIL && Config::Get()->enc_filePattern.Find("<artist>")   >= 0) ||
 		    (info.title  != NIL && Config::Get()->enc_filePattern.Find("<title>")    >= 0) ||

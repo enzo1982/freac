@@ -540,18 +540,6 @@
 				</Filter>
 			</Filter>
 			<Filter
-				Name="cdinfo"
-				>
-				<File
-					RelativePath="..\..\src\cdinfo\cdplayerini.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\cdinfo\cdtext.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
 				Name="gui"
 				>
 				<File
@@ -762,18 +750,6 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="cdinfo"
-				>
-				<File
-					RelativePath="..\..\include\cdinfo\cdplayerini.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\cdinfo\cdtext.h"
-					>
-				</File>
-			</Filter>
-			<Filter
 				Name="gui"
 				>
 				<File
@@ -856,6 +832,10 @@
 				</FileConfiguration>
 			</File>
 		</Filter>
+		<File
+			RelativePath=".\VTune\BonkEnc.vpj"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

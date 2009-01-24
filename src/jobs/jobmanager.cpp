@@ -27,7 +27,7 @@ BonkEnc::JobManager::~JobManager()
 
 	while (managerThread->GetStatus() == THREAD_RUNNING)
 	{
-		System::System::Sleep(10);
+		System::System::Sleep(100);
 	}
 }
 
@@ -53,7 +53,7 @@ Void BonkEnc::JobManager::ManagerThread()
 			}
 		}
 
-		System::System::Sleep(10);
+		System::System::Sleep(100);
 	}
 }
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,8 +12,6 @@
 #define _H_CDDB_SUBMIT_
 
 #include <bonkenc.h>
-#include <cdinfo/cdtext.h>
-#include <cdinfo/cdplayerini.h>
 #include <cddb/cddbinfo.h>
 
 namespace BonkEnc
@@ -74,9 +72,6 @@ namespace BonkEnc
 			Array<String>	 artists;
 			Array<String>	 titles;
 			Array<String>	 comments;
-
-			CDText		 cdText;
-			CDPlayerIni	 cdPlayerInfo;
 
 			Void		 UpdateTrackList();
 

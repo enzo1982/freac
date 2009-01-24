@@ -11,7 +11,7 @@ LIBDIR2 = cdk/lib64
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_cdrip.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_cdrip.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/gui.o
 CMDOBJECTS = $(OBJECTDIR)/console.o
@@ -94,16 +94,6 @@ $(OBJECTDIR)/cddblocal.o: $(SRCDIR)/cddb/cddblocal.cpp
 $(OBJECTDIR)/cddbremote.o: $(SRCDIR)/cddb/cddbremote.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/cddb/cddbremote.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cddb/cddbremote.cpp -o $(OBJECTDIR)/cddbremote.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/cdplayerini.o: $(SRCDIR)/cdinfo/cdplayerini.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cdinfo/cdplayerini.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cdinfo/cdplayerini.cpp -o $(OBJECTDIR)/cdplayerini.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/cdtext.o: $(SRCDIR)/cdinfo/cdtext.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/cdinfo/cdtext.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/cdinfo/cdtext.cpp -o $(OBJECTDIR)/cdtext.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/cddb_extsettings.o: $(SRCDIR)/dialogs/cddb/extsettings.cpp

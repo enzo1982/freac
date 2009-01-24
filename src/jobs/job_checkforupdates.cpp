@@ -33,7 +33,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 	if (config->firstStart)
 	{
-		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION) == IDNO)
+		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION) == IDNO)
 		{
 			config->checkUpdatesAtStartup = False;
 			config->firstStart = False;
@@ -44,7 +44,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 	SetText("Creating update context...");
 
-	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", ::BonkEnc::BonkEnc::version, ::BonkEnc::BonkEnc::updatePath);
+	Void	*context = ex_eUpdate_CreateUpdateContext(::BonkEnc::BonkEnc::appLongName, ::BonkEnc::BonkEnc::version, ::BonkEnc::BonkEnc::updatePath);
 
 	if (config->configDir != NIL)
 	{
@@ -73,7 +73,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		SetText("Updates found...");
 		SetProgress(1000);
 
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &config->checkUpdatesAtStartup);
+		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &config->checkUpdatesAtStartup);
 
 		msgBox->ShowDialog();
 
@@ -93,7 +93,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 		if (!startup)
 		{
-			MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &config->checkUpdatesAtStartup);
+			MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &config->checkUpdatesAtStartup);
 
 			msgBox->ShowDialog();
 
@@ -101,7 +101,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		}
 		else if (config->firstStart)
 		{
-			QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION);
+			QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION);
 		}
 	}
 

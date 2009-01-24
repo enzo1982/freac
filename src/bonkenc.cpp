@@ -26,16 +26,22 @@
 
 #include <boca.h>
 
-BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
-BoCA::I18n		*BonkEnc::BonkEnc::i18n = NIL;
+BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance 	= NIL;
+BoCA::I18n		*BonkEnc::BonkEnc::i18n		= NIL;
 
+/* General application information and fixed settings.
+ */
 String	 BonkEnc::BonkEnc::appName	= "BonkEnc";
+String	 BonkEnc::BonkEnc::appLongName	= "BonkEnc Audio Encoder";
 String	 BonkEnc::BonkEnc::version	= "CVS 2009xxyy";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
+String	 BonkEnc::BonkEnc::website	= "http://www.bonkenc.org/";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
 
+/* Use these settings for debugging.
+ */
 //String	 BonkEnc::BonkEnc::cddbMode	= "test";
 //String	 BonkEnc::BonkEnc::updatePath	= "file://eUpdate/eUpdate.xml";
 
@@ -45,15 +51,20 @@ BonkEnc::BonkEnc::BonkEnc()
 	version.Append(" (x64)");
 #endif
 
-	instance = this;
-	i18n = BoCA::I18n::Get();
+	instance	= this;
+	i18n		= BoCA::I18n::Get();
 
 	CoInitialize(NIL);
 
-	encoder = new Encoder();
+	encoder		= new Encoder();
+	currentConfig	= Config::Get();
 
-	currentConfig = Config::Get();
+	/* Set default comment if not set.
+	 */
+	BoCA::Config::Get()->SetStringValue("Tags", "DefaultComment", BoCA::Config::Get()->GetStringValue("Tags", "DefaultComment", String(appLongName).Append(" <").Append(website).Append(">")));
 
+	/* Start job manager.
+	 */
 	JobManager::Start();
 
 	if (DLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;

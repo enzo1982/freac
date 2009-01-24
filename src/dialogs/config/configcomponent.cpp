@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,9 +20,6 @@ BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 	layer = iLayer;
 	layer->SetPosition(Point(4, 29));
 
-	Point	 pos;
-	Size	 size;
-
 	currentConfig = Config::Get();
 
 	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Component configuration"), currentConfig->wndPos + Point(60, 60), layer->GetSize() + Size(8, 73));
@@ -31,18 +28,11 @@ BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	pos.x	= 175;
-	pos.y	= 29;
-	size.cx	= 0;
-	size.cy	= 0;
-
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&ConfigComponentDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x -= 88;
-
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, btn_cancel->GetPosition() - Point(88, 0), Size());
 	btn_ok->onAction.Connect(&ConfigComponentDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 

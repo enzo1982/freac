@@ -117,7 +117,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		Console::OutputString("Error: CD ripping disabled!");
 	}
 
-	Console::SetTitle(String("BonkEnc ").Append(BonkEnc::version));
+	Console::SetTitle(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version));
 
 	encoderID = encoderID.ToUpper();
 
@@ -296,13 +296,13 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		currentConfig->enable_auto_cddb = cddb;
 		currentConfig->enable_cddb_cache = True;
 
-		componentsConfig->cdrip_locktray = False;
+		componentsConfig->SetIntValue("CDRip", "LockTray", False);
 		componentsConfig->cdrip_timeout = timeout.ToInt();
 
 		currentConfig->encodeToSingleFile = False;
 		currentConfig->writeToInputDir = False;
 
-		if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
+		if (!currentConfig->enc_outdir.EndsWith("\\")) currentConfig->enc_outdir.Append("\\");
 
 		for (Int i = 0; i < files.Length(); i++)
 		{
@@ -475,7 +475,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 {
 	if (helpenc == NIL)
 	{
-		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2009 Robert Kausch\n\n"));
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2009 Robert Kausch\n\n"));
 		Console::OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
 		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
 		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
@@ -492,7 +492,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	}
 	else
 	{
-		Console::OutputString(String("BonkEnc Audio Encoder ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2009 Robert Kausch\n\n"));
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2009 Robert Kausch\n\n"));
 
 		if (helpenc == "LAME" || helpenc == "lame")
 		{

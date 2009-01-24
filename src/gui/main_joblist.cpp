@@ -344,9 +344,11 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	UpdateEncoderText();
 
-	edb_outdir = new EditBox(String(currentConfig->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()), Point(0, 27), Size(0, 0), 1024);
+	edb_outdir = new EditBox(NIL, Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->Deactivate();
+
+	UpdateOutputDir();
 
 	btn_outdir = new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
 	btn_outdir->SetOrientation(OR_LOWERRIGHT);
@@ -1099,7 +1101,7 @@ Void BonkEnc::LayerJoblist::OnSelectDir()
 
 //	dialog->SetParentWindow(mainWnd);
 	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
-	dialog->SetDirName(String(currentConfig->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()));
+	dialog->SetDirName(Utilities::GetAbsoluteDirName(currentConfig->enc_outdir));
 
 	if (dialog->ShowDialog() == Success())
 	{

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,35 +12,23 @@
 
 BonkEnc::ConfigureCDRip::ConfigureCDRip()
 {
-	Point		 pos;
-	Size		 size;
-
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	cdparanoia	= config->cdrip_paranoia;
 	jitter		= config->cdrip_jitter;
 	swapchannels	= config->cdrip_swapchannels;
-	locktray	= config->cdrip_locktray;
-	ntscsi		= config->cdrip_ntscsi;
-	autoRead	= config->cdrip_autoRead;
-	autoRip		= config->cdrip_autoRip;
-	autoEject	= config->cdrip_autoEject;
-	readCDText	= config->cdrip_read_cdtext;
-	readCDPlayerIni	= config->cdrip_read_cdplayerini;
+	locktray	= config->GetIntValue("CDRip", "LockTray", True);
+	ntscsi		= config->GetIntValue("CDRip", "UseNTSCSI", True);
+	autoRead	= config->GetIntValue("CDRip", "AutoReadContents", True);
+	autoRip		= config->GetIntValue("CDRip", "AutoRip", False);
+	autoEject	= config->GetIntValue("CDRip", "EjectAfterRipping", False);
+	readCDText	= config->GetIntValue("CDRip", "ReadCDText", True);
+	readCDPlayerIni	= config->GetIntValue("CDRip", "ReadCDPlayerIni", True);
+	readISRC	= config->GetIntValue("CDRip", "ReadISRC", False);
 
-	pos.x	= 7;
-	pos.y	= 11;
-	size.cx	= 344;
-	size.cy	= 43;
+	group_drive	= new GroupBox(BonkEnc::i18n->TranslateString("Active CD-ROM drive"), Point(7, 11), Size(344, 43));
 
-	group_drive	= new GroupBox(BonkEnc::i18n->TranslateString("Active CD-ROM drive"), pos, size);
-
-	pos.x	= 17;
-	pos.y	= 23;
-	size.cx	= 324;
-	size.cy	= 0;
-
-	combo_drive	= new ComboBox(pos, size);
+	combo_drive	= new ComboBox(Point(10, 12), Size(324, 0));
 
 	for (Int j = 0; j < config->cdrip_numdrives; j++)
 	{
@@ -49,45 +37,24 @@ BonkEnc::ConfigureCDRip::ConfigureCDRip()
 
 	combo_drive->SelectNthEntry(config->cdrip_activedrive);
 
-	pos.x	= 7;
-	pos.y	= 66;
-	size.cx	= 344;
-	size.cy	= 39;
+	group_drive->Add(combo_drive);
 
-	group_cdinfo	= new GroupBox(BonkEnc::i18n->TranslateString("CD information"), pos, size);
+	group_cdinfo		= new GroupBox(BonkEnc::i18n->TranslateString("CD information"), Point(7, 66), Size(344, 65));
 
-	pos.x	+= 10;
-	pos.y	+= 11;
-	size.cx	= 157;
-	size.cy	= 0;
+	check_readCDText	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD Text"), Point(10, 11), Size(157, 0), &readCDText);
+	check_readCDPlayerIni	= new CheckBox(BonkEnc::i18n->TranslateString("Read cdplayer.ini"), Point(176, 11), Size(157, 0), &readCDPlayerIni);
+	check_readISRC		= new CheckBox(BonkEnc::i18n->TranslateString("Read ISRC when adding tracks to joblist"), Point(10, 37), Size(323, 0), &readISRC);
 
-	check_readCDText	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD Text"), pos, size, &readCDText);
+	group_cdinfo->Add(check_readCDText);
+	group_cdinfo->Add(check_readCDPlayerIni);
+	group_cdinfo->Add(check_readISRC);
 
-	pos.x += 166;
+	group_ripping		= new GroupBox(BonkEnc::i18n->TranslateString("Ripper settings"), Point(7, 143), Size(344, 68));
 
-	check_readCDPlayerIni	= new CheckBox(BonkEnc::i18n->TranslateString("Read cdplayer.ini"), pos, size, &readCDPlayerIni);
-
-	pos.x	= 7;
-	pos.y	= 117;
-	size.cx	= 344;
-	size.cy	= 68;
-
-	group_ripping	= new GroupBox(BonkEnc::i18n->TranslateString("Ripper settings"), pos, size);
-
-	pos.x	+= 10;
-	pos.y	+= 14;
-	size.cx	= 157;
-	size.cy	= 0;
-
-	check_paranoia	= new CheckBox(BonkEnc::i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia);
+	check_paranoia		= new CheckBox(BonkEnc::i18n->TranslateString("Activate cdparanoia mode:"), Point(10, 14), Size(157, 0), &cdparanoia);
 	check_paranoia->onAction.Connect(&ConfigureCDRip::SetParanoia, this);
 
-	pos.x	+= 166;
-	pos.y	-= 1;
-	size.cx	= 158;
-	size.cy	= 0;
-
-	combo_paranoia_mode= new ComboBox(pos, size);
+	combo_paranoia_mode= new ComboBox(Point(176, 13), Size(158, 0));
 	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("Overlap only"));
 	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("No verify"));
 	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("No scratch repair"));
@@ -96,56 +63,33 @@ BonkEnc::ConfigureCDRip::ConfigureCDRip()
 
 	if (!cdparanoia) combo_paranoia_mode->Deactivate();
 
-	pos.x	-= 166;
-	pos.y	+= 27;
-	size.cx	= 157;
-	size.cy	= 0;
+	check_jitter		= new CheckBox(BonkEnc::i18n->TranslateString("Activate jitter correction"), Point(10, 40), Size(157, 0), &jitter);
+	check_swapchannels	= new CheckBox(BonkEnc::i18n->TranslateString("Swap left/right channel"), Point(176, 40), Size(157, 0), &swapchannels);
 
-	check_jitter	= new CheckBox(BonkEnc::i18n->TranslateString("Activate jitter correction"), pos, size, &jitter);
+	group_ripping->Add(check_paranoia);
+	group_ripping->Add(combo_paranoia_mode);
+	group_ripping->Add(check_jitter);
+	group_ripping->Add(check_swapchannels);
 
-	pos.x += 166;
+	group_automatization	= new GroupBox(BonkEnc::i18n->TranslateString("Automatization"), Point(359, 11), Size(178, 94));
 
-	check_swapchannels	= new CheckBox(BonkEnc::i18n->TranslateString("Swap left/right channel"), pos, size, &swapchannels);
-
-	pos.x	= 359;
-	pos.y	= 11;
-	size.cx	= 178;
-	size.cy	= 94;
-
-	group_automatization	= new GroupBox(BonkEnc::i18n->TranslateString("Automatization"), pos, size);
-
-	pos.x	+= 10;
-	pos.y	+= 14;
-	size.cx	= 157;
-	size.cy	= 0;
-
-	check_autoRead	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD contents on insert"), pos, size, &autoRead);
+	check_autoRead	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD contents on insert"), Point(10, 14), Size(157, 0), &autoRead);
 	check_autoRead->onAction.Connect(&ConfigureCDRip::ToggleAutoRead, this);
-	pos.y += 26;
 
-	check_autoRip	= new CheckBox(BonkEnc::i18n->TranslateString("Start ripping automatically"), pos, size, &autoRip);
+	check_autoRip	= new CheckBox(BonkEnc::i18n->TranslateString("Start ripping automatically"), check_autoRead->GetPosition() + Point(0, 26), Size(157, 0), &autoRip);
+	check_autoEject	= new CheckBox(BonkEnc::i18n->TranslateString("Eject disk after ripping"), check_autoRip->GetPosition() + Point(0, 26), Size(157, 0), &autoEject);
 
-	pos.y += 26;
+	group_automatization->Add(check_autoRead);
+	group_automatization->Add(check_autoRip);
+	group_automatization->Add(check_autoEject);
 
-	check_autoEject	= new CheckBox(BonkEnc::i18n->TranslateString("Eject disk after ripping"), pos, size, &autoEject);
+	group_cdoptions	= new GroupBox(BonkEnc::i18n->TranslateString("CD options"), Point(359, 143), Size(178, 68));
 
-	pos.x	= 359;
-	pos.y	= 117;
-	size.cx	= 178;
-	size.cy	= 68;
+	check_locktray	= new CheckBox(BonkEnc::i18n->TranslateString("Lock CD tray while ripping"), Point(10, 14), Size(157, 0), &locktray);
+	check_ntscsi	= new CheckBox(BonkEnc::i18n->TranslateString("Use native NT SCSI library"), check_locktray->GetPosition() + Point(0, 26), Size(157, 0), &ntscsi);
 
-	group_cdoptions	= new GroupBox(BonkEnc::i18n->TranslateString("CD options"), pos, size);
-
-	pos.x	+= 10;
-	pos.y	+= 14;
-	size.cx	= 157;
-	size.cy	= 0;
-
-	check_locktray	= new CheckBox(BonkEnc::i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
-
-	pos.y += 26;
-
-	check_ntscsi	= new CheckBox(BonkEnc::i18n->TranslateString("Use native NT SCSI library"), pos, size, &ntscsi);
+	group_cdoptions->Add(check_locktray);
+	group_cdoptions->Add(check_ntscsi);
 
 	OSVERSIONINFOA	 vInfo;
 
@@ -158,22 +102,10 @@ BonkEnc::ConfigureCDRip::ConfigureCDRip()
 	ToggleAutoRead();
 
 	Add(group_drive);
-	Add(combo_drive);
 	Add(group_ripping);
-	Add(check_paranoia);
-	Add(combo_paranoia_mode);
-	Add(check_jitter);
-	Add(check_swapchannels);
 	Add(group_automatization);
-	Add(check_autoRead);
-	Add(check_autoRip);
-	Add(check_autoEject);
 	Add(group_cdoptions);
-	Add(check_locktray);
-	Add(check_ntscsi);
 	Add(group_cdinfo);
-	Add(check_readCDText);
-	Add(check_readCDPlayerIni);
 
 	SetSize(Size(544, 192));
 }
@@ -182,21 +114,26 @@ BonkEnc::ConfigureCDRip::~ConfigureCDRip()
 {
 	DeleteObject(group_drive);
 	DeleteObject(combo_drive);
+
 	DeleteObject(group_ripping);
 	DeleteObject(check_paranoia);
 	DeleteObject(combo_paranoia_mode);
 	DeleteObject(check_jitter);
 	DeleteObject(check_swapchannels);
+
 	DeleteObject(group_automatization);
 	DeleteObject(check_autoRead);
 	DeleteObject(check_autoRip);
 	DeleteObject(check_autoEject);
+
 	DeleteObject(group_cdoptions);
 	DeleteObject(check_locktray);
 	DeleteObject(check_ntscsi);
+
 	DeleteObject(group_cdinfo);
 	DeleteObject(check_readCDText);
 	DeleteObject(check_readCDPlayerIni);
+	DeleteObject(check_readISRC);
 }
 
 Void BonkEnc::ConfigureCDRip::SetParanoia()
@@ -221,13 +158,14 @@ Int BonkEnc::ConfigureCDRip::SaveSettings()
 	config->cdrip_paranoia_mode	= combo_paranoia_mode->GetSelectedEntryNumber();
 	config->cdrip_jitter		= jitter;
 	config->cdrip_swapchannels	= swapchannels;
-	config->cdrip_locktray		= locktray;
-	config->cdrip_ntscsi		= ntscsi;
-	config->cdrip_autoRead		= autoRead;
-	config->cdrip_autoRip		= autoRip;
-	config->cdrip_autoEject		= autoEject;
-	config->cdrip_read_cdtext	= readCDText;
-	config->cdrip_read_cdplayerini	= readCDPlayerIni;
+	config->SetIntValue("CDRip", "LockTray", locktray);
+	config->SetIntValue("CDRip", "UseNTSCSI", ntscsi);
+	config->SetIntValue("CDRip", "AutoReadContents", autoRead);
+	config->SetIntValue("CDRip", "AutoRip", autoRip);
+	config->SetIntValue("CDRip", "EjectAfterRipping", autoEject);
+	config->SetIntValue("CDRip", "ReadCDText", readCDText);
+	config->SetIntValue("CDRip", "ReadCDPlayerIni", readCDPlayerIni);
+	config->SetIntValue("CDRip", "ReadISRC", readISRC);
 
 	return Success();
 }

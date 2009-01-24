@@ -89,7 +89,7 @@ Void BonkEnc::ConfigurePlaylists::SelectDir()
 
 	dialog->SetParentWindow(GetContainerWindow());
 	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder in which the playlist files will be placed:")));
-	dialog->SetDirName(String(edit_outdir->GetText()).Replace("<installdrive>", Utilities::GetInstallDrive()));
+	dialog->SetDirName(Utilities::GetAbsoluteDirName(edit_outdir->GetText()));
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -135,7 +135,7 @@ Int BonkEnc::ConfigurePlaylists::SaveSettings()
 	currentConfig->playlist_filePattern	= edit_filename->GetText();
 	currentConfig->playlist_useEncOutdir	= useEncOutdir;
 
-	if (currentConfig->playlist_outdir[currentConfig->playlist_outdir.Length() - 1] != '\\') currentConfig->playlist_outdir.Append("\\");
+	if (!currentConfig->playlist_outdir.EndsWith("\\")) currentConfig->playlist_outdir.Append("\\");
 
 	return Success();
 }

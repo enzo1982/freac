@@ -236,7 +236,7 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 
 	for (Int k = 0, b = 0; k < string.Length(); k++)
 	{
-		if (string[k] == '\"')			{ rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
+		if	(string[k] == '\"')		{ rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
 		else if (string[k] == '?')		b--;
 		else if (string[k] == '|')		rVal[k + b] = '_';
 		else if (string[k] == '*')		b--;
@@ -252,6 +252,28 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 	}
 
 	return rVal;
+}
+
+/* This function returns the absolute output path.
+ * It may differ from enc_outdir due to use of the
+ * <installdrive> placeholder or because enc_outdir
+ * is a relative path.
+ */
+String BonkEnc::Utilities::GetAbsoluteDirName(const String &dirName)
+{
+	String	 rDirName = dirName;
+
+	/* Replace <installdrive> patter.
+	 */
+	rDirName.Replace("<installdrive>", Utilities::GetInstallDrive());
+
+	if ( rDirName[1] != ':' &&	  // Absolute local path
+	    !rDirName.StartsWith("\\\\")) // Network resource
+	{
+		rDirName = String(Application::GetApplicationDirectory()).Append(rDirName);
+	}
+
+	return rDirName;
 }
 
 /* This function takes a file name and normalizes
@@ -284,7 +306,8 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 
 			/* Replace trailing dots and spaces.
 			 */
-			while ((tmpDir2 != ".." && tmpDir2 != ".") &&
+			while ((tmpDir2.Tail(tmpDir2.Length() - lastBS - 1) != ".." &&
+				tmpDir2.Tail(tmpDir2.Length() - lastBS - 1) != ".") &&
 			       (tmpDir2.EndsWith(".") || tmpDir2.EndsWith(" ")))
 			{
 				tmpDir2[tmpDir2.Length() - 1] = 0;

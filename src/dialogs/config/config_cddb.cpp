@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -383,10 +383,10 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 	currentConfig->freedb_server		= edit_server->GetText();
 	currentConfig->freedb_email		= edit_email->GetText();
 
-	if (currentConfig->freedb_mode == FREEDB_MODE_CDDBP)	 currentConfig->freedb_cddbp_port = edit_port->GetText().ToInt();
-	else if (currentConfig->freedb_mode == FREEDB_MODE_HTTP) currentConfig->freedb_http_port = edit_port->GetText().ToInt();
+	if	(currentConfig->freedb_mode == FREEDB_MODE_CDDBP) currentConfig->freedb_cddbp_port = edit_port->GetText().ToInt();
+	else if (currentConfig->freedb_mode == FREEDB_MODE_HTTP)  currentConfig->freedb_http_port  = edit_port->GetText().ToInt();
 
-	if (currentConfig->freedb_dir[currentConfig->freedb_dir.Length() - 1] != '\\') currentConfig->freedb_dir.Append("\\");
+	if (!currentConfig->freedb_dir.EndsWith("\\")) currentConfig->freedb_dir.Append("\\");
 
 	return Success();
 }

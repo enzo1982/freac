@@ -389,7 +389,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 	switch (message)
 	{
 		case WM_DEVICECHANGE:
-			if (wParam == DBT_DEVICEARRIVAL && currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_autoRead)
+			if (wParam == DBT_DEVICEARRIVAL && currentConfig->enable_cdrip && BoCA::Config::Get()->GetIntValue("CDRip", "AutoReadContents", True))
 			{
 				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype != DBT_DEVTYP_VOLUME || !(((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)) break;
 
@@ -442,8 +442,6 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 						ReadCD();
 
 						BoCA::Config::Get()->cdrip_autoRead_active = False;
-
-						if (BoCA::Config::Get()->cdrip_autoRip) Encode();
 					}
 				}
 			}
@@ -566,6 +564,7 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 	job->Schedule();
 
 	if (currentConfig->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
+	if (BoCA::Config::Get()->GetIntValue("CDRip", "AutoRip", False)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
 }
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
