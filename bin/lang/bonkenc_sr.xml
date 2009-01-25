@@ -395,5 +395,7 @@
   <entry id="388" string="Unknown file type">Nepoznata vrsta fajla</entry>
   <entry id="389" string="Unsupported audio format">Ovaj audio format nije podržan</entry>
   <entry id="390" string="Unknown error">Nepoznata greška</entry>
+  <entry id="391" string="Replace existing comments with default comment">Zameni postojeći(e) komentar(e) usađenim komentarom</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrani fajlovi ne mogu se kombinovati u jedan&#10;izlazni fajl zbog različitih ulaznih formata.&#10;&#10;Molimo prvo pretvorite sve fajlove u isti format.</entry>
  </data>
 </LangFile>

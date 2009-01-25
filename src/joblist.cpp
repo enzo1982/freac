@@ -330,13 +330,13 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 	{
 		if (GetNthTrack(i).GetTrackID() == track.GetTrackID())
 		{
-			RemoveNthTrack(i);
-
-			if (Length() > 0)
+			if (Length() > 1)
 			{
-				if (i < Length()) SelectEntry(GetNthEntry(i));
-				else		  SelectEntry(GetNthEntry(i - 1));
+				if (i < Length() - 1) SelectEntry(GetNthEntry(i + 1));
+				else		      SelectEntry(GetNthEntry(i - 1));
 			}
+
+			RemoveNthTrack(i);
 
 			break;
 		}

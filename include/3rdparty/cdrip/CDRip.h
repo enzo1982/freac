@@ -1,6 +1,6 @@
  /* CDRip Ripping Library
   * Copyright (C) 1999-2002 Albert L. Faber
-  * Portions Copyright (C) 2002-2006 Robert Kausch <robert.kausch@cdrip.org>
+  * Portions Copyright (C) 2002-2009 Robert Kausch <robert.kausch@cdrip.org>
   *  
   * This program is free software; you can redistribute it and/or modify
   * it under the terms of the GNU General Public License as published by
@@ -188,6 +188,18 @@ enum OUTPUTFORMAT
 
 typedef struct
 {
+	char	 mmCatalog[0x18];
+}
+MCN;
+
+typedef struct
+{
+	char	 isrc[0x18];
+}
+ISRC;
+
+typedef struct
+{
 	char		 lpszCDROMID[255];	// CD-ROM ID, must be unique to index settings in INI file
 	LONG		 nNumReadSectors;	// Number of sector to read per burst
 	LONG		 nNumOverlapSectors;	// Number of overlap sectors for jitter correction
@@ -310,6 +322,12 @@ extern "C"
 
 	// Get the TOC entry
 	DLLEXPORT TOCENTRY CRCCONV CR_GetTocEntry(LONG nTocEntry);
+
+	// Get Media Catalog Number
+	DLLEXPORT CDEX_ERR CRCCONV CR_ReadAndGetMCN(MCN *mcn);
+
+	// Get ISRC
+	DLLEXPORT CDEX_ERR CRCCONV CR_ReadAndGetISRC(ISRC *isrc, int track);
 
 	// Checks if the unit is ready (i.e. is the CD media present)
 	DLLEXPORT BOOL CRCCONV CR_IsUnitReady();

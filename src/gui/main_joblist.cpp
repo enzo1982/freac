@@ -881,10 +881,10 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 		else if (joblist->GetNthTrack(player->player_entry).GetTrackID() != player->player_entry_id) player->player_entry--;
 	}
 
-	/* Clear and deactivate edit boxes if the removed
-	 * track was the last one in the joblist.
+	/* Clear and deactivate edit boxes if the removed track
+	 * was selected or it was the last one in the joblist.
 	 */
-	if (joblist->GetNOfTracks() == 0)
+	if (joblist->GetSelectedTrack() == NIL || joblist->GetNOfTracks() == 0)
 	{
 		dontUpdateInfo = True;
 
