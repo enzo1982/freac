@@ -407,7 +407,8 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 				if (trackCDA[0] == ' ') break;
 
-				// Read length of track from .cda file
+				/* Read length of track from .cda file
+				 */
 				InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READONLY);
 
 				in->Seek(32);

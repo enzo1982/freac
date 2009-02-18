@@ -44,15 +44,15 @@ namespace BonkEnc
 							 JobList(const Point &, const Size &);
 			virtual				~JobList();
 
-			Bool				 CanModifyJobList();
+			Bool				 CanModifyJobList() const;
 
-			Int				 GetNOfTracks();
-			const Track			&GetNthTrack(Int);
+			Int				 GetNOfTracks() const;
+			const Track			&GetNthTrack(Int) const;
 
 			Bool				 RemoveNthTrack(Int);
 			Bool				 RemoveAllTracks();
 
-			const Track			&GetSelectedTrack();
+			const Track			&GetSelectedTrack() const;
 
 			Int				 SetMetrics(const Point &, const Size &);
 

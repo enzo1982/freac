@@ -6,6 +6,7 @@
     <property name="language">Turkish / Türkçe</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
     <property name="author">cako &lt;gakhgit@gmail.com&gt;</property>
     <property name="url">http://www.bonkenc.org/</property>
   </info>
@@ -151,7 +152,7 @@
     <entry id="144" string="Disable all filtering">Hiçbir filtre kullanma</entry>
     <entry id="145" string="MP3 Files">MP3 dosyaları</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis dosyaları</entry>
-    <entry id="147" string="BONK Files">BONK dosyaları</entry>
+    <entry id="147" string="Bonk Files">Bonk dosyaları</entry>
     <entry id="148" string="Automatic CDDB queries">Otomatik CDDB sorgusu</entry>
     <entry id="149" string="CDDB access mode:">CDDB erişim tipi:</entry>
     <entry id="150" string="CDDB server:">CDDB sunucu:</entry>
@@ -248,7 +249,7 @@
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">BonkEnc i seviyor musunuz? BonkEnc i ücretsiz kullanabilirsiniz&#10;fakat BonkEnc projesine bagış yaparak gelişmesine katkıda&#10;bulunabilirsiniz. Paypal aracılığı ile para gönderebilirsiniz.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate / Kalite</entry>
     <entry id="243" string="Check for updates now">Güncelleştirmeleri kontrol et</entry>
-    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to install it now?">BonkEnc için yeni güncelleştirmeler var!&#10;Siteyi ziyaret edip yüklemek ister misiniz?</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">BonkEnc için yeni güncelleştirmeler var!&#10;Siteyi ziyaret edip yüklemek ister misiniz?</entry>
     <entry id="245" string="There are no updates available at the moment!">Su anda yeni bir güncelleştirme yok!</entry>
     <entry id="246" string="Check for updates at startup">Başlangıçta güncelleştirmeleri kontrol et.</entry>
     <entry id="247" string="Read CD contents on insert">Cd takıldığında içindekileri oku</entry>
@@ -342,7 +343,7 @@
     <entry id="335" string="User name:">Kullanıcı adı:</entry>
     <entry id="336" string="Password:">Şifre:</entry>
     <entry id="337" string="Delete original files after encoding">Çevirdikten sonra orjinal dosyaları sil</entry>
-    <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Bu işlem çevirme bittikten sonra orjinal dosyaları silecektir!&#10;Orjinal dosyaları silmek istediğinize emin misiniz?</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Bu işlem çevirme bittikten sonra orjinal dosyaları silecektir!&#10;Orjinal dosyaları silmek istediğinize emin misiniz?</entry>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDBP protokolü HTTP yönlendirme proxy leri üzerinden kullanılamamaktadır.&#10;&#10;Protokolü HTTP ye çevirmek ister misiniz?</entry>
     <entry id="340" string="Playlists">Çalma listesi</entry>
     <entry id="341" string="Create playlists">Çalma listesi oluştur</entry>

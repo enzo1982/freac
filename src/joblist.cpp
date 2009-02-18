@@ -81,12 +81,12 @@ BonkEnc::JobList::~JobList()
 	DeleteObject(button_sel_toggle);
 }
 
-Int BonkEnc::JobList::GetNOfTracks()
+Int BonkEnc::JobList::GetNOfTracks() const
 {
 	return tracks.Length();
 }
 
-const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n)
+const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n) const
 {
 	static Track	 nil(NIL);
 
@@ -98,7 +98,7 @@ const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n)
 	return *(tracks.Get(GetNthEntry(n)->GetHandle()));
 }
 
-Bool BonkEnc::JobList::CanModifyJobList()
+Bool BonkEnc::JobList::CanModifyJobList() const
 {
 	if (BonkEnc::Get()->encoder->IsEncoding())
 	{
@@ -159,15 +159,32 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 {
 	if (!CanModifyJobList()) return False;
 
-	while (GetNOfTracks())
+	for (Int i = 0; i < tracks.Length(); i++)
 	{
-		RemoveNthTrack(GetNOfTracks() - 1);
+		ListEntry	*entry = GetNthEntry(i);
+
+		if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
 	}
+
+	RemoveAllEntries();
+
+	/* Notify components that all tracks will be removed.
+	 */
+	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Emit();
+
+	for (Int i = 0; i < tracks.Length(); i++)
+	{
+		delete tracks.GetNth(i);
+	}
+
+	tracks.RemoveAll();
+
+	UpdateTextLine();
 
 	return True;
 }
 
-const BoCA::Track &BonkEnc::JobList::GetSelectedTrack()
+const BoCA::Track &BonkEnc::JobList::GetSelectedTrack() const
 {
 	return GetNthTrack(GetSelectedEntryNumber());
 }
@@ -238,7 +255,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 			files.Add(dialog->GetNthFileName(i));
 		}
 
-		(new JobAddFiles(files))->Schedule();
+		if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
 	}
 
 	delete dialog;

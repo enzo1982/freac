@@ -6,6 +6,7 @@
     <property name="language">Catalan / Català</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
     <property name="author">el_libre &lt;el.libre@gmail.com&gt;</property>
     <property name="url">http://www.catmidia.cat/</property>
   </info>
@@ -61,8 +62,8 @@
     <entry id="49" string="OK">Acceptar</entry>
     <entry id="50" string="Cancel">Cancel·lar</entry>
     <entry id="51" string="Encoding Mode">Mode de compresió</entry>
-    <entry id="52" string="Variable Ràtio de bits">Ràtio de bits Variable</entry>
-    <entry id="53" string="Average Ràtio de bits">Mitjana Ràtio de bits</entry>
+    <entry id="52" string="Variable Bitrate">Ràtio de bits Variable</entry>
+    <entry id="53" string="Average Bitrate">Mitjana Ràtio de bits</entry>
     <entry id="54" string="Quality">Qualitat</entry>
     <entry id="55" string="Encoders">Compressors</entry>
     <entry id="56" string="Language">Idioma</entry>
@@ -89,7 +90,7 @@
     <entry id="77" string="No verify">Sense verificació</entry>
     <entry id="78" string="No scratch repair">No reparar grinyols</entry>
     <entry id="79" string="Full cdparanoia mode">Mode CD paranoia complet</entry>
-    <entry id="80" string="Ràtio de bits">Ràtio de bits</entry>
+    <entry id="80" string="Bitrate">Ràtio de bits</entry>
     <entry id="81" string="Copyright bit">Copyright Bit</entry>
     <entry id="82" string="CRC">CRC</entry>
     <entry id="83" string="Original bit">Original Bit</entry>
@@ -107,7 +108,7 @@
     <entry id="95" string="Predictor size">Tamany del predictor</entry>
     <entry id="96" string="Enable lossless encoding">Compresió sense Pèrdua</entry>
     <entry id="97" string="Enable Joint Stereo">Activar Joint Stereo</entry>
-    <entry id="98" string="Ràtio de bits per channel:">Ràtio de bits per canal:</entry>
+    <entry id="98" string="Bitrate per channel:">Ràtio de bits per canal:</entry>
     <entry id="99" string="Preselection">Preselecció</entry>
     <entry id="100" string="Number of preselection candidates:">Nº de candidats de preselecció:</entry>
     <entry id="101" string="MPEG version">Versió MPEG</entry>
@@ -120,7 +121,7 @@
     <entry id="108" string="Basic">Bàsic</entry>
     <entry id="109" string="Misc">Miscelànea</entry>
     <entry id="110" string="Audio processing">Processament d'àudio</entry>
-    <entry id="111" string="Set Ràtio de bits:">Ràtio de bits:</entry>
+    <entry id="111" string="Set bitrate:">Ràtio de bits:</entry>
     <entry id="112" string="Set ratio:">Relació:</entry>
     <entry id="113" string="Set quality:">Qualitat:</entry>
     <entry id="114" string="worse">pitjor</entry>
@@ -132,10 +133,10 @@
     <entry id="120" string="VBR mode">Mode VBR</entry>
     <entry id="121" string="no VBR">sense VBR</entry>
     <entry id="122" string="VBR quality">Qualitat VBR</entry>
-    <entry id="123" string="ABR target Ràtio de bits">ABR Ràtio de bits de destinació</entry>
-    <entry id="124" string="VBR Ràtio de bits range">VBR rang de Ràtio de bits</entry>
-    <entry id="125" string="Set minimum VBR Ràtio de bits:">VBR Ràtio de bits min.:</entry>
-    <entry id="126" string="Set maximum VBR Ràtio de bits:">VBR Ràtio de bits màxim:</entry>
+    <entry id="123" string="ABR target bitrate">ABR Ràtio de bits de destinació</entry>
+    <entry id="124" string="VBR bitrate range">VBR rang de Ràtio de bits</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">VBR Ràtio de bits min.:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">VBR Ràtio de bits màxim:</entry>
     <entry id="127" string="Control bits">Bits de control</entry>
     <entry id="128" string="Stream format">Format de flux</entry>
     <entry id="129" string="Enforce strict ISO compliance">Forçar conformitat ISO estricta</entry>
@@ -194,7 +195,7 @@
     <entry id="187" string="Year">Any</entry>
     <entry id="188" string="Genre">Gènere</entry>
     <entry id="189" string="Album">Àlbum</entry>
-    <entry id="190" string="Info Etiquetes">Info Etiquetes</entry>
+    <entry id="190" string="Info tags">Info Etiquetes</entry>
     <entry id="191" string="Default information">Informacions estàndar</entry>
     <entry id="192" string="Default comment string:">Comentari per defecte:</entry>
     <entry id="193" string="unknown artist">artista desconegut</entry>
@@ -206,7 +207,7 @@
     <entry id="199" string="CDDB data">Dades CDDB</entry>
     <entry id="200" string="Submit">Enviar</entry>
     <entry id="201" string="No audio CD in drive!">cap CD d'àudio en la unitat</entry>
-    <entry id="202" string="Please fill all fields and track titles before submitting">Emplenar tots els camps i pistes abans d'enviar.</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Emplenar tots els camps i pistes abans d'enviar.</entry>
     <entry id="203" string="Prefer CDDB over CD Text">Sobreescriure CD-Text-Infos</entry>
     <entry id="204" string="CD options">Opcions de CD</entry>
     <entry id="205" string="Submitting CD information">Enviant informació del CD</entry>
@@ -241,12 +242,12 @@
     <entry id="234" string="Show Tip of the Day">Suggeriment del dia</entry>
     <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc es troba disponible en %1 idiomes. Si el seu&#10;no es troba disponible, pot traduir fàcilment&#10;BonkEnc utilitzant la aplicació 'smooth Translator'.</entry>
     <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc inclou suport per a codificar LAME, Ogg Vorbis,&#10;FAAC, FLAC i Bonk. Un codificador per al format VQF es troba&#10;disponible en el lloc de BonkEnc: %1</entry>
-    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/Afegits directory to&#10;enable BonkEnc to read these formats.">BonkEnc pot utilitzar els Afegits d'entrada de Winamp 2&#10;per a acceptar més formats. Copii els arxius in*.dll a la carpeta&#10;BonkEnc\Afegits para permetre a BonkEnc llegir aquests formats</entry>
+    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc pot utilitzar els Afegits d'entrada de Winamp 2&#10;per a acceptar més formats. Copii els arxius in*.dll a la carpeta&#10;BonkEnc\Afegits para permetre a BonkEnc llegir aquests formats</entry>
     <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Amb BonkEnc pots enviar registres de CD freedb contenint&#10;caràcters Unicode. D'aquesta Manera, si posseix CDs amb noms&#10;de artistes o títols que no estiguin en alfabetizació llatina, pot&#10;enviar les dades correctes a freedb amb BonkEnc.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per a corregir els errors de lectura durant el procés de extracció,&#10;pot activar la funció Correció de lectura en la fitxa CDRip de la&#10;configuració. Si això no ajuda, intenti utilitzar&#10;algun de les maneres paranoia.</entry>
     <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Té algun suggeriment per a millorar BonkEnc? Pot enviar-nos&#10;les seves idees a travèS del Tracker en el lloc de BonkEnc&#10;situat en SourceForge - %1 o&#10;enviar un mail a %2</entry>
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Li agrada BonkEnc? BonkEnc es troba disponible&#10;gratuitament, però pot ajudar al desenvolupament del&#10;projecte BonkEnc fent una donació. Pot enviar diners&#10;a %1 a travèS de PayPal.&#10;Vegi %2 per a més detalls.</entry>
-    <entry id="242" string="Ràtio de bits / Quality">Taxa de bits / Qualitat</entry>
+    <entry id="242" string="Bitrate / Quality">Taxa de bits / Qualitat</entry>
     <entry id="243" string="Check for updates now">Comprovar si hi ha actualitzacions ara</entry>
     <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Hi ha noves actualitzacions disponibles para BonkEnc!&#10;Desitja veure una llista de les actualitzacions disponibles?</entry>
     <entry id="245" string="There are no updates available at the moment!">No hi ha actualitzacions disponibles de moment</entry>
@@ -263,9 +264,9 @@
     <entry id="256" string="MP4 Files">Fitxers MP4</entry>
     <entry id="257" string="Format">Format</entry>
     <entry id="258" string="File format">Format de fitxer</entry>
-    <entry id="259" string="Allow ID3v2 Etiquetes in AAC files">Permetre etiquetes ID3v2 en fitxers AAC</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Permetre etiquetes ID3v2 en fitxers AAC</entry>
     <entry id="260" string="Note:">Nota:</entry>
-    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 Etiquetes attached. Please use this option only&#10;if you are sure that your player can handle these Etiquetes.">Alguns reproductors poden arribar a tenir problemes al reproduir&#10;fitxers AAC amb etiquetes ID3. Sols utilitzi aquesta opció si està&#10;segur que el reproductor pot manejar aquest tipus d'arxius.</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Alguns reproductors poden arribar a tenir problemes al reproduir&#10;fitxers AAC amb etiquetes ID3. Sols utilitzi aquesta opció si està&#10;segur que el reproductor pot manejar aquest tipus d'arxius.</entry>
     <entry id="262" string="FLAC Files">Fitxers FLAC</entry>
     <entry id="263" string="Sampling rate">Velocitat de mostreig</entry>
     <entry id="264" string="Sample resolution">Resolució de la mostra</entry>
@@ -276,9 +277,9 @@
     <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Crear llista de reproducció</entry>
     <entry id="271" string="Create cue sheet">Crear cua</entry>
-    <entry id="272" string="Write ID3v1 Etiquetes">Gravar Etiquetes-ID3v1</entry>
-    <entry id="273" string="Write ID3v2 Etiquetes">Gravar Etiquetes-ID3v2</entry>
-    <entry id="274" string="Write Vorbis Comment Etiquetes">Gravar Etiquetes Vorbis Comentari-</entry>
+    <entry id="272" string="Write ID3v1 tags">Gravar Etiquetes-ID3v1</entry>
+    <entry id="273" string="Write ID3v2 tags">Gravar Etiquetes-ID3v2</entry>
+    <entry id="274" string="Write Vorbis Comment tags">Gravar Etiquetes Vorbis Comentari-</entry>
     <entry id="275" string="Write MP4 metadata info">Gravar metadades MP4</entry>
     <entry id="276" string="ID3v1 tag encoding:">Codificació ID3v1:</entry>
     <entry id="277" string="ID3v2 tag encoding:">Codificació ID3v2:</entry>

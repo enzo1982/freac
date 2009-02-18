@@ -6,6 +6,7 @@
     <property name="language">Spanish / Español</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
     <property name="author">Federico Reddig &lt;feix303@hotmail.com&gt;</property>
     <property name="url">http://www.bonkenc.org/</property>
   </info>
@@ -206,7 +207,7 @@
     <entry id="199" string="CDDB data">Datos CDDB</entry>
     <entry id="200" string="Submit">Enviar</entry>
     <entry id="201" string="No audio CD in drive!">Ningún CD de audio en la unidad</entry>
-    <entry id="202" string="Please fill all fields and track titles before submitting">Rellenar todos los campos y pistas antes de enviar.</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Rellenar todos los campos y pistas antes de enviar.</entry>
     <entry id="203" string="Prefer CDDB over CD Text">Sobreescribir CD-Text-Infos</entry>
     <entry id="204" string="CD options">Opciones de CD</entry>
     <entry id="205" string="Submitting CD information">Enviando información del CD</entry>

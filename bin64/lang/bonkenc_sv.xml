@@ -6,6 +6,7 @@
     <property name="language">Swedish / Svenska</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
     <property name="author">Anton Mjörnebrant &lt;anton_mjor@hotmail.com&gt; &amp; Mikael HafO &lt;mikael.hafo@hotmail.com&gt;</property>
     <property name="url">http://www.bonkenc.org/</property>
   </info>
@@ -18,7 +19,7 @@
     <entry id="6" string="Clear joblist">Töm jobblista</entry>
     <entry id="7" string="Exit">Avsluta</entry>
     <entry id="8" string="General settings...">Allmänna inställningar...</entry>
-    <entry id="9" string="Configure selected encoder...">Inställningar för vald kodare...</entry>
+    <entry id="9" string="Configure selected encoder...">Konfigurera vald kodare...</entry>
     <entry id="10" string="Audio file(s)">Ljudfil(er)</entry>
     <entry id="11" string="Audio CD contents">Innehåll från ljud-CD</entry>
     <entry id="12" string="Start encoding">Starta kodning</entry>
@@ -37,7 +38,7 @@
     <entry id="25" string="Remove the selected entry from the joblist">Ta bort det markerade objektet från jobblistan</entry>
     <entry id="26" string="Clear the entire joblist">Töm hela jobblistan</entry>
     <entry id="27" string="Configure general settings">Allmänna inställningar</entry>
-    <entry id="28" string="Configure the selected audio encoder">Inställningar för vald ljudkodare</entry>
+    <entry id="28" string="Configure the selected audio encoder">Konfigurera vald ljudkodare</entry>
     <entry id="29" string="Start the encoding process">Starta kodningen</entry>
     <entry id="30" string="Cannot modify the joblist while encoding!">Du kan inte modifiera jobblistan under kodning!</entry>
     <entry id="31" string="Error">Fel</entry>
@@ -54,13 +55,13 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Det här programmet dibustrueras i enlighet&#10;med GNU licensen (General Public License (GPL)).</entry>
     <entry id="43" string="CDDB query">CDDB-sökning</entry>
     <entry id="44" string="About %1">Om %1</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Inga inställningar kan bli konfigurerade för WAVE Out-filtret!</entry>
+    <entry id="45" string="No options can be configured for the WAVE Out filter!">Inga inställningar kan konfigureras för WAVE Out-filtret!</entry>
     <entry id="46" string="WAVE Out filter">WAVE Out-filter</entry>
     <entry id="47" string="Cannot change settings while encoding!">Du kan inte ändra inställningarna under kodning!</entry>
     <entry id="48" string="%1 encoder configuration">%1 kodarinställningar</entry>
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Avbryt</entry>
-    <entry id="51" string="Encoding Mode">Kodningsläge</entry>
+    <entry id="51" string="Encoding Mode">Kodarläge</entry>
     <entry id="52" string="Variable Bitrate">Varierande bitflöde</entry>
     <entry id="53" string="Average Bitrate">Ungefärligt bitflöde</entry>
     <entry id="54" string="Quality">Kvalitet</entry>
@@ -181,11 +182,11 @@
     <entry id="174" string="Custom settings">Avancerade inställningar</entry>
     <entry id="175" string="Medium">Mellan</entry>
     <entry id="176" string="Standard">Standard</entry>
-    <entry id="177" string="Extreme">Extrem</entry>
-    <entry id="178" string="Insane">Galen</entry>
-    <entry id="179" string="Medium, Fast">Mellan, Snabb</entry>
+    <entry id="177" string="Extreme">Extreme</entry>
+    <entry id="178" string="Insane">Insane</entry>
+    <entry id="179" string="Medium, Fast">Medium, Snabb</entry>
     <entry id="180" string="Standard, Fast">Standard, Snabb</entry>
-    <entry id="181" string="Extreme, Fast">Extrem, Snabb</entry>
+    <entry id="181" string="Extreme, Fast">Extreme, Snabb</entry>
     <entry id="182" string="Title">Titel</entry>
     <entry id="183" string="Track">Spår</entry>
     <entry id="184" string="Length">Längd</entry>
@@ -268,8 +269,8 @@
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Vissa spelare kan ha problem att spela AAC-filer med&#10;ID3-taggar. Använd endast denna funktion om du är helt&#10;säker på att din spelare kan läsa ID3-taggar.</entry>
     <entry id="262" string="FLAC Files">FLAC-filer</entry>
     <entry id="263" string="Sampling rate">Samplingshastighet</entry>
-    <entry id="264" string="Sample resolution">Sampel-upplösning</entry>
-    <entry id="265" string="Number of samples">Antal sampel</entry>
+    <entry id="264" string="Sample resolution">Samplings-upplösning</entry>
+    <entry id="265" string="Number of samples">Antal samplingar</entry>
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">bytes</entry>
     <entry id="268" string="bit">bit</entry>
@@ -342,7 +343,7 @@
     <entry id="335" string="User name:">Användarnamn:</entry>
     <entry id="336" string="Password:">Lösenord:</entry>
     <entry id="337" string="Delete original files after encoding">Radera originalfiler efter kodning</entry>
-    <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Denna funktion kommer att radera originalfilerna&#10;efter att dom har blivit kodade! Är du säker på att&#10;du vill fortsätta?</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denna funktion kommer att radera originalfilerna&#10;efter att dom har blivit kodade! Är du säker på att&#10;du vill fortsätta?</entry>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb-protokollet CDDBP kan inte användas över&#10;HTTP-proxyservrar!&#10;&#10;Vill du ändra protokollet till HTTP?</entry>
     <entry id="340" string="Playlists">Spellistor</entry>
     <entry id="341" string="Create playlists">Skapa spellistor</entry>
@@ -380,7 +381,7 @@
     <entry id="373" string="Query all">Sök allt</entry>
     <entry id="374" string="Query string">Söksträng</entry>
     <entry id="375" string="CDDB queries to perform:">CDDB-sökningar att utföra:</entry>
-    <entry id="376" string="Would you like to perform this query again later?">Vill du utföra denna sökningar igen senare?</entry>
+    <entry id="376" string="Would you like to perform this query again later?">Vill du utföra denna sökning igen senare?</entry>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till CD-ROM-spelare nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till CD-ROM-spelaren.</entry>
     <entry id="378" string="CD information">CD-information</entry>
     <entry id="379" string="Read CD Text">Läs CD-text</entry>
@@ -395,5 +396,7 @@
     <entry id="388" string="Unknown file type">Okänd filtyp</entry>
     <entry id="389" string="Unsupported audio format">Inget stöd för ljudformatet</entry>
     <entry id="390" string="Unknown error">Okänt fel</entry>
+    <entry id="391" string="Replace existing comments with default comment">Ersätt existerande kommenater med standardkommentar</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Dom valda filerna kan inte kodas till EN&#10;utdatafil då dom har olika samplingsfrekvenser.&#10;&#10;Var god konvertera filerna till samma samplingsfrekvens först.</entry>
   </data>
 </LangFile>

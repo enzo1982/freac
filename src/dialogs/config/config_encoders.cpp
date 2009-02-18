@@ -87,7 +87,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 		}
 	}
 
-	if (customEntries > 0) list_filename->AddEntry("----");
+	if (customEntries > 0) list_filename->AddSeparator();
 
 	list_filename->AddEntry("<artist> - <title>");
 	list_filename->AddEntry("<artist>\\<artist> - <title>");
@@ -237,7 +237,7 @@ Void BonkEnc::ConfigureEncoders::ToggleEncodeToSingleFile()
 
 Int BonkEnc::ConfigureEncoders::SaveSettings()
 {
-	if (edit_filename->GetText() == NIL || edit_filename->GetText() == "----")
+	if (edit_filename->GetText() == NIL)
 	{
 		Utilities::ErrorMessage("Invalid file name pattern!");
 
