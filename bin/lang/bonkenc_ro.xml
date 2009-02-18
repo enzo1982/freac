@@ -6,6 +6,7 @@
   <property name="language">Romanian / Română</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
+  <property name="template">template.xml</property>
   <property name="author">Borca Alin &lt;alinx@acasa.ro&gt;</property>
   <property name="url">http://www.digital-media.ro/</property>
  </info>
@@ -342,7 +343,7 @@
   <entry id="335" string="User name:">Nume utilizator:</entry>
   <entry id="336" string="Password:">Parolă:</entry>
   <entry id="337" string="Delete original files after encoding">Ştergere fişiere originale după codare</entry>
-  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Această opţiune determină ştergerea fişierelor originale&#10;după terminarea codării! Continuaţi?</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Această opţiune determină ştergerea fişierelor originale&#10;după terminarea codării! Continuaţi?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Protocolul freedb CDDBP nu poate fi folosit pe&#10;HTTP cu server proxy.&#10;Doriti să utilizaţi protocolul HTTP?</entry>
   <entry id="340" string="Playlists">Liste</entry>
   <entry id="341" string="Create playlists">Creare listă</entry>

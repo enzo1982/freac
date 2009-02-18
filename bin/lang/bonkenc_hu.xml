@@ -6,6 +6,7 @@
   <property name="language">Hungarian / Magyar</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
+  <property name="template">template.xml</property>
   <property name="author">Tóth Péter &lt;kesadmin@survival.hu&gt;</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
@@ -342,7 +343,7 @@
   <entry id="335" string="User name:">Felhasználó neve:</entry>
   <entry id="336" string="Password:">Jelszó:</entry>
   <entry id="337" string="Delete original files after encoding">Eredeti fájlok törlése tömörítés után</entry>
-  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Ez a beállítás letörli az eredeti fájlokat a kódolás&#10;után. Biztos folytatja a műveletet? </entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ez a beállítás letörli az eredeti fájlokat a kódolás&#10;után. Biztos folytatja a műveletet? </entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">A freedb CDDBP protokoll nem használható HTTP&#10;Forward proxi-k esetén!&#10;&#10;Szeretné megváltotratni a protokollt HTTP-re?</entry>
   <entry id="340" string="Playlists">Lejátszási lista</entry>
   <entry id="341" string="Create playlists">Lejátszási lista készítés</entry>

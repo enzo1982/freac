@@ -6,6 +6,7 @@
   <property name="language">French / Français</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
+  <property name="template">template.xml</property>
   <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;, Grégoire Chabord</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
@@ -341,7 +342,7 @@
   <entry id="335" string="User name:">Nom utilisateur :</entry>
   <entry id="336" string="Password:">Mot de passe :</entry>
   <entry id="337" string="Delete original files after encoding">Supprimer fichiers initiaux après encodage</entry>
-  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Cette option va supprimer les fichiers initiaux après leur&#10;encodage ! Voulez-vous vraiment continuer ?</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Cette option va supprimer les fichiers initiaux après leur&#10;encodage ! Voulez-vous vraiment continuer ?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Le protocole CDDBP freedb ne peut pas être utilisé sur les serveurs proxy HTTP Forward !&#10;&#10;Voulez-vous passer au protocole HTTP ?</entry>
   <entry id="340" string="Playlists">Sélections</entry>
   <entry id="341" string="Create playlists">Créer sélections</entry>

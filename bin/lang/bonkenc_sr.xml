@@ -6,6 +6,7 @@
   <property name="language">Serbian / Srpski</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
+  <property name="template">template.xml</property>
   <property name="author">Nebojša Nikolić &lt;nebek2000@gmail.com&gt;</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
@@ -342,7 +343,7 @@
   <entry id="335" string="User name:">Korisničko ime:</entry>
   <entry id="336" string="Password:">Lozinka:</entry>
   <entry id="337" string="Delete original files after encoding">Obriši izvorni fajl nakon enkodovanja</entry>
-  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Ova opcija obrisaće izvorne fajlove nakon&#10;enkodovanja! Da li ste sigurni da želite da nastavite?</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ova opcija obrisaće izvorne fajlove nakon&#10;enkodovanja! Da li ste sigurni da želite da nastavite?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokol ne može se korsititi preko HTTP&#10;prenaupućenih proksija!&#10;&#10;Da li želite da izmenite protokol u HTTP?</entry>
   <entry id="340" string="Playlists">Liste pokretanja</entry>
   <entry id="341" string="Create playlists">Kreiraj listu pokretanja</entry>
@@ -395,5 +396,7 @@
   <entry id="388" string="Unknown file type">Nepoznata vrsta fajla</entry>
   <entry id="389" string="Unsupported audio format">Ovaj audio format nije podržan</entry>
   <entry id="390" string="Unknown error">Nepoznata greška</entry>
+  <entry id="391" string="Replace existing comments with default comment">Zameni postojeći(e) komentar(e) usađenim komentarom</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrani fajlovi ne mogu se kombinovati u jedan&#10;izlazni fajl zbog različitih ulaznih formata.&#10;&#10;Molimo prvo pretvorite sve fajlove u isti format.</entry>
  </data>
 </LangFile>

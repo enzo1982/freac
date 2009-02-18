@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -70,7 +70,7 @@ Bool BonkEnc::FilterInFLAC::Deactivate()
 
 Int BonkEnc::FilterInFLAC::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
-	if (decoderThread->GetStatus() != THREAD_RUNNING) return -1;
+	if (decoderThread->GetStatus() != THREAD_RUNNING && samplesBuffer.Size() <= 0) return -1;
 
 	readDataMutex->Release();
 

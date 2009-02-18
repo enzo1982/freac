@@ -6,6 +6,7 @@
   <property name="language">Estonian / Eesti</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
+  <property name="template">template.xml</property>
   <property name="author">KunDe &lt;meelis.pasieko@gmail.com&gt;</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
@@ -342,7 +343,7 @@
   <entry id="335" string="User name:">Kasutaja nimi:</entry>
   <entry id="336" string="Password:">Parool:</entry>
   <entry id="337" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
-  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">See säte kustutab originaal failid peale seda kui nad on kodeeritud! Kas soovite jätkata?</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">See säte kustutab originaal failid peale seda kui nad on kodeeritud! Kas soovite jätkata?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokoli ei saa kasutada läbi HTTP Proxi ette!  Tahate muuta protokoli HTTP vastu?</entry>
   <entry id="340" string="Playlists">Playlists</entry>
   <entry id="341" string="Create playlists">Luua playlistid</entry>

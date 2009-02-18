@@ -6,6 +6,7 @@
     <property name="language">Czech / Česky</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
     <property name="author">Vladimír Kytýr &lt;vlakyt@quick.cz&gt;</property>
     <property name="url">http://www.bonkenc.org/</property>
   </info>
@@ -151,7 +152,7 @@
     <entry id="144" string="Disable all filtering">Vypnout filtrování</entry>
     <entry id="145" string="MP3 Files">MP3 soubory</entry>
     <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis soubory</entry>
-    <entry id="147" string="BONK Files">BONK soubory</entry>
+    <entry id="147" string="Bonk Files">Bonk soubory</entry>
     <entry id="148" string="Automatic CDDB queries">Automatický dotaz na CDDB</entry>
     <entry id="149" string="CDDB access mode:">Režim dostupnosti CDDB:</entry>
     <entry id="150" string="CDDB server:">CDDB server:</entry>
@@ -243,7 +244,7 @@
     <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Líbí se vám BonkEnc? BonkEnc je volně dostupný, ale můžete&#10;nám pomoci podpořit BonkEnc projekt.&#10;Peníze můžete poslat na %1 cestou PayPal.&#10;Podívej se na %2 pro více&#10;podrobností.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate / Kvalita</entry>
     <entry id="243" string="Check for updates now">Nyní prověřit aktualizaci</entry>
-    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to install it now?">Nová BonkEnc verze je online dostupná!&#10;Chcete ji nyní nyinstalovat?</entry>
+    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Nová BonkEnc verze je online dostupná!&#10;Chcete ji nyní nyinstalovat?</entry>
     <entry id="245" string="There are no updates available at the moment!">Momentálně není žádná aktualizace dostupná!</entry>
     <entry id="246" string="Check for updates at startup">Prověřit aktualizaci po spuštění</entry>
   </data>

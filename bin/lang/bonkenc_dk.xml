@@ -6,6 +6,7 @@
   <property name="language">Danish / Dansk</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
+  <property name="template">template.xml</property>
   <property name="author">Jan Arni Jacobsen &lt;theking1988@gmail.com&gt;</property>
   <property name="url">http://www.hj.dyndns.dk/jaj/</property>
  </info>
@@ -342,7 +343,7 @@
   <entry id="335" string="User name:">Brugernavn:</entry>
   <entry id="336" string="Password:">Kodeord:</entry>
   <entry id="337" string="Delete original files after encoding">Slet orginale filer efter endt kodning</entry>
-  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Denne indstilling vil slette de orginale filer efter de er blevet kodet! Ønsker du at forsætte?</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne indstilling vil slette de orginale filer efter de er blevet kodet! Ønsker du at forsætte?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDBP protokol kan ikke bruges over HTTP Forward Proxies!&#10;&#10;Vil du skfite protokollen til HTTP?</entry>
   <entry id="340" string="Playlists">Afspilningsliste</entry>
   <entry id="341" string="Create playlists">Lav afspilningsliste</entry>

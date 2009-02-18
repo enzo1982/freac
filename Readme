@@ -13,11 +13,13 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.11 (January 2009)
+	Version 1.0.11 (February 2009)
 
-		- updated Italian translation
+		- updated Italian, Serbian and Swedish translations
 		- added <directory> pattern to allow preserving existing directory structures
 		- fixed handling of non-ASCII characters when opening MP3 files with multiple tags
+		- fixed ID3lib to read and write correct ID3v2.4 tags
+		- fixed error resulting in not decoding FLAC files to the end in some situations
 		- fixed error opening large MP4 files
 		- upgrade to MP4v2 v2.0 alpha
 
@@ -181,7 +183,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v8.0
-		- smooth v0.8.70.2 (http://www.smooth-project.org/)
+		- smooth v0.8.70.3 (http://www.smooth-project.org/)
 
 	Additional optional software:
 

@@ -6,6 +6,7 @@
   <property name="language">Portuguese (Brazilian) / Português (Brasil)</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
+  <property name="template">template.xml</property>
   <property name="author">J. B. Escada Jr.</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
@@ -342,7 +343,7 @@
   <entry id="335" string="User name:">Usuário:</entry>
   <entry id="336" string="Password:">Senha:</entry>
   <entry id="337" string="Delete original files after encoding">Apagar arquivos originais após codificação</entry>
-  <entry id="338" string="This option will delete the original files after they&#10;have been encoded! Are you sure you want to proceed?">Esta opção irá apagar os arquivos originais&#10;depois da codificação! Tem certeza?</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opção irá apagar os arquivos originais&#10;depois da codificação! Tem certeza?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">O protocolo CDDBP náo pode ser usado com proxies de&#10;encaminhamento de HTTP!&#10;&#10;Deseja mudar o protocolo para HTTP?</entry>
   <entry id="340" string="Playlists">Listas de execução</entry>
   <entry id="341" string="Create playlists">Criar listas de execução</entry>
