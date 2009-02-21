@@ -21,6 +21,8 @@ History
 		- fixed ID3lib to read and write correct ID3v2.4 tags
 		- fixed error resulting in not decoding FLAC files to the end in some situations
 		- fixed error opening large MP4 files
+		- upgraded FAAC to version 1.28
+		- upgraded FAAD2 to version 2.7
 		- upgrade to MP4v2 v2.0 alpha
 
 	Version 1.0.10 (December 2008)

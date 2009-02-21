@@ -21,6 +21,8 @@ Geschichte
 		- Fehler in ID3lib behoben, um korrektes Lesen und Schreiben von ID3v2.4-Tags zu gew‰hrleisten
 		- Fehler behoben, durch den FLAC-Dateien in einigen Situationen nicht bis zum Ende decodiert wurden
 		- Fehler beim ÷ffnen von groﬂen MP4-Dateien behoben
+		- FAAC auf Version 1.28 aktualisiert
+		- FAAD2 suf Version 2.7 aktualisiert
 		- Update auf MP4v2 v2.0 Alpha
 
 	Version 1.0.10 (Dezember 2008)
