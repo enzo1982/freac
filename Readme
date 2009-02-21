@@ -61,8 +61,8 @@ History
 		- added native x64 platform support
 		- upgraded Bonk to version 0.12
 		- upgraded FLAC to version 1.2.1
-		- upgraded FAAC to version 1.26
-		- upgraded FAAD2 to version 2.6.1
+		- upgraded FAAC to version 1.28
+		- upgraded FAAD2 to version 2.7
 		- upgraded LAME to version 3.98.3
 		- upgraded Ogg Vorbis to aoTuV beta 5.61
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
