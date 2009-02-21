@@ -18,6 +18,7 @@
 
 #include <jobs/job_adddirectory.h>
 #include <jobs/job_addfiles.h>
+#include <jobs/job_removeall.h>
 
 #include <cddb/cddbremote.h>
 
@@ -42,6 +43,8 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	BoCA::JobList::Get()->onComponentAddTrack.Connect(&JobList::AddTrack, this);
 	BoCA::JobList::Get()->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
+
+	BoCA::JobList::Get()->doRemoveAllTracks.Connect(&JobList::RemoveAllTracks, this);
 
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFile.Connect(&JobList::AddTrackByDragAndDrop, this);
@@ -69,6 +72,8 @@ BonkEnc::JobList::~JobList()
 	BoCA::JobList::Get()->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
 	BoCA::JobList::Get()->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
+
+	BoCA::JobList::Get()->doRemoveAllTracks.Disconnect(&JobList::RemoveAllTracks, this);
 
 	onRegister.Disconnect(&JobList::OnRegister, this);
 	onUnregister.Disconnect(&JobList::OnUnregister, this);
@@ -140,7 +145,12 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 	 */
 	tracks.Remove(entry->GetHandle());
 
-	if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
+	if (entry->GetTooltipLayer() != NIL)
+	{
+		delete entry->GetTooltipLayer();
+
+		entry->SetTooltipLayer(NIL);
+	}
 
 	Remove(entry);
 
@@ -163,7 +173,12 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 	{
 		ListEntry	*entry = GetNthEntry(i);
 
-		if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
+		if (entry->GetTooltipLayer() != NIL)
+		{
+			delete entry->GetTooltipLayer();
+
+			entry->SetTooltipLayer(NIL);
+		}
 	}
 
 	RemoveAllEntries();
@@ -182,6 +197,11 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 	UpdateTextLine();
 
 	return True;
+}
+
+Void BonkEnc::JobList::StartJobRemoveAllTracks()
+{
+	(new JobRemoveAllTracks())->Schedule();
 }
 
 const BoCA::Track &BonkEnc::JobList::GetSelectedTrack() const

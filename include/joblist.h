@@ -72,6 +72,8 @@ namespace BonkEnc
 			Void				 LoadList();
 			Void				 SaveList();
 
+			Void				 StartJobRemoveAllTracks();
+
 			Void				 OnRegister(Widget *);
 			Void				 OnUnregister(Widget *);
 

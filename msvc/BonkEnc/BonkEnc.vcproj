@@ -575,6 +575,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\jobs\job_removeall.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\jobs\jobmanager.cpp"
 					>
 				</File>
@@ -782,6 +786,10 @@
 				</File>
 				<File
 					RelativePath="..\..\include\jobs\job_checkforupdates.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\jobs\job_removeall.h"
 					>
 				</File>
 				<File

@@ -474,6 +474,8 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&LayerJoblist::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationSelectTrack.Connect(&LayerJoblist::OnJoblistSelectTrack, this);
 
+	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&LayerJoblist::OnJoblistRemoveAllTracks, this);
+
 	onChangeSize.Connect(&LayerJoblist::OnChangeSize, this);
 }
 
@@ -482,6 +484,8 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 	BoCA::JobList::Get()->onApplicationModifyTrack.Disconnect(&LayerJoblist::OnJoblistModifyTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerJoblist::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationSelectTrack.Disconnect(&LayerJoblist::OnJoblistSelectTrack, this);
+
+	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&LayerJoblist::OnJoblistRemoveAllTracks, this);
 
 	joblist->RemoveAllTracks();
 
@@ -755,7 +759,7 @@ Void BonkEnc::LayerJoblist::FillMenus()
 
 	menu_trackmenu->AddEntry(i18n->TranslateString("Remove"))->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	menu_trackmenu->AddEntry();
-	menu_trackmenu->AddEntry(i18n->TranslateString("Clear joblist"))->onAction.Connect(&JobList::RemoveAllTracks, joblist);
+	menu_trackmenu->AddEntry(i18n->TranslateString("Clear joblist"))->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	menu_trackmenu->AddEntry();
 	menu_trackmenu->AddEntry(i18n->TranslateString("Select all"))->onAction.Connect(&JobList::SelectAll, joblist);
 	menu_trackmenu->AddEntry(i18n->TranslateString("Select none"))->onAction.Connect(&JobList::SelectNone, joblist);
@@ -904,6 +908,31 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 
 		dontUpdateInfo = False;
 	}
+}
+
+Void BonkEnc::LayerJoblist::OnJoblistRemoveAllTracks()
+{
+	if (player->playing) StopPlayback();
+
+	/* Clear and deactivate edit boxes.
+	 */
+	dontUpdateInfo = True;
+
+	info_edit_artist->SetText(NIL);
+	info_edit_title->SetText(NIL);
+	info_edit_album->SetText(NIL);
+	info_edit_track->SetText(NIL);
+	info_edit_year->SetText(NIL);
+	info_edit_genre->SetText(NIL);
+
+	info_edit_artist->Deactivate();
+	info_edit_title->Deactivate();
+	info_edit_album->Deactivate();
+	info_edit_track->Deactivate();
+	info_edit_year->Deactivate();
+	info_edit_genre->Deactivate();
+
+	dontUpdateInfo = False;
 }
 
 Void BonkEnc::LayerJoblist::UpdateTitleInfo()

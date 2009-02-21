@@ -146,6 +146,8 @@ namespace BonkEnc
 			Void			 OnJoblistModifyTrack(const Track &);
 			Void			 OnJoblistRemoveTrack(const Track &);
 
+			Void			 OnJoblistRemoveAllTracks();
+
 			Void			 OnEncoderStartEncoding();
 			Void			 OnEncoderFinishEncoding(Bool);
 

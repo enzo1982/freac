@@ -814,7 +814,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
 	menu_file->AddEntry();
 	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load("BonkEnc.pci:25"));
-	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
+	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
 	menu_file->AddEntry();
 	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("BonkEnc.pci:36"));
@@ -971,7 +971,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->SetTooltipText(i18n->TranslateString("Remove the selected entry from the joblist"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:4"));
-	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
+	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
 	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
