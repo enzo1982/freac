@@ -853,7 +853,7 @@ Void BonkEnc::LayerJoblist::OnJoblistSelectTrack(const Track &track)
 
 Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 {
-	if (joblist->GetSelectedTrack() == NIL) return;
+	if (joblist->GetSelectedTrack().GetTrackID() != track.GetTrackID()) return;
 
 	const Info	&info = track.GetInfo();
 
@@ -1297,9 +1297,17 @@ String BonkEnc::LayerJoblist::AdjustCaseWordsFirstCapital(const String &string)
 		    value[i - 1] == '('  ||
 		    value[i - 1] == '['  ||
 		    value[i - 1] == '<'  ||
+		    value[i - 1] == '-'  ||
+		    value[i - 1] == '+'  ||
+		    value[i - 1] == '&'  ||
+		    value[i - 1] == '.'  ||
+		    value[i - 1] == ','  ||
+		    value[i - 1] == ':'  ||
+		    value[i - 1] == ';'  ||
 		    value[i - 1] == 0xBF ||	// inverted question mark
 		    value[i - 1] == 0xA1 ||	// inverted exclamation mark
-		    value[i - 1] == '\"') value[i] = character.ToTitle()[0];
+		    value[i - 1] == '\"' ||
+		    value[i - 1] == '\'') value[i] = character.ToTitle()[0];
 	}
 
 	return value;
@@ -1320,6 +1328,9 @@ String BonkEnc::LayerJoblist::AdjustCaseLongWordsFirstCapital(const String &stri
 		    value[i + 1] == '>'  || value[i + 2] == '>'  || value[i + 3] == '>'  ||
 		    value[i + 1] == '?'  || value[i + 2] == '?'  || value[i + 3] == '?'  ||
 		    value[i + 1] == '!'  || value[i + 2] == '!'  || value[i + 3] == '!'  ||
+		    value[i + 1] == ','  || value[i + 2] == ','  || value[i + 3] == ','  ||
+		    value[i + 1] == ':'  || value[i + 2] == ':'  || value[i + 3] == ':'  ||
+		    value[i + 1] == ';'  || value[i + 2] == ';'  || value[i + 3] == ';'  ||
 		    value[i + 1] == '\"' || value[i + 2] == '\"' || value[i + 3] == '\"' ||
 		    value[i + 1] == '\'' || value[i + 2] == '\'' || value[i + 3] == '\'' ||
 		    value[i + 1] == 0    || value[i + 2] == 0    || value[i + 3] == 0)

@@ -41,6 +41,13 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 	String		 format = String::SetOutputFormat("UTF-8");
 	OutStream	*file = new OutStream(STREAM_FILE, rFileName, OS_OVERWRITE);
 
+	if (file->GetLastError() != IO_ERROR_OK)
+	{
+		Utilities::ErrorMessage("Could not create playlist file:\n\n%1", rFileName);
+
+		return False;
+	}
+
 	file->OutputLine("#EXTM3U");
 
 	for (Int i = 0; i < fileNames.Length(); i++)

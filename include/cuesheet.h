@@ -15,6 +15,10 @@
 
 using namespace smooth;
 
+#include <boca.h>
+
+using namespace BoCA;
+
 namespace BonkEnc
 {
 	class CueSheet
@@ -22,11 +26,9 @@ namespace BonkEnc
 		private:
 			Array<String>	 fileNames;
 			Array<Int>	 trackOffsets;
-			Array<String>	 trackTitles;
-			Array<String>	 trackArtists;
-			Array<String>	 trackAlbums;
+			Array<Track>	 trackInfos;
 		public:
-			Bool		 AddTrack(const String &, Int, const String &, const String &, const String &);
+			Bool		 AddTrack(const String &, Int, const Track &);
 
 			Bool		 Save(const String &);
 	};

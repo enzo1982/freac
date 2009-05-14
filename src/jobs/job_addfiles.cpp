@@ -157,6 +157,10 @@ Error BonkEnc::JobAddFiles::Perform()
 
 		if (track.origFilename == NIL) track.origFilename = file;
 
+		/* Add cover art from external files.
+		 */
+		track.LoadCoverArtFiles();
+
 		/* Add track to joblist.
 		 */
 		JobList	*joblist = JobList::Get();

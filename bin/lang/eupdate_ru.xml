@@ -6,13 +6,14 @@
   <property name="language">Russian / Русский</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
+  <property name="template"/>
   <property name="author">ZheKa &lt;evgenykozlov80@mail.ru&gt;</property>
   <property name="url">http://www.chapter0.net/easyUpdate/</property>
  </info>
  <data>
   <entry id="1" string="Cancel">Отмена</entry>
   <entry id="2" string="Install">Установить</entry>
-  <entry id="3" string="Show unstable releases">Показать нестабильные релизы</entry>
+  <entry id="3" string="Show unstable releases">Показывать нестабильные релизы</entry>
   <entry id="4" string="Select the updated program version to be installed:">Выберите обновленную версию программы для установки:</entry>
   <entry id="5" string="You can select optional components to be installed:">Вы можете выбрать компоненты для установки:</entry>
   <entry id="6" string="Version ID">ID версии</entry>

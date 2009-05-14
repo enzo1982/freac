@@ -13,9 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (February 2009)
+	Version 1.1 CVS (March 2009)
 
-		- added Estonian, Catalan, Valencian and Portuguese language support
+		- added Estonian, Croatian, Catalan, Valencian and Portuguese language support
 		- added German, Italian, Russian and Greek user guides
 		- added German and Japanese translations for the installer
 		- converted input and output filters to BoCA components
@@ -64,7 +64,7 @@ History
 		- upgraded FAAC to version 1.28
 		- upgraded FAAD2 to version 2.7
 		- upgraded LAME to version 3.98.3
-		- upgraded Ogg Vorbis to aoTuV beta 5.61
+		- upgraded Ogg Vorbis to aoTuV beta 5.7
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0
 		- lots of other fixes
@@ -150,7 +150,8 @@ Special thanks to
 			   El libre (Catalan),
 			   Vjatv (Valencian),
 			   Jose Goncalves (Portuguese),
-			   Meelis Pasieko (Estonian)
+			   Meelis Pasieko (Estonian),
+			   Goran Bekic (Croatian)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

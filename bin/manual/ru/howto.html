@@ -1,0 +1,222 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Как...? - Руководство пользователя BonkEnc</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="../style/style.css">
+  <!-- Hack to avoid flash of unstyled content in IE -->
+  <script type="text/javascript">
+ </script>
+</head>
+
+<body id="onecolumn">
+
+<div id="container">
+
+<div class="wrapper">
+
+<div id="header">
+
+<div class="wrapper">
+<h1 id="page-title">
+<div id="g_title">
+Как...? - Руководство пользователя BonkEnc</div>
+</h1>
+
+<p class="description"></p>
+
+<div id="g_description">
+<p>Руководство по настройке и специальным
+функциям BonkEnc</p>
+</div>
+</div>
+</div>
+
+<div id="main-content-oc">
+
+<div class="wrapper">
+
+<div class="content-item">
+
+<div id="g_body">
+<h4>Содержание</h4>
+
+<blockquote>
+		  <p><a href="../en/howto.html#anchor_src">How to compile BonkEnc from source?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
+		  <p><a href="../en/howto.html#anchor_enc">How to install encoder/decoder xy?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
+		  <p><a href="#anchor_wma">Как включить поддержку декодирования Windows Media Audio?</a></p>
+		  <p><a href="#anchor_pat">Как в BonkEnc использовать шаблоны имен выходных файлов?</a></p>
+		  <p><a href="#anchor_tra">Как добавить в BonkEnc новую локализацию?</a></p>
+		  <p><a href="#anchor_rem">Как удалить BonkEnc с моего компьютера?</a></p>
+</blockquote>
+
+<h4 id="anchor_wma">Как включить поддержку
+декодирования Windows Media Audio?</h4>
+
+<blockquote>
+  <p>Для включения поддержки <b>Windows Media Audio</b>
+  (WMA) в BonkEnc, вам нужен WMA плагин от Winamp 5.21
+  (плагины от новых версий Winamp не будут
+  работать с BonkEnc). Для установки WMA плагина
+  для BonkEnc выполните, пожалуйста,
+  следующее:</p>
+  <ul>
+    <li>загрузите и установите <b>Winamp 5.21</b> с <a
+      href="http://www.oldversion.com/">www.oldversion.com</a></li>
+    <li>скопируйте файл <b>in_wm.dll</b> из папки
+      <b>Winamp/plugins </b> в папку <b>BonkEnc/plugins</b></li>
+  </ul>
+</blockquote>
+
+<h4 id="anchor_pat">Как в BonkEnc использовать шаблоны
+имен выходных файлов?</h4>
+
+<blockquote>
+  <p>Шаблон имен выходных файлов может быть
+  настроен на вкладке <b>Encoder</b> в окне
+  настроек. Вы можете использовать
+  обратный слеш для того, чтобы задать
+  папки и метки для использования
+  метаинформации. Доступны следующие
+  метки:</p>
+  <ul>
+    <li><b>&lt;artist&gt;</b> - Артист</li>
+    <li><b>&lt;title&gt;</b> - Название песни</li>
+    <li><b>&lt;album&gt;</b> - Название альбома</li>
+    <li><b>&lt;track&gt;</b> - Номер песни</li>
+    <li><b>&lt;genre&gt;</b> - Жанр</li>
+    <li><b>&lt;year&gt;</b> - Год издания</li>
+  </ul>
+
+  <p>Вышеуказанные метки используют
+  информацию о песне и альбоме. В
+  дополнение есть две метки, которые
+  используют информацию об имени
+  оригинального файла, который кодируется
+  в BonkEnc:</p>
+  <ul>
+    <li><b>&lt;filename&gt;</b> - Имя файла входного
+      файла</li>
+    <li><b>&lt;directory&gt;</b> - Папка, в которой
+      находится входной файл in</li>
+  </ul>
+
+  <p>Шаблон <b>&lt;directory&gt;</b> специальный,
+  поскольку вы можете изменять его
+  значение используя два цифровых
+  аргумента. Вы можете использовать его
+  как <b>&lt;directory+n&gt;</b> или <b>&lt;directory+n(m)&gt;</b>. В
+  этих выражениях, <b>n</b> определяет
+  количество компонентов пути, которые
+  должны быть удалены от начала. <b>m</b>
+  определяет количество компонентов слева
+  для использования. Не указанный параметр
+  <b>(m)</b> приведет к использованию всех
+  компонентов в левой части пути,
+  оставшихся после исключения <b>n</b>
+  компонентов с начала. <b>&lt;directory&gt;</b> без
+  аргументов приведет к использованию
+  полного пути..</p>
+
+  <p></p>
+
+  <p>Ну что, показать как использовать это
+  на практике? Предположим, у Вас есть
+  музыкальная коллекция, упорядоченная
+  вот так::</p>
+
+  <blockquote>
+    <p>C:\Music\[другой
+    критерий]\[артист]\[альбом]\[номер
+    дорожки] - [название]</p>
+  </blockquote>
+
+  <p>И у вас мог бы быть файл с таким именем:
+  <b>C:\Music\Favorites\Starsailor\Silence is Easy\01 - Music was
+  Saved.flac</b>.</p>
+
+  <p>Теперь, скажем, вы захотели
+  перекодировать  некоторое количество
+  музыки для прослушивания на плеере и
+  поместить ее в <b>C:\Encoded\</b>. Чтобы
+  сохранить поле <b>[другой критерий]</b> вам
+  необходимо использовать шаблон
+  <b>&lt;directory&gt;</b>. Если выходная папка кодека
+  установлена в <b>C:\Encoded\</b>, ваш полный
+  шаблон для имен файлов будет выглядеть
+  так:</p>
+
+  <blockquote>
+    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; -
+    &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+  </blockquote>
+
+  <p>Это приведет к перекодировке
+  указанного ранее файла в
+  <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence
+  is Easy - 01 - Music was Saved.m4a</b>.</p>
+</blockquote>
+
+<h4 id="anchor_tra">Как добавить в BonkEnc новую
+локализацию?</h4>
+
+<blockquote>
+  <p>Пожалуйста, используйте утилиту
+  <b>Translator</b>, включенную в дистрибутив BonkEnc
+  и откройте существующий файл
+  локализации (можете найти его в папке
+  <b>BonkEnc/lang</b>). Затем измените языковые
+  настройки в соответствии с локализацией,
+  которую вы собтраетесь создать и начните
+  переводить отдельные строки. Сохраните
+  вашу локализацию как новый файл,
+  используя шаблон <b>bonkenc_??.xml</b> (замените ??
+  на ваш языковой код), перезапустите BonkEnc и
+  попробуйте выбрать новую локализацию в
+  окне настройки.</p>
+
+  <p>Пожалуйста, пришлите свою локализацию
+  по адресу <a
+  href="mailto:translations@bonkenc.org">translations@bonkenc.org</a>, и
+  она может быть включена в официальный
+  дистрибутив.</p>
+</blockquote>
+
+<h4 id="anchor_rem">Как удалить BonkEnc с моего
+компьютера?</h4>
+
+<blockquote>
+  <p>Последние версии BonkEnc поставляютяс с
+  деинсталлятором, который вы можете
+  запустить из меню <b>Пуск</b>.</p>
+
+  <p>В случае если вы удалили группу в меню
+  Пуск или не можете найти ее, то вполне
+  достаточно удалить папку с программой
+  для деинсталляции BonkEnc. BonkEnc ни создает
+  никаких записей в реестре Windows, ни
+  сохраняет никаких активных компонентов
+  вне папки установки программы.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+
+<div id="footer">
+
+<div class="wrapper">
+<p></p>
+
+<div id="g_footer">
+<p>Copyright (C) 2006 Joseph Nahmias<br>
+Copyright (C) 2007-2009 The BonkEnc Project</p>
+</div>
+
+<p></p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

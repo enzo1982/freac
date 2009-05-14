@@ -29,10 +29,7 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 {
 	SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 
-	AddTab(BonkEnc::i18n->TranslateString("Title"));
-	AddTab(BonkEnc::i18n->TranslateString("Track"), Config::Get()->tab_width_track, OR_RIGHT);
-	AddTab(BonkEnc::i18n->TranslateString("Length"), Config::Get()->tab_width_length, OR_RIGHT);
-	AddTab(BonkEnc::i18n->TranslateString("Size"), Config::Get()->tab_width_size, OR_RIGHT);
+	AddHeaderTabs();
 
 	onRegister.Connect(&JobList::OnRegister, this);
 	onUnregister.Connect(&JobList::OnUnregister, this);
@@ -565,18 +562,45 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 		}
 	}
 
-	Config::Get()->tab_width_track = GetNthTabWidth(1);
-	Config::Get()->tab_width_length = GetNthTabWidth(2);
-	Config::Get()->tab_width_size = GetNthTabWidth(3);
-
-	RemoveAllTabs();
-
-	AddTab(BonkEnc::i18n->TranslateString("Title"));
-	AddTab(BonkEnc::i18n->TranslateString("Track"), Config::Get()->tab_width_track, OR_RIGHT);
-	AddTab(BonkEnc::i18n->TranslateString("Length"), Config::Get()->tab_width_length, OR_RIGHT);
-	AddTab(BonkEnc::i18n->TranslateString("Size"), Config::Get()->tab_width_size, OR_RIGHT);
+	AddHeaderTabs();
 
 	Show();
+}
+
+Void BonkEnc::JobList::AddHeaderTabs()
+{
+	RemoveAllTabs();
+
+	const Array<String>	&cFields = BoCA::Config::Get()->GetStringValue("Joblist", "Fields", "<artist>,<title>,<track>,<time>,<bytes>").Explode(",");
+
+	/* Copy fields array because it will be replaced
+	 * in the second call to String::Explode().
+	 */
+	Array<String>		 fields;
+
+	foreach (String field, cFields) fields.Add(field);
+
+	const Array<String>	&sizes = BoCA::Config::Get()->GetStringValue("Joblist", "FieldSizes", "120,*,50,80,80").Explode(",");
+
+	for (Int i = 0; i < fields.Length(); i++)
+	{
+		String	 field = fields.GetNth(i);
+		String	 tabName = "<invalid tab>";
+		Int	 tabAlign = OR_LEFT;
+
+		if	(field == "<artist>")	{ tabName = "Artist";			      }
+		else if (field == "<album>")	{ tabName = "Album";			      }
+		else if (field == "<title>")	{ tabName = "Title";			      }
+		else if (field == "<genre>")	{ tabName = "Genre";			      }
+		else if (field == "<track>")	{ tabName = "Track"; 	 tabAlign = OR_RIGHT; }
+		else if (field == "<time>")	{ tabName = "Length"; 	 tabAlign = OR_RIGHT; }
+		else if (field == "<bytes>")	{ tabName = "Size"; 	 tabAlign = OR_RIGHT; }
+		else if (field == "<file>")	{ tabName = "File name";		      }
+
+		tabName = BonkEnc::i18n->TranslateString(tabName);
+
+		AddTab(tabName, sizes.GetNth(i).ToInt(), tabAlign);
+	}
 }
 
 Void BonkEnc::JobList::UpdateTextLine()
@@ -584,15 +608,26 @@ Void BonkEnc::JobList::UpdateTextLine()
 	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
 }
 
-const String &BonkEnc::JobList::GetEntryText(const Track &track)
+String BonkEnc::JobList::GetEntryText(const Track &track) const
 {
-	const Info	&info = track.GetInfo();
-	static String	 jlEntry;
+	const Info		&info = track.GetInfo();
+	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue("Joblist", "Fields", "<artist>,<title>,<track>,<time>,<bytes>").Explode(",");
 
-	if (info.artist == NIL && info.title == NIL) jlEntry = String(track.origFilename).Append("\t");
-	else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+	String			 jlEntry;
 
-	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String(NIL)).Append("\t").Append(track.lengthString).Append("\t").Append(track.fileSizeString);
+	foreach (String field, fields)
+	{
+		if	(field == "<artist>")	jlEntry.Append(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"));
+		else if (field == "<album>")	jlEntry.Append(info.album.Length()  > 0 ? info.album  : BonkEnc::i18n->TranslateString("unknown album"));
+		else if (field == "<title>")	jlEntry.Append(info.title.Length()  > 0 ? info.title  : BonkEnc::i18n->TranslateString("unknown title"));
+		else if (field == "<genre>")	jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : BonkEnc::i18n->TranslateString("unknown genre"));
+		else if (field == "<track>")	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String(NIL));
+		else if (field == "<time>")	jlEntry.Append(track.lengthString);
+		else if (field == "<bytes>")	jlEntry.Append(track.fileSizeString);
+		else if (field == "<file>")	jlEntry.Append(track.origFilename);
+
+		jlEntry.Append("\t");
+	}
 
 	return jlEntry;
 }

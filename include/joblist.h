@@ -37,9 +37,10 @@ namespace BonkEnc
 
 			Bool				 AddTrack(const Track &);
 
+			Void				 AddHeaderTabs();
 			Void				 UpdateTextLine();
 
-			const String			&GetEntryText(const Track &);
+			String				 GetEntryText(const Track &) const;
 		public:
 							 JobList(const Point &, const Size &);
 			virtual				~JobList();

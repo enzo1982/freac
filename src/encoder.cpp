@@ -428,12 +428,12 @@ Int BonkEnc::Encoder::EncoderThread()
 				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
 
 				playlist.AddTrack(relativeFileName, String(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (format.rate * format.channels)));
-				cueSheet.AddTrack(relativeFileName, 0, info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title"), info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), info.album.Length() > 0 ? info.album : BonkEnc::i18n->TranslateString("unknown album"));
+				cueSheet.AddTrack(relativeFileName, 0, trackInfo);
 			}
 		}
 		else if (!skip)
 		{
-			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (format.rate * format.channels) * 75), info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title"), info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), info.album.Length() > 0 ? info.album : BonkEnc::i18n->TranslateString("unknown album"));
+			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (format.rate * format.channels) * 75), trackInfo);
 		}
 
 		if (trackInfo.isCDTrack && BoCA::Config::Get()->GetIntValue("CDRip", "EjectAfterRipping", False) && step == 1)
