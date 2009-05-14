@@ -1,4 +1,4 @@
-BonkEnc version 1.0.11
+BonkEnc version 1.0.12
 
 BonkEnc is an encoder for various audio formats. It can read
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC
@@ -12,6 +12,15 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
+
+	Version 1.0.12 (May 2009)
+
+		- added Croatian language support
+		- updated Japanese and Russian translations
+		- fixed CDDB querying when both, local and remote CDDB are enabled
+		- fixed problems with easyUpdate running on Windows Vista
+		- disabled compression of all executables to fix incorrect threat warnings from virus scanners
+		- upgraded Ogg Vorbis to aoTuV beta 5.7
 
 	Version 1.0.11 (February 2009)
 
@@ -255,7 +264,8 @@ Special thanks to
 			   El libre (Catalan),
 			   Vjatv (Valencian),
 			   Jose Goncalves (Portuguese),
-			   Meelis Pasieko (Estonian)
+			   Meelis Pasieko (Estonian),
+			   Goran Bekic (Croatian)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

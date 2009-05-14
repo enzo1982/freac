@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -119,14 +119,14 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 	{
 		CDDBLocal	 cddbLocal(currentConfig);
 
-		result = QueryCDDB(cddbLocal);
+		result = QueryCDDB(cddbLocal, !currentConfig->enable_remote_cddb);
 	}
 
 	if (!result && currentConfig->enable_remote_cddb)
 	{
 		CDDBRemote	 cddbRemote(currentConfig);
 
-		result = QueryCDDB(cddbRemote);
+		result = QueryCDDB(cddbRemote, True);
 	}
 
 	mainWnd->Close();
@@ -135,10 +135,11 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 	else	    return Error();
 }
 
-Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
+Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 {
 	Int	 result;
 
+	prog_status->SetValue(0);
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
 	cddb.ConnectToServer();
@@ -150,7 +151,8 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 
 	if (queryString == NIL)
 	{
-		// query by disc ID of inserted disc
+		/* Query by disc ID of inserted disc.
+		 */
 		Int	 discID = cddb.ComputeDiscID();
 
 		if (discID == 0 || discID == -1) return False; // no disc in drive or read error
@@ -159,7 +161,8 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 	}
 	else
 	{
-		// use query string
+		/* Use query string.
+		 */
 		result = cddb.Query(queryString);
 	}
 
@@ -169,7 +172,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 
 	if (result == QUERY_RESULT_NONE)
 	{
-		QuickMessage(BonkEnc::i18n->TranslateString("No freedb entry for this disk."), BonkEnc::i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
+		if (displayError) QuickMessage(BonkEnc::i18n->TranslateString("No freedb entry for this disk."), BonkEnc::i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
 	}
 	else if (result == QUERY_RESULT_SINGLE)
 	{
@@ -235,7 +238,6 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 	prog_status->SetValue(100);
 	text_status->SetText("");
 
-	mainWnd->Close();
-
-	return True;
+	if (category == NIL || discID == 0) return False;
+	else				    return True;
 }

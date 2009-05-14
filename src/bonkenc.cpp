@@ -39,8 +39,8 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version	= "v1.0.11";
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.11";
+String	 BonkEnc::BonkEnc::version	= "v1.0.12";
+String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.12";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.8";
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
@@ -263,7 +263,8 @@ BonkEnc::CDDBInfo BonkEnc::BonkEnc::QueryCDDB(CDDB &cddb)
 	cddb.ConnectToServer();
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
-	// query by disc ID of inserted disc
+	/* Query by disc ID of inserted disc.
+	 */
 	Int	 discID = cddb.ComputeDiscID();
 
 	if (discID == 0 || discID == -1) return False; // no disc in drive or read error
