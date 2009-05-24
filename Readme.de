@@ -1,4 +1,4 @@
-BonkEnc Version 1.0.12
+BonkEnc Version 1.0.13
 
 BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
@@ -13,12 +13,18 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
+	Version 1.0.13 (Mai 2009)
+
+		- Tschechische Anleitung hinzugefügt
+		- Tschechische Übersetzung aktualisiert
+
 	Version 1.0.12 (Mai 2009)
 
 		- Sprachunterstützung für Kroatisch hinzugefügt
 		- Japanische und russische Übersetzungen aktualisiert
 		- Problem bei der CDDB-Abfrage bei gleichzeitig aktivierter lokaler und Online-CDDB-Abfrage behoben
 		- Probleme mit easyUpdate unter Windows Vista behoben
+		- Probleme beim Starten von BonkEnc unter Windows NT 4.0 behoben
 		- Komprimierung aller ausführbaren Dateien deaktiviert, um falsche Warnungen von Virenscannern zu verhindern
 		- Ogg Vorbis auf aoTuV Beta 5.7 aktualisiert
 
@@ -186,19 +192,17 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP/2003/Vista, Windows 95/98/SE/ME, Wine v0.9.14+
-	- Ein 200MHz Prozessor oder besser, um Bonk Dateien abzuspielen
-	- Winamp wird benötigt um Bonk Dateien unter Windows abzuspielen
+	- Windows NT/2000/XP/2003/Vista/7, Windows 95/98/SE/ME, Wine v0.9.14+
+	- 200 MHz Prozessor, 128 MB RAM, 50 MB freier Festplattenplatz
 	- Zum CD-Rippen werden installierte ASPI-Treiber empfohlen
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v8.0
-		- smooth v0.8.70.3 (http://www.smooth-project.org/)
+		- smooth v0.8.70.4 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
-		- Die CDRip Ripping Library wird verwendet, wenn sie installiert ist (http://www.cdrip.org/)
 		- BladeEnc wird verwendet, wenn es installiert ist (http://bladeenc.mp3.no/)
 		- TwinVQ wird verwendet, wenn es installiert ist (http://www.twinvq.org/)
 		- Winamp 2/5 input und output Plugins werden verwendet, wenn sie im plugins Verzeichnis vorhanden sind
@@ -250,7 +254,7 @@ Besonderen Dank
 			   Wim Garreyn (Niederländisch),
 			   Nebojša Nikolic (Serbisch),
 			   Krisu (Finnisch),
-			   Vladimir Kytyr (Tschechisch),
+			   Julius Faltus (Tschechisch),
 			   Escada (Portugiesisch, Brasilianisch),
 			   Odyssey (Koreanisch),
 			   Jan Arni Jacobsen (Dänisch),
