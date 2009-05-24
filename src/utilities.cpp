@@ -21,18 +21,14 @@ using namespace smooth::System;
 
 Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace)
 {
-#ifdef __WIN32__
 	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);
 	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
-#endif
 }
 
 Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace)
 {
-#ifdef __WIN32__
 	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
 	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
-#endif
 }
 
 BoCA::AS::DecoderComponent *BonkEnc::Utilities::CreateDecoderComponent(const String &iFile)

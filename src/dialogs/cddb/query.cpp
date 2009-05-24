@@ -27,7 +27,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB query"), currentConfig->wndPos + Point(40, 40), Size(310, 84));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB query"), currentConfig->wndPos + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

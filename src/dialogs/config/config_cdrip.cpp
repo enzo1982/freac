@@ -91,6 +91,7 @@ BonkEnc::ConfigureCDRip::ConfigureCDRip()
 	group_cdoptions->Add(check_locktray);
 	group_cdoptions->Add(check_ntscsi);
 
+#ifdef __WIN32__
 	OSVERSIONINFOA	 vInfo;
 
 	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
@@ -98,6 +99,9 @@ BonkEnc::ConfigureCDRip::ConfigureCDRip()
 	GetVersionExA(&vInfo);
 
 	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) check_ntscsi->Deactivate();
+#else
+	check_ntscsi->Deactivate();
+#endif
 
 	ToggleAutoRead();
 

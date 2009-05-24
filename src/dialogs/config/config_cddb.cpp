@@ -350,7 +350,7 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 	{
 		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
 
-		if (selection == IDYES)		currentConfig->freedb_mode = FREEDB_MODE_HTTP;
+		if	(selection == IDYES)	currentConfig->freedb_mode = FREEDB_MODE_HTTP;
 		else if (selection == IDNO)	currentConfig->freedb_mode = combo_mode->GetSelectedEntryNumber();
 		else if (selection == IDCANCEL)	return Error();
 	}
