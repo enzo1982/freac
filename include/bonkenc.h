@@ -45,7 +45,7 @@ namespace BonkEnc
 							 BonkEnc();
 			virtual				~BonkEnc();
 
-			Window				*mainWnd;
+			GUI::Window			*mainWnd;
 			Statusbar			*mainWnd_statusbar;
 
 			Hyperlink			*hyperlink;

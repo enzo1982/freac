@@ -21,7 +21,7 @@ namespace BonkEnc
 		private:
 			Divider		*divbar;
 
-			Window		*mainWnd;
+			GUI::Window	*mainWnd;
 			Titlebar	*mainWnd_titlebar;
 
 			GroupBox	*group_drive;

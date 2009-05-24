@@ -49,9 +49,9 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 
 	joblist = iJoblist;
 
-	Font	 font = joblist->GetNthEntry(entry)->GetFont();
+	GUI::Font	 font = joblist->GetNthEntry(entry)->GetFont();
 
-	font.SetColor(RGB(255, 0, 0));
+	font.SetColor(Color(255, 0, 0));
 
 	joblist->GetNthEntry(entry)->SetFont(font);
 
@@ -143,7 +143,7 @@ Int BonkEnc::Playback::PlayThread()
 				{
 					if (stop_playback) break;
 
-					Sleep(10);
+					S::System::System::Sleep(10);
 				}
 
 				if (stop_playback) break;
@@ -184,7 +184,7 @@ Int BonkEnc::Playback::PlayThread()
 				{
 					if (stop_playback) break;
 
-					Sleep(10);
+					S::System::System::Sleep(10);
 				}
 
 				if (stop_playback) break;
@@ -193,7 +193,7 @@ Int BonkEnc::Playback::PlayThread()
 			}
 		}
 
-		if (!stop_playback) while (output->IsPlaying()) Sleep(20);
+		if (!stop_playback) while (output->IsPlaying()) S::System::System::Sleep(20);
 
 		output->Deactivate();
 
@@ -211,7 +211,7 @@ Int BonkEnc::Playback::PlayThread()
 
 	if (entry != NIL)
 	{
-		Font	 font = entry->GetFont();
+		GUI::Font	 font = entry->GetFont();
 
 		font.SetColor(Setup::ClientTextColor);
 
@@ -247,7 +247,7 @@ Void BonkEnc::Playback::Stop()
 
 	stop_playback = True;
 
-	while (playing) Sleep(10);
+	while (playing) S::System::System::Sleep(10);
 }
 
 Void BonkEnc::Playback::Previous()

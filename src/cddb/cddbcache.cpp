@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -40,20 +40,24 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	if (cddbInfo != NIL)
 	{
-		// Softcache entry found
+		/* Softcache entry found
+		 */
 		return cddbInfo;
 	}
 
-	// Try to find an entry in the persistant cache
+	/* Try to find an entry in the persistant cache
+	 */
 
-	// Save current freedb path
+	/* Save current freedb path
+	 */
 	String	 configFreedbDir = config->freedb_dir;
 
 	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
 	CDDBLocal	 cddbLocal;
 
-	// Query cache entry
+	/* Query cache entry
+	 */
 	Int	 result = cddbLocal.Query(discID);
 
 	if (result == QUERY_RESULT_SINGLE || result == QUERY_RESULT_MULTIPLE)
@@ -66,7 +70,8 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 		infoCache.Add(newInfo, discID);
 	}
 
-	// Restore real freedb path
+	/* Restore real freedb path
+	 */
 	config->freedb_dir = configFreedbDir;
 
 	return infoCache.Get(discID);
@@ -79,7 +84,8 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	if (cddbInfo != NIL)
 	{
-		// Delete existing cache entry
+		/* Delete existing cache entry
+		 */
 		infoCache.Remove(nCddbInfo.discID);
 	}
 
@@ -87,19 +93,23 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	if (!config->enable_cddb_cache) return True;
 
-	// Save new entry to the persistant cache
+	/* Save new entry to the persistant cache
+	 */
 
-	// Save current freedb path
+	/* Save current freedb path
+	 */
 	String	 configFreedbDir = config->freedb_dir;
 
 	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
 	CDDBLocal	 cddbLocal;
 
-	// Save entry
+	/* Save entry
+	 */
 	cddbLocal.Submit(nCddbInfo);
 
-	// Restore real freedb path
+	/* Restore real freedb path
+	 */
 	config->freedb_dir = configFreedbDir;
 
 	return True;

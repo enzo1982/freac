@@ -25,7 +25,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 {
 	currentConfig = Config::Get();
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(30, 30), Size(600, 332));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(30, 30), Size(600, 332));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -106,6 +106,8 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
 		Component	*component = boca.CreateComponentByID(boca.GetComponentID(i));
+
+		if (component == NIL) continue;
 
 		if (component->GetConfigurationLayer() != NIL)
 		{

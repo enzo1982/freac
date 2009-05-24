@@ -13,7 +13,9 @@
 
 #include <smooth.h>
 
-#include <3rdparty/cdrip/cdrip.h>
+#ifdef __WIN32__
+#	include <3rdparty/cdrip/cdrip.h>
+#endif
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -35,6 +37,7 @@ namespace BonkEnc
 	};
 };
 
+#ifdef __WIN32__
 // CDRip DLL API
 
 	typedef CDEX_ERR			(_stdcall *CR_INIT)				(int);
@@ -76,5 +79,6 @@ namespace BonkEnc
 	extern EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext;
 	extern EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates;
 	extern EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate;
+#endif
 
 #endif

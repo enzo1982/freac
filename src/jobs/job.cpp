@@ -132,7 +132,7 @@ Void BonkEnc::Job::OnChangeSize(const Size &nSize)
 
 Void BonkEnc::Job::OnMouseOver()
 {
-	Font	 font = progressLabel->GetFont();
+	GUI::Font	 font = progressLabel->GetFont();
 
 	font.SetColor(Setup::GradientTextColor);
 
@@ -143,7 +143,7 @@ Void BonkEnc::Job::OnMouseOver()
 
 Void BonkEnc::Job::OnMouseOut()
 {
-	Font	 font = progressLabel->GetFont();
+	GUI::Font	 font = progressLabel->GetFont();
 
 	font.SetColor(Setup::TextColor);
 

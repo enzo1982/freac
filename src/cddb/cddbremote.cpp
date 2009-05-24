@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,6 +15,10 @@
 #include <cddb/cddbremote.h>
 #include <bonkenc.h>
 #include <dllinterfaces.h>
+
+#ifndef __WIN32__
+#	include <unistd.h>
+#endif
 
 BonkEnc::CDDBRemote::CDDBRemote()
 {
@@ -169,10 +173,12 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 	titles.RemoveAll();
 	categories.RemoveAll();
 
-	// no match found
+	/* No match found
+	 */
 	if (str.StartsWith("202")) return QUERY_RESULT_NONE;
 
-	// exact match
+	/* Exact match
+	 */
 	if (str.StartsWith("200"))
 	{
 		String	 id;
@@ -201,7 +207,8 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 		return QUERY_RESULT_SINGLE;
 	}
 
-	// multiple exact matches
+	/* Multiple exact matches
+	 */
 	if (str.StartsWith("210") || str.StartsWith("211"))
 	{
 		String	 inputFormat = String::SetInputFormat("UTF-8");

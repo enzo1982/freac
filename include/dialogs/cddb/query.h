@@ -21,7 +21,7 @@ namespace BonkEnc
 	class cddbQueryDlg : public Dialog
 	{
 		private:
-			Window		*mainWnd;
+			GUI::Window	*mainWnd;
 			Titlebar	*mainWnd_titlebar;
 
 			Text		*text_status;

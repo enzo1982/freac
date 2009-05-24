@@ -13,10 +13,10 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (March 2009)
+	Version 1.1 CVS (May 2009)
 
 		- added Estonian, Croatian, Catalan, Valencian and Portuguese language support
-		- added German, Italian, Russian and Greek user guides
+		- added German, Italian, Russian, Czech and Greek user guides
 		- added German and Japanese translations for the installer
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
@@ -72,9 +72,8 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP/Vista, Windows 95/98/SE/ME, Wine v0.9.14+
-	- A 200MHz processor or better for playing Bonk files
-	- Winamp is required to play Bonk files in Windows
+	- Windows NT/2000/XP/Vista/7, Windows 95/98/SE/ME, Wine v0.9.14+
+	- 200 MHz CPU, 128 MB RAM, 50 MB free disk space
 	- Having ASPI drivers installed is recommended for CD ripping
 
 	Additional requirements for compiling the sources:
@@ -84,7 +83,6 @@ Requirements
 
 	Additional optional software:
 
-		- The CDRip Ripping Library is used if installed (http://www.cdrip.org/)
 		- BladeEnc is used if installed (http://bladeenc.mp3.no/)
 		- TwinVQ is used if installed (http://www.twinvq.org/)
 		- Winamp 2/5 input and output plug-ins are used if they are found in the plugins directory

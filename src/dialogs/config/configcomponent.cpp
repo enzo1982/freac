@@ -22,7 +22,7 @@ BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 
 	currentConfig = Config::Get();
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Component configuration"), currentConfig->wndPos + Point(60, 60), layer->GetSize() + Size(8, 73));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Component configuration"), currentConfig->wndPos + Point(60, 60), layer->GetSize() + Size(8, 73));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

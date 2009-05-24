@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -29,8 +29,8 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	// Read saved queries from XML
-
+	/* Read saved queries from XML
+	 */
 	XML::Document	*document = new XML::Document();
 
 	if (document->LoadFile(String(config->configDir).Append("cddb\\queries.xml")) == Success())
@@ -50,8 +50,8 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 
 	delete document;
 
-	// Read saved submits from XML and database cache
-
+	/* Read saved submits from XML and database cache
+	 */
 	document = new XML::Document();
 
 	if (document->LoadFile(String(config->configDir).Append("cddb\\submits.xml")) == Success())
@@ -112,11 +112,12 @@ Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 Bool BonkEnc::CDDBBatch::SaveEntries()
 {
-	// Save queued queries
-
+	/* Save queued queries
+	 */
 	if (queries.Length() == 0)
 	{
-		// Delete queries file if no more saved queries exist
+		/* Delete queries file if no more saved queries exist
+		 */
 		File(String(config->configDir).Append("cddb\\queries.xml")).Delete();
 	}
 	else
@@ -139,11 +140,12 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 		delete root;
 	}
 
-	// Save queued submits
-
+	/* Save queued submits
+	 */
 	if (submits.Length() == 0)
 	{
-		// Delete submits file if no more saved submits exist
+		/* Delete submits file if no more saved submits exist
+		 */
 		File(String(config->configDir).Append("cddb\\submits.xml")).Delete();
 	}
 	else
@@ -192,7 +194,8 @@ Bool BonkEnc::CDDBBatch::DeleteQuery(Int n)
 
 Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 {
-	// create directory for entry
+	/* Create directory for entry
+	 */
 	Directory	 cddbDir(String(config->configDir).Append("cddb"));
 
 	if (!cddbDir.Exists()) cddbDir.Create();
@@ -201,14 +204,16 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	if (!categoryDir.Exists()) categoryDir.Create();
 
-	// save current freedb path
+	/* Save current freedb path
+	 */
 	String	 configFreedbDir = config->freedb_dir;
 
 	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
 	CDDBLocal	 cddb;
 
-	// save entry to batch queue
+	/* Save entry to batch queue
+	 */
 	cddb.SetActiveDrive(activeDriveID);
 	cddb.Submit(cddbInfo);
 
@@ -228,7 +233,8 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	submits.Add(nCddbInfo);
 
-	// restore real freedb path
+	/* Restore real freedb path
+	 */
 	config->freedb_dir = configFreedbDir;
 
 	return True;
@@ -251,19 +257,20 @@ Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 
 Int BonkEnc::CDDBBatch::Query(Int n)
 {
-	// Query entry and delete entry if successful
-
+	/* Query entry and delete entry if successful
+	 */
 	cddbQueryDlg	*dlg		= new cddbQueryDlg();
 
 	dlg->SetQueryString(queries.GetNth(n));
 
 	const CDDBInfo	&cddbInfo	= dlg->QueryCDDB(False);
 
-	DeleteObject(dlg);
+	Object::DeleteObject(dlg);
 
 	if (cddbInfo != NIL)
 	{
-		// save current freedb path
+		/* Save current freedb path
+		 */
 		String	 configFreedbDir = config->freedb_dir;
 
 		config->freedb_dir = String(config->configDir).Append("cddb\\");
@@ -272,10 +279,12 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 		cddb.SetUpdateTrackOffsets(False);
 
-		// save entry to local cache
+		/* Save entry to local cache
+		 */
 		cddb.Submit(cddbInfo);
 
-		// restore real freedb path
+		/* Restore real freedb path
+		 */
 		config->freedb_dir = configFreedbDir;
 
 		DeleteQuery(n);
@@ -298,8 +307,8 @@ Bool BonkEnc::CDDBBatch::QueryAll()
 
 Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &oCddbInfo)
 {
-	// Submit and delete entry if successful
-
+	/* Submit and delete entry if successful
+	 */
 	CDDBInfo	 cddbInfo = oCddbInfo;
 
 	cddbInfo.revision++;
