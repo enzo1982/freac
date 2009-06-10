@@ -271,8 +271,13 @@ String BonkEnc::Utilities::GetAbsoluteDirName(const String &dirName)
 	 */
 	rDirName.Replace("<installdrive>", Utilities::GetInstallDrive());
 
+#ifdef __WIN32__
 	if ( rDirName[1] != ':' &&	  // Absolute local path
 	    !rDirName.StartsWith("\\\\")) // Network resource
+#else
+	if (!rDirName.StartsWith("/") &&  // Absolute path
+	    !rDirName.StartsWith("~"))	  // Home directory
+#endif
 	{
 		rDirName = String(Application::GetApplicationDirectory()).Append(rDirName);
 	}

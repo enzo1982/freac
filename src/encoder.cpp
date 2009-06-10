@@ -8,7 +8,9 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <direct.h>
+#ifdef __WIN32__
+#	include <direct.h>
+#endif
 
 #include <encoder.h>
 #include <progress.h>
@@ -112,6 +114,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 	progress->ComputeTotalSamples(joblist);
 	progress->InitTotalProgressValues();
+	progress->PauseTotalProgress();
 
 	for (Int i = 0; i < num; (step == 1) ? i++ : i)
 	{
@@ -322,6 +325,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		f_out->SetPackageSize(samples_size * (format.bits / 8) * format.channels);
 
 		progress->InitTrackProgressValues();
+		progress->ResumeTotalProgress();
 
 		if (filter_out->GetErrorState() || filter_in->GetErrorState()) skip = True;
 
@@ -356,7 +360,7 @@ Int BonkEnc::Encoder::EncoderThread()
 					skip = True;
 				}
 
-				while (paused && !stop && !skip) Sleep(50);
+				while (paused && !stop && !skip) S::System::System::Sleep(50);
 
 				if (stop || skip) break;
 
@@ -393,7 +397,7 @@ Int BonkEnc::Encoder::EncoderThread()
 					skip = True;
 				}
 
-				while (paused && !stop && !skip) Sleep(50);
+				while (paused && !stop && !skip) S::System::System::Sleep(50);
 
 				if (stop || skip) break;
 
@@ -401,6 +405,7 @@ Int BonkEnc::Encoder::EncoderThread()
 			}
 		}
 
+		progress->PauseTotalProgress();
 		progress->FinishTrackProgressValues(trackInfo);
 
 		delete f_in;
@@ -447,7 +452,9 @@ Int BonkEnc::Encoder::EncoderThread()
 				if (joblist->GetNthTrack(j - nRemoved).drive == trackInfo.drive) { ejectDisk = False; break; }
 			}
 
+#ifdef __WIN32__
 			if (ejectDisk) ex_CR_EjectCD(True);
+#endif
 		}
 
 		if (!Config::Get()->enable_console && !stop && !skip && step == 1)
@@ -527,7 +534,7 @@ Void BonkEnc::Encoder::Stop()
 
 	stop = True;
 
-	while (encoding) Sleep(10);
+	while (encoding) S::System::System::Sleep(10);
 }
 
 Void BonkEnc::Encoder::SkipTrack()
@@ -778,8 +785,8 @@ String BonkEnc::Encoder::GetSingleOutputFileName(const Track &track)
 
 	/* Get list of supported formats from selected encoder
 	 */
-	Registry	&boca = Registry::Get();
-	Component	*encoder = boca.CreateComponentByID(Config::Get()->encoderID);
+	Registry		&boca = Registry::Get();
+	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(Config::Get()->encoderID);
 
 	const Array<FileFormat *>	&formats = encoder->GetFormats();
 
@@ -797,7 +804,7 @@ String BonkEnc::Encoder::GetSingleOutputFileName(const Track &track)
 
 		dialog->AddFilter(String(formats.GetNth(k)->GetName()).Append(" (").Append(extension).Append(")"), extension);
 
-		if (k == 0) defaultExtension = format_extensions.GetFirst();
+		if (k == 0) defaultExtension = encoder->GetOutputFileExtension();
 	}
 
 	boca.DeleteComponent(encoder);

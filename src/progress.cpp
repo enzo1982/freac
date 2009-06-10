@@ -63,6 +63,16 @@ Void BonkEnc::Progress::InitTotalProgressValues()
 	totalStartTicks = clock();
 }
 
+Void BonkEnc::Progress::PauseTotalProgress()
+{
+	totalPauseTicks = clock();
+}
+
+Void BonkEnc::Progress::ResumeTotalProgress()
+{
+	totalStartTicks += clock() - totalPauseTicks;
+}
+
 Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int samplePosition)
 {
 	if (Config::Get()->enable_console) return;

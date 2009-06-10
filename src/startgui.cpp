@@ -10,7 +10,10 @@
 
 #include <startgui.h>
 #include <resources.h>
-#include <dbt.h>
+
+#ifdef __WIN32__
+#	include <dbt.h>
+#endif
 
 #include <dllinterfaces.h>
 #include <joblist.h>
@@ -91,6 +94,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	if (language == NIL && i18n->GetNOfLanguages() > 1)
 	{
+#ifdef __WIN32__
 		switch (PRIMARYLANGID(GetUserDefaultLangID()))
 		{
 			default:
@@ -188,6 +192,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 				language = "bonkenc_ua.xml";
 				break;
 		}
+#endif
 	}
 
 	if (language == NIL) language = "internal";
@@ -215,7 +220,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		currentConfig->wndSize.cy = (Int) Math::Min(workArea.bottom - 20, currentConfig->wndSize.cy);
 	}
 
-	mainWnd			= new Window(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version), currentConfig->wndPos, currentConfig->wndSize);
+	mainWnd			= new GUI::Window(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version), currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar();
@@ -388,6 +393,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 {
 	switch (message)
 	{
+#ifdef __WIN32__
 		case WM_DEVICECHANGE:
 			if (wParam == DBT_DEVICEARRIVAL && currentConfig->enable_cdrip && BoCA::Config::Get()->GetIntValue("CDRip", "AutoReadContents", True))
 			{
@@ -448,6 +454,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 			}
 
 			break;
+#endif
 	}
 }
 
@@ -475,7 +482,9 @@ Void BonkEnc::BonkEncGUI::Close()
 
 Void BonkEnc::BonkEncGUI::About()
 {
+#ifdef __WIN32__
 	QuickMessage(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2009 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+#endif
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -536,6 +545,7 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 {
 	if (!joblist->CanModifyJobList()) return;
 
+#ifdef __WIN32__
 	ex_CR_SetActiveCDROM(BoCA::Config::Get()->cdrip_activedrive);
 
 	ex_CR_ReadToc();
@@ -566,6 +576,7 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 
 	if (currentConfig->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
 	if (BoCA::Config::Get()->GetIntValue("CDRip", "AutoRip", False)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
+#endif
 }
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
@@ -1087,14 +1098,16 @@ Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
 
 Void BonkEnc::BonkEncGUI::ShowHelp()
 {
+#ifdef __WIN32__
 	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index_en.html")), NIL, NIL, 0);
+#endif
 }
 
 Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
 	TipOfTheDay	*dlg = new TipOfTheDay(&currentConfig->showTips);
 
-	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(32, i18n->GetNOfLanguages()))));
+	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(34, i18n->GetNOfLanguages()))));
 	dlg->AddTip(String(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1")).Replace("%1", "http://www.bonkenc.org/"));
 	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
 	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));

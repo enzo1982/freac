@@ -348,8 +348,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			job->Schedule();
 
-			while (Job::GetPlannedJobs().Length() > 0) Sleep(10);
-			while (Job::GetRunningJobs().Length() > 0) Sleep(10);
+			while (Job::GetPlannedJobs().Length() > 0) S::System::System::Sleep(10);
+			while (Job::GetRunningJobs().Length() > 0) S::System::System::Sleep(10);
 
 			if (joblist->GetNOfTracks() > 0)
 			{
@@ -418,6 +418,7 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 {
 	if (tracks == "all")
 	{
+#ifdef __WIN32__
 		ex_CR_SetActiveCDROM(BoCA::Config::Get()->cdrip_activedrive);
 
 		ex_CR_ReadToc();
@@ -425,7 +426,7 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 		Int	 numTocEntries = ex_CR_GetNumTocEntries();
 
 		for (Int i = 1; i <= numTocEntries; i++) (*files).Add(String("cdda://").Append(String::FromInt(i)));
-
+#endif
 		return True;
 	}
 

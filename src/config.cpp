@@ -77,7 +77,7 @@ Bool BonkEnc::Config::LoadSettings()
 	{
 		configDir = S::System::System::GetApplicationDataDirectory();
 
-		if (configDir != NIL) configDir.Append("BonkEnc\\");
+		if (configDir != NIL) configDir.Append("BonkEnc").Append(Directory::GetDirectoryDelimiter());
 
 		Directory(configDir).Create();
 	}

@@ -13,9 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Mai 2009)
+	Version 1.1 CVS (Juni 2009)
 
-		- Sprachunterstützung für Estnisch, Kroatisch, Katalanisch, Valencianisch und Portugiesisch hinzugefügt
+		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
 		- Deutsche, italienische, russische, tschechische und griechische Anleitungen hinzugefügt
 		- Deutsche und japanische Übersetzungen für das Installationsprogramm hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
@@ -25,6 +25,7 @@ Geschichte
 		- Einfachen Tag-Editor hinzugefügt
 		- Monkey's Audiocodierer/-decodierer hinzugefügt
 		- Speex Sprachcodierer/-decodierer hinzugefügt
+		- Windows Media Audio Codierer/Decodierer hinzugefügt
 		- Unterstützung für Kommandozeilencodierer/-decodierer hinzugefügt
 		- Unterstützung für den MAD MP3-Decodierer hinzugefügt
 		- Unterstützung für den TwinVQ VQF-Decodierer hinzugefügt
@@ -110,9 +111,6 @@ Bekannte Probleme
 
 	- Editboxen funktionieren im Rechts-nach-Links modus nicht korrekt
 
-	- Die WMA-Eingabeplugins von Winamp 5.22 und später sind nich kompatibel mit BonkEnc. Verwenden
-	  Sie das WMA-Plugin von Winamp 5.21, wenn Sie WMA-Dateien dekodieren möchten.
-
 Besonderen Dank
 ---------------
 
@@ -149,7 +147,8 @@ Besonderen Dank
 			   Vjatv (Valencianisch),
 			   Jose Goncalves (Portugiesisch),
 			   Meelis Pasieko (Estnisch),
-			   Goran Bekic (Kroatisch)
+			   Goran Bekic (Kroatisch),
+			   Eduardo Estévez (Galizisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

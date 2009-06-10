@@ -44,6 +44,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 	SetText("Creating update context...");
 
+#ifdef __WIN32__
 	Void	*context = ex_eUpdate_CreateUpdateContext(::BonkEnc::BonkEnc::appLongName, ::BonkEnc::BonkEnc::version, ::BonkEnc::BonkEnc::updatePath);
 
 	if (config->configDir != NIL)
@@ -106,6 +107,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 	}
 
 	ex_eUpdate_FreeUpdateContext(context);
+#endif
 
 	config->firstStart = False;
 

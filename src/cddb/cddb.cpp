@@ -42,8 +42,9 @@ BonkEnc::CDDB::~CDDB()
 
 Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 {
+#ifdef __WIN32__
 	if (driveID >= ex_CR_GetNumCDROM()) return Error();
-
+#endif
 	activeDriveID = driveID;
 
 	return Success();
@@ -51,6 +52,7 @@ Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 
 Int BonkEnc::CDDB::ComputeDiscID()
 {
+#ifdef __WIN32__
 	ex_CR_SetActiveCDROM(activeDriveID);
 	ex_CR_ReadToc();
 
@@ -67,6 +69,9 @@ Int BonkEnc::CDDB::ComputeDiscID()
 	Int	 t = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75;
 
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
+#else
+	return 0;
+#endif
 }
 
 String BonkEnc::CDDB::DiscIDToString(Int discID)
@@ -159,6 +164,7 @@ String BonkEnc::CDDB::QueryStringFromOffsets(const String &offsets)
 
 String BonkEnc::CDDB::GetCDDBQueryString()
 {
+#ifdef __WIN32__
 	ex_CR_SetActiveCDROM(activeDriveID);
 	ex_CR_ReadToc();
 
@@ -175,10 +181,14 @@ String BonkEnc::CDDB::GetCDDBQueryString()
 	str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2));
 
 	return str;
+#else
+	return NIL;
+#endif
 }
 
 Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 {
+#ifdef __WIN32__
 	ex_CR_SetActiveCDROM(activeDriveID);
 	ex_CR_ReadToc();
 
@@ -250,6 +260,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 	}
 
 	CloseConnection();
+#endif
 
 	return True;
 }

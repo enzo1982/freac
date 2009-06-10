@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,6 +25,7 @@ BonkEnc::CDDBLocal::~CDDBLocal()
 
 Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 {
+#ifdef __WIN32__
 	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
 	ex_CR_SetActiveCDROM(activeDriveID);
@@ -77,10 +78,14 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 	String::SetOutputFormat(outputFormat);
 
 	return (results.Length() != 0);
+#else
+	return False;
+#endif
 }
 
 Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 {
+#ifdef __WIN32__
 	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
 	ex_CR_SetActiveCDROM(activeDriveID);
@@ -181,6 +186,9 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 	String::SetOutputFormat(outputFormat);
 
 	return (results.Length() != 0);
+#else
+	return False;
+#endif
 }
 
 Bool BonkEnc::CDDBLocal::ConnectToServer()
@@ -190,16 +198,20 @@ Bool BonkEnc::CDDBLocal::ConnectToServer()
 
 Int BonkEnc::CDDBLocal::Query(Int discid)
 {
-	// Try to find Unix style record first; if no match is found, try Windows style
+	/* Try to find Unix style record first; if no match is found, try Windows style
+	 */
 	if (!QueryUnixDB(discid)) QueryWinDB(discid);
 
-	// no match found
+	/* No match found
+	 */
 	if (categories.Length() == 0) return QUERY_RESULT_NONE;
 
-	// exact match
+	/* Exact match
+	 */
 	if (categories.Length() == 1) return QUERY_RESULT_SINGLE;
 
-	// multiple exact matches
+	/* Multiple exact matches
+	 */
 	if (categories.Length() >  1) return QUERY_RESULT_MULTIPLE;
 
 	return QUERY_RESULT_ERROR;
@@ -207,8 +219,8 @@ Int BonkEnc::CDDBLocal::Query(Int discid)
 
 Int BonkEnc::CDDBLocal::Query(const String &queryString)
 {
-	// extract disc ID from query string and call Query() with disc ID
-
+	/* Extract disc ID from query string and call Query() with disc ID
+	 */
 	String	 discID;
 
 	for (Int i = 0; i < 8; i++) discID[i] = queryString[i + 11];
@@ -239,11 +251,13 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 	String	  content = FormatCDDBRecord(cddbInfo);
 
-	// See if we have a Windows or Unix style DB
+	/* See if we have a Windows or Unix style DB
+	 */
 	Directory dir	  = Directory(String(config->freedb_dir).Append(cddbInfo.category));
 	String	  pattern = String("??to??");
 
-	// Create directory if it doesn't exist
+	/* Create directory if it doesn't exist
+	 */
 	dir.Create();
 
 	if (dir.GetFilesByPattern(pattern).Length() >= 1) // Windows style DB

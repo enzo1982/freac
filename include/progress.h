@@ -33,6 +33,7 @@ namespace BonkEnc
 
 			Int			 trackStartTicks;
 			Int			 totalStartTicks;
+			Int			 totalPauseTicks;
 		public:
 						 Progress();
 						~Progress();
@@ -46,6 +47,9 @@ namespace BonkEnc
 
 			Void			 InitTrackProgressValues();
 			Void			 InitTotalProgressValues();
+
+			Void			 PauseTotalProgress();
+			Void			 ResumeTotalProgress();
 
 			Void			 UpdateProgressValues(const Track &, Int);
 

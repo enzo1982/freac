@@ -90,8 +90,10 @@ Void BonkEnc::ConfigureLanguage::SelectLanguage()
 
 Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 {
+#ifdef __WIN32__
 	if (Setup::enableUnicode)	ShellExecuteW(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(Application::GetApplicationDirectory()).Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
 	else				ShellExecuteA(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(Application::GetApplicationDirectory()).Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+#endif
 }
 
 Int BonkEnc::ConfigureLanguage::SaveSettings()

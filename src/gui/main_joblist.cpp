@@ -991,7 +991,9 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	{
 		Utilities::GainShutdownPrivilege();
 
+#ifdef __WIN32__
 		ExitWindowsEx(EWX_POWEROFF | EWX_FORCEIFHUNG, 0);
+#endif
 	}
 }
 
@@ -1244,8 +1246,10 @@ Void BonkEnc::LayerJoblist::StopPlayback()
 
 Void BonkEnc::LayerJoblist::OpenCDTray()
 {
+#ifdef __WIN32__
 	ex_CR_SetActiveCDROM(BoCA::Config::Get()->cdrip_activedrive);
  	ex_CR_EjectCD(True);
+#endif
 }
 
 String BonkEnc::LayerJoblist::SecondsToString(Int seconds)

@@ -10,6 +10,7 @@
 
 #include <dllinterfaces.h>
 
+#ifdef __WIN32__
 CR_INIT				 ex_CR_Init				= NIL;
 CR_DEINIT			 ex_CR_DeInit				= NIL;
 CR_READTOC			 ex_CR_ReadToc				= NIL;
@@ -28,12 +29,14 @@ EUSETLANGUAGEW			 ex_eUpdate_SetLanguageW		= NIL;
 EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext		= NIL;
 EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates		= NIL;
 EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
+#endif
 
 DynamicLoader *BonkEnc::DLLInterfaces::cdripdll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
 
 Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 {
+#ifdef __WIN32__
 	cdripdll = new DynamicLoader("CDRip");
 
 	ex_CR_Init			= (CR_INIT) cdripdll->GetFunctionAddress("CR_Init");
@@ -53,6 +56,7 @@ Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 	    ex_CR_GetNumCDROM			== NIL ||
 	    ex_CR_SetActiveCDROM		== NIL ||
 	    ex_CR_EjectCD			== NIL) { FreeCDRipDLL(); return False; }
+#endif
 
 	return True;
 }
@@ -64,6 +68,7 @@ Void BonkEnc::DLLInterfaces::FreeCDRipDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 {
+#ifdef __WIN32__
 	eupdatedll = new DynamicLoader("eUpdate");
 
 	ex_eUpdate_CreateUpdateContext	= (EUCREATEUPDATECONTEXT) eupdatedll->GetFunctionAddress("eUpdate_CreateUpdateContext");
@@ -85,6 +90,7 @@ Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 	    ex_eUpdate_FreeUpdateContext	== NIL ||
 	    ex_eUpdate_CheckForNewUpdates	== NIL ||
 	    ex_eUpdate_AutomaticUpdate		== NIL) { FreeEUpdateDLL(); return False; }
+#endif
 
 	return True;
 }

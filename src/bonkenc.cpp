@@ -54,7 +54,9 @@ BonkEnc::BonkEnc::BonkEnc()
 	instance	= this;
 	i18n		= BoCA::I18n::Get();
 
+#ifdef __WIN32__
 	CoInitialize(NIL);
+#endif
 
 	encoder		= new Encoder();
 	currentConfig	= Config::Get();
@@ -78,7 +80,9 @@ BonkEnc::BonkEnc::~BonkEnc()
 {
 	JobManager::Quit();
 
+#ifdef __WIN32__
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
+#endif
 
 	if (currentConfig->enable_cdrip)	DLLInterfaces::FreeCDRipDLL();
 	if (currentConfig->enable_eUpdate)	DLLInterfaces::FreeEUpdateDLL();
@@ -91,7 +95,9 @@ BonkEnc::BonkEnc::~BonkEnc()
 
 	Config::Free();
 
+#ifdef __WIN32__
 	CoUninitialize();
+#endif
 }
 
 BonkEnc::BonkEnc *BonkEnc::BonkEnc::Get()
