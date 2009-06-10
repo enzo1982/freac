@@ -13,8 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.13 (Mai 2009)
+	Version 1.0.13 (Juni 2009)
 
+		- Sprachunterstützung für Galizisch hinzugefügt
 		- Tschechische Anleitung hinzugefügt
 		- Tschechische Übersetzung aktualisiert
 
@@ -269,7 +270,8 @@ Besonderen Dank
 			   Vjatv (Valencianisch),
 			   Jose Goncalves (Portugiesisch),
 			   Meelis Pasieko (Estnisch),
-			   Goran Bekic (Kroatisch)
+			   Goran Bekic (Kroatisch),
+			   Eduardo Estévez (Galizisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
