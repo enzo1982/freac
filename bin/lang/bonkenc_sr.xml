@@ -54,7 +54,7 @@
   <entry id="41" string="Currently encoding">Trenutno se enkoduje</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ovaj program se distribuira pod uslovima&#10;GNU Opštih Javnih Licenci (tzv. &quot;GPL&quot;).</entry>
   <entry id="43" string="CDDB query">CDDB upit</entry>
-  <entry id="44" string="About BonkEnc">O BonkEnc-u ...</entry>
+  <entry id="44" string="About BonkEnc">O BonkEnc-u</entry>
   <entry id="45" string="No options can be configured for the WAVE Out filter!">Opcije za WAVE izlazni filter se ne mogu podešavati!</entry>
   <entry id="46" string="WAVE Out filter">WAVE izlazni filter</entry>
   <entry id="47" string="Cannot change settings while encoding!">Ne možete menjati podešavanja za vreme enkodovanja!</entry>
@@ -328,10 +328,10 @@
   <entry id="320" string="all words upper case">sve reči VELIKIM slovima</entry>
   <entry id="321" string="long words upper case">dugačke reči VELIKIM slovima</entry>
   <entry id="322" string="first letter upper case">prvo slovo VELIKO</entry>
-  <entry id="323" string="all lower case">sva mala slova</entry>
-  <entry id="324" string="all upper case">sva VELIKA slova</entry>
+  <entry id="323" string="all lower case">sva slova mala</entry>
+  <entry id="324" string="all upper case">sva slova VELIKA</entry>
   <entry id="325" string="Status">Status</entry>
-  <entry id="326" string="Successfully read CD!">Uspešno pročitan CD!</entry>
+  <entry id="326" string="Successfully read CD!">CD uspešno očitan!</entry>
   <entry id="327" string="Comment">Komentar</entry>
   <entry id="328" string="Manage CDDB cache entries...">Upravljaj CDDB keš zapisima ...</entry>
   <entry id="329" string="Save entry">Sačuvaj podatak</entry>
