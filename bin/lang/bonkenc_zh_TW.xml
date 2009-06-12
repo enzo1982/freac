@@ -2,12 +2,12 @@
 <LangFile>
  <info>
   <property name="program">BonkEnc</property>
-  <property name="version">1.0</property>
+  <property name="version">1.0.12</property>
   <property name="language">Chinese (traditional) / 繁體中文</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
-  <property name="author">風逸蘭</property>
+  <property name="author">風逸蘭, Adrian Fong</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -30,7 +30,7 @@
   <entry id="17" string="Selected encoder:">選擇的編碼器:</entry>
   <entry id="18" string="File progress:">處理進度:</entry>
   <entry id="19" string="Output dir.:">輸出目錄:</entry>
-  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 個檔案於工作清單:</entry>
+  <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 個檔案於工作清單(%2 分鐘):</entry>
   <entry id="21" string="none">無</entry>
   <entry id="22" string="Help topics...">說明主題...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">加入音訊檔案到工作清單</entry>
@@ -390,5 +390,13 @@
   <entry id="382" string="Apodization function(s):">切趾函數:</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">您可以指定多個函數, 每個函數使用分號來分隔.</entry>
   <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc 可以在啟動時自動執行更新檢查.&#10;&#10;您想要 BonkEnc 在啟動時檢查有無更新嗎?</entry>
-  </data>
+  <entry id="385" string="Cannot access input file: %1">無法存取來源檔: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">無法產生輸出檔: %1</entry>
+  <entry id="387" string="File not found">找不到檔案</entry>
+  <entry id="388" string="Unknown file type">不明的檔案類型</entry>
+  <entry id="389" string="Unsupported audio format">不支援的音訊格式</entry>
+  <entry id="390" string="Unknown error">不明的錯誤</entry>
+  <entry id="391" string="Replace existing comments with default comment">以預設注解字串取代現有注解字串</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">己選的檔案因採用不同的取樣格式&#10;而無法合成單一輸出檔&#10;&#10;請先以相同取樣格式轉換所所有檔案</entry>
+ </data>
 </LangFile>
