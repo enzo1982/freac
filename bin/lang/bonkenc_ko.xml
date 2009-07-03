@@ -180,10 +180,6 @@
     <entry id="172" string="Presets">초기설정</entry>
     <entry id="173" string="Use preset:">초기설정 사용:</entry>
     <entry id="174" string="Custom settings">사용자 정의</entry>
-    <entry id="175" string="Medium">보통</entry>
-    <entry id="176" string="Standard">표준</entry>
-    <entry id="177" string="Extreme">최저</entry>
-    <entry id="178" string="Insane">최고</entry>
     <entry id="179" string="Medium, Fast">보통, 빠르기</entry>
     <entry id="180" string="Standard, Fast">표준, 빠르기</entry>
     <entry id="181" string="Extreme, Fast">최저, 빠르기</entry>

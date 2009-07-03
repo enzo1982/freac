@@ -21,6 +21,8 @@ namespace BonkEnc
 		private:
 			lame_global_flags	*lameFlags;
 
+			Int			 dataOffset;
+
 			Buffer<unsigned char>	 outBuffer;
 			Buffer<signed short>	 samplesBuffer;
 		public:

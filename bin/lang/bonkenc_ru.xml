@@ -180,10 +180,6 @@
   <entry id="172" string="Presets">Настройка</entry>
   <entry id="173" string="Use preset:">Выберите вариант</entry>
   <entry id="174" string="Custom settings">Указать настройки в ручную</entry>
-  <entry id="175" string="Medium">Средний</entry>
-  <entry id="176" string="Standard">Стандартный</entry>
-  <entry id="177" string="Extreme">Предельный</entry>
-  <entry id="178" string="Insane">Сумасшедший</entry>
   <entry id="179" string="Medium, Fast">Средний, Быстрый</entry>
   <entry id="180" string="Standard, Fast">Стандартный, Быстрый</entry>
   <entry id="181" string="Extreme, Fast">Предельный, Быстрый</entry>

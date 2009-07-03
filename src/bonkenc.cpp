@@ -65,9 +65,17 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	currentConfig->LoadSettings();
 
+	/* Set number of threads for OpenMP optimized encoders.
+	 */
+	if (currentConfig->openmp_numThreads > 0) SetEnvironmentVariableA("OMP_NUM_THREADS", String::FromInt(currentConfig->openmp_numThreads));
+
+	/* Set default language information.
+	 */
 	i18n = new I18n::Translator("BonkEnc");
 	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@bonkenc.org>", "http://www.bonkenc.org/", False);
 
+	/* Load encoder DLLs.
+	 */
 	if (DLLInterfaces::LoadBonkDLL() == False)	currentConfig->enable_bonk = False;
 	else						currentConfig->enable_bonk = True;
 

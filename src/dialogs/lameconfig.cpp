@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -100,14 +100,9 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	basic_combo_preset	= new ComboBox(pos, size);
 	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Custom settings"));
-	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Medium"));
-	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Standard"));
-	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Extreme"));
-	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Insane"));
 	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Medium, Fast"));
 	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Standard, Fast"));
 	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Extreme, Fast"));
-	basic_combo_preset->AddEntry("R3Mix");
 	basic_combo_preset->AddEntry("ABR");
 	basic_combo_preset->SelectNthEntry(currentConfig->lame_preset);
 	basic_combo_preset->onSelectEntry.Connect(&ConfigureLameEnc::SetPreset, this);

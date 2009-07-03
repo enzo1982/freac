@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -92,7 +92,7 @@ LAME_DECODE_EXIT		 ex_lame_decode_exit			= NIL;
 LAME_DECODE			 ex_lame_decode				= NIL;
 LAME_DECODE_HEADERS		 ex_lame_decode_headers			= NIL;
 GET_LAME_SHORT_VERSION		 ex_get_lame_short_version		= NIL;
-LAME_MP3_TAGS_FID		 ex_lame_mp3_tags_fid			= NIL;
+LAME_GET_LAMETAG_FRAME		 ex_lame_get_lametag_frame		= NIL;
 LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag		= NIL;
 
 VORBISINFOINIT			 ex_vorbis_info_init			= NIL;
@@ -402,7 +402,7 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	ex_lame_decode				= (LAME_DECODE) lamedll->GetFunctionAddress("lame_decode");
 	ex_lame_decode_headers			= (LAME_DECODE_HEADERS) lamedll->GetFunctionAddress("lame_decode_headers");
 	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) lamedll->GetFunctionAddress("get_lame_short_version");
-	ex_lame_mp3_tags_fid			= (LAME_MP3_TAGS_FID) lamedll->GetFunctionAddress("lame_mp3_tags_fid");
+	ex_lame_get_lametag_frame		= (LAME_GET_LAMETAG_FRAME) lamedll->GetFunctionAddress("lame_get_lametag_frame");
 	ex_lame_set_bWriteVbrTag		= (LAME_SET_BWRITEVBRTAG) lamedll->GetFunctionAddress("lame_set_bWriteVbrTag");
 
 	if (ex_lame_init			== NIL ||
@@ -443,7 +443,7 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	    ex_lame_decode			== NIL ||
 	    ex_lame_decode_headers		== NIL ||
 	    ex_get_lame_short_version		== NIL ||
-	    ex_lame_mp3_tags_fid		== NIL ||
+	    ex_lame_get_lametag_frame		== NIL ||
 	    ex_lame_set_bWriteVbrTag		== NIL) { FreeLAMEDLL(); return False; }
 
 	return True;

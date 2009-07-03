@@ -87,10 +87,6 @@ BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
 
 	ex_bonk_decoder_get_id3_data(decoder, &id3tag, &id3tag_size);
 
-	ex_bonk_decoder_close(decoder);
-
-	delete in;
-
 	if (id3tag_size > 0 && currentConfig->enable_id3) 
 	{
 		nFormat->track = -1;
@@ -98,6 +94,10 @@ BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
 
 		ParseID3V2Tag(id3tag, id3tag_size, nFormat);
 	}
+
+	ex_bonk_decoder_close(decoder);
+
+	delete in;
 
 	return nFormat;
 }

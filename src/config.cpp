@@ -96,10 +96,13 @@ Bool BonkEnc::Config::LoadSettings()
 	overwriteComments			= config->GetIntValue("Settings", "OverwriteComments", 0);
 	copy_picture_tags			= config->GetIntValue("Settings", "CopyPictureTags", 1);
 
+	openmp_numThreads			= config->GetIntValue("OpenMP", "NumThreads", 0);
+
 	cdrip_activedrive			= config->GetIntValue("CDRip", "ActiveCDROM", 0);
 	cdrip_debuglevel			= config->GetIntValue("CDRip", "DebugCDRip", 0);
 	cdrip_paranoia				= config->GetIntValue("CDRip", "CDParanoia", 0);
 	cdrip_paranoia_mode			= config->GetIntValue("CDRip", "CDParanoiaMode", 3);
+	cdrip_speed				= config->GetIntValue("CDRip", "RippingSpeed", 0);
 	cdrip_detectJitterErrors		= config->GetIntValue("CDRip", "DetectJitterErrors", 1);
 	cdrip_detectC2Errors			= config->GetIntValue("CDRip", "DetectC2Errors", 1);
 	cdrip_jitter				= config->GetIntValue("CDRip", "JitterCorrection", 0);
@@ -275,10 +278,13 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("Settings", "OverwriteComments", overwriteComments);
 		config->SetIntValue("Settings", "CopyPictureTags", copy_picture_tags);
 
+		config->SetIntValue("OpenMP", "NumThreads", openmp_numThreads);
+
 		config->SetIntValue("CDRip", "ActiveCDROM", cdrip_activedrive);
 		config->SetIntValue("CDRip", "DebugCDRip", cdrip_debuglevel);
 		config->SetIntValue("CDRip", "CDParanoia", cdrip_paranoia);
 		config->SetIntValue("CDRip", "CDParanoiaMode", cdrip_paranoia_mode);
+		config->SetIntValue("CDRip", "RippingSpeed", cdrip_speed);
 		config->SetIntValue("CDRip", "DetectJitterErrors", cdrip_detectJitterErrors);
 		config->SetIntValue("CDRip", "DetectC2Errors", cdrip_detectC2Errors);
 		config->SetIntValue("CDRip", "JitterCorrection", cdrip_jitter);

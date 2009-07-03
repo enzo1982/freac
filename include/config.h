@@ -101,6 +101,8 @@ namespace BonkEnc
 			Bool		 overwriteComments;
 			Bool		 copy_picture_tags;
 
+			Int		 openmp_numThreads;
+
 			Array<String>	 cdrip_drives;
 			Int		 cdrip_numdrives;
 			Int		 cdrip_activedrive;
@@ -108,6 +110,7 @@ namespace BonkEnc
 			Bool		 cdrip_paranoia;
 			Bool		 cdrip_jitter;
 			Int		 cdrip_paranoia_mode;
+			Int		 cdrip_speed;
 			Bool		 cdrip_swapchannels;
 			Bool		 cdrip_locktray;
 			Bool		 cdrip_read_cdtext;

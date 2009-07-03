@@ -18,6 +18,12 @@ History
 		- added Galician language support
 		- added Czech user guide
 		- updated Chinese (traditional), Czech and Serbian translations
+		- making better use of multi-core CPUs when encoding/decoding
+		- miscellaneous other speed optimizations
+		- removed outdated presets for LAME encoder
+		- fixed a possible crash at the end of encoding using LAME
+		- fixed a possible crash opening Bonk files
+		- fixed BEcmd argument handling
 
 	Version 1.0.12 (May 2009)
 

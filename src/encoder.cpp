@@ -990,7 +990,13 @@ Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition
 {
 	if (currentConfig->enable_console) return;
 
-	Int	 ticks = clock() - startTicks;
+	static Int	 lastInvoked = 0;
+
+	Int	 clockValue = clock();
+
+	if (clockValue - lastInvoked < 40) return;
+
+	Int	 ticks = clockValue - startTicks;
 
 	if (trackInfo->length >= 0)
 	{
@@ -1040,6 +1046,8 @@ Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition
 
 		edb_time->SetText(txt);
 	}
+
+	lastInvoked = clockValue;
 }
 
 Void BonkEnc::BonkEnc::FinishProgressValues(Track *trackInfo)

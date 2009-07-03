@@ -94,7 +94,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	pos.y += 25;
 
-	option_aactype_low	= new OptionBox("LOW", pos, size, &aacType, 2);
+	option_aactype_low	= new OptionBox("LC", pos, size, &aacType, 2);
 
 	pos.y += 25;
 

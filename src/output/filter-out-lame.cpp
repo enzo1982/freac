@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -203,30 +203,15 @@ Bool BonkEnc::FilterOutLAME::Activate()
 
 			break;
 		case 1:
-			ex_lame_set_preset(lameFlags, MEDIUM);
-			break;
-		case 2:
-			ex_lame_set_preset(lameFlags, STANDARD);
-			break;
-		case 3:
-			ex_lame_set_preset(lameFlags, EXTREME);
-			break;
-		case 4:
-			ex_lame_set_preset(lameFlags, INSANE);
-			break;
-		case 5:
 			ex_lame_set_preset(lameFlags, MEDIUM_FAST);
 			break;
-		case 6:
+		case 2:
 			ex_lame_set_preset(lameFlags, STANDARD_FAST);
 			break;
-		case 7:
+		case 3:
 			ex_lame_set_preset(lameFlags, EXTREME_FAST);
 			break;
-		case 8:
-			ex_lame_set_preset(lameFlags, R3MIX);
-			break;
-		case 9:
+		case 4:
 			ex_lame_set_preset(lameFlags, currentConfig->lame_abrbitrate);
 			break;
 	}
@@ -238,12 +223,16 @@ Bool BonkEnc::FilterOutLAME::Activate()
 		return False;
 	}
 
+	dataOffset = 0;
+
 	if ((format->artist != NIL || format->title != NIL) && currentConfig->enable_id3v2 && currentConfig->enable_id3)
 	{
 		Buffer<unsigned char>	 id3Buffer;
 		Int			 size = RenderID3Tag(2, id3Buffer);
 
 		driver->WriteData(id3Buffer, size);
+
+		dataOffset = size;
 	}
 
 	ex_lame_set_bWriteVbrTag(lameFlags, 1);
@@ -265,36 +254,15 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 		driver->WriteData(id3Buffer, size);
 	}
 
+	/* Write Xing header if VBR.
+	 */
 	if (ex_lame_get_VBR(lameFlags) != vbr_off)
 	{
-		String	 tempFile = Utilities::GetTempDirectory().Append("xing.tmp");
+		Buffer<unsigned char>	 buffer(2880);	// Maximum frame size
+		Int			 bytes = ex_lame_get_lametag_frame(lameFlags, buffer, buffer.Size());
 
-		FILE	*f_out = fopen(tempFile, "w+b");
-
-		if (f_out != NIL)
-		{
-			Buffer<unsigned char>	 buffer(driver->GetSize());
-
-			driver->Seek(0);
-			driver->ReadData(buffer, buffer.Size());
-
-			fwrite(buffer, 1, buffer.Size(), f_out);
-
-			ex_lame_mp3_tags_fid(lameFlags, f_out);
-
-			buffer.Resize(ftell(f_out));
-
-			fseek(f_out, 0, SEEK_SET);
-
-			fread((void *) buffer, 1, buffer.Size(), f_out);
-
-			driver->Seek(0);
-			driver->WriteData(buffer, buffer.Size());
-
-			fclose(f_out);
-
-			File(tempFile).Delete();
-		}
+		driver->Seek(dataOffset);
+		driver->WriteData(buffer, bytes);
 	}
 
 	ex_lame_close(lameFlags);

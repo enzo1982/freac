@@ -74,7 +74,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	ScanForFiles(&files);
 
-	if (currentConfig->enable_cdrip)
+	if (currentConfig->enable_cdrip && ex_CR_GetNumCDROM() > 0)
 	{
 		currentConfig->cdrip_activedrive = cdDrive.ToInt();
 
@@ -99,10 +99,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	Console::SetTitle(String("BonkEnc ").Append(BonkEnc::version));
 
+	encoder = encoder.ToUpper();
+
 	if (files.Length() == 0 ||
 	    helpenc != NIL ||
-	    !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "FLAC" || encoder == "TVQ" || encoder == "WAVE" || encoder == "lame" || encoder == "vorbis" || encoder == "bonk" || encoder == "blade" || encoder == "faac" || encoder == "flac" || encoder == "tvq" || encoder == "wave") ||
-	    (files.Length() > 1 && outfile != ""))
+	    !(encoder == "LAME" || encoder == "VORBIS" || encoder == "BONK" || encoder == "BLADE" || encoder == "FAAC" || encoder == "FLAC" || encoder == "TVQ" || encoder == "WAVE") ||
+	    (files.Length() > 1 && outfile != NIL))
 	{
 		ShowHelp(helpenc);
 
@@ -141,11 +143,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		currentConfig->lame_bitrate    = Math::Max(0, Math::Min(320, bitrate.ToInt()));
 		currentConfig->lame_abrbitrate = Math::Max(0, Math::Min(320, bitrate.ToInt()));
-		currentConfig->lame_vbrquality = Math::Max(0, Math::Min(9, quality.ToInt()));
+		currentConfig->lame_vbrquality = Math::Max(0, Math::Min(9, quality.ToInt())) * 10;
 
-		if (mode == "VBR" || mode == "vbr")	 currentConfig->lame_vbrmode = 2;
-		else if (mode == "ABR" || mode == "abr") currentConfig->lame_vbrmode = 3;
-		else if (mode == "CBR" || mode == "cbr") currentConfig->lame_vbrmode = 0;
+		if (mode == "VBR" || mode == "vbr")	 currentConfig->lame_vbrmode = vbr_mtrh;
+		else if (mode == "ABR" || mode == "abr") currentConfig->lame_vbrmode = vbr_abr;
+		else if (mode == "CBR" || mode == "cbr") currentConfig->lame_vbrmode = vbr_off;
 
 		currentConfig->encoder = ENCODER_LAMEENC;
 	}
@@ -230,7 +232,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		currentConfig->flac_preset = -1;
 
-		currentConfig->flac_do_mid_side_stereo		 = ScanForParameter("-m", NULL);
+		currentConfig->flac_do_mid_side_stereo		 = ScanForParameter("-ms", NULL);
 		currentConfig->flac_do_exhaustive_model_search	 = ScanForParameter("-e", NULL);
 		currentConfig->flac_do_qlp_coeff_prec_search	 = ScanForParameter("-p", NULL);
 
@@ -368,7 +370,7 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 					prevParam == "-js" ||
 					prevParam == "-lossless" ||
 					prevParam == "-mp4" ||
-					prevParam == "-m" ||
+					prevParam == "-ms" ||
 					prevParam == "-extc" ||
 					prevParam == "-extm ||")) (*files).Add(param);
 	}
@@ -493,7 +495,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 		{
 			Console::OutputString("Options for FLAC encoder:\n\n");
 			Console::OutputString("\t-b <blocksize>\t\t\t(192 - 32768, default: 4608)\n");
-			Console::OutputString("\t-m\t\t\t\t(use mid-side stereo)\n");
+			Console::OutputString("\t-ms\t\t\t\t(use mid-side stereo)\n");
 			Console::OutputString("\t-l <max LPC order>\t\t(0 - 32, default: 8)\n");
 			Console::OutputString("\t-q <QLP coeff precision>\t(0 - 16, default: 0)\n");
 			Console::OutputString("\t-extc\t\t\t\t(do exhaustive QLP coeff optimization)\n");
