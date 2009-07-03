@@ -37,6 +37,8 @@ Geschichte
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Unterstützung zum Auslesen von ISRC-Codes von CDs hinzugefügt
+		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
+		- Diverse weitere Geschwindigkeitsverbesserungen
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben

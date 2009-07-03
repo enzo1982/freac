@@ -37,6 +37,8 @@ History
 		- added <installdrive> pattern for use in output directory name
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
+		- making better use of multi-core CPUs when encoding/decoding
+		- miscellaneous other speed optimizations
 		- the five last used file name patterns are now saved for later use
 		- greatly improved case conversion functions
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available

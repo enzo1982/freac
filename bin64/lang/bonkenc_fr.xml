@@ -180,10 +180,6 @@
   <entry id="172" string="Presets">Paramètres prédéfinis</entry>
   <entry id="173" string="Use preset:">Utiliser paramètre prédéfini :</entry>
   <entry id="174" string="Custom settings">Paramètres personnalisés</entry>
-  <entry id="175" string="Medium">Moyen</entry>
-  <entry id="176" string="Standard">Standard</entry>
-  <entry id="177" string="Extreme">Extrême</entry>
-  <entry id="178" string="Insane">Cinglé</entry>
   <entry id="179" string="Medium, Fast">Moyen, rapide</entry>
   <entry id="180" string="Standard, Fast">Standard, rapide</entry>
   <entry id="181" string="Extreme, Fast">Extrême, rapide</entry>

@@ -180,10 +180,6 @@
     <entry id="172" string="Presets">预选</entry>
     <entry id="173" string="Use preset:">使用预选:</entry>
     <entry id="174" string="Custom settings">自定义选项</entry>
-    <entry id="175" string="Medium">中等</entry>
-    <entry id="176" string="Standard">标准</entry>
-    <entry id="177" string="Extreme">极端</entry>
-    <entry id="178" string="Insane">疯狂</entry>
     <entry id="179" string="Medium, Fast">中,快</entry>
     <entry id="180" string="Standard, Fast">标准,快</entry>
     <entry id="181" string="Extreme, Fast">极端,快</entry>

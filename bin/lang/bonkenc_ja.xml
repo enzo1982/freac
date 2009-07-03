@@ -180,10 +180,6 @@
   <entry id="172" string="Presets">プリセット</entry>
   <entry id="173" string="Use preset:">プリセット使用：</entry>
   <entry id="174" string="Custom settings">カスタム設定</entry>
-  <entry id="175" string="Medium">Medium （VBR 145-185kbps）</entry>
-  <entry id="176" string="Standard">Standard （VBR 170-210kbps）</entry>
-  <entry id="177" string="Extreme">Extreme （VBR 220-260kbps）</entry>
-  <entry id="178" string="Insane">Insane （CBR 320kbps）</entry>
   <entry id="179" string="Medium, Fast">Medium （VBR 145-185kbps）, Fast</entry>
   <entry id="180" string="Standard, Fast">Standard （VBR 170-210kbps）, Fast</entry>
   <entry id="181" string="Extreme, Fast">Extreme （VBR 220-260kbps）, Fast</entry>

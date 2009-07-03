@@ -180,10 +180,6 @@
   <entry id="172" string="Presets">預置</entry>
   <entry id="173" string="Use preset:">使用預置:</entry>
   <entry id="174" string="Custom settings">自訂設定</entry>
-  <entry id="175" string="Medium">中等</entry>
-  <entry id="176" string="Standard">標準</entry>
-  <entry id="177" string="Extreme">高水準</entry>
-  <entry id="178" string="Insane">極限</entry>
   <entry id="179" string="Medium, Fast">中等. 快速</entry>
   <entry id="180" string="Standard, Fast">標準. 快速</entry>
   <entry id="181" string="Extreme, Fast">極限. 快速</entry>

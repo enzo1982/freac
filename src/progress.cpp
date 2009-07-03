@@ -75,10 +75,17 @@ Void BonkEnc::Progress::ResumeTotalProgress()
 
 Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int samplePosition)
 {
-	if (Config::Get()->enable_console) return;
+	static Config	*config = Config::Get();
+	static Int	 lastInvoked = 0;
 
-	Int	 trackTicks = clock() - trackStartTicks;
-	Int	 totalTicks = clock() - totalStartTicks;
+	if (config->enable_console) return;
+
+	Int	 clockValue = clock();
+
+	if (clockValue - lastInvoked < 40) return;
+
+	Int	 trackTicks = clockValue - trackStartTicks;
+	Int	 totalTicks = clockValue - totalStartTicks;
 
 	Int	 trackProgress = 0;
 	Int	 totalProgress = 0;
@@ -102,6 +109,8 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 
 	onTrackProgress.Emit(trackProgress, trackTicks);
 	onTotalProgress.Emit(totalProgress, totalTicks);
+
+	lastInvoked = clockValue;
 }
 
 Void BonkEnc::Progress::FinishTrackProgressValues(const Track &trackInfo)

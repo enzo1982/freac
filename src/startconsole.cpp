@@ -94,7 +94,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	Registry	&boca = Registry::Get();
 
-	if (currentConfig->enable_cdrip)
+	if (currentConfig->enable_cdrip && componentsConfig->cdrip_numdrives > 0)
 	{
 		componentsConfig->cdrip_activedrive = cdDrive.ToInt();
 
@@ -163,11 +163,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		componentsConfig->SetIntValue("LAME", "Bitrate", Math::Max(0, Math::Min(320, bitrate.ToInt())));
 		componentsConfig->SetIntValue("LAME", "ABRBitrate", Math::Max(0, Math::Min(320, bitrate.ToInt())));
-		componentsConfig->SetIntValue("LAME", "VBRQuality", Math::Max(0, Math::Min(9, quality.ToInt())));
+		componentsConfig->SetIntValue("LAME", "VBRQuality", Math::Max(0, Math::Min(9, quality.ToInt())) * 10);
 
-		if	(mode == "VBR" || mode == "vbr") componentsConfig->SetIntValue("LAME", "VBRMode", 2);
-		else if (mode == "ABR" || mode == "abr") componentsConfig->SetIntValue("LAME", "VBRMode", 3);
-		else if (mode == "CBR" || mode == "cbr") componentsConfig->SetIntValue("LAME", "VBRMode", 0);
+		if	(mode == "VBR" || mode == "vbr") componentsConfig->SetIntValue("LAME", "VBRMode", vbr_mtrh);
+		else if (mode == "ABR" || mode == "abr") componentsConfig->SetIntValue("LAME", "VBRMode", vbr_abr);
+		else if (mode == "CBR" || mode == "cbr") componentsConfig->SetIntValue("LAME", "VBRMode", vbr_off);
 
 		currentConfig->encoderID = "lame-out";
 	}
@@ -252,7 +252,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		componentsConfig->SetIntValue("FLAC", "Preset", -1);
 
-		componentsConfig->SetIntValue("FLAC", "DoMidSideStereo", ScanForParameter("-m", NULL));
+		componentsConfig->SetIntValue("FLAC", "DoMidSideStereo", ScanForParameter("-ms", NULL));
 		componentsConfig->SetIntValue("FLAC", "DoExhaustiveModelSearch", ScanForParameter("-e", NULL));
 		componentsConfig->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", ScanForParameter("-p", NULL));
 
@@ -408,7 +408,7 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 					prevParam == "-js"	 ||
 					prevParam == "-lossless" ||
 					prevParam == "-mp4"	 ||
-					prevParam == "-m"	 ||
+					prevParam == "-ms"	 ||
 					prevParam == "-extc"	 ||
 					prevParam == "-extm")) (*files).Add(param);
 	}
@@ -534,7 +534,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 		{
 			Console::OutputString("Options for FLAC encoder:\n\n");
 			Console::OutputString("\t-b <blocksize>\t\t\t(192 - 32768, default: 4608)\n");
-			Console::OutputString("\t-m\t\t\t\t(use mid-side stereo)\n");
+			Console::OutputString("\t-ms\t\t\t\t(use mid-side stereo)\n");
 			Console::OutputString("\t-l <max LPC order>\t\t(0 - 32, default: 8)\n");
 			Console::OutputString("\t-q <QLP coeff precision>\t(0 - 16, default: 0)\n");
 			Console::OutputString("\t-extc\t\t\t\t(do exhaustive QLP coeff optimization)\n");

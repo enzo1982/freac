@@ -180,10 +180,6 @@
     <entry id="172" string="Presets">Voreinstellungen</entry>
     <entry id="173" string="Use preset:">Voreinstellung verwenden:</entry>
     <entry id="174" string="Custom settings">Eigene Einstellungen</entry>
-    <entry id="175" string="Medium">Mittel</entry>
-    <entry id="176" string="Standard">Standard</entry>
-    <entry id="177" string="Extreme">Extrem</entry>
-    <entry id="178" string="Insane">Verrückt</entry>
     <entry id="179" string="Medium, Fast">Mittel, Schnell</entry>
     <entry id="180" string="Standard, Fast">Standard, Schnell</entry>
     <entry id="181" string="Extreme, Fast">Extrem, Schnell</entry>
