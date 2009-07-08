@@ -13,9 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.13 (Juni 2009)
+	Version 1.0.13 (Juli 2009)
 
-		- Sprachunterstützung für Galizisch hinzugefügt
+		- Sprachunterstützung für Vietnamesisch und Galizisch hinzugefügt
 		- Tschechische Anleitung hinzugefügt
 		- Chinesische (traditionell), tschechische und serbische Übersetzungen aktualisiert
 		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
@@ -24,6 +24,8 @@ Geschichte
 		- Möglichen Absturz am Ende der Codierung mit LAME behoben
 		- Möglichen Absturz beim Öffnen von Bonk-Dateien behoben
 		- Fehler in der Argumentverarbeitung bei BEcmd behoben
+		- Probleme mit easyUpdate behoben
+		- Ogg-Bibliothek auf Version 1.1.4 aktualisiert
 
 	Version 1.0.12 (Mai 2009)
 
@@ -277,7 +279,8 @@ Besonderen Dank
 			   Jose Goncalves (Portugiesisch),
 			   Meelis Pasieko (Estnisch),
 			   Goran Bekic (Kroatisch),
-			   Eduardo Estévez (Galizisch)
+			   Eduardo Estévez (Galizisch),
+			   Phan Anh (Vietnamesisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

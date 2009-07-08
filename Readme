@@ -13,9 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.13 (June 2009)
+	Version 1.0.13 (July 2009)
 
-		- added Galician language support
+		- added Vietnamese and Galician language support
 		- added Czech user guide
 		- updated Chinese (traditional), Czech and Serbian translations
 		- making better use of multi-core CPUs when encoding/decoding
@@ -24,6 +24,8 @@ History
 		- fixed a possible crash at the end of encoding using LAME
 		- fixed a possible crash opening Bonk files
 		- fixed BEcmd argument handling
+		- fixed problems with easyUpdate
+		- upgraded Ogg library to version 1.1.4
 
 	Version 1.0.12 (May 2009)
 
@@ -92,7 +94,7 @@ History
 	Version 1.0.7 (March 2008)
 
 		- fixed creation of cuesheets for multiple tracks in a single file
-		- fixed crash on trying to decode invalid OGG files
+		- fixed crash on trying to decode invalid Ogg files
 		- fixed possibly incomplete FLAC decoding
 		- fixed decoding of AAC files with ID3v2 tags
 		- fixed easyUpdate not working in previous releases
@@ -277,7 +279,8 @@ Special thanks to
 			   Jose Goncalves (Portuguese),
 			   Meelis Pasieko (Estonian),
 			   Goran Bekic (Croatian),
-			   Eduardo Estévez (Galician)
+			   Eduardo Estévez (Galician),
+			   Phan Anh (Vietnamese)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
