@@ -15,7 +15,7 @@ Geschichte
 
 	Version 1.1 CVS (Juni 2009)
 
-		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
+		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
 		- Deutsche, italienische, russische, tschechische und griechische Anleitungen hinzugefügt
 		- Deutsche und japanische Übersetzungen für das Installationsprogramm hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
@@ -68,6 +68,7 @@ Geschichte
 		- FAAD2 suf Version 2.7 aktualisiert
 		- LAME suf Version 3.98.3 aktualisiert
 		- Ogg Vorbis auf aoTuV Beta 5.7 aktualisiert
+		- Ogg-Bibliothek auf Version 1.1.4 aktualisiert
 		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0
 		- Viele weitere Korrekturen
@@ -150,7 +151,8 @@ Besonderen Dank
 			   Jose Goncalves (Portugiesisch),
 			   Meelis Pasieko (Estnisch),
 			   Goran Bekic (Kroatisch),
-			   Eduardo Estévez (Galizisch)
+			   Eduardo Estévez (Galizisch),
+			   Phan Anh (Vietnamesisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

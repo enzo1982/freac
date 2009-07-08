@@ -73,6 +73,12 @@ Bool BonkEnc::Config::LoadSettings()
 	String		 personalDir = S::System::System::GetPersonalFilesDirectory();
 	String		 programsDir = S::System::System::GetProgramFilesDirectory();
 
+#ifdef __WIN32__
+	if (!personalDir.EndsWith(Directory::GetDirectoryDelimiter())) personalDir.Append(Directory::GetDirectoryDelimiter());
+
+	personalDir.Append("My Music");
+#endif
+
 	if (Application::GetApplicationDirectory().ToUpper().StartsWith(programsDir.ToUpper()))
 	{
 		configDir = S::System::System::GetApplicationDataDirectory();
@@ -91,12 +97,12 @@ Bool BonkEnc::Config::LoadSettings()
 	firstStart				= config->GetIntValue("Settings", "FirstStart", 1);
 	encoderID				= config->GetStringValue("Settings", "Encoder", "wave-out");
 	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", personalDir);
-	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <title>");
+	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <album>\\<artist> - <album> - <track> - <title>");
 	enc_onTheFly				= config->GetIntValue("Settings", "EncodeOnTheFly", 1);
 	enc_keepWaves				= config->GetIntValue("Settings", "KeepWaveFiles", 0);
 	playlist_useEncOutdir			= config->GetIntValue("Settings", "PlaylistUseEncOutDir", 1);
 	playlist_outdir				= config->GetStringValue("Settings", "PlaylistOutDir", personalDir);
-	playlist_filePattern			= config->GetStringValue("Settings", "PlaylistFilenamePattern", "<artist> - <album>");
+	playlist_filePattern			= config->GetStringValue("Settings", "PlaylistFilenamePattern", "<artist> - <album>\\<artist> - <album>");
 	useUnicodeNames				= config->GetIntValue("Settings", "UseUnicodeFilenames", 1);
 	showTitleInfo				= config->GetIntValue("Settings", "ShowTitleInfo", 1);
 	showTooltips				= config->GetIntValue("Settings", "ShowTooltips", 1);
@@ -141,9 +147,9 @@ Bool BonkEnc::Config::LoadSettings()
 
 	delete config;
 
-	if (!enc_outdir.EndsWith("\\"))	     enc_outdir.Append("\\");
-	if (!playlist_outdir.EndsWith("\\")) playlist_outdir.Append("\\");
-	if (!freedb_dir.EndsWith("\\"))	     freedb_dir.Append("\\");
+	if (!enc_outdir.EndsWith(Directory::GetDirectoryDelimiter()))	   enc_outdir.Append(Directory::GetDirectoryDelimiter());
+	if (!playlist_outdir.EndsWith(Directory::GetDirectoryDelimiter())) playlist_outdir.Append(Directory::GetDirectoryDelimiter());
+	if (!freedb_dir.EndsWith(Directory::GetDirectoryDelimiter()))	   freedb_dir.Append(Directory::GetDirectoryDelimiter());
 
 	if (encodeToSingleFile && !enc_onTheFly) enc_onTheFly = True;
 

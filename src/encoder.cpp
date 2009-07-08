@@ -434,6 +434,8 @@ Int BonkEnc::Encoder::EncoderThread()
 
 				playlist.AddTrack(relativeFileName, String(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (format.rate * format.channels)));
 				cueSheet.AddTrack(relativeFileName, 0, trackInfo);
+
+				trackInfo.SaveCoverArtFiles(Utilities::GetAbsoluteDirName(Config::Get()->enc_outdir));
 			}
 		}
 		else if (!skip)

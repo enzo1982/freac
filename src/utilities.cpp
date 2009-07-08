@@ -81,7 +81,25 @@ BoCA::AS::DecoderComponent *BonkEnc::Utilities::CreateDecoderComponent(const Str
 
 Void BonkEnc::Utilities::FillGenreList(List *list)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	list->AddEntry("");
+	list->AddSeparator();
+
+	Int	 customEntries = 0;
+
+	for (Int i = 1; i <= 5; i++)
+	{
+		if (config->GetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i)), NIL) != NIL)
+		{
+			list->AddEntry(config->GetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i)), NIL));
+
+			customEntries++;
+		}
+	}
+
+	if (customEntries > 0) list->AddSeparator();
+
 	list->AddEntry("A Cappella");
 	list->AddEntry("Acid");
 	list->AddEntry("Acid Jazz");
@@ -232,6 +250,36 @@ Void BonkEnc::Utilities::FillGenreList(List *list)
 	list->AddEntry("Tribal");
 	list->AddEntry("Trip-Hop");
 	list->AddEntry("Vocal");
+}
+
+Void BonkEnc::Utilities::UpdateGenreList(List *list, const String &genre)
+{
+	if (genre == NIL) return;
+
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	Int	 number = 5;
+
+	for (Int i = 1; i <= 5; i++)
+	{
+		if (config->GetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i)), NIL) == genre)
+		{
+			number = i;
+
+			break;
+		}
+	}
+
+	for (Int i = number; i > 1; i--)
+	{
+		config->SetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i)), config->GetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i - 1)), NIL));
+	}
+
+	config->SetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(1)), genre);
+
+	list->RemoveAllEntries();
+
+	FillGenreList(list);
 }
 
 String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool repSlash)

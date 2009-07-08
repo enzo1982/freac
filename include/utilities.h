@@ -31,6 +31,7 @@ namespace BonkEnc
 			static DecoderComponent	*CreateDecoderComponent(const String &);
 
 			static Void		 FillGenreList(List *);
+			static Void		 UpdateGenreList(List *, const String &);
 
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
 			static String		 GetAbsoluteDirName(const String &);

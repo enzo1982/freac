@@ -165,9 +165,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("LAME", "ABRBitrate", Math::Max(0, Math::Min(320, bitrate.ToInt())));
 		componentsConfig->SetIntValue("LAME", "VBRQuality", Math::Max(0, Math::Min(9, quality.ToInt())) * 10);
 
-		if	(mode == "VBR" || mode == "vbr") componentsConfig->SetIntValue("LAME", "VBRMode", vbr_mtrh);
-		else if (mode == "ABR" || mode == "abr") componentsConfig->SetIntValue("LAME", "VBRMode", vbr_abr);
-		else if (mode == "CBR" || mode == "cbr") componentsConfig->SetIntValue("LAME", "VBRMode", vbr_off);
+		if	(mode == "VBR" || mode == "vbr") componentsConfig->SetIntValue("LAME", "VBRMode", 4);
+		else if (mode == "ABR" || mode == "abr") componentsConfig->SetIntValue("LAME", "VBRMode", 3);
+		else if (mode == "CBR" || mode == "cbr") componentsConfig->SetIntValue("LAME", "VBRMode", 0);
 
 		currentConfig->encoderID = "lame-out";
 	}

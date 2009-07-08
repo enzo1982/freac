@@ -863,14 +863,12 @@ Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 	info_edit_title->SetText(info.title);
 	info_edit_album->SetText(info.album);
 
-	info_edit_track->SetText(NIL);
+	if	(info.track <=  0) info_edit_track->SetText(NIL);
+	else if	(info.track  < 10) info_edit_track->SetText(String("0").Append(String::FromInt(info.track)));
+	else if (info.track >= 10) info_edit_track->SetText(String::FromInt(info.track));
 
-	if	(info.track > 0 && info.track < 10) info_edit_track->SetText(String("0").Append(String::FromInt(info.track)));
-	else if (info.track >= 10)		    info_edit_track->SetText(String::FromInt(info.track));
-
-	info_edit_year->SetText(NIL);
-
-	if (info.year > 0) info_edit_year->SetText(String::FromInt(info.year));
+	if (info.year <= 0) info_edit_year->SetText(NIL);
+	else		    info_edit_year->SetText(String::FromInt(info.year));
 
 	info_edit_genre->SetText(info.genre);
 
@@ -943,6 +941,13 @@ Void BonkEnc::LayerJoblist::UpdateTitleInfo()
 	Info	&info = track.GetInfo();
 
 	if (track == NIL) return;
+
+	if (info.genre != info_edit_genre->GetText() && info_list_genre->GetEntry(info_edit_genre->GetText()) != NIL)
+	{
+		Utilities::UpdateGenreList(info_list_genre, info_edit_genre->GetText());
+
+		info_edit_genre->SetDropDownList(info_list_genre);
+	}
 
 	info.artist	= info_edit_artist->GetText();
 	info.title	= info_edit_title->GetText();
@@ -1121,7 +1126,7 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 
 Void BonkEnc::LayerJoblist::UpdateOutputDir()
 {
-	edb_outdir->SetText(String(currentConfig->enc_outdir).Replace("<installdrive>", Utilities::GetInstallDrive()));
+	edb_outdir->SetText(Utilities::GetAbsoluteDirName(currentConfig->enc_outdir));
 }
 
 Void BonkEnc::LayerJoblist::OnSelectDir()

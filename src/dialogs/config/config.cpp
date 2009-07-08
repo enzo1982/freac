@@ -83,7 +83,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	}
 
 	layers.Add(new ConfigureTags());
-	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Info tags"), layers.GetLast()));
+	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Tags"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
