@@ -264,7 +264,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	tab_layer_threads	= new LayerThreads();
 
-	tabs_main->Add(tab_layer_threads);
+/* ToDo: Add threads layer once it's ready.
+ */
+//	tabs_main->Add(tab_layer_threads);
 
 	joblist			= tab_layer_joblist->GetJoblist();
 

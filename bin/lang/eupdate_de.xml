@@ -30,5 +30,6 @@
     <entry id="18" string="Your application has been successfully updated!">Die Anwendung wurde erfolgreich aktualisiert!</entry>
     <entry id="19" string="Error">Fehler</entry>
     <entry id="20" string="Error downloading package!">Fehler beim Herunterladen des Pakets!</entry>
+    <entry id="20" string="Error installing ''%1''!&#10;&#10;Access to the application directory was denied.">Fehler beim Installieren von "%1"!&#10;&#10;Der Zugriff auf das Programmverzeichnis wurde verweigert.</entry>
   </data>
 </LangFile>

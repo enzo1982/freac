@@ -583,6 +583,14 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="tools"
+				>
+				<File
+					RelativePath="..\..\src\tools\encoding.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Headerdateien"
@@ -794,6 +802,14 @@
 				</File>
 				<File
 					RelativePath="..\..\include\jobs\jobmanager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="tools"
+				>
+				<File
+					RelativePath="..\..\include\tools\encoding.h"
 					>
 				</File>
 			</Filter>

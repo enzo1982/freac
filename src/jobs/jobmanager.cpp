@@ -11,6 +11,9 @@
 #include <jobs/jobmanager.h>
 #include <jobs/job.h>
 #include <config.h>
+#include <utilities.h>
+
+#include <boca.h>
 
 BonkEnc::JobManager	*BonkEnc::JobManager::instance = NIL;
 
@@ -27,7 +30,7 @@ BonkEnc::JobManager::~JobManager()
 
 	while (managerThread->GetStatus() == THREAD_RUNNING)
 	{
-		System::System::Sleep(100);
+		S::System::System::Sleep(100);
 	}
 }
 
@@ -53,13 +56,27 @@ Void BonkEnc::JobManager::ManagerThread()
 			}
 		}
 
-		System::System::Sleep(100);
+		S::System::System::Sleep(100);
 	}
 }
 
 Void BonkEnc::JobManager::OnFinishJob(Job *job)
 {
-	if (job->GetErrors().Length() == 0) Object::DeleteObject(job);
+	job->onFinishJob.Disconnect(&JobManager::OnFinishJob, this);
+
+	if (job->GetErrors().Length() > 0)
+	{
+		if (BoCA::Config::Get()->GetIntValue("Settings", "DisplayErrors", True))
+		{
+			const Array<String>	&errors = job->GetErrors();
+
+			foreach (String error, errors) Utilities::ErrorMessage(error);
+		}
+
+		return;
+	}
+
+	Object::DeleteObject(job);
 }
 
 Error BonkEnc::JobManager::Start()

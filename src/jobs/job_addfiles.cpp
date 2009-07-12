@@ -84,6 +84,8 @@ Error BonkEnc::JobAddFiles::Perform()
 		 */
 		if (track.isCDTrack && BoCA::Config::Get()->cdrip_autoRead_active)
 		{
+/* ToDo: Make this work again.
+ */
 //			for (Int i = 0; i < tracks.Length(); i++)
 //			{
 //				Track	*cdTrack = tracks.GetNth(i);

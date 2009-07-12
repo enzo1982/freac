@@ -22,6 +22,8 @@
 
 #include <cddb/cddbremote.h>
 
+#include <tools/encoding.h>
+
 using namespace BoCA::AS;
 using namespace smooth::IO;
 
@@ -118,6 +120,21 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 
 	track->SetOriginalInfo(track->GetInfo());
 
+	/* Detect encoding and translate info if requested.
+	 *
+	 * ToDo: Enable encoding heuristics by default once it's ready.
+	 */
+	if (BoCA::Config::Get()->GetIntValue("Settings", "EnableEncodingHeuristics", False))
+	{
+		Info	&info = track->GetInfo();
+
+		if (info.artist != NIL && !String::IsUnicode(info.artist)) info.artist.ImportFrom(Encoding::GuessEncoding(info.artist), info.artist);
+		if (info.title  != NIL && !String::IsUnicode(info.title))  info.title.ImportFrom(Encoding::GuessEncoding(info.title), info.title);
+		if (info.album  != NIL && !String::IsUnicode(info.album))  info.album.ImportFrom(Encoding::GuessEncoding(info.album), info.album);
+	}
+
+	/* Add entry to joblist.
+	 */
 	ListEntry	*entry	= AddEntry(GetEntryText(*track));
 
 	if (Config::Get()->showTooltips) entry->SetTooltipLayer(new LayerTooltip(*track));
@@ -128,6 +145,8 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 
 	UpdateTextLine();
 
+	/* Notify components that a track has been added.
+	 */
 	BoCA::JobList::Get()->onApplicationAddTrack.Emit(*track);
 
 	return True;
