@@ -185,7 +185,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 		ex_NeAACDecInit2(handle, (unsigned char *) esc_buffer, buffer_size,
  (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
 
-		nFormat->length		= Math::Round(ex_MP4GetTrackDuration(mp4File, mp4Track) / ex_MP4GetTrackTimeScale(mp4File, mp4Track) * nFormat->channels * nFormat->rate);
+		nFormat->length		= Math::Round(ex_MP4GetTrackDuration(mp4File, mp4Track) * nFormat->channels * nFormat->rate / ex_MP4GetTrackTimeScale(mp4File, mp4Track));
 		nFormat->order		= BYTE_INTEL;
 		nFormat->bits		= 16;
 

@@ -13,9 +13,12 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.14 (Juli 2009)
+	Version 1.0.14 (August 2009)
 
 		- Vietnamesische und tschechische Übersetzungen aktualisiert
+		- Programmsprache beim ersten Start wird jetzt automatisch ausgewählt
+		- Update auf MP4v2 v1.9.1
+		- Einige kleinere Korrekturen
 
 	Version 1.0.13 (Juli 2009)
 
@@ -212,7 +215,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		- MinGW v3.2+ (http://www.mingw.org/) oder MSVC v8.0
-		- smooth v0.8.70.4 (http://www.smooth-project.org/)
+		- smooth v0.8.70.5 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 

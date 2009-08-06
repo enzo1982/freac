@@ -41,8 +41,6 @@
 #include <dialogs/cddb/managequeries.h>
 #include <dialogs/cddb/managesubmits.h>
 
-#include <dialogs/language.h>
-
 Int smooth::Main()
 {
 	BonkEnc::debug_out = new BonkEnc::Debug("BonkEnc.log");
@@ -87,16 +85,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	activePopup = 0;
 
-	if (currentConfig->language == "" && i18n->GetNOfLanguages() > 1)
-	{
-		LanguageDlg	*dlg = new LanguageDlg();
-
-		dlg->ShowDialog();
-
-		DeleteObject(dlg);
-	}
-
-	if (currentConfig->language == "") currentConfig->language = "internal";
+	if (currentConfig->language == NIL) currentConfig->language = GetSystemLanguage();
 
 	i18n->ActivateLanguage(currentConfig->language);
 
@@ -2194,6 +2183,129 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 	currentConfig->tipOffset = dlg->GetOffset();
 
 	DeleteObject(dlg);
+}
+
+String BonkEnc::BonkEncGUI::GetSystemLanguage()
+{
+	String	 language = "internal";
+
+	if (i18n->GetNOfLanguages() == 1) return language;
+
+#ifdef __WIN32__
+	switch (PRIMARYLANGID(GetUserDefaultLangID()))
+	{
+		default:
+		case LANG_ARABIC:
+			language = "bonkenc_ar.xml";
+			break;
+		case LANG_CATALAN:
+			language = "bonkenc_ca.xml";
+			break;
+		case LANG_CHINESE:
+			language = "bonkenc_zh_CN.xml";
+
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_SIMPLIFIED) language = "bonkenc_zh_CN.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) language = "bonkenc_zh_TW.xml";
+			break;
+		case LANG_CZECH:
+			language = "bonkenc_cz.xml";
+			break;
+		case LANG_DANISH:
+			language = "bonkenc_dk.xml";
+			break;
+		case LANG_DUTCH:
+			language = "bonkenc_nl.xml";
+			break;
+		case LANG_ENGLISH:
+			language = "internal";
+			break;
+		case LANG_ESTONIAN:
+			language = "bonkenc_ee.xml";
+			break;
+		case LANG_FINNISH:
+			language = "bonkenc_fi.xml";
+			break;
+		case LANG_FRENCH:
+			language = "bonkenc_fr.xml";
+			break;
+		case LANG_GALICIAN:
+			language = "bonkenc_gl.xml";
+			break;
+		case LANG_GERMAN:
+			language = "bonkenc_de.xml";
+			break;
+		case LANG_GREEK:
+			language = "bonkenc_gr.xml";
+			break;
+		case LANG_HUNGARIAN:
+			language = "bonkenc_hu.xml";
+			break;
+		case LANG_ITALIAN:
+			language = "bonkenc_it.xml";
+			break;
+		case LANG_JAPANESE:
+			language = "bonkenc_ja.xml";
+			break;
+		case LANG_KOREAN:
+			language = "bonkenc_ko.xml";
+			break;
+		case LANG_LITHUANIAN:
+			language = "bonkenc_lt.xml";
+			break;
+		case LANG_NORWEGIAN:
+			language = "bonkenc_no.xml";
+			break;
+		case LANG_POLISH:
+			language = "bonkenc_pl.xml";
+			break;
+		case LANG_PORTUGUESE:
+			language = "bonkenc_pt.xml";
+
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE) language = "bonkenc_pt.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE_BRAZILIAN) language = "bonkenc_pt_BR.xml";
+			break;
+		case LANG_ROMANIAN:
+			language = "bonkenc_ro.xml";
+			break;
+		case LANG_RUSSIAN:
+			language = "bonkenc_ru.xml";
+			break;
+		case LANG_SERBIAN:
+			language = "bonkenc_sr.xml";
+
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CROATIAN_CROATIA) language = "bonkenc_hr.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SERBIAN_LATIN) language = "bonkenc_sr.xml";
+			break;
+		case LANG_SLOVAK:
+			language = "bonkenc_sk.xml";
+			break;
+		case LANG_SPANISH:
+			language = "bonkenc_es.xml";
+
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH) language = "bonkenc_es.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH_ARGENTINA) language = "bonkenc_es_AR.xml";
+			break;
+		case LANG_SWEDISH:
+			language = "bonkenc_sv.xml";
+			break;
+		case LANG_TURKISH:
+			language = "bonkenc_tr.xml";
+			break;
+		case LANG_UKRAINIAN:
+			language = "bonkenc_ua.xml";
+			break;
+		case LANG_VIETNAMESE:
+			language = "bonkenc_vi.xml";
+			break;
+	}
+#endif
+
+	if (language != "internal")
+	{
+		if (!File(GUI::Application::GetApplicationDirectory().Append("lang/").Append(language)).Exists()) language = "internal";
+	}
+
+	return language;
 }
 
 Void BonkEnc::BonkEncGUI::CheckForUpdates()
