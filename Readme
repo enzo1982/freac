@@ -13,7 +13,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (July 2009)
+	Version 1.1 CVS (August 2009)
 
 		- added Estonian, Croatian, Portuguese, Vietnamese, Catalan, Valencian and Galician language support
 		- added German, Italian, Russian, Czech and Greek user guides
@@ -34,6 +34,7 @@ History
 		- added support for cover art in MP4 files
 		- added support for MCDI frame in ID3v2 tags
 		- added <directory> pattern to allow preserving existing directory structures
+		- added <filetype> pattern
 		- added <installdrive> pattern for use in output directory name
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs

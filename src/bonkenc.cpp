@@ -33,7 +33,7 @@ BoCA::I18n		*BonkEnc::BonkEnc::i18n		= NIL;
  */
 String	 BonkEnc::BonkEnc::appName	= "BonkEnc";
 String	 BonkEnc::BonkEnc::appLongName	= "BonkEnc Audio Encoder";
-String	 BonkEnc::BonkEnc::version	= "CVS 2009xxyy";
+String	 BonkEnc::BonkEnc::version	= "CVS 20090806";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";

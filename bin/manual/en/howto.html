@@ -33,7 +33,6 @@
 		<blockquote>
 		  <p><a href="#anchor_src">How to compile BonkEnc from source?</a></p>
 		  <p><a href="#anchor_enc">How to install encoder/decoder xy?</a></p>
-		  <p><a href="#anchor_wma">How to enable Windows Media Audio decoding support?</a></p>
 		  <p><a href="#anchor_pat">How to use output file name patterns in BonkEnc?</a></p>
 		  <p><a href="#anchor_tra">How to add a new translation to BonkEnc?</a></p>
 		  <p><a href="#anchor_rem">How to remove BonkEnc from my computer?</a></p>
@@ -73,14 +72,14 @@
 		  <blockquote>
 		    <p>To install the Fraunhofer MP3 Surround Encoder for use with BonkEnc, follow these steps:</p>
 		    <ul>
-		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/tools/sw_fhg_cl.html">www.all4mp3.com</a>.</li>
+		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/Software2.aspx">www.all4mp3.com</a>.</li>
 		      <li>Copy the file <b>mp3sEncoder.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
 			subdirectory of your BonkEnc installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Helix DNA Producer RealAudio Encoder</h5>
 		  <blockquote>
-		    <p>To install the Fraunhofer MP3 Surround Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Helix DNA Producer RealAudio Encoder for use with BonkEnc, follow these steps:</p>
 		    <ul>
 		      <li>Create a <b>Helix Community account</b> at <a href="https://helixcommunity.org/account/register">helixcommunity.org</a>.
 			You will need this account in order to be able to download the Helix DNA Producer application.</li>
@@ -167,8 +166,8 @@
 		    <p>If you still need to install or update the Musepack Encoder / Decoder
 		      manually, follow these steps:</p>
 		    <ul>
-		      <li>Download the <b>separate encoder and decoder ZIP packages</b> from <a href="http://www.musepack.net/index.php?pg=win">www.musepack.net</a>.</li>
-		      <li>Copy the files <b>mppenc.exe</b> and <b>mppdec.exe</b> from the ZIP packages to the <b>codecs/cmdline</b>
+		      <li>Download the <b>Musepack tools ZIP package</b> from <a href="http://www.musepack.net/index.php?pg=win">www.musepack.net</a>.</li>
+		      <li>Copy the files <b>mpcenc.exe</b> and <b>mpcdec.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
 			subdirectory of your BonkEnc installation path.</li>
 		    </ul>
 		  </blockquote>
@@ -181,6 +180,15 @@
 		    <ul>
 		      <li>Download the <b>WavPack Win32 ZIP package</b> from <a href="http://www.wavpack.com/downloads.html">www.wavpack.com</a>.</li>
 		      <li>Copy the files <b>wavpack.exe</b> and <b>wvunpack.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subdirectory of your BonkEnc installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Thomson mp3HD Encoder</h5>
+		  <blockquote>
+		    <p>To install the Thomson mp3HD Encoder for use with BonkEnc, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/Software3.aspx">www.all4mp3.com</a>.</li>
+		      <li>Copy the file <b>mp3hdEncoder.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
 			subdirectory of your BonkEnc installation path.</li>
 		    </ul>
 		  </blockquote>
@@ -224,15 +232,6 @@
 		    </ul>
 		  </blockquote>
 		</blockquote>
-		<h4 id="anchor_wma">How to enable Windows Media Audio decoding support?</h4>
-		<blockquote>
-		  <p>To enable <b>Windows Media Audio</b> (WMA) support in BonkEnc, you need the WMA plug-in from Winamp 5.21 (plug-ins from newer versions of Winamp will not work with BonkEnc).
-		    Please follow these steps to install the WMA plug-in for BonkEnc.</p>
-		  <ul>
-		    <li>download and install <b>Winamp 5.21</b> from <a href="http://www.oldversion.com/">www.oldversion.com</a></li>
-		    <li>copy the <b>in_wm.dll</b> file from the <b>Winamp/plugins directory</b> to the <b>BonkEnc/plugins</b> directory</li>
-		  </ul>
-		</blockquote>
 		<h4 id="anchor_pat">How to use output file name patterns in BonkEnc?</h4>
 		<blockquote>
 		  <p>The output file name pattern can be configured on the <b>Encoder</b> page of the configuration dialog. You can
@@ -246,7 +245,13 @@
 		    <li><b>&lt;genre&gt;</b> - The song genre</li>
 		    <li><b>&lt;year&gt;</b> - The year the song was published</li>
 		  </ul>
-		  <p>The above placeholders refer to song and album information. In addition there are two placeholders that refer
+		  <p>The above placeholders refer to song and album information. The following placeholder resolves to the type of the output file:</p>
+		  <ul>
+		    <li><b>&lt;filetype&gt;</b> - The type of the output file</li>
+		  </ul>
+		  <p>A common use case for this placeholder is if you are regularly encoding to different formats (e.g. FLAC for archival and M4A for your
+		    mobile player) and would like to keep the encoded files in separate directory trees.</p>
+		  <p>In addition to the above there are two placeholders that refer
 		    to the original file name of a file being encoded in BonkEnc:</p>
 		  <ul>
 		    <li><b>&lt;filename&gt;</b> - The file name of the input file</li>

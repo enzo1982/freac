@@ -80,6 +80,8 @@ namespace BonkEnc
 
 			Void				 CheckForUpdates();
 
+			String				 GetSystemLanguage();
+
 			Bool				 SetLanguage();
 			Void				 FillMenus();
 

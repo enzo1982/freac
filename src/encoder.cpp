@@ -284,7 +284,16 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		filter_in->SetAudioTrackInfo(trackInfo);
 
-		f_in->AddFilter(filter_in);
+		if (f_in->AddFilter(filter_in) == False)
+		{
+			Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(in_filename).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("Unable to initialize decoder")));
+
+			delete f_in;
+
+			Registry::Get().DeleteComponent(filter_in);
+
+			break;
+		}
 
 		if (!Config::Get()->encodeToSingleFile)
 		{
@@ -292,7 +301,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 			if (f_out->GetLastError() != IO_ERROR_OK)
 			{
-				Utilities::ErrorMessage("Cannot create output file: %1", out_filename);
+				Utilities::ErrorMessage("Cannot create output file: %1", File(out_filename).GetFileName());
 
 				delete f_in;
 				delete f_out;
@@ -679,6 +688,17 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
 		else		     outputFileName.Copy(Utilities::GetAbsoluteDirName(Config::Get()->enc_outdir));
 
+		/* Get file extension from selected encoder component
+		 */
+		Registry		&boca = Registry::Get();
+		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(Config::Get()->encoderID);
+
+		String			 fileExtension = encoder->GetOutputFileExtension();
+
+		boca.DeleteComponent(encoder);
+
+		/* Replace patterns
+		 */
 		if ((info.artist != NIL && Config::Get()->enc_filePattern.Find("<artist>")   >= 0) ||
 		    (info.title  != NIL && Config::Get()->enc_filePattern.Find("<title>")    >= 0) ||
 		    (info.track  != -1  && Config::Get()->enc_filePattern.Find("<track>")    >= 0) ||
@@ -693,6 +713,7 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 			shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(info.year > 0 ? String::FromInt(info.year) : BonkEnc::i18n->TranslateString("unknown year"), True));
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
+			shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
 
 			String	 directory = inFileDirectory;
 
@@ -754,14 +775,9 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 			outputFileName.Append(shortInFileName);
 		}
 
-		/* Get file extension from selected encoder component
+		/* Append file extension
 		 */
-		Registry		&boca = Registry::Get();
-		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(Config::Get()->encoderID);
-
-		outputFileName.Append(".").Append(encoder->GetOutputFileExtension());
-
-		boca.DeleteComponent(encoder);
+		outputFileName.Append(".").Append(fileExtension);
 	}
 	else
 	{
@@ -781,6 +797,9 @@ String BonkEnc::Encoder::GetSingleOutputFileName(const Track &track)
 	String		 defaultExtension;
 	FileSelection	*dialog = new FileSelection();
 
+/* ToDo: Set parent window to get the
+ *	 dialog at the right place.
+ */
 //	dialog->SetParentWindow(mainWnd);
 	dialog->SetMode(SFM_SAVE);
 	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
