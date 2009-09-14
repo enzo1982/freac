@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,7 +15,7 @@
 #include <input/filter-in-voc.h>
 #include <input/filter-in-aiff.h>
 #include <input/filter-in-au.h>
-#include <input/filter-in-lame.h>
+#include <input/filter-in-mad.h>
 #include <input/filter-in-mp4.h>
 #include <input/filter-in-vorbis.h>
 #include <input/filter-in-bonk.h>
@@ -125,9 +125,9 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 	{
 		filter_in = new FilterInCDRip(BonkEnc::currentConfig, trackInfo);
 	}
-	else if (file.EndsWith(".mp3") && BonkEnc::currentConfig->enable_lame)
+	else if ((file.EndsWith(".mp1") || file.EndsWith(".mp2") || file.EndsWith(".mp3")) && BonkEnc::currentConfig->enable_mad)
 	{
-		filter_in = new FilterInLAME(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInMAD(BonkEnc::currentConfig, trackInfo);
 	}
 	else if ((file.EndsWith(".mp4") || file.EndsWith(".m4a") || file.EndsWith(".m4b")) && BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)
 	{

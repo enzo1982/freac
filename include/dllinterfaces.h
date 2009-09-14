@@ -33,6 +33,7 @@
 #include <3rdparty/mp4/mp4.h>
 #include <3rdparty/flac/stream_encoder.h>
 #include <3rdparty/flac/stream_decoder.h>
+#include <3rdparty/mad/mad.h>
 
 using namespace smooth::System;
 
@@ -53,6 +54,7 @@ namespace BonkEnc
 			static DynamicLoader		*eupdatedll;
 			static DynamicLoader		*mp4v2dll;
 			static DynamicLoader		*flacdll;
+			static DynamicLoader		*maddll;
 		public:
 			static Bool			 LoadBonkDLL();
 			static Bool			 LoadBladeDLL();
@@ -66,6 +68,7 @@ namespace BonkEnc
 			static Bool			 LoadEUpdateDLL();
 			static Bool			 LoadMP4V2DLL();
 			static Bool			 LoadFLACDLL();
+			static Bool			 LoadMADDLL();
 
 			static Void			 FreeBonkDLL();
 			static Void			 FreeBladeDLL();
@@ -79,6 +82,7 @@ namespace BonkEnc
 			static Void			 FreeEUpdateDLL();
 			static Void			 FreeMP4V2DLL();
 			static Void			 FreeFLACDLL();
+			static Void			 FreeMADDLL();
 
 			static Bool			 LoadWinampDLLs();
 			static Void			 FreeWinampDLLs();
@@ -217,10 +221,6 @@ namespace BonkEnc
 	typedef int					(*LAME_ENCODE_BUFFER)				(lame_global_flags *, const short int [], const short int [], const int, unsigned char *, const int);
 	typedef int					(*LAME_ENCODE_BUFFER_INTERLEAVED)		(lame_global_flags *, short int [], int, unsigned char *, int);
 	typedef int					(*LAME_ENCODE_FLUSH)				(lame_global_flags *, unsigned char *, int);
-	typedef int					(*LAME_DECODE_INIT)				();
-	typedef int					(*LAME_DECODE_EXIT)				();
-	typedef int					(*LAME_DECODE)					(unsigned char *, int, short [], short []);
-	typedef int					(*LAME_DECODE_HEADERS)				(unsigned char *, int, short [], short [], mp3data_struct *);
 	typedef char *					(*GET_LAME_SHORT_VERSION)			();
 	typedef size_t					(*LAME_GET_LAMETAG_FRAME)			(lame_global_flags *, unsigned char *, size_t);
 	typedef int					(*LAME_SET_BWRITEVBRTAG)			(lame_global_flags *, int);
@@ -258,10 +258,6 @@ namespace BonkEnc
 	extern BEEXPORT LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
 	extern BEEXPORT LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
 	extern BEEXPORT LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
-	extern BEEXPORT LAME_DECODE_INIT		 ex_lame_decode_init;
-	extern BEEXPORT LAME_DECODE_EXIT		 ex_lame_decode_exit;
-	extern BEEXPORT LAME_DECODE			 ex_lame_decode;
-	extern BEEXPORT LAME_DECODE_HEADERS		 ex_lame_decode_headers;
 	extern BEEXPORT GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
 	extern BEEXPORT LAME_GET_LAMETAG_FRAME		 ex_lame_get_lametag_frame;
 	extern BEEXPORT LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag;
@@ -573,6 +569,18 @@ namespace BonkEnc
 	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment;
 	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair;
 	extern BEEXPORT FLAC__VERSION_STRING_TYPE					 ex_FLAC__VERSION_STRING;
+
+// MAD DLL API
+
+	typedef void					(*MAD_DECODER_INIT)				(mad_decoder *, void *, mad_flow (*)(void *, mad_stream *), mad_flow(*)(void *, mad_header const *), mad_flow(*)(void *, mad_stream const *, mad_frame *), mad_flow(*)(void *, mad_header const *, mad_pcm *), mad_flow(*)(void *, mad_stream *, mad_frame *), mad_flow(*)(void *, void *, unsigned int *));
+	typedef int					(*MAD_DECODER_RUN)				(mad_decoder *, mad_decoder_mode);
+	typedef int					(*MAD_DECODER_FINISH)				(mad_decoder *);
+	typedef void					(*MAD_STREAM_BUFFER)				(mad_stream *, unsigned char const *, unsigned long);
+
+	extern MAD_DECODER_INIT				 ex_mad_decoder_init;
+	extern MAD_DECODER_RUN				 ex_mad_decoder_run;
+	extern MAD_DECODER_FINISH			 ex_mad_decoder_finish;
+	extern MAD_STREAM_BUFFER			 ex_mad_stream_buffer;
 
 // ID3Lib DLL API
 

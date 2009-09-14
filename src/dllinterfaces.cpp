@@ -87,10 +87,6 @@ LAME_INIT_PARAMS		 ex_lame_init_params			= NIL;
 LAME_ENCODE_BUFFER		 ex_lame_encode_buffer			= NIL;
 LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved	= NIL;
 LAME_ENCODE_FLUSH		 ex_lame_encode_flush			= NIL;
-LAME_DECODE_INIT		 ex_lame_decode_init			= NIL;
-LAME_DECODE_EXIT		 ex_lame_decode_exit			= NIL;
-LAME_DECODE			 ex_lame_decode				= NIL;
-LAME_DECODE_HEADERS		 ex_lame_decode_headers			= NIL;
 GET_LAME_SHORT_VERSION		 ex_get_lame_short_version		= NIL;
 LAME_GET_LAMETAG_FRAME		 ex_lame_get_lametag_frame		= NIL;
 LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag		= NIL;
@@ -242,6 +238,11 @@ FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vo
 FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= NIL;
 FLAC__VERSION_STRING_TYPE					 ex_FLAC__VERSION_STRING						= NIL;
 
+MAD_DECODER_INIT		 ex_mad_decoder_init			= NIL;
+MAD_DECODER_RUN			 ex_mad_decoder_run			= NIL;
+MAD_DECODER_FINISH		 ex_mad_decoder_finish			= NIL;
+MAD_STREAM_BUFFER		 ex_mad_stream_buffer			= NIL;
+
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
 ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
 ID3TAGSETPADDING		 ex_ID3Tag_SetPadding			= NIL;
@@ -282,6 +283,7 @@ DynamicLoader *BonkEnc::DLLInterfaces::id3dll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::mp4v2dll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::flacdll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::maddll		= NIL;
 
 Array<DynamicLoader *>	 BonkEnc::DLLInterfaces::winamp_in_plugins;
 Array<In_Module *>	 BonkEnc::DLLInterfaces::winamp_in_modules;
@@ -397,10 +399,6 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	ex_lame_encode_buffer			= (LAME_ENCODE_BUFFER) lamedll->GetFunctionAddress("lame_encode_buffer");
 	ex_lame_encode_buffer_interleaved	= (LAME_ENCODE_BUFFER_INTERLEAVED) lamedll->GetFunctionAddress("lame_encode_buffer_interleaved");
 	ex_lame_encode_flush			= (LAME_ENCODE_FLUSH) lamedll->GetFunctionAddress("lame_encode_flush");
-	ex_lame_decode_init			= (LAME_DECODE_INIT) lamedll->GetFunctionAddress("lame_decode_init");
-	ex_lame_decode_exit			= (LAME_DECODE_EXIT) lamedll->GetFunctionAddress("lame_decode_exit");
-	ex_lame_decode				= (LAME_DECODE) lamedll->GetFunctionAddress("lame_decode");
-	ex_lame_decode_headers			= (LAME_DECODE_HEADERS) lamedll->GetFunctionAddress("lame_decode_headers");
 	ex_get_lame_short_version		= (GET_LAME_SHORT_VERSION) lamedll->GetFunctionAddress("get_lame_short_version");
 	ex_lame_get_lametag_frame		= (LAME_GET_LAMETAG_FRAME) lamedll->GetFunctionAddress("lame_get_lametag_frame");
 	ex_lame_set_bWriteVbrTag		= (LAME_SET_BWRITEVBRTAG) lamedll->GetFunctionAddress("lame_set_bWriteVbrTag");
@@ -438,10 +436,6 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	    ex_lame_encode_buffer		== NIL ||
 	    ex_lame_encode_buffer_interleaved	== NIL ||
 	    ex_lame_encode_flush		== NIL ||
-	    ex_lame_decode_init			== NIL ||
-	    ex_lame_decode_exit			== NIL ||
-	    ex_lame_decode			== NIL ||
-	    ex_lame_decode_headers		== NIL ||
 	    ex_get_lame_short_version		== NIL ||
 	    ex_lame_get_lametag_frame		== NIL ||
 	    ex_lame_set_bWriteVbrTag		== NIL) { FreeLAMEDLL(); return False; }
@@ -854,6 +848,30 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 Void BonkEnc::DLLInterfaces::FreeMP4V2DLL()
 {
 	Object::DeleteObject(mp4v2dll);
+}
+
+Bool BonkEnc::DLLInterfaces::LoadMADDLL()
+{
+	maddll = new DynamicLoader("encoders/MAD");
+
+	ex_mad_decoder_init		= (MAD_DECODER_INIT) maddll->GetFunctionAddress("mad_decoder_init");
+	ex_mad_decoder_run		= (MAD_DECODER_RUN) maddll->GetFunctionAddress("mad_decoder_run");
+	ex_mad_decoder_finish		= (MAD_DECODER_FINISH) maddll->GetFunctionAddress("mad_decoder_finish");
+	ex_mad_stream_buffer		= (MAD_STREAM_BUFFER) maddll->GetFunctionAddress("mad_stream_buffer");
+
+	if (ex_mad_decoder_init			== NIL ||
+	    ex_mad_decoder_run			== NIL ||
+	    ex_mad_decoder_finish		== NIL ||
+	    ex_mad_stream_buffer		== NIL) { FreeMADDLL(); return False; }
+
+	return True;
+}
+
+Void BonkEnc::DLLInterfaces::FreeMADDLL()
+{
+	Object::DeleteObject(maddll);
+
+	maddll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadFLACDLL()

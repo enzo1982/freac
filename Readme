@@ -13,10 +13,14 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.14 (August 2009)
+	Version 1.0.14 (September 2009)
 
+		- added Hebrew language support
 		- updated Vietnamese and Czech translations
+		- now using the MAD decoder for MP3
 		- interface language at first startup is now selected automatically
+		- added Vietnamese translation for the installer
+		- some minor speed improvements
 		- upgrade to MP4v2 v1.9.1
 		- some minor bug fixes
 
@@ -287,7 +291,8 @@ Special thanks to
 			   Meelis Pasieko (Estonian),
 			   Goran Bekic (Croatian),
 			   Eduardo Estévez (Galician),
-			   Phan Anh (Vietnamese)
+			   Phan Anh (Vietnamese),
+			   Ilan Tsmeret (Hebrew)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

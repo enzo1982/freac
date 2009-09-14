@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -250,7 +250,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	if (BonkEnc::currentConfig->enable_bonk)							fileTypes.Append("; *.bonk");
 	if (BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
 	if (BonkEnc::currentConfig->enable_flac)							fileTypes.Append("; *.flac");
-	if (BonkEnc::currentConfig->enable_lame)							fileTypes.Append("; *.mp3");
+	if (BonkEnc::currentConfig->enable_mad)								fileTypes.Append("; *.mp1; *.mp2; *.mp3");
 	if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)			fileTypes.Append("; *.m4a; *.m4b; *.mp4");
 	if (BonkEnc::currentConfig->enable_vorbis)							fileTypes.Append("; *.ogg");
 													fileTypes.Append("; *.voc; *.wav");
@@ -263,7 +263,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	if (BonkEnc::currentConfig->enable_bonk)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
 													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Creative Voice Files")).Append(" (*.voc)"), "*.voc");
 	if (BonkEnc::currentConfig->enable_flac)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
-	if (BonkEnc::currentConfig->enable_lame)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP3 Files")).Append(" (*.mp3)"), "*.mp3");
+	if (BonkEnc::currentConfig->enable_mad)								dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MPEG Audio Files")).Append(" (*.mp1; *.mp2; *.mp3)"), "*.mp1; *.mp2; *.mp3");
 	if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)			dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
 	if (BonkEnc::currentConfig->enable_vorbis)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
 													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Sun Audio Files")).Append(" (*.au)"), "*.au");

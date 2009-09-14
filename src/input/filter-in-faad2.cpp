@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -96,16 +96,9 @@ Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	        if ((frameInfo.error == 0) && (frameInfo.samples > 0) && (samples != NIL))
 		{
-			unsigned char	*buffer = new unsigned char [samplesRead * 2];
-
-			memcpy(buffer, samplesBuffer, samplesRead * 2);
-
 			samplesBuffer.Resize((samplesRead + frameInfo.samples) * 2);
 
-			memcpy(samplesBuffer, buffer, samplesRead * 2);
 			memcpy(samplesBuffer + samplesRead * 2, samples, frameInfo.samples * 2);
-
-			delete [] buffer;
 
 			samplesRead += frameInfo.samples;
 		}

@@ -74,7 +74,7 @@ Int BonkEnc::FilterInFLAC::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	readDataMutex->Release();
 
-	while (decoderThread->GetStatus() == THREAD_RUNNING && samplesBuffer.Size() <= 0) Sleep(10);
+	while (decoderThread->GetStatus() == THREAD_RUNNING && samplesBuffer.Size() <= 0) Sleep(0);
 
 	readDataMutex->Lock();
 
@@ -120,7 +120,7 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	decoderThread->SetFlags(THREAD_WAITFLAG_START);
 	decoderThread->Start();
 
-	while (decoderThread->GetStatus() == THREAD_RUNNING) Sleep(10);
+	while (decoderThread->GetStatus() == THREAD_RUNNING) Sleep(0);
 
 	delete readDataMutex;
 	delete samplesBufferMutex;
@@ -205,16 +205,9 @@ FLAC__StreamDecoderWriteStatus BonkEnc::FLACStreamDecoderWriteCallback(const FLA
 
 	filter->samplesBufferMutex->Lock();
 
-	static Buffer<signed int>	 backBuffer;
-	Int				 oSize = filter->samplesBuffer.Size();
-
-	backBuffer.Resize(oSize);
-
-	memcpy(backBuffer, filter->samplesBuffer, oSize * 4);
+	Int		 oSize = filter->samplesBuffer.Size();
 
 	filter->samplesBuffer.Resize(oSize + frame->header.blocksize * filter->format->channels);
-
-	memcpy(filter->samplesBuffer, backBuffer, oSize * 4);
 
 	for (Int i = 0; i < (signed) frame->header.blocksize; i++)
 	{

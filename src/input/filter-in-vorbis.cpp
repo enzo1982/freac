@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -156,24 +156,12 @@ Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 				{
 					dataBufferLen += ((bout * vi.channels * 2) + 131072);
 
-					backBuffer.Resize(size);
-
-					memcpy(backBuffer, data, size);
-
 					data.Resize(dataBufferLen);
-
-					memcpy(data, backBuffer, size);
-
-					memcpy(((unsigned char *) data) + size, convbuffer, bout * vi.channels * 2);
-
-					size += (bout * vi.channels * 2);
 				}
-				else
-				{
-					memcpy(((unsigned char *) data) + size, convbuffer, bout * vi.channels * 2);
 
-					size += (bout * vi.channels * 2);
-				}
+				memcpy(((unsigned char *) data) + size, convbuffer, bout * vi.channels * 2);
+
+				size += (bout * vi.channels * 2);
 
 				ex_vorbis_synthesis_read(&vd, bout);
 			}

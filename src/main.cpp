@@ -1195,6 +1195,8 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	i18n->ActivateLanguage(currentConfig->language);
 
+	MessageDlg::SetDefaultRightToLeft(i18n->IsActiveLanguageRightToLeft());
+
 	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
 	{
 		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->GetSize()));
@@ -2168,7 +2170,7 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
 	TipOfTheDay	*dlg = new TipOfTheDay(&currentConfig->showTips);
 
-	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(35, i18n->GetNOfLanguages()))));
+	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
 	dlg->AddTip(String(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1")).Replace("%1", "http://www.bonkenc.org/"));
 	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
 	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));
@@ -2236,6 +2238,9 @@ String BonkEnc::BonkEncGUI::GetSystemLanguage()
 			break;
 		case LANG_GREEK:
 			language = "bonkenc_gr.xml";
+			break;
+		case LANG_HEBREW:
+			language = "bonkenc_he.xml";
 			break;
 		case LANG_HUNGARIAN:
 			language = "bonkenc_hu.xml";

@@ -83,6 +83,7 @@ Bool BonkEnc::Config::LoadSettings()
 	writeToInputDir				= config->GetIntValue("Settings", "WriteToInputDirectory", 0);
 	allowOverwrite				= config->GetIntValue("Settings", "AllowOverwriteSource", 0);
 	encodeToSingleFile			= config->GetIntValue("Settings", "EncodeToSingleFile", 0);
+	enable_logging				= config->GetIntValue("Settings", "EnableLogging", 0);
 
 	enable_id3v1				= config->GetIntValue("Settings", "EnableID3V1", 0);
 	enable_id3v2				= config->GetIntValue("Settings", "EnableID3V2", 1);
@@ -265,6 +266,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("Settings", "WriteToInputDirectory", writeToInputDir);
 		config->SetIntValue("Settings", "AllowOverwriteSource", allowOverwrite);
 		config->SetIntValue("Settings", "EncodeToSingleFile", encodeToSingleFile);
+		config->SetIntValue("Settings", "EnableLogging", enable_logging);
 
 		config->SetIntValue("Settings", "EnableID3V1", enable_id3v1);
 		config->SetIntValue("Settings", "EnableID3V2", enable_id3v2);

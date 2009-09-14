@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -68,6 +68,7 @@ namespace BonkEnc
 
 			Int		 encoder;
 			Bool		 enable_console;
+			Bool		 enable_logging;
 			Bool		 enable_bonk;
 			Bool		 enable_blade;
 			Bool		 enable_lame;
@@ -79,6 +80,7 @@ namespace BonkEnc
 			Bool		 enable_eUpdate;
 			Bool		 enable_mp4;
 			Bool		 enable_flac;
+			Bool		 enable_mad;
 			Bool		 enable_id3;
 			String		 enc_outdir;
 			String		 enc_filePattern;

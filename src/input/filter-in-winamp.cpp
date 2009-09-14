@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -124,7 +124,7 @@ Int BonkEnc::FilterInWinamp::ReadData(Buffer<UnsignedByte> &data, Int size)
 			else			break;
 		}
 
-		Sleep(10);
+		Sleep(0);
 	}
 
 	get_more_samples = 0;
@@ -152,7 +152,7 @@ BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 
 	get_more_samples = 1;
 
-	while (rate == 0) Sleep(10);
+	while (rate == 0) Sleep(0);
 
 	int	 length_ms;
 	char	*title = new char [1024];
