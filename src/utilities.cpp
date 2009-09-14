@@ -307,9 +307,9 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 }
 
 /* This function returns the absolute output path.
- * It may differ from enc_outdir due to use of the
- * <installdrive> placeholder or because enc_outdir
- * is a relative path.
+ * It may differ from the output directory setting
+ * due to use of the <installdrive> placeholder or
+ * because the output directory is a relative path.
  */
 String BonkEnc::Utilities::GetAbsoluteDirName(const String &dirName)
 {

@@ -15,7 +15,7 @@ Geschichte
 
 	Version 1.1 CVS (August 2009)
 
-		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
+		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Hebräisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
 		- Deutsche, italienische, russische, tschechische und griechische Anleitungen hinzugefügt
 		- Deutsche, japanische und vietnamesische Übersetzungen für das Installationsprogramm hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
@@ -153,7 +153,8 @@ Besonderen Dank
 			   Meelis Pasieko (Estnisch),
 			   Goran Bekic (Kroatisch),
 			   Eduardo Estévez (Galizisch),
-			   Phan Anh (Vietnamesisch)
+			   Phan Anh (Vietnamesisch),
+			   Ilan Tsmeret (Hebräisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

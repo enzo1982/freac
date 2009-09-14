@@ -180,7 +180,7 @@ Int BonkEnc::Job::SetProgress(Int nValue)
 	progressValue->SetText(String::FromInt(Math::Round(Float(nValue) / 10.0)).Append("%"));
 
 	Int	 ticks = clock() - startTicks;
-	Int	 secondsLeft = (Int) (ticks * ((1000.0 - nValue) / nValue)) / 1000 + (nValue < 1000 ? 1 : 0);
+	Int	 secondsLeft = (Int) (ticks * ((Float(CLOCKS_PER_SEC) - nValue) / nValue)) / CLOCKS_PER_SEC + (nValue < 1000 ? 1 : 0);
 
 	String	 buffer = String::FromInt(secondsLeft / 60);
 	String	 text = "0";
