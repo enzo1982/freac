@@ -59,8 +59,6 @@ namespace BonkEnc
 			Button		*btn_cancel;
 			Button		*btn_submit;
 
-			Config		*currentConfig;
-
 			Int		 activedrive;
 
 			Bool		 dontUpdateInfo;

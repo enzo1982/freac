@@ -24,6 +24,9 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	i18n		= BoCA::I18n::Get();
 	currentConfig	= Config::Get();
 
+	createPlaylist	= BoCA::Config::Get()->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
+	createCueSheet	= BoCA::Config::Get()->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
+
 	player		= new Playback();
 
 	dontUpdateInfo	= False;
@@ -129,12 +132,12 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	pos.x -= 100;
 
-	check_playlist		= new CheckBox(NIL, pos, size, &currentConfig->createPlaylist);
+	check_playlist		= new CheckBox(NIL, pos, size, &createPlaylist);
 	check_playlist->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x -= 100;
 
-	check_cuesheet		= new CheckBox(NIL, pos, size, &currentConfig->createCueSheet);
+	check_cuesheet		= new CheckBox(NIL, pos, size, &createCueSheet);
 	check_cuesheet->SetOrientation(OR_UPPERRIGHT);
 
 	info_divider		= new Divider(113 + (currentConfig->showTitleInfo ? 68 : 0), OR_HORZ | OR_BOTTOM);
@@ -388,7 +391,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	Add(joblist);
 
-	BonkEncGUI::Get()->onChangeLanguageSettings.Connect(&LayerJoblist::SetLanguage, this);
+	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerJoblist::SetLanguage, this);
 
 	Add(check_single);
 	Add(check_cuesheet);
@@ -481,6 +484,9 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 BonkEnc::LayerJoblist::~LayerJoblist()
 {
+	BoCA::Config::Get()->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, createPlaylist);
+	BoCA::Config::Get()->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, createCueSheet);
+
 	BoCA::JobList::Get()->onApplicationModifyTrack.Disconnect(&LayerJoblist::OnJoblistModifyTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerJoblist::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationSelectTrack.Disconnect(&LayerJoblist::OnJoblistSelectTrack, this);
@@ -610,10 +616,6 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
 	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
 	check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
-
-	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
-	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
-	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
 }
 
 Bool BonkEnc::LayerJoblist::SetLanguage()
@@ -1135,6 +1137,8 @@ Void BonkEnc::LayerJoblist::OnSelectDir()
 
 	DirSelection	*dialog = new DirSelection();
 
+	/* ToDo: Pass main window here.
+	 */
 //	dialog->SetParentWindow(mainWnd);
 	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
 	dialog->SetDirName(Utilities::GetAbsoluteDirName(currentConfig->enc_outdir));
@@ -1280,10 +1284,11 @@ String BonkEnc::LayerJoblist::SecondsToString(Int seconds)
 String BonkEnc::LayerJoblist::AdjustCaseFirstCapital(const String &string)
 {
 	String	 value = String(string).ToLower();
-	String	 character;
 
 	if (value.Length() > 0)
 	{
+		String	 character;
+
 		character[0] = value[0];
 
 		value[0] = character.ToTitle()[0];

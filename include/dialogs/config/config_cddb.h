@@ -52,8 +52,6 @@ namespace BonkEnc
  
 			Bool		 cddb_local;
 			Bool		 cddb_remote;
-
-			Config		*currentConfig;
 		slots:
 			Void		 ToggleLocalCDDB();
 			Void		 ToggleRemoteCDDB();

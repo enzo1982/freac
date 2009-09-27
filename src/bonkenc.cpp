@@ -8,6 +8,17 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
+#include <smooth.h>
+#include <smooth/dll.h>
+
+Void smooth::AttachDLL(Void *instance)
+{
+}
+
+Void smooth::DetachDLL()
+{
+}
+
 #include <bonkenc.h>
 #include <resources.h>
 #include <stdlib.h>
@@ -33,7 +44,7 @@ BoCA::I18n		*BonkEnc::BonkEnc::i18n		= NIL;
  */
 String	 BonkEnc::BonkEnc::appName	= "BonkEnc";
 String	 BonkEnc::BonkEnc::appLongName	= "BonkEnc Audio Encoder";
-String	 BonkEnc::BonkEnc::version	= "CVS 20090806";
+String	 BonkEnc::BonkEnc::version	= "CVS 2009xxyy";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
@@ -51,6 +62,10 @@ BonkEnc::BonkEnc::BonkEnc()
 	version.Append(" (x64)");
 #endif
 
+	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
+
+	debug->Write("Starting BonkEnc...");
+
 	instance	= this;
 	i18n		= BoCA::I18n::Get();
 
@@ -63,7 +78,7 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	/* Set default comment if not set.
 	 */
-	BoCA::Config::Get()->SetStringValue("Tags", "DefaultComment", BoCA::Config::Get()->GetStringValue("Tags", "DefaultComment", String(appLongName).Append(" <").Append(website).Append(">")));
+	BoCA::Config::Get()->SetStringValue(Config::CategoryTagsID, "DefaultComment", BoCA::Config::Get()->GetStringValue(Config::CategoryTagsID, "DefaultComment", String(appLongName).Append(" <").Append(website).Append(">")));
 
 	/* Start job manager.
 	 */
@@ -94,6 +109,12 @@ BonkEnc::BonkEnc::~BonkEnc()
 	delete encoder;
 
 	Config::Free();
+
+	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
+
+	debug->Write("Leaving BonkEnc...");
+
+	BoCA::Protocol::Free();
 
 #ifdef __WIN32__
 	CoUninitialize();

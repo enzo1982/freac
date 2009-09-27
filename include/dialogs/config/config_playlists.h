@@ -33,9 +33,7 @@ namespace BonkEnc
 			Bool		 createCueSheets;
 
 			Bool		 useEncOutdir;
- 
-			Config		*currentConfig;
-		slots:
+ 		slots:
 			Void		 SelectDir();
 			Void		 ToggleCreatePlaylists();
 			Void		 ToggleUseEncOutdir();

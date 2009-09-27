@@ -13,7 +13,9 @@
 
 BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 {
-	currentConfig = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	Config	*currentConfig = Config::Get();
 
 	Point	 pos;
 	Size	 size;
@@ -56,7 +58,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	size.cx = 268 - text_directory->textSize.cx;
 	size.cy = 0;
 
-	edit_directory	= new EditBox(currentConfig->lastAddedDir, pos, size);
+	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), pos, size);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
@@ -107,7 +109,7 @@ String BonkEnc::AddDirectoryDialog::GetDirectory()
 
 Void BonkEnc::AddDirectoryDialog::OK()
 {
-	currentConfig->lastAddedDir = edit_directory->GetText();
+	BoCA::Config::Get()->SetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, edit_directory->GetText());
 
 	mainWnd->Close();
 }

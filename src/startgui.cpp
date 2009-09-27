@@ -41,30 +41,11 @@
 
 Int StartGUI(const Array<String> &args)
 {
-	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug Output");
-
-	debug->Write("");
-	debug->Write("=======================");
-	debug->Write("= Starting BonkEnc... =");
-	debug->Write("=======================");
-	debug->Write("");
-
 	BonkEnc::BonkEncGUI	*app = BonkEnc::BonkEncGUI::Get();
-
-	debug->Write("Entering method: smooth::Loop()");
 
 	app->Loop();
 
-	debug->Write("Leaving method.");
-
 	BonkEnc::BonkEncGUI::Free();
-
-	debug->Write("");
-	debug->Write("====================");
-	debug->Write("= Leaving BonkEnc! =");
-	debug->Write("====================");
-
-	BoCA::Protocol::Free();
 
 	return 0;
 }
@@ -185,7 +166,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	mainWnd->onEvent.Connect(&BonkEncGUI::MessageProc, this);
 
-	if (currentConfig->showTips) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
+	if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault)) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
 	mainWnd->doClose.Connect(&BonkEncGUI::ExitProc, this);
 	mainWnd->SetMinimumSize(Size(530, 340 + (currentConfig->showTitleInfo ? 68 : 0)));
@@ -279,10 +260,6 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 	currentConfig->wndSize = Size(wndRect.right - wndRect.left, wndRect.bottom - wndRect.top);
 	currentConfig->maximized = mainWnd->IsMaximized();
 
-	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
-	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
-	currentConfig->tab_width_size = joblist->GetNthTabWidth(3);
-
 	currentConfig->SaveSettings();
 
 	return True;
@@ -298,30 +275,60 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 			{
 				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype != DBT_DEVTYP_VOLUME || !(((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)) break;
 
-				String	 trackCDA = String(" ").Append(":\\track01.cda");
+				/* Get drive letter from message.
+				 */
+				String	 driveLetter = String(" :");
 
 				for (Int drive = 0; drive < 26; drive++)
 				{
 					if (((DEV_BROADCAST_VOLUME *) lParam)->dbcv_unitmask >> drive & 1)
 					{
-						trackCDA[0] = drive + 'A';
+						driveLetter[0] = drive + 'A';
 
 						break;
 					}
 				}
 
-				if (trackCDA[0] == ' ') break;
+				if (driveLetter[0] == ' ') break;
 
-				/* Read length of track from .cda file
+				Int	 trackLength = 0;
+
+				/* Read length of first track using MCI.
 				 */
-				InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READONLY);
+				MCI_OPEN_PARMSA	 openParms;
 
-				in->Seek(32);
+				openParms.lpstrDeviceType  = (LPSTR) MCI_DEVTYPE_CD_AUDIO;
+				openParms.lpstrElementName = driveLetter;
 
-				Int	 trackLength = in->InputNumber(4);
+				MCIERROR	 error = mciSendCommandA(NIL, MCI_OPEN, MCI_WAIT | MCI_OPEN_SHAREABLE | MCI_OPEN_TYPE | MCI_OPEN_TYPE_ID | MCI_OPEN_ELEMENT, (DWORD) &openParms);
 
-				delete in;
+				if (error == 0)
+				{
+					MCI_SET_PARMS		 setParms;
 
+					setParms.dwTimeFormat	= MCI_FORMAT_MSF;
+
+					mciSendCommandA(openParms.wDeviceID, MCI_SET, MCI_WAIT | MCI_SET_TIME_FORMAT, (DWORD) &setParms);
+
+					MCI_STATUS_PARMS	 statusParms;
+
+					statusParms.dwItem	= MCI_STATUS_LENGTH;
+					statusParms.dwTrack	= 1;
+
+					mciSendCommandA(openParms.wDeviceID, MCI_STATUS, MCI_WAIT | MCI_STATUS_ITEM | MCI_TRACK, (DWORD) &statusParms);
+
+					trackLength = MCI_MSF_MINUTE(statusParms.dwReturn) * 60 * 75 +
+						      MCI_MSF_SECOND(statusParms.dwReturn) * 75	     +
+						      MCI_MSF_FRAME (statusParms.dwReturn);
+
+					MCI_GENERIC_PARMS	 closeParms;
+
+					mciSendCommandA(openParms.wDeviceID, MCI_CLOSE, MCI_WAIT, (DWORD) &closeParms);
+				}
+
+				/* Look for the actual drive using
+				 * the length of the first track.
+				 */
 				if (trackLength > 0)
 				{
 					Bool	 ok = False;
@@ -430,6 +437,8 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 		BoCA::Config::Get()->languageChanged = false;
 	}
 
+	BoCA::Settings::Get()->onChangeConfigurationSettings.Emit();
+
 	tab_layer_joblist->UpdateEncoderText();
 	tab_layer_joblist->UpdateOutputDir();
 
@@ -473,7 +482,7 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 
 	job->Schedule();
 
-	if (currentConfig->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
+	if (BoCA::Config::Get()->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
 	if (BoCA::Config::Get()->GetIntValue("CDRip", "AutoRip", False)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
 #endif
 }
@@ -489,11 +498,13 @@ Void BonkEnc::BonkEncGUI::ReadSpecificCD()
 
 Void BonkEnc::BonkEncGUI::QueryCDDB()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	/* ToDo: Check that this message is not displayed
 	 *	 when QueryCDDB is called from ReadCD because
 	 *	 of auto queries enabled.
 	 */
-	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
+	if (!config->enable_local_cddb && !config->enable_remote_cddb)
 	{
 		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
@@ -532,7 +543,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		String	 queryString = queryStrings.GetNth(j);
 		CDDBInfo cdInfo;
 
-		if (currentConfig->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(discID);
+		if (config->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(discID);
 
 		if (cdInfo == NIL)
 		{
@@ -617,7 +628,9 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 
 Void BonkEnc::BonkEncGUI::SubmitCDDBData()
 {
-	if (!currentConfig->enable_local_cddb && !currentConfig->enable_remote_cddb)
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (!config->enable_local_cddb && !config->enable_remote_cddb)
 	{
 		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
@@ -642,7 +655,9 @@ Void BonkEnc::BonkEncGUI::ManageCDDBData()
 
 Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 {
-	if (!currentConfig->enable_remote_cddb)
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (!config->enable_remote_cddb)
 	{
 		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
@@ -658,7 +673,9 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 
 Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
 {
-	if (!currentConfig->enable_remote_cddb)
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (!config->enable_remote_cddb)
 	{
 		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
@@ -687,7 +704,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 		mainWnd->Paint(SP_PAINT);
 	}
 
-	onChangeLanguageSettings.Emit();
+	BoCA::Settings::Get()->onChangeLanguageSettings.Emit();
 
 	FillMenus();
 
@@ -802,8 +819,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, &currentConfig->encodeToSingleFile);
 
 	menu_encoder_options->AddEntry();
-	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file directory if possible"), NIL, NIL, &currentConfig->writeToInputDir)->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
-	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, &currentConfig->allowOverwrite);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file directory if possible"), NIL, NIL, &BoCA::Config::Get()->writeToInputDir)->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
+	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, &BoCA::Config::Get()->allowOverwrite);
 
 	menu_encoder_options->AddEntry();
 	menu_encoder_options->AddEntry(i18n->TranslateString("Delete original files after encoding"), NIL, NIL, &currentConfig->deleteAfterEncoding)->onAction.Connect(&BonkEncGUI::ConfirmDeleteAfterEncoding, this);
@@ -828,10 +845,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB queries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchQueries, this);
 	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &currentConfig->enable_cddb_cache);
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &BoCA::Config::Get()->enable_cddb_cache);
 	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
 	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
+	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &BoCA::Config::Get()->enable_auto_cddb);
 
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
@@ -980,13 +997,17 @@ Void BonkEnc::BonkEncGUI::AddFilesFromDirectory()
 
 Void BonkEnc::BonkEncGUI::ToggleUseInputDirectory()
 {
-	if (currentConfig->writeToInputDir) allowOverwriteMenuEntry->Activate();
-	else				    allowOverwriteMenuEntry->Deactivate();
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (config->writeToInputDir) allowOverwriteMenuEntry->Activate();
+	else			     allowOverwriteMenuEntry->Deactivate();
 }
 
 Void BonkEnc::BonkEncGUI::ToggleEncodeToSingleFile()
 {
-	if (currentConfig->encodeToSingleFile) currentConfig->enc_onTheFly = True;
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (currentConfig->encodeToSingleFile) config->enc_onTheFly = True;
 }
 
 Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
@@ -1006,23 +1027,27 @@ Void BonkEnc::BonkEncGUI::ShowHelp()
 
 Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
-	TipOfTheDay	*dlg = new TipOfTheDay(&currentConfig->showTips);
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
-	dlg->AddTip(String(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1")).Replace("%1", "http://www.bonkenc.org/"));
-	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
-	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));
-	dlg->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the CDRip tab of BonkEnc's configuration\ndialog. If that does not help, try using one of the Paranoia modes."));
-	dlg->AddTip(String(i18n->TranslateString("Do you have any suggestions on how to improve BonkEnc?\nYou can submit any ideas through the Tracker on the BonkEnc\nSourceForge project page - %1\nor send an eMail to %2.")).Replace("%1", "http://sf.net/projects/bonkenc").Replace("%2", "suggestions@bonkenc.org"));
-	dlg->AddTip(String(i18n->TranslateString("Do you like BonkEnc? BonkEnc is available for free, but you can\nhelp fund the development by donating to the BonkEnc project.\nYou can send money to %1 through PayPal.\nSee %2 for more details.")).Replace("%1", "donate@bonkenc.org").Replace("%2", "http://www.bonkenc.org/donating.php"));
+	Bool		 showTips = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault);
+	TipOfTheDay	*dialog = new TipOfTheDay(&showTips);
 
-	dlg->SetMode(TIP_ORDERED, currentConfig->tipOffset, currentConfig->showTips);
+	dialog->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
+	dialog->AddTip(String(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1")).Replace("%1", "http://www.bonkenc.org/"));
+	dialog->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
+	dialog->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));
+	dialog->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the CDRip tab of BonkEnc's configuration\ndialog. If that does not help, try using one of the Paranoia modes."));
+	dialog->AddTip(String(i18n->TranslateString("Do you have any suggestions on how to improve BonkEnc?\nYou can submit any ideas through the Tracker on the BonkEnc\nSourceForge project page - %1\nor send an eMail to %2.")).Replace("%1", "http://sf.net/projects/bonkenc").Replace("%2", "suggestions@bonkenc.org"));
+	dialog->AddTip(String(i18n->TranslateString("Do you like BonkEnc? BonkEnc is available for free, but you can\nhelp fund the development by donating to the BonkEnc project.\nYou can send money to %1 through PayPal.\nSee %2 for more details.")).Replace("%1", "donate@bonkenc.org").Replace("%2", "http://www.bonkenc.org/donating.php"));
 
-	dlg->ShowDialog();
+	dialog->SetMode(TIP_ORDERED, config->GetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, Config::SettingsNextTipDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault));
 
-	currentConfig->tipOffset = dlg->GetOffset();
+	dialog->ShowDialog();
 
-	DeleteObject(dlg);
+	config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, showTips);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, dialog->GetOffset());
+
+	DeleteObject(dialog);
 }
 
 String BonkEnc::BonkEncGUI::GetSystemLanguage()

@@ -65,7 +65,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="smooth.lib boca.1.0.lib ws2_32.lib"
+				AdditionalDependencies="smooth.lib boca.1.0.lib ws2_32.lib winmm.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../../../smooth/msvc/smooth/Debug; ../../cdk/msvc/BoCA/debug"
@@ -518,6 +518,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\dialogs\config\config_interface.cpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\dialogs\config\config_language.cpp"
 						>
 					</File>
@@ -709,6 +713,10 @@
 					</File>
 					<File
 						RelativePath="..\..\include\dialogs\config\config_encoders.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\dialogs\config\config_interface.h"
 						>
 					</File>
 					<File

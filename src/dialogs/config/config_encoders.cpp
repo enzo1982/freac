@@ -23,12 +23,12 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	onTheFly	= currentConfig->enc_onTheFly;
-	keepWaves	= currentConfig->enc_keepWaves;
-	useInputDir	= currentConfig->writeToInputDir;
-	allowOverwrite	= currentConfig->allowOverwrite;
+	onTheFly	= config->enc_onTheFly;
+	keepWaves	= config->enc_keepWaves;
+	useInputDir	= config->writeToInputDir;
+	allowOverwrite	= config->allowOverwrite;
 	singleFile	= currentConfig->encodeToSingleFile;
-	unicode_files	= currentConfig->useUnicodeNames;
+	unicode_files	= config->useUnicodeNames;
 
 	group_encoder	= new GroupBox(BonkEnc::i18n->TranslateString("Encoder"), Point(7, 11), Size(344, 43));
 
@@ -72,16 +72,16 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	group_filename	= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), Point(7, 171), Size(344, 43));
 
-	edit_filename	= new EditBox(currentConfig->enc_filePattern, Point(10, 12), Size(324, 0), 0);
+	edit_filename	= new EditBox(config->enc_filePattern, Point(10, 12), Size(324, 0), 0);
 	list_filename	= new ListBox(Point(), Size());
 
 	Int	 customEntries = 0;
 
 	for (Int i = 1; i <= 5; i++)
 	{
-		if (config->GetStringValue("Settings", String("LastFilePattern").Append(String::FromInt(i)), NIL) != NIL)
+		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(i)), NIL) != NIL)
 		{
-			list_filename->AddEntry(config->GetStringValue("Settings", String("LastFilePattern").Append(String::FromInt(i)), NIL));
+			list_filename->AddEntry(config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(i)), NIL));
 
 			customEntries++;
 		}
@@ -276,7 +276,7 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 	for (Int i = 1; i <= 5; i++)
 	{
-		if (config->GetStringValue("Settings", String("LastFilePattern").Append(String::FromInt(i)), NIL) == edit_filename->GetText())
+		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(i)), NIL) == edit_filename->GetText())
 		{
 			number = i;
 
@@ -286,19 +286,19 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 	for (Int i = number; i > 1; i--)
 	{
-		config->SetStringValue("Settings", String("LastFilePattern").Append(String::FromInt(i)), config->GetStringValue("Settings", String("LastFilePattern").Append(String::FromInt(i - 1)), NIL));
+		config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(i)), config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(i - 1)), NIL));
 	}
 
-	config->SetStringValue("Settings", String("LastFilePattern").Append(String::FromInt(1)), edit_filename->GetText());
+	config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(1)), edit_filename->GetText());
 
 	currentConfig->enc_outdir		= edit_outdir->GetText();
-	currentConfig->enc_filePattern		= edit_filename->GetText();
-	currentConfig->enc_onTheFly		= onTheFly;
-	currentConfig->writeToInputDir		= useInputDir;
-	currentConfig->allowOverwrite		= allowOverwrite;
+	config->enc_filePattern			= edit_filename->GetText();
+	config->enc_onTheFly			= onTheFly;
+	config->writeToInputDir			= useInputDir;
+	config->allowOverwrite			= allowOverwrite;
 	currentConfig->encodeToSingleFile	= singleFile;
-	currentConfig->enc_keepWaves		= keepWaves;
-	currentConfig->useUnicodeNames		= unicode_files;
+	config->enc_keepWaves			= keepWaves;
+	config->useUnicodeNames			= unicode_files;
 
 	if (!currentConfig->enc_outdir.EndsWith("\\")) currentConfig->enc_outdir.Append("\\");
 

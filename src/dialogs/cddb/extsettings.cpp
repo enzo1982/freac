@@ -13,12 +13,12 @@
 
 BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 {
-	currentConfig = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), currentConfig->wndPos + Point(80, 80), Size(352, 221));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Config::Get()->wndPos + Point(80, 80), Size(352, 221));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -66,7 +66,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	size.cx = 192;
 	size.cy = 0;
 
-	http_edit_query		= new EditBox(currentConfig->freedb_query_path, pos, size, 0);
+	http_edit_query		= new EditBox(config->freedb_query_path, pos, size, 0);
 
 	pos.x = 16;
 	pos.y += 30;
@@ -76,7 +76,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.x += 101;
 	pos.y -= 3;
 
-	http_edit_submit	= new EditBox(currentConfig->freedb_submit_path, pos, size, 0);
+	http_edit_submit	= new EditBox(config->freedb_submit_path, pos, size, 0);
 
 	Int	 maxTextSize = Math::Max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
 
@@ -117,7 +117,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.y -= 3;
 	size.cx = 100;
 
-	proxy_edit_server	= new EditBox(currentConfig->freedb_proxy, pos, size, 0);
+	proxy_edit_server	= new EditBox(config->freedb_proxy, pos, size, 0);
 
 	pos.x += 110;
 	pos.y += 3;
@@ -129,7 +129,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.y -= 3;
 	size.cx = 37;
 
-	proxy_edit_port		= new EditBox(String::FromInt(currentConfig->freedb_proxy_port), pos, size, 5);
+	proxy_edit_port		= new EditBox(String::FromInt(config->freedb_proxy_port), pos, size, 5);
 	proxy_edit_port->SetFlags(EDB_NUMERIC);
 
 	pos.x = 16;
@@ -141,7 +141,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.y -= 3;
 	size.cx = 100;
 
-	proxy_edit_user		= new EditBox(currentConfig->freedb_proxy_user, pos, size, 0);
+	proxy_edit_user		= new EditBox(config->freedb_proxy_user, pos, size, 0);
 
 	pos.x += 110;
 	pos.y += 3;
@@ -153,7 +153,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	pos.y -= 3;
 	size.cx = 67;
 
-	proxy_edit_password	= new EditBox(currentConfig->freedb_proxy_password, pos, size, 0);
+	proxy_edit_password	= new EditBox(config->freedb_proxy_password, pos, size, 0);
 	proxy_edit_password->SetFlags(EDB_ASTERISK);
 
 	maxTextSize = Math::Max(Math::Max(proxy_text_mode->textSize.cx, proxy_text_server->textSize.cx), proxy_text_user->textSize.cx);
@@ -162,7 +162,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->GetY()), Size(233 - maxTextSize - proxy_text_port->textSize.cx, proxy_edit_server->GetHeight()));
 	proxy_edit_user->SetMetrics(Point(maxTextSize + 24, proxy_edit_user->GetY()), Size(203 - maxTextSize - proxy_text_password->textSize.cx, proxy_edit_user->GetHeight()));
 
-	proxy_combo_mode->SelectNthEntry(currentConfig->freedb_proxy_mode);
+	proxy_combo_mode->SelectNthEntry(config->freedb_proxy_mode);
 
 	SetProxyMode();
 
@@ -246,14 +246,16 @@ const Error &BonkEnc::cddbExtendedSettingsDlg::ShowDialog()
 
 Void BonkEnc::cddbExtendedSettingsDlg::OK()
 {
-	currentConfig->freedb_query_path = http_edit_query->GetText();
-	currentConfig->freedb_submit_path = http_edit_submit->GetText();
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	currentConfig->freedb_proxy_mode = proxy_combo_mode->GetSelectedEntryNumber();
-	currentConfig->freedb_proxy = proxy_edit_server->GetText();
-	currentConfig->freedb_proxy_port = proxy_edit_port->GetText().ToInt();
-	currentConfig->freedb_proxy_user = proxy_edit_user->GetText();
-	currentConfig->freedb_proxy_password = proxy_edit_password->GetText();
+	config->freedb_query_path = http_edit_query->GetText();
+	config->freedb_submit_path = http_edit_submit->GetText();
+
+	config->freedb_proxy_mode = proxy_combo_mode->GetSelectedEntryNumber();
+	config->freedb_proxy = proxy_edit_server->GetText();
+	config->freedb_proxy_port = proxy_edit_port->GetText().ToInt();
+	config->freedb_proxy_user = proxy_edit_user->GetText();
+	config->freedb_proxy_password = proxy_edit_password->GetText();
 
 	mainWnd->Close();
 }

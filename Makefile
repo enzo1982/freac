@@ -11,7 +11,7 @@ LIBDIR2 = cdk/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_cdrip.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_cdrip.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/gui.o
 CMDOBJECTS = $(OBJECTDIR)/console.o
@@ -27,7 +27,7 @@ LINKER = gcc
 REMOVER = rm
 ECHO = echo
 COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -I$(INCLUDEDIR3) -march=i586 -Os -g0 -Wall -fno-exceptions -DUNICODE -D_UNICODE -c
-LINKER_OPTS = -L$(LIBDIR1) -L$(LIBDIR2) -lboca -lsmooth -llisa -lunicows -lshell32 -lws2_32 -lole32 -lstdc++ -mwindows --shared -Xlinker --out-implib -Xlinker $(LIBNAME) -o$(DLLNAME)
+LINKER_OPTS = -L$(LIBDIR1) -L$(LIBDIR2) -lboca -lsmooth -llisa -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -mwindows --shared -Xlinker --out-implib -Xlinker $(LIBNAME) -o$(DLLNAME)
 LOADER_COMPILER_OPTS = -I$(INCLUDEDIR2) -march=i586 -Os -g0 -Wall -fno-exceptions -c
 LOADER_GUI_LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lstdc++ -mwindows -o$(EXENAME)
 LOADER_CONSOLE_LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lstdc++ -o$(CMDNAME)
@@ -265,6 +265,11 @@ $(OBJECTDIR)/config_cdrip.o: $(SRCDIR)/dialogs/config/config_cdrip.cpp
 $(OBJECTDIR)/config_encoders.o: $(SRCDIR)/dialogs/config/config_encoders.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/dialogs/config/config_encoders.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/config/config_encoders.cpp -o $(OBJECTDIR)/config_encoders.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/config_interface.o: $(SRCDIR)/dialogs/config/config_interface.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/config/config_interface.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/config/config_interface.cpp -o $(OBJECTDIR)/config_interface.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/config_language.o: $(SRCDIR)/dialogs/config/config_language.cpp

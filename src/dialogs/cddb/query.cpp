@@ -20,14 +20,12 @@
 
 BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
-	currentConfig = Config::Get();
-
 	allowAddToBatch = False;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB query"), currentConfig->wndPos + Point(40, 40), Size(310, 84));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB query"), Config::Get()->wndPos + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -113,16 +111,18 @@ Void BonkEnc::cddbQueryDlg::Cancel()
 
 Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	Bool	 result = False;
 
-	if (currentConfig->enable_local_cddb)
+	if (config->enable_local_cddb)
 	{
 		CDDBLocal	 cddbLocal;
 
-		result = QueryCDDB(cddbLocal, !currentConfig->enable_remote_cddb);
+		result = QueryCDDB(cddbLocal, !config->enable_remote_cddb);
 	}
 
-	if (!result && currentConfig->enable_remote_cddb)
+	if (!result && config->enable_remote_cddb)
 	{
 		CDDBRemote	 cddbRemote;
 
@@ -137,10 +137,12 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	Int	 result;
 
 	prog_status->SetValue(0);
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(currentConfig->freedb_server).Append("..."));
+	text_status->SetText(String(BonkEnc::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(config->freedb_server).Append("..."));
 
 	cddb.ConnectToServer();
 

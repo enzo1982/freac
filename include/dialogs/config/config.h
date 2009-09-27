@@ -33,6 +33,12 @@ namespace BonkEnc
 
 			Divider			*divbar;
 
+			Text			*text_config;
+			ComboBox		*combo_config;
+			Button			*button_config_new;
+			Button			*button_config_delete;
+			Divider			*divider_top;
+
 			ListBox			*list_layers;
 			Tree			*tree_bonkenc;
 			Tree			*tree_components;

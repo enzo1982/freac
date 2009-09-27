@@ -66,7 +66,7 @@ Void BonkEnc::JobManager::OnFinishJob(Job *job)
 
 	if (job->GetErrors().Length() > 0)
 	{
-		if (BoCA::Config::Get()->GetIntValue("Settings", "DisplayErrors", True))
+		if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, "DisplayErrors", True))
 		{
 			const Array<String>	&errors = job->GetErrors();
 

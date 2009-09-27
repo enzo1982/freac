@@ -33,7 +33,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	 */
 	XML::Document	*document = new XML::Document();
 
-	if (document->LoadFile(String(config->configDir).Append("cddb\\queries.xml")) == Success())
+	if (document->LoadFile(String(Config::Get()->configDir).Append("cddb\\queries.xml")) == Success())
 	{
 		XML::Node	*root = document->GetRootNode();
 
@@ -54,7 +54,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	 */
 	document = new XML::Document();
 
-	if (document->LoadFile(String(config->configDir).Append("cddb\\submits.xml")) == Success())
+	if (document->LoadFile(String(Config::Get()->configDir).Append("cddb\\submits.xml")) == Success())
 	{
 		ReadEntriesXML(document);
 	}
@@ -79,7 +79,7 @@ Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 		if (node->GetName() == "submit")
 		{
-			InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb\\").Append(node->GetAttributeByName("category")->GetContent()).Append("\\").Append(node->GetContent()), IS_READONLY);
+			InStream	*in = new InStream(STREAM_FILE, String(Config::Get()->configDir).Append("cddb\\").Append(node->GetAttributeByName("category")->GetContent()).Append("\\").Append(node->GetContent()), IS_READONLY);
 
 			if (in->Size() > 0)
 			{
@@ -112,17 +112,19 @@ Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 Bool BonkEnc::CDDBBatch::SaveEntries()
 {
+	String	 configDir = Config::Get()->configDir;
+
 	/* Save queued queries
 	 */
 	if (queries.Length() == 0)
 	{
 		/* Delete queries file if no more saved queries exist
 		 */
-		File(String(config->configDir).Append("cddb\\queries.xml")).Delete();
+		File(String(configDir).Append("cddb\\queries.xml")).Delete();
 	}
 	else
 	{
-		Directory(String(config->configDir).Append("cddb")).Create();
+		Directory(String(configDir).Append("cddb")).Create();
 
 		XML::Document	*document = new XML::Document();
 		XML::Node	*root = new XML::Node("cddbQueries");
@@ -134,7 +136,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 			root->AddNode("query", queries.GetNth(i));
 		}
 
-		document->SaveFile(String(config->configDir).Append("cddb\\queries.xml"));
+		document->SaveFile(String(configDir).Append("cddb\\queries.xml"));
 
 		delete document;
 		delete root;
@@ -146,11 +148,11 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 	{
 		/* Delete submits file if no more saved submits exist
 		 */
-		File(String(config->configDir).Append("cddb\\submits.xml")).Delete();
+		File(String(configDir).Append("cddb\\submits.xml")).Delete();
 	}
 	else
 	{
-		Directory(String(config->configDir).Append("cddb")).Create();
+		Directory(String(configDir).Append("cddb")).Create();
 
 		XML::Document	*document = new XML::Document();
 		XML::Node	*root = new XML::Node("cddbSubmits");
@@ -164,7 +166,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 			node->SetAttribute("category", submits.GetNth(i).category);
 		}
 
-		document->SaveFile(String(config->configDir).Append("cddb\\submits.xml"));
+		document->SaveFile(String(configDir).Append("cddb\\submits.xml"));
 
 		delete document;
 		delete root;
@@ -194,13 +196,15 @@ Bool BonkEnc::CDDBBatch::DeleteQuery(Int n)
 
 Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 {
+	String	 configDir = Config::Get()->configDir;
+
 	/* Create directory for entry
 	 */
-	Directory	 cddbDir(String(config->configDir).Append("cddb"));
+	Directory	 cddbDir(String(configDir).Append("cddb"));
 
 	if (!cddbDir.Exists()) cddbDir.Create();
 
-	Directory	 categoryDir(String(config->configDir).Append("cddb\\").Append(cddbInfo.category));
+	Directory	 categoryDir(String(configDir).Append("cddb\\").Append(cddbInfo.category));
 
 	if (!categoryDir.Exists()) categoryDir.Create();
 
@@ -208,7 +212,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 	 */
 	String	 configFreedbDir = config->freedb_dir;
 
-	config->freedb_dir = String(config->configDir).Append("cddb\\");
+	config->freedb_dir = String(configDir).Append("cddb\\");
 
 	CDDBLocal	 cddb;
 
@@ -273,7 +277,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 		 */
 		String	 configFreedbDir = config->freedb_dir;
 
-		config->freedb_dir = String(config->configDir).Append("cddb\\");
+		config->freedb_dir = String(Config::Get()->configDir).Append("cddb\\");
 
 		CDDBLocal	 cddb;
 

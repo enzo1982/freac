@@ -95,7 +95,6 @@ Int BonkEnc::Playback::PlayThread()
 		f_in->SetPackageSize(6144);
 		f_in->AddFilter(filter_in);
 
-		Int64		 position = 0;
 		UnsignedInt	 samples_size = 1024;
 		Int64		 n_loops = (trackInfo.length + samples_size - 1) / samples_size;
 
@@ -115,6 +114,8 @@ Int BonkEnc::Playback::PlayThread()
 
 		if (!output->GetErrorState() && trackInfo.length >= 0)
 		{
+			Int64			 position = 0;
+
 			Int			 sample = 0;
 			Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
 

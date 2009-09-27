@@ -20,6 +20,70 @@ namespace BonkEnc
 {
 	class Config
 	{
+		constants:
+			static const String	 CategorySettingsID;
+			static const String	 CategoryJoblistID;
+			static const String	 CategoryPlaylistID;
+			static const String	 CategoryTagsID;
+
+			/* Category Settings
+			 */
+			static const String	 SettingsShowTipsID;
+			static const Bool	 SettingsShowTipsDefault;
+
+			static const String	 SettingsNextTipID;
+			static const Int	 SettingsNextTipDefault;
+
+			static const String	 SettingsLastUsedGenreID;
+
+			static const String	 SettingsLastFilePatternID;
+
+			static const String	 SettingsLastAddedDirID;
+			static const String	 SettingsLastAddedDirDefault;
+
+			static const String	 SettingsLastAddedPatternID;
+			static const String	 SettingsLastAddedPatternDefault;
+
+			/* Category Joblist
+			 */
+			static const String	 JoblistFieldsID;
+			static const String	 JoblistFieldsDefault;
+
+			static const String	 JoblistFieldSizesID;
+			static const String	 JoblistFieldSizesDefault;
+
+			/* Category Playlist
+			 */
+			static const String	 PlaylistCreatePlaylistID;
+			static const Bool	 PlaylistCreatePlaylistDefault;
+
+			static const String	 PlaylistCreateCueSheetID;
+			static const Bool	 PlaylistCreateCueSheetDefault;
+
+			static const String	 PlaylistUseEncoderOutputDirID;
+			static const Bool	 PlaylistUseEncoderOutputDirDefault;
+
+			static const String	 PlaylistOutputDirID;
+
+			static const String	 PlaylistFilenamePatternID;
+			static const String	 PlaylistFilenamePatternDefault;
+
+			/* Category Tags
+			 */
+			static const String	 TagsCoverArtReadFromTagsID;
+			static const Bool	 TagsCoverArtReadFromTagsDefault;
+
+			static const String	 TagsCoverArtReadFromFilesID;
+			static const Bool	 TagsCoverArtReadFromFilesDefault;
+
+			static const String	 TagsCoverArtWriteToTagsID;
+			static const Bool	 TagsCoverArtWriteToTagsDefault;
+
+			static const String	 TagsCoverArtWriteToFilesID;
+			static const Bool	 TagsCoverArtWriteToFilesDefault;
+
+			static const String	 TagsCoverArtWriteToFilesWithReferenceID;
+			static const Bool	 TagsCoverArtWriteToFilesWithReferenceDefault;
 		private:
 			/* Singleton class, therefore private constructor/destructor
 			 */
@@ -40,64 +104,21 @@ namespace BonkEnc
 
 			Int		 maxActiveJobs;
 
-			Int		 tab_width_track;
-			Int		 tab_width_length;
-			Int		 tab_width_size;
-
-			Bool		 createPlaylist;
-			Bool		 createCueSheet;
-
 			Bool		 showTitleInfo;
 			Bool		 showTooltips;
-
-			Bool		 showTips;
-			Int		 tipOffset;
 
 			Bool		 checkUpdatesAtStartup;
 
 			Bool		 deleteAfterEncoding;
 			Bool		 shutdownAfterEncoding;
 
-			Bool		 writeToInputDir;
-			Bool		 allowOverwrite;
-
 			Bool		 encodeToSingleFile;
-
-			String		 lastAddedDir;
-			String		 lastAddedPattern;
 
 			String		 encoderID;
 			Bool		 enable_console;
 			Bool		 enable_cdrip;
 			Bool		 enable_eUpdate;
 			String		 enc_outdir;
-			String		 enc_filePattern;
-			Bool		 enc_onTheFly;
-			Bool		 enc_keepWaves;
-			Bool		 playlist_useEncOutdir;
-			String		 playlist_outdir;
-			String		 playlist_filePattern;
-			Bool		 useUnicodeNames;
-
-			String		 freedb_dir;
-			String		 freedb_server;
-			Int		 freedb_mode;
-			Int		 freedb_cddbp_port;
-			Int		 freedb_http_port;
-			String		 freedb_query_path;
-			String		 freedb_submit_path;
-			String		 freedb_email;
-			Int		 freedb_proxy_mode;
-			String		 freedb_proxy;
-			Int		 freedb_proxy_port;
-			String		 freedb_proxy_user;
-			String		 freedb_proxy_password;
-			Bool		 enable_local_cddb;
-			Bool		 enable_remote_cddb;
-			Bool		 enable_auto_cddb;
-			Bool		 enable_overwrite_cdtext;
-			Bool		 enable_cddb_cache;
-			Bool		 update_joblist;
 
 			Bool		 CanChangeConfig();
 

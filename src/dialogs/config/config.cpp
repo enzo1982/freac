@@ -12,6 +12,7 @@
 #include <dialogs/config/config_cddb.h>
 #include <dialogs/config/config_cdrip.h>
 #include <dialogs/config/config_encoders.h>
+#include <dialogs/config/config_interface.h>
 #include <dialogs/config/config_language.h>
 #include <dialogs/config/config_playlists.h>
 #include <dialogs/config/config_tags.h>
@@ -39,7 +40,28 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	btn_ok->onAction.Connect(&ConfigDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	list_layers		= new ListBox(Point(7, 7), Size(210, 244));
+	text_config		= new Text(BonkEnc::i18n->TranslateString("Active configuration:"), Point(7, 11));
+
+	combo_config		= new ComboBox(Point(text_config->textSize.cx + 15, 8), Size());
+	combo_config->Deactivate();
+
+	button_config_new	= new Button(BonkEnc::i18n->TranslateString("New"), NIL, Point(175, 7), Size());
+	button_config_new->SetOrientation(OR_UPPERRIGHT);
+	button_config_new->Deactivate();
+
+	button_config_delete	= new Button(BonkEnc::i18n->TranslateString("Delete"), NIL, Point(87, 7), Size());
+	button_config_delete->SetOrientation(OR_UPPERRIGHT);
+	button_config_delete->Deactivate();
+
+	divider_top		= new Divider(37, OR_HORZ | OR_TOP);
+
+	mainWnd->Add(text_config);
+	mainWnd->Add(combo_config);
+	mainWnd->Add(button_config_new);
+	mainWnd->Add(button_config_delete);
+	mainWnd->Add(divider_top);
+
+	list_layers		= new ListBox(Point(7, 47), Size(210, 244));
 
 	selectedLayer = NIL;
 
@@ -73,6 +95,11 @@ BonkEnc::ConfigDialog::ConfigDialog()
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 		tree_bonkenc->Add(entries.GetLast());
 	}
+
+	layers.Add(new ConfigureInterface());
+	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Interface"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_bonkenc->Add(entries.GetLast());
 
 	if (BonkEnc::i18n->GetNOfLanguages() > 1)
 	{
@@ -157,7 +184,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 
 	mainWnd->onChangeSize.Connect(&ConfigDialog::OnChangeSize, this);
-	mainWnd->SetMinimumSize(Size(232, 302));
+	mainWnd->SetMinimumSize(Size(232, 342));
 }
 
 BonkEnc::ConfigDialog::~ConfigDialog()
@@ -186,6 +213,13 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 	DeleteObject(btn_ok);
 	DeleteObject(btn_cancel);
 	DeleteObject(divbar);
+
+	DeleteObject(text_config);
+	DeleteObject(combo_config);
+	DeleteObject(button_config_new);
+	DeleteObject(button_config_delete);
+	DeleteObject(divider_top);
+
 	DeleteObject(list_layers);
 
 	DeleteObject(tree_bonkenc);
@@ -223,7 +257,8 @@ Void BonkEnc::ConfigDialog::Cancel()
 
 Void BonkEnc::ConfigDialog::OnChangeSize()
 {
-	list_layers->SetSize(Size(210, mainWnd->GetHeight() - 88));
+	combo_config->SetWidth(mainWnd->GetWidth() - text_config->textSize.cx - 206);
+	list_layers->SetSize(Size(210, mainWnd->GetHeight() - 128));
 }
 
 Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
@@ -232,17 +267,17 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 	{
 		mainWnd->Remove(selectedLayer);
 
-		mainWnd->SetMinimumSize(Size(232, 302));
+		mainWnd->SetMinimumSize(Size(232, 342));
 	}
 
 	if (layer != NIL)
 	{
 		selectedLayer = layer;
-		selectedLayer->SetPosition(Point(223, 29));
+		selectedLayer->SetPosition(Point(223, 69));
 
 		mainWnd->Add(selectedLayer);
-		mainWnd->SetMinimumSize(Size(Math::Max(232, selectedLayer->GetWidth() + 227), Math::Max(302, selectedLayer->GetHeight() + 74)));
-		mainWnd->SetSize(Size(Math::Max(mainWnd->GetWidth(), selectedLayer->GetWidth() + 227), Math::Max(mainWnd->GetHeight(), selectedLayer->GetHeight() + 74)));
+		mainWnd->SetMinimumSize(Size(Math::Max(232, selectedLayer->GetWidth() + 227), Math::Max(342, selectedLayer->GetHeight() + 114)));
+		mainWnd->SetSize(Size(Math::Max(mainWnd->GetWidth(), selectedLayer->GetWidth() + 227), Math::Max(mainWnd->GetHeight(), selectedLayer->GetHeight() + 114)));
 	}
 	else
 	{

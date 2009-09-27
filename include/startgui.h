@@ -89,8 +89,6 @@ namespace BonkEnc
 
 			Void				 PauseResumeEncoding();
 			Void				 StopEncoding();
-		signals:
-			Signal0<Void>			 onChangeLanguageSettings;
 		slots:
 			Bool				 ExitProc();
 

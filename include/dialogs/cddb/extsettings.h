@@ -49,8 +49,6 @@ namespace BonkEnc
 			Button		*btn_cancel;
 			Button		*btn_ok;
 
-			Config		*currentConfig;
-
 			Void		 OK();
 			Void		 Cancel();
 			Void		 SetProxyMode();

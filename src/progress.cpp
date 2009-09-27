@@ -37,7 +37,7 @@ Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
 		else				      totalSamples += (240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels);
 	}
 
-	if (!Config::Get()->enc_onTheFly && Config::Get()->encoderID != "wave-out") totalSamples *= 2;
+	if (!BoCA::Config::Get()->enc_onTheFly && Config::Get()->encoderID != "wave-out") totalSamples *= 2;
 }
 
 Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInfo)

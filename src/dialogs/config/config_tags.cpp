@@ -14,19 +14,19 @@ BonkEnc::ConfigureTags::ConfigureTags()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	id3v1_encoding			= config->GetStringValue("Tags", "ID3v1Encoding", "ISO-8859-1");
-	id3v2_encoding			= config->GetStringValue("Tags", "ID3v2Encoding", "UTF-16LE");
+	id3v1_encoding			= config->GetStringValue(Config::CategoryTagsID, "ID3v1Encoding", "ISO-8859-1");
+	id3v2_encoding			= config->GetStringValue(Config::CategoryTagsID, "ID3v2Encoding", "UTF-16LE");
 
-	enableCoverArtReadFromTags	= config->GetIntValue("Tags", "CoverArtReadFromTags", True);
-	enableCoverArtReadFromFiles	= config->GetIntValue("Tags", "CoverArtReadFromFiles", True);
-	enableCoverArtWriteToTags	= config->GetIntValue("Tags", "CoverArtWriteToTags", True);
-	enableCoverArtWriteToFiles	= config->GetIntValue("Tags", "CoverArtWriteToFiles", False);
-	enableCoverArtWriteToFilesRef	= config->GetIntValue("Tags", "CoverArtWriteToFilesWithReference", False);
+	enableCoverArtReadFromTags	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, Config::TagsCoverArtReadFromTagsDefault);
+	enableCoverArtReadFromFiles	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, Config::TagsCoverArtReadFromFilesDefault);
+	enableCoverArtWriteToTags	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, Config::TagsCoverArtWriteToTagsDefault);
+	enableCoverArtWriteToFiles	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, Config::TagsCoverArtWriteToFilesDefault);
+	enableCoverArtWriteToFilesRef	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesWithReferenceID, Config::TagsCoverArtWriteToFilesWithReferenceDefault);
 
-	writeMCDI			= config->GetIntValue("Tags", "WriteMCDI", True);
-	preserveReplayGain		= config->GetIntValue("Tags", "PreserveReplayGain", True);
+	writeMCDI			= config->GetIntValue(Config::CategoryTagsID, "WriteMCDI", True);
+	preserveReplayGain		= config->GetIntValue(Config::CategoryTagsID, "PreserveReplayGain", True);
 
-	replaceComments			= config->GetIntValue("Tags", "ReplaceExistingComments", False);
+	replaceComments			= config->GetIntValue(Config::CategoryTagsID, "ReplaceExistingComments", False);
 
 	tab_tags		= new TabWidget(Point(7, 7), Size(530, 207));
 
@@ -37,12 +37,12 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	list_tag_formats	= new ListBox(Point(10, 13), Size(241, 64));
 	list_tag_formats->SetFlags(LF_MULTICHECKBOX);
 
-	list_tag_formats->AddEntry("ID3v1")->SetMark(config->GetIntValue("Tags", "EnableID3v1", False));
-	list_tag_formats->AddEntry("ID3v2")->SetMark(config->GetIntValue("Tags", "EnableID3v2", True));
-	list_tag_formats->AddEntry("APEv2")->SetMark(config->GetIntValue("Tags", "EnableAPEv2", True));
-	list_tag_formats->AddEntry("Vorbis Comment")->SetMark(config->GetIntValue("Tags", "EnableVorbisComment", True));
-	list_tag_formats->AddEntry("MP4 Metadata")->SetMark(config->GetIntValue("Tags", "EnableMP4Metadata", True));
-	list_tag_formats->AddEntry("WMA Metadata")->SetMark(config->GetIntValue("Tags", "EnableWMAMetadata", True));
+	list_tag_formats->AddEntry("ID3v1")->SetMark(config->GetIntValue(Config::CategoryTagsID, "EnableID3v1", False));
+	list_tag_formats->AddEntry("ID3v2")->SetMark(config->GetIntValue(Config::CategoryTagsID, "EnableID3v2", True));
+	list_tag_formats->AddEntry("APEv2")->SetMark(config->GetIntValue(Config::CategoryTagsID, "EnableAPEv2", True));
+	list_tag_formats->AddEntry("Vorbis Comment")->SetMark(config->GetIntValue(Config::CategoryTagsID, "EnableVorbisComment", True));
+	list_tag_formats->AddEntry("MP4 Metadata")->SetMark(config->GetIntValue(Config::CategoryTagsID, "EnableMP4Metadata", True));
+	list_tag_formats->AddEntry("WMA Metadata")->SetMark(config->GetIntValue(Config::CategoryTagsID, "EnableWMAMetadata", True));
 
 	list_tag_formats->onSelectEntry.Connect(&ConfigureTags::ToggleTags, this);
 	list_tag_formats->onMarkEntry.Connect(&ConfigureTags::ToggleTags, this);
@@ -61,7 +61,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	group_definfo		= new GroupBox(BonkEnc::i18n->TranslateString("Comments"), Point(7, 110), Size(512, 67));
 
 	text_defcomment		= new Text(BonkEnc::i18n->TranslateString("Default comment string:"), Point(10, 15));
-	edit_defcomment		= new EditBox(config->GetStringValue("Tags", "DefaultComment", NIL), Point(17 + text_defcomment->textSize.cx, 12), Size(485 - text_defcomment->textSize.cx, 0), 0);
+	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, "DefaultComment", NIL), Point(17 + text_defcomment->textSize.cx, 12), Size(485 - text_defcomment->textSize.cx, 0), 0);
 	check_replace		= new CheckBox(BonkEnc::i18n->TranslateString("Replace existing comments with default comment"), Point(10, edit_defcomment->GetY() + 28), Size(492, 0), &replaceComments);
 
 	group_definfo->Add(text_defcomment);
@@ -89,17 +89,17 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	list_coverart_write_tags_format = new ListBox(Point(27, 39), Size(225, 64));
 	list_coverart_write_tags_format->SetFlags(LF_MULTICHECKBOX);
 
-	list_coverart_write_tags_format->AddEntry("ID3v2")->SetMark(config->GetIntValue("Tags", "CoverArtWriteToID3v2", True));
-	list_coverart_write_tags_format->AddEntry("APEv2")->SetMark(config->GetIntValue("Tags", "CoverArtWriteToAPEv2", True));
-	list_coverart_write_tags_format->AddEntry("Vorbis Comment")->SetMark(config->GetIntValue("Tags", "CoverArtWriteToVorbisComment", False));
-	list_coverart_write_tags_format->AddEntry("MP4 Metadata")->SetMark(config->GetIntValue("Tags", "CoverArtWriteToMP4Metadata", True));
-	list_coverart_write_tags_format->AddEntry("WMA Metadata")->SetMark(config->GetIntValue("Tags", "CoverArtWriteToWMAMetadata", True));
+	list_coverart_write_tags_format->AddEntry("ID3v2")->SetMark(config->GetIntValue(Config::CategoryTagsID, "CoverArtWriteToID3v2", True));
+	list_coverart_write_tags_format->AddEntry("APEv2")->SetMark(config->GetIntValue(Config::CategoryTagsID, "CoverArtWriteToAPEv2", True));
+	list_coverart_write_tags_format->AddEntry("Vorbis Comment")->SetMark(config->GetIntValue(Config::CategoryTagsID, "CoverArtWriteToVorbisComment", False));
+	list_coverart_write_tags_format->AddEntry("MP4 Metadata")->SetMark(config->GetIntValue(Config::CategoryTagsID, "CoverArtWriteToMP4Metadata", True));
+	list_coverart_write_tags_format->AddEntry("WMA Metadata")->SetMark(config->GetIntValue(Config::CategoryTagsID, "CoverArtWriteToWMAMetadata", True));
 
 	check_coverart_write_files = new CheckBox(BonkEnc::i18n->TranslateString("Write cover art to files"), Point(260, 14), Size(242, 0), &enableCoverArtWriteToFiles);
 	check_coverart_write_files->onAction.Connect(&ConfigureTags::ToggleWriteCoverArt, this);
 
 	text_coverart_write_files_name = new Text(BonkEnc::i18n->TranslateString("Filename pattern:"), Point(277, 38));
-	edit_coverart_write_files_name = new EditBox(config->GetStringValue("Tags", "CoverArtFilenamePattern", "<artist> - <album>\\<type>"), Point(277, 58), Size(225, 0), 0);
+	edit_coverart_write_files_name = new EditBox(config->GetStringValue(Config::CategoryTagsID, "CoverArtFilenamePattern", "<artist> - <album>\\<type>"), Point(277, 58), Size(225, 0), 0);
 
 	check_coverart_write_files_ref = new CheckBox(BonkEnc::i18n->TranslateString("Add reference to audio file tag"), Point(277, 86), Size(225, 0), &enableCoverArtWriteToFilesRef);
 
@@ -266,35 +266,35 @@ Int BonkEnc::ConfigureTags::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->SetIntValue("Tags", "EnableID3v1", list_tag_formats->GetEntry("ID3v1")->IsMarked());
-	config->SetIntValue("Tags", "EnableID3v2", list_tag_formats->GetEntry("ID3v2")->IsMarked());
-	config->SetIntValue("Tags", "EnableAPEv2", list_tag_formats->GetEntry("APEv2")->IsMarked());
-	config->SetIntValue("Tags", "EnableVorbisComment", list_tag_formats->GetEntry("Vorbis Comment")->IsMarked());
-	config->SetIntValue("Tags", "EnableMP4Metadata", list_tag_formats->GetEntry("MP4 Metadata")->IsMarked());
-	config->SetIntValue("Tags", "EnableWMAMetadata", list_tag_formats->GetEntry("WMA Metadata")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "EnableID3v1", list_tag_formats->GetEntry("ID3v1")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "EnableID3v2", list_tag_formats->GetEntry("ID3v2")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "EnableAPEv2", list_tag_formats->GetEntry("APEv2")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "EnableVorbisComment", list_tag_formats->GetEntry("Vorbis Comment")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "EnableMP4Metadata", list_tag_formats->GetEntry("MP4 Metadata")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "EnableWMAMetadata", list_tag_formats->GetEntry("WMA Metadata")->IsMarked());
 
-	config->SetStringValue("Tags", "ID3v1Encoding", id3v1_encoding);
-	config->SetStringValue("Tags", "ID3v2Encoding", id3v2_encoding);
+	config->SetStringValue(Config::CategoryTagsID, "ID3v1Encoding", id3v1_encoding);
+	config->SetStringValue(Config::CategoryTagsID, "ID3v2Encoding", id3v2_encoding);
 
-	config->SetIntValue("Tags", "CoverArtReadFromTags", enableCoverArtReadFromTags);
-	config->SetIntValue("Tags", "CoverArtReadFromFiles", enableCoverArtReadFromFiles);
-	config->SetIntValue("Tags", "CoverArtWriteToTags", enableCoverArtWriteToTags);
-	config->SetIntValue("Tags", "CoverArtWriteToFiles", enableCoverArtWriteToFiles);
-	config->SetIntValue("Tags", "CoverArtWriteToFilesWithReference", enableCoverArtWriteToFilesRef);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, enableCoverArtReadFromTags);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, enableCoverArtReadFromFiles);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, enableCoverArtWriteToTags);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, enableCoverArtWriteToFiles);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesWithReferenceID, enableCoverArtWriteToFilesRef);
 
-	config->SetStringValue("Tags", "CoverArtFilenamePattern", edit_coverart_write_files_name->GetText());
+	config->SetStringValue(Config::CategoryTagsID, "CoverArtFilenamePattern", edit_coverart_write_files_name->GetText());
 
-	config->SetIntValue("Tags", "CoverArtWriteToID3v2", list_coverart_write_tags_format->GetEntry("ID3v2")->IsMarked());
-	config->SetIntValue("Tags", "CoverArtWriteToAPEv2", list_coverart_write_tags_format->GetEntry("APEv2")->IsMarked());
-	config->SetIntValue("Tags", "CoverArtWriteToVorbisComment", list_coverart_write_tags_format->GetEntry("Vorbis Comment")->IsMarked());
-	config->SetIntValue("Tags", "CoverArtWriteToMP4Metadata", list_coverart_write_tags_format->GetEntry("MP4 Metadata")->IsMarked());
-	config->SetIntValue("Tags", "CoverArtWriteToWMAMetadata", list_coverart_write_tags_format->GetEntry("WMA Metadata")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "CoverArtWriteToID3v2", list_coverart_write_tags_format->GetEntry("ID3v2")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "CoverArtWriteToAPEv2", list_coverart_write_tags_format->GetEntry("APEv2")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "CoverArtWriteToVorbisComment", list_coverart_write_tags_format->GetEntry("Vorbis Comment")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "CoverArtWriteToMP4Metadata", list_coverart_write_tags_format->GetEntry("MP4 Metadata")->IsMarked());
+	config->SetIntValue(Config::CategoryTagsID, "CoverArtWriteToWMAMetadata", list_coverart_write_tags_format->GetEntry("WMA Metadata")->IsMarked());
 
-	config->SetIntValue("Tags", "WriteMCDI", writeMCDI);
-	config->SetIntValue("Tags", "PreserveReplayGain", preserveReplayGain);
+	config->SetIntValue(Config::CategoryTagsID, "WriteMCDI", writeMCDI);
+	config->SetIntValue(Config::CategoryTagsID, "PreserveReplayGain", preserveReplayGain);
 
-	config->SetStringValue("Tags", "DefaultComment", edit_defcomment->GetText());
-	config->SetIntValue("Tags", "ReplaceExistingComments", replaceComments);
+	config->SetStringValue(Config::CategoryTagsID, "DefaultComment", edit_defcomment->GetText());
+	config->SetIntValue(Config::CategoryTagsID, "ReplaceExistingComments", replaceComments);
 
 	return Success();
 }

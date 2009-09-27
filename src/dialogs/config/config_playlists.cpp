@@ -13,11 +13,16 @@
 
 BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 {
-	currentConfig = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	createPlaylists	= currentConfig->createPlaylist;
-	createCueSheets	= currentConfig->createCueSheet;
-	useEncOutdir	= currentConfig->playlist_useEncOutdir;
+	String	 playlistOutputDir	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, Config::Get()->enc_outdir);
+	String	 playlistOutputPattern	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
+
+	if (!playlistOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) playlistOutputDir.Append(Directory::GetDirectoryDelimiter());
+
+	createPlaylists	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
+	createCueSheets	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
+	useEncOutdir	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
 
 	group_options		= new GroupBox(BonkEnc::i18n->TranslateString("Playlists"), Point(7, 11), Size(178, 68));
 
@@ -35,7 +40,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	check_useEncOutdir	= new CheckBox(BonkEnc::i18n->TranslateString("Use encoder output directory"), Point(10, 14), Size(236, 0), &useEncOutdir);
 	check_useEncOutdir->onAction.Connect(&ConfigurePlaylists::ToggleUseEncOutdir, this);
 
-	edit_outdir		= new EditBox(currentConfig->playlist_outdir, Point(10, 39), Size(236, 0), 0);
+	edit_outdir		= new EditBox(playlistOutputDir, Point(10, 39), Size(236, 0), 0);
 
 	button_outdir_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(254, 38), Size(0, 0));
 	button_outdir_browse->onAction.Connect(&ConfigurePlaylists::SelectDir, this);
@@ -46,7 +51,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 
 	group_filename		= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), Point(193, 92), Size(344, 43));
 
-	edit_filename		= new EditBox(currentConfig->playlist_filePattern, Point(10, 12), Size(324, 0), 0);
+	edit_filename		= new EditBox(playlistOutputPattern, Point(10, 12), Size(324, 0), 0);
 
 	list_filename		= new ListBox(Point(), Size());
 	list_filename->AddEntry("<artist> - <album>");
@@ -129,13 +134,18 @@ Void BonkEnc::ConfigurePlaylists::ToggleUseEncOutdir()
 
 Int BonkEnc::ConfigurePlaylists::SaveSettings()
 {
-	currentConfig->createPlaylist		= createPlaylists;
-	currentConfig->createCueSheet		= createCueSheets;
-	currentConfig->playlist_outdir		= edit_outdir->GetText();
-	currentConfig->playlist_filePattern	= edit_filename->GetText();
-	currentConfig->playlist_useEncOutdir	= useEncOutdir;
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (!currentConfig->playlist_outdir.EndsWith("\\")) currentConfig->playlist_outdir.Append("\\");
+	String	 playlistOutputDir	= edit_outdir->GetText();
+	String	 playlistOutputPattern	= edit_filename->GetText();
+
+	if (!playlistOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) playlistOutputDir.Append(Directory::GetDirectoryDelimiter());
+
+	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, createPlaylists);
+	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, createCueSheets);
+	config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, playlistOutputDir);
+	config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, playlistOutputPattern);
+	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, useEncOutdir);
 
 	return Success();
 }

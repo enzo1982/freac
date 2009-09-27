@@ -13,9 +13,72 @@
 
 BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
+const String	 BonkEnc::Config::CategorySettingsID				= "Settings";
+const String	 BonkEnc::Config::CategoryJoblistID				= "Joblist";
+const String	 BonkEnc::Config::CategoryPlaylistID				= "Playlist";
+const String	 BonkEnc::Config::CategoryTagsID				= "Tags";
+
+/* Category Settings
+ */
+const String	 BonkEnc::Config::SettingsShowTipsID				= "ShowTips";
+const Bool	 BonkEnc::Config::SettingsShowTipsDefault			= True;
+
+const String	 BonkEnc::Config::SettingsNextTipID				= "NextTip";
+const Int	 BonkEnc::Config::SettingsNextTipDefault			= 0;
+
+const String	 BonkEnc::Config::SettingsLastUsedGenreID			= "LastUsedGenre";
+
+const String	 BonkEnc::Config::SettingsLastFilePatternID			= "LastFilePattern";
+
+const String	 BonkEnc::Config::SettingsLastAddedDirID			= "LastAddedDir";
+const String	 BonkEnc::Config::SettingsLastAddedDirDefault			= NIL;
+
+const String	 BonkEnc::Config::SettingsLastAddedPatternID			= "LastAddedPattern";
+const String	 BonkEnc::Config::SettingsLastAddedPatternDefault		= NIL;
+
+/* Category Joblist
+ */
+const String	 BonkEnc::Config::JoblistFieldsID				= "Fields";
+const String	 BonkEnc::Config::JoblistFieldsDefault				= "<artist>,<title>,<track>,<time>,<bytes>";
+
+const String	 BonkEnc::Config::JoblistFieldSizesID				= "FieldSizes";
+const String	 BonkEnc::Config::JoblistFieldSizesDefault			= "120,*,50,80,80";
+
+/* Category Playlist
+ */
+const String	 BonkEnc::Config::PlaylistCreatePlaylistID			= "CreatePlaylist";
+const Bool	 BonkEnc::Config::PlaylistCreatePlaylistDefault			= False;
+
+const String	 BonkEnc::Config::PlaylistCreateCueSheetID			= "CreateCueSheet";
+const Bool	 BonkEnc::Config::PlaylistCreateCueSheetDefault			= False;
+
+const String	 BonkEnc::Config::PlaylistUseEncoderOutputDirID			= "UseEncoderOutputDir";
+const Bool	 BonkEnc::Config::PlaylistUseEncoderOutputDirDefault		= True;
+
+const String	 BonkEnc::Config::PlaylistOutputDirID				= "OutputDir";
+
+const String	 BonkEnc::Config::PlaylistFilenamePatternID			= "FilenamePattern";
+const String	 BonkEnc::Config::PlaylistFilenamePatternDefault		= "<artist> - <album>\\<artist> - <album>";
+
+/* Category Tags
+ */
+const String	 BonkEnc::Config::TagsCoverArtReadFromTagsID			= "CoverArtReadFromTags";
+const Bool	 BonkEnc::Config::TagsCoverArtReadFromTagsDefault		= True;
+
+const String	 BonkEnc::Config::TagsCoverArtReadFromFilesID			= "CoverArtReadFromFiles";
+const Bool	 BonkEnc::Config::TagsCoverArtReadFromFilesDefault		= True;
+
+const String	 BonkEnc::Config::TagsCoverArtWriteToTagsID			= "CoverArtWriteToTags";
+const Bool	 BonkEnc::Config::TagsCoverArtWriteToTagsDefault		= True;
+
+const String	 BonkEnc::Config::TagsCoverArtWriteToFilesID			= "CoverArtWriteToFiles";
+const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesDefault		= False;
+
+const String	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceID	= "CoverArtWriteToFilesWithReference";
+const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= False;
+
 BonkEnc::Config::Config()
 {
-//	languageChanged		= False;
 	deleteAfterEncoding	= False;
 	shutdownAfterEncoding	= False;
 
@@ -94,64 +157,26 @@ Bool BonkEnc::Config::LoadSettings()
 
 	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);
 
-	firstStart				= config->GetIntValue("Settings", "FirstStart", 1);
-	encoderID				= config->GetStringValue("Settings", "Encoder", "wave-out");
-	enc_outdir				= config->GetStringValue("Settings", "EncoderOutDir", personalDir);
-	enc_filePattern				= config->GetStringValue("Settings", "EncoderFilenamePattern", "<artist> - <album>\\<artist> - <album> - <track> - <title>");
-	enc_onTheFly				= config->GetIntValue("Settings", "EncodeOnTheFly", 1);
-	enc_keepWaves				= config->GetIntValue("Settings", "KeepWaveFiles", 0);
-	playlist_useEncOutdir			= config->GetIntValue("Settings", "PlaylistUseEncOutDir", 1);
-	playlist_outdir				= config->GetStringValue("Settings", "PlaylistOutDir", personalDir);
-	playlist_filePattern			= config->GetStringValue("Settings", "PlaylistFilenamePattern", "<artist> - <album>\\<artist> - <album>");
-	useUnicodeNames				= config->GetIntValue("Settings", "UseUnicodeFilenames", 1);
-	showTitleInfo				= config->GetIntValue("Settings", "ShowTitleInfo", 1);
-	showTooltips				= config->GetIntValue("Settings", "ShowTooltips", 1);
-	wndPos.x				= config->GetIntValue("Settings", "WindowPosX", 100);
-	wndPos.y				= config->GetIntValue("Settings", "WindowPosY", 100);
-	wndSize.cx				= config->GetIntValue("Settings", "WindowSizeX", 800);
-	wndSize.cy				= config->GetIntValue("Settings", "WindowSizeY", 600);
-	maximized				= config->GetIntValue("Settings", "WindowMaximized", 0);
-	tab_width_track				= config->GetIntValue("Settings", "TabWidthTrack", 50);
-	tab_width_length			= config->GetIntValue("Settings", "TabWidthLength", 80);
-	tab_width_size				= config->GetIntValue("Settings", "TabWidthSize", 80);
-	showTips				= config->GetIntValue("Settings", "ShowTips", 1);
-	tipOffset				= config->GetIntValue("Settings", "TipOffset", 0);
-	checkUpdatesAtStartup			= config->GetIntValue("Settings", "CheckUpdatesAtStartup", 1);
-	createPlaylist				= config->GetIntValue("Settings", "CreatePlaylist", 0);
-	createCueSheet				= config->GetIntValue("Settings", "CreateCueSheet", 0);
-	lastAddedDir				= config->GetStringValue("Settings", "LastAddedDir", NIL);
-	lastAddedPattern			= config->GetStringValue("Settings", "LastAddedPattern", NIL);
-	writeToInputDir				= config->GetIntValue("Settings", "WriteToInputDirectory", 0);
-	allowOverwrite				= config->GetIntValue("Settings", "AllowOverwriteSource", 0);
-	encodeToSingleFile			= config->GetIntValue("Settings", "EncodeToSingleFile", 0);
-
-	enable_auto_cddb			= config->GetIntValue("freedb", "AutoCDDBQueries", 1);
-	enable_overwrite_cdtext			= config->GetIntValue("freedb", "OverwriteCDText", 1);
-	enable_cddb_cache			= config->GetIntValue("freedb", "EnableCDDBCache", 1);
-	enable_local_cddb			= config->GetIntValue("freedb", "EnableLocalCDDB", 0);
-	freedb_dir				= config->GetStringValue("freedb", "Directory", "freedb\\");
-	enable_remote_cddb			= config->GetIntValue("freedb", "EnableRemoteCDDB", 1);
-	freedb_server				= config->GetStringValue("freedb", "Server", "freedb.freedb.org");
-	freedb_mode				= config->GetIntValue("freedb", "Mode", 0);
-	freedb_cddbp_port			= config->GetIntValue("freedb", "CDDBPPort", 8880);
-	freedb_http_port			= 80;
-	freedb_query_path			= config->GetStringValue("freedb", "QueryPath", "/~cddb/cddb.cgi");
-	freedb_submit_path			= config->GetStringValue("freedb", "SubmitPath", "/~cddb/submit.cgi");
-	freedb_email				= config->GetStringValue("freedb", "eMail", "cddb@bonkenc.org");
-	freedb_proxy_mode			= config->GetIntValue("freedb", "ProxyMode", 0);
-	freedb_proxy				= config->GetStringValue("freedb", "Proxy", "localhost");
-	freedb_proxy_port			= config->GetIntValue("freedb", "ProxyPort", 1080);
-	freedb_proxy_user			= config->GetStringValue("freedb", "ProxyUserName", NIL);
-	freedb_proxy_password			= config->GetStringValue("freedb", "ProxyPassword", NIL);
-	update_joblist				= config->GetIntValue("freedb", "UpdateJoblistOnSubmit", 1);
+	firstStart				= config->GetIntValue(CategorySettingsID, "FirstStart", 1);
+	encoderID				= config->GetStringValue(CategorySettingsID, "Encoder", "wave-out");
+	enc_outdir				= config->GetStringValue(CategorySettingsID, "EncoderOutDir", personalDir);
+	showTitleInfo				= config->GetIntValue(CategorySettingsID, "ShowTitleInfo", 1);
+	showTooltips				= config->GetIntValue(CategorySettingsID, "ShowTooltips", 1);
+	wndPos.x				= config->GetIntValue(CategorySettingsID, "WindowPosX", 100);
+	wndPos.y				= config->GetIntValue(CategorySettingsID, "WindowPosY", 100);
+	wndSize.cx				= config->GetIntValue(CategorySettingsID, "WindowSizeX", 800);
+	wndSize.cy				= config->GetIntValue(CategorySettingsID, "WindowSizeY", 600);
+	maximized				= config->GetIntValue(CategorySettingsID, "WindowMaximized", 0);
+	checkUpdatesAtStartup			= config->GetIntValue(CategorySettingsID, "CheckUpdatesAtStartup", 1);
+	encodeToSingleFile			= config->GetIntValue(CategorySettingsID, "EncodeToSingleFile", 0);
 
 	delete config;
 
-	if (!enc_outdir.EndsWith(Directory::GetDirectoryDelimiter()))	   enc_outdir.Append(Directory::GetDirectoryDelimiter());
-	if (!playlist_outdir.EndsWith(Directory::GetDirectoryDelimiter())) playlist_outdir.Append(Directory::GetDirectoryDelimiter());
-	if (!freedb_dir.EndsWith(Directory::GetDirectoryDelimiter()))	   freedb_dir.Append(Directory::GetDirectoryDelimiter());
+	if (!enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) enc_outdir.Append(Directory::GetDirectoryDelimiter());
 
-	if (encodeToSingleFile && !enc_onTheFly) enc_onTheFly = True;
+/* ToDo: Reactivate this check once everything is in BoCA::Config.
+ */
+//	if (encodeToSingleFile && !enc_onTheFly) enc_onTheFly = True;
 
 	return True;
 }
@@ -164,55 +189,18 @@ Bool BonkEnc::Config::SaveSettings()
 
 	if (config->Open(String(configDir).Append("config.xml"), True) == Success())
 	{
-		config->SetIntValue("Settings", "FirstStart", 0);
-		config->SetStringValue("Settings", "Encoder", encoderID);
-		config->SetStringValue("Settings", "EncoderOutDir", enc_outdir);
-		config->SetStringValue("Settings", "EncoderFilenamePattern", enc_filePattern);
-		config->SetIntValue("Settings", "EncodeOnTheFly", enc_onTheFly);
-		config->SetIntValue("Settings", "KeepWaveFiles", enc_keepWaves);
-		config->SetIntValue("Settings", "PlaylistUseEncOutDir", playlist_useEncOutdir);
-		config->SetStringValue("Settings", "PlaylistOutDir", playlist_outdir);
-		config->SetStringValue("Settings", "PlaylistFilenamePattern", playlist_filePattern);
-		config->SetIntValue("Settings", "UseUnicodeFilenames", useUnicodeNames);
-		config->SetIntValue("Settings", "ShowTitleInfo", showTitleInfo);
-		config->SetIntValue("Settings", "ShowTooltips", showTooltips);
-		config->SetIntValue("Settings", "WindowPosX", wndPos.x);
-		config->SetIntValue("Settings", "WindowPosY", wndPos.y);
-		config->SetIntValue("Settings", "WindowSizeX", wndSize.cx);
-		config->SetIntValue("Settings", "WindowSizeY", wndSize.cy);
-		config->SetIntValue("Settings", "WindowMaximized", maximized);
-		config->SetIntValue("Settings", "TabWidthTrack", tab_width_track);
-		config->SetIntValue("Settings", "TabWidthLength", tab_width_length);
-		config->SetIntValue("Settings", "TabWidthSize", tab_width_size);
-		config->SetIntValue("Settings", "ShowTips", showTips);
-		config->SetIntValue("Settings", "TipOffset", tipOffset);
-		config->SetIntValue("Settings", "CheckUpdatesAtStartup", checkUpdatesAtStartup);
-		config->SetIntValue("Settings", "CreatePlaylist", createPlaylist);
-		config->SetIntValue("Settings", "CreateCueSheet", createCueSheet);
-		config->SetStringValue("Settings", "LastAddedDir", lastAddedDir);
-		config->SetStringValue("Settings", "LastAddedPattern", lastAddedPattern);
-		config->SetIntValue("Settings", "WriteToInputDirectory", writeToInputDir);
-		config->SetIntValue("Settings", "AllowOverwriteSource", allowOverwrite);
-		config->SetIntValue("Settings", "EncodeToSingleFile", encodeToSingleFile);
-
-		config->SetIntValue("freedb", "AutoCDDBQueries", enable_auto_cddb);
-		config->SetIntValue("freedb", "OverwriteCDText", enable_overwrite_cdtext);
-		config->SetIntValue("freedb", "EnableCDDBCache", enable_cddb_cache);
-		config->SetIntValue("freedb", "EnableLocalCDDB", enable_local_cddb);
-		config->SetStringValue("freedb", "Directory", freedb_dir);
-		config->SetIntValue("freedb", "EnableRemoteCDDB", enable_remote_cddb);
-		config->SetStringValue("freedb", "Server", freedb_server);
-		config->SetIntValue("freedb", "Mode", freedb_mode);
-		config->SetIntValue("freedb", "CDDBPPort", freedb_cddbp_port);
-		config->SetStringValue("freedb", "QueryPath", freedb_query_path);
-		config->SetStringValue("freedb", "SubmitPath", freedb_submit_path);
-		config->SetStringValue("freedb", "eMail", freedb_email);
-		config->SetIntValue("freedb", "ProxyMode", freedb_proxy_mode);
-		config->SetStringValue("freedb", "Proxy", freedb_proxy);
-		config->SetIntValue("freedb", "ProxyPort", freedb_proxy_port);
-		config->SetStringValue("freedb", "ProxyUserName", freedb_proxy_user);
-		config->SetStringValue("freedb", "ProxyPassword", freedb_proxy_password);
-		config->SetIntValue("freedb", "UpdateJoblistOnSubmit", update_joblist);
+		config->SetIntValue(CategorySettingsID, "FirstStart", 0);
+		config->SetStringValue(CategorySettingsID, "Encoder", encoderID);
+		config->SetStringValue(CategorySettingsID, "EncoderOutDir", enc_outdir);
+		config->SetIntValue(CategorySettingsID, "ShowTitleInfo", showTitleInfo);
+		config->SetIntValue(CategorySettingsID, "ShowTooltips", showTooltips);
+		config->SetIntValue(CategorySettingsID, "WindowPosX", wndPos.x);
+		config->SetIntValue(CategorySettingsID, "WindowPosY", wndPos.y);
+		config->SetIntValue(CategorySettingsID, "WindowSizeX", wndSize.cx);
+		config->SetIntValue(CategorySettingsID, "WindowSizeY", wndSize.cy);
+		config->SetIntValue(CategorySettingsID, "WindowMaximized", maximized);
+		config->SetIntValue(CategorySettingsID, "CheckUpdatesAtStartup", checkUpdatesAtStartup);
+		config->SetIntValue(CategorySettingsID, "EncodeToSingleFile", encodeToSingleFile);
 
 		config->Save();
 	}

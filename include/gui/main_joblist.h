@@ -114,6 +114,9 @@ namespace BonkEnc
 			JobList			*joblist;
 			Playback		*player;
 
+			Bool			 createPlaylist;
+			Bool			 createCueSheet;
+
 			Bool			 dontUpdateInfo;
 
 			Int			 clicked_charset;

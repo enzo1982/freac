@@ -13,7 +13,9 @@
 
 BonkEnc::AddPatternDialog::AddPatternDialog()
 {
-	currentConfig = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	Config	*currentConfig = Config::Get();
 
 	Point	 pos;
 	Size	 size;
@@ -60,7 +62,7 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	size.cx = 268 - Math::Max(text_directory->textSize.cx, text_pattern->textSize.cx);
 	size.cy = 0;
 
-	edit_directory	= new EditBox(currentConfig->lastAddedDir, pos, size);
+	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), pos, size);
 
 	pos.x += (size.cx + 8);
 	pos.y -= 1;
@@ -74,7 +76,7 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	size.cx = edit_directory->GetWidth() + 88;
 	size.cy = 0;
 
-	edit_pattern	= new EditBox(currentConfig->lastAddedPattern, pos, size);
+	edit_pattern	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedPatternID, Config::SettingsLastAddedPatternDefault), pos, size);
 
 	Add(mainWnd);
 
@@ -127,8 +129,10 @@ String BonkEnc::AddPatternDialog::GetPattern()
 
 Void BonkEnc::AddPatternDialog::OK()
 {
-	currentConfig->lastAddedDir = edit_directory->GetText();
-	currentConfig->lastAddedPattern = edit_pattern->GetText();
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, edit_directory->GetText());
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedPatternID, edit_pattern->GetText());
 
 	mainWnd->Close();
 }

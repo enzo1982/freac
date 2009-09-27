@@ -27,9 +27,9 @@ int cddb_sum(int n)
 
 BonkEnc::CDDB::CDDB()
 {
-	config = Config::Get();
+	config = BoCA::Config::Get();
 
-	activeDriveID = BoCA::Config::Get()->cdrip_activedrive;
+	activeDriveID = config->cdrip_activedrive;
 	updateTrackOffsets = True;
 }
 
@@ -209,8 +209,6 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	if (query == QUERY_RESULT_ERROR) return False;
 
-	CDDBInfo revisionInfo;
-
 	if (cddbInfo.revision == 0)
 	{
 		// This is a new entry; see if it already exists in another category
@@ -223,6 +221,8 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	if (query != QUERY_RESULT_FUZZY)
 	{
+		CDDBInfo	 revisionInfo;
+
 		while (Read(cddbInfo.category, cddbInfo.discID, revisionInfo))
 		{
 			Bool	 foundCollision = False;

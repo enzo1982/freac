@@ -35,6 +35,8 @@ namespace BonkEnc
 
 			Array<Track *>			 tracks;
 
+			Int				 headerTabsHash;
+
 			Bool				 AddTrack(const Track &);
 
 			Void				 AddHeaderTabs();
@@ -83,6 +85,7 @@ namespace BonkEnc
 
 			Void				 OnComponentSelectTrack(const Track &);
 
+			Void				 OnChangeConfigurationSettings();
 			Void				 OnChangeLanguageSettings();
 	};
 };

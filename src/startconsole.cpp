@@ -21,23 +21,8 @@ using namespace BoCA::AS;
 
 Int StartConsole(const Array<String> &args)
 {
-	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug Output");
-
-	debug->Write("");
-	debug->Write("=========================================");
-	debug->Write("= Starting BonkEnc command line tool... =");
-	debug->Write("=========================================");
-	debug->Write("");
-
 	BonkEnc::BonkEncCommandline::Get(args);
 	BonkEnc::BonkEncCommandline::Free();
-
-	debug->Write("");
-	debug->Write("======================================");
-	debug->Write("= Leaving BonkEnc command line tool! =");
-	debug->Write("======================================");
-
-	BoCA::Protocol::Free();
 
 	return 0;
 }
@@ -291,16 +276,16 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	if (!broken)
 	{
 		currentConfig->enc_outdir = outdir;
-		currentConfig->enc_filePattern = pattern;
+		componentsConfig->enc_filePattern = pattern;
 
-		currentConfig->enable_auto_cddb = cddb;
-		currentConfig->enable_cddb_cache = True;
+		componentsConfig->enable_auto_cddb = cddb;
+		componentsConfig->enable_cddb_cache = True;
 
 		componentsConfig->SetIntValue("CDRip", "LockTray", False);
 		componentsConfig->cdrip_timeout = timeout.ToInt();
 
 		currentConfig->encodeToSingleFile = False;
-		currentConfig->writeToInputDir = False;
+		componentsConfig->writeToInputDir = False;
 
 		if (!currentConfig->enc_outdir.EndsWith("\\")) currentConfig->enc_outdir.Append("\\");
 

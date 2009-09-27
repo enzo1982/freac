@@ -90,9 +90,9 @@ Void BonkEnc::Utilities::FillGenreList(List *list)
 
 	for (Int i = 1; i <= 5; i++)
 	{
-		if (config->GetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i)), NIL) != NIL)
+		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastUsedGenreID).Append(String::FromInt(i)), NIL) != NIL)
 		{
-			list->AddEntry(config->GetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i)), NIL));
+			list->AddEntry(config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastUsedGenreID).Append(String::FromInt(i)), NIL));
 
 			customEntries++;
 		}
@@ -262,7 +262,7 @@ Void BonkEnc::Utilities::UpdateGenreList(List *list, const String &genre)
 
 	for (Int i = 1; i <= 5; i++)
 	{
-		if (config->GetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i)), NIL) == genre)
+		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastUsedGenreID).Append(String::FromInt(i)), NIL) == genre)
 		{
 			number = i;
 
@@ -272,10 +272,10 @@ Void BonkEnc::Utilities::UpdateGenreList(List *list, const String &genre)
 
 	for (Int i = number; i > 1; i--)
 	{
-		config->SetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i)), config->GetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(i - 1)), NIL));
+		config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastUsedGenreID).Append(String::FromInt(i)), config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastUsedGenreID).Append(String::FromInt(i - 1)), NIL));
 	}
 
-	config->SetStringValue("Settings", String("LastUsedGenre").Append(String::FromInt(1)), genre);
+	config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastUsedGenreID).Append(String::FromInt(1)), genre);
 
 	list->RemoveAllEntries();
 
@@ -284,6 +284,8 @@ Void BonkEnc::Utilities::UpdateGenreList(List *list, const String &genre)
 
 String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool repSlash)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	String	 rVal;
 
 	for (Int k = 0, b = 0; k < string.Length(); k++)
@@ -298,7 +300,7 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 		else if (string[k] == '/' && repSlash)	rVal[k + b] = '-';
 		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '-';
 		else if (string[k] >= 256 &&
-			(!Config::Get()->useUnicodeNames ||
+			(!config->useUnicodeNames ||
 			 !Setup::enableUnicode))	rVal[k + b] = '#';
 		else					rVal[k + b] = string[k];
 	}

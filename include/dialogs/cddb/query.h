@@ -28,8 +28,6 @@ namespace BonkEnc
 			Progressbar	*prog_status;
 			Button		*btn_cancel;
 
-			Config		*currentConfig;
-
 			CDDBInfo	 rCDDBInfo;
 			String		 queryString;
 

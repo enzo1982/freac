@@ -45,6 +45,7 @@ Geschichte
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Fehler in ID3lib behoben, um korrektes Lesen und Schreiben von ID3v2.4-Tags zu gewährleisten
 		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
+		- Fehler beim automatischen Einlesen von CDs beim Einlegen behoben
 		- Fehler in Cuesheets für mehrere Titel in einer Datei behoben
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
 		- Absturz beim Codieren in einzelne MP4-Datei behoben

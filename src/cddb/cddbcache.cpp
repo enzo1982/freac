@@ -11,6 +11,9 @@
 #include <cddb/cddbcache.h>
 #include <cddb/cddblocal.h>
 
+#include <config.h>
+#include <boca.h>
+
 BonkEnc::CDDBCache *BonkEnc::CDDBCache::instance = NIL;
 
 BonkEnc::CDDBCache::CDDBCache()
@@ -50,9 +53,9 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	/* Save current freedb path
 	 */
-	String	 configFreedbDir = config->freedb_dir;
+	String	 configFreedbDir = BoCA::Config::Get()->freedb_dir;
 
-	config->freedb_dir = String(config->configDir).Append("cddb\\");
+	BoCA::Config::Get()->freedb_dir = String(config->configDir).Append("cddb\\");
 
 	CDDBLocal	 cddbLocal;
 
@@ -72,7 +75,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	/* Restore real freedb path
 	 */
-	config->freedb_dir = configFreedbDir;
+	BoCA::Config::Get()->freedb_dir = configFreedbDir;
 
 	return infoCache.Get(discID);
 }
@@ -91,16 +94,16 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	infoCache.Add(nCddbInfo, nCddbInfo.discID);
 
-	if (!config->enable_cddb_cache) return True;
+	if (!BoCA::Config::Get()->enable_cddb_cache) return True;
 
 	/* Save new entry to the persistant cache
 	 */
 
 	/* Save current freedb path
 	 */
-	String	 configFreedbDir = config->freedb_dir;
+	String	 configFreedbDir = BoCA::Config::Get()->freedb_dir;
 
-	config->freedb_dir = String(config->configDir).Append("cddb\\");
+	BoCA::Config::Get()->freedb_dir = String(config->configDir).Append("cddb\\");
 
 	CDDBLocal	 cddbLocal;
 
@@ -110,7 +113,7 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	/* Restore real freedb path
 	 */
-	config->freedb_dir = configFreedbDir;
+	BoCA::Config::Get()->freedb_dir = configFreedbDir;
 
 	return True;
 }

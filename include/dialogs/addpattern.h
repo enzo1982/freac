@@ -33,8 +33,6 @@ namespace BonkEnc
 
 			Button		*btn_ok;
 			Button		*btn_cancel;
-
-			Config		*currentConfig;
 		public:
 					 AddPatternDialog();
 					~AddPatternDialog();

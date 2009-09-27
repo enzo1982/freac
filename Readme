@@ -45,6 +45,7 @@ History
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed ID3lib to read and write correct ID3v2.4 tags
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
+		- fixed automatic reading of CD contents on disc insert
 		- fixed creation of cuesheets for multiple tracks in a single file
 		- fixed total progress bar not working correctly with many tracks in joblist
 		- fixed crash when encoding to single MP4 file

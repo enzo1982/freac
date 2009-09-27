@@ -41,8 +41,6 @@ namespace BonkEnc
 			Button		*btn_cancel;
 			Button		*btn_ok;
 
-			Config		*currentConfig;
-
 			Bool		 updateJoblist;
 		public:
 					 cddbManageDlg();

@@ -11,7 +11,8 @@
 #ifndef H_BONKENC_CDDB
 #define H_BONKENC_CDDB
 
-#include <config.h>
+#include <boca.h>
+
 #include <cddb/cddbinfo.h>
 
 const Int	 FREEDB_MODE_HTTP	= 0;
@@ -29,7 +30,7 @@ namespace BonkEnc
 	{
 		protected:
 			Int		 activeDriveID;
-			Config		*config;
+			BoCA::Config	*config;
 
 			Array<Int>	 ids;
 			Array<String>	 titles;

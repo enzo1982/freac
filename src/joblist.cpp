@@ -31,7 +31,7 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 {
 	SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 
-	AddHeaderTabs();
+	headerTabsHash = 0;
 
 	onRegister.Connect(&JobList::OnRegister, this);
 	onUnregister.Connect(&JobList::OnUnregister, this);
@@ -64,10 +64,31 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
 	button_sel_toggle->SetTooltipText(BonkEnc::i18n->TranslateString("Toggle selection"));
+
+	/* Add tabs and update headerTabsHash.
+	 */
+	OnChangeConfigurationSettings();
 }
 
 BonkEnc::JobList::~JobList()
 {
+	/* Save tab field sizes.
+	 */
+// ToDo: Fix this.
+/*	String	 fieldSizes;
+
+	for (Int i = 0; i < GetNOfTabs(); i++)
+	{
+		if (i > 0) fieldSizes.Append(",");
+
+		if (GetNthTabWidth(i) <= 0) fieldSizes.Append("*");
+		else			    fieldSizes.Append(String::FromInt(GetNthTabWidth(i)));
+	}
+
+	BoCA::Config::Get()->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
+*/
+	/* Clean up.
+	 */
 	BoCA::JobList::Get()->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
 	BoCA::JobList::Get()->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
@@ -124,7 +145,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	 *
 	 * ToDo: Enable encoding heuristics by default once it's ready.
 	 */
-	if (BoCA::Config::Get()->GetIntValue("Settings", "EnableEncodingHeuristics", False))
+	if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, "EnableEncodingHeuristics", False))
 	{
 		Info	&info = track->GetInfo();
 
@@ -513,7 +534,8 @@ Void BonkEnc::JobList::OnRegister(Widget *container)
 	container->Add(button_sel_none);
 	container->Add(button_sel_toggle);
 
-	((BonkEncGUI *) BonkEnc::Get())->onChangeLanguageSettings.Connect(&JobList::OnChangeLanguageSettings, this);
+	BoCA::Settings::Get()->onChangeConfigurationSettings.Connect(&JobList::OnChangeConfigurationSettings, this);
+	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&JobList::OnChangeLanguageSettings, this);
 }
 
 Void BonkEnc::JobList::OnUnregister(Widget *container)
@@ -525,7 +547,8 @@ Void BonkEnc::JobList::OnUnregister(Widget *container)
 	container->Remove(button_sel_none);
 	container->Remove(button_sel_toggle);
 
-	((BonkEncGUI *) BonkEnc::Get())->onChangeLanguageSettings.Disconnect(&JobList::OnChangeLanguageSettings, this);
+	BoCA::Settings::Get()->onChangeConfigurationSettings.Disconnect(&JobList::OnChangeConfigurationSettings, this);
+	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&JobList::OnChangeLanguageSettings, this);
 }
 
 Void BonkEnc::JobList::OnSelectEntry()
@@ -554,6 +577,21 @@ Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
 			break;
 		}
 	}
+}
+
+Void BonkEnc::JobList::OnChangeConfigurationSettings()
+{
+	String headerTabsConfig = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault);
+
+	if (headerTabsConfig.ComputeCRC32() != headerTabsHash)
+	{
+		/* We basically need the functionality of
+		 * OnChangeLanguageSettings here, so let's call that.
+		 */
+		OnChangeLanguageSettings();
+	}
+
+	headerTabsHash = headerTabsConfig.ComputeCRC32();
 }
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()
@@ -590,7 +628,7 @@ Void BonkEnc::JobList::AddHeaderTabs()
 {
 	RemoveAllTabs();
 
-	const Array<String>	&cFields = BoCA::Config::Get()->GetStringValue("Joblist", "Fields", "<artist>,<title>,<track>,<time>,<bytes>").Explode(",");
+	const Array<String>	&cFields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
 	/* Copy fields array because it will be replaced
 	 * in the second call to String::Explode().
@@ -599,7 +637,7 @@ Void BonkEnc::JobList::AddHeaderTabs()
 
 	foreach (String field, cFields) fields.Add(field);
 
-	const Array<String>	&sizes = BoCA::Config::Get()->GetStringValue("Joblist", "FieldSizes", "120,*,50,80,80").Explode(",");
+	const Array<String>	&sizes = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
 
 	for (Int i = 0; i < fields.Length(); i++)
 	{
@@ -630,7 +668,7 @@ Void BonkEnc::JobList::UpdateTextLine()
 String BonkEnc::JobList::GetEntryText(const Track &track) const
 {
 	const Info		&info = track.GetInfo();
-	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue("Joblist", "Fields", "<artist>,<title>,<track>,<time>,<bytes>").Explode(",");
+	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
 	String			 jlEntry;
 

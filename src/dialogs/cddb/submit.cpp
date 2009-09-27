@@ -23,19 +23,19 @@
 
 BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 {
-	currentConfig	= Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	activedrive	= BoCA::Config::Get()->cdrip_activedrive;
-	updateJoblist	= currentConfig->update_joblist;
+	activedrive	= config->cdrip_activedrive;
+	updateJoblist	= config->update_joblist;
 
-	submitLater	= !currentConfig->enable_remote_cddb;
+	submitLater	= !config->enable_remote_cddb;
 
 	dontUpdateInfo	= False;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(502, 453));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), Config::Get()->wndPos + Point(40, 40), Size(502, 453));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -56,7 +56,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	btn_submit->onAction.Connect(&cddbSubmitDlg::Submit, this);
 	btn_submit->SetOrientation(OR_LOWERRIGHT);
 
-	if (!currentConfig->enable_remote_cddb) btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+	if (!config->enable_remote_cddb) btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
 
 	pos.x = 3;
 	pos.y = 39;
@@ -87,9 +87,9 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	combo_drive	= new ComboBox(pos, size);
 
-	for (int j = 0; j < BoCA::Config::Get()->cdrip_numdrives; j++)
+	for (int j = 0; j < config->cdrip_numdrives; j++)
 	{
-		combo_drive->AddEntry(BoCA::Config::Get()->cdrip_drives.GetNth(j));
+		combo_drive->AddEntry(config->cdrip_drives.GetNth(j));
 	}
 
 	combo_drive->SelectNthEntry(activedrive);
@@ -315,6 +315,8 @@ const Error &BonkEnc::cddbSubmitDlg::ShowDialog()
 
 Void BonkEnc::cddbSubmitDlg::Submit()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	if (!IsDataValid())
 	{
 		Utilities::ErrorMessage("Please fill all fields and track titles before submitting.");
@@ -347,7 +349,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 	Int	 revision = cddbInfo.revision;
 
-	if (currentConfig->enable_local_cddb)
+	if (config->enable_local_cddb)
 	{
 		CDDBLocal	 cddb;
 
@@ -364,7 +366,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		cddb.SetActiveDrive(activedrive);
 		cddb.AddSubmit(cddbInfo);
 	}
-	else if (currentConfig->enable_remote_cddb)
+	else if (config->enable_remote_cddb)
 	{
 		CDDBRemote	 cddb;
 
@@ -422,7 +424,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		}
 	}
 
-	currentConfig->update_joblist = updateJoblist;
+	config->update_joblist = updateJoblist;
 
 	mainWnd->Close();
 }
@@ -464,6 +466,8 @@ Void BonkEnc::cddbSubmitDlg::UpdateTrackList()
 
 Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 #ifdef __WIN32__
 	activedrive = combo_drive->GetSelectedEntryNumber();
 
@@ -517,15 +521,15 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		btn_submit->Activate();
 	}
 
-	Int	 oDrive = BoCA::Config::Get()->cdrip_activedrive;
+	Int	 oDrive = config->cdrip_activedrive;
 
-	BoCA::Config::Get()->cdrip_activedrive = activedrive;
+	config->cdrip_activedrive = activedrive;
 
 	CDDBRemote	 cddb;
 	Int		 iDiscid = cddb.ComputeDiscID();
 	CDDBInfo	 cdInfo;
 
-	if (currentConfig->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(iDiscid);
+	if (config->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(iDiscid);
 
 	if (cdInfo == NIL)
 	{
@@ -540,7 +544,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 	}
 
-	BoCA::Config::Get()->cdrip_activedrive = oDrive;
+	config->cdrip_activedrive = oDrive;
 
 	dontUpdateInfo = True;
 
@@ -769,8 +773,10 @@ Void BonkEnc::cddbSubmitDlg::UpdateComment()
 
 Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()
 {
-	if (!submitLater && currentConfig->enable_remote_cddb)	btn_submit->SetText(BonkEnc::i18n->TranslateString("Submit"));
-	else							btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (!submitLater && config->enable_remote_cddb)	btn_submit->SetText(BonkEnc::i18n->TranslateString("Submit"));
+	else						btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
 }
 
 Bool BonkEnc::cddbSubmitDlg::IsDataValid()
