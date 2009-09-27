@@ -43,30 +43,11 @@
 
 Int smooth::Main()
 {
-	BonkEnc::debug_out = new BonkEnc::Debug("BonkEnc.log");
-
-	BonkEnc::debug_out->OutputLine("");
-	BonkEnc::debug_out->OutputLine("=======================");
-	BonkEnc::debug_out->OutputLine("= Starting BonkEnc... =");
-	BonkEnc::debug_out->OutputLine("=======================");
-	BonkEnc::debug_out->OutputLine("");
-
 	BonkEnc::BonkEncGUI	*app = new BonkEnc::BonkEncGUI();
-
-	BonkEnc::debug_out->EnterMethod("smooth::Loop()");
 
 	app->Loop();
 
-	BonkEnc::debug_out->LeaveMethod();
-
 	Object::DeleteObject(app);
-
-	BonkEnc::debug_out->OutputLine("");
-	BonkEnc::debug_out->OutputLine("====================");
-	BonkEnc::debug_out->OutputLine("= Leaving BonkEnc! =");
-	BonkEnc::debug_out->OutputLine("====================");
-
-	delete BonkEnc::debug_out;
 
 	return 0;
 }
@@ -693,29 +674,60 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 			{
 				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype != DBT_DEVTYP_VOLUME || !(((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)) break;
 
-				String	 trackCDA = String(" ").Append(":\\track01.cda");
+				/* Get drive letter from message.
+				 */
+				String	 driveLetter = String(" :");
 
 				for (Int drive = 0; drive < 26; drive++)
 				{
 					if (((DEV_BROADCAST_VOLUME *) lParam)->dbcv_unitmask >> drive & 1)
 					{
-						trackCDA[0] = drive + 'A';
+						driveLetter[0] = drive + 'A';
 
 						break;
 					}
 				}
 
-				if (trackCDA[0] == ' ') break;
+				if (driveLetter[0] == ' ') break;
 
-				// Read length of track from .cda file
-				InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READONLY);
+				Int	 trackLength = 0;
 
-				in->Seek(32);
+				/* Read length of first track using MCI.
+				 */
+				MCI_OPEN_PARMSA	 openParms;
 
-				Int	 trackLength = in->InputNumber(4);
+				openParms.lpstrDeviceType  = (LPSTR) MCI_DEVTYPE_CD_AUDIO;
+				openParms.lpstrElementName = driveLetter;
 
-				delete in;
+				MCIERROR	 error = mciSendCommandA(NIL, MCI_OPEN, MCI_WAIT | MCI_OPEN_SHAREABLE | MCI_OPEN_TYPE | MCI_OPEN_TYPE_ID | MCI_OPEN_ELEMENT, (DWORD) &openParms);
 
+				if (error == 0)
+				{
+					MCI_SET_PARMS		 setParms;
+
+					setParms.dwTimeFormat	= MCI_FORMAT_MSF;
+
+					mciSendCommandA(openParms.wDeviceID, MCI_SET, MCI_WAIT | MCI_SET_TIME_FORMAT, (DWORD) &setParms);
+
+					MCI_STATUS_PARMS	 statusParms;
+
+					statusParms.dwItem	= MCI_STATUS_LENGTH;
+					statusParms.dwTrack	= 1;
+
+					mciSendCommandA(openParms.wDeviceID, MCI_STATUS, MCI_WAIT | MCI_STATUS_ITEM | MCI_TRACK, (DWORD) &statusParms);
+
+					trackLength = MCI_MSF_MINUTE(statusParms.dwReturn) * 60 * 75 +
+						      MCI_MSF_SECOND(statusParms.dwReturn) * 75	     +
+						      MCI_MSF_FRAME (statusParms.dwReturn);
+
+					MCI_GENERIC_PARMS	 closeParms;
+
+					mciSendCommandA(openParms.wDeviceID, MCI_CLOSE, MCI_WAIT, (DWORD) &closeParms);
+				}
+
+				/* Look for the actual drive using
+				 * the length of the first track.
+				 */
 				if (trackLength > 0)
 				{
 					Bool	 ok = False;
@@ -2194,6 +2206,11 @@ String BonkEnc::BonkEncGUI::GetSystemLanguage()
 	if (i18n->GetNOfLanguages() == 1) return language;
 
 #ifdef __WIN32__
+
+#ifndef SUBLANG_CROATIAN_CROATIA
+#  define SUBLANG_CROATIAN_CROATIA 0x01
+#endif
+
 	switch (PRIMARYLANGID(GetUserDefaultLangID()))
 	{
 		default:

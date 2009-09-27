@@ -77,6 +77,7 @@ Void BonkEnc::BonkEnc::Encode(Bool useThread)
 Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 {
 	debug_out->EnterMethod("BonkEnc::Encoder(Thread *)");
+	debug_out->OutputLine("Encoding process started...");
 
 	String		 in_filename;
 	String		 out_filename;
@@ -120,8 +121,6 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			continue;
 		}
 
-		debug_out->OutputLine("Encoding a file...");
-
 		trackInfo	= joblist->GetNthTrack(i - nRemoved);
 		in_filename	= trackInfo->origFilename;
 		skip_track	= False;
@@ -160,8 +159,6 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				singleOutFile = GetSingleOutputFileName(trackInfo);
 
 				if (singleOutFile == NIL) break;
-
-				debug_out->OutputLine("Creating output filter...");
 
 				Track	*singleTrackInfo = new Track();
 
@@ -210,12 +207,10 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 					continue;
 				}
-
-				debug_out->OutputLine("Creating output filter...done.");
 			}
 		}
 
-		debug_out->OutputLine(String("Encoding from: ").Append(in_filename));
+		debug_out->OutputLine(String("\tEncoding from: ").Append(in_filename));
 
 		if (!currentConfig->enable_console)
 		{
@@ -279,12 +274,10 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			in_filename.Append(".wav");
 		}
 
-		debug_out->OutputLine(String("Encoding to: ").Append(out_filename));
+		debug_out->OutputLine(String("\t         to:   ").Append(out_filename));
 
 		InStream	*f_in;
 		InputFilter	*filter_in = NIL;
-
-		debug_out->OutputLine("Creating input filter...");
 
 		if (trackInfo->isCDTrack && (currentConfig->enc_onTheFly || step == 0 || encoder == ENCODER_WAVE))
 		{
@@ -348,12 +341,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			f_in->AddFilter(filter_in);
 		}
 
-		debug_out->OutputLine("Creating input filter...done.");
-
 		if (!currentConfig->encodeToSingleFile)
 		{
-			debug_out->OutputLine("Creating output filter...");
-
 			f_out		= new OutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
 
 			if (f_out->GetLastError() != IO_ERROR_OK)
@@ -394,8 +383,6 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				break;
 			}
-
-			debug_out->OutputLine("Creating output filter...done.");
 		}
 
 		Int64		 trackLength	= 0;
@@ -405,7 +392,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		f_out->SetPackageSize(samples_size * (trackInfo->bits / 8) * trackInfo->channels);
 
-		debug_out->OutputLine("Entering encoder loop...");
+		debug_out->OutputLine("\t\tEntering encoder loop...");
 
 		InitProgressValues();
 
@@ -489,7 +476,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		FinishProgressValues(trackInfo);
 
-		debug_out->OutputLine("Cleaning up...");
+		debug_out->OutputLine("\t\tLeaving encoder loop...");
 
 		delete f_in;
 		delete filter_in;
@@ -592,7 +579,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			}
 		}
 
-		debug_out->OutputLine("Cleaning up...OK.");
+		if (stop_encoding) debug_out->OutputLine("\tEncoding cancelled.");
+		else		   debug_out->OutputLine("\tEncoding finished.");
 
 		if (stop_encoding) break;
 	}
@@ -636,6 +624,9 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	}
 
 	joblist->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
+
+	if (stop_encoding) debug_out->OutputLine("Encoding process cancelled.");
+	else		   debug_out->OutputLine("Encoding process finished.");
 
 	debug_out->LeaveMethod();
 

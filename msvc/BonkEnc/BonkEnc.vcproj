@@ -65,7 +65,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="smooth.lib ws2_32.lib"
+				AdditionalDependencies="smooth.lib ws2_32.lib winmm.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../../../smooth/msvc/smooth/Debug"
 				GenerateDebugInformation="true"
@@ -490,10 +490,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\dialogs\language.cpp"
-					>
-				</File>
-				<File
 					RelativePath="..\..\src\dialogs\tvqconfig.cpp"
 					>
 				</File>
@@ -598,7 +594,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\input\filter-in-lame.cpp"
+					RelativePath="..\..\src\input\filter-in-mad.cpp"
 					>
 				</File>
 				<File
@@ -768,7 +764,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\include\input\filter-in-lame.h"
+					RelativePath="..\..\include\input\filter-in-mad.h"
 					>
 				</File>
 				<File
@@ -869,10 +865,6 @@
 				</File>
 				<File
 					RelativePath="..\..\include\dialogs\lameconfig.h"
-					>
-				</File>
-				<File
-					RelativePath="..\..\include\dialogs\language.h"
 					>
 				</File>
 				<File

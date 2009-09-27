@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,8 +37,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 		case FREEDB_MODE_CDDBP:
 			if (command != "")
 			{
-				debug_out->OutputString("CDDB: > ");
-				debug_out->OutputLine(command);
+				debug_out->OutputLine(String("CDDB: > ").Append(command));
 
 				out->OutputLine(command);
 			}
@@ -47,8 +46,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			{
 				str = in->InputLine();
 
-				debug_out->OutputString("CDDB: < ");
-				debug_out->OutputLine(str);
+				debug_out->OutputLine(String("CDDB: < ").Append(str));
 			}
 			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
 
@@ -112,8 +110,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			in = new InStream(STREAM_DRIVER, socket);
 			out = new OutStream(STREAM_STREAM, in);
 
-			debug_out->OutputString("CDDB: ");
-			debug_out->OutputLine(str);
+			debug_out->OutputLine(String("CDDB: ").Append(str));
 
 			out->OutputString(str);
 
@@ -121,8 +118,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			{
 				str = in->InputLine();
 
-				debug_out->OutputString("CDDB: < ");
-				debug_out->OutputLine(str);
+				debug_out->OutputLine(String("CDDB: < ").Append(str));
 			}
 			while (str != "");
 
@@ -130,8 +126,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			{
 				str = in->InputLine();
 
-				debug_out->OutputString("CDDB: < ");
-				debug_out->OutputLine(str);
+				debug_out->OutputLine(String("CDDB: < ").Append(str));
 			}
 			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5' && str != "");
 
@@ -252,8 +247,7 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 			String	 title;
 			String	 category;
 
-			debug_out->OutputString("CDDB: < ");
-			debug_out->OutputLine(val);
+			debug_out->OutputLine(String("CDDB: < ").Append(val));
 
 			if (val == ".") break;
 
@@ -306,8 +300,7 @@ Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cdd
 	{
 		String	 val = in->InputLine();
 
-		debug_out->OutputString("CDDB: < ");
-		debug_out->OutputLine(val);
+		debug_out->OutputLine(String("CDDB: < ").Append(val));
 
 		if (val == ".") break;
 
@@ -349,14 +342,13 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	debug_out->OutputString("CDDB: ");
-	debug_out->OutputLine(str);
+	debug_out->OutputLine(String("CDDB: ").Append("str"));
 
-	if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 1)	socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
-	else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-	else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
+	if	(config->freedb_proxy_mode == 0) socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
+	else if (config->freedb_proxy_mode == 1) socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
+	else if (config->freedb_proxy_mode == 2) socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
+	else if (config->freedb_proxy_mode == 3) socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
+	else if (config->freedb_proxy_mode == 4) socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
 
 	if (socket->GetLastError() != IO_ERROR_OK)
 	{
@@ -370,7 +362,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	in = new InStream(STREAM_DRIVER, socket);
 	out = new OutStream(STREAM_STREAM, in);
 
-	out->OutputString(str);
+	out->OutputLine(str);
 
 	String::SetOutputFormat(outputFormat);
 
@@ -378,8 +370,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	{
 		str = in->InputLine();
 
-		debug_out->OutputString("CDDB: < ");
-		debug_out->OutputLine(str);
+		debug_out->OutputLine(String("CDDB: < ").Append("str"));
 	}
 	while (str != "");
 
@@ -387,8 +378,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	{
 		str = in->InputLine();
 
-		debug_out->OutputString("CDDB: < ");
-		debug_out->OutputLine(str);
+		debug_out->OutputLine(String("CDDB: < ").Append("str"));
 	}
 	while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
 

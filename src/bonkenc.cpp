@@ -39,7 +39,7 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
-String	 BonkEnc::BonkEnc::version	= "v1.0.14";
+String	 BonkEnc::BonkEnc::version	= "v1.0.14 Preview";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.14";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.8";
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
@@ -64,6 +64,9 @@ BonkEnc::BonkEnc::BonkEnc()
 	currentConfig = new Config;
 
 	currentConfig->LoadSettings();
+
+	debug_out = new Debug("BonkEnc.log");
+	debug_out->OutputLine("Starting BonkEnc...");
 
 	/* Set number of threads for OpenMP optimized encoders.
 	 */
@@ -164,6 +167,9 @@ BonkEnc::BonkEnc::~BonkEnc()
 	/* Cleanup deletable objects before deleting translator.
 	 */
 	Object::ObjectCleanup();
+
+	debug_out->OutputLine("Leaving BonkEnc...");
+	delete debug_out;
 
 	delete i18n;
 	delete currentConfig;

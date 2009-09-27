@@ -18,8 +18,10 @@ Geschichte
 		- Sprachunterstützung für Hebräisch hinzugefügt
 		- Vietnamesische und tschechische Übersetzungen aktualisiert
 		- Zum Lesen von MP3-Dateien wird jetzt der MAD-Decoder verwendet
-		- Programmsprache beim ersten Start wird jetzt automatisch ausgewählt
+		- Programmsprache wird jetzt beim ersten Start automatisch ausgewählt
 		- Vietnamesische Übersetzung für das Installationsprogramm hinzugefügt
+		- Fehler beim automatischen Einlesen von CDs beim Einlegen behoben
+		- Diverse Probleme mit Winamp-Eingabeplugins behoben
 		- Einige kleinere Geschwindigkeitsverbesserungen
 		- Update auf MP4v2 v1.9.1
 		- Einige kleinere Korrekturen

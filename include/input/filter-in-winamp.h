@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -18,8 +18,22 @@ namespace BonkEnc
 {
 	class BEEXPORT FilterInWinamp : public InputFilter
 	{
+		friend int	 dsp_dosamples(short int *, int, int, int, int);
+		friend void	 VSASetInfo(int, int);
+		friend int	 Out_Open(int, int, int, int, int);
+		friend int	 Out_CanWrite();
+		friend int	 Out_Write(char *, int);
+
 		private:
+			Buffer<Byte>	 samplesBuffer;
+			Mutex		*samplesBufferMutex;
+			Int64		 samplesDone;
+
+			Track		*infoTrack;
+
 			In_Module	*plugin;
+
+			String		 GetTempFile(const String &);
 		public:
 					 FilterInWinamp(Config *, Track *, In_Module *);
 					~FilterInWinamp();

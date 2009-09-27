@@ -18,24 +18,9 @@ using namespace smooth::System;
 
 Int smooth::Main(const Array<String> &args)
 {
-	BonkEnc::debug_out = new BonkEnc::Debug("BonkEnc.log");
-
-	BonkEnc::debug_out->OutputLine("");
-	BonkEnc::debug_out->OutputLine("=========================================");
-	BonkEnc::debug_out->OutputLine("= Starting BonkEnc command line tool... =");
-	BonkEnc::debug_out->OutputLine("=========================================");
-	BonkEnc::debug_out->OutputLine("");
-
 	BonkEnc::BonkEncCommandline	*app = new BonkEnc::BonkEncCommandline(args);
 
-	delete app;
-
-	BonkEnc::debug_out->OutputLine("");
-	BonkEnc::debug_out->OutputLine("======================================");
-	BonkEnc::debug_out->OutputLine("= Leaving BonkEnc command line tool! =");
-	BonkEnc::debug_out->OutputLine("======================================");
-
-	delete BonkEnc::debug_out;
+	Object::DeleteObject(app);
 
 	return 0;
 }
