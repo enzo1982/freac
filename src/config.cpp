@@ -97,7 +97,8 @@ Bool BonkEnc::Config::LoadSettings()
 	overwriteComments			= config->GetIntValue("Settings", "OverwriteComments", 0);
 	copy_picture_tags			= config->GetIntValue("Settings", "CopyPictureTags", 1);
 
-	openmp_numThreads			= config->GetIntValue("OpenMP", "NumThreads", 0);
+	openmp_enableOpenMP			= config->GetIntValue("OpenMP", "EnableOpenMP", 1);
+	openmp_numThreads			= config->GetIntValue("OpenMP", "NumberOfThreads", 0);
 
 	cdrip_activedrive			= config->GetIntValue("CDRip", "ActiveCDROM", 0);
 	cdrip_debuglevel			= config->GetIntValue("CDRip", "DebugCDRip", 0);
@@ -280,6 +281,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("Settings", "OverwriteComments", overwriteComments);
 		config->SetIntValue("Settings", "CopyPictureTags", copy_picture_tags);
 
+		config->SetIntValue("OpenMP", "EnableOpenMP", openmp_enableOpenMP);
 		config->SetIntValue("OpenMP", "NumThreads", openmp_numThreads);
 
 		config->SetIntValue("CDRip", "ActiveCDROM", cdrip_activedrive);

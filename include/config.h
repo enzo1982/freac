@@ -103,6 +103,7 @@ namespace BonkEnc
 			Bool		 overwriteComments;
 			Bool		 copy_picture_tags;
 
+			Bool		 openmp_enableOpenMP;
 			Int		 openmp_numThreads;
 
 			Array<String>	 cdrip_drives;

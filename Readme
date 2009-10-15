@@ -13,7 +13,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.14 (September 2009)
+	Version 1.0.14 (October 2009)
 
 		- added Hebrew language support
 		- updated Vietnamese and Czech translations
@@ -22,7 +22,9 @@ History
 		- added Vietnamese translation for the installer
 		- fixed automatic reading of CD contents on disc insert
 		- fixed several problems regarding Winamp input plugins
-		- some minor speed improvements
+		- fixed freeze-ups on Windows 7
+		- fixed icon display on Windows Vista and Windows 7
+		- significant encoding speed improvements
 		- upgrade to MP4v2 v1.9.1
 		- some minor bug fixes
 
