@@ -19,6 +19,7 @@ History
 		- updated Vietnamese and Czech translations
 		- now using the MAD decoder for MP3
 		- interface language is now selected automatically at first startup
+		- added total time and progress display
 		- added Vietnamese translation for the installer
 		- fixed automatic reading of CD contents on disc insert
 		- fixed several problems regarding Winamp input plugins

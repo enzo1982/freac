@@ -411,13 +411,27 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	btn_skip->onAction.Connect(&BonkEncGUI::SkipTrack, this);
 	btn_skip->Deactivate();
 
-	edb_time = new EditBox("00:00", Point(0, 75), Size(0, 0), 5);
+	edb_time = new EditBox("00:00", Point(0, 75), Size(34, 0), 5);
 	edb_time->SetOrientation(OR_LOWERLEFT);
 	edb_time->Deactivate();
 
-	edb_percent = new EditBox("0%", Point(0, 75), Size(0, 0), 4);
+	txt_splitTime = new Text("/", Point(0, 72));
+	txt_splitTime->SetOrientation(OR_LOWERLEFT);
+
+	edb_totalTime = new EditBox("00:00", Point(0, 75), Size(34, 0), 5);
+	edb_totalTime->SetOrientation(OR_LOWERLEFT);
+	edb_totalTime->Deactivate();
+
+	edb_percent = new EditBox("0%", Point(0, 75), Size(33, 0), 4);
 	edb_percent->SetOrientation(OR_LOWERLEFT);
 	edb_percent->Deactivate();
+
+	txt_splitPercent		= new Text("/", Point(0, 72));
+	txt_splitPercent->SetOrientation(OR_LOWERLEFT);
+
+	edb_totalPercent = new EditBox("0%", Point(0, 75), Size(33, 0), 4);
+	edb_totalPercent->SetOrientation(OR_LOWERLEFT);
+	edb_totalPercent->Deactivate();
 
 	edb_encoder = new EditBox("", Point(0, 75), Size(0, 0), 4);
 	edb_encoder->SetOrientation(OR_LOWERLEFT);
@@ -485,10 +499,14 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->Add(edb_filename);
 	mainWnd->Add(btn_skip);
 	mainWnd->Add(edb_time);
+	mainWnd->Add(edb_totalTime);
 	mainWnd->Add(edb_percent);
+	mainWnd->Add(edb_totalPercent);
 	mainWnd->Add(edb_encoder);
 	mainWnd->Add(edb_outdir);
 	mainWnd->Add(btn_outdir);
+	mainWnd->Add(txt_splitTime);
+	mainWnd->Add(txt_splitPercent);
 	mainWnd->Add(progress_total);
 	mainWnd->Add(progress);
 	mainWnd->Add(hyperlink);
@@ -600,10 +618,14 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(edb_filename);
 	DeleteObject(btn_skip);
 	DeleteObject(edb_time);
+	DeleteObject(edb_totalTime);
 	DeleteObject(edb_percent);
+	DeleteObject(edb_totalPercent);
 	DeleteObject(edb_encoder);
 	DeleteObject(edb_outdir);
 	DeleteObject(btn_outdir);
+	DeleteObject(txt_splitTime);
+	DeleteObject(txt_splitPercent);
 	DeleteObject(progress);
 	DeleteObject(progress_total);
 	DeleteObject(hyperlink);
@@ -800,7 +822,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
 
 	edb_filename->SetWidth(clientSize.cx - 107 - maxTextLength);
-	edb_encoder->SetWidth(clientSize.cx - 116 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx);
+	edb_encoder->SetWidth(clientSize.cx - 207 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx);
 	edb_outdir->SetWidth(clientSize.cx - 107 - maxTextLength);
 
 	progress->SetWidth(clientSize.cx - 21 - maxTextLength);
@@ -1271,9 +1293,14 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	edb_filename->Hide();
 	edb_time->Hide();
+	edb_totalTime->Hide();
 	edb_percent->Hide();
+	edb_totalPercent->Hide();
 	edb_encoder->Hide();
 	edb_outdir->Hide();
+
+	txt_splitTime->Hide();
+	txt_splitPercent->Hide();
 
 	progress->Hide();
 	progress_total->Hide();
@@ -1296,16 +1323,21 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	enc_outdir->SetX(maxTextLength + 7 - enc_outdir->textSize.cx);
 	enc_filename->SetX(maxTextLength + 7 - enc_filename->textSize.cx);
 	enc_time->SetX(maxTextLength + 7 - enc_time->textSize.cx);
-	enc_percent->SetX(maxTextLength + 55);
-	enc_encoder->SetX(maxTextLength + 102 + enc_percent->textSize.cx);
+	enc_percent->SetX(maxTextLength + 101);
+	enc_encoder->SetX(maxTextLength + 193 + enc_percent->textSize.cx);
 
 	edb_filename->SetText(i18n->TranslateString("none"));
 
 	edb_filename->SetMetrics(Point(maxTextLength + 14, edb_filename->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_filename->GetHeight()));
 	edb_time->SetMetrics(Point(maxTextLength + 14, edb_time->GetY()), Size(34, edb_time->GetHeight()));
-	edb_percent->SetMetrics(Point(maxTextLength + 62 + enc_percent->textSize.cx, edb_percent->GetY()), Size(33, edb_percent->GetHeight()));
-	edb_encoder->SetMetrics(Point(maxTextLength + 109 + enc_percent->textSize.cx + enc_encoder->textSize.cx, edb_encoder->GetY()), Size(clientSize.cx - 116 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx, edb_encoder->GetHeight()));
+	edb_totalTime->SetMetrics(Point(maxTextLength + 60, edb_totalTime->GetY()), Size(34, edb_totalTime->GetHeight()));
+	edb_percent->SetMetrics(Point(maxTextLength + 108 + enc_percent->textSize.cx, edb_percent->GetY()), Size(33, edb_percent->GetHeight()));
+	edb_totalPercent->SetMetrics(Point(maxTextLength + 153 + enc_percent->textSize.cx, edb_totalPercent->GetY()), Size(33, edb_totalPercent->GetHeight()));
+	edb_encoder->SetMetrics(Point(maxTextLength + 200 + enc_percent->textSize.cx + enc_encoder->textSize.cx, edb_encoder->GetY()), Size(clientSize.cx - 207 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx, edb_encoder->GetHeight()));
 	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_outdir->GetHeight()));
+
+	txt_splitTime->SetX(maxTextLength + 51);
+	txt_splitPercent->SetX(maxTextLength + 144 + enc_percent->textSize.cx);
 
 	progress->SetMetrics(Point(maxTextLength + 14, progress->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress->GetHeight()));
 	progress_total->SetMetrics(Point(maxTextLength + 14, progress_total->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress_total->GetHeight()));
@@ -1327,9 +1359,14 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	edb_filename->Show();
 	edb_time->Show();
+	edb_totalTime->Show();
 	edb_percent->Show();
+	edb_totalPercent->Show();
 	edb_encoder->Show();
 	edb_outdir->Show();
+
+	txt_splitTime->Show();
+	txt_splitPercent->Show();
 
 	btn_outdir->SetText(BonkEnc::i18n->TranslateString("Browse"));
 	btn_skip->SetText(BonkEnc::i18n->TranslateString("Skip"));

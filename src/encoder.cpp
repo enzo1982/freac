@@ -103,6 +103,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	joblist->SetFlags(LF_MULTICHECKBOX);
 
 	ComputeTotalNumberOfSamples();
+	InitTotalProgressValues();
 
 	if (!currentConfig->enable_console)
 	{
@@ -600,9 +601,11 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	{
 		edb_filename->SetText(i18n->TranslateString("none"));
 		edb_percent->SetText("0%");
+		edb_totalPercent->SetText("0%");
 		progress->SetValue(0);
 		progress_total->SetValue(0);
 		edb_time->SetText("00:00");
+		edb_totalTime->SetText("00:00");
 		btn_skip->Deactivate();
 	}
 
@@ -836,7 +839,7 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 			outputFileName.Append(shortInFileName);
 		}
 
-		if (currentConfig->encoder == ENCODER_BONKENC)		outputFileName.Append(".bonk");
+		if	(currentConfig->encoder == ENCODER_BONKENC)	outputFileName.Append(".bonk");
 		else if (currentConfig->encoder == ENCODER_BLADEENC)	outputFileName.Append(".mp3");
 		else if (currentConfig->encoder == ENCODER_LAMEENC)	outputFileName.Append(".mp3");
 		else if (currentConfig->encoder == ENCODER_VORBISENC)	outputFileName.Append(".ogg");
@@ -962,11 +965,26 @@ Void BonkEnc::BonkEnc::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackIn
 	trackInfo->length = nTrackInfo->length;
 }
 
+Void BonkEnc::BonkEnc::InitTotalProgressValues()
+{
+	totalStartTicks = clock();
+
+	lastTotalPercent = 0;
+	lastTotalTicks = 0;
+
+	if (!currentConfig->enable_console)
+	{
+		progress_total->SetValue(0);
+		edb_totalPercent->SetText("0%");
+		edb_totalTime->SetText("00:00");
+	}
+}
+
 Void BonkEnc::BonkEnc::InitProgressValues()
 {
-	lastPercent = 0;
-
 	startTicks = clock();
+
+	lastPercent = 0;
 	lastTicks = 0;
 
 	if (!currentConfig->enable_console)
@@ -983,59 +1001,83 @@ Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition
 
 	static Int	 lastInvoked = 0;
 
-	Int	 clockValue = clock();
+	Int	 clockValue	= clock();
 
 	if (clockValue - lastInvoked < 40) return;
 
-	Int	 ticks = clockValue - startTicks;
+	Int	 trackTicks	= clockValue - startTicks;
+	Int	 totalTicks	= clockValue - totalStartTicks;
+
+	Int	 trackProgress	= 0;
+	Int	 totalProgress	= 0;
 
 	if (trackInfo->length >= 0)
 	{
-		progress_total->SetValue((Int) (totalSamplesDone + (samplePosition * (trackInfo->length * 100.0 / totalSamples) / trackInfo->length) * 10.0));
-		progress->SetValue((Int) ((samplePosition * 100.0 / trackInfo->length) * 10.0));
-
-		if ((Int) (samplePosition * 100.0 / trackInfo->length) != lastPercent)
-		{
-			lastPercent = (Int) (samplePosition * 100.0 / trackInfo->length);
-
-			edb_percent->SetText(String::FromInt(lastPercent).Append("%"));
-		}
-
-		ticks = (Int) (ticks * ((1000.0 - ((samplePosition * 100.0 / trackInfo->length) * 10.0)) / ((samplePosition * 100.0 / trackInfo->length) * 10.0))) / 1000 + 1;
+		trackProgress = (Int) ((samplePosition * 100.0 / trackInfo->length) * 10.0);
+		totalProgress = (Int) (totalSamplesDone + (samplePosition * (trackInfo->length * 100.0 / totalSamples) / trackInfo->length) * 10.0);
 	}
 	else if (trackInfo->length == -1)
 	{
-		progress_total->SetValue((Int) (totalSamplesDone + (samplePosition * ((trackInfo->approxLength >= 0 ? trackInfo->approxLength : 240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) / trackInfo->fileSize) * 10.0));
-		progress->SetValue((Int) ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0));
-
-		if ((Int) (samplePosition * 100.0 / trackInfo->fileSize) != lastPercent)
-		{
-			lastPercent = (Int) (samplePosition * 100.0 / trackInfo->fileSize);
-
-			edb_percent->SetText(String::FromInt(lastPercent).Append("%"));
-		}
-
-		ticks = (Int) (ticks * ((1000.0 - ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0)) / ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0))) / 1000 + 1;
+		trackProgress = (Int) ((samplePosition * 100.0 / trackInfo->fileSize) * 10.0);
+		totalProgress = (Int) (totalSamplesDone + (samplePosition * ((trackInfo->approxLength >= 0 ? trackInfo->approxLength : 240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) / trackInfo->fileSize) * 10.0);
 	}
 
-	if (ticks != lastTicks)
+	progress->SetValue(trackProgress);
+	progress_total->SetValue(totalProgress);
+
+	if ((Int) (trackProgress / 10.0) != lastPercent)
 	{
-		lastTicks = ticks;
+		lastPercent = (Int) (trackProgress / 10.0);
 
-		String	 buf = String::FromInt(ticks / 60);
-		String	 txt = "0";
+		edb_percent->SetText(String::FromInt(lastPercent).Append("%"));
+	}
 
-		if (buf.Length() == 1)	txt.Append(buf);
-		else			txt.Copy(buf);
+	if ((Int) (totalProgress / 10.0) != lastTotalPercent)
+	{
+		lastTotalPercent = (Int) (totalProgress / 10.0);
 
-		txt.Append(":");
+		edb_totalPercent->SetText(String::FromInt(lastTotalPercent).Append("%"));
+	}
 
-		buf = String::FromInt(ticks % 60);
+	trackTicks = (Int) (trackTicks * ((1000.0 - trackProgress) / trackProgress)) / 1000 + 1;
+	totalTicks = (Int) (totalTicks * ((1000.0 - totalProgress) / totalProgress)) / 1000 + 1;
 
-		if (buf.Length() == 1)	txt.Append(String("0").Append(buf));
-		else			txt.Append(buf);
+	if (trackTicks != lastTicks)
+	{
+		lastTicks = trackTicks;
+
+		String	 txt;
+
+		if (trackTicks < 0 || trackTicks >= 6000)
+		{
+			txt = "??:??";
+		}
+		else
+		{
+			txt.Append(trackTicks / 60 < 10 ? "0" : "").Append(String::FromInt(trackTicks / 60)).Append(":");
+			txt.Append(trackTicks % 60 < 10 ? "0" : "").Append(String::FromInt(trackTicks % 60));
+		}
 
 		edb_time->SetText(txt);
+	}
+
+	if (totalTicks != lastTotalTicks)
+	{
+		lastTotalTicks = totalTicks;
+
+		String	 txt;
+
+		if (totalTicks < 0 || totalTicks >= 6000)
+		{
+			txt = "??:??";
+		}
+		else
+		{
+			txt.Append(totalTicks / 60 < 10 ? "0" : "").Append(String::FromInt(totalTicks / 60)).Append(":");
+			txt.Append(totalTicks % 60 < 10 ? "0" : "").Append(String::FromInt(totalTicks % 60));
+		}
+
+		edb_totalTime->SetText(txt);
 	}
 
 	lastInvoked = clockValue;
@@ -1045,7 +1087,7 @@ Void BonkEnc::BonkEnc::FinishProgressValues(Track *trackInfo)
 {
 	if (currentConfig->enable_console) return;
 
-	if (trackInfo->length >= 0)		totalSamplesDone += ((trackInfo->length * 100.0 / totalSamples) * 10.0);
-	else if (trackInfo->approxLength >= 0)	totalSamplesDone += ((trackInfo->approxLength * 100.0 / totalSamples) * 10.0);
-	else					totalSamplesDone += (((240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) * 10.0);
+	if	(trackInfo->length	 >= 0) totalSamplesDone += ((trackInfo->length * 100.0 / totalSamples) * 10.0);
+	else if (trackInfo->approxLength >= 0) totalSamplesDone += ((trackInfo->approxLength * 100.0 / totalSamples) * 10.0);
+	else				       totalSamplesDone += (((240 * trackInfo->rate * trackInfo->channels) * 100.0 / totalSamples) * 10.0);
 }

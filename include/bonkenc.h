@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -87,9 +87,14 @@ namespace BonkEnc
 
 			EditBox			*edb_filename;
 			EditBox			*edb_time;
+			EditBox			*edb_totalTime;
 			EditBox			*edb_percent;
+			EditBox			*edb_totalPercent;
 			EditBox			*edb_encoder;
 			EditBox			*edb_outdir;
+
+			Text			*txt_splitTime;
+			Text			*txt_splitPercent;
 
 			Button			*btn_skip;
 			Button			*btn_outdir;
@@ -115,9 +120,13 @@ namespace BonkEnc
 			Float			 totalSamplesDone;
 
 			Int			 startTicks;
+			Int			 totalStartTicks;
+
 			Int			 lastTicks;
+			Int			 lastTotalTicks;
 
 			Int			 lastPercent;
+			Int			 lastTotalPercent;
 
 			Bool			 overwriteAll;
 
@@ -135,6 +144,7 @@ namespace BonkEnc
 			Void			 FixTotalNumberOfSamples(Track *, Track *);
 
 			Void			 InitProgressValues();
+			Void			 InitTotalProgressValues();
 			Void			 UpdateProgressValues(Track *, Int);
 			Void			 FinishProgressValues(Track *);
 		public:

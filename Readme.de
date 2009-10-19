@@ -19,6 +19,7 @@ Geschichte
 		- Vietnamesische und tschechische Übersetzungen aktualisiert
 		- Zum Lesen von MP3-Dateien wird jetzt der MAD-Decoder verwendet
 		- Programmsprache wird jetzt beim ersten Start automatisch ausgewählt
+		- Anzeige für Gesamtzeit und -prozent hinzugefügt
 		- Vietnamesische Übersetzung für das Installationsprogramm hinzugefügt
 		- Fehler beim automatischen Einlesen von CDs beim Einlegen behoben
 		- Diverse Probleme mit Winamp-Eingabeplugins behoben
