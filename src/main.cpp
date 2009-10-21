@@ -1478,14 +1478,14 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load("BonkEnc.pci:21"), menu_addsubmenu);
 	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load("BonkEnc.pci:24"));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
-	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
+	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
 	menu_file->AddEntry();
 	menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onAction.Connect(&JobList::LoadList, joblist);
 	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
 	menu_file->AddEntry();
 	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load("BonkEnc.pci:25"));
 	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
-	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
+	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
 	menu_file->AddEntry();
 	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("BonkEnc.pci:36"));
 	entry->onAction.Connect(&BonkEncGUI::Close, this);

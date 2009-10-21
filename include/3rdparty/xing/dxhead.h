@@ -127,10 +127,8 @@ else {      // mpeg2
     else              buf+=(9+4);
 }
 
-if( buf[0] != 'X' ) return 0;    // fail
-if( buf[1] != 'i' ) return 0;    // header not found
-if( buf[2] != 'n' ) return 0;
-if( buf[3] != 'g' ) return 0;
+if( (buf[0] != 'X' || buf[1] != 'i' || buf[2] != 'n' || buf[3] != 'g') &&          // fail
+    (buf[0] != 'I' || buf[1] != 'n' || buf[2] != 'f' || buf[3] != 'o') ) return 0; // header not found
 buf+=4;
 
 X->h_id = h_id;

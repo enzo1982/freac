@@ -20,11 +20,13 @@ History
 		- now using the MAD decoder for MP3
 		- interface language is now selected automatically at first startup
 		- added total time and progress display
+		- added support for LAME info tags
 		- added Vietnamese translation for the installer
 		- fixed automatic reading of CD contents on disc insert
 		- fixed several problems regarding Winamp input plugins
-		- fixed freeze-ups on Windows 7
 		- fixed icon display on Windows Vista and Windows 7
+		- fixed freeze-ups on Windows 7
+		- fixed possible freeze-up at program startup
 		- significant encoding speed improvements
 		- upgrade to MP4v2 v1.9.1
 		- some minor bug fixes

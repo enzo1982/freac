@@ -20,11 +20,13 @@ Geschichte
 		- Zum Lesen von MP3-Dateien wird jetzt der MAD-Decoder verwendet
 		- Programmsprache wird jetzt beim ersten Start automatisch ausgewählt
 		- Anzeige für Gesamtzeit und -prozent hinzugefügt
+		- Unterstützung für LAME Info-Tags hinzugefügt
 		- Vietnamesische Übersetzung für das Installationsprogramm hinzugefügt
 		- Fehler beim automatischen Einlesen von CDs beim Einlegen behoben
 		- Diverse Probleme mit Winamp-Eingabeplugins behoben
-		- Einfrieren des Programms unter Windows 7 behoben
 		- Unscharfe Iconanzeige unter Windows Vista und Windows 7 behoben
+		- Einfrieren des Programms unter Windows 7 behoben
+		- Mögliches Einfrieren beim Programmstart behoben
 		- Deutliche Geschwindigkeitsverbesserungen bei der Codierung
 		- Update auf MP4v2 v1.9.1
 		- Einige kleinere Korrekturen
