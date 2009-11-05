@@ -40,7 +40,7 @@ Bool BonkEnc::FilterInMP4::Activate()
 		fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
 		fConfig->defSampleRate	= 44100;
-		fConfig->defObjectType	= LOW;
+		fConfig->defObjectType	= LC;
 		fConfig->outputFormat	= FAAD_FMT_16BIT;
 
 		ex_NeAACDecSetConfiguration(handle, fConfig);
@@ -167,7 +167,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 		fConfig	= ex_NeAACDecGetCurrentConfiguration(handle);
 
 		fConfig->defSampleRate	= 44100;
-		fConfig->defObjectType	= LOW;
+		fConfig->defObjectType	= LC;
 		fConfig->outputFormat	= FAAD_FMT_16BIT;
 
 		ex_NeAACDecSetConfiguration(handle, fConfig);

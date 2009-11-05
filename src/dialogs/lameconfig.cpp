@@ -995,7 +995,7 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 		filtering_misc->Deactivate();
 		filtering_check_disable_all->Deactivate();
 
-		if (preset == 9)
+		if (preset == 4)
 		{
 			basic_bitrate->Hide();
 			basic_option_set_bitrate->Hide();

@@ -21,7 +21,7 @@ namespace BonkEnc
 	{
 		friend mad_flow	 MADInputCallback(void *, mad_stream *);
 		friend mad_flow	 MADOutputCallback(void *, const mad_header *, mad_pcm *);
-		friend mad_flow	 MADHeaderCallback(void *, const mad_header *);
+		friend mad_flow	 MADHeaderCallback(void *, const mad_header *, mad_pcm *);
 		friend mad_flow	 MADErrorCallback(void *, mad_stream *, mad_frame *);
 
 		private:

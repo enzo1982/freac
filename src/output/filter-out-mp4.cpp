@@ -64,6 +64,8 @@ Bool BonkEnc::FilterOutMP4::Activate()
 
 	ex_faacEncSetConfiguration(handle, fConfig);
 
+	/* Create file and track.
+	 */
 	mp4File		= ex_MP4CreateEx(GetTempFile(format->outfile), 0, 0, 1, 1, NIL, 0, NIL, 0);
 	mp4Track	= ex_MP4AddAudioTrack(mp4File, format->rate, MP4_INVALID_DURATION, MP4_MPEG4_AUDIO_TYPE);	
 

@@ -1,4 +1,4 @@
-BonkEnc version 1.0.14
+BonkEnc version 1.0.15
 
 BonkEnc is an encoder for various audio formats. It can read
 MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC
@@ -12,6 +12,13 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
+
+	Version 1.0.15 (November 2009)
+
+		- updated Japanese translation
+		- fixed handling of garbage data before the first MP3 frame
+		- fixed LAME ABR preset configuration
+		- some minor fixes
 
 	Version 1.0.14 (October 2009)
 
@@ -226,7 +233,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v8.0
-		- smooth v0.8.70.5 (http://www.smooth-project.org/)
+		- smooth v0.8.70.6 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
