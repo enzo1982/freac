@@ -15,7 +15,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	String	 playlistOutputDir	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, Config::Get()->enc_outdir);
+	String	 playlistOutputDir	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, config->enc_outdir);
 	String	 playlistOutputPattern	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
 
 	if (!playlistOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) playlistOutputDir.Append(Directory::GetDirectoryDelimiter());

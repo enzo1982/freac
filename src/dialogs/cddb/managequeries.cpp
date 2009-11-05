@@ -13,14 +13,14 @@
 
 BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 {
-	currentConfig	= Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
 
 	cddbQueries	= new CDDBBatch();
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB queries"), currentConfig->wndPos + Point(40, 40), Size(402, 352));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB queries"), config->wndPos + Point(40, 40), Size(402, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -145,8 +145,8 @@ Void BonkEnc::cddbManageQueriesDlg::DeleteEntry()
 
 Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
 {
-	// Read all entries from the query queue
-
+	/* Read all entries from the query queue
+	 */
 	const Array<String> &queries = cddbQueries->GetQueries();
 
 	for (Int i = 0; i < queries.Length(); i++)
@@ -157,8 +157,8 @@ Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
 
 Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 {
-	// Query selected entry from online CDDB
-
+	/* Query selected entry from online CDDB
+	 */
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Querying CD information")).Append("..."));
 
 	if (cddbQueries->Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
@@ -174,8 +174,8 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 
 Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
 {
-	// Query all entries from online CDDB
-
+	/* Query all entries from online CDDB
+	 */
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Querying CD information")).Append("..."));
 
 	if (cddbQueries->QueryAll()) mainWnd->Close();

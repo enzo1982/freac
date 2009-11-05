@@ -82,16 +82,11 @@ BonkEnc::Config::Config()
 	deleteAfterEncoding	= False;
 	shutdownAfterEncoding	= False;
 
-	saveSettingsOnExit	= True;
-
 	maxActiveJobs		= 2;
-
-	LoadSettings();
 }
 
 BonkEnc::Config::~Config()
 {
-	if (saveSettingsOnExit) SaveSettings();
 }
 
 BonkEnc::Config *BonkEnc::Config::Get()
@@ -124,92 +119,4 @@ Bool BonkEnc::Config::CanChangeConfig()
 	}
 
 	return True;
-}
-
-Void BonkEnc::Config::SetSaveSettingsOnExit(Bool nSaveSettingsOnExit)
-{
-	saveSettingsOnExit = nSaveSettingsOnExit;
-}
-
-Bool BonkEnc::Config::LoadSettings()
-{
-	String		 personalDir = S::System::System::GetPersonalFilesDirectory();
-	String		 programsDir = S::System::System::GetProgramFilesDirectory();
-
-#ifdef __WIN32__
-	if (!personalDir.EndsWith(Directory::GetDirectoryDelimiter())) personalDir.Append(Directory::GetDirectoryDelimiter());
-
-	personalDir.Append("My Music");
-#endif
-
-	if (Application::GetApplicationDirectory().ToUpper().StartsWith(programsDir.ToUpper()))
-	{
-		configDir = S::System::System::GetApplicationDataDirectory();
-
-		if (configDir != NIL) configDir.Append("BonkEnc").Append(Directory::GetDirectoryDelimiter());
-
-		Directory(configDir).Create();
-	}
-	else
-	{
-		configDir = Application::GetApplicationDirectory();
-	}
-
-	Configuration	*config = new Configuration(String(configDir).Append("config.xml"), False);
-
-	firstStart				= config->GetIntValue(CategorySettingsID, "FirstStart", 1);
-	encoderID				= config->GetStringValue(CategorySettingsID, "Encoder", "wave-out");
-	enc_outdir				= config->GetStringValue(CategorySettingsID, "EncoderOutDir", personalDir);
-	showTitleInfo				= config->GetIntValue(CategorySettingsID, "ShowTitleInfo", 1);
-	showTooltips				= config->GetIntValue(CategorySettingsID, "ShowTooltips", 1);
-	wndPos.x				= config->GetIntValue(CategorySettingsID, "WindowPosX", 100);
-	wndPos.y				= config->GetIntValue(CategorySettingsID, "WindowPosY", 100);
-	wndSize.cx				= config->GetIntValue(CategorySettingsID, "WindowSizeX", 800);
-	wndSize.cy				= config->GetIntValue(CategorySettingsID, "WindowSizeY", 600);
-	maximized				= config->GetIntValue(CategorySettingsID, "WindowMaximized", 0);
-	checkUpdatesAtStartup			= config->GetIntValue(CategorySettingsID, "CheckUpdatesAtStartup", 1);
-	encodeToSingleFile			= config->GetIntValue(CategorySettingsID, "EncodeToSingleFile", 0);
-
-	delete config;
-
-	if (!enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) enc_outdir.Append(Directory::GetDirectoryDelimiter());
-
-/* ToDo: Reactivate this check once everything is in BoCA::Config.
- */
-//	if (encodeToSingleFile && !enc_onTheFly) enc_onTheFly = True;
-
-	return True;
-}
-
-Bool BonkEnc::Config::SaveSettings()
-{
-	Configuration	*config = new Configuration();
-	Bool		 retVal = True;
-	String		 str;
-
-	if (config->Open(String(configDir).Append("config.xml"), True) == Success())
-	{
-		config->SetIntValue(CategorySettingsID, "FirstStart", 0);
-		config->SetStringValue(CategorySettingsID, "Encoder", encoderID);
-		config->SetStringValue(CategorySettingsID, "EncoderOutDir", enc_outdir);
-		config->SetIntValue(CategorySettingsID, "ShowTitleInfo", showTitleInfo);
-		config->SetIntValue(CategorySettingsID, "ShowTooltips", showTooltips);
-		config->SetIntValue(CategorySettingsID, "WindowPosX", wndPos.x);
-		config->SetIntValue(CategorySettingsID, "WindowPosY", wndPos.y);
-		config->SetIntValue(CategorySettingsID, "WindowSizeX", wndSize.cx);
-		config->SetIntValue(CategorySettingsID, "WindowSizeY", wndSize.cy);
-		config->SetIntValue(CategorySettingsID, "WindowMaximized", maximized);
-		config->SetIntValue(CategorySettingsID, "CheckUpdatesAtStartup", checkUpdatesAtStartup);
-		config->SetIntValue(CategorySettingsID, "EncodeToSingleFile", encodeToSingleFile);
-
-		config->Save();
-	}
-	else
-	{
-		retVal = False;
-	}
-
-	delete config;
-
-	return retVal;
 }

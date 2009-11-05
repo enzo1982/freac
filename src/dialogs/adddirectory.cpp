@@ -15,12 +15,10 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	Config	*currentConfig = Config::Get();
-
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Add directory"), currentConfig->wndPos + Point(40, 40), Size(402, 128));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Add directory"), config->wndPos + Point(40, 40), Size(402, 128));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);

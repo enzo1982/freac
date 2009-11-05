@@ -26,8 +26,6 @@ namespace BonkEnc
 			GroupBox	*group_info;
 			Text		*text_info;
 			Hyperlink	*link_url;
-
-			BoCA::Config	*currentConfig;
 		slots:
 			Void		 SelectLanguage();
 			Void		 EditLanguageFile();

@@ -158,7 +158,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	 */
 	ListEntry	*entry	= AddEntry(GetEntryText(*track));
 
-	if (Config::Get()->showTooltips) entry->SetTooltipLayer(new LayerTooltip(*track));
+	if (BoCA::Config::Get()->showTooltips) entry->SetTooltipLayer(new LayerTooltip(*track));
 
 	entry->SetMark(True);
 
@@ -371,7 +371,7 @@ Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 
 			entry->SetText(GetEntryText(track));
 
-			if (Config::Get()->showTooltips)
+			if (BoCA::Config::Get()->showTooltips)
 			{
 				if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
 
@@ -611,7 +611,7 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 
 		entry->SetText(GetEntryText(track));
 
-		if (Config::Get()->showTooltips)
+		if (BoCA::Config::Get()->showTooltips)
 		{
 			if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
 

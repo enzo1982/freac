@@ -22,6 +22,10 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 	list_fields->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 	list_fields->onSelectEntry.Connect(&ConfigureInterface::OnSelectJoblistField, this);
 
+	/* Connect OnSelectJoblistField to check buttons state.
+	 */
+	list_fields->onChangeEntryOrder.Connect(&ConfigureInterface::OnSelectJoblistField, this);
+
 	button_up	= new Button(BonkEnc::i18n->TranslateString("Up"), NIL, Point(90, 10), Size());
 	button_up->SetOrientation(OR_UPPERRIGHT);
 	button_up->Deactivate();
@@ -102,10 +106,6 @@ Void BonkEnc::ConfigureInterface::JoblistFieldMoveUp()
 	list_fields->SwitchEntries(list_fields->GetSelectedEntryNumber(), list_fields->GetSelectedEntryNumber() - 1);
 
 	list_fields->Paint(SP_UPDATE);
-
-	/* Call OnSelectJoblistField to check buttons state.
-	 */
-	OnSelectJoblistField();
 }
 
 Void BonkEnc::ConfigureInterface::JoblistFieldMoveDown()
@@ -113,10 +113,6 @@ Void BonkEnc::ConfigureInterface::JoblistFieldMoveDown()
 	list_fields->SwitchEntries(list_fields->GetSelectedEntryNumber(), list_fields->GetSelectedEntryNumber() + 1);
 
 	list_fields->Paint(SP_UPDATE);
-
-	/* Call OnSelectJoblistField to check buttons state.
-	 */
-	OnSelectJoblistField();
 }
 
 Int BonkEnc::ConfigureInterface::SaveSettings()

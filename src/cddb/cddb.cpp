@@ -12,6 +12,10 @@
 #include <bonkenc.h>
 #include <dllinterfaces.h>
 
+#ifndef __WIN32__
+#  include <netinet/in.h>
+#endif
+
 int cddb_sum(int n)
 {
 	int	 ret = 0;

@@ -24,9 +24,9 @@ using namespace BoCA::AS;
 
 BonkEnc::ConfigDialog::ConfigDialog()
 {
-	currentConfig = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(30, 30), Size(600, 332));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("General settings setup"), config->wndPos + Point(30, 30), Size(600, 332));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -83,7 +83,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
-	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
+	if (Config::Get()->enable_cdrip && config->cdrip_numdrives >= 1)
 	{
 		layers.Add(new ConfigureCDRip());
 		entries.Add(new ConfigEntry("CDRip", layers.GetLast()));
@@ -191,7 +191,7 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 {
 	Int	 ownLayers = 3;
 
-	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1) ownLayers += 2;
+	if (Config::Get()->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1) ownLayers += 2;
 	if (BonkEnc::i18n->GetNOfLanguages() > 1)				      ownLayers += 1;
 
 	for (Int i = 0; i < ownLayers; i++)  DeleteObject(layers.GetNth(i));

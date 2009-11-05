@@ -13,6 +13,8 @@
 
 BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	Point	 pos;
 	Size	 size;
 	String	 title;
@@ -20,7 +22,7 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	if (fuzzy)	title = BonkEnc::i18n->TranslateString("No exact matches found");
 	else		title = BonkEnc::i18n->TranslateString("Multiple matches found");
 
-	mainWnd			= new GUI::Window(title, Config::Get()->wndPos + Point(80, 80), Size(352, 150));
+	mainWnd			= new GUI::Window(title, config->wndPos + Point(80, 80), Size(352, 150));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

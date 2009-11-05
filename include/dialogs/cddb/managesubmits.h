@@ -38,8 +38,6 @@ namespace BonkEnc
 
 			Text		*text_status;
 
-			Config		*currentConfig;
-
 			CDDBBatch	*cddbBatch;
 
 			Void		 ReadEntries();

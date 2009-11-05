@@ -64,6 +64,8 @@ Void BonkEnc::BonkEncGUI::Free()
 
 BonkEnc::BonkEncGUI::BonkEncGUI()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	currentConfig->enable_console = false;
 
 	dontUpdateInfo = False;
@@ -71,34 +73,34 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	clicked_drive = -1;
 	clicked_encoder = -1;
 
-	String	 language = BoCA::Config::Get()->language;
+	String	 language = config->language;
 
 	if (language == NIL) language = GetSystemLanguage();
 
 	i18n->ActivateLanguage(language);
 
-	BoCA::Config::Get()->language = language;
+	config->language = language;
 
 	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
 
-	if (currentConfig->wndPos.x + currentConfig->wndSize.cx > workArea.right + 2 ||
-	    currentConfig->wndPos.y + currentConfig->wndSize.cy > workArea.bottom + 2)
+	if (config->wndPos.x + config->wndSize.cx > workArea.right + 2 ||
+	    config->wndPos.y + config->wndSize.cy > workArea.bottom + 2)
 	{
-		currentConfig->wndPos.x = (Int) Math::Min(workArea.right - 10 - currentConfig->wndSize.cx, currentConfig->wndPos.x);
-		currentConfig->wndPos.y = (Int) Math::Min(workArea.bottom - 10 - currentConfig->wndSize.cy, currentConfig->wndPos.y);
+		config->wndPos.x = (Int) Math::Min(workArea.right - 10 - config->wndSize.cx, config->wndPos.x);
+		config->wndPos.y = (Int) Math::Min(workArea.bottom - 10 - config->wndSize.cy, config->wndPos.y);
 	}
 
-	if (currentConfig->wndPos.x < workArea.left - 2 ||
-	    currentConfig->wndPos.y < workArea.top - 2)
+	if (config->wndPos.x < workArea.left - 2 ||
+	    config->wndPos.y < workArea.top - 2)
 	{
-		currentConfig->wndPos.x = (Int) Math::Max(workArea.left + 10, currentConfig->wndPos.x);
-		currentConfig->wndPos.y = (Int) Math::Max(workArea.top + 10, currentConfig->wndPos.y);
+		config->wndPos.x = (Int) Math::Max(workArea.left + 10, config->wndPos.x);
+		config->wndPos.y = (Int) Math::Max(workArea.top + 10, config->wndPos.y);
 
-		currentConfig->wndSize.cx = (Int) Math::Min(workArea.right - 20, currentConfig->wndSize.cx);
-		currentConfig->wndSize.cy = (Int) Math::Min(workArea.bottom - 20, currentConfig->wndSize.cy);
+		config->wndSize.cx = (Int) Math::Min(workArea.right - 20, config->wndSize.cx);
+		config->wndSize.cy = (Int) Math::Min(workArea.bottom - 20, config->wndSize.cy);
 	}
 
-	mainWnd			= new GUI::Window(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version), currentConfig->wndPos, currentConfig->wndSize);
+	mainWnd			= new GUI::Window(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version), config->wndPos, config->wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar();
@@ -169,9 +171,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault)) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
 	mainWnd->doClose.Connect(&BonkEncGUI::ExitProc, this);
-	mainWnd->SetMinimumSize(Size(530, 340 + (currentConfig->showTitleInfo ? 68 : 0)));
+	mainWnd->SetMinimumSize(Size(530, 340 + (config->showTitleInfo ? 68 : 0)));
 
-	if (currentConfig->maximized) mainWnd->Maximize();
+	if (config->maximized) mainWnd->Maximize();
 
 	encoder->onStartEncoding.Connect(&LayerJoblist::OnEncoderStartEncoding, tab_layer_joblist);
 	encoder->onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, tab_layer_joblist);
@@ -181,7 +183,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	encoder->onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, tab_layer_joblist);
 	encoder->onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, tab_layer_joblist);
 
-	if (currentConfig->checkUpdatesAtStartup) (new JobCheckForUpdates(True))->Schedule();
+	if (BoCA::Config::Get()->checkUpdatesAtStartup) (new JobCheckForUpdates(True))->Schedule();
 }
 
 BonkEnc::BonkEncGUI::~BonkEncGUI()
@@ -243,6 +245,8 @@ Void BonkEnc::BonkEncGUI::FreeExtensionComponents()
 
 Bool BonkEnc::BonkEncGUI::ExitProc()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	if (encoder->IsEncoding())
 	{
 		if (IDNO == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
@@ -256,11 +260,11 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
 
-	currentConfig->wndPos = Point(wndRect.left, wndRect.top);
-	currentConfig->wndSize = Size(wndRect.right - wndRect.left, wndRect.bottom - wndRect.top);
-	currentConfig->maximized = mainWnd->IsMaximized();
+	config->wndPos = Point(wndRect.left, wndRect.top);
+	config->wndSize = Size(wndRect.right - wndRect.left, wndRect.bottom - wndRect.top);
+	config->maximized = mainWnd->IsMaximized();
 
-	currentConfig->SaveSettings();
+	config->SaveSettings();
 
 	return True;
 }
@@ -366,12 +370,16 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 Void BonkEnc::BonkEncGUI::OnChangePosition(const Point &nPos)
 {
-	currentConfig->wndPos = mainWnd->GetPosition();
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->wndPos = mainWnd->GetPosition();
 }
 
 Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 {
-	currentConfig->wndSize = mainWnd->GetSize();
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->wndSize = mainWnd->GetSize();
 
 	mainWnd->SetStatusText(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
 
@@ -397,8 +405,9 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 {
 	if (!currentConfig->CanChangeConfig()) return;
 
+	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
-	Component	*component = boca.CreateComponentByID(currentConfig->encoderID);
+	Component	*component = boca.CreateComponentByID(config->encoderID);
 	ConfigLayer	*layer = component->GetConfigurationLayer();
 
 	if (layer != NIL)
@@ -424,17 +433,18 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 {
 	if (!currentConfig->CanChangeConfig()) return;
 
+	BoCA::Config	*config = BoCA::Config::Get();
 	ConfigDialog	*dlg = new ConfigDialog();
 
 	dlg->ShowDialog();
 
 	DeleteObject(dlg);
 
-	if (BoCA::Config::Get()->languageChanged)
+	if (config->languageChanged)
 	{
 		SetLanguage();
 
-		BoCA::Config::Get()->languageChanged = false;
+		config->languageChanged = false;
 	}
 
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Emit();
@@ -445,7 +455,7 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	CheckBox::internalCheckValues.Emit();
 	ToggleUseInputDirectory();
 
-	currentConfig->SaveSettings();
+	config->SaveSettings();
 }
 
 
@@ -816,7 +826,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
 	}
 
-	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, &currentConfig->encodeToSingleFile);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, &BoCA::Config::Get()->encodeToSingleFile);
 
 	menu_encoder_options->AddEntry();
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file directory if possible"), NIL, NIL, &BoCA::Config::Get()->writeToInputDir)->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
@@ -865,7 +875,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		menu_help->AddEntry();
 		menu_help->AddEntry(String(i18n->TranslateString("Check for updates now")).Append("..."))->onAction.Connect(&BonkEncGUI::CheckForUpdates, this);
-		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &currentConfig->checkUpdatesAtStartup);
+		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &BoCA::Config::Get()->checkUpdatesAtStartup);
 	}
 
 	menu_help->AddEntry();
@@ -946,9 +956,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 Void BonkEnc::BonkEncGUI::EncodeSpecific()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
 
-	currentConfig->encoderID = boca.GetComponentID(clicked_encoder);
+	config->encoderID = boca.GetComponentID(clicked_encoder);
 
 	tab_layer_joblist->UpdateEncoderText();
 
@@ -1007,7 +1018,7 @@ Void BonkEnc::BonkEncGUI::ToggleEncodeToSingleFile()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (currentConfig->encodeToSingleFile) config->enc_onTheFly = True;
+	if (config->encodeToSingleFile) config->enc_onTheFly = True;
 }
 
 Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
@@ -1044,7 +1055,7 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 
 	dialog->ShowDialog();
 
-	config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, showTips);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, showTips);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, dialog->GetOffset());
 
 	DeleteObject(dialog);

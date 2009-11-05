@@ -48,8 +48,6 @@ namespace BonkEnc
 			Tree			*tree_dsp;
 			Tree			*tree_extension;
 			Tree			*tree_other;
-
-	 		Config			*currentConfig;
 		slots:
 			Void			 OK();
 			Void			 Cancel();

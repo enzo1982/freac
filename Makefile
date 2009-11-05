@@ -34,8 +34,6 @@ LOADER_CONSOLE_LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lstdc++ -o$(CMDNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
-PACKER = upx
-PACKER_OPTS = --best -q
 RESCOMP_OPTS = -O coff
 
 .PHONY: all headers install clean clean_headers
@@ -54,7 +52,6 @@ $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
 	$(LINKER) $(DLLOBJECTS) $(LINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(DLLNAME)
-#	$(PACKER) $(PACKER_OPTS) $(DLLNAME)
 	countbuild BuildNumber
 	$(ECHO) done.
 
@@ -62,14 +59,12 @@ $(EXENAME): $(EXEOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(EXENAME)...
 	$(LINKER) $(EXEOBJECTS) $(RESOURCES) $(LOADER_GUI_LINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(EXENAME)
-#	$(PACKER) $(PACKER_OPTS) $(EXENAME)
 	$(ECHO) done.
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(CMDNAME)...
 	$(LINKER) $(CMDOBJECTS) $(RESOURCES) $(LOADER_CONSOLE_LINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(CMDNAME)
-#	$(PACKER) $(PACKER_OPTS) $(CMDNAME)
 	$(ECHO) done.
 
 $(OBJECTDIR)/cddb.o: $(SRCDIR)/cddb/cddb.cpp

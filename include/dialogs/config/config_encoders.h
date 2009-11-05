@@ -43,9 +43,7 @@ namespace BonkEnc
 			Bool				 singleFile;
 
 			Bool				 unicode_files;
- 
-			Config				*currentConfig;
-		slots:
+ 		slots:
 			Void				 SelectDir();
 			Void				 ConfigureEncoder();
 

@@ -18,7 +18,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Config::Get()->wndPos + Point(80, 80), Size(352, 221));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), config->wndPos + Point(80, 80), Size(352, 221));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

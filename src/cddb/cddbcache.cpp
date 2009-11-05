@@ -38,7 +38,7 @@ Void BonkEnc::CDDBCache::Free()
 
 const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 {
-	Config		*config = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 
 	if (cddbInfo != NIL)
@@ -53,9 +53,9 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	/* Save current freedb path
 	 */
-	String	 configFreedbDir = BoCA::Config::Get()->freedb_dir;
+	String	 configFreedbDir = config->freedb_dir;
 
-	BoCA::Config::Get()->freedb_dir = String(config->configDir).Append("cddb\\");
+	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
 	CDDBLocal	 cddbLocal;
 
@@ -75,14 +75,14 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	/* Restore real freedb path
 	 */
-	BoCA::Config::Get()->freedb_dir = configFreedbDir;
+	config->freedb_dir = configFreedbDir;
 
 	return infoCache.Get(discID);
 }
 
 Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 {
-	Config		*config = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 	const CDDBInfo	&cddbInfo = infoCache.Get(nCddbInfo.discID);
 
 	if (cddbInfo != NIL)
@@ -94,16 +94,16 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	infoCache.Add(nCddbInfo, nCddbInfo.discID);
 
-	if (!BoCA::Config::Get()->enable_cddb_cache) return True;
+	if (!config->enable_cddb_cache) return True;
 
 	/* Save new entry to the persistant cache
 	 */
 
 	/* Save current freedb path
 	 */
-	String	 configFreedbDir = BoCA::Config::Get()->freedb_dir;
+	String	 configFreedbDir = config->freedb_dir;
 
-	BoCA::Config::Get()->freedb_dir = String(config->configDir).Append("cddb\\");
+	config->freedb_dir = String(config->configDir).Append("cddb\\");
 
 	CDDBLocal	 cddbLocal;
 
@@ -113,7 +113,7 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	/* Restore real freedb path
 	 */
-	BoCA::Config::Get()->freedb_dir = configFreedbDir;
+	config->freedb_dir = configFreedbDir;
 
 	return True;
 }
@@ -122,7 +122,7 @@ Int BonkEnc::CDDBCache::RemoveNthEntry(Int n)
 {
 	if (n >= GetNOfEntries()) return Error();
 
-	Config		*config = Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 	Int		 discID = infoCache.GetNthIndex(n);
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 

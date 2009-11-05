@@ -51,7 +51,6 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	/* Don't save configuration settings set via command line.
 	 */
-	currentConfig->SetSaveSettingsOnExit(False);
 	componentsConfig->SetSaveSettingsOnExit(False);
 
 	Bool		 quiet		= ScanForParameter("-quiet", NULL);
@@ -154,7 +153,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		else if (mode == "ABR" || mode == "abr") componentsConfig->SetIntValue("LAME", "VBRMode", 3);
 		else if (mode == "CBR" || mode == "cbr") componentsConfig->SetIntValue("LAME", "VBRMode", 0);
 
-		currentConfig->encoderID = "lame-out";
+		componentsConfig->encoderID = "lame-out";
 	}
 	else if (encoderID == "VORBIS")
 	{
@@ -168,7 +167,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, quality.ToInt())));
 		componentsConfig->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, bitrate.ToInt())));
 
-		currentConfig->encoderID = "vorbis-out";
+		componentsConfig->encoderID = "vorbis-out";
 	}
 	else if (encoderID == "BONK")
 	{
@@ -187,7 +186,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, predictor.ToInt())));
 		componentsConfig->SetIntValue("Bonk", "Downsampling", Math::Max(0, Math::Min(10, downsampling.ToInt())));
 
-		currentConfig->encoderID = "bonk-out";
+		componentsConfig->encoderID = "bonk-out";
 	}
 	else if (encoderID == "BLADE")
 	{
@@ -197,7 +196,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		componentsConfig->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, bitrate.ToInt())));
 
-		currentConfig->encoderID = "blade-out";
+		componentsConfig->encoderID = "blade-out";
 	}
 	else if (encoderID == "FAAC")
 	{
@@ -213,7 +212,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, quality.ToInt())));
 		componentsConfig->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, bitrate.ToInt())));
 
-		currentConfig->encoderID = "faac-out";
+		componentsConfig->encoderID = "faac-out";
 	}
 	else if (encoderID == "FLAC")
 	{
@@ -247,7 +246,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("FLAC", "MinResidualPartitionOrder", Math::Max(0, Math::Min(16, minrice.ToInt())));
 		componentsConfig->SetIntValue("FLAC", "MaxResidualPartitionOrder", Math::Max(0, Math::Min(16, maxrice.ToInt())));
 
-		currentConfig->encoderID = "flac-out";
+		componentsConfig->encoderID = "flac-out";
 	}
 	else if (encoderID == "TVQ")
 	{
@@ -260,11 +259,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, candidates.ToInt())));
 		componentsConfig->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, bitrate.ToInt())));
 
-		currentConfig->encoderID = "twinvq-out";
+		componentsConfig->encoderID = "twinvq-out";
 	}
 	else if (encoderID == "WAVE")
 	{
-		currentConfig->encoderID = "wave-out";
+		componentsConfig->encoderID = "wave-out";
 	}
 	else
 	{
@@ -275,7 +274,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	if (!broken)
 	{
-		currentConfig->enc_outdir = outdir;
+		componentsConfig->enc_outdir = outdir;
 		componentsConfig->enc_filePattern = pattern;
 
 		componentsConfig->enable_auto_cddb = cddb;
@@ -284,10 +283,10 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("CDRip", "LockTray", False);
 		componentsConfig->cdrip_timeout = timeout.ToInt();
 
-		currentConfig->encodeToSingleFile = False;
+		componentsConfig->encodeToSingleFile = False;
 		componentsConfig->writeToInputDir = False;
 
-		if (!currentConfig->enc_outdir.EndsWith("\\")) currentConfig->enc_outdir.Append("\\");
+		if (!componentsConfig->enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) componentsConfig->enc_outdir.Append(Directory::GetDirectoryDelimiter());
 
 		for (Int i = 0; i < files.Length(); i++)
 		{

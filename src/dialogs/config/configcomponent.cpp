@@ -17,12 +17,12 @@ using namespace BoCA::AS;
 
 BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 {
-	layer = iLayer;
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	layer			= iLayer;
 	layer->SetPosition(Point(4, 29));
 
-	currentConfig = Config::Get();
-
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Component configuration"), currentConfig->wndPos + Point(60, 60), layer->GetSize() + Size(8, 73));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Component configuration"), config->wndPos + Point(60, 60), layer->GetSize() + Size(8, 73));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

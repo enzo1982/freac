@@ -61,7 +61,6 @@ BonkEnc::BonkEnc::BonkEnc()
 #ifdef __WIN64__
 	version.Append(" (x64)");
 #endif
-
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
 	debug->Write("Starting BonkEnc...");

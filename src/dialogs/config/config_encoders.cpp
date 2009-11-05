@@ -19,15 +19,13 @@ using namespace BoCA::AS;
 
 BonkEnc::ConfigureEncoders::ConfigureEncoders()
 {
-	currentConfig = Config::Get();
-
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	onTheFly	= config->enc_onTheFly;
 	keepWaves	= config->enc_keepWaves;
 	useInputDir	= config->writeToInputDir;
 	allowOverwrite	= config->allowOverwrite;
-	singleFile	= currentConfig->encodeToSingleFile;
+	singleFile	= config->encodeToSingleFile;
 	unicode_files	= config->useUnicodeNames;
 
 	group_encoder	= new GroupBox(BonkEnc::i18n->TranslateString("Encoder"), Point(7, 11), Size(344, 43));
@@ -42,7 +40,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 		combo_encoder->AddEntry(boca.GetComponentName(i));
 
-		if (currentConfig->encoderID == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
+		if (config->encoderID == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
 	}
 
 	button_config	= new Button(BonkEnc::i18n->TranslateString("Configure encoder"), NIL, Point(204, 11), Size(130, 0));
@@ -60,7 +58,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	ToggleUseInputDir();
 
-	edit_outdir	= new EditBox(currentConfig->enc_outdir, Point(10, 62), Size(236, 0), 0);
+	edit_outdir	= new EditBox(config->enc_outdir, Point(10, 62), Size(236, 0), 0);
 
 	button_outdir_browse= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(254, 61), Size(0, 0));
 	button_outdir_browse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
@@ -256,6 +254,7 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 	Directory::SetActiveDirectory(Application::GetApplicationDirectory());
 
+	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
 
 	for (Int i = 0, n = 0; i < boca.GetNumberOfComponents(); i++)
@@ -264,13 +263,11 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 		if (n++ == combo_encoder->GetSelectedEntryNumber())
 		{
-			currentConfig->encoderID = boca.GetComponentID(i);
+			config->encoderID = boca.GetComponentID(i);
 
 			break;
 		}
 	}
-
-	BoCA::Config	*config = BoCA::Config::Get();
 
 	Int	 number = 5;
 
@@ -291,16 +288,16 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 	config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(1)), edit_filename->GetText());
 
-	currentConfig->enc_outdir		= edit_outdir->GetText();
-	config->enc_filePattern			= edit_filename->GetText();
-	config->enc_onTheFly			= onTheFly;
-	config->writeToInputDir			= useInputDir;
-	config->allowOverwrite			= allowOverwrite;
-	currentConfig->encodeToSingleFile	= singleFile;
-	config->enc_keepWaves			= keepWaves;
-	config->useUnicodeNames			= unicode_files;
+	config->enc_outdir		= edit_outdir->GetText();
+	config->enc_filePattern		= edit_filename->GetText();
+	config->enc_onTheFly		= onTheFly;
+	config->writeToInputDir		= useInputDir;
+	config->allowOverwrite		= allowOverwrite;
+	config->encodeToSingleFile	= singleFile;
+	config->enc_keepWaves		= keepWaves;
+	config->useUnicodeNames		= unicode_files;
 
-	if (!currentConfig->enc_outdir.EndsWith("\\")) currentConfig->enc_outdir.Append("\\");
+	if (!config->enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) config->enc_outdir.Append(Directory::GetDirectoryDelimiter());
 
 	return Success();
 }

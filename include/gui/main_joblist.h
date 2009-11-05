@@ -34,7 +34,7 @@ namespace BonkEnc
 	{
 		private:
 			BoCA::I18n		*i18n;
-			Config			*currentConfig;
+			BoCA::Config		*currentConfig;
 
 			CheckBox		*check_single;
 			CheckBox		*check_playlist;

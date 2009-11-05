@@ -89,43 +89,19 @@ namespace BonkEnc
 			 */
 			static Config	*instance;
 
-			Bool		 saveSettingsOnExit;
-
 					 Config();
 					~Config();
 		public:
-			String		 configDir;
-
-			Bool		 firstStart;
-
-			Point		 wndPos;
-			Size		 wndSize;
-			Bool		 maximized;
-
 			Int		 maxActiveJobs;
-
-			Bool		 showTitleInfo;
-			Bool		 showTooltips;
-
-			Bool		 checkUpdatesAtStartup;
 
 			Bool		 deleteAfterEncoding;
 			Bool		 shutdownAfterEncoding;
 
-			Bool		 encodeToSingleFile;
-
-			String		 encoderID;
 			Bool		 enable_console;
 			Bool		 enable_cdrip;
 			Bool		 enable_eUpdate;
-			String		 enc_outdir;
 
 			Bool		 CanChangeConfig();
-
-			Bool		 LoadSettings();
-			Bool		 SaveSettings();
-
-			Void		 SetSaveSettingsOnExit(Bool);
 
 			/* Returns a new or existing instance of Config
 			 */

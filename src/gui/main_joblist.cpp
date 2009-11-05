@@ -22,7 +22,7 @@
 BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
 	i18n		= BoCA::I18n::Get();
-	currentConfig	= Config::Get();
+	currentConfig	= BoCA::Config::Get();
 
 	createPlaylist	= BoCA::Config::Get()->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
 	createCueSheet	= BoCA::Config::Get()->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
@@ -994,7 +994,7 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 	btn_skip->Deactivate();
 
-	if (success && currentConfig->shutdownAfterEncoding)
+	if (success && Config::Get()->shutdownAfterEncoding)
 	{
 		Utilities::GainShutdownPrivilege();
 

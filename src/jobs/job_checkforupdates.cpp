@@ -24,10 +24,10 @@ BonkEnc::JobCheckForUpdates::~JobCheckForUpdates()
 
 Error BonkEnc::JobCheckForUpdates::Perform()
 {
-	::BonkEnc::Config	*config = ::BonkEnc::Config::Get();
-	BoCA::I18n		*i18n = BoCA::I18n::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	if (!config->enable_eUpdate) return Success();
+	if (!Config::Get()->enable_eUpdate) return Success();
 
 	SetText("Preparing update check...");
 
@@ -36,7 +36,6 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION) == IDNO)
 		{
 			config->checkUpdatesAtStartup = False;
-			config->firstStart = False;
 
 			return Success();
 		}
@@ -53,11 +52,11 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		else			  ex_eUpdate_SetConfigFile(context, String(config->configDir).Append("eUpdate.xml"));
 	}
 
-	if (BoCA::Config::Get()->language != "internal")
+	if (config->language != "internal")
 	{
 		String	 lang;
 
-		for (Int i = 8; i < BoCA::Config::Get()->language.Length(); i++) lang[i - 8] = BoCA::Config::Get()->language[i];
+		for (Int i = 8; i < config->language.Length(); i++) lang[i - 8] = config->language[i];
 
 		if (!ex_eUpdate_SetLanguage(context, String("eupdate_").Append(lang))) ex_eUpdate_SetLanguage(context, "internal");
 	}
@@ -108,8 +107,6 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 	ex_eUpdate_FreeUpdateContext(context);
 #endif
-
-	config->firstStart = False;
 
 	return Success();
 }

@@ -27,8 +27,6 @@ namespace BonkEnc
 			Button		*btn_ok;
 
 			Divider		*divbar;
-
-	 		Config		*currentConfig;
 		slots:
 			Void		 OK();
 			Void		 Cancel();

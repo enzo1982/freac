@@ -20,12 +20,14 @@
 
 BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	allowAddToBatch = False;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB query"), Config::Get()->wndPos + Point(40, 40), Size(310, 84));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB query"), config->wndPos + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

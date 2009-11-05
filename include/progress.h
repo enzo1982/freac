@@ -32,6 +32,8 @@ namespace BonkEnc
 			Float			 totalSamplesDone;
 
 			Int			 trackStartTicks;
+			Int			 trackPauseTicks;
+
 			Int			 totalStartTicks;
 			Int			 totalPauseTicks;
 		public:
@@ -46,6 +48,10 @@ namespace BonkEnc
 			Int			 GetTotalTimePassed()			{ return clock() - totalStartTicks; }
 
 			Void			 InitTrackProgressValues();
+
+			Void			 PauseTrackProgress();
+			Void			 ResumeTrackProgress();
+
 			Void			 InitTotalProgressValues();
 
 			Void			 PauseTotalProgress();
