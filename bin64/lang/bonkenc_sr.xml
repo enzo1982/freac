@@ -3,7 +3,7 @@
  <info>
   <property name="program">BonkEnc</property>
   <property name="version">1.0.8</property>
-  <property name="language">Serbian / Srpski</property>
+  <property name="language">Serbian (Latin letter)/ Srpski (Latinično pismo)</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
@@ -34,7 +34,7 @@
   <entry id="21" string="none">nijedan</entry>
   <entry id="22" string="Help topics...">Teme pomoći ...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Dodaj audio fajl(ove) u listu zadataka</entry>
-  <entry id="24" string="Add audio CD contents to the joblist">Dodaj audio sadržaj audio CD-a u listu zadataka</entry>
+  <entry id="24" string="Add audio CD contents to the joblist">Dodaj sadržaj audio CD-a u listu zadataka</entry>
   <entry id="25" string="Remove the selected entry from the joblist">Ukloni odabrani upis sa liste zadataka</entry>
   <entry id="26" string="Clear the entire joblist">Očisti celu listu zadataka</entry>
   <entry id="27" string="Configure general settings">Uredi opšta podešavanja</entry>
@@ -67,7 +67,7 @@
   <entry id="54" string="Quality">Kvalitet</entry>
   <entry id="55" string="Encoders">Enkoderi</entry>
   <entry id="56" string="Language">Jezik</entry>
-  <entry id="57" string="Show title info">Prikaži info o nazivu</entry>
+  <entry id="57" string="Show title info">Prikaži naziv</entry>
   <entry id="58" string="General settings setup">Opšta podešavanja</entry>
   <entry id="59" string="Configure encoder">Konfiguriši enkoder</entry>
   <entry id="60" string="Encoder">Enkoder</entry>
@@ -79,7 +79,7 @@
   <entry id="66" string="URL">URL</entry>
   <entry id="67" string="Information">Info</entry>
   <entry id="68" string="Select language:">Izbor jezika:</entry>
-  <entry id="69" string="Active CD-ROM drive">Aktivan CD-ROM uređaj</entry>
+  <entry id="69" string="Active CD-ROM drive">Aktivan ROM uređaj</entry>
   <entry id="70" string="Ripper settings">Podešavanja ripera</entry>
   <entry id="71" string="Activate cdparanoia mode:">Pokreni cdparanoia režim:</entry>
   <entry id="72" string="Activate jitter correction">Korekcija preklapanja (jittering)</entry>
@@ -107,13 +107,13 @@
   <entry id="94" string="Downsampling ratio">Srazmera umanjenog semplovanja</entry>
   <entry id="95" string="Predictor size">Predviđač veličina</entry>
   <entry id="96" string="Enable lossless encoding">Omogući enkodovanje bez gubitaka</entry>
-  <entry id="97" string="Enable Joint Stereo">Omogući zbijeni stereo</entry>
+  <entry id="97" string="Enable Joint Stereo">Omogući zbijeni (tzv. Joint) stereo</entry>
   <entry id="98" string="Bitrate per channel:">Stopa bitova po kanalu:</entry>
   <entry id="99" string="Preselection">Prethodni izbor</entry>
   <entry id="100" string="Number of preselection candidates:">Broj prethodno izabranih kandidata:</entry>
   <entry id="101" string="MPEG version">MPEG verzija</entry>
   <entry id="102" string="AAC object type">Vrsta AAC objekta</entry>
-  <entry id="103" string="Allow Joint Stereo">Dozvoli zbijeni stereo</entry>
+  <entry id="103" string="Allow Joint Stereo">Dozvoli zbijeni (tzv. Joint) stereo</entry>
   <entry id="104" string="Temporal Noise Shaping">Privremeno oblikovanje šumova</entry>
   <entry id="105" string="Use Temporal Noise Shaping">Koristi privremeno oblikovanje šumova</entry>
   <entry id="106" string="Maximum bandwidth">Maksimalna širina protoka</entry>
@@ -122,14 +122,14 @@
   <entry id="109" string="Misc">Razno</entry>
   <entry id="110" string="Audio processing">Audio obrada</entry>
   <entry id="111" string="Set bitrate:">Stopa bitova:</entry>
-  <entry id="112" string="Set ratio:">Srazmera:</entry>
-  <entry id="113" string="Set quality:">Podešavanje:</entry>
+  <entry id="112" string="Set ratio:">Podešavanje srazmere (tzv. Racio):</entry>
+  <entry id="113" string="Set quality:">Podešavanje kvaliteta:</entry>
   <entry id="114" string="worse">lošije</entry>
   <entry id="115" string="better">bolje</entry>
   <entry id="116" string="Auto">Samopodešavanje</entry>
   <entry id="117" string="Stereo">Stereo</entry>
-  <entry id="118" string="Joint Stereo">Zbijeni stereo</entry>
-  <entry id="119" string="Force Joint Stereo">Forsiraj zbijeni stereo</entry>
+  <entry id="118" string="Joint Stereo">Zbijeni (tzv. Joint) stereo</entry>
+  <entry id="119" string="Force Joint Stereo">Forsiraj zbijeni (tzv. Joint)i stereo</entry>
   <entry id="120" string="VBR mode">VBR režim</entry>
   <entry id="121" string="no VBR">bez VBR-a</entry>
   <entry id="122" string="VBR quality">VBR kvalitet</entry>
@@ -143,11 +143,11 @@
   <entry id="135" string="Output sampling rate">Izlazna stopa semplovanja</entry>
   <entry id="136" string="no resampling">bez re-semplovanja</entry>
   <entry id="137" string="Highpass filter">Filter visokih tonova</entry>
-  <entry id="138" string="Set Highpass frequency (Hz):">Podesi frekvenciju (Hz):</entry>
-  <entry id="139" string="Set Highpass width (Hz):">Podesi širinu tonova (Hz):</entry>
+  <entry id="138" string="Set Highpass frequency (Hz):">Podesi visokoprolaznu (Highpass) frekvenciju (Hz):</entry>
+  <entry id="139" string="Set Highpass width (Hz):">Podesi visokoprolaznu (Highpass) širinu (Hz):</entry>
   <entry id="140" string="Lowpass filter">Filter niskih tonova</entry>
-  <entry id="141" string="Set Lowpass frequency (Hz):">Podesi filter (Hz):</entry>
-  <entry id="142" string="Set Lowpass width (Hz):">Podesi širinu (Hz):</entry>
+  <entry id="141" string="Set Lowpass frequency (Hz):">Podesi niskoprolaznu (Lowpass) frekvenciju (Hz):</entry>
+  <entry id="142" string="Set Lowpass width (Hz):">Podesi niskoprolaznu (Lowpass) širinu (Hz):</entry>
   <entry id="143" string="Misc settings">Razna podešavanja</entry>
   <entry id="144" string="Disable all filtering">Onemogući sve filtere</entry>
   <entry id="145" string="MP3 Files">MP3 fajl(ovi)</entry>
@@ -218,7 +218,7 @@
   <entry id="214" string="About">Nešto o ...</entry>
   <entry id="215" string="Play">Pokreni</entry>
   <entry id="216" string="Stop">Zaustavi</entry>
-  <entry id="217" string="Cannot play a file while encoding!">Nije moguće  pokretanje fajla za vreme enkodovanja!</entry>
+  <entry id="217" string="Cannot play a file while encoding!">Nije moguće pokretanje fajla za vreme enkodovanja!</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Nije moguće pokrenuti enkodovanje za vreme pokretanja fajla!</entry>
   <entry id="219" string="Enable remote CDDB database">Omogući daljinsku CDDB bazu</entry>
   <entry id="220" string="ATH">ATH</entry>
@@ -234,7 +234,7 @@
   <entry id="230" string="Translated by %1.">Preveo %1</entry>
   <entry id="231" string="Select all">Izaberi sve</entry>
   <entry id="232" string="Select none">Ne izaberi ništa</entry>
-  <entry id="233" string="Toggle selection">Zemeni izbor</entry>
+  <entry id="233" string="Toggle selection">Obrni izbor</entry>
   <entry id="234" string="Show Tip of the Day">Prikaži savet dana</entry>
   <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc je raspoloživ u %1 jezika. Ako Vaš jezik&#10;nije raspoloživ, možete ga lako prevesti&#10;koristeći aplikaciju: &quot;Laki prevodilac&quot;.</entry>
   <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc dolazi sa podrškom za LAME, Ogg Vorbis, FAAC,&#10;FLAC, i Bonk enkoderima. Enkoder za VQF format je&#10;raspoloživ na BonkEnc vebsajtu: %1</entry>
@@ -244,7 +244,7 @@
   <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Imate predloge kako da poboljšamo BonkEnc?&#10;Možete prijaviti Vaše ideje preko Trackera na BonkEnc&#10;SourceForge strani projekta - %1&#10;ili poslati mejl na: %2.</entry>
   <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Da li Vam se dopada BonkEnc? BonkEnc je besplatan, ali možete&#10;pomoći njegov razvoj doniranjem BonkEnc projektu. Možete&#10;poslati novčani prilog na: %1 preko PayPala.&#10;Pogledaj %2 za više detalja.</entry>
   <entry id="242" string="Bitrate / Quality">Stopa bitova / Kvalitet</entry>
-  <entry id="243" string="Check for updates now">Proveri za nadogradnje sada</entry>
+  <entry id="243" string="Check for updates now">Proveri sada za nadogradnje</entry>
   <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Postoje nadogradnje za BonkEnc na internetu!&#10;Da li želite da vidite listu raspoloživih nadogradnji sada?</entry>
   <entry id="245" string="There are no updates available at the moment!">Trenutno nema nadogradnji!</entry>
   <entry id="246" string="Check for updates at startup">Proveri nadogradnje pri pokretanju</entry>
@@ -291,9 +291,9 @@
   <entry id="287" string="Playlist Files">Fajlovi liste</entry>
   <entry id="288" string="unknown year">nepoznata godina</entry>
   <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Ne mogu da pokrenem %1 enkoder! Proverite podešavanja!</entry>
-  <entry id="290" string="Blocksize:">Blok veličina:</entry>
+  <entry id="290" string="Blocksize:">Veličina bloka:</entry>
   <entry id="291" string="Use streamable subset">Koristi protočno pod-podešavanje</entry>
-  <entry id="292" string="Adaptive Joint Stereo">Prilagođeni zbijeni stereo</entry>
+  <entry id="292" string="Adaptive Joint Stereo">Prilagođeni zbijeni (tzv. Joint) stereo</entry>
   <entry id="293" string="Fastest encoding">Najbrže enkodovanje</entry>
   <entry id="294" string="Best compression">Najbolja kompresija</entry>
   <entry id="295" string="Linear predictor">Linearni predviđač</entry>
@@ -303,7 +303,7 @@
   <entry id="299" string="Optimize LPC quantization">Optimizuj LPC kvantizaciju</entry>
   <entry id="300" string="disabled">onemogućeno</entry>
   <entry id="301" string="auto">samo</entry>
-  <entry id="302" string="Residual coding">Ostatno kodovanje</entry>
+  <entry id="302" string="Residual coding">Kodovanje ostatka</entry>
   <entry id="303" string="Minimum partition order">Minimalan redosled particije</entry>
   <entry id="304" string="Maximum partition order">Maksimalan redosled particije</entry>
   <entry id="305" string="By pattern">Po šablonu</entry>
@@ -392,7 +392,7 @@
   <entry id="388" string="Unknown file type">Nepoznata vrsta fajla</entry>
   <entry id="389" string="Unsupported audio format">Ovaj audio format nije podržan</entry>
   <entry id="390" string="Unknown error">Nepoznata greška</entry>
-  <entry id="391" string="Replace existing comments with default comment">Zameni postojeći(e) komentar(e) usađenim komentarom</entry>
+  <entry id="391" string="Replace existing comments with default comment">Zameni  postojeći(e)  komentar(e)  usađenim  komentarom(ima)</entry>
   <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrani fajlovi ne mogu se kombinovati u jedan&#10;izlazni fajl zbog različitih ulaznih formata.&#10;&#10;Molimo prvo pretvorite sve fajlove u isti format.</entry>
  </data>
 </LangFile>
