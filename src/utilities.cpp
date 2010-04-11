@@ -8,6 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
+#include <string>
+
 #include <utilities.h>
 
 #include <input/filter-in-cdrip.h>
@@ -21,6 +23,7 @@
 #include <input/filter-in-bonk.h>
 #include <input/filter-in-faad2.h>
 #include <input/filter-in-flac.h>
+#include <input/filter-in-wma.h>
 #include <input/filter-in-winamp.h>
 
 #include <output/filter-out-blade.h>
@@ -32,11 +35,9 @@
 #include <output/filter-out-tvq.h>
 #include <output/filter-out-vorbis.h>
 #include <output/filter-out-wave.h>
+#include <output/filter-out-wma.h>
 
 #include <dllinterfaces.h>
-
-#include <string>
-#include <shlobj.h>
 
 using namespace smooth::System;
 
@@ -149,6 +150,10 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 	{
 		filter_in = new FilterInFLAC(BonkEnc::currentConfig, trackInfo);
 	}
+	else if (file.EndsWith(".wma") && BonkEnc::currentConfig->enable_wma)
+	{
+		filter_in = new FilterInWMA(BonkEnc::currentConfig, trackInfo);
+	}
 	else if (found != -1)
 	{
 		filter_in = new FilterInWinamp(BonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNth(indexes.GetNth(found)));
@@ -191,6 +196,7 @@ BonkEnc::OutputFilter *BonkEnc::Utilities::CreateOutputFilter(Int encoder, Track
 	if (encoder == ENCODER_LAMEENC)		filter_out = new FilterOutLAME(BonkEnc::currentConfig, trackInfo);
 	if (encoder == ENCODER_VORBISENC)	filter_out = new FilterOutVORBIS(BonkEnc::currentConfig, trackInfo);
 	if (encoder == ENCODER_WAVE)		filter_out = new FilterOutWAVE(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_WMA)		filter_out = new FilterOutWMA(BonkEnc::currentConfig, trackInfo);
 
 	if (encoder == ENCODER_FAAC)
 	{
@@ -463,181 +469,6 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 	while (rFileName.EndsWith(" ")) { rFileName[rFileName.Length() - 1] = 0; }
 
 	return rFileName;
-}
-
-String BonkEnc::Utilities::GetWindowsRootDirectory()
-{
-	String		 windowsDir;
-
-	if (Setup::enableUnicode)
-	{
-		wchar_t	*bufferw = new wchar_t [MAX_PATH];
-
-		GetWindowsDirectoryW(bufferw, MAX_PATH);
-
-		windowsDir = bufferw;
-
-		delete [] bufferw;
-	}
-	else
-	{
-		char	*buffera = new char [MAX_PATH];
-
-		GetWindowsDirectoryA(buffera, MAX_PATH);
-
-		windowsDir = buffera;
-
-		delete [] buffera;
-	}
-
-	if (windowsDir[windowsDir.Length() - 1] != '\\') windowsDir.Append("\\");
-
-	return windowsDir;
-}
-
-String BonkEnc::Utilities::GetProgramFilesDirectory()
-{
-	String	 programsDir;
-	HKEY	 currentVersion;
-
-	if (RegOpenKeyExA(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\Windows\\CurrentVersion", 0, KEY_QUERY_VALUE, &currentVersion) == ERROR_SUCCESS)
-	{
-		// We need to use the ANSI version of RegQueryValueEx, because
-		// the Unicode version is not compatible with MSLU.
-
-		DWORD	 size = MAX_PATH;
-		char	*buffer = new char [size];
-
-		RegQueryValueExA(currentVersion, String("ProgramFilesDir"), 0, NIL, (BYTE *) buffer, &size);
-
-		programsDir = buffer;
-
-		delete [] buffer;
-
-		RegCloseKey(currentVersion);
-	}
-
-	if (programsDir == NIL)
-	{
-		// Failed to get the program files directory from the registry.
-		// Get the directory name from the environment variable.
-
-		if (Setup::enableUnicode)
-		{
-			wchar_t	*bufferw = new wchar_t [MAX_PATH];
-
-			ExpandEnvironmentStringsW(String("%ProgramFiles%"), bufferw, MAX_PATH);
-
-			programsDir = bufferw;
-
-			delete [] bufferw;
-		}
-		else
-		{
-			char	*buffera = new char [MAX_PATH];
-
-			ExpandEnvironmentStringsA(String("%ProgramFiles%"), buffera, MAX_PATH);
-
-			programsDir = buffera;
-
-			delete [] buffera;
-		}
-	}
-
-	if (programsDir[programsDir.Length() - 1] != '\\') programsDir.Append("\\");
-
-	return programsDir;
-}
-
-String BonkEnc::Utilities::GetApplicationDataDirectory()
-{
-	String		 configDir;
-	ITEMIDLIST	*idlist;
-
-	SHGetSpecialFolderLocation(NIL, CSIDL_APPDATA, &idlist);
-
-	if (Setup::enableUnicode)
-	{
-		wchar_t	*bufferw = new wchar_t [MAX_PATH];
-
-		SHGetPathFromIDListW(idlist, bufferw);
-
-		configDir = bufferw;
-
-		delete [] bufferw;
-	}
-	else
-	{
-		char	*buffera = new char [MAX_PATH];
-
-		SHGetPathFromIDListA(idlist, buffera);
-
-		configDir = buffera;
-
-		delete [] buffera;
-	}
-
-	CoTaskMemFree(idlist);
-
-	if (configDir[configDir.Length() - 1] != '\\') configDir.Append("\\");
-	if (configDir == "\\") configDir = "";
-
-	return configDir;
-}
-
-String BonkEnc::Utilities::GetPersonalFilesDirectory()
-{
-	String		 personalDir;
-	ITEMIDLIST	*idlist;
-
-	SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
-
-	if (Setup::enableUnicode)
-	{
-		wchar_t	*bufferw = new wchar_t [MAX_PATH];
-
-		SHGetPathFromIDListW(idlist, bufferw);
-
-		personalDir = bufferw;
-
-		delete [] bufferw;
-	}
-	else
-	{
-		char	*buffera = new char [MAX_PATH];
-
-		SHGetPathFromIDListA(idlist, buffera);
-
-		personalDir = buffera;
-
-		delete [] buffera;
-	}
-
-	CoTaskMemFree(idlist);
-
-	if (personalDir[personalDir.Length() - 1] != '\\') personalDir.Append("\\");
-	if (personalDir == "\\") personalDir = "C:\\";
-
-	return personalDir;
-}
-
-String BonkEnc::Utilities::GetTempDirectory()
-{
-	// We need to use the ANSI version of GetTempPath, because
-	// the Unicode version is not compatible with MSLU.
-
-	String	 tempDir;
-	char	*buffera = new char [MAX_PATH];
-
-	GetTempPathA(MAX_PATH, buffera);
-
-	tempDir = buffera;
-
-	delete [] buffera;
-
-	if (tempDir[tempDir.Length() - 1] != '\\') tempDir.Append("\\");
-
-	return tempDir;
 }
 
 String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)

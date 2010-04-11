@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -82,6 +82,7 @@ namespace BonkEnc
 			Bool		 enable_flac;
 			Bool		 enable_mad;
 			Bool		 enable_id3;
+			Bool		 enable_wma;
 			String		 enc_outdir;
 			String		 enc_filePattern;
 			Bool		 enc_onTheFly;
@@ -95,10 +96,12 @@ namespace BonkEnc
 			Bool		 enable_id3v2;
 			Bool		 enable_vctags;
 			Bool		 enable_mp4meta;
+			Bool		 enable_wmatags;
 			String		 id3v1_encoding;
 			String		 id3v2_encoding;
 			String		 vctag_encoding;
 			String		 mp4meta_encoding;
+			String		 wmameta_encoding;
 			String		 default_comment;
 			Bool		 overwriteComments;
 			Bool		 copy_picture_tags;
@@ -224,6 +227,15 @@ namespace BonkEnc
 
 			Int		 tvq_bitrate;
 			Int		 tvq_presel_candidates;
+
+			Bool		 wma_uncompressed;
+			Int		 wma_codec;
+			Int		 wma_codecFormat;
+			Bool		 wma_autoFormat;
+			Bool		 wma_vbr;
+			Bool		 wma_2pass;
+			Int		 wma_bitrate;
+			Int		 wma_quality;
 
 					 Config();
 					~Config();

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -89,10 +89,12 @@ Bool BonkEnc::Config::LoadSettings()
 	enable_id3v2				= config->GetIntValue("Settings", "EnableID3V2", 1);
 	enable_vctags				= config->GetIntValue("Settings", "EnableVorbisCommentTags", 1);
 	enable_mp4meta				= config->GetIntValue("Settings", "EnableMP4Metadata", 1);
+	enable_wmatags				= config->GetIntValue("Settings", "EnableWMATags", 1);
 	id3v1_encoding				= config->GetStringValue("Settings", "ID3V1Encoding", "ISO-8859-1");
 	id3v2_encoding				= config->GetStringValue("Settings", "ID3V2Encoding", "UTF-16LE");
 	vctag_encoding				= config->GetStringValue("Settings", "VorbisCommentTagEncoding", "UTF-8");
 	mp4meta_encoding			= config->GetStringValue("Settings", "MP4MetadataEncoding", "UTF-8");
+	wmameta_encoding			= config->GetStringValue("Settings", "WMAMetadataEncoding", "UTF-16LE");
 	default_comment				= config->GetStringValue("Settings", "DefaultComment", String("BonkEnc ").Append(BonkEnc::shortVersion).Append(" <http://www.bonkenc.org/>"));
 	overwriteComments			= config->GetIntValue("Settings", "OverwriteComments", 0);
 	copy_picture_tags			= config->GetIntValue("Settings", "CopyPictureTags", 1);
@@ -216,6 +218,15 @@ Bool BonkEnc::Config::LoadSettings()
 	tvq_bitrate				= config->GetIntValue("TwinVQ", "Bitrate", 48);
 	tvq_presel_candidates			= config->GetIntValue("TwinVQ", "PreselectionCandidates", 32);
 
+	wma_uncompressed			= config->GetIntValue("WMA", "Uncompressed", False);
+	wma_codec				= config->GetIntValue("WMA", "Codec", 0);
+	wma_codecFormat				= config->GetIntValue("WMA", "CodecFormat", 0);
+	wma_autoFormat				= config->GetIntValue("WMA", "AutoSelectFormat", True);
+	wma_vbr					= config->GetIntValue("WMA", "EnableVBR", True);
+	wma_2pass				= config->GetIntValue("WMA", "Enable2Pass", False);
+	wma_bitrate				= config->GetIntValue("WMA", "Bitrate", 128);
+	wma_quality				= config->GetIntValue("WMA", "Quality", 90);
+
 	delete config;
 
 	if (enc_outdir[enc_outdir.Length() - 1] != '\\') enc_outdir.Append("\\");
@@ -273,10 +284,12 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("Settings", "EnableID3V2", enable_id3v2);
 		config->SetIntValue("Settings", "EnableVorbisCommentTags", enable_vctags);
 		config->SetIntValue("Settings", "EnableMP4Metadata", enable_mp4meta);
+		config->SetIntValue("Settings", "EnableWMATags", enable_wmatags);
 		config->SetStringValue("Settings", "ID3V1Encoding", id3v1_encoding);
 		config->SetStringValue("Settings", "ID3V2Encoding", id3v2_encoding);
 		config->SetStringValue("Settings", "VorbisCommentTagEncoding", vctag_encoding);
 		config->SetStringValue("Settings", "MP4MetadataEncoding", mp4meta_encoding);
+		config->SetStringValue("Settings", "WMAMetadataEncoding", wmameta_encoding);
 		config->SetStringValue("Settings", "DefaultComment", default_comment);
 		config->SetIntValue("Settings", "OverwriteComments", overwriteComments);
 		config->SetIntValue("Settings", "CopyPictureTags", copy_picture_tags);
@@ -397,6 +410,15 @@ Bool BonkEnc::Config::SaveSettings()
 
 		config->SetIntValue("TwinVQ", "Bitrate", tvq_bitrate);
 		config->SetIntValue("TwinVQ", "PreselectionCandidates", tvq_presel_candidates);
+
+		config->SetIntValue("WMA", "Uncompressed", wma_uncompressed);
+		config->SetIntValue("WMA", "Codec", wma_codec);
+		config->SetIntValue("WMA", "CodecFormat", wma_codecFormat);
+		config->SetIntValue("WMA", "AutoSelectFormat", wma_autoFormat);
+		config->SetIntValue("WMA", "EnableVBR", wma_vbr);
+		config->SetIntValue("WMA", "Enable2Pass", wma_2pass);
+		config->SetIntValue("WMA", "Bitrate", wma_bitrate);
+		config->SetIntValue("WMA", "Quality", wma_quality);
 
 		config->Save();
 	}

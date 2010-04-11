@@ -1,6 +1,6 @@
  /* CDRip Ripping Library
   * Copyright (C) 1999-2002 Albert L. Faber
-  * Portions Copyright (C) 2002-2006 Robert Kausch <robert.kausch@cdrip.org>
+  * Portions Copyright (C) 2002-2010 Robert Kausch <robert.kausch@cdrip.org>
   *  
   * This program is free software; you can redistribute it and/or modify
   * it under the terms of the GNU General Public License as published by
@@ -152,9 +152,9 @@ enum SETSPEED
 
 enum ENDIAN
 {
-	MY_BIGENDIAN = 0,
-	MY_LITTLEENDIAN,
-	MY_NUMENDIAN
+	ENDIAN_BIG = 0,
+	ENDIAN_LITTLE,
+	ENDIAN_NUM
 };
 
 enum ENABLEMODE
@@ -185,6 +185,18 @@ enum OUTPUTFORMAT
 	MONO11025,
 	NUMOUTPUTFORMATS
 };
+
+typedef struct
+{
+	char	 mmCatalog[0x18];
+}
+MCN;
+
+typedef struct
+{
+	char	 isrc[0x18];
+}
+ISRC;
 
 typedef struct
 {
@@ -239,6 +251,9 @@ extern "C"
 
 	// Call DeInit when ripping library is no longer needed
 	DLLEXPORT CDEX_ERR CRCCONV CR_DeInit();
+
+	// True if CR_Init has been called already
+	DLLEXPORT BOOL CRCCONV CR_IsInitialized();
 
 	// Get the DLL version number
 	DLLEXPORT LONG CRCCONV CR_GetCDRipVersion();
@@ -311,6 +326,12 @@ extern "C"
 	// Get the TOC entry
 	DLLEXPORT TOCENTRY CRCCONV CR_GetTocEntry(LONG nTocEntry);
 
+	// Get Media Catalog Number
+	DLLEXPORT CDEX_ERR CRCCONV CR_ReadAndGetMCN(MCN *mcn);
+
+	// Get ISRC
+	DLLEXPORT CDEX_ERR CRCCONV CR_ReadAndGetISRC(ISRC *isrc, int track);
+
 	// Checks if the unit is ready (i.e. is the CD media present)
 	DLLEXPORT BOOL CRCCONV CR_IsUnitReady();
 
@@ -329,13 +350,6 @@ extern "C"
 	DLLEXPORT void CRCCONV CR_GetSubChannelTrackInfo(int &nReadIndex, int &nReadTrack, DWORD &dwReadPos);
 
 	DLLEXPORT DWORD CRCCONV CR_GetCurrentRipSector();
-
-	// Change transport layer, DLL has to be re-initialzed when changing the transport layer!
-	// 0 = ASPI drivers
-	// 1 = Native NT scsi drivers
-
-	DLLEXPORT VOID CRCCONV CR_SetTransportLayer(int nTransportLayer);
-	DLLEXPORT INT CRCCONV CR_GetTransportLayer();
 
 	DLLEXPORT CDEX_ERR CRCCONV CR_ScanForC2Errors(DWORD dwStartSector, DWORD dwNumSectors, DWORD &dwErrors, DWORD *pdwErrorSectors);
 

@@ -254,6 +254,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)			fileTypes.Append("; *.m4a; *.m4b; *.mp4");
 	if (BonkEnc::currentConfig->enable_vorbis)							fileTypes.Append("; *.ogg");
 													fileTypes.Append("; *.voc; *.wav");
+	if (BonkEnc::currentConfig->enable_wma)								fileTypes.Append("; *.wma");
 
 	for (Int l = 0; l < extensions.Length(); l++) fileTypes.Append("; ").Append(extensions.GetNth(l));
 
@@ -269,6 +270,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Sun Audio Files")).Append(" (*.au)"), "*.au");
 													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
 	if (BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows CD Audio Track")).Append(" (*.cda)"), "*.cda");
+	if (BonkEnc::currentConfig->enable_wma)								dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows Media Audio Files")).Append(" (*.wma)"), "*.wma");
 
 	for (Int m = 0; m < types.Length(); m++) dialog->AddFilter(types.GetNth(m), extensions.GetNth(m));
 

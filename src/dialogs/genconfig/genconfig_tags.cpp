@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -21,13 +21,14 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	enableID3V2	= currentConfig->enable_id3v2;
 	enableVCTags	= currentConfig->enable_vctags;
 	enableMP4Meta	= currentConfig->enable_mp4meta;
+	enableWMAMeta	= currentConfig->enable_wmatags;
 
 	overwriteExisting = currentConfig->overwriteComments;
 
 	pos.x	= 7;
 	pos.y	= 11;
 	size.cx	= 530;
-	size.cy	= 120;
+	size.cy	= 146;
 
 	group_tags	= new GroupBox(BonkEnc::i18n->TranslateString("Info tags"), pos, size);
 
@@ -58,17 +59,24 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	check_mp4meta->onAction.Connect(&GeneralSettingsLayerTags::ToggleMP4Meta, this);
 	check_mp4meta->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
-	check_id3v1->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20);
-	check_id3v2->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20);
-	check_vctags->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20);
-	check_mp4meta->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 20);
+	pos.y += 26;
 
-	group_tags->SetWidth(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 41);
+	check_wmameta	= new CheckBox(BonkEnc::i18n->TranslateString("Write WMA metadata info"), pos, size, &enableWMAMeta);
+	check_wmameta->onAction.Connect(&GeneralSettingsLayerTags::ToggleWMAMeta, this);
+	check_wmameta->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
-	pos.x	+= Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) + 39;
+	check_id3v1->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
+	check_id3v2->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
+	check_vctags->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
+	check_mp4meta->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
+	check_wmameta->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
+
+	group_tags->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 41);
+
+	pos.x	+= Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 39;
 	pos.y	= 11;
-	size.cx	= 530 - Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)) - 49;
-	size.cy	= 120;
+	size.cx	= 530 - Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) - 49;
+	size.cy	= 146;
 
 	group_encodings	= new GroupBox(BonkEnc::i18n->TranslateString("Tag encodings"), pos, size);
 
@@ -89,9 +97,13 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 
 	text_mp4meta_encoding	= new Text(BonkEnc::i18n->TranslateString("MP4 metadata encoding:"), pos);
 
-	pos.x	+= Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)) + 7;
+	pos.y += 26;
+
+	text_wmameta_encoding	= new Text(BonkEnc::i18n->TranslateString("WMA metadata encoding:"), pos);
+
+	pos.x	+= Math::Max(Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)), text_wmameta_encoding->textSize.cx) + 7;
 	pos.y	= 23;
-	size.cx	= group_encodings->GetWidth() - Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)) - 27;
+	size.cx	= group_encodings->GetWidth() - Math::Max(Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)), text_wmameta_encoding->textSize.cx) - 27;
 	size.cy	= 0;
 
 	list_encodings_id3v1	= new List();
@@ -137,8 +149,17 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	edit_mp4meta_encoding	= new EditBox(currentConfig->mp4meta_encoding, pos, size);
 	edit_mp4meta_encoding->SetDropDownList(list_encodings_mp4);
 
+	pos.y += 26;
+
+	list_encodings_wma	= new List();
+
+	list_encodings_wma->AddEntry("UTF-16LE");
+
+	edit_wmameta_encoding	= new EditBox(currentConfig->wmameta_encoding, pos, size);
+	edit_wmameta_encoding->SetDropDownList(list_encodings_wma);
+
 	pos.x	= 7;
-	pos.y	= 143;
+	pos.y	= 169;
 	size.cx	= 530;
 	size.cy	= 66;
 
@@ -166,6 +187,7 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	ToggleID3V2();
 	ToggleVCTags();
 	ToggleMP4Meta();
+	ToggleWMAMeta();
 
 	ToggleTags();
 
@@ -194,21 +216,31 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 		edit_mp4meta_encoding->Deactivate();
 	}
 
+	if (!currentConfig->enable_wma)
+	{
+		check_wmameta->Deactivate();
+		text_wmameta_encoding->Deactivate();
+		edit_wmameta_encoding->Deactivate();
+	}
+
 	Add(group_tags);
 	Add(check_id3v1);
 	Add(check_id3v2);
 	Add(check_vctags);
 	Add(check_mp4meta);
+	Add(check_wmameta);
 
 	Add(group_encodings);
 	Add(text_id3v1_encoding);
 	Add(text_id3v2_encoding);
 	Add(text_vctags_encoding);
 	Add(text_mp4meta_encoding);
+	Add(text_wmameta_encoding);
 	Add(edit_id3v1_encoding);
 	Add(edit_id3v2_encoding);
 	Add(edit_vctags_encoding);
 	Add(edit_mp4meta_encoding);
+	Add(edit_wmameta_encoding);
 
 	Add(group_definfo);
 	Add(text_defcomment);
@@ -223,16 +255,19 @@ BonkEnc::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
 	DeleteObject(check_id3v2);
 	DeleteObject(check_vctags);
 	DeleteObject(check_mp4meta);
+	DeleteObject(check_wmameta);
 
 	DeleteObject(group_encodings);
 	DeleteObject(text_id3v1_encoding);
 	DeleteObject(text_id3v2_encoding);
 	DeleteObject(text_vctags_encoding);
 	DeleteObject(text_mp4meta_encoding);
+	DeleteObject(text_wmameta_encoding);
 	DeleteObject(edit_id3v1_encoding);
 	DeleteObject(edit_id3v2_encoding);
 	DeleteObject(edit_vctags_encoding);
 	DeleteObject(edit_mp4meta_encoding);
+	DeleteObject(edit_wmameta_encoding);
 
 	DeleteObject(group_definfo);
 	DeleteObject(text_defcomment);
@@ -243,6 +278,7 @@ BonkEnc::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
 	DeleteObject(list_encodings_id3v2);
 	DeleteObject(list_encodings_vc);
 	DeleteObject(list_encodings_mp4);
+	DeleteObject(list_encodings_wma);
 }
 
 Void BonkEnc::GeneralSettingsLayerTags::ToggleID3V1()
@@ -301,9 +337,15 @@ Void BonkEnc::GeneralSettingsLayerTags::ToggleMP4Meta()
 	}
 }
 
+Void BonkEnc::GeneralSettingsLayerTags::ToggleWMAMeta()
+{
+	text_wmameta_encoding->Deactivate();
+	edit_wmameta_encoding->Deactivate();
+}
+
 Void BonkEnc::GeneralSettingsLayerTags::ToggleTags()
 {
-	if (((!enableID3V1 && !enableID3V2) || (!currentConfig->enable_lame && !currentConfig->enable_blade) || !currentConfig->enable_id3) && (!enableVCTags || (!currentConfig->enable_vorbis && !currentConfig->enable_flac)) && (!enableMP4Meta || (!currentConfig->enable_mp4 || !currentConfig->enable_faac)))
+	if (((!enableID3V1 && !enableID3V2) || (!currentConfig->enable_lame && !currentConfig->enable_blade) || !currentConfig->enable_id3) && (!enableVCTags || (!currentConfig->enable_vorbis && !currentConfig->enable_flac)) && (!enableMP4Meta || (!currentConfig->enable_mp4 || !currentConfig->enable_faac)) && (!enableWMAMeta || !currentConfig->enable_wma))
 	{
 		text_defcomment->Deactivate();
 		edit_defcomment->Deactivate();
@@ -335,6 +377,11 @@ Bool BonkEnc::GeneralSettingsLayerTags::GetEnableMP4Meta()
 	return enableMP4Meta;
 }
 
+Bool BonkEnc::GeneralSettingsLayerTags::GetEnableWMAMeta()
+{
+	return enableWMAMeta;
+}
+
 String BonkEnc::GeneralSettingsLayerTags::GetID3V1Encoding()
 {
 	return edit_id3v1_encoding->GetText();
@@ -353,6 +400,11 @@ String BonkEnc::GeneralSettingsLayerTags::GetVCTagEncoding()
 String BonkEnc::GeneralSettingsLayerTags::GetMP4MetaEncoding()
 {
 	return edit_mp4meta_encoding->GetText();
+}
+
+String BonkEnc::GeneralSettingsLayerTags::GetWMAMetaEncoding()
+{
+	return edit_wmameta_encoding->GetText();
 }
 
 String BonkEnc::GeneralSettingsLayerTags::GetDefaultComment()

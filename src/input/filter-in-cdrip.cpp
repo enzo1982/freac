@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -179,8 +179,8 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 	params.bDetectJitterErrors	= currentConfig->cdrip_detectJitterErrors;
 	params.bDetectC2Errors		= currentConfig->cdrip_detectC2Errors;
 	params.nSpeed			= currentConfig->cdrip_speed;
-	params.bEnableMultiRead		= True;
-	params.nMultiReadCount		= 2;
+	params.bEnableMultiRead		= False;
+	params.nMultiReadCount		= 0;
 
 	ex_CR_SetCDROMParameters(&params);
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -357,7 +357,21 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 					prevParam == "-mp4" ||
 					prevParam == "-ms" ||
 					prevParam == "-extc" ||
-					prevParam == "-extm ||")) (*files).Add(param);
+					prevParam == "-extm ||"))
+		{
+			if (param.Find("*") != -1 || param.Find("?") != -1)
+			{
+				File			 file(param);
+				Directory		 dir(file.GetFilePath());
+				const Array<File>	&array = dir.GetFilesByPattern(file.GetFileName());
+
+				foreach (File entry, array) (*files).Add(entry);
+			}
+			else
+			{
+				(*files).Add(param);
+			}
+		}
 	}
 }
 

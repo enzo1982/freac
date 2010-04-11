@@ -1,9 +1,9 @@
 BonkEnc Version 1.0.15
 
 BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
-MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
-Dateien lesen und MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
-und WAV Dateien erzeugen.
+MP3, MP4/M4A, AAC, Ogg Vorbis, WMA, Bonk, FLAC, WAV, AIF, AU und
+VOC-Dateien lesen und MP3, MP4/M4A, AAC, Ogg Vorbis, WMA, Bonk,
+FLAC, VQF und WAV-Dateien erzeugen.
 
 BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
 BonkEnc verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
@@ -13,11 +13,17 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.15 (November 2009)
+	Version 1.0.15 (April 2010)
 
-		- Japanische Übersetzung aktualisiert
+		- Japanische, chinesische (vereinfacht), niederländische und serbische Übersetzungen aktualisiert
+		- Windows Media Audio Codierer/Decodierer hinzugefügt
+		- Unterstützung für Wildcards in BEcmd-Parametern hinzugefügt
+		- GUI-Performance verbessert, besonders unter Windows Vista und Windows 7
 		- Fehler beim Umgang mit ungültigen Daten vor dem ersten MP3-Frame behoben
 		- Fehler bei LAME ABR-Voreinstellungskonfiguration behoben
+		- Problem beim Öffnen von MP3- und FLAC-Dateien unter Windows 9x mit Unicows behoben
+		- Probleme beim CD-Rippen auf einigen Windows 7 x64 Systemen behoben
+		- CDRip auf Version 1.23 aktualisiert
 		- Einige kleinere Korrekturen
 
 	Version 1.0.14 (Oktober 2009)
@@ -262,11 +268,6 @@ Bekannte Probleme
 
 	- BonkEnc ist zurzeit auf 2 Audiokanäle beschränkt
 
-	- Editboxen funktionieren im Rechts-nach-Links modus nicht korrekt
-
-	- Die WMA-Eingabeplugins von Winamp 5.22 und später sind nich kompatibel mit BonkEnc. Verwenden
-	  Sie das WMA-Plugin von Winamp 5.21, wenn Sie WMA-Dateien dekodieren möchten.
-
 Besonderen Dank
 ---------------
 
@@ -281,11 +282,11 @@ Besonderen Dank
 			   Nikolaos-Ioannis Galanis (Griechisch),
 			   Dmitry Gusakov, Evgeny Kozlov (Russisch),
 			   Henryk Ning (Chinesisch, traditionell),
-			   Nimin (Chinesisch, vereinfacht),
+			   Joeyong Jen (Chinesisch, vereinfacht),
 			   Krzysztof Konopacki (Polnisch),
 			   Peter Toth (Ungarisch),
 			   Andrij Iletschko (Ukrainisch),
-			   Wim Garreyn (Niederländisch),
+			   Wim Garreyn & Thomas De Rocker (Niederländisch),
 			   Nebojša Nikolic (Serbisch),
 			   Krisu (Finnisch),
 			   Julius Faltus (Tschechisch),

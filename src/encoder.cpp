@@ -846,6 +846,7 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 		else if (currentConfig->encoder == ENCODER_FLAC)	outputFileName.Append(".flac");
 		else if (currentConfig->encoder == ENCODER_TVQ)		outputFileName.Append(".vqf");
 		else if (currentConfig->encoder == ENCODER_WAVE)	outputFileName.Append(".wav");
+		else if (currentConfig->encoder == ENCODER_WMA)		outputFileName.Append(".wma");
 
 		if (currentConfig->encoder == ENCODER_FAAC)
 		{
@@ -902,6 +903,11 @@ String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
 	{
 		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
 		defaultExtension = "wav";
+	}
+	else if (currentConfig->encoder == ENCODER_WMA)
+	{
+		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows Media Audio Files")).Append(" (*.wma)"), "*.wma");
+		defaultExtension = "wma";
 	}
 	else if (currentConfig->encoder == ENCODER_FAAC)
 	{

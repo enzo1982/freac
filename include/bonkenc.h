@@ -39,6 +39,7 @@ extern BEEXPORT Int	 ENCODER_FAAC;
 extern BEEXPORT Int	 ENCODER_FLAC;
 extern BEEXPORT Int	 ENCODER_TVQ;
 extern BEEXPORT Int	 ENCODER_WAVE;
+extern BEEXPORT Int	 ENCODER_WMA;
 
 typedef unsigned long  uint32;
 typedef unsigned short uint16;

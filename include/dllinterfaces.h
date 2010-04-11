@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,9 +14,9 @@
 #include <smooth.h>
 
 #ifndef _MSC_VER
-#include <stdint.h>
+#	include <stdint.h>
 #else
-#define int32_t long
+#	define int32_t long
 #endif
 
 #include <3rdparty/bonk/bonk.h>
@@ -34,7 +34,12 @@
 #include <3rdparty/flac/stream_encoder.h>
 #include <3rdparty/flac/stream_decoder.h>
 #include <3rdparty/mad/mad.h>
+#include <3rdparty/wmsdk/wmsdk.h>
 
+#undef NULL
+#define NULL 0
+
+using namespace smooth;
 using namespace smooth::System;
 
 namespace BonkEnc
@@ -55,6 +60,7 @@ namespace BonkEnc
 			static DynamicLoader		*mp4v2dll;
 			static DynamicLoader		*flacdll;
 			static DynamicLoader		*maddll;
+			static DynamicLoader		*wmvcoredll;
 		public:
 			static Bool			 LoadBonkDLL();
 			static Bool			 LoadBladeDLL();
@@ -69,6 +75,7 @@ namespace BonkEnc
 			static Bool			 LoadMP4V2DLL();
 			static Bool			 LoadFLACDLL();
 			static Bool			 LoadMADDLL();
+			static Bool			 LoadWMVCoreDLL();
 
 			static Void			 FreeBonkDLL();
 			static Void			 FreeBladeDLL();
@@ -83,6 +90,7 @@ namespace BonkEnc
 			static Void			 FreeMP4V2DLL();
 			static Void			 FreeFLACDLL();
 			static Void			 FreeMADDLL();
+			static Void			 FreeWMVCoreDLL();
 
 			static Bool			 LoadWinampDLLs();
 			static Void			 FreeWinampDLLs();
@@ -637,5 +645,19 @@ namespace BonkEnc
 	extern BEEXPORT ID3FIELDGETASCII		 ex_ID3Field_GetASCII;
 	extern BEEXPORT ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE;
 	extern BEEXPORT ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE;
+
+// WMVCore DLL API
+
+	typedef HRESULT					(STDMETHODCALLTYPE *WMCREATEREADER)		(IUnknown *, DWORD, IWMReader **);
+	typedef HRESULT					(STDMETHODCALLTYPE *WMCREATEWRITER)		(IUnknown *, IWMWriter **);
+	typedef HRESULT					(STDMETHODCALLTYPE *WMCREATEWRITERFILESINK)	(IWMWriterFileSink **);
+	typedef HRESULT					(STDMETHODCALLTYPE *WMCREATEPROFILEMANAGER)	(IWMProfileManager **);
+	typedef HRESULT					(STDMETHODCALLTYPE *WMCREATEEDITOR)		(IWMMetadataEditor **);
+
+	extern		WMCREATEREADER			 ex_WMCreateReader;
+	extern		WMCREATEWRITER			 ex_WMCreateWriter;
+	extern		WMCREATEWRITERFILESINK		 ex_WMCreateWriterFileSink;
+	extern BEEXPORT WMCREATEPROFILEMANAGER		 ex_WMCreateProfileManager;
+	extern		WMCREATEEDITOR			 ex_WMCreateEditor;
 
 #endif

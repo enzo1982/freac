@@ -1,9 +1,9 @@
 BonkEnc version 1.0.15
 
 BonkEnc is an encoder for various audio formats. It can read
-MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC
-files and produce MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
-and WAV files.
+MP3, MP4/M4A, AAC, Ogg Vorbis, WMA, Bonk, FLAC, WAV, AIF, AU and
+VOC files and produce MP3, MP4/M4A, AAC, Ogg Vorbis, WMA, Bonk,
+FLAC, VQF and WAV files.
 
 BonkEnc uses the CDRip Ripping Library for audio ripping.
 BonkEnc uses the FAAD2 AAC decoder for Advanced Audio decoding.
@@ -13,11 +13,17 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.15 (November 2009)
+	Version 1.0.15 (April 2010)
 
-		- updated Japanese translation
+		- updated Japanese, Chinese (simplified), Dutch and Serbian translations
+		- added Windows Media Audio encoder/decoder
+		- added support for wildcards in arguments to BEcmd
+		- improved GUI performance especially on Windows Vista and Windows 7
 		- fixed handling of garbage data before the first MP3 frame
 		- fixed LAME ABR preset configuration
+		- fixed problem opening MP3 and FLAC files on Windows 9x with Unicows
+		- fixed CD ripping problems on some Windows 7 x64 systems
+		- upgraded CDRip to version 1.23
 		- some minor fixes
 
 	Version 1.0.14 (October 2009)
@@ -262,11 +268,6 @@ Known problems
 
 	- BonkEnc is currently limited to a maximum of 2 audio channels
 
-	- Edit boxes do not work correctly in Right-to-Left mode
-
-	- The WMA input plug-ins of Winamp 5.22 and later are not compatible with BonkEnc. Use
-	  the WMA plug-in of Winamp 5.21 if you need WMA input.
-
 Special thanks to
 -----------------
 
@@ -281,11 +282,11 @@ Special thanks to
 			   Nikolaos-Ioannis Galanis (Greek),
 			   Dmitry Gusakov, Evgeny Kozlov (Russian),
 			   Henryk Ning (Chinese, traditional),
-			   Nimin (Chinese, simplified),
+			   Joeyong Jen (Chinese, simplified),
 			   Krzysztof Konopacki (Polish),
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
-			   Wim Garreyn (Dutch),
+			   Wim Garreyn & Thomas De Rocker (Dutch),
 			   Nebojša Nikolic (Serbian),
 			   Krisu (Finnish),
 			   Julius Faltus (Czech),

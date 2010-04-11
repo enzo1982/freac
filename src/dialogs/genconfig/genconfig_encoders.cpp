@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,6 +20,7 @@
 #include <dialogs/faacconfig.h>
 #include <dialogs/flacconfig.h>
 #include <dialogs/tvqconfig.h>
+#include <dialogs/wmaconfig.h>
 
 #include <3rdparty/bladedll/bladedll.h>
 #include <3rdparty/lame/lame.h>
@@ -85,6 +86,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	if (currentConfig->enable_flac)		combo_encoder->AddEntry(String("FLAC Audio Encoder v").Append(*ex_FLAC__VERSION_STRING));
 	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME MP3 Encoder v").Append(ex_get_lame_short_version()));
 	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.2.0"));
+	if (currentConfig->enable_wma)		combo_encoder->AddEntry(String("Windows Media Audio Encoder"));
 
 	if (currentConfig->enable_tvq)
 	{
@@ -288,6 +290,7 @@ Void BonkEnc::GeneralSettingsLayerEncoders::ConfigureEncoder()
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FAAC)	dlg = new ConfigureFAAC();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FLAC)	dlg = new ConfigureFLAC();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_TVQ)	dlg = new ConfigureTVQ();
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WMA)	dlg = new ConfigureWMA();
 
 	if (dlg != NIL)
 	{

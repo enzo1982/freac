@@ -33,6 +33,7 @@ Int	 ENCODER_FAAC		= -1;
 Int	 ENCODER_FLAC		= -1;
 Int	 ENCODER_TVQ		= -1;
 Int	 ENCODER_WAVE		= -1;
+Int	 ENCODER_WMA		= -1;
 
 BonkEnc::Config		*BonkEnc::BonkEnc::currentConfig = NIL;
 I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
@@ -42,10 +43,10 @@ BonkEnc::Debug		*BonkEnc::debug_out;
 String	 BonkEnc::BonkEnc::version	= "v1.0.15";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.15";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.8";
-String	 BonkEnc::BonkEnc::cddbMode	= "submit";
+//String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
 
-//String	 BonkEnc::BonkEnc::cddbMode	= "test";
+String	 BonkEnc::BonkEnc::cddbMode	= "test";
 //String	 BonkEnc::BonkEnc::updatePath	= "file://eUpdate/eUpdate.xml";
 
 BonkEnc::BonkEnc::BonkEnc()
@@ -115,6 +116,9 @@ BonkEnc::BonkEnc::BonkEnc()
 	if (DLLInterfaces::LoadMADDLL() == False)	currentConfig->enable_mad = False;
 	else						currentConfig->enable_mad = True;
 
+	if (DLLInterfaces::LoadWMVCoreDLL() == False)	currentConfig->enable_wma = False;
+	else						currentConfig->enable_wma = True;
+
 	if (currentConfig->enable_faac || currentConfig->enable_faad2)
 	{
 		if (DLLInterfaces::LoadMP4V2DLL() == False)	currentConfig->enable_mp4 = False;
@@ -137,6 +141,7 @@ BonkEnc::BonkEnc::BonkEnc()
 	if (currentConfig->enable_flac)		ENCODER_FLAC = nextEC++;
 	if (currentConfig->enable_lame)		ENCODER_LAMEENC = nextEC++;
 	if (currentConfig->enable_vorbis)	ENCODER_VORBISENC = nextEC++;
+	if (currentConfig->enable_wma)		ENCODER_WMA = nextEC++;
 	if (currentConfig->enable_tvq)		ENCODER_TVQ = nextEC++;
 
 	ENCODER_WAVE = nextEC++;
@@ -161,6 +166,7 @@ BonkEnc::BonkEnc::~BonkEnc()
 	if (currentConfig->enable_mp4)		DLLInterfaces::FreeMP4V2DLL();
 	if (currentConfig->enable_flac)		DLLInterfaces::FreeFLACDLL();
 	if (currentConfig->enable_mad)		DLLInterfaces::FreeMADDLL();
+	if (currentConfig->enable_wma)		DLLInterfaces::FreeWMVCoreDLL();
 
 	DLLInterfaces::FreeWinampDLLs();
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -21,7 +21,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 530;
-	size.cy	= 207;
+	size.cy	= 228;
 
 	tabs_plugins		= new TabWidget(pos, size);
 
@@ -30,7 +30,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 425;
-	size.cy	= 170;
+	size.cy	= 191;
 
 	list_input		= new ListBox(pos, size);
 	list_input->onSelectEntry.Connect(&GeneralSettingsLayerPlugins::SelectInputPlugin, this);
@@ -59,7 +59,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 425;
-	size.cy	= 170;
+	size.cy	= 191;
 
 	list_output		= new ListBox(pos, size);
 	list_output->SetFlags(LF_MULTICHECKBOX);

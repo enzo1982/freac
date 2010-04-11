@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -30,7 +30,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 
 	currentConfig = BonkEnc::currentConfig;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(40, 40), Size(570, 331));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(40, 40), Size(570, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -62,7 +62,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	pos.x	= 7;
 	pos.y	= 7;
 	size.cx	= 548;
-	size.cy	= 244;
+	size.cy	= 265;
 
 	reg_register		= new TabWidget(pos, size);
 
@@ -195,11 +195,13 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->enable_id3v2		= register_layer_tags->GetEnableID3V2();
 	currentConfig->enable_vctags		= register_layer_tags->GetEnableVCTags();
 	currentConfig->enable_mp4meta		= register_layer_tags->GetEnableMP4Meta();
+	currentConfig->enable_wmatags		= register_layer_tags->GetEnableWMAMeta();
 
 	currentConfig->id3v1_encoding		= register_layer_tags->GetID3V1Encoding();
 	currentConfig->id3v2_encoding		= register_layer_tags->GetID3V2Encoding();
 	currentConfig->vctag_encoding		= register_layer_tags->GetVCTagEncoding();
 	currentConfig->mp4meta_encoding		= register_layer_tags->GetMP4MetaEncoding();
+	currentConfig->wmameta_encoding		= register_layer_tags->GetWMAMetaEncoding();
 
 	currentConfig->overwriteComments	= register_layer_tags->GetOverwriteComments();
 

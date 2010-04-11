@@ -270,6 +270,12 @@ ID3FIELDGETASCII		 ex_ID3Field_GetASCII			= NIL;
 ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE			= NIL;
 ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE			= NIL;
 
+WMCREATEREADER			 ex_WMCreateReader			= NIL;
+WMCREATEWRITER			 ex_WMCreateWriter			= NIL;
+WMCREATEWRITERFILESINK		 ex_WMCreateWriterFileSink		= NIL;
+WMCREATEPROFILEMANAGER		 ex_WMCreateProfileManager		= NIL;
+WMCREATEEDITOR			 ex_WMCreateEditor			= NIL;
+
 DynamicLoader *BonkEnc::DLLInterfaces::bonkdll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::bladedll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::lamedll		= NIL;
@@ -283,6 +289,7 @@ DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::mp4v2dll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::flacdll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::maddll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::wmvcoredll	= NIL;
 
 Array<DynamicLoader *>	 BonkEnc::DLLInterfaces::winamp_in_plugins;
 Array<In_Module *>	 BonkEnc::DLLInterfaces::winamp_in_modules;
@@ -877,6 +884,32 @@ Void BonkEnc::DLLInterfaces::FreeMADDLL()
 	Object::DeleteObject(maddll);
 
 	maddll = NIL;
+}
+
+Bool BonkEnc::DLLInterfaces::LoadWMVCoreDLL()
+{
+	wmvcoredll = new DynamicLoader("WMVCore");
+
+	ex_WMCreateReader		= (WMCREATEREADER) wmvcoredll->GetFunctionAddress("WMCreateReader");
+	ex_WMCreateWriter		= (WMCREATEWRITER) wmvcoredll->GetFunctionAddress("WMCreateWriter");
+	ex_WMCreateWriterFileSink	= (WMCREATEWRITERFILESINK) wmvcoredll->GetFunctionAddress("WMCreateWriterFileSink");
+	ex_WMCreateProfileManager	= (WMCREATEPROFILEMANAGER) wmvcoredll->GetFunctionAddress("WMCreateProfileManager");
+	ex_WMCreateEditor		= (WMCREATEEDITOR) wmvcoredll->GetFunctionAddress("WMCreateEditor");
+
+	if (ex_WMCreateReader		== NIL ||
+	    ex_WMCreateWriter		== NIL ||
+	    ex_WMCreateWriterFileSink	== NIL ||
+	    ex_WMCreateProfileManager	== NIL ||
+	    ex_WMCreateEditor		== NIL) { FreeWMVCoreDLL(); return False; }
+
+	return True;
+}
+
+Void BonkEnc::DLLInterfaces::FreeWMVCoreDLL()
+{
+	Object::DeleteObject(wmvcoredll);
+
+	wmvcoredll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadFLACDLL()

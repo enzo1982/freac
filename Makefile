@@ -9,9 +9,9 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-mad.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/picture.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-mad.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/filter-in-wma.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/filter-out-wma.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/directories.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/picture.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
 RESOURCES = $(OBJECTDIR)/resources.o
-EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/playback.o
+EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/wmaconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/playback.o
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o
 
 EXENAME = $(BINDIR)/BonkEnc.exe
@@ -27,12 +27,10 @@ ECHO = echo
 COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -Os -g0 -Wall -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
 LINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -mwindows -o$(EXENAME)
 CMDLINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -o$(CMDNAME)
-DLLLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -mwindows --shared -Xlinker --out-implib -Xlinker $(LIBNAME) -o$(DLLNAME)
+DLLLINKER_OPTS = -L$(LIBDIR1) -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -luuid -lwinmm -lstdc++ -Xlinker --enable-stdcall-fixup -mwindows --shared -Xlinker --out-implib -Xlinker $(LIBNAME) -o$(DLLNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
-PACKER = upx
-PACKER_OPTS = -9 -q
 RESCOMP_OPTS = -O coff
 
 .PHONY: all headers install clean clean_headers
@@ -51,7 +49,6 @@ $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
 	$(LINKER) $(DLLOBJECTS) $(DLLLINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(DLLNAME)
-#	$(PACKER) $(PACKER_OPTS) $(DLLNAME)
 	countbuild BuildNumber
 	$(ECHO) done.
 
@@ -59,14 +56,12 @@ $(EXENAME): $(EXEOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(EXENAME)...
 	$(LINKER) $(EXEOBJECTS) $(RESOURCES) $(LINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(EXENAME)
-#	$(PACKER) $(PACKER_OPTS) $(EXENAME)
 	$(ECHO) done.
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(CMDNAME)...
 	$(LINKER) $(CMDOBJECTS) $(RESOURCES) $(CMDLINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(CMDNAME)
-#	$(PACKER) $(PACKER_OPTS) $(CMDNAME)
 	$(ECHO) done.
 
 $(OBJECTDIR)/bladeconfig.o: $(SRCDIR)/dialogs/bladeconfig.cpp
@@ -102,6 +97,11 @@ $(OBJECTDIR)/tvqconfig.o: $(SRCDIR)/dialogs/tvqconfig.cpp
 $(OBJECTDIR)/vorbisconfig.o: $(SRCDIR)/dialogs/vorbisconfig.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/dialogs/vorbisconfig.cpp...
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/dialogs/vorbisconfig.cpp -o $(OBJECTDIR)/vorbisconfig.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/wmaconfig.o: $(SRCDIR)/dialogs/wmaconfig.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/wmaconfig.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllimport)" $(SRCDIR)/dialogs/wmaconfig.cpp -o $(OBJECTDIR)/wmaconfig.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/cddb.o: $(SRCDIR)/cddb/cddb.cpp
@@ -202,6 +202,11 @@ $(OBJECTDIR)/cuesheet.o: $(SRCDIR)/cuesheet.cpp
 $(OBJECTDIR)/debug.o: $(SRCDIR)/debug.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/debug.cpp...
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/debug.cpp -o $(OBJECTDIR)/debug.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/directories.o: $(SRCDIR)/directories.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/directories.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/directories.cpp -o $(OBJECTDIR)/directories.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/dllinterfaces.o: $(SRCDIR)/dllinterfaces.cpp
@@ -359,6 +364,11 @@ $(OBJECTDIR)/filter-in-winamp.o: $(SRCDIR)/input/filter-in-winamp.cpp
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/input/filter-in-winamp.cpp -o $(OBJECTDIR)/filter-in-winamp.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/filter-in-wma.o: $(SRCDIR)/input/filter-in-wma.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-wma.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/input/filter-in-wma.cpp -o $(OBJECTDIR)/filter-in-wma.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/inputfilter.o: $(SRCDIR)/input/inputfilter.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/input/inputfilter.cpp...
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/input/inputfilter.cpp -o $(OBJECTDIR)/inputfilter.o
@@ -407,6 +417,11 @@ $(OBJECTDIR)/filter-out-vorbis.o: $(SRCDIR)/output/filter-out-vorbis.cpp
 $(OBJECTDIR)/filter-out-wave.o: $(SRCDIR)/output/filter-out-wave.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/output/filter-out-wave.cpp...
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/output/filter-out-wave.cpp -o $(OBJECTDIR)/filter-out-wave.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/filter-out-wma.o: $(SRCDIR)/output/filter-out-wma.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/output/filter-out-wma.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/output/filter-out-wma.cpp -o $(OBJECTDIR)/filter-out-wma.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/outputfilter.o: $(SRCDIR)/output/outputfilter.cpp

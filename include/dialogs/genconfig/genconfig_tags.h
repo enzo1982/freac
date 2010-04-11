@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -23,16 +23,19 @@ namespace BonkEnc
 			CheckBox	*check_id3v2;
 			CheckBox	*check_vctags;
 			CheckBox	*check_mp4meta;
+			CheckBox	*check_wmameta;
 
 			GroupBox	*group_encodings;
 			Text		*text_id3v1_encoding;
 			Text		*text_id3v2_encoding;
 			Text		*text_vctags_encoding;
 			Text		*text_mp4meta_encoding;
+			Text		*text_wmameta_encoding;
 			EditBox		*edit_id3v1_encoding;
 			EditBox		*edit_id3v2_encoding;
 			EditBox		*edit_vctags_encoding;
 			EditBox		*edit_mp4meta_encoding;
+			EditBox		*edit_wmameta_encoding;
 
 			GroupBox	*group_definfo;
 			Text		*text_defcomment;
@@ -43,11 +46,13 @@ namespace BonkEnc
 			List		*list_encodings_id3v2;
 			List		*list_encodings_vc;
 			List		*list_encodings_mp4;
+			List		*list_encodings_wma;
 
 			Bool		 enableID3V1;
 			Bool		 enableID3V2;
 			Bool		 enableVCTags;
 			Bool		 enableMP4Meta;
+			Bool		 enableWMAMeta;
 
 			Bool		 overwriteExisting;
 
@@ -57,6 +62,7 @@ namespace BonkEnc
 			Void		 ToggleID3V2();
 			Void		 ToggleVCTags();
 			Void		 ToggleMP4Meta();
+			Void		 ToggleWMAMeta();
 
 			Void		 ToggleTags();
 		public:
@@ -67,11 +73,13 @@ namespace BonkEnc
 			Bool		 GetEnableID3V2();
 			Bool		 GetEnableVCTags();
 			Bool		 GetEnableMP4Meta();
+			Bool		 GetEnableWMAMeta();
 
 			String		 GetID3V1Encoding();
 			String		 GetID3V2Encoding();
 			String		 GetVCTagEncoding();
 			String		 GetMP4MetaEncoding();
+			String		 GetWMAMetaEncoding();
 
 			String		 GetDefaultComment();
 			Bool		 GetOverwriteComments();
