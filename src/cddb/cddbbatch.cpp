@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,7 +33,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	 */
 	XML::Document	*document = new XML::Document();
 
-	if (document->LoadFile(String(config->configDir).Append("cddb\\queries.xml")) == Success())
+	if (document->LoadFile(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")) == Success())
 	{
 		XML::Node	*root = document->GetRootNode();
 
@@ -54,7 +54,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	 */
 	document = new XML::Document();
 
-	if (document->LoadFile(String(config->configDir).Append("cddb\\submits.xml")) == Success())
+	if (document->LoadFile(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")) == Success())
 	{
 		ReadEntriesXML(document);
 	}
@@ -79,7 +79,7 @@ Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 		if (node->GetName() == "submit")
 		{
-			InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb\\").Append(node->GetAttributeByName("category")->GetContent()).Append("\\").Append(node->GetContent()), IS_READONLY);
+			InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(node->GetAttributeByName("category")->GetContent()).Append(Directory::GetDirectoryDelimiter()).Append(node->GetContent()), IS_READONLY);
 
 			if (in->Size() > 0)
 			{
@@ -120,7 +120,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 	{
 		/* Delete queries file if no more saved queries exist
 		 */
-		File(String(configDir).Append("cddb\\queries.xml")).Delete();
+		File(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")).Delete();
 	}
 	else
 	{
@@ -136,7 +136,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 			root->AddNode("query", queries.GetNth(i));
 		}
 
-		document->SaveFile(String(configDir).Append("cddb\\queries.xml"));
+		document->SaveFile(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml"));
 
 		delete document;
 		delete root;
@@ -148,7 +148,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 	{
 		/* Delete submits file if no more saved submits exist
 		 */
-		File(String(configDir).Append("cddb\\submits.xml")).Delete();
+		File(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")).Delete();
 	}
 	else
 	{
@@ -166,7 +166,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 			node->SetAttribute("category", submits.GetNth(i).category);
 		}
 
-		document->SaveFile(String(configDir).Append("cddb\\submits.xml"));
+		document->SaveFile(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml"));
 
 		delete document;
 		delete root;
@@ -204,7 +204,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	if (!cddbDir.Exists()) cddbDir.Create();
 
-	Directory	 categoryDir(String(configDir).Append("cddb\\").Append(cddbInfo.category));
+	Directory	 categoryDir(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category));
 
 	if (!categoryDir.Exists()) categoryDir.Create();
 
@@ -212,7 +212,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 	 */
 	String	 configFreedbDir = config->freedb_dir;
 
-	config->freedb_dir = String(configDir).Append("cddb\\");
+	config->freedb_dir = String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
 
 	CDDBLocal	 cddb;
 
@@ -277,7 +277,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 		 */
 		String	 configFreedbDir = config->freedb_dir;
 
-		config->freedb_dir = String(config->configDir).Append("cddb\\");
+		config->freedb_dir = String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
 
 		CDDBLocal	 cddb;
 

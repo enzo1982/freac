@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,6 +25,12 @@ const Bool	 BonkEnc::Config::SettingsShowTipsDefault			= True;
 
 const String	 BonkEnc::Config::SettingsNextTipID				= "NextTip";
 const Int	 BonkEnc::Config::SettingsNextTipDefault			= 0;
+
+const String	 BonkEnc::Config::SettingsDisplayErrorsID			= "DisplayErrors";
+const Bool	 BonkEnc::Config::SettingsDisplayErrorsDefault			= True;
+
+const String	 BonkEnc::Config::SettingsEncodingHeuristicsID			= "EnableEncodingHeuristics";
+const Bool	 BonkEnc::Config::SettingsEncodingHeuristicsDefault		= False;
 
 const String	 BonkEnc::Config::SettingsLastUsedGenreID			= "LastUsedGenre";
 
@@ -76,6 +82,20 @@ const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesDefault		= False;
 
 const String	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceID	= "CoverArtWriteToFilesWithReference";
 const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= False;
+
+const String	 BonkEnc::Config::TagsCoverArtFilenamePatternID			= "CoverArtFilenamePattern";
+const String	 BonkEnc::Config::TagsCoverArtFilenamePatternDefault		= "<artist> - <album>\\<type>";
+
+const String	 BonkEnc::Config::TagsWriteMCDIID				= "WriteMCDI";
+const Bool	 BonkEnc::Config::TagsWriteMCDIDefault				= True;
+
+const String	 BonkEnc::Config::TagsPreserveReplayGainID			= "PreserveReplayGain";
+const Bool	 BonkEnc::Config::TagsPreserveReplayGainDefault			= True;
+
+const String	 BonkEnc::Config::TagsReplaceExistingCommentsID			= "ReplaceExistingComments";
+const Bool	 BonkEnc::Config::TagsReplaceExistingCommentsDefault		= False;
+
+const String	 BonkEnc::Config::TagsDefaultCommentID				= "DefaultComment";
 
 BonkEnc::Config::Config()
 {

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -78,7 +78,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	Registry	&boca = Registry::Get();
 
-	if (currentConfig->enable_cdrip && componentsConfig->cdrip_numdrives > 0)
+	if (componentsConfig->cdrip_numdrives > 0)
 	{
 		componentsConfig->cdrip_activedrive = cdDrive.ToInt();
 
@@ -313,9 +313,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				delete in;
 			}
 
-			if ((files.GetNth(i).EndsWith(".mp3") && !boca.ComponentExists("lame-out"))   ||
-			    (files.GetNth(i).EndsWith(".ogg") && !boca.ComponentExists("vorbis-out")) ||
-			    (files.GetNth(i).EndsWith(".cda") && !currentConfig->enable_cdrip))
+			if ((files.GetNth(i).EndsWith(".mp3") && !boca.ComponentExists("lame-in"))   ||
+			    (files.GetNth(i).EndsWith(".ogg") && !boca.ComponentExists("vorbis-in")) ||
+			    (files.GetNth(i).EndsWith(".cda") && !boca.ComponentExists("cdrip-in")))
 			{
 				Console::OutputString(String("Cannot process file: ").Append(currentFile).Append("\n"));
 
@@ -394,7 +394,21 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 					prevParam == "-mp4"	 ||
 					prevParam == "-ms"	 ||
 					prevParam == "-extc"	 ||
-					prevParam == "-extm")) (*files).Add(param);
+					prevParam == "-extm"))
+		{
+			if (param.Find("*") != -1 || param.Find("?") != -1)
+			{
+				File			 file(param);
+				Directory		 dir(file.GetFilePath());
+				const Array<File>	&array = dir.GetFilesByPattern(file.GetFileName());
+
+				foreach (File entry, array) (*files).Add(entry);
+			}
+			else
+			{
+				(*files).Add(param);
+			}
+		}
 	}
 }
 
@@ -402,15 +416,18 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 {
 	if (tracks == "all")
 	{
-#ifdef __WIN32__
-		ex_CR_SetActiveCDROM(BoCA::Config::Get()->cdrip_activedrive);
+		Registry		&boca = Registry::Get();
+		DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
-		ex_CR_ReadToc();
+		if (info != NIL)
+		{
+			const Array<String>	&tracks = info->GetNthDeviceTrackList(BoCA::Config::Get()->cdrip_activedrive);
 
-		Int	 numTocEntries = ex_CR_GetNumTocEntries();
+			foreach (String track, tracks) (*files).Add(track);
 
-		for (Int i = 1; i <= numTocEntries; i++) (*files).Add(String("cdda://").Append(String::FromInt(i)));
-#endif
+			boca.DeleteComponent(info);
+		}
+
 		return True;
 	}
 
@@ -445,11 +462,17 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 			Int	 first = current.Head(dash).ToInt();
 			Int	 last = current.Tail(current.Length() - dash - 1).ToInt();
 
-			for (Int i = first; i <= last; i++) (*files).Add(String("cdda://").Append(String::FromInt(i)));
+			for (Int i = first; i <= last; i++) (*files).Add(String("cdda://")
+									.Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive))
+									.Append("/")
+									.Append(String::FromInt(i)));
 		}
 		else
 		{
-			(*files).Add(String("cdda://").Append(current));
+			(*files).Add(String("cdda://")
+				    .Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive))
+				    .Append("/")
+				    .Append(current));
 		}
 	}
 

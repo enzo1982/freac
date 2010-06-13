@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -95,6 +95,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	list_filename->AddEntry("<track> - <artist> - <title>");
 	list_filename->AddEntry("<album>\\<track> - <artist> - <title>");
 	list_filename->AddEntry("<genre>\\<artist> - <title>");
+	list_filename->AddEntry("<filetype>\\<artist> - <album>\\<track> - <title>");
 	list_filename->AddEntry("<filename>");
 
 	edit_filename->SetDropDownList(list_filename);
@@ -133,7 +134,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	Add(group_options);
 	Add(group_unicode);
 
-	SetSize(Size(544, 250));
+	SetSize(Size(544, 221));
 }
 
 BonkEnc::ConfigureEncoders::~ConfigureEncoders()

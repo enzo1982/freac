@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -66,7 +66,7 @@ Void BonkEnc::JobManager::OnFinishJob(Job *job)
 
 	if (job->GetErrors().Length() > 0)
 	{
-		if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, "DisplayErrors", True))
+		if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault))
 		{
 			const Array<String>	&errors = job->GetErrors();
 

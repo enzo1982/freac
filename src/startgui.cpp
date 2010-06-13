@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -106,7 +106,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
 	menu_file		= new PopupMenu();
 	menu_options		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -275,7 +275,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 	{
 #ifdef __WIN32__
 		case WM_DEVICECHANGE:
-			if (wParam == DBT_DEVICEARRIVAL && currentConfig->enable_cdrip && BoCA::Config::Get()->GetIntValue("CDRip", "AutoReadContents", True))
+			if (wParam == DBT_DEVICEARRIVAL && BoCA::Config::Get()->cdrip_numdrives > 0 && BoCA::Config::Get()->GetIntValue("CDRip", "AutoReadContents", True))
 			{
 				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype != DBT_DEVTYP_VOLUME || !(((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)) break;
 
@@ -304,7 +304,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 				openParms.lpstrDeviceType  = (LPSTR) MCI_DEVTYPE_CD_AUDIO;
 				openParms.lpstrElementName = driveLetter;
 
-				MCIERROR	 error = mciSendCommandA(NIL, MCI_OPEN, MCI_WAIT | MCI_OPEN_SHAREABLE | MCI_OPEN_TYPE | MCI_OPEN_TYPE_ID | MCI_OPEN_ELEMENT, (DWORD) &openParms);
+				MCIERROR	 error = mciSendCommandA(NIL, MCI_OPEN, MCI_WAIT | MCI_OPEN_SHAREABLE | MCI_OPEN_TYPE | MCI_OPEN_TYPE_ID | MCI_OPEN_ELEMENT, (DWORD_PTR) &openParms);
 
 				if (error == 0)
 				{
@@ -312,14 +312,14 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 					setParms.dwTimeFormat	= MCI_FORMAT_MSF;
 
-					mciSendCommandA(openParms.wDeviceID, MCI_SET, MCI_WAIT | MCI_SET_TIME_FORMAT, (DWORD) &setParms);
+					mciSendCommandA(openParms.wDeviceID, MCI_SET, MCI_WAIT | MCI_SET_TIME_FORMAT, (DWORD_PTR) &setParms);
 
 					MCI_STATUS_PARMS	 statusParms;
 
 					statusParms.dwItem	= MCI_STATUS_LENGTH;
 					statusParms.dwTrack	= 1;
 
-					mciSendCommandA(openParms.wDeviceID, MCI_STATUS, MCI_WAIT | MCI_STATUS_ITEM | MCI_TRACK, (DWORD) &statusParms);
+					mciSendCommandA(openParms.wDeviceID, MCI_STATUS, MCI_WAIT | MCI_STATUS_ITEM | MCI_TRACK, (DWORD_PTR) &statusParms);
 
 					trackLength = MCI_MSF_MINUTE(statusParms.dwReturn) * 60 * 75 +
 						      MCI_MSF_SECOND(statusParms.dwReturn) * 75	     +
@@ -327,7 +327,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 					MCI_GENERIC_PARMS	 closeParms;
 
-					mciSendCommandA(openParms.wDeviceID, MCI_CLOSE, MCI_WAIT, (DWORD) &closeParms);
+					mciSendCommandA(openParms.wDeviceID, MCI_CLOSE, MCI_WAIT, (DWORD_PTR) &closeParms);
 				}
 
 				/* Look for the actual drive using
@@ -338,17 +338,20 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 					Bool	 ok = False;
 					Int	 drive = 0;
 
-					for (drive = 0; drive < BoCA::Config::Get()->cdrip_numdrives; drive++)
+					Registry		&boca = Registry::Get();
+					DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+					if (info != NIL)
 					{
-						ex_CR_SetActiveCDROM(drive);
+						for (drive = 0; drive < info->GetNumberOfDevices(); drive++)
+						{
+							const MCDI	&mcdi = info->GetNthDeviceMCDI(drive);
+							Int		 length = mcdi.GetNthEntryOffset(1) - mcdi.GetNthEntryOffset(0);
 
-						ex_CR_ReadToc();
+							if (mcdi.GetNthEntryType(0) == ENTRY_AUDIO && length == trackLength) { ok = True; break; }
+						}
 
-						TOCENTRY	 entry = ex_CR_GetTocEntry(0);
-						TOCENTRY	 nextentry = ex_CR_GetTocEntry(1);
-						Int		 length = nextentry.dwStartSector - entry.dwStartSector;
-
-						if (!(entry.btFlag & CDROMDATAFLAG) && length == trackLength) { ok = True; break; }
+						boca.DeleteComponent(info);
 					}
 
 					if (ok)
@@ -381,7 +384,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 
 	config->wndSize = mainWnd->GetSize();
 
-	mainWnd->SetStatusText(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2009 Robert Kausch"));
+	mainWnd->SetStatusText(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -397,7 +400,7 @@ Void BonkEnc::BonkEncGUI::Close()
 Void BonkEnc::BonkEncGUI::About()
 {
 #ifdef __WIN32__
-	QuickMessage(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2009 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2010 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 #endif
 }
 
@@ -463,38 +466,22 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 {
 	if (!joblist->CanModifyJobList()) return;
 
-#ifdef __WIN32__
-	ex_CR_SetActiveCDROM(BoCA::Config::Get()->cdrip_activedrive);
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
-	ex_CR_ReadToc();
-
-	Array<String>	 files;
-
-	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-
-	for (Int i = 0; i < numTocEntries; i++)
+	if (info != NIL)
 	{
-		TOCENTRY entry = ex_CR_GetTocEntry(i);
+		const Array<String>	&files = info->GetNthDeviceTrackList(BoCA::Config::Get()->cdrip_activedrive);
 
-		if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1)
-		{
-			/* Add CD track to joblist using a cdda:// URI
-			 */
-			files.Add(String("cdda://")
-				 .Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive))
-				 .Append("/")
-				 .Append(String::FromInt(entry.btTrackNumber))
-			);
-		}
+		Job	*job = new JobAddFiles(files);
+
+		job->Schedule();
+
+		if (BoCA::Config::Get()->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
+		if (BoCA::Config::Get()->GetIntValue("CDRip", "AutoRip", False)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
+
+		boca.DeleteComponent(info);
 	}
-
-	Job	*job = new JobAddFiles(files);
-
-	job->Schedule();
-
-	if (BoCA::Config::Get()->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
-	if (BoCA::Config::Get()->GetIntValue("CDRip", "AutoRip", False)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
-#endif
 }
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
@@ -529,7 +516,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		const Track	&track = joblist->GetNthTrack(i);
 		const Info	&info = track.GetInfo();
 
-		if (info.mcdi.Size() > 0)
+		if (info.mcdi.GetData().Size() > 0)
 		{
 			Int	 discID	     = CDDB::DiscIDFromMCDI(info.mcdi);
 			String	 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
@@ -575,7 +562,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 				Track	 track = joblist->GetNthTrack(k);
 				Info	&info = track.GetInfo();
 
-				if ((info.mcdi.Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi))	      ||
+				if ((info.mcdi.GetData().Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi)) ||
 				    (info.offsets != NIL  && discID == CDDB::DiscIDFromOffsets(info.offsets)))
 				{
 					Int	 trackNumber = -1;
@@ -726,6 +713,8 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 Void BonkEnc::BonkEncGUI::FillMenus()
 {
+	Registry	&boca = Registry::Get();
+
 	mainWnd_menubar->Hide();
 	mainWnd_iconbar->Hide();
 
@@ -767,11 +756,18 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
 
-	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives > 1)
+	if (BoCA::Config::Get()->cdrip_numdrives > 1)
 	{
-		for (Int j = 0; j < BoCA::Config::Get()->cdrip_numdrives; j++)
+		DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+		if (info != NIL)
 		{
-			menu_seldrive->AddEntry(BoCA::Config::Get()->cdrip_drives.GetNth(j), NIL, NIL, NIL, &BoCA::Config::Get()->cdrip_activedrive, j);
+			for (Int i = 0; i < info->GetNumberOfDevices(); i++)
+			{
+				menu_seldrive->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &BoCA::Config::Get()->cdrip_activedrive, i);
+			}
+
+			boca.DeleteComponent(info);
 		}
 
 		menu_options->AddEntry();
@@ -782,11 +778,18 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
 
-	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
+	if (BoCA::Config::Get()->cdrip_numdrives >= 1)
 	{
-		for (Int j = 0; j < BoCA::Config::Get()->cdrip_numdrives; j++)
+		DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+		if (info != NIL)
 		{
-			menu_drives->AddEntry(BoCA::Config::Get()->cdrip_drives.GetNth(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
+			for (Int i = 0; i < info->GetNumberOfDevices(); i++)
+			{
+				menu_drives->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &clicked_drive, i)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
+			}
+
+			boca.DeleteComponent(info);
 		}
 
 		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("BonkEnc.pci:23"));
@@ -800,7 +803,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_addsubmenu->AddEntry();
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
 
-	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives > 1)
+	if (BoCA::Config::Get()->cdrip_numdrives > 1)
 	{
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
@@ -810,8 +813,6 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
 	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("BonkEnc.pci:32"))->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("BonkEnc.pci:33"))->onAction.Connect(&BonkEncGUI::StopEncoding, this);
-
-	Registry	&boca = Registry::Get();
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
@@ -885,7 +886,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 
-	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
+	if (BoCA::Config::Get()->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
@@ -898,7 +899,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
-	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
+	if (BoCA::Config::Get()->cdrip_numdrives >= 1)
 	{
 		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:2"), BoCA::Config::Get()->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
@@ -913,7 +914,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
-	if (currentConfig->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1)
+	if (BoCA::Config::Get()->cdrip_numdrives >= 1)
 	{
 		mainWnd_iconbar->AddEntry();
 

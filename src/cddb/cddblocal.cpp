@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,8 +10,8 @@
 
 #include <cddb/cddblocal.h>
 #include <bonkenc.h>
-#include <dllinterfaces.h>
 
+using namespace BoCA::AS;
 using namespace smooth::IO;
 
 BonkEnc::CDDBLocal::CDDBLocal()
@@ -25,28 +25,31 @@ BonkEnc::CDDBLocal::~CDDBLocal()
 
 Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 {
-#ifdef __WIN32__
-	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
+	static String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
-	ex_CR_SetActiveCDROM(activeDriveID);
-	ex_CR_ReadToc();
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
-	Int		 numTocEntries = ex_CR_GetNumTocEntries();
+	if (info == NIL) return False;
+
+	const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
+
+	Int		 numTocEntries = mcdi.GetNumberOfEntries();
 	Array<Int>	 discOffsets;
 	Int		 discLength;
 
-	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(ex_CR_GetTocEntry(l).dwStartSector + 150);
+	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(mcdi.GetNthEntryOffset(l) + 150);
 
-	discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
+	discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
 	for (Int i = 0; i < 11; i++)
 	{
-		if (!File(String(config->freedb_dir).Append(array[i]).Append("\\").Append(DiscIDToString(discid))).Exists()) continue;
+		if (!File(String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid))).Exists()) continue;
 
-		InStream	*in = new InStream(STREAM_FILE, String(config->freedb_dir).Append(array[i]).Append("\\").Append(DiscIDToString(discid)), IS_READONLY);
+		InStream	*in = new InStream(STREAM_FILE, String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid)), IS_READONLY);
 		String		 result = in->InputString(in->Size());
 
 		delete in;
@@ -78,26 +81,26 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 	String::SetOutputFormat(outputFormat);
 
 	return (results.Length() != 0);
-#else
-	return False;
-#endif
 }
 
 Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 {
-#ifdef __WIN32__
-	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
+	static String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
-	ex_CR_SetActiveCDROM(activeDriveID);
-	ex_CR_ReadToc();
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
-	Int		 numTocEntries = ex_CR_GetNumTocEntries();
+	if (info == NIL) return False;
+
+	const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
+
+	Int		 numTocEntries = mcdi.GetNumberOfEntries();
 	Array<Int>	 discOffsets;
 	Int		 discLength;
 
-	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(ex_CR_GetTocEntry(l).dwStartSector + 150);
+	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(mcdi.GetNthEntryOffset(l) + 150);
 
-	discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
+	discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
@@ -186,9 +189,6 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 	String::SetOutputFormat(outputFormat);
 
 	return (results.Length() != 0);
-#else
-	return False;
-#endif
 }
 
 Bool BonkEnc::CDDBLocal::ConnectToServer()
@@ -334,9 +334,9 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	else						  // Unix style DB
 	{
 		protocol->Write("Found Unix style DB.");
-		protocol->Write(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString()));
+		protocol->Write(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()));
 
-		OutStream	*out = new OutStream(STREAM_FILE, String(config->freedb_dir).Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString()), OS_OVERWRITE);
+		OutStream	*out = new OutStream(STREAM_FILE, String(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()), OS_OVERWRITE);
 
 		String	 outputFormat = String::SetOutputFormat("UTF-8");
 

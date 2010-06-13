@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -44,9 +44,9 @@ BoCA::I18n		*BonkEnc::BonkEnc::i18n		= NIL;
  */
 String	 BonkEnc::BonkEnc::appName	= "BonkEnc";
 String	 BonkEnc::BonkEnc::appLongName	= "BonkEnc Audio Encoder";
-String	 BonkEnc::BonkEnc::version	= "CVS 2009xxyy";
+String	 BonkEnc::BonkEnc::version	= "CVS 2010xxyy";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre";	// CDDB version may not contain spaces
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre2";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::website	= "http://www.bonkenc.org/";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
@@ -77,14 +77,11 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	/* Set default comment if not set.
 	 */
-	BoCA::Config::Get()->SetStringValue(Config::CategoryTagsID, "DefaultComment", BoCA::Config::Get()->GetStringValue(Config::CategoryTagsID, "DefaultComment", String(appLongName).Append(" <").Append(website).Append(">")));
+	BoCA::Config::Get()->SetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, BoCA::Config::Get()->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, String(appLongName).Append(" <").Append(website).Append(">")));
 
 	/* Start job manager.
 	 */
 	JobManager::Start();
-
-	if (DLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;
-	else						currentConfig->enable_cdrip = True;
 
 	if (DLLInterfaces::LoadEUpdateDLL() == False)	currentConfig->enable_eUpdate = False;
 	else						currentConfig->enable_eUpdate = True;
@@ -94,11 +91,6 @@ BonkEnc::BonkEnc::~BonkEnc()
 {
 	JobManager::Quit();
 
-#ifdef __WIN32__
-	if (currentConfig->enable_cdrip) ex_CR_DeInit();
-#endif
-
-	if (currentConfig->enable_cdrip)	DLLInterfaces::FreeCDRipDLL();
 	if (currentConfig->enable_eUpdate)	DLLInterfaces::FreeEUpdateDLL();
 
 	/* Cleanup deletable objects before deleting encoder and translator.

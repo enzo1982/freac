@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,10 +13,6 @@
 
 #include <smooth.h>
 
-#ifdef __WIN32__
-#	include <3rdparty/cdrip/cdrip.h>
-#endif
-
 using namespace smooth;
 using namespace smooth::GUI;
 using namespace smooth::System;
@@ -26,38 +22,14 @@ namespace BonkEnc
 	class DLLInterfaces
 	{
 		private:
-			static DynamicLoader	*cdripdll;
 			static DynamicLoader	*eupdatedll;
 		public:
-			static Bool		 LoadCDRipDLL();
 			static Bool		 LoadEUpdateDLL();
-
-			static Void		 FreeCDRipDLL();
 			static Void		 FreeEUpdateDLL();
 	};
 };
 
 #ifdef __WIN32__
-// CDRip DLL API
-
-	typedef CDEX_ERR			(_stdcall *CR_INIT)				(int);
-	typedef CDEX_ERR			(_stdcall *CR_DEINIT)				();
-	typedef CDEX_ERR			(_stdcall *CR_READTOC)				();
-	typedef LONG				(_stdcall *CR_GETNUMTOCENTRIES)			();
-	typedef TOCENTRY			(_stdcall *CR_GETTOCENTRY)			(LONG);
-	typedef LONG				(_stdcall *CR_GETNUMCDROM)			();
-	typedef void				(_stdcall *CR_SETACTIVECDROM)			(LONG);
-	typedef BOOL				(_stdcall *CR_EJECTCD)				(BOOL);
-
-	extern CR_INIT				 ex_CR_Init;
-	extern CR_DEINIT			 ex_CR_DeInit;
-	extern CR_READTOC			 ex_CR_ReadToc;
-	extern CR_GETNUMTOCENTRIES		 ex_CR_GetNumTocEntries;
-	extern CR_GETTOCENTRY			 ex_CR_GetTocEntry;
-	extern CR_GETNUMCDROM			 ex_CR_GetNumCDROM;
-	extern CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM;
-	extern CR_EJECTCD			 ex_CR_EjectCD;
-
 // eUpdate DLL API
 
 	typedef S::Void *			(_stdcall *EUCREATEUPDATECONTEXT)		(const char *, const char *, const char *);

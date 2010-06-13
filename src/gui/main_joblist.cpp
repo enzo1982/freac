@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,7 +16,7 @@
 #include <dllinterfaces.h>
 
 #ifndef EWX_FORCEIFHUNG
-# define EWX_FORCEIFHUNG 16
+#	define EWX_FORCEIFHUNG 16
 #endif
 
 BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
@@ -682,7 +682,7 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 	 */
 	txt_filename->SetText(i18n->TranslateString("Encoding file:"));
 	txt_time->SetText(i18n->TranslateString("Time left:"));
-	txt_format->SetText(i18n->TranslateString("File format:"));
+	txt_format->SetText(i18n->TranslateString("Active decoder:"));
 	txt_encoder->SetText(i18n->TranslateString("Selected encoder:"));
 	txt_progress->SetText(i18n->TranslateString("File progress:"));
 	txt_outdir->SetText(i18n->TranslateString("Output dir.:"));
@@ -982,6 +982,7 @@ Void BonkEnc::LayerJoblist::OnEncoderStartEncoding()
 Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 {
 	edb_filename->SetText(BonkEnc::i18n->TranslateString("none"));
+	edb_format->SetText(BonkEnc::i18n->TranslateString("unknown"));
 
 	edb_trackPercent->SetText("0%");
 	edb_trackTime->SetText("00:00");
@@ -1004,7 +1005,7 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, Int mode)
+Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const DecoderComponent *decoder, Int mode)
 {
 	edb_trackPercent->SetText("0%");
 	edb_trackTime->SetText("00:00");
@@ -1029,6 +1030,8 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, Int mode)
 			edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
 			break;
 	}
+
+	edb_format->SetText(decoder->GetName());
 }
 
 Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
@@ -1255,10 +1258,15 @@ Void BonkEnc::LayerJoblist::StopPlayback()
 
 Void BonkEnc::LayerJoblist::OpenCDTray()
 {
-#ifdef __WIN32__
-	ex_CR_SetActiveCDROM(BoCA::Config::Get()->cdrip_activedrive);
- 	ex_CR_EjectCD(True);
-#endif
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+	if (info != NIL)
+	{
+		info->OpenNthDeviceTray(BoCA::Config::Get()->cdrip_activedrive);
+
+		boca.DeleteComponent(info);
+	}
 }
 
 String BonkEnc::LayerJoblist::SecondsToString(Int seconds)

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,11 +10,12 @@
 
 #include <cddb/cddb.h>
 #include <bonkenc.h>
-#include <dllinterfaces.h>
 
 #ifndef __WIN32__
 #  include <netinet/in.h>
 #endif
+
+using namespace BoCA::AS;
 
 int cddb_sum(int n)
 {
@@ -47,7 +48,7 @@ BonkEnc::CDDB::~CDDB()
 Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 {
 #ifdef __WIN32__
-	if (driveID >= ex_CR_GetNumCDROM()) return Error();
+	if (driveID >= config->cdrip_numdrives) return Error();
 #endif
 	activeDriveID = driveID;
 
@@ -56,26 +57,21 @@ Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 
 Int BonkEnc::CDDB::ComputeDiscID()
 {
-#ifdef __WIN32__
-	ex_CR_SetActiveCDROM(activeDriveID);
-	ex_CR_ReadToc();
+	Int	 discID = 0;
 
-	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-	Int	 n = 0;
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
-	for (Int i = 0; i < numTocEntries; i++)
+	if (info != NIL)
 	{
-		Int	 offset = ex_CR_GetTocEntry(i).dwStartSector + 150;
+		const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
 
-		n += cddb_sum(offset / 75);
+		discID = DiscIDFromMCDI(mcdi);
+
+		boca.DeleteComponent(info);
 	}
 
-	Int	 t = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 - ex_CR_GetTocEntry(0).dwStartSector / 75;
-
-	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
-#else
-	return 0;
-#endif
+	return discID;
 }
 
 String BonkEnc::CDDB::DiscIDToString(Int discID)
@@ -90,36 +86,55 @@ Int BonkEnc::CDDB::StringToDiscID(const String &string)
 	return (Int64) Number::FromHexString(string);
 }
 
-Int BonkEnc::CDDB::DiscIDFromMCDI(const Buffer<UnsignedByte> &mcdi)
+Int BonkEnc::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
 {
-	Int	 numTocEntries = mcdi[3];
+	Int	 numTocEntries = mcdi.GetNumberOfEntries();
 	Int	 n = 0;
 
 	for (Int i = 0; i < numTocEntries; i++)
 	{
-		Int	 offset = ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 2 * i + 1]) + 150;
+		Int	 offset = mcdi.GetNthEntryOffset(i) + 150;
 
 		n += cddb_sum(offset / 75);
 	}
 
-	Int	 t = ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 2 * numTocEntries + 1]) / 75 - ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 1]) / 75;
+	Int	 t =  mcdi.GetNthEntryOffset(numTocEntries) / 75 -  mcdi.GetNthEntryOffset(0) / 75;
 
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
 
-String BonkEnc::CDDB::QueryStringFromMCDI(const Buffer<UnsignedByte> &mcdi)
+String BonkEnc::CDDB::GetCDDBQueryString()
 {
-	Int	 numTocEntries = mcdi[3];
+	String	 str;
+
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+	if (info != NIL)
+	{
+		const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
+
+		str = QueryStringFromMCDI(mcdi);
+
+		boca.DeleteComponent(info);
+	}
+
+	return str;
+}
+
+String BonkEnc::CDDB::QueryStringFromMCDI(const MCDI &mcdi)
+{
+	Int	 numTocEntries = mcdi.GetNumberOfEntries();
 	String	 str = String("cddb query ").Append(DiscIDToString(DiscIDFromMCDI(mcdi)));
 
 	str.Append(" ").Append(String::FromInt(numTocEntries));
 
 	for (Int i = 0; i < numTocEntries; i++)
 	{
-		str.Append(" ").Append(String::FromInt(ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 2 * i + 1]) + 150));
+		str.Append(" ").Append(String::FromInt(mcdi.GetNthEntryOffset(i) + 150));
 	}
 
-	str.Append(" ").Append(String::FromInt(ntohl(((unsigned long *) (UnsignedByte *) mcdi)[1 + 2 * numTocEntries + 1]) / 75 + 2));
+	str.Append(" ").Append(String::FromInt(mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2));
 
 	return str;
 }
@@ -166,44 +181,24 @@ String BonkEnc::CDDB::QueryStringFromOffsets(const String &offsets)
 	return str;
 }
 
-String BonkEnc::CDDB::GetCDDBQueryString()
-{
-#ifdef __WIN32__
-	ex_CR_SetActiveCDROM(activeDriveID);
-	ex_CR_ReadToc();
-
-	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-	String	 str = String("cddb query ").Append(DiscIDToString(ComputeDiscID()));
-
-	str.Append(" ").Append(String::FromInt(numTocEntries));
-
-	for (Int i = 0; i < numTocEntries; i++)
-	{
-		str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(i).dwStartSector + 150));
-	}
-
-	str.Append(" ").Append(String::FromInt(ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2));
-
-	return str;
-#else
-	return NIL;
-#endif
-}
-
 Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 {
-#ifdef __WIN32__
-	ex_CR_SetActiveCDROM(activeDriveID);
-	ex_CR_ReadToc();
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+	if (info == NIL) return False;
+
+	const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
 
 	if (updateTrackOffsets)
 	{
-		// Update track offsets and disc ID in case we had a fuzzy match
-		Int	 numTocEntries = ex_CR_GetNumTocEntries();
+		/* Update track offsets and disc ID in case we had a fuzzy match.
+		 */
+		Int	 numTocEntries = mcdi.GetNumberOfEntries();
 
-		for (Int l = 0; l < numTocEntries; l++) cddbInfo.trackOffsets.Set(l, ex_CR_GetTocEntry(l).dwStartSector + 150);
+		for (Int l = 0; l < numTocEntries; l++) cddbInfo.trackOffsets.Set(l, mcdi.GetNthEntryOffset(l) + 150);
 
-		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
+		cddbInfo.discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
 		cddbInfo.discID = ComputeDiscID();
 	}
 
@@ -264,7 +259,6 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 	}
 
 	CloseConnection();
-#endif
 
 	return True;
 }

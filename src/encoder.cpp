@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -81,6 +81,7 @@ Void BonkEnc::Encoder::Encode(JobList *iJoblist, Bool useThread)
 Int BonkEnc::Encoder::EncoderThread()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	Registry	&boca = Registry::Get();
 
 	if (config->encodeToSingleFile)
 	{
@@ -182,31 +183,19 @@ Int BonkEnc::Encoder::EncoderThread()
 					break;
 				}
 
-				filter_out = (EncoderComponent *) Registry::Get().CreateComponentByID(encoderID);
+				filter_out = (EncoderComponent *) boca.CreateComponentByID(encoderID);
 				filter_out->SetAudioTrackInfo(singleTrackInfo);
 
 				if (f_out->AddFilter(filter_out) == False)
 				{
 					delete f_out;
 
-					Registry::Get().DeleteComponent(filter_out);
+					boca.DeleteComponent(filter_out);
 
 					continue;
 				}
 			}
 		}
-
-		log->Write(String("\tEncoding from: ").Append(in_filename));
-
-		Int	 mode = ENCODER_MODE_ON_THE_FLY;
-
-		if (!config->enc_onTheFly && encoderID != "wave-out")
-		{
-			if	(step == 1) mode = ENCODER_MODE_DECODE;
-			else if (step == 0) mode = ENCODER_MODE_ENCODE;
-		}
-
-		onEncodeTrack.Emit(trackInfo, mode);
 
 		if (!config->encodeToSingleFile)
 		{
@@ -260,8 +249,6 @@ Int BonkEnc::Encoder::EncoderThread()
 			in_filename.Append(".wav");
 		}
 
-		log->Write(String("\t         to:   ").Append(out_filename));
-
 		InStream	*f_in = NIL;
 
 		if (in_filename.StartsWith("cdda://"))	f_in = new InStream(STREAM_DRIVER, zero_in);
@@ -287,6 +274,19 @@ Int BonkEnc::Encoder::EncoderThread()
 			continue;
 		}
 
+		log->Write(String("\tEncoding from: ").Append(in_filename));
+		log->Write(String("\t         to:   ").Append(out_filename));
+
+		Int	 mode = ENCODER_MODE_ON_THE_FLY;
+
+		if (!config->enc_onTheFly && encoderID != "wave-out")
+		{
+			if	(step == 1) mode = ENCODER_MODE_DECODE;
+			else if (step == 0) mode = ENCODER_MODE_ENCODE;
+		}
+
+		onEncodeTrack.Emit(trackInfo, filter_in, mode);
+
 		if (!config->enc_onTheFly && step == 1)
 		{
 			Track	 nTrackInfo;
@@ -303,7 +303,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 			delete f_in;
 
-			Registry::Get().DeleteComponent(filter_in);
+			boca.DeleteComponent(filter_in);
 
 			break;
 		}
@@ -319,12 +319,12 @@ Int BonkEnc::Encoder::EncoderThread()
 				delete f_in;
 				delete f_out;
 
-				Registry::Get().DeleteComponent(filter_in);
+				boca.DeleteComponent(filter_in);
 
 				continue;
 			}
 
-			filter_out = (EncoderComponent *) Registry::Get().CreateComponentByID(encoderID);
+			filter_out = (EncoderComponent *) boca.CreateComponentByID(encoderID);
 			filter_out->SetAudioTrackInfo(trackInfo);
 
 			if (f_out->AddFilter(filter_out) == False)
@@ -332,8 +332,8 @@ Int BonkEnc::Encoder::EncoderThread()
 				delete f_in;
 				delete f_out;
 
-				Registry::Get().DeleteComponent(filter_in);
-				Registry::Get().DeleteComponent(filter_out);
+				boca.DeleteComponent(filter_in);
+				boca.DeleteComponent(filter_out);
 
 				break;
 			}
@@ -436,7 +436,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		delete f_in;
 
-		Registry::Get().DeleteComponent(filter_in);
+		boca.DeleteComponent(filter_in);
 
 		encodedSamples += trackLength;
 
@@ -444,7 +444,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		{
 			delete f_out;
 
-			Registry::Get().DeleteComponent(filter_out);
+			boca.DeleteComponent(filter_out);
 
 			f_in = new InStream(STREAM_FILE, out_filename, IS_READONLY);
 
@@ -480,9 +480,17 @@ Int BonkEnc::Encoder::EncoderThread()
 				if (joblist->GetNthTrack(j - nRemoved).drive == trackInfo.drive) { ejectDisk = False; break; }
 			}
 
-#ifdef __WIN32__
-			if (ejectDisk) ex_CR_EjectCD(True);
-#endif
+			if (ejectDisk)
+			{
+				DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+				if (info != NIL)
+				{
+					info->OpenNthDeviceTray(trackInfo.drive);
+
+					boca.DeleteComponent(info);
+				}
+			}
 		}
 
 		if (!Config::Get()->enable_console && !stop && !skip && step == 1)
@@ -521,7 +529,7 @@ Int BonkEnc::Encoder::EncoderThread()
 	{
 		delete f_out;
 
-		Registry::Get().DeleteComponent(filter_out);
+		boca.DeleteComponent(filter_out);
 	}
 
 	delete zero_in;
@@ -765,7 +773,7 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 				pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(">");
 				value = directory;
 
-				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find("\\") - 1);
+				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
 
 				shortOutFileName.Replace(pattern, value);
 
@@ -774,7 +782,7 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 					pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(String("(").Append(String::FromInt(j + 1)).Append(")")).Append(">");
 					value = directory;
 
-					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find("\\") - 1);
+					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
 
 					Int	 bsCount = 0;
 

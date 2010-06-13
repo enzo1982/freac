@@ -394,5 +394,18 @@
     <entry id="390" string="Unknown error">Unbekannter Fehler</entry>
     <entry id="391" string="Replace existing comments with default comment">Vorhandene Kommentare durch Standardkommentar ersetzen</entry>
     <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Die ausgewählten Dateien können aufgrund unterschiedlicher&#10;Sample-Formate nicht in eine Datei kombiniert werden.&#10;&#10;Bitte konvertieren Sie zunächst alle Dateien in das gleiche Sample-Format.</entry>
+    <entry id="393" string="Write WMA metadata info">WMA-Metadaten schreiben</entry>
+    <entry id="394" string="WMA metadata encoding:">WMA-Metadaten-Codierung:</entry>
+    <entry id="395" string="Select codec">Codec auswählen</entry>
+    <entry id="396" string="Select codec format">Codec-Format auswählen</entry>
+    <entry id="397" string="Codec settings">Codec-Einstellungen</entry>
+    <entry id="398" string="Use codec">Verwende Codec</entry>
+    <entry id="399" string="Use format">Verwende Format</entry>
+    <entry id="400" string="Write uncompressed WMA files">Unkomprimierte WMA-Dateien schreiben</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">Passendes Format automatisch auswählen</entry>
+    <entry id="402" string="Use VBR encoding">VBR-Codierung</entry>
+    <entry id="403" string="Use 2-pass encoding">2-Pass-Codierung</entry>
+    <entry id="404" string="Target bitrate:">Zielbitrate:</entry>
+    <entry id="405" string="Set drive speed limit:">Geschwindigkeit begrenzen:</entry>
   </data>
 </LangFile>

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,6 +33,12 @@ namespace BonkEnc
 
 			static const String	 SettingsNextTipID;
 			static const Int	 SettingsNextTipDefault;
+
+			static const String	 SettingsDisplayErrorsID;
+			static const Bool	 SettingsDisplayErrorsDefault;
+
+			static const String	 SettingsEncodingHeuristicsID;
+			static const Bool	 SettingsEncodingHeuristicsDefault;
 
 			static const String	 SettingsLastUsedGenreID;
 
@@ -84,6 +90,20 @@ namespace BonkEnc
 
 			static const String	 TagsCoverArtWriteToFilesWithReferenceID;
 			static const Bool	 TagsCoverArtWriteToFilesWithReferenceDefault;
+
+			static const String	 TagsCoverArtFilenamePatternID;
+			static const String	 TagsCoverArtFilenamePatternDefault;
+
+			static const String	 TagsWriteMCDIID;
+			static const Bool	 TagsWriteMCDIDefault;
+
+			static const String	 TagsPreserveReplayGainID;
+			static const Bool	 TagsPreserveReplayGainDefault;
+
+			static const String	 TagsReplaceExistingCommentsID;
+			static const Bool	 TagsReplaceExistingCommentsDefault;
+
+			static const String	 TagsDefaultCommentID;
 		private:
 			/* Singleton class, therefore private constructor/destructor
 			 */
@@ -98,7 +118,6 @@ namespace BonkEnc
 			Bool		 shutdownAfterEncoding;
 
 			Bool		 enable_console;
-			Bool		 enable_cdrip;
 			Bool		 enable_eUpdate;
 
 			Bool		 CanChangeConfig();

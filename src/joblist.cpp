@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -74,8 +74,7 @@ BonkEnc::JobList::~JobList()
 {
 	/* Save tab field sizes.
 	 */
-// ToDo: Fix this.
-/*	String	 fieldSizes;
+	String	 fieldSizes;
 
 	for (Int i = 0; i < GetNOfTabs(); i++)
 	{
@@ -86,7 +85,7 @@ BonkEnc::JobList::~JobList()
 	}
 
 	BoCA::Config::Get()->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
-*/
+
 	/* Clean up.
 	 */
 	BoCA::JobList::Get()->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
@@ -145,7 +144,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	 *
 	 * ToDo: Enable encoding heuristics by default once it's ready.
 	 */
-	if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, "EnableEncodingHeuristics", False))
+	if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodingHeuristicsID, Config::SettingsEncodingHeuristicsDefault))
 	{
 		Info	&info = track->GetInfo();
 
@@ -637,26 +636,34 @@ Void BonkEnc::JobList::AddHeaderTabs()
 
 	foreach (String field, cFields) fields.Add(field);
 
-	const Array<String>	&sizes = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
+	const Array<String>	&cSizes = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
+
+	/* Copy sizes array only if number of fields does match.
+	 */
+	Array<String>		 sizes;
+
+	if (cFields.Length() == cSizes.Length()) { foreach (String size, cSizes) sizes.Add(size); }
 
 	for (Int i = 0; i < fields.Length(); i++)
 	{
 		String	 field = fields.GetNth(i);
 		String	 tabName = "<invalid tab>";
 		Int	 tabAlign = OR_LEFT;
+		Int	 tabSize = sizes.GetNth(i).ToInt();
 
-		if	(field == "<artist>")	{ tabName = "Artist";			      }
-		else if (field == "<album>")	{ tabName = "Album";			      }
-		else if (field == "<title>")	{ tabName = "Title";			      }
-		else if (field == "<genre>")	{ tabName = "Genre";			      }
-		else if (field == "<track>")	{ tabName = "Track"; 	 tabAlign = OR_RIGHT; }
-		else if (field == "<time>")	{ tabName = "Length"; 	 tabAlign = OR_RIGHT; }
-		else if (field == "<bytes>")	{ tabName = "Size"; 	 tabAlign = OR_RIGHT; }
-		else if (field == "<file>")	{ tabName = "File name";		      }
+		if	(field == "<artist>")	{ tabName = "Artist";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<album>")	{ tabName = "Album";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<title>")	{ tabName = "Title";			      tabSize = 0;			      }
+		else if (field == "<genre>")	{ tabName = "Genre";			      tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<track>")	{ tabName = "Track"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<time>")	{ tabName = "Length"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<bytes>")	{ tabName = "Size"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<file>")	{ tabName = "File name";		      tabSize = 0;			      }
+		else if (field == "<filetype>")	{ tabName = "File type";		      tabSize = tabSize <= 0 ?  60 : tabSize; }
 
 		tabName = BonkEnc::i18n->TranslateString(tabName);
 
-		AddTab(tabName, sizes.GetNth(i).ToInt(), tabAlign);
+		AddTab(tabName, tabSize, tabAlign);
 	}
 }
 
@@ -682,6 +689,12 @@ String BonkEnc::JobList::GetEntryText(const Track &track) const
 		else if (field == "<time>")	jlEntry.Append(track.lengthString);
 		else if (field == "<bytes>")	jlEntry.Append(track.fileSizeString);
 		else if (field == "<file>")	jlEntry.Append(track.origFilename);
+
+		else if (field == "<filetype>")
+		{
+			if	(track.origFilename.Find("://") >= 0) jlEntry.Append(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
+			else if (track.origFilename.Find(".")   >= 0) jlEntry.Append(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+		}
 
 		jlEntry.Append("\t");
 	}

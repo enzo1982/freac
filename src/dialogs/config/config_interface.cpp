@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -45,7 +45,7 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 
 	Add(group_joblist);
 
-	SetSize(Size(544, 250));
+	SetSize(Size(544, 138));
 }
 
 BonkEnc::ConfigureInterface::~ConfigureInterface()
@@ -61,35 +61,38 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 {
 	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
-	Bool	 haveArtist = False;
-	Bool	 haveAlbum  = False;
-	Bool	 haveTitle  = False;
-	Bool	 haveGenre  = False;
-	Bool	 haveTrack  = False;
-	Bool	 haveTime   = False;
-	Bool	 haveBytes  = False;
-	Bool	 haveFile   = False;
+	Bool	 haveArtist   = False;
+	Bool	 haveAlbum    = False;
+	Bool	 haveTitle    = False;
+	Bool	 haveGenre    = False;
+	Bool	 haveTrack    = False;
+	Bool	 haveTime     = False;
+	Bool	 haveBytes    = False;
+	Bool	 haveFile     = False;
+	Bool	 haveFileType = False;
 
 	foreach (String field, fields)
 	{
-		if	(field == "<artist>")	{ list_fields->AddEntry(field)->SetMark(True); haveArtist = True; }
-		else if (field == "<album>")	{ list_fields->AddEntry(field)->SetMark(True); haveAlbum  = True; }
-		else if (field == "<title>")	{ list_fields->AddEntry(field)->SetMark(True); haveTitle  = True; }
-		else if (field == "<genre>")	{ list_fields->AddEntry(field)->SetMark(True); haveGenre  = True; }
-		else if (field == "<track>")	{ list_fields->AddEntry(field)->SetMark(True); haveTrack  = True; }
-		else if (field == "<time>")	{ list_fields->AddEntry(field)->SetMark(True); haveTime   = True; }
-		else if (field == "<bytes>")	{ list_fields->AddEntry(field)->SetMark(True); haveBytes  = True; }
-		else if (field == "<file>")	{ list_fields->AddEntry(field)->SetMark(True); haveFile   = True; }
+		if	(field == "<artist>")	{ list_fields->AddEntry(field)->SetMark(True); haveArtist   = True; }
+		else if (field == "<album>")	{ list_fields->AddEntry(field)->SetMark(True); haveAlbum    = True; }
+		else if (field == "<title>")	{ list_fields->AddEntry(field)->SetMark(True); haveTitle    = True; }
+		else if (field == "<genre>")	{ list_fields->AddEntry(field)->SetMark(True); haveGenre    = True; }
+		else if (field == "<track>")	{ list_fields->AddEntry(field)->SetMark(True); haveTrack    = True; }
+		else if (field == "<time>")	{ list_fields->AddEntry(field)->SetMark(True); haveTime     = True; }
+		else if (field == "<bytes>")	{ list_fields->AddEntry(field)->SetMark(True); haveBytes    = True; }
+		else if (field == "<file>")	{ list_fields->AddEntry(field)->SetMark(True); haveFile	    = True; }
+		else if (field == "<filetype>")	{ list_fields->AddEntry(field)->SetMark(True); haveFileType = True; }
 	}
 
-	if (!haveArtist) list_fields->AddEntry("<artist>")->SetMark(False);
-	if (!haveAlbum)  list_fields->AddEntry("<album>")->SetMark(False);
-	if (!haveTitle)  list_fields->AddEntry("<title>")->SetMark(False);
-	if (!haveGenre)  list_fields->AddEntry("<genre>")->SetMark(False);
-	if (!haveTrack)  list_fields->AddEntry("<track>")->SetMark(False);
-	if (!haveTime)   list_fields->AddEntry("<time>")->SetMark(False);
-	if (!haveBytes)  list_fields->AddEntry("<bytes>")->SetMark(False);
-	if (!haveFile)   list_fields->AddEntry("<file>")->SetMark(False);
+	if (!haveArtist)   list_fields->AddEntry("<artist>")->SetMark(False);
+	if (!haveAlbum)    list_fields->AddEntry("<album>")->SetMark(False);
+	if (!haveTitle)    list_fields->AddEntry("<title>")->SetMark(False);
+	if (!haveGenre)    list_fields->AddEntry("<genre>")->SetMark(False);
+	if (!haveTrack)    list_fields->AddEntry("<track>")->SetMark(False);
+	if (!haveTime)     list_fields->AddEntry("<time>")->SetMark(False);
+	if (!haveBytes)    list_fields->AddEntry("<bytes>")->SetMark(False);
+	if (!haveFile)     list_fields->AddEntry("<file>")->SetMark(False);
+	if (!haveFileType) list_fields->AddEntry("<filetype>")->SetMark(False);
 }
 
 Void BonkEnc::ConfigureInterface::OnSelectJoblistField()

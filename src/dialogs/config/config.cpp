@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,7 +10,6 @@
 
 #include <dialogs/config/config.h>
 #include <dialogs/config/config_cddb.h>
-#include <dialogs/config/config_cdrip.h>
 #include <dialogs/config/config_encoders.h>
 #include <dialogs/config/config_interface.h>
 #include <dialogs/config/config_language.h>
@@ -83,13 +82,8 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
-	if (Config::Get()->enable_cdrip && config->cdrip_numdrives >= 1)
+	if (config->cdrip_numdrives >= 1)
 	{
-		layers.Add(new ConfigureCDRip());
-		entries.Add(new ConfigEntry("CDRip", layers.GetLast()));
-		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-		tree_bonkenc->Add(entries.GetLast());
-
 		layers.Add(new ConfigureCDDB());
 		entries.Add(new ConfigEntry("CDDB", layers.GetLast()));
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
@@ -184,15 +178,14 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 
 	mainWnd->onChangeSize.Connect(&ConfigDialog::OnChangeSize, this);
-	mainWnd->SetMinimumSize(Size(232, 342));
 }
 
 BonkEnc::ConfigDialog::~ConfigDialog()
 {
 	Int	 ownLayers = 3;
 
-	if (Config::Get()->enable_cdrip && BoCA::Config::Get()->cdrip_numdrives >= 1) ownLayers += 2;
-	if (BonkEnc::i18n->GetNOfLanguages() > 1)				      ownLayers += 1;
+	if (BoCA::Config::Get()->cdrip_numdrives >= 1) ownLayers += 2;
+	if (BonkEnc::i18n->GetNOfLanguages() > 1)      ownLayers += 1;
 
 	for (Int i = 0; i < ownLayers; i++)  DeleteObject(layers.GetNth(i));
 	for (Int i = 0; i < entries.Length(); i++) DeleteObject(entries.GetNth(i));
@@ -257,8 +250,8 @@ Void BonkEnc::ConfigDialog::Cancel()
 
 Void BonkEnc::ConfigDialog::OnChangeSize()
 {
-	combo_config->SetWidth(mainWnd->GetWidth() - text_config->textSize.cx - 206);
-	list_layers->SetSize(Size(210, mainWnd->GetHeight() - 128));
+	combo_config->SetWidth(mainWnd->GetWidth() - 2 * mainWnd->GetFrameWidth() - text_config->textSize.cx - 198);
+	list_layers->SetSize(Size(210, mainWnd->GetHeight() - 2 * mainWnd->GetFrameWidth() - 119));
 }
 
 Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
@@ -272,12 +265,14 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 
 	if (layer != NIL)
 	{
+		Int	 frameWidth = mainWnd->GetFrameWidth();
+
 		selectedLayer = layer;
-		selectedLayer->SetPosition(Point(223, 69));
+		selectedLayer->SetPosition(Point(218 + frameWidth, 65 + frameWidth));
 
 		mainWnd->Add(selectedLayer);
-		mainWnd->SetMinimumSize(Size(Math::Max(232, selectedLayer->GetWidth() + 227), Math::Max(342, selectedLayer->GetHeight() + 114)));
-		mainWnd->SetSize(Size(Math::Max(mainWnd->GetWidth(), selectedLayer->GetWidth() + 227), Math::Max(mainWnd->GetHeight(), selectedLayer->GetHeight() + 114)));
+		mainWnd->SetMinimumSize(Size(Math::Max(232, selectedLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(342, selectedLayer->GetHeight() + 105 + 2 * frameWidth)));
+		mainWnd->SetSize(Size(Math::Max(mainWnd->GetWidth(), selectedLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(mainWnd->GetHeight(), selectedLayer->GetHeight() + 105 + 2 * frameWidth)));
 	}
 	else
 	{

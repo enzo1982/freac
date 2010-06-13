@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,15 +11,6 @@
 #include <dllinterfaces.h>
 
 #ifdef __WIN32__
-CR_INIT				 ex_CR_Init				= NIL;
-CR_DEINIT			 ex_CR_DeInit				= NIL;
-CR_READTOC			 ex_CR_ReadToc				= NIL;
-CR_GETNUMTOCENTRIES		 ex_CR_GetNumTocEntries			= NIL;
-CR_GETTOCENTRY			 ex_CR_GetTocEntry			= NIL;
-CR_GETNUMCDROM			 ex_CR_GetNumCDROM			= NIL;
-CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM			= NIL;
-CR_EJECTCD			 ex_CR_EjectCD				= NIL;
-
 EUCREATEUPDATECONTEXT		 ex_eUpdate_CreateUpdateContext		= NIL;
 EUCREATEUPDATECONTEXTW		 ex_eUpdate_CreateUpdateContextW	= NIL;
 EUSETCONFIGFILE			 ex_eUpdate_SetConfigFile		= NIL;
@@ -31,40 +22,7 @@ EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates		= NIL;
 EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
 #endif
 
-DynamicLoader *BonkEnc::DLLInterfaces::cdripdll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
-
-Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
-{
-#ifdef __WIN32__
-	cdripdll = new DynamicLoader("CDRip");
-
-	ex_CR_Init			= (CR_INIT) cdripdll->GetFunctionAddress("CR_Init");
-	ex_CR_DeInit			= (CR_DEINIT) cdripdll->GetFunctionAddress("CR_DeInit");
-	ex_CR_ReadToc			= (CR_READTOC) cdripdll->GetFunctionAddress("CR_ReadToc");
-	ex_CR_GetNumTocEntries		= (CR_GETNUMTOCENTRIES) cdripdll->GetFunctionAddress("CR_GetNumTocEntries");
-	ex_CR_GetTocEntry		= (CR_GETTOCENTRY) cdripdll->GetFunctionAddress("CR_GetTocEntry");
-	ex_CR_GetNumCDROM		= (CR_GETNUMCDROM) cdripdll->GetFunctionAddress("CR_GetNumCDROM");
-	ex_CR_SetActiveCDROM		= (CR_SETACTIVECDROM) cdripdll->GetFunctionAddress("CR_SetActiveCDROM");
-	ex_CR_EjectCD			= (CR_EJECTCD) cdripdll->GetFunctionAddress("CR_EjectCD");
-
-	if (ex_CR_Init				== NIL ||
-	    ex_CR_DeInit			== NIL ||
-	    ex_CR_ReadToc			== NIL ||
-	    ex_CR_GetNumTocEntries		== NIL ||
-	    ex_CR_GetTocEntry			== NIL ||
-	    ex_CR_GetNumCDROM			== NIL ||
-	    ex_CR_SetActiveCDROM		== NIL ||
-	    ex_CR_EjectCD			== NIL) { FreeCDRipDLL(); return False; }
-#endif
-
-	return True;
-}
-
-Void BonkEnc::DLLInterfaces::FreeCDRipDLL()
-{
-	Object::DeleteObject(cdripdll);
-}
 
 Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 {

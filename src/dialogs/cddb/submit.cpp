@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,7 +11,6 @@
 #include <dialogs/cddb/submit.h>
 #include <dialogs/cddb/query.h>
 #include <joblist.h>
-#include <dllinterfaces.h>
 #include <utilities.h>
 #include <startgui.h>
 #include <resources.h>
@@ -87,9 +86,17 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	combo_drive	= new ComboBox(pos, size);
 
-	for (int j = 0; j < config->cdrip_numdrives; j++)
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+	if (info != NIL)
 	{
-		combo_drive->AddEntry(config->cdrip_drives.GetNth(j));
+		for (Int i = 0; i < info->GetNumberOfDevices(); i++)
+		{
+			combo_drive->AddEntry(info->GetNthDeviceInfo(i).name);
+		}
+
+		boca.DeleteComponent(info);
 	}
 
 	combo_drive->SelectNthEntry(activedrive);
@@ -324,7 +331,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		return;
 	}
 
-	cddbInfo.dArtist	= (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") ? "Various" : edit_artist->GetText());
+	cddbInfo.dArtist	= (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") ? String("Various") : edit_artist->GetText());
 
 	cddbInfo.dTitle		= edit_album->GetText();
 	cddbInfo.dYear		= edit_year->GetText().ToInt();
@@ -336,7 +343,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	cddbInfo.trackComments.RemoveAll();
 
 	for (Int j = 0; j < artists.Length(); j++) cddbInfo.trackArtists.Add(artists.GetNth(j));
-	for (Int k = 0; k < titles.Length(); k++) cddbInfo.trackTitles.Add((titles.GetNth(k) == BonkEnc::i18n->TranslateString("Data track") ? "Data track" : titles.GetNth(k)));
+	for (Int k = 0; k < titles.Length(); k++) cddbInfo.trackTitles.Add((titles.GetNth(k) == BonkEnc::i18n->TranslateString("Data track") ? String("Data track") : titles.GetNth(k)));
 	for (Int l = 0; l < comments.Length(); l++) cddbInfo.trackComments.Add(comments.GetNth(l));
 
 	if (cddbInfo.category == NIL) cddbInfo.category = GetCDDBGenre(edit_genre->GetText());
@@ -468,24 +475,22 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-#ifdef __WIN32__
 	activedrive = combo_drive->GetSelectedEntryNumber();
 
-	ex_CR_SetActiveCDROM(activedrive);
-	ex_CR_ReadToc();
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
-	Int	 numTocEntries = ex_CR_GetNumTocEntries();
-	Int	 numAudioTracks = numTocEntries;
+	if (info == NIL) return;
 
-	for (Int i = 0; i < numTocEntries; i++)
-	{
-		TOCENTRY entry = ex_CR_GetTocEntry(i);
+	const MCDI	&mcdi = info->GetNthDeviceMCDI(activedrive);
 
-		if (entry.btFlag & CDROMDATAFLAG || entry.btTrackNumber != i + 1) numAudioTracks--;
-	}
+	Int	 numTocEntries = mcdi.GetNumberOfEntries();
+	Int	 numAudioTracks = mcdi.GetNumberOfAudioTracks();
 
 	if (numAudioTracks <= 0)
 	{
+		boca.DeleteComponent(info);
+
 		text_cdstatus->SetText(String(BonkEnc::i18n->TranslateString("Status")).Append(": ").Append(BonkEnc::i18n->TranslateString("No audio CD in drive!")));
 
 		dontUpdateInfo = True;
@@ -593,21 +598,19 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 		for (Int i = 0; i < numTocEntries; i++)
 		{
-			TOCENTRY entry = ex_CR_GetTocEntry(i);
-
-			cddbInfo.trackOffsets.Add(entry.dwStartSector + 150, i);
+			cddbInfo.trackOffsets.Add(mcdi.GetNthEntryOffset(i), i);
 			cddbInfo.trackArtists.Add(NIL, i);
 			cddbInfo.trackTitles.Add(NIL, i);
 			cddbInfo.trackComments.Add(NIL, i);
 
-			if (!(entry.btFlag & CDROMDATAFLAG) && entry.btTrackNumber == i + 1)
+			if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO && mcdi.GetNthEntryTrackNumber(i) == i + 1)
 			{
 				/* Get CD track info using a cdda:// URI
 				 */
 				String			 uri = String("cdda://")
 							      .Append(String::FromInt(activedrive))
 							      .Append("/")
-							      .Append(String::FromInt(entry.btTrackNumber));
+							      .Append(String::FromInt(mcdi.GetNthEntryTrackNumber(i)));
 				DecoderComponent	*decoder = Utilities::CreateDecoderComponent(uri);
 				Track			 track;
 				const Info		&info = track.GetInfo();
@@ -651,8 +654,10 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 			}
 		}
 
-		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
+		cddbInfo.discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
 	}
+
+	boca.DeleteComponent(info);
 
 	/* Update tracks with information from joblist.
 	 */
@@ -700,7 +705,6 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	UpdateTrackList();
 
 	dontUpdateInfo = False;
-#endif
 }
 
 Void BonkEnc::cddbSubmitDlg::SelectTrack()

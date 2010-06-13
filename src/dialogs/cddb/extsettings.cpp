@@ -198,10 +198,10 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	switch (tab)
 	{
 		case 0:
-			reg_register->SelectTab(register_layer_http->GetHandle());
+			reg_register->SelectTab(register_layer_http);
 			break;
 		case 1:
-			reg_register->SelectTab(register_layer_proxy->GetHandle());
+			reg_register->SelectTab(register_layer_proxy);
 			break;
 	}
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,52 +33,52 @@ namespace BonkEnc
 	class Encoder
 	{
 		protected:
-			Bool					 encoding;
-			Bool					 paused;
+			Bool								 encoding;
+			Bool								 paused;
 
-			Bool					 stop;
-			Bool					 skip;
+			Bool								 stop;
+			Bool								 skip;
 
-			Int					 encoder_activedrive;
+			Int								 encoder_activedrive;
 
-			Bool					 overwriteAll;
+			Bool								 overwriteAll;
 
-			JobList					*joblist;
-			Progress				*progress;
+			JobList								*joblist;
+			Progress							*progress;
 
-			Bool					 CheckSingleFileSampleFormat();
+			Bool								 CheckSingleFileSampleFormat();
 
-			String					 GetPlaylistFileName(const Track &);
-			String					 GetRelativeFileName(const String &, const String &);
+			String								 GetPlaylistFileName(const Track &);
+			String								 GetRelativeFileName(const String &, const String &);
 
-			String					 GetOutputFileName(const Track &);
-			String					 GetSingleOutputFileName(const Track &);
+			String								 GetOutputFileName(const Track &);
+			String								 GetSingleOutputFileName(const Track &);
 
-			Int					 EncoderThread();
+			Int								 EncoderThread();
 		public:
-								 Encoder();
-								~Encoder();
+											 Encoder();
+											~Encoder();
 
-			Void					 Encode(JobList *, Bool = True);
+			Void								 Encode(JobList *, Bool = True);
 
-			Void					 Pause();
-			Void					 Resume();
+			Void								 Pause();
+			Void								 Resume();
 
-			Void					 Stop();
+			Void								 Stop();
 		accessors:
-			Bool					 IsEncoding() const	{ return encoding; }
-			Bool					 IsPaused() const	{ return paused; }
+			Bool								 IsEncoding() const	{ return encoding; }
+			Bool								 IsPaused() const	{ return paused; }
 		signals:
-			Signal0<Void>				 onStartEncoding;
-			Signal1<Void, Bool>			 onFinishEncoding;
+			Signal0<Void>							 onStartEncoding;
+			Signal1<Void, Bool>						 onFinishEncoding;
 
-			Signal2<Void, const Track &, Int>	 onEncodeTrack;
-			Signal0<Void>				 onFinishTrack;
+			Signal3<Void, const Track &, const AS::DecoderComponent *, Int>	 onEncodeTrack;
+			Signal0<Void>							 onFinishTrack;
 
-			Signal2<Void, Int, Int>			 onTrackProgress;
-			Signal2<Void, Int, Int>			 onTotalProgress;
+			Signal2<Void, Int, Int>						 onTrackProgress;
+			Signal2<Void, Int, Int>						 onTotalProgress;
 		slots:
-			Void					 SkipTrack();
+			Void								 SkipTrack();
 	};
 };
 

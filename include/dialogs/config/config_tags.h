@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -26,6 +26,7 @@ namespace BonkEnc
 			ListBox		*list_tag_formats;
 			Text		*text_encoding;
 			EditBox		*edit_encoding;
+			ComboBox	*combo_encoding;
 			List		*list_encodings;
 
 			GroupBox	*group_definfo;
@@ -53,8 +54,7 @@ namespace BonkEnc
 			CheckBox	*check_mcdi;
 			CheckBox	*check_replaygain;
 
-			String		 id3v1_encoding;
-			String		 id3v2_encoding;
+			Array<String>	 selected_encodings;
 
 			Bool		 enableCoverArtReadFromTags;
 			Bool		 enableCoverArtReadFromFiles;

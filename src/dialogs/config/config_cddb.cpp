@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -204,7 +204,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	Add(layer_local_background);
 	Add(layer_remote_background);
 
-	SetSize(Size(544, 227));
+	SetSize(Size(544, 198));
 }
 
 BonkEnc::ConfigureCDDB::~ConfigureCDDB()
@@ -368,7 +368,7 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 
 	for (Int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = True;
 
-	if (Config::Get()->enable_cdrip && config->cdrip_numdrives >= 1 && !valid)
+	if (config->cdrip_numdrives >= 1 && !valid)
 	{
 		Utilities::ErrorMessage("Please enter a valid eMail address.");
 
@@ -390,7 +390,7 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 	if	(config->freedb_mode == FREEDB_MODE_CDDBP) config->freedb_cddbp_port = edit_port->GetText().ToInt();
 	else if (config->freedb_mode == FREEDB_MODE_HTTP)  config->freedb_http_port  = edit_port->GetText().ToInt();
 
-	if (!config->freedb_dir.EndsWith("\\")) config->freedb_dir.Append("\\");
+	if (!config->freedb_dir.EndsWith(Directory::GetDirectoryDelimiter())) config->freedb_dir.Append(Directory::GetDirectoryDelimiter());
 
 	return Success();
 }
