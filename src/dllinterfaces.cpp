@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -24,8 +24,6 @@ CR_GETACTIVECDROM		 ex_CR_GetActiveCDROM			= NIL;
 CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM			= NIL;
 CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters		= NIL;
 CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters		= NIL;
-CR_GETNUMBEROFJITTERERRORS	 ex_CR_GetNumberOfJitterErrors		= NIL;
-CR_GETNUMBEROFC2ERRORS		 ex_CR_GetNumberOfC2Errors		= NIL;
 CR_LOCKCD			 ex_CR_LockCD				= NIL;
 CR_EJECTCD			 ex_CR_EjectCD				= NIL;
 CR_READCDTEXT			 ex_CR_ReadCDText			= NIL;
@@ -298,9 +296,14 @@ Array<Out_Module *>	 BonkEnc::DLLInterfaces::winamp_out_modules;
 
 Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP &&
-	    CPU().GetNumCores() >= 2 && CPU().HasSSE3()) bonkdll = new DynamicLoader("encoders/Bonk-OpenMP");
-	else						 bonkdll = new DynamicLoader("encoders/Bonk");
+	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
+	{
+		bonkdll = new DynamicLoader("encoders/Bonk-OpenMP");
+
+		if (bonkdll->GetSystemModuleHandle() == NIL) FreeBonkDLL();
+	}
+
+	if (bonkdll == NIL) bonkdll = new DynamicLoader("encoders/Bonk");
 
 	ex_bonk_encoder_create			= (BONKENCODERCREATE) bonkdll->GetFunctionAddress("bonk_encoder_create");
 	ex_bonk_encoder_init			= (BONKENCODERINIT) bonkdll->GetFunctionAddress("bonk_encoder_init");
@@ -344,6 +347,8 @@ Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
 Void BonkEnc::DLLInterfaces::FreeBonkDLL()
 {
 	Object::DeleteObject(bonkdll);
+
+	bonkdll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
@@ -368,13 +373,20 @@ Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
 Void BonkEnc::DLLInterfaces::FreeBladeDLL()
 {
 	Object::DeleteObject(bladedll);
+
+	bladedll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP &&
-	    CPU().GetNumCores() >= 2 && CPU().HasSSE3()) lamedll = new DynamicLoader("encoders/LAME-OpenMP");
-	else						 lamedll = new DynamicLoader("encoders/LAME");
+	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
+	{
+		lamedll = new DynamicLoader("encoders/LAME-OpenMP");
+
+		if (lamedll->GetSystemModuleHandle() == NIL) FreeLAMEDLL();
+	}
+
+	if (lamedll == NIL) lamedll = new DynamicLoader("encoders/LAME");
 
 	ex_lame_init				= (LAME_INIT) lamedll->GetFunctionAddress("lame_init");
 	ex_lame_set_preset			= (LAME_SET_PRESET) lamedll->GetFunctionAddress("lame_set_preset");
@@ -454,6 +466,8 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 Void BonkEnc::DLLInterfaces::FreeLAMEDLL()
 {
 	Object::DeleteObject(lamedll);
+
+	lamedll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
@@ -486,13 +500,20 @@ Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
 Void BonkEnc::DLLInterfaces::FreeTVQDLL()
 {
 	Object::DeleteObject(tvqdll);
+
+	tvqdll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadVorbisDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP &&
-	    CPU().GetNumCores() >= 2 && CPU().HasSSE3()) vorbisdll = new DynamicLoader("encoders/OggVorbis-OpenMP");
-	else						 vorbisdll = new DynamicLoader("encoders/OggVorbis");
+	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
+	{
+		vorbisdll = new DynamicLoader("encoders/OggVorbis-OpenMP");
+
+		if (vorbisdll->GetSystemModuleHandle() == NIL) FreeVorbisDLL();
+	}
+
+	if (vorbisdll == NIL) vorbisdll = new DynamicLoader("encoders/OggVorbis");
 
 	ex_vorbis_info_init		= (VORBISINFOINIT) vorbisdll->GetFunctionAddress("vorbis_info_init");
 	ex_vorbis_encode_init		= (VORBISENCODEINIT) vorbisdll->GetFunctionAddress("vorbis_encode_init");
@@ -578,13 +599,20 @@ Bool BonkEnc::DLLInterfaces::LoadVorbisDLL()
 Void BonkEnc::DLLInterfaces::FreeVorbisDLL()
 {
 	Object::DeleteObject(vorbisdll);
+
+	vorbisdll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadFAACDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP &&
-	    CPU().GetNumCores() >= 2 && CPU().HasSSE3()) faacdll = new DynamicLoader("encoders/FAAC-OpenMP");
-	else						 faacdll = new DynamicLoader("encoders/FAAC");
+	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
+	{
+		faacdll = new DynamicLoader("encoders/FAAC-OpenMP");
+
+		if (faacdll->GetSystemModuleHandle() == NIL) FreeFAACDLL();
+	}
+
+	if (faacdll == NIL) faacdll = new DynamicLoader("encoders/FAAC");
 
 	ex_faacEncOpen				= (FAACENCOPEN) faacdll->GetFunctionAddress("faacEncOpen");
 	ex_faacEncGetCurrentConfiguration	= (FAACENCGETCURRENTCONFIGURATION) faacdll->GetFunctionAddress("faacEncGetCurrentConfiguration");
@@ -606,6 +634,8 @@ Bool BonkEnc::DLLInterfaces::LoadFAACDLL()
 Void BonkEnc::DLLInterfaces::FreeFAACDLL()
 {
 	Object::DeleteObject(faacdll);
+
+	faacdll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
@@ -636,6 +666,8 @@ Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
 Void BonkEnc::DLLInterfaces::FreeFAAD2DLL()
 {
 	Object::DeleteObject(faad2dll);
+
+	faad2dll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
@@ -655,8 +687,6 @@ Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 	ex_CR_SetActiveCDROM		= (CR_SETACTIVECDROM) cdripdll->GetFunctionAddress("CR_SetActiveCDROM");
 	ex_CR_GetCDROMParameters	= (CR_GETCDROMPARAMETERS) cdripdll->GetFunctionAddress("CR_GetCDROMParameters");
 	ex_CR_SetCDROMParameters	= (CR_SETCDROMPARAMETERS) cdripdll->GetFunctionAddress("CR_SetCDROMParameters");
-	ex_CR_GetNumberOfJitterErrors	= (CR_GETNUMBEROFJITTERERRORS) cdripdll->GetFunctionAddress("CR_GetNumberOfJitterErrors");
-	ex_CR_GetNumberOfC2Errors	= (CR_GETNUMBEROFC2ERRORS) cdripdll->GetFunctionAddress("CR_GetNumberOfC2Errors");
 	ex_CR_LockCD			= (CR_LOCKCD) cdripdll->GetFunctionAddress("CR_LockCD");
 	ex_CR_EjectCD			= (CR_EJECTCD) cdripdll->GetFunctionAddress("CR_EjectCD");
 	ex_CR_ReadCDText		= (CR_READCDTEXT) cdripdll->GetFunctionAddress("CR_ReadCDText");
@@ -674,8 +704,6 @@ Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 	    ex_CR_SetActiveCDROM		== NIL ||
 	    ex_CR_GetCDROMParameters		== NIL ||
 	    ex_CR_SetCDROMParameters		== NIL ||
-	    ex_CR_GetNumberOfJitterErrors	== NIL ||
-	    ex_CR_GetNumberOfC2Errors		== NIL ||
 	    ex_CR_LockCD			== NIL ||
 	    ex_CR_EjectCD			== NIL ||
 	    ex_CR_ReadCDText			== NIL) { FreeCDRipDLL(); return False; }
@@ -686,6 +714,8 @@ Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 Void BonkEnc::DLLInterfaces::FreeCDRipDLL()
 {
 	Object::DeleteObject(cdripdll);
+
+	cdripdll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadID3DLL()
@@ -754,6 +784,8 @@ Bool BonkEnc::DLLInterfaces::LoadID3DLL()
 Void BonkEnc::DLLInterfaces::FreeID3DLL()
 {
 	Object::DeleteObject(id3dll);
+
+	id3dll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
@@ -786,6 +818,8 @@ Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 Void BonkEnc::DLLInterfaces::FreeEUpdateDLL()
 {
 	Object::DeleteObject(eupdatedll);
+
+	eupdatedll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
@@ -860,6 +894,8 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 Void BonkEnc::DLLInterfaces::FreeMP4V2DLL()
 {
 	Object::DeleteObject(mp4v2dll);
+
+	mp4v2dll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadMADDLL()
@@ -914,9 +950,14 @@ Void BonkEnc::DLLInterfaces::FreeWMVCoreDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP &&
-	    CPU().GetNumCores() >= 2 && CPU().HasSSE3()) flacdll = new DynamicLoader("encoders/FLAC-OpenMP");
-	else						 flacdll = new DynamicLoader("encoders/FLAC");
+	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
+	{
+		flacdll = new DynamicLoader("encoders/FLAC-OpenMP");
+
+		if (flacdll->GetSystemModuleHandle() == NIL) FreeFLACDLL();
+	}
+
+	if (flacdll == NIL) flacdll = new DynamicLoader("encoders/FLAC");
 
 	ex_FLAC__stream_encoder_new						= (FLAC__STREAM_ENCODER_NEW) flacdll->GetFunctionAddress("FLAC__stream_encoder_new");
 	ex_FLAC__stream_encoder_delete						= (FLAC__STREAM_ENCODER_DELETE) flacdll->GetFunctionAddress("FLAC__stream_encoder_delete");
@@ -1004,6 +1045,8 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 Void BonkEnc::DLLInterfaces::FreeFLACDLL()
 {
 	Object::DeleteObject(flacdll);
+
+	flacdll = NIL;
 }
 
 Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()

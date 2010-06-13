@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Acest program este distribuit sub termenii&#10;Licenţei Generale Publice GNU (GPL).</entry>
   <entry id="43" string="CDDB query">Interogare CDDB</entry>
   <entry id="44" string="About BonkEnc">Despre BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Nici o opţiune nu poate fi configurată pentru filtrul WAVE Out!</entry>
-  <entry id="46" string="WAVE Out filter">Filtru WAVE Out</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Nici o opţiune nu poate fi configurată pentru filtrul WAVE Out!</entry>
+  <entry id="46" string="Windows Wave file output">Filtru WAVE Out</entry>
   <entry id="47" string="Cannot change settings while encoding!">Setările nu pot fi modificate în timpul codării!</entry>
   <entry id="48" string="%1 encoder configuration">%1 configurare codec</entry>
   <entry id="49" string="OK">OK</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Citire automată CD la introducere</entry>
   <entry id="248" string="Eject disk after ripping">Scoate disc-ul după copiere</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Codare 'Din-Zbor'</entry>
-  <entry id="250" string="Keep ripped wave files">Păstrează fişierele wave copiate</entry>
+  <entry id="250" string="Keep ripped Wave files">Păstrează fişierele Wave copiate</entry>
   <entry id="251" string="ripping/decoding">copiere/decodare</entry>
   <entry id="252" string="encoding">codare</entry>
   <entry id="253" string="Unicode">Unicode</entry>

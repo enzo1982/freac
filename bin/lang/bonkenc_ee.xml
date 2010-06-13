@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Seda programmi levitatakse GNU&#10;General Public License (GPL) raames.</entry>
   <entry id="43" string="CDDB query">CDDB päring</entry>
   <entry id="44" string="About BonkEnc">Info BonkEnc kohta</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE jaoks puuduvad sätted!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE Out filter</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">WAVE jaoks puuduvad sätted!</entry>
+  <entry id="46" string="Windows Wave file output">WAVE Out filter</entry>
   <entry id="47" string="Cannot change settings while encoding!">Kodeerimise käigus ei saa muuta sätteid!</entry>
   <entry id="48" string="%1 encoder configuration">%1 kodeki sätted</entry>
   <entry id="49" string="OK">Jah</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Lugeda CD sisu sisestamisel</entry>
   <entry id="248" string="Eject disk after ripping">Väljastada plaat peale rippimist</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Kodeerimine &quot;Lennult&quot;</entry>
-  <entry id="250" string="Keep ripped wave files">Säilitada wave failid</entry>
+  <entry id="250" string="Keep ripped Wave files">Säilitada Wave failid</entry>
   <entry id="251" string="ripping/decoding">rippimine/dekodeerimine</entry>
   <entry id="252" string="encoding">kodeerimine</entry>
   <entry id="253" string="Unicode">Unicode</entry>

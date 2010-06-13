@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -97,7 +97,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 		combo_encoder->AddEntry(String("TwinVQ VQF Encoder v").Append(tvqVersionID + 4));
 	}
 
-	combo_encoder->AddEntry(String("WAVE Out Filter v1.0"));
+	combo_encoder->AddEntry(String("Windows Wave File Output v1.0"));
 
 	combo_encoder->SelectNthEntry(currentConfig->encoder);
 
@@ -169,6 +169,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	list_filename->AddEntry("<track> - <artist> - <title>");
 	list_filename->AddEntry("<album>\\<track> - <artist> - <title>");
 	list_filename->AddEntry("<genre>\\<artist> - <title>");
+	list_filename->AddEntry("<filetype>\\<artist> - <album>\\<track> - <title>");
 	list_filename->AddEntry("<filename>");
 
 	edit_filename->SetDropDownList(list_filename);
@@ -190,7 +191,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 
 	pos.y += 26;
 
-	check_keepWaves		= new CheckBox(BonkEnc::i18n->TranslateString("Keep ripped wave files"), pos, size, &keepWaves);
+	check_keepWaves		= new CheckBox(BonkEnc::i18n->TranslateString("Keep ripped Wave files"), pos, size, &keepWaves);
 
 	ToggleOnTheFly();
 
@@ -276,7 +277,7 @@ Void BonkEnc::GeneralSettingsLayerEncoders::ConfigureEncoder()
 {
 	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WAVE)
 	{
-		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for the WAVE Out filter!"), BonkEnc::i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for Windows Wave file output!"), BonkEnc::i18n->TranslateString("Windows Wave file output"), MB_OK, IDI_INFORMATION);
 
 		return;
 	}

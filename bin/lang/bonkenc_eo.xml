@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tiu programo estas disdonata laŭ la kondiĉoj de&#10;GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">CDDB-pridemando</entry>
   <entry id="44" string="About BonkEnc">Pri BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Neniuj agordoj povas esti agordata por la WAVE-El-filtrilo !</entry>
-  <entry id="46" string="WAVE Out filter">WAVE-El-filtrilo</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Neniuj agordoj povas esti agordata por la WAVE-El-filtrilo !</entry>
+  <entry id="46" string="Windows Wave file output">WAVE-El-filtrilo</entry>
   <entry id="47" string="Cannot change settings while encoding!">Ne eblas ŝanĝi agordojn dum la kodado!</entry>
   <entry id="48" string="%1 encoder configuration">%1 kodilo-agordo</entry>
   <entry id="49" string="OK">Bone</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Legi KD-enhavon aŭtomate</entry>
   <entry id="248" string="Eject disk after ripping">Elĵeti la diskon post la ripado</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Kodi 'On-The-Fly'</entry>
-  <entry id="250" string="Keep ripped wave files">Konservi la wave-dosierojn</entry>
+  <entry id="250" string="Keep ripped Wave files">Konservi la Wave-dosierojn</entry>
   <entry id="251" string="ripping/decoding">Ripi/malkodi</entry>
   <entry id="252" string="encoding">Kodi</entry>
   <entry id="253" string="Unicode">Unikodo</entry>

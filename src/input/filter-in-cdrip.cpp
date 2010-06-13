@@ -182,6 +182,10 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 	params.bEnableMultiRead		= False;
 	params.nMultiReadCount		= 0;
 
+	/* Set maximum speed if no limit is requested.
+	 */
+	if (params.nSpeed == 0) params.nSpeed = 64;
+
 	ex_CR_SetCDROMParameters(&params);
 
 	if (currentConfig->cdrip_locktray) ex_CR_LockCD(true);

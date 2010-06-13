@@ -55,8 +55,8 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Dieses Programm wird unter den Bedingungen der&#10;GNU General Public License (GPL) vertrieben.</entry>
     <entry id="43" string="CDDB query">CDDB-Abfrage</entry>
     <entry id="44" string="About BonkEnc">Über BonkEnc</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Für den WAVE-Out-Filter können keine Optionen konfiguriert werden!</entry>
-    <entry id="46" string="WAVE Out filter">WAVE-Out-Filter</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Für Windows Wave-Datei Ausgabe können keine Optionen konfiguriert werden!</entry>
+    <entry id="46" string="Windows Wave file output">Windows Wave-Datei Ausgabe</entry>
     <entry id="47" string="Cannot change settings while encoding!">Während der Codierung können keine Einstellungen verändert werden!</entry>
     <entry id="48" string="%1 encoder configuration">%1 Codierer-Konfiguration</entry>
     <entry id="49" string="OK">OK</entry>
@@ -251,7 +251,7 @@
     <entry id="247" string="Read CD contents on insert">CD-Inhalt autmatisch lesen</entry>
     <entry id="248" string="Eject disk after ripping">Automatisch auswerfen</entry>
     <entry id="249" string="Encode 'On-The-Fly'">'On-The-Fly' codieren</entry>
-    <entry id="250" string="Keep ripped wave files">Wave Dateien behalten</entry>
+    <entry id="250" string="Keep ripped Wave files">Wave-Dateien behalten</entry>
     <entry id="251" string="ripping/decoding">Rippen/Decodieren</entry>
     <entry id="252" string="encoding">Codieren</entry>
     <entry id="253" string="Unicode">Unicode</entry>
@@ -406,5 +406,6 @@
     <entry id="402" string="Use VBR encoding">VBR-Codierung</entry>
     <entry id="403" string="Use 2-pass encoding">2-Pass-Codierung</entry>
     <entry id="404" string="Target bitrate:">Zielbitrate:</entry>
+    <entry id="405" string="Set drive speed limit:">Geschwindigkeit begrenzen:</entry>
   </data>
 </LangFile>

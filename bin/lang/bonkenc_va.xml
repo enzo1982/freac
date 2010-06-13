@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa se distribuix baix els termes&#10;GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">Consulta a CDDB</entry>
   <entry id="44" string="About BonkEnc">Al voltant de BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">¡El filtre d'eixida d'Ones (Wave Out) no te opcions de configuracio!</entry>
-  <entry id="46" string="WAVE Out filter">Filtre d'Eixida d'Ones (WAVE Out)</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">¡El filtre d'eixida d'Ones (Wave Out) no te opcions de configuracio!</entry>
+  <entry id="46" string="Windows Wave file output">Filtre d'Eixida d'Ones (WAVE Out)</entry>
   <entry id="47" string="Cannot change settings while encoding!">¡No se pot modificar la configuracio durant la codificacio!</entry>
   <entry id="48" string="%1 encoder configuration">Configuracio del codificador %1</entry>
   <entry id="49" string="OK">Acceptar</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Llegir CD a l'insertar-lo</entry>
   <entry id="248" string="Eject disk after ripping">Expulsar disc despres del ripeig</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Codificar 'Al vol'</entry>
-  <entry id="250" string="Keep ripped wave files">Mantindre archius wav ripejats</entry>
+  <entry id="250" string="Keep ripped Wave files">Mantindre archius wav ripejats</entry>
   <entry id="251" string="ripping/decoding">ripejant/decodificant</entry>
   <entry id="252" string="encoding">codificant</entry>
   <entry id="253" string="Unicode"/>

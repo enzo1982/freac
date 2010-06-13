@@ -509,7 +509,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 		}
 		else if (helpenc == "WAVE" || helpenc == "wave")
 		{
-			Console::OutputString("No options can be configured for the WAVE Out filter!\n\n");
+			Console::OutputString("No options can be configured for Windows Wave file output!\n\n");
 		}
 		else
 		{

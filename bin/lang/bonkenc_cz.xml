@@ -55,8 +55,8 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šířen pod General Public Lincence (GPL).</entry>
     <entry id="43" string="CDDB query">Dotaz na CDDB </entry>
     <entry id="44" string="About BonkEnc">O programu BonkEnc</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Pro WAVE výstupní filtr nemohou být žádné volby upravovány</entry>
-    <entry id="46" string="WAVE Out filter">Výstupní WAVE filtr</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Pro WAVE výstupní filtr nemohou být žádné volby upravovány</entry>
+    <entry id="46" string="Windows Wave file output">Výstupní WAVE filtr</entry>
     <entry id="47" string="Cannot change settings while encoding!">Během kódování nemohou být žádná nastavení změněna</entry>
     <entry id="48" string="%1 encoder configuration">%1 konfigurace enkodéru</entry>
     <entry id="49" string="OK">OK</entry>
@@ -251,7 +251,7 @@
     <entry id="247" string="Read CD contents on insert">Číst obsah CD při jeho vložení</entry>
     <entry id="248" string="Eject disk after ripping">Vysunout disk po ripovaní</entry>
     <entry id="249" string="Encode 'On-The-Fly'">Kódovat 'On-The-Fly' (přímo)</entry>
-    <entry id="250" string="Keep ripped wave files">Ponechat soubory wav</entry>
+    <entry id="250" string="Keep ripped Wave files">Ponechat soubory wav</entry>
     <entry id="251" string="ripping/decoding">ripování/dekódování</entry>
     <entry id="252" string="encoding">kódování</entry>
     <entry id="253" string="Unicode">Unicode</entry>

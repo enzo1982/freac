@@ -31,19 +31,9 @@
 	      <div id='g_body'>
 		<h4>Contents</h4>
 		<blockquote>
-		  <p><a href="#anchor_wma">How to enable Windows Media Audio decoding support?</a></p>
 		  <p><a href="#anchor_pat">How to use output file name patterns in BonkEnc?</a></p>
 		  <p><a href="#anchor_tra">How to add a new translation to BonkEnc?</a></p>
 		  <p><a href="#anchor_rem">How to remove BonkEnc from my computer?</a></p>
-		</blockquote>
-		<h4 id="anchor_wma">How to enable Windows Media Audio decoding support?</h4>
-		<blockquote>
-		  <p>To enable <b>Windows Media Audio</b> (WMA) support in BonkEnc, you need the WMA plug-in from Winamp 5.21 (plug-ins from newer versions of Winamp will not work with BonkEnc).
-		    Please follow these steps to install the WMA plug-in for BonkEnc.</p>
-		  <ul>
-		    <li>download and install <b>Winamp 5.21</b> from <a href="http://www.oldversion.com/">www.oldversion.com</a></li>
-		    <li>copy the <b>in_wm.dll</b> file from the <b>Winamp/plugins directory</b> to the <b>BonkEnc/plugins</b> directory</li>
-		  </ul>
 		</blockquote>
 		<h4 id="anchor_pat">How to use output file name patterns in BonkEnc?</h4>
 		<blockquote>
@@ -58,7 +48,13 @@
 		    <li><b>&lt;genre&gt;</b> - The song genre</li>
 		    <li><b>&lt;year&gt;</b> - The year the song was published</li>
 		  </ul>
-		  <p>The above placeholders refer to song and album information. In addition there are two placeholders that refer
+		  <p>The above placeholders refer to song and album information. The following placeholder resolves to the type of the output file:</p>
+		  <ul>
+		    <li><b>&lt;filetype&gt;</b> - The type of the output file</li>
+		  </ul>
+		  <p>A common use case for this placeholder is if you are regularly encoding to different formats (e.g. FLAC for archival and M4A for your
+		    mobile player) and would like to keep the encoded files in separate directory trees.</p>
+		  <p>In addition to the above there are two placeholders that refer
 		    to the original file name of a file being encoded in BonkEnc:</p>
 		  <ul>
 		    <li><b>&lt;filename&gt;</b> - The file name of the input file</li>
@@ -109,7 +105,7 @@
 	    <p></p>
 	    <div id='g_footer'>
 	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
-		Copyright (C) 2007-2009 The BonkEnc Project</p>
+		Copyright (C) 2007-2010 The BonkEnc Project</p>
 	    </div>
 	    <p></p>
 	  </div>

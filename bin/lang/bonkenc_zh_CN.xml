@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">本程序遵照 GNU 通用公共许可证(GPL) 进行分发</entry>
   <entry id="43" string="CDDB query">CDDB 查询</entry>
   <entry id="44" string="About BonkEnc">关于 BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE 输出滤镜没有可以设置的选项!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE 输出滤镜</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">WAVE 输出滤镜没有可以设置的选项!</entry>
+  <entry id="46" string="Windows Wave file output">WAVE 输出滤镜</entry>
   <entry id="47" string="Cannot change settings while encoding!">不能在编码过程中改变设置!</entry>
   <entry id="48" string="%1 encoder configuration">%1 编码设置</entry>
   <entry id="49" string="OK">确定</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">放入 CD 时读取内容</entry>
   <entry id="248" string="Eject disk after ripping">翻录完成后弹出光盘</entry>
   <entry id="249" string="Encode 'On-The-Fly'">使用即时编码</entry>
-  <entry id="250" string="Keep ripped wave files">保留翻录的 WAVE 文件</entry>
+  <entry id="250" string="Keep ripped Wave files">保留翻录的 WAVE 文件</entry>
   <entry id="251" string="ripping/decoding">正在翻录/解码</entry>
   <entry id="252" string="encoding">编码</entry>
   <entry id="253" string="Unicode">Unicode</entry>

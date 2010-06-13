@@ -54,8 +54,8 @@
   <entry id="41" string="Currently encoding">ממיר כרגע</entry>
   <entry id="43" string="CDDB query">CDDB בדיקת</entry>
   <entry id="44" string="About BonkEnc">על התכנה</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">לא ניתן לבצע שינויים ב WAVE Out filter!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE Out filter</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">לא ניתן לבצע שינויים ב Windows Wave file output!</entry>
+  <entry id="46" string="Windows Wave file output">Windows Wave file output</entry>
   <entry id="47" string="Cannot change settings while encoding!">! לא ניתן לשנות הגדרות במהלך ההמרה</entry>
   <entry id="48" string="%1 encoder configuration">%1 הגדרות מקודד</entry>
   <entry id="49" string="OK">OK</entry>

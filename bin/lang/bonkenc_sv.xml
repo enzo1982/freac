@@ -55,8 +55,8 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Det här programmet dibustrueras i enlighet&#10;med GNU licensen (General Public License (GPL)).</entry>
     <entry id="43" string="CDDB query">CDDB-sökning</entry>
     <entry id="44" string="About BonkEnc">Om BonkEnc</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Inga inställningar kan konfigureras för WAVE Out-filtret!</entry>
-    <entry id="46" string="WAVE Out filter">WAVE Out-filter</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Inga inställningar kan konfigureras för WAVE Out-filtret!</entry>
+    <entry id="46" string="Windows Wave file output">WAVE Out-filter</entry>
     <entry id="47" string="Cannot change settings while encoding!">Du kan inte ändra inställningarna under kodning!</entry>
     <entry id="48" string="%1 encoder configuration">%1 kodarinställningar</entry>
     <entry id="49" string="OK">OK</entry>
@@ -251,7 +251,7 @@
     <entry id="247" string="Read CD contents on insert">Läs info när en CD matas in</entry>
     <entry id="248" string="Eject disk after ripping">Mata ut CD-skiva efter rippning</entry>
     <entry id="249" string="Encode 'On-The-Fly'">Koda 'on the fly'</entry>
-    <entry id="250" string="Keep ripped wave files">Behåll rippade wave-filer</entry>
+    <entry id="250" string="Keep ripped Wave files">Behåll rippade Wave-filer</entry>
     <entry id="251" string="ripping/decoding">rippning/avkodning</entry>
     <entry id="252" string="encoding">kodning</entry>
     <entry id="253" string="Unicode">Unicode</entry>

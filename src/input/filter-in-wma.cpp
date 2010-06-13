@@ -142,6 +142,10 @@ Int BonkEnc::FilterInWMA::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	samplesBufferMutex.Release();
 
+	/* Update inBytes to indicate progress.
+	 */
+	inBytes += format->fileSize * data.Size() / (format->approxLength * (format->bits / 8));
+
 	return data.Size();
 }
 
@@ -291,7 +295,8 @@ BonkEnc::Track *BonkEnc::FilterInWMA::GetFileInfo(const String &inFile)
 
 		if (!FAILED(hr) && pbValue != NIL)
 		{
-			nFormat->length = *(QWORD *) pbValue * nFormat->rate * nFormat->channels / 10000000;
+			nFormat->length = -1;
+			nFormat->approxLength = *(QWORD *) pbValue * nFormat->rate * nFormat->channels / 10000000;
 
 			delete [] pbValue;
 		}
@@ -509,6 +514,8 @@ HRESULT BonkEnc::WMAReader::OnStatus(WMT_STATUS status, HRESULT hr, WMT_ATTR_DAT
 			break;
 
 		case WMT_EOF:
+			active = False;
+
 			m_fEOF = true;
 
 			break;

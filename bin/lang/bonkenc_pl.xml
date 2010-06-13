@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Program jest rozpowszechniany zgodnie z&#10;warunkami Licencji Publicznej GNU (GPL).</entry>
   <entry id="43" string="CDDB query">Zapytanie CDDB</entry>
   <entry id="44" string="About BonkEnc">O programie BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Filtr WAVE Out nie ma parametrów które można ustawić.</entry>
-  <entry id="46" string="WAVE Out filter">Filtr WAVE Out</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Filtr WAVE Out nie ma parametrów które można ustawić.</entry>
+  <entry id="46" string="Windows Wave file output">Filtr WAVE Out</entry>
   <entry id="47" string="Cannot change settings while encoding!">Nie można zmieniać ustawień podczas konwersji!</entry>
   <entry id="48" string="%1 encoder configuration">%1 - ustawienia kompresji</entry>
   <entry id="49" string="OK">Akceptuj</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Odczytaj CD po włożeniu</entry>
   <entry id="248" string="Eject disk after ripping">Wysuń CD po ekstrakcji</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Konwertuj &quot;w locie&quot;</entry>
-  <entry id="250" string="Keep ripped wave files">Zachowaj pliki .wav</entry>
+  <entry id="250" string="Keep ripped Wave files">Zachowaj pliki .wav</entry>
   <entry id="251" string="ripping/decoding">ekstrakcja/dekodowanie</entry>
   <entry id="252" string="encoding">konwersja</entry>
   <entry id="253" string="Unicode">Znaki w Unicode</entry>

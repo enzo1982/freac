@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -320,7 +320,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		return;
 	}
 
-	cddbInfo.dArtist	= (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") ? "Various" : edit_artist->GetText());
+	cddbInfo.dArtist	= (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") ? String("Various") : edit_artist->GetText());
 
 	cddbInfo.dTitle		= edit_album->GetText();
 	cddbInfo.dYear		= edit_year->GetText().ToInt();
@@ -332,7 +332,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	cddbInfo.trackComments.RemoveAll();
 
 	for (Int j = 0; j < artists.Length(); j++) cddbInfo.trackArtists.Add(artists.GetNth(j));
-	for (Int k = 0; k < titles.Length(); k++) cddbInfo.trackTitles.Add((titles.GetNth(k) == BonkEnc::i18n->TranslateString("Data track") ? "Data track" : titles.GetNth(k)));
+	for (Int k = 0; k < titles.Length(); k++) cddbInfo.trackTitles.Add((titles.GetNth(k) == BonkEnc::i18n->TranslateString("Data track") ? String("Data track") : titles.GetNth(k)));
 	for (Int l = 0; l < comments.Length(); l++) cddbInfo.trackComments.Add(comments.GetNth(l));
 
 	if (cddbInfo.category == "") cddbInfo.category = GetCDDBGenre(edit_genre->GetText());

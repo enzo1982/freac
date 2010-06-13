@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ovaj program se distribuira pod uslovima&#10;GNU Opštih Javnih Licenci (tzv. &quot;GPL&quot;).</entry>
   <entry id="43" string="CDDB query">CDDB upit</entry>
   <entry id="44" string="About BonkEnc">O BonkEnc-u</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Opcije za WAVE izlazni filter se ne mogu podešavati!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE izlazni filter</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Opcije za WAVE izlazni filter se ne mogu podešavati!</entry>
+  <entry id="46" string="Windows Wave file output">WAVE izlazni filter</entry>
   <entry id="47" string="Cannot change settings while encoding!">Ne možete menjati podešavanja za vreme enkodovanja!</entry>
   <entry id="48" string="%1 encoder configuration">%1 podešavanja enkodera</entry>
   <entry id="49" string="OK">Prihvati</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Pri ubacivanju čitaj CD sadržaj</entry>
   <entry id="248" string="Eject disk after ripping">Izbaci disk nakon ripovanja</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Enkoduj &quot;u letu&quot;</entry>
-  <entry id="250" string="Keep ripped wave files">Zadrži ripovane WAV fajlove</entry>
+  <entry id="250" string="Keep ripped Wave files">Zadrži ripovane WAV fajlove</entry>
   <entry id="251" string="ripping/decoding">ripovanje / enkodovanje</entry>
   <entry id="252" string="encoding">enkodovanje</entry>
   <entry id="253" string="Unicode">Unikod</entry>

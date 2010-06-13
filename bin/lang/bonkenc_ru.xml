@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Эта программа распространяется в рамках&#10;GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">CDDB запрос</entry>
   <entry id="44" string="About BonkEnc">О BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Для WAVE нет настроек!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE Out фильтр</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Для WAVE нет настроек!</entry>
+  <entry id="46" string="Windows Wave file output">WAVE Out фильтр</entry>
   <entry id="47" string="Cannot change settings while encoding!">Нельзя изменять настройки в процессе кодирования!</entry>
   <entry id="48" string="%1 encoder configuration">Настройка кодека %1</entry>
   <entry id="49" string="OK">Да</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Содержимое читать сразу</entry>
   <entry id="248" string="Eject disk after ripping">Извлечь диск после работы</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Кодирование &quot;На лету&quot;</entry>
-  <entry id="250" string="Keep ripped wave files">Оставлять wave файлы</entry>
+  <entry id="250" string="Keep ripped Wave files">Оставлять Wave файлы</entry>
   <entry id="251" string="ripping/decoding">захват/декодирование</entry>
   <entry id="252" string="encoding">кодирование</entry>
   <entry id="253" string="Unicode">Юникод</entry>

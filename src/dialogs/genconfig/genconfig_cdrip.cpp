@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,6 +17,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 
 	currentConfig = BonkEnc::currentConfig;
 
+	setspeed	= currentConfig->cdrip_speed;
 	cdparanoia	= currentConfig->cdrip_paranoia;
 	jitter		= currentConfig->cdrip_jitter;
 	swapchannels	= currentConfig->cdrip_swapchannels;
@@ -31,7 +32,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	pos.x	= 7;
 	pos.y	= 11;
 	size.cx	= 344;
-	size.cy	= 43;
+	size.cy	= 68;
 
 	group_drive	= new GroupBox(BonkEnc::i18n->TranslateString("Active CD-ROM drive"), pos, size);
 
@@ -49,8 +50,27 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 
 	combo_drive->SelectNthEntry(currentConfig->cdrip_activedrive);
 
+	pos.x	= 17;
+	pos.y	= 51;
+	size.cx	= 157;
+	size.cy	= 0;
+
+	check_speed		= new CheckBox(BonkEnc::i18n->TranslateString("Set drive speed limit:"), pos, size, &setspeed);
+	check_speed->onAction.Connect(&GeneralSettingsLayerCDRip::ToggleSetSpeed, this);
+
+	pos.x	+= 166;
+	pos.y	-= 1;
+	size.cx	= 158;
+	size.cy	= 0;
+
+	combo_speed		= new ComboBox(pos, size);
+
+	for (Int i = 48; i > 0; i -= 4) combo_speed->AddEntry(String::FromInt(i).Append("x"));
+
+	combo_speed->SelectNthEntry((48 - currentConfig->cdrip_speed) / 4);
+
 	pos.x	= 7;
-	pos.y	= 66;
+	pos.y	= 91;
 	size.cx	= 344;
 	size.cy	= 39;
 
@@ -68,7 +88,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	check_readCDPlayerIni	= new CheckBox(BonkEnc::i18n->TranslateString("Read cdplayer.ini"), pos, size, &readCDPlayerIni);
 
 	pos.x	= 7;
-	pos.y	= 117;
+	pos.y	= 142;
 	size.cx	= 344;
 	size.cy	= 68;
 
@@ -130,7 +150,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 	check_autoEject	= new CheckBox(BonkEnc::i18n->TranslateString("Eject disk after ripping"), pos, size, &autoEject);
 
 	pos.x	= 359;
-	pos.y	= 117;
+	pos.y	= 142;
 	size.cx	= 178;
 	size.cy	= 68;
 
@@ -155,10 +175,13 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
 
 	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) check_ntscsi->Deactivate();
 
+	ToggleSetSpeed();
 	ToggleAutoRead();
 
 	Add(group_drive);
 	Add(combo_drive);
+	Add(check_speed);
+	Add(combo_speed);
 	Add(group_ripping);
 	Add(check_paranoia);
 	Add(combo_paranoia_mode);
@@ -180,6 +203,8 @@ BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 {
 	DeleteObject(group_drive);
 	DeleteObject(combo_drive);
+	DeleteObject(check_speed);
+	DeleteObject(combo_speed);
 	DeleteObject(group_ripping);
 	DeleteObject(check_paranoia);
 	DeleteObject(combo_paranoia_mode);
@@ -195,6 +220,12 @@ BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 	DeleteObject(group_cdinfo);
 	DeleteObject(check_readCDText);
 	DeleteObject(check_readCDPlayerIni);
+}
+
+Void BonkEnc::GeneralSettingsLayerCDRip::ToggleSetSpeed()
+{
+	if (setspeed)	combo_speed->Activate();
+	else		combo_speed->Deactivate();
 }
 
 Void BonkEnc::GeneralSettingsLayerCDRip::SetParanoia()
@@ -219,6 +250,11 @@ Int BonkEnc::GeneralSettingsLayerCDRip::GetCDParanoiaMode()
 	if (!cdparanoia) return -1;
 
 	return combo_paranoia_mode->GetSelectedEntryNumber();
+}
+
+Int BonkEnc::GeneralSettingsLayerCDRip::GetSpeed()
+{
+	return (setspeed ? 48 - (combo_speed->GetSelectedEntryNumber() * 4) : 0);
 }
 
 Bool BonkEnc::GeneralSettingsLayerCDRip::GetJitter()

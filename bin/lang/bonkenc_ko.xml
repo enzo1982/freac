@@ -55,8 +55,8 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">이 프로그램은 GNU General Public License (GPL)의&#10;조항에 의거하여 배포되고 있습니다.</entry>
     <entry id="43" string="CDDB query">CDDB 쿼리</entry>
     <entry id="44" string="About BonkEnc">BonkEnc 정보</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Wave출력필터로 설정된 항목이 없습니다!</entry>
-    <entry id="46" string="WAVE Out filter">Wave 출력 필터</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Wave출력필터로 설정된 항목이 없습니다!</entry>
+    <entry id="46" string="Windows Wave file output">Wave 출력 필터</entry>
     <entry id="47" string="Cannot change settings while encoding!">인코딩 중에는 설정을 변경할 수 없습니다!</entry>
     <entry id="48" string="%1 encoder configuration">%1 인코더 설정</entry>
     <entry id="49" string="OK">확인</entry>
@@ -248,7 +248,7 @@
     <entry id="247" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
     <entry id="248" string="Eject disk after ripping">리핑후 디스크 배출</entry>
     <entry id="249" string="Encode 'On-The-Fly'">실시간 패킷 인코드</entry>
-    <entry id="250" string="Keep ripped wave files">웨이브 파일 리핑유지</entry>
+    <entry id="250" string="Keep ripped Wave files">웨이브 파일 리핑유지</entry>
     <entry id="251" string="ripping/decoding">리핑/디코딩</entry>
     <entry id="252" string="encoding">인코딩</entry>
     <entry id="253" string="Unicode">Unicode</entry>

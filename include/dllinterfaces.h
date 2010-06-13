@@ -117,8 +117,6 @@ namespace BonkEnc
 	typedef void					(_stdcall *CR_SETACTIVECDROM)			(LONG);
 	typedef CDEX_ERR				(_stdcall *CR_GETCDROMPARAMETERS)		(CDROMPARAMS *);
 	typedef CDEX_ERR				(_stdcall *CR_SETCDROMPARAMETERS)		(CDROMPARAMS *);
-	typedef LONG					(_stdcall *CR_GETNUMBEROFJITTERERRORS)		();
-	typedef LONG					(_stdcall *CR_GETNUMBEROFC2ERRORS)		();
 	typedef void					(_stdcall *CR_LOCKCD)				(BOOL);
 	typedef BOOL					(_stdcall *CR_EJECTCD)				(BOOL);
 	typedef CDEX_ERR				(_stdcall *CR_READCDTEXT)			(BYTE *, int, LPINT);
@@ -136,8 +134,6 @@ namespace BonkEnc
 	extern BEEXPORT CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM;
 	extern BEEXPORT CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters;
 	extern BEEXPORT CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters;
-	extern BEEXPORT CR_GETNUMBEROFJITTERERRORS	 ex_CR_GetNumberOfJitterErrors;
-	extern BEEXPORT CR_GETNUMBEROFC2ERRORS		 ex_CR_GetNumberOfC2Errors;
 	extern BEEXPORT CR_LOCKCD			 ex_CR_LockCD;
 	extern BEEXPORT CR_EJECTCD			 ex_CR_EjectCD;
 	extern BEEXPORT CR_READCDTEXT			 ex_CR_ReadCDText;

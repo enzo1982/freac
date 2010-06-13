@@ -55,8 +55,8 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Bu program General Public License (GPL)&#10;ile dağıtılır.</entry>
     <entry id="43" string="CDDB query">CDDB sorgusu</entry>
     <entry id="44" string="About BonkEnc">BonkEnc hakkında</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Wave dosyaları için filtre ayarlanamaz!</entry>
-    <entry id="46" string="WAVE Out filter">Wave çıkış filtresi</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Wave dosyaları için filtre ayarlanamaz!</entry>
+    <entry id="46" string="Windows Wave file output">Wave çıkış filtresi</entry>
     <entry id="47" string="Cannot change settings while encoding!">Çevirme yapılırken ayar değiştirilemez!</entry>
     <entry id="48" string="%1 encoder configuration">%1 çevirici ayarları</entry>
     <entry id="49" string="OK">Tamam</entry>
@@ -251,7 +251,7 @@
     <entry id="247" string="Read CD contents on insert">Cd takıldığında içindekileri oku</entry>
     <entry id="248" string="Eject disk after ripping">Riplemeden sonra diski çıkar</entry>
     <entry id="249" string="Encode 'On-The-Fly'">Dinlerken Çevir</entry>
-    <entry id="250" string="Keep ripped wave files">Riplenmiş wave dosyalarını sakla</entry>
+    <entry id="250" string="Keep ripped Wave files">Riplenmiş Wave dosyalarını sakla</entry>
     <entry id="251" string="ripping/decoding">Riple / Çöz</entry>
     <entry id="252" string="encoding">Çevrilen</entry>
     <entry id="253" string="Unicode">Karakter seti</entry>

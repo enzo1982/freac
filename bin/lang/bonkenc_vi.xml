@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Phần mềm này được phân phối theo giấy phép&#10;của GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">Truy vấn CDDB</entry>
   <entry id="44" string="About BonkEnc">Thông tin</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Không tùy chọn nào có thể chỉnh sửa cho bộ lọc dữ liệu WAVE!</entry>
-  <entry id="46" string="WAVE Out filter">Bộ lọc WAVE Out</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Không tùy chọn nào có thể chỉnh sửa cho bộ lọc dữ liệu WAVE!</entry>
+  <entry id="46" string="Windows Wave file output">Bộ lọc WAVE Out</entry>
   <entry id="47" string="Cannot change settings while encoding!">Không thể thay đổi thiết lập khi chuyển mã!</entry>
   <entry id="48" string="%1 encoder configuration">%1 chỉnh sửa chuyển mã</entry>
   <entry id="49" string="OK">Đồng ý</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Đọc dữ liệu đĩa CD khi đưa đĩa vào</entry>
   <entry id="248" string="Eject disk after ripping">Mở ổ đĩa CD-ROM khi đã rip đĩa xong</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Chuyển mã 'On-The-Fly'</entry>
-  <entry id="250" string="Keep ripped wave files">Giữ các tập tin wave đã rip</entry>
+  <entry id="250" string="Keep ripped Wave files">Giữ các tập tin Wave đã rip</entry>
   <entry id="251" string="ripping/decoding">đang rip/đang giải mã</entry>
   <entry id="252" string="encoding">đang mã hóa</entry>
   <entry id="253" string="Unicode">Unicode</entry>

@@ -861,7 +861,7 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 
 	if (currentConfig->encoder == ENCODER_WAVE)
 	{
-		QuickMessage(i18n->TranslateString("No options can be configured for the WAVE Out filter!"), i18n->TranslateString("WAVE Out filter"), MB_OK, IDI_INFORMATION);
+		QuickMessage(i18n->TranslateString("No options can be configured for Windows Wave file output!"), i18n->TranslateString("Windows Wave file output"), MB_OK, IDI_INFORMATION);
 
 		return;
 	}
@@ -1553,7 +1553,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	if (currentConfig->enable_wma)    menu_encoders->AddEntry("Windows Media Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_WMA)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_tvq)    menu_encoders->AddEntry("TwinVQ VQF Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_TVQ)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 
-	menu_encoders->AddEntry("WAVE Out Filter", NIL, NIL, NIL, &clicked_encoder, ENCODER_WAVE)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
+	menu_encoders->AddEntry("Windows Wave File Output", NIL, NIL, NIL, &clicked_encoder, ENCODER_WAVE)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 
 	if (ENCODER_WAVE > 0)
 	{
@@ -1784,7 +1784,7 @@ Void BonkEnc::BonkEncGUI::SetEncoderText()
 	else if (currentConfig->encoder == ENCODER_FAAC)	edb_encoder->SetText("FAAC MP4/AAC Encoder");
 	else if (currentConfig->encoder == ENCODER_FLAC)	edb_encoder->SetText("FLAC Audio Encoder");
 	else if (currentConfig->encoder == ENCODER_TVQ)		edb_encoder->SetText("TwinVQ VQF Encoder");
-	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("WAVE Out Filter");
+	else if (currentConfig->encoder == ENCODER_WAVE)	edb_encoder->SetText("Windows Wave File Output");
 	else if (currentConfig->encoder == ENCODER_WMA)		edb_encoder->SetText("Windows Media Audio Encoder");
 }
 

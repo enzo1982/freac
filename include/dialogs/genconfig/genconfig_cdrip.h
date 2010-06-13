@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,6 +20,8 @@ namespace BonkEnc
 		private:
 			GroupBox	*group_drive;
 			ComboBox	*combo_drive;
+			CheckBox	*check_speed;
+			ComboBox	*combo_speed;
 
 			GroupBox	*group_ripping;
 			CheckBox	*check_paranoia;
@@ -40,6 +42,7 @@ namespace BonkEnc
 			CheckBox	*check_readCDText;
 			CheckBox	*check_readCDPlayerIni;
 
+			Bool		 setspeed;
 			Bool		 cdparanoia;
 			Bool		 jitter;
 			Bool		 swapchannels;
@@ -53,6 +56,8 @@ namespace BonkEnc
  
 			Config		*currentConfig;
 		slots:
+			Void		 ToggleSetSpeed();
+
 			Void		 SetParanoia();
 
 			Void		 ToggleAutoRead();
@@ -63,6 +68,7 @@ namespace BonkEnc
 			Int		 GetActiveDrive();
 			Int		 GetCDParanoiaMode();
 
+			Int		 GetSpeed();
 			Bool		 GetJitter();
 			Bool		 GetSwapChannels();
 			Bool		 GetLockTray();

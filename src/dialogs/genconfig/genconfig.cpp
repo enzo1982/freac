@@ -181,6 +181,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 
 	currentConfig->cdrip_paranoia		= (register_layer_cdrip->GetCDParanoiaMode() != -1);
 	currentConfig->cdrip_paranoia_mode	= (register_layer_cdrip->GetCDParanoiaMode() == -1 ? 0 : register_layer_cdrip->GetCDParanoiaMode());
+	currentConfig->cdrip_speed		= register_layer_cdrip->GetSpeed();
 	currentConfig->cdrip_jitter		= register_layer_cdrip->GetJitter();
 	currentConfig->cdrip_swapchannels	= register_layer_cdrip->GetSwapChannels();
 	currentConfig->cdrip_locktray		= register_layer_cdrip->GetLockTray();

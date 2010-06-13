@@ -26,12 +26,12 @@
 	    byte abData[ 1 ];
 	} BYTE_BLOB;
 #   endif
-#endif
 
-typedef struct {
-    GUID fmtid;
-    DWORD pid;
-} PROPERTYKEY;
+    typedef struct {
+        GUID fmtid;
+        DWORD pid;
+    } PROPERTYKEY;
+#endif
 
 #define REFPROPVARIANT const PROPVARIANT &
 

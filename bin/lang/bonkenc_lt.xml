@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ši programa yra platinama su GNU General Public License (GPL) licencija.</entry>
   <entry id="43" string="CDDB query">CDDB užklausa</entry>
   <entry id="44" string="About BonkEnc">Apie BonkEnk</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Konfigūruojamų pasirinkčių WAVE Out filtrui nėra!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE out filtras</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Konfigūruojamų pasirinkčių WAVE Out filtrui nėra!</entry>
+  <entry id="46" string="Windows Wave file output">WAVE out filtras</entry>
   <entry id="47" string="Cannot change settings while encoding!">Negalima keisti nuostatų per kodavimą!</entry>
   <entry id="48" string="%1 encoder configuration">%1 koduotojo konfigūracija</entry>
   <entry id="49" string="OK">Gerai</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Skaityti CD turinį tik įdėjus</entry>
   <entry id="248" string="Eject disk after ripping">Išmesti diską po skleidimo</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Koduoti 'skrydyje'</entry>
-  <entry id="250" string="Keep ripped wave files">Palikti išskleistus wav failus</entry>
+  <entry id="250" string="Keep ripped Wave files">Palikti išskleistus wav failus</entry>
   <entry id="251" string="ripping/decoding">išskleidimas/atkodavimas</entry>
   <entry id="252" string="encoding">koduojama</entry>
   <entry id="253" string="Unicode">Unicode</entry>

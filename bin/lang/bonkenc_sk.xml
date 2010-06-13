@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šírený pod&#10;General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">Požiadavka na CDDB</entry>
   <entry id="44" string="About BonkEnc">O BonkEnc...</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Pre WaveOut filter nemožno meniť žiadne nastavenia!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE Out filter</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Pre WaveOut filter nemožno meniť žiadne nastavenia!</entry>
+  <entry id="46" string="Windows Wave file output">WAVE Out filter</entry>
   <entry id="47" string="Cannot change settings while encoding!">Nemožno zmeniť nastavenia počas kódovania!</entry>
   <entry id="48" string="%1 encoder configuration">%1 nastavenia kodeku</entry>
   <entry id="49" string="OK">OK</entry>
@@ -250,7 +250,7 @@
   <entry id="247" string="Read CD contents on insert">Čitať obsah CD pri jeho vložení</entry>
   <entry id="248" string="Eject disk after ripping">Vysunúť disk po rippovaní</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Kódovať &quot;On-The-Fly&quot;</entry>
-  <entry id="250" string="Keep ripped wave files">Uchovať rippnuté wave súbory</entry>
+  <entry id="250" string="Keep ripped Wave files">Uchovať rippnuté Wave súbory</entry>
   <entry id="251" string="ripping/decoding">rippovanie/dekódovanie</entry>
   <entry id="252" string="encoding">kódovanie</entry>
   <entry id="253" string="Unicode">Unicode</entry>

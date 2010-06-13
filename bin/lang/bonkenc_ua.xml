@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Дана програма розповсюджується на правах GPL ліценції.</entry>
   <entry id="43" string="CDDB query">CDDB запит</entry>
   <entry id="44" string="About BonkEnc">Про BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">без налаштувань</entry>
-  <entry id="46" string="WAVE Out filter">WAVE Out фільтр</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">без налаштувань</entry>
+  <entry id="46" string="Windows Wave file output">WAVE Out фільтр</entry>
   <entry id="47" string="Cannot change settings while encoding!">Неможливо змінити налаштування під час кодування!</entry>
   <entry id="48" string="%1 encoder configuration">%1 налаштування кодека</entry>
   <entry id="49" string="OK">Добре</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Зчитувати вміст CD при вставлянні</entry>
   <entry id="248" string="Eject disk after ripping">Витягнути диск після захоплення</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Кодувати 'На-Льоту'</entry>
-  <entry id="250" string="Keep ripped wave files">Не стирати захоплені wav-файли</entry>
+  <entry id="250" string="Keep ripped Wave files">Не стирати захоплені wav-файли</entry>
   <entry id="251" string="ripping/decoding">захоплення/декодування</entry>
   <entry id="252" string="encoding">кодування</entry>
   <entry id="253" string="Unicode">Unicode</entry>

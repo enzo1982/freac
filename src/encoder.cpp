@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -778,6 +778,20 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 			shortOutFileName.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
 			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : i18n->TranslateString("unknown year"), True));
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
+
+			String	 fileType;
+
+			if	(currentConfig->encoder == ENCODER_BONKENC)						  fileType = "BONK";
+			else if	(currentConfig->encoder == ENCODER_BLADEENC || currentConfig->encoder == ENCODER_LAMEENC) fileType = "MP3";
+			else if	(currentConfig->encoder == ENCODER_VORBISENC)						  fileType = "OGG";
+			else if	(currentConfig->encoder == ENCODER_FAAC &&  currentConfig->faac_enable_mp4)		  fileType = "M4A";
+			else if	(currentConfig->encoder == ENCODER_FAAC && !currentConfig->faac_enable_mp4)		  fileType = "AAC";
+			else if	(currentConfig->encoder == ENCODER_FLAC)						  fileType = "FLAC";
+			else if	(currentConfig->encoder == ENCODER_TVQ)							  fileType = "TVQ";
+			else if	(currentConfig->encoder == ENCODER_WAVE)						  fileType = "WAV";
+			else if	(currentConfig->encoder == ENCODER_WMA)							  fileType = "WMA";
+
+			shortOutFileName.Replace("<filetype>", formatName);
 
 			String	 directory = inFileDirectory;
 

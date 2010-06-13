@@ -55,8 +55,8 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL)."/>
     <entry id="43" string="CDDB query"/>
     <entry id="44" string="About BonkEnc"/>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!"/>
-    <entry id="46" string="WAVE Out filter"/>
+    <entry id="45" string="No options can be configured for Windows Wave file output!"/>
+    <entry id="46" string="Windows Wave File Output"/>
     <entry id="47" string="Cannot change settings while encoding!"/>
     <entry id="48" string="%1 encoder configuration"/>
     <entry id="49" string="OK"/>
@@ -251,7 +251,7 @@
     <entry id="247" string="Read CD contents on insert"/>
     <entry id="248" string="Eject disk after ripping"/>
     <entry id="249" string="Encode 'On-The-Fly'"/>
-    <entry id="250" string="Keep ripped wave files"/>
+    <entry id="250" string="Keep ripped Wave files"/>
     <entry id="251" string="ripping/decoding"/>
     <entry id="252" string="encoding"/>
     <entry id="253" string="Unicode"/>
@@ -406,5 +406,6 @@
     <entry id="402" string="Use VBR encoding"/>
     <entry id="403" string="Use 2-pass encoding"/>
     <entry id="404" string="Target bitrate:"/>
+    <entry id="405" string="Set drive speed limit:"/>
   </data>
 </LangFile>

@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa é distribuido conforme os termos&#10;da licença GNU (General Public License).</entry>
   <entry id="43" string="CDDB query">Pesquisa CDDB</entry>
   <entry id="44" string="About BonkEnc">Sobre o BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Não há opções de configuração para o filtro de Saída WAVE!</entry>
-  <entry id="46" string="WAVE Out filter">Filtro de Saída WAVE</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Não há opções de configuração para o filtro de Saída WAVE!</entry>
+  <entry id="46" string="Windows Wave file output">Filtro de Saída WAVE</entry>
   <entry id="47" string="Cannot change settings while encoding!">Não se pode mudar as opções durante a codificação!</entry>
   <entry id="48" string="%1 encoder configuration">Configuração do codificador %1</entry>
   <entry id="49" string="OK">OK</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Ler o CD na inserção</entry>
   <entry id="248" string="Eject disk after ripping">Ejectar CD após a extracção</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Codificar 'On-The-Fly'</entry>
-  <entry id="250" string="Keep ripped wave files">Manter os ficheiros wav</entry>
+  <entry id="250" string="Keep ripped Wave files">Manter os ficheiros wav</entry>
   <entry id="251" string="ripping/decoding">extraindo/codificando</entry>
   <entry id="252" string="encoding">codificando</entry>
   <entry id="253" string="Unicode">Unicode</entry>

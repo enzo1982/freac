@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Αυτό το πρόγραμμα διατίθεται σύμφωνα με τους όρους&#10;της GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">Ερώτηση CDDB</entry>
   <entry id="44" string="About BonkEnc">Σχετικά με το BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Δεν υπάρχουν ρυθμίσεις για το φίλτρο WAVE Out!</entry>
-  <entry id="46" string="WAVE Out filter">Φίλτρο WAVE Out</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Δεν υπάρχουν ρυθμίσεις για το φίλτρο WAVE Out!</entry>
+  <entry id="46" string="Windows Wave file output">Φίλτρο WAVE Out</entry>
   <entry id="47" string="Cannot change settings while encoding!">Αδύνατη αλλαγή των ρυθμίσεων κατά την κωδικοποίηση!</entry>
   <entry id="48" string="%1 encoder configuration">Ρύθμιση κωδικοποιητή %1</entry>
   <entry id="49" string="OK">ΟΚ</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Ανάγνωση CD κατά την εισαγωγή</entry>
   <entry id="248" string="Eject disk after ripping">Εξαγωγή μετά το rip</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Κωδικοποίηση 'On-The-Fly'</entry>
-  <entry id="250" string="Keep ripped wave files">Διατήρηση αποθηκευμένων αρχείων wave</entry>
+  <entry id="250" string="Keep ripped Wave files">Διατήρηση αποθηκευμένων αρχείων Wave</entry>
   <entry id="251" string="ripping/decoding">ripping/αποσυμπίεση</entry>
   <entry id="252" string="encoding">κωδικοποίηση</entry>
   <entry id="253" string="Unicode">Unicode</entry>

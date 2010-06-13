@@ -13,17 +13,21 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.15 (April 2010)
+	Version 1.0.15 (June 2010)
 
 		- updated Japanese, Chinese (simplified), Dutch and Serbian translations
 		- added Windows Media Audio encoder/decoder
 		- added support for wildcards in arguments to BEcmd
+		- added ripping speed configuration option
+		- added <filetype> file name pattern
 		- improved GUI performance especially on Windows Vista and Windows 7
 		- fixed handling of garbage data before the first MP3 frame
 		- fixed LAME ABR preset configuration
 		- fixed problem opening MP3 and FLAC files on Windows 9x with Unicows
 		- fixed CD ripping problems on some Windows 7 x64 systems
+		- upgraded LAME to version 3.98.4
 		- upgraded CDRip to version 1.23
+		- upgraded Ogg library to version 1.2.0
 		- some minor fixes
 
 	Version 1.0.14 (October 2009)
@@ -234,19 +238,16 @@ Requirements
 
 	- Windows NT/2000/XP/Vista/7, Windows 95/98/SE/ME, Wine v0.9.14+
 	- 200 MHz CPU, 128 MB RAM, 50 MB free disk space
-	- Having ASPI drivers installed is recommended for CD ripping
 
 	Additional requirements for compiling the sources:
 
-		- MinGW v3.2+ (http://www.mingw.org/) or MSVC v8.0
+		- MinGW-GCC v4.0+ (http://www.mingw.org/) or MSVC v9.0
 		- smooth v0.8.70.6 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
-		- BladeEnc is used if installed (http://bladeenc.mp3.no/)
-		- TwinVQ is used if installed (http://www.twinvq.org/)
-		- Winamp 2/5 input and output plug-ins are used if they are found in the plugins directory
-		- MSLU is used if installed on Windows 9x/ME systems (http://www.microsoft.com/)
+		- TwinVQ is used if installed
+		- Winamp plug-ins can be used if they are present in the 'plugins' directory
 
 Known problems
 --------------

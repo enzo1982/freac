@@ -129,8 +129,6 @@ Bool BonkEnc::FilterOutWMA::Deactivate()
 
 	HRESULT	 hr = S_OK;
 
-	hr = m_pWriter->Flush();
-
 	hr = m_pWriter->EndWriting();
 
 	hr = m_pWriterAdvanced->RemoveSink(m_pWriterFileSink);

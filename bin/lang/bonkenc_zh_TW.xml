@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">此軟體可在 GNU 的 General Public License&#10;(GPL) 規範之限制下進行散佈.</entry>
   <entry id="43" string="CDDB query">CDDB 查詢</entry>
   <entry id="44" string="About BonkEnc">關於 BonkEnc</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">WAVE Out 過濾器沒有任何可進行組態的選項!</entry>
-  <entry id="46" string="WAVE Out filter">Wave Out 過濾器</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">WAVE Out 過濾器沒有任何可進行組態的選項!</entry>
+  <entry id="46" string="Windows Wave file output">Wave Out 過濾器</entry>
   <entry id="47" string="Cannot change settings while encoding!">當正在編碼時無法無法變更設定!</entry>
   <entry id="48" string="%1 encoder configuration">%1 編碼器組態</entry>
   <entry id="49" string="OK">確定</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">當放入 CD 時立即讀取內容</entry>
   <entry id="248" string="Eject disk after ripping">抽取音軌後退出托盤</entry>
   <entry id="249" string="Encode 'On-The-Fly'">使用 '即時' 編碼</entry>
-  <entry id="250" string="Keep ripped wave files">保留抽取音軌時的 wave 檔案</entry>
+  <entry id="250" string="Keep ripped Wave files">保留抽取音軌時的 Wave 檔案</entry>
   <entry id="251" string="ripping/decoding">正在抽取音軌/解碼</entry>
   <entry id="252" string="encoding">正在編碼</entry>
   <entry id="253" string="Unicode">Unicode</entry>
