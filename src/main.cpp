@@ -1777,7 +1777,7 @@ Void BonkEnc::BonkEncGUI::EncodeSpecific()
 
 Void BonkEnc::BonkEncGUI::SetEncoderText()
 {
-	if (currentConfig->encoder == ENCODER_BONKENC)		edb_encoder->SetText("Bonk Audio Encoder");
+	if	(currentConfig->encoder == ENCODER_BONKENC)	edb_encoder->SetText("Bonk Audio Encoder");
 	else if (currentConfig->encoder == ENCODER_BLADEENC)	edb_encoder->SetText("BladeEnc MP3 Encoder");
 	else if (currentConfig->encoder == ENCODER_LAMEENC)	edb_encoder->SetText("LAME MP3 Encoder");
 	else if (currentConfig->encoder == ENCODER_VORBISENC)	edb_encoder->SetText("Ogg Vorbis Encoder");
@@ -2255,6 +2255,9 @@ String BonkEnc::BonkEncGUI::GetSystemLanguage()
 	switch (PRIMARYLANGID(GetUserDefaultLangID()))
 	{
 		default:
+		case LANG_ENGLISH:
+			language = "internal";
+			break;
 		case LANG_ARABIC:
 			language = "bonkenc_ar.xml";
 			break;
@@ -2268,19 +2271,16 @@ String BonkEnc::BonkEncGUI::GetSystemLanguage()
 			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) language = "bonkenc_zh_TW.xml";
 			break;
 		case LANG_CZECH:
-			language = "bonkenc_cz.xml";
+			language = "bonkenc_cs.xml";
 			break;
 		case LANG_DANISH:
-			language = "bonkenc_dk.xml";
+			language = "bonkenc_da.xml";
 			break;
 		case LANG_DUTCH:
 			language = "bonkenc_nl.xml";
 			break;
-		case LANG_ENGLISH:
-			language = "internal";
-			break;
 		case LANG_ESTONIAN:
-			language = "bonkenc_ee.xml";
+			language = "bonkenc_et.xml";
 			break;
 		case LANG_FINNISH:
 			language = "bonkenc_fi.xml";
@@ -2295,7 +2295,7 @@ String BonkEnc::BonkEncGUI::GetSystemLanguage()
 			language = "bonkenc_de.xml";
 			break;
 		case LANG_GREEK:
-			language = "bonkenc_gr.xml";
+			language = "bonkenc_el.xml";
 			break;
 		case LANG_HEBREW:
 			language = "bonkenc_he.xml";
@@ -2355,7 +2355,7 @@ String BonkEnc::BonkEncGUI::GetSystemLanguage()
 			language = "bonkenc_tr.xml";
 			break;
 		case LANG_UKRAINIAN:
-			language = "bonkenc_ua.xml";
+			language = "bonkenc_uk.xml";
 			break;
 		case LANG_VIETNAMESE:
 			language = "bonkenc_vi.xml";

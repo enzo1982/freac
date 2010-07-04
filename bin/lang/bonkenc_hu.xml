@@ -7,7 +7,7 @@
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
-  <property name="author">Tóth Péter &lt;kesadmin@survival.hu&gt;</property>
+  <property name="author">Tóth Péter &lt;golbat72@gportal.hu&gt;</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -386,5 +386,26 @@
   <entry id="382" string="Apodization function(s):">Apodizációs funkció(k):</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">Több, oszlopba rendezett funkciót is választhatsz.</entry>
   <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">A BonkEnc önállóan képes a program újabb verziójának&#10;online keresésére induláskor.&#10;&#10;Szeretnéd, ha a BonkEnc frissítést keresne induláskor?</entry>
+  <entry id="385" string="Cannot access input file: %1">A forrás fájl nem elérhető: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">A kimeneti fájl nem jött létre: %1</entry>
+  <entry id="387" string="File not found">A fájl nem található</entry>
+  <entry id="388" string="Unknown file type">Ismeretlen fájltípus</entry>
+  <entry id="389" string="Unsupported audio format">Nem támogatott audio formátum</entry>
+  <entry id="390" string="Unknown error">Ismeretlen hiba</entry>
+  <entry id="391" string="Replace existing comments with default comment">A létező megjegyzések cseréje az alap megjegyzésre</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">A kiválasztott fájlok nem fűzhetők egy kimeneti&#10;fájlba az eltérő mintavételezés miatt.&#10;&#10;Konvertáld először a fájokalt egyforma mintavételezésűre.</entry>
+  <entry id="393" string="Write WMA metadata info">WMA metaadat info rögzítése</entry>
+  <entry id="394" string="WMA metadata encoding:">WMA mataadat kódolása:</entry>
+  <entry id="395" string="Select codec">Válassz kódolót</entry>
+  <entry id="396" string="Select codec format">Kódoló-formátum választás</entry>
+  <entry id="397" string="Codec settings">Kódoló beállítások</entry>
+  <entry id="398" string="Use codec">Kódoló használata</entry>
+  <entry id="399" string="Use format">Formátum alkalmazása</entry>
+  <entry id="400" string="Write uncompressed WMA files">Tömötítetlen WMA fájlok rögzítése</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Önálló formátumválasztás a beállítások és bemeneti forma alapján</entry>
+  <entry id="402" string="Use VBR encoding">VBR kódolás használata</entry>
+  <entry id="403" string="Use 2-pass encoding">Kétmenetes kódolás alkalmazása</entry>
+  <entry id="404" string="Target bitrate">Célzott bitráta</entry>
+  <entry id="405" string="Set drive speed limit:">Meghajtó sebességlimit:</entry>
  </data>
 </LangFile>

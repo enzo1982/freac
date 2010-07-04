@@ -56,7 +56,7 @@
     <entry id="43" string="CDDB query"/>
     <entry id="44" string="About BonkEnc"/>
     <entry id="45" string="No options can be configured for Windows Wave file output!"/>
-    <entry id="46" string="Windows Wave File Output"/>
+    <entry id="46" string="Windows Wave file output"/>
     <entry id="47" string="Cannot change settings while encoding!"/>
     <entry id="48" string="%1 encoder configuration"/>
     <entry id="49" string="OK"/>
@@ -405,7 +405,7 @@
     <entry id="401" string="Automatically select format based on settings and input format"/>
     <entry id="402" string="Use VBR encoding"/>
     <entry id="403" string="Use 2-pass encoding"/>
-    <entry id="404" string="Target bitrate:"/>
+    <entry id="404" string="Target bitrate"/>
     <entry id="405" string="Set drive speed limit:"/>
   </data>
 </LangFile>

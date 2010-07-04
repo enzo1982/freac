@@ -55,14 +55,14 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šířen pod General Public Lincence (GPL).</entry>
     <entry id="43" string="CDDB query">Dotaz na CDDB </entry>
     <entry id="44" string="About BonkEnc">O programu BonkEnc</entry>
-    <entry id="45" string="No options can be configured for Windows Wave file output!">Pro WAVE výstupní filtr nemohou být žádné volby upravovány</entry>
-    <entry id="46" string="Windows Wave file output">Výstupní WAVE filtr</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Pro výstup do Windows Wave souboru není žádná možnost konfigurace!</entry>
+    <entry id="46" string="Windows Wave file output">Výstup do Windows Wave souboru</entry>
     <entry id="47" string="Cannot change settings while encoding!">Během kódování nemohou být žádná nastavení změněna</entry>
     <entry id="48" string="%1 encoder configuration">%1 konfigurace enkodéru</entry>
     <entry id="49" string="OK">OK</entry>
-    <entry id="50" string="Cancel">Přerušit</entry>
+    <entry id="50" string="Cancel">Storno</entry>
     <entry id="51" string="Encoding Mode">Režim kódování</entry>
-    <entry id="52" string="Variable Bitrate">Variabilní Bitrate</entry>
+    <entry id="52" string="Variable Bitrate">Variabilní bitrate</entry>
     <entry id="53" string="Average Bitrate">Průměrná bitrate</entry>
     <entry id="54" string="Quality">Kvalita</entry>
     <entry id="55" string="Encoders">Enkodér</entry>
@@ -248,7 +248,7 @@
     <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Nová verze BonkEnc je online dostupná!&#10;Chcete vidět seznam dostupných aktualizací nyní?</entry>
     <entry id="245" string="There are no updates available at the moment!">Momentálně není žádná aktualizace dostupná!</entry>
     <entry id="246" string="Check for updates at startup">Prověřit aktualizaci po spuštění</entry>
-    <entry id="247" string="Read CD contents on insert">Číst obsah CD při jeho vložení</entry>
+    <entry id="247" string="Read CD contents on insert">Číst obsah CD po vložení</entry>
     <entry id="248" string="Eject disk after ripping">Vysunout disk po ripovaní</entry>
     <entry id="249" string="Encode 'On-The-Fly'">Kódovat 'On-The-Fly' (přímo)</entry>
     <entry id="250" string="Keep ripped Wave files">Ponechat soubory wav</entry>
@@ -276,7 +276,7 @@
     <entry id="272" string="Write ID3v1 tags">Zapsat ID3v1 tagy</entry>
     <entry id="273" string="Write ID3v2 tags">Zapsat ID3v2 tagy</entry>
     <entry id="274" string="Write Vorbis Comment tags">Zapsat Vorbis komentář tagy</entry>
-    <entry id="275" string="Write MP4 metadata info">Zapsat MP4 metadata info</entry>
+    <entry id="275" string="Write MP4 metadata info">Zapsat MP4 metadata informace</entry>
     <entry id="276" string="ID3v1 tag encoding:">ID3v1 tag kódování:</entry>
     <entry id="277" string="ID3v2 tag encoding:">ID3v2 tag kódování:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Vorbis tag kódování:</entry>
@@ -394,5 +394,18 @@
     <entry id="390" string="Unknown error">Neznámá chyba</entry>
     <entry id="391" string="Replace existing comments with default comment">Nahradit stávající komentáře standardním komentářem</entry>
     <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Vybrané soubory nelze kombinovat do jediného výstupní soubor z důvodu různých vzorkovacích formátů.&#10;&#10;Prosím překonvertujte nejdříve všechny soubory na stejný vzorkovací formát.</entry>
+    <entry id="393" string="Write WMA metadata info">Zapsat WMA metadata informace</entry>
+    <entry id="394" string="WMA metadata encoding:">Kódování WMA metadat:</entry>
+    <entry id="395" string="Select codec">Vybrat kodek</entry>
+    <entry id="396" string="Select codec format">Vyberte formát kodeku</entry>
+    <entry id="397" string="Codec settings">Nastavení kodeku</entry>
+    <entry id="398" string="Use codec">Použít kodek</entry>
+    <entry id="399" string="Use format">Použít formát</entry>
+    <entry id="400" string="Write uncompressed WMA files">Zapsat nekomprimované WMA soubory</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">Automaticky zvolit formát podle základního nastavení a vstupního formátu</entry>
+    <entry id="402" string="Use VBR encoding">Použít VBR kódování</entry>
+    <entry id="403" string="Use 2-pass encoding">Použít 2-pass kódování</entry>
+    <entry id="404" string="Target bitrate">Výsledná bitrate</entry>
+    <entry id="405" string="Set drive speed limit:">Limit rychlosti mechaniky:</entry>
   </data>
 </LangFile>

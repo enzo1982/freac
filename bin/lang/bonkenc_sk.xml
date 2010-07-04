@@ -2,7 +2,7 @@
 <LangFile>
  <info>
   <property name="program">BonkEnc</property>
-  <property name="version">1.0</property>
+  <property name="version">1.0.15</property>
   <property name="language">Slovak / Slovenčina</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
@@ -220,6 +220,7 @@
   <entry id="216" string="Stop">Zastaviť</entry>
   <entry id="217" string="Cannot play a file while encoding!">Nemožno prehrávať počas kódovania!</entry>
   <entry id="218" string="Cannot start encoding while playing a file!">Nemožno začať kódovať počas hrania!</entry>
+  <entry id="219" string="Enable remote CDDB database">Povoliť vzdialenú CDDB databázu</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Povoliť ATH:</entry>
   <entry id="222" string="Use default setting">Pôvodné nastavenia</entry>
@@ -391,5 +392,20 @@
   <entry id="388" string="Unknown file type">Neznámy typ súboru</entry>
   <entry id="389" string="Unsupported audio format">Nepodporovaný audio formát</entry>
   <entry id="390" string="Unknown error">Neznáma chyba</entry>
+  <entry id="391" string="Replace existing comments with default comment">Nahradiť existujúce komentáre defaultnými komentármi</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Zvolené súbory nemôžu byť skombinované do jedného&#10;výstupného súboru z dôvodu rôznych vzorkovacích formátov.&#10;&#10;Preveďte, prosím, najprv všetky súbory do rovnakého vzorkovacieho formátu.</entry>
+  <entry id="393" string="Write WMA metadata info">Zapísať WMA metadata</entry>
+  <entry id="394" string="WMA metadata encoding:">Kódovanie WMA metadata:</entry>
+  <entry id="395" string="Select codec">Zvoľte kodek</entry>
+  <entry id="396" string="Select codec format">Zvoľte formát kodeku</entry>
+  <entry id="397" string="Codec settings">Nastavenia kodeku</entry>
+  <entry id="398" string="Use codec">Použiť kodek</entry>
+  <entry id="399" string="Use format">Použiť formát</entry>
+  <entry id="400" string="Write uncompressed WMA files">Zapísať nekomprimované WMA súbory</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Automaticky zvoliť formát na základe nastavení a vstupného formátu</entry>
+  <entry id="402" string="Use VBR encoding">Použiť VBR kódovanie</entry>
+  <entry id="403" string="Use 2-pass encoding">Použiť 2-cestné kódovanie</entry>
+  <entry id="404" string="Target bitrate">Cieľový bitrate</entry>
+  <entry id="405" string="Set drive speed limit:">Maximálna rýchlosť mechaniky:</entry>
  </data>
 </LangFile>

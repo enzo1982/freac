@@ -252,7 +252,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				Object::DeleteObject(confirmation);
 			}
 
-			if (out_filename == in_filename) out_filename.Append(".temp");
+			if (out_filename.ToLower() == in_filename.ToLower()) out_filename.Append(".temp");
 
 			trackInfo->outfile = out_filename;
 		}
@@ -566,7 +566,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
 
-		if (out_filename == String(in_filename).Append(".temp") && File(out_filename).Exists())
+		if (out_filename.ToLower() == String(in_filename.ToLower()).Append(".temp") && File(out_filename).Exists())
 		{
 			if (!currentConfig->writeToInputDir || currentConfig->allowOverwrite || !File(in_filename).Exists())
 			{
@@ -791,7 +791,7 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 			else if	(currentConfig->encoder == ENCODER_WAVE)						  fileType = "WAV";
 			else if	(currentConfig->encoder == ENCODER_WMA)							  fileType = "WMA";
 
-			shortOutFileName.Replace("<filetype>", formatName);
+			shortOutFileName.Replace("<filetype>", fileType);
 
 			String	 directory = inFileDirectory;
 

@@ -13,13 +13,15 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.15 (June 2010)
+	Version 1.0.15 (July 2010)
 
-		- updated Japanese, Chinese (simplified), Dutch and Serbian translations
 		- added Windows Media Audio encoder/decoder
 		- added support for wildcards in arguments to BEcmd
 		- added ripping speed configuration option
 		- added <filetype> file name pattern
+		- updated most translations
+		- added several translations for the installer
+		- added Portuguese user guide
 		- improved GUI performance especially on Windows Vista and Windows 7
 		- fixed handling of garbage data before the first MP3 frame
 		- fixed LAME ABR preset configuration
@@ -281,10 +283,10 @@ Special thanks to
 			   Federico Reddig (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
-			   Dmitry Gusakov, Evgeny Kozlov (Russian),
+			   Evgeny Kozlov (Russian),
 			   Henryk Ning (Chinese, traditional),
 			   Joeyong Jen (Chinese, simplified),
-			   Krzysztof Konopacki (Polish),
+			   Michal Trzebiatowski (Polish),
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn & Thomas De Rocker (Dutch),

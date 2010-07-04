@@ -52,7 +52,7 @@
   <entry id="39" string="You have not selected a file!">Nenhum arquivo selecionado!</entry>
   <entry id="40" string="The encoding thread is still running! Do you really want to quit?">A codificação está ativa! Deseja realmente sair?</entry>
   <entry id="41" string="Currently encoding">Codificando</entry>
-  <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa é distribuido conforme os termos da licença GNU (General Public License).</entry>
+  <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa é distribuido conforme os termos&#10;da licença GNU (General Public License).</entry>
   <entry id="43" string="CDDB query">Pesquisa CDDB</entry>
   <entry id="44" string="About BonkEnc">Sobre o BonkEnc</entry>
   <entry id="45" string="No options can be configured for Windows Wave file output!">Não há opções para o filtro Wave!</entry>
@@ -207,7 +207,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">CDDB preferível ao CD-Text</entry>
   <entry id="204" string="CD options">Opções do CD</entry>
   <entry id="205" string="Submitting CD information">Enviando informações do CD</entry>
-  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Não consegue abrir o arquivo: %1&#10;&#10;%2</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Não consegue abrir o arquivo: %1&#10;&#10;Erro: %2</entry>
   <entry id="207" string="Query CDDB database">Pesquisar a base de dados do CDDB</entry>
   <entry id="208" string="Help">Ajuda</entry>
   <entry id="209" string="index_en.html">index.html</entry>
@@ -385,6 +385,27 @@
   <entry id="381" string="Apodization">Apodização</entry>
   <entry id="382" string="Apodization function(s):">Funções de apodização:</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">Pode-se especificar várias funções separadas por ponto e vírgula.</entry>
-  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">Ao iniciar, o BonkEnc pode verificar automaticamente&#10;se há alguma atualização disponível.&#10;&#10;Deseja que o BonkEnc verifique as atualizaçãoes&#10;automaticamente ao iniciar?</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">Ao iniciar, o BonkEnc pode verificar automaticamente&#10;se há alguma atualização disponível.&#10;&#10;Deseja que o BonkEnc verifique as atualizações&#10;automaticamente ao iniciar?</entry>
+  <entry id="385" string="Cannot access input file: %1">Sem acesso ao arquivo: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">Erro de criação do arquivo: %1</entry>
+  <entry id="387" string="File not found">Arquivo não encontrado</entry>
+  <entry id="388" string="Unknown file type">Tipo de arquivo desconhecido</entry>
+  <entry id="389" string="Unsupported audio format">Formatro de áudio não suportado</entry>
+  <entry id="390" string="Unknown error">Erro desconhecido</entry>
+  <entry id="391" string="Replace existing comments with default comment">Trocar comentários existentes por comentário padrão</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Os arquivos selecionados não podem ser combinados&#10;em um único arquivo devido às taxas diferentes.&#10;&#10;Primeiro converta todos os arquivos para a mesma&#10;taxa de amostragem.</entry>
+  <entry id="393" string="Write WMA metadata info">Escrever tags WMA</entry>
+  <entry id="394" string="WMA metadata encoding:">Codificação dos tags WMA:</entry>
+  <entry id="395" string="Select codec">Selecionar codec</entry>
+  <entry id="396" string="Select codec format">Selecionar formato do codec</entry>
+  <entry id="397" string="Codec settings">Configurações do codec</entry>
+  <entry id="398" string="Use codec">Usar codec</entry>
+  <entry id="399" string="Use format">Usar formato</entry>
+  <entry id="400" string="Write uncompressed WMA files">Escrever WMA não comprimido</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Selecionar formato baseado nas opções e formato de entrada</entry>
+  <entry id="402" string="Use VBR encoding">Usar codificação VBR</entry>
+  <entry id="403" string="Use 2-pass encoding">Codificar em 2 passes</entry>
+  <entry id="404" string="Target bitrate">Taxa de bits desejada</entry>
+  <entry id="405" string="Set drive speed limit:">Velocidade máx do drive:</entry>
  </data>
 </LangFile>

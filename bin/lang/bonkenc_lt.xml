@@ -7,8 +7,8 @@
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
-  <property name="author">Naglis Jonaitis &lt;njonaitis@gmail.com&gt;</property>
-  <property name="url">http://nj.tik.lt/</property>
+  <property name="author">nj</property>
+  <property name="url"/>
  </info>
  <data>
   <entry id="1" string="File">Failas</entry>
@@ -54,7 +54,7 @@
   <entry id="41" string="Currently encoding">Šiuo metu koduojama</entry>
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ši programa yra platinama su GNU General Public License (GPL) licencija.</entry>
   <entry id="43" string="CDDB query">CDDB užklausa</entry>
-  <entry id="44" string="About BonkEnc">Apie BonkEnk</entry>
+  <entry id="44" string="About BonkEnc">Apie BonkEnc</entry>
   <entry id="45" string="No options can be configured for Windows Wave file output!">Konfigūruojamų pasirinkčių WAVE Out filtrui nėra!</entry>
   <entry id="46" string="Windows Wave file output">WAVE out filtras</entry>
   <entry id="47" string="Cannot change settings while encoding!">Negalima keisti nuostatų per kodavimą!</entry>
@@ -236,11 +236,11 @@
   <entry id="232" string="Select none">Nieko nepažymėti</entry>
   <entry id="233" string="Toggle selection">Apkeisti pažymėtus/nepažymėtus</entry>
   <entry id="234" string="Show Tip of the Day">Rodyti dienos patarimą</entry>
-  <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc yra prieinamas %1 kalbų (-ose). Jei Jūsų kalba dar&#10;neprieinama, Jūs lengvai galite išversti BonkEnc,&#10;naudodamiesi programa 'smooth Translator'.</entry>
+  <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc yra prieinama %1 kalbų (-ose). Jei Jūsų kalba dar&#10;neprieinama, Jūs lengvai galite išversti BonkEnc,&#10;naudodamiesi programa 'smooth Translator'.</entry>
   <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc palaiko Lame, Ogg Vorbis, FAAC, FLAC&#10;bei Bonk koduotojus. VQF formato koduotoją galite rasti&#10;BonkEnc svetainėje: %1</entry>
   <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc gali naudoti Winamp 2 įvesties įskiepius,&#10;kad palaikyti daugiau failų formatų. Nukopijuokite in_*.dll failus į&#10;BoknEnc/plugins aplanką, kad BonkEnc suprastų šiuos failus.</entry>
   <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Naudodamiesi BonkEnc, Jūs freedb CD duomenų bazei galite&#10;perduoti įrašus, susidedančius iš Unicode simbolių.&#10;Taigi, jeigu turite kokį nors CD su ne lotynišku atlikėju&#10;ar takelių pavadinimais, su BonkEnc galite lengvai&#10;perduoti freedb duomenų bazei korektiškus įrašus.</entry>
-  <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kad ištaisyti disko skaitymo problemas, BonkEnc konfigūracijos&#10;lange, skleidėjo nuostatose, Jūs  galite įjungti virpėjimo taisymą.&#10;&#10;Jei tai nepadės, bandykite naudoti vieną iš Paranoia rėžimų.</entry>
+  <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kad ištaisyti disko skaitymo problemas, BonkEnc konfigūracijos&#10;lange, skleidėjo nuostatose, Jūs  galite įjungti virpėjimo taisymą.&#10;Jei tai nepadės, bandykite naudoti vieną iš Paranoia rėžimų.</entry>
   <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Ar turite pasiūlymų kaip pagerinti BonkEnc?&#10;Bet kokias įdėjas galite perduoti skiltyje Tracker, esančioje BonkEnc&#10;projekto SourceForge puslapyje - %1&#10;arba siųskite el. laišką adresu: %2.</entry>
   <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Jums patinka BonkEnc? BonkEnc yra nemokamas, bet Jūs galite&#10;paspartinti vystymąsi paremdami BonkEnc projektą.&#10;Pinigus galite siųsti į %1, naudodamiesi PayPal.&#10;Daugiau informacijos rasite čia:&#10;%2.</entry>
   <entry id="242" string="Bitrate / Quality">Bitų srautas / Kokybė</entry>
@@ -329,7 +329,7 @@
   <entry id="325" string="Status">Būsena</entry>
   <entry id="326" string="Successfully read CD!">CD perskaitytas sėkmingai!</entry>
   <entry id="327" string="Comment">Komentaras</entry>
-  <entry id="328" string="Manage CDDB cache entries...">Tvarkyti DDB talpyklos įrašus...</entry>
+  <entry id="328" string="Manage CDDB cache entries...">Tvarkyti CDDB talpyklos įrašus...</entry>
   <entry id="329" string="Save entry">Išsaugoti įrašą</entry>
   <entry id="330" string="Remove entry">Pašalinti įrašą</entry>
   <entry id="331" string="Disc name">Disko vardas</entry>
@@ -358,7 +358,7 @@
   <entry id="354" string="CDDB directory:">CDDB aplankas:</entry>
   <entry id="355" string="Select the folder of the CDDB database:">Pasirinkite CDDB duomenų bazės aplanką:</entry>
   <entry id="356" string="File already exists">Failas jau egzistuoja</entry>
-  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Išvesties failas %1&#10; jau egzistuoja! Ar norite jį perrašyti?</entry>
+  <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Išvesties failas %1&#10;jau egzistuoja! Ar norite jį perrašyti?</entry>
   <entry id="358" string="Overwrite all further files">Perrašyti visus ankstesnius failus</entry>
   <entry id="359" string="Start ripping automatically">Pradėti skleidimą automatiškai</entry>
   <entry id="360" string="Submit to online database later">Vėliau perduoti nuotolinei duomenų bazei</entry>
@@ -386,5 +386,26 @@
   <entry id="382" string="Apodization function(s):">Apodizacijos funkcija (-os):</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">Galite įvesti keletą funkcijų askirdami jas kabliataškiais.</entry>
   <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc paleidimo metu gali atomatiškai patikrinti,&#10;ar internete nėra programos atnaujinimų.&#10;&#10;Ar Jūs norėtumėte, kad BonkEnc paleidimo metu tikrintų, ar yra atnaujinimų?</entry>
+  <entry id="385" string="Cannot access input file: %1">Neįmanoma pasiekti įvesties failo: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">Neįmanoma sukurti išvesties failo: %1</entry>
+  <entry id="387" string="File not found">Failas nerastas</entry>
+  <entry id="388" string="Unknown file type">Nežinomas failo tipas</entry>
+  <entry id="389" string="Unsupported audio format">Nepalaikomas audio formatas</entry>
+  <entry id="390" string="Unknown error">Nežinoma klaida</entry>
+  <entry id="391" string="Replace existing comments with default comment">Pakeisti esančius komentarus numatytuoju</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Pažymėtieji failai negali būti sujungti į vieną&#10;išvesties failą, nes jų formatai skiriasi.&#10;&#10;Prašome visų pirma perkoduoti visus failus į vieną formatą.</entry>
+  <entry id="393" string="Write WMA metadata info">Rašyti WMA metaduomenis</entry>
+  <entry id="394" string="WMA metadata encoding:">WMA metaduomenų kodavimas:</entry>
+  <entry id="395" string="Select codec">Pasirinkite koduotoją</entry>
+  <entry id="396" string="Select codec format">Pasirinkite koduotojo formatą</entry>
+  <entry id="397" string="Codec settings">Koduotojo nustatymai</entry>
+  <entry id="398" string="Use codec">Naudoti koduotoją</entry>
+  <entry id="399" string="Use format">Naudoti formatą</entry>
+  <entry id="400" string="Write uncompressed WMA files">Nesuspausti WMA failų</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Automatiškai parinkti formatą pagal nuostatas bei įvesties failo formatą</entry>
+  <entry id="402" string="Use VBR encoding">Naudoti VBR kodavimą</entry>
+  <entry id="403" string="Use 2-pass encoding">Naudoti dviejų užėjimų kodavimą</entry>
+  <entry id="404" string="Target bitrate">Numatomas bitų srautas</entry>
+  <entry id="405" string="Set drive speed limit:">Nustatyti diskasukio greičio limitą:</entry>
  </data>
 </LangFile>

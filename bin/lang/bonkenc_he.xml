@@ -139,10 +139,6 @@
   <entry id="162" string="Select the entry that best fits your CD:">בחר בשם שתואם לCD שלך:</entry>
   <entry id="163" string="Extended CDDB settings">מידע CD מורחב</entry>
   <entry id="174" string="Custom settings">קביעת הגדרות ידנית</entry>
-  <entry id="175" string="Medium">בינוני</entry>
-  <entry id="176" string="Standard">רגיל</entry>
-  <entry id="177" string="Extreme">קיצוני</entry>
-  <entry id="178" string="Insane">מטורף</entry>
   <entry id="179" string="Medium, Fast">בינוני, מהיר</entry>
   <entry id="180" string="Standard, Fast">רגיל, מהיר</entry>
   <entry id="181" string="Extreme, Fast">קיצוני, מהיר</entry>
@@ -164,7 +160,7 @@
   <entry id="204" string="CD options">אופציות CD</entry>
   <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
   <entry id="208" string="Help">עזרה</entry>
-  <entry id="209" string="index_en.html">index_en.html</entry>
+  <entry id="209" string="index_en.html">index.html</entry>
   <entry id="210" string="Plug-ins">תוספים</entry>
   <entry id="213" string="Configure">הגדרות</entry>
   <entry id="214" string="About">על...</entry>

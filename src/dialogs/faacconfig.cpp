@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -91,14 +91,17 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cy = 0;
 
 	option_aactype_main	= new OptionBox("MAIN", pos, size, &aacType, 1);
+	option_aactype_main->onAction.Connect(&ConfigureFAAC::SetObjectType, this);
 
 	pos.y += 25;
 
 	option_aactype_low	= new OptionBox("LC", pos, size, &aacType, 2);
+	option_aactype_low->onAction.Connect(&ConfigureFAAC::SetObjectType, this);
 
 	pos.y += 25;
 
 	option_aactype_ltp	= new OptionBox("LTP", pos, size, &aacType, 4);
+	option_aactype_ltp->onAction.Connect(&ConfigureFAAC::SetObjectType, this);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -419,6 +422,18 @@ Void BonkEnc::ConfigureFAAC::SetMPEGVersion()
 	}
 }
 
+Void BonkEnc::ConfigureFAAC::SetObjectType()
+{
+	if (aacType == 4) // LTP
+	{
+		option_version_mpeg2->Deactivate();
+	}
+	else
+	{
+		if (fileFormat == 0) option_version_mpeg2->Activate();
+	}
+}
+
 Void BonkEnc::ConfigureFAAC::SetBitrate()
 {
 	edit_bitrate->SetText(String::FromInt(bitrate));
@@ -471,19 +486,10 @@ Void BonkEnc::ConfigureFAAC::SetFileFormat()
 		check_id3v2->Activate();
 		text_id3v2->Activate();
 		text_note->Activate();
-
-		if (mpegVersion == 1) // MPEG2
-		{
-			if (aacType == 4) // LTP
-			{
-				aacType = 2;
-
-				OptionBox::internalCheckValues.Emit();
-			}
-
-			option_aactype_ltp->Deactivate();
-		}
 	}
+
+	SetMPEGVersion();
+	SetObjectType();
 }
 
 Void BonkEnc::ConfigureFAAC::ToggleBitrateQuality()

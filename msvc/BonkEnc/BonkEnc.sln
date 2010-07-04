@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BonkEnc", "BonkEnc.vcproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
+EndProject
+Project("{4CAA2610-1955-4629-BDC1-8133FE0B2087}") = "BonkEnc AQtime", "..\BonkEnc AQtime\BonkEnc AQtime.aqt", "{41370A3B-BAF4-4A9E-B46A-70BE4D28A7AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76}.Debug|Win32.Build.0 = Debug|Win32
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76}.Debug|x64.ActiveCfg = Debug|x64
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76}.Debug|x64.Build.0 = Debug|x64
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76}.Release|Win32.ActiveCfg = Release|Win32
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76}.Release|Win32.Build.0 = Release|Win32
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76}.Release|x64.ActiveCfg = Release|x64
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -13,13 +13,15 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.15 (Juni 2010)
+	Version 1.0.15 (Juli 2010)
 
-		- Japanische, chinesische (vereinfacht), niederländische und serbische Übersetzungen aktualisiert
 		- Windows Media Audio Codierer/Decodierer hinzugefügt
 		- Unterstützung für Wildcards in BEcmd-Parametern hinzugefügt
 		- Konfigurationsoption für Geschwindigkeit beim Rippen hinzugefügt
 		- Dateinamensvorlage <filetype> hinzugefügt
+		- Die meisten Übersetzungen aktualisiert
+		- Mehrere Übersetzungen für das Installationsprogramm hinzugefügt
+		- Portugiesische Anleitung hinzugefügt
 		- GUI-Performance verbessert, besonders unter Windows Vista und Windows 7
 		- Fehler beim Umgang mit ungültigen Daten vor dem ersten MP3-Frame behoben
 		- Fehler bei LAME ABR-Voreinstellungskonfiguration behoben
@@ -181,7 +183,7 @@ Geschichte
 
 	Version 1.0.4 (Juli 2007)
 
-		- Slovakische und schwedische Übersetzung aktualisiert
+		- Slowakische und schwedische Übersetzung aktualisiert
 		- Fehlerhafte Schriftdarstellung bei großen Schriftarten behoben
 		- Codierung von leeren Tracks behoben, wenn keine CD eingelegt ist
 		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
@@ -281,10 +283,10 @@ Besonderen Dank
 			   Federico Reddig (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
 			   Nikolaos-Ioannis Galanis (Griechisch),
-			   Dmitry Gusakov, Evgeny Kozlov (Russisch),
+			   Evgeny Kozlov (Russisch),
 			   Henryk Ning (Chinesisch, traditionell),
 			   Joeyong Jen (Chinesisch, vereinfacht),
-			   Krzysztof Konopacki (Polnisch),
+			   Michal Trzebiatowski (Polnisch),
 			   Peter Toth (Ungarisch),
 			   Andrij Iletschko (Ukrainisch),
 			   Wim Garreyn & Thomas De Rocker (Niederländisch),

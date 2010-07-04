@@ -97,7 +97,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 		combo_encoder->AddEntry(String("TwinVQ VQF Encoder v").Append(tvqVersionID + 4));
 	}
 
-	combo_encoder->AddEntry(String("Windows Wave File Output v1.0"));
+	combo_encoder->AddEntry(String("Windows Wave File Output"));
 
 	combo_encoder->SelectNthEntry(currentConfig->encoder);
 

@@ -7,7 +7,7 @@
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
-  <property name="author">Krzysztof Konopacki</property>
+  <property name="author">Michał Trzebiatowski</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -392,5 +392,20 @@
   <entry id="388" string="Unknown file type">Nieznany typ pliku</entry>
   <entry id="389" string="Unsupported audio format">Nieobsługiwany format audio</entry>
   <entry id="390" string="Unknown error">Nieznany błąd</entry>
+  <entry id="391" string="Replace existing comments with default comment">Zastąp istniejące komentarze standardowymi komentarzami</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Wybrane pliki nie mogą być połączone w jeden plik&#10;wyjściowy ze względu na rożny format próbki.&#10;&#10;Proszę skonwertuj najpierw wszystkie pliki do tego samego formatu próbki.</entry>
+  <entry id="393" string="Write WMA metadata info">Zapisz metadane WMA</entry>
+  <entry id="394" string="WMA metadata encoding:">Kodowanie metadanych WMA:</entry>
+  <entry id="395" string="Select codec">Wybierz kodek</entry>
+  <entry id="396" string="Select codec format">Wybierz format kodeka</entry>
+  <entry id="397" string="Codec settings">Ustawienia kodeka</entry>
+  <entry id="398" string="Use codec">Użyj kodeka</entry>
+  <entry id="399" string="Use format">Użyj formatu</entry>
+  <entry id="400" string="Write uncompressed WMA files">Zapisz nieskompresowane pliki WMA</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Wybierz automatycznie format, oparty na ustawieniach i formacie wejściowym</entry>
+  <entry id="402" string="Use VBR encoding">Użyj kodowania VBR</entry>
+  <entry id="403" string="Use 2-pass encoding">Użyj kodowania 2-przebiegowego</entry>
+  <entry id="404" string="Target bitrate">Zakładana przepływność</entry>
+  <entry id="405" string="Set drive speed limit:">Ogranicz prędkość napędu:</entry>
  </data>
 </LangFile>
