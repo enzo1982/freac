@@ -130,7 +130,8 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 	FillCodecComboBox();
 
 	combo_codec->onSelectEntry.Connect(&ConfigureWMA::OnSelectCodec, this);
-	combo_codec->SelectNthEntry(currentConfig->wma_codec);
+
+	if (currentConfig->wma_codec >= 0) combo_codec->SelectNthEntry(currentConfig->wma_codec);
 
 	combo_format->SelectNthEntry(currentConfig->wma_codecFormat);
 
@@ -257,6 +258,10 @@ Void BonkEnc::ConfigureWMA::FillCodecComboBox()
 		hr = codecInfo->GetCodecName(WMMEDIATYPE_Audio, i, name, &nameLen);
 
 		combo_codec->AddEntry(name);
+
+		if (String(name).Find("Windows Media Audio") >=  0 &&
+		    String(name).Find("Voice")		     == -1 &&
+		    String(name).Find("Lossless")	     == -1) combo_codec->SelectNthEntry(i);
 
 		delete [] name;
 	}

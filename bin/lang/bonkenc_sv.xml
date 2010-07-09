@@ -7,7 +7,7 @@
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
-  <property name="author">Anton Mjörnebrant &lt;anton_mjor@hotmail.com&gt; &amp; Mikael HafO &lt;mikael.hafo@hotmail.com&gt;</property>
+  <property name="author">Anton Mjörnebrant &lt;anton_mjor@hotmail.com&gt; &amp; Mikael Hiort af Ornäs &lt;mikael.hafo@hotmail.com&gt;</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -239,7 +239,7 @@
   <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnk finns på %1 språk.&#10;Om ditt språk inte finns tillgängligt kan&#10;du enkelt översätta BonkEnc med hjälp av&#10;'Smooth Translator'-applikationen.</entry>
   <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc installeras med stöd för&#10;LAME-, Ogg Vorbis-, FAAC- och Bonk-kodare.&#10;En kodare för VQF-formatet finns&#10;tillgänglig på BonkEncs hemsida: %1</entry>
   <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc kan använda indatatillägg för Winamp 2 (input plug-ins)&#10;för att få stöd för fler format.&#10;Kopiera &quot;in_*.dll&quot;-filer till katalogen BonkEnc/plugins&#10;för att möjliggöra läsning av dessa format.</entry>
-  <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Med BonkEnc kan du registrera freedb CD-databasnycklar&#10;innehållande bokstäver/symboler i Unicode.&#10;Om du har någon CD med artist- eller titelnamn med udda tecken,&#10;kan du registrera det korrekta namnet i freedb-databasen&#10;med BonkEnc.</entry>
+  <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Med BonkEnc kan du registrera freedb CD-databasnycklar&#10;innehållande bokstäver/symboler i Unicode.&#10;&#10;Om du har någon CD med artist- eller titelnamn med udda tecken,&#10;kan du registrera det korrekta namnet i freedb-databasen&#10;med BonkEnc.</entry>
   <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">För att korrigera läsfel kan du aktivera Jitterkorrigeringen&#10;under CDRip-fliken i Allmänna inställningar.&#10;Om det inte hjälper, så kan du testa att&#10;använda något Panoria-mode.</entry>
   <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Har du förslag på förbättringar av BonkEnc?&#10;Du kan föreslå vilka idéer som helst genom Trackern på BonkEncs&#10;projektsida på SourceForge - %1&#10;eller skicka ett e-postmeddelande till %2.</entry>
   <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Gillar du BonkEnc? BonkEnc är gratis, men du&#10;kan hjälpa utvecklingsteamet genom att&#10;donera pengar till BonkEnc-projektet.&#10;Du kan skicka pengar till %1 genom PayPal.&#10;Se %2 för fler detaljer.</entry>
@@ -400,7 +400,7 @@
   <entry id="396" string="Select codec format">Välj codecformat</entry>
   <entry id="397" string="Codec settings">Codecinställningar</entry>
   <entry id="398" string="Use codec">Använd codec</entry>
-  <entry id="399" string="Use format">Anvvänd format</entry>
+  <entry id="399" string="Use format">Använd format</entry>
   <entry id="400" string="Write uncompressed WMA files">Skriv okomprimerade WMA-filer</entry>
   <entry id="401" string="Automatically select format based on settings and input format">Välj format automatiskt beroende på inställningar och inmatningsformat</entry>
   <entry id="402" string="Use VBR encoding">Använd VBR-kodning</entry>

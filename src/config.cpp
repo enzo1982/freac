@@ -219,7 +219,7 @@ Bool BonkEnc::Config::LoadSettings()
 	tvq_presel_candidates			= config->GetIntValue("TwinVQ", "PreselectionCandidates", 32);
 
 	wma_uncompressed			= config->GetIntValue("WMA", "Uncompressed", False);
-	wma_codec				= config->GetIntValue("WMA", "Codec", 0);
+	wma_codec				= config->GetIntValue("WMA", "Codec", -1);
 	wma_codecFormat				= config->GetIntValue("WMA", "CodecFormat", 0);
 	wma_autoFormat				= config->GetIntValue("WMA", "AutoSelectFormat", True);
 	wma_vbr					= config->GetIntValue("WMA", "EnableVBR", True);

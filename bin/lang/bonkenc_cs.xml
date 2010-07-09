@@ -210,7 +210,7 @@
     <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
     <entry id="207" string="Query CDDB database">Dotaz na CDDB databázi</entry>
     <entry id="208" string="Help">Pomoc</entry>
-    <entry id="209" string="index_en.html">index_cz.html</entry>
+    <entry id="209" string="index_en.html">index_cs.html</entry>
     <entry id="210" string="Plug-ins">Pluginy</entry>
     <entry id="211" string="Input plug-ins">Vstupní pluginy</entry>
     <entry id="212" string="Output plug-ins">Výstupní pluginy</entry>
