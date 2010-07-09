@@ -42,6 +42,27 @@ const String	 BonkEnc::Config::SettingsLastAddedDirDefault			= NIL;
 const String	 BonkEnc::Config::SettingsLastAddedPatternID			= "LastAddedPattern";
 const String	 BonkEnc::Config::SettingsLastAddedPatternDefault		= NIL;
 
+const String	 BonkEnc::Config::SettingsEncodeOnTheFlyID			= "EncodeOnTheFly";
+const Bool	 BonkEnc::Config::SettingsEncodeOnTheFlyDefault			= True;
+
+const String	 BonkEnc::Config::SettingsKeepWaveFilesID			= "KeepWaveFiles";
+const Bool	 BonkEnc::Config::SettingsKeepWaveFilesDefault			= False;
+
+const String	 BonkEnc::Config::SettingsEncodeToSingleFileID			= "EncodeToSingleFile";
+const Bool	 BonkEnc::Config::SettingsEncodeToSingleFileDefault		= False;
+
+const String	 BonkEnc::Config::SettingsWriteToInputDirectoryID		= "WriteToInputDirectory";
+const Bool	 BonkEnc::Config::SettingsWriteToInputDirectoryDefault		= False;
+
+const String	 BonkEnc::Config::SettingsAllowOverwriteSourceID		= "AllowOverwriteSource";
+const Bool	 BonkEnc::Config::SettingsAllowOverwriteSourceDefault		= False;
+
+const String	 BonkEnc::Config::SettingsFilenamesAllowUnicodeID		= "UseUnicodeFilenames";
+const Bool	 BonkEnc::Config::SettingsFilenamesAllowUnicodeDefault		= True;
+
+const String	 BonkEnc::Config::SettingsFilenamesReplaceSpacesID		= "FilenamesReplaceSpaces";
+const Bool	 BonkEnc::Config::SettingsFilenamesReplaceSpacesDefault		= False;
+
 /* Category Joblist
  */
 const String	 BonkEnc::Config::JoblistFieldsID				= "Fields";

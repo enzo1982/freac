@@ -13,11 +13,11 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Juni 2010)
+	Version 1.1 CVS (Juli 2010)
 
 		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Hebräisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
-		- Deutsche, italienische, russische, tschechische und griechische Anleitungen hinzugefügt
-		- Deutsche, japanische und vietnamesische Übersetzungen für das Installationsprogramm hinzugefügt
+		- Deutsche, italienische, russische, portugiesische, tschechische und griechische Anleitungen hinzugefügt
+		- Mehrere Übersetzungen für das Installationsprogramm hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
 		- Neuen Konfigurationsdialog implementiert
 		- Neues Design des Fortschrittsanzeigebereichs
@@ -127,10 +127,10 @@ Besonderen Dank
 			   Federico Reddig (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
 			   Nikolaos-Ioannis Galanis (Griechisch),
-			   Dmitry Gusakov, Evgeny Kozlov (Russisch),
+			   Evgeny Kozlov (Russisch),
 			   Henryk Ning (Chinesisch, traditionell),
 			   Nimin (Chinesisch, vereinfacht),
-			   Krzysztof Konopacki (Polnisch),
+			   Michal Trzebiatowski (Polnisch),
 			   Peter Toth (Ungarisch),
 			   Andrij Iletschko (Ukrainisch),
 			   Wim Garreyn (Niederländisch),

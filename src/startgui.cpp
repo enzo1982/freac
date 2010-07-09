@@ -75,11 +75,10 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	String	 language = config->language;
 
-	if (language == NIL) language = GetSystemLanguage();
+	if (language != NIL) i18n->ActivateLanguage(language);
+	else		     i18n->SelectUserDefaultLanguage();
 
-	i18n->ActivateLanguage(language);
-
-	config->language = language;
+	config->language = i18n->GetActiveLanguageID();
 
 	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
 
@@ -168,7 +167,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	mainWnd->onEvent.Connect(&BonkEncGUI::MessageProc, this);
 
-	if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault)) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault)) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
 	mainWnd->doClose.Connect(&BonkEncGUI::ExitProc, this);
 	mainWnd->SetMinimumSize(Size(530, 340 + (config->showTitleInfo ? 68 : 0)));
@@ -183,7 +182,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	encoder->onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, tab_layer_joblist);
 	encoder->onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, tab_layer_joblist);
 
-	if (BoCA::Config::Get()->checkUpdatesAtStartup) (new JobCheckForUpdates(True))->Schedule();
+	if (config->checkUpdatesAtStartup) (new JobCheckForUpdates(True))->Schedule();
 }
 
 BonkEnc::BonkEncGUI::~BonkEncGUI()
@@ -271,11 +270,13 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	switch (message)
 	{
 #ifdef __WIN32__
 		case WM_DEVICECHANGE:
-			if (wParam == DBT_DEVICEARRIVAL && BoCA::Config::Get()->cdrip_numdrives > 0 && BoCA::Config::Get()->GetIntValue("CDRip", "AutoReadContents", True))
+			if (wParam == DBT_DEVICEARRIVAL && config->cdrip_numdrives > 0 && config->GetIntValue("CDRip", "AutoReadContents", True))
 			{
 				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype != DBT_DEVTYP_VOLUME || !(((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)) break;
 
@@ -356,12 +357,12 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 					if (ok)
 					{
-						BoCA::Config::Get()->cdrip_activedrive = drive;
-						BoCA::Config::Get()->cdrip_autoRead_active = True;
+						config->cdrip_activedrive = drive;
+						config->cdrip_autoRead_active = True;
 
 						ReadCD();
 
-						BoCA::Config::Get()->cdrip_autoRead_active = False;
+						config->cdrip_autoRead_active = False;
 					}
 				}
 			}
@@ -466,19 +467,21 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 {
 	if (!joblist->CanModifyJobList()) return;
 
+	BoCA::Config		*config = BoCA::Config::Get();
 	Registry		&boca = Registry::Get();
+
 	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
 	if (info != NIL)
 	{
-		const Array<String>	&files = info->GetNthDeviceTrackList(BoCA::Config::Get()->cdrip_activedrive);
+		const Array<String>	&files = info->GetNthDeviceTrackList(config->cdrip_activedrive);
 
 		Job	*job = new JobAddFiles(files);
 
 		job->Schedule();
 
-		if (BoCA::Config::Get()->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
-		if (BoCA::Config::Get()->GetIntValue("CDRip", "AutoRip", False)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
+		if (config->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
+		if (config->GetIntValue("CDRip", "AutoRip", False)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
 
 		boca.DeleteComponent(info);
 	}
@@ -486,7 +489,9 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 
 Void BonkEnc::BonkEncGUI::ReadSpecificCD()
 {
-	BoCA::Config::Get()->cdrip_activedrive = clicked_drive;
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->cdrip_activedrive = clicked_drive;
 
 	clicked_drive = -1;
 
@@ -688,9 +693,11 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
 
 Bool BonkEnc::BonkEncGUI::SetLanguage()
 {
-	Bool	 prevRTL = i18n->IsActiveLanguageRightToLeft();
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	i18n->ActivateLanguage(BoCA::Config::Get()->language);
+	Bool		 prevRTL = i18n->IsActiveLanguageRightToLeft();
+
+	i18n->ActivateLanguage(config->language);
 
 	MessageDlg::SetDefaultRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
@@ -713,6 +720,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 Void BonkEnc::BonkEncGUI::FillMenus()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
 
 	mainWnd_menubar->Hide();
@@ -756,7 +764,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
 
-	if (BoCA::Config::Get()->cdrip_numdrives > 1)
+	if (config->cdrip_numdrives > 1)
 	{
 		DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
@@ -764,7 +772,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		{
 			for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 			{
-				menu_seldrive->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &BoCA::Config::Get()->cdrip_activedrive, i);
+				menu_seldrive->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &config->cdrip_activedrive, i);
 			}
 
 			boca.DeleteComponent(info);
@@ -778,7 +786,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
 
-	if (BoCA::Config::Get()->cdrip_numdrives >= 1)
+	if (config->cdrip_numdrives >= 1)
 	{
 		DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
@@ -803,7 +811,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_addsubmenu->AddEntry();
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
 
-	if (BoCA::Config::Get()->cdrip_numdrives > 1)
+	if (config->cdrip_numdrives > 1)
 	{
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
@@ -827,11 +835,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
 	}
 
-	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, &BoCA::Config::Get()->encodeToSingleFile);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));
 
 	menu_encoder_options->AddEntry();
-	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file directory if possible"), NIL, NIL, &BoCA::Config::Get()->writeToInputDir)->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
-	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, &BoCA::Config::Get()->allowOverwrite);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file directory if possible"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault))->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
+	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault));
 
 	menu_encoder_options->AddEntry();
 	menu_encoder_options->AddEntry(i18n->TranslateString("Delete original files after encoding"), NIL, NIL, &currentConfig->deleteAfterEncoding)->onAction.Connect(&BonkEncGUI::ConfirmDeleteAfterEncoding, this);
@@ -856,10 +864,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB queries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchQueries, this);
 	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &BoCA::Config::Get()->enable_cddb_cache);
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &config->enable_cddb_cache);
 	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
 	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &BoCA::Config::Get()->enable_auto_cddb);
+	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &config->enable_auto_cddb);
 
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
@@ -876,7 +884,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		menu_help->AddEntry();
 		menu_help->AddEntry(String(i18n->TranslateString("Check for updates now")).Append("..."))->onAction.Connect(&BonkEncGUI::CheckForUpdates, this);
-		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &BoCA::Config::Get()->checkUpdatesAtStartup);
+		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &config->checkUpdatesAtStartup);
 	}
 
 	menu_help->AddEntry();
@@ -886,7 +894,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 
-	if (BoCA::Config::Get()->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
+	if (config->cdrip_numdrives >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
@@ -899,9 +907,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
-	if (BoCA::Config::Get()->cdrip_numdrives >= 1)
+	if (config->cdrip_numdrives >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:2"), BoCA::Config::Get()->cdrip_numdrives > 1 ? menu_drives : NIL);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:2"), config->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
 		entry->SetTooltipText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
@@ -914,7 +922,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
-	if (BoCA::Config::Get()->cdrip_numdrives >= 1)
+	if (config->cdrip_numdrives >= 1)
 	{
 		mainWnd_iconbar->AddEntry();
 
@@ -1011,15 +1019,15 @@ Void BonkEnc::BonkEncGUI::ToggleUseInputDirectory()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (config->writeToInputDir) allowOverwriteMenuEntry->Activate();
-	else			     allowOverwriteMenuEntry->Deactivate();
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault)) allowOverwriteMenuEntry->Activate();
+	else																	    allowOverwriteMenuEntry->Deactivate();
 }
 
 Void BonkEnc::BonkEncGUI::ToggleEncodeToSingleFile()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (config->encodeToSingleFile) config->enc_onTheFly = True;
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault)) config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
 }
 
 Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
@@ -1060,137 +1068,6 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, dialog->GetOffset());
 
 	DeleteObject(dialog);
-}
-
-String BonkEnc::BonkEncGUI::GetSystemLanguage()
-{
-	String	 language = "internal";
-
-	if (i18n->GetNOfLanguages() == 1) return language;
-
-#ifdef __WIN32__
-
-#ifndef SUBLANG_CROATIAN_CROATIA
-#  define SUBLANG_CROATIAN_CROATIA 0x01
-#endif
-
-	switch (PRIMARYLANGID(GetUserDefaultLangID()))
-	{
-		default:
-		case LANG_ARABIC:
-			language = "bonkenc_ar.xml";
-			break;
-		case LANG_CATALAN:
-			language = "bonkenc_ca.xml";
-			break;
-		case LANG_CHINESE:
-			language = "bonkenc_zh_CN.xml";
-
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_SIMPLIFIED) language = "bonkenc_zh_CN.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) language = "bonkenc_zh_TW.xml";
-			break;
-		case LANG_CZECH:
-			language = "bonkenc_cz.xml";
-			break;
-		case LANG_DANISH:
-			language = "bonkenc_dk.xml";
-			break;
-		case LANG_DUTCH:
-			language = "bonkenc_nl.xml";
-			break;
-		case LANG_ENGLISH:
-			language = "internal";
-			break;
-		case LANG_ESTONIAN:
-			language = "bonkenc_ee.xml";
-			break;
-		case LANG_FINNISH:
-			language = "bonkenc_fi.xml";
-			break;
-		case LANG_FRENCH:
-			language = "bonkenc_fr.xml";
-			break;
-		case LANG_GALICIAN:
-			language = "bonkenc_gl.xml";
-			break;
-		case LANG_GERMAN:
-			language = "bonkenc_de.xml";
-			break;
-		case LANG_GREEK:
-			language = "bonkenc_gr.xml";
-			break;
-		case LANG_HEBREW:
-			language = "bonkenc_he.xml";
-			break;
-		case LANG_HUNGARIAN:
-			language = "bonkenc_hu.xml";
-			break;
-		case LANG_ITALIAN:
-			language = "bonkenc_it.xml";
-			break;
-		case LANG_JAPANESE:
-			language = "bonkenc_ja.xml";
-			break;
-		case LANG_KOREAN:
-			language = "bonkenc_ko.xml";
-			break;
-		case LANG_LITHUANIAN:
-			language = "bonkenc_lt.xml";
-			break;
-		case LANG_NORWEGIAN:
-			language = "bonkenc_no.xml";
-			break;
-		case LANG_POLISH:
-			language = "bonkenc_pl.xml";
-			break;
-		case LANG_PORTUGUESE:
-			language = "bonkenc_pt.xml";
-
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE) language = "bonkenc_pt.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE_BRAZILIAN) language = "bonkenc_pt_BR.xml";
-			break;
-		case LANG_ROMANIAN:
-			language = "bonkenc_ro.xml";
-			break;
-		case LANG_RUSSIAN:
-			language = "bonkenc_ru.xml";
-			break;
-		case LANG_SERBIAN:
-			language = "bonkenc_sr.xml";
-
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CROATIAN_CROATIA) language = "bonkenc_hr.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SERBIAN_LATIN) language = "bonkenc_sr.xml";
-			break;
-		case LANG_SLOVAK:
-			language = "bonkenc_sk.xml";
-			break;
-		case LANG_SPANISH:
-			language = "bonkenc_es.xml";
-
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH) language = "bonkenc_es.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH_ARGENTINA) language = "bonkenc_es_AR.xml";
-			break;
-		case LANG_SWEDISH:
-			language = "bonkenc_sv.xml";
-			break;
-		case LANG_TURKISH:
-			language = "bonkenc_tr.xml";
-			break;
-		case LANG_UKRAINIAN:
-			language = "bonkenc_ua.xml";
-			break;
-		case LANG_VIETNAMESE:
-			language = "bonkenc_vi.xml";
-			break;
-	}
-#endif
-
-	if (language != "internal")
-	{
-		if (!File(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(language)).Exists()) language = "internal";
-	}
-
-	return language;
 }
 
 Void BonkEnc::BonkEncGUI::CheckForUpdates()

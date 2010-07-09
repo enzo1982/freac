@@ -2,12 +2,12 @@
 <LangFile>
  <info>
   <property name="program">BonkEnc</property>
-  <property name="version">1.0</property>
+  <property name="version">1.0.15</property>
   <property name="language">Russian / Русский</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
-  <property name="author">ZheKa &lt;evgenykozlov80@mail.ru&gt;</property>
+  <property name="author">Евгений Козлов &lt;evgenykozlov80@mail.ru&gt;</property>
   <property name="url">http://www.bonkenc.org/</property>
  </info>
  <data>
@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Эта программа распространяется в рамках&#10;GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">CDDB запрос</entry>
   <entry id="44" string="About %1">О %1</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Для WAVE нет настроек!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE Out фильтр</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Для WAVE нет настроек!</entry>
+  <entry id="46" string="Windows Wave file output">WAVE Out фильтр</entry>
   <entry id="47" string="Cannot change settings while encoding!">Нельзя изменять настройки в процессе кодирования!</entry>
   <entry id="48" string="%1 encoder configuration">Настройка кодека %1</entry>
   <entry id="49" string="OK">Да</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Содержимое читать сразу</entry>
   <entry id="248" string="Eject disk after ripping">Извлечь диск после работы</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Кодирование &quot;На лету&quot;</entry>
-  <entry id="250" string="Keep ripped wave files">Оставлять wave файлы</entry>
+  <entry id="250" string="Keep ripped Wave files">Оставлять Wave файлы</entry>
   <entry id="251" string="ripping/decoding">захват/декодирование</entry>
   <entry id="252" string="encoding">кодирование</entry>
   <entry id="253" string="Unicode">Юникод</entry>
@@ -382,8 +382,6 @@
   <entry id="378" string="CD information">Информация о CD</entry>
   <entry id="379" string="Read CD Text">Читать CD Текст</entry>
   <entry id="380" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
-  <entry id="381" string="Apodization"/>
-  <entry id="382" string="Apodization function(s):"/>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">Несколько функций разделяются ;</entry>
   <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc может проверять наличие обновлений при запуске.&#10;&#10;Хотите, чтобы BonkEnc проверял наличе обновлений при запуске?</entry>
   <entry id="385" string="Cannot access input file: %1">Нет доступа к входному файлу: %1</entry>
@@ -394,5 +392,18 @@
   <entry id="390" string="Unknown error">Неизвестная ошибка</entry>
   <entry id="391" string="Replace existing comments with default comment">Заменить существующий комментарий комментарием по умолчанию</entry>
   <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Выбранные файлы не могут быть объединены в один&#10;выходной файл из-за разного разрешения.&#10;&#10;Пожалуйста, преобразуйте сначала все файлы к одинаковому разрешению.</entry>
+  <entry id="393" string="Write WMA metadata info">Записывать метаданные WMA</entry>
+  <entry id="394" string="WMA metadata encoding:">Кодировка метаданных WMA:</entry>
+  <entry id="395" string="Select codec">Выбор кодека</entry>
+  <entry id="396" string="Select codec format">Выбор формата кодека</entry>
+  <entry id="397" string="Codec settings">Настройки кодека</entry>
+  <entry id="398" string="Use codec">Использовать кодек</entry>
+  <entry id="399" string="Use format">Использовать формат</entry>
+  <entry id="400" string="Write uncompressed WMA files">Записывать несжатые WMA файлы</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Автоматичекски выбирать формат</entry>
+  <entry id="402" string="Use VBR encoding">VBR</entry>
+  <entry id="403" string="Use 2-pass encoding">2-прохода</entry>
+  <entry id="404" string="Target bitrate">Битрейт</entry>
+  <entry id="405" string="Set drive speed limit:">Предел скорости привода:</entry>
  </data>
 </LangFile>

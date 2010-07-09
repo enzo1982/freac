@@ -2,7 +2,7 @@
 <LangFile>
  <info>
   <property name="program">BonkEnc</property>
-  <property name="version">1.0.8</property>
+  <property name="version">1.0.15</property>
   <property name="language">Serbian (Latin letter)/ Srpski (Latinično pismo)</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ovaj program se distribuira pod uslovima&#10;GNU Opštih Javnih Licenci (tzv. &quot;GPL&quot;).</entry>
   <entry id="43" string="CDDB query">CDDB upit</entry>
   <entry id="44" string="About %1">O %1-u</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Opcije za WAVE izlazni filter se ne mogu podešavati!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE izlazni filter</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Opcije za Windows Wave izlazni fajl ne mogu se podešavati!</entry>
+  <entry id="46" string="Windows Wave file output">WAVE izlazni filter</entry>
   <entry id="47" string="Cannot change settings while encoding!">Ne možete menjati podešavanja za vreme enkodovanja!</entry>
   <entry id="48" string="%1 encoder configuration">%1 podešavanja enkodera</entry>
   <entry id="49" string="OK">Prihvati</entry>
@@ -73,7 +73,7 @@
   <entry id="60" string="Encoder">Enkoder</entry>
   <entry id="61" string="Output directory">Izlazni folder</entry>
   <entry id="62" string="Browse">Pretraži</entry>
-  <entry id="63" string="Select the folder in which the encoded files will be placed:">Odaberi folder u koji će se smeštati enkodovani fajlovi:</entry>
+  <entry id="63" string="Select the folder in which the encoded files will be placed:">Odaberi folder za smeštaj enkodovanih fajlova:</entry>
   <entry id="64" string="Encoding">Enkodovanje</entry>
   <entry id="65" string="Author">Autor</entry>
   <entry id="66" string="URL">URL</entry>
@@ -122,8 +122,8 @@
   <entry id="109" string="Misc">Razno</entry>
   <entry id="110" string="Audio processing">Audio obrada</entry>
   <entry id="111" string="Set bitrate:">Stopa bitova:</entry>
-  <entry id="112" string="Set ratio:">Podešavanje srazmere (tzv. Racio):</entry>
-  <entry id="113" string="Set quality:">Podešavanje kvaliteta:</entry>
+  <entry id="112" string="Set ratio:">Podešenje srazmere (tzv. Racio):</entry>
+  <entry id="113" string="Set quality:">Podešenje kvaliteta:</entry>
   <entry id="114" string="worse">lošije</entry>
   <entry id="115" string="better">bolje</entry>
   <entry id="116" string="Auto">Samopodešavanje</entry>
@@ -210,7 +210,7 @@
   <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Nemoguće otvoriti fajl: %1</entry>
   <entry id="207" string="Query CDDB database">Upit CDDB bazi</entry>
   <entry id="208" string="Help">Pomoć</entry>
-  <entry id="209" string="index_en.html">index_en.html</entry>
+  <entry id="209" string="index_en.html">index.html</entry>
   <entry id="210" string="Plug-ins">Plag-in-ovi</entry>
   <entry id="211" string="Input plug-ins">Ulazni plag-in-ovi</entry>
   <entry id="212" string="Output plug-ins">Izlazni plag-in-ovi</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Pri ubacivanju čitaj CD sadržaj</entry>
   <entry id="248" string="Eject disk after ripping">Izbaci disk nakon ripovanja</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Enkoduj &quot;u letu&quot;</entry>
-  <entry id="250" string="Keep ripped wave files">Zadrži ripovane WAV fajlove</entry>
+  <entry id="250" string="Keep ripped Wave files">Zadrži ripovane WAV fajlove</entry>
   <entry id="251" string="ripping/decoding">ripovanje / enkodovanje</entry>
   <entry id="252" string="encoding">enkodovanje</entry>
   <entry id="253" string="Unicode">Unikod</entry>
@@ -394,5 +394,18 @@
   <entry id="390" string="Unknown error">Nepoznata greška</entry>
   <entry id="391" string="Replace existing comments with default comment">Zameni  postojeći(e)  komentar(e)  usađenim  komentarom(ima)</entry>
   <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrani fajlovi ne mogu se kombinovati u jedan&#10;izlazni fajl zbog različitih ulaznih formata.&#10;&#10;Molimo prvo pretvorite sve fajlove u isti format.</entry>
+  <entry id="393" string="Write WMA metadata info">Piši WMA podatke o fajlu</entry>
+  <entry id="394" string="WMA metadata encoding:">Enkodovanje WMA podataka:</entry>
+  <entry id="395" string="Select codec">Izbor kodeka</entry>
+  <entry id="396" string="Select codec format">Izbor formata kodeka</entry>
+  <entry id="397" string="Codec settings">Podešenja kodeka</entry>
+  <entry id="398" string="Use codec">Koristi kodek</entry>
+  <entry id="399" string="Use format">Koristi format</entry>
+  <entry id="400" string="Write uncompressed WMA files">Piši nekompresovane WMA fajlove</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Automatski odaberi format baziran na podešenjima i ulaznom formatu</entry>
+  <entry id="402" string="Use VBR encoding">Koristi VBR enkodovanje</entry>
+  <entry id="403" string="Use 2-pass encoding">Koristi 2-prolazno enkodovanje</entry>
+  <entry id="404" string="Target bitrate">Ciiljana stopa bitova</entry>
+  <entry id="405" string="Set drive speed limit:">Podesi brzinu drajv uređaja:</entry>
  </data>
 </LangFile>

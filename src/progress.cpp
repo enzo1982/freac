@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,7 +37,7 @@ Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
 		else				      totalSamples += (240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels);
 	}
 
-	if (!BoCA::Config::Get()->enc_onTheFly && BoCA::Config::Get()->encoderID != "wave-out") totalSamples *= 2;
+	if (!BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && BoCA::Config::Get()->encoderID != "wave-out") totalSamples *= 2;
 }
 
 Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInfo)

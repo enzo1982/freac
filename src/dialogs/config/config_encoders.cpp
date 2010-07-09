@@ -21,12 +21,15 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	onTheFly	= config->enc_onTheFly;
-	keepWaves	= config->enc_keepWaves;
-	useInputDir	= config->writeToInputDir;
-	allowOverwrite	= config->allowOverwrite;
-	singleFile	= config->encodeToSingleFile;
-	unicode_files	= config->useUnicodeNames;
+	onTheFly	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
+	keepWaves	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
+	singleFile	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+
+	useInputDir	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+	allowOverwrite	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault);
+
+	unicode_files	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
+	replace_spaces	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
 
 	group_encoder	= new GroupBox(BonkEnc::i18n->TranslateString("Encoder"), Point(7, 11), Size(344, 43));
 
@@ -120,19 +123,22 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	group_options->Add(check_keepWaves);
 	group_options->Add(check_singleFile);
 
-	group_unicode		= new GroupBox(BonkEnc::i18n->TranslateString("Unicode"), Point(359, 171), Size(178, 43));
+	group_files		= new GroupBox(BonkEnc::i18n->TranslateString("Output filenames"), Point(359, 145), Size(178, 69));
 
-	check_unicode_files	= new CheckBox(BonkEnc::i18n->TranslateString("Use Unicode filenames"), Point(10, 14), Size(157, 0), &unicode_files);
+	check_unicode_files	= new CheckBox(BonkEnc::i18n->TranslateString("Allow Unicode characters"), Point(10, 14), Size(157, 0), &unicode_files);
 
 	if (!Setup::enableUnicode) check_unicode_files->Deactivate();
 
-	group_unicode->Add(check_unicode_files);
+	check_replace_spaces	= new CheckBox(BonkEnc::i18n->TranslateString("Replace spaces"), Point(10, 40), Size(157, 0), &replace_spaces);
+
+	group_files->Add(check_unicode_files);
+	group_files->Add(check_replace_spaces);
 
 	Add(group_encoder);
 	Add(group_outdir);
-	Add(group_filename);
+	Add(group_files);
 	Add(group_options);
-	Add(group_unicode);
+	Add(group_filename);
 
 	SetSize(Size(544, 221));
 }
@@ -142,20 +148,25 @@ BonkEnc::ConfigureEncoders::~ConfigureEncoders()
 	DeleteObject(group_encoder);
 	DeleteObject(combo_encoder);
 	DeleteObject(button_config);
+
 	DeleteObject(group_outdir);
 	DeleteObject(check_useInputDir);
 	DeleteObject(check_allowOverwrite);
 	DeleteObject(edit_outdir);
 	DeleteObject(button_outdir_browse);
+
 	DeleteObject(group_filename);
 	DeleteObject(edit_filename);
 	DeleteObject(list_filename);
+
 	DeleteObject(group_options);
 	DeleteObject(check_onTheFly);
 	DeleteObject(check_keepWaves);
 	DeleteObject(check_singleFile);
-	DeleteObject(group_unicode);
+
+	DeleteObject(group_files);
 	DeleteObject(check_unicode_files);
+	DeleteObject(check_replace_spaces);
 }
 
 Void BonkEnc::ConfigureEncoders::SelectDir()
@@ -291,12 +302,16 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 	config->enc_outdir		= edit_outdir->GetText();
 	config->enc_filePattern		= edit_filename->GetText();
-	config->enc_onTheFly		= onTheFly;
-	config->writeToInputDir		= useInputDir;
-	config->allowOverwrite		= allowOverwrite;
-	config->encodeToSingleFile	= singleFile;
-	config->enc_keepWaves		= keepWaves;
-	config->useUnicodeNames		= unicode_files;
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, onTheFly);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, keepWaves);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, singleFile);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, useInputDir);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, allowOverwrite);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, unicode_files);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, replace_spaces);
 
 	if (!config->enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) config->enc_outdir.Append(Directory::GetDirectoryDelimiter());
 

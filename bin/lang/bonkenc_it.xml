@@ -30,7 +30,7 @@
   <entry id="17" string="Selected encoder:">Codificatore selezionato:</entry>
   <entry id="18" string="File progress:">Avanzamento:</entry>
   <entry id="19" string="Output dir.:">Destinazione:</entry>
-  <entry id="20" string="%1 file(s) in joblist:">%1 file da processare:</entry>
+  <entry id="20" string="%1 file(s) in joblist:">%1 file da elaborare:</entry>
   <entry id="21" string="none">nessuno</entry>
   <entry id="22" string="Help topics...">Guida in linea</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Aggiungi file audio all'elenco</entry>
@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">La distribuzione di questo programma è soggetta&#10;ai termini della GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">Interrogazione CDDB</entry>
   <entry id="44" string="About %1">Informazioni su %1</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Nessuna opzione disponibile per il filtro WAVE Out.</entry>
-  <entry id="46" string="WAVE Out filter">Filtro WAVE Out</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Nessuna opzione disponibile per Windows Wave.</entry>
+  <entry id="46" string="Windows Wave file output">File di destinazione Windows Wave</entry>
   <entry id="47" string="Cannot change settings while encoding!">Impossibile modificare le impostazioni durante l'elaborazione.</entry>
   <entry id="48" string="%1 encoder configuration">%1 - Configurazione</entry>
   <entry id="49" string="OK">OK</entry>
@@ -207,7 +207,7 @@
   <entry id="203" string="Prefer CDDB over CD Text">Preferisci CDDB a CD Text</entry>
   <entry id="204" string="CD options">Opzioni CD</entry>
   <entry id="205" string="Submitting CD information">Invio informazioni sul CD...</entry>
-  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Impossibile aprire il seguente file: %1&#10;&#10;%2</entry>
+  <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Impossibile aprire il seguente file: %1&#10;&#10;Errore: %2</entry>
   <entry id="207" string="Query CDDB database">Interroga database CDDB</entry>
   <entry id="208" string="Help">?</entry>
   <entry id="209" string="index_en.html">index_it.html</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Leggi CD una volta inserito</entry>
   <entry id="248" string="Eject disk after ripping">Espelli disco al termine</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Codifica 'al volo'</entry>
-  <entry id="250" string="Keep ripped wave files">Non eliminare file audio estratti</entry>
+  <entry id="250" string="Keep ripped Wave files">Non eliminare i file wave estratti</entry>
   <entry id="251" string="ripping/decoding">estrazione/decodifica</entry>
   <entry id="252" string="encoding">codifica</entry>
   <entry id="253" string="Unicode">Unicode</entry>
@@ -293,7 +293,7 @@
   <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Impossibile inizializzare il codificatore %1. Verificare i parametri di configurazione.</entry>
   <entry id="290" string="Blocksize:">Dim. blocco:</entry>
   <entry id="291" string="Use streamable subset">Usa sotto-set utilizzabile come flusso</entry>
-  <entry id="292" string="Adaptive Joint Stereo">Modalità stereo adattiva</entry>
+  <entry id="292" string="Adaptive Joint Stereo">Stereo adattiva</entry>
   <entry id="293" string="Fastest encoding">Codifica più rapida</entry>
   <entry id="294" string="Best compression">Compressione migliore</entry>
   <entry id="295" string="Linear predictor">Predictor lineare</entry>
@@ -382,17 +382,30 @@
   <entry id="378" string="CD information">Informazioni CD</entry>
   <entry id="379" string="Read CD Text">Leggi CD Text</entry>
   <entry id="380" string="Read cdplayer.ini">Leggi cdplayer.ini</entry>
-  <entry id="381" string="Apodization">Apodizazione</entry>
-  <entry id="382" string="Apodization function(s):">Funzioni di apodizazione:</entry>
+  <entry id="381" string="Apodization">Apodizzazione</entry>
+  <entry id="382" string="Apodization function(s):">Funzioni di apodizzazione:</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">è possibile specificare più funzioni separate da punto e virgola.</entry>
-  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">All'avvio, è possibile verificare automaticamente la&#10;disponibilità di aggiornamenti online di BonkEnc.&#10;&#10;Verificare la disponibilità all'avvio?</entry>
-  <entry id="385" string="Cannot access input file: %1">Impossibile accedere al file d'ingresso: %1</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">All'avvio, è possibile verificare automaticamente la&#10;disponibilità di aggiornamenti online di BonkEnc.&#10;&#10;Verificare la disponibilità di aggiornamenti all'avvio?</entry>
+  <entry id="385" string="Cannot access input file: %1">Impossibile accedere al file di origine: %1</entry>
   <entry id="386" string="Cannot create output file: %1">Impossibile creare il file di destinazione: %1</entry>
   <entry id="387" string="File not found">File non trovato</entry>
   <entry id="388" string="Unknown file type">Tipo di file sconosciuto</entry>
   <entry id="389" string="Unsupported audio format">Formato audio non supportato</entry>
   <entry id="390" string="Unknown error">Errore sconosciuto</entry>
   <entry id="391" string="Replace existing comments with default comment">Sostituisci i commenti esistenti con il commento predefinito</entry>
-  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Impossibile combinare i file selezionati in un unico&#10;file a causa dei formati campione differenti.&#10;&#10;Converti prima tutti i file nello stesso formato campione.</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Impossibile combinare i file selezionati in un unico&#10;file a causa dei formati campione differenti.&#10;&#10;Convertire prima tutti i file nello stesso formato campione.</entry>
+  <entry id="393" string="Write WMA metadata info">Scrivi metadati WMA</entry>
+  <entry id="394" string="WMA metadata encoding:">Codifica metadati WMA:</entry>
+  <entry id="395" string="Select codec">Seleziona codec</entry>
+  <entry id="396" string="Select codec format">Seleziona formato codec</entry>
+  <entry id="397" string="Codec settings">Opzioni codec</entry>
+  <entry id="398" string="Use codec">Usa codec</entry>
+  <entry id="399" string="Use format">Usa formato</entry>
+  <entry id="400" string="Write uncompressed WMA files">Scrivi i file WMA non compressi</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Seleziona il formato in base alle opzioni ed al formato di origine</entry>
+  <entry id="402" string="Use VBR encoding">Usa codifica VBR</entry>
+  <entry id="403" string="Use 2-pass encoding">Usa codifica a 2 passi</entry>
+  <entry id="404" string="Target bitrate">Bitrate</entry>
+  <entry id="405" string="Set drive speed limit:">Limita velocità dell'unità:</entry>
  </data>
 </LangFile>

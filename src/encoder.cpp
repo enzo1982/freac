@@ -72,7 +72,7 @@ Void BonkEnc::Encoder::Encode(JobList *iJoblist, Bool useThread)
 
 	overwriteAll	= False;
  
-	if (Config::Get()->enable_console || config->encodeToSingleFile) overwriteAll = True;
+	if (Config::Get()->enable_console || config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault)) overwriteAll = True;
 
 	if (useThread)	NonBlocking0<>(&Encoder::EncoderThread, this).Call();
 	else		EncoderThread();
@@ -83,8 +83,12 @@ Int BonkEnc::Encoder::EncoderThread()
 	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
 
-	if (config->encodeToSingleFile)
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 	{
+		/* We need to encode on the fly when encoding to a single file.
+		 */
+		config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
+
 		/* Check if all files to be combined have the same sample format.
 		 */
 		if (!CheckSingleFileSampleFormat())
@@ -130,7 +134,7 @@ Int BonkEnc::Encoder::EncoderThread()
 	{
 		if (!joblist->GetNthEntry(i - nRemoved)->IsMarked()) continue;
 
-		if (skip && !config->enc_onTheFly && step == 0)
+		if (skip && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0)
 		{
 			step		= 1;
 			encoderID	= config->encoderID;
@@ -147,11 +151,11 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		skip		= False;
 
-		if (nRemoved == 0 && (config->enc_onTheFly || config->encoderID == "wave-out" || step == 0))
+		if (nRemoved == 0 && (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) || config->encoderID == "wave-out" || step == 0))
 		{
 			playlist_filename = GetPlaylistFileName(trackInfo);
 
-			if (config->encodeToSingleFile)
+			if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 			{
 				singleOutFile = GetSingleOutputFileName(trackInfo);
 
@@ -197,11 +201,11 @@ Int BonkEnc::Encoder::EncoderThread()
 			}
 		}
 
-		if (!config->encodeToSingleFile)
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 		{
 			out_filename = GetOutputFileName(trackInfo);
 
-			if (!overwriteAll && File(out_filename).Exists() && !config->writeToInputDir && !(!config->enc_onTheFly && step == 0))
+			if (!overwriteAll && File(out_filename).Exists() && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !(!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0))
 			{
 				MessageDlg	*confirmation = new MessageDlg(String(BonkEnc::i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), BonkEnc::i18n->TranslateString("File already exists"), MB_YESNOCANCEL, IDI_QUESTION, BonkEnc::i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
@@ -226,12 +230,12 @@ Int BonkEnc::Encoder::EncoderThread()
 				Object::DeleteObject(confirmation);
 			}
 
-			if (out_filename == in_filename) out_filename.Append(".temp");
+			if (out_filename.ToLower() == in_filename.ToLower()) out_filename.Append(".temp");
 
 			trackInfo.outfile = out_filename;
 		}
 
-		if (!config->enc_onTheFly && step == 1 && encoderID != "wave-out")
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1 && encoderID != "wave-out")
 		{
 			step = 0;
 
@@ -239,7 +243,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 			out_filename.Append(".wav");
 		}
-		else if (!config->enc_onTheFly && step == 0)
+		else if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0)
 		{
 			step = 1;
 
@@ -279,7 +283,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		Int	 mode = ENCODER_MODE_ON_THE_FLY;
 
-		if (!config->enc_onTheFly && encoderID != "wave-out")
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && encoderID != "wave-out")
 		{
 			if	(step == 1) mode = ENCODER_MODE_DECODE;
 			else if (step == 0) mode = ENCODER_MODE_ENCODE;
@@ -287,7 +291,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		onEncodeTrack.Emit(trackInfo, filter_in, mode);
 
-		if (!config->enc_onTheFly && step == 1)
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1)
 		{
 			Track	 nTrackInfo;
 
@@ -308,7 +312,7 @@ Int BonkEnc::Encoder::EncoderThread()
 			break;
 		}
 
-		if (!config->encodeToSingleFile)
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 		{
 			f_out		= new OutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
 
@@ -440,7 +444,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		encodedSamples += trackLength;
 
-		if (!config->encodeToSingleFile)
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 		{
 			delete f_out;
 
@@ -454,7 +458,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 			if (f_size == 0 || skip || stop) File(out_filename).Delete();
 
-			if (!skip && (config->enc_onTheFly || step == 1 || encoderID == "wave-out"))
+			if (!skip && (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) || step == 1 || encoderID == "wave-out"))
 			{
 				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
 
@@ -500,14 +504,14 @@ Int BonkEnc::Encoder::EncoderThread()
 			nRemoved++;
 		}
 
-		if (!config->enc_onTheFly && step == 1 && encoderID != "wave-out" && !config->enc_keepWaves)						   File(in_filename).Delete();
-		if (Config::Get()->deleteAfterEncoding && !stop && !skip && ((config->enc_onTheFly && step == 1) || (!config->enc_onTheFly && step == 0))) File(in_filename).Delete();
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1 && encoderID != "wave-out" && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault))						   File(in_filename).Delete();
+		if (Config::Get()->deleteAfterEncoding && !stop && !skip && ((config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1) || (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0))) File(in_filename).Delete();
 
-		if (!config->enc_onTheFly && step == 1 && encoderID != "wave-out" && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1 && encoderID != "wave-out" && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
 
-		if (out_filename == String(in_filename).Append(".temp") && File(out_filename).Exists())
+		if (out_filename.ToLower() == String(in_filename.ToLower()).Append(".temp") && File(out_filename).Exists())
 		{
-			if (!config->writeToInputDir || config->allowOverwrite || !File(in_filename).Exists())
+			if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) || config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault) || !File(in_filename).Exists())
 			{
 				File(in_filename).Delete();
 				File(out_filename).Move(in_filename);
@@ -525,7 +529,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		if (stop) break;
 	}
 
-	if (config->encodeToSingleFile && nRemoved > 0)
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) && nRemoved > 0)
 	{
 		delete f_out;
 
@@ -714,7 +718,7 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 
 	inFileDirectory[lastBs + 1] = 0;
 
-	if (config->writeToInputDir && !track.isCDTrack)
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !track.isCDTrack)
 	{
 		String		 file = String(inFileDirectory).Append(String::FromInt(clock())).Append(".temp");
 		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_OVERWRITE);

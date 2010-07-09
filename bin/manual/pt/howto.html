@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>How to ...? - BonkEnc User Guide</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Como posso ...? - BonkEnc Guia do Utilizador</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>BonkEnc guia de instalação e características especiais</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Conteúdos</h4>
+		<blockquote>
+		  <p><a href="../en/howto.html#anchor_src">How to compile BonkEnc from source?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
+		  <p><a href="../en/howto.html#anchor_enc">How to install encoder/decoder xy?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
+		  <p><a href="#anchor_pat">Como posso usar os padrões de nome de ficheiro de saída no BonkEnc?</a></p>
+		  <p><a href="#anchor_tra">Como posso adicionar uma nova tradução ao BonkEnc?</a></p>
+		  <p><a href="#anchor_rem">Como posso remover o BonkEnc do meu computador?</a></p>
+		</blockquote>
+		<h4 id="anchor_pat">Como posso usar os padrões de nome de ficheiro de 
+		saída no BonkEnc?</h4>
+		<blockquote>
+		  <p>O padrão de nome de ficheiro de saída pode ser configurado na 
+		  página de <b>Codificação</b> do diálogo de&nbsp; configuração. Você 
+		  pode usar parêntesis rectos para especificar pastas e espaços 
+		  reservados para informações referentes aos dados da faixa.&nbsp;As 
+		  substituições disponíveis são as seguintes:</p>
+		  <ul>
+		    <li><b>&lt;artist&gt;</b> - O nome do Artista / Grupo</li>
+		    <li><b>&lt;title&gt;</b> - O título da música</li>
+		    <li><b>&lt;album&gt;</b> - O título do álbum</li>
+		    <li><b>&lt;track&gt;</b> - O número da música</li>
+		    <li><b>&lt;genre&gt;</b> - O género de música</li>
+		    <li><b>&lt;year&gt;</b> - O ano em que a música foi publicada</li>
+		  </ul>
+		  <p>Os espaços reservados posteriormente indicados referem-se às 
+		  informações das faixas e álbum. Os seguinte espaço reservado indica o 
+		  tipo de ficheiro de saída:</p>
+		  <ul>
+		    <li><b>&lt;filetype&gt;</b> - O tipo de ficheiro de saída</li>
+		  </ul>
+		  <p>Um caso típico de utilização comum deste espaço reservado é quando 
+		  utilizamos diferentes formatos de codificação (por exemplo, FLAC para 
+		  arquivar e M4A para o reprodutor móvel) e queremos manter os ficheiros 
+		  codificados em pastas separadas.</p>
+		  <p>Adicionalmente ao anterior existem dois espaços reservados que 
+		  refere o nome do ficheiro original, do ficheiro codificado pelo BonkEnc:</p>
+		  <ul>
+		    <li><b>&lt;filename&gt;</b> - O nome do ficheiro de entrada</li>
+		    <li><b>&lt;directory&gt;</b> - A pasta onde o ficheiro de entrada se 
+			encontra</li>
+		  </ul>
+		  <p>A indicação <b>&lt;directory&gt;</b> é especial porque pode 
+		  modificar o seu significado através de dois argumentos numéricos.&nbsp;Você 
+		  pode usá-lo como <directory+n> <b>&lt;directory+n&gt; </b> ou <directory+n(m)> <b>&lt;directory+n(m)&gt;</b>.&nbsp;Nestas 
+		  expressões, o <strong>n</strong> especifica o número de componentes do 
+		  caminho que devem ser retirados desde o início.&nbsp;A <strong>m</strong> 
+		  especifica o número de componentes para utilização a partir do que 
+		  deixado.&nbsp;Omitindo a <strong>(m)</strong> parte, vai usar-se todos os 
+		  componentes deixados no caminho após o &quot;descascamento&quot; <strong>n</strong> 
+		  componentes, a contar desde o início.&nbsp;<diretório> <b>&lt;directory&gt; </b> 
+		  sem nenhum argumento, utilizará o caminho completo. <p>
+		  <p>Na prática, como utilizar isto? Assumindo que tem a sua colecção 
+		  musical ordenada da seguinte maneira:</p>
+		  <blockquote>
+		    <p>C:\Music\[other criteria]\[artist]\[album]\[track] - [title]</p>
+		  </blockquote>
+		  <p>Deverá ter um ficheiro assim <b>C:\Music\Favorites\Starsailor\Silence is Easy\01 - Music was Saved.flac</b>.</p>
+		  <p>Vamos supor agora que quer codificar alguns ficheiros para usar num 
+		  leitor portátil e queremos colocar os ficheiros na pasta <b>C:\Encoded\</b>.
+		    De modo a manter o campo <b>[other criteria]</b>, precisa de 
+		  utilizar o espaço reservado <b>&lt;directory&gt;</b>.
+		    Se a pasta de saída dos ficheiros codificados estiver a apontar para&nbsp; <b>C:\Encoded\</b>, 
+		  completará o padrão do nome de ficheiro assim:</p>
+		  <blockquote>
+		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+		  </blockquote>
+		  <p>Assim codificará o ficheiro mencionado para <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence
+		    is Easy - 01 - Music was Saved.m4a</b>.</p>
+		</blockquote>
+		<h4 id="anchor_tra">Como posso adicionar uma nova tradução ao BonkEnc?</h4>
+		<blockquote>
+		  <p>Por favor utilize o utilitário <b>smooth Translator</b> incluído na 
+		  distribuição do BonkEnc e abra um ficheiro de idioma existente (encontra-se 
+		  na pasta <b>BonkEnc/lang</b>). Depois modifique as propriedades do 
+		  idioma de modo a reflectir o idioma que deseja criar e inicie a 
+		  tradução. Guarde a tradução como um novo ficheiro mantendo o formato <b>bonkenc_??.xml</b> (substituir ?? 
+		  com o código do seu idioma), reinicie o BonkEnc e tente seleccionar a 
+		  nova tradução no diálogo de configuração.</p>
+		  <p>Por favor submeta a sua tradução para <a href="mailto:translations@bonkenc.org">translations@bonkenc.org</a>, 
+		  de modo a poder ser incluída na distribuição oficial.</p>
+		</blockquote>
+		<h4 id="anchor_rem">Como posso remover o BonkEnc do meu computador?</h4>
+		<blockquote>
+		  <p>As&nbsp; versões recentes do BonkEnc vem com um desinstalador que 
+		  pode ser executado desde o menu <strong>Iniciar</strong>.</p>
+		  <p>No caso de ter removido o grupo do menu Iniciar ou apenas não o 
+		  encontra, basta simplesmente apagar a pasta que contém a aplicação 
+		  para desinstalar BonkEnc. BonkEnc não cria entradas no registo do 
+		  Windows, nem arquiva qualquer componente activo fora da pasta de 
+		  instalação.</p>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
+		Copyright (C) 2007-2010 The BonkEnc Project</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

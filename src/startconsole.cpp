@@ -283,8 +283,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("CDRip", "LockTray", False);
 		componentsConfig->cdrip_timeout = timeout.ToInt();
 
-		componentsConfig->encodeToSingleFile = False;
-		componentsConfig->writeToInputDir = False;
+		componentsConfig->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
+		componentsConfig->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
 
 		if (!componentsConfig->enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) componentsConfig->enc_outdir.Append(Directory::GetDirectoryDelimiter());
 

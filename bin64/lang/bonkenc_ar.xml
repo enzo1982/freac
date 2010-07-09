@@ -1,81 +1,123 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
-  <info>
-    <property name="program">BonkEnc</property>
-    <property name="version">1.0</property>
-    <property name="language">Arabic / عربي</property>
-    <property name="righttoleft">true</property>
-    <property name="encoding">UTF-8</property>
-    <property name="template">template.xml</property>
-    <property name="author">Robert Kausch &lt;robert.kausch@bonkenc.org&gt;</property>
-    <property name="url">http://www.bonkenc.org/</property>
-  </info>
-  <data>
-    <entry id="1" string="File">ملف</entry>
-    <entry id="2" string="Options">خيارات</entry>
-    <entry id="3" string="Encode">حدث</entry>
-    <entry id="4" string="Add">اضف</entry>
-    <entry id="5" string="Remove">احذف</entry>
-    <entry id="6" string="Clear joblist">امسح القائمة</entry>
-    <entry id="7" string="Exit">إنهاء</entry>
-    <entry id="8" string="General settings...">الإعدادات العامة...</entry>
-    <entry id="9" string="Configure selected encoder...">إعدادات المشفر...</entry>
-    <entry id="12" string="Start encoding">ابدأ</entry>
-    <entry id="13" string="Stop encoding">توقف</entry>
-    <entry id="14" string="Encoding file:">ملف:</entry>
-    <entry id="15" string="Time left:">الوقت:</entry>
-    <entry id="16" string="Percent done:">بالمئة:</entry>
-    <entry id="17" string="Selected encoder:">المشفر:</entry>
-    <entry id="18" string="File progress:">العملية:</entry>
-    <entry id="19" string="Output dir.:">دليل:</entry>
-    <entry id="20" string="%1 file(s) in joblist:">عدد المهام في الانتظار: %1</entry>
-    <entry id="21" string="none">لا يوجد</entry>
-    <entry id="22" string="Help topics...">محتويات...</entry>
-    <entry id="31" string="Error">خطأ</entry>
-    <entry id="38" string="All Files">كل الملفات</entry>
-    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">هذا البرنامج يوزع تحت بنود رخصة&#10;GNU General Public License (GPL)</entry>
-    <entry id="43" string="CDDB query">أسترجاع CDDB</entry>
-    <entry id="44" string="About %1">حول %1</entry>
-    <entry id="49" string="OK">موافق</entry>
-    <entry id="50" string="Cancel">إلغاء</entry>
-    <entry id="54" string="Quality">الجودة</entry>
-    <entry id="55" string="Encoders">المشفر</entry>
-    <entry id="56" string="Language">اللغة</entry>
-    <entry id="57" string="Show title info">أظهر معلومات المؤلف</entry>
-    <entry id="58" string="General settings setup">الإعدادات العامة</entry>
-    <entry id="59" string="Configure encoder">مجهول</entry>
-    <entry id="60" string="Encoder">المشفر</entry>
-    <entry id="61" string="Output directory">دليل</entry>
-    <entry id="62" string="Browse">استعراض</entry>
-    <entry id="64" string="Encoding">التشفير</entry>
-    <entry id="65" string="Author">المؤلف</entry>
-    <entry id="66" string="URL">وصلة</entry>
-    <entry id="67" string="Information">معلومات</entry>
-    <entry id="68" string="Select language:">اللغة:</entry>
-    <entry id="150" string="CDDB server:">الخادم:</entry>
-    <entry id="151" string="Port:">منفذ:</entry>
-    <entry id="157" string="eMail address:">عنوان بريدي:</entry>
-    <entry id="167" string="HTTP settings">إعدادات HTTP</entry>
-    <entry id="168" string="Proxy settings">بروكسي</entry>
-    <entry id="182" string="Title">عنوان</entry>
-    <entry id="183" string="Track">المسار</entry>
-    <entry id="184" string="Length">المدة</entry>
-    <entry id="185" string="Size">الحجم</entry>
-    <entry id="186" string="Artist">الفنان</entry>
-    <entry id="187" string="Year">السنة</entry>
-    <entry id="188" string="Genre">النوع</entry>
-    <entry id="189" string="Album">الألبوم</entry>
-    <entry id="192" string="Default comment string:">تعليق المستخدم:</entry>
-    <entry id="196" string="Database">تحديث</entry>
-    <entry id="200" string="Submit">أرسل</entry>
-    <entry id="208" string="Help">مساعدة</entry>
-    <entry id="209" string="index_en.html">index.html</entry>
-    <entry id="210" string="Plug-ins">الملحقات</entry>
-    <entry id="211" string="Input plug-ins">إدخال</entry>
-    <entry id="212" string="Output plug-ins">الإخراج</entry>
-    <entry id="213" string="Configure">عرّف</entry>
-    <entry id="214" string="About">حَوْل</entry>
-    <entry id="215" string="Play">قراءة</entry>
-    <entry id="216" string="Stop">توقف</entry>
-  </data>
+ <info>
+  <property name="program">BonkEnc</property>
+  <property name="version">1.0</property>
+  <property name="language">Arabic / عربي</property>
+  <property name="righttoleft">true</property>
+  <property name="encoding">UTF-8</property>
+  <property name="template">template.xml</property>
+  <property name="author">Robert Kausch &lt;robert.kausch@bonkenc.org&gt;</property>
+  <property name="url">http://www.bonkenc.org/</property>
+ </info>
+ <data>
+  <entry id="1" string="File">ملف</entry>
+  <entry id="2" string="Options">خيارات</entry>
+  <entry id="3" string="Encode">حدث</entry>
+  <entry id="4" string="Add">اضف</entry>
+  <entry id="5" string="Remove">احذف</entry>
+  <entry id="6" string="Clear joblist">امسح القائمة</entry>
+  <entry id="7" string="Exit">إنهاء</entry>
+  <entry id="8" string="General settings...">الإعدادات العامة...</entry>
+  <entry id="9" string="Configure selected encoder...">إعدادات المشفر...</entry>
+  <entry id="12" string="Start encoding">ابدأ</entry>
+  <entry id="13" string="Stop encoding">توقف</entry>
+  <entry id="14" string="Encoding file:">ملف:</entry>
+  <entry id="15" string="Time left:">الوقت:</entry>
+  <entry id="16" string="Percent done:">بالمئة:</entry>
+  <entry id="17" string="Selected encoder:">المشفر:</entry>
+  <entry id="18" string="File progress:">العملية:</entry>
+  <entry id="19" string="Output dir.:">دليل:</entry>
+  <entry id="20" string="%1 file(s) in joblist:">عدد المهام في الانتظار: %1</entry>
+  <entry id="21" string="none">لا يوجد</entry>
+  <entry id="22" string="Help topics...">محتويات...</entry>
+  <entry id="31" string="Error">خطأ</entry>
+  <entry id="38" string="All Files">كل الملفات</entry>
+  <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">هذا البرنامج يوزع تحت بنود رخصة&#10;GNU General Public License (GPL)</entry>
+  <entry id="43" string="CDDB query">أسترجاع CDDB</entry>
+  <entry id="44" string="About %1">حول %1</entry>
+  <entry id="49" string="OK">موافق</entry>
+  <entry id="50" string="Cancel">ألغ</entry>
+  <entry id="51" string="Encoding Mode">منهج الترميز</entry>
+  <entry id="52" string="Variable Bitrate">معدل البت المتغير</entry>
+  <entry id="53" string="Average Bitrate">المعدل المتوسط للبت</entry>
+  <entry id="54" string="Quality">الجودة</entry>
+  <entry id="55" string="Encoders">المشفر</entry>
+  <entry id="56" string="Language">اللغة</entry>
+  <entry id="57" string="Show title info">أظهر معلومات المؤلف</entry>
+  <entry id="58" string="General settings setup">الإعدادات العامة</entry>
+  <entry id="59" string="Configure encoder">مجهول</entry>
+  <entry id="60" string="Encoder">المشفر</entry>
+  <entry id="61" string="Output directory">دليل</entry>
+  <entry id="62" string="Browse">استعراض</entry>
+  <entry id="64" string="Encoding">التشفير</entry>
+  <entry id="65" string="Author">المؤلف</entry>
+  <entry id="66" string="URL">وصلة</entry>
+  <entry id="67" string="Information">معلومات</entry>
+  <entry id="68" string="Select language:">اللغة:</entry>
+  <entry id="80" string="Bitrate">معدل البت</entry>
+  <entry id="81" string="Copyright bit">محفوظ الحقوق</entry>
+  <entry id="83" string="Original bit">الأصلي</entry>
+  <entry id="84" string="Channels">القنوات</entry>
+  <entry id="89" string="Dual channel encoding">ثنائي القناة</entry>
+  <entry id="92" string="Stereo mode">وضع الستيرٍٍِِيو</entry>
+  <entry id="117" string="Stereo">ستيرٍٍِِيو</entry>
+  <entry id="118" string="Joint Stereo">مفصل الستيرٍٍِِيو</entry>
+  <entry id="138" string="Set Highpass frequency (Hz):">طبق مرشّح المرور العالى  تحت</entry>
+  <entry id="139" string="Set Highpass width (Hz):">عرض مرشّح المرور المرتفع:</entry>
+  <entry id="141" string="Set Lowpass frequency (Hz):">طبق مرشّح المرور ال&amp;منخفض  فوق:</entry>
+  <entry id="142" string="Set Lowpass width (Hz):">عرض مرشّح المرور المنخفض:</entry>
+  <entry id="150" string="CDDB server:">خادم CDDB:</entry>
+  <entry id="151" string="Port:">منفذ:</entry>
+  <entry id="153" string="No freedb entry for this disk.">لا تسجيل موجود</entry>
+  <entry id="157" string="eMail address:">عنوان بريدي:</entry>
+  <entry id="160" string="Multiple matches found">تسجيل متعدد موجود</entry>
+  <entry id="167" string="HTTP settings">إعدادات HTTP</entry>
+  <entry id="168" string="Proxy settings">بروكسي</entry>
+  <entry id="182" string="Title">عنوان</entry>
+  <entry id="183" string="Track">المسار</entry>
+  <entry id="184" string="Length">المدة</entry>
+  <entry id="185" string="Size">الحجم</entry>
+  <entry id="186" string="Artist">الفنان</entry>
+  <entry id="187" string="Year">السنة</entry>
+  <entry id="188" string="Genre">النوع</entry>
+  <entry id="189" string="Album">الألبوم</entry>
+  <entry id="192" string="Default comment string:">تعليق المستخدم:</entry>
+  <entry id="193" string="unknown artist">فنان مجهول</entry>
+  <entry id="194" string="unknown title">عنوان مجهول</entry>
+  <entry id="196" string="Database">تحديث</entry>
+  <entry id="200" string="Submit">أرسل</entry>
+  <entry id="208" string="Help">مساعدة</entry>
+  <entry id="209" string="index_en.html">index.html</entry>
+  <entry id="210" string="Plug-ins">الملحقات</entry>
+  <entry id="211" string="Input plug-ins">إدخال</entry>
+  <entry id="212" string="Output plug-ins">الإخراج</entry>
+  <entry id="213" string="Configure">عرّف</entry>
+  <entry id="214" string="About">حَوْل</entry>
+  <entry id="215" string="Play">قراءة</entry>
+  <entry id="216" string="Stop">توقف</entry>
+  <entry id="229" string="unknown album">ألبوم مجهول</entry>
+  <entry id="231" string="Select all">اختر الكل</entry>
+  <entry id="232" string="Select none">انتقي الكل</entry>
+  <entry id="234" string="Show Tip of the Day">اعرض تلميحة اليوم</entry>
+  <entry id="253" string="Unicode">يونيكود</entry>
+  <entry id="258" string="File format">تنسيق الملف</entry>
+  <entry id="263" string="Sampling rate">معدل العينة</entry>
+  <entry id="266" string="Mono">مونو</entry>
+  <entry id="307" string="Directory">المجلّد</entry>
+  <entry id="309" string="Choose directory:">اختر مجلد:</entry>
+  <entry id="335" string="User name:">اسم المستخدم:</entry>
+  <entry id="336" string="Password:">كلمة المرور:</entry>
+  <entry id="344" string="Various artists">متعدد الفنانين</entry>
+  <entry id="345" string="Data track">البيانات</entry>
+  <entry id="352" string="Skip">تخطى</entry>
+  <entry id="356" string="File already exists">الملف موجود سابقا</entry>
+  <entry id="385" string="Cannot access input file: %1">لا أستطيع الوصول إلى %1</entry>
+  <entry id="386" string="Cannot create output file: %1">تعذر إنشاء الملف %1</entry>
+  <entry id="387" string="File not found">الملفّ غير موجود</entry>
+  <entry id="388" string="Unknown file type">نوع الملف غير معروف</entry>
+  <entry id="389" string="Unsupported audio format">تنسيق لا مدعوم</entry>
+  <entry id="390" string="Unknown error">خطأ غير معروف</entry>
+  <entry id="404" string="Target bitrate">هدف معدل البت</entry>
+ </data>
 </LangFile>

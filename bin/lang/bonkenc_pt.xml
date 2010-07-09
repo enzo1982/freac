@@ -2,13 +2,13 @@
 <LangFile>
  <info>
   <property name="program">BonkEnc</property>
-  <property name="version">1.0</property>
+  <property name="version">1.0.15</property>
   <property name="language">Portuguese / Português</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
   <property name="author">José Gonçalves</property>
-  <property name="url">http://www.bonkenc.org/</property>
+  <property name="url">http://www.eufisica.com/</property>
  </info>
  <data>
   <entry id="1" string="File">Ficheiro</entry>
@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa é distribuido conforme os termos&#10;da licença GNU (General Public License).</entry>
   <entry id="43" string="CDDB query">Pesquisa CDDB</entry>
   <entry id="44" string="About %1">Sobre o %1</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Não há opções de configuração para o filtro de Saída WAVE!</entry>
-  <entry id="46" string="WAVE Out filter">Filtro de Saída WAVE</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Não há opções de configuração para o filtro de Saída WAVE!</entry>
+  <entry id="46" string="Windows Wave file output">Filtro de Saída WAVE</entry>
   <entry id="47" string="Cannot change settings while encoding!">Não se pode mudar as opções durante a codificação!</entry>
   <entry id="48" string="%1 encoder configuration">Configuração do codificador %1</entry>
   <entry id="49" string="OK">OK</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Ler o CD na inserção</entry>
   <entry id="248" string="Eject disk after ripping">Ejectar CD após a extracção</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Codificar 'On-The-Fly'</entry>
-  <entry id="250" string="Keep ripped wave files">Manter os ficheiros wav</entry>
+  <entry id="250" string="Keep ripped Wave files">Manter os ficheiros wav</entry>
   <entry id="251" string="ripping/decoding">extraindo/codificando</entry>
   <entry id="252" string="encoding">codificando</entry>
   <entry id="253" string="Unicode">Unicode</entry>
@@ -386,5 +386,26 @@
   <entry id="382" string="Apodization function(s):">Funções de apodização:</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">Pode-se especificar várias funções separadas por ponto e vírgula.</entry>
   <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">Ao iniciar, o BonkEnc pode verificar automaticamente&#10;se há alguma actualização disponível.&#10;&#10;Deseja que o BonkEnc verifique as actualizaçãoes&#10;automaticamente ao iniciar?</entry>
+  <entry id="385" string="Cannot access input file: %1">Não é possível aceder ao ficheiro de entrada: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">Não é possível criar ficheiro de saída: %1</entry>
+  <entry id="387" string="File not found">Ficheiro não encontrado</entry>
+  <entry id="388" string="Unknown file type">Tipo de ficheiro desconhecido</entry>
+  <entry id="389" string="Unsupported audio format">Formato de áudio não suportado</entry>
+  <entry id="390" string="Unknown error">Erro desconhecido</entry>
+  <entry id="391" string="Replace existing comments with default comment">Substituir comentários existentes pelo comentário padrão</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Os ficheiros seleccionados não podem ser combinados&#10;num único ficheiro devido ao formato das amostras ser&#10;diferente.&#10;Por favor converta todos os ficheiros para o mesmo formato.</entry>
+  <entry id="393" string="Write WMA metadata info">Escrever informação de metadados WMA</entry>
+  <entry id="394" string="WMA metadata encoding:">WMA codificação de metadados:</entry>
+  <entry id="395" string="Select codec">Seleccionar codificador</entry>
+  <entry id="396" string="Select codec format">Selecionar formato do codificador</entry>
+  <entry id="397" string="Codec settings">Propriedades do codificador</entry>
+  <entry id="398" string="Use codec">Utilizar codificador</entry>
+  <entry id="399" string="Use format">Utilizar formato</entry>
+  <entry id="400" string="Write uncompressed WMA files">Escrever ficheiros WMA descomprimidos</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Seleccionar formato automático com base nas configurações e formato de entrada</entry>
+  <entry id="402" string="Use VBR encoding">Utilizar codificação VBR</entry>
+  <entry id="403" string="Use 2-pass encoding">Utilizar codificação de dupla passagem</entry>
+  <entry id="404" string="Target bitrate">Razão de bit alvo</entry>
+  <entry id="405" string="Set drive speed limit:">Especificar velocidade limite do leitor:</entry>
  </data>
 </LangFile>

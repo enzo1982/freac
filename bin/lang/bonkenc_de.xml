@@ -55,8 +55,8 @@
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Dieses Programm wird unter den Bedingungen der&#10;GNU General Public License (GPL) vertrieben.</entry>
     <entry id="43" string="CDDB query">CDDB-Abfrage</entry>
     <entry id="44" string="About %1">Über %1</entry>
-    <entry id="45" string="No options can be configured for the WAVE Out filter!">Für den WAVE-Out-Filter können keine Optionen konfiguriert werden!</entry>
-    <entry id="46" string="WAVE Out filter">WAVE-Out-Filter</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Für Windows Wave-Datei Ausgabe können keine Optionen konfiguriert werden!</entry>
+    <entry id="46" string="Windows Wave file output">Windows Wave-Datei Ausgabe</entry>
     <entry id="47" string="Cannot change settings while encoding!">Während der Codierung können keine Einstellungen verändert werden!</entry>
     <entry id="48" string="%1 encoder configuration">%1 Codierer-Konfiguration</entry>
     <entry id="49" string="OK">OK</entry>
@@ -237,12 +237,12 @@
     <entry id="233" string="Toggle selection">Auswahl umkehren</entry>
     <entry id="234" string="Show Tip of the Day">Tipp des Tages anzeigen</entry>
     <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc ist in %1 Sprachen verfügbar. Wenn Ihre Sprache nicht&#10;verfügbar ist, können Sie BonkEnc mit dem 'smooth Translator'&#10;leicht übersetzen.</entry>
-    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc kommt mit den LAME, Ogg Vorbis, FAAC, FLAC und&#10;Bonk Codierern. Ein Codierer für das VQF Format ist auf der&#10;BonkEnc Webseite verfügbar: %1</entry>
-    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc kann Winamp 2 Input Plugins verwenden, um mehr&#10;Dateiformate zu lesen. Kopieren Sie die in_*.dll Dateien in das&#10;BonkEnc/plugins Verzeichnis, um diese Formate für BonkEnc&#10;verfügbar zu machen.</entry>
-    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Mit BonkEnc können Sie freedb-CD-Datenbankeinträge mit&#10;Unicode-Zeichen verarbeiten. Wenn Sie also CDs mit&#10;nicht-Lateinischen Zeichen im Künstler- oder Titelnamen besitzen,&#10;können Sie mit BonkEnc korrekte freedb-Einträge erstellen.</entry>
-    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Um Lesefehler beim Rippen zu korrigieren, können Sie die Jitter&#10;Korrektur auf der CDRip-Seite in BonkEnc's Konfigurationsdialog&#10;aktivieren. Falls das nicht hilft, versuchen Sie einen der&#10;Paranoia-Modi zu verwenden.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Haben Sie Vorschläge zur Verbesserung von BonkEnc? Sie&#10;können Ihre Ideen über den Tracker auf der BonkEnc SourceForge&#10;Projektseite eingeben - %1&#10;oder senden sie eine eMail an %2.</entry>
-    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Mögen Sie BonkEnc? BonkEnc ist kostenlos verfügbar, aber Sie&#10;können mit Spenden an das BonkEnc-Projekt helfen, die&#10;Entwicklung zu finanzieren. Sie können mit PayPal Geld an&#10;%1 senden.&#10;Besuchen Sie %2, um mehr&#10;Informationen zu erhalten.</entry>
+    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc wird mit den Codierern LAME, Ogg Vorbis, FAAC, FLAC&#10;und Bonk ausgeliefert. Ein Codierer für das VQF-Format ist auf&#10;der BonkEnc Webseite verfügbar: %1</entry>
+    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc kann Winamp 2 Eingabe-Plugins verwenden, um mehr&#10;Dateiformate zu lesen. Kopieren Sie die in_*.dll Dateien in das&#10;Verzeichnis BonkEnc/plugins, um diese Formate für BonkEnc&#10;verfügbar zu machen.</entry>
+    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">Mit BonkEnc können Sie freedb-CD-Datenbankeinträge mit&#10;Unicode-Zeichen verarbeiten. Wenn Sie also CDs mit nicht-&#10;lateinischen Zeichen im Künstler- oder Titelnamen besitzen,&#10;können Sie mit BonkEnc korrekte freedb-Einträge erstellen.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Um Lesefehler beim Rippen zu korrigieren, können Sie die Jitter&#10;Korrektur auf der CDRip-Seite im BonkEnc-Konfigurationsdialog&#10;aktivieren. Falls das nicht hilft, versuchen Sie einen&#10;Paranoia-Modus zu verwenden.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">Haben Sie Vorschläge zur Verbesserung von BonkEnc? Sie&#10;können Ihre Ideen über den Tracker auf der BonkEnc SourceForge&#10;Projektseite eingeben - %1&#10;oder senden Sie eine eMail an %2.</entry>
+    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">Mögen Sie BonkEnc? BonkEnc ist kostenlos verfügbar, aber Sie&#10;können mit Spenden an das BonkEnc-Projekt helfen, die&#10;Entwicklung zu finanzieren. Sie können mit PayPal Geld an&#10;%1 senden.&#10;&#10;Besuchen Sie %2, um mehr&#10;Informationen zu erhalten.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate / Qualität</entry>
     <entry id="243" string="Check for updates now">Jetzt auf Aktualisierungen überprüfen</entry>
     <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Es sind neue Upates für BonkEnc online verfügbar!&#10;Möchten Sie jetzt eine Liste der neuen Updates sehen?</entry>
@@ -251,7 +251,7 @@
     <entry id="247" string="Read CD contents on insert">CD-Inhalt autmatisch lesen</entry>
     <entry id="248" string="Eject disk after ripping">Automatisch auswerfen</entry>
     <entry id="249" string="Encode 'On-The-Fly'">'On-The-Fly' codieren</entry>
-    <entry id="250" string="Keep ripped wave files">Wave Dateien behalten</entry>
+    <entry id="250" string="Keep ripped Wave files">Wave-Dateien behalten</entry>
     <entry id="251" string="ripping/decoding">Rippen/Decodieren</entry>
     <entry id="252" string="encoding">Codieren</entry>
     <entry id="253" string="Unicode">Unicode</entry>
@@ -405,7 +405,7 @@
     <entry id="401" string="Automatically select format based on settings and input format">Passendes Format automatisch auswählen</entry>
     <entry id="402" string="Use VBR encoding">VBR-Codierung</entry>
     <entry id="403" string="Use 2-pass encoding">2-Pass-Codierung</entry>
-    <entry id="404" string="Target bitrate:">Zielbitrate:</entry>
+    <entry id="404" string="Target bitrate">Zielbitrate</entry>
     <entry id="405" string="Set drive speed limit:">Geschwindigkeit begrenzen:</entry>
   </data>
 </LangFile>

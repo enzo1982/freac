@@ -297,27 +297,30 @@ Void BonkEnc::Utilities::UpdateGenreList(List *list, const String &genre)
 	FillGenreList(list);
 }
 
-String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool repSlash)
+String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool replaceSlash)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+
+	Bool	 useUnicode	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
+	Bool	 replaceSpaces	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
 
 	String	 rVal;
 
 	for (Int k = 0, b = 0; k < string.Length(); k++)
 	{
-		if	(string[k] == '\"')		{ rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
-		else if (string[k] == '?')		b--;
-		else if (string[k] == '|')		rVal[k + b] = '_';
-		else if (string[k] == '*')		b--;
-		else if (string[k] == '<')		rVal[k + b] = '(';
-		else if (string[k] == '>')		rVal[k + b] = ')';
-		else if (string[k] == ':')		b--;
-		else if (string[k] == '/' && repSlash)	rVal[k + b] = '-';
-		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '-';
-		else if (string[k] >= 256 &&
-			(!config->useUnicodeNames ||
-			 !Setup::enableUnicode))	rVal[k + b] = '#';
-		else					rVal[k + b] = string[k];
+		if	(string[k] == '\"')			{ rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
+		else if (string[k] == '?')			b--;
+		else if (string[k] == '|')			rVal[k + b] = '_';
+		else if (string[k] == '*')			b--;
+		else if (string[k] == '<')			rVal[k + b] = '(';
+		else if (string[k] == '>')			rVal[k + b] = ')';
+		else if (string[k] == ':')			b--;
+		else if (string[k] == '/'  && replaceSlash)	rVal[k + b] = '-';
+		else if (string[k] == '\\' && replaceSlash)	rVal[k + b] = '-';
+		else if (string[k] == ' '  && replaceSpaces)	rVal[k + b] = '_';
+		else if (string[k] >= 256  &&
+			(!useUnicode || !Setup::enableUnicode))	rVal[k + b] = '#';
+		else						rVal[k + b] = string[k];
 	}
 
 	return rVal;

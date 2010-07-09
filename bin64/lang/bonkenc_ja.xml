@@ -2,7 +2,7 @@
 <LangFile>
  <info>
   <property name="program">BonkEnc</property>
-  <property name="version">1.0.14</property>
+  <property name="version">1.0.15</property>
   <property name="language">Japanese / 日本語</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">このプログラムは、GNU General Public License&#10;(GPL) の条件下で配布されています。</entry>
   <entry id="43" string="CDDB query">CDDB 問い合わせ</entry>
   <entry id="44" string="About %1">%1 について</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Wave 出力フィルタには設定項目はありません</entry>
-  <entry id="46" string="WAVE Out filter">Wave 出力フィルタ</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Wave 出力フィルタには設定項目はありません</entry>
+  <entry id="46" string="Windows Wave file output">Wave 出力フィルタ</entry>
   <entry id="47" string="Cannot change settings while encoding!">エンコード中に設定変更は出来ません</entry>
   <entry id="48" string="%1 encoder configuration">%1 エンコーダの設定</entry>
   <entry id="49" string="OK">OK</entry>
@@ -210,7 +210,7 @@
   <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
   <entry id="207" string="Query CDDB database">CDDB へ問い合わせ</entry>
   <entry id="208" string="Help">ヘルプ</entry>
-  <entry id="209" string="index_en.html">index_en.html</entry>
+  <entry id="209" string="index_en.html">index.html</entry>
   <entry id="210" string="Plug-ins">プラグイン</entry>
   <entry id="211" string="Input plug-ins">入力プラグイン</entry>
   <entry id="212" string="Output plug-ins">出力プラグイン</entry>
@@ -237,12 +237,12 @@
   <entry id="233" string="Toggle selection">選択の切り替え</entry>
   <entry id="234" string="Show Tip of the Day">今日の Tip を表示</entry>
   <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application.">BonkEnc は %1 種類の言語で利用可能です。もしあなたの&#10;使用言語が利用できない場合、'smooth Translator' を&#10;使って簡単に BonkEnc を翻訳する事が出来ます。</entry>
-  <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc は LAME、Ogg Vorbis、FAAC、FLAC、及び Bonk エンコーダを&#10;サポートしています。VQF 形式のエンコーダは下記で公開されています。&#10;BonkEnc のウェブサイト：%1</entry>
-  <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc は Winamp2 の入力プラグインを使って対応形式を追加する&#10;事が出来ます。BonkEnc で他の形式を読み込めるようにするには、&#10;in_*.dll を BonkEnc/plugins にコピーしてください。</entry>
-  <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">BonkEnc で freedb CD データベースに Unicode 文字を含むデータを&#10;送信できます。あなたの持っている英文字以外のアーティスト名や&#10;タイトル名の CD データを、BonkEnc で freedb に送信できます。</entry>
-  <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピング時の読み込みエラーを補正するには、設定ダイアログの&#10;CD Rip タブにある'ジッター補正有効をチェックしてください。&#10;それで解決しない場合は、CD 詳細設定モードのいずれかを試してください。</entry>
-  <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">BonkEnc の改善についての意見があれば、SourceForge にある&#10;BonkEnc のプロジェクトページ(%1)&#10;のトラッカーか、%2 へのメールで&#10;あなたのアイディアを送信する事が出来ます。</entry>
-  <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">BonkEnc が気に入りましたか？BonkEnc は無料で利用できますが、&#10;BonkEnc プロジェクトに寄付する事で開発を資金援助する事が出来ます。&#10;あなたは %1 へ PayPal を使って送金できます。&#10;詳細は %2 を参照してください。</entry>
+  <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1">BonkEnc は LAME、Ogg Vorbis、FAAC、FLAC、及び Bonk&#10;エンコーダをサポートしています。&#10;VQF 形式のエンコーダは下記で公開されています。&#10;BonkEnc のウェブサイト：%1</entry>
+  <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats.">BonkEnc は Winamp2 入力プラグインを使って対応形式を&#10;追加する事が出来ます。BonkEnc で他の形式を読み込める&#10;ようにするには、in_*.dll を BonkEnc/plugins にコピー&#10;してください。</entry>
+  <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc.">BonkEnc で freedb CD データベースに Unicode 文字を含む&#10;データを送信できます。あなたの持っている英文字以外の&#10;アーティスト名やタイトル名の CD データを、BonkEnc で&#10;freedb に送信できます。</entry>
+  <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピングの読み込みエラー補正には、設定ダイアログの&#10;CD Rip タブの 'ジッター補正有効' をチェックしてください。&#10;それで解決しない場合は、CD 詳細設定モードのいずれかを&#10;試してください。</entry>
+  <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2.">BonkEnc の改善につき意見があれば、SourceForge にある&#10;BonkEnc のプロジェクトページ(%1)&#10;のトラッカーか、%2 へのメールで&#10;あなたのアイディアを送信する事が出来ます。</entry>
+  <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details.">BonkEnc が気に入りましたか？ これは無料で利用できますが、&#10;BonkEnc プロジェクトに寄付する事で開発を資金援助が出来ます。&#10;あなたは %1 へ PayPal を使って送金できます。&#10;詳細は %2 を参照してください。</entry>
   <entry id="242" string="Bitrate / Quality">ビットレート/品質</entry>
   <entry id="243" string="Check for updates now">アップデートを確認</entry>
   <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">BonkEnc の新規アップデートがオンラインで利用可能です。&#10;利用できるアップデートのリストを表示しますか？</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">CD 挿入時に読み込みを行う</entry>
   <entry id="248" string="Eject disk after ripping">リッピング後ディスクを取り出す</entry>
   <entry id="249" string="Encode 'On-The-Fly'">オン ザ フライでエンコード</entry>
-  <entry id="250" string="Keep ripped wave files">リップした wave ファイルを保持</entry>
+  <entry id="250" string="Keep ripped Wave files">リップした Wave ファイルを保持</entry>
   <entry id="251" string="ripping/decoding">リッピング/デコード</entry>
   <entry id="252" string="encoding">エンコード</entry>
   <entry id="253" string="Unicode">Unicode</entry>
@@ -262,7 +262,7 @@
   <entry id="258" string="File format">ファイル形式</entry>
   <entry id="259" string="Allow ID3v2 tags in AAC files">AAC ファイルで ID3v2 タグを使用</entry>
   <entry id="260" string="Note:">注意：</entry>
-  <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">いくつかのプレイヤーでは ID3 タグ付きの AAC ファイル再生で&#10;問題が発生する場合が有ります。このオプションはあなたの&#10;プレイヤーで ID3 タグが扱える事を確認してから使用してください。</entry>
+  <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">幾つかのプレイヤーでは ID3 タグ付き AAC ファイル再生で&#10;問題が発生する場合が有ります。このオプションはあなたの&#10;プレイヤーで ID3 タグが扱えるか確認後に使用してください。</entry>
   <entry id="262" string="FLAC Files">FLAC ファイル</entry>
   <entry id="263" string="Sampling rate">サンプリング レート</entry>
   <entry id="264" string="Sample resolution">サンプル ビット数</entry>
@@ -339,7 +339,7 @@
   <entry id="335" string="User name:">ユーザ名：</entry>
   <entry id="336" string="Password:">パスワード：</entry>
   <entry id="337" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
-  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元のファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元ファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP プロトコルは HTTP プロキシを用いることはできません!&#10;&#10;HTTP プロトコルを使用するよう変更しますか?</entry>
   <entry id="340" string="Playlists">プレイリスト</entry>
   <entry id="341" string="Create playlists">プレイリスト作成</entry>
@@ -394,5 +394,18 @@
   <entry id="390" string="Unknown error">不明なエラー</entry>
   <entry id="391" string="Replace existing comments with default comment">既存のコメントをデフォルトのコメントに置き換え</entry>
   <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">サンプル形式が異なる為、選択ファイル群を１つの&#10;ファイルに結合出来ません。&#10;&#10;最初に全てのファイルを同じサンプル形式に変換して下さい。</entry>
+  <entry id="393" string="Write WMA metadata info">WMA メタデータ情報を書き込む</entry>
+  <entry id="394" string="WMA metadata encoding:">WMA メタデータの文字コード：</entry>
+  <entry id="395" string="Select codec">コーデックの選択</entry>
+  <entry id="396" string="Select codec format">コーデック形式の選択</entry>
+  <entry id="397" string="Codec settings">コーデック設定</entry>
+  <entry id="398" string="Use codec">使用コーデック</entry>
+  <entry id="399" string="Use format">使用形式</entry>
+  <entry id="400" string="Write uncompressed WMA files">非圧縮 WMA ファイルで書き込み</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">設定と入力形式より自動で形式を選択</entry>
+  <entry id="402" string="Use VBR encoding">VBRエンコードを使用</entry>
+  <entry id="403" string="Use 2-pass encoding">2-pass エンコードを使用</entry>
+  <entry id="404" string="Target bitrate">目標ビットレート</entry>
+  <entry id="405" string="Set drive speed limit:">ドライブ速度制限の設定：</entry>
  </data>
 </LangFile>

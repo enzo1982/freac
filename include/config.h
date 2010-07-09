@@ -50,6 +50,27 @@ namespace BonkEnc
 			static const String	 SettingsLastAddedPatternID;
 			static const String	 SettingsLastAddedPatternDefault;
 
+			static const String	 SettingsEncodeOnTheFlyID;
+			static const Bool	 SettingsEncodeOnTheFlyDefault;
+
+			static const String	 SettingsKeepWaveFilesID;
+			static const Bool	 SettingsKeepWaveFilesDefault;
+
+			static const String	 SettingsEncodeToSingleFileID;
+			static const Bool	 SettingsEncodeToSingleFileDefault;
+
+			static const String	 SettingsWriteToInputDirectoryID;
+			static const Bool	 SettingsWriteToInputDirectoryDefault;
+
+			static const String	 SettingsAllowOverwriteSourceID;
+			static const Bool	 SettingsAllowOverwriteSourceDefault;
+
+			static const String	 SettingsFilenamesAllowUnicodeID;
+			static const Bool	 SettingsFilenamesAllowUnicodeDefault;
+
+			static const String	 SettingsFilenamesReplaceSpacesID;
+			static const Bool	 SettingsFilenamesReplaceSpacesDefault;
+
 			/* Category Joblist
 			 */
 			static const String	 JoblistFieldsID;
