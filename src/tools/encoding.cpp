@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,10 +16,10 @@ String BonkEnc::Encoding::GuessEncoding(const char *string)
 	 */
 	if (IsUTF8(string)) return "UTF-8";
 
-	Int	 length = strlen(string);
-	char	 chars[256];
+//	Int	 length = strlen(string);
+//	char	 chars[256];
 
-	InitArray(chars, string);
+//	InitArray(chars, string);
 
 	/* Check if it is a KOI8 variant.
 	 */
@@ -32,11 +32,11 @@ String BonkEnc::Encoding::GuessEncoding(const char *string)
 */
 	/* Check if it is Windows CP-1251.
 	 */
-	if (Sum(chars, 0xC0, 0xDF) + Sum(chars, 0xE0, 0xFF) >= length * 0.3)
+/*	if (Sum(chars, 0xC0, 0xDF) + Sum(chars, 0xE0, 0xFF) >= length * 0.3)
 	{
 		return "CP1251";
 	}
-
+*/
 	/* No idea. Treat it like ISO Latin 1.
 	 */
 	return "ISO-8859-1";
@@ -48,22 +48,22 @@ Bool BonkEnc::Encoding::IsUTF8(const char *string)
 
 	for (Int i = 0; i < length; i++)
 	{
-		if (string[i    ] >= 0x00 && string[i    ] <= 0x7F) {         continue; }
+		if (((unsigned char *) string)[i    ] >= 0x00 && ((unsigned char *) string)[i    ] <= 0x7F) {         continue; }
 
-		if (i < length - 1				   &&
-		    string[i    ] >= 0xC0 && string[i    ] <= 0xDF &&
-		    string[i + 1] >= 0x80 && string[i + 1] <= 0xBF) { i += 1; continue; }
+		if (i < length - 1									   &&
+		    ((unsigned char *) string)[i    ] >= 0xC0 && ((unsigned char *) string)[i    ] <= 0xDF &&
+		    ((unsigned char *) string)[i + 1] >= 0x80 && ((unsigned char *) string)[i + 1] <= 0xBF) { i += 1; continue; }
 
-		if (i < length - 2				   &&
-		    string[i    ] >= 0xE0 && string[i    ] <= 0xEF &&
-		    string[i + 1] >= 0x80 && string[i + 1] <= 0xBF &&
-		    string[i + 2] >= 0x80 && string[i + 2] <= 0xBF) { i += 2; continue; }
+		if (i < length - 2									   &&
+		    ((unsigned char *) string)[i    ] >= 0xE0 && ((unsigned char *) string)[i    ] <= 0xEF &&
+		    ((unsigned char *) string)[i + 1] >= 0x80 && ((unsigned char *) string)[i + 1] <= 0xBF &&
+		    ((unsigned char *) string)[i + 2] >= 0x80 && ((unsigned char *) string)[i + 2] <= 0xBF) { i += 2; continue; }
 
-		if (i < length - 3				   &&
-		    string[i    ] >= 0xF0 && string[i    ] <= 0xF7 &&
-		    string[i + 1] >= 0x80 && string[i + 1] <= 0xBF &&
-		    string[i + 2] >= 0x80 && string[i + 2] <= 0xBF &&
-		    string[i + 3] >= 0x80 && string[i + 3] <= 0xBF) { i += 3; continue; }
+		if (i < length - 3									   &&
+		    ((unsigned char *) string)[i    ] >= 0xF0 && ((unsigned char *) string)[i    ] <= 0xF7 &&
+		    ((unsigned char *) string)[i + 1] >= 0x80 && ((unsigned char *) string)[i + 1] <= 0xBF &&
+		    ((unsigned char *) string)[i + 2] >= 0x80 && ((unsigned char *) string)[i + 2] <= 0xBF &&
+		    ((unsigned char *) string)[i + 3] >= 0x80 && ((unsigned char *) string)[i + 3] <= 0xBF) { i += 3; continue; }
 
 		return False;
 	}

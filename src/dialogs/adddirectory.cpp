@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,54 +15,26 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	Point	 pos;
-	Size	 size;
-
 	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Add directory"), config->wndPos + Point(40, 40), Size(402, 128));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	pos.x = 175;
-	pos.y = 29;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&AddDirectoryDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x -= 88;
-
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
 	btn_ok->onAction.Connect(&AddDirectoryDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x = 7;
-	pos.y = 11;
-	size.cx = 380;
-	size.cy = 37;
+	group_directory	= new GroupBox(BonkEnc::i18n->TranslateString("Directory"), Point(7, 11), Size(380, 37));
 
-	group_directory	= new GroupBox(BonkEnc::i18n->TranslateString("Directory"), pos, size);
+	text_directory	= new Text(BonkEnc::i18n->TranslateString("Choose directory:"), Point(16, 23));
+	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + text_directory->textSize.cx, 20), Size(268 - text_directory->textSize.cx, 0));
 
-	pos.x += 9;
-	pos.y += 12;
-
-	text_directory	= new Text(BonkEnc::i18n->TranslateString("Choose directory:"), pos);
-
-	pos.x += (text_directory->textSize.cx + 7);
-	pos.y -= 3;
-	size.cx = 268 - text_directory->textSize.cx;
-	size.cy = 0;
-
-	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), pos, size);
-
-	pos.x += (size.cx + 8);
-	pos.y -= 1;
-	size.cx = 80;
-
-	btn_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	btn_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(299, 19), Size(80, 0));
 	btn_browse->onAction.Connect(&AddDirectoryDialog::Browse, this);
 
 	Add(mainWnd);

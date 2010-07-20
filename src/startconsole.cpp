@@ -290,7 +290,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		for (Int i = 0; i < files.Length(); i++)
 		{
-			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READONLY);
+			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READ);
 			String		 currentFile = files.GetNth(i);
 
 			if (currentFile.StartsWith("cdda://"))

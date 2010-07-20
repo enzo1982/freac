@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -88,15 +88,17 @@ Int BonkEnc::Playback::PlayThread()
 		Driver		*driver_in = new DriverZero();
 
 		if (in_filename.StartsWith("cdda://"))	f_in = new InStream(STREAM_DRIVER, driver_in);
-		else					f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
+		else					f_in = new InStream(STREAM_FILE, in_filename, IS_READ);
 
 		filter_in->SetAudioTrackInfo(trackInfo);
 
 		f_in->SetPackageSize(6144);
 		f_in->AddFilter(filter_in);
 
-		UnsignedInt	 samples_size = 1024;
-		Int64		 n_loops = (trackInfo.length + samples_size - 1) / samples_size;
+		UnsignedInt	 samples_size	= 1024;
+		Int		 loop		= 0;
+		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
+		Bool		 finished	= False;
 
 		/* Create output component.
 		 */
@@ -112,7 +114,46 @@ Int BonkEnc::Playback::PlayThread()
 		output->SetAudioTrackInfo(trackInfo);
 		output->Activate();
 
-		if (!output->GetErrorState() && trackInfo.length >= 0)
+		if (!output->GetErrorState())
+		{
+			Int64			 position = 0;
+
+			Int			 sample = 0;
+			Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
+
+			while (!stop_playback && !finished)
+			{
+				Int	 step = samples_size;
+
+				if (trackInfo.length >= 0)
+				{
+					if (loop++ >= n_loops) break;
+
+					if (position + step > trackInfo.length) step = trackInfo.length - position;
+				}
+
+				for (Int i = 0; i < step; i++)
+				{
+					if	(format.order == BYTE_INTEL)	sample = f_in->InputNumberIntel(short(format.bits / 8));
+					else if (format.order == BYTE_RAW)	sample = f_in->InputNumberRaw(short(format.bits / 8));
+
+					if (sample == -1 && f_in->GetLastError() == IO_ERROR_NODATA) { step = i; finished = True; break; }
+
+					if	(format.bits ==  8) ((short *) (UnsignedByte *) sample_buffer)[i] = (sample - 128) * 256;
+					else if (format.bits == 16) ((short *) (UnsignedByte *) sample_buffer)[i] = sample;
+					else if (format.bits == 24) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 256;
+					else if (format.bits == 32) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 65536;
+				}
+
+				position += step;
+
+				while (output->CanWrite() < (2 * step) && !stop_playback) S::System::System::Sleep(10);
+
+				output->WriteData(sample_buffer, 2 * step);
+			}
+		}
+
+/*		if (!output->GetErrorState() && trackInfo.length >= 0)
 		{
 			Int64			 position = 0;
 
@@ -193,7 +234,7 @@ Int BonkEnc::Playback::PlayThread()
 				output->WriteData(sample_buffer, 2 * step);
 			}
 		}
-
+*/
 		if (!stop_playback) while (output->IsPlaying()) S::System::System::Sleep(20);
 
 		output->Deactivate();

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,47 +22,27 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 
 	updateJoblist	= config->update_joblist;
 
-	Point	 pos;
-	Size	 size;
-
 	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), config->wndPos + Point(40, 40), Size(552, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	pos.x = 175;
-	pos.y = 29;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&cddbManageDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x -= 88;
-
-	btn_ok		= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok		= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
 	btn_ok->onAction.Connect(&cddbManageDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x = 7;
-	pos.y = 27;
-
-	check_updateJoblist	= new CheckBox(BonkEnc::i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
+	check_updateJoblist	= new CheckBox(BonkEnc::i18n->TranslateString("Update joblist with this information"), Point(7, 27), Size(), &updateJoblist);
 	check_updateJoblist->SetWidth(check_updateJoblist->textSize.cx + 21);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
-	pos.x = 7;
-	pos.y = 10;
+	text_entries	= new Text(BonkEnc::i18n->TranslateString("Downloaded CDDB entries:"), Point(7, 10));
 
-	text_entries	= new Text(BonkEnc::i18n->TranslateString("Downloaded CDDB entries:"), pos);
-
-	pos.y += 19;
-	size.cx = 261;
-	size.cy = 213;
-
-	list_entries	= new ListBox(pos, size);
+	list_entries	= new ListBox(Point(7, 29), Size(261, 213));
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Disc name"), 0);
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Charset"), 100);
 	list_entries->onSelectEntry.Connect(&cddbManageDlg::SelectEntry, this);
@@ -74,29 +54,14 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
 	}
 
-	pos.x += 269;
-	pos.y -= 19;
+	text_preview	= new Text(String(BonkEnc::i18n->TranslateString("Preview")).Append(":"), Point(276, 10));
 
-	text_preview	= new Text(String(BonkEnc::i18n->TranslateString("Preview")).Append(":"), pos);
-
-	pos.y += 19;
-
-	size.cx = 261;
-	size.cy = 186;
-
-	edit_preview	= new MultiEdit(NIL, pos, size, 0);
+	edit_preview	= new MultiEdit(NIL, Point(276, 29), Size(261, 186), 0);
 	edit_preview->Deactivate();
 
-	pos.y += 197;
+	text_charset	= new Text(String(BonkEnc::i18n->TranslateString("Charset")).Append(":"), Point(276, 226));
 
-	text_charset	= new Text(String(BonkEnc::i18n->TranslateString("Charset")).Append(":"), pos);
-
-	pos.x += (text_charset->textSize.cx + 7);
-	pos.y -= 3;
-	size.cx = 254 - text_charset->textSize.cx;
-	size.cy = 0;
-
-	list_charset	= new ListBox(pos, size);
+	list_charset	= new ListBox(Point(283 + text_charset->textSize.cx, 223), Size(254 - text_charset->textSize.cx, 0));
 	list_charset->AddEntry("CP1251");
 	list_charset->AddEntry("ISO-8859-1");
 	list_charset->AddEntry("ISO-8859-2");
@@ -106,22 +71,15 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	list_charset->AddEntry("GBK");
 	list_charset->AddEntry("BIG-5");
 
-	edit_charset	= new EditBox(NIL, pos, size, 0);
+	edit_charset	= new EditBox(NIL, Point(283 + text_charset->textSize.cx, 223), Size(254 - text_charset->textSize.cx, 0), 0);
 	edit_charset->SetDropDownList(list_charset);
 	edit_charset->onInput.Connect(&cddbManageDlg::SetCharset, this);
 
-	pos.x = 188;
-	pos.y = 69;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, pos, size);
+	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	pos.x = 457;
-
-	btn_save	= new Button(BonkEnc::i18n->TranslateString("Save entry"), NIL, pos, size);
+	btn_save	= new Button(BonkEnc::i18n->TranslateString("Save entry"), NIL, Point(457, 69), Size());
 	btn_save->onAction.Connect(&cddbManageDlg::SaveEntry, this);
 	btn_save->SetOrientation(OR_LOWERLEFT);
 

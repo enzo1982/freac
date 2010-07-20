@@ -49,7 +49,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 	{
 		if (!File(String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid))).Exists()) continue;
 
-		InStream	*in = new InStream(STREAM_FILE, String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid)), IS_READONLY);
+		InStream	*in = new InStream(STREAM_FILE, String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid)), IS_READ);
 		String		 result = in->InputString(in->Size());
 
 		delete in;
@@ -132,7 +132,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 
 		if (found == NIL) continue;
 
-		InStream	*in = new InStream(STREAM_FILE, found, IS_READONLY);
+		InStream	*in = new InStream(STREAM_FILE, found, IS_READ);
 		String		 idString = String("#FILENAME=").Append(DiscIDToString(discid));
 		String		 result;
 
@@ -287,8 +287,8 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 		protocol->Write(String("Writing to ").Append(found));
 
-		InStream	*in	  = new InStream(STREAM_FILE, found, IS_READONLY);
-		OutStream	*out	  = new OutStream(STREAM_FILE, String(found).Append(".new"), OS_OVERWRITE);
+		InStream	*in	  = new InStream(STREAM_FILE, found, IS_READ);
+		OutStream	*out	  = new OutStream(STREAM_FILE, String(found).Append(".new"), OS_REPLACE);
 		String		 idString = String("#FILENAME=").Append(cddbInfo.DiscIDToString());
 		Bool		 written  = False;
 
@@ -336,7 +336,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 		protocol->Write("Found Unix style DB.");
 		protocol->Write(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()));
 
-		OutStream	*out = new OutStream(STREAM_FILE, String(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()), OS_OVERWRITE);
+		OutStream	*out = new OutStream(STREAM_FILE, String(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()), OS_REPLACE);
 
 		String	 outputFormat = String::SetOutputFormat("UTF-8");
 

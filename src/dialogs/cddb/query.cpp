@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -24,31 +24,15 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 
 	allowAddToBatch = False;
 
-	Point	 pos;
-	Size	 size;
-
 	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB query"), config->wndPos + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 
-	pos.x = 7;
-	pos.y = 5;
+	text_status		= new Text(NIL, Point(7, 5));
+	prog_status		= new Progressbar(Point(7, 24), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 100, 0);
 
-	text_status		= new Text(NIL, pos);
-
-	pos.y += 19;
-	size.cx = 200;
-	size.cy = 0;
-
-	prog_status		= new Progressbar(pos, size, OR_HORZ, PB_NOTEXT, 0, 100, 0);
-
-	pos.x += 208;
-	pos.y -= 1;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(215, 23), Size());
 	btn_cancel->onAction.Connect(&cddbQueryDlg::Cancel, this);
 
 	Add(mainWnd);

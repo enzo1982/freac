@@ -127,7 +127,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	size.cx = 90;
 	size.cy = 0;
 
-	check_single		= new CheckBox(NIL, pos, size, (Bool *) &currentConfig->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));//&currentConfig->encodeToSingleFile);
+	check_single		= new CheckBox(NIL, pos, size, (Bool *) &currentConfig->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));
 	check_single->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x -= 100;

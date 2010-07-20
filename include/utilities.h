@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -29,6 +29,8 @@ namespace BonkEnc
 			static Void		 ErrorMessage(const String &, const String & = NIL);
 
 			static DecoderComponent	*CreateDecoderComponent(const String &);
+
+			static Bool		 SwitchBufferByteOrder(Buffer<UnsignedByte> &, Int);
 
 			static Void		 FillGenreList(List *);
 			static Void		 UpdateGenreList(List *, const String &);

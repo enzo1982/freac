@@ -79,7 +79,7 @@ Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 		if (node->GetName() == "submit")
 		{
-			InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(node->GetAttributeByName("category")->GetContent()).Append(Directory::GetDirectoryDelimiter()).Append(node->GetContent()), IS_READONLY);
+			InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(node->GetAttributeByName("category")->GetContent()).Append(Directory::GetDirectoryDelimiter()).Append(node->GetContent()), IS_READ);
 
 			if (in->Size() > 0)
 			{

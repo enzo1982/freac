@@ -65,7 +65,6 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	selectedLayer = NIL;
 
 	tree_bonkenc		= new Tree(::BonkEnc::BonkEnc::appName);
-	tree_bonkenc->Open();
 
 	layers.Add(new ConfigureEncoders());
 	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Encoders"), layers.GetLast()));
@@ -108,12 +107,12 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
+	tree_bonkenc->Open();
 	tree_bonkenc->SelectNthEntry(0);
 
 	list_layers->Add(tree_bonkenc);
 
 	tree_components		= new Tree("Components");
-	tree_components->Open();
 
 	tree_encoders		= new Tree("Encoders");
 	tree_decoders		= new Tree("Decoders");
@@ -163,6 +162,8 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	if (tree_dsp->Length()	     > 0) tree_components->Add(tree_dsp);
 	if (tree_extension->Length() > 0) tree_components->Add(tree_extension);
 	if (tree_other->Length()     > 0) tree_components->Add(tree_other);
+
+	tree_components->Open();
 
 	list_layers->Add(tree_components);
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -39,7 +39,7 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 	String		 rFileName = Utilities::CreateDirectoryForFile(fileName);
 
 	String		 format = String::SetOutputFormat("UTF-8");
-	OutStream	*file = new OutStream(STREAM_FILE, rFileName, OS_OVERWRITE);
+	OutStream	*file = new OutStream(STREAM_FILE, rFileName, OS_REPLACE);
 
 	if (file->GetLastError() != IO_ERROR_OK)
 	{
@@ -68,7 +68,7 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 Bool BonkEnc::Playlist::Load(const String &fileName)
 {
 	String		 format = String::SetInputFormat("UTF-8");
-	InStream	*file = new InStream(STREAM_FILE, fileName, IS_READONLY);
+	InStream	*file = new InStream(STREAM_FILE, fileName, IS_READ);
 
 	if (String(file->InputLine()) == "#EXTM3U")
 	{

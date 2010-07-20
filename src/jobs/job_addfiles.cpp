@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -146,16 +146,6 @@ Error BonkEnc::JobAddFiles::Perform()
 				}
 			}
 		}
-
-		if	(track.fileSize > 0)	   track.fileSizeString = S::I18n::Number::GetLocalizedNumberString(track.fileSize);
-
-		if	(track.length >= 0)	   track.lengthString = String::FromInt(Math::Floor(track.length / (track.GetFormat().rate * track.GetFormat().channels) / 60)).Append(":").Append((track.length / (track.GetFormat().rate * track.GetFormat().channels) % 60) < 10 ? "0" : NIL).Append(String::FromInt(track.length / (track.GetFormat().rate * track.GetFormat().channels) % 60));
-		else if (track.approxLength >= 0)  track.lengthString = String("~ ").Append(String::FromInt(Math::Floor(track.approxLength / (track.GetFormat().rate * track.GetFormat().channels) / 60)).Append(":").Append((track.approxLength / (track.GetFormat().rate * track.GetFormat().channels) % 60) < 10 ? "0" : NIL).Append(String::FromInt(track.approxLength / (track.GetFormat().rate * track.GetFormat().channels) % 60)));
-		else				   track.lengthString = "?";
-
-		wchar_t	 sign[2] = { 0x2248, 0 };
-
-		if (Setup::enableUnicode) track.lengthString.Replace("~", sign);
 
 		if (track.origFilename == NIL) track.origFilename = file;
 

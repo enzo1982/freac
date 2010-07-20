@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,9 +15,6 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	Point	 pos;
-	Size	 size;
-
 	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), config->wndPos + Point(80, 80), Size(352, 221));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
@@ -27,80 +24,34 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	register_layer_http	= new Layer(BonkEnc::i18n->TranslateString("HTTP settings"));
 	register_layer_proxy	= new Layer(BonkEnc::i18n->TranslateString("Proxy settings"));
 
-	pos.x = 175;
-	pos.y = 29;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&cddbExtendedSettingsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x -= 88;
-
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
 	btn_ok->onAction.Connect(&cddbExtendedSettingsDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x = 7;
-	pos.y = 7;
-	size.cx = 329;
-	size.cy = 134;
+	reg_register		= new TabWidget(Point(7, 7), Size(329, 134));
 
-	reg_register		= new TabWidget(pos, size);
+	http_group_scripts	= new GroupBox(BonkEnc::i18n->TranslateString("CGI scripts"), Point(7, 11), Size(312, 66));
 
-	pos.x = 7;
-	pos.y = 11;
-	size.cx = 312;
-	size.cy = 66;
+	http_text_query		= new Text(BonkEnc::i18n->TranslateString("CDDB query script:"), Point(16, 24));
+	http_edit_query		= new EditBox(config->freedb_query_path, Point(117, 21), Size(192, 0), 0);
 
-	http_group_scripts	= new GroupBox(BonkEnc::i18n->TranslateString("CGI scripts"), pos, size);
-
-	pos.x = 16;
-	pos.y = 24;
-
-	http_text_query		= new Text(BonkEnc::i18n->TranslateString("CDDB query script:"), pos);
-
-	pos.x += 101;
-	pos.y -= 3;
-	size.cx = 192;
-	size.cy = 0;
-
-	http_edit_query		= new EditBox(config->freedb_query_path, pos, size, 0);
-
-	pos.x = 16;
-	pos.y += 30;
-
-	http_text_submit	= new Text(BonkEnc::i18n->TranslateString("CDDB submit script:"), pos);
-
-	pos.x += 101;
-	pos.y -= 3;
-
-	http_edit_submit	= new EditBox(config->freedb_submit_path, pos, size, 0);
+	http_text_submit	= new Text(BonkEnc::i18n->TranslateString("CDDB submit script:"), Point(16, 51));
+	http_edit_submit	= new EditBox(config->freedb_submit_path, Point(117, 48), Size(192, 0), 0);
 
 	Int	 maxTextSize = Math::Max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
 
 	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->GetY()), Size(285 - maxTextSize, http_edit_query->GetHeight()));
 	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->GetY()), Size(285 - maxTextSize, http_edit_submit->GetHeight()));
 
-	pos.x = 7;
-	pos.y = 11;
-	size.cx = 312;
-	size.cy = 93;
+	proxy_group_proxy	= new GroupBox(BonkEnc::i18n->TranslateString("Proxy settings"), Point(7, 11), Size(312, 93));
 
-	proxy_group_proxy	= new GroupBox(BonkEnc::i18n->TranslateString("Proxy settings"), pos, size);
+	proxy_text_mode		= new Text(BonkEnc::i18n->TranslateString("Proxy type:"), Point(16, 24));
 
-	pos.x = 16;
-	pos.y = 24;
-
-	proxy_text_mode		= new Text(BonkEnc::i18n->TranslateString("Proxy type:"), pos);
-
-	pos.x += 100;
-	pos.y -= 3;
-	size.cx = 185;
-	size.cy = 0;
-
-	proxy_combo_mode	= new ComboBox(pos, size);
+	proxy_combo_mode	= new ComboBox(Point(116, 21), Size(185, 0));
 	proxy_combo_mode->onSelectEntry.Connect(&cddbExtendedSettingsDlg::SetProxyMode, this);
 	proxy_combo_mode->AddEntry(BonkEnc::i18n->TranslateString("no proxy"));
 	proxy_combo_mode->AddEntry("HTTP Forward");
@@ -108,52 +59,22 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_combo_mode->AddEntry("SOCKS v4/v4a");
 	proxy_combo_mode->AddEntry("SOCKS v5");
 
-	pos.x = 16;
-	pos.y += 30;
+	proxy_text_server	= new Text(BonkEnc::i18n->TranslateString("Proxy server:"), Point(16, 51));
+	proxy_edit_server	= new EditBox(config->freedb_proxy, Point(116, 48), Size(100, 0), 0);
 
-	proxy_text_server	= new Text(BonkEnc::i18n->TranslateString("Proxy server:"), pos);
-
-	pos.x += 100;
-	pos.y -= 3;
-	size.cx = 100;
-
-	proxy_edit_server	= new EditBox(config->freedb_proxy, pos, size, 0);
-
-	pos.x += 110;
-	pos.y += 3;
-
-	proxy_text_port		= new Text(BonkEnc::i18n->TranslateString("Port:"), pos);
+	proxy_text_port		= new Text(BonkEnc::i18n->TranslateString("Port:"), Point(226, 51));
 	proxy_text_port->SetPosition(Point(264 - proxy_text_port->textSize.cx, proxy_text_port->GetY()));
 
-	pos.x += 46;
-	pos.y -= 3;
-	size.cx = 37;
-
-	proxy_edit_port		= new EditBox(String::FromInt(config->freedb_proxy_port), pos, size, 5);
+	proxy_edit_port		= new EditBox(String::FromInt(config->freedb_proxy_port), Point(272, 48), Size(37, 0), 5);
 	proxy_edit_port->SetFlags(EDB_NUMERIC);
 
-	pos.x = 16;
-	pos.y += 30;
+	proxy_text_user		= new Text(BonkEnc::i18n->TranslateString("User name:"), Point(16, 78));
+	proxy_edit_user		= new EditBox(config->freedb_proxy_user, Point(116, 75), Size(100, 0), 0);
 
-	proxy_text_user		= new Text(BonkEnc::i18n->TranslateString("User name:"), pos);
-
-	pos.x += 100;
-	pos.y -= 3;
-	size.cx = 100;
-
-	proxy_edit_user		= new EditBox(config->freedb_proxy_user, pos, size, 0);
-
-	pos.x += 110;
-	pos.y += 3;
-
-	proxy_text_password	= new Text(BonkEnc::i18n->TranslateString("Password:"), pos);
+	proxy_text_password	= new Text(BonkEnc::i18n->TranslateString("Password:"), Point(226, 78));
 	proxy_text_password->SetPosition(Point(234 - proxy_text_password->textSize.cx, proxy_text_password->GetY()));
 
-	pos.x += 16;
-	pos.y -= 3;
-	size.cx = 67;
-
-	proxy_edit_password	= new EditBox(config->freedb_proxy_password, pos, size, 0);
+	proxy_edit_password	= new EditBox(config->freedb_proxy_password, Point(242, 75), Size(67, 0), 0);
 	proxy_edit_password->SetFlags(EDB_ASTERISK);
 
 	maxTextSize = Math::Max(Math::Max(proxy_text_mode->textSize.cx, proxy_text_server->textSize.cx), proxy_text_user->textSize.cx);

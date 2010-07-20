@@ -23,11 +23,40 @@ namespace BonkEnc
 		constants:
 			static const String	 CategorySettingsID;
 			static const String	 CategoryJoblistID;
+			static const String	 CategoryRipperID;
 			static const String	 CategoryPlaylistID;
 			static const String	 CategoryTagsID;
+			static const String	 CategoryFreedbID;
 
 			/* Category Settings
 			 */
+			static const String	 SettingsFirstStartID;
+			static const Bool	 SettingsFirstStartDefault;
+
+			static const String	 SettingsWindowPosXID;
+			static const Int	 SettingsWindowPosXDefault;
+
+			static const String	 SettingsWindowPosYID;
+			static const Int	 SettingsWindowPosYDefault;
+
+			static const String	 SettingsWindowSizeXID;
+			static const Int	 SettingsWindowSizeXDefault;
+
+			static const String	 SettingsWindowSizeYID;
+			static const Int	 SettingsWindowSizeYDefault;
+
+			static const String	 SettingsWindowMaximizedID;
+			static const Bool	 SettingsWindowMaximizedDefault;
+
+			static const String	 SettingsLanguageID;
+			static const String	 SettingsLanguageDefault;
+
+			static const String	 SettingsShowTitleInfoID;
+			static const Bool	 SettingsShowTitleInfoDefault;
+
+			static const String	 SettingsShowTooltipsID;
+			static const Bool	 SettingsShowTooltipsDefault;
+
 			static const String	 SettingsShowTipsID;
 			static const Bool	 SettingsShowTipsDefault;
 
@@ -39,6 +68,9 @@ namespace BonkEnc
 
 			static const String	 SettingsEncodingHeuristicsID;
 			static const Bool	 SettingsEncodingHeuristicsDefault;
+
+			static const String	 SettingsCheckForUpdatesID;
+			static const Bool	 SettingsCheckForUpdatesDefault;
 
 			static const String	 SettingsLastUsedGenreID;
 
@@ -71,6 +103,15 @@ namespace BonkEnc
 			static const String	 SettingsFilenamesReplaceSpacesID;
 			static const Bool	 SettingsFilenamesReplaceSpacesDefault;
 
+			static const String	 SettingsEncoderID;
+			static const String	 SettingsEncoderDefault;
+
+			static const String	 SettingsEncoderOutputDirectoryID;
+			static       String	 SettingsEncoderOutputDirectoryDefault;
+
+			static const String	 SettingsEncoderFilenamePatternID;
+			static const String	 SettingsEncoderFilenamePatternDefault;
+
 			/* Category Joblist
 			 */
 			static const String	 JoblistFieldsID;
@@ -78,6 +119,23 @@ namespace BonkEnc
 
 			static const String	 JoblistFieldSizesID;
 			static const String	 JoblistFieldSizesDefault;
+
+			/* Category Ripper
+			 */
+			static const String	 RipperActiveDriveID;
+			static const Int	 RipperActiveDriveDefault;
+
+			static const String	 RipperEjectAfterRippingID;
+			static const Bool	 RipperEjectAfterRippingDefault;
+
+			static const String	 RipperAutoReadContentsID;
+			static const Bool	 RipperAutoReadContentsDefault;
+
+			static const String	 RipperAutoRipID;
+			static const Bool	 RipperAutoRipDefault;
+
+			static const String	 RipperTimeoutID;
+			static const Int	 RipperTimeoutDefault;
 
 			/* Category Playlist
 			 */
@@ -125,6 +183,65 @@ namespace BonkEnc
 			static const Bool	 TagsReplaceExistingCommentsDefault;
 
 			static const String	 TagsDefaultCommentID;
+
+			/* Category freedb
+			 */
+			static const String	 FreedbDirectoryID;
+			static const String	 FreedbDirectoryDefault;
+
+			static const String	 FreedbServerID;
+			static const String	 FreedbServerDefault;
+
+			static const String	 FreedbModeID;
+			static const Int	 FreedbModeDefault;
+
+			static const String	 FreedbHTTPPortID;
+			static const Int	 FreedbHTTPPortDefault;
+
+			static const String	 FreedbCDDBPPortID;
+			static const Int	 FreedbCDDBPPortDefault;
+
+			static const String	 FreedbQueryPathID;
+			static const String	 FreedbQueryPathDefault;
+
+			static const String	 FreedbSubmitPathID;
+			static const String	 FreedbSubmitPathDefault;
+
+			static const String	 FreedbEmailID;
+			static const String	 FreedbEmailDefault;
+
+			static const String	 FreedbProxyID;
+			static const String	 FreedbProxyDefault;
+
+			static const String	 FreedbProxyUserID;
+			static const String	 FreedbProxyUserDefault;
+
+			static const String	 FreedbProxyPasswordID;
+			static const String	 FreedbProxyPasswordDefault;
+
+			static const String	 FreedbProxyModeID;
+			static const Int	 FreedbProxyModeDefault;
+
+			static const String	 FreedbProxyPortID;
+			static const Int	 FreedbProxyPortDefault;
+
+			static const String	 FreedbEnableLocalID;
+			static const Bool	 FreedbEnableLocalDefault;
+
+			static const String	 FreedbEnableRemoteID;
+			static const Bool	 FreedbEnableRemoteDefault;
+
+			static const String	 FreedbAutoQueryID;
+			static const Bool	 FreedbAutoQueryDefault;
+
+			static const String	 FreedbEnableCacheID;
+			static const Bool	 FreedbEnableCacheDefault;
+
+			static const String	 FreedbOverwriteCDTextID;
+			static const Bool	 FreedbOverwriteCDTextDefault;
+
+			static const String	 FreedbUpdateJoblistID;
+			static const Bool	 FreedbUpdateJoblistDefault;
 		private:
 			/* Singleton class, therefore private constructor/destructor
 			 */

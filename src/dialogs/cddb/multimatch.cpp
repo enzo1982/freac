@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,8 +15,6 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	Point	 pos;
-	Size	 size;
 	String	 title;
 
 	if (fuzzy)	title = BonkEnc::i18n->TranslateString("No exact matches found");
@@ -28,39 +26,18 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	pos.x = 175;
-	pos.y = 29;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&cddbMultiMatchDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x -= 88;
-
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
 	btn_ok->onAction.Connect(&cddbMultiMatchDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x = 7;
-	pos.y = 11;
-	size.cx = 330;
-	size.cy = 59;
+	group_match		= new GroupBox(BonkEnc::i18n->TranslateString("Matches"), Point(7, 11), Size(330, 59));
 
-	group_match		= new GroupBox(BonkEnc::i18n->TranslateString("Matches"), pos, size);
-
-	pos.x += 13;
-	pos.y += 11;
-
-	text_match		= new Text(BonkEnc::i18n->TranslateString("Select the entry that best fits your CD:"), pos);
-
-	pos.x -= 3;
-	pos.y += 19;
-	size.cx = 310;
-	size.cy = 0;
-
-	combo_match		= new ComboBox(pos, size);
+	text_match		= new Text(BonkEnc::i18n->TranslateString("Select the entry that best fits your CD:"), Point(20, 22));
+	combo_match		= new ComboBox(Point(17, 41), Size(310, 0));
 
 	Add(mainWnd);
 

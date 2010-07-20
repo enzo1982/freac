@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,62 +17,35 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 
 	cddbQueries	= new CDDBBatch();
 
-	Point	 pos;
-	Size	 size;
-
 	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB queries"), config->wndPos + Point(40, 40), Size(402, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	pos.x = 87;
-	pos.y = 29;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_cancel	= new Button(BonkEnc::i18n->TranslateString("Close"), NIL, pos, size);
+	btn_cancel	= new Button(BonkEnc::i18n->TranslateString("Close"), NIL, Point(87, 29), Size());
 	btn_cancel->onAction.Connect(&cddbManageQueriesDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x = 7;
-	pos.y = 10;
+	text_entries	= new Text(BonkEnc::i18n->TranslateString("CDDB queries to perform:"), Point(7, 10));
 
-	text_entries	= new Text(BonkEnc::i18n->TranslateString("CDDB queries to perform:"), pos);
-
-	pos.y += 19;
-	size.cx = 380;
-	size.cy = 213;
-
-	list_entries	= new ListBox(pos, size);
+	list_entries	= new ListBox(Point(7, 29), Size(380, 213));
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Query string"), 0);
 	list_entries->onSelectEntry.Connect(&cddbManageQueriesDlg::SelectEntry, this);
 
-	pos.x = 7;
-	pos.y = 69;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, pos, size);
+	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, Point(7, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageQueriesDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	pos.x = 219;
-
-	btn_query	= new Button(BonkEnc::i18n->TranslateString("Query"), NIL, pos, size);
+	btn_query	= new Button(BonkEnc::i18n->TranslateString("Query"), NIL, Point(219, 69), Size());
 	btn_query->onAction.Connect(&cddbManageQueriesDlg::QueryEntry, this);
 	btn_query->SetOrientation(OR_LOWERLEFT);
 
-	pos.x += 88;
-
-	btn_query_all	= new Button(BonkEnc::i18n->TranslateString("Query all"), NIL, pos, size);
+	btn_query_all	= new Button(BonkEnc::i18n->TranslateString("Query all"), NIL, Point(307, 69), Size());
 	btn_query_all->onAction.Connect(&cddbManageQueriesDlg::QueryAllEntries, this);
 	btn_query_all->SetOrientation(OR_LOWERLEFT);
 
-	pos.x = 7;
-	pos.y = 26;
-
-	text_status	= new Text(NIL, pos);
+	text_status	= new Text(NIL, Point(7, 26));
 	text_status->SetOrientation(OR_LOWERLEFT);
 
 	btn_delete->Deactivate();

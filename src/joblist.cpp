@@ -148,9 +148,13 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	{
 		Info	&info = track->GetInfo();
 
+		char	*prevOutFormat = String::SetOutputFormat("ISO-8859-1");
+
 		if (info.artist != NIL && !String::IsUnicode(info.artist)) info.artist.ImportFrom(Encoding::GuessEncoding(info.artist), info.artist);
 		if (info.title  != NIL && !String::IsUnicode(info.title))  info.title.ImportFrom(Encoding::GuessEncoding(info.title), info.title);
 		if (info.album  != NIL && !String::IsUnicode(info.album))  info.album.ImportFrom(Encoding::GuessEncoding(info.album), info.album);
+
+		String::SetOutputFormat(prevOutFormat);
 	}
 
 	/* Add entry to joblist.
@@ -498,7 +502,7 @@ Void BonkEnc::JobList::SaveList()
 
 					trackCDA[0] = drive + 'A';
 
-					InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READONLY);
+					InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READ);
 
 					in->Seek(32);
 
@@ -686,8 +690,8 @@ String BonkEnc::JobList::GetEntryText(const Track &track) const
 		else if (field == "<title>")	jlEntry.Append(info.title.Length()  > 0 ? info.title  : BonkEnc::i18n->TranslateString("unknown title"));
 		else if (field == "<genre>")	jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : BonkEnc::i18n->TranslateString("unknown genre"));
 		else if (field == "<track>")	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String(NIL));
-		else if (field == "<time>")	jlEntry.Append(track.lengthString);
-		else if (field == "<bytes>")	jlEntry.Append(track.fileSizeString);
+		else if (field == "<time>")	jlEntry.Append(track.GetLengthString());
+		else if (field == "<bytes>")	jlEntry.Append(track.GetFileSizeString());
 		else if (field == "<file>")	jlEntry.Append(track.origFilename);
 
 		else if (field == "<filetype>")

@@ -15,11 +15,40 @@ BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
 const String	 BonkEnc::Config::CategorySettingsID				= "Settings";
 const String	 BonkEnc::Config::CategoryJoblistID				= "Joblist";
+const String	 BonkEnc::Config::CategoryRipperID				= "Ripper";
 const String	 BonkEnc::Config::CategoryPlaylistID				= "Playlist";
 const String	 BonkEnc::Config::CategoryTagsID				= "Tags";
+const String	 BonkEnc::Config::CategoryFreedbID				= "freedb";
 
 /* Category Settings
  */
+const String	 BonkEnc::Config::SettingsFirstStartID				= "FirstStart";
+const Bool	 BonkEnc::Config::SettingsFirstStartDefault			= False;
+
+const String	 BonkEnc::Config::SettingsWindowPosXID				= "WindowPosX";
+const Int	 BonkEnc::Config::SettingsWindowPosXDefault			= 100;
+
+const String	 BonkEnc::Config::SettingsWindowPosYID				= "WindowPosY";
+const Int	 BonkEnc::Config::SettingsWindowPosYDefault			= 100;
+
+const String	 BonkEnc::Config::SettingsWindowSizeXID				= "WindowSizeX";
+const Int	 BonkEnc::Config::SettingsWindowSizeXDefault			= 800;
+
+const String	 BonkEnc::Config::SettingsWindowSizeYID				= "WindowSizeY";
+const Int	 BonkEnc::Config::SettingsWindowSizeYDefault			= 600;
+
+const String	 BonkEnc::Config::SettingsWindowMaximizedID			= "WindowMaximized";
+const Bool	 BonkEnc::Config::SettingsWindowMaximizedDefault		= False;
+
+const String	 BonkEnc::Config::SettingsLanguageID				= "Language";
+const String	 BonkEnc::Config::SettingsLanguageDefault			= NIL;
+
+const String	 BonkEnc::Config::SettingsShowTitleInfoID			= "ShowTitleInfo";
+const Bool	 BonkEnc::Config::SettingsShowTitleInfoDefault			= True;
+
+const String	 BonkEnc::Config::SettingsShowTooltipsID			= "ShowTooltips";
+const Bool	 BonkEnc::Config::SettingsShowTooltipsDefault			= True;
+
 const String	 BonkEnc::Config::SettingsShowTipsID				= "ShowTips";
 const Bool	 BonkEnc::Config::SettingsShowTipsDefault			= True;
 
@@ -30,7 +59,10 @@ const String	 BonkEnc::Config::SettingsDisplayErrorsID			= "DisplayErrors";
 const Bool	 BonkEnc::Config::SettingsDisplayErrorsDefault			= True;
 
 const String	 BonkEnc::Config::SettingsEncodingHeuristicsID			= "EnableEncodingHeuristics";
-const Bool	 BonkEnc::Config::SettingsEncodingHeuristicsDefault		= False;
+const Bool	 BonkEnc::Config::SettingsEncodingHeuristicsDefault		= True;
+
+const String	 BonkEnc::Config::SettingsCheckForUpdatesID			= "CheckUpdatesAtStartup";
+const Bool	 BonkEnc::Config::SettingsCheckForUpdatesDefault		= True;
 
 const String	 BonkEnc::Config::SettingsLastUsedGenreID			= "LastUsedGenre";
 
@@ -63,6 +95,15 @@ const Bool	 BonkEnc::Config::SettingsFilenamesAllowUnicodeDefault		= True;
 const String	 BonkEnc::Config::SettingsFilenamesReplaceSpacesID		= "FilenamesReplaceSpaces";
 const Bool	 BonkEnc::Config::SettingsFilenamesReplaceSpacesDefault		= False;
 
+const String	 BonkEnc::Config::SettingsEncoderID				= "Encoder";
+const String	 BonkEnc::Config::SettingsEncoderDefault			= "wave-out";
+
+const String	 BonkEnc::Config::SettingsEncoderOutputDirectoryID		= "EncoderOutDir";
+      String	 BonkEnc::Config::SettingsEncoderOutputDirectoryDefault		= NIL;
+
+const String	 BonkEnc::Config::SettingsEncoderFilenamePatternID		= "EncoderFilenamePattern";
+const String	 BonkEnc::Config::SettingsEncoderFilenamePatternDefault		= "<artist> - <album>\\<artist> - <album> - <track> - <title>";
+
 /* Category Joblist
  */
 const String	 BonkEnc::Config::JoblistFieldsID				= "Fields";
@@ -70,6 +111,23 @@ const String	 BonkEnc::Config::JoblistFieldsDefault				= "<artist>,<title>,<trac
 
 const String	 BonkEnc::Config::JoblistFieldSizesID				= "FieldSizes";
 const String	 BonkEnc::Config::JoblistFieldSizesDefault			= "120,*,50,80,80";
+
+/* Category Ripper
+ */
+const String	 BonkEnc::Config::RipperActiveDriveID				= "ActiveDrive";
+const Int	 BonkEnc::Config::RipperActiveDriveDefault			= 0;
+
+const String	 BonkEnc::Config::RipperEjectAfterRippingID			= "EjectAfterRipping";
+const Bool	 BonkEnc::Config::RipperEjectAfterRippingDefault		= False;
+
+const String	 BonkEnc::Config::RipperAutoReadContentsID			= "AutoReadContents";
+const Bool	 BonkEnc::Config::RipperAutoReadContentsDefault			= True;
+
+const String	 BonkEnc::Config::RipperAutoRipID				= "AutoRip";
+const Bool	 BonkEnc::Config::RipperAutoRipDefault				= False;
+
+const String	 BonkEnc::Config::RipperTimeoutID				= "Timeout";
+const Int	 BonkEnc::Config::RipperTimeoutDefault				= 0;
 
 /* Category Playlist
  */
@@ -118,12 +176,81 @@ const Bool	 BonkEnc::Config::TagsReplaceExistingCommentsDefault		= False;
 
 const String	 BonkEnc::Config::TagsDefaultCommentID				= "DefaultComment";
 
+/* Category freedb
+ */
+const String	 BonkEnc::Config::FreedbDirectoryID				= "Directory";
+const String	 BonkEnc::Config::FreedbDirectoryDefault			= "freedb\\";
+
+const String	 BonkEnc::Config::FreedbServerID				= "Server";
+const String	 BonkEnc::Config::FreedbServerDefault				= "freedb.freedb.org";
+
+const String	 BonkEnc::Config::FreedbModeID					= "Mode";
+const Int	 BonkEnc::Config::FreedbModeDefault				= 0;
+
+const String	 BonkEnc::Config::FreedbHTTPPortID				= "HTTPPort";
+const Int	 BonkEnc::Config::FreedbHTTPPortDefault				= 80;
+
+const String	 BonkEnc::Config::FreedbCDDBPPortID				= "CDDBPPort";
+const Int	 BonkEnc::Config::FreedbCDDBPPortDefault			= 8880;
+
+const String	 BonkEnc::Config::FreedbQueryPathID				= "QueryPath";
+const String	 BonkEnc::Config::FreedbQueryPathDefault			= "/~cddb/cddb.cgi";
+
+const String	 BonkEnc::Config::FreedbSubmitPathID				= "SubmitPath";
+const String	 BonkEnc::Config::FreedbSubmitPathDefault			= "/~cddb/submit.cgi";
+
+const String	 BonkEnc::Config::FreedbEmailID					= "eMail";
+const String	 BonkEnc::Config::FreedbEmailDefault				= "cddb@bonkenc.org";
+
+const String	 BonkEnc::Config::FreedbProxyID					= "Proxy";
+const String	 BonkEnc::Config::FreedbProxyDefault				= "localhost";
+
+const String	 BonkEnc::Config::FreedbProxyUserID				= "ProxyUserName";
+const String	 BonkEnc::Config::FreedbProxyUserDefault			= NIL;
+
+const String	 BonkEnc::Config::FreedbProxyPasswordID				= "ProxyPassword";
+const String	 BonkEnc::Config::FreedbProxyPasswordDefault			= NIL;
+
+const String	 BonkEnc::Config::FreedbProxyModeID				= "ProxyMode";
+const Int	 BonkEnc::Config::FreedbProxyModeDefault			= 0;
+
+const String	 BonkEnc::Config::FreedbProxyPortID				= "ProxyPort";
+const Int	 BonkEnc::Config::FreedbProxyPortDefault			= 1080;
+
+const String	 BonkEnc::Config::FreedbEnableLocalID				= "EnableLocalCDDB";
+const Bool	 BonkEnc::Config::FreedbEnableLocalDefault			= False;
+
+const String	 BonkEnc::Config::FreedbEnableRemoteID				= "EnableRemoteCDDB";
+const Bool	 BonkEnc::Config::FreedbEnableRemoteDefault			= True;
+
+const String	 BonkEnc::Config::FreedbAutoQueryID				= "AutoCDDBQueries";
+const Bool	 BonkEnc::Config::FreedbAutoQueryDefault			= True;
+
+const String	 BonkEnc::Config::FreedbEnableCacheID				= "EnableCDDBCache";
+const Bool	 BonkEnc::Config::FreedbEnableCacheDefault			= True;
+
+const String	 BonkEnc::Config::FreedbOverwriteCDTextID			= "OverwriteCDText";
+const Bool	 BonkEnc::Config::FreedbOverwriteCDTextDefault			= True;
+
+const String	 BonkEnc::Config::FreedbUpdateJoblistID				= "UpdateJoblistOnSubmit";
+const Bool	 BonkEnc::Config::FreedbUpdateJoblistDefault			= True;
+
 BonkEnc::Config::Config()
 {
 	deleteAfterEncoding	= False;
 	shutdownAfterEncoding	= False;
 
 	maxActiveJobs		= 2;
+
+	String	 personalDir = S::System::System::GetPersonalFilesDirectory();
+
+	if (!personalDir.EndsWith(Directory::GetDirectoryDelimiter())) personalDir.Append(Directory::GetDirectoryDelimiter());
+
+#ifdef __WIN32__
+	personalDir.Append("My Music").Append(Directory::GetDirectoryDelimiter());
+#endif
+
+	Config::SettingsEncoderOutputDirectoryDefault = personalDir;
 }
 
 BonkEnc::Config::~Config()

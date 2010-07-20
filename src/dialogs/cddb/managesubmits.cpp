@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,76 +15,41 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
-	Point	 pos;
-	Size	 size;
-
 	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), config->wndPos + Point(40, 40), Size(552, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	pos.x = 87;
-	pos.y = 29;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_cancel	= new Button(BonkEnc::i18n->TranslateString("Close"), NIL, pos, size);
+	btn_cancel	= new Button(BonkEnc::i18n->TranslateString("Close"), NIL, Point(87, 29), Size());
 	btn_cancel->onAction.Connect(&cddbManageSubmitsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x = 7;
-	pos.y = 10;
+	text_entries	= new Text(BonkEnc::i18n->TranslateString("CDDB entries to submit:"), Point(7, 10));
 
-	text_entries	= new Text(BonkEnc::i18n->TranslateString("CDDB entries to submit:"), pos);
-
-	pos.y += 19;
-	size.cx = 261;
-	size.cy = 213;
-
-	list_entries	= new ListBox(pos, size);
+	list_entries	= new ListBox(Point(7, 29), Size(261, 213));
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Category"), 65);
 	list_entries->AddTab(BonkEnc::i18n->TranslateString("Disc name"), 0);
 	list_entries->onSelectEntry.Connect(&cddbManageSubmitsDlg::SelectEntry, this);
 
-	pos.x += 269;
-	pos.y -= 19;
+	text_preview	= new Text(String(BonkEnc::i18n->TranslateString("Preview")).Append(":"), Point(276, 10));
 
-	text_preview	= new Text(String(BonkEnc::i18n->TranslateString("Preview")).Append(":"), pos);
-
-	pos.y += 19;
-
-	size.cx = 261;
-	size.cy = 213;
-
-	edit_preview	= new MultiEdit(NIL, pos, size, 0);
+	edit_preview	= new MultiEdit(NIL, Point(276, 29), Size(261, 213), 0);
 	edit_preview->Deactivate();
 
-	pos.x = 188;
-	pos.y = 69;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, pos, size);
+	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageSubmitsDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	pos.x = 369;
-
-	btn_send	= new Button(BonkEnc::i18n->TranslateString("Submit"), NIL, pos, size);
+	btn_send	= new Button(BonkEnc::i18n->TranslateString("Submit"), NIL, Point(369, 69), Size());
 	btn_send->onAction.Connect(&cddbManageSubmitsDlg::SendEntry, this);
 	btn_send->SetOrientation(OR_LOWERLEFT);
 
-	pos.x += 88;
-
-	btn_send_all	= new Button(BonkEnc::i18n->TranslateString("Submit all"), NIL, pos, size);
+	btn_send_all	= new Button(BonkEnc::i18n->TranslateString("Submit all"), NIL, Point(457, 69), Size());
 	btn_send_all->onAction.Connect(&cddbManageSubmitsDlg::SendAllEntries, this);
 	btn_send_all->SetOrientation(OR_LOWERLEFT);
 
-	pos.x = 7;
-	pos.y = 26;
-
-	text_status	= new Text(NIL, pos);
+	text_status	= new Text(NIL, Point(7, 26));
 	text_status->SetOrientation(OR_LOWERLEFT);
 
 	btn_delete->Deactivate();

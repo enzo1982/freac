@@ -176,7 +176,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleInfo.artist.Length() > 0 ? singleInfo.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(singleInfo.title.Length() > 0 ? singleInfo.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) progress->GetTotalSamples() / (singleTrackInfo.GetFormat().rate * singleTrackInfo.GetFormat().channels)));
 
-				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_OVERWRITE);
+				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_REPLACE);
 
 				if (f_out->GetLastError() != IO_ERROR_OK)
 				{
@@ -256,7 +256,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		InStream	*f_in = NIL;
 
 		if (in_filename.StartsWith("cdda://"))	f_in = new InStream(STREAM_DRIVER, zero_in);
-		else					f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
+		else					f_in = new InStream(STREAM_FILE, in_filename, IS_READ);
 
 		f_in->SetPackageSize(6144);
 
@@ -314,7 +314,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 		{
-			f_out		= new OutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
+			f_out		= new OutStream(STREAM_FILE, out_filename, OS_REPLACE);
 
 			if (f_out->GetLastError() != IO_ERROR_OK)
 			{
@@ -348,6 +348,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		Int64		 trackLength	= 0;
 		Int64		 position	= 0;
 		UnsignedLong	 samples_size	= 1024;
+		Int		 loop		= 0;
 		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
 
 		f_out->SetPackageSize(samples_size * (format.bits / 8) * format.channels);
@@ -357,80 +358,43 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		if (filter_out->GetErrorState() || filter_in->GetErrorState()) skip = True;
 
-		if (!skip && trackInfo.length >= 0)
-		{
-			Int	 sample = 0;
+		Int			 bytesPerSample = format.bits / 8;
+		Buffer<UnsignedByte>	 buffer(samples_size * format.channels * bytesPerSample);
 
-			for (Int loop = 0; loop < n_loops; loop++)
+		while (!skip && !stop)
+		{
+			Int	 step = samples_size;
+
+			if (trackInfo.length >= 0)
 			{
-				Int	 step = samples_size;
+				if (loop++ >= n_loops) break;
 
 				if (position + step > trackInfo.length) step = trackInfo.length - position;
-
-				for (Int i = 0; i < step; i++)
-				{
-					if	(format.order == BYTE_INTEL)	sample = f_in->InputNumberIntel(short(format.bits / 8));
-					else if (format.order == BYTE_RAW)	sample = f_in->InputNumberRaw(short(format.bits / 8));
-
-					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
-
-					f_out->OutputNumber(sample, short(format.bits / 8));
-
-					trackLength++;
-				}
-
-				position += step;
-
-				if (trackInfo.isCDTrack && BoCA::Config::Get()->cdrip_timeout > 0 && progress->GetTrackTimePassed() > BoCA::Config::Get()->cdrip_timeout * 1000)
-				{
-					Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(BoCA::Config::Get()->cdrip_timeout));
-
-					skip = True;
-				}
-
-				while (paused && !stop && !skip) S::System::System::Sleep(50);
-
-				if (stop || skip) break;
-
-				progress->UpdateProgressValues(trackInfo, position);
 			}
-		}
-		else if (!skip && trackInfo.length == -1)
-		{
-			Int	 sample = 0;
 
-			while (sample != -1)
+			Int	 bytes = f_in->InputData(buffer, step * bytesPerSample);
+
+			if (bytes == 0) break;
+
+			if (format.order == BYTE_RAW) Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
+
+			f_out->OutputData(buffer, bytes);
+
+			trackLength += (bytes / bytesPerSample);
+
+			if (trackInfo.length >= 0) position += (bytes / bytesPerSample);
+			else			   position = filter_in->GetInBytes();
+
+			if (trackInfo.isCDTrack && BoCA::Config::Get()->cdrip_timeout > 0 && progress->GetTrackTimePassed() > BoCA::Config::Get()->cdrip_timeout * 1000)
 			{
-				Int	 step = samples_size;
+				Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(BoCA::Config::Get()->cdrip_timeout));
 
-				for (Int i = 0; i < step; i++)
-				{
-					if	(format.order == BYTE_INTEL)	sample = f_in->InputNumberIntel(short(format.bits / 8));
-					else if (format.order == BYTE_RAW)	sample = f_in->InputNumberRaw(short(format.bits / 8));
-
-					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
-
-					if (sample != -1)	f_out->OutputNumber(sample, short(format.bits / 8));
-					else			i--;
-
-					if (sample != -1)	trackLength++;
-				}
-
-				position = filter_in->GetInBytes();
-
-				if (trackInfo.isCDTrack && BoCA::Config::Get()->cdrip_timeout > 0 && progress->GetTrackTimePassed() > BoCA::Config::Get()->cdrip_timeout * 1000)
-				{
-					Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(BoCA::Config::Get()->cdrip_timeout));
-
-					skip = True;
-				}
-
-				while (paused && !stop && !skip) S::System::System::Sleep(50);
-
-				if (stop || skip) break;
-
-				progress->UpdateProgressValues(trackInfo, position);
+				skip = True;
 			}
+
+			while (paused && !stop && !skip) S::System::System::Sleep(50);
+
+			progress->UpdateProgressValues(trackInfo, position);
 		}
 
 		progress->PauseTotalProgress();
@@ -450,7 +414,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 			boca.DeleteComponent(filter_out);
 
-			f_in = new InStream(STREAM_FILE, out_filename, IS_READONLY);
+			f_in = new InStream(STREAM_FILE, out_filename, IS_READ);
 
 			Int64	 f_size = f_in->Size();
 
@@ -721,7 +685,7 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !track.isCDTrack)
 	{
 		String		 file = String(inFileDirectory).Append(String::FromInt(clock())).Append(".temp");
-		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_OVERWRITE);
+		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_REPLACE);
 
 		if (temp->GetLastError() == IO_ERROR_OK) writeToInputDir = True;
 
