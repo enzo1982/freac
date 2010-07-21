@@ -586,10 +586,12 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		if (stop_encoding) break;
 	}
 
-	if (currentConfig->encodeToSingleFile && nRemoved > 0)
+	if (currentConfig->encodeToSingleFile && (nRemoved > 0 || stop_encoding))
 	{
 		delete f_out;
 		delete filter_out;
+
+		if (stop_encoding) File(singleOutFile).Delete();
 	}
 
 	delete zero_in;

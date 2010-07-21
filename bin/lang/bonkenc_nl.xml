@@ -18,8 +18,8 @@
   <entry id="5" string="Remove">Verwijderen</entry>
   <entry id="6" string="Clear joblist">Takenlijst wissen</entry>
   <entry id="7" string="Exit">Afsluiten</entry>
-  <entry id="8" string="General settings...">Algemene instellingen</entry>
-  <entry id="9" string="Configure selected encoder...">Geselecteerde encoder configureren</entry>
+  <entry id="8" string="General settings...">Algemene instellingen...</entry>
+  <entry id="9" string="Configure selected encoder...">Geselecteerde encoder configureren...</entry>
   <entry id="10" string="Audio file(s)">Audiobestand(en)</entry>
   <entry id="11" string="Audio CD contents">Audio-cd inhoud</entry>
   <entry id="12" string="Start encoding">Coderen starten</entry>
@@ -132,7 +132,7 @@
   <entry id="119" string="Force Joint Stereo">Forceer Joint Stereo</entry>
   <entry id="120" string="VBR mode">VBR Mode</entry>
   <entry id="121" string="no VBR">geen VBR</entry>
-  <entry id="122" string="VBR quality">VBR Kwaliteit</entry>
+  <entry id="122" string="VBR quality">VBR kwaliteit</entry>
   <entry id="123" string="ABR target bitrate">ABR doelbitrate</entry>
   <entry id="124" string="VBR bitrate range">VBR bitrate bereik</entry>
   <entry id="125" string="Set minimum VBR bitrate:">Minimale VBR bitrate:</entry>
@@ -394,5 +394,18 @@
   <entry id="390" string="Unknown error">Onbekende fout</entry>
   <entry id="391" string="Replace existing comments with default comment">Bestaande opmerkingen vervangen door standaardcommentaar</entry>
   <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">De geselecteerde bestanden kunnen niet gecombineerd worden&#10;in een enkel uitvoerbestand ten gevolge van verschillende&#10;sampleformaten.&#10;&#10;Gelieve eerst alle bestanden naar hetzelfde sampleformaat&#10;te converteren.</entry>
+  <entry id="393" string="Write WMA metadata info">WMA metadata-info schrijven</entry>
+  <entry id="394" string="WMA metadata encoding:">WMA metadata codering:</entry>
+  <entry id="395" string="Select codec">Selecteer codec</entry>
+  <entry id="396" string="Select codec format">Selecteer codecformaat</entry>
+  <entry id="397" string="Codec settings">Instellingen codec</entry>
+  <entry id="398" string="Use codec">Gebruik codec</entry>
+  <entry id="399" string="Use format">Gebruik formaat</entry>
+  <entry id="400" string="Write uncompressed WMA files">Ongecomprimeerde wma-bestanden schrijven</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Formaat automatisch selecteren gebaseerd op instellingen en invoerformaat</entry>
+  <entry id="402" string="Use VBR encoding">VBR-encoding gebruiken</entry>
+  <entry id="403" string="Use 2-pass encoding">2-pass encoding gebruiken</entry>
+  <entry id="404" string="Target bitrate">Doelbitrate</entry>
+  <entry id="405" string="Set drive speed limit:">Limiet stationssnelheid instellen:</entry>
  </data>
 </LangFile>

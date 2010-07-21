@@ -15,9 +15,11 @@ History
 
 	Version 1.0.16 (July 2010)
 
-		- added Czech translation for the installer
+		- updated Dutch translation
+		- added Dutch and Czech translations for the installer
 		- select a reasonable WMA codec by default
 		- fixed problems with text edit fields
+		- some minor fixes
 
 	Version 1.0.15 (July 2010)
 
