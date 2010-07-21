@@ -19,6 +19,9 @@
 
 using namespace smooth::System;
 
+using namespace BoCA;
+using namespace BoCA::AS;
+
 Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace)
 {
 	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);

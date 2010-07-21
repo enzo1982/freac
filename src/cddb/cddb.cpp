@@ -34,7 +34,7 @@ BonkEnc::CDDB::CDDB()
 {
 	config = BoCA::Config::Get();
 
-	activeDriveID = config->cdrip_activedrive;
+	activeDriveID = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 	updateTrackOffsets = True;
 }
 

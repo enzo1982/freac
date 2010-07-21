@@ -108,7 +108,7 @@ Int BonkEnc::Encoder::EncoderThread()
 	String			 singleOutFile;
 	String			 playlist_filename;
 
-	encoder_activedrive = config->cdrip_activedrive;
+	encoder_activedrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 
 	Int			 num		= joblist->GetNOfTracks();
 	Int			 nRemoved	= 0;
@@ -161,20 +161,21 @@ Int BonkEnc::Encoder::EncoderThread()
 
 				if (singleOutFile == NIL) break;
 
-				Track	 singleTrackInfo;
-				Info	&singleInfo = singleTrackInfo.GetInfo();
+				Track	 singleTrack;
+				Info	 singleTrackInfo;
 
-				singleInfo.artist = info.artist;
-				singleInfo.title  = info.album;
-				singleInfo.album  = info.album;
-				singleInfo.year   = info.year;
-				singleInfo.genre  = info.genre;
+				singleTrackInfo.artist = info.artist;
+				singleTrackInfo.title  = info.album;
+				singleTrackInfo.album  = info.album;
+				singleTrackInfo.year   = info.year;
+				singleTrackInfo.genre  = info.genre;
 
-				singleTrackInfo.outfile	= singleOutFile;
+				singleTrack.outfile	= singleOutFile;
 
-				singleTrackInfo.SetFormat(trackInfo.GetFormat());
+				singleTrack.SetInfo(singleTrackInfo);
+				singleTrack.SetFormat(trackInfo.GetFormat());
 
-				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleInfo.artist.Length() > 0 ? singleInfo.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(singleInfo.title.Length() > 0 ? singleInfo.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) progress->GetTotalSamples() / (singleTrackInfo.GetFormat().rate * singleTrackInfo.GetFormat().channels)));
+				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo.artist.Length() > 0 ? singleTrackInfo.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo.title.Length() > 0 ? singleTrackInfo.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) progress->GetTotalSamples() / (singleTrack.GetFormat().rate * singleTrack.GetFormat().channels)));
 
 				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_REPLACE);
 
@@ -188,7 +189,7 @@ Int BonkEnc::Encoder::EncoderThread()
 				}
 
 				filter_out = (EncoderComponent *) boca.CreateComponentByID(encoderID);
-				filter_out->SetAudioTrackInfo(singleTrackInfo);
+				filter_out->SetAudioTrackInfo(singleTrack);
 
 				if (f_out->AddFilter(filter_out) == False)
 				{
@@ -258,7 +259,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		if (in_filename.StartsWith("cdda://"))	f_in = new InStream(STREAM_DRIVER, zero_in);
 		else					f_in = new InStream(STREAM_FILE, in_filename, IS_READ);
 
-		f_in->SetPackageSize(6144);
+		f_in->SetPackageSize(196608);
 
 		if (f_in->GetLastError() != IO_ERROR_OK)
 		{
@@ -351,7 +352,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		Int		 loop		= 0;
 		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
 
-		f_out->SetPackageSize(samples_size * (format.bits / 8) * format.channels);
+		f_out->SetPackageSize(196608);
 
 		progress->InitTrackProgressValues();
 		progress->ResumeTotalProgress();
@@ -502,7 +503,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 	delete zero_in;
 
-	config->cdrip_activedrive = encoder_activedrive;
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, encoder_activedrive);
 
 	joblist->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 

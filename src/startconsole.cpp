@@ -80,13 +80,13 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	if (componentsConfig->cdrip_numdrives > 0)
 	{
-		componentsConfig->cdrip_activedrive = cdDrive.ToInt();
+		componentsConfig->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, cdDrive.ToInt());
 
-		if (componentsConfig->cdrip_activedrive >= componentsConfig->cdrip_numdrives)
+		if (componentsConfig->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault) >= componentsConfig->cdrip_numdrives)
 		{
 			Console::OutputString(String("Warning: Drive #").Append(cdDrive).Append(" does not exist. Using first drive.\n"));
 
-			componentsConfig->cdrip_activedrive = 0;
+			componentsConfig->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, 0);
 		}
 
 		if (!TracksToFiles(tracks, &files))
@@ -295,7 +295,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			if (currentFile.StartsWith("cdda://"))
 			{
-				currentFile = String("Audio CD ").Append(String::FromInt(componentsConfig->cdrip_activedrive)).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
+				currentFile = String("Audio CD ").Append(String::FromInt(componentsConfig->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
 			}
 
 			if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("cdda://"))
@@ -421,7 +421,7 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 
 		if (info != NIL)
 		{
-			const Array<String>	&tracks = info->GetNthDeviceTrackList(BoCA::Config::Get()->cdrip_activedrive);
+			const Array<String>	&tracks = info->GetNthDeviceTrackList(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
 			foreach (String track, tracks) (*files).Add(track);
 
@@ -463,14 +463,14 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 			Int	 last = current.Tail(current.Length() - dash - 1).ToInt();
 
 			for (Int i = first; i <= last; i++) (*files).Add(String("cdda://")
-									.Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive))
+									.Append(String::FromInt(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
 									.Append("/")
 									.Append(String::FromInt(i)));
 		}
 		else
 		{
 			(*files).Add(String("cdda://")
-				    .Append(String::FromInt(BoCA::Config::Get()->cdrip_activedrive))
+				    .Append(String::FromInt(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
 				    .Append("/")
 				    .Append(current));
 		}

@@ -38,6 +38,7 @@ History
 		- added <directory> pattern to allow preserving existing directory structures
 		- added <filetype> pattern
 		- added <installdrive> pattern for use in output directory name
+		- added context menu for text edit fields
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
 		- added ripping speed configuration option

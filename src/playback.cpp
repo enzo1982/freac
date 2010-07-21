@@ -66,10 +66,10 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 
 Int BonkEnc::Playback::PlayThread()
 {
-	player_activedrive = BoCA::Config::Get()->cdrip_activedrive;
+	player_activedrive = BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
  
-	Track	 trackInfo = joblist->GetNthTrack(player_entry);
-	Format	&format = trackInfo.GetFormat();
+	Track		 trackInfo = joblist->GetNthTrack(player_entry);
+	const Format	&format = trackInfo.GetFormat();
 
 	if (trackInfo == NIL)
 	{
@@ -98,7 +98,6 @@ Int BonkEnc::Playback::PlayThread()
 		UnsignedInt	 samples_size	= 1024;
 		Int		 loop		= 0;
 		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
-		Bool		 finished	= False;
 
 		/* Create output component.
 		 */
@@ -116,6 +115,7 @@ Int BonkEnc::Playback::PlayThread()
 
 		if (!output->GetErrorState())
 		{
+			Bool			 finished = False;
 			Int64			 position = 0;
 
 			Int			 sample = 0;
@@ -153,88 +153,6 @@ Int BonkEnc::Playback::PlayThread()
 			}
 		}
 
-/*		if (!output->GetErrorState() && trackInfo.length >= 0)
-		{
-			Int64			 position = 0;
-
-			Int			 sample = 0;
-			Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
-
-			for (Int loop = 0; loop < n_loops; loop++)
-			{
-				Int	 step = samples_size;
-
-				if (position + step > trackInfo.length) step = trackInfo.length - position;
-
-				for (Int i = 0; i < step; i++)
-				{
-					if	(format.order == BYTE_INTEL)	sample = f_in->InputNumberIntel(short(format.bits / 8));
-					else if (format.order == BYTE_RAW)	sample = f_in->InputNumberRaw(short(format.bits / 8));
-
-					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
-
-					if	(format.bits ==  8) ((short *) (UnsignedByte *) sample_buffer)[i] = (sample - 128) * 256;
-					else if (format.bits == 16) ((short *) (UnsignedByte *) sample_buffer)[i] = sample;
-					else if (format.bits == 24) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 256;
-					else if (format.bits == 32) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 65536;
-				}
-
-				position += step;
-
-				while (output->CanWrite() < (2 * step))
-				{
-					if (stop_playback) break;
-
-					S::System::System::Sleep(10);
-				}
-
-				if (stop_playback) break;
-
-				output->WriteData(sample_buffer, 2 * step);
-			}
-		}
-		else if (!output->GetErrorState() && trackInfo.length == -1)
-		{
-			Int			 sample = 0;
-			Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
-
-			while (sample != -1)
-			{
-				Int	 step = samples_size;
-
-				for (Int i = 0; i < step; i++)
-				{
-					if	(format.order == BYTE_INTEL)	sample = f_in->InputNumberIntel(short(format.bits / 8));
-					else if (format.order == BYTE_RAW)	sample = f_in->InputNumberRaw(short(format.bits / 8));
-
-					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
-
-					if (sample != -1)
-					{
-						if	(format.bits ==  8) ((short *) (UnsignedByte *) sample_buffer)[i] = (sample - 128) * 256;
-						else if (format.bits == 16) ((short *) (UnsignedByte *) sample_buffer)[i] = sample;
-						else if (format.bits == 24) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 256;
-						else if (format.bits == 32) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 65536;
-					}
-					else
-					{
-						i--;
-					}
-				}
-
-				while (output->CanWrite() < (2 * step))
-				{
-					if (stop_playback) break;
-
-					S::System::System::Sleep(10);
-				}
-
-				if (stop_playback) break;
-
-				output->WriteData(sample_buffer, 2 * step);
-			}
-		}
-*/
 		if (!stop_playback) while (output->IsPlaying()) S::System::System::Sleep(20);
 
 		output->Deactivate();
@@ -247,7 +165,7 @@ Int BonkEnc::Playback::PlayThread()
 		Registry::Get().DeleteComponent(filter_in);
 	}
 
-	BoCA::Config::Get()->cdrip_activedrive = player_activedrive;
+	BoCA::Config::Get()->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, player_activedrive);
 
 	ListEntry	*entry = joblist->GetNthEntry(player_entry);
 

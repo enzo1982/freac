@@ -24,7 +24,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	activedrive	= config->cdrip_activedrive;
+	activedrive	= config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 	updateJoblist	= config->update_joblist;
 
 	submitLater	= !config->enable_remote_cddb;
@@ -133,7 +133,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	edit_album	= new EditBox(NIL, pos, size, 0);
 
-	list_genre	= new ListBox(pos, size);
+	list_genre	= new List();
 	Utilities::FillGenreList(list_genre);
 
 	pos.x = 221;
@@ -414,7 +414,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 				if (trackInfo.cdTrack == list_tracks->GetNthEntry(m)->GetText().ToInt())
 				{
 					Track	 track = BonkEnc::Get()->joblist->GetNthTrack(l);
-					Info	&info = track.GetInfo();
+					Info	 info = track.GetInfo();
 
 					if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") info.artist = artists.GetNth(m);
 					else															info.artist = edit_artist->GetText();
@@ -424,6 +424,8 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 					info.year	= edit_year->GetText().ToInt();
 					info.genre	= edit_genre->GetText();
 					info.comment	= comments.GetNth(m);
+
+					track.SetInfo(info);
 
 					BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 				}
@@ -526,9 +528,9 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		btn_submit->Activate();
 	}
 
-	Int	 oDrive = config->cdrip_activedrive;
+	Int	 oDrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 
-	config->cdrip_activedrive = activedrive;
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, activedrive);
 
 	CDDBRemote	 cddb;
 	Int		 iDiscid = cddb.ComputeDiscID();
@@ -549,7 +551,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 	}
 
-	config->cdrip_activedrive = oDrive;
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, oDrive);
 
 	dontUpdateInfo = True;
 

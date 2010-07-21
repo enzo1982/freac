@@ -146,13 +146,15 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	 */
 	if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodingHeuristicsID, Config::SettingsEncodingHeuristicsDefault))
 	{
-		Info	&info = track->GetInfo();
-
 		char	*prevOutFormat = String::SetOutputFormat("ISO-8859-1");
+
+		Info	 info = track->GetInfo();
 
 		if (info.artist != NIL && !String::IsUnicode(info.artist)) info.artist.ImportFrom(Encoding::GuessEncoding(info.artist), info.artist);
 		if (info.title  != NIL && !String::IsUnicode(info.title))  info.title.ImportFrom(Encoding::GuessEncoding(info.title), info.title);
 		if (info.album  != NIL && !String::IsUnicode(info.album))  info.album.ImportFrom(Encoding::GuessEncoding(info.album), info.album);
+
+		track->SetInfo(info);
 
 		String::SetOutputFormat(prevOutFormat);
 	}

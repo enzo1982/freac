@@ -61,7 +61,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 
 	text_charset	= new Text(String(BonkEnc::i18n->TranslateString("Charset")).Append(":"), Point(276, 226));
 
-	list_charset	= new ListBox(Point(283 + text_charset->textSize.cx, 223), Size(254 - text_charset->textSize.cx, 0));
+	list_charset	= new List();
 	list_charset->AddEntry("CP1251");
 	list_charset->AddEntry("ISO-8859-1");
 	list_charset->AddEntry("ISO-8859-2");
@@ -156,7 +156,7 @@ Void BonkEnc::cddbManageDlg::OK()
 					if (trackInfo.cdTrack == m + 1)
 					{
 						Track	 track = BonkEnc::Get()->joblist->GetNthTrack(l);
-						Info	&info = track.GetInfo();
+						Info	 info = track.GetInfo();
 
 						info.artist  = (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(m) : cddbInfo.dArtist);
 						info.title   = cddbInfo.trackTitles.GetNth(m);
@@ -164,6 +164,8 @@ Void BonkEnc::cddbManageDlg::OK()
 						info.year    = cddbInfo.dYear;
 						info.genre   = cddbInfo.dGenre;
 						info.comment = cddbInfo.trackComments.GetNth(m);
+
+						track.SetInfo(info);
 
 						BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 					}

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -53,7 +53,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 
 	edit_filename		= new EditBox(playlistOutputPattern, Point(10, 12), Size(324, 0), 0);
 
-	list_filename		= new ListBox(Point(), Size());
+	list_filename		= new List();
 	list_filename->AddEntry("<artist> - <album>");
 	list_filename->AddEntry("<artist>\\<artist> - <album>");
 	list_filename->AddEntry("<artist> - <album>\\<artist> - <album>");

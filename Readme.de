@@ -38,6 +38,7 @@ Geschichte
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Vorlage <filetype> hinzugefügt
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
+		- Kontextmenü für Texteingabefelder hinzugefügt
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Unterstützung zum Auslesen von ISRC-Codes von CDs hinzugefügt
 		- Konfigurationsoption für Geschwindigkeit beim Rippen hinzugefügt

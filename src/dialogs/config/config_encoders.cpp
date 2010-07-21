@@ -74,7 +74,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	group_filename	= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), Point(7, 171), Size(344, 43));
 
 	edit_filename	= new EditBox(config->enc_filePattern, Point(10, 12), Size(324, 0), 0);
-	list_filename	= new ListBox(Point(), Size());
+	list_filename	= new List();
 
 	Int	 customEntries = 0;
 

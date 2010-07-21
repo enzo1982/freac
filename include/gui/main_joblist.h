@@ -56,7 +56,7 @@ namespace BonkEnc
 			EditBox			*info_edit_year;
 			Text			*info_text_genre;
 			EditBox			*info_edit_genre;
-			ListBox			*info_list_genre;
+			List			*info_list_genre;
 
 			Text			*txt_filename;
 			EditBox			*edb_filename;

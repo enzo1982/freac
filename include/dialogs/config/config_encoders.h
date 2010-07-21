@@ -30,7 +30,7 @@ namespace BonkEnc
 
 			GroupBox			*group_filename;
 			EditBox				*edit_filename;
-			ListBox				*list_filename;
+			List				*list_filename;
 
 			GroupBox			*group_options;
 			CheckBox			*check_onTheFly;

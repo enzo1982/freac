@@ -12,6 +12,7 @@
 #include <cddb/cddbremote.h>
 
 #include <utilities.h>
+#include <config.h>
 
 #include <boca.h>
 
@@ -75,7 +76,7 @@ Error BonkEnc::JobAddFiles::Perform()
 		{
 			CDDBRemote	 cddb;
 
-			cddb.SetActiveDrive(BoCA::Config::Get()->cdrip_activedrive);
+			cddb.SetActiveDrive(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
 			track.discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
 		}
@@ -94,7 +95,7 @@ Error BonkEnc::JobAddFiles::Perform()
 //			}
 		}
 
-		Info	&info = track.GetInfo();
+		Info	 info = track.GetInfo();
 
 		if (info.artist == NIL && info.title == NIL)
 		{
@@ -146,6 +147,8 @@ Error BonkEnc::JobAddFiles::Perform()
 				}
 			}
 		}
+
+		track.SetInfo(info);
 
 		if (track.origFilename == NIL) track.origFilename = file;
 

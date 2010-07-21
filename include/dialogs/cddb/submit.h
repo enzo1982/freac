@@ -36,7 +36,7 @@ namespace BonkEnc
 			EditBox		*edit_year;
 			Text		*text_genre;
 			EditBox		*edit_genre;
-			ListBox		*list_genre;
+			List		*list_genre;
 			Text		*text_disccomment;
 			MultiEdit	*edit_disccomment;
 

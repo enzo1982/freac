@@ -276,7 +276,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 	{
 #ifdef __WIN32__
 		case WM_DEVICECHANGE:
-			if (wParam == DBT_DEVICEARRIVAL && config->cdrip_numdrives > 0 && config->GetIntValue("CDRip", "AutoReadContents", True))
+			if (wParam == DBT_DEVICEARRIVAL && config->cdrip_numdrives > 0 && config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoReadContentsID, Config::RipperAutoReadContentsDefault))
 			{
 				if (((DEV_BROADCAST_HDR *) lParam)->dbch_devicetype != DBT_DEVTYP_VOLUME || !(((DEV_BROADCAST_VOLUME *) lParam)->dbcv_flags & DBTF_MEDIA)) break;
 
@@ -357,7 +357,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 					if (ok)
 					{
-						config->cdrip_activedrive = drive;
+						config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, drive);
 						config->cdrip_autoRead_active = True;
 
 						ReadCD();
@@ -474,14 +474,14 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 
 	if (info != NIL)
 	{
-		const Array<String>	&files = info->GetNthDeviceTrackList(config->cdrip_activedrive);
+		const Array<String>	&files = info->GetNthDeviceTrackList(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
 		Job	*job = new JobAddFiles(files);
 
 		job->Schedule();
 
 		if (config->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
-		if (config->GetIntValue("CDRip", "AutoRip", False)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
+		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
 
 		boca.DeleteComponent(info);
 	}
@@ -491,7 +491,7 @@ Void BonkEnc::BonkEncGUI::ReadSpecificCD()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->cdrip_activedrive = clicked_drive;
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, clicked_drive);
 
 	clicked_drive = -1;
 
@@ -565,7 +565,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 			for (Int k = 0; k < joblist->GetNOfTracks(); k++)
 			{
 				Track	 track = joblist->GetNthTrack(k);
-				Info	&info = track.GetInfo();
+				Info	 info = track.GetInfo();
 
 				if ((info.mcdi.GetData().Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi)) ||
 				    (info.offsets != NIL  && discID == CDDB::DiscIDFromOffsets(info.offsets)))
@@ -584,6 +584,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 					info.year	= cdInfo.dYear;
 					info.track	= trackNumber;
 
+					track.SetInfo(info);
 					track.SetOriginalInfo(info);
 
 					track.outfile	= NIL;
@@ -772,7 +773,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		{
 			for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 			{
-				menu_seldrive->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &config->cdrip_activedrive, i);
+				menu_seldrive->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &config->GetPersistentIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault), i);
 			}
 
 			boca.DeleteComponent(info);
