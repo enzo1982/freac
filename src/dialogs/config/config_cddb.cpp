@@ -19,12 +19,12 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	Point	 pos;
 	Size	 size;
 
-	cddb_auto	= config->enable_auto_cddb;
-	cddb_cdtext	= config->enable_overwrite_cdtext;
-	cddb_cache	= config->enable_cddb_cache;
+	cddb_auto	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault);
+	cddb_cdtext	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbOverwriteCDTextID, Config::FreedbOverwriteCDTextDefault);
+	cddb_cache	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault);
 
-	cddb_local	= config->enable_local_cddb;
-	cddb_remote	= config->enable_remote_cddb;
+	cddb_local	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault);
+	cddb_remote	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault);
 
 	layer_local_background	= new Layer();
 	layer_local_background->SetBackgroundColor(Setup::BackgroundColor);
@@ -66,7 +66,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	size.cx	= 119;
 	size.cy	= 0;
 
-	edit_dir	= new EditBox(config->freedb_dir, pos, size, 0);
+	edit_dir	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault), pos, size, 0);
 
 	pos.x	= 261;
 	pos.y	-= 1;
@@ -106,7 +106,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	pos.y	-= 3;
 	size.cx	= 146;
 
-	edit_server	= new EditBox(config->freedb_server, pos, size, 0);
+	edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault), pos, size, 0);
 
 	pos.x += 153;
 	pos.y += 3;
@@ -130,7 +130,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	pos.y	-= 3;
 	size.cx	= 146;
 
-	edit_email	= new EditBox(config->freedb_email, pos, size, 0);
+	edit_email	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault), pos, size, 0);
 
 	pos.x	= 17;
 	pos.y	+= 27;
@@ -167,7 +167,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 
 	check_cache	= new CheckBox(BonkEnc::i18n->TranslateString("Enable CDDB cache"), pos, size, &cddb_cache);
 
-	combo_mode->SelectNthEntry(config->freedb_mode);
+	combo_mode->SelectNthEntry(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault));
 
 	SetCDDBMode();
 	ToggleAutoCDDB();
@@ -257,12 +257,12 @@ Void BonkEnc::ConfigureCDDB::SetCDDBMode()
 	if (combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
 	{
 		edit_port->Activate();
-		edit_port->SetText(String::FromInt(config->freedb_cddbp_port));
+		edit_port->SetText(String::FromInt(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbCDDBPPortID, Config::FreedbCDDBPPortDefault)));
 	}
 	else if (combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_HTTP)
 	{
 		edit_port->Deactivate();
-		edit_port->SetText(String::FromInt(config->freedb_http_port));
+		edit_port->SetText(String::FromInt(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbHTTPPortID, Config::FreedbHTTPPortDefault)));
 	}
 }
 
@@ -350,17 +350,17 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (config->freedb_proxy_mode == 1 && combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault) == 1 && combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
 	{
 		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
 
-		if	(selection == IDYES)	config->freedb_mode = FREEDB_MODE_HTTP;
-		else if (selection == IDNO)	config->freedb_mode = combo_mode->GetSelectedEntryNumber();
+		if	(selection == IDYES)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, FREEDB_MODE_HTTP);
+		else if (selection == IDNO)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());
 		else if (selection == IDCANCEL)	return Error();
 	}
 	else
 	{
-		config->freedb_mode = combo_mode->GetSelectedEntryNumber();
+		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());
 	}
 
 	Bool	 valid = False;
@@ -375,22 +375,24 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 		return Error();
 	}
 
-	config->enable_auto_cddb	= cddb_auto;
-	config->enable_overwrite_cdtext	= cddb_cdtext;
-	config->enable_cddb_cache	= cddb_cache;
+	String	 freedb_dir = edit_dir->GetText();
 
-	config->enable_local_cddb	= cddb_local;
-	config->enable_remote_cddb	= cddb_remote;
+	if (!freedb_dir.EndsWith(Directory::GetDirectoryDelimiter())) freedb_dir.Append(Directory::GetDirectoryDelimiter());
 
-	config->freedb_dir		= edit_dir->GetText();
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb_auto);
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbOverwriteCDTextID, cddb_cdtext);
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, cddb_cache);
 
-	config->freedb_server		= edit_server->GetText();
-	config->freedb_email		= edit_email->GetText();
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, cddb_local);
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, cddb_remote);
 
-	if	(config->freedb_mode == FREEDB_MODE_CDDBP) config->freedb_cddbp_port = edit_port->GetText().ToInt();
-	else if (config->freedb_mode == FREEDB_MODE_HTTP)  config->freedb_http_port  = edit_port->GetText().ToInt();
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, freedb_dir);
 
-	if (!config->freedb_dir.EndsWith(Directory::GetDirectoryDelimiter())) config->freedb_dir.Append(Directory::GetDirectoryDelimiter());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, edit_server->GetText());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, edit_email->GetText());
+
+	if	(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP) config->GetIntValue(Config::CategoryFreedbID, Config::FreedbCDDBPPortID, edit_port->GetText().ToInt());
+	else if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_HTTP)  config->GetIntValue(Config::CategoryFreedbID, Config::FreedbHTTPPortID, edit_port->GetText().ToInt());
 
 	return Success();
 }

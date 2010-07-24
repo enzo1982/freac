@@ -46,8 +46,8 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 		foreach (TagFormat *format, formats)
 		{
-			list_tag_formats->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(String(format->GetName()).Replace(" ", "")), format->IsDefault()));
-			selected_encodings.Add(config->GetStringValue(Config::CategoryTagsID, String(format->GetName()).Replace(" ", "").Append("Encoding"), format->GetDefaultEncoding()));
+			list_tag_formats->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(String(format->GetName()).Replace(" ", NIL)), format->IsDefault()));
+			selected_encodings.Add(config->GetStringValue(Config::CategoryTagsID, String(format->GetName()).Replace(" ", NIL).Append("Encoding"), format->GetDefaultEncoding()));
 		}
 	}
 
@@ -109,7 +109,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 		foreach (TagFormat *format, formats)
 		{
-			if (format->IsCoverArtSupported()) list_coverart_write_tags_format->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(String(format->GetName()).Replace(" ", "")), format->IsCoverArtDefault()));
+			if (format->IsCoverArtSupported()) list_coverart_write_tags_format->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(String(format->GetName()).Replace(" ", NIL)), format->IsCoverArtDefault()));
 		}
 	}
 
@@ -309,10 +309,10 @@ Int BonkEnc::ConfigureTags::SaveSettings()
 
 		foreach (TagFormat *format, formats)
 		{
-			config->SetIntValue(Config::CategoryTagsID, String("Enable").Append(String(format->GetName()).Replace(" ", "")), list_tag_formats->GetEntry(format->GetName())->IsMarked());
-			config->SetStringValue(Config::CategoryTagsID, String(format->GetName()).Replace(" ", "").Append("Encoding"), selected_encodings.GetNth(list_tag_formats->GetEntryNumber(format->GetName())));
+			config->SetIntValue(Config::CategoryTagsID, String("Enable").Append(String(format->GetName()).Replace(" ", NIL)), list_tag_formats->GetEntry(format->GetName())->IsMarked());
+			config->SetStringValue(Config::CategoryTagsID, String(format->GetName()).Replace(" ", NIL).Append("Encoding"), selected_encodings.GetNth(list_tag_formats->GetEntryNumber(format->GetName())));
 
-			if (format->IsCoverArtSupported()) config->SetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(String(format->GetName()).Replace(" ", "")), list_coverart_write_tags_format->GetEntry(format->GetName())->IsMarked());
+			if (format->IsCoverArtSupported()) config->SetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(String(format->GetName()).Replace(" ", NIL)), list_coverart_write_tags_format->GetEntry(format->GetName())->IsMarked());
 		}
 	}
 

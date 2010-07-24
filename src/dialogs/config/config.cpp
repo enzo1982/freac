@@ -25,7 +25,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("General settings setup"), config->wndPos + Point(30, 30), Size(600, 332));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 332));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

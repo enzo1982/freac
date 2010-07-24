@@ -27,6 +27,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 {
 	static String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
+	BoCA::Config		*config = BoCA::Config::Get();
 	Registry		&boca = Registry::Get();
 	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
@@ -47,9 +48,9 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 
 	for (Int i = 0; i < 11; i++)
 	{
-		if (!File(String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid))).Exists()) continue;
+		if (!File(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid))).Exists()) continue;
 
-		InStream	*in = new InStream(STREAM_FILE, String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid)), IS_READ);
+		InStream	*in = new InStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid)), IS_READ);
 		String		 result = in->InputString(in->Size());
 
 		delete in;
@@ -87,6 +88,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 {
 	static String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
+	BoCA::Config		*config = BoCA::Config::Get();
 	Registry		&boca = Registry::Get();
 	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
@@ -107,7 +109,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 
 	for (Int i = 0; i < 11; i++)
 	{
-		Directory dir	  = Directory(String(config->freedb_dir).Append(array[i]));
+		Directory dir	  = Directory(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]));
 		String	  pattern = String().CopyN(DiscIDToString(discid), 2).Append("to??");
 		String	  found;
 
@@ -245,6 +247,8 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 {
 	protocol->Write("Entering method: CDDBLocal::Submit(const CDDBInfo &)");
 
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	CDDBInfo  cddbInfo = oCddbInfo;
 
 	UpdateEntry(cddbInfo);
@@ -253,7 +257,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 	/* See if we have a Windows or Unix style DB
 	 */
-	Directory dir	  = Directory(String(config->freedb_dir).Append(cddbInfo.category));
+	Directory dir	  = Directory(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category));
 	String	  pattern = String("??to??");
 
 	/* Create directory if it doesn't exist
@@ -334,9 +338,9 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	else						  // Unix style DB
 	{
 		protocol->Write("Found Unix style DB.");
-		protocol->Write(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()));
+		protocol->Write(String("Writing to ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()));
 
-		OutStream	*out = new OutStream(STREAM_FILE, String(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()), OS_REPLACE);
+		OutStream	*out = new OutStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()), OS_REPLACE);
 
 		String	 outputFormat = String::SetOutputFormat("UTF-8");
 

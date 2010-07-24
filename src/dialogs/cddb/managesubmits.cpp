@@ -15,7 +15,7 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), config->wndPos + Point(40, 40), Size(552, 352));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(552, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);

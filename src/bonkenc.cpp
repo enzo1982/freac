@@ -89,9 +89,17 @@ BonkEnc::BonkEnc::BonkEnc()
 
 BonkEnc::BonkEnc::~BonkEnc()
 {
+	/* Quit the job manager.
+	 */
 	JobManager::Quit();
 
-	if (currentConfig->enable_eUpdate)	DLLInterfaces::FreeEUpdateDLL();
+	/* Set first start flag to false.
+	 */
+	BoCA::Config::Get()->SetIntValue(Config::CategorySettingsID, Config::SettingsFirstStartID, False);
+
+	/* Free easyUpdate library.
+	 */
+	if (currentConfig->enable_eUpdate) DLLInterfaces::FreeEUpdateDLL();
 
 	/* Cleanup deletable objects before deleting encoder and translator.
 	 */

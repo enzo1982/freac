@@ -119,7 +119,7 @@ Void BonkEnc::Utilities::FillGenreList(List *list)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	list->AddEntry("");
+	list->AddEntry(NIL);
 	list->AddSeparator();
 
 	Int	 customEntries = 0;

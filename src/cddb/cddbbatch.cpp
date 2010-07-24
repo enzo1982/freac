@@ -26,6 +26,8 @@ BonkEnc::CDDBBatch::~CDDBBatch()
 
 Bool BonkEnc::CDDBBatch::ReadEntries()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
@@ -73,6 +75,8 @@ Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 	if (root == NIL) return False;
 
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	for (Int i = 0; i < root->GetNOfNodes(); i++)
 	{
 		XML::Node	*node = root->GetNthNode(i);
@@ -112,6 +116,8 @@ Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 Bool BonkEnc::CDDBBatch::SaveEntries()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	String	 configDir = config->configDir;
 
 	/* Save queued queries
@@ -196,6 +202,8 @@ Bool BonkEnc::CDDBBatch::DeleteQuery(Int n)
 
 Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	String	 configDir = config->configDir;
 
 	/* Create directory for entry
@@ -210,9 +218,9 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	/* Save current freedb path
 	 */
-	String	 configFreedbDir = config->freedb_dir;
+	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
-	config->freedb_dir = String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
 	CDDBLocal	 cddb;
 
@@ -239,7 +247,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	/* Restore real freedb path
 	 */
-	config->freedb_dir = configFreedbDir;
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
 
 	return True;
 }
@@ -261,6 +269,8 @@ Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 
 Int BonkEnc::CDDBBatch::Query(Int n)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	/* Query entry and delete entry if successful
 	 */
 	cddbQueryDlg	*dlg		= new cddbQueryDlg();
@@ -275,9 +285,9 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 	{
 		/* Save current freedb path
 		 */
-		String	 configFreedbDir = config->freedb_dir;
+		String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
-		config->freedb_dir = String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
+		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
 		CDDBLocal	 cddb;
 
@@ -289,7 +299,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 		/* Restore real freedb path
 		 */
-		config->freedb_dir = configFreedbDir;
+		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
 
 		DeleteQuery(n);
 

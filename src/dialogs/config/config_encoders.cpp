@@ -43,7 +43,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 		combo_encoder->AddEntry(boca.GetComponentName(i));
 
-		if (config->encoderID == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
+		if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
 	}
 
 	button_config	= new Button(BonkEnc::i18n->TranslateString("Configure encoder"), NIL, Point(204, 11), Size(130, 0));
@@ -61,7 +61,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	ToggleUseInputDir();
 
-	edit_outdir	= new EditBox(config->enc_outdir, Point(10, 62), Size(236, 0), 0);
+	edit_outdir	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault), Point(10, 62), Size(236, 0), 0);
 
 	button_outdir_browse= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(254, 61), Size(0, 0));
 	button_outdir_browse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
@@ -73,7 +73,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	group_filename	= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), Point(7, 171), Size(344, 43));
 
-	edit_filename	= new EditBox(config->enc_filePattern, Point(10, 12), Size(324, 0), 0);
+	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(10, 12), Size(324, 0), 0);
 	list_filename	= new List();
 
 	Int	 customEntries = 0;
@@ -275,7 +275,7 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 		if (n++ == combo_encoder->GetSelectedEntryNumber())
 		{
-			config->encoderID = boca.GetComponentID(i);
+			config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(i));
 
 			break;
 		}
@@ -298,10 +298,14 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 		config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(i)), config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(i - 1)), NIL));
 	}
 
+	String	 output_dir = edit_outdir->GetText();
+
+	if (!output_dir.EndsWith(Directory::GetDirectoryDelimiter())) output_dir.Append(Directory::GetDirectoryDelimiter());
+
 	config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastFilePatternID).Append(String::FromInt(1)), edit_filename->GetText());
 
-	config->enc_outdir		= edit_outdir->GetText();
-	config->enc_filePattern		= edit_filename->GetText();
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, output_dir);
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, edit_filename->GetText());
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, onTheFly);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, keepWaves);
@@ -312,8 +316,6 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, unicode_files);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, replace_spaces);
-
-	if (!config->enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) config->enc_outdir.Append(Directory::GetDirectoryDelimiter());
 
 	return Success();
 }

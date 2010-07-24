@@ -136,6 +136,7 @@ Bool BonkEnc::JobList::CanModifyJobList() const
 
 Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
 	Track		*track = new Track(iTrack);
 
 	track->SetOriginalInfo(track->GetInfo());
@@ -144,7 +145,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	 *
 	 * ToDo: Enable encoding heuristics by default once it's ready.
 	 */
-	if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodingHeuristicsID, Config::SettingsEncodingHeuristicsDefault))
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodingHeuristicsID, Config::SettingsEncodingHeuristicsDefault))
 	{
 		char	*prevOutFormat = String::SetOutputFormat("ISO-8859-1");
 
@@ -163,7 +164,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	 */
 	ListEntry	*entry	= AddEntry(GetEntryText(*track));
 
-	if (BoCA::Config::Get()->showTooltips) entry->SetTooltipLayer(new LayerTooltip(*track));
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault)) entry->SetTooltipLayer(new LayerTooltip(*track));
 
 	entry->SetMark(True);
 
@@ -376,7 +377,7 @@ Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 
 			entry->SetText(GetEntryText(track));
 
-			if (BoCA::Config::Get()->showTooltips)
+			if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault))
 			{
 				if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
 
@@ -616,7 +617,7 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 
 		entry->SetText(GetEntryText(track));
 
-		if (BoCA::Config::Get()->showTooltips)
+		if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault))
 		{
 			if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
 

@@ -23,6 +23,8 @@ Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
 {
 	if (Config::Get()->enable_console) return;
 
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	totalSamples = 0;
 	totalSamplesDone = 0;
 
@@ -37,7 +39,7 @@ Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
 		else				      totalSamples += (240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels);
 	}
 
-	if (!BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && BoCA::Config::Get()->encoderID != "wave-out") totalSamples *= 2;
+	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "wave-out") totalSamples *= 2;
 }
 
 Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInfo)

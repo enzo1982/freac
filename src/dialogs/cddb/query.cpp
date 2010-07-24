@@ -24,7 +24,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 
 	allowAddToBatch = False;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB query"), config->wndPos + Point(40, 40), Size(310, 84));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -101,14 +101,14 @@ Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
 
 	Bool	 result = False;
 
-	if (config->enable_local_cddb)
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault))
 	{
 		CDDBLocal	 cddbLocal;
 
-		result = QueryCDDB(cddbLocal, !config->enable_remote_cddb);
+		result = QueryCDDB(cddbLocal, !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault));
 	}
 
-	if (!result && config->enable_remote_cddb)
+	if (!result && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
 		CDDBRemote	 cddbRemote;
 
@@ -128,7 +128,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	Int	 result;
 
 	prog_status->SetValue(0);
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(config->freedb_server).Append("..."));
+	text_status->SetText(String(BonkEnc::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault)).Append("..."));
 
 	cddb.ConnectToServer();
 

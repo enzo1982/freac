@@ -17,7 +17,7 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 
 	cddbQueries	= new CDDBBatch();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB queries"), config->wndPos + Point(40, 40), Size(402, 352));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB queries"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -142,7 +142,7 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 		btn_query->Deactivate();
 	}
 
-	text_status->SetText("");
+	text_status->SetText(NIL);
 }
 
 Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
@@ -153,5 +153,5 @@ Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
 
 	if (cddbQueries->QueryAll()) mainWnd->Close();
 
-	text_status->SetText("");
+	text_status->SetText(NIL);
 }

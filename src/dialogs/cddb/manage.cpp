@@ -20,9 +20,9 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	updateJoblist	= config->update_joblist;
+	updateJoblist	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbUpdateJoblistID, Config::FreedbUpdateJoblistDefault);
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), config->wndPos + Point(40, 40), Size(552, 352));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(552, 352));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -176,7 +176,7 @@ Void BonkEnc::cddbManageDlg::OK()
 
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->update_joblist = updateJoblist;
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbUpdateJoblistID, updateJoblist);
 
 	mainWnd->Close();
 }

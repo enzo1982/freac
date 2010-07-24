@@ -32,7 +32,7 @@ int cddb_sum(int n)
 
 BonkEnc::CDDB::CDDB()
 {
-	config = BoCA::Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
 	activeDriveID = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 	updateTrackOffsets = True;
@@ -48,6 +48,8 @@ BonkEnc::CDDB::~CDDB()
 Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 {
 #ifdef __WIN32__
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	if (driveID >= config->cdrip_numdrives) return Error();
 #endif
 	activeDriveID = driveID;

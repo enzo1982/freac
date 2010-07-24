@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -31,11 +31,11 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 	SetText("Preparing update check...");
 
-	if (config->firstStart)
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsFirstStartID, Config::SettingsFirstStartDefault))
 	{
 		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION) == IDNO)
 		{
-			config->checkUpdatesAtStartup = False;
+			config->SetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, False);
 
 			return Success();
 		}
@@ -52,13 +52,15 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		else			  ex_eUpdate_SetConfigFile(context, String(config->configDir).Append("eUpdate.xml"));
 	}
 
-	if (config->language != "internal")
+	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
+
+	if (language != "internal")
 	{
-		String	 lang;
+		String	 langID;
 
-		for (Int i = 8; i < config->language.Length(); i++) lang[i - 8] = config->language[i];
+		for (Int i = 8; i < language.Length(); i++) langID[i - 8] = language[i];
 
-		if (!ex_eUpdate_SetLanguage(context, String("eupdate_").Append(lang))) ex_eUpdate_SetLanguage(context, "internal");
+		if (!ex_eUpdate_SetLanguage(context, String("eupdate_").Append(langID))) ex_eUpdate_SetLanguage(context, "internal");
 	}
 	else
 	{
@@ -68,17 +70,20 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 	SetText("Contacting update server...");
 	SetProgress(100);
 
+	Bool	 checkUpdates = config->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault);
+
 	if (ex_eUpdate_CheckForNewUpdates(context, !startup) > 0)
 	{
 		SetText("Updates found...");
 		SetProgress(1000);
 
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &config->checkUpdatesAtStartup);
+		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
 
 		msgBox->ShowDialog();
 
 		if (msgBox->GetButtonCode() == IDYES)
 		{
+			config->SetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, checkUpdates);
 			config->SaveSettings();
 
 			ex_eUpdate_AutomaticUpdate(context);
@@ -93,17 +98,19 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 		if (!startup)
 		{
-			MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &config->checkUpdatesAtStartup);
+			MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
 
 			msgBox->ShowDialog();
 
 			DeleteObject(msgBox);
 		}
-		else if (config->firstStart)
+		else if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsFirstStartID, Config::SettingsFirstStartDefault))
 		{
 			QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION);
 		}
 	}
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, checkUpdates);
 
 	ex_eUpdate_FreeUpdateContext(context);
 #endif

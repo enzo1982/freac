@@ -251,6 +251,16 @@ BonkEnc::Config::Config()
 #endif
 
 	Config::SettingsEncoderOutputDirectoryDefault = personalDir;
+
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	String	 encoderOutputDir  = config->GetStringValue(CategorySettingsID, SettingsEncoderOutputDirectoryID, SettingsEncoderOutputDirectoryDefault);
+	String	 playlistOutputDir = config->GetStringValue(CategoryPlaylistID, PlaylistOutputDirID, encoderOutputDir);
+	String	 freedbDir	   = config->GetStringValue(CategoryFreedbID, FreedbDirectoryID, FreedbDirectoryDefault);
+
+	if (!encoderOutputDir.EndsWith(Directory::GetDirectoryDelimiter()))  config->SetStringValue(CategorySettingsID, SettingsEncoderOutputDirectoryID, encoderOutputDir.Append(Directory::GetDirectoryDelimiter()));
+	if (!playlistOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) config->SetStringValue(CategoryPlaylistID, PlaylistOutputDirID, playlistOutputDir.Append(Directory::GetDirectoryDelimiter()));
+	if (!freedbDir.EndsWith(Directory::GetDirectoryDelimiter()))	     config->SetStringValue(CategoryFreedbID, FreedbDirectoryID, freedbDir.Append(Directory::GetDirectoryDelimiter()));
 }
 
 BonkEnc::Config::~Config()

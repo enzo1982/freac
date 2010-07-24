@@ -53,9 +53,9 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	/* Save current freedb path
 	 */
-	String	 configFreedbDir = config->freedb_dir;
+	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
-	config->freedb_dir = String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
 	CDDBLocal	 cddbLocal;
 
@@ -75,7 +75,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	/* Restore real freedb path
 	 */
-	config->freedb_dir = configFreedbDir;
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
 
 	return infoCache.Get(discID);
 }
@@ -94,16 +94,16 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	infoCache.Add(nCddbInfo, nCddbInfo.discID);
 
-	if (!config->enable_cddb_cache) return True;
+	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) return True;
 
 	/* Save new entry to the persistant cache
 	 */
 
 	/* Save current freedb path
 	 */
-	String	 configFreedbDir = config->freedb_dir;
+	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
-	config->freedb_dir = String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
 	CDDBLocal	 cddbLocal;
 
@@ -113,7 +113,7 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	/* Restore real freedb path
 	 */
-	config->freedb_dir = configFreedbDir;
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
 
 	return True;
 }

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,12 +33,14 @@ BonkEnc::CDDBRemote::~CDDBRemote()
 
 String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 {
-	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return "error not connected";
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (!connected && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP) return "error not connected";
 
 	String	 str;
 	String	 command = iCommand;
 
-	switch (config->freedb_mode)
+	switch (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault))
 	{
 		case FREEDB_MODE_CDDBP:
 			if (command != NIL)
@@ -74,31 +76,38 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 
 			gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-			Net::Protocols::HTTP	 http(String("http://").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append(config->freedb_query_path));
+			String	 freedb_server	  = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
+
+			Int	 freedb_http_port = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbHTTPPortID, Config::FreedbHTTPPortDefault);
+
+			Net::Protocols::HTTP	 http(String("http://").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)).Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault)));
 
 			http.SetParameter("cmd", String(command).Replace(" ", "+"));
 			http.SetParameter("hello", String("user ").Append(hostNameBuffer).Append(" BonkEnc ").Append(BonkEnc::cddbVersion).Replace(" ", "+"));
 			http.SetParameter("proto", "6");
 
-			http.SetHeaderField("User-Email", config->freedb_email);
+			http.SetHeaderField("User-Email", config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault));
 			http.SetHeaderField("Charset", "UTF-8");
 
 			http.SetMode(Net::Protocols::HTTP_METHOD_POST);
 
-			if (config->freedb_proxy_mode != 0)
+			if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault) != 0)
 			{
-				http.SetProxy(config->freedb_proxy, config->freedb_proxy_port);
-				http.SetProxyAuth(config->freedb_proxy_user, config->freedb_proxy_password);
+				http.SetProxy(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyID, Config::FreedbProxyDefault), config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyPortID, Config::FreedbProxyPortDefault));
+				http.SetProxyAuth(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyUserID, Config::FreedbProxyUserDefault), config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyPasswordID, Config::FreedbProxyPasswordDefault));
 
-				if	(config->freedb_proxy_mode == 1) http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTP);
-				else if (config->freedb_proxy_mode == 2) http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTPS);
-				else if (config->freedb_proxy_mode == 3) http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS4);
-				else if (config->freedb_proxy_mode == 4) http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS5);
+				switch (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault))
+				{
+					case 1: http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTP);   break;
+					case 2: http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTPS);  break;
+					case 3: http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS4); break;
+					case 4: http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS5); break;
+				}
 			}
 
 			if (http.DownloadToBuffer(httpResultBuffer) == Error())
 			{
-				protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
+				protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)));
 
 				str = "error";
 
@@ -121,17 +130,32 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 
 Bool BonkEnc::CDDBRemote::ConnectToServer()
 {
-	if (config->freedb_mode == FREEDB_MODE_CDDBP)
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP)
 	{
-		if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_cddbp_port);
-		else if (config->freedb_proxy_mode == 1)	{ connected = False; return False; }
-		else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port, config->freedb_proxy_user, config->freedb_proxy_password);
-		else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
-		else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port, config->freedb_proxy_user, config->freedb_proxy_password);
+		String	 freedb_server		= config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
+
+		Int	 freedb_cddbp_port	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbCDDBPPortID, Config::FreedbCDDBPPortDefault);
+
+		String	 freedb_proxy		= config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyID, Config::FreedbProxyDefault);
+		Int	 freedb_proxy_port	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyPortID, Config::FreedbProxyPortDefault);
+
+		String	 freedb_proxy_user	= config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyUserID, Config::FreedbProxyUserDefault);
+		String	 freedb_proxy_password	= config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyPasswordID, Config::FreedbProxyPasswordDefault);
+
+		switch (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault))
+		{
+			case 0:	socket = new DriverSocket(freedb_server, freedb_cddbp_port); break;
+			case 1:	connected = False; return False;
+			case 2:	socket = new DriverHTTPS(freedb_proxy, freedb_proxy_port, freedb_server, freedb_cddbp_port, freedb_proxy_user, freedb_proxy_password); break;
+			case 3:	socket = new DriverSOCKS4(freedb_proxy, freedb_proxy_port, freedb_server, freedb_cddbp_port); break;
+			case 4:	socket = new DriverSOCKS5(freedb_proxy, freedb_proxy_port, freedb_server, freedb_cddbp_port, freedb_proxy_user, freedb_proxy_password); break;
+		}
 
 		if (socket->GetLastError() != IO_ERROR_OK)
 		{
-			protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_cddbp_port)));
+			protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_cddbp_port)));
 
 			connected = False;
 
@@ -140,7 +164,7 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 			return False;
 		}
 
-		protocol->Write(String("CDDB: Connected to CDDB server at ").Append(config->freedb_server).Append(":").Append(config->freedb_cddbp_port));
+		protocol->Write(String("CDDB: Connected to CDDB server at ").Append(freedb_server).Append(":").Append(freedb_cddbp_port));
 
 		connected = True;
 
@@ -291,34 +315,42 @@ Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cdd
 
 Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	CDDBInfo cddbInfo = oCddbInfo;
 
 	if (!UpdateEntry(cddbInfo)) return False;
 
-	Net::Protocols::HTTP	 http(String("http://").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append(config->freedb_submit_path));
+	String	 freedb_server	  = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
+	Int	 freedb_http_port = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbHTTPPortID, Config::FreedbHTTPPortDefault);
+
+	Net::Protocols::HTTP	 http(String("http://").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)).Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, Config::FreedbSubmitPathDefault)));
 
 	http.SetHeaderField("Category", cddbInfo.category);
 	http.SetHeaderField("Discid", cddbInfo.DiscIDToString());
-	http.SetHeaderField("User-Email", config->freedb_email);
+	http.SetHeaderField("User-Email", config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault));
 	http.SetHeaderField("Submit-Mode", BonkEnc::cddbMode);
 	http.SetHeaderField("Charset", "UTF-8");
 
-	if (config->freedb_proxy_mode != 0)
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault) != 0)
 	{
-		http.SetProxy(config->freedb_proxy, config->freedb_proxy_port);
-		http.SetProxyAuth(config->freedb_proxy_user, config->freedb_proxy_password);
+		http.SetProxy(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyID, Config::FreedbProxyDefault), config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyPortID, Config::FreedbProxyPortDefault));
+		http.SetProxyAuth(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyUserID, Config::FreedbProxyUserDefault), config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyPasswordID, Config::FreedbProxyPasswordDefault));
 
-		if	(config->freedb_proxy_mode == 1) http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTP);
-		else if (config->freedb_proxy_mode == 2) http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTPS);
-		else if (config->freedb_proxy_mode == 3) http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS4);
-		else if (config->freedb_proxy_mode == 4) http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS5);
+		switch (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault))
+		{
+			case 1: http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTP);   break;
+			case 2: http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTPS);  break;
+			case 3: http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS4); break;
+			case 4: http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS5); break;
+		}
 	}
 
 	http.SetContent(FormatCDDBRecord(cddbInfo));
 
 	if (http.DownloadToBuffer(httpResultBuffer) == Error())
 	{
-		protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
+		protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)));
 
 		return False;
 	}
@@ -329,11 +361,13 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 Bool BonkEnc::CDDBRemote::CloseConnection()
 {
-	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return False;
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (!connected && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP) return False;
 
 	SendCommand("quit");
 
-	if (config->freedb_mode == FREEDB_MODE_CDDBP)
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP)
 	{
 		delete out;
 		delete in;

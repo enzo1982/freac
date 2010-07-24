@@ -47,7 +47,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	if (componentsConfig == NIL) i18n->ActivateLanguage("internal");
 
-	i18n->ActivateLanguage(componentsConfig->language);
+	i18n->ActivateLanguage(componentsConfig->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault));
 
 	/* Don't save configuration settings set via command line.
 	 */
@@ -153,7 +153,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		else if (mode == "ABR" || mode == "abr") componentsConfig->SetIntValue("LAME", "VBRMode", 3);
 		else if (mode == "CBR" || mode == "cbr") componentsConfig->SetIntValue("LAME", "VBRMode", 0);
 
-		componentsConfig->encoderID = "lame-out";
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "lame-out");
 	}
 	else if (encoderID == "VORBIS")
 	{
@@ -167,7 +167,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, quality.ToInt())));
 		componentsConfig->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, bitrate.ToInt())));
 
-		componentsConfig->encoderID = "vorbis-out";
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "vorbis-out");
 	}
 	else if (encoderID == "BONK")
 	{
@@ -186,7 +186,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, predictor.ToInt())));
 		componentsConfig->SetIntValue("Bonk", "Downsampling", Math::Max(0, Math::Min(10, downsampling.ToInt())));
 
-		componentsConfig->encoderID = "bonk-out";
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "bonk-out");
 	}
 	else if (encoderID == "BLADE")
 	{
@@ -196,7 +196,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		componentsConfig->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, bitrate.ToInt())));
 
-		componentsConfig->encoderID = "blade-out";
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "blade-out");
 	}
 	else if (encoderID == "FAAC")
 	{
@@ -212,7 +212,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, quality.ToInt())));
 		componentsConfig->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, bitrate.ToInt())));
 
-		componentsConfig->encoderID = "faac-out";
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "faac-out");
 	}
 	else if (encoderID == "FLAC")
 	{
@@ -246,7 +246,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("FLAC", "MinResidualPartitionOrder", Math::Max(0, Math::Min(16, minrice.ToInt())));
 		componentsConfig->SetIntValue("FLAC", "MaxResidualPartitionOrder", Math::Max(0, Math::Min(16, maxrice.ToInt())));
 
-		componentsConfig->encoderID = "flac-out";
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "flac-out");
 	}
 	else if (encoderID == "TVQ")
 	{
@@ -259,11 +259,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, candidates.ToInt())));
 		componentsConfig->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, bitrate.ToInt())));
 
-		componentsConfig->encoderID = "twinvq-out";
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "twinvq-out");
 	}
 	else if (encoderID == "WAVE")
 	{
-		componentsConfig->encoderID = "wave-out";
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "wave-out");
 	}
 	else
 	{
@@ -274,19 +274,19 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	if (!broken)
 	{
-		componentsConfig->enc_outdir = outdir;
-		componentsConfig->enc_filePattern = pattern;
+		if (!outdir.EndsWith(Directory::GetDirectoryDelimiter())) outdir.Append(Directory::GetDirectoryDelimiter());
 
-		componentsConfig->enable_auto_cddb = cddb;
-		componentsConfig->enable_cddb_cache = True;
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, outdir);
+		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+
+		componentsConfig->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb);
+		componentsConfig->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, True);
 
 		componentsConfig->SetIntValue("CDRip", "LockTray", False);
 		componentsConfig->cdrip_timeout = timeout.ToInt();
 
 		componentsConfig->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
 		componentsConfig->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
-
-		if (!componentsConfig->enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) componentsConfig->enc_outdir.Append(Directory::GetDirectoryDelimiter());
 
 		for (Int i = 0; i < files.Length(); i++)
 		{
@@ -483,7 +483,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 {
 	if (helpenc == NIL)
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2009 Robert Kausch\n\n"));
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2010 Robert Kausch\n\n"));
 		Console::OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
 		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
 		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
@@ -500,7 +500,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	}
 	else
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2009 Robert Kausch\n\n"));
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2010 Robert Kausch\n\n"));
 
 		if (helpenc == "LAME" || helpenc == "lame")
 		{

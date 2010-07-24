@@ -21,8 +21,9 @@
 
 BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	i18n		= BoCA::I18n::Get();
-	currentConfig	= BoCA::Config::Get();
 
 	createPlaylist	= BoCA::Config::Get()->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
 	createCueSheet	= BoCA::Config::Get()->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
@@ -116,8 +117,8 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	pos.x = 16;
 	pos.y = 24;
-	size.cx = currentConfig->wndSize.cx - 29;
-	size.cy = currentConfig->wndSize.cy - 264 - (currentConfig->showTitleInfo ? 68 : 0);
+	size.cx = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, Config::SettingsWindowSizeXDefault) - 29;
+	size.cy = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, Config::SettingsWindowSizeYDefault) - 264 - (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0);
 
 	joblist			= new JobList(pos, size);
 	joblist->getContextMenu.Connect(&LayerJoblist::GetContextMenu, this);
@@ -127,7 +128,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	size.cx = 90;
 	size.cy = 0;
 
-	check_single		= new CheckBox(NIL, pos, size, (Bool *) &currentConfig->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));
+	check_single		= new CheckBox(NIL, pos, size, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));
 	check_single->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x -= 100;
@@ -140,10 +141,10 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	check_cuesheet		= new CheckBox(NIL, pos, size, &createCueSheet);
 	check_cuesheet->SetOrientation(OR_UPPERRIGHT);
 
-	info_divider		= new Divider(113 + (currentConfig->showTitleInfo ? 68 : 0), OR_HORZ | OR_BOTTOM);
+	info_divider		= new Divider(113 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0), OR_HORZ | OR_BOTTOM);
 	info_bottom		= new Divider(113, OR_HORZ | OR_BOTTOM);
 
-	pos.y = 121 + (currentConfig->showTitleInfo ? 68 : 0);
+	pos.y = 121 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0);
 	pos.x = 5;
 	size.cx = 90;
 	size.cy = 17;
@@ -158,7 +159,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	size.cx = 86;
 	size.cy = 0;
 
-	info_checkbox = new CheckBox(NIL, pos, size, &currentConfig->showTitleInfo);
+	info_checkbox = new CheckBox(NIL, pos, size, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault));
 	info_checkbox->onAction.Connect(&LayerJoblist::ShowHideTitleInfo, this);
 
 	pos.x = 7;
@@ -456,7 +457,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	info_background->Add(info_checkbox);
 
-	if (!currentConfig->showTitleInfo)
+	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
 	{
 		info_bottom->Hide();
 		info_text_artist->Hide();
@@ -572,11 +573,13 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 
 Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	info_divider->SetPos(113 + (currentConfig->showTitleInfo ? 68 : 0));
-	info_background->SetY(121 + (currentConfig->showTitleInfo ? 68 : 0));
+	info_divider->SetPos(113 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0));
+	info_background->SetY(121 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0));
 
 	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
 	info_edit_title->SetWidth(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx);
@@ -611,7 +614,7 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	txt_splitPercent->SetX(progress->GetX() + progress->GetWidth() + 36);
 	edb_totalPercent->SetX(progress->GetX() + progress->GetWidth() + 45);
 
-	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
+	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0)));
 
 	check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
 	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
@@ -830,8 +833,9 @@ Void BonkEnc::LayerJoblist::FillMenus()
 
 Void BonkEnc::LayerJoblist::UpdateEncoderText()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
-	Component	*component = boca.CreateComponentByID(currentConfig->encoderID);
+	Component	*component = boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
 	if (component != NIL)
 	{
@@ -965,6 +969,11 @@ Void BonkEnc::LayerJoblist::UpdateTitleInfo()
 
 PopupMenu *BonkEnc::LayerJoblist::GetContextMenu()
 {
+	/* Select the entry under the cursor before opening the context menu.
+	 */
+	Process(SM_LBUTTONDOWN, 0, 0);
+	Process(SM_LBUTTONUP, 0, 0);
+
 	if (joblist->GetSelectedTrack() != NIL) return menu_trackmenu;
 
 	return NIL;
@@ -1068,9 +1077,11 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 
 Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	Int	 n = 0;
 
-	if (currentConfig->showTitleInfo)
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
 	{
 		n = 68;
 	}
@@ -1096,7 +1107,7 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
+	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0)));
 
 	check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
 	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
@@ -1107,7 +1118,7 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 
 	joblist->Paint(SP_PAINT);
 
-	if (currentConfig->showTitleInfo)
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
 	{
 		info_bottom->Show();
 		info_text_artist->Show();
@@ -1127,25 +1138,28 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 
 Void BonkEnc::LayerJoblist::UpdateOutputDir()
 {
-	edb_outdir->SetText(Utilities::GetAbsoluteDirName(currentConfig->enc_outdir));
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	edb_outdir->SetText(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 }
 
 Void BonkEnc::LayerJoblist::OnSelectDir()
 {
 	if (!Config::Get()->CanChangeConfig()) return;
 
+	BoCA::Config	*config = BoCA::Config::Get();
 	DirSelection	*dialog = new DirSelection();
 
 	/* ToDo: Pass main window here.
 	 */
 //	dialog->SetParentWindow(mainWnd);
 	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
-	dialog->SetDirName(Utilities::GetAbsoluteDirName(currentConfig->enc_outdir));
+	dialog->SetDirName(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 	if (dialog->ShowDialog() == Success())
 	{
 		edb_outdir->SetText(dialog->GetDirName());
-		currentConfig->enc_outdir = dialog->GetDirName();
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, dialog->GetDirName());
 	}
 
 	DeleteObject(dialog);
@@ -1155,6 +1169,7 @@ Void BonkEnc::LayerJoblist::OnSelectEncoder()
 {
 	if (!Config::Get()->CanChangeConfig()) return;
 
+	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
 
 	for (Int i = 0, n = 0; i < boca.GetNumberOfComponents(); i++)
@@ -1163,7 +1178,7 @@ Void BonkEnc::LayerJoblist::OnSelectEncoder()
 
 		if (combo_encoder->GetSelectedEntryNumber() == n++)
 		{
-			currentConfig->encoderID = boca.GetComponentID(i);
+			config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(i));
 
 			break;
 		}

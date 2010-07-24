@@ -39,7 +39,7 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 	{
 		combo_language->AddEntry(BonkEnc::i18n->GetNthLanguageName(i));
 
-		if (config->language == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
+		if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault) == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
 	if (File(Application::GetApplicationDirectory().Append("translator.exe")).Exists())
@@ -100,8 +100,8 @@ Int BonkEnc::ConfigureLanguage::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->languageChanged	= (config->language != BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
-	config->language	= BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber());
+	config->languageChanged	= (config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault) != BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
 
 	return Success();
 }

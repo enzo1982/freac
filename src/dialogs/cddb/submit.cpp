@@ -25,16 +25,16 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	activedrive	= config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
-	updateJoblist	= config->update_joblist;
+	updateJoblist	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbUpdateJoblistID, Config::FreedbUpdateJoblistDefault);
 
-	submitLater	= !config->enable_remote_cddb;
+	submitLater	= !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault);
 
 	dontUpdateInfo	= False;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), config->wndPos + Point(40, 40), Size(502, 453));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(502, 453));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -55,7 +55,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	btn_submit->onAction.Connect(&cddbSubmitDlg::Submit, this);
 	btn_submit->SetOrientation(OR_LOWERRIGHT);
 
-	if (!config->enable_remote_cddb) btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault)) btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
 
 	pos.x = 3;
 	pos.y = 39;
@@ -356,7 +356,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 	Int	 revision = cddbInfo.revision;
 
-	if (config->enable_local_cddb)
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault))
 	{
 		CDDBLocal	 cddb;
 
@@ -373,7 +373,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		cddb.SetActiveDrive(activedrive);
 		cddb.AddSubmit(cddbInfo);
 	}
-	else if (config->enable_remote_cddb)
+	else if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
 		CDDBRemote	 cddb;
 
@@ -433,7 +433,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		}
 	}
 
-	config->update_joblist = updateJoblist;
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbUpdateJoblistID, updateJoblist);
 
 	mainWnd->Close();
 }
@@ -536,7 +536,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	Int		 iDiscid = cddb.ComputeDiscID();
 	CDDBInfo	 cdInfo;
 
-	if (config->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(iDiscid);
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(iDiscid);
 
 	if (cdInfo == NIL)
 	{
@@ -580,7 +580,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 		for (Int j = 0; j < cdInfo.trackTitles.Length(); j++)
 		{
-			Int	 handle = list_tracks->AddEntry("")->GetHandle();
+			Int	 handle = list_tracks->AddEntry(NIL)->GetHandle();
 
 			artists.Add(cdInfo.trackArtists.GetNth(j), handle);
 			titles.Add(cdInfo.trackTitles.GetNth(j), handle);
@@ -640,7 +640,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 					firstTrack = False;
 				}
 
-				Int	 handle = list_tracks->AddEntry("")->GetHandle();
+				Int	 handle = list_tracks->AddEntry(NIL)->GetHandle();
 
 				artists.Add(NIL, handle);
 				titles.Add(info.title, handle);
@@ -648,7 +648,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 			}
 			else
 			{
-				Int	 handle = list_tracks->AddEntry("")->GetHandle();
+				Int	 handle = list_tracks->AddEntry(NIL)->GetHandle();
 
 				artists.Add(NIL, handle);
 				titles.Add(BonkEnc::i18n->TranslateString("Data track"), handle);
@@ -781,8 +781,8 @@ Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (!submitLater && config->enable_remote_cddb)	btn_submit->SetText(BonkEnc::i18n->TranslateString("Submit"));
-	else						btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+	if (!submitLater && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))	btn_submit->SetText(BonkEnc::i18n->TranslateString("Submit"));
+	else																	btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
 }
 
 Bool BonkEnc::cddbSubmitDlg::IsDataValid()

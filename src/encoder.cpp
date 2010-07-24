@@ -113,7 +113,7 @@ Int BonkEnc::Encoder::EncoderThread()
 	Int			 num		= joblist->GetNOfTracks();
 	Int			 nRemoved	= 0;
 	Int			 step		= 1;
-	String			 encoderID	= config->encoderID;
+	String			 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 	Int64			 encodedSamples	= 0;
 	Playlist		 playlist;
 	CueSheet		 cueSheet;
@@ -137,7 +137,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		if (skip && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0)
 		{
 			step		= 1;
-			encoderID	= config->encoderID;
+			encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 
 			continue;
 		}
@@ -151,7 +151,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		skip		= False;
 
-		if (nRemoved == 0 && (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) || config->encoderID == "wave-out" || step == 0))
+		if (nRemoved == 0 && (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) || config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) == "wave-out" || step == 0))
 		{
 			playlist_filename = GetPlaylistFileName(trackInfo);
 
@@ -248,7 +248,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		{
 			step = 1;
 
-			encoderID = config->encoderID;
+			encoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 
 			in_filename = out_filename;
 			in_filename.Append(".wav");
@@ -430,7 +430,7 @@ Int BonkEnc::Encoder::EncoderThread()
 				playlist.AddTrack(relativeFileName, String(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (format.rate * format.channels)));
 				cueSheet.AddTrack(relativeFileName, 0, trackInfo);
 
-				trackInfo.SaveCoverArtFiles(Utilities::GetAbsoluteDirName(config->enc_outdir));
+				trackInfo.SaveCoverArtFiles(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 			}
 		}
 		else if (!skip)
@@ -591,10 +591,9 @@ String BonkEnc::Encoder::GetPlaylistFileName(const Track &track)
 	BoCA::Config	*config = BoCA::Config::Get();
 	const Info	&info = track.GetInfo();
 
-	String	 playlistOutputDir = Utilities::GetAbsoluteDirName(config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault) ? config->enc_outdir : config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, config->enc_outdir));
+	String	 outputDir = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
 
-	if (!playlistOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) playlistOutputDir.Append(Directory::GetDirectoryDelimiter());
-
+	String	 playlistOutputDir = Utilities::GetAbsoluteDirName(config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault) ? outputDir : config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, outputDir));
 	String	 playlistFileName = playlistOutputDir;
 
 	if (info.artist != NIL || info.album != NIL)
@@ -698,25 +697,26 @@ String BonkEnc::Encoder::GetOutputFileName(const Track &track)
 	if (track.outfile == NIL)
 	{
 		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
-		else		     outputFileName.Copy(Utilities::GetAbsoluteDirName(config->enc_outdir));
+		else		     outputFileName.Copy(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 		/* Get file extension from selected encoder component
 		 */
 		Registry		&boca = Registry::Get();
-		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->encoderID);
+		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
 		String			 fileExtension = encoder->GetOutputFileExtension();
+		String			 filePattern = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
 		boca.DeleteComponent(encoder);
 
 		/* Replace patterns
 		 */
-		if ((info.artist != NIL && config->enc_filePattern.Find("<artist>")   >= 0) ||
-		    (info.title  != NIL && config->enc_filePattern.Find("<title>")    >= 0) ||
-		    (info.track  != -1  && config->enc_filePattern.Find("<track>")    >= 0) ||
-		    (			   config->enc_filePattern.Find("<filename>") >= 0))
+		if ((info.artist != NIL && filePattern.Find("<artist>")   >= 0) ||
+		    (info.title  != NIL && filePattern.Find("<title>")    >= 0) ||
+		    (info.track  != -1  && filePattern.Find("<track>")    >= 0) ||
+		    (			   filePattern.Find("<filename>") >= 0))
 		{
-			String	 shortOutFileName = config->enc_filePattern;
+			String	 shortOutFileName = filePattern;
 
 			shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"), True));
 			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title"), True));
@@ -819,7 +819,7 @@ String BonkEnc::Encoder::GetSingleOutputFileName(const Track &track)
 	/* Get list of supported formats from selected encoder
 	 */
 	Registry		&boca = Registry::Get();
-	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(BoCA::Config::Get()->encoderID);
+	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(BoCA::Config::Get()->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
 	const Array<FileFormat *>	&formats = encoder->GetFormats();
 

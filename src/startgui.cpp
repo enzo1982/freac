@@ -73,33 +73,42 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	clicked_drive = -1;
 	clicked_encoder = -1;
 
-	String	 language = config->language;
+	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
 
 	if (language != NIL) i18n->ActivateLanguage(language);
 	else		     i18n->SelectUserDefaultLanguage();
 
-	config->language = i18n->GetActiveLanguageID();
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, i18n->GetActiveLanguageID());
 
 	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
 
-	if (config->wndPos.x + config->wndSize.cx > workArea.right + 2 ||
-	    config->wndPos.y + config->wndSize.cy > workArea.bottom + 2)
+	Point	 wndPos = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault));
+	Size	 wndSize = Size(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, Config::SettingsWindowSizeXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, Config::SettingsWindowSizeYDefault));
+
+	if (wndPos.x + wndSize.cx > workArea.right + 2 ||
+	    wndPos.y + wndSize.cy > workArea.bottom + 2)
 	{
-		config->wndPos.x = (Int) Math::Min(workArea.right - 10 - config->wndSize.cx, config->wndPos.x);
-		config->wndPos.y = (Int) Math::Min(workArea.bottom - 10 - config->wndSize.cy, config->wndPos.y);
+		wndPos.x = (Int) Math::Min(workArea.right - 10 - wndSize.cx, wndPos.x);
+		wndPos.y = (Int) Math::Min(workArea.bottom - 10 - wndSize.cy, wndPos.y);
 	}
 
-	if (config->wndPos.x < workArea.left - 2 ||
-	    config->wndPos.y < workArea.top - 2)
+	if (wndPos.x < workArea.left - 2 ||
+	    wndPos.y < workArea.top - 2)
 	{
-		config->wndPos.x = (Int) Math::Max(workArea.left + 10, config->wndPos.x);
-		config->wndPos.y = (Int) Math::Max(workArea.top + 10, config->wndPos.y);
+		wndPos.x = (Int) Math::Max(workArea.left + 10, wndPos.x);
+		wndPos.y = (Int) Math::Max(workArea.top + 10, wndPos.y);
 
-		config->wndSize.cx = (Int) Math::Min(workArea.right - 20, config->wndSize.cx);
-		config->wndSize.cy = (Int) Math::Min(workArea.bottom - 20, config->wndSize.cy);
+		wndSize.cx = (Int) Math::Min(workArea.right - 20, wndSize.cx);
+		wndSize.cy = (Int) Math::Min(workArea.bottom - 20, wndSize.cy);
 	}
 
-	mainWnd			= new GUI::Window(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version), config->wndPos, config->wndSize);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, wndPos.x);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, wndPos.y);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, wndSize.cx);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, wndSize.cy);
+
+	mainWnd			= new GUI::Window(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version), wndPos, wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar();
@@ -170,9 +179,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault)) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
 	mainWnd->doClose.Connect(&BonkEncGUI::ExitProc, this);
-	mainWnd->SetMinimumSize(Size(530, 340 + (config->showTitleInfo ? 68 : 0)));
+	mainWnd->SetMinimumSize(Size(530, 340 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0)));
 
-	if (config->maximized) mainWnd->Maximize();
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, Config::SettingsWindowMaximizedDefault)) mainWnd->Maximize();
 
 	encoder->onStartEncoding.Connect(&LayerJoblist::OnEncoderStartEncoding, tab_layer_joblist);
 	encoder->onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, tab_layer_joblist);
@@ -182,7 +191,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	encoder->onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, tab_layer_joblist);
 	encoder->onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, tab_layer_joblist);
 
-	if (config->checkUpdatesAtStartup) (new JobCheckForUpdates(True))->Schedule();
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault)) (new JobCheckForUpdates(True))->Schedule();
 }
 
 BonkEnc::BonkEncGUI::~BonkEncGUI()
@@ -259,9 +268,13 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
 
-	config->wndPos = Point(wndRect.left, wndRect.top);
-	config->wndSize = Size(wndRect.right - wndRect.left, wndRect.bottom - wndRect.top);
-	config->maximized = mainWnd->IsMaximized();
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, wndRect.left);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, wndRect.top);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, wndRect.right - wndRect.left);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, wndRect.bottom - wndRect.top);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, mainWnd->IsMaximized());
 
 	config->SaveSettings();
 
@@ -376,14 +389,16 @@ Void BonkEnc::BonkEncGUI::OnChangePosition(const Point &nPos)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->wndPos = mainWnd->GetPosition();
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, mainWnd->GetPosition().x);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, mainWnd->GetPosition().y);
 }
 
 Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->wndSize = mainWnd->GetSize();
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, mainWnd->GetSize().cx);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, mainWnd->GetSize().cy);
 
 	mainWnd->SetStatusText(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
 
@@ -411,7 +426,7 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 
 	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
-	Component	*component = boca.CreateComponentByID(config->encoderID);
+	Component	*component = boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 	ConfigLayer	*layer = component->GetConfigurationLayer();
 
 	if (layer != NIL)
@@ -480,7 +495,7 @@ Void BonkEnc::BonkEncGUI::ReadCD()
 
 		job->Schedule();
 
-		if (config->enable_auto_cddb) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
+		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault)) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
 		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
 
 		boca.DeleteComponent(info);
@@ -506,7 +521,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 	 *	 when QueryCDDB is called from ReadCD because
 	 *	 of auto queries enabled.
 	 */
-	if (!config->enable_local_cddb && !config->enable_remote_cddb)
+	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) && !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
 		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
@@ -545,7 +560,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		String	 queryString = queryStrings.GetNth(j);
 		CDDBInfo cdInfo;
 
-		if (config->enable_cddb_cache) cdInfo = CDDBCache::Get()->GetCacheEntry(discID);
+		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(discID);
 
 		if (cdInfo == NIL)
 		{
@@ -633,7 +648,7 @@ Void BonkEnc::BonkEncGUI::SubmitCDDBData()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (!config->enable_local_cddb && !config->enable_remote_cddb)
+	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) && !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
 		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
@@ -660,7 +675,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (!config->enable_remote_cddb)
+	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
 		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
@@ -678,7 +693,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (!config->enable_remote_cddb)
+	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
 		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
@@ -698,7 +713,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	Bool		 prevRTL = i18n->IsActiveLanguageRightToLeft();
 
-	i18n->ActivateLanguage(config->language);
+	i18n->ActivateLanguage(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault));
 
 	MessageDlg::SetDefaultRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
@@ -865,10 +880,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB queries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchQueries, this);
 	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, &config->enable_cddb_cache);
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
 	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
 	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &config->enable_auto_cddb);
+	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
 
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
@@ -885,7 +900,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		menu_help->AddEntry();
 		menu_help->AddEntry(String(i18n->TranslateString("Check for updates now")).Append("..."))->onAction.Connect(&BonkEncGUI::CheckForUpdates, this);
-		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, &config->checkUpdatesAtStartup);
+		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault));
 	}
 
 	menu_help->AddEntry();
@@ -969,7 +984,7 @@ Void BonkEnc::BonkEncGUI::EncodeSpecific()
 	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
 
-	config->encoderID = boca.GetComponentID(clicked_encoder);
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(clicked_encoder));
 
 	tab_layer_joblist->UpdateEncoderText();
 

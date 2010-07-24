@@ -30,7 +30,6 @@ namespace BonkEnc
 	{
 		protected:
 			Int		 activeDriveID;
-			BoCA::Config	*config;
 
 			Array<Int>	 ids;
 			Array<String>	 titles;

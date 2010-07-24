@@ -15,7 +15,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), config->wndPos + Point(80, 80), Size(352, 221));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(80, 80), Size(352, 221));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -37,10 +37,10 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	http_group_scripts	= new GroupBox(BonkEnc::i18n->TranslateString("CGI scripts"), Point(7, 11), Size(312, 66));
 
 	http_text_query		= new Text(BonkEnc::i18n->TranslateString("CDDB query script:"), Point(16, 24));
-	http_edit_query		= new EditBox(config->freedb_query_path, Point(117, 21), Size(192, 0), 0);
+	http_edit_query		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault), Point(117, 21), Size(192, 0), 0);
 
 	http_text_submit	= new Text(BonkEnc::i18n->TranslateString("CDDB submit script:"), Point(16, 51));
-	http_edit_submit	= new EditBox(config->freedb_submit_path, Point(117, 48), Size(192, 0), 0);
+	http_edit_submit	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, Config::FreedbSubmitPathDefault), Point(117, 48), Size(192, 0), 0);
 
 	Int	 maxTextSize = Math::Max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
 
@@ -60,21 +60,21 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_combo_mode->AddEntry("SOCKS v5");
 
 	proxy_text_server	= new Text(BonkEnc::i18n->TranslateString("Proxy server:"), Point(16, 51));
-	proxy_edit_server	= new EditBox(config->freedb_proxy, Point(116, 48), Size(100, 0), 0);
+	proxy_edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyID, Config::FreedbProxyDefault), Point(116, 48), Size(100, 0), 0);
 
 	proxy_text_port		= new Text(BonkEnc::i18n->TranslateString("Port:"), Point(226, 51));
 	proxy_text_port->SetPosition(Point(264 - proxy_text_port->textSize.cx, proxy_text_port->GetY()));
 
-	proxy_edit_port		= new EditBox(String::FromInt(config->freedb_proxy_port), Point(272, 48), Size(37, 0), 5);
+	proxy_edit_port		= new EditBox(String::FromInt(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyPortID, Config::FreedbProxyPortDefault)), Point(272, 48), Size(37, 0), 5);
 	proxy_edit_port->SetFlags(EDB_NUMERIC);
 
 	proxy_text_user		= new Text(BonkEnc::i18n->TranslateString("User name:"), Point(16, 78));
-	proxy_edit_user		= new EditBox(config->freedb_proxy_user, Point(116, 75), Size(100, 0), 0);
+	proxy_edit_user		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyUserID, Config::FreedbProxyUserDefault), Point(116, 75), Size(100, 0), 0);
 
 	proxy_text_password	= new Text(BonkEnc::i18n->TranslateString("Password:"), Point(226, 78));
 	proxy_text_password->SetPosition(Point(234 - proxy_text_password->textSize.cx, proxy_text_password->GetY()));
 
-	proxy_edit_password	= new EditBox(config->freedb_proxy_password, Point(242, 75), Size(67, 0), 0);
+	proxy_edit_password	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyPasswordID, Config::FreedbProxyPasswordDefault), Point(242, 75), Size(67, 0), 0);
 	proxy_edit_password->SetFlags(EDB_ASTERISK);
 
 	maxTextSize = Math::Max(Math::Max(proxy_text_mode->textSize.cx, proxy_text_server->textSize.cx), proxy_text_user->textSize.cx);
@@ -83,7 +83,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->GetY()), Size(233 - maxTextSize - proxy_text_port->textSize.cx, proxy_edit_server->GetHeight()));
 	proxy_edit_user->SetMetrics(Point(maxTextSize + 24, proxy_edit_user->GetY()), Size(203 - maxTextSize - proxy_text_password->textSize.cx, proxy_edit_user->GetHeight()));
 
-	proxy_combo_mode->SelectNthEntry(config->freedb_proxy_mode);
+	proxy_combo_mode->SelectNthEntry(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault));
 
 	SetProxyMode();
 
@@ -169,14 +169,14 @@ Void BonkEnc::cddbExtendedSettingsDlg::OK()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->freedb_query_path = http_edit_query->GetText();
-	config->freedb_submit_path = http_edit_submit->GetText();
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, http_edit_query->GetText());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, http_edit_submit->GetText());
 
-	config->freedb_proxy_mode = proxy_combo_mode->GetSelectedEntryNumber();
-	config->freedb_proxy = proxy_edit_server->GetText();
-	config->freedb_proxy_port = proxy_edit_port->GetText().ToInt();
-	config->freedb_proxy_user = proxy_edit_user->GetText();
-	config->freedb_proxy_password = proxy_edit_password->GetText();
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, proxy_combo_mode->GetSelectedEntryNumber());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbProxyID, proxy_edit_server->GetText());
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbProxyPortID, proxy_edit_port->GetText().ToInt());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbProxyUserID, proxy_edit_user->GetText());
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbProxyPasswordID, proxy_edit_password->GetText());
 
 	mainWnd->Close();
 }
