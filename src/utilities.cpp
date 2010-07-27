@@ -22,16 +22,16 @@ using namespace smooth::System;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace)
+Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace1, const String &replace2)
 {
-	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);
-	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
+	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace1).Replace("%2", replace2), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);
+	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace1).Replace("%2", replace2)).Append("\n"));
 }
 
-Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace)
+Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace1, const String &replace2)
 {
-	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
+	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace1).Replace("%2", replace2), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace1).Replace("%2", replace2)).Append("\n"));
 }
 
 BoCA::AS::DecoderComponent *BonkEnc::Utilities::CreateDecoderComponent(const String &iFile)

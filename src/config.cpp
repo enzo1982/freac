@@ -23,7 +23,7 @@ const String	 BonkEnc::Config::CategoryFreedbID				= "freedb";
 /* Category Settings
  */
 const String	 BonkEnc::Config::SettingsFirstStartID				= "FirstStart";
-const Bool	 BonkEnc::Config::SettingsFirstStartDefault			= False;
+const Bool	 BonkEnc::Config::SettingsFirstStartDefault			= True;
 
 const String	 BonkEnc::Config::SettingsWindowPosXID				= "WindowPosX";
 const Int	 BonkEnc::Config::SettingsWindowPosXDefault			= 100;

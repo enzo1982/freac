@@ -18,8 +18,8 @@
   <entry id="5" string="Remove">Verwijderen</entry>
   <entry id="6" string="Clear joblist">Takenlijst wissen</entry>
   <entry id="7" string="Exit">Afsluiten</entry>
-  <entry id="8" string="General settings...">Algemene instellingen</entry>
-  <entry id="9" string="Configure selected encoder...">Geselecteerde encoder configureren</entry>
+  <entry id="8" string="General settings...">Algemene instellingen...</entry>
+  <entry id="9" string="Configure selected encoder...">Geselecteerde encoder configureren...</entry>
   <entry id="10" string="Audio file(s)">Audiobestand(en)</entry>
   <entry id="11" string="Audio CD contents">Audio-cd inhoud</entry>
   <entry id="12" string="Start encoding">Coderen starten</entry>
@@ -55,8 +55,8 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Dit programma wordt gedistribueerd onder de voorwaarden&#10;van het GNU General Public License (GPL).</entry>
   <entry id="43" string="CDDB query">CDDB-aanvraag</entry>
   <entry id="44" string="About %1">Over %1</entry>
-  <entry id="45" string="No options can be configured for the WAVE Out filter!">Voor de WAVE Out Filter kunnen geen opties gekozen worden!</entry>
-  <entry id="46" string="WAVE Out filter">WAVE Out Filter</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Voor Windows Wave File Output kunnen geen opties gekozen worden!</entry>
+  <entry id="46" string="Windows Wave file output">Windows Wave file output</entry>
   <entry id="47" string="Cannot change settings while encoding!">De instellingen kunnen niet gewijzigd worden tijdens het coderen!</entry>
   <entry id="48" string="%1 encoder configuration">%1 encoder configuratie</entry>
   <entry id="49" string="OK">OK</entry>
@@ -132,7 +132,7 @@
   <entry id="119" string="Force Joint Stereo">Forceer Joint Stereo</entry>
   <entry id="120" string="VBR mode">VBR Mode</entry>
   <entry id="121" string="no VBR">geen VBR</entry>
-  <entry id="122" string="VBR quality">VBR Kwaliteit</entry>
+  <entry id="122" string="VBR quality">VBR kwaliteit</entry>
   <entry id="123" string="ABR target bitrate">ABR doelbitrate</entry>
   <entry id="124" string="VBR bitrate range">VBR bitrate bereik</entry>
   <entry id="125" string="Set minimum VBR bitrate:">Minimale VBR bitrate:</entry>
@@ -251,7 +251,7 @@
   <entry id="247" string="Read CD contents on insert">Cd-inhoud lezen bij plaatsing</entry>
   <entry id="248" string="Eject disk after ripping">Schijf uitwerpen na het rippen</entry>
   <entry id="249" string="Encode 'On-The-Fly'">'On-The-Fly' coderen</entry>
-  <entry id="250" string="Keep ripped wave files">Geripte bestanden houden</entry>
+  <entry id="250" string="Keep ripped Wave files">Geripte bestanden houden</entry>
   <entry id="251" string="ripping/decoding">rippen/decoderen</entry>
   <entry id="252" string="encoding">coderen</entry>
   <entry id="253" string="Unicode">Unicode</entry>
@@ -394,5 +394,18 @@
   <entry id="390" string="Unknown error">Onbekende fout</entry>
   <entry id="391" string="Replace existing comments with default comment">Bestaande opmerkingen vervangen door standaardcommentaar</entry>
   <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">De geselecteerde bestanden kunnen niet gecombineerd worden&#10;in een enkel uitvoerbestand ten gevolge van verschillende&#10;sampleformaten.&#10;&#10;Gelieve eerst alle bestanden naar hetzelfde sampleformaat&#10;te converteren.</entry>
+  <entry id="393" string="Write WMA metadata info">WMA metadata-info schrijven</entry>
+  <entry id="394" string="WMA metadata encoding:">WMA metadata codering:</entry>
+  <entry id="395" string="Select codec">Selecteer codec</entry>
+  <entry id="396" string="Select codec format">Selecteer codecformaat</entry>
+  <entry id="397" string="Codec settings">Instellingen codec</entry>
+  <entry id="398" string="Use codec">Gebruik codec</entry>
+  <entry id="399" string="Use format">Gebruik formaat</entry>
+  <entry id="400" string="Write uncompressed WMA files">Ongecomprimeerde wma-bestanden schrijven</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Formaat automatisch selecteren gebaseerd op instellingen en invoerformaat</entry>
+  <entry id="402" string="Use VBR encoding">VBR-encoding gebruiken</entry>
+  <entry id="403" string="Use 2-pass encoding">2-pass encoding gebruiken</entry>
+  <entry id="404" string="Target bitrate">Doelbitrate</entry>
+  <entry id="405" string="Set drive speed limit:">Limiet stationssnelheid instellen:</entry>
  </data>
 </LangFile>

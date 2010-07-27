@@ -193,6 +193,8 @@ Int BonkEnc::Encoder::EncoderThread()
 
 				if (f_out->AddFilter(filter_out) == False)
 				{
+					Utilities::ErrorMessage("Cannot set up encoder for output file:%1\n\nError: %2", singleOutFile, filter_out->GetErrorString());
+
 					delete f_out;
 
 					boca.DeleteComponent(filter_out);
@@ -274,6 +276,8 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		if (filter_in == NIL)
 		{
+			Utilities::ErrorMessage("Cannot set up decoder for input file: %1", in_filename);
+
 			delete f_in;
 
 			continue;
@@ -304,7 +308,7 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		if (f_in->AddFilter(filter_in) == False)
 		{
-			Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(in_filename).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("Unable to initialize decoder")));
+			Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(in_filename).GetFileName(), BonkEnc::i18n->TranslateString("Unable to initialize decoder"));
 
 			delete f_in;
 
@@ -334,6 +338,8 @@ Int BonkEnc::Encoder::EncoderThread()
 
 			if (f_out->AddFilter(filter_out) == False)
 			{
+				Utilities::ErrorMessage("Cannot set up encoder for output file:%1\n\nError: %2", File(out_filename).GetFileName(), filter_out->GetErrorString());
+
 				delete f_in;
 				delete f_out;
 
@@ -360,7 +366,7 @@ Int BonkEnc::Encoder::EncoderThread()
 		if (filter_out->GetErrorState() || filter_in->GetErrorState()) skip = True;
 
 		Int			 bytesPerSample = format.bits / 8;
-		Buffer<UnsignedByte>	 buffer(samples_size * format.channels * bytesPerSample);
+		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample);
 
 		while (!skip && !stop)
 		{
@@ -403,7 +409,11 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		log->Write("\t\tLeaving encoder loop...");
 
+		f_in->RemoveFilter(filter_in);
+
 		delete f_in;
+
+		if (filter_in->GetErrorState()) Utilities::ErrorMessage("Error: %1", filter_in->GetErrorString());
 
 		boca.DeleteComponent(filter_in);
 
@@ -411,7 +421,11 @@ Int BonkEnc::Encoder::EncoderThread()
 
 		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 		{
+			f_out->RemoveFilter(filter_out);
+
 			delete f_out;
+
+			if (filter_out->GetErrorState()) Utilities::ErrorMessage("Error: %1", filter_out->GetErrorString());
 
 			boca.DeleteComponent(filter_out);
 
@@ -496,7 +510,11 @@ Int BonkEnc::Encoder::EncoderThread()
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) && nRemoved > 0)
 	{
+		f_out->RemoveFilter(filter_out);
+
 		delete f_out;
+
+		if (filter_out->GetErrorState()) Utilities::ErrorMessage("Error: %1", filter_out->GetErrorString());
 
 		boca.DeleteComponent(filter_out);
 	}

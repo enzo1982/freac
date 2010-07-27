@@ -22,8 +22,8 @@ namespace BonkEnc
 	class Utilities
 	{
 		public:
-			static Void				 WarningMessage(const String &, const String & = NIL);
-			static Void				 ErrorMessage(const String &, const String & = NIL);
+			static Void				 WarningMessage(const String &, const String & = NIL, const String & = NIL);
+			static Void				 ErrorMessage(const String &, const String & = NIL, const String & = NIL);
 
 			static BoCA::AS::DecoderComponent	*CreateDecoderComponent(const String &);
 

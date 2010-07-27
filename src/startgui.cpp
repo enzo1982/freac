@@ -171,6 +171,10 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 
+#ifdef __WIN32__
+	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+#endif
+
 	mainWnd->onChangePosition.Connect(&BonkEncGUI::OnChangePosition, this);
 	mainWnd->onChangeSize.Connect(&BonkEncGUI::OnChangeSize, this);
 

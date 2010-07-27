@@ -16,7 +16,7 @@ using namespace smooth::IO;
 
 BonkEnc::CDDBLocal::CDDBLocal()
 {
-	protocol = Protocol::Get("CDDB Communication");
+	protocol = Protocol::Get("CDDB communication");
 }
 
 BonkEnc::CDDBLocal::~CDDBLocal()
