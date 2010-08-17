@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">Koristi 2-prolazno enkodovanje</entry>
   <entry id="404" string="Target bitrate">Ciiljana stopa bitova</entry>
   <entry id="405" string="Set drive speed limit:">Podesi brzinu drajv uređaja:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

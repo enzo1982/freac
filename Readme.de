@@ -13,12 +13,13 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.16 (Juli 2010)
+	Version 1.0.16 (August 2010)
 
 		- Niederländische Übersetzung aktualisiert
 		- Niederländische und tschechische Übersetzungen für das Installationsprogramm hinzugefügt
 		- Standardmäßig wird jetzt ein vernünftiger WMA-Codec ausgewählt
 		- Probleme mit Texteingabefeldern behoben
+		- Maximale Länge von Dateinamen auf NT-Systemen angehoben
 		- Einige kleinere Korrekturen
 
 	Version 1.0.15 (Juli 2010)

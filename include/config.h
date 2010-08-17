@@ -109,6 +109,9 @@ namespace BonkEnc
 			Bool		 openmp_enableOpenMP;
 			Int		 openmp_numThreads;
 
+			Int		 donate_startcount;
+			Bool		 donate_showagain;
+
 			Array<String>	 cdrip_drives;
 			Int		 cdrip_numdrives;
 			Int		 cdrip_activedrive;

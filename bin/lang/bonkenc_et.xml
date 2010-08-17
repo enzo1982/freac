@@ -392,5 +392,6 @@
   <entry id="388" string="Unknown file type">Tundmatu faili tüüp</entry>
   <entry id="389" string="Unsupported audio format">Mittetoetatav audio formaat</entry>
   <entry id="390" string="Unknown error">Tundmatu viga</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

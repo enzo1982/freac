@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">Använd 2-passkodning</entry>
   <entry id="404" string="Target bitrate">Målets bitflöde</entry>
   <entry id="405" string="Set drive speed limit:">Begränsa spelarens hastighet:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

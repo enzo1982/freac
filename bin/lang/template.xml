@@ -407,5 +407,13 @@
     <entry id="403" string="Use 2-pass encoding"/>
     <entry id="404" string="Target bitrate"/>
     <entry id="405" string="Set drive speed limit:"/>
+    <entry id="406" string="Support this project"/>
+    <entry id="407" string="Please support this project!"/>
+    <entry id="408" string="Please help keep this software free by supporting the BonkEnc project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to donate@bonkenc.org using PayPal.&#10;&#10;Please write to donate@bonkenc.org if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="410" string="usd"/>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
   </data>
 </LangFile>

@@ -478,6 +478,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\dialogs\donate.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\dialogs\faacconfig.cpp"
 					>
 				</File>
@@ -865,6 +869,10 @@
 				</File>
 				<File
 					RelativePath="..\..\include\dialogs\bonkconfig.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\dialogs\donate.h"
 					>
 				</File>
 				<File

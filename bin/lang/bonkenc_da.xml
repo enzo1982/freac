@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">Brug 2-pass kodning</entry>
   <entry id="404" string="Target bitrate">Mål bitrate</entry>
   <entry id="405" string="Set drive speed limit:">Sæt drev hastigheds begrænsning:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

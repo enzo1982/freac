@@ -60,6 +60,8 @@ Bool BonkEnc::FilterOutWMA::Activate()
 
 	hr = m_pProfileManager->QueryInterface(IID_IWMCodecInfo3, (void **) &pCodecInfo);
 
+	if (currentConfig->wma_codec == -1) currentConfig->wma_codec = GetDefaultCodec(pCodecInfo);
+
 	if (currentConfig->wma_uncompressed)
 	{
 		hr = m_pProfile->CreateNewStream(WMMEDIATYPE_Audio, &m_pStreamConfig);
@@ -255,6 +257,36 @@ Int BonkEnc::FilterOutWMA::WriteData(Buffer<UnsignedByte> &data, Int size)
 	pSample->Release();
 
 	return size;
+}
+
+/* Select default codec to be used when no codec is set.
+ */
+Int BonkEnc::FilterOutWMA::GetDefaultCodec(IWMCodecInfo3 *codecInfo)
+{
+	HRESULT	 hr = S_OK;
+	DWORD	 numCodecs = 0;
+	Int	 index = -1;
+
+	hr = codecInfo->GetCodecInfoCount(WMMEDIATYPE_Audio, &numCodecs);
+
+	for (DWORD i = 0; i < numCodecs; i++)
+	{
+		DWORD	 nameLen = 0;
+
+		hr = codecInfo->GetCodecName(WMMEDIATYPE_Audio, i, NIL, &nameLen);
+
+		WCHAR	*name = new WCHAR [nameLen];
+
+		hr = codecInfo->GetCodecName(WMMEDIATYPE_Audio, i, name, &nameLen);
+
+		if (String(name).Find("Windows Media Audio") >=  0 &&
+		    String(name).Find("Voice")		     == -1 &&
+		    String(name).Find("Lossless")	     == -1) index = i;
+
+		delete [] name;
+	}
+
+	return index;
 }
 
 /* This method will return the format best matching

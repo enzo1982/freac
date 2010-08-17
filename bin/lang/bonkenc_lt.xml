@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">Naudoti dviejų užėjimų kodavimą</entry>
   <entry id="404" string="Target bitrate">Numatomas bitų srautas</entry>
   <entry id="405" string="Set drive speed limit:">Nustatyti diskasukio greičio limitą:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

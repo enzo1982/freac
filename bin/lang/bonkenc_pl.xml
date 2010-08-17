@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">Użyj kodowania 2-przebiegowego</entry>
   <entry id="404" string="Target bitrate">Zakładana przepływność</entry>
   <entry id="405" string="Set drive speed limit:">Ogranicz prędkość napędu:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

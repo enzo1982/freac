@@ -386,5 +386,6 @@
     <entry id="382" string="Apodization function(s):">Función(es) de apodización:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Puede especificar varias funciones separadas por punto y coma.</entry>
     <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">Bonkenc puede buscar actualizaciones automáticamente cada&#10;vez que se inicia.&#10;&#10;Desea que BonkEnc busque actualizaciones al inicio?</entry>
+    <entry id="410" string="usd">eur</entry>
   </data>
 </LangFile>

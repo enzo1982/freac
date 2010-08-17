@@ -102,6 +102,9 @@ Bool BonkEnc::Config::LoadSettings()
 	openmp_enableOpenMP			= config->GetIntValue("OpenMP", "EnableOpenMP", 1);
 	openmp_numThreads			= config->GetIntValue("OpenMP", "NumberOfThreads", 0);
 
+	donate_startcount			= config->GetIntValue("Donate", "StartCount", 0);
+	donate_showagain			= config->GetIntValue("Donate", "ShowAgain", 1);
+
 	cdrip_activedrive			= config->GetIntValue("CDRip", "ActiveCDROM", 0);
 	cdrip_debuglevel			= config->GetIntValue("CDRip", "DebugCDRip", 0);
 	cdrip_paranoia				= config->GetIntValue("CDRip", "CDParanoia", 0);
@@ -296,6 +299,9 @@ Bool BonkEnc::Config::SaveSettings()
 
 		config->SetIntValue("OpenMP", "EnableOpenMP", openmp_enableOpenMP);
 		config->SetIntValue("OpenMP", "NumThreads", openmp_numThreads);
+
+		config->SetIntValue("Donate", "StartCount", donate_startcount);
+		config->SetIntValue("Donate", "ShowAgain", donate_showagain);
 
 		config->SetIntValue("CDRip", "ActiveCDROM", cdrip_activedrive);
 		config->SetIntValue("CDRip", "DebugCDRip", cdrip_debuglevel);

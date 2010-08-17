@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">Utilizar conversor en 2 pasos </entry>
   <entry id="404" string="Target bitrate">Bitrate promedio</entry>
   <entry id="405" string="Set drive speed limit:">Límite de velocidade da unidade:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

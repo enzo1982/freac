@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">2-pass encoding gebruiken</entry>
   <entry id="404" string="Target bitrate">Doelbitrate</entry>
   <entry id="405" string="Set drive speed limit:">Limiet stationssnelheid instellen:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

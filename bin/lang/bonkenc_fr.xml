@@ -391,5 +391,6 @@
   <entry id="388" string="Unknown file type">Type de fichier inconnu</entry>
   <entry id="389" string="Unsupported audio format">Format audio non supporté</entry>
   <entry id="390" string="Unknown error">Erreur inconnue</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

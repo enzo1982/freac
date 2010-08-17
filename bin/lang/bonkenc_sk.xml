@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">Použiť 2-cestné kódovanie</entry>
   <entry id="404" string="Target bitrate">Cieľový bitrate</entry>
   <entry id="405" string="Set drive speed limit:">Maximálna rýchlosť mechaniky:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

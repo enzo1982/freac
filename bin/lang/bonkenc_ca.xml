@@ -406,5 +406,6 @@
   <entry id="403" string="Use 2-pass encoding">Usa una codificació a 2 passades</entry>
   <entry id="404" string="Target bitrate">Ràtio de bits de destí</entry>
   <entry id="405" string="Set drive speed limit:">Selecciona el límit de velocitat del dispositiu:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

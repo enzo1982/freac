@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -418,10 +418,24 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
  * all the directory names included in the path by
  * removing spaces and dots at the end. It also
  * shortens each directory and the file name to a
- * maximum of 96 characters.
+ * maximum of 248 or 96 characters.
  */
 String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 {
+	Int	 maxLength = 248;
+
+	/* Set smaller maximum path component length on old systems.
+	 */
+#ifdef __WIN32__
+	OSVERSIONINFOA	 vInfo;
+
+	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
+
+	GetVersionExA(&vInfo);
+
+	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) maxLength = 96;
+#endif
+
 	String	 rFileName = fileName;
 	String	 dir = fileName;
 	String	 tmpDir;
@@ -433,13 +447,13 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 		{
 			String	 tmpDir2 = tmpDir;
 
-			/* Shorten to at most 96 characters.
+			/* Shorten to at most maxLength characters.
 			 */
-			if (tmpDir.Length() - lastBS > 96)
+			if (tmpDir.Length() - lastBS > maxLength)
 			{
-				tmpDir2 = String().CopyN(tmpDir, lastBS + 96);
+				tmpDir2 = String().CopyN(tmpDir, lastBS + maxLength);
 
-				i -= (tmpDir.Length() - lastBS - 96);
+				i -= (tmpDir.Length() - lastBS - maxLength);
 			}
 
 			/* Replace trailing dots and spaces.
@@ -460,9 +474,9 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 		tmpDir[i] = dir[i];
 	}
 
-	/* Shorten file name to 96 characters.
+	/* Shorten file name to maxLength characters.
 	 */
-	if (rFileName.Length() - lastBS > 96) rFileName = String().CopyN(rFileName, lastBS + 96);
+	if (rFileName.Length() - lastBS > maxLength) rFileName = String().CopyN(rFileName, lastBS + maxLength);
 
 	/* Replace trailing spaces.
 	 */

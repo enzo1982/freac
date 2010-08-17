@@ -392,5 +392,6 @@
   <entry id="388" string="Unknown file type">Tipo d'archiu desconegut</entry>
   <entry id="389" string="Unsupported audio format">Format d'audio no soportat</entry>
   <entry id="390" string="Unknown error">Erro desconegut</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

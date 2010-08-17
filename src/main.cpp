@@ -22,6 +22,8 @@
 #include <dialogs/adddirectory.h>
 #include <dialogs/addpattern.h>
 
+#include <dialogs/donate.h>
+
 #include <dialogs/bonkconfig.h>
 #include <dialogs/bladeconfig.h>
 #include <dialogs/lameconfig.h>
@@ -548,6 +550,10 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
 
+#ifdef __WIN32__
+	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+#endif
+
 	mainWnd->onChangePosition.Connect(&BonkEncGUI::OnChangePosition, this);
 	mainWnd->onChangeSize.Connect(&BonkEncGUI::OnChangeSize, this);
 
@@ -560,14 +566,29 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	if (currentConfig->maximized) mainWnd->Maximize();
 
+	/* Check for updates online.
+	 */
 	checkForUpdates = new Thread();
 	checkForUpdates->threadMain.Connect(&BonkEncGUI::CheckForUpdatesThread, this);
 
 	if (currentConfig->checkUpdatesAtStartup) checkForUpdates->Start();
+
+	/* Show donation dialog.
+	 */
+	donateDialog = NIL;
+
+	if (++currentConfig->donate_startcount % 10 == 0 && currentConfig->donate_showagain)
+	{
+		donateDialog = new DonateDialog();
+
+		donateDialog->ShowDialog();
+	}
 }
 
 BonkEnc::BonkEncGUI::~BonkEncGUI()
 {
+	if (donateDialog != NIL) DeleteObject(donateDialog);
+
 	DeleteObject(checkForUpdates);
 
 	joblist->RemoveAllTracks();

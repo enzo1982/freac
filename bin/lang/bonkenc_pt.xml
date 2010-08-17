@@ -407,5 +407,6 @@
   <entry id="403" string="Use 2-pass encoding">Utilizar codificação de dupla passagem</entry>
   <entry id="404" string="Target bitrate">Razão de bit alvo</entry>
   <entry id="405" string="Set drive speed limit:">Especificar velocidade limite do leitor:</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

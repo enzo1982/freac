@@ -392,5 +392,6 @@
     <entry id="388" string="Unknown file type">Ukjent filtype</entry>
     <entry id="389" string="Unsupported audio format">Lydformatet er ikke støttet</entry>
     <entry id="390" string="Unknown error">Ukjent feil</entry>
+    <entry id="410" string="usd">eur</entry>
   </data>
 </LangFile>

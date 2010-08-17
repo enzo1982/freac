@@ -388,5 +388,6 @@
   <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">Το BonkEnc μπορεί να κάνει αυτόματο έλεγχο για&#10;ενημερώσεις στην εκκίνηση.&#10;&#10;Θέλετε να γίνεται έλεγχος για ενημερώσεις στην εκκίνηση;</entry>
   <entry id="385" string="Cannot access input file: %1">Αδύνατη πρόσβαση στο αρχείο εισόδου: %1</entry>
   <entry id="386" string="Cannot create output file: %1">Αδύνατη η δημιουργία του αρχέιου εξόδου: %1</entry>
+  <entry id="410" string="usd">eur</entry>
  </data>
 </LangFile>

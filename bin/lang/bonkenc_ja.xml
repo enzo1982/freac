@@ -407,5 +407,7 @@
   <entry id="403" string="Use 2-pass encoding">2-pass エンコードを使用</entry>
   <entry id="404" string="Target bitrate">目標ビットレート</entry>
   <entry id="405" string="Set drive speed limit:">ドライブ速度制限の設定：</entry>
+  <entry id="410" string="usd">jpy</entry>
+  <entry id="411" string="en">ja</entry>
  </data>
 </LangFile>

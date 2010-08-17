@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,6 +33,7 @@ namespace BonkEnc
 
 			Buffer<signed short>	 samplesBuffer;
 
+			Int			 GetDefaultCodec(IWMCodecInfo3 *);
 			IWMStreamConfig		*GetBestCodecFormat(IWMCodecInfo3 *, DWORD, const Track *);
 
 			Bool			 SetInputFormat(IWMWriter *, const Track *);
