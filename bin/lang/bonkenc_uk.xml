@@ -31,7 +31,7 @@
   <entry id="18" string="File progress:">Прогрес:</entry>
   <entry id="19" string="Output dir.:">Тека:</entry>
   <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 файл(а/ів) у листі (%2 мін):</entry>
-  <entry id="21" string="none">порожній</entry>
+  <entry id="21" string="none">немає</entry>
   <entry id="22" string="Help topics...">Допомога...</entry>
   <entry id="23" string="Add audio file(s) to the joblist">Додати аудіо файл(и) у лист</entry>
   <entry id="24" string="Add audio CD contents to the joblist">Додати вміст аудіо CD до листа</entry>
@@ -55,7 +55,7 @@
   <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Дана програма розповсюджується на правах GPL ліценції.</entry>
   <entry id="43" string="CDDB query">CDDB запит</entry>
   <entry id="44" string="About BonkEnc">Про BonkEnc</entry>
-  <entry id="45" string="No options can be configured for Windows Wave file output!">без налаштувань</entry>
+  <entry id="45" string="No options can be configured for Windows Wave file output!">Без налаштувань!</entry>
   <entry id="46" string="Windows Wave file output">WAVE Out фільтр</entry>
   <entry id="47" string="Cannot change settings while encoding!">Неможливо змінити налаштування під час кодування!</entry>
   <entry id="48" string="%1 encoder configuration">%1 налаштування кодека</entry>
@@ -73,7 +73,7 @@
   <entry id="60" string="Encoder">Кодек</entry>
   <entry id="61" string="Output directory">Тека для збереження</entry>
   <entry id="62" string="Browse">Відкрити</entry>
-  <entry id="63" string="Select the folder in which the encoded files will be placed:">Обрати теку, де будуть збережені закодовані файли</entry>
+  <entry id="63" string="Select the folder in which the encoded files will be placed:">Обрати теку, де будуть збережені закодовані файли:</entry>
   <entry id="64" string="Encoding">Кодування</entry>
   <entry id="65" string="Author">Автор</entry>
   <entry id="66" string="URL">URL</entry>
@@ -84,7 +84,7 @@
   <entry id="71" string="Activate cdparanoia mode:">Активований СDparanoia режим:</entry>
   <entry id="72" string="Activate jitter correction">Активована jitter корекція</entry>
   <entry id="73" string="Swap left/right channel">Поміняти канали місцями</entry>
-  <entry id="74" string="Lock CD tray while ripping">Блокувати CD-лоток під час захоплення даних</entry>
+  <entry id="74" string="Lock CD tray while ripping">Блокувати CD під час роботи</entry>
   <entry id="75" string="Use native NT SCSI library">Викор. NT SCSI бібліотеки</entry>
   <entry id="76" string="Overlap only">Тільки перекривати</entry>
   <entry id="77" string="No verify">Без підтвердження</entry>
@@ -108,14 +108,14 @@
   <entry id="95" string="Predictor size">Передбачуваний розмір</entry>
   <entry id="96" string="Enable lossless encoding">Підтримка lossless кодування</entry>
   <entry id="97" string="Enable Joint Stereo">Підтримка Joint стерео</entry>
-  <entry id="98" string="Bitrate per channel:">Бітрейт на канал</entry>
+  <entry id="98" string="Bitrate per channel:">Бітрейт на канал:</entry>
   <entry id="99" string="Preselection">Попередня вибірка</entry>
   <entry id="100" string="Number of preselection candidates:">К-сть попередніх варіантів:</entry>
   <entry id="101" string="MPEG version">MPEG версія</entry>
   <entry id="102" string="AAC object type">AAC об`єктний тип</entry>
   <entry id="103" string="Allow Joint Stereo">Дозволити Joint стерео</entry>
   <entry id="104" string="Temporal Noise Shaping">Формування часового шуму</entry>
-  <entry id="105" string="Use Temporal Noise Shaping">Викор. формування часового шуму</entry>
+  <entry id="105" string="Use Temporal Noise Shaping">Використання ФЧШ</entry>
   <entry id="106" string="Maximum bandwidth">Максимальна пропускна здатність</entry>
   <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Макс. частотна пропускна здатність AAC для викор.:</entry>
   <entry id="108" string="Basic">Основне</entry>
@@ -124,8 +124,8 @@
   <entry id="111" string="Set bitrate:">Бітрейт:</entry>
   <entry id="112" string="Set ratio:">Відношення:</entry>
   <entry id="113" string="Set quality:">Якість:</entry>
-  <entry id="114" string="worse">гірше</entry>
-  <entry id="115" string="better">краще</entry>
+  <entry id="114" string="worse">гірша</entry>
+  <entry id="115" string="better">краща</entry>
   <entry id="116" string="Auto">Авто</entry>
   <entry id="117" string="Stereo">Cтерео</entry>
   <entry id="118" string="Joint Stereo">Joint стерео</entry>
@@ -135,8 +135,8 @@
   <entry id="122" string="VBR quality">VBR якість</entry>
   <entry id="123" string="ABR target bitrate">ABR(розрахунковий) бітрейт</entry>
   <entry id="124" string="VBR bitrate range">Діапазон VBR бітрейту</entry>
-  <entry id="125" string="Set minimum VBR bitrate:">Мінімальний VBR бітрейт</entry>
-  <entry id="126" string="Set maximum VBR bitrate:">Максимальний VBR бітрейт</entry>
+  <entry id="125" string="Set minimum VBR bitrate:">Мінімальний VBR бітрейт:</entry>
+  <entry id="126" string="Set maximum VBR bitrate:">Максимальний VBR бітрейт:</entry>
   <entry id="127" string="Control bits">Контрольний біт</entry>
   <entry id="128" string="Stream format">Формат потоку</entry>
   <entry id="129" string="Enforce strict ISO compliance">Строга відповідність ISO</entry>
@@ -223,7 +223,7 @@
   <entry id="219" string="Enable remote CDDB database">Ввімкнути віддалену базу даних CDDB</entry>
   <entry id="220" string="ATH">ATH</entry>
   <entry id="221" string="Enable ATH:">Включити ATH:</entry>
-  <entry id="222" string="Use default setting">Використовувати налаштування за замовчуванням</entry>
+  <entry id="222" string="Use default setting">Налаштування за замовчуванням</entry>
   <entry id="223" string="Psycho acoustic model">Психо-акустична модель</entry>
   <entry id="224" string="Use Temporal Masking Effect">Використовувати ефект маски</entry>
   <entry id="225" string="Expert">Експерт</entry>
@@ -248,10 +248,10 @@
   <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?">Доступні нові версії BonkEnc!</entry>
   <entry id="245" string="There are no updates available at the moment!">На даний момент немає доступних оновлень!</entry>
   <entry id="246" string="Check for updates at startup">Перевіряти оновлення при старті</entry>
-  <entry id="247" string="Read CD contents on insert">Зчитувати вміст CD при вставлянні</entry>
-  <entry id="248" string="Eject disk after ripping">Витягнути диск після захоплення</entry>
+  <entry id="247" string="Read CD contents on insert">Вміст CD читати відразу</entry>
+  <entry id="248" string="Eject disk after ripping">Витягнути диск після роботи</entry>
   <entry id="249" string="Encode 'On-The-Fly'">Кодувати 'На-Льоту'</entry>
-  <entry id="250" string="Keep ripped Wave files">Не стирати захоплені wav-файли</entry>
+  <entry id="250" string="Keep ripped Wave files">Залишати Wave</entry>
   <entry id="251" string="ripping/decoding">захоплення/декодування</entry>
   <entry id="252" string="encoding">кодування</entry>
   <entry id="253" string="Unicode">Unicode</entry>
@@ -262,7 +262,7 @@
   <entry id="258" string="File format">Файловий формат</entry>
   <entry id="259" string="Allow ID3v2 tags in AAC files">Дозволити теги ID3v2 у ААС файлах</entry>
   <entry id="260" string="Note:">Примітка:</entry>
-  <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">У деяких програвачах можуть виникнути проблеми при відтворенні AAC&#10;файлів з ID3 тегами. Будь-ласка використовуйте тільки цю опцію&#10;якщо ви впевненні, що ваш програвач може обробляти ці теги.</entry>
+  <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">У деяких програвачах можуть виникнути проблеми при&#10;відтворенні AAC-файлів з ID3 тегами. Використовуйте цю опцію&#10;якщо ви впевненні, що ваш програвач може обробляти ці теги.</entry>
   <entry id="262" string="FLAC Files">FLAC файли</entry>
   <entry id="263" string="Sampling rate">Рівень дискретизації</entry>
   <entry id="264" string="Sample resolution">Роздільча здатність вибірки</entry>
@@ -277,10 +277,10 @@
   <entry id="273" string="Write ID3v2 tags">Записати ID3v2 теги</entry>
   <entry id="274" string="Write Vorbis Comment tags">Записати Vorbis Comment теги</entry>
   <entry id="275" string="Write MP4 metadata info">Записати інформацію МР4 метаданих</entry>
-  <entry id="276" string="ID3v1 tag encoding:">Кодування ID3v1 тегу</entry>
-  <entry id="277" string="ID3v2 tag encoding:">Кодування ID3v2 тегу</entry>
-  <entry id="278" string="Vorbis Comment tag encoding:">Кодування Vorbis Comment тегу</entry>
-  <entry id="279" string="MP4 metadata encoding:">Кодування  МР4 метаданих</entry>
+  <entry id="276" string="ID3v1 tag encoding:">Кодування ID3v1 тегу:</entry>
+  <entry id="277" string="ID3v2 tag encoding:">Кодування ID3v2 тегу:</entry>
+  <entry id="278" string="Vorbis Comment tag encoding:">Кодування Vorbis Comment тегу:</entry>
+  <entry id="279" string="MP4 metadata encoding:">Кодування  МР4 метаданих:</entry>
   <entry id="280" string="Tag encodings">Кодування тегів</entry>
   <entry id="281" string="Update joblist with this information">Оновити список завдань даною інформацією</entry>
   <entry id="282" string="unknown genre">невідомий жанр</entry>
@@ -291,7 +291,7 @@
   <entry id="287" string="Playlist Files">Файли плейлистів</entry>
   <entry id="288" string="unknown year">рік невідомий</entry>
   <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Не можу визначити  %1 кодек! Будь-ласка перевірте налашування!</entry>
-  <entry id="290" string="Blocksize:">Розмір блоку</entry>
+  <entry id="290" string="Blocksize:">Розмір блоку:</entry>
   <entry id="291" string="Use streamable subset">Використовувати потоковий subset</entry>
   <entry id="292" string="Adaptive Joint Stereo">Адаптоване Joint Stereo</entry>
   <entry id="293" string="Fastest encoding">Найшвидше кодування</entry>
@@ -300,7 +300,7 @@
   <entry id="296" string="Maximum LPC order">Найвищий порядок КЛП</entry>
   <entry id="297" string="Quantized LPC precision">Дискретна точність КЛП</entry>
   <entry id="298" string="Exhaustive model search">Модель повного пошуку</entry>
-  <entry id="299" string="Optimize LPC quantization">Покращена дискретизація КЛП</entry>
+  <entry id="299" string="Optimize LPC quantization">Покращена дискретизація</entry>
   <entry id="300" string="disabled">відмінено</entry>
   <entry id="301" string="auto">авто</entry>
   <entry id="302" string="Residual coding">Залишкове кодування</entry>
@@ -310,12 +310,12 @@
   <entry id="306" string="From directory">З теки</entry>
   <entry id="307" string="Directory">Тека</entry>
   <entry id="308" string="Add directory">Додати теку</entry>
-  <entry id="309" string="Choose directory:">Обрати теку</entry>
-  <entry id="310" string="Select the folder to add to the joblist:">Вибрати теку щоб додати її до списку завдань</entry>
+  <entry id="309" string="Choose directory:">Обрати теку:</entry>
+  <entry id="310" string="Select the folder to add to the joblist:">Вибрати теку щоб додати її до списку завдань:</entry>
   <entry id="311" string="Add files by pattern">Додати файли за зразком</entry>
   <entry id="312" string="Pattern">Зразок</entry>
   <entry id="313" string="Start directory">Стартова тека</entry>
-  <entry id="314" string="No files found matching pattern:">Не знайдено файлів, що відповідають зразку</entry>
+  <entry id="314" string="No files found matching pattern:">Не знайдено файлів, що відповідають зразку:</entry>
   <entry id="315" string="Edit language file">Редагувати мовний файл</entry>
   <entry id="316" string="Use for all selected tracks">Використати для всіх вибраних доріжок</entry>
   <entry id="317" string="Interpret string as">Розуміти рядки як</entry>
@@ -336,10 +336,10 @@
   <entry id="332" string="Charset">Таблиця символів</entry>
   <entry id="333" string="Preview">Попередній перегляд</entry>
   <entry id="334" string="Downloaded CDDB entries:">Скачані CDDB запити:</entry>
-  <entry id="335" string="User name:">Ім'я користувача</entry>
-  <entry id="336" string="Password:">Пароль</entry>
+  <entry id="335" string="User name:">Ім'я користувача:</entry>
+  <entry id="336" string="Password:">Пароль:</entry>
   <entry id="337" string="Delete original files after encoding">Знищити оригінали після кодування</entry>
-  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Дана опція знищить оригінали після їх кодування! Продовжувати?</entry>
+  <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Дана опція знищить оригінали після їх кодування!&#10;&#10;Продовжувати?</entry>
   <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDB протокол не може використовуватись через HTTP&#10;Пересилайте через прохі!&#10;&#10;Хочете змінити протокол на HTTP?</entry>
   <entry id="340" string="Playlists">Плейлисти</entry>
   <entry id="341" string="Create playlists">Створити плейлисти</entry>
@@ -347,7 +347,7 @@
   <entry id="343" string="Use encoder output directory">Використовувати вихідну теку кодека</entry>
   <entry id="344" string="Various artists">Різноманітні артисти</entry>
   <entry id="345" string="Data track">Доріжка даних</entry>
-  <entry id="346" string="Select the folder in which the playlist files will be placed:">Оберіть теку куди будуть записані файли плейлиста</entry>
+  <entry id="346" string="Select the folder in which the playlist files will be placed:">Оберіть теку куди будуть записані файли плейлиста:</entry>
   <entry id="347" string="Use input file directory if possible">Викор. теку вхідного файлу якщо можливо</entry>
   <entry id="348" string="Encode to input file directory if possible">Кодувати у теку вхідного файлу якщо можливо</entry>
   <entry id="349" string="Allow overwriting input file">Дозволити перезаписувати вхідний файл</entry>
@@ -356,17 +356,17 @@
   <entry id="352" string="Skip">Пропустити</entry>
   <entry id="353" string="Enable local CDDB database">Локальна база даних  CDDB</entry>
   <entry id="354" string="CDDB directory:">CDDB тека:</entry>
-  <entry id="355" string="Select the folder of the CDDB database:">Вибрати теку з бази даних  CDDB</entry>
+  <entry id="355" string="Select the folder of the CDDB database:">Вибрати теку з бази даних  CDDB:</entry>
   <entry id="356" string="File already exists">Файл вже існує</entry>
   <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Вихідний файл %1&#10;вже існує! Перезаписати його?</entry>
   <entry id="358" string="Overwrite all further files">Надалі перезаписувати всі файли</entry>
-  <entry id="359" string="Start ripping automatically">Автоматично розпочати захоплення</entry>
+  <entry id="359" string="Start ripping automatically">Авт. розпочати захоплення</entry>
   <entry id="360" string="Submit to online database later">Подавати до online бази даних пізніше</entry>
-  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."> CDDB підтримка відключена! Будь-ласка ввімкніть локальну або віддалену підтримку  CDDB у налаштуваннях</entry>
-  <entry id="362" string="CDDB entries to submit:">CDDB даних для затвердження</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB підтримка відключена! Будь-ласка ввімкніть локальну&#10;або віддалену підтримку CDDB у налаштуваннях</entry>
+  <entry id="362" string="CDDB entries to submit:">CDDB даних для затвердження:</entry>
   <entry id="363" string="Show queued CDDB entries...">Відобразити чергу даних CDDB...</entry>
   <entry id="364" string="Submit all">Підтвердити всі</entry>
-  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Віддалена підтримка CDDB відключена! Будь-ласка ввімкніть віддалену підтримку  CDDB у налаштуваннях</entry>
+  <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Віддалена підтримка CDDB відключена! Будь-ласка ввімкніть&#10;віддалену підтримку CDDB у налаштуваннях</entry>
   <entry id="366" string="Category">Категорія</entry>
   <entry id="367" string="Close">Закрити</entry>
   <entry id="368" string="Automatization">Автоматизація</entry>
@@ -376,15 +376,36 @@
   <entry id="372" string="Query">Запит</entry>
   <entry id="373" string="Query all">Всі запити</entry>
   <entry id="374" string="Query string">Стрічка запиту</entry>
-  <entry id="375" string="CDDB queries to perform:">CDDB запити для виконня</entry>
+  <entry id="375" string="CDDB queries to perform:">CDDB запити для виконня:</entry>
   <entry id="376" string="Would you like to perform this query again later?">Чи хочете ви зробити даний запит пізніше?</entry>
   <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ до приводу CD-ROM був відхилений Windows.&#10;&#10;Будь-ласка зв'яжіться з вашим системним адміністратором щоб&#10;вам був наданий доступ до  приводу CD-ROM</entry>
   <entry id="378" string="CD information">Інформація CD</entry>
   <entry id="379" string="Read CD Text">Читати CD текст </entry>
   <entry id="380" string="Read cdplayer.ini">Читати cdplayer.ini</entry>
   <entry id="381" string="Apodization">Аподизація</entry>
-  <entry id="382" string="Apodization function(s):">Функці(ї) аподизації</entry>
-  <entry id="383" string="You can specify multiple functions separated by semicolons.">Ви можете вказати складені функції розділюючи їх двокрапкою</entry>
-  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc може автоматично перевіряти оновлення програми online при запуску. Чи бажаєте ви щоб BonkEnc перевіряв оновлення при запуску?</entry>
+  <entry id="382" string="Apodization function(s):">Функці(ї) аподизації:</entry>
+  <entry id="383" string="You can specify multiple functions separated by semicolons.">Можете позначити складені функції розділюючи їх &quot;;&quot;</entry>
+  <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?">BonkEnc може автоматично перевіряти оновлення програми online при запуску.&#10;&#10;Чи бажаєте ви щоб BonkEnc перевіряв оновлення при запуску?</entry>
+  <entry id="385" string="Cannot access input file: %1">Немає доступу до вхідного файлу: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">Неможливо створити вихідний файл: %1</entry>
+  <entry id="387" string="File not found">Файли не знайдено</entry>
+  <entry id="388" string="Unknown file type">Невідомий тип файлу</entry>
+  <entry id="389" string="Unsupported audio format">Даний аудіо-формат не підтримується</entry>
+  <entry id="390" string="Unknown error">Невідома помилка</entry>
+  <entry id="391" string="Replace existing comments with default comment">Замінити існуючі коментарі на коментарі за замовчуванням</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Вибрані файли різних форматів, тому їх не можна об`єднати в один файл.&#10;&#10;Спочатку конветуйте всі файли у один формат.</entry>
+  <entry id="393" string="Write WMA metadata info">Записати інформацію WMA метаданих</entry>
+  <entry id="394" string="WMA metadata encoding:">Кодування метаданих WMA:</entry>
+  <entry id="395" string="Select codec">Виберіть кодек</entry>
+  <entry id="396" string="Select codec format">Виберіть формат кодека</entry>
+  <entry id="397" string="Codec settings">Налаштування кодека</entry>
+  <entry id="398" string="Use codec">Використовувати кодек</entry>
+  <entry id="399" string="Use format">Використовувати формат</entry>
+  <entry id="400" string="Write uncompressed WMA files">Записувати не стиснуті WMA файли</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Авт. вибирати формат залежно від налаштувань та вхідн. формату</entry>
+  <entry id="402" string="Use VBR encoding">VBR</entry>
+  <entry id="403" string="Use 2-pass encoding">2 прохідне кодування</entry>
+  <entry id="404" string="Target bitrate:">Бітрейт джерела:</entry>
+  <entry id="405" string="Set drive speed limit:">Обмеження швид. приводу:</entry>
  </data>
 </LangFile>
