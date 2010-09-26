@@ -13,9 +13,11 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.17 (August 2010)
+	Version 1.0.17 (September 2010)
 
-		- updated Turkish and Ukrainian translations
+		- updated Turkish, Ukrainian and Finnish translations
+		- fixed extremely slow startup when running from network volumes
+		- some minor fixes
 
 	Version 1.0.16 (August 2010)
 
@@ -304,7 +306,7 @@ Special thanks to
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn & Thomas De Rocker (Dutch),
 			   Nebojša Nikolic (Serbian),
-			   Krisu (Finnish),
+			   Jan Parttimaa (Finnish),
 			   Julius Faltus (Czech),
 			   Escada (Portuguese, Brazilian),
 			   Odyssey (Korean),

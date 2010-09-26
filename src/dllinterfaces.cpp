@@ -298,12 +298,23 @@ Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
 {
 	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
 	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\Bonk-OpenMP.dll")).Exists()) return False;
+#endif
+
 		bonkdll = new DynamicLoader("encoders/Bonk-OpenMP");
 
 		if (bonkdll->GetSystemModuleHandle() == NIL) FreeBonkDLL();
 	}
 
-	if (bonkdll == NIL) bonkdll = new DynamicLoader("encoders/Bonk");
+	if (bonkdll == NIL)
+	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\Bonk.dll")).Exists()) return False;
+#endif
+
+		bonkdll = new DynamicLoader("encoders/Bonk");
+	}
 
 	ex_bonk_encoder_create			= (BONKENCODERCREATE) bonkdll->GetFunctionAddress("bonk_encoder_create");
 	ex_bonk_encoder_init			= (BONKENCODERINIT) bonkdll->GetFunctionAddress("bonk_encoder_init");
@@ -353,6 +364,10 @@ Void BonkEnc::DLLInterfaces::FreeBonkDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
 {
+#ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\BladeEnc.dll")).Exists()) return False;
+#endif
+
 	bladedll = new DynamicLoader("encoders/BladeEnc");
 
 	ex_beInitStream		= (BEINITSTREAM) bladedll->GetFunctionAddress("beInitStream");
@@ -381,12 +396,23 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 {
 	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
 	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\LAME-OpenMP.dll")).Exists()) return False;
+#endif
+
 		lamedll = new DynamicLoader("encoders/LAME-OpenMP");
 
 		if (lamedll->GetSystemModuleHandle() == NIL) FreeLAMEDLL();
 	}
 
-	if (lamedll == NIL) lamedll = new DynamicLoader("encoders/LAME");
+	if (lamedll == NIL)
+	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\LAME.dll")).Exists()) return False;
+#endif
+
+		lamedll = new DynamicLoader("encoders/LAME");
+	}
 
 	ex_lame_init				= (LAME_INIT) lamedll->GetFunctionAddress("lame_init");
 	ex_lame_set_preset			= (LAME_SET_PRESET) lamedll->GetFunctionAddress("lame_set_preset");
@@ -472,6 +498,10 @@ Void BonkEnc::DLLInterfaces::FreeLAMEDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
 {
+#ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\TVQenc.dll")).Exists()) return False;
+#endif
+
 	tvqdll = new DynamicLoader("encoders/TVQenc");
 
 	ex_TvqGetVersionID		= (TVQGETVERSIONID) tvqdll->GetFunctionAddress("TvqGetVersionID");
@@ -508,12 +538,23 @@ Bool BonkEnc::DLLInterfaces::LoadVorbisDLL()
 {
 	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
 	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\OggVorbis-OpenMP.dll")).Exists()) return False;
+#endif
+
 		vorbisdll = new DynamicLoader("encoders/OggVorbis-OpenMP");
 
 		if (vorbisdll->GetSystemModuleHandle() == NIL) FreeVorbisDLL();
 	}
 
-	if (vorbisdll == NIL) vorbisdll = new DynamicLoader("encoders/OggVorbis");
+	if (vorbisdll == NIL)
+	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\OggVorbis.dll")).Exists()) return False;
+#endif
+
+		vorbisdll = new DynamicLoader("encoders/OggVorbis");
+	}
 
 	ex_vorbis_info_init		= (VORBISINFOINIT) vorbisdll->GetFunctionAddress("vorbis_info_init");
 	ex_vorbis_encode_init		= (VORBISENCODEINIT) vorbisdll->GetFunctionAddress("vorbis_encode_init");
@@ -607,12 +648,23 @@ Bool BonkEnc::DLLInterfaces::LoadFAACDLL()
 {
 	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
 	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\FAAC-OpenMP.dll")).Exists()) return False;
+#endif
+
 		faacdll = new DynamicLoader("encoders/FAAC-OpenMP");
 
 		if (faacdll->GetSystemModuleHandle() == NIL) FreeFAACDLL();
 	}
 
-	if (faacdll == NIL) faacdll = new DynamicLoader("encoders/FAAC");
+	if (faacdll == NIL)
+	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\FAAC.dll")).Exists()) return False;
+#endif
+
+		faacdll = new DynamicLoader("encoders/FAAC");
+	}
 
 	ex_faacEncOpen				= (FAACENCOPEN) faacdll->GetFunctionAddress("faacEncOpen");
 	ex_faacEncGetCurrentConfiguration	= (FAACENCGETCURRENTCONFIGURATION) faacdll->GetFunctionAddress("faacEncGetCurrentConfiguration");
@@ -640,6 +692,10 @@ Void BonkEnc::DLLInterfaces::FreeFAACDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
 {
+#ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\FAAD2.dll")).Exists()) return False;
+#endif
+
 	faad2dll = new DynamicLoader("encoders/FAAD2");
 
 	ex_NeAACDecOpen				= (NEAACDECOPEN) faad2dll->GetFunctionAddress("NeAACDecOpen");
@@ -672,6 +728,10 @@ Void BonkEnc::DLLInterfaces::FreeFAAD2DLL()
 
 Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 {
+#ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("CDRip.dll")).Exists()) return False;
+#endif
+
 	cdripdll = new DynamicLoader("CDRip");
 
 	ex_CR_Init			= (CR_INIT) cdripdll->GetFunctionAddress("CR_Init");
@@ -720,6 +780,10 @@ Void BonkEnc::DLLInterfaces::FreeCDRipDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadID3DLL()
 {
+#ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("ID3lib.dll")).Exists()) return False;
+#endif
+
 	id3dll = new DynamicLoader("ID3lib");
 
 	ex_ID3Tag_New			= (ID3TAGNEW) id3dll->GetFunctionAddress("ID3Tag_New");
@@ -790,6 +854,10 @@ Void BonkEnc::DLLInterfaces::FreeID3DLL()
 
 Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 {
+#ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("eUpdate.dll")).Exists()) return False;
+#endif
+
 	eupdatedll = new DynamicLoader("eUpdate");
 
 	ex_eUpdate_CreateUpdateContext	= (EUCREATEUPDATECONTEXT) eupdatedll->GetFunctionAddress("eUpdate_CreateUpdateContext");
@@ -824,6 +892,10 @@ Void BonkEnc::DLLInterfaces::FreeEUpdateDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 {
+#ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\MP4v2.dll")).Exists()) return False;
+#endif
+
 	mp4v2dll = new DynamicLoader("encoders/MP4v2");
 
 	ex_MP4Read			= (MP4READ) mp4v2dll->GetFunctionAddress("MP4Read");
@@ -900,6 +972,10 @@ Void BonkEnc::DLLInterfaces::FreeMP4V2DLL()
 
 Bool BonkEnc::DLLInterfaces::LoadMADDLL()
 {
+#ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\MAD.dll")).Exists()) return False;
+#endif
+
 	maddll = new DynamicLoader("encoders/MAD");
 
 	ex_mad_decoder_init		= (MAD_DECODER_INIT) maddll->GetFunctionAddress("mad_decoder_init");
@@ -952,12 +1028,23 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 {
 	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().GetNumCores() >= 2 && CPU().HasSSE3())
 	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\FLAC-OpenMP.dll")).Exists()) return False;
+#endif
+
 		flacdll = new DynamicLoader("encoders/FLAC-OpenMP");
 
 		if (flacdll->GetSystemModuleHandle() == NIL) FreeFLACDLL();
 	}
 
-	if (flacdll == NIL) flacdll = new DynamicLoader("encoders/FLAC");
+	if (flacdll == NIL)
+	{
+#ifdef __WIN32__
+		if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\FLAC.dll")).Exists()) return False;
+#endif
+
+		flacdll = new DynamicLoader("encoders/FLAC");
+	}
 
 	ex_FLAC__stream_encoder_new						= (FLAC__STREAM_ENCODER_NEW) flacdll->GetFunctionAddress("FLAC__stream_encoder_new");
 	ex_FLAC__stream_encoder_delete						= (FLAC__STREAM_ENCODER_DELETE) flacdll->GetFunctionAddress("FLAC__stream_encoder_delete");

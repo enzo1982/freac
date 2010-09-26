@@ -48,9 +48,9 @@ BonkEnc::DonateDialog::DonateDialog()
 	mainWnd->Add(text_donate_other);
 	mainWnd->Add(text_thanks);
 
-	link_donate_5		= new Hyperlink(NIL, ImageLoader::Load(File(String("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_5.pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_5.html"), Point(90, 113));
-	link_donate_10		= new Hyperlink(NIL, ImageLoader::Load(File(String("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_10.pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_10.html"), Point(160, 113));
-	link_donate_other	= new Hyperlink(NIL, ImageLoader::Load(File(String("donate/donate_other_").Append(BonkEnc::i18n->TranslateString("en")).Append(".pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_other.html"), Point(230, 113));
+	link_donate_5		= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_5.pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_5.html"), Point(90, 113));
+	link_donate_10		= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_10.pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_10.html"), Point(160, 113));
+	link_donate_other	= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_other_").Append(BonkEnc::i18n->TranslateString("en")).Append(".pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_other.html"), Point(230, 113));
 
 	mainWnd->Add(link_donate_5);
 	mainWnd->Add(link_donate_10);
