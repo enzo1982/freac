@@ -20,6 +20,9 @@ using namespace BoCA::AS;
 BonkEnc::ConfigureEncoders::ConfigureEncoders()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::Encoders");
 
 	onTheFly	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
 	keepWaves	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
@@ -31,7 +34,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	unicode_files	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
 	replace_spaces	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
 
-	group_encoder	= new GroupBox(BonkEnc::i18n->TranslateString("Encoder"), Point(7, 11), Size(344, 43));
+	group_encoder	= new GroupBox(i18n->TranslateString("Encoder"), Point(7, 11), Size(344, 43));
 
 	combo_encoder	= new ComboBox(Point(10, 12), Size(186, 0));
 
@@ -46,24 +49,24 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 		if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
 	}
 
-	button_config	= new Button(BonkEnc::i18n->TranslateString("Configure encoder"), NIL, Point(204, 11), Size(130, 0));
+	button_config	= new Button(i18n->TranslateString("Configure encoder"), NIL, Point(204, 11), Size(130, 0));
 	button_config->onAction.Connect(&ConfigureEncoders::ConfigureEncoder, this);
 
 	group_encoder->Add(combo_encoder);
 	group_encoder->Add(button_config);
 
-	group_outdir	= new GroupBox(BonkEnc::i18n->TranslateString("Output directory"), Point(7, 66), Size(344, 93));
+	group_outdir	= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 66), Size(344, 93));
 
-	check_useInputDir	= new CheckBox(BonkEnc::i18n->TranslateString("Use input file directory if possible"), Point(10, 14), Size(236, 0), &useInputDir);
+	check_useInputDir	= new CheckBox(i18n->TranslateString("Use input file folder if possible"), Point(10, 14), Size(236, 0), &useInputDir);
 	check_useInputDir->onAction.Connect(&ConfigureEncoders::ToggleUseInputDir, this);
 
-	check_allowOverwrite	= new CheckBox(BonkEnc::i18n->TranslateString("Allow overwriting input file"), Point(27, 37), Size(219, 0), &allowOverwrite);
+	check_allowOverwrite	= new CheckBox(i18n->TranslateString("Allow overwriting input file"), Point(27, 37), Size(219, 0), &allowOverwrite);
 
 	ToggleUseInputDir();
 
 	edit_outdir	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault), Point(10, 62), Size(236, 0), 0);
 
-	button_outdir_browse= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(254, 61), Size(0, 0));
+	button_outdir_browse= new Button(i18n->TranslateString("Browse"), NIL, Point(254, 61), Size(0, 0));
 	button_outdir_browse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
 
 	group_outdir->Add(check_useInputDir);
@@ -71,7 +74,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdir_browse);
 
-	group_filename	= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), Point(7, 171), Size(344, 43));
+	group_filename	= new GroupBox(i18n->TranslateString("Filename pattern"), Point(7, 171), Size(344, 43));
 
 	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(10, 12), Size(324, 0), 0);
 	list_filename	= new List();
@@ -105,16 +108,16 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	group_filename->Add(edit_filename);
 
-	group_options		= new GroupBox(BonkEnc::i18n->TranslateString("Options"), Point(359, 11), Size(178, 94));
+	group_options		= new GroupBox(i18n->TranslateString("Options"), Point(359, 11), Size(178, 94));
 
-	check_onTheFly		= new CheckBox(BonkEnc::i18n->TranslateString("Encode \'On-The-Fly\'"), Point(10, 14), Size(157, 0), &onTheFly);
+	check_onTheFly		= new CheckBox(i18n->TranslateString("Encode \'On-The-Fly\'"), Point(10, 14), Size(157, 0), &onTheFly);
 	check_onTheFly->onAction.Connect(&ConfigureEncoders::ToggleOnTheFly, this);
 
-	check_keepWaves		= new CheckBox(BonkEnc::i18n->TranslateString("Keep ripped wave files"), Point(10, 40), Size(157, 0), &keepWaves);
+	check_keepWaves		= new CheckBox(i18n->TranslateString("Keep ripped Wave files"), Point(10, 40), Size(157, 0), &keepWaves);
 
 	ToggleOnTheFly();
 
-	check_singleFile	= new CheckBox(BonkEnc::i18n->TranslateString("Encode to single file"), Point(10, 66), Size(157, 0), &singleFile);
+	check_singleFile	= new CheckBox(i18n->TranslateString("Encode to single file"), Point(10, 66), Size(157, 0), &singleFile);
 	check_singleFile->onAction.Connect(&ConfigureEncoders::ToggleEncodeToSingleFile, this);
 
 	ToggleEncodeToSingleFile();
@@ -123,13 +126,13 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	group_options->Add(check_keepWaves);
 	group_options->Add(check_singleFile);
 
-	group_files		= new GroupBox(BonkEnc::i18n->TranslateString("Output filenames"), Point(359, 145), Size(178, 69));
+	group_files		= new GroupBox(i18n->TranslateString("Output filenames"), Point(359, 145), Size(178, 69));
 
-	check_unicode_files	= new CheckBox(BonkEnc::i18n->TranslateString("Allow Unicode characters"), Point(10, 14), Size(157, 0), &unicode_files);
+	check_unicode_files	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 14), Size(157, 0), &unicode_files);
 
 	if (!Setup::enableUnicode) check_unicode_files->Deactivate();
 
-	check_replace_spaces	= new CheckBox(BonkEnc::i18n->TranslateString("Replace spaces"), Point(10, 40), Size(157, 0), &replace_spaces);
+	check_replace_spaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(10, 40), Size(157, 0), &replace_spaces);
 
 	group_files->Add(check_unicode_files);
 	group_files->Add(check_replace_spaces);
@@ -171,10 +174,14 @@ BonkEnc::ConfigureEncoders::~ConfigureEncoders()
 
 Void BonkEnc::ConfigureEncoders::SelectDir()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::Encoders");
+
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
 	dialog->SetDirName(Utilities::GetAbsoluteDirName(edit_outdir->GetText()));
 
 	if (dialog->ShowDialog() == Success())
@@ -217,10 +224,8 @@ Void BonkEnc::ConfigureEncoders::ConfigureEncoder()
 	}
 	else
 	{
-		QuickMessage(String(BonkEnc::i18n->TranslateString("No configuration dialog available for:\n\n%1")).Replace("%1", component->GetName()), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_INFORMATION);
+		BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
 	}
-
-	component->FreeConfigurationLayer();
 
 	boca.DeleteComponent(component);
 }
@@ -247,9 +252,13 @@ Void BonkEnc::ConfigureEncoders::ToggleEncodeToSingleFile()
 
 Int BonkEnc::ConfigureEncoders::SaveSettings()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::Encoders::Errors");
+
 	if (edit_filename->GetText() == NIL)
 	{
-		Utilities::ErrorMessage("Invalid file name pattern!");
+		BoCA::Utilities::ErrorMessage("Invalid file name pattern!");
 
 		return Error();
 	}
@@ -258,13 +267,13 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 	if (Directory::SetActiveDirectory(outputDirectory) != Success())
 	{
-		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
+		Int	 selection = QuickMessage(i18n->TranslateString("The output folder does not exist! Do you want to create it?"), i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
 
 		if	(selection == IDYES)	outputDirectory.Create();
 		else if (selection == IDCANCEL)	return Error();
 	}
 
-	Directory::SetActiveDirectory(Application::GetApplicationDirectory());
+	Directory::SetActiveDirectory(GUI::Application::GetApplicationDirectory());
 
 	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();

@@ -289,12 +289,13 @@ Void BonkEnc::Config::Free()
 
 Bool BonkEnc::Config::CanChangeConfig()
 {
-	if (BonkEnc::Get()->encoder->IsEncoding())
+// ToDo: Reactivate this check.
+/*	if (BonkEnc::Get()->encoder->IsEncoding())
 	{
 		Utilities::ErrorMessage("Cannot change settings while encoding!");
 
 		return False;
 	}
-
+*/
 	return True;
 }

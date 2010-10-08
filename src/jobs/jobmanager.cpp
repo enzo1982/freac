@@ -70,7 +70,7 @@ Void BonkEnc::JobManager::OnFinishJob(Job *job)
 		{
 			const Array<String>	&errors = job->GetErrors();
 
-			foreach (String error, errors) Utilities::ErrorMessage(error);
+			foreach (const String &error, errors) BoCA::Utilities::ErrorMessage(error);
 		}
 
 		return;

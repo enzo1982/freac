@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">BonkEnc</property>
-    <property name="version">1.0</property>
+    <property name="version">1.1</property>
     <property name="language">[english name] / [native name]</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -11,401 +11,780 @@
     <property name="url">http://www.bonkenc.org/</property>
   </info>
   <data>
-    <entry id="1" string="File"/>
-    <entry id="2" string="Options"/>
-    <entry id="3" string="Encode"/>
-    <entry id="4" string="Add"/>
-    <entry id="5" string="Remove"/>
-    <entry id="6" string="Clear joblist"/>
-    <entry id="7" string="Exit"/>
-    <entry id="8" string="General settings..."/>
-    <entry id="9" string="Configure selected encoder..."/>
-    <entry id="10" string="Audio file(s)"/>
-    <entry id="11" string="Audio CD contents"/>
-    <entry id="12" string="Start encoding"/>
-    <entry id="13" string="Stop encoding"/>
-    <entry id="14" string="Encoding file:"/>
-    <entry id="15" string="Time left:"/>
-    <entry id="16" string="Percent done:"/>
-    <entry id="17" string="Selected encoder:"/>
-    <entry id="18" string="File progress:"/>
-    <entry id="19" string="Output dir.:"/>
-    <entry id="20" string="%1 file(s) in joblist:"/>
-    <entry id="21" string="none"/>
-    <entry id="22" string="Help topics..."/>
-    <entry id="23" string="Add audio file(s) to the joblist"/>
-    <entry id="24" string="Add audio CD contents to the joblist"/>
-    <entry id="25" string="Remove the selected entry from the joblist"/>
-    <entry id="26" string="Clear the entire joblist"/>
-    <entry id="27" string="Configure general settings"/>
-    <entry id="28" string="Configure the selected audio encoder"/>
-    <entry id="29" string="Start the encoding process"/>
-    <entry id="30" string="Cannot modify the joblist while encoding!"/>
-    <entry id="31" string="Error"/>
-    <entry id="32" string="Audio Files"/>
-    <entry id="33" string="Apple Audio Files"/>
-    <entry id="34" string="Creative Voice Files"/>
-    <entry id="35" string="Sun Audio Files"/>
-    <entry id="36" string="Wave Files"/>
-    <entry id="37" string="Windows CD Audio Track"/>
-    <entry id="38" string="All Files"/>
-    <entry id="39" string="You have not selected a file!"/>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?"/>
-    <entry id="41" string="Currently encoding"/>
-    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL)."/>
-    <entry id="43" string="CDDB query"/>
-    <entry id="44" string="About %1"/>
-    <entry id="45" string="No options can be configured for Windows Wave file output!"/>
-    <entry id="46" string="Windows Wave file output"/>
-    <entry id="47" string="Cannot change settings while encoding!"/>
-    <entry id="48" string="%1 encoder configuration"/>
-    <entry id="49" string="OK"/>
-    <entry id="50" string="Cancel"/>
-    <entry id="51" string="Encoding Mode"/>
-    <entry id="52" string="Variable Bitrate"/>
-    <entry id="53" string="Average Bitrate"/>
-    <entry id="54" string="Quality"/>
-    <entry id="55" string="Encoders"/>
-    <entry id="56" string="Language"/>
-    <entry id="57" string="Show title info"/>
-    <entry id="58" string="General settings setup"/>
-    <entry id="59" string="Configure encoder"/>
-    <entry id="60" string="Encoder"/>
-    <entry id="61" string="Output directory"/>
-    <entry id="62" string="Browse"/>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:"/>
-    <entry id="64" string="Encoding"/>
-    <entry id="65" string="Author"/>
-    <entry id="66" string="URL"/>
-    <entry id="67" string="Information"/>
-    <entry id="68" string="Select language:"/>
-    <entry id="69" string="Active CD-ROM drive"/>
-    <entry id="70" string="Ripper settings"/>
-    <entry id="71" string="Activate cdparanoia mode:"/>
-    <entry id="72" string="Activate jitter correction"/>
-    <entry id="73" string="Swap left/right channel"/>
-    <entry id="74" string="Lock CD tray while ripping"/>
-    <entry id="75" string="Use native NT SCSI library"/>
-    <entry id="76" string="Overlap only"/>
-    <entry id="77" string="No verify"/>
-    <entry id="78" string="No scratch repair"/>
-    <entry id="79" string="Full cdparanoia mode"/>
-    <entry id="80" string="Bitrate"/>
-    <entry id="81" string="Copyright bit"/>
-    <entry id="82" string="CRC"/>
-    <entry id="83" string="Original bit"/>
-    <entry id="84" string="Channels"/>
-    <entry id="85" string="Private bit"/>
-    <entry id="86" string="Set Copyright bit"/>
-    <entry id="87" string="Enable CRC"/>
-    <entry id="88" string="Set Original bit"/>
-    <entry id="89" string="Dual channel encoding"/>
-    <entry id="90" string="Set Private bit"/>
-    <entry id="91" string="Encoder mode"/>
-    <entry id="92" string="Stereo mode"/>
-    <entry id="93" string="Quantization"/>
-    <entry id="94" string="Downsampling ratio"/>
-    <entry id="95" string="Predictor size"/>
-    <entry id="96" string="Enable lossless encoding"/>
-    <entry id="97" string="Enable Joint Stereo"/>
-    <entry id="98" string="Bitrate per channel:"/>
-    <entry id="99" string="Preselection"/>
-    <entry id="100" string="Number of preselection candidates:"/>
-    <entry id="101" string="MPEG version"/>
-    <entry id="102" string="AAC object type"/>
-    <entry id="103" string="Allow Joint Stereo"/>
-    <entry id="104" string="Temporal Noise Shaping"/>
-    <entry id="105" string="Use Temporal Noise Shaping"/>
-    <entry id="106" string="Maximum bandwidth"/>
-    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):"/>
-    <entry id="108" string="Basic"/>
-    <entry id="109" string="Misc"/>
-    <entry id="110" string="Audio processing"/>
-    <entry id="111" string="Set bitrate:"/>
-    <entry id="112" string="Set ratio:"/>
-    <entry id="113" string="Set quality:"/>
-    <entry id="114" string="worse"/>
-    <entry id="115" string="better"/>
-    <entry id="116" string="Auto"/>
-    <entry id="117" string="Stereo"/>
-    <entry id="118" string="Joint Stereo"/>
-    <entry id="119" string="Force Joint Stereo"/>
-    <entry id="120" string="VBR mode"/>
-    <entry id="121" string="no VBR"/>
-    <entry id="122" string="VBR quality"/>
-    <entry id="123" string="ABR target bitrate"/>
-    <entry id="124" string="VBR bitrate range"/>
-    <entry id="125" string="Set minimum VBR bitrate:"/>
-    <entry id="126" string="Set maximum VBR bitrate:"/>
-    <entry id="127" string="Control bits"/>
-    <entry id="128" string="Stream format"/>
-    <entry id="129" string="Enforce strict ISO compliance"/>
-    <entry id="135" string="Output sampling rate"/>
-    <entry id="136" string="no resampling"/>
-    <entry id="137" string="Highpass filter"/>
-    <entry id="138" string="Set Highpass frequency (Hz):"/>
-    <entry id="139" string="Set Highpass width (Hz):"/>
-    <entry id="140" string="Lowpass filter"/>
-    <entry id="141" string="Set Lowpass frequency (Hz):"/>
-    <entry id="142" string="Set Lowpass width (Hz):"/>
-    <entry id="143" string="Misc settings"/>
-    <entry id="144" string="Disable all filtering"/>
-    <entry id="145" string="MP3 Files"/>
-    <entry id="146" string="Ogg Vorbis Files"/>
-    <entry id="147" string="Bonk Files"/>
-    <entry id="148" string="Automatic CDDB queries"/>
-    <entry id="149" string="CDDB access mode:"/>
-    <entry id="150" string="CDDB server:"/>
-    <entry id="151" string="Port:"/>
-    <entry id="152" string="Info"/>
-    <entry id="153" string="No freedb entry for this disk."/>
-    <entry id="154" string="Some error occurred trying to connect to the freedb server."/>
-    <entry id="155" string="Connecting to freedb server at"/>
-    <entry id="156" string="Requesting CD information"/>
-    <entry id="157" string="eMail address:"/>
-    <entry id="158" string="Please enter a valid eMail address."/>
-    <entry id="159" string="No exact matches found"/>
-    <entry id="160" string="Multiple matches found"/>
-    <entry id="161" string="Matches"/>
-    <entry id="162" string="Select the entry that best fits your CD:"/>
-    <entry id="163" string="Extended CDDB settings"/>
-    <entry id="164" string="CGI scripts"/>
-    <entry id="165" string="CDDB query script:"/>
-    <entry id="166" string="CDDB submit script:"/>
-    <entry id="167" string="HTTP settings"/>
-    <entry id="168" string="Proxy settings"/>
-    <entry id="169" string="no proxy"/>
-    <entry id="170" string="Proxy type:"/>
-    <entry id="171" string="Proxy server:"/>
-    <entry id="172" string="Presets"/>
-    <entry id="173" string="Use preset:"/>
-    <entry id="174" string="Custom settings"/>
-    <entry id="179" string="Medium, Fast"/>
-    <entry id="180" string="Standard, Fast"/>
-    <entry id="181" string="Extreme, Fast"/>
-    <entry id="182" string="Title"/>
-    <entry id="183" string="Track"/>
-    <entry id="184" string="Length"/>
-    <entry id="185" string="Size"/>
-    <entry id="186" string="Artist"/>
-    <entry id="187" string="Year"/>
-    <entry id="188" string="Genre"/>
-    <entry id="189" string="Album"/>
-    <entry id="190" string="Info tags"/>
-    <entry id="191" string="Default information"/>
-    <entry id="192" string="Default comment string:"/>
-    <entry id="193" string="unknown artist"/>
-    <entry id="194" string="unknown title"/>
-    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!"/>
-    <entry id="196" string="Database"/>
-    <entry id="197" string="Submit CDDB data..."/>
-    <entry id="198" string="Enable CDDB cache"/>
-    <entry id="199" string="CDDB data"/>
-    <entry id="200" string="Submit"/>
-    <entry id="201" string="No audio CD in drive!"/>
-    <entry id="202" string="Please fill all fields and track titles before submitting."/>
-    <entry id="203" string="Prefer CDDB over CD Text"/>
-    <entry id="204" string="CD options"/>
-    <entry id="205" string="Submitting CD information"/>
-    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2"/>
-    <entry id="207" string="Query CDDB database"/>
-    <entry id="208" string="Help"/>
-    <entry id="209" string="index_en.html"/>
-    <entry id="210" string="Plug-ins"/>
-    <entry id="211" string="Input plug-ins"/>
-    <entry id="212" string="Output plug-ins"/>
-    <entry id="213" string="Configure"/>
-    <entry id="214" string="About"/>
-    <entry id="215" string="Play"/>
-    <entry id="216" string="Stop"/>
-    <entry id="217" string="Cannot play a file while encoding!"/>
-    <entry id="218" string="Cannot start encoding while playing a file!"/>
-    <entry id="219" string="Enable remote CDDB database"/>
-    <entry id="220" string="ATH"/>
-    <entry id="221" string="Enable ATH:"/>
-    <entry id="222" string="Use default setting"/>
-    <entry id="223" string="Psycho acoustic model"/>
-    <entry id="224" string="Use Temporal Masking Effect"/>
-    <entry id="225" string="Expert"/>
-    <entry id="226" string="Cannot configure encoder while encoding!"/>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?"/>
-    <entry id="228" string="Filename pattern"/>
-    <entry id="229" string="unknown album"/>
-    <entry id="230" string="Translated by %1."/>
-    <entry id="231" string="Select all"/>
-    <entry id="232" string="Select none"/>
-    <entry id="233" string="Toggle selection"/>
-    <entry id="234" string="Show Tip of the Day"/>
-    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application."/>
-    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1"/>
-    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats."/>
-    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc."/>
-    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."/>
-    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2."/>
-    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details."/>
-    <entry id="242" string="Bitrate / Quality"/>
-    <entry id="243" string="Check for updates now"/>
-    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?"/>
-    <entry id="245" string="There are no updates available at the moment!"/>
-    <entry id="246" string="Check for updates at startup"/>
-    <entry id="247" string="Read CD contents on insert"/>
-    <entry id="248" string="Eject disk after ripping"/>
-    <entry id="249" string="Encode 'On-The-Fly'"/>
-    <entry id="250" string="Keep ripped wave files"/>
-    <entry id="251" string="ripping/decoding"/>
-    <entry id="252" string="encoding"/>
-    <entry id="253" string="Unicode"/>
-    <entry id="254" string="Use Unicode filenames"/>
-    <entry id="255" string="AAC Files"/>
-    <entry id="256" string="MP4 Files"/>
-    <entry id="257" string="Format"/>
-    <entry id="258" string="File format"/>
-    <entry id="259" string="Allow ID3v2 tags in AAC files"/>
-    <entry id="260" string="Note:"/>
-    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
-    <entry id="262" string="FLAC Files"/>
-    <entry id="263" string="Sampling rate"/>
-    <entry id="264" string="Sample resolution"/>
-    <entry id="265" string="Number of samples"/>
-    <entry id="266" string="Mono"/>
-    <entry id="267" string="bytes"/>
-    <entry id="268" string="bit"/>
-    <entry id="269" string="min"/>
-    <entry id="270" string="Create playlist"/>
-    <entry id="271" string="Create cue sheet"/>
-    <entry id="272" string="Write ID3v1 tags"/>
-    <entry id="273" string="Write ID3v2 tags"/>
-    <entry id="274" string="Write Vorbis Comment tags"/>
-    <entry id="275" string="Write MP4 metadata info"/>
-    <entry id="276" string="ID3v1 tag encoding:"/>
-    <entry id="277" string="ID3v2 tag encoding:"/>
-    <entry id="278" string="Vorbis Comment tag encoding:"/>
-    <entry id="279" string="MP4 metadata encoding:"/>
-    <entry id="280" string="Tag encodings"/>
-    <entry id="281" string="Update joblist with this information"/>
-    <entry id="282" string="unknown genre"/>
-    <entry id="283" string="Load joblist..."/>
-    <entry id="284" string="Save joblist..."/>
-    <entry id="285" string="Pause/resume encoding"/>
-    <entry id="286" string="Shutdown after encoding"/>
-    <entry id="287" string="Playlist Files"/>
-    <entry id="288" string="unknown year"/>
-    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!"/>
-    <entry id="290" string="Blocksize:"/>
-    <entry id="291" string="Use streamable subset"/>
-    <entry id="292" string="Adaptive Joint Stereo"/>
-    <entry id="293" string="Fastest encoding"/>
-    <entry id="294" string="Best compression"/>
-    <entry id="295" string="Linear predictor"/>
-    <entry id="296" string="Maximum LPC order"/>
-    <entry id="297" string="Quantized LPC precision"/>
-    <entry id="298" string="Exhaustive model search"/>
-    <entry id="299" string="Optimize LPC quantization"/>
-    <entry id="300" string="disabled"/>
-    <entry id="301" string="auto"/>
-    <entry id="302" string="Residual coding"/>
-    <entry id="303" string="Minimum partition order"/>
-    <entry id="304" string="Maximum partition order"/>
-    <entry id="305" string="By pattern"/>
-    <entry id="306" string="From directory"/>
-    <entry id="307" string="Directory"/>
-    <entry id="308" string="Add directory"/>
-    <entry id="309" string="Choose directory:"/>
-    <entry id="310" string="Select the folder to add to the joblist:"/>
-    <entry id="311" string="Add files by pattern"/>
-    <entry id="312" string="Pattern"/>
-    <entry id="313" string="Start directory"/>
-    <entry id="314" string="No files found matching pattern:"/>
-    <entry id="315" string="Edit language file"/>
-    <entry id="316" string="Use for all selected tracks"/>
-    <entry id="317" string="Interpret string as"/>
-    <entry id="318" string="selected tracks"/>
-    <entry id="319" string="Adjust upper/lower case"/>
-    <entry id="320" string="all words upper case"/>
-    <entry id="321" string="long words upper case"/>
-    <entry id="322" string="first letter upper case"/>
-    <entry id="323" string="all lower case"/>
-    <entry id="324" string="all upper case"/>
-    <entry id="325" string="Status"/>
-    <entry id="326" string="Successfully read CD!"/>
-    <entry id="327" string="Comment"/>
-    <entry id="328" string="Manage CDDB cache entries..."/>
-    <entry id="329" string="Save entry"/>
-    <entry id="330" string="Remove entry"/>
-    <entry id="331" string="Disc name"/>
-    <entry id="332" string="Charset"/>
-    <entry id="333" string="Preview"/>
-    <entry id="334" string="Downloaded CDDB entries:"/>
-    <entry id="335" string="User name:"/>
-    <entry id="336" string="Password:"/>
-    <entry id="337" string="Delete original files after encoding"/>
-    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
-    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?"/>
-    <entry id="340" string="Playlists"/>
-    <entry id="341" string="Create playlists"/>
-    <entry id="342" string="Create cue sheets"/>
-    <entry id="343" string="Use encoder output directory"/>
-    <entry id="344" string="Various artists"/>
-    <entry id="345" string="Data track"/>
-    <entry id="346" string="Select the folder in which the playlist files will be placed:"/>
-    <entry id="347" string="Use input file directory if possible"/>
-    <entry id="348" string="Encode to input file directory if possible"/>
-    <entry id="349" string="Allow overwriting input file"/>
-    <entry id="350" string="Encode to single file"/>
-    <entry id="351" string="Encoder options"/>
-    <entry id="352" string="Skip"/>
-    <entry id="353" string="Enable local CDDB database"/>
-    <entry id="354" string="CDDB directory:"/>
-    <entry id="355" string="Select the folder of the CDDB database:"/>
-    <entry id="356" string="File already exists"/>
-    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
-    <entry id="358" string="Overwrite all further files"/>
-    <entry id="359" string="Start ripping automatically"/>
-    <entry id="360" string="Submit to online database later"/>
-    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
-    <entry id="362" string="CDDB entries to submit:"/>
-    <entry id="363" string="Show queued CDDB entries..."/>
-    <entry id="364" string="Submit all"/>
-    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
-    <entry id="366" string="Category"/>
-    <entry id="367" string="Close"/>
-    <entry id="368" string="Automatization"/>
-    <entry id="369" string="Query CDDB database later"/>
-    <entry id="370" string="Show queued CDDB queries..."/>
-    <entry id="371" string="CDDB queries"/>
-    <entry id="372" string="Query"/>
-    <entry id="373" string="Query all"/>
-    <entry id="374" string="Query string"/>
-    <entry id="375" string="CDDB queries to perform:"/>
-    <entry id="376" string="Would you like to perform this query again later?"/>
-    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
-    <entry id="378" string="CD information"/>
-    <entry id="379" string="Read CD Text"/>
-    <entry id="380" string="Read cdplayer.ini"/>
-    <entry id="381" string="Apodization"/>
-    <entry id="382" string="Apodization function(s):"/>
-    <entry id="383" string="You can specify multiple functions separated by semicolons."/>
-    <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?"/>
-    <entry id="385" string="Cannot access input file: %1"/>
-    <entry id="386" string="Cannot create output file: %1"/>
-    <entry id="387" string="File not found"/>
-    <entry id="388" string="Unknown file type"/>
-    <entry id="389" string="Unsupported audio format"/>
-    <entry id="390" string="Unknown error"/>
-    <entry id="391" string="Replace existing comments with default comment"/>
-    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
-    <entry id="393" string="Write WMA metadata info"/>
-    <entry id="394" string="WMA metadata encoding:"/>
-    <entry id="395" string="Select codec"/>
-    <entry id="396" string="Select codec format"/>
-    <entry id="397" string="Codec settings"/>
-    <entry id="398" string="Use codec"/>
-    <entry id="399" string="Use format"/>
-    <entry id="400" string="Write uncompressed WMA files"/>
-    <entry id="401" string="Automatically select format based on settings and input format"/>
-    <entry id="402" string="Use VBR encoding"/>
-    <entry id="403" string="Use 2-pass encoding"/>
-    <entry id="404" string="Target bitrate"/>
-    <entry id="405" string="Set drive speed limit:"/>
+    <entry id="100" string="OK"/>
+    <entry id="101" string="Cancel"/>
+    <entry id="102" string="Close"/>
+    <entry id="200" string="Error"/>
+    <entry id="300" string="Artist"/>
+    <entry id="301" string="Title"/>
+    <entry id="302" string="Album"/>
+    <entry id="303" string="Track"/>
+    <entry id="304" string="Genre"/>
+    <entry id="305" string="Comment"/>
+    <entry id="306" string="Year"/>
+    <entry id="350" string="unknown artist"/>
+    <entry id="351" string="unknown title"/>
+    <entry id="352" string="unknown album"/>
+    <entry id="353" string="unknown genre"/>
+    <entry id="354" string="unknown year"/>
+
+    <section name="Characters">
+      <entry id="500" string=":"/>
+      <entry id="501" string="..."/>
+      <entry id="502" string="(%1)"/>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File"/>
+      <entry id="1001" string="Options"/>
+      <entry id="1002" string="Database"/>
+      <entry id="1003" string="Encode"/>
+      <entry id="1004" string="Help"/>
+
+      <section name="File">
+	<entry id="1100" string="Add"/>
+	<entry id="1101" string="Remove"/>
+	<entry id="1102" string="Load joblist..."/>
+	<entry id="1103" string="Save joblist..."/>
+	<entry id="1104" string="Clear joblist"/>
+	<entry id="1105" string="Exit"/>
+	<entry id="1106" string="Audio file(s)"/>
+	<entry id="1107" string="Audio CD contents"/>
+	<entry id="1108" string="By pattern"/>
+	<entry id="1109" string="From folder"/>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database"/>
+	<entry id="1201" string="Submit CDDB data..."/>
+	<entry id="1202" string="Query CDDB database later"/>
+	<entry id="1203" string="Show queued CDDB entries..."/>
+	<entry id="1204" string="Show queued CDDB queries..."/>
+	<entry id="1205" string="Enable CDDB cache"/>
+	<entry id="1206" string="Manage CDDB cache entries..."/>
+	<entry id="1207" string="Automatic CDDB queries"/>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings..."/>
+	<entry id="1301" string="Configure selected encoder..."/>
+	<entry id="1302" string="Active CD-ROM drive"/>
+      </section>
+
+      <section name="Encode">
+	<entry id="1400" string="Start encoding"/>
+	<entry id="1401" string="Pause/resume encoding"/>
+	<entry id="1402" string="Stop encoding"/>
+	<entry id="1403" string="Encoder options"/>
+	<entry id="1404" string="Encode to single file"/>
+	<entry id="1405" string="Encode to input file folder if possible"/>
+	<entry id="1406" string="Allow overwriting input file"/>
+	<entry id="1407" string="Delete original files after encoding"/>
+	<entry id="1408" string="Shutdown after encoding"/>
+      </section>
+
+      <section name="Help">
+	<entry id="1500" string="Help topics..."/>
+	<entry id="1501" string="Show Tip of the Day"/>
+	<entry id="1502" string="Check for updates now"/>
+	<entry id="1503" string="Check for updates at startup"/>
+	<entry id="1504" string="About %1"/>
+	<entry id="1505" string="index_en.html"/>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist"/>
+      <entry id="2001" string="Add audio CD contents to the joblist"/>
+      <entry id="2002" string="Remove the selected entry from the joblist"/>
+      <entry id="2003" string="Clear the entire joblist"/>
+      <entry id="2004" string="Query CDDB database"/>
+      <entry id="2005" string="Submit CDDB data..."/>
+      <entry id="2006" string="Configure general settings"/>
+      <entry id="2007" string="Configure the selected audio encoder"/>
+      <entry id="2008" string="Start the encoding process"/>
+      <entry id="2009" string="Pause/resume encoding"/>
+      <entry id="2010" string="Stop encoding"/>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Encoding file:"/>
+      <entry id="3001" string="Time left:"/>
+      <entry id="3002" string="Selected encoder:"/>
+      <entry id="3003" string="File progress:"/>
+      <entry id="3004" string="Output folder:"/>
+      <entry id="3005" string="%1 file(s) in joblist:"/>
+      <entry id="3006" string="none"/>
+      <entry id="3007" string="Show title info"/>
+      <entry id="3008" string="Play"/>
+      <entry id="3009" string="Stop"/>
+      <entry id="3010" string="Select all"/>
+      <entry id="3011" string="Select none"/>
+      <entry id="3012" string="Toggle selection"/>
+      <entry id="3013" string="ripping/decoding"/>
+      <entry id="3014" string="encoding"/>
+      <entry id="3015" string="Create playlist"/>
+      <entry id="3016" string="Create cue sheet"/>
+      <entry id="3017" string="Browse"/>
+      <entry id="3018" string="Skip"/>
+      <entry id="3019" string="Encode to single file"/>
+      <entry id="3020" string="Remove"/>
+      <entry id="3021" string="Clear joblist"/>
+      <entry id="3022" string="Use for all selected tracks"/>
+      <entry id="3023" string="Interpret string as"/>
+      <entry id="3024" string="selected tracks"/>
+      <entry id="3025" string="Adjust upper/lower case"/>
+      <entry id="3026" string="all words upper case"/>
+      <entry id="3027" string="long words upper case"/>
+      <entry id="3028" string="first letter upper case"/>
+      <entry id="3029" string="all lower case"/>
+      <entry id="3030" string="all upper case"/>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed:"/>
+      <entry id="3032" string="Sampling rate"/>
+      <entry id="3033" string="Sample resolution"/>
+      <entry id="3034" string="Number of samples"/>
+      <entry id="3035" string="Channels"/>
+      <entry id="3036" string="Mono"/>
+      <entry id="3037" string="Stereo"/>
+      <entry id="3038" string="bit"/>
+      <entry id="3039" string="min"/>
+      <entry id="3040" string="bytes"/>
+      <entry id="3041" string="Length"/>
+      <entry id="3042" string="File"/>
+      <entry id="3043" string="Size"/>
+      <entry id="3044" string="Bitrate"/>
+      <entry id="3045" string="Audio Files"/>
+      <entry id="3046" string="All Files"/>
+      <entry id="3047" string="Playlist Files"/>
+      <entry id="3048" string="Active decoder:"/>
+      <entry id="3049" string="Joblist"/>
+      <entry id="3050" string="unknown"/>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder"/>
+	<entry id="3101" string="Add folder"/>
+	<entry id="3102" string="Choose folder:"/>
+	<entry id="3103" string="Select the folder to add to the joblist:"/>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern"/>
+	<entry id="3201" string="Pattern"/>
+	<entry id="3202" string="Start folder"/>
+	<entry id="3203" string="Filename pattern"/>
+	<entry id="3204" string="Select the folder to add to the joblist:"/>
+      </section>
+
+      <section name="Errors">
+	<entry id="3300" string="Cannot modify the joblist while encoding!"/>
+	<entry id="3301" string="You have not selected a file!"/>
+	<entry id="3302" string="No files found matching pattern:"/>
+      </section>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data"/>
+	<entry id="4001" string="Submit"/>
+	<entry id="4002" string="No audio CD in drive!"/>
+	<entry id="4003" string="Submitting CD information"/>
+	<entry id="4004" string="Update joblist with this information"/>
+	<entry id="4005" string="Status"/>
+	<entry id="4006" string="Successfully read CD!"/>
+	<entry id="4007" string="Save entry"/>
+	<entry id="4008" string="Various artists"/>
+	<entry id="4009" string="Data track"/>
+	<entry id="4010" string="Submit to online database later"/>
+	<entry id="4011" string="Active CD-ROM drive"/>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server."/>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting."/>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query"/>
+	<entry id="4101" string="Info"/>
+	<entry id="4102" string="No freedb entry for this disk."/>
+	<entry id="4103" string="Connecting to freedb server at"/>
+	<entry id="4104" string="Requesting CD information"/>
+	<entry id="4105" string="No exact matches found"/>
+	<entry id="4106" string="Multiple matches found"/>
+	<entry id="4107" string="Matches"/>
+	<entry id="4108" string="Select the entry that best fits your CD:"/>
+	<entry id="4109" string="Would you like to perform this query again later?"/>
+	<entry id="4110" string="none"/>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server."/>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry"/>
+	<entry id="4201" string="CDDB queries"/>
+	<entry id="4202" string="Query"/>
+	<entry id="4203" string="Query all"/>
+	<entry id="4204" string="Query string"/>
+	<entry id="4205" string="CDDB queries to perform:"/>
+	<entry id="4206" string="Querying CD information..."/>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry"/>
+	<entry id="4301" string="CDDB entries to submit:"/>
+	<entry id="4302" string="Submit all"/>
+	<entry id="4303" string="CDDB data"/>
+	<entry id="4304" string="Submit"/>
+	<entry id="4305" string="Disc name"/>
+	<entry id="4306" string="Preview"/>
+	<entry id="4307" string="Category"/>
+	<entry id="4308" string="Submitting CD information"/>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data"/>
+	<entry id="4401" string="Update joblist with this information"/>
+	<entry id="4402" string="Charset"/>
+	<entry id="4403" string="Downloaded CDDB entries:"/>
+	<entry id="4404" string="Disc name"/>
+	<entry id="4405" string="Preview"/>
+	<entry id="4406" string="Remove entry"/>
+	<entry id="4407" string="Save entry"/>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup"/>
+      <entry id="5001" string="Encoders"/>
+      <entry id="5002" string="Playlists"/>
+      <entry id="5003" string="Language"/>
+      <entry id="5004" string="Component configuration"/>
+      <entry id="5005" string="CDDB"/>
+      <entry id="5006" string="Interface"/>
+      <entry id="5007" string="Tags"/>
+      <entry id="5008" string="Components"/>
+      <entry id="5009" string="Decoders"/>
+      <entry id="5010" string="Output"/>
+      <entry id="5011" string="DSP"/>
+      <entry id="5012" string="Extensions"/>
+      <entry id="5013" string="Other"/>
+      <entry id="5014" string="Active configuration:"/>
+      <entry id="5015" string="New"/>
+      <entry id="5016" string="Delete"/>
+      <entry id="5017" string="Command line arguments:"/>
+      <entry id="5018" string="Resulting arguments string:"/>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder"/>
+	<entry id="5101" string="Encoder"/>
+	<entry id="5102" string="Output folder"/>
+	<entry id="5103" string="Browse"/>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed:"/>
+	<entry id="5105" string="Use input file folder if possible"/>
+	<entry id="5106" string="Allow overwriting input file"/>
+	<entry id="5107" string="Options"/>
+	<entry id="5108" string="Filename pattern"/>
+	<entry id="5109" string="Encode 'On-The-Fly'"/>
+	<entry id="5110" string="Keep ripped Wave files"/>
+	<entry id="5111" string="Encode to single file"/>
+	<entry id="5112" string="Output filenames"/>
+	<entry id="5113" string="Allow Unicode characters"/>
+	<entry id="5114" string="Replace spaces"/>
+
+	<section name="Errors">
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?"/>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists"/>
+	<entry id="5201" string="Create cue sheets"/>
+	<entry id="5202" string="Output folder"/>
+	<entry id="5203" string="Browse"/>
+	<entry id="5204" string="Use encoder output folder"/>
+	<entry id="5205" string="Filename pattern"/>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed:"/>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database"/>
+	<entry id="5301" string="Enable remote CDDB database"/>
+	<entry id="5302" string="CDDB path:"/>
+	<entry id="5303" string="Browse"/>
+	<entry id="5304" string="Select the folder of the CDDB database:"/>
+	<entry id="5305" string="CDDB access mode:"/>
+	<entry id="5306" string="CDDB server:"/>
+	<entry id="5307" string="Port:"/>
+	<entry id="5308" string="eMail address:"/>
+	<entry id="5309" string="HTTP settings"/>
+	<entry id="5310" string="Proxy settings"/>
+	<entry id="5311" string="Options"/>
+	<entry id="5312" string="Automatic CDDB queries"/>
+	<entry id="5313" string="Prefer CDDB over CD Text"/>
+	<entry id="5314" string="Enable CDDB cache"/>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings"/>
+	  <entry id="5331" string="CGI scripts"/>
+	  <entry id="5332" string="CDDB query script:"/>
+	  <entry id="5333" string="CDDB submit script:"/>
+	  <entry id="5334" string="no proxy"/>
+	  <entry id="5335" string="Proxy type:"/>
+	  <entry id="5336" string="Proxy server:"/>
+	  <entry id="5337" string="User name:"/>
+	  <entry id="5338" string="Password:"/>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address."/>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?"/>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language:"/>
+	<entry id="5401" string="Edit language file"/>
+	<entry id="5402" string="Information"/>
+	<entry id="5403" string="Encoding"/>
+	<entry id="5404" string="Author"/>
+	<entry id="5405" string="URL"/>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tags"/>
+	<entry id="5501" string="Tag formats"/>
+	<entry id="5502" string="Default comment string:"/>
+	<entry id="5503" string="Replace existing comments with default comment"/>
+	<entry id="5504" string="Filename pattern"/>
+	<entry id="5505" string="Encoding:"/>
+	<entry id="5506" string="Comments"/>
+	<entry id="5507" string="Cover art"/>
+	<entry id="5508" string="Read cover art"/>
+	<entry id="5509" string="Read cover art from tags"/>
+	<entry id="5510" string="Read cover art from files"/>
+	<entry id="5511" string="Write cover art"/>
+	<entry id="5512" string="Write cover art to tags"/>
+	<entry id="5513" string="Write cover art to files"/>
+	<entry id="5514" string="Add reference to audio file tag"/>
+	<entry id="5515" string="Other"/>
+	<entry id="5516" string="Special fields"/>
+	<entry id="5517" string="Write CD table of contents"/>
+	<entry id="5518" string="Preserve Replay Gain information"/>
+      </section>
+
+      <section name="Interface">
+	<entry id="5600" string="Joblist"/>
+	<entry id="5601" string="Columns:"/>
+	<entry id="5602" string="Up"/>
+	<entry id="5603" string="Down"/>
+      </section>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1"/>
+      <entry id="6001" string="Translated by %1."/>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL)."/>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?"/>
+      <entry id="6101" string="There are no updates available at the moment!"/>
+      <entry id="6102" string="Check for updates at startup"/>
+      <entry id="6103" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?"/>
+    </section>
+
+    <section name="Tips">
+      <entry id="6200" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application."/>
+      <entry id="6201" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1"/>
+      <entry id="6202" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats."/>
+      <entry id="6203" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc."/>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."/>
+      <entry id="6205" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2."/>
+      <entry id="6206" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details."/>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?"/>
+      <entry id="7001" string="Currently encoding"/>
+      <entry id="7002" string="Cannot change settings while encoding!"/>
+      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!"/>
+      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2"/>
+      <entry id="7005" string="Cannot play a file while encoding!"/>
+      <entry id="7006" string="Cannot start encoding while playing a file!"/>
+      <entry id="7007" string="Delete original files after encoding"/>
+      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
+      <entry id="7009" string="File already exists"/>
+      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
+      <entry id="7011" string="Overwrite all further files"/>
+      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
+      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
+      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
+      <entry id="7015" string="Cannot access input file: %1"/>
+      <entry id="7016" string="Cannot create output file: %1"/>
+      <entry id="7017" string="File not found"/>
+      <entry id="7018" string="Unknown file type"/>
+      <entry id="7019" string="Unsupported audio format"/>
+      <entry id="7020" string="Unknown error"/>
+      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
+      <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1"/>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="CDRip">
+	<entry id="10000" string="Active CD-ROM drive"/>
+	<entry id="10001" string="Set drive speed limit:"/>
+	<entry id="10002" string="CD information"/>
+	<entry id="10003" string="Read CD Text"/>
+	<entry id="10004" string="Read cdplayer.ini"/>
+	<entry id="10005" string="Ripper settings"/>
+	<entry id="10006" string="Activate cdparanoia mode:"/>
+	<entry id="10007" string="Overlap only"/>
+	<entry id="10008" string="No verify"/>
+	<entry id="10009" string="No scratch repair"/>
+	<entry id="10010" string="Full cdparanoia mode"/>
+	<entry id="10011" string="Activate jitter correction"/>
+	<entry id="10012" string="Swap left/right channel"/>
+	<entry id="10013" string="Automatization"/>
+	<entry id="10014" string="Read CD contents on insert"/>
+	<entry id="10015" string="Start ripping automatically"/>
+	<entry id="10016" string="Eject disk after ripping"/>
+	<entry id="10017" string="CD options"/>
+	<entry id="10018" string="Lock CD tray while ripping"/>
+	<entry id="10019" string="Use native NT SCSI library"/>
+      </section>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate"/>
+	<entry id="30001" string="Copyright bit"/>
+	<entry id="30002" string="CRC"/>
+	<entry id="30003" string="Original bit"/>
+	<entry id="30004" string="Channels"/>
+	<entry id="30005" string="Private bit"/>
+	<entry id="30006" string="Set Copyright bit"/>
+	<entry id="30007" string="Enable CRC"/>
+	<entry id="30008" string="Set Original bit"/>
+	<entry id="30009" string="Dual channel encoding"/>
+	<entry id="30010" string="Set Private bit"/>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode"/>
+	<entry id="31001" string="Stereo mode"/>
+	<entry id="31002" string="Quantization"/>
+	<entry id="31003" string="Downsampling ratio"/>
+	<entry id="31004" string="Predictor size"/>
+	<entry id="31005" string="Enable lossless encoding"/>
+	<entry id="31006" string="Enable Joint Stereo"/>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic"/>
+	<entry id="32001" string="Misc"/>
+	<entry id="32002" string="Expert"/>
+	<entry id="32003" string="Audio processing"/>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets"/>
+	  <entry id="32101" string="Use preset:"/>
+	  <entry id="32102" string="Custom settings"/>
+	  <entry id="32103" string="Medium, Fast"/>
+	  <entry id="32104" string="Standard, Fast"/>
+	  <entry id="32105" string="Extreme, Fast"/>
+	  <entry id="32106" string="Bitrate"/>
+	  <entry id="32107" string="Quality"/>
+	  <entry id="32108" string="Set bitrate:"/>
+	  <entry id="32109" string="Set ratio:"/>
+	  <entry id="32110" string="Set quality:"/>
+	  <entry id="32111" string="worse"/>
+	  <entry id="32112" string="better"/>
+	  <entry id="32113" string="VBR mode"/>
+	  <entry id="32114" string="no VBR"/>
+	  <entry id="32115" string="VBR quality"/>
+	  <entry id="32116" string="ABR target bitrate"/>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits"/>
+	  <entry id="32201" string="Set Copyright bit"/>
+	  <entry id="32202" string="Set Original bit"/>
+	  <entry id="32203" string="Set Private bit"/>
+	  <entry id="32204" string="CRC"/>
+	  <entry id="32205" string="Enable CRC"/>
+	  <entry id="32206" string="Stereo mode"/>
+	  <entry id="32207" string="Auto"/>
+	  <entry id="32208" string="Stereo"/>
+	  <entry id="32209" string="Joint Stereo"/>
+	  <entry id="32210" string="Force Joint Stereo"/>
+	  <entry id="32211" string="VBR bitrate range"/>
+	  <entry id="32212" string="Set minimum VBR bitrate:"/>
+	  <entry id="32213" string="Set maximum VBR bitrate:"/>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH"/>
+	  <entry id="32301" string="Enable ATH:"/>
+	  <entry id="32302" string="Use default setting"/>
+	  <entry id="32303" string="Psycho acoustic model"/>
+	  <entry id="32304" string="Use Temporal Masking Effect"/>
+	  <entry id="32305" string="Stream format"/>
+	  <entry id="32306" string="Enforce strict ISO compliance"/>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Output sampling rate"/>
+	  <entry id="32401" string="auto"/>
+	  <entry id="32402" string="no resampling"/>
+	  <entry id="32403" string="Highpass filter"/>
+	  <entry id="32404" string="Set Highpass frequency (Hz):"/>
+	  <entry id="32405" string="Set Highpass width (Hz):"/>
+	  <entry id="32406" string="Lowpass filter"/>
+	  <entry id="32407" string="Set Lowpass frequency (Hz):"/>
+	  <entry id="32408" string="Set Lowpass width (Hz):"/>
+	  <entry id="32409" string="Misc settings"/>
+	  <entry id="32410" string="Disable all filtering"/>
+	</section>
+      </section>
+
+      <section name="FAAC">
+	<entry id="33000" string="Quality"/>
+	<entry id="33001" string="Format"/>
+
+	<section name="Quality">
+	  <entry id="33100" string="Bitrate / Quality"/>
+	  <entry id="33101" string="Bitrate per channel:"/>
+	  <entry id="33102" string="Set quality:"/>
+	  <entry id="33103" string="Stereo mode"/>
+	  <entry id="33104" string="Allow Joint Stereo"/>
+	  <entry id="33105" string="Temporal Noise Shaping"/>
+	  <entry id="33106" string="Use Temporal Noise Shaping"/>
+	  <entry id="33107" string="Maximum bandwidth"/>
+	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):"/>
+	</section>
+
+	<section name="Format">
+	  <entry id="33200" string="MPEG version"/>
+	  <entry id="33201" string="AAC object type"/>
+	  <entry id="33202" string="File format"/>
+	  <entry id="33203" string="Allow ID3v2 tags in AAC files"/>
+	  <entry id="33204" string="Note:"/>
+	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
+	  <entry id="33206" string="File extension"/>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic"/>
+	<entry id="34001" string="Format"/>
+	<entry id="34002" string="Expert"/>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets"/>
+	  <entry id="34101" string="Use preset:"/>
+	  <entry id="34102" string="Custom settings"/>
+	  <entry id="34103" string="Fastest encoding"/>
+	  <entry id="34104" string="Best compression"/>
+	  <entry id="34105" string="Stereo mode"/>
+	  <entry id="34106" string="Joint Stereo"/>
+	  <entry id="34107" string="Adaptive Joint Stereo"/>
+	</section>
+
+	<section name="Format">
+	  <entry id="34200" string="Use streamable subset"/>
+	  <entry id="34201" string="Blocksize:"/>
+	  <entry id="34202" string="bytes"/>
+	</section>
+
+	<section name="Expert">
+	  <entry id="34300" string="Apodization"/>
+	  <entry id="34301" string="Apodization function(s):"/>
+	  <entry id="34302" string="Note:"/>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons."/>
+	  <entry id="34304" string="Linear predictor"/>
+	  <entry id="34305" string="Maximum LPC order"/>
+	  <entry id="34306" string="disabled"/>
+	  <entry id="34307" string="Exhaustive model search"/>
+	  <entry id="34308" string="Quantized LPC precision"/>
+	  <entry id="34309" string="auto"/>
+	  <entry id="34310" string="Optimize LPC quantization"/>
+	  <entry id="34311" string="Residual coding"/>
+	  <entry id="34312" string="Minimum partition order"/>
+	  <entry id="34313" string="Maximum partition order"/>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode"/>
+	<entry id="35001" string="Variable Bitrate"/>
+	<entry id="35002" string="Average Bitrate"/>
+	<entry id="35003" string="Quality"/>
+	<entry id="35004" string="Bitrate"/>
+	<entry id="35005" string="Minimum bitrate:"/>
+	<entry id="35006" string="Average bitrate:"/>
+	<entry id="35007" string="Maximum bitrate:"/>
+      </section>
+
+      <section name="WMA">
+	<entry id="36000" string="Select codec"/>
+	<entry id="36001" string="Select codec format"/>
+	<entry id="36002" string="Codec settings"/>
+	<entry id="36003" string="Use codec"/>
+	<entry id="36004" string="Use format"/>
+	<entry id="36005" string="Write uncompressed WMA files"/>
+	<entry id="36006" string="Automatically select format based on settings and input format"/>
+	<entry id="36007" string="Use VBR encoding"/>
+	<entry id="36008" string="Use 2-pass encoding"/>
+	<entry id="36009" string="Target bitrate"/>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate"/>
+	<entry id="37001" string="Bitrate per channel:"/>
+	<entry id="37002" string="Preselection"/>
+	<entry id="37003" string="Number of preselection candidates:"/>
+      </section>
+
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression"/>
+	<entry id="38001" string="Compression mode:"/>
+	<entry id="38002" string="Fast"/>
+	<entry id="38003" string="Normal"/>
+	<entry id="38004" string="High"/>
+	<entry id="38005" string="Extra high"/>
+	<entry id="38006" string="Insane"/>
+      </section>
+
+      <section name="Speex">
+	<entry id="39000" string="Profile"/>
+	<entry id="39001" string="Select encoding profile:"/>
+	<entry id="39002" string="Auto"/>
+	<entry id="39003" string="Narrowband (8 kHz)"/>
+	<entry id="39004" string="Wideband (16 kHz)"/>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)"/>
+	<entry id="39006" string="VBR mode"/>
+	<entry id="39007" string="CBR (no VBR)"/>
+	<entry id="39008" string="VBR"/>
+	<entry id="39009" string="ABR"/>
+	<entry id="39010" string="Options"/>
+	<entry id="39011" string="Voice Activity Detection"/>
+	<entry id="39012" string="Discontinued Transmission"/>
+	<entry id="39013" string="Algorithm complexity"/>
+	<entry id="39014" string="Complexity:"/>
+	<entry id="39015" string="CBR quality"/>
+	<entry id="39016" string="VBR quality"/>
+	<entry id="39017" string="ABR target bitrate"/>
+	<entry id="39018" string="Bitrate:"/>
+	<entry id="39019" string="Quality:"/>
+	<entry id="39020" string="Max. bitrate:"/>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="50000" string="Support this project"/>
+	<entry id="50001" string="Please support this project!"/>
+	<entry id="50002" string="Please help keep this software free by supporting the BonkEnc project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+	<entry id="50003" string="You can also send money directly to donate@bonkenc.org using PayPal.&#10;&#10;Please write to donate@bonkenc.org if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+	<entry id="50004" string="usd"/>
+	<entry id="50005" string="en"/>
+	<entry id="50006" string="Thank you very much!"/>
+	<entry id="50007" string="Remind me later"/>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="51000" string="Configure"/>
+	<entry id="51001" string="About"/>
+      </section>
+
+      <section name="Video Downloader">
+	<entry id="52001" string="Enter video URL here:"/>
+	<entry id="52002" string="Download"/>
+	<entry id="52003" string="Automatically download URLs copied to clipboard"/>
+	<entry id="52004" string="Save downloaded video files"/>
+	<entry id="52005" string="Video downloads:"/>
+	<entry id="52006" string="Downloaded tracks:"/>
+	<entry id="52007" string="Uploader"/>
+	<entry id="52008" string="Video URL:"/>
+	<entry id="52009" string="Video title:"/>
+	<entry id="52010" string="Video description:"/>
+	<entry id="52011" string="Site name:"/>
+	<entry id="52012" string="Uploaded by:"/>
+	<entry id="52013" string="Uploaded on:"/>
+	<entry id="52014" string="Length"/>
+	<entry id="52015" string="Size"/>
+
+	<section name="Configuration">
+	  <entry id="52101" string="Automatization"/>
+	  <entry id="52102" string="Video files"/>
+	  <entry id="52103" string="Browse"/>
+	  <entry id="52104" string="Select the folder to save downloaded video files to:"/>
+	</section>
+
+	<section name="Errors">
+	  <entry id="52201" string="This URL is not supported or not a video page URL!"/>
+	  <entry id="52202" string="Error downloading video!"/>
+	</section>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="53000" string="Tracks"/>
+	<entry id="53001" string="Length"/>
+	<entry id="53002" string="Size"/>
+	<entry id="53003" string="Albums"/>
+	<entry id="53004" string="Files"/>
+	<entry id="53005" string="File"/>
+	<entry id="53006" string="Save"/>
+	<entry id="53007" string="Save all"/>
+	<entry id="53008" string="no audio files found"/>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic"/>
+	  <entry id="53101" string="Title information"/>
+	  <entry id="53102" string="Disc"/>
+	  <entry id="53103" string="Cover art"/>
+	  <entry id="53104" string="Covers"/>
+	  <entry id="53105" string="Type"/>
+	  <entry id="53106" string="Description"/>
+	  <entry id="53107" string="Add"/>
+	  <entry id="53108" string="Remove"/>
+	</section>
+
+	<section name="Details">
+	  <entry id="53200" string="Details"/>
+	  <entry id="53201" string="Detailed information"/>
+	  <entry id="53202" string="Band / orchestra"/>
+	  <entry id="53203" string="Performer refinement"/>
+	  <entry id="53204" string="Modified / remixed by"/>
+	  <entry id="53205" string="Composer"/>
+	  <entry id="53206" string="Lyrics writer"/>
+	  <entry id="53207" string="Publisher information"/>
+	  <entry id="53208" string="Publisher / label"/>
+	  <entry id="53209" string="ISRC"/>
+	</section>
+
+	<section name="Other">
+	  <entry id="53300" string="Other"/>
+	  <entry id="53301" string="Original information"/>
+	  <entry id="53302" string="Original artist"/>
+	  <entry id="53303" string="Original album"/>
+	  <entry id="53304" string="Original lyrics writer"/>
+	  <entry id="53305" string="Original release year"/>
+	  <entry id="53306" string="Webpage URLs"/>
+	  <entry id="53307" string="Artist webpage"/>
+	  <entry id="53308" string="Publisher webpage"/>
+	  <entry id="53309" string="Internet radio station"/>
+	  <entry id="53310" string="Audio source webpage"/>
+	  <entry id="53311" string="Copyright information"/>
+	  <entry id="53312" string="Commercial information"/>
+	</section>
+      </section>
+    </section>
   </data>
 </LangFile>

@@ -37,8 +37,7 @@ Void smooth::DetachDLL()
 
 #include <boca.h>
 
-BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance 	= NIL;
-BoCA::I18n		*BonkEnc::BonkEnc::i18n		= NIL;
+BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 
 /* General application information and fixed settings.
  */
@@ -65,14 +64,13 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	debug->Write("Starting BonkEnc...");
 
-	instance	= this;
-	i18n		= BoCA::I18n::Get();
+	instance = this;
 
 #ifdef __WIN32__
 	CoInitialize(NIL);
 #endif
 
-	encoder		= new Encoder();
+	encoder		= new Converter();
 	currentConfig	= Config::Get();
 
 	/* Set default comment if not set.

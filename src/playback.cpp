@@ -14,7 +14,7 @@
 #include <joblist.h>
 #include <utilities.h>
 
-#include <smooth/io/drivers/driver_zero.h>
+#include <engine/decoder.h>
 
 using namespace smooth::IO;
 
@@ -31,13 +31,14 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 {
 	if (entry < 0) return;
 
-	if (BonkEnc::Get()->encoder->IsEncoding())
+// ToDo: Reactivate this check.
+/*	if (BonkEnc::Get()->encoder->IsEncoding())
 	{
 		Utilities::ErrorMessage("Cannot play a file while encoding!");
 
 		return;
 	}
-
+*/
 	if (playing && paused && player_entry == entry)
 	{
 		Resume();
@@ -78,92 +79,89 @@ Int BonkEnc::Playback::PlayThread()
 		return Error();
 	}
 
-	String	 in_filename = trackInfo.origFilename;
+	Decoder	*decoder = new Decoder();
 
-	DecoderComponent	*filter_in = Utilities::CreateDecoderComponent(in_filename);
-
-	if (filter_in != NIL)
+	if (!decoder->Create(trackInfo.origFilename, trackInfo))
 	{
-		InStream	*f_in = NIL;
-		Driver		*driver_in = new DriverZero();
+		delete decoder;
 
-		if (in_filename.StartsWith("cdda://"))	f_in = new InStream(STREAM_DRIVER, driver_in);
-		else					f_in = new InStream(STREAM_FILE, in_filename, IS_READ);
+		playing = False;
 
-		filter_in->SetAudioTrackInfo(trackInfo);
+		return Error();
+	}
 
-		f_in->SetPackageSize(6144);
-		f_in->AddFilter(filter_in);
+	/* Create output component.
+	 */
+	Registry	&boca = Registry::Get();
 
-		UnsignedInt	 samples_size	= 1024;
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_OUTPUT) continue;
+
+		output = (OutputComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
+	}
+
+	output->SetAudioTrackInfo(trackInfo);
+	output->Activate();
+
+	if (!output->GetErrorState())
+	{
+		Int64		 position	= 0;
+		UnsignedLong	 samples_size	= 1024;
 		Int		 loop		= 0;
 		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
 
-		/* Create output component.
-		 */
-		Registry	&boca = Registry::Get();
+		Int			 bytesPerSample = format.bits / 8;
+		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample);
 
-		for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+		Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
+
+		while (!stop_playback)
 		{
-			if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_OUTPUT) continue;
+			Int	 step = samples_size;
 
-			output = (OutputComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
-		}
-
-		output->SetAudioTrackInfo(trackInfo);
-		output->Activate();
-
-		if (!output->GetErrorState())
-		{
-			Bool			 finished = False;
-			Int64			 position = 0;
-
-			Int			 sample = 0;
-			Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
-
-			while (!stop_playback && !finished)
+			if (trackInfo.length >= 0)
 			{
-				Int	 step = samples_size;
+				if (loop++ >= n_loops) break;
 
-				if (trackInfo.length >= 0)
-				{
-					if (loop++ >= n_loops) break;
-
-					if (position + step > trackInfo.length) step = trackInfo.length - position;
-				}
-
-				for (Int i = 0; i < step; i++)
-				{
-					if	(format.order == BYTE_INTEL)	sample = f_in->InputNumberIntel(short(format.bits / 8));
-					else if (format.order == BYTE_RAW)	sample = f_in->InputNumberRaw(short(format.bits / 8));
-
-					if (sample == -1 && f_in->GetLastError() == IO_ERROR_NODATA) { step = i; finished = True; break; }
-
-					if	(format.bits ==  8) ((short *) (UnsignedByte *) sample_buffer)[i] = (sample - 128) * 256;
-					else if (format.bits == 16) ((short *) (UnsignedByte *) sample_buffer)[i] = sample;
-					else if (format.bits == 24) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 256;
-					else if (format.bits == 32) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 65536;
-				}
-
-				position += step;
-
-				while (output->CanWrite() < (2 * step) && !stop_playback) S::System::System::Sleep(10);
-
-				output->WriteData(sample_buffer, 2 * step);
+				if (position + step > trackInfo.length) step = trackInfo.length - position;
 			}
+
+			Int	 bytes = decoder->Read(buffer, step * bytesPerSample);
+
+			if (bytes == 0) break;
+
+			if (format.order == BYTE_RAW) Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
+
+			InStream	 in(STREAM_BUFFER, buffer, bytes);
+
+			for (Int i = 0; i < (bytes / bytesPerSample); i++)
+			{
+				Int	 sample = in.InputNumber((short) bytesPerSample);
+
+				if	(format.bits ==  8) ((short *) (UnsignedByte *) sample_buffer)[i] = (sample - 128) * 256;
+				else if (format.bits == 16) ((short *) (UnsignedByte *) sample_buffer)[i] = sample;
+				else if (format.bits == 24) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 256;
+				else if (format.bits == 32) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 65536;
+			}
+
+			in.Close();
+
+			position += (bytes / bytesPerSample);
+
+			while (output->CanWrite() < (2 * step) && !stop_playback) S::System::System::Sleep(10);
+
+			output->WriteData(sample_buffer, (bytes / bytesPerSample) * 2);
 		}
-
-		if (!stop_playback) while (output->IsPlaying()) S::System::System::Sleep(20);
-
-		output->Deactivate();
-
-		Registry::Get().DeleteComponent(output);
-
-		delete f_in;
-		delete driver_in;
-
-		Registry::Get().DeleteComponent(filter_in);
 	}
+
+	if (!stop_playback) while (output->IsPlaying()) S::System::System::Sleep(20);
+
+	output->Deactivate();
+
+	boca.DeleteComponent(output);
+
+	delete decoder;
 
 	BoCA::Config::Get()->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, player_activedrive);
 

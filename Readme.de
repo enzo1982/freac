@@ -13,9 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Juli 2010)
+	Version 1.1 CVS (Oktober 2010)
 
-		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Hebräisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
+		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Hebräisch, Arabisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
 		- Deutsche, italienische, russische, portugiesische, tschechische und griechische Anleitungen hinzugefügt
 		- Mehrere Übersetzungen für das Installationsprogramm hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
@@ -23,6 +23,7 @@ Geschichte
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
 		- Einfachen Tag-Editor hinzugefügt
+		- Video-Downloader-Erweiterung hinzugefügt
 		- Monkey's Audiocodierer/-decodierer hinzugefügt
 		- Speex Sprachcodierer/-decodierer hinzugefügt
 		- Windows Media Audio Codierer/Decodierer hinzugefügt
@@ -40,8 +41,9 @@ Geschichte
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Kontextmenü für Texteingabefelder hinzugefügt
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
-		- Unterstützung zum Auslesen von ISRC-Codes von CDs hinzugefügt
+		- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt
 		- Konfigurationsoption für Geschwindigkeit beim Rippen hinzugefügt
+		- Unterstützung dür das Öffnen von Cuesheets hinzugefügt
 		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
 		- Diverse weitere Geschwindigkeitsverbesserungen
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
@@ -64,6 +66,7 @@ Geschichte
 		- Fehler in der Unterstützung von CDs von mehreren Künstlern behoben
 		- Gültigkeitsprüfung für CDDB-Daten verbessert
 		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
+		- Maximale Länge von Dateinamen auf NT-Systemen angehoben
 		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
 		- Verbesserungen beim Installer
 		- Viele Fehler im Kommandozeilen-Codierer behoben
@@ -136,7 +139,7 @@ Besonderen Dank
 			   Andrij Iletschko (Ukrainisch),
 			   Wim Garreyn (Niederländisch),
 			   Nebojša Nikolic (Serbisch),
-			   Krisu (Finnisch),
+			   Jan Parttimaa (Finnisch),
 			   Julius Faltus (Tschechisch),
 			   Escada (Portugiesisch, Brasilianisch),
 			   Odyssey (Koreanisch),
@@ -155,7 +158,8 @@ Besonderen Dank
 			   Goran Bekic (Kroatisch),
 			   Eduardo Estévez (Galizisch),
 			   Phan Anh (Vietnamesisch),
-			   Ilan Tsmeret (Hebräisch)
+			   Ilan Tsmeret (Hebräisch),
+			   Eman Ali Fhoula (Arabisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

@@ -255,7 +255,6 @@ namespace BonkEnc
 			Bool		 deleteAfterEncoding;
 			Bool		 shutdownAfterEncoding;
 
-			Bool		 enable_console;
 			Bool		 enable_eUpdate;
 
 			Bool		 CanChangeConfig();

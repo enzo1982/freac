@@ -21,7 +21,7 @@ using namespace BoCA::AS;
 
 BonkEnc::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
 {
-	foreach (String file, iFiles) files.Add(file);
+	foreach (const String &file, iFiles) files.Add(file);
 }
 
 BonkEnc::JobAddFiles::~JobAddFiles()
@@ -48,11 +48,15 @@ Error BonkEnc::JobAddFiles::Perform()
 
 		SetText(String("Adding files... - ").Append(file));
 
-		DecoderComponent	*decoder = Utilities::CreateDecoderComponent(file);
+		DecoderComponent	*decoder = Registry::Get().CreateDecoderForStream(file);
 
 		if (decoder == NIL)
 		{
-			errors.Add(String(BoCA::I18n::Get()->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BoCA::I18n::Get()->TranslateString("Unknown file type")));
+			BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+			i18n->SetContext("Messages");
+
+			errors.Add(String(i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type")));
 
 			continue;
 		}
@@ -65,7 +69,11 @@ Error BonkEnc::JobAddFiles::Perform()
 
 		if (error == Error())
 		{
-			errors.Add(String(BoCA::I18n::Get()->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BoCA::I18n::Get()->TranslateString(errorString)));
+			BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+			i18n->SetContext("Messages");
+
+			errors.Add(String(i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", i18n->TranslateString(errorString)));
 
 			continue;
 		}
@@ -160,7 +168,8 @@ Error BonkEnc::JobAddFiles::Perform()
 		 */
 		JobList	*joblist = JobList::Get();
 
-		joblist->onComponentAddTrack.Emit(track);
+		if (track.tracks.Length() > 0) foreach (const Track &iTrack, track.tracks) joblist->onComponentAddTrack.Emit(iTrack);
+		else									   joblist->onComponentAddTrack.Emit(track);
 
 		SetProgress((i + 1) * 1000 / files.Length());
 	}

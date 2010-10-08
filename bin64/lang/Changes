@@ -1,15 +1,4 @@
 Updated entries since BonkEnc v1.0
 ----------------------------------
 
-removed entries:
-
-	##130-134
-	##175-178
-
-changed entries:
-
-	#20
-	#206
-	#338
-
-	##385-405
+- completely redone language file structure

@@ -43,7 +43,7 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 
 	if (file->GetLastError() != IO_ERROR_OK)
 	{
-		Utilities::ErrorMessage("Could not create playlist file:\n\n%1", rFileName);
+		BoCA::Utilities::ErrorMessage("Could not create playlist file:\n\n%1", rFileName);
 
 		return False;
 	}

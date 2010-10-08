@@ -14,6 +14,9 @@
 BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::Playlists");
 
 	String	 playlistOutputDir	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault));
 	String	 playlistOutputPattern	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
@@ -22,32 +25,32 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	createCueSheets	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
 	useEncOutdir	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
 
-	group_options		= new GroupBox(BonkEnc::i18n->TranslateString("Playlists"), Point(7, 11), Size(178, 68));
+	group_options		= new GroupBox(i18n->TranslateString("Playlists"), Point(7, 11), Size(178, 68));
 
-	check_createPlaylists	= new CheckBox(BonkEnc::i18n->TranslateString("Create playlists"), Point(10, 14), Size(157, 0), &createPlaylists);
+	check_createPlaylists	= new CheckBox(i18n->TranslateString("Create playlists"), Point(10, 14), Size(157, 0), &createPlaylists);
 	check_createPlaylists->onAction.Connect(&ConfigurePlaylists::ToggleCreatePlaylists, this);
 
-	check_createCueSheets	= new CheckBox(BonkEnc::i18n->TranslateString("Create cue sheets"), Point(10, 40), Size(157, 0), &createCueSheets);
+	check_createCueSheets	= new CheckBox(i18n->TranslateString("Create cue sheets"), Point(10, 40), Size(157, 0), &createCueSheets);
 	check_createCueSheets->onAction.Connect(&ConfigurePlaylists::ToggleCreatePlaylists, this);
 
 	group_options->Add(check_createPlaylists);
 	group_options->Add(check_createCueSheets);
 
-	group_outdir		= new GroupBox(BonkEnc::i18n->TranslateString("Output directory"), Point(193, 11), Size(344, 69));
+	group_outdir		= new GroupBox(i18n->TranslateString("Output folder"), Point(193, 11), Size(344, 69));
 
-	check_useEncOutdir	= new CheckBox(BonkEnc::i18n->TranslateString("Use encoder output directory"), Point(10, 14), Size(236, 0), &useEncOutdir);
+	check_useEncOutdir	= new CheckBox(i18n->TranslateString("Use encoder output folder"), Point(10, 14), Size(236, 0), &useEncOutdir);
 	check_useEncOutdir->onAction.Connect(&ConfigurePlaylists::ToggleUseEncOutdir, this);
 
 	edit_outdir		= new EditBox(playlistOutputDir, Point(10, 39), Size(236, 0), 0);
 
-	button_outdir_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(254, 38), Size(0, 0));
+	button_outdir_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(254, 38), Size(0, 0));
 	button_outdir_browse->onAction.Connect(&ConfigurePlaylists::SelectDir, this);
 
 	group_outdir->Add(check_useEncOutdir);
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdir_browse);
 
-	group_filename		= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), Point(193, 92), Size(344, 43));
+	group_filename		= new GroupBox(i18n->TranslateString("Filename pattern"), Point(193, 92), Size(344, 43));
 
 	edit_filename		= new EditBox(playlistOutputPattern, Point(10, 12), Size(324, 0), 0);
 
@@ -88,10 +91,14 @@ BonkEnc::ConfigurePlaylists::~ConfigurePlaylists()
 
 Void BonkEnc::ConfigurePlaylists::SelectDir()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::Playlists");
+
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder in which the playlist files will be placed:")));
+	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the playlist files will be placed:")));
 	dialog->SetDirName(Utilities::GetAbsoluteDirName(edit_outdir->GetText()));
 
 	if (dialog->ShowDialog() == Success())

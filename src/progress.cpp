@@ -21,9 +21,9 @@ BonkEnc::Progress::~Progress()
 
 Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
 {
-	if (Config::Get()->enable_console) return;
-
 	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (config->enable_console) return;
 
 	totalSamples = 0;
 	totalSamplesDone = 0;
@@ -44,7 +44,9 @@ Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
 
 Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInfo)
 {
-	if (Config::Get()->enable_console) return;
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (config->enable_console) return;
 
 	if	(trackInfo.length	>= 0) totalSamples -= 2 * trackInfo.length;
 	else if (trackInfo.approxLength >= 0) totalSamples -= 2 * trackInfo.approxLength;
@@ -87,8 +89,8 @@ Void BonkEnc::Progress::ResumeTotalProgress()
 
 Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int samplePosition)
 {
-	static Config	*config = Config::Get();
-	static Int	 lastInvoked = 0;
+	static BoCA::Config	*config = BoCA::Config::Get();
+	static Int		 lastInvoked = 0;
 
 	if (config->enable_console) return;
 
@@ -104,19 +106,19 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 
 	if (trackInfo.length >= 0)
 	{
-		trackProgress = Math::Round((samplePosition * 100.0 / trackInfo.length) * 10.0);
+		trackProgress = Math::Round(		       (samplePosition * 100.0					   / trackInfo.length) * 10.0);
 		totalProgress = Math::Round(totalSamplesDone + (samplePosition * (trackInfo.length * 100.0 / totalSamples) / trackInfo.length) * 10.0);
 
-		trackTicks = (Int) (trackTicks * ((Float(CLOCKS_PER_SEC) - ((samplePosition * 100.0 / trackInfo.length) * 10.0)) / ((samplePosition * 100.0 / trackInfo.length) * 10.0))) / CLOCKS_PER_SEC + 1;
-		totalTicks = (Int) (totalTicks * ((Float(CLOCKS_PER_SEC) - (totalSamplesDone + (samplePosition * (trackInfo.length * 100.0 / totalSamples) / trackInfo.length) * 10.0)) / (totalSamplesDone + (samplePosition * (trackInfo.length * 100.0 / totalSamples) / trackInfo.length) * 10.0))) / CLOCKS_PER_SEC + 1;
+		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.length) - trackTicks) / CLOCKS_PER_SEC);
+		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / totalSamples)     - totalTicks) / CLOCKS_PER_SEC);
 	}
 	else if (trackInfo.length == -1)
 	{
-		trackProgress = Math::Round((samplePosition * 100.0 / trackInfo.fileSize) * 10.0);
+		trackProgress = Math::Round(		       (samplePosition * 100.0																		     / trackInfo.fileSize) * 10.0);
 		totalProgress = Math::Round(totalSamplesDone + (samplePosition * ((trackInfo.approxLength >= 0 ? trackInfo.approxLength : 240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels) * 100.0 / totalSamples) / trackInfo.fileSize) * 10.0);
 
-		trackTicks = (Int) (trackTicks * ((Float(CLOCKS_PER_SEC) - ((samplePosition * 100.0 / trackInfo.fileSize) * 10.0)) / ((samplePosition * 100.0 / trackInfo.fileSize) * 10.0))) / CLOCKS_PER_SEC + 1;
-		totalTicks = (Int) (totalTicks * ((Float(CLOCKS_PER_SEC) - (totalSamplesDone + (samplePosition * ((trackInfo.approxLength >= 0 ? trackInfo.approxLength : 240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels) * 100.0 / totalSamples) / trackInfo.fileSize) * 10.0)) / (totalSamplesDone + (samplePosition * ((trackInfo.approxLength >= 0 ? trackInfo.approxLength : 240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels) * 100.0 / totalSamples) / trackInfo.fileSize) * 10.0))) / CLOCKS_PER_SEC + 1;
+		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.fileSize)					 - trackTicks) / CLOCKS_PER_SEC);
+		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / trackInfo.fileSize * trackInfo.approxLength / totalSamples) - totalTicks) / CLOCKS_PER_SEC);
 	}
 
 	onTrackProgress.Emit(trackProgress, trackTicks);
@@ -127,7 +129,9 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 
 Void BonkEnc::Progress::FinishTrackProgressValues(const Track &trackInfo)
 {
-	if (Config::Get()->enable_console) return;
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (config->enable_console) return;
 
 	if	(trackInfo.length	>= 0) totalSamplesDone += ((trackInfo.length * 100.0 / totalSamples) * 10.0);
 	else if (trackInfo.approxLength >= 0) totalSamplesDone += ((trackInfo.approxLength * 100.0 / totalSamples) * 10.0);

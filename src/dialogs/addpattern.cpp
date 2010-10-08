@@ -14,29 +14,32 @@
 BonkEnc::AddPatternDialog::AddPatternDialog()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Add files by pattern"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 156));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	i18n->SetContext("Joblist::Add by pattern");
+
+	mainWnd			= new GUI::Window(i18n->TranslateString("Add files by pattern"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 156));
+	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&AddPatternDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
+	btn_ok			= new Button(i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
 	btn_ok->onAction.Connect(&AddPatternDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	group_pattern	= new GroupBox(BonkEnc::i18n->TranslateString("Pattern"), Point(7, 11), Size(380, 65));
+	group_pattern	= new GroupBox(i18n->TranslateString("Pattern"), Point(7, 11), Size(380, 65));
 
-	text_directory	= new Text(String(BonkEnc::i18n->TranslateString("Start directory")).Append(":"), Point(16, 23));
-	text_pattern	= new Text(String(BonkEnc::i18n->TranslateString("Filename pattern")).Append(":"), Point(16, 50));
+	text_directory	= new Text(String(i18n->TranslateString("Start folder")).Append(":"), Point(16, 23));
+	text_pattern	= new Text(String(i18n->TranslateString("Filename pattern")).Append(":"), Point(16, 50));
 
 	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + Math::Max(text_directory->textSize.cx, text_pattern->textSize.cx), 20), Size(269 - Math::Max(text_directory->textSize.cx, text_pattern->textSize.cx), 0));
 
-	btn_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(299, 19), Size(80, 0));
+	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(299, 19), Size(80, 0));
 	btn_browse->onAction.Connect(&AddPatternDialog::Browse, this);
 
 	edit_pattern	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedPatternID, Config::SettingsLastAddedPatternDefault), Point(edit_directory->GetX(), 47), Size(edit_directory->GetWidth() + 85, 0));
@@ -109,10 +112,14 @@ Void BonkEnc::AddPatternDialog::Cancel()
 
 Void BonkEnc::AddPatternDialog::Browse()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist::Add by pattern");
+
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder to add to the joblist:")));
+	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder to add to the joblist:")));
 	dialog->SetDirName(edit_directory->GetText());
 
 	if (dialog->ShowDialog() == Success())

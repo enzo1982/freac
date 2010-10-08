@@ -27,6 +27,8 @@ DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
 Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 {
 #ifdef __WIN32__
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("eUpdate.dll")).Exists()) return False;
+
 	eupdatedll = new DynamicLoader("eUpdate");
 
 	ex_eUpdate_CreateUpdateContext	= (EUCREATEUPDATECONTEXT) eupdatedll->GetFunctionAddress("eUpdate_CreateUpdateContext");

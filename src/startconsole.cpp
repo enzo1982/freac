@@ -41,13 +41,14 @@ Void BonkEnc::BonkEncCommandline::Free()
 
 BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) : args(arguments)
 {
-	currentConfig->enable_console = true;
-
 	BoCA::Config	*componentsConfig = BoCA::Config::Get();
+	BoCA::I18n	*i18n		  = BoCA::I18n::Get();
 
 	if (componentsConfig == NIL) i18n->ActivateLanguage("internal");
 
 	i18n->ActivateLanguage(componentsConfig->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault));
+
+	componentsConfig->enable_console = True;
 
 	/* Don't save configuration settings set via command line.
 	 */
@@ -345,7 +346,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 				joblist->UpdateTrackInfo(track);
 
-				encoder->Encode(joblist, False);
+				encoder->Convert(joblist, False);
 
 				joblist->RemoveNthTrack(0);
 
@@ -402,7 +403,7 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 				Directory		 dir(file.GetFilePath());
 				const Array<File>	&array = dir.GetFilesByPattern(file.GetFileName());
 
-				foreach (File entry, array) (*files).Add(entry);
+				foreach (const File &entry, array) (*files).Add(entry);
 			}
 			else
 			{
@@ -423,7 +424,7 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 		{
 			const Array<String>	&tracks = info->GetNthDeviceTrackList(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
-			foreach (String track, tracks) (*files).Add(track);
+			foreach (const String &track, tracks) (*files).Add(track);
 
 			boca.DeleteComponent(info);
 		}

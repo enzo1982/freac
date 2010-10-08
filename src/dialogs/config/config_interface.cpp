@@ -14,9 +14,13 @@
 
 BonkEnc::ConfigureInterface::ConfigureInterface()
 {
-	group_joblist	= new GroupBox(BonkEnc::i18n->TranslateString("Joblist"), Point(7, 11), Size(530, 120));
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	text_fields	= new Text(BonkEnc::i18n->TranslateString("Columns:"), Point(9, 13));
+	i18n->SetContext("Configuration::Interface");
+
+	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(530, 120));
+
+	text_fields	= new Text(i18n->TranslateString("Columns:"), Point(9, 13));
 
 	list_fields	= new ListBox(Point(16 + text_fields->textSize.cx, 10), group_joblist->GetSize() - Size(114 + text_fields->textSize.cx, 20));
 	list_fields->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
@@ -26,12 +30,12 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 	 */
 	list_fields->onChangeEntryOrder.Connect(&ConfigureInterface::OnSelectJoblistField, this);
 
-	button_up	= new Button(BonkEnc::i18n->TranslateString("Up"), NIL, Point(90, 10), Size());
+	button_up	= new Button(i18n->TranslateString("Up"), NIL, Point(90, 10), Size());
 	button_up->SetOrientation(OR_UPPERRIGHT);
 	button_up->Deactivate();
 	button_up->onAction.Connect(&ConfigureInterface::JoblistFieldMoveUp, this);
 
-	button_down	= new Button(BonkEnc::i18n->TranslateString("Down"), NIL, Point(90, 40), Size());
+	button_down	= new Button(i18n->TranslateString("Down"), NIL, Point(90, 40), Size());
 	button_down->SetOrientation(OR_UPPERRIGHT);
 	button_down->Deactivate();
 	button_down->onAction.Connect(&ConfigureInterface::JoblistFieldMoveDown, this);
@@ -71,7 +75,7 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 	Bool	 haveFile     = False;
 	Bool	 haveFileType = False;
 
-	foreach (String field, fields)
+	foreach (const String &field, fields)
 	{
 		if	(field == "<artist>")	{ list_fields->AddEntry(field)->SetMark(True); haveArtist   = True; }
 		else if (field == "<album>")	{ list_fields->AddEntry(field)->SetMark(True); haveAlbum    = True; }

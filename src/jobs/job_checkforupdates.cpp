@@ -27,6 +27,8 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
+	i18n->SetContext("Updates");
+
 	if (!Config::Get()->enable_eUpdate) return Success();
 
 	SetText("Preparing update check...");

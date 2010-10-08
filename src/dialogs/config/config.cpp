@@ -23,32 +23,35 @@ using namespace BoCA::AS;
 
 BonkEnc::ConfigDialog::ConfigDialog()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 332));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	i18n->SetContext("Configuration");
+
+	mainWnd			= new GUI::Window(i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 332));
+	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&ConfigDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, btn_cancel->GetPosition() - Point(88, 0), Size());
+	btn_ok			= new Button(i18n->TranslateString("OK"), NIL, btn_cancel->GetPosition() - Point(88, 0), Size());
 	btn_ok->onAction.Connect(&ConfigDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	text_config		= new Text(BonkEnc::i18n->TranslateString("Active configuration:"), Point(7, 11));
+	text_config		= new Text(i18n->TranslateString("Active configuration:"), Point(7, 11));
 
 	combo_config		= new ComboBox(Point(text_config->textSize.cx + 15, 8), Size());
 	combo_config->Deactivate();
 
-	button_config_new	= new Button(BonkEnc::i18n->TranslateString("New"), NIL, Point(175, 7), Size());
+	button_config_new	= new Button(i18n->TranslateString("New"), NIL, Point(175, 7), Size());
 	button_config_new->SetOrientation(OR_UPPERRIGHT);
 	button_config_new->Deactivate();
 
-	button_config_delete	= new Button(BonkEnc::i18n->TranslateString("Delete"), NIL, Point(87, 7), Size());
+	button_config_delete	= new Button(i18n->TranslateString("Delete"), NIL, Point(87, 7), Size());
 	button_config_delete->SetOrientation(OR_UPPERRIGHT);
 	button_config_delete->Deactivate();
 
@@ -67,7 +70,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	tree_bonkenc		= new Tree(::BonkEnc::BonkEnc::appName);
 
 	layers.Add(new ConfigureEncoders());
-	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Encoders"), layers.GetLast()));
+	entries.Add(new ConfigEntry(i18n->TranslateString("Encoders"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
@@ -77,33 +80,33 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	((ConfigureEncoders *) layers.GetLast())->onChangeEncoderSettings.Connect(&ConfigDialog::OnChangeEncoderSettings, this);
 
 	layers.Add(new ConfigurePlaylists());
-	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Playlists"), layers.GetLast()));
+	entries.Add(new ConfigEntry(i18n->TranslateString("Playlists"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
 	if (config->cdrip_numdrives >= 1)
 	{
 		layers.Add(new ConfigureCDDB());
-		entries.Add(new ConfigEntry("CDDB", layers.GetLast()));
+		entries.Add(new ConfigEntry(i18n->TranslateString("CDDB"), layers.GetLast()));
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 		tree_bonkenc->Add(entries.GetLast());
 	}
 
 	layers.Add(new ConfigureInterface());
-	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Interface"), layers.GetLast()));
+	entries.Add(new ConfigEntry(i18n->TranslateString("Interface"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
-	if (BonkEnc::i18n->GetNOfLanguages() > 1)
+	if (i18n->GetNOfLanguages() > 1)
 	{
 		layers.Add(new ConfigureLanguage());
-		entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Language"), layers.GetLast()));
+		entries.Add(new ConfigEntry(i18n->TranslateString("Language"), layers.GetLast()));
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 		tree_bonkenc->Add(entries.GetLast());
 	}
 
 	layers.Add(new ConfigureTags());
-	entries.Add(new ConfigEntry(BonkEnc::i18n->TranslateString("Tags"), layers.GetLast()));
+	entries.Add(new ConfigEntry(i18n->TranslateString("Tags"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
@@ -112,14 +115,16 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	list_layers->Add(tree_bonkenc);
 
-	tree_components		= new Tree("Components");
+	i18n->SetContext("Configuration");
 
-	tree_encoders		= new Tree("Encoders");
-	tree_decoders		= new Tree("Decoders");
-	tree_output		= new Tree("Output");
-	tree_dsp		= new Tree("DSP");
-	tree_extension		= new Tree("Extensions");
-	tree_other		= new Tree("Other");
+	tree_components		= new Tree(i18n->TranslateString("Components"));
+
+	tree_encoders		= new Tree(i18n->TranslateString("Encoders"));
+	tree_decoders		= new Tree(i18n->TranslateString("Decoders"));
+	tree_output		= new Tree(i18n->TranslateString("Output"));
+	tree_dsp		= new Tree(i18n->TranslateString("DSP"));
+	tree_extension		= new Tree(i18n->TranslateString("Extensions"));
+	tree_other		= new Tree(i18n->TranslateString("Other"));
 
 	Registry	&boca = Registry::Get();
 
@@ -186,7 +191,7 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 	Int	 ownLayers = 3;
 
 	if (BoCA::Config::Get()->cdrip_numdrives >= 1) ownLayers += 2;
-	if (BonkEnc::i18n->GetNOfLanguages() > 1)      ownLayers += 1;
+	if (BoCA::I18n::Get()->GetNOfLanguages() >  1) ownLayers += 1;
 
 	for (Int i = 0; i < ownLayers; i++)  DeleteObject(layers.GetNth(i));
 	for (Int i = 0; i < entries.Length(); i++) DeleteObject(entries.GetNth(i));
@@ -196,8 +201,6 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 	for (Int i = 0; i < components.Length(); i++)
 	{
 		Component	*component = components.GetNth(i);
-
-		component->FreeConfigurationLayer();
 
 		boca.DeleteComponent(component);
 	}
@@ -283,23 +286,30 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 
 Void BonkEnc::ConfigDialog::OnChangeEncoderSettings(const String &encoderID)
 {
-	/* One of the encoder configurations has changed so replace
-	 * the configuration layer of the affected component.
+	/* One of the encoder configurations has changed
+	 * so replace the affected component.
 	 */
-	Component	*component = NIL;
+	Component	*component	= NIL;
+	Int		 componentIndex	= -1;
 
 	for (Int i = 0; i < components.Length(); i++)
 	{
-		component = components.GetNth(i);
+		component	= components.GetNth(i);
+		componentIndex	= i;
 
-		if (component->GetID() == encoderID) break;
+		if (component->GetID() == encoderID)  break;
 	}
+
+	Registry	&boca = Registry::Get();
 
 	for (Int i = 0; i < layers.Length(); i++)
 	{
 		if (layers.GetNth(i) == component->GetConfigurationLayer())
 		{
-			component->FreeConfigurationLayer();
+			boca.DeleteComponent(component);
+
+			component = boca.CreateComponentByID(encoderID);
+			components.SetNth(componentIndex, component);
 
 			layers.SetNth(i, component->GetConfigurationLayer());
 			((ConfigEntry *) entries.GetNth(i))->SetLayer(layers.GetNth(i));

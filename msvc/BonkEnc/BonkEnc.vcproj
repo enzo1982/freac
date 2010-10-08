@@ -356,10 +356,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\encoder.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\joblist.cpp"
 				>
 			</File>
@@ -587,6 +583,22 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="engine"
+				>
+				<File
+					RelativePath="..\..\src\engine\converter.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\engine\decoder.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\engine\encoder.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Headerdateien"
@@ -607,10 +619,6 @@
 			</File>
 			<File
 				RelativePath="..\..\include\dllinterfaces.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\include\encoder.h"
 				>
 			</File>
 			<File
@@ -806,6 +814,22 @@
 				>
 				<File
 					RelativePath="..\..\include\tools\encoding.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="engine"
+				>
+				<File
+					RelativePath="..\..\include\engine\converter.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\engine\decoder.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\include\engine\encoder.h"
 					>
 				</File>
 			</Filter>

@@ -8,31 +8,38 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_BONKENC_CUESHEET
-#define H_BONKENC_CUESHEET
+#ifndef H_BONKENC_DECODER
+#define H_BONKENC_DECODER
 
 #include <smooth.h>
 
+#include "bonkenc.h"
+
 using namespace smooth;
-
-#include <boca.h>
-
 using namespace BoCA;
 
 namespace BonkEnc
 {
-	class CueSheet
+	class Decoder
 	{
-		private:
-			Array<String>	 fileNames;
-			Array<Int>	 trackOffsets;
-			Array<Track>	 trackInfos;
+		protected:
+			String			 fileName;
 
-			String		 GetFileType(const String &);
+			IO::InStream		*f_in;
+			AS::DecoderComponent	*filter_in;
 		public:
-			Bool		 AddTrack(const String &, Int, const Track &);
+						 Decoder();
+			virtual			~Decoder();
 
-			Bool		 Save(const String &);
+			Bool			 Create(const String &, const Track &);
+			Bool			 Destroy();
+
+			Bool			 GetStreamInfo(Track &);
+
+			Int			 Read(Buffer<UnsignedByte> &, Int);
+
+			Int64			 GetInBytes() const;
+			String			 GetDecoderName() const;
 	};
 };
 

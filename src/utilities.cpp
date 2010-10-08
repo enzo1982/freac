@@ -22,81 +22,6 @@ using namespace smooth::System;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace1, const String &replace2)
-{
-	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace1).Replace("%2", replace2), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);
-	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace1).Replace("%2", replace2)).Append("\n"));
-}
-
-Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace1, const String &replace2)
-{
-	if (!Config::Get()->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace1).Replace("%2", replace2), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
-	else					Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace1).Replace("%2", replace2)).Append("\n"));
-}
-
-BoCA::AS::DecoderComponent *BonkEnc::Utilities::CreateDecoderComponent(const String &iFile)
-{
-	String			 file = iFile.ToLower();
-	DecoderComponent	*component = NIL;
-	Registry		&boca = Registry::Get();
-
-	/* Now check those decoders that claim
-	 * to support the file extension.
-	 */
-	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
-	{
-		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_DECODER) continue;
-
-		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
-
-		foreach (FileFormat *format, formats)
-		{
-			const Array<String>	&extensions = format->GetExtensions();
-
-			foreach (String extension, extensions)
-			{
-				if (!file.EndsWith(String(".").Append(extension.ToLower()))) continue;
-
-				component = (DecoderComponent *) Registry::Get().CreateComponentByID(boca.GetComponentID(i));
-
-				if (component->CanOpenStream(file)) return component;
-
-				boca.DeleteComponent(component);
-			}
-		}
-
-/* TODO: Implement protocols.
- */
-/*		const Array<Protocol *>	&protocols = boca.GetComponentProtocols(i);
-
-		foreach (Protocol *protocol, protocols)
-		{
-			if (!file.StartsWith(String(protocol->GetIdentifier()).Append("://"))) continue;
-
-			component = (DecoderComponent *) Registry::Get().CreateComponentByID(boca.GetComponentID(i));
-
-			if (component->CanOpenStream(file)) return component;
-
-			boca.DeleteComponent(component);
-		}
-*/	}
-
-	/* No suitable decoder found; try all decoders now.
-	 */
-	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
-	{
-		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_DECODER) continue;
-
-		component = (DecoderComponent *) Registry::Get().CreateComponentByID(boca.GetComponentID(i));
-
-		if (component->CanOpenStream(file)) return component;
-
-		boca.DeleteComponent(component);
-	}
-
-	return NIL;
-}
-
 /* This function changes the byte order of audio samples in
  * a buffer from big-endian to little-endian and vice versa.
  */
@@ -368,7 +293,7 @@ String BonkEnc::Utilities::GetAbsoluteDirName(const String &dirName)
 	    !rDirName.StartsWith("~"))	  // Home directory
 #endif
 	{
-		rDirName = String(Application::GetApplicationDirectory()).Append(rDirName);
+		rDirName = String(GUI::Application::GetApplicationDirectory()).Append(rDirName);
 	}
 
 	return rDirName;
@@ -378,12 +303,27 @@ String BonkEnc::Utilities::GetAbsoluteDirName(const String &dirName)
  * all the directory names included in the path by
  * removing spaces and dots at the end. It also
  * shortens each directory and the file name to a
- * maximum of 96 characters.
+ * maximum of 248 or 96 characters.
  */
 String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 {
+	Int	 maxLength = 248;
+
+	/* Set smaller maximum path component length on old systems.
+	 */
+#ifdef __WIN32__
+	OSVERSIONINFOA	 vInfo;
+
+	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
+
+	GetVersionExA(&vInfo);
+
+	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) maxLength = 96;
+#endif
+
 	String	 rFileName = fileName;
 	String	 dir = fileName;
+
 	String	 tmpDir;
 	Int	 lastBS = 0;
 
@@ -393,13 +333,13 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 		{
 			String	 tmpDir2 = tmpDir;
 
-			/* Shorten to at most 96 characters.
+			/* Shorten to at most maxLength characters.
 			 */
-			if (tmpDir.Length() - lastBS > 96)
+			if (tmpDir.Length() - lastBS > maxLength)
 			{
-				tmpDir2 = String().CopyN(tmpDir, lastBS + 96);
+				tmpDir2 = String().CopyN(tmpDir, lastBS + maxLength);
 
-				i -= (tmpDir.Length() - lastBS - 96);
+				i -= (tmpDir.Length() - lastBS - maxLength);
 			}
 
 			/* Replace trailing dots and spaces.
@@ -427,9 +367,9 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 		tmpDir[i] = dir[i];
 	}
 
-	/* Shorten file name to 96 characters.
+	/* Shorten file name to maxLength characters.
 	 */
-	if (rFileName.Length() - lastBS > 96) rFileName = String().CopyN(rFileName, lastBS + 96);
+	if (rFileName.Length() - lastBS > maxLength) rFileName = String().CopyN(rFileName, lastBS + maxLength);
 
 	/* Replace trailing spaces.
 	 */
@@ -464,7 +404,7 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 
 String BonkEnc::Utilities::GetInstallDrive()
 {
-	return Application::GetApplicationDirectory().Head(2);
+	return GUI::Application::GetApplicationDirectory().Head(2);
 }
 
 Void BonkEnc::Utilities::GainShutdownPrivilege()

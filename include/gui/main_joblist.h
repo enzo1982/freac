@@ -33,8 +33,6 @@ namespace BonkEnc
 	class LayerJoblist : public Layer
 	{
 		private:
-			BoCA::I18n		*i18n;
-
 			CheckBox		*check_single;
 			CheckBox		*check_playlist;
 			CheckBox		*check_cuesheet;
@@ -113,9 +111,6 @@ namespace BonkEnc
 			JobList			*joblist;
 			Playback		*player;
 
-			Bool			 createPlaylist;
-			Bool			 createCueSheet;
-
 			Bool			 dontUpdateInfo;
 
 			Int			 clicked_charset;
@@ -153,7 +148,7 @@ namespace BonkEnc
 			Void			 OnEncoderStartEncoding();
 			Void			 OnEncoderFinishEncoding(Bool);
 
-			Void			 OnEncoderEncodeTrack(const Track &, const AS::DecoderComponent *, Int);
+			Void			 OnEncoderEncodeTrack(const Track &, const String &, Int);
 
 			Void			 OnEncoderTrackProgress(Int, Int);
 			Void			 OnEncoderTotalProgress(Int, Int);

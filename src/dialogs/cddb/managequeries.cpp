@@ -14,34 +14,37 @@
 BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("CDDB::Manage queries");
 
 	cddbQueries	= new CDDBBatch();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB queries"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 352));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new GUI::Window(i18n->TranslateString("CDDB queries"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 352));
+	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel	= new Button(BonkEnc::i18n->TranslateString("Close"), NIL, Point(87, 29), Size());
+	btn_cancel	= new Button(i18n->TranslateString("Close"), NIL, Point(87, 29), Size());
 	btn_cancel->onAction.Connect(&cddbManageQueriesDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	text_entries	= new Text(BonkEnc::i18n->TranslateString("CDDB queries to perform:"), Point(7, 10));
+	text_entries	= new Text(i18n->TranslateString("CDDB queries to perform:"), Point(7, 10));
 
 	list_entries	= new ListBox(Point(7, 29), Size(380, 213));
-	list_entries->AddTab(BonkEnc::i18n->TranslateString("Query string"), 0);
+	list_entries->AddTab(i18n->TranslateString("Query string"), 0);
 	list_entries->onSelectEntry.Connect(&cddbManageQueriesDlg::SelectEntry, this);
 
-	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, Point(7, 69), Size());
+	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(7, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageQueriesDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	btn_query	= new Button(BonkEnc::i18n->TranslateString("Query"), NIL, Point(219, 69), Size());
+	btn_query	= new Button(i18n->TranslateString("Query"), NIL, Point(219, 69), Size());
 	btn_query->onAction.Connect(&cddbManageQueriesDlg::QueryEntry, this);
 	btn_query->SetOrientation(OR_LOWERLEFT);
 
-	btn_query_all	= new Button(BonkEnc::i18n->TranslateString("Query all"), NIL, Point(307, 69), Size());
+	btn_query_all	= new Button(i18n->TranslateString("Query all"), NIL, Point(307, 69), Size());
 	btn_query_all->onAction.Connect(&cddbManageQueriesDlg::QueryAllEntries, this);
 	btn_query_all->SetOrientation(OR_LOWERLEFT);
 
@@ -130,9 +133,13 @@ Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
 
 Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("CDDB::Manage queries");
+
 	/* Query selected entry from online CDDB
 	 */
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Querying CD information")).Append("..."));
+	text_status->SetText(i18n->TranslateString("Querying CD information..."));
 
 	if (cddbQueries->Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
 	{
@@ -147,9 +154,13 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 
 Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("CDDB::Manage queries");
+
 	/* Query all entries from online CDDB
 	 */
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Querying CD information")).Append("..."));
+	text_status->SetText(i18n->TranslateString("Querying CD information..."));
 
 	if (cddbQueries->QueryAll()) mainWnd->Close();
 

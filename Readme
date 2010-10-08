@@ -13,9 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (July 2010)
+	Version 1.1 CVS (October 2010)
 
-		- added Estonian, Croatian, Portuguese, Vietnamese, Hebrew, Catalan, Valencian and Galician language support
+		- added Estonian, Croatian, Portuguese, Vietnamese, Hebrew, Arabic, Catalan, Valencian and Galician language support
 		- added German, Italian, Russian, Portuguese, Czech and Greek user guides
 		- added several translations for the installer
 		- converted input and output filters to BoCA components
@@ -23,6 +23,7 @@ History
 		- redesigned progress display area
 		- completely reworked LAME configuration dialog
 		- added a simple tag editor
+		- added video downloader extension
 		- added Monkey's Audio encoder/decoder
 		- added Speex speech encoder/decoder
 		- added Windows Media Audio encoder/decoder
@@ -42,6 +43,7 @@ History
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
 		- added ripping speed configuration option
+		- added support for loading cuesheets
 		- making better use of multi-core CPUs when encoding/decoding
 		- miscellaneous other speed optimizations
 		- the five last used file name patterns are now saved for later use
@@ -64,6 +66,7 @@ History
 		- fixed support for various artists CDs
 		- improved CDDB data sanity check
 		- improved support for network files and directories
+		- raised maximum file name length on NT systems
 		- NT SCSI mode is now used by default to access CD drives on NT systems
 		- installer improvements
 		- lots of fixes to the command line encoder
@@ -136,7 +139,7 @@ Special thanks to
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn (Dutch),
 			   Nebojša Nikolic (Serbian),
-			   Krisu (Finnish),
+			   Jan Parttimaa (Finnish),
 			   Julius Faltus (Czech),
 			   Escada (Portuguese, Brazilian),
 			   Odyssey (Korean),
@@ -155,7 +158,8 @@ Special thanks to
 			   Goran Bekic (Croatian),
 			   Eduardo Estévez (Galician),
 			   Phan Anh (Vietnamese),
-			   Ilan Tsmeret (Hebrew)
+			   Ilan Tsmeret (Hebrew),
+			   Eman Ali Fhoula (Arabic)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

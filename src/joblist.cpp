@@ -29,6 +29,10 @@ using namespace smooth::IO;
 
 BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 
 	headerTabsHash = 0;
@@ -40,30 +44,33 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	onMarkEntry.Connect(&JobList::OnMarkEntry, this);
 
 	BoCA::JobList::Get()->onComponentAddTrack.Connect(&JobList::AddTrack, this);
-	BoCA::JobList::Get()->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
+	BoCA::JobList::Get()->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
+
+	BoCA::JobList::Get()->onComponentMarkTrack.Connect(&JobList::OnComponentMarkTrack, this);
+	BoCA::JobList::Get()->onComponentUnmarkTrack.Connect(&JobList::OnComponentUnmarkTrack, this);
 
 	BoCA::JobList::Get()->doRemoveAllTracks.Connect(&JobList::RemoveAllTracks, this);
 
 	droparea = new DropArea(iPos, iSize);
-	droparea->onDropFile.Connect(&JobList::AddTrackByDragAndDrop, this);
+	droparea->onDropFiles.Connect(&JobList::AddTracksByDragAndDrop, this);
 
 	text			= new Text(NIL, iPos - Point(9, 19));
 
 	button_sel_all		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:18"), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
 	button_sel_all->SetFlags(BF_NOFRAME);
-	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
+	button_sel_all->SetTooltipText(i18n->TranslateString("Select all"));
 
 	button_sel_none		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:19"), iPos - Point(19, -10), Size(21, 21));
 	button_sel_none->onAction.Connect(&JobList::SelectNone, this);
 	button_sel_none->SetFlags(BF_NOFRAME);
-	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));
+	button_sel_none->SetTooltipText(i18n->TranslateString("Select none"));
 
 	button_sel_toggle	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:20"), iPos - Point(19, -24), Size(21, 21));
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
-	button_sel_toggle->SetTooltipText(BonkEnc::i18n->TranslateString("Toggle selection"));
+	button_sel_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));
 
 	/* Add tabs and update headerTabsHash.
 	 */
@@ -89,8 +96,11 @@ BonkEnc::JobList::~JobList()
 	/* Clean up.
 	 */
 	BoCA::JobList::Get()->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
-	BoCA::JobList::Get()->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
+	BoCA::JobList::Get()->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
+
+	BoCA::JobList::Get()->onComponentMarkTrack.Disconnect(&JobList::OnComponentMarkTrack, this);
+	BoCA::JobList::Get()->onComponentUnmarkTrack.Disconnect(&JobList::OnComponentUnmarkTrack, this);
 
 	BoCA::JobList::Get()->doRemoveAllTracks.Disconnect(&JobList::RemoveAllTracks, this);
 
@@ -124,13 +134,18 @@ const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n) const
 
 Bool BonkEnc::JobList::CanModifyJobList() const
 {
-	if (BonkEnc::Get()->encoder->IsEncoding())
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist::Errors");
+
+// ToDo: Reactivate this check.
+/*	if (BonkEnc::Get()->encoder->IsEncoding())
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
 		return False;
 	}
-
+*/
 	return True;
 }
 
@@ -265,6 +280,10 @@ Void BonkEnc::JobList::AddTrackByDialog()
 {
 	if (!CanModifyJobList()) return;
 
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	FileSelection	*dialog = new FileSelection();
 
 	dialog->SetParentWindow(container->GetContainerWindow());
@@ -305,11 +324,13 @@ Void BonkEnc::JobList::AddTrackByDialog()
 		if (fileTypes.Find(extensions.GetNth(l)) < 0) fileTypes.Append(l > 0 ? ";" : NIL).Append(extensions.GetNth(l));
 	}
 
-	dialog->AddFilter(BonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
+	fileTypes.Append(";*.cue");
+
+	dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
 
 	for (Int m = 0; m < types.Length(); m++) dialog->AddFilter(types.GetNth(m), extensions.GetNth(m));
 
-	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -326,26 +347,29 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	delete dialog;
 }
 
-Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
+Void BonkEnc::JobList::AddTracksByDragAndDrop(const Array<String> &files)
 {
 	if (!CanModifyJobList()) return;
 
-	if (File(file).Exists())
-	{
-		Array<String>	 files;
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-		files.Add(file);
+	i18n->SetContext("Joblist::Errors");
 
-		(new JobAddFiles(files))->Schedule();
-	}
-	else if (Directory(file).Exists())
+	Array<String>	 filesToAdd;
+	Array<String>	 directoriesToAdd;
+
+	foreach (const String &file, files)
 	{
-		(new JobAddDirectory(file))->Schedule();
+		BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+		if	(File(file).Exists())	   filesToAdd.Add(file);
+		else if (Directory(file).Exists()) directoriesToAdd.Add(file);
+		else				   BoCA::Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(file).GetFileName(), i18n->TranslateString("File not found", "Messages"));
 	}
-	else
-	{
-		Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("File not found")));
-	}
+
+	(new JobAddFiles(filesToAdd))->Schedule();
+
+	foreach (const String &directory, directoriesToAdd) (new JobAddDirectory(directory))->Schedule();
 }
 
 Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String &pattern)
@@ -355,13 +379,17 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 
 	if (files.Length() == 0)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
+		BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+		i18n->SetContext("Joblist::Errors");
+
+		BoCA::Utilities::ErrorMessage(String(i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
 	}
 	else
 	{
 		Array<String>	 jobFiles;
 
-		foreach (File file, files) jobFiles.Add(file);
+		foreach (const File &file, files) jobFiles.Add(file);
 
 		(new JobAddFiles(jobFiles))->Schedule();
 	}
@@ -369,27 +397,22 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 
 Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 {
-	for (Int i = 0; i < GetNOfTracks(); i++)
+	ListEntry	*entry = GetEntryByTrack(track);
+
+	if (entry != NIL)
 	{
-		Track	*existingTrack = tracks.Get(GetNthEntry(i)->GetHandle());
+		Track	*existingTrack = tracks.Get(entry->GetHandle());
 
-		if (existingTrack->GetTrackID() == track.GetTrackID())
+		entry->SetText(GetEntryText(track));
+
+		if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault))
 		{
-			ListEntry	*entry = GetNthEntry(i);
+			if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
 
-			entry->SetText(GetEntryText(track));
-
-			if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault))
-			{
-				if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
-
-				entry->SetTooltipLayer(new LayerTooltip(track));
-			}
-
-			*existingTrack = track;
-
-			break;
+			entry->SetTooltipLayer(new LayerTooltip(track));
 		}
+
+		*existingTrack = track;
 	}
 
 	BoCA::JobList::Get()->onApplicationModifyTrack.Emit(track);
@@ -401,7 +424,11 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 
 	if (GetSelectedEntry() == NIL)
 	{
-		Utilities::ErrorMessage("You have not selected a file!");
+		BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+		i18n->SetContext("Joblist::Errors");
+
+		BoCA::Utilities::ErrorMessage("You have not selected a file!");
 
 		return;
 	}
@@ -414,8 +441,8 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 		{
 			if (Length() > 1)
 			{
-				if (i < Length() - 1) SelectEntry(GetNthEntry(i + 1));
-				else		      SelectEntry(GetNthEntry(i - 1));
+				if (i < Length() - 1) SelectNthEntry(i + 1);
+				else		      SelectNthEntry(i - 1);
 			}
 
 			RemoveNthTrack(i);
@@ -454,12 +481,16 @@ Void BonkEnc::JobList::LoadList()
 {
 	if (!CanModifyJobList()) return;
 
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	FileSelection	*dialog = new FileSelection();
 
 	dialog->SetParentWindow(container->GetContainerWindow());
 
-	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
-	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(String(i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
+	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -478,6 +509,10 @@ Void BonkEnc::JobList::LoadList()
 
 Void BonkEnc::JobList::SaveList()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	FileSelection	*dialog = new FileSelection();
 
 	dialog->SetParentWindow(container->GetContainerWindow());
@@ -485,8 +520,8 @@ Void BonkEnc::JobList::SaveList()
 	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
 	dialog->SetDefaultExtension("m3u");
 
-	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
-	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(String(i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
+	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -524,7 +559,7 @@ Void BonkEnc::JobList::SaveList()
 				}
 			}
 
-			playlist.AddTrack(fileName, String(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : BonkEnc::i18n->TranslateString("unknown title")), track.length == -1 ? -1 : Math::Round((Float) track.length / (track.GetFormat().rate * track.GetFormat().channels)));
+			playlist.AddTrack(fileName, String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")), track.length == -1 ? -1 : Math::Round((Float) track.length / (track.GetFormat().rate * track.GetFormat().channels)));
 		}
 
 		playlist.Save(dialog->GetFileName());
@@ -574,17 +609,33 @@ Void BonkEnc::JobList::OnMarkEntry(ListEntry *entry)
 
 Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
 {
+	ListEntry	*entry = GetEntryByTrack(track);
+
+	if (entry != NIL && GetSelectedEntry() != entry) SelectEntry(entry);
+}
+
+Void BonkEnc::JobList::OnComponentMarkTrack(const Track &track)
+{
+	ListEntry	*entry = GetEntryByTrack(track);
+
+	if (entry != NIL) entry->SetMark(True);
+}
+
+Void BonkEnc::JobList::OnComponentUnmarkTrack(const Track &track)
+{
+	ListEntry	*entry = GetEntryByTrack(track);
+
+	if (entry != NIL) entry->SetMark(False);
+}
+
+ListEntry *BonkEnc::JobList::GetEntryByTrack(const Track &track) const
+{
 	for (Int i = 0; i < GetNOfTracks(); i++)
 	{
-		const Track	&existingTrack = GetNthTrack(i);
-
-		if (existingTrack.GetTrackID() == track.GetTrackID())
-		{
-			if (GetSelectedEntryNumber() != i) SelectNthEntry(i);
-
-			break;
-		}
+		if (GetNthTrack(i).GetTrackID() == track.GetTrackID()) return GetNthEntry(i);
 	}
+
+	return NIL;
 }
 
 Void BonkEnc::JobList::OnChangeConfigurationSettings()
@@ -604,11 +655,15 @@ Void BonkEnc::JobList::OnChangeConfigurationSettings()
 
 Void BonkEnc::JobList::OnChangeLanguageSettings()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	UpdateTextLine();
 
-	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
-	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));
-	button_sel_toggle->SetTooltipText(BonkEnc::i18n->TranslateString("Toggle selection"));
+	button_sel_all->SetTooltipText(i18n->TranslateString("Select all"));
+	button_sel_none->SetTooltipText(i18n->TranslateString("Select none"));
+	button_sel_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));
 
 	Hide();
 
@@ -643,7 +698,7 @@ Void BonkEnc::JobList::AddHeaderTabs()
 	 */
 	Array<String>		 fields;
 
-	foreach (String field, cFields) fields.Add(field);
+	foreach (const String &field, cFields) fields.Add(field);
 
 	const Array<String>	&cSizes = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
 
@@ -651,7 +706,7 @@ Void BonkEnc::JobList::AddHeaderTabs()
 	 */
 	Array<String>		 sizes;
 
-	if (cFields.Length() == cSizes.Length()) { foreach (String size, cSizes) sizes.Add(size); }
+	if (cFields.Length() == cSizes.Length()) { foreach (const String &size, cSizes) sizes.Add(size); }
 
 	for (Int i = 0; i < fields.Length(); i++)
 	{
@@ -670,7 +725,11 @@ Void BonkEnc::JobList::AddHeaderTabs()
 		else if (field == "<file>")	{ tabName = "File name";		      tabSize = 0;			      }
 		else if (field == "<filetype>")	{ tabName = "File type";		      tabSize = tabSize <= 0 ?  60 : tabSize; }
 
-		tabName = BonkEnc::i18n->TranslateString(tabName);
+		BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+		i18n->SetContext("Joblist");
+
+		tabName = i18n->TranslateString(tabName);
 
 		AddTab(tabName, tabSize, tabAlign);
 	}
@@ -678,22 +737,30 @@ Void BonkEnc::JobList::AddHeaderTabs()
 
 Void BonkEnc::JobList::UpdateTextLine()
 {
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
+	text->SetText(String(i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
 }
 
 String BonkEnc::JobList::GetEntryText(const Track &track) const
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	const Info		&info = track.GetInfo();
 	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
 	String			 jlEntry;
 
-	foreach (String field, fields)
+	foreach (const String &field, fields)
 	{
-		if	(field == "<artist>")	jlEntry.Append(info.artist.Length() > 0 ? info.artist : BonkEnc::i18n->TranslateString("unknown artist"));
-		else if (field == "<album>")	jlEntry.Append(info.album.Length()  > 0 ? info.album  : BonkEnc::i18n->TranslateString("unknown album"));
-		else if (field == "<title>")	jlEntry.Append(info.title.Length()  > 0 ? info.title  : BonkEnc::i18n->TranslateString("unknown title"));
-		else if (field == "<genre>")	jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : BonkEnc::i18n->TranslateString("unknown genre"));
+		if	(field == "<artist>")	jlEntry.Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"));
+		else if (field == "<album>")	jlEntry.Append(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album"));
+		else if (field == "<title>")	jlEntry.Append(info.title.Length()  > 0 ? info.title  : i18n->TranslateString("unknown title"));
+		else if (field == "<genre>")	jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : i18n->TranslateString("unknown genre"));
 		else if (field == "<track>")	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String(NIL));
 		else if (field == "<time>")	jlEntry.Append(track.GetLengthString());
 		else if (field == "<bytes>")	jlEntry.Append(track.GetFileSizeString());

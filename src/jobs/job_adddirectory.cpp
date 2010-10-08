@@ -34,8 +34,19 @@ Void BonkEnc::JobAddDirectory::AddDirectory(const Directory &directory)
 		const Array<Directory>	&myDirectories = directory.GetDirectories();
 		const Array<File>	&myFiles = directory.GetFiles();
 
-		foreach (Directory directory, myDirectories) AddDirectory(directory);
-		foreach (File file, myFiles) files.Add(file);
+		foreach (const Directory &directory, myDirectories) AddDirectory(directory);
+
+		foreach (const File &file, myFiles)
+		{
+			String	 fileString = String(file).ToLower();
+
+			if (fileString.EndsWith(".jpg") || 
+			    fileString.EndsWith(".gif") ||
+			    fileString.EndsWith(".png") ||
+			    fileString.EndsWith(".txt")) continue;
+
+			files.Add(file);
+		}
 	}
 }
 

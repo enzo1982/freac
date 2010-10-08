@@ -19,32 +19,35 @@
 BonkEnc::cddbManageDlg::cddbManageDlg()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("CDDB::Manage cache");
 
 	updateJoblist	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbUpdateJoblistID, Config::FreedbUpdateJoblistDefault);
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("CDDB data"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(552, 352));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new GUI::Window(i18n->TranslateString("CDDB data"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(552, 352));
+	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&cddbManageDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok		= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
+	btn_ok		= new Button(i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
 	btn_ok->onAction.Connect(&cddbManageDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	check_updateJoblist	= new CheckBox(BonkEnc::i18n->TranslateString("Update joblist with this information"), Point(7, 27), Size(), &updateJoblist);
+	check_updateJoblist	= new CheckBox(i18n->TranslateString("Update joblist with this information"), Point(7, 27), Size(), &updateJoblist);
 	check_updateJoblist->SetWidth(check_updateJoblist->textSize.cx + 21);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
-	text_entries	= new Text(BonkEnc::i18n->TranslateString("Downloaded CDDB entries:"), Point(7, 10));
+	text_entries	= new Text(i18n->TranslateString("Downloaded CDDB entries:"), Point(7, 10));
 
 	list_entries	= new ListBox(Point(7, 29), Size(261, 213));
-	list_entries->AddTab(BonkEnc::i18n->TranslateString("Disc name"), 0);
-	list_entries->AddTab(BonkEnc::i18n->TranslateString("Charset"), 100);
+	list_entries->AddTab(i18n->TranslateString("Disc name"), 0);
+	list_entries->AddTab(i18n->TranslateString("Charset"), 100);
 	list_entries->onSelectEntry.Connect(&cddbManageDlg::SelectEntry, this);
 
 	for (Int i = 0; i < CDDBCache::Get()->GetNOfEntries(); i++)
@@ -54,12 +57,12 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
 	}
 
-	text_preview	= new Text(String(BonkEnc::i18n->TranslateString("Preview")).Append(":"), Point(276, 10));
+	text_preview	= new Text(String(i18n->TranslateString("Preview")).Append(":"), Point(276, 10));
 
 	edit_preview	= new MultiEdit(NIL, Point(276, 29), Size(261, 186), 0);
 	edit_preview->Deactivate();
 
-	text_charset	= new Text(String(BonkEnc::i18n->TranslateString("Charset")).Append(":"), Point(276, 226));
+	text_charset	= new Text(String(i18n->TranslateString("Charset")).Append(":"), Point(276, 226));
 
 	list_charset	= new List();
 	list_charset->AddEntry("CP1251");
@@ -75,11 +78,11 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	edit_charset->SetDropDownList(list_charset);
 	edit_charset->onInput.Connect(&cddbManageDlg::SetCharset, this);
 
-	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
+	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	btn_save	= new Button(BonkEnc::i18n->TranslateString("Save entry"), NIL, Point(457, 69), Size());
+	btn_save	= new Button(i18n->TranslateString("Save entry"), NIL, Point(457, 69), Size());
 	btn_save->onAction.Connect(&cddbManageDlg::SaveEntry, this);
 	btn_save->SetOrientation(OR_LOWERLEFT);
 
@@ -270,6 +273,7 @@ Void BonkEnc::cddbManageDlg::SaveEntry()
 
 	list_entries->GetSelectedEntry()->SetText(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
 
-	// Save modified entry back to cache (necessary to make changes persistant)
+	/* Save modified entry back to cache (necessary to make changes persistant)
+	 */
 	CDDBCache::Get()->AddCacheEntry(entry);
 }

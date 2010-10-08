@@ -14,10 +14,10 @@
 
 BonkEnc::ConfigureCDDB::ConfigureCDDB()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	Point	 pos;
-	Size	 size;
+	i18n->SetContext("Configuration::CDDB");
 
 	cddb_auto	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault);
 	cddb_cdtext	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbOverwriteCDTextID, Config::FreedbOverwriteCDTextDefault);
@@ -32,14 +32,11 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	layer_remote_background	= new Layer();
 	layer_remote_background->SetBackgroundColor(Setup::BackgroundColor);
 
-	pos.x	= 2;
-	pos.y	= 0;
-
-	check_local	= new CheckBox(BonkEnc::i18n->TranslateString("Enable local CDDB database"), pos, size, &cddb_local);
+	check_local	= new CheckBox(i18n->TranslateString("Enable local CDDB database"), Point(2, 0), Size(), &cddb_local);
 	check_local->onAction.Connect(&ConfigureCDDB::ToggleLocalCDDB, this);
 	check_local->SetWidth(check_local->textSize.cx + 20);
 
-	check_remote	= new CheckBox(BonkEnc::i18n->TranslateString("Enable remote CDDB database"), pos, size, &cddb_remote);
+	check_remote	= new CheckBox(i18n->TranslateString("Enable remote CDDB database"), Point(2, 0), Size(), &cddb_remote);
 	check_remote->onAction.Connect(&ConfigureCDDB::ToggleRemoteCDDB, this);
 	check_remote->SetWidth(check_remote->textSize.cx + 20);
 
@@ -49,123 +46,48 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	layer_local_background->Add(check_local);
 	layer_remote_background->Add(check_remote);
 
-	pos.x	= 7;
-	pos.y	= 11;
-	size.cx	= 344;
-	size.cy	= 43;
+	group_local	= new GroupBox(NIL, Point(7, 11), Size(344, 43));
 
-	group_local	= new GroupBox(NIL, pos, size);
+	text_dir	= new Text(i18n->TranslateString("CDDB path:"), Point(16, 26));
+	edit_dir	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault), Point(122, 23), Size(119, 0), 0);
 
-	pos.x	+= 9;
-	pos.y	+= 15;
-
-	text_dir	= new Text(BonkEnc::i18n->TranslateString("CDDB directory:"), pos);
-
-	pos.x	+= 106;
-	pos.y	-= 3;
-	size.cx	= 119;
-	size.cy	= 0;
-
-	edit_dir	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault), pos, size, 0);
-
-	pos.x	= 261;
-	pos.y	-= 1;
-	size.cx	= 0;
-
-	button_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	button_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(261, 22), Size());
 	button_browse->onAction.Connect(&ConfigureCDDB::SelectDir, this);
 
-	pos.x	= 7;
-	pos.y	= 66;
-	size.cx	= 344;
-	size.cy	= 125;
+	group_cddb	= new GroupBox(NIL, Point(7, 66), Size(344, 125));
 
-	group_cddb	= new GroupBox(NIL, pos, size);
+	text_mode	= new Text(i18n->TranslateString("CDDB access mode:"), Point(16, 81));
 
-	pos.x	+= 9;
-	pos.y	+= 15;
-
-	text_mode	= new Text(BonkEnc::i18n->TranslateString("CDDB access mode:"), pos);
-
-	pos.x	+= 106;
-	pos.y	-= 3;
-	size.cx	= 219;
-	size.cy	= 0;
-
-	combo_mode	= new ComboBox(pos, size);
+	combo_mode	= new ComboBox(Point(122, 78), Size(219, 0));
 	combo_mode->onSelectEntry.Connect(&ConfigureCDDB::SetCDDBMode, this);
 	combo_mode->AddEntry("HTTP");
 	combo_mode->AddEntry("CDDBP/HTTP");
 
-	pos.x -= 106;
-	pos.y += 30;
+	text_server	= new Text(i18n->TranslateString("CDDB server:"), Point(16, 108));
+	edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault), Point(122, 105), Size(146, 0), 0);
 
-	text_server	= new Text(BonkEnc::i18n->TranslateString("CDDB server:"), pos);
-
-	pos.x	+= 106;
-	pos.y	-= 3;
-	size.cx	= 146;
-
-	edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault), pos, size, 0);
-
-	pos.x += 153;
-	pos.y += 3;
-
-	text_port	= new Text(BonkEnc::i18n->TranslateString("Port:"), pos);
+	text_port	= new Text(i18n->TranslateString("Port:"), Point(275, 108));
 	text_port->SetX(296 - text_port->textSize.cx);
 
-	pos.x	+= 29;
-	pos.y	-= 3;
-	size.cx	= 37;
-
-	edit_port	= new EditBox(NIL, pos, size, 5);
+	edit_port	= new EditBox(NIL, Point(304, 105), Size(37, 0), 5);
 	edit_port->SetFlags(EDB_NUMERIC);
 
-	pos.x = 16;
-	pos.y += 30;
+	text_email	= new Text(i18n->TranslateString("eMail address:"), Point(16, 135));
+	edit_email	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault), Point(122, 132), Size(146, 0), 0);
 
-	text_email	= new Text(BonkEnc::i18n->TranslateString("eMail address:"), pos);
-
-	pos.x	+= 106;
-	pos.y	-= 3;
-	size.cx	= 146;
-
-	edit_email	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault), pos, size, 0);
-
-	pos.x	= 17;
-	pos.y	+= 27;
-	size.cx	= 158;
-
-	button_http	= new Button(BonkEnc::i18n->TranslateString("HTTP settings"), NIL, pos, size);
+	button_http	= new Button(i18n->TranslateString("HTTP settings"), NIL, Point(17, 159), Size(158, 0));
 	button_http->onAction.Connect(&ConfigureCDDB::HTTPSettings, this);
 
-	pos.x += 166;
-
-	button_proxy	= new Button(BonkEnc::i18n->TranslateString("Proxy settings"), NIL, pos, size);
+	button_proxy	= new Button(i18n->TranslateString("Proxy settings"), NIL, Point(183, 159), Size(158, 0));
 	button_proxy->onAction.Connect(&ConfigureCDDB::ProxySettings, this);
 
-	pos.x	= 359;
-	pos.y	= 11;
-	size.cx	= 178;
-	size.cy	= 94;
+	group_cddb_options = new GroupBox(i18n->TranslateString("Options"), Point(359, 11), Size(178, 94));
 
-	group_cddb_options = new GroupBox(BonkEnc::i18n->TranslateString("Options"), pos, size);
-
-	pos.x	= 369;
-	pos.y	= 25;
-	size.cx	= 157;
-	size.cy	= 0;
-
-	check_auto	= new CheckBox(BonkEnc::i18n->TranslateString("Automatic CDDB queries"), pos, size, &cddb_auto);
+	check_auto	= new CheckBox(i18n->TranslateString("Automatic CDDB queries"), Point(369, 25), Size(157, 0), &cddb_auto);
 	check_auto->onAction.Connect(&ConfigureCDDB::ToggleAutoCDDB, this);
 
-	pos.y += 26;
-
-	check_cdtext	= new CheckBox(BonkEnc::i18n->TranslateString("Prefer CDDB over CD Text"), pos, size, &cddb_cdtext);
-
-	pos.y += 26;
-
-	check_cache	= new CheckBox(BonkEnc::i18n->TranslateString("Enable CDDB cache"), pos, size, &cddb_cache);
+	check_cdtext	= new CheckBox(i18n->TranslateString("Prefer CDDB over CD Text"), Point(369, 51), Size(157, 0), &cddb_cdtext);
+	check_cache	= new CheckBox(i18n->TranslateString("Enable CDDB cache"), Point(369, 77), Size(157, 0), &cddb_cache);
 
 	combo_mode->SelectNthEntry(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault));
 
@@ -236,10 +158,14 @@ BonkEnc::ConfigureCDDB::~ConfigureCDDB()
 
 Void BonkEnc::ConfigureCDDB::SelectDir()
 {
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::CDDB");
+
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder of the CDDB database:")));
+	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder of the CDDB database:")));
 	dialog->SetDirName(edit_dir->GetText());
 
 	if (dialog->ShowDialog() == Success())
@@ -348,11 +274,14 @@ Void BonkEnc::ConfigureCDDB::ProxySettings()
 
 Int BonkEnc::ConfigureCDDB::SaveSettings()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::CDDB::Errors");
 
 	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault) == 1 && combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
 	{
-		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
+		Int	 selection = QuickMessage(i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
 
 		if	(selection == IDYES)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, FREEDB_MODE_HTTP);
 		else if (selection == IDNO)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());

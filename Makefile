@@ -11,7 +11,7 @@ LIBDIR2 = cdk/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/gui.o
 CMDOBJECTS = $(OBJECTDIR)/console.o
@@ -132,6 +132,21 @@ $(OBJECTDIR)/cddb_submit.o: $(SRCDIR)/dialogs/cddb/submit.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/cddb/submit.cpp -o $(OBJECTDIR)/cddb_submit.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/engine_converter.o: $(SRCDIR)/engine/converter.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/engine/converter.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/engine/converter.cpp -o $(OBJECTDIR)/engine_converter.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/engine_decoder.o: $(SRCDIR)/engine/decoder.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/engine/decoder.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/engine/decoder.cpp -o $(OBJECTDIR)/engine_decoder.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/engine_encoder.o: $(SRCDIR)/engine/encoder.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/engine/encoder.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/engine/encoder.cpp -o $(OBJECTDIR)/engine_encoder.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/job.o: $(SRCDIR)/jobs/job.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/jobs/job.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job.cpp -o $(OBJECTDIR)/job.o
@@ -185,11 +200,6 @@ $(OBJECTDIR)/cuesheet.o: $(SRCDIR)/cuesheet.cpp
 $(OBJECTDIR)/dllinterfaces.o: $(SRCDIR)/dllinterfaces.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/dllinterfaces.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dllinterfaces.cpp -o $(OBJECTDIR)/dllinterfaces.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/encoder.o: $(SRCDIR)/encoder.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/encoder.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/encoder.cpp -o $(OBJECTDIR)/encoder.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/joblist.o: $(SRCDIR)/joblist.cpp

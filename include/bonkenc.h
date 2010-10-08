@@ -15,7 +15,7 @@
 #include <boca.h>
 
 #include "config.h"
-#include "encoder.h"
+#include "engine/converter.h"
 #include "cddb/cddb.h"
 #include "cddb/cddbinfo.h"
 
@@ -26,7 +26,7 @@ using namespace smooth::GUI::Dialogs;
 namespace BonkEnc
 {
 	class JobList;
-	class Encoder;
+	class Converter;
 };
 
 typedef unsigned long  uint32;
@@ -35,44 +35,42 @@ typedef unsigned char  uint8;
 
 namespace BonkEnc
 {
-	abstract class BonkEnc : public Application
+	abstract class BonkEnc : public GUI::Application
 	{
 		protected:
 			/* Singleton class, therefore protected constructor/destructor
 			 */
-			static BonkEnc			*instance;
+			static BonkEnc		*instance;
 
-							 BonkEnc();
-			virtual				~BonkEnc();
+						 BonkEnc();
+			virtual			~BonkEnc();
 
-			GUI::Window			*mainWnd;
-			Statusbar			*mainWnd_statusbar;
+			GUI::Window		*mainWnd;
+			Statusbar		*mainWnd_statusbar;
 
-			Hyperlink			*hyperlink;
+			Hyperlink		*hyperlink;
 
-			Config				*currentConfig;
+			Config			*currentConfig;
 
-			Bool				 dontUpdateInfo;
-			Bool				 overwriteAll;
+			Bool			 dontUpdateInfo;
+			Bool			 overwriteAll;
 		public:
-			static String			 appName;
-			static String			 appLongName;
-			static String			 version;
-			static String			 shortVersion;
-			static String			 cddbVersion;
-			static String			 cddbMode;
-			static String			 website;
-			static String			 updatePath;
+			static String		 appName;
+			static String		 appLongName;
+			static String		 version;
+			static String		 shortVersion;
+			static String		 cddbVersion;
+			static String		 cddbMode;
+			static String		 website;
+			static String		 updatePath;
 
-			static BoCA::I18n		*i18n;
+			JobList			*joblist;
 
-			JobList				*joblist;
-
-			Encoder				*encoder;
+			Converter		*encoder;
 
 			/* Returns an existing instance of BonkEnc
 			 */
-			static BonkEnc			*Get();
+			static BonkEnc		*Get();
 	};
 };
 

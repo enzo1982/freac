@@ -333,7 +333,7 @@ Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &oCddbInfo)
 
 	if (!cddb.Submit(cddbInfo))
 	{
-		Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
+		BoCA::Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
 
 		return False;
 	}

@@ -64,9 +64,10 @@ Void BonkEnc::BonkEncGUI::Free()
 
 BonkEnc::BonkEncGUI::BonkEncGUI()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	currentConfig->enable_console = false;
+	config->enable_console = false;
 
 	dontUpdateInfo = False;
 
@@ -135,7 +136,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tabs_main		= new TabWidget(Point(6, 7), Size(700, 500));
 
 	tab_layer_joblist	= new LayerJoblist();
-	tab_layer_joblist->onRequestSkipTrack.Connect(&Encoder::SkipTrack, encoder);
+	tab_layer_joblist->onRequestSkipTrack.Connect(&Converter::SkipTrack, encoder);
 
 	tabs_main->Add(tab_layer_joblist);
 
@@ -259,8 +260,14 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	/* Check if encoder is running.
+	 */
 	if (encoder->IsEncoding())
 	{
+		BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+		i18n->SetContext("Messages");
+
 		if (IDNO == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
 
 		encoder->Stop();
@@ -270,6 +277,12 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 	 */
 	tab_layer_joblist->StopPlayback();
 
+	/* Notify components that we are about to quit.
+	 */
+	BoCA::Application::Get()->onQuit.Emit();
+
+	/* Save main window position.
+	 */
 	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, wndRect.left);
@@ -419,6 +432,10 @@ Void BonkEnc::BonkEncGUI::Close()
 
 Void BonkEnc::BonkEncGUI::About()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("About");
+
 #ifdef __WIN32__
 	QuickMessage(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2010 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 #endif
@@ -428,7 +445,8 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 {
 	if (!currentConfig->CanChangeConfig()) return;
 
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+
 	Registry	&boca = Registry::Get();
 	Component	*component = boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 	ConfigLayer	*layer = component->GetConfigurationLayer();
@@ -444,10 +462,8 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 	}
 	else
 	{
-		QuickMessage(String(i18n->TranslateString("No configuration dialog available for:\n\n%1")).Replace("%1", component->GetName()), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_INFORMATION);
+		BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
 	}
-
-	component->FreeConfigurationLayer();
 
 	boca.DeleteComponent(component);
 }
@@ -527,7 +543,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 	 */
 	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) && !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
-		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
+		BoCA::Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -654,7 +670,7 @@ Void BonkEnc::BonkEncGUI::SubmitCDDBData()
 
 	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) && !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
-		Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
+		BoCA::Utilities::ErrorMessage("CDDB support is disabled! Please enable local or\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -681,7 +697,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 
 	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
-		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
+		BoCA::Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -699,7 +715,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
 
 	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
-		Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
+		BoCA::Utilities::ErrorMessage("Remote CDDB support is disabled! Please enable\nremote CDDB support in the configuration dialog.");
 
 		return;
 	}
@@ -713,7 +729,8 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
 
 Bool BonkEnc::BonkEncGUI::SetLanguage()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	Bool		 prevRTL = i18n->IsActiveLanguageRightToLeft();
 
@@ -740,8 +757,10 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 Void BonkEnc::BonkEncGUI::FillMenus()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-	Registry	&boca = Registry::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	Registry	&boca	= Registry::Get();
 
 	mainWnd_menubar->Hide();
 	mainWnd_iconbar->Hide();
@@ -761,46 +780,27 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	MenuEntry	*entry = NIL;
 
+	i18n->SetContext("Menu::File");
+
 	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load("BonkEnc.pci:21"), menu_addsubmenu);
 	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load("BonkEnc.pci:24"));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
+
 	menu_file->AddEntry();
 	menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onAction.Connect(&JobList::LoadList, joblist);
 	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
 	menu_file->AddEntry();
+
 	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load("BonkEnc.pci:25"));
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
+
 	menu_file->AddEntry();
+
 	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("BonkEnc.pci:36"));
 	entry->onAction.Connect(&BonkEncGUI::Close, this);
 	entry->SetShortcut(SC_ALT, VK_F4, mainWnd);
-
-	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("BonkEnc.pci:28"));
-	entry->onAction.Connect(&BonkEncGUI::ConfigureSettings, this);
-	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'C', mainWnd);
-	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("BonkEnc.pci:29"));
-	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
-	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
-
-	if (config->cdrip_numdrives > 1)
-	{
-		DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
-
-		if (info != NIL)
-		{
-			for (Int i = 0; i < info->GetNumberOfDevices(); i++)
-			{
-				menu_seldrive->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &config->GetPersistentIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault), i);
-			}
-
-			boca.DeleteComponent(info);
-		}
-
-		menu_options->AddEntry();
-		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load("BonkEnc.pci:30"), menu_seldrive);
-	}
 
 	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."), ImageLoader::Load("BonkEnc.pci:22"));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
@@ -826,7 +826,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	}
 
 	menu_files->AddEntry(String(i18n->TranslateString("By pattern")).Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);
-	menu_files->AddEntry(String(i18n->TranslateString("From directory")).Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesFromDirectory, this);
+	menu_files->AddEntry(String(i18n->TranslateString("From folder")).Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesFromDirectory, this);
 
 	menu_addsubmenu->AddEntry();
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
@@ -835,6 +835,36 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
+
+	i18n->SetContext("Menu::Options");
+
+	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("BonkEnc.pci:28"));
+	entry->onAction.Connect(&BonkEncGUI::ConfigureSettings, this);
+	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'C', mainWnd);
+
+	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("BonkEnc.pci:29"));
+	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
+	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
+
+	if (config->cdrip_numdrives > 1)
+	{
+		DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+
+		if (info != NIL)
+		{
+			for (Int i = 0; i < info->GetNumberOfDevices(); i++)
+			{
+				menu_seldrive->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &config->GetPersistentIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault), i);
+			}
+
+			boca.DeleteComponent(info);
+		}
+
+		menu_options->AddEntry();
+		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load("BonkEnc.pci:30"), menu_seldrive);
+	}
+
+	i18n->SetContext("Menu::Encode");
 
 	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load("BonkEnc.pci:31"));
 	entry->onAction.Connect(&BonkEncGUI::Encode, this);
@@ -849,7 +879,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	}
 
-	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0)
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0)
 	{
 		menu_encode->AddEntry();
 		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
@@ -858,7 +888,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));
 
 	menu_encoder_options->AddEntry();
-	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file directory if possible"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault))->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file folder if possible"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault))->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
 	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault));
 
 	menu_encoder_options->AddEntry();
@@ -871,6 +901,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load("BonkEnc.pci:29"), menu_encoder_options);
 
 	ToggleUseInputDirectory();
+
+	i18n->SetContext("Menu::Database");
 
 	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
@@ -892,6 +924,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
 
+	i18n->SetContext("Menu::Help");
+
 	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."), ImageLoader::Load("BonkEnc.pci:34"));
 	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
 	entry->SetShortcut(0, VK_F1, mainWnd);
@@ -910,6 +944,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_help->AddEntry();
 	menu_help->AddEntry(String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName).Append("..."), ImageLoader::Load("BonkEnc.pci:35"))->onAction.Connect(&BonkEncGUI::About, this);
 
+	i18n->SetContext("Menu");
+
 	mainWnd_menubar->RemoveAllEntries();
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
@@ -920,6 +956,8 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help)->SetOrientation(OR_RIGHT);
+
+	i18n->SetContext("Toolbar");
 
 	mainWnd_iconbar->RemoveAllEntries();
 
@@ -967,7 +1005,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
 	entry->onAction.Connect(&BonkEncGUI::Encode, this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
@@ -999,7 +1037,7 @@ Void BonkEnc::BonkEncGUI::EncodeSpecific()
 
 Void BonkEnc::BonkEncGUI::Encode()
 {
-	encoder->Encode(joblist);
+	encoder->Convert(joblist);
 }
 
 Void BonkEnc::BonkEncGUI::PauseResumeEncoding()
@@ -1030,7 +1068,14 @@ Void BonkEnc::BonkEncGUI::AddFilesFromDirectory()
 {
 	AddDirectoryDialog	*dialog = new AddDirectoryDialog();
 
-	if (dialog->ShowDialog() == Success()) joblist->AddTrackByDragAndDrop(dialog->GetDirectory());
+	if (dialog->ShowDialog() == Success())
+	{
+		Array<String>	 directories;
+
+		directories.Add(dialog->GetDirectory());
+
+		joblist->AddTracksByDragAndDrop(directories);
+	}
 
 	DeleteObject(dialog);
 }
@@ -1052,6 +1097,10 @@ Void BonkEnc::BonkEncGUI::ToggleEncodeToSingleFile()
 
 Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
 {
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Messages");
+
 	if (currentConfig->deleteAfterEncoding)
 	{
 		if (IDNO == QuickMessage(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), MB_YESNO, IDI_QUESTION)) currentConfig->deleteAfterEncoding = False;
@@ -1060,6 +1109,10 @@ Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
 
 Void BonkEnc::BonkEncGUI::ShowHelp()
 {
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Menu::Help");
+
 #ifdef __WIN32__
 	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index_en.html")), NIL, NIL, 0);
 #endif
@@ -1068,6 +1121,9 @@ Void BonkEnc::BonkEncGUI::ShowHelp()
 Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Tips");
 
 	Bool		 showTips = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault);
 	TipOfTheDay	*dialog = new TipOfTheDay(&showTips);

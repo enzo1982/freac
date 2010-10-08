@@ -13,33 +13,36 @@
 
 BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Extended CDDB settings"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(80, 80), Size(352, 221));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	i18n->SetContext("Configuration::CDDB::Extended");
+
+	mainWnd			= new GUI::Window(i18n->TranslateString("Extended CDDB settings"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(80, 80), Size(352, 221));
+	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	register_layer_http	= new Layer(BonkEnc::i18n->TranslateString("HTTP settings"));
-	register_layer_proxy	= new Layer(BonkEnc::i18n->TranslateString("Proxy settings"));
+	register_layer_http	= new Layer(i18n->TranslateString("HTTP settings"));
+	register_layer_proxy	= new Layer(i18n->TranslateString("Proxy settings"));
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&cddbExtendedSettingsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
+	btn_ok			= new Button(i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
 	btn_ok->onAction.Connect(&cddbExtendedSettingsDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	reg_register		= new TabWidget(Point(7, 7), Size(329, 134));
 
-	http_group_scripts	= new GroupBox(BonkEnc::i18n->TranslateString("CGI scripts"), Point(7, 11), Size(312, 66));
+	http_group_scripts	= new GroupBox(i18n->TranslateString("CGI scripts"), Point(7, 11), Size(312, 66));
 
-	http_text_query		= new Text(BonkEnc::i18n->TranslateString("CDDB query script:"), Point(16, 24));
+	http_text_query		= new Text(i18n->TranslateString("CDDB query script:"), Point(16, 24));
 	http_edit_query		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault), Point(117, 21), Size(192, 0), 0);
 
-	http_text_submit	= new Text(BonkEnc::i18n->TranslateString("CDDB submit script:"), Point(16, 51));
+	http_text_submit	= new Text(i18n->TranslateString("CDDB submit script:"), Point(16, 51));
 	http_edit_submit	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, Config::FreedbSubmitPathDefault), Point(117, 48), Size(192, 0), 0);
 
 	Int	 maxTextSize = Math::Max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
@@ -47,31 +50,31 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->GetY()), Size(285 - maxTextSize, http_edit_query->GetHeight()));
 	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->GetY()), Size(285 - maxTextSize, http_edit_submit->GetHeight()));
 
-	proxy_group_proxy	= new GroupBox(BonkEnc::i18n->TranslateString("Proxy settings"), Point(7, 11), Size(312, 93));
+	proxy_group_proxy	= new GroupBox(i18n->TranslateString("Proxy settings"), Point(7, 11), Size(312, 93));
 
-	proxy_text_mode		= new Text(BonkEnc::i18n->TranslateString("Proxy type:"), Point(16, 24));
+	proxy_text_mode		= new Text(i18n->TranslateString("Proxy type:"), Point(16, 24));
 
 	proxy_combo_mode	= new ComboBox(Point(116, 21), Size(185, 0));
 	proxy_combo_mode->onSelectEntry.Connect(&cddbExtendedSettingsDlg::SetProxyMode, this);
-	proxy_combo_mode->AddEntry(BonkEnc::i18n->TranslateString("no proxy"));
+	proxy_combo_mode->AddEntry(i18n->TranslateString("no proxy"));
 	proxy_combo_mode->AddEntry("HTTP Forward");
 	proxy_combo_mode->AddEntry("HTTPS Tunnel");
 	proxy_combo_mode->AddEntry("SOCKS v4/v4a");
 	proxy_combo_mode->AddEntry("SOCKS v5");
 
-	proxy_text_server	= new Text(BonkEnc::i18n->TranslateString("Proxy server:"), Point(16, 51));
+	proxy_text_server	= new Text(i18n->TranslateString("Proxy server:"), Point(16, 51));
 	proxy_edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyID, Config::FreedbProxyDefault), Point(116, 48), Size(100, 0), 0);
 
-	proxy_text_port		= new Text(BonkEnc::i18n->TranslateString("Port:"), Point(226, 51));
+	proxy_text_port		= new Text(i18n->TranslateString("Port:"), Point(226, 51));
 	proxy_text_port->SetPosition(Point(264 - proxy_text_port->textSize.cx, proxy_text_port->GetY()));
 
 	proxy_edit_port		= new EditBox(String::FromInt(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyPortID, Config::FreedbProxyPortDefault)), Point(272, 48), Size(37, 0), 5);
 	proxy_edit_port->SetFlags(EDB_NUMERIC);
 
-	proxy_text_user		= new Text(BonkEnc::i18n->TranslateString("User name:"), Point(16, 78));
+	proxy_text_user		= new Text(i18n->TranslateString("User name:"), Point(16, 78));
 	proxy_edit_user		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyUserID, Config::FreedbProxyUserDefault), Point(116, 75), Size(100, 0), 0);
 
-	proxy_text_password	= new Text(BonkEnc::i18n->TranslateString("Password:"), Point(226, 78));
+	proxy_text_password	= new Text(i18n->TranslateString("Password:"), Point(226, 78));
 	proxy_text_password->SetPosition(Point(234 - proxy_text_password->textSize.cx, proxy_text_password->GetY()));
 
 	proxy_edit_password	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyPasswordID, Config::FreedbProxyPasswordDefault), Point(242, 75), Size(67, 0), 0);

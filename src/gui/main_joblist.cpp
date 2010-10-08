@@ -22,11 +22,11 @@
 BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	i18n		= BoCA::I18n::Get();
+	i18n->SetContext("Joblist");
 
-	createPlaylist	= BoCA::Config::Get()->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
-	createCueSheet	= BoCA::Config::Get()->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
+	SetText(i18n->TranslateString("Joblist"));
 
 	player		= new Playback();
 
@@ -133,12 +133,12 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	pos.x -= 100;
 
-	check_playlist		= new CheckBox(NIL, pos, size, &createPlaylist);
+	check_playlist		= new CheckBox(NIL, pos, size, (Bool *) &config->GetPersistentIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault));
 	check_playlist->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x -= 100;
 
-	check_cuesheet		= new CheckBox(NIL, pos, size, &createCueSheet);
+	check_cuesheet		= new CheckBox(NIL, pos, size, (Bool *) &config->GetPersistentIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault));
 	check_cuesheet->SetOrientation(OR_UPPERRIGHT);
 
 	info_divider		= new Divider(113 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0), OR_HORZ | OR_BOTTOM);
@@ -324,7 +324,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
-	btn_skip = new Button(BonkEnc::i18n->TranslateString("Skip"), NIL, Point(87, 100), Size(0, 0));
+	btn_skip = new Button(i18n->TranslateString("Skip"), NIL, Point(87, 100), Size(0, 0));
 	btn_skip->SetOrientation(OR_LOWERRIGHT);
 	btn_skip->onAction.Connect(&onRequestSkipTrack);
 	btn_skip->Deactivate();
@@ -354,7 +354,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	UpdateOutputDir();
 
-	btn_outdir = new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
+	btn_outdir = new Button(i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
 	btn_outdir->SetOrientation(OR_LOWERRIGHT);
 	btn_outdir->onAction.Connect(&LayerJoblist::OnSelectDir, this);
 
@@ -485,9 +485,6 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 BonkEnc::LayerJoblist::~LayerJoblist()
 {
-	BoCA::Config::Get()->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, createPlaylist);
-	BoCA::Config::Get()->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, createCueSheet);
-
 	BoCA::JobList::Get()->onApplicationModifyTrack.Disconnect(&LayerJoblist::OnJoblistModifyTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerJoblist::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationSelectTrack.Disconnect(&LayerJoblist::OnJoblistSelectTrack, this);
@@ -623,6 +620,10 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 
 Bool BonkEnc::LayerJoblist::SetLanguage()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	static Bool	 prevRTL = i18n->IsActiveLanguageRightToLeft();
 
 	/* Rearrange playback buttons if language direction changed.
@@ -688,13 +689,13 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 	txt_format->SetText(i18n->TranslateString("Active decoder:"));
 	txt_encoder->SetText(i18n->TranslateString("Selected encoder:"));
 	txt_progress->SetText(i18n->TranslateString("File progress:"));
-	txt_outdir->SetText(i18n->TranslateString("Output dir.:"));
+	txt_outdir->SetText(i18n->TranslateString("Output folder:"));
 
 	edb_filename->SetText(i18n->TranslateString("none"));
 	edb_format->SetText(i18n->TranslateString("unknown"));
 
-	btn_outdir->SetText(BonkEnc::i18n->TranslateString("Browse"));
-	btn_skip->SetText(BonkEnc::i18n->TranslateString("Skip"));
+	btn_outdir->SetText(i18n->TranslateString("Browse"));
+	btn_skip->SetText(i18n->TranslateString("Skip"));
 
 	check_single->SetText(i18n->TranslateString("Encode to single file"));
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
@@ -753,6 +754,10 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 
 Void BonkEnc::LayerJoblist::FillMenus()
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	menu_trackmenu->RemoveAllEntries();
 
 	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
@@ -986,8 +991,12 @@ Void BonkEnc::LayerJoblist::OnEncoderStartEncoding()
 
 Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 {
-	edb_filename->SetText(BonkEnc::i18n->TranslateString("none"));
-	edb_format->SetText(BonkEnc::i18n->TranslateString("unknown"));
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
+	edb_filename->SetText(i18n->TranslateString("none"));
+	edb_format->SetText(i18n->TranslateString("unknown"));
 
 	edb_trackPercent->SetText("0%");
 	edb_trackTime->SetText("00:00");
@@ -1010,8 +1019,12 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const DecoderComponent *decoder, Int mode)
+Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, Int mode)
 {
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	edb_trackPercent->SetText("0%");
 	edb_trackTime->SetText("00:00");
 
@@ -1036,7 +1049,7 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Decod
 			break;
 	}
 
-	edb_format->SetText(decoder->GetName());
+	edb_format->SetText(decoderName);
 }
 
 Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
@@ -1148,6 +1161,10 @@ Void BonkEnc::LayerJoblist::OnSelectDir()
 	if (!Config::Get()->CanChangeConfig()) return;
 
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
+
 	DirSelection	*dialog = new DirSelection();
 
 	/* ToDo: Pass main window here.
@@ -1230,6 +1247,10 @@ Void BonkEnc::LayerJoblist::ToggleEditPopup()
 	}
 
 	if (string == NIL) string = "?";
+
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist");
 
 	menu_case->RemoveAllEntries();
 	menu_case_all->RemoveAllEntries();
