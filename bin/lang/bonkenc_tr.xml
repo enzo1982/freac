@@ -409,8 +409,8 @@
   <entry id="405" string="Set drive speed limit:">Sürücü hız limiti seç:</entry>
   <entry id="406" string="Support this project">Bu projeyi destekle</entry>
   <entry id="407" string="Please support this project!">Lütfen bu projeyi destekleyin!</entry>
-  <entry id="408" string="Please help keep this software free by supporting the BonkEnc project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Lütfen BonkEnc projesine bağış yaparak bu yazılımın bedava dağıtıma&#10;devam etmesine yardımcı olun.&#10;&#10;Aşağıdaki tuşlardan birini kullanarak Paypal üzerinden güvenle bağış yapabilirsiniz:</entry>
-  <entry id="409" string="You can also send money directly to donate@bonkenc.org using PayPal.&#10;&#10;Please write to donate@bonkenc.org if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Paypal kullanarak donate@bonkenc.org adresine direk bağış da yapabilirsiniz.&#10;&#10;Elektronik para transferi veya çek ile bağış için lütfen donate@bonkenc.org&#10;a mail atınız.</entry>
+  <entry id="408" string="Please help keep this software free by supporting the BonkEnc project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Lütfen BonkEnc projesine bağış yaparak bu yazılımın bedava dağıtıma devam&#10;etmesine yardımcı olun.&#10;&#10;Aşağıdaki tuşlardan birini kullanarak Paypal üzerinden güvenle bağış yapabilirsiniz:</entry>
+  <entry id="409" string="You can also send money directly to donate@bonkenc.org using PayPal.&#10;&#10;Please write to donate@bonkenc.org if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Paypal kullanarak donate@bonkenc.org adresine direk bağış da yapabilirsiniz.&#10;&#10;Elektronik para transferi veya çek ile bağış için lütfen donate@bonkenc.org a&#10;mail atınız.</entry>
   <entry id="410" string="usd">usd</entry>
   <entry id="411" string="en">en</entry>
   <entry id="412" string="Thank you very much!">Teşekkürler!</entry>

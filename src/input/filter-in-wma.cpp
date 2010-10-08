@@ -342,26 +342,36 @@ BonkEnc::Track *BonkEnc::FilterInWMA::GetFileInfo(const String &inFile)
 
 			for (Int i = 0; i < numIndices; i++)
 			{
-				WORD	 nameLen = 1024;
-				LPWSTR	 name = new WCHAR [nameLen];
-				DWORD	 cbLength = 0;
+				WORD			 nameLen  = 1024;
+				LPWSTR			 name	  = new WCHAR [nameLen];
+				DWORD			 cbLength = 0;
 
 				hr = pHeaderInfo->GetAttributeByIndexEx(0, indices[i], name, &nameLen, NIL, NIL, NIL, &cbLength);
 
-				BYTE	*pbValue = new BYTE [cbLength];
+				WMT_ATTR_DATATYPE	 type	  = WMT_TYPE_DWORD;
+				BYTE			*pbValue  = new BYTE [cbLength];
 
-				hr = pHeaderInfo->GetAttributeByIndexEx(0, indices[i], name, &nameLen, NIL, NIL, pbValue, &cbLength);
+				hr = pHeaderInfo->GetAttributeByIndexEx(0, indices[i], name, &nameLen, &type, NIL, pbValue, &cbLength);
 
 				if	(String(name) == g_wszWMAuthor)		nFormat->artist  = (LPWSTR) pbValue;
 				else if (String(name) == g_wszWMTitle)		nFormat->title   = (LPWSTR) pbValue;
 				else if (String(name) == g_wszWMAlbumTitle)	nFormat->album   = (LPWSTR) pbValue;
-				else if (String(name) == g_wszWMTrackNumber)	nFormat->track   = String((LPWSTR) pbValue).ToInt();
 				else if (String(name) == g_wszWMYear)		nFormat->year    = String((LPWSTR) pbValue).ToInt();
 				else if (String(name) == g_wszWMGenre)		nFormat->genre   = (LPWSTR) pbValue;
 				else if (String(name) == g_wszWMDescription)	nFormat->comment = (LPWSTR) pbValue;
 				else if (String(name) == g_wszWMPublisher)	nFormat->label   = (LPWSTR) pbValue;
 				else if (String(name) == g_wszWMISRC)		nFormat->isrc    = (LPWSTR) pbValue;
 
+				else if (String(name) == g_wszWMTrack)
+				{
+					if	(type == WMT_TYPE_DWORD)  nFormat->track = 1 + ((DWORD *) pbValue)[0];
+					else if (type == WMT_TYPE_STRING) nFormat->track = 1 + String((LPWSTR) pbValue).ToInt();
+				}
+				else if (String(name) == g_wszWMTrackNumber)
+				{
+					if	(type == WMT_TYPE_DWORD)  nFormat->track = ((DWORD *) pbValue)[0];
+					else if (type == WMT_TYPE_STRING) nFormat->track = String((LPWSTR) pbValue).ToInt();
+				}
 				else if (String(name) == g_wszWMPicture)
 				{
 					WM_PICTURE	*picData = (WM_PICTURE *) pbValue;

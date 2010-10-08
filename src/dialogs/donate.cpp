@@ -15,9 +15,7 @@ BonkEnc::DonateDialog::DonateDialog()
 {
 	Config	*config = BonkEnc::currentConfig;
 
-	Rect	 workArea = System::MultiMonitor::GetActiveMonitorWorkArea();
-
-	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Support this project"), Point(workArea.left, workArea.top) + Point(((workArea.right - workArea.left) - 380) / 2, ((workArea.bottom - workArea.top) - 350) / 2), Size(380, 350));
+	mainWnd			= new GUI::Window(BonkEnc::i18n->TranslateString("Support this project"), Point(100, 100), Size(380, 350));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
@@ -32,25 +30,25 @@ BonkEnc::DonateDialog::DonateDialog()
 
 	mainWnd->Add(button_close);
 
+	text_donate		= new Text(BonkEnc::i18n->TranslateString("Please help keep this software free by supporting the BonkEnc project\nwith a donation.\n\nClick one of the buttons below to make a donation using PayPal:"), Point(7, 45));
+	text_donate_other	= new Text(BonkEnc::i18n->TranslateString("You can also send money directly to donate@bonkenc.org using PayPal.\n\nPlease write to donate@bonkenc.org if you would like to donate using\nelectronic transfer, mail a cheque or send money by mail."), Point(7, text_donate->textSize.cy + 116));
+
 	text_intro		= new Text(BonkEnc::i18n->TranslateString("Please support this project!"), Point(7, 12));
 	text_intro->SetFont(Font(Font::Default, 12, Font::Bold));
-	text_intro->SetX((370 - text_intro->textSize.cx) / 2);
+	text_intro->SetX((Math::Max(text_donate->textSize.cx, text_donate_other->textSize.cx) + 9 - text_intro->textSize.cx) / 2);
 
-	text_donate		= new Text(BonkEnc::i18n->TranslateString("Please help keep this software free by supporting the BonkEnc project\nwith a donation.\n\nClick one of the buttons below to make a donation using PayPal:"), Point(7, 45));
-	text_donate_other	= new Text(BonkEnc::i18n->TranslateString("You can also send money directly to donate@bonkenc.org using PayPal.\n\nPlease write to donate@bonkenc.org if you would like to donate using\nelectronic transfer, mail a cheque or send money by mail."), Point(7, 173));
-
-	text_thanks		= new Text(BonkEnc::i18n->TranslateString("Thank you very much!"), Point(7, 243));
+	text_thanks		= new Text(BonkEnc::i18n->TranslateString("Thank you very much!"), Point(7, text_donate->textSize.cy + text_donate_other->textSize.cy + 129));
 	text_thanks->SetFont(Font(Font::Default, 12, Font::Bold));
-	text_thanks->SetX((370 - text_thanks->textSize.cx) / 2);
+	text_thanks->SetX((Math::Max(text_donate->textSize.cx, text_donate_other->textSize.cx) + 9 - text_thanks->textSize.cx) / 2);
 
 	mainWnd->Add(text_intro);
 	mainWnd->Add(text_donate);
 	mainWnd->Add(text_donate_other);
 	mainWnd->Add(text_thanks);
 
-	link_donate_5		= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_5.pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_5.html"), Point(90, 113));
-	link_donate_10		= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_10.pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_10.html"), Point(160, 113));
-	link_donate_other	= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_other_").Append(BonkEnc::i18n->TranslateString("en")).Append(".pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_other.html"), Point(230, 113));
+	link_donate_5		= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_5.pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_5.html"), Point((Math::Max(text_donate->textSize.cx, text_donate_other->textSize.cx) + 21) / 2 - 100, text_donate->textSize.cy + 56));
+	link_donate_10		= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_10.pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_10.html"), Point((Math::Max(text_donate->textSize.cx, text_donate_other->textSize.cx) + 21) / 2 - 30, text_donate->textSize.cy + 56));
+	link_donate_other	= new Hyperlink(NIL, ImageLoader::Load(File(String(Application::GetApplicationDirectory()).Append("donate/donate_other_").Append(BonkEnc::i18n->TranslateString("en")).Append(".pci:0"))), String("file:///").Append(Application::GetApplicationDirectory().Replace("\\", "/")).Append("donate/donate_").Append(BonkEnc::i18n->TranslateString("usd")).Append("_other.html"), Point((Math::Max(text_donate->textSize.cx, text_donate_other->textSize.cx) + 21) / 2 + 40, text_donate->textSize.cy + 56));
 
 	mainWnd->Add(link_donate_5);
 	mainWnd->Add(link_donate_10);
@@ -70,6 +68,13 @@ BonkEnc::DonateDialog::DonateDialog()
 #ifdef __WIN32__
 	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
 #endif
+
+	Rect	 workArea = System::MultiMonitor::GetActiveMonitorWorkArea();
+
+	Size	 wndSize  = Size(Math::Max(text_donate->textSize.cx, text_donate_other->textSize.cx) + 21, text_donate->textSize.cy + text_donate_other->textSize.cy + 236);
+	Point	 wndPos	  = Point(workArea.left, workArea.top) + Point(((workArea.right - workArea.left) - wndSize.cx) / 2, ((workArea.bottom - workArea.top) - wndSize.cy) / 2);
+
+	mainWnd->SetMetrics(wndPos, wndSize);
 }
 
 BonkEnc::DonateDialog::~DonateDialog()
