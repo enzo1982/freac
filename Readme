@@ -1,22 +1,26 @@
-BonkEnc version 1.0.17
+fre:ac version 1.0.17
 
-BonkEnc is an encoder for various audio formats. It can read
-MP3, MP4/M4A, AAC, Ogg Vorbis, WMA, Bonk, FLAC, WAV, AIF, AU and
-VOC files and produce MP3, MP4/M4A, AAC, Ogg Vorbis, WMA, Bonk,
-FLAC, VQF and WAV files.
+fre:ac is a free and open source audio converter for various formats.
+It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and
+VOC files and converts to MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC,
+VQF or WAV.
 
-BonkEnc uses the CDRip Ripping Library for audio ripping.
-BonkEnc uses the FAAD2 AAC decoder for Advanced Audio decoding.
+fre:ac uses the CDRip Ripping Library for audio ripping.
+fre:ac uses the FAAD2 AAC decoder for Advanced Audio decoding.
 
 Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
 
-	Version 1.0.17 (September 2010)
+	Version 1.0.17 (November 2010)
 
-		- updated Turkish, Ukrainian and Finnish translations
+		- renamed project to fre:ac - free audio converter
+		- added Arabic language support
+		- updated Japanese, Turkish, Ukrainian and Finnish translations
 		- fixed extremely slow startup when running from network volumes
+		- fixed reading of WMA Track and TrackNumber metadata items
+		- upgraded Ogg library to version 1.2.1
 		- some minor fixes
 
 	Version 1.0.16 (August 2010)
@@ -85,7 +89,7 @@ History
 		- updated Japanese and Russian translations
 		- fixed CDDB querying when both, local and remote CDDB are enabled
 		- fixed problems with easyUpdate running on Windows Vista
-		- fixed problems starting BonkEnc on Windows NT 4.0
+		- fixed startup problems on Windows NT 4.0
 		- disabled compression of all executables to fix incorrect threat warnings from virus scanners
 		- upgraded Ogg Vorbis to aoTuV beta 5.7
 
@@ -284,7 +288,7 @@ Known problems
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
 
-	- BonkEnc is currently limited to a maximum of 2 audio channels
+	- fre:ac is currently limited to a maximum of 2 audio channels
 
 Special thanks to
 -----------------
@@ -325,15 +329,15 @@ Special thanks to
 			   Goran Bekic (Croatian),
 			   Eduardo Estévez (Galician),
 			   Phan Anh (Vietnamese),
-			   Ilan Tsmeret (Hebrew)
+			   Ilan Tsmeret (Hebrew),
+			   Eman Ali Fhoula (Arabic)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
 
 -----------------------------------------------------------------------------------
 
-The official BonkEnc homepage: http://www.bonkenc.org/
-Paul F. Harrison's Bonk page: http://www.logarithmic.net/pfh/bonk
+The official fre:ac homepage: http://www.freac.org/
 
-robert.kausch@bonkenc.org,
+robert.kausch@freac.org,
 Robert Kausch

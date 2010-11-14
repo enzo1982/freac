@@ -40,7 +40,7 @@ Bool BonkEnc::Config::LoadSettings()
 	{
 		configDir = Utilities::GetApplicationDataDirectory();
 
-		if (configDir != "") configDir.Append("BonkEnc\\");
+		if (configDir != "") configDir.Append("freac\\");
 
 		Directory(configDir).Create();
 	}
@@ -95,7 +95,7 @@ Bool BonkEnc::Config::LoadSettings()
 	vctag_encoding				= config->GetStringValue("Settings", "VorbisCommentTagEncoding", "UTF-8");
 	mp4meta_encoding			= config->GetStringValue("Settings", "MP4MetadataEncoding", "UTF-8");
 	wmameta_encoding			= config->GetStringValue("Settings", "WMAMetadataEncoding", "UTF-16LE");
-	default_comment				= config->GetStringValue("Settings", "DefaultComment", String("BonkEnc ").Append(BonkEnc::shortVersion).Append(" <http://www.bonkenc.org/>"));
+	default_comment				= config->GetStringValue("Settings", "DefaultComment", String(BonkEnc::appLongName).Append(" <").Append(BonkEnc::website).Append(">"));
 	overwriteComments			= config->GetIntValue("Settings", "OverwriteComments", 0);
 	copy_picture_tags			= config->GetIntValue("Settings", "CopyPictureTags", 1);
 
@@ -135,7 +135,7 @@ Bool BonkEnc::Config::LoadSettings()
 	freedb_http_port			= 80;
 	freedb_query_path			= config->GetStringValue("freedb", "QueryPath", "/~cddb/cddb.cgi");
 	freedb_submit_path			= config->GetStringValue("freedb", "SubmitPath", "/~cddb/submit.cgi");
-	freedb_email				= config->GetStringValue("freedb", "eMail", "cddb@bonkenc.org");
+	freedb_email				= config->GetStringValue("freedb", "eMail", "cddb@freac.org");
 	freedb_proxy_mode			= config->GetIntValue("freedb", "ProxyMode", 0);
 	freedb_proxy				= config->GetStringValue("freedb", "Proxy", "localhost");
 	freedb_proxy_port			= config->GetIntValue("freedb", "ProxyPort", 1080);
@@ -298,7 +298,7 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("Settings", "CopyPictureTags", copy_picture_tags);
 
 		config->SetIntValue("OpenMP", "EnableOpenMP", openmp_enableOpenMP);
-		config->SetIntValue("OpenMP", "NumThreads", openmp_numThreads);
+		config->SetIntValue("OpenMP", "NumberOfThreads", openmp_numThreads);
 
 		config->SetIntValue("Donate", "StartCount", donate_startcount);
 		config->SetIntValue("Donate", "ShowAgain", donate_showagain);

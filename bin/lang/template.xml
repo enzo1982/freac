@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
-    <property name="program">BonkEnc</property>
+    <property name="program">freac</property>
     <property name="version">1.0</property>
     <property name="language">[english name] / [native name]</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">[template]</property>
     <property name="author">[author] &lt;[author@server.tld]&gt;</property>
-    <property name="url">http://www.bonkenc.org/</property>
+    <property name="url">http://www.freac.org/</property>
   </info>
   <data>
     <entry id="1" string="File"/>
@@ -54,7 +54,7 @@
     <entry id="41" string="Currently encoding"/>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL)."/>
     <entry id="43" string="CDDB query"/>
-    <entry id="44" string="About BonkEnc"/>
+    <entry id="44" string="About %1"/>
     <entry id="45" string="No options can be configured for Windows Wave file output!"/>
     <entry id="46" string="Windows Wave file output"/>
     <entry id="47" string="Cannot change settings while encoding!"/>
@@ -236,16 +236,16 @@
     <entry id="232" string="Select none"/>
     <entry id="233" string="Toggle selection"/>
     <entry id="234" string="Show Tip of the Day"/>
-    <entry id="235" string="BonkEnc is available in %1 languages. If your language is&#10;not available, you can easily translate BonkEnc using the&#10;'smooth Translator' application."/>
-    <entry id="236" string="BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the BonkEnc website: %1"/>
-    <entry id="237" string="BonkEnc can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the BonkEnc/plugins directory to&#10;enable BonkEnc to read these formats."/>
-    <entry id="238" string="With BonkEnc you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with BonkEnc."/>
-    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of BonkEnc's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."/>
-    <entry id="240" string="Do you have any suggestions on how to improve BonkEnc?&#10;You can submit any ideas through the Tracker on the BonkEnc&#10;SourceForge project page - %1&#10;or send an eMail to %2."/>
-    <entry id="241" string="Do you like BonkEnc? BonkEnc is available for free, but you can&#10;help fund the development by donating to the BonkEnc project.&#10;You can send money to %1 through PayPal.&#10;See %2 for more details."/>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application."/>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2"/>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats."/>
+    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1."/>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."/>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3."/>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details."/>
     <entry id="242" string="Bitrate / Quality"/>
     <entry id="243" string="Check for updates now"/>
-    <entry id="244" string="There are new updates for BonkEnc available online!&#10;Would you like to see a list of available updates now?"/>
+    <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?"/>
     <entry id="245" string="There are no updates available at the moment!"/>
     <entry id="246" string="Check for updates at startup"/>
     <entry id="247" string="Read CD contents on insert"/>
@@ -385,7 +385,7 @@
     <entry id="381" string="Apodization"/>
     <entry id="382" string="Apodization function(s):"/>
     <entry id="383" string="You can specify multiple functions separated by semicolons."/>
-    <entry id="384" string="BonkEnc can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like BonkEnc to look for updates at startup?"/>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?"/>
     <entry id="385" string="Cannot access input file: %1"/>
     <entry id="386" string="Cannot create output file: %1"/>
     <entry id="387" string="File not found"/>
@@ -409,11 +409,13 @@
     <entry id="405" string="Set drive speed limit:"/>
     <entry id="406" string="Support this project"/>
     <entry id="407" string="Please support this project!"/>
-    <entry id="408" string="Please help keep this software free by supporting the BonkEnc project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
-    <entry id="409" string="You can also send money directly to donate@bonkenc.org using PayPal.&#10;&#10;Please write to donate@bonkenc.org if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd"/>
     <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!"/>
     <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
   </data>
 </LangFile>

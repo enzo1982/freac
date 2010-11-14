@@ -149,10 +149,13 @@ namespace BonkEnc
 			Void			 UpdateProgressValues(Track *, Int);
 			Void			 FinishProgressValues(Track *);
 		public:
+			static String		 appName;
+			static String		 appLongName;
 			static String		 version;
 			static String		 shortVersion;
 			static String		 cddbVersion;
 			static String		 cddbMode;
+			static String		 website;
 			static String		 updatePath;
 
 			static Config		*currentConfig;

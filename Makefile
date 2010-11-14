@@ -1,4 +1,4 @@
-# Makefile for BonkEnc
+# Makefile for fre:ac
 
 INCLUDEDIR1 = ./include
 INCLUDEDIR2 = ../smooth/include
@@ -14,10 +14,10 @@ RESOURCES = $(OBJECTDIR)/resources.o
 EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/donate.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/wmaconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/playback.o
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o
 
-EXENAME = $(BINDIR)/BonkEnc.exe
-CMDNAME = $(BINDIR)/BEcmd.exe
-DLLNAME = $(BINDIR)/BonkEnc.dll
-LIBNAME = $(OBJECTDIR)/libbonkenc.a
+EXENAME = $(BINDIR)/freac.exe
+CMDNAME = $(BINDIR)/freaccmd.exe
+DLLNAME = $(BINDIR)/freac.dll
+LIBNAME = $(OBJECTDIR)/libfreac.a
 
 COMPILER = gcc
 RESCOMP = windres
@@ -25,9 +25,9 @@ LINKER = gcc
 REMOVER = rm
 ECHO = echo
 COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -Os -g0 -Wall -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
-LINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -Xlinker --dynamicbase -Xlinker --nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -mwindows -o$(EXENAME)
-CMDLINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -Xlinker --dynamicbase -Xlinker --nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -o$(CMDNAME)
-DLLLINKER_OPTS = -L$(LIBDIR1) -Xlinker --dynamicbase -Xlinker --nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -luuid -lwinmm -lstdc++ -Xlinker --enable-stdcall-fixup -mwindows --shared -Xlinker --out-implib -Xlinker $(LIBNAME) -o$(DLLNAME)
+LINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -Wl,--dynamicbase,--nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -mwindows -o$(EXENAME)
+CMDLINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -Wl,--dynamicbase,--nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -o$(CMDNAME)
+DLLLINKER_OPTS = -L$(LIBDIR1) -Wl,--dynamicbase,--nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -luuid -lwinmm -lstdc++ -Wl,--enable-stdcall-fixup -mwindows --shared -Wl,--out-implib,$(LIBNAME) -o$(DLLNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
@@ -434,7 +434,7 @@ $(OBJECTDIR)/outputfilter.o: $(SRCDIR)/output/outputfilter.cpp
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/output/outputfilter.cpp -o $(OBJECTDIR)/outputfilter.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR1)/resources.h $(BINRESDIR)/bonkenc.ico
+$(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR1)/resources.h $(BINRESDIR)/freac.ico
 	$(ECHO) -n Compiling $(RESOURCEDIR)/resources.rc...
 	$(RESCOMP) $(RESCOMP_OPTS) $(RESOURCEDIR)/resources.rc -o $(OBJECTDIR)/resources.o
 	$(ECHO) done.

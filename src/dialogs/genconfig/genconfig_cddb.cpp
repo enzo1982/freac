@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,7 @@
 #include <dialogs/cddb/extsettings.h>
 #include <cddb/cddb.h>
 
-BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer("CDDB")
+BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i18n->TranslateString("CDDB"))
 {
 	Point	 pos;
 	Size	 size;

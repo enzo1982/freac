@@ -86,7 +86,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	reg_register->Add(register_layer_tags);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
 BonkEnc::GeneralSettingsDialog::~GeneralSettingsDialog()

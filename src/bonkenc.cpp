@@ -40,12 +40,19 @@ I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
 
 BonkEnc::Debug		*BonkEnc::debug_out;
 
+/* General application information and fixed settings.
+ */
+String	 BonkEnc::BonkEnc::appName	= "fre:ac";
+String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
 String	 BonkEnc::BonkEnc::version	= "v1.0.17";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.17";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.15";
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.17";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
-String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
+String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
+String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml";
 
+/* Use these settings for debugging.
+ */
 //String	 BonkEnc::BonkEnc::cddbMode	= "test";
 //String	 BonkEnc::BonkEnc::updatePath	= "file://eUpdate/eUpdate.xml";
 
@@ -66,17 +73,21 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	currentConfig->LoadSettings();
 
-	debug_out = new Debug("BonkEnc.log");
-	debug_out->OutputLine("Starting BonkEnc...");
+	debug_out = new Debug("freac.log");
+	debug_out->OutputLine("Starting freac...");
 
 	/* Set number of threads for OpenMP optimized encoders.
 	 */
-	if (currentConfig->openmp_numThreads > 0) SetEnvironmentVariableA("OMP_NUM_THREADS", String::FromInt(currentConfig->openmp_numThreads));
+	if (GetEnvironmentVariableA("OMP_NUM_THREADS", NIL, 0) == 0)
+	{
+		if (currentConfig->openmp_numThreads > 0) SetEnvironmentVariableA("OMP_NUM_THREADS", String::FromInt(currentConfig->openmp_numThreads));
+		else					  SetEnvironmentVariableA("OMP_NUM_THREADS", String::FromInt(CPU().GetNumCores()));
+	}
 
 	/* Set default language information.
 	 */
-	i18n = new I18n::Translator("BonkEnc");
-	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@bonkenc.org>", "http://www.bonkenc.org/", False);
+	i18n = new I18n::Translator("freac");
+	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@freac.org>", BonkEnc::website, False);
 
 	/* Load encoder DLLs.
 	 */
@@ -174,7 +185,7 @@ BonkEnc::BonkEnc::~BonkEnc()
 	 */
 	Object::ObjectCleanup();
 
-	debug_out->OutputLine("Leaving BonkEnc...");
+	debug_out->OutputLine("Leaving freac...");
 	delete debug_out;
 
 	delete i18n;

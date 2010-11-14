@@ -94,13 +94,13 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		currentConfig->wndSize.cy = (Int) Math::Min(workArea.bottom - 20, currentConfig->wndSize.cy);
 	}
 
-	mainWnd			= new Window(String("BonkEnc ").Append(BonkEnc::version), currentConfig->wndPos, currentConfig->wndSize);
+	mainWnd			= new Window(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version), currentConfig->wndPos, currentConfig->wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
 	menu_file		= new PopupMenu();
 	menu_options		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -125,8 +125,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	pos.x = 91;
 	pos.y = -22;
 
-	hyperlink		= new Hyperlink("www.bonkenc.org", NIL, "http://www.bonkenc.org/", pos);
+	hyperlink		= new Hyperlink(String(BonkEnc::website).Replace("http://", NIL).Replace("/", NIL), NIL, BonkEnc::website, pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
+	hyperlink->SetX(hyperlink->textSize.cx + 4);
 
 	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
@@ -135,42 +136,42 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		size.cx = 25;
 		size.cy = 25;
 
-		button_play	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:12"), pos, size);
+		button_play	= new Button(NIL, ImageLoader::Load("freac.pci:12"), pos, size);
 		button_play->onAction.Connect(&BonkEncGUI::PlaySelectedItem, this);
 		button_play->SetOrientation(OR_UPPERRIGHT);
 		button_play->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_pause	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:13"), pos, size);
+		button_pause	= new Button(NIL, ImageLoader::Load("freac.pci:13"), pos, size);
 		button_pause->onAction.Connect(&BonkEncGUI::PausePlayback, this);
 		button_pause->SetOrientation(OR_UPPERRIGHT);
 		button_pause->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_stop	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:14"), pos, size);
+		button_stop	= new Button(NIL, ImageLoader::Load("freac.pci:14"), pos, size);
 		button_stop->onAction.Connect(&BonkEncGUI::StopPlayback, this);
 		button_stop->SetOrientation(OR_UPPERRIGHT);
 		button_stop->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_prev	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:15"), pos, size);
+		button_prev	= new Button(NIL, ImageLoader::Load("freac.pci:15"), pos, size);
 		button_prev->onAction.Connect(&BonkEncGUI::PlayPrevious, this);
 		button_prev->SetOrientation(OR_UPPERRIGHT);
 		button_prev->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_next	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:16"), pos, size);
+		button_next	= new Button(NIL, ImageLoader::Load("freac.pci:16"), pos, size);
 		button_next->onAction.Connect(&BonkEncGUI::PlayNext, this);
 		button_next->SetOrientation(OR_UPPERRIGHT);
 		button_next->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_open	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:17"), pos, size);
+		button_open	= new Button(NIL, ImageLoader::Load("freac.pci:17"), pos, size);
 		button_open->onAction.Connect(&BonkEncGUI::OpenCDTray, this);
 		button_open->SetOrientation(OR_UPPERRIGHT);
 		button_open->SetFlags(BF_NOFRAME);
@@ -548,7 +549,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		info_edit_genre->Hide();
 	}
 
-	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 
 #ifdef __WIN32__
 	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
@@ -562,7 +563,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	if (currentConfig->showTips) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
 	mainWnd->doQuit.Connect(&BonkEncGUI::ExitProc, this);
-	mainWnd->SetMinimumSize(Size(530, 340 + (currentConfig->showTitleInfo ? 68 : 0)));
+	mainWnd->SetMinimumSize(Size(600, 400 + (currentConfig->showTitleInfo ? 68 : 0)));
 
 	if (currentConfig->maximized) mainWnd->Maximize();
 
@@ -817,7 +818,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 {
 	currentConfig->wndSize = mainWnd->GetSize();
 
-	mainWnd->SetStatusText(String("BonkEnc ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
+	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -868,7 +869,7 @@ Void BonkEnc::BonkEncGUI::Close()
 
 Void BonkEnc::BonkEncGUI::About()
 {
-	QuickMessage(String("BonkEnc ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2010 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About BonkEnc"), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2010 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -1184,13 +1185,13 @@ Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 	{
 		n = 68;
 
-		mainWnd->SetMinimumSize(Size(530, 340 + n));
+		mainWnd->SetMinimumSize(Size(600, 400 + n));
 	}
 	else
 	{
 		n = -68;
 
-		mainWnd->SetMinimumSize(Size(530, 340));
+		mainWnd->SetMinimumSize(Size(600, 400));
 
 		info_bottom->Hide();
 		info_text_artist->Hide();
@@ -1498,26 +1499,26 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	MenuEntry	*entry = NIL;
 
-	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load("BonkEnc.pci:21"), menu_addsubmenu);
-	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load("BonkEnc.pci:24"));
+	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load("freac.pci:21"), menu_addsubmenu);
+	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load("freac.pci:24"));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
 	menu_file->AddEntry();
 	menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onAction.Connect(&JobList::LoadList, joblist);
 	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
 	menu_file->AddEntry();
-	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load("BonkEnc.pci:25"));
+	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load("freac.pci:25"));
 	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
 	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
 	menu_file->AddEntry();
-	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("BonkEnc.pci:36"));
+	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("freac.pci:36"));
 	entry->onAction.Connect(&BonkEncGUI::Close, this);
 	entry->SetShortcut(SC_ALT, VK_F4, mainWnd);
 
-	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("BonkEnc.pci:28"));
+	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("freac.pci:28"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'C', mainWnd);
-	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("BonkEnc.pci:29"));
+	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("freac.pci:29"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
 
@@ -1529,10 +1530,10 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		}
 
 		menu_options->AddEntry();
-		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load("BonkEnc.pci:30"), menu_seldrive);
+		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load("freac.pci:30"), menu_seldrive);
 	}
 
-	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."), ImageLoader::Load("BonkEnc.pci:22"));
+	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."), ImageLoader::Load("freac.pci:22"));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
 
@@ -1543,7 +1544,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 			menu_drives->AddEntry(currentConfig->cdrip_drives.GetNth(j), NIL, NIL, NIL, &clicked_drive, j)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
 		}
 
-		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("BonkEnc.pci:23"));
+		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load("freac.pci:23"));
 		entry->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
 		entry->SetShortcut(SC_CTRL, 'D', mainWnd);
 	}
@@ -1559,11 +1560,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
 
-	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load("BonkEnc.pci:31"));
+	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load("freac.pci:31"));
 	entry->onAction.Connect(&BonkEncGUI::StartEncoding, this);
 	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
-	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("BonkEnc.pci:32"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
-	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("BonkEnc.pci:33"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
+	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load("freac.pci:32"))->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
+	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load("freac.pci:33"))->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
 
 	if (currentConfig->enable_blade)  menu_encoders->AddEntry("BladeEnc MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BLADEENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
 	if (currentConfig->enable_bonk)   menu_encoders->AddEntry("Bonk Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_BONKENC)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
@@ -1595,14 +1596,14 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_encoder_options->AddEntry(i18n->TranslateString("Shutdown after encoding"), NIL, NIL, &currentConfig->shutdownAfterEncoding);
 
 	menu_encode->AddEntry();
-	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load("BonkEnc.pci:29"), menu_encoder_options);
+	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load("freac.pci:29"), menu_encoder_options);
 
 	ToggleUseInputDirectory();
 
-	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"));
+	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("freac.pci:26"));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	entry->SetShortcut(SC_CTRL, 'Q', mainWnd);
-	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load("BonkEnc.pci:27"));
+	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load("freac.pci:27"));
 	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
 	menu_database->AddEntry();
@@ -1616,7 +1617,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database->AddEntry();
 	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, &currentConfig->enable_auto_cddb);
 
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("BonkEnc.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("freac.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
 
 	if (DLLInterfaces::winamp_out_modules.Length() > 0)
@@ -1634,7 +1635,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_trackmenu->AddEntry(i18n->TranslateString("Select none"))->onAction.Connect(&JobList::SelectNone, joblist);
 	menu_trackmenu->AddEntry(i18n->TranslateString("Toggle selection"))->onAction.Connect(&JobList::ToggleSelection, joblist);
 
-	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."), ImageLoader::Load("BonkEnc.pci:34"));
+	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."), ImageLoader::Load("freac.pci:34"));
 	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
 	entry->SetShortcut(0, VK_F1, mainWnd);
 	menu_help->AddEntry();
@@ -1650,7 +1651,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	}
 
 	menu_help->AddEntry();
-	menu_help->AddEntry(String(i18n->TranslateString("About BonkEnc")).Append("..."), ImageLoader::Load("BonkEnc.pci:35"))->onAction.Connect(&BonkEncGUI::About, this);
+	menu_help->AddEntry(String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName).Append("..."), ImageLoader::Load("freac.pci:35"))->onAction.Connect(&BonkEncGUI::About, this);
 
 	mainWnd_menubar->RemoveAllEntries();
 
@@ -1665,22 +1666,22 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_iconbar->RemoveAllEntries();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:1"), menu_files);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:1"), menu_files);
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:2"), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:2"), currentConfig->cdrip_numdrives > 1 ? menu_drives : NIL);
 		entry->onAction.Connect(&BonkEnc::ReadCD, (BonkEnc *) this);
 		entry->SetTooltipText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:3"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:3"));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Remove the selected entry from the joblist"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:4"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:4"));
 	entry->onAction.Connect(&JobList::RemoveAllTracks, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
@@ -1688,36 +1689,36 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		mainWnd_iconbar->AddEntry();
 
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:5"), menu_database_query);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:5"), menu_database_query);
 		entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 		entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
 
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:6"));
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:6"));
 		entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 		entry->SetTooltipText(i18n->TranslateString("Submit CDDB data..."));
 	}
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:7"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:7"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure general settings"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:8"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:8"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure the selected audio encoder"));
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:9"), ENCODER_WAVE > 0 ? menu_encoders : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:9"), ENCODER_WAVE > 0 ? menu_encoders : NIL);
 	entry->onAction.Connect(&BonkEncGUI::StartEncoding, this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:10"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:10"));
 	entry->onAction.Connect(&BonkEnc::PauseEncoding, (BonkEnc *) this);
 	entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("BonkEnc.pci:11"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:11"));
 	entry->onAction.Connect(&BonkEnc::StopEncoding, (BonkEnc *) this);
 	entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
 
@@ -2244,13 +2245,13 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 {
 	TipOfTheDay	*dlg = new TipOfTheDay(&currentConfig->showTips);
 
-	dlg->AddTip(String(i18n->TranslateString("BonkEnc is available in %1 languages. If your language is\nnot available, you can easily translate BonkEnc using the\n\'smooth Translator\' application.")).Replace("%1", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
-	dlg->AddTip(String(i18n->TranslateString("BonkEnc comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the BonkEnc website: %1")).Replace("%1", "http://www.bonkenc.org/"));
-	dlg->AddTip(i18n->TranslateString("BonkEnc can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the BonkEnc/plugins directory to\nenable BonkEnc to read these formats."));
-	dlg->AddTip(i18n->TranslateString("With BonkEnc you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with BonkEnc."));
-	dlg->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the CDRip tab of BonkEnc's configuration\ndialog. If that does not help, try using one of the Paranoia modes."));
-	dlg->AddTip(String(i18n->TranslateString("Do you have any suggestions on how to improve BonkEnc?\nYou can submit any ideas through the Tracker on the BonkEnc\nSourceForge project page - %1\nor send an eMail to %2.")).Replace("%1", "http://sf.net/projects/bonkenc").Replace("%2", "suggestions@bonkenc.org"));
-	dlg->AddTip(String(i18n->TranslateString("Do you like BonkEnc? BonkEnc is available for free, but you can\nhelp fund the development by donating to the BonkEnc project.\nYou can send money to %1 through PayPal.\nSee %2 for more details.")).Replace("%1", "donate@bonkenc.org").Replace("%2", "http://www.bonkenc.org/donating.php"));
+	dlg->AddTip(String(i18n->TranslateString("%1 is available in %2 languages. If your language is\nnot available, you can easily translate %1 using the\n\'smooth Translator\' application.")).Replace("%1", BonkEnc::appName).Replace("%2", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
+	dlg->AddTip(String(i18n->TranslateString("%1 comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the %1 website: %2")).Replace("%1", BonkEnc::appName).Replace("%2", BonkEnc::website));
+	dlg->AddTip(String(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.")).Replace("%1", BonkEnc::appName));
+	dlg->AddTip(String(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.")).Replace("%1", BonkEnc::appName));
+	dlg->AddTip(String(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the CDRip tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.")).Replace("%1", BonkEnc::appName));
+	dlg->AddTip(String(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.")).Replace("%1", BonkEnc::appName).Replace("%2", "http://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
+	dlg->AddTip(String(i18n->TranslateString("Do you like %1? %1 is available for free, but you can\nhelp fund the development by donating to the %1 project.\nYou can send money to %2 through PayPal.\nSee %3 for more details.")).Replace("%1", BonkEnc::appName).Replace("%2", "donate@freac.org").Replace("%3", String(BonkEnc::website).Append("donating.php")));
 
 	dlg->SetMode(TIP_ORDERED, currentConfig->tipOffset, currentConfig->showTips);
 
@@ -2280,106 +2281,106 @@ String BonkEnc::BonkEncGUI::GetSystemLanguage()
 			language = "internal";
 			break;
 		case LANG_ARABIC:
-			language = "bonkenc_ar.xml";
+			language = "freac_ar.xml";
 			break;
 		case LANG_CATALAN:
-			language = "bonkenc_ca.xml";
+			language = "freac_ca.xml";
 			break;
 		case LANG_CHINESE:
-			language = "bonkenc_zh_CN.xml";
+			language = "freac_zh_CN.xml";
 
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_SIMPLIFIED) language = "bonkenc_zh_CN.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) language = "bonkenc_zh_TW.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_SIMPLIFIED) language = "freac_zh_CN.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) language = "freac_zh_TW.xml";
 			break;
 		case LANG_CZECH:
-			language = "bonkenc_cs.xml";
+			language = "freac_cs.xml";
 			break;
 		case LANG_DANISH:
-			language = "bonkenc_da.xml";
+			language = "freac_da.xml";
 			break;
 		case LANG_DUTCH:
-			language = "bonkenc_nl.xml";
+			language = "freac_nl.xml";
 			break;
 		case LANG_ESTONIAN:
-			language = "bonkenc_et.xml";
+			language = "freac_et.xml";
 			break;
 		case LANG_FINNISH:
-			language = "bonkenc_fi.xml";
+			language = "freac_fi.xml";
 			break;
 		case LANG_FRENCH:
-			language = "bonkenc_fr.xml";
+			language = "freac_fr.xml";
 			break;
 		case LANG_GALICIAN:
-			language = "bonkenc_gl.xml";
+			language = "freac_gl.xml";
 			break;
 		case LANG_GERMAN:
-			language = "bonkenc_de.xml";
+			language = "freac_de.xml";
 			break;
 		case LANG_GREEK:
-			language = "bonkenc_el.xml";
+			language = "freac_el.xml";
 			break;
 		case LANG_HEBREW:
-			language = "bonkenc_he.xml";
+			language = "freac_he.xml";
 			break;
 		case LANG_HUNGARIAN:
-			language = "bonkenc_hu.xml";
+			language = "freac_hu.xml";
 			break;
 		case LANG_ITALIAN:
-			language = "bonkenc_it.xml";
+			language = "freac_it.xml";
 			break;
 		case LANG_JAPANESE:
-			language = "bonkenc_ja.xml";
+			language = "freac_ja.xml";
 			break;
 		case LANG_KOREAN:
-			language = "bonkenc_ko.xml";
+			language = "freac_ko.xml";
 			break;
 		case LANG_LITHUANIAN:
-			language = "bonkenc_lt.xml";
+			language = "freac_lt.xml";
 			break;
 		case LANG_NORWEGIAN:
-			language = "bonkenc_no.xml";
+			language = "freac_no.xml";
 			break;
 		case LANG_POLISH:
-			language = "bonkenc_pl.xml";
+			language = "freac_pl.xml";
 			break;
 		case LANG_PORTUGUESE:
-			language = "bonkenc_pt.xml";
+			language = "freac_pt.xml";
 
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE) language = "bonkenc_pt.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE_BRAZILIAN) language = "bonkenc_pt_BR.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE) language = "freac_pt.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE_BRAZILIAN) language = "freac_pt_BR.xml";
 			break;
 		case LANG_ROMANIAN:
-			language = "bonkenc_ro.xml";
+			language = "freac_ro.xml";
 			break;
 		case LANG_RUSSIAN:
-			language = "bonkenc_ru.xml";
+			language = "freac_ru.xml";
 			break;
 		case LANG_SERBIAN:
-			language = "bonkenc_sr.xml";
+			language = "freac_sr.xml";
 
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CROATIAN_CROATIA) language = "bonkenc_hr.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SERBIAN_LATIN) language = "bonkenc_sr.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CROATIAN_CROATIA) language = "freac_hr.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SERBIAN_LATIN) language = "freac_sr.xml";
 			break;
 		case LANG_SLOVAK:
-			language = "bonkenc_sk.xml";
+			language = "freac_sk.xml";
 			break;
 		case LANG_SPANISH:
-			language = "bonkenc_es.xml";
+			language = "freac_es.xml";
 
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH) language = "bonkenc_es.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH_ARGENTINA) language = "bonkenc_es_AR.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH) language = "freac_es.xml";
+			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH_ARGENTINA) language = "freac_es_AR.xml";
 			break;
 		case LANG_SWEDISH:
-			language = "bonkenc_sv.xml";
+			language = "freac_sv.xml";
 			break;
 		case LANG_TURKISH:
-			language = "bonkenc_tr.xml";
+			language = "freac_tr.xml";
 			break;
 		case LANG_UKRAINIAN:
-			language = "bonkenc_uk.xml";
+			language = "freac_uk.xml";
 			break;
 		case LANG_VIETNAMESE:
-			language = "bonkenc_vi.xml";
+			language = "freac_vi.xml";
 			break;
 	}
 #endif
@@ -2403,7 +2404,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 
 	if (currentConfig->firstStart)
 	{
-		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION) == IDNO)
+		if (QuickMessage(String(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?")).Replace("%1", BonkEnc::appName), String(BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION) == IDNO)
 		{
 			currentConfig->checkUpdatesAtStartup = False;
 			currentConfig->firstStart = False;
@@ -2412,7 +2413,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 		}
 	}
 
-	Void	*context = ex_eUpdate_CreateUpdateContext("BonkEnc Audio Encoder", version, updatePath);
+	Void	*context = ex_eUpdate_CreateUpdateContext(BonkEnc::appLongName, version, updatePath);
 
 	if (currentConfig->configDir != "")
 	{
@@ -2435,7 +2436,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 
 	if (ex_eUpdate_CheckForNewUpdates(context, (self == NIL)) > 0)
 	{
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), "BonkEnc easyUpdate", MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
+		MessageDlg	*msgBox = new MessageDlg(String(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?")).Replace("%1", BonkEnc::appName), String(BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
 
 		msgBox->ShowDialog();
 
@@ -2450,7 +2451,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 	}
 	else if (self == NIL)
 	{
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
+		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
 
 		msgBox->ShowDialog();
 
@@ -2458,7 +2459,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 	}
 	else if (currentConfig->firstStart)
 	{
-		QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), "BonkEnc easyUpdate", MB_OK, IDI_INFORMATION);
+		QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION);
 	}
 
 	ex_eUpdate_FreeUpdateContext(context);

@@ -10,7 +10,7 @@
 
 #include <dialogs/genconfig/genconfig_cdrip.h>
 
-BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer("CDRip")
+BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc::i18n->TranslateString("Ripper"))
 {
 	Point	 pos;
 	Size	 size;

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,7 +25,7 @@ BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputF
 
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage("BonkEnc does not support more than 2 channels!");
+		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 

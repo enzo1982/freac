@@ -1,22 +1,26 @@
-BonkEnc Version 1.0.17
+fre:ac Version 1.0.17
 
-BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
-MP3, MP4/M4A, AAC, Ogg Vorbis, WMA, Bonk, FLAC, WAV, AIF, AU und
-VOC-Dateien lesen und MP3, MP4/M4A, AAC, Ogg Vorbis, WMA, Bonk,
-FLAC, VQF und WAV-Dateien erzeugen.
+fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
+Das Programm liest MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU
+und VOC-Dateien und erzeugt MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
+oder WAV-Dateien.
 
-BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
-BonkEnc verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
+fre:ac verwendet die CDRip Ripping Library zum CD-Rippen.
+fre:ac verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
 
 Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 Geschichte
 ----------
 
-	Version 1.0.17 (September 2010)
+	Version 1.0.17 (November 2010)
 
-		- Türkische, ukrainische und finnische Übersetzungen aktualisiert
+		- Projekt umbenannt in fre:ac - free audio converter
+		- Sprachunterstützung für Arabisch hinzugefügt
+		- Japanische, türkische, ukrainische und finnische Übersetzungen aktualisiert
 		- Extrem langsamen Programmstart beim Start von Netzlaufwerken behoben
+		- Fehler beim Lesen der WMA-Metadaten-Eigenschaften Track und TrackNumber behoben
+		- Ogg-Bibliothek auf Version 1.2.1 aktualisiert
 		- Einige kleinere Korrekturen
 
 	Version 1.0.16 (August 2010)
@@ -85,7 +89,7 @@ Geschichte
 		- Japanische und russische Übersetzungen aktualisiert
 		- Problem bei der CDDB-Abfrage bei gleichzeitig aktivierter lokaler und Online-CDDB-Abfrage behoben
 		- Probleme mit easyUpdate unter Windows Vista behoben
-		- Probleme beim Starten von BonkEnc unter Windows NT 4.0 behoben
+		- Probleme beim Starten unter Windows NT 4.0 behoben
 		- Komprimierung aller ausführbaren Dateien deaktiviert, um falsche Warnungen von Virenscannern zu verhindern
 		- Ogg Vorbis auf aoTuV Beta 5.7 aktualisiert
 
@@ -284,7 +288,7 @@ Bekannte Probleme
 	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
 	  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
 
-	- BonkEnc ist zurzeit auf 2 Audiokanäle beschränkt
+	- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
 
 Besonderen Dank
 ---------------
@@ -325,15 +329,15 @@ Besonderen Dank
 			   Goran Bekic (Kroatisch),
 			   Eduardo Estévez (Galizisch),
 			   Phan Anh (Vietnamesisch),
-			   Ilan Tsmeret (Hebräisch)
+			   Ilan Tsmeret (Hebräisch),
+			   Eman Ali Fhoula (Arabisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
 
 -----------------------------------------------------------------------------------
 
-Die offizielle BonkEnc Homepage: http://www.bonkenc.org/
-Paul F. Harrisons Bonk Homepage: http://www.logarithmic.net/pfh/bonk
+Die offizielle fre:ac-Homepage: http://www.freac.org/
 
-robert.kausch@bonkenc.org,
+robert.kausch@freac.org,
 Robert Kausch
