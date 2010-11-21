@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -27,6 +27,8 @@ Bool BonkEnc::FilterInFAAD2::Activate()
 
 	SkipID3v2Tag(in);
 	SyncOnAACHeader(in);
+
+	driver->Seek(in->GetPos());
 
 	delete in;
 

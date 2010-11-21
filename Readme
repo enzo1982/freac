@@ -1,4 +1,4 @@
-fre:ac version 1.0.17
+fre:ac version 1.0.17a
 
 fre:ac is a free and open source audio converter for various formats.
 It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and
@@ -12,6 +12,10 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
+
+	Version 1.0.17a (November 2010)
+
+		- fixed skipping of first few seconds of some MP3s and raw AAC files
 
 	Version 1.0.17 (November 2010)
 

@@ -62,6 +62,8 @@ Bool BonkEnc::FilterInMAD::Activate()
 
 	SkipID3v2Tag(f_in);
 
+	driver->Seek(f_in->GetPos());
+
 	delete f_in;
 
 	readDataMutex = new Mutex();
@@ -195,6 +197,7 @@ BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
 	ReadXingTag(f_in);
 
 	driver = ioDriver;
+	driver->Seek(f_in->GetPos());
 
 	readDataMutex = new Mutex();
 	samplesBufferMutex = new Mutex();
