@@ -44,8 +44,8 @@ BonkEnc::Debug		*BonkEnc::debug_out;
  */
 String	 BonkEnc::BonkEnc::appName	= "fre:ac";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
-String	 BonkEnc::BonkEnc::version	= "v1.0.17a";
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.17a";
+String	 BonkEnc::BonkEnc::version	= "v1.0.18 Preview";
+String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.18";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.17";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
@@ -74,7 +74,7 @@ BonkEnc::BonkEnc::BonkEnc()
 	currentConfig->LoadSettings();
 
 	debug_out = new Debug("freac.log");
-	debug_out->OutputLine("Starting freac...");
+	debug_out->OutputLine("Starting fre:ac...");
 
 	/* Set number of threads for OpenMP optimized encoders.
 	 */
@@ -185,7 +185,7 @@ BonkEnc::BonkEnc::~BonkEnc()
 	 */
 	Object::ObjectCleanup();
 
-	debug_out->OutputLine("Leaving freac...");
+	debug_out->OutputLine("Leaving fre:ac...");
 	delete debug_out;
 
 	delete i18n;

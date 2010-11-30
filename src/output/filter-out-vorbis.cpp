@@ -48,7 +48,7 @@ Bool BonkEnc::FilterOutVORBIS::Activate()
 
 	if (currentConfig->enable_vctags)
 	{
-		char	*prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
+		String	 prevOutFormat = String::SetOutputFormat(currentConfig->vctag_encoding);
 
 		if (format->artist != NIL || format->title != NIL)
 		{

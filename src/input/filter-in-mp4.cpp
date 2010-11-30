@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -147,7 +147,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 	unsigned short	 trackNr	= 0;
 	unsigned short	 nOfTracks	= 0;
 
-	char	*prevInFormat = String::SetInputFormat("UTF-8");
+	String	 prevInFormat = String::SetInputFormat("UTF-8");
 
 	if (ex_MP4GetMetadataName(mp4File, &buffer)) { nFormat->title = buffer; ex_MP4Free(buffer); }
 	if (ex_MP4GetMetadataArtist(mp4File, &buffer)) { nFormat->artist = buffer; ex_MP4Free(buffer); }

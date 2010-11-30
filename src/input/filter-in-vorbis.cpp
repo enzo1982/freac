@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -256,7 +256,7 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 			nFormat->track = -1;
 			nFormat->outfile = NIL;
 
-			char	*prevInFormat = String::SetInputFormat("UTF-8");
+			String	 prevInFormat = String::SetInputFormat("UTF-8");
 
 			for (Int j = 0; j < fvc.comments; j++)
 			{

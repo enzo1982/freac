@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -87,7 +87,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 	 */
 	if (in.InputString(3) == "TAG")
 	{
-		char	*prevInFormat = String::SetInputFormat("ISO-8859-1");
+		String	 prevInFormat = String::SetInputFormat("ISO-8859-1");
 
 		nFormat->title	 = in.InputString(30);
 		nFormat->artist	 = in.InputString(30);

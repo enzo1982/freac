@@ -342,7 +342,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	debug_out->OutputLine(String("CDDB: ").Append("str"));
+	debug_out->OutputLine(String("CDDB: ").Append(str));
 
 	if	(config->freedb_proxy_mode == 0) socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
 	else if (config->freedb_proxy_mode == 1) socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
@@ -370,7 +370,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	{
 		str = in->InputLine();
 
-		debug_out->OutputLine(String("CDDB: < ").Append("str"));
+		debug_out->OutputLine(String("CDDB: < ").Append(str));
 	}
 	while (str != "");
 
@@ -378,7 +378,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	{
 		str = in->InputLine();
 
-		debug_out->OutputLine(String("CDDB: < ").Append("str"));
+		debug_out->OutputLine(String("CDDB: < ").Append(str));
 	}
 	while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
 

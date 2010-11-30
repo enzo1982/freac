@@ -113,7 +113,7 @@ Bool BonkEnc::FilterOutMP4::Deactivate()
 
 	if (currentConfig->enable_mp4meta)
 	{
-		char	*prevOutFormat = String::SetOutputFormat(currentConfig->mp4meta_encoding);
+		String	 prevOutFormat = String::SetOutputFormat(currentConfig->mp4meta_encoding);
 
 		if (format->artist != NIL || format->title != NIL)
 		{
