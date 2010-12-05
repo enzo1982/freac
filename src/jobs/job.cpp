@@ -176,23 +176,27 @@ Int BonkEnc::Job::SetText(const String &newText)
 
 Int BonkEnc::Job::SetProgress(Int nValue)
 {
+	static String	 percentString = "%";
+	static String	 zeroString    = "0";
+	static String	 colonString   = ":";
+
 	progress->SetValue(nValue);
-	progressValue->SetText(String::FromInt(Math::Round(Float(nValue) / 10.0)).Append("%"));
+	progressValue->SetText(String::FromInt(Math::Round(Float(nValue) / 10.0)).Append(percentString));
 
 	Int	 ticks = clock() - startTicks;
 	Int	 secondsLeft = (Int) (ticks * ((Float(CLOCKS_PER_SEC) - nValue) / nValue)) / CLOCKS_PER_SEC + (nValue < 1000 ? 1 : 0);
 
 	String	 buffer = String::FromInt(secondsLeft / 60);
-	String	 text = "0";
+	String	 text = zeroString;
 
 	if (buffer.Length() == 1) text.Append(buffer);
 	else			  text.Copy(buffer);
 
-	text.Append(":");
+	text.Append(colonString);
 
 	buffer = String::FromInt(secondsLeft % 60);
 
-	if (buffer.Length() == 1) text.Append(String("0").Append(buffer));
+	if (buffer.Length() == 1) text.Append(String(zeroString).Append(buffer));
 	else			  text.Append(buffer);
 
 	timeValue->SetText(text);

@@ -93,16 +93,16 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	if (customEntries > 0) list_filename->AddSeparator();
 
-	list_filename->AddEntry("<artist> - <title>");
-	list_filename->AddEntry("<artist>\\<artist> - <title>");
-	list_filename->AddEntry("<artist> - <album> - <track> - <title>");
-	list_filename->AddEntry("<artist> - <album>\\<track> - <title>");
-	list_filename->AddEntry("<artist> - <album>\\<artist> - <album> - <track> - <title>");
-	list_filename->AddEntry("<track> - <artist> - <title>");
-	list_filename->AddEntry("<album>\\<track> - <artist> - <title>");
-	list_filename->AddEntry("<genre>\\<artist> - <title>");
-	list_filename->AddEntry("<filetype>\\<artist> - <album>\\<track> - <title>");
-	list_filename->AddEntry("<filename>");
+	list_filename->AddEntry(String("<artist> - <title>"));
+	list_filename->AddEntry(String("<artist>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <title>"));
+	list_filename->AddEntry(String("<artist> - <album> - <track> - <title>"));
+	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
+	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>"));
+	list_filename->AddEntry(String("<track> - <artist> - <title>"));
+	list_filename->AddEntry(String("<album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <artist> - <title>"));
+	list_filename->AddEntry(String("<genre>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <title>"));
+	list_filename->AddEntry(String("<filetype>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
+	list_filename->AddEntry(String("<filename>"));
 
 	edit_filename->SetDropDownList(list_filename);
 

@@ -21,7 +21,7 @@ Int smooth::Main(const Array<String> &args)
 	SetEnvironmentVariableA("PATH", "%PATH%;boca");
 #endif
 
-	DynamicLoader	*loader = new DynamicLoader("BonkEnc");
+	DynamicLoader	*loader = new DynamicLoader("freac");
 
 	if (loader->GetSystemModuleHandle() != NIL)
 	{

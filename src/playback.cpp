@@ -155,7 +155,7 @@ Int BonkEnc::Playback::PlayThread()
 		}
 	}
 
-	if (!stop_playback) while (output->IsPlaying()) S::System::System::Sleep(20);
+	while (!stop_playback && output->IsPlaying()) S::System::System::Sleep(20);
 
 	output->Deactivate();
 

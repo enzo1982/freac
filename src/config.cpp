@@ -102,7 +102,7 @@ const String	 BonkEnc::Config::SettingsEncoderOutputDirectoryID		= "EncoderOutDi
       String	 BonkEnc::Config::SettingsEncoderOutputDirectoryDefault		= NIL;
 
 const String	 BonkEnc::Config::SettingsEncoderFilenamePatternID		= "EncoderFilenamePattern";
-const String	 BonkEnc::Config::SettingsEncoderFilenamePatternDefault		= "<artist> - <album>\\<artist> - <album> - <track> - <title>";
+const String	 BonkEnc::Config::SettingsEncoderFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>");
 
 /* Category Joblist
  */
@@ -143,7 +143,7 @@ const Bool	 BonkEnc::Config::PlaylistUseEncoderOutputDirDefault		= True;
 const String	 BonkEnc::Config::PlaylistOutputDirID				= "OutputDir";
 
 const String	 BonkEnc::Config::PlaylistFilenamePatternID			= "FilenamePattern";
-const String	 BonkEnc::Config::PlaylistFilenamePatternDefault		= "<artist> - <album>\\<artist> - <album>";
+const String	 BonkEnc::Config::PlaylistFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>");
 
 /* Category Tags
  */
@@ -163,7 +163,7 @@ const String	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceID	= "CoverA
 const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= False;
 
 const String	 BonkEnc::Config::TagsCoverArtFilenamePatternID			= "CoverArtFilenamePattern";
-const String	 BonkEnc::Config::TagsCoverArtFilenamePatternDefault		= "<artist> - <album>\\<type>";
+const String	 BonkEnc::Config::TagsCoverArtFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
 
 const String	 BonkEnc::Config::TagsWriteMCDIID				= "WriteMCDI";
 const Bool	 BonkEnc::Config::TagsWriteMCDIDefault				= True;
@@ -179,7 +179,7 @@ const String	 BonkEnc::Config::TagsDefaultCommentID				= "DefaultComment";
 /* Category freedb
  */
 const String	 BonkEnc::Config::FreedbDirectoryID				= "Directory";
-const String	 BonkEnc::Config::FreedbDirectoryDefault			= "freedb\\";
+const String	 BonkEnc::Config::FreedbDirectoryDefault			= String("freedb").Append(Directory::GetDirectoryDelimiter());
 
 const String	 BonkEnc::Config::FreedbServerID				= "Server";
 const String	 BonkEnc::Config::FreedbServerDefault				= "freedb.freedb.org";
@@ -200,7 +200,7 @@ const String	 BonkEnc::Config::FreedbSubmitPathID				= "SubmitPath";
 const String	 BonkEnc::Config::FreedbSubmitPathDefault			= "/~cddb/submit.cgi";
 
 const String	 BonkEnc::Config::FreedbEmailID					= "eMail";
-const String	 BonkEnc::Config::FreedbEmailDefault				= "cddb@bonkenc.org";
+const String	 BonkEnc::Config::FreedbEmailDefault				= "cddb@freac.org";
 
 const String	 BonkEnc::Config::FreedbProxyID					= "Proxy";
 const String	 BonkEnc::Config::FreedbProxyDefault				= "localhost";

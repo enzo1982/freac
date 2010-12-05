@@ -1,20 +1,21 @@
-BonkEnc version 1.1 CVS
+fre:ac version 1.1 CVS
 
-BonkEnc is an encoder for various audio formats. It can read
-MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and VOC
-files and produce MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
-and WAV files.
+fre:ac is a free and open source audio converter for various formats.
+It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and
+VOC files and converts to MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC,
+VQF or WAV.
 
-BonkEnc uses the CDRip Ripping Library for audio ripping.
-BonkEnc uses the FAAD2 AAC decoder for Advanced Audio decoding.
+fre:ac uses the CDRip Ripping Library for audio ripping.
+fre:ac uses the FAAD2 AAC decoder for Advanced Audio decoding.
 
-Code from FAAD2 is copyright (c) Nero AG, www.nero.com
+Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 
 History
 -------
 
-	Version 1.1 CVS (October 2010)
+	Version 1.1 CVS (December 2010)
 
+		- renamed project to fre:ac - free audio converter
 		- added Estonian, Croatian, Portuguese, Vietnamese, Hebrew, Arabic, Catalan, Valencian and Galician language support
 		- added German, Italian, Russian, Portuguese, Czech and Greek user guides
 		- added several translations for the installer
@@ -77,7 +78,7 @@ History
 		- upgraded FAAD2 to version 2.7
 		- upgraded LAME to version 3.98.4
 		- upgraded Ogg Vorbis to aoTuV beta 5.7
-		- upgraded Ogg library to version 1.2.0
+		- upgraded Ogg library to version 1.2.1
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0
 		- lots of other fixes
@@ -115,9 +116,7 @@ Known problems
 	- Resampling is only supported with LAME. Input files must be at the desired output
 	  sampling rate unless you are encoding with LAME.
 
-	- BonkEnc is currently limited to a maximum of 2 audio channels
-
-	- Edit boxes do not work correctly in Right-to-Left mode
+	- fre:ac is currently limited to a maximum of 2 audio channels
 
 Special thanks to
 -----------------
@@ -166,8 +165,7 @@ Special thanks to
 
 -----------------------------------------------------------------------------------
 
-The official BonkEnc homepage: http://www.bonkenc.org/
-Paul F. Harrison's Bonk page: http://www.logarithmic.net/pfh/bonk
+The official fre:ac homepage: http://www.freac.org/
 
-robert.kausch@bonkenc.org,
+robert.kausch@freac.org,
 Robert Kausch

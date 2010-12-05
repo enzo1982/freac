@@ -47,42 +47,42 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		size.cx = 25;
 		size.cy = 25;
 
-		button_play	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:12"), pos, size);
+		button_play	= new Button(NIL, ImageLoader::Load("freac.pci:12"), pos, size);
 		button_play->onAction.Connect(&LayerJoblist::PlaySelectedItem, this);
 		button_play->SetOrientation(OR_UPPERRIGHT);
 		button_play->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_pause	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:13"), pos, size);
+		button_pause	= new Button(NIL, ImageLoader::Load("freac.pci:13"), pos, size);
 		button_pause->onAction.Connect(&LayerJoblist::PauseResumePlayback, this);
 		button_pause->SetOrientation(OR_UPPERRIGHT);
 		button_pause->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_stop	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:14"), pos, size);
+		button_stop	= new Button(NIL, ImageLoader::Load("freac.pci:14"), pos, size);
 		button_stop->onAction.Connect(&LayerJoblist::StopPlayback, this);
 		button_stop->SetOrientation(OR_UPPERRIGHT);
 		button_stop->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_prev	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:15"), pos, size);
+		button_prev	= new Button(NIL, ImageLoader::Load("freac.pci:15"), pos, size);
 		button_prev->onAction.Connect(&Playback::Previous, player);
 		button_prev->SetOrientation(OR_UPPERRIGHT);
 		button_prev->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_next	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:16"), pos, size);
+		button_next	= new Button(NIL, ImageLoader::Load("freac.pci:16"), pos, size);
 		button_next->onAction.Connect(&Playback::Next, player);
 		button_next->SetOrientation(OR_UPPERRIGHT);
 		button_next->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_open	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:17"), pos, size);
+		button_open	= new Button(NIL, ImageLoader::Load("freac.pci:17"), pos, size);
 		button_open->onAction.Connect(&LayerJoblist::OpenCDTray, this);
 		button_open->SetOrientation(OR_UPPERRIGHT);
 		button_open->SetFlags(BF_NOFRAME);
@@ -1064,7 +1064,9 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 	}
 	else
 	{
-		edb_trackPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append("%"));
+		static String	 percentString = "%";
+
+		edb_trackPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
 
 		progress->SetValue(progressValue);
 	}
@@ -1082,7 +1084,9 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 	}
 	else
 	{
-		edb_totalPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append("%"));
+		static String	 percentString = "%";
+
+		edb_totalPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
 
 		progress_total->SetValue(progressValue);
 	}
@@ -1305,17 +1309,20 @@ String BonkEnc::LayerJoblist::SecondsToString(Int seconds)
 {
 	if (seconds < 0 || seconds >= 6000) return "??:??";
 
+	static String	 zeroString  = "0";
+	static String	 colonString = ":";
+
 	String	 buffer = String::FromInt(seconds / 60);
-	String	 text = "0";
+	String	 text = zeroString;
 
 	if (buffer.Length() == 1) text.Append(buffer);
 	else			  text.Copy(buffer);
 
-	text.Append(":");
+	text.Append(colonString);
 
 	buffer = String::FromInt(seconds % 60);
 
-	if (buffer.Length() == 1) text.Append(String("0").Append(buffer));
+	if (buffer.Length() == 1) text.Append(String(zeroString).Append(buffer));
 	else			  text.Append(buffer);
 
 	return text;

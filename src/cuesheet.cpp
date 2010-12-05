@@ -53,7 +53,7 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 	file->OutputNumber(0xBB, 1);
 	file->OutputNumber(0xBF, 1);
 
-	const char	*prevOutputFormat = String::SetOutputFormat("UTF-8");
+	String	 prevOutputFormat = String::SetOutputFormat("UTF-8");
 
 	/* Check if all tracks belong to the same album and
 	 * if we need to create a single or multi file cue sheet.

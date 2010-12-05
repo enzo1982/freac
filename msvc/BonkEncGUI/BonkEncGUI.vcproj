@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="BonkEncGUI"
+	Name="freacGUI"
 	ProjectGUID="{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}"
 	RootNamespace="BonkEncGUI"
 	Keyword="Win32Proj"

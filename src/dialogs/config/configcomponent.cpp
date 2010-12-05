@@ -23,7 +23,6 @@ BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 	i18n->SetContext("Configuration");
 
 	layer			= iLayer;
-	layer->SetPosition(Point(4, 29));
 
 	mainWnd			= new GUI::Window(i18n->TranslateString("Component configuration"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(60, 60), layer->GetSize() + Size(8, 73));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
@@ -45,10 +44,11 @@ BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 	mainWnd->Add(divbar);
 	mainWnd->Add(btn_ok);
 	mainWnd->Add(btn_cancel);
-	mainWnd->Add(layer);
+
+	mainWnd->GetMainLayer()->Add(layer);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
 BonkEnc::ConfigComponentDialog::~ConfigComponentDialog()

@@ -268,7 +268,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	}
 	else
 	{
-		Console::OutputString(String("Encoder ").Append(encoderID).Append(" is not supported by BonkEnc!\n\n"));
+		Console::OutputString(String("Encoder ").Append(encoderID).Append(" is not supported by ").Append(BonkEnc::appName).Append("!\n\n"));
 
 		broken = true;
 	}
@@ -485,7 +485,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	if (helpenc == NIL)
 	{
 		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2010 Robert Kausch\n\n"));
-		Console::OutputString("Usage:\tBEcmd [options] [file(s)]\n\n");
+		Console::OutputString("Usage:\tfreaccmd [options] [file(s)]\n\n");
 		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
 		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
 		Console::OutputString("\t-d <outdir>\tSpecify output directory for encoded files\n");
@@ -561,7 +561,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 		}
 		else
 		{
-			Console::OutputString(String("Encoder ").Append(helpenc).Append(" is not supported by BonkEnc!\n\n"));
+			Console::OutputString(String("Encoder ").Append(helpenc).Append(" is not supported by ").Append(BonkEnc::appName).Append("!\n\n"));
 		}
 	}
 }

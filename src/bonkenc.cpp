@@ -41,14 +41,14 @@ BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 
 /* General application information and fixed settings.
  */
-String	 BonkEnc::BonkEnc::appName	= "BonkEnc";
-String	 BonkEnc::BonkEnc::appLongName	= "BonkEnc Audio Encoder";
-String	 BonkEnc::BonkEnc::version	= "CVS 2010xxyy";
+String	 BonkEnc::BonkEnc::appName	= "fre:ac";
+String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
+String	 BonkEnc::BonkEnc::version	= "CVS 20101205";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre2";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
-String	 BonkEnc::BonkEnc::website	= "http://www.bonkenc.org/";
-String	 BonkEnc::BonkEnc::updatePath	= "http://www.bonkenc.org/eUpdate/eUpdate.xml";
+String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
+String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml";
 
 /* Use these settings for debugging.
  */
@@ -62,7 +62,7 @@ BonkEnc::BonkEnc::BonkEnc()
 #endif
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
-	debug->Write("Starting BonkEnc...");
+	debug->Write("Starting fre:ac...");
 
 	instance = this;
 
@@ -109,7 +109,7 @@ BonkEnc::BonkEnc::~BonkEnc()
 
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
-	debug->Write("Leaving BonkEnc...");
+	debug->Write("Leaving fre:ac...");
 
 	BoCA::Protocol::Free();
 

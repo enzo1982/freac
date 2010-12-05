@@ -380,26 +380,12 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 
 String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 {
-	String	 rFileName = NormalizeFileName(fileName);
-	String	 tmpPath;
+	File		 file(NormalizeFileName(fileName));
+	Directory	 directory(file.GetFilePath());
 
-	for (Int i = 0, lastBS = 0; i < rFileName.Length(); i++)
-	{
-		if (rFileName[i] == '\\' || rFileName[i] == '/')
-		{
-#ifdef __WIN32__
-			if (Setup::enableUnicode) CreateDirectoryW(tmpPath, NIL);
-			else			  CreateDirectoryA(tmpPath, NIL);
-#else
-			mkdir(tmpPath, 0755);
-#endif
-			lastBS = i;
-		}
+	directory.Create();
 
-		tmpPath[i] = rFileName[i];
-	}
-
-	return rFileName;
+	return file;
 }
 
 String BonkEnc::Utilities::GetInstallDrive()

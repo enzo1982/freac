@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Swedish / Svenska</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">Anton Mjörnebrant &lt;anton_mjor@hotmail.com&gt; &amp; Mikael Hiort af Ornäs &lt;mikael.hafo@hotmail.com&gt;</property>
+    <property name="url">http://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="OK">OK</entry>
+    <entry id="101" string="Cancel">Avbryt</entry>
+    <entry id="102" string="Close">Stäng</entry>
+    <entry id="200" string="Error">Fel</entry>
+    <entry id="300" string="Artist">Artist</entry>
+    <entry id="301" string="Title">Titel</entry>
+    <entry id="302" string="Album">Album</entry>
+    <entry id="303" string="Track">Spår</entry>
+    <entry id="304" string="Genre">Genre</entry>
+    <entry id="305" string="Comment">Kommentar</entry>
+    <entry id="306" string="Year">År</entry>
+    <entry id="350" string="unknown artist">okänd artist</entry>
+    <entry id="351" string="unknown title">okänd titel</entry>
+    <entry id="352" string="unknown album">okänt album</entry>
+    <entry id="353" string="unknown genre">okänd genre</entry>
+    <entry id="354" string="unknown year">okänt år</entry>
+
+    <section name="Characters">
+      <entry id="500" string=":">:</entry>
+      <entry id="501" string="...">...</entry>
+      <entry id="502" string="(%1)">(%1)</entry>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File">Arkiv</entry>
+      <entry id="1001" string="Options">Inställningar</entry>
+      <entry id="1002" string="Database">Databas</entry>
+      <entry id="1003" string="Encode">Koda</entry>
+      <entry id="1004" string="Help">Hjälp</entry>
+
+      <section name="File">
+	<entry id="1100" string="Add">Lägg till</entry>
+	<entry id="1101" string="Remove">Ta bort</entry>
+	<entry id="1102" string="Load joblist...">Ladda jobblista...</entry>
+	<entry id="1103" string="Save joblist...">Spara jobblista...</entry>
+	<entry id="1104" string="Clear joblist">Töm jobblista</entry>
+	<entry id="1105" string="Exit">Avsluta</entry>
+	<entry id="1106" string="Audio file(s)">Ljudfil(er)</entry>
+	<entry id="1107" string="Audio CD contents">Innehåll från ljud-CD</entry>
+	<entry id="1108" string="By pattern">Enligt mall</entry>
+	<entry id="1109" string="From folder">Från katalog</entry>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database">Sök i CDDB-databas</entry>
+	<entry id="1201" string="Submit CDDB data...">Registrera CDDB-data...</entry>
+	<entry id="1202" string="Query CDDB database later">Sök i CDDB-databas senare</entry>
+	<entry id="1203" string="Show queued CDDB entries...">Visa köade CDDB-nycklar...</entry>
+	<entry id="1204" string="Show queued CDDB queries...">Visa köade CDDB-sökningar...</entry>
+	<entry id="1205" string="Enable CDDB cache">Aktivera CDDB-cache</entry>
+	<entry id="1206" string="Manage CDDB cache entries...">Hantera CDDB-cachenycklar...</entry>
+	<entry id="1207" string="Automatic CDDB queries">Automatisk CDDB-sökning</entry>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings...">Allmänna inställningar...</entry>
+	<entry id="1301" string="Configure selected encoder...">Konfigurera vald kodare...</entry>
+      </section>
+
+      <section name="Encode">
+	<entry id="1400" string="Start encoding">Starta kodning</entry>
+	<entry id="1401" string="Pause/resume encoding">Pausa/återstarta kodning</entry>
+	<entry id="1402" string="Stop encoding">Stoppa kodning</entry>
+	<entry id="1403" string="Encoder options">Kodarinställningar</entry>
+	<entry id="1404" string="Encode to single file">Koda till EN fil</entry>
+	<entry id="1405" string="Encode to input file folder if possible">Koda till originalfilens källkatalog om möjligt</entry>
+	<entry id="1406" string="Allow overwriting input file">Tillåt att skriva över originalfilen</entry>
+	<entry id="1407" string="Delete original files after encoding">Radera originalfiler efter kodning</entry>
+	<entry id="1408" string="Shutdown after encoding">Stäng av efter kodning</entry>
+      </section>
+
+      <section name="Help">
+	<entry id="1500" string="Help topics...">Hjälp...</entry>
+	<entry id="1501" string="Show Tip of the Day">Visa &quot;Dagens tips&quot;</entry>
+	<entry id="1502" string="Check for updates now">Sök efter uppdateringar nu</entry>
+	<entry id="1503" string="Check for updates at startup">Sök efter uppdateringar vid start</entry>
+	<entry id="1504" string="About %1">Om %1</entry>
+	<entry id="1505" string="index_en.html">index.html</entry>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist">Lägg till ljudfil(er) i jobblistan</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">Lägg till innehåll från ljud-CD i jobblistan</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Ta bort det markerade objektet från jobblistan</entry>
+      <entry id="2003" string="Clear the entire joblist">Töm hela jobblistan</entry>
+      <entry id="2004" string="Query CDDB database">Sök i CDDB-databas</entry>
+      <entry id="2005" string="Submit CDDB data...">Registrera CDDB-data...</entry>
+      <entry id="2006" string="Configure general settings">Allmänna inställningar</entry>
+      <entry id="2007" string="Configure the selected audio encoder">Konfigurera vald ljudkodare</entry>
+      <entry id="2008" string="Start the encoding process">Starta kodningen</entry>
+      <entry id="2009" string="Pause/resume encoding">Pausa/återstarta kodning</entry>
+      <entry id="2010" string="Stop encoding">Stoppa kodning</entry>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Encoding file:">Kodar fil:</entry>
+      <entry id="3001" string="Time left:">Tid kvar:</entry>
+      <entry id="3002" string="Selected encoder:">Vald kodare:</entry>
+      <entry id="3003" string="File progress:">Kodningsförlopp:</entry>
+      <entry id="3004" string="Output folder:">Målkatalog:</entry>
+      <entry id="3005" string="%1 file(s) in joblist:">%1 fil(er) i jobblistan:</entry>
+      <entry id="3006" string="none">ingen</entry>
+      <entry id="3007" string="Show title info">Visa titelinfo</entry>
+      <entry id="3008" string="Play">Spela</entry>
+      <entry id="3009" string="Stop">Stoppa</entry>
+      <entry id="3010" string="Select all">Markera alla</entry>
+      <entry id="3011" string="Select none">Markera ingen</entry>
+      <entry id="3012" string="Toggle selection">Invertera val</entry>
+      <entry id="3013" string="ripping/decoding">rippning/avkodning</entry>
+      <entry id="3014" string="encoding">kodning</entry>
+      <entry id="3015" string="Create playlist">Skapa spellista</entry>
+      <entry id="3016" string="Create cue sheet">Skapa CUE-fil</entry>
+      <entry id="3017" string="Browse">Utforska</entry>
+      <entry id="3018" string="Skip">Hoppa över</entry>
+      <entry id="3019" string="Encode to single file">Koda till EN fil</entry>
+      <entry id="3020" string="Remove">Ta bort</entry>
+      <entry id="3021" string="Clear joblist">Töm jobblista</entry>
+      <entry id="3022" string="Use for all selected tracks">Använd för alla markerade spår</entry>
+      <entry id="3023" string="Interpret string as">Tolka sträng som</entry>
+      <entry id="3024" string="selected tracks">Valda spår</entry>
+      <entry id="3025" string="Adjust upper/lower case">Justera VERSALER/gemener</entry>
+      <entry id="3026" string="all words upper case">alla ord som VERSALER</entry>
+      <entry id="3027" string="long words upper case">Långa ord som VERSALER</entry>
+      <entry id="3028" string="first letter upper case">Första bokstaven VERSAL</entry>
+      <entry id="3029" string="all lower case">alla ord som gemener</entry>
+      <entry id="3030" string="all upper case">alla ord som VERSALER</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Välj en katalog där de kodade filerna skall placeras:</entry>
+      <entry id="3032" string="Sampling rate">Samplingshastighet</entry>
+      <entry id="3033" string="Sample resolution">Samplings-upplösning</entry>
+      <entry id="3034" string="Number of samples">Antal samplingar</entry>
+      <entry id="3035" string="Channels">Kanaler</entry>
+      <entry id="3036" string="Mono">Mono</entry>
+      <entry id="3037" string="Stereo">Stereo</entry>
+      <entry id="3038" string="bit">bit</entry>
+      <entry id="3039" string="min">min</entry>
+      <entry id="3040" string="bytes">bytes</entry>
+      <entry id="3041" string="Length">Längd</entry>
+      <entry id="3042" string="File">Arkiv</entry>
+      <entry id="3043" string="Size">Storlek</entry>
+      <entry id="3044" string="Bitrate">Bitflöde</entry>
+      <entry id="3045" string="Audio Files">Ljudfiler</entry>
+      <entry id="3046" string="All Files">Alla filer</entry>
+      <entry id="3047" string="Playlist Files">Spelliste-filer</entry>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder">Katalog</entry>
+	<entry id="3101" string="Add folder">Lägg till katalog</entry>
+	<entry id="3102" string="Choose folder:">Skriv sökväg:</entry>
+	<entry id="3103" string="Select the folder to add to the joblist:">Välj katalog att lägga till i jobblistan:</entry>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern">Lägg till filer enligt mall</entry>
+	<entry id="3201" string="Pattern">Mall</entry>
+	<entry id="3202" string="Start folder">Skriv sökväg:</entry>
+	<entry id="3203" string="Filename pattern">Filnamnsmall</entry>
+	<entry id="3204" string="Select the folder to add to the joblist:">Välj katalog att lägga till i jobblistan:</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="3300" string="Cannot modify the joblist while encoding!">Du kan inte modifiera jobblistan under kodning!</entry>
+	<entry id="3301" string="You did not select a track!">Du har inte valt någon fil!</entry>
+	<entry id="3302" string="No files found matching pattern:">Inga filer funna som matchar mall:</entry>
+      </section>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data">CDDB-data</entry>
+	<entry id="4001" string="Submit">Registrera</entry>
+	<entry id="4002" string="No audio CD in drive!">Ingen ljud-CD i spelare!</entry>
+	<entry id="4003" string="Submitting CD information">Registrerar CD-information</entry>
+	<entry id="4004" string="Update joblist with this information">Uppdatera jobblistan med denna information</entry>
+	<entry id="4005" string="Status">Status</entry>
+	<entry id="4006" string="Successfully read CD!">Läsning från CD lyckades!</entry>
+	<entry id="4007" string="Save entry">Spara inmatning</entry>
+	<entry id="4008" string="Various artists">Olika artister</entry>
+	<entry id="4009" string="Data track">Dataspår</entry>
+	<entry id="4010" string="Submit to online database later">Skicka till online-databas senare</entry>
+	<entry id="4011" string="Active CD-ROM drive">Aktiv CD-ROM-spelare</entry>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ett fel inträffade när programmet försökte ansluta till freedb-servern.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Var god fyll i alla fält och spårtitlar innan registrering.</entry>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query">CDDB-sökning</entry>
+	<entry id="4101" string="Info">Information</entry>
+	<entry id="4102" string="No freedb entry for this disk.">Ingen freedb-information för denna skiva.</entry>
+	<entry id="4103" string="Connecting to freedb server at">Ansluter till freedb-server på</entry>
+	<entry id="4104" string="Requesting CD information">Begär CD-information</entry>
+	<entry id="4105" string="No exact matches found">Inga exakta träffar funna</entry>
+	<entry id="4106" string="Multiple matches found">Flera träffar funna</entry>
+	<entry id="4107" string="Matches">Träffar</entry>
+	<entry id="4108" string="Select the entry that best fits your CD:">Välj den nyckel som passar bäst till din CD-skiva:</entry>
+	<entry id="4109" string="Would you like to perform this query again later?">Vill du utföra denna sökning igen senare?</entry>
+	<entry id="4110" string="none">ingen</entry>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ett fel inträffade när programmet försökte ansluta till freedb-servern.</entry>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry">Radera inmatning</entry>
+	<entry id="4201" string="CDDB queries">CDDB-sökningar</entry>
+	<entry id="4202" string="Query">Sök</entry>
+	<entry id="4203" string="Query all">Sök allt</entry>
+	<entry id="4204" string="Query string">Söksträng</entry>
+	<entry id="4205" string="CDDB queries to perform:">CDDB-sökningar att utföra:</entry>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry">Radera inmatning</entry>
+	<entry id="4301" string="CDDB entries to submit:">CDDB-nycklar att registrera:</entry>
+	<entry id="4302" string="Submit all">Skicka allt</entry>
+	<entry id="4303" string="CDDB data">CDDB-data</entry>
+	<entry id="4304" string="Submit">Registrera</entry>
+	<entry id="4305" string="Disc name">Disk-namn</entry>
+	<entry id="4306" string="Preview">Förhandsvisning</entry>
+	<entry id="4307" string="Category">Kategori</entry>
+	<entry id="4308" string="Submitting CD information">Registrerar CD-information</entry>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data">CDDB-data</entry>
+	<entry id="4401" string="Update joblist with this information">Uppdatera jobblistan med denna information</entry>
+	<entry id="4402" string="Charset">Teckenuppsättning</entry>
+	<entry id="4403" string="Downloaded CDDB entries:">Nerladdade CDDB-nycklar:</entry>
+	<entry id="4404" string="Disc name">Disk-namn</entry>
+	<entry id="4405" string="Preview">Förhandsvisning</entry>
+	<entry id="4406" string="Remove entry">Radera inmatning</entry>
+	<entry id="4407" string="Save entry">Spara inmatning</entry>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup">Allmänna inställningar</entry>
+      <entry id="5001" string="Encoders">Kodare</entry>
+      <entry id="5002" string="Playlists">Spellistor</entry>
+      <entry id="5003" string="Language">Språk</entry>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder">Inställningar för kodare</entry>
+	<entry id="5101" string="Encoder">Kodare</entry>
+	<entry id="5102" string="Output folder">Målkatalog</entry>
+	<entry id="5103" string="Browse">Utforska</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Välj en katalog där de kodade filerna skall placeras:</entry>
+	<entry id="5105" string="Use input file folder if possible">Använd originalfilens sökväg om möjligt</entry>
+	<entry id="5106" string="Allow overwriting input file">Tillåt att skriva över originalfilen</entry>
+	<entry id="5107" string="Options">Inställningar</entry>
+	<entry id="5108" string="Filename pattern">Filnamnsmall</entry>
+	<entry id="5109" string="Encode 'On-The-Fly'">Koda 'on the fly'</entry>
+	<entry id="5110" string="Keep ripped Wave files">Behåll rippade Wave-filer</entry>
+	<entry id="5111" string="Encode to single file">Koda till EN fil</entry>
+
+	<section name="Errors">
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Målkatalogenen existerar inte! Vill du skapa den?</entry>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists">Skapa spellistor</entry>
+	<entry id="5201" string="Create cue sheets">Skapa CUE-filer</entry>
+	<entry id="5202" string="Output folder">Målkatalog</entry>
+	<entry id="5203" string="Browse">Utforska</entry>
+	<entry id="5204" string="Use encoder output folder">Använd kodarens målkatalog</entry>
+	<entry id="5205" string="Filename pattern">Filnamnsmall</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Välj den katalog där spellistefilerna skall sparas:</entry>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database">Använd lokal CDDB-databas</entry>
+	<entry id="5301" string="Enable remote CDDB database">Använd extern CDDB-databas</entry>
+	<entry id="5302" string="CDDB path:">CDDB-katalog:</entry>
+	<entry id="5303" string="Browse">Utforska</entry>
+	<entry id="5304" string="Select the folder of the CDDB database:">Välj katalog för CDDB-databasen:</entry>
+	<entry id="5305" string="CDDB access mode:">Anslutningsläge:</entry>
+	<entry id="5306" string="CDDB server:">CDDB-server:</entry>
+	<entry id="5307" string="Port:">Port:</entry>
+	<entry id="5308" string="eMail address:">E-postadress:</entry>
+	<entry id="5309" string="HTTP settings">HTTP-inställningar</entry>
+	<entry id="5310" string="Proxy settings">Proxy-inställningar</entry>
+	<entry id="5311" string="Options">Inställningar</entry>
+	<entry id="5312" string="Automatic CDDB queries">Automatisk CDDB-sökning</entry>
+	<entry id="5313" string="Prefer CDDB over CD Text">Välj CDDB-info före CD-text</entry>
+	<entry id="5314" string="Enable CDDB cache">Aktivera CDDB-cache</entry>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings">Fler CDDB-inställningar</entry>
+	  <entry id="5331" string="CGI scripts">CGI-skript</entry>
+	  <entry id="5332" string="CDDB query script:">CDDB-sökningsskript:</entry>
+	  <entry id="5333" string="CDDB submit script:">CDDB-registreringsskript:</entry>
+	  <entry id="5334" string="no proxy">ingen proxy</entry>
+	  <entry id="5335" string="Proxy type:">Proxytyp:</entry>
+	  <entry id="5336" string="Proxy server:">Proxyserver:</entry>
+	  <entry id="5337" string="User name:">Användarnamn:</entry>
+	  <entry id="5338" string="Password:">Lösenord:</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address.">Var god ange en giltlig E-postadress.</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb-protokollet CDDBP kan inte användas över&#10;HTTP-proxyservrar!&#10;&#10;Vill du ändra protokollet till HTTP?</entry>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language:">Välj språk:</entry>
+	<entry id="5401" string="Edit language file">Redigera språkfil</entry>
+	<entry id="5402" string="Information">Information</entry>
+	<entry id="5403" string="Encoding">Kodar</entry>
+	<entry id="5404" string="Author">Författare</entry>
+	<entry id="5405" string="URL">URL</entry>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tags">Info-taggar</entry>
+	<entry id="5501" string="Tag formats">Taggkodning</entry>
+	<entry id="5502" string="Default comment string:">Standardkommentarsträng:</entry>
+	<entry id="5503" string="Replace existing comments with default comment">Ersätt existerande kommenater med standardkommentar</entry>
+	<entry id="5504" string="Filename pattern">Filnamnsmall</entry>
+      </section>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1">Om %1</entry>
+      <entry id="6001" string="Translated by %1.">Översatt av %1.</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Det här programmet dibustrueras i enlighet&#10;med GNU licensen (General Public License (GPL)).</entry>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Det finns tillgängliga uppdateringar för %1 på nätet!&#10;Vill du se en lista på tillgängliga uppdateringar?</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Det finns inga uppdateringar tillgängliga för tillfället!</entry>
+      <entry id="6102" string="Check for updates at startup">Sök efter uppdateringar vid start</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 kan söka efter programuppdateringar&#10;automatisk vid uppstart.&#10;&#10;Vill du att %1 ska söka efter uppdateringar vid uppstart?</entry>
+    </section>
+
+    <section name="Tips">
+      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">BonkEnk finns på %2 språk.&#10;Om ditt språk inte finns tillgängligt kan&#10;du enkelt översätta %1 med hjälp av&#10;'Smooth Translator'-applikationen.</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 installeras med stöd för&#10;LAME-, Ogg Vorbis-, FAAC- och Bonk-kodare.&#10;En kodare för VQF-formatet finns&#10;tillgänglig på %1s hemsida: %2</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 kan använda indatatillägg för Winamp 2 (input plug-ins)&#10;för att få stöd för fler format.&#10;Kopiera &quot;in_*.dll&quot;-filer till katalogen %1/plugins&#10;för att möjliggöra läsning av dessa format.</entry>
+      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Med %1 kan du registrera freedb CD-databasnycklar&#10;innehållande bokstäver/symboler i Unicode.&#10;&#10;Om du har någon CD med artist- eller titelnamn med udda tecken,&#10;kan du registrera det korrekta namnet i freedb-databasen&#10;med %1.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">För att korrigera läsfel kan du aktivera Jitterkorrigeringen&#10;under CDRip-fliken i Allmänna inställningar.&#10;Om det inte hjälper, så kan du testa att&#10;använda något Panoria-mode.</entry>
+      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Har du förslag på förbättringar av %1?&#10;Du kan föreslå vilka idéer som helst genom Trackern på %1s&#10;projektsida på SourceForge - %2&#10;eller skicka ett e-postmeddelande till %3.</entry>
+      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Gillar du %1? %1 är gratis, men du&#10;kan hjälpa utvecklingsteamet genom att&#10;donera pengar till %1-projektet.&#10;Du kan skicka pengar till %2 genom PayPal.&#10;Se %3 för fler detaljer.</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Programmet kodar fortfarande!&#10;Är du helt säker på att du vill avsluta?</entry>
+      <entry id="7001" string="Currently encoding">Kodar just nu</entry>
+      <entry id="7002" string="Cannot change settings while encoding!">Du kan inte ändra inställningarna under kodning!</entry>
+      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Kan inte ladda ASPI-drivrutinerna! CD-rippning avstängd!</entry>
+      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Kan inte öppna fil: %1&#10;&#10;Fel: %2</entry>
+      <entry id="7005" string="Cannot play a file while encoding!">Kan inte spela fil under kodning!</entry>
+      <entry id="7006" string="Cannot start encoding while playing a file!">Du kan inte koda när du spelar en fil!</entry>
+      <entry id="7007" string="Delete original files after encoding">Radera originalfiler efter kodning</entry>
+      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denna funktion kommer att radera originalfilerna&#10;efter att dom har blivit kodade! Är du säker på att&#10;du vill fortsätta?</entry>
+      <entry id="7009" string="File already exists">Filen existerar redan</entry>
+      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Målfilen %1&#10;existerar redan! Vill du skriva över den?</entry>
+      <entry id="7011" string="Overwrite all further files">Skriv över alla andra filer</entry>
+      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-funktionen är avstängd! Var god aktivera stöd&#10;för lokal eller extern CDDB i Inställningar.</entry>
+      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Stöd för extern CDDB är avstängt! Var god aktivera&#10;stöd för extern CDDB i Inställningar.</entry>
+      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till CD-ROM-spelare nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till CD-ROM-spelaren.</entry>
+      <entry id="7015" string="Cannot access input file: %1">Kan inte läsa källfil: %1</entry>
+      <entry id="7016" string="Cannot create output file: %1">Kan inte skapa målfil: %1</entry>
+      <entry id="7017" string="File not found">Filen kan inte hittas</entry>
+      <entry id="7018" string="Unknown file type">Okänd filtyp</entry>
+      <entry id="7019" string="Unsupported audio format">Inget stöd för ljudformatet</entry>
+      <entry id="7020" string="Unknown error">Okänt fel</entry>
+      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Dom valda filerna kan inte kodas till EN&#10;utdatafil då dom har olika samplingsfrekvenser.&#10;&#10;Var god konvertera filerna till samma samplingsfrekvens först.</entry>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="CDRip">
+	<entry id="10000" string="Active CD-ROM drive">Aktiv CD-ROM-spelare</entry>
+	<entry id="10001" string="Set drive speed limit:">Begränsa spelarens hastighet:</entry>
+	<entry id="10002" string="CD information">CD-information</entry>
+	<entry id="10003" string="Read CD Text">Läs CD-text</entry>
+	<entry id="10004" string="Read cdplayer.ini">Läs cdplayer.ini</entry>
+	<entry id="10005" string="Ripper settings">Rippningsinställningar</entry>
+	<entry id="10006" string="Activate cdparanoia mode:">Aktivera cdpanoria mode:</entry>
+	<entry id="10007" string="Overlap only">Endast överlappning</entry>
+	<entry id="10008" string="No verify">Ingen verifiering</entry>
+	<entry id="10009" string="No scratch repair">Reparera inte repor/hack</entry>
+	<entry id="10010" string="Full cdparanoia mode">Fullt cdpanoria läge</entry>
+	<entry id="10011" string="Activate jitter correction">Aktivera jitterkorrigering</entry>
+	<entry id="10012" string="Swap left/right channel">Kasta om vänster/höger kanal</entry>
+	<entry id="10013" string="Automatization">Automatisering</entry>
+	<entry id="10014" string="Read CD contents on insert">Läs info när en CD matas in</entry>
+	<entry id="10015" string="Start ripping automatically">Starta rippning automatiskt</entry>
+	<entry id="10016" string="Eject disk after ripping">Mata ut CD-skiva efter rippning</entry>
+	<entry id="10017" string="CD options">CD-inställningar</entry>
+	<entry id="10018" string="Lock CD tray while ripping">Lås CD-lucka under rippning</entry>
+	<entry id="10019" string="Use native NT SCSI library">Anv. NT SCSI-standardbibliotek</entry>
+      </section>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate">Bitflöde</entry>
+	<entry id="30001" string="Copyright bit">Copyright-bit</entry>
+	<entry id="30002" string="CRC">CRC</entry>
+	<entry id="30003" string="Original bit">Original-bit</entry>
+	<entry id="30004" string="Channels">Kanaler</entry>
+	<entry id="30005" string="Private bit">Privat-bit</entry>
+	<entry id="30006" string="Set Copyright bit">Välj Copyright-bit</entry>
+	<entry id="30007" string="Enable CRC">Välj CRC</entry>
+	<entry id="30008" string="Set Original bit">Välj Original-bit</entry>
+	<entry id="30009" string="Dual channel encoding">Dubbelkanal-kodning</entry>
+	<entry id="30010" string="Set Private bit">Välj Privat-bit</entry>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode">Kodningsläge</entry>
+	<entry id="31001" string="Stereo mode">Stereoläge</entry>
+	<entry id="31002" string="Quantization">Kvantisering</entry>
+	<entry id="31003" string="Downsampling ratio">Nedsamplingsförhållande</entry>
+	<entry id="31004" string="Predictor size">Prediktorstorlek</entry>
+	<entry id="31005" string="Enable lossless encoding">Förlustfri (lossless) kodning</entry>
+	<entry id="31006" string="Enable Joint Stereo">Joint Stereo</entry>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic">Allmänt</entry>
+	<entry id="32001" string="Misc">Annat</entry>
+	<entry id="32002" string="Expert">Expert</entry>
+	<entry id="32003" string="Audio processing">Ljudbearbetning</entry>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets">Val</entry>
+	  <entry id="32101" string="Use preset:">Använd val:</entry>
+	  <entry id="32102" string="Custom settings">Avancerade inställningar</entry>
+	  <entry id="32103" string="Medium, Fast">Medium, Snabb</entry>
+	  <entry id="32104" string="Standard, Fast">Standard, Snabb</entry>
+	  <entry id="32105" string="Extreme, Fast">Extreme, Snabb</entry>
+	  <entry id="32106" string="Bitrate">Bitflöde</entry>
+	  <entry id="32107" string="Quality">Kvalitet</entry>
+	  <entry id="32108" string="Set bitrate:">Bitflöde:</entry>
+	  <entry id="32109" string="Set ratio:">Förhållande:</entry>
+	  <entry id="32110" string="Set quality:">Kvalitet:</entry>
+	  <entry id="32111" string="worse">sämre</entry>
+	  <entry id="32112" string="better">bättre</entry>
+	  <entry id="32113" string="VBR mode">VBR-läge</entry>
+	  <entry id="32114" string="no VBR">ingen VBR</entry>
+	  <entry id="32115" string="VBR quality">VBR-kvalitet</entry>
+	  <entry id="32116" string="ABR target bitrate">ABR-bitflöde</entry>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits">Kontrollbitar</entry>
+	  <entry id="32201" string="Set Copyright bit">Välj Copyright-bit</entry>
+	  <entry id="32202" string="Set Original bit">Välj Original-bit</entry>
+	  <entry id="32203" string="Set Private bit">Välj Privat-bit</entry>
+	  <entry id="32204" string="CRC">CRC</entry>
+	  <entry id="32205" string="Enable CRC">Välj CRC</entry>
+	  <entry id="32206" string="Stereo mode">Stereoläge</entry>
+	  <entry id="32207" string="Auto">Automatisk</entry>
+	  <entry id="32208" string="Stereo">Stereo</entry>
+	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
+	  <entry id="32210" string="Force Joint Stereo">Tvinga Joint Stereo</entry>
+	  <entry id="32211" string="VBR bitrate range">VBR-bitflödesomfång</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate:">Välj lägsta VBR-bitflöde:</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate:">Välj högsta VBR-bitflöde:</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH">ATH</entry>
+	  <entry id="32301" string="Enable ATH:">Aktivera ATH:</entry>
+	  <entry id="32302" string="Use default setting">Använd standardinställning</entry>
+	  <entry id="32303" string="Psycho acoustic model">Psykoakustisk modell</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">Använd temporal ljudmaskningseffekt</entry>
+	  <entry id="32305" string="Stream format">Strömformat</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">Tillämpa strikt ISO-regel</entry>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Output sampling rate">Utgående samplingshastighet</entry>
+	  <entry id="32401" string="auto">auto</entry>
+	  <entry id="32402" string="no resampling">ingen omsampling</entry>
+	  <entry id="32403" string="Highpass filter">Högpass-filter</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz):">Välj Högpass-frekvens (Hz):</entry>
+	  <entry id="32405" string="Set Highpass width (Hz):">Välj Högpass-vidd (Hz):</entry>
+	  <entry id="32406" string="Lowpass filter">Lågpass-filter</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz):">Välj Lågpass-frekvens (Hz):</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz):">Välj Lågpass-vidd (Hz):</entry>
+	  <entry id="32409" string="Misc settings">Andra inställningar</entry>
+	  <entry id="32410" string="Disable all filtering">Stäng av all filtrering</entry>
+	</section>
+      </section>
+
+      <section name="FAAC">
+	<entry id="33000" string="Quality">Kvalitet</entry>
+	<entry id="33001" string="Format">Format</entry>
+
+	<section name="Quality">
+	  <entry id="33100" string="Bitrate / Quality">Bitflöde / Kvalitet</entry>
+	  <entry id="33101" string="Bitrate per channel:">Bitflöde per kanal:</entry>
+	  <entry id="33102" string="Set quality:">Kvalitet:</entry>
+	  <entry id="33103" string="Stereo mode">Stereoläge</entry>
+	  <entry id="33104" string="Allow Joint Stereo">Tillåt Joint Stereo</entry>
+	  <entry id="33105" string="Temporal Noise Shaping">Brusformning (TNS)</entry>
+	  <entry id="33106" string="Use Temporal Noise Shaping">Använd brusformning (TNS)</entry>
+	  <entry id="33107" string="Maximum bandwidth">Högsta bandbredd</entry>
+	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Högsta AAC-frekvensbandbredd att använda (Hz):</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="33200" string="MPEG version">MPEG-version</entry>
+	  <entry id="33201" string="AAC object type">AAC-objekttyp</entry>
+	  <entry id="33202" string="File format">Filformat</entry>
+	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Tillåt ID3v2-taggar i AAC-filer</entry>
+	  <entry id="33204" string="Note:">OBS:</entry>
+	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Vissa spelare kan ha problem att spela AAC-filer med&#10;ID3-taggar. Använd endast denna funktion om du är helt&#10;säker på att din spelare kan läsa ID3-taggar.</entry>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic">Allmänt</entry>
+	<entry id="34001" string="Format">Format</entry>
+	<entry id="34002" string="Expert">Expert</entry>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets">Val</entry>
+	  <entry id="34101" string="Use preset:">Använd val:</entry>
+	  <entry id="34102" string="Custom settings">Avancerade inställningar</entry>
+	  <entry id="34103" string="Fastest encoding">Snabbast kodning</entry>
+	  <entry id="34104" string="Best compression">Bästa kompression</entry>
+	  <entry id="34105" string="Stereo mode">Stereoläge</entry>
+	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Adaptiv Joint Stereo</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="34200" string="Use streamable subset">Använd strömbart subset</entry>
+	  <entry id="34201" string="Blocksize:">Blockstorlek:</entry>
+	  <entry id="34202" string="bytes">bytes</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="34300" string="Apodization">Apodisering</entry>
+	  <entry id="34301" string="Apodization function(s):">Apodiseringsfunktion(er):</entry>
+	  <entry id="34302" string="Note:">OBS:</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Du kan ange flera funktioner samtidigt, åtskilda av semikolon.</entry>
+	  <entry id="34304" string="Linear predictor">Linjär prediktor</entry>
+	  <entry id="34305" string="Maximum LPC order">Högsta LPC-grad ('order')</entry>
+	  <entry id="34306" string="disabled">avstängd</entry>
+	  <entry id="34307" string="Exhaustive model search">Omfattande modellsökning</entry>
+	  <entry id="34308" string="Quantized LPC precision">Kvantiserad LPC-precision</entry>
+	  <entry id="34309" string="auto">auto</entry>
+	  <entry id="34310" string="Optimize LPC quantization">Optimera LPC-kvantisering</entry>
+	  <entry id="34311" string="Residual coding">Residualkodning</entry>
+	  <entry id="34312" string="Minimum partition order">Lägsta partitionsgrad ('order')</entry>
+	  <entry id="34313" string="Maximum partition order">Högsta partitionsgrad ('order')</entry>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode">Kodarläge</entry>
+	<entry id="35001" string="Variable Bitrate">Varierande bitflöde</entry>
+	<entry id="35002" string="Average Bitrate">Ungefärligt bitflöde</entry>
+	<entry id="35003" string="Quality">Kvalitet</entry>
+	<entry id="35004" string="Bitrate">Bitflöde</entry>
+      </section>
+
+      <section name="WMA">
+	<entry id="36000" string="Select codec">Välj codec</entry>
+	<entry id="36001" string="Select codec format">Välj codecformat</entry>
+	<entry id="36002" string="Codec settings">Codecinställningar</entry>
+	<entry id="36003" string="Use codec">Använd codec</entry>
+	<entry id="36004" string="Use format">Använd format</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Skriv okomprimerade WMA-filer</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Välj format automatiskt beroende på inställningar och inmatningsformat</entry>
+	<entry id="36007" string="Use VBR encoding">Använd VBR-kodning</entry>
+	<entry id="36008" string="Use 2-pass encoding">Använd 2-passkodning</entry>
+	<entry id="36009" string="Target bitrate">Målets bitflöde</entry>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate">Bitflöde</entry>
+	<entry id="37001" string="Bitrate per channel:">Bitflöde per kanal:</entry>
+	<entry id="37002" string="Preselection">Förval</entry>
+	<entry id="37003" string="Number of preselection candidates:">Antal förvalskandidater:</entry>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="50004" string="usd">eur</entry>
+	<entry id="50005" string="en">en</entry>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="51000" string="Configure">Konfigurera</entry>
+	<entry id="51001" string="About">Om</entry>
+      </section>
+
+      <section name="Video Downloader">
+
+	<section name="Configuration">
+	  <entry id="52101" string="Automatization">Automatisering</entry>
+	  <entry id="52103" string="Browse">Utforska</entry>
+	</section>
+
+	<section name="Errors"/>
+      </section>
+    </section>
+  </data>
+</LangFile>

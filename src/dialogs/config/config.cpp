@@ -30,6 +30,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	mainWnd			= new GUI::Window(i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 332));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+	mainWnd->GetMainLayer()->onChangeSize.Connect(&ConfigDialog::OnChangeSize, this);
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -181,9 +182,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	mainWnd->Add(list_layers);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
-
-	mainWnd->onChangeSize.Connect(&ConfigDialog::OnChangeSize, this);
+	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
 BonkEnc::ConfigDialog::~ConfigDialog()
@@ -252,17 +251,21 @@ Void BonkEnc::ConfigDialog::Cancel()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigDialog::OnChangeSize()
+Void BonkEnc::ConfigDialog::OnChangeSize(const Size &nSize)
 {
-	combo_config->SetWidth(mainWnd->GetWidth() - 2 * mainWnd->GetFrameWidth() - text_config->textSize.cx - 198);
-	list_layers->SetSize(Size(210, mainWnd->GetHeight() - 2 * mainWnd->GetFrameWidth() - 119));
+	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
+	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
+
+	combo_config->SetWidth(clientSize.cx - text_config->textSize.cx - 198);
+
+	list_layers->SetSize(Size(210, clientSize.cy - 94));
 }
 
 Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 {
 	if (selectedLayer != NIL)
 	{
-		mainWnd->Remove(selectedLayer);
+		mainWnd->GetMainLayer()->Remove(selectedLayer);
 
 		mainWnd->SetMinimumSize(Size(232, 342));
 	}
@@ -272,9 +275,9 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 		Int	 frameWidth = mainWnd->GetFrameWidth();
 
 		selectedLayer = layer;
-		selectedLayer->SetPosition(Point(218 + frameWidth, 65 + frameWidth));
+		selectedLayer->SetPosition(Point(218, 40));
 
-		mainWnd->Add(selectedLayer);
+		mainWnd->GetMainLayer()->Add(selectedLayer);
 		mainWnd->SetMinimumSize(Size(Math::Max(232, selectedLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(342, selectedLayer->GetHeight() + 105 + 2 * frameWidth)));
 		mainWnd->SetSize(Size(Math::Max(mainWnd->GetWidth(), selectedLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(mainWnd->GetHeight(), selectedLayer->GetHeight() + 105 + 2 * frameWidth)));
 	}

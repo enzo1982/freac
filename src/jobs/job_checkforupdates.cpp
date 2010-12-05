@@ -35,7 +35,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsFirstStartID, Config::SettingsFirstStartDefault))
 	{
-		if (QuickMessage(i18n->TranslateString("BonkEnc can perform an automatic check for online\nprogram updates at startup.\n\nWould you like BonkEnc to look for updates at startup?"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION) == IDNO)
+		if (QuickMessage(String(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?")).Replace("%1", ::BonkEnc::BonkEnc::appName), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION) == IDNO)
 		{
 			config->SetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, False);
 
@@ -79,7 +79,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		SetText("Updates found...");
 		SetProgress(1000);
 
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for BonkEnc available online!\nWould you like to see a list of available updates now?"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
+		MessageDlg	*msgBox = new MessageDlg(String(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?")).Replace("%1", ::BonkEnc::BonkEnc::appName), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
 
 		msgBox->ShowDialog();
 

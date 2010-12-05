@@ -1,0 +1,72 @@
+fre:ac version 1.1 CVS
+
+fre:ac is a free and open source audio converter for various formats.
+It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and
+VOC files and converts to MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC,
+VQF or WAV.
+
+fre:ac uses the cdparanoia Ripping Library for audio ripping.
+fre:ac uses the FAAD2 AAC decoder for Advanced Audio decoding.
+
+Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
+
+Linux advice
+------------
+
+	- Please just extract the contents of the archive to your home directory. Do not try to install it
+	  system wide. Then after you installed necessary dependencies, simply run the freac executable.
+
+	- There are no DEB or RPM packages yet, so you need to install dependencies manually for now.
+
+	- To be able to use all components of fre:ac, you will need to install some 3rd party libraries and tools:
+
+		- V8 JavaScript Engine
+		- MAD MP3 decoder library
+		- FAAC library
+		- FAAD2 library
+		- CD Paranoia
+		- FFmpeg
+		- WavPack
+		- Musepack
+		- ALAC decoder
+
+	- To compile fre:ac, you will need to install additional development packages:
+
+		- Cairo
+		- GTK
+
+		- libmad
+		- libogg
+		- libfaac
+		- libfaad2
+		- libmp3lame
+		- libmp4v2
+		- libspeex
+		- libcdparanoia
+		- libasound2
+		- libjpeg
+		- libpng
+		- libbz2
+		- libfribidi
+		- libxml2
+		- libxmu
+		- libx11
+		- libv8
+
+		- possibly some more that I forgot about
+
+Known Linux specific problems
+-----------------------------
+
+	- Modal windows do not work correctly
+
+	- Dialog windows are displayed slightly too big
+
+	- No images are displayed in message boxes and the tip of the day dialog
+
+-----------------------------------------------------------------------------------
+
+The official fre:ac homepage: http://www.freac.org/
+
+robert.kausch@freac.org,
+Robert Kausch

@@ -57,17 +57,17 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 
 	text			= new Text(NIL, iPos - Point(9, 19));
 
-	button_sel_all		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:18"), iPos - Point(19, 4), Size(21, 21));
+	button_sel_all		= new Button(NIL, ImageLoader::Load("freac.pci:18"), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
 	button_sel_all->SetFlags(BF_NOFRAME);
 	button_sel_all->SetTooltipText(i18n->TranslateString("Select all"));
 
-	button_sel_none		= new Button(NIL, ImageLoader::Load("BonkEnc.pci:19"), iPos - Point(19, -10), Size(21, 21));
+	button_sel_none		= new Button(NIL, ImageLoader::Load("freac.pci:19"), iPos - Point(19, -10), Size(21, 21));
 	button_sel_none->onAction.Connect(&JobList::SelectNone, this);
 	button_sel_none->SetFlags(BF_NOFRAME);
 	button_sel_none->SetTooltipText(i18n->TranslateString("Select none"));
 
-	button_sel_toggle	= new Button(NIL, ImageLoader::Load("BonkEnc.pci:20"), iPos - Point(19, -24), Size(21, 21));
+	button_sel_toggle	= new Button(NIL, ImageLoader::Load("freac.pci:20"), iPos - Point(19, -24), Size(21, 21));
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
 	button_sel_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));
@@ -162,7 +162,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	 */
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodingHeuristicsID, Config::SettingsEncodingHeuristicsDefault))
 	{
-		char	*prevOutFormat = String::SetOutputFormat("ISO-8859-1");
+		String	 prevOutFormat = String::SetOutputFormat("ISO-8859-1");
 
 		Info	 info = track->GetInfo();
 
@@ -204,6 +204,8 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 	/* Remove track from track list and joblist.
 	 */
 	tracks.Remove(entry->GetHandle());
+
+	entry->Hide();
 
 	if (entry->GetTooltipLayer() != NIL)
 	{
@@ -428,7 +430,7 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 
 		i18n->SetContext("Joblist::Errors");
 
-		BoCA::Utilities::ErrorMessage("You have not selected a file!");
+		BoCA::Utilities::ErrorMessage(i18n->TranslateString("You did not select a track!"));
 
 		return;
 	}

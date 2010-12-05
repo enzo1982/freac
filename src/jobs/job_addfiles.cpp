@@ -105,54 +105,18 @@ Error BonkEnc::JobAddFiles::Perform()
 
 		Info	 info = track.GetInfo();
 
-		if (info.artist == NIL && info.title == NIL)
+		if (info.artist == NIL && info.title == NIL && !file.StartsWith("cdda://"))
 		{
-			if (!file.StartsWith("cdda://"))
+			String			 fileName = File(file).GetFileName();
+
+			if (fileName.FindLast(".") >= 0) fileName = fileName.Head(fileName.FindLast("."));
+
+			const Array<String>	&elements = fileName.Explode(" - ");
+
+			if (elements.Length() >= 2)
 			{
-				String	 fileName;
-				Int	 in_len = file.Length();
-				Int	 lastBs = -1;
-				Int	 firstDot = 0;
-
-				for (Int i = 0; i < in_len; i++)
-				{
-					if (file[i] == '\\') lastBs = i;
-				}
-
-				for (Int j = in_len - 1; j >= 0; j--)
-				{
-					if (file[j] == '.') { firstDot = in_len - j; break; }
-					if (file[j] == '\\') break;
-				}
-
-				for (Int k = 0; k < (in_len - lastBs - firstDot - 1); k++)
-				{
-					fileName[k] = file[k + lastBs + 1];
-				}
-
-				Int	 artistComplete = 0;
-				Int	 m = 0;
-
-				for (m = 0; m < fileName.Length(); m++)
-				{
-					if (fileName[  m  ] == ' ' &&
-					    fileName[m + 1] == '-' &&
-					    fileName[m + 2] == ' ')
-					{
-						artistComplete = (m += 3);
-
-						info.title = NIL;
-					}
-
-					if (!artistComplete)	info.artist[m] = fileName[m];
-					else			info.title[m - artistComplete] = fileName[m];
-				}
-
-				if (artistComplete == 0)
-				{
-					info.artist = NIL;
-					info.title = NIL;
-				}
+				info.artist = elements.GetFirst();
+				info.title  = elements.GetLast();
 			}
 		}
 

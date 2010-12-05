@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
-    <title>How to ...? - BonkEnc User Guide</title>
+    <title>How to ...? - fre:ac User Guide</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="../style/style.css"/>
 
@@ -16,11 +16,11 @@
 	<div id="header">
 	  <div class="wrapper">
 	    <h1 id="page-title">
-	      <div id="g_title">How to ...? - BonkEnc User Guide</div>
+	      <div id="g_title">How to ...? - fre:ac User Guide</div>
 	    </h1>
 	    <p class="description"></p>
 	    <div id="g_description">
-	      <p>BonkEnc setup and special features guide</p>
+	      <p>fre:ac setup and special features guide</p>
 	    </div>
 	  </div>
 	</div>
@@ -31,263 +31,263 @@
 	      <div id='g_body'>
 		<h4>Contents</h4>
 		<blockquote>
-		  <p><a href="#anchor_src">How to compile BonkEnc from source?</a></p>
+		  <p><a href="#anchor_src">How to compile fre:ac from source?</a></p>
 		  <p><a href="#anchor_enc">How to install encoder/decoder xy?</a></p>
-		  <p><a href="#anchor_pat">How to use output file name patterns in BonkEnc?</a></p>
-		  <p><a href="#anchor_tra">How to add a new translation to BonkEnc?</a></p>
-		  <p><a href="#anchor_rem">How to remove BonkEnc from my computer?</a></p>
+		  <p><a href="#anchor_pat">How to use output file name patterns in fre:ac?</a></p>
+		  <p><a href="#anchor_tra">How to add a new translation to fre:ac?</a></p>
+		  <p><a href="#anchor_rem">How to remove fre:ac from my computer?</a></p>
 		</blockquote>
-		<h4 id="anchor_src">How to compile BonkEnc from source?</h4>
+		<h4 id="anchor_src">How to compile fre:ac from source?</h4>
 		<blockquote>
-		  <p>In order to build BonkEnc from source you should download the latest version of the
-		    <b>BonkEnc Component Development Kit</b> (CDK) from <a href="http://www.bonkenc.org/">www.bonkenc.org</a> first.</p>
+		  <p>In order to build fre:ac from source you should download the latest version of the
+		    <b>fre:ac Component Development Kit</b> (CDK) from <a href="http://www.freac.org/">www.freac.org</a> first.</p>
 		  <p>You will also need the latest <b>smooth Class Library</b> sources from <a href="http://www.smooth-project.org/">www.smooth-project.org</a>
-		    and of course the <b>BonkEnc source code</b> package or BonkEnc sources checked out from CVS.</p>
+		    and of course the <b>fre:ac source code</b> package or fre:ac sources checked out from CVS.</p>
 		  <ul>
-		    <li>extract the contents of <b>bonkenc-cdk-1.x.zip</b> to anywhere you like</li>
+		    <li>extract the contents of <b>freac-cdk-1.x.zip</b> to anywhere you like</li>
 		    <li>create a directory structure like this:
 		      <blockquote>
 			/cdk (contains directory <b>system</b> and <b>cdk.bat</b>)<br/>
-			/cdk/bonkenc (rename directory from <b>bonkenc-1.1.x.zip</b> package)<br/>
+			/cdk/freac (rename directory from <b>freac-1.1.x.zip</b> package)<br/>
 			/cdk/smooth (rename directory from <b>smooth-0.8.x.y.zip</b> package)
 		      </blockquote>
 		    </li>
 		    <li>move <b>Makefile.mingw</b> from <b>smooth/makefiles</b> to <b>/cdk/smooth/Makefile</b></li>
 		    <li>run <b>cdk.bat</b></li>
-		    <li>enter: <b>cd smooth && make programs && cd ../bonkenc && make</b></li>
+		    <li>enter: <b>cd smooth && make programs && cd ../freac && make</b></li>
 		  </ul>
 		</blockquote>
 		<h4 id="anchor_enc">How to install encoder/decoder xy?</h4>
 		<blockquote>
 		  <h5>Nero Digital HE-AAC Encoder</h5>
 		  <blockquote>
-		    <p>To install the Nero Digital HE-AAC Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Nero Digital HE-AAC Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>Nero AAC Codec ZIP package</b> from <a href="http://www.nero.com/eng/downloads-nerodigital-nero-aac-codec.php">www.nero.com</a>.</li>
 		      <li>Copy the file <b>NeroAACEnc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>QuickTime AAC Encoder</h5>
 		  <blockquote>
-		    <p>To install the QuickTime AAC Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the QuickTime AAC Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>QuickTime AAC command line encoder ZIP package</b> from <a href="http://tmkk.hp.infoseek.co.jp/qtaacenc/">tmkk.hp.infoseek.co.jp</a>.</li>
 		      <li>Copy the file <b>qtaacenc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		      <li>Copy the file <b>QTCF.dll</b> from <b>C:\Program Files\QuickTime\QTSystem</b> to
-			your BonkEnc installation path.</li>
+			your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>DivX AAC Encoder</h5>
 		  <blockquote>
-		    <p>To install the DivX AAC Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the DivX AAC Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>DivX AAC Encoder setup package</b> from <a href="http://labs.divx.com/node/11682">labs.divx.com</a>.</li>
 		      <li>Run the setup executable and install the DivX AAC Encoder to a directory of your choice.</li>
 		      <li>Copy the file <b>DivXAACEnc.exe</b> from the DivX AAC Encoder installation directory to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Fraunhofer MP3 Surround Encoder</h5>
 		  <blockquote>
-		    <p>To install the Fraunhofer MP3 Surround Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Fraunhofer MP3 Surround Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/Software2.aspx">www.all4mp3.com</a>.</li>
 		      <li>Copy the file <b>mp3sEncoder.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Helix DNA Producer RealAudio Encoder</h5>
 		  <blockquote>
-		    <p>To install the Helix DNA Producer RealAudio Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Helix DNA Producer RealAudio Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Create a <b>Helix Community account</b> at <a href="https://helixcommunity.org/account/register">helixcommunity.org</a>.
 			You will need this account in order to be able to download the Helix DNA Producer application.</li>
 		      <li>Download the <b>Helix DNA Producer Command Line App ZIP package</b> from <a href="https://helix-producer.helixcommunity.org/Downloads.htm">helix-producer.helixcommunity.org</a>.</li>
 		      <li>Create a new directory named <b>helix</b> inside the <b>codecs/cmdline</b> subdirectory of your
-			BonkEnc installation path.</li>
+			fre:ac installation path.</li>
 		      <li>Copy the contents of the directory <b>producer</b> from the ZIP package to the newly created <b>codecs/cmdline/helix</b>
-			subdirectory of your BonkEnc installation path. The file <b>producer.exe</b> should now reside inside the <b>helix</b> directory
+			subdirectory of your fre:ac installation path. The file <b>producer.exe</b> should now reside inside the <b>helix</b> directory
 			along with several other files and directories from the Helix DNA Producer package.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>TiMidity Software MIDI Synthesizer</h5>
 		  <blockquote>
-		    <p>To install the TiMidity Software MIDI Synthesizer for use with BonkEnc, follow these steps:</p>
+		    <p>To install the TiMidity Software MIDI Synthesizer for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>TiMidity CVS binary ZIP package</b> from <a href="http://sourceforge.net/projects/twsynth/files/">sourceforge.net</a>.</li>
 		      <li>Download the <b>Freepats ZIP package</b> from <a href="http://freepats.zenvoid.org/">freepats.zenvoid.org</a>.</li>
 		      <li>Create a new directory named <b>timidity</b> inside the <b>codecs/cmdline</b> subdirectory of your
-			BonkEnc installation path.</li>
+			fre:ac installation path.</li>
 		      <li>Copy the file <b>timidity.exe</b> from the TiMidity ZIP package to the newly created <b>codecs/cmdline/timidity</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		      <li>Copy the contents of the directory <b>freepats</b> from the Freepats ZIP package to the newly created <b>codecs/cmdline/timidity</b>
-			subdirectory of your BonkEnc installation path. The file <b>crude.cfg</b> should now reside inside the <b>timidity</b> directory
+			subdirectory of your fre:ac installation path. The file <b>crude.cfg</b> should now reside inside the <b>timidity</b> directory
 			along with several other files and directories from the Freepats package.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>MPEG-4 Audio Lossless Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>To install the MPEG-4 Audio Lossless Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the MPEG-4 Audio Lossless Encoder / Decoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>MPEG-4 ALS Windows Codec ZIP package</b> from <a href="http://www.nue.tu-berlin.de/mp4als">www.nue.tu-berlin.de</a>.</li>
 		      <li>Copy the .exe file found in the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path <b>renaming it to mp4als.exe</b>.</li>
+			subdirectory of your fre:ac installation path <b>renaming it to mp4als.exe</b>.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>True Audio Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>To install the True Audio Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the True Audio Encoder / Decoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>TTA compressor for Windows ZIP package</b> from <a href="http://www.true-audio.com/Free_Downloads">www.true-audio.com</a>.</li>
 		      <li>Copy the file <b>ttaenc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Flake FLAC Encoder</h5>
 		  <blockquote>
-		    <p>To install the Flake FLAC Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Flake FLAC Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>Flake Windows binary ZIP package</b> from <a href="http://flake-enc.sourceforge.net/download.html">flake-enc.sourceforge.net</a>.</li>
 		      <li>Copy the file <b>flake.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>LAME MP3 Command Line Encoder</h5>
 		  <blockquote>
-		    <p>To install the LAME MP3 Command Line Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the LAME MP3 Command Line Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>LAME release ZIP package</b> from <a href="http://rarewares.org/mp3-lame-bundle.php">rarewares.org</a>.</li>
 		      <li>Copy the file <b>lame.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>TwoLAME MP2 Encoder</h5>
 		  <blockquote>
-		    <p>To install the TwoLAME MP2 Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the TwoLAME MP2 Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>TwoLAME binary ZIP package</b> from <a href="http://rarewares.org/mp3-others.php#twolame">rarewares.org</a>.</li>
 		      <li>Copy the file <b>twolame.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Aften AC-3 Encoder</h5>
 		  <blockquote>
-		    <p>To install the Aften AC-3 Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Aften AC-3 Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>Aften Win32 binary ZIP package</b> from <a href="http://sourceforge.net/projects/win32builds/files/">sourceforge.net</a>.</li>
 		      <li>Copy the file <b>aften.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Apple Lossless Decoder</h5>
 		  <blockquote>
-		    <p>The Apple Lossless Decoder is bundled with the original BonkEnc
+		    <p>The Apple Lossless Decoder is bundled with the original fre:ac
 		      distribution so you normally do not need to install it manually.</p>
 		    <p>If you still need to install or update the Apple Lossless Decoder
 		      manually, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>generic Win32 compile ZIP package</b> from <a href="http://www.rarewares.org/lossless.php#alac">www.rarewares.org</a>.</li>
 		      <li>Copy the file <b>alac.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>TAK Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>The TAK Encoder / Decoder is bundled with the original BonkEnc
+		    <p>The TAK Encoder / Decoder is bundled with the original fre:ac
 		      distribution so you normally do not need to install it manually.</p>
 		    <p>If you still need to install or update the TAK Encoder / Decoder
 		      manually, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>TAK ZIP package</b> from <a href="http://thbeck.de/Tak/Tak.html">thbeck.de</a>.</li>
 		      <li>Copy the file <b>takc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Musepack Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>The Musepack Encoder / Decoder is bundled with the original BonkEnc
+		    <p>The Musepack Encoder / Decoder is bundled with the original fre:ac
 		      distribution so you normally do not need to install it manually.</p>
 		    <p>If you still need to install or update the Musepack Encoder / Decoder
 		      manually, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>Musepack tools ZIP package</b> from <a href="http://www.musepack.net/index.php?pg=win">www.musepack.net</a>.</li>
 		      <li>Copy the files <b>mpcenc.exe</b> and <b>mpcdec.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>WavPack Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>The WavPack Encoder / Decoder is bundled with the original BonkEnc
+		    <p>The WavPack Encoder / Decoder is bundled with the original fre:ac
 		      distribution so you normally do not need to install it manually.</p>
 		    <p>If you still need to install or update the WavPack Encoder / Decoder
 		      manually, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>WavPack Win32 ZIP package</b> from <a href="http://www.wavpack.com/downloads.html">www.wavpack.com</a>.</li>
 		      <li>Copy the files <b>wavpack.exe</b> and <b>wvunpack.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Thomson mp3HD Encoder</h5>
 		  <blockquote>
-		    <p>To install the Thomson mp3HD Encoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Thomson mp3HD Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/Software3.aspx">www.all4mp3.com</a>.</li>
 		      <li>Copy the file <b>mp3hdEncoder.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>OptimFROG Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>To install the OptimFROG Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the OptimFROG Encoder / Decoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>OptimFROG Win32 console ZIP package</b> from <a href="http://www.losslessaudio.org/Downloads.php">www.losslessaudio.org</a>.</li>
 		      <li>Copy the file <b>ofr.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Shorten Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>To install the Shorten Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Shorten Encoder / Decoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>Shorten ZIP package</b> from <a href="http://www.free-codecs.com/download/Shorten.htm">www.free-codecs.com</a>.</li>
 		      <li>Copy the file <b>shorten.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>La Lossless Audio Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>To install the La Lossless Audio Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the La Lossless Audio Encoder / Decoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>La Windows setup package</b> from <a href="http://www.lossless-audio.com/download.htm">www.lossless-audio.com</a>.</li>
 		      <li>Run the setup executable and install the La encoder to a directory of your choice.</li>
 		      <li>Copy the file <b>la.exe</b> from the La installation directory to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		      <li>Please note that the La encoder needs to stay installed on your system in order to
-			use it in BonkEnc.</li>
+			use it in fre:ac.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>RK Audio Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>To install the RK Audio Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the RK Audio Encoder / Decoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>RK Audio compressor ZIP package</b> from <a href="http://www.free-codecs.com/download/RK_Audio_compressor.htm">www.free-codecs.com</a>.</li>
 		      <li>Copy the file <b>rkau.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		  <h5>Qualcomm PureVoice Encoder / Decoder</h5>
 		  <blockquote>
-		    <p>To install the Qualcomm PureVoice Encoder / Decoder for use with BonkEnc, follow these steps:</p>
+		    <p>To install the Qualcomm PureVoice Encoder / Decoder for use with fre:ac, follow these steps:</p>
 		    <ul>
 		      <li>Download the <b>PureVoice Converter ZIP package</b> from <a href="http://www.qualcomm.com/products_services/mobile_content_services/voice/purevoice.html">www.qualcomm.com</a>.</li>
 		      <li>Copy the file <b>pvconv.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subdirectory of your BonkEnc installation path.</li>
+			subdirectory of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
 		</blockquote>
-		<h4 id="anchor_pat">How to use output file name patterns in BonkEnc?</h4>
+		<h4 id="anchor_pat">How to use output file name patterns in fre:ac?</h4>
 		<blockquote>
 		  <p>The output file name pattern can be configured on the <b>Encoder</b> page of the configuration dialog. You can
 		    use backslashes to specify directories and placeholders for referring to meta information. The following
@@ -307,7 +307,7 @@
 		  <p>A common use case for this placeholder is if you are regularly encoding to different formats (e.g. FLAC for archival and M4A for your
 		    mobile player) and would like to keep the encoded files in separate directory trees.</p>
 		  <p>In addition to the above there are two placeholders that refer
-		    to the original file name of a file being encoded in BonkEnc:</p>
+		    to the original file name of a file being encoded in fre:ac:</p>
 		  <ul>
 		    <li><b>&lt;filename&gt;</b> - The file name of the input file</li>
 		    <li><b>&lt;directory&gt;</b> - The directory the input file is found in</li>
@@ -331,20 +331,20 @@
 		  <p>This would encode the beforementioned file to <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence
 		    is Easy - 01 - Music was Saved.m4a</b>.</p>
 		</blockquote>
-		<h4 id="anchor_tra">How to add a new translation to BonkEnc?</h4>
+		<h4 id="anchor_tra">How to add a new translation to fre:ac?</h4>
 		<blockquote>
-		  <p>Please use the <b>smooth Translator</b> utility included in the BonkEnc distribution and open an existing
-		    translation file (found in the <b>BonkEnc/lang</b> directory). Then change the language settings to reflect
+		  <p>Please use the <b>smooth Translator</b> utility included in the fre:ac distribution and open an existing
+		    translation file (found in the <b>freac/lang</b> directory). Then change the language settings to reflect
 		    the translation you want to create and start translating the individual text strings. Save your translation
-		    as a new file matching the pattern <b>bonkenc_??.xml</b> (replace ?? with your language code), restart BonkEnc
+		    as a new file matching the pattern <b>freac_??.xml</b> (replace ?? with your language code), restart fre:ac
 		    and try selecting the new translation in the configuration dialog.</p>
-		  <p>Please submit your translation to <a href="mailto:translations@bonkenc.org">translations@bonkenc.org</a>, so it can be included in the official distribution.</p>
+		  <p>Please submit your translation to <a href="mailto:translations@freac.org">translations@freac.org</a>, so it can be included in the official distribution.</p>
 		</blockquote>
-		<h4 id="anchor_rem">How to remove BonkEnc from my computer?</h4>
+		<h4 id="anchor_rem">How to remove fre:ac from my computer?</h4>
 		<blockquote>
-		  <p>Recent versions of BonkEnc come with an uninstaller that you can execute from the <b>Start</b> menu.</p>
+		  <p>Recent versions of fre:ac come with an uninstaller that you can execute from the <b>Start</b> menu.</p>
 		  <p>In case you removed the Start menu group or are unable to find it, it is completely sufficient to delete
-		    the application directory to uninstall BonkEnc. BonkEnc does neither create any Windows registry entries
+		    the application directory to uninstall fre:ac. fre:ac does neither create any Windows registry entries
 		    nor store any active components outside its installation directory.</p>
 		</blockquote>
 	      </div>
@@ -357,7 +357,7 @@
 	    <p></p>
 	    <div id='g_footer'>
 	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
-		Copyright (C) 2007-2010 The BonkEnc Project</p>
+		Copyright (C) 2007-2010 the fre:ac project</p>
 	    </div>
 	    <p></p>
 	  </div>

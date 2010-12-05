@@ -69,7 +69,7 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	mainWnd->Add(text_status);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("BonkEnc.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
 BonkEnc::cddbManageQueriesDlg::~cddbManageQueriesDlg()

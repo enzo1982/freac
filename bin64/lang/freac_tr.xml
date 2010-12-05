@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Turkish / Türkçe</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">cako &lt;gakhgit@gmail.com&gt;</property>
+    <property name="url">http://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="OK">Tamam</entry>
+    <entry id="101" string="Cancel">İptal</entry>
+    <entry id="102" string="Close">Kapat</entry>
+    <entry id="200" string="Error">Hata</entry>
+    <entry id="300" string="Artist">Sanatçı</entry>
+    <entry id="301" string="Title">Başlık</entry>
+    <entry id="302" string="Album">Albüm</entry>
+    <entry id="303" string="Track">Track</entry>
+    <entry id="304" string="Genre">Tür</entry>
+    <entry id="305" string="Comment">Yorum</entry>
+    <entry id="306" string="Year">Yıl</entry>
+    <entry id="350" string="unknown artist">Bilinmeyen sanatçı</entry>
+    <entry id="351" string="unknown title">Bilinmeyen başlık</entry>
+    <entry id="352" string="unknown album">Bilinmeyen album</entry>
+    <entry id="353" string="unknown genre">Bilinmeyen tür</entry>
+    <entry id="354" string="unknown year">Bilinmeyen yıl</entry>
+
+    <section name="Characters">
+      <entry id="500" string=":">:</entry>
+      <entry id="501" string="...">...</entry>
+      <entry id="502" string="(%1)">(%1)</entry>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File">Dosya</entry>
+      <entry id="1001" string="Options">Ayarlar</entry>
+      <entry id="1002" string="Database">Veritabanı</entry>
+      <entry id="1003" string="Encode">Çevir</entry>
+      <entry id="1004" string="Help">Yardım</entry>
+
+      <section name="File">
+	<entry id="1100" string="Add">Ekle</entry>
+	<entry id="1101" string="Remove">Sil</entry>
+	<entry id="1102" string="Load joblist...">Görev listesi yükle...</entry>
+	<entry id="1103" string="Save joblist...">Görev listesini kaydet...</entry>
+	<entry id="1104" string="Clear joblist">Görev listesini temizle</entry>
+	<entry id="1105" string="Exit">Çıkış</entry>
+	<entry id="1106" string="Audio file(s)">Ses dosyaları</entry>
+	<entry id="1107" string="Audio CD contents">Ses cdsi içeriği</entry>
+	<entry id="1108" string="By pattern">Şablona göre</entry>
+	<entry id="1109" string="From folder">Dizinden oku</entry>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database">CDDB veritabanını sorgula</entry>
+	<entry id="1201" string="Submit CDDB data...">CDDB verisini gönder...</entry>
+	<entry id="1202" string="Query CDDB database later">CDDB veritabanını sonra sorgula</entry>
+	<entry id="1203" string="Show queued CDDB entries...">Sıralanmış CDDB eşleşmelerini göster...</entry>
+	<entry id="1204" string="Show queued CDDB queries...">Diğer CDDB eşleşmelerini göster...</entry>
+	<entry id="1205" string="Enable CDDB cache">CDDB önbelleği aktif</entry>
+	<entry id="1206" string="Manage CDDB cache entries...">CDDB önbelleğini yönet</entry>
+	<entry id="1207" string="Automatic CDDB queries">Otomatik CDDB sorgusu</entry>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings...">Genel ayarlar</entry>
+	<entry id="1301" string="Configure selected encoder...">Seçilen çeviriciyi ayarla...</entry>
+      </section>
+
+      <section name="Encode">
+	<entry id="1400" string="Start encoding">Çevirmeye başla</entry>
+	<entry id="1401" string="Pause/resume encoding">Çeviriyi duraklat/devam ettir</entry>
+	<entry id="1402" string="Stop encoding">Çevirmeyi durdur</entry>
+	<entry id="1403" string="Encoder options">Çevirici ayarları</entry>
+	<entry id="1404" string="Encode to single file">Tek dosya haline getir</entry>
+	<entry id="1405" string="Encode to input file folder if possible">Çevrilen dosyaları orjinal dosyaların bulunduğu dizine çıkart</entry>
+	<entry id="1406" string="Allow overwriting input file">Orjinal dosyaların üstüne yazmaya izin ver</entry>
+	<entry id="1407" string="Delete original files after encoding">Çevirdikten sonra orjinal dosyaları sil</entry>
+	<entry id="1408" string="Shutdown after encoding">Çevirdikten sonra bilgisayarı kapat</entry>
+      </section>
+
+      <section name="Help">
+	<entry id="1500" string="Help topics...">Yardım konuları</entry>
+	<entry id="1501" string="Show Tip of the Day">Günün İpucunu göster</entry>
+	<entry id="1502" string="Check for updates now">Güncellemeleri kontrol et</entry>
+	<entry id="1503" string="Check for updates at startup">Başlangıçta güncelleştirmeleri kontrol et.</entry>
+	<entry id="1504" string="About %1">%1 hakkında</entry>
+	<entry id="1505" string="index_en.html">index.html</entry>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist">Görev listesine ses dosyası ekle</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">Görev listesine Cd den dosya ekle</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Seçili olanı görev listesinden çıkar</entry>
+      <entry id="2003" string="Clear the entire joblist">Bütün görev listesini temizle</entry>
+      <entry id="2004" string="Query CDDB database">CDDB veritabanını sorgula</entry>
+      <entry id="2005" string="Submit CDDB data...">CDDB verisini gönder...</entry>
+      <entry id="2006" string="Configure general settings">Genel ayarları değiştir</entry>
+      <entry id="2007" string="Configure the selected audio encoder">Seçilen çevirici ayarlarını değiştir</entry>
+      <entry id="2008" string="Start the encoding process">Çevirmeye başla</entry>
+      <entry id="2009" string="Pause/resume encoding">Çeviriyi duraklat/devam ettir</entry>
+      <entry id="2010" string="Stop encoding">Çevirmeyi durdur</entry>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Encoding file:">Çevrilen dosya:</entry>
+      <entry id="3001" string="Time left:">Geçen zaman:</entry>
+      <entry id="3002" string="Selected encoder:">Seçilen çevirici:</entry>
+      <entry id="3003" string="File progress:">İlerleme:</entry>
+      <entry id="3004" string="Output folder:">Kaydedilecek yer:</entry>
+      <entry id="3005" string="%1 file(s) in joblist:">Görev listesinde %1 dosya var:</entry>
+      <entry id="3006" string="none">Hiçbiri</entry>
+      <entry id="3007" string="Show title info">Dosya bilgisini göster</entry>
+      <entry id="3008" string="Play">Oynat</entry>
+      <entry id="3009" string="Stop">Durdur</entry>
+      <entry id="3010" string="Select all">Tümünü seç</entry>
+      <entry id="3011" string="Select none">Hiçbirini seçme</entry>
+      <entry id="3012" string="Toggle selection">Seçimi tersine çevir</entry>
+      <entry id="3013" string="ripping/decoding">Riple / Çöz</entry>
+      <entry id="3014" string="encoding">Çevrilen</entry>
+      <entry id="3015" string="Create playlist">Çalma listesi oluştur</entry>
+      <entry id="3016" string="Create cue sheet">Cue dosyası oluştur</entry>
+      <entry id="3017" string="Browse">Gözat</entry>
+      <entry id="3018" string="Skip">Atla</entry>
+      <entry id="3019" string="Encode to single file">Tek dosya haline getir</entry>
+      <entry id="3020" string="Remove">Sil</entry>
+      <entry id="3021" string="Clear joblist">Görev listesini temizle</entry>
+      <entry id="3022" string="Use for all selected tracks">Tüm seçilmiş dosyalar için kullan</entry>
+      <entry id="3023" string="Interpret string as">Interpret string as</entry>
+      <entry id="3024" string="selected tracks">seçilen dosyalar</entry>
+      <entry id="3025" string="Adjust upper/lower case">BÜYÜK/küçük harf değiştir</entry>
+      <entry id="3026" string="all words upper case">Tüm kelimeler BÜYÜK HARFLE</entry>
+      <entry id="3027" string="long words upper case">Uzun kelimeler BÜYÜK HARFLE</entry>
+      <entry id="3028" string="first letter upper case">İlk Harf Büyük</entry>
+      <entry id="3029" string="all lower case">Tüm kelimeler küçük harfle</entry>
+      <entry id="3030" string="all upper case">HEPSİ BÜYÜK HARF</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Çevirilen dosyaların gönderileceği yeri seçin:</entry>
+      <entry id="3032" string="Sampling rate">Örnekleme oranı</entry>
+      <entry id="3033" string="Sample resolution">Örnek çözünürlüğü</entry>
+      <entry id="3034" string="Number of samples">Örnek sayısı</entry>
+      <entry id="3035" string="Channels">Kanallar</entry>
+      <entry id="3036" string="Mono">Mono</entry>
+      <entry id="3037" string="Stereo">Stereo</entry>
+      <entry id="3038" string="bit">bit</entry>
+      <entry id="3039" string="min">minimum</entry>
+      <entry id="3040" string="bytes">bytes</entry>
+      <entry id="3041" string="Length">Uzunluk</entry>
+      <entry id="3042" string="File">Dosya</entry>
+      <entry id="3043" string="Size">Boyut</entry>
+      <entry id="3044" string="Bitrate">Bit oranı</entry>
+      <entry id="3045" string="Audio Files">Ses dosyaları</entry>
+      <entry id="3046" string="All Files">Tüm dosyalar</entry>
+      <entry id="3047" string="Playlist Files">Çalma listesi dosyaları</entry>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder">Dizin</entry>
+	<entry id="3101" string="Add folder">Dizin ekle</entry>
+	<entry id="3102" string="Choose folder:">Dizin seç:</entry>
+	<entry id="3103" string="Select the folder to add to the joblist:">Görev listesine eklenecek klasörü seçin:</entry>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern">Şablona göre dosya ekle</entry>
+	<entry id="3201" string="Pattern">Şablon</entry>
+	<entry id="3202" string="Start folder">Başlangıç dizini</entry>
+	<entry id="3203" string="Filename pattern">Dosya adı şablonu</entry>
+	<entry id="3204" string="Select the folder to add to the joblist:">Görev listesine eklenecek klasörü seçin:</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="3300" string="Cannot modify the joblist while encoding!">Çevirme yapılırken görev listesi değiştirilemez!</entry>
+	<entry id="3301" string="You did not select a track!">Dosya seçmediniz!</entry>
+	<entry id="3302" string="No files found matching pattern:">Şablona uyan dosya yok:</entry>
+      </section>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data">CDDB verisi</entry>
+	<entry id="4001" string="Submit">Gönder</entry>
+	<entry id="4002" string="No audio CD in drive!">CD sürücüde ses CDsi yok!</entry>
+	<entry id="4003" string="Submitting CD information">CD bilgisi gönderiliyor</entry>
+	<entry id="4004" string="Update joblist with this information">Görev listesini bu bilgilerle güncelle</entry>
+	<entry id="4005" string="Status">Durum</entry>
+	<entry id="4006" string="Successfully read CD!">CD okuma başarılı!</entry>
+	<entry id="4007" string="Save entry">Girişi kaydet</entry>
+	<entry id="4008" string="Various artists">Çeşitli sanatçılar</entry>
+	<entry id="4009" string="Data track">Veri dosyası</entry>
+	<entry id="4010" string="Submit to online database later">Online veritabanına daha sonra gönder</entry>
+	<entry id="4011" string="Active CD-ROM drive">Aktif CD-ROM sürücü</entry>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Freedb servisine bağlanmada hata.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Lütfen göndermeden önce tüm şarkı adlarını ve boşlukları doldurun.</entry>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query">CDDB sorgusu</entry>
+	<entry id="4101" string="Info">Bilgi</entry>
+	<entry id="4102" string="No freedb entry for this disk.">Bu disk için freedb sonucu yok</entry>
+	<entry id="4103" string="Connecting to freedb server at">Freedb servisine bağlanıyor:</entry>
+	<entry id="4104" string="Requesting CD information">CD bilgisi isteniyor</entry>
+	<entry id="4105" string="No exact matches found">Tam eşleşme bulunamadı</entry>
+	<entry id="4106" string="Multiple matches found">Birden çok eşleşme bulundu</entry>
+	<entry id="4107" string="Matches">Eşleşmeler</entry>
+	<entry id="4108" string="Select the entry that best fits your CD:">En uygun CD eşleşmesini seçin:</entry>
+	<entry id="4109" string="Would you like to perform this query again later?">Bu sorguyu sonra yeniden yapmak ister misiniz?</entry>
+	<entry id="4110" string="none">Hiçbiri</entry>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Freedb servisine bağlanmada hata.</entry>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry">Girişi sil</entry>
+	<entry id="4201" string="CDDB queries">CDDB sorguları</entry>
+	<entry id="4202" string="Query">Sorgu</entry>
+	<entry id="4203" string="Query all">Hepsini sorgula</entry>
+	<entry id="4204" string="Query string">Sorgu metni</entry>
+	<entry id="4205" string="CDDB queries to perform:">Yapılacak CDDB sorgusu:</entry>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry">Girişi sil</entry>
+	<entry id="4301" string="CDDB entries to submit:">Gönderilecek CDDB girişleri:</entry>
+	<entry id="4302" string="Submit all">Hepsini gönder</entry>
+	<entry id="4303" string="CDDB data">CDDB verisi</entry>
+	<entry id="4304" string="Submit">Gönder</entry>
+	<entry id="4305" string="Disc name">Disk adı</entry>
+	<entry id="4306" string="Preview">Önizleme</entry>
+	<entry id="4307" string="Category">Kategori</entry>
+	<entry id="4308" string="Submitting CD information">CD bilgisi gönderiliyor</entry>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data">CDDB verisi</entry>
+	<entry id="4401" string="Update joblist with this information">Görev listesini bu bilgilerle güncelle</entry>
+	<entry id="4402" string="Charset">Karakter seti</entry>
+	<entry id="4403" string="Downloaded CDDB entries:">İndirilen CDDB girişleri:</entry>
+	<entry id="4404" string="Disc name">Disk adı</entry>
+	<entry id="4405" string="Preview">Önizleme</entry>
+	<entry id="4406" string="Remove entry">Girişi sil</entry>
+	<entry id="4407" string="Save entry">Girişi kaydet</entry>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup">Genel ayarlar</entry>
+      <entry id="5001" string="Encoders">Çeviriciler</entry>
+      <entry id="5002" string="Playlists">Çalma listesi</entry>
+      <entry id="5003" string="Language">Dil</entry>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder">Çevirici ayarları</entry>
+	<entry id="5101" string="Encoder">Çevirici</entry>
+	<entry id="5102" string="Output folder">Kaydetme dizini</entry>
+	<entry id="5103" string="Browse">Gözat</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Çevirilen dosyaların gönderileceği yeri seçin:</entry>
+	<entry id="5105" string="Use input file folder if possible">Orjinal dosyaların bulunduğu dizini kullan</entry>
+	<entry id="5106" string="Allow overwriting input file">Orjinal dosyaların üstüne yazmaya izin ver</entry>
+	<entry id="5107" string="Options">Ayarlar</entry>
+	<entry id="5108" string="Filename pattern">Dosya adı şablonu</entry>
+	<entry id="5109" string="Encode 'On-The-Fly'">Dinlerken Çevir</entry>
+	<entry id="5110" string="Keep ripped Wave files">Riplenmiş Wave dosyalarını sakla</entry>
+	<entry id="5111" string="Encode to single file">Tek dosya haline getir</entry>
+
+	<section name="Errors">
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Dizin bulunamadı! Oluşturmak ister misiniz?</entry>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists">Çalma listesi oluştur</entry>
+	<entry id="5201" string="Create cue sheets">Cue dosyası oluştur</entry>
+	<entry id="5202" string="Output folder">Kaydetme dizini</entry>
+	<entry id="5203" string="Browse">Gözat</entry>
+	<entry id="5204" string="Use encoder output folder">Çıkış dizini</entry>
+	<entry id="5205" string="Filename pattern">Dosya adı şablonu</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Çalma listesinin koyulacağı dizini seçin:</entry>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database">Yerel CDDB veritabanını kullan</entry>
+	<entry id="5301" string="Enable remote CDDB database">Uzaktan CDDB vertabanını etkinleştir</entry>
+	<entry id="5302" string="CDDB path:">CDDB dizini:</entry>
+	<entry id="5303" string="Browse">Gözat</entry>
+	<entry id="5304" string="Select the folder of the CDDB database:">CDDB veritabanı klasörünü seç:</entry>
+	<entry id="5305" string="CDDB access mode:">CDDB erişim tipi:</entry>
+	<entry id="5306" string="CDDB server:">CDDB sunucu:</entry>
+	<entry id="5307" string="Port:">Port:</entry>
+	<entry id="5308" string="eMail address:">e-mail adresi:</entry>
+	<entry id="5309" string="HTTP settings">HTTP ayarları</entry>
+	<entry id="5310" string="Proxy settings">Proxy ayarları</entry>
+	<entry id="5311" string="Options">Ayarlar</entry>
+	<entry id="5312" string="Automatic CDDB queries">Otomatik CDDB sorgusu</entry>
+	<entry id="5313" string="Prefer CDDB over CD Text">CD Metni yerine CDDB bilgisini tercih et</entry>
+	<entry id="5314" string="Enable CDDB cache">CDDB önbelleği aktif</entry>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings">Gelişmiş CDDB ayarları</entry>
+	  <entry id="5331" string="CGI scripts">CGI metni</entry>
+	  <entry id="5332" string="CDDB query script:">CDDB sorgu metni:</entry>
+	  <entry id="5333" string="CDDB submit script:">CDDB metni göster:</entry>
+	  <entry id="5334" string="no proxy">proxy yok</entry>
+	  <entry id="5335" string="Proxy type:">Proxy tipi:</entry>
+	  <entry id="5336" string="Proxy server:">Proxy sunucu:</entry>
+	  <entry id="5337" string="User name:">Kullanıcı adı:</entry>
+	  <entry id="5338" string="Password:">Şifre:</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address.">Lütfen geçerli bir e-mail adresi giriniz.</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDBP protokolü HTTP yönlendirme proxy leri üzerinden kullanılamamaktadır!&#10;Protokolü HTTP ye çevirmek ister misiniz?</entry>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language:">Dil seçin:</entry>
+	<entry id="5401" string="Edit language file">Dil dosyasını düzenle</entry>
+	<entry id="5402" string="Information">Bilgi</entry>
+	<entry id="5403" string="Encoding">Karakter Seti</entry>
+	<entry id="5404" string="Author">Çeviren</entry>
+	<entry id="5405" string="URL">URL</entry>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tags">Bilgi etiketleri</entry>
+	<entry id="5501" string="Tag formats">Etiket karakter kodları</entry>
+	<entry id="5502" string="Default comment string:">Varsayılan yorum metni:</entry>
+	<entry id="5503" string="Replace existing comments with default comment">Varolan yorumları varsayılan yorumla değiştir</entry>
+	<entry id="5504" string="Filename pattern">Dosya adı şablonu</entry>
+      </section>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1">%1 hakkında</entry>
+      <entry id="6001" string="Translated by %1.">Çeviri: %1</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Bu program General Public License (GPL)&#10;ile dağıtılır.</entry>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">%1 için yeni güncelleştirmeler var!&#10;Siteyi ziyaret edip yüklemek ister misiniz?</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Şu anda yeni bir güncelleştirme yok!</entry>
+      <entry id="6102" string="Check for updates at startup">Başlangıçta güncelleştirmeleri kontrol et.</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 güncellemeleri program başlangıcında otomatik&#10;olarak denetleyebilir.&#10;&#10;Program başlangıcında güncellemeleri otomatik denetlemek ister misiniz?</entry>
+    </section>
+
+    <section name="Tips">
+      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 %2 dile çevrilmiştir. Eğer kullanımı kolaylaştırmak&#10;isterseniz &quot;Smooth Translator&quot; aracı ile çeviri yapabilirsiniz.</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 LAME, Ogg Vorbis, FAAC, FLAC ve Bonk&#10;türlerini destekler.&#10;&#10;VQF için kodlayıcı %1 web sitesinde vardır:&#10;%2</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 Winamp 2 eklentilerini kullanarak&#10;daha fazla dosya biçimi destekleyebilir.&#10;Winamp klasöründeki in_*.DLL dosyalarını&#10;%1 deki %1/plugins klasörüne&#10;kopyalayarak bu biçimleri de okutabilirsiniz.</entry>
+      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 ile freedb CD veritabanına eklemeler yapabilirsiniz.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">CD deki okuma hatalarını düzeltmek için %1 ayar bölümünde&#10;CDRip sekmesindeki Jitter düzeltme yi etkin hale getirebilirsiniz.&#10;Eğer bu da işe yaramazsa Paranoya modlarını deneyiniz.</entry>
+      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1 in nasıl geliştirileceği hakkında önerileriniz mi var?&#10;%1 Sourforge sayfasından ya da mail göndererek&#10;fikirlerinizi belirtebilirsiniz.&#10;Sourceforge proje sayfası - %2&#10;E-Mail - %3</entry>
+      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 i seviyor musunuz? %1 ücretsiz&#10;kullanılabilir fakat %1 projesine bagış yaparak&#10;gelişmesine katkıda da bulunabilirsiniz.&#10;&#10;Paypal aracılığı ile %2 e para gönderebilirsiniz.&#10;Daha fazla detay için %3&#10;adresine bakınız.</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Çevirme işlemi devam ediyor! Çıkmak istediğinizden emin misiniz?</entry>
+      <entry id="7001" string="Currently encoding">Çevriliyor</entry>
+      <entry id="7002" string="Cannot change settings while encoding!">Çevirme yapılırken ayar değiştirilemez!</entry>
+      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI sürücüleri yüklenemedi! Cd riplenemiyor.</entry>
+      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Açılamayan dosya: %1&#10;&#10;Hata: %2</entry>
+      <entry id="7005" string="Cannot play a file while encoding!">Dosya çevrilirken oynatma yapılamaz!</entry>
+      <entry id="7006" string="Cannot start encoding while playing a file!">Dosya oynatılırken çevirme başlatılamaz!</entry>
+      <entry id="7007" string="Delete original files after encoding">Çevirdikten sonra orjinal dosyaları sil</entry>
+      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Bu seçim çevirme bittikten sonra orjinal dosyaları silecektir!&#10;Orjinal dosyaları silmek istediğinize emin misiniz?</entry>
+      <entry id="7009" string="File already exists">Dosya zaten mevcut</entry>
+      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">%1&#10;dosyası mevcut. Üstüne yazılsın mı?</entry>
+      <entry id="7011" string="Overwrite all further files">Tüm diğer dosyaların üstüne de yaz</entry>
+      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB veritabanı aktif değil!&#10;Ayarlardan CDDB veritabanını aktif hale getirin.</entry>
+      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Uzak CDDB kullanımı desteklenmiyor!&#10;Ayarlardan uzak CDDB veritabanını aktif hale getirin.</entry>
+      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows CD-ROM'a erişimi engelliyor.&#10;&#10;Lütfen sistem yöneticinizle temas kurup gerekli ayarlamaları yaptırınız.</entry>
+      <entry id="7015" string="Cannot access input file: %1">Çevrilecek dosyaya erişilemiyor: %1</entry>
+      <entry id="7016" string="Cannot create output file: %1">Çevrilen dosya oluşturulamıyor: %1</entry>
+      <entry id="7017" string="File not found">Dosya bulunamadı</entry>
+      <entry id="7018" string="Unknown file type">Bilinmeyen dosya biçimi</entry>
+      <entry id="7019" string="Unsupported audio format">Desteklenmeyen ses formatı</entry>
+      <entry id="7020" string="Unknown error">Bilinmeyen hata</entry>
+      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Seçilen dosyalar aynı örnekleme formatında olmadığı için&#10;tek bir dosyada birleştirilemez&#10;&#10;Lütfen öncelikle tüm dosyaları aynı örnekleme formatına çeviriniz.</entry>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="CDRip">
+	<entry id="10000" string="Active CD-ROM drive">Aktif CD-ROM sürücü</entry>
+	<entry id="10001" string="Set drive speed limit:">Sürücü hız limiti seç:</entry>
+	<entry id="10002" string="CD information">CD Bilgisi</entry>
+	<entry id="10003" string="Read CD Text">CD Metnini Oku</entry>
+	<entry id="10004" string="Read cdplayer.ini">cdplayer.ini dosyasını oku</entry>
+	<entry id="10005" string="Ripper settings">Ripper ayarları</entry>
+	<entry id="10006" string="Activate cdparanoia mode:">CD paranoya modunu aktifleştir:</entry>
+	<entry id="10007" string="Overlap only">Sadece üstüne yaz</entry>
+	<entry id="10008" string="No verify">Doğruluğunu kanıtlama</entry>
+	<entry id="10009" string="No scratch repair">çizikleri onarma</entry>
+	<entry id="10010" string="Full cdparanoia mode">Cdparanoia modu tüm özellikler</entry>
+	<entry id="10011" string="Activate jitter correction">Jitter düzeltmesini aktifleştir</entry>
+	<entry id="10012" string="Swap left/right channel">Sağ/sol kanalları tersine çevir</entry>
+	<entry id="10013" string="Automatization">Otomatik olarak yap</entry>
+	<entry id="10014" string="Read CD contents on insert">CD takıldığında içindekileri oku</entry>
+	<entry id="10015" string="Start ripping automatically">Ripleme işlemine otomatik başla</entry>
+	<entry id="10016" string="Eject disk after ripping">Riplemeden sonra diski çıkar</entry>
+	<entry id="10017" string="CD options">CD Seçenekleri</entry>
+	<entry id="10018" string="Lock CD tray while ripping">Riplerken Cd-Rom a erişimi kapat</entry>
+	<entry id="10019" string="Use native NT SCSI library">NT SCSI kütüphanesini kullan</entry>
+      </section>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate">Bit oranı</entry>
+	<entry id="30001" string="Copyright bit">Copyright Bit</entry>
+	<entry id="30002" string="CRC">CRC</entry>
+	<entry id="30003" string="Original bit">Original bit</entry>
+	<entry id="30004" string="Channels">Kanallar</entry>
+	<entry id="30005" string="Private bit">Private bit</entry>
+	<entry id="30006" string="Set Copyright bit">Set Copyright bit</entry>
+	<entry id="30007" string="Enable CRC">CRC aktif</entry>
+	<entry id="30008" string="Set Original bit">Set Original bit</entry>
+	<entry id="30009" string="Dual channel encoding">Çift kanal çeviri</entry>
+	<entry id="30010" string="Set Private bit">Set Private bit</entry>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode">Çeviri biçimi</entry>
+	<entry id="31001" string="Stereo mode">Stereo biçimi</entry>
+	<entry id="31002" string="Quantization">Quantization</entry>
+	<entry id="31003" string="Downsampling ratio">Aşağıörnekleme oranı</entry>
+	<entry id="31004" string="Predictor size">Predictor boyutu</entry>
+	<entry id="31005" string="Enable lossless encoding">Kayıpsız çeviri aktif</entry>
+	<entry id="31006" string="Enable Joint Stereo">Birleşik Stereo kullan</entry>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic">Temel</entry>
+	<entry id="32001" string="Misc">Misc</entry>
+	<entry id="32002" string="Expert">Uzman</entry>
+	<entry id="32003" string="Audio processing">İşlenen ses</entry>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets">Ayarlar</entry>
+	  <entry id="32101" string="Use preset:">Ayarları kullan:</entry>
+	  <entry id="32102" string="Custom settings">Kişisel ayarlar</entry>
+	  <entry id="32103" string="Medium, Fast">Orta, hızlı</entry>
+	  <entry id="32104" string="Standard, Fast">Standart, hızlı</entry>
+	  <entry id="32105" string="Extreme, Fast">Üstün, hızlı</entry>
+	  <entry id="32106" string="Bitrate">Bit oranı</entry>
+	  <entry id="32107" string="Quality">Kalite</entry>
+	  <entry id="32108" string="Set bitrate:">Bit oranını belirle:</entry>
+	  <entry id="32109" string="Set ratio:">Oranı belirle:</entry>
+	  <entry id="32110" string="Set quality:">Kaliteyi belirle:</entry>
+	  <entry id="32111" string="worse">Orta</entry>
+	  <entry id="32112" string="better">İyi</entry>
+	  <entry id="32113" string="VBR mode">VBR biçimi</entry>
+	  <entry id="32114" string="no VBR">VBR yapma</entry>
+	  <entry id="32115" string="VBR quality">VBR kalitesi</entry>
+	  <entry id="32116" string="ABR target bitrate">ABR bit oranı</entry>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits">Kontrol bitleri</entry>
+	  <entry id="32201" string="Set Copyright bit">Set Copyright bit</entry>
+	  <entry id="32202" string="Set Original bit">Set Original bit</entry>
+	  <entry id="32203" string="Set Private bit">Set Private bit</entry>
+	  <entry id="32204" string="CRC">CRC</entry>
+	  <entry id="32205" string="Enable CRC">CRC aktif</entry>
+	  <entry id="32206" string="Stereo mode">Stereo biçimi</entry>
+	  <entry id="32207" string="Auto">Otomatik</entry>
+	  <entry id="32208" string="Stereo">Stereo</entry>
+	  <entry id="32209" string="Joint Stereo">Birleşik Stereo</entry>
+	  <entry id="32210" string="Force Joint Stereo">Zorla Birleşik Stereo yap</entry>
+	  <entry id="32211" string="VBR bitrate range">VBR bit oranı menzili</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate:">Minimum VBR bit oranı:</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate:">Maksimum VBR bit oranı:</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH">ATH</entry>
+	  <entry id="32301" string="Enable ATH:">ATH Etkin:</entry>
+	  <entry id="32302" string="Use default setting">Varsayılan ayarları kullan</entry>
+	  <entry id="32303" string="Psycho acoustic model">Psiko akustik model</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">Zamansal maskeleme efekti kullan</entry>
+	  <entry id="32305" string="Stream format">Akış formatı</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">Zorla ISO uyumu</entry>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Output sampling rate">çıkış oranları</entry>
+	  <entry id="32401" string="auto">otomatik</entry>
+	  <entry id="32402" string="no resampling">Tekrar deneme</entry>
+	  <entry id="32403" string="Highpass filter">Yüksek geçirgen filtre</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz):">Yüksek geçiş frekansını belirle (Hz):</entry>
+	  <entry id="32405" string="Set Highpass width (Hz):">Yüksek geçiş filtre genişliği (Hz):</entry>
+	  <entry id="32406" string="Lowpass filter">Düşük geçirgen filtre</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz):">Düşük geçiş frekansını belirle (Hz):</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz):">Düşük geçiş filtre genişliği (Hz):</entry>
+	  <entry id="32409" string="Misc settings">Diğer ayarlar</entry>
+	  <entry id="32410" string="Disable all filtering">Hiçbir filtre kullanma</entry>
+	</section>
+      </section>
+
+      <section name="FAAC">
+	<entry id="33000" string="Quality">Kalite</entry>
+	<entry id="33001" string="Format">Biçim</entry>
+
+	<section name="Quality">
+	  <entry id="33100" string="Bitrate / Quality">Bit oranı / Kalite</entry>
+	  <entry id="33101" string="Bitrate per channel:">Kanal başına bit oranı:</entry>
+	  <entry id="33102" string="Set quality:">Kaliteyi belirle:</entry>
+	  <entry id="33103" string="Stereo mode">Stereo biçimi</entry>
+	  <entry id="33104" string="Allow Joint Stereo">Ortak stereo ya izin ver</entry>
+	  <entry id="33105" string="Temporal Noise Shaping">Geçici ses şekilleri</entry>
+	  <entry id="33106" string="Use Temporal Noise Shaping">Geçici ses şekillerini kullan</entry>
+	  <entry id="33107" string="Maximum bandwidth">Maksimum bant genişliği</entry>
+	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Kullanılan maksimum bant genişliği (Hz):</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="33200" string="MPEG version">MPEG versiyonu</entry>
+	  <entry id="33201" string="AAC object type">AAC tipi</entry>
+	  <entry id="33202" string="File format">Dosya Biçimi</entry>
+	  <entry id="33203" string="Allow ID3v2 tags in AAC files">AAC dosyalarında ID3v2 ye izin ver</entry>
+	  <entry id="33204" string="Note:">Not:</entry>
+	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">ID3 etiketi eklenmiş dosyalar bazı oynatıcılarda sorun çıkarmaktadır.&#10;Dosya bilgisi etiketlerini sadece eğer problem yaratmayacağından eminseniz kullanınız.</entry>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic">Temel</entry>
+	<entry id="34001" string="Format">Biçim</entry>
+	<entry id="34002" string="Expert">Uzman</entry>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets">Ayarlar</entry>
+	  <entry id="34101" string="Use preset:">Ayarları kullan:</entry>
+	  <entry id="34102" string="Custom settings">Kişisel ayarlar</entry>
+	  <entry id="34103" string="Fastest encoding">En hızlı çeviri</entry>
+	  <entry id="34104" string="Best compression">En iyi sıkıştırma</entry>
+	  <entry id="34105" string="Stereo mode">Stereo biçimi</entry>
+	  <entry id="34106" string="Joint Stereo">Birleşik Stereo</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="34200" string="Use streamable subset">Use streamable subset</entry>
+	  <entry id="34201" string="Blocksize:">Blok boyutu:</entry>
+	  <entry id="34202" string="bytes">bytes</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="34300" string="Apodization">Düzeltme</entry>
+	  <entry id="34301" string="Apodization function(s):">Düzeltme fonksiyonu(ları):</entry>
+	  <entry id="34302" string="Note:">Not:</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Noktalı virgülle ayırarak birden çok fonksiyon kullanabilirsiniz</entry>
+	  <entry id="34304" string="Linear predictor">Linear predictor</entry>
+	  <entry id="34305" string="Maximum LPC order">Maximum LPC order</entry>
+	  <entry id="34306" string="disabled">aktif değil</entry>
+	  <entry id="34307" string="Exhaustive model search">Exhaustive model search</entry>
+	  <entry id="34308" string="Quantized LPC precision">Quantized LPC precision</entry>
+	  <entry id="34309" string="auto">otomatik</entry>
+	  <entry id="34310" string="Optimize LPC quantization">Optimize LPC quantization</entry>
+	  <entry id="34311" string="Residual coding">Residual coding</entry>
+	  <entry id="34312" string="Minimum partition order">Minimum partition order</entry>
+	  <entry id="34313" string="Maximum partition order">Maximum partition order</entry>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode">Çevirme biçimi</entry>
+	<entry id="35001" string="Variable Bitrate">Değişken kalite</entry>
+	<entry id="35002" string="Average Bitrate">Ortalama kalite</entry>
+	<entry id="35003" string="Quality">Kalite</entry>
+	<entry id="35004" string="Bitrate">Bit oranı</entry>
+      </section>
+
+      <section name="WMA">
+	<entry id="36000" string="Select codec">Çevirici seç</entry>
+	<entry id="36001" string="Select codec format">Çevirici formatı seç</entry>
+	<entry id="36002" string="Codec settings">Çevirici seçenekleri</entry>
+	<entry id="36003" string="Use codec">Çevirici</entry>
+	<entry id="36004" string="Use format">Biçim</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Sıkıştırılmamış WMA dosyaları yaz</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Genel ayarlara ve dosya biçimine göre otomatik ayar yap</entry>
+	<entry id="36007" string="Use VBR encoding">Değişken bit oranlı (VBR) çevirici kullan</entry>
+	<entry id="36008" string="Use 2-pass encoding">2-pass çeviri kullan</entry>
+	<entry id="36009" string="Target bitrate">Hedef bit oranı</entry>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate">Bit oranı</entry>
+	<entry id="37001" string="Bitrate per channel:">Kanal başına bit oranı:</entry>
+	<entry id="37002" string="Preselection">Seçimler</entry>
+	<entry id="37003" string="Number of preselection candidates:">Seçilenleri say:</entry>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="50000" string="Support this project">Bu projeyi destekle</entry>
+	<entry id="50001" string="Please support this project!">Lütfen bu projeyi destekleyin!</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Lütfen %1 projesine bağış yaparak bu yazılımın bedava dağıtıma devam&#10;etmesine yardımcı olun.&#10;&#10;Aşağıdaki tuşlardan birini kullanarak Paypal üzerinden güvenle bağış yapabilirsiniz:</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Paypal kullanarak %1 adresine direk bağış da yapabilirsiniz.&#10;&#10;Elektronik para transferi veya çek ile bağış için lütfen %1 a&#10;mail atınız.</entry>
+	<entry id="50004" string="usd">usd</entry>
+	<entry id="50005" string="en">en</entry>
+	<entry id="50006" string="Thank you very much!">Teşekkürler!</entry>
+	<entry id="50007" string="Remind me later">Sonra hatırlat</entry>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="51000" string="Configure">Ayarla</entry>
+	<entry id="51001" string="About">Hakkında</entry>
+      </section>
+
+      <section name="Video Downloader">
+
+	<section name="Configuration">
+	  <entry id="52101" string="Automatization">Otomatik olarak yap</entry>
+	  <entry id="52103" string="Browse">Gözat</entry>
+	</section>
+
+	<section name="Errors"/>
+      </section>
+    </section>
+  </data>
+</LangFile>

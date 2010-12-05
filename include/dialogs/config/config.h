@@ -52,7 +52,7 @@ namespace BonkEnc
 			Void			 OK();
 			Void			 Cancel();
 
-			Void			 OnChangeSize();
+			Void			 OnChangeSize(const Size &);
 			Void			 OnSelectEntry(ConfigLayer *);
 
 			Void			 OnChangeEncoderSettings(const String &);

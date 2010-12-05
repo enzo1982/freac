@@ -83,7 +83,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			Net::Protocols::HTTP	 http(String("http://").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)).Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault)));
 
 			http.SetParameter("cmd", String(command).Replace(" ", "+"));
-			http.SetParameter("hello", String("user ").Append(hostNameBuffer).Append(" BonkEnc ").Append(BonkEnc::cddbVersion).Replace(" ", "+"));
+			http.SetParameter("hello", String("user ").Append(hostNameBuffer).Append(" ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion).Replace(" ", "+"));
 			http.SetParameter("proto", "6");
 
 			http.SetHeaderField("User-Email", config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault));
@@ -179,7 +179,7 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 
 	gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-	SendCommand(String("cddb hello user ").Append(hostNameBuffer).Append(" BonkEnc ").Append(BonkEnc::cddbVersion));
+	SendCommand(String("cddb hello user ").Append(hostNameBuffer).Append(" ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion));
 
 	return True;
 }

@@ -31,11 +31,11 @@ namespace BonkEnc
 			Int64			 totalSamples;
 			Float			 totalSamplesDone;
 
-			Int			 trackStartTicks;
-			Int			 trackPauseTicks;
+			UnsignedInt64		 trackStartTicks;
+			UnsignedInt64		 trackPauseTicks;
 
-			Int			 totalStartTicks;
-			Int			 totalPauseTicks;
+			UnsignedInt64		 totalStartTicks;
+			UnsignedInt64		 totalPauseTicks;
 		public:
 						 Progress();
 						~Progress();
@@ -44,8 +44,8 @@ namespace BonkEnc
 			Void			 FixTotalSamples(Track &, const Track &);
 
 			Int64			 GetTotalSamples()			{ return totalSamples; }
-			Int			 GetTrackTimePassed()			{ return clock() - trackStartTicks; }
-			Int			 GetTotalTimePassed()			{ return clock() - totalStartTicks; }
+			Int			 GetTrackTimePassed()			{ return S::System::System::Clock() - trackStartTicks; }
+			Int			 GetTotalTimePassed()			{ return S::System::System::Clock() - totalStartTicks; }
 
 			Void			 InitTrackProgressValues();
 

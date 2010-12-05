@@ -59,42 +59,42 @@ Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInf
 
 Void BonkEnc::Progress::InitTrackProgressValues()
 {
-	trackStartTicks = clock();
+	trackStartTicks = S::System::System::Clock();
 }
 
 Void BonkEnc::Progress::PauseTrackProgress()
 {
-	trackPauseTicks = clock();
+	trackPauseTicks = S::System::System::Clock();
 }
 
 Void BonkEnc::Progress::ResumeTrackProgress()
 {
-	trackStartTicks += clock() - trackPauseTicks;
+	trackStartTicks += S::System::System::Clock() - trackPauseTicks;
 }
 
 Void BonkEnc::Progress::InitTotalProgressValues()
 {
-	totalStartTicks = clock();
+	totalStartTicks = S::System::System::Clock();
 }
 
 Void BonkEnc::Progress::PauseTotalProgress()
 {
-	totalPauseTicks = clock();
+	totalPauseTicks = S::System::System::Clock();
 }
 
 Void BonkEnc::Progress::ResumeTotalProgress()
 {
-	totalStartTicks += clock() - totalPauseTicks;
+	totalStartTicks += S::System::System::Clock() - totalPauseTicks;
 }
 
 Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int samplePosition)
 {
 	static BoCA::Config	*config = BoCA::Config::Get();
-	static Int		 lastInvoked = 0;
+	static UnsignedInt64	 lastInvoked = 0;
 
 	if (config->enable_console) return;
 
-	Int	 clockValue = clock();
+	UnsignedInt64	 clockValue = S::System::System::Clock();
 
 	if (clockValue - lastInvoked < 40) return;
 
@@ -109,16 +109,16 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 		trackProgress = Math::Round(		       (samplePosition * 100.0					   / trackInfo.length) * 10.0);
 		totalProgress = Math::Round(totalSamplesDone + (samplePosition * (trackInfo.length * 100.0 / totalSamples) / trackInfo.length) * 10.0);
 
-		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.length) - trackTicks) / CLOCKS_PER_SEC);
-		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / totalSamples)     - totalTicks) / CLOCKS_PER_SEC);
+		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.length) - trackTicks) / 1000);
+		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / totalSamples)     - totalTicks) / 1000);
 	}
 	else if (trackInfo.length == -1)
 	{
 		trackProgress = Math::Round(		       (samplePosition * 100.0																		     / trackInfo.fileSize) * 10.0);
 		totalProgress = Math::Round(totalSamplesDone + (samplePosition * ((trackInfo.approxLength >= 0 ? trackInfo.approxLength : 240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels) * 100.0 / totalSamples) / trackInfo.fileSize) * 10.0);
 
-		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.fileSize)					 - trackTicks) / CLOCKS_PER_SEC);
-		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / trackInfo.fileSize * trackInfo.approxLength / totalSamples) - totalTicks) / CLOCKS_PER_SEC);
+		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.fileSize)					 - trackTicks) / 1000);
+		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / trackInfo.fileSize * trackInfo.approxLength / totalSamples) - totalTicks) / 1000);
 	}
 
 	onTrackProgress.Emit(trackProgress, trackTicks);

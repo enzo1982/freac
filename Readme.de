@@ -1,20 +1,21 @@
-BonkEnc Version 1.1 CVS
+fre:ac Version 1.1 CVS
 
-BonkEnc ist ein Codierer für verschiedene Audioformate. Es kann
-MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU und VOC
-Dateien lesen und MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
-und WAV Dateien erzeugen.
+fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
+Das Programm liest MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU
+und VOC-Dateien und erzeugt MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
+oder WAV-Dateien.
 
-BonkEnc verwendet die CDRip Ripping Library zum CD-Rippen.
-BonkEnc verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
+fre:ac verwendet die CDRip Ripping Library zum CD-Rippen.
+fre:ac verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
 
 Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 Geschichte
 ----------
 
-	Version 1.1 CVS (Oktober 2010)
+	Version 1.1 CVS (Dezember 2010)
 
+		- Projekt umbenannt in fre:ac - free audio converter
 		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Hebräisch, Arabisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
 		- Deutsche, italienische, russische, portugiesische, tschechische und griechische Anleitungen hinzugefügt
 		- Mehrere Übersetzungen für das Installationsprogramm hinzugefügt
@@ -77,7 +78,7 @@ Geschichte
 		- FAAD2 suf Version 2.7 aktualisiert
 		- LAME suf Version 3.98.4 aktualisiert
 		- Ogg Vorbis auf aoTuV Beta 5.7 aktualisiert
-		- Ogg-Bibliothek auf Version 1.2.0 aktualisiert
+		- Ogg-Bibliothek auf Version 1.2.1 aktualisiert
 		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0
 		- Viele weitere Korrekturen
@@ -115,9 +116,7 @@ Bekannte Probleme
 	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
 	  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
 
-	- BonkEnc ist zurzeit auf 2 Audiokanäle beschränkt
-
-	- Editboxen funktionieren im Rechts-nach-Links modus nicht korrekt
+	- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
 
 Besonderen Dank
 ---------------
@@ -166,8 +165,7 @@ Besonderen Dank
 
 -----------------------------------------------------------------------------------
 
-Die offizielle BonkEnc Homepage: http://www.bonkenc.org/
-Paul F. Harrisons Bonk Homepage: http://www.logarithmic.net/pfh/bonk
+Die offizielle fre:ac-Homepage: http://www.freac.org/
 
-robert.kausch@bonkenc.org,
+robert.kausch@freac.org,
 Robert Kausch

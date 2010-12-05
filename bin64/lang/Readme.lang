@@ -1,14 +1,14 @@
-Guide to writing BonkEnc language files
----------------------------------------
+Guide to writing freac language files
+-------------------------------------
 
-People had some problems writing new language files for BonkEnc in the past. Most
+People had some problems writing new language files for freac in the past. Most
 were related to the text encoding in the language files.
 
 The language files and items
 ----------------------------
 
 	If you are doing a completely new translation, you can take the template.xml file
-	as a starting point. It includes all the strings that need to be translated for BonkEnc.
+	as a starting point. It includes all the strings that need to be translated for freac.
 
 	The Changes file provides information about which entries have been updated since the
 	last release. So if you are updating a translation, you know where to look at.
@@ -16,7 +16,7 @@ The language files and items
 Character encoding
 ------------------
 
-	The preferred encoding to use in BonkEnc language files is UTF-8 (Multibyte Unicode).
+	The preferred encoding to use in freac language files is UTF-8 (Multibyte Unicode).
 	UTF-8 allows all characters of the 7-Bit ASCII charset plus all special characters
 	of some European languages like the German umlauts or the 'sz' character and all
 	characters used in Asian languages (Kanji, Kana, etc).
@@ -40,13 +40,13 @@ The 'info' node
 	The 'info' node of the language file includes meta information about the language
 	and author of the file.
 
-	The 'program' field must always be 'BonkEnc', the 'version' field should be the
-	version number of the BonkEnc release you tested the file with.
+	The 'program' field must always be 'freac', the 'version' field should be the
+	version number of the freac release you tested the file with.
 
 	The 'language' field contains the language name in the local form. I.e. for a German
 	translation this field would contain the string 'Deutsch'. You can append other
 	information to the language name (like 'English (alternative)'). The whole string
-	will be displayed in BonkEnc.
+	will be displayed in freac.
 
 	The 'righttoleft' field specifies how the application windows and dialogs will be
 	laid out. Possible values are 'true' for right-to-left scripts like Arabic and 'false'
@@ -59,7 +59,7 @@ The 'info' node
 	information like your eMail address.
 
 	The 'url' field can contain the address of the translators personal homepage. If you
-	do not have a homepage, you should set it to 'http://www.bonkenc.org'.
+	do not have a homepage, you should set it to 'http://www.freac.org'.
 
 The smooth Translator utility
 -----------------------------
@@ -69,4 +69,4 @@ The smooth Translator utility
 
 
 Robert Kausch,
-<robert.kausch@bonkenc.org>
+<robert.kausch@freac.org>

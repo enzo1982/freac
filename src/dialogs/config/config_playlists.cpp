@@ -55,11 +55,11 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	edit_filename		= new EditBox(playlistOutputPattern, Point(10, 12), Size(324, 0), 0);
 
 	list_filename		= new List();
-	list_filename->AddEntry("<artist> - <album>");
-	list_filename->AddEntry("<artist>\\<artist> - <album>");
-	list_filename->AddEntry("<artist> - <album>\\<artist> - <album>");
-	list_filename->AddEntry("<album>\\<artist> - <album>");
-	list_filename->AddEntry("<genre>\\<artist> - <album>");
+	list_filename->AddEntry(String("<artist> - <album>"));
+	list_filename->AddEntry(String("<artist>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
+	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
+	list_filename->AddEntry(String("<album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
+	list_filename->AddEntry(String("<genre>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
 
 	edit_filename->SetDropDownList(list_filename);
 
