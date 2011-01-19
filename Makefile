@@ -1,24 +1,38 @@
 # Makefile for fre:ac
 
+include Makefile-options
+
 INCLUDEDIR1 = ./include
 INCLUDEDIR2 = ../smooth/include
 INCLUDEDIR3 = cdk/include
 OBJECTDIR = ./objects
-BINDIR = ./bin
 SRCDIR = ./src
-LIBDIR1 = ../smooth/lib
-LIBDIR2 = cdk/lib
+
+ifneq ($(BUILD_X64),True)
+	BINDIR = ./bin
+	LIBDIR1 = ../smooth/lib
+	LIBDIR2 = cdk/lib
+else
+	BINDIR = ./bin64
+	LIBDIR1 = ../smooth/lib64
+	LIBDIR2 = cdk/lib64
+endif
+
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
 DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
-RESOURCES = $(OBJECTDIR)/resources.o
+
+ifeq ($(BUILD_WIN32),True)
+	RESOURCES = $(OBJECTDIR)/resources.o
+endif
+
 EXEOBJECTS = $(OBJECTDIR)/gui.o
 CMDOBJECTS = $(OBJECTDIR)/console.o
 
-EXENAME = $(BINDIR)/freac.exe
-CMDNAME = $(BINDIR)/freaccmd.exe
-DLLNAME = $(BINDIR)/freac.dll
+EXENAME = $(BINDIR)/freac$(EXECUTABLE)
+CMDNAME = $(BINDIR)/freaccmd$(EXECUTABLE)
+DLLNAME = $(BINDIR)/freac$(SHARED)
 LIBNAME = $(OBJECTDIR)/libfreac.a
 
 COMPILER = gcc
@@ -26,15 +40,43 @@ RESCOMP = windres
 LINKER = gcc
 REMOVER = rm
 ECHO = echo
-COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -I$(INCLUDEDIR3) -march=i586 -g0 -Wall -Os -ffast-math -fno-exceptions -DUNICODE -D_UNICODE -c
-LINKER_OPTS = -L$(LIBDIR1) -L$(LIBDIR2) -Wl,--dynamicbase,--nxcompat -lboca -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -mwindows --shared -Wl,--out-implib,$(LIBNAME) -o$(DLLNAME)
-LOADER_COMPILER_OPTS = -I$(INCLUDEDIR2) -march=i586 -g0 -Wall -Os -ffast-math -fno-exceptions -c
-LOADER_GUI_LINKER_OPTS = -L$(LIBDIR1) -Wl,--dynamicbase,--nxcompat -lsmooth -lstdc++ -mwindows -o$(EXENAME)
-LOADER_CONSOLE_LINKER_OPTS = -L$(LIBDIR1) -Wl,--dynamicbase,--nxcompat -lsmooth -lstdc++ -o$(CMDNAME)
+COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -I$(INCLUDEDIR3) -g0 -Wall -Os -ffast-math -fno-exceptions -DUNICODE -D_UNICODE -c
+LINKER_OPTS = -L$(LIBDIR1) -L$(LIBDIR2) -lboca -lsmooth -lstdc++ --shared -o $(DLLNAME)
+LOADER_COMPILER_OPTS = -I$(INCLUDEDIR2) -g0 -Wall -Os -ffast-math -fno-exceptions -c
+LOADER_GUI_LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lstdc++ -o $(EXENAME)
+LOADER_CONSOLE_LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lstdc++ -o $(CMDNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
 RESCOMP_OPTS = -O coff
+
+ifneq ($(BUILD_X64),True)
+	COMPILER_OPTS		+= -march=i586
+	LOADER_COMPILER_OPTS	+= -march=i586
+else
+	COMPILER_OPTS		+= -march=nocona
+	LOADER_COMPILER_OPTS	+= -march=nocona
+endif
+
+ifeq ($(BUILD_WIN32),True)
+ifneq ($(BUILD_X64),True)
+	UNICOWS = -lunicows
+endif
+
+	LINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat $(UNICOWS) -lshell32 -lws2_32 -lole32 -lwinmm -Wl,--out-implib,$(LIBNAME)
+	LOADER_GUI_LINKER_OPTS		+= -Wl,--dynamicbase,--nxcompat -mwindows
+	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,--dynamicbase,--nxcompat
+else
+ifeq ($(BUILD_OSX),True)
+	STRIP = true
+
+	LINKER_OPTS			+= -Wl,-dylib_install_name,freac$(SHARED)
+endif
+
+	LINKER_OPTS			+= -Wl,-rpath,.
+	LOADER_GUI_LINKER_OPTS		+= -Wl,-rpath,.
+	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,-rpath,.
+endif
 
 .PHONY: all headers install clean clean_headers
 .SILENT:
@@ -52,7 +94,11 @@ $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
 	$(LINKER) $(DLLOBJECTS) $(LINKER_OPTS)
 	$(STRIP) $(STRIP_OPTS) $(DLLNAME)
+ifeq ($(BUILD_WIN32),True)
+ifneq ($(BUILD_X64),True)
 	countbuild BuildNumber
+endif
+endif
 	$(ECHO) done.
 
 $(EXENAME): $(EXEOBJECTS) $(RESOURCES)

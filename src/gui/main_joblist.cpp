@@ -15,8 +15,12 @@
 #include <utilities.h>
 #include <dllinterfaces.h>
 
-#ifndef EWX_FORCEIFHUNG
-#	define EWX_FORCEIFHUNG 16
+#ifdef __WIN32__
+#	include <windows.h>
+
+#	ifndef EWX_FORCEIFHUNG
+#		define EWX_FORCEIFHUNG 16
+#	endif
 #endif
 
 BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")

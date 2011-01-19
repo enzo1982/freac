@@ -5,7 +5,8 @@ Das Programm liest MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU
 und VOC-Dateien und erzeugt MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
 oder WAV-Dateien.
 
-fre:ac verwendet die CDRip Ripping Library zum CD-Rippen.
+fre:ac verwendet die CDRip Ripping Library zum CD-Rippen unter Windows.
+fre:ac verwendet cdparanoia zum CD-Rippen unter Linux und FreeBSD.
 fre:ac verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
 
 Code from FAAD2 is copyright (c) Nero AG, www.nero.com
@@ -13,9 +14,10 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Dezember 2010)
+	Version 1.1 CVS (Januar 2011)
 
 		- Projekt umbenannt in fre:ac - free audio converter
+		- Auf Linux und FreeBSD (unvollständig) portiert
 		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Hebräisch, Arabisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
 		- Deutsche, italienische, russische, portugiesische, tschechische und griechische Anleitungen hinzugefügt
 		- Mehrere Übersetzungen für das Installationsprogramm hinzugefügt
@@ -35,6 +37,7 @@ Geschichte
 		- Unterstützung zum Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
 		- Unterstützung für Cover-Bilder in MP4-Dateien hinzugefügt
 		- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
+		- Unterstützung für MP3-Dekodierung ohne Unterbrechungen hinzugefügt
 		- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO-Chunk)
 		- Unterstützung für Wildcards in BEcmd-Parametern hinzugefügt
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
@@ -86,37 +89,80 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP/2003/Vista/7, Windows 95/98/SE/ME, Wine v0.9.14+
+	- Windows NT/2000/XP/2003/Vista/7, Windows 95/98/SE/ME, Linux (z.B. Ubuntu 10.10) oder FreeBSD 8.1
 	- 200 MHz Prozessor, 128 MB RAM, 50 MB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
-		- MinGW-GCC v4.0+ (http://www.mingw.org/) oder MSVC v9.0
-		- smooth v0.8.71.0 CVS (http://www.smooth-project.org/)
+		Alle Systeme:
+
+			- smooth v0.8.71.0 CVS (http://www.smooth-project.org/)
+
+		Windows:
+
+			- MinGW GCC v4.0+ (http://www.mingw.org/) oder MSVC v9.0
+
+		Alle Linux- und Unix-Systeme:
+
+			- GCC v4.0+
+
+			- libcairo, libmad, libogg, libfaac, libfaad2, libmp3lame, libmp4v2, libspeex,
+			  libvorbis, libjpeg, libpng, libbz2, libxml2, libxmu, libx11, libv8
+
+			Linux:
+
+				- libasound2
+
+			Linux und FreeBSD:
+
+				- GTK, cdparanoia
 
 	Zusätzliche optionale Software:
 
-		- Winamp-Plugins können verwendet werden, wenn sie im "plugins"-Verzeichnis vorhanden sind
+		- Unter Windows können Winamp-Plugins verwendet werden, wenn sie im "plugins"-Verzeichnis vorhanden sind
+
+		- Einige externe Codecs können von fre:ac verwendet werden. Mehr Informationen dazu finden Sie im Benutzerhandbuch.
 
 Bekannte Probleme
 -----------------
 
-	- Es gibt folgende Einschränkungen für das Eingabeformat:
+	Alle Systeme:
 
-		- BladeEnc:
-				- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
-		- FLAC:
-				- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
-		- LAME:
-				- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen,
-				  können von LAME konvertiert werden
-		- TwinVQ:
-				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
+		- Es gibt folgende Einschränkungen für das Eingabeformat:
 
-	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
-	  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
+			- FLAC:
+					- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
+			- LAME:
+					- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen,
+					  können von LAME konvertiert werden
 
-	- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
+		- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
+		  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
+
+		- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
+
+	Windows-spezifische Probleme:
+
+		- Es gibt folgende Einschränkungen für das Eingabeformat:
+
+			- BladeEnc:
+					- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
+			- TwinVQ:
+					- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
+
+	X11-spezifische Probleme:
+
+		- Modale Fenster funktionieren nicht korrekt
+
+		- Dialogfenster werden etwas zu groß dargestellt
+
+		- In Nachrichtenfenstern und im "Tip des Tages"-Dialog werden keine Bilder dargestellt
+
+	Linux- und Unix-spezifische probleme:
+
+		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden müssen.
+
+		- Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis. Versuchen Sie nicht, das Programm systemweit zu installieren.
 
 Besonderen Dank
 ---------------

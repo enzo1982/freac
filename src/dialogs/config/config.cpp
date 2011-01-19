@@ -151,6 +151,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 				case BoCA::COMPONENT_TYPE_OUTPUT:    tree = tree_output;    break;
 				case BoCA::COMPONENT_TYPE_DSP:	     tree = tree_dsp;	    break;
 				case BoCA::COMPONENT_TYPE_EXTENSION: tree = tree_extension; break;
+				default:
 				case BoCA::COMPONENT_TYPE_UNKNOWN:   tree = tree_other;	    break;
 			}
 

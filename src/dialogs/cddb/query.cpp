@@ -18,6 +18,10 @@
 #include <cddb/cddbremote.h>
 #include <cddb/cddbbatch.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#endif
+
 BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
 	BoCA::Config	*config = BoCA::Config::Get();

@@ -11,6 +11,10 @@
 #include <gui/main_threads.h>
 #include <jobs/job.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#endif
+
 BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 {
 	text_progress	= new Text("Progress:", Point(7, 11));

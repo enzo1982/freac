@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,7 +22,6 @@ Void smooth::DetachDLL()
 #include <bonkenc.h>
 #include <resources.h>
 #include <stdlib.h>
-#include <vector>
 #include <time.h>
 
 #include <utilities.h>
@@ -43,7 +42,7 @@ BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
  */
 String	 BonkEnc::BonkEnc::appName	= "fre:ac";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
-String	 BonkEnc::BonkEnc::version	= "CVS 20101205";
+String	 BonkEnc::BonkEnc::version	= "CVS 2011xxxx";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre2";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";

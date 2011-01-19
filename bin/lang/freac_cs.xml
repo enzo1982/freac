@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Obecná nastavení...</entry>
 	<entry id="1301" string="Configure selected encoder...">Nastavit vybraný enkodér...</entry>
+	<entry id="1302" string="Active CD-ROM drive">Aktivní CD-ROM-mechanika</entry>
       </section>
 
       <section name="Encode">
@@ -95,8 +96,8 @@
     <section name="Toolbar">
       <entry id="2000" string="Add audio file(s) to the joblist">Připojit audio soubor(y) k seznamu</entry>
       <entry id="2001" string="Add audio CD contents to the joblist">Připojit ke zpracování obsah CD</entry>
-      <entry id="2002" string="Remove the selected entry from the joblist">Smazat vybranou položku ze seznamu</entry>
-      <entry id="2003" string="Clear the entire joblist">Smazat všechny položky ze seznamu</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Odstranit vybranou položku ze seznamu</entry>
+      <entry id="2003" string="Clear the entire joblist">Odstranit všechny položky ze seznamu</entry>
       <entry id="2004" string="Query CDDB database">Dotaz na CDDB databázi</entry>
       <entry id="2005" string="Submit CDDB data...">Poslat CDDB data...</entry>
       <entry id="2006" string="Configure general settings">Konfigurovat obecná nastavení</entry>
@@ -127,9 +128,9 @@
       <entry id="3017" string="Browse">Vyhledat</entry>
       <entry id="3018" string="Skip">Přeskočit</entry>
       <entry id="3019" string="Encode to single file">Kódovat do jediného souboru</entry>
-      <entry id="3020" string="Remove">Odstranit položku seznamu</entry>
+      <entry id="3020" string="Remove">Odstranit</entry>
       <entry id="3021" string="Clear joblist">Vyprázdnit celý seznam</entry>
-      <entry id="3022" string="Use for all selected tracks">Použít pro všechny označené skladby</entry>
+      <entry id="3022" string="Use for all selected tracks">Použít pro všechny vybrané skladby</entry>
       <entry id="3023" string="Interpret string as">Text interpretovat jako</entry>
       <entry id="3024" string="selected tracks">vybrané stopy</entry>
       <entry id="3025" string="Adjust upper/lower case">Nastavit velká/malá písmena</entry>
@@ -142,7 +143,7 @@
       <entry id="3032" string="Sampling rate">Rychlost vzorkování</entry>
       <entry id="3033" string="Sample resolution">Rozlíšení vzorků</entry>
       <entry id="3034" string="Number of samples">Počet vzorků</entry>
-      <entry id="3035" string="Channels">Kanály</entry>
+      <entry id="3035" string="Channels">Audio kanály</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
       <entry id="3038" string="bit">bit</entry>
@@ -155,6 +156,9 @@
       <entry id="3045" string="Audio Files">Audio soubory</entry>
       <entry id="3046" string="All Files">Všechny soubory</entry>
       <entry id="3047" string="Playlist Files">soubory Playlistu</entry>
+      <entry id="3048" string="Active decoder:">Aktivní dekodér:</entry>
+      <entry id="3049" string="Joblist">Seznam úloh</entry>
+      <entry id="3050" string="unknown">neznámý</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Adresář</entry>
@@ -184,7 +188,7 @@
 	<entry id="4000" string="CDDB data">CDDB data</entry>
 	<entry id="4001" string="Submit">Poslat</entry>
 	<entry id="4002" string="No audio CD in drive!">Žádné Audio-CD v mechanice!</entry>
-	<entry id="4003" string="Submitting CD information">Poslat info o CD</entry>
+	<entry id="4003" string="Submitting CD information">Poslat informace o CD</entry>
 	<entry id="4004" string="Update joblist with this information">Přepsat seznam touto informací</entry>
 	<entry id="4005" string="Status">Stav</entry>
 	<entry id="4006" string="Successfully read CD!">CD úspěšně přečtené!</entry>
@@ -204,7 +208,7 @@
 	<entry id="4100" string="CDDB query">Dotaz na CDDB </entry>
 	<entry id="4101" string="Info">Info</entry>
 	<entry id="4102" string="No freedb entry for this disk.">Pro toto CD není na freedb záznam</entry>
-	<entry id="4103" string="Connecting to freedb server at">Připojit na freedb server u</entry>
+	<entry id="4103" string="Connecting to freedb server at">Připojit na freedb serverem</entry>
 	<entry id="4104" string="Requesting CD information">Žádám informace o CD</entry>
 	<entry id="4105" string="No exact matches found">Hodící se údaje nenalezeny</entry>
 	<entry id="4106" string="Multiple matches found">Nalezeno více údajů</entry>
@@ -225,6 +229,7 @@
 	<entry id="4203" string="Query all">Všechny dotazy</entry>
 	<entry id="4204" string="Query string">Řetězec dotazu</entry>
 	<entry id="4205" string="CDDB queries to perform:">CDDB dotazy na odeslání:</entry>
+	<entry id="4206" string="Querying CD information...">Požaduji informace o CD...</entry>
       </section>
 
       <section name="Manage submits">
@@ -233,7 +238,7 @@
 	<entry id="4302" string="Submit all">Poslat vše</entry>
 	<entry id="4303" string="CDDB data">CDDB data</entry>
 	<entry id="4304" string="Submit">Poslat</entry>
-	<entry id="4305" string="Disc name">Název disku</entry>
+	<entry id="4305" string="Disc name">Název CD</entry>
 	<entry id="4306" string="Preview">Přehled</entry>
 	<entry id="4307" string="Category">Kategorie</entry>
 	<entry id="4308" string="Submitting CD information">Poslat info o CD</entry>
@@ -244,7 +249,7 @@
 	<entry id="4401" string="Update joblist with this information">Přepsat seznam touto informací</entry>
 	<entry id="4402" string="Charset">Znaková sada</entry>
 	<entry id="4403" string="Downloaded CDDB entries:">Stáhnuté CDDB položky:</entry>
-	<entry id="4404" string="Disc name">Název disku</entry>
+	<entry id="4404" string="Disc name">Název CD</entry>
 	<entry id="4405" string="Preview">Přehled</entry>
 	<entry id="4406" string="Remove entry">Smazat položku</entry>
 	<entry id="4407" string="Save entry">Uložit položku</entry>
@@ -256,6 +261,21 @@
       <entry id="5001" string="Encoders">Enkodér</entry>
       <entry id="5002" string="Playlists">Playlisty</entry>
       <entry id="5003" string="Language">Jazyk</entry>
+      <entry id="5004" string="Component configuration">Nastavení součástí</entry>
+      <entry id="5005" string="CDDB">CDDB</entry>
+      <entry id="5006" string="Interface">Rozhraní</entry>
+      <entry id="5007" string="Tags">Tagy</entry>
+      <entry id="5008" string="Components">Součásti</entry>
+      <entry id="5009" string="Decoders">Dekodér</entry>
+      <entry id="5010" string="Output">Výstup</entry>
+      <entry id="5011" string="DSP">DSP</entry>
+      <entry id="5012" string="Extensions">Rozšíření</entry>
+      <entry id="5013" string="Other">Další</entry>
+      <entry id="5014" string="Active configuration:">Aktivní nastavení:</entry>
+      <entry id="5015" string="New">Nový</entry>
+      <entry id="5016" string="Delete">Smazat</entry>
+      <entry id="5017" string="Command line arguments:">Parametry příkazového řádku:</entry>
+      <entry id="5018" string="Resulting arguments string:">Výsledné parametry řetězce:</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigurovat enkodér</entry>
@@ -270,6 +290,9 @@
 	<entry id="5109" string="Encode 'On-The-Fly'">Kódovat 'On-The-Fly' (přímo)</entry>
 	<entry id="5110" string="Keep ripped Wave files">Ponechat soubory wav</entry>
 	<entry id="5111" string="Encode to single file">Kódovat do jediného souboru</entry>
+	<entry id="5112" string="Output filenames">Jméno výstupního souboru</entry>
+	<entry id="5113" string="Allow Unicode characters">Povolit znaky Unicode</entry>
+	<entry id="5114" string="Replace spaces">Nahradit mezery</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Výstupní adresář neexistuje! Chcete jej vytvořit?</entry>
@@ -289,7 +312,7 @@
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Povolit lokální CDDB databázi</entry>
 	<entry id="5301" string="Enable remote CDDB database">Povolit vzdálenou CDDB databázi</entry>
-	<entry id="5302" string="CDDB path:">CDDB adresář:</entry>
+	<entry id="5302" string="CDDB path:">CDDB cesta:</entry>
 	<entry id="5303" string="Browse">Vyhledat</entry>
 	<entry id="5304" string="Select the folder of the CDDB database:">Zvolte složku CDDB databáze:</entry>
 	<entry id="5305" string="CDDB access mode:">CDDB - způsob přístupu:</entry>
@@ -331,11 +354,32 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Info tagy</entry>
-	<entry id="5501" string="Tag formats">Kódování tagu</entry>
+	<entry id="5500" string="Tags">Tagy</entry>
+	<entry id="5501" string="Tag formats">Formát tagu</entry>
 	<entry id="5502" string="Default comment string:">Standardní komentář:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Nahradit stávající komentáře standardním komentářem</entry>
 	<entry id="5504" string="Filename pattern">Vzor názvu souboru</entry>
+	<entry id="5505" string="Encoding:">Znaková sada:</entry>
+	<entry id="5506" string="Comments">Kommentáře</entry>
+	<entry id="5507" string="Cover art">Obal alba</entry>
+	<entry id="5508" string="Read cover art">Obal alba - načíst</entry>
+	<entry id="5509" string="Read cover art from tags">Obal alba - načíst z tagu</entry>
+	<entry id="5510" string="Read cover art from files">Obal alba - načíst ze souboru</entry>
+	<entry id="5511" string="Write cover art">Obal alba - zapsat</entry>
+	<entry id="5512" string="Write cover art to tags">Obal alba - zapsat do tagu</entry>
+	<entry id="5513" string="Write cover art to files">Obal alba - zapsat do souboru</entry>
+	<entry id="5514" string="Add reference to audio file tag">Přidat reference do tagu audio souboru</entry>
+	<entry id="5515" string="Other">Další</entry>
+	<entry id="5516" string="Special fields">Další pole</entry>
+	<entry id="5517" string="Write CD table of contents">Zapsat obsah CD</entry>
+	<entry id="5518" string="Preserve Replay Gain information">Zachovat Replay Gain-informace</entry>
+      </section>
+
+      <section name="Interface">
+	<entry id="5600" string="Joblist">Seznam úloh</entry>
+	<entry id="5601" string="Columns:">Sloupce:</entry>
+	<entry id="5602" string="Up">Nahoru</entry>
+	<entry id="5603" string="Down">Dolů</entry>
       </section>
     </section>
 
@@ -364,7 +408,7 @@
 
     <section name="Messages">
       <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Proces kódování ještě běží! Chcete přesto program ukončit?</entry>
-      <entry id="7001" string="Currently encoding">Aktivní proces kódování</entry>
+      <entry id="7001" string="Currently encoding">Proces kódování je ještě aktivní</entry>
       <entry id="7002" string="Cannot change settings while encoding!">Během kódování nemohou být žádná nastavení změněna</entry>
       <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Nemohu načíst ASPI ovladače! Ripování CD deaktivováno!</entry>
       <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
@@ -385,6 +429,7 @@
       <entry id="7019" string="Unsupported audio format">Nepodporovaný audio formát</entry>
       <entry id="7020" string="Unknown error">Neznámá chyba</entry>
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Vybrané soubory nelze kombinovat do jediného výstupní soubor z důvodu různých vzorkovacích formátů.&#10;&#10;Prosím překonvertujte nejdříve všechny soubory na stejný vzorkovací formát.</entry>
+      <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1">Žádný konfigurační dialog pro:&#10;&#10;%1</entry>
     </section>
 
     <section name="Decoders">
@@ -524,12 +569,13 @@
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG verze</entry>
+	  <entry id="33200" string="MPEG version">Verze MPEG</entry>
 	  <entry id="33201" string="AAC object type">Objekt typu AAC</entry>
 	  <entry id="33202" string="File format">Formát souboru</entry>
 	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Povolit ID3v2 tagy v AAC souborech</entry>
 	  <entry id="33204" string="Note:">Poznámka:</entry>
 	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Některé přehrávače můžou mít problém při přehrávaní&#10;AAC souborů s ID3 tagy. Prosím, použijte tuto možnost&#10;jen jen jste-li si jistý, že váš přehrávač zvládne tyto tagy.</entry>
+	  <entry id="33206" string="File extension">Přípona souboru</entry>
 	</section>
       </section>
 
@@ -579,6 +625,9 @@
 	<entry id="35002" string="Average Bitrate">Průměrná bitrate</entry>
 	<entry id="35003" string="Quality">Kvalita</entry>
 	<entry id="35004" string="Bitrate">Bitrate</entry>
+	<entry id="35005" string="Minimum bitrate:">Minimální Bitrate:</entry>
+	<entry id="35006" string="Average bitrate:">Průměrná Bitrate:</entry>
+	<entry id="35007" string="Maximum bitrate:">Maximální Bitrate:</entry>
       </section>
 
       <section name="WMA">
@@ -599,6 +648,40 @@
 	<entry id="37001" string="Bitrate per channel:">Bitrate na kanál:</entry>
 	<entry id="37002" string="Preselection">Předvolba</entry>
 	<entry id="37003" string="Number of preselection candidates:">Počet předvolených kandidátů:</entry>
+      </section>
+
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression">Komprese</entry>
+	<entry id="38001" string="Compression mode:">Režim komprese:</entry>
+	<entry id="38002" string="Fast">Rychle</entry>
+	<entry id="38003" string="Normal">Normálně</entry>
+	<entry id="38004" string="High">Vysoká</entry>
+	<entry id="38005" string="Extra high">Velmi vysoká</entry>
+	<entry id="38006" string="Insane">Extrémní</entry>
+      </section>
+
+      <section name="Speex">
+	<entry id="39000" string="Profile">Profil</entry>
+	<entry id="39001" string="Select encoding profile:">Profil kodéru:</entry>
+	<entry id="39002" string="Auto">Auto</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">Úzké pásmo (8 kHz)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">Široké pásmo (16 kHz)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">Ultra-široké pásmo (32 kHz)</entry>
+	<entry id="39006" string="VBR mode">VBR režim</entry>
+	<entry id="39007" string="CBR (no VBR)">CBR (ne VBR)</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
+	<entry id="39010" string="Options">Volby</entry>
+	<entry id="39011" string="Voice Activity Detection">Detekce hlasové aktivity</entry>
+	<entry id="39012" string="Discontinued Transmission">Nespojitý přenos</entry>
+	<entry id="39013" string="Algorithm complexity">Komplexní algorytmus</entry>
+	<entry id="39014" string="Complexity:">Komplexní:</entry>
+	<entry id="39015" string="CBR quality">CBR kvalita</entry>
+	<entry id="39016" string="VBR quality">VBR kvalita</entry>
+	<entry id="39017" string="ABR target bitrate">ABR cílové bitrate</entry>
+	<entry id="39018" string="Bitrate:">Bitrate:</entry>
+	<entry id="39019" string="Quality:">Kvalita:</entry>
+	<entry id="39020" string="Max. bitrate:">Max. Bitrate:</entry>
       </section>
     </section>
 
@@ -621,13 +704,89 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52001" string="Enter video URL here:">Zde zadejte Video-URL:</entry>
+	<entry id="52002" string="Download">Stahovat</entry>
+	<entry id="52003" string="Automatically download URLs copied to clipboard">Automaticky stahovat URL do schránky</entry>
+	<entry id="52004" string="Save downloaded video files">Uložit stažený video soubor</entry>
+	<entry id="52005" string="Video downloads:">Video-stahování:</entry>
+	<entry id="52006" string="Downloaded tracks:">Stažené skladby:</entry>
+	<entry id="52007" string="Uploader">Uploader</entry>
+	<entry id="52008" string="Video URL:">Video URL:</entry>
+	<entry id="52009" string="Video title:">Video titul:</entry>
+	<entry id="52010" string="Video description:">Video popis:</entry>
+	<entry id="52011" string="Site name:">Web stránka:</entry>
+	<entry id="52012" string="Uploaded by:">Nahráno od:</entry>
+	<entry id="52013" string="Uploaded on:">Nahráno za:</entry>
+	<entry id="52014" string="Length">Délka</entry>
+	<entry id="52015" string="Size">Velikost</entry>
+	<entry id="52016" string="Cancel download">Storno stahování</entry>
+	<entry id="52017" string="unknown">neznámý</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automatizace</entry>
+	  <entry id="52102" string="Video files">Video soubory</entry>
 	  <entry id="52103" string="Browse">Vyhledat</entry>
+	  <entry id="52104" string="Select the folder to save downloaded video files to:">Vyberte složku pro uložení stažených video souborů:</entry>
 	</section>
 
-	<section name="Errors"/>
+	<section name="Errors">
+	  <entry id="52201" string="This URL is not supported or not a video page URL!">Tato adresa URL není podporována nebo to není URL video-stránky!</entry>
+	  <entry id="52202" string="Error downloading video!">Chyba při stahování videa!</entry>
+	  <entry id="52203" string="You are already downloading this video!">Toto video bylo již staženo!</entry>
+	</section>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="53000" string="Tracks">Stopa</entry>
+	<entry id="53001" string="Length">Délka</entry>
+	<entry id="53002" string="Size">Velikost</entry>
+	<entry id="53003" string="Albums">Album</entry>
+	<entry id="53004" string="Files">Soubory</entry>
+	<entry id="53005" string="File">Soubor</entry>
+	<entry id="53006" string="Save">Uložit</entry>
+	<entry id="53007" string="Save all">Uložit vše</entry>
+	<entry id="53008" string="no audio files found">audio soubory nenalezeny</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Standard</entry>
+	  <entry id="53101" string="Title information">Titul informace</entry>
+	  <entry id="53102" string="Disc">Disk</entry>
+	  <entry id="53103" string="Cover art">Obal alba</entry>
+	  <entry id="53104" string="Covers">Obaly</entry>
+	  <entry id="53105" string="Type">Typ</entry>
+	  <entry id="53106" string="Description">Popis</entry>
+	  <entry id="53107" string="Add">Přidat</entry>
+	  <entry id="53108" string="Remove">Odstranit</entry>
+	</section>
+
+	<section name="Details">
+	  <entry id="53200" string="Details">Detaily</entry>
+	  <entry id="53201" string="Detailed information">Detailní informace</entry>
+	  <entry id="53202" string="Band / orchestra">Skupina / Orchestr</entry>
+	  <entry id="53203" string="Performer refinement">Další umělci</entry>
+	  <entry id="53204" string="Modified / remixed by">Upraveno / remix od</entry>
+	  <entry id="53205" string="Composer">Skladatel</entry>
+	  <entry id="53206" string="Lyrics writer">Textař</entry>
+	  <entry id="53207" string="Publisher information">Informace o vydavateli</entry>
+	  <entry id="53208" string="Publisher / label">Vydavatel / jmenovka</entry>
+	  <entry id="53209" string="ISRC">ISRC</entry>
+	</section>
+
+	<section name="Other">
+	  <entry id="53300" string="Other">Další</entry>
+	  <entry id="53301" string="Original information">Původní informace</entry>
+	  <entry id="53302" string="Original artist">Původní interpret</entry>
+	  <entry id="53303" string="Original album">Původní album</entry>
+	  <entry id="53304" string="Original lyrics writer">Původní textař</entry>
+	  <entry id="53305" string="Original release year">Původní rok vydání</entry>
+	  <entry id="53306" string="Webpage URLs">URL web stránky</entry>
+	  <entry id="53307" string="Artist webpage">Umělec web stránky</entry>
+	  <entry id="53308" string="Publisher webpage">Vydavatel web stránky</entry>
+	  <entry id="53309" string="Internet radio station">Internetové rádio</entry>
+	  <entry id="53310" string="Audio source webpage">Audio zdroje web stránky</entry>
+	  <entry id="53311" string="Copyright information">Copyright informace</entry>
+	  <entry id="53312" string="Commercial information">Obchodní informace</entry>
+	</section>
       </section>
     </section>
   </data>

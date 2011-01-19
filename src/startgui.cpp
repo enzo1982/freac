@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,10 @@
 #include <resources.h>
 
 #ifdef __WIN32__
+#	include <windows.h>
 #	include <dbt.h>
+
+#	include <smooth/init.win32.h>
 #endif
 
 #include <dllinterfaces.h>
@@ -115,7 +118,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2011 Robert Kausch"));
 	menu_file		= new PopupMenu();
 	menu_options		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -156,7 +159,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 /* ToDo: Add threads layer once it's ready.
  */
-//	tabs_main->Add(tab_layer_threads);
+	tabs_main->Add(tab_layer_threads);
 
 	joblist			= tab_layer_joblist->GetJoblist();
 
@@ -418,7 +421,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, mainWnd->GetSize().cx);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, mainWnd->GetSize().cy);
 
-	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2010 Robert Kausch"));
+	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2011 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -437,7 +440,7 @@ Void BonkEnc::BonkEncGUI::About()
 
 	i18n->SetContext("About");
 
-	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2010 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2011 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -448,23 +451,27 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 
 	Registry	&boca = Registry::Get();
 	Component	*component = boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
-	ConfigLayer	*layer = component->GetConfigurationLayer();
 
-	if (layer != NIL)
+	if (component != NIL)
 	{
-		ConfigComponentDialog	*dlg = new ConfigComponentDialog(layer);
+		ConfigLayer	*layer = component->GetConfigurationLayer();
 
-		dlg->SetParentWindow(mainWnd);
-		dlg->ShowDialog();
+		if (layer != NIL)
+		{
+			ConfigComponentDialog	*dlg = new ConfigComponentDialog(layer);
 
-		DeleteObject(dlg);
+			dlg->SetParentWindow(mainWnd);
+			dlg->ShowDialog();
+
+			DeleteObject(dlg);
+		}
+		else
+		{
+			BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		}
+
+		boca.DeleteComponent(component);
 	}
-	else
-	{
-		BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
-	}
-
-	boca.DeleteComponent(component);
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureSettings()
@@ -799,7 +806,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("freac.pci:36"));
 	entry->onAction.Connect(&BonkEncGUI::Close, this);
-	entry->SetShortcut(SC_ALT, VK_F4, mainWnd);
+	entry->SetShortcut(SC_ALT, SK_F4, mainWnd);
 
 	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."), ImageLoader::Load("freac.pci:22"));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
@@ -927,11 +934,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."), ImageLoader::Load("freac.pci:34"));
 	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
-	entry->SetShortcut(0, VK_F1, mainWnd);
+	entry->SetShortcut(0, SK_F1, mainWnd);
 	menu_help->AddEntry();
 	entry = menu_help->AddEntry(String(i18n->TranslateString("Show Tip of the Day")).Append("..."));
 	entry->onAction.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
-	entry->SetShortcut(0, VK_F10, mainWnd);
+	entry->SetShortcut(0, SK_F10, mainWnd);
 
 	if (currentConfig->enable_eUpdate)
 	{

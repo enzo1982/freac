@@ -15,6 +15,10 @@
 #include <utilities.h>
 #include <boca.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#endif
+
 using namespace BoCA::AS;
 
 BonkEnc::ConfigureEncoders::ConfigureEncoders()
@@ -210,24 +214,28 @@ Void BonkEnc::ConfigureEncoders::ConfigureEncoder()
 	}
 
 	Component	*component = boca.CreateComponentByID(encoderID);
-	ConfigLayer	*layer = component->GetConfigurationLayer();
 
-	if (layer != NIL)
+	if (component != NIL)
 	{
-		ConfigComponentDialog	*dlg = new ConfigComponentDialog(layer);
+		ConfigLayer	*layer = component->GetConfigurationLayer();
 
-		dlg->ShowDialog();
+		if (layer != NIL)
+		{
+			ConfigComponentDialog	*dlg = new ConfigComponentDialog(layer);
 
-		DeleteObject(dlg);
+			dlg->ShowDialog();
 
-		onChangeEncoderSettings.Emit(encoderID);
+			DeleteObject(dlg);
+
+			onChangeEncoderSettings.Emit(encoderID);
+		}
+		else
+		{
+			BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		}
+
+		boca.DeleteComponent(component);
 	}
-	else
-	{
-		BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
-	}
-
-	boca.DeleteComponent(component);
 }
 
 Void BonkEnc::ConfigureEncoders::ToggleOnTheFly()

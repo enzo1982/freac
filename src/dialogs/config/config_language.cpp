@@ -10,6 +10,10 @@
 
 #include <dialogs/config/config_language.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#endif
+
 BonkEnc::ConfigureLanguage::ConfigureLanguage()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();

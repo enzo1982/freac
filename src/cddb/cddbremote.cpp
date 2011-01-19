@@ -16,7 +16,9 @@
 #include <bonkenc.h>
 #include <dllinterfaces.h>
 
-#ifndef __WIN32__
+#ifdef __WIN32__
+#	include <winsock2.h>
+#else
 #	include <unistd.h>
 #endif
 

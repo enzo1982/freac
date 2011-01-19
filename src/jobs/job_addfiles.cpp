@@ -128,12 +128,23 @@ Error BonkEnc::JobAddFiles::Perform()
 		 */
 		track.LoadCoverArtFiles();
 
-		/* Add track to joblist.
+		/* Add track(s) to joblist.
 		 */
 		JobList	*joblist = JobList::Get();
 
-		if (track.tracks.Length() > 0) foreach (const Track &iTrack, track.tracks) joblist->onComponentAddTrack.Emit(iTrack);
-		else									   joblist->onComponentAddTrack.Emit(track);
+		if (track.tracks.Length() > 0)
+		{
+			foreach (Track iTrack, track.tracks)
+			{
+				if (iTrack.origFilename == NIL) iTrack.origFilename = file;
+
+				joblist->onComponentAddTrack.Emit(iTrack);
+			}
+		}
+		else
+		{
+			joblist->onComponentAddTrack.Emit(track);
+		}
 
 		SetProgress((i + 1) * 1000 / files.Length());
 	}

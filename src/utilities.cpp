@@ -11,9 +11,9 @@
 #include <utilities.h>
 #include <bonkenc.h>
 
-#include <string>
-
-#ifndef __WIN32__
+#ifdef __WIN32__
+#	include <windows.h>
+#else
 #	include <sys/stat.h>
 #endif
 

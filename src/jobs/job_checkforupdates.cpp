@@ -13,6 +13,10 @@
 #include <dllinterfaces.h>
 #include <bonkenc.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#endif
+
 BonkEnc::JobCheckForUpdates::JobCheckForUpdates(Bool iStartup)
 {
 	startup = iStartup;

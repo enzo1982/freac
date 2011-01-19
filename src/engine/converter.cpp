@@ -8,10 +8,6 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifdef __WIN32__
-#	include <direct.h>
-#endif
-
 #include <engine/converter.h>
 #include <engine/decoder.h>
 #include <engine/encoder.h>
@@ -22,6 +18,11 @@
 #include <playlist.h>
 #include <joblist.h>
 #include <utilities.h>
+
+#ifdef __WIN32__
+#	include <windows.h>
+#	include <direct.h>
+#endif
 
 using namespace smooth::IO;
 using namespace BoCA::AS;
