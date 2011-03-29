@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -112,6 +112,9 @@ namespace BonkEnc
 			static const String	 SettingsEncoderFilenamePatternID;
 			static const String	 SettingsEncoderFilenamePatternDefault;
 
+			static const String	 SettingsLastCustomCharsetID;
+			static const String	 SettingsLastCustomCharsetDefault;
+
 			/* Category Joblist
 			 */
 			static const String	 JoblistFieldsID;
@@ -172,6 +175,15 @@ namespace BonkEnc
 
 			static const String	 TagsCoverArtFilenamePatternID;
 			static const String	 TagsCoverArtFilenamePatternDefault;
+
+			static const String	 TagsReadChaptersID;
+			static const Bool	 TagsReadChaptersDefault;
+
+			static const String	 TagsWriteChaptersID;
+			static const Bool	 TagsWriteChaptersDefault;
+
+			static const String	 TagsWriteChaptersTypeID;
+			static const Int	 TagsWriteChaptersTypeDefault;
 
 			static const String	 TagsWriteMCDIID;
 			static const Bool	 TagsWriteMCDIDefault;
@@ -245,27 +257,29 @@ namespace BonkEnc
 		private:
 			/* Singleton class, therefore private constructor/destructor
 			 */
-			static Config	*instance;
+			static Config		*instance;
 
-					 Config();
-					~Config();
+						 Config();
+						~Config();
+
+			static const String	&GetDefaultOutputDirectory();
 		public:
-			Int		 maxActiveJobs;
+			Int			 maxActiveJobs;
 
-			Bool		 deleteAfterEncoding;
-			Bool		 shutdownAfterEncoding;
+			Bool			 deleteAfterEncoding;
+			Bool			 shutdownAfterEncoding;
 
-			Bool		 enable_eUpdate;
+			Bool			 enable_eUpdate;
 
-			Bool		 CanChangeConfig();
+			Bool			 CanChangeConfig();
 
 			/* Returns a new or existing instance of Config
 			 */
-			static Config	*Get();
+			static Config		*Get();
 
 			/* Destroys an existing instance of Config
 			 */
-			static Void	 Free();
+			static Void		 Free();
 	};
 };
 

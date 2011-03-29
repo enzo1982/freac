@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -29,6 +29,7 @@ namespace BonkEnc
 	const Int	 CHARSET_SHIFT_JIS	= 5;
 	const Int	 CHARSET_GBK		= 6;
 	const Int	 CHARSET_BIG_5		= 7;
+	const Int	 CHARSET_OTHER		= 255;
 
 	class LayerJoblist : public Layer
 	{

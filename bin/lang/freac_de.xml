@@ -159,6 +159,7 @@
       <entry id="3048" string="Active decoder:">Aktiver Dekodierer:</entry>
       <entry id="3049" string="Joblist">Jobliste</entry>
       <entry id="3050" string="unknown">unbekannt</entry>
+      <entry id="3051" string="Other...">Andere...</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Ordner</entry>
@@ -175,10 +176,15 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Wählen Sie den Ordner, dessen Inhalt zur Jobliste hinzugefügt werden soll:</entry>
       </section>
 
+      <section name="Character set">
+	<entry id="3300" string="Character set">Zeichensatz</entry>
+	<entry id="3301" string="Choose character set">Zeichensatz auswählen</entry>
+      </section>
+
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">Die Liste kann während der Kodierung nicht bearbeitet werden!</entry>
-	<entry id="3301" string="You did not select a track!">Es ist kein Eintrag ausgewählt!</entry>
-	<entry id="3302" string="No files found matching pattern:">Keine Dateien entsprechen der Vorlage:</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">Die Liste kann während der Kodierung nicht bearbeitet werden!</entry>
+	<entry id="3401" string="You did not select a track!">Es ist kein Eintrag ausgewählt!</entry>
+	<entry id="3402" string="No files found matching pattern:">Keine Dateien entsprechen der Vorlage:</entry>
       </section>
     </section>
 
@@ -370,9 +376,14 @@
 	<entry id="5513" string="Write cover art to files">Cover-Bilder in Dateien schreiben</entry>
 	<entry id="5514" string="Add reference to audio file tag">Referenz zu Audiodatei-Tag hinzufügen</entry>
 	<entry id="5515" string="Other">Weitere</entry>
-	<entry id="5516" string="Special fields">Weitere Felder</entry>
-	<entry id="5517" string="Write CD table of contents">CD-Inhaltsverzeichnis schreiben</entry>
-	<entry id="5518" string="Preserve Replay Gain information">Replay Gain-Informationen beibehalten</entry>
+	<entry id="5516" string="Chapters">Kapitel</entry>
+	<entry id="5517" string="Read chapters from files">Kapitel aus Dateien lesen</entry>
+	<entry id="5518" string="Write chapters to files">Kapitel in Dateien schreiben</entry>
+	<entry id="5519" string="Chapter format:">Kapitelformat:</entry>
+	<entry id="5520" string="both">beide</entry>
+	<entry id="5521" string="Special fields">Weitere Felder</entry>
+	<entry id="5522" string="Write CD table of contents">CD-Inhaltsverzeichnis schreiben</entry>
+	<entry id="5523" string="Preserve Replay Gain information">Replay Gain-Informationen beibehalten</entry>
       </section>
 
       <section name="Interface">
@@ -455,6 +466,14 @@
 	<entry id="10017" string="CD options">CD-Optionen</entry>
 	<entry id="10018" string="Lock CD tray while ripping">CD beim Rippen sperren</entry>
 	<entry id="10019" string="Use native NT SCSI library">NT-SCSI-DLL verwenden</entry>
+	<entry id="10020" string="Use read offset:">Offset verwenden:</entry>
+	<entry id="10021" string="samples">Samples</entry>
+	<entry id="10022" string="Read ISRC when adding tracks to joblist">ISRC beim Hinzufügen von Tracks zur Jobliste lesen</entry>
+      </section>
+
+      <section name="MAD">
+	<entry id="11000" string="Decoding">Dekodierung</entry>
+	<entry id="11001" string="Enable 24 bit decoding">24-Bit-Dekodierung aktivieren</entry>
       </section>
     </section>
 
@@ -727,6 +746,8 @@
 	  <entry id="52102" string="Video files">Videodateien</entry>
 	  <entry id="52103" string="Browse">Suchen</entry>
 	  <entry id="52104" string="Select the folder to save downloaded video files to:">Wählen Sie einen Ordner für heruntergeladene Videodateien:</entry>
+	  <entry id="52105" string="Downloads">Downloads</entry>
+	  <entry id="52106" string="Maximum number of simultaneous downloads:">Maximale Anzahl gleichzeitiger Downloads:</entry>
 	</section>
 
 	<section name="Errors">

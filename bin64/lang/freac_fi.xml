@@ -38,56 +38,57 @@
       <entry id="1000" string="File">Tiedosto</entry>
       <entry id="1001" string="Options">Asetukset</entry>
       <entry id="1002" string="Database">Tietokanta</entry>
-      <entry id="1003" string="Encode">Muuntaa</entry>
-      <entry id="1004" string="Help">Apua</entry>
+      <entry id="1003" string="Encode">Muunna</entry>
+      <entry id="1004" string="Help">Ohje</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Lisää</entry>
 	<entry id="1101" string="Remove">Posta</entry>
-	<entry id="1102" string="Load joblist...">Lataa työlista...</entry>
+	<entry id="1102" string="Load joblist...">Avaa työlista...</entry>
 	<entry id="1103" string="Save joblist...">Tallenna työlista...</entry>
 	<entry id="1104" string="Clear joblist">Tyhjennä työlista</entry>
 	<entry id="1105" string="Exit">Poistu</entry>
-	<entry id="1106" string="Audio file(s)">Äänitiedosto(t)</entry>
+	<entry id="1106" string="Audio file(s)">Äänitiedosto</entry>
 	<entry id="1107" string="Audio CD contents">Äänilevyn sisältö</entry>
 	<entry id="1108" string="By pattern">Mallista</entry>
-	<entry id="1109" string="From folder">Hakemistosta</entry>
+	<entry id="1109" string="From folder">Kansioista</entry>
       </section>
 
       <section name="Database">
-	<entry id="1200" string="Query CDDB database">Kysy CDDB tietokanta</entry>
-	<entry id="1201" string="Submit CDDB data...">Syötä CDDB data...</entry>
-	<entry id="1202" string="Query CDDB database later">Kysy CDDB tietokantaa myöhemmin</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Näytä jonossa olevat CDDB merkinnät...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Näytä jonossa olevat CDDB kysymykset...</entry>
-	<entry id="1205" string="Enable CDDB cache">Ota CDDB välimuisti käyttään</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Hallitse CDDB välimuistimerkintöjä...</entry>
-	<entry id="1207" string="Automatic CDDB queries">Automaattinen CDDB kysely</entry>
+	<entry id="1200" string="Query CDDB database">Kysy CDDB-tietokanta</entry>
+	<entry id="1201" string="Submit CDDB data...">Syötä CDDB-data...</entry>
+	<entry id="1202" string="Query CDDB database later">Kysy CDDB-tietokantaa myöhemmin</entry>
+	<entry id="1203" string="Show queued CDDB entries...">Näytä jonossa olevat CDDB-merkinnät...</entry>
+	<entry id="1204" string="Show queued CDDB queries...">Näytä jonossa olevat CDDB-kysymykset...</entry>
+	<entry id="1205" string="Enable CDDB cache">Ota CDDB-välimuisti käyttään</entry>
+	<entry id="1206" string="Manage CDDB cache entries...">Hallitse CDDB-välimuistimerkintöjä...</entry>
+	<entry id="1207" string="Automatic CDDB queries">Automaattinen CDDB-kysely</entry>
       </section>
 
       <section name="Options">
 	<entry id="1300" string="General settings...">Yleiset asetukset...</entry>
-	<entry id="1301" string="Configure selected encoder...">Konfiguroi valittu pakkaaja...</entry>
+	<entry id="1301" string="Configure selected encoder...">Määritä valitun muuntimen asetukset...</entry>
+	<entry id="1302" string="Active CD-ROM drive">Valittu CD-asema</entry>
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Aloita tiedostomuodon muunto</entry>
+	<entry id="1400" string="Start encoding">Aloita muuntaminen</entry>
 	<entry id="1401" string="Pause/resume encoding">Tauko/jatka muuntamista</entry>
-	<entry id="1402" string="Stop encoding">Pysäytä tiedostomuodon muunto</entry>
+	<entry id="1402" string="Stop encoding">Pysäytä muuntaminen</entry>
 	<entry id="1403" string="Encoder options">Muuntimen asetukset</entry>
 	<entry id="1404" string="Encode to single file">Muunna yksittäinen tiedosto</entry>
-	<entry id="1405" string="Encode to input file folder if possible">Muunna syötetiedostohakemisto jos mahdollista</entry>
+	<entry id="1405" string="Encode to input file folder if possible">Muunna syötetiedostokansio jos mahdollista</entry>
 	<entry id="1406" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
 	<entry id="1407" string="Delete original files after encoding">Poista alkuperäiset tiedostot muuntamisen jälkeen</entry>
 	<entry id="1408" string="Shutdown after encoding">Sammuta muuntamisen jälkeen</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Ohje aiheet...</entry>
-	<entry id="1501" string="Show Tip of the Day">Näytän Päivän vihjeet</entry>
+	<entry id="1500" string="Help topics...">Näytä ohje...</entry>
+	<entry id="1501" string="Show Tip of the Day">Näytä Päivän vihje</entry>
 	<entry id="1502" string="Check for updates now">Tarkista päivitykset</entry>
-	<entry id="1503" string="Check for updates at startup">Tarkista päivitykset heti ohjelman käynnistyttyään</entry>
-	<entry id="1504" string="About %1">Tietoja %1istä</entry>
+	<entry id="1503" string="Check for updates at startup">Tarkista päivitykset heti ohjelman käynnistyessä</entry>
+	<entry id="1504" string="About %1">Tietoja %1ista</entry>
 	<entry id="1505" string="index_en.html">index.html</entry>
       </section>
     </section>
@@ -95,23 +96,23 @@
     <section name="Toolbar">
       <entry id="2000" string="Add audio file(s) to the joblist">Lisää äänitedosto(t) työlistaan</entry>
       <entry id="2001" string="Add audio CD contents to the joblist">Lisää äänilevyn sisältö työlistalle</entry>
-      <entry id="2002" string="Remove the selected entry from the joblist">Poista valittu kohta työlistalta</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Poista valitut tiedostot työlistalta</entry>
       <entry id="2003" string="Clear the entire joblist">Tyhjennä koko työlista</entry>
-      <entry id="2004" string="Query CDDB database">Kysy CDDB tietokanta</entry>
-      <entry id="2005" string="Submit CDDB data...">Syötä CDDB data...</entry>
-      <entry id="2006" string="Configure general settings">Konfiguroi yleiset asetukset</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Konfiguroi valittu äänen tiedostomuoto</entry>
-      <entry id="2008" string="Start the encoding process">Aloita tiedoston muuntaminen</entry>
+      <entry id="2004" string="Query CDDB database">Kysy CDDB-tietokanta</entry>
+      <entry id="2005" string="Submit CDDB data...">Syötä CDDB-data...</entry>
+      <entry id="2006" string="Configure general settings">Määritä yleiset asetukset</entry>
+      <entry id="2007" string="Configure the selected audio encoder">Määritä valittua äänenmuunninta</entry>
+      <entry id="2008" string="Start the encoding process">Aloita muuntaminen</entry>
       <entry id="2009" string="Pause/resume encoding">Tauko/jatka muuntamista</entry>
-      <entry id="2010" string="Stop encoding">Pysäytä tiedostomuodon muunto</entry>
+      <entry id="2010" string="Stop encoding">Pysäytä muuntaminen</entry>
     </section>
 
     <section name="Joblist">
       <entry id="3000" string="Encoding file:">Muunnettava tiedosto:</entry>
       <entry id="3001" string="Time left:">Aikaa jäljellä:</entry>
-      <entry id="3002" string="Selected encoder:">Valittu tiedostonmuodon tyyppi:</entry>
-      <entry id="3003" string="File progress:">Tiedoston eteneminen:</entry>
-      <entry id="3004" string="Output folder:">Hakemisto:</entry>
+      <entry id="3002" string="Selected encoder:">Valittu muunnin:</entry>
+      <entry id="3003" string="File progress:">Muunnon edistyminen:</entry>
+      <entry id="3004" string="Output folder:">Tallennuskohde:</entry>
       <entry id="3005" string="%1 file(s) in joblist:">%1 tiedosto(a) työlistassa:</entry>
       <entry id="3006" string="none">ei mitään</entry>
       <entry id="3007" string="Show title info">Näytä otsikon tiedot</entry>
@@ -133,12 +134,12 @@
       <entry id="3023" string="Interpret string as">Tulkita merkkijono</entry>
       <entry id="3024" string="selected tracks">valitut raidat</entry>
       <entry id="3025" string="Adjust upper/lower case">Säädä isot/pienet kirjaimet</entry>
-      <entry id="3026" string="all words upper case">kaikki sanat isolla kirjaimilla</entry>
+      <entry id="3026" string="all words upper case">kaikki sanat isoilla kirjaimilla</entry>
       <entry id="3027" string="long words upper case">pitkät sanat isoilla kirjaimilla</entry>
       <entry id="3028" string="first letter upper case">Ensimmäinen kirjain isolla</entry>
       <entry id="3029" string="all lower case">kaikki pienillä kirjaimilla</entry>
       <entry id="3030" string="all upper case">kaikki isoilla kirjaimilla</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Valitse hakemisto, minne muunnetut tiedostot laitetaan:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Valitse kohde minne muunnetut tiedostot laitetaan:</entry>
       <entry id="3032" string="Sampling rate">Näytteen nopeus</entry>
       <entry id="3033" string="Sample resolution">Näytteen resoluutio</entry>
       <entry id="3034" string="Number of samples">Näytteen numero</entry>
@@ -152,39 +153,39 @@
       <entry id="3042" string="File">Tiedosto</entry>
       <entry id="3043" string="Size">Koko</entry>
       <entry id="3044" string="Bitrate">Bittivirran nopeus</entry>
-      <entry id="3045" string="Audio Files">Ääni tiedostot</entry>
+      <entry id="3045" string="Audio Files">Äänitiedosto</entry>
       <entry id="3046" string="All Files">Kaikki tiedostot</entry>
-      <entry id="3047" string="Playlist Files">Toistolistatiedostot</entry>
+      <entry id="3047" string="Playlist Files">Toistolistatiedosto</entry>
 
       <section name="Add folder">
-	<entry id="3100" string="Folder">Hakemisto</entry>
-	<entry id="3101" string="Add folder">Lisää Hakemisto</entry>
-	<entry id="3102" string="Choose folder:">Valitse Hakemisto:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Valitse kansio minne lisätään työlista:</entry>
+	<entry id="3100" string="Folder">Kansio</entry>
+	<entry id="3101" string="Add folder">Lisää kansiosta</entry>
+	<entry id="3102" string="Choose folder:">Kansio:</entry>
+	<entry id="3103" string="Select the folder to add to the joblist:">Valitse kansio:</entry>
       </section>
 
       <section name="Add by pattern">
-	<entry id="3200" string="Add files by pattern">Lisää tiedosto mallista</entry>
+	<entry id="3200" string="Add files by pattern">Lisää mallitiedostosta</entry>
 	<entry id="3201" string="Pattern">Malli</entry>
-	<entry id="3202" string="Start folder">Aloita hakemisto</entry>
-	<entry id="3203" string="Filename pattern">Tiedoston malli</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Valitse kansio minne lisätään työlista:</entry>
+	<entry id="3202" string="Start folder">Kansio</entry>
+	<entry id="3203" string="Filename pattern">Mallitiedosto</entry>
+	<entry id="3204" string="Select the folder to add to the joblist:">Valitse kansio:</entry>
       </section>
 
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">Tiedostomuunnon aikana ei voida muuttaa listaa!</entry>
-	<entry id="3301" string="You did not select a track!">Et ole valinnut tiedostoa!</entry>
-	<entry id="3302" string="No files found matching pattern:">Ei löydetty tiedostoja mallista:</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">Työlistaa ei voida muuttaa muuntamisen aikana!</entry>
+	<entry id="3401" string="You did not select a track!">Et ole valinnut tiedostoa!</entry>
+	<entry id="3402" string="No files found matching pattern:">Kansiosta ei löytynyt malleja:</entry>
       </section>
     </section>
 
     <section name="CDDB">
 
       <section name="Submit">
-	<entry id="4000" string="CDDB data">CDDB data</entry>
+	<entry id="4000" string="CDDB data">CDDB-data</entry>
 	<entry id="4001" string="Submit">Syötä</entry>
 	<entry id="4002" string="No audio CD in drive!">CD-asemassa ei ole CD-äänilevyä!</entry>
-	<entry id="4003" string="Submitting CD information">Syötä CD tiedot</entry>
+	<entry id="4003" string="Submitting CD information">Syötä CD-tiedot</entry>
 	<entry id="4004" string="Update joblist with this information">Päivitä työlista näillä tiedoilla</entry>
 	<entry id="4005" string="Status">Tila</entry>
 	<entry id="4006" string="Successfully read CD!">CD:n luku onnistui!</entry>
@@ -195,13 +196,13 @@
 	<entry id="4011" string="Active CD-ROM drive">Valittu CD-asema</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Sattui joku virhe yritettäessä yhdistää freedb-palvelimelle.</entry>
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Sattui jokin virhe freedb-palvelimelle yhdistämisessä.</entry>
 	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Ole hyvä ja täytä kaikki kentät ja kappaleiden otsikot ennen syöttämistä.</entry>
 	</section>
       </section>
 
       <section name="Query">
-	<entry id="4100" string="CDDB query">CDDB kysely</entry>
+	<entry id="4100" string="CDDB query">CDDB-kysely</entry>
 	<entry id="4101" string="Info">Tiedot</entry>
 	<entry id="4102" string="No freedb entry for this disk.">Ei freedb-merkintää tälle levylle.</entry>
 	<entry id="4103" string="Connecting to freedb server at">Otetaan yhteyttä freedb-palvelimeen</entry>
@@ -214,36 +215,36 @@
 	<entry id="4110" string="none">ei mitään</entry>
 
 	<section name="Errors">
-	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Sattui joku virhe yritettäessä yhdistää freedb-palvelimelle.</entry>
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Sattui jokin virhe freedb-palvelimelle yhdistämisessä.</entry>
 	</section>
       </section>
 
       <section name="Manage queries">
 	<entry id="4200" string="Remove entry">Poista merkintä</entry>
-	<entry id="4201" string="CDDB queries">CDDB kysymykset</entry>
+	<entry id="4201" string="CDDB queries">CDDB-kysymykset</entry>
 	<entry id="4202" string="Query">Kysy</entry>
 	<entry id="4203" string="Query all">Kysele kaikki</entry>
 	<entry id="4204" string="Query string">Kyselymerkkijono</entry>
-	<entry id="4205" string="CDDB queries to perform:">CDDB kyselyt suoritetaan:</entry>
+	<entry id="4205" string="CDDB queries to perform:">CDDB-kyselyt suoritetaan:</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Poista merkintä</entry>
-	<entry id="4301" string="CDDB entries to submit:">CDDB merkinnät syötetään:</entry>
+	<entry id="4301" string="CDDB entries to submit:">CDDB-merkinnät syötetään:</entry>
 	<entry id="4302" string="Submit all">Syötä kaikki</entry>
-	<entry id="4303" string="CDDB data">CDDB data</entry>
+	<entry id="4303" string="CDDB data">CDDB-data</entry>
 	<entry id="4304" string="Submit">Syötä</entry>
 	<entry id="4305" string="Disc name">Levyn nimi</entry>
 	<entry id="4306" string="Preview">Ennakkoesitys</entry>
 	<entry id="4307" string="Category">Kategoria</entry>
-	<entry id="4308" string="Submitting CD information">Syötä CD tiedot</entry>
+	<entry id="4308" string="Submitting CD information">Syötä CD-tiedot</entry>
       </section>
 
       <section name="Manage cache">
-	<entry id="4400" string="CDDB data">CDDB data</entry>
+	<entry id="4400" string="CDDB data">CDDB-data</entry>
 	<entry id="4401" string="Update joblist with this information">Päivitä työlista näillä tiedoilla</entry>
 	<entry id="4402" string="Charset">Merkistö</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Tallennetut CDDB merkinnät:</entry>
+	<entry id="4403" string="Downloaded CDDB entries:">Tallennetut CDDB-merkinnät:</entry>
 	<entry id="4404" string="Disc name">Levyn nimi</entry>
 	<entry id="4405" string="Preview">Ennakkoesitys</entry>
 	<entry id="4406" string="Remove entry">Poista merkintä</entry>
@@ -253,55 +254,56 @@
 
     <section name="Configuration">
       <entry id="5000" string="General settings setup">Yleisasetuksien määritys</entry>
-      <entry id="5001" string="Encoders">Tiedostomuuntajat</entry>
+      <entry id="5001" string="Encoders">Muuntimet</entry>
       <entry id="5002" string="Playlists">Soittolistat</entry>
       <entry id="5003" string="Language">Kieli</entry>
+      <entry id="5005" string="CDDB">CDDB</entry>
 
       <section name="Encoders">
-	<entry id="5100" string="Configure encoder">Konfiguroi tiedostomuunnin</entry>
-	<entry id="5101" string="Encoder">Tiedostomuuntaja</entry>
-	<entry id="5102" string="Output folder">Hakemisto muunnetulle tiedostoille</entry>
+	<entry id="5100" string="Configure encoder">Määritä muunnin</entry>
+	<entry id="5101" string="Encoder">Muunnin</entry>
+	<entry id="5102" string="Output folder">Tulosteen tallennuskohde</entry>
 	<entry id="5103" string="Browse">Selaa</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Valitse hakemisto, minne muunnetut tiedostot laitetaan:</entry>
-	<entry id="5105" string="Use input file folder if possible">Käytä syötetiedoston hakemistoa, jos mahdollista</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Valitse kohde minne muunnetut tiedostot laitetaan:</entry>
+	<entry id="5105" string="Use input file folder if possible">Käytä syötetiedoston kansiota jos mahdollista</entry>
 	<entry id="5106" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
 	<entry id="5107" string="Options">Asetukset</entry>
-	<entry id="5108" string="Filename pattern">Tiedoston malli</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Muunna 'lennossa'</entry>
+	<entry id="5108" string="Filename pattern">Mallitiedosto</entry>
+	<entry id="5109" string="Encode 'On-The-Fly'">Muunna &quot;lennossa&quot;</entry>
 	<entry id="5110" string="Keep ripped Wave files">Pidä kopioidut aaltotiedostot</entry>
 	<entry id="5111" string="Encode to single file">Muunna yksittäinen tiedosto</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Ulostulohakemistoa ei ole olemassa! Haluatko luoda sellaisen?</entry>
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Tulostekansiota ei ole olemassa! Haluatko luoda sellaisen?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Luo soittolistoja</entry>
 	<entry id="5201" string="Create cue sheets">Luo vihjetasoja</entry>
-	<entry id="5202" string="Output folder">Hakemisto muunnetulle tiedostoille</entry>
+	<entry id="5202" string="Output folder">Tulosteen tallennuskohde</entry>
 	<entry id="5203" string="Browse">Selaa</entry>
-	<entry id="5204" string="Use encoder output folder">Käytä muuntimen tulostehakemistoa</entry>
-	<entry id="5205" string="Filename pattern">Tiedoston malli</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Valitse tiedosto, jonne soittolista tiedostot sijoitetaan:</entry>
+	<entry id="5204" string="Use encoder output folder">Käytä muuntimen tulostekansiota</entry>
+	<entry id="5205" string="Filename pattern">Mallitiedosto</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Valitse kansio, jonne soittolistatiedostot sijoitetaan:</entry>
       </section>
 
       <section name="CDDB">
-	<entry id="5300" string="Enable local CDDB database">Salli paikallinen CDDB tietokanta</entry>
-	<entry id="5301" string="Enable remote CDDB database">Salli CDDB tietokannan kaukosäätämistä</entry>
-	<entry id="5302" string="CDDB path:">CDDB hakemisto:</entry>
+	<entry id="5300" string="Enable local CDDB database">Salli paikallinen CDDB-tietokanta</entry>
+	<entry id="5301" string="Enable remote CDDB database">Salli CDDB-tietokannan kaukosäätämistä</entry>
+	<entry id="5302" string="CDDB path:">CDDB-kansio:</entry>
 	<entry id="5303" string="Browse">Selaa</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Valitse CDDB tietokannan kansio:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database:">Valitse CDDB-tietokannan kansio:</entry>
 	<entry id="5305" string="CDDB access mode:">CDDB-kirjautumistila:</entry>
-	<entry id="5306" string="CDDB server:">CDDB palvelin:</entry>
+	<entry id="5306" string="CDDB server:">CDDB-palvelin:</entry>
 	<entry id="5307" string="Port:">Portti:</entry>
-	<entry id="5308" string="eMail address:">Sähköposti:</entry>
+	<entry id="5308" string="eMail address:">Sähköpostiosoite:</entry>
 	<entry id="5309" string="HTTP settings">HTTP-asetukset</entry>
 	<entry id="5310" string="Proxy settings">Välityspalvelimen asetukset</entry>
 	<entry id="5311" string="Options">Asetukset</entry>
-	<entry id="5312" string="Automatic CDDB queries">Automaattinen CDDB kysely</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Suosi CDDB CD Tekstin yli</entry>
-	<entry id="5314" string="Enable CDDB cache">Ota CDDB välimuisti käyttään</entry>
+	<entry id="5312" string="Automatic CDDB queries">Automaattinen CDDB-kysely</entry>
+	<entry id="5313" string="Prefer CDDB over CD Text">Suosi CDDB CD-Tekstin yli</entry>
+	<entry id="5314" string="Enable CDDB cache">Ota CDDB-välimuisti käyttään</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Laajennetut CDDB-asetukset</entry>
@@ -317,7 +319,7 @@
 
 	<section name="Errors">
 	  <entry id="5350" string="Please enter a valid eMail address.">Anna toimiva sähköpostiosoite.</entry>
-	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokollaa ei voida käyttää HTTP&#10;etupalvelimella!&#10;&#10;haluatko vaihtaa protokollan HTTP:hen?</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP-protokollaa ei voida käyttää HTTP-etupalvelimilla!&#10;&#10;Haluatko vaihtaa protokollan HTTP:hen?</entry>
 	</section>
       </section>
 
@@ -325,66 +327,68 @@
 	<entry id="5400" string="Select language:">Valitse kieli:</entry>
 	<entry id="5401" string="Edit language file">Muokkaa kielitiedostoa</entry>
 	<entry id="5402" string="Information">Tietoja</entry>
-	<entry id="5403" string="Encoding">Tiedostomuuntaus</entry>
+	<entry id="5403" string="Encoding">Muunnetaan</entry>
 	<entry id="5404" string="Author">Tekijä</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Info tagit</entry>
+	<entry id="5500" string="Tags">Info-tagit</entry>
 	<entry id="5501" string="Tag formats">Tagit muunnetaan</entry>
-	<entry id="5502" string="Default comment string:">Oletusarvoinen kommentti merkkijono:</entry>
+	<entry id="5502" string="Default comment string:">Kommentin merkkijonon oletusarvo:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Korvaa olemassaolevat kommentit alkuperäisillä kommenteilla</entry>
-	<entry id="5504" string="Filename pattern">Tiedoston malli</entry>
+	<entry id="5504" string="Filename pattern">Mallitiedosto</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
-      <entry id="6000" string="About %1">Tietoja %1istä</entry>
-      <entry id="6001" string="Translated by %1.">Käänneetty %1.</entry>
-      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tätä ohjelmaa levitettäessä noudatetaan&amp;#10;GNU General Public License (GPL) - lisenssiä</entry>
+      <entry id="6000" string="About %1">Tietoja %1ista</entry>
+      <entry id="6001" string="Translated by %1.">Kääntänyt %1.</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tätä ohjelman levitettäessä noudatetaan&#10;GNU General Public License (GPL)-lisenssiä.</entry>
     </section>
 
     <section name="Updates">
-      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">On saatavilla uusia päivityksiä %1- ohjelmaan!&#10;Haluatko nähdä listan saatavista päivityksistä?</entry>
-      <entry id="6101" string="There are no updates available at the moment!">Ei ole tällä hetkellä saatavilla päivityksiä!</entry>
-      <entry id="6102" string="Check for updates at startup">Tarkista päivitykset heti ohjelman käynnistyttyään</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 voi suorittaa automaattisesti päivitysten&#10; tarkistuksen käynnistyessään.&#10;&#10;Haluatko että %1 tarkistaa päivitykset käynnistyessään?</entry>
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">On saatavilla uusia päivityksiä %1iin!&#10;Haluatko nyt nähdä listan saatavista päivityksistä?</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Tällä hetkellä ei ole saatavilla päivityksiä!</entry>
+      <entry id="6102" string="Check for updates at startup">Tarkista päivitykset heti ohjelman käynnistyessä</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 voi suorittaa automaattisesti päivitysten&#10;tarkistuksen käynnistyessään.&#10;&#10;Haluatko että %1 tarkistaa päivitykset heti ohjelman käynnistyessään?</entry>
     </section>
 
     <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1- ohjelmaan on saatavilla %2 kieliä.&#10; Jos kieltäsi ei ole saatavilla, voit kääntää %1- ohjelman käyttämällä&#10;'smooth Translator' sovellusta.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 tulee tuki LAME, Ogg Vorbis, FAAC,&#10;FLAC ja Bonk muuntimiin. Muuntimen VQF formaatille on &#10;saatavilla %1:in sivulta: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 voi käyttää Winamp 2 syöttöliitännäisiä tukseakseen monia tiedostomuotoja.&#10;Kopioi in_*.dll tiedosto %1/plugins hakemistoon&#10;käyttääksesi %1:iä lukemaan niitä tiedostomuotoja.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1:llä voit muuntaa freedb CD tietokantamerkinnät&#10;sisältävien Unicode merkkeihin. Joten jos sinulla on yhtään CD-levyä&#10;ilman latinalaisella artistilla tai otsikkonimellä varustettuna, voit antaa oikeat&#10;freedb merkinnät %1:llä.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Varmistaaksesi kopioinnin lukemisvirheet voi salllia&#10;Jitter korjaajan CD:n Poltto välilehdestä %1:in asetuksista.&#10;Jos tästä ei ole apua, yritä käyttää Paranoia tilaa.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Onko sinulla yhtään ehdotuksia kuinka kehittää Bonk Enc:iä paremmaksi?&#10;Voit lähettää ideat käyttäen Tracker:ia Bonk Enc:in SourceForge projektisivulla - %2&#10;tai lähettämällä sähköpostia %3.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Pidätkö %1:stä? Bonk Enc on saatavailla ilmaiseksi, mutta voit&#10;auttaa kehittämistä lahjoittamalla rahaa %1:lle.&#10;Haluatko lahjoittaa rahaa %2 PayPal - palvelulla.&#10;Katso %3 saadaksesi lisätietoja.</entry>
+      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1iin on saatavilla %2 kielivaihtoehtoa.&#10;Jos kieltäsi tähän ohjelmaan ei ole saatavilla,&#10;voit kääntää %1in &quot;smooth Translator&quot;-sovelluksella.</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1issa tulee mukana tuki LAME, Ogg Vorbis, FAAC, FLAC ja&#10;Bonk-muuntimiin. VQF-formaattimuunnin on saatavilla %1in&#10;internetsivuilta: %2</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 voi käyttää Winamp 2-syöttöliitännäisiä tukeakseen monia&#10;tiedostomuotoja. Kopioi in_*.dll-tiedosto %1/plugins-kansioon&#10;käyttääksesi %1ia näiden tiedostomuotojen lukemiseen.</entry>
+      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1illa voit muuntaa freedb CD-tietokantamerkintöjä, jotka&#10;sisältävät Unicode-merkkejä. Joten jos sinulla on yhtään CD-levyä,&#10;joka ei ole latinalaisella artisti-tai otsikkonimellä varustettua, voit&#10;syöttää %1illa oikeat freedb-merkinnät.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Varmistaaksesi kopioinnin lukemisvirheet voi salllia Jitter-&#10;korjaajan CD:n Poltto-välilehdestä %1in asetuksista. Jos tästä&#10;ei ole apua, yritä käyttää Paranoia-tilaa.</entry>
+      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Onko sinulla yhtään ehdotuksia kuinka kehittää %1ia&#10;paremmaksi? Voit lähettää ideat käyttäen Trackeria %1in&#10;SourceForge-projektisivulta: %2 tai&#10;lähettämällä sähköpostia englanninkielellä&#10;osoitteseen: %3.</entry>
+      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Pidätkö %1ista? %1 on saatavalla ilmaiseksi, mutta voit&#10;auttaa sen kehittämistä lahjoittamalla rahaa %1-projektille.&#10;Voit lahjoittaa rahaa lähettämällä sähköpostia englanninkielellä&#10;osoitteseen %2 PayPal-palvelun avulla.&#10;Katso tästä %3 saadaksesi&#10;lisätietoa aiheesta.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Tiedostonmuunto on edelleen käynnissä! Haluatko silti poistua?</entry>
-      <entry id="7001" string="Currently encoding">Nyt muunnetaan</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Tiedostomuunnon aikana ei voida muuttaa asetuksia!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI-ajureiden lataaminen ei onnistu! CD:n kopiointi pois käytöstä!</entry>
+      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Muuntaminen on edelleen käynnissä! Haluatko silti lopettaa?</entry>
+      <entry id="7001" string="Currently encoding">Parhaillaan muunnetaan</entry>
+      <entry id="7002" string="Cannot change settings while encoding!">Muuntamisen aikana ei voida muuttaa asetuksia!</entry>
+      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI-ajureiden lataaminen ei onnistu! CD:n kopiointi on pois käytöstä!</entry>
       <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Ei voida avata tiedostoa: %1&#10;&#10;Virhe: %2</entry>
       <entry id="7005" string="Cannot play a file while encoding!">Ei voida soittaa tiedostoa muuntamisen aikana!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Ei voida aloittaa tiedostonmuuntoa tiedoston soittamisen aikana!</entry>
+      <entry id="7006" string="Cannot start encoding while playing a file!">Ei voida aloittaa muuntoa tiedoston soittamisen aikana!</entry>
       <entry id="7007" string="Delete original files after encoding">Poista alkuperäiset tiedostot muuntamisen jälkeen</entry>
       <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tämä valinta poistaa alkuperäiset tiedostot tietokoneeltasi&#10;muuntamisen jälkeen!&#10;&#10;Haluatko varmasti hyväksyä valintasi?</entry>
       <entry id="7009" string="File already exists">Tiedosto on jo olemassa</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Ulostulotiedosto %1&#10;on jo olemassa! Haluatko korvata sen?</entry>
+      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Tulostetiedosto %1&#10;on jo olemassa! Haluatko korvata sen?</entry>
       <entry id="7011" string="Overwrite all further files">Korvaa kaikki muut tiedostot</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB tuki ei ole käytössä! Ole hyvä ja&#10;ota paikallisten tai&#13;&#10;etäinen CDDB tuki käyttöön asetuksista.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Etäinen CDDB tuki ei ole käytössä! Ole hyvä ja&#10;salli etäinen CDDB tuki asetuksista.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pääsy CD-ROM ajureille on Windowsista evätty.&#10;&#10;Ole hyvä ja ota yhteys järjestelmänvalvojaasi&#10;saadaksesi pääsyn CD-ROM ajuriisi.</entry>
+      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;ota paikallisten tai&#10;etäinen CDDB-tuki käyttöön asetuksista.</entry>
+      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Etäinen CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;salli etäinen CDDB-tuki asetuksista.</entry>
+      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pääsy CD-ROM-ajureille on Windowsista evätty.&#10;&#10;Ole hyvä ja ota yhteys järjestelmänvalvojaasi&#10;saadaksesi pääsyn CD-ROM-ajuriisi.</entry>
       <entry id="7015" string="Cannot access input file: %1">Syötetiedostoon ei päästä: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Ei pystytä tekemään ulostulotiedostoa: %1</entry>
+      <entry id="7016" string="Cannot create output file: %1">Ei pystytä tekemään tulostetiedostoa: %1</entry>
       <entry id="7017" string="File not found">Tiedostoa ei löydy</entry>
       <entry id="7018" string="Unknown file type">Tuntematon tiedostotyyppi</entry>
-      <entry id="7019" string="Unsupported audio format">Ei tuettu ääniformaatti</entry>
+      <entry id="7019" string="Unsupported audio format">Äänimuotoa ei tueta</entry>
       <entry id="7020" string="Unknown error">Tuntematon virhe</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">valittuja tiedostoja ei voitu yhdistää yhdeksi&#10;lähtötiedostoksi tulevilla formaattimuodoilla.&#10;&#10;Ole hyvä ja muunna kaikki tiedostot ensin samalla formaattimuodolla.</entry>
+      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Valittuja tiedostoja ei voitu yhdistää yhdeksi&#10;tulostetiedostoksi erilaisilla näytemuodoilla.&#10;&#10;Ole hyvä ja muunna kaikki tiedostot ensin samalla näytemuodolla.</entry>
     </section>
 
     <section name="Decoders">
@@ -392,8 +396,8 @@
       <section name="CDRip">
 	<entry id="10000" string="Active CD-ROM drive">Valittu CD-asema</entry>
 	<entry id="10001" string="Set drive speed limit:">Aseta nopeusrajoitus ajurille:</entry>
-	<entry id="10002" string="CD information">CD tiedot</entry>
-	<entry id="10003" string="Read CD Text">Lue CD Teksti</entry>
+	<entry id="10002" string="CD information">CD-tiedot</entry>
+	<entry id="10003" string="Read CD Text">Lue CD-teksti</entry>
 	<entry id="10004" string="Read cdplayer.ini">Lue cdplayer.ini</entry>
 	<entry id="10005" string="Ripper settings">Kopiointiasetukset</entry>
 	<entry id="10006" string="Activate cdparanoia mode:">Ota käyttöön cdparanoia-tila:</entry>
@@ -404,10 +408,10 @@
 	<entry id="10011" string="Activate jitter correction">Ota käyttöön värinän korjaus</entry>
 	<entry id="10012" string="Swap left/right channel">Vaihda vasen/oikea kanava</entry>
 	<entry id="10013" string="Automatization">Automaattinen</entry>
-	<entry id="10014" string="Read CD contents on insert">Lue CD-levyn sisältö heti asettaessasi levyn asemaan</entry>
-	<entry id="10015" string="Start ripping automatically">Aloita kopiointi automaattisesti</entry>
-	<entry id="10016" string="Eject disk after ripping">Poista levy asemasta kopioinnin jälkeen</entry>
-	<entry id="10017" string="CD options">CD asetukset</entry>
+	<entry id="10014" string="Read CD contents on insert">Lue CD-levyn sisältö heti</entry>
+	<entry id="10015" string="Start ripping automatically">Aloita kopiointi autom.</entry>
+	<entry id="10016" string="Eject disk after ripping">Posta levy kopioinnin jälkeen</entry>
+	<entry id="10017" string="CD options">CD-asetukset</entry>
 	<entry id="10018" string="Lock CD tray while ripping">Lukitse CD-asema</entry>
 	<entry id="10019" string="Use native NT SCSI library">Käytä NT:n SCSI-kirjastoa</entry>
       </section>
@@ -423,20 +427,20 @@
 	<entry id="30004" string="Channels">Kanavat</entry>
 	<entry id="30005" string="Private bit">Yksityinen bitti</entry>
 	<entry id="30006" string="Set Copyright bit">Aseta Tekijänoikeusbitti</entry>
-	<entry id="30007" string="Enable CRC">Ota käyttöön CRC</entry>
+	<entry id="30007" string="Enable CRC">Ota CRC käyttöön</entry>
 	<entry id="30008" string="Set Original bit">Aseta alkuperäinen bitti</entry>
 	<entry id="30009" string="Dual channel encoding">Kaksois kanavan muuntaminen</entry>
 	<entry id="30010" string="Set Private bit">Aseta yksityinen bitti</entry>
       </section>
 
       <section name="Bonk">
-	<entry id="31000" string="Encoder mode">Muuntajan tila</entry>
+	<entry id="31000" string="Encoder mode">Muuntimen tila</entry>
 	<entry id="31001" string="Stereo mode">Stereotila</entry>
 	<entry id="31002" string="Quantization">Kvantisointi</entry>
 	<entry id="31003" string="Downsampling ratio">Alasnäytteistäminen</entry>
 	<entry id="31004" string="Predictor size">Ennustuksen koko</entry>
-	<entry id="31005" string="Enable lossless encoding">Häviötön tiedoston muuntaminen</entry>
-	<entry id="31006" string="Enable Joint Stereo">Yhdistetty Stereo</entry>
+	<entry id="31005" string="Enable lossless encoding">Salli häviötön muuntaminen</entry>
+	<entry id="31006" string="Enable Joint Stereo">Salli yhteinen Stereo</entry>
       </section>
 
       <section name="LAME">
@@ -462,7 +466,7 @@
 	  <entry id="32113" string="VBR mode">VBR-tila</entry>
 	  <entry id="32114" string="no VBR">ei VBR:ää</entry>
 	  <entry id="32115" string="VBR quality">VBR:n laatu</entry>
-	  <entry id="32116" string="ABR target bitrate">ABR:N kohdebittivirta</entry>
+	  <entry id="32116" string="ABR target bitrate">ABR:n kohdebittivirta</entry>
 	</section>
 
 	<section name="Misc">
@@ -471,12 +475,12 @@
 	  <entry id="32202" string="Set Original bit">Aseta alkuperäinen bitti</entry>
 	  <entry id="32203" string="Set Private bit">Aseta yksityinen bitti</entry>
 	  <entry id="32204" string="CRC">CRC</entry>
-	  <entry id="32205" string="Enable CRC">Ota käyttöön CRC</entry>
+	  <entry id="32205" string="Enable CRC">Ota CRC käyttöön</entry>
 	  <entry id="32206" string="Stereo mode">Stereotila</entry>
 	  <entry id="32207" string="Auto">Automaattinen</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
-	  <entry id="32209" string="Joint Stereo">Yhdistetty Stereo</entry>
-	  <entry id="32210" string="Force Joint Stereo">Pakota yhdistetty Stereo</entry>
+	  <entry id="32209" string="Joint Stereo">Yhteinen Stereo</entry>
+	  <entry id="32210" string="Force Joint Stereo">Pakota yhteinen Stereo</entry>
 	  <entry id="32211" string="VBR bitrate range">VBR:n bittivirta-alue</entry>
 	  <entry id="32212" string="Set minimum VBR bitrate:">Aseta pienin VBR-bittivirta:</entry>
 	  <entry id="32213" string="Set maximum VBR bitrate:">Aseta suurin VBR-bittivirta:</entry>
@@ -495,7 +499,7 @@
 	<section name="Audio processing">
 	  <entry id="32400" string="Output sampling rate">Näytteenottotaajuus</entry>
 	  <entry id="32401" string="auto">automaattinen</entry>
-	  <entry id="32402" string="no resampling">ei uudelleen näytteenottoa</entry>
+	  <entry id="32402" string="no resampling">ei uutta näytteenottoa</entry>
 	  <entry id="32403" string="Highpass filter">Korkean väylän suodatin</entry>
 	  <entry id="32404" string="Set Highpass frequency (Hz):">Aseta korkean väylän taajuus (Hz):</entry>
 	  <entry id="32405" string="Set Highpass width (Hz):">Aseta korkean väylän leveys (Hz):</entry>
@@ -503,7 +507,7 @@
 	  <entry id="32407" string="Set Lowpass frequency (Hz):">Aseta matalan väylän taajuus (Hz):</entry>
 	  <entry id="32408" string="Set Lowpass width (Hz):">Aseta matalan väylän leveys (Hz):</entry>
 	  <entry id="32409" string="Misc settings">Sekalaiset asetukset</entry>
-	  <entry id="32410" string="Disable all filtering">Poista kaikki suodattimet</entry>
+	  <entry id="32410" string="Disable all filtering">Poista kaikki suodattimet käytöstä</entry>
 	</section>
       </section>
 
@@ -516,20 +520,20 @@
 	  <entry id="33101" string="Bitrate per channel:">Bittivirta kanavaa kohti:</entry>
 	  <entry id="33102" string="Set quality:">Aseta laatu:</entry>
 	  <entry id="33103" string="Stereo mode">Stereotila</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Salli yhdistetty Stereo</entry>
+	  <entry id="33104" string="Allow Joint Stereo">Salli yhteinen Stereo</entry>
 	  <entry id="33105" string="Temporal Noise Shaping">Ajallinen melunmuokkaus</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Käytä ajallista melunmuokkausta</entry>
+	  <entry id="33106" string="Use Temporal Noise Shaping">Ajallinen melunmuokkaus</entry>
 	  <entry id="33107" string="Maximum bandwidth">Suuri kaistanleveys</entry>
 	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Suurin käytettävä AAC:n taajuuskaista (Hz):</entry>
 	</section>
 
 	<section name="Format">
 	  <entry id="33200" string="MPEG version">MPEG-versio</entry>
-	  <entry id="33201" string="AAC object type">AAC-objekstityyppi</entry>
+	  <entry id="33201" string="AAC object type">AAC-objektityyppi</entry>
 	  <entry id="33202" string="File format">Tiedostomuoto</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Salli ID3v2 tagit AAC tiedostoon</entry>
+	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Salli ID3v2-tagit AAC-tiedostoihin</entry>
 	  <entry id="33204" string="Note:">Muistiinpanot:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Joillakin soittimilla on ongelmia toistaa  ID3 tageillla liitettyjä AAC tiedostoja.&#10;Ole hyvä ja käytä tätä valintaa vain, jos olet varma että soittimesi voi käsitellä näitä tageja.</entry>
+	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Joillakin soittimilla on ongelmia toistaa ID3-tageillla liitettyjä&#10;AAC-tiedostoja. Ole hyvä ja käytä tätä valintaa vain,&#10;jos olet varma että soittimesi voi käsitellä näitä tageja.</entry>
 	</section>
       </section>
 
@@ -545,7 +549,7 @@
 	  <entry id="34103" string="Fastest encoding">Nopein muuntaminen</entry>
 	  <entry id="34104" string="Best compression">Paras puristus</entry>
 	  <entry id="34105" string="Stereo mode">Stereotila</entry>
-	  <entry id="34106" string="Joint Stereo">Yhdistetty Stereo</entry>
+	  <entry id="34106" string="Joint Stereo">Yhteinen Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Mukauta yhteinen Stereo</entry>
 	</section>
 
@@ -561,12 +565,12 @@
 	  <entry id="34302" string="Note:">Muistiinpanot:</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Voit määrittää useita toimintoja erottmalla ne toisistaan puolipisteellä.</entry>
 	  <entry id="34304" string="Linear predictor">Lineaarinen ennustaja</entry>
-	  <entry id="34305" string="Maximum LPC order">Maksimi LPC sääntö</entry>
+	  <entry id="34305" string="Maximum LPC order">Maksimi LPC-sääntö</entry>
 	  <entry id="34306" string="disabled">ei käytössä</entry>
-	  <entry id="34307" string="Exhaustive model search">Tyhjennä malli haku</entry>
-	  <entry id="34308" string="Quantized LPC precision">Kvantittunut LPC tarkkuus</entry>
+	  <entry id="34307" string="Exhaustive model search">Tyhjennä mallihaku</entry>
+	  <entry id="34308" string="Quantized LPC precision">Kvantittunut LPC-tarkkuus</entry>
 	  <entry id="34309" string="auto">automaattinen</entry>
-	  <entry id="34310" string="Optimize LPC quantization">Optimoi LPC tarkkuus</entry>
+	  <entry id="34310" string="Optimize LPC quantization">Optimoi LPC-tarkkuus</entry>
 	  <entry id="34311" string="Residual coding">Muunnausta jäljellä</entry>
 	  <entry id="34312" string="Minimum partition order">Pienin jakamisen järjestys</entry>
 	  <entry id="34313" string="Maximum partition order">Suurin jakamisen järjestys</entry>
@@ -587,9 +591,9 @@
 	<entry id="36002" string="Codec settings">Koodekkiasetukset</entry>
 	<entry id="36003" string="Use codec">Käytä koodekkia</entry>
 	<entry id="36004" string="Use format">Käytä tiedostomuotoa</entry>
-	<entry id="36005" string="Write uncompressed WMA files">Kirjoita pakkaamattomat WMA- tiedostot</entry>
-	<entry id="36006" string="Automatically select format based on settings and input format">Automaattisesti valittu tiedostomuoto perustuu asetuksiin ja syötetiedostoon</entry>
-	<entry id="36007" string="Use VBR encoding">Käytä VBR muuntamista</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Kirjoita pakkaamattomat WMA-tiedostot</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Automaattisesti valittu tiedostomuoto perustuu asetuksiin ja syötetiedostoihin</entry>
+	<entry id="36007" string="Use VBR encoding">Käytä VBR-muuntamista</entry>
 	<entry id="36008" string="Use 2-pass encoding">Käytä 2-tie muuntamista </entry>
 	<entry id="36009" string="Target bitrate">Bittinopeuskohde</entry>
       </section>
@@ -600,6 +604,16 @@
 	<entry id="37002" string="Preselection">Esivalinta</entry>
 	<entry id="37003" string="Number of preselection candidates:">Esivalittujen ehdokkaiden määrä:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Automaattinen</entry>
+	<entry id="39006" string="VBR mode">VBR-tila</entry>
+	<entry id="39010" string="Options">Asetukset</entry>
+	<entry id="39016" string="VBR quality">VBR:n laatu</entry>
+	<entry id="39017" string="ABR target bitrate">ABR:n kohdebittivirta</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -608,7 +622,7 @@
 	<entry id="50000" string="Support this project">Tue tätä projektia</entry>
 	<entry id="50001" string="Please support this project!">Ole hyvä ja tue tätä projektia!</entry>
 	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Ole hyvä ja auta tätä ohjelman tukemista lahjoittamalla %1-projektille.&#10;&#10;Paina tästä napista tehdäkseen lahjoituksen PayPal-käytännöllä:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Voit myös lahjoittaa rahaa suoraan osoitteeseen %1 käyttämällä&#10;PayPal-käytäntöä.&#10;&#10;Ole hyvä ja kysy kirjoittamalla osoitteeseen %1 jos haluat lahjoittaa&#10;sähköisesti, sekillä tai lähettämällä suoraan rahaa postitse.</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Voit myös lahjoittaa rahaa projektille&#10;käyttämällä PayPal-käytäntöä.&#10;&#10;Ole hyvä ja kysy lisätetoa kirjoittamalla englanninkielellä osoitteeseen&#10;%1, jos haluat lahjoittaa&#10;sähköisesti, shekillä tai lähettämällä suoraan rahaa postitse.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">en</entry>
 	<entry id="50006" string="Thank you very much!">Erittäin paljon kiitoksia!</entry>
@@ -621,6 +635,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">Pituus</entry>
+	<entry id="52015" string="Size">Koko</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automaattinen</entry>
@@ -628,6 +644,22 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="53001" string="Length">Pituus</entry>
+	<entry id="53002" string="Size">Koko</entry>
+	<entry id="53005" string="File">Tiedosto</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Perus</entry>
+	  <entry id="53107" string="Add">Lisää</entry>
+	  <entry id="53108" string="Remove">Posta</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
       </section>
     </section>
   </data>

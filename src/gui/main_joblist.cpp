@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <gui/main_joblist.h>
+#include <dialogs/charset.h>
 #include <joblist.h>
 #include <startgui.h>
 #include <playback.h>
@@ -684,7 +685,9 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 	/* Hide all affected widgets prior to changing
 	 * labels to avoid flickering.
 	 */
-	Hide();
+	Bool	 prevVisible = IsVisible();
+
+	if (prevVisible) Hide();
 
 	/* Change labels of joblist  widgets.
 	 */
@@ -749,7 +752,7 @@ Bool BonkEnc::LayerJoblist::SetLanguage()
 
 	/* Show all widgets again.
 	 */
-	Show();
+	if (prevVisible) Show();
 
 	FillMenus();
 
@@ -792,6 +795,8 @@ Void BonkEnc::LayerJoblist::FillMenus()
 	menu_charsets->AddEntry("SHIFT-JIS", NIL, NIL, NIL, &clicked_charset, CHARSET_SHIFT_JIS)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry("GBK", NIL, NIL, NIL, &clicked_charset, CHARSET_GBK)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry("BIG-5", NIL, NIL, NIL, &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry();
+	menu_charsets->AddEntry(i18n->TranslateString("Other..."), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 
 	menu_charsets_all->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
@@ -803,6 +808,8 @@ Void BonkEnc::LayerJoblist::FillMenus()
 	menu_charsets_all->AddEntry("SHIFT-JIS", NIL, NIL, NIL, &clicked_charset, CHARSET_SHIFT_JIS)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("GBK", NIL, NIL, NIL, &clicked_charset, CHARSET_GBK)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("BIG-5", NIL, NIL, NIL, &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry();
+	menu_charsets_all->AddEntry(i18n->TranslateString("Other..."), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 
 	menu_edit_artist->RemoveAllEntries();
 	menu_edit_title->RemoveAllEntries();
@@ -1444,7 +1451,18 @@ Void BonkEnc::LayerJoblist::InterpretStringAs()
 		case CHARSET_SHIFT_JIS:	 charset = "SHIFT-JIS";	 break;
 		case CHARSET_GBK:	 charset = "GBK";	 break;
 		case CHARSET_BIG_5:	 charset = "BIG-5";	 break;
+
+		case CHARSET_OTHER:
+			{
+				ChooseCharsetDialog	 dialog;
+
+				if (dialog.ShowDialog() == Success()) charset = dialog.GetCharset();
+			}
+
+			break;
 	}
+
+	if (charset == NIL) return;
 
 	Track		 track = joblist->GetSelectedTrack();
 	Info		 info = track.GetInfo();
@@ -1476,7 +1494,18 @@ Void BonkEnc::LayerJoblist::InterpretStringAsAll()
 		case CHARSET_SHIFT_JIS:	 charset = "SHIFT-JIS";	 break;
 		case CHARSET_GBK:	 charset = "GBK";	 break;
 		case CHARSET_BIG_5:	 charset = "BIG-5";	 break;
+
+		case CHARSET_OTHER:
+			{
+				ChooseCharsetDialog	 dialog;
+
+				if (dialog.ShowDialog() == Success()) charset = dialog.GetCharset();
+			}
+
+			break;
 	}
+
+	if (charset == NIL) return;
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -176,7 +176,16 @@ Int BonkEnc::Converter::ConverterThread()
 				singleTrack.SetInfo(singleTrackInfo);
 				singleTrack.SetFormat(trackInfo.GetFormat());
 
-				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo.artist.Length() > 0 ? singleTrackInfo.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo.title.Length() > 0 ? singleTrackInfo.title : i18n->TranslateString("unknown title")), Math::Round((Float) progress->GetTotalSamples() / (singleTrack.GetFormat().rate * singleTrack.GetFormat().channels)));
+				for (Int n = 0; n < joblist->GetNOfTracks(); n++)
+				{
+					if (!joblist->GetNthEntry(n)->IsMarked()) continue;
+
+					const Track	&chapterTrack = joblist->GetNthTrack(n);
+
+					singleTrack.tracks.Add(chapterTrack);
+				}
+
+				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo.artist.Length() > 0 ? singleTrackInfo.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo.title.Length() > 0 ? singleTrackInfo.title : i18n->TranslateString("unknown title")), Math::Round((Float) progress->GetTotalSamples() / singleTrack.GetFormat().rate));
 
 				encoder = new Encoder();
 
@@ -227,6 +236,14 @@ Int BonkEnc::Converter::ConverterThread()
 			trackInfo.outfile = out_filename;
 		}
 
+		Int	 mode = ENCODER_MODE_ON_THE_FLY;
+
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "wave-out")
+		{
+			if	(step == 1) mode = ENCODER_MODE_DECODE;
+			else if (step == 0) mode = ENCODER_MODE_ENCODE;
+		}
+
 		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1 && encoderID != "wave-out")
 		{
 			step = 0;
@@ -257,23 +274,7 @@ Int BonkEnc::Converter::ConverterThread()
 		log->Write(String("\tEncoding from: ").Append(in_filename));
 		log->Write(String("\t         to:   ").Append(out_filename));
 
-		Int	 mode = ENCODER_MODE_ON_THE_FLY;
-
-		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && encoderID != "wave-out")
-		{
-			if	(step == 1) mode = ENCODER_MODE_DECODE;
-			else if (step == 0) mode = ENCODER_MODE_ENCODE;
-		}
-
 		onEncodeTrack.Emit(trackInfo, decoder->GetDecoderName(), mode);
-
-		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1)
-		{
-			Track	 nTrackInfo;
-
-			decoder->GetStreamInfo(nTrackInfo);
-			progress->FixTotalSamples(trackInfo, nTrackInfo);
-		}
 
 		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 		{
@@ -292,7 +293,7 @@ Int BonkEnc::Converter::ConverterThread()
 
 		Int64		 trackLength	= 0;
 		Int64		 position	= 0;
-		UnsignedLong	 samples_size	= 1024;
+		UnsignedLong	 samples_size	= 512;
 		Int		 loop		= 0;
 		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
 
@@ -300,7 +301,7 @@ Int BonkEnc::Converter::ConverterThread()
 		progress->ResumeTotalProgress();
 
 		Int			 bytesPerSample = format.bits / 8;
-		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample);
+		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample * format.channels);
 
 		while (!skip && !stop)
 		{
@@ -313,7 +314,7 @@ Int BonkEnc::Converter::ConverterThread()
 				if (position + step > trackInfo.length) step = trackInfo.length - position;
 			}
 
-			Int	 bytes = decoder->Read(buffer, step * bytesPerSample);
+			Int	 bytes = decoder->Read(buffer, step * bytesPerSample * format.channels);
 
 			if (bytes == 0) break;
 
@@ -321,9 +322,9 @@ Int BonkEnc::Converter::ConverterThread()
 
 			encoder->Write(buffer, bytes);
 
-			trackLength += (bytes / bytesPerSample);
+			trackLength += (bytes / bytesPerSample / format.channels);
 
-			if (trackInfo.length >= 0) position += (bytes / bytesPerSample);
+			if (trackInfo.length >= 0) position += (bytes / bytesPerSample / format.channels);
 			else			   position = decoder->GetInBytes();
 
 			if (trackInfo.isCDTrack && BoCA::Config::Get()->cdrip_timeout > 0 && progress->GetTrackTimePassed() > BoCA::Config::Get()->cdrip_timeout * 1000)
@@ -336,6 +337,16 @@ Int BonkEnc::Converter::ConverterThread()
 			while (paused && !stop && !skip) S::System::System::Sleep(50);
 
 			progress->UpdateProgressValues(trackInfo, position);
+		}
+
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1)
+		{
+			Track	 nTrackInfo = trackInfo;
+
+			nTrackInfo.length	= trackLength;
+			nTrackInfo.approxLength	= -1;
+
+			progress->FixTotalSamples(trackInfo, nTrackInfo);
 		}
 
 		progress->PauseTotalProgress();
@@ -363,7 +374,7 @@ Int BonkEnc::Converter::ConverterThread()
 			{
 				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
 
-				playlist.AddTrack(relativeFileName, String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / (format.rate * format.channels)));
+				playlist.AddTrack(relativeFileName, String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / format.rate));
 				cueSheet.AddTrack(relativeFileName, 0, trackInfo);
 
 				trackInfo.SaveCoverArtFiles(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
@@ -371,7 +382,7 @@ Int BonkEnc::Converter::ConverterThread()
 		}
 		else if (!skip)
 		{
-			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (format.rate * format.channels) * 75), trackInfo);
+			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75), trackInfo);
 		}
 
 		if (trackInfo.isCDTrack && BoCA::Config::Get()->GetIntValue("CDRip", "EjectAfterRipping", False) && step == 1)

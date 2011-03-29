@@ -142,7 +142,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tab_layer_joblist	= new LayerJoblist();
 	tab_layer_joblist->onRequestSkipTrack.Connect(&Converter::SkipTrack, encoder);
 
+#ifndef BUILD_VIDEO_DOWNLOADER
 	tabs_main->Add(tab_layer_joblist);
+#endif
 
 	InitExtensionComponents();
 
@@ -154,6 +156,10 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		if (mainTabLayer   != NIL) tabs_main->Add(mainTabLayer);
 		if (statusBarLayer != NIL) mainWnd_statusbar->Add(statusBarLayer);
 	}
+
+#ifdef BUILD_VIDEO_DOWNLOADER
+	tabs_main->Add(tab_layer_joblist);
+#endif
 
 	tab_layer_threads	= new LayerThreads();
 
@@ -287,7 +293,7 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 	/* Save main window position.
 	 */
-	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
+	Rect	 wndRect = mainWnd->GetRestoredWindowRect() - mainWnd->GetSizeModifier();
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, wndRect.left);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, wndRect.top);

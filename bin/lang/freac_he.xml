@@ -139,8 +139,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">!אי אפשר לשנות רשימת ביצוע תוך כדי קידוד</entry>
-	<entry id="3301" string="You did not select a track!">! לא נבחר קובץ</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">!אי אפשר לשנות רשימת ביצוע תוך כדי קידוד</entry>
+	<entry id="3401" string="You did not select a track!">! לא נבחר קובץ</entry>
       </section>
     </section>
 

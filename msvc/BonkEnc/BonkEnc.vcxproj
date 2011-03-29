@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>freac</ProjectName>
+    <ProjectGuid>{F121548C-5FD2-4E54-89AB-37671DE3CC76}</ProjectGuid>
+    <RootNamespace>BonkEnc</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../smooth/include; ../../include; ../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;__WIN32__;_DEBUG;_WINDOWS;UNICODE;_UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <EnablePREfast>false</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>smooth.lib;boca.lib;ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Debug; ../../cdk/msvc/BoCA/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../smooth/include; ../../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;__WIN32__;_DEBUG;_WINDOWS;UNICODE;_UNICODE;BEEXPORT=;ID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>smooth.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../../smooth/include; ../../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;__WIN32__;NDEBUG;_WINDOWS;UNICODE;_UNICODE;BEEXPORT=;ID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>smooth.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../../smooth/include; ../../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;__WIN32__;NDEBUG;_WINDOWS;UNICODE;_UNICODE;BEEXPORT=;ID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>smooth.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/x64/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\bonkenc.cpp" />
+    <ClCompile Include="..\..\src\config.cpp" />
+    <ClCompile Include="..\..\src\cuesheet.cpp" />
+    <ClCompile Include="..\..\src\dllinterfaces.cpp" />
+    <ClCompile Include="..\..\src\joblist.cpp" />
+    <ClCompile Include="..\..\src\playback.cpp" />
+    <ClCompile Include="..\..\src\playlist.cpp" />
+    <ClCompile Include="..\..\src\progress.cpp" />
+    <ClCompile Include="..\..\src\startconsole.cpp" />
+    <ClCompile Include="..\..\src\startgui.cpp" />
+    <ClCompile Include="..\..\src\utilities.cpp" />
+    <ClCompile Include="..\..\src\cddb\cddb.cpp" />
+    <ClCompile Include="..\..\src\cddb\cddbbatch.cpp" />
+    <ClCompile Include="..\..\src\cddb\cddbcache.cpp" />
+    <ClCompile Include="..\..\src\cddb\cddbinfo.cpp" />
+    <ClCompile Include="..\..\src\cddb\cddblocal.cpp" />
+    <ClCompile Include="..\..\src\cddb\cddbremote.cpp" />
+    <ClCompile Include="..\..\src\dialogs\adddirectory.cpp" />
+    <ClCompile Include="..\..\src\dialogs\addpattern.cpp" />
+    <ClCompile Include="..\..\src\dialogs\cddb\extsettings.cpp" />
+    <ClCompile Include="..\..\src\dialogs\cddb\manage.cpp" />
+    <ClCompile Include="..\..\src\dialogs\cddb\managequeries.cpp" />
+    <ClCompile Include="..\..\src\dialogs\cddb\managesubmits.cpp" />
+    <ClCompile Include="..\..\src\dialogs\cddb\multimatch.cpp" />
+    <ClCompile Include="..\..\src\dialogs\cddb\query.cpp" />
+    <ClCompile Include="..\..\src\dialogs\cddb\submit.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_cddb.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_encoders.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_interface.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_language.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_playlists.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_tags.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\configcomponent.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\configentry.cpp" />
+    <ClCompile Include="..\..\src\gui\layer_tooltip.cpp" />
+    <ClCompile Include="..\..\src\gui\main_joblist.cpp" />
+    <ClCompile Include="..\..\src\gui\main_threads.cpp" />
+    <ClCompile Include="..\..\src\jobs\job.cpp" />
+    <ClCompile Include="..\..\src\jobs\job_adddirectory.cpp" />
+    <ClCompile Include="..\..\src\jobs\job_addfiles.cpp" />
+    <ClCompile Include="..\..\src\jobs\job_checkforupdates.cpp" />
+    <ClCompile Include="..\..\src\jobs\job_removeall.cpp" />
+    <ClCompile Include="..\..\src\jobs\jobmanager.cpp" />
+    <ClCompile Include="..\..\src\tools\encoding.cpp" />
+    <ClCompile Include="..\..\src\engine\converter.cpp" />
+    <ClCompile Include="..\..\src\engine\decoder.cpp" />
+    <ClCompile Include="..\..\src\engine\encoder.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\bonkenc.h" />
+    <ClInclude Include="..\..\include\config.h" />
+    <ClInclude Include="..\..\include\cuesheet.h" />
+    <ClInclude Include="..\..\include\dllinterfaces.h" />
+    <ClInclude Include="..\..\include\joblist.h" />
+    <ClInclude Include="..\..\include\playback.h" />
+    <ClInclude Include="..\..\include\playlist.h" />
+    <ClInclude Include="..\..\include\progress.h" />
+    <ClInclude Include="..\..\include\resources.h" />
+    <ClInclude Include="..\..\include\startconsole.h" />
+    <ClInclude Include="..\..\include\startgui.h" />
+    <ClInclude Include="..\..\include\utilities.h" />
+    <ClInclude Include="..\..\include\dialogs\adddirectory.h" />
+    <ClInclude Include="..\..\include\dialogs\addpattern.h" />
+    <ClInclude Include="..\..\include\dialogs\cddb\extsettings.h" />
+    <ClInclude Include="..\..\include\dialogs\cddb\manage.h" />
+    <ClInclude Include="..\..\include\dialogs\cddb\managequeries.h" />
+    <ClInclude Include="..\..\include\dialogs\cddb\managesubmits.h" />
+    <ClInclude Include="..\..\include\dialogs\cddb\multimatch.h" />
+    <ClInclude Include="..\..\include\dialogs\cddb\query.h" />
+    <ClInclude Include="..\..\include\dialogs\cddb\submit.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_cddb.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_encoders.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_interface.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_language.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_playlists.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_tags.h" />
+    <ClInclude Include="..\..\include\dialogs\config\configcomponent.h" />
+    <ClInclude Include="..\..\include\dialogs\config\configentry.h" />
+    <ClInclude Include="..\..\include\cddb\cddb.h" />
+    <ClInclude Include="..\..\include\cddb\cddbbatch.h" />
+    <ClInclude Include="..\..\include\cddb\cddbcache.h" />
+    <ClInclude Include="..\..\include\cddb\cddbinfo.h" />
+    <ClInclude Include="..\..\include\cddb\cddblocal.h" />
+    <ClInclude Include="..\..\include\cddb\cddbremote.h" />
+    <ClInclude Include="..\..\include\gui\layer_tooltip.h" />
+    <ClInclude Include="..\..\include\gui\main_joblist.h" />
+    <ClInclude Include="..\..\include\gui\main_threads.h" />
+    <ClInclude Include="..\..\include\jobs\job.h" />
+    <ClInclude Include="..\..\include\jobs\job_adddirectory.h" />
+    <ClInclude Include="..\..\include\jobs\job_addfiles.h" />
+    <ClInclude Include="..\..\include\jobs\job_checkforupdates.h" />
+    <ClInclude Include="..\..\include\jobs\job_removeall.h" />
+    <ClInclude Include="..\..\include\jobs\jobmanager.h" />
+    <ClInclude Include="..\..\include\tools\encoding.h" />
+    <ClInclude Include="..\..\include\engine\converter.h" />
+    <ClInclude Include="..\..\include\engine\decoder.h" />
+    <ClInclude Include="..\..\include\engine\encoder.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\resources\resources.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="VTune\BonkEnc.vpj" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

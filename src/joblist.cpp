@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -552,7 +552,7 @@ Void BonkEnc::JobList::SaveList()
 
 					delete in;
 
-					if (track.length == (trackLength * 2352) / (track.GetFormat().bits / 8))
+					if (track.length == (trackLength * 1176) / (track.GetFormat().bits / 8))
 					{
 						fileName = trackCDA;
 
@@ -561,7 +561,7 @@ Void BonkEnc::JobList::SaveList()
 				}
 			}
 
-			playlist.AddTrack(fileName, String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")), track.length == -1 ? -1 : Math::Round((Float) track.length / (track.GetFormat().rate * track.GetFormat().channels)));
+			playlist.AddTrack(fileName, String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")), track.length == -1 ? -1 : Math::Round((Float) track.length / track.GetFormat().rate));
 		}
 
 		playlist.Save(dialog->GetFileName());

@@ -172,9 +172,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">Nemožno upraviť zoznam počas kódovania</entry>
-	<entry id="3301" string="You did not select a track!">Nevybrali ste žiaden súbor!</entry>
-	<entry id="3302" string="No files found matching pattern:">Žiadne súbory nevyhovujú vzoru:</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">Nemožno upraviť zoznam počas kódovania</entry>
+	<entry id="3401" string="You did not select a track!">Nevybrali ste žiaden súbor!</entry>
+	<entry id="3402" string="No files found matching pattern:">Žiadne súbory nevyhovujú vzoru:</entry>
       </section>
     </section>
 

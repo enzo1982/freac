@@ -172,9 +172,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">De takenlijst kan tijdens het coderen niet gewijzigd worden!</entry>
-	<entry id="3301" string="You did not select a track!">U heeft geen bestand geselecteerd!</entry>
-	<entry id="3302" string="No files found matching pattern:">Geen bestanden gevonden met dit patroon:</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">De takenlijst kan tijdens het coderen niet gewijzigd worden!</entry>
+	<entry id="3401" string="You did not select a track!">U heeft geen bestand geselecteerd!</entry>
+	<entry id="3402" string="No files found matching pattern:">Geen bestanden gevonden met dit patroon:</entry>
       </section>
     </section>
 
@@ -605,8 +605,14 @@
     <section name="Extensions">
 
       <section name="Donate">
+	<entry id="50000" string="Support this project">Dit project ondersteunen</entry>
+	<entry id="50001" string="Please support this project!">Ondersteun dit project!</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Houd deze software gratis door het %1-project te ondersteunen&#10;met een donatie.&#10;&#10;Klik op een van onderstaande knoppen om een donatie via PayPal te maken:</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">U kan ook direct geld sturen naar %1 door middel van PayPal.&#10;&#10;Schrijf naar %1 als u wil doneren via elektronische overdracht,&#10;of door een cheque of geld te verzenden met de post.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">en</entry>
+	<entry id="50006" string="Thank you very much!">Heel erg bedankt!</entry>
+	<entry id="50007" string="Remind me later">Me later herinneren</entry>
       </section>
 
       <section name="Winamp Adapter">

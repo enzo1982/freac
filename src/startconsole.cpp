@@ -146,9 +146,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("LAME", "Preset", 0);
 		componentsConfig->SetIntValue("LAME", "SetBitrate", True);
 
-		componentsConfig->SetIntValue("LAME", "Bitrate", Math::Max(0, Math::Min(320, bitrate.ToInt())));
-		componentsConfig->SetIntValue("LAME", "ABRBitrate", Math::Max(0, Math::Min(320, bitrate.ToInt())));
-		componentsConfig->SetIntValue("LAME", "VBRQuality", Math::Max(0, Math::Min(9, quality.ToInt())) * 10);
+		componentsConfig->SetIntValue("LAME", "Bitrate", Math::Max(0, Math::Min(320, (Int) bitrate.ToInt())));
+		componentsConfig->SetIntValue("LAME", "ABRBitrate", Math::Max(0, Math::Min(320, (Int) bitrate.ToInt())));
+		componentsConfig->SetIntValue("LAME", "VBRQuality", Math::Max(0, Math::Min(9, (Int) quality.ToInt())) * 10);
 
 		if	(mode == "VBR" || mode == "vbr") componentsConfig->SetIntValue("LAME", "VBRMode", 4);
 		else if (mode == "ABR" || mode == "abr") componentsConfig->SetIntValue("LAME", "VBRMode", 3);
@@ -165,8 +165,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		else if (ScanForParameter("-q", &quality))	componentsConfig->SetIntValue("Vorbis", "Mode", 0);
 		else						componentsConfig->SetIntValue("Vorbis", "Mode", 0);
 
-		componentsConfig->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, quality.ToInt())));
-		componentsConfig->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, bitrate.ToInt())));
+		componentsConfig->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, (Int) quality.ToInt())));
+		componentsConfig->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, (Int) bitrate.ToInt())));
 
 		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "vorbis-out");
 	}
@@ -183,9 +183,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("Bonk", "JointStereo", ScanForParameter("-js", NULL));
 		componentsConfig->SetIntValue("Bonk", "Lossless", ScanForParameter("-lossless", NULL));
 
-		componentsConfig->SetIntValue("Bonk", "Quantization", Math::Max(0, Math::Min(40, Math::Round(quantization.ToFloat() * 20))));
-		componentsConfig->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, predictor.ToInt())));
-		componentsConfig->SetIntValue("Bonk", "Downsampling", Math::Max(0, Math::Min(10, downsampling.ToInt())));
+		componentsConfig->SetIntValue("Bonk", "Quantization", Math::Max(0, Math::Min(40, (Int) Math::Round(quantization.ToFloat() * 20))));
+		componentsConfig->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, (Int) predictor.ToInt())));
+		componentsConfig->SetIntValue("Bonk", "Downsampling", Math::Max(0, Math::Min(10, (Int) downsampling.ToInt())));
 
 		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "bonk-out");
 	}
@@ -195,7 +195,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		ScanForParameter("-b", &bitrate);
 
-		componentsConfig->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, bitrate.ToInt())));
+		componentsConfig->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, (Int) bitrate.ToInt())));
 
 		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "blade-out");
 	}
@@ -210,8 +210,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		componentsConfig->SetIntValue("FAAC", "MP4Container", ScanForParameter("-mp4", NULL));
 
-		componentsConfig->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, quality.ToInt())));
-		componentsConfig->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, bitrate.ToInt())));
+		componentsConfig->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, (Int) quality.ToInt())));
+		componentsConfig->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, (Int) bitrate.ToInt())));
 
 		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "faac-out");
 	}
@@ -241,11 +241,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		componentsConfig->SetIntValue("FLAC", "DoExhaustiveModelSearch", ScanForParameter("-e", NULL));
 		componentsConfig->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", ScanForParameter("-p", NULL));
 
-		componentsConfig->SetIntValue("FLAC", "Blocksize", Math::Max(192, Math::Min(32768, blocksize.ToInt())));
-		componentsConfig->SetIntValue("FLAC", "MaxLPCOrder", Math::Max(0, Math::Min(32, lpc.ToInt())));
-		componentsConfig->SetIntValue("FLAC", "QLPCoeffPrecision", Math::Max(0, Math::Min(16, qlp.ToInt())));
-		componentsConfig->SetIntValue("FLAC", "MinResidualPartitionOrder", Math::Max(0, Math::Min(16, minrice.ToInt())));
-		componentsConfig->SetIntValue("FLAC", "MaxResidualPartitionOrder", Math::Max(0, Math::Min(16, maxrice.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "Blocksize", Math::Max(192, Math::Min(32768, (Int) blocksize.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "MaxLPCOrder", Math::Max(0, Math::Min(32, (Int) lpc.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "QLPCoeffPrecision", Math::Max(0, Math::Min(16, (Int) qlp.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "MinResidualPartitionOrder", Math::Max(0, Math::Min(16, (Int) minrice.ToInt())));
+		componentsConfig->SetIntValue("FLAC", "MaxResidualPartitionOrder", Math::Max(0, Math::Min(16, (Int) maxrice.ToInt())));
 
 		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "flac-out");
 	}
@@ -257,8 +257,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		ScanForParameter("-b", &bitrate);
 		ScanForParameter("-c", &candidates);
 
-		componentsConfig->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, candidates.ToInt())));
-		componentsConfig->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, bitrate.ToInt())));
+		componentsConfig->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, (Int) candidates.ToInt())));
+		componentsConfig->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, (Int) bitrate.ToInt())));
 
 		componentsConfig->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "twinvq-out");
 	}

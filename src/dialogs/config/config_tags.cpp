@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -24,6 +24,10 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	enableCoverArtWriteToTags	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, Config::TagsCoverArtWriteToTagsDefault);
 	enableCoverArtWriteToFiles	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, Config::TagsCoverArtWriteToFilesDefault);
 	enableCoverArtWriteToFilesRef	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesWithReferenceID, Config::TagsCoverArtWriteToFilesWithReferenceDefault);
+
+	readChapters			= config->GetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, Config::TagsReadChaptersDefault);
+	writeChapters			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, Config::TagsWriteChaptersDefault);
+	chapterFormat			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, Config::TagsWriteChaptersTypeDefault);
 
 	writeMCDI			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteMCDIID, Config::TagsWriteMCDIDefault);
 	preserveReplayGain		= config->GetIntValue(Config::CategoryTagsID, Config::TagsPreserveReplayGainID, Config::TagsPreserveReplayGainDefault);
@@ -136,19 +140,53 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	layer_other		= new Layer(i18n->TranslateString("Other"));
 
-	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(7, 11), Size(252, 67));
+	group_chapters		= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 11), Size(252, 94));
 
-	check_mcdi		= new CheckBox(i18n->TranslateString("Write CD table of contents"), Point(10, 14), Size(234, 0), &writeMCDI);
-	check_replaygain	= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 26), Size(234, 0), &preserveReplayGain);
+	check_read_chapters	= new CheckBox(i18n->TranslateString("Read chapters from files"), Point(10, 14), Size(232, 0), &readChapters);
+	check_write_chapters	= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 26), Size(232, 0), &writeChapters);
+	check_write_chapters->onAction.Connect(&ConfigureTags::ToggleWriteChapters, this);
+
+	text_chapter_format	= new Text(i18n->TranslateString("Chapter format:"), check_write_chapters->GetPosition() + Point(17, 28));
+
+	combo_chapter_format	= new ComboBox(text_chapter_format->GetPosition() + Point(text_chapter_format->textSize.cx + 7, -3), Size(208 - text_chapter_format->textSize.cx, 0));
+	combo_chapter_format->AddEntry(i18n->TranslateString("both"));
+	combo_chapter_format->AddEntry("QuickTime");
+	combo_chapter_format->AddEntry("Nero");
+
+	switch (chapterFormat)
+	{
+		default:
+		case 1: // MP4ChapterTypeAny
+			combo_chapter_format->SelectNthEntry(0);
+			break;
+		case 2: // MP4ChapterTypeQt
+			combo_chapter_format->SelectNthEntry(1);
+			break;
+		case 4: // MP4ChapterTypeNero
+			combo_chapter_format->SelectNthEntry(2);
+			break;
+	}
+
+	group_chapters->Add(check_read_chapters);
+	group_chapters->Add(check_write_chapters);
+	group_chapters->Add(text_chapter_format);
+	group_chapters->Add(combo_chapter_format);
+
+	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(267, 11), Size(252, 67));
+
+	check_mcdi		= new CheckBox(i18n->TranslateString("Write CD table of contents"), Point(10, 14), Size(232, 0), &writeMCDI);
+	check_replaygain	= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 26), Size(232, 0), &preserveReplayGain);
 
 	group_special->Add(check_mcdi);
 	group_special->Add(check_replaygain);
 
+	layer_other->Add(group_chapters);
 	layer_other->Add(group_special);
 
 	ToggleTags();
 
 	ToggleWriteCoverArt();
+	ToggleWriteChapters();
 
 	tab_tags->Add(layer_tags);
 	tab_tags->Add(layer_coverart);
@@ -187,6 +225,12 @@ BonkEnc::ConfigureTags::~ConfigureTags()
 	DeleteObject(check_coverart_write_files_ref);
 
 	DeleteObject(layer_other);
+
+	DeleteObject(group_chapters);
+	DeleteObject(check_read_chapters);
+	DeleteObject(check_write_chapters);
+	DeleteObject(text_chapter_format);
+	DeleteObject(combo_chapter_format);
 
 	DeleteObject(group_special);
 	DeleteObject(check_mcdi);
@@ -299,6 +343,20 @@ Void BonkEnc::ConfigureTags::ToggleWriteCoverArt()
 	}
 }
 
+Void BonkEnc::ConfigureTags::ToggleWriteChapters()
+{
+	if (writeChapters)
+	{
+		text_chapter_format->Activate();
+		combo_chapter_format->Activate();
+	}
+	else
+	{
+		text_chapter_format->Deactivate();
+		combo_chapter_format->Deactivate();
+	}
+}
+
 Int BonkEnc::ConfigureTags::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -326,6 +384,23 @@ Int BonkEnc::ConfigureTags::SaveSettings()
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesWithReferenceID, enableCoverArtWriteToFilesRef);
 
 	config->SetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, edit_coverart_write_files_name->GetText());
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, readChapters);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, writeChapters);
+
+	switch (combo_chapter_format->GetSelectedEntryNumber())
+	{
+		default:
+		case 0: // Any
+			config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, 1);
+			break;
+		case 1: // QuickTime
+			config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, 2);
+			break;
+		case 2: // Nero
+			config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, 4);
+			break;
+	}
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteMCDIID, writeMCDI);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreserveReplayGainID, preserveReplayGain);

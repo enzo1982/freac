@@ -11,12 +11,20 @@
 #include <smooth.h>
 #include <smooth/dll.h>
 
+#include <boca.h>
+
 Void smooth::AttachDLL(Void *instance)
 {
+	/* Init BoCA library.
+	 */
+	BoCA::Init();
 }
 
 Void smooth::DetachDLL()
 {
+	/* Free BoCA library.
+	 */
+	BoCA::Free();
 }
 
 #include <bonkenc.h>
@@ -34,14 +42,18 @@ Void smooth::DetachDLL()
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 
-#include <boca.h>
-
 BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 
 /* General application information and fixed settings.
  */
 String	 BonkEnc::BonkEnc::appName	= "fre:ac";
+
+#ifdef BUILD_VIDEO_DOWNLOADER
+String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free video downloader";
+#else
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
+#endif
+
 String	 BonkEnc::BonkEnc::version	= "CVS 2011xxxx";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre2";	// CDDB version may not contain spaces

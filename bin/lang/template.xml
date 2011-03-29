@@ -159,6 +159,7 @@
       <entry id="3048" string="Active decoder:"/>
       <entry id="3049" string="Joblist"/>
       <entry id="3050" string="unknown"/>
+      <entry id="3051" string="Other..."/>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder"/>
@@ -175,10 +176,15 @@
 	<entry id="3204" string="Select the folder to add to the joblist:"/>
       </section>
 
+      <section name="Character set">
+	<entry id="3300" string="Character set"/>
+	<entry id="3301" string="Choose character set"/>
+      </section>
+
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!"/>
-	<entry id="3301" string="You did not select a track!"/>
-	<entry id="3302" string="No files found matching pattern:"/>
+	<entry id="3400" string="Cannot modify the joblist while encoding!"/>
+	<entry id="3401" string="You did not select a track!"/>
+	<entry id="3402" string="No files found matching pattern:"/>
       </section>
     </section>
 
@@ -370,9 +376,14 @@
 	<entry id="5513" string="Write cover art to files"/>
 	<entry id="5514" string="Add reference to audio file tag"/>
 	<entry id="5515" string="Other"/>
-	<entry id="5516" string="Special fields"/>
-	<entry id="5517" string="Write CD table of contents"/>
-	<entry id="5518" string="Preserve Replay Gain information"/>
+	<entry id="5516" string="Chapters"/>
+	<entry id="5517" string="Read chapters from files"/>
+	<entry id="5518" string="Write chapters to files"/>
+	<entry id="5519" string="Chapter format:"/>
+	<entry id="5520" string="both"/>
+	<entry id="5521" string="Special fields"/>
+	<entry id="5522" string="Write CD table of contents"/>
+	<entry id="5523" string="Preserve Replay Gain information"/>
       </section>
 
       <section name="Interface">
@@ -455,6 +466,14 @@
 	<entry id="10017" string="CD options"/>
 	<entry id="10018" string="Lock CD tray while ripping"/>
 	<entry id="10019" string="Use native NT SCSI library"/>
+	<entry id="10020" string="Use read offset:"/>
+	<entry id="10021" string="samples"/>
+	<entry id="10022" string="Read ISRC when adding tracks to joblist"/>
+      </section>
+
+      <section name="MAD">
+	<entry id="11000" string="Decoding"/>
+	<entry id="11001" string="Enable 24 bit decoding"/>
       </section>
     </section>
 
@@ -727,6 +746,8 @@
 	  <entry id="52102" string="Video files"/>
 	  <entry id="52103" string="Browse"/>
 	  <entry id="52104" string="Select the folder to save downloaded video files to:"/>
+	  <entry id="52105" string="Downloads"/>
+	  <entry id="52106" string="Maximum number of simultaneous downloads:"/>
 	</section>
 
 	<section name="Errors">

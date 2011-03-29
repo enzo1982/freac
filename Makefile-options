@@ -19,9 +19,15 @@ else
 ifeq ($(UNAME),Linux)
 	BUILD_LINUX = True
 endif
+
 ifeq ($(UNAME),FreeBSD)
 	BUILD_FREEBSD = True
 endif
+
+ifeq ($(UNAME),SunOS)
+	BUILD_SOLARIS = True
+endif
+
 ifeq ($(UNAME),Darwin)
 	SHARED = .dylib
 

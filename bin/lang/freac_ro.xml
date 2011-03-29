@@ -172,9 +172,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">Lista nu poate fi modificată în timpul codării!</entry>
-	<entry id="3301" string="You did not select a track!">Nu aţi selectat nici un fişier!</entry>
-	<entry id="3302" string="No files found matching pattern:">Nici un fişier găsit cu modelul:</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">Lista nu poate fi modificată în timpul codării!</entry>
+	<entry id="3401" string="You did not select a track!">Nu aţi selectat nici un fişier!</entry>
+	<entry id="3402" string="No files found matching pattern:">Nici un fişier găsit cu modelul:</entry>
       </section>
     </section>
 

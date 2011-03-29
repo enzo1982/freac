@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -122,8 +122,6 @@ Error BonkEnc::JobAddFiles::Perform()
 
 		track.SetInfo(info);
 
-		if (track.origFilename == NIL) track.origFilename = file;
-
 		/* Add cover art from external files.
 		 */
 		track.LoadCoverArtFiles();
@@ -132,19 +130,8 @@ Error BonkEnc::JobAddFiles::Perform()
 		 */
 		JobList	*joblist = JobList::Get();
 
-		if (track.tracks.Length() > 0)
-		{
-			foreach (Track iTrack, track.tracks)
-			{
-				if (iTrack.origFilename == NIL) iTrack.origFilename = file;
-
-				joblist->onComponentAddTrack.Emit(iTrack);
-			}
-		}
-		else
-		{
-			joblist->onComponentAddTrack.Emit(track);
-		}
+		if (track.tracks.Length() > 0) foreach (Track iTrack, track.tracks) joblist->onComponentAddTrack.Emit(iTrack);
+		else								    joblist->onComponentAddTrack.Emit(track);
 
 		SetProgress((i + 1) * 1000 / files.Length());
 	}

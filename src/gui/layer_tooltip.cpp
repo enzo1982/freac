@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -65,12 +65,12 @@ const String &BonkEnc::LayerTooltip::GetTooltipText(const Track &track)
 		  Append(track.length > 0 ? String(i18n->TranslateString("Number of samples")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track.length)).Append("\n") : String(NIL)).
 		  Append(i18n->TranslateString("Sampling rate")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(format.rate)).Append(" Hz\n").
 		  Append(i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(format.bits)).Append(" ").Append(i18n->TranslateString("bit")).Append("\n").
-		  Append(i18n->TranslateString("Channels")).Append(": ").Append((format.channels > 2 || format.channels < 1) ? String::FromInt(format.channels) : (format.channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo")));
+		  Append(i18n->TranslateString("Channels")).Append(": ").Append(format.channels > 2 ? (format.channels != 4 && format.channels != 5 && format.channels <= 8 ? String::FromInt(format.channels - 1).Append(".1") : String::FromInt(format.channels)) : (format.channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo")));
 
-	if (format.rate > 0 && format.channels > 0)
+	if (format.rate > 0)
 	{
-		if	(track.length	    > 0) tooltip.Append("\n").Append(String(i18n->TranslateString("Bitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.length / (format.rate * format.channels)) * 8.0 / 1000.0))).Append(" kbps"));
-		else if (track.approxLength > 0) tooltip.Append("\n").Append(String(i18n->TranslateString("Bitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / (format.rate * format.channels)) * 8.0 / 1000.0))).Append(" kbps"));
+		if	(track.length	    > 0) tooltip.Append("\n").Append(String(i18n->TranslateString("Bitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.length / format.rate) * 8.0 / 1000.0))).Append(" kbps"));
+		else if (track.approxLength > 0) tooltip.Append("\n").Append(String(i18n->TranslateString("Bitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / format.rate) * 8.0 / 1000.0))).Append(" kbps"));
 
 		wchar_t	 sign[2] = { 0x2248, 0 };
 

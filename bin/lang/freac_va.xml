@@ -168,9 +168,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">¡No se pot modificar la llista durant la codificacio!</entry>
-	<entry id="3301" string="You did not select a track!">¡No ha selecionat cap d'archiu!</entry>
-	<entry id="3302" string="No files found matching pattern:">No s'han trobat archius corresponents al patro:</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">¡No se pot modificar la llista durant la codificacio!</entry>
+	<entry id="3401" string="You did not select a track!">¡No ha selecionat cap d'archiu!</entry>
+	<entry id="3402" string="No files found matching pattern:">No s'han trobat archius corresponents al patro:</entry>
       </section>
     </section>
 

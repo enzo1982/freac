@@ -1,25 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Codecs", "Codecs", "{1E79BA3E-996A-4511-B5A8-1D438F8ADF70}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BonkEnc", "BonkEnc.vcproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac", "BonkEnc.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BonkEncGUI", "..\BonkEncGUI\BonkEncGUI.vcproj", "{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F121548C-5FD2-4E54-89AB-37671DE3CC76} = {F121548C-5FD2-4E54-89AB-37671DE3CC76}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freacGUI", "..\BonkEncGUI\BonkEncGUI.vcxproj", "{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}"
 EndProject
-Project("{4CAA2610-1955-4629-BDC1-8133FE0B2087}") = "BonkEnc AQtime", "..\BonkEnc AQtime\BonkEnc AQtime.aqt", "{9DCDB39B-DDE1-4AD7-831F-B3FB37647973}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freacCMD", "..\BonkEncCMD\BonkEncCMD.vcxproj", "{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BonkEncCMD", "..\BonkEncCMD\BonkEncCMD.vcproj", "{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F121548C-5FD2-4E54-89AB-37671DE3CC76} = {F121548C-5FD2-4E54-89AB-37671DE3CC76}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aoTuV", "..\Codecs\aoTuV\aoTuV.vcxproj", "{5543499A-FFF7-4FE4-9411-8DCE060F1E36}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aoTuV", "..\Codecs\aoTuV\aoTuV.vcproj", "{5543499A-FFF7-4FE4-9411-8DCE060F1E36}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ogg", "..\Codecs\Ogg\Ogg.vcproj", "{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ogg", "..\Codecs\Ogg\Ogg.vcxproj", "{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,9 @@
 fre:ac Version 1.1 CVS
 
 fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
-Das Programm liest MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU
+Das Programm liest MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAVE, AIFF, AU
 und VOC-Dateien und erzeugt MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
-oder WAV-Dateien.
+oder WAVE-Dateien.
 
 fre:ac verwendet die CDRip Ripping Library zum CD-Rippen unter Windows.
 fre:ac verwendet cdparanoia zum CD-Rippen unter Linux und FreeBSD.
@@ -14,10 +14,10 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Januar 2011)
+	Version 1.1 CVS (März 2011)
 
 		- Projekt umbenannt in fre:ac - free audio converter
-		- Auf Linux und FreeBSD (unvollständig) portiert
+		- Auf Linux, Mac OS X, Solaris und FreeBSD portiert
 		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Hebräisch, Arabisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
 		- Deutsche, italienische, russische, portugiesische, tschechische und griechische Anleitungen hinzugefügt
 		- Mehrere Übersetzungen für das Installationsprogramm hinzugefügt
@@ -34,12 +34,14 @@ Geschichte
 		- Unterstützung für den MAD MP3-Decodierer hinzugefügt
 		- Unterstützung für den TwinVQ VQF-Decodierer hinzugefügt
 		- Unterstützung für AAC-Synchronisierung hinzugefügt (zum Lesen von AAC-Streamrips benötigt)
-		- Unterstützung zum Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
+		- Unterstützung für das Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
 		- Unterstützung für Cover-Bilder in MP4-Dateien hinzugefügt
+		- Unterstützung für das Lesen und Schreiben von MP4-Kapiteln hinzugefügt 
 		- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
 		- Unterstützung für MP3-Dekodierung ohne Unterbrechungen hinzugefügt
 		- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO-Chunk)
 		- Unterstützung für Wildcards in BEcmd-Parametern hinzugefügt
+		- Standardausgabeverzeichnis auf Ordner "Eigene Musik" geändert
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Vorlage <filetype> hinzugefügt
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
@@ -47,6 +49,7 @@ Geschichte
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt
 		- Konfigurationsoption für Geschwindigkeit beim Rippen hinzugefügt
+		- Konfigurationsoption für Offset beim Rippen hinzugefügt
 		- Unterstützung dür das Öffnen von Cuesheets hinzugefügt
 		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
 		- Diverse weitere Geschwindigkeitsverbesserungen
@@ -63,6 +66,7 @@ Geschichte
 		- Fehler beim Lesen von Vorbis (und FLAC) Comment Tags behoben
 		- Fehlende Xing-Header bei Verwendung von LAME-Voreinstellungen behoben
 		- Absturz beim Lesen von nicht unterstützten Sun Audio Dateien (.au) behoben
+		- Probleme beim Dekodieren der Raw-Formate WAVE, AIFF und AU behoben
 		- Codierung von leeren Tracks behoben, wenn keine CD eingelegt ist
 		- Verschiedene CDDB-Probleme behoben
 		- Fehler bei HTTP-Proxy-Authentifizierung behoben
@@ -80,8 +84,8 @@ Geschichte
 		- FAAC auf Version 1.28 aktualisiert
 		- FAAD2 suf Version 2.7 aktualisiert
 		- LAME suf Version 3.98.4 aktualisiert
-		- Ogg Vorbis auf aoTuV Beta 5.7 aktualisiert
-		- Ogg-Bibliothek auf Version 1.2.1 aktualisiert
+		- Ogg Vorbis auf aoTuV Beta 6.02 aktualisiert
+		- Ogg-Bibliothek auf Version 1.2.2 aktualisiert
 		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0
 		- Viele weitere Korrekturen
@@ -89,7 +93,7 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP/2003/Vista/7, Windows 95/98/SE/ME, Linux (z.B. Ubuntu 10.10) oder FreeBSD 8.1
+	- Windows NT/2000/XP/2003/Vista/7, Windows 95/98/SE/ME, Linux (z.B. Ubuntu 10.10), FreeBSD 8.1 oder Mac OS X 10.6
 	- 200 MHz Prozessor, 128 MB RAM, 50 MB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
@@ -100,14 +104,14 @@ Voraussetzungen
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) oder MSVC v9.0
+			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual C++ v10.0
 
 		Alle Linux- und Unix-Systeme:
 
 			- GCC v4.0+
 
-			- libcairo, libmad, libogg, libfaac, libfaad2, libmp3lame, libmp4v2, libspeex,
-			  libvorbis, libjpeg, libpng, libbz2, libxml2, libxmu, libx11, libv8
+			- libcairo, libmad, libogg, libfaac, libfaad2, libmp3lame, libmp4v2,
+			  libspeex, libvorbis, libjpeg, libpng, libbz2, libxml2, libxmu, libx11
 
 			Linux:
 
@@ -115,7 +119,15 @@ Voraussetzungen
 
 			Linux und FreeBSD:
 
-				- GTK, cdparanoia
+				- GTK, libcdio, cdparanoia
+
+			Mac OS X:
+
+				- libcdio
+
+			Solaris:
+
+				- audio headers
 
 	Zusätzliche optionale Software:
 
@@ -150,19 +162,26 @@ Bekannte Probleme
 			- TwinVQ:
 					- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
 
+	Mac OS X-spezifische Probleme:
+
+		- Datei- und Ordnerauswahlfenster erscheinen hinter dem Hauptfenster
+
+		- Rippen von Audio-CDs funktioniert nicht
+
+	Solaris-spezifische Probleme:
+
+		- Rippen von Audio-CDs funktioniert nicht
+
 	X11-spezifische Probleme:
 
 		- Modale Fenster funktionieren nicht korrekt
-
-		- Dialogfenster werden etwas zu groß dargestellt
 
 		- In Nachrichtenfenstern und im "Tip des Tages"-Dialog werden keine Bilder dargestellt
 
 	Linux- und Unix-spezifische probleme:
 
 		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden müssen.
-
-		- Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis. Versuchen Sie nicht, das Programm systemweit zu installieren.
+		  Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis. Versuchen Sie nicht, das Programm systemweit zu installieren.
 
 Besonderen Dank
 ---------------

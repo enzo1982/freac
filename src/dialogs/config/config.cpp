@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -264,27 +264,28 @@ Void BonkEnc::ConfigDialog::OnChangeSize(const Size &nSize)
 
 Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 {
-	if (selectedLayer != NIL)
-	{
-		mainWnd->GetMainLayer()->Remove(selectedLayer);
-
-		mainWnd->SetMinimumSize(Size(232, 342));
-	}
+	if (selectedLayer != NIL) mainWnd->GetMainLayer()->Remove(selectedLayer);
 
 	if (layer != NIL)
 	{
+#ifdef __WIN32__
 		Int	 frameWidth = mainWnd->GetFrameWidth();
+#else
+		Int	 frameWidth = 4;
+#endif
 
 		selectedLayer = layer;
 		selectedLayer->SetPosition(Point(218, 40));
 
 		mainWnd->GetMainLayer()->Add(selectedLayer);
+
 		mainWnd->SetMinimumSize(Size(Math::Max(232, selectedLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(342, selectedLayer->GetHeight() + 105 + 2 * frameWidth)));
-		mainWnd->SetSize(Size(Math::Max(mainWnd->GetWidth(), selectedLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(mainWnd->GetHeight(), selectedLayer->GetHeight() + 105 + 2 * frameWidth)));
 	}
 	else
 	{
 		selectedLayer = NIL;
+
+		mainWnd->SetMinimumSize(Size(232, 342));
 	}
 }
 

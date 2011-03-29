@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,6 +10,13 @@
 
 #include <config.h>
 #include <bonkenc.h>
+
+#ifdef __WIN32__
+#	include <shlobj.h>
+#else
+#	include <unistd.h>
+#	include <pwd.h>
+#endif
 
 BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
@@ -104,6 +111,9 @@ const String	 BonkEnc::Config::SettingsEncoderOutputDirectoryID		= "EncoderOutDi
 const String	 BonkEnc::Config::SettingsEncoderFilenamePatternID		= "EncoderFilenamePattern";
 const String	 BonkEnc::Config::SettingsEncoderFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>");
 
+const String	 BonkEnc::Config::SettingsLastCustomCharsetID			= "LastCustomCharset";
+const String	 BonkEnc::Config::SettingsLastCustomCharsetDefault		= NIL;
+
 /* Category Joblist
  */
 const String	 BonkEnc::Config::JoblistFieldsID				= "Fields";
@@ -164,6 +174,15 @@ const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= Fals
 
 const String	 BonkEnc::Config::TagsCoverArtFilenamePatternID			= "CoverArtFilenamePattern";
 const String	 BonkEnc::Config::TagsCoverArtFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
+
+const String	 BonkEnc::Config::TagsReadChaptersID				= "ReadChapters";
+const Bool	 BonkEnc::Config::TagsReadChaptersDefault			= True;
+
+const String	 BonkEnc::Config::TagsWriteChaptersID				= "WriteChapters";
+const Bool	 BonkEnc::Config::TagsWriteChaptersDefault			= True;
+
+const String	 BonkEnc::Config::TagsWriteChaptersTypeID			= "WriteChaptersType";
+const Int	 BonkEnc::Config::TagsWriteChaptersTypeDefault			= 1;
 
 const String	 BonkEnc::Config::TagsWriteMCDIID				= "WriteMCDI";
 const Bool	 BonkEnc::Config::TagsWriteMCDIDefault				= True;
@@ -242,15 +261,7 @@ BonkEnc::Config::Config()
 
 	maxActiveJobs		= 2;
 
-	String	 personalDir = S::System::System::GetPersonalFilesDirectory();
-
-	if (!personalDir.EndsWith(Directory::GetDirectoryDelimiter())) personalDir.Append(Directory::GetDirectoryDelimiter());
-
-#ifdef __WIN32__
-	personalDir.Append("My Music").Append(Directory::GetDirectoryDelimiter());
-#endif
-
-	Config::SettingsEncoderOutputDirectoryDefault = personalDir;
+	Config::SettingsEncoderOutputDirectoryDefault = GetDefaultOutputDirectory();
 
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -265,6 +276,55 @@ BonkEnc::Config::Config()
 
 BonkEnc::Config::~Config()
 {
+}
+
+const String &BonkEnc::Config::GetDefaultOutputDirectory()
+{
+	static String	 defaultOutputDir;
+
+	if (defaultOutputDir != NIL) return defaultOutputDir;
+
+#ifdef __WIN32__
+	ITEMIDLIST	*idlist;
+	OSVERSIONINFOA	 vInfo;
+
+	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
+
+	GetVersionExA(&vInfo);
+
+	if (vInfo.dwMajorVersion >= 6 || (vInfo.dwMajorVersion == 5 && vInfo.dwMinorVersion >= 1)) SHGetSpecialFolderLocation(NIL, CSIDL_MYMUSIC, &idlist);
+	else											   SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
+
+	if (Setup::enableUnicode)
+	{
+		Buffer<wchar_t>	 buffer(MAX_PATH);
+
+		SHGetPathFromIDListW(idlist, buffer);
+
+		defaultOutputDir = buffer;
+	}
+	else
+	{
+		Buffer<char>	 buffer(MAX_PATH);
+
+		SHGetPathFromIDListA(idlist, buffer);
+
+		defaultOutputDir = buffer;
+	}
+
+	CoTaskMemFree(idlist);
+
+	if (defaultOutputDir == NIL) defaultOutputDir = S::System::System::GetPersonalFilesDirectory();
+#else
+	passwd	*pw = getpwuid(getuid());
+
+	if (pw != NIL)	defaultOutputDir = pw->pw_dir;
+	else		defaultOutputDir = "~";
+#endif
+
+	if (!defaultOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) defaultOutputDir.Append(Directory::GetDirectoryDelimiter());
+
+	return defaultOutputDir;
 }
 
 BonkEnc::Config *BonkEnc::Config::Get()

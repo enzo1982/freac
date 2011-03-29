@@ -1,9 +1,9 @@
 fre:ac version 1.1 CVS
 
 fre:ac is a free and open source audio converter for various formats.
-It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and
+It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAVE, AIFF, AU and
 VOC files and converts to MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC,
-VQF or WAV.
+VQF or WAVE.
 
 fre:ac uses the CDRip Ripping Library for audio ripping on Windows.
 fre:ac uses the cdparanoia library for audio ripping on Linux and FreeBSD.
@@ -14,10 +14,10 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (January 2011)
+	Version 1.1 CVS (March 2011)
 
 		- renamed project to fre:ac - free audio converter
-		- ported to Linux and FreeBSD (incomplete)
+		- ported to Linux, Mac OS X, Solaris and FreeBSD
 		- added Estonian, Croatian, Portuguese, Vietnamese, Hebrew, Arabic, Catalan, Valencian and Galician language support
 		- added German, Italian, Russian, Portuguese, Czech and Greek user guides
 		- added several translations for the installer
@@ -36,10 +36,12 @@ History
 		- added support for AAC synchronizing (needed to read ripped AAC streams)
 		- added support for reading simple audio files using libsndfile
 		- added support for cover art in MP4 files
+		- added support for reading and writing MP4 chapters
 		- added support for MCDI frame in ID3v2 tags
 		- added support for gapless MP3 decoding
 		- added RIFF tagging support (using LIST INFO chunk)
 		- added support for wildcards in arguments to BEcmd
+		- changed default output directory to "My Music" folder
 		- added <directory> pattern to allow preserving existing directory structures
 		- added <filetype> pattern
 		- added <installdrive> pattern for use in output directory name
@@ -47,6 +49,7 @@ History
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
 		- added ripping speed configuration option
+		- added CD read offset configuration option
 		- added support for loading cuesheets
 		- making better use of multi-core CPUs when encoding/decoding
 		- miscellaneous other speed optimizations
@@ -63,6 +66,7 @@ History
 		- fixed Vorbis (and FLAC) comment tag reading
 		- fixed not writing Xing header when using LAME presets
 		- fixed crash when trying to open unsupported Sun Audio (.au) files
+		- fixed and improved decoding of raw audio formats WAVE, AIFF and AU
 		- fixed encoding empty tracks when no CD is inserted
 		- fixed various CDDB issues
 		- fixed HTTP proxy authentication
@@ -80,8 +84,8 @@ History
 		- upgraded FAAC to version 1.28
 		- upgraded FAAD2 to version 2.7
 		- upgraded LAME to version 3.98.4
-		- upgraded Ogg Vorbis to aoTuV beta 5.7
-		- upgraded Ogg library to version 1.2.1
+		- upgraded Ogg Vorbis to aoTuV beta 6.02
+		- upgraded Ogg library to version 1.2.2
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0
 		- lots of other fixes
@@ -89,7 +93,7 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP/Vista/7, Windows 95/98/SE/ME, Linux (e.g. Ubuntu 10.10) or FreeBSD 8.1
+	- Windows NT/2000/XP/Vista/7, Windows 95/98/SE/ME, Linux (e.g. Ubuntu 10.10), FreeBSD 8.1 or Mac OS 10.6
 	- 200 MHz CPU, 128 MB RAM, 50 MB free disk space
 
 	Additional requirements for compiling the sources:
@@ -100,14 +104,14 @@ Requirements
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) or MSVC v9.0
+			- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual C++ v10.0
 
 		All Linux and Unix platforms:
 
 			- GCC v4.0+
 
-			- libcairo, libmad, libogg, libfaac, libfaad2, libmp3lame, libmp4v2, libspeex,
-			  libvorbis, libjpeg, libpng, libbz2, libxml2, libxmu, libx11, libv8
+			- libcairo, libmad, libogg, libfaac, libfaad2, libmp3lame, libmp4v2,
+			  libspeex, libvorbis, libjpeg, libpng, libbz2, libxml2, libxmu, libx11
 
 			Linux:
 
@@ -115,7 +119,15 @@ Requirements
 
 			Linux and FreeBSD:
 
-				- GTK, cdparanoia
+				- GTK, libcdio, cdparanoia
+
+			Mac OS X:
+
+				- libcdio
+
+			Solaris:
+
+				- audio headers
 
 	Additional optional software:
 
@@ -150,19 +162,26 @@ Known problems
 			- TwinVQ:
 					- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
 
+	Mac OS X specific problems:
+
+		- File and directory selection windows appear behind the main window
+
+		- Audio CD ripping does not work
+
+	Solaris specific problems:
+
+		- Audio CD ripping does not work
+
 	X11 specific problems:
 
 		- Modal windows do not work correctly
-
-		- Dialog windows are displayed slightly too big
 
 		- No images are displayed in message boxes and the tip of the day dialog
 
 	Linux and Unix specific problems:
 
 		- There are no application packages for fre:ac yet, so you need to install dependencies manually for now.
-
-		- Please just extract the contents of the archive to your home directory. Do not try to install it system wide.
+		  Please just extract the contents of the archive to your home directory. Do not try to install it system wide.
 
 Special thanks to
 -----------------

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -61,7 +61,11 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 		return False;
 	}
 
-	filter_in->SetAudioTrackInfo(track);
+	Track	 trackInfo = track;
+
+	trackInfo.origFilename = nFileName;
+
+	filter_in->SetAudioTrackInfo(trackInfo);
 
 	if (f_in->AddFilter(filter_in) == False)
 	{
@@ -84,7 +88,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 	if (track.sampleOffset > 0 && !filter_in->Seek(track.sampleOffset))
 	{
 		Buffer<UnsignedByte>	 buffer(1024);
-		Int64			 bytesLeft = track.sampleOffset * (track.GetFormat().bits / 8);
+		Int64			 bytesLeft = track.sampleOffset * track.GetFormat().channels * (track.GetFormat().bits / 8);
 
 		while (bytesLeft) bytesLeft -= Read(buffer, Math::Min((Int64) buffer.Size(), bytesLeft));
 	}

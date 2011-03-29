@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -50,9 +50,11 @@ Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 	    ex_eUpdate_FreeUpdateContext	== NIL ||
 	    ex_eUpdate_CheckForNewUpdates	== NIL ||
 	    ex_eUpdate_AutomaticUpdate		== NIL) { FreeEUpdateDLL(); return False; }
-#endif
 
 	return True;
+#else
+	return False;
+#endif
 }
 
 Void BonkEnc::DLLInterfaces::FreeEUpdateDLL()

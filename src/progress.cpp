@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -36,7 +36,7 @@ Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
 
 		if	(trackInfo.length	>= 0) totalSamples += trackInfo.length;
 		else if (trackInfo.approxLength >= 0) totalSamples += trackInfo.approxLength;
-		else				      totalSamples += (240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels);
+		else				      totalSamples += (240 * trackInfo.GetFormat().rate);
 	}
 
 	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "wave-out") totalSamples *= 2;
@@ -50,7 +50,7 @@ Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInf
 
 	if	(trackInfo.length	>= 0) totalSamples -= 2 * trackInfo.length;
 	else if (trackInfo.approxLength >= 0) totalSamples -= 2 * trackInfo.approxLength;
-	else				      totalSamples -= 2 * (240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels);
+	else				      totalSamples -= 2 * (240 * trackInfo.GetFormat().rate);
 
 	totalSamples += 2 * nTrackInfo.length;
 
@@ -114,8 +114,8 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 	}
 	else if (trackInfo.length == -1)
 	{
-		trackProgress = Math::Round(		       (samplePosition * 100.0																		     / trackInfo.fileSize) * 10.0);
-		totalProgress = Math::Round(totalSamplesDone + (samplePosition * ((trackInfo.approxLength >= 0 ? trackInfo.approxLength : 240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels) * 100.0 / totalSamples) / trackInfo.fileSize) * 10.0);
+		trackProgress = Math::Round(		       (samplePosition * 100.0														    / trackInfo.fileSize) * 10.0);
+		totalProgress = Math::Round(totalSamplesDone + (samplePosition * ((trackInfo.approxLength >= 0 ? trackInfo.approxLength : 240 * trackInfo.GetFormat().rate) * 100.0 / totalSamples) / trackInfo.fileSize) * 10.0);
 
 		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.fileSize)					 - trackTicks) / 1000);
 		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / trackInfo.fileSize * trackInfo.approxLength / totalSamples) - totalTicks) / 1000);
@@ -135,5 +135,5 @@ Void BonkEnc::Progress::FinishTrackProgressValues(const Track &trackInfo)
 
 	if	(trackInfo.length	>= 0) totalSamplesDone += ((trackInfo.length * 100.0 / totalSamples) * 10.0);
 	else if (trackInfo.approxLength >= 0) totalSamplesDone += ((trackInfo.approxLength * 100.0 / totalSamples) * 10.0);
-	else				      totalSamplesDone += (((240 * trackInfo.GetFormat().rate * trackInfo.GetFormat().channels) * 100.0 / totalSamples) * 10.0);
+	else				      totalSamplesDone += (((240 * trackInfo.GetFormat().rate) * 100.0 / totalSamples) * 10.0);
 }

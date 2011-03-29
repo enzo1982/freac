@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -107,14 +107,12 @@ Int BonkEnc::Playback::PlayThread()
 	if (!output->GetErrorState())
 	{
 		Int64		 position	= 0;
-		UnsignedLong	 samples_size	= 1024;
+		UnsignedLong	 samples_size	= 512;
 		Int		 loop		= 0;
 		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
 
 		Int			 bytesPerSample = format.bits / 8;
-		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample);
-
-		Buffer<UnsignedByte>	 sample_buffer(samples_size * 2);
+		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample * format.channels);
 
 		while (!stop_playback)
 		{
@@ -127,31 +125,17 @@ Int BonkEnc::Playback::PlayThread()
 				if (position + step > trackInfo.length) step = trackInfo.length - position;
 			}
 
-			Int	 bytes = decoder->Read(buffer, step * bytesPerSample);
+			Int	 bytes = decoder->Read(buffer, step * bytesPerSample * format.channels);
 
 			if (bytes == 0) break;
 
-			if (format.order == BYTE_RAW) Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
+			if (format.order == BYTE_RAW) Utilities::SwitchBufferByteOrder(buffer, bytesPerSample);
 
-			InStream	 in(STREAM_BUFFER, buffer, bytes);
+			position += (bytes / bytesPerSample / format.channels);
 
-			for (Int i = 0; i < (bytes / bytesPerSample); i++)
-			{
-				Int	 sample = in.InputNumber((short) bytesPerSample);
+			while (output->CanWrite() < bytes && !stop_playback) S::System::System::Sleep(10);
 
-				if	(format.bits ==  8) ((short *) (UnsignedByte *) sample_buffer)[i] = (sample - 128) * 256;
-				else if (format.bits == 16) ((short *) (UnsignedByte *) sample_buffer)[i] = sample;
-				else if (format.bits == 24) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 256;
-				else if (format.bits == 32) ((short *) (UnsignedByte *) sample_buffer)[i] = sample / 65536;
-			}
-
-			in.Close();
-
-			position += (bytes / bytesPerSample);
-
-			while (output->CanWrite() < (2 * step) && !stop_playback) S::System::System::Sleep(10);
-
-			output->WriteData(sample_buffer, (bytes / bytesPerSample) * 2);
+			output->WriteData(buffer, bytes);
 		}
 	}
 

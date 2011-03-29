@@ -21,10 +21,14 @@ endif
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
+ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
+	RESOURCES = $(OBJECTDIR)/resources_vd.o
+else
 	RESOURCES = $(OBJECTDIR)/resources.o
+endif
 endif
 
 EXEOBJECTS = $(OBJECTDIR)/gui.o
@@ -50,12 +54,20 @@ STRIP = strip
 STRIP_OPTS = --strip-all
 RESCOMP_OPTS = -O coff
 
+ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
+	COMPILER_OPTS		+= -D BUILD_VIDEO_DOWNLOADER
+endif
+
 ifneq ($(BUILD_X64),True)
 	COMPILER_OPTS		+= -march=i586
 	LOADER_COMPILER_OPTS	+= -march=i586
 else
 	COMPILER_OPTS		+= -march=nocona
 	LOADER_COMPILER_OPTS	+= -march=nocona
+endif
+
+ifeq ($(BUILD_SOLARIS),True)
+	COMPILER_OPTS		+= -fpic
 endif
 
 ifeq ($(BUILD_WIN32),True)
@@ -263,6 +275,11 @@ $(OBJECTDIR)/addpattern.o: $(SRCDIR)/dialogs/addpattern.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/addpattern.cpp -o $(OBJECTDIR)/addpattern.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/charset.o: $(SRCDIR)/dialogs/charset.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/charset.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/charset.cpp -o $(OBJECTDIR)/charset.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/language.o: $(SRCDIR)/dialogs/language.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/dialogs/language.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/language.cpp -o $(OBJECTDIR)/language.o
@@ -371,4 +388,9 @@ $(OBJECTDIR)/gui.o: $(SRCDIR)/loader/gui.cpp
 $(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR1)/resources.h $(BINRESDIR)/freac.ico
 	$(ECHO) -n Compiling $(RESOURCEDIR)/resources.rc...
 	$(RESCOMP) $(RESCOMP_OPTS) $(RESOURCEDIR)/resources.rc -o $(OBJECTDIR)/resources.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/resources_vd.o: $(RESOURCEDIR)/resources_vd.rc $(INCLUDEDIR1)/resources.h $(BINRESDIR)/freac.ico
+	$(ECHO) -n Compiling $(RESOURCEDIR)/resources_vd.rc...
+	$(RESCOMP) $(RESCOMP_OPTS) $(RESOURCEDIR)/resources_vd.rc -o $(OBJECTDIR)/resources_vd.o
 	$(ECHO) done.

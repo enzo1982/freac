@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -50,6 +50,12 @@ namespace BonkEnc
 
 			Layer		*layer_other;
 
+			GroupBox	*group_chapters;
+			CheckBox	*check_read_chapters;
+			CheckBox	*check_write_chapters;
+			Text		*text_chapter_format;
+			ComboBox	*combo_chapter_format;
+
 			GroupBox	*group_special;
 			CheckBox	*check_mcdi;
 			CheckBox	*check_replaygain;
@@ -63,6 +69,11 @@ namespace BonkEnc
 
 			Bool		 enableCoverArtWriteToFilesRef;
 
+			Bool		 readChapters;
+			Bool		 writeChapters;
+
+			Int		 chapterFormat;
+
 			Bool		 writeMCDI;
 			Bool		 preserveReplayGain;
 
@@ -72,6 +83,7 @@ namespace BonkEnc
 
 			Void		 ToggleTags();
 			Void		 ToggleWriteCoverArt();
+			Void		 ToggleWriteChapters();
 		public:
 					 ConfigureTags();
 					~ConfigureTags();

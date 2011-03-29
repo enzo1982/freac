@@ -172,9 +172,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">Du kan IKKE ændre i joblisten mens du koder!</entry>
-	<entry id="3301" string="You did not select a track!">Du har ikke valgt en fil!</entry>
-	<entry id="3302" string="No files found matching pattern:">Ingen filer fundet som passer til mønsteret:</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">Du kan IKKE ændre i joblisten mens du koder!</entry>
+	<entry id="3401" string="You did not select a track!">Du har ikke valgt en fil!</entry>
+	<entry id="3402" string="No files found matching pattern:">Ingen filer fundet som passer til mønsteret:</entry>
       </section>
     </section>
 

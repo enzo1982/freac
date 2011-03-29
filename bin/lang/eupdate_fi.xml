@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+ <info>
+  <property name="program">easyUpdate</property>
+  <property name="version">0.3</property>
+  <property name="language">Finnish / Suomi</property>
+  <property name="righttoleft">false</property>
+  <property name="encoding">UTF-8</property>
+  <property name="template">eupdate.xml</property>
+  <property name="author">Jan Parttimaa &lt;jan.parttimaa@gmail.com&gt;</property>
+  <property name="url">http://www.chapter0.net/easyUpdate/</property>
+ </info>
+ <data>
+  <entry id="1" string="Cancel">Peruuta</entry>
+  <entry id="2" string="Install">Asenna</entry>
+  <entry id="3" string="Show unstable releases">Näytä epävakaat julkaisut</entry>
+  <entry id="4" string="Select the updated program version to be installed:">Valitut ohjelmapäivitykset odottavat asennusta:</entry>
+  <entry id="5" string="You can select optional components to be installed:">Voit valita seuraavat valinnaiset komponentit asennettavaksi:</entry>
+  <entry id="6" string="Version ID">Version ID</entry>
+  <entry id="7" string="Package">Paketti</entry>
+  <entry id="8" string="Description">Kuvaus</entry>
+  <entry id="9" string="Latest">Viimeisin versio</entry>
+  <entry id="10" string="Size">Koko</entry>
+  <entry id="11" string="Yes">Kyllä</entry>
+  <entry id="12" string="No">Ei</entry>
+  <entry id="13" string="unknown">tuntematon</entry>
+  <entry id="14" string="Installing files...">Asennetaan tiedostoja...</entry>
+  <entry id="15" string="Installing file:">Asennetaan tiedostoa:</entry>
+  <entry id="16" string="Downloading file:">Ladataan tietostoa:</entry>
+  <entry id="17" string="Update complete">Päivitys onnistui</entry>
+  <entry id="18" string="Your application has been successfully updated!">Ohjelma on päivitetty onnistuneesti!</entry>
+  <entry id="19" string="Error">Virhe</entry>
+  <entry id="20" string="Error downloading package!">Ohjelman lataaminen epäonnistui!</entry>
+ </data>
+</LangFile>

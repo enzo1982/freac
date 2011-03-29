@@ -172,9 +172,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="3300" string="Cannot modify the joblist while encoding!">Non se pode modificar a lista durante a conversión!</entry>
-	<entry id="3301" string="You did not select a track!">Non hai ningún arquivo seleccionado!</entry>
-	<entry id="3302" string="No files found matching pattern:">Non se atopan arquivos correspondentes co patrón:</entry>
+	<entry id="3400" string="Cannot modify the joblist while encoding!">Non se pode modificar a lista durante a conversión!</entry>
+	<entry id="3401" string="You did not select a track!">Non hai ningún arquivo seleccionado!</entry>
+	<entry id="3402" string="No files found matching pattern:">Non se atopan arquivos correspondentes co patrón:</entry>
       </section>
     </section>
 
