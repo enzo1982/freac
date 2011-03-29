@@ -49,7 +49,7 @@
     <entry id="36" string="Wave Files"/>
     <entry id="37" string="Windows CD Audio Track"/>
     <entry id="38" string="All Files"/>
-    <entry id="39" string="You have not selected a file!"/>
+    <entry id="39" string="You did not select a track!"/>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?"/>
     <entry id="41" string="Currently encoding"/>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL)."/>

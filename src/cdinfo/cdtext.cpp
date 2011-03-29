@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -40,7 +40,7 @@ Int BonkEnc::CDText::ReadCDText()
 {
 	if (!BonkEnc::currentConfig->cdrip_read_cdtext) return Success();
 
-	cdText.RemoveAll();
+	cdInfo.Clear();
 
 	const int	 nBufferSize	= 4 + 8 * sizeof(cdTextPackage) * 256;
 	unsigned char	*pbtBuffer	= new unsigned char [nBufferSize];
@@ -70,12 +70,13 @@ Int BonkEnc::CDText::ReadCDText()
 
 				if (pCDtextPacks->packType == 0x80) // Album/Track title
 				{
-					if (pCDtextPacks->trackNumber == 0) cdText.Add(lpszBuffer, 100);
-					if (pCDtextPacks->trackNumber != 0) cdText.Add(lpszBuffer, pCDtextPacks->trackNumber);
+					if (pCDtextPacks->trackNumber == 0) cdInfo.SetTitle(lpszBuffer);
+					if (pCDtextPacks->trackNumber != 0) cdInfo.SetTrackTitle(pCDtextPacks->trackNumber, lpszBuffer);
 				}
 				else if (pCDtextPacks->packType == 0x81) // Artist name
 				{
-					if (pCDtextPacks->trackNumber == 0) cdText.Add(lpszBuffer, 0);
+					if (pCDtextPacks->trackNumber == 0) cdInfo.SetArtist(lpszBuffer);
+					if (pCDtextPacks->trackNumber != 0) cdInfo.SetTrackArtist(pCDtextPacks->trackNumber, lpszBuffer);
 				}
 
 				nInsertPos -= nOut;
@@ -98,14 +99,14 @@ Int BonkEnc::CDText::ReadCDText()
 	return Success();
 }
 
-Int BonkEnc::CDText::ClearCDText()
+Int BonkEnc::CDText::ClearCDInfo()
 {
-	cdText.RemoveAll();
+	cdInfo.Clear();
 
 	return Success();
 }
 
-const Array<String> &BonkEnc::CDText::GetCDText()
+const BonkEnc::CDInfo &BonkEnc::CDText::GetCDInfo()
 {
-	return cdText;
+	return cdInfo;
 }

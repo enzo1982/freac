@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -135,8 +135,14 @@ String BonkEnc::Utilities::GetPersonalFilesDirectory()
 {
 	String		 personalDir;
 	ITEMIDLIST	*idlist;
+	OSVERSIONINFOA	 vInfo;
 
-	SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
+	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
+
+	GetVersionExA(&vInfo);
+
+	if (vInfo.dwMajorVersion >= 6 || (vInfo.dwMajorVersion == 5 && vInfo.dwMinorVersion >= 1)) SHGetSpecialFolderLocation(NIL, CSIDL_MYMUSIC, &idlist);
+	else											   SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
 
 	if (Setup::enableUnicode)
 	{

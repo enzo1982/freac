@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,20 +15,22 @@
 
 using namespace smooth;
 
+#include "cdinfo.h"
+
 namespace BonkEnc
 {
 	class BEEXPORT CDText
 	{
 		private:
-			Array<String>		 cdText;
+			CDInfo		 cdInfo;
 		public:
-						 CDText();
-						~CDText();
+					 CDText();
+					~CDText();
 
-			Int			 ReadCDText();
-			Int			 ClearCDText();
+			Int		 ReadCDText();
 
-			const Array<String>	&GetCDText();
+			Int		 ClearCDInfo();
+			const CDInfo	&GetCDInfo();
 	};
 };
 

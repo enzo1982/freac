@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -26,7 +26,7 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 {
 	if (!BonkEnc::currentConfig->cdrip_read_cdplayerini) return Success();
 
-	cdInfo.RemoveAll();
+	cdInfo.Clear();
 
 	Int	 numTocEntries = ex_CR_GetNumTocEntries();
 	Int	 discID = 0;
@@ -79,7 +79,7 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 
 					for (Int i = 7; i < line.Length(); i++) artist[i - 7] = line[i];
 
-					cdInfo.Add(artist, 0);
+					cdInfo.SetArtist(artist);
 				}
 				else if (line.ToLower().StartsWith("title="))
 				{
@@ -87,7 +87,7 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 
 					for (Int i = 6; i < line.Length(); i++) title[i - 6] = line[i];
 
-					cdInfo.Add(title, 100);
+					cdInfo.SetTitle(title);
 				}
 				else if (line.StartsWith("0=") || line.ToInt() > 0)
 				{
@@ -96,7 +96,7 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 
 					for (Int i = length; i < line.Length(); i++) title[i - length] = line[i];
 
-					cdInfo.Add(title, line.ToInt() + 1);
+					cdInfo.SetTrackTitle(line.ToInt() + 1, title);
 				}
 				else if (line.StartsWith("["))
 				{
@@ -115,12 +115,12 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 
 Int BonkEnc::CDPlayerIni::ClearCDInfo()
 {
-	cdInfo.RemoveAll();
+	cdInfo.Clear();
 
 	return Success();
 }
 
-const Array<String> &BonkEnc::CDPlayerIni::GetCDInfo()
+const BonkEnc::CDInfo &BonkEnc::CDPlayerIni::GetCDInfo()
 {
 	return cdInfo;
 }

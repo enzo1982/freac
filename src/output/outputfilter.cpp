@@ -42,8 +42,7 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 	else if (encString == "UTF-16BE" ||
 		 encString == "UCS-2BE")	encoding = ID3TE_UTF16BE;
 
-	String	 prevOutFormat = String::SetOutputFormat(encString);
-
+	String		 prevOutFormat = String::SetOutputFormat(encString);
 	String		 leBOM;
 
 	leBOM[0] = 0xFEFF;
@@ -211,7 +210,7 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		}
 	}
 
-	String::SetOutputFormat(prevOutFormat);
+	String::SetOutputFormat(prevOutFormat.ConvertTo("ISO-8859-1"));
 
 	buffer.Resize(ex_ID3Tag_Size(tag));
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,11 +25,11 @@ Bool BonkEnc::FilterInAU::Activate()
     
 	in->InputNumber(4); // Read magic number
 
-	Int		 headerSize = in->InputNumberRaw(4);
+	Int		 dataOffset = in->InputNumberRaw(4);
 
 	delete in;
 
-	driver->Seek(headerSize);
+	driver->Seek(dataOffset);
 
 	return True;
 }
@@ -47,6 +47,10 @@ Int BonkEnc::FilterInAU::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	size = driver->ReadData(data, size);
 
+	/* Convert 8 bit samples to unsigned.
+	 */
+	if (format->bits == 8) for (Int i = 0; i < size; i++) data[i] = data[i] + 128;
+
 	return size;
 }
 
@@ -55,12 +59,10 @@ BonkEnc::Track *BonkEnc::FilterInAU::GetFileInfo(const String &inFile)
 	Track		*nFormat = new Track;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
 
-	// TODO: Add more checking to this!
-
 	nFormat->fileSize = f_in->Size();
 	nFormat->order = BYTE_RAW;
 
-	// Read magic number and header size
+	// Read magic number and data offset
 	for (Int i = 0; i < 8; i++)
 		f_in->InputNumber(1);
 

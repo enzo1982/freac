@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,6 +9,8 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <input/filter-in-wave.h>
+
+#include <mmreg.h>
 
 BonkEnc::FilterInWAVE::FilterInWAVE(Config *config, Track *format) : InputFilter(config, format)
 {
@@ -34,7 +36,7 @@ Bool BonkEnc::FilterInWAVE::Activate()
 
 		Int	 cSize = in->InputNumber(4);
 
-		if (chunk != "data") in->RelSeek(cSize);
+		if (chunk != "data") in->RelSeek(cSize + cSize % 2);
 	}
 	while (chunk != "data");
 
@@ -87,7 +89,10 @@ BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 
 		if (chunk == "fmt ")
 		{
-			if (f_in->InputNumber(2) != 1) { errorState = True; errorString = "Unsupported audio format"; }
+			Int	 waveFormat = f_in->InputNumber(2);
+
+			if (waveFormat != WAVE_FORMAT_PCM &&
+			    waveFormat != WAVE_FORMAT_EXTENSIBLE) { errorState = True; errorString = "Unsupported audio format"; }
 
 			nFormat->channels = uint16(f_in->InputNumber(2));
 			nFormat->rate	  = uint32(f_in->InputNumber(4));
@@ -97,19 +102,22 @@ BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 			nFormat->bits	  = uint16(f_in->InputNumber(2));
 
 			// Skip rest of chunk
-			f_in->RelSeek(cSize - 16);
+			f_in->RelSeek(cSize - 16 + cSize % 2);
 		}
 		else if (chunk == "data")
 		{
 			nFormat->length = uint32(cSize) / (nFormat->bits / 8);
+
+			// Skip chunk
+			f_in->RelSeek(cSize + cSize % 2);
 		}
 		else
 		{
 			// Skip chunk
-			f_in->RelSeek(cSize);
+			f_in->RelSeek(cSize + cSize % 2);
 		}
 	}
-	while (!errorState && chunk != "data");
+	while (!errorState && f_in->GetPos() < f_in->Size());
 
 	delete f_in;
 

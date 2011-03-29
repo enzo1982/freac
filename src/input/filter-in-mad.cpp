@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -44,10 +44,18 @@ namespace BonkEnc
 
 BonkEnc::FilterInMAD::FilterInMAD(Config *config, Track *format) : InputFilter(config, format)
 {
-	packageSize = 0;
+	packageSize	 = 0;
 
-	infoFormat = NIL;
-	numFrames = 0;
+	infoFormat	 = NIL;
+
+	numFrames	 = 0;
+
+	delaySamples	 = 0;
+	padSamples	 = 0;
+
+	/* Initialize to decoder delay.
+	 */
+	delaySamplesLeft = 529;
 }
 
 BonkEnc::FilterInMAD::~FilterInMAD()
@@ -61,6 +69,7 @@ Bool BonkEnc::FilterInMAD::Activate()
 	InStream	*f_in = new InStream(STREAM_DRIVER, driver);
 
 	SkipID3v2Tag(f_in);
+	ReadXingAndLAMETag(f_in);
 
 	driver->Seek(f_in->GetPos());
 
@@ -150,19 +159,17 @@ Bool BonkEnc::FilterInMAD::SkipID3v2Tag(InStream *in)
 	return True;
 }
 
-Bool BonkEnc::FilterInMAD::ReadXingTag(InStream *in)
+Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 {
 	/* Check for a Xing header and extract
 	 * the number of samples if it exists.
 	 */
-
-	Buffer<UnsignedByte>	 buffer(156);
+	Buffer<UnsignedByte>	 buffer(228);
 
 	/* Read data and seek back to before
 	 * the Xing header.
 	 */
 	in->InputData(buffer, 156);
-	in->RelSeek(-156);
 
 	XHEADDATA		 data;
 
@@ -172,8 +179,20 @@ Bool BonkEnc::FilterInMAD::ReadXingTag(InStream *in)
 	{
 		numFrames = data.frames;
 
+		in->InputData(buffer, 228);
+
+		if (buffer[0] == 'L' && buffer[1] == 'A' && buffer[2] == 'M' && buffer[3] == 'E')
+		{
+			delaySamples = ( buffer[21]	    << 4) | ((buffer[22] & 0xF0) >> 4);
+			padSamples   = ((buffer[22] & 0x0F) << 8) | ( buffer[23]	     );
+
+			delaySamplesLeft += delaySamples;
+		}
+
 		return True;
 	}
+
+	in->RelSeek(-156);
 
 	return False;
 }
@@ -191,10 +210,11 @@ BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
 
 	infoFormat = new Track;
 	infoFormat->fileSize = nFormat->fileSize;
+
 	finished = False;
 
 	SkipID3v2Tag(f_in);
-	ReadXingTag(f_in);
+	ReadXingAndLAMETag(f_in);
 
 	driver = ioDriver;
 	driver->Seek(f_in->GetPos());
@@ -261,20 +281,27 @@ mad_flow BonkEnc::MADInputCallback(void *client_data, mad_stream *stream)
 {
 	FilterInMAD	*filter = (FilterInMAD *) client_data;
 
-	if (filter->driver->GetPos() == filter->driver->GetSize()) return MAD_FLOW_STOP;
+	if (filter->finished) return MAD_FLOW_STOP;
 
 	static Buffer<UnsignedByte>	 inputBuffer;
 
 	filter->readDataMutex->Lock();
 
-	Int	 bytes = Math::Min(10000, filter->driver->GetSize() - filter->driver->GetPos());
+	/* Check if we have any nore data. If not, append an empty
+	 * frame to the last frame to allow the decoder to finish.
+	 */
+	if (filter->driver->GetPos() == filter->driver->GetSize()) filter->finished = True;
+
+	Int	 bytes = Math::Min(131072, filter->finished ? 1440 : filter->driver->GetSize() - filter->driver->GetPos());
 	Int	 backup = stream->bufend - stream->next_frame;
 
 	inputBuffer.Resize(bytes + backup);
 
+	if (filter->finished) inputBuffer.Zero();
+
 	memmove(inputBuffer, stream->next_frame, backup);
 
-	filter->driver->ReadData(inputBuffer + backup, bytes);
+	if (!filter->finished) filter->driver->ReadData(inputBuffer + backup, bytes);
 
 	filter->readDataMutex->Release();
 
@@ -293,15 +320,20 @@ mad_flow BonkEnc::MADOutputCallback(void *client_data, const mad_header *header,
 
 	Int	 oSize = filter->samplesBuffer.Size();
 
-	filter->samplesBuffer.Resize(oSize + pcm->length * filter->format->channels);
-
-	for (Int i = 0; i < (signed) pcm->length; i++)
+	if (pcm->length > filter->delaySamplesLeft)
 	{
-		for (Int j = 0; j < filter->format->channels; j++)
+		filter->samplesBuffer.Resize(oSize + (pcm->length - filter->delaySamplesLeft) * filter->format->channels);
+
+		for (Int i = filter->delaySamplesLeft; i < (signed) pcm->length; i++)
 		{
-			filter->samplesBuffer[oSize + i * filter->format->channels + j] = pcm->samples[j][i];
+			for (Int j = 0; j < filter->format->channels; j++)
+			{
+				filter->samplesBuffer[oSize + (i - filter->delaySamplesLeft) * filter->format->channels + j] = pcm->samples[j][i];
+			}
 		}
 	}
+
+	filter->delaySamplesLeft = Math::Max(0, filter->delaySamplesLeft - pcm->length);
 
 	filter->samplesBufferMutex->Release();
 
@@ -323,6 +355,8 @@ mad_flow BonkEnc::MADHeaderCallback(void *client_data, const mad_header *header,
 	if (filter->numFrames > 0)
 	{
 		filter->infoFormat->length = filter->numFrames * Math::Round((Float) header->duration.fraction / MAD_TIMER_RESOLUTION * filter->infoFormat->rate) * filter->infoFormat->channels;
+
+		filter->infoFormat->length -= (filter->delaySamples + filter->padSamples) * filter->infoFormat->channels;
 	}
 
 	return MAD_FLOW_STOP;

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -93,7 +93,7 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 		  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
 		  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
 		  Append(track->length > 0 || track->approxLength > 0 ? String(BonkEnc::i18n->TranslateString("Length")).Append(": ").Append(track->lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : "").
-		  Append(track->length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(Utilities::LocalizeNumber(track->length)).Append("\n") : "").
+		  Append(track->length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(Utilities::LocalizeNumber(track->length / track->channels)).Append("\n") : "").
 		  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(Utilities::LocalizeNumber(track->rate)).Append(" Hz\n").
 		  Append(BonkEnc::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(BonkEnc::i18n->TranslateString("bit")).Append("\n").
 		  Append(BonkEnc::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? BonkEnc::i18n->TranslateString("Mono") : BonkEnc::i18n->TranslateString("Stereo")));
@@ -246,28 +246,28 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	String	 fileTypes;
 
 	if (BonkEnc::currentConfig->enable_faad2)							fileTypes.Append("*.aac; ");
-													fileTypes.Append("*.aif; *.aiff; *.au");
+													fileTypes.Append("*.aif; *.aiff; *.aifc; *.au");
 	if (BonkEnc::currentConfig->enable_bonk)							fileTypes.Append("; *.bonk");
 	if (BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
 	if (BonkEnc::currentConfig->enable_flac)							fileTypes.Append("; *.flac");
 	if (BonkEnc::currentConfig->enable_mad)								fileTypes.Append("; *.mp1; *.mp2; *.mp3");
 	if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)			fileTypes.Append("; *.m4a; *.m4b; *.mp4");
 	if (BonkEnc::currentConfig->enable_vorbis)							fileTypes.Append("; *.ogg");
-													fileTypes.Append("; *.voc; *.wav");
+													fileTypes.Append("; *.snd; *.voc; *.wav");
 	if (BonkEnc::currentConfig->enable_wma)								fileTypes.Append("; *.wma");
 
 	for (Int l = 0; l < extensions.Length(); l++) fileTypes.Append("; ").Append(extensions.GetNth(l));
 
 													dialog->AddFilter(BonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
 	if (BonkEnc::currentConfig->enable_faad2)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("AAC Files")).Append(" (*.aac)"), "*.aac");
-													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Apple Audio Files")).Append(" (*.aif; *.aiff)"), "*.aif; *.aiff");
+													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Apple Audio Files")).Append(" (*.aif; *.aiff; *.aifc)"), "*.aif; *.aiff; *.aifc");
 	if (BonkEnc::currentConfig->enable_bonk)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
 													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Creative Voice Files")).Append(" (*.voc)"), "*.voc");
 	if (BonkEnc::currentConfig->enable_flac)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
 	if (BonkEnc::currentConfig->enable_mad)								dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MPEG Audio Files")).Append(" (*.mp1; *.mp2; *.mp3)"), "*.mp1; *.mp2; *.mp3");
 	if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)			dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
 	if (BonkEnc::currentConfig->enable_vorbis)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
-													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Sun Audio Files")).Append(" (*.au)"), "*.au");
+													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Sun Audio Files")).Append(" (*.au; *.snd)"), "*.au; *.snd");
 													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
 	if (BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows CD Audio Track")).Append(" (*.cda)"), "*.cda");
 	if (BonkEnc::currentConfig->enable_wma)								dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows Media Audio Files")).Append(" (*.wma)"), "*.wma");
@@ -702,7 +702,7 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 			  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
 			  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
 			  Append(track->length > 0 || track->approxLength > 0 ? String(BonkEnc::i18n->TranslateString("Length")).Append(": ").Append(track->lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : "").
-			  Append(track->length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(Utilities::LocalizeNumber(track->length)).Append("\n") : "").
+			  Append(track->length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(Utilities::LocalizeNumber(track->length / track->channels)).Append("\n") : "").
 			  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(Utilities::LocalizeNumber(track->rate)).Append(" Hz\n").
 			  Append(BonkEnc::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(BonkEnc::i18n->TranslateString("bit")).Append("\n").
 			  Append(BonkEnc::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? BonkEnc::i18n->TranslateString("Mono") : BonkEnc::i18n->TranslateString("Stereo")));

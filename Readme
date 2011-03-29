@@ -1,9 +1,9 @@
 fre:ac version 1.0.18
 
 fre:ac is a free and open source audio converter for various formats.
-It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAV, AIF, AU and
+It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAVE, AIFF, AU and
 VOC files and converts to MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC,
-VQF or WAV.
+VQF or WAVE.
 
 fre:ac uses the CDRip Ripping Library for audio ripping.
 fre:ac uses the FAAD2 AAC decoder for Advanced Audio decoding.
@@ -13,10 +13,17 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.18 (November 2010)
+	Version 1.0.18 (March 2011)
 
-		- updated Czech translation
+		- updated Czech, Dutch and Finnish translations
+		- added CD text support for sampler CDs
+		- added support for gapless MP3 decoding
+		- added support for decoding uncompressed AIFF-C files
+		- changed default output directory to "My Music" folder
 		- fixed skipping of first few seconds of some MP3s and raw AAC files
+		- fixed and improved decoding of raw audio formats WAVE, AIFF and AU
+		- upgraded Ogg library to version 1.2.2
+		- upgraded Ogg Vorbis to aoTuV beta 6.02
 		- some minor fixes
 
 	Version 1.0.17 (November 2010)

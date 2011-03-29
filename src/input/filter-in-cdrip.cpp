@@ -355,7 +355,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		cdPlayerDiscID = discid;
 	}
 
-	if (cdInfoDiscID != discid && !((cdText.GetCDText().Get(trackNumber) != NIL || cdPlayer.GetCDInfo().Get(trackNumber) != NIL) && !currentConfig->enable_overwrite_cdtext))
+	if (cdInfoDiscID != discid && !((cdText.GetCDInfo().GetTrackTitle(trackNumber) != NIL || cdPlayer.GetCDInfo().GetTrackTitle(trackNumber) != NIL) && !currentConfig->enable_overwrite_cdtext))
 	{
 		if (readActive)
 		{
@@ -391,27 +391,29 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		nFormat->genre		= cdInfo.dGenre;
 		nFormat->year		= cdInfo.dYear;
 	}
-	else if (cdText.GetCDText().Get(trackNumber) != NIL)
+	else if (cdText.GetCDInfo().GetTrackTitle(trackNumber) != NIL)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
 		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
-		nFormat->artist		= cdText.GetCDText().Get(0);
-		nFormat->title		= cdText.GetCDText().Get(trackNumber);
-		nFormat->album		= cdText.GetCDText().Get(100);
+		nFormat->artist		= cdText.GetCDInfo().GetTrackArtist(trackNumber);
+		nFormat->title		= cdText.GetCDInfo().GetTrackTitle(trackNumber);
+		nFormat->album		= cdText.GetCDInfo().GetTitle();
+
+		if (nFormat->artist == NIL) nFormat->artist = cdText.GetCDInfo().GetArtist();
 	}
-	else if (cdPlayer.GetCDInfo().Get(trackNumber) != NIL)
+	else if (cdPlayer.GetCDInfo().GetTrackTitle(trackNumber) != NIL)
 	{
 		nFormat->track		= trackNumber;
 		nFormat->cdTrack	= trackNumber;
 		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
 		nFormat->drive		= audiodrive;
 		nFormat->outfile	= NIL;
-		nFormat->artist		= cdPlayer.GetCDInfo().Get(0);
-		nFormat->title		= cdPlayer.GetCDInfo().Get(trackNumber);
-		nFormat->album		= cdPlayer.GetCDInfo().Get(100);
+		nFormat->artist		= cdPlayer.GetCDInfo().GetArtist();
+		nFormat->title		= cdPlayer.GetCDInfo().GetTrackTitle(trackNumber);
+		nFormat->album		= cdPlayer.GetCDInfo().GetTitle();
 	}
 	else
 	{
@@ -446,7 +448,7 @@ Int BonkEnc::FilterInCDRip::FinishDiscRead()
 	cdPlayer.ClearCDInfo();
 	cdPlayerDiscID		= -1;
 
-	cdText.ClearCDText();
+	cdText.ClearCDInfo();
 	cdTextDiscID		= -1;
 
 	cdInfo			= NIL;

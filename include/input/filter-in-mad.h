@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -35,12 +35,17 @@ namespace BonkEnc
 
 			Int			 numFrames;
 
+			Int			 delaySamples;
+			Int			 padSamples;
+
+			Int			 delaySamplesLeft;
+
 			Thread			*decoderThread;
 			Mutex			*readDataMutex;
 			Mutex			*samplesBufferMutex;
 
 			Bool			 SkipID3v2Tag(InStream *);
-			Bool			 ReadXingTag(InStream *);
+			Bool			 ReadXingAndLAMETag(InStream *);
 
 			Int			 ReadMADData(Thread *);
 			Int			 ReadMADMetadata(Thread *);
