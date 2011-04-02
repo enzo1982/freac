@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -40,6 +40,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 				debug_out->OutputLine(String("CDDB: > ").Append(command));
 
 				out->OutputLine(command);
+				out->Flush();
 			}
 
 			do
@@ -110,9 +111,12 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			in = new InStream(STREAM_DRIVER, socket);
 			out = new OutStream(STREAM_STREAM, in);
 
+			out->SetPackageSize(str.Length());
+
 			debug_out->OutputLine(String("CDDB: ").Append(str));
 
 			out->OutputString(str);
+			out->Flush();
 
 			do
 			{
@@ -174,6 +178,8 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 
 		in = new InStream(STREAM_DRIVER, socket);
 		out = new OutStream(STREAM_STREAM, in);
+
+		out->SetPackageSize(1024);
 	}
 
 	SendCommand("");
@@ -362,7 +368,10 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	in = new InStream(STREAM_DRIVER, socket);
 	out = new OutStream(STREAM_STREAM, in);
 
+	out->SetPackageSize(str.Length());
+
 	out->OutputLine(str);
+	out->Flush();
 
 	String::SetOutputFormat(outputFormat);
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -197,22 +197,31 @@ BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 	filter = this;
 	infoTrack = nFormat;
 
-	plugin->Play(GetTempFile(inFile));
+	String	 trackTitle;
 
-	Int	 start = clock();
+	errorState = plugin->Play(GetTempFile(inFile));
 
-	while (clock() - start < CLOCKS_PER_SEC && samplesBuffer.Size() <= 0) S::System::System::Sleep(0);
+	if (!errorState)
+	{
+		Int	 start = clock();
 
-	int	 length_ms = -1;
-	char	*title = new char [1024];
+		while (clock() - start < CLOCKS_PER_SEC && samplesBuffer.Size() <= 0) S::System::System::Sleep(0);
 
-	plugin->GetFileInfo(NIL, title, &length_ms);
+		int	 length_ms = -1;
+		char	*title = new char [1024];
 
-	plugin->Stop();
+		plugin->GetFileInfo(NIL, title, &length_ms);
+
+		nFormat->approxLength = (Int) (Float(length_ms) * Float(nFormat->rate * nFormat->channels) / 1000.0);
+
+		trackTitle = title;
+
+		delete [] title;
+
+		plugin->Stop();
+	}
 
 	delete samplesBufferMutex;
-
-	nFormat->approxLength = (Int) (Float(length_ms) * Float(nFormat->rate * nFormat->channels) / 1000.0);
 
 	if (GetTempFile(inFile) != inFile)
 	{
@@ -220,10 +229,6 @@ BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 
 		tempFile.Delete();
 	}
-
-	String	 trackTitle = title;
-
-	delete [] title;
 
 	Int	 artistComplete = 0;
 

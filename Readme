@@ -13,9 +13,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.18 (March 2011)
+	Version 1.0.18 (April 2011)
 
-		- updated Czech, Dutch and Finnish translations
+		- updated French, Czech, Dutch and Finnish translations
 		- added CD text support for sampler CDs
 		- added support for gapless MP3 decoding
 		- added support for decoding uncompressed AIFF-C files
