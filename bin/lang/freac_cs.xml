@@ -49,7 +49,7 @@
     <entry id="36" string="Wave Files">Wave soubory</entry>
     <entry id="37" string="Windows CD Audio Track">Windows Audio CD Track</entry>
     <entry id="38" string="All Files">Všechny soubory</entry>
-    <entry id="39" string="You did not select a track!">Není vybrán žádný soubor</entry>
+    <entry id="39" string="You did not select a track!">Není vybrána žádná stopa!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Proces kódování ještě běží! Chcete přesto program ukončit?</entry>
     <entry id="41" string="Currently encoding">Aktivní proces kódování</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šířen pod General Public Lincence (GPL).</entry>
