@@ -740,6 +740,8 @@
 	<entry id="52015" string="Size">Größe</entry>
 	<entry id="52016" string="Cancel download">Download abbrechen</entry>
 	<entry id="52017" string="unknown">unbekannt</entry>
+	<entry id="52018" string="Note">Hinweis</entry>
+	<entry id="52019" string="Do not display this note again">Diesen Hinweis nicht erneut anzeigen</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automatisierung</entry>
@@ -754,6 +756,7 @@
 	  <entry id="52201" string="This URL is not supported or not a video page URL!">Diese URL wird nicht unterstützt oder ist keine URL einer Videoseite!</entry>
 	  <entry id="52202" string="Error downloading video!">Fehler beim Herunterladen des Videos!</entry>
 	  <entry id="52203" string="You are already downloading this video!">Dieses Video wird bereits heruntergeladen!</entry>
+	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie FFmpeg, um dieses Problem zu beheben!</entry>
 	</section>
       </section>
 

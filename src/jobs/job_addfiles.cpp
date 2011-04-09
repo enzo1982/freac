@@ -95,13 +95,13 @@ Error BonkEnc::JobAddFiles::Perform()
 		{
 /* ToDo: Make this work again.
  */
-//			for (Int i = 0; i < tracks.Length(); i++)
-//			{
-//				Track	*cdTrack = tracks.GetNth(i);
+/*			for (Int i = 0; i < tracks.Length(); i++)
+			{
+				Track	*cdTrack = tracks.GetNth(i);
 
-//				if (cdTrack->discid == track.discid && cdTrack->cdTrack == track.cdTrack) return;
-//			}
-		}
+				if (cdTrack->discid == track.discid && cdTrack->cdTrack == track.cdTrack) return;
+			}
+*/		}
 
 		Info	 info = track.GetInfo();
 

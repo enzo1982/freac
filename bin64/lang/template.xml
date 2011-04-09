@@ -740,6 +740,8 @@
 	<entry id="52015" string="Size"/>
 	<entry id="52016" string="Cancel download"/>
 	<entry id="52017" string="unknown"/>
+	<entry id="52018" string="Note"/>
+	<entry id="52019" string="Do not display this note again"/>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization"/>
@@ -754,6 +756,7 @@
 	  <entry id="52201" string="This URL is not supported or not a video page URL!"/>
 	  <entry id="52202" string="Error downloading video!"/>
 	  <entry id="52203" string="You are already downloading this video!"/>
+	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg to fix this problem!"/>
 	</section>
       </section>
 

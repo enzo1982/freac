@@ -165,7 +165,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 /* ToDo: Add threads layer once it's ready.
  */
-	tabs_main->Add(tab_layer_threads);
+//	tabs_main->Add(tab_layer_threads);
 
 	joblist			= tab_layer_joblist->GetJoblist();
 
@@ -310,11 +310,11 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 {
+#ifdef __WIN32__
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	switch (message)
 	{
-#ifdef __WIN32__
 		case WM_DEVICECHANGE:
 			if (wParam == DBT_DEVICEARRIVAL && config->cdrip_numdrives > 0 && config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoReadContentsID, Config::RipperAutoReadContentsDefault))
 			{
@@ -408,8 +408,8 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 			}
 
 			break;
-#endif
 	}
+#endif
 }
 
 Void BonkEnc::BonkEncGUI::OnChangePosition(const Point &nPos)

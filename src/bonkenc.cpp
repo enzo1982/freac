@@ -54,7 +54,7 @@ String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free video downloader";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
 #endif
 
-String	 BonkEnc::BonkEnc::version	= "CVS 2011xxxx";
+String	 BonkEnc::BonkEnc::version	= "CVS 20110409";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre2";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
@@ -76,10 +76,6 @@ BonkEnc::BonkEnc::BonkEnc()
 	debug->Write("Starting fre:ac...");
 
 	instance = this;
-
-#ifdef __WIN32__
-	CoInitialize(NIL);
-#endif
 
 	encoder		= new Converter();
 	currentConfig	= Config::Get();
@@ -123,10 +119,6 @@ BonkEnc::BonkEnc::~BonkEnc()
 	debug->Write("Leaving fre:ac...");
 
 	BoCA::Protocol::Free();
-
-#ifdef __WIN32__
-	CoUninitialize();
-#endif
 }
 
 BonkEnc::BonkEnc *BonkEnc::BonkEnc::Get()

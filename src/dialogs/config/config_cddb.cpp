@@ -12,10 +12,6 @@
 #include <dialogs/cddb/extsettings.h>
 #include <cddb/cddb.h>
 
-#ifdef __WIN32__
-#	include <windows.h>
-#endif
-
 BonkEnc::ConfigureCDDB::ConfigureCDDB()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();

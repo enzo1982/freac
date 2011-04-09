@@ -14,7 +14,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (März 2011)
+	Version 1.1 CVS (April 2011)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris und FreeBSD portiert
@@ -93,8 +93,8 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP/2003/Vista/7, Windows 95/98/SE/ME, Linux (z.B. Ubuntu 10.10), FreeBSD 8.1 oder Mac OS X 10.6
-	- 200 MHz Prozessor, 128 MB RAM, 50 MB freier Festplattenplatz
+	- Windows NT/2000/XP/2003/Vista/7, Windows 95/98/SE/ME, Linux (z.B. Ubuntu 11.04), FreeBSD 8.2 oder Mac OS X 10.6
+	- Pentium 4 Prozessor, 128 MB RAM, 50 MB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
@@ -164,7 +164,9 @@ Bekannte Probleme
 
 	Mac OS X-spezifische Probleme:
 
-		- Datei- und Ordnerauswahlfenster erscheinen hinter dem Hauptfenster
+		- Datei- und Ordnerauswahlfenster erscheinen beim ersten Mal hinter dem Hauptfenster
+
+		- In Nachrichtenfenstern werden keine Bilder dargestellt
 
 		- Rippen von Audio-CDs funktioniert nicht
 
@@ -175,8 +177,6 @@ Bekannte Probleme
 	X11-spezifische Probleme:
 
 		- Modale Fenster funktionieren nicht korrekt
-
-		- In Nachrichtenfenstern und im "Tip des Tages"-Dialog werden keine Bilder dargestellt
 
 	Linux- und Unix-spezifische probleme:
 

@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
-    <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;, Grégoire Chabord</property>
+    <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;, Grégoire Chabord, Philippe Grivel &lt;phgrivel@gmail.com&gt;</property>
     <property name="url">http://www.freac.org/</property>
   </info>
   <data>
@@ -173,7 +173,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="Cannot modify the joblist while encoding!">Impossible de modifier la liste lors de l'encodage !</entry>
-	<entry id="3401" string="You did not select a track!">Aucun fichier n'est sélectionné !</entry>
+	<entry id="3401" string="You did not select a track!">Vous n'avez sélectionné aucun fichier !</entry>
 	<entry id="3402" string="No files found matching pattern:">Aucun fichier correspondant au motif :</entry>
       </section>
     </section>
@@ -288,6 +288,7 @@
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Activer la base de données CDDB locale</entry>
+	<entry id="5301" string="Enable remote CDDB database">Activer la base distante CDDB</entry>
 	<entry id="5302" string="CDDB path:">Répertoire CDDB :</entry>
 	<entry id="5303" string="Browse">Parcourir</entry>
 	<entry id="5304" string="Select the folder of the CDDB database:">Sélectionnez le dossier de la base de données CDDB :</entry>
@@ -333,6 +334,7 @@
 	<entry id="5500" string="Tags">Balises infos</entry>
 	<entry id="5501" string="Tag formats">Encodages des balises</entry>
 	<entry id="5502" string="Default comment string:">Commentaires par défaut :</entry>
+	<entry id="5503" string="Replace existing comments with default comment">Remplacer les commentaires existant par ceux par défaut</entry>
 	<entry id="5504" string="Filename pattern">Modèle de nom de fichier</entry>
       </section>
     </section>
@@ -382,12 +384,14 @@
       <entry id="7018" string="Unknown file type">Type de fichier inconnu</entry>
       <entry id="7019" string="Unsupported audio format">Format audio non supporté</entry>
       <entry id="7020" string="Unknown error">Erreur inconnue</entry>
+      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Les fichiers sélectionnés ne peuvent être combinés en&#10;un seul fichier de sortie parce que les formats sont différents.&#10;&#10;Veuillez d'abord convertir tous les fichiers au même format.</entry>
     </section>
 
     <section name="Decoders">
 
       <section name="CDRip">
 	<entry id="10000" string="Active CD-ROM drive">Lecteur de CD-ROM actif</entry>
+	<entry id="10001" string="Set drive speed limit:">Définir la vitesse limite du lecteur</entry>
 	<entry id="10002" string="CD information">Informations sur le CD</entry>
 	<entry id="10003" string="Read CD Text">Lire texte du CD</entry>
 	<entry id="10004" string="Read cdplayer.ini">Lire fichier cdplayer.ini</entry>
@@ -577,7 +581,18 @@
 	<entry id="35004" string="Bitrate">Débit binaire</entry>
       </section>
 
-      <section name="WMA"/>
+      <section name="WMA">
+	<entry id="36000" string="Select codec">Sélectioner le CoDec</entry>
+	<entry id="36001" string="Select codec format">Sélectionner le format de CoDec</entry>
+	<entry id="36002" string="Codec settings">Paramètres du CoDec</entry>
+	<entry id="36003" string="Use codec">Utiliser le CoDec</entry>
+	<entry id="36004" string="Use format">Utiliser le format</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Ecriture des fichiers WMA non compressés</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Sélectionne automatiquement le format en se basant sur les paramètres et le format d'entrée</entry>
+	<entry id="36007" string="Use VBR encoding">Utiliser l'encodage VBR</entry>
+	<entry id="36008" string="Use 2-pass encoding">Utiliser l'encodage double passe</entry>
+	<entry id="36009" string="Target bitrate">Bitrate cible</entry>
+      </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Débit binaire</entry>
@@ -590,8 +605,14 @@
     <section name="Extensions">
 
       <section name="Donate">
+	<entry id="50000" string="Support this project">Supporter ce projet</entry>
+	<entry id="50001" string="Please support this project!">S'il vous plait supporter ce projet!</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">S'il vous plait aider à conserver gratuit ce programme  en supportant le projet %1&#10;avec un don.&#10;&#10;Cliquer sur un des boutons ci-dessous pour faire un don en utilisant PayPal:</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Vous pouvez aussi envoyer de l'argent directement à %1 en utilisant PayPal.&#10;&#10;S'il vous plait écrivez à %1 si vous voulez faire un don en utilisant&#10;le transfert électronique, le chèque par mail ou envoyer de l'argent par mail.</entry>
 	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
+	<entry id="50005" string="en">de</entry>
+	<entry id="50006" string="Thank you very much!">Merci beaucoup!</entry>
+	<entry id="50007" string="Remind me later">Me rappeler plus tard</entry>
       </section>
 
       <section name="Winamp Adapter">

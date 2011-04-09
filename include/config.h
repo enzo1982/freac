@@ -261,8 +261,6 @@ namespace BonkEnc
 
 						 Config();
 						~Config();
-
-			static const String	&GetDefaultOutputDirectory();
 		public:
 			Int			 maxActiveJobs;
 

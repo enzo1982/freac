@@ -55,19 +55,27 @@ STRIP_OPTS = --strip-all
 RESCOMP_OPTS = -O coff
 
 ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
-	COMPILER_OPTS		+= -D BUILD_VIDEO_DOWNLOADER
+	COMPILER_OPTS			+= -D BUILD_VIDEO_DOWNLOADER
 endif
 
 ifneq ($(BUILD_X64),True)
-	COMPILER_OPTS		+= -march=i586
-	LOADER_COMPILER_OPTS	+= -march=i586
+	COMPILER_OPTS			+= -m32 -march=pentium4
+	LOADER_COMPILER_OPTS		+= -m32 -march=pentium4
+
+	LINKER_OPTS			+= -m32
+	LOADER_GUI_LINKER_OPTS		+= -m32
+	LOADER_CONSOLE_LINKER_OPTS	+= -m32
 else
-	COMPILER_OPTS		+= -march=nocona
-	LOADER_COMPILER_OPTS	+= -march=nocona
+	COMPILER_OPTS			+= -m64 -march=nocona
+	LOADER_COMPILER_OPTS		+= -m64 -march=nocona
+
+	LINKER_OPTS			+= -m64
+	LOADER_GUI_LINKER_OPTS		+= -m64
+	LOADER_CONSOLE_LINKER_OPTS	+= -m64
 endif
 
 ifeq ($(BUILD_SOLARIS),True)
-	COMPILER_OPTS		+= -fpic
+	COMPILER_OPTS			+= -fpic
 endif
 
 ifeq ($(BUILD_WIN32),True)
@@ -75,7 +83,7 @@ ifneq ($(BUILD_X64),True)
 	UNICOWS = -lunicows
 endif
 
-	LINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat $(UNICOWS) -lshell32 -lws2_32 -lole32 -lwinmm -Wl,--out-implib,$(LIBNAME)
+	LINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat $(UNICOWS) -lws2_32 -lwinmm -Wl,--out-implib,$(LIBNAME)
 	LOADER_GUI_LINKER_OPTS		+= -Wl,--dynamicbase,--nxcompat -mwindows
 	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,--dynamicbase,--nxcompat
 else

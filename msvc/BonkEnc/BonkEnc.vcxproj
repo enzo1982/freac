@@ -180,6 +180,7 @@
     <ClCompile Include="..\..\src\bonkenc.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\cuesheet.cpp" />
+    <ClCompile Include="..\..\src\dialogs\charset.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
     <ClCompile Include="..\..\src\joblist.cpp" />
     <ClCompile Include="..\..\src\playback.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="..\..\include\bonkenc.h" />
     <ClInclude Include="..\..\include\config.h" />
     <ClInclude Include="..\..\include\cuesheet.h" />
+    <ClInclude Include="..\..\include\dialogs\charset.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
     <ClInclude Include="..\..\include\joblist.h" />
     <ClInclude Include="..\..\include\playback.h" />

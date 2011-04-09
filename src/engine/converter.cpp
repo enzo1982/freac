@@ -19,11 +19,6 @@
 #include <joblist.h>
 #include <utilities.h>
 
-#ifdef __WIN32__
-#	include <windows.h>
-#	include <direct.h>
-#endif
-
 using namespace smooth::IO;
 using namespace BoCA::AS;
 
@@ -271,6 +266,14 @@ Int BonkEnc::Converter::ConverterThread()
 			continue;
 		}
 
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1)
+		{
+			Track	 nTrackInfo = trackInfo;
+
+			decoder->GetStreamInfo(nTrackInfo);
+			progress->FixTotalSamples(trackInfo, nTrackInfo);
+		}
+
 		log->Write(String("\tEncoding from: ").Append(in_filename));
 		log->Write(String("\t         to:   ").Append(out_filename));
 
@@ -337,16 +340,6 @@ Int BonkEnc::Converter::ConverterThread()
 			while (paused && !stop && !skip) S::System::System::Sleep(50);
 
 			progress->UpdateProgressValues(trackInfo, position);
-		}
-
-		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1)
-		{
-			Track	 nTrackInfo = trackInfo;
-
-			nTrackInfo.length	= trackLength;
-			nTrackInfo.approxLength	= -1;
-
-			progress->FixTotalSamples(trackInfo, nTrackInfo);
 		}
 
 		progress->PauseTotalProgress();

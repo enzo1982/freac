@@ -11,13 +11,6 @@
 #include <config.h>
 #include <bonkenc.h>
 
-#ifdef __WIN32__
-#	include <shlobj.h>
-#else
-#	include <unistd.h>
-#	include <pwd.h>
-#endif
-
 BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
 const String	 BonkEnc::Config::CategorySettingsID				= "Settings";
@@ -261,7 +254,7 @@ BonkEnc::Config::Config()
 
 	maxActiveJobs		= 2;
 
-	Config::SettingsEncoderOutputDirectoryDefault = GetDefaultOutputDirectory();
+	Config::SettingsEncoderOutputDirectoryDefault = S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMusic);
 
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -276,55 +269,6 @@ BonkEnc::Config::Config()
 
 BonkEnc::Config::~Config()
 {
-}
-
-const String &BonkEnc::Config::GetDefaultOutputDirectory()
-{
-	static String	 defaultOutputDir;
-
-	if (defaultOutputDir != NIL) return defaultOutputDir;
-
-#ifdef __WIN32__
-	ITEMIDLIST	*idlist;
-	OSVERSIONINFOA	 vInfo;
-
-	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
-
-	GetVersionExA(&vInfo);
-
-	if (vInfo.dwMajorVersion >= 6 || (vInfo.dwMajorVersion == 5 && vInfo.dwMinorVersion >= 1)) SHGetSpecialFolderLocation(NIL, CSIDL_MYMUSIC, &idlist);
-	else											   SHGetSpecialFolderLocation(NIL, CSIDL_PERSONAL, &idlist);
-
-	if (Setup::enableUnicode)
-	{
-		Buffer<wchar_t>	 buffer(MAX_PATH);
-
-		SHGetPathFromIDListW(idlist, buffer);
-
-		defaultOutputDir = buffer;
-	}
-	else
-	{
-		Buffer<char>	 buffer(MAX_PATH);
-
-		SHGetPathFromIDListA(idlist, buffer);
-
-		defaultOutputDir = buffer;
-	}
-
-	CoTaskMemFree(idlist);
-
-	if (defaultOutputDir == NIL) defaultOutputDir = S::System::System::GetPersonalFilesDirectory();
-#else
-	passwd	*pw = getpwuid(getuid());
-
-	if (pw != NIL)	defaultOutputDir = pw->pw_dir;
-	else		defaultOutputDir = "~";
-#endif
-
-	if (!defaultOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) defaultOutputDir.Append(Directory::GetDirectoryDelimiter());
-
-	return defaultOutputDir;
 }
 
 BonkEnc::Config *BonkEnc::Config::Get()

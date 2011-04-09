@@ -50,7 +50,7 @@ Bool BonkEnc::Encoding::IsUTF8(const char *string)
 
 	for (Int i = 0; i < length; i++)
 	{
-		if (((unsigned char *) string)[i    ] >= 0x00 && ((unsigned char *) string)[i    ] <= 0x7F) {         continue; }
+		if (						 ((unsigned char *) string)[i    ] <= 0x7F) {         continue; }
 
 		if (i < length - 1									   &&
 		    ((unsigned char *) string)[i    ] >= 0xC0 && ((unsigned char *) string)[i    ] <= 0xDF &&
