@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -201,7 +201,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				filter_out	= Utilities::CreateOutputFilter(encoder, singleTrackInfo);
 
-				if (f_out->AddFilter(filter_out) == False)
+				if (filter_out->GetErrorState() == True || f_out->AddFilter(filter_out) == False)
 				{
 					delete f_out;
 					delete filter_out;
@@ -372,7 +372,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			filter_out	= Utilities::CreateOutputFilter(encoder, trackInfo);
 
-			if (f_out->AddFilter(filter_out) == False)
+			if (filter_out->GetErrorState() == True || f_out->AddFilter(filter_out) == False)
 			{
 				delete f_in;
 				delete filter_in;

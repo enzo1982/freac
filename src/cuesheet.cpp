@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -27,8 +27,19 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 {
 	if (fileNames.Length() == 0) return False;
 
-	String		 format = String::SetOutputFormat("UTF-8");
 	OutStream	*file	= new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
+
+	/* Write UTF-8 BOM and set output format.
+	 */
+	file->OutputNumber(0xEF, 1);
+	file->OutputNumber(0xBB, 1);
+	file->OutputNumber(0xBF, 1);
+
+	String		 format = String::SetOutputFormat("UTF-8");
+
+	/* Check if all tracks belong to the same album and
+	 * if we need to create a single or multi file cue sheet.
+	 */
 	Bool		 album	= True;
 	Bool		 oneFile= True;
 
@@ -45,12 +56,16 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 		}
 	}
 
+	/* Metadata.
+	 */
 	if (album)
 	{
 		file->OutputLine(String("PERFORMER \"").Append(trackArtists.GetFirst()).Append("\""));
 		file->OutputLine(String("TITLE \"").Append(trackAlbums.GetFirst()).Append("\""));
 	}
 
+	/* Write actual track data.
+	 */
 	if (oneFile)
 	{
 		file->OutputLine(String("FILE \"").Append(fileNames.GetNth(0)).Append("\" WAVE"));
@@ -76,6 +91,8 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 
 	delete file;
 
+	/* Restore previous output format.
+	 */
 	String::SetOutputFormat(format);
 
 	return True;

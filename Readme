@@ -1,4 +1,4 @@
-fre:ac version 1.0.18
+fre:ac version 1.0.19
 
 fre:ac is a free and open source audio converter for various formats.
 It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAVE, AIFF, AU and
@@ -12,6 +12,13 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
+
+	Version 1.0.19 (May 2011)
+
+		- updated Serbian translation
+		- fixed possible MP3 decoder crashes
+		- upgraded Ogg Vorbis to aoTuV beta 6.03
+		- minor other fixes
 
 	Version 1.0.18 (April 2011)
 
@@ -270,13 +277,13 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP/Vista/7, Windows 95/98/SE/ME, Wine v0.9.14+
+	- Windows NT/2000/XP/Vista/7
 	- 200 MHz CPU, 128 MB RAM, 50 MB free disk space
 
 	Additional requirements for compiling the sources:
 
-		- MinGW-GCC v4.0+ (http://www.mingw.org/) or MSVC v9.0
-		- smooth v0.8.70.6 (http://www.smooth-project.org/)
+		- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual C++ v10.0
+		- smooth v0.8.70.10 (http://www.smooth-project.org/)
 
 	Additional optional software:
 

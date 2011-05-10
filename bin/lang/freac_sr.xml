@@ -3,7 +3,7 @@
  <info>
   <property name="program">freac</property>
   <property name="version">1.0.15</property>
-  <property name="language">Serbian (Latin letter)/ Srpski (Latinično pismo)</property>
+  <property name="language">Serbian (Latin letter) / Srpski (Latinično pismo)</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
@@ -107,13 +107,13 @@
   <entry id="94" string="Downsampling ratio">Srazmera umanjenog semplovanja</entry>
   <entry id="95" string="Predictor size">Predviđač veličina</entry>
   <entry id="96" string="Enable lossless encoding">Omogući enkodovanje bez gubitaka</entry>
-  <entry id="97" string="Enable Joint Stereo">Omogući zbijeni (tzv. Joint) stereo</entry>
+  <entry id="97" string="Enable Joint Stereo">Omogući &quot;zbijeni&quot; stereo</entry>
   <entry id="98" string="Bitrate per channel:">Stopa bitova po kanalu:</entry>
   <entry id="99" string="Preselection">Prethodni izbor</entry>
   <entry id="100" string="Number of preselection candidates:">Broj prethodno izabranih kandidata:</entry>
   <entry id="101" string="MPEG version">MPEG verzija</entry>
   <entry id="102" string="AAC object type">Vrsta AAC objekta</entry>
-  <entry id="103" string="Allow Joint Stereo">Dozvoli zbijeni (tzv. Joint) stereo</entry>
+  <entry id="103" string="Allow Joint Stereo">Dozvoli &quot;zbijeni&quot; stereo</entry>
   <entry id="104" string="Temporal Noise Shaping">Privremeno oblikovanje šumova</entry>
   <entry id="105" string="Use Temporal Noise Shaping">Koristi privremeno oblikovanje šumova</entry>
   <entry id="106" string="Maximum bandwidth">Maksimalna širina protoka</entry>
@@ -121,33 +121,33 @@
   <entry id="108" string="Basic">Osnovno</entry>
   <entry id="109" string="Misc">Razno</entry>
   <entry id="110" string="Audio processing">Audio obrada</entry>
-  <entry id="111" string="Set bitrate:">Stopa bitova:</entry>
-  <entry id="112" string="Set ratio:">Podešenje srazmere (tzv. Racio):</entry>
-  <entry id="113" string="Set quality:">Podešenje kvaliteta:</entry>
+  <entry id="111" string="Set bitrate:">Stopa:</entry>
+  <entry id="112" string="Set ratio:">Srazmera:</entry>
+  <entry id="113" string="Set quality:">Kvalitet:</entry>
   <entry id="114" string="worse">lošije</entry>
   <entry id="115" string="better">bolje</entry>
   <entry id="116" string="Auto">Samopodešavanje</entry>
   <entry id="117" string="Stereo">Stereo</entry>
-  <entry id="118" string="Joint Stereo">Zbijeni (tzv. Joint) stereo</entry>
-  <entry id="119" string="Force Joint Stereo">Forsiraj zbijeni (tzv. Joint)i stereo</entry>
+  <entry id="118" string="Joint Stereo">&quot;Zbijeni&quot; stereo</entry>
+  <entry id="119" string="Force Joint Stereo">Forsiraj &quot;zbijeni&quot; stereo</entry>
   <entry id="120" string="VBR mode">VBR režim</entry>
   <entry id="121" string="no VBR">bez VBR-a</entry>
   <entry id="122" string="VBR quality">VBR kvalitet</entry>
   <entry id="123" string="ABR target bitrate">ciljna ABR stopa bitova</entry>
   <entry id="124" string="VBR bitrate range">VBR opseg stope bitove</entry>
-  <entry id="125" string="Set minimum VBR bitrate:">Podesi minimalnu VBR stopu bitova:</entry>
-  <entry id="126" string="Set maximum VBR bitrate:">Podesi maksimalnu VBR stopu bitova:</entry>
+  <entry id="125" string="Set minimum VBR bitrate:">Podesi min. VBR stopu:</entry>
+  <entry id="126" string="Set maximum VBR bitrate:">Podesi maks. VBR stopu:</entry>
   <entry id="127" string="Control bits">Kontrolni bitovi</entry>
   <entry id="128" string="Stream format">Format protoka</entry>
   <entry id="129" string="Enforce strict ISO compliance">Forsiraj striktnu ISO primenu</entry>
   <entry id="135" string="Output sampling rate">Izlazna stopa semplovanja</entry>
   <entry id="136" string="no resampling">bez re-semplovanja</entry>
   <entry id="137" string="Highpass filter">Filter visokih tonova</entry>
-  <entry id="138" string="Set Highpass frequency (Hz):">Podesi visokoprolaznu (Highpass) frekvenciju (Hz):</entry>
-  <entry id="139" string="Set Highpass width (Hz):">Podesi visokoprolaznu (Highpass) širinu (Hz):</entry>
+  <entry id="138" string="Set Highpass frequency (Hz):">Visokoprolazna frekvencija (Hz):</entry>
+  <entry id="139" string="Set Highpass width (Hz):">Visokoprolazna širina (Hz):</entry>
   <entry id="140" string="Lowpass filter">Filter niskih tonova</entry>
-  <entry id="141" string="Set Lowpass frequency (Hz):">Podesi niskoprolaznu (Lowpass) frekvenciju (Hz):</entry>
-  <entry id="142" string="Set Lowpass width (Hz):">Podesi niskoprolaznu (Lowpass) širinu (Hz):</entry>
+  <entry id="141" string="Set Lowpass frequency (Hz):">Niskoprolazna frekvencija (Hz):</entry>
+  <entry id="142" string="Set Lowpass width (Hz):">Niskoprolazna širina (Hz):</entry>
   <entry id="143" string="Misc settings">Razna podešavanja</entry>
   <entry id="144" string="Disable all filtering">Onemogući sve filtere</entry>
   <entry id="145" string="MP3 Files">MP3 fajl(ovi)</entry>
@@ -293,7 +293,7 @@
   <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Ne mogu da pokrenem %1 enkoder! Proverite podešavanja!</entry>
   <entry id="290" string="Blocksize:">Veličina bloka:</entry>
   <entry id="291" string="Use streamable subset">Koristi protočno pod-podešavanje</entry>
-  <entry id="292" string="Adaptive Joint Stereo">Prilagođeni zbijeni (tzv. Joint) stereo</entry>
+  <entry id="292" string="Adaptive Joint Stereo">Prilagođeni &quot;zbijeni&quot; stereo</entry>
   <entry id="293" string="Fastest encoding">Najbrže enkodovanje</entry>
   <entry id="294" string="Best compression">Najbolja kompresija</entry>
   <entry id="295" string="Linear predictor">Linearni predviđač</entry>
