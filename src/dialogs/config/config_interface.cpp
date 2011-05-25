@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -69,6 +69,7 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 	Bool	 haveAlbum    = False;
 	Bool	 haveTitle    = False;
 	Bool	 haveGenre    = False;
+	Bool	 haveDisc     = False;
 	Bool	 haveTrack    = False;
 	Bool	 haveTime     = False;
 	Bool	 haveBytes    = False;
@@ -81,6 +82,7 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 		else if (field == "<album>")	{ list_fields->AddEntry(field)->SetMark(True); haveAlbum    = True; }
 		else if (field == "<title>")	{ list_fields->AddEntry(field)->SetMark(True); haveTitle    = True; }
 		else if (field == "<genre>")	{ list_fields->AddEntry(field)->SetMark(True); haveGenre    = True; }
+		else if (field == "<disc>")	{ list_fields->AddEntry(field)->SetMark(True); haveDisc	    = True; }
 		else if (field == "<track>")	{ list_fields->AddEntry(field)->SetMark(True); haveTrack    = True; }
 		else if (field == "<time>")	{ list_fields->AddEntry(field)->SetMark(True); haveTime     = True; }
 		else if (field == "<bytes>")	{ list_fields->AddEntry(field)->SetMark(True); haveBytes    = True; }
@@ -88,10 +90,13 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 		else if (field == "<filetype>")	{ list_fields->AddEntry(field)->SetMark(True); haveFileType = True; }
 	}
 
+	String::ExplodeFinish();
+
 	if (!haveArtist)   list_fields->AddEntry("<artist>")->SetMark(False);
 	if (!haveAlbum)    list_fields->AddEntry("<album>")->SetMark(False);
 	if (!haveTitle)    list_fields->AddEntry("<title>")->SetMark(False);
 	if (!haveGenre)    list_fields->AddEntry("<genre>")->SetMark(False);
+	if (!haveDisc)	   list_fields->AddEntry("<disc>")->SetMark(False);
 	if (!haveTrack)    list_fields->AddEntry("<track>")->SetMark(False);
 	if (!haveTime)     list_fields->AddEntry("<time>")->SetMark(False);
 	if (!haveBytes)    list_fields->AddEntry("<bytes>")->SetMark(False);

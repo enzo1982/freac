@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -21,6 +21,15 @@ BonkEnc::JobManager::JobManager()
 {
 	exitThread = False;
 
+	/* Enable R/W locking for job lists.
+	 */
+	Job::GetPlannedJobs().EnableLocking();
+	Job::GetRunningJobs().EnableLocking();
+
+	Job::GetAllJobs().EnableLocking();
+
+	/* Start job manager thread.
+	 */
 	managerThread = NonBlocking0<>(&JobManager::ManagerThread, this).Call();
 }
 
@@ -28,20 +37,22 @@ BonkEnc::JobManager::~JobManager()
 {
 	exitThread = True;
 
-	while (managerThread->GetStatus() == THREAD_RUNNING)
-	{
-		S::System::System::Sleep(100);
-	}
+	/* Wait for manager thread to exit.
+	 */
+	managerThread->Wait();
 }
 
 Void BonkEnc::JobManager::ManagerThread()
 {
+	Config	*config = Config::Get();
+
 	while (!exitThread)
 	{
-		if (Job::GetPlannedJobs().Length() > 0 && Job::GetRunningJobs().Length() < Config::Get()->maxActiveJobs)
-		{
-			const Array<Job *>	&planned = Job::GetPlannedJobs();
+		const Array<Job *>	&planned = Job::GetPlannedJobs();
+		const Array<Job *>	&running = Job::GetRunningJobs();
 
+		if (planned.Length() > 0 && running.Length() < config->maxActiveJobs)
+		{
 			foreach (Job *job, planned)
 			{
 				/* Check if the job is ready to run and if so start it.
@@ -62,11 +73,13 @@ Void BonkEnc::JobManager::ManagerThread()
 
 Void BonkEnc::JobManager::OnFinishJob(Job *job)
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	job->onFinishJob.Disconnect(&JobManager::OnFinishJob, this);
 
 	if (job->GetErrors().Length() > 0)
 	{
-		if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault))
+		if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault))
 		{
 			const Array<String>	&errors = job->GetErrors();
 

@@ -28,7 +28,9 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	i18n->SetContext("Configuration");
 
-	mainWnd			= new GUI::Window(i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 332));
+	initialConfig = config->GetConfigurationName();
+
+	mainWnd			= new Window(i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 332));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 	mainWnd->GetMainLayer()->onChangeSize.Connect(&ConfigDialog::OnChangeSize, this);
 
@@ -46,20 +48,36 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	text_config		= new Text(i18n->TranslateString("Active configuration:"), Point(7, 11));
 
 	combo_config		= new ComboBox(Point(text_config->textSize.cx + 15, 8), Size());
-	combo_config->Deactivate();
+
+	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
+	{
+		if (i == 0) combo_config->AddEntry(i18n->TranslateString("Default configuration"));
+		else	    combo_config->AddEntry(config->GetNthConfigurationName(i));
+	}
+
+	if (config->GetConfigurationName() == "default") combo_config->SelectNthEntry(0);
+	else						 combo_config->SelectEntry(config->GetConfigurationName());
+
+	combo_config->onSelectEntry.Connect(&ConfigDialog::OnSelectConfiguration, this);
+
+	edit_config		= new EditBox(NIL, Point(text_config->textSize.cx + 15, 8), Size(), 0);
+	edit_config->SetDropDownList(combo_config);
+	edit_config->onSelectEntry.Connect(&ConfigDialog::OnSelectConfigurationByName, this);
+	edit_config->onInput.Connect(&ConfigDialog::OnEditConfigurationName, this);
 
 	button_config_new	= new Button(i18n->TranslateString("New"), NIL, Point(175, 7), Size());
 	button_config_new->SetOrientation(OR_UPPERRIGHT);
-	button_config_new->Deactivate();
+	button_config_new->onAction.Connect(&ConfigDialog::OnCreateConfig, this);
 
 	button_config_delete	= new Button(i18n->TranslateString("Delete"), NIL, Point(87, 7), Size());
 	button_config_delete->SetOrientation(OR_UPPERRIGHT);
-	button_config_delete->Deactivate();
+	button_config_delete->onAction.Connect(&ConfigDialog::OnDeleteConfig, this);
 
 	divider_top		= new Divider(37, OR_HORZ | OR_TOP);
 
 	mainWnd->Add(text_config);
 	mainWnd->Add(combo_config);
+	mainWnd->Add(edit_config);
 	mainWnd->Add(button_config_new);
 	mainWnd->Add(button_config_delete);
 	mainWnd->Add(divider_top);
@@ -70,53 +88,8 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	tree_bonkenc		= new Tree(::BonkEnc::BonkEnc::appName);
 
-	layers.Add(new ConfigureEncoders());
-	entries.Add(new ConfigEntry(i18n->TranslateString("Encoders"), layers.GetLast()));
-	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_bonkenc->Add(entries.GetLast());
-
-	/* Connect to the onChangeEncoderSettings signal of the encoder configuration
-	 * layer to be notified when settings for a specific encoder are changed.
-	 */
-	((ConfigureEncoders *) layers.GetLast())->onChangeEncoderSettings.Connect(&ConfigDialog::OnChangeEncoderSettings, this);
-
-	layers.Add(new ConfigurePlaylists());
-	entries.Add(new ConfigEntry(i18n->TranslateString("Playlists"), layers.GetLast()));
-	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_bonkenc->Add(entries.GetLast());
-
-	if (config->cdrip_numdrives >= 1)
-	{
-		layers.Add(new ConfigureCDDB());
-		entries.Add(new ConfigEntry(i18n->TranslateString("CDDB"), layers.GetLast()));
-		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-		tree_bonkenc->Add(entries.GetLast());
-	}
-
-	layers.Add(new ConfigureInterface());
-	entries.Add(new ConfigEntry(i18n->TranslateString("Interface"), layers.GetLast()));
-	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_bonkenc->Add(entries.GetLast());
-
-	if (i18n->GetNOfLanguages() > 1)
-	{
-		layers.Add(new ConfigureLanguage());
-		entries.Add(new ConfigEntry(i18n->TranslateString("Language"), layers.GetLast()));
-		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-		tree_bonkenc->Add(entries.GetLast());
-	}
-
-	layers.Add(new ConfigureTags());
-	entries.Add(new ConfigEntry(i18n->TranslateString("Tags"), layers.GetLast()));
-	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_bonkenc->Add(entries.GetLast());
-
-	tree_bonkenc->Open();
-	tree_bonkenc->SelectNthEntry(0);
-
-	list_layers->Add(tree_bonkenc);
-
-	i18n->SetContext("Configuration");
+	tree_ripper		= new Tree(i18n->TranslateString("Ripper"));
+	tree_interface		= new Tree(i18n->TranslateString("Interface"));
 
 	tree_components		= new Tree(i18n->TranslateString("Components"));
 
@@ -127,10 +100,173 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	tree_extension		= new Tree(i18n->TranslateString("Extensions"));
 	tree_other		= new Tree(i18n->TranslateString("Other"));
 
+	OnSelectConfiguration();
+
+	if (tree_extension->Length() > 0) tree_components->Add(tree_extension);
+	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);
+	if (tree_decoders->Length()  > 0) tree_components->Add(tree_decoders);
+	if (tree_dsp->Length()	     > 0) tree_components->Add(tree_dsp);
+	if (tree_output->Length()    > 0) tree_components->Add(tree_output);
+	if (tree_other->Length()     > 0) tree_components->Add(tree_other);
+
+	tree_bonkenc->Open();
+
+	tree_ripper->Open();
+	tree_interface->Open();
+
+	tree_components->Open();
+
+	list_layers->Add(tree_bonkenc);
+	list_layers->Add(tree_components);
+
+	Add(mainWnd);
+
+	mainWnd->Add(mainWnd_titlebar);
+	mainWnd->Add(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
+	mainWnd->Add(list_layers);
+
+	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
+}
+
+BonkEnc::ConfigDialog::~ConfigDialog()
+{
+	DeleteLayers();
+
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(btn_ok);
+	DeleteObject(btn_cancel);
+	DeleteObject(divbar);
+
+	DeleteObject(text_config);
+	DeleteObject(combo_config);
+	DeleteObject(edit_config);
+	DeleteObject(button_config_new);
+	DeleteObject(button_config_delete);
+	DeleteObject(divider_top);
+
+	DeleteObject(list_layers);
+
+	DeleteObject(tree_bonkenc);
+
+	DeleteObject(tree_ripper);
+	DeleteObject(tree_interface);
+
+	DeleteObject(tree_components);
+
+	DeleteObject(tree_encoders);
+	DeleteObject(tree_decoders);
+	DeleteObject(tree_output);
+	DeleteObject(tree_dsp);
+	DeleteObject(tree_extension);
+	DeleteObject(tree_other);
+}
+
+Void BonkEnc::ConfigDialog::AddLayers()
+{
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration");
+
 	Registry	&boca = Registry::Get();
+
+	layers.Add(new ConfigureEncoders());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Encoders"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_bonkenc->Add(entries.GetLast());
+
+	/* Connect to the onChangeEncoderSettings signal of the encoder configuration
+	 * layer to be notified when settings for a specific encoder are changed.
+	 */
+	((ConfigureEncoders *) layers.GetLast())->onChangeEncoderSettings.Connect(&ConfigDialog::OnChangeEncoderSettings, this);
+
+	if (config->cdrip_numdrives >= 1)
+	{
+		Component	*component = NIL;
+
+#ifdef __WIN32__
+		if (component == NIL) component = boca.CreateComponentByID("cdrip-in");
+		if (component == NIL) component = boca.CreateComponentByID("akrip-in");
+#else
+		if (component == NIL) component = boca.CreateComponentByID("cdio-in");
+		if (component == NIL) component = boca.CreateComponentByID("cdparanoia-in");
+#endif
+
+		if (component != NIL)
+		{
+			if (component->GetConfigurationLayer() != NIL)
+			{
+				components.Add(component);
+				layers.Add(component->GetConfigurationLayer());
+
+				i18n->SetContext("Configuration");
+
+				entries.Add(new ConfigEntry(i18n->TranslateString("Settings"), layers.GetLast()));
+				entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+
+				tree_ripper->Add(entries.GetLast());
+			}
+			else
+			{
+				boca.DeleteComponent(component);
+			}
+		}
+
+		layers.Add(new ConfigureCDDB());
+		createdLayers.Add(layers.GetLast());
+		entries.Add(new ConfigEntry(i18n->TranslateString("CDDB"), layers.GetLast()));
+		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+		tree_ripper->Add(entries.GetLast());
+
+		tree_bonkenc->Add(tree_ripper);
+	}
+
+	if (i18n->GetNOfLanguages() > 1)
+	{
+		layers.Add(new ConfigureLanguage());
+		createdLayers.Add(layers.GetLast());
+		entries.Add(new ConfigEntry(i18n->TranslateString("Language"), layers.GetLast()));
+		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+		tree_interface->Add(entries.GetLast());
+	}
+
+	layers.Add(new ConfigureInterface());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Joblist"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_interface->Add(entries.GetLast());
+
+	tree_bonkenc->Add(tree_interface);
+
+	layers.Add(new ConfigurePlaylists());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Playlists"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_bonkenc->Add(entries.GetLast());
+
+	layers.Add(new ConfigureTags());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Tags"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_bonkenc->Add(entries.GetLast());
+
+	i18n->SetContext("Configuration");
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
+#ifdef __WIN32__
+		if (boca.GetComponentID(i) == "cdrip-in")      continue;
+		if (boca.GetComponentID(i) == "akrip-in")      continue;
+#else
+		if (boca.GetComponentID(i) == "cdio-in")       continue;
+		if (boca.GetComponentID(i) == "cdparanoia-in") continue;
+#endif
+
 		Component	*component = boca.CreateComponentByID(boca.GetComponentID(i));
 
 		if (component == NIL) continue;
@@ -162,39 +298,23 @@ BonkEnc::ConfigDialog::ConfigDialog()
 			boca.DeleteComponent(component);
 		}
 	}
-
-	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);
-	if (tree_decoders->Length()  > 0) tree_components->Add(tree_decoders);
-	if (tree_output->Length()    > 0) tree_components->Add(tree_output);
-	if (tree_dsp->Length()	     > 0) tree_components->Add(tree_dsp);
-	if (tree_extension->Length() > 0) tree_components->Add(tree_extension);
-	if (tree_other->Length()     > 0) tree_components->Add(tree_other);
-
-	tree_components->Open();
-
-	list_layers->Add(tree_components);
-
-	Add(mainWnd);
-
-	mainWnd->Add(mainWnd_titlebar);
-	mainWnd->Add(divbar);
-	mainWnd->Add(btn_ok);
-	mainWnd->Add(btn_cancel);
-	mainWnd->Add(list_layers);
-
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::ConfigDialog::~ConfigDialog()
+Void BonkEnc::ConfigDialog::DeleteLayers()
 {
-	Int	 ownLayers = 3;
+	if (layers.Length() == 0) return;
 
-	if (BoCA::Config::Get()->cdrip_numdrives >= 1) ownLayers += 2;
-	if (BoCA::I18n::Get()->GetNOfLanguages() >  1) ownLayers += 1;
+	for (Int i = 0; i < createdLayers.Length(); i++) DeleteObject(createdLayers.GetNth(i));
 
-	for (Int i = 0; i < ownLayers; i++)  DeleteObject(layers.GetNth(i));
+	createdLayers.RemoveAll();
+
 	for (Int i = 0; i < entries.Length(); i++) DeleteObject(entries.GetNth(i));
+
+	layers.RemoveAll();
+	entries.RemoveAll();
+
+	tree_bonkenc->Remove(tree_ripper);
+	tree_bonkenc->Remove(tree_interface);
 
 	Registry	&boca = Registry::Get();
 
@@ -205,29 +325,9 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 		boca.DeleteComponent(component);
 	}
 
-	DeleteObject(mainWnd_titlebar);
-	DeleteObject(mainWnd);
-	DeleteObject(btn_ok);
-	DeleteObject(btn_cancel);
-	DeleteObject(divbar);
+	components.RemoveAll();
 
-	DeleteObject(text_config);
-	DeleteObject(combo_config);
-	DeleteObject(button_config_new);
-	DeleteObject(button_config_delete);
-	DeleteObject(divider_top);
-
-	DeleteObject(list_layers);
-
-	DeleteObject(tree_bonkenc);
-	DeleteObject(tree_components);
-
-	DeleteObject(tree_encoders);
-	DeleteObject(tree_decoders);
-	DeleteObject(tree_output);
-	DeleteObject(tree_dsp);
-	DeleteObject(tree_extension);
-	DeleteObject(tree_other);
+	selectedLayer = NIL;
 }
 
 const Error &BonkEnc::ConfigDialog::ShowDialog()
@@ -249,6 +349,10 @@ Void BonkEnc::ConfigDialog::OK()
 
 Void BonkEnc::ConfigDialog::Cancel()
 {
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+	config->SetActiveConfiguration(initialConfig);
+
 	mainWnd->Close();
 }
 
@@ -258,8 +362,134 @@ Void BonkEnc::ConfigDialog::OnChangeSize(const Size &nSize)
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
 	combo_config->SetWidth(clientSize.cx - text_config->textSize.cx - 198);
+	edit_config->SetWidth(clientSize.cx - text_config->textSize.cx - 198);
 
 	list_layers->SetSize(Size(210, clientSize.cy - 94));
+}
+
+Void BonkEnc::ConfigDialog::OnSelectConfiguration()
+{
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration");
+
+	if (selectedLayer != NIL) for (Int i = 0; i < layers.Length(); i++) layers.GetNth(i)->SaveSettings();
+
+	Surface	*surface = mainWnd->GetDrawSurface();
+
+	if (combo_config->GetSelectedEntryNumber() == 0)
+	{
+		button_config_delete->Deactivate();
+
+		surface->StartPaint(Rect(combo_config->GetRealPosition(), combo_config->GetSize()));
+
+		edit_config->Hide();
+		combo_config->Show();
+
+		surface->EndPaint();
+
+		config->SetActiveConfiguration("default");
+	}
+	else
+	{
+		button_config_delete->Activate();
+
+		surface->StartPaint(Rect(combo_config->GetRealPosition(), combo_config->GetSize()));
+
+		combo_config->Hide();
+		edit_config->Show();
+		edit_config->SetDropDownList(combo_config);
+		edit_config->SetText(combo_config->GetSelectedEntry()->GetText());
+
+		surface->EndPaint();
+
+		config->SetActiveConfiguration(combo_config->GetSelectedEntry()->GetText());
+	}
+
+	surface->StartPaint(Rect(Point(), mainWnd->GetSize()));
+
+	DeleteLayers();
+	AddLayers();
+
+	tree_bonkenc->SelectNthEntry(0);
+
+	list_layers->Paint(SP_PAINT);
+
+	surface->EndPaint();
+}
+
+Void BonkEnc::ConfigDialog::OnSelectConfigurationByName()
+{
+	combo_config->SelectEntry(edit_config->GetText());
+}
+
+Void BonkEnc::ConfigDialog::OnEditConfigurationName(const String &name)
+{
+	if (combo_config->GetSelectedEntryNumber() == 0) return;
+
+	BoCA::Config	*config	 = BoCA::Config::Get();
+	ListEntry	*entry	 = combo_config->GetSelectedEntry();
+
+	String		 newName = name;
+
+	for (Int i = 1, n = 0; i < combo_config->Length(); i++)
+	{
+		ListEntry	*nth = combo_config->GetNthEntry(i);
+
+		if (entry == nth) continue;
+
+		if (nth->GetText() == newName)
+		{
+			newName = String(name).Append(" (").Append(String::FromInt(++n)).Append(")");
+
+			i = 0;
+		}
+	}
+
+	entry->SetText(newName);
+
+	edit_config->SetDropDownList(combo_config);
+
+	config->SetConfigurationName(newName);
+}
+
+Void BonkEnc::ConfigDialog::OnCreateConfig()
+{
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration");
+
+	BoCA::Config	*config	= BoCA::Config::Get();
+	ListEntry	*entry	= combo_config->AddEntry(i18n->TranslateString("New configuration"));
+
+	/* Find a name for the new configuration.
+	 */
+	Int	 n = 0;
+
+	while (config->AddConfiguration(entry->GetText()) != Success())
+	{
+		entry->SetText(String(i18n->TranslateString("New configuration")).Append(" (").Append(String::FromInt(++n)).Append(")"));
+	}
+
+	/* Activate the new configuration.
+	 */
+	config->SetActiveConfiguration(entry->GetText());
+
+	combo_config->SelectEntry(entry);
+}
+
+Void BonkEnc::ConfigDialog::OnDeleteConfig()
+{
+	BoCA::Config	*config	= BoCA::Config::Get();
+	ListEntry	*entry	= combo_config->GetSelectedEntry();
+
+	config->RemoveConfiguration(entry->GetText());
+
+	selectedLayer = NIL;
+
+	combo_config->Remove(entry);
+	combo_config->SelectNthEntry(0);
 }
 
 Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)

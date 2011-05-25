@@ -60,7 +60,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 	{
 		String	 langID;
 
-		for (Int i = 8; i < language.Length(); i++) langID[i - 8] = language[i];
+		for (Int i = language.Find("_") + 1; i < language.Length(); i++) langID[i - language.Find("_") - 1] = language[i];
 
 		if (!ex_eUpdate_SetLanguage(context, String("eupdate_").Append(langID))) ex_eUpdate_SetLanguage(context, "internal");
 	}

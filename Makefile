@@ -2,20 +2,19 @@
 
 include Makefile-options
 
+CDK = ./cdk
+
 INCLUDEDIR1 = ./include
-INCLUDEDIR2 = ../smooth/include
-INCLUDEDIR3 = cdk/include
+INCLUDEDIR2 = $(CDK)/include
 OBJECTDIR = ./objects
 SRCDIR = ./src
 
 ifneq ($(BUILD_X64),True)
 	BINDIR = ./bin
-	LIBDIR1 = ../smooth/lib
-	LIBDIR2 = cdk/lib
+	LIBDIR = $(CDK)/lib
 else
 	BINDIR = ./bin64
-	LIBDIR1 = ../smooth/lib64
-	LIBDIR2 = cdk/lib64
+	LIBDIR = $(CDK)/lib64
 endif
 
 RESOURCEDIR = ./resources
@@ -24,11 +23,11 @@ BINRESDIR = $(RESOURCEDIR)/binary
 DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
-ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
-	RESOURCES = $(OBJECTDIR)/resources_vd.o
-else
-	RESOURCES = $(OBJECTDIR)/resources.o
-endif
+	ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
+		RESOURCES = $(OBJECTDIR)/resources_vd.o
+	else
+		RESOURCES = $(OBJECTDIR)/resources.o
+	endif
 endif
 
 EXEOBJECTS = $(OBJECTDIR)/gui.o
@@ -44,11 +43,10 @@ RESCOMP = windres
 LINKER = gcc
 REMOVER = rm
 ECHO = echo
-COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -I$(INCLUDEDIR3) -g0 -Wall -Os -ffast-math -fno-exceptions -DUNICODE -D_UNICODE -c
-LINKER_OPTS = -L$(LIBDIR1) -L$(LIBDIR2) -lboca -lsmooth -lstdc++ --shared -o $(DLLNAME)
-LOADER_COMPILER_OPTS = -I$(INCLUDEDIR2) -g0 -Wall -Os -ffast-math -fno-exceptions -c
-LOADER_GUI_LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lstdc++ -o $(EXENAME)
-LOADER_CONSOLE_LINKER_OPTS = -L$(LIBDIR1) -lsmooth -lstdc++ -o $(CMDNAME)
+COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -g0 -Wall -Os -ffast-math -fno-exceptions -DUNICODE -D_UNICODE -c
+LINKER_OPTS = -L$(LIBDIR) -lboca -lsmooth -lstdc++ --shared -o $(DLLNAME)
+LOADER_GUI_LINKER_OPTS = -L$(LIBDIR) -lsmooth -lstdc++ -o $(EXENAME)
+LOADER_CONSOLE_LINKER_OPTS = -L$(LIBDIR) -lsmooth -lstdc++ -o $(CMDNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
@@ -58,20 +56,29 @@ ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
 	COMPILER_OPTS			+= -D BUILD_VIDEO_DOWNLOADER
 endif
 
+ifneq ($(BUILD_WIN32),True)
+ifneq ($(BUILD_SOLARIS),True)
+	COMPILER_OPTS			+= -pthread
+endif
+endif
+
 ifneq ($(BUILD_X64),True)
 	COMPILER_OPTS			+= -m32 -march=pentium4
-	LOADER_COMPILER_OPTS		+= -m32 -march=pentium4
 
 	LINKER_OPTS			+= -m32
 	LOADER_GUI_LINKER_OPTS		+= -m32
 	LOADER_CONSOLE_LINKER_OPTS	+= -m32
 else
 	COMPILER_OPTS			+= -m64 -march=nocona
-	LOADER_COMPILER_OPTS		+= -m64 -march=nocona
 
 	LINKER_OPTS			+= -m64
 	LOADER_GUI_LINKER_OPTS		+= -m64
 	LOADER_CONSOLE_LINKER_OPTS	+= -m64
+endif
+
+ifeq ($(BUILD_OPENBSD),True)
+	LOADER_GUI_LINKER_OPTS		+= -L/usr/local/lib -logg -lvorbis -lvorbisfile
+	LOADER_CONSOLE_LINKER_OPTS	+= -L/usr/local/lib -logg -lvorbis -lvorbisfile
 endif
 
 ifeq ($(BUILD_SOLARIS),True)
@@ -79,19 +86,17 @@ ifeq ($(BUILD_SOLARIS),True)
 endif
 
 ifeq ($(BUILD_WIN32),True)
-ifneq ($(BUILD_X64),True)
-	UNICOWS = -lunicows
-endif
+	ifneq ($(BUILD_X64),True)
+		LINKER_OPTS		+= -lunicows
+	endif
 
-	LINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat $(UNICOWS) -lws2_32 -lwinmm -Wl,--out-implib,$(LIBNAME)
+	LINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat -lws2_32 -lwinmm -Wl,--out-implib,$(LIBNAME)
 	LOADER_GUI_LINKER_OPTS		+= -Wl,--dynamicbase,--nxcompat -mwindows
 	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,--dynamicbase,--nxcompat
 else
-ifeq ($(BUILD_OSX),True)
-	STRIP = true
-
-	LINKER_OPTS			+= -Wl,-dylib_install_name,freac$(SHARED)
-endif
+	ifeq ($(BUILD_OSX),True)
+		LINKER_OPTS		+= -Wl,-dylib_install_name,freac$(SHARED)
+	endif
 
 	LINKER_OPTS			+= -Wl,-rpath,.
 	LOADER_GUI_LINKER_OPTS		+= -Wl,-rpath,.
@@ -113,7 +118,9 @@ clean:
 $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
 	$(LINKER) $(DLLOBJECTS) $(LINKER_OPTS)
+ifneq ($(BUILD_OSX),True)
 	$(STRIP) $(STRIP_OPTS) $(DLLNAME)
+endif
 ifeq ($(BUILD_WIN32),True)
 ifneq ($(BUILD_X64),True)
 	countbuild BuildNumber
@@ -124,13 +131,17 @@ endif
 $(EXENAME): $(EXEOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(EXENAME)...
 	$(LINKER) $(EXEOBJECTS) $(RESOURCES) $(LOADER_GUI_LINKER_OPTS)
+ifneq ($(BUILD_OSX),True)
 	$(STRIP) $(STRIP_OPTS) $(EXENAME)
+endif
 	$(ECHO) done.
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(CMDNAME)...
 	$(LINKER) $(CMDOBJECTS) $(RESOURCES) $(LOADER_CONSOLE_LINKER_OPTS)
+ifneq ($(BUILD_OSX),True)
 	$(STRIP) $(STRIP_OPTS) $(CMDNAME)
+endif
 	$(ECHO) done.
 
 $(OBJECTDIR)/cddb.o: $(SRCDIR)/cddb/cddb.cpp
@@ -385,12 +396,12 @@ $(OBJECTDIR)/main_threads.o: $(SRCDIR)/gui/main_threads.cpp
 
 $(OBJECTDIR)/console.o: $(SRCDIR)/loader/console.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/loader/console.cpp...
-	$(COMPILER) $(LOADER_COMPILER_OPTS) $(SRCDIR)/loader/console.cpp -o $(OBJECTDIR)/console.o
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/loader/console.cpp -o $(OBJECTDIR)/console.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/gui.o: $(SRCDIR)/loader/gui.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/loader/gui.cpp...
-	$(COMPILER) $(LOADER_COMPILER_OPTS) $(SRCDIR)/loader/gui.cpp -o $(OBJECTDIR)/gui.o
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/loader/gui.cpp -o $(OBJECTDIR)/gui.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR1)/resources.h $(BINRESDIR)/freac.ico

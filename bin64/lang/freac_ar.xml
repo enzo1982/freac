@@ -213,6 +213,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">حدد الإدخال الذي يناسب قرصك المضغوط:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">هل ترغب في تنفيذ هذا الاستعلام مرة أخرى لاحقا؟</entry>
 	<entry id="4110" string="none">لاشيء</entry>
+	<entry id="4111" string="Preview">معاينة</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">حصلت بعض الأخطأ عند محاولة الاتصال في خادم قاعدة بيانات مجانية.</entry>
@@ -545,6 +546,7 @@
 	  <entry id="34105" string="Stereo mode">طريقة صوتي مجسم</entry>
 	  <entry id="34106" string="Joint Stereo">صوت مجسم مشترك</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">تكيفية ربط نظام صزت مجسم</entry>
+	  <entry id="34108" string="File format">صيغة الملف</entry>
 	</section>
 
 	<section name="Format">
@@ -645,6 +647,10 @@
 	  <entry id="53100" string="Basic">أساسي</entry>
 	  <entry id="53107" string="Add">إضافة</entry>
 	  <entry id="53108" string="Remove">إزالة</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>
 	</section>
       </section>
     </section>

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,6 +17,12 @@
 #include <gui/main_joblist.h>
 #include <gui/main_threads.h>
 
+#ifdef __WIN32__
+#	define DLLEXPORT __declspec(dllexport)
+#else
+#	define DLLEXPORT
+#endif
+
 using namespace smooth;
 using namespace smooth::GUI;
 
@@ -24,7 +30,7 @@ using namespace BoCA::AS;
 
 extern "C"
 {
-	Int __declspec (dllexport) StartGUI(const Array<String> &);
+	Int DLLEXPORT StartGUI(const Array<String> &);
 }
 
 namespace BonkEnc
@@ -38,17 +44,22 @@ namespace BonkEnc
 							~BonkEncGUI();
 
 			PopupMenu			*menu_file;
-			PopupMenu			*menu_options;
 			PopupMenu			*menu_addsubmenu;
-			PopupMenu			*menu_encode;
-			PopupMenu			*menu_drives;
 			PopupMenu			*menu_files;
-			PopupMenu			*menu_seldrive;
+			PopupMenu			*menu_drives;
+
 			PopupMenu			*menu_database;
 			PopupMenu			*menu_database_query;
-			PopupMenu			*menu_help;
+
+			PopupMenu			*menu_options;
+			PopupMenu			*menu_configurations;
+			PopupMenu			*menu_seldrive;
+
+			PopupMenu			*menu_encode;
 			PopupMenu			*menu_encoders;
 			PopupMenu			*menu_encoder_options;
+
+			PopupMenu			*menu_help;
 
 			MenuEntry			*allowOverwriteMenuEntry;
 
@@ -60,6 +71,7 @@ namespace BonkEnc
 			LayerJoblist			*tab_layer_joblist;
 			LayerThreads			*tab_layer_threads;
 
+			Int				 clicked_configuration;
 			Int				 clicked_drive;
 			Int				 clicked_encoder;
 
@@ -70,8 +82,10 @@ namespace BonkEnc
 
 			Void				 Close();
 			Void				 About();
+
 			Void				 ConfigureEncoder();
 			Void				 ConfigureSettings();
+
 			Void				 ReadSpecificCD();
 
 			Void				 EncodeSpecific();
@@ -94,6 +108,8 @@ namespace BonkEnc
 
 			Void				 OnChangePosition(const Point &);
 			Void				 OnChangeSize(const Size &);
+
+			Void				 OnSelectConfiguration();
 
 			Void				 ReadCD();
 

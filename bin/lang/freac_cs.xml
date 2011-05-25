@@ -22,6 +22,7 @@
     <entry id="304" string="Genre">Žánr</entry>
     <entry id="305" string="Comment">Komentář</entry>
     <entry id="306" string="Year">Rok</entry>
+    <entry id="307" string="Disc">Disk</entry>
     <entry id="350" string="unknown artist">neznámý umělec</entry>
     <entry id="351" string="unknown title">neznámý název</entry>
     <entry id="352" string="unknown album">neznámé album</entry>
@@ -69,6 +70,8 @@
 	<entry id="1300" string="General settings...">Obecná nastavení...</entry>
 	<entry id="1301" string="Configure selected encoder...">Nastavit vybraný enkodér...</entry>
 	<entry id="1302" string="Active CD-ROM drive">Aktivní CD-ROM-mechanika</entry>
+	<entry id="1303" string="Active configuration">Aktivní nastavení</entry>
+	<entry id="1304" string="Default configuration">Standardní nastavení</entry>
       </section>
 
       <section name="Encode">
@@ -216,6 +219,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Vyberte údaje hodící se nejlépe k CD:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Přejete si provést tento dotaz později znovu?</entry>
 	<entry id="4110" string="none">žádný</entry>
+	<entry id="4111" string="Preview">Přehled</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Chyba při spojení s freedb serverem.</entry>
@@ -276,6 +280,8 @@
       <entry id="5016" string="Delete">Smazat</entry>
       <entry id="5017" string="Command line arguments:">Parametry příkazového řádku:</entry>
       <entry id="5018" string="Resulting arguments string:">Výsledné parametry řetězce:</entry>
+      <entry id="5019" string="Default configuration">Standardní nastavení</entry>
+      <entry id="5020" string="New configuration">Nové nastavení</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigurovat enkodér</entry>
@@ -593,6 +599,7 @@
 	  <entry id="34105" string="Stereo mode">Stereo-režim</entry>
 	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
+	  <entry id="34108" string="File format">Formát souboru</entry>
 	</section>
 
 	<section name="Format">
@@ -628,6 +635,7 @@
 	<entry id="35005" string="Minimum bitrate:">Minimální Bitrate:</entry>
 	<entry id="35006" string="Average bitrate:">Průměrná Bitrate:</entry>
 	<entry id="35007" string="Maximum bitrate:">Maximální Bitrate:</entry>
+	<entry id="35008" string="File extension">Přípona souboru</entry>
       </section>
 
       <section name="WMA">
@@ -786,6 +794,10 @@
 	  <entry id="53310" string="Audio source webpage">Audio zdroje web stránky</entry>
 	  <entry id="53311" string="Copyright information">Copyright informace</entry>
 	  <entry id="53312" string="Commercial information">Obchodní informace</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
 	</section>
       </section>
     </section>

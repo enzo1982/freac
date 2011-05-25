@@ -22,6 +22,7 @@
     <entry id="304" string="Genre">Genre</entry>
     <entry id="305" string="Comment">Kommentar</entry>
     <entry id="306" string="Year">Jahr</entry>
+    <entry id="307" string="Disc">Disk</entry>
     <entry id="350" string="unknown artist">unbekannter Künstler</entry>
     <entry id="351" string="unknown title">unbekannter Titel</entry>
     <entry id="352" string="unknown album">unbekanntes Album</entry>
@@ -69,6 +70,8 @@
 	<entry id="1300" string="General settings...">Allgemeine Einstellungen...</entry>
 	<entry id="1301" string="Configure selected encoder...">Ausgewählten Kodierer konfigurieren...</entry>
 	<entry id="1302" string="Active CD-ROM drive">Aktives CD-ROM-Laufwerk</entry>
+	<entry id="1303" string="Active configuration">Aktive Konfiguration</entry>
+	<entry id="1304" string="Default configuration">Standardkonfiguration</entry>
       </section>
 
       <section name="Encode">
@@ -222,6 +225,8 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Wählen sie den Eintrag, der am besten zu ihrer CD passt:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Möchten Sie diese Abfrage später erneut durchführen?</entry>
 	<entry id="4110" string="none">keine</entry>
+	<entry id="4111" string="Preview">Vorschau</entry>
+	<entry id="4112" string="loading preview...">lade Vorschau...</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Fehler beim Verbinden mit dem freedb-Server.</entry>
@@ -282,6 +287,10 @@
       <entry id="5016" string="Delete">Löschen</entry>
       <entry id="5017" string="Command line arguments:">Kommandozeilenparameter:</entry>
       <entry id="5018" string="Resulting arguments string:">Resultierender Parameterstring:</entry>
+      <entry id="5019" string="Default configuration">Standardkonfiguration</entry>
+      <entry id="5020" string="New configuration">Neue Konfiguration</entry>
+      <entry id="5021" string="Ripper">Ripper</entry>
+      <entry id="5022" string="Settings">Einstellungen</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Kodierer konfigurieren</entry>
@@ -612,6 +621,7 @@
 	  <entry id="34105" string="Stereo mode">Stereomodus</entry>
 	  <entry id="34106" string="Joint Stereo">Joint-Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Adaptives Joint-Stereo</entry>
+	  <entry id="34108" string="File format">Dateiformat</entry>
 	</section>
 
 	<section name="Format">
@@ -647,6 +657,7 @@
 	<entry id="35005" string="Minimum bitrate:">Minimale Bitrate:</entry>
 	<entry id="35006" string="Average bitrate:">Durchschnittliche Bitrate:</entry>
 	<entry id="35007" string="Maximum bitrate:">Maximale Bitrate:</entry>
+	<entry id="35008" string="File extension">Dateiendung</entry>
       </section>
 
       <section name="WMA">
@@ -750,6 +761,8 @@
 	  <entry id="52104" string="Select the folder to save downloaded video files to:">Wählen Sie einen Ordner für heruntergeladene Videodateien:</entry>
 	  <entry id="52105" string="Downloads">Downloads</entry>
 	  <entry id="52106" string="Maximum number of simultaneous downloads:">Maximale Anzahl gleichzeitiger Downloads:</entry>
+	  <entry id="52107" string="Output format:">Ausgabeformat:</entry>
+	  <entry id="52108" string="keep original format">ursprüngliches Format beibehalten</entry>
 	</section>
 
 	<section name="Errors">
@@ -810,6 +823,11 @@
 	  <entry id="53310" string="Audio source webpage">Audioquelle</entry>
 	  <entry id="53311" string="Copyright information">Copyright-Informationen</entry>
 	  <entry id="53312" string="Commercial information">Verkaufsinformationen</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
+	  <entry id="53401" string="Unable to update tag: %1&#10;&#10;Error: %2">Kann Tag nicht aktualisieren: %1&#10;&#10;Fehler: %2</entry>
 	</section>
       </section>
     </section>

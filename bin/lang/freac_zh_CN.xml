@@ -212,6 +212,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">请选择最适合您 CD 的项目：</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">您想要稍后再执行一次本查询吗?</entry>
 	<entry id="4110" string="none">无</entry>
+	<entry id="4111" string="Preview">预览</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错.</entry>
@@ -547,6 +548,7 @@
 	  <entry id="34105" string="Stereo mode">立体声模式</entry>
 	  <entry id="34106" string="Joint Stereo">混合立体声</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">兼容格式的混合立体声</entry>
+	  <entry id="34108" string="File format">文件格式</entry>
 	</section>
 
 	<section name="Format">
@@ -622,6 +624,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
+	</section>
       </section>
     </section>
   </data>

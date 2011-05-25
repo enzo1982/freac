@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,12 +14,18 @@
 #include <smooth.h>
 #include "bonkenc.h"
 
+#ifdef __WIN32__
+#	define DLLEXPORT __declspec(dllexport)
+#else
+#	define DLLEXPORT
+#endif
+
 using namespace smooth;
 using namespace smooth::GUI;
 
 extern "C"
 {
-	Int __declspec (dllexport) StartConsole(const Array<String> &);
+	Int DLLEXPORT StartConsole(const Array<String> &);
 }
 
 namespace BonkEnc

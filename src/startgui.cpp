@@ -42,6 +42,8 @@
 #include <dialogs/cddb/managequeries.h>
 #include <dialogs/cddb/managesubmits.h>
 
+using namespace smooth::Input;
+
 Int StartGUI(const Array<String> &args)
 {
 	BonkEnc::BonkEncGUI	*app = BonkEnc::BonkEncGUI::Get();
@@ -74,6 +76,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	dontUpdateInfo = False;
 
+	clicked_configuration = -1;
 	clicked_drive = -1;
 	clicked_encoder = -1;
 
@@ -112,25 +115,31 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, wndSize.cx);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, wndSize.cy);
 
-	mainWnd			= new GUI::Window(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version), wndPos, wndSize);
+	mainWnd			= new Window(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version), wndPos, wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
 	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2011 Robert Kausch"));
+
 	menu_file		= new PopupMenu();
-	menu_options		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
-	menu_encode		= new PopupMenu();
-	menu_drives		= new PopupMenu();
 	menu_files		= new PopupMenu();
-	menu_seldrive		= new PopupMenu();
+	menu_drives		= new PopupMenu();
+
 	menu_database		= new PopupMenu();
 	menu_database_query	= new PopupMenu();
-	menu_help		= new PopupMenu();
+
+	menu_options		= new PopupMenu();
+	menu_configurations	= new PopupMenu();
+	menu_seldrive		= new PopupMenu();
+
+	menu_encode		= new PopupMenu();
 	menu_encoders		= new PopupMenu();
 	menu_encoder_options	= new PopupMenu();
+
+	menu_help		= new PopupMenu();
 
 	hyperlink		= new Hyperlink(String(BonkEnc::website).Replace("http://", NIL).Replace("/", NIL), NIL, BonkEnc::website, Point(91, -22));
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
@@ -227,16 +236,21 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(hyperlink);
 
 	DeleteObject(menu_file);
-	DeleteObject(menu_options);
 	DeleteObject(menu_addsubmenu);
-	DeleteObject(menu_encode);
-	DeleteObject(menu_drives);
 	DeleteObject(menu_files);
-	DeleteObject(menu_seldrive);
-	DeleteObject(menu_encoders);
-	DeleteObject(menu_encoder_options);
+	DeleteObject(menu_drives);
+
 	DeleteObject(menu_database);
 	DeleteObject(menu_database_query);
+
+	DeleteObject(menu_options);
+	DeleteObject(menu_configurations);
+	DeleteObject(menu_seldrive);
+
+	DeleteObject(menu_encode);
+	DeleteObject(menu_encoders);
+	DeleteObject(menu_encoder_options);
+
 	DeleteObject(menu_help);
 }
 
@@ -485,18 +499,22 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	if (!currentConfig->CanChangeConfig()) return;
 
 	BoCA::Config	*config = BoCA::Config::Get();
-	ConfigDialog	*dlg = new ConfigDialog();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	dlg->ShowDialog();
+	ConfigDialog	*dialog	= new ConfigDialog();
 
-	DeleteObject(dlg);
+	dialog->ShowDialog();
 
-	if (config->languageChanged)
+	DeleteObject(dialog);
+
+	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
 	{
-		SetLanguage();
-
-		config->languageChanged = false;
+		if (config->GetNthConfigurationName(i) == config->GetConfigurationName()) clicked_configuration = i;
 	}
+
+	if (i18n->GetActiveLanguageID() != config->GetStringValue(Config::CategorySettingsID,
+								  Config::SettingsLanguageID,
+								  Config::SettingsLanguageDefault)) SetLanguage();
 
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Emit();
 
@@ -509,6 +527,29 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	config->SaveSettings();
 }
 
+Void BonkEnc::BonkEncGUI::OnSelectConfiguration()
+{
+	if (!currentConfig->CanChangeConfig()) return;
+
+	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	config->SetActiveConfiguration(config->GetNthConfigurationName(clicked_configuration));
+
+	if (i18n->GetActiveLanguageID() != config->GetStringValue(Config::CategorySettingsID,
+								  Config::SettingsLanguageID,
+								  Config::SettingsLanguageDefault)) SetLanguage();
+
+	BoCA::Settings::Get()->onChangeConfigurationSettings.Emit();
+
+	tab_layer_joblist->UpdateEncoderText();
+	tab_layer_joblist->UpdateOutputDir();
+
+	CheckBox::internalCheckValues.Emit();
+	ToggleUseInputDirectory();
+
+	config->SaveSettings();
+}
 
 Void BonkEnc::BonkEncGUI::ReadCD()
 {
@@ -778,16 +819,21 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_iconbar->Hide();
 
 	menu_file->RemoveAllEntries();
-	menu_options->RemoveAllEntries();
-	menu_drives->RemoveAllEntries();
-	menu_files->RemoveAllEntries();
-	menu_seldrive->RemoveAllEntries();
 	menu_addsubmenu->RemoveAllEntries();
+	menu_files->RemoveAllEntries();
+	menu_drives->RemoveAllEntries();
+
+	menu_database->RemoveAllEntries();
+	menu_database_query->RemoveAllEntries();
+
+	menu_options->RemoveAllEntries();
+	menu_configurations->RemoveAllEntries();
+	menu_seldrive->RemoveAllEntries();
+
 	menu_encode->RemoveAllEntries();
 	menu_encoders->RemoveAllEntries();
 	menu_encoder_options->RemoveAllEntries();
-	menu_database->RemoveAllEntries();
-	menu_database_query->RemoveAllEntries();
+
 	menu_help->RemoveAllEntries();
 
 	MenuEntry	*entry = NIL;
@@ -812,11 +858,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("freac.pci:36"));
 	entry->onAction.Connect(&BonkEncGUI::Close, this);
-	entry->SetShortcut(SC_ALT, SK_F4, mainWnd);
+	entry->SetShortcut(SC_ALT, Keyboard::KeyF4, mainWnd);
 
 	entry = menu_addsubmenu->AddEntry(String(i18n->TranslateString("Audio file(s)")).Append("..."), ImageLoader::Load("freac.pci:22"));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
-	entry->SetShortcut(SC_CTRL, 'A', mainWnd);
+	entry->SetShortcut(SC_CTRL, 'F', mainWnd);
 
 	if (config->cdrip_numdrives >= 1)
 	{
@@ -848,6 +894,28 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
 
+	i18n->SetContext("Menu::Database");
+
+	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("freac.pci:26"));
+	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
+	entry->SetShortcut(SC_CTRL, 'Q', mainWnd);
+	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load("freac.pci:27"));
+	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
+	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
+	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB queries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchQueries, this);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
+	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
+	menu_database->AddEntry();
+	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
+
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("freac.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
+
 	i18n->SetContext("Menu::Options");
 
 	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("freac.pci:28"));
@@ -857,6 +925,19 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load("freac.pci:29"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
+
+	if (config->GetNOfConfigurations() > 1)
+	{
+		for (Int i = 0; i < config->GetNOfConfigurations(); i++)
+		{
+			menu_configurations->AddEntry(config->GetNthConfigurationName(i) == "default" ? i18n->TranslateString("Default configuration") : config->GetNthConfigurationName(i), NIL, NIL, NIL, &clicked_configuration, i)->onAction.Connect(&BonkEncGUI::OnSelectConfiguration, this);
+
+			if (config->GetNthConfigurationName(i) == config->GetConfigurationName()) clicked_configuration = i;
+		}
+
+		menu_options->AddEntry();
+		menu_options->AddEntry(i18n->TranslateString("Active configuration"), NIL, menu_configurations);
+	}
 
 	if (config->cdrip_numdrives > 1)
 	{
@@ -914,37 +995,15 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	ToggleUseInputDirectory();
 
-	i18n->SetContext("Menu::Database");
-
-	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("freac.pci:26"));
-	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
-	entry->SetShortcut(SC_CTRL, 'Q', mainWnd);
-	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load("freac.pci:27"));
-	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
-	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
-	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
-	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
-	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB queries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchQueries, this);
-	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
-	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
-	menu_database->AddEntry();
-	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
-
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("freac.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
-
 	i18n->SetContext("Menu::Help");
 
 	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."), ImageLoader::Load("freac.pci:34"));
 	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
-	entry->SetShortcut(0, SK_F1, mainWnd);
+	entry->SetShortcut(0, Keyboard::KeyF1, mainWnd);
 	menu_help->AddEntry();
 	entry = menu_help->AddEntry(String(i18n->TranslateString("Show Tip of the Day")).Append("..."));
 	entry->onAction.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
-	entry->SetShortcut(0, SK_F10, mainWnd);
+	entry->SetShortcut(0, Keyboard::KeyF10, mainWnd);
 
 	if (currentConfig->enable_eUpdate)
 	{
@@ -1007,7 +1066,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:7"));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load("freac.pci:7"), config->GetNOfConfigurations() > 1 ? menu_configurations : NIL);
 	entry->onAction.Connect(&BonkEncGUI::ConfigureSettings, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure general settings"));
 

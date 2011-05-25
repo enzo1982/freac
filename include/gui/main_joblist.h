@@ -14,7 +14,6 @@
 namespace BonkEnc
 {
 	class JobList;
-	class Playback;
 };
 
 #include <bonkenc.h>
@@ -110,7 +109,6 @@ namespace BonkEnc
 			PopupMenu		*menu_trackmenu;
 
 			JobList			*joblist;
-			Playback		*player;
 
 			Bool			 dontUpdateInfo;
 

@@ -212,6 +212,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Виберіть найбільш підходящий список для CD:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Чи хочете ви зробити даний запит пізніше?</entry>
 	<entry id="4110" string="none">немає</entry>
+	<entry id="4111" string="Preview">Попередній перегляд</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Помилка при спробі з`єднання з freedb сервером.</entry>
@@ -547,6 +548,7 @@
 	  <entry id="34105" string="Stereo mode">Стерео режим</entry>
 	  <entry id="34106" string="Joint Stereo">Joint стерео</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Адаптоване Joint Stereo</entry>
+	  <entry id="34108" string="File format">Файловий формат</entry>
 	</section>
 
 	<section name="Format">
@@ -622,6 +624,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Не можу відкрити файл %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

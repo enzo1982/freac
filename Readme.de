@@ -14,15 +14,16 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (April 2011)
+	Version 1.1 CVS (Mai 2011)
 
 		- Projekt umbenannt in fre:ac - free audio converter
-		- Auf Linux, Mac OS X, Solaris und FreeBSD portiert
+		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
 		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Vietnamesisch, Hebräisch, Arabisch, Katalanisch, Valencianisch und Galizisch hinzugefügt
 		- Deutsche, italienische, russische, portugiesische, tschechische und griechische Anleitungen hinzugefügt
 		- Mehrere Übersetzungen für das Installationsprogramm hinzugefügt
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
 		- Neuen Konfigurationsdialog implementiert
+		- Unterstützung für mehrere Konfigurationen hinzugefügt
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
 		- Einfachen Tag-Editor hinzugefügt
@@ -40,17 +41,21 @@ Geschichte
 		- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
 		- Unterstützung für MP3-Dekodierung ohne Unterbrechungen hinzugefügt
 		- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO-Chunk)
+		- Unterstützung für Ogg FLAC-Dateien hinzugefügt
 		- Unterstützung für Wildcards in BEcmd-Parametern hinzugefügt
 		- Standardausgabeverzeichnis auf Ordner "Eigene Musik" geändert
+		- Vorlage <disc> hinzugefügt
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Vorlage <filetype> hinzugefügt
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
+		- Vorschau zum CDDB-Trefferauswahldialog hinzugefügt
 		- Kontextmenü für Texteingabefelder hinzugefügt
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt
 		- Konfigurationsoption für Geschwindigkeit beim Rippen hinzugefügt
 		- Konfigurationsoption für Offset beim Rippen hinzugefügt
-		- Unterstützung dür das Öffnen von Cuesheets hinzugefügt
+		- Unterstützung für das Öffnen von Cuesheets hinzugefügt
+		- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
 		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
 		- Diverse weitere Geschwindigkeitsverbesserungen
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
@@ -83,8 +88,8 @@ Geschichte
 		- FLAC auf Version 1.2.1 aktualisiert
 		- FAAC auf Version 1.28 aktualisiert
 		- FAAD2 suf Version 2.7 aktualisiert
-		- LAME suf Version 3.98.4 aktualisiert
-		- Ogg Vorbis auf aoTuV Beta 6.02 aktualisiert
+		- LAME suf Version 3.99 Beta 0 aktualisiert
+		- Ogg Vorbis auf aoTuV Beta 6.03 aktualisiert
 		- Ogg-Bibliothek auf Version 1.2.2 aktualisiert
 		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0
@@ -93,7 +98,7 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP/2003/Vista/7, Windows 95/98/SE/ME, Linux (z.B. Ubuntu 11.04), FreeBSD 8.2 oder Mac OS X 10.6
+	- Windows NT/2000/XP/2003/Vista/7, Linux (z.B. Ubuntu 11.04), Mac OS X 10.6, Solaris 11 Express, FreeBSD 8.2, OpenBSD 4.8 oder NetBSD 5.1
 	- Pentium 4 Prozessor, 128 MB RAM, 50 MB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
@@ -115,15 +120,7 @@ Voraussetzungen
 
 			Linux:
 
-				- libasound2
-
-			Linux und FreeBSD:
-
-				- GTK, libcdio, cdparanoia
-
-			Mac OS X:
-
-				- libcdio
+				- GTK+, libasound2, libcdio
 
 			Solaris:
 
@@ -164,7 +161,7 @@ Bekannte Probleme
 
 	Mac OS X-spezifische Probleme:
 
-		- Datei- und Ordnerauswahlfenster erscheinen beim ersten Mal hinter dem Hauptfenster
+		- Datei- und Ordnerauswahldialoge erscheinen beim ersten Mal hinter dem Hauptfenster
 
 		- In Nachrichtenfenstern werden keine Bilder dargestellt
 
@@ -173,10 +170,6 @@ Bekannte Probleme
 	Solaris-spezifische Probleme:
 
 		- Rippen von Audio-CDs funktioniert nicht
-
-	X11-spezifische Probleme:
-
-		- Modale Fenster funktionieren nicht korrekt
 
 	Linux- und Unix-spezifische probleme:
 

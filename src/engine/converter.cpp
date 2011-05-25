@@ -17,6 +17,7 @@
 #include <cuesheet.h>
 #include <playlist.h>
 #include <joblist.h>
+#include <playback.h>
 #include <utilities.h>
 
 using namespace smooth::IO;
@@ -47,15 +48,13 @@ Void BonkEnc::Converter::Convert(JobList *iJoblist, Bool useThread)
 {
 	if (encoding) return;
 
-/* ToDo: Find a way to reactivate this check.
- */
-/*	if (Config::Get()->appMain->player->playing)
+	if (Playback::Get()->IsPlaying())
 	{
-		Utilities::ErrorMessage("Cannot start encoding while playing a file!");
+		BoCA::Utilities::ErrorMessage("Cannot start encoding while playing a file!");
 
 		return;
 	}
-*/
+
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	joblist		= iJoblist;
@@ -671,6 +670,7 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title"), True));
 			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"), True));
 			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre"), True));
+			shortOutFileName.Replace("<disc>", String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
 			shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year"), True));
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));

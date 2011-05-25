@@ -22,6 +22,7 @@
     <entry id="304" string="Genre"/>
     <entry id="305" string="Comment"/>
     <entry id="306" string="Year"/>
+    <entry id="307" string="Disc"/>
     <entry id="350" string="unknown artist"/>
     <entry id="351" string="unknown title"/>
     <entry id="352" string="unknown album"/>
@@ -69,6 +70,8 @@
 	<entry id="1300" string="General settings..."/>
 	<entry id="1301" string="Configure selected encoder..."/>
 	<entry id="1302" string="Active CD-ROM drive"/>
+	<entry id="1303" string="Active configuration"/>
+	<entry id="1304" string="Default configuration"/>
       </section>
 
       <section name="Encode">
@@ -222,6 +225,8 @@
 	<entry id="4108" string="Select the entry that best fits your CD:"/>
 	<entry id="4109" string="Would you like to perform this query again later?"/>
 	<entry id="4110" string="none"/>
+	<entry id="4111" string="Preview"/>
+	<entry id="4112" string="loading preview..."/>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server."/>
@@ -282,6 +287,10 @@
       <entry id="5016" string="Delete"/>
       <entry id="5017" string="Command line arguments:"/>
       <entry id="5018" string="Resulting arguments string:"/>
+      <entry id="5019" string="Default configuration"/>
+      <entry id="5020" string="New configuration"/>
+      <entry id="5021" string="Ripper"/>
+      <entry id="5022" string="Settings"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder"/>
@@ -612,6 +621,7 @@
 	  <entry id="34105" string="Stereo mode"/>
 	  <entry id="34106" string="Joint Stereo"/>
 	  <entry id="34107" string="Adaptive Joint Stereo"/>
+	  <entry id="34108" string="File format"/>
 	</section>
 
 	<section name="Format">
@@ -647,6 +657,7 @@
 	<entry id="35005" string="Minimum bitrate:"/>
 	<entry id="35006" string="Average bitrate:"/>
 	<entry id="35007" string="Maximum bitrate:"/>
+	<entry id="35008" string="File extension"/>
       </section>
 
       <section name="WMA">
@@ -750,6 +761,8 @@
 	  <entry id="52104" string="Select the folder to save downloaded video files to:"/>
 	  <entry id="52105" string="Downloads"/>
 	  <entry id="52106" string="Maximum number of simultaneous downloads:"/>
+	  <entry id="52107" string="Output format:"/>
+	  <entry id="52108" string="keep original format"/>
 	</section>
 
 	<section name="Errors">
@@ -810,6 +823,11 @@
 	  <entry id="53310" string="Audio source webpage"/>
 	  <entry id="53311" string="Copyright information"/>
 	  <entry id="53312" string="Commercial information"/>
+	</section>
+
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2"/>
+	  <entry id="53401" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
 	</section>
       </section>
     </section>

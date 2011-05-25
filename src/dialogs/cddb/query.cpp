@@ -27,7 +27,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 
 	allowAddToBatch = False;
 
-	mainWnd			= new GUI::Window(i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
+	mainWnd			= new Window(i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -62,15 +62,11 @@ const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 {
 	mainWnd->Show();
 
-	queryThread = new Thread();
-	queryThread->threadMain.Connect(&cddbQueryDlg::QueryThread, this);
-	queryThread->Start();
+	queryThread = NonBlocking0<>(&cddbQueryDlg::QueryThread, this).Call();
 
 	mainWnd->Stay();
 
 	queryThread->Stop();
-
-	DeleteObject(queryThread);
 
 	return error;
 }
@@ -88,7 +84,7 @@ const BonkEnc::CDDBInfo &BonkEnc::cddbQueryDlg::QueryCDDB(Bool iAllowAddToBatch)
 
 	ShowDialog();
 
-	return rCDDBInfo;
+	return cddbInfo;
 }
 
 Void BonkEnc::cddbQueryDlg::Cancel()
@@ -98,7 +94,7 @@ Void BonkEnc::cddbQueryDlg::Cancel()
 	mainWnd->Close();
 }
 
-Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
+Int BonkEnc::cddbQueryDlg::QueryThread()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -177,11 +173,11 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	{
 		if (result == QUERY_RESULT_FUZZY) fuzzy = True;
 
-		cddbMultiMatchDlg	*dlg	= new cddbMultiMatchDlg(fuzzy);
+		cddbMultiMatchDlg	*dlg	= new cddbMultiMatchDlg(cddb, fuzzy);
 
-		for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
+		for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i), cddb.GetNthDiscID(i));
 
-		if (fuzzy) dlg->AddEntry(i18n->TranslateString("none"), NIL);
+		if (fuzzy) dlg->AddEntry(i18n->TranslateString("none"), NIL, 0);
 
 		if (dlg->ShowDialog() == Success())
 		{
@@ -203,9 +199,9 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	{
 		prog_status->SetValue(60);
 
-		if (!cddb.Read(category, discID, rCDDBInfo)) readError = True;
+		if (!cddb.Read(category, discID, cddbInfo)) readError = True;
 
-		if (fuzzy) rCDDBInfo.revision = -1;
+		if (fuzzy) cddbInfo.revision = -1;
 	}
 
 	if (readError || result == QUERY_RESULT_ERROR)

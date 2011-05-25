@@ -393,6 +393,7 @@
 	  <entry id="34102" string="Custom settings">קביעת הגדרות ידנית</entry>
 	  <entry id="34105" string="Stereo mode">מצב Stereo</entry>
 	  <entry id="34106" string="Joint Stereo">ערוצי Stereo ממוזגים</entry>
+	  <entry id="34108" string="File format">פורמט קובץ</entry>
 	</section>
 
 	<section name="Format"/>
@@ -440,6 +441,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

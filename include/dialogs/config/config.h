@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,13 +19,16 @@ namespace BonkEnc
 	class ConfigDialog : public Dialog
 	{
 		private:
+			String			 initialConfig;
+
 			Array<AS::Component *>	 components;
 			Array<ConfigEntry *>	 entries;
 			Array<ConfigLayer *>	 layers;
+			Array<ConfigLayer *>	 createdLayers;
 
 			ConfigLayer		*selectedLayer;
 
-			GUI::Window		*mainWnd;
+			Window			*mainWnd;
 			Titlebar		*mainWnd_titlebar;
 
 			Button			*btn_cancel;
@@ -35,12 +38,16 @@ namespace BonkEnc
 
 			Text			*text_config;
 			ComboBox		*combo_config;
+			EditBox			*edit_config;
 			Button			*button_config_new;
 			Button			*button_config_delete;
 			Divider			*divider_top;
 
 			ListBox			*list_layers;
 			Tree			*tree_bonkenc;
+			Tree			*tree_ripper;
+			Tree			*tree_interface;
+
 			Tree			*tree_components;
 			Tree			*tree_encoders;
 			Tree			*tree_decoders;
@@ -48,11 +55,23 @@ namespace BonkEnc
 			Tree			*tree_dsp;
 			Tree			*tree_extension;
 			Tree			*tree_other;
+
+			Void			 AddLayers();
+			Void			 DeleteLayers();
 		slots:
 			Void			 OK();
 			Void			 Cancel();
 
 			Void			 OnChangeSize(const Size &);
+
+			Void			 OnSelectConfiguration();
+			Void			 OnSelectConfigurationByName();
+
+			Void			 OnEditConfigurationName(const String &);
+
+			Void			 OnCreateConfig();
+			Void			 OnDeleteConfig();
+
 			Void			 OnSelectEntry(ConfigLayer *);
 
 			Void			 OnChangeEncoderSettings(const String &);

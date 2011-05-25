@@ -3,7 +3,7 @@
   <info>
     <property name="program">freac</property>
     <property name="version">1.1</property>
-    <property name="language">Serbian (Latin letter)/ Srpski (Latinično pismo)</property>
+    <property name="language">Serbian (Latin letter) / Srpski (Latinično pismo)</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
@@ -212,6 +212,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Izaberite podatak koji najviše odgovara Vašem CD-u:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Želite li da kasnije ponovite ovaj upit?</entry>
 	<entry id="4110" string="none">nijedan</entry>
+	<entry id="4111" string="Preview">Pregled</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Pojavila se greška pri pokušaju povezivanja sa freedb serverom.</entry>
@@ -367,7 +368,7 @@
       <entry id="7001" string="Currently encoding">Trenutno se enkoduje</entry>
       <entry id="7002" string="Cannot change settings while encoding!">Ne možete menjati podešavanja za vreme enkodovanja!</entry>
       <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Nije moguće učitati ASPI drajvere! Ripovanje CD-a otkazano!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nemoguće otvoriti fajl: %1</entry>
+      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nemoguće otvoriti fajl: %1&#10;&#10;%2</entry>
       <entry id="7005" string="Cannot play a file while encoding!">Nije moguće pokretanje fajla za vreme enkodovanja!</entry>
       <entry id="7006" string="Cannot start encoding while playing a file!">Nije moguće pokrenuti enkodovanje za vreme pokretanja fajla!</entry>
       <entry id="7007" string="Delete original files after encoding">Obriši izvorni fajl nakon enkodovanja</entry>
@@ -436,7 +437,7 @@
 	<entry id="31003" string="Downsampling ratio">Srazmera umanjenog semplovanja</entry>
 	<entry id="31004" string="Predictor size">Predviđač veličina</entry>
 	<entry id="31005" string="Enable lossless encoding">Omogući enkodovanje bez gubitaka</entry>
-	<entry id="31006" string="Enable Joint Stereo">Omogući zbijeni (tzv. Joint) stereo</entry>
+	<entry id="31006" string="Enable Joint Stereo">Omogući &quot;zbijeni&quot; stereo</entry>
       </section>
 
       <section name="LAME">
@@ -454,9 +455,9 @@
 	  <entry id="32105" string="Extreme, Fast">Krajnje, Brzo</entry>
 	  <entry id="32106" string="Bitrate">Stopa bitova</entry>
 	  <entry id="32107" string="Quality">Kvalitet</entry>
-	  <entry id="32108" string="Set bitrate:">Stopa bitova:</entry>
-	  <entry id="32109" string="Set ratio:">Podešenje srazmere (tzv. Racio):</entry>
-	  <entry id="32110" string="Set quality:">Podešenje kvaliteta:</entry>
+	  <entry id="32108" string="Set bitrate:">Stopa:</entry>
+	  <entry id="32109" string="Set ratio:">Srazmera:</entry>
+	  <entry id="32110" string="Set quality:">Kvalitet:</entry>
 	  <entry id="32111" string="worse">lošije</entry>
 	  <entry id="32112" string="better">bolje</entry>
 	  <entry id="32113" string="VBR mode">VBR režim</entry>
@@ -475,11 +476,11 @@
 	  <entry id="32206" string="Stereo mode">Stereo režim</entry>
 	  <entry id="32207" string="Auto">Samopodešavanje</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
-	  <entry id="32209" string="Joint Stereo">Zbijeni (tzv. Joint) stereo</entry>
-	  <entry id="32210" string="Force Joint Stereo">Forsiraj zbijeni (tzv. Joint)i stereo</entry>
+	  <entry id="32209" string="Joint Stereo">&quot;Zbijeni&quot; stereo</entry>
+	  <entry id="32210" string="Force Joint Stereo">Forsiraj &quot;zbijeni&quot; stereo</entry>
 	  <entry id="32211" string="VBR bitrate range">VBR opseg stope bitove</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Podesi minimalnu VBR stopu bitova:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Podesi maksimalnu VBR stopu bitova:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate:">Podesi min. VBR stopu:</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate:">Podesi maks. VBR stopu:</entry>
 	</section>
 
 	<section name="Expert">
@@ -497,11 +498,11 @@
 	  <entry id="32401" string="auto">samo</entry>
 	  <entry id="32402" string="no resampling">bez re-semplovanja</entry>
 	  <entry id="32403" string="Highpass filter">Filter visokih tonova</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Podesi visokoprolaznu (Highpass) frekvenciju (Hz):</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Podesi visokoprolaznu (Highpass) širinu (Hz):</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz):">Visokoprolazna frekvencija (Hz):</entry>
+	  <entry id="32405" string="Set Highpass width (Hz):">Visokoprolazna širina (Hz):</entry>
 	  <entry id="32406" string="Lowpass filter">Filter niskih tonova</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Podesi niskoprolaznu (Lowpass) frekvenciju (Hz):</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Podesi niskoprolaznu (Lowpass) širinu (Hz):</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz):">Niskoprolazna frekvencija (Hz):</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz):">Niskoprolazna širina (Hz):</entry>
 	  <entry id="32409" string="Misc settings">Razna podešavanja</entry>
 	  <entry id="32410" string="Disable all filtering">Onemogući sve filtere</entry>
 	</section>
@@ -514,9 +515,9 @@
 	<section name="Quality">
 	  <entry id="33100" string="Bitrate / Quality">Stopa bitova / Kvalitet</entry>
 	  <entry id="33101" string="Bitrate per channel:">Stopa bitova po kanalu:</entry>
-	  <entry id="33102" string="Set quality:">Podešenje kvaliteta:</entry>
+	  <entry id="33102" string="Set quality:">Kvalitet:</entry>
 	  <entry id="33103" string="Stereo mode">Stereo režim</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Dozvoli zbijeni (tzv. Joint) stereo</entry>
+	  <entry id="33104" string="Allow Joint Stereo">Dozvoli &quot;zbijeni&quot; stereo</entry>
 	  <entry id="33105" string="Temporal Noise Shaping">Privremeno oblikovanje šumova</entry>
 	  <entry id="33106" string="Use Temporal Noise Shaping">Koristi privremeno oblikovanje šumova</entry>
 	  <entry id="33107" string="Maximum bandwidth">Maksimalna širina protoka</entry>
@@ -545,8 +546,9 @@
 	  <entry id="34103" string="Fastest encoding">Najbrže enkodovanje</entry>
 	  <entry id="34104" string="Best compression">Najbolja kompresija</entry>
 	  <entry id="34105" string="Stereo mode">Stereo režim</entry>
-	  <entry id="34106" string="Joint Stereo">Zbijeni (tzv. Joint) stereo</entry>
-	  <entry id="34107" string="Adaptive Joint Stereo">Prilagođeni zbijeni (tzv. Joint) stereo</entry>
+	  <entry id="34106" string="Joint Stereo">&quot;Zbijeni&quot; stereo</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Prilagođeni &quot;zbijeni&quot; stereo</entry>
+	  <entry id="34108" string="File format">Format fajla</entry>
 	</section>
 
 	<section name="Format">
@@ -622,6 +624,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nemoguće otvoriti fajl: %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

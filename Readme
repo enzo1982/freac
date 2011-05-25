@@ -14,15 +14,16 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (April 2011)
+	Version 1.1 CVS (May 2011)
 
 		- renamed project to fre:ac - free audio converter
-		- ported to Linux, Mac OS X, Solaris and FreeBSD
+		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
 		- added Estonian, Croatian, Portuguese, Vietnamese, Hebrew, Arabic, Catalan, Valencian and Galician language support
 		- added German, Italian, Russian, Portuguese, Czech and Greek user guides
 		- added several translations for the installer
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
+		- added support for multiple configurations
 		- redesigned progress display area
 		- completely reworked LAME configuration dialog
 		- added a simple tag editor
@@ -40,17 +41,21 @@ History
 		- added support for MCDI frame in ID3v2 tags
 		- added support for gapless MP3 decoding
 		- added RIFF tagging support (using LIST INFO chunk)
+		- added support for Ogg FLAC files
 		- added support for wildcards in arguments to BEcmd
 		- changed default output directory to "My Music" folder
+		- added <disc> pattern
 		- added <directory> pattern to allow preserving existing directory structures
 		- added <filetype> pattern
 		- added <installdrive> pattern for use in output directory name
+		- added preview to CDDB match selection dialog
 		- added context menu for text edit fields
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
 		- added ripping speed configuration option
 		- added CD read offset configuration option
 		- added support for loading cuesheets
+		- added support for reading and writing Vorbis files with .oga extension
 		- making better use of multi-core CPUs when encoding/decoding
 		- miscellaneous other speed optimizations
 		- the five last used file name patterns are now saved for later use
@@ -83,8 +88,8 @@ History
 		- upgraded FLAC to version 1.2.1
 		- upgraded FAAC to version 1.28
 		- upgraded FAAD2 to version 2.7
-		- upgraded LAME to version 3.98.4
-		- upgraded Ogg Vorbis to aoTuV beta 6.02
+		- upgraded LAME to version 3.99 beta 0
+		- upgraded Ogg Vorbis to aoTuV beta 6.03
 		- upgraded Ogg library to version 1.2.2
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0
@@ -93,7 +98,7 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP/Vista/7, Windows 95/98/SE/ME, Linux (e.g. Ubuntu 11.04), FreeBSD 8.2 or Mac OS 10.6
+	- Windows NT/2000/XP/Vista/7, Linux (e.g. Ubuntu 11.04), Mac OS X 10.6, Solaris 11 Express, FreeBSD 8.2, OpenBSD 4.8 or NetBSD 5.1
 	- Pentium 4 CPU, 128 MB RAM, 50 MB free disk space
 
 	Additional requirements for compiling the sources:
@@ -115,15 +120,7 @@ Requirements
 
 			Linux:
 
-				- libasound2
-
-			Linux and FreeBSD:
-
-				- GTK, libcdio, cdparanoia
-
-			Mac OS X:
-
-				- libcdio
+				- GTK+, libasound2, libcdio
 
 			Solaris:
 
@@ -164,7 +161,7 @@ Known problems
 
 	Mac OS X specific problems:
 
-		- File and directory selection windows initially appear behind the main window
+		- File and directory selection dialogs initially appear behind the main window
 
 		- No icons are displayed in message boxes
 
@@ -173,10 +170,6 @@ Known problems
 	Solaris specific problems:
 
 		- Audio CD ripping does not work
-
-	X11 specific problems:
-
-		- Modal windows do not work correctly
 
 	Linux and Unix specific problems:
 

@@ -212,6 +212,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Sélectionnez l'entrée correspondant le mieux à votre CD :</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Voulez-vous réexécuter cette requête ultérieurement ?</entry>
 	<entry id="4110" string="none">aucun</entry>
+	<entry id="4111" string="Preview">Aperçu</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Une erreur est survenue lors de la tentative de connexion au serveur freedb.</entry>
@@ -547,6 +548,7 @@
 	  <entry id="34105" string="Stereo mode">Mode stéréo</entry>
 	  <entry id="34106" string="Joint Stereo">Stéréo combinée</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
+	  <entry id="34108" string="File format">Format de fichier</entry>
 	</section>
 
 	<section name="Format">
@@ -628,6 +630,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Impossible d'ouvrir le fichier : %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

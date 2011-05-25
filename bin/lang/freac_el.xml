@@ -212,6 +212,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Επιλέξτε την καταγραφή που ταιριάζει στο CD:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Θα θέλατε να επαναλάβετε την ερώτηση αργότερα;</entry>
 	<entry id="4110" string="none">κανένα</entry>
+	<entry id="4111" string="Preview">Προεπισκόπηση</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Σφάλμα κατά την προσπάθεια σύνδεσης με τον freedb server.</entry>
@@ -537,6 +538,7 @@
 	  <entry id="34105" string="Stereo mode">Λειτουργία Stereo</entry>
 	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Προσαρμόσιμο Joint Stereo</entry>
+	  <entry id="34108" string="File format">Μορφή αρχείων</entry>
 	</section>
 
 	<section name="Format">
@@ -601,6 +603,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Αδύνατο το άνοιγμα του αρχείου: %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

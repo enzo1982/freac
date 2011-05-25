@@ -16,6 +16,7 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 	text_progress	= new Text("Progress:", Point(7, 11));
 
 	list_threads	= new ListBox(Point(7, 35), Size(500, 360));
+	list_threads->EnableLocking();
 
 	text_errors	= new Text("Errors / Warnings:", Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);

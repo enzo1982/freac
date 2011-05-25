@@ -20,7 +20,7 @@ namespace BonkEnc
 		private:
 			Divider		*divbar;
 
-			GUI::Window	*mainWnd;
+			Window		*mainWnd;
 			Titlebar	*mainWnd_titlebar;
 
 			GroupBox	*group_charset;

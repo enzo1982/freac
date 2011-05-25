@@ -314,17 +314,6 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				delete in;
 			}
 
-			if ((files.GetNth(i).EndsWith(".mp3") && !boca.ComponentExists("lame-in"))   ||
-			    (files.GetNth(i).EndsWith(".ogg") && !boca.ComponentExists("vorbis-in")) ||
-			    (files.GetNth(i).EndsWith(".cda") && !boca.ComponentExists("cdrip-in")))
-			{
-				Console::OutputString(String("Cannot process file: ").Append(currentFile).Append("\n"));
-
-				broken = true;
-
-				continue;
-			}
-
 			Array<String>	 jobFiles;
 
 			jobFiles.Add(files.GetNth(i));
@@ -351,6 +340,14 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				joblist->RemoveNthTrack(0);
 
 				if (!quiet) Console::OutputString("done.\n");
+			}
+			else
+			{
+				Console::OutputString(String("Could not process file: ").Append(currentFile).Append("\n"));
+
+				broken = true;
+
+				continue;
 			}
 		}
 	}

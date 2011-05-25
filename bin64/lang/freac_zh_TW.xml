@@ -212,6 +212,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">請選擇最合適您專輯之訊息：</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">您想要稍後再執行一次本查詢嗎?</entry>
 	<entry id="4110" string="none">無</entry>
+	<entry id="4111" string="Preview">預覽</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">嘗試連線至 freedb 伺服器時發生錯誤.</entry>
@@ -546,6 +547,7 @@
 	  <entry id="34105" string="Stereo mode">立體聲模式</entry>
 	  <entry id="34106" string="Joint Stereo">複合立體聲</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">相容格式複合立體聲</entry>
+	  <entry id="34108" string="File format">檔案格式</entry>
 	</section>
 
 	<section name="Format">
@@ -610,6 +612,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案： %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

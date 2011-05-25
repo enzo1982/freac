@@ -33,7 +33,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	SetText(i18n->TranslateString("Joblist"));
 
-	player		= new Playback();
+	Playback	*player	= Playback::Get();
 
 	dontUpdateInfo	= False;
 
@@ -498,8 +498,6 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 
 	joblist->RemoveAllTracks();
 
-	delete player;
-
 	DeleteObject(joblist);
 
 	DeleteObject(check_single);
@@ -899,7 +897,9 @@ Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 
 Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 {
-	if (player->playing)
+	Playback	*player = Playback::Get();
+
+	if (player->IsPlaying())
 	{
 		if	(track.GetTrackID()					 == player->player_entry_id) StopPlayback();
 		else if (joblist->GetNthTrack(player->player_entry).GetTrackID() != player->player_entry_id) player->player_entry--;
@@ -932,7 +932,7 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 
 Void BonkEnc::LayerJoblist::OnJoblistRemoveAllTracks()
 {
-	if (player->playing) StopPlayback();
+	if (Playback::Get()->IsPlaying()) StopPlayback();
 
 	/* Clear and deactivate edit boxes.
 	 */
@@ -1285,20 +1285,24 @@ Void BonkEnc::LayerJoblist::ToggleEditPopup()
 
 Void BonkEnc::LayerJoblist::PlaySelectedItem()
 {
-	player->Play(joblist->GetSelectedEntryNumber(), joblist);
+	Playback::Get()->Play(joblist->GetSelectedEntryNumber(), joblist);
 }
 
 Void BonkEnc::LayerJoblist::PauseResumePlayback()
 {
-	if (!player->playing) return;
+	Playback	*player = Playback::Get();
 
-	if (player->paused) player->Resume();
-	else		    player->Pause();
+	if (!player->IsPlaying()) return;
+
+	if (player->IsPaused()) player->Resume();
+	else			player->Pause();
 }
 
 Void BonkEnc::LayerJoblist::StopPlayback()
 {
-	if (!player->playing) return;
+	Playback	*player = Playback::Get();
+
+	if (!player->IsPlaying()) return;
 
 	player->Stop();
 }

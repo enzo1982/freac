@@ -96,7 +96,7 @@ const String	 BonkEnc::Config::SettingsFilenamesReplaceSpacesID		= "FilenamesRep
 const Bool	 BonkEnc::Config::SettingsFilenamesReplaceSpacesDefault		= False;
 
 const String	 BonkEnc::Config::SettingsEncoderID				= "Encoder";
-const String	 BonkEnc::Config::SettingsEncoderDefault			= "wave-out";
+const String	 BonkEnc::Config::SettingsEncoderDefault			= "lame-out";
 
 const String	 BonkEnc::Config::SettingsEncoderOutputDirectoryID		= "EncoderOutDir";
       String	 BonkEnc::Config::SettingsEncoderOutputDirectoryDefault		= NIL;

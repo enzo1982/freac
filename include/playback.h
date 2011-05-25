@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -27,24 +27,29 @@ namespace BonkEnc
 {
 	class Playback
 	{
-		protected:
-			Bool					 stop_playback;
+		private:
+			/* Singleton class, therefore private constructor/destructor
+			 */
+			static Playback				*instance;
 
-			Int					 player_activedrive;
+								 Playback();
+								~Playback();
+
 			OutputComponent				*output;
 
 			JobList					*joblist;
 
-			Int					 PlayThread();
-		public:
 			Bool					 playing;
 			Bool					 paused;
 
+			Bool					 stop_playback;
+
+			Int					 player_activedrive;
+
+			Int					 PlayThread();
+		public:
 			Int					 player_entry;
 			Int					 player_entry_id;
-
-								 Playback();
-								~Playback();
 
 			Void					 Play(Int, JobList *);
 
@@ -55,6 +60,17 @@ namespace BonkEnc
 			Void					 Next();
 
 			Void					 Stop();
+
+			/* Returns a new or existing instance of Playback
+			 */
+			static Playback				*Get();
+
+			/* Destroys an existing instance of Playback
+			 */
+			static Void				 Free();
+		accessors:
+			Bool					 IsPlaying() const	{ return playing; }
+			Bool					 IsPaused() const	{ return paused; }
 		signals:
 			Signal2<Void, const Track *, Int>	 onPlayTrack;
 			Signal0<Void>				 onFinishTrack;

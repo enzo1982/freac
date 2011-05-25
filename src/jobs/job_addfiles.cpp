@@ -118,6 +118,8 @@ Error BonkEnc::JobAddFiles::Perform()
 				info.artist = elements.GetFirst();
 				info.title  = elements.GetLast();
 			}
+
+			String::ExplodeFinish();
 		}
 
 		track.SetInfo(info);

@@ -213,6 +213,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">この CD に最適な項目を選択：</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">この問い合わせを後で再度実行しますか？</entry>
 	<entry id="4110" string="none">なし</entry>
+	<entry id="4111" string="Preview">プレビュー</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">freedb サーバ接続の試行中に問題が発生しました。</entry>
@@ -548,6 +549,7 @@
 	  <entry id="34105" string="Stereo mode">ステレオ モード</entry>
 	  <entry id="34106" string="Joint Stereo">ジョイント ステレオ</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">適応型ジョイント ステレオ</entry>
+	  <entry id="34108" string="File format">ファイル形式</entry>
 	</section>
 
 	<section name="Format">
@@ -648,6 +650,10 @@
 	  <entry id="53100" string="Basic">基本</entry>
 	  <entry id="53107" string="Add">追加</entry>
 	  <entry id="53108" string="Remove">削除</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
 	</section>
       </section>
     </section>

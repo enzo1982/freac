@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -121,8 +121,8 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			str = in->InputLine();
 			protocol->Write(str);
 
-			if (str.StartsWith("210")) connected = true;
-			else			   delete in;
+			if (str.StartsWith("210") || str.StartsWith("211")) connected = true;
+			else						    delete in;
 
 			break;
 	}

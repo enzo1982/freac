@@ -212,6 +212,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Elektu la enskribon, kiun estas la plej bona por via KD:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Ĉu vi volas poste okazigi tiun pridemandon denove?</entry>
 	<entry id="4110" string="none">neniu</entry>
+	<entry id="4111" string="Preview">Antaŭmontro</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Okazis erarojn dum la konekto kun la freedb-servilo.</entry>
@@ -538,6 +539,7 @@
 	  <entry id="34105" string="Stereo mode">Stereomoduso</entry>
 	  <entry id="34106" string="Joint Stereo">Stereokunigi</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Adaptebla Stereokunigo</entry>
+	  <entry id="34108" string="File format">Dosierformato</entry>
 	</section>
 
 	<section name="Format">
@@ -602,6 +604,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

@@ -18,6 +18,8 @@
 
 using namespace smooth::IO;
 
+BonkEnc::Playback *BonkEnc::Playback::instance = NIL;
+
 BonkEnc::Playback::Playback()
 {
 	playing = False;
@@ -25,6 +27,26 @@ BonkEnc::Playback::Playback()
 
 BonkEnc::Playback::~Playback()
 {
+}
+
+BonkEnc::Playback *BonkEnc::Playback::Get()
+{
+	if (instance == NIL)
+	{
+		instance = new Playback();
+	}
+
+	return instance;
+}
+
+Void BonkEnc::Playback::Free()
+{
+	if (instance != NIL)
+	{
+		delete instance;
+
+		instance = NIL;
+	}
 }
 
 Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)

@@ -12,6 +12,8 @@
 
 #ifdef __WIN32__
 #	include <windows.h>
+#else
+#	include <unistd.h>
 #endif
 
 BonkEnc::ConfigureLanguage::ConfigureLanguage()
@@ -49,7 +51,11 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 		if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault) == i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
+#ifdef __WIN32__
 	if (File(GUI::Application::GetApplicationDirectory().Append("translator.exe")).Exists())
+#else
+	if (File(GUI::Application::GetApplicationDirectory().Append("translator")).Exists())
+#endif
 	{
 		combo_language->SetWidth(combo_language->GetWidth() - 138);
 
@@ -101,11 +107,17 @@ Void BonkEnc::ConfigureLanguage::SelectLanguage()
 
 Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 {
-#ifdef __WIN32__
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	if (Setup::enableUnicode)	ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
-	else				ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+#ifdef __WIN32__
+	if (Setup::enableUnicode) ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+	else			  ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+#else
+	if (!fork())
+	{
+		execl("/bin/sh", "sh", "-c", (char *) GUI::Application::GetApplicationDirectory().Append("translator \"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
+		exit(0);
+	}
 #endif
 }
 
@@ -114,7 +126,6 @@ Int BonkEnc::ConfigureLanguage::SaveSettings()
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	config->languageChanged	= (config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault) != i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
 
 	return Success();

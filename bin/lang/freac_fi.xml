@@ -213,6 +213,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Valitse levyäsi parhaiten vastaava tulos:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Haluatko suorittaa tämän kysymyksen myöhemmin uudelleen?</entry>
 	<entry id="4110" string="none">ei mitään</entry>
+	<entry id="4111" string="Preview">Ennakkoesitys</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Sattui jokin virhe freedb-palvelimelle yhdistämisessä.</entry>
@@ -551,6 +552,7 @@
 	  <entry id="34105" string="Stereo mode">Stereotila</entry>
 	  <entry id="34106" string="Joint Stereo">Yhteinen Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Mukauta yhteinen Stereo</entry>
+	  <entry id="34108" string="File format">Tiedostomuoto</entry>
 	</section>
 
 	<section name="Format">
@@ -660,6 +662,12 @@
 	<section name="Details"/>
 
 	<section name="Other"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Ei voida avata tiedostoa: %1&#10;&#10;Virhe: %2</entry>
+	</section>
       </section>
     </section>
   </data>

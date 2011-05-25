@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -42,6 +42,8 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(mcdi.GetNthEntryOffset(l) + 150);
 
 	discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
+
+	boca.DeleteComponent(info);
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
@@ -103,6 +105,8 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(mcdi.GetNthEntryOffset(l) + 150);
 
 	discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
+
+	boca.DeleteComponent(info);
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");

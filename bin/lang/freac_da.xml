@@ -212,6 +212,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Vælg den indgang der passer bedst til din CD:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Vil du udføre denne forespørgsel senere?</entry>
 	<entry id="4110" string="none">intet</entry>
+	<entry id="4111" string="Preview">Forpremiere</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">En fejl opstod ved oprettelse af forbindelse til freedb serveren.</entry>
@@ -547,6 +548,7 @@
 	  <entry id="34105" string="Stereo mode">Stereo metode</entry>
 	  <entry id="34106" string="Joint Stereo">Samlet Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Adaptiv Samlet Stereo</entry>
+	  <entry id="34108" string="File format">Fil format</entry>
 	</section>
 
 	<section name="Format">
@@ -622,6 +624,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åbne filen: %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,6 +13,8 @@
 
 #include <bonkenc.h>
 
+using namespace smooth::Threads;
+
 namespace BonkEnc
 {
 	class cddbMultiMatchDlg : public Dialog
@@ -22,24 +24,40 @@ namespace BonkEnc
 			Text		*text_match;
 			ComboBox	*combo_match;
 
+			Text		*text_preview;
+			MultiEdit	*edit_preview;
+			Text		*text_loading_preview;
+
 			Divider		*divbar;
 
-			GUI::Window	*mainWnd;
+			Window		*mainWnd;
 			Titlebar	*mainWnd_titlebar;
 
 			Button		*btn_cancel;
 			Button		*btn_ok;
 
-			Void		 OK();
-			Void		 Cancel();
+			CDDB		&cddb;
+
+			Array<String>	 categories;
+			Array<Int>	 discIDs;
+			Array<CDDBInfo>	 entries;
+
+			Thread		*loadPreviewThread;
+
+			Void		 LoadPreview(Int);
 		public:
-					 cddbMultiMatchDlg(Bool);
+					 cddbMultiMatchDlg(CDDB &, Bool);
 					~cddbMultiMatchDlg();
 
 			const Error	&ShowDialog();
 
-			Int		 AddEntry(const String &, const String &);
+			Int		 AddEntry(const String &, const String &, Int);
 			Int		 GetSelectedEntryNumber();
+		slots:
+			Void		 SelectEntry();
+
+			Void		 OK();
+			Void		 Cancel();
 	};
 };
 

@@ -430,6 +430,7 @@
 	  <entry id="34102" string="Custom settings">사용자 정의</entry>
 	  <entry id="34105" string="Stereo mode">스테레오</entry>
 	  <entry id="34106" string="Joint Stereo">조인트 스테레오</entry>
+	  <entry id="34108" string="File format">파일 포맷</entry>
 	</section>
 
 	<section name="Format">
@@ -475,6 +476,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

@@ -18,7 +18,7 @@ BonkEnc::ChooseCharsetDialog::ChooseCharsetDialog()
 
 	i18n->SetContext("Joblist::Character set");
 
-	mainWnd			= new GUI::Window(i18n->TranslateString("Choose character set"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(315, 128));
+	mainWnd			= new Window(i18n->TranslateString("Choose character set"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(315, 128));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);

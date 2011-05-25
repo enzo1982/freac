@@ -208,6 +208,7 @@
 	<entry id="4108" string="Select the entry that best fits your CD:">Seleccione el registre que coincidix en el teu CD:</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">¿Desija realisar esta consulta un atra vegada mes tart?</entry>
 	<entry id="4110" string="none">cap</entry>
+	<entry id="4111" string="Preview">Vista previa</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ha ocorregut un erro a l'intentar conectar-se en el servidor.</entry>
@@ -540,6 +541,7 @@
 	  <entry id="34105" string="Stereo mode">Modo Estereo</entry>
 	  <entry id="34106" string="Joint Stereo">Conexio en Estereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Estereo adaptable</entry>
+	  <entry id="34108" string="File format">Format d'archiu</entry>
 	</section>
 
 	<section name="Format">
@@ -603,6 +605,12 @@
 	</section>
 
 	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<section name="Errors">
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">No se pot obrir l'archiu: %1&#10;&#10;%2</entry>
+	</section>
       </section>
     </section>
   </data>

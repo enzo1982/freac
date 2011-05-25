@@ -18,17 +18,17 @@ else
 
 ifeq ($(UNAME),Linux)
 	BUILD_LINUX = True
-endif
-
-ifeq ($(UNAME),FreeBSD)
+else ifeq ($(UNAME),FreeBSD)
 	BUILD_FREEBSD = True
-endif
-
-ifeq ($(UNAME),SunOS)
+else ifeq ($(UNAME),OpenBSD)
+	BUILD_OPENBSD = True
+else ifeq ($(UNAME),NetBSD)
+	BUILD_NETBSD = True
+else ifeq ($(UNAME),SunOS)
 	BUILD_SOLARIS = True
-endif
-
-ifeq ($(UNAME),Darwin)
+else ifeq ($(UNAME),Haiku)
+	BUILD_HAIKU = True
+else ifeq ($(UNAME),Darwin)
 	SHARED = .dylib
 
 	BUILD_OSX = True
