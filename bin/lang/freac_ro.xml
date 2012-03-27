@@ -1,14 +1,14 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
  <info>
   <property name="program">freac</property>
-  <property name="version">1.0</property>
+  <property name="version">1.1</property>
   <property name="language">Romanian / Română</property>
   <property name="righttoleft">false</property>
   <property name="encoding">UTF-8</property>
   <property name="template">template.xml</property>
-  <property name="author">Borca Alin &lt;alinx@acasa.ro&gt;</property>
-  <property name="url">http://www.digital-media.ro/</property>
+  <property name="author">Borca Alin &lt;borca.alin@predeal.org&gt;</property>
+  <property name="url">http://www.predeal.org/borca-alin/</property>
  </info>
  <data>
   <entry id="1" string="File">Fişier</entry>
@@ -386,7 +386,35 @@
   <entry id="382" string="Apodization function(s):">Funcţia(iile) Apodizare</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">Puteţi defini mai multe funcţii separate prin punct şi virgulă.</entry>
   <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 poate verifica online, la pornire, dacă există&#10;actualizări.&#10;&#10;Doriţi ca %1 să verifice acest lucru la pornire?</entry>
+  <entry id="385" string="Cannot access input file: %1">Nu pot accesa fişierul intrare: %1</entry>
+  <entry id="386" string="Cannot create output file: %1">Nu pot accesa fişierul ieşire: %1</entry>
+  <entry id="387" string="File not found">Fişierul nu a fost găsit</entry>
+  <entry id="388" string="Unknown file type">Tip fişier necunoscut</entry>
+  <entry id="389" string="Unsupported audio format">Format audio nesuportat</entry>
+  <entry id="390" string="Unknown error">Eroare necunoscută</entry>
+  <entry id="391" string="Replace existing comments with default comment">Înlocuieşte comentariile existente cu comentariul default</entry>
+  <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Fişierele selectate nu pot fii combinate într-un singur&#10;fişier de ieşire datorită formatelor diferite.&#10;&#10;Vă rog să convertiţi toate fişierele într-un tip similar.</entry>
+  <entry id="393" string="Write WMA metadata info">Scrie info WMA metadata</entry>
+  <entry id="394" string="WMA metadata encoding:">Codare WMA metadata:</entry>
+  <entry id="395" string="Select codec">Alege codec</entry>
+  <entry id="396" string="Select codec format">Alege format codec</entry>
+  <entry id="397" string="Codec settings">Setări codec</entry>
+  <entry id="398" string="Use codec">Foloseşte codec</entry>
+  <entry id="399" string="Use format">Foloseşte format</entry>
+  <entry id="400" string="Write uncompressed WMA files">Scrie fişiere WMA necompresate</entry>
+  <entry id="401" string="Automatically select format based on settings and input format">Selectează automat formatul pe baza setărilor şi formatul de ieşire</entry>
+  <entry id="402" string="Use VBR encoding">Foloseşte codare VBR</entry>
+  <entry id="403" string="Use 2-pass encoding">Foloseşte codare 2-pass</entry>
+  <entry id="404" string="Target bitrate">Bitrate ţintă</entry>
+  <entry id="405" string="Set drive speed limit:">Setează limită viteză pentru drive:</entry>
+  <entry id="406" string="Support this project">Ajută acest proiect</entry>
+  <entry id="407" string="Please support this project!">Vă rog ajutaţi acest proiect!</entry>
+  <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Vă rog să ajutaţi păstrarea acestui proiect gratuit prin suportarea&#10;%1 cu o donaţie.&#10;&#10;Da-ţi click pe unul dintre butoanele de mai jos pentru a face o&#10;donaţie utilizând PayPal:</entry>
+  <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.&#10;&#10;Scrie te rog către %1 dacă te-ai decis să faci o donaţie&#10;folosind transfer electronic, cec sau bani prin poştă.</entry>
   <entry id="410" string="usd">eur</entry>
+  <entry id="411" string="en">en</entry>
+  <entry id="412" string="Thank you very much!">Mulţumesc foarte mult!</entry>
+  <entry id="413" string="Remind me later">Adu-mi aminte mai târziu</entry>
   <entry id="414" string="CDDB">CDDB</entry>
   <entry id="415" string="Ripper">CDRip</entry>
  </data>

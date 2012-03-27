@@ -1,4 +1,4 @@
-fre:ac version 1.0.19
+fre:ac version 1.0.20a
 
 fre:ac is a free and open source audio converter for various formats.
 It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAVE, AIFF, AU and
@@ -12,6 +12,20 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
+
+	Version 1.0.20a (March 2012)
+
+		- fixed unintended dependency on Intel runtime libraries
+		- fixed bogus error messages on AMD CPUs
+
+	Version 1.0.20 (March 2012)
+
+		- added Bulgarian language support
+		- added Spanish user guide
+		- updated Polish and Romanian translations
+		- upgraded LAME to version 3.99.5
+		- upgraded Ogg library to version 1.3.0
+		- some minor fixes
 
 	Version 1.0.19 (May 2011)
 
@@ -325,7 +339,7 @@ Special thanks to
 			   Evgeny Kozlov (Russian),
 			   Henryk Ning (Chinese, traditional),
 			   Joeyong Jen (Chinese, simplified),
-			   Michal Trzebiatowski (Polish),
+			   Michal Trzebiatowski & Darek Rzeznicki (Polish),
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn & Thomas De Rocker (Dutch),
@@ -350,7 +364,8 @@ Special thanks to
 			   Eduardo Estévez (Galician),
 			   Phan Anh (Vietnamese),
 			   Ilan Tsmeret (Hebrew),
-			   Eman Ali Fhoula (Arabic)
+			   Eman Ali Fhoula (Arabic),
+			   Martin Deyanov (Bulgarian)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

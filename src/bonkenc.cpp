@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -44,8 +44,8 @@ BonkEnc::Debug		*BonkEnc::debug_out;
  */
 String	 BonkEnc::BonkEnc::appName	= "fre:ac";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
-String	 BonkEnc::BonkEnc::version	= "v1.0.19";
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.19";
+String	 BonkEnc::BonkEnc::version	= "v1.0.20a";
+String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.20a";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.17";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
@@ -83,6 +83,10 @@ BonkEnc::BonkEnc::BonkEnc()
 		if (currentConfig->openmp_numThreads > 0) SetEnvironmentVariableA("OMP_NUM_THREADS", String::FromInt(currentConfig->openmp_numThreads));
 		else					  SetEnvironmentVariableA("OMP_NUM_THREADS", String::FromInt(CPU().GetNumCores()));
 	}
+
+	/* Work around an Intel Compiler bug.
+	 */
+	SetEnvironmentVariableA("KMP_AFFINITY", "none");
 
 	/* Set default language information.
 	 */

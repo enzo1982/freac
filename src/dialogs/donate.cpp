@@ -1,5 +1,5 @@
  /* BoCA - BonkEnc Component Architecture
-  * Copyright (C) 2007-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2007-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -62,12 +62,8 @@ BonkEnc::DonateDialog::DonateDialog()
 
 	Add(mainWnd);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_APPTOPMOST);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_TOPMOST | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
-
-#ifdef __WIN32__
-	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
-#endif
 
 	Rect	 workArea = System::MultiMonitor::GetActiveMonitorWorkArea();
 

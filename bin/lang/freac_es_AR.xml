@@ -208,7 +208,7 @@
     <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">No se puede abrir archivo: %1&#10;&#10;Error: %2</entry>
     <entry id="207" string="Query CDDB database">Consultar base de datos CDDB</entry>
     <entry id="208" string="Help">Ayuda</entry>
-    <entry id="209" string="index_en.html"/>
+    <entry id="209" string="index_en.html">index_es.html</entry>
     <entry id="210" string="Plug-ins">Complementos</entry>
     <entry id="211" string="Input plug-ins">Complementos de entrada</entry>
     <entry id="212" string="Output plug-ins">Complementos de salida</entry>

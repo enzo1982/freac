@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Cómo ...? - Guía del usuario fre:ac</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Cómo ...? - Guía del usuario fre:ac</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>fre:ac de instalación y manual de funciones especiales</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Contenido</h4>
+		<blockquote>
+		  <p><a href="#anchor_pat">Cómo utilizar la salida de los patrones de nombre de archivo en fre:ac?</a></p>
+		  <p><a href="#anchor_tra">Cómo agregar una nueva traducción de fre:ac?</a></p>
+		  <p><a href="#anchor_rem">Cómo quitar fre:ac desde mi ordenador?</a></p>
+		</blockquote>
+		<h4 id="anchor_pat">Cómo utilizar la salida de los patrones de nombre de archivo en fre:ac?</h4>
+		<blockquote>
+		  <p>El archivo de salida del patrón de nombre puede ser configurado en el <b>codificador</b> de la página del
+		    diálogo de configuración. Puede utilizar barras para especificar los directorios y los marcadores de posición
+		    para referirse a meta de la información. Los marcadores de posición están disponibles las siguientes:</p>
+		  <ul>
+		    <li><b>&lt;artist&gt;</b> - El artista de la canción</li>
+		    <li><b>&lt;title&gt;</b> - El título de la canción</li>
+		    <li><b>&lt;album&gt;</b> - El título del álbum</li>
+		    <li><b>&lt;track&gt;</b> - El número de pista de la canción</li>
+		    <li><b>&lt;genre&gt;</b> - El género de la canción</li>
+		    <li><b>&lt;year&gt;</b> - El año se publicó la canción</li>
+		  </ul>
+		  <p>Los marcadores de posición se refieren a información de la canción y el álbum. Además hay dos marcadores de
+		    posición que hacen referencia al nombre del archivo original de un archivo que se está codificada en fre:ac:</p>
+		  <ul>
+		    <li><b>&lt;filename&gt;</b> - El nombre de archivo del archivo de entrada</li>
+		    <li><b>&lt;directory&gt;</b> - El directorio de archivos que se encuentran es la entrada en</li>
+		  </ul>
+		  <p>El <b>&lt;directory&gt;</b> patrón es especial ya que puede modificar su significado utilizando dos argumentos numéricos.
+		    Usted puede usarlo como <b>&lt;directory+n&gt;</b> o <b>&lt;directory+n(m)&gt;</b>. En estas expresiones, el <b>n</b>
+		    especifica el número de componentes de trazado que deben ser eliminados del principio. El <b>m</b> especifica el número
+		    de componentes a utilizar en lo que queda. La omisión de la <b>(m)</b> parte a utilizar todos los componentes que quedan
+		    en el camino después de pelar n componentes desde el principio. <b>&lt;directory&gt;</b> sin ningún tipo de argumentos
+		    se resolverá en la ruta completa.<p>
+		  <p>Entonces, ¿cómo usar esto en la práctica? Asumiendo que tiene su colección de música ordenada como esto:</p>
+		  <blockquote>
+		    <p>C:\Música\[otros criterios]\[artista]\[disco]\[tema] - [título]</p>
+		  </blockquote>
+		  <p>Es posible que tenga un archivo llamado <b>C:\Música\Favoritos\Starsailor\Silence is Easy\01 - Music was Saved.flac</b>.</p>
+		  <p>Ahora digamos que usted desea codificar algunos archivos de música para su uso en tu reproductor portátil y ponerlos en
+		    <b>C:\Codificada\</b>. Con el fin de mantener sus <b>[otros criterios]</b> de campo, es necesario utilizar el <b>&lt;directory&gt;</b>
+		    patrón. Si el directorio de salida del codificador se establece en <b>C:\Codificada\</b>, el nombre de archivo patrón completo
+		    se vería así:</p>
+		  <blockquote>
+		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+		  </blockquote>
+		  <p>Esto codificar el archivo a <b>C:\Codificada\Favoritos\Starsailor - Silence is Easy\Starsailor - Silence
+		    is Easy - 01 - Music was Saved.m4a</b>.</p>
+		</blockquote>
+		<h4 id="anchor_tra">Cómo agregar una nueva traducción de fre:ac?</h4>
+		<blockquote>
+		  <p>Por favor, use el <b>smooth Translator</b> utilidad incluida en la distribución fre:ac y abrir un archivo
+		    de traducción existentes (que se encuentra en el <b>freac/lang</b> directorio). A continuación, cambie la
+		    configuración de idioma para reflejar la traducción que desee para crear y empezar a traducir las cadenas
+		    de texto individuales. Salvar su traducción como un nuevo archivo coincida con el patrón <b>freac_??.xml</b>
+		    (reemplace ?? con el código de la lengua), reinicie fre:ac y tratar de seleccionar la nueva traducción en
+		    el diálogo de configuración.</p>
+		  <p>Por favor envíe su traducción a <a href="mailto:translations@freac.org">translations@freac.org</a>, para que pueda ser incluido en la distribución oficial.</p>
+		</blockquote>
+		<h4 id="anchor_rem">Cómo quitar fre:ac desde mi ordenador?</h4>
+		<blockquote>
+		  <p>Las versiones recientes de fre:ac vienen con un programa de desinstalación que puede ejecutar desde el <b>inicio</b> menú.</p>
+		  <p>En caso de que se ha quitado el grupo del menú Inicio o son incapaces de encontrar, es totalmente suficiente para eliminar
+		    el directorio de aplicaciones para desinstalar fre:ac. fre:ac hace ni crear ninguna de las entradas del registro de Windows
+		    ni almacenar componentes activos fuera de su directorio de instalación.</p>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
+		Copyright (C) 2007-2012 the fre:ac project</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -219,8 +219,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			    trackInfo->title.Length() == 0)	edb_filename->SetText(trackInfo->origFilename);
 			else					edb_filename->SetText(String(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title")));
 
-			if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE) edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
-			if (!currentConfig->enc_onTheFly && step == 0) edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
+			if (!currentConfig->enc_onTheFly && step == 1 && currentConfig->encoder != ENCODER_WAVE) edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
+			if (!currentConfig->enc_onTheFly && step == 0)						 edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
 		}
 
 		if (!currentConfig->encodeToSingleFile)
@@ -257,7 +257,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			trackInfo->outfile = out_filename;
 		}
 
-		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE)
+		if (!currentConfig->enc_onTheFly && step == 1 && currentConfig->encoder != ENCODER_WAVE)
 		{
 			step = 0;
 
@@ -280,7 +280,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		InStream	*f_in;
 		InputFilter	*filter_in = NIL;
 
-		if (trackInfo->isCDTrack && (currentConfig->enc_onTheFly || step == 0 || encoder == ENCODER_WAVE))
+		if (trackInfo->isCDTrack && (currentConfig->enc_onTheFly || step == 0 || currentConfig->encoder == ENCODER_WAVE))
 		{
 			currentConfig->cdrip_activedrive = trackInfo->drive;
 
@@ -497,7 +497,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			if (f_size == 0 || skip_track || stop_encoding) File(out_filename).Delete();
 
-			if (!skip_track && (currentConfig->enc_onTheFly || step == 1 || encoder == ENCODER_WAVE))
+			if (!skip_track && (currentConfig->enc_onTheFly || step == 1 || currentConfig->encoder == ENCODER_WAVE))
 			{
 				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
 
@@ -561,10 +561,10 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			trackInfo->outfile = NIL;
 		}
 
-		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && !currentConfig->enc_keepWaves)								File(in_filename).Delete();
+		if (!currentConfig->enc_onTheFly && step == 1 && currentConfig->encoder != ENCODER_WAVE && !currentConfig->enc_keepWaves)						File(in_filename).Delete();
 		if (currentConfig->deleteAfterEncoding && !stop_encoding && !skip_track && ((currentConfig->enc_onTheFly && step == 1) || (!currentConfig->enc_onTheFly && step == 0))) File(in_filename).Delete();
 
-		if (!currentConfig->enc_onTheFly && step == 1 && encoder != ENCODER_WAVE && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
+		if (!currentConfig->enc_onTheFly && step == 1 && currentConfig->encoder != ENCODER_WAVE && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
 
 		if (out_filename.ToLower() == String(in_filename.ToLower()).Append(".temp") && File(out_filename).Exists())
 		{
