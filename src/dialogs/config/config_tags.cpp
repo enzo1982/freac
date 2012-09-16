@@ -65,10 +65,10 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	list_encodings		= new List();
 
-	edit_encoding		= new EditBox(NIL, Point(text_encoding->textSize.cx + 265, 13), Size(237 - text_encoding->textSize.cx, 0));
+	edit_encoding		= new EditBox(NIL, Point(text_encoding->GetUnscaledTextWidth() + 265, 13), Size(237 - text_encoding->GetUnscaledTextWidth(), 0));
 	edit_encoding->onInput.Connect(&ConfigureTags::OnEditEncoding, this);
 
-	combo_encoding		= new ComboBox(Point(text_encoding->textSize.cx + 265, 13), Size(237 - text_encoding->textSize.cx, 0));
+	combo_encoding		= new ComboBox(Point(text_encoding->GetUnscaledTextWidth() + 265, 13), Size(237 - text_encoding->GetUnscaledTextWidth(), 0));
 	combo_encoding->onSelectEntry.Connect(&ConfigureTags::OnEditEncoding, this);
 	combo_encoding->Hide();
 
@@ -80,7 +80,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 110), Size(512, 67));
 
 	text_defcomment		= new Text(i18n->TranslateString("Default comment string:"), Point(10, 15));
-	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->textSize.cx, 12), Size(485 - text_defcomment->textSize.cx, 0), 0);
+	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->GetUnscaledTextWidth(), 12), Size(485 - text_defcomment->GetUnscaledTextWidth(), 0), 0);
 	check_replace		= new CheckBox(i18n->TranslateString("Replace existing comments with default comment"), Point(10, edit_defcomment->GetY() + 28), Size(492, 0), &replaceComments);
 
 	group_definfo->Add(text_defcomment);
@@ -148,7 +148,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	text_chapter_format	= new Text(i18n->TranslateString("Chapter format:"), check_write_chapters->GetPosition() + Point(17, 28));
 
-	combo_chapter_format	= new ComboBox(text_chapter_format->GetPosition() + Point(text_chapter_format->textSize.cx + 7, -3), Size(208 - text_chapter_format->textSize.cx, 0));
+	combo_chapter_format	= new ComboBox(text_chapter_format->GetPosition() + Point(text_chapter_format->GetUnscaledTextWidth() + 7, -3), Size(208 - text_chapter_format->GetUnscaledTextWidth(), 0));
 	combo_chapter_format->AddEntry(i18n->TranslateString("both"));
 	combo_chapter_format->AddEntry("QuickTime");
 	combo_chapter_format->AddEntry("Nero");

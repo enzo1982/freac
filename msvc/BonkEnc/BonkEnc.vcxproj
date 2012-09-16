@@ -89,7 +89,7 @@
       <EnablePREfast>false</EnablePREfast>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>smooth.lib;boca.lib;ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
       <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Debug; ../../cdk/msvc/BoCA/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -181,8 +181,10 @@
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\cuesheet.cpp" />
     <ClCompile Include="..\..\src\dialogs\charset.cpp" />
+    <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
     <ClCompile Include="..\..\src\joblist.cpp" />
+    <ClCompile Include="..\..\src\jobs\job_addtracks.cpp" />
     <ClCompile Include="..\..\src\playback.cpp" />
     <ClCompile Include="..\..\src\playlist.cpp" />
     <ClCompile Include="..\..\src\progress.cpp" />
@@ -241,8 +243,10 @@
     <ClInclude Include="..\..\include\config.h" />
     <ClInclude Include="..\..\include\cuesheet.h" />
     <ClInclude Include="..\..\include\dialogs\charset.h" />
+    <ClInclude Include="..\..\include\dialogs\error.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
     <ClInclude Include="..\..\include\joblist.h" />
+    <ClInclude Include="..\..\include\jobs\job_addtracks.h" />
     <ClInclude Include="..\..\include\playback.h" />
     <ClInclude Include="..\..\include\playlist.h" />
     <ClInclude Include="..\..\include\progress.h" />

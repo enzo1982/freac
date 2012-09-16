@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -110,6 +110,9 @@ namespace BonkEnc
 
 			JobList			*joblist;
 
+			Shortcut		*shortcut_previous;
+			Shortcut		*shortcut_next;
+
 			Bool			 dontUpdateInfo;
 
 			Int			 clicked_charset;
@@ -117,8 +120,9 @@ namespace BonkEnc
 
 			Int			 activePopup;
 
-			Bool			 SetLanguage();
 			Void			 FillMenus();
+
+			EditBox			*GetActiveEditBox();
 
 			String			 SecondsToString(Int);
 
@@ -137,12 +141,25 @@ namespace BonkEnc
 			Signal0<Void>		 onRequestSkipTrack;
 		slots:
 			Void			 OnChangeSize(const Size &);
+			Void			 OnChangeLanguageSettings();
 
 			Void			 OnJoblistSelectTrack(const Track &);
 			Void			 OnJoblistModifyTrack(const Track &);
 			Void			 OnJoblistRemoveTrack(const Track &);
 
 			Void			 OnJoblistRemoveAllTracks();
+
+			Void			 OnShortcutPrevious();
+			Void			 OnShortcutNext();
+
+			Void			 OnEditBoxEnter(EditBox *);
+
+			Void			 OnEditBoxEnterArtist()		{ OnEditBoxEnter(info_edit_artist); }
+			Void			 OnEditBoxEnterTitle()		{ OnEditBoxEnter(info_edit_title); }
+			Void			 OnEditBoxEnterAlbum()		{ OnEditBoxEnter(info_edit_album); }
+			Void			 OnEditBoxEnterTrack()		{ OnEditBoxEnter(info_edit_track); }
+			Void			 OnEditBoxEnterYear()		{ OnEditBoxEnter(info_edit_year); }
+			Void			 OnEditBoxEnterGenre()		{ OnEditBoxEnter(info_edit_genre); }
 
 			Void			 OnEncoderStartEncoding();
 			Void			 OnEncoderFinishEncoding(Bool);

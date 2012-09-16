@@ -45,7 +45,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	http_text_submit	= new Text(i18n->TranslateString("CDDB submit script:"), Point(16, 51));
 	http_edit_submit	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, Config::FreedbSubmitPathDefault), Point(117, 48), Size(192, 0), 0);
 
-	Int	 maxTextSize = Math::Max(http_text_query->textSize.cx, http_text_submit->textSize.cx);
+	Int	 maxTextSize = Math::Max(http_text_query->GetUnscaledTextWidth(), http_text_submit->GetUnscaledTextWidth());
 
 	http_edit_query->SetMetrics(Point(maxTextSize + 24, http_edit_query->GetY()), Size(285 - maxTextSize, http_edit_query->GetHeight()));
 	http_edit_submit->SetMetrics(Point(maxTextSize + 24, http_edit_submit->GetY()), Size(285 - maxTextSize, http_edit_submit->GetHeight()));
@@ -66,7 +66,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyID, Config::FreedbProxyDefault), Point(116, 48), Size(100, 0), 0);
 
 	proxy_text_port		= new Text(i18n->TranslateString("Port:"), Point(226, 51));
-	proxy_text_port->SetPosition(Point(264 - proxy_text_port->textSize.cx, proxy_text_port->GetY()));
+	proxy_text_port->SetPosition(Point(264 - proxy_text_port->GetUnscaledTextWidth(), proxy_text_port->GetY()));
 
 	proxy_edit_port		= new EditBox(String::FromInt(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyPortID, Config::FreedbProxyPortDefault)), Point(272, 48), Size(37, 0), 5);
 	proxy_edit_port->SetFlags(EDB_NUMERIC);
@@ -75,16 +75,16 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_edit_user		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyUserID, Config::FreedbProxyUserDefault), Point(116, 75), Size(100, 0), 0);
 
 	proxy_text_password	= new Text(i18n->TranslateString("Password:"), Point(226, 78));
-	proxy_text_password->SetPosition(Point(234 - proxy_text_password->textSize.cx, proxy_text_password->GetY()));
+	proxy_text_password->SetPosition(Point(234 - proxy_text_password->GetUnscaledTextWidth(), proxy_text_password->GetY()));
 
 	proxy_edit_password	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyPasswordID, Config::FreedbProxyPasswordDefault), Point(242, 75), Size(67, 0), 0);
 	proxy_edit_password->SetFlags(EDB_ASTERISK);
 
-	maxTextSize = Math::Max(Math::Max(proxy_text_mode->textSize.cx, proxy_text_server->textSize.cx), proxy_text_user->textSize.cx);
+	maxTextSize = Math::Max(Math::Max(proxy_text_mode->GetUnscaledTextWidth(), proxy_text_server->GetUnscaledTextWidth()), proxy_text_user->GetUnscaledTextWidth());
 
 	proxy_combo_mode->SetMetrics(Point(maxTextSize + 24, proxy_combo_mode->GetY()), Size(285 - maxTextSize, proxy_combo_mode->GetHeight()));
-	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->GetY()), Size(233 - maxTextSize - proxy_text_port->textSize.cx, proxy_edit_server->GetHeight()));
-	proxy_edit_user->SetMetrics(Point(maxTextSize + 24, proxy_edit_user->GetY()), Size(203 - maxTextSize - proxy_text_password->textSize.cx, proxy_edit_user->GetHeight()));
+	proxy_edit_server->SetMetrics(Point(maxTextSize + 24, proxy_edit_server->GetY()), Size(233 - maxTextSize - proxy_text_port->GetUnscaledTextWidth(), proxy_edit_server->GetHeight()));
+	proxy_edit_user->SetMetrics(Point(maxTextSize + 24, proxy_edit_user->GetY()), Size(203 - maxTextSize - proxy_text_password->GetUnscaledTextWidth(), proxy_edit_user->GetHeight()));
 
 	proxy_combo_mode->SelectNthEntry(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault));
 

@@ -35,7 +35,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	group_directory	= new GroupBox(i18n->TranslateString("Folder"), Point(7, 11), Size(380, 37));
 
 	text_directory	= new Text(i18n->TranslateString("Choose folder:"), Point(16, 23));
-	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + text_directory->textSize.cx, 20), Size(268 - text_directory->textSize.cx, 0));
+	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + text_directory->GetUnscaledTextWidth(), 20), Size(268 - text_directory->GetUnscaledTextWidth(), 0));
 
 	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(299, 19), Size(80, 0));
 	btn_browse->onAction.Connect(&AddDirectoryDialog::Browse, this);

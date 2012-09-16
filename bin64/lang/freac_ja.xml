@@ -22,6 +22,7 @@
     <entry id="304" string="Genre">ジャンル</entry>
     <entry id="305" string="Comment">コメント</entry>
     <entry id="306" string="Year">年</entry>
+    <entry id="307" string="Disc">ディスク</entry>
     <entry id="350" string="unknown artist">アーティスト不明</entry>
     <entry id="351" string="unknown title">タイトル不明</entry>
     <entry id="352" string="unknown album">アルバム不明</entry>
@@ -304,6 +305,7 @@
 	<entry id="5312" string="Automatic CDDB queries">自動 CDDB 問い合わせ</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">CD Text より CDDB を優先</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB キャッシュ有効</entry>
+	<entry id="5315" string="Automatization">自動化</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">拡張 CDDB 設定</entry>
@@ -632,6 +634,7 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52000" string="Video">ビデオ</entry>
 	<entry id="52014" string="Length">時間</entry>
 	<entry id="52015" string="Size">サイズ</entry>
 
@@ -642,6 +645,7 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">タグ</entry>
 	<entry id="53001" string="Length">時間</entry>
 	<entry id="53002" string="Size">サイズ</entry>
 	<entry id="53005" string="File">ファイル</entry>

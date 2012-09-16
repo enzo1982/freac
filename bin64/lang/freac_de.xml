@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -23,6 +23,9 @@
     <entry id="305" string="Comment">Kommentar</entry>
     <entry id="306" string="Year">Jahr</entry>
     <entry id="307" string="Disc">Disk</entry>
+    <entry id="308" string="Rating">Bewertung</entry>
+    <entry id="309" string="File name">Dateiname</entry>
+    <entry id="310" string="File type">Dateityp</entry>
     <entry id="350" string="unknown artist">unbekannter Künstler</entry>
     <entry id="351" string="unknown title">unbekannter Titel</entry>
     <entry id="352" string="unknown album">unbekanntes Album</entry>
@@ -308,6 +311,8 @@
 	<entry id="5112" string="Output filenames">Ausgabedateinamen</entry>
 	<entry id="5113" string="Allow Unicode characters">Unicode-Zeichen erlauben</entry>
 	<entry id="5114" string="Replace spaces">Leerzeichen ersetzen</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">Fertige Tracks aus Jobliste entfernen</entry>
+	<entry id="5116" string="Add encoded files to joblist">Ausgabedateien in Liste aufnehmen</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Der Ausgabeordner existiert nicht! Soll er erzeugt werden?</entry>
@@ -340,6 +345,8 @@
 	<entry id="5312" string="Automatic CDDB queries">Automatische CDDB-Abfrage</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">CD-Text-Infos überschreiben</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB-Cache aktivieren</entry>
+	<entry id="5315" string="Automatization">Automatisierung</entry>
+	<entry id="5316" string="Always select first entry">Immer ersten Treffer wählen</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Erweiterte CDDB-Einstellungen</entry>
@@ -437,7 +444,7 @@
       <entry id="7007" string="Delete original files after encoding">Originaldateien nach dem Kodieren löschen</entry>
       <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Diese Einstellung entfernt die Originaldateien nach der Kodierung&#10;von Ihrem Computer!&#10;&#10;Sind Sie sicher, dass Sie diese Funktion aktivieren möchten?</entry>
       <entry id="7009" string="File already exists">Datei existiert bereits</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Die Ausgabedatei %1&#10;existiert bereits! Möchten Sie die Datei übersschreiben?</entry>
+      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Die Ausgabedatei %1&#10;existiert bereits! Möchten Sie die Datei überschreiben?</entry>
       <entry id="7011" string="Overwrite all further files">Alle weiteren Dateien überschreiben</entry>
       <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Die CDDB-Unterstützung ist deaktiviert! Bitte aktivieren Sie&#10;lokale oder entfernte CDDB-Abfragen im Konfigurationsdialog.</entry>
       <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Die Unterstützung für die entfernte CDDB-Datenbank ist deaktiviert!&#10;Bitte aktivieren Sie die entfernte CDDB-Datenbank im Konfigurationsdialog.</entry>
@@ -450,6 +457,15 @@
       <entry id="7020" string="Unknown error">Unbekannter Fehler</entry>
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Die ausgewählten Dateien können aufgrund unterschiedlicher&#10;Sample-Formate nicht in eine Datei kombiniert werden.&#10;&#10;Bitte konvertieren Sie zunächst alle Dateien in das gleiche Sample-Format.</entry>
       <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1">Kein Konfigurationsdialog verfügbar für:&#10;&#10;%1</entry>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Errors">
+	<entry id="8000" string="Errors">Fehler</entry>
+	<entry id="8001" string="%1 errors while processing job">%1 Fehler bei der Jobverarbeitung</entry>
+	<entry id="8002" string="select an entry for details">für Details einen Eintrag auswählen</entry>
+      </section>
     </section>
 
     <section name="Decoders">
@@ -734,6 +750,7 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52000" string="Video">Video</entry>
 	<entry id="52001" string="Enter video URL here:">Video-URL hier eingeben:</entry>
 	<entry id="52002" string="Download">Herunterladen</entry>
 	<entry id="52003" string="Automatically download URLs copied to clipboard">URLs in der Zwischenablage automatisch herunterladen</entry>
@@ -769,20 +786,21 @@
 	  <entry id="52201" string="This URL is not supported or not a video page URL!">Diese URL wird nicht unterstützt oder ist keine URL einer Videoseite!</entry>
 	  <entry id="52202" string="Error downloading video!">Fehler beim Herunterladen des Videos!</entry>
 	  <entry id="52203" string="You are already downloading this video!">Dieses Video wird bereits heruntergeladen!</entry>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie FFmpeg, um dieses Problem zu beheben!</entry>
+	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie avconv, um dieses Problem zu beheben!</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tracks">Tracks</entry>
+	<entry id="53000" string="Tags">Tags</entry>
 	<entry id="53001" string="Length">Länge</entry>
 	<entry id="53002" string="Size">Größe</entry>
 	<entry id="53003" string="Albums">Alben</entry>
 	<entry id="53004" string="Files">Dateien</entry>
 	<entry id="53005" string="File">Datei</entry>
-	<entry id="53006" string="Save">Sichern</entry>
-	<entry id="53007" string="Save all">Alle sichern</entry>
-	<entry id="53008" string="no audio files found">keine Audiodateien gefunden</entry>
+	<entry id="53006" string="Tracks">Tracks</entry>
+	<entry id="53007" string="Save">Sichern</entry>
+	<entry id="53008" string="Save all">Alle sichern</entry>
+	<entry id="53009" string="no audio files found">keine Audiodateien gefunden</entry>
 
 	<section name="Basic">
 	  <entry id="53100" string="Basic">Standard</entry>

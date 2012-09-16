@@ -303,6 +303,7 @@
 	<entry id="5312" string="Automatic CDDB queries">自动 CDDB 查询</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">使用 CDDB 代替 CD 文本</entry>
 	<entry id="5314" string="Enable CDDB cache">启用 CDDB 缓存</entry>
+	<entry id="5315" string="Automatization">自动化</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">CDDB 扩展设置</entry>

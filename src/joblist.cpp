@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -56,6 +56,8 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 
 	BoCA::JobList::Get()->doRemoveAllTracks.Connect(&JobList::RemoveAllTracks, this);
 
+	BoCA::JobList::Get()->getTrackList.Connect(&JobList::GetTrackList, this);
+
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFiles.Connect(&JobList::AddTracksByDragAndDrop, this);
 
@@ -108,6 +110,8 @@ BonkEnc::JobList::~JobList()
 
 	BoCA::JobList::Get()->doRemoveAllTracks.Disconnect(&JobList::RemoveAllTracks, this);
 
+	BoCA::JobList::Get()->getTrackList.Disconnect(&JobList::GetTrackList, this);
+
 	onRegister.Disconnect(&JobList::OnRegister, this);
 	onUnregister.Disconnect(&JobList::OnUnregister, this);
 
@@ -133,7 +137,12 @@ const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n) const
 	/* Entries may have been moved in the joblist,
 	 * so get the entry by index instead of position.
 	 */
-	return *(tracks.Get(GetNthEntry(n)->GetHandle()));
+	return tracks.Get(GetNthEntry(n)->GetHandle());
+}
+
+const Array<BoCA::Track> *BonkEnc::JobList::GetTrackList()
+{
+	return &tracks;
 }
 
 Bool BonkEnc::JobList::CanModifyJobList() const
@@ -156,9 +165,9 @@ Bool BonkEnc::JobList::CanModifyJobList() const
 Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
-	Track		*track = new Track(iTrack);
+	Track		 track	= iTrack;
 
-	track->SetOriginalInfo(track->GetInfo());
+	track.SetOriginalInfo(track.GetInfo());
 
 	/* Detect encoding and translate info if requested.
 	 *
@@ -168,7 +177,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	{
 		String	 prevOutFormat = String::SetOutputFormat("ISO-8859-1");
 
-		Info	 info = track->GetInfo();
+		Info	 info = track.GetInfo();
 
 		if (info.artist	 != NIL && !String::IsUnicode(info.artist))  info.artist.ImportFrom(Encoding::GuessEncoding(info.artist), info.artist);
 		if (info.title	 != NIL && !String::IsUnicode(info.title))   info.title.ImportFrom(Encoding::GuessEncoding(info.title), info.title);
@@ -176,16 +185,16 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 		if (info.genre	 != NIL && !String::IsUnicode(info.genre))   info.genre.ImportFrom(Encoding::GuessEncoding(info.genre), info.genre);
 		if (info.comment != NIL && !String::IsUnicode(info.comment)) info.comment.ImportFrom(Encoding::GuessEncoding(info.comment), info.comment);
 
-		track->SetInfo(info);
+		track.SetInfo(info);
 
 		String::SetOutputFormat(prevOutFormat);
 	}
 
 	/* Add entry to joblist.
 	 */
-	ListEntry	*entry	= AddEntry(GetEntryText(*track));
+	ListEntry	*entry	= AddEntry(GetEntryText(track));
 
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault)) entry->SetTooltipLayer(new LayerTooltip(*track));
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault)) entry->SetTooltipLayer(new LayerTooltip(track));
 
 	entry->SetMark(True);
 
@@ -195,7 +204,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 
 	/* Notify components that a track has been added.
 	 */
-	BoCA::JobList::Get()->onApplicationAddTrack.Emit(*track);
+	BoCA::JobList::Get()->onApplicationAddTrack.Emit(track);
 
 	return True;
 }
@@ -203,7 +212,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 {
 	ListEntry	*entry = GetNthEntry(n);
-	Track		*track = tracks.Get(entry->GetHandle());
+	Track		 track = tracks.Get(entry->GetHandle());
 
 	/* Remove track from track list and joblist.
 	 */
@@ -224,9 +233,7 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 	/* Notify components and delete track.
 	 */
-	BoCA::JobList::Get()->onApplicationRemoveTrack.Emit(*track);
-
-	delete track;
+	BoCA::JobList::Get()->onApplicationRemoveTrack.Emit(track);
 
 	return True;
 }
@@ -252,11 +259,6 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 	/* Notify components that all tracks will be removed.
 	 */
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Emit();
-
-	for (Int i = 0; i < tracks.Length(); i++)
-	{
-		delete tracks.GetNth(i);
-	}
 
 	tracks.RemoveAll();
 
@@ -350,7 +352,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 		if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
 	}
 
-	delete dialog;
+	DeleteObject(dialog);
 }
 
 Void BonkEnc::JobList::AddTracksByDragAndDrop(const Array<String> &files)
@@ -407,7 +409,7 @@ Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 
 	if (entry != NIL)
 	{
-		Track	*existingTrack = tracks.Get(entry->GetHandle());
+		Track	&existingTrack = tracks.GetReference(entry->GetHandle());
 
 		entry->SetText(GetEntryText(track));
 
@@ -418,7 +420,7 @@ Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 			entry->SetTooltipLayer(new LayerTooltip(track));
 		}
 
-		*existingTrack = track;
+		existingTrack = track;
 	}
 
 	BoCA::JobList::Get()->onApplicationModifyTrack.Emit(track);
@@ -510,7 +512,7 @@ Void BonkEnc::JobList::LoadList()
 		(new JobAddFiles(files))->Schedule();
 	}
 
-	delete dialog;
+	DeleteObject(dialog);
 }
 
 Void BonkEnc::JobList::SaveList()
@@ -571,7 +573,7 @@ Void BonkEnc::JobList::SaveList()
 		playlist.Save(dialog->GetFileName());
 	}
 
-	delete dialog;
+	DeleteObject(dialog);
 }
 
 Void BonkEnc::JobList::OnRegister(Widget *container)
@@ -609,8 +611,8 @@ Void BonkEnc::JobList::OnMarkEntry(ListEntry *entry)
 {
 	if (tracks.Get(entry->GetHandle()) == NIL) return;
 
-	if (entry->IsMarked())	BoCA::JobList::Get()->onApplicationMarkTrack.Emit(*tracks.Get(entry->GetHandle()));
-	else			BoCA::JobList::Get()->onApplicationUnmarkTrack.Emit(*tracks.Get(entry->GetHandle()));
+	if (entry->IsMarked())	BoCA::JobList::Get()->onApplicationMarkTrack.Emit(tracks.Get(entry->GetHandle()));
+	else			BoCA::JobList::Get()->onApplicationUnmarkTrack.Emit(tracks.Get(entry->GetHandle()));
 }
 
 Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
@@ -697,40 +699,23 @@ Void BonkEnc::JobList::AddHeaderTabs()
 {
 	RemoveAllTabs();
 
-	const Array<String>	&cFields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
-
-	/* Copy fields array because it will be replaced
-	 * in the second call to String::Explode().
-	 */
-	Array<String>		 fields;
-
-	foreach (const String &field, cFields) fields.Add(field);
-
-	String::ExplodeFinish();
-
-	const Array<String>	&cSizes = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
-
-	/* Copy sizes array only if number of fields does match.
-	 */
-	Array<String>		 sizes;
-
-	if (cFields.Length() == cSizes.Length()) { foreach (const String &size, cSizes) sizes.Add(size); }
-
-	String::ExplodeFinish();
+	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
+	const Array<String>	&sizes	= BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
 
 	for (Int i = 0; i < fields.Length(); i++)
 	{
-		String	 field = fields.GetNth(i);
-		String	 tabName = "<invalid tab>";
+		String	 field	  = fields.GetNth(i);
+		String	 tabName  = "<invalid tab>";
 		Int	 tabAlign = OR_LEFT;
-		Int	 tabSize = sizes.GetNth(i).ToInt();
+		Int	 tabSize  = (fields.Length() == sizes.Length() ? sizes.GetNth(i).ToInt() : 0);
 
 		if	(field == "<artist>")	{ tabName = "Artist";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<album>")	{ tabName = "Album";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<title>")	{ tabName = "Title";			      tabSize = 0;			      }
-		else if (field == "<genre>")	{ tabName = "Genre";			      tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<genre>")	{ tabName = "Genre";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<disc>")	{ tabName = "Disc"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<track>")	{ tabName = "Track"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<rating>")	{ tabName = "Rating"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
 		else if (field == "<time>")	{ tabName = "Length"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
 		else if (field == "<bytes>")	{ tabName = "Size"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
 		else if (field == "<file>")	{ tabName = "File name";		      tabSize = 0;			      }
@@ -744,6 +729,9 @@ Void BonkEnc::JobList::AddHeaderTabs()
 
 		AddTab(tabName, tabSize, tabAlign);
 	}
+
+	String::ExplodeFinish();
+	String::ExplodeFinish();
 }
 
 Void BonkEnc::JobList::UpdateTextLine()
@@ -774,6 +762,7 @@ String BonkEnc::JobList::GetEntryText(const Track &track) const
 		else if (field == "<genre>")	jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : i18n->TranslateString("unknown genre"));
 		else if (field == "<disc>")	jlEntry.Append(info.disc > 0 ? (info.disc < 10 ? String("0").Append(String::FromInt(info.disc)) : String::FromInt(info.disc)) : String(NIL));
 		else if (field == "<track>")	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String(NIL));
+		else if (field == "<rating>")	jlEntry.Append(info.rating > 0 ? (Setup::enableUnicode ? String().FillN(0x2605, Math::Round(info.rating / 25.0) + 1).Append(String().FillN(0x2606, 5 - (Math::Round(info.rating / 25.0) + 1))) : String::FromInt(Math::Round(info.rating / 25.0) + 1).Append("/5")) : String(NIL));
 		else if (field == "<time>")	jlEntry.Append(track.GetLengthString());
 		else if (field == "<bytes>")	jlEntry.Append(track.GetFileSizeString());
 		else if (field == "<file>")	jlEntry.Append(track.origFilename);

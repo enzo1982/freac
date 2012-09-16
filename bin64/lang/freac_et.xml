@@ -303,6 +303,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Automaatne CDDB päring</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Lugeda üle CDDB</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB cacheerimine</entry>
+	<entry id="5315" string="Automatization">Automatiseerimine</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">CDDB lisa sätted</entry>

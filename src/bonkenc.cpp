@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -56,7 +56,7 @@ String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free video downloader";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
 #endif
 
-String	 BonkEnc::BonkEnc::version	= "CVS 20110524";
+String	 BonkEnc::BonkEnc::version	= "CVS 20120916";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre2";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
@@ -82,9 +82,14 @@ BonkEnc::BonkEnc::BonkEnc()
 	encoder		= new Converter();
 	currentConfig	= Config::Get();
 
-	/* Set default comment if not set.
+	/* Set default comment unless already set.
 	 */
 	BoCA::Config::Get()->SetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, BoCA::Config::Get()->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, String(appLongName).Append(" <").Append(website).Append(">")));
+
+	/* Connect version information to BoCA callbacks.
+	 */
+	BoCA::Application::Get()->getClientName.Connect(appLongName);
+	BoCA::Application::Get()->getClientVersion.Connect(version);
 
 	/* Start job manager.
 	 */

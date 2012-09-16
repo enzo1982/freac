@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,7 +19,9 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 
 	i18n->SetContext("Configuration::CDDB");
 
-	cddb_auto	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault);
+	cddb_autoquery	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault);
+	cddb_autoselect	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, Config::FreedbAutoSelectDefault);
+
 	cddb_cdtext	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbOverwriteCDTextID, Config::FreedbOverwriteCDTextDefault);
 	cddb_cache	= config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault);
 
@@ -34,11 +36,11 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 
 	check_local	= new CheckBox(i18n->TranslateString("Enable local CDDB database"), Point(2, 0), Size(), &cddb_local);
 	check_local->onAction.Connect(&ConfigureCDDB::ToggleLocalCDDB, this);
-	check_local->SetWidth(check_local->textSize.cx + 20);
+	check_local->SetWidth(check_local->GetUnscaledTextWidth() + 20);
 
 	check_remote	= new CheckBox(i18n->TranslateString("Enable remote CDDB database"), Point(2, 0), Size(), &cddb_remote);
 	check_remote->onAction.Connect(&ConfigureCDDB::ToggleRemoteCDDB, this);
-	check_remote->SetWidth(check_remote->textSize.cx + 20);
+	check_remote->SetWidth(check_remote->GetUnscaledTextWidth() + 20);
 
 	layer_local_background->SetMetrics(Point(14, 3), check_local->GetSize() + Size(4, 0));
 	layer_remote_background->SetMetrics(Point(14, 58), check_remote->GetSize() + Size(4, 0));
@@ -67,7 +69,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault), Point(122, 105), Size(146, 0), 0);
 
 	text_port	= new Text(i18n->TranslateString("Port:"), Point(275, 108));
-	text_port->SetX(296 - text_port->textSize.cx);
+	text_port->SetX(296 - text_port->GetUnscaledTextWidth());
 
 	edit_port	= new EditBox(NIL, Point(304, 105), Size(37, 0), 5);
 	edit_port->SetFlags(EDB_NUMERIC);
@@ -81,13 +83,23 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	button_proxy	= new Button(i18n->TranslateString("Proxy settings"), NIL, Point(183, 159), Size(158, 0));
 	button_proxy->onAction.Connect(&ConfigureCDDB::ProxySettings, this);
 
-	group_cddb_options = new GroupBox(i18n->TranslateString("Options"), Point(359, 11), Size(178, 94));
+	group_cddb_auto = new GroupBox(i18n->TranslateString("Automatization"), Point(359, 11), Size(178, 68));
 
-	check_auto	= new CheckBox(i18n->TranslateString("Automatic CDDB queries"), Point(369, 25), Size(157, 0), &cddb_auto);
-	check_auto->onAction.Connect(&ConfigureCDDB::ToggleAutoCDDB, this);
+	check_autoquery	= new CheckBox(i18n->TranslateString("Automatic CDDB queries"), Point(10, 14), Size(157, 0), &cddb_autoquery);
+	check_autoquery->onAction.Connect(&ConfigureCDDB::ToggleAutoCDDB, this);
 
-	check_cdtext	= new CheckBox(i18n->TranslateString("Prefer CDDB over CD Text"), Point(369, 51), Size(157, 0), &cddb_cdtext);
-	check_cache	= new CheckBox(i18n->TranslateString("Enable CDDB cache"), Point(369, 77), Size(157, 0), &cddb_cache);
+	check_autoselect = new CheckBox(i18n->TranslateString("Always select first entry"), Point(10, 40), Size(157, 0), &cddb_autoselect);
+
+	group_cddb_auto->Add(check_autoquery);
+	group_cddb_auto->Add(check_autoselect);
+
+	group_cddb_options = new GroupBox(i18n->TranslateString("Options"), Point(359, 91), Size(178, 68));
+
+	check_cdtext	= new CheckBox(i18n->TranslateString("Prefer CDDB over CD Text"), Point(10, 14), Size(157, 0), &cddb_cdtext);
+	check_cache	= new CheckBox(i18n->TranslateString("Enable CDDB cache"), Point(10, 40), Size(157, 0), &cddb_cache);
+
+	group_cddb_options->Add(check_cdtext);
+	group_cddb_options->Add(check_cache);
 
 	combo_mode->SelectNthEntry(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault));
 
@@ -97,11 +109,11 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	ToggleLocalCDDB();
 	ToggleRemoteCDDB();
 
-	Int	 maxTextSize = Math::Max(Math::Max(text_dir->textSize.cx, text_email->textSize.cx), Math::Max(text_mode->textSize.cx, text_server->textSize.cx));
+	Int	 maxTextSize = Math::Max(Math::Max(text_dir->GetUnscaledTextWidth(), text_email->GetUnscaledTextWidth()), Math::Max(text_mode->GetUnscaledTextWidth(), text_server->GetUnscaledTextWidth()));
 
 	edit_dir->SetMetrics(Point(maxTextSize + 24, edit_dir->GetY()), Size(229 - maxTextSize, edit_dir->GetHeight()));
 	combo_mode->SetMetrics(Point(maxTextSize + 24, combo_mode->GetY()), Size(317 - maxTextSize, combo_mode->GetHeight()));
-	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetY()), Size(265 - maxTextSize - text_port->textSize.cx, edit_server->GetHeight()));
+	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetY()), Size(265 - maxTextSize - text_port->GetUnscaledTextWidth(), edit_server->GetHeight()));
 	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->GetY()), Size(317 - maxTextSize, edit_email->GetHeight()));
 
 	Add(group_local);
@@ -119,10 +131,8 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	Add(edit_email);
 	Add(button_http);
 	Add(button_proxy);
+	Add(group_cddb_auto);
 	Add(group_cddb_options);
-	Add(check_auto);
-	Add(check_cdtext);
-	Add(check_cache);
 	Add(layer_local_background);
 	Add(layer_remote_background);
 
@@ -146,10 +156,15 @@ BonkEnc::ConfigureCDDB::~ConfigureCDDB()
 	DeleteObject(edit_email);
 	DeleteObject(button_http);
 	DeleteObject(button_proxy);
+
+	DeleteObject(group_cddb_auto);
+	DeleteObject(check_autoquery);
+	DeleteObject(check_autoselect);
+
 	DeleteObject(group_cddb_options);
-	DeleteObject(check_auto);
 	DeleteObject(check_cdtext);
 	DeleteObject(check_cache);
+
 	DeleteObject(layer_local_background);
 	DeleteObject(layer_remote_background);
 	DeleteObject(check_local);
@@ -238,22 +253,20 @@ Void BonkEnc::ConfigureCDDB::ToggleCDDBSettings()
 {
 	if (cddb_local || cddb_remote)
 	{
-		check_auto->Activate();
-		check_cdtext->Activate();
-		check_cache->Activate();
+		group_cddb_auto->Activate();
+		group_cddb_options->Activate();
 	}
 	else
 	{
-		check_auto->Deactivate();
-		check_cdtext->Deactivate();
-		check_cache->Deactivate();
+		group_cddb_auto->Deactivate();
+		group_cddb_options->Deactivate();
 	}
 }
 
 Void BonkEnc::ConfigureCDDB::ToggleAutoCDDB()
 {
-	if (cddb_auto)	check_cdtext->Activate();
-	else		check_cdtext->Deactivate();
+	if (cddb_autoquery) check_cdtext->Activate();
+	else		    check_cdtext->Deactivate();
 }
 
 Void BonkEnc::ConfigureCDDB::HTTPSettings()
@@ -283,11 +296,11 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 
 	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault) == 1 && combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
 	{
-		Int	 selection = QuickMessage(i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
+		Int	 selection = QuickMessage(i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
-		if	(selection == IDYES)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, FREEDB_MODE_HTTP);
-		else if (selection == IDNO)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());
-		else if (selection == IDCANCEL)	return Error();
+		if	(selection == Message::Button::Yes)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, FREEDB_MODE_HTTP);
+		else if (selection == Message::Button::No)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());
+		else if (selection == Message::Button::Cancel)	return Error();
 	}
 	else
 	{
@@ -310,7 +323,9 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 
 	if (!freedb_dir.EndsWith(Directory::GetDirectoryDelimiter())) freedb_dir.Append(Directory::GetDirectoryDelimiter());
 
-	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb_auto);
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb_autoquery);
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, cddb_autoselect);
+
 	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbOverwriteCDTextID, cddb_cdtext);
 	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, cddb_cache);
 

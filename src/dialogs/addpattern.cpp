@@ -37,7 +37,7 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	text_directory	= new Text(String(i18n->TranslateString("Start folder")).Append(":"), Point(16, 23));
 	text_pattern	= new Text(String(i18n->TranslateString("Filename pattern")).Append(":"), Point(16, 50));
 
-	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + Math::Max(text_directory->textSize.cx, text_pattern->textSize.cx), 20), Size(269 - Math::Max(text_directory->textSize.cx, text_pattern->textSize.cx), 0));
+	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 20), Size(269 - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 0));
 
 	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(299, 19), Size(80, 0));
 	btn_browse->onAction.Connect(&AddPatternDialog::Browse, this);

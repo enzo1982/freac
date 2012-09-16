@@ -10,6 +10,7 @@
 
 #include <jobs/jobmanager.h>
 #include <jobs/job.h>
+#include <dialogs/error.h>
 #include <config.h>
 #include <utilities.h>
 
@@ -81,9 +82,9 @@ Void BonkEnc::JobManager::OnFinishJob(Job *job)
 	{
 		if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault))
 		{
-			const Array<String>	&errors = job->GetErrors();
+			ErrorDialog	 dialog(job->GetErrors());
 
-			foreach (const String &error, errors) BoCA::Utilities::ErrorMessage(error);
+			dialog.ShowDialog();
 		}
 
 		return;

@@ -23,6 +23,9 @@
     <entry id="305" string="Comment"/>
     <entry id="306" string="Year"/>
     <entry id="307" string="Disc"/>
+    <entry id="308" string="Rating"/>
+    <entry id="309" string="File name"/>
+    <entry id="310" string="File type"/>
     <entry id="350" string="unknown artist"/>
     <entry id="351" string="unknown title"/>
     <entry id="352" string="unknown album"/>
@@ -308,6 +311,8 @@
 	<entry id="5112" string="Output filenames"/>
 	<entry id="5113" string="Allow Unicode characters"/>
 	<entry id="5114" string="Replace spaces"/>
+	<entry id="5115" string="Remove processed tracks from joblist"/>
+	<entry id="5116" string="Add encoded files to joblist"/>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?"/>
@@ -340,6 +345,8 @@
 	<entry id="5312" string="Automatic CDDB queries"/>
 	<entry id="5313" string="Prefer CDDB over CD Text"/>
 	<entry id="5314" string="Enable CDDB cache"/>
+	<entry id="5315" string="Automatization"/>
+	<entry id="5316" string="Always select first entry"/>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings"/>
@@ -450,6 +457,15 @@
       <entry id="7020" string="Unknown error"/>
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
       <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1"/>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Errors">
+	<entry id="8000" string="Errors"/>
+	<entry id="8001" string="%1 errors while processing job"/>
+	<entry id="8002" string="select an entry for details"/>
+      </section>
     </section>
 
     <section name="Decoders">
@@ -734,6 +750,7 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52000" string="Video"/>
 	<entry id="52001" string="Enter video URL here:"/>
 	<entry id="52002" string="Download"/>
 	<entry id="52003" string="Automatically download URLs copied to clipboard"/>
@@ -769,20 +786,21 @@
 	  <entry id="52201" string="This URL is not supported or not a video page URL!"/>
 	  <entry id="52202" string="Error downloading video!"/>
 	  <entry id="52203" string="You are already downloading this video!"/>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg to fix this problem!"/>
+	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv to fix this problem!"/>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tracks"/>
+	<entry id="53000" string="Tags"/>
 	<entry id="53001" string="Length"/>
 	<entry id="53002" string="Size"/>
 	<entry id="53003" string="Albums"/>
 	<entry id="53004" string="Files"/>
 	<entry id="53005" string="File"/>
-	<entry id="53006" string="Save"/>
-	<entry id="53007" string="Save all"/>
-	<entry id="53008" string="no audio files found"/>
+	<entry id="53006" string="Tracks"/>
+	<entry id="53007" string="Save"/>
+	<entry id="53008" string="Save all"/>
+	<entry id="53009" string="no audio files found"/>
 
 	<section name="Basic">
 	  <entry id="53100" string="Basic"/>

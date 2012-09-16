@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,18 +25,18 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	createCueSheets	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
 	useEncOutdir	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
 
-	group_options		= new GroupBox(i18n->TranslateString("Playlists"), Point(7, 11), Size(178, 68));
+	group_options		= new GroupBox(i18n->TranslateString("Playlists"), Point(7, 11), Size(344, 42));
 
 	check_createPlaylists	= new CheckBox(i18n->TranslateString("Create playlists"), Point(10, 14), Size(157, 0), &createPlaylists);
 	check_createPlaylists->onAction.Connect(&ConfigurePlaylists::ToggleCreatePlaylists, this);
 
-	check_createCueSheets	= new CheckBox(i18n->TranslateString("Create cue sheets"), Point(10, 40), Size(157, 0), &createCueSheets);
+	check_createCueSheets	= new CheckBox(i18n->TranslateString("Create cue sheets"), Point(176, 14), Size(157, 0), &createCueSheets);
 	check_createCueSheets->onAction.Connect(&ConfigurePlaylists::ToggleCreatePlaylists, this);
 
 	group_options->Add(check_createPlaylists);
 	group_options->Add(check_createCueSheets);
 
-	group_outdir		= new GroupBox(i18n->TranslateString("Output folder"), Point(193, 11), Size(344, 69));
+	group_outdir		= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 65), Size(344, 69));
 
 	check_useEncOutdir	= new CheckBox(i18n->TranslateString("Use encoder output folder"), Point(10, 14), Size(236, 0), &useEncOutdir);
 	check_useEncOutdir->onAction.Connect(&ConfigurePlaylists::ToggleUseEncOutdir, this);
@@ -50,7 +50,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdir_browse);
 
-	group_filename		= new GroupBox(i18n->TranslateString("Filename pattern"), Point(193, 92), Size(344, 43));
+	group_filename		= new GroupBox(i18n->TranslateString("Filename pattern"), Point(7, 146), Size(344, 43));
 
 	edit_filename		= new EditBox(playlistOutputPattern, Point(10, 12), Size(324, 0), 0);
 
@@ -72,7 +72,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	Add(group_filename);
 	Add(group_options);
 
-	SetSize(Size(544, 142));
+	SetSize(Size(358, 194));
 }
 
 BonkEnc::ConfigurePlaylists::~ConfigurePlaylists()

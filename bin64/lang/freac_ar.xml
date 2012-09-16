@@ -305,6 +305,7 @@
 	<entry id="5312" string="Automatic CDDB queries">إستعلام تلقائي لقاعدة بيانات قرص مدمج</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">تفضيل قاعدة بيانات قرص مضغوط عبر النص لقرص مضغوط</entry>
 	<entry id="5314" string="Enable CDDB cache">تمكين التخزين المؤقت لقاعدة بيانات قرص مدمج</entry>
+	<entry id="5315" string="Automatization">التلقائية</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">إعدادات تمديد قاعدة بيانات قرص مدمج</entry>

@@ -303,6 +303,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Consultes CDDB automàtiques</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Sobreescriure CD-Text-Infos</entry>
 	<entry id="5314" string="Enable CDDB cache">Usar cachè de CDDB</entry>
+	<entry id="5315" string="Automatization">Automatizació</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Configuracions CDDB ampliades</entry>

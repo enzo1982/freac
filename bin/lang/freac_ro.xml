@@ -303,6 +303,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Interogări automate CDDB</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">CDDB în loc de CD Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Activare cache CDDB</entry>
+	<entry id="5315" string="Automatization">Automatizare</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Setări extinse CDDB</entry>
@@ -335,6 +336,7 @@
 	<entry id="5500" string="Tags">Tag-uri Info</entry>
 	<entry id="5501" string="Tag formats">Codare Tag</entry>
 	<entry id="5502" string="Default comment string:">Text implicit comentariu:</entry>
+	<entry id="5503" string="Replace existing comments with default comment">Înlocuieşte comentariile existente cu comentariul default</entry>
 	<entry id="5504" string="Filename pattern">Model nume fisier</entry>
       </section>
     </section>
@@ -378,12 +380,20 @@
       <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suportul pentru CDDB este dezactivat! Activaţi baza&#10;locală sau cea online în dialogul de configurare!</entry>
       <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suportul pentru baza CDDB online este dezactivat!&#10;Activaţi suportul din dialogul de configurare!</entry>
       <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Accesul la CD-ROM nu este permis de Windows.&#10;&#10;Contactaţi administratorul sistemului pentru a vă&#10;permite accesul la CD-ROM.</entry>
+      <entry id="7015" string="Cannot access input file: %1">Nu pot accesa fişierul intrare: %1</entry>
+      <entry id="7016" string="Cannot create output file: %1">Nu pot accesa fişierul ieşire: %1</entry>
+      <entry id="7017" string="File not found">Fişierul nu a fost găsit</entry>
+      <entry id="7018" string="Unknown file type">Tip fişier necunoscut</entry>
+      <entry id="7019" string="Unsupported audio format">Format audio nesuportat</entry>
+      <entry id="7020" string="Unknown error">Eroare necunoscută</entry>
+      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Fişierele selectate nu pot fii combinate într-un singur&#10;fişier de ieşire datorită formatelor diferite.&#10;&#10;Vă rog să convertiţi toate fişierele într-un tip similar.</entry>
     </section>
 
     <section name="Decoders">
 
       <section name="CDRip">
 	<entry id="10000" string="Active CD-ROM drive">CD-ROM activ</entry>
+	<entry id="10001" string="Set drive speed limit:">Setează limită viteză pentru drive:</entry>
 	<entry id="10002" string="CD information">Informaţii CD</entry>
 	<entry id="10003" string="Read CD Text">Citire CD Text</entry>
 	<entry id="10004" string="Read cdplayer.ini">Citire cdplayer.ini</entry>
@@ -574,7 +584,18 @@
 	<entry id="35004" string="Bitrate">Bitrate</entry>
       </section>
 
-      <section name="WMA"/>
+      <section name="WMA">
+	<entry id="36000" string="Select codec">Alege codec</entry>
+	<entry id="36001" string="Select codec format">Alege format codec</entry>
+	<entry id="36002" string="Codec settings">Setări codec</entry>
+	<entry id="36003" string="Use codec">Foloseşte codec</entry>
+	<entry id="36004" string="Use format">Foloseşte format</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Scrie fişiere WMA necompresate</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Selectează automat formatul pe baza setărilor şi formatul de ieşire</entry>
+	<entry id="36007" string="Use VBR encoding">Foloseşte codare VBR</entry>
+	<entry id="36008" string="Use 2-pass encoding">Foloseşte codare 2-pass</entry>
+	<entry id="36009" string="Target bitrate">Bitrate ţintă</entry>
+      </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Bitrate</entry>
@@ -587,8 +608,14 @@
     <section name="Extensions">
 
       <section name="Donate">
+	<entry id="50000" string="Support this project">Ajută acest proiect</entry>
+	<entry id="50001" string="Please support this project!">Vă rog ajutaţi acest proiect!</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Vă rog să ajutaţi păstrarea acestui proiect gratuit prin suportarea&#10;%1 cu o donaţie.&#10;&#10;Da-ţi click pe unul dintre butoanele de mai jos pentru a face o&#10;donaţie utilizând PayPal:</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.&#10;&#10;Scrie te rog către %1 dacă te-ai decis să faci o donaţie&#10;folosind transfer electronic, cec sau bani prin poştă.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">en</entry>
+	<entry id="50006" string="Thank you very much!">Mulţumesc foarte mult!</entry>
+	<entry id="50007" string="Remind me later">Adu-mi aminte mai târziu</entry>
       </section>
 
       <section name="Winamp Adapter">

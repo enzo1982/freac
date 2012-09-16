@@ -47,7 +47,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	text_config		= new Text(i18n->TranslateString("Active configuration:"), Point(7, 11));
 
-	combo_config		= new ComboBox(Point(text_config->textSize.cx + 15, 8), Size());
+	combo_config		= new ComboBox(Point(text_config->GetUnscaledTextWidth() + 15, 8), Size());
 
 	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
 	{
@@ -60,7 +60,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	combo_config->onSelectEntry.Connect(&ConfigDialog::OnSelectConfiguration, this);
 
-	edit_config		= new EditBox(NIL, Point(text_config->textSize.cx + 15, 8), Size(), 0);
+	edit_config		= new EditBox(NIL, Point(text_config->GetUnscaledTextWidth() + 15, 8), Size(), 0);
 	edit_config->SetDropDownList(combo_config);
 	edit_config->onSelectEntry.Connect(&ConfigDialog::OnSelectConfigurationByName, this);
 	edit_config->onInput.Connect(&ConfigDialog::OnEditConfigurationName, this);
@@ -127,7 +127,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	mainWnd->Add(btn_cancel);
 	mainWnd->Add(list_layers);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(WF_NORMAL);
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
@@ -361,8 +361,8 @@ Void BonkEnc::ConfigDialog::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	combo_config->SetWidth(clientSize.cx - text_config->textSize.cx - 198);
-	edit_config->SetWidth(clientSize.cx - text_config->textSize.cx - 198);
+	combo_config->SetWidth(clientSize.cx - text_config->GetUnscaledTextWidth() - 198);
+	edit_config->SetWidth(clientSize.cx - text_config->GetUnscaledTextWidth() - 198);
 
 	list_layers->SetSize(Size(210, clientSize.cy - 94));
 }
@@ -373,8 +373,6 @@ Void BonkEnc::ConfigDialog::OnSelectConfiguration()
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Configuration");
-
-	if (selectedLayer != NIL) for (Int i = 0; i < layers.Length(); i++) layers.GetNth(i)->SaveSettings();
 
 	Surface	*surface = mainWnd->GetDrawSurface();
 
@@ -388,8 +386,6 @@ Void BonkEnc::ConfigDialog::OnSelectConfiguration()
 		combo_config->Show();
 
 		surface->EndPaint();
-
-		config->SetActiveConfiguration("default");
 	}
 	else
 	{
@@ -403,11 +399,16 @@ Void BonkEnc::ConfigDialog::OnSelectConfiguration()
 		edit_config->SetText(combo_config->GetSelectedEntry()->GetText());
 
 		surface->EndPaint();
-
-		config->SetActiveConfiguration(combo_config->GetSelectedEntry()->GetText());
 	}
 
-	surface->StartPaint(Rect(Point(), mainWnd->GetSize()));
+	surface->PaintRect(mainWnd->GetClientRect());
+
+	if (selectedLayer != NIL) for (Int i = 0; i < layers.Length(); i++) layers.GetNth(i)->SaveSettings();
+
+	if (combo_config->GetSelectedEntryNumber() == 0) config->SetActiveConfiguration("default");
+	else						 config->SetActiveConfiguration(combo_config->GetSelectedEntry()->GetText());
+
+	surface->StartPaint(mainWnd->GetClientRect());
 
 	DeleteLayers();
 	AddLayers();
@@ -471,6 +472,10 @@ Void BonkEnc::ConfigDialog::OnCreateConfig()
 	{
 		entry->SetText(String(i18n->TranslateString("New configuration")).Append(" (").Append(String::FromInt(++n)).Append(")"));
 	}
+
+	/* Save configuration.
+	 */
+	for (Int i = 0; i < layers.Length(); i++) layers.GetNth(i)->SaveSettings();
 
 	/* Activate the new configuration.
 	 */

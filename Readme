@@ -1,8 +1,8 @@
 fre:ac version 1.1 CVS
 
 fre:ac is a free and open source audio converter for various formats.
-It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAVE, AIFF, AU and
-VOC files and converts to MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC,
+It reads MP3, MP4/M4A, AAC, Vorbis, Bonk, FLAC, WAVE, AIFF, AU and
+VOC files and converts to MP3, MP4/M4A, AAC, Vorbis, Bonk, FLAC,
 VQF or WAVE.
 
 fre:ac uses the CDRip Ripping Library for audio ripping on Windows.
@@ -14,12 +14,12 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (May 2011)
+	Version 1.1 CVS (September 2012)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
-		- added Estonian, Croatian, Portuguese, Vietnamese, Hebrew, Arabic, Catalan, Valencian and Galician language support
-		- added German, Italian, Russian, Portuguese, Czech and Greek user guides
+		- added Estonian, Croatian, Portuguese, Bulgarian, Vietnamese, Hebrew, Arabic, Catalan, Valencian and Galician language support
+		- added German, Spanish, Italian, Russian, Portuguese, Czech and Greek user guides
 		- added several translations for the installer
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
@@ -31,6 +31,7 @@ History
 		- added Monkey's Audio encoder/decoder
 		- added Speex speech encoder/decoder
 		- added Windows Media Audio encoder/decoder
+		- added Opus audio encoder/decoder
 		- added support for command line encoders/decoders
 		- added support for the MAD MP3 decoder
 		- added TwinVQ VQF decoder support
@@ -40,26 +41,31 @@ History
 		- added support for reading and writing MP4 chapters
 		- added support for MCDI frame in ID3v2 tags
 		- added support for gapless MP3 decoding
-		- added RIFF tagging support (using LIST INFO chunk)
+		- added RIFF tagging support (using LIST INFO and Cart chunks)
 		- added support for Ogg FLAC files
 		- added support for wildcards in arguments to BEcmd
+		- added support for large fonts
 		- changed default output directory to "My Music" folder
 		- added <disc> pattern
 		- added <directory> pattern to allow preserving existing directory structures
 		- added <filetype> pattern
 		- added <installdrive> pattern for use in output directory name
 		- added preview to CDDB match selection dialog
+		- added an option to automatically select the first CDDB match
 		- added context menu for text edit fields
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
 		- added ripping speed configuration option
 		- added CD read offset configuration option
+		- added configuration option to keep converted tracks in joblist
+		- added configuration option to add encoded files to joblist
 		- added support for loading cuesheets
 		- added support for reading and writing Vorbis files with .oga extension
 		- making better use of multi-core CPUs when encoding/decoding
 		- miscellaneous other speed optimizations
 		- the five last used file name patterns are now saved for later use
 		- greatly improved case conversion functions
+		- fixed ID3v2 cover data not being displayed in iTunes
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed ID3lib to read and write correct ID3v2.4 tags
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
@@ -78,6 +84,7 @@ History
 		- fixed BEcmd crashes
 		- fixed support for various artists CDs
 		- improved CDDB data sanity check
+		- improved title info editing user friendliness
 		- improved support for network files and directories
 		- raised maximum file name length on NT systems
 		- NT SCSI mode is now used by default to access CD drives on NT systems
@@ -88,17 +95,17 @@ History
 		- upgraded FLAC to version 1.2.1
 		- upgraded FAAC to version 1.28
 		- upgraded FAAD2 to version 2.7
-		- upgraded LAME to version 3.99 beta 0
-		- upgraded Ogg Vorbis to aoTuV beta 6.03
-		- upgraded Ogg library to version 1.2.2
+		- upgraded LAME to version 3.99.5
+		- upgraded Vorbis to aoTuV beta 6.03
+		- upgraded Ogg library to version 1.3.0
 		- upgraded CDRip to version 1.21 (with cdparanoia III version 10.2)
-		- upgrade to MP4v2 v2.0
+		- upgrade to MP4v2 v2.0.0
 		- lots of other fixes
 
 Requirements
 ------------
 
-	- Windows NT/2000/XP/Vista/7, Linux (e.g. Ubuntu 11.04), Mac OS X 10.6, Solaris 11 Express, FreeBSD 8.2, OpenBSD 4.8 or NetBSD 5.1
+	- Windows NT/2000/XP/Vista/7/8, Linux (e.g. Ubuntu 12.04), Mac OS X 10.6/10.7/10.8, Solaris 11, FreeBSD 9.1, OpenBSD 5.1 or NetBSD 6.0
 	- Pentium 4 CPU, 128 MB RAM, 50 MB free disk space
 
 	Additional requirements for compiling the sources:
@@ -115,7 +122,7 @@ Requirements
 
 			- GCC v4.0+
 
-			- libcairo, libmad, libogg, libfaac, libfaad2, libmp3lame, libmp4v2,
+			- libcairo, libmad, libogg, libfaac, libfaad2, libmp3lame, libmp4v2, libopus
 			  libspeex, libvorbis, libjpeg, libpng, libbz2, libxml2, libxmu, libx11
 
 			Linux:
@@ -216,7 +223,8 @@ Special thanks to
 			   Eduardo Estévez (Galician),
 			   Phan Anh (Vietnamese),
 			   Ilan Tsmeret (Hebrew),
-			   Eman Ali Fhoula (Arabic)
+			   Eman Ali Fhoula (Arabic),
+			   Martin Deyanov (Bulgarian)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

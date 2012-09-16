@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -41,12 +41,17 @@ namespace BonkEnc
 			Button		*button_http;
 			Button		*button_proxy;
 
+			GroupBox	*group_cddb_auto;
+			CheckBox	*check_autoquery;
+			CheckBox	*check_autoselect;
+
 			GroupBox	*group_cddb_options;
-			CheckBox	*check_auto;
 			CheckBox	*check_cdtext;
 			CheckBox	*check_cache;
 
-			Bool		 cddb_auto;
+			Bool		 cddb_autoquery;
+			Bool		 cddb_autoselect;
+
 			Bool		 cddb_cdtext;
 			Bool		 cddb_cache;
  

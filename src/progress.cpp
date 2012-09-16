@@ -19,7 +19,7 @@ BonkEnc::Progress::~Progress()
 {
 }
 
-Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
+Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -28,12 +28,8 @@ Void BonkEnc::Progress::ComputeTotalSamples(JobList *joblist)
 	totalSamples = 0;
 	totalSamplesDone = 0;
 
-	for (Int n = 0; n < joblist->GetNOfTracks(); n++)
+	foreach (const Track &trackInfo, tracks)
 	{
-		if (!joblist->GetNthEntry(n)->IsMarked()) continue;
-
-		const Track	&trackInfo = joblist->GetNthTrack(n);
-
 		if	(trackInfo.length	>= 0) totalSamples += trackInfo.length;
 		else if (trackInfo.approxLength >= 0) totalSamples += trackInfo.approxLength;
 		else				      totalSamples += (240 * trackInfo.GetFormat().rate);

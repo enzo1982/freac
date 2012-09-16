@@ -303,6 +303,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Автоматичні CDDB запити</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Перевага CDDB над CD текстом</entry>
 	<entry id="5314" string="Enable CDDB cache">Включити CDDB кеш</entry>
+	<entry id="5315" string="Automatization">Автоматизація</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Розширені налаштування CDDB</entry>
@@ -617,6 +618,7 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52000" string="Video">Відео</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Автоматизація</entry>

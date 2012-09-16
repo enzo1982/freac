@@ -302,6 +302,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Αυτόματη ερώτηση CDDB</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Προτίμηση CDDB από το CD Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Ενεργοποίηση CDDB cache</entry>
+	<entry id="5315" string="Automatization">Αυτοματοποίηση</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Εκτεταμένες επιλογές CDDB</entry>

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,6 +19,8 @@
 #include <joblist.h>
 #include <playback.h>
 #include <utilities.h>
+
+#include <jobs/job_addfiles.h>
 
 using namespace smooth::IO;
 using namespace BoCA::AS;
@@ -58,6 +60,15 @@ Void BonkEnc::Converter::Convert(JobList *iJoblist, Bool useThread)
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	joblist		= iJoblist;
+
+	tracks.RemoveAll();
+
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
+	{
+		if (!joblist->GetNthEntry(i)->IsMarked()) continue;
+
+		tracks.Add(joblist->GetNthTrack(i));
+	}
 
 	encoding	= True;
 	paused		= False;
@@ -107,11 +118,10 @@ Int BonkEnc::Converter::ConverterThread()
 
 	encoder_activedrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 
-	Int		 num		= joblist->GetNOfTracks();
-	Int		 nRemoved	= 0;
-	Int		 step		= 1;
 	String		 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	Int		 encodedTracks	= 0;
 	Int64		 encodedSamples	= 0;
+	Int		 mode		= ENCODER_MODE_ON_THE_FLY;
 	Playlist	 playlist;
 	CueSheet	 cueSheet;
 
@@ -119,34 +129,34 @@ Int BonkEnc::Converter::ConverterThread()
 
 	onStartEncoding.Emit();
 
-	joblist->SetFlags(LF_MULTICHECKBOX);
-
-	progress->ComputeTotalSamples(joblist);
+	progress->ComputeTotalSamples(tracks);
 	progress->InitTotalProgressValues();
 	progress->PauseTotalProgress();
 
-	for (Int i = 0; i < num; (step == 1) ? i++ : i)
+	for (Int i = 0; i < tracks.Length(); (mode == ENCODER_MODE_DECODE) ? i : i++)
 	{
-		if (!joblist->GetNthEntry(i - nRemoved)->IsMarked()) continue;
-
-		if (skip && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0)
+		/* Reset encoder mode if skip pressed while decoding.
+		 */
+		if (skip && mode == ENCODER_MODE_DECODE)
 		{
-			step		= 1;
-			encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+			mode	  = ENCODER_MODE_ENCODE;
+			encoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 
 			continue;
 		}
 
-		Track		 trackInfo = joblist->GetNthTrack(i - nRemoved);
+		Track		 trackInfo = tracks.GetNth(i);
 		const Format	&format	   = trackInfo.GetFormat();
 		const Info	&info	   = trackInfo.GetInfo();
 
-		String	 in_filename	= trackInfo.origFilename;
+		String	 in_filename = trackInfo.origFilename;
 		String	 out_filename;
 
-		skip		= False;
+		skip = False;
 
-		if (nRemoved == 0 && (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) || config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) == "wave-out" || step == 0))
+		/* Setup playlist file name and single file encoder.
+		 */
+		if (encodedTracks == 0 && (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) || config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) == "wave-out" || mode == ENCODER_MODE_DECODE))
 		{
 			playlist_filename = GetPlaylistFileName(trackInfo);
 
@@ -170,12 +180,8 @@ Int BonkEnc::Converter::ConverterThread()
 				singleTrack.SetInfo(singleTrackInfo);
 				singleTrack.SetFormat(trackInfo.GetFormat());
 
-				for (Int n = 0; n < joblist->GetNOfTracks(); n++)
+				foreach (const Track &chapterTrack, tracks)
 				{
-					if (!joblist->GetNthEntry(n)->IsMarked()) continue;
-
-					const Track	&chapterTrack = joblist->GetNthTrack(n);
-
 					singleTrack.tracks.Add(chapterTrack);
 				}
 
@@ -187,33 +193,37 @@ Int BonkEnc::Converter::ConverterThread()
 				{
 					delete encoder;
 
+					encoder = NIL;
+
 					break;
 				}
 			}
 		}
 
+		/* Setup output file name.
+		 */
 		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 		{
 			out_filename = GetOutputFileName(trackInfo);
 
-			if (!overwriteAll && File(out_filename).Exists() && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !(!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0))
+			if (!overwriteAll && File(out_filename).Exists() && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && mode != ENCODER_MODE_DECODE)
 			{
 				BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 				i18n->SetContext("Messages");
 
-				MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNOCANCEL, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
+				MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
 				confirmation->ShowDialog();
 
-				if (confirmation->GetButtonCode() == IDCANCEL)
+				if (confirmation->GetButtonCode() == Message::Button::Cancel)
 				{
 					Object::DeleteObject(confirmation);
 
 					break;
 				}
 
-				if (confirmation->GetButtonCode() == IDNO)
+				if (confirmation->GetButtonCode() == Message::Button::No)
 				{
 					overwriteAll = False;
 
@@ -230,32 +240,33 @@ Int BonkEnc::Converter::ConverterThread()
 			trackInfo.outfile = out_filename;
 		}
 
-		Int	 mode = ENCODER_MODE_ON_THE_FLY;
-
-		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "wave-out")
+		/* Set encoder mode in non-on-the-fly mode.
+		 */
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault))
 		{
-			if	(step == 1) mode = ENCODER_MODE_DECODE;
-			else if (step == 0) mode = ENCODER_MODE_ENCODE;
+			if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "wave-out")
+			{
+				if (mode == ENCODER_MODE_DECODE) mode = ENCODER_MODE_ENCODE;
+				else				 mode = ENCODER_MODE_DECODE;
+			}
+
+			if (mode == ENCODER_MODE_DECODE)
+			{
+				encoderID = "wave-out";
+
+				out_filename.Append(".wav");
+			}
+			else if (mode == ENCODER_MODE_ENCODE)
+			{
+				encoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+
+				in_filename = out_filename;
+				in_filename.Append(".wav");
+			}
 		}
 
-		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1 && encoderID != "wave-out")
-		{
-			step = 0;
-
-			encoderID = "wave-out";
-
-			out_filename.Append(".wav");
-		}
-		else if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0)
-		{
-			step = 1;
-
-			encoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
-
-			in_filename = out_filename;
-			in_filename.Append(".wav");
-		}
-
+		/* Create decoder.
+		 */
 		Decoder	*decoder = new Decoder();
 
 		if (!decoder->Create(in_filename, trackInfo))
@@ -265,7 +276,9 @@ Int BonkEnc::Converter::ConverterThread()
 			continue;
 		}
 
-		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1)
+		/* Fix total samples value when not encoding on-the-fly.
+		 */
+		if (mode == ENCODER_MODE_ENCODE)
 		{
 			Track	 nTrackInfo = trackInfo;
 
@@ -318,11 +331,12 @@ Int BonkEnc::Converter::ConverterThread()
 
 			Int	 bytes = decoder->Read(buffer, step * bytesPerSample * format.channels);
 
-			if (bytes == 0) break;
+			if	(bytes == -1) { stop = True; break; }
+			else if (bytes ==  0)		     break;
 
 			if (format.order == BYTE_RAW) Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
 
-			encoder->Write(buffer, bytes);
+			if (encoder->Write(buffer, bytes) == -1) { stop = True; break; }
 
 			trackLength += (bytes / bytesPerSample / format.channels);
 
@@ -350,19 +364,60 @@ Int BonkEnc::Converter::ConverterThread()
 
 		encodedSamples += trackLength;
 
+		/* Close encoder or signal next chapter.
+		 */
 		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 		{
 			delete encoder;
 
-			InStream	*f_in = new InStream(STREAM_FILE, out_filename, IS_READ);
+			if (File(out_filename).GetFileSize() <= 0 || skip || stop)
+			{
+				File(out_filename).Delete();
+			}
+		}
+		else if (!skip)
+		{
+			encoder->SignalChapterChange();
 
-			Int64	 f_size = f_in->Size();
+			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75), trackInfo);
+		}
 
-			delete f_in;
+		/* Delete input file if requested or not in on-the-fly mode.
+		 */
+		if (mode == ENCODER_MODE_ENCODE)
+		{
+			if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault)) File(in_filename).Delete();
 
-			if (f_size == 0 || skip || stop) File(out_filename).Delete();
+			if (in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
+		}
 
-			if (!skip && (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) || step == 1 || encoderID == "wave-out"))
+		if (mode != ENCODER_MODE_ENCODE && Config::Get()->deleteAfterEncoding && !stop && !skip) File(in_filename).Delete();
+
+		/* Move output file if temporary.
+		 */
+		if (out_filename.ToLower() == String(in_filename.ToLower()).Append(".temp") && File(out_filename).Exists())
+		{
+			if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) || config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault) || !File(in_filename).Exists())
+			{
+				File(in_filename).Delete();
+				File(out_filename).Move(in_filename);
+
+				out_filename = in_filename;
+			}
+			else
+			{
+				File(String(in_filename).Append(".new")).Delete();
+				File(out_filename).Move(String(in_filename).Append(".new"));
+
+				out_filename = String(in_filename).Append(".new");
+			}
+		}
+
+		/* Add track to playlist, cuesheet or joblist.
+		 */
+		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
+		{
+			if (mode != ENCODER_MODE_DECODE && File(out_filename).Exists())
 			{
 				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
 
@@ -370,22 +425,29 @@ Int BonkEnc::Converter::ConverterThread()
 				cueSheet.AddTrack(relativeFileName, 0, trackInfo);
 
 				trackInfo.SaveCoverArtFiles(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+
+				/* Add encoded track to joblist if requested.
+				 */
+				if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, Config::SettingsAddEncodedTracksDefault))
+				{
+					Array<String>	 files;
+
+					files.Add(out_filename);
+
+					(new JobAddFiles(files))->Schedule();
+				}
 			}
 		}
-		else if (!skip)
-		{
-			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75), trackInfo);
-		}
 
-		if (trackInfo.isCDTrack && BoCA::Config::Get()->GetIntValue("CDRip", "EjectAfterRipping", False) && step == 1)
+		/* Eject CD if this was the last track from that disc.
+		 */
+		if (trackInfo.isCDTrack && BoCA::Config::Get()->GetIntValue("CDRip", "EjectAfterRipping", False) && mode != ENCODER_MODE_DECODE)
 		{
 			Bool	 ejectDisk = True;
 
-			for (Int j = i + 1; j < num; j++)
+			for (Int j = i + 1; j < tracks.Length(); j++)
 			{
-				if (!joblist->GetNthEntry(j - nRemoved)->IsMarked()) continue;
-
-				if (joblist->GetNthTrack(j - nRemoved).drive == trackInfo.drive) { ejectDisk = False; break; }
+				if (tracks.GetNthReference(j).drive == trackInfo.drive) { ejectDisk = False; break; }
 			}
 
 			if (ejectDisk)
@@ -401,30 +463,26 @@ Int BonkEnc::Converter::ConverterThread()
 			}
 		}
 
-		if (!config->enable_console && !stop && !skip && step == 1)
+		/* Count encoded tracks and remove track from joblist.
+		 */
+		if (!stop && !skip && mode != ENCODER_MODE_DECODE)
 		{
-			joblist->RemoveNthTrack(i - nRemoved);
-
-			nRemoved++;
-		}
-
-		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1 && encoderID != "wave-out" && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault))						   File(in_filename).Delete();
-		if (Config::Get()->deleteAfterEncoding && !stop && !skip && ((config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1) || (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 0))) File(in_filename).Delete();
-
-		if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && step == 1 && encoderID != "wave-out" && in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
-
-		if (out_filename.ToLower() == String(in_filename.ToLower()).Append(".temp") && File(out_filename).Exists())
-		{
-			if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) || config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault) || !File(in_filename).Exists())
+			if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsRemoveTracksID, Config::SettingsRemoveTracksDefault) && !config->enable_console)
 			{
-				File(in_filename).Delete();
-				File(out_filename).Move(in_filename);
+				for (Int j = 0; j < joblist->GetNOfTracks(); j++)
+				{
+					if (!joblist->GetNthEntry(j)->IsMarked()) continue;
+
+					if (joblist->GetNthTrack(j).GetTrackID() == trackInfo.GetTrackID())
+					{
+						joblist->RemoveNthTrack(j);
+
+						break;
+					}
+				}
 			}
-			else
-			{
-				File(String(in_filename).Append(".new")).Delete();
-				File(out_filename).Move(String(in_filename).Append(".new"));
-			}
+
+			encodedTracks++;
 		}
 
 		if (stop) log->WriteWarning("\tEncoding cancelled.");
@@ -433,16 +491,33 @@ Int BonkEnc::Converter::ConverterThread()
 		if (stop) break;
 	}
 
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) && nRemoved > 0)
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 	{
-		delete encoder;
+		if (encoder != NIL) delete encoder;
+
+		if (File(singleOutFile).GetFileSize() <= 0 || encodedTracks == 0 || skip || stop)
+		{
+			File(singleOutFile).Delete();
+		}
+
+		if (File(singleOutFile).Exists())
+		{
+			/* Add output file to joblist if requested.
+			 */
+			if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, Config::SettingsAddEncodedTracksDefault))
+			{
+				Array<String>	 files;
+
+				files.Add(singleOutFile);
+
+				(new JobAddFiles(files))->Schedule();
+			}
+		}
 	}
 
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, encoder_activedrive);
 
-	joblist->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
-
-	if (!stop && nRemoved > 0)
+	if (!stop && encodedTracks > 0)
 	{
 		if (config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault)) playlist.Save(String(playlist_filename).Append(".m3u"));
 		if (config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault)) cueSheet.Save(String(playlist_filename).Append(".cue"));
@@ -452,7 +527,7 @@ Int BonkEnc::Converter::ConverterThread()
 
 	encoding = false;
 
-	onFinishEncoding.Emit(!stop && nRemoved > 0);
+	onFinishEncoding.Emit(!stop && encodedTracks > 0);
 
 	if (stop) log->WriteWarning("Encoding process cancelled.");
 	else	  log->Write("Encoding process finished.");
@@ -496,24 +571,16 @@ Void BonkEnc::Converter::SkipTrack()
 
 Bool BonkEnc::Converter::CheckSingleFileSampleFormat()
 {
-	Int	 numTracks = joblist->GetNOfTracks();
-	Track	 refTrack  = NIL;
+	Track	 referenceTrack = NIL;
 
-	for (Int i = 0; i < numTracks; i++)
+	foreach (const Track &track, tracks)
 	{
-		if (!joblist->GetNthEntry(i)->IsMarked()) continue;
+		if (referenceTrack == NIL) referenceTrack = track;
 
-		const Track	&track = joblist->GetNthTrack(i);
-
-		if (refTrack == NIL) refTrack = track;
-
-		if (track.GetFormat().channels != refTrack.GetFormat().channels ||
-		    track.GetFormat().rate     != refTrack.GetFormat().rate	||
-		    track.GetFormat().bits     != refTrack.GetFormat().bits	||
-		    track.GetFormat().order    != refTrack.GetFormat().order)
-		{
-			return False;
-		}
+		if (track.GetFormat().channels != referenceTrack.GetFormat().channels ||
+		    track.GetFormat().rate     != referenceTrack.GetFormat().rate     ||
+		    track.GetFormat().bits     != referenceTrack.GetFormat().bits     ||
+		    track.GetFormat().order    != referenceTrack.GetFormat().order) return False;
 	}
 
 	return True;
@@ -576,7 +643,7 @@ String BonkEnc::Converter::GetRelativeFileName(const String &trackFileName, cons
 	{
 		if (compBaseFileName[i] != compTrackFileName[i]) found = True;
 
-		if (baseFileName[i] == '\\')
+		if (baseFileName[i] == '\\' || baseFileName[i] == '/')
 		{
 			if (!found) equalBytes = i + 1;
 			else	    furtherComponents++;
@@ -595,7 +662,7 @@ String BonkEnc::Converter::GetRelativeFileName(const String &trackFileName, cons
 	if ( relativeFileName[1] != ':' &&	  // Absolute local path
 	    !relativeFileName.StartsWith("\\\\")) // Network resource
 	{
-		for (Int m = 0; m < furtherComponents; m++) relativeFileName = String("..\\").Append(relativeFileName);
+		for (Int m = 0; m < furtherComponents; m++) relativeFileName = String("..").Append(Directory::GetDirectoryDelimiter()).Append(relativeFileName);
 	}
 
 	return relativeFileName;
@@ -613,12 +680,15 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 	Int	 lastBs = -1;
 	Int	 firstDot = 0;
 
-	for (Int j = 0; j < track.origFilename.Length(); j++) if (track.origFilename[j] == '\\') lastBs = j;
+	for (Int j = 0; j < track.origFilename.Length(); j++)
+	{
+		if (track.origFilename[j] == '\\' || track.origFilename[j] == '/') lastBs = j;
+	}
 
 	for (Int k = track.origFilename.Length() - 1; k >= 0; k--)
 	{
 		if (track.origFilename[k] == '.' ) { firstDot = track.origFilename.Length() - k; break; }
-		if (track.origFilename[k] == '\\') break;
+		if (track.origFilename[k] == '\\' || track.origFilename[k] == '/') break;
 	}
 
 	String	 shortInFileName;
@@ -632,7 +702,7 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !track.isCDTrack)
 	{
-		String		 file = String(inFileDirectory).Append(String::FromInt(clock())).Append(".temp");
+		String		 file = String(inFileDirectory).Append(String::FromInt(S::System::System::Clock())).Append(".temp");
 		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_REPLACE);
 
 		if (temp->GetLastError() == IO_ERROR_OK) writeToInputDir = True;
@@ -676,20 +746,24 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
 			shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
 
+			for (Int i = 1; i <= 4; i++)
+			{
+				String	 pattern = String("<track(").Append(String::FromInt(i)).Append(")>");
+
+				shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.track > 0 ? info.track : 1) + 1)).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
+			}
+
 			String	 directory = inFileDirectory;
 
 			if	(directory[1] == ':')	       directory = directory.Tail(directory.Length() - 3);
 			else if (directory.StartsWith("\\\\")) directory = directory.Tail(directory.Length() - 2);
 
-			String	 pattern = String("<directory>");
-			String	 value = directory;
-
-			shortOutFileName.Replace("<directory>", value);
+			shortOutFileName.Replace("<directory>", directory);
 
 			for (Int i = 0; i < 10; i++)
 			{
-				pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(">");
-				value = directory;
+				String	 pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(">");
+				String	 value	 = directory;
 
 				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
 
@@ -697,8 +771,8 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 
 				for (Int j = 0; j < 10; j++)
 				{
-					pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(String("(").Append(String::FromInt(j + 1)).Append(")")).Append(">");
-					value = directory;
+					String	 pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(String("(").Append(String::FromInt(j + 1)).Append(")")).Append(">");
+					String	 value	 = directory;
 
 					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
 
@@ -706,7 +780,7 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 
 					for (Int n = 0; n < value.Length(); n++)
 					{
-						if (value[n] == '\\') bsCount++;
+						if (value[n] == '\\' || value[n] == '/') bsCount++;
 
 						if (bsCount == j + 1)
 						{
@@ -801,7 +875,7 @@ String BonkEnc::Converter::GetSingleOutputFileName(const Track &track)
 
 	if (dialog->ShowDialog() == Success()) singleOutputFileName = dialog->GetFileName();
 
-	delete dialog;
+	Object::DeleteObject(dialog);
 
 	return singleOutputFileName;
 }

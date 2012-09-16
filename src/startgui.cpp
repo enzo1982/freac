@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,7 +22,7 @@
 #include <joblist.h>
 #include <utilities.h>
 
-#include <jobs/job_addfiles.h>
+#include <jobs/job_addtracks.h>
 #include <jobs/job_checkforupdates.h>
 
 #include <dialogs/config/config.h>
@@ -121,7 +121,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2011 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2012 Robert Kausch"));
 
 	menu_file		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -143,7 +143,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	hyperlink		= new Hyperlink(String(BonkEnc::website).Replace("http://", NIL).Replace("/", NIL), NIL, BonkEnc::website, Point(91, -22));
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
-	hyperlink->SetX(hyperlink->textSize.cx + 4);
+	hyperlink->SetX(hyperlink->GetUnscaledTextWidth() + 4);
 	hyperlink->SetIndependent(True);
 
 	tabs_main		= new TabWidget(Point(6, 7), Size(700, 500));
@@ -292,7 +292,7 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 		i18n->SetContext("Messages");
 
-		if (IDNO == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
+		if (Message::Button::No == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), Message::Buttons::YesNo, Message::Icon::Question)) return False;
 
 		encoder->Stop();
 	}
@@ -411,12 +411,13 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 					if (ok)
 					{
+						Int	 activeDrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+
 						config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, drive);
-						config->cdrip_autoRead_active = True;
 
-						ReadCD();
+						ReadCD(True);
 
-						config->cdrip_autoRead_active = False;
+						config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, activeDrive);
 					}
 				}
 			}
@@ -441,7 +442,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, mainWnd->GetSize().cx);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, mainWnd->GetSize().cy);
 
-	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2011 Robert Kausch"));
+	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2012 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -460,7 +461,7 @@ Void BonkEnc::BonkEncGUI::About()
 
 	i18n->SetContext("About");
 
-	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2011 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2012 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -551,48 +552,41 @@ Void BonkEnc::BonkEncGUI::OnSelectConfiguration()
 	config->SaveSettings();
 }
 
-Void BonkEnc::BonkEncGUI::ReadCD()
+Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
 {
 	if (!joblist->CanModifyJobList()) return;
 
 	BoCA::Config		*config = BoCA::Config::Get();
-	Registry		&boca = Registry::Get();
 
+	if (clicked_drive >= 0)
+	{
+		config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, clicked_drive);
+
+		clicked_drive = -1;
+	}
+
+	Registry		&boca = Registry::Get();
 	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
 
 	if (info != NIL)
 	{
-		const Array<String>	&files = info->GetNthDeviceTrackList(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
+		const Array<String>	&urls = info->GetNthDeviceTrackList(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
-		Job	*job = new JobAddFiles(files);
+		Job	*job = new JobAddTracks(urls, autoCDRead);
 
 		job->Schedule();
 
-		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault)) job->onFinish.Connect(&BonkEncGUI::QueryCDDB, this);
 		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
 
 		boca.DeleteComponent(info);
 	}
 }
 
-Void BonkEnc::BonkEncGUI::ReadSpecificCD()
-{
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, clicked_drive);
-
-	clicked_drive = -1;
-
-	ReadCD();
-}
-
 Void BonkEnc::BonkEncGUI::QueryCDDB()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	/* ToDo: Check that this message is not displayed
-	 *	 when QueryCDDB is called from ReadCD because
-	 *	 of auto queries enabled.
+	/* Check if CDDB support is enabled.
 	 */
 	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) && !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
@@ -656,7 +650,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 				Info	 info = track.GetInfo();
 
 				if ((info.mcdi.GetData().Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi)) ||
-				    (info.offsets != NIL  && discID == CDDB::DiscIDFromOffsets(info.offsets)))
+				    (info.offsets != NIL && discID == CDDB::DiscIDFromOffsets(info.offsets)))
 				{
 					Int	 trackNumber = -1;
 
@@ -682,10 +676,6 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 			}
 		}
 	}
-
-	joblist->Paint(SP_PAINT);
-
-	if (joblist->GetSelectedTrack() != NIL) joblist->OnSelectEntry();
 }
 
 Void BonkEnc::BonkEncGUI::QueryCDDBLater()
@@ -793,7 +783,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
 	{
-		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->GetSize()));
+		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->GetRealSize()));
 		mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 		mainWnd->Paint(SP_PAINT);
 	}
@@ -801,6 +791,8 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	BoCA::Settings::Get()->onChangeLanguageSettings.Emit();
 
 	FillMenus();
+
+	tabs_main->Paint(SP_PAINT);
 
 	hyperlink->Hide();
 	hyperlink->Show();
@@ -872,7 +864,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		{
 			for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 			{
-				menu_drives->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &clicked_drive, i)->onAction.Connect(&BonkEncGUI::ReadSpecificCD, this);
+				menu_drives->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &clicked_drive, i)->onAction.Connect(&BonkEncGUI::ReadCD, this);
 			}
 
 			boca.DeleteComponent(info);
@@ -969,7 +961,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
 
-		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&BonkEncGUI::EncodeSpecific, this);
+		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&BonkEncGUI::Encode, this);
 	}
 
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0)
@@ -1092,22 +1084,20 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_iconbar->Show();
 }
 
-Void BonkEnc::BonkEncGUI::EncodeSpecific()
-{
-	BoCA::Config	*config = BoCA::Config::Get();
-	Registry	&boca = Registry::Get();
-
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(clicked_encoder));
-
-	tab_layer_joblist->UpdateEncoderText();
-
-	clicked_encoder = -1;
-
-	Encode();
-}
-
 Void BonkEnc::BonkEncGUI::Encode()
 {
+	if (clicked_encoder >= 0)
+	{
+		BoCA::Config	*config = BoCA::Config::Get();
+		Registry	&boca	= Registry::Get();
+
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(clicked_encoder));
+
+		tab_layer_joblist->UpdateEncoderText();
+
+		clicked_encoder = -1;
+	}
+
 	encoder->Convert(joblist);
 }
 
@@ -1174,7 +1164,7 @@ Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
 
 	if (currentConfig->deleteAfterEncoding)
 	{
-		if (IDNO == QuickMessage(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), MB_YESNO, IDI_QUESTION)) currentConfig->deleteAfterEncoding = False;
+		if (Message::Button::No == QuickMessage(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), Message::Buttons::YesNo, Message::Icon::Question)) currentConfig->deleteAfterEncoding = False;
 	}
 }
 
@@ -1184,9 +1174,7 @@ Void BonkEnc::BonkEncGUI::ShowHelp()
 
 	i18n->SetContext("Menu::Help");
 
-#ifdef __WIN32__
-	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index_en.html")), NIL, NIL, 0);
-#endif
+	S::System::System::OpenURL(String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index_en.html")));
 }
 
 Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -50,6 +50,9 @@ namespace BonkEnc
 			Text		*text_comment;
 			MultiEdit	*edit_comment;
 
+			Shortcut	*shortcut_previous;
+			Shortcut	*shortcut_next;
+
 			Text		*text_cdstatus;
 			Text		*text_status;
 
@@ -62,6 +65,7 @@ namespace BonkEnc
 			Int		 activedrive;
 
 			Bool		 dontUpdateInfo;
+			Bool		 finishedArtist;
 			Bool		 updateJoblist;
 			Bool		 submitLater;
 
@@ -90,6 +94,9 @@ namespace BonkEnc
 			Void		 ToggleSubmitLater();
 
 			Void		 SetArtist();	
+
+			Void		 OnShortcutPrevious();
+			Void		 OnShortcutNext();
 		public:
 					 cddbSubmitDlg();
 					~cddbSubmitDlg();

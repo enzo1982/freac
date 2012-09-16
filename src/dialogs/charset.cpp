@@ -34,18 +34,20 @@ BonkEnc::ChooseCharsetDialog::ChooseCharsetDialog()
 
 	group_charset	= new GroupBox(i18n->TranslateString("Character set"), Point(7, 11), Size(293, 37));
 
-	text_charset	= new Text(String(i18n->TranslateString("Choose character set")).Append(":"), Point(16, 23));
-	edit_charset	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastCustomCharsetID, Config::SettingsLastCustomCharsetDefault), Point(23 + text_charset->textSize.cx, 20), Size(268 - text_charset->textSize.cx, 0));
+	text_charset	= new Text(String(i18n->TranslateString("Choose character set")).Append(":"), Point(9, 12));
+	edit_charset	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastCustomCharsetID, Config::SettingsLastCustomCharsetDefault), Point(16 + text_charset->GetUnscaledTextWidth(), 9), Size(268 - text_charset->GetUnscaledTextWidth(), 0));
+
+	group_charset->Add(text_charset);
+	group_charset->Add(edit_charset);
 
 	Add(mainWnd);
 
-	mainWnd->Add(btn_ok);
-	mainWnd->Add(btn_cancel);
 	mainWnd->Add(group_charset);
-	mainWnd->Add(text_charset);
-	mainWnd->Add(edit_charset);
+
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divbar);
+	mainWnd->Add(btn_ok);
+	mainWnd->Add(btn_cancel);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));

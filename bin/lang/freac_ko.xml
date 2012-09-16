@@ -217,6 +217,7 @@
 	<entry id="5311" string="Options">옵션</entry>
 	<entry id="5312" string="Automatic CDDB queries">자동 CDDB 쿼리</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB 캐쉬 허용</entry>
+	<entry id="5315" string="Automatization">자동화</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">확장 CDDB 설정</entry>
@@ -292,6 +293,7 @@
 	<entry id="10010" string="Full cdparanoia mode">전체 CD 모드</entry>
 	<entry id="10011" string="Activate jitter correction">지터 정정</entry>
 	<entry id="10012" string="Swap left/right channel">좌우 채널 스왑</entry>
+	<entry id="10013" string="Automatization">자동화</entry>
 	<entry id="10014" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
 	<entry id="10016" string="Eject disk after ripping">리핑후 디스크 배출</entry>
 	<entry id="10017" string="CD options">CD 옵션</entry>
@@ -472,6 +474,7 @@
       <section name="Video Downloader">
 
 	<section name="Configuration">
+	  <entry id="52101" string="Automatization">자동화</entry>
 	  <entry id="52103" string="Browse">브라우즈</entry>
 	</section>
 

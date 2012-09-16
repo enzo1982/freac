@@ -88,7 +88,7 @@
 	<entry id="1502" string="Check for updates now">Comprobar si hay actualizaciones ahora</entry>
 	<entry id="1503" string="Check for updates at startup">Comprobar si hay actualizaciones al inicio</entry>
 	<entry id="1504" string="About %1">Sobre %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1505" string="index_en.html">index_es.html</entry>
       </section>
     </section>
 
@@ -299,6 +299,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Consultas CDDB automáticas</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Sobreescribir CD-Text-Infos</entry>
 	<entry id="5314" string="Enable CDDB cache">Usar caché de CDDB</entry>
+	<entry id="5315" string="Automatization">Automatización</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Configuraciones CDDB ampliadas</entry>

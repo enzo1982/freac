@@ -22,7 +22,7 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 
 	text_fields	= new Text(i18n->TranslateString("Columns:"), Point(9, 13));
 
-	list_fields	= new ListBox(Point(16 + text_fields->textSize.cx, 10), group_joblist->GetSize() - Size(114 + text_fields->textSize.cx, 20));
+	list_fields	= new ListBox(Point(16 + text_fields->GetUnscaledTextWidth(), 10), group_joblist->GetSize() - Size(114 + text_fields->GetUnscaledTextWidth(), 20));
 	list_fields->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 	list_fields->onSelectEntry.Connect(&ConfigureInterface::OnSelectJoblistField, this);
 
@@ -71,6 +71,7 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 	Bool	 haveGenre    = False;
 	Bool	 haveDisc     = False;
 	Bool	 haveTrack    = False;
+	Bool	 haveRating   = False;
 	Bool	 haveTime     = False;
 	Bool	 haveBytes    = False;
 	Bool	 haveFile     = False;
@@ -84,6 +85,7 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 		else if (field == "<genre>")	{ list_fields->AddEntry(field)->SetMark(True); haveGenre    = True; }
 		else if (field == "<disc>")	{ list_fields->AddEntry(field)->SetMark(True); haveDisc	    = True; }
 		else if (field == "<track>")	{ list_fields->AddEntry(field)->SetMark(True); haveTrack    = True; }
+		else if (field == "<rating>")	{ list_fields->AddEntry(field)->SetMark(True); haveRating   = True; }
 		else if (field == "<time>")	{ list_fields->AddEntry(field)->SetMark(True); haveTime     = True; }
 		else if (field == "<bytes>")	{ list_fields->AddEntry(field)->SetMark(True); haveBytes    = True; }
 		else if (field == "<file>")	{ list_fields->AddEntry(field)->SetMark(True); haveFile	    = True; }
@@ -98,6 +100,7 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 	if (!haveGenre)    list_fields->AddEntry("<genre>")->SetMark(False);
 	if (!haveDisc)	   list_fields->AddEntry("<disc>")->SetMark(False);
 	if (!haveTrack)    list_fields->AddEntry("<track>")->SetMark(False);
+	if (!haveRating)   list_fields->AddEntry("<rating>")->SetMark(False);
 	if (!haveTime)     list_fields->AddEntry("<time>")->SetMark(False);
 	if (!haveBytes)    list_fields->AddEntry("<bytes>")->SetMark(False);
 	if (!haveFile)     list_fields->AddEntry("<file>")->SetMark(False);

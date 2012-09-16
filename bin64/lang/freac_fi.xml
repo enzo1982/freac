@@ -305,6 +305,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Automaattinen CDDB-kysely</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Suosi CDDB CD-Tekstin yli</entry>
 	<entry id="5314" string="Enable CDDB cache">Ota CDDB-välimuisti käyttään</entry>
+	<entry id="5315" string="Automatization">Automaattinen</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Laajennetut CDDB-asetukset</entry>

@@ -303,6 +303,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Aŭtomata CDDB-pridemando</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Preferi CDDB ol KD-teksto</entry>
 	<entry id="5314" string="Enable CDDB cache">Aktivigi CDDB-konservejon</entry>
+	<entry id="5315" string="Automatization">Aŭtomatigo</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Plivastaj CDDB-agordoj</entry>

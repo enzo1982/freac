@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,6 +33,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	submitLater	= !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault);
 
 	dontUpdateInfo	= False;
+	finishedArtist	= False;
 
 	Point	 pos;
 	Size	 size;
@@ -72,8 +73,8 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	check_submitLater->onAction.Connect(&cddbSubmitDlg::ToggleSubmitLater, this);
 	check_submitLater->SetOrientation(OR_LOWERLEFT);
 
-	check_updateJoblist->SetWidth(Math::Max(check_updateJoblist->textSize.cx, check_submitLater->textSize.cx) + 21);
-	check_submitLater->SetWidth(Math::Max(check_updateJoblist->textSize.cx, check_submitLater->textSize.cx) + 21);
+	check_updateJoblist->SetWidth(Math::Max(check_updateJoblist->GetUnscaledTextWidth(), check_submitLater->GetUnscaledTextWidth()) + 21);
+	check_submitLater->SetWidth(Math::Max(check_updateJoblist->GetUnscaledTextWidth(), check_submitLater->GetUnscaledTextWidth()) + 21);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -119,9 +120,9 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_album	= new Text(String(i18n->TranslateString("Album")).Append(":"), pos);
 
-	pos.x += (7 + (Int) Math::Max(text_artist->textSize.cx, text_album->textSize.cx));
+	pos.x += (7 + (Int) Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth()));
 	pos.y -= 30;
-	size.cx = 200 - (Int) Math::Max(text_artist->textSize.cx, text_album->textSize.cx);
+	size.cx = 200 - (Int) Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth());
 	size.cy = 0;
 
 	edit_artist	= new EditBox(NIL, pos, size, 0);
@@ -148,7 +149,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_disccomment= new Text(String(i18n->TranslateString("Comment")).Append(":"), pos);
 
-	pos.x = 228 + Math::Max(text_year->textSize.cx, text_disccomment->textSize.cx);
+	pos.x = 228 + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	pos.y -= 30;
 	size.cx = 31;
 
@@ -160,17 +161,17 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_genre	= new Text(String(i18n->TranslateString("Genre")).Append(":"), pos);
 
-	pos.x += (7 + text_genre->textSize.cx);
+	pos.x += (7 + text_genre->GetUnscaledTextWidth());
 	pos.y -= 3;
-	size.cx = 214 - text_genre->textSize.cx - Math::Max(text_year->textSize.cx, text_disccomment->textSize.cx);
+	size.cx = 214 - text_genre->GetUnscaledTextWidth() - Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	size.cy = 0;
 
 	edit_genre	= new EditBox(NIL, pos, size, 0);
 	edit_genre->SetDropDownList(list_genre);
 
-	pos.x = 228 + Math::Max(text_year->textSize.cx, text_disccomment->textSize.cx);
+	pos.x = 228 + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	pos.y += 27;
-	size.cx = 259 - Math::Max(text_year->textSize.cx, text_disccomment->textSize.cx);
+	size.cx = 259 - Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	size.cy = 34;
 
 	edit_disccomment= new MultiEdit(NIL, pos, size, 0);
@@ -186,12 +187,18 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	list_tracks->AddTab(i18n->TranslateString("Title"));
 	list_tracks->onSelectEntry.Connect(&cddbSubmitDlg::SelectTrack, this);
 
+	shortcut_previous	= new Shortcut(0, Input::Keyboard::KeyUp, list_tracks);
+	shortcut_previous->onKeyDown.Connect(&cddbSubmitDlg::OnShortcutPrevious, this);
+
+	shortcut_next		= new Shortcut(0, Input::Keyboard::KeyDown, list_tracks);
+	shortcut_next->onKeyDown.Connect(&cddbSubmitDlg::OnShortcutNext, this);
+
 	pos.x -= 1;
 	pos.y += 151;
 
 	text_track	= new Text(String(i18n->TranslateString("Track")).Append(":"), pos);
 
-	pos.x += (7 + text_track->textSize.cx);
+	pos.x += (7 + text_track->GetUnscaledTextWidth());
 	pos.y -= 3;
 	size.cx = 25;
 	size.cy = 0;
@@ -213,9 +220,9 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_comment	= new Text(String(i18n->TranslateString("Comment")).Append(":"), pos);
 
-	pos.x += (7 + Math::Max(text_title->textSize.cx, text_comment->textSize.cx));
+	pos.x += (7 + Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()));
 	pos.y -= 57;
-	size.cx = 435 - Math::Max(text_title->textSize.cx, text_comment->textSize.cx) - text_track->textSize.cx;
+	size.cx = 435 - Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()) - text_track->GetUnscaledTextWidth();
 
 	edit_trackartist= new EditBox(NIL, pos, size, 0);
 	edit_trackartist->onInput.Connect(&cddbSubmitDlg::UpdateTrack, this);
@@ -269,6 +276,8 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->Add(text_comment);
 	mainWnd->Add(edit_comment);
 	mainWnd->Add(list_tracks);
+	mainWnd->Add(shortcut_previous);
+	mainWnd->Add(shortcut_next);
 	mainWnd->Add(text_cdstatus);
 	mainWnd->Add(text_status);
 	mainWnd->Add(mainWnd_titlebar);
@@ -282,9 +291,12 @@ BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
+
 	DeleteObject(divbar);
+
 	DeleteObject(combo_drive);
 	DeleteObject(group_drive);
+
 	DeleteObject(text_artist);
 	DeleteObject(edit_artist);
 	DeleteObject(list_artist);
@@ -297,7 +309,12 @@ BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
 	DeleteObject(edit_year);
 	DeleteObject(text_disccomment);
 	DeleteObject(edit_disccomment);
+
 	DeleteObject(list_tracks);
+
+	DeleteObject(shortcut_previous);
+	DeleteObject(shortcut_next);
+
 	DeleteObject(text_track);
 	DeleteObject(edit_track);
 	DeleteObject(text_trackartist);
@@ -306,10 +323,13 @@ BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
 	DeleteObject(edit_title);
 	DeleteObject(text_comment);
 	DeleteObject(edit_comment);
+
 	DeleteObject(text_cdstatus);
 	DeleteObject(text_status);
+
 	DeleteObject(check_updateJoblist);
 	DeleteObject(check_submitLater);
+
 	DeleteObject(btn_submit);
 	DeleteObject(btn_cancel);
 }
@@ -417,7 +437,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		{
 			const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
-			if (trackInfo.discid != cddbInfo.DiscIDToString()) continue;
+			if (trackInfo.discid != cddbInfo.discID) continue;
 
 			for (Int m = 0; m < titles.Length(); m++)
 			{
@@ -688,7 +708,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	{
 		const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
-		if (trackInfo.discid != CDDB::DiscIDToString(cddb.ComputeDiscID())) continue;
+		if (trackInfo.discid != cddb.ComputeDiscID()) continue;
 
 		if (list_tracks->GetNthEntry(trackInfo.cdTrack - 1) != NIL)
 		{
@@ -734,10 +754,10 @@ Void BonkEnc::cddbSubmitDlg::SelectTrack()
 {
 	if (list_tracks->GetSelectedEntry() == NIL) return;
 
-	String	 artist = artists.Get(list_tracks->GetSelectedEntry()->GetHandle());
-	String	 title = titles.Get(list_tracks->GetSelectedEntry()->GetHandle());
+	String	 artist	 = artists.Get(list_tracks->GetSelectedEntry()->GetHandle());
+	String	 title	 = titles.Get(list_tracks->GetSelectedEntry()->GetHandle());
 	String	 comment = comments.Get(list_tracks->GetSelectedEntry()->GetHandle());
-	Int	 track = list_tracks->GetSelectedEntry()->GetText().ToInt();
+	Int	 track	 = list_tracks->GetSelectedEntry()->GetText().ToInt();
 
 	dontUpdateInfo = True;
 
@@ -751,8 +771,8 @@ Void BonkEnc::cddbSubmitDlg::SelectTrack()
 	edit_comment->SetText(comment);
 	edit_track->SetText(NIL);
 
-	if (track > 0 && track < 10)	edit_track->SetText(String("0").Append(String::FromInt(track)));
-	else if (track >= 10)		edit_track->SetText(String::FromInt(track));
+	if	(track > 0 && track < 10) edit_track->SetText(String("0").Append(String::FromInt(track)));
+	else if (track >= 10)		  edit_track->SetText(String::FromInt(track));
 
 	if (edit_artist->GetText() == i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various")	edit_trackartist->MarkAll();
 	else														edit_title->MarkAll();
@@ -781,10 +801,21 @@ Void BonkEnc::cddbSubmitDlg::UpdateTrack()
 Void BonkEnc::cddbSubmitDlg::FinishArtist()
 {
 	edit_title->MarkAll();
+
+	finishedArtist = True;
 }
 
 Void BonkEnc::cddbSubmitDlg::FinishTrack()
 {
+	if (finishedArtist)
+	{
+		edit_title->MarkAll();
+
+		finishedArtist = False;
+
+		return;
+	}
+
 	for (Int i = 0; i < list_tracks->Length() - 1; i++)
 	{
 		if (list_tracks->GetSelectedEntry() == list_tracks->GetNthEntry(i))
@@ -796,6 +827,21 @@ Void BonkEnc::cddbSubmitDlg::FinishTrack()
 			break;
 		}
 	}
+}
+
+Void BonkEnc::cddbSubmitDlg::OnShortcutPrevious()
+{
+	if (edit_comment->IsFocussed()) return;
+
+	if (list_tracks->GetSelectedEntryNumber() == -1) list_tracks->SelectNthEntry(list_tracks->Length()		   - 1);
+	else						 list_tracks->SelectNthEntry(list_tracks->GetSelectedEntryNumber() - 1);
+}
+
+Void BonkEnc::cddbSubmitDlg::OnShortcutNext()
+{
+	if (edit_comment->IsFocussed()) return;
+
+	list_tracks->SelectNthEntry(list_tracks->GetSelectedEntryNumber() + 1);
 }
 
 Void BonkEnc::cddbSubmitDlg::UpdateComment()

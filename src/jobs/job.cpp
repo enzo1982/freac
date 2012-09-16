@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -26,14 +26,14 @@ BonkEnc::Job::Job() : ListEntry("Job")
 {
 	progressLabel	= new Text("Progress:", Point(7, 23));
 
-	progress	= new Progressbar(Point(progressLabel->GetX() + progressLabel->textSize.cx + 7, progressLabel->GetY() - 3), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
+	progress	= new Progressbar(Point(progressLabel->GetX() + progressLabel->GetUnscaledTextWidth() + 7, progressLabel->GetY() - 3), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 
 	timeValue	= new EditBox("00:00", Point(43, progress->GetY()), Size(35, 0), 0);
 	timeValue->SetOrientation(OR_UPPERRIGHT);
 	timeValue->Deactivate();
 
 	timeLabel	= new Text("Time left:", Point(0, progressLabel->GetY()));
-	timeLabel->SetX(timeLabel->textSize.cx + timeValue->GetWidth() + 15);
+	timeLabel->SetX(timeLabel->GetUnscaledTextWidth() + timeValue->GetWidth() + 15);
 	timeLabel->SetOrientation(OR_UPPERRIGHT);
 
 	progressValue	= new EditBox("0%", Point(timeLabel->GetX() + 41, progress->GetY()), Size(34, 0), 0);
@@ -47,12 +47,9 @@ BonkEnc::Job::Job() : ListEntry("Job")
 	Add(timeLabel);
 	Add(timeValue);
 
-	SetHeight(50);
+	SetHeight(51);
 
 	onChangeSize.Connect(&Job::OnChangeSize, this);
-
-	onMouseOver.Connect(&Job::OnMouseOver, this);
-	onMouseOut.Connect(&Job::OnMouseOut, this);
 
 	all.Add(this, GetHandle());
 
@@ -129,29 +126,43 @@ Void BonkEnc::Job::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	progress->SetWidth(clientSize.cx - progressLabel->textSize.cx - progressValue->GetWidth() - timeLabel->textSize.cx - timeValue->GetWidth() - 36);
+	progress->SetWidth(clientSize.cx - progressLabel->GetUnscaledTextWidth() - progressValue->GetWidth() - timeLabel->GetUnscaledTextWidth() - timeValue->GetWidth() - 36);
 }
 
-Void BonkEnc::Job::OnMouseOver()
+Int BonkEnc::Job::Paint(Int message)
 {
-	GUI::Font	 font = progressLabel->GetFont();
+	if (!IsRegistered())	return Error();
+	if (!IsVisible())	return Success();
 
-	font.SetColor(Setup::GradientTextColor);
+	Surface	*surface = GetDrawSurface();
+	Rect	 frame	 = Rect(GetRealPosition(), GetRealSize());
 
-	progressLabel->SetFont(font);
+	switch (message)
+	{
+		case SP_SHOW:
+		case SP_PAINT:
+		case SP_MOUSEIN:
+		case SP_MOUSEOUT:
+			surface->StartPaint(GetVisibleArea());
 
-	Paint(SP_PAINT);
-}
+			SetVisibleDirect(False);
 
-Void BonkEnc::Job::OnMouseOut()
-{
-	GUI::Font	 font = progressLabel->GetFont();
+			if (IsSelected() || IsMouseOver()) SetBackgroundColor(Setup::LightGrayColor);
+			else				   SetBackgroundColor(Setup::BackgroundColor);
 
-	font.SetColor(Setup::TextColor);
+			SetVisibleDirect(True);
 
-	progressLabel->SetFont(font);
+			surface->Box(frame - Size(0, 1), GetBackgroundColor(), Rect::Filled);
+			surface->SetText(text, frame + Point(1, 1) - Size(2, 2), font);
 
-	Paint(SP_PAINT);
+			Widget::Paint(SP_PAINT);
+
+			surface->EndPaint();
+
+			return Success();
+	}
+
+	return Widget::Paint(message);
 }
 
 Int BonkEnc::Job::SetText(const String &newText)

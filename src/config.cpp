@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -59,7 +59,7 @@ const String	 BonkEnc::Config::SettingsDisplayErrorsID			= "DisplayErrors";
 const Bool	 BonkEnc::Config::SettingsDisplayErrorsDefault			= True;
 
 const String	 BonkEnc::Config::SettingsEncodingHeuristicsID			= "EnableEncodingHeuristics";
-const Bool	 BonkEnc::Config::SettingsEncodingHeuristicsDefault		= True;
+const Bool	 BonkEnc::Config::SettingsEncodingHeuristicsDefault		= False;
 
 const String	 BonkEnc::Config::SettingsCheckForUpdatesID			= "CheckUpdatesAtStartup";
 const Bool	 BonkEnc::Config::SettingsCheckForUpdatesDefault		= True;
@@ -82,6 +82,12 @@ const Bool	 BonkEnc::Config::SettingsKeepWaveFilesDefault			= False;
 
 const String	 BonkEnc::Config::SettingsEncodeToSingleFileID			= "EncodeToSingleFile";
 const Bool	 BonkEnc::Config::SettingsEncodeToSingleFileDefault		= False;
+
+const String	 BonkEnc::Config::SettingsRemoveTracksID			= "RemoveTracks";
+const Bool	 BonkEnc::Config::SettingsRemoveTracksDefault			= True;
+
+const String	 BonkEnc::Config::SettingsAddEncodedTracksID			= "AddEncodedTracks";
+const Bool	 BonkEnc::Config::SettingsAddEncodedTracksDefault		= False;
 
 const String	 BonkEnc::Config::SettingsWriteToInputDirectoryID		= "WriteToInputDirectory";
 const Bool	 BonkEnc::Config::SettingsWriteToInputDirectoryDefault		= False;
@@ -238,6 +244,9 @@ const Bool	 BonkEnc::Config::FreedbEnableRemoteDefault			= True;
 const String	 BonkEnc::Config::FreedbAutoQueryID				= "AutoCDDBQueries";
 const Bool	 BonkEnc::Config::FreedbAutoQueryDefault			= True;
 
+const String	 BonkEnc::Config::FreedbAutoSelectID				= "AutoSelectFirstEntry";
+const Bool	 BonkEnc::Config::FreedbAutoSelectDefault			= False;
+
 const String	 BonkEnc::Config::FreedbEnableCacheID				= "EnableCDDBCache";
 const Bool	 BonkEnc::Config::FreedbEnableCacheDefault			= True;
 
@@ -249,10 +258,10 @@ const Bool	 BonkEnc::Config::FreedbUpdateJoblistDefault			= True;
 
 BonkEnc::Config::Config()
 {
+	maxActiveJobs		= 2;
+
 	deleteAfterEncoding	= False;
 	shutdownAfterEncoding	= False;
-
-	maxActiveJobs		= 2;
 
 	Config::SettingsEncoderOutputDirectoryDefault = S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMusic);
 

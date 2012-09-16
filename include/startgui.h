@@ -86,9 +86,6 @@ namespace BonkEnc
 			Void				 ConfigureEncoder();
 			Void				 ConfigureSettings();
 
-			Void				 ReadSpecificCD();
-
-			Void				 EncodeSpecific();
 			Void				 ShowHelp();
 			Void				 ShowTipOfTheDay();
 
@@ -111,7 +108,8 @@ namespace BonkEnc
 
 			Void				 OnSelectConfiguration();
 
-			Void				 ReadCD();
+			Void				 ReadCD()				{ ReadCD(False); }
+			Void				 ReadCD(Bool);
 
 			Void				 QueryCDDB();
 			Void				 QueryCDDBLater();

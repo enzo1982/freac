@@ -303,6 +303,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Automatische CDDB-aanvraag</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">CDDB voorkeur boven cd-text</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB-cache activeren</entry>
+	<entry id="5315" string="Automatization">Automatisatie</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Uitgebreide CDDB-instellingen</entry>

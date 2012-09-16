@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -30,6 +30,11 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 {
 	Registry	&boca = Registry::Get();
 
+	album	= track;
+	chapter = 0;
+	bytes	= 0;
+	offset	= 0;
+
 	f_out = new OutStream(STREAM_FILE, fileName, OS_REPLACE);
 	f_out->SetPackageSize(196608);
 
@@ -44,7 +49,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 	}
 
 	filter_out = (EncoderComponent *) boca.CreateComponentByID(encoderID);
-	filter_out->SetAudioTrackInfo(track);
+	filter_out->SetAudioTrackInfo(album);
 
 	if (f_out->AddFilter(filter_out) == False)
 	{
@@ -69,6 +74,8 @@ Bool BonkEnc::Encoder::Destroy()
 
 	Registry	&boca = Registry::Get();
 
+	filter_out->SetAudioTrackInfo(album);
+
 	f_out->RemoveFilter(filter_out);
 
 	if (filter_out->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", filter_out->GetErrorString());
@@ -83,7 +90,31 @@ Bool BonkEnc::Encoder::Destroy()
 	return True;
 }
 
-Int BonkEnc::Encoder::Write(Buffer<UnsignedByte> &buffer, Int bytes)
+Int BonkEnc::Encoder::Write(Buffer<UnsignedByte> &buffer, Int nbytes)
 {
-	return f_out->OutputData(buffer, bytes);
+	bytes += nbytes;
+
+	if (f_out->OutputData(buffer, nbytes) == False || filter_out->GetErrorState()) return -1;
+
+	return bytes;
+}
+
+Void BonkEnc::Encoder::SignalChapterChange()
+{
+	if (album.tracks.Length() <= chapter) return;
+
+	/* This adjusts chapter lengths in order to be able to
+	 * set accurate chapter marks even in case we have tracks
+	 * with only approxLength set in the first place.
+	 */
+	Track	 track	= album.tracks.GetNth(chapter);
+	Format	 format = album.GetFormat();
+
+	track.length = bytes / format.channels / (format.bits / 8) - offset;
+
+	offset +=  track.length;
+
+	album.tracks.SetNth(chapter, track);
+
+	chapter++;
 }

@@ -2,12 +2,12 @@
 
 include Makefile-options
 
-CDK = ./cdk
+CDK	    = ./cdk
 
 INCLUDEDIR1 = ./include
 INCLUDEDIR2 = $(CDK)/include
-OBJECTDIR = ./objects
-SRCDIR = ./src
+OBJECTDIR   = ./objects
+SRCDIR	    = ./src
 
 ifneq ($(BUILD_X64),True)
 	BINDIR = ./bin
@@ -18,9 +18,9 @@ else
 endif
 
 RESOURCEDIR = ./resources
-BINRESDIR = $(RESOURCEDIR)/binary
+BINRESDIR   = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS  = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/error.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_addtracks.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
 	ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
@@ -30,27 +30,27 @@ ifeq ($(BUILD_WIN32),True)
 	endif
 endif
 
-EXEOBJECTS = $(OBJECTDIR)/gui.o
-CMDOBJECTS = $(OBJECTDIR)/console.o
+EXEOBJECTS  = $(OBJECTDIR)/gui.o
+CMDOBJECTS  = $(OBJECTDIR)/console.o
 
-EXENAME = $(BINDIR)/freac$(EXECUTABLE)
-CMDNAME = $(BINDIR)/freaccmd$(EXECUTABLE)
-DLLNAME = $(BINDIR)/freac$(SHARED)
-LIBNAME = $(OBJECTDIR)/libfreac.a
+EXENAME	    = $(BINDIR)/freac$(EXECUTABLE)
+CMDNAME	    = $(BINDIR)/freaccmd$(EXECUTABLE)
+DLLNAME	    = $(BINDIR)/freac$(SHARED)
+LIBNAME	    = $(OBJECTDIR)/libfreac.a
 
-COMPILER = gcc
-RESCOMP = windres
-LINKER = gcc
-REMOVER = rm
-ECHO = echo
-COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -g0 -Wall -Os -ffast-math -fno-exceptions -DUNICODE -D_UNICODE -c
-LINKER_OPTS = -L$(LIBDIR) -lboca -lsmooth -lstdc++ --shared -o $(DLLNAME)
-LOADER_GUI_LINKER_OPTS = -L$(LIBDIR) -lsmooth -lstdc++ -o $(EXENAME)
+COMPILER		   = gcc
+RESCOMP			   = windres
+LINKER			   = gcc
+REMOVER			   = rm
+ECHO			   = echo
+COMPILER_OPTS		   = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -g0 -Wall -Os -ffast-math -fno-exceptions -DUNICODE -D_UNICODE -c
+LINKER_OPTS		   = -L$(LIBDIR) -lboca -lsmooth -lstdc++ --shared -o $(DLLNAME)
+LOADER_GUI_LINKER_OPTS	   = -L$(LIBDIR) -lsmooth -lstdc++ -o $(EXENAME)
 LOADER_CONSOLE_LINKER_OPTS = -L$(LIBDIR) -lsmooth -lstdc++ -o $(CMDNAME)
-REMOVER_OPTS = -f
-STRIP = strip
-STRIP_OPTS = --strip-all
-RESCOMP_OPTS = -O coff
+REMOVER_OPTS		   = -f
+STRIP			   = strip
+STRIP_OPTS		   = 
+RESCOMP_OPTS		   = -O coff
 
 ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
 	COMPILER_OPTS			+= -D BUILD_VIDEO_DOWNLOADER
@@ -58,7 +58,11 @@ endif
 
 ifneq ($(BUILD_WIN32),True)
 ifneq ($(BUILD_SOLARIS),True)
+ifneq ($(BUILD_QNX),True)
+ifneq ($(BUILD_HAIKU),True)
 	COMPILER_OPTS			+= -pthread
+endif
+endif
 endif
 endif
 
@@ -103,6 +107,10 @@ else
 	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,-rpath,.
 endif
 
+ifneq ($(BUILD_SOLARIS),True)
+	STRIP_OPTS			+= --strip-all
+endif
+
 .PHONY: all headers install clean clean_headers
 .SILENT:
 
@@ -134,6 +142,9 @@ $(EXENAME): $(EXEOBJECTS) $(RESOURCES)
 ifneq ($(BUILD_OSX),True)
 	$(STRIP) $(STRIP_OPTS) $(EXENAME)
 endif
+ifeq ($(BUILD_HAIKU),True)
+	xres -o $(EXENAME) resources/binary/freac.rsrc
+endif
 	$(ECHO) done.
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOURCES)
@@ -141,6 +152,9 @@ $(CMDNAME): $(CMDOBJECTS) $(RESOURCES)
 	$(LINKER) $(CMDOBJECTS) $(RESOURCES) $(LOADER_CONSOLE_LINKER_OPTS)
 ifneq ($(BUILD_OSX),True)
 	$(STRIP) $(STRIP_OPTS) $(CMDNAME)
+endif
+ifeq ($(BUILD_HAIKU),True)
+	xres -o $(CMDNAME) resources/binary/freac.rsrc
 endif
 	$(ECHO) done.
 
@@ -239,6 +253,11 @@ $(OBJECTDIR)/job_addfiles.o: $(SRCDIR)/jobs/job_addfiles.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_addfiles.cpp -o $(OBJECTDIR)/job_addfiles.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/job_addtracks.o: $(SRCDIR)/jobs/job_addtracks.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_addtracks.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_addtracks.cpp -o $(OBJECTDIR)/job_addtracks.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/job_checkforupdates.o: $(SRCDIR)/jobs/job_checkforupdates.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_checkforupdates.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_checkforupdates.cpp -o $(OBJECTDIR)/job_checkforupdates.o
@@ -297,6 +316,11 @@ $(OBJECTDIR)/addpattern.o: $(SRCDIR)/dialogs/addpattern.cpp
 $(OBJECTDIR)/charset.o: $(SRCDIR)/dialogs/charset.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/dialogs/charset.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/charset.cpp -o $(OBJECTDIR)/charset.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/error.o: $(SRCDIR)/dialogs/error.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/error.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/error.cpp -o $(OBJECTDIR)/error.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/language.o: $(SRCDIR)/dialogs/language.cpp

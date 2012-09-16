@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -90,6 +90,12 @@ namespace BonkEnc
 
 			static const String	 SettingsEncodeToSingleFileID;
 			static const Bool	 SettingsEncodeToSingleFileDefault;
+
+			static const String	 SettingsRemoveTracksID;
+			static const Bool	 SettingsRemoveTracksDefault;
+
+			static const String	 SettingsAddEncodedTracksID;
+			static const Bool	 SettingsAddEncodedTracksDefault;
 
 			static const String	 SettingsWriteToInputDirectoryID;
 			static const Bool	 SettingsWriteToInputDirectoryDefault;
@@ -245,6 +251,9 @@ namespace BonkEnc
 
 			static const String	 FreedbAutoQueryID;
 			static const Bool	 FreedbAutoQueryDefault;
+
+			static const String	 FreedbAutoSelectID;
+			static const Bool	 FreedbAutoSelectDefault;
 
 			static const String	 FreedbEnableCacheID;
 			static const Bool	 FreedbEnableCacheDefault;

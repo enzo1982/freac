@@ -303,6 +303,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Automatické požiadavky na CDDB</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Uprednostniť CDDB pred CD-textom</entry>
 	<entry id="5314" string="Enable CDDB cache">Povoliť CDDB cache</entry>
+	<entry id="5315" string="Automatization">Automatizácia</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Rozšírené CDDB nastavenia</entry>

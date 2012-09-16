@@ -331,6 +331,7 @@
 	<entry id="5312" string="Automatic CDDB queries">Automatický dotaz na CDDB</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Přednost CDDB před CD-textem</entry>
 	<entry id="5314" string="Enable CDDB cache">Zapnout CDDB cache</entry>
+	<entry id="5315" string="Automatization">Automatizace</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Rozšířená CDDB nastavení</entry>
@@ -745,15 +746,15 @@
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tracks">Stopa</entry>
 	<entry id="53001" string="Length">Délka</entry>
 	<entry id="53002" string="Size">Velikost</entry>
 	<entry id="53003" string="Albums">Album</entry>
 	<entry id="53004" string="Files">Soubory</entry>
 	<entry id="53005" string="File">Soubor</entry>
-	<entry id="53006" string="Save">Uložit</entry>
-	<entry id="53007" string="Save all">Uložit vše</entry>
-	<entry id="53008" string="no audio files found">audio soubory nenalezeny</entry>
+	<entry id="53006" string="Tracks">Stopa</entry>
+	<entry id="53007" string="Save">Uložit</entry>
+	<entry id="53008" string="Save all">Uložit vše</entry>
+	<entry id="53009" string="no audio files found">audio soubory nenalezeny</entry>
 
 	<section name="Basic">
 	  <entry id="53100" string="Basic">Standard</entry>

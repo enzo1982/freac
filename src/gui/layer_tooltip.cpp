@@ -36,7 +36,7 @@ BonkEnc::LayerTooltip::LayerTooltip(const Track &track) : Layer()
 
 	Add(text);
 
-	SetSize(Size(text->textSize.cx + 7 + (track.pictures.Length() > 0 ? 44 : 0), text->textSize.cy + 7));
+	SetSize(Size(text->GetUnscaledTextWidth() + 7 + (track.pictures.Length() > 0 ? 44 : 0), text->GetUnscaledTextHeight() + 7));
 }
 
 BonkEnc::LayerTooltip::~LayerTooltip()

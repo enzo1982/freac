@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,6 +25,11 @@ namespace BonkEnc
 		protected:
 			IO::OutStream		*f_out;
 			AS::EncoderComponent	*filter_out;
+
+			Track			 album;
+			Int			 chapter;
+			Int64			 bytes;
+			Int64			 offset;
 		public:
 						 Encoder();
 			virtual			~Encoder();
@@ -33,6 +38,8 @@ namespace BonkEnc
 			Bool			 Destroy();
 
 			Int			 Write(Buffer<UnsignedByte> &, Int);
+
+			Void			 SignalChapterChange();
 	};
 };
 

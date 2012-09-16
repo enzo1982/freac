@@ -40,7 +40,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	check_updateJoblist	= new CheckBox(i18n->TranslateString("Update joblist with this information"), Point(7, 27), Size(), &updateJoblist);
-	check_updateJoblist->SetWidth(check_updateJoblist->textSize.cx + 21);
+	check_updateJoblist->SetWidth(check_updateJoblist->GetUnscaledTextWidth() + 21);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
 	text_entries	= new Text(i18n->TranslateString("Downloaded CDDB entries:"), Point(7, 10));
@@ -74,7 +74,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	list_charset->AddEntry("GBK");
 	list_charset->AddEntry("BIG-5");
 
-	edit_charset	= new EditBox(NIL, Point(283 + text_charset->textSize.cx, 223), Size(254 - text_charset->textSize.cx, 0), 0);
+	edit_charset	= new EditBox(NIL, Point(283 + text_charset->GetUnscaledTextWidth(), 223), Size(254 - text_charset->GetUnscaledTextWidth(), 0), 0);
 	edit_charset->SetDropDownList(list_charset);
 	edit_charset->onInput.Connect(&cddbManageDlg::SetCharset, this);
 
@@ -152,7 +152,7 @@ Void BonkEnc::cddbManageDlg::OK()
 			{
 				const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
 
-				if (trackInfo.discid != cddbInfo.DiscIDToString()) continue;
+				if (trackInfo.discid != cddbInfo.discID) continue;
 
 				for (Int m = 0; m < cddbInfo.trackTitles.Length(); m++)
 				{

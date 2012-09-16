@@ -52,7 +52,6 @@
 			/cdk/smooth (rename directory from <b>smooth-0.8.x.y.zip</b> package)
 		      </blockquote>
 		    </li>
-		    <li>move <b>Makefile.mingw</b> from <b>smooth/makefiles</b> to <b>/cdk/smooth/Makefile</b></li>
 		    <li>run <b>cdk.bat</b></li>
 		    <li>enter: <b>cd smooth && make programs && cd ../freac && make</b></li>
 		  </ul>
@@ -72,7 +71,7 @@
 		  <blockquote>
 		    <p>To install the QuickTime AAC Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
-		      <li>Download the <b>QuickTime AAC command line encoder ZIP package</b> from <a href="http://tmkk.hp.infoseek.co.jp/qtaacenc/">tmkk.hp.infoseek.co.jp</a>.</li>
+		      <li>Download the <b>QuickTime AAC command line encoder ZIP package</b> from <a href="http://tmkk.pv.land.to/qtaacenc/">tmkk.pv.land.to</a>.</li>
 		      <li>Copy the file <b>qtaacenc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
 			subdirectory of your fre:ac installation path.</li>
 		      <li>Copy the file <b>QTCF.dll</b> from <b>C:\Program Files\QuickTime\QTSystem</b> to
@@ -93,7 +92,7 @@
 		  <blockquote>
 		    <p>To install the Fraunhofer MP3 Surround Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
-		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/Software2.aspx">www.all4mp3.com</a>.</li>
+		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/tools/command-line-tools.php">www.all4mp3.com</a>.</li>
 		      <li>Copy the file <b>mp3sEncoder.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
 			subdirectory of your fre:ac installation path.</li>
 		    </ul>
@@ -233,7 +232,7 @@
 		  <blockquote>
 		    <p>To install the Thomson mp3HD Encoder for use with fre:ac, follow these steps:</p>
 		    <ul>
-		      <li>Download the <b>Win32 command line encoder ZIP package</b> from <a href="http://www.all4mp3.com/Software3.aspx">www.all4mp3.com</a>.</li>
+		      <li>Download the <b>Win32 mp3HD toolkit ZIP package</b> from <a href="http://www.all4mp3.com/tools/mp3HD-tools.php">www.all4mp3.com</a>.</li>
 		      <li>Copy the file <b>mp3hdEncoder.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
 			subdirectory of your fre:ac installation path.</li>
 		    </ul>
@@ -300,6 +299,9 @@
 		    <li><b>&lt;genre&gt;</b> - The song genre</li>
 		    <li><b>&lt;year&gt;</b> - The year the song was published</li>
 		  </ul>
+		  <p>The <b>&lt;track&gt;</b> placeholder can be modified like <b>&lt;track(n)&gt;</b> where the <b>(n)</b> part specifies the minimum length
+		    of the track number. Zeroes will be prepended if the actual number is too small. <b>n</b> may be in the range of <b>1</b> to <b>4</b>
+		    where <b>2</b> is the default if the <b>(n)</b> part is omitted.</p>
 		  <p>The above placeholders refer to song and album information. The following placeholder resolves to the type of the output file:</p>
 		  <ul>
 		    <li><b>&lt;filetype&gt;</b> - The type of the output file</li>

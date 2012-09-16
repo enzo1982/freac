@@ -9,7 +9,8 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <jobs/job_addfiles.h>
-#include <cddb/cddbremote.h>
+
+#include <cddb/cddb.h>
 
 #include <utilities.h>
 #include <config.h>
@@ -30,9 +31,9 @@ BonkEnc::JobAddFiles::~JobAddFiles()
 
 Bool BonkEnc::JobAddFiles::ReadyToRun()
 {
-	if (!BoCA::JobList::Get()->IsLocked())
+	if (!JobList::Get()->IsLocked())
 	{
-		BoCA::JobList::Get()->Lock();
+		JobList::Get()->Lock();
 
 		return True;
 	}
@@ -82,26 +83,8 @@ Error BonkEnc::JobAddFiles::Perform()
 		 */
 		if (track.isCDTrack)
 		{
-			CDDBRemote	 cddb;
-
-			cddb.SetActiveDrive(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
-
-			track.discid = CDDB::DiscIDToString(cddb.ComputeDiscID());
+			track.discid = CDDB::DiscIDFromMCDI(track.GetInfo().mcdi);
 		}
-
-		/* Exit if we are auto-reading a CD which is already loaded in the joblist.
-		 */
-		if (track.isCDTrack && BoCA::Config::Get()->cdrip_autoRead_active)
-		{
-/* ToDo: Make this work again.
- */
-/*			for (Int i = 0; i < tracks.Length(); i++)
-			{
-				Track	*cdTrack = tracks.GetNth(i);
-
-				if (cdTrack->discid == track.discid && cdTrack->cdTrack == track.cdTrack) return;
-			}
-*/		}
 
 		Info	 info = track.GetInfo();
 
@@ -143,7 +126,7 @@ Error BonkEnc::JobAddFiles::Perform()
 
 	files.RemoveAll();
 
-	BoCA::JobList::Get()->Unlock();
+	JobList::Get()->Unlock();
 
 	return Success();
 }

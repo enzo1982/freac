@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -162,7 +162,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 
 	if (result == QUERY_RESULT_NONE)
 	{
-		if (displayError) QuickMessage(i18n->TranslateString("No freedb entry for this disk."), i18n->TranslateString("Info"), MB_OK, IDI_INFORMATION);
+		if (displayError) QuickMessage(i18n->TranslateString("No freedb entry for this disk."), i18n->TranslateString("Info"), Message::Buttons::Ok, Message::Icon::Information);
 	}
 	else if (result == QUERY_RESULT_SINGLE)
 	{
@@ -173,24 +173,32 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	{
 		if (result == QUERY_RESULT_FUZZY) fuzzy = True;
 
-		cddbMultiMatchDlg	*dlg	= new cddbMultiMatchDlg(cddb, fuzzy);
-
-		for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i), cddb.GetNthDiscID(i));
-
-		if (fuzzy) dlg->AddEntry(i18n->TranslateString("none"), NIL, 0);
-
-		if (dlg->ShowDialog() == Success())
+		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, Config::FreedbAutoSelectDefault))
 		{
-			Int	 index = dlg->GetSelectedEntryNumber();
-
-			if (index < cddb.GetNumberOfMatches() && index >= 0)
-			{
-				category = cddb.GetNthCategory(index);
-				discID	 = cddb.GetNthDiscID(index);
-			}
+			category = cddb.GetNthCategory(0);
+			discID	 = cddb.GetNthDiscID(0);
 		}
+		else
+		{
+			cddbMultiMatchDlg	*dlg	= new cddbMultiMatchDlg(cddb, fuzzy);
 
-		DeleteObject(dlg);
+			for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i), cddb.GetNthDiscID(i));
+
+			if (fuzzy) dlg->AddEntry(i18n->TranslateString("none"), NIL, 0);
+
+			if (dlg->ShowDialog() == Success())
+			{
+				Int	 index = dlg->GetSelectedEntryNumber();
+
+				if (index < cddb.GetNumberOfMatches() && index >= 0)
+				{
+					category = cddb.GetNthCategory(index);
+					discID	 = cddb.GetNthDiscID(index);
+				}
+			}
+
+			DeleteObject(dlg);
+		}
 	}
 
 	Bool	 readError = False;
@@ -210,7 +218,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 
 		if (allowAddToBatch)
 		{
-			if (QuickMessage(String(i18n->TranslateString("Some error occurred trying to connect to the freedb server.")).Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?")), i18n->TranslateString("Error"), MB_YESNO, IDI_HAND) == IDYES)
+			if (QuickMessage(String(i18n->TranslateString("Some error occurred trying to connect to the freedb server.")).Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
 			{
 				CDDBBatch	*queries = new CDDBBatch();
 
