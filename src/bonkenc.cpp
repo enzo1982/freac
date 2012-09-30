@@ -56,7 +56,7 @@ String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free video downloader";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
 #endif
 
-String	 BonkEnc::BonkEnc::version	= "CVS 20120916";
+String	 BonkEnc::BonkEnc::version	= "CVS 20120930";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre2";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
@@ -70,9 +70,10 @@ String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml
 
 BonkEnc::BonkEnc::BonkEnc()
 {
-#ifdef __WIN64__
+#ifdef __x86_64__
 	version.Append(" (x64)");
 #endif
+
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
 	debug->Write("Starting fre:ac...");

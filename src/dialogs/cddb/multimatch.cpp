@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -70,7 +70,7 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iC
 	mainWnd->Add(divbar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
 }
 
 BonkEnc::cddbMultiMatchDlg::~cddbMultiMatchDlg()

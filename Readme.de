@@ -1,13 +1,44 @@
 fre:ac Version 1.1 CVS
 
 fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
-Das Programm liest MP3, MP4/M4A, AAC, Vorbis, Bonk, FLAC, WAVE, AIFF, AU
-und VOC-Dateien und erzeugt MP3, MP4/M4A, AAC, Vorbis, Bonk, FLAC, VQF
-oder WAVE-Dateien.
+Das Programm unterstützt das Rippen von Audio-CDs, das Editieren von Tags
+sowie Video-Downloads und konvertiert folgende Audioformate:
 
-fre:ac verwendet die CDRip Ripping Library zum CD-Rippen unter Windows.
-fre:ac verwendet cdparanoia zum CD-Rippen unter Linux und FreeBSD.
-fre:ac verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
+	- MP3
+		- mit dem LAME MP3-Encoder		(http://lame.sourceforge.net/)
+		- mit dem mpg123-Decoder		(http://www.mpg123.de/)
+		- mit dem MAD MP3-Decoder		(http://www.underbit.com/)
+
+	- MP4/M4A AAC
+		- mit dem FAAC/FAAD2-Codec		(http://www.audiocoding.com/)
+
+	- Windows Media Audio				(http://www.microsoft.com/)
+
+	- Xiph Foundation Codecs
+		- Opus					(http://www.opus-codec.org/)
+		- Vorbis				(http://www.vorbis.com/)
+		- Speex					(http://www.speex.org/)
+		- FLAC					(http://flac.sourceforge.net/)
+
+	- Apple Lossless (ALAC)
+		- mit dem libav ALAC-Encoder		(http://www.libav.org/)
+		- mit David Hammertons ALAC-Decoder	(http://www.craz.net/)
+
+	- Musepack					(http://www.musepack.net/)
+	- WavPack					(http://www.wavpack.com/)
+	- Monkey's Audio				(http://www.monkeysaudio.com/)
+	- TAK						(http://www.thbeck.de/)
+
+	- verschiedene weitere Formate
+		- mit der libsndfile Bibliothek		(http://www.mega-nerd.com/)
+		- mit der libav Codec-Bibliothek	(http://www.libav.org/)
+
+Weitere Codecs (inklusive Neros HE-AAC-Codierer) können als externe Plug-Ins
+eingebunden werden (siehe Benutzerhandbuch für Installationshinweise).
+
+fre:ac verwendet die CDRip-Bibliothek zum CD-Rippen unter Windows.
+fre:ac verwendet die cdio-Bibliothek zum CD-Rippen unter Linux und NetBSD.
+fre:ac verwendet die cdparanoia-Bibliothek zum CD-Rippen unter FreeBSD und OpenBSD.
 
 Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
@@ -33,6 +64,7 @@ Geschichte
 		- Windows Media Audio Codierer/Decodierer hinzugefügt
 		- Opus Audiocodierer/-decodierer hinzugefügt
 		- Unterstützung für Kommandozeilencodierer/-decodierer hinzugefügt
+		- Unterstützung für den mpg123 MP3-Decodierer hinzugefügt
 		- Unterstützung für den MAD MP3-Decodierer hinzugefügt
 		- Unterstützung für den TwinVQ VQF-Decodierer hinzugefügt
 		- Unterstützung für AAC-Synchronisierung hinzugefügt (zum Lesen von AAC-Streamrips benötigt)
@@ -105,8 +137,26 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP/2003/Vista/7/8, Linux (z.B. Ubuntu 12.04), Mac OS X 10.6/10.7/10.8, Solaris 11, FreeBSD 9.1, OpenBSD 5.1 oder NetBSD 6.0
-	- Pentium 4 Prozessor, 128 MB RAM, 50 MB freier Festplattenplatz
+	Voraussetzungen zum Ausführen der Binärpakete:
+
+		Unterstützte Betriebsysteme:
+			- Windows 2000/XP/Vista/7/8 (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
+			- Mac OS X 10.6 oder neuer (nur 64 Bit, unter OS X 10.8 muss XQuartz installiert sein)
+			- Linux (getestet unter Ubuntu 12.04 und 12.10)
+			- FreeBSD (getestet unter FreeBSD 9.1-RC1)
+			- NetBSD (getestet unter NetBSD 6.0-RC1, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
+			- OpenBSD (getestet unter OpenBSD 5.1)
+			- Solaris (getestet unter Solaris 11)
+
+		Minimale Hardwarevoraussetzungen:
+			- Intel Pentium 4 Prozessor
+			- 128 MB RAM
+			- 50 MB freier Festplattenplatz
+
+		Empfohlene Hardwarespezifikationen:
+			- Intel Core i3 Prozessor
+			- 1 GB RAM
+			- 10 GB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
@@ -169,8 +219,6 @@ Bekannte Probleme
 	Mac OS X-spezifische Probleme:
 
 		- Datei- und Ordnerauswahldialoge erscheinen beim ersten Mal hinter dem Hauptfenster
-
-		- In Nachrichtenfenstern werden keine Bilder dargestellt
 
 		- Rippen von Audio-CDs funktioniert nicht
 

@@ -700,7 +700,7 @@
 	<entry id="50000" string="Support this project">Podpořte tento projekt</entry>
 	<entry id="50001" string="Please support this project!">Prosím, podpořte tento projekt!</entry>
 	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prosím, pomozte zachovat tento software zdarma (free) podporou %1 projektu&#10;libovolným darem.&#10;&#10;Klikněte na jedno z tlačítek níže - darovat nyní přes PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Můžete také poslat peníze přímo na %1 s použitím PayPalu.&#10;&#10;Prosím napište nám na %1, pokud chcete darovat pomocí e-bankovnictví nebo&#10;chcete-li zaslat peníze poštovní poukázkou nebo jiným způsobem.</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Můžete také poslat peníze přímo na %1 s použitím PayPalu.&#10;&#10;Prosím napište nám na %1, pokud chcete darovat pomocí e-bankovnictví&#10;nebo chcete-li zaslat peníze poštovní poukázkou nebo jiným způsobem.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">en</entry>
 	<entry id="50006" string="Thank you very much!">Děkujeme moc!</entry>

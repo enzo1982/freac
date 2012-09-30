@@ -1,13 +1,44 @@
 fre:ac version 1.1 CVS
 
 fre:ac is a free and open source audio converter for various formats.
-It reads MP3, MP4/M4A, AAC, Vorbis, Bonk, FLAC, WAVE, AIFF, AU and
-VOC files and converts to MP3, MP4/M4A, AAC, Vorbis, Bonk, FLAC,
-VQF or WAVE.
+It supports audio CD ripping, tag editing and video downloads and converts
+the following audio formats:
 
-fre:ac uses the CDRip Ripping Library for audio ripping on Windows.
-fre:ac uses the cdparanoia library for audio ripping on Linux and FreeBSD.
-fre:ac uses the FAAD2 AAC decoder for Advanced Audio decoding.
+	- MP3
+		- using the LAME MP3 encoder		(http://lame.sourceforge.net/)
+		- using the mpg123 decoder		(http://www.mpg123.de/)
+		- using the MAD MP3 decoder		(http://www.underbit.com/)
+
+	- MP4/M4A AAC
+		- using the FAAC/FAAD2 codec		(http://www.audiocoding.com/)
+
+	- Windows Media Audio				(http://www.microsoft.com/)
+
+	- Xiph Foundation codecs
+		- Opus					(http://www.opus-codec.org/)
+		- Vorbis				(http://www.vorbis.com/)
+		- Speex					(http://www.speex.org/)
+		- FLAC					(http://flac.sourceforge.net/)
+
+	- Apple Lossless (ALAC)
+		- using the libav ALAC encoder		(http://www.libav.org/)
+		- using David Hammerton's ALAC decoder	(http://www.craz.net/)
+
+	- Musepack					(http://www.musepack.net/)
+	- WavPack					(http://www.wavpack.com/)
+	- Monkey's Audio				(http://www.monkeysaudio.com/)
+	- TAK						(http://www.thbeck.de/)
+
+	- various other formats
+		- using the libsndfile library		(http://www.mega-nerd.com/)
+		- using the libav codec library		(http://www.libav.org/)
+
+Further codecs (including Nero's HE-AAC encoder) can be used as external
+plug-ins (see the manual for installation instructions).
+
+fre:ac uses the CDRip library for audio ripping on Windows.
+fre:ac uses the cdio library for audio ripping on Linux and NetBSD.
+fre:ac uses the cdparanoia library for audio ripping on FreeBSD and OpenBSD.
 
 Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 
@@ -33,6 +64,7 @@ History
 		- added Windows Media Audio encoder/decoder
 		- added Opus audio encoder/decoder
 		- added support for command line encoders/decoders
+		- added support for the mpg123 MP3 decoder
 		- added support for the MAD MP3 decoder
 		- added TwinVQ VQF decoder support
 		- added support for AAC synchronizing (needed to read ripped AAC streams)
@@ -105,8 +137,26 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP/Vista/7/8, Linux (e.g. Ubuntu 12.04), Mac OS X 10.6/10.7/10.8, Solaris 11, FreeBSD 9.1, OpenBSD 5.1 or NetBSD 6.0
-	- Pentium 4 CPU, 128 MB RAM, 50 MB free disk space
+	Requirements for running the binaries:
+
+		Supported operating systems:
+			- Windows 2000/XP/Vista/7/8 (older Windows version might work with some limitations)
+			- Mac OS X 10.6 or later (64 bit only, XQuartz must be installed on OS X 10.8)
+			- Linux (tested on Ubuntu 12.04 and 12.10)
+			- FreeBSD (tested on FreeBSD 9.1-RC1)
+			- NetBSD (tested on NetBSD 6.0-RC1, NetBSD 5.x and earlier releases are not supported)
+			- OpenBSD (tested on OpenBSD 5.1)
+			- Solaris (tested on Solaris 11)
+
+		Minimum hardware requirements:
+			- Intel Pentium 4 CPU
+			- 128 MB RAM
+			- 50 MB free disk space
+
+		Recommended hardware specs:
+			- Intel Core i3 CPU
+			- 1 GB RAM
+			- 10 GB free disk space
 
 	Additional requirements for compiling the sources:
 
@@ -169,8 +219,6 @@ Known problems
 	Mac OS X specific problems:
 
 		- File and directory selection dialogs initially appear behind the main window
-
-		- No icons are displayed in message boxes
 
 		- Audio CD ripping does not work
 

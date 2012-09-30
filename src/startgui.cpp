@@ -189,7 +189,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->Add(mainWnd_iconbar);
 	mainWnd->Add(tabs_main);
 
-	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
 
 #ifdef __WIN32__
 	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));

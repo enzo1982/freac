@@ -86,7 +86,13 @@ ifeq ($(BUILD_OPENBSD),True)
 endif
 
 ifeq ($(BUILD_SOLARIS),True)
-	COMPILER_OPTS			+= -fpic
+	COMPILER_OPTS			+= -fPIC
+endif
+
+ifeq ($(BUILD_LINUX),True)
+ifeq ($(BUILD_X64),True)
+	COMPILER_OPTS			+= -fPIC
+endif
 endif
 
 ifeq ($(BUILD_WIN32),True)

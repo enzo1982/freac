@@ -284,7 +284,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->Add(divbar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
 }
 
 BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()

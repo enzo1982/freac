@@ -46,7 +46,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	mainWnd->Add(mainWnd_titlebar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
 }
 
 BonkEnc::cddbQueryDlg::~cddbQueryDlg()
