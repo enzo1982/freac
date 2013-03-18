@@ -4,8 +4,7 @@ include Makefile-options
 
 CDK	    = ./cdk
 
-INCLUDEDIR1 = ./include
-INCLUDEDIR2 = $(CDK)/include
+INCLUDEDIR  = ./include
 OBJECTDIR   = ./objects
 SRCDIR	    = ./src
 
@@ -43,14 +42,12 @@ RESCOMP			   = windres
 LINKER			   = gcc
 REMOVER			   = rm
 ECHO			   = echo
-COMPILER_OPTS		   = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -g0 -Wall -Os -ffast-math -fno-exceptions -DUNICODE -D_UNICODE -c
-LINKER_OPTS		   = -L$(LIBDIR) -lboca -lsmooth -lstdc++ --shared -o $(DLLNAME)
-LOADER_GUI_LINKER_OPTS	   = -L$(LIBDIR) -lsmooth -lstdc++ -o $(EXENAME)
-LOADER_CONSOLE_LINKER_OPTS = -L$(LIBDIR) -lsmooth -lstdc++ -o $(CMDNAME)
-REMOVER_OPTS		   = -f
-STRIP			   = strip
-STRIP_OPTS		   = 
+COMPILER_OPTS		   = -I$(INCLUDEDIR) -g0 -Wall -Os -fno-exceptions -DUNICODE -D_UNICODE -c
 RESCOMP_OPTS		   = -O coff
+LINKER_OPTS		   = -lstdc++ -s --shared -o $(DLLNAME)
+LOADER_GUI_LINKER_OPTS	   = -lstdc++ -s -o $(EXENAME)
+LOADER_CONSOLE_LINKER_OPTS = -lstdc++ -s -o $(CMDNAME)
+REMOVER_OPTS		   = -f
 
 ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
 	COMPILER_OPTS			+= -D BUILD_VIDEO_DOWNLOADER
@@ -67,13 +64,15 @@ endif
 endif
 
 ifneq ($(BUILD_X64),True)
-	COMPILER_OPTS			+= -m32 -march=pentium4
+	COMPILER_OPTS			+= -m32
+	RESCOMP_OPTS			+= --target=pe-i386
 
 	LINKER_OPTS			+= -m32
 	LOADER_GUI_LINKER_OPTS		+= -m32
 	LOADER_CONSOLE_LINKER_OPTS	+= -m32
 else
-	COMPILER_OPTS			+= -m64 -march=nocona
+	COMPILER_OPTS			+= -m64
+	RESCOMP_OPTS			+= --target=pe-x86-64
 
 	LINKER_OPTS			+= -m64
 	LOADER_GUI_LINKER_OPTS		+= -m64
@@ -96,33 +95,81 @@ endif
 endif
 
 ifeq ($(BUILD_WIN32),True)
+	COMPILER_OPTS			+= -I$(CDK)/include
+
 	ifneq ($(BUILD_X64),True)
 		LINKER_OPTS		+= -lunicows
 	endif
 
-	LINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat -lws2_32 -lwinmm -Wl,--out-implib,$(LIBNAME)
-	LOADER_GUI_LINKER_OPTS		+= -Wl,--dynamicbase,--nxcompat -mwindows
-	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,--dynamicbase,--nxcompat
+	LINKER_OPTS			+= -L$(LIBDIR) -lsmooth -lboca -Wl,--dynamicbase,--nxcompat -lws2_32 -lwinmm -lole32 -luuid -Wl,--out-implib,$(LIBNAME)
+	LOADER_GUI_LINKER_OPTS		+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat -mwindows
+	LOADER_CONSOLE_LINKER_OPTS	+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat
 else
 	ifeq ($(BUILD_OSX),True)
 		LINKER_OPTS		+= -Wl,-dylib_install_name,freac$(SHARED)
 	endif
 
-	LINKER_OPTS			+= -Wl,-rpath,.
-	LOADER_GUI_LINKER_OPTS		+= -Wl,-rpath,.
-	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,-rpath,.
+	LINKER_OPTS			+= -L$(PREFIX)/lib -lsmooth-$(SMOOTHVER) -lboca-$(BOCAVER) -Wl,-rpath,.
+	LOADER_GUI_LINKER_OPTS		+= -L$(PREFIX)/lib -lsmooth-$(SMOOTHVER) -Wl,-rpath,.
+	LOADER_CONSOLE_LINKER_OPTS	+= -L$(PREFIX)/lib -lsmooth-$(SMOOTHVER) -Wl,-rpath,.
 endif
 
-ifneq ($(BUILD_SOLARIS),True)
-	STRIP_OPTS			+= --strip-all
-endif
-
-.PHONY: all headers install clean clean_headers
+.PHONY: all headers install uninstall clean clean_headers
 .SILENT:
 
 all: $(HEADERS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOURCES) $(DLLNAME) $(EXENAME) $(CMDNAME)
 
-install:
+install: uninstall
+ifneq ($(BUILD_WIN32),True)
+	cp $(EXENAME) $(PREFIX)/bin
+	cp $(CMDNAME) $(PREFIX)/bin
+
+	chmod a=rX,u=rwX $(PREFIX)/bin/freac
+	chmod a=rX,u=rwX $(PREFIX)/bin/freaccmd
+
+	mkdir -p $(PREFIX)/lib/freac
+	chmod -R a=rX,u=rwX $(PREFIX)/lib/freac
+
+	cp $(DLLNAME) $(PREFIX)/lib/freac
+	chmod a=r,u=rw $(PREFIX)/lib/freac/freac.so
+
+	mkdir -p $(PREFIX)/share/freac
+	chmod -R a=rX,u=rwX $(PREFIX)/share/freac
+
+	cp -r $(BINDIR)/icons $(PREFIX)/share/freac
+	chmod -R a=rX,u=rwX $(PREFIX)/share/freac/icons
+
+	cp -r $(BINDIR)/lang $(PREFIX)/share/freac
+	chmod -R a=rX,u=rwX $(PREFIX)/share/freac/lang
+
+	cp $(BINDIR)/freac.pci $(PREFIX)/share/freac
+	chmod a=r,u=rw $(PREFIX)/share/freac/freac.pci
+
+	mkdir -p $(PREFIX)/share/doc/freac
+	chmod -R a=rX,u=rwX $(PREFIX)/share/doc/freac
+
+	cp -r $(BINDIR)/manual $(PREFIX)/share/doc/freac
+	chmod -R a=rX,u=rwX $(PREFIX)/share/doc/freac/manual
+endif
+
+uninstall:
+ifneq ($(BUILD_WIN32),True)
+	rm -f $(PREFIX)/bin/freac
+	rm -f $(PREFIX)/bin/freaccmd
+
+	rm -f $(PREFIX)/lib/freac/freac.so
+	rm -f -r $(PREFIX)/lib/freac
+
+	rm -f -r $(PREFIX)/share/freac/icons
+	rm -f -r $(PREFIX)/share/freac/lang
+
+	rm -f $(PREFIX)/share/freac/freac.pci
+	rm -f -r $(PREFIX)/share/freac
+
+	rm -f -r $(PREFIX)/share/doc/freac/manual
+
+	rm -f -r $(PREFIX)/share/doc/freac
+endif
 
 clean:
 	$(ECHO) -n Cleaning directories...
@@ -132,9 +179,6 @@ clean:
 $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
 	$(LINKER) $(DLLOBJECTS) $(LINKER_OPTS)
-ifneq ($(BUILD_OSX),True)
-	$(STRIP) $(STRIP_OPTS) $(DLLNAME)
-endif
 ifeq ($(BUILD_WIN32),True)
 ifneq ($(BUILD_X64),True)
 	countbuild BuildNumber
@@ -145,9 +189,6 @@ endif
 $(EXENAME): $(EXEOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(EXENAME)...
 	$(LINKER) $(EXEOBJECTS) $(RESOURCES) $(LOADER_GUI_LINKER_OPTS)
-ifneq ($(BUILD_OSX),True)
-	$(STRIP) $(STRIP_OPTS) $(EXENAME)
-endif
 ifeq ($(BUILD_HAIKU),True)
 	xres -o $(EXENAME) resources/binary/freac.rsrc
 endif
@@ -156,9 +197,6 @@ endif
 $(CMDNAME): $(CMDOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(CMDNAME)...
 	$(LINKER) $(CMDOBJECTS) $(RESOURCES) $(LOADER_CONSOLE_LINKER_OPTS)
-ifneq ($(BUILD_OSX),True)
-	$(STRIP) $(STRIP_OPTS) $(CMDNAME)
-endif
 ifeq ($(BUILD_HAIKU),True)
 	xres -o $(CMDNAME) resources/binary/freac.rsrc
 endif
@@ -434,12 +472,12 @@ $(OBJECTDIR)/gui.o: $(SRCDIR)/loader/gui.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/loader/gui.cpp -o $(OBJECTDIR)/gui.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR1)/resources.h $(BINRESDIR)/freac.ico
+$(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR)/resources.h $(BINRESDIR)/freac.ico
 	$(ECHO) -n Compiling $(RESOURCEDIR)/resources.rc...
 	$(RESCOMP) $(RESCOMP_OPTS) $(RESOURCEDIR)/resources.rc -o $(OBJECTDIR)/resources.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/resources_vd.o: $(RESOURCEDIR)/resources_vd.rc $(INCLUDEDIR1)/resources.h $(BINRESDIR)/freac.ico
+$(OBJECTDIR)/resources_vd.o: $(RESOURCEDIR)/resources_vd.rc $(INCLUDEDIR)/resources.h $(BINRESDIR)/freac.ico
 	$(ECHO) -n Compiling $(RESOURCEDIR)/resources_vd.rc...
 	$(RESCOMP) $(RESCOMP_OPTS) $(RESOURCEDIR)/resources_vd.rc -o $(OBJECTDIR)/resources_vd.o
 	$(ECHO) done.

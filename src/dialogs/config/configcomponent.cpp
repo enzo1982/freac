@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,10 +9,11 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/config/configcomponent.h>
-#include <boca.h>
 
+#include <config.h>
 #include <resources.h>
 
+using namespace BoCA;
 using namespace BoCA::AS;
 
 BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
@@ -48,7 +49,7 @@ BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 	mainWnd->GetMainLayer()->Add(layer);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
+	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
 BonkEnc::ConfigComponentDialog::~ConfigComponentDialog()

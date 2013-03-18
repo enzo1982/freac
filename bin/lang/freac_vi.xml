@@ -172,9 +172,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">Không thể thay đổi danh sách công việc khi đang chuyển mã!</entry>
-	<entry id="3401" string="You did not select a track!">Bạn chưa chọn tập tin nào hết!</entry>
-	<entry id="3402" string="No files found matching pattern:">Không tìm thấy tập tin nào trùng với mẫu:</entry>
+	<entry id="3400" string="You did not select a track!">Bạn chưa chọn tập tin nào hết!</entry>
+	<entry id="3401" string="No files found matching pattern:">Không tìm thấy tập tin nào trùng với mẫu:</entry>
       </section>
     </section>
 

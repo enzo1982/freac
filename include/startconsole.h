@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,6 +12,7 @@
 #define H_BONKENC_CMDMAIN
 
 #include <smooth.h>
+#include <boca.h>
 #include "bonkenc.h"
 
 #ifdef __WIN32__
@@ -38,7 +39,7 @@ namespace BonkEnc
 							 BonkEncCommandline(const Array<String> &);
 							~BonkEncCommandline();
 
-			const Array<String>		&args; 
+			const Array<String>		&args;
 
 			Bool				 ScanForParameter(const String &, String *);
 			Void				 ScanForFiles(Array<String> *);
@@ -53,6 +54,8 @@ namespace BonkEnc
 			/* Destroys an existing instance of BonkEncCommandline
 			 */
 			static Void			 Free();
+		slots:
+			Void				 OnEncodeTrack(const BoCA::Track &, const String &, Int);
 	};
 };
 

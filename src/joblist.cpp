@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,8 +10,7 @@
 
 #include <joblist.h>
 #include <playlist.h>
-#include <startgui.h>
-#include <dllinterfaces.h>
+#include <config.h>
 #include <utilities.h>
 
 #include <gui/layer_tooltip.h>
@@ -20,12 +19,13 @@
 #include <jobs/job_addfiles.h>
 #include <jobs/job_removeall.h>
 
-#include <cddb/cddbremote.h>
-
 #include <tools/encoding.h>
 
-using namespace BoCA::AS;
+using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
+
+using namespace BoCA;
+using namespace BoCA::AS;
 
 BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
 {
@@ -61,19 +61,21 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFiles.Connect(&JobList::AddTracksByDragAndDrop, this);
 
+	Config	*bonkEncConfig	= Config::Get();
+
 	text			= new Text(NIL, iPos - Point(9, 19));
 
-	button_sel_all		= new Button(NIL, ImageLoader::Load("freac.pci:18"), iPos - Point(19, 4), Size(21, 21));
+	button_sel_all		= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:18")), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
 	button_sel_all->SetFlags(BF_NOFRAME);
 	button_sel_all->SetTooltipText(i18n->TranslateString("Select all"));
 
-	button_sel_none		= new Button(NIL, ImageLoader::Load("freac.pci:19"), iPos - Point(19, -10), Size(21, 21));
+	button_sel_none		= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:19")), iPos - Point(19, -10), Size(21, 21));
 	button_sel_none->onAction.Connect(&JobList::SelectNone, this);
 	button_sel_none->SetFlags(BF_NOFRAME);
 	button_sel_none->SetTooltipText(i18n->TranslateString("Select none"));
 
-	button_sel_toggle	= new Button(NIL, ImageLoader::Load("freac.pci:20"), iPos - Point(19, -24), Size(21, 21));
+	button_sel_toggle	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:20")), iPos - Point(19, -24), Size(21, 21));
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
 	button_sel_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));
@@ -151,14 +153,6 @@ Bool BonkEnc::JobList::CanModifyJobList() const
 
 	i18n->SetContext("Joblist::Errors");
 
-// ToDo: Reactivate this check.
-/*	if (BonkEnc::Get()->encoder->IsEncoding())
-	{
-		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
-
-		return False;
-	}
-*/
 	return True;
 }
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,12 +9,16 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/manage.h>
+#include <bonkenc.h>
+#include <config.h>
 #include <resources.h>
 #include <dllinterfaces.h>
 #include <joblist.h>
 #include <cddb/cddb.h>
 #include <cddb/cddbcache.h>
 #include <utilities.h>
+
+using namespace BoCA;
 
 BonkEnc::cddbManageDlg::cddbManageDlg()
 {
@@ -107,7 +111,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	mainWnd->Add(btn_save);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
+	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
 BonkEnc::cddbManageDlg::~cddbManageDlg()

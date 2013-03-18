@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -28,21 +28,13 @@ Void smooth::DetachDLL()
 }
 
 #include <bonkenc.h>
-#include <resources.h>
-#include <stdlib.h>
-#include <time.h>
-
-#include <utilities.h>
-#include <dllinterfaces.h>
 #include <playback.h>
-#include <joblist.h>
-#include <jobs/jobmanager.h>
+#include <config.h>
+#include <dllinterfaces.h>
 
+#include <jobs/jobmanager.h>
 #include <cddb/cddbcache.h>
-#include <cddb/cddblocal.h>
-#include <cddb/cddbremote.h>
-#include <dialogs/cddb/query.h>
-#include <dialogs/cddb/submit.h>
+#include <engine/converter.h>
 
 BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 
@@ -56,9 +48,9 @@ String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free video downloader";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
 #endif
 
-String	 BonkEnc::BonkEnc::version	= "CVS 20120930";
+String	 BonkEnc::BonkEnc::version	= "CVS 2013xxyy";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre2";	// CDDB version may not contain spaces
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre3";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml";

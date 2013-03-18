@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,6 @@
 #define H_BONKENC_UTILITIES
 
 #include <smooth.h>
-#include <boca.h>
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -30,7 +29,6 @@ namespace BonkEnc
 			static String	 ReplaceIncompatibleChars(const String &, Bool);
 			static String	 GetAbsoluteDirName(const String &);
 			static String	 NormalizeFileName(const String &);
-			static String	 CreateDirectoryForFile(const String &);
 
 			static String	 GetInstallDrive();
 

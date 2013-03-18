@@ -10,7 +10,12 @@
 
 #include <dialogs/config/config_cddb.h>
 #include <dialogs/cddb/extsettings.h>
+
 #include <cddb/cddb.h>
+
+#include <config.h>
+
+using namespace smooth::GUI::Dialogs;
 
 BonkEnc::ConfigureCDDB::ConfigureCDDB()
 {
@@ -314,7 +319,7 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 
 	if (config->cdrip_numdrives >= 1 && !valid)
 	{
-		Utilities::ErrorMessage("Please enter a valid eMail address.");
+		BoCA::Utilities::ErrorMessage("Please enter a valid eMail address.");
 
 		return Error();
 	}

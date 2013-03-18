@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,24 +11,25 @@
 #ifndef H_BONKENC_CONFIG_DLG_ENTRY
 #define H_BONKENC_CONFIG_DLG_ENTRY
 
-#include <bonkenc.h>
+#include <smooth.h>
+#include <boca.h>
 
 namespace BonkEnc
 {
 	class ConfigEntry : public ListEntry
 	{
 		private:
-			ConfigLayer			*layer;
+			BoCA::ConfigLayer			*layer;
 		public:
-							 ConfigEntry(const String &, ConfigLayer *);
-							~ConfigEntry();
+								 ConfigEntry(const String &, BoCA::ConfigLayer *);
+								~ConfigEntry();
 		accessors:
-			ConfigLayer			*GetLayer()			{ return layer; }
-			Void				 SetLayer(ConfigLayer *nLayer)	{ layer = nLayer; }
+			BoCA::ConfigLayer			*GetLayer()				{ return layer; }
+			Void					 SetLayer(BoCA::ConfigLayer *nLayer)	{ layer = nLayer; }
 		slots:
-			Void				 OnSelect();
+			Void					 OnSelect();
 		signals:
-			Signal1<Void, ConfigLayer *>	 onChangeLayer;
+			Signal1<Void, BoCA::ConfigLayer *>	 onChangeLayer;
 	};
 };
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,20 +12,15 @@
 #define H_BONKENC_CONVERTER
 
 #include <smooth.h>
-
-#include "bonkenc.h"
+#include <boca.h>
 
 using namespace smooth;
-using namespace BoCA;
 
 namespace BonkEnc
 {
 	class JobList;
 	class Progress;
-};
 
-namespace BonkEnc
-{
 	const Int	 ENCODER_MODE_ON_THE_FLY = 0;
 	const Int	 ENCODER_MODE_DECODE	 = 1;
 	const Int	 ENCODER_MODE_ENCODE	 = 2;
@@ -43,18 +38,17 @@ namespace BonkEnc
 
 			Bool							 overwriteAll;
 
-			Array<Track>						 tracks;
+			Array<BoCA::Track>					 tracks;
 
 			JobList							*joblist;
-			Progress						*progress;
 
 			Bool							 CheckSingleFileSampleFormat();
 
-			String							 GetPlaylistFileName(const Track &);
+			String							 GetPlaylistFileName(const BoCA::Track &);
 			String							 GetRelativeFileName(const String &, const String &);
 
-			String							 GetOutputFileName(const Track &);
-			String							 GetSingleOutputFileName(const Track &);
+			String							 GetOutputFileName(const BoCA::Track &);
+			String							 GetSingleOutputFileName(const BoCA::Track &);
 
 			Int							 ConverterThread();
 		public:
@@ -74,7 +68,7 @@ namespace BonkEnc
 			Signal0<Void>						 onStartEncoding;
 			Signal1<Void, Bool>					 onFinishEncoding;
 
-			Signal3<Void, const Track &, const String &, Int>	 onEncodeTrack;
+			Signal3<Void, const BoCA::Track &, const String &, Int>	 onEncodeTrack;
 			Signal0<Void>						 onFinishTrack;
 
 			Signal2<Void, Int, Int>					 onTrackProgress;

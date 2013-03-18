@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,18 +9,15 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <utilities.h>
-#include <bonkenc.h>
+#include <config.h>
+
+#include <boca.h>
 
 #ifdef __WIN32__
 #	include <windows.h>
 #else
 #	include <sys/stat.h>
 #endif
-
-using namespace smooth::System;
-
-using namespace BoCA;
-using namespace BoCA::AS;
 
 /* This function changes the byte order of audio samples in
  * a buffer from big-endian to little-endian and vice versa.
@@ -376,16 +373,6 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 	while (rFileName.EndsWith(" ")) { rFileName[rFileName.Length() - 1] = 0; }
 
 	return rFileName;
-}
-
-String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
-{
-	File		 file(NormalizeFileName(fileName));
-	Directory	 directory(file.GetFilePath());
-
-	directory.Create();
-
-	return file;
 }
 
 String BonkEnc::Utilities::GetInstallDrive()

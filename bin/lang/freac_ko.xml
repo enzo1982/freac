@@ -129,8 +129,7 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">인코딩 중에는 리스트를 수정할 수 없습니다!</entry>
-	<entry id="3401" string="You did not select a track!">파일을 선택하지 않았습니다!</entry>
+	<entry id="3400" string="You did not select a track!">파일을 선택하지 않았습니다!</entry>
       </section>
     </section>
 

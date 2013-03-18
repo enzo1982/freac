@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,12 +9,15 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <gui/main_joblist.h>
-#include <dialogs/charset.h>
+
 #include <joblist.h>
-#include <startgui.h>
 #include <playback.h>
+#include <config.h>
 #include <utilities.h>
-#include <dllinterfaces.h>
+
+#include <engine/converter.h>
+
+#include <dialogs/charset.h>
 
 #ifdef __WIN32__
 #	include <windows.h>
@@ -23,6 +26,11 @@
 #		define EWX_FORCEIFHUNG 16
 #	endif
 #endif
+
+using namespace smooth::GUI::Dialogs;
+
+using namespace BoCA;
+using namespace BoCA::AS;
 
 BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
@@ -47,47 +55,49 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
+		Config	*bonkEncConfig = Config::Get();
+
 		pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
 		pos.y = -1;
 		size.cx = 25;
 		size.cy = 25;
 
-		button_play	= new Button(NIL, ImageLoader::Load("freac.pci:12"), pos, size);
+		button_play	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("/freac.pci:12")), pos, size);
 		button_play->onAction.Connect(&LayerJoblist::PlaySelectedItem, this);
 		button_play->SetOrientation(OR_UPPERRIGHT);
 		button_play->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_pause	= new Button(NIL, ImageLoader::Load("freac.pci:13"), pos, size);
+		button_pause	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:13")), pos, size);
 		button_pause->onAction.Connect(&LayerJoblist::PauseResumePlayback, this);
 		button_pause->SetOrientation(OR_UPPERRIGHT);
 		button_pause->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_stop	= new Button(NIL, ImageLoader::Load("freac.pci:14"), pos, size);
+		button_stop	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:14")), pos, size);
 		button_stop->onAction.Connect(&LayerJoblist::StopPlayback, this);
 		button_stop->SetOrientation(OR_UPPERRIGHT);
 		button_stop->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_prev	= new Button(NIL, ImageLoader::Load("freac.pci:15"), pos, size);
+		button_prev	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:15")), pos, size);
 		button_prev->onAction.Connect(&Playback::Previous, player);
 		button_prev->SetOrientation(OR_UPPERRIGHT);
 		button_prev->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_next	= new Button(NIL, ImageLoader::Load("freac.pci:16"), pos, size);
+		button_next	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:16")), pos, size);
 		button_next->onAction.Connect(&Playback::Next, player);
 		button_next->SetOrientation(OR_UPPERRIGHT);
 		button_next->SetFlags(BF_NOFRAME);
 
 		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-		button_open	= new Button(NIL, ImageLoader::Load("freac.pci:17"), pos, size);
+		button_open	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:17")), pos, size);
 		button_open->onAction.Connect(&LayerJoblist::OpenCDTray, this);
 		button_open->SetOrientation(OR_UPPERRIGHT);
 		button_open->SetFlags(BF_NOFRAME);
@@ -1263,11 +1273,12 @@ Void BonkEnc::LayerJoblist::OnSelectDir()
 
 	i18n->SetContext("Joblist");
 
-	DirSelection	*dialog = new DirSelection();
-
-	/* ToDo: Pass main window here.
+	/* Find main window and create dialog.
 	 */
-//	dialog->SetParentWindow(mainWnd);
+	Window		*mainWnd = Window::GetNthWindow(0);
+	DirSelection	*dialog	 = new DirSelection();
+
+	dialog->SetParentWindow(mainWnd);
 	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
 	dialog->SetDirName(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 

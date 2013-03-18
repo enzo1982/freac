@@ -172,9 +172,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">Impossible de modifier la liste lors de l'encodage !</entry>
-	<entry id="3401" string="You did not select a track!">Vous n'avez sélectionné aucun fichier !</entry>
-	<entry id="3402" string="No files found matching pattern:">Aucun fichier correspondant au motif :</entry>
+	<entry id="3400" string="You did not select a track!">Vous n'avez sélectionné aucun fichier !</entry>
+	<entry id="3401" string="No files found matching pattern:">Aucun fichier correspondant au motif :</entry>
       </section>
     </section>
 

@@ -172,9 +172,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">Kodeerimise käigus ei saa nimekirja muuta!</entry>
-	<entry id="3401" string="You did not select a track!">Fail ei ole valitud!</entry>
-	<entry id="3402" string="No files found matching pattern:">Puuduvad näidisele vastavad failid:</entry>
+	<entry id="3400" string="You did not select a track!">Fail ei ole valitud!</entry>
+	<entry id="3401" string="No files found matching pattern:">Puuduvad näidisele vastavad failid:</entry>
       </section>
     </section>
 

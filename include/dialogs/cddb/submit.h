@@ -11,12 +11,16 @@
 #ifndef H_BONKENC_CDDB_SUBMIT
 #define H_BONKENC_CDDB_SUBMIT
 
-#include <bonkenc.h>
+#include <smooth.h>
+
+using namespace smooth;
+using namespace smooth::GUI;
+
 #include <cddb/cddbinfo.h>
 
 namespace BonkEnc
 {
-	class cddbSubmitDlg : public Dialog
+	class cddbSubmitDlg : public Dialogs::Dialog
 	{
 		private:
 			Divider		*divbar;

@@ -185,9 +185,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">Невъзможност за промяна на списъка със задачи по време да кодирането!</entry>
-	<entry id="3401" string="You did not select a track!">Не сте избрали песен!</entry>
-	<entry id="3402" string="No files found matching pattern:">Няма открити файлове отговарящи на шаблона:</entry>
+	<entry id="3400" string="You did not select a track!">Не сте избрали песен!</entry>
+	<entry id="3401" string="No files found matching pattern:">Няма открити файлове отговарящи на шаблона:</entry>
       </section>
     </section>
 
@@ -771,7 +770,7 @@
 	  <entry id="52201" string="This URL is not supported or not a video page URL!">Този адрес не е поддържан или не е адрес на видео страница!</entry>
 	  <entry id="52202" string="Error downloading video!">Грешка при изтегляне на видеото!</entry>
 	  <entry id="52203" string="You are already downloading this video!">Вече изтегляте това видео!</entry>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv to fix this problem!">Някои нужни видео декодери не могат да бъдат открити. Видео&#10;файловете не могат да бъдат добавени към списъка със задачи&#10;за конвертиране към аудио файлове.&#10;&#10;Моля инсталирайте avconv за да отстраните този проблем!</entry>
+	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Някои нужни видео декодери не могат да бъдат открити. Видео&#10;файловете не могат да бъдат добавени към списъка със задачи&#10;за конвертиране към аудио файлове.&#10;&#10;Моля инсталирайте avconv или FFmpeg за да отстраните този проблем!</entry>
 	</section>
       </section>
 

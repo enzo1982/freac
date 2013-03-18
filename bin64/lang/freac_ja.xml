@@ -174,9 +174,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">エンコード中はリスト修正は出来ません</entry>
-	<entry id="3401" string="You did not select a track!">ファイルが選択されていません</entry>
-	<entry id="3402" string="No files found matching pattern:">パターンに適合するファイルはありませんでした：</entry>
+	<entry id="3400" string="You did not select a track!">ファイルが選択されていません</entry>
+	<entry id="3401" string="No files found matching pattern:">パターンに適合するファイルはありませんでした：</entry>
       </section>
     </section>
 

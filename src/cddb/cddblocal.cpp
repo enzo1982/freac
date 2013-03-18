@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,9 +10,12 @@
 
 #include <cddb/cddblocal.h>
 #include <bonkenc.h>
+#include <config.h>
 
-using namespace BoCA::AS;
 using namespace smooth::IO;
+
+using namespace BoCA;
+using namespace BoCA::AS;
 
 BonkEnc::CDDBLocal::CDDBLocal()
 {

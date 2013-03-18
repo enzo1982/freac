@@ -172,9 +172,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">Impossibile modificare l'elenco durante l'elaborazione.</entry>
-	<entry id="3401" string="You did not select a track!">Nessun file selezionato.</entry>
-	<entry id="3402" string="No files found matching pattern:">Nessun file corrisponde al modello:</entry>
+	<entry id="3400" string="You did not select a track!">Nessun file selezionato.</entry>
+	<entry id="3401" string="No files found matching pattern:">Nessun file corrisponde al modello:</entry>
       </section>
     </section>
 

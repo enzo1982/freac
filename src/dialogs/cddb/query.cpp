@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,6 +10,7 @@
 
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/multimatch.h>
+#include <config.h>
 #include <dllinterfaces.h>
 #include <utilities.h>
 #include <resources.h>
@@ -17,6 +18,8 @@
 #include <cddb/cddblocal.h>
 #include <cddb/cddbremote.h>
 #include <cddb/cddbbatch.h>
+
+using namespace smooth::GUI::Dialogs;
 
 BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
@@ -46,7 +49,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	mainWnd->Add(mainWnd_titlebar);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
+	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
 BonkEnc::cddbQueryDlg::~cddbQueryDlg()

@@ -172,9 +172,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">Tömörítés közben a lista nem módosítható!</entry>
-	<entry id="3401" string="You did not select a track!">Nem választottál ki még egy fájlt sem!</entry>
-	<entry id="3402" string="No files found matching pattern:">Nem találhatók megfelelő fájlok a mintához:</entry>
+	<entry id="3400" string="You did not select a track!">Nem választottál ki még egy fájlt sem!</entry>
+	<entry id="3401" string="No files found matching pattern:">Nem találhatók megfelelő fájlok a mintához:</entry>
       </section>
     </section>
 

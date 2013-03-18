@@ -11,11 +11,12 @@
 #ifndef H_BONKENC_CONFIG_ENCODERS
 #define H_BONKENC_CONFIG_ENCODERS
 
-#include <bonkenc.h>
+#include <smooth.h>
+#include <boca.h>
 
 namespace BonkEnc
 {
-	class ConfigureEncoders : public ConfigLayer
+	class ConfigureEncoders : public BoCA::ConfigLayer
 	{
 		private:
 			GroupBox			*group_encoder;

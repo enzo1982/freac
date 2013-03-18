@@ -11,11 +11,12 @@
 #include <dialogs/config/config_encoders.h>
 #include <dialogs/config/configcomponent.h>
 
-#include <dllinterfaces.h>
+#include <config.h>
 #include <utilities.h>
-#include <boca.h>
 
 using namespace BoCA::AS;
+
+using namespace smooth::GUI::Dialogs;
 
 BonkEnc::ConfigureEncoders::ConfigureEncoders()
 {

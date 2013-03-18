@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,10 +15,12 @@
 #include <dialogs/config/config_language.h>
 #include <dialogs/config/config_playlists.h>
 #include <dialogs/config/config_tags.h>
-#include <boca.h>
 
+#include <bonkenc.h>
+#include <config.h>
 #include <resources.h>
 
+using namespace BoCA;
 using namespace BoCA::AS;
 
 BonkEnc::ConfigDialog::ConfigDialog()
@@ -128,7 +130,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	mainWnd->Add(list_layers);
 
 	mainWnd->SetFlags(WF_NORMAL);
-	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
+	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
 BonkEnc::ConfigDialog::~ConfigDialog()

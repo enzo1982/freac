@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,27 +12,24 @@
 #define H_BONKENC_CUESHEET
 
 #include <smooth.h>
-
-using namespace smooth;
-
 #include <boca.h>
 
-using namespace BoCA;
+using namespace smooth;
 
 namespace BonkEnc
 {
 	class CueSheet
 	{
 		private:
-			Array<String>	 fileNames;
-			Array<Int>	 trackOffsets;
-			Array<Track>	 trackInfos;
+			Array<String>		 fileNames;
+			Array<Int>		 trackOffsets;
+			Array<BoCA::Track>	 trackInfos;
 
-			String		 GetFileType(const String &);
+			String			 GetFileType(const String &);
 		public:
-			Bool		 AddTrack(const String &, Int, const Track &);
+			Bool			 AddTrack(const String &, Int, const BoCA::Track &);
 
-			Bool		 Save(const String &);
+			Bool			 Save(const String &);
 	};
 };
 

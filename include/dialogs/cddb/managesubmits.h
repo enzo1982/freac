@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,12 +11,16 @@
 #ifndef H_BONKENC_CDDB_MANAGE_SUBMITS
 #define H_BONKENC_CDDB_MANAGE_SUBMITS
 
+#include <smooth.h>
+
+using namespace smooth;
+using namespace smooth::GUI;
+
 #include <cddb/cddbbatch.h>
-#include <bonkenc.h>
 
 namespace BonkEnc
 {
-	class cddbManageSubmitsDlg : public Dialog
+	class cddbManageSubmitsDlg : public Dialogs::Dialog
 	{
 		private:
 			Divider		*divbar;

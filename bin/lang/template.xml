@@ -188,9 +188,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!"/>
-	<entry id="3401" string="You did not select a track!"/>
-	<entry id="3402" string="No files found matching pattern:"/>
+	<entry id="3400" string="You did not select a track!"/>
+	<entry id="3401" string="No files found matching pattern:"/>
       </section>
     </section>
 
@@ -638,6 +637,7 @@
 	  <entry id="34106" string="Joint Stereo"/>
 	  <entry id="34107" string="Adaptive Joint Stereo"/>
 	  <entry id="34108" string="File format"/>
+	  <entry id="34109" string="Default"/>
 	</section>
 
 	<section name="Format">
@@ -729,6 +729,32 @@
 	<entry id="39019" string="Quality:"/>
 	<entry id="39020" string="Max. bitrate:"/>
       </section>
+
+      <section name="Opus">
+	<entry id="40000" string="Basic settings"/>
+	<entry id="40001" string="Encoding mode:"/>
+	<entry id="40002" string="Auto"/>
+	<entry id="40003" string="Voice"/>
+	<entry id="40004" string="Music"/>
+	<entry id="40005" string="Bandwidth:"/>
+	<entry id="40006" string="Narrowband"/>
+	<entry id="40007" string="Mediumband"/>
+	<entry id="40008" string="Wideband"/>
+	<entry id="40009" string="Superwideband"/>
+	<entry id="40010" string="Fullband"/>
+	<entry id="40011" string="File extension"/>
+	<entry id="40012" string="Variable bitrate"/>
+	<entry id="40013" string="Enable variable bitrate encoding"/>
+	<entry id="40014" string="Quality"/>
+	<entry id="40015" string="Bitrate:"/>
+	<entry id="40016" string="kbps"/>
+	<entry id="40017" string="Complexity:"/>
+	<entry id="40018" string="Stream"/>
+	<entry id="40019" string="Frame length:"/>
+	<entry id="40020" string="Options"/>
+	<entry id="40021" string="Enable discontinous transmission"/>
+	<entry id="40022" string="Expected packet loss:"/>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -786,7 +812,7 @@
 	  <entry id="52201" string="This URL is not supported or not a video page URL!"/>
 	  <entry id="52202" string="Error downloading video!"/>
 	  <entry id="52203" string="You are already downloading this video!"/>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv to fix this problem!"/>
+	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!"/>
 	</section>
       </section>
 

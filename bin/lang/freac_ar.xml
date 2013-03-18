@@ -173,9 +173,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">لا يمكن تغيير قائمة العمل عند الترميز!</entry>
-	<entry id="3401" string="You did not select a track!">لم تقم بتحديد أي ملف!</entry>
-	<entry id="3402" string="No files found matching pattern:">لا توجد ملفات مطابقة للنمط:</entry>
+	<entry id="3400" string="You did not select a track!">لم تقم بتحديد أي ملف!</entry>
+	<entry id="3401" string="No files found matching pattern:">لا توجد ملفات مطابقة للنمط:</entry>
       </section>
     </section>
 

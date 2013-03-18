@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,11 +11,12 @@
 #ifndef H_BONKENC_CONFIG_LANGUAGE
 #define H_BONKENC_CONFIG_LANGUAGE
 
-#include <bonkenc.h>
+#include <smooth.h>
+#include <boca.h>
 
 namespace BonkEnc
 {
-	class ConfigureLanguage : public ConfigLayer
+	class ConfigureLanguage : public BoCA::ConfigLayer
 	{
 		private:
 			GroupBox	*group_language;

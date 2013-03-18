@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,6 +10,8 @@
 
 #include <playlist.h>
 #include <utilities.h>
+
+#include <boca.h>
 
 using namespace smooth::IO;
 
@@ -36,7 +38,7 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 {
 	if (fileNames.Length() == 0) return False;
 
-	String		 rFileName = Utilities::CreateDirectoryForFile(fileName);
+	String		 rFileName = BoCA::Utilities::CreateDirectoryForFile(Utilities::NormalizeFileName(fileName));
 
 	String		 format = String::SetOutputFormat("UTF-8");
 	OutStream	*file = new OutStream(STREAM_FILE, rFileName, OS_REPLACE);

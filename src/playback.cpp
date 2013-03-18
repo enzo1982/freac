@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,14 +9,16 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <playback.h>
-#include <dllinterfaces.h>
-
 #include <joblist.h>
+#include <config.h>
 #include <utilities.h>
+#include <bonkenc.h>
 
+#include <engine/converter.h>
 #include <engine/decoder.h>
 
-using namespace smooth::IO;
+using namespace BoCA;
+using namespace BoCA::AS;
 
 BonkEnc::Playback *BonkEnc::Playback::instance = NIL;
 
@@ -53,14 +55,13 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 {
 	if (entry < 0) return;
 
-// ToDo: Reactivate this check.
-/*	if (BonkEnc::Get()->encoder->IsEncoding())
+	if (BonkEnc::Get()->encoder->IsEncoding())
 	{
-		Utilities::ErrorMessage("Cannot play a file while encoding!");
+		BoCA::Utilities::ErrorMessage("Cannot play a file while encoding!");
 
 		return;
 	}
-*/
+
 	if (playing && paused && player_entry == entry)
 	{
 		Resume();

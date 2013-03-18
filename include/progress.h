@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,21 +12,23 @@
 #define H_BONKENC_PROGRESS
 
 #include <smooth.h>
-#include <time.h>
+#include <boca.h>
 
-#include "bonkenc.h"
+#ifdef __WIN32__
+#	include <shlobj.h>
+#endif
 
 using namespace smooth;
 
 namespace BonkEnc
 {
-	class JobList;
-};
-
-namespace BonkEnc
-{
 	class Progress
 	{
+		private:
+#ifdef __WIN32__
+			HWND			 hwnd;
+			ITaskbarList3		*taskbar;
+#endif
 		protected:
 			Int64			 totalSamples;
 			Float			 totalSamplesDone;
@@ -40,8 +42,8 @@ namespace BonkEnc
 						 Progress();
 						~Progress();
 
-			Void			 ComputeTotalSamples(const Array<Track> &);
-			Void			 FixTotalSamples(Track &, const Track &);
+			Void			 ComputeTotalSamples(const Array<BoCA::Track> &);
+			Void			 FixTotalSamples(BoCA::Track &, const BoCA::Track &);
 
 			Int64			 GetTotalSamples()			{ return totalSamples; }
 			Int			 GetTrackTimePassed()			{ return S::System::System::Clock() - trackStartTicks; }
@@ -57,9 +59,9 @@ namespace BonkEnc
 			Void			 PauseTotalProgress();
 			Void			 ResumeTotalProgress();
 
-			Void			 UpdateProgressValues(const Track &, Int);
+			Void			 UpdateProgressValues(const BoCA::Track &, Int);
 
-			Void			 FinishTrackProgressValues(const Track &);
+			Void			 FinishTrackProgressValues(const BoCA::Track &);
 		signals:
 			Signal2<Void, Int, Int>	 onTrackProgress;
 			Signal2<Void, Int, Int>	 onTotalProgress;

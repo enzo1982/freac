@@ -10,8 +10,13 @@
 
 #include <jobs/job_checkforupdates.h>
 
-#include <dllinterfaces.h>
 #include <bonkenc.h>
+#include <config.h>
+#include <dllinterfaces.h>
+
+#include <boca.h>
+
+using namespace smooth::GUI::Dialogs;
 
 BonkEnc::JobCheckForUpdates::JobCheckForUpdates(Bool iStartup)
 {

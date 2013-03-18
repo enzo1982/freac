@@ -11,15 +11,16 @@
 #ifndef H_BONKENC_MAIN_JOBLIST
 #define H_BONKENC_MAIN_JOBLIST
 
+#include <smooth.h>
+#include <boca.h>
+
+using namespace smooth;
+using namespace smooth::GUI;
+
 namespace BonkEnc
 {
 	class JobList;
-};
 
-#include <bonkenc.h>
-
-namespace BonkEnc
-{
 	const Int	 CHARSET_ISO_8859_1	= 0;
 	const Int	 CHARSET_ISO_8859_2	= 1;
 	const Int	 CHARSET_ISO_8859_5	= 2;
@@ -143,9 +144,9 @@ namespace BonkEnc
 			Void			 OnChangeSize(const Size &);
 			Void			 OnChangeLanguageSettings();
 
-			Void			 OnJoblistSelectTrack(const Track &);
-			Void			 OnJoblistModifyTrack(const Track &);
-			Void			 OnJoblistRemoveTrack(const Track &);
+			Void			 OnJoblistSelectTrack(const BoCA::Track &);
+			Void			 OnJoblistModifyTrack(const BoCA::Track &);
+			Void			 OnJoblistRemoveTrack(const BoCA::Track &);
 
 			Void			 OnJoblistRemoveAllTracks();
 
@@ -164,7 +165,7 @@ namespace BonkEnc
 			Void			 OnEncoderStartEncoding();
 			Void			 OnEncoderFinishEncoding(Bool);
 
-			Void			 OnEncoderEncodeTrack(const Track &, const String &, Int);
+			Void			 OnEncoderEncodeTrack(const BoCA::Track &, const String &, Int);
 
 			Void			 OnEncoderTrackProgress(Int, Int);
 			Void			 OnEncoderTotalProgress(Int, Int);

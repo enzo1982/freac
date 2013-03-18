@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,34 +12,32 @@
 #define H_BONKENC_DECODER
 
 #include <smooth.h>
-
-#include "bonkenc.h"
+#include <boca.h>
 
 using namespace smooth;
-using namespace BoCA;
 
 namespace BonkEnc
 {
 	class Decoder
 	{
 		protected:
-			String			 fileName;
+			String				 fileName;
 
-			IO::InStream		*f_in;
-			AS::DecoderComponent	*filter_in;
+			IO::InStream			*f_in;
+			BoCA::AS::DecoderComponent	*filter_in;
 		public:
-						 Decoder();
-			virtual			~Decoder();
+							 Decoder();
+			virtual				~Decoder();
 
-			Bool			 Create(const String &, const Track &);
-			Bool			 Destroy();
+			Bool				 Create(const String &, const BoCA::Track &);
+			Bool				 Destroy();
 
-			Bool			 GetStreamInfo(Track &);
+			Bool				 GetStreamInfo(BoCA::Track &);
 
-			Int			 Read(Buffer<UnsignedByte> &, Int);
+			Int				 Read(Buffer<UnsignedByte> &, Int);
 
-			Int64			 GetInBytes() const;
-			String			 GetDecoderName() const;
+			Int64				 GetInBytes() const;
+			String				 GetDecoderName() const;
 	};
 };
 

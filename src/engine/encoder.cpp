@@ -9,10 +9,10 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <engine/encoder.h>
-#include <utilities.h>
 
 using namespace smooth::IO;
 
+using namespace BoCA;
 using namespace BoCA::AS;
 
 BonkEnc::Encoder::Encoder()

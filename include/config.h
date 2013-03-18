@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,7 +14,6 @@
 #include <smooth.h>
 
 using namespace smooth;
-using namespace smooth::GUI;
 
 namespace BonkEnc
 {
@@ -90,6 +89,9 @@ namespace BonkEnc
 
 			static const String	 SettingsEncodeToSingleFileID;
 			static const Bool	 SettingsEncodeToSingleFileDefault;
+
+			static const String	 SettingsSingleFilenameID;
+			static const String	 SettingsSingleFilenameDefault;
 
 			static const String	 SettingsRemoveTracksID;
 			static const Bool	 SettingsRemoveTracksDefault;
@@ -271,6 +273,9 @@ namespace BonkEnc
 						 Config();
 						~Config();
 		public:
+			String			 resourcesPath;
+			String			 documentationPath;
+
 			Int			 maxActiveJobs;
 
 			Bool			 deleteAfterEncoding;

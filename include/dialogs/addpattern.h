@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,11 +11,14 @@
 #ifndef H_BONKENC_DIALOG_PATTERN
 #define H_BONKENC_DIALOG_PATTERN
 
-#include <bonkenc.h>
+#include <smooth.h>
+
+using namespace smooth;
+using namespace smooth::GUI;
 
 namespace BonkEnc
 {
-	class AddPatternDialog : public Dialog
+	class AddPatternDialog : public Dialogs::Dialog
 	{
 		private:
 			Divider		*divbar;

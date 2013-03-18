@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,12 +14,8 @@
 #include <smooth.h>
 #include <boca.h>
 
-#include "config.h"
-
 using namespace smooth;
 using namespace smooth::GUI;
-
-using namespace BoCA;
 
 namespace BonkEnc
 {
@@ -33,18 +29,18 @@ namespace BonkEnc
 			Button				*button_sel_none;
 			Button				*button_sel_toggle;
 
-			Array<Track>			 tracks;
+			Array<BoCA::Track>		 tracks;
 
 			Int				 headerTabsHash;
 
-			Bool				 AddTrack(const Track &);
+			Bool				 AddTrack(const BoCA::Track &);
 
-			ListEntry			*GetEntryByTrack(const Track &) const;
+			ListEntry			*GetEntryByTrack(const BoCA::Track &) const;
 
 			Void				 AddHeaderTabs();
 			Void				 UpdateTextLine();
 
-			String				 GetEntryText(const Track &) const;
+			String				 GetEntryText(const BoCA::Track &) const;
 		public:
 							 JobList(const Point &, const Size &);
 			virtual				~JobList();
@@ -52,21 +48,21 @@ namespace BonkEnc
 			Bool				 CanModifyJobList() const;
 
 			Int				 GetNOfTracks() const;
-			const Track			&GetNthTrack(Int) const;
+			const BoCA::Track		&GetNthTrack(Int) const;
 
-			const Array<Track>		*GetTrackList();
+			const Array<BoCA::Track>	*GetTrackList();
 
 			Bool				 RemoveNthTrack(Int);
 			Bool				 RemoveAllTracks();
 
-			const Track			&GetSelectedTrack() const;
+			const BoCA::Track		&GetSelectedTrack() const;
 
 			Int				 SetMetrics(const Point &, const Size &);
 
 			Void				 AddTrackByDialog();
 			Void				 AddTracksByPattern(const String &, const String &);
 
-			Void				 UpdateTrackInfo(const Track &);
+			Void				 UpdateTrackInfo(const BoCA::Track &);
 
 			Void				 RemoveSelectedTrack();
 		slots:
@@ -87,10 +83,10 @@ namespace BonkEnc
 			Void				 OnSelectEntry();
 			Void				 OnMarkEntry(ListEntry *);
 
-			Void				 OnComponentSelectTrack(const Track &);
+			Void				 OnComponentSelectTrack(const BoCA::Track &);
 
-			Void				 OnComponentMarkTrack(const Track &);
-			Void				 OnComponentUnmarkTrack(const Track &);
+			Void				 OnComponentMarkTrack(const BoCA::Track &);
+			Void				 OnComponentUnmarkTrack(const BoCA::Track &);
 
 			Void				 OnChangeConfigurationSettings();
 			Void				 OnChangeLanguageSettings();

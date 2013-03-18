@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,17 +12,20 @@
 #include <engine/decoder.h>
 #include <engine/encoder.h>
 
-#include <progress.h>
-
-#include <cuesheet.h>
-#include <playlist.h>
 #include <joblist.h>
+#include <progress.h>
+#include <playlist.h>
 #include <playback.h>
+#include <cuesheet.h>
+#include <config.h>
 #include <utilities.h>
 
 #include <jobs/job_addfiles.h>
 
+using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
+
+using namespace BoCA;
 using namespace BoCA::AS;
 
 BonkEnc::Converter::Converter()
@@ -34,16 +37,10 @@ BonkEnc::Converter::Converter()
 	skip = False;
 
 	overwriteAll = False;
-
-	progress = new Progress();
-
-	progress->onTrackProgress.Connect(&onTrackProgress);
-	progress->onTotalProgress.Connect(&onTotalProgress);
 }
 
 BonkEnc::Converter::~Converter()
 {
-	delete progress;
 }
 
 Void BonkEnc::Converter::Convert(JobList *iJoblist, Bool useThread)
@@ -126,6 +123,10 @@ Int BonkEnc::Converter::ConverterThread()
 	CueSheet	 cueSheet;
 
 	Encoder		*encoder	= NIL;
+	Progress	*progress	= new Progress();
+
+	progress->onTrackProgress.Connect(&onTrackProgress);
+	progress->onTotalProgress.Connect(&onTotalProgress);
 
 	onStartEncoding.Emit();
 
@@ -165,6 +166,8 @@ Int BonkEnc::Converter::ConverterThread()
 				singleOutFile = GetSingleOutputFileName(trackInfo);
 
 				if (singleOutFile == NIL) break;
+
+				singleOutFile = BoCA::Utilities::CreateDirectoryForFile(Utilities::NormalizeFileName(singleOutFile));
 
 				Track	 singleTrack;
 				Info	 singleTrackInfo;
@@ -350,7 +353,16 @@ Int BonkEnc::Converter::ConverterThread()
 				skip = True;
 			}
 
-			while (paused && !stop && !skip) S::System::System::Sleep(50);
+			if (paused)
+			{
+				progress->PauseTrackProgress();
+				progress->PauseTotalProgress();
+
+				while (paused && !stop && !skip) S::System::System::Sleep(50);
+
+				progress->ResumeTrackProgress();
+				progress->ResumeTotalProgress();
+			}
 
 			progress->UpdateProgressValues(trackInfo, position);
 		}
@@ -529,6 +541,8 @@ Int BonkEnc::Converter::ConverterThread()
 
 	onFinishEncoding.Emit(!stop && encodedTracks > 0);
 
+	delete progress;
+
 	if (stop) log->WriteWarning("Encoding process cancelled.");
 	else	  log->Write("Encoding process finished.");
 
@@ -539,18 +553,12 @@ Void BonkEnc::Converter::Pause()
 {
 	if (!encoding) return;
 
-	progress->PauseTrackProgress();
-	progress->PauseTotalProgress();
-
 	paused = True;
 }
 
 Void BonkEnc::Converter::Resume()
 {
 	if (!encoding) return;
-
-	progress->ResumeTrackProgress();
-	progress->ResumeTotalProgress();
 
 	paused = False;
 }
@@ -719,11 +727,11 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 
 		/* Get file extension from selected encoder component
 		 */
-		Registry		&boca = Registry::Get();
+		Registry		&boca	 = Registry::Get();
 		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
 		String			 fileExtension = encoder->GetOutputFileExtension();
-		String			 filePattern = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+		String			 filePattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
 		boca.DeleteComponent(encoder);
 
@@ -795,7 +803,7 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 			}
 
 			outputFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
-			outputFileName = Utilities::CreateDirectoryForFile(outputFileName);
+			outputFileName = BoCA::Utilities::CreateDirectoryForFile(Utilities::NormalizeFileName(outputFileName));
 		}
 		else if (track.isCDTrack)
 		{
@@ -824,46 +832,47 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 
 String BonkEnc::Converter::GetSingleOutputFileName(const Track &track)
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	/* Check if an output filename has already been set.
+	 */
+	BoCA::Config	*config		      = BoCA::Config::Get();
+	String		 singleOutputFileName = config->GetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Config::SettingsSingleFilenameDefault);
 
-	const Info	&info	= track.GetInfo();
+	if (singleOutputFileName != NIL || config->enable_console) return singleOutputFileName;
 
-	if (config->enable_console) return NIL;
+	/* Find main window and create dialog.
+	 */
+	Window		*mainWnd = Window::GetNthWindow(0);
+	FileSelection	*dialog	 = new FileSelection();
 
-	String		 singleOutputFileName;
-	String		 defaultExtension;
-	FileSelection	*dialog = new FileSelection();
-
-/* ToDo: Set parent window to get the
- *	 dialog at the right place.
- */
-//	dialog->SetParentWindow(mainWnd);
+	dialog->SetParentWindow(mainWnd);
 	dialog->SetMode(SFM_SAVE);
 	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
 
 	/* Get list of supported formats from selected encoder
 	 */
-	Registry		&boca = Registry::Get();
-	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(BoCA::Config::Get()->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+	BoCA::I18n			*i18n		  = BoCA::I18n::Get();
 
-	const Array<FileFormat *>	&formats = encoder->GetFormats();
+	Registry			&boca		  = Registry::Get();
+	EncoderComponent		*encoder	  = (EncoderComponent *) boca.CreateComponentByID(BoCA::Config::Get()->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
-	for (Int k = 0; k < formats.Length(); k++)
+	const Array<FileFormat *>	&formats	  = encoder->GetFormats();
+	String				 defaultExtension = encoder->GetOutputFileExtension();
+
+	const Info			&info		  = track.GetInfo();
+
+	for (Int i = 0; i < formats.Length(); i++)
 	{
-		const Array<String>	&format_extensions = formats.GetNth(k)->GetExtensions();
+		const Array<String>	&format_extensions = formats.GetNth(i)->GetExtensions();
 		String			 extension;
 
-		for (Int l = 0; l < format_extensions.Length(); l++)
+		for (Int j = 0; j < format_extensions.Length(); j++)
 		{
-			extension.Append("*.").Append(format_extensions.GetNth(l));
+			extension.Append("*.").Append(format_extensions.GetNth(j));
 
-			if (l < format_extensions.Length() - 1) extension.Append("; ");
+			if (j < format_extensions.Length() - 1) extension.Append("; ");
 		}
 
-		dialog->AddFilter(String(formats.GetNth(k)->GetName()).Append(" (").Append(extension).Append(")"), extension);
-
-		if (k == 0) defaultExtension = encoder->GetOutputFileExtension();
+		dialog->AddFilter(String(formats.GetNth(i)->GetName()).Append(" (").Append(extension).Append(")"), extension);
 	}
 
 	boca.DeleteComponent(encoder);

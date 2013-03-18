@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,19 +12,14 @@
 #define H_BONKENC_PLAYBACK
 
 #include <smooth.h>
-
-#include "bonkenc.h"
+#include <boca.h>
 
 using namespace smooth;
-using namespace BoCA::AS;
 
 namespace BonkEnc
 {
 	class JobList;
-};
 
-namespace BonkEnc
-{
 	class Playback
 	{
 		private:
@@ -35,7 +30,7 @@ namespace BonkEnc
 								 Playback();
 								~Playback();
 
-			OutputComponent				*output;
+			BoCA::AS::OutputComponent		*output;
 
 			JobList					*joblist;
 
@@ -72,7 +67,7 @@ namespace BonkEnc
 			Bool					 IsPlaying() const	{ return playing; }
 			Bool					 IsPaused() const	{ return paused; }
 		signals:
-			Signal2<Void, const Track *, Int>	 onPlayTrack;
+			Signal2<Void, const BoCA::Track *, Int>	 onPlayTrack;
 			Signal0<Void>				 onFinishTrack;
 	};
 };

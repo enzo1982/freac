@@ -172,9 +172,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">De takenlijst kan tijdens het coderen niet gewijzigd worden!</entry>
-	<entry id="3401" string="You did not select a track!">U heeft geen bestand geselecteerd!</entry>
-	<entry id="3402" string="No files found matching pattern:">Geen bestanden gevonden met dit patroon:</entry>
+	<entry id="3400" string="You did not select a track!">U heeft geen bestand geselecteerd!</entry>
+	<entry id="3401" string="No files found matching pattern:">Geen bestanden gevonden met dit patroon:</entry>
       </section>
     </section>
 

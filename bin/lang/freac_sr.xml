@@ -172,9 +172,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">Lista zadataka se ne može menjati u toku enkodovanja!</entry>
-	<entry id="3401" string="You did not select a track!">Niste odabrali fajl!</entry>
-	<entry id="3402" string="No files found matching pattern:">Nisu nađeni fajlovi po šablonu:</entry>
+	<entry id="3400" string="You did not select a track!">Niste odabrali fajl!</entry>
+	<entry id="3401" string="No files found matching pattern:">Nisu nađeni fajlovi po šablonu:</entry>
       </section>
     </section>
 

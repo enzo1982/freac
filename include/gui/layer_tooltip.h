@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,7 +11,11 @@
 #ifndef H_BONKENC_LAYER_TOOLTIP
 #define H_BONKENC_LAYER_TOOLTIP
 
-#include <bonkenc.h>
+#include <smooth.h>
+#include <boca.h>
+
+using namespace smooth;
+using namespace smooth::GUI;
 
 namespace BonkEnc
 {
@@ -21,9 +25,9 @@ namespace BonkEnc
 			Image		*cover;
 			Text		*text;
 
-			const String	&GetTooltipText(const Track &);
+			const String	&GetTooltipText(const BoCA::Track &);
 		public:
-					 LayerTooltip(const Track &);
+					 LayerTooltip(const BoCA::Track &);
 			virtual		~LayerTooltip();
 	};
 };

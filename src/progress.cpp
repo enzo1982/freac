@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,14 +9,47 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <progress.h>
-#include <joblist.h>
+#include <config.h>
+
+using namespace BoCA;
 
 BonkEnc::Progress::Progress()
 {
+#ifdef __WIN32__
+	/* Init the Microsoft COM library.
+	 */
+	CoInitialize(NIL);
+
+	/* Get main window handle.
+	 */
+	Window	*mainWnd = Window::GetNthWindow(0);
+
+	if (mainWnd != NIL) hwnd = (HWND) mainWnd->GetSystemWindow();
+	else		    hwnd = NIL;
+
+	/* Create an instance of ITaskbarList3.
+	 */
+	taskbar = NIL;
+
+	CoCreateInstance(CLSID_TaskbarList, NULL, CLSCTX_ALL, IID_ITaskbarList3, (void **) &taskbar);
+#endif
 }
 
 BonkEnc::Progress::~Progress()
 {
+#ifdef __WIN32__
+	/* Relase taakbar interface.
+	 */
+	if (taskbar != NIL)
+	{
+		taskbar->SetProgressState(hwnd, TBPF_NOPROGRESS);
+		taskbar->Release();
+	}
+
+	/* Uninit the Microsoft COM library.
+	 */
+	CoUninitialize();
+#endif
 }
 
 Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
@@ -71,16 +104,38 @@ Void BonkEnc::Progress::ResumeTrackProgress()
 Void BonkEnc::Progress::InitTotalProgressValues()
 {
 	totalStartTicks = S::System::System::Clock();
+
+#ifdef __WIN32__
+	/* Show progress in taskbar.
+	 */
+	if (taskbar != NIL)
+	{
+		taskbar->SetProgressState(hwnd, TBPF_NORMAL);
+		taskbar->SetProgressValue(hwnd, 0, 1000);
+	}
+#endif
 }
 
 Void BonkEnc::Progress::PauseTotalProgress()
 {
 	totalPauseTicks = S::System::System::Clock();
+
+#ifdef __WIN32__
+	/* Set taskbar progress state to paused.
+	 */
+	if (taskbar != NIL) taskbar->SetProgressState(hwnd, TBPF_PAUSED);
+#endif
 }
 
 Void BonkEnc::Progress::ResumeTotalProgress()
 {
 	totalStartTicks += S::System::System::Clock() - totalPauseTicks;
+
+#ifdef __WIN32__
+	/* Set taskbar progress state to normal.
+	 */
+	if (taskbar != NIL) taskbar->SetProgressState(hwnd, TBPF_NORMAL);
+#endif
 }
 
 Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int samplePosition)
@@ -119,6 +174,16 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 
 	onTrackProgress.Emit(trackProgress, trackTicks);
 	onTotalProgress.Emit(totalProgress, totalTicks);
+
+#ifdef __WIN32__
+	/* Show progress in taskbar.
+	 */
+	if (taskbar != NIL)
+	{
+		taskbar->SetProgressState(hwnd, TBPF_NORMAL);
+		taskbar->SetProgressValue(hwnd, totalProgress, 1000);
+	}
+#endif
 
 	lastInvoked = clockValue;
 }

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,15 +9,12 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cuesheet.h>
+#include <config.h>
 #include <utilities.h>
-#include <bonkenc.h>
 
 using namespace smooth::IO;
 
-#include <boca.h>
-
 using namespace BoCA;
-using namespace BoCA::AS;
 
 Bool BonkEnc::CueSheet::AddTrack(const String &fileName, Int offset, const Track &track)
 {
@@ -37,7 +34,7 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 
 	/* Create cue sheet file.
 	 */
-	String		 rFileName = Utilities::CreateDirectoryForFile(fileName);
+	String		 rFileName = BoCA::Utilities::CreateDirectoryForFile(Utilities::NormalizeFileName(fileName));
 	OutStream	*file	= new OutStream(STREAM_FILE, rFileName, OS_REPLACE);
 
 	if (file->GetLastError() != IO_ERROR_OK)

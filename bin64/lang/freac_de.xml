@@ -188,9 +188,8 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="Cannot modify the joblist while encoding!">Die Liste kann während der Kodierung nicht bearbeitet werden!</entry>
-	<entry id="3401" string="You did not select a track!">Es ist kein Eintrag ausgewählt!</entry>
-	<entry id="3402" string="No files found matching pattern:">Keine Dateien entsprechen der Vorlage:</entry>
+	<entry id="3400" string="You did not select a track!">Es ist kein Eintrag ausgewählt!</entry>
+	<entry id="3401" string="No files found matching pattern:">Keine Dateien entsprechen der Vorlage:</entry>
       </section>
     </section>
 
@@ -638,6 +637,7 @@
 	  <entry id="34106" string="Joint Stereo">Joint-Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Adaptives Joint-Stereo</entry>
 	  <entry id="34108" string="File format">Dateiformat</entry>
+	  <entry id="34109" string="Default">Standard</entry>
 	</section>
 
 	<section name="Format">
@@ -729,6 +729,32 @@
 	<entry id="39019" string="Quality:">Qualität:</entry>
 	<entry id="39020" string="Max. bitrate:">Max. Bitrate:</entry>
       </section>
+
+      <section name="Opus">
+	<entry id="40000" string="Basic settings">Grundeinstellungen</entry>
+	<entry id="40001" string="Encoding mode:">Kodiermodus:</entry>
+	<entry id="40002" string="Auto">Automatisch</entry>
+	<entry id="40003" string="Voice">Sprache</entry>
+	<entry id="40004" string="Music">Musik</entry>
+	<entry id="40005" string="Bandwidth:">Bandbreite:</entry>
+	<entry id="40006" string="Narrowband">Schmalband</entry>
+	<entry id="40007" string="Mediumband">Mittelband</entry>
+	<entry id="40008" string="Wideband">Breitband</entry>
+	<entry id="40009" string="Superwideband">Superbreitband</entry>
+	<entry id="40010" string="Fullband">Vollband</entry>
+	<entry id="40011" string="File extension">Dateiendung</entry>
+	<entry id="40012" string="Variable bitrate">Variable Bitrate</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Kodierung mit variabler Bitrate aktivieren</entry>
+	<entry id="40014" string="Quality">Qualität</entry>
+	<entry id="40015" string="Bitrate:">Bitrate:</entry>
+	<entry id="40016" string="kbps">kbps</entry>
+	<entry id="40017" string="Complexity:">Komplexität:</entry>
+	<entry id="40018" string="Stream">Datenstrom</entry>
+	<entry id="40019" string="Frame length:">Framelänge:</entry>
+	<entry id="40020" string="Options">Optionen</entry>
+	<entry id="40021" string="Enable discontinous transmission">Discontinous Transmission aktivieren</entry>
+	<entry id="40022" string="Expected packet loss:">Erwarteter Paketverlust:</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -786,7 +812,7 @@
 	  <entry id="52201" string="This URL is not supported or not a video page URL!">Diese URL wird nicht unterstützt oder ist keine URL einer Videoseite!</entry>
 	  <entry id="52202" string="Error downloading video!">Fehler beim Herunterladen des Videos!</entry>
 	  <entry id="52203" string="You are already downloading this video!">Dieses Video wird bereits heruntergeladen!</entry>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie avconv, um dieses Problem zu beheben!</entry>
+	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie avconv oder FFmpeg, um dieses Problem zu beheben!</entry>
 	</section>
       </section>
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,29 +12,16 @@
 #define H_BONKENC
 
 #include <smooth.h>
-#include <boca.h>
-
-#include "config.h"
-#include "engine/converter.h"
-#include "cddb/cddb.h"
-#include "cddb/cddbinfo.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
-using namespace smooth::GUI::Dialogs;
 
 namespace BonkEnc
 {
 	class JobList;
 	class Converter;
-};
+	class Config;
 
-typedef unsigned long  uint32;
-typedef unsigned short uint16;
-typedef unsigned char  uint8;
-
-namespace BonkEnc
-{
 	abstract class BonkEnc : public GUI::Application
 	{
 		protected:

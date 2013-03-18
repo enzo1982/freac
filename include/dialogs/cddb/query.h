@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,13 +11,17 @@
 #ifndef H_BONKENC_CDDB_QUERY
 #define H_BONKENC_CDDB_QUERY
 
-#include <bonkenc.h>
+#include <smooth.h>
 
-using namespace smooth::Threads;
+using namespace smooth;
+using namespace smooth::GUI;
+
+#include <cddb/cddb.h>
+#include <cddb/cddbinfo.h>
 
 namespace BonkEnc
 {
-	class cddbQueryDlg : public Dialog
+	class cddbQueryDlg : public Dialogs::Dialog
 	{
 		private:
 			Window		*mainWnd;
@@ -32,7 +36,7 @@ namespace BonkEnc
 
 			Bool		 allowAddToBatch;
 
-			Thread		*queryThread;
+			Threads::Thread	*queryThread;
 
 			Void		 Cancel();
 			Int		 QueryThread();

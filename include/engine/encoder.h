@@ -12,34 +12,32 @@
 #define H_BONKENC_ENCODER
 
 #include <smooth.h>
-
-#include "bonkenc.h"
+#include <boca.h>
 
 using namespace smooth;
-using namespace BoCA;
 
 namespace BonkEnc
 {
 	class Encoder
 	{
 		protected:
-			IO::OutStream		*f_out;
-			AS::EncoderComponent	*filter_out;
+			IO::OutStream			*f_out;
+			BoCA::AS::EncoderComponent	*filter_out;
 
-			Track			 album;
-			Int			 chapter;
-			Int64			 bytes;
-			Int64			 offset;
+			BoCA::Track			 album;
+			Int				 chapter;
+			Int64				 bytes;
+			Int64				 offset;
 		public:
-						 Encoder();
-			virtual			~Encoder();
+							 Encoder();
+			virtual				~Encoder();
 
-			Bool			 Create(const String &, const String &, const Track &);
-			Bool			 Destroy();
+			Bool				 Create(const String &, const String &, const BoCA::Track &);
+			Bool				 Destroy();
 
-			Int			 Write(Buffer<UnsignedByte> &, Int);
+			Int				 Write(Buffer<UnsignedByte> &, Int);
 
-			Void			 SignalChapterChange();
+			Void				 SignalChapterChange();
 	};
 };
 

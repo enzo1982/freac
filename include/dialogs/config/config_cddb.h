@@ -11,11 +11,12 @@
 #ifndef H_BONKENC_CONFIG_CDDB
 #define H_BONKENC_CONFIG_CDDB
 
-#include <bonkenc.h>
+#include <smooth.h>
+#include <boca.h>
 
 namespace BonkEnc
 {
-	class ConfigureCDDB : public ConfigLayer
+	class ConfigureCDDB : public BoCA::ConfigLayer
 	{
 		private:
 			Layer		*layer_local_background;

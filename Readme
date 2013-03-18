@@ -45,7 +45,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (September 2012)
+	Version 1.1 CVS (January 2013)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -75,7 +75,8 @@ History
 		- added support for gapless MP3 decoding
 		- added RIFF tagging support (using LIST INFO and Cart chunks)
 		- added support for Ogg FLAC files
-		- added support for wildcards in arguments to BEcmd
+		- added support for wildcards in arguments to freaccmd
+		- added support for encoding to single file with freaccmd
 		- added support for large fonts
 		- changed default output directory to "My Music" folder
 		- added <disc> pattern
@@ -97,6 +98,7 @@ History
 		- miscellaneous other speed optimizations
 		- the five last used file name patterns are now saved for later use
 		- greatly improved case conversion functions
+		- conversion progress is now shown in the taskbar on Windows 7 and later
 		- fixed ID3v2 cover data not being displayed in iTunes
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed ID3lib to read and write correct ID3v2.4 tags
@@ -113,7 +115,7 @@ History
 		- fixed encoding empty tracks when no CD is inserted
 		- fixed various CDDB issues
 		- fixed HTTP proxy authentication
-		- fixed BEcmd crashes
+		- fixed freaccmd crashes
 		- fixed support for various artists CDs
 		- improved CDDB data sanity check
 		- improved title info editing user friendliness
@@ -229,7 +231,7 @@ Known problems
 	Linux and Unix specific problems:
 
 		- There are no application packages for fre:ac yet, so you need to install dependencies manually for now.
-		  Please just extract the contents of the archive to your home directory. Do not try to install it system wide.
+		  Please just extract the contents of the archive to your home directory.
 
 Special thanks to
 -----------------

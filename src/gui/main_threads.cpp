@@ -11,6 +11,8 @@
 #include <gui/main_threads.h>
 #include <jobs/job.h>
 
+using namespace smooth::GUI::Dialogs;
+
 BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 {
 	text_progress	= new Text("Progress:", Point(7, 11));

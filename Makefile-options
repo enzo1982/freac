@@ -1,6 +1,14 @@
 ########## fre:ac options makefile ##########
 
+SMOOTHVER = 0.8.71
+BOCAVER	  = 1.0
+
 UNAME = $(shell uname)
+MACHINE = $(shell gcc -dumpmachine)
+
+ifneq ($(findstring x86_64,$(MACHINE)),)
+	BUILD_X64 = True
+endif
 
 ifneq ($(findstring MINGW,$(UNAME)),)
 #	Set executable and shared object extensions
@@ -34,5 +42,13 @@ else ifeq ($(UNAME),Darwin)
 	SHARED = .dylib
 
 	BUILD_OSX = True
+endif
+endif
+
+ifeq ($(PREFIX),)
+	PREFIX = /usr/local
+
+ifeq ($(BUILD_HAIKU),True)
+	PREFIX = /boot/common
 endif
 endif

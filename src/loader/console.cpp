@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -23,6 +23,15 @@ Int smooth::Main(const Array<String> &args)
 
 	DynamicLoader	*loader = new DynamicLoader("freac");
 
+#ifndef __WIN32__
+	if (loader->GetSystemModuleHandle() == NIL)
+	{
+		Object::DeleteObject(loader);
+
+		loader = new DynamicLoader("../lib/freac/freac");
+	}
+#endif
+
 	if (loader->GetSystemModuleHandle() != NIL)
 	{
 		Int	(*StartConsole)(const Array<String> &) = (Int (*)(const Array<String> &)) loader->GetFunctionAddress("StartConsole");
@@ -32,6 +41,8 @@ Int smooth::Main(const Array<String> &args)
 
 		return result;
 	}
+
+	Object::DeleteObject(loader);
 
 	return -1;
 }

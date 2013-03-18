@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,6 +10,12 @@
 
 #include <config.h>
 #include <bonkenc.h>
+
+#include <engine/converter.h>
+
+#include <boca.h>
+
+using namespace BoCA;
 
 BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
@@ -82,6 +88,9 @@ const Bool	 BonkEnc::Config::SettingsKeepWaveFilesDefault			= False;
 
 const String	 BonkEnc::Config::SettingsEncodeToSingleFileID			= "EncodeToSingleFile";
 const Bool	 BonkEnc::Config::SettingsEncodeToSingleFileDefault		= False;
+
+const String	 BonkEnc::Config::SettingsSingleFilenameID			= "SingleFilename";
+const String	 BonkEnc::Config::SettingsSingleFilenameDefault			= NIL;
 
 const String	 BonkEnc::Config::SettingsRemoveTracksID			= "RemoveTracks";
 const Bool	 BonkEnc::Config::SettingsRemoveTracksDefault			= True;
@@ -258,6 +267,14 @@ const Bool	 BonkEnc::Config::FreedbUpdateJoblistDefault			= True;
 
 BonkEnc::Config::Config()
 {
+#ifndef __WIN32__
+	if (Directory(GUI::Application::GetApplicationDirectory().Append("../share/freac")).Exists())
+	{
+		resourcesPath		= "../share/freac/";
+		documentationPath	= "../share/doc/freac/";
+	}
+#endif
+
 	maxActiveJobs		= 2;
 
 	deleteAfterEncoding	= False;
@@ -274,6 +291,8 @@ BonkEnc::Config::Config()
 	if (!encoderOutputDir.EndsWith(Directory::GetDirectoryDelimiter()))  config->SetStringValue(CategorySettingsID, SettingsEncoderOutputDirectoryID, encoderOutputDir.Append(Directory::GetDirectoryDelimiter()));
 	if (!playlistOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) config->SetStringValue(CategoryPlaylistID, PlaylistOutputDirID, playlistOutputDir.Append(Directory::GetDirectoryDelimiter()));
 	if (!freedbDir.EndsWith(Directory::GetDirectoryDelimiter()))	     config->SetStringValue(CategoryFreedbID, FreedbDirectoryID, freedbDir.Append(Directory::GetDirectoryDelimiter()));
+
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Config::SettingsSingleFilenameDefault);
 }
 
 BonkEnc::Config::~Config()
@@ -302,13 +321,12 @@ Void BonkEnc::Config::Free()
 
 Bool BonkEnc::Config::CanChangeConfig()
 {
-// ToDo: Reactivate this check.
-/*	if (BonkEnc::Get()->encoder->IsEncoding())
+	if (BonkEnc::Get()->encoder->IsEncoding())
 	{
 		Utilities::ErrorMessage("Cannot change settings while encoding!");
 
 		return False;
 	}
-*/
+
 	return True;
 }
