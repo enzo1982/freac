@@ -114,10 +114,13 @@ else
 	LOADER_CONSOLE_LINKER_OPTS	+= -L$(PREFIX)/lib -lsmooth-$(SMOOTHVER) -Wl,-rpath,.
 endif
 
-.PHONY: all headers install uninstall clean clean_headers
+.PHONY: all directories headers install uninstall clean clean_headers
 .SILENT:
 
-all: $(HEADERS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOURCES) $(DLLNAME) $(EXENAME) $(CMDNAME)
+all: directories $(HEADERS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOURCES) $(DLLNAME) $(EXENAME) $(CMDNAME)
+
+directories:
+	mkdir -p $(OBJECTDIR)
 
 install: uninstall
 ifneq ($(BUILD_WIN32),True)
