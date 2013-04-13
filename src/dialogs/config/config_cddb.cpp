@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -319,7 +319,7 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 
 	if (config->cdrip_numdrives >= 1 && !valid)
 	{
-		BoCA::Utilities::ErrorMessage("Please enter a valid eMail address.");
+		BoCA::Utilities::ErrorMessage(i18n->TranslateString("Please enter a valid eMail address."));
 
 		return Error();
 	}

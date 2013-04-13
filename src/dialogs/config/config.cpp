@@ -182,10 +182,10 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
 
-	/* Connect to the onChangeEncoderSettings signal of the encoder configuration
-	 * layer to be notified when settings for a specific encoder are changed.
+	/* Connect to the onChangeComponentSettings signal of the encoder configuration
+	 * layer to be notified when settings for a specific component are changed.
 	 */
-	((ConfigureEncoders *) layers.GetLast())->onChangeEncoderSettings.Connect(&ConfigDialog::OnChangeEncoderSettings, this);
+	((ConfigureEncoders *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
 
 	if (config->cdrip_numdrives >= 1)
 	{
@@ -250,6 +250,11 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	entries.Add(new ConfigEntry(i18n->TranslateString("Playlists"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_bonkenc->Add(entries.GetLast());
+
+	/* Connect to the onChangeComponentSettings signal of the playlist configuration
+	 * layer to be notified when settings for a specific component are changed.
+	 */
+	((ConfigurePlaylists *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
 
 	layers.Add(new ConfigureTags());
 	createdLayers.Add(layers.GetLast());
@@ -526,9 +531,9 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
 	}
 }
 
-Void BonkEnc::ConfigDialog::OnChangeEncoderSettings(const String &encoderID)
+Void BonkEnc::ConfigDialog::OnChangeComponentSettings(const String &componentID)
 {
-	/* One of the encoder configurations has changed
+	/* One of the component configurations has changed
 	 * so replace the affected component.
 	 */
 	Component	*component	= NIL;
@@ -539,7 +544,7 @@ Void BonkEnc::ConfigDialog::OnChangeEncoderSettings(const String &encoderID)
 		component	= components.GetNth(i);
 		componentIndex	= i;
 
-		if (component->GetID() == encoderID)  break;
+		if (component->GetID() == componentID)  break;
 	}
 
 	Registry	&boca = Registry::Get();
@@ -550,7 +555,7 @@ Void BonkEnc::ConfigDialog::OnChangeEncoderSettings(const String &encoderID)
 		{
 			boca.DeleteComponent(component);
 
-			component = boca.CreateComponentByID(encoderID);
+			component = boca.CreateComponentByID(componentID);
 			components.SetNth(componentIndex, component);
 
 			layers.SetNth(i, component->GetConfigurationLayer());

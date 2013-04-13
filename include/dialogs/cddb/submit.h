@@ -78,6 +78,7 @@ namespace BonkEnc
 			Array<String>	 artists;
 			Array<String>	 titles;
 			Array<String>	 comments;
+			Array<Bool>	 data;
 
 			Void		 UpdateTrackList();
 

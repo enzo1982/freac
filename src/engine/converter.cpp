@@ -14,7 +14,6 @@
 
 #include <joblist.h>
 #include <progress.h>
-#include <playlist.h>
 #include <playback.h>
 #include <cuesheet.h>
 #include <config.h>
@@ -84,10 +83,10 @@ Void BonkEnc::Converter::Convert(JobList *iJoblist, Bool useThread)
 Int BonkEnc::Converter::ConverterThread()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
 	Registry	&boca	= Registry::Get();
 
+	/* Perform necessary checks.
+	 */
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault))
 	{
 		/* We need to encode on the fly when encoding to a single file.
@@ -106,24 +105,25 @@ Int BonkEnc::Converter::ConverterThread()
 		}
 	}
 
+	/* Setup conversion log.
+	 */
 	BoCA::Protocol	*log = BoCA::Protocol::Get("Converter log");
 
 	log->Write("Encoding process started...");
 
-	String		 singleOutFile;
-	String		 playlist_filename;
+	/* Setup playlist and cuesheet writers.
+	 */
+	String			 playlistID	    = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault);
+	PlaylistComponent	*playlist	    = (PlaylistComponent *) boca.CreateComponentByID(playlistID.Head(playlistID.FindLast("-")));
+	CueSheet		 cueSheet;
 
-	encoder_activedrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+	Array<Track>		 playlist_tracks;
+	String			 playlist_filename;
+	String			 playlist_extension = playlistID.Tail(playlistID.Length() - playlistID.FindLast("-") - 1);
 
-	String		 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
-	Int		 encodedTracks	= 0;
-	Int64		 encodedSamples	= 0;
-	Int		 mode		= ENCODER_MODE_ON_THE_FLY;
-	Playlist	 playlist;
-	CueSheet	 cueSheet;
-
-	Encoder		*encoder	= NIL;
-	Progress	*progress	= new Progress();
+	/* Setup progress indicators.
+	 */
+	Progress	*progress = new Progress();
 
 	progress->onTrackProgress.Connect(&onTrackProgress);
 	progress->onTotalProgress.Connect(&onTotalProgress);
@@ -133,6 +133,18 @@ Int BonkEnc::Converter::ConverterThread()
 	progress->ComputeTotalSamples(tracks);
 	progress->InitTotalProgressValues();
 	progress->PauseTotalProgress();
+
+	/* Main conversion loop.
+	 */
+	String	 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	Encoder	*encoder	= NIL;
+
+	String	 singleOutFile;
+	Int	 encodedTracks	= 0;
+	Int64	 encodedSamples	= 0;
+	Int	 mode		= ENCODER_MODE_ON_THE_FLY;
+
+	encoder_activedrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 
 	for (Int i = 0; i < tracks.Length(); (mode == ENCODER_MODE_DECODE) ? i : i++)
 	{
@@ -172,13 +184,16 @@ Int BonkEnc::Converter::ConverterThread()
 				Track	 singleTrack;
 				Info	 singleTrackInfo;
 
-				singleTrackInfo.artist = info.artist;
-				singleTrackInfo.title  = info.album;
-				singleTrackInfo.album  = info.album;
-				singleTrackInfo.year   = info.year;
-				singleTrackInfo.genre  = info.genre;
+				singleTrackInfo.artist	 = info.artist;
+				singleTrackInfo.title	 = info.album;
+				singleTrackInfo.album	 = info.album;
+				singleTrackInfo.year	 = info.year;
+				singleTrackInfo.genre	 = info.genre;
 
-				singleTrack.outfile	= singleOutFile;
+				singleTrack.origFilename = singleOutFile;
+				singleTrack.outfile	 = singleOutFile;
+
+				singleTrack.length	 = progress->GetTotalSamples();
 
 				singleTrack.SetInfo(singleTrackInfo);
 				singleTrack.SetFormat(trackInfo.GetFormat());
@@ -188,7 +203,7 @@ Int BonkEnc::Converter::ConverterThread()
 					singleTrack.tracks.Add(chapterTrack);
 				}
 
-				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo.artist.Length() > 0 ? singleTrackInfo.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo.title.Length() > 0 ? singleTrackInfo.title : i18n->TranslateString("unknown title")), Math::Round((Float) progress->GetTotalSamples() / singleTrack.GetFormat().rate));
+				playlist_tracks.Add(singleTrack);
 
 				encoder = new Encoder();
 
@@ -367,14 +382,13 @@ Int BonkEnc::Converter::ConverterThread()
 			progress->UpdateProgressValues(trackInfo, position);
 		}
 
-		progress->PauseTotalProgress();
-		progress->FinishTrackProgressValues(trackInfo);
-
 		log->Write("\t\tLeaving encoder loop...");
 
 		delete decoder;
 
 		encodedSamples += trackLength;
+
+		trackInfo.length = trackLength;
 
 		/* Close encoder or signal next chapter.
 		 */
@@ -391,8 +405,11 @@ Int BonkEnc::Converter::ConverterThread()
 		{
 			encoder->SignalChapterChange();
 
-			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75), trackInfo);
+			cueSheet.AddTrack(BoCA::Utilities::GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75), trackInfo);
 		}
+
+		progress->PauseTotalProgress();
+		progress->FinishTrackProgressValues(trackInfo);
 
 		/* Delete input file if requested or not in on-the-fly mode.
 		 */
@@ -431,9 +448,12 @@ Int BonkEnc::Converter::ConverterThread()
 		{
 			if (mode != ENCODER_MODE_DECODE && File(out_filename).Exists())
 			{
-				String	 relativeFileName = GetRelativeFileName(out_filename, playlist_filename);
+				String	 relativeFileName = BoCA::Utilities::GetRelativeFileName(out_filename, playlist_filename);
 
-				playlist.AddTrack(relativeFileName, String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")), Math::Round((Float) trackLength / format.rate));
+				trackInfo.origFilename = out_filename;
+
+				playlist_tracks.Add(trackInfo);
+
 				cueSheet.AddTrack(relativeFileName, 0, trackInfo);
 
 				trackInfo.SaveCoverArtFiles(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
@@ -531,8 +551,16 @@ Int BonkEnc::Converter::ConverterThread()
 
 	if (!stop && encodedTracks > 0)
 	{
-		if (config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault)) playlist.Save(String(playlist_filename).Append(".m3u"));
-		if (config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault)) cueSheet.Save(String(playlist_filename).Append(".cue"));
+		if (config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault) && playlist != NIL)
+		{
+			playlist->SetTrackList(playlist_tracks);
+			playlist->WritePlaylist(String(playlist_filename).Append(".").Append(playlist_extension));
+		}
+
+		if (config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault))
+		{
+			cueSheet.Save(String(playlist_filename).Append(".cue"));
+		}
 
 		Config::Get()->deleteAfterEncoding = False;
 	}
@@ -542,6 +570,8 @@ Int BonkEnc::Converter::ConverterThread()
 	onFinishEncoding.Emit(!stop && encodedTracks > 0);
 
 	delete progress;
+
+	if (playlist != NIL) boca.DeleteComponent(playlist);
 
 	if (stop) log->WriteWarning("Encoding process cancelled.");
 	else	  log->Write("Encoding process finished.");
@@ -629,51 +659,6 @@ String BonkEnc::Converter::GetPlaylistFileName(const Track &track)
 	}
 
 	return Utilities::NormalizeFileName(playlistFileName);
-}
-
-String BonkEnc::Converter::GetRelativeFileName(const String &trackFileName, const String &baseFileName)
-{
-	String	 compTrackFileName = trackFileName;
-	String	 compBaseFileName  = baseFileName;
-
-#ifdef __WIN32__
-	/* Ignore case on Windows systems.
-	 */
-	compTrackFileName = compTrackFileName.ToLower();
-	compBaseFileName  = compBaseFileName.ToLower();
-#endif
-
-	Int	 equalBytes	   = 0;
-	Int	 furtherComponents = 0;
-	Bool	 found		   = False;
-
-	for (Int i = 0; i < baseFileName.Length(); i++)
-	{
-		if (compBaseFileName[i] != compTrackFileName[i]) found = True;
-
-		if (baseFileName[i] == '\\' || baseFileName[i] == '/')
-		{
-			if (!found) equalBytes = i + 1;
-			else	    furtherComponents++;
-		}
-	}
-
-	String	 relativeFileName = trackFileName;
-
-	if (equalBytes > 0)
-	{
-		relativeFileName = NIL;
-
-		for (Int m = 0; m < trackFileName.Length() - equalBytes; m++) relativeFileName[m] = trackFileName[m + equalBytes];
-	}
-
-	if ( relativeFileName[1] != ':' &&	  // Absolute local path
-	    !relativeFileName.StartsWith("\\\\")) // Network resource
-	{
-		for (Int m = 0; m < furtherComponents; m++) relativeFileName = String("..").Append(Directory::GetDirectoryDelimiter()).Append(relativeFileName);
-	}
-
-	return relativeFileName;
 }
 
 String BonkEnc::Converter::GetOutputFileName(const Track &track)

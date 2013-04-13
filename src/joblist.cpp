@@ -9,7 +9,6 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <joblist.h>
-#include <playlist.h>
 #include <config.h>
 #include <utilities.h>
 
@@ -296,41 +295,41 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	Registry	&boca = Registry::Get();
 
-	for (Int j = 0; j < boca.GetNumberOfComponents(); j++)
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
-		if (boca.GetComponentType(j) != BoCA::COMPONENT_TYPE_DECODER) continue;
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_DECODER) continue;
 
-		const Array<FileFormat *>	&formats = boca.GetComponentFormats(j);
+		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int k = 0; k < formats.Length(); k++)
+		for (Int j = 0; j < formats.Length(); j++)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(k)->GetExtensions();
+			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
 			String			 extension;
 
-			for (Int l = 0; l < format_extensions.Length(); l++)
+			for (Int k = 0; k < format_extensions.Length(); k++)
 			{
-				extension.Append("*.").Append(format_extensions.GetNth(l));
+				extension.Append("*.").Append(format_extensions.GetNth(k));
 
-				if (l < format_extensions.Length() - 1) extension.Append("; ");
+				if (k < format_extensions.Length() - 1) extension.Append("; ");
 			}
 
-			types.Add(String(formats.GetNth(k)->GetName()).Append(" (").Append(extension).Append(")"));
+			types.Add(String(formats.GetNth(j)->GetName()).Append(" (").Append(extension).Append(")"));
 			extensions.Add(extension);
 		}
 	}
 
 	String	 fileTypes;
 
-	for (Int l = 0; l < extensions.Length(); l++)
+	for (Int i = 0; i < extensions.Length(); i++)
 	{
-		if (fileTypes.Find(extensions.GetNth(l)) < 0) fileTypes.Append(l > 0 ? ";" : NIL).Append(extensions.GetNth(l));
+		if (fileTypes.Find(extensions.GetNth(i)) < 0) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
 	}
 
 	fileTypes.Append(";*.cue");
 
 	dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
 
-	for (Int m = 0; m < types.Length(); m++) dialog->AddFilter(types.GetNth(m), extensions.GetNth(m));
+	for (Int i = 0; i < types.Length(); i++) dialog->AddFilter(types.GetNth(i), extensions.GetNth(i));
 
 	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
@@ -491,19 +490,81 @@ Void BonkEnc::JobList::LoadList()
 
 	dialog->SetParentWindow(container->GetContainerWindow());
 
-	dialog->AddFilter(String(i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
+	/* Add available formats to dialog.
+	 */
+	Array<String>	 types;
+	Array<String>	 extensions;
+
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
+
+		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
+
+		for (Int j = 0; j < formats.Length(); j++)
+		{
+			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			String			 extension;
+
+			for (Int k = 0; k < format_extensions.Length(); k++)
+			{
+				extension.Append("*.").Append(format_extensions.GetNth(k));
+
+				if (k < format_extensions.Length() - 1) extension.Append("; ");
+			}
+
+			types.Add(String(formats.GetNth(j)->GetName()).Append(" (").Append(extension).Append(")"));
+			extensions.Add(extension);
+		}
+	}
+
+	String	 fileTypes;
+
+	for (Int i = 0; i < extensions.Length(); i++)
+	{
+		if (fileTypes.Find(extensions.GetNth(i)) < 0) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
+	}
+
+	dialog->AddFilter(i18n->TranslateString("Playlist Files"), fileTypes);
+
+	for (Int i = 0; i < types.Length(); i++) dialog->AddFilter(types.GetNth(i), extensions.GetNth(i));
+
 	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
+	/* Display open file dialog.
+	 */
 	if (dialog->ShowDialog() == Success())
 	{
-		Playlist	 playlist;
-		Array<String>	 files;
+		/* Create playlist component based on selected file.
+		 */
+		PlaylistComponent	*playlist = NIL;
 
-		playlist.Load(dialog->GetFileName());
+		for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+		{
+			if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
 
-		for (Int i = 0; i < playlist.GetNOfTracks(); i++) files.Add(playlist.GetNthTrackFileName(i));
+			playlist = (PlaylistComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
 
-		(new JobAddFiles(files))->Schedule();
+			if (playlist->CanOpenFile(dialog->GetFileName())) break;
+
+			boca.DeleteComponent(playlist);
+		}
+
+		/* Load playlist file and delete component.
+		 */
+		if (playlist != NIL)
+		{
+			const Array<Track>	&tracks = playlist->ReadPlaylist(dialog->GetFileName());
+			Array<String>		 files;
+
+			for (Int i = 0; i < tracks.Length(); i++) files.Add(tracks.GetNth(i).origFilename);
+
+			(new JobAddFiles(files))->Schedule();
+
+			boca.DeleteComponent(playlist);
+		}
 	}
 
 	DeleteObject(dialog);
@@ -520,51 +581,85 @@ Void BonkEnc::JobList::SaveList()
 	dialog->SetParentWindow(container->GetContainerWindow());
 	dialog->SetMode(SFM_SAVE);
 	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
-	dialog->SetDefaultExtension("m3u");
 
-	dialog->AddFilter(String(i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
+	/* Add available formats to dialog.
+	 */
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
+
+		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
+
+		for (Int j = 0; j < formats.Length(); j++)
+		{
+			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			String			 extension;
+
+			for (Int k = 0; k < format_extensions.Length(); k++)
+			{
+				if (format_extensions.GetNth(k) == "m3u8") dialog->SetDefaultExtension("m3u8");
+
+				extension.Append("*.").Append(format_extensions.GetNth(k));
+
+				if (k < format_extensions.Length() - 1) extension.Append("; ");
+			}
+
+			dialog->AddFilter(String(formats.GetNth(j)->GetName()).Append(" (").Append(extension).Append(")"), extension);
+		}
+	}
+
 	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
+	/* Display save file dialog.
+	 */
 	if (dialog->ShowDialog() == Success())
 	{
-		Playlist playlist;
+		/* Create playlist component based on selected file.
+		 */
+		PlaylistComponent	*playlist = NIL;
 
-		for (Int i = 0; i < GetNOfTracks(); i++)
+		for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 		{
-			const Track	&track = GetNthTrack(i);
-			const Info	&info = track.GetInfo();
+			if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
 
-			String		 fileName = track.origFilename;
+			playlist = (PlaylistComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
 
-			if (track.isCDTrack)
+			const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
+			Bool				 found   = False;
+
+			for (Int j = 0; j < formats.Length(); j++)
 			{
-				for (Int drive = 2; drive < 26; drive++)
+				const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+
+				for (Int k = 0; k < format_extensions.Length(); k++)
 				{
-					String	 trackCDA = String(" ").Append(":\\track").Append(track.cdTrack < 10 ? "0" : NIL).Append(String::FromInt(track.cdTrack)).Append(".cda");
-
-					trackCDA[0] = drive + 'A';
-
-					InStream	*in = new InStream(STREAM_FILE, trackCDA, IS_READ);
-
-					in->Seek(32);
-
-					Int	 trackLength = in->InputNumber(4);
-
-					delete in;
-
-					if (track.length == (trackLength * 1176) / (track.GetFormat().bits / 8))
+					if (dialog->GetFileName().ToLower().EndsWith(String(".").Append(format_extensions.GetNth(k).ToLower())))
 					{
-						fileName = trackCDA;
+						found = True;
 
 						break;
 					}
 				}
+
+				if (found) break;
 			}
 
-			playlist.AddTrack(fileName, String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")), track.length == -1 ? -1 : Math::Round((Float) track.length / track.GetFormat().rate));
+			if (found) break;
+
+			boca.DeleteComponent(playlist);
 		}
 
-		playlist.Save(dialog->GetFileName());
+		/* Save playlist file and delete component.
+		 */
+		if (playlist != NIL)
+		{
+			playlist->SetTrackList(tracks);
+			playlist->WritePlaylist(dialog->GetFileName());
+
+			boca.DeleteComponent(playlist);
+		}
 	}
 
 	DeleteObject(dialog);

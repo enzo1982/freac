@@ -232,7 +232,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 		}
 		else
 		{
-			BoCA::Utilities::ErrorMessage("Some error occurred trying to connect to the freedb server.");
+			BoCA::Utilities::ErrorMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server."));
 		}
 	}
 

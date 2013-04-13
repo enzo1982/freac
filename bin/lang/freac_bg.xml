@@ -321,6 +321,7 @@
 	<entry id="5204" string="Use encoder output folder">Изходната папка на енкодера</entry>
 	<entry id="5205" string="Filename pattern">Шаблон за име на файла</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Изберете папката в която плейлистите ще бъдат поставени:</entry>
+	<entry id="5207" string="Output filenames">Имена на изходните файлове</entry>
       </section>
 
       <section name="CDDB">

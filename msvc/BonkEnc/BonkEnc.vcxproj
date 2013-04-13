@@ -186,7 +186,6 @@
     <ClCompile Include="..\..\src\joblist.cpp" />
     <ClCompile Include="..\..\src\jobs\job_addtracks.cpp" />
     <ClCompile Include="..\..\src\playback.cpp" />
-    <ClCompile Include="..\..\src\playlist.cpp" />
     <ClCompile Include="..\..\src\progress.cpp" />
     <ClCompile Include="..\..\src\startconsole.cpp" />
     <ClCompile Include="..\..\src\startgui.cpp" />
@@ -248,7 +247,6 @@
     <ClInclude Include="..\..\include\joblist.h" />
     <ClInclude Include="..\..\include\jobs\job_addtracks.h" />
     <ClInclude Include="..\..\include\playback.h" />
-    <ClInclude Include="..\..\include\playlist.h" />
     <ClInclude Include="..\..\include\progress.h" />
     <ClInclude Include="..\..\include\resources.h" />
     <ClInclude Include="..\..\include\startconsole.h" />

@@ -156,6 +156,9 @@ namespace BonkEnc
 			static const String	 PlaylistCreateCueSheetID;
 			static const Bool	 PlaylistCreateCueSheetDefault;
 
+			static const String	 PlaylistFormatID;
+			static const String	 PlaylistFormatDefault;
+
 			static const String	 PlaylistUseEncoderOutputDirID;
 			static const Bool	 PlaylistUseEncoderOutputDirDefault;
 

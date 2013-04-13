@@ -155,6 +155,9 @@ const Bool	 BonkEnc::Config::PlaylistCreatePlaylistDefault			= False;
 const String	 BonkEnc::Config::PlaylistCreateCueSheetID			= "CreateCueSheet";
 const Bool	 BonkEnc::Config::PlaylistCreateCueSheetDefault			= False;
 
+const String	 BonkEnc::Config::PlaylistFormatID				= "PlaylistFormat";
+const String	 BonkEnc::Config::PlaylistFormatDefault				= "m3u-playlist-m3u8";
+
 const String	 BonkEnc::Config::PlaylistUseEncoderOutputDirID			= "UseEncoderOutputDir";
 const Bool	 BonkEnc::Config::PlaylistUseEncoderOutputDirDefault		= True;
 

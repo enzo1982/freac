@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -45,7 +45,6 @@ namespace BonkEnc
 			Bool							 CheckSingleFileSampleFormat();
 
 			String							 GetPlaylistFileName(const BoCA::Track &);
-			String							 GetRelativeFileName(const String &, const String &);
 
 			String							 GetOutputFileName(const BoCA::Track &);
 			String							 GetSingleOutputFileName(const BoCA::Track &);

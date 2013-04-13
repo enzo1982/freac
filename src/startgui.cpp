@@ -841,13 +841,19 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	i18n->SetContext("Menu::File");
 
 	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:21")), menu_addsubmenu);
+
 	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:24")));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
 
-	menu_file->AddEntry();
-	menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onAction.Connect(&JobList::LoadList, joblist);
-	menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0)
+	{
+		menu_file->AddEntry();
+
+		menu_file->AddEntry(i18n->TranslateString("Load joblist..."))->onAction.Connect(&JobList::LoadList, joblist);
+		menu_file->AddEntry(i18n->TranslateString("Save joblist..."))->onAction.Connect(&JobList::SaveList, joblist);
+	}
+
 	menu_file->AddEntry();
 
 	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:25")));
@@ -899,18 +905,27 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:26")));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	entry->SetShortcut(SC_CTRL, 'Q', mainWnd);
+
 	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:27")));
 	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
 	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
+
 	menu_database->AddEntry();
+
 	menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
+
 	menu_database->AddEntry();
+
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
 	menu_database->AddEntry(i18n->TranslateString("Show queued CDDB queries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchQueries, this);
+
 	menu_database->AddEntry();
+
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
 	menu_database->AddEntry(i18n->TranslateString("Manage CDDB cache entries..."))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
+
 	menu_database->AddEntry();
+
 	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
 
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:26")))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
@@ -962,6 +977,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:31")));
 	entry->onAction.Connect(&BonkEncGUI::Encode, this);
 	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
+
 	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:32")))->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:33")))->onAction.Connect(&BonkEncGUI::StopEncoding, this);
 
@@ -981,16 +997,21 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));
 
 	menu_encoder_options->AddEntry();
+
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file folder if possible"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault))->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
+
 	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault));
 
 	menu_encoder_options->AddEntry();
+
 	menu_encoder_options->AddEntry(i18n->TranslateString("Delete original files after encoding"), NIL, NIL, &currentConfig->deleteAfterEncoding)->onAction.Connect(&BonkEncGUI::ConfirmDeleteAfterEncoding, this);
 
 	menu_encoder_options->AddEntry();
+
 	menu_encoder_options->AddEntry(i18n->TranslateString("Shutdown after encoding"), NIL, NIL, &currentConfig->shutdownAfterEncoding);
 
 	menu_encode->AddEntry();
+
 	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:29")), menu_encoder_options);
 
 	ToggleUseInputDirectory();
@@ -1000,7 +1021,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:34")));
 	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
 	entry->SetShortcut(0, Keyboard::KeyF1, mainWnd);
+
 	menu_help->AddEntry();
+
 	entry = menu_help->AddEntry(String(i18n->TranslateString("Show Tip of the Day")).Append("..."));
 	entry->onAction.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 	entry->SetShortcut(0, Keyboard::KeyF10, mainWnd);
@@ -1025,7 +1048,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
+
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help)->SetOrientation(OR_RIGHT);
 
 	i18n->SetContext("Toolbar");

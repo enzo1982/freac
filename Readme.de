@@ -45,7 +45,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Januar 2013)
+	Version 1.1 CVS (April 2013)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -94,6 +94,7 @@ Geschichte
 		- Konfigurationsoption hinzugefügt, kodierte Dateien in die Jobliste aufzunehmen
 		- Unterstützung für das Öffnen von Cuesheets hinzugefügt
 		- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
+		- Unterstützung für XSPF- und PLS-Playlisten hinzugefügt
 		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
 		- Diverse weitere Geschwindigkeitsverbesserungen
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
@@ -126,13 +127,13 @@ Geschichte
 		- Viele Fehler im Kommandozeilen-Codierer behoben
 		- Native Unterstützung für die x64-Platform hinzugefügt
 		- Bonk auf Version 0.12 aktualisiert
-		- FLAC auf Version 1.2.1 aktualisiert
+		- FLAC auf Version 1.3.0-pre2 aktualisiert
 		- FAAC auf Version 1.28 aktualisiert
 		- FAAD2 suf Version 2.7 aktualisiert
 		- LAME suf Version 3.99.5 aktualisiert
 		- Vorbis auf aoTuV Beta 6.03 aktualisiert
 		- Ogg-Bibliothek auf Version 1.3.0 aktualisiert
-		- CDRip auf Version 1.21 aktualisiert (mit cdparanoia III Version 10.2)
+		- CDRip auf Version 1.24 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0.0
 		- Viele weitere Korrekturen
 
@@ -174,8 +175,8 @@ Voraussetzungen
 
 			- GCC v4.0+
 
-			- libcairo, libmad, libogg, libfaac, libfaad2, libmp3lame, libmp4v2, libopus
-			  libspeex, libvorbis, libjpeg, libpng, libbz2, libxml2, libxmu, libx11
+			- libbz2, libcairo, libfaac, libfaad2, libid3, libjpeg, libmad, libmp3lame, libmp4v2,
+			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libxmu
 
 			Linux:
 

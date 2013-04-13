@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,30 +19,39 @@ namespace BonkEnc
 	class ConfigurePlaylists : public BoCA::ConfigLayer
 	{
 		private:
-			GroupBox	*group_options;
-			CheckBox	*check_createPlaylists;
-			CheckBox	*check_createCueSheets;
-			GroupBox	*group_outdir;
-			CheckBox	*check_useEncOutdir;
-			EditBox		*edit_outdir;
-			Button		*button_outdir_browse;
-			GroupBox	*group_filename;
-			EditBox		*edit_filename;
-			List		*list_filename;
+			GroupBox			*group_options;
+			CheckBox			*check_createPlaylists;
+			CheckBox			*check_createCueSheets;
+			ComboBox			*combo_formats;
+			Button				*button_config;
 
-			Bool		 createPlaylists;
-			Bool		 createCueSheets;
+			GroupBox			*group_outdir;
+			CheckBox			*check_useEncOutdir;
+			EditBox				*edit_outdir;
+			Button				*button_outdir_browse;
 
-			Bool		 useEncOutdir;
+			GroupBox			*group_filename;
+			Text				*text_filename;
+			EditBox				*edit_filename;
+			List				*list_filename;
+
+			Bool				 createPlaylists;
+			Bool				 createCueSheets;
+
+			Bool				 useEncOutdir;
  		slots:
-			Void		 SelectDir();
-			Void		 ToggleCreatePlaylists();
-			Void		 ToggleUseEncOutdir();
-		public:
-					 ConfigurePlaylists();
-					~ConfigurePlaylists();
+			Void				 SelectDir();
+			Void				 ConfigureFormat();
 
-			Int		 SaveSettings();
+			Void				 ToggleCreatePlaylists();
+			Void				 ToggleUseEncOutdir();
+		public:
+							 ConfigurePlaylists();
+							~ConfigurePlaylists();
+
+			Int				 SaveSettings();
+		signals:
+			Signal1<Void, const String &>	 onChangeComponentSettings;
 	};
 };
 

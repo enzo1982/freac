@@ -326,6 +326,8 @@
 	<entry id="5204" string="Use encoder output folder"/>
 	<entry id="5205" string="Filename pattern"/>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed:"/>
+	<entry id="5207" string="Output filenames"/>
+	<entry id="5208" string="Configure plugin"/>
       </section>
 
       <section name="CDDB">

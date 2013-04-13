@@ -312,6 +312,7 @@
 	<entry id="5204" string="Use encoder output folder">Použít výstupní adresář kodéru</entry>
 	<entry id="5205" string="Filename pattern">Vzor názvu souboru</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Zvolte složku, kam se uloží playlisty:</entry>
+	<entry id="5207" string="Output filenames">Jméno výstupního souboru</entry>
       </section>
 
       <section name="CDDB">
