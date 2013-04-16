@@ -224,7 +224,7 @@ Int BonkEnc::Converter::ConverterThread()
 		{
 			out_filename = GetOutputFileName(trackInfo);
 
-			if (!overwriteAll && File(out_filename).Exists() && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && mode != ENCODER_MODE_DECODE)
+			if (!overwriteAll && File(out_filename).Exists() && !(out_filename.ToLower() == in_filename.ToLower() && config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault)) && mode != ENCODER_MODE_DECODE)
 			{
 				BoCA::I18n	*i18n = BoCA::I18n::Get();
 
