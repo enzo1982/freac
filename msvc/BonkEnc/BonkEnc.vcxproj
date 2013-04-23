@@ -179,7 +179,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\bonkenc.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
-    <ClCompile Include="..\..\src\cuesheet.cpp" />
     <ClCompile Include="..\..\src\dialogs\charset.cpp" />
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
@@ -241,7 +240,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\bonkenc.h" />
     <ClInclude Include="..\..\include\config.h" />
-    <ClInclude Include="..\..\include\cuesheet.h" />
     <ClInclude Include="..\..\include\dialogs\charset.h" />
     <ClInclude Include="..\..\include\dialogs\error.h" />
     <ClInclude Include="..\..\include\dialogs\overwrite.h" />

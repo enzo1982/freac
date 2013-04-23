@@ -39,7 +39,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 
 	Registry	&boca = Registry::Get();
 
-	if (boca.GetNumberOfComponentsOfType(BoCA::COMPONENT_TYPE_PLAYLIST) == 0)
+	if (boca.GetNumberOfComponentsOfType(BoCA::COMPONENT_TYPE_PLAYLIST) == 0 || (boca.GetNumberOfComponentsOfType(BoCA::COMPONENT_TYPE_PLAYLIST) == 1 && boca.ComponentExists("cuesheet-playlist")))
 	{
 		createPlaylists = False;
 
@@ -48,6 +48,13 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 
 	check_createCueSheets	= new CheckBox(i18n->TranslateString("Create cue sheets"), Point(10, 39), Size(157, 0), &createCueSheets);
 	check_createCueSheets->onAction.Connect(&ConfigurePlaylists::ToggleCreatePlaylists, this);
+
+	if (!boca.ComponentExists("cuesheet-playlist"))
+	{
+		createCueSheets = False;
+
+		check_createCueSheets->Deactivate();
+	}
 
 	Int	 maxTextSize = Math::Max(check_createPlaylists->GetUnscaledTextWidth(), check_createCueSheets->GetUnscaledTextWidth());
 

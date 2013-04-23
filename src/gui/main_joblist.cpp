@@ -50,10 +50,12 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	activePopup	= 0;
 
-	Point	 pos;
-	Size	 size;
+	Point		 pos;
+	Size		 size;
 
-	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
+	Registry	&boca = Registry::Get();
+
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
 		Config	*bonkEncConfig = Config::Get();
 
@@ -364,8 +366,6 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	combo_encoder->SetOrientation(OR_LOWERLEFT);
 	combo_encoder->onSelectEntry.Connect(&LayerJoblist::OnSelectEncoder, this);
 
-	Registry	&boca = Registry::Get();
-
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
@@ -423,10 +423,13 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Add(shortcut_next);
 
 	Add(check_single);
-	Add(check_cuesheet);
-	Add(check_playlist);
 
-	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
+	if (boca.ComponentExists("cuesheet-playlist")) Add(check_cuesheet);
+
+	if ( boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 1 ||
+	    (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0 && !boca.ComponentExists("cuesheet-playlist"))) Add(check_playlist);
+
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
 		Add(button_play);
 		Add(button_pause);
@@ -648,7 +651,9 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	check_single->SetMetrics(Point(check_single->GetUnscaledTextWidth() + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->GetUnscaledTextWidth() + 21, check_single->GetHeight()));
 	check_cuesheet->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->GetUnscaledTextWidth() + 21, check_cuesheet->GetHeight()));
-	check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
+
+	if (Registry::Get().ComponentExists("cuesheet-playlist")) check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
+	else							  check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
 }
 
 Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()

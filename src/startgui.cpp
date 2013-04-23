@@ -846,7 +846,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
 
-	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0)
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 1 || (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0 && !boca.ComponentExists("cuesheet-playlist")))
 	{
 		menu_file->AddEntry();
 

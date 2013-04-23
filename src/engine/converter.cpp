@@ -15,7 +15,6 @@
 #include <joblist.h>
 #include <progress.h>
 #include <playback.h>
-#include <cuesheet.h>
 #include <config.h>
 #include <utilities.h>
 
@@ -178,9 +177,11 @@ Int BonkEnc::Converter::ConverterThread()
 	 */
 	String			 playlistID	    = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault);
 	PlaylistComponent	*playlist	    = (PlaylistComponent *) boca.CreateComponentByID(playlistID.Head(playlistID.FindLast("-")));
-	CueSheet		 cueSheet;
+	PlaylistComponent	*cuesheet	    = (PlaylistComponent *) boca.CreateComponentByID("cuesheet-playlist");
 
 	Array<Track>		 playlist_tracks;
+	Array<Track>		 cuesheet_tracks;
+
 	String			 playlist_filename;
 	String			 playlist_extension = playlistID.Tail(playlistID.Length() - playlistID.FindLast("-") - 1);
 
@@ -482,7 +483,12 @@ Int BonkEnc::Converter::ConverterThread()
 		{
 			encoder->SignalChapterChange();
 
-			cueSheet.AddTrack(BoCA::Utilities::GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75), trackInfo);
+			Track	 cuesheetTrack = trackInfo;
+
+			cuesheetTrack.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
+			cuesheetTrack.origFilename = singleOutFile;
+
+			cuesheet_tracks.Add(cuesheetTrack);
 		}
 
 		progress->PauseTotalProgress();
@@ -525,13 +531,13 @@ Int BonkEnc::Converter::ConverterThread()
 		{
 			if (mode != ENCODER_MODE_DECODE && File(out_filename).Exists())
 			{
-				String	 relativeFileName = BoCA::Utilities::GetRelativeFileName(out_filename, playlist_filename);
+				Track	 playlistTrack = trackInfo;
 
-				trackInfo.origFilename = out_filename;
+				playlistTrack.sampleOffset = 0;
+				playlistTrack.origFilename = out_filename;
 
-				playlist_tracks.Add(trackInfo);
-
-				cueSheet.AddTrack(relativeFileName, 0, trackInfo);
+				playlist_tracks.Add(playlistTrack);
+				cuesheet_tracks.Add(playlistTrack);
 
 				trackInfo.SaveCoverArtFiles(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
@@ -634,9 +640,10 @@ Int BonkEnc::Converter::ConverterThread()
 			playlist->WritePlaylist(String(playlist_filename).Append(".").Append(playlist_extension));
 		}
 
-		if (config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault))
+		if (config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault) && cuesheet != NIL)
 		{
-			cueSheet.Save(String(playlist_filename).Append(".cue"));
+			cuesheet->SetTrackList(cuesheet_tracks);
+			cuesheet->WritePlaylist(String(playlist_filename).Append(".cue"));
 		}
 
 		Config::Get()->deleteAfterEncoding = False;
@@ -649,6 +656,7 @@ Int BonkEnc::Converter::ConverterThread()
 	delete progress;
 
 	if (playlist != NIL) boca.DeleteComponent(playlist);
+	if (cuesheet != NIL) boca.DeleteComponent(cuesheet);
 
 	if (stop) log->WriteWarning("Encoding process cancelled.");
 	else	  log->Write("Encoding process finished.");
