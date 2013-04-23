@@ -56,6 +56,7 @@ Geschichte
 		- Neuen Konfigurationsdialog implementiert
 		- Unterstützung für mehrere Konfigurationen hinzugefügt
 		- Neues Design des Fortschrittsanzeigebereichs
+		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
 		- Einfachen Tag-Editor hinzugefügt
 		- Video-Downloader-Erweiterung hinzugefügt

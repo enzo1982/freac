@@ -56,6 +56,7 @@ History
 		- implemented new configuration dialog
 		- added support for multiple configurations
 		- redesigned progress display area
+		- new dialog to confirm overwriting of existing files before conversion
 		- completely reworked LAME configuration dialog
 		- added a simple tag editor
 		- added video downloader extension

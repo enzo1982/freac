@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -462,10 +462,20 @@
 
     <section name="Dialogs">
 
+      <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite">Überschreiben bestätigen</entry>
+	<entry id="8001" string="Confirm">Bestätigen</entry>
+	<entry id="8002" string="Skip all">Alle überspringen</entry>
+	<entry id="8003" string="The following %1 files already exist and will be overwritten">Die folgenden %1 Dateien existieren bereits und werden überschrieben</entry>
+	<entry id="8004" string="Action">Aktion</entry>
+	<entry id="8005" string="Overwrite">Überschreiben</entry>
+	<entry id="8006" string="Skip">Überspringen</entry>
+      </section>
+
       <section name="Errors">
-	<entry id="8000" string="Errors">Fehler</entry>
-	<entry id="8001" string="%1 errors while processing job">%1 Fehler bei der Jobverarbeitung</entry>
-	<entry id="8002" string="select an entry for details">für Details einen Eintrag auswählen</entry>
+	<entry id="8100" string="Errors">Fehler</entry>
+	<entry id="8101" string="%1 errors while processing job">%1 Fehler bei der Jobverarbeitung</entry>
+	<entry id="8102" string="select an entry for details">für Details einen Eintrag auswählen</entry>
       </section>
     </section>
 
@@ -747,15 +757,16 @@
 	<entry id="40011" string="File extension">Dateiendung</entry>
 	<entry id="40012" string="Variable bitrate">Variable Bitrate</entry>
 	<entry id="40013" string="Enable variable bitrate encoding">Kodierung mit variabler Bitrate aktivieren</entry>
-	<entry id="40014" string="Quality">Qualität</entry>
-	<entry id="40015" string="Bitrate:">Bitrate:</entry>
-	<entry id="40016" string="kbps">kbps</entry>
-	<entry id="40017" string="Complexity:">Komplexität:</entry>
-	<entry id="40018" string="Stream">Datenstrom</entry>
-	<entry id="40019" string="Frame length:">Framelänge:</entry>
-	<entry id="40020" string="Options">Optionen</entry>
-	<entry id="40021" string="Enable discontinous transmission">Discontinous Transmission aktivieren</entry>
-	<entry id="40022" string="Expected packet loss:">Erwarteter Paketverlust:</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Bitrate eng an Zielwert binden</entry>
+	<entry id="40015" string="Quality">Qualität</entry>
+	<entry id="40016" string="Bitrate:">Bitrate:</entry>
+	<entry id="40017" string="kbps">kbps</entry>
+	<entry id="40018" string="Complexity:">Komplexität:</entry>
+	<entry id="40019" string="Stream">Datenstrom</entry>
+	<entry id="40020" string="Frame length:">Framelänge:</entry>
+	<entry id="40021" string="Options">Optionen</entry>
+	<entry id="40022" string="Enable discontinous transmission">Discontinous Transmission aktivieren</entry>
+	<entry id="40023" string="Expected packet loss:">Erwarteter Paketverlust:</entry>
       </section>
     </section>
 

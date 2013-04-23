@@ -182,6 +182,7 @@
     <ClCompile Include="..\..\src\cuesheet.cpp" />
     <ClCompile Include="..\..\src\dialogs\charset.cpp" />
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
+    <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
     <ClCompile Include="..\..\src\joblist.cpp" />
     <ClCompile Include="..\..\src\jobs\job_addtracks.cpp" />
@@ -243,6 +244,7 @@
     <ClInclude Include="..\..\include\cuesheet.h" />
     <ClInclude Include="..\..\include\dialogs\charset.h" />
     <ClInclude Include="..\..\include\dialogs\error.h" />
+    <ClInclude Include="..\..\include\dialogs\overwrite.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
     <ClInclude Include="..\..\include\joblist.h" />
     <ClInclude Include="..\..\include\jobs\job_addtracks.h" />

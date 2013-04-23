@@ -462,10 +462,20 @@
 
     <section name="Dialogs">
 
+      <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite"/>
+	<entry id="8001" string="Confirm"/>
+	<entry id="8002" string="Skip all"/>
+	<entry id="8003" string="The following %1 files already exist and will be overwritten"/>
+	<entry id="8004" string="Action"/>
+	<entry id="8005" string="Overwrite"/>
+	<entry id="8006" string="Skip"/>
+      </section>
+
       <section name="Errors">
-	<entry id="8000" string="Errors"/>
-	<entry id="8001" string="%1 errors while processing job"/>
-	<entry id="8002" string="select an entry for details"/>
+	<entry id="8100" string="Errors"/>
+	<entry id="8101" string="%1 errors while processing job"/>
+	<entry id="8102" string="select an entry for details"/>
       </section>
     </section>
 
@@ -747,15 +757,16 @@
 	<entry id="40011" string="File extension"/>
 	<entry id="40012" string="Variable bitrate"/>
 	<entry id="40013" string="Enable variable bitrate encoding"/>
-	<entry id="40014" string="Quality"/>
-	<entry id="40015" string="Bitrate:"/>
-	<entry id="40016" string="kbps"/>
-	<entry id="40017" string="Complexity:"/>
-	<entry id="40018" string="Stream"/>
-	<entry id="40019" string="Frame length:"/>
-	<entry id="40020" string="Options"/>
-	<entry id="40021" string="Enable discontinous transmission"/>
-	<entry id="40022" string="Expected packet loss:"/>
+	<entry id="40014" string="Constrain bitrate to target value"/>
+	<entry id="40015" string="Quality"/>
+	<entry id="40016" string="Bitrate:"/>
+	<entry id="40017" string="kbps"/>
+	<entry id="40018" string="Complexity:"/>
+	<entry id="40019" string="Stream"/>
+	<entry id="40020" string="Frame length:"/>
+	<entry id="40021" string="Options"/>
+	<entry id="40022" string="Enable discontinous transmission"/>
+	<entry id="40023" string="Expected packet loss:"/>
       </section>
     </section>
 
