@@ -492,6 +492,7 @@ Void BonkEnc::ConfigDialog::OnCreateConfig()
 	config->SetActiveConfiguration(entry->GetText());
 
 	combo_config->SelectEntry(entry);
+	edit_config->MarkAll();
 }
 
 Void BonkEnc::ConfigDialog::OnDeleteConfig()
