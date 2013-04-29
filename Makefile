@@ -124,17 +124,19 @@ directories:
 
 install: uninstall
 ifneq ($(BUILD_WIN32),True)
+	mkdir -p $(PREFIX)/bin
+
 	cp $(EXENAME) $(PREFIX)/bin
 	cp $(CMDNAME) $(PREFIX)/bin
 
 	chmod a=rX,u=rwX $(PREFIX)/bin/freac
 	chmod a=rX,u=rwX $(PREFIX)/bin/freaccmd
 
-	mkdir -p $(PREFIX)/lib/freac
-	chmod -R a=rX,u=rwX $(PREFIX)/lib/freac
+	mkdir -p $(PREFIX)/$(LIB)/freac
+	chmod -R a=rX,u=rwX $(PREFIX)/$(LIB)/freac
 
-	cp $(DLLNAME) $(PREFIX)/lib/freac
-	chmod a=r,u=rw $(PREFIX)/lib/freac/freac.so
+	cp $(DLLNAME) $(PREFIX)/$(LIB)/freac
+	chmod a=r,u=rw $(PREFIX)/$(LIB)/freac/freac.so
 
 	mkdir -p $(PREFIX)/share/freac
 	chmod -R a=rX,u=rwX $(PREFIX)/share/freac
@@ -160,8 +162,8 @@ ifneq ($(BUILD_WIN32),True)
 	rm -f $(PREFIX)/bin/freac
 	rm -f $(PREFIX)/bin/freaccmd
 
-	rm -f $(PREFIX)/lib/freac/freac.so
-	rm -f -r $(PREFIX)/lib/freac
+	rm -f $(PREFIX)/$(LIB)/freac/freac.so
+	rm -f -r $(PREFIX)/$(LIB)/freac
 
 	rm -f -r $(PREFIX)/share/freac/icons
 	rm -f -r $(PREFIX)/share/freac/lang

@@ -47,6 +47,13 @@ endif
 
 ifeq ($(PREFIX),)
 	PREFIX = /usr/local
+	LIB    = lib
+
+ifeq ($(BUILD_X64),True)
+ifneq ($(BUILD_OSX),True)
+	LIB    = lib64
+endif
+endif
 
 ifeq ($(BUILD_HAIKU),True)
 	PREFIX = /boot/common
