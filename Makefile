@@ -136,7 +136,7 @@ ifneq ($(BUILD_WIN32),True)
 	chmod -R a=rX,u=rwX $(PREFIX)/$(LIB)/freac
 
 	cp $(DLLNAME) $(PREFIX)/$(LIB)/freac
-	chmod a=r,u=rw $(PREFIX)/$(LIB)/freac/freac.so
+	chmod a=r,u=rw $(PREFIX)/$(LIB)/freac/freac$(SHARED)
 
 	mkdir -p $(PREFIX)/share/freac
 	chmod -R a=rX,u=rwX $(PREFIX)/share/freac
@@ -162,7 +162,7 @@ ifneq ($(BUILD_WIN32),True)
 	rm -f $(PREFIX)/bin/freac
 	rm -f $(PREFIX)/bin/freaccmd
 
-	rm -f $(PREFIX)/$(LIB)/freac/freac.so
+	rm -f $(PREFIX)/$(LIB)/freac/freac$(SHARED)
 	rm -f -r $(PREFIX)/$(LIB)/freac
 
 	rm -f -r $(PREFIX)/share/freac/icons
