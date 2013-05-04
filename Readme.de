@@ -45,7 +45,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (April 2013)
+	Version 1.1 CVS (Mai 2013)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -101,6 +101,7 @@ Geschichte
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
 		- Der Fortschritt einer Konvertierung wird unter Windows 7 und neuer in der Taskleiste angezeigt
+		- Überspringen von Tracks ist beim Konvertieren in eine einzige Datei nicht mehr möglich
 		- ID3v2-Coverdaten werden nun auch in iTunes angezeigt
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Fehler in ID3lib behoben, um korrektes Lesen und Schreiben von ID3v2.4-Tags zu gewährleisten

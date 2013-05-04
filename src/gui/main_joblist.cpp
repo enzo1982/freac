@@ -64,7 +64,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		size.cx = 25;
 		size.cy = 25;
 
-		button_play	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("/freac.pci:12")), pos, size);
+		button_play	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:12")), pos, size);
 		button_play->onAction.Connect(&LayerJoblist::PlaySelectedItem, this);
 		button_play->SetOrientation(OR_UPPERRIGHT);
 		button_play->SetFlags(BF_NOFRAME);
@@ -1095,7 +1095,9 @@ PopupMenu *BonkEnc::LayerJoblist::GetContextMenu()
 
 Void BonkEnc::LayerJoblist::OnEncoderStartEncoding()
 {
-	btn_skip->Activate();
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault)) btn_skip->Activate();
 }
 
 Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
