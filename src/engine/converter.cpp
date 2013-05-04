@@ -127,20 +127,31 @@ Int BonkEnc::Converter::ConverterThread()
 	{
 		/* Find existing tracks.
 		 */
-		Array<Track>	 existing;
+		Array<Track>	 existingTracks;
+		Array<Track>	 newTracks;
 
 		foreach (Track &track, tracks)
 		{
 			track.outfile = GetOutputFileName(track);
 
-			if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)) existing.Add(track);
+			if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)) { existingTracks.Add(track); continue; }
+
+			Bool	 found = False;
+
+			foreach (Track &newTrack, newTracks)
+			{
+				if (newTrack.outfile == track.outfile) { found = True; break; }
+			}
+
+			if (found) existingTracks.Add(track);
+			else	   newTracks.Add(track);
 		}
 
-		if (existing.Length() > 0)
+		if (existingTracks.Length() > 0)
 		{
 			/* Display dialog to confirm overwrite.
 			 */
-			DialogConfirmOverwrite	 dialog(existing);
+			DialogConfirmOverwrite	 dialog(existingTracks);
 
 			dialog.ShowDialog();
 
@@ -150,10 +161,10 @@ Int BonkEnc::Converter::ConverterThread()
 				 */
 				const Array<Int>	&userActions = dialog.GetUserActions();
 
-				for (Int i = 0; i < existing.Length(); i++)
+				for (Int i = 0; i < existingTracks.Length(); i++)
 				{
-					if (userActions.GetNth(i) == ConfirmOverwrite::Action::Skip) tracks.Remove(existing.GetNth(i).GetTrackID());
-					else							     trackActions.Add(userActions.GetNth(i), existing.GetNth(i).GetTrackID());
+					if (userActions.GetNth(i) == ConfirmOverwrite::Action::Skip) tracks.Remove(existingTracks.GetNth(i).GetTrackID());
+					else							     trackActions.Add(userActions.GetNth(i), existingTracks.GetNth(i).GetTrackID());
 				}
 			}
 			else
@@ -466,7 +477,7 @@ Int BonkEnc::Converter::ConverterThread()
 
 		encodedSamples += trackLength;
 
-		trackInfo.length = trackLength;
+		if (!skip) trackInfo.length = trackLength;
 
 		/* Close encoder or signal next chapter.
 		 */
