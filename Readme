@@ -95,7 +95,7 @@ History
 		- added configuration option to add encoded files to joblist
 		- added support for loading cuesheets
 		- added support for reading and writing Vorbis files with .oga extension
-		- added support for XSPF and PLS playlists
+		- added support for XSPF, Windows Media and PLS playlists
 		- making better use of multi-core CPUs when encoding/decoding
 		- miscellaneous other speed optimizations
 		- the five last used file name patterns are now saved for later use
@@ -146,12 +146,14 @@ Requirements
 
 		Supported operating systems:
 			- Windows 2000/XP/Vista/7/8 (older Windows version might work with some limitations)
-			- Mac OS X 10.6 or later (64 bit only, XQuartz must be installed on OS X 10.8)
-			- Linux (tested on Ubuntu 12.04 and 12.10)
-			- FreeBSD (tested on FreeBSD 9.1-RC1)
-			- NetBSD (tested on NetBSD 6.0-RC1, NetBSD 5.x and earlier releases are not supported)
-			- OpenBSD (tested on OpenBSD 5.1)
+			- Mac OS X Snow Leopard or later (XQuartz must be installed on OS X Mountain Lion)
+			- Linux (most modern distributions should work)
+			- FreeBSD/PC-BSD (tested on FreeBSD 9.1)
+			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
+			- OpenBSD (tested on OpenBSD 5.3)
 			- Solaris (tested on Solaris 11)
+			- GNU Hurd (tested on Debian Sid)
+			- QNX (tested on QNX 6.5)
 
 		Minimum hardware requirements:
 			- Intel Pentium 4 CPU

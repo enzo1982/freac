@@ -95,7 +95,7 @@ Geschichte
 		- Konfigurationsoption hinzugefügt, kodierte Dateien in die Jobliste aufzunehmen
 		- Unterstützung für das Öffnen von Cuesheets hinzugefügt
 		- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
-		- Unterstützung für XSPF- und PLS-Playlisten hinzugefügt
+		- Unterstützung für XSPF-, Windows Media- und PLS-Playlisten hinzugefügt
 		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
 		- Diverse weitere Geschwindigkeitsverbesserungen
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
@@ -146,12 +146,14 @@ Voraussetzungen
 
 		Unterstützte Betriebsysteme:
 			- Windows 2000/XP/Vista/7/8 (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
-			- Mac OS X 10.6 oder neuer (nur 64 Bit, unter OS X 10.8 muss XQuartz installiert sein)
-			- Linux (getestet unter Ubuntu 12.04 und 12.10)
-			- FreeBSD (getestet unter FreeBSD 9.1-RC1)
-			- NetBSD (getestet unter NetBSD 6.0-RC1, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
-			- OpenBSD (getestet unter OpenBSD 5.1)
+			- Mac OS X Snow Leopard oder neuer (unter OS X Mountain Lion muss XQuartz installiert sein)
+			- Linux (die meisten modernen Distributionen sollten funktionieren)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 9.1)
+			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
+			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
+			- GNU Hurd (getestet unter Debian Sid)
+			- QNX (getestet unter QNX 6.5)
 
 		Minimale Hardwarevoraussetzungen:
 			- Intel Pentium 4 Prozessor

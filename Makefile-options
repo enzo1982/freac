@@ -38,6 +38,8 @@ else ifeq ($(UNAME),SunOS)
 	BUILD_SOLARIS = True
 else ifeq ($(UNAME),Haiku)
 	BUILD_HAIKU = True
+else ifeq ($(UNAME),GNU)
+	BUILD_GNU = True
 else ifeq ($(UNAME),QNX)
 	BUILD_QNX = True
 else ifeq ($(UNAME),Darwin)
