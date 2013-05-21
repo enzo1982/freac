@@ -7,7 +7,9 @@ UNAME = $(shell uname)
 MACHINE = $(shell gcc -dumpmachine)
 
 ifneq ($(findstring x86_64,$(MACHINE)),)
-	BUILD_X64 = True
+	BUILD_X86_64 = True
+else
+	BUILD_X86 = True
 endif
 
 ifneq ($(findstring MINGW,$(UNAME)),)
@@ -42,6 +44,9 @@ else ifeq ($(UNAME),Darwin)
 	SHARED = .dylib
 
 	BUILD_OSX = True
+
+	BUILD_X86 = True
+	BUILD_X86_64 = True
 endif
 endif
 
@@ -49,7 +54,7 @@ ifeq ($(PREFIX),)
 	PREFIX = /usr/local
 	LIB    = lib
 
-ifeq ($(BUILD_X64),True)
+ifeq ($(BUILD_X86_64),True)
 ifneq ($(BUILD_OSX),True)
 	LIB    = lib64
 endif

@@ -8,7 +8,7 @@ INCLUDEDIR  = ./include
 OBJECTDIR   = ./objects
 SRCDIR	    = ./src
 
-ifneq ($(BUILD_X64),True)
+ifneq ($(BUILD_X86_64),True)
 	BINDIR = ./bin
 	LIBDIR = $(CDK)/lib
 else
@@ -63,7 +63,13 @@ endif
 endif
 endif
 
-ifneq ($(BUILD_X64),True)
+ifeq ($(BUILD_OSX),True)
+	COMPILER_OPTS			+= -arch x86_64 -arch i386
+
+	LINKER_OPTS			+= -arch x86_64 -arch i386
+	LOADER_GUI_LINKER_OPTS		+= -arch x86_64 -arch i386
+	LOADER_CONSOLE_LINKER_OPTS	+= -arch x86_64 -arch i386
+else ifneq ($(BUILD_X86_64),True)
 	COMPILER_OPTS			+= -m32
 	RESCOMP_OPTS			+= --target=pe-i386
 
@@ -89,7 +95,7 @@ ifeq ($(BUILD_SOLARIS),True)
 endif
 
 ifeq ($(BUILD_LINUX),True)
-ifeq ($(BUILD_X64),True)
+ifeq ($(BUILD_X86_64),True)
 	COMPILER_OPTS			+= -fPIC
 endif
 endif
@@ -97,7 +103,7 @@ endif
 ifeq ($(BUILD_WIN32),True)
 	COMPILER_OPTS			+= -I$(CDK)/include
 
-	ifneq ($(BUILD_X64),True)
+	ifneq ($(BUILD_X86_64),True)
 		LINKER_OPTS		+= -lunicows
 	endif
 
@@ -185,7 +191,7 @@ $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
 	$(LINKER) $(DLLOBJECTS) $(LINKER_OPTS)
 ifeq ($(BUILD_WIN32),True)
-ifneq ($(BUILD_X64),True)
+ifneq ($(BUILD_X86_64),True)
 	countbuild BuildNumber
 endif
 endif
