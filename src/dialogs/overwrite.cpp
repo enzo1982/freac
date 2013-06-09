@@ -21,7 +21,7 @@ BonkEnc::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track>
 
 	i18n->SetContext("Dialogs::Overwrite");
 
-	Rect	 workArea = S::System::MultiMonitor::GetActiveMonitorWorkArea();
+	Rect	 workArea = S::System::Screen::GetActiveScreenWorkArea();
 
 	mainWnd			= new Window(i18n->TranslateString("Confirm overwrite"), workArea.GetPosition() + Point((workArea.GetSize().cx - 565) / 2, (workArea.GetSize().cy - 375) / 2), Size(565, 375));
 	mainWnd->SetMinimumSize(Size(400, 220));

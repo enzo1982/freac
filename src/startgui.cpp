@@ -94,7 +94,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	clicked_drive	      = -1;
 	clicked_encoder	      = -1;
 
-	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
+	Rect	 workArea = Screen::GetVirtualScreenMetrics();
 
 	Point	 wndPos = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault));
 	Size	 wndSize = Size(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, Config::SettingsWindowSizeXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, Config::SettingsWindowSizeYDefault));

@@ -21,7 +21,7 @@ BonkEnc::ErrorDialog::ErrorDialog(const Array<String> &errors)
 
 	i18n->SetContext("Dialogs::Errors");
 
-	Rect	 workArea = S::System::MultiMonitor::GetActiveMonitorWorkArea();
+	Rect	 workArea = S::System::Screen::GetActiveScreenWorkArea();
 
 	mainWnd			= new Window(i18n->TranslateString("Errors"), workArea.GetPosition() + Point((workArea.GetSize().cx - 450) / 2, (workArea.GetSize().cy - 400) / 2), Size(450, 400));
 	mainWnd->SetMinimumSize(Size(330, 220));
