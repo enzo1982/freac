@@ -129,12 +129,12 @@ Geschichte
 		- Viele Fehler im Kommandozeilen-Codierer behoben
 		- Native Unterstützung für die x64-Platform hinzugefügt
 		- Bonk auf Version 0.12 aktualisiert
-		- FLAC auf Version 1.3.0-pre2 aktualisiert
+		- FLAC auf Version 1.3.0 aktualisiert
 		- FAAC auf Version 1.28 aktualisiert
 		- FAAD2 suf Version 2.7 aktualisiert
 		- LAME suf Version 3.99.5 aktualisiert
 		- Vorbis auf aoTuV Beta 6.03 aktualisiert
-		- Ogg-Bibliothek auf Version 1.3.0 aktualisiert
+		- Ogg-Bibliothek auf Version 1.3.1 aktualisiert
 		- CDRip auf Version 1.24 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0.0
 		- Viele weitere Korrekturen
@@ -224,8 +224,6 @@ Bekannte Probleme
 					- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
 
 	Mac OS X-spezifische Probleme:
-
-		- Datei- und Ordnerauswahldialoge erscheinen beim ersten Mal hinter dem Hauptfenster
 
 		- Rippen von Audio-CDs funktioniert nicht
 

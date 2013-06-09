@@ -129,12 +129,12 @@ History
 		- lots of fixes to the command line encoder
 		- added native x64 platform support
 		- upgraded Bonk to version 0.12
-		- upgraded FLAC to version 1.3.0-pre2
+		- upgraded FLAC to version 1.3.0
 		- upgraded FAAC to version 1.28
 		- upgraded FAAD2 to version 2.7
 		- upgraded LAME to version 3.99.5
 		- upgraded Vorbis to aoTuV beta 6.03
-		- upgraded Ogg library to version 1.3.0
+		- upgraded Ogg library to version 1.3.1
 		- upgraded CDRip to version 1.24 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0.0
 		- lots of other fixes
@@ -224,8 +224,6 @@ Known problems
 					- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
 
 	Mac OS X specific problems:
-
-		- File and directory selection dialogs initially appear behind the main window
 
 		- Audio CD ripping does not work
 
