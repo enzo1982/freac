@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -48,7 +48,7 @@ Bool BonkEnc::FilterInMP4::Activate()
 		unsigned char	*buffer		= NIL;
 		unsigned long	 buffer_size	= 0;
 
-		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (u_int8_t **) &buffer, (u_int32_t *) &buffer_size);
+		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (uint8_t **) &buffer, (uint32_t *) &buffer_size);
 
 		unsigned long	 rate;
 		unsigned char	 channels;
@@ -95,7 +95,7 @@ Int BonkEnc::FilterInMP4::ReadData(Buffer<UnsignedByte> &data, Int size)
 		unsigned char	*buffer		= NIL;
 		unsigned long	 buffer_size	= 0;
 
-		ex_MP4ReadSample(mp4File, mp4Track, sampleId++, (u_int8_t **) &buffer, (u_int32_t *) &buffer_size, NIL, NIL, NIL, NIL);
+		ex_MP4ReadSample(mp4File, mp4Track, sampleId++, (uint8_t **) &buffer, (uint32_t *) &buffer_size, NIL, NIL, NIL, NIL);
 
 		NeAACDecFrameInfo frameInfo;
 
@@ -134,7 +134,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 	}
 
 	Track		*nFormat = new Track;
-	InStream	*f_in = new InStream(STREAM_FILE, GetTempFile(inFile), IS_READONLY);
+	InStream	*f_in = new InStream(STREAM_FILE, GetTempFile(inFile), IS_READ);
 
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
@@ -155,7 +155,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 	if (ex_MP4GetMetadataYear(mp4File, &buffer)) { nFormat->year = String(buffer).ToInt(); ex_MP4Free(buffer); }
 	if (ex_MP4GetMetadataAlbum(mp4File, &buffer)) { nFormat->album = buffer; ex_MP4Free(buffer); }
 	if (ex_MP4GetMetadataGenre(mp4File, &buffer)) { nFormat->genre = buffer; ex_MP4Free(buffer); }
-	if (ex_MP4GetMetadataTrack(mp4File, (u_int16_t *) &trackNr, (u_int16_t *) &nOfTracks)) { nFormat->track = trackNr; }
+	if (ex_MP4GetMetadataTrack(mp4File, (uint16_t *) &trackNr, (uint16_t *) &nOfTracks)) { nFormat->track = trackNr; }
 
 	String::SetInputFormat(prevInFormat);
 
@@ -175,7 +175,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 		unsigned char	*esc_buffer	= NIL;
 		unsigned long	 buffer_size	= 0;
 
-		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (u_int8_t **) &esc_buffer, (u_int32_t *) &buffer_size);
+		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (uint8_t **) &esc_buffer, (uint32_t *) &buffer_size);
 
 		ex_NeAACDecInit2(handle, (unsigned char *) esc_buffer, buffer_size,
  (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
@@ -223,13 +223,13 @@ String BonkEnc::FilterInMP4::GetTempFile(const String &oFileName)
 
 	for (Int i = 0; i < rVal.Length(); i++)
 	{
-		if (rVal[i] > 255)	rVal[i] = '#';
-		if (rVal[i] == '\\')	lastBs = i;
+		if (rVal[i] > 255)			rVal[i] = '#';
+		if (rVal[i] == '\\' || rVal[i] == '/')	lastBs = i;
 	}
 
 	if (rVal == oFileName) return rVal;
 
-	String	 tempDir = Utilities::GetTempDirectory();
+	String	 tempDir = S::System::System::GetTempDirectory();
 
 	for (Int j = lastBs + 1; j < rVal.Length(); j++)
 	{

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -143,17 +143,17 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cy = 0;
 
 	check_id3v2		= new CheckBox(BonkEnc::i18n->TranslateString("Allow ID3v2 tags in AAC files"), pos, size, &allowID3);
-	check_id3v2->SetWidth(check_id3v2->textSize.cx + 20);
+	check_id3v2->SetWidth(check_id3v2->GetUnscaledTextWidth() + 20);
 
 	pos.y += 25;
 
 	text_note		= new Text(BonkEnc::i18n->TranslateString("Note:"), pos);
 
-	pos.x += text_note->textSize.cx + 2;
+	pos.x += text_note->GetUnscaledTextWidth() + 2;
 
 	text_id3v2		= new Text(BonkEnc::i18n->TranslateString("Some players may have problems playing AAC\nfiles with ID3 tags attached. Please use this option only\nif you are sure that your player can handle these tags."), pos);
 
-	group_id3v2->SetWidth(text_note->textSize.cx + text_id3v2->textSize.cx + 22);
+	group_id3v2->SetWidth(text_note->GetUnscaledTextWidth() + text_id3v2->GetUnscaledTextWidth() + 22);
 
 	layer_quality		= new Layer(BonkEnc::i18n->TranslateString("Quality"));
 
@@ -171,7 +171,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	option_bitrate		= new OptionBox(BonkEnc::i18n->TranslateString("Bitrate per channel:"), pos, size, &setQuality, 0);
 	option_bitrate->onAction.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
-	option_bitrate->SetWidth(option_bitrate->textSize.cx + 19);
+	option_bitrate->SetWidth(option_bitrate->GetUnscaledTextWidth() + 19);
 
 	pos.x += (option_bitrate->GetWidth() + 9);
 	size.cx = 227 - option_bitrate->GetWidth();
@@ -200,7 +200,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	option_quality		= new OptionBox(BonkEnc::i18n->TranslateString("Set quality:"), pos, size, &setQuality, 1);
 	option_quality->onAction.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
-	option_quality->SetWidth(option_bitrate->textSize.cx + 19);
+	option_quality->SetWidth(option_bitrate->GetUnscaledTextWidth() + 19);
 
 	pos.x += (option_quality->GetWidth() + 9);
 	size.cx = 227 - option_quality->GetWidth();
@@ -262,9 +262,9 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	text_bandwidth		= new Text(BonkEnc::i18n->TranslateString("Maximum AAC frequency bandwidth to use (Hz):"), pos);
 
-	pos.x += (text_bandwidth->textSize.cx + 8);
+	pos.x += (text_bandwidth->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
-	size.cx = 291 - text_bandwidth->textSize.cx;
+	size.cx = 291 - text_bandwidth->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	edit_bandwidth		= new EditBox(String::FromInt(currentConfig->faac_bandwidth), pos, size, 5);

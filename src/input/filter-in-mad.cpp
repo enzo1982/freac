@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -110,7 +110,7 @@ Int BonkEnc::FilterInMAD::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	readDataMutex->Release();
 
-	while (decoderThread->GetStatus() == THREAD_RUNNING && samplesBuffer.Size() <= 0) Sleep(0);
+	while (decoderThread->GetStatus() == THREAD_RUNNING && samplesBuffer.Size() <= 0) S::System::System::Sleep(0);
 
 	readDataMutex->Lock();
 
@@ -200,7 +200,7 @@ Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	Driver		*ioDriver = new DriverPOSIX(inFile, IS_READONLY);
+	Driver		*ioDriver = new DriverPOSIX(inFile, IS_READ);
 	InStream	*f_in = new InStream(STREAM_DRIVER, ioDriver);
 
 	nFormat->order		= BYTE_INTEL;
@@ -227,7 +227,7 @@ BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
 	decoderThread->SetFlags(THREAD_WAITFLAG_START);
 	decoderThread->Start();
 
-	while (decoderThread->GetStatus() == THREAD_RUNNING) Sleep(0);
+	while (decoderThread->GetStatus() == THREAD_RUNNING) S::System::System::Sleep(0);
 
 	delete readDataMutex;
 	delete samplesBufferMutex;
@@ -292,7 +292,7 @@ mad_flow BonkEnc::MADInputCallback(void *client_data, mad_stream *stream)
 	 */
 	if (filter->driver->GetPos() == filter->driver->GetSize()) filter->finished = True;
 
-	Int	 bytes = Math::Min(131072, filter->finished ? 1440 : filter->driver->GetSize() - filter->driver->GetPos());
+	Int	 bytes = Math::Min((Int64) 131072, filter->finished ? 1440 : filter->driver->GetSize() - filter->driver->GetPos());
 	Int	 backup = stream->bufend - stream->next_frame;
 
 	inputBuffer.Resize(bytes + backup);

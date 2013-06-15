@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -67,7 +67,11 @@ Bool BonkEnc::FilterInWMA::Activate()
 		WM_MEDIA_TYPE		*pMediaType = NIL;
 		ULONG			 cbType = 0;
 
-		hr = m_pReader->GetOutputProps(i, &pProps);
+		/* Set the first output format as it is
+		 * the one with the highest quality.
+		 */
+		hr = m_pReader->GetOutputFormat(i, 0, &pProps);
+		hr = m_pReader->SetOutputProps(i, pProps);
 
 		/* Find out the space needed for pMediaType
 		 */
@@ -202,7 +206,7 @@ Void BonkEnc::FilterInWMA::WaitForEvent(HANDLE hEvent, DWORD msMaxWaitTime)
 BonkEnc::Track *BonkEnc::FilterInWMA::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READ);
 
 	nFormat->fileSize	= f_in->Size();
 	nFormat->length		= -1;
@@ -241,7 +245,11 @@ BonkEnc::Track *BonkEnc::FilterInWMA::GetFileInfo(const String &inFile)
 			WM_MEDIA_TYPE		*pMediaType = NIL;
 			ULONG			 cbType = 0;
 
-			hr = m_pReader->GetOutputProps(i, &pProps);
+			/* Set the first output format as it is
+			 * the one with the highest quality.
+			 */
+			hr = m_pReader->GetOutputFormat(i, 0, &pProps);
+			hr = m_pReader->SetOutputProps(i, pProps);
 
 			/* Find out the space needed for pMediaType
 			 */
@@ -579,22 +587,25 @@ HRESULT BonkEnc::WMAReader::OnSample(DWORD dwOutputNum, QWORD cnsSampleTime, QWO
 	 */
 	hr = pSample->GetBufferAndLength( &pData, &cbData );
 
-	while (IsActive() && samplesBuffer->Size() >= 131072) S::System::System::Sleep(0);
-
-	/* Copy the sample to the sample buffer.
-	 */
-	if (IsActive())
+	if (hr == S_OK)
 	{
-		samplesBufferMutex->Lock();
+		while (IsActive() && samplesBuffer->Size() >= 131072) S::System::System::Sleep(0);
 
-		samplesBuffer->Resize(samplesBuffer->Size() + cbData);
+		/* Copy the sample to the sample buffer.
+		 */
+		if (IsActive())
+		{
+			samplesBufferMutex->Lock();
 
-		memcpy((UnsignedByte *) *samplesBuffer + samplesBuffer->Size() - cbData, pData, cbData);
+			samplesBuffer->Resize(samplesBuffer->Size() + cbData);
 
-		samplesBufferMutex->Release();
+			memcpy((UnsignedByte *) *samplesBuffer + samplesBuffer->Size() - cbData, pData, cbData);
+
+			samplesBufferMutex->Release();
+		}
 	}
 
-	return S_OK;
+	return hr;
 }
 
 HRESULT BonkEnc::WMAReader::OnTime(QWORD cnsCurrentTime, void *pvContext)

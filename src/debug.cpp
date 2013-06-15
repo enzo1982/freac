@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,6 +14,10 @@
 #include <debug.h>
 #include <bonkenc.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#endif
+
 BonkEnc::Debug::Debug(const String &fileName)
 {
 	config = BonkEnc::currentConfig;
@@ -24,7 +28,7 @@ BonkEnc::Debug::Debug(const String &fileName)
 	{
 		if (File(fileName).Exists()) File(fileName).Move(String(fileName).Append("-prev"));
 
-		driver_out = new DriverPOSIX(fileName, OS_OVERWRITE);
+		driver_out = new DriverPOSIX(fileName, OS_REPLACE);
 		file_out = new OutStream(STREAM_DRIVER, driver_out);
 
 		file_out->SetPackageSize(1);
@@ -45,6 +49,7 @@ Int BonkEnc::Debug::OutputLine(const String &string)
 {
 	if (config->enable_logging)
 	{
+#ifdef __WIN32__
 		SYSTEMTIME	 time;
 
 		GetLocalTime(&time);
@@ -53,6 +58,7 @@ Int BonkEnc::Debug::OutputLine(const String &string)
 			  .Append(":").Append(time.wMinute < 10 ? "0" : 0).Append(String::FromInt(time.wMinute))
 			  .Append(":").Append(time.wSecond < 10 ? "0" : 0).Append(String::FromInt(time.wSecond))
 			  .Append(" - "));
+#endif
 
 		for (Int i = 0; i < tabLevel; i++) file_out->OutputString("\t");
 

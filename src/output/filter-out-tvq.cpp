@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,6 +22,10 @@
 
 #include <3rdparty/twinvq/bstream_e.h>
 #include <3rdparty/twinvq/bstream_e.cxx>
+
+#undef NULL
+#define NULL 0
+
 #include <3rdparty/twinvq/Chunk.h>
 #include <3rdparty/twinvq/Chunk.cxx>
 #include <3rdparty/twinvq/ChunkHelper.h>

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,11 +37,11 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 
 	check_local	= new CheckBox(BonkEnc::i18n->TranslateString("Enable local CDDB database"), pos, size, &cddb_local);
 	check_local->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleLocalCDDB, this);
-	check_local->SetWidth(check_local->textSize.cx + 20);
+	check_local->SetWidth(check_local->GetUnscaledTextWidth() + 20);
 
 	check_remote	= new CheckBox(BonkEnc::i18n->TranslateString("Enable remote CDDB database"), pos, size, &cddb_remote);
 	check_remote->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleRemoteCDDB, this);
-	check_remote->SetWidth(check_remote->textSize.cx + 20);
+	check_remote->SetWidth(check_remote->GetUnscaledTextWidth() + 20);
 
 	layer_local_background->SetMetrics(Point(14, 3), check_local->GetSize() + Size(4, 0));
 	layer_remote_background->SetMetrics(Point(14, 58), check_remote->GetSize() + Size(4, 0));
@@ -112,7 +112,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.y += 3;
 
 	text_port	= new Text(BonkEnc::i18n->TranslateString("Port:"), pos);
-	text_port->SetX(296 - text_port->textSize.cx);
+	text_port->SetX(296 - text_port->GetUnscaledTextWidth());
 
 	pos.x	+= 29;
 	pos.y	-= 3;
@@ -175,11 +175,11 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	ToggleLocalCDDB();
 	ToggleRemoteCDDB();
 
-	Int	 maxTextSize = Math::Max(Math::Max(text_dir->textSize.cx, text_email->textSize.cx), Math::Max(text_mode->textSize.cx, text_server->textSize.cx));
+	Int	 maxTextSize = Math::Max(Math::Max(text_dir->GetUnscaledTextWidth(), text_email->GetUnscaledTextWidth()), Math::Max(text_mode->GetUnscaledTextWidth(), text_server->GetUnscaledTextWidth()));
 
 	edit_dir->SetMetrics(Point(maxTextSize + 24, edit_dir->GetY()), Size(229 - maxTextSize, edit_dir->GetHeight()));
 	combo_mode->SetMetrics(Point(maxTextSize + 24, combo_mode->GetY()), Size(317 - maxTextSize, combo_mode->GetHeight()));
-	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetY()), Size(265 - maxTextSize - text_port->textSize.cx, edit_server->GetHeight()));
+	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetY()), Size(265 - maxTextSize - text_port->GetUnscaledTextWidth(), edit_server->GetHeight()));
 	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->GetY()), Size(317 - maxTextSize, edit_email->GetHeight()));
 
 	Add(group_local);

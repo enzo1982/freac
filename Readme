@@ -1,17 +1,50 @@
-fre:ac version 1.0.20a
+fre:ac version 1.0.21 Beta 1
 
 fre:ac is a free and open source audio converter for various formats.
-It reads MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAVE, AIFF, AU and
-VOC files and converts to MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC,
-VQF or WAVE.
+It supports audio CD ripping and converts the following audio formats:
+
+	- MP3
+		- using the LAME MP3 encoder			(http://lame.sourceforge.net/)
+		- using the MAD MP3 decoder			(http://www.underbit.com/)
+
+	- MP4/M4A AAC
+		- using the FAAC/FAAD2 codec			(http://www.audiocoding.com/)
+
+	- Xiph Foundation codecs
+		- Vorbis					(http://www.vorbis.com/)
+		- FLAC						(http://flac.sourceforge.net/)
+
+	- Windows Media Audio					(http://www.microsoft.com/)
+	- Windows Wave Files					(http://www.microsoft.com/)
+
+	- various other formats
+		- Bonk Audio					(http://www.logarithmic.net/pfh/bonk/)
+
+		- Apple AIFF (decoding only)			(http://www.apple.com/)
+		- Creative Voice (decoding only)		(http://www.creative.com/)
+		- Sun Au (decoding only)			(http://www.oracle.com/)
+
+		- TwinVQ VQF (with plugin, encoding only)	(http://www.ntt.co.jp/)
 
 fre:ac uses the CDRip Ripping Library for audio ripping.
-fre:ac uses the FAAD2 AAC decoder for Advanced Audio decoding.
 
 Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
+
+	Version 1.0.21 Beta 1 (June 2013)
+
+		- updated Russian translation
+		- added support for large fonts
+		- fixed ID3v2 cover data not being displayed in iTunes
+		- fixed random crashes at program exit
+		- fixed WMA decoder not using the best output format available
+		- fixed ASPI error message being displayed on systems without optical drives
+		- upgraded FLAC to version 1.3.0
+		- upgraded Ogg library to version 1.3.1
+		- upgraded to smooth v0.8.71.0
+		- some minor fixes
 
 	Version 1.0.20a (March 2012)
 
@@ -291,13 +324,25 @@ History
 Requirements
 ------------
 
-	- Windows NT/2000/XP/Vista/7
-	- 200 MHz CPU, 128 MB RAM, 50 MB free disk space
+	Requirements for running the binaries:
+
+		Supported operating systems:
+			- Windows 2000/XP/Vista/7/8 (older Windows version might work with some limitations)
+
+		Minimum hardware requirements:
+			- Intel Pentium 4 CPU
+			- 128 MB RAM
+			- 50 MB free disk space
+
+		Recommended hardware specs:
+			- Intel Core i3 CPU
+			- 1 GB RAM
+			- 10 GB free disk space
 
 	Additional requirements for compiling the sources:
 
 		- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual C++ v10.0
-		- smooth v0.8.70.10 (http://www.smooth-project.org/)
+		- smooth v0.8.71.0 (http://www.smooth-project.org/)
 
 	Additional optional software:
 

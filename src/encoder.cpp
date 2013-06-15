@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -7,8 +7,6 @@
   * THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
-
-#include <direct.h>
 
 #include <main.h>
 #include <dllinterfaces.h>
@@ -25,8 +23,10 @@
 
 #include <input/filter-in-cdrip.h>
 
-#ifndef EWX_FORCEIFHUNG
-#define EWX_FORCEIFHUNG 16
+#ifdef __WIN32__
+#	ifndef EWX_FORCEIFHUNG
+#		define EWX_FORCEIFHUNG 16
+#	endif
 #endif
 
 Void BonkEnc::BonkEnc::Encode(Bool useThread)
@@ -178,7 +178,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo->artist.Length() > 0 ? singleTrackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo->title.Length() > 0 ? singleTrackInfo->title : i18n->TranslateString("unknown title")), Math::Round((Float) totalSamples / (singleTrackInfo->rate * singleTrackInfo->channels)));
 
-				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_OVERWRITE);
+				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_REPLACE);
 
 				if (f_out->GetLastError() != IO_ERROR_OK)
 				{
@@ -229,18 +229,18 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 			if (!overwriteAll && File(out_filename).Exists() && !currentConfig->writeToInputDir && !(!currentConfig->enc_onTheFly && step == 0))
 			{
-				MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), MB_YESNOCANCEL, IDI_QUESTION, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
+				MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
 				confirmation->ShowDialog();
 
-				if (confirmation->GetButtonCode() == IDCANCEL)
+				if (confirmation->GetButtonCode() == Message::Button::Cancel)
 				{
 					Object::DeleteObject(confirmation);
 
 					break;
 				}
 
-				if (confirmation->GetButtonCode() == IDNO)
+				if (confirmation->GetButtonCode() == Message::Button::No)
 				{
 					overwriteAll = False;
 
@@ -303,7 +303,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		}
 		else
 		{
-			f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
+			f_in = new InStream(STREAM_FILE, in_filename, IS_READ);
 			f_in->SetPackageSize(6144);
 
 			if (f_in->GetLastError() != IO_ERROR_OK)
@@ -344,7 +344,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 		if (!currentConfig->encodeToSingleFile)
 		{
-			f_out		= new OutStream(STREAM_FILE, out_filename, OS_OVERWRITE);
+			f_out		= new OutStream(STREAM_FILE, out_filename, OS_REPLACE);
 
 			if (f_out->GetLastError() != IO_ERROR_OK)
 			{
@@ -411,10 +411,10 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				for (Int i = 0; i < step; i++)
 				{
-					if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
-					else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
+					if	(trackInfo->order == BYTE_INTEL) sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
+					else if (trackInfo->order == BYTE_RAW)	 sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
-					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
+					if (sample == -1 && f_in->GetLastError() == IO_ERROR_NODATA) { step = i; break; }
 
 					f_out->OutputNumber(sample, int16(trackInfo->bits / 8));
 
@@ -423,14 +423,14 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				position += step;
 
-				if (trackInfo->isCDTrack && currentConfig->cdrip_timeout > 0 && clock() - startTicks > currentConfig->cdrip_timeout * 1000)
+				if (trackInfo->isCDTrack && currentConfig->cdrip_timeout > 0 && S::System::System::Clock() - startTicks > (UnsignedInt) currentConfig->cdrip_timeout * 1000)
 				{
 					Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(currentConfig->cdrip_timeout));
 
 					skip_track = True;
 				}
 
-				while (pause_encoding && !stop_encoding && !skip_track) Sleep(50);
+				while (pause_encoding && !stop_encoding && !skip_track) S::System::System::Sleep(50);
 
 				if (stop_encoding || skip_track) break;
 
@@ -447,10 +447,10 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				for (Int i = 0; i < step; i++)
 				{
-					if (trackInfo->order == BYTE_INTEL)	sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
-					else if (trackInfo->order == BYTE_RAW)	sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
+					if	(trackInfo->order == BYTE_INTEL) sample = f_in->InputNumberIntel(int16(trackInfo->bits / 8));
+					else if (trackInfo->order == BYTE_RAW)	 sample = f_in->InputNumberRaw(int16(trackInfo->bits / 8));
 
-					if (sample == -1 && f_in->GetLastError() != IO_ERROR_NODATA) { step = i; break; }
+					if (sample == -1 && f_in->GetLastError() == IO_ERROR_NODATA) { step = i; break; }
 
 					if (sample != -1)	f_out->OutputNumber(sample, int16(trackInfo->bits / 8));
 					else			i--;
@@ -460,14 +460,14 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				position = filter_in->GetInBytes();
 
-				if (trackInfo->isCDTrack && currentConfig->cdrip_timeout > 0 && clock() - startTicks > currentConfig->cdrip_timeout * 1000)
+				if (trackInfo->isCDTrack && currentConfig->cdrip_timeout > 0 && S::System::System::Clock() - startTicks > (UnsignedInt) currentConfig->cdrip_timeout * 1000)
 				{
 					Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(currentConfig->cdrip_timeout));
 
 					skip_track = True;
 				}
 
-				while (pause_encoding && !stop_encoding && !skip_track) Sleep(50);
+				while (pause_encoding && !stop_encoding && !skip_track) S::System::System::Sleep(50);
 
 				if (stop_encoding || skip_track) break;
 
@@ -489,7 +489,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			delete f_out;
 			delete filter_out;
 
-			f_in = new InStream(STREAM_FILE, out_filename, IS_READONLY);
+			f_in = new InStream(STREAM_FILE, out_filename, IS_READ);
 
 			Int64	 f_size = f_in->Size();
 
@@ -521,7 +521,9 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				if (joblist->GetNthTrack(j - nRemoved)->drive == trackInfo->drive) { ejectDisk = False; break; }
 			}
 
+#ifdef __WIN32__
 			if (ejectDisk) ex_CR_EjectCD(True);
+#endif
 		}
 
 		if (!currentConfig->enable_console && !stop_encoding && !skip_track && step == 1)
@@ -624,7 +626,9 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		{
 			Utilities::GainShutdownPrivilege();
 
+#ifdef __WIN32__
 			ExitWindowsEx(EWX_POWEROFF | EWX_FORCEIFHUNG, 0);
+#endif
 		}
 	}
 
@@ -651,7 +655,7 @@ Void BonkEnc::BonkEnc::StopEncoding()
 
 	stop_encoding = True;
 
-	while (encoding) Sleep(10);
+	while (encoding) S::System::System::Sleep(10);
 
 	delete encoder_thread;
 
@@ -701,7 +705,7 @@ String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const 
 	{
 		if (baseFileName[i] != trackFileName[i]) found = True;
 
-		if (baseFileName[i] == '\\')
+		if (baseFileName[i] == '\\' || baseFileName[i] == '/')
 		{
 			if (!found) equalBytes = i + 1;
 			else	    furtherComponents++;
@@ -719,7 +723,7 @@ String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const 
 
 	if (relativeFileName[1] != ':')
 	{
-		for (Int m = 0; m < furtherComponents; m++) relativeFileName = String("..\\").Append(relativeFileName);
+		for (Int m = 0; m < furtherComponents; m++) relativeFileName = String("..").Append(Directory::GetDirectoryDelimiter()).Append(relativeFileName);
 	}
 
 	return relativeFileName;
@@ -732,12 +736,15 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 	Int	 lastBs = -1;
 	Int	 firstDot = 0;
 
-	for (Int j = 0; j < trackInfo->origFilename.Length(); j++) if (trackInfo->origFilename[j] == '\\') lastBs = j;
+	for (Int j = 0; j < trackInfo->origFilename.Length(); j++)
+	{
+		if (trackInfo->origFilename[j] == '\\' || trackInfo->origFilename[j] == '/') lastBs = j;
+	}
 
 	for (Int k = trackInfo->origFilename.Length() - 1; k >= 0; k--)
 	{
 		if (trackInfo->origFilename[k] == '.' )	{ firstDot = trackInfo->origFilename.Length() - k; break; }
-		if (trackInfo->origFilename[k] == '\\')	break;
+		if (trackInfo->origFilename[k] == '\\' || trackInfo->origFilename[k] == '/') break;
 	}
 
 	String	 shortInFileName;
@@ -751,8 +758,8 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 
 	if (currentConfig->writeToInputDir && !trackInfo->isCDTrack)
 	{
-		String		 file = String(inFileDirectory).Append(String::FromInt(clock())).Append(".temp");
-		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_OVERWRITE);
+		String		 file = String(inFileDirectory).Append(String::FromInt(S::System::System::Clock())).Append(".temp");
+		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_REPLACE);
 
 		if (temp->GetLastError() == IO_ERROR_OK) writeToInputDir = True;
 
@@ -810,7 +817,7 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 				pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(">");
 				value = directory;
 
-				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find("\\") - 1);
+				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
 
 				shortOutFileName.Replace(pattern, value);
 
@@ -819,13 +826,13 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 					pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(String("(").Append(String::FromInt(j + 1)).Append(")")).Append(">");
 					value = directory;
 
-					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find("\\") - 1);
+					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
 
 					Int	 bsCount = 0;
 
 					for (Int n = 0; n < value.Length(); n++)
 					{
-						if (value[n] == '\\') bsCount++;
+						if (value[n] == '\\' || value[n] == '/') bsCount++;
 
 						if (bsCount == j + 1)
 						{
@@ -946,7 +953,7 @@ String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
 
 	if (dialog->ShowDialog() == Success()) singleOutputFileName = dialog->GetFileName();
 
-	delete dialog;
+	Object::DeleteObject(dialog);
 
 	return singleOutputFileName;
 }
@@ -989,7 +996,7 @@ Void BonkEnc::BonkEnc::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackIn
 
 Void BonkEnc::BonkEnc::InitTotalProgressValues()
 {
-	totalStartTicks = clock();
+	totalStartTicks = S::System::System::Clock();
 
 	lastTotalPercent = 0;
 	lastTotalTicks = 0;
@@ -1004,7 +1011,7 @@ Void BonkEnc::BonkEnc::InitTotalProgressValues()
 
 Void BonkEnc::BonkEnc::InitProgressValues()
 {
-	startTicks = clock();
+	startTicks = S::System::System::Clock();
 
 	lastPercent = 0;
 	lastTicks = 0;
@@ -1023,7 +1030,7 @@ Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition
 
 	static Int	 lastInvoked = 0;
 
-	Int	 clockValue	= clock();
+	Int	 clockValue	= S::System::System::Clock();
 
 	if (clockValue - lastInvoked < 40) return;
 

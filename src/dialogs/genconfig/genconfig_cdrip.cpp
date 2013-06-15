@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,6 +9,8 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/genconfig/genconfig_cdrip.h>
+
+#include <windows.h>
 
 BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc::i18n->TranslateString("Ripper"))
 {

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -86,11 +86,11 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	edit_filename	= new EditBox(currentConfig->playlist_filePattern, pos, size, 0);
 
 	list_filename	= new ListBox(pos, size);
-	list_filename->AddEntry("<artist> - <album>");
-	list_filename->AddEntry("<artist>\\<artist> - <album>");
-	list_filename->AddEntry("<artist> - <album>\\<artist> - <album>");
-	list_filename->AddEntry("<album>\\<artist> - <album>");
-	list_filename->AddEntry("<genre>\\<artist> - <album>");
+	list_filename->AddEntry(String("<artist> - <album>"));
+	list_filename->AddEntry(String("<artist>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
+	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
+	list_filename->AddEntry(String("<album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
+	list_filename->AddEntry(String("<genre>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
 
 	edit_filename->SetDropDownList(list_filename);
 

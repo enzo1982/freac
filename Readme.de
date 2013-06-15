@@ -1,22 +1,56 @@
-fre:ac Version 1.0.20a
+fre:ac Version 1.0.21 Beta 1
 
 fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
-Das Programm liest MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, WAVE, AIFF, AU
-und VOC-Dateien und erzeugt MP3, MP4/M4A, AAC, Ogg Vorbis, Bonk, FLAC, VQF
-oder WAVE-Dateien.
+Das Programm unterstützt das Rippen von Audio-CDs und konvertiert folgende
+Audioformate:
+
+	- MP3
+		- mit dem LAME MP3-Encoder			(http://lame.sourceforge.net/)
+		- mit dem MAD MP3-Decoder			(http://www.underbit.com/)
+
+	- MP4/M4A AAC
+		- mit dem FAAC/FAAD2-Codec			(http://www.audiocoding.com/)
+
+	- Xiph Foundation Codecs
+		- Vorbis					(http://www.vorbis.com/)
+		- FLAC						(http://flac.sourceforge.net/)
+
+	- Windows Media Audio					(http://www.microsoft.com/)
+	- Windows Wave Dateien					(http://www.microsoft.com/)
+
+	- verschiedene weitere Formate
+		- Bonk Audio					(http://www.logarithmic.net/pfh/bonk/)
+
+		- Apple AIFF (nur Dekodierung)			(http://www.apple.com/)
+		- Creative Voice (nur Dekodierung)		(http://www.creative.com/)
+		- Sun Au (nur Dekodierung)			(http://www.oracle.com/)
+
+		- TwinVQ VQF (mit Plugin, nur Enkodierung)	(http://www.ntt.co.jp/)
 
 fre:ac verwendet die CDRip Ripping Library zum CD-Rippen.
-fre:ac verwendet den FAAD2 AAC-Decoder zur Advanced Audio Decodierung.
 
 Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 Geschichte
 ----------
 
-	Version 1.0.20a (März 2012)
+	Version 1.0.21 Beta 1 (Juni 2013)
 
-		- Unbeabsichtigte Abhängigkeit zu Intel-Laufzeitbibliotheken korrigiert
-		- Inkorrekte Fehlermeldungen bei Ausführung auf AMD-CPUs behoben
+		- Russische Übersetzung aktualisiert
+		- Unterstützung für große Schriften hinzugefügt
+		- ID3v2-Coverdaten werden nun auch in iTunes angezeigt
+		- Unregelmäßige Abstürze beim Beenden des Programms behoben
+		- Problem bei der Auswahl des Ausgabeformats durch den WMA-Decoder behoben
+		- Anzeige einer ASPI-Fehlermeldung auf Systemen ohne optische Laufwerke behoben
+		- FLAC auf Version 1.3.0 aktualisiert
+		- Ogg-Bibliothek auf Version 1.3.1 aktualisiert
+		- Update auf smooth v0.8.71.0
+		- Kleinere Fehlerkorrekturen
+
+	Version 1.0.20a (March 2012)
+
+		- fixed unintended dependency on Intel runtime libraries
+		- fixed bogus error messages on AMD CPUs
 
 	Version 1.0.20 (März 2012)
 
@@ -291,13 +325,25 @@ Geschichte
 Voraussetzungen
 ---------------
 
-	- Windows NT/2000/XP/2003/Vista/7
-	- 200 MHz Prozessor, 128 MB RAM, 50 MB freier Festplattenplatz
+	Voraussetzungen zum Ausführen der Binärpakete:
+
+		Unterstützte Betriebsysteme:
+			- Windows 2000/XP/Vista/7/8 (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
+
+		Minimale Hardwarevoraussetzungen:
+			- Intel Pentium 4 Prozessor
+			- 128 MB RAM
+			- 50 MB freier Festplattenplatz
+
+		Empfohlene Hardwarespezifikationen:
+			- Intel Core i3 Prozessor
+			- 1 GB RAM
+			- 10 GB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung des Quellcodes:
 
 		- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual C++ v10.0
-		- smooth v0.8.70.10 (http://www.smooth-project.org/)
+		- smooth v0.8.71.0 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 

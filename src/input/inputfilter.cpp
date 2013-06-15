@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -50,7 +50,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track 
 
 Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 {
-	InStream	 in(STREAM_FILE, fileName, IS_READONLY);
+	InStream	 in(STREAM_FILE, fileName, IS_READ);
 
 	/* Look for ID3v2 tag.
 	 */
@@ -157,18 +157,17 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 		{
 			Picture	*picture = new Picture();
 
-			int	 tbufsize = 1024;
-			char	*abuffer  = new char [tbufsize];
-			wchar_t	*wbuffer  = new wchar_t [tbufsize];
+			Buffer<char>	 abuffer(1024);
+			Buffer<wchar_t>	 wbuffer(1024);
 
-			ZeroMemory(abuffer, tbufsize);
-			ZeroMemory(wbuffer, tbufsize * 2);
+			abuffer.Zero();
+			wbuffer.Zero();
 
 			ID3Field	*field = ex_ID3Frame_GetField(frame, ID3FN_MIMETYPE);
 
 			if (field != NIL)
 			{
-				ex_ID3Field_GetASCII(field, abuffer, tbufsize);
+				ex_ID3Field_GetASCII(field, abuffer, abuffer.Size());
 
 				picture->mime.ImportFrom("ISO-8859-1", abuffer);
 			}
@@ -180,8 +179,8 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 				picture->type = ex_ID3Field_GetINT(field);
 			}
 
-			ZeroMemory(abuffer, tbufsize);
-			ZeroMemory(wbuffer, tbufsize * 2);
+			abuffer.Zero();
+			wbuffer.Zero();
 
 			field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC);
 
@@ -193,9 +192,9 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_DESCRIPTION)) != NIL)
 					{
-						ex_ID3Field_GetASCII(field, abuffer, tbufsize);
+						ex_ID3Field_GetASCII(field, abuffer, abuffer.Size());
 
-						if (encoding == ID3TE_ISO8859_1)	picture->description.ImportFrom("ISO-8859-1", abuffer);
+						if	(encoding == ID3TE_ISO8859_1)	picture->description.ImportFrom("ISO-8859-1", abuffer);
 						else if (encoding == ID3TE_UTF8)	picture->description.ImportFrom("UTF-8", abuffer);
 					}
 				}
@@ -203,9 +202,9 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 				{
 					if ((field = ex_ID3Frame_GetField(frame, ID3FN_DESCRIPTION)) != NIL)
 					{
-						ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
+						ex_ID3Field_GetUNICODE(field, (unicode_t *) (wchar_t *) wbuffer, wbuffer.Size());
 
-						picture->description.ImportFrom("UTF-16BE", (char *) wbuffer);
+						picture->description.ImportFrom("UTF-16BE", (char *) (wchar_t *) wbuffer);
 					}
 				}
 			}
@@ -218,9 +217,6 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 
 				ex_ID3Field_GetBINARY(field, picture->data, picture->data.Size());
 			}
-
-			delete [] abuffer;
-			delete [] wbuffer;
 
 			nFormat->pictures.Add(picture);
 		}
@@ -240,20 +236,19 @@ String BonkEnc::InputFilter::GetID3V2FrameString(ID3Frame *frame)
 	{
 		Int	 encoding = ex_ID3Field_GetINT(field);
 
-		int	 tbufsize = 1024;
-		char	*abuffer  = new char [tbufsize];
-		wchar_t	*wbuffer  = new wchar_t [tbufsize];
+		Buffer<char>	 abuffer(1024);
+		Buffer<wchar_t>	 wbuffer(1024);
 
-		ZeroMemory(abuffer, tbufsize);
-		ZeroMemory(wbuffer, tbufsize * 2);
+		abuffer.Zero();
+		wbuffer.Zero();
 
 		if (encoding == ID3TE_ISO8859_1 || encoding == ID3TE_UTF8)
 		{
 			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL)
 			{
-				ex_ID3Field_GetASCII(field, abuffer, tbufsize);
+				ex_ID3Field_GetASCII(field, abuffer, abuffer.Size());
 
-				if (encoding == ID3TE_ISO8859_1)	result.ImportFrom("ISO-8859-1", abuffer);
+				if	(encoding == ID3TE_ISO8859_1)	result.ImportFrom("ISO-8859-1", abuffer);
 				else if (encoding == ID3TE_UTF8)	result.ImportFrom("UTF-8", abuffer);
 			}
 		}
@@ -261,14 +256,11 @@ String BonkEnc::InputFilter::GetID3V2FrameString(ID3Frame *frame)
 		{
 			if ((field = ex_ID3Frame_GetField(frame, ID3FN_TEXT)) != NIL)
 			{
-				ex_ID3Field_GetUNICODE(field, (unicode_t *) wbuffer, tbufsize);
+				ex_ID3Field_GetUNICODE(field, (unicode_t *) (wchar_t *) wbuffer, wbuffer.Size());
 
-				result.ImportFrom("UTF-16BE", (char *) wbuffer);
+				result.ImportFrom("UTF-16BE", (char *) (wchar_t *) wbuffer);
 			}
 		}
-
-		delete [] abuffer;
-		delete [] wbuffer;
 	}
 
 	return result;

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,28 +13,35 @@
 
 #include <smooth.h>
 
-#ifndef _MSC_VER
-#	include <stdint.h>
-#else
-#	define int32_t long
+#ifdef __WIN32__
+#	include <windows.h>
+
+#	ifndef _MSC_VER
+#		include <stdint.h>
+#	else
+#		define int32_t long
+#	endif
 #endif
 
 #include <3rdparty/bonk/bonk.h>
-#include <3rdparty/bladedll/bladedll.h>
 #include <3rdparty/vorbis/vorbisenc.h>
 #include <3rdparty/faac/faac.h>
 #include <3rdparty/faad2/neaacdec.h>
-#include <3rdparty/cdrip/cdrip.h>
 #include <3rdparty/lame/lame.h>
-#include <3rdparty/twinvq/twinvq.h>
-#include <3rdparty/twinvq/tvqenc.h>
-#include <3rdparty/winamp/in2.h>
 #include <3rdparty/id3.h>
-#include <3rdparty/mp4/mp4.h>
+#include <3rdparty/mp4v2/mp4v2.h>
 #include <3rdparty/flac/stream_encoder.h>
 #include <3rdparty/flac/stream_decoder.h>
 #include <3rdparty/mad/mad.h>
-#include <3rdparty/wmsdk/wmsdk.h>
+
+#ifdef __WIN32__
+#	include <3rdparty/bladedll/bladedll.h>
+#	include <3rdparty/cdrip/cdrip.h>
+#	include <3rdparty/twinvq/twinvq.h>
+#	include <3rdparty/twinvq/tvqenc.h>
+#	include <3rdparty/winamp/in2.h>
+#	include <3rdparty/wmsdk/wmsdk.h>
+#endif
 
 #undef NULL
 #define NULL 0
@@ -51,10 +58,10 @@ namespace BonkEnc
 			static DynamicLoader		*bladedll;
 			static DynamicLoader		*lamedll;
 			static DynamicLoader		*vorbisdll;
+			static DynamicLoader		*cdripdll;
+			static DynamicLoader		*tvqdll;
 			static DynamicLoader		*faacdll;
 			static DynamicLoader		*faad2dll;
-			static DynamicLoader		*tvqdll;
-			static DynamicLoader		*cdripdll;
 			static DynamicLoader		*id3dll;
 			static DynamicLoader		*eupdatedll;
 			static DynamicLoader		*mp4v2dll;
@@ -66,10 +73,10 @@ namespace BonkEnc
 			static Bool			 LoadBladeDLL();
 			static Bool			 LoadLAMEDLL();
 			static Bool			 LoadVorbisDLL();
+			static Bool			 LoadCDRipDLL();
+			static Bool			 LoadTVQDLL();
 			static Bool			 LoadFAACDLL();
 			static Bool			 LoadFAAD2DLL();
-			static Bool			 LoadTVQDLL();
-			static Bool			 LoadCDRipDLL();
 			static Bool			 LoadID3DLL();
 			static Bool			 LoadEUpdateDLL();
 			static Bool			 LoadMP4V2DLL();
@@ -81,10 +88,10 @@ namespace BonkEnc
 			static Void			 FreeBladeDLL();
 			static Void			 FreeLAMEDLL();
 			static Void			 FreeVorbisDLL();
+			static Void			 FreeCDRipDLL();
+			static Void			 FreeTVQDLL();
 			static Void			 FreeFAACDLL();
 			static Void			 FreeFAAD2DLL();
-			static Void			 FreeTVQDLL();
-			static Void			 FreeCDRipDLL();
 			static Void			 FreeID3DLL();
 			static Void			 FreeEUpdateDLL();
 			static Void			 FreeMP4V2DLL();
@@ -92,6 +99,7 @@ namespace BonkEnc
 			static Void			 FreeMADDLL();
 			static Void			 FreeWMVCoreDLL();
 
+#ifdef __WIN32__
 			static Bool			 LoadWinampDLLs();
 			static Void			 FreeWinampDLLs();
 
@@ -99,11 +107,13 @@ namespace BonkEnc
 			static Array<In_Module *>	 winamp_in_modules;
 			static Array<DynamicLoader *>	 winamp_out_plugins;
 			static Array<Out_Module *>	 winamp_out_modules;
+#endif
 	};
 };
 
 // CDRip DLL API
 
+#ifdef __WIN32__
 	typedef CDEX_ERR				(_stdcall *CR_INIT)				(int);
 	typedef CDEX_ERR				(_stdcall *CR_DEINIT)				();
 	typedef CDEX_ERR				(_stdcall *CR_READTOC)				();
@@ -137,6 +147,7 @@ namespace BonkEnc
 	extern BEEXPORT CR_LOCKCD			 ex_CR_LockCD;
 	extern BEEXPORT CR_EJECTCD			 ex_CR_EjectCD;
 	extern BEEXPORT CR_READCDTEXT			 ex_CR_ReadCDText;
+#endif
 
 // Bonk DLL API
 
@@ -178,6 +189,7 @@ namespace BonkEnc
 
 // BladeEnc DLL API
 
+#ifdef __WIN32__
 	typedef BE_ERR					(*BEINITSTREAM)					(PBE_CONFIG, PDWORD, PDWORD, PHBE_STREAM);
 	typedef BE_ERR					(*BEENCODECHUNK)				(HBE_STREAM, DWORD, PSHORT, PBYTE, PDWORD);
 	typedef BE_ERR					(*BEDEINITSTREAM)				(HBE_STREAM, PBYTE, PDWORD);
@@ -189,6 +201,7 @@ namespace BonkEnc
 	extern BEEXPORT BEDEINITSTREAM			 ex_beDeinitStream;
 	extern BEEXPORT BECLOSESTREAM			 ex_beCloseStream;
 	extern BEEXPORT BEVERSION			 ex_beVersion;
+#endif
 
 // LAME DLL API
 
@@ -382,6 +395,7 @@ namespace BonkEnc
 
 // TwinVQ DLL API
 
+#ifdef __WIN32__
 	typedef int					(*TVQGETVERSIONID)				(int, char *);
 	typedef int					(*TVQENCINITIALIZE)				(headerInfo *, encSpecificInfo *, INDEX *, int);
 	typedef void					(*TVQENCTERMINATE)				(INDEX *);
@@ -401,9 +415,11 @@ namespace BonkEnc
 	extern BEEXPORT TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo;
 	extern BEEXPORT TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo;
 	extern BEEXPORT TVQENCODEFRAME			 ex_TvqEncodeFrame;
+#endif
 
 // eUpdate DLL API
 
+#ifdef __WIN32__
 	typedef S::Void *				(_stdcall *EUCREATEUPDATECONTEXT)		(const char *, const char *, const char *);
 	typedef S::Void *				(_stdcall *EUCREATEUPDATECONTEXTW)		(const wchar_t *, const wchar_t *, const wchar_t *);
 	typedef S::Bool					(_stdcall *EUSETCONFIGFILE)			(S::Void *, const char *);
@@ -423,14 +439,15 @@ namespace BonkEnc
 	extern BEEXPORT EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext;
 	extern BEEXPORT EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates;
 	extern BEEXPORT EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate;
+#endif
 
 // MP4V2 DLL API
 
-	typedef MP4FileHandle				(*MP4READ)					(const char *, u_int32_t);
-	typedef MP4FileHandle				(*MP4CREATEEX)					(const char *, u_int32_t, u_int32_t, int, int, char *, u_int32_t, char **, u_int32_t);
+	typedef MP4FileHandle				(*MP4READ)					(const char *, uint32_t);
+	typedef MP4FileHandle				(*MP4CREATEEX)					(const char *, uint32_t, uint32_t, int, int, char *, uint32_t, char **, uint32_t);
 	typedef bool					(*MP4CLOSE)					(MP4FileHandle);
 	typedef void					(*MP4FREE)					(void *);
-	typedef bool					(*MP4OPTIMIZE)					(const char *, const char *, u_int32_t);
+	typedef bool					(*MP4OPTIMIZE)					(const char *, const char *, uint32_t);
 	typedef bool					(*MP4SETMETADATANAME)				(MP4FileHandle, const char *);
 	typedef bool					(*MP4GETMETADATANAME)				(MP4FileHandle, char **);
 	typedef bool					(*MP4SETMETADATAARTIST)				(MP4FileHandle, const char *);
@@ -443,21 +460,19 @@ namespace BonkEnc
 	typedef bool					(*MP4GETMETADATAALBUM)				(MP4FileHandle, char **);
 	typedef bool					(*MP4SETMETADATAGENRE)				(MP4FileHandle, const char *);
 	typedef bool					(*MP4GETMETADATAGENRE)				(MP4FileHandle, char **);
-	typedef bool					(*MP4SETMETADATATRACK)				(MP4FileHandle, u_int16_t, u_int16_t);
-	typedef bool					(*MP4GETMETADATATRACK)				(MP4FileHandle, u_int16_t *, u_int16_t *);
-	typedef u_int32_t				(*MP4GETNUMBEROFTRACKS)				(MP4FileHandle, const char *, u_int8_t);
-	typedef MP4TrackId				(*MP4FINDTRACKID)				(MP4FileHandle, u_int16_t, const char *, u_int8_t);
+	typedef bool					(*MP4SETMETADATATRACK)				(MP4FileHandle, uint16_t, uint16_t);
+	typedef bool					(*MP4GETMETADATATRACK)				(MP4FileHandle, uint16_t *, uint16_t *);
+	typedef uint32_t				(*MP4GETNUMBEROFTRACKS)				(MP4FileHandle, const char *, uint8_t);
+	typedef MP4TrackId				(*MP4FINDTRACKID)				(MP4FileHandle, uint16_t, const char *, uint8_t);
 	typedef const char *				(*MP4GETTRACKTYPE)				(MP4FileHandle, MP4TrackId);
-	typedef bool					(*MP4GETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, u_int8_t **, u_int32_t *);
-	typedef bool					(*MP4SETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t);
+	typedef bool					(*MP4GETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, uint8_t **, uint32_t *);
+	typedef bool					(*MP4SETTRACKESCONFIGURATION)			(MP4FileHandle, MP4TrackId, const uint8_t *, uint32_t);
 	typedef MP4Duration				(*MP4GETTRACKDURATION)				(MP4FileHandle, MP4TrackId);
-	typedef u_int32_t				(*MP4GETTRACKTIMESCALE)				(MP4FileHandle, MP4TrackId);
-	typedef void					(*MP4SETAUDIOPROFILELEVEL)			(MP4FileHandle, u_int8_t);
-	typedef MP4TrackId				(*MP4ADDAUDIOTRACK)				(MP4FileHandle, u_int32_t, MP4Duration, u_int8_t);
-	typedef bool					(*MP4READSAMPLE)				(MP4FileHandle, MP4TrackId, MP4SampleId, u_int8_t **, u_int32_t *, MP4Timestamp *, MP4Duration *,
- MP4Duration *, bool *);
-	typedef bool					(*MP4WRITESAMPLE)				(MP4FileHandle, MP4TrackId, const u_int8_t *, u_int32_t, MP4Duration,
- MP4Duration, bool);
+	typedef uint32_t				(*MP4GETTRACKTIMESCALE)				(MP4FileHandle, MP4TrackId);
+	typedef void					(*MP4SETAUDIOPROFILELEVEL)			(MP4FileHandle, uint8_t);
+	typedef MP4TrackId				(*MP4ADDAUDIOTRACK)				(MP4FileHandle, uint32_t, MP4Duration, uint8_t);
+	typedef bool					(*MP4READSAMPLE)				(MP4FileHandle, MP4TrackId, MP4SampleId, uint8_t **, uint32_t *, MP4Timestamp *, MP4Duration *, MP4Duration *, bool *);
+	typedef bool					(*MP4WRITESAMPLE)				(MP4FileHandle, MP4TrackId, const uint8_t *, uint32_t, MP4Duration, MP4Duration, bool);
 
 	extern BEEXPORT MP4READ				 ex_MP4Read;
 	extern BEEXPORT MP4CREATEEX			 ex_MP4CreateEx;
@@ -644,6 +659,7 @@ namespace BonkEnc
 
 // WMVCore DLL API
 
+#ifdef __WIN32__
 	typedef HRESULT					(STDMETHODCALLTYPE *WMCREATEREADER)		(IUnknown *, DWORD, IWMReader **);
 	typedef HRESULT					(STDMETHODCALLTYPE *WMCREATEWRITER)		(IUnknown *, IWMWriter **);
 	typedef HRESULT					(STDMETHODCALLTYPE *WMCREATEWRITERFILESINK)	(IWMWriterFileSink **);
@@ -655,5 +671,6 @@ namespace BonkEnc
 	extern		WMCREATEWRITERFILESINK		 ex_WMCreateWriterFileSink;
 	extern BEEXPORT WMCREATEPROFILEMANAGER		 ex_WMCreateProfileManager;
 	extern		WMCREATEEDITOR			 ex_WMCreateEditor;
+#endif
 
 #endif

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -158,13 +158,13 @@ String BonkEnc::FilterInWinamp::GetTempFile(const String &oFileName)
 
 	for (Int i = 0; i < rVal.Length(); i++)
 	{
-		if (rVal[i] > 255)	rVal[i] = '#';
-		if (rVal[i] == '\\')	lastBs = i;
+		if (rVal[i] > 255)			rVal[i] = '#';
+		if (rVal[i] == '\\' || rVal[i] == '/')	lastBs = i;
 	}
 
 	if (rVal == oFileName) return rVal;
 
-	String	 tempDir = Utilities::GetTempDirectory();
+	String	 tempDir = S::System::System::GetTempDirectory();
 
 	for (Int j = lastBs + 1; j < rVal.Length(); j++)
 	{
@@ -184,7 +184,7 @@ BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 	}
 
 	Track		*nFormat = new Track;
-	InStream	*f_in = new InStream(STREAM_FILE, GetTempFile(inFile), IS_READONLY);
+	InStream	*f_in = new InStream(STREAM_FILE, GetTempFile(inFile), IS_READ);
 
 	nFormat->order		= BYTE_INTEL;
 	nFormat->fileSize	= f_in->Size();

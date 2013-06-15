@@ -1,5 +1,7 @@
 # Makefile for fre:ac
 
+include Makefile-options
+
 INCLUDEDIR1 = ./include
 INCLUDEDIR2 = ../smooth/include
 OBJECTDIR = ./objects
@@ -9,14 +11,24 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdinfo.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-mad.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/filter-in-wma.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/filter-out-wma.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/directories.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/picture.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
-RESOURCES = $(OBJECTDIR)/resources.o
-EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/donate.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/wmaconfig.o $(OBJECTDIR)/main.o $(OBJECTDIR)/playback.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdinfo.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-mad.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/picture.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
+
+ifeq ($(BUILD_WIN32),True)
+	DLLOBJECTS += $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/filter-in-wma.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-wma.o
+	RESOURCES = $(OBJECTDIR)/resources.o
+endif
+
+EXEOBJECTS = $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/genconfig.o $(OBJECTDIR)/genconfig_encoders.o $(OBJECTDIR)/genconfig_language.o $(OBJECTDIR)/genconfig_playlists.o $(OBJECTDIR)/genconfig_tags.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/bonkconfig.o $(OBJECTDIR)/donate.o $(OBJECTDIR)/faacconfig.o $(OBJECTDIR)/flacconfig.o $(OBJECTDIR)/lameconfig.o $(OBJECTDIR)/vorbisconfig.o $(OBJECTDIR)/main.o
+
+ifeq ($(BUILD_WIN32),True)
+	EXEOBJECTS += $(OBJECTDIR)/genconfig_cddb.o $(OBJECTDIR)/genconfig_cdrip.o $(OBJECTDIR)/genconfig_plugins.o $(OBJECTDIR)/bladeconfig.o $(OBJECTDIR)/tvqconfig.o $(OBJECTDIR)/wmaconfig.o $(OBJECTDIR)/playback.o
+endif
+
 CMDOBJECTS = $(OBJECTDIR)/cmdmain.o
 
-EXENAME = $(BINDIR)/freac.exe
-CMDNAME = $(BINDIR)/freaccmd.exe
-DLLNAME = $(BINDIR)/freac.dll
+EXENAME = $(BINDIR)/freac$(EXECUTABLE)
+CMDNAME = $(BINDIR)/freaccmd$(EXECUTABLE)
+DLLNAME = $(BINDIR)/freac$(SHARED)
 LIBNAME = $(OBJECTDIR)/libfreac.a
 
 COMPILER = gcc
@@ -24,14 +36,45 @@ RESCOMP = windres
 LINKER = gcc
 REMOVER = rm
 ECHO = echo
-COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -march=i586 -Os -g0 -Wall -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
-LINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -Wl,--dynamicbase,--nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -mwindows -o$(EXENAME)
-CMDLINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -Wl,--dynamicbase,--nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -lwinmm -lstdc++ -o$(CMDNAME)
-DLLLINKER_OPTS = -L$(LIBDIR1) -Wl,--dynamicbase,--nxcompat -lsmooth -lunicows -lshell32 -lws2_32 -lole32 -luuid -lwinmm -lstdc++ -Wl,--enable-stdcall-fixup -mwindows --shared -Wl,--out-implib,$(LIBNAME) -o$(DLLNAME)
+COMPILER_OPTS = -I$(INCLUDEDIR1) -I$(INCLUDEDIR2) -m32 -march=i586 -Os -g0 -Wall -fno-exceptions -DUNICODE -D_UNICODE -DID3LIB_LINKOPTION=LINKOPTION_USE_DYNAMIC -c
+LINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -m32 -lsmooth -lstdc++ -o$(EXENAME)
+CMDLINKER_OPTS = -L$(LIBDIR1) $(LIBNAME) -m32 -lsmooth -lstdc++ -o$(CMDNAME)
+DLLLINKER_OPTS = -L$(LIBDIR1) -m32 -lsmooth -lstdc++ --shared -o$(DLLNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
 RESCOMP_OPTS = -O coff
+
+ifneq ($(BUILD_WIN32),True)
+ifneq ($(BUILD_SOLARIS),True)
+ifneq ($(BUILD_QNX),True)
+	COMPILER_OPTS			+= -pthread
+endif
+endif
+endif
+
+ifeq ($(BUILD_OPENBSD),True)
+	LINKER_OPTS			+= -L/usr/local/lib -logg -lvorbis -lvorbisfile
+	CMDLINKER_OPTS			+= -L/usr/local/lib -logg -lvorbis -lvorbisfile
+endif
+
+ifeq ($(BUILD_SOLARIS),True)
+	COMPILER_OPTS			+= -fpic
+endif
+
+ifeq ($(BUILD_WIN32),True)
+	DLLLINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat -lunicows -lole32 -lws2_32 -luuid -Wl,--out-implib,$(LIBNAME)
+	LINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat -lunicows -lole32 -lwinmm -mwindows
+	CMDLINKER_OPTS			+= -Wl,--dynamicbase,--nxcompat -lunicows
+else
+	ifeq ($(BUILD_OSX),True)
+		DLLLINKER_OPTS		+= -Wl,-dylib_install_name,freac$(SHARED)
+	endif
+
+	DLLLINKER_OPTS			+= -Wl,-rpath,.
+	LINKER_OPTS			+= -Wl,-rpath,.
+	CMDLINKER_OPTS			+= -Wl,-rpath,.
+endif
 
 .PHONY: all headers install clean clean_headers
 .SILENT:
@@ -48,20 +91,28 @@ clean:
 $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
 	$(LINKER) $(DLLOBJECTS) $(DLLLINKER_OPTS)
+ifneq ($(BUILD_OSX),True)
 	$(STRIP) $(STRIP_OPTS) $(DLLNAME)
+endif
+ifeq ($(BUILD_WIN32),True)
 	countbuild BuildNumber
+endif
 	$(ECHO) done.
 
 $(EXENAME): $(EXEOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(EXENAME)...
 	$(LINKER) $(EXEOBJECTS) $(RESOURCES) $(LINKER_OPTS)
+ifneq ($(BUILD_OSX),True)
 	$(STRIP) $(STRIP_OPTS) $(EXENAME)
+endif
 	$(ECHO) done.
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOURCES)
 	$(ECHO) -n Linking $(CMDNAME)...
 	$(LINKER) $(CMDOBJECTS) $(RESOURCES) $(CMDLINKER_OPTS)
+ifneq ($(BUILD_OSX),True)
 	$(STRIP) $(STRIP_OPTS) $(CMDNAME)
+endif
 	$(ECHO) done.
 
 $(OBJECTDIR)/bladeconfig.o: $(SRCDIR)/dialogs/bladeconfig.cpp

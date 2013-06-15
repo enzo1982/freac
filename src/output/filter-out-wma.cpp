@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -214,7 +214,7 @@ Bool BonkEnc::FilterOutWMA::Deactivate()
 
 	/* Stream contents of created WMA file to output driver
 	 */
-	InStream		 in(STREAM_FILE, String(format->outfile).Append(".out"), IS_READONLY);
+	InStream		 in(STREAM_FILE, String(format->outfile).Append(".out"), IS_READ);
 	Buffer<UnsignedByte>	 buffer(1024);
 	Int			 bytesLeft = in.Size();
 
@@ -234,27 +234,33 @@ Bool BonkEnc::FilterOutWMA::Deactivate()
 
 Int BonkEnc::FilterOutWMA::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
-	HRESULT	 hr;
-
+	HRESULT		 hr = S_OK;
 	INSSBuffer	*pSample = NIL;
 
 	hr = m_pWriter->AllocateSample(size, &pSample);
+
+	if (FAILED(hr)) return -1;
 
 	BYTE	*buffer = NIL;
 
 	hr = pSample->GetBuffer(&buffer);
 
-	memcpy(buffer, data, size);
+	if (!FAILED(hr))
+	{
+		memcpy(buffer, data, size);
 
-	pSample->SetLength(size);
+		pSample->SetLength(size);
 
-	QWORD	 cnsSampleTime = samplesWritten * 10000000 / format->channels / format->rate;
+		QWORD	 cnsSampleTime = samplesWritten * 10000000 / format->channels / format->rate;
 
-	samplesWritten += size / (format->bits / 8);
+		hr = m_pWriter->WriteSample(0, cnsSampleTime, WM_SF_CLEANPOINT, pSample);
 
-        hr = m_pWriter->WriteSample(0, cnsSampleTime, WM_SF_CLEANPOINT, pSample);
+		pSample->Release();
 
-	pSample->Release();
+		if (FAILED(hr)) return -1;
+
+		samplesWritten += size / (format->bits / 8);
+	}
 
 	return size;
 }
@@ -285,6 +291,8 @@ Int BonkEnc::FilterOutWMA::GetDefaultCodec(IWMCodecInfo3 *codecInfo)
 
 		delete [] name;
 	}
+
+	if (hr != S_OK) index = -1;
 
 	return index;
 }

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,6 +12,8 @@
 #define _H_FILTER_IN_WINAMP_
 
 #include "inputfilter.h"
+
+#include <windows.h>
 #include <3rdparty/winamp/in2.h>
 
 namespace BonkEnc

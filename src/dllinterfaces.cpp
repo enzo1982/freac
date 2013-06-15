@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,6 +11,7 @@
 #include <main.h>
 #include <dllinterfaces.h>
 
+#ifdef __WIN32__
 CR_INIT				 ex_CR_Init				= NIL;
 CR_DEINIT			 ex_CR_DeInit				= NIL;
 CR_READTOC			 ex_CR_ReadToc				= NIL;
@@ -27,6 +28,7 @@ CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters		= NIL;
 CR_LOCKCD			 ex_CR_LockCD				= NIL;
 CR_EJECTCD			 ex_CR_EjectCD				= NIL;
 CR_READCDTEXT			 ex_CR_ReadCDText			= NIL;
+#endif
 
 BONKENCODERCREATE		 ex_bonk_encoder_create			= NIL;
 BONKENCODERINIT			 ex_bonk_encoder_init			= NIL;
@@ -46,11 +48,13 @@ BONKDECODERINITSEEKTABLE	 ex_bonk_decoder_init_seektable		= NIL;
 BONKDECODERSEEKTO		 ex_bonk_decoder_seek_to		= NIL;
 BONKGETVERSIONSTRING		 ex_bonk_get_version_string		= NIL;
 
+#ifdef __WIN32__
 BEINITSTREAM			 ex_beInitStream			= NIL;
 BEENCODECHUNK			 ex_beEncodeChunk			= NIL;
 BEDEINITSTREAM			 ex_beDeinitStream			= NIL;
 BECLOSESTREAM			 ex_beCloseStream			= NIL;
 BEVERSION			 ex_beVersion				= NIL;
+#endif
 
 LAME_INIT			 ex_lame_init				= NIL;
 LAME_SET_PRESET			 ex_lame_set_preset			= NIL;
@@ -144,6 +148,7 @@ NEAACDECDECODE			 ex_NeAACDecDecode			= NIL;
 NEAACDECCLOSE			 ex_NeAACDecClose			= NIL;
 NEAACDECGETERRORMESSAGE		 ex_NeAACDecGetErrorMessage		= NIL;
 
+#ifdef __WIN32__
 TVQGETVERSIONID			 ex_TvqGetVersionID			= NIL;
 TVQENCINITIALIZE		 ex_TvqEncInitialize			= NIL;
 TVQENCTERMINATE			 ex_TvqEncTerminate			= NIL;
@@ -153,7 +158,9 @@ TVQENCGETCONFINFO		 ex_TvqEncGetConfInfo			= NIL;
 TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo			= NIL;
 TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo		= NIL;
 TVQENCODEFRAME			 ex_TvqEncodeFrame			= NIL;
+#endif
 
+#ifdef __WIN32__
 EUCREATEUPDATECONTEXT		 ex_eUpdate_CreateUpdateContext		= NIL;
 EUCREATEUPDATECONTEXTW		 ex_eUpdate_CreateUpdateContextW	= NIL;
 EUSETCONFIGFILE			 ex_eUpdate_SetConfigFile		= NIL;
@@ -163,6 +170,7 @@ EUSETLANGUAGEW			 ex_eUpdate_SetLanguageW		= NIL;
 EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext		= NIL;
 EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates		= NIL;
 EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
+#endif
 
 MP4READ				 ex_MP4Read				= NIL;
 MP4CREATEEX			 ex_MP4CreateEx				= NIL;
@@ -268,31 +276,36 @@ ID3FIELDGETASCII		 ex_ID3Field_GetASCII			= NIL;
 ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE			= NIL;
 ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE			= NIL;
 
+#ifdef __WIN32__
 WMCREATEREADER			 ex_WMCreateReader			= NIL;
 WMCREATEWRITER			 ex_WMCreateWriter			= NIL;
 WMCREATEWRITERFILESINK		 ex_WMCreateWriterFileSink		= NIL;
 WMCREATEPROFILEMANAGER		 ex_WMCreateProfileManager		= NIL;
 WMCREATEEDITOR			 ex_WMCreateEditor			= NIL;
+#endif
 
 DynamicLoader *BonkEnc::DLLInterfaces::bonkdll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::bladedll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::lamedll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::vorbisdll	= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::faacdll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::faad2dll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::tvqdll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::cdripdll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::id3dll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::mp4v2dll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::flacdll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::maddll		= NIL;
+
+#ifdef __WIN32__
+DynamicLoader *BonkEnc::DLLInterfaces::bladedll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::cdripdll		= NIL;
+DynamicLoader *BonkEnc::DLLInterfaces::tvqdll		= NIL;
 DynamicLoader *BonkEnc::DLLInterfaces::wmvcoredll	= NIL;
 
 Array<DynamicLoader *>	 BonkEnc::DLLInterfaces::winamp_in_plugins;
 Array<In_Module *>	 BonkEnc::DLLInterfaces::winamp_in_modules;
 Array<DynamicLoader *>	 BonkEnc::DLLInterfaces::winamp_out_plugins;
 Array<Out_Module *>	 BonkEnc::DLLInterfaces::winamp_out_modules;
+#endif
 
 Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
 {
@@ -368,7 +381,6 @@ Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\BladeEnc.dll")).Exists()) return False;
-#endif
 
 	bladedll = new DynamicLoader("encoders/BladeEnc");
 
@@ -385,6 +397,9 @@ Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
 	    ex_beVersion	== NIL) { FreeBladeDLL(); return False; }
 
 	return True;
+#else
+	return False;
+#endif
 }
 
 Void BonkEnc::DLLInterfaces::FreeBladeDLL()
@@ -504,7 +519,6 @@ Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\TVQenc.dll")).Exists()) return False;
-#endif
 
 	tvqdll = new DynamicLoader("encoders/TVQenc");
 
@@ -529,6 +543,9 @@ Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
 	    ex_TvqEncodeFrame		== NIL) { FreeTVQDLL(); return False; }
 
 	return True;
+#else
+	return False;
+#endif
 }
 
 Void BonkEnc::DLLInterfaces::FreeTVQDLL()
@@ -738,7 +755,6 @@ Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("CDRip.dll")).Exists()) return False;
-#endif
 
 	cdripdll = new DynamicLoader("CDRip");
 
@@ -777,6 +793,9 @@ Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 	    ex_CR_ReadCDText			== NIL) { FreeCDRipDLL(); return False; }
 
 	return True;
+#else
+	return False;
+#endif
 }
 
 Void BonkEnc::DLLInterfaces::FreeCDRipDLL()
@@ -864,7 +883,6 @@ Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("eUpdate.dll")).Exists()) return False;
-#endif
 
 	eupdatedll = new DynamicLoader("eUpdate");
 
@@ -889,6 +907,9 @@ Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 	    ex_eUpdate_AutomaticUpdate		== NIL) { FreeEUpdateDLL(); return False; }
 
 	return True;
+#else
+	return False;
+#endif
 }
 
 Void BonkEnc::DLLInterfaces::FreeEUpdateDLL()
@@ -1008,6 +1029,7 @@ Void BonkEnc::DLLInterfaces::FreeMADDLL()
 
 Bool BonkEnc::DLLInterfaces::LoadWMVCoreDLL()
 {
+#ifdef __WIN32__
 	wmvcoredll = new DynamicLoader("WMVCore");
 
 	ex_WMCreateReader		= (WMCREATEREADER) wmvcoredll->GetFunctionAddress("WMCreateReader");
@@ -1023,6 +1045,9 @@ Bool BonkEnc::DLLInterfaces::LoadWMVCoreDLL()
 	    ex_WMCreateEditor		== NIL) { FreeWMVCoreDLL(); return False; }
 
 	return True;
+#else
+	return False;
+#endif
 }
 
 Void BonkEnc::DLLInterfaces::FreeWMVCoreDLL()
@@ -1146,6 +1171,7 @@ Void BonkEnc::DLLInterfaces::FreeFLACDLL()
 	flacdll = NIL;
 }
 
+#ifdef __WIN32__
 Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 {
 	MoveFileA(Application::GetApplicationDirectory().Append("plugins\\plugins.ini"), Application::GetApplicationDirectory().Append("freac.ini"));
@@ -1228,3 +1254,4 @@ Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
 
 	MoveFileA(Application::GetApplicationDirectory().Append("freac.ini"), Application::GetApplicationDirectory().Append("plugins\\plugins.ini"));
 }
+#endif

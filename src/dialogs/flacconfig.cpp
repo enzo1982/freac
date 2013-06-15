@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -74,9 +74,9 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 
 	text_preset		= new Text(BonkEnc::i18n->TranslateString("Use preset:"), pos);
 
-	pos.x += (text_preset->textSize.cx + 8);
+	pos.x += (text_preset->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
-	size.cx = 453 - text_preset->textSize.cx;
+	size.cx = 453 - text_preset->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	combo_preset		= new ComboBox(pos, size);
@@ -125,14 +125,14 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 
 	check_streamable_subset	= new CheckBox(BonkEnc::i18n->TranslateString("Use streamable subset"), pos, size, &streamable_subset);
 	check_streamable_subset->onAction.Connect(&ConfigureFLAC::SetStreamableSubset, this);
-	check_streamable_subset->SetWidth(check_streamable_subset->textSize.cx + 21);
+	check_streamable_subset->SetWidth(check_streamable_subset->GetUnscaledTextWidth() + 21);
 
 	pos.x -= 1;
 	pos.y += 27;
 
 	text_blocksize		= new Text(BonkEnc::i18n->TranslateString("Blocksize:"), pos);
 
-	pos.x += text_blocksize->textSize.cx + 7;
+	pos.x += text_blocksize->GetUnscaledTextWidth() + 7;
 	pos.y -= 2;
 	size.cx = 319;
 
@@ -164,9 +164,9 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 
 	text_apodization	= new Text(BonkEnc::i18n->TranslateString("Apodization function(s):"), pos);
 
-	pos.x += text_apodization->textSize.cx + 7;
+	pos.x += text_apodization->GetUnscaledTextWidth() + 7;
 	pos.y -= 3;
-	size.cx = 454 - text_apodization->textSize.cx;
+	size.cx = 454 - text_apodization->GetUnscaledTextWidth();
 
 	edit_apodization	= new EditBox(currentConfig->flac_apodization, pos, size);
 
@@ -250,7 +250,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	check_qlp_precision_search= new CheckBox(BonkEnc::i18n->TranslateString("Optimize LPC quantization"), pos, size, &do_qlp_coeff_prec_search);
 	check_qlp_precision_search->onAction.Connect(&ConfigureFLAC::SetQLPSearch, this);
 
-	Int	 maxTextSize = Math::Max(text_max_lpc_order_value->textSize.cx, text_qlp_precision_value->textSize.cx);
+	Int	 maxTextSize = Math::Max(text_max_lpc_order_value->GetUnscaledTextWidth(), text_qlp_precision_value->GetUnscaledTextWidth());
 
 	check_exhaustive_model->SetX(text_max_lpc_order_value->GetX() + maxTextSize + 8); check_exhaustive_model->SetWidth(189 - maxTextSize);
 	check_qlp_precision_search->SetX(text_max_lpc_order_value->GetX() + maxTextSize + 8); check_qlp_precision_search->SetWidth(189 - maxTextSize);
@@ -296,7 +296,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 
 	text_max_part_order_value= new Text("", pos);
 
-	maxTextSize = Math::Max(Math::Max(text_min_part_order->textSize.cx, text_max_part_order->textSize.cx), Math::Max(text_max_lpc_order->textSize.cx, text_qlp_precision->textSize.cx));
+	maxTextSize = Math::Max(Math::Max(text_min_part_order->GetUnscaledTextWidth(), text_max_part_order->GetUnscaledTextWidth()), Math::Max(text_max_lpc_order->GetUnscaledTextWidth(), text_qlp_precision->GetUnscaledTextWidth()));
 
 	slider_min_part_order->SetX(group_lpc->GetX() + 16 + maxTextSize); slider_min_part_order->SetWidth(250 - maxTextSize);
 	slider_max_part_order->SetX(group_lpc->GetX() + 16 + maxTextSize); slider_max_part_order->SetWidth(250 - maxTextSize);
@@ -431,7 +431,7 @@ Void BonkEnc::ConfigureFLAC::OK()
 	currentConfig->flac_streamable_subset = streamable_subset;
 	currentConfig->flac_do_mid_side_stereo = do_mid_side_stereo;
 	currentConfig->flac_loose_mid_side_stereo = loose_mid_side_stereo;
-	currentConfig->flac_blocksize = (streamable_subset ? blocksize * 8 : Math::Max(0, Math::Min(32768, edit_blocksize->GetText().ToInt())));
+	currentConfig->flac_blocksize = (streamable_subset ? blocksize * 8 : Math::Max((Int64) 0, Math::Min((Int64) 32768, edit_blocksize->GetText().ToInt())));
 	currentConfig->flac_apodization = edit_apodization->GetText();
 	currentConfig->flac_max_lpc_order = max_lpc_order;
 	currentConfig->flac_qlp_coeff_precision = qlp_coeff_precision;

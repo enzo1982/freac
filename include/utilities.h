@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,19 +37,11 @@ namespace BonkEnc
 
 			static Void		 FillGenreList(List *);
 
-			static String		 LocalizeNumber(Int64);
-
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
 			static String		 NormalizeFileName(const String &);
 			static String		 CreateDirectoryForFile(const String &);
 
 			static String		 GetInstallDrive();
-
-			static String		 GetWindowsRootDirectory();
-			static String		 GetPersonalFilesDirectory();
-			static String		 GetProgramFilesDirectory();
-			static String		 GetApplicationDataDirectory();
-			static String		 GetTempDirectory();
 
 			static Void		 GainShutdownPrivilege();
 	};

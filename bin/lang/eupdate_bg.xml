@@ -30,5 +30,6 @@
     <entry id="18" string="Your application has been successfully updated!">Вашето приложение беше обновено успешно!</entry>
     <entry id="19" string="Error">Грешка</entry>
     <entry id="20" string="Error downloading package!">Грешка при изтегляне на пакет!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Грешка при инсталиране на &quot;%1&quot;!&#10;&#10;Достъпът до директорията на приложението беше отказан.</entry>
   </data>
 </LangFile>

@@ -1,5 +1,6 @@
 /* libFLAC - Free Lossless Audio Codec library
- * Copyright (C) 2000,2001,2002,2003,2004,2005,2006 Josh Coalson
+ * Copyright (C) 2000-2009  Josh Coalson
+ * Copyright (C) 2011-2013  Xiph.Org Foundation
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -48,28 +49,37 @@
  *  This module contains #defines and symbols for exporting function
  *  calls, and providing version information and compiled-in features.
  *
+ *  If you are compiling with MSVC and will link to the static library
+ *  (libFLAC.lib) you should define FLAC__NO_DLL in your project to
+ *  make sure the symbols are exported properly.
+ *
  * \{
  */
 
-#if defined(FLAC__NO_DLL) || !defined(_MSC_VER)
+#if defined(FLAC__NO_DLL)
 #define FLAC_API
 
-#else
-
+#elif defined(_MSC_VER)
 #ifdef FLAC_API_EXPORTS
 #define	FLAC_API	_declspec(dllexport)
 #else
 #define FLAC_API	_declspec(dllimport)
-
 #endif
+
+#elif defined(FLAC__USE_VISIBILITY_ATTR)
+#define FLAC_API __attribute__ ((visibility ("default")))
+
+#else
+#define FLAC_API
+
 #endif
 
 /** These #defines will mirror the libtool-based library version number, see
- * http://www.gnu.org/software/libtool/manual.html#Libtool-versioning
+ * http://www.gnu.org/software/libtool/manual/libtool.html#Libtool-versioning
  */
-#define FLAC_API_VERSION_CURRENT 8
+#define FLAC_API_VERSION_CURRENT 11
 #define FLAC_API_VERSION_REVISION 0 /**< see above */
-#define FLAC_API_VERSION_AGE 0 /**< see above */
+#define FLAC_API_VERSION_AGE 3 /**< see above */
 
 #ifdef __cplusplus
 extern "C" {

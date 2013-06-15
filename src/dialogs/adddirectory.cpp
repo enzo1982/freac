@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -51,9 +51,9 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 
 	text_directory	= new Text(BonkEnc::i18n->TranslateString("Choose directory:"), pos);
 
-	pos.x += (text_directory->textSize.cx + 7);
+	pos.x += (text_directory->GetUnscaledTextWidth() + 7);
 	pos.y -= 3;
-	size.cx = 268 - text_directory->textSize.cx;
+	size.cx = 268 - text_directory->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	edit_directory	= new EditBox(currentConfig->lastAddedDir, pos, size);

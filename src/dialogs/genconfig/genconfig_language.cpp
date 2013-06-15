@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,6 +9,12 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/genconfig/genconfig_language.h>
+
+#ifdef __WIN32__
+#	include <windows.h>
+#else
+#	include <unistd.h>
+#endif
 
 BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(BonkEnc::i18n->TranslateString("Language"))
 {
@@ -46,9 +52,9 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 
 	text_language	= new Text(BonkEnc::i18n->TranslateString("Select language:"), pos);
 
-	pos.x	+= (text_language->textSize.cx + 8);
+	pos.x	+= (text_language->GetUnscaledTextWidth() + 8);
 	pos.y	= 23;
-	size.cx	= (503 - text_language->textSize.cx);
+	size.cx	= (503 - text_language->GetUnscaledTextWidth());
 	size.cy	= 0;
 
 	combo_language	= new ComboBox(pos, size);
@@ -68,7 +74,11 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 		if (currentConfig->language == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
-	if (File(Application::GetApplicationDirectory().Append("translator.exe")).Exists())
+#ifdef __WIN32__
+	if (File(GUI::Application::GetApplicationDirectory().Append("translator.exe")).Exists())
+#else
+	if (File(GUI::Application::GetApplicationDirectory().Append("translator")).Exists())
+#endif
 	{
 		combo_language->SetWidth(combo_language->GetWidth() - 138);
 
@@ -119,8 +129,16 @@ Void BonkEnc::GeneralSettingsLayerLanguage::SelectLanguage()
 
 Void BonkEnc::GeneralSettingsLayerLanguage::EditLanguageFile()
 {
-	if (Setup::enableUnicode)	ShellExecuteW(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(Application::GetApplicationDirectory()).Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
-	else				ShellExecuteA(0, String("open"), Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(Application::GetApplicationDirectory()).Append("lang\\").Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+#ifdef __WIN32__
+	if (Setup::enableUnicode) ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+	else			  ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+#else
+	if (!fork())
+	{
+		execl("/bin/sh", "sh", "-c", (char *) GUI::Application::GetApplicationDirectory().Append("translator \"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
+		exit(0);
+	}
+#endif
 }
 
 Bool BonkEnc::GeneralSettingsLayerLanguage::IsLanguageChanged()

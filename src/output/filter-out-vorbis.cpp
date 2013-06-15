@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,6 +11,9 @@
 #include <output/filter-out-vorbis.h>
 #include <utilities.h>
 #include <dllinterfaces.h>
+
+#include <time.h>
+#include <stdlib.h>
 
 BonkEnc::FilterOutVORBIS::FilterOutVORBIS(Config *config, Track *format) : OutputFilter(config, format)
 {

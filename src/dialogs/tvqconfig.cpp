@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -51,9 +51,9 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 
 	text_bitrate		= new Text(BonkEnc::i18n->TranslateString("Bitrate per channel:"), pos);
 
-	pos.x += (text_bitrate->textSize.cx + 8);
+	pos.x += (text_bitrate->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
-	size.cx = 176 - text_bitrate->textSize.cx;
+	size.cx = 176 - text_bitrate->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	combo_bitrate		= new ComboBox(pos, size);
@@ -91,9 +91,9 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 
 	text_precand		= new Text(BonkEnc::i18n->TranslateString("Number of preselection candidates:"), pos);
 
-	pos.x += (text_precand->textSize.cx + 8);
+	pos.x += (text_precand->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
-	size.cx = 206 - text_precand->textSize.cx;
+	size.cx = 206 - text_precand->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	combo_precand		= new ComboBox(pos, size);

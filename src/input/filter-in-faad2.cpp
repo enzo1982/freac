@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -131,7 +131,7 @@ Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);
 
 	nFormat->order		= BYTE_INTEL;
 	nFormat->bits		= 16;
@@ -160,7 +160,7 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 
 	ex_NeAACDecSetConfiguration(handle, fConfig);
 
-	Int		 size = Math::Min(32768, nFormat->fileSize);
+	Int		 size = Math::Min((Int64) 32768, nFormat->fileSize);
 	unsigned char	*data = new unsigned char [size];
 
 	f_in->InputData((void *) data, size);

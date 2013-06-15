@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -74,9 +74,9 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 
 	text_quality		= new Text(String(BonkEnc::i18n->TranslateString("Quality")).Append(":"), pos);
 
-	pos.x += (text_quality->textSize.cx + 8);
+	pos.x += (text_quality->GetUnscaledTextWidth() + 8);
 	pos.y -= 2;
-	size.cx = 283 - text_quality->textSize.cx;
+	size.cx = 283 - text_quality->GetUnscaledTextWidth();
 
 	slider_quality		= new Slider(pos, size, OR_HORZ, &quality, -20, 100);
 	slider_quality->onValueChange.Connect(&ConfigureVorbisEnc::SetQuality, this);
@@ -90,9 +90,9 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 
 	text_abr		= new Text(String(BonkEnc::i18n->TranslateString("Average Bitrate")).Append(":"), pos);
 
-	pos.x += (text_abr->textSize.cx + 8);
+	pos.x += (text_abr->GetUnscaledTextWidth() + 8);
 	pos.y -= 2;
-	size.cx = 248 - text_abr->textSize.cx;
+	size.cx = 248 - text_abr->GetUnscaledTextWidth();
 
 	slider_abr		= new Slider(pos, size, OR_HORZ, &abr, 45, 500);
 	slider_abr->onValueChange.Connect(&ConfigureVorbisEnc::SetBitrate, this);

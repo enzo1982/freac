@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -55,9 +55,9 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 
 	text_pattern	= new Text(String(BonkEnc::i18n->TranslateString("Filename pattern")).Append(":"), pos);
 
-	pos.x += (Math::Max(text_directory->textSize.cx, text_pattern->textSize.cx) + 7);
+	pos.x += (Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) + 7);
 	pos.y -= 29;
-	size.cx = 268 - Math::Max(text_directory->textSize.cx, text_pattern->textSize.cx);
+	size.cx = 268 - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth());
 	size.cy = 0;
 
 	edit_directory	= new EditBox(currentConfig->lastAddedDir, pos, size);

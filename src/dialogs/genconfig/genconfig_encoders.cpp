@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,18 +14,22 @@
 #include <utilities.h>
 
 #include <dialogs/bonkconfig.h>
-#include <dialogs/bladeconfig.h>
 #include <dialogs/lameconfig.h>
 #include <dialogs/vorbisconfig.h>
 #include <dialogs/faacconfig.h>
 #include <dialogs/flacconfig.h>
-#include <dialogs/tvqconfig.h>
-#include <dialogs/wmaconfig.h>
 
-#include <3rdparty/bladedll/bladedll.h>
 #include <3rdparty/lame/lame.h>
 #include <3rdparty/vorbis/vorbisenc.h>
 #include <3rdparty/faac/faac.h>
+
+#ifdef __WIN32__
+#	include <dialogs/bladeconfig.h>
+#	include <dialogs/tvqconfig.h>
+#	include <dialogs/wmaconfig.h>
+
+#	include <3rdparty/bladedll/bladedll.h>
+#endif
 
 BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(BonkEnc::i18n->TranslateString("Encoders"))
 {
@@ -57,6 +61,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 
 	if (currentConfig->enable_blade)
 	{
+#ifdef __WIN32__
 		String		 bladeVersion = "";
 		BE_VERSION	 beVer;
 
@@ -65,6 +70,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 		bladeVersion.Append("v").Append(String::FromInt(beVer.byMajorVersion)).Append(".").Append(String::FromInt(beVer.byMinorVersion));
 
 		combo_encoder->AddEntry(String("BladeEnc MP3 Encoder ").Append(bladeVersion));
+#endif
 	}
 
 	if (currentConfig->enable_bonk)		combo_encoder->AddEntry(String("Bonk Audio Encoder v").Append(ex_bonk_get_version_string()));
@@ -72,8 +78,8 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	if (currentConfig->enable_faac)
 	{
 		String		 faacVersion = "";
-		UnsignedInt	 samples;
-		UnsignedInt	 buffer_size;
+		UnsignedLong	 samples;
+		UnsignedLong	 buffer_size;
 		faacEncHandle	 faac = ex_faacEncOpen(44100, 2, &samples, &buffer_size);
 
 		faacVersion.Append("v").Append(ex_faacEncGetCurrentConfiguration(faac)->name);
@@ -90,11 +96,13 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 
 	if (currentConfig->enable_tvq)
 	{
+#ifdef __WIN32__
 		char		 tvqVersionID[13];
 
 		ex_TvqGetVersionID(V2, tvqVersionID);
 
 		combo_encoder->AddEntry(String("TwinVQ VQF Encoder v").Append(tvqVersionID + 4));
+#endif
 	}
 
 	combo_encoder->AddEntry(String("Windows Wave File Output"));
@@ -161,16 +169,16 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	edit_filename	= new EditBox(currentConfig->enc_filePattern, pos, size, 0);
 
 	list_filename	= new ListBox(pos, size);
-	list_filename->AddEntry("<artist> - <title>");
-	list_filename->AddEntry("<artist>\\<artist> - <title>");
-	list_filename->AddEntry("<artist> - <album> - <track> - <title>");
-	list_filename->AddEntry("<artist> - <album>\\<track> - <title>");
-	list_filename->AddEntry("<artist> - <album>\\<artist> - <album> - <track> - <title>");
-	list_filename->AddEntry("<track> - <artist> - <title>");
-	list_filename->AddEntry("<album>\\<track> - <artist> - <title>");
-	list_filename->AddEntry("<genre>\\<artist> - <title>");
-	list_filename->AddEntry("<filetype>\\<artist> - <album>\\<track> - <title>");
-	list_filename->AddEntry("<filename>");
+	list_filename->AddEntry(String("<artist> - <title>"));
+	list_filename->AddEntry(String("<artist>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <title>"));
+	list_filename->AddEntry(String("<artist> - <album> - <track> - <title>"));
+	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
+	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>"));
+	list_filename->AddEntry(String("<track> - <artist> - <title>"));
+	list_filename->AddEntry(String("<album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <artist> - <title>"));
+	list_filename->AddEntry(String("<genre>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <title>"));
+	list_filename->AddEntry(String("<filetype>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
+	list_filename->AddEntry(String("<filename>"));
 
 	edit_filename->SetDropDownList(list_filename);
 
@@ -277,21 +285,24 @@ Void BonkEnc::GeneralSettingsLayerEncoders::ConfigureEncoder()
 {
 	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WAVE)
 	{
-		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for Windows Wave file output!"), BonkEnc::i18n->TranslateString("Windows Wave file output"), MB_OK, IDI_INFORMATION);
+		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for Windows Wave file output!"), BonkEnc::i18n->TranslateString("Windows Wave file output"), Message::Buttons::Ok, Message::Icon::Information);
 
 		return;
 	}
 
 	Dialog	*dlg = NIL;
 
-	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BONKENC)		dlg = new ConfigureBonkEnc();
-	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BLADEENC)	dlg = new ConfigureBladeEnc();
+	if	(combo_encoder->GetSelectedEntryNumber() == ENCODER_BONKENC)	dlg = new ConfigureBonkEnc();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_LAMEENC)	dlg = new ConfigureLameEnc();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_VORBISENC)	dlg = new ConfigureVorbisEnc();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FAAC)	dlg = new ConfigureFAAC();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_FLAC)	dlg = new ConfigureFLAC();
+
+#ifdef __WIN32__
+	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_BLADEENC)	dlg = new ConfigureBladeEnc();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_TVQ)	dlg = new ConfigureTVQ();
 	else if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WMA)	dlg = new ConfigureWMA();
+#endif
 
 	if (dlg != NIL)
 	{

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,6 +14,13 @@
 #include <smooth/io/drivers/driver_socks5.h>
 #include <cddb/cddbremote.h>
 #include <bonkenc.h>
+
+#ifdef __WIN32__
+#	include <winsock2.h>
+#else
+#	include <unistd.h>
+#endif
+
 #include <dllinterfaces.h>
 
 BonkEnc::CDDBRemote::CDDBRemote(Config *iConfig) : CDDB(iConfig)

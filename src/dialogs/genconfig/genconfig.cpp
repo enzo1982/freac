@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,16 +12,17 @@
 #include <dialogs/genconfig/genconfig_encoders.h>
 #include <dialogs/genconfig/genconfig_playlists.h>
 #include <dialogs/genconfig/genconfig_language.h>
-#include <dialogs/genconfig/genconfig_cdrip.h>
-#include <dialogs/genconfig/genconfig_cddb.h>
-#include <dialogs/genconfig/genconfig_plugins.h>
 #include <dialogs/genconfig/genconfig_tags.h>
+
+#ifdef __WIN32__
+#	include <dialogs/genconfig/genconfig_cdrip.h>
+#	include <dialogs/genconfig/genconfig_cddb.h>
+#	include <dialogs/genconfig/genconfig_plugins.h>
+#endif
 
 #include <cddb/cddb.h>
 #include <resources.h>
 #include <utilities.h>
-
-#include <direct.h>
 
 BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 {
@@ -39,10 +40,13 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	register_layer_encoders	= new GeneralSettingsLayerEncoders();
 	register_layer_playlists= new GeneralSettingsLayerPlaylists();
 	register_layer_language	= new GeneralSettingsLayerLanguage();
+	register_layer_tags	= new GeneralSettingsLayerTags();
+
+#ifdef __WIN32__
 	register_layer_cdrip	= new GeneralSettingsLayerCDRip();
 	register_layer_cddb	= new GeneralSettingsLayerCDDB();
 	register_layer_plugins	= new GeneralSettingsLayerPlugins();
-	register_layer_tags	= new GeneralSettingsLayerTags();
+#endif
 
 	pos.x	= 175;
 	pos.y	= 29;
@@ -79,10 +83,13 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 
 	if (BonkEnc::i18n->GetNOfLanguages() > 1) reg_register->Add(register_layer_language);
 
+#ifdef __WIN32__
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->Add(register_layer_cdrip);
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->Add(register_layer_cddb);
 
 	reg_register->Add(register_layer_plugins);
+#endif
+
 	reg_register->Add(register_layer_tags);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
@@ -91,17 +98,22 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 
 BonkEnc::GeneralSettingsDialog::~GeneralSettingsDialog()
 {
-	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
+	DeleteObject(mainWnd_titlebar);
 	DeleteObject(divbar);
+
 	DeleteObject(reg_register);
 	DeleteObject(register_layer_encoders);
 	DeleteObject(register_layer_playlists);
 	DeleteObject(register_layer_language);
+	DeleteObject(register_layer_tags);
+
+#ifdef __WIN32__
 	DeleteObject(register_layer_cdrip);
 	DeleteObject(register_layer_cddb);
 	DeleteObject(register_layer_plugins);
-	DeleteObject(register_layer_tags);
+#endif
+
 	DeleteObject(btn_ok);
 	DeleteObject(btn_cancel);
 }
@@ -117,29 +129,29 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 {
 	Directory	 outputDirectory(register_layer_encoders->GetOutputDirectory().Replace("<installdrive>", Utilities::GetInstallDrive()));
 
-	if ((Setup::enableUnicode ? SetCurrentDirectoryW(String(outputDirectory)) : SetCurrentDirectoryA(String(outputDirectory))) == False)
+	if (Directory::SetActiveDirectory(outputDirectory) != Success())
 	{
-		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
+		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The output directory does not exist! Do you want to create it?"), BonkEnc::i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
-		if (selection == IDYES)		outputDirectory.Create();
-		else if (selection == IDCANCEL)	return;
+		if	(selection == Message::Button::Yes)    outputDirectory.Create();
+		else if (selection == Message::Button::Cancel) return;
 	}
 
+	Directory::SetActiveDirectory(GUI::Application::GetApplicationDirectory());
+
+#ifdef __WIN32__
 	if (currentConfig->freedb_proxy_mode == 1 && register_layer_cddb->GetFreedbMode() == FREEDB_MODE_CDDBP)
 	{
-		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), BonkEnc::i18n->TranslateString("Error"), MB_YESNOCANCEL, IDI_QUESTION);
+		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), BonkEnc::i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
-		if (selection == IDYES)		currentConfig->freedb_mode = FREEDB_MODE_HTTP;
-		else if (selection == IDNO)	currentConfig->freedb_mode = register_layer_cddb->GetFreedbMode();
-		else if (selection == IDCANCEL)	return;
+		if	(selection == Message::Button::Yes)    currentConfig->freedb_mode = FREEDB_MODE_HTTP;
+		else if (selection == Message::Button::No)     currentConfig->freedb_mode = register_layer_cddb->GetFreedbMode();
+		else if (selection == Message::Button::Cancel) return;
 	}
 	else
 	{
 		currentConfig->freedb_mode = register_layer_cddb->GetFreedbMode();
 	}
-
-	if (Setup::enableUnicode)	SetCurrentDirectoryW(GetApplicationDirectory());
-	else				SetCurrentDirectoryA(GetApplicationDirectory());
 
 	Bool	 valid = False;
 	String	 email = register_layer_cddb->GetFreedbEMail();
@@ -152,6 +164,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 
 		return;
 	}
+#endif
 
 	currentConfig->encoder = register_layer_encoders->GetSelectedEncoder();
 
@@ -177,6 +190,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->playlist_filePattern	= register_layer_playlists->GetFilenamePattern();
 	currentConfig->playlist_useEncOutdir	= register_layer_playlists->GetUseEncOutdir();
 
+#ifdef __WIN32__
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) currentConfig->cdrip_activedrive = register_layer_cdrip->GetActiveDrive();
 
 	currentConfig->cdrip_paranoia		= (register_layer_cdrip->GetCDParanoiaMode() != -1);
@@ -191,6 +205,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->cdrip_autoEject		= register_layer_cdrip->GetAutoEject();
 	currentConfig->cdrip_read_cdtext	= register_layer_cdrip->GetReadCDText();
 	currentConfig->cdrip_read_cdplayerini	= register_layer_cdrip->GetReadCDPlayerIni();
+#endif
 
 	currentConfig->enable_id3v1		= register_layer_tags->GetEnableID3V1();
 	currentConfig->enable_id3v2		= register_layer_tags->GetEnableID3V2();
@@ -205,7 +220,9 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->wmameta_encoding		= register_layer_tags->GetWMAMetaEncoding();
 
 	currentConfig->overwriteComments	= register_layer_tags->GetOverwriteComments();
+	currentConfig->default_comment		= register_layer_tags->GetDefaultComment();
 
+#ifdef __WIN32__
 	currentConfig->enable_local_cddb	= register_layer_cddb->GetLocalCDDB();
 	currentConfig->enable_remote_cddb	= register_layer_cddb->GetRemoteCDDB();
 
@@ -213,20 +230,19 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	currentConfig->enable_overwrite_cdtext	= register_layer_cddb->GetCDDBOverwriteCDText();
 	currentConfig->enable_cddb_cache	= register_layer_cddb->GetCDDBCache();
 
-	currentConfig->default_comment		= register_layer_tags->GetDefaultComment();
-
 	currentConfig->freedb_dir		= register_layer_cddb->GetLocalPath();
 	currentConfig->freedb_server		= register_layer_cddb->GetFreedbServer();
 	currentConfig->freedb_email		= register_layer_cddb->GetFreedbEMail();
 
-	if (currentConfig->freedb_mode == FREEDB_MODE_CDDBP)	 currentConfig->freedb_cddbp_port = register_layer_cddb->GetFreedbPort();
-	else if (currentConfig->freedb_mode == FREEDB_MODE_HTTP) currentConfig->freedb_http_port = register_layer_cddb->GetFreedbPort();
+	if	(currentConfig->freedb_mode == FREEDB_MODE_CDDBP) currentConfig->freedb_cddbp_port = register_layer_cddb->GetFreedbPort();
+	else if (currentConfig->freedb_mode == FREEDB_MODE_HTTP)  currentConfig->freedb_http_port  = register_layer_cddb->GetFreedbPort();
 
 	currentConfig->output_plugin = register_layer_plugins->GetSelectedOutputPlugin();
+#endif
 
-	if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
-	if (currentConfig->playlist_outdir[currentConfig->playlist_outdir.Length() - 1] != '\\') currentConfig->playlist_outdir.Append("\\");
-	if (currentConfig->freedb_dir[currentConfig->freedb_dir.Length() - 1] != '\\') currentConfig->freedb_dir.Append("\\");
+	if (!currentConfig->enc_outdir.EndsWith(Directory::GetDirectoryDelimiter()))	  currentConfig->enc_outdir.Append(Directory::GetDirectoryDelimiter());
+	if (!currentConfig->playlist_outdir.EndsWith(Directory::GetDirectoryDelimiter())) currentConfig->playlist_outdir.Append(Directory::GetDirectoryDelimiter());
+	if (!currentConfig->freedb_dir.EndsWith(Directory::GetDirectoryDelimiter()))	  currentConfig->freedb_dir.Append(Directory::GetDirectoryDelimiter());
 
 	mainWnd->Close();
 }

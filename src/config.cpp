@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,14 +33,21 @@ BonkEnc::Config::~Config()
 
 Bool BonkEnc::Config::LoadSettings()
 {
-	String		 personalDir = Utilities::GetPersonalFilesDirectory();
-	String		 programsDir = Utilities::GetProgramFilesDirectory();
+	String		 personalDir = S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMusic);
+	String		 programsDir = S::System::System::GetProgramFilesDirectory();
 
 	if (Application::GetApplicationDirectory().ToUpper().StartsWith(programsDir.ToUpper()))
 	{
-		configDir = Utilities::GetApplicationDataDirectory();
+		configDir = S::System::System::GetApplicationDataDirectory();
 
-		if (configDir != "") configDir.Append("freac\\");
+		if (configDir != NIL)
+		{
+#ifdef __WIN32__
+			configDir.Append("freac").Append(Directory::GetDirectoryDelimiter());
+#else
+			configDir.Append(".freac").Append(Directory::GetDirectoryDelimiter());
+#endif
+		}
 
 		Directory(configDir).Create();
 	}
@@ -127,7 +134,7 @@ Bool BonkEnc::Config::LoadSettings()
 	enable_overwrite_cdtext			= config->GetIntValue("freedb", "OverwriteCDText", 1);
 	enable_cddb_cache			= config->GetIntValue("freedb", "EnableCDDBCache", 1);
 	enable_local_cddb			= config->GetIntValue("freedb", "EnableLocalCDDB", 0);
-	freedb_dir				= config->GetStringValue("freedb", "Directory", "freedb\\");
+	freedb_dir				= config->GetStringValue("freedb", "Directory", String("freedb").Append(Directory::GetDirectoryDelimiter()));
 	enable_remote_cddb			= config->GetIntValue("freedb", "EnableRemoteCDDB", 1);
 	freedb_server				= config->GetStringValue("freedb", "Server", "freedb.freedb.org");
 	freedb_mode				= config->GetIntValue("freedb", "Mode", 0);
@@ -232,9 +239,9 @@ Bool BonkEnc::Config::LoadSettings()
 
 	delete config;
 
-	if (enc_outdir[enc_outdir.Length() - 1] != '\\') enc_outdir.Append("\\");
-	if (playlist_outdir[playlist_outdir.Length() - 1] != '\\') playlist_outdir.Append("\\");
-	if (freedb_dir[freedb_dir.Length() - 1] != '\\') freedb_dir.Append("\\");
+	if (!enc_outdir.EndsWith(Directory::GetDirectoryDelimiter()))	   enc_outdir.Append(Directory::GetDirectoryDelimiter());
+	if (!playlist_outdir.EndsWith(Directory::GetDirectoryDelimiter())) playlist_outdir.Append(Directory::GetDirectoryDelimiter());
+	if (!freedb_dir.EndsWith(Directory::GetDirectoryDelimiter()))	   freedb_dir.Append(Directory::GetDirectoryDelimiter());
 
 	if (encodeToSingleFile && !enc_onTheFly) enc_onTheFly = True;
 

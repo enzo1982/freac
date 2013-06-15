@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -126,9 +126,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		currentConfig->lame_preset = 0;
 		currentConfig->lame_set_bitrate = True;
 
-		currentConfig->lame_bitrate    = Math::Max(0, Math::Min(320, bitrate.ToInt()));
-		currentConfig->lame_abrbitrate = Math::Max(0, Math::Min(320, bitrate.ToInt()));
-		currentConfig->lame_vbrquality = Math::Max(0, Math::Min(9, quality.ToInt())) * 10;
+		currentConfig->lame_bitrate    = Math::Max(0, Math::Min(320, (Int) bitrate.ToInt()));
+		currentConfig->lame_abrbitrate = Math::Max(0, Math::Min(320, (Int) bitrate.ToInt()));
+		currentConfig->lame_vbrquality = Math::Max(0, Math::Min(9, (Int) quality.ToInt())) * 10;
 
 		if (mode == "VBR" || mode == "vbr")	 currentConfig->lame_vbrmode = vbr_mtrh;
 		else if (mode == "ABR" || mode == "abr") currentConfig->lame_vbrmode = vbr_abr;
@@ -145,8 +145,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		else if (ScanForParameter("-q", &quality))	currentConfig->vorbis_mode = 0;
 		else						currentConfig->vorbis_mode = 0;
 
-		currentConfig->vorbis_quality = Math::Max(0, Math::Min(100, quality.ToInt()));
-		currentConfig->vorbis_bitrate = Math::Max(45, Math::Min(500, bitrate.ToInt()));
+		currentConfig->vorbis_quality = Math::Max(0, Math::Min(100, (Int) quality.ToInt()));
+		currentConfig->vorbis_bitrate = Math::Max(45, Math::Min(500, (Int) bitrate.ToInt()));
 
 		currentConfig->encoder = ENCODER_VORBISENC;
 	}
@@ -163,9 +163,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		currentConfig->bonk_jstereo	 = ScanForParameter("-js", NULL);
 		currentConfig->bonk_lossless	 = ScanForParameter("-lossless", NULL);
 
-		currentConfig->bonk_quantization = Math::Max(0, Math::Min(40, Math::Round(quantization.ToFloat() * 20)));
-		currentConfig->bonk_predictor	 = Math::Max(0, Math::Min(512, predictor.ToInt()));
-		currentConfig->bonk_downsampling = Math::Max(0, Math::Min(10, downsampling.ToInt()));
+		currentConfig->bonk_quantization = Math::Max(0, Math::Min(40, (Int) Math::Round(quantization.ToFloat() * 20)));
+		currentConfig->bonk_predictor	 = Math::Max(0, Math::Min(512, (Int) predictor.ToInt()));
+		currentConfig->bonk_downsampling = Math::Max(0, Math::Min(10, (Int) downsampling.ToInt()));
 
 		currentConfig->encoder = ENCODER_BONKENC;
 	}
@@ -175,7 +175,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		ScanForParameter("-b", &bitrate);
 
-		currentConfig->blade_bitrate = Math::Max(32, Math::Min(320, bitrate.ToInt()));
+		currentConfig->blade_bitrate = Math::Max(32, Math::Min(320, (Int) bitrate.ToInt()));
 
 		currentConfig->encoder = ENCODER_BLADEENC;
 	}
@@ -190,8 +190,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		currentConfig->faac_enable_mp4	= ScanForParameter("-mp4", NULL);
 
-		currentConfig->faac_aac_quality	= Math::Max(10, Math::Min(500, quality.ToInt()));
-		currentConfig->faac_bitrate	= Math::Max(8, Math::Min(256, bitrate.ToInt()));
+		currentConfig->faac_aac_quality	= Math::Max(10, Math::Min(500, (Int) quality.ToInt()));
+		currentConfig->faac_bitrate	= Math::Max(8, Math::Min(256, (Int) bitrate.ToInt()));
 
 		currentConfig->encoder = ENCODER_FAAC;
 	}
@@ -221,11 +221,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		currentConfig->flac_do_exhaustive_model_search	 = ScanForParameter("-e", NULL);
 		currentConfig->flac_do_qlp_coeff_prec_search	 = ScanForParameter("-p", NULL);
 
-		currentConfig->flac_blocksize			 = Math::Max(192, Math::Min(32768, blocksize.ToInt()));
-		currentConfig->flac_max_lpc_order		 = Math::Max(0, Math::Min(32, lpc.ToInt()));
-		currentConfig->flac_qlp_coeff_precision		 = Math::Max(0, Math::Min(16, qlp.ToInt()));
-		currentConfig->flac_min_residual_partition_order = Math::Max(0, Math::Min(16, minrice.ToInt()));
-		currentConfig->flac_max_residual_partition_order = Math::Max(0, Math::Min(16, maxrice.ToInt()));
+		currentConfig->flac_blocksize			 = Math::Max(192, Math::Min(32768, (Int) blocksize.ToInt()));
+		currentConfig->flac_max_lpc_order		 = Math::Max(0, Math::Min(32, (Int) lpc.ToInt()));
+		currentConfig->flac_qlp_coeff_precision		 = Math::Max(0, Math::Min(16, (Int) qlp.ToInt()));
+		currentConfig->flac_min_residual_partition_order = Math::Max(0, Math::Min(16, (Int) minrice.ToInt()));
+		currentConfig->flac_max_residual_partition_order = Math::Max(0, Math::Min(16, (Int) maxrice.ToInt()));
 
 		currentConfig->encoder = ENCODER_FLAC;
 	}
@@ -237,8 +237,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		ScanForParameter("-b", &bitrate);
 		ScanForParameter("-c", &candidates);
 
-		currentConfig->tvq_presel_candidates = Math::Max(4, Math::Min(32, candidates.ToInt()));
-		currentConfig->tvq_bitrate	     = Math::Max(24, Math::Min(48, bitrate.ToInt()));
+		currentConfig->tvq_presel_candidates = Math::Max(4, Math::Min(32, (Int) candidates.ToInt()));
+		currentConfig->tvq_bitrate	     = Math::Max(24, Math::Min(48, (Int) bitrate.ToInt()));
 
 		currentConfig->encoder = ENCODER_TVQ;
 	}
@@ -266,11 +266,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		currentConfig->encodeToSingleFile = False;
 		currentConfig->writeToInputDir = False;
 
-		if (currentConfig->enc_outdir[currentConfig->enc_outdir.Length() - 1] != '\\') currentConfig->enc_outdir.Append("\\");
+		if (!currentConfig->enc_outdir.EndsWith(Directory::GetDirectoryDelimiter())) currentConfig->enc_outdir.Append(Directory::GetDirectoryDelimiter());
 
 		for (Int i = 0; i < files.Length(); i++)
 		{
-			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READONLY);
+			InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READ);
 			String		 currentFile = files.GetNth(i);
 
 			if (currentFile.StartsWith("/cda"))
@@ -436,7 +436,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 {
 	if (helpenc == NIL)
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2012 Robert Kausch\n\n"));
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2013 Robert Kausch\n\n"));
 		Console::OutputString("Usage:\tfreaccmd [options] [file(s)]\n\n");
 		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
 		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
@@ -453,7 +453,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	}
 	else
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2012 Robert Kausch\n\n"));
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\nCopyright (C) 2001-2013 Robert Kausch\n\n"));
 
 		if (helpenc == "LAME" || helpenc == "lame")
 		{

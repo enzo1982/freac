@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -68,8 +68,8 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	check_submitLater->onAction.Connect(&cddbSubmitDlg::ToggleSubmitLater, this);
 	check_submitLater->SetOrientation(OR_LOWERLEFT);
 
-	check_updateJoblist->SetWidth(Math::Max(check_updateJoblist->textSize.cx, check_submitLater->textSize.cx) + 21);
-	check_submitLater->SetWidth(Math::Max(check_updateJoblist->textSize.cx, check_submitLater->textSize.cx) + 21);
+	check_updateJoblist->SetWidth(Math::Max(check_updateJoblist->GetUnscaledTextWidth(), check_submitLater->GetUnscaledTextWidth()) + 21);
+	check_submitLater->SetWidth(Math::Max(check_updateJoblist->GetUnscaledTextWidth(), check_submitLater->GetUnscaledTextWidth()) + 21);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -107,9 +107,9 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_album	= new Text(String(BonkEnc::i18n->TranslateString("Album")).Append(":"), pos);
 
-	pos.x += (7 + (Int) Math::Max(text_artist->textSize.cx, text_album->textSize.cx));
+	pos.x += (7 + (Int) Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth()));
 	pos.y -= 30;
-	size.cx = 200 - (Int) Math::Max(text_artist->textSize.cx, text_album->textSize.cx);
+	size.cx = 200 - (Int) Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth());
 	size.cy = 0;
 
 	edit_artist	= new EditBox("", pos, size, 0);
@@ -136,7 +136,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_disccomment= new Text(String(BonkEnc::i18n->TranslateString("Comment")).Append(":"), pos);
 
-	pos.x = 228 + Math::Max(text_year->textSize.cx, text_disccomment->textSize.cx);
+	pos.x = 228 + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	pos.y -= 30;
 	size.cx = 31;
 
@@ -148,17 +148,17 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_genre	= new Text(String(BonkEnc::i18n->TranslateString("Genre")).Append(":"), pos);
 
-	pos.x += (7 + text_genre->textSize.cx);
+	pos.x += (7 + text_genre->GetUnscaledTextWidth());
 	pos.y -= 3;
-	size.cx = 214 - text_genre->textSize.cx - Math::Max(text_year->textSize.cx, text_disccomment->textSize.cx);
+	size.cx = 214 - text_genre->GetUnscaledTextWidth() - Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	size.cy = 0;
 
 	edit_genre	= new EditBox("", pos, size, 0);
 	edit_genre->SetDropDownList(list_genre);
 
-	pos.x = 228 + Math::Max(text_year->textSize.cx, text_disccomment->textSize.cx);
+	pos.x = 228 + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	pos.y += 27;
-	size.cx = 259 - Math::Max(text_year->textSize.cx, text_disccomment->textSize.cx);
+	size.cx = 259 - Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	size.cy = 34;
 
 	edit_disccomment= new MultiEdit("", pos, size, 0);
@@ -179,7 +179,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_track	= new Text(String(BonkEnc::i18n->TranslateString("Track")).Append(":"), pos);
 
-	pos.x += (7 + text_track->textSize.cx);
+	pos.x += (7 + text_track->GetUnscaledTextWidth());
 	pos.y -= 3;
 	size.cx = 25;
 	size.cy = 0;
@@ -201,9 +201,9 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	text_comment	= new Text(String(BonkEnc::i18n->TranslateString("Comment")).Append(":"), pos);
 
-	pos.x += (7 + Math::Max(text_title->textSize.cx, text_comment->textSize.cx));
+	pos.x += (7 + Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()));
 	pos.y -= 57;
-	size.cx = 435 - Math::Max(text_title->textSize.cx, text_comment->textSize.cx) - text_track->textSize.cx;
+	size.cx = 435 - Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()) - text_track->GetUnscaledTextWidth();
 
 	edit_trackartist= new EditBox("", pos, size, 0);
 	edit_trackartist->onInput.Connect(&cddbSubmitDlg::UpdateTrack, this);

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -100,7 +100,7 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 	{
 		filter_in = Utilities::CreateInputFilter(in_filename, trackInfo);
 
-		f_in = new InStream(STREAM_FILE, in_filename, IS_READONLY);
+		f_in = new InStream(STREAM_FILE, in_filename, IS_READ);
 		f_in->SetPackageSize(6144);
 
 		if (filter_in != NIL)

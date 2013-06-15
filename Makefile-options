@@ -1,0 +1,36 @@
+########## fre:ac options makefile ##########
+
+UNAME = $(shell uname)
+
+ifneq ($(findstring MINGW,$(UNAME)),)
+#	Set executable and shared object extensions
+	EXECUTABLE = .exe
+	SHARED = .dll
+
+#	Build on Win32
+	BUILD_WIN32 = True
+else
+#	Set executable and shared object extensions
+	EXECUTABLE = 
+	SHARED = .so
+
+	BUILD_UNIX = True
+
+ifeq ($(UNAME),Linux)
+	BUILD_LINUX = True
+else ifeq ($(UNAME),FreeBSD)
+	BUILD_FREEBSD = True
+else ifeq ($(UNAME),OpenBSD)
+	BUILD_OPENBSD = True
+else ifeq ($(UNAME),NetBSD)
+	BUILD_NETBSD = True
+else ifeq ($(UNAME),SunOS)
+	BUILD_SOLARIS = True
+else ifeq ($(UNAME),Haiku)
+	BUILD_HAIKU = True
+else ifeq ($(UNAME),Darwin)
+	SHARED = .dylib
+
+	BUILD_OSX = True
+endif
+endif

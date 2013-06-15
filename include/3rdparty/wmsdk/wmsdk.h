@@ -11,7 +11,6 @@
 
 #ifdef __WIN64__
 #   define _COM_interface struct
-#   define interface _COM_interface
 #endif
 
 #ifndef _MSC_VER
@@ -19,18 +18,6 @@
 
 #   define EXTERN_GUID(itf,l1,s1,s2,c1,c2,c3,c4,c5,c6,c7,c8)  \
       EXTERN_C const IID DECLSPEC_SELECTANY itf = {l1,s1,s2,{c1,c2,c3,c4,c5,c6,c7,c8}}
-
-#   ifndef __WIN64__
-	typedef struct _BYTE_BLOB {
-	    unsigned long clSize;
-	    byte abData[ 1 ];
-	} BYTE_BLOB;
-#   endif
-
-    typedef struct {
-        GUID fmtid;
-        DWORD pid;
-    } PROPERTYKEY;
 #endif
 
 #define REFPROPVARIANT const PROPVARIANT &

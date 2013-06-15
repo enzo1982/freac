@@ -57,7 +57,7 @@ Int BonkEnc::FilterInAU::ReadData(Buffer<UnsignedByte> &data, Int size)
 BonkEnc::Track *BonkEnc::FilterInAU::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);
 
 	nFormat->fileSize = f_in->Size();
 	nFormat->order = BYTE_RAW;

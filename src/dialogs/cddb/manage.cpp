@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -50,7 +50,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	pos.y = 27;
 
 	check_updateJoblist	= new CheckBox(BonkEnc::i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
-	check_updateJoblist->SetWidth(check_updateJoblist->textSize.cx + 21);
+	check_updateJoblist->SetWidth(check_updateJoblist->GetUnscaledTextWidth() + 21);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 7;
@@ -91,9 +91,9 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 
 	text_charset	= new Text(String(BonkEnc::i18n->TranslateString("Charset")).Append(":"), pos);
 
-	pos.x += (text_charset->textSize.cx + 7);
+	pos.x += (text_charset->GetUnscaledTextWidth() + 7);
 	pos.y -= 3;
-	size.cx = 254 - text_charset->textSize.cx;
+	size.cx = 254 - text_charset->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	list_charset	= new ListBox(pos, size);

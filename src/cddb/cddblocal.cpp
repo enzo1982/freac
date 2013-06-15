@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -40,9 +40,9 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 
 	for (Int i = 0; i < 11; i++)
 	{
-		if (!File(String(config->freedb_dir).Append(array[i]).Append("\\").Append(DiscIDToString(discid))).Exists()) continue;
+		if (!File(String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid))).Exists()) continue;
 
-		InStream	*in = new InStream(STREAM_FILE, String(config->freedb_dir).Append(array[i]).Append("\\").Append(DiscIDToString(discid)), IS_READONLY);
+		InStream	*in = new InStream(STREAM_FILE, String(config->freedb_dir).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid)), IS_READ);
 		String		 result = in->InputString(in->Size());
 
 		delete in;
@@ -121,7 +121,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 
 		if (found == NIL) continue;
 
-		InStream	*in = new InStream(STREAM_FILE, found, IS_READONLY);
+		InStream	*in = new InStream(STREAM_FILE, found, IS_READ);
 		String		 idString = String("#FILENAME=").Append(DiscIDToString(discid));
 		String		 result;
 
@@ -272,8 +272,8 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 		debug_out->OutputLine(String("Writing to ").Append(found));
 
-		InStream	*in	  = new InStream(STREAM_FILE, found, IS_READONLY);
-		OutStream	*out	  = new OutStream(STREAM_FILE, String(found).Append(".new"), OS_OVERWRITE);
+		InStream	*in	  = new InStream(STREAM_FILE, found, IS_READ);
+		OutStream	*out	  = new OutStream(STREAM_FILE, String(found).Append(".new"), OS_REPLACE);
 		String		 idString = String("#FILENAME=").Append(cddbInfo.DiscIDToString());
 		Bool		 written  = False;
 
@@ -319,9 +319,9 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	else				// Unix style DB
 	{
 		debug_out->OutputLine("Found Unix style DB.");
-		debug_out->OutputLine(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString()));
+		debug_out->OutputLine(String("Writing to ").Append(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()));
 
-		OutStream	*out = new OutStream(STREAM_FILE, String(config->freedb_dir).Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString()), OS_OVERWRITE);
+		OutStream	*out = new OutStream(STREAM_FILE, String(config->freedb_dir).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()), OS_REPLACE);
 
 		String	 outputFormat = String::SetOutputFormat("UTF-8");
 

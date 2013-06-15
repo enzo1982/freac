@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -54,7 +54,7 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 	option_uncompressed->onAction.Connect(&ConfigureWMA::OnToggleCodec, this);
 
 	option_codec		= new OptionBox(String(BonkEnc::i18n->TranslateString("Use codec")).Append(":"), Point(10, 39), Size(100, 0), &uncompressed, 0);
-	option_codec->SetWidth(option_codec->textSize.cx + 20);
+	option_codec->SetWidth(option_codec->GetUnscaledTextWidth() + 20);
 	option_codec->onAction.Connect(&ConfigureWMA::OnToggleCodec, this);
 
 	combo_codec		= new ComboBox(Point(18 + option_codec->GetWidth(), 38), Size(358 - option_codec->GetWidth(), 0));
@@ -69,7 +69,7 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 	option_autoselect->onAction.Connect(&ConfigureWMA::OnToggleFormat, this);
 
 	option_format		= new OptionBox(String(BonkEnc::i18n->TranslateString("Use format")).Append(":"), Point(10, 39), Size(100, 0), &autoselect, 0);
-	option_format->SetWidth(option_codec->textSize.cx + 20);
+	option_format->SetWidth(option_codec->GetUnscaledTextWidth() + 20);
 	option_format->onAction.Connect(&ConfigureWMA::OnToggleFormat, this);
 
 	check_vbr		= new CheckBox(BonkEnc::i18n->TranslateString("Use VBR encoding"), Point(18 + option_format->GetWidth(), 39), Size((352 - option_format->GetWidth()) / 2, 0), &useVBR);
@@ -94,14 +94,14 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 
 	text_quality		= new Text(String(BonkEnc::i18n->TranslateString("Quality")).Append(":"), Point(197, 16));
 
-	slider_quality		= new Slider(Point(204 + text_quality->textSize.cx, 13), Size(142 - text_quality->textSize.cx, 0), OR_HORZ, &quality, 0, 20);
+	slider_quality		= new Slider(Point(204 + text_quality->GetUnscaledTextWidth(), 13), Size(142 - text_quality->GetUnscaledTextWidth(), 0), OR_HORZ, &quality, 0, 20);
 	slider_quality->onValueChange.Connect(&ConfigureWMA::OnSetQuality, this);
 
 	text_quality_value	= new Text(String::FromInt(quality * 5), Point(353, 16));
 
 	text_bitrate		= new Text(String(BonkEnc::i18n->TranslateString("Target bitrate")).Append(":"), Point(197, 42));
 
-	combo_bitrate		= new ComboBox(Point(204 + text_bitrate->textSize.cx, 39), Size(142 - text_bitrate->textSize.cx, 0));
+	combo_bitrate		= new ComboBox(Point(204 + text_bitrate->GetUnscaledTextWidth(), 39), Size(142 - text_bitrate->GetUnscaledTextWidth(), 0));
 	combo_bitrate->AddEntry("32");
 	combo_bitrate->AddEntry("48");
 	combo_bitrate->AddEntry("64");
@@ -236,38 +236,38 @@ Void BonkEnc::ConfigureWMA::FillCodecComboBox()
 {
 	combo_codec->RemoveAllEntries();
 
-	HRESULT			 hr = S_OK;
-	IWMProfileManager	*profileManager = NIL;
-	IWMCodecInfo3		*codecInfo = NIL;
+	HRESULT		 hr = S_OK;
+	IWMCodecInfo3	*codecInfo = NIL;
 
-	hr = ex_WMCreateProfileManager(&profileManager);
 	hr = profileManager->QueryInterface(IID_IWMCodecInfo3, (void **) &codecInfo);
 
-	DWORD			 numCodecs = 0;
-
-	hr = codecInfo->GetCodecInfoCount(WMMEDIATYPE_Audio, &numCodecs);
-
-	for (DWORD i = 0; i < numCodecs; i++)
+	if (hr == S_OK)
 	{
-		DWORD	 nameLen = 0;
+		DWORD	 numCodecs = 0;
 
-		hr = codecInfo->GetCodecName(WMMEDIATYPE_Audio, i, NIL, &nameLen);
+		hr = codecInfo->GetCodecInfoCount(WMMEDIATYPE_Audio, &numCodecs);
 
-		WCHAR	*name = new WCHAR [nameLen];
+		for (DWORD i = 0; i < numCodecs; i++)
+		{
+			DWORD	 nameLen = 0;
 
-		hr = codecInfo->GetCodecName(WMMEDIATYPE_Audio, i, name, &nameLen);
+			hr = codecInfo->GetCodecName(WMMEDIATYPE_Audio, i, NIL, &nameLen);
 
-		combo_codec->AddEntry(name);
+			WCHAR	*name = new WCHAR [nameLen];
 
-		if (String(name).Find("Windows Media Audio") >=  0 &&
-		    String(name).Find("Voice")		     == -1 &&
-		    String(name).Find("Lossless")	     == -1) combo_codec->SelectNthEntry(i);
+			hr = codecInfo->GetCodecName(WMMEDIATYPE_Audio, i, name, &nameLen);
 
-		delete [] name;
+			combo_codec->AddEntry(name);
+
+			if (String(name).Find("Windows Media Audio") >=  0 &&
+			    String(name).Find("Voice")		     == -1 &&
+			    String(name).Find("Lossless")	     == -1) combo_codec->SelectNthEntry(i);
+
+			delete [] name;
+		}
+
+		codecInfo->Release();
 	}
-
-	codecInfo->Release();
-	profileManager->Release();
 }
 
 Void BonkEnc::ConfigureWMA::FillFormatComboBox()
@@ -294,37 +294,40 @@ Void BonkEnc::ConfigureWMA::FillFormatComboBox()
 
 	hr = profileManager->QueryInterface(IID_IWMCodecInfo3, (void **) &codecInfo);
 
-	BOOL	 falseValue = FALSE;
-	BOOL	 trueValue = TRUE;
-	DWORD	 oneValue = 1;
-	DWORD	 twoValue = 2;
-
-	if (useVBR)   hr = codecInfo->SetCodecEnumerationSetting(WMMEDIATYPE_Audio, codecIndex, g_wszVBREnabled, WMT_TYPE_BOOL, (BYTE *) &trueValue,  sizeof(BOOL));
-	else	      hr = codecInfo->SetCodecEnumerationSetting(WMMEDIATYPE_Audio, codecIndex, g_wszVBREnabled, WMT_TYPE_BOOL, (BYTE *) &falseValue, sizeof(BOOL));
-
-	if (use2Pass) hr = codecInfo->SetCodecEnumerationSetting(WMMEDIATYPE_Audio, codecIndex, g_wszNumPasses, WMT_TYPE_DWORD, (BYTE *) &twoValue, sizeof(DWORD));
-	else	      hr = codecInfo->SetCodecEnumerationSetting(WMMEDIATYPE_Audio, codecIndex, g_wszNumPasses, WMT_TYPE_DWORD, (BYTE *) &oneValue, sizeof(DWORD));
-
-	DWORD	 numFormats = 0;
-
-	hr = codecInfo->GetCodecFormatCount(WMMEDIATYPE_Audio, codecIndex, &numFormats);
-
-	for (DWORD i = 0; i < numFormats; i++)
+	if (hr == S_OK)
 	{
-		DWORD	 nameLen = 0;
+		BOOL	 falseValue = FALSE;
+		BOOL	 trueValue = TRUE;
+		DWORD	 oneValue = 1;
+		DWORD	 twoValue = 2;
 
-		hr = codecInfo->GetCodecFormatDesc(WMMEDIATYPE_Audio, codecIndex, i, NIL, NIL, &nameLen);
+		if (useVBR)   hr = codecInfo->SetCodecEnumerationSetting(WMMEDIATYPE_Audio, codecIndex, g_wszVBREnabled, WMT_TYPE_BOOL, (BYTE *) &trueValue,  sizeof(BOOL));
+		else	      hr = codecInfo->SetCodecEnumerationSetting(WMMEDIATYPE_Audio, codecIndex, g_wszVBREnabled, WMT_TYPE_BOOL, (BYTE *) &falseValue, sizeof(BOOL));
 
-		WCHAR	*name = new WCHAR [nameLen];
+		if (use2Pass) hr = codecInfo->SetCodecEnumerationSetting(WMMEDIATYPE_Audio, codecIndex, g_wszNumPasses, WMT_TYPE_DWORD, (BYTE *) &twoValue, sizeof(DWORD));
+		else	      hr = codecInfo->SetCodecEnumerationSetting(WMMEDIATYPE_Audio, codecIndex, g_wszNumPasses, WMT_TYPE_DWORD, (BYTE *) &oneValue, sizeof(DWORD));
 
-		hr = codecInfo->GetCodecFormatDesc(WMMEDIATYPE_Audio, codecIndex, i, NIL, name, &nameLen);
+		DWORD	 numFormats = 0;
 
-		combo_format->AddEntry(name);
+		hr = codecInfo->GetCodecFormatCount(WMMEDIATYPE_Audio, codecIndex, &numFormats);
 
-		delete [] name;
+		for (DWORD i = 0; i < numFormats; i++)
+		{
+			DWORD	 nameLen = 0;
+
+			hr = codecInfo->GetCodecFormatDesc(WMMEDIATYPE_Audio, codecIndex, i, NIL, NIL, &nameLen);
+
+			WCHAR	*name = new WCHAR [nameLen];
+
+			hr = codecInfo->GetCodecFormatDesc(WMMEDIATYPE_Audio, codecIndex, i, NIL, name, &nameLen);
+
+			combo_format->AddEntry(name);
+
+			delete [] name;
+		}
+
+		codecInfo->Release();
 	}
-
-	codecInfo->Release();
 
 	combo_format->SelectNthEntry(1);
 	combo_format->SelectNthEntry(0);

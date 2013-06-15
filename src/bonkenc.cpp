@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -23,7 +23,9 @@
 #include <dialogs/cddb/query.h>
 #include <dialogs/cddb/submit.h>
 
-#include <input/filter-in-cdrip.h>
+#ifdef __WIN32__
+#	include <input/filter-in-cdrip.h>
+#endif
 
 Int	 ENCODER_BONKENC	= -1;
 Int	 ENCODER_BLADEENC	= -1;
@@ -44,8 +46,8 @@ BonkEnc::Debug		*BonkEnc::debug_out;
  */
 String	 BonkEnc::BonkEnc::appName	= "fre:ac";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
-String	 BonkEnc::BonkEnc::version	= "v1.0.20a";
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.20a";
+String	 BonkEnc::BonkEnc::version	= "v1.0.21 Beta 1";
+String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.21";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.17";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
@@ -58,8 +60,6 @@ String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml
 
 BonkEnc::BonkEnc::BonkEnc()
 {
-	CoInitialize(NIL);
-
 	encoding = False;
 	encoder_thread = NIL;
 
@@ -107,17 +107,17 @@ BonkEnc::BonkEnc::BonkEnc()
 	if (DLLInterfaces::LoadVorbisDLL() == False)	currentConfig->enable_vorbis = False;
 	else						currentConfig->enable_vorbis = True;
 
+	if (DLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;
+	else						currentConfig->enable_cdrip = True;
+
+	if (DLLInterfaces::LoadTVQDLL() == False)	currentConfig->enable_tvq = False;
+	else						currentConfig->enable_tvq = True;
+
 	if (DLLInterfaces::LoadFAACDLL() == False)	currentConfig->enable_faac = False;
 	else						currentConfig->enable_faac = True;
 
 	if (DLLInterfaces::LoadFAAD2DLL() == False)	currentConfig->enable_faad2 = False;
 	else						currentConfig->enable_faad2 = True;
-
-	if (DLLInterfaces::LoadTVQDLL() == False)	currentConfig->enable_tvq = False;
-	else						currentConfig->enable_tvq = True;
-
-	if (DLLInterfaces::LoadCDRipDLL() == False)	currentConfig->enable_cdrip = False;
-	else						currentConfig->enable_cdrip = True;
 
 	if (DLLInterfaces::LoadID3DLL() == False)	currentConfig->enable_id3 = False;
 	else						currentConfig->enable_id3 = True;
@@ -144,9 +144,11 @@ BonkEnc::BonkEnc::BonkEnc()
 		currentConfig->enable_mp4 = False;
 	}
 
+#ifdef __WIN32__
 	DLLInterfaces::LoadWinampDLLs();
 
 	if (DLLInterfaces::winamp_out_modules.Length() <= currentConfig->output_plugin) currentConfig->output_plugin = 0;
+#endif
 
 	int	 nextEC = 0;
 
@@ -170,12 +172,12 @@ BonkEnc::BonkEnc::~BonkEnc()
 
 	if (currentConfig->enable_bonk)		DLLInterfaces::FreeBonkDLL();
 	if (currentConfig->enable_blade)	DLLInterfaces::FreeBladeDLL();
+	if (currentConfig->enable_cdrip)	DLLInterfaces::FreeCDRipDLL();
+	if (currentConfig->enable_tvq)		DLLInterfaces::FreeTVQDLL();
 	if (currentConfig->enable_faac)		DLLInterfaces::FreeFAACDLL();
 	if (currentConfig->enable_faad2)	DLLInterfaces::FreeFAAD2DLL();
 	if (currentConfig->enable_lame)		DLLInterfaces::FreeLAMEDLL();
-	if (currentConfig->enable_tvq)		DLLInterfaces::FreeTVQDLL();
 	if (currentConfig->enable_vorbis)	DLLInterfaces::FreeVorbisDLL();
-	if (currentConfig->enable_cdrip)	DLLInterfaces::FreeCDRipDLL();
 	if (currentConfig->enable_id3)		DLLInterfaces::FreeID3DLL();
 	if (currentConfig->enable_eUpdate)	DLLInterfaces::FreeEUpdateDLL();
 	if (currentConfig->enable_mp4)		DLLInterfaces::FreeMP4V2DLL();
@@ -183,7 +185,9 @@ BonkEnc::BonkEnc::~BonkEnc()
 	if (currentConfig->enable_mad)		DLLInterfaces::FreeMADDLL();
 	if (currentConfig->enable_wma)		DLLInterfaces::FreeWMVCoreDLL();
 
+#ifdef __WIN32
 	DLLInterfaces::FreeWinampDLLs();
+#endif
 
 	/* Cleanup deletable objects before deleting translator.
 	 */
@@ -194,8 +198,6 @@ BonkEnc::BonkEnc::~BonkEnc()
 
 	delete i18n;
 	delete currentConfig;
-
-	CoUninitialize();
 }
 
 Bool BonkEnc::BonkEnc::InitCDRip()
@@ -222,9 +224,10 @@ Bool BonkEnc::BonkEnc::InitCDRip()
 		error = ex_CR_Init(currentConfig->cdrip_ntscsi);
 	}
 
-	if	(error == CDEX_ACCESSDENIED)	Utilities::ErrorMessage("Access to CD-ROM drives was denied by Windows.\n\nPlease contact your system administrator in order\nto be granted the right to access the CD-ROM drive.");
+	if	(error == CDEX_ACCESSDENIED)			Utilities::ErrorMessage("Access to CD-ROM drives was denied by Windows.\n\nPlease contact your system administrator in order\nto be granted the right to access the CD-ROM drive.");
 	else if (error != CDEX_OK &&
-		 error != CDEX_NOCDROMDEVICES)	Utilities::ErrorMessage("Unable to load ASPI drivers! CD ripping disabled!");
+		 error != CDEX_NOCDROMDEVICES &&
+		 error != CDEX_NATIVEEASPISUPPORTEDNOTSELECTED)	Utilities::ErrorMessage("Unable to load ASPI drivers! CD ripping disabled!");
 
 	if (error == CDEX_OK)
 	{

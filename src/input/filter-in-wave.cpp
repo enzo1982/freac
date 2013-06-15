@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,7 +10,13 @@
 
 #include <input/filter-in-wave.h>
 
-#include <mmreg.h>
+#ifdef __WIN32__
+#	include <windows.h>
+#	include <mmreg.h>
+#else
+#	define WAVE_FORMAT_PCM	      0x0001
+#	define WAVE_FORMAT_EXTENSIBLE 0xFFFE
+#endif
 
 BonkEnc::FilterInWAVE::FilterInWAVE(Config *config, Track *format) : InputFilter(config, format)
 {
@@ -66,7 +72,7 @@ Int BonkEnc::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
 BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READ);
 
 	nFormat->fileSize = f_in->Size();
 	nFormat->order	  = BYTE_INTEL;

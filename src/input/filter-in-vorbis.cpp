@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -144,8 +144,8 @@ Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 					{
 						int	 val = int(mono[j] * 32767.f);
 
-						val = min(val, 32767);
-						val = max(val, -32768);
+						val = Math::Min(val, 32767);
+						val = Math::Max(val, -32768);
 
 						*ptr = val;
 						ptr += vi.channels;
@@ -176,7 +176,7 @@ Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
@@ -192,7 +192,7 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 
 	ex_ogg_sync_init(&foy);
 
-	Int	 size = Math::Min(4096, nFormat->fileSize);
+	Int	 size = Math::Min((Int64) 4096, nFormat->fileSize);
 	char	*fbuffer = ex_ogg_sync_buffer(&foy, size);
 
 	f_in->InputData(fbuffer, size);

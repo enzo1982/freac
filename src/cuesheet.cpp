@@ -27,7 +27,7 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 {
 	if (fileNames.Length() == 0) return False;
 
-	OutStream	*file	= new OutStream(STREAM_FILE, fileName, OS_OVERWRITE);
+	OutStream	*file	= new OutStream(STREAM_FILE, fileName, OS_REPLACE);
 
 	/* Write UTF-8 BOM and set output format.
 	 */

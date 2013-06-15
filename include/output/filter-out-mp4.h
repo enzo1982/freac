@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,13 +13,15 @@
 
 #include "outputfilter.h"
 
-#ifndef _MSC_VER
-#include <stdint.h>
-#else
-#define int32_t long
+#ifdef __WIN32__
+#	ifndef _MSC_VER
+#		include <stdint.h>
+#	else
+#		define int32_t long
+#	endif
 #endif
 
-#include <3rdparty/mp4/mp4.h>
+#include <3rdparty/mp4v2/mp4v2.h>
 #include <3rdparty/faac/faac.h>
 
 namespace BonkEnc

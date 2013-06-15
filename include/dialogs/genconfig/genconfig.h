@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -34,10 +34,13 @@ namespace BonkEnc
 			GeneralSettingsLayerEncoders	*register_layer_encoders;
 			GeneralSettingsLayerPlaylists	*register_layer_playlists;
 			GeneralSettingsLayerLanguage	*register_layer_language;
+			GeneralSettingsLayerTags	*register_layer_tags;
+
+#ifdef __WIN32__
 			GeneralSettingsLayerCDRip	*register_layer_cdrip;
 			GeneralSettingsLayerCDDB	*register_layer_cddb;
 			GeneralSettingsLayerPlugins	*register_layer_plugins;
-			GeneralSettingsLayerTags	*register_layer_tags;
+#endif
 
 			Divider				*divbar;
 

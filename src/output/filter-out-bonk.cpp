@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -47,7 +47,7 @@ Bool BonkEnc::FilterOutBONK::Activate()
 	}
 
 	ex_bonk_encoder_init(encoder,
-		(unsigned int) Math::Max(format->length, 0), format->rate, format->channels,
+		(unsigned int) Math::Max(format->length, (Int64) 0), format->rate, format->channels,
 		currentConfig->bonk_lossless, currentConfig->bonk_jstereo,
 		currentConfig->bonk_predictor, currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling,
 		int(1024.0 * format->rate / 44100),

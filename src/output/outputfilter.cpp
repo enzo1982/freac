@@ -193,12 +193,25 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 			ID3Frame	*picture = ex_ID3Frame_NewID(ID3FID_PICTURE);
 			Picture		*picInfo = format->pictures.GetNth(i);
 
-			ex_ID3Field_SetINT(ex_ID3Frame_GetField(picture, ID3FN_TEXTENC), encoding);
-			ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), encoding);
+			/* Set the description field and try to stay compatible with
+			 * iTunes which expects it to be in a single byte encoding.
+			 */
+			if (encoding != ID3TE_UTF8 && !String::IsUnicode(picInfo->description))
+			{
+				ex_ID3Field_SetINT(ex_ID3Frame_GetField(picture, ID3FN_TEXTENC), ID3TE_ISO8859_1);
+				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), ID3TE_ISO8859_1);
 
-			if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) String(leBOM).Append(picInfo->description).ConvertTo("UTF-16LE"));
-			else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) picInfo->description.ConvertTo("UTF-16BE"));
-			else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), picInfo->description);
+				ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), picInfo->description.ConvertTo("ISO-8859-1"));
+			}
+			else
+			{
+				ex_ID3Field_SetINT(ex_ID3Frame_GetField(picture, ID3FN_TEXTENC), encoding);
+				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), encoding);
+
+				if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) String(leBOM).Append(picInfo->description).ConvertTo("UTF-16LE"));
+				else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) picInfo->description.ConvertTo("UTF-16BE"));
+				else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), picInfo->description);
+			}
 
 			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_MIMETYPE), picInfo->mime.ConvertTo("ISO-8859-1"));
 			ex_ID3Field_SetINT(ex_ID3Frame_GetField(picture, ID3FN_PICTURETYPE), picInfo->type);

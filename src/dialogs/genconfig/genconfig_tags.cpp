@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -65,17 +65,17 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	check_wmameta->onAction.Connect(&GeneralSettingsLayerTags::ToggleWMAMeta, this);
 	check_wmameta->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
-	check_id3v1->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
-	check_id3v2->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
-	check_vctags->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
-	check_mp4meta->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
-	check_wmameta->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 20);
+	check_id3v1->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) + 20);
+	check_id3v2->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) + 20);
+	check_vctags->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) + 20);
+	check_mp4meta->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) + 20);
+	check_wmameta->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) + 20);
 
-	group_tags->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 41);
+	group_tags->SetWidth(Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) + 41);
 
-	pos.x	+= Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) + 39;
+	pos.x	+= Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) + 39;
 	pos.y	= 11;
-	size.cx	= 530 - Math::Max(Math::Max(Math::Max(check_id3v1->textSize.cx, check_id3v2->textSize.cx), Math::Max(check_vctags->textSize.cx, check_mp4meta->textSize.cx)), check_wmameta->textSize.cx) - 49;
+	size.cx	= 530 - Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) - 49;
 	size.cy	= 146;
 
 	group_encodings	= new GroupBox(BonkEnc::i18n->TranslateString("Tag encodings"), pos, size);
@@ -101,9 +101,9 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 
 	text_wmameta_encoding	= new Text(BonkEnc::i18n->TranslateString("WMA metadata encoding:"), pos);
 
-	pos.x	+= Math::Max(Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)), text_wmameta_encoding->textSize.cx) + 7;
+	pos.x	+= Math::Max(Math::Max(Math::Max(text_id3v1_encoding->GetUnscaledTextWidth(), text_id3v2_encoding->GetUnscaledTextWidth()), Math::Max(text_vctags_encoding->GetUnscaledTextWidth(), text_mp4meta_encoding->GetUnscaledTextWidth())), text_wmameta_encoding->GetUnscaledTextWidth()) + 7;
 	pos.y	= 23;
-	size.cx	= group_encodings->GetWidth() - Math::Max(Math::Max(Math::Max(text_id3v1_encoding->textSize.cx, text_id3v2_encoding->textSize.cx), Math::Max(text_vctags_encoding->textSize.cx, text_mp4meta_encoding->textSize.cx)), text_wmameta_encoding->textSize.cx) - 27;
+	size.cx	= group_encodings->GetWidth() - Math::Max(Math::Max(Math::Max(text_id3v1_encoding->GetUnscaledTextWidth(), text_id3v2_encoding->GetUnscaledTextWidth()), Math::Max(text_vctags_encoding->GetUnscaledTextWidth(), text_mp4meta_encoding->GetUnscaledTextWidth())), text_wmameta_encoding->GetUnscaledTextWidth()) - 27;
 	size.cy	= 0;
 
 	list_encodings_id3v1	= new List();
@@ -170,9 +170,9 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 
 	text_defcomment	= new Text(BonkEnc::i18n->TranslateString("Default comment string:"), pos);
 
-	pos.x	+= (7 + text_defcomment->textSize.cx);
+	pos.x	+= (7 + text_defcomment->GetUnscaledTextWidth());
 	pos.y	-= 3;
-	size.cx	= 503 - text_defcomment->textSize.cx;
+	size.cx	= 503 - text_defcomment->GetUnscaledTextWidth();
 	size.cy	= 0;
 
 	edit_defcomment	= new EditBox(currentConfig->default_comment, pos, size, 0);

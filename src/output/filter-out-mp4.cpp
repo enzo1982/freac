@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -75,7 +75,7 @@ Bool BonkEnc::FilterOutMP4::Activate()
 
 	ex_faacEncGetDecoderSpecificInfo(handle, &buffer, &bufferSize);
 
-	ex_MP4SetTrackESConfiguration(mp4File, mp4Track, (u_int8_t *) buffer, bufferSize);
+	ex_MP4SetTrackESConfiguration(mp4File, mp4Track, (uint8_t *) buffer, bufferSize);
 
 	frameSize	= samplesSize / format->channels;
 
@@ -102,7 +102,7 @@ Bool BonkEnc::FilterOutMP4::Deactivate()
 			MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
 			MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
 
-			ex_MP4WriteSample(mp4File, mp4Track, (u_int8_t *) (unsigned char *) outBuffer, bytes, dur, ofs, true);
+			ex_MP4WriteSample(mp4File, mp4Track, (uint8_t *) (unsigned char *) outBuffer, bytes, dur, ofs, true);
 
 			encodedSamples += dur;
 		}
@@ -174,7 +174,7 @@ Int BonkEnc::FilterOutMP4::WriteData(Buffer<UnsignedByte> &data, Int size)
 		MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
 		MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
 
-		ex_MP4WriteSample(mp4File, mp4Track, (u_int8_t *) (unsigned char *) outBuffer, bytes, dur, ofs, true);
+		ex_MP4WriteSample(mp4File, mp4Track, (uint8_t *) (unsigned char *) outBuffer, bytes, dur, ofs, true);
 
 		encodedSamples += dur;
 	}
@@ -189,13 +189,13 @@ String BonkEnc::FilterOutMP4::GetTempFile(const String &oFileName)
 
 	for (Int i = 0; i < rVal.Length(); i++)
 	{
-		if (rVal[i] > 255)	rVal[i] = '#';
-		if (rVal[i] == '\\')	lastBs = i;
+		if (rVal[i] > 255)			rVal[i] = '#';
+		if (rVal[i] == '\\' || rVal[i] == '/')	lastBs = i;
 	}
 
 	if (rVal == oFileName) return rVal;
 
-	String	 tempDir = Utilities::GetTempDirectory();
+	String	 tempDir = S::System::System::GetTempDirectory();
 
 	for (Int j = lastBs + 1; j < rVal.Length(); j++)
 	{

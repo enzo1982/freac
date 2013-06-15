@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -35,7 +35,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 	// Save current freedb path
 	String	 configFreedbDir = config->freedb_dir;
 
-	config->freedb_dir = String(config->configDir).Append("cddb\\");
+	config->freedb_dir = String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
 
 	CDDBLocal	 cddbLocal(config);
 
@@ -77,7 +77,7 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 	// Save current freedb path
 	String	 configFreedbDir = config->freedb_dir;
 
-	config->freedb_dir = String(config->configDir).Append("cddb\\");
+	config->freedb_dir = String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
 
 	CDDBLocal	 cddbLocal(config);
 
@@ -97,7 +97,7 @@ Int BonkEnc::CDDBCache::RemoveNthEntry(Int n)
 	Int		 discID = infoCache.GetNthIndex(n);
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 
-	File(String(config->configDir).Append("cddb\\").Append(cddbInfo.category).Append("\\").Append(cddbInfo.DiscIDToString())).Delete();
+	File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString())).Delete();
 
 	infoCache.Remove(discID);
 

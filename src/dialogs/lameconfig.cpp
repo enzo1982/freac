@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -93,9 +93,9 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	basic_text_preset	= new Text(BonkEnc::i18n->TranslateString("Use preset:"), pos);
 
-	pos.x += (basic_text_preset->textSize.cx + 8);
+	pos.x += (basic_text_preset->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
-	size.cx = 363 - basic_text_preset->textSize.cx;
+	size.cx = 363 - basic_text_preset->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	basic_combo_preset	= new ComboBox(pos, size);
@@ -182,10 +182,10 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.y += 17;
 
 	basic_text_quality_worse= new Text(BonkEnc::i18n->TranslateString("worse"), pos);
-	basic_text_quality_worse->SetPosition(Point(240 - (basic_text_quality_worse->textSize.cx / 2), pos.y));
+	basic_text_quality_worse->SetPosition(Point(240 - (basic_text_quality_worse->GetUnscaledTextWidth() / 2), pos.y));
 
 	basic_text_quality_better= new Text(BonkEnc::i18n->TranslateString("better"), pos);
-	basic_text_quality_better->SetPosition(Point(369 - (basic_text_quality_better->textSize.cx / 2), pos.y));
+	basic_text_quality_better->SetPosition(Point(369 - (basic_text_quality_better->GetUnscaledTextWidth() / 2), pos.y));
 
 	pos.x = 153;
 	pos.y = 11;
@@ -249,9 +249,9 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	vbr_text_setquality	= new Text(String(BonkEnc::i18n->TranslateString("Quality")).Append(":"), pos);
 
-	pos.x += (vbr_text_setquality->textSize.cx + 8);
+	pos.x += (vbr_text_setquality->GetUnscaledTextWidth() + 8);
 	pos.y -= 2;
-	size.cx = 204 - vbr_text_setquality->textSize.cx;
+	size.cx = 204 - vbr_text_setquality->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	vbr_slider_quality	= new Slider(pos, size, OR_HORZ, &vbrquality, 0, 90);
@@ -266,10 +266,10 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.y += 17;
 
 	vbr_text_quality_worse= new Text(BonkEnc::i18n->TranslateString("worse"), pos);
-	vbr_text_quality_worse->SetX(vbr_slider_quality->GetX() + 3 - (vbr_text_quality_worse->textSize.cx / 2));
+	vbr_text_quality_worse->SetX(vbr_slider_quality->GetX() + 3 - (vbr_text_quality_worse->GetUnscaledTextWidth() / 2));
 
 	vbr_text_quality_better= new Text(BonkEnc::i18n->TranslateString("better"), pos);
-	vbr_text_quality_better->SetX(360 - (vbr_text_quality_better->textSize.cx / 2));
+	vbr_text_quality_better->SetX(360 - (vbr_text_quality_better->GetUnscaledTextWidth() / 2));
 
 	pos.x = 142;
 	pos.y = 62;
@@ -412,11 +412,11 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	expert_check_ath	= new CheckBox(BonkEnc::i18n->TranslateString("Enable ATH:"), pos, size, &enable_ath);
 	expert_check_ath->onAction.Connect(&ConfigureLameEnc::SetEnableATH, this);
-	expert_check_ath->SetWidth(expert_check_ath->textSize.cx + 19);
+	expert_check_ath->SetWidth(expert_check_ath->GetUnscaledTextWidth() + 19);
 
-	pos.x += (expert_check_ath->textSize.cx + 28);
+	pos.x += (expert_check_ath->GetUnscaledTextWidth() + 28);
 	pos.y -= 1;
-	size.cx = 342 - expert_check_ath->textSize.cx;
+	size.cx = 342 - expert_check_ath->GetUnscaledTextWidth();
 	size.cy = 0;
 
 	expert_combo_athtype	= new ComboBox(pos, size);

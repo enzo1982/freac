@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -31,7 +31,7 @@ Bool BonkEnc::FilterInBONK::Activate()
 
 	decoder = ex_bonk_decoder_create();
 
-	int		 bytes = Math::Min(driver->GetSize(), 524288);
+	int		 bytes = Math::Min(driver->GetSize(), (Int64) 524288);
 
 	dataBuffer.Resize(bytes);
 
@@ -64,14 +64,14 @@ Int BonkEnc::FilterInBONK::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
 {
-	InStream	*in		= new InStream(STREAM_FILE, inFile, IS_READONLY);
+	InStream	*in		= new InStream(STREAM_FILE, inFile, IS_READ);
 	Track		*nFormat	= new Track;
 	unsigned int	 length		= 0;
 	unsigned int	 rate		= 0;
 	int		 channels	= 0;
 	void		*decoder	= ex_bonk_decoder_create();
 
-	int		 bytes = Math::Min(in->Size(), 524288);
+	int		 bytes = Math::Min(in->Size(), (Int64) 524288);
 
 	dataBuffer.Resize(bytes);
 

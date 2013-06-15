@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,6 @@
 
 #include <utilities.h>
 
-#include <input/filter-in-cdrip.h>
 #include <input/filter-in-wave.h>
 #include <input/filter-in-voc.h>
 #include <input/filter-in-aiff.h>
@@ -23,19 +22,26 @@
 #include <input/filter-in-bonk.h>
 #include <input/filter-in-faad2.h>
 #include <input/filter-in-flac.h>
-#include <input/filter-in-wma.h>
-#include <input/filter-in-winamp.h>
 
-#include <output/filter-out-blade.h>
+#ifdef __WIN32__
+#	include <input/filter-in-cdrip.h>
+#	include <input/filter-in-wma.h>
+#	include <input/filter-in-winamp.h>
+#endif
+
 #include <output/filter-out-bonk.h>
 #include <output/filter-out-faac.h>
 #include <output/filter-out-flac.h>
 #include <output/filter-out-lame.h>
 #include <output/filter-out-mp4.h>
-#include <output/filter-out-tvq.h>
 #include <output/filter-out-vorbis.h>
 #include <output/filter-out-wave.h>
-#include <output/filter-out-wma.h>
+
+#ifdef __WIN32__
+#	include <output/filter-out-blade.h>
+#	include <output/filter-out-tvq.h>
+#	include <output/filter-out-wma.h>
+#endif
 
 #include <dllinterfaces.h>
 
@@ -43,22 +49,23 @@ using namespace smooth::System;
 
 Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace)
 {
-	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), MB_OK, IDI_EXCLAMATION);
+	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), Message::Buttons::Ok, Message::Icon::Exclamation);
 	else						Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
 }
 
 Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace)
 {
-	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), MB_OK, IDI_HAND);
+	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), Message::Buttons::Ok, Message::Icon::Hand);
 	else						Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
 }
 
 BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile, Track *trackInfo)
 {
+	String		 file = iFile.ToLower();
+
+#ifdef __WIN32__
 	Array<String>	 extensions;
 	Array<Int>	 indexes;
-
-	String		 file = iFile.ToLower();
 
 	for (Int i = 0; i < DLLInterfaces::winamp_in_plugins.Length(); i++)
 	{
@@ -119,14 +126,11 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 			break;
 		}
 	}
+#endif
 
 	InputFilter	*filter_in = NIL;
 
-	if ((file.StartsWith("/cda") || file.EndsWith(".cda")) && BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)
-	{
-		filter_in = new FilterInCDRip(BonkEnc::currentConfig, trackInfo);
-	}
-	else if ((file.EndsWith(".mp1") || file.EndsWith(".mp2") || file.EndsWith(".mp3")) && BonkEnc::currentConfig->enable_mad)
+	if ((file.EndsWith(".mp1") || file.EndsWith(".mp2") || file.EndsWith(".mp3")) && BonkEnc::currentConfig->enable_mad)
 	{
 		filter_in = new FilterInMAD(BonkEnc::currentConfig, trackInfo);
 	}
@@ -150,6 +154,11 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 	{
 		filter_in = new FilterInFLAC(BonkEnc::currentConfig, trackInfo);
 	}
+#ifdef __WIN32__
+	else if ((file.StartsWith("/cda") || file.EndsWith(".cda")) && BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)
+	{
+		filter_in = new FilterInCDRip(BonkEnc::currentConfig, trackInfo);
+	}
 	else if (file.EndsWith(".wma") && BonkEnc::currentConfig->enable_wma)
 	{
 		filter_in = new FilterInWMA(BonkEnc::currentConfig, trackInfo);
@@ -158,9 +167,10 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 	{
 		filter_in = new FilterInWinamp(BonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNth(indexes.GetNth(found)));
 	}
+#endif
 	else
 	{
-		InStream	*f_in = new InStream(STREAM_FILE, file, IS_READONLY);
+		InStream	*f_in = new InStream(STREAM_FILE, file, IS_READ);
 		Int		 magic = f_in->InputNumber(4);
 
 		delete f_in;
@@ -189,14 +199,17 @@ BonkEnc::OutputFilter *BonkEnc::Utilities::CreateOutputFilter(Int encoder, Track
 {
 	OutputFilter	*filter_out = NIL;
 
-	if (encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(BonkEnc::currentConfig, trackInfo);
 	if (encoder == ENCODER_BONKENC)		filter_out = new FilterOutBONK(BonkEnc::currentConfig, trackInfo);
 	if (encoder == ENCODER_FLAC)		filter_out = new FilterOutFLAC(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_TVQ)		filter_out = new FilterOutTVQ(BonkEnc::currentConfig, trackInfo);
 	if (encoder == ENCODER_LAMEENC)		filter_out = new FilterOutLAME(BonkEnc::currentConfig, trackInfo);
 	if (encoder == ENCODER_VORBISENC)	filter_out = new FilterOutVORBIS(BonkEnc::currentConfig, trackInfo);
 	if (encoder == ENCODER_WAVE)		filter_out = new FilterOutWAVE(BonkEnc::currentConfig, trackInfo);
+
+#ifdef __WIN32__
+	if (encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_TVQ)		filter_out = new FilterOutTVQ(BonkEnc::currentConfig, trackInfo);
 	if (encoder == ENCODER_WMA)		filter_out = new FilterOutWMA(BonkEnc::currentConfig, trackInfo);
+#endif
 
 	if (encoder == ENCODER_FAAC)
 	{
@@ -362,34 +375,6 @@ Void BonkEnc::Utilities::FillGenreList(List *list)
 	list->AddEntry("Vocal");
 }
 
-String BonkEnc::Utilities::LocalizeNumber(Int64 number)
-{
-	String	 nString = String::FromInt(number);
-	String	 retVal;
-	String	 separator;
-
-	char	*buffer_a = new char [256];
-	wchar_t	*buffer_w = new wchar_t [256];
-
-	if (Setup::enableUnicode)	GetLocaleInfoW(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_w, 256);
-	else				GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_STHOUSAND, buffer_a, 256);
-
-	if (Setup::enableUnicode)	separator = buffer_w;
-	else				separator = buffer_a;
-
-	delete [] buffer_a;
-	delete [] buffer_w;
-
-	for (Int i = 0; i < nString.Length(); i++)
-	{
-		if ((nString.Length() - i) % 3 == 0 && i > 0) retVal.Append(separator);
-
-		retVal[retVal.Length()] = nString[i];
-	}
-
-	return retVal;
-}
-
 String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool repSlash)
 {
 	String	 rVal;
@@ -487,32 +472,26 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 
 String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 {
-	String	 rFileName = NormalizeFileName(fileName);
-	String	 tmpPath;
+	File		 file(NormalizeFileName(fileName));
+	Directory	 directory(file.GetFilePath());
 
-	for (Int i = 0, lastBS = 0; i < rFileName.Length(); i++)
-	{
-		if (rFileName[i] == '\\' || rFileName[i] == '/')
-		{
-			if (Setup::enableUnicode) CreateDirectoryW(tmpPath, NIL);
-			else			  CreateDirectoryA(tmpPath, NIL);
+	directory.Create();
 
-			lastBS = i;
-		}
-
-		tmpPath[i] = rFileName[i];
-	}
-
-	return rFileName;
+	return file;
 }
 
 String BonkEnc::Utilities::GetInstallDrive()
 {
+#ifdef __WIN32__
 	return Application::GetApplicationDirectory().Head(2);
+#else
+	return NIL;
+#endif
 }
 
 Void BonkEnc::Utilities::GainShutdownPrivilege()
 {
+#ifdef __WIN32__
 	OSVERSIONINFOA	 vInfo;
 
 	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
@@ -536,4 +515,5 @@ Void BonkEnc::Utilities::GainShutdownPrivilege()
 
 		AdjustTokenPrivileges(htoken, false, &token, 0, NULL, NULL);
 	}
+#endif
 }

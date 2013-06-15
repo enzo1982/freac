@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2009 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -74,7 +74,7 @@ Int BonkEnc::FilterInVOC::ReadData(Buffer<UnsignedByte> &data, Int size)
 BonkEnc::Track *BonkEnc::FilterInVOC::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
-	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READONLY);
+	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);
 
 	// TODO: Add more checking to this!
 

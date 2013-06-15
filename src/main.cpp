@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,9 +9,16 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <smooth/main.h>
+
 #include <main.h>
 #include <resources.h>
-#include <dbt.h>
+
+#ifdef __WIN32__
+#	include <windows.h>
+#	include <dbt.h>
+
+#	include <smooth/init.win32.h>
+#endif
 
 #include <dllinterfaces.h>
 #include <joblist.h>
@@ -25,13 +32,16 @@
 #include <dialogs/donate.h>
 
 #include <dialogs/bonkconfig.h>
-#include <dialogs/bladeconfig.h>
 #include <dialogs/lameconfig.h>
 #include <dialogs/vorbisconfig.h>
 #include <dialogs/faacconfig.h>
 #include <dialogs/flacconfig.h>
-#include <dialogs/tvqconfig.h>
-#include <dialogs/wmaconfig.h>
+
+#ifdef __WIN32__
+#	include <dialogs/bladeconfig.h>
+#	include <dialogs/tvqconfig.h>
+#	include <dialogs/wmaconfig.h>
+#endif
 
 #include <cddb/cddb.h>
 #include <cddb/cddbremote.h>
@@ -69,13 +79,14 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	activePopup = 0;
 
-	if (currentConfig->language == NIL) currentConfig->language = GetSystemLanguage();
+	if (currentConfig->language != NIL) i18n->ActivateLanguage(currentConfig->language);
+	else				    i18n->SelectUserDefaultLanguage();
 
-	i18n->ActivateLanguage(currentConfig->language);
+	currentConfig->language = i18n->GetActiveLanguageID();
 
 	InitCDRip();
 
-	Rect	 workArea = MultiMonitor::GetVirtualScreenMetrics();
+	Rect	 workArea = Screen::GetVirtualScreenMetrics();
 
 	if (currentConfig->wndPos.x + currentConfig->wndSize.cx > workArea.right + 2 ||
 	    currentConfig->wndPos.y + currentConfig->wndSize.cy > workArea.bottom + 2)
@@ -100,7 +111,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2012 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2013 Robert Kausch"));
 	menu_file		= new PopupMenu();
 	menu_options		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -127,8 +138,10 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	hyperlink		= new Hyperlink(String(BonkEnc::website).Replace("http://", NIL).Replace("/", NIL), NIL, BonkEnc::website, pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
-	hyperlink->SetX(hyperlink->textSize.cx + 4);
+	hyperlink->SetX(hyperlink->GetUnscaledTextWidth() + 4);
+	hyperlink->SetIndependent(True);
 
+#ifdef __WIN32__
 	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
@@ -176,6 +189,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		button_open->SetOrientation(OR_UPPERRIGHT);
 		button_open->SetFlags(BF_NOFRAME);
 	}
+#endif
 
 	pos.x = 7;
 	pos.y = 96;
@@ -269,7 +283,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	info_text_album = new Text("Album:", pos);
 	info_text_album->SetOrientation(OR_LOWERLEFT);
 
-	pos.x += (7 + (Int) Math::Max(info_text_album->textSize.cx, info_text_artist->textSize.cx));
+	pos.x += (7 + (Int) Math::Max(info_text_album->GetUnscaledTextWidth(), info_text_artist->GetUnscaledTextWidth()));
 	pos.y += 30;
 	size.cx = 180;
 	size.cy = 0;
@@ -317,7 +331,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	info_text_track = new Text("Track:", pos);
 	info_text_track->SetOrientation(OR_LOWERLEFT);
 
-	pos.x += (7 + (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
+	pos.x += (7 + (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
 	pos.y += 30;
 	size.cx = 100;
 
@@ -350,7 +364,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	info_text_year = new Text("Year:", pos);
 	info_text_year->SetOrientation(OR_LOWERLEFT);
 
-	pos.x += (7 + info_text_year->textSize.cx);
+	pos.x += (7 + info_text_year->GetUnscaledTextWidth());
 	pos.y += 3;
 	size.cx = 31;
 
@@ -379,7 +393,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	info_list_genre = new ListBox(pos, size);
 	Utilities::FillGenreList(info_list_genre);
 
-	pos.x += (7 + info_text_genre->textSize.cx);
+	pos.x += (7 + info_text_genre->GetUnscaledTextWidth());
 	pos.y += 3;
 	size.cx = 135;
 
@@ -469,6 +483,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->Add(check_cuesheet);
 	mainWnd->Add(check_playlist);
 
+#ifdef __WIN32__
 	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		mainWnd->Add(button_play);
@@ -478,6 +493,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		mainWnd->Add(button_next);
 		mainWnd->Add(button_open);
 	}
+#endif
 
 	mainWnd->Add(info_divider);
 	mainWnd->Add(info_bottom);
@@ -562,7 +578,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	if (currentConfig->showTips) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
 
-	mainWnd->doQuit.Connect(&BonkEncGUI::ExitProc, this);
+	mainWnd->doClose.Connect(&BonkEncGUI::ExitProc, this);
 	mainWnd->SetMinimumSize(Size(600, 400 + (currentConfig->showTitleInfo ? 68 : 0)));
 
 	if (currentConfig->maximized) mainWnd->Maximize();
@@ -605,6 +621,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(check_cuesheet);
 	DeleteObject(check_playlist);
 
+#ifdef __WIN32__
 	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		DeleteObject(button_play);
@@ -614,6 +631,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 		DeleteObject(button_next);
 		DeleteObject(button_open);
 	}
+#endif
 
 	DeleteObject(info_divider);
 	DeleteObject(info_bottom);
@@ -688,7 +706,7 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 {
 	if (encoding)
 	{
-		if (IDNO == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), MB_YESNO, IDI_QUESTION)) return False;
+		if (Message::Button::No == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), Message::Buttons::YesNo, Message::Icon::Question)) return False;
 
 		StopEncoding();
 	}
@@ -712,6 +730,7 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 {
+#ifdef __WIN32__
 	switch (message)
 	{
 		case WM_DEVICECHANGE:
@@ -807,6 +826,7 @@ Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 			break;
 	}
+#endif
 }
 
 Void BonkEnc::BonkEncGUI::OnChangePosition(const Point &nPos)
@@ -818,7 +838,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 {
 	currentConfig->wndSize = mainWnd->GetSize();
 
-	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2012 Robert Kausch"));
+	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2013 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -826,26 +846,26 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 	info_divider->SetPos(113 + (currentConfig->showTitleInfo ? 68 : 0));
 	info_background->SetY(121 + (currentConfig->showTitleInfo ? 68 : 0));
 
-	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
-	info_edit_title->SetWidth(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx);
-	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
+	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
+	info_edit_title->SetWidth(219 + info_text_genre->GetUnscaledTextWidth() + info_text_year->GetUnscaledTextWidth());
+	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
 	info_text_year->SetX(info_edit_track->GetX() + 32);
-	info_edit_year->SetX(info_text_year->GetX() + info_text_year->textSize.cx + 7);
+	info_edit_year->SetX(info_text_year->GetX() + info_text_year->GetUnscaledTextWidth() + 7);
 	info_text_genre->SetX(info_edit_year->GetX() + 38);
-	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
-	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
-	info_edit_artist->SetWidth(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
-	info_edit_album->SetWidth(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx));
+	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
+	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
+	info_edit_artist->SetWidth(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
+	info_edit_album->SetWidth(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
 	info_edit_genre->SetX(clientSize.cx - 142);
 
 	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
 	htsp_edit_artist->SetWidth(info_edit_artist->GetWidth());
 	htsp_edit_album->SetWidth(info_edit_album->GetWidth());
 
-	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
+	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->GetUnscaledTextWidth(), enc_outdir->GetUnscaledTextWidth()), Math::Max(enc_filename->GetUnscaledTextWidth(), enc_time->GetUnscaledTextWidth()));
 
 	edb_filename->SetWidth(clientSize.cx - 107 - maxTextLength);
-	edb_encoder->SetWidth(clientSize.cx - 207 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx);
+	edb_encoder->SetWidth(clientSize.cx - 207 - maxTextLength - enc_percent->GetUnscaledTextWidth() - enc_encoder->GetUnscaledTextWidth());
 	edb_outdir->SetWidth(clientSize.cx - 107 - maxTextLength);
 
 	progress->SetWidth(clientSize.cx - 21 - maxTextLength);
@@ -853,9 +873,9 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 
 	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
-	check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
-	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-	check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
+	check_single->SetMetrics(Point(check_single->GetUnscaledTextWidth() + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->GetUnscaledTextWidth() + 21, check_single->GetHeight()));
+	check_cuesheet->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->GetUnscaledTextWidth() + 21, check_cuesheet->GetHeight()));
+	check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
 
 	currentConfig->tab_width_track = joblist->GetNthTabWidth(1);
 	currentConfig->tab_width_length = joblist->GetNthTabWidth(2);
@@ -869,7 +889,7 @@ Void BonkEnc::BonkEncGUI::Close()
 
 Void BonkEnc::BonkEncGUI::About()
 {
-	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2012 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), MB_OK, MAKEINTRESOURCE(IDI_ICON));
+	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2013 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -883,21 +903,24 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 
 	if (currentConfig->encoder == ENCODER_WAVE)
 	{
-		QuickMessage(i18n->TranslateString("No options can be configured for Windows Wave file output!"), i18n->TranslateString("Windows Wave file output"), MB_OK, IDI_INFORMATION);
+		QuickMessage(i18n->TranslateString("No options can be configured for Windows Wave file output!"), i18n->TranslateString("Windows Wave file output"), Message::Buttons::Ok, Message::Icon::Information);
 
 		return;
 	}
 
 	Dialog	*dlg = NIL;
 
-	if (currentConfig->encoder == ENCODER_BONKENC)		dlg = new ConfigureBonkEnc();
-	else if (currentConfig->encoder == ENCODER_BLADEENC)	dlg = new ConfigureBladeEnc();
+	if	(currentConfig->encoder == ENCODER_BONKENC)	dlg = new ConfigureBonkEnc();
 	else if (currentConfig->encoder == ENCODER_LAMEENC)	dlg = new ConfigureLameEnc();
 	else if (currentConfig->encoder == ENCODER_VORBISENC)	dlg = new ConfigureVorbisEnc();
 	else if (currentConfig->encoder == ENCODER_FAAC)	dlg = new ConfigureFAAC();
 	else if (currentConfig->encoder == ENCODER_FLAC)	dlg = new ConfigureFLAC();
+
+#ifdef __WIN32__
+	else if (currentConfig->encoder == ENCODER_BLADEENC)	dlg = new ConfigureBladeEnc();
 	else if (currentConfig->encoder == ENCODER_TVQ)		dlg = new ConfigureTVQ();
 	else if (currentConfig->encoder == ENCODER_WMA)		dlg = new ConfigureWMA();
+#endif
 
 	if (dlg != NIL)
 	{
@@ -1215,9 +1238,9 @@ Void BonkEnc::BonkEncGUI::ShowHideTitleInfo()
 
 		joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (currentConfig->showTitleInfo ? 68 : 0)));
 
-		check_single->SetMetrics(Point(check_single->textSize.cx + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
-		check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-		check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
+		check_single->SetMetrics(Point(check_single->GetUnscaledTextWidth() + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->GetUnscaledTextWidth() + 21, check_single->GetHeight()));
+		check_cuesheet->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->GetUnscaledTextWidth() + 21, check_cuesheet->GetHeight()));
+		check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
 
 		info_divider->SetPos(info_divider->GetPos() + n);
 		info_background->SetY(info_background->GetY() + n);
@@ -1257,10 +1280,11 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 
 	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
 	{
-		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->GetSize()));
+		mainWnd->SetUpdateRect(Rect(Point(0, 0), mainWnd->GetRealSize()));
 		mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 		mainWnd->Paint(SP_PAINT);
 
+#ifdef __WIN32__
 		if (DLLInterfaces::winamp_out_modules.Length() > 0)
 		{
 			button_play->Hide();
@@ -1304,6 +1328,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 			button_next->Show();
 			button_open->Show();
 		}
+#endif
 	}
 
 	onChangeLanguageSettings.Emit();
@@ -1338,40 +1363,42 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	enc_progress->SetText(i18n->TranslateString("File progress:"));
 	enc_outdir->SetText(i18n->TranslateString("Output dir.:"));
 
-	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->textSize.cx, enc_outdir->textSize.cx), Math::Max(enc_filename->textSize.cx, enc_time->textSize.cx));
+	Int	 maxTextLength = (Int) Math::Max(Math::Max(enc_progress->GetUnscaledTextWidth(), enc_outdir->GetUnscaledTextWidth()), Math::Max(enc_filename->GetUnscaledTextWidth(), enc_time->GetUnscaledTextWidth()));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	enc_progress->SetX(maxTextLength + 7 - enc_progress->textSize.cx);
-	enc_outdir->SetX(maxTextLength + 7 - enc_outdir->textSize.cx);
-	enc_filename->SetX(maxTextLength + 7 - enc_filename->textSize.cx);
-	enc_time->SetX(maxTextLength + 7 - enc_time->textSize.cx);
+	enc_progress->SetX(maxTextLength + 7 - enc_progress->GetUnscaledTextWidth());
+	enc_outdir->SetX(maxTextLength + 7 - enc_outdir->GetUnscaledTextWidth());
+	enc_filename->SetX(maxTextLength + 7 - enc_filename->GetUnscaledTextWidth());
+	enc_time->SetX(maxTextLength + 7 - enc_time->GetUnscaledTextWidth());
 	enc_percent->SetX(maxTextLength + 101);
-	enc_encoder->SetX(maxTextLength + 193 + enc_percent->textSize.cx);
+	enc_encoder->SetX(maxTextLength + 193 + enc_percent->GetUnscaledTextWidth());
 
 	edb_filename->SetText(i18n->TranslateString("none"));
 
 	edb_filename->SetMetrics(Point(maxTextLength + 14, edb_filename->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_filename->GetHeight()));
 	edb_time->SetMetrics(Point(maxTextLength + 14, edb_time->GetY()), Size(34, edb_time->GetHeight()));
 	edb_totalTime->SetMetrics(Point(maxTextLength + 60, edb_totalTime->GetY()), Size(34, edb_totalTime->GetHeight()));
-	edb_percent->SetMetrics(Point(maxTextLength + 108 + enc_percent->textSize.cx, edb_percent->GetY()), Size(33, edb_percent->GetHeight()));
-	edb_totalPercent->SetMetrics(Point(maxTextLength + 153 + enc_percent->textSize.cx, edb_totalPercent->GetY()), Size(33, edb_totalPercent->GetHeight()));
-	edb_encoder->SetMetrics(Point(maxTextLength + 200 + enc_percent->textSize.cx + enc_encoder->textSize.cx, edb_encoder->GetY()), Size(clientSize.cx - 207 - maxTextLength - enc_percent->textSize.cx - enc_encoder->textSize.cx, edb_encoder->GetHeight()));
+	edb_percent->SetMetrics(Point(maxTextLength + 108 + enc_percent->GetUnscaledTextWidth(), edb_percent->GetY()), Size(33, edb_percent->GetHeight()));
+	edb_totalPercent->SetMetrics(Point(maxTextLength + 153 + enc_percent->GetUnscaledTextWidth(), edb_totalPercent->GetY()), Size(33, edb_totalPercent->GetHeight()));
+	edb_encoder->SetMetrics(Point(maxTextLength + 200 + enc_percent->GetUnscaledTextWidth() + enc_encoder->GetUnscaledTextWidth(), edb_encoder->GetY()), Size(clientSize.cx - 207 - maxTextLength - enc_percent->GetUnscaledTextWidth() - enc_encoder->GetUnscaledTextWidth(), edb_encoder->GetHeight()));
 	edb_outdir->SetMetrics(Point(maxTextLength + 14, edb_outdir->GetY()), Size(clientSize.cx - 107 - maxTextLength, edb_outdir->GetHeight()));
 
 	txt_splitTime->SetX(maxTextLength + 51);
-	txt_splitPercent->SetX(maxTextLength + 144 + enc_percent->textSize.cx);
+	txt_splitPercent->SetX(maxTextLength + 144 + enc_percent->GetUnscaledTextWidth());
 
 	progress->SetMetrics(Point(maxTextLength + 14, progress->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress->GetHeight()));
 	progress_total->SetMetrics(Point(maxTextLength + 14, progress_total->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress_total->GetHeight()));
 
+	if (progress_total->GetRealPosition().y > progress->GetRealPosition().y - progress->GetRealSize().cy + 1) progress_total->SetMetrics(progress_total->GetPosition() - Point(0, 1), progress_total->GetSize() - Size(0, 1));
+
 	info_checkbox->SetText(i18n->TranslateString("Show title info"));
-	info_checkbox->SetWidth(info_checkbox->textSize.cx + 20);
+	info_checkbox->SetWidth(info_checkbox->GetUnscaledTextWidth() + 20);
 
 	info_background->Hide();
 	info_divider->Paint(SP_PAINT);
-	info_background->SetWidth(info_checkbox->textSize.cx + 24);
+	info_background->SetWidth(info_checkbox->GetUnscaledTextWidth() + 24);
 	info_background->Show();
 
 	enc_filename->Show();
@@ -1408,9 +1435,9 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
 	check_playlist->SetText(i18n->TranslateString("Create playlist"));
 
-	check_single->SetMetrics(Point(check_single->textSize.cx + 28, check_single->GetY()), Size(check_single->textSize.cx + 21, check_single->GetHeight()));
-	check_cuesheet->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + 53, check_cuesheet->GetY()), Size(check_cuesheet->textSize.cx + 21, check_cuesheet->GetHeight()));
-	check_playlist->SetMetrics(Point(check_single->textSize.cx + check_cuesheet->textSize.cx + check_playlist->textSize.cx + 78, check_playlist->GetY()), Size(check_playlist->textSize.cx + 21, check_playlist->GetHeight()));
+	check_single->SetMetrics(Point(check_single->GetUnscaledTextWidth() + 28, check_single->GetY()), Size(check_single->GetUnscaledTextWidth() + 21, check_single->GetHeight()));
+	check_cuesheet->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + 53, check_cuesheet->GetY()), Size(check_cuesheet->GetUnscaledTextWidth() + 21, check_cuesheet->GetHeight()));
+	check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 78, check_playlist->GetY()), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
 
 	check_single->Show();
 	check_cuesheet->Show();
@@ -1439,15 +1466,15 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	info_text_year->SetText(String(i18n->TranslateString("Year")).Append(":"));
 	info_text_genre->SetText(String(i18n->TranslateString("Genre")).Append(":"));
 
-	info_edit_title->SetMetrics(Point(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx, info_edit_title->GetY()), Size(219 + info_text_genre->textSize.cx + info_text_year->textSize.cx, info_edit_title->GetHeight()));
-	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->textSize.cx - info_text_year->textSize.cx);
+	info_edit_title->SetMetrics(Point(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth(), info_edit_title->GetY()), Size(219 + info_text_genre->GetUnscaledTextWidth() + info_text_year->GetUnscaledTextWidth(), info_edit_title->GetHeight()));
+	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
 	info_text_year->SetX(info_edit_track->GetX() + 32);
-	info_edit_year->SetX(info_text_year->GetX() + info_text_year->textSize.cx + 7);
+	info_edit_year->SetX(info_text_year->GetX() + info_text_year->GetUnscaledTextWidth() + 7);
 	info_text_genre->SetX(info_edit_year->GetX() + 38);
-	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
-	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx) - 7);
-	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_artist->GetY()), Size(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_artist->GetHeight()));
-	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) + 15, info_edit_album->GetY()), Size(clientSize.cx - 255 - info_text_genre->textSize.cx - info_text_year->textSize.cx - (Int) Math::Max(info_text_artist->textSize.cx, info_text_album->textSize.cx) - (Int) Math::Max(info_text_title->textSize.cx, info_text_track->textSize.cx), info_edit_album->GetHeight()));
+	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
+	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
+	info_edit_artist->SetMetrics(Point((Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 15, info_edit_artist->GetY()), Size(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()), info_edit_artist->GetHeight()));
+	info_edit_album->SetMetrics(Point((Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 15, info_edit_album->GetY()), Size(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()), info_edit_album->GetHeight()));
 	info_edit_genre->SetX(clientSize.cx - 142);
 
 	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
@@ -1513,7 +1540,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_file->AddEntry();
 	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load("freac.pci:36"));
 	entry->onAction.Connect(&BonkEncGUI::Close, this);
-	entry->SetShortcut(SC_ALT, VK_F4, mainWnd);
+	entry->SetShortcut(SC_ALT, Input::Keyboard::KeyF4, mainWnd);
 
 	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load("freac.pci:28"));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureGeneral, this);
@@ -1620,12 +1647,14 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load("freac.pci:26"))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
 
+#ifdef __WIN32__
 	if (DLLInterfaces::winamp_out_modules.Length() > 0)
 	{
 		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&BonkEncGUI::PlaySelectedItem, this);
 		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&BonkEncGUI::StopPlayback, this);
 		menu_trackmenu->AddEntry();
 	}
+#endif
 
 	menu_trackmenu->AddEntry(i18n->TranslateString("Remove"))->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	menu_trackmenu->AddEntry();
@@ -1637,11 +1666,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_help->AddEntry(i18n->TranslateString("Help topics..."), ImageLoader::Load("freac.pci:34"));
 	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
-	entry->SetShortcut(0, VK_F1, mainWnd);
+	entry->SetShortcut(0, Input::Keyboard::KeyF1, mainWnd);
 	menu_help->AddEntry();
 	entry = menu_help->AddEntry(String(i18n->TranslateString("Show Tip of the Day")).Append("..."));
 	entry->onAction.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
-	entry->SetShortcut(0, VK_F10, mainWnd);
+	entry->SetShortcut(0, Input::Keyboard::KeyF10, mainWnd);
 
 	if (currentConfig->enable_eUpdate)
 	{
@@ -2142,7 +2171,7 @@ Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
 {
 	if (currentConfig->deleteAfterEncoding)
 	{
-		if (IDNO == QuickMessage(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), MB_YESNO, IDI_QUESTION)) currentConfig->deleteAfterEncoding = False;
+		if (Message::Button::No == QuickMessage(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), Message::Buttons::YesNo, Message::Icon::Question)) currentConfig->deleteAfterEncoding = False;
 	}
 }
 
@@ -2238,7 +2267,7 @@ PopupMenu *BonkEnc::BonkEncGUI::GetContextMenu()
 
 Void BonkEnc::BonkEncGUI::ShowHelp()
 {
-	ShellExecuteA(NIL, "open", String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index_en.html")), NIL, NIL, 0);
+	S::System::System::OpenURL(String("file://").Append(GetApplicationDirectory()).Append("manual/").Append(i18n->TranslateString("index_en.html")));
 }
 
 Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
@@ -2262,140 +2291,6 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 	DeleteObject(dlg);
 }
 
-String BonkEnc::BonkEncGUI::GetSystemLanguage()
-{
-	String	 language = "internal";
-
-	if (i18n->GetNOfLanguages() == 1) return language;
-
-#ifdef __WIN32__
-
-#ifndef SUBLANG_CROATIAN_CROATIA
-#  define SUBLANG_CROATIAN_CROATIA 0x01
-#endif
-
-	switch (PRIMARYLANGID(GetUserDefaultLangID()))
-	{
-		default:
-		case LANG_ENGLISH:
-			language = "internal";
-			break;
-		case LANG_ARABIC:
-			language = "freac_ar.xml";
-			break;
-		case LANG_BULGARIAN:
-			language = "freac_bg.xml";
-			break;
-		case LANG_CATALAN:
-			language = "freac_ca.xml";
-			break;
-		case LANG_CHINESE:
-			language = "freac_zh_CN.xml";
-
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_SIMPLIFIED) language = "freac_zh_CN.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CHINESE_TRADITIONAL) language = "freac_zh_TW.xml";
-			break;
-		case LANG_CZECH:
-			language = "freac_cs.xml";
-			break;
-		case LANG_DANISH:
-			language = "freac_da.xml";
-			break;
-		case LANG_DUTCH:
-			language = "freac_nl.xml";
-			break;
-		case LANG_ESTONIAN:
-			language = "freac_et.xml";
-			break;
-		case LANG_FINNISH:
-			language = "freac_fi.xml";
-			break;
-		case LANG_FRENCH:
-			language = "freac_fr.xml";
-			break;
-		case LANG_GALICIAN:
-			language = "freac_gl.xml";
-			break;
-		case LANG_GERMAN:
-			language = "freac_de.xml";
-			break;
-		case LANG_GREEK:
-			language = "freac_el.xml";
-			break;
-		case LANG_HEBREW:
-			language = "freac_he.xml";
-			break;
-		case LANG_HUNGARIAN:
-			language = "freac_hu.xml";
-			break;
-		case LANG_ITALIAN:
-			language = "freac_it.xml";
-			break;
-		case LANG_JAPANESE:
-			language = "freac_ja.xml";
-			break;
-		case LANG_KOREAN:
-			language = "freac_ko.xml";
-			break;
-		case LANG_LITHUANIAN:
-			language = "freac_lt.xml";
-			break;
-		case LANG_NORWEGIAN:
-			language = "freac_no.xml";
-			break;
-		case LANG_POLISH:
-			language = "freac_pl.xml";
-			break;
-		case LANG_PORTUGUESE:
-			language = "freac_pt.xml";
-
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE) language = "freac_pt.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_PORTUGUESE_BRAZILIAN) language = "freac_pt_BR.xml";
-			break;
-		case LANG_ROMANIAN:
-			language = "freac_ro.xml";
-			break;
-		case LANG_RUSSIAN:
-			language = "freac_ru.xml";
-			break;
-		case LANG_SERBIAN:
-			language = "freac_sr.xml";
-
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_CROATIAN_CROATIA) language = "freac_hr.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SERBIAN_LATIN) language = "freac_sr.xml";
-			break;
-		case LANG_SLOVAK:
-			language = "freac_sk.xml";
-			break;
-		case LANG_SPANISH:
-			language = "freac_es.xml";
-
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH) language = "freac_es.xml";
-			if (SUBLANGID(GetUserDefaultLangID()) == SUBLANG_SPANISH_ARGENTINA) language = "freac_es_AR.xml";
-			break;
-		case LANG_SWEDISH:
-			language = "freac_sv.xml";
-			break;
-		case LANG_TURKISH:
-			language = "freac_tr.xml";
-			break;
-		case LANG_UKRAINIAN:
-			language = "freac_uk.xml";
-			break;
-		case LANG_VIETNAMESE:
-			language = "freac_vi.xml";
-			break;
-	}
-#endif
-
-	if (language != "internal")
-	{
-		if (!File(GUI::Application::GetApplicationDirectory().Append("lang/").Append(language)).Exists()) language = "internal";
-	}
-
-	return language;
-}
-
 Void BonkEnc::BonkEncGUI::CheckForUpdates()
 {
 	CheckForUpdatesThread(NIL);
@@ -2407,7 +2302,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 
 	if (currentConfig->firstStart)
 	{
-		if (QuickMessage(String(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?")).Replace("%1", BonkEnc::appName), String(BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION) == IDNO)
+		if (QuickMessage(String(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?")).Replace("%1", BonkEnc::appName), String(BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question) == Message::Button::No)
 		{
 			currentConfig->checkUpdatesAtStartup = False;
 			currentConfig->firstStart = False;
@@ -2416,6 +2311,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 		}
 	}
 
+#ifdef __WIN32__
 	Void	*context = ex_eUpdate_CreateUpdateContext(BonkEnc::appLongName, version, updatePath);
 
 	if (currentConfig->configDir != "")
@@ -2439,11 +2335,11 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 
 	if (ex_eUpdate_CheckForNewUpdates(context, (self == NIL)) > 0)
 	{
-		MessageDlg	*msgBox = new MessageDlg(String(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?")).Replace("%1", BonkEnc::appName), String(BonkEnc::appName).Append(" easyUpdate"), MB_YESNO, IDI_QUESTION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
+		MessageDlg	*msgBox = new MessageDlg(String(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?")).Replace("%1", BonkEnc::appName), String(BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
 
 		msgBox->ShowDialog();
 
-		if (msgBox->GetButtonCode() == IDYES)
+		if (msgBox->GetButtonCode() == Message::Button::Yes)
 		{
 			currentConfig->SaveSettings();
 
@@ -2454,7 +2350,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 	}
 	else if (self == NIL)
 	{
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
+		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
 
 		msgBox->ShowDialog();
 
@@ -2462,10 +2358,11 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 	}
 	else if (currentConfig->firstStart)
 	{
-		QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(BonkEnc::appName).Append(" easyUpdate"), MB_OK, IDI_INFORMATION);
+		QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information);
 	}
 
 	ex_eUpdate_FreeUpdateContext(context);
+#endif
 
 	currentConfig->firstStart = False;
 
