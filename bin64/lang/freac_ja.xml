@@ -551,6 +551,7 @@
 	  <entry id="34106" string="Joint Stereo">ジョイント ステレオ</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">適応型ジョイント ステレオ</entry>
 	  <entry id="34108" string="File format">ファイル形式</entry>
+	  <entry id="34109" string="Default">デフォルト</entry>
 	</section>
 
 	<section name="Format">

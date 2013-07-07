@@ -549,6 +549,7 @@
 	  <entry id="34106" string="Joint Stereo">Соединять стерео</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Адаптивное Joint Stereo</entry>
 	  <entry id="34108" string="File format">Тип файла</entry>
+	  <entry id="34109" string="Default">Умолчание</entry>
 	</section>
 
 	<section name="Format">

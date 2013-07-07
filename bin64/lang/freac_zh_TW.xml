@@ -548,6 +548,7 @@
 	  <entry id="34106" string="Joint Stereo">複合立體聲</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">相容格式複合立體聲</entry>
 	  <entry id="34108" string="File format">檔案格式</entry>
+	  <entry id="34109" string="Default">預設</entry>
 	</section>
 
 	<section name="Format">

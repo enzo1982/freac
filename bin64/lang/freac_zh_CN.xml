@@ -549,6 +549,7 @@
 	  <entry id="34106" string="Joint Stereo">混合立体声</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">兼容格式的混合立体声</entry>
 	  <entry id="34108" string="File format">文件格式</entry>
+	  <entry id="34109" string="Default">默认</entry>
 	</section>
 
 	<section name="Format">
