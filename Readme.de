@@ -45,7 +45,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Mai 2013)
+	Version 1.1 CVS (Juli 2013)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -96,6 +96,7 @@ Geschichte
 		- Unterstützung für das Öffnen von Cuesheets hinzugefügt
 		- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
 		- Unterstützung für XSPF-, Windows Media- und PLS-Playlisten hinzugefügt
+		- Slider zum Springen während der Wiedergabe hinzugefügt
 		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
 		- Diverse weitere Geschwindigkeitsverbesserungen
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
@@ -125,6 +126,7 @@ Geschichte
 		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
 		- Maximale Länge von Dateinamen auf NT-Systemen angehoben
 		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
+		- Anzeige einer ASPI-Fehlermeldung auf Systemen ohne optische Laufwerke behoben
 		- Verbesserungen beim Installer
 		- Viele Fehler im Kommandozeilen-Codierer behoben
 		- Native Unterstützung für die x64-Platform hinzugefügt

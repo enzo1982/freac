@@ -11,9 +11,10 @@
 #include <gui/main_joblist.h>
 
 #include <joblist.h>
-#include <playback.h>
 #include <config.h>
 #include <utilities.h>
+
+#include <gui/player.h>
 
 #include <engine/converter.h>
 
@@ -41,8 +42,6 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	SetText(i18n->TranslateString("Joblist"));
 
-	Playback	*player	= Playback::Get();
-
 	dontUpdateInfo	= False;
 
 	clicked_charset	= -1;
@@ -52,58 +51,6 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	Point		 pos;
 	Size		 size;
-
-	Registry	&boca = Registry::Get();
-
-	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
-	{
-		Config	*bonkEncConfig = Config::Get();
-
-		pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
-		pos.y = -1;
-		size.cx = 25;
-		size.cy = 25;
-
-		button_play	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:12")), pos, size);
-		button_play->onAction.Connect(&LayerJoblist::PlaySelectedItem, this);
-		button_play->SetOrientation(OR_UPPERRIGHT);
-		button_play->SetFlags(BF_NOFRAME);
-
-		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-		button_pause	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:13")), pos, size);
-		button_pause->onAction.Connect(&LayerJoblist::PauseResumePlayback, this);
-		button_pause->SetOrientation(OR_UPPERRIGHT);
-		button_pause->SetFlags(BF_NOFRAME);
-
-		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-		button_stop	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:14")), pos, size);
-		button_stop->onAction.Connect(&LayerJoblist::StopPlayback, this);
-		button_stop->SetOrientation(OR_UPPERRIGHT);
-		button_stop->SetFlags(BF_NOFRAME);
-
-		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-		button_prev	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:15")), pos, size);
-		button_prev->onAction.Connect(&Playback::Previous, player);
-		button_prev->SetOrientation(OR_UPPERRIGHT);
-		button_prev->SetFlags(BF_NOFRAME);
-
-		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-		button_next	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:16")), pos, size);
-		button_next->onAction.Connect(&Playback::Next, player);
-		button_next->SetOrientation(OR_UPPERRIGHT);
-		button_next->SetFlags(BF_NOFRAME);
-
-		pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-		button_open	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:17")), pos, size);
-		button_open->onAction.Connect(&LayerJoblist::OpenCDTray, this);
-		button_open->SetOrientation(OR_UPPERRIGHT);
-		button_open->SetFlags(BF_NOFRAME);
-	}
 
 	pos.x = 7;
 	pos.y = 96;
@@ -163,6 +110,18 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	check_cuesheet		= new CheckBox(NIL, pos, size, (Bool *) &config->GetPersistentIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault));
 	check_cuesheet->SetOrientation(OR_UPPERRIGHT);
+
+	Registry	&boca = Registry::Get();
+
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
+	{
+		pos.x = 242;
+		pos.y = 0;
+
+		player	= new LayerPlayer(joblist);
+		player->SetPosition(pos);
+		player->SetOrientation(OR_UPPERRIGHT);
+	}
 
 	info_divider		= new Divider(113 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0), OR_HORZ | OR_BOTTOM);
 	info_bottom		= new Divider(113, OR_HORZ | OR_BOTTOM);
@@ -429,15 +388,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	if ( boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 1 ||
 	    (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0 && !boca.ComponentExists("cuesheet-playlist"))) Add(check_playlist);
 
-	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
-	{
-		Add(button_play);
-		Add(button_pause);
-		Add(button_stop);
-		Add(button_prev);
-		Add(button_next);
-		Add(button_open);
-	}
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0) Add(player);
 
 	Add(info_divider);
 	Add(info_bottom);
@@ -528,6 +479,10 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 
 	joblist->RemoveAllTracks();
 
+	Registry	&boca = Registry::Get();
+
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0) DeleteObject(player);
+
 	DeleteObject(joblist);
 
 	DeleteObject(shortcut_previous);
@@ -536,16 +491,6 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 	DeleteObject(check_single);
 	DeleteObject(check_cuesheet);
 	DeleteObject(check_playlist);
-
-	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
-	{
-		DeleteObject(button_play);
-		DeleteObject(button_pause);
-		DeleteObject(button_stop);
-		DeleteObject(button_prev);
-		DeleteObject(button_next);
-		DeleteObject(button_open);
-	}
 
 	DeleteObject(info_divider);
 	DeleteObject(info_bottom);
@@ -664,59 +609,6 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 
 	SetText(i18n->TranslateString("Joblist"));
 
-	static Bool	 prevRTL = i18n->IsActiveLanguageRightToLeft();
-
-	/* Rearrange playback buttons if language direction changed.
-	 */
-	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
-	{
-		if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
-		{
-			button_play->Hide();
-			button_pause->Hide();
-			button_stop->Hide();
-			button_prev->Hide();
-			button_next->Hide();
-			button_open->Hide();
-
-			Point	 pos;
-
-			pos.x = 138 - (i18n->IsActiveLanguageRightToLeft() ? 110 : 0);
-			pos.y = -1;
-
-			button_play->SetPosition(pos);
-
-			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-			button_pause->SetPosition(pos);
-
-			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-			button_stop->SetPosition(pos);
-
-			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-			button_prev->SetPosition(pos);
-
-			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-			button_next->SetPosition(pos);
-
-			pos.x -= 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
-
-			button_open->SetPosition(pos);
-
-			button_play->Show();
-			button_pause->Show();
-			button_stop->Show();
-			button_prev->Show();
-			button_next->Show();
-			button_open->Show();
-		}
-
-		prevRTL = i18n->IsActiveLanguageRightToLeft();
-	}
-
 	/* Hide all affected widgets prior to changing
 	 * labels to avoid flickering.
 	 */
@@ -801,8 +693,8 @@ Void BonkEnc::LayerJoblist::FillMenus()
 
 	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
-		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&LayerJoblist::PlaySelectedItem, this);
-		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&LayerJoblist::StopPlayback, this);
+		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&LayerPlayer::PlaySelectedItem, player);
+		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&LayerPlayer::StopPlayback, player);
 		menu_trackmenu->AddEntry();
 	}
 
@@ -931,14 +823,6 @@ Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 
 Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 {
-	Playback	*player = Playback::Get();
-
-	if (player->IsPlaying())
-	{
-		if	(track.GetTrackID()					 == player->player_entry_id) StopPlayback();
-		else if (joblist->GetNthTrack(player->player_entry).GetTrackID() != player->player_entry_id) player->player_entry--;
-	}
-
 	/* Clear and deactivate edit boxes if the removed track
 	 * was selected or it was the last one in the joblist.
 	 */
@@ -966,8 +850,6 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 
 Void BonkEnc::LayerJoblist::OnJoblistRemoveAllTracks()
 {
-	if (Playback::Get()->IsPlaying()) StopPlayback();
-
 	/* Clear and deactivate edit boxes.
 	 */
 	dontUpdateInfo = True;
@@ -1382,43 +1264,6 @@ Void BonkEnc::LayerJoblist::ToggleEditPopup()
 	menu_case_all->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
 	menu_case_all->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
 	menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
-}
-
-Void BonkEnc::LayerJoblist::PlaySelectedItem()
-{
-	Playback::Get()->Play(joblist->GetSelectedEntryNumber(), joblist);
-}
-
-Void BonkEnc::LayerJoblist::PauseResumePlayback()
-{
-	Playback	*player = Playback::Get();
-
-	if (!player->IsPlaying()) return;
-
-	if (player->IsPaused()) player->Resume();
-	else			player->Pause();
-}
-
-Void BonkEnc::LayerJoblist::StopPlayback()
-{
-	Playback	*player = Playback::Get();
-
-	if (!player->IsPlaying()) return;
-
-	player->Stop();
-}
-
-Void BonkEnc::LayerJoblist::OpenCDTray()
-{
-	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
-
-	if (info != NIL)
-	{
-		info->OpenNthDeviceTray(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
-
-		boca.DeleteComponent(info);
-	}
 }
 
 String BonkEnc::LayerJoblist::SecondsToString(Int seconds)

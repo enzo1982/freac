@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,6 +20,7 @@ using namespace smooth::GUI;
 namespace BonkEnc
 {
 	class JobList;
+	class LayerPlayer;
 
 	const Int	 CHARSET_ISO_8859_1	= 0;
 	const Int	 CHARSET_ISO_8859_2	= 1;
@@ -100,19 +101,14 @@ namespace BonkEnc
 			Hotspot			*htsp_edit_year;
 			Hotspot			*htsp_edit_genre;
 
-			Button			*button_play;
-			Button			*button_pause;
-			Button			*button_stop;
-			Button			*button_prev;
-			Button			*button_next;
-			Button			*button_open;
-
 			PopupMenu		*menu_trackmenu;
 
 			JobList			*joblist;
 
 			Shortcut		*shortcut_previous;
 			Shortcut		*shortcut_next;
+
+			LayerPlayer		*player;
 
 			Bool			 dontUpdateInfo;
 
@@ -179,11 +175,6 @@ namespace BonkEnc
 			Void			 OnSelectEncoder();
 
 			Void			 ToggleEditPopup();
-
-			Void			 PlaySelectedItem();
-			Void			 PauseResumePlayback();
-			Void			 StopPlayback();
-			Void			 OpenCDTray();
 
 			Void			 UseStringForSelectedTracks();
 			Void			 InterpretStringAs();
