@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -88,7 +88,7 @@ Error BonkEnc::JobAddFiles::Perform()
 
 		Info	 info = track.GetInfo();
 
-		if (info.artist == NIL && info.title == NIL && !file.StartsWith("cdda://"))
+		if (info.artist == NIL && info.title == NIL && !file.StartsWith("device://"))
 		{
 			String			 fileName = File(file).GetFileName();
 

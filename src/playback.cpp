@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,6 +17,10 @@
 #include <engine/converter.h>
 #include <engine/decoder.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#endif
+
 using namespace BoCA;
 using namespace BoCA::AS;
 
@@ -25,6 +29,8 @@ BonkEnc::Playback *BonkEnc::Playback::instance = NIL;
 BonkEnc::Playback::Playback()
 {
 	playing = False;
+
+	newPosition = -1;
 }
 
 BonkEnc::Playback::~Playback()
@@ -90,8 +96,19 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 
 Int BonkEnc::Playback::PlayThread()
 {
-	player_activedrive = BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	/* Find system byte order.
+	 */
+	Int	 systemByteOrder = ntohs(0xFF00) == 0xFF00 ? BYTE_RAW : BYTE_INTEL;
+
+	/* Save active drive.
+	 */
+	player_activedrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
  
+	/* Get track info.
+	 */
 	Track		 trackInfo = joblist->GetNthTrack(player_entry);
 	const Format	&format = trackInfo.GetFormat();
 
@@ -102,6 +119,8 @@ Int BonkEnc::Playback::PlayThread()
 		return Error();
 	}
 
+	/* Create decoder.
+	 */
 	Decoder	*decoder = new Decoder();
 
 	if (!decoder->Create(trackInfo.origFilename, trackInfo))
@@ -112,6 +131,10 @@ Int BonkEnc::Playback::PlayThread()
 
 		return Error();
 	}
+
+	/* Notify application aboud track playback.
+	 */
+	onPlay.Emit(trackInfo);
 
 	/* Create output component.
 	 */
@@ -131,30 +154,53 @@ Int BonkEnc::Playback::PlayThread()
 	{
 		Int64		 position	= 0;
 		UnsignedLong	 samples_size	= 512;
-		Int		 loop		= 0;
-		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
 
 		Int			 bytesPerSample = format.bits / 8;
 		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample * format.channels);
 
 		while (!stop_playback)
 		{
+			/* Seek if requested.
+			 */
+			if (newPosition >= 0)
+			{
+				if	(trackInfo.length	>= 0) position = trackInfo.length		    / 1000 * newPosition;
+				else if (trackInfo.approxLength >= 0) position = trackInfo.approxLength		    / 1000 * newPosition;
+				else				      position = (240 * trackInfo.GetFormat().rate) / 1000 * newPosition;
+
+				decoder->Seek(position);
+
+				newPosition = -1;
+			}
+
+			/* Find step size.
+			 */
 			Int	 step = samples_size;
 
 			if (trackInfo.length >= 0)
 			{
-				if (loop++ >= n_loops) break;
+				if (position >= trackInfo.length) break;
 
 				if (position + step > trackInfo.length) step = trackInfo.length - position;
 			}
 
+			/* Read samples.
+			 */
 			Int	 bytes = decoder->Read(buffer, step * bytesPerSample * format.channels);
 
 			if (bytes == 0) break;
 
-			if (format.order == BYTE_RAW) Utilities::SwitchBufferByteOrder(buffer, bytesPerSample);
+			/* Switch byte order to native.
+			 */
+			if (format.order != BYTE_NATIVE && format.order != systemByteOrder) Utilities::SwitchBufferByteOrder(buffer, bytesPerSample);
 
+			/* Update position and write data.
+			 */
 			position += (bytes / bytesPerSample / format.channels);
+
+			if	(trackInfo.length	>= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / trackInfo.length		       * position : 1000.0 / trackInfo.length			* position);
+			else if (trackInfo.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / trackInfo.approxLength	       * position : 1000.0 / trackInfo.approxLength		* position);
+			else				      onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * trackInfo.GetFormat().rate) * position : 1000.0 / (240 * trackInfo.GetFormat().rate) * position);
 
 			while (output->CanWrite() < bytes && !stop_playback) S::System::System::Sleep(10);
 
@@ -170,8 +216,12 @@ Int BonkEnc::Playback::PlayThread()
 
 	delete decoder;
 
-	BoCA::Config::Get()->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, player_activedrive);
+	/* Restore active drive setting.
+	 */
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, player_activedrive);
 
+	/* Reset entry text color.
+	 */
 	ListEntry	*entry = joblist->GetNthEntry(player_entry);
 
 	if (entry != NIL)
@@ -182,6 +232,12 @@ Int BonkEnc::Playback::PlayThread()
 
 		entry->SetFont(font);
 	}
+
+	/* Notify application about finished playback.
+	 */
+	stop_playback = True;
+
+	onFinish.Emit(trackInfo);
 
 	playing = false;
 
@@ -206,13 +262,23 @@ Void BonkEnc::Playback::Resume()
 	paused = False;
 }
 
+Void BonkEnc::Playback::SetPosition(Int position)
+{
+	if (!playing) return;
+
+	newPosition = position;
+}
+
 Void BonkEnc::Playback::Stop()
 {
 	if (!playing) return;
 
-	stop_playback = True;
+	if (!stop_playback)
+	{
+		stop_playback = True;
 
-	while (playing) S::System::System::Sleep(10);
+		while (playing) S::System::System::Sleep(10);
+	}
 }
 
 Void BonkEnc::Playback::Previous()

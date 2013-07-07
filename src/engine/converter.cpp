@@ -99,6 +99,10 @@ Int BonkEnc::Converter::ConverterThread()
 	Bool	 removeProcessedTracks = config->GetIntValue(Config::CategorySettingsID, Config::SettingsRemoveTracksID, Config::SettingsRemoveTracksDefault);
 	Bool	 addEncodedTracks      = config->GetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, Config::SettingsAddEncodedTracksDefault);
 
+	/* Find system byte order.
+	 */
+	Int	 systemByteOrder	= ntohs(0xFF00) == 0xFF00 ? BYTE_RAW : BYTE_INTEL;
+
 	/* Perform necessary checks.
 	 */
 	if (encodeToSingleFile)
@@ -416,8 +420,6 @@ Int BonkEnc::Converter::ConverterThread()
 		Int64		 trackLength	= 0;
 		Int64		 position	= 0;
 		UnsignedLong	 samples_size	= 512;
-		Int		 loop		= 0;
-		Int64		 n_loops	= (trackInfo.length + samples_size - 1) / samples_size;
 
 		progress->InitTrackProgressValues();
 		progress->ResumeTotalProgress();
@@ -431,20 +433,28 @@ Int BonkEnc::Converter::ConverterThread()
 
 			if (trackInfo.length >= 0)
 			{
-				if (loop++ >= n_loops) break;
+				if (position >= trackInfo.length) break;
 
 				if (position + step > trackInfo.length) step = trackInfo.length - position;
 			}
 
+			/* Read samples from decoder.
+			 */
 			Int	 bytes = decoder->Read(buffer, step * bytesPerSample * format.channels);
 
 			if	(bytes == -1) { stop = True; break; }
 			else if (bytes ==  0)		     break;
 
-			if (format.order == BYTE_RAW) Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
+			/* Switch byte order to native.
+			 */
+			if (format.order != BYTE_NATIVE && format.order != systemByteOrder) Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
 
+			/* Pass samples to encoder.
+			 */
 			if (encoder->Write(buffer, bytes) == -1) { stop = True; break; }
 
+			/* Update length and position info.
+			 */
 			trackLength += (bytes / bytesPerSample / format.channels);
 
 			if (trackInfo.length >= 0) position += (bytes / bytesPerSample / format.channels);
@@ -457,6 +467,8 @@ Int BonkEnc::Converter::ConverterThread()
 				skip = True;
 			}
 
+			/* Pause if requested.
+			 */
 			if (paused)
 			{
 				progress->PauseTrackProgress();
@@ -468,6 +480,8 @@ Int BonkEnc::Converter::ConverterThread()
 				progress->ResumeTotalProgress();
 			}
 
+			/* Update progress values.
+			 */
 			progress->UpdateProgressValues(trackInfo, position);
 		}
 
@@ -713,8 +727,7 @@ Bool BonkEnc::Converter::CheckSingleFileSampleFormat()
 
 		if (track.GetFormat().channels != referenceTrack.GetFormat().channels ||
 		    track.GetFormat().rate     != referenceTrack.GetFormat().rate     ||
-		    track.GetFormat().bits     != referenceTrack.GetFormat().bits     ||
-		    track.GetFormat().order    != referenceTrack.GetFormat().order) return False;
+		    track.GetFormat().bits     != referenceTrack.GetFormat().bits) return False;
 	}
 
 	return True;

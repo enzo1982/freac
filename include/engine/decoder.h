@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -35,6 +35,8 @@ namespace BonkEnc
 			Bool				 GetStreamInfo(BoCA::Track &);
 
 			Int				 Read(Buffer<UnsignedByte> &, Int);
+
+			Bool				 Seek(Int64);
 
 			Int64				 GetInBytes() const;
 			String				 GetDecoderName() const;

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,6 +37,8 @@ namespace BonkEnc
 			Bool					 playing;
 			Bool					 paused;
 
+			Int					 newPosition;
+
 			Bool					 stop_playback;
 
 			Int					 player_activedrive;
@@ -50,6 +52,8 @@ namespace BonkEnc
 
 			Void					 Pause();
 			Void					 Resume();
+
+			Void					 SetPosition(Int);
 
 			Void					 Previous();
 			Void					 Next();
@@ -67,8 +71,9 @@ namespace BonkEnc
 			Bool					 IsPlaying() const	{ return playing; }
 			Bool					 IsPaused() const	{ return paused; }
 		signals:
-			Signal2<Void, const BoCA::Track *, Int>	 onPlayTrack;
-			Signal0<Void>				 onFinishTrack;
+			Signal1<Void, const BoCA::Track &>	 onPlay;
+			Signal1<Void, Int>			 onProgress;
+			Signal1<Void, const BoCA::Track &>	 onFinish;
 	};
 };
 

@@ -660,9 +660,9 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 			if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO && mcdi.GetNthEntryTrackNumber(i) == i + 1)
 			{
-				/* Get CD track info using a cdda:// URI
+				/* Get CD track info using a device:// URI
 				 */
-				String			 uri = String("cdda://")
+				String			 uri = String("device://cdda:")
 							      .Append(String::FromInt(activedrive))
 							      .Append("/")
 							      .Append(String::FromInt(mcdi.GetNthEntryTrackNumber(i)));

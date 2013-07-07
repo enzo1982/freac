@@ -311,12 +311,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READ);
 				String		 currentFile = files.GetNth(i);
 
-				if (currentFile.StartsWith("cdda://"))
+				if (currentFile.StartsWith("device://cdda:"))
 				{
-					currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
+					currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
 				}
 
-				if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("cdda://"))
+				if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
 				{
 					delete in;
 
@@ -361,12 +361,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READ);
 				String		 currentFile = files.GetNth(i);
 
-				if (currentFile.StartsWith("cdda://"))
+				if (currentFile.StartsWith("device://cdda:"))
 				{
-					currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 4));
+					currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
 				}
 
-				if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("cdda://"))
+				if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
 				{
 					delete in;
 
@@ -543,14 +543,14 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 			Int	 first = current.Head(dash).ToInt();
 			Int	 last = current.Tail(current.Length() - dash - 1).ToInt();
 
-			for (Int i = first; i <= last; i++) (*files).Add(String("cdda://")
+			for (Int i = first; i <= last; i++) (*files).Add(String("device://cdda:")
 									.Append(String::FromInt(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
 									.Append("/")
 									.Append(String::FromInt(i)));
 		}
 		else
 		{
-			(*files).Add(String("cdda://")
+			(*files).Add(String("device://cdda:")
 				    .Append(String::FromInt(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
 				    .Append("/")
 				    .Append(current));

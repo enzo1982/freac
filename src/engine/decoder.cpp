@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -34,8 +34,8 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 
 	Registry	&boca = Registry::Get();
 
-	if (nFileName.StartsWith("cdda://")) f_in = new InStream(STREAM_DRIVER, &zero_in);
-	else				     f_in = new InStream(STREAM_FILE, nFileName, IS_READ);
+	if (nFileName.StartsWith("device://")) f_in = new InStream(STREAM_DRIVER, &zero_in);
+	else				       f_in = new InStream(STREAM_FILE, nFileName, IS_READ);
 
 	f_in->SetPackageSize(track.length >= 0 ? 196608 : 12288);
 
@@ -128,6 +128,11 @@ Bool BonkEnc::Decoder::GetStreamInfo(Track &track)
 Int BonkEnc::Decoder::Read(Buffer<UnsignedByte> &buffer, Int bytes)
 {
 	return f_in->InputData(buffer, bytes);
+}
+
+Bool BonkEnc::Decoder::Seek(Int64 sample)
+{
+	return filter_in->Seek(sample);
 }
 
 Int64 BonkEnc::Decoder::GetInBytes() const

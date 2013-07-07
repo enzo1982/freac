@@ -10,6 +10,7 @@
 
 #include <startgui.h>
 #include <joblist.h>
+#include <playback.h>
 #include <config.h>
 #include <utilities.h>
 #include <resources.h>
@@ -306,7 +307,7 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 	/* Stop playback if playing a track
 	 */
-	tab_layer_joblist->StopPlayback();
+	Playback::Get()->Stop();
 
 	/* Notify components that we are about to quit.
 	 */
