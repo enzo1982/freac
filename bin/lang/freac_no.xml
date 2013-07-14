@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -395,5 +395,6 @@
     <entry id="410" string="usd">eur</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="416" string="Default">Standard</entry>
   </data>
 </LangFile>

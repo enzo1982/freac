@@ -46,7 +46,7 @@ BonkEnc::Debug		*BonkEnc::debug_out;
  */
 String	 BonkEnc::BonkEnc::appName	= "fre:ac";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
-String	 BonkEnc::BonkEnc::version	= "v1.0.21 Beta 1";
+String	 BonkEnc::BonkEnc::version	= "v1.0.21";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.21";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.17";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";

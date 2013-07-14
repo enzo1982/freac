@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -86,7 +86,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	combo_preset->AddEntry("2");
 	combo_preset->AddEntry("3");
 	combo_preset->AddEntry("4");
-	combo_preset->AddEntry("5");
+	combo_preset->AddEntry(String("5").Append(", ").Append(BonkEnc::i18n->TranslateString("Default")));
 	combo_preset->AddEntry("6");
 	combo_preset->AddEntry("7");
 	combo_preset->AddEntry(String("8").Append(", ").Append(BonkEnc::i18n->TranslateString("Best compression")));

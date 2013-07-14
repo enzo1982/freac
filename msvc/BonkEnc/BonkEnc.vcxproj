@@ -186,7 +186,6 @@
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\cuesheet.cpp" />
     <ClCompile Include="..\..\src\debug.cpp" />
-    <ClCompile Include="..\..\src\directories.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
     <ClCompile Include="..\..\src\encoder.cpp" />
     <ClCompile Include="..\..\src\joblist.cpp" />

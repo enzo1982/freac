@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -212,7 +212,7 @@ Bool BonkEnc::Config::LoadSettings()
 	faac_enable_id3				= config->GetIntValue("FAAC", "AllowID3V2", 0);
 	faac_enable_mp4				= config->GetIntValue("FAAC", "MP4Container", 1);
 
-	flac_preset				= config->GetIntValue("FLAC", "Preset", -1);
+	flac_preset				= config->GetIntValue("FLAC", "Preset", 5);
 	flac_streamable_subset			= config->GetIntValue("FLAC", "StreamableSubset", 1);
 	flac_do_mid_side_stereo			= config->GetIntValue("FLAC", "DoMidSideStereo", 1);
 	flac_loose_mid_side_stereo		= config->GetIntValue("FLAC", "LooseMidSideStereo", 0);
@@ -222,8 +222,8 @@ Bool BonkEnc::Config::LoadSettings()
 	flac_qlp_coeff_precision		= config->GetIntValue("FLAC", "QLPCoeffPrecision", 0);
 	flac_do_qlp_coeff_prec_search		= config->GetIntValue("FLAC", "DoQLPCoeffPrecSearch", 0);
 	flac_do_exhaustive_model_search		= config->GetIntValue("FLAC", "DoExhaustiveModelSearch", 0);
-	flac_min_residual_partition_order	= config->GetIntValue("FLAC", "MinResidualPartitionOrder", 3);
-	flac_max_residual_partition_order	= config->GetIntValue("FLAC", "MaxResidualPartitionOrder", 3);
+	flac_min_residual_partition_order	= config->GetIntValue("FLAC", "MinResidualPartitionOrder", 0);
+	flac_max_residual_partition_order	= config->GetIntValue("FLAC", "MaxResidualPartitionOrder", 5);
 
 	tvq_bitrate				= config->GetIntValue("TwinVQ", "Bitrate", 48);
 	tvq_presel_candidates			= config->GetIntValue("TwinVQ", "PreselectionCandidates", 32);

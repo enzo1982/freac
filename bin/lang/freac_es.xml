@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -254,7 +254,6 @@
     <entry id="250" string="Keep ripped Wave files">Mantener ficheros wav extraídos</entry>
     <entry id="251" string="ripping/decoding">extrayendo/decodificando</entry>
     <entry id="252" string="encoding">codificando</entry>
-    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Utilizar nombres Unicode</entry>
     <entry id="255" string="AAC Files">Ficheros AAC</entry>
     <entry id="256" string="MP4 Files">Ficheros MP4</entry>
@@ -267,10 +266,6 @@
     <entry id="263" string="Sampling rate">Velocidad de muestreo</entry>
     <entry id="264" string="Sample resolution">Resolución de la muestra</entry>
     <entry id="265" string="Number of samples">Número de muestras</entry>
-    <entry id="266" string="Mono"/>
-    <entry id="267" string="bytes"/>
-    <entry id="268" string="bit"/>
-    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Crear lista de reproducción</entry>
     <entry id="271" string="Create cue sheet">Crear cue sheet</entry>
     <entry id="272" string="Write ID3v1 tags">Grabar ID3v1-Tags</entry>

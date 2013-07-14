@@ -409,11 +409,12 @@
     <entry id="407" string="Please support this project!">Пожалуйста поддержите этот проект!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Помогите пожалуйста сохранить эту программу свободной&#10;поддержав проект %1&#10;&#10;Нажмите одну из кнопок ниже для помощи через PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Также вы можете отправить деньги %1 через PayPal напрямую&#10;&#10;Пожалуйста напишите %1 если вы хотите помочь через&#10;электронный перевод, прислать чек или деньги письмом</entry>
-    <entry id="410" string="usd">USD</entry>
-    <entry id="411" string="en">англ</entry>
+    <entry id="410" string="usd">usd</entry>
+    <entry id="411" string="en">en</entry>
     <entry id="412" string="Thank you very much!">Большое спасибо!</entry>
     <entry id="413" string="Remind me later">Напомнить позже</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">Граббер</entry>
+    <entry id="416" string="Default">Умолчание</entry>
   </data>
 </LangFile>

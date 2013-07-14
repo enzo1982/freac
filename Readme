@@ -1,4 +1,4 @@
-fre:ac version 1.0.21 Beta 1
+fre:ac version 1.0.21
 
 fre:ac is a free and open source audio converter for various formats.
 It supports audio CD ripping and converts the following audio formats:
@@ -32,6 +32,11 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
+
+	Version 1.0.21 (July 2013)
+
+		- updated Romanian and Swedish translations
+		- changed default settings for FLAC
 
 	Version 1.0.21 Beta 1 (June 2013)
 
@@ -384,23 +389,23 @@ Special thanks to
 			   Evgeny Kozlov (Russian),
 			   Henryk Ning (Chinese, traditional),
 			   Joeyong Jen (Chinese, simplified),
-			   Michal Trzebiatowski & Darek Rzeznicki (Polish),
+			   Michal Trzebiatowski and Darek Rzeznicki (Polish),
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
-			   Wim Garreyn & Thomas De Rocker (Dutch),
+			   Wim Garreyn and Thomas De Rocker (Dutch),
 			   Nebojša Nikolic (Serbian),
 			   Jan Parttimaa (Finnish),
 			   Julius Faltus (Czech),
 			   Escada (Portuguese, Brazilian),
 			   Odyssey (Korean),
 			   Jan Arni Jacobsen (Danish),
-			   Anton Mjoernebrant (Swedish),
+			   Mikael Hiort af Ornäs and Anton Mjoernebrant (Swedish),
 			   Peter Krajcar (Slovak),
 			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Turkish),
 			   Naglis Jonaitis (Lithuanian),
-			   Borca Alin (Romanian),
+			   Borca Alin and Laurentiu Bubuianu (Romanian),
 			   El libre (Catalan),
 			   Vjatv (Valencian),
 			   Jose Goncalves (Portuguese),

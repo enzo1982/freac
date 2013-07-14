@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -417,5 +417,6 @@
     <entry id="413" string="Remind me later">Später erneut erinnern</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">Ripper</entry>
+    <entry id="416" string="Default">Standard</entry>
   </data>
 </LangFile>

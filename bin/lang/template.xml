@@ -417,5 +417,6 @@
     <entry id="413" string="Remind me later"/>
     <entry id="414" string="CDDB"/>
     <entry id="415" string="Ripper"/>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
