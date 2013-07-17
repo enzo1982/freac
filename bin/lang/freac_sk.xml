@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">Nastavenie zákl. komentárov:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Nahradiť existujúce komentáre defaultnými komentármi</entry>
 	<entry id="5504" string="Filename pattern">Vzor súborovej cesty</entry>
+	<entry id="5505" string="Encoding:">Kódovanie:</entry>
       </section>
     </section>
 

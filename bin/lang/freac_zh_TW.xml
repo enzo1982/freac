@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">預設註解字串：</entry>
 	<entry id="5503" string="Replace existing comments with default comment">以預設注解字串取代現有注解字串</entry>
 	<entry id="5504" string="Filename pattern">檔案名稱樣式</entry>
+	<entry id="5505" string="Encoding:">編碼：</entry>
       </section>
     </section>
 

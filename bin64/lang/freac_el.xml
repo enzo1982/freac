@@ -333,6 +333,7 @@
 	<entry id="5501" string="Tag formats">Κωδικοποίηση tag</entry>
 	<entry id="5502" string="Default comment string:">Προεπιλεγμένο σχόλιο:</entry>
 	<entry id="5504" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
+	<entry id="5505" string="Encoding:">Κωδικοποίηση:</entry>
       </section>
     </section>
 

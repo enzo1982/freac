@@ -336,6 +336,7 @@
 	<entry id="5501" string="Tag formats">Tägide kodeerimine</entry>
 	<entry id="5502" string="Default comment string:">Komentaarid vaikimisi</entry>
 	<entry id="5504" string="Filename pattern">Faili nime formeerimine</entry>
+	<entry id="5505" string="Encoding:">Kodeerimine:</entry>
       </section>
     </section>
 

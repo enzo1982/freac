@@ -340,6 +340,7 @@
 	<entry id="5502" string="Default comment string:">Domyślny opis:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Zastąp istniejące komentarze standardowymi komentarzami</entry>
 	<entry id="5504" string="Filename pattern">Wzór nazw plików</entry>
+	<entry id="5505" string="Encoding:">Kodowanie:</entry>
       </section>
     </section>
 

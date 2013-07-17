@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">默认注释：</entry>
 	<entry id="5503" string="Replace existing comments with default comment">使用默认注释替换当前注释</entry>
 	<entry id="5504" string="Filename pattern">文件名样式</entry>
+	<entry id="5505" string="Encoding:">编码：</entry>
       </section>
     </section>
 

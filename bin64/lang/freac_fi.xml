@@ -339,6 +339,7 @@
 	<entry id="5502" string="Default comment string:">Kommentin merkkijonon oletusarvo:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Korvaa olemassaolevat kommentit alkuperäisillä kommenteilla</entry>
 	<entry id="5504" string="Filename pattern">Mallitiedosto</entry>
+	<entry id="5505" string="Encoding:">Muunnetaan:</entry>
       </section>
 
       <section name="Interface"/>

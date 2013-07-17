@@ -332,6 +332,7 @@
 	<entry id="5501" string="Tag formats">Etiqueta de Codificacio</entry>
 	<entry id="5502" string="Default comment string:">Comentari per defecte:</entry>
 	<entry id="5504" string="Filename pattern">Patro del nom d'archiu</entry>
+	<entry id="5505" string="Encoding:">Codificacio:</entry>
       </section>
     </section>
 

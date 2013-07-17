@@ -336,6 +336,7 @@
 	<entry id="5501" string="Tag formats">Etiket-kodadoj</entry>
 	<entry id="5502" string="Default comment string:">Standardkomento:</entry>
 	<entry id="5504" string="Filename pattern">Modelo por dosiernomo</entry>
+	<entry id="5505" string="Encoding:">Signokodo:</entry>
       </section>
     </section>
 

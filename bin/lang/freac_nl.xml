@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">Standaardcommentaar:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Bestaande opmerkingen vervangen door standaardcommentaar</entry>
 	<entry id="5504" string="Filename pattern">Bestandspatroon</entry>
+	<entry id="5505" string="Encoding:">Coderen:</entry>
       </section>
     </section>
 

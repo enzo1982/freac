@@ -332,6 +332,7 @@
 	<entry id="5501" string="Tag formats">Codificación Tag</entry>
 	<entry id="5502" string="Default comment string:">Comentario por defecto:</entry>
 	<entry id="5504" string="Filename pattern">Patrón de nombre de archivo</entry>
+	<entry id="5505" string="Encoding:">Codificación:</entry>
       </section>
     </section>
 

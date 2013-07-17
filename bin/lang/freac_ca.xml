@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">Comentari per defecte:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Reemplaça els comentaris existents amb el comentari per defecte</entry>
 	<entry id="5504" string="Filename pattern">Patró de nom d'arxiu</entry>
+	<entry id="5505" string="Encoding:">Codificació:</entry>
       </section>
     </section>
 

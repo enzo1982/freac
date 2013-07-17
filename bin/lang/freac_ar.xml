@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -339,6 +339,7 @@
 	<entry id="5502" string="Default comment string:">اصطفاف تعليق افتراضي:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">تعويض التعليقات الموجودة بالتعليق الإفتراضي</entry>
 	<entry id="5504" string="Filename pattern">نمط اسم ملف</entry>
+	<entry id="5505" string="Encoding:">الترميز:</entry>
       </section>
     </section>
 

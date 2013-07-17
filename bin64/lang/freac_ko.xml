@@ -245,6 +245,7 @@
 	<entry id="5500" string="Tags">정보 태그</entry>
 	<entry id="5502" string="Default comment string:">초기 멘트:</entry>
 	<entry id="5504" string="Filename pattern">파일명 방식</entry>
+	<entry id="5505" string="Encoding:">인코딩:</entry>
       </section>
     </section>
 

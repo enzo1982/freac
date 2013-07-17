@@ -326,7 +326,7 @@
 	<entry id="5400" string="Select language:">Dil seçin:</entry>
 	<entry id="5401" string="Edit language file">Dil dosyasını düzenle</entry>
 	<entry id="5402" string="Information">Bilgi</entry>
-	<entry id="5403" string="Encoding">Karakter Seti</entry>
+	<entry id="5403" string="Encoding">Karakter seti</entry>
 	<entry id="5404" string="Author">Çeviren</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">Varsayılan yorum metni:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Varolan yorumları varsayılan yorumla değiştir</entry>
 	<entry id="5504" string="Filename pattern">Dosya adı şablonu</entry>
+	<entry id="5505" string="Encoding:">Karakter seti:</entry>
       </section>
     </section>
 

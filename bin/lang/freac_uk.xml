@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">Коментарі за замовчуванням:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Замінити існуючі коментарі на коментарі за замовчуванням</entry>
 	<entry id="5504" string="Filename pattern">Формування назви файлу</entry>
+	<entry id="5505" string="Encoding:">Кодування:</entry>
       </section>
     </section>
 

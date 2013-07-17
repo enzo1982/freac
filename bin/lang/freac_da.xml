@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">Standard kommentar streng:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Erstat eksisterende kommentar med standard kommentar</entry>
 	<entry id="5504" string="Filename pattern">Filnavn mønster</entry>
+	<entry id="5505" string="Encoding:">Koder:</entry>
       </section>
     </section>
 
@@ -549,6 +550,7 @@
 	  <entry id="34106" string="Joint Stereo">Samlet Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Adaptiv Samlet Stereo</entry>
 	  <entry id="34108" string="File format">Fil format</entry>
+	  <entry id="34109" string="Default">Standard</entry>
 	</section>
 
 	<section name="Format">

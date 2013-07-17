@@ -337,6 +337,7 @@
 	<entry id="5502" string="Default comment string:">Comentário padrão:</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Substituir comentários existentes pelo comentário padrão</entry>
 	<entry id="5504" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
+	<entry id="5505" string="Encoding:">Codificando:</entry>
       </section>
     </section>
 

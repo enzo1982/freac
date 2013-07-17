@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -245,6 +245,7 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">תגיות מידע</entry>
 	<entry id="5504" string="Filename pattern">צורת שם קובץ</entry>
+	<entry id="5505" string="Encoding:">מבצע קידוד:</entry>
       </section>
     </section>
 

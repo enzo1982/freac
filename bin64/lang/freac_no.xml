@@ -336,6 +336,7 @@
 	<entry id="5501" string="Tag formats">Merkekodinger</entry>
 	<entry id="5502" string="Default comment string:">Standardkommentar:</entry>
 	<entry id="5504" string="Filename pattern">Filnavnmønster</entry>
+	<entry id="5505" string="Encoding:">Koder:</entry>
       </section>
     </section>
 
@@ -546,6 +547,7 @@
 	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Tilpasselig Joint-Stereo</entry>
 	  <entry id="34108" string="File format">Filformat</entry>
+	  <entry id="34109" string="Default">Standard</entry>
 	</section>
 
 	<section name="Format">

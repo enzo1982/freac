@@ -339,6 +339,7 @@
 	<entry id="5502" string="Default comment string:">デフォルト コメント：</entry>
 	<entry id="5503" string="Replace existing comments with default comment">既存のコメントをデフォルトのコメントに置き換え</entry>
 	<entry id="5504" string="Filename pattern">ファイル名パターン</entry>
+	<entry id="5505" string="Encoding:">エンコード：</entry>
       </section>
     </section>
 
