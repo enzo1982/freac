@@ -629,7 +629,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 				comments.Add(cdInfo.trackComments.GetNth(i), handle);
 				albums.Add(cdInfo.dTitle, handle);
 				genres.Add(cdInfo.dGenre, handle);
-				years.Add(cdInfo.dYear > 0 ? String::FromInt(cdInfo.dYear) : String(NIL), handle);
+				years.Add(cdInfo.dYear > 0 ? String::FromInt(cdInfo.dYear) : String(), handle);
 				data.Add(False, handle);
 			}
 			else

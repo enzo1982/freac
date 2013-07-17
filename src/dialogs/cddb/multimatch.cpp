@@ -162,7 +162,7 @@ Void BonkEnc::cddbMultiMatchDlg::LoadPreview(Int index)
 
 		for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 		{
-			preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNth(i)).Append(" - ") : String(NIL)).Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
+			preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNth(i)).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
 		}
 
 		text_loading_preview->Hide();

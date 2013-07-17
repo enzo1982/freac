@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -138,7 +138,7 @@ Int BonkEnc::ConfigureInterface::SaveSettings()
 	{
 		ListEntry	*entry = list_fields->GetNthEntry(i);
 
-		if (entry->IsMarked()) fields = fields.Append(fields != NIL ? "," : "").Append(entry->GetText());
+		if (entry->IsMarked()) fields = fields.Append(fields != NIL ? "," : NIL).Append(entry->GetText());
 	}
 
 	BoCA::Config::Get()->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, fields);

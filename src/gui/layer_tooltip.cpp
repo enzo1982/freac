@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -63,8 +63,8 @@ const String &BonkEnc::LayerTooltip::GetTooltipText(const Track &track)
 		  Append(i18n->TranslateString("Size")).Append(": ").Append(track.GetFileSizeString()).Append(" ").Append(i18n->TranslateString("bytes")).Append("\n").
 		  Append(i18n->TranslateString("Artist")).Append(": ").Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append("\n").
 		  Append(i18n->TranslateString("Title")).Append(": ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append("\n").
-		  Append(track.length > 0 || track.approxLength > 0 ? String(i18n->TranslateString("Length")).Append(": ").Append(track.GetLengthString()).Append(" ").Append(i18n->TranslateString("min")).Append("\n") : String(NIL)).
-		  Append(track.length > 0 ? String(i18n->TranslateString("Number of samples")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track.length)).Append("\n") : String(NIL)).
+		  Append(track.length > 0 || track.approxLength > 0 ? String(i18n->TranslateString("Length")).Append(": ").Append(track.GetLengthString()).Append(" ").Append(i18n->TranslateString("min")).Append("\n") : String()).
+		  Append(track.length > 0 ? String(i18n->TranslateString("Number of samples")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(track.length)).Append("\n") : String()).
 		  Append(i18n->TranslateString("Sampling rate")).Append(": ").Append(S::I18n::Number::GetLocalizedNumberString(format.rate)).Append(" Hz\n").
 		  Append(i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(format.bits)).Append(" ").Append(i18n->TranslateString("bit")).Append("\n").
 		  Append(i18n->TranslateString("Channels")).Append(": ").Append(format.channels > 2 ? (format.channels != 4 && format.channels != 5 && format.channels <= 8 ? String::FromInt(format.channels - 1).Append(".1") : String::FromInt(format.channels)) : (format.channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo")));
