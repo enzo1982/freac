@@ -43,6 +43,8 @@ Void BonkEnc::BonkEncCommandline::Free()
 
 BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) : args(arguments)
 {
+	Registry	&boca	= Registry::Get();
+
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -85,8 +87,6 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	}
 
 	ScanForFiles(&files);
-
-	Registry	&boca = Registry::Get();
 
 	if (config->cdrip_numdrives > 0)
 	{
