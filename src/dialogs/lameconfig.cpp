@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -137,7 +137,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.x += 106;
 	pos.y += 2;
 
-	basic_text_bitrate	= new Text("", pos);
+	basic_text_bitrate	= new Text(NIL, pos);
 	SetBitrate();
 
 	pos.x -= 83;
@@ -176,7 +176,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.x += 144;
 	pos.y += 2;
 
-	basic_text_quality	= new Text("", pos);
+	basic_text_quality	= new Text(NIL, pos);
 	SetQuality();
 
 	pos.y += 17;
@@ -260,7 +260,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.x = 372;
 	pos.y += 2;
 
-	vbr_text_quality	= new Text("", pos);
+	vbr_text_quality	= new Text(NIL, pos);
 	SetVBRQuality();
 
 	pos.y += 17;
@@ -290,7 +290,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.y -= 1;
 	size.cx = 25;
 
-	vbr_edit_abrbitrate	= new EditBox("", pos, size, 3);
+	vbr_edit_abrbitrate	= new EditBox(NIL, pos, size, 3);
 	vbr_edit_abrbitrate->SetFlags(EDB_NUMERIC);
 	vbr_edit_abrbitrate->onInput.Connect(&ConfigureLameEnc::SetABRBitrateByEditBox, this);
 	SetABRBitrate();
@@ -342,7 +342,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.x += 168;
 	pos.y += 2;
 
-	vbr_text_max_brate_kbps	= new Text("", pos);
+	vbr_text_max_brate_kbps	= new Text(NIL, pos);
 
 	SetMinVBRBitrate();
 	SetMaxVBRBitrate();

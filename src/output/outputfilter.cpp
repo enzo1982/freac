@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -96,9 +96,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(track, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(track, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(String(format->track < 10 ? "0" : "").Append(String::FromInt(format->track))).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(format->track < 10 ? "0" : "").Append(String::FromInt(format->track)).ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), String(format->track < 10 ? "0" : "").Append(String::FromInt(format->track)));
+		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track))).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)).ConvertTo("UTF-16BE"));
+		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)));
 
 		ex_ID3Tag_AddFrame(tag, track);
 	}

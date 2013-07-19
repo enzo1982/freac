@@ -30,7 +30,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	currentConfig->enable_console = true;
 	currentConfig->appMain = this;
 
-	if (currentConfig->language == "") i18n->ActivateLanguage("internal");
+	if (currentConfig->language == NIL) i18n->ActivateLanguage("internal");
 
 	i18n->ActivateLanguage(currentConfig->language);
 
@@ -40,12 +40,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	Bool		 cddb		= ScanForParameter("-cddb", NULL);
 	Array<String>	 files;
 	String		 encoder	= "LAME";
-	String		 helpenc	= "";
+	String		 helpenc;
 	String		 outdir		= ".";
-	String		 outfile	= "";
+	String		 outfile;
 	String		 pattern	= "<artist> - <title>";
 	String		 cdDrive	= "0";
-	String		 tracks		= "";
+	String		 tracks;
 	String		 timeout	= "120";
 
 	ScanForParameter("-e", &encoder);

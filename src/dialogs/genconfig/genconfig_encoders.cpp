@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -62,7 +62,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	if (currentConfig->enable_blade)
 	{
 #ifdef __WIN32__
-		String		 bladeVersion = "";
+		String		 bladeVersion;
 		BE_VERSION	 beVer;
 
 		ex_beVersion(&beVer);
@@ -77,7 +77,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 
 	if (currentConfig->enable_faac)
 	{
-		String		 faacVersion = "";
+		String		 faacVersion;
 		UnsignedLong	 samples;
 		UnsignedLong	 buffer_size;
 		faacEncHandle	 faac = ex_faacEncOpen(44100, 2, &samples, &buffer_size);

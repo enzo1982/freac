@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -72,7 +72,7 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	pos.x = 7;
 	pos.y = 26;
 
-	text_status	= new Text("", pos);
+	text_status	= new Text(NIL, pos);
 	text_status->SetOrientation(OR_LOWERLEFT);
 
 	btn_delete->Deactivate();
@@ -169,7 +169,7 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 		btn_query->Deactivate();
 	}
 
-	text_status->SetText("");
+	text_status->SetText(NIL);
 }
 
 Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
@@ -180,5 +180,5 @@ Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
 
 	if (cddbQueries->QueryAll()) mainWnd->Close();
 
-	text_status->SetText("");
+	text_status->SetText(NIL);
 }

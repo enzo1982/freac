@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -91,7 +91,7 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 
 			if (format->track > 0)
 			{
-				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&track, "TRACKNUMBER", String(format->track < 10 ? "0" : "").Append(String::FromInt(format->track)));
+				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&track, "TRACKNUMBER", String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)));
 				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, track, false);
 			}
 

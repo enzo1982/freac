@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -107,7 +107,7 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 
 					k = 0;
 					n++;
-					extension = "";
+					extension = NIL;
 				}
 			}
 
@@ -222,7 +222,7 @@ BonkEnc::OutputFilter *BonkEnc::Utilities::CreateOutputFilter(Int encoder, Track
 
 Void BonkEnc::Utilities::FillGenreList(List *list)
 {
-	list->AddEntry("");
+	list->AddEntry(NIL);
 	list->AddEntry("A Cappella");
 	list->AddEntry("Acid");
 	list->AddEntry("Acid Jazz");

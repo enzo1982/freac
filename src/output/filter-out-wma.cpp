@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -220,7 +220,9 @@ Bool BonkEnc::FilterOutWMA::Deactivate()
 
 	while (bytesLeft)
 	{
-		driver->WriteData((UnsignedByte *) in.InputData(buffer, Math::Min(1024, bytesLeft)), Math::Min(1024, bytesLeft));
+		in.InputData(buffer, Math::Min(1024, bytesLeft));
+
+		driver->WriteData(buffer, Math::Min(1024, bytesLeft));
 
 		bytesLeft -= Math::Min(1024, bytesLeft);
 	}

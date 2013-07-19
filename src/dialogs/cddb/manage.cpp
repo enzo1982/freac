@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -84,7 +84,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	size.cx = 261;
 	size.cy = 186;
 
-	edit_preview	= new MultiEdit("", pos, size, 0);
+	edit_preview	= new MultiEdit(NIL, pos, size, 0);
 	edit_preview->Deactivate();
 
 	pos.y += 197;
@@ -106,7 +106,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	list_charset->AddEntry("GBK");
 	list_charset->AddEntry("BIG-5");
 
-	edit_charset	= new EditBox("", pos, size, 0);
+	edit_charset	= new EditBox(NIL, pos, size, 0);
 	edit_charset->SetDropDownList(list_charset);
 	edit_charset->onInput.Connect(&cddbManageDlg::SetCharset, this);
 
@@ -209,7 +209,7 @@ Void BonkEnc::cddbManageDlg::OK()
 						if (trackInfo->artist == NIL && trackInfo->title == NIL)	jlEntry = String(trackInfo->origFilename).Append("\t");
 						else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : currentConfig->appMain->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : currentConfig->appMain->i18n->TranslateString("unknown title")).Append("\t");
 
-						jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String("")).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
+						jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String()).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
 
 						if (currentConfig->appMain->joblist->GetNthEntry(l)->GetText() != jlEntry) currentConfig->appMain->joblist->GetNthEntry(l)->SetText(jlEntry);
 					}
@@ -247,7 +247,7 @@ Void BonkEnc::cddbManageDlg::SetCharset()
 		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNth(i));
 		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNth(i));
 
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.oDArtist == "Various" ? String(artist).Append(" - ") : "").Append(title).Append("\n");
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.oDArtist == "Various" ? String(artist).Append(" - ") : String()).Append(title).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -260,7 +260,7 @@ Void BonkEnc::cddbManageDlg::SelectEntry()
 
 	for (Int i = 0; i < entry.trackTitles.Length(); i++)
 	{
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? String(entry.trackArtists.GetNth(i)).Append(" - ") : "").Append(entry.trackTitles.GetNth(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? String(entry.trackArtists.GetNth(i)).Append(" - ") : String()).Append(entry.trackTitles.GetNth(i)).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -277,7 +277,7 @@ Void BonkEnc::cddbManageDlg::DeleteEntry()
 
 	list_entries->Remove(list_entries->GetSelectedEntry());
 
-	edit_preview->SetText("");
+	edit_preview->SetText(NIL);
 
 	edit_charset->Deactivate();
 	btn_delete->Deactivate();

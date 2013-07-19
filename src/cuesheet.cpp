@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -79,12 +79,12 @@ Bool BonkEnc::CueSheet::Save(const String &fileName)
 
 		if (!oneFile) file->OutputLine(String("FILE \"").Append(fileNames.GetNth(i)).Append("\" WAVE"));
 
-		file->OutputLine(String("  TRACK ").Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(" AUDIO"));
+		file->OutputLine(String("  TRACK ").Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(" AUDIO"));
 		file->OutputLine(String("    TITLE \"").Append(trackTitles.GetNth(i)).Append("\""));
 		file->OutputLine(String("    PERFORMER \"").Append(trackArtists.GetNth(i)).Append("\""));
-		file->OutputLine(String("    INDEX 01 ").Append(minutes < 10 ? "0" : "").Append(String::FromInt(minutes)).Append(":")
-							.Append(seconds < 10 ? "0" : "").Append(String::FromInt(seconds)).Append(":")
-							.Append(frames  < 10 ? "0" : "").Append(String::FromInt(frames )));
+		file->OutputLine(String("    INDEX 01 ").Append(minutes < 10 ? "0" : NIL).Append(String::FromInt(minutes)).Append(":")
+							.Append(seconds < 10 ? "0" : NIL).Append(String::FromInt(seconds)).Append(":")
+							.Append(frames  < 10 ? "0" : NIL).Append(String::FromInt(frames )));
 	}
 
 	file->Close();

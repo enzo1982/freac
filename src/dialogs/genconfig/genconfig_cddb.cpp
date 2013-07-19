@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -118,7 +118,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.y	-= 3;
 	size.cx	= 37;
 
-	edit_port	= new EditBox("", pos, size, 5);
+	edit_port	= new EditBox(NIL, pos, size, 5);
 	edit_port->SetFlags(EDB_NUMERIC);
 
 	pos.x = 16;

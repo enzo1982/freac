@@ -1,4 +1,4 @@
-fre:ac Version 1.0.21
+fre:ac Version 1.0.21a
 
 fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
 Das Programm unterstützt das Rippen von Audio-CDs und konvertiert folgende
@@ -33,6 +33,14 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 Geschichte
 ----------
+
+	Version 1.0.21a (Juli 2013)
+
+		- Löschen von WMA-Ausgabedateien nach der Codierung behoben
+		- Problem mit nicht anklickbaren Eingabefeldmenüschaltflächen behoben
+		- Seltenes Problem mit dem FLAC-Codierer bei Komprimierungsstufe 7 und 8 behoben
+		- Problem mit Online-Updater nach Update der smooth-Bibliothek behoben
+		- Probleme bei Kompilierung mit Microsoft Visual C++ behoben
 
 	Version 1.0.21 (Juli 2013)
 

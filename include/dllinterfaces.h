@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,16 +13,6 @@
 
 #include <smooth.h>
 
-#ifdef __WIN32__
-#	include <windows.h>
-
-#	ifndef _MSC_VER
-#		include <stdint.h>
-#	else
-#		define int32_t long
-#	endif
-#endif
-
 #include <3rdparty/bonk/bonk.h>
 #include <3rdparty/vorbis/vorbisenc.h>
 #include <3rdparty/faac/faac.h>
@@ -35,6 +25,8 @@
 #include <3rdparty/mad/mad.h>
 
 #ifdef __WIN32__
+#	include <windows.h>
+
 #	include <3rdparty/bladedll/bladedll.h>
 #	include <3rdparty/cdrip/cdrip.h>
 #	include <3rdparty/twinvq/twinvq.h>

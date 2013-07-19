@@ -143,7 +143,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.y -= 1;
 	size.cx = 37;
 
-	edit_blocksize		= new EditBox("", pos, size, 5);
+	edit_blocksize		= new EditBox(NIL, pos, size, 5);
 	edit_blocksize->onInput.Connect(&ConfigureFLAC::EditBlockSize, this);
 
 	pos.x += 44;
@@ -277,7 +277,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x += 257;
 	pos.y += 2;
 
-	text_min_part_order_value= new Text("", pos);
+	text_min_part_order_value= new Text(NIL, pos);
 
 	pos.x -= 264;
 	pos.y += 23;
@@ -294,7 +294,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x += 257;
 	pos.y += 2;
 
-	text_max_part_order_value= new Text("", pos);
+	text_max_part_order_value= new Text(NIL, pos);
 
 	maxTextSize = Math::Max(Math::Max(text_min_part_order->GetUnscaledTextWidth(), text_max_part_order->GetUnscaledTextWidth()), Math::Max(text_max_lpc_order->GetUnscaledTextWidth(), text_qlp_precision->GetUnscaledTextWidth()));
 

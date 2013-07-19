@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -184,7 +184,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	pos.y -= 1;
 	size.cx = 25;
 
-	edit_bitrate		= new EditBox("", pos, size, 3);
+	edit_bitrate		= new EditBox(NIL, pos, size, 3);
 	edit_bitrate->SetFlags(EDB_NUMERIC);
 	edit_bitrate->onInput.Connect(&ConfigureFAAC::SetBitrateByEditBox, this);
 
@@ -213,7 +213,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	pos.y -= 1;
 	size.cx = 25;
 
-	edit_quality		= new EditBox("", pos, size, 3);
+	edit_quality		= new EditBox(NIL, pos, size, 3);
 	edit_quality->SetFlags(EDB_NUMERIC);
 	edit_quality->onInput.Connect(&ConfigureFAAC::SetQualityByEditBox, this);
 

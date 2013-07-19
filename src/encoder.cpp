@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -536,12 +536,12 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 				{
 					dontUpdateInfo = True;
 
-					info_edit_artist->SetText("");
-					info_edit_title->SetText("");
-					info_edit_album->SetText("");
-					info_edit_track->SetText("");
-					info_edit_year->SetText("");
-					info_edit_genre->SetText("");
+					info_edit_artist->SetText(NIL);
+					info_edit_title->SetText(NIL);
+					info_edit_album->SetText(NIL);
+					info_edit_track->SetText(NIL);
+					info_edit_year->SetText(NIL);
+					info_edit_genre->SetText(NIL);
 
 					info_edit_artist->Deactivate();
 					info_edit_title->Deactivate();
@@ -716,7 +716,7 @@ String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const 
 
 	if (equalBytes > 0)
 	{
-		relativeFileName = "";
+		relativeFileName = NIL;
 
 		for (Int m = 0; m < trackFileName.Length() - equalBytes; m++) relativeFileName[m] = trackFileName[m + equalBytes];
 	}
@@ -784,7 +784,7 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), True));
 			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"), True));
 			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(trackInfo->genre.Length() > 0 ? trackInfo->genre : i18n->TranslateString("unknown genre"), True));
-			shortOutFileName.Replace("<track>", String(trackInfo->track < 10 ? "0" : "").Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
+			shortOutFileName.Replace("<track>", String(trackInfo->track < 10 ? "0" : NIL).Append(String::FromInt(trackInfo->track < 0 ? 0 : trackInfo->track)));
 			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(trackInfo->year > 0 ? String::FromInt(trackInfo->year) : i18n->TranslateString("unknown year"), True));
 			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
 
@@ -1083,8 +1083,8 @@ Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition
 		}
 		else
 		{
-			txt.Append(trackTicks / 60 < 10 ? "0" : "").Append(String::FromInt(trackTicks / 60)).Append(":");
-			txt.Append(trackTicks % 60 < 10 ? "0" : "").Append(String::FromInt(trackTicks % 60));
+			txt.Append(trackTicks / 60 < 10 ? "0" : NIL).Append(String::FromInt(trackTicks / 60)).Append(":");
+			txt.Append(trackTicks % 60 < 10 ? "0" : NIL).Append(String::FromInt(trackTicks % 60));
 		}
 
 		edb_time->SetText(txt);
@@ -1102,8 +1102,8 @@ Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition
 		}
 		else
 		{
-			txt.Append(totalTicks / 60 < 10 ? "0" : "").Append(String::FromInt(totalTicks / 60)).Append(":");
-			txt.Append(totalTicks % 60 < 10 ? "0" : "").Append(String::FromInt(totalTicks % 60));
+			txt.Append(totalTicks / 60 < 10 ? "0" : NIL).Append(String::FromInt(totalTicks / 60)).Append(":");
+			txt.Append(totalTicks % 60 < 10 ? "0" : NIL).Append(String::FromInt(totalTicks % 60));
 		}
 
 		edb_totalTime->SetText(txt);

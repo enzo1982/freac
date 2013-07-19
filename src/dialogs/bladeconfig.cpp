@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -86,7 +86,7 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	pos.x += 110;
 	pos.y += 2;
 
-	text_bit		= new Text("", pos);
+	text_bit		= new Text(NIL, pos);
 	SetBitrate();
 
 	pos.x += 66;

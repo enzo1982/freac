@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,12 +33,12 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 	pos.x += 9;
 	pos.y += 11;
 
-	text_info	= new Text("", pos);
+	text_info	= new Text(NIL, pos);
 
 	pos.x += 28;
 	pos.y += 45;
 
-	link_url	= new Hyperlink("", NIL, "", pos, Size(0, 0));
+	link_url	= new Hyperlink(NIL, NIL, NIL, pos, Size(0, 0));
 
 	pos.x	= 7;
 	pos.y	= 11;

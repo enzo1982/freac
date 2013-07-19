@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -268,7 +268,7 @@ String BonkEnc::InputFilter::GetID3V2FrameString(ID3Frame *frame)
 
 String BonkEnc::InputFilter::GetID3CategoryName(Int id)
 {
-	if (id < 0 || id > 147) return "";
+	if (id < 0 || id > 147) return NIL;
 
 	String	 array[148] = { "Blues", "Classic Rock", "Country", "Dance", "Disco", "Funk", "Grunge", "Hip-Hop", "Jazz",
 				"Metal", "New Age", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno",

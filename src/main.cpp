@@ -288,7 +288,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	size.cx = 180;
 	size.cy = 0;
 
-	info_edit_artist = new EditBox("", pos, size, 0);
+	info_edit_artist = new EditBox(NIL, pos, size, 0);
 	info_edit_artist->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_artist->SetOrientation(OR_LOWERLEFT);
 
@@ -299,13 +299,14 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_edit_artist->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
 
 	htsp_edit_artist = new Hotspot(Point(0, -7), Size(info_edit_artist->GetWidth(), info_edit_artist->GetHeight() + 7));
+	htsp_edit_artist->SetIndependent(True);
 	htsp_edit_artist->onMouseOver.Connect(&MicroMenu::Show, menu_edit_artist);
 	htsp_edit_artist->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_artist);
 	htsp_edit_artist->onActivate.Connect(&MicroMenu::Hide, menu_edit_artist);
 
 	pos.y -= 27;
 
-	info_edit_album = new EditBox("", pos, size, 0);
+	info_edit_album = new EditBox(NIL, pos, size, 0);
 	info_edit_album->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_album->SetOrientation(OR_LOWERLEFT);
 
@@ -316,6 +317,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_edit_album->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
 
 	htsp_edit_album = new Hotspot(Point(0, -7), Size(info_edit_album->GetWidth(), info_edit_album->GetHeight() + 7));
+	htsp_edit_album->SetIndependent(True);
 	htsp_edit_album->onMouseOver.Connect(&MicroMenu::Show, menu_edit_album);
 	htsp_edit_album->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_album);
 	htsp_edit_album->onActivate.Connect(&MicroMenu::Hide, menu_edit_album);
@@ -335,7 +337,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	pos.y += 30;
 	size.cx = 100;
 
-	info_edit_title = new EditBox("", pos, size, 0);
+	info_edit_title = new EditBox(NIL, pos, size, 0);
 	info_edit_title->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_title->SetOrientation(OR_LOWERLEFT);
 
@@ -346,6 +348,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_edit_title->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
 
 	htsp_edit_title = new Hotspot(Point(0, -7), Size(info_edit_title->GetWidth(), info_edit_title->GetHeight() + 7));
+	htsp_edit_title->SetIndependent(True);
 	htsp_edit_title->onMouseOver.Connect(&MicroMenu::Show, menu_edit_title);
 	htsp_edit_title->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_title);
 	htsp_edit_title->onActivate.Connect(&MicroMenu::Hide, menu_edit_title);
@@ -353,7 +356,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	pos.y -= 27;
 	size.cx = 25;
 
-	info_edit_track = new EditBox("", pos, size, 3);
+	info_edit_track = new EditBox(NIL, pos, size, 3);
 	info_edit_track->SetFlags(EDB_NUMERIC);
 	info_edit_track->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_track->SetOrientation(OR_LOWERLEFT);
@@ -368,7 +371,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	pos.y += 3;
 	size.cx = 31;
 
-	info_edit_year = new EditBox("", pos, size, 4);
+	info_edit_year = new EditBox(NIL, pos, size, 4);
 	info_edit_year->SetFlags(EDB_NUMERIC);
 	info_edit_year->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_year->SetOrientation(OR_LOWERLEFT);
@@ -380,6 +383,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_edit_year->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
 
 	htsp_edit_year = new Hotspot(Point(0, -7), Size(info_edit_year->GetWidth(), info_edit_year->GetHeight() + 7));
+	htsp_edit_year->SetIndependent(True);
 	htsp_edit_year->onMouseOver.Connect(&MicroMenu::Show, menu_edit_year);
 	htsp_edit_year->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_year);
 	htsp_edit_year->onActivate.Connect(&MicroMenu::Hide, menu_edit_year);
@@ -397,7 +401,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	pos.y += 3;
 	size.cx = 135;
 
-	info_edit_genre = new EditBox("", pos, size, 0);
+	info_edit_genre = new EditBox(NIL, pos, size, 0);
 	info_edit_genre->onInput.Connect(&BonkEncGUI::UpdateTitleInfo, this);
 	info_edit_genre->SetOrientation(OR_LOWERLEFT);
 	info_edit_genre->SetDropDownList(info_list_genre);
@@ -409,6 +413,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	menu_edit_genre->onClosePopupMenu.Connect(&BonkEncGUI::ToggleEditPopup, this);
 
 	htsp_edit_genre = new Hotspot(Point(0, -7), Size(info_edit_genre->GetWidth(), info_edit_genre->GetHeight() + 7));
+	htsp_edit_genre->SetIndependent(True);
 	htsp_edit_genre->onMouseOver.Connect(&MicroMenu::Show, menu_edit_genre);
 	htsp_edit_genre->onMouseOut.Connect(&MicroMenu::Hide, menu_edit_genre);
 	htsp_edit_genre->onActivate.Connect(&MicroMenu::Hide, menu_edit_genre);
@@ -451,7 +456,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	edb_totalPercent->SetOrientation(OR_LOWERLEFT);
 	edb_totalPercent->Deactivate();
 
-	edb_encoder = new EditBox("", Point(0, 75), Size(0, 0), 4);
+	edb_encoder = new EditBox(NIL, Point(0, 75), Size(0, 0), 4);
 	edb_encoder->SetOrientation(OR_LOWERLEFT);
 	edb_encoder->Deactivate();
 
@@ -476,8 +481,6 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	Add(mainWnd);
 
 	mainWnd->Add(joblist);
-
-	SetLanguage();
 
 	mainWnd->Add(check_single);
 	mainWnd->Add(check_cuesheet);
@@ -564,6 +567,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 		info_text_genre->Hide();
 		info_edit_genre->Hide();
 	}
+
+	SetLanguage();
 
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 
@@ -1069,7 +1074,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 					if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
 					else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
 
-					jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
+					jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String()).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
 
 					joblist->GetNthEntry(k)->SetText(jlEntry);
 				}
@@ -1089,12 +1094,12 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		info_edit_title->SetText(format->title);
 		info_edit_album->SetText(format->album);
 
-		info_edit_track->SetText("");
+		info_edit_track->SetText(NIL);
 
 		if (format->track > 0 && format->track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(format->track)));
 		else if (format->track >= 10)			info_edit_track->SetText(String::FromInt(format->track));
 
-		info_edit_year->SetText("");
+		info_edit_year->SetText(NIL);
 
 		if (format->year > 0) info_edit_year->SetText(String::FromInt(format->year));
 
@@ -1391,7 +1396,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	progress->SetMetrics(Point(maxTextLength + 14, progress->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress->GetHeight()));
 	progress_total->SetMetrics(Point(maxTextLength + 14, progress_total->GetY()), Size(clientSize.cx - 21 - maxTextLength, progress_total->GetHeight()));
 
-	if (progress_total->GetRealPosition().y > progress->GetRealPosition().y - progress->GetRealSize().cy + 1) progress_total->SetMetrics(progress_total->GetPosition() - Point(0, 1), progress_total->GetSize() - Size(0, 1));
+	if (progress_total->GetRealPosition().y < progress->GetRealPosition().y + progress->GetRealSize().cy - 1) progress_total->SetMetrics(progress_total->GetPosition() - Point(0, 1), progress_total->GetSize() - Size(0, 1));
 
 	info_checkbox->SetText(i18n->TranslateString("Show title info"));
 	info_checkbox->SetWidth(info_checkbox->GetUnscaledTextWidth() + 20);
@@ -2004,7 +2009,7 @@ Void BonkEnc::BonkEncGUI::UseStringForSelectedTracks()
 			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
 			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
 
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
 
 			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 		}
@@ -2040,7 +2045,7 @@ Void BonkEnc::BonkEncGUI::InterpretStringAs()
 	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
 	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
 
-	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
 
 	if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 
@@ -2080,7 +2085,7 @@ Void BonkEnc::BonkEncGUI::InterpretStringAsAll()
 			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
 			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
 
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
 
 			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 		}
@@ -2118,7 +2123,7 @@ Void BonkEnc::BonkEncGUI::AdjustStringCase()
 	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
 	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
 
-	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
 
 	if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 
@@ -2158,7 +2163,7 @@ Void BonkEnc::BonkEncGUI::AdjustStringCaseAll()
 			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
 			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
 
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String("")).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
 
 			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 		}
@@ -2190,12 +2195,12 @@ Void BonkEnc::BonkEncGUI::OnJoblistSelectTrack(Track *format)
 	info_edit_title->SetText(format->title);
 	info_edit_album->SetText(format->album);
 
-	info_edit_track->SetText("");
+	info_edit_track->SetText(NIL);
 
 	if (format->track > 0 && format->track < 10)	info_edit_track->SetText(String("0").Append(String::FromInt(format->track)));
 	else if (format->track >= 10)			info_edit_track->SetText(String::FromInt(format->track));
 
-	info_edit_year->SetText("");
+	info_edit_year->SetText(NIL);
 
 	if (format->year > 0) info_edit_year->SetText(String::FromInt(format->year));
 
@@ -2208,12 +2213,12 @@ Void BonkEnc::BonkEncGUI::OnJoblistSelectNone()
 {
 	dontUpdateInfo = True;
 
-	info_edit_artist->SetText("");
-	info_edit_title->SetText("");
-	info_edit_album->SetText("");
-	info_edit_track->SetText("");
-	info_edit_year->SetText("");
-	info_edit_genre->SetText("");
+	info_edit_artist->SetText(NIL);
+	info_edit_title->SetText(NIL);
+	info_edit_album->SetText(NIL);
+	info_edit_track->SetText(NIL);
+	info_edit_year->SetText(NIL);
+	info_edit_genre->SetText(NIL);
 
 	info_edit_artist->Deactivate();
 	info_edit_title->Deactivate();
@@ -2247,7 +2252,7 @@ Void BonkEnc::BonkEncGUI::UpdateTitleInfo()
 	if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
 	else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
 
-	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String("")).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
+	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String()).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
 
 	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->GetSelectedEntry()->SetText(jlEntry);
 }
@@ -2314,7 +2319,7 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 #ifdef __WIN32__
 	Void	*context = ex_eUpdate_CreateUpdateContext(BonkEnc::appLongName, version, updatePath);
 
-	if (currentConfig->configDir != "")
+	if (currentConfig->configDir != NIL)
 	{
 		if (Setup::enableUnicode) ex_eUpdate_SetConfigFileW(context, String(currentConfig->configDir).Append("eUpdate.xml"));
 		else			  ex_eUpdate_SetConfigFile(context, String(currentConfig->configDir).Append("eUpdate.xml"));

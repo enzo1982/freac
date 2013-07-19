@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -57,7 +57,7 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	size.cx = 261;
 	size.cy = 213;
 
-	edit_preview	= new MultiEdit("", pos, size, 0);
+	edit_preview	= new MultiEdit(NIL, pos, size, 0);
 	edit_preview->Deactivate();
 
 	pos.x = 188;
@@ -84,7 +84,7 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	pos.x = 7;
 	pos.y = 26;
 
-	text_status	= new Text("", pos);
+	text_status	= new Text(NIL, pos);
 	text_status->SetOrientation(OR_LOWERLEFT);
 
 	btn_delete->Deactivate();
@@ -153,7 +153,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
 
 	for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 	{
-		preview.Append(i < 9 ? "0" : "").Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNth(i)).Append(" - ") : "").Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNth(i)).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -168,7 +168,7 @@ Void BonkEnc::cddbManageSubmitsDlg::DeleteEntry()
 
 	list_entries->Remove(list_entries->GetSelectedEntry());
 
-	edit_preview->SetText("");
+	edit_preview->SetText(NIL);
 
 	btn_delete->Deactivate();
 	btn_send->Deactivate();
@@ -198,13 +198,13 @@ Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 	{
 		list_entries->Remove(list_entries->GetSelectedEntry());
 
-		edit_preview->SetText("");
+		edit_preview->SetText(NIL);
 
 		btn_delete->Deactivate();
 		btn_send->Deactivate();
 	}
 
-	text_status->SetText("");
+	text_status->SetText(NIL);
 }
 
 Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
@@ -215,5 +215,5 @@ Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
 
 	if (cddbBatch->SubmitAll()) mainWnd->Close();
 
-	text_status->SetText("");
+	text_status->SetText(NIL);
 }

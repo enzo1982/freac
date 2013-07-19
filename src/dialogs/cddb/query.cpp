@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -35,7 +35,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	pos.x = 7;
 	pos.y = 5;
 
-	text_status		= new Text("", pos);
+	text_status		= new Text(NIL, pos);
 
 	pos.y += 19;
 	size.cx = 200;
@@ -187,7 +187,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 
 		for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
 
-		if (fuzzy) dlg->AddEntry(BonkEnc::i18n->TranslateString("none"), "");
+		if (fuzzy) dlg->AddEntry(BonkEnc::i18n->TranslateString("none"), NIL);
 
 		if (dlg->ShowDialog() == Success())
 		{
@@ -236,7 +236,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	cddb.CloseConnection();
 
 	prog_status->SetValue(100);
-	text_status->SetText("");
+	text_status->SetText(NIL);
 
 	if (category == NIL || discID == 0) return False;
 	else				    return True;

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2012 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -84,7 +84,7 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	pos.x += (size.cx + 7);
 	pos.y += 2;
 
-	text_quality_value	= new Text("", pos);
+	text_quality_value	= new Text(NIL, pos);
 
 	pos.x = 19;
 
@@ -101,7 +101,7 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	pos.y -= 1;
 	size.cx = 25;
 
-	edit_abr		= new EditBox("", pos, size, 3);
+	edit_abr		= new EditBox(NIL, pos, size, 3);
 	edit_abr->SetFlags(EDB_NUMERIC);
 	edit_abr->onInput.Connect(&ConfigureVorbisEnc::SetBitrateByEditBox, this);
 

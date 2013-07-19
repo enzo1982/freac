@@ -42,7 +42,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 	switch (config->freedb_mode)
 	{
 		case FREEDB_MODE_CDDBP:
-			if (command != "")
+			if (command != NIL)
 			{
 				debug_out->OutputLine(String("CDDB: > ").Append(command));
 
@@ -72,7 +72,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			if (command[0] == 'p' && command[1] == 'r' && command[2] == 'o' && command[3] == 't' && command[4] == 'o')	break;
 			if (command[5] == 'h' && command[6] == 'e' && command[7] == 'l' && command[8] == 'l' && command[9] == 'o')	break;
 			if (command[0] == 'q' && command[1] == 'u' && command[2] == 'i' && command[3] == 't')				break;
-			if (command == "")												break;
+			if (command == NIL)												break;
 
 			char	*buffer = new char [256];
 
@@ -131,7 +131,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 
 				debug_out->OutputLine(String("CDDB: < ").Append(str));
 			}
-			while (str != "");
+			while (str != NIL);
 
 			do
 			{
@@ -139,7 +139,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 
 				debug_out->OutputLine(String("CDDB: < ").Append(str));
 			}
-			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5' && str != "");
+			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5' && str != NIL);
 
 			if (str[1] == '1')
 			{
@@ -189,7 +189,7 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 		out->SetPackageSize(1024);
 	}
 
-	SendCommand("");
+	SendCommand(NIL);
 	SendCommand("proto 6");
 
 	hostNameBuffer.Resize(256);
@@ -307,7 +307,7 @@ Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cdd
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	result = "";
+	result = NIL;
 
 	do
 	{
@@ -388,7 +388,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 		debug_out->OutputLine(String("CDDB: < ").Append(str));
 	}
-	while (str != "");
+	while (str != NIL);
 
 	do
 	{
