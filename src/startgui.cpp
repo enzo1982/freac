@@ -17,8 +17,8 @@
 
 #include <engine/converter.h>
 
-#include <jobs/job_addtracks.h>
-#include <jobs/job_checkforupdates.h>
+#include <jobs/joblist/addtracks.h>
+#include <jobs/other/checkforupdates.h>
 
 #include <dialogs/config/config.h>
 #include <dialogs/config/configcomponent.h>

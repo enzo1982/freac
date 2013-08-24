@@ -8,7 +8,7 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <jobs/job_addfiles.h>
+#include <jobs/joblist/addfiles.h>
 
 #include <cddb/cddb.h>
 

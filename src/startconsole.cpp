@@ -14,7 +14,7 @@
 
 #include <engine/converter.h>
 
-#include <jobs/job_addfiles.h>
+#include <jobs/joblist/addfiles.h>
 
 using namespace smooth::IO;
 

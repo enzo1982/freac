@@ -18,7 +18,7 @@
 #include <config.h>
 #include <utilities.h>
 
-#include <jobs/job_addfiles.h>
+#include <jobs/joblist/addfiles.h>
 
 #include <dialogs/overwrite.h>
 

@@ -1,5 +1,5 @@
  /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,22 +8,18 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_BONKENC_JOB_ADDTRACKS
-#define H_BONKENC_JOB_ADDTRACKS
+#ifndef H_BONKENC_JOB_REMOVEALL
+#define H_BONKENC_JOB_REMOVEALL
 
-#include "job.h"
+#include "../job.h"
 
 namespace BonkEnc
 {
-	class JobAddTracks : public Job
+	class JobRemoveAllTracks : public Job
 	{
-		protected:
-			Array<String>	 urls;
-
-			Bool		 autoCDRead;
 		public:
-					 JobAddTracks(const Array<String> &, Bool = False);
-			virtual		~JobAddTracks();
+					 JobRemoveAllTracks();
+			virtual		~JobRemoveAllTracks();
 
 			virtual Bool	 ReadyToRun();
 		slots:

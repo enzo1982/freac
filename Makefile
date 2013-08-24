@@ -19,7 +19,7 @@ endif
 RESOURCEDIR = ./resources
 BINRESDIR   = $(RESOURCEDIR)/binary
 
-DLLOBJECTS  = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/error.o $(OBJECTDIR)/overwrite.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/player.o $(OBJECTDIR)/job.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_addtracks.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS  = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/error.o $(OBJECTDIR)/overwrite.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/player.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_addtracks.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
 	ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
@@ -293,34 +293,34 @@ $(OBJECTDIR)/engine_encoder.o: $(SRCDIR)/engine/encoder.cpp
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/engine/encoder.cpp -o $(OBJECTDIR)/engine_encoder.o
 	$(ECHO) done.
 
+$(OBJECTDIR)/job_adddirectory.o: $(SRCDIR)/jobs/joblist/adddirectory.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/joblist/adddirectory.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/joblist/adddirectory.cpp -o $(OBJECTDIR)/job_adddirectory.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/job_addfiles.o: $(SRCDIR)/jobs/joblist/addfiles.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/joblist/addfiles.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/joblist/addfiles.cpp -o $(OBJECTDIR)/job_addfiles.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/job_addtracks.o: $(SRCDIR)/jobs/joblist/addtracks.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/joblist/addtracks.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/joblist/addtracks.cpp -o $(OBJECTDIR)/job_addtracks.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/job_removeall.o: $(SRCDIR)/jobs/joblist/removeall.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/joblist/removeall.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/joblist/removeall.cpp -o $(OBJECTDIR)/job_removeall.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/job_checkforupdates.o: $(SRCDIR)/jobs/other/checkforupdates.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/jobs/other/checkforupdates.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/other/checkforupdates.cpp -o $(OBJECTDIR)/job_checkforupdates.o
+	$(ECHO) done.
+
 $(OBJECTDIR)/job.o: $(SRCDIR)/jobs/job.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/jobs/job.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job.cpp -o $(OBJECTDIR)/job.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/job_adddirectory.o: $(SRCDIR)/jobs/job_adddirectory.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_adddirectory.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_adddirectory.cpp -o $(OBJECTDIR)/job_adddirectory.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/job_addfiles.o: $(SRCDIR)/jobs/job_addfiles.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_addfiles.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_addfiles.cpp -o $(OBJECTDIR)/job_addfiles.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/job_addtracks.o: $(SRCDIR)/jobs/job_addtracks.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_addtracks.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_addtracks.cpp -o $(OBJECTDIR)/job_addtracks.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/job_checkforupdates.o: $(SRCDIR)/jobs/job_checkforupdates.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_checkforupdates.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_checkforupdates.cpp -o $(OBJECTDIR)/job_checkforupdates.o
-	$(ECHO) done.
-
-$(OBJECTDIR)/job_removeall.o: $(SRCDIR)/jobs/job_removeall.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/jobs/job_removeall.cpp...
-	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/jobs/job_removeall.cpp -o $(OBJECTDIR)/job_removeall.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/jobmanager.o: $(SRCDIR)/jobs/jobmanager.cpp

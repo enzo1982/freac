@@ -14,9 +14,9 @@
 
 #include <gui/layer_tooltip.h>
 
-#include <jobs/job_adddirectory.h>
-#include <jobs/job_addfiles.h>
-#include <jobs/job_removeall.h>
+#include <jobs/joblist/adddirectory.h>
+#include <jobs/joblist/addfiles.h>
+#include <jobs/joblist/removeall.h>
 
 #include <tools/encoding.h>
 
