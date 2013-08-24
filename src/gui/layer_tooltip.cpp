@@ -74,9 +74,12 @@ const String &BonkEnc::LayerTooltip::GetTooltipText(const Track &track)
 		if	(track.length	    > 0) tooltip.Append("\n").Append(String(i18n->TranslateString("Bitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.length / format.rate) * 8.0 / 1000.0))).Append(" kbps"));
 		else if (track.approxLength > 0) tooltip.Append("\n").Append(String(i18n->TranslateString("Bitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / format.rate) * 8.0 / 1000.0))).Append(" kbps"));
 
-		wchar_t	 sign[2] = { 0x2248, 0 };
+		if (Setup::enableUnicode)
+		{
+			static wchar_t	 sign[2] = { 0x2248, 0 };
 
-		if (Setup::enableUnicode) tooltip.Replace("~", sign);
+			tooltip.Replace("~", sign);
+		}
 	}
 
 	return tooltip;
