@@ -553,6 +553,7 @@
 	  <entry id="34106" string="Joint Stereo">wspólne stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">adaptacyjne wsp. stereo</entry>
 	  <entry id="34108" string="File format">Format pliku</entry>
+	  <entry id="34109" string="Default">Domyślne</entry>
 	</section>
 
 	<section name="Format">
