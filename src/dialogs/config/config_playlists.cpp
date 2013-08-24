@@ -125,7 +125,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	Add(group_filename);
 	Add(group_options);
 
-	SetSize(Size(464, 219));
+	SetSize(Size(464, 221));
 }
 
 BonkEnc::ConfigurePlaylists::~ConfigurePlaylists()
