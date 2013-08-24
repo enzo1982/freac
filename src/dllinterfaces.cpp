@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,15 +11,15 @@
 #include <dllinterfaces.h>
 
 #ifdef __WIN32__
-EUCREATEUPDATECONTEXT		 ex_eUpdate_CreateUpdateContext		= NIL;
-EUCREATEUPDATECONTEXTW		 ex_eUpdate_CreateUpdateContextW	= NIL;
-EUSETCONFIGFILE			 ex_eUpdate_SetConfigFile		= NIL;
-EUSETCONFIGFILEW		 ex_eUpdate_SetConfigFileW		= NIL;
-EUSETLANGUAGE			 ex_eUpdate_SetLanguage			= NIL;
-EUSETLANGUAGEW			 ex_eUpdate_SetLanguageW		= NIL;
-EUFREEUPDATECONTEXT		 ex_eUpdate_FreeUpdateContext		= NIL;
-EUCHECKFORNEWUPDATES		 ex_eUpdate_CheckForNewUpdates		= NIL;
-EUAUTOMATICUPDATE		 ex_eUpdate_AutomaticUpdate		= NIL;
+	EUCREATEUPDATECONTEXT	 ex_eUpdate_CreateUpdateContext		= NIL;
+	EUCREATEUPDATECONTEXTW	 ex_eUpdate_CreateUpdateContextW	= NIL;
+	EUSETCONFIGFILE		 ex_eUpdate_SetConfigFile		= NIL;
+	EUSETCONFIGFILEW	 ex_eUpdate_SetConfigFileW		= NIL;
+	EUSETLANGUAGE		 ex_eUpdate_SetLanguage			= NIL;
+	EUSETLANGUAGEW		 ex_eUpdate_SetLanguageW		= NIL;
+	EUFREEUPDATECONTEXT	 ex_eUpdate_FreeUpdateContext		= NIL;
+	EUCHECKFORNEWUPDATES	 ex_eUpdate_CheckForNewUpdates		= NIL;
+	EUAUTOMATICUPDATE	 ex_eUpdate_AutomaticUpdate		= NIL;
 #endif
 
 DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;

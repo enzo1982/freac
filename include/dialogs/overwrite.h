@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,8 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_BONKENC_DIALOG_CONFIRM_OVERWRITE
-#define H_BONKENC_DIALOG_CONFIRM_OVERWRITE
+#ifndef H_FREAC_DIALOG_CONFIRM_OVERWRITE
+#define H_FREAC_DIALOG_CONFIRM_OVERWRITE
 
 #include <smooth.h>
 #include <boca.h>
