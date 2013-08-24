@@ -18,7 +18,7 @@ using namespace smooth::System;
 Int smooth::Main(const Array<String> &args)
 {
 #ifdef __WIN32__
-	SetEnvironmentVariableA("PATH", "%PATH%;boca");
+	SetEnvironmentVariableA("PATH", String("%PATH%;").Append(GUI::Application::GetApplicationDirectory()).Append("boca"));
 #endif
 
 	DynamicLoader	*loader = new DynamicLoader("freac");
