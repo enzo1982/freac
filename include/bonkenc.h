@@ -45,6 +45,7 @@ namespace BonkEnc
 			static String		 appName;
 			static String		 appLongName;
 			static String		 version;
+			static String		 architecture;
 			static String		 shortVersion;
 			static String		 cddbVersion;
 			static String		 cddbMode;

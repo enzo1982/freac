@@ -469,7 +469,7 @@ Void BonkEnc::BonkEncGUI::About()
 
 	i18n->SetContext("About");
 
-	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2013 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
+	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(")\nCopyright (C) 2001-2013 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()

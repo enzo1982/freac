@@ -49,6 +49,15 @@ String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
 #endif
 
 String	 BonkEnc::BonkEnc::version	= "CVS 2013xxyy";
+
+#if defined __i386__
+String	 BonkEnc::BonkEnc::architecture = "x86";
+#elif defined __x86_64__
+String	 BonkEnc::BonkEnc::architecture = "x86-64";
+#else
+String	 BonkEnc::BonkEnc::architecture = "unknown";
+#endif
+
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre3";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
