@@ -229,7 +229,7 @@ Void BonkEnc::LayerPlayer::OnChangePlayPosition()
 	player->onFinish.Disconnect(&LayerPlayer::StopPlayback, this);
 
 	player->Stop();
-	player->Play(joblist->GetSelectedEntryNumber(), joblist);
+	player->Play(player->player_entry, joblist);
 
 	player->onFinish.Connect(&LayerPlayer::StopPlayback, this);
 
