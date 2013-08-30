@@ -508,30 +508,42 @@ Void BonkEnc::ConfigDialog::OnDeleteConfig()
 	combo_config->SelectNthEntry(0);
 }
 
-Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *layer)
+Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)
 {
-	if (selectedLayer != NIL) mainWnd->GetMainLayer()->Remove(selectedLayer);
-
-	if (layer != NIL)
+	if (newLayer != NIL)
 	{
 #ifdef __WIN32__
 		Int	 frameWidth = mainWnd->GetFrameWidth();
 #else
 		Int	 frameWidth = 4;
 #endif
+		newLayer->SetPosition(Point(218, 40));
 
-		selectedLayer = layer;
-		selectedLayer->SetPosition(Point(218, 40));
+		mainWnd->SetMinimumSize(Size(Math::Max(232, newLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(342, newLayer->GetHeight() + 105 + 2 * frameWidth)));
 
-		mainWnd->GetMainLayer()->Add(selectedLayer);
+		/* Wrap layer drawing in a paint operation.
+		 */
+		Surface	*surface   = mainWnd->GetDrawSurface();
+		Layer	*mainLayer = mainWnd->GetMainLayer();
 
-		mainWnd->SetMinimumSize(Size(Math::Max(232, selectedLayer->GetWidth() + 218 + 2 * frameWidth), Math::Max(342, selectedLayer->GetHeight() + 105 + 2 * frameWidth)));
+		surface->StartPaint(Rect(Point(218, 40), mainLayer->GetSize() - Size(210, 32)));
+
+		if (selectedLayer != NIL) mainLayer->Remove(selectedLayer);
+					  mainLayer->Add(newLayer);
+
+		surface->EndPaint();
+
+		selectedLayer = newLayer;
 	}
 	else
 	{
-		selectedLayer = NIL;
-
 		mainWnd->SetMinimumSize(Size(232, 342));
+
+		Layer	*mainLayer = mainWnd->GetMainLayer();
+
+		if (selectedLayer != NIL) mainLayer->Remove(selectedLayer);
+
+		selectedLayer = NIL;
 	}
 }
 
