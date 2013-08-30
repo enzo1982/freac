@@ -164,9 +164,9 @@ Int BonkEnc::Playback::PlayThread()
 			 */
 			if (newPosition >= 0)
 			{
-				if	(trackInfo.length	>= 0) position = trackInfo.length		    / 1000 * newPosition;
-				else if (trackInfo.approxLength >= 0) position = trackInfo.approxLength		    / 1000 * newPosition;
-				else				      position = (240 * trackInfo.GetFormat().rate) / 1000 * newPosition;
+				if	(trackInfo.length	>= 0) position = trackInfo.length			   / 1000 * newPosition;
+				else if (trackInfo.approxLength >= 0) position = trackInfo.approxLength			   / 1000 * newPosition;
+				else				      position = (Int64(240) * trackInfo.GetFormat().rate) / 1000 * newPosition;
 
 				decoder->Seek(position);
 

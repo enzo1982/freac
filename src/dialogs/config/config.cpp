@@ -550,7 +550,7 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)
 Void BonkEnc::ConfigDialog::OnChangeComponentSettings(const String &componentID)
 {
 	/* One of the component configurations has changed
-	 * so replace the affected component.
+	 * so find the affected component here.
 	 */
 	Component	*component	= NIL;
 	Int		 componentIndex	= -1;
@@ -563,6 +563,10 @@ Void BonkEnc::ConfigDialog::OnChangeComponentSettings(const String &componentID)
 		if (component->GetID() == componentID)  break;
 	}
 
+	if (component == NIL) return;
+
+	/* Replace the affected component.
+	 */
 	Registry	&boca = Registry::Get();
 
 	for (Int i = 0; i < layers.Length(); i++)
