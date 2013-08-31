@@ -119,6 +119,29 @@ Int BonkEnc::Playback::PlayThread()
 		return Error();
 	}
 
+	/* Create output component.
+	 */
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_OUTPUT) continue;
+
+		output = (OutputComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
+
+		if (output != NIL) break;
+	}
+
+	if (output == NIL)
+	{
+		playing = false;
+
+		return Error();
+	}
+
+	output->SetAudioTrackInfo(trackInfo);
+	output->Activate();
+
 	/* Create decoder.
 	 */
 	Decoder	*decoder = new Decoder();
@@ -136,20 +159,8 @@ Int BonkEnc::Playback::PlayThread()
 	 */
 	onPlay.Emit(trackInfo);
 
-	/* Create output component.
+	/* Enter playback loop.
 	 */
-	Registry	&boca = Registry::Get();
-
-	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
-	{
-		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_OUTPUT) continue;
-
-		output = (OutputComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
-	}
-
-	output->SetAudioTrackInfo(trackInfo);
-	output->Activate();
-
 	if (!output->GetErrorState())
 	{
 		Int64		 position	= 0;

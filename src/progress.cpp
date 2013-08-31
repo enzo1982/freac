@@ -15,6 +15,15 @@ using namespace BoCA;
 
 BonkEnc::Progress::Progress()
 {
+	totalSamples	 = 0;
+	totalSamplesDone = 0;
+
+	trackStartTicks	 = 0;
+	trackPauseTicks	 = 0;
+
+	totalStartTicks	 = 0;
+	totalPauseTicks	 = 0;
+
 #ifdef __WIN32__
 	/* Init the Microsoft COM library.
 	 */
@@ -58,7 +67,7 @@ Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 
 	if (config->enable_console) return;
 
-	totalSamples = 0;
+	totalSamples	 = 0;
 	totalSamplesDone = 0;
 
 	foreach (const Track &trackInfo, tracks)
@@ -194,7 +203,7 @@ Void BonkEnc::Progress::FinishTrackProgressValues(const Track &trackInfo)
 
 	if (config->enable_console) return;
 
-	if	(trackInfo.length	>= 0) totalSamplesDone += ((trackInfo.length * 100.0 / totalSamples) * 10.0);
-	else if (trackInfo.approxLength >= 0) totalSamplesDone += ((trackInfo.approxLength * 100.0 / totalSamples) * 10.0);
+	if	(trackInfo.length	>= 0) totalSamplesDone += (( trackInfo.length		       * 100.0 / totalSamples) * 10.0);
+	else if (trackInfo.approxLength >= 0) totalSamplesDone += (( trackInfo.approxLength	       * 100.0 / totalSamples) * 10.0);
 	else				      totalSamplesDone += (((240 * trackInfo.GetFormat().rate) * 100.0 / totalSamples) * 10.0);
 }

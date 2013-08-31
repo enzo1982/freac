@@ -13,9 +13,14 @@
 
 BonkEnc::CDDBInfo::CDDBInfo()
 {
-	charset = "UTF-8";
+	charset	   = "UTF-8";
 
-	discID = -1;
+	discID	   = -1;
+	revision   = -1;
+
+	discLength = 0;
+
+	dYear	   = 0;
 }
 
 BonkEnc::CDDBInfo::CDDBInfo(int nil)
@@ -51,7 +56,12 @@ bool BonkEnc::CDDBInfo::operator !=(int nil) const
 
 BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(int nil)
 {
-	discID = -1;
+	discID	   = -1;
+	revision   = -1;
+
+	discLength = 0;
+
+	dYear	   = 0;
 
 	trackOffsets.RemoveAll();
 
@@ -68,35 +78,35 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(int nil)
 
 BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
 {
-	category = oInfo.category;
-	discID = oInfo.discID;
-	revision = oInfo.revision;
+	category  = oInfo.category;
+	discID	  = oInfo.discID;
+	revision  = oInfo.revision;
 
-	for (Int i = 0; i < oInfo.trackOffsets.Length(); i++) trackOffsets.Add(oInfo.trackOffsets.GetNth(i), oInfo.trackOffsets.GetNthIndex(i));
+	for (Int i = 0; i < oInfo.trackOffsets.Length();   i++) trackOffsets.Add(oInfo.trackOffsets.GetNth(i), oInfo.trackOffsets.GetNthIndex(i));
 
 	discLength = oInfo.discLength;
 
-	dArtist = oInfo.dArtist;
-	dTitle = oInfo.dTitle;
-	dYear = oInfo.dYear;
-	dGenre = oInfo.dGenre;
-	comment = oInfo.comment;
+	dArtist	  = oInfo.dArtist;
+	dTitle	  = oInfo.dTitle;
+	dYear	  = oInfo.dYear;
+	dGenre	  = oInfo.dGenre;
+	comment	  = oInfo.comment;
 	playOrder = oInfo.playOrder;
 
-	for (Int j = 0; j < oInfo.trackArtists.Length(); j++) trackArtists.Add(oInfo.trackArtists.GetNth(j), oInfo.trackArtists.GetNthIndex(j));
-	for (Int k = 0; k < oInfo.trackTitles.Length(); k++) trackTitles.Add(oInfo.trackTitles.GetNth(k), oInfo.trackTitles.GetNthIndex(k));
-	for (Int l = 0; l < oInfo.trackComments.Length(); l++) trackComments.Add(oInfo.trackComments.GetNth(l), oInfo.trackComments.GetNthIndex(l));
+	for (Int i = 0; i < oInfo.trackArtists.Length();   i++) trackArtists.Add(oInfo.trackArtists.GetNth(i), oInfo.trackArtists.GetNthIndex(i));
+	for (Int i = 0; i < oInfo.trackTitles.Length();	   i++) trackTitles.Add(oInfo.trackTitles.GetNth(i), oInfo.trackTitles.GetNthIndex(i));
+	for (Int i = 0; i < oInfo.trackComments.Length();  i++) trackComments.Add(oInfo.trackComments.GetNth(i), oInfo.trackComments.GetNthIndex(i));
 
-	oDArtist = oInfo.oDArtist;
-	oDTitle = oInfo.oDTitle;
-	oDGenre = oInfo.oDGenre;
-	oComment = oInfo.oComment;
+	oDArtist  = oInfo.oDArtist;
+	oDTitle	  = oInfo.oDTitle;
+	oDGenre	  = oInfo.oDGenre;
+	oComment  = oInfo.oComment;
 
-	for (Int m = 0; m < oInfo.oTrackArtists.Length(); m++) oTrackArtists.Add(oInfo.oTrackArtists.GetNth(m), oInfo.oTrackArtists.GetNthIndex(m));
-	for (Int n = 0; n < oInfo.oTrackTitles.Length(); n++) oTrackTitles.Add(oInfo.oTrackTitles.GetNth(n), oInfo.oTrackTitles.GetNthIndex(n));
-	for (Int o = 0; o < oInfo.oTrackComments.Length(); o++) oTrackComments.Add(oInfo.oTrackComments.GetNth(o), oInfo.oTrackComments.GetNthIndex(o));
+	for (Int i = 0; i < oInfo.oTrackArtists.Length();  i++) oTrackArtists.Add(oInfo.oTrackArtists.GetNth(i), oInfo.oTrackArtists.GetNthIndex(i));
+	for (Int i = 0; i < oInfo.oTrackTitles.Length();   i++) oTrackTitles.Add(oInfo.oTrackTitles.GetNth(i), oInfo.oTrackTitles.GetNthIndex(i));
+	for (Int i = 0; i < oInfo.oTrackComments.Length(); i++) oTrackComments.Add(oInfo.oTrackComments.GetNth(i), oInfo.oTrackComments.GetNthIndex(i));
 
-	charset = oInfo.charset;
+	charset	  = oInfo.charset;
 
 	return *this;
 }

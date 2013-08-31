@@ -571,17 +571,20 @@ Void BonkEnc::ConfigDialog::OnChangeComponentSettings(const String &componentID)
 
 	for (Int i = 0; i < layers.Length(); i++)
 	{
-		if (layers.GetNth(i) == component->GetConfigurationLayer())
+		if (layers.GetNth(i) != component->GetConfigurationLayer()) continue;
+
+		Component	*replacement = boca.CreateComponentByID(componentID);
+
+		if (replacement != NIL)
 		{
 			boca.DeleteComponent(component);
 
-			component = boca.CreateComponentByID(componentID);
-			components.SetNth(componentIndex, component);
+			components.SetNth(componentIndex, replacement);
 
-			layers.SetNth(i, component->GetConfigurationLayer());
+			layers.SetNth(i, replacement->GetConfigurationLayer());
 			((ConfigEntry *) entries.GetNth(i))->SetLayer(layers.GetNth(i));
-
-			break;
 		}
+
+		break;
 	}
 }

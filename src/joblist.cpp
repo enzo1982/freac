@@ -547,11 +547,14 @@ Void BonkEnc::JobList::LoadList()
 
 			playlist = (PlaylistComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
 
-			if (playlist->CanOpenFile(dialog->GetFileName())) break;
+			if (playlist != NIL)
+			{
+				if (playlist->CanOpenFile(dialog->GetFileName())) break;
 
-			boca.DeleteComponent(playlist);
+				boca.DeleteComponent(playlist);
 
-			playlist = NIL;
+				playlist = NIL;
+			}
 		}
 
 		/* Load playlist file and delete component.

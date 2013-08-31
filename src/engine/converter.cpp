@@ -821,10 +821,10 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 
 		/* Get file extension from selected encoder component
 		 */
-		Registry		&boca	 = Registry::Get();
-		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+		Registry		&boca	       = Registry::Get();
+		EncoderComponent	*encoder       = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
-		String			 fileExtension = encoder->GetOutputFileExtension();
+		String			 fileExtension = (encoder != NIL) ? encoder->GetOutputFileExtension() : "audio";
 		String			 filePattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
 		boca.DeleteComponent(encoder);
@@ -933,6 +933,13 @@ String BonkEnc::Converter::GetSingleOutputFileName(const Track &track)
 
 	if (singleOutputFileName != NIL || config->enable_console) return singleOutputFileName;
 
+	/* Instantiate selected encoder.
+	 */
+	Registry		&boca	 = Registry::Get();
+	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(BoCA::Config::Get()->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+
+	if (encoder == NIL) return NIL;
+
 	/* Find main window and create dialog.
 	 */
 	Window		*mainWnd = Window::GetNthWindow(0);
@@ -945,9 +952,6 @@ String BonkEnc::Converter::GetSingleOutputFileName(const Track &track)
 	/* Get list of supported formats from selected encoder
 	 */
 	BoCA::I18n			*i18n		  = BoCA::I18n::Get();
-
-	Registry			&boca		  = Registry::Get();
-	EncoderComponent		*encoder	  = (EncoderComponent *) boca.CreateComponentByID(BoCA::Config::Get()->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
 	const Array<FileFormat *>	&formats	  = encoder->GetFormats();
 	String				 defaultExtension = encoder->GetOutputFileExtension();

@@ -36,9 +36,9 @@ Error BonkEnc::JobRemoveAllTracks::Perform()
 {
 	SetText("Removing all tracks...");
 
-	BoCA::JobList::Get()->doRemoveAllTracks.Call();
+	if (BoCA::JobList::Get()->doRemoveAllTracks.Call()) SetText("Removed all tracks from joblist.");
+	else						    SetText("Could not remove tracks from joblist!");
 
-	SetText("Removed all tracks from joblist.");
 	SetProgress(1000);
 
 	BoCA::JobList::Get()->Unlock();

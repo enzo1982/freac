@@ -49,6 +49,17 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 	}
 
 	filter_out = (EncoderComponent *) boca.CreateComponentByID(encoderID);
+
+	if (filter_out == NIL)
+	{
+		BoCA::Utilities::ErrorMessage("Cannot create encoder component: %1", encoderID);
+
+		delete f_out;
+		f_out = NIL;
+
+		return False;
+	}
+
 	filter_out->SetAudioTrackInfo(album);
 
 	if (f_out->AddFilter(filter_out) == False)

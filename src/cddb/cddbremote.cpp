@@ -29,7 +29,12 @@ BonkEnc::CDDBRemote::CDDBRemote()
 {
 	connected = False;
 
-	protocol = Protocol::Get("CDDB communication");
+	protocol  = Protocol::Get("CDDB communication");
+
+	socket	  = NIL;
+
+	in	  = NIL;
+	out	  = NIL;
 }
 
 BonkEnc::CDDBRemote::~CDDBRemote()

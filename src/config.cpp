@@ -283,6 +283,8 @@ BonkEnc::Config::Config()
 	deleteAfterEncoding	= False;
 	shutdownAfterEncoding	= False;
 
+	enable_eUpdate		= False;
+
 	Config::SettingsEncoderOutputDirectoryDefault = S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMusic);
 
 	BoCA::Config	*config = BoCA::Config::Get();
