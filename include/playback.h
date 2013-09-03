@@ -37,11 +37,9 @@ namespace BonkEnc
 			Bool					 playing;
 			Bool					 paused;
 
+			Bool					 stop;
+
 			Int					 newPosition;
-
-			Bool					 stop_playback;
-
-			Int					 player_activedrive;
 
 			Int					 PlayThread();
 		public:

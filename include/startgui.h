@@ -43,6 +43,14 @@ namespace BonkEnc
 							 BonkEncGUI();
 							~BonkEncGUI();
 
+			Window				*mainWnd;
+
+			Titlebar			*mainWnd_titlebar;
+			Statusbar			*mainWnd_statusbar;
+
+			Menubar				*mainWnd_menubar;
+			Menubar				*mainWnd_iconbar;
+
 			PopupMenu			*menu_file;
 			PopupMenu			*menu_addsubmenu;
 			PopupMenu			*menu_files;
@@ -63,13 +71,13 @@ namespace BonkEnc
 
 			MenuEntry			*allowOverwriteMenuEntry;
 
-			Menubar				*mainWnd_menubar;
-			Menubar				*mainWnd_iconbar;
-			Titlebar			*mainWnd_titlebar;
+			Hyperlink			*hyperlink;
 
 			TabWidget			*tabs_main;
 			LayerJoblist			*tab_layer_joblist;
 			LayerThreads			*tab_layer_threads;
+
+			JobList				*joblist;
 
 			Int				 clicked_configuration;
 			Int				 clicked_drive;

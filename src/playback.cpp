@@ -28,9 +28,18 @@ BonkEnc::Playback *BonkEnc::Playback::instance = NIL;
 
 BonkEnc::Playback::Playback()
 {
-	playing = False;
+	playing		= False;
+	paused		= False;
 
-	newPosition = -1;
+	stop		= False;
+
+	joblist		= NIL;
+	output		= NIL;
+
+	player_entry	= NIL;
+	player_entry_id = -1;
+
+	newPosition	= -1;
 }
 
 BonkEnc::Playback::~Playback()
@@ -85,11 +94,13 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 
 	joblist->GetNthEntry(entry)->SetFont(font);
 
-	playing = True;
-	paused = False;
-	player_entry = entry;
+	playing		= True;
+	paused		= False;
+
+	stop		= False;
+
+	player_entry	= entry;
 	player_entry_id = joblist->GetNthTrack(entry).GetTrackID();
-	stop_playback = False;
 
 	NonBlocking0<>(&Playback::PlayThread, this).Call();
 }
@@ -105,7 +116,7 @@ Int BonkEnc::Playback::PlayThread()
 
 	/* Save active drive.
 	 */
-	player_activedrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+	Int	 prevActiveDrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
  
 	/* Get track info.
 	 */
@@ -169,7 +180,7 @@ Int BonkEnc::Playback::PlayThread()
 		Int			 bytesPerSample = format.bits / 8;
 		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample * format.channels);
 
-		while (!stop_playback)
+		while (!stop)
 		{
 			/* Seek if requested.
 			 */
@@ -213,13 +224,13 @@ Int BonkEnc::Playback::PlayThread()
 			else if (trackInfo.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / trackInfo.approxLength	       * position : 1000.0 / trackInfo.approxLength		* position);
 			else				      onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * trackInfo.GetFormat().rate) * position : 1000.0 / (240 * trackInfo.GetFormat().rate) * position);
 
-			while (output->CanWrite() < bytes && !stop_playback) S::System::System::Sleep(10);
+			while (output->CanWrite() < bytes && !stop) S::System::System::Sleep(10);
 
 			output->WriteData(buffer, bytes);
 		}
 	}
 
-	while (!stop_playback && output->IsPlaying()) S::System::System::Sleep(20);
+	while (!stop && output->IsPlaying()) S::System::System::Sleep(20);
 
 	output->Deactivate();
 
@@ -229,7 +240,7 @@ Int BonkEnc::Playback::PlayThread()
 
 	/* Restore active drive setting.
 	 */
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, player_activedrive);
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, prevActiveDrive);
 
 	/* Reset entry text color.
 	 */
@@ -246,7 +257,7 @@ Int BonkEnc::Playback::PlayThread()
 
 	/* Notify application about finished playback.
 	 */
-	stop_playback = True;
+	stop = True;
 
 	onFinish.Emit(trackInfo);
 
@@ -284,9 +295,9 @@ Void BonkEnc::Playback::Stop()
 {
 	if (!playing) return;
 
-	if (!stop_playback)
+	if (!stop)
 	{
-		stop_playback = True;
+		stop = True;
 
 		while (playing) S::System::System::Sleep(10);
 	}

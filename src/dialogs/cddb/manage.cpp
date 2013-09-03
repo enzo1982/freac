@@ -9,7 +9,6 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/manage.h>
-#include <bonkenc.h>
 #include <config.h>
 #include <resources.h>
 #include <dllinterfaces.h>
@@ -148,29 +147,31 @@ Void BonkEnc::cddbManageDlg::OK()
 {
 	if (updateJoblist)
 	{
+		const Array<Track>	*joblist = BoCA::JobList::Get()->getTrackList.Call();
+
 		for (Int i = 0; i < CDDBCache::Get()->GetNOfEntries(); i++)
 		{
 			const CDDBInfo	&cddbInfo = CDDBCache::Get()->GetNthEntry(i);
 
-			for (Int l = 0; l < BonkEnc::Get()->joblist->GetNOfTracks(); l++)
+			for (Int j = 0; j < joblist->Length(); j++)
 			{
-				const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
+				const Track	&trackInfo = joblist->GetNth(j);
 
 				if (trackInfo.discid != cddbInfo.discID) continue;
 
-				for (Int m = 0; m < cddbInfo.trackTitles.Length(); m++)
+				for (Int k = 0; k < cddbInfo.trackTitles.Length(); k++)
 				{
-					if (trackInfo.cdTrack == m + 1)
+					if (trackInfo.cdTrack == k + 1)
 					{
-						Track	 track = BonkEnc::Get()->joblist->GetNthTrack(l);
+						Track	 track = joblist->GetNth(j);
 						Info	 info = track.GetInfo();
 
-						info.artist  = (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(m) : cddbInfo.dArtist);
-						info.title   = cddbInfo.trackTitles.GetNth(m);
+						info.artist  = (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(k) : cddbInfo.dArtist);
+						info.title   = cddbInfo.trackTitles.GetNth(k);
 						info.album   = cddbInfo.dTitle;
 						info.year    = cddbInfo.dYear;
 						info.genre   = cddbInfo.dGenre;
-						info.comment = cddbInfo.trackComments.GetNth(m);
+						info.comment = cddbInfo.trackComments.GetNth(k);
 
 						track.SetInfo(info);
 

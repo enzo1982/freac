@@ -34,8 +34,6 @@ namespace BonkEnc
 			Bool							 stop;
 			Bool							 skip;
 
-			Int							 encoder_activedrive;
-
 			Bool							 overwriteAll;
 
 			Array<BoCA::Track>					 tracks;

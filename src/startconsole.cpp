@@ -124,9 +124,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		return;
 	}
 
-	joblist	= new JobList(Point(0, 0), Size(0, 0));
-
-	Bool	 broken = false;
+	JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
+	Bool	 broken	 = False;
 
 	if (((encoderID == "LAME")   && !boca.ComponentExists("lame-out"))     ||
 	    ((encoderID == "VORBIS") && !boca.ComponentExists("vorbis-out"))   ||
@@ -138,7 +137,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	{
 		Console::OutputString(String("Encoder ").Append(encoderID).Append(" is not available!\n\n"));
 
-		broken = true;
+		broken = True;
 	}
 
 	if (encoderID == "LAME")
@@ -278,7 +277,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	{
 		Console::OutputString(String("Encoder ").Append(encoderID).Append(" is not supported by ").Append(BonkEnc::appName).Append("!\n\n"));
 
-		broken = true;
+		broken = True;
 	}
 
 	if (!broken)
@@ -322,7 +321,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 					Console::OutputString(String("File not found: ").Append(files.GetNth(i)).Append("\n"));
 
-					broken = true;
+					broken = True;
 
 					continue;
 				}
@@ -351,7 +350,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 			{
 				Console::OutputString("Could not process input files!\n");
 
-				broken = true;
+				broken = True;
 			}
 		}
 		else
@@ -372,7 +371,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 					Console::OutputString(String("File not found: ").Append(files.GetNth(i)).Append("\n"));
 
-					broken = true;
+					broken = True;
 
 					continue;
 				}
@@ -412,7 +411,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				{
 					Console::OutputString(String("Could not process file: ").Append(currentFile).Append("\n"));
 
-					broken = true;
+					broken = True;
 
 					continue;
 				}

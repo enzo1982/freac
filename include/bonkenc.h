@@ -32,15 +32,7 @@ namespace BonkEnc
 						 BonkEnc();
 			virtual			~BonkEnc();
 
-			Window			*mainWnd;
-			Statusbar		*mainWnd_statusbar;
-
-			Hyperlink		*hyperlink;
-
 			Config			*currentConfig;
-
-			Bool			 dontUpdateInfo;
-			Bool			 overwriteAll;
 		public:
 			static String		 appName;
 			static String		 appLongName;
@@ -51,8 +43,6 @@ namespace BonkEnc
 			static String		 cddbMode;
 			static String		 website;
 			static String		 updatePath;
-
-			JobList			*joblist;
 
 			Converter		*encoder;
 

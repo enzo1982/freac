@@ -373,9 +373,9 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	cddbInfo.trackTitles.RemoveAll();
 	cddbInfo.trackComments.RemoveAll();
 
-	for (Int j = 0; j < artists.Length(); j++) cddbInfo.trackArtists.Add(artists.GetNth(j));
-	for (Int k = 0; k < titles.Length(); k++) cddbInfo.trackTitles.Add((titles.GetNth(k) == i18n->TranslateString("Data track") ? String("Data track") : titles.GetNth(k)));
-	for (Int l = 0; l < comments.Length(); l++) cddbInfo.trackComments.Add(comments.GetNth(l));
+	for (Int i = 0; i < artists.Length();  i++) cddbInfo.trackArtists.Add(artists.GetNth(i));
+	for (Int i = 0; i < titles.Length();   i++) cddbInfo.trackTitles.Add((titles.GetNth(i) == i18n->TranslateString("Data track") ? String("Data track") : titles.GetNth(i)));
+	for (Int i = 0; i < comments.Length(); i++) cddbInfo.trackComments.Add(comments.GetNth(i));
 
 	if (cddbInfo.category == NIL) cddbInfo.category = GetCDDBGenre(edit_genre->GetText());
 
@@ -436,27 +436,29 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 	if (updateJoblist)
 	{
-		for (Int l = 0; l < BonkEnc::Get()->joblist->GetNOfTracks(); l++)
+		const Array<Track>	*joblist = BoCA::JobList::Get()->getTrackList.Call();
+
+		for (Int i = 0; i < joblist->Length(); i++)
 		{
-			const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(l);
+			const Track	&trackInfo = joblist->GetNth(i);
 
 			if (trackInfo.discid != cddbInfo.discID) continue;
 
-			for (Int m = 0; m < titles.Length(); m++)
+			for (Int j = 0; j < titles.Length(); j++)
 			{
-				if (trackInfo.cdTrack == list_tracks->GetNthEntry(m)->GetText().ToInt())
+				if (trackInfo.cdTrack == list_tracks->GetNthEntry(j)->GetText().ToInt())
 				{
-					Track	 track = BonkEnc::Get()->joblist->GetNthTrack(l);
+					Track	 track = joblist->GetNth(i);
 					Info	 info = track.GetInfo();
 
-					if (edit_artist->GetText() == i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various")	info.artist = artists.GetNth(m);
+					if (edit_artist->GetText() == i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various")	info.artist = artists.GetNth(j);
 					else														info.artist = edit_artist->GetText();
 
-					info.title	= titles.GetNth(m);
+					info.title	= titles.GetNth(j);
 					info.album	= edit_album->GetText();
 					info.year	= edit_year->GetText().ToInt();
 					info.genre	= edit_genre->GetText();
-					info.comment	= comments.GetNth(m);
+					info.comment	= comments.GetNth(j);
 
 					track.SetInfo(info);
 
@@ -699,9 +701,11 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	/* Update tracks with information from joblist.
 	 */
-	for (Int i = 0; i < BonkEnc::Get()->joblist->GetNOfTracks(); i++)
+	const Array<Track>	*joblist = BoCA::JobList::Get()->getTrackList.Call();
+
+	for (Int i = 0; i < joblist->Length(); i++)
 	{
-		const Track	&trackInfo = BonkEnc::Get()->joblist->GetNthTrack(i);
+		const Track	&trackInfo = joblist->GetNth(i);
 
 		if (trackInfo.discid != cddb.ComputeDiscID()) continue;
 

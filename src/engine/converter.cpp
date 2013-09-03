@@ -30,11 +30,13 @@ using namespace BoCA::AS;
 
 BonkEnc::Converter::Converter()
 {
-	encoding = False;
-	paused = False;
+	encoding     = False;
+	paused	     = False;
 
-	stop = False;
-	skip = False;
+	stop	     = False;
+	skip	     = False;
+
+	joblist	     = NIL;
 
 	overwriteAll = False;
 }
@@ -224,7 +226,7 @@ Int BonkEnc::Converter::ConverterThread()
 	Int64	 encodedSamples	   = 0;
 	Int	 mode		   = ENCODER_MODE_ON_THE_FLY;
 
-	encoder_activedrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+	Int	 prevActiveDrive   = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 
 	for (Int i = 0; i < tracks.Length(); (mode == ENCODER_MODE_DECODE) ? i : i++)
 	{
@@ -278,12 +280,13 @@ Int BonkEnc::Converter::ConverterThread()
 				singleTrack.SetInfo(singleTrackInfo);
 				singleTrack.SetFormat(trackInfo.GetFormat());
 
-				foreach (const Track &chapterTrack, tracks)
-				{
-					singleTrack.tracks.Add(chapterTrack);
-				}
+				foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
 
 				playlist_tracks.Add(singleTrack);
+
+				/* Create encoder for single file output.
+				 */
+				if (encoder != NIL) break;
 
 				encoder = new Encoder();
 
@@ -655,7 +658,7 @@ Int BonkEnc::Converter::ConverterThread()
 		}
 	}
 
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, encoder_activedrive);
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, prevActiveDrive);
 
 	if (!stop && encodedTracks > 0)
 	{

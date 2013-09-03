@@ -19,6 +19,10 @@ BonkEnc::Encoder::Encoder()
 {
 	f_out	   = NIL;
 	filter_out = NIL;
+
+	chapter	   = 0;
+	bytes	   = 0;
+	offset	   = 0;
 }
 
 BonkEnc::Encoder::~Encoder()

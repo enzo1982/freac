@@ -89,8 +89,6 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	/* Setup attributes.
 	 */
-	dontUpdateInfo	      = False;
-
 	clicked_configuration = -1;
 	clicked_drive	      = -1;
 	clicked_encoder	      = -1;
