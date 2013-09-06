@@ -22,6 +22,12 @@
 
 #include <dialogs/overwrite.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#else
+#	include <netinet/in.h>
+#endif
+
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
 

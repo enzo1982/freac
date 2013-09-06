@@ -19,6 +19,8 @@
 
 #ifdef __WIN32__
 #	include <windows.h>
+#else
+#	include <netinet/in.h>
 #endif
 
 using namespace BoCA;
