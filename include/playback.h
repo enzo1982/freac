@@ -18,8 +18,6 @@ using namespace smooth;
 
 namespace BonkEnc
 {
-	class JobList;
-
 	class Playback
 	{
 		private:
@@ -32,7 +30,7 @@ namespace BonkEnc
 
 			BoCA::AS::OutputComponent		*output;
 
-			JobList					*joblist;
+			BoCA::Track				 track;
 
 			Bool					 playing;
 			Bool					 paused;
@@ -43,18 +41,12 @@ namespace BonkEnc
 
 			Int					 PlayThread();
 		public:
-			Int					 player_entry;
-			Int					 player_entry_id;
-
-			Void					 Play(Int, JobList *);
+			Void					 Play(const BoCA::Track &);
 
 			Void					 Pause();
 			Void					 Resume();
 
 			Void					 SetPosition(Int);
-
-			Void					 Previous();
-			Void					 Next();
 
 			Void					 Stop();
 

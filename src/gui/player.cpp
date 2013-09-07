@@ -53,13 +53,13 @@ BonkEnc::LayerPlayer::LayerPlayer(JobList *iJoblist)
 	pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 254 : 0);
 
 	button_prev	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:15")), pos, size);
-	button_prev->onAction.Connect(&Playback::Previous, player);
+	button_prev->onAction.Connect(&LayerPlayer::PlayPreviousItem, this);
 	button_prev->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 	button_next	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:16")), pos, size);
-	button_next->onAction.Connect(&Playback::Next, player);
+	button_next->onAction.Connect(&LayerPlayer::PlayNextItem, this);
 	button_next->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
@@ -178,11 +178,7 @@ Void BonkEnc::LayerPlayer::OnJoblistRemoveTrack(const Track &track)
 {
 	Playback	*player = Playback::Get();
 
-	if (player->IsPlaying())
-	{
-		if	(track.GetTrackID()					 == player->player_entry_id) StopPlayback();
-		else if (joblist->GetNthTrack(player->player_entry).GetTrackID() != player->player_entry_id) player->player_entry--;
-	}
+	if (player->IsPlaying() && playingTrack.GetTrackID() == track.GetTrackID()) StopPlayback();
 }
 
 Void BonkEnc::LayerPlayer::OnJoblistRemoveAllTracks()
@@ -192,9 +188,69 @@ Void BonkEnc::LayerPlayer::OnJoblistRemoveAllTracks()
 
 Void BonkEnc::LayerPlayer::PlaySelectedItem()
 {
+	Play(joblist->GetSelectedTrack());
+}
+
+Void BonkEnc::LayerPlayer::PlayPreviousItem()
+{
+	const Array<Track>	*tracks = joblist->GetTrackList();
+
+	for (Int i = 1; i < tracks->Length(); i++)
+	{
+		const Track	&track = tracks->GetNth(i);
+
+		if (track.GetTrackID() == playingTrack.GetTrackID())
+		{
+			StopPlayback();
+
+			Play(tracks->GetNth(i - 1));
+
+			break;
+		}
+	}
+}
+
+Void BonkEnc::LayerPlayer::PlayNextItem()
+{
+	const Array<Track>	*tracks = joblist->GetTrackList();
+
+	for (Int i = 0; i < tracks->Length() - 1; i++)
+	{
+		const Track	&track = tracks->GetNth(i);
+
+		if (track.GetTrackID() == playingTrack.GetTrackID())
+		{
+			StopPlayback();
+
+			Play(tracks->GetNth(i + 1));
+
+			break;
+		}
+	}
+}
+
+Void BonkEnc::LayerPlayer::Play(const Track &track)
+{
+	playingTrack = track;
+
+	/* Set joblist entry color.
+	 */
+	ListEntry	*entry = joblist->GetEntryByTrack(playingTrack);
+
+	if (entry != NIL)
+	{
+		GUI::Font	 font = entry->GetFont();
+
+		font.SetColor(Color(255, 0, 0));
+
+		entry->SetFont(font);
+	}
+
+	/* Play track.
+	 */
 	Playback	*player = Playback::Get();
 
-	player->Play(joblist->GetSelectedEntryNumber(), joblist);
+	player->Play(playingTrack);
 }
 
 Void BonkEnc::LayerPlayer::PauseResumePlayback()
@@ -215,28 +271,24 @@ Void BonkEnc::LayerPlayer::StopPlayback()
 
 	player->Stop();
 
+	/* Reset slider.
+	 */
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	slider_play->SetValue(i18n->IsActiveLanguageRightToLeft() ? 1000 : 0);
-}
 
-Void BonkEnc::LayerPlayer::OnChangePlayPosition()
-{
-	Playback	*player = Playback::Get();
+	/* Reset joblist entry color.
+	 */
+	ListEntry	*entry = joblist->GetEntryByTrack(playingTrack);
 
-	if (!player->IsPlaying()) return;
+	if (entry != NIL)
+	{
+		GUI::Font	 font = entry->GetFont();
 
-	player->onFinish.Disconnect(&LayerPlayer::StopPlayback, this);
+		font.SetColor(Setup::ClientTextColor);
 
-	player->Stop();
-	player->Play(player->player_entry, joblist);
-
-	player->onFinish.Connect(&LayerPlayer::StopPlayback, this);
-
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	if (i18n->IsActiveLanguageRightToLeft()) player->SetPosition(1000 - slider_play->GetValue());
-	else					 player->SetPosition(slider_play->GetValue());
+		entry->SetFont(font);
+	}
 }
 
 Void BonkEnc::LayerPlayer::OpenCDTray()
@@ -250,4 +302,23 @@ Void BonkEnc::LayerPlayer::OpenCDTray()
 
 		boca.DeleteComponent(info);
 	}
+}
+
+Void BonkEnc::LayerPlayer::OnChangePlayPosition()
+{
+	Playback	*player = Playback::Get();
+
+	if (!player->IsPlaying()) return;
+
+	player->onFinish.Disconnect(&LayerPlayer::StopPlayback, this);
+
+	player->Stop();
+	player->Play(playingTrack);
+
+	player->onFinish.Connect(&LayerPlayer::StopPlayback, this);
+
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	if (i18n->IsActiveLanguageRightToLeft()) player->SetPosition(1000 - slider_play->GetValue());
+	else					 player->SetPosition(slider_play->GetValue());
 }

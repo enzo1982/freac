@@ -35,8 +35,6 @@ namespace BonkEnc
 
 			Bool				 AddTrack(const BoCA::Track &);
 
-			ListEntry			*GetEntryByTrack(const BoCA::Track &) const;
-
 			Void				 AddHeaderTabs();
 			Void				 UpdateTextLine();
 
@@ -65,6 +63,8 @@ namespace BonkEnc
 			Void				 UpdateTrackInfo(const BoCA::Track &);
 
 			Void				 RemoveSelectedTrack();
+
+			ListEntry			*GetEntryByTrack(const BoCA::Track &) const;
 		slots:
 			Void				 AddTracksByDragAndDrop(const Array<String> &);
 

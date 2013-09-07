@@ -9,8 +9,6 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <playback.h>
-#include <joblist.h>
-#include <config.h>
 #include <utilities.h>
 #include <bonkenc.h>
 
@@ -30,18 +28,14 @@ BonkEnc::Playback *BonkEnc::Playback::instance = NIL;
 
 BonkEnc::Playback::Playback()
 {
-	playing		= False;
-	paused		= False;
+	playing	    = False;
+	paused	    = False;
 
-	stop		= False;
+	stop	    = False;
 
-	joblist		= NIL;
-	output		= NIL;
+	output	    = NIL;
 
-	player_entry	= NIL;
-	player_entry_id = -1;
-
-	newPosition	= -1;
+	newPosition = -1;
 }
 
 BonkEnc::Playback::~Playback()
@@ -68,10 +62,8 @@ Void BonkEnc::Playback::Free()
 	}
 }
 
-Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
+Void BonkEnc::Playback::Play(const Track &iTrack)
 {
-	if (entry < 0) return;
-
 	if (BonkEnc::Get()->encoder->IsEncoding())
 	{
 		BoCA::Utilities::ErrorMessage("Cannot play a file while encoding!");
@@ -79,7 +71,7 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 		return;
 	}
 
-	if (playing && paused && player_entry == entry)
+	if (playing && paused && track.GetTrackID() == iTrack.GetTrackID())
 	{
 		Resume();
 
@@ -88,49 +80,23 @@ Void BonkEnc::Playback::Play(Int entry, JobList *iJoblist)
 
 	if (playing) Stop();
 
-	joblist = iJoblist;
+	track	= iTrack;
 
-	GUI::Font	 font = joblist->GetNthEntry(entry)->GetFont();
+	playing	= True;
+	paused	= False;
 
-	font.SetColor(Color(255, 0, 0));
-
-	joblist->GetNthEntry(entry)->SetFont(font);
-
-	playing		= True;
-	paused		= False;
-
-	stop		= False;
-
-	player_entry	= entry;
-	player_entry_id = joblist->GetNthTrack(entry).GetTrackID();
+	stop	= False;
 
 	NonBlocking0<>(&Playback::PlayThread, this).Call();
 }
 
 Int BonkEnc::Playback::PlayThread()
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	/* Find system byte order.
 	 */
 	Int	 systemByteOrder = ntohs(0xFF00) == 0xFF00 ? BYTE_RAW : BYTE_INTEL;
-
-	/* Save active drive.
-	 */
-	Int	 prevActiveDrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
- 
-	/* Get track info.
-	 */
-	Track		 trackInfo = joblist->GetNthTrack(player_entry);
-	const Format	&format = trackInfo.GetFormat();
-
-	if (trackInfo == NIL)
-	{
-		playing = false;
-
-		return Error();
-	}
 
 	/* Create output component.
 	 */
@@ -152,14 +118,14 @@ Int BonkEnc::Playback::PlayThread()
 		return Error();
 	}
 
-	output->SetAudioTrackInfo(trackInfo);
+	output->SetAudioTrackInfo(track);
 	output->Activate();
 
 	/* Create decoder.
 	 */
 	Decoder	*decoder = new Decoder();
 
-	if (!decoder->Create(trackInfo.origFilename, trackInfo))
+	if (!decoder->Create(track.origFilename, track))
 	{
 		delete decoder;
 
@@ -170,14 +136,16 @@ Int BonkEnc::Playback::PlayThread()
 
 	/* Notify application aboud track playback.
 	 */
-	onPlay.Emit(trackInfo);
+	onPlay.Emit(track);
 
 	/* Enter playback loop.
 	 */
 	if (!output->GetErrorState())
 	{
-		Int64		 position	= 0;
-		UnsignedLong	 samples_size	= 512;
+		const Format		&format		= track.GetFormat();
+
+		Int64			 position	= 0;
+		UnsignedLong		 samples_size	= 512;
 
 		Int			 bytesPerSample = format.bits / 8;
 		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample * format.channels);
@@ -188,9 +156,9 @@ Int BonkEnc::Playback::PlayThread()
 			 */
 			if (newPosition >= 0)
 			{
-				if	(trackInfo.length	>= 0) position = trackInfo.length			   / 1000 * newPosition;
-				else if (trackInfo.approxLength >= 0) position = trackInfo.approxLength			   / 1000 * newPosition;
-				else				      position = (Int64(240) * trackInfo.GetFormat().rate) / 1000 * newPosition;
+				if	(track.length	    >= 0) position = track.length		/ 1000 * newPosition;
+				else if (track.approxLength >= 0) position = track.approxLength		/ 1000 * newPosition;
+				else				  position = (Int64(240) * format.rate) / 1000 * newPosition;
 
 				decoder->Seek(position);
 
@@ -201,11 +169,11 @@ Int BonkEnc::Playback::PlayThread()
 			 */
 			Int	 step = samples_size;
 
-			if (trackInfo.length >= 0)
+			if (track.length >= 0)
 			{
-				if (position >= trackInfo.length) break;
+				if (position >= track.length) break;
 
-				if (position + step > trackInfo.length) step = trackInfo.length - position;
+				if (position + step > track.length) step = track.length - position;
 			}
 
 			/* Read samples.
@@ -222,9 +190,9 @@ Int BonkEnc::Playback::PlayThread()
 			 */
 			position += (bytes / bytesPerSample / format.channels);
 
-			if	(trackInfo.length	>= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / trackInfo.length		       * position : 1000.0 / trackInfo.length			* position);
-			else if (trackInfo.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / trackInfo.approxLength	       * position : 1000.0 / trackInfo.approxLength		* position);
-			else				      onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * trackInfo.GetFormat().rate) * position : 1000.0 / (240 * trackInfo.GetFormat().rate) * position);
+			if	(track.length	    >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.length	    * position : 1000.0 / track.length	      * position);
+			else if (track.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.approxLength  * position : 1000.0 / track.approxLength  * position);
+			else				  onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * format.rate) * position : 1000.0 / (240 * format.rate) * position);
 
 			while (output->CanWrite() < bytes && !stop) S::System::System::Sleep(10);
 
@@ -240,28 +208,11 @@ Int BonkEnc::Playback::PlayThread()
 
 	delete decoder;
 
-	/* Restore active drive setting.
-	 */
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, prevActiveDrive);
-
-	/* Reset entry text color.
-	 */
-	ListEntry	*entry = joblist->GetNthEntry(player_entry);
-
-	if (entry != NIL)
-	{
-		GUI::Font	 font = entry->GetFont();
-
-		font.SetColor(Setup::ClientTextColor);
-
-		entry->SetFont(font);
-	}
-
 	/* Notify application about finished playback.
 	 */
 	stop = True;
 
-	onFinish.Emit(trackInfo);
+	onFinish.Emit(track);
 
 	playing = false;
 
@@ -303,18 +254,4 @@ Void BonkEnc::Playback::Stop()
 
 		while (playing) S::System::System::Sleep(10);
 	}
-}
-
-Void BonkEnc::Playback::Previous()
-{
-	if (!playing) return;
-
-	if (player_entry > 0) Play(player_entry - 1, joblist);
-}
-
-Void BonkEnc::Playback::Next()
-{
-	if (!playing) return;
-
-	if (player_entry < joblist->GetNOfTracks() - 1) Play(player_entry + 1, joblist);
 }

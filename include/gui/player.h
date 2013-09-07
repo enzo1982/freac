@@ -24,31 +24,39 @@ namespace BonkEnc
 	class LayerPlayer : public Layer
 	{
 		private:
-			JobList	*joblist;
+			JobList		*joblist;
 
-			Button	*button_play;
-			Button	*button_pause;
-			Button	*button_stop;
-			Button	*button_prev;
-			Button	*button_next;
-			Button	*button_open;
+			Button		*button_play;
+			Button		*button_pause;
+			Button		*button_stop;
+			Button		*button_prev;
+			Button		*button_next;
+			Button		*button_open;
 
-			Slider	*slider_play;
+			Slider		*slider_play;
+
+			BoCA::Track	 playingTrack;
 		public:
-				 LayerPlayer(JobList *);
-				~LayerPlayer();
+					 LayerPlayer(JobList *);
+					~LayerPlayer();
 		slots:
-			Void	 OnChangeLanguageSettings();
+			Void		 OnChangeLanguageSettings();
 
-			Void	 OnJoblistRemoveTrack(const BoCA::Track &);
-			Void	 OnJoblistRemoveAllTracks();
+			Void		 OnJoblistRemoveTrack(const BoCA::Track &);
+			Void		 OnJoblistRemoveAllTracks();
 
-			Void	 PlaySelectedItem();
-			Void	 PauseResumePlayback();
-			Void	 StopPlayback();
-			Void	 OpenCDTray();
+			Void		 PlaySelectedItem();
+			Void		 PlayPreviousItem();
+			Void		 PlayNextItem();
 
-			Void	 OnChangePlayPosition();
+			Void		 Play(const BoCA::Track &);
+
+			Void		 PauseResumePlayback();
+			Void		 StopPlayback();
+
+			Void		 OpenCDTray();
+
+			Void		 OnChangePlayPosition();
 	};
 };
 
