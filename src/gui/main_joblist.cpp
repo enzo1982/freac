@@ -556,9 +556,21 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
+	/* Update title info checkbox.
+	 */
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(Rect(info_background->GetRealPosition(), info_background->GetSize()));
+
+	info_background->Hide();
 	info_divider->SetPos(113 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0));
 	info_background->SetY(121 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0));
+	info_background->Show();
 
+	surface->EndPaint();
+
+	/* Update title info area.
+	 */
 	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
 	info_edit_title->SetWidth(219 + info_text_genre->GetUnscaledTextWidth() + info_text_year->GetUnscaledTextWidth());
 	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
@@ -575,6 +587,8 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	htsp_edit_artist->SetWidth(info_edit_artist->GetWidth());
 	htsp_edit_album->SetWidth(info_edit_album->GetWidth());
 
+	/* Update status area.
+	 */
 	Int	 maxTextLength = (Int) Math::Max(Math::Max(txt_progress->GetUnscaledTextWidth(), txt_outdir->GetUnscaledTextWidth()), Math::Max(txt_filename->GetUnscaledTextWidth(), txt_format->GetUnscaledTextWidth()));
 
 	txt_encoder->SetX(clientSize.cx / 2 + 7);
@@ -585,13 +599,50 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 21 - txt_encoder->GetUnscaledTextWidth());
 	edb_outdir->SetWidth(clientSize.cx - 107 - maxTextLength);
 
-	progress->SetWidth(clientSize.cx - 193 - maxTextLength - txt_time->GetUnscaledTextWidth());
-	progress_total->SetWidth(clientSize.cx - 193 - maxTextLength - txt_time->GetUnscaledTextWidth());
+	/* Update progress bar and time-left display.
+	 */
+	surface->StartPaint(Rect(progress->GetRealPosition(), Size(GetWidth() - progress->GetX(), edb_trackPercent->GetHeight())));
+
+	progress->Hide();
+	progress_total->Hide();
+
+	edb_trackPercent->Hide();
+	txt_splitPercent->Hide();
+	edb_totalPercent->Hide();
+
+	txt_time->Hide();
+	edb_trackTime->Hide();
+	txt_splitTime->Hide();
+	edb_totalTime->Hide();
+
+	edb_totalTime->SetX(edb_totalTime->GetWidth() + 7);
+	txt_splitTime->SetX(edb_totalTime->GetX() + 9);
+	edb_trackTime->SetX(txt_splitTime->GetX() + edb_trackTime->GetWidth() + 3);
+	txt_time->SetX(edb_trackTime->GetX() + txt_time->GetUnscaledTextWidth() + 7);
+
+	progress->SetWidth(clientSize.cx - 125 - maxTextLength - txt_time->GetUnscaledTextWidth() - edb_trackTime->GetWidth() - edb_totalTime->GetWidth());
+	progress_total->SetWidth(clientSize.cx - 125 - maxTextLength - txt_time->GetUnscaledTextWidth() - edb_trackTime->GetWidth() - edb_totalTime->GetWidth());
 
 	edb_trackPercent->SetX(progress->GetX() + progress->GetWidth());
 	txt_splitPercent->SetX(progress->GetX() + progress->GetWidth() + 36);
 	edb_totalPercent->SetX(progress->GetX() + progress->GetWidth() + 45);
 
+	progress_total->Show();
+	progress->Show();
+
+	edb_trackPercent->Show();
+	txt_splitPercent->Show();
+	edb_totalPercent->Show();
+
+	txt_time->Show();
+	edb_trackTime->Show();
+	txt_splitTime->Show();
+	edb_totalTime->Show();
+
+	surface->EndPaint();
+
+	/* Update joblist size and checkbox positions.
+	 */
 	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0)));
 
 	check_single->SetMetrics(Point(check_single->GetUnscaledTextWidth() + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->GetUnscaledTextWidth() + 21, check_single->GetHeight()));
@@ -650,7 +701,7 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 	txt_outdir->SetX(maxTextLength + 7 - txt_outdir->GetUnscaledTextWidth());
 	txt_filename->SetX(maxTextLength + 7 - txt_filename->GetUnscaledTextWidth());
 	txt_format->SetX(maxTextLength + 7 - txt_format->GetUnscaledTextWidth());
-	txt_time->SetX(94 + txt_time->GetUnscaledTextWidth());
+	txt_time->SetX(edb_trackTime->GetX() + txt_time->GetUnscaledTextWidth() + 7);
 
 	edb_filename->SetX(maxTextLength + 14);
 	edb_format->SetX(maxTextLength + 14);
@@ -997,6 +1048,9 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	edb_totalPercent->SetText("0%");
 	edb_totalTime->SetText("00:00");
 
+	if (edb_trackTime->GetWidth() != 34) { edb_trackTime->SetWidth(34); OnChangeSize(GetSize()); }
+	if (edb_totalTime->GetWidth() != 34) { edb_totalTime->SetWidth(34); OnChangeSize(GetSize()); }
+
 	progress->SetValue(0);
 	progress_total->SetValue(0);
 
@@ -1020,6 +1074,8 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 
 	edb_trackPercent->SetText("0%");
 	edb_trackTime->SetText("00:00");
+
+	if (edb_trackTime->GetWidth() != 34) { edb_trackTime->SetWidth(34); OnChangeSize(GetSize()); }
 
 	progress->SetValue(0);
 
@@ -1047,8 +1103,27 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 
 Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
 {
-	edb_trackTime->SetText(SecondsToString(secondsLeft));
+	/* Update seconds only if estimate is less or
+	 * at least five seconds more than before.
+	 */
+	static Int	 prevSeconds = 0;
 
+	if (secondsLeft < prevSeconds || secondsLeft >= prevSeconds + 5)
+	{
+		/* Set track time string.
+		 */
+		String	 secondsString = SecondsToString(secondsLeft);
+
+		edb_trackTime->SetText(secondsString);
+
+		if	(secondsString.Length() == 5 && edb_trackTime->GetWidth() != 34) { edb_trackTime->SetWidth(34); OnChangeSize(GetSize()); }
+		else if (secondsString.Length() == 8 && edb_trackTime->GetWidth() != 49) { edb_trackTime->SetWidth(49); OnChangeSize(GetSize()); }
+
+		prevSeconds = secondsLeft;
+	}
+
+	/* Set percent values.
+	 */
 	if (secondsLeft < 0)
 	{
 		edb_trackPercent->SetText("?%");
@@ -1067,8 +1142,27 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 
 Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsLeft)
 {
-	edb_totalTime->SetText(SecondsToString(secondsLeft));
+	/* Update seconds only if estimate is less or
+	 * at least five seconds more than before.
+	 */
+	static Int	 prevSeconds = 0;
 
+	if (secondsLeft < prevSeconds || secondsLeft >= prevSeconds + 5)
+	{
+		/* Set total time string.
+		 */
+		String	 secondsString = SecondsToString(secondsLeft);
+
+		edb_totalTime->SetText(secondsString);
+
+		if	(secondsString.Length() == 5 && edb_totalTime->GetWidth() != 34) { edb_totalTime->SetWidth(34); OnChangeSize(GetSize()); }
+		else if (secondsString.Length() == 8 && edb_totalTime->GetWidth() != 49) { edb_totalTime->SetWidth(49); OnChangeSize(GetSize()); }
+
+		prevSeconds = secondsLeft;
+	}
+
+	/* Set percent values.
+	 */
 	if (secondsLeft < 0)
 	{
 		edb_totalPercent->SetText("?%");
@@ -1268,23 +1362,43 @@ Void BonkEnc::LayerJoblist::ToggleEditPopup()
 
 String BonkEnc::LayerJoblist::SecondsToString(Int seconds)
 {
-	if (seconds < 0 || seconds >= 6000) return "??:??";
+	if (seconds <	    0) return	 "??:??";
+	if (seconds >= 360000) return "??:??:??";
 
 	static String	 zeroString  = "0";
 	static String	 colonString = ":";
 
-	String	 buffer = String::FromInt(seconds / 60);
-	String	 text = zeroString;
+	String	 buffer;
+	String	 text;
 
-	if (buffer.Length() == 1) text.Append(buffer);
-	else			  text.Copy(buffer);
+	/* Append hours.
+	 */
+	if (seconds >= 3600)
+	{
+		buffer = String::FromInt(seconds / 3600);
 
+		if (buffer.Length() == 1) text.Append(zeroString);
+
+		text.Append(buffer);
+		text.Append(colonString);
+	}
+
+	/* Append minutes.
+	 */
+	buffer = String::FromInt(seconds % 3600 / 60);
+
+	if (buffer.Length() == 1) text.Append(zeroString);
+
+	text.Append(buffer);
 	text.Append(colonString);
 
-	buffer = String::FromInt(seconds % 60);
+	/* Append seconds.
+	 */
+	buffer = String::FromInt(seconds % 3600 % 60);
 
-	if (buffer.Length() == 1) text.Append(String(zeroString).Append(buffer));
-	else			  text.Append(buffer);
+	if (buffer.Length() == 1) text.Append(zeroString);
+
+	text.Append(buffer);
 
 	return text;
 }

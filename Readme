@@ -45,7 +45,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (July 2013)
+	Version 1.1 CVS (September 2013)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -99,6 +99,7 @@ History
 		- added a slider for seeking during playback
 		- making better use of multi-core CPUs when encoding/decoding
 		- miscellaneous other speed optimizations
+		- the time left indicator now shows hours if necessary
 		- the five last used file name patterns are now saved for later use
 		- greatly improved case conversion functions
 		- conversion progress is now shown in the taskbar on Windows 7 and later
@@ -116,6 +117,7 @@ History
 		- fixed not writing Xing header when using LAME presets
 		- fixed crash when trying to open unsupported Sun Audio (.au) files
 		- fixed and improved decoding of raw audio formats WAVE, AIFF and AU
+		- fixed last track of CD-Extra discs being two seconds too long
 		- fixed encoding empty tracks when no CD is inserted
 		- fixed various CDDB issues
 		- fixed HTTP proxy authentication
@@ -129,6 +131,7 @@ History
 		- fixed ASPI error message being displayed on systems without optical drives
 		- installer improvements
 		- lots of fixes to the command line encoder
+		- fixed uninstaller not working when run directly
 		- added native x64 platform support
 		- upgraded Bonk to version 0.12
 		- upgraded FLAC to version 1.3.0
