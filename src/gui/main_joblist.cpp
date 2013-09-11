@@ -42,12 +42,15 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	SetText(i18n->TranslateString("Joblist"));
 
-	dontUpdateInfo	= False;
+	dontUpdateInfo		= False;
 
-	clicked_charset	= -1;
-	clicked_case	= -1;
+	clicked_charset		= -1;
+	clicked_case		= -1;
 
-	activePopup	= 0;
+	activePopup		= 0;
+
+	previousTrackSeconds	= 0;
+	previousTotalSeconds	= 0;
 
 	Point		 pos;
 	Size		 size;
@@ -1054,6 +1057,9 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	progress->SetValue(0);
 	progress_total->SetValue(0);
 
+	previousTrackSeconds = -10;
+	previousTotalSeconds = -10;
+
 	btn_skip->Deactivate();
 
 	if (success && Config::Get()->shutdownAfterEncoding)
@@ -1078,6 +1084,8 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 	if (edb_trackTime->GetWidth() != 34) { edb_trackTime->SetWidth(34); OnChangeSize(GetSize()); }
 
 	progress->SetValue(0);
+
+	previousTrackSeconds = -10;
 
 	const Info	&info = track.GetInfo();
 
@@ -1104,11 +1112,9 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
 {
 	/* Update seconds only if estimate is less or
-	 * at least five seconds more than before.
+	 * at least two seconds more than before.
 	 */
-	static Int	 prevSeconds = 0;
-
-	if (secondsLeft < prevSeconds || secondsLeft >= prevSeconds + 5)
+	if (secondsLeft < previousTrackSeconds || secondsLeft >= previousTrackSeconds + 2)
 	{
 		/* Set track time string.
 		 */
@@ -1119,35 +1125,24 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 		if	(secondsString.Length() == 5 && edb_trackTime->GetWidth() != 34) { edb_trackTime->SetWidth(34); OnChangeSize(GetSize()); }
 		else if (secondsString.Length() == 8 && edb_trackTime->GetWidth() != 49) { edb_trackTime->SetWidth(49); OnChangeSize(GetSize()); }
 
-		prevSeconds = secondsLeft;
+		previousTrackSeconds = secondsLeft;
 	}
 
 	/* Set percent values.
 	 */
-	if (secondsLeft < 0)
-	{
-		edb_trackPercent->SetText("?%");
+	static String	 percentString = "%";
 
-		progress->SetValue(1000);
-	}
-	else
-	{
-		static String	 percentString = "%";
+	edb_trackPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
 
-		edb_trackPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
-
-		progress->SetValue(progressValue);
-	}
+	progress->SetValue(progressValue);
 }
 
 Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsLeft)
 {
 	/* Update seconds only if estimate is less or
-	 * at least five seconds more than before.
+	 * at least two seconds more than before.
 	 */
-	static Int	 prevSeconds = 0;
-
-	if (secondsLeft < prevSeconds || secondsLeft >= prevSeconds + 5)
+	if (secondsLeft < previousTotalSeconds || secondsLeft >= previousTotalSeconds + 2)
 	{
 		/* Set total time string.
 		 */
@@ -1158,25 +1153,16 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 		if	(secondsString.Length() == 5 && edb_totalTime->GetWidth() != 34) { edb_totalTime->SetWidth(34); OnChangeSize(GetSize()); }
 		else if (secondsString.Length() == 8 && edb_totalTime->GetWidth() != 49) { edb_totalTime->SetWidth(49); OnChangeSize(GetSize()); }
 
-		prevSeconds = secondsLeft;
+		previousTotalSeconds = secondsLeft;
 	}
 
 	/* Set percent values.
 	 */
-	if (secondsLeft < 0)
-	{
-		edb_totalPercent->SetText("?%");
+	static String	 percentString = "%";
 
-		progress_total->SetValue(1000);
-	}
-	else
-	{
-		static String	 percentString = "%";
+	edb_totalPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
 
-		edb_totalPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
-
-		progress_total->SetValue(progressValue);
-	}
+	progress_total->SetValue(progressValue);
 }
 
 Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
@@ -1362,7 +1348,6 @@ Void BonkEnc::LayerJoblist::ToggleEditPopup()
 
 String BonkEnc::LayerJoblist::SecondsToString(Int seconds)
 {
-	if (seconds <	    0) return	 "??:??";
 	if (seconds >= 360000) return "??:??:??";
 
 	static String	 zeroString  = "0";

@@ -181,8 +181,8 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / trackInfo.fileSize * trackInfo.approxLength / totalSamples) - totalTicks) / 1000);
 	}
 
-	onTrackProgress.Emit(trackProgress, trackTicks);
-	onTotalProgress.Emit(totalProgress, totalTicks);
+	onTrackProgress.Emit(Math::Min(1000, trackProgress), Math::Max(0, trackTicks));
+	onTotalProgress.Emit(Math::Min(1000, totalProgress), Math::Max(0, totalTicks));
 
 #ifdef __WIN32__
 	/* Show progress in taskbar.
@@ -190,7 +190,7 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 	if (taskbar != NIL)
 	{
 		taskbar->SetProgressState(hwnd, TBPF_NORMAL);
-		taskbar->SetProgressValue(hwnd, totalProgress, 1000);
+		taskbar->SetProgressValue(hwnd, Math::Min(1000, totalProgress), 1000);
 	}
 #endif
 

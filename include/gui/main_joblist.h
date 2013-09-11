@@ -117,6 +117,9 @@ namespace BonkEnc
 
 			Int			 activePopup;
 
+			Int			 previousTrackSeconds;
+			Int			 previousTotalSeconds;
+
 			Void			 FillMenus();
 
 			EditBox			*GetActiveEditBox();
