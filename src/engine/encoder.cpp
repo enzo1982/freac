@@ -39,7 +39,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 	bytes	= 0;
 	offset	= 0;
 
-	f_out = new OutStream(STREAM_FILE, fileName, OS_REPLACE);
+	f_out = new OutStream(STREAM_FILE, BoCA::Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
 	f_out->SetPackageSize(196608);
 
 	if (f_out->GetLastError() != IO_ERROR_OK)

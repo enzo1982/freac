@@ -265,7 +265,7 @@ Int BonkEnc::Converter::ConverterThread()
 
 				if (singleOutFile == NIL) break;
 
-				singleOutFile = BoCA::Utilities::CreateDirectoryForFile(Utilities::NormalizeFileName(singleOutFile));
+				singleOutFile = Utilities::NormalizeFileName(singleOutFile);
 
 				Track	 singleTrack;
 				Info	 singleTrackInfo;
@@ -498,8 +498,6 @@ Int BonkEnc::Converter::ConverterThread()
 
 		encodedSamples += trackLength;
 
-		if (!skip) trackInfo.length = trackLength;
-
 		/* Close encoder or signal next chapter.
 		 */
 		if (!encodeToSingleFile)
@@ -518,6 +516,7 @@ Int BonkEnc::Converter::ConverterThread()
 			Track	 cuesheetTrack = trackInfo;
 
 			cuesheetTrack.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
+			cuesheetTrack.length	   = trackLength;
 			cuesheetTrack.origFilename = singleOutFile;
 
 			cuesheet_tracks.Add(cuesheetTrack);
@@ -566,6 +565,7 @@ Int BonkEnc::Converter::ConverterThread()
 				Track	 playlistTrack = trackInfo;
 
 				playlistTrack.sampleOffset = 0;
+				playlistTrack.length	   = trackLength;
 				playlistTrack.origFilename = out_filename;
 
 				playlist_tracks.Add(playlistTrack);
@@ -902,7 +902,7 @@ String BonkEnc::Converter::GetOutputFileName(const Track &track)
 			}
 
 			outputFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
-			outputFileName = BoCA::Utilities::CreateDirectoryForFile(Utilities::NormalizeFileName(outputFileName));
+			outputFileName = Utilities::NormalizeFileName(outputFileName);
 		}
 		else if (track.isCDTrack)
 		{

@@ -368,6 +368,11 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 	 */
 	if (rFileName.Length() - lastBS > maxLength) rFileName = String().CopyN(rFileName, lastBS + maxLength);
 
+	/* Normalize directory delimiters.
+	 */
+	rFileName.Replace("\\",	Directory::GetDirectoryDelimiter());
+	rFileName.Replace("/",	Directory::GetDirectoryDelimiter());
+
 	/* Replace trailing spaces.
 	 */
 	while (rFileName.EndsWith(" ")) { rFileName[rFileName.Length() - 1] = 0; }
