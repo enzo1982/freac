@@ -17,6 +17,8 @@ namespace BonkEnc
 {
 	class JobAddFiles : public Job
 	{
+		private:
+			Bool		 abort;
 		protected:
 			Array<String>	 files;
 		public:
@@ -24,8 +26,9 @@ namespace BonkEnc
 			virtual		~JobAddFiles();
 
 			virtual Bool	 ReadyToRun();
-		slots:
 			virtual Error	 Perform();
+		slots:
+			Void		 OnRemoveAllTracksJobScheduled();
 	};
 };
 

@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <jobs/joblist/addtracks.h>
+#include <jobs/joblist/removeall.h>
 
 #include <cddb/cddbcache.h>
 #include <dialogs/cddb/query.h>
@@ -26,10 +27,14 @@ BonkEnc::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead
 	foreach (const String &url, iURLs) urls.Add(url);
 
 	autoCDRead = iAutoCDRead;
+	abort	   = False;
+
+	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddTracks::OnRemoveAllTracksJobScheduled, this);
 }
 
 BonkEnc::JobAddTracks::~JobAddTracks()
 {
+	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Disconnect(&JobAddTracks::OnRemoveAllTracksJobScheduled, this);
 }
 
 Bool BonkEnc::JobAddTracks::ReadyToRun()
@@ -53,7 +58,9 @@ Error BonkEnc::JobAddTracks::Perform()
 
 	for (Int i = 0; i < urls.Length(); i++)
 	{
-		String	 url = urls.GetNth(i);
+		if (abort) break;
+
+		const String	&url = urls.GetNth(i);
 
 		SetText(String("Adding files... - ").Append(url));
 
@@ -164,12 +171,22 @@ Error BonkEnc::JobAddTracks::Perform()
 		SetProgress((i + 1) * 1000 / urls.Length());
 	}
 
-	SetText(String("Added ").Append(String::FromInt(urls.Length() - errors.Length())).Append(" files; ").Append(String::FromInt(errors.Length())).Append(" errors occurred."));
-	SetProgress(1000);
+	if (abort) errors.RemoveAll();
+
+	if (!abort)
+	{
+		SetText(String("Added ").Append(String::FromInt(urls.Length() - errors.Length())).Append(" files; ").Append(String::FromInt(errors.Length())).Append(" errors occurred."));
+		SetProgress(1000);
+	}
 
 	urls.RemoveAll();
 
 	BoCA::JobList::Get()->Unlock();
 
 	return Success();
+}
+
+Void BonkEnc::JobAddTracks::OnRemoveAllTracksJobScheduled()
+{
+	abort = True;
 }

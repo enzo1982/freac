@@ -17,6 +17,8 @@ namespace BonkEnc
 {
 	class JobAddTracks : public Job
 	{
+		private:
+			Bool		 abort;
 		protected:
 			Array<String>	 urls;
 
@@ -26,8 +28,9 @@ namespace BonkEnc
 			virtual		~JobAddTracks();
 
 			virtual Bool	 ReadyToRun();
-		slots:
 			virtual Error	 Perform();
+		slots:
+			Void		 OnRemoveAllTracksJobScheduled();
 	};
 };
 

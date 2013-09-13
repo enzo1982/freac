@@ -12,12 +12,23 @@
 
 #include <boca.h>
 
+Signal0<Void>	 BonkEnc::JobRemoveAllTracks::onRemoveAllTracksJobScheduled;
+
 BonkEnc::JobRemoveAllTracks::JobRemoveAllTracks()
 {
+	onPlanJob.Connect(&JobRemoveAllTracks::OnPlanJob, this);
 }
 
 BonkEnc::JobRemoveAllTracks::~JobRemoveAllTracks()
 {
+	onPlanJob.Disconnect(&JobRemoveAllTracks::OnPlanJob, this);
+}
+
+Void BonkEnc::JobRemoveAllTracks::OnPlanJob(Job *job)
+{
+	if (job != this) return;
+
+	onRemoveAllTracksJobScheduled.Emit();
 }
 
 Bool BonkEnc::JobRemoveAllTracks::ReadyToRun()

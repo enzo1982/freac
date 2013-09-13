@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <jobs/joblist/adddirectory.h>
+
 #include <cddb/cddbremote.h>
 
 #include <utilities.h>

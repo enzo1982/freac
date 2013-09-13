@@ -9,6 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <jobs/joblist/addfiles.h>
+#include <jobs/joblist/removeall.h>
 
 #include <cddb/cddb.h>
 
@@ -23,10 +24,15 @@ using namespace BoCA::AS;
 BonkEnc::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
 {
 	foreach (const String &file, iFiles) files.Add(file);
+
+	abort = False;
+
+	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddFiles::OnRemoveAllTracksJobScheduled, this);
 }
 
 BonkEnc::JobAddFiles::~JobAddFiles()
 {
+	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Disconnect(&JobAddFiles::OnRemoveAllTracksJobScheduled, this);
 }
 
 Bool BonkEnc::JobAddFiles::ReadyToRun()
@@ -45,7 +51,9 @@ Error BonkEnc::JobAddFiles::Perform()
 {
 	for (Int i = 0; i < files.Length(); i++)
 	{
-		String	 file = files.GetNth(i);
+		if (abort) break;
+
+		const String	&file = files.GetNth(i);
 
 		SetText(String("Adding files... - ").Append(file));
 
@@ -115,18 +123,28 @@ Error BonkEnc::JobAddFiles::Perform()
 		 */
 		JobList	*joblist = JobList::Get();
 
-		if (track.tracks.Length() > 0) foreach (Track iTrack, track.tracks) joblist->onComponentAddTrack.Emit(iTrack);
-		else								    joblist->onComponentAddTrack.Emit(track);
+		if (track.tracks.Length() > 0) foreach (const Track &iTrack, track.tracks) joblist->onComponentAddTrack.Emit(iTrack);
+		else									   joblist->onComponentAddTrack.Emit(track);
 
 		SetProgress((i + 1) * 1000 / files.Length());
 	}
 
-	SetText(String("Added ").Append(String::FromInt(files.Length() - errors.Length())).Append(" files; ").Append(String::FromInt(errors.Length())).Append(" errors occurred."));
-	SetProgress(1000);
+	if (abort) errors.RemoveAll();
+
+	if (!abort)
+	{
+		SetText(String("Added ").Append(String::FromInt(files.Length() - errors.Length())).Append(" files; ").Append(String::FromInt(errors.Length())).Append(" errors occurred."));
+		SetProgress(1000);
+	}
 
 	files.RemoveAll();
 
 	JobList::Get()->Unlock();
 
 	return Success();
+}
+
+Void BonkEnc::JobAddFiles::OnRemoveAllTracksJobScheduled()
+{
+	abort = True;
 }

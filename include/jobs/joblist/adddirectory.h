@@ -26,7 +26,6 @@ namespace BonkEnc
 			virtual		~JobAddDirectory();
 
 			virtual Bool	 ReadyToRun();
-		slots:
 			virtual Error	 Perform();
 	};
 };

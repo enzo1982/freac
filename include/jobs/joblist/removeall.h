@@ -18,12 +18,15 @@ namespace BonkEnc
 	class JobRemoveAllTracks : public Job
 	{
 		public:
-					 JobRemoveAllTracks();
-			virtual		~JobRemoveAllTracks();
+						 JobRemoveAllTracks();
+			virtual			~JobRemoveAllTracks();
 
-			virtual Bool	 ReadyToRun();
+			virtual Bool		 ReadyToRun();
+			virtual Error		 Perform();
 		slots:
-			virtual Error	 Perform();
+			Void			 OnPlanJob(Job *);
+		signals:
+			static Signal0<Void>	 onRemoveAllTracksJobScheduled;
 	};
 };
 
