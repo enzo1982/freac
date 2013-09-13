@@ -800,10 +800,10 @@ Void BonkEnc::JobList::AddHeaderTabs()
 
 	for (Int i = 0; i < fields.Length(); i++)
 	{
-		String	 field	  = fields.GetNth(i);
-		String	 tabName  = "<invalid tab>";
-		Int	 tabAlign = OR_LEFT;
-		Int	 tabSize  = (fields.Length() == sizes.Length() ? sizes.GetNth(i).ToInt() : 0);
+		const String	&field	  = fields.GetNth(i);
+		String		 tabName  = "<invalid tab>";
+		Int		 tabAlign = OR_LEFT;
+		Int		 tabSize  = (fields.Length() == sizes.Length() ? sizes.GetNth(i).ToInt() : 0);
 
 		if	(field == "<artist>")	{ tabName = "Artist";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<album>")	{ tabName = "Album";			      tabSize = tabSize <= 0 ? 120 : tabSize; }

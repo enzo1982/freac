@@ -629,9 +629,9 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 	for (Int j = 0; j < queryStrings.Length(); j++)
 	{
-		Int	 discID	     = discIDs.GetNth(j);
-		String	 queryString = queryStrings.GetNth(j);
-		CDDBInfo cdInfo;
+		Int		 discID	     = discIDs.GetNth(j);
+		const String	&queryString = queryStrings.GetNth(j);
+		CDDBInfo	 cdInfo;
 
 		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(discID);
 

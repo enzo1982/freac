@@ -150,7 +150,7 @@ Int BonkEnc::Converter::ConverterThread()
 
 			Bool	 found = False;
 
-			foreach (Track &newTrack, newTracks)
+			foreach (const Track &newTrack, newTracks)
 			{
 				if (newTrack.outfile == track.outfile) { found = True; break; }
 			}
@@ -594,7 +594,7 @@ Int BonkEnc::Converter::ConverterThread()
 
 			for (Int j = i + 1; j < tracks.Length(); j++)
 			{
-				if (tracks.GetNthReference(j).drive == trackInfo.drive) { ejectDisk = False; break; }
+				if (tracks.GetNth(j).drive == trackInfo.drive) { ejectDisk = False; break; }
 			}
 
 			if (ejectDisk)

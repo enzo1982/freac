@@ -122,14 +122,12 @@ Void BonkEnc::Encoder::SignalChapterChange()
 	 * set accurate chapter marks even in case we have tracks
 	 * with only approxLength set in the first place.
 	 */
-	Track	 track	= album.tracks.GetNth(chapter);
-	Format	 format = album.GetFormat();
+	Track		&track	= album.tracks.GetNthReference(chapter);
+	const Format	&format = album.GetFormat();
 
 	track.length = bytes / format.channels / (format.bits / 8) - offset;
 
-	offset +=  track.length;
-
-	album.tracks.SetNth(chapter, track);
+	offset += track.length;
 
 	chapter++;
 }
