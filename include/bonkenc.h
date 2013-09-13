@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2010 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,21 +8,20 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_BONKENC_
-#define _H_BONKENC_
+#ifndef H_FREAC
+#define H_FREAC
 
 #include <smooth.h>
 
 #include "config.h"
-#include "track.h"
 #include "debug.h"
+#include "track.h"
+
 #include "cddb/cddb.h"
 #include "cddb/cddbinfo.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
-using namespace smooth::GUI::Dialogs;
-using namespace smooth::Threads;
 
 namespace BonkEnc
 {
@@ -103,12 +102,12 @@ namespace BonkEnc
 			Progressbar		*progress;
 			Progressbar		*progress_total;
 
-			Thread			*encoder_thread;
+			Threads::Thread		*encoder_thread;
 			Bool			 pause_encoding;
 			Bool			 stop_encoding;
 			Bool			 skip_track;
 
-			Thread			*play_thread;
+			Threads::Thread		*play_thread;
 			Bool			 stop_playback;
 
 			Int			 player_activedrive;
@@ -133,7 +132,7 @@ namespace BonkEnc
 
 			Bool			 InitCDRip();
 
-			Int			 Encoder(Thread *);
+			Int			 Encoder(Threads::Thread *);
 
 			String			 GetPlaylistFileName(Track *);
 			String			 GetRelativeFileName(const String &, const String &);

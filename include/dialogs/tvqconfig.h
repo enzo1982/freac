@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,14 +8,14 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_TVQCONFIG_
-#define _H_TVQCONFIG_
+#ifndef H_FREAC_TVQCONFIG
+#define H_FREAC_TVQCONFIG
 
 #include <main.h>
 
 namespace BonkEnc
 {
-	class ConfigureTVQ : public Dialog
+	class ConfigureTVQ : public Dialogs::Dialog
 	{
 		private:
 			GroupBox	*group_bitrate;

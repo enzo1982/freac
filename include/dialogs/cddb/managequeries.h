@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,15 +8,19 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_CDDB_MANAGE_QUERIES
-#define _H_CDDB_MANAGE_QUERIES_
+#ifndef H_FREAC_CDDB_MANAGE_QUERIES
+#define H_FREAC_CDDB_MANAGE_QUERIES
+
+#include <smooth.h>
+
+using namespace smooth;
+using namespace smooth::GUI;
 
 #include <cddb/cddbbatch.h>
-#include <bonkenc.h>
 
 namespace BonkEnc
 {
-	class cddbManageQueriesDlg : public Dialog
+	class cddbManageQueriesDlg : public Dialogs::Dialog
 	{
 		private:
 			Divider		*divbar;

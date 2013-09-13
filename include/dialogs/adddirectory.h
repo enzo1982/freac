@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2008 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,14 +8,14 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_DIALOG_DIRECTORY_
-#define _H_DIALOG_DIRECTORY_
+#ifndef H_FREAC_DIALOG_DIRECTORY
+#define H_FREAC_DIALOG_DIRECTORY
 
 #include <main.h>
 
 namespace BonkEnc
 {
-	class AddDirectoryDialog : public Dialog
+	class AddDirectoryDialog : public Dialogs::Dialog
 	{
 		private:
 			Divider		*divbar;

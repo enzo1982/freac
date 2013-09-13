@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -43,9 +43,7 @@
 #	include <dialogs/wmaconfig.h>
 #endif
 
-#include <cddb/cddb.h>
 #include <cddb/cddbremote.h>
-#include <cddb/cddbbatch.h>
 #include <cddb/cddbcache.h>
 
 #include <dialogs/cddb/query.h>
@@ -53,6 +51,9 @@
 #include <dialogs/cddb/manage.h>
 #include <dialogs/cddb/managequeries.h>
 #include <dialogs/cddb/managesubmits.h>
+
+using namespace smooth::GUI::Dialogs;
+using namespace smooth::Threads;
 
 Int smooth::Main()
 {

@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -132,11 +132,10 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 	for (int j = 1; j <= numTocEntries; j++)
 	{
 		if (entry2.btTrackNumber == entry.btTrackNumber || entry2.btTrackNumber == 0xAA)
-
 		{
-			if ((j > 1) && (entry2.btFlag != ex_CR_GetTocEntry(j).btFlag) && (ex_CR_GetTocEntry(j).btTrackNumber != 0xAA))
+			if ((j > 1) && ((entry2.btFlag & 4) != (ex_CR_GetTocEntry(j).btFlag & 4)) && (ex_CR_GetTocEntry(j).btTrackNumber != 0xAA))
 			{
-				endSector = ex_CR_GetTocEntry(j).dwStartSector - 11250 - 1;
+				endSector = ex_CR_GetTocEntry(j).dwStartSector - 11400 - 1;
 			}
 			else
 			{
@@ -241,9 +240,9 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 			entry = ex_CR_GetTocEntry(i);
 			nextentry = ex_CR_GetTocEntry(i + 1);
 
-			if ((i > 0) && (entry.btFlag != nextentry.btFlag) && (nextentry.btTrackNumber != 0xAA))
+			if ((i > 0) && ((entry.btFlag & 4) != (nextentry.btFlag & 4)) && (nextentry.btTrackNumber != 0xAA))
 			{
-				trackLength = nextentry.dwStartSector - entry.dwStartSector - 11250;
+				trackLength = nextentry.dwStartSector - entry.dwStartSector - 11400;
 			}
 			else
 			{
@@ -310,9 +309,9 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 				entry = ex_CR_GetTocEntry(i);
 				nextentry = ex_CR_GetTocEntry(i + 1);
 
-				if ((i > 0) && (entry.btFlag != nextentry.btFlag) && (nextentry.btTrackNumber != 0xAA))
+				if ((i > 0) && ((entry.btFlag & 4) != (nextentry.btFlag & 4)) && (nextentry.btTrackNumber != 0xAA))
 				{
-					trackLength = nextentry.dwStartSector - entry.dwStartSector - 11250;
+					trackLength = nextentry.dwStartSector - entry.dwStartSector - 11400;
 				}
 				else
 				{

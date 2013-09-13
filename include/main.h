@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2011 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,8 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_MAIN_
-#define _H_MAIN_
+#ifndef H_FREAC_MAIN
+#define H_FREAC_MAIN
 
 #include <smooth.h>
 #include "bonkenc.h"
@@ -81,9 +81,9 @@ namespace BonkEnc
 
 			Int		 activePopup;
 
-			Thread		*checkForUpdates;
+			Threads::Thread	*checkForUpdates;
 
-			Dialog		*donateDialog;
+			Dialogs::Dialog	*donateDialog;
 
 			Void		 Close();
 			Void		 About();
@@ -99,7 +99,7 @@ namespace BonkEnc
 			Void		 ShowTipOfTheDay();
 
 			Void		 CheckForUpdates();
-			Int		 CheckForUpdatesThread(Thread *);
+			Int		 CheckForUpdatesThread(Threads::Thread *);
 
 			Bool		 SetLanguage();
 			Void		 FillMenus();
@@ -107,7 +107,7 @@ namespace BonkEnc
 			Void		 SetEncoderText();
 
 			Void		 PlayItem(Int);
-			Int		 PlayThread(Thread *);
+			Int		 PlayThread(Threads::Thread *);
 
 			String		 AdjustCaseFirstCapital(const String &);
 			String		 AdjustCaseWordsFirstCapital(const String &);

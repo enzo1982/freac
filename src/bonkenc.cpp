@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,10 +9,6 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <bonkenc.h>
-#include <resources.h>
-#include <stdlib.h>
-#include <vector>
-#include <time.h>
 
 #include <utilities.h>
 #include <dllinterfaces.h>
@@ -20,8 +16,6 @@
 
 #include <cddb/cddblocal.h>
 #include <cddb/cddbremote.h>
-#include <dialogs/cddb/query.h>
-#include <dialogs/cddb/submit.h>
 
 #ifdef __WIN32__
 #	include <input/filter-in-cdrip.h>
@@ -46,8 +40,8 @@ BonkEnc::Debug		*BonkEnc::debug_out;
  */
 String	 BonkEnc::BonkEnc::appName	= "fre:ac";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
-String	 BonkEnc::BonkEnc::version	= "v1.0.21a";
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.21a";
+String	 BonkEnc::BonkEnc::version	= "v1.0.22";
+String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.22";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.17";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";

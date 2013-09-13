@@ -1,5 +1,5 @@
- /* BonkEnc Audio Encoder
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@bonkenc.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,8 +8,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef _H_FILTER_IN_WMA_
-#define _H_FILTER_IN_WMA_
+#ifndef H_FREAC_FILTER_IN_WMA
+#define H_FREAC_FILTER_IN_WMA
 
 #include "inputfilter.h"
 
@@ -27,7 +27,7 @@ namespace BonkEnc
 			WMAReader		*readerCallback;
 
 			Buffer<UnsignedByte>	 samplesBuffer;
-			Mutex			 samplesBufferMutex;
+			Threads::Mutex		 samplesBufferMutex;
 
 			HANDLE			 m_hAsyncEvent;
 
@@ -69,7 +69,7 @@ namespace BonkEnc
 			String				 errorString;
 
 			Buffer<UnsignedByte>		*samplesBuffer;
-			Mutex				*samplesBufferMutex;
+			Threads::Mutex			*samplesBufferMutex;
 		public:
 							 WMAReader();
 			virtual				~WMAReader();
@@ -110,7 +110,7 @@ namespace BonkEnc
 			Void				 SetReaderAdvanced(IWMReaderAdvanced *);
 			Void				 SetAudioOutputNum(DWORD);
 
-			Void				 SetSamplesBuffer(Buffer<UnsignedByte> *, Mutex *);
+			Void				 SetSamplesBuffer(Buffer<UnsignedByte> *, Threads::Mutex *);
 	};
 };
 
