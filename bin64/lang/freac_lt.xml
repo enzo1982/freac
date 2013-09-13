@@ -7,8 +7,8 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
-    <property name="author">nj</property>
-    <property name="url"/>
+    <property name="author">Naglis Jonaitis</property>
+    <property name="url">http://najo.lt/</property>
   </info>
   <data>
     <entry id="100" string="OK">Gerai</entry>
@@ -112,7 +112,7 @@
       <entry id="3002" string="Selected encoder:">Pasirinktas koduotojas:</entry>
       <entry id="3003" string="File progress:">Failo progresas:</entry>
       <entry id="3004" string="Output folder:">Išvesties aplankas:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 failai(ų, s) darbų sąraše:</entry>
+      <entry id="3005" string="%1 file(s) in joblist:">%1 failai(-ų, -s) darbų sąraše:</entry>
       <entry id="3006" string="none">nieko</entry>
       <entry id="3007" string="Show title info">Rodyti pavadinimo informaciją</entry>
       <entry id="3008" string="Play">Groti</entry>
@@ -172,7 +172,7 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="You did not select a track!">Jūs nepasirinkote failo!</entry>
+	<entry id="3400" string="You did not select a track!">Jūs nepasirinkote takelio!</entry>
 	<entry id="3401" string="No files found matching pattern:">Nerasta failų, atitinkančių ruošinį:</entry>
       </section>
     </section>
@@ -268,7 +268,7 @@
 	<entry id="5107" string="Options">Pasirinktys</entry>
 	<entry id="5108" string="Filename pattern">Failo vardo ruošinys</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Koduoti 'skrydyje'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Palikti išskleistus wav failus</entry>
+	<entry id="5110" string="Keep ripped Wave files">Palikti išskleistus Wave failus</entry>
 	<entry id="5111" string="Encode to single file">Koduoti į vieną failą</entry>
 
 	<section name="Errors">
@@ -292,7 +292,7 @@
 	<entry id="5302" string="CDDB path:">CDDB aplankas:</entry>
 	<entry id="5303" string="Browse">Naršyti</entry>
 	<entry id="5304" string="Select the folder of the CDDB database:">Pasirinkite CDDB duomenų bazės aplanką:</entry>
-	<entry id="5305" string="CDDB access mode:">CDDB pasiekimo rėžimas:</entry>
+	<entry id="5305" string="CDDB access mode:">CDDB pasiekimo režimas:</entry>
 	<entry id="5306" string="CDDB server:">CDDB serveris:</entry>
 	<entry id="5307" string="Port:">Portas:</entry>
 	<entry id="5308" string="eMail address:">El. pašto adresas:</entry>
@@ -359,7 +359,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 palaiko Lame, Ogg Vorbis, FAAC, FLAC&#10;bei Bonk koduotojus. VQF formato koduotoją galite rasti&#10;%1 svetainėje: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 gali naudoti Winamp 2 įvesties įskiepius,&#10;kad palaikyti daugiau failų formatų. Nukopijuokite in_*.dll failus į&#10;BoknEnc/plugins aplanką, kad %1 suprastų šiuos failus.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Naudodamiesi %1, Jūs freedb CD duomenų bazei galite&#10;perduoti įrašus, susidedančius iš Unicode simbolių.&#10;Taigi, jeigu turite kokį nors CD su ne lotynišku atlikėju&#10;ar takelių pavadinimais, su %1 galite lengvai&#10;perduoti freedb duomenų bazei korektiškus įrašus.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kad ištaisyti disko skaitymo problemas, %1 konfigūracijos&#10;lange, skleidėjo nuostatose, Jūs  galite įjungti virpėjimo taisymą.&#10;Jei tai nepadės, bandykite naudoti vieną iš Paranoia rėžimų.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kad ištaisyti disko skaitymo problemas, %1 konfigūracijos&#10;lange, skleidėjo nuostatose, Jūs  galite įjungti virpėjimo taisymą.&#10;Jei tai nepadės, bandykite naudoti vieną iš Paranoia režimų.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Ar turite pasiūlymų kaip pagerinti %1?&#10;Bet kokias įdėjas galite perduoti skiltyje Tracker, esančioje %1&#10;projekto SourceForge puslapyje - %2&#10;arba siųskite el. laišką adresu: %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Jums patinka %1? %1 yra nemokamas, bet Jūs galite&#10;paspartinti vystymąsi paremdami %1 projektą.&#10;Pinigus galite siųsti į %2, naudodamiesi PayPal.&#10;Daugiau informacijos rasite čia:&#10;%3.</entry>
     </section>
@@ -369,7 +369,7 @@
       <entry id="7001" string="Currently encoding">Šiuo metu koduojama</entry>
       <entry id="7002" string="Cannot change settings while encoding!">Negalima keisti nuostatų per kodavimą!</entry>
       <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Neįmanoma įkelti ASPI tvarkyklių! CD skleidimas išjungtas!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;%2</entry>
+      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;Klaida: %2</entry>
       <entry id="7005" string="Cannot play a file while encoding!">Negalima groti failo per kodavimą!</entry>
       <entry id="7006" string="Cannot start encoding while playing a file!">Negalima pradėti kodavimo, kol grojamas failas!</entry>
       <entry id="7007" string="Delete original files after encoding">Po kodavimo ištrinti originalo failus</entry>
@@ -398,11 +398,11 @@
 	<entry id="10003" string="Read CD Text">Skaityti CD tekstą</entry>
 	<entry id="10004" string="Read cdplayer.ini">Skaityti cdplayer.ini</entry>
 	<entry id="10005" string="Ripper settings">Skleidėjo nuostatos</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Aktyvuoti cdparanoia rėžimą:</entry>
+	<entry id="10006" string="Activate cdparanoia mode:">Aktyvuoti cdparanoia režimą:</entry>
 	<entry id="10007" string="Overlap only">Tik uždengimas</entry>
 	<entry id="10008" string="No verify">Jokio patvirtinimo</entry>
-	<entry id="10009" string="No scratch repair">Jokio įbrėžimų taisymo</entry>
-	<entry id="10010" string="Full cdparanoia mode">Pilnas cdparanoia rėžimas</entry>
+	<entry id="10009" string="No scratch repair">Jokio įbrežimų taisymo</entry>
+	<entry id="10010" string="Full cdparanoia mode">Pilnas cdparanoia režimas</entry>
 	<entry id="10011" string="Activate jitter correction">Aktyvuoti virpėjimo taisymą</entry>
 	<entry id="10012" string="Swap left/right channel">Apkeisti kairį/dešinį kanalą</entry>
 	<entry id="10013" string="Automatization">Automatizavimas</entry>
@@ -432,8 +432,8 @@
       </section>
 
       <section name="Bonk">
-	<entry id="31000" string="Encoder mode">Koduotojo rėžimas</entry>
-	<entry id="31001" string="Stereo mode">Stereo rėžimas</entry>
+	<entry id="31000" string="Encoder mode">Koduotojo režimas</entry>
+	<entry id="31001" string="Stereo mode">Stereo režimas</entry>
 	<entry id="31002" string="Quantization">Sumavimas</entry>
 	<entry id="31003" string="Downsampling ratio">Atrankos santykis</entry>
 	<entry id="31004" string="Predictor size">Numatytojo dydis</entry>
@@ -461,7 +461,7 @@
 	  <entry id="32110" string="Set quality:">Nustatyti kokybę:</entry>
 	  <entry id="32111" string="worse">prastesnė</entry>
 	  <entry id="32112" string="better">geresnė</entry>
-	  <entry id="32113" string="VBR mode">VBR rėžimas</entry>
+	  <entry id="32113" string="VBR mode">VBR režimas</entry>
 	  <entry id="32114" string="no VBR">jokio VBR</entry>
 	  <entry id="32115" string="VBR quality">VBR kokybė</entry>
 	  <entry id="32116" string="ABR target bitrate">ABR bitų srautas</entry>
@@ -474,7 +474,7 @@
 	  <entry id="32203" string="Set Private bit">Nustatyti privatų bitą</entry>
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Įjungti CRC</entry>
-	  <entry id="32206" string="Stereo mode">Stereo rėžimas</entry>
+	  <entry id="32206" string="Stereo mode">Stereo režimas</entry>
 	  <entry id="32207" string="Auto">Auto</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
@@ -517,7 +517,7 @@
 	  <entry id="33100" string="Bitrate / Quality">Bitų srautas / Kokybė</entry>
 	  <entry id="33101" string="Bitrate per channel:">Bitų srautas kanalui</entry>
 	  <entry id="33102" string="Set quality:">Nustatyti kokybę:</entry>
-	  <entry id="33103" string="Stereo mode">Stereo rėžimas</entry>
+	  <entry id="33103" string="Stereo mode">Stereo režimas</entry>
 	  <entry id="33104" string="Allow Joint Stereo">Leisti Joint Stereo</entry>
 	  <entry id="33105" string="Temporal Noise Shaping">Laikinas garsų apipavidalinimas</entry>
 	  <entry id="33106" string="Use Temporal Noise Shaping">Naudoti laikiną garsų apipavidalinimą</entry>
@@ -546,7 +546,7 @@
 	  <entry id="34102" string="Custom settings">Individualūs nustatymai</entry>
 	  <entry id="34103" string="Fastest encoding">Greičiausias kodavimas</entry>
 	  <entry id="34104" string="Best compression">Geriausias suspaudimas</entry>
-	  <entry id="34105" string="Stereo mode">Stereo rėžimas</entry>
+	  <entry id="34105" string="Stereo mode">Stereo režimas</entry>
 	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Perdirbtas Joint Stereo</entry>
 	  <entry id="34108" string="File format">Failo formatas</entry>
@@ -577,7 +577,7 @@
       </section>
 
       <section name="Vorbis">
-	<entry id="35000" string="Encoding Mode">Kodavimo rėžimas</entry>
+	<entry id="35000" string="Encoding Mode">Kodavimo režimas</entry>
 	<entry id="35001" string="Variable Bitrate">Kintamas bitų srautas</entry>
 	<entry id="35002" string="Average Bitrate">Vidutinis bitų srautas</entry>
 	<entry id="35003" string="Quality">Kokybė</entry>
@@ -608,8 +608,14 @@
     <section name="Extensions">
 
       <section name="Donate">
+	<entry id="50000" string="Support this project">Paremti projektą</entry>
+	<entry id="50001" string="Please support this project!">Prašome paremti šį projektą dabar!</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prašome padėti išlaikyti šią programinę įrangą nemokama paremdami %1 projektą.&#10;&#10;Spustelėkite vieną iš žemiau esančių mygtukų, kad atlikti PayPal pervedimą:</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Naudodamiesi PayPal taip pat galite nusiųsti pinigų tiesiai %1.&#10;&#10;Prašome susisiekti %1 jei norite paaukoti &#10;elektroniniu pavedimu, atsiųsti čekį ar pinigų paštu.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">en</entry>
+	<entry id="50006" string="Thank you very much!">Labai ačiū!</entry>
+	<entry id="50007" string="Remind me later">Priminti vėliau</entry>
       </section>
 
       <section name="Winamp Adapter">
@@ -629,7 +635,7 @@
 
       <section name="Tag Editor">
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;%2</entry>
+	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;Klaida: %2</entry>
 	</section>
       </section>
     </section>
