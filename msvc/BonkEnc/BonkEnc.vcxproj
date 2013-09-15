@@ -183,8 +183,26 @@
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
+    <ClCompile Include="..\..\src\gui\player.cpp" />
     <ClCompile Include="..\..\src\joblist.cpp" />
-    <ClCompile Include="..\..\src\jobs\job_addtracks.cpp" />
+    <ClCompile Include="..\..\src\jobs\engine\convert.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_convert.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\adddirectory.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_adddirectory.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\addfiles.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_addfiles.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\addtracks.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_addtracks.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\removeall.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_removeall.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\other\checkforupdates.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_checkforupdates.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\playback.cpp" />
     <ClCompile Include="..\..\src\progress.cpp" />
     <ClCompile Include="..\..\src\startconsole.cpp" />
@@ -227,10 +245,6 @@
     <ClCompile Include="..\..\src\gui\main_joblist.cpp" />
     <ClCompile Include="..\..\src\gui\main_threads.cpp" />
     <ClCompile Include="..\..\src\jobs\job.cpp" />
-    <ClCompile Include="..\..\src\jobs\job_adddirectory.cpp" />
-    <ClCompile Include="..\..\src\jobs\job_addfiles.cpp" />
-    <ClCompile Include="..\..\src\jobs\job_checkforupdates.cpp" />
-    <ClCompile Include="..\..\src\jobs\job_removeall.cpp" />
     <ClCompile Include="..\..\src\jobs\jobmanager.cpp" />
     <ClCompile Include="..\..\src\tools\encoding.cpp" />
     <ClCompile Include="..\..\src\engine\converter.cpp" />
@@ -244,8 +258,14 @@
     <ClInclude Include="..\..\include\dialogs\error.h" />
     <ClInclude Include="..\..\include\dialogs\overwrite.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
+    <ClInclude Include="..\..\include\gui\player.h" />
     <ClInclude Include="..\..\include\joblist.h" />
-    <ClInclude Include="..\..\include\jobs\job_addtracks.h" />
+    <ClInclude Include="..\..\include\jobs\engine\convert.h" />
+    <ClInclude Include="..\..\include\jobs\joblist\adddirectory.h" />
+    <ClInclude Include="..\..\include\jobs\joblist\addfiles.h" />
+    <ClInclude Include="..\..\include\jobs\joblist\addtracks.h" />
+    <ClInclude Include="..\..\include\jobs\joblist\removeall.h" />
+    <ClInclude Include="..\..\include\jobs\other\checkforupdates.h" />
     <ClInclude Include="..\..\include\playback.h" />
     <ClInclude Include="..\..\include\progress.h" />
     <ClInclude Include="..\..\include\resources.h" />
@@ -280,10 +300,6 @@
     <ClInclude Include="..\..\include\gui\main_joblist.h" />
     <ClInclude Include="..\..\include\gui\main_threads.h" />
     <ClInclude Include="..\..\include\jobs\job.h" />
-    <ClInclude Include="..\..\include\jobs\job_adddirectory.h" />
-    <ClInclude Include="..\..\include\jobs\job_addfiles.h" />
-    <ClInclude Include="..\..\include\jobs\job_checkforupdates.h" />
-    <ClInclude Include="..\..\include\jobs\job_removeall.h" />
     <ClInclude Include="..\..\include\jobs\jobmanager.h" />
     <ClInclude Include="..\..\include\tools\encoding.h" />
     <ClInclude Include="..\..\include\engine\converter.h" />
