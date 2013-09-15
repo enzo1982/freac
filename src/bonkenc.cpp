@@ -54,6 +54,16 @@ String	 BonkEnc::BonkEnc::version	= "CVS 2013xxyy";
 String	 BonkEnc::BonkEnc::architecture = "x86";
 #elif defined __x86_64__
 String	 BonkEnc::BonkEnc::architecture = "x86-64";
+#elif defined __arm__
+String	 BonkEnc::BonkEnc::architecture = "ARM";
+#elif defined __aarch64__
+String	 BonkEnc::BonkEnc::architecture = "ARM64";
+#elif defined __mips__
+String	 BonkEnc::BonkEnc::architecture = "MIPS";
+#elif defined __ppc__
+String	 BonkEnc::BonkEnc::architecture = "PPC";
+#elif defined __ppc64__
+String	 BonkEnc::BonkEnc::architecture = "PPC64";
 #else
 String	 BonkEnc::BonkEnc::architecture = "unknown";
 #endif
@@ -71,10 +81,6 @@ String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml
 
 BonkEnc::BonkEnc::BonkEnc()
 {
-#ifdef __x86_64__
-	version.Append(" (x64)");
-#endif
-
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
 	debug->Write("Starting fre:ac...");

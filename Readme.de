@@ -151,7 +151,7 @@ Voraussetzungen
 
 		Unterstützte Betriebsysteme:
 			- Windows 2000/XP/Vista/7/8 (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
-			- Mac OS X Snow Leopard oder neuer (unter OS X Mountain Lion muss XQuartz installiert sein)
+			- Mac OS X Leopard oder neuer
 			- Linux (die meisten modernen Distributionen sollten funktionieren)
 			- FreeBSD/PC-BSD (getestet unter FreeBSD 9.1)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
@@ -161,8 +161,8 @@ Voraussetzungen
 			- QNX (getestet unter QNX 6.5)
 
 		Minimale Hardwarevoraussetzungen:
-			- Intel Pentium 4 Prozessor
-			- 128 MB RAM
+			- Intel Pentium 4 oder PowerPC G4 Prozessor
+			- 256 MB RAM
 			- 50 MB freier Festplattenplatz
 
 		Empfohlene Hardwarespezifikationen:

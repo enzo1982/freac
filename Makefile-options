@@ -1,15 +1,35 @@
 ########## fre:ac options makefile ##########
 
-SMOOTHVER = 0.8.71
+SMOOTHVER = 0.8.72
 BOCAVER	  = 1.0
 
 UNAME = $(shell uname)
 MACHINE = $(shell gcc -dumpmachine)
 
-ifneq ($(findstring x86_64,$(MACHINE)),)
-	BUILD_X86_64 = True
+ifneq ($(findstring arm,$(MACHINE)),)
+	ifneq ($(BUILD_ARM),False)
+		BUILD_ARM = True
+	endif
+else ifneq ($(findstring mips,$(MACHINE)),)
+	ifneq ($(BUILD_MIPS),False)
+		BUILD_MIPS = True
+	endif
+else ifneq ($(findstring powerpc,$(MACHINE)),)
+	ifneq ($(BUILD_PPC),False)
+		BUILD_PPC = True
+	endif
+else ifneq ($(findstring powerpc64,$(MACHINE)),)
+	ifneq ($(BUILD_PPC64),False)
+		BUILD_PPC64 = True
+	endif
+else ifneq ($(findstring x86_64,$(MACHINE)),)
+	ifneq ($(BUILD_X86_64),False)
+		BUILD_X86_64 = True
+	endif
 else
-	BUILD_X86 = True
+	ifneq ($(BUILD_X86),False)
+		BUILD_X86 = True
+	endif
 endif
 
 ifneq ($(findstring MINGW,$(UNAME)),)
@@ -26,43 +46,51 @@ else
 
 	BUILD_UNIX = True
 
-ifeq ($(UNAME),Linux)
-	BUILD_LINUX = True
-else ifeq ($(UNAME),FreeBSD)
-	BUILD_FREEBSD = True
-else ifeq ($(UNAME),OpenBSD)
-	BUILD_OPENBSD = True
-else ifeq ($(UNAME),NetBSD)
-	BUILD_NETBSD = True
-else ifeq ($(UNAME),SunOS)
-	BUILD_SOLARIS = True
-else ifeq ($(UNAME),Haiku)
-	BUILD_HAIKU = True
-else ifeq ($(UNAME),GNU)
-	BUILD_GNU = True
-else ifeq ($(UNAME),QNX)
-	BUILD_QNX = True
-else ifeq ($(UNAME),Darwin)
-	SHARED = .dylib
+	ifeq ($(UNAME),Linux)
+		BUILD_LINUX = True
+	else ifeq ($(UNAME),FreeBSD)
+		BUILD_FREEBSD = True
+	else ifeq ($(UNAME),OpenBSD)
+		BUILD_OPENBSD = True
+	else ifeq ($(UNAME),NetBSD)
+		BUILD_NETBSD = True
+	else ifeq ($(UNAME),SunOS)
+		BUILD_SOLARIS = True
+	else ifeq ($(UNAME),Haiku)
+		BUILD_HAIKU = True
+	else ifeq ($(UNAME),GNU)
+		BUILD_GNU = True
+	else ifeq ($(UNAME),QNX)
+		BUILD_QNX = True
+	else ifeq ($(UNAME),Darwin)
+		SHARED = .dylib
 
-	BUILD_OSX = True
+		BUILD_OSX = True
 
-	BUILD_X86 = True
-	BUILD_X86_64 = True
+		ifneq ($(BUILD_X86),False)
+			BUILD_X86 = True
+		endif
+		ifneq ($(BUILD_X86_64),False)
+			BUILD_X86_64 = True
+		endif
+		ifneq ($(BUILD_PPC),False)
+			BUILD_PPC = True
+		endif
+	endif
 endif
+
+LIB = lib
+
+ifeq ($(BUILD_X86_64),True)
+	ifneq ($(BUILD_OSX),True)
+		LIB = lib64
+	endif
 endif
 
 ifeq ($(PREFIX),)
 	PREFIX = /usr/local
-	LIB    = lib
 
-ifeq ($(BUILD_X86_64),True)
-ifneq ($(BUILD_OSX),True)
-	LIB    = lib64
-endif
-endif
-
-ifeq ($(BUILD_HAIKU),True)
-	PREFIX = /boot/common
-endif
+	ifeq ($(BUILD_HAIKU),True)
+		PREFIX = /boot/common
+	endif
 endif

@@ -15,27 +15,7 @@
 
 #ifdef __WIN32__
 #	include <windows.h>
-#else
-#	include <sys/stat.h>
 #endif
-
-/* This function changes the byte order of audio samples in
- * a buffer from big-endian to little-endian and vice versa.
- */
-Bool BonkEnc::Utilities::SwitchBufferByteOrder(Buffer<UnsignedByte> &buffer, Int bytesPerSample)
-{
-	for (Int i = 0; i < buffer.Size(); i += bytesPerSample)
-	{
-		for (Int j = 0; j < bytesPerSample / 2; j++)
-		{
-			buffer[i + j] ^= buffer[i + bytesPerSample - 1 - j];
-			buffer[i + bytesPerSample - 1 - j] ^= buffer[i + j];
-			buffer[i + j] ^= buffer[i + bytesPerSample - 1 - j];
-		}
-	}
-
-	return True;
-}
 
 Void BonkEnc::Utilities::FillGenreList(List *list)
 {

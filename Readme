@@ -151,7 +151,7 @@ Requirements
 
 		Supported operating systems:
 			- Windows 2000/XP/Vista/7/8 (older Windows version might work with some limitations)
-			- Mac OS X Snow Leopard or later (XQuartz must be installed on OS X Mountain Lion)
+			- Mac OS X Leopard or later
 			- Linux (most modern distributions should work)
 			- FreeBSD/PC-BSD (tested on FreeBSD 9.1)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
@@ -161,8 +161,8 @@ Requirements
 			- QNX (tested on QNX 6.5)
 
 		Minimum hardware requirements:
-			- Intel Pentium 4 CPU
-			- 128 MB RAM
+			- Intel Pentium 4 or PowerPC G4 CPU
+			- 256 MB RAM
 			- 50 MB free disk space
 
 		Recommended hardware specs:

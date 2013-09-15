@@ -188,7 +188,9 @@ Void BonkEnc::LayerPlayer::OnJoblistRemoveAllTracks()
 
 Void BonkEnc::LayerPlayer::PlaySelectedItem()
 {
-	Play(joblist->GetSelectedTrack());
+	const Track	&track = joblist->GetSelectedTrack();
+
+	if (track != NIL) Play(track);
 }
 
 Void BonkEnc::LayerPlayer::PlayPreviousItem()

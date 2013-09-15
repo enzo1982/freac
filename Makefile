@@ -8,10 +8,13 @@ INCLUDEDIR  = ./include
 OBJECTDIR   = ./objects
 SRCDIR	    = ./src
 
-ifneq ($(BUILD_X86_64),True)
-	BINDIR = ./bin
-	LIBDIR = $(CDK)/lib
-else
+BINDIR	    = ./bin
+LIBDIR	    = $(CDK)/lib
+
+ifeq ($(BUILD_X86_64),True)
+	BINDIR = ./bin64
+	LIBDIR = $(CDK)/lib64
+else ifeq ($(BUILD_PPC64),True)
 	BINDIR = ./bin64
 	LIBDIR = $(CDK)/lib64
 endif
@@ -42,11 +45,11 @@ RESCOMP			   = windres
 LINKER			   = gcc
 REMOVER			   = rm
 ECHO			   = echo
-COMPILER_OPTS		   = -I$(INCLUDEDIR) -g0 -Wall -Os -fno-exceptions -DUNICODE -D_UNICODE -c
+COMPILER_OPTS		   = -pipe -I$(INCLUDEDIR) -g0 -Wall -Os -fno-exceptions -DUNICODE -D_UNICODE -c
 RESCOMP_OPTS		   = -O coff
-LINKER_OPTS		   = -lstdc++ -s --shared -o $(DLLNAME)
-LOADER_GUI_LINKER_OPTS	   = -lstdc++ -s -o $(EXENAME)
-LOADER_CONSOLE_LINKER_OPTS = -lstdc++ -s -o $(CMDNAME)
+LINKER_OPTS		   = -pipe -lstdc++ -o $(DLLNAME)
+LOADER_GUI_LINKER_OPTS	   = -pipe -lstdc++ -o $(EXENAME)
+LOADER_CONSOLE_LINKER_OPTS = -pipe -lstdc++ -o $(CMDNAME)
 REMOVER_OPTS		   = -f
 
 ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
@@ -64,30 +67,53 @@ endif
 endif
 
 ifeq ($(BUILD_OSX),True)
-	COMPILER_OPTS			+= -arch x86_64 -arch i386
+ifeq ($(BUILD_X86),True)
+	COMPILER_OPTS			+= -arch i386
 
-	LINKER_OPTS			+= -arch x86_64 -arch i386
-	LOADER_GUI_LINKER_OPTS		+= -arch x86_64 -arch i386
-	LOADER_CONSOLE_LINKER_OPTS	+= -arch x86_64 -arch i386
-else ifneq ($(BUILD_X86_64),True)
+	LINKER_OPTS			+= -arch i386 -dynamiclib
+	LOADER_GUI_LINKER_OPTS		+= -arch i386
+	LOADER_CONSOLE_LINKER_OPTS	+= -arch i386
+endif
+ifeq ($(BUILD_X86_64),True)
+	COMPILER_OPTS			+= -arch x86_64
+
+	LINKER_OPTS			+= -arch x86_64 -dynamiclib
+	LOADER_GUI_LINKER_OPTS		+= -arch x86_64
+	LOADER_CONSOLE_LINKER_OPTS	+= -arch x86_64
+endif
+ifeq ($(BUILD_PPC),True)
+	COMPILER_OPTS			+= -arch ppc
+
+	LINKER_OPTS			+= -arch ppc -dynamiclib
+	LOADER_GUI_LINKER_OPTS		+= -arch ppc
+	LOADER_CONSOLE_LINKER_OPTS	+= -arch ppc
+endif
+ifeq ($(BUILD_PPC64),True)
+	COMPILER_OPTS			+= -arch ppc64
+
+	LINKER_OPTS			+= -arch ppc64 -dynamiclib
+	LOADER_GUI_LINKER_OPTS		+= -arch ppc64
+	LOADER_CONSOLE_LINKER_OPTS	+= -arch ppc64
+endif
+else ifeq ($(BUILD_X86),True)
 	COMPILER_OPTS			+= -m32
 	RESCOMP_OPTS			+= --target=pe-i386
 
-	LINKER_OPTS			+= -m32
-	LOADER_GUI_LINKER_OPTS		+= -m32
-	LOADER_CONSOLE_LINKER_OPTS	+= -m32
-else
+	LINKER_OPTS			+= -m32 -s --shared
+	LOADER_GUI_LINKER_OPTS		+= -m32 -s
+	LOADER_CONSOLE_LINKER_OPTS	+= -m32 -s
+else ifeq ($(BUILD_X86_64),True)
 	COMPILER_OPTS			+= -m64
 	RESCOMP_OPTS			+= --target=pe-x86-64
 
-	LINKER_OPTS			+= -m64
-	LOADER_GUI_LINKER_OPTS		+= -m64
-	LOADER_CONSOLE_LINKER_OPTS	+= -m64
+	LINKER_OPTS			+= -m64 -s --shared
+	LOADER_GUI_LINKER_OPTS		+= -m64 -s
+	LOADER_CONSOLE_LINKER_OPTS	+= -m64 -s
 endif
 
 ifeq ($(BUILD_OPENBSD),True)
-	LOADER_GUI_LINKER_OPTS		+= -L/usr/local/lib -logg -lvorbis -lvorbisfile
-	LOADER_CONSOLE_LINKER_OPTS	+= -L/usr/local/lib -logg -lvorbis -lvorbisfile
+	LOADER_GUI_LINKER_OPTS		+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
+	LOADER_CONSOLE_LINKER_OPTS	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
 endif
 
 ifeq ($(BUILD_SOLARIS),True)
@@ -103,7 +129,7 @@ endif
 ifeq ($(BUILD_WIN32),True)
 	COMPILER_OPTS			+= -I$(CDK)/include
 
-	ifneq ($(BUILD_X86_64),True)
+	ifeq ($(BUILD_X86),True)
 		LINKER_OPTS		+= -lunicows
 	endif
 
@@ -111,6 +137,8 @@ ifeq ($(BUILD_WIN32),True)
 	LOADER_GUI_LINKER_OPTS		+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat -mwindows
 	LOADER_CONSOLE_LINKER_OPTS	+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat
 else
+	COMPILER_OPTS			+= -I$(PREFIX)/include
+
 	ifeq ($(BUILD_OSX),True)
 		LINKER_OPTS		+= -Wl,-dylib_install_name,freac$(SHARED)
 	endif
@@ -191,7 +219,7 @@ $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
 	$(LINKER) $(DLLOBJECTS) $(LINKER_OPTS)
 ifeq ($(BUILD_WIN32),True)
-ifneq ($(BUILD_X86_64),True)
+ifeq ($(BUILD_X86),True)
 	countbuild BuildNumber
 endif
 endif

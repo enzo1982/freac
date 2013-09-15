@@ -21,8 +21,6 @@ namespace BonkEnc
 	class Utilities
 	{
 		public:
-			static Bool	 SwitchBufferByteOrder(Buffer<UnsignedByte> &, Int);
-
 			static Void	 FillGenreList(List *);
 			static Void	 UpdateGenreList(List *, const String &);
 

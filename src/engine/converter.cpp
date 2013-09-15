@@ -22,12 +22,6 @@
 
 #include <dialogs/overwrite.h>
 
-#ifdef __WIN32__
-#	include <windows.h>
-#else
-#	include <netinet/in.h>
-#endif
-
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
 
@@ -109,7 +103,7 @@ Int BonkEnc::Converter::ConverterThread()
 
 	/* Find system byte order.
 	 */
-	Int	 systemByteOrder	= ntohs(0xFF00) == 0xFF00 ? BYTE_RAW : BYTE_INTEL;
+	Int	 systemByteOrder       = CPU().GetEndianness() == EndianLittle ? BYTE_INTEL : BYTE_RAW;
 
 	/* Perform necessary checks.
 	 */
@@ -454,7 +448,7 @@ Int BonkEnc::Converter::ConverterThread()
 
 			/* Switch byte order to native.
 			 */
-			if (format.order != BYTE_NATIVE && format.order != systemByteOrder) Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
+			if (format.order != BYTE_NATIVE && format.order != systemByteOrder) BoCA::Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
 
 			/* Pass samples to encoder.
 			 */

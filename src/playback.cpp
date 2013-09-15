@@ -15,12 +15,6 @@
 #include <engine/converter.h>
 #include <engine/decoder.h>
 
-#ifdef __WIN32__
-#	include <windows.h>
-#else
-#	include <netinet/in.h>
-#endif
-
 using namespace BoCA;
 using namespace BoCA::AS;
 
@@ -96,7 +90,7 @@ Int BonkEnc::Playback::PlayThread()
 
 	/* Find system byte order.
 	 */
-	Int	 systemByteOrder = ntohs(0xFF00) == 0xFF00 ? BYTE_RAW : BYTE_INTEL;
+	Int	 systemByteOrder = CPU().GetEndianness() == EndianLittle ? BYTE_INTEL : BYTE_RAW;
 
 	/* Create output component.
 	 */
@@ -184,7 +178,7 @@ Int BonkEnc::Playback::PlayThread()
 
 			/* Switch byte order to native.
 			 */
-			if (format.order != BYTE_NATIVE && format.order != systemByteOrder) Utilities::SwitchBufferByteOrder(buffer, bytesPerSample);
+			if (format.order != BYTE_NATIVE && format.order != systemByteOrder) BoCA::Utilities::SwitchBufferByteOrder(buffer, bytesPerSample);
 
 			/* Update position and write data.
 			 */
