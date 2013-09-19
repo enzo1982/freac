@@ -190,7 +190,12 @@ Void BonkEnc::LayerPlayer::PlaySelectedItem()
 {
 	const Track	&track = joblist->GetSelectedTrack();
 
-	if (track != NIL) Play(track);
+	if (track != NIL)
+	{
+		StopPlayback();
+
+		Play(track);
+	}
 }
 
 Void BonkEnc::LayerPlayer::PlayPreviousItem()
