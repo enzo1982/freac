@@ -131,15 +131,14 @@ Void BonkEnc::Job::OnChangeSize(const Size &nSize)
 
 Int BonkEnc::Job::Paint(Int message)
 {
-	if (!IsRegistered())	return Error();
-	if (!IsVisible())	return Success();
+	if (!IsRegistered()) return Error();
+	if (!IsVisible())    return Success();
 
 	Surface	*surface = GetDrawSurface();
 	Rect	 frame	 = Rect(GetRealPosition(), GetRealSize());
 
 	switch (message)
 	{
-		case SP_SHOW:
 		case SP_PAINT:
 		case SP_MOUSEIN:
 		case SP_MOUSEOUT:
