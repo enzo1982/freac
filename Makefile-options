@@ -90,6 +90,10 @@ endif
 ifeq ($(PREFIX),)
 	PREFIX = /usr/local
 
+	ifeq ($(BUILD_OSX),True)
+		PREFIX = /usr
+	endif
+
 	ifeq ($(BUILD_HAIKU),True)
 		PREFIX = /boot/common
 	endif
