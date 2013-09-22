@@ -47,6 +47,7 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	onMarkEntry.Connect(&JobList::OnMarkEntry, this);
 
 	BoCA::JobList::Get()->onComponentAddTrack.Connect(&JobList::AddTrack, this);
+	BoCA::JobList::Get()->onComponentRemoveTrack.Connect(&JobList::RemoveTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
 	BoCA::JobList::Get()->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
 
@@ -103,6 +104,7 @@ BonkEnc::JobList::~JobList()
 	/* Clean up.
 	 */
 	BoCA::JobList::Get()->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
+	BoCA::JobList::Get()->onComponentRemoveTrack.Disconnect(&JobList::RemoveTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
 	BoCA::JobList::Get()->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
 
@@ -202,31 +204,43 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	return True;
 }
 
+Bool BonkEnc::JobList::RemoveTrack(const Track &track)
+{
+	ListEntry	*entry = GetEntryByTrack(track);
+
+	if (entry != NIL)
+	{
+		/* Notify components of track removal.
+		 */
+		BoCA::JobList::Get()->onApplicationRemoveTrack.Emit(track);
+
+		/* Remove track from track list and joblist.
+		 */
+		tracks.Remove(entry->GetHandle());
+
+		entry->Hide();
+
+		if (entry->GetTooltipLayer() != NIL)
+		{
+			delete entry->GetTooltipLayer();
+
+			entry->SetTooltipLayer(NIL);
+		}
+
+		Remove(entry);
+
+		UpdateTextLine();
+	}
+
+	return True;
+}
+
 Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 {
 	ListEntry	*entry = GetNthEntry(n);
-	Track		 track = tracks.Get(entry->GetHandle());
+	const Track	&track = tracks.Get(entry->GetHandle());
 
-	/* Remove track from track list and joblist.
-	 */
-	tracks.Remove(entry->GetHandle());
-
-	entry->Hide();
-
-	if (entry->GetTooltipLayer() != NIL)
-	{
-		delete entry->GetTooltipLayer();
-
-		entry->SetTooltipLayer(NIL);
-	}
-
-	Remove(entry);
-
-	UpdateTextLine();
-
-	/* Notify components and delete track.
-	 */
-	BoCA::JobList::Get()->onApplicationRemoveTrack.Emit(track);
+	RemoveTrack(track);
 
 	return True;
 }

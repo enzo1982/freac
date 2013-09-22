@@ -34,6 +34,7 @@ namespace BonkEnc
 			Int				 headerTabsHash;
 
 			Bool				 AddTrack(const BoCA::Track &);
+			Bool				 RemoveTrack(const BoCA::Track &);
 
 			Void				 AddHeaderTabs();
 			Void				 UpdateTextLine();
