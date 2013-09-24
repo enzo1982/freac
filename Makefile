@@ -95,20 +95,26 @@ ifeq ($(BUILD_PPC64),True)
 	LOADER_GUI_LINKER_OPTS		+= -arch ppc64
 	LOADER_CONSOLE_LINKER_OPTS	+= -arch ppc64
 endif
-else ifeq ($(BUILD_X86),True)
+else
+	LINKER_OPTS			+= -s --shared
+	LOADER_GUI_LINKER_OPTS		+= -s
+	LOADER_CONSOLE_LINKER_OPTS	+= -s
+
+ifeq ($(BUILD_X86),True)
 	COMPILER_OPTS			+= -m32
 	RESCOMP_OPTS			+= --target=pe-i386
 
-	LINKER_OPTS			+= -m32 -s --shared
-	LOADER_GUI_LINKER_OPTS		+= -m32 -s
-	LOADER_CONSOLE_LINKER_OPTS	+= -m32 -s
+	LINKER_OPTS			+= -m32
+	LOADER_GUI_LINKER_OPTS		+= -m32
+	LOADER_CONSOLE_LINKER_OPTS	+= -m32
 else ifeq ($(BUILD_X86_64),True)
 	COMPILER_OPTS			+= -m64
 	RESCOMP_OPTS			+= --target=pe-x86-64
 
-	LINKER_OPTS			+= -m64 -s --shared
-	LOADER_GUI_LINKER_OPTS		+= -m64 -s
-	LOADER_CONSOLE_LINKER_OPTS	+= -m64 -s
+	LINKER_OPTS			+= -m64
+	LOADER_GUI_LINKER_OPTS		+= -m64
+	LOADER_CONSOLE_LINKER_OPTS	+= -m64
+endif
 endif
 
 ifeq ($(BUILD_OPENBSD),True)
