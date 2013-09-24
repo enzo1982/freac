@@ -21,6 +21,8 @@ namespace BonkEnc
 			String		 directory;
 
 			Void		 AddDirectory(const Directory &);
+
+			Void		 RemoveReferencedFiles();
 		public:
 					 JobAddDirectory(const String &);
 			virtual		~JobAddDirectory();
