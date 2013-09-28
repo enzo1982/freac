@@ -390,7 +390,7 @@ Void BonkEnc::ConfigDialog::OnSelectConfiguration()
 	{
 		button_config_delete->Deactivate();
 
-		surface->StartPaint(Rect(combo_config->GetRealPosition(), combo_config->GetSize()));
+		surface->StartPaint(Rect(combo_config->GetRealPosition(), combo_config->GetRealSize()));
 
 		edit_config->Hide();
 		combo_config->Show();
@@ -401,7 +401,7 @@ Void BonkEnc::ConfigDialog::OnSelectConfiguration()
 	{
 		button_config_delete->Activate();
 
-		surface->StartPaint(Rect(combo_config->GetRealPosition(), combo_config->GetSize()));
+		surface->StartPaint(Rect(combo_config->GetRealPosition(), combo_config->GetRealSize()));
 
 		combo_config->Hide();
 		edit_config->Show();
@@ -418,7 +418,7 @@ Void BonkEnc::ConfigDialog::OnSelectConfiguration()
 	if (combo_config->GetSelectedEntryNumber() == 0) config->SetActiveConfiguration("default");
 	else						 config->SetActiveConfiguration(combo_config->GetSelectedEntry()->GetText());
 
-	surface->StartPaint(mainWnd->GetClientRect());
+	surface->StartPaint(mainWnd->GetVisibleArea());
 
 	DeleteLayers();
 	AddLayers();
@@ -526,7 +526,7 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)
 		Surface	*surface   = mainWnd->GetDrawSurface();
 		Layer	*mainLayer = mainWnd->GetMainLayer();
 
-		surface->StartPaint(Rect(Point(218, 40), mainLayer->GetSize() - Size(210, 32)));
+		surface->StartPaint(Rect(Point(218, 40) * surface->GetSurfaceDPI() / 96.0, mainLayer->GetRealSize() - Size(210, 32) * surface->GetSurfaceDPI() / 96.0));
 
 		if (selectedLayer != NIL) mainLayer->Remove(selectedLayer);
 					  mainLayer->Add(newLayer);

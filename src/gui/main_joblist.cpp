@@ -563,7 +563,7 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	 */
 	Surface	*surface = GetDrawSurface();
 
-	surface->StartPaint(Rect(info_background->GetRealPosition(), info_background->GetSize()));
+	surface->StartPaint(Rect(info_background->GetRealPosition(), info_background->GetRealSize()));
 
 	info_background->Hide();
 	info_divider->SetPos(113 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0));
@@ -604,7 +604,7 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	/* Update progress bar and time-left display.
 	 */
-	surface->StartPaint(Rect(progress->GetRealPosition(), Size(GetWidth() - progress->GetX(), edb_trackPercent->GetHeight())));
+	surface->StartPaint(Rect(progress->GetRealPosition(), Size(GetRealPosition().x + GetRealSize().cx - progress->GetRealPosition().x, edb_trackPercent->GetRealSize().cy)));
 
 	progress->Hide();
 	progress_total->Hide();
@@ -1111,6 +1111,12 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 
 Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
 {
+	/* Start painting here, end it in OnEncoderTotalProgress.
+	 */
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(Rect(progress->GetRealPosition(), Size(GetRealPosition().x + GetRealSize().cx - progress->GetRealPosition().x, edb_trackPercent->GetRealSize().cy)));
+
 	/* Update seconds only if estimate is less or
 	 * at least two seconds more than before.
 	 */
@@ -1163,6 +1169,12 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 	edb_totalPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
 
 	progress_total->SetValue(progressValue);
+
+	/* End painting, started in OnEncoderTrackProgress.
+	 */
+	Surface	*surface = GetDrawSurface();
+
+	surface->EndPaint();
 }
 
 Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
