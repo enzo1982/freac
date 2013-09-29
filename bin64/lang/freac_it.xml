@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Impostazioni generali...</entry>
 	<entry id="1301" string="Configure selected encoder...">Configura codificatore...</entry>
+	<entry id="1302" string="Active CD-ROM drive">Unità CD predefinita</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Selezionare la cartella da aggiungere:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Nessun file selezionato.</entry>
 	<entry id="3401" string="No files found matching pattern:">Nessun file corrisponde al modello:</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">Codificatori</entry>
       <entry id="5002" string="Playlists">Playlist</entry>
       <entry id="5003" string="Language">Lingua</entry>
+      <entry id="5007" string="Tags">Tag</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configura...</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">Modello per il nome di file</entry>
 	<entry id="5505" string="Encoding:">Codifica:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Impossibile combinare i file selezionati in un unico&#10;file a causa dei formati campione differenti.&#10;&#10;Convertire prima tutti i file nello stesso formato campione.</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Ignora</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -413,6 +428,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Blocca cassetto CD</entry>
 	<entry id="10019" string="Use native NT SCSI library">Utilizza libreria NT SCSI</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -603,6 +620,22 @@
 	<entry id="37002" string="Preselection">Preselezione</entry>
 	<entry id="37003" string="Number of preselection candidates:">Numero di preselezioni:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Automatica</entry>
+	<entry id="39006" string="VBR mode">Modalità VBR</entry>
+	<entry id="39010" string="Options">Opzioni</entry>
+	<entry id="39016" string="VBR quality">Qualità VBR</entry>
+	<entry id="39017" string="ABR target bitrate">Bitrate ABR</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Automatica</entry>
+	<entry id="40015" string="Quality">Qualità</entry>
+	<entry id="40021" string="Options">Opzioni</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -618,6 +651,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">Durata</entry>
+	<entry id="52015" string="Size">Dimensione</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automatizzazione</entry>
@@ -628,6 +663,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Tag</entry>
+	<entry id="53001" string="Length">Durata</entry>
+	<entry id="53002" string="Size">Dimensione</entry>
+	<entry id="53005" string="File">File</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Generale</entry>
+	  <entry id="53107" string="Add">Aggiungi</entry>
+	  <entry id="53108" string="Remove">Rimuovi</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Impossibile aprire il seguente file: %1&#10;&#10;Errore: %2</entry>
 	</section>

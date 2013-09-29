@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Generelle indstillinger...</entry>
 	<entry id="1301" string="Configure selected encoder...">Indstil den valgte koder</entry>
+	<entry id="1302" string="Active CD-ROM drive">Aktivér CD-ROM drev</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Vælg folder som skal tilføjes  til joblisten:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Du har ikke valgt en fil!</entry>
 	<entry id="3401" string="No files found matching pattern:">Ingen filer fundet som passer til mønsteret:</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">Kodere</entry>
       <entry id="5002" string="Playlists">Afspilningsliste</entry>
       <entry id="5003" string="Language">Sprog</entry>
+      <entry id="5007" string="Tags">Info skilt</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Indstil koder</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">Filnavn mønster</entry>
 	<entry id="5505" string="Encoding:">Koder:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">De valgte filer kan ikke kombineres til én fil pga. forskellige sample formater.&#10;&#10;Venligst konventér alle filerne til samme sample format først</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Spring over</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -413,6 +428,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Lås CD bakke mens ripning foretages</entry>
 	<entry id="10019" string="Use native NT SCSI library">Brug indbyggede NT SCSI bibliotek</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -604,6 +621,22 @@
 	<entry id="37002" string="Preselection">Forvalg</entry>
 	<entry id="37003" string="Number of preselection candidates:">Antal af forvalgte kandidater:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Automatisk</entry>
+	<entry id="39006" string="VBR mode">VBR metode</entry>
+	<entry id="39010" string="Options">Indstillinger</entry>
+	<entry id="39016" string="VBR quality">VBR Kvalitet</entry>
+	<entry id="39017" string="ABR target bitrate">ABR mål bit hastighed</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Automatisk</entry>
+	<entry id="40015" string="Quality">Kvalitet</entry>
+	<entry id="40021" string="Options">Indstillinger</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -619,6 +652,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">Længde</entry>
+	<entry id="52015" string="Size">Størrelse</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Fuld Automatisk</entry>
@@ -629,6 +664,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Info skilt</entry>
+	<entry id="53001" string="Length">Længde</entry>
+	<entry id="53002" string="Size">Størrelse</entry>
+	<entry id="53005" string="File">Filer</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Grundlæggende</entry>
+	  <entry id="53107" string="Add">Tilføj</entry>
+	  <entry id="53108" string="Remove">Fjern</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åbne filen: %1&#10;&#10;%2</entry>
 	</section>

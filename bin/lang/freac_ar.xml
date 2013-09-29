@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -172,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">حدد مجلد لإضافة قائمة العمل:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">لم تقم بتحديد أي ملف!</entry>
 	<entry id="3401" string="No files found matching pattern:">لا توجد ملفات مطابقة للنمط:</entry>
@@ -258,6 +260,7 @@
       <entry id="5002" string="Playlists">قائمة  الأغاني</entry>
       <entry id="5003" string="Language">اللغة</entry>
       <entry id="5005" string="CDDB">كدب</entry>
+      <entry id="5007" string="Tags">معلومات بطاقة</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">تهيئة الترميز</entry>
@@ -341,6 +344,8 @@
 	<entry id="5504" string="Filename pattern">نمط اسم ملف</entry>
 	<entry id="5505" string="Encoding:">الترميز:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -388,6 +393,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">الملفات المحددة لا يمكن دمجها في ملف&#10;واحد للناتج بسبب صيغات عينة مختلفة&#10;&#10;يرجى تحويل جميع الملفات إلى صيغة نفس العينة الأولى</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">تخطي</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -412,6 +426,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">قفل القرص المضغوط عند الاشتقاق</entry>
 	<entry id="10019" string="Use native NT SCSI library">NT SCSI استخدم المكتبة الاصلية</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -602,12 +618,20 @@
 	<entry id="37003" string="Number of preselection candidates:">عدد الترشحات الاختيار الأولي</entry>
       </section>
 
+      <section name="Monkey's Audio"/>
+
       <section name="Speex">
 	<entry id="39002" string="Auto">تلقائي</entry>
 	<entry id="39006" string="VBR mode">طريقة معدل بايت متغير</entry>
 	<entry id="39010" string="Options">خيارات</entry>
 	<entry id="39016" string="VBR quality">نوعية معدل بايت متغير</entry>
 	<entry id="39017" string="ABR target bitrate">معدل بايت متوفر هدف معدل بايت</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">تلقائي</entry>
+	<entry id="40015" string="Quality">النوعية</entry>
+	<entry id="40021" string="Options">خيارات</entry>
       </section>
     </section>
 
@@ -637,9 +661,12 @@
 	  <entry id="52101" string="Automatization">التلقائية</entry>
 	  <entry id="52103" string="Browse">تصفح</entry>
 	</section>
+
+	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">معلومات بطاقة</entry>
 	<entry id="53001" string="Length">المدة</entry>
 	<entry id="53002" string="Size">الحجم</entry>
 	<entry id="53005" string="File">ملف</entry>
@@ -649,6 +676,10 @@
 	  <entry id="53107" string="Add">إضافة</entry>
 	  <entry id="53108" string="Remove">إزالة</entry>
 	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>

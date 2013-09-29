@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -58,6 +58,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">הגדרות...</entry>
 	<entry id="1301" string="Configure selected encoder...">הגדרות מקודד...</entry>
+	<entry id="1302" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
       </section>
 
       <section name="Encode">
@@ -138,6 +139,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">בחר תיקיה להוספה לרשימת מטלות:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">! לא נבחר קובץ</entry>
       </section>
@@ -190,6 +193,7 @@
       <entry id="5001" string="Encoders">מקודדים</entry>
       <entry id="5002" string="Playlists">רשימת השמעה</entry>
       <entry id="5003" string="Language">שפה</entry>
+      <entry id="5007" string="Tags">תגיות מידע</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">הגדרות מקודד</entry>
@@ -247,6 +251,8 @@
 	<entry id="5504" string="Filename pattern">צורת שם קובץ</entry>
 	<entry id="5505" string="Encoding:">מבצע קידוד:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -282,6 +288,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">לא ניתן למזג קבצים אלו בגלל שוני באיכות הקבצים</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">דלג</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -298,6 +313,8 @@
 	<entry id="10017" string="CD options">אופציות CD</entry>
 	<entry id="10018" string="Lock CD tray while ripping">נעל מגש כונן בזמן המרה</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -422,6 +439,21 @@
 	<entry id="37002" string="Preselection">בחירה מקדימה</entry>
 	<entry id="37003" string="Number of preselection candidates:">מספר בחירות אפשרי:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">אוטומטי</entry>
+	<entry id="39006" string="VBR mode">מצב VBR</entry>
+	<entry id="39010" string="Options">אפשרויות</entry>
+	<entry id="39016" string="VBR quality">איכות VBR</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">אוטומטי</entry>
+	<entry id="40015" string="Quality">איכות</entry>
+	<entry id="40021" string="Options">אפשרויות</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -437,6 +469,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">אורך</entry>
+	<entry id="52015" string="Size">גודל</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">אוטומטיזציה</entry>
@@ -447,6 +481,20 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">תגיות מידע</entry>
+	<entry id="53001" string="Length">אורך</entry>
+	<entry id="53002" string="Size">גודל</entry>
+	<entry id="53005" string="File">קובץ</entry>
+
+	<section name="Basic">
+	  <entry id="53107" string="Add">הוסף</entry>
+	  <entry id="53108" string="Remove">הסר</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
 	</section>

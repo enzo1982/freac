@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Configuracio general...</entry>
 	<entry id="1301" string="Configure selected encoder...">Configurar codificador seleccionat...</entry>
+	<entry id="1302" string="Active CD-ROM drive">Unitat CD-ROM activa</entry>
       </section>
 
       <section name="Encode">
@@ -167,6 +168,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Seleccione la carpeta per afegir a la llista de tarees:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">¡No ha selecionat cap d'archiu!</entry>
 	<entry id="3401" string="No files found matching pattern:">No s'han trobat archius corresponents al patro:</entry>
@@ -252,6 +255,7 @@
       <entry id="5001" string="Encoders">Codificadors</entry>
       <entry id="5002" string="Playlists">Llistes de reproduccio</entry>
       <entry id="5003" string="Language">Idioma</entry>
+      <entry id="5007" string="Tags">Etiquetes d'informacio</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar codificador</entry>
@@ -334,6 +338,8 @@
 	<entry id="5504" string="Filename pattern">Patro del nom d'archiu</entry>
 	<entry id="5505" string="Encoding:">Codificacio:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -383,6 +389,15 @@
       <entry id="7020" string="Unknown error">Erro desconegut</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Ometre</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -406,6 +421,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Bloquejar bandeja del CD</entry>
 	<entry id="10019" string="Use native NT SCSI library">Usar llibreria nativa NT SCSI</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -584,6 +601,22 @@
 	<entry id="37002" string="Preselection">Preseleccio</entry>
 	<entry id="37003" string="Number of preselection candidates:">Nº de candidats de preseleccio:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Auto</entry>
+	<entry id="39006" string="VBR mode">Modo VBR</entry>
+	<entry id="39010" string="Options">Opcions</entry>
+	<entry id="39016" string="VBR quality">Calitat VBR</entry>
+	<entry id="39017" string="ABR target bitrate">Taxa de bit ABR de desti</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Auto</entry>
+	<entry id="40015" string="Quality">Calitat</entry>
+	<entry id="40021" string="Options">Opcions</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -599,6 +632,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">Duracio</entry>
+	<entry id="52015" string="Size">Tamany</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automatisacio</entry>
@@ -609,6 +644,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Etiquetes d'informacio</entry>
+	<entry id="53001" string="Length">Duracio</entry>
+	<entry id="53002" string="Size">Tamany</entry>
+	<entry id="53005" string="File">Archiu</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Basic</entry>
+	  <entry id="53107" string="Add">Afegir</entry>
+	  <entry id="53108" string="Remove">Eliminar</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">No se pot obrir l'archiu: %1&#10;&#10;%2</entry>
 	</section>

@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Paramètres généraux...</entry>
 	<entry id="1301" string="Configure selected encoder...">Configurer l'encodeur sélectionné...</entry>
+	<entry id="1302" string="Active CD-ROM drive">Lecteur de CD-ROM actif</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Sélectionnez le dossier à ajouter à la liste :</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Vous n'avez sélectionné aucun fichier !</entry>
 	<entry id="3401" string="No files found matching pattern:">Aucun fichier correspondant au motif :</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">Encodeurs</entry>
       <entry id="5002" string="Playlists">Sélections</entry>
       <entry id="5003" string="Language">Langue</entry>
+      <entry id="5007" string="Tags">Balises infos</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurer l'encodeur</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">Modèle de nom de fichier</entry>
 	<entry id="5505" string="Encoding:">Encodage:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Les fichiers sélectionnés ne peuvent être combinés en&#10;un seul fichier de sortie parce que les formats sont différents.&#10;&#10;Veuillez d'abord convertir tous les fichiers au même format.</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Ignorer</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -413,6 +428,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Verrouiller le CD à l'extraction</entry>
 	<entry id="10019" string="Use native NT SCSI library">Utiliser DLL SCSI NT native</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -604,6 +621,22 @@
 	<entry id="37002" string="Preselection">Présélection</entry>
 	<entry id="37003" string="Number of preselection candidates:">Nombre de candidats de présélection :</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Automatique</entry>
+	<entry id="39006" string="VBR mode">Mode VBR</entry>
+	<entry id="39010" string="Options">Options</entry>
+	<entry id="39016" string="VBR quality">Qualité VBR</entry>
+	<entry id="39017" string="ABR target bitrate">Débit binaire cible ABR</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Automatique</entry>
+	<entry id="40015" string="Quality">Qualité</entry>
+	<entry id="40021" string="Options">Options</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -625,6 +658,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">Longueur</entry>
+	<entry id="52015" string="Size">Taille</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automatisation</entry>
@@ -635,6 +670,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Balises infos</entry>
+	<entry id="53001" string="Length">Longueur</entry>
+	<entry id="53002" string="Size">Taille</entry>
+	<entry id="53005" string="File">Fichier</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Elémentaire</entry>
+	  <entry id="53107" string="Add">Ajouter</entry>
+	  <entry id="53108" string="Remove">Supprimer</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Impossible d'ouvrir le fichier : %1&#10;&#10;%2</entry>
 	</section>

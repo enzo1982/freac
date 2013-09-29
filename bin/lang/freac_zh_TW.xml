@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">一般設定...</entry>
 	<entry id="1301" string="Configure selected encoder...">組態選擇的編碼器...</entry>
+	<entry id="1302" string="Active CD-ROM drive">可用的 CD-ROM 光碟機</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">請選擇要加入到工作清單的資料夾：</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">您尚未選擇任何檔案!</entry>
 	<entry id="3401" string="No files found matching pattern:">找不到符合搜尋樣式的檔案</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">編碼器</entry>
       <entry id="5002" string="Playlists">播放清單</entry>
       <entry id="5003" string="Language">語言</entry>
+      <entry id="5007" string="Tags">訊息標籤</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">組態編碼器</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">檔案名稱樣式</entry>
 	<entry id="5505" string="Encoding:">編碼：</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">己選的檔案因採用不同的取樣格式&#10;而無法合成單一輸出檔&#10;&#10;請先以相同取樣格式轉換所所有檔案</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">略過</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -412,6 +427,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">當抽取音軌時鎖住光碟托盤</entry>
 	<entry id="10019" string="Use native NT SCSI library">使用內建 NT SCSI 程式庫</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -592,6 +609,22 @@
 	<entry id="37002" string="Preselection">預選</entry>
 	<entry id="37003" string="Number of preselection candidates:">預選候選的數量：</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">自動</entry>
+	<entry id="39006" string="VBR mode">變動位元率模式</entry>
+	<entry id="39010" string="Options">選項</entry>
+	<entry id="39016" string="VBR quality">VBR 品質</entry>
+	<entry id="39017" string="ABR target bitrate">ABR 目標位元率</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">自動</entry>
+	<entry id="40015" string="Quality">品質</entry>
+	<entry id="40021" string="Options">選項</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -607,6 +640,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">播放時間</entry>
+	<entry id="52015" string="Size">大小</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">自動化</entry>
@@ -617,6 +652,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">訊息標籤</entry>
+	<entry id="53001" string="Length">播放時間</entry>
+	<entry id="53002" string="Size">大小</entry>
+	<entry id="53005" string="File">檔案</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">基本</entry>
+	  <entry id="53107" string="Add">加入</entry>
+	  <entry id="53108" string="Remove">移除</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案： %1&#10;&#10;%2</entry>
 	</section>

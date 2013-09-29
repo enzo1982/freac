@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Általános beállítások</entry>
 	<entry id="1301" string="Configure selected encoder...">Választott tömörítö beállítása</entry>
+	<entry id="1302" string="Active CD-ROM drive">Aktív CD-ROM meghajtó</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Válassz egy könyvtárat a feladatlistába fűzéshez:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Nem választottál ki még egy fájlt sem!</entry>
 	<entry id="3401" string="No files found matching pattern:">Nem találhatók megfelelő fájlok a mintához:</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">Tömörítök</entry>
       <entry id="5002" string="Playlists">Lejátszási lista</entry>
       <entry id="5003" string="Language">Nyelv</entry>
+      <entry id="5007" string="Tags">Info Tag-ek</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Tömörítö beállítása</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">Fájlnév minta</entry>
 	<entry id="5505" string="Encoding:">Tömörítés:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">A kiválasztott fájlok nem fűzhetők egy kimeneti&#10;fájlba az eltérő mintavételezés miatt.&#10;&#10;Konvertáld először a fájokalt egyforma mintavételezésűre.</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Átugrás</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -413,6 +428,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Tálca zárás másoláskor</entry>
 	<entry id="10019" string="Use native NT SCSI library">NT SCSI DLL használat</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -603,6 +620,22 @@
 	<entry id="37002" string="Preselection">Elöválasztás</entry>
 	<entry id="37003" string="Number of preselection candidates:">Elöválasztási jelöltek száma:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Automatikus</entry>
+	<entry id="39006" string="VBR mode">VBR mód</entry>
+	<entry id="39010" string="Options">Beállítások</entry>
+	<entry id="39016" string="VBR quality">VBR minöségi szint</entry>
+	<entry id="39017" string="ABR target bitrate">ABR cél bitráta</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Automatikus</entry>
+	<entry id="40015" string="Quality">Minőség</entry>
+	<entry id="40021" string="Options">Beállítások</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -618,6 +651,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">Hossz</entry>
+	<entry id="52015" string="Size">Méret</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automatizálás</entry>
@@ -628,6 +663,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Info Tag-ek</entry>
+	<entry id="53001" string="Length">Hossz</entry>
+	<entry id="53002" string="Size">Méret</entry>
+	<entry id="53005" string="File">Fájl</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Alap</entry>
+	  <entry id="53107" string="Add">Hozzáadás</entry>
+	  <entry id="53108" string="Remove">Eltávolítás</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
 	</section>

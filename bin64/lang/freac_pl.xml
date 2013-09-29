@@ -172,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Wybierz katalog do umieszczenia na liście:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Nie wybrano żadnego pliku!</entry>
 	<entry id="3401" string="No files found matching pattern:">Brak plików pasujących do wzoru:</entry>
@@ -258,6 +260,7 @@
       <entry id="5002" string="Playlists">Listy odtwarzania</entry>
       <entry id="5003" string="Language">Język</entry>
       <entry id="5005" string="CDDB">CDDB</entry>
+      <entry id="5007" string="Tags">Identyfikatory</entry>
       <entry id="5021" string="Ripper">Zgrywanie CD</entry>
 
       <section name="Encoders">
@@ -342,6 +345,8 @@
 	<entry id="5504" string="Filename pattern">Wzór nazw plików</entry>
 	<entry id="5505" string="Encoding:">Kodowanie:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -392,6 +397,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Wybrane pliki nie mogą być połączone w jeden plik&#10;wyjściowy ze względu na rożny format próbki.&#10;&#10;Skonwertuj najpierw wszystkie pliki do tego samego formatu próbki.</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Pomiń</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -416,6 +430,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Blokuj CD podczas zgrywania</entry>
 	<entry id="10019" string="Use native NT SCSI library">Wykorzystaj bibliotekę SCSI NT</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -608,12 +624,20 @@
 	<entry id="37003" string="Number of preselection candidates:">Liczba analizowanych ustawień:</entry>
       </section>
 
+      <section name="Monkey's Audio"/>
+
       <section name="Speex">
 	<entry id="39002" string="Auto">automatycznie</entry>
 	<entry id="39006" string="VBR mode">Tryb VBR</entry>
 	<entry id="39010" string="Options">Ustawienia</entry>
 	<entry id="39016" string="VBR quality">Jakość VBR</entry>
 	<entry id="39017" string="ABR target bitrate">Zakładana przepływność ABR</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">automatycznie</entry>
+	<entry id="40015" string="Quality">Jakość</entry>
+	<entry id="40021" string="Options">Ustawienia</entry>
       </section>
     </section>
 
@@ -643,9 +667,12 @@
 	  <entry id="52101" string="Automatization">Automatyzacja</entry>
 	  <entry id="52103" string="Browse">Przeglądaj</entry>
 	</section>
+
+	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Identyfikatory</entry>
 	<entry id="53001" string="Length">Długość</entry>
 	<entry id="53002" string="Size">Rozmiar</entry>
 	<entry id="53005" string="File">Plik</entry>
@@ -655,6 +682,10 @@
 	  <entry id="53107" string="Add">Dodaj</entry>
 	  <entry id="53108" string="Remove">Usuń z listy</entry>
 	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>

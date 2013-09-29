@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Основні налаштування...</entry>
 	<entry id="1301" string="Configure selected encoder...">Налаштувати вибраний кодек...</entry>
+	<entry id="1302" string="Active CD-ROM drive">Активний привід CD-ROM</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Вибрати теку щоб додати її до списку завдань:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Ви не обрали файл!</entry>
 	<entry id="3401" string="No files found matching pattern:">Не знайдено файлів, що відповідають зразку:</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">Кодеки</entry>
       <entry id="5002" string="Playlists">Плейлисти</entry>
       <entry id="5003" string="Language">Мова</entry>
+      <entry id="5007" string="Tags">Заголовки</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Налаштувати кодек</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">Формування назви файлу</entry>
 	<entry id="5505" string="Encoding:">Кодування:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Вибрані файли різних форматів, тому їх не можна об`єднати в один файл.&#10;&#10;Спочатку конветуйте всі файли у один формат.</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Пропустити</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -413,6 +428,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Блокувати CD під час роботи</entry>
 	<entry id="10019" string="Use native NT SCSI library">Викор. NT SCSI бібліотеки</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -603,6 +620,22 @@
 	<entry id="37002" string="Preselection">Попередня вибірка</entry>
 	<entry id="37003" string="Number of preselection candidates:">К-сть попередніх варіантів:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Авто</entry>
+	<entry id="39006" string="VBR mode">VBR режим</entry>
+	<entry id="39010" string="Options">Налаштування</entry>
+	<entry id="39016" string="VBR quality">VBR якість</entry>
+	<entry id="39017" string="ABR target bitrate">ABR(розрахунковий) бітрейт</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Авто</entry>
+	<entry id="40015" string="Quality">Якість</entry>
+	<entry id="40021" string="Options">Налаштування</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -619,6 +652,8 @@
 
       <section name="Video Downloader">
 	<entry id="52000" string="Video">Відео</entry>
+	<entry id="52014" string="Length">Довжина</entry>
+	<entry id="52015" string="Size">Розмір</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Автоматизація</entry>
@@ -629,6 +664,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Заголовки</entry>
+	<entry id="53001" string="Length">Довжина</entry>
+	<entry id="53002" string="Size">Розмір</entry>
+	<entry id="53005" string="File">Файл</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Основне</entry>
+	  <entry id="53107" string="Add">Додати</entry>
+	  <entry id="53108" string="Remove">Видалити</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Не можу відкрити файл %1&#10;&#10;%2</entry>
 	</section>

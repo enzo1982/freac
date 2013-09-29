@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">常规设置...</entry>
 	<entry id="1301" string="Configure selected encoder...">设置选定的编码器</entry>
+	<entry id="1302" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">请选择要加入任务列表的文件夹：</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">你没有选择文件！</entry>
 	<entry id="3401" string="No files found matching pattern:">找不到符合样式的文件</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">编码器</entry>
       <entry id="5002" string="Playlists">播放列表</entry>
       <entry id="5003" string="Language">语言</entry>
+      <entry id="5007" string="Tags">信息标签</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">设置编码器</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">文件名样式</entry>
 	<entry id="5505" string="Encoding:">编码：</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -356,9 +362,9 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 有 %2 种语言版本，如果您没有找到您所要的语言，&#10; 您可以使用“Smooth 翻译器”进行 %1 的翻译。</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 支持 LAME，Ogg Vorbis，FAAC，FLAC 和 Bonk &#10;等编码器。VQF 格式的编码器可以在 %1 网站上下载：&#10;%2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 支持 LAME，Ogg Vorbis，FAAC，FLAC 和 Bonk&#10;等编码器。VQF 格式的编码器可以在 %1 网站上下载：&#10;%2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 使用 Winamp 2 输入插件后可以支持更多的格式。&#10;将 in_*.dll 文件复制到 %1/plugins 目录后就可以使用&#10;%1 读取这些格式了。</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">使用 %1 您可以提交采用 Unicode 字符集的 freedb CD &#10;数据库项目。&#10;因此，如果您的 CD 是非拉丁语系艺术家或标题名称，&#10;也可以使用 %1提交正确的 freedb 项目。</entry>
+      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">使用 %1 您可以提交采用 Unicode 字符集的 freedb CD&#10;数据库项目。&#10;因此，如果您的 CD 是非拉丁语系艺术家或标题名称，&#10;也可以使用 %1提交正确的 freedb 项目。</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">为了修正翻录时出现读取错误，您可以在 %1 常规设置&#10;的 CD Rip 标签中开启抖动校正功能。如果这样不能&#10;解决问题，您可以尝试另外的 Paranoia 模式。</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">您对 %1 在功能上有更好的建议吗？&#10;您可以通过 %1 在 SourceForge project 页面下的&#10;软件追踪器提交您的任何建议。&#10;地址是： %2&#10;或直接发送电子邮件到 %3 。</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">您喜欢 %1 吗？&#10;&#10;它是免费的。&#10;&#10;不过您也可以捐点小钱赞助 %1 计划。&#10;您可以通过 PayPal 赞助给 %2。&#10;详情请参阅 %3 。</entry>
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">您所选的文件因采用不同的采样格式&#10;而无法合并成单一输出文件，&#10;请先转换所有文件为相同采样格式。</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">跳过</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -413,6 +428,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">翻录时锁定 CD 托盘</entry>
 	<entry id="10019" string="Use native NT SCSI library">使用原生 NT SCSI 库</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -604,6 +621,22 @@
 	<entry id="37002" string="Preselection">预选</entry>
 	<entry id="37003" string="Number of preselection candidates:">预选数量：</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">自动</entry>
+	<entry id="39006" string="VBR mode">VBR 模式</entry>
+	<entry id="39010" string="Options">选项</entry>
+	<entry id="39016" string="VBR quality">VBR 品质</entry>
+	<entry id="39017" string="ABR target bitrate">ABR 目标比特率</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">自动</entry>
+	<entry id="40015" string="Quality">品质</entry>
+	<entry id="40021" string="Options">选项</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -619,6 +652,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">长度</entry>
+	<entry id="52015" string="Size">大小</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">自动化</entry>
@@ -629,6 +664,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">信息标签</entry>
+	<entry id="53001" string="Length">长度</entry>
+	<entry id="53002" string="Size">大小</entry>
+	<entry id="53005" string="File">文件</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">基本</entry>
+	  <entry id="53107" string="Add">添加</entry>
+	  <entry id="53108" string="Remove">删除</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
 	</section>

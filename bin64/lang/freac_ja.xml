@@ -173,6 +173,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">リストに追加するフォルダ：</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">ファイルが選択されていません</entry>
 	<entry id="3401" string="No files found matching pattern:">パターンに適合するファイルはありませんでした：</entry>
@@ -258,6 +260,7 @@
       <entry id="5001" string="Encoders">エンコーダ</entry>
       <entry id="5002" string="Playlists">プレイリスト</entry>
       <entry id="5003" string="Language">言語</entry>
+      <entry id="5007" string="Tags">タグ情報</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">エンコーダ設定</entry>
@@ -341,6 +344,8 @@
 	<entry id="5504" string="Filename pattern">ファイル名パターン</entry>
 	<entry id="5505" string="Encoding:">エンコード：</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -391,6 +396,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">サンプル形式が異なる為、選択ファイル群を１つの&#10;ファイルに結合出来ません。&#10;&#10;最初に全てのファイルを同じサンプル形式に変換して下さい。</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">スキップ</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -415,6 +429,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">リッピング中は CD トレイをロック</entry>
 	<entry id="10019" string="Use native NT SCSI library">NT SCSI ライブラリを使用</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -607,12 +623,20 @@
 	<entry id="37003" string="Number of preselection candidates:">事前選択候補の数</entry>
       </section>
 
+      <section name="Monkey's Audio"/>
+
       <section name="Speex">
 	<entry id="39002" string="Auto">自動</entry>
 	<entry id="39006" string="VBR mode">VBR モード</entry>
 	<entry id="39010" string="Options">オプション</entry>
 	<entry id="39016" string="VBR quality">VBR 品質</entry>
 	<entry id="39017" string="ABR target bitrate">ABR 目標ビットレート</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">自動</entry>
+	<entry id="40015" string="Quality">品質</entry>
+	<entry id="40021" string="Options">オプション</entry>
       </section>
     </section>
 
@@ -643,6 +667,8 @@
 	  <entry id="52101" string="Automatization">自動化</entry>
 	  <entry id="52103" string="Browse">参照</entry>
 	</section>
+
+	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -653,9 +679,14 @@
 
 	<section name="Basic">
 	  <entry id="53100" string="Basic">基本</entry>
+	  <entry id="53102" string="Disc">ディスク</entry>
 	  <entry id="53107" string="Add">追加</entry>
 	  <entry id="53108" string="Remove">削除</entry>
 	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>

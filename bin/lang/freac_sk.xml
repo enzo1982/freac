@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Hlavné nastavenia...</entry>
 	<entry id="1301" string="Configure selected encoder...">Nastaviť vybraný kodek...</entry>
+	<entry id="1302" string="Active CD-ROM drive">Aktívna CD-ROM mechanika</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Zvoľte zložku na pridanie do zoznamu:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Nevybrali ste žiaden súbor!</entry>
 	<entry id="3401" string="No files found matching pattern:">Žiadne súbory nevyhovujú vzoru:</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">Kodeky</entry>
       <entry id="5002" string="Playlists">Playlisty</entry>
       <entry id="5003" string="Language">Jazyk</entry>
+      <entry id="5007" string="Tags">Info tagy</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Nastaviť kodek</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">Vzor súborovej cesty</entry>
 	<entry id="5505" string="Encoding:">Kódovanie:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Zvolené súbory nemôžu byť skombinované do jedného&#10;výstupného súboru z dôvodu rôznych vzorkovacích formátov.&#10;&#10;Preveďte, prosím, najprv všetky súbory do rovnakého vzorkovacieho formátu.</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Preskočiť</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -413,6 +428,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Uzamknúť CD počas rippovania</entry>
 	<entry id="10019" string="Use native NT SCSI library">Použiť natívne NT SCSI knižnice</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -603,6 +620,22 @@
 	<entry id="37002" string="Preselection">Pred-výber</entry>
 	<entry id="37003" string="Number of preselection candidates:">Počet pred-vybraných kandidátov:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Auto</entry>
+	<entry id="39006" string="VBR mode">VBR mód</entry>
+	<entry id="39010" string="Options">Možnosti</entry>
+	<entry id="39016" string="VBR quality">Kvalita VBR</entry>
+	<entry id="39017" string="ABR target bitrate">Konečný ABR bitrate</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Auto</entry>
+	<entry id="40015" string="Quality">Kvalita</entry>
+	<entry id="40021" string="Options">Možnosti</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -618,6 +651,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">Dĺžka</entry>
+	<entry id="52015" string="Size">Veľkosť</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automatizácia</entry>
@@ -628,6 +663,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Info tagy</entry>
+	<entry id="53001" string="Length">Dĺžka</entry>
+	<entry id="53002" string="Size">Veľkosť</entry>
+	<entry id="53005" string="File">Súbor</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Základné</entry>
+	  <entry id="53107" string="Add">Pridať</entry>
+	  <entry id="53108" string="Remove">Odstrániť</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť súbor: %1&#10;&#10;%2</entry>
 	</section>

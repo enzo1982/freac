@@ -356,7 +356,7 @@
 
 	<section name="Errors">
 	  <entry id="5350" string="Please enter a valid eMail address.">Моля въведете валиден eMail адрес.</entry>
-	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Протокола freedb CDDBP не може да бъде използван с HTTP &#10;пренасочващи проксита!&#10;&#10;Желаете ли да промените протокола на HTTP?</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Протокола freedb CDDBP не може да бъде използван с HTTP&#10;пренасочващи проксита!&#10;&#10;Желаете ли да промените протокола на HTTP?</entry>
 	</section>
       </section>
 
@@ -451,6 +451,15 @@
       <entry id="7020" string="Unknown error">Неизвестна грешка</entry>
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Избраните файлове не могат да се комбинират в един&#10;изходен файл поради различни семплиращи формати.&#10;&#10;Моля конвертирайте всички файлове в еднакъв семплиращ формат.</entry>
       <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1">Не е наличен конфигурационен прозорец за:&#10;&#10;%1</entry>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Пропускане</entry>
+      </section>
+
+      <section name="Errors"/>
     </section>
 
     <section name="Decoders">
@@ -713,6 +722,15 @@
 	<entry id="39018" string="Bitrate:">Битрейт:</entry>
 	<entry id="39019" string="Quality:">Качество:</entry>
 	<entry id="39020" string="Max. bitrate:">Макс. битрейт:</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Автоматично</entry>
+	<entry id="40011" string="File extension">Файлово разширение</entry>
+	<entry id="40015" string="Quality">Качество</entry>
+	<entry id="40016" string="Bitrate:">Битрейт:</entry>
+	<entry id="40018" string="Complexity:">Сложност:</entry>
+	<entry id="40021" string="Options">Опции</entry>
       </section>
     </section>
 

@@ -68,6 +68,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Thiết lập chung...</entry>
 	<entry id="1301" string="Configure selected encoder...">Chỉnh sửa loại chuyển mã...</entry>
+	<entry id="1302" string="Active CD-ROM drive">Cho phép CD-ROM drive</entry>
       </section>
 
       <section name="Encode">
@@ -171,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Chọn thư mục để thêm vào danh sách công việc:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Bạn chưa chọn tập tin nào hết!</entry>
 	<entry id="3401" string="No files found matching pattern:">Không tìm thấy tập tin nào trùng với mẫu:</entry>
@@ -256,6 +259,7 @@
       <entry id="5001" string="Encoders">Chuyển mã</entry>
       <entry id="5002" string="Playlists">Danh sách</entry>
       <entry id="5003" string="Language">Ngôn ngữ</entry>
+      <entry id="5007" string="Tags">Tab thông tin</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Chỉnh sửa chuyển mã</entry>
@@ -339,6 +343,8 @@
 	<entry id="5504" string="Filename pattern">Tên file mẫu</entry>
 	<entry id="5505" string="Encoding:">Đang chuyển mã:</entry>
       </section>
+
+      <section name="Interface"/>
     </section>
 
     <section name="About">
@@ -389,6 +395,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Các file được chọn không thể nối lại với nhau.&#10;Sample formats for the files are different.&#10;&#10;Please convert all files to the same sample format first.</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Bỏ qua</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -412,6 +427,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Khóa ỗ đĩa CD khi đang rip</entry>
 	<entry id="10019" string="Use native NT SCSI library">Sử dụng native NT SCSI library</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -591,6 +608,22 @@
 	<entry id="37002" string="Preselection">Chọn lại</entry>
 	<entry id="37003" string="Number of preselection candidates:">Con số các ứng viên chọn lại:</entry>
       </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="Auto">Tự động</entry>
+	<entry id="39006" string="VBR mode">Chế độ VBR</entry>
+	<entry id="39010" string="Options">Tùy chọn</entry>
+	<entry id="39016" string="VBR quality">Chất lượng VBR</entry>
+	<entry id="39017" string="ABR target bitrate">Mục tiêu ABR bitrate</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Tự động</entry>
+	<entry id="40015" string="Quality">Chất lượng</entry>
+	<entry id="40021" string="Options">Tùy chọn</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -606,6 +639,8 @@
       </section>
 
       <section name="Video Downloader">
+	<entry id="52014" string="Length">Độ dài</entry>
+	<entry id="52015" string="Size">Kích thước</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Tự động</entry>
@@ -616,6 +651,21 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Tab thông tin</entry>
+	<entry id="53001" string="Length">Độ dài</entry>
+	<entry id="53002" string="Size">Kích thước</entry>
+	<entry id="53005" string="File">Tập tin</entry>
+
+	<section name="Basic">
+	  <entry id="53100" string="Basic">Cơ bản</entry>
+	  <entry id="53107" string="Add">Thêm</entry>
+	  <entry id="53108" string="Remove">Loại bỏ</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Không thể mở file: %1&#10;&#10;Error: %2</entry>
 	</section>

@@ -172,6 +172,8 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Valitse kansio:</entry>
       </section>
 
+      <section name="Character set"/>
+
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Et ole valinnut tiedostoa!</entry>
 	<entry id="3401" string="No files found matching pattern:">Kansiosta ei löytynyt malleja:</entry>
@@ -258,6 +260,7 @@
       <entry id="5002" string="Playlists">Soittolistat</entry>
       <entry id="5003" string="Language">Kieli</entry>
       <entry id="5005" string="CDDB">CDDB</entry>
+      <entry id="5007" string="Tags">Info-tagit</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Määritä muunnin</entry>
@@ -393,6 +396,15 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Valittuja tiedostoja ei voitu yhdistää yhdeksi&#10;tulostetiedostoksi erilaisilla näytemuodoilla.&#10;&#10;Ole hyvä ja muunna kaikki tiedostot ensin samalla näytemuodolla.</entry>
     </section>
 
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Ohita</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
     <section name="Decoders">
 
       <section name="CDRip">
@@ -417,6 +429,8 @@
 	<entry id="10018" string="Lock CD tray while ripping">Lukitse CD-asema</entry>
 	<entry id="10019" string="Use native NT SCSI library">Käytä NT:n SCSI-kirjastoa</entry>
       </section>
+
+      <section name="MAD"/>
     </section>
 
     <section name="Encoders">
@@ -617,6 +631,12 @@
 	<entry id="39016" string="VBR quality">VBR:n laatu</entry>
 	<entry id="39017" string="ABR target bitrate">ABR:n kohdebittivirta</entry>
       </section>
+
+      <section name="Opus">
+	<entry id="40002" string="Auto">Automaattinen</entry>
+	<entry id="40015" string="Quality">Laatu</entry>
+	<entry id="40021" string="Options">Asetukset</entry>
+      </section>
     </section>
 
     <section name="Extensions">
@@ -650,6 +670,7 @@
       </section>
 
       <section name="Tag Editor">
+	<entry id="53000" string="Tags">Info-tagit</entry>
 	<entry id="53001" string="Length">Pituus</entry>
 	<entry id="53002" string="Size">Koko</entry>
 	<entry id="53005" string="File">Tiedosto</entry>
@@ -663,9 +684,7 @@
 	<section name="Details"/>
 
 	<section name="Other"/>
-      </section>
 
-      <section name="Tag Editor">
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Ei voida avata tiedostoa: %1&#10;&#10;Virhe: %2</entry>
 	</section>
