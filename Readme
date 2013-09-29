@@ -35,6 +35,7 @@ History
 
 	Version 1.0.22 (September 2013)
 
+		- added Afrikaans language support
 		- updated Lithuanian translation
 		- fixed last track of CD-Extra discs being two seconds too long
 		- fixed uninstaller not working when run directly
@@ -429,7 +430,8 @@ Special thanks to
 			   Phan Anh (Vietnamese),
 			   Ilan Tsmeret (Hebrew),
 			   Eman Ali Fhoula (Arabic),
-			   Martin Deyanov (Bulgarian)
+			   Martin Deyanov (Bulgarian),
+			   Cois Wiid (Afrikaans)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
