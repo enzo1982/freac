@@ -3,6 +3,7 @@
 
 #include "ChunkHelper.h"
 #include <iostream>
+#include <string.h>
 
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -15,11 +16,12 @@ int ReadTracChunk( FILE *fp, std::string id, CChunkChunk *theChunkChunk )
 {
 	// 必要なデータの読み込み
 	int trackNumber=0;
-	fscanf( fp, "%d", &trackNumber );
 
-	// サブチャンクを作成・追加
-	CTracChunk subChunk( id, trackNumber );
-	theChunkChunk->PutChunk( subChunk );
+	if ( fscanf( fp, "%d", &trackNumber ) == 1 ) {
+		// サブチャンクを作成・追加
+		CTracChunk subChunk( id, trackNumber );
+		theChunkChunk->PutChunk( subChunk );
+	}
 
 	return 0;
 }
@@ -31,11 +33,12 @@ int ReadYearChunk( FILE *fp, std::string id, CChunkChunk *theChunkChunk )
 	// 必要なデータの読み込み
 	int year = 0;
 	int month = 0;
-	fscanf( fp, "%d %d", &year, &month );
 
-	// サブチャンクを作成・追加
-	CYearChunk subChunk( id, year, month );
-	theChunkChunk->PutChunk( subChunk );
+	if ( fscanf( fp, "%d %d", &year, &month ) == 2 ) {
+		// サブチャンクを作成・追加
+		CYearChunk subChunk( id, year, month );
+		theChunkChunk->PutChunk( subChunk );
+	}
 
 	return 0;
 }
@@ -46,11 +49,12 @@ int ReadEncdChunk( FILE *fp, std::string id, CChunkChunk *theChunkChunk )
 {
 	// 必要なデータの読み込み
 	int year=0, month=0, day=0, hour=0, minute=0, timeZone=0;
-	fscanf( fp, "%d %d %d %d %d %d", &year, &month, &day, &hour, &minute, &timeZone );
 
-	// サブチャンクを作成・追加
-	CEncdChunk subChunk( id, year, month, day, hour, minute, timeZone );
-	theChunkChunk->PutChunk( subChunk );
+	if ( fscanf( fp, "%d %d %d %d %d %d", &year, &month, &day, &hour, &minute, &timeZone ) == 6 ) {
+		// サブチャンクを作成・追加
+		CEncdChunk subChunk( id, year, month, day, hour, minute, timeZone );
+		theChunkChunk->PutChunk( subChunk );
+	}
 
 	return 0;
 }
