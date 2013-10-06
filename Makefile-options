@@ -23,12 +23,16 @@ else ifneq ($(findstring powerpc64,$(MACHINE)),)
 		BUILD_PPC64 = True
 	endif
 else ifneq ($(findstring x86_64,$(MACHINE)),)
+	ifneq ($(BUILD_X86),True)
 	ifneq ($(BUILD_X86_64),False)
 		BUILD_X86_64 = True
 	endif
+	endif
 else
 	ifneq ($(BUILD_X86),False)
+	ifneq ($(BUILD_X86_64),True)
 		BUILD_X86 = True
+	endif
 	endif
 endif
 

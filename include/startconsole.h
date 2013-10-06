@@ -16,9 +16,9 @@
 #include "bonkenc.h"
 
 #ifdef __WIN32__
-#	define DLLEXPORT __declspec(dllexport)
+#	define DLLEXPORT __declspec (dllexport)
 #else
-#	define DLLEXPORT
+#	define DLLEXPORT __attribute__ ((visibility ("default")))
 #endif
 
 using namespace smooth;

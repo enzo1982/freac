@@ -45,7 +45,7 @@ RESCOMP			   = windres
 LINKER			   = gcc
 REMOVER			   = rm
 ECHO			   = echo
-COMPILER_OPTS		   = -pipe -I$(INCLUDEDIR) -g0 -Wall -Os -fno-exceptions -DUNICODE -D_UNICODE -c
+COMPILER_OPTS		   = -pipe -I$(INCLUDEDIR) -g0 -Wall -Os -fvisibility=hidden -fno-exceptions -DUNICODE -D_UNICODE -c
 RESCOMP_OPTS		   = -O coff
 LINKER_OPTS		   = -pipe -lstdc++ -o $(DLLNAME)
 LOADER_GUI_LINKER_OPTS	   = -pipe -lstdc++ -o $(EXENAME)
@@ -67,31 +67,35 @@ endif
 endif
 
 ifeq ($(BUILD_OSX),True)
+	LINKER_OPTS			+= -Wl,-x -dynamiclib
+	LOADER_GUI_LINKER_OPTS		+= -Wl,-x
+	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,-x
+
 ifeq ($(BUILD_X86),True)
 	COMPILER_OPTS			+= -arch i386
 
-	LINKER_OPTS			+= -arch i386 -dynamiclib
+	LINKER_OPTS			+= -arch i386
 	LOADER_GUI_LINKER_OPTS		+= -arch i386
 	LOADER_CONSOLE_LINKER_OPTS	+= -arch i386
 endif
 ifeq ($(BUILD_X86_64),True)
 	COMPILER_OPTS			+= -arch x86_64
 
-	LINKER_OPTS			+= -arch x86_64 -dynamiclib
+	LINKER_OPTS			+= -arch x86_64
 	LOADER_GUI_LINKER_OPTS		+= -arch x86_64
 	LOADER_CONSOLE_LINKER_OPTS	+= -arch x86_64
 endif
 ifeq ($(BUILD_PPC),True)
 	COMPILER_OPTS			+= -arch ppc
 
-	LINKER_OPTS			+= -arch ppc -dynamiclib
+	LINKER_OPTS			+= -arch ppc
 	LOADER_GUI_LINKER_OPTS		+= -arch ppc
 	LOADER_CONSOLE_LINKER_OPTS	+= -arch ppc
 endif
 ifeq ($(BUILD_PPC64),True)
 	COMPILER_OPTS			+= -arch ppc64
 
-	LINKER_OPTS			+= -arch ppc64 -dynamiclib
+	LINKER_OPTS			+= -arch ppc64
 	LOADER_GUI_LINKER_OPTS		+= -arch ppc64
 	LOADER_CONSOLE_LINKER_OPTS	+= -arch ppc64
 endif
