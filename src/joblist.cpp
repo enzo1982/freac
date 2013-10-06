@@ -261,11 +261,13 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 		}
 	}
 
-	RemoveAllEntries();
-
 	/* Notify components that all tracks will be removed.
 	 */
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Emit();
+
+	/* Actually remove entries and tracks here.
+	 */
+	RemoveAllEntries();
 
 	tracks.RemoveAll();
 
