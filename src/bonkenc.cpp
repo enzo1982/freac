@@ -34,7 +34,6 @@ Void smooth::DetachDLL()
 
 #include <jobs/jobmanager.h>
 #include <cddb/cddbcache.h>
-#include <engine/converter.h>
 
 BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 
@@ -87,7 +86,6 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	instance = this;
 
-	encoder		= new Converter();
 	currentConfig	= Config::Get();
 
 	/* Set default comment unless already set.
@@ -103,8 +101,8 @@ BonkEnc::BonkEnc::BonkEnc()
 	 */
 	JobManager::Start();
 
-	if (DLLInterfaces::LoadEUpdateDLL() == False)	currentConfig->enable_eUpdate = False;
-	else						currentConfig->enable_eUpdate = True;
+	if (DLLInterfaces::LoadEUpdateDLL() == False) currentConfig->enable_eUpdate = False;
+	else					      currentConfig->enable_eUpdate = True;
 }
 
 BonkEnc::BonkEnc::~BonkEnc()
@@ -133,8 +131,6 @@ BonkEnc::BonkEnc::~BonkEnc()
 	 */
 	Object::ObjectCleanup();
 
-	delete encoder;
-
 	Config::Free();
 
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
@@ -142,9 +138,4 @@ BonkEnc::BonkEnc::~BonkEnc()
 	debug->Write("Leaving fre:ac...");
 
 	BoCA::Protocol::Free();
-}
-
-BonkEnc::BonkEnc *BonkEnc::BonkEnc::Get()
-{
-	return instance;
 }

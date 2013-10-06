@@ -16,7 +16,7 @@
 
 #include <gui/player.h>
 
-#include <engine/converter.h>
+#include <jobs/engine/convert.h>
 
 #include <dialogs/charset.h>
 
@@ -1095,13 +1095,13 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 
 	switch (mode)
 	{
-		case ENCODER_MODE_ON_THE_FLY:
+		case CONVERTER_MODE_ON_THE_FLY:
 			// nothing special in this case
 			break;
-		case ENCODER_MODE_DECODE:
+		case CONVERTER_MODE_DECODE:
 			edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
 			break;
-		case ENCODER_MODE_ENCODE:
+		case CONVERTER_MODE_ENCODE:
 			edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
 			break;
 	}

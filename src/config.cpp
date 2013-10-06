@@ -11,7 +11,7 @@
 #include <config.h>
 #include <bonkenc.h>
 
-#include <engine/converter.h>
+#include <jobs/engine/convert.h>
 
 #include <boca.h>
 
@@ -326,7 +326,7 @@ Void BonkEnc::Config::Free()
 
 Bool BonkEnc::Config::CanChangeConfig()
 {
-	if (BonkEnc::Get()->encoder->IsEncoding())
+	if (JobConvert::IsConverting())
 	{
 		Utilities::ErrorMessage("Cannot change settings while encoding!");
 

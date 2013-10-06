@@ -12,7 +12,8 @@
 #include <utilities.h>
 #include <bonkenc.h>
 
-#include <engine/converter.h>
+#include <jobs/engine/convert.h>
+
 #include <engine/decoder.h>
 
 using namespace BoCA;
@@ -58,7 +59,7 @@ Void BonkEnc::Playback::Free()
 
 Void BonkEnc::Playback::Play(const Track &iTrack)
 {
-	if (BonkEnc::Get()->encoder->IsEncoding())
+	if (JobConvert::IsConverting())
 	{
 		BoCA::Utilities::ErrorMessage("Cannot play a file while encoding!");
 

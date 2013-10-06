@@ -17,6 +17,7 @@
 
 #include <engine/converter.h>
 
+#include <jobs/engine/convert.h>
 #include <jobs/joblist/addtracks.h>
 #include <jobs/other/checkforupdates.h>
 
@@ -155,7 +156,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tabs_main		= new TabWidget(Point(6, 7), Size(700, 500));
 
 	tab_layer_joblist	= new LayerJoblist();
-	tab_layer_joblist->onRequestSkipTrack.Connect(&Converter::SkipTrack, encoder);
+	tab_layer_joblist->onRequestSkipTrack.Connect(&JobConvert::Skip);
 
 #ifndef BUILD_VIDEO_DOWNLOADER
 	tabs_main->Add(tab_layer_joblist);
@@ -213,13 +214,13 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, Config::SettingsWindowMaximizedDefault)) mainWnd->Maximize();
 
-	encoder->onStartEncoding.Connect(&LayerJoblist::OnEncoderStartEncoding, tab_layer_joblist);
-	encoder->onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, tab_layer_joblist);
+	JobConvert::onStartEncoding.Connect(&LayerJoblist::OnEncoderStartEncoding, tab_layer_joblist);
+	JobConvert::onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, tab_layer_joblist);
 
-	encoder->onEncodeTrack.Connect(&LayerJoblist::OnEncoderEncodeTrack, tab_layer_joblist);
+	JobConvert::onEncodeTrack.Connect(&LayerJoblist::OnEncoderEncodeTrack, tab_layer_joblist);
 
-	encoder->onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, tab_layer_joblist);
-	encoder->onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, tab_layer_joblist);
+	JobConvert::onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, tab_layer_joblist);
+	JobConvert::onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, tab_layer_joblist);
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault)) (new JobCheckForUpdates(True))->Schedule();
 }
@@ -292,7 +293,7 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 	/* Check if encoder is running.
 	 */
-	if (encoder->IsEncoding())
+	if (JobConvert::IsConverting())
 	{
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -300,7 +301,7 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 		if (Message::Button::No == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), Message::Buttons::YesNo, Message::Icon::Question)) return False;
 
-		encoder->Stop();
+		JobConvert::Stop();
 	}
 
 	/* Stop playback if playing a track
@@ -505,10 +506,10 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 {
 	if (!currentConfig->CanChangeConfig()) return;
 
-	BoCA::Config	*config = BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::Config	*config  = BoCA::Config::Get();
+	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
 
-	ConfigDialog	*dialog	= new ConfigDialog();
+	ConfigDialog	*dialog	 = new ConfigDialog();
 
 	dialog->ShowDialog();
 
@@ -544,8 +545,8 @@ Void BonkEnc::BonkEncGUI::OnSelectConfiguration()
 {
 	if (!currentConfig->CanChangeConfig()) return;
 
-	BoCA::Config	*config = BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::Config	*config  = BoCA::Config::Get();
+	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
 
 	config->SetActiveConfiguration(config->GetNthConfigurationName(clicked_configuration));
 
@@ -1142,22 +1143,20 @@ Void BonkEnc::BonkEncGUI::Encode()
 		clicked_encoder = -1;
 	}
 
-	encoder->Convert(joblist);
+	Converter().Convert(joblist);
 }
 
 Void BonkEnc::BonkEncGUI::PauseResumeEncoding()
 {
-	if (!encoder->IsEncoding()) return;
+	if (!JobConvert::IsConverting()) return;
 
-	if (encoder->IsPaused()) encoder->Resume();
-	else			 encoder->Pause();
+	if (JobConvert::IsPaused()) JobConvert::Resume();
+	else			    JobConvert::Pause();
 }
 
 Void BonkEnc::BonkEncGUI::StopEncoding()
 {
-	if (encoder == NIL) return;
-
-	encoder->Stop();
+	JobConvert::Stop();
 }
 
 Void BonkEnc::BonkEncGUI::AddFilesByPattern()

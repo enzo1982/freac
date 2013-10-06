@@ -18,8 +18,6 @@ using namespace smooth::GUI;
 
 namespace BonkEnc
 {
-	class JobList;
-	class Converter;
 	class Config;
 
 	abstract class BonkEnc : public GUI::Application
@@ -27,28 +25,22 @@ namespace BonkEnc
 		protected:
 			/* Singleton class, therefore protected constructor/destructor
 			 */
-			static BonkEnc		*instance;
+			static BonkEnc	*instance;
 
-						 BonkEnc();
-			virtual			~BonkEnc();
+					 BonkEnc();
+			virtual		~BonkEnc();
 
-			Config			*currentConfig;
+			Config		*currentConfig;
 		public:
-			static String		 appName;
-			static String		 appLongName;
-			static String		 version;
-			static String		 architecture;
-			static String		 shortVersion;
-			static String		 cddbVersion;
-			static String		 cddbMode;
-			static String		 website;
-			static String		 updatePath;
-
-			Converter		*encoder;
-
-			/* Returns an existing instance of BonkEnc
-			 */
-			static BonkEnc		*Get();
+			static String	 appName;
+			static String	 appLongName;
+			static String	 version;
+			static String	 architecture;
+			static String	 shortVersion;
+			static String	 cddbVersion;
+			static String	 cddbMode;
+			static String	 website;
+			static String	 updatePath;
 	};
 };
 

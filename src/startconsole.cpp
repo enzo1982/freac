@@ -14,6 +14,7 @@
 
 #include <engine/converter.h>
 
+#include <jobs/engine/convert.h>
 #include <jobs/joblist/addfiles.h>
 
 using namespace smooth::IO;
@@ -301,7 +302,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
 			config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
 
-			encoder->onEncodeTrack.Connect(&BonkEncCommandline::OnEncodeTrack, this);
+			JobConvert::onEncodeTrack.Connect(&BonkEncCommandline::OnEncodeTrack, this);
 
 			Array<String>	 jobFiles;
 
@@ -342,7 +343,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			if (joblist->GetNOfTracks() > 0)
 			{
-				encoder->Convert(joblist, False);
+				Converter().Convert(joblist, False);
 
 				if (!quiet) Console::OutputString("done.\n");
 			}
@@ -401,7 +402,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 					joblist->UpdateTrackInfo(track);
 
-					encoder->Convert(joblist, False);
+					Converter().Convert(joblist, False);
 
 					joblist->RemoveNthTrack(0);
 

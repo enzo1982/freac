@@ -19,59 +19,18 @@ using namespace smooth;
 namespace BonkEnc
 {
 	class JobList;
-	class Progress;
-
-	const Int	 ENCODER_MODE_ON_THE_FLY = 0;
-	const Int	 ENCODER_MODE_DECODE	 = 1;
-	const Int	 ENCODER_MODE_ENCODE	 = 2;
 
 	class Converter
 	{
-		protected:
-			Bool							 encoding;
-			Bool							 paused;
-
-			Bool							 stop;
-			Bool							 skip;
-
-			Bool							 overwriteAll;
-
-			Array<BoCA::Track>					 tracks;
-
-			JobList							*joblist;
-
-			Bool							 CheckSingleFileSampleFormat();
-
-			String							 GetPlaylistFileName(const BoCA::Track &);
-
-			String							 GetOutputFileName(const BoCA::Track &);
-			String							 GetSingleOutputFileName(const BoCA::Track &);
-
-			Int							 ConverterThread();
+		private:
+			Bool	 conversionFinished;
 		public:
-										 Converter();
-										~Converter();
+				 Converter();
+				~Converter();
 
-			Void							 Convert(JobList *, Bool = True);
-
-			Void							 Pause();
-			Void							 Resume();
-
-			Void							 Stop();
-		accessors:
-			Bool							 IsEncoding() const	{ return encoding; }
-			Bool							 IsPaused() const	{ return paused; }
-		signals:
-			Signal0<Void>						 onStartEncoding;
-			Signal1<Void, Bool>					 onFinishEncoding;
-
-			Signal3<Void, const BoCA::Track &, const String &, Int>	 onEncodeTrack;
-			Signal0<Void>						 onFinishTrack;
-
-			Signal2<Void, Int, Int>					 onTrackProgress;
-			Signal2<Void, Int, Int>					 onTotalProgress;
+			Void	 Convert(JobList *, Bool = True);
 		slots:
-			Void							 SkipTrack();
+			Void	 OnFinishJob();
 	};
 };
 
