@@ -252,12 +252,12 @@ Void BonkEnc::ConfigDialog::AddLayers()
 		entries.Add(new ConfigEntry(i18n->TranslateString("Playlists"), layers.GetLast()));
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 		tree_bonkenc->Add(entries.GetLast());
-	}
 
-	/* Connect to the onChangeComponentSettings signal of the playlist configuration
-	 * layer to be notified when settings for a specific component are changed.
-	 */
-	((ConfigurePlaylists *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
+		/* Connect to the onChangeComponentSettings signal of the playlist configuration
+		 * layer to be notified when settings for a specific component are changed.
+		 */
+		((ConfigurePlaylists *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
+	}
 
 	layers.Add(new ConfigureTags());
 	createdLayers.Add(layers.GetLast());
