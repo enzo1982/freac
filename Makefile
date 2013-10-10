@@ -126,12 +126,10 @@ ifeq ($(BUILD_OPENBSD),True)
 	LOADER_CONSOLE_LINKER_OPTS	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
 endif
 
-ifeq ($(BUILD_SOLARIS),True)
+ifneq ($(BUILD_WIN32),True)
+ifneq ($(BUILD_LINUX),True)
 	COMPILER_OPTS			+= -fPIC
-endif
-
-ifeq ($(BUILD_LINUX),True)
-ifeq ($(BUILD_X86_64),True)
+else ifneq ($(BUILD_X86),True)
 	COMPILER_OPTS			+= -fPIC
 endif
 endif
