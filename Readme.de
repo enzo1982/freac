@@ -86,6 +86,7 @@ Geschichte
 		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Vorschau zum CDDB-Trefferauswahldialog hinzugefügt
 		- Option für automatische Auswahl des ersten CDDB-Treffers hinzugefügt
+		- Unterstützung für CDDB-Abfrage per HTTP GET hinzugefügt
 		- Kontextmenü für Texteingabefelder hinzugefügt
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt

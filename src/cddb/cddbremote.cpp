@@ -43,14 +43,16 @@ BonkEnc::CDDBRemote::~CDDBRemote()
 
 String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
 
-	if (!connected && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP) return "error not connected";
+	Int	 freedbMode = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault);
+
+	if (!connected && freedbMode == FREEDB_MODE_CDDBP) return "error not connected";
 
 	String	 str;
 	String	 command = iCommand;
 
-	switch (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault))
+	switch (freedbMode)
 	{
 		case FREEDB_MODE_CDDBP:
 			if (command != NIL)
@@ -69,7 +71,8 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
 
 			break;
-		case FREEDB_MODE_HTTP:
+		case FREEDB_MODE_HTTP_GET:
+		case FREEDB_MODE_HTTP_POST:
 			if (connected)
 			{
 				delete in;
@@ -99,7 +102,8 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			http.SetHeaderField("User-Email", config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault));
 			http.SetHeaderField("Charset", "UTF-8");
 
-			http.SetMode(Net::Protocols::HTTP_METHOD_POST);
+			if (freedbMode == FREEDB_MODE_HTTP_GET) http.SetMode(Net::Protocols::HTTP_METHOD_GET);
+			else					http.SetMode(Net::Protocols::HTTP_METHOD_POST);
 
 			if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault) != 0)
 			{
@@ -142,7 +146,9 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP)
+	Int	 freedbMode = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault);
+
+	if (freedbMode == FREEDB_MODE_CDDBP)
 	{
 		String	 freedb_server		= config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
 
@@ -373,11 +379,13 @@ Bool BonkEnc::CDDBRemote::CloseConnection()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (!connected && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP) return False;
+	Int	 freedbMode = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault);
+
+	if (!connected && freedbMode == FREEDB_MODE_CDDBP) return False;
 
 	SendCommand("quit");
 
-	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP)
+	if (freedbMode == FREEDB_MODE_CDDBP)
 	{
 		delete out;
 		delete in;

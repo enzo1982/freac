@@ -15,8 +15,9 @@
 
 #include <cddb/cddbinfo.h>
 
-const Int	 FREEDB_MODE_HTTP	= 0;
-const Int	 FREEDB_MODE_CDDBP	= 1;
+const Int	 FREEDB_MODE_HTTP_POST	= 0;
+const Int	 FREEDB_MODE_HTTP_GET	= 1;
+const Int	 FREEDB_MODE_CDDBP	= 2;
 
 const Int	 QUERY_RESULT_ERROR	= -1;
 const Int	 QUERY_RESULT_NONE	= 0;

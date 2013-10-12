@@ -86,6 +86,7 @@ History
 		- added <installdrive> pattern for use in output directory name
 		- added preview to CDDB match selection dialog
 		- added an option to automatically select the first CDDB match
+		- added support for CDDB queries using HTTP GET
 		- added context menu for text edit fields
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
