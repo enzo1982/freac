@@ -63,8 +63,6 @@ BonkEnc::cddbQueryDlg::~cddbQueryDlg()
 
 const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 {
-	mainWnd->Show();
-
 	queryThread = NonBlocking0<>(&cddbQueryDlg::QueryThread, this).Call();
 
 	mainWnd->Stay();
@@ -83,9 +81,15 @@ Bool BonkEnc::cddbQueryDlg::SetQueryString(const String &nQueryString)
 
 const BonkEnc::CDDBInfo &BonkEnc::cddbQueryDlg::QueryCDDB(Bool iAllowAddToBatch)
 {
-	allowAddToBatch = iAllowAddToBatch;
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	ShowDialog();
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
+	    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
+	{
+		allowAddToBatch = iAllowAddToBatch;
+
+		ShowDialog();
+	}
 
 	return cddbInfo;
 }
@@ -99,6 +103,8 @@ Void BonkEnc::cddbQueryDlg::Cancel()
 
 Int BonkEnc::cddbQueryDlg::QueryThread()
 {
+	while (!mainWnd->IsVisible()) S::System::System::Sleep(0);
+
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	Bool	 result = False;
