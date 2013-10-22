@@ -34,18 +34,20 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.0.22 (September 2013)
+	Version 1.0.22 (Oktober 2013)
 
 		- Sprachunterstützung für Afrikaans hinzugefügt
-		- Litauische Übersetzung aktualisiert
+		- Spanische und litauische Übersetzungen aktualisiert
+		- Problem bei der Dekodierung von AAC-Datein im MAIN-Profil behoben
 		- Problem bei der Berechnung der Länge des letzten Tracks von CD-Extra CDs behoben
 		- Problem beim direkten Start des Deinstallationsprogramms behoben
+		- CDRip auf Version 1.24 aktualisiert
 
 	Version 1.0.21a (Juli 2013)
 
-		- Löschen von WMA-Ausgabedateien nach der Codierung behoben
+		- Löschen von WMA-Ausgabedateien nach der Kodierung behoben
 		- Problem mit nicht anklickbaren Eingabefeldmenüschaltflächen behoben
-		- Seltenes Problem mit dem FLAC-Codierer bei Komprimierungsstufe 7 und 8 behoben
+		- Seltenes Problem mit dem FLAC-Kodierer bei Komprimierungsstufe 7 und 8 behoben
 		- Problem mit Online-Updater nach Update der smooth-Bibliothek behoben
 		- Probleme bei Kompilierung mit Microsoft Visual C++ behoben
 
@@ -122,7 +124,7 @@ Geschichte
 
 	Version 1.0.15 (Juli 2010)
 
-		- Windows Media Audio Codierer/Decodierer hinzugefügt
+		- Windows Media Audio Kodierer/Dekodierer hinzugefügt
 		- Unterstützung für Wildcards in BEcmd-Parametern hinzugefügt
 		- Konfigurationsoption für Geschwindigkeit beim Rippen hinzugefügt
 		- Dateinamensvorlage <filetype> hinzugefügt
@@ -153,7 +155,7 @@ Geschichte
 		- Unscharfe Iconanzeige unter Windows Vista und Windows 7 behoben
 		- Einfrieren des Programms unter Windows 7 behoben
 		- Mögliches Einfrieren beim Programmstart behoben
-		- Deutliche Geschwindigkeitsverbesserungen bei der Codierung
+		- Deutliche Geschwindigkeitsverbesserungen bei der Kodierung
 		- Update auf MP4v2 v1.9.1
 		- Einige kleinere Korrekturen
 
@@ -162,10 +164,10 @@ Geschichte
 		- Sprachunterstützung für Vietnamesisch und Galizisch hinzugefügt
 		- Tschechische Anleitung hinzugefügt
 		- Chinesische (traditionell), tschechische und serbische Übersetzungen aktualisiert
-		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
+		- Mehrkern-CPUs werden beim Kodieren/Dekodieren besser ausgenutzt
 		- Diverse weitere Geschwindigkeitsverbesserungen
 		- Veraltete Voreinstellungen für LAME entfernt
-		- Möglichen Absturz am Ende der Codierung mit LAME behoben
+		- Möglichen Absturz am Ende der Kodierung mit LAME behoben
 		- Möglichen Absturz beim Öffnen von Bonk-Dateien behoben
 		- Fehler in der Argumentverarbeitung bei BEcmd behoben
 		- Probleme mit easyUpdate behoben
@@ -187,7 +189,7 @@ Geschichte
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Fehler beim Umgang mit nicht-ASCII-Zeichen beim Öffnen von MP3-Dateien mit mehreren Tags behoben
 		- Fehler in ID3lib behoben, um korrektes Lesen und Schreiben von ID3v2.4-Tags zu gewährleisten
-		- Fehler behoben, durch den FLAC-Dateien in einigen Situationen nicht bis zum Ende decodiert wurden
+		- Fehler behoben, durch den FLAC-Dateien in einigen Situationen nicht bis zum Ende dekodiert wurden
 		- Fehler beim Öffnen von großen MP4-Dateien behoben
 		- FAAC auf Version 1.28 aktualisiert
 		- FAAD2 suf Version 2.7 aktualisiert
@@ -197,7 +199,7 @@ Geschichte
 
 		- Japanische, norwegische, spanische (lateinamerikanisch) und serbische Übersetzungen aktualisiert
 		- Option zum Ersetzen von vorhandenen Kommentaren durch Standardkommentar hinzugefügt
-		- CheckBox für "In einzelne Datei codieren" zum Hauptfenster hinzugefügt
+		- CheckBox für "In einzelne Datei kodieren" zum Hauptfenster hinzugefügt
 		- Gesamtlänge aller Tracks in der Jobliste wird nun über der Jobliste angezeigt
 		- Fenster können jetzt durch Drücken von Escape geschlossen werden
 		- CDDB-Abfragen sind jetzt standardmäßig aktiviert
@@ -214,7 +216,7 @@ Geschichte
 		- Serbische, polnische und schwedische Übersetzungen aktualisiert
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
 		- Gleitkommawerte für LAME VBR Qualität erlaubt
-		- Codierung kann jetzt abgebrochen werden, falls eine Ausgabedatei bereits existiert
+		- Kodierung kann jetzt abgebrochen werden, falls eine Ausgabedatei bereits existiert
 		- Erstellen des Playlisten-Verzeichnisses trotz abgewählter Playlisten-Option behoben
 		- Fehlerhaften Umgang mit Kommentaren in Metadaten behoben
 		- Nicht funktionierende Zeichensatz-Auswahl nach manuell gestarteter CDDB-Abfrage behoben
@@ -228,7 +230,7 @@ Geschichte
 		- Kleinere Verbesserungen der Übersetzungen und der Anleitung
 		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Möglichen Absturz beim Beenden des Programms behoben
-		- Fehlerhafte Qualitätslevelanzeige in Vorbis-Codiererkonfiguration behoben
+		- Fehlerhafte Qualitätslevelanzeige in Vorbis-Kodiererkonfiguration behoben
 		- Gültigkeitsprüfung für CDDB-Einträge leicht verbessert
 		- Voreinstellung 'Standard' ist jetzt Standardeinstellung für LAME
 		- LAME auf Version 3.98 aktualisiert
@@ -250,7 +252,7 @@ Geschichte
 		- Unterstützung für AAC-Synchronisierung hinzugefügt (zum Lesen von AAC-Streamrips benötigt)
 		- Fehler in der Unterstützung von CDs von mehreren Künstlern behoben
 		- Fehlerhafte Übergabe von unsynchronisierten ID3v2-Tags an den LAME-Decoder behoben
-		- Absturz des FLAC-Codierers in Verbindung mit Bild-Metadaten behoben
+		- Absturz des FLAC-Kodierers in Verbindung mit Bild-Metadaten behoben
 		- Möglichen Absturz im FLAC-Decoder behoben
 		- Fehler in der Unterstützung für große Schriftarten behoben
 
@@ -292,7 +294,7 @@ Geschichte
 
 		- Slowakische und schwedische Übersetzung aktualisiert
 		- Fehlerhafte Schriftdarstellung bei großen Schriftarten behoben
-		- Codierung von leeren Tracks behoben, wenn keine CD eingelegt ist
+		- Kodierung von leeren Tracks behoben, wenn keine CD eingelegt ist
 		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
 		- Kleinere Verbesserungen und Korrekturen
 
@@ -312,20 +314,20 @@ Geschichte
 
 		- Deutsche und italienische Anleitungen hinzugefügt
 		- Dänische, polnische und rumänische Übersetzung aktualisiert
-		- Timeout-Parameter zum Kommandozeilen-Codierer hinzugefügt
-		- Ungewolltes Downsampling beim Codieren von MP3s mit niedriger Bitrate behoben
+		- Timeout-Parameter zum Kommandozeilen-Kodierer hinzugefügt
+		- Ungewolltes Downsampling beim Kodieren von MP3s mit niedriger Bitrate behoben
 		- Nicht funktionierendes Kontextmenü der Jobliste korrigiert
 		- Verbesserungen beim Installer
-		- Fehler im Kommandozeilen-Codierer behoben
+		- Fehler im Kommandozeilen-Kodierer behoben
 		- Einige weitere Korrekturen
 
 	Version 1.0.1 (März 2007)
 
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
-		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
+		- Schreiben von ID3v1-Tags beim Kodieren von VBR- oder ABR-MP3s behoben
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
-		- Absturz beim Codieren in einzelne MP4-Datei behoben
-		- Viele Fehler im Kommandozeilen-Codierer behoben
+		- Absturz beim Kodieren in einzelne MP4-Datei behoben
+		- Viele Fehler im Kommandozeilen-Kodierer behoben
 
 	Version 1.0 (Februar 2007)
 
@@ -333,8 +335,8 @@ Geschichte
 		- Benutzerhandbuch hinzugefügt
 		- Absturz beim Klick auf "Sprachdatei bearbeiten" im Konfigurationsdialog behoben
 		- Fehler beim Einlesen von MP3-Dateien mit niedriger Bitrate behoben
-		- Unterstützung zum CD-rippen mit dem Kommandozeilencodierer hinzugefügt
-		- Einige Fehler im Kommandozeilencodierer behoben
+		- Unterstützung zum CD-rippen mit dem Kommandozeilenkodierer hinzugefügt
+		- Einige Fehler im Kommandozeilenkodierer behoben
 		- Fehler im graphischen Installationsprogramm behoben
 		- FLAC auf Version 1.1.4 aktualisiert
 		- FAAD2 auf Version 2.5 aktualisiert
@@ -348,7 +350,7 @@ Voraussetzungen
 	Voraussetzungen zum Ausführen der Binärpakete:
 
 		Unterstützte Betriebsysteme:
-			- Windows 2000/XP/Vista/7/8 (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
+			- Windows 2000/XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
 
 		Minimale Hardwarevoraussetzungen:
 			- Intel Pentium 4 Prozessor
@@ -434,7 +436,7 @@ Besonderen Dank
 			   Martin Deyanov (Bulgarisch),
 			   Cois Wiid (Afrikaans)
 
-	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
+	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC-Kodierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
 
 -----------------------------------------------------------------------------------

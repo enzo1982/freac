@@ -33,12 +33,14 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.22 (September 2013)
+	Version 1.0.22 (October 2013)
 
 		- added Afrikaans language support
-		- updated Lithuanian translation
+		- updated Spanish and Lithuanian translations
+		- fixed decoding of MAIN profile AAC files
 		- fixed last track of CD-Extra discs being two seconds too long
 		- fixed uninstaller not working when run directly
+		- upgraded CDRip to version 1.24
 
 	Version 1.0.21a (July 2013)
 
@@ -347,7 +349,7 @@ Requirements
 	Requirements for running the binaries:
 
 		Supported operating systems:
-			- Windows 2000/XP/Vista/7/8 (older Windows version might work with some limitations)
+			- Windows 2000/XP/Vista/7/8.x (older Windows version might work with some limitations)
 
 		Minimum hardware requirements:
 			- Intel Pentium 4 CPU
