@@ -1,6 +1,6 @@
  /* CDRip Ripping Library
   * Copyright (C) 1999-2002 Albert L. Faber
-  * Portions Copyright (C) 2002-2010 Robert Kausch <robert.kausch@cdrip.org>
+  * Portions Copyright (C) 2002-2013 Robert Kausch <robert.kausch@cdrip.org>
   *  
   * This program is free software; you can redistribute it and/or modify
   * it under the terms of the GNU General Public License as published by
@@ -53,6 +53,7 @@
 #define	CDEX_NATIVEEASPISUPPORTEDNOTSELECTED	0x0000000C
 #define	CDEX_ACCESSDENIED			0x0000000D
 #define	CDEX_SOMEACCESSDENIED			0x0000000E
+#define	CDEX_CACHE_ERROR			0x0000000F
 
 #define HASTAT_OK			0x00	// Host adapter did not detect an error.
 #define HASTAT_TIMEOUT			0x09	// The time allocated for a bus transaction ran out.
@@ -208,8 +209,6 @@ typedef struct
 	LONG		 nOffsetEnd;		// Fudge factor at the end of ripping in sectors
 	LONG		 nSpeed;		// CD-ROM speed factor 0 .. 32 x
 	LONG		 nSpinUpTime;		// CD-ROM spin up time in seconds
-	BOOL		 bDetectJitterErrors;	// Try to detect jitter errors or not
-	BOOL		 bDetectC2Errors;	// Try to detect C2 errors or not
 	BOOL		 bJitterCorrection;	// Boolean indicates whether to use Jitter Correction
 	BOOL		 bSwapLefRightChannel;	// Swap left and right channel ? 
 	DRIVETABLE	 DriveTable;		// Drive specific parameters
@@ -302,10 +301,9 @@ extern "C"
 	// Get the jitter position of the extracted track
 	DLLEXPORT LONG CRCCONV CR_GetJitterPosition();
 
-	// Get number of C2 errors that have occured during the ripping
+	// Get number of cache errors that have occured during the ripping
 	// This function must be called before CloseRipper is called!
-	DLLEXPORT LONG CRCCONV CR_GetNumberOfC2Errors();
-	DLLEXPORT void CRCCONV CR_GetLastC2ErrorPosition(DWORD &dwSector);
+	DLLEXPORT LONG CRCCONV CR_GetNumberOfCacheErrors();
 
 	// Rip a chunk from the CD, pbtStream contains the ripped data, pNumBytes the
 	// number of bytes that have been ripped and corrected for jitter (if enabled)
