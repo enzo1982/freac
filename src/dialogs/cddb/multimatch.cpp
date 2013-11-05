@@ -52,7 +52,7 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iC
 	edit_preview->Deactivate();
 
 	text_loading_preview	= new Text(i18n->TranslateString("loading preview..."), Point());
-	text_loading_preview->SetFont(GUI::Font(GUI::Font::Default, 10, GUI::Font::Bold, 0, Setup::GrayTextColor));
+	text_loading_preview->SetFont(GUI::Font(GUI::Font::Default, 10, GUI::Font::Bold, 0, Setup::InactiveTextColor));
 	text_loading_preview->SetPosition(edit_preview->GetPosition() + Point((edit_preview->GetWidth() - text_loading_preview->GetUnscaledTextWidth()) / 2, (edit_preview->GetHeight() - text_loading_preview->GetUnscaledTextHeight()) / 2));
 
 	group_match->Add(text_match);
@@ -166,7 +166,7 @@ Void BonkEnc::cddbMultiMatchDlg::LoadPreview(Int index)
 		}
 
 		text_loading_preview->Hide();
-	
+
 		edit_preview->SetText(preview);
 	}
 }

@@ -47,7 +47,7 @@ BonkEnc::ErrorDialog::ErrorDialog(const Array<String> &errors)
 	edit_details->Deactivate();
 
 	text_details	= new Text(i18n->TranslateString("select an entry for details"), Point());
-	text_details->SetFont(GUI::Font(GUI::Font::Default, 12, GUI::Font::Bold, 0, Setup::GrayTextColor));
+	text_details->SetFont(GUI::Font(GUI::Font::Default, 12, GUI::Font::Bold, 0, Setup::InactiveTextColor));
 	text_details->SetOrientation(OR_LOWERLEFT);
 
 	Add(mainWnd);
