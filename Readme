@@ -45,7 +45,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (September 2013)
+	Version 1.1 CVS (October 2013)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -69,6 +69,8 @@ History
 		- added support for the MAD MP3 decoder
 		- added TwinVQ VQF decoder support
 		- added support for AAC synchronizing (needed to read ripped AAC streams)
+		- added support for the VisualOn AAC encoder
+		- added support for the Fraunhofer FDK AAC encoder/decoder
 		- added support for reading simple audio files using libsndfile
 		- added support for cover art in MP4 files
 		- added support for reading and writing MP4 chapters
@@ -105,6 +107,7 @@ History
 		- greatly improved case conversion functions
 		- conversion progress is now shown in the taskbar on Windows 7 and later
 		- skipping tracks is no longer possible when converting to a single file
+		- fixed CJK editor appearing offset in Windows Vista/7/8 default designs
 		- fixed ID3v2 cover data not being displayed in iTunes
 		- fixed writing of bad ID3v2 tags when iconv.dll is not available
 		- fixed ID3lib to read and write correct ID3v2.4 tags
@@ -151,7 +154,7 @@ Requirements
 	Requirements for running the binaries:
 
 		Supported operating systems:
-			- Windows 2000/XP/Vista/7/8 (older Windows version might work with some limitations)
+			- Windows 2000/XP/Vista/7/8.x (older Windows version might work with some limitations)
 			- Mac OS X Leopard or later
 			- Linux (most modern distributions should work)
 			- FreeBSD/PC-BSD (tested on FreeBSD 9.1)
@@ -162,7 +165,7 @@ Requirements
 			- QNX (tested on QNX 6.5)
 
 		Minimum hardware requirements:
-			- Intel Pentium 4 or PowerPC G4 CPU
+			- Intel Pentium 4, PowerPC G4 or ARMv5 CPU
 			- 256 MB RAM
 			- 50 MB free disk space
 
@@ -185,12 +188,12 @@ Requirements
 
 			- GCC v4.0+
 
-			- libbz2, libcairo, libfaac, libfaad2, libid3, libjpeg, libmad, libmp3lame, libmp4v2,
-			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libxmu
+			- libbz2, libcairo, libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
+			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libXmu
 
 			Linux:
 
-				- GTK+, libasound2, libcdio
+				- libasound2, libcdio, libcdio-paranoia, libgtk2
 
 			Solaris:
 
@@ -209,11 +212,9 @@ Known problems
 
 		- There are the following restrictions on the input file format:
 
-			- FLAC:
-					- the FLAC reference encoder is limited to a maximum sample resolution of 24 bit
 			- LAME:
-					- audio must be at standard rates (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz),
-					  can be converted by LAME
+				- audio must be at standard rates (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz),
+				  can be converted by LAME
 
 		- Resampling is only supported with LAME. Input files must be at the desired output
 		  sampling rate unless you are encoding with LAME.
@@ -225,9 +226,10 @@ Known problems
 		- There are the following restrictions on the input file format:
 
 			- BladeEnc:
-					- audio must be at 32, 44.1 or 48 kHz
+				- audio must be at 32, 44.1 or 48 kHz
+
 			- TwinVQ:
-					- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
+				- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
 
 	Mac OS X specific problems:
 
@@ -251,7 +253,7 @@ Special thanks to
 	- the translators: Eric Le Carre (French),
 			   Marco D'Amato (Italian),
 			   REIKA (Japanese),
-			   Federico Reddig (Spanish),
+			   Federico Reddig and Will (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
 			   Evgeny Kozlov (Russian),

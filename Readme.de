@@ -33,7 +33,7 @@ sowie Video-Downloads und konvertiert folgende Audioformate:
 		- mit der libsndfile Bibliothek		(http://www.mega-nerd.com/)
 		- mit der libav Codec-Bibliothek	(http://www.libav.org/)
 
-Weitere Codecs (inklusive Neros HE-AAC-Codierer) können als externe Plug-Ins
+Weitere Codecs (inklusive Neros HE-AAC-Kodierer) können als externe Plug-Ins
 eingebunden werden (siehe Benutzerhandbuch für Installationshinweise).
 
 fre:ac verwendet die CDRip-Bibliothek zum CD-Rippen unter Windows.
@@ -45,7 +45,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (September 2013)
+	Version 1.1 CVS (Oktober 2013)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -60,15 +60,17 @@ Geschichte
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
 		- Einfachen Tag-Editor hinzugefügt
 		- Video-Downloader-Erweiterung hinzugefügt
-		- Monkey's Audiocodierer/-decodierer hinzugefügt
-		- Speex Sprachcodierer/-decodierer hinzugefügt
-		- Windows Media Audio Codierer/Decodierer hinzugefügt
-		- Opus Audiocodierer/-decodierer hinzugefügt
-		- Unterstützung für Kommandozeilencodierer/-decodierer hinzugefügt
-		- Unterstützung für den mpg123 MP3-Decodierer hinzugefügt
-		- Unterstützung für den MAD MP3-Decodierer hinzugefügt
-		- Unterstützung für den TwinVQ VQF-Decodierer hinzugefügt
+		- Monkey's Audiokodierer/-dekodierer hinzugefügt
+		- Speex Sprachkodierer/-dekodierer hinzugefügt
+		- Windows Media Audio Codierer/Dekodierer hinzugefügt
+		- Opus Audiokodierer/-dekodierer hinzugefügt
+		- Unterstützung für Kommandozeilenkodierer/-dekodierer hinzugefügt
+		- Unterstützung für den mpg123 MP3-Dekodierer hinzugefügt
+		- Unterstützung für den MAD MP3-Dekodierer hinzugefügt
+		- Unterstützung für den TwinVQ VQF-Dekodierer hinzugefügt
 		- Unterstützung für AAC-Synchronisierung hinzugefügt (zum Lesen von AAC-Streamrips benötigt)
+		- Unterstützung für den VisualOn AAC-Kodierer hinzugefügt
+		- Unterstützung für den Fraunhofer FDK AAC-Kodierer/-Dekodierer hinzugefügt
 		- Unterstützung für das Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
 		- Unterstützung für Cover-Bilder in MP4-Dateien hinzugefügt
 		- Unterstützung für das Lesen und Schreiben von MP4-Kapiteln hinzugefügt 
@@ -98,28 +100,29 @@ Geschichte
 		- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
 		- Unterstützung für XSPF-, Windows Media- und PLS-Playlisten hinzugefügt
 		- Slider zum Springen während der Wiedergabe hinzugefügt
-		- Mehrkern-CPUs werden beim Codieren/Decodieren besser ausgenutzt
+		- Mehrkern-CPUs werden beim Kodieren/Dekodieren besser ausgenutzt
 		- Diverse weitere Geschwindigkeitsverbesserungen
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
 		- Der Fortschritt einer Konvertierung wird unter Windows 7 und neuer in der Taskleiste angezeigt
 		- Überspringen von Tracks ist beim Konvertieren in eine einzige Datei nicht mehr möglich
+		- Problem mit versetzt angezeigtem CJK-Editor im Standarddesign von Windows Vista/7/8 behoben
 		- ID3v2-Coverdaten werden nun auch in iTunes angezeigt
 		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
 		- Fehler in ID3lib behoben, um korrektes Lesen und Schreiben von ID3v2.4-Tags zu gewährleisten
-		- Schreiben von ID3v1-Tags beim Codieren von VBR- oder ABR-MP3s behoben
+		- Schreiben von ID3v1-Tags beim Kodieren von VBR- oder ABR-MP3s behoben
 		- Fehler beim automatischen Einlesen von CDs beim Einlegen behoben
 		- Fehler in Cuesheets für mehrere Titel in einer Datei behoben
 		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
-		- Absturz beim Codieren in einzelne MP4-Datei behoben
-		- Ungewolltes Downsampling beim Codieren von MP3s mit niedriger Bitrate behoben
+		- Absturz beim Kodieren in einzelne MP4-Datei behoben
+		- Ungewolltes Downsampling beim Kodieren von MP3s mit niedriger Bitrate behoben
 		- Fehler beim Lesen von Vorbis (und FLAC) Comment Tags behoben
 		- Fehlende Xing-Header bei Verwendung von LAME-Voreinstellungen behoben
 		- Absturz beim Lesen von nicht unterstützten Sun Audio Dateien (.au) behoben
 		- Probleme beim Dekodieren der Raw-Formate WAVE, AIFF und AU behoben
 		- Problem bei der Berechnung der Länge des letzten Tracks von CD-Extra CDs behoben
-		- Codierung von leeren Tracks behoben, wenn keine CD eingelegt ist
+		- Kodierung von leeren Tracks behoben, wenn keine CD eingelegt ist
 		- Verschiedene CDDB-Probleme behoben
 		- Fehler bei HTTP-Proxy-Authentifizierung behoben
 		- Abstürze von freaccmd behoben
@@ -131,7 +134,7 @@ Geschichte
 		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
 		- Anzeige einer ASPI-Fehlermeldung auf Systemen ohne optische Laufwerke behoben
 		- Verbesserungen beim Installer
-		- Viele Fehler im Kommandozeilen-Codierer behoben
+		- Viele Fehler im Kommandozeilen-Kodierer behoben
 		- Problem beim direkten Start des Deinstallationsprogramms behoben
 		- Native Unterstützung für die x64-Platform hinzugefügt
 		- Bonk auf Version 0.12 aktualisiert
@@ -151,7 +154,7 @@ Voraussetzungen
 	Voraussetzungen zum Ausführen der Binärpakete:
 
 		Unterstützte Betriebsysteme:
-			- Windows 2000/XP/Vista/7/8 (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
+			- Windows 2000/XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
 			- Mac OS X Leopard oder neuer
 			- Linux (die meisten modernen Distributionen sollten funktionieren)
 			- FreeBSD/PC-BSD (getestet unter FreeBSD 9.1)
@@ -162,7 +165,7 @@ Voraussetzungen
 			- QNX (getestet unter QNX 6.5)
 
 		Minimale Hardwarevoraussetzungen:
-			- Intel Pentium 4 oder PowerPC G4 Prozessor
+			- Intel Pentium 4, PowerPC G4 oder ARMv5 Prozessor
 			- 256 MB RAM
 			- 50 MB freier Festplattenplatz
 
@@ -185,12 +188,12 @@ Voraussetzungen
 
 			- GCC v4.0+
 
-			- libbz2, libcairo, libfaac, libfaad2, libid3, libjpeg, libmad, libmp3lame, libmp4v2,
-			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libxmu
+			- libbz2, libcairo, libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
+			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libXmu
 
 			Linux:
 
-				- GTK+, libasound2, libcdio
+				- libasound2, libcdio, libcdio-paranoia, libgtk2
 
 			Solaris:
 
@@ -209,11 +212,9 @@ Bekannte Probleme
 
 		- Es gibt folgende Einschränkungen für das Eingabeformat:
 
-			- FLAC:
-					- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
 			- LAME:
-					- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen,
-					  können von LAME konvertiert werden
+				- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen,
+				  können von LAME konvertiert werden
 
 		- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
 		  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
@@ -225,9 +226,10 @@ Bekannte Probleme
 		- Es gibt folgende Einschränkungen für das Eingabeformat:
 
 			- BladeEnc:
-					- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
+				- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
+
 			- TwinVQ:
-					- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
+				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
 
 	Mac OS X-spezifische Probleme:
 
@@ -251,7 +253,7 @@ Besonderen Dank
 	- den Übersetzern: Eric Le Carre (Französisch),
 			   Marco D'Amato (Italienisch),
 			   REIKA (Japanisch),
-			   Federico Reddig (Spanisch),
+			   Federico Reddig und Will (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
 			   Nikolaos-Ioannis Galanis (Griechisch),
 			   Evgeny Kozlov (Russisch),
@@ -286,7 +288,7 @@ Besonderen Dank
 			   Martin Deyanov (Bulgarisch),
 			   Cois Wiid (Afrikaans)
 
-	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC Codierer
+	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC-Kodierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
 
 -----------------------------------------------------------------------------------
