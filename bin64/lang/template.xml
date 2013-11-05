@@ -511,6 +511,12 @@
 	<entry id="11000" string="Decoding"/>
 	<entry id="11001" string="Enable 24 bit decoding"/>
       </section>
+
+      <section name="mpg123">
+	<entry id="12000" string="Decoder"/>
+	<entry id="12001" string="Active decoder:"/>
+ 	<entry id="12002" string="auto select"/>
+      </section>
     </section>
 
     <section name="Encoders">
