@@ -136,7 +136,7 @@ const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n) const
 	static Track	 nil(NIL);
 
 	if (n < 0 || GetNOfTracks() <= n) return nil;
-	
+
 	/* Entries may have been moved in the joblist,
 	 * so get the entry by index instead of position.
 	 */

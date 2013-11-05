@@ -27,7 +27,7 @@ String BonkEnc::Encoding::GuessEncoding(const char *string)
 	 */
 /*	if (Sum(chars, 0xC0, 0xDF) + chars[0xA3] + Sum(chars, 0xE0, 0xFF) + chars[0xB3] >= length * 0.3)
 	{
-		if (chars[0xA4] + chars[0xA6] + chars[0xA7] + chars[0xAD] + 
+		if (chars[0xA4] + chars[0xA6] + chars[0xA7] + chars[0xAD] +
 		    chars[0xB4] + chars[0xB6] + chars[0xB7] + chars[0xBD] > 0) return "KOI8-U";
 		else							       return "KOI8-R";
 	}

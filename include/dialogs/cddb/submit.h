@@ -98,7 +98,7 @@ namespace BonkEnc
 			Void		 UpdateComment();
 			Void		 ToggleSubmitLater();
 
-			Void		 SetArtist();	
+			Void		 SetArtist();
 
 			Void		 OnShortcutPrevious();
 			Void		 OnShortcutNext();

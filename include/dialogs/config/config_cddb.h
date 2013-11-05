@@ -55,7 +55,7 @@ namespace BonkEnc
 
 			Bool		 cddb_cdtext;
 			Bool		 cddb_cache;
- 
+
 			Bool		 cddb_local;
 			Bool		 cddb_remote;
 		slots:

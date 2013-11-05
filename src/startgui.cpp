@@ -516,9 +516,9 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	DeleteObject(dialog);
 
 	Surface		*surface = mainWnd->GetDrawSurface();
-	
+
 	surface->StartPaint(mainWnd->GetVisibleArea());
-	
+
 	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
 	{
 		if (config->GetNthConfigurationName(i) == config->GetConfigurationName()) clicked_configuration = i;
@@ -537,7 +537,7 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	ToggleUseInputDirectory();
 
 	surface->EndPaint();
-	
+
 	config->SaveSettings();
 }
 
@@ -551,9 +551,9 @@ Void BonkEnc::BonkEncGUI::OnSelectConfiguration()
 	config->SetActiveConfiguration(config->GetNthConfigurationName(clicked_configuration));
 
 	Surface		*surface = mainWnd->GetDrawSurface();
-	
+
 	surface->StartPaint(mainWnd->GetVisibleArea());
-	
+
 	if (i18n->GetActiveLanguageID() != config->GetStringValue(Config::CategorySettingsID,
 								  Config::SettingsLanguageID,
 								  Config::SettingsLanguageDefault)) SetLanguage();

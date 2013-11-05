@@ -304,7 +304,7 @@ Void BonkEnc::ConfigureTags::ToggleTags()
 
 			break;
 		}
-		
+
 		if (n > list_tag_formats->GetSelectedEntryNumber()) break;
 	}
 
