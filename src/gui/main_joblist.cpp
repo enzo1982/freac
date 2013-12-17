@@ -841,6 +841,10 @@ Void BonkEnc::LayerJoblist::UpdateEncoderText()
 
 Void BonkEnc::LayerJoblist::OnJoblistSelectTrack(const Track &track)
 {
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(GetVisibleArea());
+
 	info_edit_artist->Activate();
 	info_edit_title->Activate();
 	info_edit_album->Activate();
@@ -849,6 +853,8 @@ Void BonkEnc::LayerJoblist::OnJoblistSelectTrack(const Track &track)
 	info_edit_genre->Activate();
 
 	OnJoblistModifyTrack(track);
+
+	surface->EndPaint();
 }
 
 Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
@@ -883,6 +889,10 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 	{
 		dontUpdateInfo = True;
 
+		Surface	*surface = GetDrawSurface();
+
+		surface->StartPaint(GetVisibleArea());
+
 		info_edit_artist->SetText(NIL);
 		info_edit_title->SetText(NIL);
 		info_edit_album->SetText(NIL);
@@ -897,6 +907,8 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 		info_edit_year->Deactivate();
 		info_edit_genre->Deactivate();
 
+		surface->EndPaint();
+
 		dontUpdateInfo = False;
 	}
 }
@@ -906,6 +918,10 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveAllTracks()
 	/* Clear and deactivate edit boxes.
 	 */
 	dontUpdateInfo = True;
+
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(GetVisibleArea());
 
 	info_edit_artist->SetText(NIL);
 	info_edit_title->SetText(NIL);
@@ -920,6 +936,8 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveAllTracks()
 	info_edit_track->Deactivate();
 	info_edit_year->Deactivate();
 	info_edit_genre->Deactivate();
+
+	surface->EndPaint();
 
 	dontUpdateInfo = False;
 }
@@ -1180,6 +1198,10 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(GetVisibleArea());
+
 	Int	 n = 0;
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
@@ -1235,6 +1257,8 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 		info_text_genre->Show();
 		info_edit_genre->Show();
 	}
+
+	surface->EndPaint();
 }
 
 Void BonkEnc::LayerJoblist::UpdateOutputDir()
