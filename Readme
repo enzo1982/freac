@@ -45,7 +45,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (October 2013)
+	Version 1.1 CVS (December 2013)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
