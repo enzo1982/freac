@@ -22,6 +22,10 @@
     <entry id="304" string="Genre">Жанр</entry>
     <entry id="305" string="Comment">Комментарии</entry>
     <entry id="306" string="Year">Год</entry>
+    <entry id="307" string="Disc">Диск</entry>
+    <entry id="308" string="Rating">Рейтинг</entry>
+    <entry id="309" string="File name">Имя файла</entry>
+    <entry id="310" string="File type">Тип файла</entry>
     <entry id="350" string="unknown artist">неизвестный артист</entry>
     <entry id="351" string="unknown title">неизвестное название</entry>
     <entry id="352" string="unknown album">неизвестный альбом</entry>
@@ -68,7 +72,9 @@
       <section name="Options">
 	<entry id="1300" string="General settings...">Основные настройки</entry>
 	<entry id="1301" string="Configure selected encoder...">Настроить выбранный кодек...</entry>
-	<entry id="1302" string="Active CD-ROM drive">Выбор привода CD-ROM</entry>
+	<entry id="1302" string="Active CD-ROM drive">Текущий привод CD-ROM</entry>
+	<entry id="1303" string="Active configuration">Текущая конфигурация</entry>
+	<entry id="1304" string="Default configuration">Конфигурация по умолчанию</entry>
       </section>
 
       <section name="Encode">
@@ -115,7 +121,7 @@
       <entry id="3004" string="Output folder:">Папка:</entry>
       <entry id="3005" string="%1 file(s) in joblist:">%1 Файл(ов) в списке:</entry>
       <entry id="3006" string="none">пусто</entry>
-      <entry id="3007" string="Show title info">Показать заголовок</entry>
+      <entry id="3007" string="Show title info">Показывать теги</entry>
       <entry id="3008" string="Play">Играть</entry>
       <entry id="3009" string="Stop">Стоп</entry>
       <entry id="3010" string="Select all">Выбрать все</entry>
@@ -156,6 +162,10 @@
       <entry id="3045" string="Audio Files">Аудио файлы</entry>
       <entry id="3046" string="All Files">Все файлы</entry>
       <entry id="3047" string="Playlist Files">Файлы Плейлистов</entry>
+      <entry id="3048" string="Active decoder:">Текущий декодер</entry>
+      <entry id="3049" string="Joblist">Список задач</entry>
+      <entry id="3050" string="unknown">неизвестно</entry>
+      <entry id="3051" string="Other...">Другое</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Папка</entry>
@@ -172,7 +182,10 @@
 	<entry id="3204" string="Select the folder to add to the joblist:">Выберите папку для добавления в список задач</entry>
       </section>
 
-      <section name="Character set"/>
+      <section name="Character set">
+	<entry id="3300" string="Character set">Кодировка</entry>
+	<entry id="3301" string="Choose character set">Выбор кодировки</entry>
+      </section>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Файл не выбран!</entry>
@@ -183,9 +196,9 @@
     <section name="CDDB">
 
       <section name="Submit">
-	<entry id="4000" string="CDDB data">CDDB данные</entry>
+	<entry id="4000" string="CDDB data">Данные CDDB</entry>
 	<entry id="4001" string="Submit">Переслать</entry>
-	<entry id="4002" string="No audio CD in drive!">Нет диска в CD-приводе</entry>
+	<entry id="4002" string="No audio CD in drive!">В CD-приводе нет аудио диска</entry>
 	<entry id="4003" string="Submitting CD information">Передать информацию о CD</entry>
 	<entry id="4004" string="Update joblist with this information">Обновить список задач этой информацией</entry>
 	<entry id="4005" string="Status">Состояние</entry>
@@ -194,7 +207,7 @@
 	<entry id="4008" string="Various artists">Разные артисты (сборка)</entry>
 	<entry id="4009" string="Data track">Дорожка с данными</entry>
 	<entry id="4010" string="Submit to online database later">Переслать в он-лайн базу данных позже</entry>
-	<entry id="4011" string="Active CD-ROM drive">Выбор привода CD-ROM</entry>
+	<entry id="4011" string="Active CD-ROM drive">Текущий привод CD-ROM</entry>
 
 	<section name="Errors">
 	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу.</entry>
@@ -203,7 +216,7 @@
       </section>
 
       <section name="Query">
-	<entry id="4100" string="CDDB query">CDDB запрос</entry>
+	<entry id="4100" string="CDDB query">Запрос в CDDB</entry>
 	<entry id="4101" string="Info">Информация</entry>
 	<entry id="4102" string="No freedb entry for this disk.">Нет данных об этом CD.</entry>
 	<entry id="4103" string="Connecting to freedb server at">Подключение к серверу</entry>
@@ -215,6 +228,7 @@
 	<entry id="4109" string="Would you like to perform this query again later?">Хотите повторить этот запрос снова позже?</entry>
 	<entry id="4110" string="none">пусто</entry>
 	<entry id="4111" string="Preview">Предпросмотр</entry>
+	<entry id="4112" string="loading preview...">загрузка предпросмотра...</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу.</entry>
@@ -223,18 +237,19 @@
 
       <section name="Manage queries">
 	<entry id="4200" string="Remove entry">Удалить</entry>
-	<entry id="4201" string="CDDB queries">Запросы CDDB</entry>
+	<entry id="4201" string="CDDB queries">Запросы в CDDB</entry>
 	<entry id="4202" string="Query">Запросить</entry>
 	<entry id="4203" string="Query all">Запросить все</entry>
 	<entry id="4204" string="Query string">Запросить строку</entry>
 	<entry id="4205" string="CDDB queries to perform:">Запросы CDDB к выполнению:</entry>
+	<entry id="4206" string="Querying CD information...">Запрос информации о CD...</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Удалить</entry>
 	<entry id="4301" string="CDDB entries to submit:">Записи CDDB для передачи:</entry>
 	<entry id="4302" string="Submit all">Переслать все</entry>
-	<entry id="4303" string="CDDB data">CDDB данные</entry>
+	<entry id="4303" string="CDDB data">Данные CDDB</entry>
 	<entry id="4304" string="Submit">Переслать</entry>
 	<entry id="4305" string="Disc name">Название диска</entry>
 	<entry id="4306" string="Preview">Предпросмотр</entry>
@@ -243,7 +258,7 @@
       </section>
 
       <section name="Manage cache">
-	<entry id="4400" string="CDDB data">CDDB данные</entry>
+	<entry id="4400" string="CDDB data">Данные CDDB</entry>
 	<entry id="4401" string="Update joblist with this information">Обновить список задач этой информацией</entry>
 	<entry id="4402" string="Charset">Набор символов</entry>
 	<entry id="4403" string="Downloaded CDDB entries:">Загруженные записи CDDB:</entry>
@@ -259,7 +274,25 @@
       <entry id="5001" string="Encoders">Кодеки</entry>
       <entry id="5002" string="Playlists">Плейлисты</entry>
       <entry id="5003" string="Language">Язык</entry>
-      <entry id="5007" string="Tags">Заголовки</entry>
+      <entry id="5004" string="Component configuration">Конфигурация компонентов</entry>
+      <entry id="5005" string="CDDB">CDDB</entry>
+      <entry id="5006" string="Interface">Интерфейс</entry>
+      <entry id="5007" string="Tags">Тэги</entry>
+      <entry id="5008" string="Components">Компоненты</entry>
+      <entry id="5009" string="Decoders">Декодеры</entry>
+      <entry id="5010" string="Output">Выход</entry>
+      <entry id="5011" string="DSP">DSP</entry>
+      <entry id="5012" string="Extensions">Расширения</entry>
+      <entry id="5013" string="Other">Другое</entry>
+      <entry id="5014" string="Active configuration:">Текущая конфигурация</entry>
+      <entry id="5015" string="New">Новая</entry>
+      <entry id="5016" string="Delete">Удалить</entry>
+      <entry id="5017" string="Command line arguments:">Аргументы командной строки:</entry>
+      <entry id="5018" string="Resulting arguments string:">Итоговая командная строка:</entry>
+      <entry id="5019" string="Default configuration">Конфигурация по умолчанию</entry>
+      <entry id="5020" string="New configuration">Новая конфигурация</entry>
+      <entry id="5021" string="Ripper">Граббер</entry>
+      <entry id="5022" string="Settings">Настройки</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Настроить кодек</entry>
@@ -274,6 +307,11 @@
 	<entry id="5109" string="Encode 'On-The-Fly'">Кодирование &quot;На лету&quot;</entry>
 	<entry id="5110" string="Keep ripped Wave files">Оставлять Wave файлы</entry>
 	<entry id="5111" string="Encode to single file">Кодировать в один файл</entry>
+	<entry id="5112" string="Output filenames">Имена выходных файлов</entry>
+	<entry id="5113" string="Allow Unicode characters">Разрешить символы Юникод</entry>
+	<entry id="5114" string="Replace spaces">Заменить пробелы</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">Удалить обработанное из списка</entry>
+	<entry id="5116" string="Add encoded files to joblist">Добавить закодированное в список</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Директории для сохранения не существует! Создать?</entry>
@@ -288,6 +326,8 @@
 	<entry id="5204" string="Use encoder output folder">Использовать выходную папку кодека</entry>
 	<entry id="5205" string="Filename pattern">Формирование названия файла</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Выберите папку, в которую будут помещены плейлисты</entry>
+	<entry id="5207" string="Output filenames">Имена выходных файлов</entry>
+	<entry id="5208" string="Configure plugin">Настроить плагин</entry>
       </section>
 
       <section name="CDDB">
@@ -307,6 +347,7 @@
 	<entry id="5313" string="Prefer CDDB over CD Text">Предпочитать CDDB</entry>
 	<entry id="5314" string="Enable CDDB cache">Кэширование CDDB</entry>
 	<entry id="5315" string="Automatization">Автоматизация</entry>
+	<entry id="5316" string="Always select first entry">Выбирать первую запись</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Дополнительные настройки CDDB</entry>
@@ -336,20 +377,43 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Заголовки</entry>
+	<entry id="5500" string="Tags">Теги</entry>
 	<entry id="5501" string="Tag formats">Кодировка тегов</entry>
 	<entry id="5502" string="Default comment string:">Комментарии по умолчанию</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Заменить существующий комментарий комментарием по умолчанию</entry>
 	<entry id="5504" string="Filename pattern">Формирование названия файла</entry>
-	<entry id="5505" string="Encoding:">Кодировка:</entry>
+	<entry id="5505" string="Encoding:">Кодируется:</entry>
+	<entry id="5506" string="Comments">Комментарии</entry>
+	<entry id="5507" string="Cover art">Обложка</entry>
+	<entry id="5508" string="Read cover art">Читать обложку</entry>
+	<entry id="5509" string="Read cover art from tags">Читать обложку из тегов</entry>
+	<entry id="5510" string="Read cover art from files">Читать обложку из файлов</entry>
+	<entry id="5511" string="Write cover art">Записать обложку</entry>
+	<entry id="5512" string="Write cover art to tags">Записать обложку в теги</entry>
+	<entry id="5513" string="Write cover art to files">Записать обложку в файлы</entry>
+	<entry id="5514" string="Add reference to audio file tag">Добавить ссылку на тег аудио файла</entry>
+	<entry id="5515" string="Other">Другое</entry>
+	<entry id="5516" string="Chapters">Разделы</entry>
+	<entry id="5517" string="Read chapters from files">Считать разделы из файлов</entry>
+	<entry id="5518" string="Write chapters to files">Записать разделы в файлы</entry>
+	<entry id="5519" string="Chapter format:">Формат разделов:</entry>
+	<entry id="5520" string="both">оба</entry>
+	<entry id="5521" string="Special fields">Специальные поля</entry>
+	<entry id="5522" string="Write CD table of contents">Записать содержание CD</entry>
+	<entry id="5523" string="Preserve Replay Gain information">Сохранять информацию Replay Gain</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Interface">
+	<entry id="5600" string="Joblist">Список задач</entry>
+	<entry id="5601" string="Columns:">Столбцы:</entry>
+	<entry id="5602" string="Up">Вверх</entry>
+	<entry id="5603" string="Down">Вниз</entry>
+      </section>
     </section>
 
     <section name="About">
       <entry id="6000" string="About %1">О %1</entry>
-      <entry id="6001" string="Translated by %1.">Перевед: %1</entry>
+      <entry id="6001" string="Translated by %1.">Переведено %1</entry>
       <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Эта программа распространяется в рамках&#10;GNU General Public License (GPL).</entry>
     </section>
 
@@ -393,15 +457,26 @@
       <entry id="7019" string="Unsupported audio format">Неподдерживаемый звуковой формат</entry>
       <entry id="7020" string="Unknown error">Неизвестная ошибка</entry>
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Выбранные файлы не могут быть объединены в один&#10;выходной файл из-за разного разрешения.&#10;&#10;Пожалуйста, преобразуйте сначала все файлы к одинаковому разрешению.</entry>
+      <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1">Нет доступного диалога настроек для:&#10;&#10;%1</entry>
     </section>
 
     <section name="Dialogs">
 
       <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite">Подтвердить перезапись</entry>
+	<entry id="8001" string="Confirm">Подтвердить</entry>
+	<entry id="8002" string="Skip all">Пропустить все</entry>
+	<entry id="8003" string="The following %1 files already exist and will be overwritten">Следующие файлы %1 уже существуют и будут перезаписаны</entry>
+	<entry id="8004" string="Action">Действие</entry>
+	<entry id="8005" string="Overwrite">Перезаписать</entry>
 	<entry id="8006" string="Skip">Пропустить</entry>
       </section>
 
-      <section name="Errors"/>
+      <section name="Errors">
+	<entry id="8100" string="Errors">Ошибки</entry>
+	<entry id="8101" string="%1 errors while processing job">%1 ошибок при обработке задания</entry>
+	<entry id="8102" string="select an entry for details">выберите запись для просмотра подробностей</entry>
+      </section>
     </section>
 
     <section name="Decoders">
@@ -427,9 +502,15 @@
 	<entry id="10017" string="CD options">Настройка CD</entry>
 	<entry id="10018" string="Lock CD tray while ripping">Блокировка CD при работе </entry>
 	<entry id="10019" string="Use native NT SCSI library">Родные NT SCSI библиотеки</entry>
+	<entry id="10020" string="Use read offset:">Использовать смещение при чтении</entry>
+	<entry id="10021" string="samples">семплы</entry>
+	<entry id="10022" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
       </section>
 
-      <section name="MAD"/>
+      <section name="MAD">
+	<entry id="11000" string="Decoding">Декодирование</entry>
+	<entry id="11001" string="Enable 24 bit decoding">Разрешить 24 битное декодирование</entry>
+      </section>
     </section>
 
     <section name="Encoders">
@@ -546,9 +627,10 @@
 	  <entry id="33200" string="MPEG version">Версия MPEG</entry>
 	  <entry id="33201" string="AAC object type">Объект типа AAC</entry>
 	  <entry id="33202" string="File format">Тип файла</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Разрешить ID3v2 заголовки в AAC файлах</entry>
+	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Разрешить теги ID3v2 в AAC файлах</entry>
 	  <entry id="33204" string="Note:">Примечание: </entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 заголовками.</entry>
+	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 тегами</entry>
+	  <entry id="33206" string="File extension">Расширение файла</entry>
 	</section>
       </section>
 
@@ -567,7 +649,7 @@
 	  <entry id="34106" string="Joint Stereo">Соединять стерео</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Адаптивное Joint Stereo</entry>
 	  <entry id="34108" string="File format">Тип файла</entry>
-	  <entry id="34109" string="Default">Умолчание</entry>
+	  <entry id="34109" string="Default">По умолчанию</entry>
 	</section>
 
 	<section name="Format">
@@ -594,10 +676,14 @@
 
       <section name="Vorbis">
 	<entry id="35000" string="Encoding Mode">Способ кодирования</entry>
-	<entry id="35001" string="Variable Bitrate">Переменный Битрейт</entry>
+	<entry id="35001" string="Variable Bitrate">Перем. Битрейт</entry>
 	<entry id="35002" string="Average Bitrate">Средний Битрейт</entry>
 	<entry id="35003" string="Quality">Качество</entry>
 	<entry id="35004" string="Bitrate">Битрейт</entry>
+	<entry id="35005" string="Minimum bitrate:">Минимальный битрейт:</entry>
+	<entry id="35006" string="Average bitrate:">Средний битрейт:</entry>
+	<entry id="35007" string="Maximum bitrate:">Максимальный битрейт:</entry>
+	<entry id="35008" string="File extension">Расширение файла</entry>
       </section>
 
       <section name="WMA">
@@ -620,20 +706,63 @@
 	<entry id="37003" string="Number of preselection candidates:">Количество вариантов:</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression">Сжатие</entry>
+	<entry id="38001" string="Compression mode:">Режим сжатия:</entry>
+	<entry id="38002" string="Fast">Быстрое</entry>
+	<entry id="38003" string="Normal">Нормальное</entry>
+	<entry id="38004" string="High">Высокое</entry>
+	<entry id="38005" string="Extra high">Очень высокое</entry>
+	<entry id="38006" string="Insane">Безумное</entry>
+      </section>
 
       <section name="Speex">
+	<entry id="39000" string="Profile">Профиль</entry>
+	<entry id="39001" string="Select encoding profile:">Выберите профиль кодирования:</entry>
 	<entry id="39002" string="Auto">Авто</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">Узкополосный (8 кГц)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">Широкополосный (16 кГц)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">Сверхширокополосный (32 кГц)</entry>
 	<entry id="39006" string="VBR mode">VBR режим</entry>
+	<entry id="39007" string="CBR (no VBR)">CBR (без VBR)</entry>
 	<entry id="39010" string="Options">Настройки</entry>
+	<entry id="39011" string="Voice Activity Detection">Определение активности</entry>
+	<entry id="39012" string="Discontinued Transmission">Незаконченная передача</entry>
+	<entry id="39013" string="Algorithm complexity">Сложность алгоритма</entry>
+	<entry id="39014" string="Complexity:">Сложность:</entry>
+	<entry id="39015" string="CBR quality">Качество CBR</entry>
 	<entry id="39016" string="VBR quality">Качество VBR</entry>
 	<entry id="39017" string="ABR target bitrate">ABR битрейт</entry>
+	<entry id="39018" string="Bitrate:">Битрейт:</entry>
+	<entry id="39019" string="Quality:">Качество:</entry>
+	<entry id="39020" string="Max. bitrate:">Макс. битрейт:</entry>
       </section>
 
       <section name="Opus">
+	<entry id="40000" string="Basic settings">Основные настройки</entry>
+	<entry id="40001" string="Encoding mode:">Режим кодирования:</entry>
 	<entry id="40002" string="Auto">Авто</entry>
+	<entry id="40003" string="Voice">Голос</entry>
+	<entry id="40004" string="Music">Музыка</entry>
+	<entry id="40005" string="Bandwidth:">Диапазон:</entry>
+	<entry id="40006" string="Narrowband">Узкополосный</entry>
+	<entry id="40007" string="Mediumband">Среднеполосный</entry>
+	<entry id="40008" string="Wideband">Широкополосный</entry>
+	<entry id="40009" string="Superwideband">Сверхширокополосный</entry>
+	<entry id="40010" string="Fullband">Полный диапазон</entry>
+	<entry id="40011" string="File extension">Расширение</entry>
+	<entry id="40012" string="Variable bitrate">Переменный ьитрейт</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Разрешить кодирование с переменным битрейтом</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Ограничить битрейт до</entry>
 	<entry id="40015" string="Quality">Качество</entry>
+	<entry id="40016" string="Bitrate:">Битрейт</entry>
+	<entry id="40017" string="kbps">кбит/с</entry>
+	<entry id="40018" string="Complexity:">Сложность:</entry>
+	<entry id="40019" string="Stream">Поток</entry>
+	<entry id="40020" string="Frame length:">Длина кадра</entry>
 	<entry id="40021" string="Options">Настройки</entry>
+	<entry id="40022" string="Enable discontinous transmission">Разрешить непрерывную передачу</entry>
+	<entry id="40023" string="Expected packet loss:">Ожидаемая потеря пакетов:</entry>
       </section>
     </section>
 
@@ -657,35 +786,101 @@
 
       <section name="Video Downloader">
 	<entry id="52000" string="Video">Видео</entry>
+	<entry id="52001" string="Enter video URL here:">Введите здесь URL видео:</entry>
+	<entry id="52002" string="Download">Загрузить</entry>
+	<entry id="52003" string="Automatically download URLs copied to clipboard">Автоматически загружать URLы, скопированные в буфер</entry>
+	<entry id="52004" string="Save downloaded video files">Сохранять загруженные видео файлы</entry>
+	<entry id="52005" string="Video downloads:">Видео загрузки</entry>
+	<entry id="52006" string="Downloaded tracks:">Загруженные дорожки:</entry>
+	<entry id="52007" string="Uploader">Выгрузчик</entry>
+	<entry id="52008" string="Video URL:">URL видео:</entry>
+	<entry id="52009" string="Video title:">Название видео:</entry>
+	<entry id="52010" string="Video description:">Описание видео:</entry>
+	<entry id="52011" string="Site name:">Имя сайта:</entry>
+	<entry id="52012" string="Uploaded by:">Загружено:</entry>
+	<entry id="52013" string="Uploaded on:">Загружено:</entry>
 	<entry id="52014" string="Length">Длительность</entry>
 	<entry id="52015" string="Size">Размер</entry>
+	<entry id="52016" string="Cancel download">Отменить загрузку</entry>
+	<entry id="52017" string="unknown">неизвестно</entry>
+	<entry id="52018" string="Note">Предупреждение</entry>
+	<entry id="52019" string="Do not display this note again">Не показывать это предупреждение снова</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Автоматизация</entry>
+	  <entry id="52102" string="Video files">Видео файлы</entry>
 	  <entry id="52103" string="Browse">Выбрать</entry>
+	  <entry id="52104" string="Select the folder to save downloaded video files to:">Выбор папки для сохранения видео файлов:</entry>
+	  <entry id="52105" string="Downloads">Загрузки</entry>
+	  <entry id="52106" string="Maximum number of simultaneous downloads:">Максимальное количество одновременных загрузок:</entry>
+	  <entry id="52107" string="Output format:">Выходной формат:</entry>
+	  <entry id="52108" string="keep original format">сохранить оригинальный формат</entry>
 	</section>
 
-	<section name="Errors"/>
+	<section name="Errors">
+	  <entry id="52201" string="This URL is not supported or not a video page URL!">Этот URL не поддерживается или не ГКД страницы видео!</entry>
+	  <entry id="52202" string="Error downloading video!">Ошибка загрузки видео!</entry>
+	  <entry id="52203" string="You are already downloading this video!">Вы уже загрузили это видео!</entry>
+	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Некоторые необходимые видеодекодеры не могут быть найдены. Видеофайлы&#10;не могут быть добавлены в список задач для конверсии в аудиофайлы.&#10;&#10;Для решения этой проблемы пожалуйста установите avconv или FFmpeg!</entry>
+	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Заголовки</entry>
+	<entry id="53000" string="Tags">Теги</entry>
 	<entry id="53001" string="Length">Длительность</entry>
 	<entry id="53002" string="Size">Размер</entry>
+	<entry id="53003" string="Albums">Альбомы</entry>
+	<entry id="53004" string="Files">Файлы</entry>
 	<entry id="53005" string="File">Файл</entry>
+	<entry id="53006" string="Tracks">Дорожки</entry>
+	<entry id="53007" string="Save">Сохранить</entry>
+	<entry id="53008" string="Save all">Сохранить все</entry>
+	<entry id="53009" string="no audio files found">аудиофайлы не найдены</entry>
 
 	<section name="Basic">
 	  <entry id="53100" string="Basic">Основное</entry>
+	  <entry id="53101" string="Title information">Информация о названии</entry>
+	  <entry id="53102" string="Disc">Диск</entry>
+	  <entry id="53103" string="Cover art">Обложка</entry>
+	  <entry id="53104" string="Covers">Обложки</entry>
+	  <entry id="53105" string="Type">Тип</entry>
+	  <entry id="53106" string="Description">Описание</entry>
 	  <entry id="53107" string="Add">Добавить</entry>
 	  <entry id="53108" string="Remove">Удалить</entry>
 	</section>
 
-	<section name="Details"/>
+	<section name="Details">
+	  <entry id="53200" string="Details">Подробно</entry>
+	  <entry id="53201" string="Detailed information">Подробная информация</entry>
+	  <entry id="53202" string="Band / orchestra">Группа / ансамбль</entry>
+	  <entry id="53203" string="Performer refinement">Исполнитель</entry>
+	  <entry id="53204" string="Modified / remixed by">Изменено / микшировано</entry>
+	  <entry id="53205" string="Composer">Композитор</entry>
+	  <entry id="53206" string="Lyrics writer">Автор текста</entry>
+	  <entry id="53207" string="Publisher information">Информация об издателе</entry>
+	  <entry id="53208" string="Publisher / label">Издатель / лэйбл</entry>
+	  <entry id="53209" string="ISRC">ISRC</entry>
+	</section>
 
-	<section name="Other"/>
+	<section name="Other">
+	  <entry id="53300" string="Other">Другое</entry>
+	  <entry id="53301" string="Original information">Исходная информация</entry>
+	  <entry id="53302" string="Original artist">Исходный артист</entry>
+	  <entry id="53303" string="Original album">Исходный альбом</entry>
+	  <entry id="53304" string="Original lyrics writer">Исходный автор текста</entry>
+	  <entry id="53305" string="Original release year">Исходный год выхода</entry>
+	  <entry id="53306" string="Webpage URLs">URLы вебстраниц</entry>
+	  <entry id="53307" string="Artist webpage">Вебстраница артиста</entry>
+	  <entry id="53308" string="Publisher webpage">Вебстраница издателя</entry>
+	  <entry id="53309" string="Internet radio station">Интернет радиостанция</entry>
+	  <entry id="53310" string="Audio source webpage">Вебстраница источника аудио</entry>
+	  <entry id="53311" string="Copyright information">Информация об авторских правах</entry>
+	  <entry id="53312" string="Commercial information">Коммерческая информация</entry>
+	</section>
 
 	<section name="Errors">
 	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Не могу открыть файл: %1&#10;&#10;%2</entry>
+	  <entry id="53401" string="Unable to update tag: %1&#10;&#10;Error: %2">Невозможно обновить тег: %1&#10;&#10;Ошибка: %2</entry>
 	</section>
       </section>
     </section>
