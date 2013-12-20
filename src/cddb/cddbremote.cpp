@@ -229,8 +229,8 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 		{
 			if (str[s] == ' ')
 			{
-				for (Int i = 0; i < 8; i++)				id[i] = str[s + i + 1];
-				for (Int j = 0; j < (str.Length() - s - 14); j++)	title[j] = str[s + j + 10];
+				for (Int i = 0; i < 8; i++)			  id[i]	   = str[s + i +  1];
+				for (Int j = 0; j < (str.Length() - s - 14); j++) title[j] = str[s + j + 10];
 
 				break;
 			}
@@ -270,8 +270,8 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 			{
 				if (val[s] == ' ')
 				{
-					for (Int i = 0; i < 8; i++)				id[i] = val[s + i + 1];
-					for (Int j = 0; j < (val.Length() - s - 10); j++)	title[j] = val[s + j + 10];
+					for (Int i = 0; i < 8; i++)			  id[i]	   = val[s + i +  1];
+					for (Int j = 0; j < (val.Length() - s - 10); j++) title[j] = val[s + j + 10];
 
 					break;
 				}
@@ -290,8 +290,8 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 		String::SetInputFormat(inputFormat);
 		String::SetOutputFormat(outputFormat);
 
-		if (str[2] == '0')	return QUERY_RESULT_MULTIPLE;
-		else			return QUERY_RESULT_FUZZY;
+		if (str[2] == '0') return QUERY_RESULT_MULTIPLE;
+		else		   return QUERY_RESULT_FUZZY;
 	}
 
 	return QUERY_RESULT_ERROR;
@@ -299,6 +299,19 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 
 Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
 {
+	/* Check cache of already read entries.
+	 */
+	foreach (const CDDBInfo &entry, readEntries)
+	{
+		if (entry.category != category || entry.discID != discID) continue;
+
+		cddbInfo = entry;
+
+		return True;
+	}
+
+	/* Send read command and get result.
+	 */
 	String	 result = SendCommand(String("cddb read ").Append(category).Append(" ").Append(DiscIDToString(discID)));
 
 	if (!result.StartsWith("210")) return False;
@@ -326,7 +339,13 @@ Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cdd
 	String::SetInputFormat(inputFormat);
 	String::SetOutputFormat(outputFormat);
 
-	return ParseCDDBRecord(result, cddbInfo);
+	/* Parse result and add entry to cache.
+	 */
+	if (!ParseCDDBRecord(result, cddbInfo)) return False;
+
+	readEntries.Add(cddbInfo);
+
+	return False;
 }
 
 Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)

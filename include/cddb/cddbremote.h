@@ -26,6 +26,8 @@ namespace BonkEnc
 			Buffer<char>		 hostNameBuffer;
 			Buffer<UnsignedByte>	 httpResultBuffer;
 
+			Array<CDDBInfo>		 readEntries;
+
 			Driver			*socket;
 			InStream		*in;
 			OutStream		*out;

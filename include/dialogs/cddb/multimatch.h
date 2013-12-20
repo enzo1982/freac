@@ -44,7 +44,6 @@ namespace BonkEnc
 
 			Array<String>	 categories;
 			Array<Int>	 discIDs;
-			Array<CDDBInfo>	 entries;
 
 			Threads::Thread	*loadPreviewThread;
 

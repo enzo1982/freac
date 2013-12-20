@@ -147,14 +147,11 @@ Void BonkEnc::cddbMultiMatchDlg::SelectEntry()
 
 Void BonkEnc::cddbMultiMatchDlg::LoadPreview(Int index)
 {
-	CDDBInfo	 cddbInfo = entries.Get(index);
+	text_loading_preview->Show();
 
-	if (cddbInfo == NIL)
-	{
-		text_loading_preview->Show();
+	CDDBInfo	 cddbInfo;
 
-		if (cddb.Read(categories.GetNth(index), discIDs.GetNth(index), cddbInfo)) entries.Add(cddbInfo, index);
-	}
+	cddb.Read(categories.GetNth(index), discIDs.GetNth(index), cddbInfo);
 
 	if (cddbInfo != NIL)
 	{
