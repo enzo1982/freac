@@ -107,6 +107,7 @@ namespace BonkEnc
 
 			Shortcut		*shortcut_previous;
 			Shortcut		*shortcut_next;
+			Shortcut		*shortcut_remove;
 
 			LayerPlayer		*player;
 
@@ -151,6 +152,7 @@ namespace BonkEnc
 
 			Void			 OnShortcutPrevious();
 			Void			 OnShortcutNext();
+			Void			 OnShortcutRemove();
 
 			Void			 OnEditBoxEnter(EditBox *);
 

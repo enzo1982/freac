@@ -96,6 +96,9 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	shortcut_next		= new Shortcut(0, Input::Keyboard::KeyDown, joblist);
 	shortcut_next->onKeyDown.Connect(&LayerJoblist::OnShortcutNext, this);
 
+	shortcut_remove		= new Shortcut(0, Input::Keyboard::KeyDelete, joblist);
+	shortcut_remove->onKeyDown.Connect(&LayerJoblist::OnShortcutRemove, this);
+
 	pos.x = 200;
 	pos.y += size.cy + 4;
 	size.cx = 90;
@@ -429,6 +432,8 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Add(progress_total);
 	Add(progress);
 
+	Add(shortcut_remove);
+
 	info_edit_artist->Add(menu_edit_artist);
 	info_edit_artist->Add(htsp_edit_artist);
 	info_edit_title->Add(menu_edit_title);
@@ -490,6 +495,7 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 
 	DeleteObject(shortcut_previous);
 	DeleteObject(shortcut_next);
+	DeleteObject(shortcut_remove);
 
 	DeleteObject(check_single);
 	DeleteObject(check_cuesheet);
@@ -992,6 +998,19 @@ Void BonkEnc::LayerJoblist::OnShortcutNext()
 	{
 		info_edit_artist->SetFocus();
 		info_edit_artist->MarkAll();
+	}
+}
+
+Void BonkEnc::LayerJoblist::OnShortcutRemove()
+{
+	if (!IsVisible() || GetActiveEditBox() != NIL) return;
+
+	Int	 entryNumber = joblist->GetSelectedEntryNumber();
+
+	if (entryNumber >= 0)
+	{
+		joblist->RemoveSelectedTrack();
+		joblist->SelectNthEntry(entryNumber);
 	}
 }
 
