@@ -9,7 +9,9 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <output/outputfilter.h>
+
 #include <dllinterfaces.h>
+#include <utilities.h>
 
 BonkEnc::OutputFilter::OutputFilter(Config *config, Track *iFormat)
 {
@@ -30,17 +32,17 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 
 	ex_ID3Tag_SetPadding(tag, false);
 
-	ID3_TextEnc	 encoding = ID3TE_NONE;
+	ID3_TextEnc	 encoding  = ID3TE_NONE;
 	String		 encString = (version == 1 ? currentConfig->id3v1_encoding : currentConfig->id3v2_encoding);
 
-	if (encString == "UTF-8")		encoding = ID3TE_UTF8;
-	else if (encString == "ISO-8859-1")	encoding = ID3TE_ISO8859_1;
-	else if (encString == "UTF-16" ||
+	if	(encString == "UTF-8")	    encoding = ID3TE_UTF8;
+	else if (encString == "ISO-8859-1") encoding = ID3TE_ISO8859_1;
+	else if (encString == "UTF-16"	 ||
 		 encString == "UTF-16LE" ||
-		 encString == "UCS-2" ||
-		 encString == "UCS-2LE")	encoding = ID3TE_UTF16;
+		 encString == "UCS-2"	 ||
+		 encString == "UCS-2LE")    encoding = ID3TE_UTF16;
 	else if (encString == "UTF-16BE" ||
-		 encString == "UCS-2BE")	encoding = ID3TE_UTF16BE;
+		 encString == "UCS-2BE")    encoding = ID3TE_UTF16BE;
 
 	String		 prevOutFormat = String::SetOutputFormat(encString);
 	String		 leBOM;
@@ -54,9 +56,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(artist, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(artist, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->artist).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (unicode_t *) format->artist.ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), format->artist);
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->artist).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(artist, ID3FN_TEXT), (unicode_t *) format->artist.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(artist, ID3FN_TEXT), format->artist);
 
 		ex_ID3Tag_AddFrame(tag, artist);
 	}
@@ -68,9 +70,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(title, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(title, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(title, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->title).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(title, ID3FN_TEXT), (unicode_t *) format->title.ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), format->title);
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(title, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->title).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(title, ID3FN_TEXT), (unicode_t *) format->title.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(title, ID3FN_TEXT), format->title);
 
 		ex_ID3Tag_AddFrame(tag, title);
 	}
@@ -82,9 +84,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(album, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(album, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(album, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->album).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(album, ID3FN_TEXT), (unicode_t *) format->album.ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), format->album);
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(album, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->album).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(album, ID3FN_TEXT), (unicode_t *) format->album.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(album, ID3FN_TEXT), format->album);
 
 		ex_ID3Tag_AddFrame(tag, album);
 	}
@@ -96,9 +98,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(track, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(track, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track))).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)).ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)));
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track))).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)).ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)));
 
 		ex_ID3Tag_AddFrame(tag, track);
 	}
@@ -110,9 +112,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(year, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(year, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(year, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(String::FromInt(format->year)).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(year, ID3FN_TEXT), (unicode_t *) String::FromInt(format->year).ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(year, ID3FN_TEXT), String::FromInt(format->year));
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(year, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(String::FromInt(format->year)).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(year, ID3FN_TEXT), (unicode_t *) String::FromInt(format->year).ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(year, ID3FN_TEXT), String::FromInt(format->year));
 
 		ex_ID3Tag_AddFrame(tag, year);
 	}
@@ -121,12 +123,16 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 
 	if (format->genre != NIL)
 	{
+		String	 genreString = format->genre;
+
+		if (version == 1) genreString = String("(").Append(String::FromInt(Utilities::GetID3CategoryID(genreString))).Append(")");
+
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(genre, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(genre, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->genre).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (unicode_t *) format->genre.ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), format->genre);
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(genreString).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(genre, ID3FN_TEXT), (unicode_t *) genreString.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(genre, ID3FN_TEXT), genreString);
 
 		ex_ID3Tag_AddFrame(tag, genre);
 	}
@@ -138,9 +144,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(comment, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(comment, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->comment).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) format->comment.ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), format->comment);
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->comment).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) format->comment.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), format->comment);
 
 		ex_ID3Tag_AddFrame(tag, comment);
 	}
@@ -149,9 +155,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(comment, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(comment, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(currentConfig->default_comment).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) currentConfig->default_comment.ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), currentConfig->default_comment);
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(currentConfig->default_comment).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(comment, ID3FN_TEXT), (unicode_t *) currentConfig->default_comment.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(comment, ID3FN_TEXT), currentConfig->default_comment);
 
 		ex_ID3Tag_AddFrame(tag, comment);
 	}
@@ -163,9 +169,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(label, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(label, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(label, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->label).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(label, ID3FN_TEXT), (unicode_t *) format->label.ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(label, ID3FN_TEXT), format->label);
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(label, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->label).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(label, ID3FN_TEXT), (unicode_t *) format->label.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(label, ID3FN_TEXT), format->label);
 
 		ex_ID3Tag_AddFrame(tag, label);
 	}
@@ -177,9 +183,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(isrc, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), encoding);
 
-		if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->isrc).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), (unicode_t *) format->isrc.ConvertTo("UTF-16BE"));
-		else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), format->isrc);
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(format->isrc).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), (unicode_t *) format->isrc.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(isrc, ID3FN_TEXT), format->isrc);
 
 		ex_ID3Tag_AddFrame(tag, isrc);
 	}
@@ -208,9 +214,9 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 				ex_ID3Field_SetINT(ex_ID3Frame_GetField(picture, ID3FN_TEXTENC), encoding);
 				ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), encoding);
 
-				if (encoding == ID3TE_UTF16)		ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) String(leBOM).Append(picInfo->description).ConvertTo("UTF-16LE"));
-				else if (encoding == ID3TE_UTF16BE)	ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) picInfo->description.ConvertTo("UTF-16BE"));
-				else					ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), picInfo->description);
+				if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) String(leBOM).Append(picInfo->description).ConvertTo("UTF-16LE"));
+				else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), (unicode_t *) picInfo->description.ConvertTo("UTF-16BE"));
+				else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_DESCRIPTION), picInfo->description);
 			}
 
 			ex_ID3Field_SetASCII(ex_ID3Frame_GetField(picture, ID3FN_MIMETYPE), picInfo->mime.ConvertTo("ISO-8859-1"));

@@ -39,6 +39,7 @@ History
 		- updated Spanish, Slovak and Lithuanian translations
 		- fixed decoding of MAIN profile AAC files
 		- fixed last track of CD-Extra discs being two seconds too long
+		- fixed writing invalid genre value to ID3v1 tags
 		- fixed CJK editor appearing offset in Windows Vista/7/8 default designs
 		- fixed uninstaller not working when run directly
 		- upgraded CDRip to version 1.24

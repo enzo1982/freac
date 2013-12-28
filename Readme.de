@@ -40,6 +40,7 @@ Geschichte
 		- Spanische, slowakische und litauische Übersetzungen aktualisiert
 		- Problem bei der Dekodierung von AAC-Datein im MAIN-Profil behoben
 		- Problem bei der Berechnung der Länge des letzten Tracks von CD-Extra CDs behoben
+		- Problem behoben, durch das ein ungültiges Genre in ID3v1-Tags geschrieben wurde
 		- Problem mit versetzt angezeigtem CJK-Editor im Standarddesign von Windows Vista/7/8 behoben
 		- Problem beim direkten Start des Deinstallationsprogramms behoben
 		- CDRip auf Version 1.24 aktualisiert

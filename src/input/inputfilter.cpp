@@ -108,7 +108,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 			nFormat->comment = in.InputString(30);
 		}
 
-		nFormat->genre	 = GetID3CategoryName(in.InputNumber(1));
+		nFormat->genre	 = Utilities::GetID3CategoryName(in.InputNumber(1));
 
 		String::SetInputFormat(prevInFormat);
 
@@ -151,7 +151,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 
 			if (genreID == NIL)				nFormat->genre = genre;
 			else if (genre.Length() > genreID.Length() + 2)	nFormat->genre = genre.Tail(genre.Length() - genreID.Length() - 2);
-			else if (genreID != NIL)			nFormat->genre = GetID3CategoryName(genreID.ToInt());
+			else if (genreID != NIL)			nFormat->genre = Utilities::GetID3CategoryName(genreID.ToInt());
 		}
 		else if (ex_ID3Frame_GetID(frame) == ID3FID_PICTURE)
 		{
@@ -264,32 +264,4 @@ String BonkEnc::InputFilter::GetID3V2FrameString(ID3Frame *frame)
 	}
 
 	return result;
-}
-
-String BonkEnc::InputFilter::GetID3CategoryName(Int id)
-{
-	if (id < 0 || id > 147) return NIL;
-
-	String	 array[148] = { "Blues", "Classic Rock", "Country", "Dance", "Disco", "Funk", "Grunge", "Hip-Hop", "Jazz",
-				"Metal", "New Age", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno",
-				"Industrial", "Alternative", "Ska", "Death Metal", "Pranks", "Soundtrack", "Euro-Techno",
-				"Ambient", "Trip-Hop", "Vocal", "Jazz+Funk", "Fusion", "Trance", "Classical", "Instrumental",
-				"Acid", "House", "Game", "Sound Clip", "Gospel", "Noise", "Alt. Rock", "Bass", "Soul",
-				"Punk", "Space", "Meditative", "Instrumental Pop", "Instrumental Rock", "Ethnic", "Gothic",
-				"Darkwave", "Techno-Industrial", "Electronic", "Pop-Folk", "Eurodance", "Dream", "Southern Rock",
-				"Comedy", "Cult", "Gangsta Rap", "Top 40", "Christian Rap", "Pop/Funk", "Jungle",
-				"Native American", "Cabaret", "New Wave", "Psychedelic", "Rave", "Showtunes", "Trailer",
-				"Lo-Fi", "Tribal", "Acid Punk", "Acid Jazz", "Polka", "Retro", "Musical", "Rock & Roll",
-				"Hard Rock", "Folk", "Folk/Rock", "National Folk", "Swing", "Fast-Fusion", "Bebob", "Latin",
-				"Revival", "Celtic", "Bluegrass", "Avantgarde", "Gothic Rock", "Progressive Rock",
-				"Psychedelic Rock", "Symphonic Rock", "Slow Rock", "Big Band", "Chorus", "Easy Listening",
-				"Acoustic", "Humour", "Speech", "Chanson", "Opera", "Chamber Music", "Sonata", "Symphony",
-				"Booty Bass", "Primus", "Porn Groove", "Satire", "Slow Jam", "Club", "Tango", "Samba",
-				"Folklore", "Ballad", "Power Ballad", "Rhythmic Soul", "Freestyle", "Duet", "Punk Rock",
-				"Drum Solo", "A Capella", "Euro-House", "Dance Hall", "Goa", "Drum & Bass", "Club-House",
-				"Hardcore", "Terror", "Indie", "BritPop", "Negerpunk", "Polsk Punk", "Beat",
-				"Christian Gangsta Rap", "Heavy Metal", "Black Metal", "Crossover", "Contemporary Christian",
-				"Christian Rock", "Merengue", "Salsa", "Thrash Metal", "Anime", "JPop", "Synthpop" };
-
-	return array[id];
 }

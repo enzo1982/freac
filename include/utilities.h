@@ -28,6 +28,8 @@ namespace BonkEnc
 {
 	class BEEXPORT Utilities
 	{
+		private:
+			static const String	 genres[];
 		public:
 			static Void		 WarningMessage(const String &, const String & = NIL);
 			static Void		 ErrorMessage(const String &, const String & = NIL);
@@ -36,6 +38,9 @@ namespace BonkEnc
 			static OutputFilter	*CreateOutputFilter(Int, Track *);
 
 			static Void		 FillGenreList(List *);
+
+			static String		 GetID3CategoryName(Int);
+			static Int		 GetID3CategoryID(const String &);
 
 			static String		 ReplaceIncompatibleChars(const String &, Bool);
 			static String		 NormalizeFileName(const String &);
