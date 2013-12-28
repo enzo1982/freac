@@ -43,7 +43,7 @@ DLLLINKER_OPTS = -L$(LIBDIR1) -m32 -lsmooth -lstdc++ --shared -o$(DLLNAME)
 REMOVER_OPTS = -f
 STRIP = strip
 STRIP_OPTS = --strip-all
-RESCOMP_OPTS = -O coff
+RESCOMP_OPTS = -O coff --target=pe-i386
 
 ifneq ($(BUILD_WIN32),True)
 ifneq ($(BUILD_SOLARIS),True)
