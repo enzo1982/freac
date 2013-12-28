@@ -116,8 +116,6 @@ Bool BonkEnc::Config::LoadSettings()
 	cdrip_paranoia				= config->GetIntValue("CDRip", "CDParanoia", 0);
 	cdrip_paranoia_mode			= config->GetIntValue("CDRip", "CDParanoiaMode", 3);
 	cdrip_speed				= config->GetIntValue("CDRip", "RippingSpeed", 0);
-	cdrip_detectJitterErrors		= config->GetIntValue("CDRip", "DetectJitterErrors", 1);
-	cdrip_detectC2Errors			= config->GetIntValue("CDRip", "DetectC2Errors", 1);
 	cdrip_jitter				= config->GetIntValue("CDRip", "JitterCorrection", 0);
 	cdrip_swapchannels			= config->GetIntValue("CDRip", "SwapChannels", 0);
 	cdrip_locktray				= config->GetIntValue("CDRip", "LockTray", 1);
@@ -314,8 +312,6 @@ Bool BonkEnc::Config::SaveSettings()
 		config->SetIntValue("CDRip", "CDParanoia", cdrip_paranoia);
 		config->SetIntValue("CDRip", "CDParanoiaMode", cdrip_paranoia_mode);
 		config->SetIntValue("CDRip", "RippingSpeed", cdrip_speed);
-		config->SetIntValue("CDRip", "DetectJitterErrors", cdrip_detectJitterErrors);
-		config->SetIntValue("CDRip", "DetectC2Errors", cdrip_detectC2Errors);
 		config->SetIntValue("CDRip", "JitterCorrection", cdrip_jitter);
 		config->SetIntValue("CDRip", "SwapChannels", cdrip_swapchannels);
 		config->SetIntValue("CDRip", "LockTray", cdrip_locktray);

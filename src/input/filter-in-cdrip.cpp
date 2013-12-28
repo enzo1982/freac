@@ -175,8 +175,6 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 	params.nParanoiaMode		= nParanoiaMode;
 	params.bSwapLefRightChannel	= currentConfig->cdrip_swapchannels;
 	params.bJitterCorrection	= currentConfig->cdrip_jitter;
-	params.bDetectJitterErrors	= currentConfig->cdrip_detectJitterErrors;
-	params.bDetectC2Errors		= currentConfig->cdrip_detectC2Errors;
 	params.nSpeed			= currentConfig->cdrip_speed;
 	params.bEnableMultiRead		= False;
 	params.nMultiReadCount		= 0;
