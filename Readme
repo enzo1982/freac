@@ -33,12 +33,13 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.22 (October 2013)
+	Version 1.0.22 (December 2013)
 
 		- added Afrikaans language support
-		- updated Spanish and Lithuanian translations
+		- updated Spanish, Slovak and Lithuanian translations
 		- fixed decoding of MAIN profile AAC files
 		- fixed last track of CD-Extra discs being two seconds too long
+		- fixed CJK editor appearing offset in Windows Vista/7/8 default designs
 		- fixed uninstaller not working when run directly
 		- upgraded CDRip to version 1.24
 
@@ -400,7 +401,7 @@ Special thanks to
 	- the translators: Eric Le Carre (French),
 			   Marco D'Amato (Italian),
 			   REIKA (Japanese),
-			   Federico Reddig (Spanish),
+			   Federico Reddig and Will (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
 			   Evgeny Kozlov (Russian),
