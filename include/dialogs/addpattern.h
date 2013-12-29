@@ -48,6 +48,8 @@ namespace BonkEnc
 			Void		 OK();
 			Void		 Cancel();
 
+			Void		 OnChangeSize(const Size &);
+
 			Void		 Browse();
 	};
 };

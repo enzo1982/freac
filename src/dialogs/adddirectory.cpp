@@ -24,8 +24,11 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 
 	i18n->SetContext("Joblist::Add folder");
 
-	mainWnd			= new Window(i18n->TranslateString("Add folder"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 128));
+	mainWnd			= new Window(i18n->TranslateString("Add folder"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(450, 136));
+	mainWnd->SetMinimumSize(Size(400, 136));
+	mainWnd->SetMaximumSize(Size(32768, 136));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+	mainWnd->GetMainLayer()->onChangeSize.Connect(&AddDirectoryDialog::OnChangeSize, this);
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -43,7 +46,8 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	text_directory	= new Text(i18n->TranslateString("Choose folder:"), Point(16, 23));
 	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + text_directory->GetUnscaledTextWidth(), 20), Size(268 - text_directory->GetUnscaledTextWidth(), 0));
 
-	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(299, 19), Size(80, 0));
+	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(95, 19), Size(80, 0));
+	btn_browse->SetOrientation(OR_UPPERRIGHT);
 	btn_browse->onAction.Connect(&AddDirectoryDialog::Browse, this);
 
 	Add(mainWnd);
@@ -57,7 +61,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divbar);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
+	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
@@ -98,6 +102,12 @@ Void BonkEnc::AddDirectoryDialog::Cancel()
 	error = Error();
 
 	mainWnd->Close();
+}
+
+Void BonkEnc::AddDirectoryDialog::OnChangeSize(const Size &nSize)
+{
+	group_directory->SetWidth(nSize.cx - 14);
+	edit_directory->SetWidth(nSize.cx - text_directory->GetUnscaledTextWidth() - 126);
 }
 
 Void BonkEnc::AddDirectoryDialog::Browse()

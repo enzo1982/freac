@@ -24,8 +24,11 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 
 	i18n->SetContext("Joblist::Add by pattern");
 
-	mainWnd			= new Window(i18n->TranslateString("Add files by pattern"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 156));
+	mainWnd			= new Window(i18n->TranslateString("Add files by pattern"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(450, 164));
+	mainWnd->SetMinimumSize(Size(400, 164));
+	mainWnd->SetMaximumSize(Size(32768, 164));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+	mainWnd->GetMainLayer()->onChangeSize.Connect(&AddPatternDialog::OnChangeSize, this);
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -45,7 +48,8 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 
 	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 20), Size(269 - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 0));
 
-	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(299, 19), Size(80, 0));
+	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(95, 19), Size(80, 0));
+	btn_browse->SetOrientation(OR_UPPERRIGHT);
 	btn_browse->onAction.Connect(&AddPatternDialog::Browse, this);
 
 	edit_pattern	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedPatternID, Config::SettingsLastAddedPatternDefault), Point(edit_directory->GetX(), 47), Size(edit_directory->GetWidth() + 85, 0));
@@ -63,7 +67,7 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divbar);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
+	mainWnd->SetFlags(WF_NOTASKBUTTON);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
@@ -114,6 +118,13 @@ Void BonkEnc::AddPatternDialog::Cancel()
 	error = Error();
 
 	mainWnd->Close();
+}
+
+Void BonkEnc::AddPatternDialog::OnChangeSize(const Size &nSize)
+{
+	group_pattern->SetWidth(nSize.cx - 14);
+	edit_directory->SetWidth(nSize.cx - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) - 126);
+	edit_pattern->SetWidth(nSize.cx - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) - 40);
 }
 
 Void BonkEnc::AddPatternDialog::Browse()
