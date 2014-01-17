@@ -45,7 +45,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (December 2013)
+	Version 1.1 CVS (January 2014)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -92,6 +92,7 @@ History
 		- added context menu for text edit fields
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
+		- added support for ripping hidden tracks (HTOA)
 		- added ripping speed configuration option
 		- added CD read offset configuration option
 		- added configuration option to keep converted tracks in joblist

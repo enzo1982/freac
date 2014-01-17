@@ -31,6 +31,7 @@
     <entry id="352" string="unknown album"/>
     <entry id="353" string="unknown genre"/>
     <entry id="354" string="unknown year"/>
+    <entry id="355" string="hidden track"/>
 
     <section name="Characters">
       <entry id="500" string=":"/>
