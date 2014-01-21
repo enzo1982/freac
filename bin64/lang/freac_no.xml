@@ -89,7 +89,7 @@
 	<entry id="1502" string="Check for updates now">Sjekk for oppdateringer</entry>
 	<entry id="1503" string="Check for updates at startup">Sjekk for oppdateringer ved oppstart</entry>
 	<entry id="1504" string="About %1">Om %1</entry>
-	<entry id="1505" string="index_en.html">index_no.html</entry>
+	<entry id="1505" string="index_en.html">index.html</entry>
       </section>
     </section>
 
@@ -545,7 +545,6 @@
 	  <entry id="33202" string="File format">Filformat</entry>
 	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Tillat ID3v2-merker i AAC-filer</entry>
 	  <entry id="33204" string="Note:">Notat:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
 	</section>
       </section>
 
