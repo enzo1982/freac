@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -53,8 +53,10 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 		if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault) == i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
-#ifdef __WIN32__
+#if defined __WIN32__
 	if (File(GUI::Application::GetApplicationDirectory().Append("translator.exe")).Exists())
+#elif defined __APPLE__
+	if (Directory(GUI::Application::GetApplicationDirectory().Append("translator.app")).Exists())
 #else
 	if (File(GUI::Application::GetApplicationDirectory().Append("translator")).Exists())
 #endif
@@ -111,13 +113,19 @@ Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-#ifdef __WIN32__
+#if defined __WIN32__
 	if (Setup::enableUnicode) ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
 	else			  ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+#elif defined __APPLE__
+	if (!fork())
+	{
+		execl("/bin/sh", "sh", "-c", (char *) String("open \"").Append(GUI::Application::GetApplicationDirectory()).Append("translator.app\" --args \"").Append(GUI::Application::GetApplicationDirectory()).Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
+		exit(0);
+	}
 #else
 	if (!fork())
 	{
-		execl("/bin/sh", "sh", "-c", (char *) GUI::Application::GetApplicationDirectory().Append("translator \"").Append(GUI::Application::GetApplicationDirectory()).Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
+		execl("/bin/sh", "sh", "-c", (char *) String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator\" \"").Append(GUI::Application::GetApplicationDirectory()).Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
 		exit(0);
 	}
 #endif
