@@ -33,7 +33,7 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.22 (December 2013)
+	Version 1.0.22 (January 2014)
 
 		- added Afrikaans language support
 		- updated Spanish, Slovak and Lithuanian translations
@@ -41,6 +41,7 @@ History
 		- fixed last track of CD-Extra discs being two seconds too long
 		- fixed writing invalid genre value to ID3v1 tags
 		- fixed CJK editor appearing offset in Windows Vista/7/8 default designs
+		- fixed crash when encountering malformed Vorbis comments
 		- fixed uninstaller not working when run directly
 		- upgraded CDRip to version 1.24
 
