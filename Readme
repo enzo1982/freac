@@ -37,10 +37,12 @@ History
 
 		- added Afrikaans language support
 		- updated Spanish, Slovak and Lithuanian translations
+		- added support for disc drives with drive letters A: and B:
 		- fixed decoding of MAIN profile AAC files
 		- fixed last track of CD-Extra discs being two seconds too long
 		- fixed writing invalid genre value to ID3v1 tags
 		- fixed CJK editor appearing offset in Windows Vista/7/8 default designs
+		- fixed crash when selecting output plugin
 		- fixed crash when encountering malformed Vorbis comments
 		- fixed uninstaller not working when run directly
 		- upgraded CDRip to version 1.24

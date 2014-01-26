@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -129,9 +129,11 @@ Void BonkEnc::GeneralSettingsLayerPlugins::SelectOutputPlugin()
 
 	if (list_output->GetSelectedEntry()->IsMarked())
 	{
-		for (Int i = 0; i < list_output->Length(); i++) list_output->GetNthEntry(i)->SetMark(False);
+		for (Int i = 0; i < list_output->Length(); i++)
+		{
+			if (list_output->GetNthEntry(i) != list_output->GetSelectedEntry()) list_output->GetNthEntry(i)->SetMark(False);
+		}
 
-		list_output->GetSelectedEntry()->SetMark(True);
 		list_output->Paint(SP_PAINT);
 		list_output->Paint(SP_MOUSEIN);
 	}
@@ -139,11 +141,15 @@ Void BonkEnc::GeneralSettingsLayerPlugins::SelectOutputPlugin()
 	{
 		Bool	 selected = False;
 
-		for (Int i = 0; i < list_output->Length(); i++) if (list_output->GetNthEntry(i)->IsMarked()) selected = True;
+		for (Int i = 0; i < list_output->Length(); i++)
+		{
+			if (list_output->GetNthEntry(i)->IsMarked()) selected = True;
+		}
 
 		if (!selected)
 		{
 			list_output->GetSelectedEntry()->SetMark(True);
+
 			list_output->Paint(SP_PAINT);
 			list_output->Paint(SP_MOUSEIN);
 		}
