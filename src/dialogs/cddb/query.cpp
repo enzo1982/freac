@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -139,12 +139,12 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	Int	 result;
 
 	prog_status->SetValue(0);
-	text_status->SetText(String(i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault)).Append("..."));
+	text_status->SetText(i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault)).Append("..."));
 
 	cddb.ConnectToServer();
 
 	prog_status->SetValue(20);
-	text_status->SetText(String(i18n->TranslateString("Requesting CD information")).Append("..."));
+	text_status->SetText(i18n->TranslateString("Requesting CD information").Append("..."));
 
 	cddb.SetActiveDrive(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
@@ -227,7 +227,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 
 		if (allowAddToBatch)
 		{
-			if (QuickMessage(String(i18n->TranslateString("Some error occurred trying to connect to the freedb server.")).Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+			if (QuickMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server.").Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
 			{
 				CDDBBatch	*queries = new CDDBBatch();
 

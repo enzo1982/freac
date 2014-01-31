@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -329,7 +329,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 				if (k < format_extensions.Length() - 1) extension.Append("; ");
 			}
 
-			types.Add(String(formats.GetNth(j)->GetName()).Append(" (").Append(extension).Append(")"));
+			types.Add(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"));
 			extensions.Add(extension);
 		}
 	}
@@ -400,7 +400,7 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 
 		i18n->SetContext("Joblist::Errors");
 
-		BoCA::Utilities::ErrorMessage(String(i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
+		BoCA::Utilities::ErrorMessage(i18n->TranslateString("No files found matching pattern:").Append(" ").Append(pattern));
 	}
 	else
 	{
@@ -531,7 +531,7 @@ Void BonkEnc::JobList::LoadList()
 				if (k < format_extensions.Length() - 1) extension.Append("; ");
 			}
 
-			types.Add(String(formats.GetNth(j)->GetName()).Append(" (").Append(extension).Append(")"));
+			types.Add(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"));
 			extensions.Add(extension);
 		}
 	}
@@ -627,7 +627,7 @@ Void BonkEnc::JobList::SaveList()
 				if (k < format_extensions.Length() - 1) extension.Append("; ");
 			}
 
-			dialog->AddFilter(String(formats.GetNth(j)->GetName()).Append(" (").Append(extension).Append(")"), extension);
+			dialog->AddFilter(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"), extension);
 		}
 	}
 
@@ -852,7 +852,7 @@ Void BonkEnc::JobList::UpdateTextLine()
 
 	i18n->SetContext("Joblist");
 
-	text->SetText(String(i18n->TranslateString("%1 file(s) in joblist:")).Replace("%1", String::FromInt(GetNOfTracks())));
+	text->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfTracks())));
 }
 
 String BonkEnc::JobList::GetEntryText(const Track &track) const

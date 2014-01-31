@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -106,7 +106,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(450, 67));
 
-	text_filename	= new Text(String(i18n->TranslateString("Filename pattern")).Append(":"), Point(10, 15));
+	text_filename	= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(10, 15));
 	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(423 - text_filename->GetUnscaledTextWidth(), 0), 0);
 	list_filename	= new List();
 

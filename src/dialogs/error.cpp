@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -35,7 +35,7 @@ BonkEnc::ErrorDialog::ErrorDialog(const Array<String> &errors)
 	btn_ok->onAction.Connect(&ErrorDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	text_errors	= new Text(String(i18n->TranslateString("%1 errors while processing job")).Replace("%1", String::FromInt(errors.Length())).Append(":"), Point(7, 5));
+	text_errors	= new Text(i18n->TranslateString("%1 errors while processing job").Replace("%1", String::FromInt(errors.Length())).Append(":"), Point(7, 5));
 
 	list_errors	= new ListBox(Point(7, 24), Size(378, 180));
 	list_errors->onSelectEntry.Connect(&ErrorDialog::OnSelectError, this);

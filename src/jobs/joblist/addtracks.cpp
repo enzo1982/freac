@@ -72,7 +72,7 @@ Error BonkEnc::JobAddTracks::Perform()
 
 			i18n->SetContext("Messages");
 
-			errors.Add(String(i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", url).Replace("%2", i18n->TranslateString("Unknown file type")));
+			errors.Add(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", url).Replace("%2", i18n->TranslateString("Unknown file type")));
 
 			continue;
 		}
@@ -89,7 +89,7 @@ Error BonkEnc::JobAddTracks::Perform()
 
 			i18n->SetContext("Messages");
 
-			errors.Add(String(i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", url).Replace("%2", i18n->TranslateString(errorString)));
+			errors.Add(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", url).Replace("%2", i18n->TranslateString(errorString)));
 
 			continue;
 		}

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -46,7 +46,7 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iC
 	combo_match		= new ComboBox(Point(10, 30), Size(310, 0));
 	combo_match->onSelectEntry.Connect(&cddbMultiMatchDlg::SelectEntry, this);
 
-	text_preview		= new Text(String(i18n->TranslateString("Preview")).Append(":"), Point(11, 55));
+	text_preview		= new Text(i18n->TranslateString("Preview").Append(":"), Point(11, 55));
 
 	edit_preview		= new MultiEdit(NIL, Point(10, 74), Size(310, 186), 0);
 	edit_preview->Deactivate();
@@ -159,7 +159,7 @@ Void BonkEnc::cddbMultiMatchDlg::LoadPreview(Int index)
 
 		for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 		{
-			preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNth(i)).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
+			preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(i).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
 		}
 
 		text_loading_preview->Hide();

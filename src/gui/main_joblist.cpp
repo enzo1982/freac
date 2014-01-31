@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -695,12 +695,12 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
 	check_playlist->SetText(i18n->TranslateString("Create playlist"));
 
-	info_text_artist->SetText(String(i18n->TranslateString("Artist")).Append(":"));
-	info_text_album->SetText(String(i18n->TranslateString("Album")).Append(":"));
-	info_text_title->SetText(String(i18n->TranslateString("Title")).Append(":"));
-	info_text_track->SetText(String(i18n->TranslateString("Track")).Append(":"));
-	info_text_year->SetText(String(i18n->TranslateString("Year")).Append(":"));
-	info_text_genre->SetText(String(i18n->TranslateString("Genre")).Append(":"));
+	info_text_artist->SetText(i18n->TranslateString("Artist").Append(":"));
+	info_text_album->SetText(i18n->TranslateString("Album").Append(":"));
+	info_text_title->SetText(i18n->TranslateString("Title").Append(":"));
+	info_text_track->SetText(i18n->TranslateString("Track").Append(":"));
+	info_text_year->SetText(i18n->TranslateString("Year").Append(":"));
+	info_text_genre->SetText(i18n->TranslateString("Genre").Append(":"));
 
 	/* Now correct position and size of affected widgets.
 	 */
@@ -803,30 +803,30 @@ Void BonkEnc::LayerJoblist::FillMenus()
 
 	menu_edit_artist->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("..."), NIL, menu_case);
-	menu_edit_artist->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_artist->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
+	menu_edit_artist->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("..."), NIL, menu_charsets);
-	menu_edit_artist->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
+	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
-	menu_edit_title->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("..."), NIL, menu_case);
-	menu_edit_title->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_title->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
+	menu_edit_title->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_title->AddEntry();
-	menu_edit_title->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("..."), NIL, menu_charsets);
-	menu_edit_title->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
+	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_album->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("..."), NIL, menu_case);
-	menu_edit_album->AddEntry(String(i18n->TranslateString("Adjust upper/lower case")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_album->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
+	menu_edit_album->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("..."), NIL, menu_charsets);
-	menu_edit_album->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
+	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_genre->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_genre->AddEntry();
-	menu_edit_genre->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("..."), NIL, menu_charsets);
-	menu_edit_genre->AddEntry(String(i18n->TranslateString("Interpret string as")).Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
+	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_year->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 }
@@ -1135,10 +1135,10 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 			// nothing special in this case
 			break;
 		case CONVERTER_MODE_DECODE:
-			edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
+			edb_filename->SetText(edb_filename->GetText().Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
 			break;
 		case CONVERTER_MODE_ENCODE:
-			edb_filename->SetText(String(edb_filename->GetText()).Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
+			edb_filename->SetText(edb_filename->GetText().Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
 			break;
 	}
 

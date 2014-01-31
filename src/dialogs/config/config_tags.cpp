@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -55,8 +55,8 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 		foreach (TagFormat *format, formats)
 		{
-			list_tag_formats->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(String(format->GetName()).Replace(" ", NIL)), format->IsDefault()));
-			selected_encodings.Add(config->GetStringValue(Config::CategoryTagsID, String(format->GetName()).Replace(" ", NIL).Append("Encoding"), format->GetDefaultEncoding()));
+			list_tag_formats->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(format->GetName().Replace(" ", NIL)), format->IsDefault()));
+			selected_encodings.Add(config->GetStringValue(Config::CategoryTagsID, format->GetName().Replace(" ", NIL).Append("Encoding"), format->GetDefaultEncoding()));
 		}
 	}
 
@@ -118,14 +118,14 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 		foreach (TagFormat *format, formats)
 		{
-			if (format->IsCoverArtSupported()) list_coverart_write_tags_format->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(String(format->GetName()).Replace(" ", NIL)), format->IsCoverArtDefault()));
+			if (format->IsCoverArtSupported()) list_coverart_write_tags_format->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(format->GetName().Replace(" ", NIL)), format->IsCoverArtDefault()));
 		}
 	}
 
 	check_coverart_write_files = new CheckBox(i18n->TranslateString("Write cover art to files"), Point(260, 14), Size(242, 0), &enableCoverArtWriteToFiles);
 	check_coverart_write_files->onAction.Connect(&ConfigureTags::ToggleWriteCoverArt, this);
 
-	text_coverart_write_files_name = new Text(String(i18n->TranslateString("Filename pattern")).Append(":"), Point(277, 38));
+	text_coverart_write_files_name = new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(277, 38));
 	edit_coverart_write_files_name = new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, Config::TagsCoverArtFilenamePatternDefault), Point(277, 58), Size(225, 0), 0);
 
 	check_coverart_write_files_ref = new CheckBox(i18n->TranslateString("Add reference to audio file tag"), Point(277, 86), Size(225, 0), &enableCoverArtWriteToFilesRef);
@@ -372,10 +372,10 @@ Int BonkEnc::ConfigureTags::SaveSettings()
 
 		foreach (TagFormat *format, formats)
 		{
-			config->SetIntValue(Config::CategoryTagsID, String("Enable").Append(String(format->GetName()).Replace(" ", NIL)), list_tag_formats->GetEntry(format->GetName())->IsMarked());
-			config->SetStringValue(Config::CategoryTagsID, String(format->GetName()).Replace(" ", NIL).Append("Encoding"), selected_encodings.GetNth(list_tag_formats->GetEntryNumber(format->GetName())));
+			config->SetIntValue(Config::CategoryTagsID, String("Enable").Append(format->GetName().Replace(" ", NIL)), list_tag_formats->GetEntry(format->GetName())->IsMarked());
+			config->SetStringValue(Config::CategoryTagsID, format->GetName().Replace(" ", NIL).Append("Encoding"), selected_encodings.GetNth(list_tag_formats->GetEntryNumber(format->GetName())));
 
-			if (format->IsCoverArtSupported()) config->SetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(String(format->GetName()).Replace(" ", NIL)), list_coverart_write_tags_format->GetEntry(format->GetName())->IsMarked());
+			if (format->IsCoverArtSupported()) config->SetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(format->GetName().Replace(" ", NIL)), list_coverart_write_tags_format->GetEntry(format->GetName())->IsMarked());
 		}
 	}
 

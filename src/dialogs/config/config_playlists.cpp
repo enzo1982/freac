@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -75,7 +75,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 
 			combo_formats->AddEntry(formats.GetNth(j)->GetName());
 
-			if (config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault) == String(boca.GetComponentID(i)).Append("-").Append(format_extensions.GetNth(0))) combo_formats->SelectNthEntry(combo_formats->Length() - 1);
+			if (config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault) == boca.GetComponentID(i).Append("-").Append(format_extensions.GetNth(0))) combo_formats->SelectNthEntry(combo_formats->Length() - 1);
 		}
 	}
 
@@ -103,7 +103,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 
 	group_filename		= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 171), Size(450, 43));
 
-	text_filename		= new Text(String(i18n->TranslateString("Filename pattern")).Append(":"), Point(10, 15));
+	text_filename		= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(10, 15));
 	edit_filename		= new EditBox(playlistOutputPattern, Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(423 - text_filename->GetUnscaledTextWidth(), 0), 0);
 
 	list_filename		= new List();
@@ -288,7 +288,7 @@ Int BonkEnc::ConfigurePlaylists::SaveSettings()
 
 			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
 
-			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, String(boca.GetComponentID(i)).Append("-").Append(format_extensions.GetNth(0)));
+			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, boca.GetComponentID(i).Append("-").Append(format_extensions.GetNth(0)));
 
 			break;
 		}

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -36,7 +36,7 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	list_entries->AddTab(i18n->TranslateString("Disc name"), 0);
 	list_entries->onSelectEntry.Connect(&cddbManageSubmitsDlg::SelectEntry, this);
 
-	text_preview	= new Text(String(i18n->TranslateString("Preview")).Append(":"), Point(276, 10));
+	text_preview	= new Text(i18n->TranslateString("Preview").Append(":"), Point(276, 10));
 
 	edit_preview	= new MultiEdit(NIL, Point(276, 29), Size(261, 213), 0);
 	edit_preview->Deactivate();
@@ -122,7 +122,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
 
 	for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 	{
-		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? String(cddbInfo.trackArtists.GetNth(i)).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(i).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -165,7 +165,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 
 	/* Submit selected entry to online CDDB
 	 */
-	text_status->SetText(String(i18n->TranslateString("Submitting CD information")).Append("..."));
+	text_status->SetText(i18n->TranslateString("Submitting CD information").Append("..."));
 
 	if (cddbBatch->Submit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber())))
 	{
@@ -188,7 +188,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
 
 	/* Submit all entries to online CDDB
 	 */
-	text_status->SetText(String(i18n->TranslateString("Submitting CD information")).Append("..."));
+	text_status->SetText(i18n->TranslateString("Submitting CD information").Append("..."));
 
 	if (cddbBatch->SubmitAll()) mainWnd->Close();
 

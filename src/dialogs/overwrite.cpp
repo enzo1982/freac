@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -47,7 +47,7 @@ BonkEnc::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track>
 	button_overwrite->SetWidth(Math::Max(80, button_overwrite->GetUnscaledTextWidth() + 14));
 	button_overwrite->SetX(103 + button_skip->GetWidth() + button_overwrite->GetWidth());
 
-	text_files		= new Text(String(i18n->TranslateString("The following %1 files already exist and will be overwritten")).Replace("%1", String::FromInt(tracks.Length())).Append(":"), Point(7, 5));
+	text_files		= new Text(i18n->TranslateString("The following %1 files already exist and will be overwritten").Replace("%1", String::FromInt(tracks.Length())).Append(":"), Point(7, 5));
 
 	Config	*bonkEncConfig	= Config::Get();
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -43,8 +43,8 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 
 	group_pattern	= new GroupBox(i18n->TranslateString("Pattern"), Point(7, 11), Size(380, 65));
 
-	text_directory	= new Text(String(i18n->TranslateString("Start folder")).Append(":"), Point(16, 23));
-	text_pattern	= new Text(String(i18n->TranslateString("Filename pattern")).Append(":"), Point(16, 50));
+	text_directory	= new Text(i18n->TranslateString("Start folder").Append(":"), Point(16, 23));
+	text_pattern	= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(16, 50));
 
 	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 20), Size(269 - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 0));
 

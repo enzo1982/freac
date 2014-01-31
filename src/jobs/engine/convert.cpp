@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -302,7 +302,7 @@ Error BonkEnc::JobConvert::Perform()
 
 					i18n->SetContext("Messages");
 
-					MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", trackInfo.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
+					MessageDlg	*confirmation = new MessageDlg(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", trackInfo.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
 
 					confirmation->ShowDialog();
 
@@ -943,7 +943,7 @@ String BonkEnc::JobConvert::GetSingleOutputFileName(const Track &track)
 			if (j < format_extensions.Length() - 1) extension.Append("; ");
 		}
 
-		dialog->AddFilter(String(formats.GetNth(i)->GetName()).Append(" (").Append(extension).Append(")"), extension);
+		dialog->AddFilter(formats.GetNth(i)->GetName().Append(" (").Append(extension).Append(")"), extension);
 	}
 
 	boca.DeleteComponent(encoder);
@@ -951,7 +951,7 @@ String BonkEnc::JobConvert::GetSingleOutputFileName(const Track &track)
 	dialog->AddFilter(i18n->TranslateString("All Files", "Joblist"), "*.*");
 
 	dialog->SetDefaultExtension(defaultExtension);
-	dialog->SetFileName(String(Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"), True)).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
+	dialog->SetFileName(Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"), True).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
 
 	if (dialog->ShowDialog() == Success()) singleOutputFileName = dialog->GetFileName();
 
