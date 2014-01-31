@@ -27,8 +27,8 @@
     <entry id="352" string="unknown album">אלבום לא מוכר</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -402,6 +402,7 @@
 	<section name="Format">
 	  <entry id="33200" string="MPEG version">גרסת MPEG</entry>
 	  <entry id="33202" string="File format">פורמט קובץ</entry>
+	  <entry id="33204" string="Tags">תגיות מידע</entry>
 	</section>
       </section>
 

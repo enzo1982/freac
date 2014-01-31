@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">рік невідомий</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -546,9 +546,10 @@
 	  <entry id="33200" string="MPEG version">MPEG версія</entry>
 	  <entry id="33201" string="AAC object type">AAC об`єктний тип</entry>
 	  <entry id="33202" string="File format">Файловий формат</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Дозволити теги ID3v2 у ААС файлах</entry>
-	  <entry id="33204" string="Note:">Примітка:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">У деяких програвачах можуть виникнути проблеми при&#10;відтворенні AAC-файлів з ID3 тегами. Використовуйте цю опцію&#10;якщо ви впевненні, що ваш програвач може обробляти ці теги.</entry>
+	  <entry id="33204" string="Tags">Заголовки</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Дозволити теги ID3v2 у ААС файлах</entry>
+	  <entry id="33206" string="Note:">Примітка:</entry>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">У деяких програвачах можуть виникнути проблеми при&#10;відтворенні AAC-файлів з ID3 тегами. Використовуйте цю опцію&#10;якщо ви впевненні, що ваш програвач може обробляти ці теги.</entry>
 	</section>
       </section>
 

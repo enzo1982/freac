@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">Ukjent år</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -543,8 +543,9 @@
 	  <entry id="33200" string="MPEG version">MPEG-versjon</entry>
 	  <entry id="33201" string="AAC object type">AAC-objekttype</entry>
 	  <entry id="33202" string="File format">Filformat</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Tillat ID3v2-merker i AAC-filer</entry>
-	  <entry id="33204" string="Note:">Notat:</entry>
+	  <entry id="33204" string="Tags">Info-merke</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Tillat ID3v2-merker i AAC-filer</entry>
+	  <entry id="33206" string="Note:">Notat:</entry>
 	</section>
       </section>
 

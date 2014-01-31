@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">مجهول السنة</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -544,8 +544,9 @@
 	  <entry id="33200" string="MPEG version">MPEG إصدار</entry>
 	  <entry id="33201" string="AAC object type">AAC نوع المكون</entry>
 	  <entry id="33202" string="File format">صيغة الملف</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">AAC بطاقات لملفات ID3v2 السماح</entry>
-	  <entry id="33204" string="Note:">مذكرة:</entry>
+	  <entry id="33204" string="Tags">معلومات بطاقة</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">AAC بطاقات لملفات ID3v2 السماح</entry>
+	  <entry id="33206" string="Note:">مذكرة:</entry>
 	</section>
       </section>
 

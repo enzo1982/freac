@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">Any desconegut</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -546,9 +546,10 @@
 	  <entry id="33200" string="MPEG version">Versió MPEG</entry>
 	  <entry id="33201" string="AAC object type">Tipus d'objecte AAC</entry>
 	  <entry id="33202" string="File format">Format de fitxer</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Permetre etiquetes ID3v2 en fitxers AAC</entry>
-	  <entry id="33204" string="Note:">Nota:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Alguns reproductors poden arribar a tenir problemes al reproduir&#10;fitxers AAC amb etiquetes ID3. Sols utilitzi aquesta opció si està&#10;segur que el reproductor pot manejar aquest tipus d'arxius.</entry>
+	  <entry id="33204" string="Tags">Info Etiquetes</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Permetre etiquetes ID3v2 en fitxers AAC</entry>
+	  <entry id="33206" string="Note:">Nota:</entry>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Alguns reproductors poden arribar a tenir problemes al reproduir&#10;fitxers AAC amb etiquetes ID3. Sols utilitzi aquesta opció si està&#10;segur que el reproductor pot manejar aquest tipus d'arxius.</entry>
 	</section>
       </section>
 

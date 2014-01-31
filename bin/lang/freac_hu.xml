@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">ismeretlen év</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -546,9 +546,10 @@
 	  <entry id="33200" string="MPEG version">MPEG verzió</entry>
 	  <entry id="33201" string="AAC object type">AAC objektum típus</entry>
 	  <entry id="33202" string="File format">Fájl formátum</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">ID3v2 bejegyzések engedélyezése AAC fájlokban</entry>
-	  <entry id="33204" string="Note:">Megjegyzés:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Néhány lejátszó nem támogatja az ID3 infókat tartalmazó&#10;AAC fájlok lejátszását. Csak akkor használd ezt a&#10;beállítást, ha a lejátszód biztosan kezeli az ID3 infókat.</entry>
+	  <entry id="33204" string="Tags">Info Tag-ek</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">ID3v2 bejegyzések engedélyezése AAC fájlokban</entry>
+	  <entry id="33206" string="Note:">Megjegyzés:</entry>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Néhány lejátszó nem támogatja az ID3 infókat tartalmazó&#10;AAC fájlok lejátszását. Csak akkor használd ezt a&#10;beállítást, ha a lejátszód biztosan kezeli az ID3 infókat.</entry>
 	</section>
       </section>
 

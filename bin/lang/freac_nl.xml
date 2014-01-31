@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">onbekend jaar</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -548,9 +548,10 @@
 	  <entry id="33200" string="MPEG version">MPEG versie</entry>
 	  <entry id="33201" string="AAC object type">AAC objecttype</entry>
 	  <entry id="33202" string="File format">Bestandsformaat</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">ID3v2 tags in AAC bestanden toelaten</entry>
-	  <entry id="33204" string="Note:">Opmerking:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Sommige spelers hebben problemen bij het afspelen van&#10;AAC bestanden met ID3 tags. Gebruik deze optie enkel&#10;wanneer u zeker bent dat uw speler dit ondersteunt.</entry>
+	  <entry id="33204" string="Tags">Info tags</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">ID3v2 tags in AAC bestanden toelaten</entry>
+	  <entry id="33206" string="Note:">Opmerking:</entry>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Sommige spelers hebben problemen bij het afspelen van&#10;AAC bestanden met ID3 tags. Gebruik deze optie enkel&#10;wanneer u zeker bent dat uw speler dit ondersteunt.</entry>
 	</section>
       </section>
 

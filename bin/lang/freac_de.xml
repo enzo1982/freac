@@ -34,8 +34,8 @@
     <entry id="355" string="hidden track">versteckter Track</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -634,10 +634,11 @@
 	  <entry id="33200" string="MPEG version">MPEG-Version</entry>
 	  <entry id="33201" string="AAC object type">AAC-Objekttyp</entry>
 	  <entry id="33202" string="File format">Dateiformat</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">ID3v2-Tags in AAC-Dateien erlauben</entry>
-	  <entry id="33204" string="Note:">Hinweis:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
-	  <entry id="33206" string="File extension">Dateiendung</entry>
+	  <entry id="33203" string="File extension">Dateiendung</entry>
+	  <entry id="33204" string="Tags">Tags</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">ID3v2-Tags in AAC-Dateien erlauben</entry>
+	  <entry id="33206" string="Note:">Hinweis:</entry>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
 	</section>
       </section>
 

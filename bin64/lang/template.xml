@@ -34,8 +34,8 @@
     <entry id="355" string="hidden track"/>
 
     <section name="Characters">
-      <entry id="500" string=":"/>
-      <entry id="501" string="..."/>
+      <entry id="500" string="%1:"/>
+      <entry id="501" string="%1..."/>
       <entry id="502" string="(%1)"/>
     </section>
 
@@ -634,10 +634,11 @@
 	  <entry id="33200" string="MPEG version"/>
 	  <entry id="33201" string="AAC object type"/>
 	  <entry id="33202" string="File format"/>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files"/>
-	  <entry id="33204" string="Note:"/>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
-	  <entry id="33206" string="File extension"/>
+	  <entry id="33203" string="File extension"/>
+	  <entry id="33204" string="Tags"/>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files"/>
+	  <entry id="33206" string="Note:"/>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
 	</section>
       </section>
 

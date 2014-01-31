@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">okänt år</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -547,9 +547,10 @@
 	  <entry id="33200" string="MPEG version">MPEG-version</entry>
 	  <entry id="33201" string="AAC object type">AAC-objekttyp</entry>
 	  <entry id="33202" string="File format">Filformat</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Tillåt ID3v2-taggar i AAC-filer</entry>
-	  <entry id="33204" string="Note:">Obs:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Vissa spelare kan ha problem att spela upp AAC-filer med&#10;ID3-taggar. Använd endast denna funktion om du är helt&#10;säker på att din enhet kan läsa ID3-taggar.</entry>
+	  <entry id="33204" string="Tags">Informationstaggar</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Tillåt ID3v2-taggar i AAC-filer</entry>
+	  <entry id="33206" string="Note:">Obs:</entry>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Vissa spelare kan ha problem att spela upp AAC-filer med&#10;ID3-taggar. Använd endast denna funktion om du är helt&#10;säker på att din enhet kan läsa ID3-taggar.</entry>
 	</section>
       </section>
 

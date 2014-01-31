@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">tuntematon vuosi</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">:</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">(%1)</entry>
     </section>
 
@@ -547,9 +547,10 @@
 	  <entry id="33200" string="MPEG version">MPEG-versio</entry>
 	  <entry id="33201" string="AAC object type">AAC-objektityyppi</entry>
 	  <entry id="33202" string="File format">Tiedostomuoto</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">Salli ID3v2-tagit AAC-tiedostoihin</entry>
-	  <entry id="33204" string="Note:">Muistiinpanot:</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Joillakin soittimilla on ongelmia toistaa ID3-tageillla liitettyjä&#10;AAC-tiedostoja. Ole hyvä ja käytä tätä valintaa vain,&#10;jos olet varma että soittimesi voi käsitellä näitä tageja.</entry>
+	  <entry id="33204" string="Tags">Info-tagit</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Salli ID3v2-tagit AAC-tiedostoihin</entry>
+	  <entry id="33206" string="Note:">Muistiinpanot:</entry>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Joillakin soittimilla on ongelmia toistaa ID3-tageillla liitettyjä&#10;AAC-tiedostoja. Ole hyvä ja käytä tätä valintaa vain,&#10;jos olet varma että soittimesi voi käsitellä näitä tageja.</entry>
 	</section>
       </section>
 

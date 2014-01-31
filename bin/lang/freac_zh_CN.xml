@@ -29,8 +29,8 @@
     <entry id="354" string="unknown year">未知年份</entry>
 
     <section name="Characters">
-      <entry id="500" string=":">：</entry>
-      <entry id="501" string="...">...</entry>
+      <entry id="500" string="%1:">%1：</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="(%1)">（%1）</entry>
     </section>
 
@@ -546,9 +546,10 @@
 	  <entry id="33200" string="MPEG version">MPEG 版本</entry>
 	  <entry id="33201" string="AAC object type">AAC 对象类型</entry>
 	  <entry id="33202" string="File format">文件格式</entry>
-	  <entry id="33203" string="Allow ID3v2 tags in AAC files">在 AAC 文件中使用 ID3v2 标签</entry>
-	  <entry id="33204" string="Note:">注意：</entry>
-	  <entry id="33205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放包含 ID3 标签的 AAC 文件时会发生问题。&#10;使用这个选项时请确保您的播放器支持 ID3 标签。</entry>
+	  <entry id="33204" string="Tags">信息标签</entry>
+	  <entry id="33205" string="Allow ID3v2 tags in AAC files">在 AAC 文件中使用 ID3v2 标签</entry>
+	  <entry id="33206" string="Note:">注意：</entry>
+	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放包含 ID3 标签的 AAC 文件时会发生问题。&#10;使用这个选项时请确保您的播放器支持 ID3 标签。</entry>
 	</section>
       </section>
 
