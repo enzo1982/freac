@@ -10,6 +10,7 @@ the following audio formats:
 		- using the MAD MP3 decoder		(http://www.underbit.com/)
 
 	- MP4/M4A AAC
+		- using the CoreAudio AAC encoder	(http://www.apple.com/)
 		- using the FAAC/FAAD2 codec		(http://www.audiocoding.com/)
 
 	- Windows Media Audio				(http://www.microsoft.com/)
@@ -21,6 +22,7 @@ the following audio formats:
 		- FLAC					(http://flac.sourceforge.net/)
 
 	- Apple Lossless (ALAC)
+		- using the CoreAudio ALAC encoder	(http://www.apple.com/)
 		- using the libav ALAC encoder		(http://www.libav.org/)
 		- using David Hammerton's ALAC decoder	(http://www.craz.net/)
 
@@ -33,7 +35,7 @@ the following audio formats:
 		- using the libsndfile library		(http://www.mega-nerd.com/)
 		- using the libav codec library		(http://www.libav.org/)
 
-Further codecs (including Nero's HE-AAC encoder) can be used as external
+Further codecs (e.g. Nero's HE-AAC encoder) can be used as external
 plug-ins (see the manual for installation instructions).
 
 fre:ac uses the CDRip library for audio ripping on Windows.
@@ -64,6 +66,7 @@ History
 		- added Speex speech encoder/decoder
 		- added Windows Media Audio encoder/decoder
 		- added Opus audio encoder/decoder
+		- added CoreAudio AAC/ALAC encoder
 		- added support for command line encoders/decoders
 		- added support for the mpg123 MP3 decoder
 		- added support for the MAD MP3 decoder
@@ -93,6 +96,7 @@ History
 		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
 		- added support for ripping hidden tracks (HTOA)
+		- added support for disc drives with drive letters A: and B:
 		- added ripping speed configuration option
 		- added CD read offset configuration option
 		- added configuration option to keep converted tracks in joblist
@@ -234,11 +238,7 @@ Known problems
 
 	Mac OS X specific problems:
 
-		- Audio CD ripping does not work
-
-	Solaris specific problems:
-
-		- Audio CD ripping does not work
+		- Drives are detected only if a disc is inserted when starting fre:ac
 
 	Linux and Unix specific problems:
 

@@ -775,6 +775,25 @@
 	<entry id="40022" string="Enable discontinous transmission">Discontinous Transmission aktivieren</entry>
 	<entry id="40023" string="Expected packet loss:">Erwarteter Paketverlust:</entry>
       </section>
+
+      <section name="CoreAudio">
+	<entry id="41000" string="Codec">Codec</entry>
+	<entry id="41001" string="Format">Format</entry>
+
+	<section name="Codec">
+	  <entry id="41100" string="Audio codec">Audiocodec</entry>
+	  <entry id="41101" string="Bitrate">Bitrate</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="41200" string="File format">Dateiformat</entry>
+	  <entry id="41201" string="File extension">Dateiendung</entry>
+	  <entry id="41202" string="Tags">Tags</entry>
+	  <entry id="41203" string="Allow ID3v2 tags in AAC files">ID3v2-Tags in AAC-Dateien erlauben</entry>
+	  <entry id="41204" string="Note">Hinweis</entry>
+	  <entry id="41205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
+	</section>
+      </section>
     </section>
 
     <section name="Extensions">
