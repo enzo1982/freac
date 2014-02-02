@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -92,6 +92,8 @@ BonkEnc::LayerPlayer::LayerPlayer(JobList *iJoblist)
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&LayerPlayer::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&LayerPlayer::OnJoblistRemoveAllTracks, this);
 
+	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerPlayer::OnChangeLanguageSettings, this);
+
 	SetSize(Size(243, 21));
 }
 
@@ -101,6 +103,8 @@ BonkEnc::LayerPlayer::~LayerPlayer()
 
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerPlayer::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&LayerPlayer::OnJoblistRemoveAllTracks, this);
+
+	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerPlayer::OnChangeLanguageSettings, this);
 
 	DeleteObject(button_play);
 	DeleteObject(button_pause);
