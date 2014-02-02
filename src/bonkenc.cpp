@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -47,7 +47,7 @@ String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free video downloader";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
 #endif
 
-String	 BonkEnc::BonkEnc::version	= "CVS 2013xxyy";
+String	 BonkEnc::BonkEnc::version	= "CVS 2014xxyy";
 
 #if defined __i386__
 String	 BonkEnc::BonkEnc::architecture = "x86";
@@ -86,6 +86,8 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	instance = this;
 
+	debug->Write("  Loading config...");
+
 	currentConfig	= Config::Get();
 
 	/* Set default comment unless already set.
@@ -99,17 +101,29 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	/* Start job manager.
 	 */
+	debug->Write("  Starting job manager...");
+
 	JobManager::Start();
+
+	debug->Write("  Loading online updater...");
 
 	if (DLLInterfaces::LoadEUpdateDLL() == False) currentConfig->enable_eUpdate = False;
 	else					      currentConfig->enable_eUpdate = True;
+
+	if (!currentConfig->enable_eUpdate) debug->Write("    Online updater not found.");
 }
 
 BonkEnc::BonkEnc::~BonkEnc()
 {
+	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
+
 	/* Quit the job manager.
 	 */
+	debug->Write("  Stopping job manager...");
+
 	JobManager::Quit();
+
+	debug->Write("  Cleaning up...");
 
 	/* Free the audio player.
 	 */
@@ -132,8 +146,6 @@ BonkEnc::BonkEnc::~BonkEnc()
 	Object::ObjectCleanup();
 
 	Config::Free();
-
-	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
 	debug->Write("Leaving fre:ac...");
 
