@@ -161,12 +161,15 @@ Error BonkEnc::JobAddTracks::Perform()
 				if ((info.mcdi.GetData().Size() > 0 && track.discid == CDDB::DiscIDFromMCDI(info.mcdi)) ||
 				    (info.offsets != NIL && track.discid == CDDB::DiscIDFromOffsets(info.offsets)))
 				{
-					info.artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(track.cdTrack - 1) : cdInfo.dArtist);
-					info.title	= cdInfo.trackTitles.GetNth(track.cdTrack - 1);
-					info.album	= cdInfo.dTitle;
-					info.genre	= cdInfo.dGenre;
-					info.year	= cdInfo.dYear;
-					info.track	= track.cdTrack;
+					if (cdInfo.dArtist == "Various") info.artist = cdInfo.trackArtists.GetNth(track.cdTrack - 1);
+					else				 info.artist = cdInfo.dArtist;
+
+					if (cdInfo.trackTitles.GetNth(track.cdTrack - 1) != NIL) info.title = cdInfo.trackTitles.GetNth(track.cdTrack - 1);
+
+					info.album = cdInfo.dTitle;
+					info.genre = cdInfo.dGenre;
+					info.year  = cdInfo.dYear;
+					info.track = track.cdTrack;
 
 					track.SetInfo(info);
 
