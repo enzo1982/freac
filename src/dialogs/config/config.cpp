@@ -191,13 +191,10 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	{
 		Component	*component = NIL;
 
-#ifdef __WIN32__
-		if (component == NIL) component = boca.CreateComponentByID("cdrip-in");
-		if (component == NIL) component = boca.CreateComponentByID("akrip-in");
-#else
-		if (component == NIL) component = boca.CreateComponentByID("cdio-in");
-		if (component == NIL) component = boca.CreateComponentByID("cdparanoia-in");
-#endif
+		if (component == NIL) component = boca.CreateComponentByID("cdio-dec");
+		if (component == NIL) component = boca.CreateComponentByID("cdparanoia-dec");
+		if (component == NIL) component = boca.CreateComponentByID("cdrip-dec");
+		if (component == NIL) component = boca.CreateComponentByID("akrip-dec");
 
 		if (component != NIL)
 		{
@@ -269,13 +266,10 @@ Void BonkEnc::ConfigDialog::AddLayers()
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
-#ifdef __WIN32__
-		if (boca.GetComponentID(i) == "cdrip-in")      continue;
-		if (boca.GetComponentID(i) == "akrip-in")      continue;
-#else
-		if (boca.GetComponentID(i) == "cdio-in")       continue;
-		if (boca.GetComponentID(i) == "cdparanoia-in") continue;
-#endif
+		if (boca.GetComponentID(i) == "cdio-dec")	continue;
+		if (boca.GetComponentID(i) == "cdparanoia-dec")	continue;
+		if (boca.GetComponentID(i) == "cdrip-dec")	continue;
+		if (boca.GetComponentID(i) == "akrip-dec")	continue;
 
 		Component	*component = boca.CreateComponentByID(boca.GetComponentID(i));
 
