@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>freacGUI</ProjectName>
     <ProjectGuid>{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}</ProjectGuid>
-    <RootNamespace>BonkEncGUI</RootNamespace>
+    <RootNamespace>freacGUI</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -94,7 +94,7 @@
     <ClCompile Include="..\..\src\loader\gui.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BonkEnc\BonkEnc.vcxproj">
+    <ProjectReference Include="..\freac\freac.vcxproj">
       <Project>{f121548c-5fd2-4e54-89ab-37671de3cc76}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

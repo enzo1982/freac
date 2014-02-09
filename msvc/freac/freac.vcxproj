@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>freac</ProjectName>
     <ProjectGuid>{F121548C-5FD2-4E54-89AB-37671DE3CC76}</ProjectGuid>
-    <RootNamespace>BonkEnc</RootNamespace>
+    <RootNamespace>freac</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -316,7 +316,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="VTune\BonkEnc.vpj" />
+    <None Include="VTune\freac.vpj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

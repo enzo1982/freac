@@ -1,17 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Codecs", "Codecs", "{1E79BA3E-996A-4511-B5A8-1D438F8ADF70}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac", "freac.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac", "BonkEnc.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freacGUI", "..\freacGUI\freacGUI.vcxproj", "{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freacGUI", "..\BonkEncGUI\BonkEncGUI.vcxproj", "{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freacCMD", "..\BonkEncCMD\BonkEncCMD.vcxproj", "{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aoTuV", "..\Codecs\aoTuV\aoTuV.vcxproj", "{5543499A-FFF7-4FE4-9411-8DCE060F1E36}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ogg", "..\Codecs\Ogg\Ogg.vcxproj", "{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freacCMD", "..\freacCMD\freacCMD.vcxproj", "{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,27 +35,11 @@ Global
 		{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}.Release|Win32.ActiveCfg = Release|Win32
 		{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}.Release|Win32.Build.0 = Release|Win32
 		{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}.Release|x64.ActiveCfg = Release|Win32
-		{5543499A-FFF7-4FE4-9411-8DCE060F1E36}.Debug|Win32.ActiveCfg = Debug|Win32
-		{5543499A-FFF7-4FE4-9411-8DCE060F1E36}.Debug|Win32.Build.0 = Debug|Win32
-		{5543499A-FFF7-4FE4-9411-8DCE060F1E36}.Debug|x64.ActiveCfg = Debug|Win32
-		{5543499A-FFF7-4FE4-9411-8DCE060F1E36}.Release|Win32.ActiveCfg = Release|Win32
-		{5543499A-FFF7-4FE4-9411-8DCE060F1E36}.Release|Win32.Build.0 = Release|Win32
-		{5543499A-FFF7-4FE4-9411-8DCE060F1E36}.Release|x64.ActiveCfg = Release|Win32
-		{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}.Debug|Win32.ActiveCfg = Debug|Win32
-		{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}.Debug|Win32.Build.0 = Debug|Win32
-		{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}.Debug|x64.ActiveCfg = Debug|Win32
-		{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}.Release|Win32.ActiveCfg = Release|Win32
-		{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}.Release|Win32.Build.0 = Release|Win32
-		{04B72AD0-A0B3-43C5-A44B-5035FEF37A10}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{5543499A-FFF7-4FE4-9411-8DCE060F1E36} = {1E79BA3E-996A-4511-B5A8-1D438F8ADF70}
-		{04B72AD0-A0B3-43C5-A44B-5035FEF37A10} = {1E79BA3E-996A-4511-B5A8-1D438F8ADF70}
-	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		AMDCaProjectFile = G:\devel\projects\private\bonkenc\msvc\BonkEnc\CodeAnalyst\BonkEnc.caw
+		AMDCaProjectFile = G:\devel\projects\private\freac\msvc\freac\CodeAnalyst\freac.caw
 	EndGlobalSection
 EndGlobal
