@@ -47,7 +47,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (January 2014)
+	Version 1.1 CVS (February 2014)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -198,7 +198,7 @@ Requirements
 
 			Linux:
 
-				- libasound2, libcdio, libcdio-paranoia, libgtk2
+				- libasound2, libcdio, libcdio-paranoia, libgtk2, libudev
 
 			Solaris:
 
@@ -235,10 +235,6 @@ Known problems
 
 			- TwinVQ:
 				- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
-
-	Mac OS X specific problems:
-
-		- Drives are detected only if a disc is inserted when starting fre:ac
 
 	Linux and Unix specific problems:
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,6 +13,8 @@
 
 #include <smooth.h>
 #include "bonkenc.h"
+
+#include <notification/notification.h>
 
 #include <gui/main_joblist.h>
 #include <gui/main_threads.h>
@@ -79,6 +81,8 @@ namespace BonkEnc
 
 			JobList				*joblist;
 
+			Notification			*notification;
+
 			Int				 clicked_configuration;
 			Int				 clicked_drive;
 			Int				 clicked_encoder;
@@ -115,6 +119,9 @@ namespace BonkEnc
 			Void				 OnChangeSize(const Size &);
 
 			Void				 OnSelectConfiguration();
+
+			Void				 OnDriveChange();
+			Void				 OnDiscInsert(Int);
 
 			Void				 ReadCD()				{ ReadCD(False); }
 			Void				 ReadCD(Bool);

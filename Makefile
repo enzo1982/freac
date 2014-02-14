@@ -25,6 +25,16 @@ BINRESDIR   = $(RESOURCEDIR)/binary
 DLLOBJECTS  = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/error.o $(OBJECTDIR)/overwrite.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/player.o $(OBJECTDIR)/job_convert.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_addtracks.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
+	DLLOBJECTS += $(OBJECTDIR)/notification_win32.o
+else ifeq ($(BUILD_LINUX),True)
+	DLLOBJECTS += $(OBJECTDIR)/notification_udev.o
+else ifeq ($(BUILD_OSX),True)
+	DLLOBJECTS += $(OBJECTDIR)/notification_osx.o
+else
+	DLLOBJECTS += $(OBJECTDIR)/notification_none.o
+endif
+
+ifeq ($(BUILD_WIN32),True)
 	ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
 		RESOURCES = $(OBJECTDIR)/resources_vd.o
 	else
@@ -148,7 +158,11 @@ else
 	COMPILER_OPTS			+= -I$(PREFIX)/include
 
 	ifeq ($(BUILD_OSX),True)
-		LINKER_OPTS		+= -Wl,-dylib_install_name,freac$(SHARED)
+		LINKER_OPTS		+= -framework Cocoa -framework IOKit -Wl,-dylib_install_name,freac$(SHARED)
+	endif
+
+	ifeq ($(BUILD_LINUX),True)
+		LINKER_OPTS		+= -ludev
 	endif
 
 	LINKER_OPTS			+= -L$(PREFIX)/lib -lsmooth-$(SMOOTHVER) -lboca-$(BOCAVER) -Wl,-rpath,.
@@ -517,6 +531,26 @@ $(OBJECTDIR)/console.o: $(SRCDIR)/loader/console.cpp
 $(OBJECTDIR)/gui.o: $(SRCDIR)/loader/gui.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/loader/gui.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/loader/gui.cpp -o $(OBJECTDIR)/gui.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/notification_none.o: $(SRCDIR)/notification/notification_none.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/notification/notification_none.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/notification/notification_none.cpp -o $(OBJECTDIR)/notification_none.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/notification_osx.o: $(SRCDIR)/notification/notification_osx.mm
+	$(ECHO) -n Compiling $(SRCDIR)/notification/notification_osx.mm...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/notification/notification_osx.mm -o $(OBJECTDIR)/notification_osx.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/notification_udev.o: $(SRCDIR)/notification/notification_udev.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/notification/notification_udev.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/notification/notification_udev.cpp -o $(OBJECTDIR)/notification_udev.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/notification_win32.o: $(SRCDIR)/notification/notification_win32.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/notification/notification_win32.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/notification/notification_win32.cpp -o $(OBJECTDIR)/notification_win32.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR)/resources.h $(BINRESDIR)/freac.ico
