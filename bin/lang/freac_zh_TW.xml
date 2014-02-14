@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">設定一般設定</entry>
     <entry id="59" string="Configure encoder">組態編碼器</entry>
     <entry id="60" string="Encoder">編碼器</entry>
-    <entry id="61" string="Output directory">輸出目錄</entry>
+    <entry id="61" string="Output folder">輸出目錄</entry>
     <entry id="62" string="Browse">瀏覽</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">請選擇放置已編碼檔案的資料夾:</entry>
     <entry id="64" string="Encoding">編碼</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">使用時域遮蔽效果</entry>
     <entry id="225" string="Expert">專家</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">當正在編碼時無法組態編碼器!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">輸出目錄不存在! 您想要建立它嗎?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">輸出目錄不存在! 您想要建立它嗎?</entry>
     <entry id="228" string="Filename pattern">檔案名稱樣式</entry>
     <entry id="229" string="unknown album">未知專輯</entry>
     <entry id="230" string="Translated by %1.">翻譯 %1.</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">最小分區順序</entry>
     <entry id="304" string="Maximum partition order">最大分區順序</entry>
     <entry id="305" string="By pattern">依樣式</entry>
-    <entry id="306" string="From directory">從目錄</entry>
-    <entry id="307" string="Directory">目錄</entry>
-    <entry id="308" string="Add directory">加入目錄</entry>
-    <entry id="309" string="Choose directory:">選取目錄:</entry>
+    <entry id="306" string="From folder">從目錄</entry>
+    <entry id="307" string="Folder">目錄</entry>
+    <entry id="308" string="Add folder">加入目錄</entry>
+    <entry id="309" string="Choose folder:">選取目錄:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">請選擇要加入到工作清單的資料夾:</entry>
     <entry id="311" string="Add files by pattern">依樣式加入檔案</entry>
     <entry id="312" string="Pattern">樣式</entry>
-    <entry id="313" string="Start directory">起始目錄</entry>
+    <entry id="313" string="Start folder">起始目錄</entry>
     <entry id="314" string="No files found matching pattern:">找不到符合搜尋樣式的檔案</entry>
     <entry id="315" string="Edit language file">編輯語言檔案</entry>
     <entry id="316" string="Use for all selected tracks">用於所有選擇的音軌</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">播放清單</entry>
     <entry id="341" string="Create playlists">建立播放清單</entry>
     <entry id="342" string="Create cue sheets">建立 cue 描述檔</entry>
-    <entry id="343" string="Use encoder output directory">使用編碼器輸出目錄</entry>
+    <entry id="343" string="Use encoder output folder">使用編碼器輸出目錄</entry>
     <entry id="344" string="Various artists">合輯</entry>
     <entry id="345" string="Data track">資料軌段</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">請選擇用來放置播放清單檔案的資料夾:</entry>
-    <entry id="347" string="Use input file directory if possible">若存在則使用輸入檔案目錄</entry>
-    <entry id="348" string="Encode to input file directory if possible">若存在則將編碼後的檔案放置於輸入檔案目錄</entry>
+    <entry id="347" string="Use input file folder if possible">若存在則使用輸入檔案目錄</entry>
+    <entry id="348" string="Encode to input file folder if possible">若存在則將編碼後的檔案放置於輸入檔案目錄</entry>
     <entry id="349" string="Allow overwriting input file">允許覆寫輸入檔案</entry>
     <entry id="350" string="Encode to single file">編碼為單一檔案</entry>
     <entry id="351" string="Encoder options">編碼器選項</entry>
     <entry id="352" string="Skip">略過</entry>
     <entry id="353" string="Enable local CDDB database">啟用本地 CDDB 資料庫</entry>
-    <entry id="354" string="CDDB directory:">CDDB 目錄:</entry>
+    <entry id="354" string="CDDB path:">CDDB 目錄:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">選擇 CDDB 資料庫的資料夾:</entry>
     <entry id="356" string="File already exists">檔案已經存在</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">輸出檔案 %1&#10;已經存在! 您想要覆寫它嗎?</entry>

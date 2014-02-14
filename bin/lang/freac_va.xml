@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">Configuracions generals</entry>
     <entry id="59" string="Configure encoder">Configurar codificador</entry>
     <entry id="60" string="Encoder">Codificador</entry>
-    <entry id="61" string="Output directory">Directori d'eixida</entry>
+    <entry id="61" string="Output folder">Directori d'eixida</entry>
     <entry id="62" string="Browse">Buscar</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Triar la carpeta per als archius codificats:</entry>
     <entry id="64" string="Encoding">Codificacio</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Utilisar efecte de caraça temporal</entry>
     <entry id="225" string="Expert">Expert</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">¡No se pot configurar el codificador durant el proces de codificacio!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">El directori de desti no existix. ¿Desija crear-la?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">El directori de desti no existix. ¿Desija crear-la?</entry>
     <entry id="228" string="Filename pattern">Patro del nom d'archiu</entry>
     <entry id="229" string="unknown album">Album desconegut</entry>
     <entry id="230" string="Translated by %1.">Traduït per %1.</entry>
@@ -302,14 +302,14 @@
     <entry id="303" string="Minimum partition order">Minin grau de particio</entry>
     <entry id="304" string="Maximum partition order">Maxim grau de particio</entry>
     <entry id="305" string="By pattern">Per patro</entry>
-    <entry id="306" string="From directory">Des del directori</entry>
-    <entry id="307" string="Directory">Directori</entry>
-    <entry id="308" string="Add directory">Afegir directori</entry>
-    <entry id="309" string="Choose directory:">Triar directori:</entry>
+    <entry id="306" string="From folder">Des del directori</entry>
+    <entry id="307" string="Folder">Directori</entry>
+    <entry id="308" string="Add folder">Afegir directori</entry>
+    <entry id="309" string="Choose folder:">Triar directori:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Seleccione la carpeta per afegir a la llista de tarees:</entry>
     <entry id="311" string="Add files by pattern">Afegir archius per patro</entry>
     <entry id="312" string="Pattern">Patro</entry>
-    <entry id="313" string="Start directory">Directori d'inici</entry>
+    <entry id="313" string="Start folder">Directori d'inici</entry>
     <entry id="314" string="No files found matching pattern:">No s'han trobat archius corresponents al patro:</entry>
     <entry id="315" string="Edit language file">Editar archiu d'idioma</entry>
     <entry id="316" string="Use for all selected tracks">Utilisar per a totes les pistes seleccionades</entry>
@@ -339,18 +339,18 @@
     <entry id="340" string="Playlists">Llistes de reproduccio</entry>
     <entry id="341" string="Create playlists">Generar llistes de reproduccio</entry>
     <entry id="342" string="Create cue sheets">Crear cue sheets</entry>
-    <entry id="343" string="Use encoder output directory">Utilisar directori d'eixida del codificador</entry>
+    <entry id="343" string="Use encoder output folder">Utilisar directori d'eixida del codificador</entry>
     <entry id="344" string="Various artists">Artistes varios</entry>
     <entry id="345" string="Data track">Pista de senyes</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Triar una carpeta per a guardar les llistes de reproduccio:</entry>
-    <entry id="347" string="Use input file directory if possible">Utilisar directori d'entrada, si es possible</entry>
-    <entry id="348" string="Encode to input file directory if possible">Codificar l'entrada de l'archiu, si es possible</entry>
+    <entry id="347" string="Use input file folder if possible">Utilisar directori d'entrada, si es possible</entry>
+    <entry id="348" string="Encode to input file folder if possible">Codificar l'entrada de l'archiu, si es possible</entry>
     <entry id="349" string="Allow overwriting input file">Permetre sobreescriure l'archiu d'entrada</entry>
     <entry id="350" string="Encode to single file">Codificar a un sol archiu</entry>
     <entry id="351" string="Encoder options">Opcions de codificador</entry>
     <entry id="352" string="Skip">Ometre</entry>
     <entry id="353" string="Enable local CDDB database">Utilisar base de senyes CDDB local</entry>
-    <entry id="354" string="CDDB directory:">Directori CDDB:</entry>
+    <entry id="354" string="CDDB path:">Directori CDDB:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Seleccione la carpeta de la base de senyes CDDB:</entry>
     <entry id="356" string="File already exists">L'archiu ya existix</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">L'archiu d'eixida %1&#10;ya existix! ¿Desija sobreescriure-lo?</entry>

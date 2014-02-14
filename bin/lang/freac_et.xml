@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">Põhisätted</entry>
     <entry id="59" string="Configure encoder">Kodeki sätted</entry>
     <entry id="60" string="Encoder">Kodek</entry>
-    <entry id="61" string="Output directory">Väljundi kaust</entry>
+    <entry id="61" string="Output folder">Väljundi kaust</entry>
     <entry id="62" string="Browse">Valik</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Valida kaust kuhu paigutatakse kodeeritud failid:</entry>
     <entry id="64" string="Encoding">Kodeerimine</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Kasutada maski effekti</entry>
     <entry id="225" string="Expert">Ekspert</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Kodekit ei saa sätestada kodeerimise ajal!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">Direktooriumi ei eksisteeri! Luua direktoorium?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">Direktooriumi ei eksisteeri! Luua direktoorium?</entry>
     <entry id="228" string="Filename pattern">Faili nime formeerimine</entry>
     <entry id="229" string="unknown album">teadmata album</entry>
     <entry id="230" string="Translated by %1.">Transleeritud %1</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">Minimaalne osade kord</entry>
     <entry id="304" string="Maximum partition order">Maksimaalne osade kord</entry>
     <entry id="305" string="By pattern">Näidise järgi</entry>
-    <entry id="306" string="From directory">Kaustast</entry>
-    <entry id="307" string="Directory">Kaust</entry>
-    <entry id="308" string="Add directory">Lisada kaust</entry>
-    <entry id="309" string="Choose directory:">Valida kaust</entry>
+    <entry id="306" string="From folder">Kaustast</entry>
+    <entry id="307" string="Folder">Kaust</entry>
+    <entry id="308" string="Add folder">Lisada kaust</entry>
+    <entry id="309" string="Choose folder:">Valida kaust</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Valige kaust ülesannete nimekirja lisamiseks</entry>
     <entry id="311" string="Add files by pattern">Lisada failid näidise järgi</entry>
     <entry id="312" string="Pattern">Näidis</entry>
-    <entry id="313" string="Start directory">Algne kaust</entry>
+    <entry id="313" string="Start folder">Algne kaust</entry>
     <entry id="314" string="No files found matching pattern:">Puuduvad näidisele vastavad failid:</entry>
     <entry id="315" string="Edit language file">Parandada keele faili</entry>
     <entry id="316" string="Use for all selected tracks">Kasutada kõikide valitud trekkide jaoks</entry>
@@ -344,18 +344,17 @@
     <entry id="340" string="Playlists">Playlists</entry>
     <entry id="341" string="Create playlists">Luua playlistid</entry>
     <entry id="342" string="Create cue sheets">Luua cue sheets</entry>
-    <entry id="343" string="Use encoder output directory">Use encoder output directory</entry>
     <entry id="344" string="Various artists">Erinevad artistid</entry>
     <entry id="345" string="Data track">Data track</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Valige kaust, kuhu paigutatakse playlistid</entry>
-    <entry id="347" string="Use input file directory if possible">Kasuta sisendfaili kausta kui on võimalik</entry>
-    <entry id="348" string="Encode to input file directory if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
+    <entry id="347" string="Use input file folder if possible">Kasuta sisendfaili kausta kui on võimalik</entry>
+    <entry id="348" string="Encode to input file folder if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
     <entry id="349" string="Allow overwriting input file">Kirjutada üle sisend fail</entry>
     <entry id="350" string="Encode to single file">Kodeerida ühte faili</entry>
     <entry id="351" string="Encoder options">Kodeki sätted</entry>
     <entry id="352" string="Skip">Jätta vahele</entry>
     <entry id="353" string="Enable local CDDB database">Lokaalne CDDB andmebaas</entry>
-    <entry id="354" string="CDDB directory:">CDDB kaust:</entry>
+    <entry id="354" string="CDDB path:">CDDB kaust:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Valige CDDB andmetebaasi kaust:</entry>
     <entry id="356" string="File already exists">Fail eksisteerib</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Sisendi fail %1 juba eksisteerib! Soovite üle kirjutada?</entry>

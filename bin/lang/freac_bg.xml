@@ -68,7 +68,7 @@
     <entry id="58" string="General settings setup">Основни настройки</entry>
     <entry id="59" string="Configure encoder">Конфигурация на енкодер</entry>
     <entry id="60" string="Encoder">Енкодер</entry>
-    <entry id="61" string="Output directory">Изходна папка</entry>
+    <entry id="61" string="Output folder">Изходна папка</entry>
     <entry id="62" string="Browse">Разглеждане</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Изберете папката в която кодираните файлове ще бъдат поставени:</entry>
     <entry id="64" string="Encoding">Кодиране</entry>
@@ -222,7 +222,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Използване на ефект временно маскиране</entry>
     <entry id="225" string="Expert">Експертни</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Не може да се променят настройки по време на кодирането!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">Изходната папка не съществува! Искате ли да я създадете?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">Изходната папка не съществува! Искате ли да я създадете?</entry>
     <entry id="228" string="Filename pattern">Шаблон за име на файла</entry>
     <entry id="229" string="unknown album">неизвестен албум</entry>
     <entry id="230" string="Translated by %1.">Преведено от %1.</entry>
@@ -291,14 +291,14 @@
     <entry id="303" string="Minimum partition order">Песен</entry>
     <entry id="304" string="Maximum partition order">Жанр</entry>
     <entry id="305" string="By pattern">Коментар</entry>
-    <entry id="306" string="From directory">Година</entry>
-    <entry id="307" string="Directory">Диск</entry>
-    <entry id="308" string="Add directory">Добавяне на папка</entry>
-    <entry id="309" string="Choose directory:">Изберете папка:</entry>
+    <entry id="306" string="From folder">Година</entry>
+    <entry id="307" string="Folder">Диск</entry>
+    <entry id="308" string="Add folder">Добавяне на папка</entry>
+    <entry id="309" string="Choose folder:">Изберете папка:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Изберете папка за добавяне към списъка със задачи:</entry>
     <entry id="311" string="Add files by pattern">Добавяне на файлове по шаблон</entry>
     <entry id="312" string="Pattern">Шаблон</entry>
-    <entry id="313" string="Start directory">Начална папка</entry>
+    <entry id="313" string="Start folder">Начална папка</entry>
     <entry id="314" string="No files found matching pattern:">Няма открити файлове отговарящи на шаблона:</entry>
     <entry id="315" string="Edit language file">Редакция на езиковия файл</entry>
     <entry id="316" string="Use for all selected tracks">Използвай за всички избрани песни</entry>
@@ -328,18 +328,18 @@
     <entry id="340" string="Playlists">Плейлисти</entry>
     <entry id="341" string="Create playlists">Създаване на плейлисти</entry>
     <entry id="342" string="Create cue sheets">Създаване на cue листи</entry>
-    <entry id="343" string="Use encoder output directory">Изходната папка на енкодера</entry>
+    <entry id="343" string="Use encoder output folder">Изходната папка на енкодера</entry>
     <entry id="344" string="Various artists">Разни изпълнители</entry>
     <entry id="345" string="Data track">Пътечка с данни</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Изберете папката в която плейлистите ще бъдат поставени:</entry>
-    <entry id="347" string="Use input file directory if possible">Папката на входния файл ако е възможно</entry>
-    <entry id="348" string="Encode to input file directory if possible">Кодиране в папката на входния файл ако е възможно</entry>
+    <entry id="347" string="Use input file folder if possible">Папката на входния файл ако е възможно</entry>
+    <entry id="348" string="Encode to input file folder if possible">Кодиране в папката на входния файл ако е възможно</entry>
     <entry id="349" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
     <entry id="350" string="Encode to single file">неизвестен изпълнител</entry>
     <entry id="351" string="Encoder options">неизвестно заглавие</entry>
     <entry id="352" string="Skip">неизвестен албум</entry>
     <entry id="353" string="Enable local CDDB database">неизвестен жанр</entry>
-    <entry id="354" string="CDDB directory:">неизвестна година</entry>
+    <entry id="354" string="CDDB path:">неизвестна година</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Изберете папката на CDDB базата данни:</entry>
     <entry id="356" string="File already exists">Файлът вече съществува</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Изходния файл %1&#10;вече съществува! Искате ли да го презапишете?</entry>

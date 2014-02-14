@@ -70,7 +70,7 @@
     <entry id="58" string="General settings setup">הגדרות כלליות</entry>
     <entry id="59" string="Configure encoder">הגדרות מקודד</entry>
     <entry id="60" string="Encoder">מקודד</entry>
-    <entry id="61" string="Output directory">תקיית יעד</entry>
+    <entry id="61" string="Output folder">תקיית יעד</entry>
     <entry id="62" string="Browse">דפדף</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד:</entry>
     <entry id="64" string="Encoding">מבצע קידוד</entry>
@@ -172,7 +172,7 @@
     <entry id="222" string="Use default setting">השתמש בהגדרות כלליות</entry>
     <entry id="225" string="Expert">למומחים</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">לא ניתן לשנות במהלך המרה !</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">תקית היעד אינה קיימת, האם ליצור אותה?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">תקית היעד אינה קיימת, האם ליצור אותה?</entry>
     <entry id="228" string="Filename pattern">צורת שם קובץ</entry>
     <entry id="229" string="unknown album">אלבום לא מוכר</entry>
     <entry id="230" string="Translated by %1.">תורגם ע&quot;י  %1.</entry>
@@ -196,8 +196,8 @@
     <entry id="287" string="Playlist Files">רשימת השמעה</entry>
     <entry id="300" string="disabled">מבוטל</entry>
     <entry id="301" string="auto">אוטומטי</entry>
-    <entry id="306" string="From directory">מתקיה</entry>
-    <entry id="307" string="Directory">תיקייה</entry>
+    <entry id="306" string="From folder">מתקיה</entry>
+    <entry id="307" string="Folder">תיקייה</entry>
     <entry id="310" string="Select the folder to add to the joblist:">בחר תיקיה להוספה לרשימת מטלות:</entry>
     <entry id="315" string="Edit language file">ערוך קובץ שפה</entry>
     <entry id="316" string="Use for all selected tracks">השתמש בכל הנבחרים</entry>

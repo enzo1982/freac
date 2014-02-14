@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">Algemene instellingen</entry>
     <entry id="59" string="Configure encoder">Encoder configureren</entry>
     <entry id="60" string="Encoder">Encoder</entry>
-    <entry id="61" string="Output directory">Uitvoermap</entry>
+    <entry id="61" string="Output folder">Uitvoermap</entry>
     <entry id="62" string="Browse">Bladeren</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Selecteer de map waarin de gecodeerde bestanden moeten terechtkomen:</entry>
     <entry id="64" string="Encoding">Coderen</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Temporal Masking Effect gebruiken</entry>
     <entry id="225" string="Expert">Expert</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">De encoder kan niet geconfigureerd worden tijdens het coderen!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">De uitvoermap bestaat niet. Wilt u ze aanmaken?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">De uitvoermap bestaat niet. Wilt u ze aanmaken?</entry>
     <entry id="228" string="Filename pattern">Bestandspatroon</entry>
     <entry id="229" string="unknown album">onbekend album</entry>
     <entry id="230" string="Translated by %1.">Vertaald door %1.</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">Minimum partitie-volgorde</entry>
     <entry id="304" string="Maximum partition order">Maximum partitie-volgorde</entry>
     <entry id="305" string="By pattern">Op patroon</entry>
-    <entry id="306" string="From directory">Uit map</entry>
-    <entry id="307" string="Directory">Map</entry>
-    <entry id="308" string="Add directory">Map toevoegen</entry>
-    <entry id="309" string="Choose directory:">Map kiezen:</entry>
+    <entry id="306" string="From folder">Uit map</entry>
+    <entry id="307" string="Folder">Map</entry>
+    <entry id="308" string="Add folder">Map toevoegen</entry>
+    <entry id="309" string="Choose folder:">Map kiezen:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Selecteer de map om toe te voegen aan de takenlijst:</entry>
     <entry id="311" string="Add files by pattern">Bestanden toevoegen op patroon</entry>
     <entry id="312" string="Pattern">Patroon</entry>
-    <entry id="313" string="Start directory">Beginmap</entry>
+    <entry id="313" string="Start folder">Beginmap</entry>
     <entry id="314" string="No files found matching pattern:">Geen bestanden gevonden met dit patroon:</entry>
     <entry id="315" string="Edit language file">Taalbestand bewerken</entry>
     <entry id="316" string="Use for all selected tracks">Voor alle geselecteerde tracks gebruiken</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">Afspeellijsten</entry>
     <entry id="341" string="Create playlists">Afspeellijsten aanmaken</entry>
     <entry id="342" string="Create cue sheets">Cue sheets aanmaken</entry>
-    <entry id="343" string="Use encoder output directory">Uitvoermap van encoder gebruiken</entry>
+    <entry id="343" string="Use encoder output folder">Uitvoermap van encoder gebruiken</entry>
     <entry id="344" string="Various artists">Verschillende artiesten</entry>
     <entry id="345" string="Data track">Data-track</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Selecteer de map waarin de afspeellijstbestanden geplaatst moeten worden:</entry>
-    <entry id="347" string="Use input file directory if possible">Map van invoerbestand gebruiken indien mogelijk</entry>
-    <entry id="348" string="Encode to input file directory if possible">Naar map van invoerbestand coderen indien mogelijk</entry>
+    <entry id="347" string="Use input file folder if possible">Map van invoerbestand gebruiken indien mogelijk</entry>
+    <entry id="348" string="Encode to input file folder if possible">Naar map van invoerbestand coderen indien mogelijk</entry>
     <entry id="349" string="Allow overwriting input file">Overschijven van invoerbestand toestaan</entry>
     <entry id="350" string="Encode to single file">Coderen naar enkel bestand</entry>
     <entry id="351" string="Encoder options">Encoder-opties</entry>
     <entry id="352" string="Skip">Overslaan</entry>
     <entry id="353" string="Enable local CDDB database">Lokale CDDB-database activeren</entry>
-    <entry id="354" string="CDDB directory:">CDDB-map:</entry>
+    <entry id="354" string="CDDB path:">CDDB-map:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Selecteer de map van de CDDB-database:</entry>
     <entry id="356" string="File already exists">Bestand bestaat al</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Uitvoerbestand %1&#10;bestaat al! Wilt u het overschrijven?</entry>

@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">Configuration des paramètres généraux</entry>
     <entry id="59" string="Configure encoder">Configurer l'encodeur</entry>
     <entry id="60" string="Encoder">Encodeur</entry>
-    <entry id="61" string="Output directory">Répertoire de sortie</entry>
+    <entry id="61" string="Output folder">Répertoire de sortie</entry>
     <entry id="62" string="Browse">Parcourir</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Sélectionnez le dossier de destination des fichiers encodés :</entry>
     <entry id="64" string="Encoding">Encodage</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Utiliser l'effet de masquage temporel</entry>
     <entry id="225" string="Expert">Expert</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Impossible de configurer l'encodeur lors de l'encodage !</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">Le répertoire de sortie n'existe pas. Voulez-vous le créer ?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">Le répertoire de sortie n'existe pas. Voulez-vous le créer ?</entry>
     <entry id="228" string="Filename pattern">Modèle de nom de fichier</entry>
     <entry id="229" string="unknown album">album inconnu</entry>
     <entry id="230" string="Translated by %1.">Traduit par %1.</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">Ordre de partition minimal</entry>
     <entry id="304" string="Maximum partition order">Ordre de partition maximal</entry>
     <entry id="305" string="By pattern">Par motif</entry>
-    <entry id="306" string="From directory">Depuis répertoire</entry>
-    <entry id="307" string="Directory">Répertoire</entry>
-    <entry id="308" string="Add directory">Ajouter répertoire</entry>
-    <entry id="309" string="Choose directory:">Sélectionnez le répertoire :</entry>
+    <entry id="306" string="From folder">Depuis répertoire</entry>
+    <entry id="307" string="Folder">Répertoire</entry>
+    <entry id="308" string="Add folder">Ajouter répertoire</entry>
+    <entry id="309" string="Choose folder:">Sélectionnez le répertoire :</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Sélectionnez le dossier à ajouter à la liste :</entry>
     <entry id="311" string="Add files by pattern">Ajouter fichiers par motif</entry>
     <entry id="312" string="Pattern">Motif</entry>
-    <entry id="313" string="Start directory">Répertoire de départ</entry>
+    <entry id="313" string="Start folder">Répertoire de départ</entry>
     <entry id="314" string="No files found matching pattern:">Aucun fichier correspondant au motif :</entry>
     <entry id="315" string="Edit language file">Modifier fichier langue</entry>
     <entry id="316" string="Use for all selected tracks">Utiliser pour toutes les pistes sélectionnées</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">Sélections</entry>
     <entry id="341" string="Create playlists">Créer sélections</entry>
     <entry id="342" string="Create cue sheets">Créer feuilles de mixage</entry>
-    <entry id="343" string="Use encoder output directory">Utiliser répertoire sortie encodeur</entry>
+    <entry id="343" string="Use encoder output folder">Utiliser répertoire sortie encodeur</entry>
     <entry id="344" string="Various artists">Artistes divers</entry>
     <entry id="345" string="Data track">Piste de données</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Sélectionnez le dossier de destination des fichiers de la playlist :</entry>
-    <entry id="347" string="Use input file directory if possible">Utiliser répertoire fichier entrée si possible</entry>
-    <entry id="348" string="Encode to input file directory if possible">Encoder dans répertoire fichier entrée si possible</entry>
+    <entry id="347" string="Use input file folder if possible">Utiliser répertoire fichier entrée si possible</entry>
+    <entry id="348" string="Encode to input file folder if possible">Encoder dans répertoire fichier entrée si possible</entry>
     <entry id="349" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>
     <entry id="350" string="Encode to single file">Encoder dans fichier unique</entry>
     <entry id="351" string="Encoder options">Options encodeur</entry>
     <entry id="352" string="Skip">Ignorer</entry>
     <entry id="353" string="Enable local CDDB database">Activer la base de données CDDB locale</entry>
-    <entry id="354" string="CDDB directory:">Répertoire CDDB :</entry>
+    <entry id="354" string="CDDB path:">Répertoire CDDB :</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Sélectionnez le dossier de la base de données CDDB :</entry>
     <entry id="356" string="File already exists">Le fichier existe déjà.</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Le fichier de sortie %1&#10;existe déjà ! Voulez-vous le remplacer ?</entry>

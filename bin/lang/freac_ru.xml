@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">Основные параметры</entry>
     <entry id="59" string="Configure encoder">Настроить кодек</entry>
     <entry id="60" string="Encoder">Кодек</entry>
-    <entry id="61" string="Output directory">Папка для сохранения</entry>
+    <entry id="61" string="Output folder">Папка для сохранения</entry>
     <entry id="62" string="Browse">Выбрать</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Выбрать папку в который будут помещены кодируемые файлы:</entry>
     <entry id="64" string="Encoding">Кодировка</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Использовать эффект маски</entry>
     <entry id="225" string="Expert">Эксперт</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Нельзя настраивать кодек во время кодирования!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">Директории для сохранения не существует! Создать?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">Директории для сохранения не существует! Создать?</entry>
     <entry id="228" string="Filename pattern">Формирование названия файла</entry>
     <entry id="229" string="unknown album">неизвестный альбом</entry>
     <entry id="230" string="Translated by %1.">Перевед: %1</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">Минимальный порядок частей</entry>
     <entry id="304" string="Maximum partition order">Максимальный порядок частей</entry>
     <entry id="305" string="By pattern">По образцу</entry>
-    <entry id="306" string="From directory">Из папки</entry>
-    <entry id="307" string="Directory">Папка</entry>
-    <entry id="308" string="Add directory">Добавить папку</entry>
-    <entry id="309" string="Choose directory:">Выбрать папку</entry>
+    <entry id="306" string="From folder">Из папки</entry>
+    <entry id="307" string="Folder">Папка</entry>
+    <entry id="308" string="Add folder">Добавить папку</entry>
+    <entry id="309" string="Choose folder:">Выбрать папку</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Выберите папку для добавления в список задач</entry>
     <entry id="311" string="Add files by pattern">Добавить файлы по образцу</entry>
     <entry id="312" string="Pattern">Образец</entry>
-    <entry id="313" string="Start directory">Начальная папка</entry>
+    <entry id="313" string="Start folder">Начальная папка</entry>
     <entry id="314" string="No files found matching pattern:">Нет файлов, соответствующих образцу</entry>
     <entry id="315" string="Edit language file">Править языковой файл</entry>
     <entry id="316" string="Use for all selected tracks">Использовать для всех выбранных треков</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">Плейлисты</entry>
     <entry id="341" string="Create playlists">Создавать плейлисты</entry>
     <entry id="342" string="Create cue sheets">Создавать cue sheets</entry>
-    <entry id="343" string="Use encoder output directory">Использовать выходную папку кодека</entry>
+    <entry id="343" string="Use encoder output folder">Использовать выходную папку кодека</entry>
     <entry id="344" string="Various artists">Разные артисты (сборка)</entry>
     <entry id="345" string="Data track">Дорожка с данными</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Выберите папку, в которую будут помещены плейлисты</entry>
-    <entry id="347" string="Use input file directory if possible">Исп. папку входного файла если возможно</entry>
-    <entry id="348" string="Encode to input file directory if possible">Кодировать в папку входного файла если возможно</entry>
+    <entry id="347" string="Use input file folder if possible">Исп. папку входного файла если возможно</entry>
+    <entry id="348" string="Encode to input file folder if possible">Кодировать в папку входного файла если возможно</entry>
     <entry id="349" string="Allow overwriting input file">Перезаписать входной файл</entry>
     <entry id="350" string="Encode to single file">Кодировать в один файл</entry>
     <entry id="351" string="Encoder options">Настройки кодека</entry>
     <entry id="352" string="Skip">Пропустить</entry>
     <entry id="353" string="Enable local CDDB database">Местная база данных CDDB</entry>
-    <entry id="354" string="CDDB directory:">Папка CDDB</entry>
+    <entry id="354" string="CDDB path:">Папка CDDB</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Выберите папку базы данных CDDB:</entry>
     <entry id="356" string="File already exists">Файл уже существует</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Выходной файл %1&#10;уже существует! Хотите перезаписать его?</entry>

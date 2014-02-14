@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup"/>
     <entry id="59" string="Configure encoder"/>
     <entry id="60" string="Encoder"/>
-    <entry id="61" string="Output directory"/>
+    <entry id="61" string="Output folder"/>
     <entry id="62" string="Browse"/>
     <entry id="63" string="Select the folder in which the encoded files will be placed:"/>
     <entry id="64" string="Encoding"/>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect"/>
     <entry id="225" string="Expert"/>
     <entry id="226" string="Cannot configure encoder while encoding!"/>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?"/>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?"/>
     <entry id="228" string="Filename pattern"/>
     <entry id="229" string="unknown album"/>
     <entry id="230" string="Translated by %1."/>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order"/>
     <entry id="304" string="Maximum partition order"/>
     <entry id="305" string="By pattern"/>
-    <entry id="306" string="From directory"/>
-    <entry id="307" string="Directory"/>
-    <entry id="308" string="Add directory"/>
-    <entry id="309" string="Choose directory:"/>
+    <entry id="306" string="From folder"/>
+    <entry id="307" string="Folder"/>
+    <entry id="308" string="Add folder"/>
+    <entry id="309" string="Choose folder:"/>
     <entry id="310" string="Select the folder to add to the joblist:"/>
     <entry id="311" string="Add files by pattern"/>
     <entry id="312" string="Pattern"/>
-    <entry id="313" string="Start directory"/>
+    <entry id="313" string="Start folder"/>
     <entry id="314" string="No files found matching pattern:"/>
     <entry id="315" string="Edit language file"/>
     <entry id="316" string="Use for all selected tracks"/>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists"/>
     <entry id="341" string="Create playlists"/>
     <entry id="342" string="Create cue sheets"/>
-    <entry id="343" string="Use encoder output directory"/>
+    <entry id="343" string="Use encoder output folder"/>
     <entry id="344" string="Various artists"/>
     <entry id="345" string="Data track"/>
     <entry id="346" string="Select the folder in which the playlist files will be placed:"/>
-    <entry id="347" string="Use input file directory if possible"/>
-    <entry id="348" string="Encode to input file directory if possible"/>
+    <entry id="347" string="Use input file folder if possible"/>
+    <entry id="348" string="Encode to input file folder if possible"/>
     <entry id="349" string="Allow overwriting input file"/>
     <entry id="350" string="Encode to single file"/>
     <entry id="351" string="Encoder options"/>
     <entry id="352" string="Skip"/>
     <entry id="353" string="Enable local CDDB database"/>
-    <entry id="354" string="CDDB directory:"/>
+    <entry id="354" string="CDDB path:"/>
     <entry id="355" string="Select the folder of the CDDB database:"/>
     <entry id="356" string="File already exists"/>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>

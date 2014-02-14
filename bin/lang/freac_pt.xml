@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">Configurar Opções Gerais</entry>
     <entry id="59" string="Configure encoder">Configurar codificador</entry>
     <entry id="60" string="Encoder">Codificador</entry>
-    <entry id="61" string="Output directory">Pasta de saída</entry>
+    <entry id="61" string="Output folder">Pasta de saída</entry>
     <entry id="62" string="Browse">Escolher</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Seleccione a pasta para os ficheiros codificados:</entry>
     <entry id="64" string="Encoding">Codificando</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Usar 'Temporal Mask Effect'</entry>
     <entry id="225" string="Expert">Expert</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Não se pode configurar o codificador durante a codificação!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">A pasta de saída não existe! Deseja criá-la?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">A pasta de saída não existe! Deseja criá-la?</entry>
     <entry id="228" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
     <entry id="229" string="unknown album">álbum desconhecido</entry>
     <entry id="230" string="Translated by %1.">Traduzido por %1.</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">Partição mínima</entry>
     <entry id="304" string="Maximum partition order">Partição máxima</entry>
     <entry id="305" string="By pattern">Com modelo</entry>
-    <entry id="306" string="From directory">Da pasta</entry>
-    <entry id="307" string="Directory">Pasta</entry>
-    <entry id="308" string="Add directory">Insere pasta</entry>
-    <entry id="309" string="Choose directory:">Escolher pasta:</entry>
+    <entry id="306" string="From folder">Da pasta</entry>
+    <entry id="307" string="Folder">Pasta</entry>
+    <entry id="308" string="Add folder">Insere pasta</entry>
+    <entry id="309" string="Choose folder:">Escolher pasta:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Seleccionar a pasta para adicionar à listagem de trabalho:</entry>
     <entry id="311" string="Add files by pattern">Adicionar ficheiros por modelo</entry>
     <entry id="312" string="Pattern">Modelo</entry>
-    <entry id="313" string="Start directory">Pasta inicial</entry>
+    <entry id="313" string="Start folder">Pasta inicial</entry>
     <entry id="314" string="No files found matching pattern:">Nenhum ficheiro corresponde ao modelo:</entry>
     <entry id="315" string="Edit language file">Editar ficheiro de idioma</entry>
     <entry id="316" string="Use for all selected tracks">Use em todas as pistas seleccionadas</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">Listas de execução</entry>
     <entry id="341" string="Create playlists">Criar listas de execução</entry>
     <entry id="342" string="Create cue sheets">Criar lista de pistas (cue sheet)</entry>
-    <entry id="343" string="Use encoder output directory">Usar a pasta de saída do codificador</entry>
+    <entry id="343" string="Use encoder output folder">Usar a pasta de saída do codificador</entry>
     <entry id="344" string="Various artists">Vários artistas</entry>
     <entry id="345" string="Data track">Dados da Pista</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Seleccionar a pasta para colocar as listas de execução:</entry>
-    <entry id="347" string="Use input file directory if possible">Usar a pasta do ficheiro de entrada, se possível</entry>
-    <entry id="348" string="Encode to input file directory if possible">Codificar para a pasta do ficheiro de entrada, se possível</entry>
+    <entry id="347" string="Use input file folder if possible">Usar a pasta do ficheiro de entrada, se possível</entry>
+    <entry id="348" string="Encode to input file folder if possible">Codificar para a pasta do ficheiro de entrada, se possível</entry>
     <entry id="349" string="Allow overwriting input file">Permitir sobrescrever o ficheiro de entrada</entry>
     <entry id="350" string="Encode to single file">Codificar num ficheiro único</entry>
     <entry id="351" string="Encoder options">Opções do codificador</entry>
     <entry id="352" string="Skip">Pular</entry>
     <entry id="353" string="Enable local CDDB database">Activar base de dados local do CDDB</entry>
-    <entry id="354" string="CDDB directory:">Pasta CDDB:</entry>
+    <entry id="354" string="CDDB path:">Pasta CDDB:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Seleccionar a pasta para o CDDB:</entry>
     <entry id="356" string="File already exists">Ficheiro já existe</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">O ficheiro %1&#10;já existe! Quer sobrescrevê-lo?</entry>

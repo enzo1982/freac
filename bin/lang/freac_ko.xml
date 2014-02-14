@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">일반 설정</entry>
     <entry id="59" string="Configure encoder">인코더 설정</entry>
     <entry id="60" string="Encoder">인코더</entry>
-    <entry id="61" string="Output directory">출력 디렉토리</entry>
+    <entry id="61" string="Output folder">출력 디렉토리</entry>
     <entry id="62" string="Browse">브라우즈</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">인코드 파일이 위치할 폴더를 선택하시오:</entry>
     <entry id="64" string="Encoding">인코딩</entry>
@@ -225,7 +225,7 @@
     <entry id="224" string="Use Temporal Masking Effect">마스킹효과 사용</entry>
     <entry id="225" string="Expert">고급 설정</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">인코딩 중에는 인코더를 설정할 수 없습니다!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">디렉토리가 없습니다. 새로 만들겠습니까?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">디렉토리가 없습니다. 새로 만들겠습니까?</entry>
     <entry id="228" string="Filename pattern">파일명 방식</entry>
     <entry id="229" string="unknown album">(알수없는 앨범)</entry>
     <entry id="230" string="Translated by %1.">%1 번역.</entry>

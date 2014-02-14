@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">一般設定</entry>
     <entry id="59" string="Configure encoder">エンコーダ設定</entry>
     <entry id="60" string="Encoder">エンコーダ</entry>
-    <entry id="61" string="Output directory">出力先ディレクトリ</entry>
+    <entry id="61" string="Output folder">出力先ディレクトリ</entry>
     <entry id="62" string="Browse">参照</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">出力先ディレクトリを選択：</entry>
     <entry id="64" string="Encoding">エンコード</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">継時マスキング効果を使用</entry>
     <entry id="225" string="Expert">高度な設定</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">エンコード中はエンコーダ設定を変更できません</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">出力先ディレクトリがありません。新規に作成しますか？</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">出力先ディレクトリがありません。新規に作成しますか？</entry>
     <entry id="228" string="Filename pattern">ファイル名パターン</entry>
     <entry id="229" string="unknown album">アルバム不明</entry>
     <entry id="230" string="Translated by %1.">%1 により翻訳されました。</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">最小分割次数</entry>
     <entry id="304" string="Maximum partition order">最大分割次数</entry>
     <entry id="305" string="By pattern">パターンで追加</entry>
-    <entry id="306" string="From directory">ディレクトリから追加</entry>
-    <entry id="307" string="Directory">ディレクトリ</entry>
-    <entry id="308" string="Add directory">ディレクトリを追加</entry>
-    <entry id="309" string="Choose directory:">ディレクトリを選択：</entry>
+    <entry id="306" string="From folder">ディレクトリから追加</entry>
+    <entry id="307" string="Folder">ディレクトリ</entry>
+    <entry id="308" string="Add folder">ディレクトリを追加</entry>
+    <entry id="309" string="Choose folder:">ディレクトリを選択：</entry>
     <entry id="310" string="Select the folder to add to the joblist:">リストに追加するフォルダ：</entry>
     <entry id="311" string="Add files by pattern">パターンによりファイルを追加</entry>
     <entry id="312" string="Pattern">パターン</entry>
-    <entry id="313" string="Start directory">基準ディレクトリ</entry>
+    <entry id="313" string="Start folder">基準ディレクトリ</entry>
     <entry id="314" string="No files found matching pattern:">パターンに適合するファイルはありませんでした：</entry>
     <entry id="315" string="Edit language file">言語ファイルを編集</entry>
     <entry id="316" string="Use for all selected tracks">すべての選択トラックに適用</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">プレイリスト</entry>
     <entry id="341" string="Create playlists">プレイリスト作成</entry>
     <entry id="342" string="Create cue sheets">cue シート作成</entry>
-    <entry id="343" string="Use encoder output directory">エンコーダの出力ディレクトリを使用</entry>
+    <entry id="343" string="Use encoder output folder">エンコーダの出力ディレクトリを使用</entry>
     <entry id="344" string="Various artists">Various artists</entry>
     <entry id="345" string="Data track">データ トラック</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">プレイリストがあるフォルダを選択してください：</entry>
-    <entry id="347" string="Use input file directory if possible">可能なら入力ファイルのディレクトリを用いる</entry>
-    <entry id="348" string="Encode to input file directory if possible">可能なら入力ファイルのディレクトリにエンコード</entry>
+    <entry id="347" string="Use input file folder if possible">可能なら入力ファイルのディレクトリを用いる</entry>
+    <entry id="348" string="Encode to input file folder if possible">可能なら入力ファイルのディレクトリにエンコード</entry>
     <entry id="349" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
     <entry id="350" string="Encode to single file">一つのファイルにエンコード</entry>
     <entry id="351" string="Encoder options">エンコーダの設定</entry>
     <entry id="352" string="Skip">スキップ</entry>
     <entry id="353" string="Enable local CDDB database">ローカル CDDB 有効</entry>
-    <entry id="354" string="CDDB directory:">CDDB ディレクトリ：</entry>
+    <entry id="354" string="CDDB path:">CDDB ディレクトリ：</entry>
     <entry id="355" string="Select the folder of the CDDB database:">CDDB データベースのディレクトリを選択：</entry>
     <entry id="356" string="File already exists">ファイルが既に存在します</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">出力ファイル (%1) は既に存在します。&#10;上書きしますか?</entry>

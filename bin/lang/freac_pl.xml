@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">Ustawienia programu</entry>
     <entry id="59" string="Configure encoder">Ustawienia konwersji</entry>
     <entry id="60" string="Encoder">Konwerter</entry>
-    <entry id="61" string="Output directory">Katalog docelowy</entry>
+    <entry id="61" string="Output folder">Katalog docelowy</entry>
     <entry id="62" string="Browse">Przeglądaj</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Wybierz katalog docelowy dla konwertowanych plików:</entry>
     <entry id="64" string="Encoding">Kodowanie</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Wykorzystaj efekt maskowania</entry>
     <entry id="225" string="Expert">Zaawansowane</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Nie można ustawiać konwertera podczas konwersji!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">Katalog docelowy nie istnieje! Utworzyć go?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">Katalog docelowy nie istnieje! Utworzyć go?</entry>
     <entry id="228" string="Filename pattern">Wzór nazw plików</entry>
     <entry id="229" string="unknown album">nieznany album</entry>
     <entry id="230" string="Translated by %1.">Tłumaczenie: %1.</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">Minimalny rząd podziału</entry>
     <entry id="304" string="Maximum partition order">Maksymalny rząd podziału</entry>
     <entry id="305" string="By pattern">Według wzoru</entry>
-    <entry id="306" string="From directory">Z katalogu</entry>
-    <entry id="307" string="Directory">Katalog</entry>
-    <entry id="308" string="Add directory">Dodaj katalog</entry>
-    <entry id="309" string="Choose directory:">Wybierz katalog:</entry>
+    <entry id="306" string="From folder">Z katalogu</entry>
+    <entry id="307" string="Folder">Katalog</entry>
+    <entry id="308" string="Add folder">Dodaj katalog</entry>
+    <entry id="309" string="Choose folder:">Wybierz katalog:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Wybierz katalog do umieszczenia na liście:</entry>
     <entry id="311" string="Add files by pattern">Dodaj pliki według wzoru</entry>
     <entry id="312" string="Pattern">Wzór</entry>
-    <entry id="313" string="Start directory">Katalog początkowy</entry>
+    <entry id="313" string="Start folder">Katalog początkowy</entry>
     <entry id="314" string="No files found matching pattern:">Brak plików pasujących do wzoru:</entry>
     <entry id="315" string="Edit language file">Edytuj plik językowy</entry>
     <entry id="316" string="Use for all selected tracks">Użyj do wszystkich wybranych ścieżek</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">Listy odtwarzania</entry>
     <entry id="341" string="Create playlists">Utwórz listy odtwarzania</entry>
     <entry id="342" string="Create cue sheets">Utwórz tabele cue</entry>
-    <entry id="343" string="Use encoder output directory">Wykorzystaj katalog wyjściowy konwertera</entry>
+    <entry id="343" string="Use encoder output folder">Wykorzystaj katalog wyjściowy konwertera</entry>
     <entry id="344" string="Various artists">Różni wykonawcy</entry>
     <entry id="345" string="Data track">Ścieżka danych</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Wybierz katalog do umieszczenia list odtwarzania:</entry>
-    <entry id="347" string="Use input file directory if possible">Jeśli możliwe, wykorzystaj katalog wejściowy</entry>
-    <entry id="348" string="Encode to input file directory if possible">Jeśli możliwe, konwertuj do katalogu wejściowego</entry>
+    <entry id="347" string="Use input file folder if possible">Jeśli możliwe, wykorzystaj katalog wejściowy</entry>
+    <entry id="348" string="Encode to input file folder if possible">Jeśli możliwe, konwertuj do katalogu wejściowego</entry>
     <entry id="349" string="Allow overwriting input file">Zezwól na zastąpienie pliku wejściowego</entry>
     <entry id="350" string="Encode to single file">Konwertuj do jednego pliku</entry>
     <entry id="351" string="Encoder options">Ustawienia konwertera</entry>
     <entry id="352" string="Skip">Pomiń</entry>
     <entry id="353" string="Enable local CDDB database">Uaktywnij lokalna bazę CDDB</entry>
-    <entry id="354" string="CDDB directory:">Katalog bazy CDDB:</entry>
+    <entry id="354" string="CDDB path:">Katalog bazy CDDB:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Wybierz folder dla bazy CDDB:</entry>
     <entry id="356" string="File already exists">Plik o tej nazwie już istnieje</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Plik wynikowy %1&#10;już istnieje! Czy chcesz go nadpisać?</entry>

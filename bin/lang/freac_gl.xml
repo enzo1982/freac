@@ -71,7 +71,7 @@
     <entry id="58" string="General settings setup">Configuracións xerais</entry>
     <entry id="59" string="Configure encoder">Configurar conversor</entry>
     <entry id="60" string="Encoder">Conversor</entry>
-    <entry id="61" string="Output directory">Carpeta de saída</entry>
+    <entry id="61" string="Output folder">Carpeta de saída</entry>
     <entry id="62" string="Browse">Procurar</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Seleccione a carpeta para os arquivos convertidos:</entry>
     <entry id="64" string="Encoding">Conversión</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Utilizar efecto de máscara temporal</entry>
     <entry id="225" string="Expert">Experto</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Non é posíbel configurar o conversor durante o proceso!</entry>
-    <entry id="227" string="The output directory does not exist! Do you want to create it?">O directorio de destino non existe. Desexa crealo?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">O directorio de destino non existe. Desexa crealo?</entry>
     <entry id="228" string="Filename pattern">Patrón de nome de arquivo</entry>
     <entry id="229" string="unknown album">Álbum descoñecido</entry>
     <entry id="230" string="Translated by %1.">Traducido por %1.</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">Mínimo grao de partición</entry>
     <entry id="304" string="Maximum partition order">Máximo grao de partición</entry>
     <entry id="305" string="By pattern">Por patrón</entry>
-    <entry id="306" string="From directory">Desde directorio</entry>
-    <entry id="307" string="Directory">Directorio</entry>
-    <entry id="308" string="Add directory">Engadir directorio</entry>
-    <entry id="309" string="Choose directory:">Seleccionar directorio:</entry>
+    <entry id="306" string="From folder">Desde directorio</entry>
+    <entry id="307" string="Folder">Directorio</entry>
+    <entry id="308" string="Add folder">Engadir directorio</entry>
+    <entry id="309" string="Choose folder:">Seleccionar directorio:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Seleccione o directorio para engadir á listaxe de tarefas:</entry>
     <entry id="311" string="Add files by pattern">Engadir arquivos por patrón</entry>
     <entry id="312" string="Pattern">Patrón</entry>
-    <entry id="313" string="Start directory">Directorio de inicio</entry>
+    <entry id="313" string="Start folder">Directorio de inicio</entry>
     <entry id="314" string="No files found matching pattern:">Non se atopan arquivos correspondentes co patrón:</entry>
     <entry id="315" string="Edit language file">Editar arquivo de idioma</entry>
     <entry id="316" string="Use for all selected tracks">Utilizar para todas as pistas seleccionadas</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">Listaxes de reprodución</entry>
     <entry id="341" string="Create playlists">Xerar listaxes de reprodución</entry>
     <entry id="342" string="Create cue sheets">Xerar cue sheets</entry>
-    <entry id="343" string="Use encoder output directory">Utilizar directorio de saída do conversor</entry>
+    <entry id="343" string="Use encoder output folder">Utilizar directorio de saída do conversor</entry>
     <entry id="344" string="Various artists">Artistas varios</entry>
     <entry id="345" string="Data track">Pista de datos</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Seleccione un directorio para gardar as listaxes de reprodución:</entry>
-    <entry id="347" string="Use input file directory if possible">Utilizar o directorio de entrada, se é posíbel</entry>
-    <entry id="348" string="Encode to input file directory if possible">Codificar no directorio de entrada, se é posíbel</entry>
+    <entry id="347" string="Use input file folder if possible">Utilizar o directorio de entrada, se é posíbel</entry>
+    <entry id="348" string="Encode to input file folder if possible">Codificar no directorio de entrada, se é posíbel</entry>
     <entry id="349" string="Allow overwriting input file">Permitir sobreescribir o arquivo de entrada</entry>
     <entry id="350" string="Encode to single file">Extraer nun só arquivo</entry>
     <entry id="351" string="Encoder options">Opcións do conversor</entry>
     <entry id="352" string="Skip">Omitir</entry>
     <entry id="353" string="Enable local CDDB database">Utilizar base de datos CDDB local</entry>
-    <entry id="354" string="CDDB directory:">Directorio CDDB:</entry>
+    <entry id="354" string="CDDB path:">Directorio CDDB:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Seleccione o directorio da base de datos CDDB:</entry>
     <entry id="356" string="File already exists">O arquivo xa existe</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">O arquivo de saída %1&#10;xa existe! Desexa sobreescribilo?</entry>
