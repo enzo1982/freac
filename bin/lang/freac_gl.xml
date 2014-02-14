@@ -365,7 +365,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 inclúe soporte para codificar LAME, Ogg Vorbis,&#10;FAAC, FLAC y Bonk. No sitio de %1:&#10;%2&#10;pode atopar un codificador para formato VQF</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 pode utilizar os complementos de entrada&#10;de Winamp 2 para aceptar máis formatos.&#10;Copie os archivos in_*.dll no directorio %1\plugins&#10;para permitir a %1 ler eses formatos</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Con %1 pode enviar rexistros de CD freedb que conteñen&#10;caracteres Unicode. Deste xeito, se posúe CDs con nomes&#10;de artistas ou títulos que non estean en alfabetización latina,&#10;pode enviar os datos correctos a freedb con %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Para corrixir erros de lectura durante a función de extracción&#10;pode activar a función Correción de lectura na ficha CDRip&#10;da configuración. Se iso non funciona, tente utilizar&#10;algún dos modos paranoia.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Para corrixir erros de lectura durante a función de extracción&#10;pode activar a función Correción de lectura na ficha Ripper&#10;da configuración. Se iso non funciona, tente utilizar&#10;algún dos modos paranoia.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Ten algunha suxestión para mellorar %1? Pode enviarnos&#10;as súas ideas a través do Tracker no sitio de %1&#10;ubicado en SourceForge&#10;%2&#10;ou enviar un mail a %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Gústalle %1? %1 é unha ferramenta gratuíta,&#10;pero pode colaborar co desenvolvemento do proxecto&#10;%1 facendo unha doazón. Pode enviar diñeiro a&#10;%2&#10;a través de PayPal.&#10;Para máis información consulte&#10;%3.</entry>
     </section>
@@ -404,32 +404,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Unidade de CD-ROM activa</entry>
-	<entry id="10001" string="Set drive speed limit:">Límite de velocidade da unidade:</entry>
-	<entry id="10002" string="CD information">Información do CD</entry>
-	<entry id="10003" string="Read CD Text">Ler o texto do CD</entry>
-	<entry id="10004" string="Read cdplayer.ini">Ler cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">Configuracións de extracción de audio</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Activar modo CD paranoia:</entry>
-	<entry id="10007" string="Overlap only">Só superpoñer</entry>
-	<entry id="10008" string="No verify">Sen verificación</entry>
-	<entry id="10009" string="No scratch repair">Non reparar chíos</entry>
-	<entry id="10010" string="Full cdparanoia mode">Modo CD paranoia completo</entry>
-	<entry id="10011" string="Activate jitter correction">Activar corrección Jitter</entry>
-	<entry id="10012" string="Swap left/right channel">Intercambiar canais</entry>
-	<entry id="10013" string="Automatization">Automatización</entry>
-	<entry id="10014" string="Read CD contents on insert">Ler o contido do CD ao inserilo</entry>
-	<entry id="10015" string="Start ripping automatically">Extracción automática</entry>
-	<entry id="10016" string="Eject disk after ripping">Expulsar disco ao rematar</entry>
-	<entry id="10017" string="CD options">Opcións de CD</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Bloquear a bandexa do CD</entry>
-	<entry id="10019" string="Use native NT SCSI library">Usar biblioteca nativa NT SCSI</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Unidade de CD-ROM activa</entry>
+      <entry id="9001" string="Set drive speed limit:">Límite de velocidade da unidade:</entry>
+      <entry id="9002" string="CD information">Información do CD</entry>
+      <entry id="9003" string="Read CD Text">Ler o texto do CD</entry>
+      <entry id="9004" string="Read cdplayer.ini">Ler cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Configuracións de extracción de audio</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Activar modo CD paranoia:</entry>
+      <entry id="9007" string="Overlap only">Só superpoñer</entry>
+      <entry id="9008" string="No verify">Sen verificación</entry>
+      <entry id="9009" string="No scratch repair">Non reparar chíos</entry>
+      <entry id="9010" string="Full cdparanoia mode">Modo CD paranoia completo</entry>
+      <entry id="9011" string="Activate jitter correction">Activar corrección Jitter</entry>
+      <entry id="9012" string="Swap left/right channel">Intercambiar canais</entry>
+      <entry id="9013" string="Automatization">Automatización</entry>
+      <entry id="9014" string="Read CD contents on insert">Ler o contido do CD ao inserilo</entry>
+      <entry id="9015" string="Start ripping automatically">Extracción automática</entry>
+      <entry id="9016" string="Eject disk after ripping">Expulsar disco ao rematar</entry>
+      <entry id="9017" string="CD options">Opcións de CD</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Bloquear a bandexa do CD</entry>
+      <entry id="9019" string="Use native NT SCSI library">Usar biblioteca nativa NT SCSI</entry>
     </section>
 
     <section name="Encoders">
@@ -526,30 +521,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Calidade</entry>
-	<entry id="33001" string="Format">Formato</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Calidade</entry>
+	<entry id="33002" string="Format">Formato</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Tasa de bits / Calidade</entry>
-	  <entry id="33101" string="Bitrate per channel:">Bitrate por canal:</entry>
-	  <entry id="33102" string="Set quality:">Calidade:</entry>
-	  <entry id="33103" string="Stereo mode">Modo estéreo</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Activar Joint Stereo</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Formateo temporal de ruído</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Usar PRT</entry>
-	  <entry id="33107" string="Maximum bandwidth">Ancho de banda máximo</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Frecuencia máxima para AAC (Hz):</entry>
+	  <entry id="33200" string="Bitrate">Bitrate</entry>
+	  <entry id="33201" string="Bitrate / Quality">Tasa de bits / Calidade</entry>
+	  <entry id="33202" string="Bitrate per channel:">Bitrate por canal:</entry>
+	  <entry id="33203" string="Set quality:">Calidade:</entry>
+	  <entry id="33204" string="Stereo mode">Modo estéreo</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Activar Joint Stereo</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Formateo temporal de ruído</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Usar PRT</entry>
+	  <entry id="33208" string="Maximum bandwidth">Ancho de banda máximo</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Frecuencia máxima para AAC (Hz):</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">Versión MPEG</entry>
-	  <entry id="33201" string="AAC object type">Tipo de obxecto AAC</entry>
-	  <entry id="33202" string="File format">Formato de arquivo</entry>
-	  <entry id="33204" string="Tags">Tags de información</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Permitir etiquetas ID3v2 en arquivos AAC</entry>
-	  <entry id="33206" string="Note:">Nota:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Algúns reproductores poden chegar a ter problemas ao reproducir&#10;ficheros AAC con etiquetas ID3. Utilice esta opción só se ten certeza&#10;de que o reproductor pode manexar este tipo de arquivos.</entry>
+	  <entry id="33300" string="MPEG version">Versión MPEG</entry>
+	  <entry id="33301" string="AAC object type">Tipo de obxecto AAC</entry>
+	  <entry id="33302" string="File format">Formato de arquivo</entry>
+	  <entry id="33304" string="Tags">Tags de información</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Permitir etiquetas ID3v2 en arquivos AAC</entry>
+	  <entry id="33306" string="Note">Nota</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Algúns reproductores poden chegar a ter problemas ao reproducir&#10;ficheros AAC con etiquetas ID3. Utilice esta opción só se ten certeza&#10;de que o reproductor pode manexar este tipo de arquivos.</entry>
 	</section>
       </section>
 

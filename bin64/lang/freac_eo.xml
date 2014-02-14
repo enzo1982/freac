@@ -364,7 +364,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 venas kun la LAME, Ogg Vorbis, FAAC, FLAC kaj&#10;Bonk kodiloj. Unu kodilo por la VQF formato estas havebla ĉe&#10;la retpaĝo de %1: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 povas uzi la Winamp 2 eniga kromaĵoj por legi pli da&#10;dosierformatoj. Kopii la in_*.dll dosierojn en la %1/plugins-&#10;dosierujo por ebligi %1-on legi tiujn formatojn.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Kun %1 vi povas prilabori free-KD-datumbazskribaĵojn&#10;kiujn enhavas Unikod-aj literoj. Se vi havas KDjn kun ne-latinaj&#10;artistoj aŭ nomoj, vi povas kun %1 skribi (kaj sendi)&#10;korektajn freedb-skribaĵojn.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Por korekti legerarojn dum la ripado vi povas aktivigi la&#10;Jiter-korektadon ĉe la KDRip-klapeto de la agordilo de %1.&#10;Se tiu ne helpas, provu uzi unu el la paranoia-moduso.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Por korekti legerarojn dum la ripado vi povas aktivigi la&#10;Jiter-korektadon ĉe la Ripper-klapeto de la agordilo de %1.&#10;Se tiu ne helpas, provu uzi unu el la paranoia-moduso.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Ĉu vi havas sugestojn por plibonigi %1?&#10;Vi povas skribi viajn ideojn ĉe la Soundforge-paĝo&#10;de %1 - %2&#10;aŭ sendu retmesaĝon al %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Ĉu vi ŝatas %1? %1 estas havebla senpaga, sed vi&#10;povas helpi la %1-projekto per donaco. Vi povas sendi&#10;monon per PayPal al %2.&#10;Vizitu %3 por pli da informoj.</entry>
     </section>
@@ -396,31 +396,26 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Aktiva KD-ROM-diskligilo</entry>
-	<entry id="10002" string="CD information">KD-informoj</entry>
-	<entry id="10003" string="Read CD Text">Legi la KD-tekston</entry>
-	<entry id="10004" string="Read cdplayer.ini">Legi cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">Ripilo-agordoj</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Aktivigi paranojan moduson:</entry>
-	<entry id="10007" string="Overlap only">Nur kovri parte</entry>
-	<entry id="10008" string="No verify">Ne kontroli</entry>
-	<entry id="10009" string="No scratch repair">Ne ripari la grataĵoj</entry>
-	<entry id="10010" string="Full cdparanoia mode">Plena KD-paranoja moduso</entry>
-	<entry id="10011" string="Activate jitter correction">Aktivigi Jiter-korekton</entry>
-	<entry id="10012" string="Swap left/right channel">Interŝanĝi md/d ŝanelojn</entry>
-	<entry id="10013" string="Automatization">Aŭtomatigo</entry>
-	<entry id="10014" string="Read CD contents on insert">Legi KD-enhavon aŭtomate</entry>
-	<entry id="10015" string="Start ripping automatically">Starti aŭtomate la ripilon</entry>
-	<entry id="10016" string="Eject disk after ripping">Elĵeti la diskon post la ripado</entry>
-	<entry id="10017" string="CD options">KD-opcioj</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Ŝlosi la KD dum la ripado</entry>
-	<entry id="10019" string="Use native NT SCSI library">Uzi NT-SCSI-DLL</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Aktiva KD-ROM-diskligilo</entry>
+      <entry id="9002" string="CD information">KD-informoj</entry>
+      <entry id="9003" string="Read CD Text">Legi la KD-tekston</entry>
+      <entry id="9004" string="Read cdplayer.ini">Legi cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Ripilo-agordoj</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Aktivigi paranojan moduson:</entry>
+      <entry id="9007" string="Overlap only">Nur kovri parte</entry>
+      <entry id="9008" string="No verify">Ne kontroli</entry>
+      <entry id="9009" string="No scratch repair">Ne ripari la grataĵoj</entry>
+      <entry id="9010" string="Full cdparanoia mode">Plena KD-paranoja moduso</entry>
+      <entry id="9011" string="Activate jitter correction">Aktivigi Jiter-korekton</entry>
+      <entry id="9012" string="Swap left/right channel">Interŝanĝi md/d ŝanelojn</entry>
+      <entry id="9013" string="Automatization">Aŭtomatigo</entry>
+      <entry id="9014" string="Read CD contents on insert">Legi KD-enhavon aŭtomate</entry>
+      <entry id="9015" string="Start ripping automatically">Starti aŭtomate la ripilon</entry>
+      <entry id="9016" string="Eject disk after ripping">Elĵeti la diskon post la ripado</entry>
+      <entry id="9017" string="CD options">KD-opcioj</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Ŝlosi la KD dum la ripado</entry>
+      <entry id="9019" string="Use native NT SCSI library">Uzi NT-SCSI-DLL</entry>
     </section>
 
     <section name="Encoders">
@@ -517,30 +512,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Kvalito</entry>
-	<entry id="33001" string="Format">Formato</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Kvalito</entry>
+	<entry id="33002" string="Format">Formato</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Bitkvanto / Kvalito</entry>
-	  <entry id="33101" string="Bitrate per channel:">Bitkvantoj po ŝaneloj:</entry>
-	  <entry id="33102" string="Set quality:">Kvalito:</entry>
-	  <entry id="33103" string="Stereo mode">Stereomoduso</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Permesi la stereokunigon</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Temporal-Noise-Shaping</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Uzi Temporal Noise Shaping-on</entry>
-	  <entry id="33107" string="Maximum bandwidth">Maksimuma bendkapacito</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Maksimuma AAC-frekvenca bendkapacito por uzi (Hz):</entry>
+	  <entry id="33200" string="Bitrate">Bitkvanto</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bitkvanto / Kvalito</entry>
+	  <entry id="33202" string="Bitrate per channel:">Bitkvantoj po ŝaneloj:</entry>
+	  <entry id="33203" string="Set quality:">Kvalito:</entry>
+	  <entry id="33204" string="Stereo mode">Stereomoduso</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Permesi la stereokunigon</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Temporal-Noise-Shaping</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Uzi Temporal Noise Shaping-on</entry>
+	  <entry id="33208" string="Maximum bandwidth">Maksimuma bendkapacito</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Maksimuma AAC-frekvenca bendkapacito por uzi (Hz):</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG-versio</entry>
-	  <entry id="33201" string="AAC object type">AAC-objekta tipo</entry>
-	  <entry id="33202" string="File format">Dosierformato</entry>
-	  <entry id="33204" string="Tags">Informetiketo</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Permesi ID3v2-etiketojn en AAC-dosieroj</entry>
-	  <entry id="33206" string="Note:">Konsilo:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Kelkaj legiloj povas havi problemojn por legi AAC-&#10;dosieroj kun ID3-etiketoj. Bonvolu uzi tiun opcion&#10;nur se vi estas certa, ke via legilo funkcias kun tiuj etiketoj.</entry>
+	  <entry id="33300" string="MPEG version">MPEG-versio</entry>
+	  <entry id="33301" string="AAC object type">AAC-objekta tipo</entry>
+	  <entry id="33302" string="File format">Dosierformato</entry>
+	  <entry id="33304" string="Tags">Informetiketo</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Permesi ID3v2-etiketojn en AAC-dosieroj</entry>
+	  <entry id="33306" string="Note">Konsilo</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Kelkaj legiloj povas havi problemojn por legi AAC-&#10;dosieroj kun ID3-etiketoj. Bonvolu uzi tiun opcion&#10;nur se vi estas certa, ke via legilo funkcias kun tiuj etiketoj.</entry>
 	</section>
       </section>
 

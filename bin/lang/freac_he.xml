@@ -297,24 +297,19 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
-	<entry id="10005" string="Ripper settings">הגדרות ממיר מCD</entry>
-	<entry id="10007" string="Overlap only">חפיפה בלבד</entry>
-	<entry id="10008" string="No verify">ללא אימות</entry>
-	<entry id="10009" string="No scratch repair">ללא תיקון שריטות</entry>
-	<entry id="10011" string="Activate jitter correction">הפעל תיקון טעויות קריאה</entry>
-	<entry id="10012" string="Swap left/right channel">החלף בין ערוצי שמאל וימין</entry>
-	<entry id="10013" string="Automatization">אוטומטיזציה</entry>
-	<entry id="10015" string="Start ripping automatically">התחל המרה באופן אוטומטי</entry>
-	<entry id="10016" string="Eject disk after ripping">הוצא דיסק לאחר המרה</entry>
-	<entry id="10017" string="CD options">אופציות CD</entry>
-	<entry id="10018" string="Lock CD tray while ripping">נעל מגש כונן בזמן המרה</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
+      <entry id="9005" string="Ripper settings">הגדרות ממיר מCD</entry>
+      <entry id="9007" string="Overlap only">חפיפה בלבד</entry>
+      <entry id="9008" string="No verify">ללא אימות</entry>
+      <entry id="9009" string="No scratch repair">ללא תיקון שריטות</entry>
+      <entry id="9011" string="Activate jitter correction">הפעל תיקון טעויות קריאה</entry>
+      <entry id="9012" string="Swap left/right channel">החלף בין ערוצי שמאל וימין</entry>
+      <entry id="9013" string="Automatization">אוטומטיזציה</entry>
+      <entry id="9015" string="Start ripping automatically">התחל המרה באופן אוטומטי</entry>
+      <entry id="9016" string="Eject disk after ripping">הוצא דיסק לאחר המרה</entry>
+      <entry id="9017" string="CD options">אופציות CD</entry>
+      <entry id="9018" string="Lock CD tray while ripping">נעל מגש כונן בזמן המרה</entry>
     </section>
 
     <section name="Encoders">
@@ -388,21 +383,22 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">איכות</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">איכות</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">קצב העברת נתונים / איכות</entry>
-	  <entry id="33101" string="Bitrate per channel:">Bitrate לערוץ:</entry>
-	  <entry id="33102" string="Set quality:">הגדר איכות:</entry>
-	  <entry id="33103" string="Stereo mode">מצב Stereo</entry>
-	  <entry id="33107" string="Maximum bandwidth">רוחב פס מירבי</entry>
+	  <entry id="33200" string="Bitrate">קצב העברת נתונים</entry>
+	  <entry id="33201" string="Bitrate / Quality">קצב העברת נתונים / איכות</entry>
+	  <entry id="33202" string="Bitrate per channel:">Bitrate לערוץ:</entry>
+	  <entry id="33203" string="Set quality:">הגדר איכות:</entry>
+	  <entry id="33204" string="Stereo mode">מצב Stereo</entry>
+	  <entry id="33208" string="Maximum bandwidth">רוחב פס מירבי</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">גרסת MPEG</entry>
-	  <entry id="33202" string="File format">פורמט קובץ</entry>
-	  <entry id="33204" string="Tags">תגיות מידע</entry>
+	  <entry id="33300" string="MPEG version">גרסת MPEG</entry>
+	  <entry id="33302" string="File format">פורמט קובץ</entry>
+	  <entry id="33304" string="Tags">תגיות מידע</entry>
 	</section>
       </section>
 

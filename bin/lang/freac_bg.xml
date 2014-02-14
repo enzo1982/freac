@@ -422,7 +422,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 поддържа енкодерите LAME, Ogg Vorbis, FAAC,&#10;FLAC и Bonk. Енкодер за формата VQF е наличен&#10;на сайта на %1 на адрес: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да ползва входящи плъгини на Winamp 2 за&#10;поддръжка на повече формати. Копирайте файловете&#10;in_*.dll в директорията %1/plugins за да може %1 да&#10;чете тези формати.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">С %1 може да изратите записи към freedb CD базата&#10;данни съдържащи Уникод символи. Така че, ако имате&#10;CD-та с не-латински имена на изпълнителя или песните,&#10;можете да изпратите правилни записи към freedb с %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За коригиране на грешките при четене по време на&#10;извличането може да влючите Корекция на трептенията&#10;в таба CD Извличане на конфигурационния прозорец на %1.&#10;Ако това не помогне, опитайте някой от Paranoia режимите.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За коригиране на грешките при четене по време на&#10;извличането може да влючите Корекция на трептенията&#10;в таба CD Извличане на конфигурационния прозорец на %1.&#10;Ако това не помогне, опитайте някой от Paranoia режимите.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Имате предложения за усъвършенстване на %1?&#10;Може да изпратите всякакви идеи през Тракера на&#10;SourceForge страницата на %1 - %2&#10;или изпратите eMail до %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Харесвате ли %1? %1 е безплатен, но вие може да&#10;подпомогнете разработването като направите дарение&#10;за проекта %1. Може да изпратите пари до %2&#10;през PayPal.&#10;Вижте %3 за повече подробности.</entry>
     </section>
@@ -462,37 +462,37 @@
       <section name="Errors"/>
     </section>
 
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
+      <entry id="9001" string="Set drive speed limit:">Пределна скорост:</entry>
+      <entry id="9002" string="CD information">CD информация</entry>
+      <entry id="9003" string="Read CD Text">Четене на CD Текст</entry>
+      <entry id="9004" string="Read cdplayer.ini">Четене на cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Настройки на рипъра</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Актив. на режим cdparanoia:</entry>
+      <entry id="9007" string="Overlap only">Само препокриване</entry>
+      <entry id="9008" string="No verify">Без проверка</entry>
+      <entry id="9009" string="No scratch repair">Без поправка на надраскване</entry>
+      <entry id="9010" string="Full cdparanoia mode">Пълен режим cdparanoia</entry>
+      <entry id="9011" string="Activate jitter correction">Корекция на колебанията</entry>
+      <entry id="9012" string="Swap left/right channel">Размяна на ляв/десен канал</entry>
+      <entry id="9013" string="Automatization">Автоматизация</entry>
+      <entry id="9014" string="Read CD contents on insert">Четене на CD при поставяне</entry>
+      <entry id="9015" string="Start ripping automatically">Автом. стартиране на извличането</entry>
+      <entry id="9016" string="Eject disk after ripping">Извади диска след извличането</entry>
+      <entry id="9017" string="CD options">CD настройки</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Заключ. на CD при извличане</entry>
+      <entry id="9019" string="Use native NT SCSI library">Изп. на NT SCSI библиотека</entry>
+      <entry id="9020" string="Use read offset:">Изместване при четене:</entry>
+      <entry id="9021" string="samples">семпли</entry>
+      <entry id="9022" string="Read ISRC when adding tracks to joblist">Четене на ISRC при добавяне на песни към списъка със задачи</entry>
+    </section>
+
     <section name="Decoders">
 
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
-	<entry id="10001" string="Set drive speed limit:">Пределна скорост:</entry>
-	<entry id="10002" string="CD information">CD информация</entry>
-	<entry id="10003" string="Read CD Text">Четене на CD Текст</entry>
-	<entry id="10004" string="Read cdplayer.ini">Четене на cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">Настройки на рипъра</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Актив. на режим cdparanoia:</entry>
-	<entry id="10007" string="Overlap only">Само препокриване</entry>
-	<entry id="10008" string="No verify">Без проверка</entry>
-	<entry id="10009" string="No scratch repair">Без поправка на надраскване</entry>
-	<entry id="10010" string="Full cdparanoia mode">Пълен режим cdparanoia</entry>
-	<entry id="10011" string="Activate jitter correction">Корекция на колебанията</entry>
-	<entry id="10012" string="Swap left/right channel">Размяна на ляв/десен канал</entry>
-	<entry id="10013" string="Automatization">Автоматизация</entry>
-	<entry id="10014" string="Read CD contents on insert">Четене на CD при поставяне</entry>
-	<entry id="10015" string="Start ripping automatically">Автом. стартиране на извличането</entry>
-	<entry id="10016" string="Eject disk after ripping">Извади диска след извличането</entry>
-	<entry id="10017" string="CD options">CD настройки</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Заключ. на CD при извличане</entry>
-	<entry id="10019" string="Use native NT SCSI library">Изп. на NT SCSI библиотека</entry>
-	<entry id="10020" string="Use read offset:">Изместване при четене:</entry>
-	<entry id="10021" string="samples">семпли</entry>
-	<entry id="10022" string="Read ISRC when adding tracks to joblist">Четене на ISRC при добавяне на песни към списъка със задачи</entry>
-      </section>
-
       <section name="MAD">
-	<entry id="11000" string="Decoding">Декодиране</entry>
-	<entry id="11001" string="Enable 24 bit decoding">Вкл. на 24 битово декодиране</entry>
+	<entry id="10000" string="Decoding">Декодиране</entry>
+	<entry id="10001" string="Enable 24 bit decoding">Вкл. на 24 битово декодиране</entry>
       </section>
     </section>
 
@@ -590,31 +590,32 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Качество</entry>
-	<entry id="33001" string="Format">Формат</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Качество</entry>
+	<entry id="33002" string="Format">Формат</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Битрейт / Качество</entry>
-	  <entry id="33101" string="Bitrate per channel:">Битрейт на канал:</entry>
-	  <entry id="33102" string="Set quality:">Качество:</entry>
-	  <entry id="33103" string="Stereo mode">Стерео режим</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Комбинирано Стерео</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Временно формиране на шума</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Използване</entry>
-	  <entry id="33107" string="Maximum bandwidth">Максимална ширина на честотната лента</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Макс. използвана ширина на лентата на AAC (Hz):</entry>
+	  <entry id="33200" string="Bitrate">Битрейт</entry>
+	  <entry id="33201" string="Bitrate / Quality">Битрейт / Качество</entry>
+	  <entry id="33202" string="Bitrate per channel:">Битрейт на канал:</entry>
+	  <entry id="33203" string="Set quality:">Качество:</entry>
+	  <entry id="33204" string="Stereo mode">Стерео режим</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Комбинирано Стерео</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Временно формиране на шума</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Използване</entry>
+	  <entry id="33208" string="Maximum bandwidth">Максимална ширина на честотната лента</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Макс. използвана ширина на лентата на AAC (Hz):</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG версия</entry>
-	  <entry id="33201" string="AAC object type">Тип AAC обект</entry>
-	  <entry id="33202" string="File format">Файлов формат</entry>
-	  <entry id="33203" string="File extension">Файлово разширение</entry>
-	  <entry id="33204" string="Tags">Тагове</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Разрешаване на ID3v2 тагове в AAC файлове</entry>
-	  <entry id="33206" string="Note:">Забележка:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Някои устройства могат да имат проблем с AAC&#10;файлове с ID3 тагове. Моля използвайте само ако сте&#10;сигурни, че вашия плейър може да прочете тези тагове.</entry>
+	  <entry id="33300" string="MPEG version">MPEG версия</entry>
+	  <entry id="33301" string="AAC object type">Тип AAC обект</entry>
+	  <entry id="33302" string="File format">Файлов формат</entry>
+	  <entry id="33303" string="File extension">Файлово разширение</entry>
+	  <entry id="33304" string="Tags">Тагове</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Разрешаване на ID3v2 тагове в AAC файлове</entry>
+	  <entry id="33306" string="Note">Забележка</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Някои устройства могат да имат проблем с AAC&#10;файлове с ID3 тагове. Моля използвайте само ако сте&#10;сигурни, че вашия плейър може да прочете тези тагове.</entry>
 	</section>
       </section>
 

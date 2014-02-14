@@ -366,7 +366,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 installeras med stöd för&#10;LAME-, Ogg Vorbis-, FAAC- och Bonk-kodare.&#10;En kodare för formatet VQF finns&#10;tillgänglig på %1s webbplats: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 kan använda indatatillägg för Winamp 2&#10;för att få stöd för fler format.&#10;Kopiera &quot;in_*.dll&quot;-filer till mappen %1/plugins&#10;för att möjliggöra läsning av dessa format.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Med %1 kan du registrera freedb-poster för CD-skivor.&#10;Dessa måste bestå av Unicode-tecken. Så om du har en CD där&#10;artistnamnet eller titeln innehåller udda/diakritiska tecken&#10;kan du registrera det korrekta namnet i freedb-databasen&#10;med %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">För att korrigera läsfel kan du aktivera jitterkorrigering&#10;under fliken &quot;Rippning&quot; i inställningarna.&#10;Om det inte hjälper, så kan du testa att&#10;använda ett av cdparanoia-lägena.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">För att korrigera läsfel kan du aktivera jitterkorrigering&#10;under fliken &quot;Rippning&quot; i inställningarna.&#10;Om det inte hjälper, så kan du testa att&#10;använda ett av cdparanoia-lägena.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Har du förslag på förbättringar av %1?&#10;Du kan föreslå vilka idéer som helst genom spåraren på %1s&#10;projektsida på SourceForge, %2.&#10;Eller skicka ett e-postmeddelande till %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Tycker du om %1? %1 är gratis, men du&#10;kan hjälpa utvecklingsgruppen genom att&#10;donera pengar till %1-projektet.&#10;Du kan skicka pengar till %2 via PayPal.&#10;Läs mer på %3.</entry>
     </section>
@@ -405,32 +405,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Aktiv CD-ROM-enhet</entry>
-	<entry id="10001" string="Set drive speed limit:">Begränsa enhetens hastighet:</entry>
-	<entry id="10002" string="CD information">CD-information</entry>
-	<entry id="10003" string="Read CD Text">Läs CD-text</entry>
-	<entry id="10004" string="Read cdplayer.ini">Läs cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">Rippningsinställningar</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Aktivera cdparanoia-läge:</entry>
-	<entry id="10007" string="Overlap only">Endast överlappning</entry>
-	<entry id="10008" string="No verify">Ingen verifiering</entry>
-	<entry id="10009" string="No scratch repair">Reparera inte repor/hack</entry>
-	<entry id="10010" string="Full cdparanoia mode">Fullständigt cdparanoia-läge</entry>
-	<entry id="10011" string="Activate jitter correction">Aktivera jitterkorrigering</entry>
-	<entry id="10012" string="Swap left/right channel">Kasta om vänster/höger kanal</entry>
-	<entry id="10013" string="Automatization">Automatisering</entry>
-	<entry id="10014" string="Read CD contents on insert">Läs CD-innehåll vid inmatning</entry>
-	<entry id="10015" string="Start ripping automatically">Starta rippning automatiskt</entry>
-	<entry id="10016" string="Eject disk after ripping">Mata ut CD-skiva efter rippning</entry>
-	<entry id="10017" string="CD options">CD-inställningar</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Lås CD-luckan under rippning</entry>
-	<entry id="10019" string="Use native NT SCSI library">Anv. internt NT SCSI-bibliotek</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Aktiv CD-ROM-enhet</entry>
+      <entry id="9001" string="Set drive speed limit:">Begränsa enhetens hastighet:</entry>
+      <entry id="9002" string="CD information">CD-information</entry>
+      <entry id="9003" string="Read CD Text">Läs CD-text</entry>
+      <entry id="9004" string="Read cdplayer.ini">Läs cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Rippningsinställningar</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Aktivera cdparanoia-läge:</entry>
+      <entry id="9007" string="Overlap only">Endast överlappning</entry>
+      <entry id="9008" string="No verify">Ingen verifiering</entry>
+      <entry id="9009" string="No scratch repair">Reparera inte repor/hack</entry>
+      <entry id="9010" string="Full cdparanoia mode">Fullständigt cdparanoia-läge</entry>
+      <entry id="9011" string="Activate jitter correction">Aktivera jitterkorrigering</entry>
+      <entry id="9012" string="Swap left/right channel">Kasta om vänster/höger kanal</entry>
+      <entry id="9013" string="Automatization">Automatisering</entry>
+      <entry id="9014" string="Read CD contents on insert">Läs CD-innehåll vid inmatning</entry>
+      <entry id="9015" string="Start ripping automatically">Starta rippning automatiskt</entry>
+      <entry id="9016" string="Eject disk after ripping">Mata ut CD-skiva efter rippning</entry>
+      <entry id="9017" string="CD options">CD-inställningar</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Lås CD-luckan under rippning</entry>
+      <entry id="9019" string="Use native NT SCSI library">Anv. internt NT SCSI-bibliotek</entry>
     </section>
 
     <section name="Encoders">
@@ -527,30 +522,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Kvalitet</entry>
-	<entry id="33001" string="Format">Format</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Kvalitet</entry>
+	<entry id="33002" string="Format">Format</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Bithastighet / Kvalitet</entry>
-	  <entry id="33101" string="Bitrate per channel:">Bithastighet per kanal:</entry>
-	  <entry id="33102" string="Set quality:">Kvalitet:</entry>
-	  <entry id="33103" string="Stereo mode">Stereoläge</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Tillåt sammanslagen stereo</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Brusformning (TNS)</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Använd brusformning (TNS)</entry>
-	  <entry id="33107" string="Maximum bandwidth">Maximibandbredd</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Största AAC-frekvensbandbredd att använda (Hz):</entry>
+	  <entry id="33200" string="Bitrate">Bithastighet</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bithastighet / Kvalitet</entry>
+	  <entry id="33202" string="Bitrate per channel:">Bithastighet per kanal:</entry>
+	  <entry id="33203" string="Set quality:">Kvalitet:</entry>
+	  <entry id="33204" string="Stereo mode">Stereoläge</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Tillåt sammanslagen stereo</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Brusformning (TNS)</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Använd brusformning (TNS)</entry>
+	  <entry id="33208" string="Maximum bandwidth">Maximibandbredd</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Största AAC-frekvensbandbredd att använda (Hz):</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG-version</entry>
-	  <entry id="33201" string="AAC object type">AAC-objekttyp</entry>
-	  <entry id="33202" string="File format">Filformat</entry>
-	  <entry id="33204" string="Tags">Informationstaggar</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Tillåt ID3v2-taggar i AAC-filer</entry>
-	  <entry id="33206" string="Note:">Obs:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Vissa spelare kan ha problem att spela upp AAC-filer med&#10;ID3-taggar. Använd endast denna funktion om du är helt&#10;säker på att din enhet kan läsa ID3-taggar.</entry>
+	  <entry id="33300" string="MPEG version">MPEG-version</entry>
+	  <entry id="33301" string="AAC object type">AAC-objekttyp</entry>
+	  <entry id="33302" string="File format">Filformat</entry>
+	  <entry id="33304" string="Tags">Informationstaggar</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Tillåt ID3v2-taggar i AAC-filer</entry>
+	  <entry id="33306" string="Note">Obs</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Vissa spelare kan ha problem att spela upp AAC-filer med&#10;ID3-taggar. Använd endast denna funktion om du är helt&#10;säker på att din enhet kan läsa ID3-taggar.</entry>
 	</section>
       </section>
 

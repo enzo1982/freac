@@ -365,7 +365,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 підтримує LAME, Ogg Vorbis, Bonk.&#10;Кодеки AAC і VQF доступні на сайті %1.</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може використовувати вхідні плагіни Winamp 2 для&#10;підтримки більшої кількості форматів файлів.&#10;Скопіюйте файли in_*.dll у теку %1/plugins для того&#10;щоб він почав розуміти нові формати.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">За допомогою %1 ви можете поповнювати&#10;базу даних freedb CD.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Для корекції помилок читання під час захоплення&#10;даних ви можете вкл.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Для корекції помилок читання під час захоплення&#10;даних ви можете вкл.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Ви маєте будь-які побажання як покращити %1?&#10;Ви можете викласти їх на форумі проекту %1,&#10;на SourceForge або відіслати по е-мaіl.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Вам подобається %1? %1 вільний&#10;для розповсюдження, але ви можете профінансувати&#10;розробку проекту. Переслати гроші на %2&#10;через PayPal.&#10;Подробиці на %3.</entry>
     </section>
@@ -404,32 +404,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Активний привід CD-ROM</entry>
-	<entry id="10001" string="Set drive speed limit:">Обмеження швид. приводу:</entry>
-	<entry id="10002" string="CD information">Інформація CD</entry>
-	<entry id="10003" string="Read CD Text">Читати CD текст </entry>
-	<entry id="10004" string="Read cdplayer.ini">Читати cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">Налаштування захоплення даних</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Активований СDparanoia режим:</entry>
-	<entry id="10007" string="Overlap only">Тільки перекривати</entry>
-	<entry id="10008" string="No verify">Без підтвердження</entry>
-	<entry id="10009" string="No scratch repair">Без виправлення царапин</entry>
-	<entry id="10010" string="Full cdparanoia mode">Повний CDparanoia режим</entry>
-	<entry id="10011" string="Activate jitter correction">Активована jitter корекція</entry>
-	<entry id="10012" string="Swap left/right channel">Поміняти канали місцями</entry>
-	<entry id="10013" string="Automatization">Автоматизація</entry>
-	<entry id="10014" string="Read CD contents on insert">Вміст CD читати відразу</entry>
-	<entry id="10015" string="Start ripping automatically">Авт. розпочати захоплення</entry>
-	<entry id="10016" string="Eject disk after ripping">Витягнути диск після роботи</entry>
-	<entry id="10017" string="CD options">CD опції</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Блокувати CD під час роботи</entry>
-	<entry id="10019" string="Use native NT SCSI library">Викор. NT SCSI бібліотеки</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Активний привід CD-ROM</entry>
+      <entry id="9001" string="Set drive speed limit:">Обмеження швид. приводу:</entry>
+      <entry id="9002" string="CD information">Інформація CD</entry>
+      <entry id="9003" string="Read CD Text">Читати CD текст </entry>
+      <entry id="9004" string="Read cdplayer.ini">Читати cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Налаштування захоплення даних</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Активований СDparanoia режим:</entry>
+      <entry id="9007" string="Overlap only">Тільки перекривати</entry>
+      <entry id="9008" string="No verify">Без підтвердження</entry>
+      <entry id="9009" string="No scratch repair">Без виправлення царапин</entry>
+      <entry id="9010" string="Full cdparanoia mode">Повний CDparanoia режим</entry>
+      <entry id="9011" string="Activate jitter correction">Активована jitter корекція</entry>
+      <entry id="9012" string="Swap left/right channel">Поміняти канали місцями</entry>
+      <entry id="9013" string="Automatization">Автоматизація</entry>
+      <entry id="9014" string="Read CD contents on insert">Вміст CD читати відразу</entry>
+      <entry id="9015" string="Start ripping automatically">Авт. розпочати захоплення</entry>
+      <entry id="9016" string="Eject disk after ripping">Витягнути диск після роботи</entry>
+      <entry id="9017" string="CD options">CD опції</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Блокувати CD під час роботи</entry>
+      <entry id="9019" string="Use native NT SCSI library">Викор. NT SCSI бібліотеки</entry>
     </section>
 
     <section name="Encoders">
@@ -526,30 +521,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Якість</entry>
-	<entry id="33001" string="Format">Формат</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Якість</entry>
+	<entry id="33002" string="Format">Формат</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Бітрейт/Якість</entry>
-	  <entry id="33101" string="Bitrate per channel:">Бітрейт на канал:</entry>
-	  <entry id="33102" string="Set quality:">Якість:</entry>
-	  <entry id="33103" string="Stereo mode">Стерео режим</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Дозволити Joint стерео</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Формування часового шуму</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Використання ФЧШ</entry>
-	  <entry id="33107" string="Maximum bandwidth">Максимальна пропускна здатність</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Макс. частотна пропускна здатність AAC для викор.:</entry>
+	  <entry id="33200" string="Bitrate">Бітрейт</entry>
+	  <entry id="33201" string="Bitrate / Quality">Бітрейт/Якість</entry>
+	  <entry id="33202" string="Bitrate per channel:">Бітрейт на канал:</entry>
+	  <entry id="33203" string="Set quality:">Якість:</entry>
+	  <entry id="33204" string="Stereo mode">Стерео режим</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Дозволити Joint стерео</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Формування часового шуму</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Використання ФЧШ</entry>
+	  <entry id="33208" string="Maximum bandwidth">Максимальна пропускна здатність</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Макс. частотна пропускна здатність AAC для викор.:</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG версія</entry>
-	  <entry id="33201" string="AAC object type">AAC об`єктний тип</entry>
-	  <entry id="33202" string="File format">Файловий формат</entry>
-	  <entry id="33204" string="Tags">Заголовки</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Дозволити теги ID3v2 у ААС файлах</entry>
-	  <entry id="33206" string="Note:">Примітка:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">У деяких програвачах можуть виникнути проблеми при&#10;відтворенні AAC-файлів з ID3 тегами. Використовуйте цю опцію&#10;якщо ви впевненні, що ваш програвач може обробляти ці теги.</entry>
+	  <entry id="33300" string="MPEG version">MPEG версія</entry>
+	  <entry id="33301" string="AAC object type">AAC об`єктний тип</entry>
+	  <entry id="33302" string="File format">Файловий формат</entry>
+	  <entry id="33304" string="Tags">Заголовки</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Дозволити теги ID3v2 у ААС файлах</entry>
+	  <entry id="33306" string="Note">Примітка</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">У деяких програвачах можуть виникнути проблеми при&#10;відтворенні AAC-файлів з ID3 тегами. Використовуйте цю опцію&#10;якщо ви впевненні, що ваш програвач може обробляти ці теги.</entry>
 	</section>
       </section>
 

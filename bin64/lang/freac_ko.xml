@@ -273,7 +273,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1는 LAME, Ogg Vorbis, FAAC, 그리고 Bonk 인코더를&#10;지원합니다. VQF포맷을 지원하는 %1 웹사이트에서&#10;찾을 수 있습니다: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1는 보다 많은 파일포맷을 지원하기 위해 Winamp 2&#10;입력 플러그인을 지원합니다. %1는 이러한 파일포맷을&#10;지원하려면, in_*.dll 파일을 %1/plugins에 복사하십시오.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1로 유니코드 문자를 포함한 freedb CD&#10;데이타베이스를 전송할 수 있습니다. 그리고 비(非)라틴&#10;아티스트나 제목의 CD를 갖고 계시면, %1를 이용하여&#10;freedb 엔트리를 수정하여 전송할 수 있습니다.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">에러 정정을 위해 %1의 대화창의 CDRip 탭에서 지터&#10;정정이 가능합니다. 또는, 파라노어 모드를 사용할 수도&#10;있습니다.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">에러 정정을 위해 %1의 대화창의 Ripper 탭에서 지터&#10;정정이 가능합니다. 또는, 파라노어 모드를 사용할 수도&#10;있습니다.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1를 개선하기 위한 제안사항은 %1 SourceForge&#10;프로젝트 페이지(%2)에 리플을&#10;달아주시거나 %3 로 메일을&#10;보내주십시오.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1가 마음에 드십니까? %1는 무료이며, %1&#10;프로젝트를 이용하여 개발하면 당신도 상용화 가능합니다.&#10;PayPal을 통하여 %2 로 송금가능합니다.&#10;자세한 사항은 %3 을&#10;참조하십시오.</entry>
     </section>
@@ -297,27 +297,22 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">CD-ROM 드라이브 활성화</entry>
-	<entry id="10005" string="Ripper settings">리퍼 세팅</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">CD 파라노어 모드:</entry>
-	<entry id="10007" string="Overlap only">오버랩</entry>
-	<entry id="10008" string="No verify">확인 안함</entry>
-	<entry id="10009" string="No scratch repair">스크래치 복구 없음</entry>
-	<entry id="10010" string="Full cdparanoia mode">전체 CD 모드</entry>
-	<entry id="10011" string="Activate jitter correction">지터 정정</entry>
-	<entry id="10012" string="Swap left/right channel">좌우 채널 스왑</entry>
-	<entry id="10013" string="Automatization">자동화</entry>
-	<entry id="10014" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
-	<entry id="10016" string="Eject disk after ripping">리핑후 디스크 배출</entry>
-	<entry id="10017" string="CD options">CD 옵션</entry>
-	<entry id="10018" string="Lock CD tray while ripping">리핑 도증 CD트레이 잠김</entry>
-	<entry id="10019" string="Use native NT SCSI library">NT SCSI 라이브러리 사용</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">CD-ROM 드라이브 활성화</entry>
+      <entry id="9005" string="Ripper settings">리퍼 세팅</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">CD 파라노어 모드:</entry>
+      <entry id="9007" string="Overlap only">오버랩</entry>
+      <entry id="9008" string="No verify">확인 안함</entry>
+      <entry id="9009" string="No scratch repair">스크래치 복구 없음</entry>
+      <entry id="9010" string="Full cdparanoia mode">전체 CD 모드</entry>
+      <entry id="9011" string="Activate jitter correction">지터 정정</entry>
+      <entry id="9012" string="Swap left/right channel">좌우 채널 스왑</entry>
+      <entry id="9013" string="Automatization">자동화</entry>
+      <entry id="9014" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
+      <entry id="9016" string="Eject disk after ripping">리핑후 디스크 배출</entry>
+      <entry id="9017" string="CD options">CD 옵션</entry>
+      <entry id="9018" string="Lock CD tray while ripping">리핑 도증 CD트레이 잠김</entry>
+      <entry id="9019" string="Use native NT SCSI library">NT SCSI 라이브러리 사용</entry>
     </section>
 
     <section name="Encoders">
@@ -413,30 +408,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">음질</entry>
-	<entry id="33001" string="Format">포맷</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">음질</entry>
+	<entry id="33002" string="Format">포맷</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">비트레이트 / 음질</entry>
-	  <entry id="33101" string="Bitrate per channel:">채널당 비트레이트:</entry>
-	  <entry id="33102" string="Set quality:">음질:</entry>
-	  <entry id="33103" string="Stereo mode">스테레오</entry>
-	  <entry id="33104" string="Allow Joint Stereo">조인트 스테레오 허용</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">노이즈 제거</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">노이즈제거 사용</entry>
-	  <entry id="33107" string="Maximum bandwidth">최대 대역폭</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">사용가능 최대 AAC주파수 대역폭(Hz):</entry>
+	  <entry id="33200" string="Bitrate">비트레이트</entry>
+	  <entry id="33201" string="Bitrate / Quality">비트레이트 / 음질</entry>
+	  <entry id="33202" string="Bitrate per channel:">채널당 비트레이트:</entry>
+	  <entry id="33203" string="Set quality:">음질:</entry>
+	  <entry id="33204" string="Stereo mode">스테레오</entry>
+	  <entry id="33205" string="Allow Joint Stereo">조인트 스테레오 허용</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">노이즈 제거</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">노이즈제거 사용</entry>
+	  <entry id="33208" string="Maximum bandwidth">최대 대역폭</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">사용가능 최대 AAC주파수 대역폭(Hz):</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG 버전</entry>
-	  <entry id="33201" string="AAC object type">AAC 오브젝트 형태</entry>
-	  <entry id="33202" string="File format">파일 포맷</entry>
-	  <entry id="33204" string="Tags">정보 태그</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">AAC 파일에서 ID3v2 태그 지원</entry>
-	  <entry id="33206" string="Note:">주의:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">ID3 태그가 포함된 AAC파일은 문제가 될 수&#10;있습니다. 태그를 플레이어에서 사용할 경우에만,&#10;이 옵션을 사용하기 바랍니다. </entry>
+	  <entry id="33300" string="MPEG version">MPEG 버전</entry>
+	  <entry id="33301" string="AAC object type">AAC 오브젝트 형태</entry>
+	  <entry id="33302" string="File format">파일 포맷</entry>
+	  <entry id="33304" string="Tags">정보 태그</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">AAC 파일에서 ID3v2 태그 지원</entry>
+	  <entry id="33306" string="Note">주의</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">ID3 태그가 포함된 AAC파일은 문제가 될 수&#10;있습니다. 태그를 플레이어에서 사용할 경우에만,&#10;이 옵션을 사용하기 바랍니다. </entry>
 	</section>
       </section>
 

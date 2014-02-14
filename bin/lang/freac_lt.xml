@@ -365,7 +365,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 palaiko Lame, Ogg Vorbis, FAAC, FLAC&#10;bei Bonk koduotojus. VQF formato koduotoją galite rasti&#10;%1 svetainėje: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 gali naudoti Winamp 2 įvesties įskiepius,&#10;kad palaikyti daugiau failų formatų. Nukopijuokite in_*.dll failus į&#10;BoknEnc/plugins aplanką, kad %1 suprastų šiuos failus.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Naudodamiesi %1, Jūs freedb CD duomenų bazei galite&#10;perduoti įrašus, susidedančius iš Unicode simbolių.&#10;Taigi, jeigu turite kokį nors CD su ne lotynišku atlikėju&#10;ar takelių pavadinimais, su %1 galite lengvai&#10;perduoti freedb duomenų bazei korektiškus įrašus.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kad ištaisyti disko skaitymo problemas, %1 konfigūracijos&#10;lange, skleidėjo nuostatose, Jūs  galite įjungti virpėjimo taisymą.&#10;Jei tai nepadės, bandykite naudoti vieną iš Paranoia režimų.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kad ištaisyti disko skaitymo problemas, %1 konfigūracijos&#10;lange, skleidėjo nuostatose, Jūs  galite įjungti virpėjimo taisymą.&#10;Jei tai nepadės, bandykite naudoti vieną iš Paranoia režimų.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Ar turite pasiūlymų kaip pagerinti %1?&#10;Bet kokias įdėjas galite perduoti skiltyje Tracker, esančioje %1&#10;projekto SourceForge puslapyje - %2&#10;arba siųskite el. laišką adresu: %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Jums patinka %1? %1 yra nemokamas, bet Jūs galite&#10;paspartinti vystymąsi paremdami %1 projektą.&#10;Pinigus galite siųsti į %2, naudodamiesi PayPal.&#10;Daugiau informacijos rasite čia:&#10;%3.</entry>
     </section>
@@ -404,32 +404,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Aktyvus CD-ROM diskasukis</entry>
-	<entry id="10001" string="Set drive speed limit:">Nustatyti diskasukio greičio limitą:</entry>
-	<entry id="10002" string="CD information">CD informacija</entry>
-	<entry id="10003" string="Read CD Text">Skaityti CD tekstą</entry>
-	<entry id="10004" string="Read cdplayer.ini">Skaityti cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">Skleidėjo nuostatos</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Aktyvuoti cdparanoia režimą:</entry>
-	<entry id="10007" string="Overlap only">Tik uždengimas</entry>
-	<entry id="10008" string="No verify">Jokio patvirtinimo</entry>
-	<entry id="10009" string="No scratch repair">Jokio įbrežimų taisymo</entry>
-	<entry id="10010" string="Full cdparanoia mode">Pilnas cdparanoia režimas</entry>
-	<entry id="10011" string="Activate jitter correction">Aktyvuoti virpėjimo taisymą</entry>
-	<entry id="10012" string="Swap left/right channel">Apkeisti kairį/dešinį kanalą</entry>
-	<entry id="10013" string="Automatization">Automatizavimas</entry>
-	<entry id="10014" string="Read CD contents on insert">Skaityti CD turinį tik įdėjus</entry>
-	<entry id="10015" string="Start ripping automatically">Pradėti skleidimą automatiškai</entry>
-	<entry id="10016" string="Eject disk after ripping">Išmesti diską po skleidimo</entry>
-	<entry id="10017" string="CD options">CD pasirinktys</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Rakinti CD dėklą per skleidimą</entry>
-	<entry id="10019" string="Use native NT SCSI library">Naudoti grynąją NT SCSI biblioteką</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Aktyvus CD-ROM diskasukis</entry>
+      <entry id="9001" string="Set drive speed limit:">Nustatyti diskasukio greičio limitą:</entry>
+      <entry id="9002" string="CD information">CD informacija</entry>
+      <entry id="9003" string="Read CD Text">Skaityti CD tekstą</entry>
+      <entry id="9004" string="Read cdplayer.ini">Skaityti cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Skleidėjo nuostatos</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Aktyvuoti cdparanoia režimą:</entry>
+      <entry id="9007" string="Overlap only">Tik uždengimas</entry>
+      <entry id="9008" string="No verify">Jokio patvirtinimo</entry>
+      <entry id="9009" string="No scratch repair">Jokio įbrežimų taisymo</entry>
+      <entry id="9010" string="Full cdparanoia mode">Pilnas cdparanoia režimas</entry>
+      <entry id="9011" string="Activate jitter correction">Aktyvuoti virpėjimo taisymą</entry>
+      <entry id="9012" string="Swap left/right channel">Apkeisti kairį/dešinį kanalą</entry>
+      <entry id="9013" string="Automatization">Automatizavimas</entry>
+      <entry id="9014" string="Read CD contents on insert">Skaityti CD turinį tik įdėjus</entry>
+      <entry id="9015" string="Start ripping automatically">Pradėti skleidimą automatiškai</entry>
+      <entry id="9016" string="Eject disk after ripping">Išmesti diską po skleidimo</entry>
+      <entry id="9017" string="CD options">CD pasirinktys</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Rakinti CD dėklą per skleidimą</entry>
+      <entry id="9019" string="Use native NT SCSI library">Naudoti grynąją NT SCSI biblioteką</entry>
     </section>
 
     <section name="Encoders">
@@ -526,30 +521,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Kokybė</entry>
-	<entry id="33001" string="Format">Formatas</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Kokybė</entry>
+	<entry id="33002" string="Format">Formatas</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Bitų srautas / Kokybė</entry>
-	  <entry id="33101" string="Bitrate per channel:">Bitų srautas kanalui</entry>
-	  <entry id="33102" string="Set quality:">Nustatyti kokybę:</entry>
-	  <entry id="33103" string="Stereo mode">Stereo režimas</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Leisti Joint Stereo</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Laikinas garsų apipavidalinimas</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Naudoti laikiną garsų apipavidalinimą</entry>
-	  <entry id="33107" string="Maximum bandwidth">Didžiausias juosto plotis</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Didžiausias naudotinas AAC juostos dažnis (Hz):</entry>
+	  <entry id="33200" string="Bitrate">Bitų srautas</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bitų srautas / Kokybė</entry>
+	  <entry id="33202" string="Bitrate per channel:">Bitų srautas kanalui</entry>
+	  <entry id="33203" string="Set quality:">Nustatyti kokybę:</entry>
+	  <entry id="33204" string="Stereo mode">Stereo režimas</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Leisti Joint Stereo</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Laikinas garsų apipavidalinimas</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Naudoti laikiną garsų apipavidalinimą</entry>
+	  <entry id="33208" string="Maximum bandwidth">Didžiausias juosto plotis</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Didžiausias naudotinas AAC juostos dažnis (Hz):</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG versija</entry>
-	  <entry id="33201" string="AAC object type">AAC objekto tipas</entry>
-	  <entry id="33202" string="File format">Failo formatas</entry>
-	  <entry id="33204" string="Tags">Informacinės žymos</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Leisti ID3v2 žymas AAC failuose</entry>
-	  <entry id="33206" string="Note:">Svarbu:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Kai kurie grotuvai gali turėti problemų grojant&#10;AAC failus su ID3 žymomis. Prašome naudoti šią funkciją&#10;tik tada, jei Jūsų grotuvas tai sugeba.</entry>
+	  <entry id="33300" string="MPEG version">MPEG versija</entry>
+	  <entry id="33301" string="AAC object type">AAC objekto tipas</entry>
+	  <entry id="33302" string="File format">Failo formatas</entry>
+	  <entry id="33304" string="Tags">Informacinės žymos</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Leisti ID3v2 žymas AAC failuose</entry>
+	  <entry id="33306" string="Note">Svarbu</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Kai kurie grotuvai gali turėti problemų grojant&#10;AAC failus su ID3 žymomis. Prašome naudoti šią funkciją&#10;tik tada, jei Jūsų grotuvas tai sugeba.</entry>
 	</section>
       </section>
 

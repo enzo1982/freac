@@ -366,7 +366,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 は LAME、Ogg Vorbis、FAAC、FLAC、及び Bonk&#10;エンコーダをサポートしています。&#10;VQF 形式のエンコーダは下記で公開されています。&#10;%1 のウェブサイト：%2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 は Winamp2 入力プラグインを使って対応形式を&#10;追加する事が出来ます。%1 で他の形式を読み込める&#10;ようにするには、in_*.dll を %1/plugins にコピー&#10;してください。</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 で freedb CD データベースに Unicode 文字を含む&#10;データを送信できます。あなたの持っている英文字以外の&#10;アーティスト名やタイトル名の CD データを、%1 で&#10;freedb に送信できます。</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピングの読み込みエラー補正には、設定ダイアログの&#10;CD Rip タブの 'ジッター補正有効' をチェックしてください。&#10;それで解決しない場合は、CD 詳細設定モードのいずれかを&#10;試してください。</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピングの読み込みエラー補正には、設定ダイアログの&#10;Ripper タブの 'ジッター補正有効' をチェックしてください。&#10;それで解決しない場合は、CD 詳細設定モードのいずれかを&#10;試してください。</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1 の改善につき意見があれば、SourceForge にある&#10;%1 のプロジェクトページ(%2)&#10;のトラッカーか、%3 へのメールで&#10;あなたのアイディアを送信する事が出来ます。</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 が気に入りましたか？ これは無料で利用できますが、&#10;%1 プロジェクトに寄付する事で開発を資金援助が出来ます。&#10;あなたは %2 へ PayPal を使って送金できます。&#10;詳細は %3 を参照してください。</entry>
     </section>
@@ -405,32 +405,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
-	<entry id="10001" string="Set drive speed limit:">ドライブ速度制限の設定：</entry>
-	<entry id="10002" string="CD information">CD 情報</entry>
-	<entry id="10003" string="Read CD Text">CD Text を読み込む</entry>
-	<entry id="10004" string="Read cdplayer.ini">cdplayer.ini を読み込む</entry>
-	<entry id="10005" string="Ripper settings">リッパー設定</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">CD 詳細設定モード有効</entry>
-	<entry id="10007" string="Overlap only">オーバーラップのみ</entry>
-	<entry id="10008" string="No verify">ベリファイを行わない</entry>
-	<entry id="10009" string="No scratch repair">破損部の修復をしない</entry>
-	<entry id="10010" string="Full cdparanoia mode">全て行う</entry>
-	<entry id="10011" string="Activate jitter correction">ジッター補正有効</entry>
-	<entry id="10012" string="Swap left/right channel">左右チャンネルの入れ替え</entry>
-	<entry id="10013" string="Automatization">自動化</entry>
-	<entry id="10014" string="Read CD contents on insert">CD 挿入時に読み込みを行う</entry>
-	<entry id="10015" string="Start ripping automatically">自動でリッピング開始</entry>
-	<entry id="10016" string="Eject disk after ripping">リッピング後ディスクを取り出す</entry>
-	<entry id="10017" string="CD options">CD 設定</entry>
-	<entry id="10018" string="Lock CD tray while ripping">リッピング中は CD トレイをロック</entry>
-	<entry id="10019" string="Use native NT SCSI library">NT SCSI ライブラリを使用</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
+      <entry id="9001" string="Set drive speed limit:">ドライブ速度制限の設定：</entry>
+      <entry id="9002" string="CD information">CD 情報</entry>
+      <entry id="9003" string="Read CD Text">CD Text を読み込む</entry>
+      <entry id="9004" string="Read cdplayer.ini">cdplayer.ini を読み込む</entry>
+      <entry id="9005" string="Ripper settings">リッパー設定</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">CD 詳細設定モード有効</entry>
+      <entry id="9007" string="Overlap only">オーバーラップのみ</entry>
+      <entry id="9008" string="No verify">ベリファイを行わない</entry>
+      <entry id="9009" string="No scratch repair">破損部の修復をしない</entry>
+      <entry id="9010" string="Full cdparanoia mode">全て行う</entry>
+      <entry id="9011" string="Activate jitter correction">ジッター補正有効</entry>
+      <entry id="9012" string="Swap left/right channel">左右チャンネルの入れ替え</entry>
+      <entry id="9013" string="Automatization">自動化</entry>
+      <entry id="9014" string="Read CD contents on insert">CD 挿入時に読み込みを行う</entry>
+      <entry id="9015" string="Start ripping automatically">自動でリッピング開始</entry>
+      <entry id="9016" string="Eject disk after ripping">リッピング後ディスクを取り出す</entry>
+      <entry id="9017" string="CD options">CD 設定</entry>
+      <entry id="9018" string="Lock CD tray while ripping">リッピング中は CD トレイをロック</entry>
+      <entry id="9019" string="Use native NT SCSI library">NT SCSI ライブラリを使用</entry>
     </section>
 
     <section name="Encoders">
@@ -527,30 +522,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">品質</entry>
-	<entry id="33001" string="Format">形式</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">品質</entry>
+	<entry id="33002" string="Format">形式</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">ビットレート/品質</entry>
-	  <entry id="33101" string="Bitrate per channel:">チャンネル毎ビットレート：</entry>
-	  <entry id="33102" string="Set quality:">品質：</entry>
-	  <entry id="33103" string="Stereo mode">ステレオ モード</entry>
-	  <entry id="33104" string="Allow Joint Stereo">ジョイント ステレオを許可</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">TNS （時間軸ノイズ調整）</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">TNS を使用する</entry>
-	  <entry id="33107" string="Maximum bandwidth">最大帯域幅</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">AAC 最大周波数帯域幅(Hz)：</entry>
+	  <entry id="33200" string="Bitrate">ビットレート</entry>
+	  <entry id="33201" string="Bitrate / Quality">ビットレート/品質</entry>
+	  <entry id="33202" string="Bitrate per channel:">チャンネル毎ビットレート：</entry>
+	  <entry id="33203" string="Set quality:">品質：</entry>
+	  <entry id="33204" string="Stereo mode">ステレオ モード</entry>
+	  <entry id="33205" string="Allow Joint Stereo">ジョイント ステレオを許可</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">TNS （時間軸ノイズ調整）</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">TNS を使用する</entry>
+	  <entry id="33208" string="Maximum bandwidth">最大帯域幅</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">AAC 最大周波数帯域幅(Hz)：</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG バージョン</entry>
-	  <entry id="33201" string="AAC object type">AAC のタイプ</entry>
-	  <entry id="33202" string="File format">ファイル形式</entry>
-	  <entry id="33204" string="Tags">タグ情報</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">AAC ファイルで ID3v2 タグを使用</entry>
-	  <entry id="33206" string="Note:">注意：</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">幾つかのプレイヤーでは ID3 タグ付き AAC ファイル再生で&#10;問題が発生する場合が有ります。このオプションはあなたの&#10;プレイヤーで ID3 タグが扱えるか確認後に使用してください。</entry>
+	  <entry id="33300" string="MPEG version">MPEG バージョン</entry>
+	  <entry id="33301" string="AAC object type">AAC のタイプ</entry>
+	  <entry id="33302" string="File format">ファイル形式</entry>
+	  <entry id="33304" string="Tags">タグ情報</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">AAC ファイルで ID3v2 タグを使用</entry>
+	  <entry id="33306" string="Note">注意</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">幾つかのプレイヤーでは ID3 タグ付き AAC ファイル再生で&#10;問題が発生する場合が有ります。このオプションはあなたの&#10;プレイヤーで ID3 タグが扱えるか確認後に使用してください。</entry>
 	</section>
       </section>
 

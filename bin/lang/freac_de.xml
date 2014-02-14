@@ -430,7 +430,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 wird mit den Kodierern LAME, Ogg Vorbis, FAAC, FLAC&#10;und Bonk ausgeliefert. Ein Kodierer für das VQF-Format ist auf&#10;der %1-Webseite verfügbar: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 kann Winamp 2 Eingabe-Plugins verwenden, um mehr&#10;Dateiformate zu lesen. Kopieren Sie die in_*.dll Dateien in den&#10;Ordner %1/plugins, um diese Formate für %1&#10;verfügbar zu machen.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Mit %1 können Sie freedb-CD-Datenbankeinträge mit&#10;Unicode-Zeichen verarbeiten. Wenn Sie also CDs mit nicht-&#10;lateinischen Zeichen im Künstler- oder Titelnamen besitzen,&#10;können Sie mit %1 korrekte freedb-Einträge erstellen.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Um Lesefehler beim Rippen zu korrigieren, können Sie die Jitter&#10;Korrektur auf der CDRip-Seite im %1-Konfigurationsdialog&#10;aktivieren. Falls das nicht hilft, versuchen Sie einen&#10;Paranoia-Modus zu verwenden.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Um Lesefehler beim Rippen zu korrigieren, können Sie die Jitter&#10;Korrektur auf der Ripper-Seite im %1-Konfigurationsdialog&#10;aktivieren. Falls das nicht hilft, versuchen Sie einen&#10;Paranoia-Modus zu verwenden.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Haben Sie Vorschläge zur Verbesserung von %1? Sie&#10;können Ihre Ideen über den Tracker auf der %1 SourceForge&#10;Projektseite eingeben - %2&#10;oder senden Sie eine eMail an %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Mögen Sie %1? %1 ist kostenlos verfügbar, aber Sie&#10;können mit Spenden an das %1-Projekt helfen, die&#10;Entwicklung zu finanzieren. Sie können mit PayPal Geld an&#10;%2 senden.&#10;&#10;Besuchen Sie %3, um mehr&#10;Informationen zu erhalten.</entry>
     </section>
@@ -480,43 +480,43 @@
       </section>
     </section>
 
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Aktives CD-ROM-Laufwerk</entry>
+      <entry id="9001" string="Set drive speed limit:">Geschwindigkeit begrenzen:</entry>
+      <entry id="9002" string="CD information">CD-Informationen</entry>
+      <entry id="9003" string="Read CD Text">CD-Text lesen</entry>
+      <entry id="9004" string="Read cdplayer.ini">cdplayer.ini lesen</entry>
+      <entry id="9005" string="Ripper settings">Ripper-Einstellungen</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Paranoia-Modus aktivieren:</entry>
+      <entry id="9007" string="Overlap only">Nur Overlap</entry>
+      <entry id="9008" string="No verify">Keine Überprüfung</entry>
+      <entry id="9009" string="No scratch repair">Keine Kratzer reparieren</entry>
+      <entry id="9010" string="Full cdparanoia mode">Vollständiger Modus</entry>
+      <entry id="9011" string="Activate jitter correction">Jitter-Korrektur aktivieren</entry>
+      <entry id="9012" string="Swap left/right channel">Links/Rechts vertauschen</entry>
+      <entry id="9013" string="Automatization">Automatisierung</entry>
+      <entry id="9014" string="Read CD contents on insert">CD-Inhalt autmatisch lesen</entry>
+      <entry id="9015" string="Start ripping automatically">Ripper automatisch starten</entry>
+      <entry id="9016" string="Eject disk after ripping">Automatisch auswerfen</entry>
+      <entry id="9017" string="CD options">CD-Optionen</entry>
+      <entry id="9018" string="Lock CD tray while ripping">CD beim Rippen sperren</entry>
+      <entry id="9019" string="Use native NT SCSI library">NT-SCSI-DLL verwenden</entry>
+      <entry id="9020" string="Use read offset:">Offset verwenden:</entry>
+      <entry id="9021" string="samples">Samples</entry>
+      <entry id="9022" string="Read ISRC when adding tracks to joblist">ISRC beim Hinzufügen von Tracks zur Jobliste lesen</entry>
+    </section>
+
     <section name="Decoders">
 
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Aktives CD-ROM-Laufwerk</entry>
-	<entry id="10001" string="Set drive speed limit:">Geschwindigkeit begrenzen:</entry>
-	<entry id="10002" string="CD information">CD-Informationen</entry>
-	<entry id="10003" string="Read CD Text">CD-Text lesen</entry>
-	<entry id="10004" string="Read cdplayer.ini">cdplayer.ini lesen</entry>
-	<entry id="10005" string="Ripper settings">Ripper-Einstellungen</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Paranoia-Modus aktivieren:</entry>
-	<entry id="10007" string="Overlap only">Nur Overlap</entry>
-	<entry id="10008" string="No verify">Keine Überprüfung</entry>
-	<entry id="10009" string="No scratch repair">Keine Kratzer reparieren</entry>
-	<entry id="10010" string="Full cdparanoia mode">Vollständiger Modus</entry>
-	<entry id="10011" string="Activate jitter correction">Jitter-Korrektur aktivieren</entry>
-	<entry id="10012" string="Swap left/right channel">Links/Rechts vertauschen</entry>
-	<entry id="10013" string="Automatization">Automatisierung</entry>
-	<entry id="10014" string="Read CD contents on insert">CD-Inhalt autmatisch lesen</entry>
-	<entry id="10015" string="Start ripping automatically">Ripper automatisch starten</entry>
-	<entry id="10016" string="Eject disk after ripping">Automatisch auswerfen</entry>
-	<entry id="10017" string="CD options">CD-Optionen</entry>
-	<entry id="10018" string="Lock CD tray while ripping">CD beim Rippen sperren</entry>
-	<entry id="10019" string="Use native NT SCSI library">NT-SCSI-DLL verwenden</entry>
-	<entry id="10020" string="Use read offset:">Offset verwenden:</entry>
-	<entry id="10021" string="samples">Samples</entry>
-	<entry id="10022" string="Read ISRC when adding tracks to joblist">ISRC beim Hinzufügen von Tracks zur Jobliste lesen</entry>
-      </section>
-
       <section name="MAD">
-	<entry id="11000" string="Decoding">Dekodierung</entry>
-	<entry id="11001" string="Enable 24 bit decoding">24-Bit-Dekodierung aktivieren</entry>
+	<entry id="10000" string="Decoding">Dekodierung</entry>
+	<entry id="10001" string="Enable 24 bit decoding">24-Bit-Dekodierung aktivieren</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="12000" string="Decoder">Dekodierer</entry>
-	<entry id="12001" string="Active decoder:">Aktiver Dekodierer:</entry>
- 	<entry id="12002" string="auto select">automatische Auswahl</entry>
+	<entry id="11000" string="Decoder">Dekodierer</entry>
+	<entry id="11001" string="Active decoder:">Aktiver Dekodierer:</entry>
+	<entry id="11002" string="auto select">automatische Auswahl</entry>
       </section>
     </section>
 
@@ -614,31 +614,37 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Qualität</entry>
-	<entry id="33001" string="Format">Format</entry>
+      <section name="AAC">
+	<entry id="33000" string="Codec">Codec</entry>
+	<entry id="33001" string="Quality">Qualität</entry>
+	<entry id="33002" string="Format">Format</entry>
+
+	<section name="Codec">
+	  <entry id="33100" string="Audio codec">Audiocodec</entry>
+	</section>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Bitrate / Qualität</entry>
-	  <entry id="33101" string="Bitrate per channel:">Bitrate pro Kanal:</entry>
-	  <entry id="33102" string="Set quality:">Qualität:</entry>
-	  <entry id="33103" string="Stereo mode">Stereomodus</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Joint-Stereo erlauben</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Temporal-Noise-Shaping</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">TNS verwenden</entry>
-	  <entry id="33107" string="Maximum bandwidth">Maximale Bandbreite</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Maximale AAC-Frequenzbandbreite in Hz:</entry>
+	  <entry id="33200" string="Bitrate">Bitrate</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bitrate / Qualität</entry>
+	  <entry id="33202" string="Bitrate per channel:">Bitrate pro Kanal:</entry>
+	  <entry id="33203" string="Set quality:">Qualität:</entry>
+	  <entry id="33204" string="Stereo mode">Stereomodus</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Joint-Stereo erlauben</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Temporal-Noise-Shaping</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">TNS verwenden</entry>
+	  <entry id="33208" string="Maximum bandwidth">Maximale Bandbreite</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Maximale AAC-Frequenzbandbreite in Hz:</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG-Version</entry>
-	  <entry id="33201" string="AAC object type">AAC-Objekttyp</entry>
-	  <entry id="33202" string="File format">Dateiformat</entry>
-	  <entry id="33203" string="File extension">Dateiendung</entry>
-	  <entry id="33204" string="Tags">Tags</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">ID3v2-Tags in AAC-Dateien erlauben</entry>
-	  <entry id="33206" string="Note:">Hinweis:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
+	  <entry id="33300" string="MPEG version">MPEG-Version</entry>
+	  <entry id="33301" string="AAC object type">AAC-Objekttyp</entry>
+	  <entry id="33302" string="File format">Dateiformat</entry>
+	  <entry id="33303" string="File extension">Dateiendung</entry>
+	  <entry id="33304" string="Tags">Tags</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">ID3v2-Tags in AAC-Dateien erlauben</entry>
+	  <entry id="33306" string="Note">Hinweis</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
 	</section>
       </section>
 
@@ -775,25 +781,6 @@
 	<entry id="40021" string="Options">Optionen</entry>
 	<entry id="40022" string="Enable discontinous transmission">Discontinous Transmission aktivieren</entry>
 	<entry id="40023" string="Expected packet loss:">Erwarteter Paketverlust:</entry>
-      </section>
-
-      <section name="CoreAudio">
-	<entry id="41000" string="Codec">Codec</entry>
-	<entry id="41001" string="Format">Format</entry>
-
-	<section name="Codec">
-	  <entry id="41100" string="Audio codec">Audiocodec</entry>
-	  <entry id="41101" string="Bitrate">Bitrate</entry>
-	</section>
-
-	<section name="Format">
-	  <entry id="41200" string="File format">Dateiformat</entry>
-	  <entry id="41201" string="File extension">Dateiendung</entry>
-	  <entry id="41202" string="Tags">Tags</entry>
-	  <entry id="41203" string="Allow ID3v2 tags in AAC files">ID3v2-Tags in AAC-Dateien erlauben</entry>
-	  <entry id="41204" string="Note">Hinweis</entry>
-	  <entry id="41205" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Einige Player können Probleme mit dem Abspielen von AAC-&#10;Dateien mit ID3-Tags haben. Bitte verwenden Sie diese Option&#10;nur, wenn Sie sicher sind, dass Ihr Player diese Tags unterstützt.</entry>
-	</section>
       </section>
     </section>
 

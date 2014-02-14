@@ -365,7 +365,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 支持 LAME，Ogg Vorbis，FAAC，FLAC 和 Bonk&#10;等编码器。VQF 格式的编码器可以在 %1 网站上下载：&#10;%2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 使用 Winamp 2 输入插件后可以支持更多的格式。&#10;将 in_*.dll 文件复制到 %1/plugins 目录后就可以使用&#10;%1 读取这些格式了。</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">使用 %1 您可以提交采用 Unicode 字符集的 freedb CD&#10;数据库项目。&#10;因此，如果您的 CD 是非拉丁语系艺术家或标题名称，&#10;也可以使用 %1提交正确的 freedb 项目。</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">为了修正翻录时出现读取错误，您可以在 %1 常规设置&#10;的 CD Rip 标签中开启抖动校正功能。如果这样不能&#10;解决问题，您可以尝试另外的 Paranoia 模式。</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">为了修正翻录时出现读取错误，您可以在 %1 常规设置&#10;的 Ripper 标签中开启抖动校正功能。如果这样不能&#10;解决问题，您可以尝试另外的 Paranoia 模式。</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">您对 %1 在功能上有更好的建议吗？&#10;您可以通过 %1 在 SourceForge project 页面下的&#10;软件追踪器提交您的任何建议。&#10;地址是： %2&#10;或直接发送电子邮件到 %3 。</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">您喜欢 %1 吗？&#10;&#10;它是免费的。&#10;&#10;不过您也可以捐点小钱赞助 %1 计划。&#10;您可以通过 PayPal 赞助给 %2。&#10;详情请参阅 %3 。</entry>
     </section>
@@ -404,32 +404,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
-	<entry id="10001" string="Set drive speed limit:">限定驱动器速率：</entry>
-	<entry id="10002" string="CD information">CD 信息</entry>
-	<entry id="10003" string="Read CD Text">读入 CD 文本</entry>
-	<entry id="10004" string="Read cdplayer.ini">读入 cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">翻录设置</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">激活 cdparanoia 模式</entry>
-	<entry id="10007" string="Overlap only">仅覆盖</entry>
-	<entry id="10008" string="No verify">不校验</entry>
-	<entry id="10009" string="No scratch repair">不进行刮痕修复</entry>
-	<entry id="10010" string="Full cdparanoia mode">完整 cdparanoia 模式</entry>
-	<entry id="10011" string="Activate jitter correction">激活抖动校正</entry>
-	<entry id="10012" string="Swap left/right channel">左/右声道互换</entry>
-	<entry id="10013" string="Automatization">自动化</entry>
-	<entry id="10014" string="Read CD contents on insert">放入 CD 时读取内容</entry>
-	<entry id="10015" string="Start ripping automatically">自动启动翻录</entry>
-	<entry id="10016" string="Eject disk after ripping">翻录完成后弹出光盘</entry>
-	<entry id="10017" string="CD options">CD 选项</entry>
-	<entry id="10018" string="Lock CD tray while ripping">翻录时锁定 CD 托盘</entry>
-	<entry id="10019" string="Use native NT SCSI library">使用原生 NT SCSI 库</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
+      <entry id="9001" string="Set drive speed limit:">限定驱动器速率：</entry>
+      <entry id="9002" string="CD information">CD 信息</entry>
+      <entry id="9003" string="Read CD Text">读入 CD 文本</entry>
+      <entry id="9004" string="Read cdplayer.ini">读入 cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">翻录设置</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">激活 cdparanoia 模式</entry>
+      <entry id="9007" string="Overlap only">仅覆盖</entry>
+      <entry id="9008" string="No verify">不校验</entry>
+      <entry id="9009" string="No scratch repair">不进行刮痕修复</entry>
+      <entry id="9010" string="Full cdparanoia mode">完整 cdparanoia 模式</entry>
+      <entry id="9011" string="Activate jitter correction">激活抖动校正</entry>
+      <entry id="9012" string="Swap left/right channel">左/右声道互换</entry>
+      <entry id="9013" string="Automatization">自动化</entry>
+      <entry id="9014" string="Read CD contents on insert">放入 CD 时读取内容</entry>
+      <entry id="9015" string="Start ripping automatically">自动启动翻录</entry>
+      <entry id="9016" string="Eject disk after ripping">翻录完成后弹出光盘</entry>
+      <entry id="9017" string="CD options">CD 选项</entry>
+      <entry id="9018" string="Lock CD tray while ripping">翻录时锁定 CD 托盘</entry>
+      <entry id="9019" string="Use native NT SCSI library">使用原生 NT SCSI 库</entry>
     </section>
 
     <section name="Encoders">
@@ -526,30 +521,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">品质</entry>
-	<entry id="33001" string="Format">格式</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">品质</entry>
+	<entry id="33002" string="Format">格式</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">比特率/品质</entry>
-	  <entry id="33101" string="Bitrate per channel:">声道比特率：</entry>
-	  <entry id="33102" string="Set quality:">设置品质：</entry>
-	  <entry id="33103" string="Stereo mode">立体声模式</entry>
-	  <entry id="33104" string="Allow Joint Stereo">允许使用混合立体声</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">时序噪音修整</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">使用时序噪音修整</entry>
-	  <entry id="33107" string="Maximum bandwidth">最大带宽</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">可用的最大 AAC 频率带宽(Hz)</entry>
+	  <entry id="33200" string="Bitrate">比特率</entry>
+	  <entry id="33201" string="Bitrate / Quality">比特率/品质</entry>
+	  <entry id="33202" string="Bitrate per channel:">声道比特率：</entry>
+	  <entry id="33203" string="Set quality:">设置品质：</entry>
+	  <entry id="33204" string="Stereo mode">立体声模式</entry>
+	  <entry id="33205" string="Allow Joint Stereo">允许使用混合立体声</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">时序噪音修整</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">使用时序噪音修整</entry>
+	  <entry id="33208" string="Maximum bandwidth">最大带宽</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">可用的最大 AAC 频率带宽(Hz)</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG 版本</entry>
-	  <entry id="33201" string="AAC object type">AAC 对象类型</entry>
-	  <entry id="33202" string="File format">文件格式</entry>
-	  <entry id="33204" string="Tags">信息标签</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">在 AAC 文件中使用 ID3v2 标签</entry>
-	  <entry id="33206" string="Note:">注意：</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放包含 ID3 标签的 AAC 文件时会发生问题。&#10;使用这个选项时请确保您的播放器支持 ID3 标签。</entry>
+	  <entry id="33300" string="MPEG version">MPEG 版本</entry>
+	  <entry id="33301" string="AAC object type">AAC 对象类型</entry>
+	  <entry id="33302" string="File format">文件格式</entry>
+	  <entry id="33304" string="Tags">信息标签</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">在 AAC 文件中使用 ID3v2 标签</entry>
+	  <entry id="33306" string="Note">注意</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放包含 ID3 标签的 AAC 文件时会发生问题。&#10;使用这个选项时请确保您的播放器支持 ID3 标签。</entry>
 	</section>
       </section>
 

@@ -429,7 +429,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 содержит кодеки LAME, Ogg Vorbis и Bonk.&#10;Кодеки AAC и VQF доступны на сайте %1:&#10;%2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 может использовать плагины (input plug-ins)&#10;Winamp 2 для работы с другими форматами файлов.&#10;Скопируйте файлы in_*.dll в директорию %1/plugins для&#10;того, чтобы %1 смог читать новые форматы.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">С %1 Вы можете добавить информацию о CD в базу&#10;данных содержащих символы юникода.&#10;И если диск содержит не латинские названия, можно&#10;корректно их добавить в freedb с помощью %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Для корректного чтения испорченных дисков надо включить&#10;Jitter коррекцию в настройках %1.&#10;Если даже это не поможет, попробуйте режим паранойя.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Для корректного чтения испорченных дисков надо включить&#10;Jitter коррекцию в настройках %1.&#10;Если даже это не поможет, попробуйте режим паранойя.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">У Вас есть идеи как улучшить %1?&#10;Вы можете изложить их в форуме проекта %1&#10;на SourceForge - %2 или послать&#10;по е-майлу на %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Вам нравится %1?&#10;%1 полностью свободен, но Вы можете&#10;профинансировать разработки проекта.&#10;И переслать средства на %2 через PayPal.&#10;Подробности на %3.</entry>
     </section>
@@ -479,37 +479,37 @@
       </section>
     </section>
 
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Выбор привода CD-ROM</entry>
+      <entry id="9001" string="Set drive speed limit:">Предел скорости привода:</entry>
+      <entry id="9002" string="CD information">Информация о CD</entry>
+      <entry id="9003" string="Read CD Text">Читать CD Текст</entry>
+      <entry id="9004" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Настройки захвата данных (граббера)</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Режим cd-параноя:</entry>
+      <entry id="9007" string="Overlap only">Только перекрывать</entry>
+      <entry id="9008" string="No verify">Без проверки</entry>
+      <entry id="9009" string="No scratch repair">Без коррекции царапин</entry>
+      <entry id="9010" string="Full cdparanoia mode">Полный режим cd-параноя</entry>
+      <entry id="9011" string="Activate jitter correction">Jitter коррекция</entry>
+      <entry id="9012" string="Swap left/right channel">Поменять левый/правый</entry>
+      <entry id="9013" string="Automatization">Автоматизация</entry>
+      <entry id="9014" string="Read CD contents on insert">Содержимое читать сразу</entry>
+      <entry id="9015" string="Start ripping automatically">Авт. начало копирования</entry>
+      <entry id="9016" string="Eject disk after ripping">Извлечь диск после работы</entry>
+      <entry id="9017" string="CD options">Настройка CD</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Блокировка CD при работе </entry>
+      <entry id="9019" string="Use native NT SCSI library">Родные NT SCSI библиотеки</entry>
+      <entry id="9020" string="Use read offset:">Использовать смещение при чтении</entry>
+      <entry id="9021" string="samples">семплы</entry>
+      <entry id="9022" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
+    </section>
+
     <section name="Decoders">
 
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Выбор привода CD-ROM</entry>
-	<entry id="10001" string="Set drive speed limit:">Предел скорости привода:</entry>
-	<entry id="10002" string="CD information">Информация о CD</entry>
-	<entry id="10003" string="Read CD Text">Читать CD Текст</entry>
-	<entry id="10004" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">Настройки захвата данных (граббера)</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Режим cd-параноя:</entry>
-	<entry id="10007" string="Overlap only">Только перекрывать</entry>
-	<entry id="10008" string="No verify">Без проверки</entry>
-	<entry id="10009" string="No scratch repair">Без коррекции царапин</entry>
-	<entry id="10010" string="Full cdparanoia mode">Полный режим cd-параноя</entry>
-	<entry id="10011" string="Activate jitter correction">Jitter коррекция</entry>
-	<entry id="10012" string="Swap left/right channel">Поменять левый/правый</entry>
-	<entry id="10013" string="Automatization">Автоматизация</entry>
-	<entry id="10014" string="Read CD contents on insert">Содержимое читать сразу</entry>
-	<entry id="10015" string="Start ripping automatically">Авт. начало копирования</entry>
-	<entry id="10016" string="Eject disk after ripping">Извлечь диск после работы</entry>
-	<entry id="10017" string="CD options">Настройка CD</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Блокировка CD при работе </entry>
-	<entry id="10019" string="Use native NT SCSI library">Родные NT SCSI библиотеки</entry>
-	<entry id="10020" string="Use read offset:">Использовать смещение при чтении</entry>
-	<entry id="10021" string="samples">семплы</entry>
-	<entry id="10022" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
-      </section>
-
       <section name="MAD">
-	<entry id="11000" string="Decoding">Декодирование</entry>
-	<entry id="11001" string="Enable 24 bit decoding">Разрешить 24 битное декодирование</entry>
+	<entry id="10000" string="Decoding">Декодирование</entry>
+	<entry id="10001" string="Enable 24 bit decoding">Разрешить 24 битное декодирование</entry>
       </section>
     </section>
 
@@ -607,31 +607,32 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Качество</entry>
-	<entry id="33001" string="Format">Формат</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Качество</entry>
+	<entry id="33002" string="Format">Формат</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Битрейт/Качество</entry>
-	  <entry id="33101" string="Bitrate per channel:">Битрейт по каналам:</entry>
-	  <entry id="33102" string="Set quality:">Качество:</entry>
-	  <entry id="33103" string="Stereo mode">Стерео режим</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Соединять стерео</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Формирование врем. шума</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Использовать</entry>
-	  <entry id="33107" string="Maximum bandwidth">Макс. ширина полосы частот</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Макс. ширина полосы пропускания AAC (Гц):</entry>
+	  <entry id="33200" string="Bitrate">Битрейт</entry>
+	  <entry id="33201" string="Bitrate / Quality">Битрейт/Качество</entry>
+	  <entry id="33202" string="Bitrate per channel:">Битрейт по каналам:</entry>
+	  <entry id="33203" string="Set quality:">Качество:</entry>
+	  <entry id="33204" string="Stereo mode">Стерео режим</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Соединять стерео</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Формирование врем. шума</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Использовать</entry>
+	  <entry id="33208" string="Maximum bandwidth">Макс. ширина полосы частот</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Макс. ширина полосы пропускания AAC (Гц):</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">Версия MPEG</entry>
-	  <entry id="33201" string="AAC object type">Объект типа AAC</entry>
-	  <entry id="33202" string="File format">Тип файла</entry>
-	  <entry id="33203" string="File extension">Расширение файла</entry>
-	  <entry id="33204" string="Tags">Тэги</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Разрешить теги ID3v2 в AAC файлах</entry>
-	  <entry id="33206" string="Note:">Примечание: </entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 тегами</entry>
+	  <entry id="33300" string="MPEG version">Версия MPEG</entry>
+	  <entry id="33301" string="AAC object type">Объект типа AAC</entry>
+	  <entry id="33302" string="File format">Тип файла</entry>
+	  <entry id="33303" string="File extension">Расширение файла</entry>
+	  <entry id="33304" string="Tags">Тэги</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Разрешить теги ID3v2 в AAC файлах</entry>
+	  <entry id="33306" string="Note">Примечание</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 тегами</entry>
 	</section>
       </section>
 

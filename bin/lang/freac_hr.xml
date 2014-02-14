@@ -365,7 +365,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 dolazi s podrškom za LAME, OGG Vorbis, FAAC,&#10;FLAC i Bonk enkoderom. Enkoder za VQF format je&#10;dostupan na %1 webu: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 može koristiti Winamp 2 ulazne plug-inove kako bi&#10;podržao još formata datoteka. Kopirajte in_*.dll datoteke u&#10;%1/plug-in mapu kako biste omogućili da %1&#10;čita te formate.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Sa %1om možete poslati unos za fredb CD bazu podataka&#10;koja sadrži Unicode znakove. Ako imate CD s nelatiničnim&#10;izvođačima ili naslovima,&#10;Možete poslati ispravne unose s %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kako bi ispravili greške pri čitanju možete omogućiti Jitter&#10;ispravljanje na CDRip tabu %1ovih postavki. Ako to ne&#10;pomogne, pokušajte neki od paranoja modova.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kako bi ispravili greške pri čitanju možete omogućiti Jitter&#10;ispravljanje na Ripper tabu %1ovih postavki. Ako to ne&#10;pomogne, pokušajte neki od paranoja modova.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Imate li prijedloga kako poboljšati %1?&#10;Možete poslati bilo koju ideju preko Trackera na %1&#10;SourceForge projektnoj stranici - %2&#10;ili pošaljite eMail na %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Pomozite plaćanje razvoja %1 projekta donacijom.&#10;Možete poslati novac na %2 kroz PayPal.&#10;Pogledajte %3 za više detalja.</entry>
     </section>
@@ -404,32 +404,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Aktivni CD-ROM pogon</entry>
-	<entry id="10001" string="Set drive speed limit:">Ograniči brzinu drivea:</entry>
-	<entry id="10002" string="CD information">CD info</entry>
-	<entry id="10003" string="Read CD Text">Pročitaj CD tekst</entry>
-	<entry id="10004" string="Read cdplayer.ini">Pročitaj cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">Postavke ripanja</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Aktiviraj CD paranoja mod:</entry>
-	<entry id="10007" string="Overlap only">Samo preklop (overlap)</entry>
-	<entry id="10008" string="No verify">Bez provjere</entry>
-	<entry id="10009" string="No scratch repair">Bez popravka ogrebotina</entry>
-	<entry id="10010" string="Full cdparanoia mode">Puni CD paranoja mod</entry>
-	<entry id="10011" string="Activate jitter correction">Aktiviraj ispravak jittera</entry>
-	<entry id="10012" string="Swap left/right channel">Zamijeni lijevi/desni kanal</entry>
-	<entry id="10013" string="Automatization">Automatizacija</entry>
-	<entry id="10014" string="Read CD contents on insert">Čitaj CD sadržaj kod ubacivanja</entry>
-	<entry id="10015" string="Start ripping automatically">Počni ripanje automatski</entry>
-	<entry id="10016" string="Eject disk after ripping">Izbaci disk nakon ripanja</entry>
-	<entry id="10017" string="CD options">CD opcije</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Zaključaj CD dok ripam</entry>
-	<entry id="10019" string="Use native NT SCSI library">Koristi ugrađenii NTSCSI lib</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Aktivni CD-ROM pogon</entry>
+      <entry id="9001" string="Set drive speed limit:">Ograniči brzinu drivea:</entry>
+      <entry id="9002" string="CD information">CD info</entry>
+      <entry id="9003" string="Read CD Text">Pročitaj CD tekst</entry>
+      <entry id="9004" string="Read cdplayer.ini">Pročitaj cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Postavke ripanja</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Aktiviraj CD paranoja mod:</entry>
+      <entry id="9007" string="Overlap only">Samo preklop (overlap)</entry>
+      <entry id="9008" string="No verify">Bez provjere</entry>
+      <entry id="9009" string="No scratch repair">Bez popravka ogrebotina</entry>
+      <entry id="9010" string="Full cdparanoia mode">Puni CD paranoja mod</entry>
+      <entry id="9011" string="Activate jitter correction">Aktiviraj ispravak jittera</entry>
+      <entry id="9012" string="Swap left/right channel">Zamijeni lijevi/desni kanal</entry>
+      <entry id="9013" string="Automatization">Automatizacija</entry>
+      <entry id="9014" string="Read CD contents on insert">Čitaj CD sadržaj kod ubacivanja</entry>
+      <entry id="9015" string="Start ripping automatically">Počni ripanje automatski</entry>
+      <entry id="9016" string="Eject disk after ripping">Izbaci disk nakon ripanja</entry>
+      <entry id="9017" string="CD options">CD opcije</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Zaključaj CD dok ripam</entry>
+      <entry id="9019" string="Use native NT SCSI library">Koristi ugrađenii NTSCSI lib</entry>
     </section>
 
     <section name="Encoders">
@@ -526,30 +521,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Kvaliteta</entry>
-	<entry id="33001" string="Format">Format</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Kvaliteta</entry>
+	<entry id="33002" string="Format">Format</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Bitrate / Kvaliteta</entry>
-	  <entry id="33101" string="Bitrate per channel:">Bitrate po kanalu:</entry>
-	  <entry id="33102" string="Set quality:">Postavi kvalitetu:</entry>
-	  <entry id="33103" string="Stereo mode">Stereo mod</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Dozvoli spojeni stereo</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Temporal noise oblikovanje</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Koristi Temporal noise oblikovanje</entry>
-	  <entry id="33107" string="Maximum bandwidth">Maksimalna širina pojasa</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Maksimalna AAC frekvencijska širina pojasa koja se koristi (Hz):</entry>
+	  <entry id="33200" string="Bitrate">Bitrate</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bitrate / Kvaliteta</entry>
+	  <entry id="33202" string="Bitrate per channel:">Bitrate po kanalu:</entry>
+	  <entry id="33203" string="Set quality:">Postavi kvalitetu:</entry>
+	  <entry id="33204" string="Stereo mode">Stereo mod</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Dozvoli spojeni stereo</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Temporal noise oblikovanje</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Koristi Temporal noise oblikovanje</entry>
+	  <entry id="33208" string="Maximum bandwidth">Maksimalna širina pojasa</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Maksimalna AAC frekvencijska širina pojasa koja se koristi (Hz):</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG verzija</entry>
-	  <entry id="33201" string="AAC object type">Tip AAC objekta</entry>
-	  <entry id="33202" string="File format">Format datoteke</entry>
-	  <entry id="33204" string="Tags">Info tagovi</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">Dozvoli ID3v2 tagove u AAC datotekama</entry>
-	  <entry id="33206" string="Note:">Bilješka:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Neki playeri mogu imati problema svirajući AAC datoteke s&#10;uključenim ID3 tagovima. Molimo koristite ovu opciju samo&#10;ako ste sigurni da vaš player podržava tagove.</entry>
+	  <entry id="33300" string="MPEG version">MPEG verzija</entry>
+	  <entry id="33301" string="AAC object type">Tip AAC objekta</entry>
+	  <entry id="33302" string="File format">Format datoteke</entry>
+	  <entry id="33304" string="Tags">Info tagovi</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Dozvoli ID3v2 tagove u AAC datotekama</entry>
+	  <entry id="33306" string="Note">Bilješka</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Neki playeri mogu imati problema svirajući AAC datoteke s&#10;uključenim ID3 tagovima. Molimo koristite ovu opciju samo&#10;ako ste sigurni da vaš player podržava tagove.</entry>
 	</section>
       </section>
 

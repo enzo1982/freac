@@ -365,7 +365,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 預設支援 LAME, Ogg Vorbis, FAAC, FLAC 及 Bonk&#10;編碼器. 另外還有 VQF 格式的編碼器可於 %1 的&#10;網站： %2 下載.</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 能夠使用 Winamp 2 的音訊輸入外掛&#10;來方便轉換成更多不同音訊格式. 只要複製&#10; in_*.dll 這類的檔案到 %1/plugins 目錄下,&#10;就可以讓 %1 使用這些格式了.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">您可以藉由 %1 提交您自己編輯的 Unicode&#10;專輯訊息到 freedb 資料庫喔. 因此若您有一些其它&#10;非拉丁字元的 CD 訊息, 也可以藉由 %1&#10;正確地提交喔.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">為了修正音軌抽取上的錯誤, 您可以開啟 &quot;抖動校正&quot;&#10;這個功能(位於 %1 的設定中的 CD Rip 頁面).&#10;若這樣子做還沒辦法解決問題, 您可以試用其中的&#10;Paranoia 模式.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">為了修正音軌抽取上的錯誤, 您可以開啟 &quot;抖動校正&quot;&#10;這個功能(位於 %1 的設定中的 Ripper 頁面).&#10;若這樣子做還沒辦法解決問題, 您可以試用其中的&#10;Paranoia 模式.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">您是否對於 %1 的功能上有更好的建議?&#10;您可以藉由 %1 的軟體追蹤器提交您的&#10;任何建議. 位址是在 SourceForge project 頁面 -&#10;%2,&#10;或直接寄送電子信件到 %3 也可以.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">您喜歡 %1 嗎? 它是免費的喔.&#10;不過您也可以藉由捐點小錢贊助 %1 計劃.&#10;您可以利用 PayPal 贊助給 %2.&#10;請參閱 %3 的詳細訊息.</entry>
     </section>
@@ -404,31 +404,26 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">可用的 CD-ROM 光碟機</entry>
-	<entry id="10002" string="CD information">CD 訊息</entry>
-	<entry id="10003" string="Read CD Text">讀取 CD 文字</entry>
-	<entry id="10004" string="Read cdplayer.ini">讀取 cdplayer.ini</entry>
-	<entry id="10005" string="Ripper settings">音軌抽取器設定</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">啟用 cdparanoia 模式：</entry>
-	<entry id="10007" string="Overlap only">僅重疊</entry>
-	<entry id="10008" string="No verify">不驗證</entry>
-	<entry id="10009" string="No scratch repair">不刮損修復</entry>
-	<entry id="10010" string="Full cdparanoia mode">完整 cdparanoia 模式</entry>
-	<entry id="10011" string="Activate jitter correction">啟用抖動校正</entry>
-	<entry id="10012" string="Swap left/right channel">左右聲道互換</entry>
-	<entry id="10013" string="Automatization">自動化</entry>
-	<entry id="10014" string="Read CD contents on insert">當放入 CD 時立即讀取內容</entry>
-	<entry id="10015" string="Start ripping automatically">自動地開始音軌抽取</entry>
-	<entry id="10016" string="Eject disk after ripping">抽取音軌後退出托盤</entry>
-	<entry id="10017" string="CD options">CD 選項</entry>
-	<entry id="10018" string="Lock CD tray while ripping">當抽取音軌時鎖住光碟托盤</entry>
-	<entry id="10019" string="Use native NT SCSI library">使用內建 NT SCSI 程式庫</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">可用的 CD-ROM 光碟機</entry>
+      <entry id="9002" string="CD information">CD 訊息</entry>
+      <entry id="9003" string="Read CD Text">讀取 CD 文字</entry>
+      <entry id="9004" string="Read cdplayer.ini">讀取 cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">音軌抽取器設定</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">啟用 cdparanoia 模式：</entry>
+      <entry id="9007" string="Overlap only">僅重疊</entry>
+      <entry id="9008" string="No verify">不驗證</entry>
+      <entry id="9009" string="No scratch repair">不刮損修復</entry>
+      <entry id="9010" string="Full cdparanoia mode">完整 cdparanoia 模式</entry>
+      <entry id="9011" string="Activate jitter correction">啟用抖動校正</entry>
+      <entry id="9012" string="Swap left/right channel">左右聲道互換</entry>
+      <entry id="9013" string="Automatization">自動化</entry>
+      <entry id="9014" string="Read CD contents on insert">當放入 CD 時立即讀取內容</entry>
+      <entry id="9015" string="Start ripping automatically">自動地開始音軌抽取</entry>
+      <entry id="9016" string="Eject disk after ripping">抽取音軌後退出托盤</entry>
+      <entry id="9017" string="CD options">CD 選項</entry>
+      <entry id="9018" string="Lock CD tray while ripping">當抽取音軌時鎖住光碟托盤</entry>
+      <entry id="9019" string="Use native NT SCSI library">使用內建 NT SCSI 程式庫</entry>
     </section>
 
     <section name="Encoders">
@@ -525,30 +520,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">品質</entry>
-	<entry id="33001" string="Format">格式</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">品質</entry>
+	<entry id="33002" string="Format">格式</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">位元率 / 品質</entry>
-	  <entry id="33101" string="Bitrate per channel:">每聲道之位元率：</entry>
-	  <entry id="33102" string="Set quality:">設定品質：</entry>
-	  <entry id="33103" string="Stereo mode">立體聲模式</entry>
-	  <entry id="33104" string="Allow Joint Stereo">允許複合立體聲</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">時域噪音削減</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">使用時域噪音削減</entry>
-	  <entry id="33107" string="Maximum bandwidth">最大化頻寬</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">將 AAC 頻寬最大化至 (Hz)：</entry>
+	  <entry id="33200" string="Bitrate">位元率</entry>
+	  <entry id="33201" string="Bitrate / Quality">位元率 / 品質</entry>
+	  <entry id="33202" string="Bitrate per channel:">每聲道之位元率：</entry>
+	  <entry id="33203" string="Set quality:">設定品質：</entry>
+	  <entry id="33204" string="Stereo mode">立體聲模式</entry>
+	  <entry id="33205" string="Allow Joint Stereo">允許複合立體聲</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">時域噪音削減</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">使用時域噪音削減</entry>
+	  <entry id="33208" string="Maximum bandwidth">最大化頻寬</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">將 AAC 頻寬最大化至 (Hz)：</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG 版本</entry>
-	  <entry id="33201" string="AAC object type">AAC 物件類型</entry>
-	  <entry id="33202" string="File format">檔案格式</entry>
-	  <entry id="33204" string="Tags">訊息標籤</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">允許在 AAC 檔案內使用 ID3v2 標籤</entry>
-	  <entry id="33206" string="Note:">注意：</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放這些包含 ID3 標籤的 AAC 檔案時會發生問題.&#10;使用這個選項時請留意您的播放器是否支援這個 ID3 標籤.</entry>
+	  <entry id="33300" string="MPEG version">MPEG 版本</entry>
+	  <entry id="33301" string="AAC object type">AAC 物件類型</entry>
+	  <entry id="33302" string="File format">檔案格式</entry>
+	  <entry id="33304" string="Tags">訊息標籤</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">允許在 AAC 檔案內使用 ID3v2 標籤</entry>
+	  <entry id="33306" string="Note">注意</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放這些包含 ID3 標籤的 AAC 檔案時會發生問題.&#10;使用這個選項時請留意您的播放器是否支援這個 ID3 標籤.</entry>
 	</section>
       </section>
 

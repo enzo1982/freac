@@ -261,7 +261,7 @@
       <entry id="5003" string="Language">Taal</entry>
       <entry id="5005" string="CDDB">CDDB</entry>
       <entry id="5007" string="Tags">Info tags</entry>
-      <entry id="5021" string="Ripper">CDRip</entry>
+      <entry id="5021" string="Ripper">Ripper</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Encoder configureren</entry>
@@ -367,7 +367,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 bevat een LAME, Ogg Vorbis, FAAC, FLAC en Bonk&#10;encoder. Een encoder voor het VQF formaat is verkrijgbaar&#10;op de %1 website: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 kan Winamp 2 invoer plug-ins gebruiken, om meer&#10;formaten in te kunnen lezen. Kopieer de in_*.dll bestanden in de&#10;%1/plugins map, om deze formaten voor %1&#10;beschikbaar te maken.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Met %1 kunt u cd informatie met Unicode karakters&#10;naar freedb verzenden. Wanneer u dus cd's met niet-Latijnse&#10;tekens in titel- en artiest-info heeft, kunt u met %1&#10;correcte informatie verzenden.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Om leesfouten te corrigeren, kunt u Jitter-correctie in het cd-rip&#10;tabblad van de %1 configuratie activeren. Als dit&#10;niet helpt, kunt u de Paranoia modi proberen.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Om leesfouten te corrigeren, kunt u Jitter-correctie in het cd-rip&#10;tabblad van de %1 configuratie activeren. Als dit&#10;niet helpt, kunt u de Paranoia modi proberen.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Hebt u voorstellen om %1 te verbeteren? U kunt&#10;uw ideeën meedelen via de tracker op de %1 SourceForge&#10;projectpagina - %2&#10;of u kunt een e-mail sturen naar %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Bevalt %1 u? %1 is gratis verkrijgbaar, maar u kunt de&#10;ontwikkeling stimuleren, door een donatie te doen.&#10;U kunt via Paypal een bijdrage storten aan %2.&#10;Bezoek %3, om meer&#10;informatie te bekomen.</entry>
     </section>
@@ -406,32 +406,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">Actief cd-romstation</entry>
-	<entry id="10001" string="Set drive speed limit:">Limiet stationssnelheid instellen:</entry>
-	<entry id="10002" string="CD information">Cd-informatie</entry>
-	<entry id="10003" string="Read CD Text">Cd-text lezen</entry>
-	<entry id="10004" string="Read cdplayer.ini">Cdplayer.ini lezen</entry>
-	<entry id="10005" string="Ripper settings">Rip-instellingen</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">Paranoia-mode activeren:</entry>
-	<entry id="10007" string="Overlap only">Alleen overlappen</entry>
-	<entry id="10008" string="No verify">Geen verificatie</entry>
-	<entry id="10009" string="No scratch repair">Geen krasreparatie</entry>
-	<entry id="10010" string="Full cdparanoia mode">Volledige paranoia mode</entry>
-	<entry id="10011" string="Activate jitter correction">Jitter-correctie activeren</entry>
-	<entry id="10012" string="Swap left/right channel">Wissel linker/rechterkanaal</entry>
-	<entry id="10013" string="Automatization">Automatisatie</entry>
-	<entry id="10014" string="Read CD contents on insert">Cd-inhoud lezen bij plaatsing</entry>
-	<entry id="10015" string="Start ripping automatically">Automatisch rippen starten</entry>
-	<entry id="10016" string="Eject disk after ripping">Schijf uitwerpen na het rippen</entry>
-	<entry id="10017" string="CD options">Cd-opties</entry>
-	<entry id="10018" string="Lock CD tray while ripping">Vergrendelen tijdens rippen</entry>
-	<entry id="10019" string="Use native NT SCSI library">NT SCSI-dll gebruiken</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Actief cd-romstation</entry>
+      <entry id="9001" string="Set drive speed limit:">Limiet stationssnelheid instellen:</entry>
+      <entry id="9002" string="CD information">Cd-informatie</entry>
+      <entry id="9003" string="Read CD Text">Cd-text lezen</entry>
+      <entry id="9004" string="Read cdplayer.ini">Cdplayer.ini lezen</entry>
+      <entry id="9005" string="Ripper settings">Rip-instellingen</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">Paranoia-mode activeren:</entry>
+      <entry id="9007" string="Overlap only">Alleen overlappen</entry>
+      <entry id="9008" string="No verify">Geen verificatie</entry>
+      <entry id="9009" string="No scratch repair">Geen krasreparatie</entry>
+      <entry id="9010" string="Full cdparanoia mode">Volledige paranoia mode</entry>
+      <entry id="9011" string="Activate jitter correction">Jitter-correctie activeren</entry>
+      <entry id="9012" string="Swap left/right channel">Wissel linker/rechterkanaal</entry>
+      <entry id="9013" string="Automatization">Automatisatie</entry>
+      <entry id="9014" string="Read CD contents on insert">Cd-inhoud lezen bij plaatsing</entry>
+      <entry id="9015" string="Start ripping automatically">Automatisch rippen starten</entry>
+      <entry id="9016" string="Eject disk after ripping">Schijf uitwerpen na het rippen</entry>
+      <entry id="9017" string="CD options">Cd-opties</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Vergrendelen tijdens rippen</entry>
+      <entry id="9019" string="Use native NT SCSI library">NT SCSI-dll gebruiken</entry>
     </section>
 
     <section name="Encoders">
@@ -528,30 +523,31 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">Kwaliteit</entry>
-	<entry id="33001" string="Format">Formaat</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">Kwaliteit</entry>
+	<entry id="33002" string="Format">Formaat</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">Bitrate / Kwaliteit</entry>
-	  <entry id="33101" string="Bitrate per channel:">Bitrate per kanaal:</entry>
-	  <entry id="33102" string="Set quality:">Kwaliteit:</entry>
-	  <entry id="33103" string="Stereo mode">Stereomode</entry>
-	  <entry id="33104" string="Allow Joint Stereo">Joint Stereo toelaten</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">Temporal Noise Shaping gebruiken</entry>
-	  <entry id="33107" string="Maximum bandwidth">Maximale bandbreedte</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">Maximale AAC frequentiebandbreedte in Hz:</entry>
+	  <entry id="33200" string="Bitrate">Bitrate</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bitrate / Kwaliteit</entry>
+	  <entry id="33202" string="Bitrate per channel:">Bitrate per kanaal:</entry>
+	  <entry id="33203" string="Set quality:">Kwaliteit:</entry>
+	  <entry id="33204" string="Stereo mode">Stereomode</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Joint Stereo toelaten</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Temporal Noise Shaping gebruiken</entry>
+	  <entry id="33208" string="Maximum bandwidth">Maximale bandbreedte</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Maximale AAC frequentiebandbreedte in Hz:</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG versie</entry>
-	  <entry id="33201" string="AAC object type">AAC objecttype</entry>
-	  <entry id="33202" string="File format">Bestandsformaat</entry>
-	  <entry id="33204" string="Tags">Info tags</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">ID3v2 tags in AAC bestanden toelaten</entry>
-	  <entry id="33206" string="Note:">Opmerking:</entry>
-	  <entry id="33207" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Sommige spelers hebben problemen bij het afspelen van&#10;AAC bestanden met ID3 tags. Gebruik deze optie enkel&#10;wanneer u zeker bent dat uw speler dit ondersteunt.</entry>
+	  <entry id="33300" string="MPEG version">MPEG versie</entry>
+	  <entry id="33301" string="AAC object type">AAC objecttype</entry>
+	  <entry id="33302" string="File format">Bestandsformaat</entry>
+	  <entry id="33304" string="Tags">Info tags</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">ID3v2 tags in AAC bestanden toelaten</entry>
+	  <entry id="33306" string="Note">Opmerking</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Sommige spelers hebben problemen bij het afspelen van&#10;AAC bestanden met ID3 tags. Gebruik deze optie enkel&#10;wanneer u zeker bent dat uw speler dit ondersteunt.</entry>
 	</section>
       </section>
 

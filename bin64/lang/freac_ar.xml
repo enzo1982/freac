@@ -402,32 +402,27 @@
       <section name="Errors"/>
     </section>
 
-    <section name="Decoders">
-
-      <section name="CDRip">
-	<entry id="10000" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
-	<entry id="10001" string="Set drive speed limit:">ثبت سرعة محرك الأقراص:</entry>
-	<entry id="10002" string="CD information">معلومات القرص المضغوط</entry>
-	<entry id="10003" string="Read CD Text">قراءة نص مضغوط</entry>
-	<entry id="10004" string="Read cdplayer.ini">cdplayer.ini قراءة</entry>
-	<entry id="10005" string="Ripper settings">إعدادات الإشتقاق</entry>
-	<entry id="10006" string="Activate cdparanoia mode:">تنشيط اسلوب تكبير قرص مضغوط:</entry>
-	<entry id="10007" string="Overlap only">فقط التداخل</entry>
-	<entry id="10008" string="No verify">بدون تثبت</entry>
-	<entry id="10009" string="No scratch repair">لا لإصلاح الخدوش</entry>
-	<entry id="10010" string="Full cdparanoia mode">اسلوب كامل العرض لقرص مضغوط</entry>
-	<entry id="10011" string="Activate jitter correction">تنشيط تصحيح النرفزة</entry>
-	<entry id="10012" string="Swap left/right channel">مبادلة القناة يمين/يسار</entry>
-	<entry id="10013" string="Automatization">التلقائية</entry>
-	<entry id="10014" string="Read CD contents on insert">قراء محتويات  القرص المضغوط عند الإدراج</entry>
-	<entry id="10015" string="Start ripping automatically">تبدء الإشتقاق تلقائيا</entry>
-	<entry id="10016" string="Eject disk after ripping">لفظ القرص بعد الإشتقاق</entry>
-	<entry id="10017" string="CD options">خيارات قرص مدمج</entry>
-	<entry id="10018" string="Lock CD tray while ripping">قفل القرص المضغوط عند الاشتقاق</entry>
-	<entry id="10019" string="Use native NT SCSI library">NT SCSI استخدم المكتبة الاصلية</entry>
-      </section>
-
-      <section name="MAD"/>
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
+      <entry id="9001" string="Set drive speed limit:">ثبت سرعة محرك الأقراص:</entry>
+      <entry id="9002" string="CD information">معلومات القرص المضغوط</entry>
+      <entry id="9003" string="Read CD Text">قراءة نص مضغوط</entry>
+      <entry id="9004" string="Read cdplayer.ini">cdplayer.ini قراءة</entry>
+      <entry id="9005" string="Ripper settings">إعدادات الإشتقاق</entry>
+      <entry id="9006" string="Activate cdparanoia mode:">تنشيط اسلوب تكبير قرص مضغوط:</entry>
+      <entry id="9007" string="Overlap only">فقط التداخل</entry>
+      <entry id="9008" string="No verify">بدون تثبت</entry>
+      <entry id="9009" string="No scratch repair">لا لإصلاح الخدوش</entry>
+      <entry id="9010" string="Full cdparanoia mode">اسلوب كامل العرض لقرص مضغوط</entry>
+      <entry id="9011" string="Activate jitter correction">تنشيط تصحيح النرفزة</entry>
+      <entry id="9012" string="Swap left/right channel">مبادلة القناة يمين/يسار</entry>
+      <entry id="9013" string="Automatization">التلقائية</entry>
+      <entry id="9014" string="Read CD contents on insert">قراء محتويات  القرص المضغوط عند الإدراج</entry>
+      <entry id="9015" string="Start ripping automatically">تبدء الإشتقاق تلقائيا</entry>
+      <entry id="9016" string="Eject disk after ripping">لفظ القرص بعد الإشتقاق</entry>
+      <entry id="9017" string="CD options">خيارات قرص مدمج</entry>
+      <entry id="9018" string="Lock CD tray while ripping">قفل القرص المضغوط عند الاشتقاق</entry>
+      <entry id="9019" string="Use native NT SCSI library">NT SCSI استخدم المكتبة الاصلية</entry>
     </section>
 
     <section name="Encoders">
@@ -524,29 +519,30 @@
 	</section>
       </section>
 
-      <section name="FAAC">
-	<entry id="33000" string="Quality">النوعية</entry>
-	<entry id="33001" string="Format">الصيغة</entry>
+      <section name="AAC">
+	<entry id="33001" string="Quality">النوعية</entry>
+	<entry id="33002" string="Format">الصيغة</entry>
 
 	<section name="Quality">
-	  <entry id="33100" string="Bitrate / Quality">معدل بايت/النوعية</entry>
-	  <entry id="33101" string="Bitrate per channel:">معدل بايت بالقناة:</entry>
-	  <entry id="33102" string="Set quality:">ثبت النوعية:</entry>
-	  <entry id="33103" string="Stereo mode">طريقة صوتي مجسم</entry>
-	  <entry id="33104" string="Allow Joint Stereo">السماح بربط صوت مجسم</entry>
-	  <entry id="33105" string="Temporal Noise Shaping">تشكيل وقتي للضوضاء</entry>
-	  <entry id="33106" string="Use Temporal Noise Shaping">استخدام وقتي لتشكيل الضوضاء</entry>
-	  <entry id="33107" string="Maximum bandwidth">أقصى سعة الحيز</entry>
-	  <entry id="33108" string="Maximum AAC frequency bandwidth to use (Hz):">بالهرتز AAC أقصى تردد سعة الحيز لاستخدام:</entry>
+	  <entry id="33200" string="Bitrate">معدل بايت</entry>
+	  <entry id="33201" string="Bitrate / Quality">معدل بايت/النوعية</entry>
+	  <entry id="33202" string="Bitrate per channel:">معدل بايت بالقناة:</entry>
+	  <entry id="33203" string="Set quality:">ثبت النوعية:</entry>
+	  <entry id="33204" string="Stereo mode">طريقة صوتي مجسم</entry>
+	  <entry id="33205" string="Allow Joint Stereo">السماح بربط صوت مجسم</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">تشكيل وقتي للضوضاء</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">استخدام وقتي لتشكيل الضوضاء</entry>
+	  <entry id="33208" string="Maximum bandwidth">أقصى سعة الحيز</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">بالهرتز AAC أقصى تردد سعة الحيز لاستخدام:</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33200" string="MPEG version">MPEG إصدار</entry>
-	  <entry id="33201" string="AAC object type">AAC نوع المكون</entry>
-	  <entry id="33202" string="File format">صيغة الملف</entry>
-	  <entry id="33204" string="Tags">معلومات بطاقة</entry>
-	  <entry id="33205" string="Allow ID3v2 tags in AAC files">AAC بطاقات لملفات ID3v2 السماح</entry>
-	  <entry id="33206" string="Note:">مذكرة:</entry>
+	  <entry id="33300" string="MPEG version">MPEG إصدار</entry>
+	  <entry id="33301" string="AAC object type">AAC نوع المكون</entry>
+	  <entry id="33302" string="File format">صيغة الملف</entry>
+	  <entry id="33304" string="Tags">معلومات بطاقة</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">AAC بطاقات لملفات ID3v2 السماح</entry>
+	  <entry id="33306" string="Note">مذكرة</entry>
 	</section>
       </section>
 
