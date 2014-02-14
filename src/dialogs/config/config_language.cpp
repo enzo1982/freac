@@ -114,18 +114,31 @@ Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 #if defined __WIN32__
-	if (Setup::enableUnicode) ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
-	else			  ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
-#elif defined __APPLE__
-	if (!fork())
-	{
-		execl("/bin/sh", "sh", "-c", (char *) String("open \"").Append(GUI::Application::GetApplicationDirectory()).Append("translator.app\" --args \"").Append(GUI::Application::GetApplicationDirectory()).Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
-		exit(0);
-	}
+	if (Setup::enableUnicode) ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\""), String("."), SW_SHOW);
+	else			  ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\""), String("."), SW_SHOW);
 #else
+	String	 command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator\"");
+
+#if defined __APPLE__
+	/* Check if OS X version is at least 10.6 (Darwin 10.0) as the open
+	 * command does not support the --args flag on earlier releases of OS X.
+	 */
+	Buffer<char>     buffer(32);
+	FILE            *pstdin = popen("sysctl kern.osrelease", "r");
+
+	fscanf(pstdin, String("%[^\n]").Append(String::FromInt(buffer.Size() - 1)), (char *) buffer);
+
+	pclose(pstdin);
+
+	String	 osrelease = (char *) buffer;
+
+	if (!osrelease.StartsWith("kern.osrelease: ") || osrelease.Tail(osrelease.Length() - 16).ToInt() >= 10) command = String("open \"").Append(GUI::Application::GetApplicationDirectory()).Append("translator.app\" --args");
+	else 													command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator.app/Contents/MacOS/translator\"");
+#endif
+
 	if (!fork())
 	{
-		execl("/bin/sh", "sh", "-c", (char *) String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator\" \"").Append(GUI::Application::GetApplicationDirectory()).Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
+		execl("/bin/sh", "sh", "-c", (char *) command.Append(" \"").Append(GUI::Application::GetApplicationDirectory().Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Replace(" ", "\\ ")).Append("\""), NULL);
 		exit(0);
 	}
 #endif

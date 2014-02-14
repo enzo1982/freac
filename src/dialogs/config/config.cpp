@@ -169,7 +169,6 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 
 Void BonkEnc::ConfigDialog::AddLayers()
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Configuration");
@@ -187,33 +186,30 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	 */
 	((ConfigureEncoders *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
 
-	if (config->cdrip_numdrives >= 1)
+	Component	*component = NIL;
+
+	if (component == NIL) component = boca.CreateComponentByID("cdio-dec");
+	if (component == NIL) component = boca.CreateComponentByID("cdparanoia-dec");
+	if (component == NIL) component = boca.CreateComponentByID("cdrip-dec");
+	if (component == NIL) component = boca.CreateComponentByID("akrip-dec");
+
+	if (component != NIL)
 	{
-		Component	*component = NIL;
-
-		if (component == NIL) component = boca.CreateComponentByID("cdio-dec");
-		if (component == NIL) component = boca.CreateComponentByID("cdparanoia-dec");
-		if (component == NIL) component = boca.CreateComponentByID("cdrip-dec");
-		if (component == NIL) component = boca.CreateComponentByID("akrip-dec");
-
-		if (component != NIL)
+		if (component->GetConfigurationLayer() != NIL)
 		{
-			if (component->GetConfigurationLayer() != NIL)
-			{
-				components.Add(component);
-				layers.Add(component->GetConfigurationLayer());
+			components.Add(component);
+			layers.Add(component->GetConfigurationLayer());
 
-				i18n->SetContext("Configuration");
+			i18n->SetContext("Configuration");
 
-				entries.Add(new ConfigEntry(i18n->TranslateString("Settings"), layers.GetLast()));
-				entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+			entries.Add(new ConfigEntry(i18n->TranslateString("Settings"), layers.GetLast()));
+			entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 
-				tree_ripper->Add(entries.GetLast());
-			}
-			else
-			{
-				boca.DeleteComponent(component);
-			}
+			tree_ripper->Add(entries.GetLast());
+		}
+		else
+		{
+			boca.DeleteComponent(component);
 		}
 
 		layers.Add(new ConfigureCDDB());

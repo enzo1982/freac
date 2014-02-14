@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -134,6 +134,9 @@ const String	 BonkEnc::Config::JoblistFieldSizesDefault			= "120,*,50,80,80";
  */
 const String	 BonkEnc::Config::RipperActiveDriveID				= "ActiveDrive";
 const Int	 BonkEnc::Config::RipperActiveDriveDefault			= 0;
+
+const String	 BonkEnc::Config::RipperLockTrayID				= "LockTray";
+const Bool	 BonkEnc::Config::RipperLockTrayDefault				= False;
 
 const String	 BonkEnc::Config::RipperEjectAfterRippingID			= "EjectAfterRipping";
 const Bool	 BonkEnc::Config::RipperEjectAfterRippingDefault		= False;

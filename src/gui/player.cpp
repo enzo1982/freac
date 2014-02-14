@@ -305,7 +305,7 @@ Void BonkEnc::LayerPlayer::StopPlayback()
 Void BonkEnc::LayerPlayer::OpenCDTray()
 {
 	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
 	if (info != NIL)
 	{

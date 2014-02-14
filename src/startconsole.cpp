@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -80,20 +80,30 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	ScanForParameter("-o", &outfile);
 	ScanForParameter("-p", &pattern);
 
-	if (config->cdrip_numdrives > 0)
+	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
+	Int			 numDrives = 0;
+
+	if (info != NIL)
 	{
-		ScanForParameter("-cd", &cdDrive);
-		ScanForParameter("-track", &tracks);
-		ScanForParameter("-t", &timeout);
+		if (info->GetNumberOfDevices() > 0)
+		{
+			ScanForParameter("-cd", &cdDrive);
+			ScanForParameter("-track", &tracks);
+			ScanForParameter("-t", &timeout);
+		}
+
+		numDrives = info->GetNumberOfDevices();
+
+		boca.DeleteComponent(info);
 	}
 
 	ScanForFiles(&files);
 
-	if (config->cdrip_numdrives > 0)
+	if (numDrives > 0)
 	{
 		config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, cdDrive.ToInt());
 
-		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault) >= config->cdrip_numdrives)
+		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault) >= numDrives)
 		{
 			Console::OutputString(String("Warning: Drive #").Append(cdDrive).Append(" does not exist. Using first drive.\n"));
 
@@ -291,8 +301,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb);
 		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, True);
 
-		config->SetIntValue("CDRip", "LockTray", False);
-		config->cdrip_timeout = timeout.ToInt();
+		config->SetIntValue(Config::CategoryRipperID, Config::RipperLockTrayID, Config::RipperLockTrayDefault);
+		config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 
 		config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
 		config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
@@ -495,14 +505,16 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 
 Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<String> *files)
 {
+	BoCA::Config	*config	= BoCA::Config::Get();
+
 	if (tracks == "all")
 	{
 		Registry		&boca = Registry::Get();
-		DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+		DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
 		if (info != NIL)
 		{
-			const Array<String>	&tracks = info->GetNthDeviceTrackList(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
+			const Array<String>	&tracks = info->GetNthDeviceTrackList(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
 			foreach (const String &track, tracks) (*files).Add(track);
 
@@ -544,14 +556,14 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 			Int	 last = current.Tail(current.Length() - dash - 1).ToInt();
 
 			for (Int i = first; i <= last; i++) (*files).Add(String("device://cdda:")
-									.Append(String::FromInt(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
+									.Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
 									.Append("/")
 									.Append(String::FromInt(i)));
 		}
 		else
 		{
 			(*files).Add(String("device://cdda:")
-				    .Append(String::FromInt(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
+				    .Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
 				    .Append("/")
 				    .Append(current));
 		}
@@ -562,11 +574,9 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 
 Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-
 	if (helpenc == NIL)
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\nCopyright (C) 2001-2013 Robert Kausch\n\n"));
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\nCopyright (C) 2001-2014 Robert Kausch\n\n"));
 		Console::OutputString("Usage:\tfreaccmd [options] [file(s)]\n\n");
 		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
 		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
@@ -574,12 +584,20 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 		Console::OutputString("\t-o <outfile>\tSpecify output file name in single file mode\n");
 		Console::OutputString("\t-p <pattern>\tSpecify output file name pattern\n\n");
 
-		if (config->cdrip_numdrives > 0)
+		Registry		&boca	   = Registry::Get();
+		DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
+
+		if (info != NIL)
 		{
-			Console::OutputString("\t-cd <drive>\tSpecify active CD drive (0..n)\n");
-			Console::OutputString("\t-track <track>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
-			Console::OutputString("\t-t <timeout>\tTimeout for CD track ripping (default is 120 seconds)\n");
-			Console::OutputString("\t-cddb\t\tEnable CDDB database lookup\n\n");
+			if (info->GetNumberOfDevices() > 0)
+			{
+				Console::OutputString("\t-cd <drive>\tSpecify active CD drive (0..n)\n");
+				Console::OutputString("\t-track <track>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
+				Console::OutputString("\t-t <timeout>\tTimeout for CD track ripping (default is 120 seconds)\n");
+				Console::OutputString("\t-cddb\t\tEnable CDDB database lookup\n\n");
+			}
+
+			boca.DeleteComponent(info);
 		}
 
 		Console::OutputString("\t-quiet\t\tDo not print any messages\n\n");
@@ -588,7 +606,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	}
 	else
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\nCopyright (C) 2001-2013 Robert Kausch\n\n"));
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\nCopyright (C) 2001-2014 Robert Kausch\n\n"));
 
 		if (helpenc == "LAME" || helpenc == "lame")
 		{

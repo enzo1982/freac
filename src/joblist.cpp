@@ -189,9 +189,9 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	 */
 	ListEntry	*entry	= AddEntry(GetEntryText(track));
 
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault)) entry->SetTooltipLayer(new LayerTooltip(track));
-
 	entry->SetMark(True);
+
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault)) entry->SetTooltipLayer(new LayerTooltip(track));
 
 	tracks.Add(track, entry->GetHandle());
 

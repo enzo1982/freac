@@ -94,7 +94,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	combo_drive	= new ComboBox(pos, size);
 
 	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
 	if (info != NIL)
 	{
@@ -527,7 +527,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	activedrive = combo_drive->GetSelectedEntryNumber();
 
 	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
 	if (info == NIL) return;
 

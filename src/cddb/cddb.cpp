@@ -51,11 +51,19 @@ BonkEnc::CDDB::~CDDB()
 
 Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 {
-#ifdef __WIN32__
-	BoCA::Config	*config = BoCA::Config::Get();
+	Registry		&boca	   = Registry::Get();
+	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
+	Int			 numDrives = 0;
 
-	if (driveID >= config->cdrip_numdrives) return Error();
-#endif
+	if (info != NIL)
+	{
+		numDrives = info->GetNumberOfDevices();
+
+		boca.DeleteComponent(info);
+	}
+
+	if (driveID >= numDrives) return Error();
+
 	activeDriveID = driveID;
 
 	return Success();
@@ -63,10 +71,9 @@ Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 
 Int BonkEnc::CDDB::ComputeDiscID()
 {
-	Int	 discID = 0;
-
-	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+	Registry		&boca	= Registry::Get();
+	DeviceInfoComponent	*info	= boca.CreateDeviceInfoComponent();
+	Int			 discID = 0;
 
 	if (info != NIL)
 	{
@@ -111,10 +118,9 @@ Int BonkEnc::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
 
 String BonkEnc::CDDB::GetCDDBQueryString()
 {
-	String	 str;
-
 	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+	String			 str;
 
 	if (info != NIL)
 	{
@@ -190,7 +196,7 @@ String BonkEnc::CDDB::QueryStringFromOffsets(const String &offsets)
 Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 {
 	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
 	if (info == NIL) return False;
 

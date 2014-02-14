@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,6 +16,8 @@
 #include <config.h>
 
 using namespace smooth::GUI::Dialogs;
+
+using namespace BoCA::AS;
 
 BonkEnc::ConfigureCDDB::ConfigureCDDB()
 {
@@ -314,12 +316,27 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());
 	}
 
+	/* Get number of drives.
+	 */
+	Registry		&boca	   = Registry::Get();
+	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
+	Int			 numDrives = 0;
+
+	if (info != NIL)
+	{
+		numDrives = info->GetNumberOfDevices();
+
+		boca.DeleteComponent(info);
+	}
+
+	/* Check validity of eMail address.
+	 */
 	Bool	 valid = False;
 	String	 email = edit_email->GetText();
 
 	for (Int i = 0; i < email.Length(); i++) if (email[i] == '@') valid = True;
 
-	if (config->cdrip_numdrives >= 1 && !valid)
+	if (numDrives >= 1 && !valid)
 	{
 		BoCA::Utilities::ErrorMessage(i18n->TranslateString("Please enter a valid eMail address."));
 

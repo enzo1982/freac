@@ -448,9 +448,13 @@ Error BonkEnc::JobConvert::Perform()
 			if (trackInfo.length >= 0) position += (bytes / bytesPerSample / format.channels);
 			else			   position = decoder->GetInBytes();
 
-			if (trackInfo.isCDTrack && BoCA::Config::Get()->cdrip_timeout > 0 && progress->GetTrackTimePassed() > BoCA::Config::Get()->cdrip_timeout * 1000)
+			/* Check for ripper timeout.
+			 */
+			Int	 timeout = config->GetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
+
+			if (trackInfo.isCDTrack && timeout > 0 && progress->GetTrackTimePassed() > timeout * 1000)
 			{
-				BoCA::Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(BoCA::Config::Get()->cdrip_timeout));
+				BoCA::Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(timeout));
 
 				skipTrack = True;
 			}
@@ -569,7 +573,7 @@ Error BonkEnc::JobConvert::Perform()
 
 		/* Eject CD if this was the last track from that disc.
 		 */
-		if (trackInfo.isCDTrack && BoCA::Config::Get()->GetIntValue("CDRip", "EjectAfterRipping", False) && mode != CONVERTER_MODE_DECODE)
+		if (trackInfo.isCDTrack && config->GetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, Config::RipperEjectAfterRippingDefault) && mode != CONVERTER_MODE_DECODE)
 		{
 			Bool	 ejectDisk = True;
 
@@ -580,7 +584,7 @@ Error BonkEnc::JobConvert::Perform()
 
 			if (ejectDisk)
 			{
-				DeviceInfoComponent	*info = (DeviceInfoComponent *) boca.CreateComponentByID("cdrip-info");
+				DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
 				if (info != NIL)
 				{
@@ -909,7 +913,7 @@ String BonkEnc::JobConvert::GetSingleOutputFileName(const Track &track)
 	/* Instantiate selected encoder.
 	 */
 	Registry		&boca	 = Registry::Get();
-	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(BoCA::Config::Get()->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
 	if (encoder == NIL) return NIL;
 
