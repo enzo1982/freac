@@ -148,15 +148,6 @@ const Array<BoCA::Track> *BonkEnc::JobList::GetTrackList()
 	return &tracks;
 }
 
-Bool BonkEnc::JobList::CanModifyJobList() const
-{
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("Joblist::Errors");
-
-	return True;
-}
-
 Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -247,8 +238,6 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 Bool BonkEnc::JobList::RemoveAllTracks()
 {
-	if (!CanModifyJobList()) return False;
-
 	for (Int i = 0; i < tracks.Length(); i++)
 	{
 		ListEntry	*entry = GetNthEntry(i);
@@ -295,8 +284,6 @@ Int BonkEnc::JobList::SetMetrics(const Point &nPos, const Size &nSize)
 
 Void BonkEnc::JobList::AddTrackByDialog()
 {
-	if (!CanModifyJobList()) return;
-
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
@@ -366,8 +353,6 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 Void BonkEnc::JobList::AddTracksByDragAndDrop(const Array<String> &files)
 {
-	if (!CanModifyJobList()) return;
-
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist::Errors");
@@ -437,8 +422,6 @@ Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 
 Void BonkEnc::JobList::RemoveSelectedTrack()
 {
-	if (!CanModifyJobList()) return;
-
 	if (GetSelectedEntry() == NIL)
 	{
 		BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -496,8 +479,6 @@ Void BonkEnc::JobList::ToggleSelection()
 
 Void BonkEnc::JobList::LoadList()
 {
-	if (!CanModifyJobList()) return;
-
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
