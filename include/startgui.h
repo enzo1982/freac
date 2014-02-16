@@ -122,6 +122,7 @@ namespace BonkEnc
 
 			Void				 OnDriveChange();
 			Void				 OnDiscInsert(Int);
+			Void				 OnDiscRemove(Int);
 
 			Void				 ReadCD()				{ ReadCD(False); }
 			Void				 ReadCD(Bool);

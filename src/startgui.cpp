@@ -19,6 +19,7 @@
 
 #include <jobs/engine/convert.h>
 #include <jobs/joblist/addtracks.h>
+#include <jobs/joblist/removedisc.h>
 #include <jobs/other/checkforupdates.h>
 
 #include <dialogs/config/config.h>
@@ -81,6 +82,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	notification = Notification::Get();
 	notification->onDriveChange.Connect(&BonkEncGUI::OnDriveChange, this);
 	notification->onDiscInsert.Connect(&BonkEncGUI::OnDiscInsert, this);
+	notification->onDiscRemove.Connect(&BonkEncGUI::OnDiscRemove, this);
 
 	/* Set interface language.
 	 */
@@ -501,10 +503,13 @@ Void BonkEnc::BonkEncGUI::OnDiscInsert(Int drive)
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, activeDrive);
 }
 
+Void BonkEnc::BonkEncGUI::OnDiscRemove(Int drive)
+{
+	(new JobRemoveDiscTracks(drive))->Schedule();
+}
+
 Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
 {
-	if (!joblist->CanModifyJobList()) return;
-
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	if (clicked_drive >= 0)
@@ -523,9 +528,9 @@ Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
 
 		Job	*job = new JobAddTracks(urls, autoCDRead);
 
-		job->Schedule();
-
 		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
+
+		job->Schedule();
 
 		boca.DeleteComponent(info);
 	}
