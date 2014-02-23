@@ -179,9 +179,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		String	 bitrate = "192";
 		String	 quality = "60";
 
-		if	(ScanForParameter("-b", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
-		else if (ScanForParameter("-q", &quality)) config->SetIntValue("Vorbis", "Mode", 0);
-		else					   config->SetIntValue("Vorbis", "Mode", 0);
+		if (ScanForParameter("-b", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
+		else				      config->SetIntValue("Vorbis", "Mode", 0);
 
 		config->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, (Int) quality.ToInt())));
 		config->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, (Int) bitrate.ToInt())));
@@ -222,9 +221,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		String	 bitrate = "64";
 		String	 quality = "100";
 
-		if	(ScanForParameter("-b", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
-		else if (ScanForParameter("-q", &quality)) config->SetIntValue("FAAC", "SetQuality", True);
-		else					   config->SetIntValue("FAAC", "SetQuality", True);
+		if (ScanForParameter("-b", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
+		else				      config->SetIntValue("FAAC", "SetQuality", True);
 
 		config->SetIntValue("FAAC", "MP4Container", ScanForParameter("-mp4", NULL));
 
