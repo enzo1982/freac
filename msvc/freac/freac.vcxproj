@@ -200,9 +200,17 @@
     <ClCompile Include="..\..\src\jobs\joblist\removeall.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_removeall.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\removedisc.cpp" />
     <ClCompile Include="..\..\src\jobs\other\checkforupdates.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_checkforupdates.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\notification\notification_none.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\src\notification\notification_udev.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\src\notification\notification_win32.cpp" />
     <ClCompile Include="..\..\src\playback.cpp" />
     <ClCompile Include="..\..\src\progress.cpp" />
     <ClCompile Include="..\..\src\startconsole.cpp" />
@@ -265,7 +273,9 @@
     <ClInclude Include="..\..\include\jobs\joblist\addfiles.h" />
     <ClInclude Include="..\..\include\jobs\joblist\addtracks.h" />
     <ClInclude Include="..\..\include\jobs\joblist\removeall.h" />
+    <ClInclude Include="..\..\include\jobs\joblist\removedisc.h" />
     <ClInclude Include="..\..\include\jobs\other\checkforupdates.h" />
+    <ClInclude Include="..\..\include\notification\notification.h" />
     <ClInclude Include="..\..\include\playback.h" />
     <ClInclude Include="..\..\include\progress.h" />
     <ClInclude Include="..\..\include\resources.h" />
@@ -316,6 +326,9 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\src\notification\notification_osx.mm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </None>
     <None Include="VTune\freac.vpj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
