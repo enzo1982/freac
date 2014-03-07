@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -28,7 +28,8 @@ namespace BonkEnc
 			Text				*timeLabel;
 			EditBox				*timeValue;
 
-			Int				 startTicks;
+			UnsignedInt64			 startTicks;
+			Int				 previousSecondsLeft;
 
 			static Array<Job *>		 planned;
 			static Array<Job *>		 running;

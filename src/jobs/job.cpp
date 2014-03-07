@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -100,7 +100,8 @@ Int BonkEnc::Job::Run()
 
 	LeaveProtectedRegion();
 
-	startTicks = clock();
+	startTicks = S::System::System::Clock();
+	previousSecondsLeft = 0;
 
 	Perform();
 
@@ -195,23 +196,28 @@ Int BonkEnc::Job::SetProgress(Int nValue)
 	progress->SetValue(nValue);
 	progressValue->SetText(String::FromInt(Math::Round(Float(nValue) / 10.0)).Append(percentString));
 
-	Int	 ticks = clock() - startTicks;
-	Int	 secondsLeft = (Int) (ticks * ((Float(CLOCKS_PER_SEC) - nValue) / nValue)) / CLOCKS_PER_SEC + (nValue < 1000 ? 1 : 0);
+	Int	 totalTicks  = S::System::System::Clock() - startTicks;
+	Int	 secondsLeft = (Int) (totalTicks * ((1000.0 - nValue) / nValue)) / 1000 + (nValue < 1000 ? 1 : 0);
 
-	String	 buffer = String::FromInt(secondsLeft / 60);
-	String	 text = zeroString;
+	if (secondsLeft < previousSecondsLeft || secondsLeft >= previousSecondsLeft + 2)
+	{
+		String	 buffer = String::FromInt(secondsLeft / 60);
+		String	 text = zeroString;
 
-	if (buffer.Length() == 1) text.Append(buffer);
-	else			  text.Copy(buffer);
+		if (buffer.Length() == 1) text.Append(buffer);
+		else			  text.Copy(buffer);
 
-	text.Append(colonString);
+		text.Append(colonString);
 
-	buffer = String::FromInt(secondsLeft % 60);
+		buffer = String::FromInt(secondsLeft % 60);
 
-	if (buffer.Length() == 1) text.Append(String(zeroString).Append(buffer));
-	else			  text.Append(buffer);
+		if (buffer.Length() == 1) text.Append(String(zeroString).Append(buffer));
+		else			  text.Append(buffer);
 
-	timeValue->SetText(text);
+		timeValue->SetText(text);
+
+		previousSecondsLeft = secondsLeft;
+	}
 
 	return Success();
 }
