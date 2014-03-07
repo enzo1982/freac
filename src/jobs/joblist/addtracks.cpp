@@ -17,6 +17,8 @@
 #include <utilities.h>
 #include <config.h>
 
+#include <support/autorelease.h>
+
 #include <boca.h>
 
 using namespace BoCA;
@@ -60,10 +62,16 @@ Error BonkEnc::JobAddTracks::Perform()
 	{
 		if (abort) break;
 
+		AutoRelease	 autoRelease;
+
+		/* Get track URL.
+		 */
 		const String	&url = urls.GetNth(i);
 
 		SetText(String("Adding files... - ").Append(url));
 
+		/* Create decoder component.
+		 */
 		DecoderComponent	*decoder = Registry::Get().CreateDecoderForStream(url);
 
 		if (decoder == NIL)
@@ -77,6 +85,8 @@ Error BonkEnc::JobAddTracks::Perform()
 			continue;
 		}
 
+		/* Query stream info.
+		 */
 		Track	 track;
 		Error	 error = decoder->GetStreamInfo(url, track);
 		String	 errorString = decoder->GetErrorString();

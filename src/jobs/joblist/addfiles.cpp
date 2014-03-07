@@ -16,6 +16,8 @@
 #include <utilities.h>
 #include <config.h>
 
+#include <support/autorelease.h>
+
 #include <boca.h>
 
 using namespace BoCA;
@@ -53,10 +55,16 @@ Error BonkEnc::JobAddFiles::Perform()
 	{
 		if (abort) break;
 
+		AutoRelease	 autoRelease;
+
+		/* Get file name.
+		 */
 		const String	&file = files.GetNth(i);
 
 		SetText(String("Adding files... - ").Append(file));
 
+		/* Create decoder component.
+		 */
 		DecoderComponent	*decoder = Registry::Get().CreateDecoderForStream(file);
 
 		if (decoder == NIL)
@@ -70,6 +78,8 @@ Error BonkEnc::JobAddFiles::Perform()
 			continue;
 		}
 
+		/* Query stream info.
+		 */
 		Track	 track;
 		Error	 error = decoder->GetStreamInfo(file, track);
 		String	 errorString = decoder->GetErrorString();

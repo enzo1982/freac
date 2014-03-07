@@ -18,6 +18,8 @@
 #include <config.h>
 #include <utilities.h>
 
+#include <support/autorelease.h>
+
 #include <dialogs/overwrite.h>
 
 using namespace smooth::GUI::Dialogs;
@@ -220,6 +222,8 @@ Error BonkEnc::JobConvert::Perform()
 
 			continue;
 		}
+
+		AutoRelease	 autoRelease;
 
 		Track		 trackInfo = tracks.GetNth(i);
 		const Format	&format	   = trackInfo.GetFormat();

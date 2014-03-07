@@ -26,12 +26,16 @@ DLLOBJECTS  = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcach
 
 ifeq ($(BUILD_WIN32),True)
 	DLLOBJECTS += $(OBJECTDIR)/notification_win32.o
+	DLLOBJECTS += $(OBJECTDIR)/autorelease_none.o
 else ifeq ($(BUILD_LINUX),True)
 	DLLOBJECTS += $(OBJECTDIR)/notification_udev.o
+	DLLOBJECTS += $(OBJECTDIR)/autorelease_none.o
 else ifeq ($(BUILD_OSX),True)
 	DLLOBJECTS += $(OBJECTDIR)/notification_osx.o
+	DLLOBJECTS += $(OBJECTDIR)/autorelease_osx.o
 else
 	DLLOBJECTS += $(OBJECTDIR)/notification_none.o
+	DLLOBJECTS += $(OBJECTDIR)/autorelease_none.o
 endif
 
 ifeq ($(BUILD_WIN32),True)
@@ -556,6 +560,16 @@ $(OBJECTDIR)/notification_udev.o: $(SRCDIR)/notification/notification_udev.cpp
 $(OBJECTDIR)/notification_win32.o: $(SRCDIR)/notification/notification_win32.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/notification/notification_win32.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/notification/notification_win32.cpp -o $(OBJECTDIR)/notification_win32.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/autorelease_none.o: $(SRCDIR)/support/autorelease_none.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/support/autorelease_none.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/support/autorelease_none.cpp -o $(OBJECTDIR)/autorelease_none.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/autorelease_osx.o: $(SRCDIR)/support/autorelease_osx.mm
+	$(ECHO) -n Compiling $(SRCDIR)/support/autorelease_osx.mm...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/support/autorelease_osx.mm -o $(OBJECTDIR)/autorelease_osx.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/resources.o: $(RESOURCEDIR)/resources.rc $(INCLUDEDIR)/resources.h $(BINRESDIR)/freac.ico

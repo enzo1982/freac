@@ -215,6 +215,7 @@
     <ClCompile Include="..\..\src\progress.cpp" />
     <ClCompile Include="..\..\src\startconsole.cpp" />
     <ClCompile Include="..\..\src\startgui.cpp" />
+    <ClCompile Include="..\..\src\support\autorelease_none.cpp" />
     <ClCompile Include="..\..\src\utilities.cpp" />
     <ClCompile Include="..\..\src\cddb\cddb.cpp" />
     <ClCompile Include="..\..\src\cddb\cddbbatch.cpp" />
@@ -281,6 +282,7 @@
     <ClInclude Include="..\..\include\resources.h" />
     <ClInclude Include="..\..\include\startconsole.h" />
     <ClInclude Include="..\..\include\startgui.h" />
+    <ClInclude Include="..\..\include\support\autorelease.h" />
     <ClInclude Include="..\..\include\utilities.h" />
     <ClInclude Include="..\..\include\dialogs\adddirectory.h" />
     <ClInclude Include="..\..\include\dialogs\addpattern.h" />
@@ -327,6 +329,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\notification\notification_osx.mm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\src\support\autorelease_osx.mm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
     <None Include="VTune\freac.vpj" />
