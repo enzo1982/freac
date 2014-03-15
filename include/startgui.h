@@ -14,7 +14,7 @@
 #include <smooth.h>
 #include "bonkenc.h"
 
-#include <notification/notification.h>
+#include <support/notification.h>
 
 #include <gui/main_joblist.h>
 #include <gui/main_threads.h>

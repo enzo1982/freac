@@ -204,18 +204,18 @@
     <ClCompile Include="..\..\src\jobs\other\checkforupdates.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_checkforupdates.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\notification\notification_none.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\notification\notification_udev.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\notification\notification_win32.cpp" />
     <ClCompile Include="..\..\src\playback.cpp" />
     <ClCompile Include="..\..\src\progress.cpp" />
     <ClCompile Include="..\..\src\startconsole.cpp" />
     <ClCompile Include="..\..\src\startgui.cpp" />
     <ClCompile Include="..\..\src\support\autorelease_none.cpp" />
+    <ClCompile Include="..\..\src\support\notification_none.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\src\support\notification_udev.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\src\support\notification_win32.cpp" />
     <ClCompile Include="..\..\src\utilities.cpp" />
     <ClCompile Include="..\..\src\cddb\cddb.cpp" />
     <ClCompile Include="..\..\src\cddb\cddbbatch.cpp" />
@@ -276,13 +276,13 @@
     <ClInclude Include="..\..\include\jobs\joblist\removeall.h" />
     <ClInclude Include="..\..\include\jobs\joblist\removedisc.h" />
     <ClInclude Include="..\..\include\jobs\other\checkforupdates.h" />
-    <ClInclude Include="..\..\include\notification\notification.h" />
     <ClInclude Include="..\..\include\playback.h" />
     <ClInclude Include="..\..\include\progress.h" />
     <ClInclude Include="..\..\include\resources.h" />
     <ClInclude Include="..\..\include\startconsole.h" />
     <ClInclude Include="..\..\include\startgui.h" />
     <ClInclude Include="..\..\include\support\autorelease.h" />
+    <ClInclude Include="..\..\include\support\notification.h" />
     <ClInclude Include="..\..\include\utilities.h" />
     <ClInclude Include="..\..\include\dialogs\adddirectory.h" />
     <ClInclude Include="..\..\include\dialogs\addpattern.h" />
@@ -328,10 +328,10 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\src\notification\notification_osx.mm">
+    <None Include="..\..\src\support\autorelease_osx.mm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
-    <None Include="..\..\src\support\autorelease_osx.mm">
+    <None Include="..\..\src\support\notification_osx.mm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
     <None Include="VTune\freac.vpj" />
