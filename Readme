@@ -39,15 +39,15 @@ Further codecs (e.g. Nero's HE-AAC encoder) can be used as external
 plug-ins (see the manual for installation instructions).
 
 fre:ac uses the CDRip library for audio ripping on Windows.
-fre:ac uses the cdio library for audio ripping on Linux and NetBSD.
-fre:ac uses the cdparanoia library for audio ripping on FreeBSD and OpenBSD.
+fre:ac uses the cdio library for audio ripping on OS X, Linux, Solaris, FreeBSD and NetBSD.
+fre:ac uses the cdparanoia library for audio ripping on Linux, FreeBSD and OpenBSD.
 
 Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 
 History
 -------
 
-	Version 1.1 CVS (February 2014)
+	Version 1.1 CVS (March 2014)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -76,7 +76,7 @@ History
 		- added support for the Fraunhofer FDK AAC encoder/decoder
 		- added support for reading simple audio files using libsndfile
 		- added support for cover art in MP4 files
-		- added support for reading and writing MP4 chapters
+		- added support for reading and writing MP4 and Vorbis Comment chapters
 		- added support for MCDI frame in ID3v2 tags
 		- added support for gapless MP3 decoding
 		- added RIFF tagging support (using LIST INFO and Cart chunks)
