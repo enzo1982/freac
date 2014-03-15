@@ -11,6 +11,8 @@
 #include <progress.h>
 #include <config.h>
 
+#include <support/autorelease.h>
+
 using namespace BoCA;
 
 BonkEnc::Progress::Progress()
@@ -180,6 +182,10 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.fileSize)					 - trackTicks) / 1000);
 		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / trackInfo.fileSize * trackInfo.approxLength / totalSamples) - totalTicks) / 1000);
 	}
+
+	/* Notify listeners of updated values.
+	 */
+	AutoRelease	 autoRelease;
 
 	onTrackProgress.Emit(Math::Min(1000, trackProgress), Math::Max(0, trackTicks));
 	onTotalProgress.Emit(Math::Min(1000, totalProgress), Math::Max(0, totalTicks));
