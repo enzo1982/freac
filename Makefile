@@ -141,11 +141,7 @@ ifeq ($(BUILD_OPENBSD),True)
 endif
 
 ifneq ($(BUILD_WIN32),True)
-ifneq ($(BUILD_LINUX),True)
 	COMPILER_OPTS			+= -fPIC
-else ifneq ($(BUILD_X86),True)
-	COMPILER_OPTS			+= -fPIC
-endif
 endif
 
 ifeq ($(BUILD_WIN32),True)
