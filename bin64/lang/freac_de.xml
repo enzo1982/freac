@@ -504,6 +504,8 @@
       <entry id="9020" string="Use read offset:">Offset verwenden:</entry>
       <entry id="9021" string="samples">Samples</entry>
       <entry id="9022" string="Read ISRC when adding tracks to joblist">ISRC beim Hinzufügen von Tracks zur Jobliste lesen</entry>
+      <entry id="9023" string="Spin up before ripping:">Vor dem Rippen beschleunigen:</entry>
+      <entry id="9024" string="%1 seconds">%1 Sekunden</entry>
     </section>
 
     <section name="Decoders">
@@ -789,7 +791,7 @@
       <section name="Donate">
 	<entry id="50000" string="Support this project">Unterstützen Sie dieses Projekt</entry>
 	<entry id="50001" string="Please support this project!">Bitte unterstützen Sie dieses Projekt!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Bitte helfen Sie, diese Software weiterhin frei und kostenlos zu erhalten, indem&#10;Sie das %1-Projekt mit einer Spende unterstützen.&#10;&#10;Klicken Sie auf einen dieser Knöpfe, um jetzt per PayPal zu spenden:</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Bitte helfen Sie, diese Software weiterhin frei und kostenlos zu erhalten,&#10;indem Sie das %1-Projekt mit einer Spende unterstützen.&#10;&#10;Klicken Sie auf einen dieser Knöpfe, um jetzt per PayPal zu spenden:</entry>
 	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Sie können per PayPal auch direkt Geld an %1 senden.&#10;&#10;Bitte schreiben Sie an %1, wenn Sie per Überweisung oder&#10;Scheck spenden oder Geld per Post senden möchten.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">de</entry>

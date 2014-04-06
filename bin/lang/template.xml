@@ -504,6 +504,8 @@
       <entry id="9020" string="Use read offset:"/>
       <entry id="9021" string="samples"/>
       <entry id="9022" string="Read ISRC when adding tracks to joblist"/>
+      <entry id="9023" string="Spin up before ripping:"/>
+      <entry id="9024" string="%1 seconds"/>
     </section>
 
     <section name="Decoders">
