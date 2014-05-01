@@ -138,13 +138,13 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
 	Bool	 broken	 = False;
 
-	if (((encoderID == "LAME")   && !boca.ComponentExists("lame-out"))     ||
-	    ((encoderID == "VORBIS") && !boca.ComponentExists("vorbis-out"))   ||
-	    ((encoderID == "BONK")   && !boca.ComponentExists("bonk-out"))     ||
-	    ((encoderID == "BLADE")  && !boca.ComponentExists("bladeenc-out")) ||
-	    ((encoderID == "FAAC")   && !boca.ComponentExists("faac-out"))     ||
-	    ((encoderID == "FLAC")   && !boca.ComponentExists("flac-out"))     ||
-	    ((encoderID == "TVQ")    && !boca.ComponentExists("twinvq-out")))
+	if (((encoderID == "LAME")   && !boca.ComponentExists("lame-enc"))     ||
+	    ((encoderID == "VORBIS") && !boca.ComponentExists("vorbis-enc"))   ||
+	    ((encoderID == "BONK")   && !boca.ComponentExists("bonk-enc"))     ||
+	    ((encoderID == "BLADE")  && !boca.ComponentExists("bladeenc-enc")) ||
+	    ((encoderID == "FAAC")   && !boca.ComponentExists("faac-enc"))     ||
+	    ((encoderID == "FLAC")   && !boca.ComponentExists("flac-enc"))     ||
+	    ((encoderID == "TVQ")    && !boca.ComponentExists("twinvq-enc")))
 	{
 		Console::OutputString(String("Encoder ").Append(encoderID).Append(" is not available!\n\n"));
 
@@ -172,7 +172,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		else if (mode == "ABR" || mode == "abr") config->SetIntValue("LAME", "VBRMode", 3);
 		else if (mode == "CBR" || mode == "cbr") config->SetIntValue("LAME", "VBRMode", 0);
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "lame-out");
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "lame-enc");
 	}
 	else if (encoderID == "VORBIS")
 	{
@@ -185,7 +185,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		config->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, (Int) quality.ToInt())));
 		config->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, (Int) bitrate.ToInt())));
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "vorbis-out");
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "vorbis-enc");
 	}
 	else if (encoderID == "BONK")
 	{
@@ -204,7 +204,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		config->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, (Int) predictor.ToInt())));
 		config->SetIntValue("Bonk", "Downsampling", Math::Max(0, Math::Min(10, (Int) downsampling.ToInt())));
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "bonk-out");
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "bonk-enc");
 	}
 	else if (encoderID == "BLADE")
 	{
@@ -214,7 +214,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		config->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, (Int) bitrate.ToInt())));
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "blade-out");
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "blade-enc");
 	}
 	else if (encoderID == "FAAC")
 	{
@@ -229,7 +229,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		config->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, (Int) quality.ToInt())));
 		config->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, (Int) bitrate.ToInt())));
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "faac-out");
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "faac-enc");
 	}
 	else if (encoderID == "FLAC")
 	{
@@ -263,7 +263,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		config->SetIntValue("FLAC", "MinResidualPartitionOrder", Math::Max(0, Math::Min(16, (Int) minrice.ToInt())));
 		config->SetIntValue("FLAC", "MaxResidualPartitionOrder", Math::Max(0, Math::Min(16, (Int) maxrice.ToInt())));
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "flac-out");
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "flac-enc");
 	}
 	else if (encoderID == "TVQ")
 	{
@@ -276,11 +276,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		config->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, (Int) candidates.ToInt())));
 		config->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, (Int) bitrate.ToInt())));
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "twinvq-out");
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "twinvq-enc");
 	}
 	else if (encoderID == "WAVE")
 	{
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "wave-out");
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "wave-enc");
 	}
 	else
 	{
