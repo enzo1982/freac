@@ -23,13 +23,14 @@ BonkEnc::LayerTooltip::LayerTooltip(const Track &track) : Layer()
 		/* Scale bitmap to max 40x40 pixels.
 		 */
 		Size	 bmpSize = bitmap.GetSize();
+		Bitmap	 bmpScaled;
 
-		if	(float(bmpSize.cx) / 40 >= float(bmpSize.cy) / 40 && bmpSize.cx > 40) bitmap.Scale(bmpSize * (float(40) / bmpSize.cx));
-		else if (float(bmpSize.cy) / 40 >= float(bmpSize.cx) / 40 && bmpSize.cy > 40) bitmap.Scale(bmpSize * (float(40) / bmpSize.cy));
+		if	(float(bmpSize.cx) / 40 >= float(bmpSize.cy) / 40 && bmpSize.cx > 40) bmpScaled = bitmap.Scale(bmpSize * (float(40) / bmpSize.cx));
+		else if (float(bmpSize.cy) / 40 >= float(bmpSize.cx) / 40 && bmpSize.cy > 40) bmpScaled = bitmap.Scale(bmpSize * (float(40) / bmpSize.cy));
 
 		/* Create and add image widget.
 		 */
-		cover = new Image(bitmap, Point(4, 4), Size(40, 40));
+		cover = new Image(bmpScaled, Point(4, 4), Size(40, 40));
 
 		Add(cover);
 	}
