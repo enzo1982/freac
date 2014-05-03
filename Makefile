@@ -161,10 +161,6 @@ else
 		LINKER_OPTS		+= -framework Cocoa -framework IOKit -Wl,-dylib_install_name,freac$(SHARED)
 	endif
 
-	ifeq ($(BUILD_LINUX),True)
-		LINKER_OPTS		+= -ludev
-	endif
-
 	LINKER_OPTS			+= -L$(PREFIX)/lib -lsmooth-$(SMOOTHVER) -lboca-$(BOCAVER) -Wl,-rpath,.
 	LOADER_GUI_LINKER_OPTS		+= -L$(PREFIX)/lib -lsmooth-$(SMOOTHVER) -Wl,-rpath,.
 	LOADER_CONSOLE_LINKER_OPTS	+= -L$(PREFIX)/lib -lsmooth-$(SMOOTHVER) -Wl,-rpath,.
