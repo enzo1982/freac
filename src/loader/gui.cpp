@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,6 +14,7 @@
 
 using namespace smooth;
 using namespace smooth::System;
+using namespace smooth::GUI::Dialogs;
 
 Int smooth::Main(const Array<String> &args)
 {
@@ -40,6 +41,18 @@ Int smooth::Main(const Array<String> &args)
 		Object::DeleteObject(loader);
 
 		return result;
+	}
+	else
+	{
+#if defined __WIN32__
+		String	 library("freac.dll");
+#elif defined __APPLE__
+		String	 library("freac.dylib");
+#else
+		String	 library("freac.so");
+#endif
+
+		QuickMessage(String("Unable to load dynamic library ").Append(library).Append("!\n\nPossible reasons for this might be a corrupted\nfre:ac installation or missing dependencies."), "Error", Message::Buttons::Ok, Message::Icon::Error);
 	}
 
 	Object::DeleteObject(loader);
