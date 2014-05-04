@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -107,6 +107,13 @@ namespace BonkEnc
 
 			Shortcut		*shortcut_previous;
 			Shortcut		*shortcut_next;
+			Shortcut		*shortcut_first;
+			Shortcut		*shortcut_last;
+			Shortcut		*shortcut_move_up;
+			Shortcut		*shortcut_move_down;
+			Shortcut		*shortcut_move_top;
+			Shortcut		*shortcut_move_bottom;
+			Shortcut		*shortcut_toggle_mark;
 			Shortcut		*shortcut_remove;
 
 			LayerPlayer		*player;
@@ -124,6 +131,7 @@ namespace BonkEnc
 			Void			 FillMenus();
 
 			EditBox			*GetActiveEditBox();
+			Void			 FocusEditBox(EditBox *);
 
 			String			 SecondsToString(Int);
 
@@ -152,6 +160,13 @@ namespace BonkEnc
 
 			Void			 OnShortcutPrevious();
 			Void			 OnShortcutNext();
+			Void			 OnShortcutFirst();
+			Void			 OnShortcutLast();
+			Void			 OnShortcutMoveUp();
+			Void			 OnShortcutMoveDown();
+			Void			 OnShortcutMoveTop();
+			Void			 OnShortcutMoveBottom();
+			Void			 OnShortcutToggleMark();
 			Void			 OnShortcutRemove();
 
 			Void			 OnEditBoxEnter(EditBox *);

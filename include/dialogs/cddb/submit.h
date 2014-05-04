@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -56,6 +56,8 @@ namespace BonkEnc
 
 			Shortcut	*shortcut_previous;
 			Shortcut	*shortcut_next;
+			Shortcut	*shortcut_first;
+			Shortcut	*shortcut_last;
 
 			Text		*text_cdstatus;
 			Text		*text_status;
@@ -81,6 +83,7 @@ namespace BonkEnc
 			Array<Bool>	 data;
 
 			Void		 UpdateTrackList();
+			Widget		*GetActiveEditBox();
 
 			String		 GetCDDBGenre(const String &);
 
@@ -102,6 +105,8 @@ namespace BonkEnc
 
 			Void		 OnShortcutPrevious();
 			Void		 OnShortcutNext();
+			Void		 OnShortcutFirst();
+			Void		 OnShortcutLast();
 		public:
 					 cddbSubmitDlg();
 					~cddbSubmitDlg();

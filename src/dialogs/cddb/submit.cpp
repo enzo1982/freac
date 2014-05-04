@@ -196,6 +196,12 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	shortcut_next		= new Shortcut(0, Input::Keyboard::KeyDown, list_tracks);
 	shortcut_next->onKeyDown.Connect(&cddbSubmitDlg::OnShortcutNext, this);
 
+	shortcut_first		= new Shortcut(0, Input::Keyboard::KeyHome, list_tracks);
+	shortcut_first->onKeyDown.Connect(&cddbSubmitDlg::OnShortcutFirst, this);
+
+	shortcut_last		= new Shortcut(0, Input::Keyboard::KeyEnd, list_tracks);
+	shortcut_last->onKeyDown.Connect(&cddbSubmitDlg::OnShortcutLast, this);
+
 	pos.x -= 1;
 	pos.y += 151;
 
@@ -281,6 +287,8 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->Add(list_tracks);
 	mainWnd->Add(shortcut_previous);
 	mainWnd->Add(shortcut_next);
+	mainWnd->Add(shortcut_first);
+	mainWnd->Add(shortcut_last);
 	mainWnd->Add(text_cdstatus);
 	mainWnd->Add(text_status);
 	mainWnd->Add(mainWnd_titlebar);
@@ -317,6 +325,8 @@ BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
 
 	DeleteObject(shortcut_previous);
 	DeleteObject(shortcut_next);
+	DeleteObject(shortcut_first);
+	DeleteObject(shortcut_last);
 
 	DeleteObject(text_track);
 	DeleteObject(edit_track);
@@ -849,6 +859,21 @@ Void BonkEnc::cddbSubmitDlg::FinishTrack()
 	}
 }
 
+Widget *BonkEnc::cddbSubmitDlg::GetActiveEditBox()
+{
+	if	(edit_artist->IsFocussed())	 return edit_artist;
+	else if	(edit_trackartist->IsFocussed()) return edit_trackartist;
+	else if	(edit_title->IsFocussed())	 return edit_title;
+	else if	(edit_album->IsFocussed())	 return edit_album;
+	else if	(edit_track->IsFocussed())	 return edit_track;
+	else if	(edit_year->IsFocussed())	 return edit_year;
+	else if	(edit_genre->IsFocussed())	 return edit_genre;
+	else if	(edit_comment->IsFocussed())	 return edit_comment;
+	else if	(edit_disccomment->IsFocussed()) return edit_disccomment;
+
+	return NIL;
+}
+
 Void BonkEnc::cddbSubmitDlg::OnShortcutPrevious()
 {
 	if (edit_comment->IsFocussed()) return;
@@ -862,6 +887,20 @@ Void BonkEnc::cddbSubmitDlg::OnShortcutNext()
 	if (edit_comment->IsFocussed()) return;
 
 	list_tracks->SelectNthEntry(list_tracks->GetSelectedEntryNumber() + 1);
+}
+
+Void BonkEnc::cddbSubmitDlg::OnShortcutFirst()
+{
+	if (GetActiveEditBox() != NIL) return;
+
+	list_tracks->SelectNthEntry(0);
+}
+
+Void BonkEnc::cddbSubmitDlg::OnShortcutLast()
+{
+	if (GetActiveEditBox() != NIL) return;
+
+	list_tracks->SelectNthEntry(list_tracks->Length() - 1);
 }
 
 Void BonkEnc::cddbSubmitDlg::UpdateComment()

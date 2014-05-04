@@ -96,6 +96,27 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	shortcut_next		= new Shortcut(0, Input::Keyboard::KeyDown, joblist);
 	shortcut_next->onKeyDown.Connect(&LayerJoblist::OnShortcutNext, this);
 
+	shortcut_first		= new Shortcut(0, Input::Keyboard::KeyHome, joblist);
+	shortcut_first->onKeyDown.Connect(&LayerJoblist::OnShortcutFirst, this);
+
+	shortcut_last		= new Shortcut(0, Input::Keyboard::KeyEnd, joblist);
+	shortcut_last->onKeyDown.Connect(&LayerJoblist::OnShortcutLast, this);
+
+	shortcut_move_up	= new Shortcut(SC_SHIFT, Input::Keyboard::KeyUp, joblist);
+	shortcut_move_up->onKeyDown.Connect(&LayerJoblist::OnShortcutMoveUp, this);
+
+	shortcut_move_down	= new Shortcut(SC_SHIFT, Input::Keyboard::KeyDown, joblist);
+	shortcut_move_down->onKeyDown.Connect(&LayerJoblist::OnShortcutMoveDown, this);
+
+	shortcut_move_top	= new Shortcut(SC_SHIFT, Input::Keyboard::KeyHome, joblist);
+	shortcut_move_top->onKeyDown.Connect(&LayerJoblist::OnShortcutMoveTop, this);
+
+	shortcut_move_bottom	= new Shortcut(SC_SHIFT, Input::Keyboard::KeyEnd, joblist);
+	shortcut_move_bottom->onKeyDown.Connect(&LayerJoblist::OnShortcutMoveBottom, this);
+
+	shortcut_toggle_mark	= new Shortcut(0, Input::Keyboard::KeySpace, joblist);
+	shortcut_toggle_mark->onKeyDown.Connect(&LayerJoblist::OnShortcutToggleMark, this);
+
 	shortcut_remove		= new Shortcut(0, Input::Keyboard::KeyDelete, joblist);
 	shortcut_remove->onKeyDown.Connect(&LayerJoblist::OnShortcutRemove, this);
 
@@ -386,6 +407,8 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	Add(shortcut_previous);
 	Add(shortcut_next);
+	Add(shortcut_move_up);
+	Add(shortcut_move_down);
 
 	Add(check_single);
 
@@ -432,6 +455,11 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Add(progress_total);
 	Add(progress);
 
+	Add(shortcut_first);
+	Add(shortcut_last);
+	Add(shortcut_move_top);
+	Add(shortcut_move_bottom);
+	Add(shortcut_toggle_mark);
 	Add(shortcut_remove);
 
 	info_edit_artist->Add(menu_edit_artist);
@@ -495,6 +523,13 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 
 	DeleteObject(shortcut_previous);
 	DeleteObject(shortcut_next);
+	DeleteObject(shortcut_first);
+	DeleteObject(shortcut_last);
+	DeleteObject(shortcut_move_up);
+	DeleteObject(shortcut_move_down);
+	DeleteObject(shortcut_move_top);
+	DeleteObject(shortcut_move_bottom);
+	DeleteObject(shortcut_toggle_mark);
 	DeleteObject(shortcut_remove);
 
 	DeleteObject(check_single);
@@ -960,6 +995,12 @@ EditBox *BonkEnc::LayerJoblist::GetActiveEditBox()
 	return NIL;
 }
 
+Void BonkEnc::LayerJoblist::FocusEditBox(EditBox *editBox)
+{
+	editBox->SetFocus();
+	editBox->MarkAll();
+}
+
 Void BonkEnc::LayerJoblist::OnShortcutPrevious()
 {
 	if (!IsVisible()) return;
@@ -969,16 +1010,8 @@ Void BonkEnc::LayerJoblist::OnShortcutPrevious()
 	if (joblist->GetSelectedEntryNumber() == -1) joblist->SelectNthEntry(joblist->Length()		       - 1);
 	else					     joblist->SelectNthEntry(joblist->GetSelectedEntryNumber() - 1);
 
-	if (activeEditBox != NIL)
-	{
-		activeEditBox->SetFocus();
-		activeEditBox->MarkAll();
-	}
-	else
-	{
-		info_edit_artist->SetFocus();
-		info_edit_artist->MarkAll();
-	}
+	if (activeEditBox != NIL) FocusEditBox(activeEditBox);
+	else			  FocusEditBox(info_edit_artist);
 }
 
 Void BonkEnc::LayerJoblist::OnShortcutNext()
@@ -989,15 +1022,91 @@ Void BonkEnc::LayerJoblist::OnShortcutNext()
 
 	joblist->SelectNthEntry(joblist->GetSelectedEntryNumber() + 1);
 
-	if (activeEditBox != NIL)
+	if (activeEditBox != NIL) FocusEditBox(activeEditBox);
+	else			  FocusEditBox(info_edit_artist);
+}
+
+Void BonkEnc::LayerJoblist::OnShortcutFirst()
+{
+	if (!IsVisible() || GetActiveEditBox() != NIL) return;
+
+	EditBox	*activeEditBox = GetActiveEditBox();
+
+	joblist->SelectNthEntry(0);
+
+	if (activeEditBox != NIL) FocusEditBox(activeEditBox);
+	else			  FocusEditBox(info_edit_artist);
+}
+
+Void BonkEnc::LayerJoblist::OnShortcutLast()
+{
+	if (!IsVisible() || GetActiveEditBox() != NIL) return;
+
+	EditBox	*activeEditBox = GetActiveEditBox();
+
+	joblist->SelectNthEntry(joblist->Length() - 1);
+
+	if (activeEditBox != NIL) FocusEditBox(activeEditBox);
+	else			  FocusEditBox(info_edit_artist);
+}
+
+Void BonkEnc::LayerJoblist::OnShortcutMoveUp()
+{
+	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
+
+	if (joblist->GetSelectedEntryNumber() > 0)
 	{
-		activeEditBox->SetFocus();
-		activeEditBox->MarkAll();
+		joblist->SwitchEntries(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() - 1);
+
+		joblist->Paint(SP_PAINT);
 	}
-	else
+}
+
+Void BonkEnc::LayerJoblist::OnShortcutMoveDown()
+{
+	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
+
+	if (joblist->GetSelectedEntryNumber() < joblist->Length() - 1)
 	{
-		info_edit_artist->SetFocus();
-		info_edit_artist->MarkAll();
+		joblist->SwitchEntries(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() + 1);
+
+		joblist->Paint(SP_PAINT);
+	}
+}
+
+Void BonkEnc::LayerJoblist::OnShortcutMoveTop()
+{
+	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
+
+	if (joblist->GetSelectedEntryNumber() > 0)
+	{
+		for (Int i = joblist->GetSelectedEntryNumber(); i > 0; i--) joblist->SwitchEntries(i, i - 1);
+
+		joblist->Paint(SP_PAINT);
+	}
+}
+
+Void BonkEnc::LayerJoblist::OnShortcutMoveBottom()
+{
+	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
+
+	if (joblist->GetSelectedEntryNumber() < joblist->Length() - 1)
+	{
+		for (Int i = joblist->GetSelectedEntryNumber(); i < joblist->Length() - 1; i++) joblist->SwitchEntries(i, i + 1);
+
+		joblist->Paint(SP_PAINT);
+	}
+}
+
+Void BonkEnc::LayerJoblist::OnShortcutToggleMark()
+{
+	if (!IsVisible() || GetActiveEditBox() != NIL) return;
+
+	ListEntry	*entry = joblist->GetSelectedEntry();
+
+	if (entry != NIL)
+	{
+		entry->SetMark(!entry->IsMarked());
 	}
 }
 
@@ -1018,11 +1127,7 @@ Void BonkEnc::LayerJoblist::OnEditBoxEnter(EditBox *activeEditBox)
 {
 	joblist->SelectNthEntry(joblist->GetSelectedEntryNumber() + 1);
 
-	if (activeEditBox != NIL)
-	{
-		activeEditBox->SetFocus();
-		activeEditBox->MarkAll();
-	}
+	if (activeEditBox != NIL) FocusEditBox(activeEditBox);
 }
 
 Void BonkEnc::LayerJoblist::UpdateTitleInfo()
