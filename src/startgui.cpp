@@ -80,9 +80,13 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	/* Setup Notification instance.
 	 */
 	notification = Notification::Get();
-	notification->onDriveChange.Connect(&BonkEncGUI::OnDriveChange, this);
-	notification->onDiscInsert.Connect(&BonkEncGUI::OnDiscInsert, this);
-	notification->onDiscRemove.Connect(&BonkEncGUI::OnDiscRemove, this);
+
+	if (notification != NIL)
+	{
+		notification->onDriveChange.Connect(&BonkEncGUI::OnDriveChange, this);
+		notification->onDiscInsert.Connect(&BonkEncGUI::OnDiscInsert, this);
+		notification->onDiscRemove.Connect(&BonkEncGUI::OnDiscRemove, this);
+	}
 
 	/* Set interface language.
 	 */
