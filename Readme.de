@@ -47,7 +47,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (März 2014)
+	Version 1.1 CVS (Mai 2014)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -76,8 +76,9 @@ Geschichte
 		- Unterstützung für den Fraunhofer FDK AAC-Kodierer/-Dekodierer hinzugefügt
 		- Unterstützung für das Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
 		- Unterstützung für Cover-Bilder in MP4-Dateien hinzugefügt
-		- Unterstützung für das Lesen und Schreiben von MP4- und Vorbis Comment-Kapiteln hinzugefügt 
+		- Unterstützung für ID3v2-, MP4-, WMA- und Vorbis Comment-Kapitel hinzugefügt
 		- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
+		- Unterstützung für ID3v1-Tags in AAC-Dateien hinzugefügt
 		- Unterstützung für MP3-Dekodierung ohne Unterbrechungen hinzugefügt
 		- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO- und Cart-Chunks)
 		- Unterstützung für Ogg FLAC-Dateien hinzugefügt

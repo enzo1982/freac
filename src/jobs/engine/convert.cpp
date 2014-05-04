@@ -227,7 +227,6 @@ Error BonkEnc::JobConvert::Perform()
 
 		Track		 trackInfo = tracks.GetNth(i);
 		const Format	&format	   = trackInfo.GetFormat();
-		const Info	&info	   = trackInfo.GetInfo();
 
 		String	 in_filename = trackInfo.origFilename;
 		String	 out_filename;
@@ -242,30 +241,22 @@ Error BonkEnc::JobConvert::Perform()
 
 			if (encodeToSingleFile)
 			{
+				/* Get single file name.
+				 */
 				singleOutFile = GetSingleOutputFileName(trackInfo);
 
 				if (singleOutFile == NIL) break;
 
 				singleOutFile = Utilities::NormalizeFileName(singleOutFile);
 
-				Track	 singleTrack;
-				Info	 singleTrackInfo;
-
-				singleTrackInfo.artist	 = info.artist;
-				singleTrackInfo.title	 = info.album;
-				singleTrackInfo.album	 = info.album;
-				singleTrackInfo.year	 = info.year;
-				singleTrackInfo.genre	 = info.genre;
+				/* Consolidate track information.
+				 */
+				Track	 singleTrack = ConsolidateTrackInfo();
 
 				singleTrack.origFilename = singleOutFile;
 				singleTrack.outfile	 = singleOutFile;
 
 				singleTrack.length	 = progress->GetTotalSamples();
-
-				singleTrack.SetInfo(singleTrackInfo);
-				singleTrack.SetFormat(trackInfo.GetFormat());
-
-				foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
 
 				playlist_tracks.Add(singleTrack);
 
@@ -712,6 +703,160 @@ Bool BonkEnc::JobConvert::CheckSingleFileSampleFormat()
 	}
 
 	return True;
+}
+
+Track BonkEnc::JobConvert::ConsolidateTrackInfo()
+{
+	/* This method consolidates information from tracks to
+	 * process into a toplevel track with chapters.
+	 *
+	 * This is done in two steps. First, common information
+	 * is collected in a toplevel track structure. Then any
+	 * information that matches to toplevel information is
+	 * removed from chapter tracks.
+	 */
+	const Track	&firstTrack	= tracks.GetFirst();
+	const Info	&firstTrackInfo = firstTrack.GetInfo();
+
+	Track		 singleTrack;
+	Info		 singleTrackInfo;
+
+	singleTrackInfo.artist	   = firstTrackInfo.artist;
+	singleTrackInfo.title	   = firstTrackInfo.title;
+	singleTrackInfo.album	   = firstTrackInfo.album;
+	singleTrackInfo.year	   = firstTrackInfo.year;
+	singleTrackInfo.genre	   = firstTrackInfo.genre;
+	singleTrackInfo.label	   = firstTrackInfo.label;
+	singleTrackInfo.comment	   = firstTrackInfo.comment;
+
+	singleTrackInfo.mcdi	   = firstTrackInfo.mcdi;
+	singleTrackInfo.offsets	   = firstTrackInfo.offsets;
+
+	singleTrackInfo.album_gain = firstTrackInfo.album_gain;
+	singleTrackInfo.album_peak = firstTrackInfo.album_peak;
+
+	singleTrackInfo.other	   = firstTrackInfo.other;
+
+	singleTrack.pictures	   = firstTrack.pictures;
+
+	/* Step 1: Collect common information in toplevel track.
+	 */
+	foreach (const Track &chapterTrack, tracks)
+	{
+		const Info	&chapterInfo = chapterTrack.GetInfo();
+
+		/* Process basic info.
+		 */
+		if (chapterInfo.artist	   != singleTrackInfo.artist)	  singleTrackInfo.artist     = NIL;
+		if (chapterInfo.title	   != singleTrackInfo.title)	  singleTrackInfo.title	     = NIL;
+		if (chapterInfo.album	   != singleTrackInfo.album)	  singleTrackInfo.album	     = NIL;
+		if (chapterInfo.year	   != singleTrackInfo.year)	  singleTrackInfo.year	     = NIL;
+		if (chapterInfo.genre	   != singleTrackInfo.genre)	  singleTrackInfo.genre	     = NIL;
+		if (chapterInfo.label	   != singleTrackInfo.label)	  singleTrackInfo.label	     = NIL;
+		if (chapterInfo.comment	   != singleTrackInfo.comment)	  singleTrackInfo.comment    = NIL;
+
+		if (chapterInfo.mcdi	   != singleTrackInfo.mcdi)	  singleTrackInfo.mcdi	     = MCDI(Buffer<UnsignedByte>());
+		if (chapterInfo.offsets	   != singleTrackInfo.offsets)	  singleTrackInfo.offsets    = NIL;
+
+		if (chapterInfo.album_gain != singleTrackInfo.album_gain) singleTrackInfo.album_gain = NIL;
+		if (chapterInfo.album_peak != singleTrackInfo.album_peak) singleTrackInfo.album_peak = NIL;
+
+		/* Process other text info.
+		 */
+		for (Int i = singleTrackInfo.other.Length() - 1; i >= 0; i--)
+		{
+			const String	&singleTrackPair = singleTrackInfo.other.GetNth(i);
+			Bool		 found		 = False;
+
+			foreach (const String &chapterPair, chapterInfo.other)
+			{
+				if (chapterPair == singleTrackPair) { found = True; break; }
+			}
+
+			if (!found) singleTrackInfo.other.RemoveNth(i);
+		}
+
+		/* Process attached pictures.
+		 */
+		for (Int i = singleTrack.pictures.Length() - 1; i >= 0; i--)
+		{
+			const Picture	&singleTrackPicture = singleTrack.pictures.GetNth(i);
+			Bool		 found		    = False;
+
+			foreach (const Picture &chapterPicture, chapterTrack.pictures)
+			{
+				if (chapterPicture == singleTrackPicture) { found = True; break; }
+			}
+
+			if (!found) singleTrack.pictures.RemoveNth(i);
+		}
+	}
+
+	/* Step 2: Remove common information from chapter tracks.
+	 */
+	foreach (Track &chapterTrack, tracks)
+	{
+		Info	chapterInfo = chapterTrack.GetInfo();
+
+		/* Process basic info.
+		 */
+		if (chapterInfo.artist	   == singleTrackInfo.artist)	  chapterInfo.artist	 = NIL;
+		if (chapterInfo.title	   == singleTrackInfo.title)	  chapterInfo.title	 = NIL;
+		if (chapterInfo.album	   == singleTrackInfo.album)	  chapterInfo.album	 = NIL;
+		if (chapterInfo.year	   == singleTrackInfo.year)	  chapterInfo.year	 = NIL;
+		if (chapterInfo.genre	   == singleTrackInfo.genre)	  chapterInfo.genre	 = NIL;
+		if (chapterInfo.label	   == singleTrackInfo.label)	  chapterInfo.label	 = NIL;
+		if (chapterInfo.comment	   == singleTrackInfo.comment)	  chapterInfo.comment	 = NIL;
+
+		if (chapterInfo.mcdi	   == singleTrackInfo.mcdi)	  chapterInfo.mcdi	 = MCDI(Buffer<UnsignedByte>());
+		if (chapterInfo.offsets	   == singleTrackInfo.offsets)	  chapterInfo.offsets	 = NIL;
+
+		if (chapterInfo.album_gain == singleTrackInfo.album_gain) chapterInfo.album_gain = NIL;
+		if (chapterInfo.album_peak == singleTrackInfo.album_peak) chapterInfo.album_peak = NIL;
+
+		/* Process other text info.
+		 */
+		for (Int i = chapterInfo.other.Length() - 1; i >= 0; i--)
+		{
+			const String	&chapterPair = chapterInfo.other.GetNth(i);
+			Bool		 found	     = False;
+
+			foreach (const String &singleTrackPair, singleTrackInfo.other)
+			{
+				if (chapterPair == singleTrackPair) { found = True; break; }
+			}
+
+			if (found) chapterInfo.other.RemoveNth(i);
+		}
+
+		/* Process attached pictures.
+		 */
+		for (Int i = chapterTrack.pictures.Length() - 1; i >= 0; i--)
+		{
+			const Picture	&chapterPicture = chapterTrack.pictures.GetNth(i);
+			Bool		 found		= False;
+
+			foreach (const Picture &singleTrackPicture, singleTrack.pictures)
+			{
+				if (chapterPicture == singleTrackPicture) { found = True; break; }
+			}
+
+			if (found) chapterTrack.pictures.RemoveNth(i);
+		}
+
+		chapterTrack.SetInfo(chapterInfo);
+	}
+
+	/* Use album title as toplevel title if we have multiple titles.
+	 */
+	if (singleTrackInfo.title == NIL) singleTrackInfo.title = singleTrackInfo.album;
+
+	singleTrack.SetInfo(singleTrackInfo);
+	singleTrack.SetFormat(firstTrack.GetFormat());
+
+	foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
+
+	return singleTrack;
 }
 
 String BonkEnc::JobConvert::GetPlaylistFileName(const Track &track)
