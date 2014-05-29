@@ -90,6 +90,11 @@ Void BonkEnc::JobManager::OnFinishJob(Job *job)
 		return;
 	}
 
+	if (job->GetWarnings().Length() > 0 && !config->enable_console)
+	{
+		return;
+	}
+
 	Object::DeleteObject(job);
 }
 

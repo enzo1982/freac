@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -18,13 +18,15 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 	text_progress	= new Text("Progress:", Point(7, 11));
 
 	list_threads	= new ListBox(Point(7, 35), Size(500, 360));
+	list_threads->onSelectEntry.Connect(&LayerThreads::OnSelectJob, this);
 	list_threads->EnableLocking();
 
 	text_errors	= new Text("Errors / Warnings:", Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);
 
-	edit_errors	= new EditBox("0/0", Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
+	edit_errors	= new EditBox(NIL, Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
 	edit_errors->SetOrientation(OR_LOWERLEFT);
+	edit_errors->Deactivate();
 
 	combo_errors	= new ComboBox(Point(text_errors->GetUnscaledTextWidth() + 47, 28), Size(250, 0));
 	combo_errors->SetOrientation(OR_LOWERLEFT);
@@ -40,6 +42,8 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 	Add(edit_errors);
 	Add(combo_errors);
 	Add(button_details);
+
+	OnChangeJobs();
 
 	onChangeSize.Connect(&LayerThreads::OnChangeSize, this);
 
@@ -73,17 +77,54 @@ Void BonkEnc::LayerThreads::OnChangeJobs()
 {
 	list_threads->RemoveAllEntries();
 
+	text_errors->Deactivate();
+	edit_errors->SetText("0/0");
+
+	combo_errors->RemoveAllEntries();
+	combo_errors->Deactivate();
+
+	button_details->Deactivate();
+
 	const Array<Job *>	&jobs = Job::GetAllJobs();
 
 	foreach (Job *job, jobs)
 	{
 		list_threads->Add(job);
+
+		if (job->IsSelected()) OnSelectJob(job);
+	}
+}
+
+Void BonkEnc::LayerThreads::OnSelectJob(ListEntry *entry)
+{
+	Job	*job = (Job *) entry;
+
+	const Array<String>	errors	 = job->GetErrors();
+	const Array<String>	warnings = job->GetWarnings();
+
+	text_errors->Activate();
+	edit_errors->SetText(String::FromInt(errors.Length()).Append("/").Append(String::FromInt(warnings.Length())));
+
+	combo_errors->RemoveAllEntries();
+
+	if (errors.Length() > 0 || warnings.Length() > 0)
+	{
+		combo_errors->Activate();
+		button_details->Activate();
+
+		foreach (const String &error, errors)	  combo_errors->AddEntry(error);
+		foreach (const String &warning, warnings) combo_errors->AddEntry(warning);
+
+		combo_errors->Paint(SP_PAINT);
+	}
+	else
+	{
+		combo_errors->Deactivate();
+		button_details->Deactivate();
 	}
 }
 
 Void BonkEnc::LayerThreads::ShowDetails()
 {
-// TODO: Implement error detail view
-
-	QuickMessage("Not implemented, yet!", "Error", Message::Buttons::Ok, Message::Icon::Hand);
+	QuickMessage(combo_errors->GetSelectedEntry()->GetText(), "Error details", Message::Buttons::Ok, Message::Icon::Information);
 }

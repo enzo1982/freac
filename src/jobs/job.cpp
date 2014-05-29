@@ -9,6 +9,8 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <jobs/job.h>
+#include <dialogs/error.h>
+
 #include <time.h>
 
 Array<BonkEnc::Job *>		 BonkEnc::Job::planned;
@@ -40,6 +42,11 @@ BonkEnc::Job::Job() : ListEntry("Job")
 	progressValue->SetOrientation(OR_UPPERRIGHT);
 	progressValue->Deactivate();
 
+	closeHotspot	= new Hotspot(Point(12, 3), Size(9, 9));
+	closeHotspot->SetOrientation(OR_UPPERRIGHT);
+	closeHotspot->Deactivate();
+	closeHotspot->onLeftButtonClick.Connect(&Job::OnClickToClose, this);
+
 	Add(progressLabel);
 	Add(progress);
 	Add(progressValue);
@@ -47,9 +54,12 @@ BonkEnc::Job::Job() : ListEntry("Job")
 	Add(timeLabel);
 	Add(timeValue);
 
+	Add(closeHotspot);
+
 	SetHeight(51);
 
 	onChangeSize.Connect(&Job::OnChangeSize, this);
+	onLeftButtonDoubleClick.Connect(&Job::OnDoubleClick, this);
 
 	all.Add(this, GetHandle());
 
@@ -73,6 +83,8 @@ BonkEnc::Job::~Job()
 
 	DeleteObject(timeLabel);
 	DeleteObject(timeValue);
+
+	DeleteObject(closeHotspot);
 }
 
 Int BonkEnc::Job::Schedule()
@@ -107,6 +119,8 @@ Int BonkEnc::Job::Run()
 
 	running.Remove(GetHandle());
 
+	closeHotspot->Activate();
+
 	EnterProtectedRegion();
 
 	onFinish.Emit();
@@ -128,6 +142,27 @@ Void BonkEnc::Job::OnChangeSize(const Size &nSize)
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
 	progress->SetWidth(clientSize.cx - progressLabel->GetUnscaledTextWidth() - progressValue->GetWidth() - timeLabel->GetUnscaledTextWidth() - timeValue->GetWidth() - 36);
+}
+
+Void BonkEnc::Job::OnDoubleClick()
+{
+	if (closeHotspot->IsActive() && closeHotspot->IsMouseOver()) return;
+
+	ErrorDialog	 dialog(GetErrors());
+
+	dialog.ShowDialog();
+}
+
+Void BonkEnc::Job::OnClickToClose()
+{
+	EnterProtectedRegion();
+
+	all.Remove(GetHandle());
+	onChange.Emit();
+
+	Object::DeleteObject(this);
+
+	LeaveProtectedRegion();
 }
 
 Int BonkEnc::Job::Paint(Int message)
@@ -154,6 +189,17 @@ Int BonkEnc::Job::Paint(Int message)
 
 			surface->Box(frame - Size(0, 1), GetBackgroundColor(), Rect::Filled);
 			surface->SetText(text, frame + Point(1, 1) - Size(2, 2), font);
+
+			if (IsMouseOver() && closeHotspot->IsActive())
+			{
+				surface->Line(Point(frame.right - 10, frame.top +  4), Point(frame.right - 4, frame.top + 10), Setup::DividerDarkColor);
+				surface->Line(Point(frame.right - 11, frame.top +  4), Point(frame.right - 4, frame.top + 11), Setup::TextColor);
+				surface->Line(Point(frame.right - 11, frame.top +  5), Point(frame.right - 5, frame.top + 11), Setup::DividerDarkColor);
+
+				surface->Line(Point(frame.right - 11, frame.top +  9), Point(frame.right - 5, frame.top +  3), Setup::DividerDarkColor);
+				surface->Line(Point(frame.right - 11, frame.top + 10), Point(frame.right - 4, frame.top +  3), Setup::TextColor);
+				surface->Line(Point(frame.right - 10, frame.top + 10), Point(frame.right - 4, frame.top +  4), Setup::DividerDarkColor);
+			}
 
 			Widget::Paint(SP_PAINT);
 

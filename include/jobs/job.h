@@ -28,6 +28,8 @@ namespace BonkEnc
 			Text				*timeLabel;
 			EditBox				*timeValue;
 
+			Hotspot				*closeHotspot;
+
 			UnsignedInt64			 startTicks;
 			Int				 previousSecondsLeft;
 
@@ -37,6 +39,7 @@ namespace BonkEnc
 			static Array<Job *>		 all;
 		protected:
 			Array<String>			 errors;
+			Array<String>			 warnings;
 		public:
 							 Job();
 			virtual				~Job();
@@ -55,6 +58,7 @@ namespace BonkEnc
 			Int				 GetProgress();
 
 			const Array<String>		&GetErrors()		{ return errors; }
+			const Array<String>		&GetWarnings()		{ return warnings; }
 
 			static const Array<Job *>	&GetPlannedJobs()	{ return planned; }
 			static const Array<Job *>	&GetRunningJobs()	{ return running; }
@@ -62,6 +66,9 @@ namespace BonkEnc
 			static const Array<Job *>	&GetAllJobs()		{ return all; }
 		slots:
 			Void				 OnChangeSize(const Size &);
+
+			Void				 OnDoubleClick();
+			Void				 OnClickToClose();
 		signals:
 			static Signal0<Void>		 onChange;
 
