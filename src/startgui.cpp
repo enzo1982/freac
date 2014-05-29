@@ -497,14 +497,18 @@ Void BonkEnc::BonkEncGUI::OnDriveChange()
 
 Void BonkEnc::BonkEncGUI::OnDiscInsert(Int drive)
 {
-	BoCA::Config	*config	     = BoCA::Config::Get();
-	Int		 activeDrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, drive);
+	if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoReadContentsID, Config::RipperAutoReadContentsDefault))
+	{
+		Int	 activeDrive = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 
-	ReadCD(True);
+		config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, drive);
 
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, activeDrive);
+		ReadCD(True);
+
+		config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, activeDrive);
+	}
 }
 
 Void BonkEnc::BonkEncGUI::OnDiscRemove(Int drive)
