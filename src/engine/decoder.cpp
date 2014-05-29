@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -53,7 +53,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (filter_in == NIL)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot set up decoder for input file: %1", nFileName);
+		BoCA::Utilities::ErrorMessage("Cannot create decoder component for input file: %1", nFileName);
 
 		delete f_in;
 		f_in = NIL;
@@ -69,9 +69,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (f_in->AddFilter(filter_in) == False)
 	{
-		BoCA::I18n	*i18n = BoCA::I18n::Get();
-
-		BoCA::Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(nFileName).GetFileName(), i18n->TranslateString("Unable to initialize decoder", "Messages"));
+		BoCA::Utilities::ErrorMessage("Cannot set up decoder for input file: %1\n\nError: %2", File(nFileName).GetFileName(), filter_in->GetErrorString());
 
 		boca.DeleteComponent(filter_in);
 

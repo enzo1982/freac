@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -68,7 +68,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 
 	if (f_out->AddFilter(filter_out) == False)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot set up encoder for output file:%1\n\nError: %2", File(fileName).GetFileName(), filter_out->GetErrorString());
+		BoCA::Utilities::ErrorMessage("Cannot set up encoder for output file: %1\n\nError: %2", File(fileName).GetFileName(), filter_out->GetErrorString());
 
 		boca.DeleteComponent(filter_out);
 
