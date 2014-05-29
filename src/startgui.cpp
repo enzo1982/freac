@@ -798,7 +798,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:24")));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
-	entry->SetShortcut(SC_CTRL, 'R', mainWnd);
+	entry->SetShortcut(SC_CONTROL, 'R', mainWnd);
 
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 1 || (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0 && !boca.ComponentExists("cuesheet-playlist")))
 	{
@@ -812,7 +812,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:25")));
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
-	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'R', mainWnd);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, 'R', mainWnd);
 
 	menu_file->AddEntry();
 
@@ -822,7 +822,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)").Append("..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:22")));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
-	entry->SetShortcut(SC_CTRL, 'F', mainWnd);
+	entry->SetShortcut(SC_CONTROL, 'F', mainWnd);
 
 	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
@@ -841,7 +841,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:23")));
 		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
-		entry->SetShortcut(SC_CTRL, 'D', mainWnd);
+		entry->SetShortcut(SC_CONTROL, 'D', mainWnd);
 	}
 
 	menu_files->AddEntry(i18n->TranslateString("By pattern").Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);
@@ -859,11 +859,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:26")));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
-	entry->SetShortcut(SC_CTRL, 'Q', mainWnd);
+	entry->SetShortcut(SC_CONTROL, 'Q', mainWnd);
 
 	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:27")));
 	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
-	entry->SetShortcut(SC_CTRL, 'S', mainWnd);
+	entry->SetShortcut(SC_CONTROL, 'S', mainWnd);
 
 	menu_database->AddEntry();
 
@@ -890,11 +890,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:28")));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureSettings, this);
-	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'C', mainWnd);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, 'C', mainWnd);
 
 	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:29")));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
-	entry->SetShortcut(SC_CTRL | SC_SHIFT, 'E', mainWnd);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, 'E', mainWnd);
 
 	if (config->GetNOfConfigurations() > 1)
 	{
@@ -919,7 +919,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:31")));
 	entry->onAction.Connect(&BonkEncGUI::Encode, this);
-	entry->SetShortcut(SC_CTRL, 'E', mainWnd);
+	entry->SetShortcut(SC_CONTROL, 'E', mainWnd);
 
 	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:32")))->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:33")))->onAction.Connect(&BonkEncGUI::StopEncoding, this);
