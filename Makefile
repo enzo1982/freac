@@ -151,7 +151,7 @@ ifeq ($(BUILD_WIN32),True)
 		LINKER_OPTS		+= -lunicows
 	endif
 
-	LINKER_OPTS			+= -L$(LIBDIR) -lsmooth -lboca -Wl,--dynamicbase,--nxcompat -lws2_32 -lwinmm -lole32 -luuid -Wl,--out-implib,$(LIBNAME)
+	LINKER_OPTS			+= -L$(LIBDIR) -lsmooth -lboca -Wl,--dynamicbase,--nxcompat -lws2_32 -lole32 -luuid -Wl,--out-implib,$(LIBNAME)
 	LOADER_GUI_LINKER_OPTS		+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat -mwindows
 	LOADER_CONSOLE_LINKER_OPTS	+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat
 else
