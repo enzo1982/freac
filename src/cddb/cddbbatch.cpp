@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -275,37 +275,41 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 	/* Query entry and delete entry if successful
 	 */
-	cddbQueryDlg	*dlg		= new cddbQueryDlg();
-
-	dlg->SetQueryString(queries.GetNth(n));
-
-	const CDDBInfo	&cddbInfo	= dlg->QueryCDDB(False);
-
-	Object::DeleteObject(dlg);
-
-	if (cddbInfo != NIL)
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
+	    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
-		/* Save current freedb path
-		 */
-		String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
+		cddbQueryDlg	*dlg = new cddbQueryDlg(queries.GetNth(n), False);
 
-		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
+		dlg->ShowDialog();
 
-		CDDBLocal	 cddb;
+		const CDDBInfo	&cddbInfo = dlg->GetCDDBInfo();
 
-		cddb.SetUpdateTrackOffsets(False);
+		Object::DeleteObject(dlg);
 
-		/* Save entry to local cache
-		 */
-		cddb.Submit(cddbInfo);
+		if (cddbInfo != NIL)
+		{
+			/* Save current freedb path
+			 */
+			String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
-		/* Restore real freedb path
-		 */
-		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
+			config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
-		DeleteQuery(n);
+			CDDBLocal	 cddb;
 
-		return QUERY_RESULT_SINGLE;
+			cddb.SetUpdateTrackOffsets(False);
+
+			/* Save entry to local cache
+			 */
+			cddb.Submit(cddbInfo);
+
+			/* Restore real freedb path
+			 */
+			config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
+
+			DeleteQuery(n);
+
+			return QUERY_RESULT_SINGLE;
+		}
 	}
 
 	return QUERY_RESULT_ERROR;

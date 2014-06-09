@@ -371,7 +371,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	tabs_main->SetSize(clientSize - Size(12, 15));
+	tabs_main->SetSize(clientSize - Size(12, 14));
 }
 
 Void BonkEnc::BonkEncGUI::Close()
@@ -557,6 +557,8 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		return;
 	}
 
+	/* Collect disc IDs and query strings.
+	 */
 	Array<Int>	 discIDs;
 	Array<String>	 queryStrings;
 
@@ -583,61 +585,81 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		}
 	}
 
-	for (Int j = 0; j < queryStrings.Length(); j++)
+	/* Query database using each query string.
+	 */
+	Bool	 remoteCDDBEnabled = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault);
+
+	for (Int i = 0; i < queryStrings.Length(); i++)
 	{
-		Int		 discID	     = discIDs.GetNth(j);
-		const String	&queryString = queryStrings.GetNth(j);
+		Int		 discID	     = discIDs.GetNth(i);
+		const String	&queryString = queryStrings.GetNth(i);
 		CDDBInfo	 cdInfo;
 
 		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(discID);
 
 		if (cdInfo == NIL)
 		{
-			cddbQueryDlg	*dlg = new cddbQueryDlg();
+			if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
+			    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
+			{
+				cddbQueryDlg	*dlg = new cddbQueryDlg(queryString);
 
-			dlg->SetQueryString(queryString);
+				if (dlg->ShowDialog() == Error())
+				{
+					/* Temporarily disable remote CDDB queries if connection failed.
+					 */
+					config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, False);
+				}
 
-			cdInfo = dlg->QueryCDDB(True);
+				cdInfo = dlg->GetCDDBInfo();
 
-			DeleteObject(dlg);
+				DeleteObject(dlg);
+			}
 
 			if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 		}
 
-		if (cdInfo != NIL)
+		/* Continue with next query if we couldn't find anything.
+		 */
+		if (cdInfo == NIL) continue;
+
+		/* Update tracks with CDDB data.
+		 */
+		for (Int j = 0; j < joblist->GetNOfTracks(); j++)
 		{
-			for (Int k = 0; k < joblist->GetNOfTracks(); k++)
+			Track	 track = joblist->GetNthTrack(j);
+			Info	 info = track.GetInfo();
+
+			if ((info.mcdi.GetData().Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi)) ||
+			    (info.offsets != NIL && discID == CDDB::DiscIDFromOffsets(info.offsets)))
 			{
-				Track	 track = joblist->GetNthTrack(k);
-				Info	 info = track.GetInfo();
+				Int	 trackNumber = -1;
 
-				if ((info.mcdi.GetData().Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi)) ||
-				    (info.offsets != NIL && discID == CDDB::DiscIDFromOffsets(info.offsets)))
-				{
-					Int	 trackNumber = -1;
+				if (track.isCDTrack) trackNumber = track.cdTrack;
+				else		     trackNumber = info.track;
 
-					if (track.isCDTrack) trackNumber = track.cdTrack;
-					else		     trackNumber = info.track;
+				if (trackNumber == -1) continue;
 
-					if (trackNumber == -1) continue;
+				info.artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
+				info.title	= cdInfo.trackTitles.GetNth(trackNumber - 1);
+				info.album	= cdInfo.dTitle;
+				info.genre	= cdInfo.dGenre;
+				info.year	= cdInfo.dYear;
+				info.track	= trackNumber;
 
-					info.artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
-					info.title	= cdInfo.trackTitles.GetNth(trackNumber - 1);
-					info.album	= cdInfo.dTitle;
-					info.genre	= cdInfo.dGenre;
-					info.year	= cdInfo.dYear;
-					info.track	= trackNumber;
+				track.SetInfo(info);
+				track.SetOriginalInfo(info);
 
-					track.SetInfo(info);
-					track.SetOriginalInfo(info);
+				track.outfile	= NIL;
 
-					track.outfile	= NIL;
-
-					BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
-				}
+				BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 			}
 		}
 	}
+
+	/* Restore previous remote CDDB state.
+	 */
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, remoteCDDBEnabled);
 }
 
 Void BonkEnc::BonkEncGUI::QueryCDDBLater()
@@ -655,9 +677,8 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 	{
 		CDDBBatch	*queries = new CDDBBatch();
 
-		for (Int j = 0; j < drives.Length(); j++)
+		foreach (Int drive, drives)
 		{
-			Int		 drive = drives.GetNth(j);
 			CDDBRemote	 cddb;
 
 			cddb.SetActiveDrive(drive);
@@ -1171,7 +1192,7 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 	dialog->AddTip(i18n->TranslateString("%1 comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the %1 website: %2").Replace("%1", BonkEnc::appName).Replace("%2", BonkEnc::website));
 	dialog->AddTip(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.").Replace("%1", BonkEnc::appName));
 	dialog->AddTip(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.").Replace("%1", BonkEnc::appName));
-	dialog->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the CDRip tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.").Replace("%1", BonkEnc::appName));
+	dialog->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the Ripper tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.").Replace("%1", BonkEnc::appName));
 	dialog->AddTip(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.").Replace("%1", BonkEnc::appName).Replace("%2", "http://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
 	dialog->AddTip(i18n->TranslateString("Do you like %1? %1 is available for free, but you can\nhelp fund the development by donating to the %1 project.\nYou can send money to %2 through PayPal.\nSee %3 for more details.").Replace("%1", BonkEnc::appName).Replace("%2", "donate@freac.org").Replace("%3", String(BonkEnc::website).Append("donating.php")));
 

@@ -21,14 +21,17 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::cddbQueryDlg::cddbQueryDlg()
+BonkEnc::cddbQueryDlg::cddbQueryDlg(const String &iQueryString, Bool iAllowAddToBatch)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("CDDB::Query");
 
-	allowAddToBatch = False;
+	queryThread	= NIL;
+
+	queryString	= iQueryString;
+	allowAddToBatch = iAllowAddToBatch;
 
 	mainWnd			= new Window(i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
@@ -72,31 +75,9 @@ const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 	return error;
 }
 
-Bool BonkEnc::cddbQueryDlg::SetQueryString(const String &nQueryString)
-{
-	queryString = nQueryString;
-
-	return True;
-}
-
-const BonkEnc::CDDBInfo &BonkEnc::cddbQueryDlg::QueryCDDB(Bool iAllowAddToBatch)
-{
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
-	    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
-	{
-		allowAddToBatch = iAllowAddToBatch;
-
-		ShowDialog();
-	}
-
-	return cddbInfo;
-}
-
 Void BonkEnc::cddbQueryDlg::Cancel()
 {
-	queryThread->Stop();
+	if (queryThread != NIL) queryThread->Stop();
 
 	mainWnd->Close();
 }
@@ -240,6 +221,8 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 		{
 			BoCA::Utilities::ErrorMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server."));
 		}
+
+		error = Error();
 	}
 
 	cddb.CloseConnection();

@@ -598,18 +598,20 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	if (cdInfo == NIL)
 	{
-		cddbQueryDlg	*dlg = new cddbQueryDlg();
+		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
+		    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
+		{
+			cddbQueryDlg	*dlg = new cddbQueryDlg(cddb.GetCDDBQueryString());
 
-		dlg->SetQueryString(cddb.GetCDDBQueryString());
+			if (dlg->ShowDialog() == Success()) cdInfo = dlg->GetCDDBInfo();
 
-		cdInfo = dlg->QueryCDDB(True);
-
-		DeleteObject(dlg);
-
-		i18n->SetContext("CDDB::Submit");
+			DeleteObject(dlg);
+		}
 
 		if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 	}
+
+	i18n->SetContext("CDDB::Submit");
 
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, oDrive);
 

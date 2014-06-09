@@ -147,16 +147,16 @@ Error BonkEnc::JobAddTracks::Perform()
 
 				if (cdInfo == NIL)
 				{
-					const Info	&info = track.GetInfo();
-					String		 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
+					if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
+					    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
+					{
+						const Info	&info = track.GetInfo();
+						cddbQueryDlg	*dlg  = new cddbQueryDlg(CDDB::QueryStringFromMCDI(info.mcdi));
 
-					cddbQueryDlg	*dlg = new cddbQueryDlg();
+						if (dlg->ShowDialog() == Success()) cdInfo = dlg->GetCDDBInfo();
 
-					dlg->SetQueryString(queryString);
-
-					cdInfo = dlg->QueryCDDB(True);
-
-					DeleteObject(dlg);
+						DeleteObject(dlg);
+					}
 
 					if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
 				}
