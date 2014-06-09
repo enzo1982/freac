@@ -66,6 +66,11 @@ LOADER_GUI_LINKER_OPTS	   = -pipe -lstdc++ -o $(EXENAME)
 LOADER_CONSOLE_LINKER_OPTS = -pipe -lstdc++ -o $(CMDNAME)
 REMOVER_OPTS		   = -f
 
+ifeq ($(BUILD_FREEBSD),True)
+	COMPILER = clang
+	LINKER	 = clang
+endif
+
 ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
 	COMPILER_OPTS			+= -D BUILD_VIDEO_DOWNLOADER
 endif
