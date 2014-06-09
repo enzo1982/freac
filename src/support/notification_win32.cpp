@@ -10,7 +10,6 @@
 
 #include <support/notification.h>
 
-#include <config.h>
 #include <boca.h>
 
 #include <windows.h>

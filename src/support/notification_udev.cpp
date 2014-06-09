@@ -14,11 +14,14 @@
 
 #include <libudev.h>
 
+using namespace BoCA;
 using namespace BoCA::AS;
 
 using namespace BonkEnc;
 
-static System::DynamicLoader	*loader	     = NIL;
+using namespace smooth::System;
+
+static DynamicLoader		*loader	     = NIL;
 
 /* udev status variables.
  */
@@ -56,7 +59,7 @@ static Bool LoadLibrary()
 {
 	if (loader == NIL)
 	{
-		loader = new System::DynamicLoader("udev");
+		loader = new DynamicLoader("udev");
 
 		if (loader->GetSystemModuleHandle() == NIL) { FreeLibrary(); return False; }
 
@@ -148,19 +151,19 @@ BonkEnc::Notification::Notification()
 
 	/* Create a timer to fire every half second.
 	 */
-	privateData = new System::Timer();
+	privateData = new Timer();
 
-	((System::Timer *) privateData)->onInterval.Connect(&CheckNotification);
-	((System::Timer *) privateData)->Start(500);
+	((Timer *) privateData)->onInterval.Connect(&CheckNotification);
+	((Timer *) privateData)->Start(500);
 }
 
 BonkEnc::Notification::~Notification()
 {
 	/* Stop timer.
 	 */
-	((System::Timer *) privateData)->Stop();
+	((Timer *) privateData)->Stop();
 
-	Object::DeleteObject((System::Timer *) privateData);
+	Object::DeleteObject((Timer *) privateData);
 
 	/* Clean up udev monitor.
 	 */
