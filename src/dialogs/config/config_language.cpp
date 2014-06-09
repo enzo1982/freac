@@ -25,19 +25,21 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 
 	i18n->SetContext("Configuration::Language");
 
-	group_info	= new GroupBox(i18n->TranslateString("Information"), Point(7, 66), Size(530, 77));
+	group_info	= new GroupBox(i18n->TranslateString("Information"), Point(7, 66), Size(552, 77));
 
 	text_info	= new Text(NIL, Point(9, 11));
-	link_url	= new Hyperlink(NIL, NIL, NIL, Point(37, 56), Size(0, 0));
+	link_url	= new Hyperlink(NIL, NIL, NIL, Point(37, text_info->GetFont().GetUnscaledTextSizeY() * 3 + 20));
+
+	group_info->SetHeight(text_info->GetFont().GetUnscaledTextSizeY() * 4 + 29);
 
 	group_info->Add(text_info);
 	group_info->Add(link_url);
 
-	group_language	= new GroupBox(i18n->TranslateString("Language"), Point(7, 11), Size(530, 43));
+	group_language	= new GroupBox(i18n->TranslateString("Language"), Point(7, 11), Size(552, 43));
 
 	text_language	= new Text(i18n->TranslateString("Select language:"), Point(9, 15));
 
-	combo_language	= new ComboBox(Point(text_language->GetUnscaledTextWidth() + 17, 12), Size(503 - text_language->GetUnscaledTextWidth(), 0));
+	combo_language	= new ComboBox(Point(text_language->GetUnscaledTextWidth() + 17, 12), Size(442, 0));
 	combo_language->onSelectEntry.Connect(&ConfigureLanguage::SelectLanguage, this);
 
 	group_language->Add(text_language);
@@ -45,6 +47,11 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 
 	btn_edit	= new Button(i18n->TranslateString("Edit language file"), NIL, Point(390, 11), Size(130, 0));
 	btn_edit->onAction.Connect(&ConfigureLanguage::EditLanguageFile, this);
+
+	btn_edit->SetWidth(Math::Max(80, btn_edit->GetUnscaledTextWidth() + 14));
+	btn_edit->SetX(528 - btn_edit->GetUnscaledTextWidth());
+
+	combo_language->SetWidth(525 - text_language->GetUnscaledTextWidth());
 
 	for (Int i = 0; i < i18n->GetNOfLanguages(); i++)
 	{
@@ -61,7 +68,7 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 	if (File(GUI::Application::GetApplicationDirectory().Append("translator")).Exists())
 #endif
 	{
-		combo_language->SetWidth(combo_language->GetWidth() - 138);
+		combo_language->SetWidth(combo_language->GetWidth() - btn_edit->GetWidth() - 8);
 
 		group_language->Add(btn_edit);
 	}
@@ -71,7 +78,7 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 	Add(group_language);
 	Add(group_info);
 
-	SetSize(Size(544, 150));
+	SetSize(Size(566, 150));
 }
 
 BonkEnc::ConfigureLanguage::~ConfigureLanguage()
@@ -101,8 +108,7 @@ Void BonkEnc::ConfigureLanguage::SelectLanguage()
 
 		link_url->SetText(i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 		link_url->SetURL(i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
-
-		link_url->Paint(SP_PAINT);
+		link_url->SetX(9 + text_info->GetFont().GetUnscaledTextSizeX(i18n->TranslateString("URL").Append(": ")));
 
 		if (i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()) == "internal") btn_edit->Deactivate();
 		else										    btn_edit->Activate();

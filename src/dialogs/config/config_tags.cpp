@@ -36,13 +36,13 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	replaceComments			= config->GetIntValue(Config::CategoryTagsID, Config::TagsReplaceExistingCommentsID, Config::TagsReplaceExistingCommentsDefault);
 
-	tab_tags		= new TabWidget(Point(7, 7), Size(530, 207));
+	tab_tags		= new TabWidget(Point(7, 7), Size(552, 207));
 
 	layer_tags		= new Layer(i18n->TranslateString("Tags"));
 
-	group_tags		= new GroupBox(i18n->TranslateString("Tag formats"), Point(7, 11), Size(512, 87));
+	group_tags		= new GroupBox(i18n->TranslateString("Tag formats"), Point(7, 11), Size(534, 87));
 
-	list_tag_formats	= new ListBox(Point(10, 13), Size(241, 64));
+	list_tag_formats	= new ListBox(Point(10, 13), Size(252, 64));
 	list_tag_formats->SetFlags(LF_MULTICHECKBOX);
 
 	Registry		&boca = Registry::Get();
@@ -63,14 +63,14 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	list_tag_formats->onSelectEntry.Connect(&ConfigureTags::ToggleTags, this);
 	list_tag_formats->onMarkEntry.Connect(&ConfigureTags::ToggleTags, this);
 
-	text_encoding		= new Text(i18n->TranslateString("Encoding:"), Point(258, 16));
+	text_encoding		= new Text(i18n->TranslateString("Encoding:"), Point(269, 16));
 
 	list_encodings		= new List();
 
-	edit_encoding		= new EditBox(NIL, Point(text_encoding->GetUnscaledTextWidth() + 265, 13), Size(237 - text_encoding->GetUnscaledTextWidth(), 0));
+	edit_encoding		= new EditBox(NIL, Point(text_encoding->GetUnscaledTextWidth() + 276, 13), Size(248 - text_encoding->GetUnscaledTextWidth(), 0));
 	edit_encoding->onInput.Connect(&ConfigureTags::OnEditEncoding, this);
 
-	combo_encoding		= new ComboBox(Point(text_encoding->GetUnscaledTextWidth() + 265, 13), Size(237 - text_encoding->GetUnscaledTextWidth(), 0));
+	combo_encoding		= new ComboBox(Point(text_encoding->GetUnscaledTextWidth() + 276, 13), Size(248 - text_encoding->GetUnscaledTextWidth(), 0));
 	combo_encoding->onSelectEntry.Connect(&ConfigureTags::OnEditEncoding, this);
 	combo_encoding->Hide();
 
@@ -79,11 +79,11 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	group_tags->Add(edit_encoding);
 	group_tags->Add(combo_encoding);
 
-	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 110), Size(512, 67));
+	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 110), Size(534, 67));
 
 	text_defcomment		= new Text(i18n->TranslateString("Default comment string:"), Point(10, 15));
-	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->GetUnscaledTextWidth(), 12), Size(485 - text_defcomment->GetUnscaledTextWidth(), 0), 0);
-	check_replace		= new CheckBox(i18n->TranslateString("Replace existing comments with default comment"), Point(10, edit_defcomment->GetY() + 28), Size(492, 0), &replaceComments);
+	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->GetUnscaledTextWidth(), 12), Size(507 - text_defcomment->GetUnscaledTextWidth(), 0), 0);
+	check_replace		= new CheckBox(i18n->TranslateString("Replace existing comments with default comment"), Point(10, edit_defcomment->GetY() + 28), Size(514, 0), &replaceComments);
 
 	group_definfo->Add(text_defcomment);
 	group_definfo->Add(edit_defcomment);
@@ -94,20 +94,20 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	layer_coverart		= new Layer(i18n->TranslateString("Cover art"));
 
-	group_coverart_read	= new GroupBox(i18n->TranslateString("Read cover art"), Point(7, 11), Size(512, 41));
+	group_coverart_read	= new GroupBox(i18n->TranslateString("Read cover art"), Point(7, 11), Size(534, 41));
 
-	check_coverart_read_tags  = new CheckBox(i18n->TranslateString("Read cover art from tags"), Point(10, 14), Size(242, 0), &enableCoverArtReadFromTags);
-	check_coverart_read_files = new CheckBox(i18n->TranslateString("Read cover art from files"), Point(260, 14), Size(242, 0), &enableCoverArtReadFromFiles);
+	check_coverart_read_tags  = new CheckBox(i18n->TranslateString("Read cover art from tags"), Point(10, 14), Size(253, 0), &enableCoverArtReadFromTags);
+	check_coverart_read_files = new CheckBox(i18n->TranslateString("Read cover art from files"), Point(271, 14), Size(253, 0), &enableCoverArtReadFromFiles);
 
 	group_coverart_read->Add(check_coverart_read_tags);
 	group_coverart_read->Add(check_coverart_read_files);
 
-	group_coverart_write	= new GroupBox(i18n->TranslateString("Write cover art"), Point(7, 64), Size(512, 113));
+	group_coverart_write	= new GroupBox(i18n->TranslateString("Write cover art"), Point(7, 64), Size(534, 113));
 
-	check_coverart_write_tags  = new CheckBox(i18n->TranslateString("Write cover art to tags"), Point(10, 14), Size(242, 0), &enableCoverArtWriteToTags);
+	check_coverart_write_tags  = new CheckBox(i18n->TranslateString("Write cover art to tags"), Point(10, 14), Size(253, 0), &enableCoverArtWriteToTags);
 	check_coverart_write_tags->onAction.Connect(&ConfigureTags::ToggleWriteCoverArt, this);
 
-	list_coverart_write_tags_format = new ListBox(Point(27, 39), Size(225, 64));
+	list_coverart_write_tags_format = new ListBox(Point(27, 39), Size(236, 64));
 	list_coverart_write_tags_format->SetFlags(LF_MULTICHECKBOX);
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
@@ -122,13 +122,13 @@ BonkEnc::ConfigureTags::ConfigureTags()
 		}
 	}
 
-	check_coverart_write_files = new CheckBox(i18n->TranslateString("Write cover art to files"), Point(260, 14), Size(242, 0), &enableCoverArtWriteToFiles);
+	check_coverart_write_files = new CheckBox(i18n->TranslateString("Write cover art to files"), Point(271, 14), Size(253, 0), &enableCoverArtWriteToFiles);
 	check_coverart_write_files->onAction.Connect(&ConfigureTags::ToggleWriteCoverArt, this);
 
-	text_coverart_write_files_name = new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(277, 38));
-	edit_coverart_write_files_name = new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, Config::TagsCoverArtFilenamePatternDefault), Point(277, 58), Size(225, 0), 0);
+	text_coverart_write_files_name = new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(288, 38));
+	edit_coverart_write_files_name = new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, Config::TagsCoverArtFilenamePatternDefault), Point(288, 58), Size(236, 0), 0);
 
-	check_coverart_write_files_ref = new CheckBox(i18n->TranslateString("Add reference to audio file tag"), Point(277, 86), Size(225, 0), &enableCoverArtWriteToFilesRef);
+	check_coverart_write_files_ref = new CheckBox(i18n->TranslateString("Add reference to audio file tag"), Point(288, 86), Size(236, 0), &enableCoverArtWriteToFilesRef);
 
 	group_coverart_write->Add(check_coverart_write_tags);
 	group_coverart_write->Add(list_coverart_write_tags_format);
@@ -142,15 +142,15 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	layer_other		= new Layer(i18n->TranslateString("Other"));
 
-	group_chapters		= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 11), Size(252, 94));
+	group_chapters		= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 11), Size(263, 94));
 
-	check_read_chapters	= new CheckBox(i18n->TranslateString("Read chapters from files"), Point(10, 14), Size(232, 0), &readChapters);
-	check_write_chapters	= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 26), Size(232, 0), &writeChapters);
+	check_read_chapters	= new CheckBox(i18n->TranslateString("Read chapters from files"), Point(10, 14), Size(243, 0), &readChapters);
+	check_write_chapters	= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 26), Size(243, 0), &writeChapters);
 	check_write_chapters->onAction.Connect(&ConfigureTags::ToggleWriteChapters, this);
 
 	text_chapter_format	= new Text(i18n->TranslateString("Chapter format:"), check_write_chapters->GetPosition() + Point(17, 28));
 
-	combo_chapter_format	= new ComboBox(text_chapter_format->GetPosition() + Point(text_chapter_format->GetUnscaledTextWidth() + 7, -3), Size(208 - text_chapter_format->GetUnscaledTextWidth(), 0));
+	combo_chapter_format	= new ComboBox(text_chapter_format->GetPosition() + Point(text_chapter_format->GetUnscaledTextWidth() + 7, -3), Size(219 - text_chapter_format->GetUnscaledTextWidth(), 0));
 	combo_chapter_format->AddEntry(i18n->TranslateString("both"));
 	combo_chapter_format->AddEntry("QuickTime");
 	combo_chapter_format->AddEntry("Nero");
@@ -174,10 +174,10 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	group_chapters->Add(text_chapter_format);
 	group_chapters->Add(combo_chapter_format);
 
-	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(267, 11), Size(252, 67));
+	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(278, 11), Size(263, 67));
 
-	check_mcdi		= new CheckBox(i18n->TranslateString("Write CD table of contents"), Point(10, 14), Size(232, 0), &writeMCDI);
-	check_replaygain	= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 26), Size(232, 0), &preserveReplayGain);
+	check_mcdi		= new CheckBox(i18n->TranslateString("Write CD table of contents"), Point(10, 14), Size(243, 0), &writeMCDI);
+	check_replaygain	= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 26), Size(243, 0), &preserveReplayGain);
 
 	group_special->Add(check_mcdi);
 	group_special->Add(check_replaygain);
@@ -196,7 +196,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	Add(tab_tags);
 
-	SetSize(Size(544, 221));
+	SetSize(Size(566, 221));
 }
 
 BonkEnc::ConfigureTags::~ConfigureTags()

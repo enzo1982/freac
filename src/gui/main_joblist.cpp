@@ -149,6 +149,10 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		player->SetPosition(pos);
 		player->SetOrientation(OR_UPPERRIGHT);
 	}
+	else
+	{
+		player	= NIL;
+	}
 
 	info_divider		= new Divider(113 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0), OR_HORZ | OR_BOTTOM);
 	info_bottom		= new Divider(113, OR_HORZ | OR_BOTTOM);
@@ -391,6 +395,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	edb_totalPercent->Deactivate();
 
 	edb_trackTime = new EditBox("00:00", Point(87, 51), Size(34, 0), 5);
+	edb_trackTime->SetWidth(Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6));
 	edb_trackTime->SetOrientation(OR_LOWERRIGHT);
 	edb_trackTime->Deactivate();
 
@@ -398,6 +403,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	txt_splitTime->SetOrientation(OR_LOWERRIGHT);
 
 	edb_totalTime = new EditBox("00:00", Point(41, 51), Size(34, 0), 5);
+	edb_totalTime->SetWidth(Math::Max(34, edb_totalTime->GetUnscaledTextWidth() + 6));
 	edb_totalTime->SetOrientation(OR_LOWERRIGHT);
 	edb_totalTime->Deactivate();
 
@@ -417,7 +423,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	if ( boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 1 ||
 	    (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0 && !boca.ComponentExists("cuesheet-playlist"))) Add(check_playlist);
 
-	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0) Add(player);
+	if (player != NIL) Add(player);
 
 	Add(info_divider);
 	Add(info_bottom);
@@ -515,9 +521,7 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 
 	joblist->RemoveAllTracks();
 
-	Registry	&boca = Registry::Get();
-
-	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0) DeleteObject(player);
+	if (player != NIL) DeleteObject(player);
 
 	DeleteObject(joblist);
 
@@ -638,10 +642,10 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	txt_encoder->SetX(clientSize.cx / 2 + 7);
 	combo_encoder->SetX(clientSize.cx / 2 + txt_encoder->GetUnscaledTextWidth() + 14);
 
-	edb_filename->SetWidth(clientSize.cx - 107 - maxTextLength);
+	edb_filename->SetWidth(clientSize.cx - 27 - maxTextLength - btn_skip->GetWidth());
 	edb_format->SetWidth(clientSize.cx / 2 - 14 - maxTextLength);
 	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 21 - txt_encoder->GetUnscaledTextWidth());
-	edb_outdir->SetWidth(clientSize.cx - 107 - maxTextLength);
+	edb_outdir->SetWidth(clientSize.cx - 27 - maxTextLength - btn_outdir->GetWidth());
 
 	/* Update progress bar and time-left display.
 	 */
@@ -753,6 +757,14 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 
 	progress->SetX(maxTextLength + 14);
 	progress_total->SetX(maxTextLength + 14);
+
+	Int	 maxButtonText = (Int) Math::Max(btn_outdir->GetUnscaledTextWidth(), btn_skip->GetUnscaledTextWidth());
+
+	btn_outdir->SetWidth(Math::Max(80, maxButtonText + 13));
+	btn_skip->SetWidth(Math::Max(80, maxButtonText + 13));
+
+	btn_outdir->SetX(btn_outdir->GetWidth() + 7);
+	btn_skip->SetX(btn_skip->GetWidth() + 7);
 
 	if (progress_total->GetRealPosition().y < progress->GetRealPosition().y + progress->GetRealSize().cy - 1) progress_total->SetMetrics(progress_total->GetPosition() - Point(0, 1), progress_total->GetSize() - Size(0, 1));
 
@@ -1192,8 +1204,14 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	edb_totalPercent->SetText("0%");
 	edb_totalTime->SetText("00:00");
 
-	if (edb_trackTime->GetWidth() != 34) { edb_trackTime->SetWidth(34); OnChangeSize(GetSize()); }
-	if (edb_totalTime->GetWidth() != 34) { edb_totalTime->SetWidth(34); OnChangeSize(GetSize()); }
+	if (edb_trackTime->GetWidth() != Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6) ||
+	    edb_totalTime->GetWidth() != Math::Max(34, edb_totalTime->GetUnscaledTextWidth() + 6))
+	{
+		edb_trackTime->SetWidth(Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6));
+		edb_totalTime->SetWidth(Math::Max(34, edb_totalTime->GetUnscaledTextWidth() + 6));
+
+		OnChangeSize(GetSize());
+	}
 
 	progress->SetValue(0);
 	progress_total->SetValue(0);
@@ -1222,7 +1240,12 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 	edb_trackPercent->SetText("0%");
 	edb_trackTime->SetText("00:00");
 
-	if (edb_trackTime->GetWidth() != 34) { edb_trackTime->SetWidth(34); OnChangeSize(GetSize()); }
+	if (edb_trackTime->GetWidth() != Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6))
+	{
+		edb_trackTime->SetWidth(Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6));
+
+		OnChangeSize(GetSize());
+	}
 
 	progress->SetValue(0);
 
@@ -1269,8 +1292,12 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 
 		edb_trackTime->SetText(secondsString);
 
-		if	(secondsString.Length() == 5 && edb_trackTime->GetWidth() != 34) { edb_trackTime->SetWidth(34); OnChangeSize(GetSize()); }
-		else if (secondsString.Length() == 8 && edb_trackTime->GetWidth() != 49) { edb_trackTime->SetWidth(49); OnChangeSize(GetSize()); }
+		if (edb_trackTime->GetWidth() != Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6))
+		{
+			edb_trackTime->SetWidth(Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6));
+
+			OnChangeSize(GetSize());
+		}
 
 		previousTrackSeconds = secondsLeft;
 	}
@@ -1297,8 +1324,12 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 
 		edb_totalTime->SetText(secondsString);
 
-		if	(secondsString.Length() == 5 && edb_totalTime->GetWidth() != 34) { edb_totalTime->SetWidth(34); OnChangeSize(GetSize()); }
-		else if (secondsString.Length() == 8 && edb_totalTime->GetWidth() != 49) { edb_totalTime->SetWidth(49); OnChangeSize(GetSize()); }
+		if (edb_totalTime->GetWidth() != Math::Max(34, edb_totalTime->GetUnscaledTextWidth() + 6))
+		{
+			edb_totalTime->SetWidth(Math::Max(34, edb_totalTime->GetUnscaledTextWidth() + 6));
+
+			OnChangeSize(GetSize());
+		}
 
 		previousTotalSeconds = secondsLeft;
 	}

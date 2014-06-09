@@ -37,9 +37,9 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	unicode_files	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
 	replace_spaces	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
 
-	group_encoder	 = new GroupBox(i18n->TranslateString("Encoder"), Point(7, 11), Size(450, 43));
+	group_encoder	 = new GroupBox(i18n->TranslateString("Encoder"), Point(7, 11), Size(552, 43));
 
-	combo_encoder	 = new ComboBox(Point(10, 12), Size(292, 0));
+	combo_encoder	 = new ComboBox(Point(10, 12), Size(394, 0));
 
 	Registry	&boca = Registry::Get();
 
@@ -52,30 +52,30 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 		if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
 	}
 
-	button_config	= new Button(i18n->TranslateString("Configure encoder"), NIL, Point(310, 11), Size(130, 0));
+	button_config	= new Button(i18n->TranslateString("Configure encoder"), NIL, Point(412, 11), Size(130, 0));
 	button_config->onAction.Connect(&ConfigureEncoders::ConfigureEncoder, this);
 
 	group_encoder->Add(combo_encoder);
 	group_encoder->Add(button_config);
 
-	group_options		= new GroupBox(i18n->TranslateString("Options"), Point(7, 66), Size(450, 88));
+	group_options		= new GroupBox(i18n->TranslateString("Options"), Point(7, 66), Size(552, 88));
 
-	check_onTheFly		= new CheckBox(i18n->TranslateString("Encode \'On-The-Fly\'"), Point(10, 37), Size(210, 0), &onTheFly);
+	check_onTheFly		= new CheckBox(i18n->TranslateString("Encode \'On-The-Fly\'"), Point(10, 37), Size(261, 0), &onTheFly);
 	check_onTheFly->onAction.Connect(&ConfigureEncoders::ToggleOnTheFly, this);
 
-	check_keepWaves		= new CheckBox(i18n->TranslateString("Keep ripped Wave files"), Point(27, 60), Size(193, 0), &keepWaves);
+	check_keepWaves		= new CheckBox(i18n->TranslateString("Keep ripped Wave files"), Point(27, 60), Size(244, 0), &keepWaves);
 
 	ToggleOnTheFly();
 
-	check_singleFile	= new CheckBox(i18n->TranslateString("Encode to single file"), Point(10, 14), Size(210, 0), &singleFile);
+	check_singleFile	= new CheckBox(i18n->TranslateString("Encode to single file"), Point(10, 14), Size(261, 0), &singleFile);
 	check_singleFile->onAction.Connect(&ConfigureEncoders::ToggleEncodeToSingleFile, this);
 
 	ToggleEncodeToSingleFile();
 
-	check_removeTracks	= new CheckBox(i18n->TranslateString("Remove processed tracks from joblist"), Point(229, 37), Size(210, 0), &removeTracks);
+	check_removeTracks	= new CheckBox(i18n->TranslateString("Remove processed tracks from joblist"), Point(280, 37), Size(261, 0), &removeTracks);
 	check_removeTracks->onAction.Connect(&ConfigureEncoders::ToggleRemoveTracks, this);
 
-	check_addEncodedTracks	= new CheckBox(i18n->TranslateString("Add encoded files to joblist"), Point(246, 60), Size(193, 0), &addEncodedTracks);
+	check_addEncodedTracks	= new CheckBox(i18n->TranslateString("Add encoded files to joblist"), Point(297, 60), Size(244, 0), &addEncodedTracks);
 
 	ToggleRemoveTracks();
 
@@ -85,18 +85,18 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	group_options->Add(check_removeTracks);
 	group_options->Add(check_addEncodedTracks);
 
-	group_outdir	= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 166), Size(450, 93));
+	group_outdir	= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 166), Size(552, 93));
 
-	check_useInputDir	= new CheckBox(i18n->TranslateString("Use input file folder if possible"), Point(10, 14), Size(342, 0), &useInputDir);
+	check_useInputDir	= new CheckBox(i18n->TranslateString("Use input file folder if possible"), Point(10, 14), Size(444, 0), &useInputDir);
 	check_useInputDir->onAction.Connect(&ConfigureEncoders::ToggleUseInputDir, this);
 
-	check_allowOverwrite	= new CheckBox(i18n->TranslateString("Allow overwriting input file"), Point(27, 37), Size(325, 0), &allowOverwrite);
+	check_allowOverwrite	= new CheckBox(i18n->TranslateString("Allow overwriting input file"), Point(27, 37), Size(427, 0), &allowOverwrite);
 
 	ToggleUseInputDir();
 
-	edit_outdir	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault), Point(10, 62), Size(342, 0), 0);
+	edit_outdir	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault), Point(10, 62), Size(444, 0), 0);
 
-	button_outdir_browse= new Button(i18n->TranslateString("Browse"), NIL, Point(360, 61), Size(0, 0));
+	button_outdir_browse= new Button(i18n->TranslateString("Browse"), NIL, Point(462, 61), Size(0, 0));
 	button_outdir_browse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
 
 	group_outdir->Add(check_useInputDir);
@@ -104,10 +104,10 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdir_browse);
 
-	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(450, 67));
+	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(552, 67));
 
 	text_filename	= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(10, 15));
-	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(423 - text_filename->GetUnscaledTextWidth(), 0), 0);
+	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(525 - text_filename->GetUnscaledTextWidth(), 0), 0);
 	list_filename	= new List();
 
 	Int	 customEntries = 0;
@@ -137,11 +137,11 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	edit_filename->SetDropDownList(list_filename);
 
-	check_unicode_files	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 39), Size(210, 0), &unicode_files);
+	check_unicode_files	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 39), Size(261, 0), &unicode_files);
 
 	if (!Setup::enableUnicode) check_unicode_files->Deactivate();
 
-	check_replace_spaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(229, 39), Size(210, 0), &replace_spaces);
+	check_replace_spaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(280, 39), Size(261, 0), &replace_spaces);
 
 	group_filename->Add(text_filename);
 	group_filename->Add(edit_filename);
@@ -153,7 +153,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	Add(group_options);
 	Add(group_filename);
 
-	SetSize(Size(464, 345));
+	SetSize(Size(566, 345));
 }
 
 BonkEnc::ConfigureEncoders::~ConfigureEncoders()

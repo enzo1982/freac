@@ -128,7 +128,7 @@ const String	 BonkEnc::Config::JoblistFieldsID				= "Fields";
 const String	 BonkEnc::Config::JoblistFieldsDefault				= "<artist>,<title>,<track>,<time>,<bytes>";
 
 const String	 BonkEnc::Config::JoblistFieldSizesID				= "FieldSizes";
-const String	 BonkEnc::Config::JoblistFieldSizesDefault			= "120,*,50,80,80";
+const String	 BonkEnc::Config::JoblistFieldSizesDefault			= "120,*,50,80,100";
 
 /* Category Ripper
  */

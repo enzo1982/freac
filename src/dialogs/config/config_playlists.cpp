@@ -32,7 +32,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	createCueSheets	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
 	useEncOutdir	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
 
-	group_options		= new GroupBox(i18n->TranslateString("Playlists"), Point(7, 11), Size(450, 67));
+	group_options		= new GroupBox(i18n->TranslateString("Playlists"), Point(7, 11), Size(552, 67));
 
 	check_createPlaylists	= new CheckBox(i18n->TranslateString("Create playlists"), Point(10, 13), Size(157, 0), &createPlaylists);
 	check_createPlaylists->onAction.Connect(&ConfigurePlaylists::ToggleCreatePlaylists, this);
@@ -61,7 +61,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	check_createPlaylists->SetWidth(21 + maxTextSize);
 	check_createCueSheets->SetWidth(21 + maxTextSize);
 
-	combo_formats	 = new ComboBox(Point(39 + maxTextSize, 12), Size(263 - maxTextSize, 0));
+	combo_formats	 = new ComboBox(Point(39 + maxTextSize, 12), Size(365 - maxTextSize, 0));
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
@@ -79,7 +79,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 		}
 	}
 
-	button_config	= new Button(i18n->TranslateString("Configure plugin"), NIL, Point(310, 11), Size(130, 0));
+	button_config	= new Button(i18n->TranslateString("Configure plugin"), NIL, Point(412, 11), Size(130, 0));
 	button_config->onAction.Connect(&ConfigurePlaylists::ConfigureFormat, this);
 
 	group_options->Add(check_createPlaylists);
@@ -87,24 +87,24 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	group_options->Add(combo_formats);
 	group_options->Add(button_config);
 
-	group_outdir		= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 90), Size(450, 69));
+	group_outdir		= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 90), Size(552, 69));
 
-	check_useEncOutdir	= new CheckBox(i18n->TranslateString("Use encoder output folder"), Point(10, 14), Size(342, 0), &useEncOutdir);
+	check_useEncOutdir	= new CheckBox(i18n->TranslateString("Use encoder output folder"), Point(10, 14), Size(444, 0), &useEncOutdir);
 	check_useEncOutdir->onAction.Connect(&ConfigurePlaylists::ToggleUseEncOutdir, this);
 
-	edit_outdir		= new EditBox(playlistOutputDir, Point(10, 39), Size(342, 0), 0);
+	edit_outdir		= new EditBox(playlistOutputDir, Point(10, 39), Size(444, 0), 0);
 
-	button_outdir_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(360, 38), Size(0, 0));
+	button_outdir_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(462, 38), Size(0, 0));
 	button_outdir_browse->onAction.Connect(&ConfigurePlaylists::SelectDir, this);
 
 	group_outdir->Add(check_useEncOutdir);
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdir_browse);
 
-	group_filename		= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 171), Size(450, 43));
+	group_filename		= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 171), Size(552, 43));
 
 	text_filename		= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(10, 15));
-	edit_filename		= new EditBox(playlistOutputPattern, Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(423 - text_filename->GetUnscaledTextWidth(), 0), 0);
+	edit_filename		= new EditBox(playlistOutputPattern, Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(525 - text_filename->GetUnscaledTextWidth(), 0), 0);
 
 	list_filename		= new List();
 	list_filename->AddEntry(String("<artist> - <album>"));
@@ -125,7 +125,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	Add(group_filename);
 	Add(group_options);
 
-	SetSize(Size(464, 221));
+	SetSize(Size(566, 221));
 }
 
 BonkEnc::ConfigurePlaylists::~ConfigurePlaylists()

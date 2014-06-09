@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -18,7 +18,7 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 
 	i18n->SetContext("Configuration::Interface");
 
-	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(530, 120));
+	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 120));
 
 	text_fields	= new Text(i18n->TranslateString("Columns:"), Point(9, 13));
 
@@ -49,7 +49,7 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 
 	Add(group_joblist);
 
-	SetSize(Size(544, 138));
+	SetSize(Size(566, 138));
 }
 
 BonkEnc::ConfigureInterface::~ConfigureInterface()

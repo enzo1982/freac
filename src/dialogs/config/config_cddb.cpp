@@ -55,15 +55,15 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	layer_local_background->Add(check_local);
 	layer_remote_background->Add(check_remote);
 
-	group_local	= new GroupBox(NIL, Point(7, 11), Size(344, 43));
+	group_local	= new GroupBox(NIL, Point(7, 11), Size(354, 43));
 
 	text_dir	= new Text(i18n->TranslateString("CDDB path:"), Point(16, 26));
 	edit_dir	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault), Point(122, 23), Size(119, 0), 0);
 
-	button_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(261, 22), Size());
+	button_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(271, 22), Size());
 	button_browse->onAction.Connect(&ConfigureCDDB::SelectDir, this);
 
-	group_cddb	= new GroupBox(NIL, Point(7, 66), Size(344, 125));
+	group_cddb	= new GroupBox(NIL, Point(7, 66), Size(354, 125));
 
 	text_mode	= new Text(i18n->TranslateString("CDDB access mode:"), Point(16, 81));
 
@@ -76,35 +76,35 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	text_server	= new Text(i18n->TranslateString("CDDB server:"), Point(16, 108));
 	edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault), Point(122, 105), Size(146, 0), 0);
 
-	text_port	= new Text(i18n->TranslateString("Port:"), Point(275, 108));
-	text_port->SetX(296 - text_port->GetUnscaledTextWidth());
+	text_port	= new Text(i18n->TranslateString("Port:"), Point(285, 108));
+	text_port->SetX(306 - text_port->GetUnscaledTextWidth());
 
-	edit_port	= new EditBox(NIL, Point(304, 105), Size(37, 0), 5);
+	edit_port	= new EditBox(NIL, Point(314, 105), Size(37, 0), 5);
 	edit_port->SetFlags(EDB_NUMERIC);
 
 	text_email	= new Text(i18n->TranslateString("eMail address:"), Point(16, 135));
 	edit_email	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault), Point(122, 132), Size(146, 0), 0);
 
-	button_http	= new Button(i18n->TranslateString("HTTP settings"), NIL, Point(17, 159), Size(158, 0));
+	button_http	= new Button(i18n->TranslateString("HTTP settings"), NIL, Point(17, 159), Size(163, 0));
 	button_http->onAction.Connect(&ConfigureCDDB::HTTPSettings, this);
 
-	button_proxy	= new Button(i18n->TranslateString("Proxy settings"), NIL, Point(183, 159), Size(158, 0));
+	button_proxy	= new Button(i18n->TranslateString("Proxy settings"), NIL, Point(188, 159), Size(163, 0));
 	button_proxy->onAction.Connect(&ConfigureCDDB::ProxySettings, this);
 
-	group_cddb_auto = new GroupBox(i18n->TranslateString("Automatization"), Point(359, 11), Size(178, 68));
+	group_cddb_auto = new GroupBox(i18n->TranslateString("Automatization"), Point(369, 11), Size(190, 68));
 
-	check_autoquery	= new CheckBox(i18n->TranslateString("Automatic CDDB queries"), Point(10, 14), Size(157, 0), &cddb_autoquery);
+	check_autoquery	= new CheckBox(i18n->TranslateString("Automatic CDDB queries"), Point(10, 14), Size(170, 0), &cddb_autoquery);
 	check_autoquery->onAction.Connect(&ConfigureCDDB::ToggleAutoCDDB, this);
 
-	check_autoselect = new CheckBox(i18n->TranslateString("Always select first entry"), Point(10, 40), Size(157, 0), &cddb_autoselect);
+	check_autoselect = new CheckBox(i18n->TranslateString("Always select first entry"), Point(10, 40), Size(170, 0), &cddb_autoselect);
 
 	group_cddb_auto->Add(check_autoquery);
 	group_cddb_auto->Add(check_autoselect);
 
-	group_cddb_options = new GroupBox(i18n->TranslateString("Options"), Point(359, 91), Size(178, 68));
+	group_cddb_options = new GroupBox(i18n->TranslateString("Options"), Point(369, 91), Size(190, 68));
 
-	check_cdtext	= new CheckBox(i18n->TranslateString("Prefer CDDB over CD Text"), Point(10, 14), Size(157, 0), &cddb_cdtext);
-	check_cache	= new CheckBox(i18n->TranslateString("Enable CDDB cache"), Point(10, 40), Size(157, 0), &cddb_cache);
+	check_cdtext	= new CheckBox(i18n->TranslateString("Prefer CDDB over CD Text"), Point(10, 14), Size(170, 0), &cddb_cdtext);
+	check_cache	= new CheckBox(i18n->TranslateString("Enable CDDB cache"), Point(10, 40), Size(170, 0), &cddb_cache);
 
 	group_cddb_options->Add(check_cdtext);
 	group_cddb_options->Add(check_cache);
@@ -119,10 +119,10 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 
 	Int	 maxTextSize = Math::Max(Math::Max(text_dir->GetUnscaledTextWidth(), text_email->GetUnscaledTextWidth()), Math::Max(text_mode->GetUnscaledTextWidth(), text_server->GetUnscaledTextWidth()));
 
-	edit_dir->SetMetrics(Point(maxTextSize + 24, edit_dir->GetY()), Size(229 - maxTextSize, edit_dir->GetHeight()));
-	combo_mode->SetMetrics(Point(maxTextSize + 24, combo_mode->GetY()), Size(317 - maxTextSize, combo_mode->GetHeight()));
-	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetY()), Size(265 - maxTextSize - text_port->GetUnscaledTextWidth(), edit_server->GetHeight()));
-	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->GetY()), Size(317 - maxTextSize, edit_email->GetHeight()));
+	edit_dir->SetMetrics(Point(maxTextSize + 24, edit_dir->GetY()), Size(239 - maxTextSize, edit_dir->GetHeight()));
+	combo_mode->SetMetrics(Point(maxTextSize + 24, combo_mode->GetY()), Size(327 - maxTextSize, combo_mode->GetHeight()));
+	edit_server->SetMetrics(Point(maxTextSize + 24, edit_server->GetY()), Size(275 - maxTextSize - text_port->GetUnscaledTextWidth(), edit_server->GetHeight()));
+	edit_email->SetMetrics(Point(maxTextSize + 24, edit_email->GetY()), Size(327 - maxTextSize, edit_email->GetHeight()));
 
 	Add(group_local);
 	Add(text_dir);
@@ -144,7 +144,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	Add(layer_local_background);
 	Add(layer_remote_background);
 
-	SetSize(Size(544, 198));
+	SetSize(Size(566, 198));
 }
 
 BonkEnc::ConfigureCDDB::~ConfigureCDDB()
