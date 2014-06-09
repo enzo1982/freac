@@ -137,7 +137,7 @@ Error BonkEnc::JobConvert::Perform()
 			else	   newTracks.Add(track);
 		}
 
-		if (existingTracks.Length() > 0)
+		if (existingTracks.Length() > 0 && !overwriteAllFiles)
 		{
 			/* Display dialog to confirm overwrite.
 			 */
@@ -179,6 +179,8 @@ Error BonkEnc::JobConvert::Perform()
 	String			 playlistID	    = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault);
 	PlaylistComponent	*playlist	    = (PlaylistComponent *) boca.CreateComponentByID(playlistID.Head(playlistID.FindLast("-")));
 	PlaylistComponent	*cuesheet	    = (PlaylistComponent *) boca.CreateComponentByID("cuesheet-playlist");
+
+	Array<Track>		 original_tracks = tracks;
 
 	Array<Track>		 playlist_tracks;
 	Array<Track>		 cuesheet_tracks;
@@ -493,8 +495,9 @@ Error BonkEnc::JobConvert::Perform()
 		{
 			encoder->SignalChapterChange();
 
-			Track	 cuesheetTrack = trackInfo;
+			Track	 cuesheetTrack = original_tracks.GetNth(i);
 
+			cuesheetTrack.isCDTrack	   = False;
 			cuesheetTrack.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
 			cuesheetTrack.length	   = trackLength;
 			cuesheetTrack.origFilename = singleOutFile;
@@ -544,6 +547,7 @@ Error BonkEnc::JobConvert::Perform()
 			{
 				Track	 playlistTrack = trackInfo;
 
+				playlistTrack.isCDTrack	   = False;
 				playlistTrack.sampleOffset = 0;
 				playlistTrack.length	   = trackLength;
 				playlistTrack.origFilename = out_filename;
