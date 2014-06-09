@@ -65,6 +65,9 @@ BonkEnc::Job::Job() : ListEntry("Job")
 
 	errors.EnableLocking();
 
+	startTicks	    = 0;
+	previousSecondsLeft = 0;
+
 	onChange.Emit();
 }
 
@@ -112,7 +115,7 @@ Int BonkEnc::Job::Run()
 
 	LeaveProtectedRegion();
 
-	startTicks = S::System::System::Clock();
+	startTicks	    = S::System::System::Clock();
 	previousSecondsLeft = 0;
 
 	Perform();
