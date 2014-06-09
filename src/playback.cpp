@@ -140,7 +140,7 @@ Int BonkEnc::Playback::PlayThread()
 		const Format		&format		= track.GetFormat();
 
 		Int64			 position	= 0;
-		UnsignedLong		 samples_size	= 512;
+		UnsignedLong		 samples_size	= format.rate / 4;
 
 		Int			 bytesPerSample = format.bits / 8;
 		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample * format.channels);
