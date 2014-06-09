@@ -16,6 +16,7 @@
 
 #include <jobs/engine/convert.h>
 #include <jobs/joblist/addfiles.h>
+#include <jobs/joblist/addtracks.h>
 
 using namespace smooth::IO;
 
@@ -67,7 +68,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	Array<String>	 files;
 	String		 encoderID	= "LAME";
 	String		 helpenc;
-	String		 outdir		= ".";
+	String		 outdir		= Directory::GetActiveDirectory();
 	String		 outfile;
 	String		 pattern	= "<artist> - <title>";
 	String		 cdDrive	= "0";
@@ -297,10 +298,16 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
 
 		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb);
+		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, True);
 		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, True);
 
 		config->SetIntValue(Config::CategoryRipperID, Config::RipperLockTrayID, Config::RipperLockTrayDefault);
 		config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
+
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
+
+		config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
+		config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
 
 		config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
 		config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
@@ -313,6 +320,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 			JobConvert::onEncodeTrack.Connect(&BonkEncCommandline::OnEncodeTrack, this);
 
 			Array<String>	 jobFiles;
+			Bool		 addCDTracks = False;
 
 			for (Int i = 0; i < files.Length(); i++)
 			{
@@ -322,6 +330,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				if (currentFile.StartsWith("device://cdda:"))
 				{
 					currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
+					addCDTracks = True;
 				}
 
 				if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
@@ -342,7 +351,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 				jobFiles.Add(files.GetNth(i));
 			}
 
-			Job	*job = new JobAddFiles(jobFiles);
+			Job	*job = addCDTracks ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
 
 			job->Schedule();
 
@@ -366,12 +375,14 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		{
 			for (Int i = 0; i < files.Length(); i++)
 			{
-				InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READ);
+				InStream	*in	     = new InStream(STREAM_FILE, files.GetNth(i), IS_READ);
 				String		 currentFile = files.GetNth(i);
+				Bool		 addCDTrack  = False;
 
 				if (currentFile.StartsWith("device://cdda:"))
 				{
 					currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
+					addCDTrack  = True;
 				}
 
 				if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
@@ -393,7 +404,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 				jobFiles.Add(files.GetNth(i));
 
-				Job	*job = new JobAddFiles(jobFiles);
+				Job	*job = addCDTrack ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
 
 				job->Schedule();
 
