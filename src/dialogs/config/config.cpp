@@ -489,13 +489,14 @@ Void BonkEnc::ConfigDialog::OnDeleteConfig()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	ListEntry	*entry	= combo_config->GetSelectedEntry();
-
-	config->RemoveConfiguration(entry->GetText());
+	String		 name	= entry->GetText();
 
 	selectedLayer = NIL;
 
-	combo_config->Remove(entry);
 	combo_config->SelectNthEntry(0);
+	combo_config->Remove(entry);
+
+	config->RemoveConfiguration(name);
 }
 
 Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)

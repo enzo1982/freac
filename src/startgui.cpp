@@ -444,6 +444,7 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	if (i18n->GetActiveLanguageID() != config->GetStringValue(Config::CategorySettingsID,
 								  Config::SettingsLanguageID,
 								  Config::SettingsLanguageDefault)) SetLanguage();
+	else											    FillMenus();
 
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Emit();
 
