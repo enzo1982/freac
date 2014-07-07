@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">样式</entry>
 	<entry id="3202" string="Start folder">开始目录</entry>
 	<entry id="3203" string="Filename pattern">文件名样式</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">请选择要加入任务列表的文件夹：</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">请选择要加入任务列表的文件夹：</entry>
       </section>
 
       <section name="Character set"/>

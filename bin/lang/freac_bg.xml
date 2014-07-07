@@ -176,7 +176,7 @@
 	<entry id="3201" string="Pattern">Шаблон</entry>
 	<entry id="3202" string="Start folder">Начална папка</entry>
 	<entry id="3203" string="Filename pattern">Шаблон за име на файла</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Изберете папка за добавяне към списъка със задачи:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Изберете папка за добавяне към списъка със задачи:</entry>
       </section>
 
       <section name="Character set">

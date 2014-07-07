@@ -81,6 +81,9 @@ namespace BonkEnc
 			static const String	 SettingsLastAddedPatternID;
 			static const String	 SettingsLastAddedPatternDefault;
 
+			static const String	 SettingsLastSearchSubFoldersID;
+			static const Bool	 SettingsLastSearchSubFoldersDefault;
+
 			static const String	 SettingsEncodeOnTheFlyID;
 			static const Bool	 SettingsEncodeOnTheFlyDefault;
 

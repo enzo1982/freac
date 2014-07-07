@@ -36,6 +36,8 @@ namespace BonkEnc
 			Bool				 AddTrack(const BoCA::Track &);
 			Bool				 RemoveTrack(const BoCA::Track &);
 
+			Void				 FindTracksByPattern(Array<String> &, const String &, const String &, Bool);
+
 			Void				 AddHeaderTabs();
 			Void				 UpdateTextLine();
 
@@ -57,7 +59,7 @@ namespace BonkEnc
 			Int				 SetMetrics(const Point &, const Size &);
 
 			Void				 AddTrackByDialog();
-			Void				 AddTracksByPattern(const String &, const String &);
+			Void				 AddTracksByPattern(const String &, const String &, Bool);
 
 			Void				 UpdateTrackInfo(const BoCA::Track &);
 

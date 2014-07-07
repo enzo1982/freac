@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Patrón</entry>
 	<entry id="3202" string="Start folder">Directorio de inicio</entry>
 	<entry id="3203" string="Filename pattern">Patrón de nome de arquivo</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Seleccione o directorio para engadir á listaxe de tarefas:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Seleccione o directorio para engadir á listaxe de tarefas:</entry>
       </section>
 
       <section name="Character set"/>

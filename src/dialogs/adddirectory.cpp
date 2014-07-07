@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -24,9 +24,9 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 
 	i18n->SetContext("Joblist::Add folder");
 
-	mainWnd			= new Window(i18n->TranslateString("Add folder"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(450, 136));
-	mainWnd->SetMinimumSize(Size(400, 136));
-	mainWnd->SetMaximumSize(Size(32768, 136));
+	mainWnd			= new Window(i18n->TranslateString("Add folder"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(450, 138));
+	mainWnd->SetMinimumSize(Size(400, 138));
+	mainWnd->SetMaximumSize(Size(32768, 138));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 	mainWnd->GetMainLayer()->onChangeSize.Connect(&AddDirectoryDialog::OnChangeSize, this);
 
@@ -41,12 +41,12 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	btn_ok->onAction.Connect(&AddDirectoryDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	group_directory	= new GroupBox(i18n->TranslateString("Folder"), Point(7, 11), Size(380, 37));
+	group_directory		= new GroupBox(i18n->TranslateString("Folder"), Point(7, 11), Size(380, 39));
 
-	text_directory	= new Text(i18n->TranslateString("Choose folder:"), Point(16, 23));
-	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + text_directory->GetUnscaledTextWidth(), 20), Size(268 - text_directory->GetUnscaledTextWidth(), 0));
+	text_directory		= new Text(i18n->TranslateString("Choose folder:"), Point(16, 24));
+	edit_directory		= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + text_directory->GetUnscaledTextWidth(), 21), Size(267 - text_directory->GetUnscaledTextWidth(), 0));
 
-	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(95, 19), Size(80, 0));
+	btn_browse		= new Button(i18n->TranslateString("Browse"), NIL, Point(96, 20), Size(80, 0));
 	btn_browse->SetOrientation(OR_UPPERRIGHT);
 	btn_browse->onAction.Connect(&AddDirectoryDialog::Browse, this);
 
@@ -107,7 +107,7 @@ Void BonkEnc::AddDirectoryDialog::Cancel()
 Void BonkEnc::AddDirectoryDialog::OnChangeSize(const Size &nSize)
 {
 	group_directory->SetWidth(nSize.cx - 14);
-	edit_directory->SetWidth(nSize.cx - text_directory->GetUnscaledTextWidth() - 126);
+	edit_directory->SetWidth(nSize.cx - text_directory->GetUnscaledTextWidth() - 127);
 }
 
 Void BonkEnc::AddDirectoryDialog::Browse()

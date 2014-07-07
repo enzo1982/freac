@@ -374,12 +374,13 @@ Void BonkEnc::JobList::AddTracksByDragAndDrop(const Array<String> &files)
 	foreach (const String &directory, directoriesToAdd) (new JobAddDirectory(directory))->Schedule();
 }
 
-Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String &pattern)
+Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String &pattern, Bool searchSubDirectories)
 {
-	Directory		 dir = Directory(directory);
-	const Array<File>	&files = dir.GetFilesByPattern(pattern);
+	Array<String>	 jobFiles;
 
-	if (files.Length() == 0)
+	FindTracksByPattern(jobFiles, directory, pattern, searchSubDirectories);
+
+	if (jobFiles.Length() == 0)
 	{
 		BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -389,11 +390,35 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 	}
 	else
 	{
-		Array<String>	 jobFiles;
+		(new JobAddFiles(jobFiles))->Schedule();
+	}
+}
+
+Void BonkEnc::JobList::FindTracksByPattern(Array<String> &jobFiles, const String &directory, const String &pattern, Bool searchSubDirectories)
+{
+	Directory	 dir = Directory(directory);
+
+	if (searchSubDirectories)
+	{
+		const Array<Directory>	&directories = dir.GetDirectories();
+
+		foreach (const Directory &directory, directories) FindTracksByPattern(jobFiles, directory, pattern, True);
+	}
+
+	if (pattern.Find(Directory::GetDirectoryDelimiter()) >= 0)
+	{
+		String	 head = pattern.Head(pattern.Find(Directory::GetDirectoryDelimiter()));
+		String	 tail = pattern.Tail(pattern.Length() - pattern.Find(Directory::GetDirectoryDelimiter()) - 1);
+
+		const Array<Directory>	&directories = dir.GetDirectoriesByPattern(head);
+
+		foreach (const Directory &directory, directories) FindTracksByPattern(jobFiles, directory, tail, False);
+	}
+	else
+	{
+		const Array<File>	&files = dir.GetFilesByPattern(pattern);
 
 		foreach (const File &file, files) jobFiles.Add(file);
-
-		(new JobAddFiles(jobFiles))->Schedule();
 	}
 }
 

@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Malli</entry>
 	<entry id="3202" string="Start folder">Kansio</entry>
 	<entry id="3203" string="Filename pattern">Mallitiedosto</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Valitse kansio:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Valitse kansio:</entry>
       </section>
 
       <section name="Character set"/>

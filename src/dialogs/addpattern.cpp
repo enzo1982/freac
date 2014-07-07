@@ -24,9 +24,9 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 
 	i18n->SetContext("Joblist::Add by pattern");
 
-	mainWnd			= new Window(i18n->TranslateString("Add files by pattern"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(450, 164));
-	mainWnd->SetMinimumSize(Size(400, 164));
-	mainWnd->SetMaximumSize(Size(32768, 164));
+	mainWnd			= new Window(i18n->TranslateString("Add files by pattern"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(450, 190));
+	mainWnd->SetMinimumSize(Size(400, 190));
+	mainWnd->SetMaximumSize(Size(32768, 190));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 	mainWnd->GetMainLayer()->onChangeSize.Connect(&AddPatternDialog::OnChangeSize, this);
 
@@ -41,18 +41,21 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	btn_ok->onAction.Connect(&AddPatternDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	group_pattern	= new GroupBox(i18n->TranslateString("Pattern"), Point(7, 11), Size(380, 65));
+	group_pattern		= new GroupBox(i18n->TranslateString("Pattern"), Point(7, 11), Size(380, 91));
 
-	text_directory	= new Text(i18n->TranslateString("Start folder").Append(":"), Point(16, 23));
-	text_pattern	= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(16, 50));
+	text_directory		= new Text(i18n->TranslateString("Start folder").Append(":"), Point(16, 24));
+	text_pattern		= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(16, 51));
 
-	edit_directory	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 20), Size(269 - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 0));
+	edit_directory		= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 21), Size(268 - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 0));
 
-	btn_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(95, 19), Size(80, 0));
+	btn_browse		= new Button(i18n->TranslateString("Browse"), NIL, Point(96, 20), Size(80, 0));
 	btn_browse->SetOrientation(OR_UPPERRIGHT);
 	btn_browse->onAction.Connect(&AddPatternDialog::Browse, this);
 
-	edit_pattern	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedPatternID, Config::SettingsLastAddedPatternDefault), Point(edit_directory->GetX(), 47), Size(edit_directory->GetWidth() + 85, 0));
+	edit_pattern		= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedPatternID, Config::SettingsLastAddedPatternDefault), Point(edit_directory->GetX(), 48), Size(edit_directory->GetWidth() + 85, 0));
+
+	check_subfolders	= new CheckBox(i18n->TranslateString("Search subfolders"), Point(edit_pattern->GetX(), 75), Size(edit_pattern->GetWidth(), 0));
+	check_subfolders->SetChecked(config->GetIntValue(Config::CategorySettingsID, Config::SettingsLastSearchSubFoldersID, Config::SettingsLastSearchSubFoldersDefault));
 
 	Add(mainWnd);
 
@@ -64,6 +67,7 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	mainWnd->Add(edit_directory);
 	mainWnd->Add(text_pattern);
 	mainWnd->Add(edit_pattern);
+	mainWnd->Add(check_subfolders);
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divbar);
 
@@ -81,6 +85,7 @@ BonkEnc::AddPatternDialog::~AddPatternDialog()
 	DeleteObject(edit_directory);
 	DeleteObject(text_pattern);
 	DeleteObject(edit_pattern);
+	DeleteObject(check_subfolders);
 	DeleteObject(btn_browse);
 	DeleteObject(btn_ok);
 	DeleteObject(btn_cancel);
@@ -103,12 +108,19 @@ String BonkEnc::AddPatternDialog::GetPattern()
 	return edit_pattern->GetText();
 }
 
+Bool BonkEnc::AddPatternDialog::GetSearchSubFolders()
+{
+	return check_subfolders->IsChecked();
+}
+
 Void BonkEnc::AddPatternDialog::OK()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, edit_directory->GetText());
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedPatternID, edit_pattern->GetText());
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsLastSearchSubFoldersID, check_subfolders->IsChecked());
 
 	mainWnd->Close();
 }
@@ -123,8 +135,9 @@ Void BonkEnc::AddPatternDialog::Cancel()
 Void BonkEnc::AddPatternDialog::OnChangeSize(const Size &nSize)
 {
 	group_pattern->SetWidth(nSize.cx - 14);
-	edit_directory->SetWidth(nSize.cx - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) - 126);
+	edit_directory->SetWidth(nSize.cx - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) - 127);
 	edit_pattern->SetWidth(nSize.cx - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) - 40);
+	check_subfolders->SetWidth(nSize.cx - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) - 40);
 }
 
 Void BonkEnc::AddPatternDialog::Browse()

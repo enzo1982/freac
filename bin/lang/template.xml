@@ -180,7 +180,8 @@
 	<entry id="3201" string="Pattern"/>
 	<entry id="3202" string="Start folder"/>
 	<entry id="3203" string="Filename pattern"/>
-	<entry id="3204" string="Select the folder to add to the joblist:"/>
+	<entry id="3204" string="Search subfolders"/>
+	<entry id="3205" string="Select the folder to add to the joblist:"/>
       </section>
 
       <section name="Character set">

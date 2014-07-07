@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">النمط</entry>
 	<entry id="3202" string="Start folder">مجلد البدء</entry>
 	<entry id="3203" string="Filename pattern">نمط اسم ملف</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">حدد مجلد لإضافة قائمة العمل:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">حدد مجلد لإضافة قائمة العمل:</entry>
       </section>
 
       <section name="Character set"/>

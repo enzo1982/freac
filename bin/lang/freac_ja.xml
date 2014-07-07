@@ -170,7 +170,7 @@
 	<entry id="3201" string="Pattern">パターン</entry>
 	<entry id="3202" string="Start folder">基準ディレクトリ</entry>
 	<entry id="3203" string="Filename pattern">ファイル名パターン</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">リストに追加するフォルダ：</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">リストに追加するフォルダ：</entry>
       </section>
 
       <section name="Character set"/>

@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Mønster</entry>
 	<entry id="3202" string="Start folder">Start mappe</entry>
 	<entry id="3203" string="Filename pattern">Filnavn mønster</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Vælg folder som skal tilføjes  til joblisten:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Vælg folder som skal tilføjes  til joblisten:</entry>
       </section>
 
       <section name="Character set"/>

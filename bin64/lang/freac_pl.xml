@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Wzór</entry>
 	<entry id="3202" string="Start folder">Katalog początkowy</entry>
 	<entry id="3203" string="Filename pattern">Wzór nazw plików</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Wybierz katalog do umieszczenia na liście:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Wybierz katalog do umieszczenia na liście:</entry>
       </section>
 
       <section name="Character set"/>

@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Modelo</entry>
 	<entry id="3202" string="Start folder">Pasta inicial</entry>
 	<entry id="3203" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Seleccionar a pasta para adicionar à listagem de trabalho:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Seleccionar a pasta para adicionar à listagem de trabalho:</entry>
       </section>
 
       <section name="Character set"/>

@@ -80,6 +80,9 @@ const String	 BonkEnc::Config::SettingsLastAddedDirDefault			= NIL;
 const String	 BonkEnc::Config::SettingsLastAddedPatternID			= "LastAddedPattern";
 const String	 BonkEnc::Config::SettingsLastAddedPatternDefault		= NIL;
 
+const String	 BonkEnc::Config::SettingsLastSearchSubFoldersID		= "SearchSubFolders";
+const Bool	 BonkEnc::Config::SettingsLastSearchSubFoldersDefault		= False;
+
 const String	 BonkEnc::Config::SettingsEncodeOnTheFlyID			= "EncodeOnTheFly";
 const Bool	 BonkEnc::Config::SettingsEncodeOnTheFlyDefault			= True;
 

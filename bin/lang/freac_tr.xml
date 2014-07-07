@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Şablon</entry>
 	<entry id="3202" string="Start folder">Başlangıç dizini</entry>
 	<entry id="3203" string="Filename pattern">Dosya adı şablonu</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Görev listesine eklenecek klasörü seçin:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Görev listesine eklenecek klasörü seçin:</entry>
       </section>
 
       <section name="Character set"/>

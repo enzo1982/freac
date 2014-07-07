@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Patroon</entry>
 	<entry id="3202" string="Start folder">Beginmap</entry>
 	<entry id="3203" string="Filename pattern">Bestandspatroon</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Selecteer de map om toe te voegen aan de takenlijst:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Selecteer de map om toe te voegen aan de takenlijst:</entry>
       </section>
 
       <section name="Character set"/>

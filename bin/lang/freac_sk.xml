@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Vzor</entry>
 	<entry id="3202" string="Start folder">Počiatočný adresár</entry>
 	<entry id="3203" string="Filename pattern">Vzor súborovej cesty</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Zvoľte zložku na pridanie do zoznamu:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Zvoľte zložku na pridanie do zoznamu:</entry>
       </section>
 
       <section name="Character set"/>

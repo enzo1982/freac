@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">樣式</entry>
 	<entry id="3202" string="Start folder">起始目錄</entry>
 	<entry id="3203" string="Filename pattern">檔案名稱樣式</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">請選擇要加入到工作清單的資料夾：</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">請選擇要加入到工作清單的資料夾：</entry>
       </section>
 
       <section name="Character set"/>

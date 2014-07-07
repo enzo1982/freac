@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Šablon</entry>
 	<entry id="3202" string="Start folder">Pokreni folder</entry>
 	<entry id="3203" string="Filename pattern">Šablon naziva</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Izaberi folder za dodavanje na listu zadataka:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Izaberi folder za dodavanje na listu zadataka:</entry>
       </section>
 
       <section name="Character set"/>

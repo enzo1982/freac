@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Πρότυπο</entry>
 	<entry id="3202" string="Start folder">Φάκελος εκκίνησης</entry>
 	<entry id="3203" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών:</entry>
       </section>
 
       <section name="Character set"/>

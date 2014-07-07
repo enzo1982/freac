@@ -1121,7 +1121,7 @@ Void BonkEnc::BonkEncGUI::AddFilesByPattern()
 {
 	AddPatternDialog	*dialog = new AddPatternDialog();
 
-	if (dialog->ShowDialog() == Success()) joblist->AddTracksByPattern(dialog->GetDirectory(), dialog->GetPattern());
+	if (dialog->ShowDialog() == Success()) joblist->AddTracksByPattern(dialog->GetDirectory(), dialog->GetPattern(), dialog->GetSearchSubFolders());
 
 	DeleteObject(dialog);
 }

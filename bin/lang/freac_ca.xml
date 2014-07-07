@@ -169,7 +169,7 @@
 	<entry id="3201" string="Pattern">Patró</entry>
 	<entry id="3202" string="Start folder">Carpeta d'inici</entry>
 	<entry id="3203" string="Filename pattern">Patró de nom d'arxiu</entry>
-	<entry id="3204" string="Select the folder to add to the joblist:">Seleccioni la carpeta per a agragar a la llista de tasques:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist:">Seleccioni la carpeta per a agragar a la llista de tasques:</entry>
       </section>
 
       <section name="Character set"/>
