@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,7 +20,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Add directory"), currentConfig->wndPos + Point(40, 40), Size(402, 128));
+	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Add folder"), currentConfig->wndPos + Point(40, 40), Size(402, 128));
 	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
@@ -46,12 +46,12 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	size.cx = 380;
 	size.cy = 37;
 
-	group_directory	= new GroupBox(BonkEnc::i18n->TranslateString("Directory"), pos, size);
+	group_directory	= new GroupBox(BonkEnc::i18n->TranslateString("Folder"), pos, size);
 
 	pos.x += 9;
 	pos.y += 12;
 
-	text_directory	= new Text(BonkEnc::i18n->TranslateString("Choose directory:"), pos);
+	text_directory	= new Text(BonkEnc::i18n->TranslateString("Choose folder:"), pos);
 
 	pos.x += (text_directory->GetUnscaledTextWidth() + 7);
 	pos.y -= 3;

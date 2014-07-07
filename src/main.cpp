@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -112,7 +112,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2013 Robert Kausch"));
+	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2014 Robert Kausch"));
 	menu_file		= new PopupMenu();
 	menu_options		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -844,7 +844,7 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 {
 	currentConfig->wndSize = mainWnd->GetSize();
 
-	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2013 Robert Kausch"));
+	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - Copyright (C) 2001-2014 Robert Kausch"));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -895,7 +895,7 @@ Void BonkEnc::BonkEncGUI::Close()
 
 Void BonkEnc::BonkEncGUI::About()
 {
-	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2013 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
+	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append("\nCopyright (C) 2001-2014 Robert Kausch\n\n").Append(String(i18n->TranslateString("Translated by %1.")).Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), String(i18n->TranslateString("About %1")).Replace("%1", BonkEnc::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
 }
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
@@ -1583,7 +1583,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	}
 
 	menu_files->AddEntry(String(i18n->TranslateString("By pattern")).Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);
-	menu_files->AddEntry(String(i18n->TranslateString("From directory")).Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesFromDirectory, this);
+	menu_files->AddEntry(String(i18n->TranslateString("From folder")).Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesFromDirectory, this);
 
 	menu_addsubmenu->AddEntry();
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
@@ -1619,7 +1619,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, &currentConfig->encodeToSingleFile);
 
 	menu_encoder_options->AddEntry();
-	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file directory if possible"), NIL, NIL, &currentConfig->writeToInputDir)->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file folder if possible"), NIL, NIL, &currentConfig->writeToInputDir)->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
 	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, &currentConfig->allowOverwrite);
 
 	menu_encoder_options->AddEntry();

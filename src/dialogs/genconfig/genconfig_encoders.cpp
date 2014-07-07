@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -123,14 +123,14 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	size.cx	= 344;
 	size.cy	= 93;
 
-	group_outdir	= new GroupBox(BonkEnc::i18n->TranslateString("Output directory"), pos, size);
+	group_outdir	= new GroupBox(BonkEnc::i18n->TranslateString("Output folder"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 236;
 	size.cy	= 0;
 
-	check_useInputDir	= new CheckBox(BonkEnc::i18n->TranslateString("Use input file directory if possible"), pos, size, &useInputDir);
+	check_useInputDir	= new CheckBox(BonkEnc::i18n->TranslateString("Use input file folder if possible"), pos, size, &useInputDir);
 	check_useInputDir->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleUseInputDir, this);
 
 	pos.x	+= 17;
