@@ -205,6 +205,20 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->Add(mainWnd_iconbar);
 	mainWnd->Add(tabs_main);
 
+	/* Do not use tab widget if there would be only one tab.
+	 */
+	if (tabs_main->GetNOfObjects() == 1)
+	{
+		Widget	*tab = tabs_main->GetNthObject(0);
+
+		tabs_main->Remove(tab);
+
+		tab->SetOrientation(OR_CENTER);
+
+		mainWnd->Remove(tabs_main);
+		mainWnd->Add(tab);
+	}
+
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 
 #ifdef __WIN32__
