@@ -51,12 +51,12 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_TAGGER) continue;
 
-		const Array<TagFormat *>	&formats = boca.GetComponentTagFormats(i);
+		const Array<TagSpec *>	&specs = boca.GetComponentTagSpecs(i);
 
-		foreach (TagFormat *format, formats)
+		foreach (TagSpec *spec, specs)
 		{
-			list_tag_formats->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(format->GetName().Replace(" ", NIL)), format->IsDefault()));
-			selected_encodings.Add(config->GetStringValue(Config::CategoryTagsID, format->GetName().Replace(" ", NIL).Append("Encoding"), format->GetDefaultEncoding()));
+			list_tag_formats->AddEntry(spec->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(spec->GetName().Replace(" ", NIL)), spec->IsDefault()));
+			selected_encodings.Add(config->GetStringValue(Config::CategoryTagsID, spec->GetName().Replace(" ", NIL).Append("Encoding"), spec->GetDefaultEncoding()));
 		}
 	}
 
@@ -114,11 +114,11 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_TAGGER) continue;
 
-		const Array<TagFormat *>	&formats = boca.GetComponentTagFormats(i);
+		const Array<TagSpec *>	&specs = boca.GetComponentTagSpecs(i);
 
-		foreach (TagFormat *format, formats)
+		foreach (TagSpec *spec, specs)
 		{
-			if (format->IsCoverArtSupported()) list_coverart_write_tags_format->AddEntry(format->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(format->GetName().Replace(" ", NIL)), format->IsCoverArtDefault()));
+			if (spec->IsCoverArtSupported()) list_coverart_write_tags_format->AddEntry(spec->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(spec->GetName().Replace(" ", NIL)), spec->IsCoverArtDefault()));
 		}
 	}
 
@@ -277,13 +277,13 @@ Void BonkEnc::ConfigureTags::ToggleTags()
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_TAGGER) continue;
 
-		const Array<TagFormat *>	&formats = boca.GetComponentTagFormats(i);
+		const Array<TagSpec *>	&specs = boca.GetComponentTagSpecs(i);
 
-		foreach (TagFormat *format, formats)
+		foreach (TagSpec *spec, specs)
 		{
 			if (n++ != list_tag_formats->GetSelectedEntryNumber()) continue;
 
-			const Array<String>	&encodings = format->GetEncodings();
+			const Array<String>	&encodings = spec->GetEncodings();
 
 			foreach (const String &encoding, encodings)
 			{
@@ -291,7 +291,7 @@ Void BonkEnc::ConfigureTags::ToggleTags()
 				combo_encoding->AddEntry(encoding);
 			}
 
-			if (format->IsFreeEncodingSupported())
+			if (spec->IsFreeEncodingSupported())
 			{
 				edit_encoding->SetText(selected_encodings.GetNth(n - 1));
 				edit_encoding->Show();
@@ -368,14 +368,14 @@ Int BonkEnc::ConfigureTags::SaveSettings()
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_TAGGER) continue;
 
-		const Array<TagFormat *>	&formats = boca.GetComponentTagFormats(i);
+		const Array<TagSpec *>	&specs = boca.GetComponentTagSpecs(i);
 
-		foreach (TagFormat *format, formats)
+		foreach (TagSpec *spec, specs)
 		{
-			config->SetIntValue(Config::CategoryTagsID, String("Enable").Append(format->GetName().Replace(" ", NIL)), list_tag_formats->GetEntry(format->GetName())->IsMarked());
-			config->SetStringValue(Config::CategoryTagsID, format->GetName().Replace(" ", NIL).Append("Encoding"), selected_encodings.GetNth(list_tag_formats->GetEntryNumber(format->GetName())));
+			config->SetIntValue(Config::CategoryTagsID, String("Enable").Append(spec->GetName().Replace(" ", NIL)), list_tag_formats->GetEntry(spec->GetName())->IsMarked());
+			config->SetStringValue(Config::CategoryTagsID, spec->GetName().Replace(" ", NIL).Append("Encoding"), selected_encodings.GetNth(list_tag_formats->GetEntryNumber(spec->GetName())));
 
-			if (format->IsCoverArtSupported()) config->SetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(format->GetName().Replace(" ", NIL)), list_coverart_write_tags_format->GetEntry(format->GetName())->IsMarked());
+			if (spec->IsCoverArtSupported()) config->SetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(spec->GetName().Replace(" ", NIL)), list_coverart_write_tags_format->GetEntry(spec->GetName())->IsMarked());
 		}
 	}
 
