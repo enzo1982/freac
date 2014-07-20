@@ -31,6 +31,7 @@
     <entry id="352" string="unknown album">неизвестный альбом</entry>
     <entry id="353" string="unknown genre">неизвестный жанр</entry>
     <entry id="354" string="unknown year">неизвестный год</entry>
+    <entry id="355" string="hidden track">скрытая дорожка</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -179,6 +180,7 @@
 	<entry id="3201" string="Pattern">Образец</entry>
 	<entry id="3202" string="Start folder">Начальная папка</entry>
 	<entry id="3203" string="Filename pattern">Формирование названия файла</entry>
+	<entry id="3204" string="Search subfolders">Искать в подпапках</entry>
 	<entry id="3205" string="Select the folder to add to the joblist:">Выберите папку для добавления в список задач</entry>
       </section>
 
@@ -503,6 +505,8 @@
       <entry id="9020" string="Use read offset:">Использовать смещение при чтении</entry>
       <entry id="9021" string="samples">семплы</entry>
       <entry id="9022" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
+      <entry id="9023" string="Spin up before ripping:">Раскрутить перед копированием</entry>
+      <entry id="9024" string="%1 seconds">%1 секунд</entry>
     </section>
 
     <section name="Decoders">
@@ -510,6 +514,12 @@
       <section name="MAD">
 	<entry id="10000" string="Decoding">Декодирование</entry>
 	<entry id="10001" string="Enable 24 bit decoding">Разрешить 24 битное декодирование</entry>
+      </section>
+
+      <section name="mpg123">
+	<entry id="11000" string="Decoder">Декодер</entry>
+	<entry id="11001" string="Active decoder:">Текущий декодер</entry>
+	<entry id="11002" string="auto select">автовыбор</entry>
       </section>
     </section>
 
@@ -608,8 +618,13 @@
       </section>
 
       <section name="AAC">
+	<entry id="33000" string="Codec">Кодек</entry>
 	<entry id="33001" string="Quality">Качество</entry>
 	<entry id="33002" string="Format">Формат</entry>
+
+	<section name="Codec">
+	  <entry id="33100" string="Audio codec">Аудиокодек</entry>
+	</section>
 
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Битрейт</entry>
@@ -661,6 +676,8 @@
 	</section>
 
 	<section name="Expert">
+	  <entry id="34300" string="Apodization">Аподизация</entry>
+	  <entry id="34301" string="Apodization function(s):">Функции аподизации:</entry>
 	  <entry id="34302" string="Note:">Примечание: </entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Несколько функций разделяются ;</entry>
 	  <entry id="34304" string="Linear predictor">Линейный предсказатель</entry>
@@ -727,6 +744,8 @@
 	<entry id="39005" string="Ultra-Wideband (32 kHz)">Сверхширокополосный (32 кГц)</entry>
 	<entry id="39006" string="VBR mode">VBR режим</entry>
 	<entry id="39007" string="CBR (no VBR)">CBR (без VBR)</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Настройки</entry>
 	<entry id="39011" string="Voice Activity Detection">Определение активности</entry>
 	<entry id="39012" string="Discontinued Transmission">Незаконченная передача</entry>
