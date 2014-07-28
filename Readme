@@ -47,6 +47,8 @@ History
 		- fixed blurry GUI with high resolution displays
 		- fixed screen artifacts left by tooltips when removing tracks
 		- fixed uninstaller not working when run directly
+		- upgraded Vorbis to aoTuV beta 6.03 (2014)
+		- upgraded Ogg library to version 1.3.2
 		- upgraded CDRip to version 1.24
 
 	Version 1.0.21a (July 2013)
@@ -93,7 +95,7 @@ History
 
 		- updated Serbian translation
 		- fixed possible MP3 decoder crashes
-		- upgraded Ogg Vorbis to aoTuV beta 6.03
+		- upgraded Vorbis to aoTuV beta 6.03
 		- minor other fixes
 
 	Version 1.0.18 (April 2011)
@@ -105,8 +107,8 @@ History
 		- changed default output directory to "My Music" folder
 		- fixed skipping of first few seconds of some MP3s and raw AAC files
 		- fixed and improved decoding of raw audio formats WAVE, AIFF and AU
+		- upgraded Vorbis to aoTuV beta 6.02
 		- upgraded Ogg library to version 1.2.2
-		- upgraded Ogg Vorbis to aoTuV beta 6.02
 		- some minor fixes
 
 	Version 1.0.17 (November 2010)
@@ -187,7 +189,7 @@ History
 		- fixed problems with easyUpdate running on Windows Vista
 		- fixed startup problems on Windows NT 4.0
 		- disabled compression of all executables to fix incorrect threat warnings from virus scanners
-		- upgraded Ogg Vorbis to aoTuV beta 5.7
+		- upgraded Vorbis to aoTuV beta 5.7
 
 	Version 1.0.11 (February 2009)
 
@@ -214,7 +216,7 @@ History
 		- disabled compression of uninstaller to fix incorrect threat warnings from virus scanners
 		- added German and Japanese translations for the installer
 		- upgraded LAME to version 3.98.3
-		- upgraded Ogg Vorbis to aoTuV beta 5.61
+		- upgraded Vorbis to aoTuV beta 5.61
 		- fixed some crashes
 
 	Version 1.0.9 (September 2008)
@@ -240,7 +242,7 @@ History
 		- slightly improved CDDB entry validity check
 		- made preset 'Standard' the default for LAME
 		- upgraded LAME to version 3.98
-		- upgraded Ogg Vorbis to aoTuV beta 5.5
+		- upgraded Vorbis to aoTuV beta 5.5
 		- minor bug fixes
 
 	Version 1.0.7 (March 2008)
@@ -347,7 +349,7 @@ History
 		- upgraded FLAC to version 1.1.4
 		- upgraded FAAD2 to version 2.5
 		- upgraded FAAC to version 1.25
-		- upgraded Ogg Vorbis to aoTuV beta 5
+		- upgraded Vorbis to aoTuV beta 5
 		- some minor bug fixes
 
 Requirements
@@ -356,17 +358,17 @@ Requirements
 	Requirements for running the binaries:
 
 		Supported operating systems:
-			- Windows 2000/XP/Vista/7/8.x (older Windows version might work with some limitations)
+			- Windows XP/Vista/7/8.x (older Windows version might work with some limitations)
 
 		Minimum hardware requirements:
-			- Intel Pentium 4 CPU
-			- 128 MB RAM
+			- Intel Pentium III or AMD Athlon XP CPU
+			- 256 MB RAM
 			- 50 MB free disk space
 
 		Recommended hardware specs:
-			- Intel Core i3 CPU
+			- Intel Core i3 or AMD Phenom II CPU
 			- 1 GB RAM
-			- 10 GB free disk space
+			- 1 GB free disk space
 
 	Additional requirements for compiling the sources:
 

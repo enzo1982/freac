@@ -48,6 +48,8 @@ Geschichte
 		- Unscharfe Benutzeroberfläche auf Displays mit hoher Auflösung behoben
 		- Bildschirmartefakte von Tooltips beim Entfernen von Tracks behoben
 		- Problem beim direkten Start des Deinstallationsprogramms behoben
+		- Vorbis auf aoTuV Beta 6.03 (2014) aktualisiert
+		- Ogg-Bibliothek auf Version 1.3.2 aktualisiert
 		- CDRip auf Version 1.24 aktualisiert
 
 	Version 1.0.21a (Juli 2013)
@@ -76,7 +78,7 @@ Geschichte
 		- Update auf smooth v0.8.71.0
 		- Kleinere Fehlerkorrekturen
 
-	Version 1.0.20a (March 2012)
+	Version 1.0.20a (März 2012)
 
 		- fixed unintended dependency on Intel runtime libraries
 		- fixed bogus error messages on AMD CPUs
@@ -94,7 +96,7 @@ Geschichte
 
 		- Serbische Übersetzung aktualisiert
 		- Mögliche Abstürze des MP3-Dekodierers behoben
-		- Ogg Vorbis auf aoTuV Beta 6.03 aktualisiert
+		- Vorbis auf aoTuV Beta 6.03 aktualisiert
 		- Weitere kleinere Fehlerkorrekturen
 
 	Version 1.0.18 (April 2011)
@@ -106,8 +108,8 @@ Geschichte
 		- Standardausgabeverzeichnis auf Ordner "Eigene Musik" geändert
 		- Überspringen der ersten Sekunden bei einigen MP3- und Raw-AAC-Dateien behoben
 		- Probleme beim Dekodieren der Raw-Formate WAVE, AIFF und AU behoben
+		- Vorbis auf aoTuV Beta 6.02 aktualisiert
 		- Ogg-Bibliothek auf Version 1.2.2 aktualisiert
-		- Ogg Vorbis auf aoTuV Beta 6.02 aktualisiert
 		- Kleinere Fehlerkorrekturen
 
 	Version 1.0.17 (November 2010)
@@ -188,7 +190,7 @@ Geschichte
 		- Probleme mit easyUpdate unter Windows Vista behoben
 		- Probleme beim Starten unter Windows NT 4.0 behoben
 		- Komprimierung aller ausführbaren Dateien deaktiviert, um falsche Warnungen von Virenscannern zu verhindern
-		- Ogg Vorbis auf aoTuV Beta 5.7 aktualisiert
+		- Vorbis auf aoTuV Beta 5.7 aktualisiert
 
 	Version 1.0.11 (Februar 2009)
 
@@ -215,7 +217,7 @@ Geschichte
 		- Komprimierung des Uninstallers deaktiviert, um falsche Bedrohungs-Warnungen von Virenscannern zu beheben
 		- Deutsche und japanische Übersetzungen für das Installationsprogramm hinzugefügt
 		- LAME auf Version 3.98.3 aktualisiert
-		- Ogg Vorbis auf aoTuV Beta 5.61 aktualisiert
+		- Vorbis auf aoTuV Beta 5.61 aktualisiert
 		- Einige Abstürze behoben
 
 	Version 1.0.9 (September 2008)
@@ -241,7 +243,7 @@ Geschichte
 		- Gültigkeitsprüfung für CDDB-Einträge leicht verbessert
 		- Voreinstellung 'Standard' ist jetzt Standardeinstellung für LAME
 		- LAME auf Version 3.98 aktualisiert
-		- Ogg Vorbis auf aoTuV Beta 5.5 aktualisiert
+		- Vorbis auf aoTuV Beta 5.5 aktualisiert
 		- Kleinere Fehlerkorrekturen
 
 	Version 1.0.7 (März 2008)
@@ -348,7 +350,7 @@ Geschichte
 		- FLAC auf Version 1.1.4 aktualisiert
 		- FAAD2 auf Version 2.5 aktualisiert
 		- FAAC auf Version 1.25 aktualisiert
-		- Ogg Vorbis auf aoTuV Beta 5 aktualisiert
+		- Vorbis auf aoTuV Beta 5 aktualisiert
 		- Einige kleinere Fehler behoben
 
 Voraussetzungen
@@ -357,17 +359,17 @@ Voraussetzungen
 	Voraussetzungen zum Ausführen der Binärpakete:
 
 		Unterstützte Betriebsysteme:
-			- Windows 2000/XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
+			- Windows XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
 
 		Minimale Hardwarevoraussetzungen:
-			- Intel Pentium 4 Prozessor
-			- 128 MB RAM
+			- Intel Pentium III oder AMD Athlon XP Prozessor
+			- 256 MB RAM
 			- 50 MB freier Festplattenplatz
 
 		Empfohlene Hardwarespezifikationen:
-			- Intel Core i3 Prozessor
+			- Intel Core i3 oder AMD Phenom II Prozessor
 			- 1 GB RAM
-			- 10 GB freier Festplattenplatz
+			- 1 GB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung des Quellcodes:
 
