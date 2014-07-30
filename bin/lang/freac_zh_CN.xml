@@ -19,7 +19,7 @@
     <entry id="6" string="Clear joblist">清除任务列表</entry>
     <entry id="7" string="Exit">退出</entry>
     <entry id="8" string="General settings...">常规设置...</entry>
-    <entry id="9" string="Configure selected encoder...">设置选定的编码器</entry>
+    <entry id="9" string="Configure selected encoder...">设置选定的编码器...</entry>
     <entry id="10" string="Audio file(s)">音频文件</entry>
     <entry id="11" string="Audio CD contents">音频 CD 内容</entry>
     <entry id="12" string="Start encoding">启动编码</entry>
@@ -50,12 +50,12 @@
     <entry id="37" string="Windows CD Audio Track">Windows CD 音轨</entry>
     <entry id="38" string="All Files">所有文件</entry>
     <entry id="39" string="You did not select a track!">你没有选择文件！</entry>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">编码进程正在运行！ 你确定要退出吗?</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">编码进程正在运行！ 你确定要退出吗？</entry>
     <entry id="41" string="Currently encoding">正在编码</entry>
-    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">本程序遵照 GNU 通用公共许可证(GPL) 进行分发</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">本程序遵照 GNU 通用公共许可证(GPL) 进行分发。</entry>
     <entry id="43" string="CDDB query">CDDB 查询</entry>
     <entry id="44" string="About %1">关于 %1</entry>
-    <entry id="45" string="No options can be configured for Windows Wave file output!">WAVE 输出滤镜没有可以设置的选项!</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">WAVE 输出滤镜没有可以设置的选项！</entry>
     <entry id="46" string="Windows Wave file output">WAVE 输出滤镜</entry>
     <entry id="47" string="Cannot change settings while encoding!">不能在编码过程中改变设置！</entry>
     <entry id="48" string="%1 encoder configuration">%1 编码设置</entry>
@@ -158,8 +158,8 @@
     <entry id="150" string="CDDB server:">CDDB 服务器：</entry>
     <entry id="151" string="Port:">端口：</entry>
     <entry id="152" string="Info">信息</entry>
-    <entry id="153" string="No freedb entry for this disk.">没有此光盘的 freedb 项目</entry>
-    <entry id="154" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错.</entry>
+    <entry id="153" string="No freedb entry for this disk.">没有此光盘的 freedb 项目。</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错。</entry>
     <entry id="155" string="Connecting to freedb server at">正在连接 freedb 服务器</entry>
     <entry id="156" string="Requesting CD information">正在索取 CD 信息</entry>
     <entry id="157" string="eMail address:">e-Mail 地址</entry>
@@ -228,10 +228,10 @@
     <entry id="224" string="Use Temporal Masking Effect">使用时序遮盖效果</entry>
     <entry id="225" string="Expert">专家</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">编码过程中不能配置编码器！</entry>
-    <entry id="227" string="The output folder does not exist! Do you want to create it?">输出目录不存在！您要创建此目录吗?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">输出目录不存在！您要创建此目录吗？</entry>
     <entry id="228" string="Filename pattern">文件名样式</entry>
     <entry id="229" string="unknown album">未知专辑</entry>
-    <entry id="230" string="Translated by %1.">翻译 %1</entry>
+    <entry id="230" string="Translated by %1.">翻译 %1。</entry>
     <entry id="231" string="Select all">全选</entry>
     <entry id="232" string="Select none">取消全选</entry>
     <entry id="233" string="Toggle selection">反选</entry>
@@ -315,7 +315,7 @@
     <entry id="311" string="Add files by pattern">按照样式添加文件</entry>
     <entry id="312" string="Pattern">样式</entry>
     <entry id="313" string="Start folder">开始目录</entry>
-    <entry id="314" string="No files found matching pattern:">找不到符合样式的文件</entry>
+    <entry id="314" string="No files found matching pattern:">找不到符合样式的文件：</entry>
     <entry id="315" string="Edit language file">编辑语言文件</entry>
     <entry id="316" string="Use for all selected tracks">应用到所有选择的音轨</entry>
     <entry id="317" string="Interpret string as">将字符串翻译为</entry>
@@ -327,7 +327,7 @@
     <entry id="323" string="all lower case">全部小写</entry>
     <entry id="324" string="all upper case">全部大写</entry>
     <entry id="325" string="Status">状态</entry>
-    <entry id="326" string="Successfully read CD!">读入 CD 成功</entry>
+    <entry id="326" string="Successfully read CD!">读入 CD 成功！</entry>
     <entry id="327" string="Comment">注释</entry>
     <entry id="328" string="Manage CDDB cache entries...">管理 CDDB 缓存项目...</entry>
     <entry id="329" string="Save entry">保存项目</entry>
@@ -377,13 +377,13 @@
     <entry id="373" string="Query all">查询全部</entry>
     <entry id="374" string="Query string">查询字符串</entry>
     <entry id="375" string="CDDB queries to perform:">要执行的 CDDB 查询：</entry>
-    <entry id="376" string="Would you like to perform this query again later?">您想要稍后再执行一次本查询吗?</entry>
+    <entry id="376" string="Would you like to perform this query again later?">您想要稍后再执行一次本查询吗？</entry>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">访问 CD-ROM 光驱被 Windows 拒绝。&#10;请联系您的系统管理员以&#10;取得访问 CD-ROM 光驱的权限。</entry>
     <entry id="378" string="CD information">CD 信息</entry>
     <entry id="379" string="Read CD Text">读入 CD 文本</entry>
     <entry id="380" string="Read cdplayer.ini">读入 cdplayer.ini</entry>
     <entry id="381" string="Apodization">切趾</entry>
-    <entry id="382" string="Apodization function(s):">切趾函数</entry>
+    <entry id="382" string="Apodization function(s):">切趾函数：</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">您可以指定多个函数，每个函数使用分号隔开。</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 可以在启动时自动执行更新检查。&#10;您想要 %1 在启动时检查有无更新吗？</entry>
     <entry id="385" string="Cannot access input file: %1">不能访问输入文件： %1</entry>
