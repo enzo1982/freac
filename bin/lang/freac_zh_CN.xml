@@ -67,7 +67,7 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings...">常规设置...</entry>
-	<entry id="1301" string="Configure selected encoder...">设置选定的编码器</entry>
+	<entry id="1301" string="Configure selected encoder...">设置选定的编码器...</entry>
 	<entry id="1302" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
       </section>
 
@@ -176,7 +176,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">你没有选择文件！</entry>
-	<entry id="3401" string="No files found matching pattern:">找不到符合样式的文件</entry>
+	<entry id="3401" string="No files found matching pattern:">找不到符合样式的文件：</entry>
       </section>
     </section>
 
@@ -189,7 +189,7 @@
 	<entry id="4003" string="Submitting CD information">正在提交 CD 信息</entry>
 	<entry id="4004" string="Update joblist with this information">使用下列信息更新任务列表</entry>
 	<entry id="4005" string="Status">状态</entry>
-	<entry id="4006" string="Successfully read CD!">读入 CD 成功</entry>
+	<entry id="4006" string="Successfully read CD!">读入 CD 成功！</entry>
 	<entry id="4007" string="Save entry">保存项目</entry>
 	<entry id="4008" string="Various artists">合辑</entry>
 	<entry id="4009" string="Data track">数据轨段</entry>
@@ -197,7 +197,7 @@
 	<entry id="4011" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错.</entry>
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错。</entry>
 	  <entry id="4051" string="Please fill all fields and track titles before submitting.">请填入所有字段和音轨标题后再提交。</entry>
 	</section>
       </section>
@@ -205,19 +205,19 @@
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB 查询</entry>
 	<entry id="4101" string="Info">信息</entry>
-	<entry id="4102" string="No freedb entry for this disk.">没有此光盘的 freedb 项目</entry>
+	<entry id="4102" string="No freedb entry for this disk.">没有此光盘的 freedb 项目。</entry>
 	<entry id="4103" string="Connecting to freedb server at">正在连接 freedb 服务器</entry>
 	<entry id="4104" string="Requesting CD information">正在索取 CD 信息</entry>
 	<entry id="4105" string="No exact matches found">未找到相匹配的项目</entry>
 	<entry id="4106" string="Multiple matches found">找到多个匹配的项目</entry>
 	<entry id="4107" string="Matches">匹配项目</entry>
 	<entry id="4108" string="Select the entry that best fits your CD:">请选择最适合您 CD 的项目：</entry>
-	<entry id="4109" string="Would you like to perform this query again later?">您想要稍后再执行一次本查询吗?</entry>
+	<entry id="4109" string="Would you like to perform this query again later?">您想要稍后再执行一次本查询吗？</entry>
 	<entry id="4110" string="none">无</entry>
 	<entry id="4111" string="Preview">预览</entry>
 
 	<section name="Errors">
-	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错.</entry>
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错。</entry>
 	</section>
       </section>
 
@@ -276,7 +276,7 @@
 	<entry id="5111" string="Encode to single file">编码为单独文件</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">输出目录不存在！您要创建此目录吗?</entry>
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">输出目录不存在！您要创建此目录吗？</entry>
 	</section>
       </section>
 
@@ -349,8 +349,8 @@
 
     <section name="About">
       <entry id="6000" string="About %1">关于 %1</entry>
-      <entry id="6001" string="Translated by %1.">翻译 %1</entry>
-      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">本程序遵照 GNU 通用公共许可证(GPL) 进行分发</entry>
+      <entry id="6001" string="Translated by %1.">翻译 %1。</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">本程序遵照 GNU 通用公共许可证(GPL) 进行分发。</entry>
     </section>
 
     <section name="Updates">
@@ -371,7 +371,7 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">编码进程正在运行！ 你确定要退出吗?</entry>
+      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">编码进程正在运行！ 你确定要退出吗？</entry>
       <entry id="7001" string="Currently encoding">正在编码</entry>
       <entry id="7002" string="Cannot change settings while encoding!">不能在编码过程中改变设置！</entry>
       <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">不能加载 ASPI 驱动器！ 不能进行 CD 翻录！</entry>
@@ -575,7 +575,7 @@
 
 	<section name="Expert">
 	  <entry id="34300" string="Apodization">切趾</entry>
-	  <entry id="34301" string="Apodization function(s):">切趾函数</entry>
+	  <entry id="34301" string="Apodization function(s):">切趾函数：</entry>
 	  <entry id="34302" string="Note:">注意：</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">您可以指定多个函数，每个函数使用分号隔开。</entry>
 	  <entry id="34304" string="Linear predictor">线性预测器</entry>
