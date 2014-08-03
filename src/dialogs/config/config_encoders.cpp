@@ -55,6 +55,11 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	button_config	= new Button(i18n->TranslateString("Configure encoder"), NIL, Point(412, 11), Size(130, 0));
 	button_config->onAction.Connect(&ConfigureEncoders::ConfigureEncoder, this);
 
+	button_config->SetWidth(Math::Max(80, button_config->GetUnscaledTextWidth() + 14));
+	button_config->SetX(542 - button_config->GetWidth());
+
+	combo_encoder->SetWidth(524 - button_config->GetWidth());
+
 	group_encoder->Add(combo_encoder);
 	group_encoder->Add(button_config);
 

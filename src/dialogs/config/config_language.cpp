@@ -49,7 +49,7 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 	btn_edit->onAction.Connect(&ConfigureLanguage::EditLanguageFile, this);
 
 	btn_edit->SetWidth(Math::Max(80, btn_edit->GetUnscaledTextWidth() + 14));
-	btn_edit->SetX(528 - btn_edit->GetUnscaledTextWidth());
+	btn_edit->SetX(542 - btn_edit->GetWidth());
 
 	combo_language->SetWidth(525 - text_language->GetUnscaledTextWidth());
 
