@@ -621,6 +621,12 @@
 	<entry id="40015" string="Quality">Chất lượng</entry>
 	<entry id="40021" string="Options">Tùy chọn</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format:">Định dạng tập tin:</entry>
+	<entry id="41002" string="Audio format:">Định dạng audio:</entry>
+	<entry id="41003" string="mono">mono</entry>
+      </section>
     </section>
 
     <section name="Extensions">

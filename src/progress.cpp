@@ -79,7 +79,8 @@ Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 		else				      totalSamples += (240 * trackInfo.GetFormat().rate);
 	}
 
-	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "wave-out") totalSamples *= 2;
+	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "wave-enc" &&
+																	 config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "sndfile-enc") totalSamples *= 2;
 }
 
 Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInfo)

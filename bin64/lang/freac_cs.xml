@@ -711,6 +711,12 @@
 	<entry id="40018" string="Complexity:">Komplexní:</entry>
 	<entry id="40021" string="Options">Volby</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format:">Formát souboru:</entry>
+	<entry id="41002" string="Audio format:">Audio formát:</entry>
+	<entry id="41003" string="mono">mono</entry>
+      </section>
     </section>
 
     <section name="Extensions">

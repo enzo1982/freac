@@ -85,6 +85,14 @@ Error BonkEnc::JobConvert::Perform()
 	Bool	 removeProcessedTracks = config->GetIntValue(Config::CategorySettingsID, Config::SettingsRemoveTracksID, Config::SettingsRemoveTracksDefault);
 	Bool	 addEncodedTracks      = config->GetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, Config::SettingsAddEncodedTracksDefault);
 
+#ifdef __APPLE__
+	Int	 sndFileFormat	       = config->GetIntValue("SndFile", "Format", 0x020000);
+	Int	 sndFileSubFormat      = config->GetIntValue("SndFile", "SubFormat", 0x000000);
+#else
+	Int	 sndFileFormat	       = config->GetIntValue("SndFile", "Format", 0x010000);
+	Int	 sndFileSubFormat      = config->GetIntValue("SndFile", "SubFormat", 0x000000);
+#endif
+
 	/* Find system byte order.
 	 */
 	Int	 systemByteOrder       = CPU().GetEndianness() == EndianLittle ? BYTE_INTEL : BYTE_RAW;
@@ -237,7 +245,7 @@ Error BonkEnc::JobConvert::Perform()
 
 		/* Setup playlist file name and single file encoder.
 		 */
-		if (encodedTracks == 0 && (encodeOnTheFly || selectedEncoderID == "wave-out" || mode == CONVERTER_MODE_DECODE))
+		if (encodedTracks == 0 && (encodeOnTheFly || selectedEncoderID == "wave-enc" || selectedEncoderID == "sndfile-enc" || mode == CONVERTER_MODE_DECODE))
 		{
 			playlist_filename = GetPlaylistFileName(trackInfo);
 
@@ -336,7 +344,7 @@ Error BonkEnc::JobConvert::Perform()
 		 */
 		if (!encodeOnTheFly)
 		{
-			if (selectedEncoderID != "wave-out")
+			if (selectedEncoderID != "wave-enc" && selectedEncoderID != "sndfile-enc")
 			{
 				if (mode == CONVERTER_MODE_DECODE) mode = CONVERTER_MODE_ENCODE;
 				else				   mode = CONVERTER_MODE_DECODE;
@@ -344,7 +352,15 @@ Error BonkEnc::JobConvert::Perform()
 
 			if (mode == CONVERTER_MODE_DECODE)
 			{
-				activeEncoderID = "wave-out";
+				activeEncoderID = "wave-enc";
+
+				if (!boca.ComponentExists("wave-enc"))
+				{
+					activeEncoderID = "sndfile-enc";
+
+					config->SetIntValue("SndFile", "Format", 0x010000);
+					config->SetIntValue("SndFile", "SubFormat", 0x000000);
+				}
 
 				out_filename.Append(".wav");
 			}
@@ -507,6 +523,14 @@ Error BonkEnc::JobConvert::Perform()
 
 		progress->PauseTotalProgress();
 		progress->FinishTrackProgressValues(trackInfo);
+
+		/* Reset SndFile configuration after decoding.
+		 */
+		if (mode == CONVERTER_MODE_DECODE && !boca.ComponentExists("wave-enc"))
+		{
+			config->SetIntValue("SndFile", "Format", sndFileFormat);
+			config->SetIntValue("SndFile", "SubFormat", sndFileSubFormat);
+		}
 
 		/* Delete input file if requested or not in on-the-fly mode.
 		 */

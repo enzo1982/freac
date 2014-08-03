@@ -776,6 +776,14 @@
 	<entry id="40022" string="Enable discontinous transmission">Permitir transmisión discontinua</entry>
 	<entry id="40023" string="Expected packet loss:">Pérdida de paquete esperada:</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41000" string="Output format">Formato de salida</entry>
+	<entry id="41001" string="File format:">Formato de archivo:</entry>
+	<entry id="41002" string="Audio format:">Formato de audio:</entry>
+	<entry id="41003" string="mono">mono</entry>
+	<entry id="41004" string="auto select">autoselección</entry>
+      </section>
     </section>
 
     <section name="Extensions">

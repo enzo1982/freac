@@ -633,6 +633,12 @@
 	<entry id="40015" string="Quality">Якість</entry>
 	<entry id="40021" string="Options">Налаштування</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format:">Файловий формат:</entry>
+	<entry id="41002" string="Audio format:">Аудіо-формат:</entry>
+	<entry id="41003" string="mono">моно</entry>
+      </section>
     </section>
 
     <section name="Extensions">

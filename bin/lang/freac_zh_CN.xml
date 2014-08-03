@@ -634,6 +634,12 @@
 	<entry id="40015" string="Quality">品质</entry>
 	<entry id="40021" string="Options">选项</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format:">文件格式：</entry>
+	<entry id="41002" string="Audio format:">音频格式：</entry>
+	<entry id="41003" string="mono">单声道</entry>
+      </section>
     </section>
 
     <section name="Extensions">

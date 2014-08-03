@@ -785,6 +785,18 @@
 	<entry id="40022" string="Enable discontinous transmission">Discontinous Transmission aktivieren</entry>
 	<entry id="40023" string="Expected packet loss:">Erwarteter Paketverlust:</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41000" string="Output format">Ausgabeformat</entry>
+	<entry id="41001" string="File format:">Dateiformat:</entry>
+	<entry id="41002" string="Audio format:">Audioformat:</entry>
+	<entry id="41003" string="mono">Mono</entry>
+	<entry id="41004" string="auto select">automatische Auswahl</entry>
+
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format.">Konnte kein passendes Audioformat finden.</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">Ausgewähltes Audioformat kann nicht verwendet werden.</entry>
+	</section>
     </section>
 
     <section name="Extensions">

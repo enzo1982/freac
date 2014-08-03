@@ -785,6 +785,14 @@
 	<entry id="40022" string="Enable discontinous transmission">Разрешить непрерывную передачу</entry>
 	<entry id="40023" string="Expected packet loss:">Ожидаемая потеря пакетов:</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41000" string="Output format">Выходной формат</entry>
+	<entry id="41001" string="File format:">Тип файла:</entry>
+	<entry id="41002" string="Audio format:">Звуковой формат:</entry>
+	<entry id="41003" string="mono">моно</entry>
+	<entry id="41004" string="auto select">автовыбор</entry>
+      </section>
     </section>
 
     <section name="Extensions">

@@ -47,7 +47,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Juni 2014)
+	Version 1.1 CVS (Juli 2014)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -80,6 +80,7 @@ Geschichte
 		- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
 		- Unterstützung für ID3v1-Tags in AAC-Dateien hinzugefügt
 		- Unterstützung für MP3-Dekodierung ohne Unterbrechungen hinzugefügt
+		- Unterstützung für RF64- und Wave64-Dateien hinzugefügt
 		- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO- und Cart-Chunks)
 		- Unterstützung für Ogg FLAC-Dateien hinzugefügt
 		- Unterstützung für Wildcards in freaccmd-Parametern hinzugefügt
@@ -148,8 +149,8 @@ Geschichte
 		- FAAC auf Version 1.28 aktualisiert
 		- FAAD2 suf Version 2.7 aktualisiert
 		- LAME suf Version 3.99.5 aktualisiert
-		- Vorbis auf aoTuV Beta 6.03 aktualisiert
-		- Ogg-Bibliothek auf Version 1.3.1 aktualisiert
+		- Vorbis auf aoTuV Beta 6.03 (2014) aktualisiert
+		- Ogg-Bibliothek auf Version 1.3.2 aktualisiert
 		- CDRip auf Version 1.24 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0.0
 		- Viele weitere Korrekturen
@@ -160,10 +161,10 @@ Voraussetzungen
 	Voraussetzungen zum Ausführen der Binärpakete:
 
 		Unterstützte Betriebsysteme:
-			- Windows 2000/XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
+			- Windows XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
 			- Mac OS X Leopard oder neuer
 			- Linux (die meisten modernen Distributionen sollten funktionieren)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 9.1)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 10.0)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
@@ -171,14 +172,14 @@ Voraussetzungen
 			- QNX (getestet unter QNX 6.5)
 
 		Minimale Hardwarevoraussetzungen:
-			- Intel Pentium 4, PowerPC G4 oder ARMv5 Prozessor
-			- 256 MB RAM
-			- 50 MB freier Festplattenplatz
+			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv5 Prozessor
+			- 512 MB RAM
+			- 100 MB freier Festplattenplatz
 
 		Empfohlene Hardwarespezifikationen:
-			- Intel Core i3 Prozessor
+			- Intel Core i3 oder AMD Phenom II Prozessor
 			- 1 GB RAM
-			- 10 GB freier Festplattenplatz
+			- 1 GB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 

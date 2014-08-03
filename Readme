@@ -47,7 +47,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (June 2014)
+	Version 1.1 CVS (July 2014)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -80,6 +80,7 @@ History
 		- added support for MCDI frame in ID3v2 tags
 		- added support for ID3v1 tags in AAC files
 		- added support for gapless MP3 decoding
+		- added support for RF64 and Wave64 files
 		- added RIFF tagging support (using LIST INFO and Cart chunks)
 		- added support for Ogg FLAC files
 		- added support for wildcards in arguments to freaccmd
@@ -148,8 +149,8 @@ History
 		- upgraded FAAC to version 1.28
 		- upgraded FAAD2 to version 2.7
 		- upgraded LAME to version 3.99.5
-		- upgraded Vorbis to aoTuV beta 6.03
-		- upgraded Ogg library to version 1.3.1
+		- upgraded Vorbis to aoTuV beta 6.03 (2014)
+		- upgraded Ogg library to version 1.3.2
 		- upgraded CDRip to version 1.24 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0.0
 		- lots of other fixes
@@ -160,10 +161,10 @@ Requirements
 	Requirements for running the binaries:
 
 		Supported operating systems:
-			- Windows 2000/XP/Vista/7/8.x (older Windows version might work with some limitations)
+			- Windows XP/Vista/7/8.x (older Windows version might work with some limitations)
 			- Mac OS X Leopard or later
 			- Linux (most modern distributions should work)
-			- FreeBSD/PC-BSD (tested on FreeBSD 9.1)
+			- FreeBSD/PC-BSD (tested on FreeBSD 10.0)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
 			- OpenBSD (tested on OpenBSD 5.3)
 			- Solaris (tested on Solaris 11)
@@ -171,14 +172,14 @@ Requirements
 			- QNX (tested on QNX 6.5)
 
 		Minimum hardware requirements:
-			- Intel Pentium 4, PowerPC G4 or ARMv5 CPU
-			- 256 MB RAM
-			- 50 MB free disk space
+			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 or ARMv5 CPU
+			- 512 MB RAM
+			- 100 MB free disk space
 
 		Recommended hardware specs:
-			- Intel Core i3 CPU
+			- Intel Core i3 or AMD Phenom II CPU
 			- 1 GB RAM
-			- 10 GB free disk space
+			- 1 GB free disk space
 
 	Additional requirements for compiling the sources:
 

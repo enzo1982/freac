@@ -626,6 +626,12 @@
 	<entry id="40015" string="Quality">Kwaliteit</entry>
 	<entry id="40021" string="Options">Opsies</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format:">Lêerformaat:</entry>
+	<entry id="41002" string="Audio format:">Oudioformaat:</entry>
+	<entry id="41003" string="mono">mono</entry>
+      </section>
     </section>
 
     <section name="Extensions">

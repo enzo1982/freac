@@ -282,6 +282,14 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	else if (encoderID == "WAVE")
 	{
 		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "wave-enc");
+
+		if (!boca.ComponentExists("wave-enc"))
+		{
+			config->SetIntValue("SndFile", "Format", 0x010000);
+			config->SetIntValue("SndFile", "SubFormat", 0x000000);
+
+			config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "sndfile-enc");
+		}
 	}
 	else
 	{

@@ -785,6 +785,19 @@
 	<entry id="40022" string="Enable discontinous transmission"/>
 	<entry id="40023" string="Expected packet loss:"/>
       </section>
+
+      <section name="SndFile">
+	<entry id="41000" string="Output format"/>
+	<entry id="41001" string="File format:"/>
+	<entry id="41002" string="Audio format:"/>
+	<entry id="41003" string="mono"/>
+	<entry id="41004" string="auto select"/>
+
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format."/>
+	  <entry id="41101" string="Unable to use selected audio format."/>
+	</section>
+      </section>
     </section>
 
     <section name="Extensions">

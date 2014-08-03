@@ -635,6 +635,12 @@
 	<entry id="40015" string="Quality">Kvalitet</entry>
 	<entry id="40021" string="Options">Inställningar</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format:">Filformat:</entry>
+	<entry id="41002" string="Audio format:">Ljudformat:</entry>
+	<entry id="41003" string="mono">mono</entry>
+      </section>
     </section>
 
     <section name="Extensions">

@@ -633,6 +633,12 @@
 	<entry id="40015" string="Quality">Kvaliteta</entry>
 	<entry id="40021" string="Options">Opcije</entry>
       </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format:">Format datoteke:</entry>
+	<entry id="41002" string="Audio format:">Audio format:</entry>
+	<entry id="41003" string="mono">mono</entry>
+      </section>
     </section>
 
     <section name="Extensions">
