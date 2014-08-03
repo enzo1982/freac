@@ -685,7 +685,11 @@ Void BonkEnc::JobConvert::Stop()
 
 	stopConversion = True;
 
-	while (conversionRunning) S::System::System::Sleep(10);
+	/* Wait for conversion thread to exit.
+	 */
+	System::EventProcessor	 event;
+
+	while (conversionRunning) event.ProcessNextEvent();
 }
 
 Void BonkEnc::JobConvert::UpdateProgress(Int progressValue, Int secondsLeft)
