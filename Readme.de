@@ -47,7 +47,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (Juli 2014)
+	Version 1.1 CVS (August 2014)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -87,6 +87,7 @@ Geschichte
 		- Unterstützung für Ausgabe in einzelne Datei mit freaccmd hinzugefügt
 		- Unterstützung für große Schriften hinzugefügt
 		- Standardausgabeverzeichnis auf Ordner "Eigene Musik" geändert
+		- Zusätzliche, von Winamp 5.6 definierte Genres hinzugefügt
 		- Vorlage <disc> hinzugefügt
 		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Vorlage <filetype> hinzugefügt
