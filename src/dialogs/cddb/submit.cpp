@@ -996,14 +996,17 @@ String BonkEnc::cddbSubmitDlg::GetCDDBGenre(const String &genre)
 	if (genre == "Folk")			cddbGenre = "folk";
 	if (genre == "Folk/Rock")		cddbGenre = "folk";
 	if (genre == "Folklore")		cddbGenre = "folk";
+	if (genre == "Garage Rock")		cddbGenre = "rock";
 	if (genre == "Gothic Rock")		cddbGenre = "rock";
 	if (genre == "Hard Rock")		cddbGenre = "rock";
 	if (genre == "Heavy Metal")		cddbGenre = "rock";
+	if (genre == "Indie Rock")		cddbGenre = "rock";
 	if (genre == "Instrumental Pop")	cddbGenre = "rock";
 	if (genre == "Instrumental Rock")	cddbGenre = "rock";
 	if (genre == "Jazz")			cddbGenre = "jazz";
 	if (genre == "Jazz+Funk")		cddbGenre = "jazz";
 	if (genre == "JPop")			cddbGenre = "rock";
+	if (genre == "Krautrock")		cddbGenre = "rock";
 	if (genre == "Metal")			cddbGenre = "rock";
 	if (genre == "National Folk")		cddbGenre = "folk";
 	if (genre == "Native American")		cddbGenre = "folk";
