@@ -396,11 +396,11 @@
 	<entry id="5523" string="Preserve Replay Gain information">Запазване на информация за силата на звука</entry>
       </section>
 
-      <section name="Interface">
+      <section name="Joblist">
 	<entry id="5600" string="Joblist">Списък със задачи</entry>
 	<entry id="5601" string="Columns:">Колони:</entry>
-	<entry id="5602" string="Up">Нагоре</entry>
-	<entry id="5603" string="Down">Надолу</entry>
+	<entry id="5604" string="Up">Нагоре</entry>
+	<entry id="5605" string="Down">Надолу</entry>
       </section>
     </section>
 

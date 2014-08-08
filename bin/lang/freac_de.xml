@@ -405,11 +405,28 @@
 	<entry id="5523" string="Preserve Replay Gain information">Replay Gain-Informationen beibehalten</entry>
       </section>
 
-      <section name="Interface">
+      <section name="Joblist">
 	<entry id="5600" string="Joblist">Jobliste</entry>
 	<entry id="5601" string="Columns:">Spalten:</entry>
-	<entry id="5602" string="Up">Hoch</entry>
-	<entry id="5603" string="Down">Runter</entry>
+	<entry id="5602" string="Name">Name</entry>
+	<entry id="5603" string="Description">Beschreibung</entry>
+	<entry id="5604" string="Up">Hoch</entry>
+	<entry id="5605" string="Down">Runter</entry>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist">Künsler</entry>
+	  <entry id="5651" string="Track title">Titel</entry>
+	  <entry id="5652" string="Track genre">Titelgenre</entry>
+	  <entry id="5653" string="Album title">Albumtitel</entry>
+	  <entry id="5654" string="Disc number">CD-Nummer</entry>
+	  <entry id="5655" string="Track number">Tracknummer</entry>
+	  <entry id="5656" string="Track rating">Titelbewertung</entry>
+	  <entry id="5657" string="Track length">Tracklänge</entry>
+	  <entry id="5658" string="Track size">Trackgröße</entry>
+	  <entry id="5659" string="File name">Dateiname</entry>
+	  <entry id="5660" string="File type">Dateityp</entry>
+	  <entry id="5661" string="Output file name">Ausgabedateiname</entry>
+	</section>
       </section>
     </section>
 

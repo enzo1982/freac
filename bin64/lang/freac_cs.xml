@@ -384,11 +384,11 @@
 	<entry id="5523" string="Preserve Replay Gain information">Zachovat Replay Gain-informace</entry>
       </section>
 
-      <section name="Interface">
+      <section name="Joblist">
 	<entry id="5600" string="Joblist">Seznam úloh</entry>
 	<entry id="5601" string="Columns:">Sloupce:</entry>
-	<entry id="5602" string="Up">Nahoru</entry>
-	<entry id="5603" string="Down">Dolů</entry>
+	<entry id="5604" string="Up">Nahoru</entry>
+	<entry id="5605" string="Down">Dolů</entry>
       </section>
     </section>
 

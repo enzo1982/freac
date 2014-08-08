@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,10 +11,7 @@
 #ifndef H_FREAC_UTILITIES
 #define H_FREAC_UTILITIES
 
-#include <smooth.h>
-
-using namespace smooth;
-using namespace smooth::GUI;
+#include <boca.h>
 
 namespace BonkEnc
 {
@@ -27,6 +24,11 @@ namespace BonkEnc
 			static String	 ReplaceIncompatibleChars(const String &, Bool);
 			static String	 GetAbsoluteDirName(const String &);
 			static String	 NormalizeFileName(const String &);
+
+			static String	 GetOutputFileName(const BoCA::Track &);
+			static String	 GetSingleOutputFileName(const BoCA::Track &);
+
+			static String	 GetPlaylistFileName(const BoCA::Track &);
 
 			static String	 GetInstallDrive();
 

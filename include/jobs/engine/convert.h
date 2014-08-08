@@ -36,11 +36,6 @@ namespace BonkEnc
 
 			Bool								 CheckSingleFileSampleFormat();
 			BoCA::Track							 ConsolidateTrackInfo();
-
-			String								 GetPlaylistFileName(const BoCA::Track &);
-
-			String								 GetOutputFileName(const BoCA::Track &);
-			String								 GetSingleOutputFileName(const BoCA::Track &);
 		public:
 			static Bool							 IsConverting()	{ return conversionRunning; }
 			static Bool							 IsPaused()	{ return conversionPaused;  }

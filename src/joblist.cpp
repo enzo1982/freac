@@ -766,7 +766,12 @@ ListEntry *BonkEnc::JobList::GetEntryByTrack(const Track &track) const
 
 Void BonkEnc::JobList::OnChangeConfigurationSettings()
 {
-	String headerTabsConfig = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault);
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+	String	 headerTabsConfig = String(config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault)).
+				    Append(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault)).
+				    Append(String::FromInt(config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault))).
+				    Append(String::FromInt(config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault)));
 
 	if (headerTabsConfig.ComputeCRC32() != headerTabsHash)
 	{
@@ -815,10 +820,12 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 
 Void BonkEnc::JobList::AddHeaderTabs()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
 	RemoveAllTabs();
 
-	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
-	const Array<String>	&sizes	= BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
+	const Array<String>	&fields = config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
+	const Array<String>	&sizes	= config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
 
 	for (Int i = 0; i < fields.Length(); i++)
 	{
@@ -827,17 +834,18 @@ Void BonkEnc::JobList::AddHeaderTabs()
 		Int		 tabAlign = OR_LEFT;
 		Int		 tabSize  = (fields.Length() == sizes.Length() ? sizes.GetNth(i).ToInt() : 0);
 
-		if	(field == "<artist>")	{ tabName = "Artist";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
-		else if (field == "<album>")	{ tabName = "Album";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
-		else if (field == "<title>")	{ tabName = "Title";			      tabSize = 0;			      }
-		else if (field == "<genre>")	{ tabName = "Genre";			      tabSize = tabSize <= 0 ? 120 : tabSize; }
-		else if (field == "<disc>")	{ tabName = "Disc"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
-		else if (field == "<track>")	{ tabName = "Track"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
-		else if (field == "<rating>")	{ tabName = "Rating"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<time>")	{ tabName = "Length"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<bytes>")	{ tabName = "Size"; 	 tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<file>")	{ tabName = "File name";		      tabSize = 0;			      }
-		else if (field == "<filetype>")	{ tabName = "File type";		      tabSize = tabSize <= 0 ?  60 : tabSize; }
+		if	(field == "<artist>")	  { tabName = "Artist";				       tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<album>")	  { tabName = "Album";				       tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<title>")	  { tabName = "Title";				       tabSize = 0;			       }
+		else if (field == "<genre>")	  { tabName = "Genre";				       tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<disc>")	  { tabName = "Disc";		  tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<track>")	  { tabName = "Track";		  tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<rating>")	  { tabName = "Rating";		  tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<time>")	  { tabName = "Length";		  tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<bytes>")	  { tabName = "Size";		  tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<file>")	  { tabName = "File name";			       tabSize = 0;			       }
+		else if (field == "<filetype>")	  { tabName = "File type";			       tabSize = tabSize <= 0 ?  60 : tabSize; }
+		else if (field == "<outputfile>") { tabName = "Output file name";		       tabSize = tabSize <= 0 ? 240 : tabSize; }
 
 		BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -863,32 +871,40 @@ Void BonkEnc::JobList::UpdateTextLine()
 
 String BonkEnc::JobList::GetEntryText(const Track &track) const
 {
+	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
 
 	const Info		&info = track.GetInfo();
-	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
+	const Array<String>	&fields = config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
 	String			 jlEntry;
 
 	foreach (const String &field, fields)
 	{
-		if	(field == "<artist>")	jlEntry.Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"));
-		else if (field == "<album>")	jlEntry.Append(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album"));
-		else if (field == "<title>")	jlEntry.Append(info.title.Length()  > 0 ? info.title  : i18n->TranslateString("unknown title"));
-		else if (field == "<genre>")	jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : i18n->TranslateString("unknown genre"));
-		else if (field == "<disc>")	jlEntry.Append(info.disc > 0 ? (info.disc < 10 ? String("0").Append(String::FromInt(info.disc)) : String::FromInt(info.disc)) : String());
-		else if (field == "<track>")	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String());
-		else if (field == "<rating>")	jlEntry.Append(info.rating > 0 ? (Setup::enableUnicode ? String().FillN(0x2605, Math::Round(info.rating / 25.0) + 1).Append(String().FillN(0x2606, 5 - (Math::Round(info.rating / 25.0) + 1))) : String::FromInt(Math::Round(info.rating / 25.0) + 1).Append("/5")) : String());
-		else if (field == "<time>")	jlEntry.Append(track.GetLengthString());
-		else if (field == "<bytes>")	jlEntry.Append(track.GetFileSizeString());
-		else if (field == "<file>")	jlEntry.Append(track.origFilename);
+		if	(field == "<artist>")	  jlEntry.Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"));
+		else if (field == "<album>")	  jlEntry.Append(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album"));
+		else if (field == "<title>")	  jlEntry.Append(info.title.Length()  > 0 ? info.title  : i18n->TranslateString("unknown title"));
+		else if (field == "<genre>")	  jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : i18n->TranslateString("unknown genre"));
+		else if (field == "<disc>")	  jlEntry.Append(info.disc > 0 ? (info.disc < 10 ? String("0").Append(String::FromInt(info.disc)) : String::FromInt(info.disc)) : String());
+		else if (field == "<track>")	  jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String());
+		else if (field == "<rating>")	  jlEntry.Append(info.rating > 0 ? (Setup::enableUnicode ? String().FillN(0x2605, Math::Round(info.rating / 25.0) + 1).Append(String().FillN(0x2606, 5 - (Math::Round(info.rating / 25.0) + 1))) : String::FromInt(Math::Round(info.rating / 25.0) + 1).Append("/5")) : String());
+		else if (field == "<time>")	  jlEntry.Append(track.GetLengthString());
+		else if (field == "<bytes>")	  jlEntry.Append(track.GetFileSizeString());
+		else if (field == "<file>")	  jlEntry.Append(track.origFilename);
 
 		else if (field == "<filetype>")
 		{
 			if	(track.origFilename.Find("://") >= 0) jlEntry.Append(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
 			else if (track.origFilename.Find(".")   >= 0) jlEntry.Append(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+		}
+
+		else if (field == "<outputfile>")
+		{
+			String	 fileName = Utilities::GetOutputFileName(track);
+
+			jlEntry.Append(fileName.Tail(fileName.Length() - config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault).Length()));
 		}
 
 		jlEntry.Append("\t");

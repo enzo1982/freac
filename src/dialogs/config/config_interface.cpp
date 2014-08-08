@@ -16,14 +16,16 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	i18n->SetContext("Configuration::Interface");
+	i18n->SetContext("Configuration::Joblist");
 
-	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 120));
+	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 136));
 
-	text_fields	= new Text(i18n->TranslateString("Columns:"), Point(9, 13));
+	text_fields	= new Text(i18n->TranslateString("Columns:"), Point(9, 12));
 
 	list_fields	= new ListBox(Point(16 + text_fields->GetUnscaledTextWidth(), 10), group_joblist->GetSize() - Size(114 + text_fields->GetUnscaledTextWidth(), 20));
 	list_fields->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
+	list_fields->AddTab(i18n->TranslateString("Name"), 100);
+	list_fields->AddTab(i18n->TranslateString("Description"));
 	list_fields->onSelectEntry.Connect(&ConfigureInterface::OnSelectJoblistField, this);
 
 	/* Connect OnSelectJoblistField to check buttons state.
@@ -63,48 +65,46 @@ BonkEnc::ConfigureInterface::~ConfigureInterface()
 
 Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 {
-	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	Bool	 haveArtist   = False;
-	Bool	 haveAlbum    = False;
-	Bool	 haveTitle    = False;
-	Bool	 haveGenre    = False;
-	Bool	 haveDisc     = False;
-	Bool	 haveTrack    = False;
-	Bool	 haveRating   = False;
-	Bool	 haveTime     = False;
-	Bool	 haveBytes    = False;
-	Bool	 haveFile     = False;
-	Bool	 haveFileType = False;
+	i18n->SetContext("Configuration::Joblist::Columns");
+
+	Array<String>	 entryTexts;
+	Array<Bool>	 entryPresent;
+
+	entryTexts.Add(String("<artist>\t").Append(i18n->TranslateString("Track artist")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<title>\t").Append(i18n->TranslateString("Track title")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<genre>\t").Append(i18n->TranslateString("Track genre")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<album>\t").Append(i18n->TranslateString("Album title")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<disc>\t").Append(i18n->TranslateString("Disc number")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<track>\t").Append(i18n->TranslateString("Track number")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<rating>\t").Append(i18n->TranslateString("Track rating")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<time>\t").Append(i18n->TranslateString("Track length")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<bytes>\t").Append(i18n->TranslateString("Track size")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<file>\t").Append(i18n->TranslateString("File name")));		    entryPresent.Add(False);
+	entryTexts.Add(String("<filetype>\t").Append(i18n->TranslateString("File type")));	    entryPresent.Add(False);
+	entryTexts.Add(String("<outputfile>\t").Append(i18n->TranslateString("Output file name"))); entryPresent.Add(False);
+
+	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
 	foreach (const String &field, fields)
 	{
-		if	(field == "<artist>")	{ list_fields->AddEntry(field)->SetMark(True); haveArtist   = True; }
-		else if (field == "<album>")	{ list_fields->AddEntry(field)->SetMark(True); haveAlbum    = True; }
-		else if (field == "<title>")	{ list_fields->AddEntry(field)->SetMark(True); haveTitle    = True; }
-		else if (field == "<genre>")	{ list_fields->AddEntry(field)->SetMark(True); haveGenre    = True; }
-		else if (field == "<disc>")	{ list_fields->AddEntry(field)->SetMark(True); haveDisc	    = True; }
-		else if (field == "<track>")	{ list_fields->AddEntry(field)->SetMark(True); haveTrack    = True; }
-		else if (field == "<rating>")	{ list_fields->AddEntry(field)->SetMark(True); haveRating   = True; }
-		else if (field == "<time>")	{ list_fields->AddEntry(field)->SetMark(True); haveTime     = True; }
-		else if (field == "<bytes>")	{ list_fields->AddEntry(field)->SetMark(True); haveBytes    = True; }
-		else if (field == "<file>")	{ list_fields->AddEntry(field)->SetMark(True); haveFile	    = True; }
-		else if (field == "<filetype>")	{ list_fields->AddEntry(field)->SetMark(True); haveFileType = True; }
+		for (Int i = 0; i < entryTexts.Length(); i++)
+		{
+			const String	&entryText = entryTexts.GetNth(i);
+
+			if (entryText.StartsWith(field)) { list_fields->AddEntry(entryText)->SetMark(True); entryPresent.SetNth(i, True); }
+		}
 	}
 
 	String::ExplodeFinish();
 
-	if (!haveArtist)   list_fields->AddEntry("<artist>")->SetMark(False);
-	if (!haveAlbum)    list_fields->AddEntry("<album>")->SetMark(False);
-	if (!haveTitle)    list_fields->AddEntry("<title>")->SetMark(False);
-	if (!haveGenre)    list_fields->AddEntry("<genre>")->SetMark(False);
-	if (!haveDisc)	   list_fields->AddEntry("<disc>")->SetMark(False);
-	if (!haveTrack)    list_fields->AddEntry("<track>")->SetMark(False);
-	if (!haveRating)   list_fields->AddEntry("<rating>")->SetMark(False);
-	if (!haveTime)     list_fields->AddEntry("<time>")->SetMark(False);
-	if (!haveBytes)    list_fields->AddEntry("<bytes>")->SetMark(False);
-	if (!haveFile)     list_fields->AddEntry("<file>")->SetMark(False);
-	if (!haveFileType) list_fields->AddEntry("<filetype>")->SetMark(False);
+	for (Int i = 0; i < entryTexts.Length(); i++)
+	{
+		const String	&entryText = entryTexts.GetNth(i);
+
+		if (!entryPresent.GetNth(i)) list_fields->AddEntry(entryText)->SetMark(False);
+	}
 }
 
 Void BonkEnc::ConfigureInterface::OnSelectJoblistField()
@@ -136,9 +136,10 @@ Int BonkEnc::ConfigureInterface::SaveSettings()
 
 	for (Int i = 0; i < list_fields->Length(); i++)
 	{
-		ListEntry	*entry = list_fields->GetNthEntry(i);
+		ListEntry	*entry	   = list_fields->GetNthEntry(i);
+		const String	&entryText = entry->GetText();
 
-		if (entry->IsMarked()) fields = fields.Append(fields != NIL ? "," : NIL).Append(entry->GetText());
+		if (entry->IsMarked()) fields = fields.Append(fields != NIL ? "," : NIL).Append(entryText.Head(entryText.Find("\t")));
 	}
 
 	BoCA::Config::Get()->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, fields);

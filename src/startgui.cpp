@@ -440,12 +440,30 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	BoCA::Config	*config  = BoCA::Config::Get();
 	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
 
+	/* Save joblist tab field sizes.
+	 */
+	String	 fieldSizes;
+
+	for (Int i = 0; i < joblist->GetNOfTabs(); i++)
+	{
+		if (i > 0) fieldSizes.Append(",");
+
+		if (joblist->GetNthTabWidth(i) <= 0) fieldSizes.Append("*");
+		else				     fieldSizes.Append(String::FromInt(joblist->GetNthTabWidth(i)));
+	}
+
+	config->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
+
+	/* Show configuration dialog.
+	 */
 	ConfigDialog	*dialog	 = new ConfigDialog();
 
 	dialog->ShowDialog();
 
 	DeleteObject(dialog);
 
+	/* Update widgets and notify components.
+	 */
 	Surface		*surface = mainWnd->GetDrawSurface();
 
 	surface->StartPaint(mainWnd->GetVisibleArea());

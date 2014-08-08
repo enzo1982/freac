@@ -405,11 +405,28 @@
 	<entry id="5523" string="Preserve Replay Gain information"/>
       </section>
 
-      <section name="Interface">
+      <section name="Joblist">
 	<entry id="5600" string="Joblist"/>
-	<entry id="5601" string="Columns:"/>
-	<entry id="5602" string="Up"/>
-	<entry id="5603" string="Down"/>
+	<entry id="5601" string="Columns"/>
+	<entry id="5602" string="Name"/>
+	<entry id="5603" string="Description"/>
+	<entry id="5604" string="Up"/>
+	<entry id="5605" string="Down"/>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist"/>
+	  <entry id="5651" string="Track title"/>
+	  <entry id="5652" string="Track genre"/>
+	  <entry id="5653" string="Album title"/>
+	  <entry id="5654" string="Disc number"/>
+	  <entry id="5655" string="Track number"/>
+	  <entry id="5656" string="Track rating"/>
+	  <entry id="5657" string="Track length"/>
+	  <entry id="5658" string="Track size"/>
+	  <entry id="5659" string="File name"/>
+	  <entry id="5660" string="File type"/>
+	  <entry id="5661" string="Output file name"/>
+	</section>
       </section>
     </section>
 
