@@ -86,7 +86,7 @@ endif
 LIB = lib
 
 ifeq ($(BUILD_X86_64),True)
-	ifneq ($(BUILD_OSX),True)
+	ifneq ($(wildcard /usr/lib64),)
 		LIB = lib64
 	endif
 endif
