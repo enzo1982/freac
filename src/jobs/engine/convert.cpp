@@ -711,7 +711,7 @@ Void BonkEnc::JobConvert::Stop()
 
 	/* Wait for conversion thread to exit.
 	 */
-	System::EventProcessor	 event;
+	S::System::EventProcessor	 event;
 
 	while (conversionRunning) event.ProcessNextEvent();
 }
