@@ -50,7 +50,7 @@
     <entry id="37" string="Windows CD Audio Track">פס קול מ AUDIO CD</entry>
     <entry id="38" string="All Files">כל הקבצים</entry>
     <entry id="39" string="You did not select a track!">! לא נבחר קובץ</entry>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">?ההמרה בעבוד, האם  לסיים</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">?ההמרה בעבוד, האם לסיים</entry>
     <entry id="41" string="Currently encoding">ממיר כרגע</entry>
     <entry id="43" string="CDDB query">CDDB בדיקת</entry>
     <entry id="44" string="About %1">על התכנה</entry>
@@ -61,7 +61,7 @@
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">ביטול</entry>
     <entry id="51" string="Encoding Mode">מצב המרה</entry>
-    <entry id="52" string="Variable Bitrate">Bitrate  משתנה</entry>
+    <entry id="52" string="Variable Bitrate">Bitrate משתנה</entry>
     <entry id="53" string="Average Bitrate">Bitrate ממוצע</entry>
     <entry id="54" string="Quality">איכות</entry>
     <entry id="55" string="Encoders">מקודדים</entry>
@@ -78,7 +78,7 @@
     <entry id="66" string="URL">‫URL</entry>
     <entry id="67" string="Information">מידע</entry>
     <entry id="68" string="Select language:">בחר שפת ממשק:</entry>
-    <entry id="69" string="Active CD-ROM drive">בחר כונן  CD-ROM</entry>
+    <entry id="69" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
     <entry id="70" string="Ripper settings">הגדרות ממיר מCD</entry>
     <entry id="72" string="Activate jitter correction">הפעל תיקון טעויות קריאה</entry>
     <entry id="73" string="Swap left/right channel">החלף בין ערוצי שמאל וימין</entry>
@@ -91,7 +91,7 @@
     <entry id="82" string="CRC">CRC</entry>
     <entry id="84" string="Channels">צרוצים</entry>
     <entry id="86" string="Set Copyright bit">הפעל זכויות יוצרים</entry>
-    <entry id="87" string="Enable CRC">אפשר  CRC</entry>
+    <entry id="87" string="Enable CRC">אפשר CRC</entry>
     <entry id="88" string="Set Original bit">קבע BIT מקורי</entry>
     <entry id="89" string="Dual channel encoding">קידוד דו ערוצי</entry>
     <entry id="91" string="Encoder mode">מצב מקודד</entry>
@@ -114,7 +114,7 @@
     <entry id="115" string="better">mejor</entry>
     <entry id="116" string="Auto">אוטומטי</entry>
     <entry id="117" string="Stereo">Stereo</entry>
-    <entry id="118" string="Joint Stereo">ערוצי  Stereo ממוזגים</entry>
+    <entry id="118" string="Joint Stereo">ערוצי Stereo ממוזגים</entry>
     <entry id="119" string="Force Joint Stereo">אלץ מיזוג ערוצים</entry>
     <entry id="120" string="VBR mode">מצב VBR</entry>
     <entry id="121" string="no VBR">ללא VBR</entry>
@@ -175,7 +175,7 @@
     <entry id="227" string="The output folder does not exist! Do you want to create it?">תקית היעד אינה קיימת, האם ליצור אותה?</entry>
     <entry id="228" string="Filename pattern">צורת שם קובץ</entry>
     <entry id="229" string="unknown album">אלבום לא מוכר</entry>
-    <entry id="230" string="Translated by %1.">תורגם ע&quot;י  %1.</entry>
+    <entry id="230" string="Translated by %1.">תורגם ע&quot;י %1.</entry>
     <entry id="231" string="Select all">בחר הכל</entry>
     <entry id="232" string="Select none">בטל כל הבחירות</entry>
     <entry id="233" string="Toggle selection">הפוך בחירה</entry>

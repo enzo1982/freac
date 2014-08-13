@@ -157,7 +157,7 @@
     <entry id="152" string="Info">Информация</entry>
     <entry id="153" string="No freedb entry for this disk.">Няма записи в freedb за този диск</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Възникна грешка при опит за свързване към freedb сървъра.</entry>
-    <entry id="155" string="Connecting to freedb server at">Свързване към  freedb сървъра</entry>
+    <entry id="155" string="Connecting to freedb server at">Свързване към freedb сървъра</entry>
     <entry id="156" string="Requesting CD information">Заявка на информация за CD</entry>
     <entry id="157" string="eMail address:">eMail адрес:</entry>
     <entry id="158" string="Please enter a valid eMail address.">Моля въведете валиден eMail адрес.</entry>

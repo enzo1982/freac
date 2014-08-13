@@ -50,7 +50,7 @@
     <entry id="37" string="Windows CD Audio Track">نافدة مسارت صوت قرص مضغوة</entry>
     <entry id="38" string="All Files">كافة الملفات</entry>
     <entry id="39" string="You did not select a track!">لم تقم بتحديد أي ملف!</entry>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">الترميز لا يزال قيد العمل، هل تريد حقا  إنهائه؟</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">الترميز لا يزال قيد العمل، هل تريد حقا إنهائه؟</entry>
     <entry id="41" string="Currently encoding">الترميز الحالي</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">هذا البرنامج يتم توزيعه وفق لأحكام&#10;من رخصة العمومية العامة (الترخيص).</entry>
     <entry id="43" string="CDDB query">إستعلام قاعدة بيانات قرص مدمج</entry>
@@ -92,7 +92,7 @@
     <entry id="79" string="Full cdparanoia mode">اسلوب كامل العرض لقرص مضغوط</entry>
     <entry id="80" string="Bitrate">معدل بايت</entry>
     <entry id="81" string="Copyright bit">بايت حقوق الؤلف</entry>
-    <entry id="82" string="CRC">التحقق  من التكرار الدوري</entry>
+    <entry id="82" string="CRC">التحقق من التكرار الدوري</entry>
     <entry id="83" string="Original bit">بايت اصلي</entry>
     <entry id="84" string="Channels">القنوات</entry>
     <entry id="85" string="Private bit">بايت خاص</entry>
@@ -245,7 +245,7 @@
     <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">هناك تحديثات جديدة على الانترنت %1 المتاحة!&#10;هل تريد ان ترى قائمة من التحديثات المتوفرة الآن؟</entry>
     <entry id="245" string="There are no updates available at the moment!">لا توجد تحديثات متوفرة في الوقت الراهن!</entry>
     <entry id="246" string="Check for updates at startup">التحقق من التحديثات عند بدء التشغيل</entry>
-    <entry id="247" string="Read CD contents on insert">قراء محتويات  القرص المضغوط عند الإدراج</entry>
+    <entry id="247" string="Read CD contents on insert">قراء محتويات القرص المضغوط عند الإدراج</entry>
     <entry id="248" string="Eject disk after ripping">لفظ القرص بعد الإشتقاق</entry>
     <entry id="249" string="Encode 'On-The-Fly'">الترميز على الطاير</entry>
     <entry id="250" string="Keep ripped Wave files">إبقاء ملفات الصوت المشتقة</entry>
@@ -337,7 +337,7 @@
     <entry id="337" string="Delete original files after encoding">حذف الملف الأصلي بعد الترميز</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">بهذا الخيار سيتم إزالة الملفات الأصلية&#10;من الحاسب الخاص بك بعد عملية الترميز&#10;&#10;هل أنت متأكد تريد تنشيط هذه الوظيفة؟</entry>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">لا يمكن لقاعدة البيانات الحرة لقاعدة بيانات قرص مضغوط أن&#10;تستخدامها عبر بروتوكول النص المتشعب وكلاء للأمام!&#10;&#10;هل تريد تغيير على بروتوكول النص المتشعب؟</entry>
-    <entry id="340" string="Playlists">قائمة  الأغاني</entry>
+    <entry id="340" string="Playlists">قائمة الأغاني</entry>
     <entry id="341" string="Create playlists">إنشاء قائمة الأغاني</entry>
     <entry id="342" string="Create cue sheets">إنشاء بطاقات متلاصقة</entry>
     <entry id="343" string="Use encoder output folder">يستخدم التشفير مجلد الناتج</entry>
@@ -381,7 +381,7 @@
     <entry id="381" string="Apodization">تحليل الطيف</entry>
     <entry id="382" string="Apodization function(s):">وظيفة أو وظائف تحليل الطيف:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">يمكنك تحديد وظائف متعددة مفصولة بفواصل منقوطة</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 يمكن إجراء فحص تلقائي على الانترنت&#10;تحديثات البرنامج عند بدء التشغيل.&#10;&#10;هل ترغب في أن  يبحث عن التحديثات عند بدء التشغيل؟</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 يمكن إجراء فحص تلقائي على الانترنت&#10;تحديثات البرنامج عند بدء التشغيل.&#10;&#10;هل ترغب في أن يبحث عن التحديثات عند بدء التشغيل؟</entry>
     <entry id="385" string="Cannot access input file: %1">%1 لا يمكن فتح ملف المدخل</entry>
     <entry id="386" string="Cannot create output file: %1">%1 لا يمكن إنشاء ملف الناتج</entry>
     <entry id="387" string="File not found">ملف لم يتم العثور عليه</entry>

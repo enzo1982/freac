@@ -273,7 +273,7 @@
     <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Kreiraj playlistu</entry>
     <entry id="271" string="Create cue sheet">Kreiraj listu čekanja</entry>
-    <entry id="272" string="Write ID3v1 tags">Upiši  ID3v1 tag</entry>
+    <entry id="272" string="Write ID3v1 tags">Upiši ID3v1 tag</entry>
     <entry id="273" string="Write ID3v2 tags">Upiši ID3v2 tag</entry>
     <entry id="274" string="Write Vorbis Comment tags">Upiši Vorbis tag komentara</entry>
     <entry id="275" string="Write MP4 metadata info">Upiši MP4 metadata info</entry>

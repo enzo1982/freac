@@ -207,7 +207,7 @@
     <entry id="203" string="Prefer CDDB over CD Text">Lugeda üle CDDB</entry>
     <entry id="204" string="CD options">CD sätted</entry>
     <entry id="205" string="Submitting CD information">Saata info CD kohta</entry>
-    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Ei saa faili avada: %1  Viga: %2</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Ei saa faili avada: %1&#10;&#10;Viga: %2</entry>
     <entry id="207" string="Query CDDB database">Päring CDDB andmebaasi</entry>
     <entry id="208" string="Help">Abi</entry>
     <entry id="209" string="index_en.html">index.html</entry>
@@ -290,7 +290,7 @@
     <entry id="286" string="Shutdown after encoding">Peale kodeerimist lülitada arvuti välja</entry>
     <entry id="287" string="Playlist Files">Playlist Failid</entry>
     <entry id="288" string="unknown year">teadmata aasta</entry>
-    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Ei saa initsialiseerida  %1 kodekit! Palun kontrollige sätteid!</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Ei saa initsialiseerida %1 kodekit! Palun kontrollige sätteid!</entry>
     <entry id="290" string="Blocksize:">Bloki suurus:</entry>
     <entry id="291" string="Use streamable subset">Use streamable subset</entry>
     <entry id="292" string="Adaptive Joint Stereo">Adaptiivne Joint Stereo</entry>
@@ -340,7 +340,7 @@
     <entry id="336" string="Password:">Parool:</entry>
     <entry id="337" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">See säte kustutab originaal failid peale seda kui nad on kodeeritud! Kas soovite jätkata?</entry>
-    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokoli ei saa kasutada läbi HTTP Proxi ette!  Tahate muuta protokoli HTTP vastu?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokoli ei saa kasutada läbi&#10;HTTP Proxi ette!&#10;&#10;Tahate muuta protokoli HTTP vastu?</entry>
     <entry id="340" string="Playlists">Playlists</entry>
     <entry id="341" string="Create playlists">Luua playlistid</entry>
     <entry id="342" string="Create cue sheets">Luua cue sheets</entry>
@@ -377,14 +377,14 @@
     <entry id="374" string="Query string">Query string</entry>
     <entry id="375" string="CDDB queries to perform:">CDDB päringud teostamiseks:</entry>
     <entry id="376" string="Would you like to perform this query again later?">Tahate korrata seda päringut hiljem?</entry>
-    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Juurdepääs CD-ROM-le Windowsi poolt suletud.  Palun võtke ühendust oma süsteemi administraatoriga, et saada juurdepääsu luba CD-ROM-le.</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Juurdepääs CD-ROM-le Windowsi poolt suletud.&#10;&#10;Palun võtke ühendust oma süsteemi administraatoriga,&#10;et saada juurdepääsu luba CD-ROM-le.</entry>
     <entry id="378" string="CD information">CD informatsioon</entry>
     <entry id="379" string="Read CD Text">Lugeda CD Teksti</entry>
     <entry id="380" string="Read cdplayer.ini">Lugeda cdplayer.ini</entry>
     <entry id="381" string="Apodization">Apodization</entry>
     <entry id="382" string="Apodization function(s):">Apodization function(s):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Mõned funktsioonid eraldatakse ;</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 võib kontrollida uuendusi käivitusel.  Soovite et %1 kontrolliks uuendusi käivitusel?</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 võib kontrollida uuendusi käivitusel.&#10;&#10;Soovite et %1 kontrolliks uuendusi käivitusel?</entry>
     <entry id="385" string="Cannot access input file: %1">Puudub juurdepääs sisend failile: %1</entry>
     <entry id="386" string="Cannot create output file: %1">Ei saa luua väljund faili: %1</entry>
     <entry id="387" string="File not found">Faili ei leitud</entry>

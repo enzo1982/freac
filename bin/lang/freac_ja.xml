@@ -81,7 +81,7 @@
     <entry id="68" string="Select language:">言語の選択：</entry>
     <entry id="69" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
     <entry id="70" string="Ripper settings">リッパー設定</entry>
-    <entry id="71" string="Activate cdparanoia mode:">CD 詳細設定モード有効</entry>
+    <entry id="71" string="Activate cdparanoia mode:">CD 詳細設定モード有効：</entry>
     <entry id="72" string="Activate jitter correction">ジッター補正有効</entry>
     <entry id="73" string="Swap left/right channel">左右チャンネルの入れ替え</entry>
     <entry id="74" string="Lock CD tray while ripping">リッピング中は CD トレイをロック</entry>

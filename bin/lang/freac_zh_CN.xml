@@ -81,7 +81,7 @@
     <entry id="68" string="Select language:">选择语言：</entry>
     <entry id="69" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
     <entry id="70" string="Ripper settings">翻录设置</entry>
-    <entry id="71" string="Activate cdparanoia mode:">激活 cdparanoia 模式</entry>
+    <entry id="71" string="Activate cdparanoia mode:">激活 cdparanoia 模式：</entry>
     <entry id="72" string="Activate jitter correction">激活抖动校正</entry>
     <entry id="73" string="Swap left/right channel">左/右声道互换</entry>
     <entry id="74" string="Lock CD tray while ripping">翻录时锁定 CD 托盘</entry>

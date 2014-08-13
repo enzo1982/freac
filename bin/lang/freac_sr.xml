@@ -3,7 +3,7 @@
   <info>
     <property name="program">freac</property>
     <property name="version">1.0.21a</property>
-    <property name="language">Serbian (Latin letter) / Srpski (Latinično pismo)</property>
+    <property name="language">Serbian (Latin script) / Srpski (Latinica)</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
@@ -211,9 +211,9 @@
     <entry id="207" string="Query CDDB database">Upit CDDB bazi</entry>
     <entry id="208" string="Help">Pomoć</entry>
     <entry id="209" string="index_en.html">index.html</entry>
-    <entry id="210" string="Plug-ins">Plag-in-ovi</entry>
-    <entry id="211" string="Input plug-ins">Ulazni plag-in-ovi</entry>
-    <entry id="212" string="Output plug-ins">Izlazni plag-in-ovi</entry>
+    <entry id="210" string="Plug-ins">Plugin-ovi</entry>
+    <entry id="211" string="Input plug-ins">Ulazni plugin-ovi</entry>
+    <entry id="212" string="Output plug-ins">Izlazni plugin-ovi</entry>
     <entry id="213" string="Configure">Podesi</entry>
     <entry id="214" string="About">Nešto o ...</entry>
     <entry id="215" string="Play">Pokreni</entry>
@@ -238,11 +238,11 @@
     <entry id="234" string="Show Tip of the Day">Prikaži savet dana</entry>
     <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 je raspoloživ u %2 jezika. Ako Vaš jezik&#10;nije raspoloživ, možete ga lako prevesti&#10;koristeći aplikaciju: &quot;Laki prevodilac&quot;.</entry>
     <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 dolazi sa podrškom za LAME, Ogg Vorbis, FAAC,&#10;FLAC, i Bonk enkoderima. Enkoder za VQF format je&#10;raspoloživ na %1 vebsajtu: %2</entry>
-    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">BokEnc može da koristi Winamp 2 ulazne plag-in-ove da podrži&#10;više formata. Kopirajte in_*.dll fajlove u %1/plugins folder&#10;da omogućite %1u da čita ove formate.</entry>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 može da koristi Winamp 2 ulazne plugin-ove da podrži&#10;više formata. Kopirajte in_*.dll fajlove u %1/plugins folder&#10;da omogućite %1-u da čita ove formate.</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Sa %1-om možete poslati upit CDDB bazi koji&#10;sadrži Unikod karaktere. Ako imate bilo koji CD sa&#10;Ne-Latin izvođačem ili pesmom možete prijaviti&#10;podatke freedb-u preko %1-a.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Da ispravite greške čitanja u toku ripovanja možete omogućiti&#10;Jitter korekciju u Tabu CDRip %1 podešenja.&#10;Ako to ne pomogne, pokušajte sa nekim od Paranoia režima.</entry>
     <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Imate predloge kako da poboljšamo %1?&#10;Možete prijaviti Vaše ideje preko Trackera na %1&#10;SourceForge strani projekta - %2&#10;ili poslati eMejl na: %3.</entry>
-    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Da li Vam se dopada što je %1? %1 besplatan, ali možete&#10;pomoći razvoj istog doniranjem %1 projektu. Možete&#10;poslati novčani prilog na: %2 preko PayPala.&#10;Pogledaj %3 za više detalja.</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Da li Vam se dopada što je %1? %1 besplatan, ali možete&#10;pomoći razvoj istog doniranjem %1 projektu. Možete&#10;poslati novčani prilog na: %2 preko PayPal-a.&#10;Pogledaj %3 za više detalja.</entry>
     <entry id="242" string="Bitrate / Quality">Stopa bitova / Kvalitet</entry>
     <entry id="243" string="Check for updates now">Proveri sada za nadogradnje</entry>
     <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Postoje nadogradnje za %1 na internetu!&#10;Da li želite da vidite listu raspoloživih nadogradnji sada?</entry>
@@ -273,12 +273,12 @@
     <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Kreiraj listu</entry>
     <entry id="271" string="Create cue sheet">Kreiraj cue list</entry>
-    <entry id="272" string="Write ID3v1 tags">Piši IDv1 tagove</entry>
-    <entry id="273" string="Write ID3v2 tags">Piši IDv2 tagove</entry>
+    <entry id="272" string="Write ID3v1 tags">Piši ID3v1 tagove</entry>
+    <entry id="273" string="Write ID3v2 tags">Piši ID3v2 tagove</entry>
     <entry id="274" string="Write Vorbis Comment tags">Piši Vorbis tagove komentara</entry>
     <entry id="275" string="Write MP4 metadata info">Piši MP4 podatke</entry>
-    <entry id="276" string="ID3v1 tag encoding:">IDv1 tag enkodovanje:</entry>
-    <entry id="277" string="ID3v2 tag encoding:">IDv2 tag enkodovanje:</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1 tag enkodovanje:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2 tag enkodovanje:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Enkodovanje Vorbis tagova komentara:</entry>
     <entry id="279" string="MP4 metadata encoding:">Enkodovanje MP4 podataka:</entry>
     <entry id="280" string="Tag encodings">Enkodovanje tagova</entry>

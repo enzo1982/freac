@@ -280,7 +280,7 @@
     <entry id="276" string="ID3v1 tag encoding:">Кодування ID3v1 тегу:</entry>
     <entry id="277" string="ID3v2 tag encoding:">Кодування ID3v2 тегу:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Кодування Vorbis Comment тегу:</entry>
-    <entry id="279" string="MP4 metadata encoding:">Кодування  МР4 метаданих:</entry>
+    <entry id="279" string="MP4 metadata encoding:">Кодування МР4 метаданих:</entry>
     <entry id="280" string="Tag encodings">Кодування тегів</entry>
     <entry id="281" string="Update joblist with this information">Оновити список завдань даною інформацією</entry>
     <entry id="282" string="unknown genre">невідомий жанр</entry>
@@ -290,7 +290,7 @@
     <entry id="286" string="Shutdown after encoding">Виключити після кодування</entry>
     <entry id="287" string="Playlist Files">Файли плейлистів</entry>
     <entry id="288" string="unknown year">рік невідомий</entry>
-    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Не можу визначити  %1 кодек! Будь-ласка перевірте налашування!</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Не можу визначити %1 кодек! Будь-ласка перевірте налашування!</entry>
     <entry id="290" string="Blocksize:">Розмір блоку:</entry>
     <entry id="291" string="Use streamable subset">Використовувати потоковий subset</entry>
     <entry id="292" string="Adaptive Joint Stereo">Адаптоване Joint Stereo</entry>
@@ -329,7 +329,7 @@
     <entry id="325" string="Status">Статус</entry>
     <entry id="326" string="Successfully read CD!">CD успішно прочитано!</entry>
     <entry id="327" string="Comment">Коментар</entry>
-    <entry id="328" string="Manage CDDB cache entries...">Керувати  CDDB кешом</entry>
+    <entry id="328" string="Manage CDDB cache entries...">Керувати CDDB кешом</entry>
     <entry id="329" string="Save entry">Зберегти запис</entry>
     <entry id="330" string="Remove entry">Видалити запис</entry>
     <entry id="331" string="Disc name">Назва диску</entry>
@@ -354,9 +354,9 @@
     <entry id="350" string="Encode to single file">Кодувати у єдиний файл</entry>
     <entry id="351" string="Encoder options">Налаштування кодека</entry>
     <entry id="352" string="Skip">Пропустити</entry>
-    <entry id="353" string="Enable local CDDB database">Локальна база даних  CDDB</entry>
+    <entry id="353" string="Enable local CDDB database">Локальна база даних CDDB</entry>
     <entry id="354" string="CDDB path:">CDDB тека:</entry>
-    <entry id="355" string="Select the folder of the CDDB database:">Вибрати теку з бази даних  CDDB:</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">Вибрати теку з бази даних CDDB:</entry>
     <entry id="356" string="File already exists">Файл вже існує</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Вихідний файл %1&#10;вже існує! Перезаписати його?</entry>
     <entry id="358" string="Overwrite all further files">Надалі перезаписувати всі файли</entry>
@@ -378,7 +378,7 @@
     <entry id="374" string="Query string">Стрічка запиту</entry>
     <entry id="375" string="CDDB queries to perform:">CDDB запити для виконня:</entry>
     <entry id="376" string="Would you like to perform this query again later?">Чи хочете ви зробити даний запит пізніше?</entry>
-    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ до приводу CD-ROM був відхилений Windows.&#10;&#10;Будь-ласка зв'яжіться з вашим системним адміністратором щоб&#10;вам був наданий доступ до  приводу CD-ROM</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ до приводу CD-ROM був відхилений Windows.&#10;&#10;Будь-ласка зв'яжіться з вашим системним адміністратором щоб&#10;вам був наданий доступ до приводу CD-ROM</entry>
     <entry id="378" string="CD information">Інформація CD</entry>
     <entry id="379" string="Read CD Text">Читати CD текст </entry>
     <entry id="380" string="Read cdplayer.ini">Читати cdplayer.ini</entry>

@@ -13,8 +13,8 @@
     <entry id="1" string="Cancel">取消</entry>
     <entry id="2" string="Install">安裝</entry>
     <entry id="3" string="Show unstable releases">顯示未穩定版本</entry>
-    <entry id="4" string="Select the updated program version to be installed:">選擇要安裝的已更新程式版本:</entry>
-    <entry id="5" string="You can select optional components to be installed:">你可以選擇要安裝的選擇性元件:</entry>
+    <entry id="4" string="Select the updated program version to be installed:">選擇要安裝的已更新程式版本：</entry>
+    <entry id="5" string="You can select optional components to be installed:">你可以選擇要安裝的選擇性元件：</entry>
     <entry id="6" string="Version ID">版本 ID</entry>
     <entry id="7" string="Package">套件</entry>
     <entry id="8" string="Description">描述</entry>
@@ -24,11 +24,11 @@
     <entry id="12" string="No">否</entry>
     <entry id="13" string="unknown">未知</entry>
     <entry id="14" string="Installing files...">正在安裝檔案...</entry>
-    <entry id="15" string="Installing file:">正在安裝檔案:</entry>
-    <entry id="16" string="Downloading file:">正在下載檔案:</entry>
+    <entry id="15" string="Installing file:">正在安裝檔案：</entry>
+    <entry id="16" string="Downloading file:">正在下載檔案：</entry>
     <entry id="17" string="Update complete">更新完成</entry>
-    <entry id="18" string="Your application has been successfully updated!">你的應用程式已成功地更新!</entry>
+    <entry id="18" string="Your application has been successfully updated!">你的應用程式已成功地更新！</entry>
     <entry id="19" string="Error">錯誤</entry>
-    <entry id="20" string="Error downloading package!">下載套件錯誤!</entry>
+    <entry id="20" string="Error downloading package!">下載套件錯誤！</entry>
   </data>
 </LangFile>
