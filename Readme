@@ -1,4 +1,4 @@
-fre:ac version 1.0.22
+fre:ac version 1.0.23
 
 fre:ac is a free and open source audio converter for various formats.
 It supports audio CD ripping and converts the following audio formats:
@@ -32,6 +32,13 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 History
 -------
+
+	Version 1.0.23 (August 2014)
+
+		- updated Chinese (traditional) translation
+		- added additional genres as defined by Winamp 5.6
+		- the main window is no longer closed when pressing escape
+		- fixed drag & drop target area not matching joblist
 
 	Version 1.0.22 (July 2014)
 

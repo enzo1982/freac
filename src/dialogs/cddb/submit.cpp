@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -930,14 +930,17 @@ String BonkEnc::cddbSubmitDlg::GetCDDBGenre(const String &genre)
 	if (genre == "Folk")			cddbGenre = "folk";
 	if (genre == "Folk/Rock")		cddbGenre = "folk";
 	if (genre == "Folklore")		cddbGenre = "folk";
+	if (genre == "Garage Rock")		cddbGenre = "rock";
 	if (genre == "Gothic Rock")		cddbGenre = "rock";
 	if (genre == "Hard Rock")		cddbGenre = "rock";
 	if (genre == "Heavy Metal")		cddbGenre = "rock";
+	if (genre == "Indie Rock")		cddbGenre = "rock";
 	if (genre == "Instrumental Pop")	cddbGenre = "rock";
 	if (genre == "Instrumental Rock")	cddbGenre = "rock";
 	if (genre == "Jazz")			cddbGenre = "jazz";
 	if (genre == "Jazz+Funk")		cddbGenre = "jazz";
 	if (genre == "JPop")			cddbGenre = "rock";
+	if (genre == "Krautrock")		cddbGenre = "rock";
 	if (genre == "Metal")			cddbGenre = "rock";
 	if (genre == "National Folk")		cddbGenre = "folk";
 	if (genre == "Native American")		cddbGenre = "folk";
