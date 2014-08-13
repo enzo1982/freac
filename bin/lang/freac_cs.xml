@@ -71,9 +71,9 @@
     <entry id="58" string="General settings setup">Obecná nastavení</entry>
     <entry id="59" string="Configure encoder">Konfigurovat enkodér</entry>
     <entry id="60" string="Encoder">Enkodér</entry>
-    <entry id="61" string="Output folder">Výstupní adresář</entry>
+    <entry id="61" string="Output folder">Výstupní složka</entry>
     <entry id="62" string="Browse">Vyhledat</entry>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:">Zvolte adresář pro uložení výsledných souborů:</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Zvolte složku pro uložení výsledných souborů:</entry>
     <entry id="64" string="Encoding">Kódování</entry>
     <entry id="65" string="Author">Autor</entry>
     <entry id="66" string="URL">URL</entry>
@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Použít Temporal Masking Effect (vjem zvuku - překrytí slabšího silnějším atd.)</entry>
     <entry id="225" string="Expert">Nastavení pro odborníky</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Během kódování nemohou být změněna žádná nastavení!</entry>
-    <entry id="227" string="The output folder does not exist! Do you want to create it?">Výstupní adresář neexistuje! Chcete jej vytvořit?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">Výstupní složka neexistuje! Chcete jej vytvořit?</entry>
     <entry id="228" string="Filename pattern">Vzor názvu souboru</entry>
     <entry id="229" string="unknown album">neznámé album</entry>
     <entry id="230" string="Translated by %1.">Přeložil %1.</entry>
@@ -307,14 +307,14 @@
     <entry id="303" string="Minimum partition order">Min. stupeň oblasti</entry>
     <entry id="304" string="Maximum partition order">Max. stupeň oblasti</entry>
     <entry id="305" string="By pattern">Podle vzoru</entry>
-    <entry id="306" string="From folder">Z adresáře</entry>
-    <entry id="307" string="Folder">Adresář</entry>
-    <entry id="308" string="Add folder">Přidat adresář</entry>
-    <entry id="309" string="Choose folder:">Zvolte adresář:</entry>
+    <entry id="306" string="From folder">Ze složky</entry>
+    <entry id="307" string="Folder">Složka</entry>
+    <entry id="308" string="Add folder">Přidat složku</entry>
+    <entry id="309" string="Choose folder:">Zvolte složku:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Zvolte složku na přidání do seznamu:</entry>
     <entry id="311" string="Add files by pattern">Přidat soubory podle vzoru</entry>
     <entry id="312" string="Pattern">Vzor</entry>
-    <entry id="313" string="Start folder">Počáteční adresář</entry>
+    <entry id="313" string="Start folder">Počáteční složka</entry>
     <entry id="314" string="No files found matching pattern:">Žádné soubory nevyhovují vzoru:</entry>
     <entry id="315" string="Edit language file">Editovat jazykový soubor</entry>
     <entry id="316" string="Use for all selected tracks">Použít pro všechny označené skladby</entry>
@@ -344,18 +344,18 @@
     <entry id="340" string="Playlists">Playlisty</entry>
     <entry id="341" string="Create playlists">Vytvořit playlisty</entry>
     <entry id="342" string="Create cue sheets">Vytvořit cue sheets</entry>
-    <entry id="343" string="Use encoder output folder">Použít výstupní adresář kodéru</entry>
+    <entry id="343" string="Use encoder output folder">Použít výstupní složku kodéru</entry>
     <entry id="344" string="Various artists">Různí autoři</entry>
     <entry id="345" string="Data track">Data stopy</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Zvolte složku, kam se uloží playlisty:</entry>
-    <entry id="347" string="Use input file folder if possible">Použít vstupní adresář je-li to možné</entry>
-    <entry id="348" string="Encode to input file folder if possible">Kódovat do vstupního adresáře je-li to možné</entry>
+    <entry id="347" string="Use input file folder if possible">Použít vstupní složku je-li to možné</entry>
+    <entry id="348" string="Encode to input file folder if possible">Kódovat do vstupní složky je-li to možné</entry>
     <entry id="349" string="Allow overwriting input file">Povolit přepisování vstupního souboru</entry>
     <entry id="350" string="Encode to single file">Kódovat do jediného souboru</entry>
     <entry id="351" string="Encoder options">Možnosti kodeku</entry>
     <entry id="352" string="Skip">Přeskočit</entry>
     <entry id="353" string="Enable local CDDB database">Povolit lokální CDDB databázi</entry>
-    <entry id="354" string="CDDB path:">CDDB adresář:</entry>
+    <entry id="354" string="CDDB path:">CDDB složka:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Zvolte složku CDDB databáze:</entry>
     <entry id="356" string="File already exists">soubor už existuje</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupní soubor %1&#10;již existuje! Chcete jej přepsat?</entry>
@@ -382,7 +382,7 @@
     <entry id="378" string="CD information">CD informace</entry>
     <entry id="379" string="Read CD Text">Číst CD text</entry>
     <entry id="380" string="Read cdplayer.ini">Číst cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodizace</entry>
+    <entry id="381" string="Apodization">Apodizace (zužující funkce při zpracování signálu)</entry>
     <entry id="382" string="Apodization function(s):">Apodizační funkce</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Můžete specifikovat více funkcí oddělených středníkem (;).</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 může automaticky zjistit online aktualizace&#10;při startu programu.&#10;&#10;Přejete si, aby %1 zjišťoval při startu aktualizace?</entry>
@@ -417,5 +417,6 @@
     <entry id="413" string="Remind me later">Připomenout později</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="416" string="Default">Standard</entry>
   </data>
 </LangFile>
