@@ -13,8 +13,8 @@
     <entry id="1" string="Cancel">İptal</entry>
     <entry id="2" string="Install">Yükle</entry>
     <entry id="3" string="Show unstable releases">Stabil olmayan versiyonları göster</entry>
-    <entry id="4" string="Select the updated program version to be installed:">Yüklenecek gencellenmiş versiyonu seçin :</entry>
-    <entry id="5" string="You can select optional components to be installed:">Yüklenecek program bileşenlerini seçin (isteğe bağlı)  :</entry>
+    <entry id="4" string="Select the updated program version to be installed:">Yüklenecek gencellenmiş versiyonu seçin:</entry>
+    <entry id="5" string="You can select optional components to be installed:">Yüklenecek program bileşenlerini seçin (isteğe bağlı):</entry>
     <entry id="6" string="Version ID">Versiyon:</entry>
     <entry id="7" string="Package">Paket</entry>
     <entry id="8" string="Description">Açıklama</entry>
@@ -24,8 +24,8 @@
     <entry id="12" string="No">Hayır</entry>
     <entry id="13" string="unknown">bilinmiyor</entry>
     <entry id="14" string="Installing files...">Dosyalar yükleniyor...</entry>
-    <entry id="15" string="Installing file:">Yüklenen dosya :</entry>
-    <entry id="16" string="Downloading file:">İndirilen dosya :</entry>
+    <entry id="15" string="Installing file:">Yüklenen dosya:</entry>
+    <entry id="16" string="Downloading file:">İndirilen dosya:</entry>
     <entry id="17" string="Update complete">Güncelleme tamamlandı</entry>
     <entry id="18" string="Your application has been successfully updated!">Uygulamanız başarıyla güncellendi!</entry>
     <entry id="19" string="Error">Hata</entry>
