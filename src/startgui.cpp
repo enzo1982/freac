@@ -469,6 +469,13 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 
 	DeleteObject(dialog);
 
+	/* Select active configuration if we have multiple.
+	 */
+	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
+	{
+		if (config->GetNthConfigurationName(i) == config->GetConfigurationName()) clicked_configuration = i;
+	}
+
 	/* Update widgets and notify components.
 	 */
 	OnChangeConfiguration();
@@ -604,6 +611,8 @@ Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
 		config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, clicked_drive);
 
 		clicked_drive = -1;
+
+		OptionBox::internalCheckValues.Emit();
 	}
 
 	Registry		&boca = Registry::Get();
@@ -855,9 +864,6 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	FillMenus();
 
 	tabs_main->Paint(SP_PAINT);
-
-	hyperlink->Hide();
-	hyperlink->Show();
 
 	return true;
 }
@@ -1163,6 +1169,9 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_menubar->Show();
 	mainWnd_iconbar->Show();
 
+	hyperlink->Hide();
+	hyperlink->Show();
+
 	surface->EndPaint();
 }
 
@@ -1178,6 +1187,8 @@ Void BonkEnc::BonkEncGUI::Encode()
 		tab_layer_joblist->UpdateEncoderText();
 
 		clicked_encoder = -1;
+
+		OptionBox::internalCheckValues.Emit();
 	}
 
 	Converter().Convert(joblist);
