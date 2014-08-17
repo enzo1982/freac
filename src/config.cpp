@@ -20,6 +20,7 @@ using namespace BoCA;
 BonkEnc::Config *BonkEnc::Config::instance = NIL;
 
 const String	 BonkEnc::Config::CategorySettingsID				= "Settings";
+const String	 BonkEnc::Config::CategoryResourcesID				= "Resources";
 const String	 BonkEnc::Config::CategoryJoblistID				= "Joblist";
 const String	 BonkEnc::Config::CategoryRipperID				= "Ripper";
 const String	 BonkEnc::Config::CategoryPlaylistID				= "Playlist";
@@ -124,6 +125,14 @@ const String	 BonkEnc::Config::SettingsEncoderFilenamePatternDefault		= String("
 
 const String	 BonkEnc::Config::SettingsLastCustomCharsetID			= "LastCustomCharset";
 const String	 BonkEnc::Config::SettingsLastCustomCharsetDefault		= NIL;
+
+/* Category Resources
+ */
+const String	 BonkEnc::Config::ResourcesEnableOpenMPID			= "EnableOpenMP";
+const Bool	 BonkEnc::Config::ResourcesEnableOpenMPDefault			= True;
+
+const String	 BonkEnc::Config::ResourcesNumberOfThreadsID			= "NumberOfThreads";
+const Int	 BonkEnc::Config::ResourcesNumberOfThreadsDefault		= 0;
 
 /* Category Joblist
  */

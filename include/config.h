@@ -21,6 +21,7 @@ namespace BonkEnc
 	{
 		constants:
 			static const String	 CategorySettingsID;
+			static const String	 CategoryResourcesID;
 			static const String	 CategoryJoblistID;
 			static const String	 CategoryRipperID;
 			static const String	 CategoryPlaylistID;
@@ -125,6 +126,14 @@ namespace BonkEnc
 
 			static const String	 SettingsLastCustomCharsetID;
 			static const String	 SettingsLastCustomCharsetDefault;
+
+			/* Category Resources
+			 */
+			static const String	 ResourcesEnableOpenMPID;
+			static const Bool	 ResourcesEnableOpenMPDefault;
+
+			static const String	 ResourcesNumberOfThreadsID;
+			static const Int	 ResourcesNumberOfThreadsDefault;
 
 			/* Category Joblist
 			 */
