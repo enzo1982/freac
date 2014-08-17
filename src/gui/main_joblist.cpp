@@ -175,6 +175,18 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	info_checkbox = new CheckBox(NIL, pos, size, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault));
 	info_checkbox->onAction.Connect(&LayerJoblist::ShowHideTitleInfo, this);
 
+	info_area_cover	= new ActiveArea(Setup::BackgroundColor, Point(7, 167), Size(46, 46));
+	info_area_cover->SetOrientation(OR_LOWERLEFT);
+	info_area_cover->SetColor(Color(255, 255, 255));
+	info_area_cover->Hide();
+
+	info_image_cover = new Image(NIL, Point(8, 166), Size(44, 44));
+	info_image_cover->SetOrientation(OR_LOWERLEFT);
+	info_image_cover->Hide();
+
+	Add(info_area_cover);
+	Add(info_image_cover);
+
 	pos.x = 7;
 	pos.y = 164;
 
@@ -544,6 +556,8 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 	DeleteObject(info_bottom);
 	DeleteObject(info_background);
 	DeleteObject(info_checkbox);
+	DeleteObject(info_area_cover);
+	DeleteObject(info_image_cover);
 	DeleteObject(info_text_artist);
 	DeleteObject(info_edit_artist);
 	DeleteObject(info_text_title);
@@ -627,8 +641,8 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	info_text_genre->SetX(info_edit_year->GetX() + 38);
 	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
 	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
-	info_edit_artist->SetWidth(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
-	info_edit_album->SetWidth(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
+	info_edit_artist->SetWidth(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - (info_image_cover->IsVisible() ? 54 : 0));
+	info_edit_album->SetWidth(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - (info_image_cover->IsVisible() ? 54 : 0));
 	info_edit_genre->SetX(clientSize.cx - 142);
 
 	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
@@ -776,8 +790,8 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 	info_background->SetWidth(info_checkbox->GetUnscaledTextWidth() + 24);
 	info_background->Show();
 
-	info_edit_artist->SetX((Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 15);
-	info_edit_album->SetX((Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 15);
+	info_edit_artist->SetX(info_text_artist->GetX() + (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 8);
+	info_edit_album->SetX(info_text_album->GetX() + (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 8);
 
 	/* OnChangeSize will correct sizes of any other widgets.
 	 */
@@ -898,6 +912,9 @@ Void BonkEnc::LayerJoblist::OnJoblistSelectTrack(const Track &track)
 
 	surface->StartPaint(GetVisibleArea());
 
+	if (track.pictures.Length() > 0) ShowCoverArea();
+	else				 HideCoverArea();
+
 	info_edit_artist->Activate();
 	info_edit_title->Activate();
 	info_edit_album->Activate();
@@ -917,6 +934,17 @@ Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 	const Info	&info = track.GetInfo();
 
 	dontUpdateInfo = True;
+
+	if (track.pictures.Length() > 0)
+	{
+		info_image_cover->SetBitmap(track.pictures.GetFirst().GetBitmap());
+
+		ShowCoverArea();
+	}
+	else
+	{
+		HideCoverArea();
+	}
 
 	info_edit_artist->SetText(info.artist);
 	info_edit_title->SetText(info.title);
@@ -945,6 +973,8 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 		Surface	*surface = GetDrawSurface();
 
 		surface->StartPaint(GetVisibleArea());
+
+		HideCoverArea();
 
 		info_edit_artist->SetText(NIL);
 		info_edit_title->SetText(NIL);
@@ -975,6 +1005,8 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveAllTracks()
 	Surface	*surface = GetDrawSurface();
 
 	surface->StartPaint(GetVisibleArea());
+
+	HideCoverArea();
 
 	info_edit_artist->SetText(NIL);
 	info_edit_title->SetText(NIL);
@@ -1011,6 +1043,56 @@ Void BonkEnc::LayerJoblist::FocusEditBox(EditBox *editBox)
 {
 	editBox->SetFocus();
 	editBox->MarkAll();
+}
+
+Void BonkEnc::LayerJoblist::ShowCoverArea()
+{
+	if (info_text_artist->GetX() > 7) return;
+
+	htsp_edit_artist->SetWidth(htsp_edit_artist->GetWidth() - 54);
+	htsp_edit_album->SetWidth(htsp_edit_album->GetWidth() - 54);
+
+	info_edit_artist->SetWidth(info_edit_artist->GetWidth() - 54);
+	info_edit_album->SetWidth(info_edit_album->GetWidth() - 54);
+
+	info_edit_artist->SetX(info_edit_artist->GetX() + 54);
+	info_edit_album->SetX(info_edit_album->GetX() + 54);
+
+	info_text_artist->SetX(info_text_artist->GetX() + 54);
+	info_text_album->SetX(info_text_album->GetX() + 54);
+
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
+	{
+		info_area_cover->Show();
+		info_image_cover->Show();
+	}
+}
+
+Void BonkEnc::LayerJoblist::HideCoverArea()
+{
+	if (info_text_artist->GetX() == 7) return;
+
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
+	{
+		info_area_cover->Hide();
+		info_image_cover->Hide();
+	}
+
+	info_text_artist->SetX(info_text_artist->GetX() - 54);
+	info_text_album->SetX(info_text_album->GetX() - 54);
+
+	info_edit_artist->SetX(info_edit_artist->GetX() - 54);
+	info_edit_album->SetX(info_edit_album->GetX() - 54);
+
+	info_edit_artist->SetWidth(info_edit_artist->GetWidth() + 54);
+	info_edit_album->SetWidth(info_edit_album->GetWidth() + 54);
+
+	htsp_edit_artist->SetWidth(htsp_edit_artist->GetWidth() + 54);
+	htsp_edit_album->SetWidth(htsp_edit_album->GetWidth() + 54);
 }
 
 Void BonkEnc::LayerJoblist::OnShortcutPrevious()
@@ -1368,6 +1450,13 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 		n = -68;
 
 		info_bottom->Hide();
+
+		if (info_text_artist->GetX() > 7)
+		{
+			info_area_cover->Hide();
+			info_image_cover->Hide();
+		}
+
 		info_text_artist->Hide();
 		info_edit_artist->Hide();
 		info_text_title->Hide();
@@ -1399,6 +1488,13 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
 	{
 		info_bottom->Show();
+
+		if (info_text_artist->GetX() > 7)
+		{
+			info_area_cover->Show();
+			info_image_cover->Show();
+		}
+
 		info_text_artist->Show();
 		info_edit_artist->Show();
 		info_text_title->Show();

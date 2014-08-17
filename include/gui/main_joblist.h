@@ -43,6 +43,8 @@ namespace BonkEnc
 			Layer			*info_background;
 			CheckBox		*info_checkbox;
 			Divider			*info_bottom;
+			ActiveArea		*info_area_cover;
+			Image			*info_image_cover;
 			Text			*info_text_artist;
 			EditBox			*info_edit_artist;
 			Text			*info_text_title;
@@ -132,6 +134,9 @@ namespace BonkEnc
 
 			EditBox			*GetActiveEditBox();
 			Void			 FocusEditBox(EditBox *);
+
+			Void			 ShowCoverArea();
+			Void			 HideCoverArea();
 
 			String			 SecondsToString(Int);
 
