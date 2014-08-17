@@ -11,17 +11,28 @@
 #include <gui/main_threads.h>
 #include <jobs/job.h>
 
+#include <boca.h>
+
 using namespace smooth::GUI::Dialogs;
+
+using namespace BoCA;
+using namespace BoCA::AS;
 
 BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 {
-	text_progress	= new Text("Progress:", Point(7, 11));
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Jobs");
+
+	SetText(i18n->TranslateString("Jobs"));
+
+	text_progress	= new Text(i18n->TranslateString("Progress:"), Point(7, 11));
 
 	list_threads	= new ListBox(Point(7, 35), Size(500, 360));
 	list_threads->onSelectEntry.Connect(&LayerThreads::OnSelectJob, this);
 	list_threads->EnableLocking();
 
-	text_errors	= new Text("Errors / Warnings:", Point(7, 25));
+	text_errors	= new Text(i18n->TranslateString("Errors / Warnings:"), Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);
 
 	edit_errors	= new EditBox(NIL, Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
@@ -31,7 +42,7 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 	combo_errors	= new ComboBox(Point(text_errors->GetUnscaledTextWidth() + 47, 28), Size(250, 0));
 	combo_errors->SetOrientation(OR_LOWERLEFT);
 
-	button_details	= new Button("Details", NIL, Point(87, 29), Size(80, 0));
+	button_details	= new Button(i18n->TranslateString("Details"), NIL, Point(87, 29), Size(80, 0));
 	button_details->onAction.Connect(&LayerThreads::ShowDetails, this);
 	button_details->SetOrientation(OR_LOWERRIGHT);
 
@@ -45,6 +56,8 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 
 	OnChangeJobs();
 
+	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerThreads::OnChangeLanguageSettings, this);
+
 	onChangeSize.Connect(&LayerThreads::OnChangeSize, this);
 
 	Job::onChange.Connect(&LayerThreads::OnChangeJobs, this);
@@ -53,6 +66,8 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 BonkEnc::LayerThreads::~LayerThreads()
 {
 	Job::onChange.Disconnect(&LayerThreads::OnChangeJobs, this);
+
+	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerThreads::OnChangeLanguageSettings, this);
 
 	DeleteObject(text_progress);
 	DeleteObject(list_threads);
@@ -73,8 +88,44 @@ Void BonkEnc::LayerThreads::OnChangeSize(const Size &nSize)
 	combo_errors->SetWidth(clientSize.cx - text_errors->GetUnscaledTextWidth() - 142);
 }
 
+Void BonkEnc::LayerThreads::OnChangeLanguageSettings()
+{
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Jobs");
+
+	SetText(i18n->TranslateString("Jobs"));
+
+	/* Hide all affected widgets prior to changing
+	 * labels to avoid flickering.
+	 */
+	Bool	 prevVisible = IsVisible();
+
+	if (prevVisible) Hide();
+
+	text_progress->SetText(i18n->TranslateString("Progress:"));
+	text_errors->SetText(i18n->TranslateString("Errors / Warnings:"));
+
+	edit_errors->SetX(text_errors->GetUnscaledTextWidth() + 14);
+	combo_errors->SetX(text_errors->GetUnscaledTextWidth() + 47);
+
+	button_details->SetText(i18n->TranslateString("Details"));
+
+	/* OnChangeSize will correct sizes of any other widgets.
+	 */
+	OnChangeSize(GetSize());
+
+	/* Show all widgets again.
+	 */
+	if (prevVisible) Show();
+}
+
 Void BonkEnc::LayerThreads::OnChangeJobs()
 {
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(Rect(list_threads->GetRealPosition(), list_threads->GetRealSize()));
+
 	list_threads->RemoveAllEntries();
 
 	text_errors->Deactivate();
@@ -93,6 +144,8 @@ Void BonkEnc::LayerThreads::OnChangeJobs()
 
 		if (job->IsSelected()) OnSelectJob(job);
 	}
+
+	surface->EndPaint();
 }
 
 Void BonkEnc::LayerThreads::OnSelectJob(ListEntry *entry)
@@ -126,5 +179,9 @@ Void BonkEnc::LayerThreads::OnSelectJob(ListEntry *entry)
 
 Void BonkEnc::LayerThreads::ShowDetails()
 {
-	QuickMessage(combo_errors->GetSelectedEntry()->GetText(), "Error details", Message::Buttons::Ok, Message::Icon::Information);
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Jobs");
+
+	QuickMessage(combo_errors->GetSelectedEntry()->GetText(), i18n->TranslateString("Error details"), Message::Buttons::Ok, Message::Icon::Information);
 }

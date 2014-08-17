@@ -162,8 +162,12 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	hyperlink->SetX(hyperlink->GetUnscaledTextWidth() + 4);
 	hyperlink->SetIndependent(True);
 
+	/* Build tabbed interface.
+	 */
 	tabs_main		= new TabWidget(Point(6, 7), Size(700, 500));
 
+	/* Add joblist tab.
+	 */
 	tab_layer_joblist	= new LayerJoblist();
 	tab_layer_joblist->onRequestSkipTrack.Connect(&JobConvert::Skip);
 
@@ -171,6 +175,8 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tabs_main->Add(tab_layer_joblist);
 #endif
 
+	/* Add extension component tabs.
+	 */
 	InitExtensionComponents();
 
 	for (Int i = 0; i < extensionComponents.Length(); i++)
@@ -186,11 +192,13 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	tabs_main->Add(tab_layer_joblist);
 #endif
 
+	/* Add threads tab.
+	 */
 	tab_layer_threads	= new LayerThreads();
 
-/* ToDo: Add threads layer once it's ready.
- */
-	tabs_main->Add(tab_layer_threads);
+	if (config->GetIntValue(Config::CategorySettingsID,
+				Config::SettingsShowJobsTabID,
+				Config::SettingsShowJobsTabDefault)) tabs_main->Add(tab_layer_threads);
 
 	joblist			= tab_layer_joblist->GetJoblist();
 
@@ -437,8 +445,7 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 {
 	if (!currentConfig->CanChangeConfig()) return;
 
-	BoCA::Config	*config  = BoCA::Config::Get();
-	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
 	/* Save joblist tab field sizes.
 	 */
@@ -464,52 +471,91 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 
 	/* Update widgets and notify components.
 	 */
-	Surface		*surface = mainWnd->GetDrawSurface();
-
-	surface->StartPaint(mainWnd->GetVisibleArea());
-
-	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
-	{
-		if (config->GetNthConfigurationName(i) == config->GetConfigurationName()) clicked_configuration = i;
-	}
-
-	if (i18n->GetActiveLanguageID() != config->GetStringValue(Config::CategorySettingsID,
-								  Config::SettingsLanguageID,
-								  Config::SettingsLanguageDefault)) SetLanguage();
-	else											    FillMenus();
-
-	BoCA::Settings::Get()->onChangeConfigurationSettings.Emit();
-
-	tab_layer_joblist->UpdateEncoderText();
-	tab_layer_joblist->UpdateOutputDir();
-
-	CheckBox::internalCheckValues.Emit();
-	ToggleUseInputDirectory();
-
-	surface->EndPaint();
-
-	config->SaveSettings();
+	OnChangeConfiguration();
 }
 
 Void BonkEnc::BonkEncGUI::OnSelectConfiguration()
 {
 	if (!currentConfig->CanChangeConfig()) return;
 
-	BoCA::Config	*config  = BoCA::Config::Get();
-	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
 	config->SetActiveConfiguration(config->GetNthConfigurationName(clicked_configuration));
+
+	/* Update widgets and notify components.
+	 */
+	OnChangeConfiguration();
+}
+
+Void BonkEnc::BonkEncGUI::OnChangeConfiguration()
+{
+	BoCA::Config	*config  = BoCA::Config::Get();
+	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
 
 	Surface		*surface = mainWnd->GetDrawSurface();
 
 	surface->StartPaint(mainWnd->GetVisibleArea());
 
+	/* Update language and menu bars.
+	 */
 	if (i18n->GetActiveLanguageID() != config->GetStringValue(Config::CategorySettingsID,
 								  Config::SettingsLanguageID,
 								  Config::SettingsLanguageDefault)) SetLanguage();
+	else											    FillMenus();
 
+	/* Notify components of configuration change.
+	 */
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Emit();
 
+	/* Show/hide Jobs tab.
+	 */
+	tabs_main->Remove(tab_layer_threads);
+
+	if (config->GetIntValue(Config::CategorySettingsID,
+				Config::SettingsShowJobsTabID,
+				Config::SettingsShowJobsTabDefault)) tabs_main->Add(tab_layer_threads);
+
+	tabs_main->Paint(SP_PAINT);
+
+	/* Do not use tab widget if there would be only one tab.
+	 */
+	if (tabs_main->GetNOfObjects() == 1)
+	{
+		Widget	*tab = tabs_main->GetNthObject(0);
+
+		if (tabs_main->GetContainer() != NIL)
+		{
+			tabs_main->Remove(tab);
+
+			tab->SetOrientation(OR_CENTER);
+
+			mainWnd->Remove(tabs_main);
+			mainWnd->Add(tab);
+		}
+		else if (tabs_main->GetContainer() == NIL)
+		{
+			Widget	*mainTab = NIL;
+
+			for (Int i = mainWnd->GetNOfObjects() - 1; i >= 0; i--)
+			{
+				if (mainWnd->GetNthObject(i)->GetObjectType() == Layer::classID) { mainTab = mainWnd->GetNthObject(i); break; }
+			}
+
+			mainWnd->Remove(mainTab);
+			mainWnd->Add(tabs_main);
+
+			mainTab->SetOrientation(OR_UPPERLEFT);
+
+			tabs_main->Remove(tab);
+			tabs_main->Add(mainTab);
+			tabs_main->Add(tab);
+		}
+
+		mainWnd->Paint(SP_PAINT);
+	}
+
+	/* Update joblist layer.
+	 */
 	tab_layer_joblist->UpdateEncoderText();
 	tab_layer_joblist->UpdateOutputDir();
 

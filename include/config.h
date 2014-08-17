@@ -127,6 +127,9 @@ namespace BonkEnc
 			static const String	 SettingsLastCustomCharsetID;
 			static const String	 SettingsLastCustomCharsetDefault;
 
+			static const String	 SettingsShowJobsTabID;
+			static const Bool	 SettingsShowJobsTabDefault;
+
 			/* Category Resources
 			 */
 			static const String	 ResourcesEnableOpenMPID;

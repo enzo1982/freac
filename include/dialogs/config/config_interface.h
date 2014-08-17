@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -24,6 +24,11 @@ namespace BonkEnc
 			ListBox		*list_fields;
 			Button		*button_up;
 			Button		*button_down;
+
+			GroupBox	*group_jobs;
+			CheckBox	*check_show_jobs;
+
+			Bool		 showJobs;
 
 			Void		 FillJoblistFieldsList();
 		public:

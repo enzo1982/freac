@@ -14,9 +14,12 @@
 
 BonkEnc::ConfigureInterface::ConfigureInterface()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Configuration::Joblist");
+
+	showJobs = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowJobsTabID, Config::SettingsShowJobsTabDefault);
 
 	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 136));
 
@@ -47,11 +50,18 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 	group_joblist->Add(button_up);
 	group_joblist->Add(button_down);
 
+	group_jobs	= new GroupBox(i18n->TranslateString("Jobs"), Point(7, 159), Size(552, 40));
+
+	check_show_jobs	= new CheckBox(i18n->TranslateString("Show Jobs tab"), Point(10, 13), Size(group_jobs->GetWidth() - 20, 0), &showJobs);
+
+	group_jobs->Add(check_show_jobs);
+
 	FillJoblistFieldsList();
 
 	Add(group_joblist);
+	Add(group_jobs);
 
-	SetSize(Size(566, 138));
+	SetSize(Size(566, 206));
 }
 
 BonkEnc::ConfigureInterface::~ConfigureInterface()
@@ -61,6 +71,9 @@ BonkEnc::ConfigureInterface::~ConfigureInterface()
 	DeleteObject(list_fields);
 	DeleteObject(button_up);
 	DeleteObject(button_down);
+
+	DeleteObject(group_jobs);
+	DeleteObject(check_show_jobs);
 }
 
 Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
@@ -142,7 +155,10 @@ Int BonkEnc::ConfigureInterface::SaveSettings()
 		if (entry->IsMarked()) fields = fields.Append(fields != NIL ? "," : NIL).Append(entryText.Head(entryText.Find("\t")));
 	}
 
-	BoCA::Config::Get()->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, fields);
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, fields);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsShowJobsTabID, showJobs);
 
 	return Success();
 }

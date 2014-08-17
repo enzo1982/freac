@@ -29,12 +29,13 @@ namespace BonkEnc
 			ComboBox	*combo_errors;
 			Button		*button_details;
 		slots:
-			Void		 ShowDetails();
+			Void		 OnChangeSize(const Size &);
+			Void		 OnChangeLanguageSettings();
 
 			Void		 OnChangeJobs();
 			Void		 OnSelectJob(ListEntry *);
 
-			Void		 OnChangeSize(const Size &);
+			Void		 ShowDetails();
 		public:
 					 LayerThreads();
 					~LayerThreads();

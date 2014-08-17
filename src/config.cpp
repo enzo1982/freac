@@ -1,4 +1,4 @@
- /* fre:ac - free audio converter
+/* fre:ac - free audio converter
   * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
@@ -125,6 +125,9 @@ const String	 BonkEnc::Config::SettingsEncoderFilenamePatternDefault		= String("
 
 const String	 BonkEnc::Config::SettingsLastCustomCharsetID			= "LastCustomCharset";
 const String	 BonkEnc::Config::SettingsLastCustomCharsetDefault		= NIL;
+
+const String	 BonkEnc::Config::SettingsShowJobsTabID				= "ShowJobsTab";
+const Bool	 BonkEnc::Config::SettingsShowJobsTabDefault			= False;
 
 /* Category Resources
  */

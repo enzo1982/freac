@@ -119,6 +119,7 @@ namespace BonkEnc
 			Void				 OnChangeSize(const Size &);
 
 			Void				 OnSelectConfiguration();
+			Void				 OnChangeConfiguration();
 
 			Void				 OnDriveChange();
 			Void				 OnDiscInsert(Int);
