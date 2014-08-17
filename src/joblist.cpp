@@ -242,6 +242,8 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 	{
 		ListEntry	*entry = GetNthEntry(i);
 
+		entry->Hide();
+
 		if (entry->GetTooltipLayer() != NIL)
 		{
 			delete entry->GetTooltipLayer();
@@ -434,7 +436,20 @@ Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 
 		if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault))
 		{
-			if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
+			if (entry->GetTooltipLayer() != NIL)
+			{
+				Surface	*surface = GetDrawSurface();
+
+				surface->StartPaint(Rect(entry->GetRealPosition(), entry->GetRealSize()));
+
+				entry->Hide();
+
+				delete entry->GetTooltipLayer();
+
+				entry->Show();
+
+				surface->EndPaint();
+			}
 
 			entry->SetTooltipLayer(new LayerTooltip(track));
 		}
