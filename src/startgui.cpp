@@ -908,7 +908,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:24")));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
-	entry->SetShortcut(SC_CONTROL, 'R', mainWnd);
+	entry->SetShortcut(SC_CONTROL, Keyboard::KeyR, mainWnd);
 
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 1 || (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0 && !boca.ComponentExists("cuesheet-playlist")))
 	{
@@ -922,17 +922,22 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:25")));
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
-	entry->SetShortcut(SC_CONTROL | SC_SHIFT, 'R', mainWnd);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyR, mainWnd);
 
 	menu_file->AddEntry();
 
 	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:36")));
 	entry->onAction.Connect(&BonkEncGUI::Close, this);
+
+#ifdef __WIN32__
 	entry->SetShortcut(SC_ALT, Keyboard::KeyF4, mainWnd);
+#else
+	entry->SetShortcut(SC_CONTROL, Keyboard::KeyQ, mainWnd);
+#endif
 
 	entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)").Append("..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:22")));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
-	entry->SetShortcut(SC_CONTROL, 'F', mainWnd);
+	entry->SetShortcut(SC_CONTROL, Keyboard::KeyF, mainWnd);
 
 	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
@@ -951,7 +956,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:23")));
 		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
-		entry->SetShortcut(SC_CONTROL, 'D', mainWnd);
+		entry->SetShortcut(SC_CONTROL, Keyboard::KeyD, mainWnd);
 	}
 
 	menu_files->AddEntry(i18n->TranslateString("By pattern").Append("..."))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);
@@ -969,11 +974,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:26")));
 	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
-	entry->SetShortcut(SC_CONTROL, 'Q', mainWnd);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyQ, mainWnd);
 
 	entry = menu_database->AddEntry(i18n->TranslateString("Submit CDDB data..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:27")));
 	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
-	entry->SetShortcut(SC_CONTROL, 'S', mainWnd);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyS, mainWnd);
 
 	menu_database->AddEntry();
 
@@ -1000,11 +1005,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_options->AddEntry(i18n->TranslateString("General settings..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:28")));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureSettings, this);
-	entry->SetShortcut(SC_CONTROL | SC_SHIFT, 'C', mainWnd);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyC, mainWnd);
 
 	entry = menu_options->AddEntry(i18n->TranslateString("Configure selected encoder..."), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:29")));
 	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
-	entry->SetShortcut(SC_CONTROL | SC_SHIFT, 'E', mainWnd);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyE, mainWnd);
 
 	if (config->GetNOfConfigurations() > 1)
 	{
@@ -1029,7 +1034,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:31")));
 	entry->onAction.Connect(&BonkEncGUI::Encode, this);
-	entry->SetShortcut(SC_CONTROL, 'E', mainWnd);
+	entry->SetShortcut(SC_CONTROL, Keyboard::KeyE, mainWnd);
 
 	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:32")))->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
 	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:33")))->onAction.Connect(&BonkEncGUI::StopEncoding, this);
