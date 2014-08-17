@@ -37,7 +37,7 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 
 	group_language	= new GroupBox(i18n->TranslateString("Language"), Point(7, 11), Size(552, 43));
 
-	text_language	= new Text(i18n->TranslateString("Select language:"), Point(9, 15));
+	text_language	= new Text(i18n->AddColon(i18n->TranslateString("Select language")), Point(9, 15));
 
 	combo_language	= new ComboBox(Point(text_language->GetUnscaledTextWidth() + 17, 12), Size(442, 0));
 	combo_language->onSelectEntry.Connect(&ConfigureLanguage::SelectLanguage, this);

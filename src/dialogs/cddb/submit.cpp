@@ -112,16 +112,16 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x += 267;
 	pos.y += 3;
 
-	text_cdstatus	= new Text(i18n->TranslateString("Status").Append(":"), pos);
+	text_cdstatus	= new Text(i18n->AddColon(i18n->TranslateString("Status")), pos);
 
 	pos.x = 7;
 	pos.y = 65;
 
-	text_artist	= new Text(i18n->TranslateString("Artist").Append(":"), pos);
+	text_artist	= new Text(i18n->AddColon(i18n->TranslateString("Artist")), pos);
 
 	pos.y += 27;
 
-	text_album	= new Text(i18n->TranslateString("Album").Append(":"), pos);
+	text_album	= new Text(i18n->AddColon(i18n->TranslateString("Album")), pos);
 
 	pos.x += (7 + (Int) Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth()));
 	pos.y -= 30;
@@ -146,11 +146,11 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x = 221;
 	pos.y = 65;
 
-	text_year	= new Text(i18n->TranslateString("Year").Append(":"), pos);
+	text_year	= new Text(i18n->AddColon(i18n->TranslateString("Year")), pos);
 
 	pos.y += 27;
 
-	text_disccomment= new Text(i18n->TranslateString("Comment").Append(":"), pos);
+	text_disccomment= new Text(i18n->AddColon(i18n->TranslateString("Comment")), pos);
 
 	pos.x = 228 + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	pos.y -= 30;
@@ -162,7 +162,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x += 38;
 	pos.y += 3;
 
-	text_genre	= new Text(i18n->TranslateString("Genre").Append(":"), pos);
+	text_genre	= new Text(i18n->AddColon(i18n->TranslateString("Genre")), pos);
 
 	pos.x += (7 + text_genre->GetUnscaledTextWidth());
 	pos.y -= 3;
@@ -205,7 +205,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x -= 1;
 	pos.y += 151;
 
-	text_track	= new Text(i18n->TranslateString("Track").Append(":"), pos);
+	text_track	= new Text(i18n->AddColon(i18n->TranslateString("Track")), pos);
 
 	pos.x += (7 + text_track->GetUnscaledTextWidth());
 	pos.y -= 3;
@@ -219,15 +219,15 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x += 32;
 	pos.y += 3;
 
-	text_trackartist= new Text(i18n->TranslateString("Artist").Append(":"), pos);
+	text_trackartist= new Text(i18n->AddColon(i18n->TranslateString("Artist")), pos);
 
 	pos.y += 27;
 
-	text_title	= new Text(i18n->TranslateString("Title").Append(":"), pos);
+	text_title	= new Text(i18n->AddColon(i18n->TranslateString("Title")), pos);
 
 	pos.y += 27;
 
-	text_comment	= new Text(i18n->TranslateString("Comment").Append(":"), pos);
+	text_comment	= new Text(i18n->AddColon(i18n->TranslateString("Comment")), pos);
 
 	pos.x += (7 + Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()));
 	pos.y -= 57;
@@ -393,7 +393,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 	check_updateJoblist->Hide();
 	check_submitLater->Hide();
-	text_status->SetText(i18n->TranslateString("Submitting CD information").Append("..."));
+	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
 
 	Int	 revision = cddbInfo.revision;
 
@@ -550,7 +550,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	{
 		boca.DeleteComponent(info);
 
-		text_cdstatus->SetText(i18n->TranslateString("Status").Append(": ").Append(i18n->TranslateString("No audio CD in drive!")));
+		text_cdstatus->SetText(i18n->AddColon(i18n->TranslateString("Status")).Append(" ").Append(i18n->TranslateString("No audio CD in drive!")));
 
 		dontUpdateInfo = True;
 
@@ -581,7 +581,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	}
 	else
 	{
-		text_cdstatus->SetText(i18n->TranslateString("Status").Append(": ").Append(i18n->TranslateString("Successfully read CD!")));
+		text_cdstatus->SetText(i18n->AddColon(i18n->TranslateString("Status")).Append(" ").Append(i18n->TranslateString("Successfully read CD!")));
 
 		btn_submit->Activate();
 	}

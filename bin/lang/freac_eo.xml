@@ -31,7 +31,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bito</entry>
+      <entry id="516" string="%1 bytes">%1 bajtoj</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">Aldoni</entry>
 	<entry id="1101" string="Remove">Forigi</entry>
-	<entry id="1102" string="Load joblist...">Ŝarĝi laborliston...</entry>
-	<entry id="1103" string="Save joblist...">Konservi laborliston...</entry>
+	<entry id="1102" string="Load joblist">Ŝarĝi laborliston</entry>
+	<entry id="1103" string="Save joblist">Konservi laborliston</entry>
 	<entry id="1104" string="Clear joblist">Ĉiuj forigi</entry>
 	<entry id="1105" string="Exit">Eliri</entry>
 	<entry id="1106" string="Audio file(s)">Aŭdiodosiero(j)</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Demandi CDDB-datumbankon</entry>
-	<entry id="1201" string="Submit CDDB data...">Sendi CDDB-datumon...</entry>
+	<entry id="1201" string="Submit CDDB data">Sendi CDDB-datumon</entry>
 	<entry id="1202" string="Query CDDB database later">Pridemandi CDDB-datumbankon poste</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Montri la vicitajn CDDB-enskribojn...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Montri la vicitajn CDDB-pridemandojn...</entry>
+	<entry id="1203" string="Show queued CDDB entries">Montri la vicitajn CDDB-enskribojn</entry>
+	<entry id="1204" string="Show queued CDDB queries">Montri la vicitajn CDDB-pridemandojn</entry>
 	<entry id="1205" string="Enable CDDB cache">Aktivigi CDDB-konservejon</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Administri CDDB-konservejo-enskribojn...</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Administri CDDB-konservejo-enskribojn</entry>
 	<entry id="1207" string="Automatic CDDB queries">Aŭtomata CDDB-pridemando</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">Ĝeneralaj agordoj</entry>
-	<entry id="1301" string="Configure selected encoder...">Agordi elektitan kodilon...</entry>
+	<entry id="1300" string="General settings">Ĝeneralaj agordoj</entry>
+	<entry id="1301" string="Configure selected encoder">Agordi elektitan kodilon</entry>
 	<entry id="1302" string="Active CD-ROM drive">Aktiva KD-ROM-diskligilo</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Helpindekso...</entry>
+	<entry id="1500" string="Help topics">Helpindekso</entry>
 	<entry id="1501" string="Show Tip of the Day">Montri la Konsilon de l'tago</entry>
 	<entry id="1502" string="Check for updates now">Kontroli nun pri aktualigaĵoj.</entry>
 	<entry id="1503" string="Check for updates at startup">Kontrolu por aktualigaĵoj dum la startigo</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Forigi la elektan enskribon el la farenda listo</entry>
       <entry id="2003" string="Clear the entire joblist">Forigi la kompletan farendan liston </entry>
       <entry id="2004" string="Query CDDB database">Demandi CDDB-datumbankon</entry>
-      <entry id="2005" string="Submit CDDB data...">Sendi CDDB-datumon...</entry>
+      <entry id="2005" string="Submit CDDB data">Sendi CDDB-datumon</entry>
       <entry id="2006" string="Configure general settings">Agordi ĝeneralajn agordojn </entry>
       <entry id="2007" string="Configure the selected audio encoder">Agordi la elektan kodilon</entry>
       <entry id="2008" string="Start the encoding process">Starti la kodadon</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">Kodata dosiero:</entry>
-      <entry id="3001" string="Time left:">Restata tempo:</entry>
-      <entry id="3002" string="Selected encoder:">Elektita kodilo:</entry>
-      <entry id="3003" string="File progress:">Progreso:</entry>
-      <entry id="3004" string="Output folder:">Dosierujo:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 Dosiero(j) farenda(j):</entry>
+      <entry id="3000" string="Encoding file">Kodata dosiero</entry>
+      <entry id="3001" string="Time left">Restata tempo</entry>
+      <entry id="3002" string="Selected encoder">Elektita kodilo</entry>
+      <entry id="3003" string="File progress">Progreso</entry>
+      <entry id="3004" string="Output folder">Dosierujo</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 Dosiero(j) farenda(j)</entry>
       <entry id="3006" string="none">neniu</entry>
       <entry id="3007" string="Show title info">Montri titolinformon</entry>
       <entry id="3008" string="Play">Legi</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">grandskribi la unuan literon</entry>
       <entry id="3029" string="all lower case">etskribi ĉion</entry>
       <entry id="3030" string="all upper case">grandskribi ĉion</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Elektu dosierujon por la kodita(j) dosiero(j):</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Elektu dosierujon por la kodita(j) dosiero(j)</entry>
       <entry id="3032" string="Sampling rate">Sampligado-kvoto</entry>
       <entry id="3033" string="Sample resolution">Samplo-distingivo</entry>
       <entry id="3034" string="Number of samples">Nombro da samploj</entry>
       <entry id="3035" string="Channels">Aŭdioŝaneloj</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="bit">bito</entry>
-      <entry id="3039" string="min">min</entry>
-      <entry id="3040" string="bytes">bajtoj</entry>
-      <entry id="3041" string="Length">Daŭro</entry>
-      <entry id="3042" string="File">Dosiero</entry>
-      <entry id="3043" string="Size">Grandeco</entry>
-      <entry id="3044" string="Bitrate">Bitkvanto</entry>
-      <entry id="3045" string="Audio Files">Aŭdiodosieroj</entry>
-      <entry id="3046" string="All Files">Ĉiuj dosieroj</entry>
-      <entry id="3047" string="Playlist Files">Leglisto-dosieroj</entry>
+      <entry id="3038" string="Length">Daŭro</entry>
+      <entry id="3039" string="File">Dosiero</entry>
+      <entry id="3040" string="Size">Grandeco</entry>
+      <entry id="3041" string="Bitrate">Bitkvanto</entry>
+      <entry id="3042" string="Audio Files">Aŭdiodosieroj</entry>
+      <entry id="3043" string="All Files">Ĉiuj dosieroj</entry>
+      <entry id="3044" string="Playlist Files">Leglisto-dosieroj</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Dosierujo</entry>
 	<entry id="3101" string="Add folder">Aldoni dosierujon</entry>
-	<entry id="3102" string="Choose folder:">Elekti dosierujon:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Elekti la dosierujon por aldoni al la laborlisto:</entry>
+	<entry id="3102" string="Choose folder">Elekti dosierujon</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Elekti la dosierujon por aldoni al la laborlisto</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,14 +177,14 @@
 	<entry id="3201" string="Pattern">Modelo</entry>
 	<entry id="3202" string="Start folder">Eliga dosierujo</entry>
 	<entry id="3203" string="Filename pattern">Modelo por dosiernomo</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">Elekti la dosierujon por aldoni al la laborlisto:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Elekti la dosierujon por aldoni al la laborlisto</entry>
       </section>
 
       <section name="Character set"/>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Vi ne elektis dosieron !</entry>
-	<entry id="3401" string="No files found matching pattern:">Neniu dosierujo korespondas al modelo:</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Neniu dosierujo korespondas al modelo: %1</entry>
       </section>
     </section>
 
@@ -211,7 +219,7 @@
 	<entry id="4105" string="No exact matches found">Neniu ekzakta korespondaĵo estas trovita</entry>
 	<entry id="4106" string="Multiple matches found">Diversaj korespondaĵoj estas trovitaj</entry>
 	<entry id="4107" string="Matches">Korespondaĵoj</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">Elektu la enskribon, kiun estas la plej bona por via KD:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">Elektu la enskribon, kiun estas la plej bona por via KD</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Ĉu vi volas poste okazigi tiun pridemandon denove?</entry>
 	<entry id="4110" string="none">neniu</entry>
 	<entry id="4111" string="Preview">Antaŭmontro</entry>
@@ -227,12 +235,12 @@
 	<entry id="4202" string="Query">Pridemandi</entry>
 	<entry id="4203" string="Query all">Pridemandi ĉiujn</entry>
 	<entry id="4204" string="Query string">Pridemandi ĉenon</entry>
-	<entry id="4205" string="CDDB queries to perform:">Farenda CDDB-pridemando:</entry>
+	<entry id="4205" string="CDDB queries to perform">Farenda CDDB-pridemando</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Forigi</entry>
-	<entry id="4301" string="CDDB entries to submit:">Sendenda CDDB-skribaĵo:</entry>
+	<entry id="4301" string="CDDB entries to submit">Sendenda CDDB-skribaĵo</entry>
 	<entry id="4302" string="Submit all">Sendi ĉiujn</entry>
 	<entry id="4303" string="CDDB data">CDDB-datumo</entry>
 	<entry id="4304" string="Submit">Sendi</entry>
@@ -246,7 +254,7 @@
 	<entry id="4400" string="CDDB data">CDDB-datumo</entry>
 	<entry id="4401" string="Update joblist with this information">Aktualigi laborliston kun tiuj informoj</entry>
 	<entry id="4402" string="Charset">Signokodo</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Elŝutitaj CDDB-enskriboj:</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Elŝutitaj CDDB-enskriboj</entry>
 	<entry id="4404" string="Disc name">KD-titolo</entry>
 	<entry id="4405" string="Preview">Antaŭmontro</entry>
 	<entry id="4406" string="Remove entry">Forigi</entry>
@@ -266,7 +274,7 @@
 	<entry id="5101" string="Encoder">Kodilo</entry>
 	<entry id="5102" string="Output folder">Eliga dosierujo</entry>
 	<entry id="5103" string="Browse">Elekti ujon</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Elektu dosierujon por la kodita(j) dosiero(j):</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Elektu dosierujon por la kodita(j) dosiero(j)</entry>
 	<entry id="5105" string="Use input file folder if possible">Uzi enigan dosierujon se eblas</entry>
 	<entry id="5106" string="Allow overwriting input file">Permesi anstataŭigi la enigan dosieron</entry>
 	<entry id="5107" string="Options">Opcioj</entry>
@@ -287,19 +295,19 @@
 	<entry id="5203" string="Browse">Elekti ujon</entry>
 	<entry id="5204" string="Use encoder output folder">Uzi elig-dosierujon de la kodilo</entry>
 	<entry id="5205" string="Filename pattern">Modelo por dosiernomo</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Elekti dosierujon por la leglist-dosieroj:</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Elekti dosierujon por la leglist-dosieroj</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Uzi lokan CDDB-datumbankon</entry>
 	<entry id="5301" string="Enable remote CDDB database">Uzi forigitan CDDB-datumbankon</entry>
-	<entry id="5302" string="CDDB path:">CDDB-dosierujo:</entry>
+	<entry id="5302" string="CDDB path">CDDB-dosierujo</entry>
 	<entry id="5303" string="Browse">Elekti ujon</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Elekti la dosierujon de la CDDB-datumbanko:</entry>
-	<entry id="5305" string="CDDB access mode:">CDDB-atinga moduso:</entry>
-	<entry id="5306" string="CDDB server:">CDDB-servilo:</entry>
-	<entry id="5307" string="Port:">Konektejo:</entry>
-	<entry id="5308" string="eMail address:">Retadreso:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Elekti la dosierujon de la CDDB-datumbanko</entry>
+	<entry id="5305" string="CDDB access mode">CDDB-atinga moduso</entry>
+	<entry id="5306" string="CDDB server">CDDB-servilo</entry>
+	<entry id="5307" string="Port">Konektejo</entry>
+	<entry id="5308" string="eMail address">Retadreso</entry>
 	<entry id="5309" string="HTTP settings">HTTP-agordoj</entry>
 	<entry id="5310" string="Proxy settings">Proxy-agordoj</entry>
 	<entry id="5311" string="Options">Opcioj</entry>
@@ -311,13 +319,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Plivastaj CDDB-agordoj</entry>
 	  <entry id="5331" string="CGI scripts">CGI-skriptoj</entry>
-	  <entry id="5332" string="CDDB query script:">CDDB-demandskripto:</entry>
-	  <entry id="5333" string="CDDB submit script:">CDDB-sendskripto:</entry>
+	  <entry id="5332" string="CDDB query script">CDDB-demandskripto</entry>
+	  <entry id="5333" string="CDDB submit script">CDDB-sendskripto</entry>
 	  <entry id="5334" string="no proxy">neniu proxy</entry>
-	  <entry id="5335" string="Proxy type:">Proxytipo:</entry>
-	  <entry id="5336" string="Proxy server:">Proxyservilo:</entry>
-	  <entry id="5337" string="User name:">Uzantnomo:</entry>
-	  <entry id="5338" string="Password:">Pasvorto:</entry>
+	  <entry id="5335" string="Proxy type">Proxytipo</entry>
+	  <entry id="5336" string="Proxy server">Proxyservilo</entry>
+	  <entry id="5337" string="User name">Uzantnomo</entry>
+	  <entry id="5338" string="Password">Pasvorto</entry>
 	</section>
 
 	<section name="Errors">
@@ -327,7 +335,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">Elekti lingvon:</entry>
+	<entry id="5400" string="Select language">Elekti lingvon</entry>
 	<entry id="5401" string="Edit language file">Redakti la lingvodosieron</entry>
 	<entry id="5402" string="Information">Informo</entry>
 	<entry id="5403" string="Encoding">Signokodo</entry>
@@ -338,12 +346,12 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">Informetiketo</entry>
 	<entry id="5501" string="Tag formats">Etiket-kodadoj</entry>
-	<entry id="5502" string="Default comment string:">Standardkomento:</entry>
+	<entry id="5502" string="Default comment string">Standardkomento</entry>
 	<entry id="5504" string="Filename pattern">Modelo por dosiernomo</entry>
-	<entry id="5505" string="Encoding:">Signokodo:</entry>
+	<entry id="5505" string="Encoding">Signokodo</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -402,7 +410,7 @@
       <entry id="9003" string="Read CD Text">Legi la KD-tekston</entry>
       <entry id="9004" string="Read cdplayer.ini">Legi cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Ripilo-agordoj</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">Aktivigi paranojan moduson:</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktivigi paranojan moduson</entry>
       <entry id="9007" string="Overlap only">Nur kovri parte</entry>
       <entry id="9008" string="No verify">Ne kontroli</entry>
       <entry id="9009" string="No scratch repair">Ne ripari la grataĵoj</entry>
@@ -452,16 +460,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Antaŭagordoj</entry>
-	  <entry id="32101" string="Use preset:">Uzi antaŭagordojn:</entry>
+	  <entry id="32101" string="Use preset">Uzi antaŭagordojn</entry>
 	  <entry id="32102" string="Custom settings">Propraj agordoj</entry>
 	  <entry id="32103" string="Medium, Fast">Meza, Rapida</entry>
 	  <entry id="32104" string="Standard, Fast">Standarda, Rapida</entry>
 	  <entry id="32105" string="Extreme, Fast">Ekstrema, Rapida</entry>
 	  <entry id="32106" string="Bitrate">Bitkvanto</entry>
 	  <entry id="32107" string="Quality">Kvalito</entry>
-	  <entry id="32108" string="Set bitrate:">Bitkvanto:</entry>
-	  <entry id="32109" string="Set ratio:">Proporcio:</entry>
-	  <entry id="32110" string="Set quality:">Kvalito:</entry>
+	  <entry id="32108" string="Set bitrate">Bitkvanto</entry>
+	  <entry id="32109" string="Set ratio">Proporcio</entry>
+	  <entry id="32110" string="Set quality">Kvalito</entry>
 	  <entry id="32111" string="worse">malplibona</entry>
 	  <entry id="32112" string="better">plibona</entry>
 	  <entry id="32113" string="VBR mode">VBR-moduso</entry>
@@ -483,13 +491,13 @@
 	  <entry id="32209" string="Joint Stereo">Stereokunigi</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forci la stereokunigo</entry>
 	  <entry id="32211" string="VBR bitrate range">VBR-bitkvanta regiono</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Minimuma VBR-bitkvanto:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Maksimuma VBR-bitkvanto:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Minimuma VBR-bitkvanto</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Maksimuma VBR-bitkvanto</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH:">Aktivigi ATH:</entry>
+	  <entry id="32301" string="Enable ATH">Aktivigi ATH</entry>
 	  <entry id="32302" string="Use default setting">Uzi antaŭagordojn</entry>
 	  <entry id="32303" string="Psycho acoustic model">Psikoakustika modelo</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Uzi Temporal-Masking-Effekt</entry>
@@ -502,11 +510,11 @@
 	  <entry id="32401" string="auto">aŭtomata</entry>
 	  <entry id="32402" string="no resampling">ne resampligado</entry>
 	  <entry id="32403" string="Highpass filter">Highpass filtrilo</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Highpass-frekvenzo en Hz:</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Highpass-larĝo en Hz:</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Highpass-frekvenzo en Hz</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Highpass-larĝo en Hz</entry>
 	  <entry id="32406" string="Lowpass filter">Lowpass-filtrilo</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Lowpass-frekvenco en Hz:</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Lowpass-larĝo en Hz:</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Lowpass-frekvenco en Hz</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Lowpass-larĝo en Hz</entry>
 	  <entry id="32409" string="Misc settings">Aliaj agordoj</entry>
 	  <entry id="32410" string="Disable all filtering">Malŝalti ĉiujn filtradojn</entry>
 	</section>
@@ -519,14 +527,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Bitkvanto</entry>
 	  <entry id="33201" string="Bitrate / Quality">Bitkvanto / Kvalito</entry>
-	  <entry id="33202" string="Bitrate per channel:">Bitkvantoj po ŝaneloj:</entry>
-	  <entry id="33203" string="Set quality:">Kvalito:</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitkvantoj po ŝaneloj</entry>
+	  <entry id="33203" string="Set quality">Kvalito</entry>
 	  <entry id="33204" string="Stereo mode">Stereomoduso</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Permesi la stereokunigon</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Temporal-Noise-Shaping</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Uzi Temporal Noise Shaping-on</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maksimuma bendkapacito</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Maksimuma AAC-frekvenca bendkapacito por uzi (Hz):</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimuma AAC-frekvenca bendkapacito por uzi (Hz)</entry>
 	</section>
 
 	<section name="Format">
@@ -547,7 +555,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Antaŭagordoj</entry>
-	  <entry id="34101" string="Use preset:">Uzi antaŭagordojn:</entry>
+	  <entry id="34101" string="Use preset">Uzi antaŭagordojn</entry>
 	  <entry id="34102" string="Custom settings">Propraj agordoj</entry>
 	  <entry id="34103" string="Fastest encoding">Plejrapida kodado</entry>
 	  <entry id="34104" string="Best compression">Plejbona kompaktigo</entry>
@@ -559,14 +567,13 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Uzi flueblan subgrupon</entry>
-	  <entry id="34201" string="Blocksize:">Blokgrandeco:</entry>
-	  <entry id="34202" string="bytes">bajtoj</entry>
+	  <entry id="34201" string="Blocksize">Blokgrandeco</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">Apodizo</entry>
-	  <entry id="34301" string="Apodization function(s):">Apodiz-funkcio(j):</entry>
-	  <entry id="34302" string="Note:">Konsilo:</entry>
+	  <entry id="34300" string="Signal processing">Apodizo</entry>
+	  <entry id="34301" string="Window function(s)">Apodiz-funkcio(j)</entry>
+	  <entry id="34302" string="Note">Konsilo</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Vi povas apartigi pluraj funkcioj per punktokomoj.</entry>
 	  <entry id="34304" string="Linear predictor">Lineara prediktoro</entry>
 	  <entry id="34305" string="Maximum LPC order">Maksimuma LPC-rango</entry>
@@ -589,13 +596,15 @@
 	<entry id="35004" string="Bitrate">Bitkvanto</entry>
       </section>
 
-      <section name="WMA"/>
+      <section name="WMA">
+	<entry id="36008" string="Quality">Kvalito</entry>
+      </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Bitkvanto</entry>
-	<entry id="37001" string="Bitrate per channel:">Bitkvantoj po ŝaneloj:</entry>
+	<entry id="37001" string="Bitrate per channel">Bitkvantoj po ŝaneloj</entry>
 	<entry id="37002" string="Preselection">Antaŭelekto</entry>
-	<entry id="37003" string="Number of preselection candidates:">Nombro de la antaŭelektaj kandidatoj:</entry>
+	<entry id="37003" string="Number of preselection candidates">Nombro de la antaŭelektaj kandidatoj</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -611,11 +620,11 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">Aŭtomata</entry>
 	<entry id="40015" string="Quality">Kvalito</entry>
-	<entry id="40021" string="Options">Opcioj</entry>
+	<entry id="40020" string="Options">Opcioj</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">Dosierformato:</entry>
+	<entry id="41001" string="File format">Dosierformato</entry>
 	<entry id="41003" string="mono">mono</entry>
       </section>
     </section>

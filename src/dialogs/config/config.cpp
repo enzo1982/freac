@@ -48,7 +48,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	btn_ok->onAction.Connect(&ConfigDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	text_config		= new Text(i18n->TranslateString("Active configuration:"), Point(7, 11));
+	text_config		= new Text(i18n->AddColon(i18n->TranslateString("Active configuration")), Point(7, 11));
 
 	combo_config		= new ComboBox(Point(text_config->GetUnscaledTextWidth() + 15, 8), Size());
 

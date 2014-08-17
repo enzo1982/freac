@@ -388,7 +388,7 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 
 		i18n->SetContext("Joblist::Errors");
 
-		BoCA::Utilities::ErrorMessage(i18n->TranslateString("No files found matching pattern:").Append(" ").Append(pattern));
+		BoCA::Utilities::ErrorMessage(i18n->TranslateString("No files found matching pattern: %1").Replace("%1", pattern));
 	}
 	else
 	{
@@ -881,7 +881,7 @@ Void BonkEnc::JobList::UpdateTextLine()
 
 	i18n->SetContext("Joblist");
 
-	text->SetText(i18n->TranslateString("%1 file(s) in joblist:").Replace("%1", String::FromInt(GetNOfTracks())));
+	text->SetText(i18n->AddColon(i18n->TranslateString("%1 file(s) in joblist").Replace("%1", String::FromInt(GetNOfTracks()))));
 }
 
 String BonkEnc::JobList::GetEntryText(const Track &track) const

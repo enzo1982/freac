@@ -31,7 +31,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bitti</entry>
+      <entry id="516" string="%1 bytes">%1 bittejä</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">Lisää</entry>
 	<entry id="1101" string="Remove">Posta</entry>
-	<entry id="1102" string="Load joblist...">Avaa työlista...</entry>
-	<entry id="1103" string="Save joblist...">Tallenna työlista...</entry>
+	<entry id="1102" string="Load joblist">Avaa työlista</entry>
+	<entry id="1103" string="Save joblist">Tallenna työlista</entry>
 	<entry id="1104" string="Clear joblist">Tyhjennä työlista</entry>
 	<entry id="1105" string="Exit">Poistu</entry>
 	<entry id="1106" string="Audio file(s)">Äänitiedosto</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Kysy CDDB-tietokanta</entry>
-	<entry id="1201" string="Submit CDDB data...">Syötä CDDB-data...</entry>
+	<entry id="1201" string="Submit CDDB data">Syötä CDDB-data</entry>
 	<entry id="1202" string="Query CDDB database later">Kysy CDDB-tietokantaa myöhemmin</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Näytä jonossa olevat CDDB-merkinnät...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Näytä jonossa olevat CDDB-kysymykset...</entry>
+	<entry id="1203" string="Show queued CDDB entries">Näytä jonossa olevat CDDB-merkinnät</entry>
+	<entry id="1204" string="Show queued CDDB queries">Näytä jonossa olevat CDDB-kysymykset</entry>
 	<entry id="1205" string="Enable CDDB cache">Ota CDDB-välimuisti käyttään</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Hallitse CDDB-välimuistimerkintöjä...</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Hallitse CDDB-välimuistimerkintöjä</entry>
 	<entry id="1207" string="Automatic CDDB queries">Automaattinen CDDB-kysely</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">Yleiset asetukset...</entry>
-	<entry id="1301" string="Configure selected encoder...">Määritä valitun muuntimen asetukset...</entry>
+	<entry id="1300" string="General settings">Yleiset asetukset</entry>
+	<entry id="1301" string="Configure selected encoder">Määritä valitun muuntimen asetukset</entry>
 	<entry id="1302" string="Active CD-ROM drive">Valittu CD-asema</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Näytä ohje...</entry>
+	<entry id="1500" string="Help topics">Näytä ohje</entry>
 	<entry id="1501" string="Show Tip of the Day">Näytä Päivän vihje</entry>
 	<entry id="1502" string="Check for updates now">Tarkista päivitykset</entry>
 	<entry id="1503" string="Check for updates at startup">Tarkista päivitykset heti ohjelman käynnistyessä</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Poista valitut tiedostot työlistalta</entry>
       <entry id="2003" string="Clear the entire joblist">Tyhjennä koko työlista</entry>
       <entry id="2004" string="Query CDDB database">Kysy CDDB-tietokanta</entry>
-      <entry id="2005" string="Submit CDDB data...">Syötä CDDB-data...</entry>
+      <entry id="2005" string="Submit CDDB data">Syötä CDDB-data</entry>
       <entry id="2006" string="Configure general settings">Määritä yleiset asetukset</entry>
       <entry id="2007" string="Configure the selected audio encoder">Määritä valittua äänenmuunninta</entry>
       <entry id="2008" string="Start the encoding process">Aloita muuntaminen</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">Muunnettava tiedosto:</entry>
-      <entry id="3001" string="Time left:">Aikaa jäljellä:</entry>
-      <entry id="3002" string="Selected encoder:">Valittu muunnin:</entry>
-      <entry id="3003" string="File progress:">Muunnon edistyminen:</entry>
-      <entry id="3004" string="Output folder:">Tallennuskohde:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 tiedosto(a) työlistassa:</entry>
+      <entry id="3000" string="Encoding file">Muunnettava tiedosto</entry>
+      <entry id="3001" string="Time left">Aikaa jäljellä</entry>
+      <entry id="3002" string="Selected encoder">Valittu muunnin</entry>
+      <entry id="3003" string="File progress">Muunnon edistyminen</entry>
+      <entry id="3004" string="Output folder">Tallennuskohde</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 tiedosto(a) työlistassa</entry>
       <entry id="3006" string="none">ei mitään</entry>
       <entry id="3007" string="Show title info">Näytä otsikon tiedot</entry>
       <entry id="3008" string="Play">Toista</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">Ensimmäinen kirjain isolla</entry>
       <entry id="3029" string="all lower case">kaikki pienillä kirjaimilla</entry>
       <entry id="3030" string="all upper case">kaikki isoilla kirjaimilla</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Valitse kohde minne muunnetut tiedostot laitetaan:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Valitse kohde minne muunnetut tiedostot laitetaan</entry>
       <entry id="3032" string="Sampling rate">Näytteen nopeus</entry>
       <entry id="3033" string="Sample resolution">Näytteen resoluutio</entry>
       <entry id="3034" string="Number of samples">Näytteen numero</entry>
       <entry id="3035" string="Channels">Kanavat</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="bit">bitti</entry>
-      <entry id="3039" string="min">min</entry>
-      <entry id="3040" string="bytes">bittejä</entry>
-      <entry id="3041" string="Length">Pituus</entry>
-      <entry id="3042" string="File">Tiedosto</entry>
-      <entry id="3043" string="Size">Koko</entry>
-      <entry id="3044" string="Bitrate">Bittivirran nopeus</entry>
-      <entry id="3045" string="Audio Files">Äänitiedosto</entry>
-      <entry id="3046" string="All Files">Kaikki tiedostot</entry>
-      <entry id="3047" string="Playlist Files">Toistolistatiedosto</entry>
+      <entry id="3038" string="Length">Pituus</entry>
+      <entry id="3039" string="File">Tiedosto</entry>
+      <entry id="3040" string="Size">Koko</entry>
+      <entry id="3041" string="Bitrate">Bittivirran nopeus</entry>
+      <entry id="3042" string="Audio Files">Äänitiedosto</entry>
+      <entry id="3043" string="All Files">Kaikki tiedostot</entry>
+      <entry id="3044" string="Playlist Files">Toistolistatiedosto</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Kansio</entry>
 	<entry id="3101" string="Add folder">Lisää kansiosta</entry>
-	<entry id="3102" string="Choose folder:">Kansio:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Valitse kansio:</entry>
+	<entry id="3102" string="Choose folder">Kansio</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Valitse kansio</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,14 +177,14 @@
 	<entry id="3201" string="Pattern">Malli</entry>
 	<entry id="3202" string="Start folder">Kansio</entry>
 	<entry id="3203" string="Filename pattern">Mallitiedosto</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">Valitse kansio:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Valitse kansio</entry>
       </section>
 
       <section name="Character set"/>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Et ole valinnut tiedostoa!</entry>
-	<entry id="3401" string="No files found matching pattern:">Kansiosta ei löytynyt malleja:</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Kansiosta ei löytynyt malleja: %1</entry>
       </section>
     </section>
 
@@ -211,7 +219,7 @@
 	<entry id="4105" string="No exact matches found">Ei löytynyt täsmällisiä tuloksia</entry>
 	<entry id="4106" string="Multiple matches found">Löydettiin monia tuloksia</entry>
 	<entry id="4107" string="Matches">Tulokset</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">Valitse levyäsi parhaiten vastaava tulos:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">Valitse levyäsi parhaiten vastaava tulos</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Haluatko suorittaa tämän kysymyksen myöhemmin uudelleen?</entry>
 	<entry id="4110" string="none">ei mitään</entry>
 	<entry id="4111" string="Preview">Ennakkoesitys</entry>
@@ -227,12 +235,12 @@
 	<entry id="4202" string="Query">Kysy</entry>
 	<entry id="4203" string="Query all">Kysele kaikki</entry>
 	<entry id="4204" string="Query string">Kyselymerkkijono</entry>
-	<entry id="4205" string="CDDB queries to perform:">CDDB-kyselyt suoritetaan:</entry>
+	<entry id="4205" string="CDDB queries to perform">CDDB-kyselyt suoritetaan</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Poista merkintä</entry>
-	<entry id="4301" string="CDDB entries to submit:">CDDB-merkinnät syötetään:</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB-merkinnät syötetään</entry>
 	<entry id="4302" string="Submit all">Syötä kaikki</entry>
 	<entry id="4303" string="CDDB data">CDDB-data</entry>
 	<entry id="4304" string="Submit">Syötä</entry>
@@ -246,7 +254,7 @@
 	<entry id="4400" string="CDDB data">CDDB-data</entry>
 	<entry id="4401" string="Update joblist with this information">Päivitä työlista näillä tiedoilla</entry>
 	<entry id="4402" string="Charset">Merkistö</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Tallennetut CDDB-merkinnät:</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Tallennetut CDDB-merkinnät</entry>
 	<entry id="4404" string="Disc name">Levyn nimi</entry>
 	<entry id="4405" string="Preview">Ennakkoesitys</entry>
 	<entry id="4406" string="Remove entry">Poista merkintä</entry>
@@ -267,7 +275,7 @@
 	<entry id="5101" string="Encoder">Muunnin</entry>
 	<entry id="5102" string="Output folder">Tulosteen tallennuskohde</entry>
 	<entry id="5103" string="Browse">Selaa</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Valitse kohde minne muunnetut tiedostot laitetaan:</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Valitse kohde minne muunnetut tiedostot laitetaan</entry>
 	<entry id="5105" string="Use input file folder if possible">Käytä syötetiedoston kansiota jos mahdollista</entry>
 	<entry id="5106" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
 	<entry id="5107" string="Options">Asetukset</entry>
@@ -288,19 +296,19 @@
 	<entry id="5203" string="Browse">Selaa</entry>
 	<entry id="5204" string="Use encoder output folder">Käytä muuntimen tulostekansiota</entry>
 	<entry id="5205" string="Filename pattern">Mallitiedosto</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Valitse kansio, jonne soittolistatiedostot sijoitetaan:</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Valitse kansio, jonne soittolistatiedostot sijoitetaan</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Salli paikallinen CDDB-tietokanta</entry>
 	<entry id="5301" string="Enable remote CDDB database">Salli CDDB-tietokannan kaukosäätämistä</entry>
-	<entry id="5302" string="CDDB path:">CDDB-kansio:</entry>
+	<entry id="5302" string="CDDB path">CDDB-kansio</entry>
 	<entry id="5303" string="Browse">Selaa</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Valitse CDDB-tietokannan kansio:</entry>
-	<entry id="5305" string="CDDB access mode:">CDDB-kirjautumistila:</entry>
-	<entry id="5306" string="CDDB server:">CDDB-palvelin:</entry>
-	<entry id="5307" string="Port:">Portti:</entry>
-	<entry id="5308" string="eMail address:">Sähköpostiosoite:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Valitse CDDB-tietokannan kansio</entry>
+	<entry id="5305" string="CDDB access mode">CDDB-kirjautumistila</entry>
+	<entry id="5306" string="CDDB server">CDDB-palvelin</entry>
+	<entry id="5307" string="Port">Portti</entry>
+	<entry id="5308" string="eMail address">Sähköpostiosoite</entry>
 	<entry id="5309" string="HTTP settings">HTTP-asetukset</entry>
 	<entry id="5310" string="Proxy settings">Välityspalvelimen asetukset</entry>
 	<entry id="5311" string="Options">Asetukset</entry>
@@ -312,13 +320,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Laajennetut CDDB-asetukset</entry>
 	  <entry id="5331" string="CGI scripts">CGI-lausekkeet</entry>
-	  <entry id="5332" string="CDDB query script:">CDDB-kyselylauseke:</entry>
-	  <entry id="5333" string="CDDB submit script:">CDDB-lisäyslauseke:</entry>
+	  <entry id="5332" string="CDDB query script">CDDB-kyselylauseke</entry>
+	  <entry id="5333" string="CDDB submit script">CDDB-lisäyslauseke</entry>
 	  <entry id="5334" string="no proxy">ei välityspalvelinta</entry>
-	  <entry id="5335" string="Proxy type:">Palvelimen tyyppi:</entry>
-	  <entry id="5336" string="Proxy server:">Välityspalvelin:</entry>
-	  <entry id="5337" string="User name:">Käyttäjän nimi:</entry>
-	  <entry id="5338" string="Password:">Salasana:</entry>
+	  <entry id="5335" string="Proxy type">Palvelimen tyyppi</entry>
+	  <entry id="5336" string="Proxy server">Välityspalvelin</entry>
+	  <entry id="5337" string="User name">Käyttäjän nimi</entry>
+	  <entry id="5338" string="Password">Salasana</entry>
 	</section>
 
 	<section name="Errors">
@@ -328,7 +336,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">Valitse kieli:</entry>
+	<entry id="5400" string="Select language">Valitse kieli</entry>
 	<entry id="5401" string="Edit language file">Muokkaa kielitiedostoa</entry>
 	<entry id="5402" string="Information">Tietoja</entry>
 	<entry id="5403" string="Encoding">Muunnetaan</entry>
@@ -339,13 +347,13 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">Info-tagit</entry>
 	<entry id="5501" string="Tag formats">Tagit muunnetaan</entry>
-	<entry id="5502" string="Default comment string:">Kommentin merkkijonon oletusarvo:</entry>
+	<entry id="5502" string="Default comment string">Kommentin merkkijonon oletusarvo</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Korvaa olemassaolevat kommentit alkuperäisillä kommenteilla</entry>
 	<entry id="5504" string="Filename pattern">Mallitiedosto</entry>
-	<entry id="5505" string="Encoding:">Muunnetaan:</entry>
+	<entry id="5505" string="Encoding">Muunnetaan</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -407,12 +415,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Valittu CD-asema</entry>
-      <entry id="9001" string="Set drive speed limit:">Aseta nopeusrajoitus ajurille:</entry>
+      <entry id="9001" string="Set drive speed limit">Aseta nopeusrajoitus ajurille</entry>
       <entry id="9002" string="CD information">CD-tiedot</entry>
       <entry id="9003" string="Read CD Text">Lue CD-teksti</entry>
       <entry id="9004" string="Read cdplayer.ini">Lue cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Kopiointiasetukset</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">Ota käyttöön cdparanoia-tila:</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Ota käyttöön cdparanoia-tila</entry>
       <entry id="9007" string="Overlap only">Vain limitys</entry>
       <entry id="9008" string="No verify">Ei varmennusta</entry>
       <entry id="9009" string="No scratch repair">Ei naarmujenkorjausta</entry>
@@ -462,16 +470,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Esiasetukset</entry>
-	  <entry id="32101" string="Use preset:">Käytä esiasetusta:</entry>
+	  <entry id="32101" string="Use preset">Käytä esiasetusta</entry>
 	  <entry id="32102" string="Custom settings">Muokatut asetukset</entry>
 	  <entry id="32103" string="Medium, Fast">Keskitaso, Nopea</entry>
 	  <entry id="32104" string="Standard, Fast">Vakio, Hidas</entry>
 	  <entry id="32105" string="Extreme, Fast">Äärimmäinen, Nopea</entry>
 	  <entry id="32106" string="Bitrate">Bittivirran nopeus</entry>
 	  <entry id="32107" string="Quality">Laatu</entry>
-	  <entry id="32108" string="Set bitrate:">Aseta bittivirta:</entry>
-	  <entry id="32109" string="Set ratio:">Aseta suhde:</entry>
-	  <entry id="32110" string="Set quality:">Aseta laatu:</entry>
+	  <entry id="32108" string="Set bitrate">Aseta bittivirta</entry>
+	  <entry id="32109" string="Set ratio">Aseta suhde</entry>
+	  <entry id="32110" string="Set quality">Aseta laatu</entry>
 	  <entry id="32111" string="worse">huono</entry>
 	  <entry id="32112" string="better">paras</entry>
 	  <entry id="32113" string="VBR mode">VBR-tila</entry>
@@ -493,13 +501,13 @@
 	  <entry id="32209" string="Joint Stereo">Yhteinen Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Pakota yhteinen Stereo</entry>
 	  <entry id="32211" string="VBR bitrate range">VBR:n bittivirta-alue</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Aseta pienin VBR-bittivirta:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Aseta suurin VBR-bittivirta:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Aseta pienin VBR-bittivirta</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Aseta suurin VBR-bittivirta</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH:">Salli ATH:</entry>
+	  <entry id="32301" string="Enable ATH">Salli ATH</entry>
 	  <entry id="32302" string="Use default setting">Käytä oletusasetuksia</entry>
 	  <entry id="32303" string="Psycho acoustic model">Hullun akustisen malli</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Käytä väliaikaisia naamioefektejä</entry>
@@ -512,11 +520,11 @@
 	  <entry id="32401" string="auto">automaattinen</entry>
 	  <entry id="32402" string="no resampling">ei uutta näytteenottoa</entry>
 	  <entry id="32403" string="Highpass filter">Korkean väylän suodatin</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Aseta korkean väylän taajuus (Hz):</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Aseta korkean väylän leveys (Hz):</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Aseta korkean väylän taajuus (Hz)</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Aseta korkean väylän leveys (Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Matalan väylän suodatin</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Aseta matalan väylän taajuus (Hz):</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Aseta matalan väylän leveys (Hz):</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Aseta matalan väylän taajuus (Hz)</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Aseta matalan väylän leveys (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Sekalaiset asetukset</entry>
 	  <entry id="32410" string="Disable all filtering">Poista kaikki suodattimet käytöstä</entry>
 	</section>
@@ -529,14 +537,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Bittivirran nopeus</entry>
 	  <entry id="33201" string="Bitrate / Quality">Bittivirta / Laatu</entry>
-	  <entry id="33202" string="Bitrate per channel:">Bittivirta kanavaa kohti:</entry>
-	  <entry id="33203" string="Set quality:">Aseta laatu:</entry>
+	  <entry id="33202" string="Bitrate per channel">Bittivirta kanavaa kohti</entry>
+	  <entry id="33203" string="Set quality">Aseta laatu</entry>
 	  <entry id="33204" string="Stereo mode">Stereotila</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Salli yhteinen Stereo</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Ajallinen melunmuokkaus</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Ajallinen melunmuokkaus</entry>
 	  <entry id="33208" string="Maximum bandwidth">Suuri kaistanleveys</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Suurin käytettävä AAC:n taajuuskaista (Hz):</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Suurin käytettävä AAC:n taajuuskaista (Hz)</entry>
 	</section>
 
 	<section name="Format">
@@ -557,7 +565,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Esiasetukset</entry>
-	  <entry id="34101" string="Use preset:">Käytä esiasetusta:</entry>
+	  <entry id="34101" string="Use preset">Käytä esiasetusta</entry>
 	  <entry id="34102" string="Custom settings">Muokatut asetukset</entry>
 	  <entry id="34103" string="Fastest encoding">Nopein muuntaminen</entry>
 	  <entry id="34104" string="Best compression">Paras puristus</entry>
@@ -569,15 +577,14 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Käytä virroitettua osajoukkoa</entry>
-	  <entry id="34201" string="Blocksize:">Lohkokoko:</entry>
-	  <entry id="34202" string="bytes">bittejä</entry>
+	  <entry id="34201" string="Blocksize">Lohkokoko</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">Apodisoi</entry>
-	  <entry id="34301" string="Apodization function(s):">Apodisoi tehtävä(t):</entry>
-	  <entry id="34302" string="Note:">Muistiinpanot:</entry>
-	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Voit määrittää useita toimintoja erottmalla ne toisistaan puolipisteellä.</entry>
+	  <entry id="34300" string="Signal processing">Apodisoi</entry>
+	  <entry id="34301" string="Window function(s)">Apodisoi tehtävä(t)</entry>
+	  <entry id="34302" string="Note">Muistiinpanot</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Voit määrittää useita toimintoja erottmalla ne toisistaan&#10;puolipisteellä.</entry>
 	  <entry id="34304" string="Linear predictor">Lineaarinen ennustaja</entry>
 	  <entry id="34305" string="Maximum LPC order">Maksimi LPC-sääntö</entry>
 	  <entry id="34306" string="disabled">ei käytössä</entry>
@@ -608,15 +615,16 @@
 	<entry id="36005" string="Write uncompressed WMA files">Kirjoita pakkaamattomat WMA-tiedostot</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">Automaattisesti valittu tiedostomuoto perustuu asetuksiin ja syötetiedostoihin</entry>
 	<entry id="36007" string="Use VBR encoding">Käytä VBR-muuntamista</entry>
-	<entry id="36008" string="Use 2-pass encoding">Käytä 2-tie muuntamista </entry>
+	<entry id="36008" string="Quality">Laatu</entry>
 	<entry id="36009" string="Target bitrate">Bittinopeuskohde</entry>
+	<entry id="36010" string="Use 2-pass encoding">Käytä 2-tie muuntamista </entry>
       </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Bittivirran nopeus</entry>
-	<entry id="37001" string="Bitrate per channel:">Bittivirta kanavaa kohti:</entry>
+	<entry id="37001" string="Bitrate per channel">Bittivirta kanavaa kohti</entry>
 	<entry id="37002" string="Preselection">Esivalinta</entry>
-	<entry id="37003" string="Number of preselection candidates:">Esivalittujen ehdokkaiden määrä:</entry>
+	<entry id="37003" string="Number of preselection candidates">Esivalittujen ehdokkaiden määrä</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -632,12 +640,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">Automaattinen</entry>
 	<entry id="40015" string="Quality">Laatu</entry>
-	<entry id="40021" string="Options">Asetukset</entry>
+	<entry id="40020" string="Options">Asetukset</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">Tiedostomuoto:</entry>
-	<entry id="41002" string="Audio format:">Äänimuoto:</entry>
+	<entry id="41001" string="File format">Tiedostomuoto</entry>
+	<entry id="41002" string="Audio format">Äänimuoto</entry>
 	<entry id="41003" string="mono">mono</entry>
       </section>
     </section>

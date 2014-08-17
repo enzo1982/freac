@@ -32,7 +32,7 @@ BonkEnc::ConfigureResources::ConfigureResources()
 	check_enable_openmp	= new CheckBox(i18n->TranslateString("Enable multi core processing"), Point(10, 13), Size(group_cpu->GetWidth() - 20, 0), &enableOpenMP);
 	check_enable_openmp->onAction.Connect(&ConfigureResources::ToggleOpenMP, this);
 
-	text_threads		= new Text(i18n->TranslateString("Number of threads to use:"), Point(10, 40));
+	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of threads to use")), Point(10, 40));
 	text_threads_value	= new Text(i18n->TranslateString("auto"), Point(350, 40));
 	text_threads_value->SetX(group_cpu->GetWidth() - text_threads_value->GetUnscaledTextWidth() - 10);
 

@@ -103,7 +103,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 
 	group_filename		= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 171), Size(552, 43));
 
-	text_filename		= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(10, 15));
+	text_filename		= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(10, 15));
 	edit_filename		= new EditBox(playlistOutputPattern, Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(525 - text_filename->GetUnscaledTextWidth(), 0), 0);
 
 	list_filename		= new List();
@@ -156,7 +156,7 @@ Void BonkEnc::ConfigurePlaylists::SelectDir()
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the playlist files will be placed:")));
+	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder in which the playlist files will be placed"))));
 	dialog->SetDirName(Utilities::GetAbsoluteDirName(edit_outdir->GetText()));
 
 	if (dialog->ShowDialog() == Success())

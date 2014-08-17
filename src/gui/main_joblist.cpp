@@ -395,14 +395,14 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	progress_total->SetOrientation(OR_LOWERLEFT);
 	progress_total->Deactivate();
 
-	edb_trackPercent = new EditBox("0%", Point(0, 51), Size(33, 0), 4);
+	edb_trackPercent = new EditBox(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"), Point(0, 51), Size(33, 0), 4);
 	edb_trackPercent->SetOrientation(OR_LOWERLEFT);
 	edb_trackPercent->Deactivate();
 
 	txt_splitPercent		= new Text("/", Point(0, 48));
 	txt_splitPercent->SetOrientation(OR_LOWERLEFT);
 
-	edb_totalPercent = new EditBox("0%", Point(0, 51), Size(33, 0), 4);
+	edb_totalPercent = new EditBox(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"), Point(0, 51), Size(33, 0), 4);
 	edb_totalPercent->SetOrientation(OR_LOWERLEFT);
 	edb_totalPercent->Deactivate();
 
@@ -731,12 +731,12 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 
 	/* Change labels of joblist  widgets.
 	 */
-	txt_filename->SetText(i18n->TranslateString("Encoding file:"));
-	txt_time->SetText(i18n->TranslateString("Time left:"));
-	txt_format->SetText(i18n->TranslateString("Active decoder:"));
-	txt_encoder->SetText(i18n->TranslateString("Selected encoder:"));
-	txt_progress->SetText(i18n->TranslateString("File progress:"));
-	txt_outdir->SetText(i18n->TranslateString("Output folder:"));
+	txt_filename->SetText(i18n->AddColon(i18n->TranslateString("Encoding file")));
+	txt_time->SetText(i18n->AddColon(i18n->TranslateString("Time left")));
+	txt_format->SetText(i18n->AddColon(i18n->TranslateString("Active decoder")));
+	txt_encoder->SetText(i18n->AddColon(i18n->TranslateString("Selected encoder")));
+	txt_progress->SetText(i18n->AddColon(i18n->TranslateString("File progress")));
+	txt_outdir->SetText(i18n->AddColon(i18n->TranslateString("Output folder")));
 
 	edb_filename->SetText(i18n->TranslateString("none"));
 	edb_format->SetText(i18n->TranslateString("unknown"));
@@ -748,12 +748,12 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
 	check_playlist->SetText(i18n->TranslateString("Create playlist"));
 
-	info_text_artist->SetText(i18n->TranslateString("Artist").Append(":"));
-	info_text_album->SetText(i18n->TranslateString("Album").Append(":"));
-	info_text_title->SetText(i18n->TranslateString("Title").Append(":"));
-	info_text_track->SetText(i18n->TranslateString("Track").Append(":"));
-	info_text_year->SetText(i18n->TranslateString("Year").Append(":"));
-	info_text_genre->SetText(i18n->TranslateString("Genre").Append(":"));
+	info_text_artist->SetText(i18n->AddColon(i18n->TranslateString("Artist")));
+	info_text_album->SetText(i18n->AddColon(i18n->TranslateString("Album")));
+	info_text_title->SetText(i18n->AddColon(i18n->TranslateString("Title")));
+	info_text_track->SetText(i18n->AddColon(i18n->TranslateString("Track")));
+	info_text_year->SetText(i18n->AddColon(i18n->TranslateString("Year")));
+	info_text_genre->SetText(i18n->AddColon(i18n->TranslateString("Genre")));
 
 	/* Now correct position and size of affected widgets.
 	 */
@@ -841,7 +841,7 @@ Void BonkEnc::LayerJoblist::FillMenus()
 	menu_charsets->AddEntry("GBK", NIL, NIL, NIL, &clicked_charset, CHARSET_GBK)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry("BIG-5", NIL, NIL, NIL, &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry();
-	menu_charsets->AddEntry(i18n->TranslateString("Other..."), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 
 	menu_charsets_all->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
@@ -854,7 +854,7 @@ Void BonkEnc::LayerJoblist::FillMenus()
 	menu_charsets_all->AddEntry("GBK", NIL, NIL, NIL, &clicked_charset, CHARSET_GBK)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("BIG-5", NIL, NIL, NIL, &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry();
-	menu_charsets_all->AddEntry(i18n->TranslateString("Other..."), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 
 	menu_edit_artist->RemoveAllEntries();
 	menu_edit_title->RemoveAllEntries();
@@ -864,30 +864,30 @@ Void BonkEnc::LayerJoblist::FillMenus()
 
 	menu_edit_artist->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
-	menu_edit_artist->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), NIL, menu_case);
+	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
-	menu_edit_artist->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), NIL, menu_charsets);
+	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
-	menu_edit_title->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
-	menu_edit_title->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), NIL, menu_case);
+	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_title->AddEntry();
-	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
-	menu_edit_title->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), NIL, menu_charsets);
+	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_album->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("..."), NIL, menu_case);
-	menu_edit_album->AddEntry(i18n->TranslateString("Adjust upper/lower case").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
+	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), NIL, menu_case);
+	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
-	menu_edit_album->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), NIL, menu_charsets);
+	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_genre->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_genre->AddEntry();
-	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("..."), NIL, menu_charsets);
-	menu_edit_genre->AddEntry(i18n->TranslateString("Interpret string as").Append("... (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
+	menu_edit_genre->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), NIL, menu_charsets);
+	menu_edit_genre->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_year->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 }
@@ -1280,10 +1280,10 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	edb_filename->SetText(i18n->TranslateString("none"));
 	edb_format->SetText(i18n->TranslateString("unknown"));
 
-	edb_trackPercent->SetText("0%");
+	edb_trackPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 	edb_trackTime->SetText("00:00");
 
-	edb_totalPercent->SetText("0%");
+	edb_totalPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 	edb_totalTime->SetText("00:00");
 
 	if (edb_trackTime->GetWidth() != Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6) ||
@@ -1319,7 +1319,7 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 
 	i18n->SetContext("Joblist");
 
-	edb_trackPercent->SetText("0%");
+	edb_trackPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 	edb_trackTime->SetText("00:00");
 
 	if (edb_trackTime->GetWidth() != Math::Max(34, edb_trackTime->GetUnscaledTextWidth() + 6))
@@ -1386,9 +1386,7 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 
 	/* Set percent values.
 	 */
-	static String	 percentString = "%";
-
-	edb_trackPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
+	edb_trackPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10))));
 
 	progress->SetValue(progressValue);
 }
@@ -1418,9 +1416,7 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 
 	/* Set percent values.
 	 */
-	static String	 percentString = "%";
-
-	edb_totalPercent->SetText(String::FromInt(Math::Round(progressValue / 10)).Append(percentString));
+	edb_totalPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10))));
 
 	progress_total->SetValue(progressValue);
 
@@ -1534,7 +1530,7 @@ Void BonkEnc::LayerJoblist::OnSelectDir()
 	DirSelection	*dialog	 = new DirSelection();
 
 	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder in which the encoded files will be placed"))));
 	dialog->SetDirName(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 	if (dialog->ShowDialog() == Success())

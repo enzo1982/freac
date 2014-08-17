@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -29,7 +29,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 קס"ש</entry>
+      <entry id="511" string="%1 Hz">%1 הרץ</entry>
+      <entry id="512" string="%1 kHz">%1 קה"צ</entry>
+      <entry id="513" string="%1 ms">%1 מילישנייה</entry>
+      <entry id="514" string="%1 min">%1 דקות</entry>
+      <entry id="515" string="%1 bit">%1 ביטים</entry>
+      <entry id="516" string="%1 bytes">%1 בתים</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -42,8 +53,8 @@
       <section name="File">
 	<entry id="1100" string="Add">הוסף</entry>
 	<entry id="1101" string="Remove">הסר</entry>
-	<entry id="1102" string="Load joblist...">טען רשימת מטלות...</entry>
-	<entry id="1103" string="Save joblist...">שמור רשימת מטלות...</entry>
+	<entry id="1102" string="Load joblist">טען רשימת מטלות</entry>
+	<entry id="1103" string="Save joblist">שמור רשימת מטלות</entry>
 	<entry id="1104" string="Clear joblist">נקה רשימת מטלות</entry>
 	<entry id="1105" string="Exit">צא מהתכנה</entry>
 	<entry id="1106" string="Audio file(s)">קבצי אודיו</entry>
@@ -56,8 +67,8 @@
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">הגדרות...</entry>
-	<entry id="1301" string="Configure selected encoder...">הגדרות מקודד...</entry>
+	<entry id="1300" string="General settings">הגדרות</entry>
+	<entry id="1301" string="Configure selected encoder">הגדרות מקודד</entry>
 	<entry id="1302" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
       </section>
 
@@ -73,7 +84,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">נושאי עזרה...</entry>
+	<entry id="1500" string="Help topics">נושאי עזרה</entry>
 	<entry id="1501" string="Show Tip of the Day">הצג טיפ יומי</entry>
 	<entry id="1502" string="Check for updates now">בדיקת עדכונים</entry>
 	<entry id="1503" string="Check for updates at startup">בדוק עדכונים בהפעלה</entry>
@@ -95,12 +106,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">ממיר קובץ:</entry>
-      <entry id="3001" string="Time left:">זמן שנותר:</entry>
-      <entry id="3002" string="Selected encoder:">מקודד שנבחר:</entry>
-      <entry id="3003" string="File progress:">התקדמות קובץ:</entry>
-      <entry id="3004" string="Output folder:">שמור לתקייה:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 קבצים מתוך:</entry>
+      <entry id="3000" string="Encoding file">ממיר קובץ</entry>
+      <entry id="3001" string="Time left">זמן שנותר</entry>
+      <entry id="3002" string="Selected encoder">מקודד שנבחר</entry>
+      <entry id="3003" string="File progress">התקדמות קובץ</entry>
+      <entry id="3004" string="Output folder">שמור לתקייה</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 קבצים מתוך</entry>
       <entry id="3006" string="none">לא פעיל</entry>
       <entry id="3007" string="Show title info">הצג מידע</entry>
       <entry id="3008" string="Play">נגן</entry>
@@ -118,25 +129,25 @@
       <entry id="3021" string="Clear joblist">נקה רשימת מטלות</entry>
       <entry id="3022" string="Use for all selected tracks">השתמש בכל הנבחרים</entry>
       <entry id="3024" string="selected tracks">בחר פסי קול</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
       <entry id="3035" string="Channels">צרוצים</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3041" string="Length">אורך</entry>
-      <entry id="3042" string="File">קובץ</entry>
-      <entry id="3043" string="Size">גודל</entry>
-      <entry id="3044" string="Bitrate">קצב העברת נתונים</entry>
-      <entry id="3045" string="Audio Files">קבצי שמע</entry>
-      <entry id="3046" string="All Files">כל הקבצים</entry>
-      <entry id="3047" string="Playlist Files">רשימת השמעה</entry>
+      <entry id="3038" string="Length">אורך</entry>
+      <entry id="3039" string="File">קובץ</entry>
+      <entry id="3040" string="Size">גודל</entry>
+      <entry id="3041" string="Bitrate">קצב העברת נתונים</entry>
+      <entry id="3042" string="Audio Files">קבצי שמע</entry>
+      <entry id="3043" string="All Files">כל הקבצים</entry>
+      <entry id="3044" string="Playlist Files">רשימת השמעה</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">תיקייה</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">בחר תיקיה להוספה לרשימת מטלות:</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">בחר תיקיה להוספה לרשימת מטלות</entry>
       </section>
 
       <section name="Add by pattern">
 	<entry id="3203" string="Filename pattern">צורת שם קובץ</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">בחר תיקיה להוספה לרשימת מטלות:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">בחר תיקיה להוספה לרשימת מטלות</entry>
       </section>
 
       <section name="Character set"/>
@@ -168,7 +179,7 @@
 	<entry id="4105" string="No exact matches found">לא נמצאו התאמות</entry>
 	<entry id="4106" string="Multiple matches found">נמצאו מספר התאמות</entry>
 	<entry id="4107" string="Matches">התאמות</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">בחר בשם שתואם לCD שלך:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">בחר בשם שתואם לCD שלך</entry>
 	<entry id="4110" string="none">לא פעיל</entry>
 
 	<section name="Errors">
@@ -200,7 +211,7 @@
 	<entry id="5101" string="Encoder">מקודד</entry>
 	<entry id="5102" string="Output folder">תקיית יעד</entry>
 	<entry id="5103" string="Browse">דפדף</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד:</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
 	<entry id="5106" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
 	<entry id="5107" string="Options">אפשרויות</entry>
 	<entry id="5108" string="Filename pattern">צורת שם קובץ</entry>
@@ -216,20 +227,20 @@
 	<entry id="5202" string="Output folder">תקיית יעד</entry>
 	<entry id="5203" string="Browse">דפדף</entry>
 	<entry id="5205" string="Filename pattern">צורת שם קובץ</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">בחר תיקייה לרשימת השמעה:</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">בחר תיקייה לרשימת השמעה</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5303" string="Browse">דפדף</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">בחר תיקייה למידע הדיסק:</entry>
-	<entry id="5305" string="CDDB access mode:">גישה למידע CD:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">בחר תיקייה למידע הדיסק</entry>
+	<entry id="5305" string="CDDB access mode">גישה למידע CD</entry>
 	<entry id="5311" string="Options">אפשרויות</entry>
 	<entry id="5312" string="Automatic CDDB queries">קריאת מידע CD אוטומטית</entry>
 	<entry id="5315" string="Automatization">אוטומטיזציה</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">מידע CD מורחב</entry>
-	  <entry id="5338" string="Password:">סיסמה:</entry>
+	  <entry id="5338" string="Password">סיסמה</entry>
 	</section>
 
 	<section name="Errors">
@@ -238,7 +249,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">בחר שפת ממשק:</entry>
+	<entry id="5400" string="Select language">בחר שפת ממשק</entry>
 	<entry id="5401" string="Edit language file">ערוך קובץ שפה</entry>
 	<entry id="5402" string="Information">מידע</entry>
 	<entry id="5403" string="Encoding">מבצע קידוד</entry>
@@ -249,10 +260,10 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">תגיות מידע</entry>
 	<entry id="5504" string="Filename pattern">צורת שם קובץ</entry>
-	<entry id="5505" string="Encoding:">מבצע קידוד:</entry>
+	<entry id="5505" string="Encoding">מבצע קידוד</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -276,7 +287,7 @@
       <entry id="7005" string="Cannot play a file while encoding!">לא יכול לנגן בסמן המרה!</entry>
       <entry id="7006" string="Cannot start encoding while playing a file!">לא יכול להתחיל המרה בזמן ניגון !</entry>
       <entry id="7007" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?&#10;</entry>
+      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?</entry>
       <entry id="7009" string="File already exists">קובץ כבר קיים</entry>
       <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10; האם לדרוס אותו ?</entry>
       <entry id="7011" string="Overwrite all further files">דרוס את כל הקבצים להבא</entry>
@@ -346,11 +357,9 @@
 	  <entry id="32105" string="Extreme, Fast">קיצוני, מהיר</entry>
 	  <entry id="32106" string="Bitrate">קצב העברת נתונים</entry>
 	  <entry id="32107" string="Quality">איכות</entry>
-	  <entry id="32108" string="Set bitrate:">קבע קצב ביטים:</entry>
-	  <entry id="32109" string="Set ratio:">יחס:</entry>
-	  <entry id="32110" string="Set quality:">הגדר איכות:</entry>
-	  <entry id="32111" string="worse">worse</entry>
-	  <entry id="32112" string="better">mejor</entry>
+	  <entry id="32108" string="Set bitrate">קבע קצב ביטים</entry>
+	  <entry id="32109" string="Set ratio">יחס</entry>
+	  <entry id="32110" string="Set quality">הגדר איכות</entry>
 	  <entry id="32113" string="VBR mode">מצב VBR</entry>
 	  <entry id="32114" string="no VBR">ללא VBR</entry>
 	  <entry id="32115" string="VBR quality">איכות VBR</entry>
@@ -366,8 +375,8 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">ערוצי Stereo ממוזגים</entry>
 	  <entry id="32210" string="Force Joint Stereo">אלץ מיזוג ערוצים</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">קבע VBR bitrate מינימלי:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">קבע VBR bitrate מקסימלי:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">קבע VBR bitrate מינימלי</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">קבע VBR bitrate מקסימלי</entry>
 	</section>
 
 	<section name="Expert">
@@ -389,8 +398,8 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">קצב העברת נתונים</entry>
 	  <entry id="33201" string="Bitrate / Quality">קצב העברת נתונים / איכות</entry>
-	  <entry id="33202" string="Bitrate per channel:">Bitrate לערוץ:</entry>
-	  <entry id="33203" string="Set quality:">הגדר איכות:</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitrate לערוץ</entry>
+	  <entry id="33203" string="Set quality">הגדר איכות</entry>
 	  <entry id="33204" string="Stereo mode">מצב Stereo</entry>
 	  <entry id="33208" string="Maximum bandwidth">רוחב פס מירבי</entry>
 	</section>
@@ -428,13 +437,15 @@
 	<entry id="35004" string="Bitrate">קצב העברת נתונים</entry>
       </section>
 
-      <section name="WMA"/>
+      <section name="WMA">
+	<entry id="36008" string="Quality">איכות</entry>
+      </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">קצב העברת נתונים</entry>
-	<entry id="37001" string="Bitrate per channel:">Bitrate לערוץ:</entry>
+	<entry id="37001" string="Bitrate per channel">Bitrate לערוץ</entry>
 	<entry id="37002" string="Preselection">בחירה מקדימה</entry>
-	<entry id="37003" string="Number of preselection candidates:">מספר בחירות אפשרי:</entry>
+	<entry id="37003" string="Number of preselection candidates">מספר בחירות אפשרי</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -449,12 +460,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">אוטומטי</entry>
 	<entry id="40015" string="Quality">איכות</entry>
-	<entry id="40021" string="Options">אפשרויות</entry>
+	<entry id="40020" string="Options">אפשרויות</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">פורמט קובץ:</entry>
-	<entry id="41002" string="Audio format:">פורמט שמע:</entry>
+	<entry id="41001" string="File format">פורמט קובץ</entry>
+	<entry id="41002" string="Audio format">פורמט שמע</entry>
       </section>
     </section>
 

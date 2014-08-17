@@ -63,7 +63,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	list_tag_formats->onSelectEntry.Connect(&ConfigureTags::ToggleTags, this);
 	list_tag_formats->onMarkEntry.Connect(&ConfigureTags::ToggleTags, this);
 
-	text_encoding		= new Text(i18n->TranslateString("Encoding:"), Point(269, 16));
+	text_encoding		= new Text(i18n->AddColon(i18n->TranslateString("Encoding")), Point(269, 16));
 
 	list_encodings		= new List();
 
@@ -81,7 +81,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 110), Size(534, 67));
 
-	text_defcomment		= new Text(i18n->TranslateString("Default comment string:"), Point(10, 15));
+	text_defcomment		= new Text(i18n->AddColon(i18n->TranslateString("Default comment string")), Point(10, 15));
 	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->GetUnscaledTextWidth(), 12), Size(507 - text_defcomment->GetUnscaledTextWidth(), 0), 0);
 	check_replace		= new CheckBox(i18n->TranslateString("Replace existing comments with default comment"), Point(10, edit_defcomment->GetY() + 28), Size(514, 0), &replaceComments);
 
@@ -125,7 +125,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	check_coverart_write_files = new CheckBox(i18n->TranslateString("Write cover art to files"), Point(271, 14), Size(253, 0), &enableCoverArtWriteToFiles);
 	check_coverart_write_files->onAction.Connect(&ConfigureTags::ToggleWriteCoverArt, this);
 
-	text_coverart_write_files_name = new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(288, 38));
+	text_coverart_write_files_name = new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(288, 38));
 	edit_coverart_write_files_name = new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, Config::TagsCoverArtFilenamePatternDefault), Point(288, 58), Size(236, 0), 0);
 
 	check_coverart_write_files_ref = new CheckBox(i18n->TranslateString("Add reference to audio file tag"), Point(288, 86), Size(236, 0), &enableCoverArtWriteToFilesRef);
@@ -148,7 +148,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	check_write_chapters	= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 26), Size(243, 0), &writeChapters);
 	check_write_chapters->onAction.Connect(&ConfigureTags::ToggleWriteChapters, this);
 
-	text_chapter_format	= new Text(i18n->TranslateString("Chapter format:"), check_write_chapters->GetPosition() + Point(17, 28));
+	text_chapter_format	= new Text(i18n->AddColon(i18n->TranslateString("Chapter format")), check_write_chapters->GetPosition() + Point(17, 28));
 
 	combo_chapter_format	= new ComboBox(text_chapter_format->GetPosition() + Point(text_chapter_format->GetUnscaledTextWidth() + 7, -3), Size(219 - text_chapter_format->GetUnscaledTextWidth(), 0));
 	combo_chapter_format->AddEntry(i18n->TranslateString("both"));

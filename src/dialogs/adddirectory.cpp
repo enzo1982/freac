@@ -43,7 +43,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 
 	group_directory		= new GroupBox(i18n->TranslateString("Folder"), Point(7, 11), Size(380, 39));
 
-	text_directory		= new Text(i18n->TranslateString("Choose folder:"), Point(16, 24));
+	text_directory		= new Text(i18n->AddColon(i18n->TranslateString("Choose folder")), Point(16, 24));
 	edit_directory		= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + text_directory->GetUnscaledTextWidth(), 21), Size(267 - text_directory->GetUnscaledTextWidth(), 0));
 
 	btn_browse		= new Button(i18n->TranslateString("Browse"), NIL, Point(96, 20), Size(80, 0));
@@ -119,7 +119,7 @@ Void BonkEnc::AddDirectoryDialog::Browse()
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder to add to the joblist:")));
+	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder to add to the joblist"))));
 	dialog->SetDirName(edit_directory->GetText());
 
 	if (dialog->ShowDialog() == Success())

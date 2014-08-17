@@ -31,7 +31,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 bytes</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">Adăugare</entry>
 	<entry id="1101" string="Remove">Ştergere</entry>
-	<entry id="1102" string="Load joblist...">Încărcare listă...</entry>
-	<entry id="1103" string="Save joblist...">Salvare listă...</entry>
+	<entry id="1102" string="Load joblist">Încărcare listă</entry>
+	<entry id="1103" string="Save joblist">Salvare listă</entry>
 	<entry id="1104" string="Clear joblist">Ştergere listă</entry>
 	<entry id="1105" string="Exit">Ieşire</entry>
 	<entry id="1106" string="Audio file(s)">Fişier(e) Audio</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Interogare bază CDDB</entry>
-	<entry id="1201" string="Submit CDDB data...">Trimitere date către CDDB...</entry>
+	<entry id="1201" string="Submit CDDB data">Trimitere date către CDDB</entry>
 	<entry id="1202" string="Query CDDB database later">Interogare ulterioară bază CDDB</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Afişare înregistrări CDDB de trimis...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Afişare listă interogări CDDB...</entry>
+	<entry id="1203" string="Show queued CDDB entries">Afişare înregistrări CDDB de trimis</entry>
+	<entry id="1204" string="Show queued CDDB queries">Afişare listă interogări CDDB</entry>
 	<entry id="1205" string="Enable CDDB cache">Activare cache CDDB</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Administrare intrări în CDDB...</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Administrare intrări în CDDB</entry>
 	<entry id="1207" string="Automatic CDDB queries">Interogăre automată CDDB</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">Setări generale</entry>
-	<entry id="1301" string="Configure selected encoder...">Configurare codec</entry>
+	<entry id="1300" string="General settings">Setări generale</entry>
+	<entry id="1301" string="Configure selected encoder">Configurare codec</entry>
 	<entry id="1302" string="Active CD-ROM drive">CD-ROM activ</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Subiecte...</entry>
+	<entry id="1500" string="Help topics">Subiecte</entry>
 	<entry id="1501" string="Show Tip of the Day">Sfatul zilei</entry>
 	<entry id="1502" string="Check for updates now">Verificare actualizări</entry>
 	<entry id="1503" string="Check for updates at startup">Verificare automată actualizări la pornire</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Ştergere selecţie din lista de aşteptare</entry>
       <entry id="2003" string="Clear the entire joblist">Ştergere completă a listei</entry>
       <entry id="2004" string="Query CDDB database">Interogare bază CDDB</entry>
-      <entry id="2005" string="Submit CDDB data...">Trimitere date către CDDB...</entry>
+      <entry id="2005" string="Submit CDDB data">Trimitere date către CDDB</entry>
       <entry id="2006" string="Configure general settings">Configurare setări generale</entry>
       <entry id="2007" string="Configure the selected audio encoder">Configurare codec audio</entry>
       <entry id="2008" string="Start the encoding process">Porneşte procesul de codare</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">Codare fişier:</entry>
-      <entry id="3001" string="Time left:">Timp rămas:</entry>
-      <entry id="3002" string="Selected encoder:">Codec utilizat:</entry>
-      <entry id="3003" string="File progress:">Progres fişier:</entry>
-      <entry id="3004" string="Output folder:">Folder salvare:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 fişier(e) în listă:</entry>
+      <entry id="3000" string="Encoding file">Codare fişier</entry>
+      <entry id="3001" string="Time left">Timp rămas</entry>
+      <entry id="3002" string="Selected encoder">Codec utilizat</entry>
+      <entry id="3003" string="File progress">Progres fişier</entry>
+      <entry id="3004" string="Output folder">Folder salvare</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 fişier(e) în listă</entry>
       <entry id="3006" string="none">niciunul</entry>
       <entry id="3007" string="Show title info">Afişare titlu</entry>
       <entry id="3008" string="Play">Play</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">majusculă doar la prima literă</entry>
       <entry id="3029" string="all lower case">doar minuscule</entry>
       <entry id="3030" string="all upper case">doar majuscule</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Selectaţi folderul în care vor fi salvate fişierele:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Selectaţi folderul în care vor fi salvate fişierele</entry>
       <entry id="3032" string="Sampling rate">Rata de eşantionare</entry>
       <entry id="3033" string="Sample resolution">Rezoluţie eşantion</entry>
       <entry id="3034" string="Number of samples">Numărul de eşantioane</entry>
       <entry id="3035" string="Channels">Canale</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="bit">bit</entry>
-      <entry id="3039" string="min">min</entry>
-      <entry id="3040" string="bytes">bytes</entry>
-      <entry id="3041" string="Length">Lungime</entry>
-      <entry id="3042" string="File">Fişier</entry>
-      <entry id="3043" string="Size">Mărime</entry>
-      <entry id="3044" string="Bitrate">Bitrate</entry>
-      <entry id="3045" string="Audio Files">Fişiere Audio</entry>
-      <entry id="3046" string="All Files">Toate Fişierele</entry>
-      <entry id="3047" string="Playlist Files">Fişiere Playlist</entry>
+      <entry id="3038" string="Length">Lungime</entry>
+      <entry id="3039" string="File">Fişier</entry>
+      <entry id="3040" string="Size">Mărime</entry>
+      <entry id="3041" string="Bitrate">Bitrate</entry>
+      <entry id="3042" string="Audio Files">Fişiere Audio</entry>
+      <entry id="3043" string="All Files">Toate Fişierele</entry>
+      <entry id="3044" string="Playlist Files">Fişiere Playlist</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Folder</entry>
 	<entry id="3101" string="Add folder">Adăugare folder</entry>
-	<entry id="3102" string="Choose folder:">Selecţie folder:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Selecţie folder pentru adăugare la listă:</entry>
+	<entry id="3102" string="Choose folder">Selecţie folder</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Selecţie folder pentru adăugare la listă</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,14 +177,14 @@
 	<entry id="3201" string="Pattern">Model</entry>
 	<entry id="3202" string="Start folder">Folder de start</entry>
 	<entry id="3203" string="Filename pattern">Model nume fisier</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">Selecţie folder pentru adăugare la listă:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Selecţie folder pentru adăugare la listă</entry>
       </section>
 
       <section name="Character set"/>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Nu aţi selectat niciun fişier!</entry>
-	<entry id="3401" string="No files found matching pattern:">Nici un fişier găsit cu modelul:</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Nici un fişier găsit cu modelul: %1</entry>
       </section>
     </section>
 
@@ -211,7 +219,7 @@
 	<entry id="4105" string="No exact matches found">Nu a fost gasită nicio informaţie</entry>
 	<entry id="4106" string="Multiple matches found">Au fost găsite înregistrări multiple</entry>
 	<entry id="4107" string="Matches">Înregistrări</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">Selectaţi înregistrarea care se potriveşte CD-ului dvs.:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">Selectaţi înregistrarea care se potriveşte CD-ului dvs.</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Doriţi să verificaţi din nou mai târziu?</entry>
 	<entry id="4110" string="none">niciunul</entry>
 	<entry id="4111" string="Preview">Vizualizare</entry>
@@ -227,12 +235,12 @@
 	<entry id="4202" string="Query">Interogare</entry>
 	<entry id="4203" string="Query all">Interogare multiplă</entry>
 	<entry id="4204" string="Query string">Text de interogare</entry>
-	<entry id="4205" string="CDDB queries to perform:">Interogări CDDB de efectuat:</entry>
+	<entry id="4205" string="CDDB queries to perform">Interogări CDDB de efectuat</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Ştergere intrare</entry>
-	<entry id="4301" string="CDDB entries to submit:">Înregistrări CDDB de trimis:</entry>
+	<entry id="4301" string="CDDB entries to submit">Înregistrări CDDB de trimis</entry>
 	<entry id="4302" string="Submit all">Trimite toate</entry>
 	<entry id="4303" string="CDDB data">Date CDDB</entry>
 	<entry id="4304" string="Submit">Trimitere</entry>
@@ -246,7 +254,7 @@
 	<entry id="4400" string="CDDB data">Date CDDB</entry>
 	<entry id="4401" string="Update joblist with this information">Actualizare listă cu această informaţie</entry>
 	<entry id="4402" string="Charset">Set caractere</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Descărcate informaţii CDDB:</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Descărcate informaţii CDDB</entry>
 	<entry id="4404" string="Disc name">Nume disc</entry>
 	<entry id="4405" string="Preview">Vizualizare</entry>
 	<entry id="4406" string="Remove entry">Ştergere intrare</entry>
@@ -266,7 +274,7 @@
 	<entry id="5101" string="Encoder">Codec</entry>
 	<entry id="5102" string="Output folder">Folder salvare</entry>
 	<entry id="5103" string="Browse">Răsfoire</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Selectaţi folderul în care vor fi salvate fişierele:</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selectaţi folderul în care vor fi salvate fişierele</entry>
 	<entry id="5105" string="Use input file folder if possible">Utilizare folder de intrare (dacă e posibil)</entry>
 	<entry id="5106" string="Allow overwriting input file">Permite suprascriere fişier intrare</entry>
 	<entry id="5107" string="Options">Opţiuni</entry>
@@ -287,19 +295,19 @@
 	<entry id="5203" string="Browse">Răsfoire</entry>
 	<entry id="5204" string="Use encoder output folder">Utilizare folder ieşire</entry>
 	<entry id="5205" string="Filename pattern">Model nume fisier</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Selectaţi folderul în care lista de fişiere va fi salvată:</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selectaţi folderul în care lista de fişiere va fi salvată</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Activare bază locală CDDB</entry>
 	<entry id="5301" string="Enable remote CDDB database">Activare bază CDDB Internet</entry>
-	<entry id="5302" string="CDDB path:">Folder CDDB:</entry>
+	<entry id="5302" string="CDDB path">Folder CDDB</entry>
 	<entry id="5303" string="Browse">Răsfoire</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Selectaţi folderul bazei CDDB:</entry>
-	<entry id="5305" string="CDDB access mode:">Mod acces CDDB:</entry>
-	<entry id="5306" string="CDDB server:">Server CDDB:</entry>
-	<entry id="5307" string="Port:">Port:</entry>
-	<entry id="5308" string="eMail address:">Adresa eMail:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Selectaţi folderul bazei CDDB</entry>
+	<entry id="5305" string="CDDB access mode">Mod acces CDDB</entry>
+	<entry id="5306" string="CDDB server">Server CDDB</entry>
+	<entry id="5307" string="Port">Port</entry>
+	<entry id="5308" string="eMail address">Adresa eMail</entry>
 	<entry id="5309" string="HTTP settings">Setări HTTP</entry>
 	<entry id="5310" string="Proxy settings">Setări Proxy</entry>
 	<entry id="5311" string="Options">Opţiuni</entry>
@@ -311,13 +319,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Setări extinse CDDB</entry>
 	  <entry id="5331" string="CGI scripts">Scripturi CGI</entry>
-	  <entry id="5332" string="CDDB query script:">Script interogare CDDB:</entry>
-	  <entry id="5333" string="CDDB submit script:">Script înregistrare CDDB:</entry>
+	  <entry id="5332" string="CDDB query script">Script interogare CDDB</entry>
+	  <entry id="5333" string="CDDB submit script">Script înregistrare CDDB</entry>
 	  <entry id="5334" string="no proxy">fără proxy</entry>
-	  <entry id="5335" string="Proxy type:">Tip Proxy:</entry>
-	  <entry id="5336" string="Proxy server:">Server Proxy:</entry>
-	  <entry id="5337" string="User name:">Nume utilizator:</entry>
-	  <entry id="5338" string="Password:">Parolă:</entry>
+	  <entry id="5335" string="Proxy type">Tip Proxy</entry>
+	  <entry id="5336" string="Proxy server">Server Proxy</entry>
+	  <entry id="5337" string="User name">Nume utilizator</entry>
+	  <entry id="5338" string="Password">Parolă</entry>
 	</section>
 
 	<section name="Errors">
@@ -327,7 +335,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">Alege limba:</entry>
+	<entry id="5400" string="Select language">Alege limba</entry>
 	<entry id="5401" string="Edit language file">Editare fişier limbă</entry>
 	<entry id="5402" string="Information">Informaţii</entry>
 	<entry id="5403" string="Encoding">Codare</entry>
@@ -338,13 +346,13 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">Tag-uri Info</entry>
 	<entry id="5501" string="Tag formats">Codare Tag</entry>
-	<entry id="5502" string="Default comment string:">Text implicit comentariu:</entry>
+	<entry id="5502" string="Default comment string">Text implicit comentariu</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Înlocuieşte comentariile existente cu comentariul default</entry>
 	<entry id="5504" string="Filename pattern">Model nume fisier</entry>
-	<entry id="5505" string="Encoding:">Codare:</entry>
+	<entry id="5505" string="Encoding">Codare</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -406,12 +414,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">CD-ROM activ</entry>
-      <entry id="9001" string="Set drive speed limit:">Setează limită viteză pentru drive:</entry>
+      <entry id="9001" string="Set drive speed limit">Setează limită viteză pentru drive</entry>
       <entry id="9002" string="CD information">Informaţii CD</entry>
       <entry id="9003" string="Read CD Text">Citire CD Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Citire cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Setări extragere</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">Activare mod cdparanoia:</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Activare mod cdparanoia</entry>
       <entry id="9007" string="Overlap only">Doar suprapunere</entry>
       <entry id="9008" string="No verify">Fără verificare</entry>
       <entry id="9009" string="No scratch repair">Fără reparare zgârieturi</entry>
@@ -460,17 +468,17 @@
 	<entry id="32003" string="Audio processing">Procesare Audio</entry>
 
 	<section name="Basic">
-	  <entry id="32100" string="Presets">Setări  predefinite</entry>
-	  <entry id="32101" string="Use preset:">Tip setare:</entry>
+	  <entry id="32100" string="Presets">Setări predefinite</entry>
+	  <entry id="32101" string="Use preset">Tip setare</entry>
 	  <entry id="32102" string="Custom settings">Setări utilizator</entry>
 	  <entry id="32103" string="Medium, Fast">Mediu, Rapid</entry>
 	  <entry id="32104" string="Standard, Fast">Standard, Rapid</entry>
 	  <entry id="32105" string="Extreme, Fast">Extrem, Rapid</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Calitate</entry>
-	  <entry id="32108" string="Set bitrate:">Setare bitrate:</entry>
-	  <entry id="32109" string="Set ratio:">Compresie:</entry>
-	  <entry id="32110" string="Set quality:">Calitate:</entry>
+	  <entry id="32108" string="Set bitrate">Setare bitrate</entry>
+	  <entry id="32109" string="Set ratio">Compresie</entry>
+	  <entry id="32110" string="Set quality">Calitate</entry>
 	  <entry id="32111" string="worse">mai slabă</entry>
 	  <entry id="32112" string="better">mai bună</entry>
 	  <entry id="32113" string="VBR mode">Mod VBR</entry>
@@ -492,13 +500,13 @@
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forţare Joint Stereo</entry>
 	  <entry id="32211" string="VBR bitrate range">Interval bitrate VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Setare VBR minim:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Setare VBR maxim:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Setare VBR minim</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Setare VBR maxim</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH:">Activare ATH:</entry>
+	  <entry id="32301" string="Enable ATH">Activare ATH</entry>
 	  <entry id="32302" string="Use default setting">Setări implicite</entry>
 	  <entry id="32303" string="Psycho acoustic model">Model acustic Psycho</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Utilizare Efect Temporal Mascare</entry>
@@ -511,11 +519,11 @@
 	  <entry id="32401" string="auto">auto</entry>
 	  <entry id="32402" string="no resampling">fără re-eşantionare</entry>
 	  <entry id="32403" string="Highpass filter">Filtru Trece Sus</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Frecvenţa de Tăiere (Hz):</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Banda de Trecere (Hz):</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Frecvenţa de Tăiere (Hz)</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Banda de Trecere (Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Filtru Trece Jos</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Frecvenţa de Tăiere (Hz):</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Banda de Trecere (Hz):</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Frecvenţa de Tăiere (Hz)</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Banda de Trecere (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Setări Diverse</entry>
 	  <entry id="32410" string="Disable all filtering">Dezactivare Filtre</entry>
 	</section>
@@ -528,20 +536,20 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Bitrate</entry>
 	  <entry id="33201" string="Bitrate / Quality">Bitrate / Calitate</entry>
-	  <entry id="33202" string="Bitrate per channel:">Bitrate pe canal:</entry>
-	  <entry id="33203" string="Set quality:">Calitate:</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitrate pe canal</entry>
+	  <entry id="33203" string="Set quality">Calitate</entry>
 	  <entry id="33204" string="Stereo mode">Mod stereo</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Permite mod Joint Stereo</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Modelare Curbă Zgomot Temporal</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Utilizare Modelare Curbă Zgomot Temporal</entry>
 	  <entry id="33208" string="Maximum bandwidth">Lăţime de bandă maximă</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Lăţimea de bandă maximă pentru AAC (Hz):</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Lăţimea de bandă maximă pentru AAC (Hz)</entry>
 	</section>
 
 	<section name="Format">
 	  <entry id="33300" string="MPEG version">Versiune MPEG</entry>
 	  <entry id="33301" string="AAC object type">Tip obiect AAC</entry>
-	  <entry id="33302" string="File format">Format Fişiere</entry>
+	  <entry id="33302" string="File format">Format fişiere</entry>
 	  <entry id="33304" string="Tags">Tag-uri Info</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Permite tag-uri ID3v2 în fişierele AAC</entry>
 	  <entry id="33306" string="Note">Notă</entry>
@@ -555,27 +563,26 @@
 	<entry id="34002" string="Expert">Expert</entry>
 
 	<section name="Basic">
-	  <entry id="34100" string="Presets">Setări  predefinite</entry>
-	  <entry id="34101" string="Use preset:">Tip setare:</entry>
+	  <entry id="34100" string="Presets">Setări predefinite</entry>
+	  <entry id="34101" string="Use preset">Tip setare</entry>
 	  <entry id="34102" string="Custom settings">Setări utilizator</entry>
 	  <entry id="34103" string="Fastest encoding">Codare rapidă</entry>
 	  <entry id="34104" string="Best compression">Compresie maximă</entry>
 	  <entry id="34105" string="Stereo mode">Mod stereo</entry>
 	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Mod Adaptiv Joint Stereo</entry>
-	  <entry id="34108" string="File format">Format Fişiere</entry>
+	  <entry id="34108" string="File format">Format fişiere</entry>
 	</section>
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Utilizare subset stream</entry>
-	  <entry id="34201" string="Blocksize:">Dimensiune Block:</entry>
-	  <entry id="34202" string="bytes">bytes</entry>
+	  <entry id="34201" string="Blocksize">Dimensiune Block</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">Apodizare</entry>
-	  <entry id="34301" string="Apodization function(s):">Funcţiile apodizare:</entry>
-	  <entry id="34302" string="Note:">Notă:</entry>
+	  <entry id="34300" string="Signal processing">Apodizare</entry>
+	  <entry id="34301" string="Window function(s)">Funcţiile apodizare</entry>
+	  <entry id="34302" string="Note">Notă</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Puteţi defini mai multe funcţii separate prin punct şi virgulă.</entry>
 	  <entry id="34304" string="Linear predictor">Predicţie liniară</entry>
 	  <entry id="34305" string="Maximum LPC order">Ordine cu LPC maxim</entry>
@@ -607,15 +614,16 @@
 	<entry id="36005" string="Write uncompressed WMA files">Scrie fişiere WMA necompresate</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">Selectează automat formatul pe baza setărilor şi formatul de ieşire</entry>
 	<entry id="36007" string="Use VBR encoding">Foloseşte codare VBR</entry>
-	<entry id="36008" string="Use 2-pass encoding">Foloseşte codare 2-pass</entry>
+	<entry id="36008" string="Quality">Calitate</entry>
 	<entry id="36009" string="Target bitrate">Bitrate ţintă</entry>
+	<entry id="36010" string="Use 2-pass encoding">Foloseşte codare 2-pass</entry>
       </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Bitrate</entry>
-	<entry id="37001" string="Bitrate per channel:">Bitrate pe canal:</entry>
+	<entry id="37001" string="Bitrate per channel">Bitrate pe canal</entry>
 	<entry id="37002" string="Preselection">Preselecţie</entry>
-	<entry id="37003" string="Number of preselection candidates:">Numărul preselecţiilor:</entry>
+	<entry id="37003" string="Number of preselection candidates">Numărul preselecţiilor</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -631,12 +639,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">Auto</entry>
 	<entry id="40015" string="Quality">Calitate</entry>
-	<entry id="40021" string="Options">Opţiuni</entry>
+	<entry id="40020" string="Options">Opţiuni</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">Format fişiere:</entry>
-	<entry id="41002" string="Audio format:">Format audio:</entry>
+	<entry id="41001" string="File format">Format fişiere</entry>
+	<entry id="41002" string="Audio format">Format audio</entry>
 	<entry id="41003" string="mono">mono</entry>
       </section>
     </section>

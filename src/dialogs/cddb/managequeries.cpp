@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -31,7 +31,7 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	btn_cancel->onAction.Connect(&cddbManageQueriesDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	text_entries	= new Text(i18n->TranslateString("CDDB queries to perform:"), Point(7, 10));
+	text_entries	= new Text(i18n->AddColon(i18n->TranslateString("CDDB queries to perform")), Point(7, 10));
 
 	list_entries	= new ListBox(Point(7, 29), Size(380, 213));
 	list_entries->AddTab(i18n->TranslateString("Query string"), 0);
@@ -140,7 +140,7 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 
 	/* Query selected entry from online CDDB
 	 */
-	text_status->SetText(i18n->TranslateString("Querying CD information..."));
+	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Querying CD information")));
 
 	if (cddbQueries->Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
 	{
@@ -161,7 +161,7 @@ Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
 
 	/* Query all entries from online CDDB
 	 */
-	text_status->SetText(i18n->TranslateString("Querying CD information..."));
+	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Querying CD information")));
 
 	if (cddbQueries->QueryAll()) mainWnd->Close();
 

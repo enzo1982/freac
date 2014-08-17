@@ -42,16 +42,16 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iC
 
 	group_match		= new GroupBox(i18n->TranslateString("Matches"), Point(7, 11), Size(330, 270));
 
-	text_match		= new Text(i18n->TranslateString("Select the entry that best fits your CD:"), Point(11, 11));
+	text_match		= new Text(i18n->AddColon(i18n->TranslateString("Select the entry that best fits your CD")), Point(11, 11));
 	combo_match		= new ComboBox(Point(10, 30), Size(310, 0));
 	combo_match->onSelectEntry.Connect(&cddbMultiMatchDlg::SelectEntry, this);
 
-	text_preview		= new Text(i18n->TranslateString("Preview").Append(":"), Point(11, 55));
+	text_preview		= new Text(i18n->AddColon(i18n->TranslateString("Preview")), Point(11, 55));
 
 	edit_preview		= new MultiEdit(NIL, Point(10, 74), Size(310, 186), 0);
 	edit_preview->Deactivate();
 
-	text_loading_preview	= new Text(i18n->TranslateString("loading preview..."), Point());
+	text_loading_preview	= new Text(i18n->AddEllipsis(i18n->TranslateString("loading preview")), Point());
 	text_loading_preview->SetFont(GUI::Font(GUI::Font::Default, 10, GUI::Font::Bold, 0, Setup::InactiveTextColor));
 	text_loading_preview->SetPosition(edit_preview->GetPosition() + Point((edit_preview->GetWidth() - text_loading_preview->GetUnscaledTextWidth()) / 2, (edit_preview->GetHeight() - text_loading_preview->GetUnscaledTextHeight()) / 2));
 

@@ -31,7 +31,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">‭kbps %1‬</entry>
+      <entry id="511" string="%1 Hz">%1 هرتز</entry>
+      <entry id="512" string="%1 kHz">%1 كيلوهرتز</entry>
+      <entry id="513" string="%1 ms">ms %1‬</entry>
+      <entry id="514" string="%1 min">%1 دق</entry>
+      <entry id="515" string="%1 bit">%1 بيت</entry>
+      <entry id="516" string="%1 bytes">%1 بايت</entry>
+      <entry id="517" string="%1%">%%1</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">إضافة</entry>
 	<entry id="1101" string="Remove">إزالة</entry>
-	<entry id="1102" string="Load joblist...">تحميل قائمة العمل</entry>
-	<entry id="1103" string="Save joblist...">حفظ قائمة العمل</entry>
+	<entry id="1102" string="Load joblist">تحميل قائمة العمل</entry>
+	<entry id="1103" string="Save joblist">حفظ قائمة العمل</entry>
 	<entry id="1104" string="Clear joblist">مسح قائمة العمل</entry>
 	<entry id="1105" string="Exit">خروج</entry>
 	<entry id="1106" string="Audio file(s)">ملف/ـات صوتي/ـة</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">إستعلام قاعدة بيانات قرص مدمج</entry>
-	<entry id="1201" string="Submit CDDB data...">تسليم بيانات قاعدة بيانات قرص مدمج...</entry>
+	<entry id="1201" string="Submit CDDB data">تسليم بيانات قاعدة بيانات قرص مدمج</entry>
 	<entry id="1202" string="Query CDDB database later">استعلام قاعدة بيانات قرص مضغوط في وقت لاحق</entry>
-	<entry id="1203" string="Show queued CDDB entries...">عرض قائمة الانتظار لمدخلات قاعدة بيانات قرص مضغوط</entry>
-	<entry id="1204" string="Show queued CDDB queries...">عرض قائمة الانتضار لاستعلام قاعدة بيانات قرص مضغوط</entry>
+	<entry id="1203" string="Show queued CDDB entries">عرض قائمة الانتظار لمدخلات قاعدة بيانات قرص مضغوط</entry>
+	<entry id="1204" string="Show queued CDDB queries">عرض قائمة الانتضار لاستعلام قاعدة بيانات قرص مضغوط</entry>
 	<entry id="1205" string="Enable CDDB cache">تمكين التخزين المؤقت لقاعدة بيانات قرص مدمج</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">إدارة المدخلات المخفية لقاعدة بيانات قرص مضغوط</entry>
+	<entry id="1206" string="Manage CDDB cache entries">إدارة المدخلات المخفية لقاعدة بيانات قرص مضغوط</entry>
 	<entry id="1207" string="Automatic CDDB queries">إستعلام تلقائي لقاعدة بيانات قرص مدمج</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">إعدادات عامة</entry>
-	<entry id="1301" string="Configure selected encoder...">تهيئة الترميز المحدد</entry>
+	<entry id="1300" string="General settings">إعدادات عامة</entry>
+	<entry id="1301" string="Configure selected encoder">تهيئة الترميز المحدد</entry>
 	<entry id="1302" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">موضوعات المساعدة</entry>
+	<entry id="1500" string="Help topics">موضوعات المساعدة</entry>
 	<entry id="1501" string="Show Tip of the Day">عرض نصيحة هذا اليوم</entry>
 	<entry id="1502" string="Check for updates now">تحقق من توفر تحيينات الآن</entry>
 	<entry id="1503" string="Check for updates at startup">التحقق من التحديثات عند بدء التشغيل</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">إزلة ما تم تحديده من قائمة العمل هذه</entry>
       <entry id="2003" string="Clear the entire joblist">مسح كامل قائمة العمل</entry>
       <entry id="2004" string="Query CDDB database">إستعلام قاعدة بيانات قرص مدمج</entry>
-      <entry id="2005" string="Submit CDDB data...">تسليم بيانات قاعدة بيانات قرص مدمج...</entry>
+      <entry id="2005" string="Submit CDDB data">تسليم بيانات قاعدة بيانات قرص مدمج</entry>
       <entry id="2006" string="Configure general settings">تهئية الاعدادات العامة</entry>
       <entry id="2007" string="Configure the selected audio encoder">تهيئة ترميز الصوت المحدد</entry>
       <entry id="2008" string="Start the encoding process">بدء عملية الترميز</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">ترميز الملف:</entry>
-      <entry id="3001" string="Time left:">الوقت المتبقي:</entry>
-      <entry id="3002" string="Selected encoder:">تحديد الترميز:</entry>
-      <entry id="3003" string="File progress:">تقدم الملف:</entry>
-      <entry id="3004" string="Output folder:">مجلد الناتج:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 ـات في قائمة:</entry>
+      <entry id="3000" string="Encoding file">ترميز الملف</entry>
+      <entry id="3001" string="Time left">الوقت المتبقي</entry>
+      <entry id="3002" string="Selected encoder">تحديد الترميز</entry>
+      <entry id="3003" string="File progress">تقدم الملف</entry>
+      <entry id="3004" string="Output folder">مجلد الناتج</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 ـات في قائمة</entry>
       <entry id="3006" string="none">لاشيء</entry>
       <entry id="3007" string="Show title info">عرض معلومات العنوان</entry>
       <entry id="3008" string="Play">شغل</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">أول الحرف الحالة العلوية</entry>
       <entry id="3029" string="all lower case">كل الحالة السفلية</entry>
       <entry id="3030" string="all upper case">كل الحالة العلوية</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">حدد المجلد الذي سيتم وضع فيه الملفات المشفرة:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">حدد المجلد الذي سيتم وضع فيه الملفات المشفرة</entry>
       <entry id="3032" string="Sampling rate">معدل العينات</entry>
       <entry id="3033" string="Sample resolution">دقة العينة</entry>
       <entry id="3034" string="Number of samples">عدد العينات</entry>
       <entry id="3035" string="Channels">القنوات</entry>
       <entry id="3036" string="Mono">وحيد</entry>
       <entry id="3037" string="Stereo">صوت مجسم</entry>
-      <entry id="3038" string="bit">بيت</entry>
-      <entry id="3039" string="min">دق</entry>
-      <entry id="3040" string="bytes">بايت</entry>
-      <entry id="3041" string="Length">المدة</entry>
-      <entry id="3042" string="File">ملف</entry>
-      <entry id="3043" string="Size">الحجم</entry>
-      <entry id="3044" string="Bitrate">معدل بايت</entry>
-      <entry id="3045" string="Audio Files">ملفات صوتية</entry>
-      <entry id="3046" string="All Files">كافة الملفات</entry>
-      <entry id="3047" string="Playlist Files">ملفات قائمة الأغاني</entry>
+      <entry id="3038" string="Length">المدة</entry>
+      <entry id="3039" string="File">ملف</entry>
+      <entry id="3040" string="Size">الحجم</entry>
+      <entry id="3041" string="Bitrate">معدل بايت</entry>
+      <entry id="3042" string="Audio Files">ملفات صوتية</entry>
+      <entry id="3043" string="All Files">كافة الملفات</entry>
+      <entry id="3044" string="Playlist Files">ملفات قائمة الأغاني</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">مجلد</entry>
 	<entry id="3101" string="Add folder">إضافة للمجلد</entry>
-	<entry id="3102" string="Choose folder:">إختيار مجلد:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">حدد مجلد لإضافة قائمة العمل:</entry>
+	<entry id="3102" string="Choose folder">إختيار مجلد</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">حدد مجلد لإضافة قائمة العمل</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,14 +177,14 @@
 	<entry id="3201" string="Pattern">النمط</entry>
 	<entry id="3202" string="Start folder">مجلد البدء</entry>
 	<entry id="3203" string="Filename pattern">نمط اسم ملف</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">حدد مجلد لإضافة قائمة العمل:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">حدد مجلد لإضافة قائمة العمل</entry>
       </section>
 
       <section name="Character set"/>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">لم تقم بتحديد أي ملف!</entry>
-	<entry id="3401" string="No files found matching pattern:">لا توجد ملفات مطابقة للنمط:</entry>
+	<entry id="3401" string="No files found matching pattern: %1">لا توجد ملفات مطابقة للنمط: %1</entry>
       </section>
     </section>
 
@@ -211,7 +219,7 @@
 	<entry id="4105" string="No exact matches found">لم يتم العثور على مطابقة تامة</entry>
 	<entry id="4106" string="Multiple matches found">وجدت مطابقات متعدد</entry>
 	<entry id="4107" string="Matches">تطابقات</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">حدد الإدخال الذي يناسب قرصك المضغوط:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">حدد الإدخال الذي يناسب قرصك المضغوط</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">هل ترغب في تنفيذ هذا الاستعلام مرة أخرى لاحقا؟</entry>
 	<entry id="4110" string="none">لاشيء</entry>
 	<entry id="4111" string="Preview">معاينة</entry>
@@ -227,12 +235,12 @@
 	<entry id="4202" string="Query">استعلام</entry>
 	<entry id="4203" string="Query all">استعلام الكل</entry>
 	<entry id="4204" string="Query string">مرادفات الاستعلام</entry>
-	<entry id="4205" string="CDDB queries to perform:">إستعلامات قاعدة بيانات قرص مضغوط للتنفيذ:</entry>
+	<entry id="4205" string="CDDB queries to perform">إستعلامات قاعدة بيانات قرص مضغوط للتنفيذ</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">إزالة القيد</entry>
-	<entry id="4301" string="CDDB entries to submit:">مدخلات قاعدة بيانات قرص مضغوط للتسليم:</entry>
+	<entry id="4301" string="CDDB entries to submit">مدخلات قاعدة بيانات قرص مضغوط للتسليم</entry>
 	<entry id="4302" string="Submit all">تسليم الكل</entry>
 	<entry id="4303" string="CDDB data">بيانات قاعدة بيانات قرص مدمج</entry>
 	<entry id="4304" string="Submit">تسليم</entry>
@@ -246,7 +254,7 @@
 	<entry id="4400" string="CDDB data">بيانات قاعدة بيانات قرص مدمج</entry>
 	<entry id="4401" string="Update joblist with this information">تحديث قائمة الوظائف مع هذه المعلومات</entry>
 	<entry id="4402" string="Charset">محارف</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">يتم تحميل قاعدة بيانات قرص مضغوط المدخلات:</entry>
+	<entry id="4403" string="Downloaded CDDB entries">يتم تحميل قاعدة بيانات قرص مضغوط المدخلات</entry>
 	<entry id="4404" string="Disc name">اسم القرص</entry>
 	<entry id="4405" string="Preview">معاينة</entry>
 	<entry id="4406" string="Remove entry">إزالة القيد</entry>
@@ -257,7 +265,7 @@
     <section name="Configuration">
       <entry id="5000" string="General settings setup">إعدادات عامة للتثبيت</entry>
       <entry id="5001" string="Encoders">الترميز</entry>
-      <entry id="5002" string="Playlists">قائمة  الأغاني</entry>
+      <entry id="5002" string="Playlists">قائمة الأغاني</entry>
       <entry id="5003" string="Language">اللغة</entry>
       <entry id="5005" string="CDDB">كدب</entry>
       <entry id="5007" string="Tags">معلومات بطاقة</entry>
@@ -267,7 +275,7 @@
 	<entry id="5101" string="Encoder">الترميز</entry>
 	<entry id="5102" string="Output folder">مجلد الناتج</entry>
 	<entry id="5103" string="Browse">تصفح</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">حدد المجلد الذي سيتم وضع فيه الملفات المشفرة:</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">حدد المجلد الذي سيتم وضع فيه الملفات المشفرة</entry>
 	<entry id="5105" string="Use input file folder if possible">استخدم مجلد ملفات المدخل اذا ممكن</entry>
 	<entry id="5106" string="Allow overwriting input file">السماح بالكتابة على ملف الادخال</entry>
 	<entry id="5107" string="Options">خيارات</entry>
@@ -288,19 +296,19 @@
 	<entry id="5203" string="Browse">تصفح</entry>
 	<entry id="5204" string="Use encoder output folder">يستخدم التشفير مجلد الناتج</entry>
 	<entry id="5205" string="Filename pattern">نمط اسم ملف</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">حدد المجلد الذي ستضع فيه قائمة الأغاني</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">حدد المجلد الذي ستضع فيه قائمة الأغاني</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">تمكن قاعدة بيانات قرص مضغوط محلية</entry>
 	<entry id="5301" string="Enable remote CDDB database">تمكين قاعدة بيانات قرص مضغوط بعيدة</entry>
-	<entry id="5302" string="CDDB path:">مجلد قاعدة بيانات قرص مضغوط:</entry>
+	<entry id="5302" string="CDDB path">مجلد قاعدة بيانات قرص مضغوط</entry>
 	<entry id="5303" string="Browse">تصفح</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">حدد المجلد لقاعدة بيانات قرص مضغوط:</entry>
-	<entry id="5305" string="CDDB access mode:">طريقة الاتصال في قاعدة بيانات قرص مدمج:</entry>
-	<entry id="5306" string="CDDB server:">خادم قاعدة بيانات قرص مدمج:</entry>
-	<entry id="5307" string="Port:">المنفذ:</entry>
-	<entry id="5308" string="eMail address:">عنوان بريد إلكتروني:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">حدد المجلد لقاعدة بيانات قرص مضغوط</entry>
+	<entry id="5305" string="CDDB access mode">طريقة الاتصال في قاعدة بيانات قرص مدمج</entry>
+	<entry id="5306" string="CDDB server">خادم قاعدة بيانات قرص مدمج</entry>
+	<entry id="5307" string="Port">المنفذ</entry>
+	<entry id="5308" string="eMail address">عنوان بريد إلكتروني</entry>
 	<entry id="5309" string="HTTP settings">إعدادات بروتوكول نقل النص التشعبي</entry>
 	<entry id="5310" string="Proxy settings">إعدادات الوكيل</entry>
 	<entry id="5311" string="Options">خيارات</entry>
@@ -312,13 +320,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">إعدادات تمديد قاعدة بيانات قرص مدمج</entry>
 	  <entry id="5331" string="CGI scripts">الكلمات لواجهة العبارة الشائعة</entry>
-	  <entry id="5332" string="CDDB query script:">نص الاستعلام قاعدة بيانات قرص مدمج:</entry>
-	  <entry id="5333" string="CDDB submit script:">تسليم النص لقاعدة بيانات قرص مضغوط:</entry>
+	  <entry id="5332" string="CDDB query script">نص الاستعلام قاعدة بيانات قرص مدمج</entry>
+	  <entry id="5333" string="CDDB submit script">تسليم النص لقاعدة بيانات قرص مضغوط</entry>
 	  <entry id="5334" string="no proxy">بدون وكيل</entry>
-	  <entry id="5335" string="Proxy type:">نوع الوكيل:</entry>
-	  <entry id="5336" string="Proxy server:">خادم وكيل:</entry>
-	  <entry id="5337" string="User name:">اسم المستخدم:</entry>
-	  <entry id="5338" string="Password:">كلمة المرور:</entry>
+	  <entry id="5335" string="Proxy type">نوع الوكيل</entry>
+	  <entry id="5336" string="Proxy server">خادم وكيل</entry>
+	  <entry id="5337" string="User name">اسم المستخدم</entry>
+	  <entry id="5338" string="Password">كلمة المرور</entry>
 	</section>
 
 	<section name="Errors">
@@ -328,7 +336,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">حدد اللغة:</entry>
+	<entry id="5400" string="Select language">حدد اللغة</entry>
 	<entry id="5401" string="Edit language file">تحرير ملف اللغة</entry>
 	<entry id="5402" string="Information">معلومات</entry>
 	<entry id="5403" string="Encoding">الترميز</entry>
@@ -339,13 +347,13 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">معلومات بطاقة</entry>
 	<entry id="5501" string="Tag formats">ترميز البطاقات</entry>
-	<entry id="5502" string="Default comment string:">اصطفاف تعليق افتراضي:</entry>
+	<entry id="5502" string="Default comment string">اصطفاف تعليق افتراضي</entry>
 	<entry id="5503" string="Replace existing comments with default comment">تعويض التعليقات الموجودة بالتعليق الإفتراضي</entry>
 	<entry id="5504" string="Filename pattern">نمط اسم ملف</entry>
-	<entry id="5505" string="Encoding:">الترميز:</entry>
+	<entry id="5505" string="Encoding">الترميز</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -358,7 +366,7 @@
       <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">هناك تحديثات جديدة على الانترنت %1 المتاحة!&#10;هل تريد ان ترى قائمة من التحديثات المتوفرة الآن؟</entry>
       <entry id="6101" string="There are no updates available at the moment!">لا توجد تحديثات متوفرة في الوقت الراهن!</entry>
       <entry id="6102" string="Check for updates at startup">التحقق من التحديثات عند بدء التشغيل</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 يمكن إجراء فحص تلقائي على الانترنت&#10;تحديثات البرنامج عند بدء التشغيل.&#10;&#10;هل ترغب في أن  يبحث عن التحديثات عند بدء التشغيل؟</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 يمكن إجراء فحص تلقائي على الانترنت&#10;تحديثات البرنامج عند بدء التشغيل.&#10;&#10;هل ترغب في أن يبحث عن التحديثات عند بدء التشغيل؟</entry>
     </section>
 
     <section name="Tips">
@@ -369,7 +377,7 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">الترميز لا يزال قيد العمل، هل تريد حقا  إنهائه؟</entry>
+      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">الترميز لا يزال قيد العمل، هل تريد حقا إنهائه؟</entry>
       <entry id="7001" string="Currently encoding">الترميز الحالي</entry>
       <entry id="7002" string="Cannot change settings while encoding!">لا يمكن تغيير الإعدادات عند الترميز!</entry>
       <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">اشتقاق القرص المضغوط معطل ASPI غير قادر على تحميل!</entry>
@@ -404,12 +412,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
-      <entry id="9001" string="Set drive speed limit:">ثبت سرعة محرك الأقراص:</entry>
+      <entry id="9001" string="Set drive speed limit">ثبت سرعة محرك الأقراص</entry>
       <entry id="9002" string="CD information">معلومات القرص المضغوط</entry>
       <entry id="9003" string="Read CD Text">قراءة نص مضغوط</entry>
       <entry id="9004" string="Read cdplayer.ini">cdplayer.ini قراءة</entry>
       <entry id="9005" string="Ripper settings">إعدادات الإشتقاق</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">تنشيط اسلوب تكبير قرص مضغوط:</entry>
+      <entry id="9006" string="Activate cdparanoia mode">تنشيط اسلوب تكبير قرص مضغوط</entry>
       <entry id="9007" string="Overlap only">فقط التداخل</entry>
       <entry id="9008" string="No verify">بدون تثبت</entry>
       <entry id="9009" string="No scratch repair">لا لإصلاح الخدوش</entry>
@@ -417,7 +425,7 @@
       <entry id="9011" string="Activate jitter correction">تنشيط تصحيح النرفزة</entry>
       <entry id="9012" string="Swap left/right channel">مبادلة القناة يمين/يسار</entry>
       <entry id="9013" string="Automatization">التلقائية</entry>
-      <entry id="9014" string="Read CD contents on insert">قراء محتويات  القرص المضغوط عند الإدراج</entry>
+      <entry id="9014" string="Read CD contents on insert">قراء محتويات القرص المضغوط عند الإدراج</entry>
       <entry id="9015" string="Start ripping automatically">تبدء الإشتقاق تلقائيا</entry>
       <entry id="9016" string="Eject disk after ripping">لفظ القرص بعد الإشتقاق</entry>
       <entry id="9017" string="CD options">خيارات قرص مدمج</entry>
@@ -430,7 +438,7 @@
       <section name="BladeEnc">
 	<entry id="30000" string="Bitrate">معدل بايت</entry>
 	<entry id="30001" string="Copyright bit">بايت حقوق الؤلف</entry>
-	<entry id="30002" string="CRC">التحقق  من التكرار الدوري</entry>
+	<entry id="30002" string="CRC">التحقق من التكرار الدوري</entry>
 	<entry id="30003" string="Original bit">بايت اصلي</entry>
 	<entry id="30004" string="Channels">القنوات</entry>
 	<entry id="30005" string="Private bit">بايت خاص</entry>
@@ -459,16 +467,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">المسبقات</entry>
-	  <entry id="32101" string="Use preset:">استخدم المسبقات:</entry>
+	  <entry id="32101" string="Use preset">استخدم المسبقات</entry>
 	  <entry id="32102" string="Custom settings">إعدادات مخصصة</entry>
 	  <entry id="32103" string="Medium, Fast">متوسط،تقريبا</entry>
 	  <entry id="32104" string="Standard, Fast">قياسي،تقريبا</entry>
 	  <entry id="32105" string="Extreme, Fast">أقصى،تقريبا</entry>
 	  <entry id="32106" string="Bitrate">معدل بايت</entry>
 	  <entry id="32107" string="Quality">النوعية</entry>
-	  <entry id="32108" string="Set bitrate:">ثبت معدل بايت:</entry>
-	  <entry id="32109" string="Set ratio:">ثبت النسبة:</entry>
-	  <entry id="32110" string="Set quality:">ثبت النوعية:</entry>
+	  <entry id="32108" string="Set bitrate">ثبت معدل بايت</entry>
+	  <entry id="32109" string="Set ratio">ثبت النسبة</entry>
+	  <entry id="32110" string="Set quality">ثبت النوعية</entry>
 	  <entry id="32111" string="worse">أسوأ</entry>
 	  <entry id="32112" string="better">أحسن</entry>
 	  <entry id="32113" string="VBR mode">طريقة معدل بايت متغير</entry>
@@ -482,7 +490,7 @@
 	  <entry id="32201" string="Set Copyright bit">ثبت بايت حقوق المؤلف</entry>
 	  <entry id="32202" string="Set Original bit">ثبت البايت الاصلي</entry>
 	  <entry id="32203" string="Set Private bit">ثبت البايت الخاص</entry>
-	  <entry id="32204" string="CRC">التحقق  من التكرار الدوري</entry>
+	  <entry id="32204" string="CRC">التحقق من التكرار الدوري</entry>
 	  <entry id="32205" string="Enable CRC">تنشيط التحقق من التكرار الدوري</entry>
 	  <entry id="32206" string="Stereo mode">طريقة صوتي مجسم</entry>
 	  <entry id="32207" string="Auto">تلقائي</entry>
@@ -490,13 +498,13 @@
 	  <entry id="32209" string="Joint Stereo">صوت مجسم مشترك</entry>
 	  <entry id="32210" string="Force Joint Stereo">فرض صوت مجسم مشترك</entry>
 	  <entry id="32211" string="VBR bitrate range">محموعة معدل بايت لمعدل بايت متغير</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">ثبت أدنى معدل بايت متغير:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">ثبت أقصى معدل بايت متغير:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">ثبت أدنى معدل بايت متغير</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">ثبت أقصى معدل بايت متغير</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">عتبة السمع المطلقة</entry>
-	  <entry id="32301" string="Enable ATH:">تنشيط عتبة السمع المطلقة:</entry>
+	  <entry id="32301" string="Enable ATH">تنشيط عتبة السمع المطلقة</entry>
 	  <entry id="32302" string="Use default setting">استخدم الإعدادات الإفتراضية</entry>
 	  <entry id="32303" string="Psycho acoustic model">النموذج الصوتي النفسي</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">استخدم وقتيا تأثير الإخفاء</entry>
@@ -509,11 +517,11 @@
 	  <entry id="32401" string="auto">تلقائي</entry>
 	  <entry id="32402" string="no resampling">بدون اختزال</entry>
 	  <entry id="32403" string="Highpass filter">مرشح تمرير عالية</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">ثبت تمرير مرتفع الترددات بالهرتز:</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">ثبت تمرير مرتفع بالعرض بالهرتز:</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">ثبت تمرير مرتفع الترددات بالهرتز</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">ثبت تمرير مرتفع بالعرض بالهرتز</entry>
 	  <entry id="32406" string="Lowpass filter">مرشح تمرير منخفض</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">ثبت تمرير منخفض بالتردد بالهرتز:</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">ثبت تمرير منخفض بالعرض بالهرتز:</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">ثبت تمرير منخفض بالتردد بالهرتز</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">ثبت تمرير منخفض بالعرض بالهرتز</entry>
 	  <entry id="32409" string="Misc settings">إعدادات متفرقة</entry>
 	  <entry id="32410" string="Disable all filtering">تعطيل كافة المرشحات</entry>
 	</section>
@@ -526,14 +534,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">معدل بايت</entry>
 	  <entry id="33201" string="Bitrate / Quality">معدل بايت/النوعية</entry>
-	  <entry id="33202" string="Bitrate per channel:">معدل بايت بالقناة:</entry>
-	  <entry id="33203" string="Set quality:">ثبت النوعية:</entry>
+	  <entry id="33202" string="Bitrate per channel">معدل بايت بالقناة</entry>
+	  <entry id="33203" string="Set quality">ثبت النوعية</entry>
 	  <entry id="33204" string="Stereo mode">طريقة صوتي مجسم</entry>
 	  <entry id="33205" string="Allow Joint Stereo">السماح بربط صوت مجسم</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">تشكيل وقتي للضوضاء</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">استخدام وقتي لتشكيل الضوضاء</entry>
 	  <entry id="33208" string="Maximum bandwidth">أقصى سعة الحيز</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">بالهرتز AAC أقصى تردد سعة الحيز لاستخدام:</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">بالهرتز AAC أقصى تردد سعة الحيز لاستخدام</entry>
 	</section>
 
 	<section name="Format">
@@ -553,7 +561,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">المسبقات</entry>
-	  <entry id="34101" string="Use preset:">استخدم المسبقات:</entry>
+	  <entry id="34101" string="Use preset">استخدم المسبقات</entry>
 	  <entry id="34102" string="Custom settings">إعدادات مخصصة</entry>
 	  <entry id="34103" string="Fastest encoding">ترميز سريع</entry>
 	  <entry id="34104" string="Best compression">أفضل ضغط</entry>
@@ -565,14 +573,13 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">استخدم التدفق الفرعي</entry>
-	  <entry id="34201" string="Blocksize:">حجم الكتلة:</entry>
-	  <entry id="34202" string="bytes">بايت</entry>
+	  <entry id="34201" string="Blocksize">حجم الكتلة</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">تحليل الطيف</entry>
-	  <entry id="34301" string="Apodization function(s):">وظيفة أو وظائف تحليل الطيف:</entry>
-	  <entry id="34302" string="Note:">مذكرة:</entry>
+	  <entry id="34300" string="Signal processing">تحليل الطيف</entry>
+	  <entry id="34301" string="Window function(s)">وظيفة أو وظائف تحليل الطيف</entry>
+	  <entry id="34302" string="Note">مذكرة</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">يمكنك تحديد وظائف متعددة مفصولة بفواصل منقوطة</entry>
 	  <entry id="34304" string="Linear predictor">توقع خطي</entry>
 	  <entry id="34305" string="Maximum LPC order">أقصى ترتيب الترميز الخطي التنبؤي</entry>
@@ -604,15 +611,16 @@
 	<entry id="36005" string="Write uncompressed WMA files">WMA كتابة الملفات الغير المضغوطة لـ</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">تلقائيا حدد التنسيق استنادا إلى إعدادات وتنسيق المدخلات</entry>
 	<entry id="36007" string="Use VBR encoding">استخدام الترميز متغير معدل البت</entry>
-	<entry id="36008" string="Use 2-pass encoding">استخدام اثنين من تمرير الترميز</entry>
+	<entry id="36008" string="Quality">النوعية</entry>
 	<entry id="36009" string="Target bitrate">هدف معدل بايت</entry>
+	<entry id="36010" string="Use 2-pass encoding">استخدام اثنين من تمرير الترميز</entry>
       </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">معدل بايت</entry>
-	<entry id="37001" string="Bitrate per channel:">معدل بايت بالقناة:</entry>
+	<entry id="37001" string="Bitrate per channel">معدل بايت بالقناة</entry>
 	<entry id="37002" string="Preselection">اختيار مسبق</entry>
-	<entry id="37003" string="Number of preselection candidates:">عدد الترشحات الاختيار الأولي</entry>
+	<entry id="37003" string="Number of preselection candidates">عدد الترشحات الاختيار الأولي</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -628,12 +636,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">تلقائي</entry>
 	<entry id="40015" string="Quality">النوعية</entry>
-	<entry id="40021" string="Options">خيارات</entry>
+	<entry id="40020" string="Options">خيارات</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">صيغة الملف:</entry>
-	<entry id="41002" string="Audio format:">صيغة الصوت:</entry>
+	<entry id="41001" string="File format">صيغة الملف</entry>
+	<entry id="41002" string="Audio format">صيغة الصوت</entry>
 	<entry id="41003" string="mono">وحيد</entry>
       </section>
     </section>

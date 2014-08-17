@@ -31,7 +31,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 bytov</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">Pridať</entry>
 	<entry id="1101" string="Remove">Odstrániť</entry>
-	<entry id="1102" string="Load joblist...">Načítať zoznam...</entry>
-	<entry id="1103" string="Save joblist...">Uložiť zoznam...</entry>
+	<entry id="1102" string="Load joblist">Načítať zoznam</entry>
+	<entry id="1103" string="Save joblist">Uložiť zoznam</entry>
 	<entry id="1104" string="Clear joblist">Vyprázdniť zoznam</entry>
 	<entry id="1105" string="Exit">Ukončiť</entry>
 	<entry id="1106" string="Audio file(s)">Audio súbor(y)</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Požiadať CDDB databázu</entry>
-	<entry id="1201" string="Submit CDDB data...">Predložiť CDDB dáta...</entry>
+	<entry id="1201" string="Submit CDDB data">Predložiť CDDB dáta</entry>
 	<entry id="1202" string="Query CDDB database later">Poslať dotaz na CDDB neskôr</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Ukázať čakajúce CDDB položky...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Zobraziť čakajúce CDDB požiadavky...</entry>
+	<entry id="1203" string="Show queued CDDB entries">Ukázať čakajúce CDDB položky</entry>
+	<entry id="1204" string="Show queued CDDB queries">Zobraziť čakajúce CDDB požiadavky</entry>
 	<entry id="1205" string="Enable CDDB cache">Povoliť CDDB cache</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Usporiadať CDDB cache položky...</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Usporiadať CDDB cache položky</entry>
 	<entry id="1207" string="Automatic CDDB queries">Automatické požiadavky na CDDB</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">Hlavné nastavenia...</entry>
-	<entry id="1301" string="Configure selected encoder...">Nastaviť vybraný kodek...</entry>
+	<entry id="1300" string="General settings">Hlavné nastavenia</entry>
+	<entry id="1301" string="Configure selected encoder">Nastaviť vybraný kodek</entry>
 	<entry id="1302" string="Active CD-ROM drive">Aktívna CD-ROM mechanika</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Témy pomocníka...</entry>
+	<entry id="1500" string="Help topics">Témy pomocníka</entry>
 	<entry id="1501" string="Show Tip of the Day">Ukázať Tip Dňa</entry>
 	<entry id="1502" string="Check for updates now">Zistiť Updaty</entry>
 	<entry id="1503" string="Check for updates at startup">Kontrolovať updaty pri štarte programu</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Odstrániť vybranú položku zo zoznamu</entry>
       <entry id="2003" string="Clear the entire joblist">Vyčistiť celý zoznam</entry>
       <entry id="2004" string="Query CDDB database">Požiadať CDDB databázu</entry>
-      <entry id="2005" string="Submit CDDB data...">Predložiť CDDB dáta...</entry>
+      <entry id="2005" string="Submit CDDB data">Predložiť CDDB dáta</entry>
       <entry id="2006" string="Configure general settings">Prispôsobiť hlavné nastavenia</entry>
       <entry id="2007" string="Configure the selected audio encoder">Nastaviť vybraný kodek</entry>
       <entry id="2008" string="Start the encoding process">Začať kódovanie</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">Kóduje sa súbor:</entry>
-      <entry id="3001" string="Time left:">Zvyšný čas:</entry>
-      <entry id="3002" string="Selected encoder:">Vybraný kodek:</entry>
-      <entry id="3003" string="File progress:">Priebeh súboru:</entry>
-      <entry id="3004" string="Output folder:">Výstupná zložka:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 súbor(ov) v zozname:</entry>
+      <entry id="3000" string="Encoding file">Kóduje sa súbor</entry>
+      <entry id="3001" string="Time left">Zvyšný čas</entry>
+      <entry id="3002" string="Selected encoder">Vybraný kodek</entry>
+      <entry id="3003" string="File progress">Priebeh súboru</entry>
+      <entry id="3004" string="Output folder">Výstupná zložka</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 súbor(ov) v zozname</entry>
       <entry id="3006" string="none">žiadny</entry>
       <entry id="3007" string="Show title info">Zobraziť info</entry>
       <entry id="3008" string="Play">Prehrať</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">Veľké prvé písmeno</entry>
       <entry id="3029" string="all lower case">všetko malými písmenami</entry>
       <entry id="3030" string="all upper case">všetko veľkými písmenami</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Vyberte zložku, v ktorej budú umiestnené zakódované súbory:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Vyberte zložku, v ktorej budú umiestnené zakódované súbory</entry>
       <entry id="3032" string="Sampling rate">Rýchlosť vzorkovania</entry>
       <entry id="3033" string="Sample resolution">Rozlíšenie vzorkovania</entry>
       <entry id="3034" string="Number of samples">Počet vzoriek</entry>
       <entry id="3035" string="Channels">Kanály</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="bit">bit</entry>
-      <entry id="3039" string="min">min</entry>
-      <entry id="3040" string="bytes">bytov</entry>
-      <entry id="3041" string="Length">Dĺžka</entry>
-      <entry id="3042" string="File">Súbor</entry>
-      <entry id="3043" string="Size">Veľkosť</entry>
-      <entry id="3044" string="Bitrate">Bitrate</entry>
-      <entry id="3045" string="Audio Files">Audio súbory</entry>
-      <entry id="3046" string="All Files">Všetky súbory</entry>
-      <entry id="3047" string="Playlist Files">Súbory Playlistu</entry>
+      <entry id="3038" string="Length">Dĺžka</entry>
+      <entry id="3039" string="File">Súbor</entry>
+      <entry id="3040" string="Size">Veľkosť</entry>
+      <entry id="3041" string="Bitrate">Bitrate</entry>
+      <entry id="3042" string="Audio Files">Audio súbory</entry>
+      <entry id="3043" string="All Files">Všetky súbory</entry>
+      <entry id="3044" string="Playlist Files">Súbory Playlistu</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Adresár</entry>
 	<entry id="3101" string="Add folder">Pridať adresár</entry>
-	<entry id="3102" string="Choose folder:">Zvoľte adresár:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Zvoľte zložku na pridanie do zoznamu:</entry>
+	<entry id="3102" string="Choose folder">Zvoľte adresár</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Zvoľte zložku na pridanie do zoznamu</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,14 +177,14 @@
 	<entry id="3201" string="Pattern">Vzor</entry>
 	<entry id="3202" string="Start folder">Počiatočný adresár</entry>
 	<entry id="3203" string="Filename pattern">Vzor súborovej cesty</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">Zvoľte zložku na pridanie do zoznamu:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Zvoľte zložku na pridanie do zoznamu</entry>
       </section>
 
       <section name="Character set"/>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Nevybrali ste žiaden súbor!</entry>
-	<entry id="3401" string="No files found matching pattern:">Žiadne súbory nevyhovujú vzoru:</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Žiadne súbory nevyhovujú vzoru: %1</entry>
       </section>
     </section>
 
@@ -211,7 +219,7 @@
 	<entry id="4105" string="No exact matches found">Žiadne zhody sa nenašli</entry>
 	<entry id="4106" string="Multiple matches found">Našlo sa viacero zhôd</entry>
 	<entry id="4107" string="Matches">Zhody</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">Vyberte položku najviac odpovedajúcu vášmu CD:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">Vyberte položku najviac odpovedajúcu vášmu CD</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Želáte si previesť túto požiadavku znovu neskôr?</entry>
 	<entry id="4110" string="none">žiadny</entry>
 	<entry id="4111" string="Preview">Prehľad</entry>
@@ -227,12 +235,12 @@
 	<entry id="4202" string="Query">Požiadavka</entry>
 	<entry id="4203" string="Query all">Požiadať všetko</entry>
 	<entry id="4204" string="Query string">Požadovací reťazec</entry>
-	<entry id="4205" string="CDDB queries to perform:">CDDB požiadavky:</entry>
+	<entry id="4205" string="CDDB queries to perform">CDDB požiadavky</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Odstrániť položku</entry>
-	<entry id="4301" string="CDDB entries to submit:">CDDB položky na odoslanie:</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB položky na odoslanie</entry>
 	<entry id="4302" string="Submit all">Potvrdiť všetko</entry>
 	<entry id="4303" string="CDDB data">CDDB dáta</entry>
 	<entry id="4304" string="Submit">Predložiť</entry>
@@ -246,7 +254,7 @@
 	<entry id="4400" string="CDDB data">CDDB dáta</entry>
 	<entry id="4401" string="Update joblist with this information">Updatovať zoznam touto info</entry>
 	<entry id="4402" string="Charset">Znaková sada</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Stiahnuté CDDB položky:</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Stiahnuté CDDB položky</entry>
 	<entry id="4404" string="Disc name">Názov Disku</entry>
 	<entry id="4405" string="Preview">Prehľad</entry>
 	<entry id="4406" string="Remove entry">Odstrániť položku</entry>
@@ -266,7 +274,7 @@
 	<entry id="5101" string="Encoder">Kodek</entry>
 	<entry id="5102" string="Output folder">Výstupná zložka</entry>
 	<entry id="5103" string="Browse">Prehľadať</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Vyberte zložku, v ktorej budú umiestnené zakódované súbory:</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Vyberte zložku, v ktorej budú umiestnené zakódované súbory</entry>
 	<entry id="5105" string="Use input file folder if possible">Použiť vstupný adresár ak je to možné</entry>
 	<entry id="5106" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
 	<entry id="5107" string="Options">Možnosti</entry>
@@ -287,19 +295,19 @@
 	<entry id="5203" string="Browse">Prehľadať</entry>
 	<entry id="5204" string="Use encoder output folder">Použiť výstupný adresár</entry>
 	<entry id="5205" string="Filename pattern">Vzor súborovej cesty</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Zvoľte priečinok, kam sa uložia playlisty:</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Zvoľte priečinok, kam sa uložia playlisty</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Povoliť lokálnu CDDB databázu</entry>
 	<entry id="5301" string="Enable remote CDDB database">Povoliť vzdialenú CDDB databázu</entry>
-	<entry id="5302" string="CDDB path:">CDDB adresár:</entry>
+	<entry id="5302" string="CDDB path">CDDB adresár</entry>
 	<entry id="5303" string="Browse">Prehľadať</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Zvoľte zložku CDDB databázy:</entry>
-	<entry id="5305" string="CDDB access mode:">CDDB prístupový mód:</entry>
-	<entry id="5306" string="CDDB server:">CDDB server:</entry>
-	<entry id="5307" string="Port:">Port:</entry>
-	<entry id="5308" string="eMail address:">e-mail adresa:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Zvoľte zložku CDDB databázy</entry>
+	<entry id="5305" string="CDDB access mode">CDDB prístupový mód</entry>
+	<entry id="5306" string="CDDB server">CDDB server</entry>
+	<entry id="5307" string="Port">Port</entry>
+	<entry id="5308" string="eMail address">e-mail adresa</entry>
 	<entry id="5309" string="HTTP settings">Nastavenia HTTP</entry>
 	<entry id="5310" string="Proxy settings">Proxy nastavenia</entry>
 	<entry id="5311" string="Options">Možnosti</entry>
@@ -311,13 +319,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Rozšírené CDDB nastavenia</entry>
 	  <entry id="5331" string="CGI scripts">CGI skripty</entry>
-	  <entry id="5332" string="CDDB query script:">Skript CDDB požiadavky:</entry>
-	  <entry id="5333" string="CDDB submit script:">Skript odoslania CDDB:</entry>
+	  <entry id="5332" string="CDDB query script">Skript CDDB požiadavky</entry>
+	  <entry id="5333" string="CDDB submit script">Skript odoslania CDDB</entry>
 	  <entry id="5334" string="no proxy">žiadne proxy</entry>
-	  <entry id="5335" string="Proxy type:">Typ proxy:</entry>
-	  <entry id="5336" string="Proxy server:">Proxy server:</entry>
-	  <entry id="5337" string="User name:">Užívateľ:</entry>
-	  <entry id="5338" string="Password:">Heslo:</entry>
+	  <entry id="5335" string="Proxy type">Typ proxy</entry>
+	  <entry id="5336" string="Proxy server">Proxy server</entry>
+	  <entry id="5337" string="User name">Užívateľ</entry>
+	  <entry id="5338" string="Password">Heslo</entry>
 	</section>
 
 	<section name="Errors">
@@ -327,7 +335,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">Vyberte jazyk:</entry>
+	<entry id="5400" string="Select language">Vyberte jazyk</entry>
 	<entry id="5401" string="Edit language file">Editovať jazykový súbor</entry>
 	<entry id="5402" string="Information">Informácie</entry>
 	<entry id="5403" string="Encoding">Kódovanie</entry>
@@ -338,13 +346,13 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">Info tagy</entry>
 	<entry id="5501" string="Tag formats">Kódovanie tagu</entry>
-	<entry id="5502" string="Default comment string:">Prednastavený komentár:</entry>
+	<entry id="5502" string="Default comment string">Prednastavený komentár</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Nahradiť existujúce komentáre defaultnými komentármi</entry>
 	<entry id="5504" string="Filename pattern">Vzor súborovej cesty</entry>
-	<entry id="5505" string="Encoding:">Kódovanie:</entry>
+	<entry id="5505" string="Encoding">Kódovanie</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -406,12 +414,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Aktívna CD-ROM mechanika</entry>
-      <entry id="9001" string="Set drive speed limit:">Maximálna rýchlosť mechaniky:</entry>
+      <entry id="9001" string="Set drive speed limit">Maximálna rýchlosť mechaniky</entry>
       <entry id="9002" string="CD information">CD info</entry>
       <entry id="9003" string="Read CD Text">Prečítať CD text</entry>
       <entry id="9004" string="Read cdplayer.ini">Prečítať cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Nastaviť rippovanie</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">Aktivovať &quot;cdparanoia&quot; mód:</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktivovať &quot;cdparanoia&quot; mód</entry>
       <entry id="9007" string="Overlap only">Len overlap</entry>
       <entry id="9008" string="No verify">Bez kontroly</entry>
       <entry id="9009" string="No scratch repair">Neopravovať škrabance</entry>
@@ -461,16 +469,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Prednastavenia</entry>
-	  <entry id="32101" string="Use preset:">Použiť prednastavenia:</entry>
+	  <entry id="32101" string="Use preset">Použiť prednastavenia</entry>
 	  <entry id="32102" string="Custom settings">Vlastné nastavenia</entry>
 	  <entry id="32103" string="Medium, Fast">Medium, Fast</entry>
 	  <entry id="32104" string="Standard, Fast">Standard, Fast</entry>
 	  <entry id="32105" string="Extreme, Fast">Extreme, Fast</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Kvalita</entry>
-	  <entry id="32108" string="Set bitrate:">Nastaviť bitrate:</entry>
-	  <entry id="32109" string="Set ratio:">Nastaviť ratio:</entry>
-	  <entry id="32110" string="Set quality:">Nastaviť kvalitu:</entry>
+	  <entry id="32108" string="Set bitrate">Nastaviť bitrate</entry>
+	  <entry id="32109" string="Set ratio">Nastaviť ratio</entry>
+	  <entry id="32110" string="Set quality">Nastaviť kvalitu</entry>
 	  <entry id="32111" string="worse">horší</entry>
 	  <entry id="32112" string="better">lepší</entry>
 	  <entry id="32113" string="VBR mode">VBR mód</entry>
@@ -492,13 +500,13 @@
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Vnútiť Joint Stereo</entry>
 	  <entry id="32211" string="VBR bitrate range">Rozsah VBR bitrate</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Min. VBR bitrate:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Max. VBR bitrate:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Min. VBR bitrate</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Max. VBR bitrate</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH:">Povoliť ATH:</entry>
+	  <entry id="32301" string="Enable ATH">Povoliť ATH</entry>
 	  <entry id="32302" string="Use default setting">Pôvodné nastavenia</entry>
 	  <entry id="32303" string="Psycho acoustic model">Psycho akustický model</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Použiť Efekt Dočasného Maskovania</entry>
@@ -511,11 +519,11 @@
 	  <entry id="32401" string="auto">auto</entry>
 	  <entry id="32402" string="no resampling">bez vzorkovania</entry>
 	  <entry id="32403" string="Highpass filter">Highpass filter</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Nastaviť Highpass frekv. (Hz):</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Nastaviť Highpass šírku (Hz):</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Nastaviť Highpass frekv. (Hz)</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Nastaviť Highpass šírku (Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Lowpass filter</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Nastaviť Lowpass frekv. (Hz):</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Nastaviť Lowpass šírku (Hz):</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Nastaviť Lowpass frekv. (Hz)</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Nastaviť Lowpass šírku (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Ďalšie nastavenia</entry>
 	  <entry id="32410" string="Disable all filtering">Zrušiť filtrovanie</entry>
 	</section>
@@ -528,14 +536,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Bitrate</entry>
 	  <entry id="33201" string="Bitrate / Quality">Bitrate / Kvalita</entry>
-	  <entry id="33202" string="Bitrate per channel:">Bitrate na kanál:</entry>
-	  <entry id="33203" string="Set quality:">Nastaviť kvalitu:</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitrate na kanál</entry>
+	  <entry id="33203" string="Set quality">Nastaviť kvalitu</entry>
 	  <entry id="33204" string="Stereo mode">Stereo mód</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Umožniť Joint Stereo</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Použiť Temporal Noise Shaping</entry>
 	  <entry id="33208" string="Maximum bandwidth">Max. šírka pásma</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Max. použiteľná frekvencia šírky pásma AAC (Hz):</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Max. použiteľná frekvencia šírky pásma AAC (Hz)</entry>
 	</section>
 
 	<section name="Format">
@@ -556,7 +564,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Prednastavenia</entry>
-	  <entry id="34101" string="Use preset:">Použiť prednastavenia:</entry>
+	  <entry id="34101" string="Use preset">Použiť prednastavenia</entry>
 	  <entry id="34102" string="Custom settings">Vlastné nastavenia</entry>
 	  <entry id="34103" string="Fastest encoding">Najrýchlejšie kódovanie</entry>
 	  <entry id="34104" string="Best compression">Najlepšia kompresia</entry>
@@ -569,14 +577,13 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Use streamable subset</entry>
-	  <entry id="34201" string="Blocksize:">Veľkosť bloku:</entry>
-	  <entry id="34202" string="bytes">bytov</entry>
+	  <entry id="34201" string="Blocksize">Veľkosť bloku</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">Apodizácia</entry>
-	  <entry id="34301" string="Apodization function(s):">Apodizačná funkcia</entry>
-	  <entry id="34302" string="Note:">Poznámky:</entry>
+	  <entry id="34300" string="Signal processing">Apodizácia</entry>
+	  <entry id="34301" string="Window function(s)">Apodizačná funkcia</entry>
+	  <entry id="34302" string="Note">Poznámky</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Môžete špecifikovať viacero funkcií oddelených bodkočiarkou.</entry>
 	  <entry id="34304" string="Linear predictor">Linear predictor</entry>
 	  <entry id="34305" string="Maximum LPC order">Max. LPC poradie</entry>
@@ -608,15 +615,16 @@
 	<entry id="36005" string="Write uncompressed WMA files">Zapísať nekomprimované WMA súbory</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">Automaticky zvoliť formát na základe nastavení a vstupného formátu</entry>
 	<entry id="36007" string="Use VBR encoding">Použiť VBR kódovanie</entry>
-	<entry id="36008" string="Use 2-pass encoding">Použiť 2-cestné kódovanie</entry>
+	<entry id="36008" string="Quality">Kvalita</entry>
 	<entry id="36009" string="Target bitrate">Cieľový bitrate</entry>
+	<entry id="36010" string="Use 2-pass encoding">Použiť 2-cestné kódovanie</entry>
       </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Bitrate</entry>
-	<entry id="37001" string="Bitrate per channel:">Bitrate na kanál:</entry>
+	<entry id="37001" string="Bitrate per channel">Bitrate na kanál</entry>
 	<entry id="37002" string="Preselection">Pred-výber</entry>
-	<entry id="37003" string="Number of preselection candidates:">Počet pred-vybraných kandidátov:</entry>
+	<entry id="37003" string="Number of preselection candidates">Počet pred-vybraných kandidátov</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -632,12 +640,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">Auto</entry>
 	<entry id="40015" string="Quality">Kvalita</entry>
-	<entry id="40021" string="Options">Možnosti</entry>
+	<entry id="40020" string="Options">Možnosti</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">Formát súboru:</entry>
-	<entry id="41002" string="Audio format:">Audio formát:</entry>
+	<entry id="41001" string="File format">Formát súboru</entry>
+	<entry id="41002" string="Audio format">Audio formát</entry>
 	<entry id="41003" string="mono">mono</entry>
       </section>
     </section>
@@ -647,8 +655,8 @@
       <section name="Donate">
 	<entry id="50000" string="Support this project">Podporte tento projekt</entry>
 	<entry id="50001" string="Please support this project!">Prosím podporte tento projekt!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prosím, prispejte aj vy  %1 projektu&#10;finančným darom.&#10;&#10;Kliknite na jedno z tlačidiel dole aby ste nám poslali platbou pomocou  PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Finančný dar %1 môžete zaslať pomocou PayPal.&#10;&#10;Môžete však aj napísať  %1 ak nám chcete darovať peniaze prevodom, šekom alebo poštou.</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prosím, prispejte aj vy %1 projektu&#10;finančným darom.&#10;&#10;Kliknite na jedno z tlačidiel dole aby ste nám poslali platbou pomocou PayPal:</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Finančný dar %1 môžete zaslať pomocou PayPal.&#10;&#10;Môžete však aj napísať %1 ak nám chcete darovať peniaze prevodom, šekom alebo poštou.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">en</entry>
 	<entry id="50006" string="Thank you very much!">Ďakujeme pekne!</entry>

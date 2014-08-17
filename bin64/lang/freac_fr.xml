@@ -29,9 +29,20 @@
     <entry id="354" string="unknown year">année inconnue</entry>
 
     <section name="Characters">
-      <entry id="500" string="%1:">%1:</entry>
+      <entry id="500" string="%1:">%1 :</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 octets</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">Ajouter</entry>
 	<entry id="1101" string="Remove">Supprimer</entry>
-	<entry id="1102" string="Load joblist...">Charger la liste...</entry>
-	<entry id="1103" string="Save joblist...">Enregistrer la liste...</entry>
+	<entry id="1102" string="Load joblist">Charger la liste</entry>
+	<entry id="1103" string="Save joblist">Enregistrer la liste</entry>
 	<entry id="1104" string="Clear joblist">Effacer la liste</entry>
 	<entry id="1105" string="Exit">Quitter</entry>
 	<entry id="1106" string="Audio file(s)">Fichier(s) audio</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Interroger la base de données CDDB</entry>
-	<entry id="1201" string="Submit CDDB data...">Soumettre les données CDDB...</entry>
+	<entry id="1201" string="Submit CDDB data">Soumettre les données CDDB</entry>
 	<entry id="1202" string="Query CDDB database later">Interroger la base de données CDDB plus tard</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Afficher les entrées CDDB en file d'attente...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Afficher les requêtes CDDB en file d'attente...</entry>
+	<entry id="1203" string="Show queued CDDB entries">Afficher les entrées CDDB en file d'attente</entry>
+	<entry id="1204" string="Show queued CDDB queries">Afficher les requêtes CDDB en file d'attente</entry>
 	<entry id="1205" string="Enable CDDB cache">Activer le cache CDDB</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Gérer entrées de cache CDDB...</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Gérer entrées de cache CDDB</entry>
 	<entry id="1207" string="Automatic CDDB queries">Requêtes CDDB automatiques</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">Paramètres généraux...</entry>
-	<entry id="1301" string="Configure selected encoder...">Configurer l'encodeur sélectionné...</entry>
+	<entry id="1300" string="General settings">Paramètres généraux</entry>
+	<entry id="1301" string="Configure selected encoder">Configurer l'encodeur sélectionné</entry>
 	<entry id="1302" string="Active CD-ROM drive">Lecteur de CD-ROM actif</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Rubriques d'aide...</entry>
+	<entry id="1500" string="Help topics">Rubriques d'aide</entry>
 	<entry id="1501" string="Show Tip of the Day">Afficher l'astuce du jour</entry>
 	<entry id="1502" string="Check for updates now">Rechercher des mises à jour maintenant</entry>
 	<entry id="1503" string="Check for updates at startup">Rechercher les mises à jour au démarrage</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Supprimer l'entrée sélectionnée de la liste</entry>
       <entry id="2003" string="Clear the entire joblist">Effacer toute la liste</entry>
       <entry id="2004" string="Query CDDB database">Interroger la base de données CDDB</entry>
-      <entry id="2005" string="Submit CDDB data...">Soumettre les données CDDB...</entry>
+      <entry id="2005" string="Submit CDDB data">Soumettre les données CDDB</entry>
       <entry id="2006" string="Configure general settings">Configurer les paramètres généraux</entry>
       <entry id="2007" string="Configure the selected audio encoder">Configurer l'encodeur audio sélectionné</entry>
       <entry id="2008" string="Start the encoding process">Lancer l'encodage</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">Encodage du fichier :</entry>
-      <entry id="3001" string="Time left:">Temps restant :</entry>
-      <entry id="3002" string="Selected encoder:">Encodeur sélectionné :</entry>
-      <entry id="3003" string="File progress:">Progression :</entry>
-      <entry id="3004" string="Output folder:">Répertoire de sortie :</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 fichier(s) à traiter :</entry>
+      <entry id="3000" string="Encoding file">Encodage du fichier</entry>
+      <entry id="3001" string="Time left">Temps restant</entry>
+      <entry id="3002" string="Selected encoder">Encodeur sélectionné</entry>
+      <entry id="3003" string="File progress">Progression</entry>
+      <entry id="3004" string="Output folder">Répertoire de sortie</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 fichier(s) à traiter</entry>
       <entry id="3006" string="none">aucun</entry>
       <entry id="3007" string="Show title info">Afficher les informations de titre</entry>
       <entry id="3008" string="Play">Lire</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">Première lettre en majuscule</entry>
       <entry id="3029" string="all lower case">tout en minuscules</entry>
       <entry id="3030" string="all upper case">tout en majuscules</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Sélectionnez le dossier de destination des fichiers encodés :</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Sélectionnez le dossier de destination des fichiers encodés</entry>
       <entry id="3032" string="Sampling rate">Taux d'échantillonnage</entry>
       <entry id="3033" string="Sample resolution">Résolution d'échantillon</entry>
       <entry id="3034" string="Number of samples">Nombre d'échantillons</entry>
       <entry id="3035" string="Channels">Canaux</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stéréo</entry>
-      <entry id="3038" string="bit">bit</entry>
-      <entry id="3039" string="min">min</entry>
-      <entry id="3040" string="bytes">octets</entry>
-      <entry id="3041" string="Length">Longueur</entry>
-      <entry id="3042" string="File">Fichier</entry>
-      <entry id="3043" string="Size">Taille</entry>
-      <entry id="3044" string="Bitrate">Débit binaire</entry>
-      <entry id="3045" string="Audio Files">Fichiers audio</entry>
-      <entry id="3046" string="All Files">Tous les fichiers</entry>
-      <entry id="3047" string="Playlist Files">Fichiers des sélections</entry>
+      <entry id="3038" string="Length">Longueur</entry>
+      <entry id="3039" string="File">Fichier</entry>
+      <entry id="3040" string="Size">Taille</entry>
+      <entry id="3041" string="Bitrate">Débit binaire</entry>
+      <entry id="3042" string="Audio Files">Fichiers audio</entry>
+      <entry id="3043" string="All Files">Tous les fichiers</entry>
+      <entry id="3044" string="Playlist Files">Fichiers des sélections</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Répertoire</entry>
 	<entry id="3101" string="Add folder">Ajouter répertoire</entry>
-	<entry id="3102" string="Choose folder:">Sélectionnez le répertoire :</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Sélectionnez le dossier à ajouter à la liste :</entry>
+	<entry id="3102" string="Choose folder">Sélectionnez le répertoire</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Sélectionnez le dossier à ajouter à la liste</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,14 +177,14 @@
 	<entry id="3201" string="Pattern">Motif</entry>
 	<entry id="3202" string="Start folder">Répertoire de départ</entry>
 	<entry id="3203" string="Filename pattern">Modèle de nom de fichier</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">Sélectionnez le dossier à ajouter à la liste :</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Sélectionnez le dossier à ajouter à la liste</entry>
       </section>
 
       <section name="Character set"/>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Vous n'avez sélectionné aucun fichier !</entry>
-	<entry id="3401" string="No files found matching pattern:">Aucun fichier correspondant au motif :</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Aucun fichier correspondant au motif : %1</entry>
       </section>
     </section>
 
@@ -211,7 +219,7 @@
 	<entry id="4105" string="No exact matches found">Aucune correspondance n'a été trouvée</entry>
 	<entry id="4106" string="Multiple matches found">Plusieurs correspondances ont été trouvées</entry>
 	<entry id="4107" string="Matches">Correspondances</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">Sélectionnez l'entrée correspondant le mieux à votre CD :</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">Sélectionnez l'entrée correspondant le mieux à votre CD</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Voulez-vous réexécuter cette requête ultérieurement ?</entry>
 	<entry id="4110" string="none">aucun</entry>
 	<entry id="4111" string="Preview">Aperçu</entry>
@@ -227,12 +235,12 @@
 	<entry id="4202" string="Query">Requête</entry>
 	<entry id="4203" string="Query all">Interroger tout</entry>
 	<entry id="4204" string="Query string">Chaîne de requête</entry>
-	<entry id="4205" string="CDDB queries to perform:">Requêtes CDDB à exécuter :</entry>
+	<entry id="4205" string="CDDB queries to perform">Requêtes CDDB à exécuter</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Suppr. entrée</entry>
-	<entry id="4301" string="CDDB entries to submit:">Entrées CDDB à soumettre :</entry>
+	<entry id="4301" string="CDDB entries to submit">Entrées CDDB à soumettre</entry>
 	<entry id="4302" string="Submit all">Soumettre tout</entry>
 	<entry id="4303" string="CDDB data">Données CDDB</entry>
 	<entry id="4304" string="Submit">Soumettre</entry>
@@ -246,7 +254,7 @@
 	<entry id="4400" string="CDDB data">Données CDDB</entry>
 	<entry id="4401" string="Update joblist with this information">Mettre à jour la liste avec ces informations</entry>
 	<entry id="4402" string="Charset">Jeu car.</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Entrées CDDB téléchargées :</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Entrées CDDB téléchargées</entry>
 	<entry id="4404" string="Disc name">Nom disque</entry>
 	<entry id="4405" string="Preview">Aperçu</entry>
 	<entry id="4406" string="Remove entry">Suppr. entrée</entry>
@@ -266,7 +274,7 @@
 	<entry id="5101" string="Encoder">Encodeur</entry>
 	<entry id="5102" string="Output folder">Répertoire de sortie</entry>
 	<entry id="5103" string="Browse">Parcourir</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Sélectionnez le dossier de destination des fichiers encodés :</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Sélectionnez le dossier de destination des fichiers encodés</entry>
 	<entry id="5105" string="Use input file folder if possible">Utiliser répertoire fichier entrée si possible</entry>
 	<entry id="5106" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>
 	<entry id="5107" string="Options">Options</entry>
@@ -287,19 +295,19 @@
 	<entry id="5203" string="Browse">Parcourir</entry>
 	<entry id="5204" string="Use encoder output folder">Utiliser répertoire sortie encodeur</entry>
 	<entry id="5205" string="Filename pattern">Modèle de nom de fichier</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Sélectionnez le dossier de destination des fichiers de la playlist :</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Sélectionnez le dossier de destination des fichiers de la playlist</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Activer la base de données CDDB locale</entry>
 	<entry id="5301" string="Enable remote CDDB database">Activer la base distante CDDB</entry>
-	<entry id="5302" string="CDDB path:">Répertoire CDDB :</entry>
+	<entry id="5302" string="CDDB path">Répertoire CDDB</entry>
 	<entry id="5303" string="Browse">Parcourir</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Sélectionnez le dossier de la base de données CDDB :</entry>
-	<entry id="5305" string="CDDB access mode:">Mode d'accès CDDB :</entry>
-	<entry id="5306" string="CDDB server:">Serveur CDDB :</entry>
-	<entry id="5307" string="Port:">Port:</entry>
-	<entry id="5308" string="eMail address:">Adresse e-mail :</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Sélectionnez le dossier de la base de données CDDB</entry>
+	<entry id="5305" string="CDDB access mode">Mode d'accès CDDB</entry>
+	<entry id="5306" string="CDDB server">Serveur CDDB</entry>
+	<entry id="5307" string="Port">Port</entry>
+	<entry id="5308" string="eMail address">Adresse e-mail</entry>
 	<entry id="5309" string="HTTP settings">Paramètres HTTP</entry>
 	<entry id="5310" string="Proxy settings">Paramètres du proxy</entry>
 	<entry id="5311" string="Options">Options</entry>
@@ -311,13 +319,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Paramètres CDDB étendus</entry>
 	  <entry id="5331" string="CGI scripts">Scripts CGI</entry>
-	  <entry id="5332" string="CDDB query script:">Script de requête CDDB :</entry>
-	  <entry id="5333" string="CDDB submit script:">Script de soumission CDDB :</entry>
+	  <entry id="5332" string="CDDB query script">Script de requête CDDB</entry>
+	  <entry id="5333" string="CDDB submit script">Script de soumission CDDB</entry>
 	  <entry id="5334" string="no proxy">Aucun proxy</entry>
-	  <entry id="5335" string="Proxy type:">Type de proxy :</entry>
-	  <entry id="5336" string="Proxy server:">Serveur proxy :</entry>
-	  <entry id="5337" string="User name:">Nom utilisateur :</entry>
-	  <entry id="5338" string="Password:">Mot de passe :</entry>
+	  <entry id="5335" string="Proxy type">Type de proxy</entry>
+	  <entry id="5336" string="Proxy server">Serveur proxy</entry>
+	  <entry id="5337" string="User name">Nom utilisateur</entry>
+	  <entry id="5338" string="Password">Mot de passe</entry>
 	</section>
 
 	<section name="Errors">
@@ -327,7 +335,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">Sélectionner la langue :</entry>
+	<entry id="5400" string="Select language">Sélectionner la langue</entry>
 	<entry id="5401" string="Edit language file">Modifier fichier langue</entry>
 	<entry id="5402" string="Information">Informations</entry>
 	<entry id="5403" string="Encoding">Encodage</entry>
@@ -338,13 +346,13 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">Balises infos</entry>
 	<entry id="5501" string="Tag formats">Encodages des balises</entry>
-	<entry id="5502" string="Default comment string:">Commentaires par défaut :</entry>
+	<entry id="5502" string="Default comment string">Commentaires par défaut</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Remplacer les commentaires existant par ceux par défaut</entry>
 	<entry id="5504" string="Filename pattern">Modèle de nom de fichier</entry>
-	<entry id="5505" string="Encoding:">Encodage:</entry>
+	<entry id="5505" string="Encoding">Encodage</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -406,12 +414,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Lecteur de CD-ROM actif</entry>
-      <entry id="9001" string="Set drive speed limit:">Définir la vitesse limite du lecteur</entry>
+      <entry id="9001" string="Set drive speed limit">Définir la vitesse limite du lecteur</entry>
       <entry id="9002" string="CD information">Informations sur le CD</entry>
       <entry id="9003" string="Read CD Text">Lire texte du CD</entry>
       <entry id="9004" string="Read cdplayer.ini">Lire fichier cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Paramètres de l'extracteur</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">Activer le mode cdparanoia :</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Activer le mode cdparanoia</entry>
       <entry id="9007" string="Overlap only">Recouvrement seulement</entry>
       <entry id="9008" string="No verify">Aucune vérification</entry>
       <entry id="9009" string="No scratch repair">Ne pas corriger les éraflures</entry>
@@ -461,16 +469,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Paramètres prédéfinis</entry>
-	  <entry id="32101" string="Use preset:">Utiliser paramètre prédéfini :</entry>
+	  <entry id="32101" string="Use preset">Utiliser paramètre prédéfini</entry>
 	  <entry id="32102" string="Custom settings">Paramètres personnalisés</entry>
 	  <entry id="32103" string="Medium, Fast">Moyen, rapide</entry>
 	  <entry id="32104" string="Standard, Fast">Standard, rapide</entry>
 	  <entry id="32105" string="Extreme, Fast">Extrême, rapide</entry>
 	  <entry id="32106" string="Bitrate">Débit binaire</entry>
 	  <entry id="32107" string="Quality">Qualité</entry>
-	  <entry id="32108" string="Set bitrate:">Débit binaire :</entry>
-	  <entry id="32109" string="Set ratio:">Taux :</entry>
-	  <entry id="32110" string="Set quality:">Qualité :</entry>
+	  <entry id="32108" string="Set bitrate">Débit binaire</entry>
+	  <entry id="32109" string="Set ratio">Taux</entry>
+	  <entry id="32110" string="Set quality">Qualité</entry>
 	  <entry id="32111" string="worse">moins bonne</entry>
 	  <entry id="32112" string="better">meilleure</entry>
 	  <entry id="32113" string="VBR mode">Mode VBR</entry>
@@ -492,13 +500,13 @@
 	  <entry id="32209" string="Joint Stereo">Stéréo combinée</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forcer stéréo comb.</entry>
 	  <entry id="32211" string="VBR bitrate range">Plage de débit binaire VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Débit binaire VBR minimal :</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Débit binaire VBR maximal :</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Débit binaire VBR minimal</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Débit binaire VBR maximal</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH:">Activer ATH :</entry>
+	  <entry id="32301" string="Enable ATH">Activer ATH</entry>
 	  <entry id="32302" string="Use default setting">Utiliser le paramètre par défaut</entry>
 	  <entry id="32303" string="Psycho acoustic model">Modèle acoustique psycho</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Utiliser l'effet de masquage temporel</entry>
@@ -511,11 +519,11 @@
 	  <entry id="32401" string="auto">auto</entry>
 	  <entry id="32402" string="no resampling">Aucun</entry>
 	  <entry id="32403" string="Highpass filter">Filtre passe-haut</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Fréquence passe-haut (Hz) :</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Largeur passe-haut (Hz) :</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Fréquence passe-haut (Hz)</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Largeur passe-haut (Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Filtre passe-bas</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Fréquence passe-bas (Hz) :</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Largeur passe-bas (Hz) :</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Fréquence passe-bas (Hz)</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Largeur passe-bas (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Paramètres divers</entry>
 	  <entry id="32410" string="Disable all filtering">Désactiver filtrage</entry>
 	</section>
@@ -528,14 +536,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Débit binaire</entry>
 	  <entry id="33201" string="Bitrate / Quality">Débit binaire / Qualité</entry>
-	  <entry id="33202" string="Bitrate per channel:">Débit binaire par canal :</entry>
-	  <entry id="33203" string="Set quality:">Qualité :</entry>
+	  <entry id="33202" string="Bitrate per channel">Débit binaire par canal</entry>
+	  <entry id="33203" string="Set quality">Qualité</entry>
 	  <entry id="33204" string="Stereo mode">Mode stéréo</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Stéréo combinée</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Utiliser Temporal Noise Shaping</entry>
 	  <entry id="33208" string="Maximum bandwidth">Bande passante maximale</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Bande de fréquence AAC maximale à utiliser (Hz) :</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Bande de fréquence AAC maximale à utiliser (Hz)</entry>
 	</section>
 
 	<section name="Format">
@@ -556,7 +564,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Paramètres prédéfinis</entry>
-	  <entry id="34101" string="Use preset:">Utiliser paramètre prédéfini :</entry>
+	  <entry id="34101" string="Use preset">Utiliser paramètre prédéfini</entry>
 	  <entry id="34102" string="Custom settings">Paramètres personnalisés</entry>
 	  <entry id="34103" string="Fastest encoding">Encodage le plus rapide</entry>
 	  <entry id="34104" string="Best compression">Compression optimale</entry>
@@ -569,15 +577,14 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Utiliser sous-ensemble diffusable</entry>
-	  <entry id="34201" string="Blocksize:">Taille de bloc :</entry>
-	  <entry id="34202" string="bytes">octets</entry>
+	  <entry id="34201" string="Blocksize">Taille de bloc</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">Apodisation</entry>
-	  <entry id="34301" string="Apodization function(s):">Fonction(s) d'apodisation :</entry>
-	  <entry id="34302" string="Note:">Remarque :</entry>
-	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Vous pouvez indiquer plusieurs fonctions séparées par des points-virgules.</entry>
+	  <entry id="34300" string="Signal processing">Apodisation</entry>
+	  <entry id="34301" string="Window function(s)">Fonction(s) d'apodisation</entry>
+	  <entry id="34302" string="Note">Remarque</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Vous pouvez indiquer plusieurs fonctions séparées&#10;par des points-virgules.</entry>
 	  <entry id="34304" string="Linear predictor">Prédicteur linéaire</entry>
 	  <entry id="34305" string="Maximum LPC order">Ordre LPC maximal</entry>
 	  <entry id="34306" string="disabled">désactivé</entry>
@@ -608,15 +615,16 @@
 	<entry id="36005" string="Write uncompressed WMA files">Ecriture des fichiers WMA non compressés</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">Sélectionne automatiquement le format en se basant sur les paramètres et le format d'entrée</entry>
 	<entry id="36007" string="Use VBR encoding">Utiliser l'encodage VBR</entry>
-	<entry id="36008" string="Use 2-pass encoding">Utiliser l'encodage double passe</entry>
+	<entry id="36008" string="Quality">Qualité</entry>
 	<entry id="36009" string="Target bitrate">Bitrate cible</entry>
+	<entry id="36010" string="Use 2-pass encoding">Utiliser l'encodage double passe</entry>
       </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Débit binaire</entry>
-	<entry id="37001" string="Bitrate per channel:">Débit binaire par canal :</entry>
+	<entry id="37001" string="Bitrate per channel">Débit binaire par canal</entry>
 	<entry id="37002" string="Preselection">Présélection</entry>
-	<entry id="37003" string="Number of preselection candidates:">Nombre de candidats de présélection :</entry>
+	<entry id="37003" string="Number of preselection candidates">Nombre de candidats de présélection</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -632,12 +640,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">Automatique</entry>
 	<entry id="40015" string="Quality">Qualité</entry>
-	<entry id="40021" string="Options">Options</entry>
+	<entry id="40020" string="Options">Options</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">Format de fichier :</entry>
-	<entry id="41002" string="Audio format:">Format audio :</entry>
+	<entry id="41001" string="File format">Format de fichier</entry>
+	<entry id="41002" string="Audio format">Format audio</entry>
 	<entry id="41003" string="mono">mono</entry>
       </section>
     </section>
@@ -647,7 +655,7 @@
       <section name="Donate">
 	<entry id="50000" string="Support this project">Supporter ce projet</entry>
 	<entry id="50001" string="Please support this project!">S'il vous plait supporter ce projet!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">S'il vous plait aider à conserver gratuit ce programme  en supportant le projet %1&#10;avec un don.&#10;&#10;Cliquer sur un des boutons ci-dessous pour faire un don en utilisant PayPal:</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">S'il vous plait aider à conserver gratuit ce programme en supportant le projet %1&#10;avec un don.&#10;&#10;Cliquer sur un des boutons ci-dessous pour faire un don en utilisant PayPal :</entry>
 	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Vous pouvez aussi envoyer de l'argent directement à %1 en utilisant PayPal.&#10;&#10;S'il vous plait écrivez à %1 si vous voulez faire un don en utilisant&#10;le transfert électronique, le chèque par mail ou envoyer de l'argent par mail.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">de</entry>

@@ -57,7 +57,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 
 	group_local	= new GroupBox(NIL, Point(7, 11), Size(354, 43));
 
-	text_dir	= new Text(i18n->TranslateString("CDDB path:"), Point(16, 26));
+	text_dir	= new Text(i18n->AddColon(i18n->TranslateString("CDDB path")), Point(16, 26));
 	edit_dir	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault), Point(122, 23), Size(119, 0), 0);
 
 	button_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(271, 22), Size());
@@ -65,7 +65,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 
 	group_cddb	= new GroupBox(NIL, Point(7, 66), Size(354, 125));
 
-	text_mode	= new Text(i18n->TranslateString("CDDB access mode:"), Point(16, 81));
+	text_mode	= new Text(i18n->AddColon(i18n->TranslateString("CDDB access mode")), Point(16, 81));
 
 	combo_mode	= new ComboBox(Point(122, 78), Size(219, 0));
 	combo_mode->onSelectEntry.Connect(&ConfigureCDDB::SetCDDBMode, this);
@@ -73,16 +73,16 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	combo_mode->AddEntry("HTTP GET/HTTP POST");
 	combo_mode->AddEntry("CDDBP/HTTP POST");
 
-	text_server	= new Text(i18n->TranslateString("CDDB server:"), Point(16, 108));
+	text_server	= new Text(i18n->AddColon(i18n->TranslateString("CDDB server")), Point(16, 108));
 	edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault), Point(122, 105), Size(146, 0), 0);
 
-	text_port	= new Text(i18n->TranslateString("Port:"), Point(285, 108));
+	text_port	= new Text(i18n->AddColon(i18n->TranslateString("Port")), Point(285, 108));
 	text_port->SetX(306 - text_port->GetUnscaledTextWidth());
 
 	edit_port	= new EditBox(NIL, Point(314, 105), Size(37, 0), 5);
 	edit_port->SetFlags(EDB_NUMERIC);
 
-	text_email	= new Text(i18n->TranslateString("eMail address:"), Point(16, 135));
+	text_email	= new Text(i18n->AddColon(i18n->TranslateString("eMail address")), Point(16, 135));
 	edit_email	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault), Point(122, 132), Size(146, 0), 0);
 
 	button_http	= new Button(i18n->TranslateString("HTTP settings"), NIL, Point(17, 159), Size(163, 0));
@@ -188,7 +188,7 @@ Void BonkEnc::ConfigureCDDB::SelectDir()
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder of the CDDB database:")));
+	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder of the CDDB database"))));
 	dialog->SetDirName(edit_dir->GetText());
 
 	if (dialog->ShowDialog() == Success())

@@ -29,14 +29,14 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	btn_cancel->onAction.Connect(&cddbManageSubmitsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	text_entries	= new Text(i18n->TranslateString("CDDB entries to submit:"), Point(7, 10));
+	text_entries	= new Text(i18n->AddColon(i18n->TranslateString("CDDB entries to submit")), Point(7, 10));
 
 	list_entries	= new ListBox(Point(7, 29), Size(261, 213));
 	list_entries->AddTab(i18n->TranslateString("Category"), 65);
 	list_entries->AddTab(i18n->TranslateString("Disc name"), 0);
 	list_entries->onSelectEntry.Connect(&cddbManageSubmitsDlg::SelectEntry, this);
 
-	text_preview	= new Text(i18n->TranslateString("Preview").Append(":"), Point(276, 10));
+	text_preview	= new Text(i18n->AddColon(i18n->TranslateString("Preview")), Point(276, 10));
 
 	edit_preview	= new MultiEdit(NIL, Point(276, 29), Size(261, 213), 0);
 	edit_preview->Deactivate();
@@ -165,7 +165,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 
 	/* Submit selected entry to online CDDB
 	 */
-	text_status->SetText(i18n->TranslateString("Submitting CD information").Append("..."));
+	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
 
 	if (cddbBatch->Submit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber())))
 	{
@@ -188,7 +188,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
 
 	/* Submit all entries to online CDDB
 	 */
-	text_status->SetText(i18n->TranslateString("Submitting CD information").Append("..."));
+	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
 
 	if (cddbBatch->SubmitAll()) mainWnd->Close();
 

@@ -36,7 +36,18 @@
     <section name="Characters">
       <entry id="500" string="%1:"/>
       <entry id="501" string="%1..."/>
-      <entry id="502" string="(%1)"/>
+      <entry id="502" string="%1 (%2)"/>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps"/>
+      <entry id="511" string="%1 Hz"/>
+      <entry id="512" string="%1 kHz"/>
+      <entry id="513" string="%1 ms"/>
+      <entry id="514" string="%1 min"/>
+      <entry id="515" string="%1 bit"/>
+      <entry id="516" string="%1 bytes"/>
+      <entry id="517" string="%1%"/>
     </section>
 
     <section name="Menu">
@@ -49,8 +60,8 @@
       <section name="File">
 	<entry id="1100" string="Add"/>
 	<entry id="1101" string="Remove"/>
-	<entry id="1102" string="Load joblist..."/>
-	<entry id="1103" string="Save joblist..."/>
+	<entry id="1102" string="Load joblist"/>
+	<entry id="1103" string="Save joblist"/>
 	<entry id="1104" string="Clear joblist"/>
 	<entry id="1105" string="Exit"/>
 	<entry id="1106" string="Audio file(s)"/>
@@ -61,18 +72,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database"/>
-	<entry id="1201" string="Submit CDDB data..."/>
+	<entry id="1201" string="Submit CDDB data"/>
 	<entry id="1202" string="Query CDDB database later"/>
-	<entry id="1203" string="Show queued CDDB entries..."/>
-	<entry id="1204" string="Show queued CDDB queries..."/>
+	<entry id="1203" string="Show queued CDDB entries"/>
+	<entry id="1204" string="Show queued CDDB queries"/>
 	<entry id="1205" string="Enable CDDB cache"/>
-	<entry id="1206" string="Manage CDDB cache entries..."/>
+	<entry id="1206" string="Manage CDDB cache entries"/>
 	<entry id="1207" string="Automatic CDDB queries"/>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings..."/>
-	<entry id="1301" string="Configure selected encoder..."/>
+	<entry id="1300" string="General settings"/>
+	<entry id="1301" string="Configure selected encoder"/>
 	<entry id="1302" string="Active CD-ROM drive"/>
 	<entry id="1303" string="Active configuration"/>
 	<entry id="1304" string="Default configuration"/>
@@ -91,7 +102,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics..."/>
+	<entry id="1500" string="Help topics"/>
 	<entry id="1501" string="Show Tip of the Day"/>
 	<entry id="1502" string="Check for updates now"/>
 	<entry id="1503" string="Check for updates at startup"/>
@@ -106,7 +117,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist"/>
       <entry id="2003" string="Clear the entire joblist"/>
       <entry id="2004" string="Query CDDB database"/>
-      <entry id="2005" string="Submit CDDB data..."/>
+      <entry id="2005" string="Submit CDDB data"/>
       <entry id="2006" string="Configure general settings"/>
       <entry id="2007" string="Configure the selected audio encoder"/>
       <entry id="2008" string="Start the encoding process"/>
@@ -115,12 +126,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:"/>
-      <entry id="3001" string="Time left:"/>
-      <entry id="3002" string="Selected encoder:"/>
-      <entry id="3003" string="File progress:"/>
-      <entry id="3004" string="Output folder:"/>
-      <entry id="3005" string="%1 file(s) in joblist:"/>
+      <entry id="3000" string="Encoding file"/>
+      <entry id="3001" string="Time left"/>
+      <entry id="3002" string="Selected encoder"/>
+      <entry id="3003" string="File progress"/>
+      <entry id="3004" string="Output folder"/>
+      <entry id="3005" string="%1 file(s) in joblist"/>
       <entry id="3006" string="none"/>
       <entry id="3007" string="Show title info"/>
       <entry id="3008" string="Play"/>
@@ -146,33 +157,31 @@
       <entry id="3028" string="first letter upper case"/>
       <entry id="3029" string="all lower case"/>
       <entry id="3030" string="all upper case"/>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:"/>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed"/>
       <entry id="3032" string="Sampling rate"/>
       <entry id="3033" string="Sample resolution"/>
       <entry id="3034" string="Number of samples"/>
       <entry id="3035" string="Channels"/>
       <entry id="3036" string="Mono"/>
       <entry id="3037" string="Stereo"/>
-      <entry id="3038" string="bit"/>
-      <entry id="3039" string="min"/>
-      <entry id="3040" string="bytes"/>
-      <entry id="3041" string="Length"/>
-      <entry id="3042" string="File"/>
-      <entry id="3043" string="Size"/>
-      <entry id="3044" string="Bitrate"/>
-      <entry id="3045" string="Audio Files"/>
-      <entry id="3046" string="All Files"/>
-      <entry id="3047" string="Playlist Files"/>
-      <entry id="3048" string="Active decoder:"/>
-      <entry id="3049" string="Joblist"/>
-      <entry id="3050" string="unknown"/>
-      <entry id="3051" string="Other..."/>
+      <entry id="3038" string="Length"/>
+      <entry id="3039" string="File"/>
+      <entry id="3040" string="Size"/>
+      <entry id="3041" string="Bitrate"/>
+      <entry id="3042" string="Audio Files"/>
+      <entry id="3043" string="All Files"/>
+      <entry id="3044" string="Playlist Files"/>
+      <entry id="3045" string="Active decoder"/>
+      <entry id="3046" string="Joblist"/>
+      <entry id="3047" string="unknown"/>
+      <entry id="3048" string="Other"/>
+      <entry id="3049" string="Output file name"/>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder"/>
 	<entry id="3101" string="Add folder"/>
-	<entry id="3102" string="Choose folder:"/>
-	<entry id="3103" string="Select the folder to add to the joblist:"/>
+	<entry id="3102" string="Choose folder"/>
+	<entry id="3103" string="Select the folder to add to the joblist"/>
       </section>
 
       <section name="Add by pattern">
@@ -181,7 +190,7 @@
 	<entry id="3202" string="Start folder"/>
 	<entry id="3203" string="Filename pattern"/>
 	<entry id="3204" string="Search subfolders"/>
-	<entry id="3205" string="Select the folder to add to the joblist:"/>
+	<entry id="3205" string="Select the folder to add to the joblist"/>
       </section>
 
       <section name="Character set">
@@ -191,8 +200,16 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!"/>
-	<entry id="3401" string="No files found matching pattern:"/>
+	<entry id="3401" string="No files found matching pattern: %1"/>
       </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3500" string="Jobs"/>
+      <entry id="3501" string="Progress"/>
+      <entry id="3502" string="Errors / Warnings"/>
+      <entry id="3503" string="Details"/>
+      <entry id="3504" string="Error details"/>
     </section>
 
     <section name="CDDB">
@@ -226,11 +243,11 @@
 	<entry id="4105" string="No exact matches found"/>
 	<entry id="4106" string="Multiple matches found"/>
 	<entry id="4107" string="Matches"/>
-	<entry id="4108" string="Select the entry that best fits your CD:"/>
+	<entry id="4108" string="Select the entry that best fits your CD"/>
 	<entry id="4109" string="Would you like to perform this query again later?"/>
 	<entry id="4110" string="none"/>
 	<entry id="4111" string="Preview"/>
-	<entry id="4112" string="loading preview..."/>
+	<entry id="4112" string="loading preview"/>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server."/>
@@ -243,13 +260,13 @@
 	<entry id="4202" string="Query"/>
 	<entry id="4203" string="Query all"/>
 	<entry id="4204" string="Query string"/>
-	<entry id="4205" string="CDDB queries to perform:"/>
-	<entry id="4206" string="Querying CD information..."/>
+	<entry id="4205" string="CDDB queries to perform"/>
+	<entry id="4206" string="Querying CD information"/>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry"/>
-	<entry id="4301" string="CDDB entries to submit:"/>
+	<entry id="4301" string="CDDB entries to submit"/>
 	<entry id="4302" string="Submit all"/>
 	<entry id="4303" string="CDDB data"/>
 	<entry id="4304" string="Submit"/>
@@ -263,7 +280,7 @@
 	<entry id="4400" string="CDDB data"/>
 	<entry id="4401" string="Update joblist with this information"/>
 	<entry id="4402" string="Charset"/>
-	<entry id="4403" string="Downloaded CDDB entries:"/>
+	<entry id="4403" string="Downloaded CDDB entries"/>
 	<entry id="4404" string="Disc name"/>
 	<entry id="4405" string="Preview"/>
 	<entry id="4406" string="Remove entry"/>
@@ -286,22 +303,23 @@
       <entry id="5011" string="DSP"/>
       <entry id="5012" string="Extensions"/>
       <entry id="5013" string="Other"/>
-      <entry id="5014" string="Active configuration:"/>
+      <entry id="5014" string="Active configuration"/>
       <entry id="5015" string="New"/>
       <entry id="5016" string="Delete"/>
-      <entry id="5017" string="Command line arguments:"/>
-      <entry id="5018" string="Resulting arguments string:"/>
+      <entry id="5017" string="Command line arguments"/>
+      <entry id="5018" string="Resulting arguments string"/>
       <entry id="5019" string="Default configuration"/>
       <entry id="5020" string="New configuration"/>
       <entry id="5021" string="Ripper"/>
       <entry id="5022" string="Settings"/>
+      <entry id="5023" string="Resources"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder"/>
 	<entry id="5101" string="Encoder"/>
 	<entry id="5102" string="Output folder"/>
 	<entry id="5103" string="Browse"/>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:"/>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed"/>
 	<entry id="5105" string="Use input file folder if possible"/>
 	<entry id="5106" string="Allow overwriting input file"/>
 	<entry id="5107" string="Options"/>
@@ -327,7 +345,7 @@
 	<entry id="5203" string="Browse"/>
 	<entry id="5204" string="Use encoder output folder"/>
 	<entry id="5205" string="Filename pattern"/>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:"/>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed"/>
 	<entry id="5207" string="Output filenames"/>
 	<entry id="5208" string="Configure plugin"/>
       </section>
@@ -335,13 +353,13 @@
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database"/>
 	<entry id="5301" string="Enable remote CDDB database"/>
-	<entry id="5302" string="CDDB path:"/>
+	<entry id="5302" string="CDDB path"/>
 	<entry id="5303" string="Browse"/>
-	<entry id="5304" string="Select the folder of the CDDB database:"/>
-	<entry id="5305" string="CDDB access mode:"/>
-	<entry id="5306" string="CDDB server:"/>
-	<entry id="5307" string="Port:"/>
-	<entry id="5308" string="eMail address:"/>
+	<entry id="5304" string="Select the folder of the CDDB database"/>
+	<entry id="5305" string="CDDB access mode"/>
+	<entry id="5306" string="CDDB server"/>
+	<entry id="5307" string="Port"/>
+	<entry id="5308" string="eMail address"/>
 	<entry id="5309" string="HTTP settings"/>
 	<entry id="5310" string="Proxy settings"/>
 	<entry id="5311" string="Options"/>
@@ -354,13 +372,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings"/>
 	  <entry id="5331" string="CGI scripts"/>
-	  <entry id="5332" string="CDDB query script:"/>
-	  <entry id="5333" string="CDDB submit script:"/>
+	  <entry id="5332" string="CDDB query script"/>
+	  <entry id="5333" string="CDDB submit script"/>
 	  <entry id="5334" string="no proxy"/>
-	  <entry id="5335" string="Proxy type:"/>
-	  <entry id="5336" string="Proxy server:"/>
-	  <entry id="5337" string="User name:"/>
-	  <entry id="5338" string="Password:"/>
+	  <entry id="5335" string="Proxy type"/>
+	  <entry id="5336" string="Proxy server"/>
+	  <entry id="5337" string="User name"/>
+	  <entry id="5338" string="Password"/>
 	</section>
 
 	<section name="Errors">
@@ -370,7 +388,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:"/>
+	<entry id="5400" string="Select language"/>
 	<entry id="5401" string="Edit language file"/>
 	<entry id="5402" string="Information"/>
 	<entry id="5403" string="Encoding"/>
@@ -381,10 +399,10 @@
       <section name="Tags">
 	<entry id="5500" string="Tags"/>
 	<entry id="5501" string="Tag formats"/>
-	<entry id="5502" string="Default comment string:"/>
+	<entry id="5502" string="Default comment string"/>
 	<entry id="5503" string="Replace existing comments with default comment"/>
 	<entry id="5504" string="Filename pattern"/>
-	<entry id="5505" string="Encoding:"/>
+	<entry id="5505" string="Encoding"/>
 	<entry id="5506" string="Comments"/>
 	<entry id="5507" string="Cover art"/>
 	<entry id="5508" string="Read cover art"/>
@@ -398,7 +416,7 @@
 	<entry id="5516" string="Chapters"/>
 	<entry id="5517" string="Read chapters from files"/>
 	<entry id="5518" string="Write chapters to files"/>
-	<entry id="5519" string="Chapter format:"/>
+	<entry id="5519" string="Chapter format"/>
 	<entry id="5520" string="both"/>
 	<entry id="5521" string="Special fields"/>
 	<entry id="5522" string="Write CD table of contents"/>
@@ -412,6 +430,8 @@
 	<entry id="5603" string="Description"/>
 	<entry id="5604" string="Up"/>
 	<entry id="5605" string="Down"/>
+	<entry id="5606" string="Jobs"/>
+	<entry id="5607" string="Show Jobs tab"/>
 
 	<section name="Columns">
 	  <entry id="5650" string="Track artist"/>
@@ -426,6 +446,18 @@
 	  <entry id="5659" string="File name"/>
 	  <entry id="5660" string="File type"/>
 	  <entry id="5661" string="Output file name"/>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="CPU"/>
+	<entry id="5701" string="Enable multi core processing"/>
+	<entry id="5702" string="Number of threads to use"/>
+	<entry id="5703" string="auto"/>
+
+	<section name="Messages">
+	  <entry id="5750" string="Note"/>
+	  <entry id="5750" string="You need to restart %1 for CPU setting changes to take effect."/>
 	</section>
       </section>
     </section>
@@ -500,12 +532,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive"/>
-      <entry id="9001" string="Set drive speed limit:"/>
+      <entry id="9001" string="Set drive speed limit"/>
       <entry id="9002" string="CD information"/>
       <entry id="9003" string="Read CD Text"/>
       <entry id="9004" string="Read cdplayer.ini"/>
       <entry id="9005" string="Ripper settings"/>
-      <entry id="9006" string="Activate cdparanoia mode:"/>
+      <entry id="9006" string="Activate cdparanoia mode"/>
       <entry id="9007" string="Overlap only"/>
       <entry id="9008" string="No verify"/>
       <entry id="9009" string="No scratch repair"/>
@@ -519,10 +551,10 @@
       <entry id="9017" string="CD options"/>
       <entry id="9018" string="Lock CD tray while ripping"/>
       <entry id="9019" string="Use native NT SCSI library"/>
-      <entry id="9020" string="Use read offset:"/>
+      <entry id="9020" string="Use read offset"/>
       <entry id="9021" string="samples"/>
       <entry id="9022" string="Read ISRC when adding tracks to joblist"/>
-      <entry id="9023" string="Spin up before ripping:"/>
+      <entry id="9023" string="Spin up before ripping"/>
       <entry id="9024" string="%1 seconds"/>
     </section>
 
@@ -535,7 +567,7 @@
 
       <section name="mpg123">
 	<entry id="11000" string="Decoder"/>
-	<entry id="11001" string="Active decoder:"/>
+	<entry id="11001" string="Active decoder"/>
  	<entry id="11002" string="auto select"/>
       </section>
     </section>
@@ -574,16 +606,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets"/>
-	  <entry id="32101" string="Use preset:"/>
+	  <entry id="32101" string="Use preset"/>
 	  <entry id="32102" string="Custom settings"/>
 	  <entry id="32103" string="Medium, Fast"/>
 	  <entry id="32104" string="Standard, Fast"/>
 	  <entry id="32105" string="Extreme, Fast"/>
 	  <entry id="32106" string="Bitrate"/>
 	  <entry id="32107" string="Quality"/>
-	  <entry id="32108" string="Set bitrate:"/>
-	  <entry id="32109" string="Set ratio:"/>
-	  <entry id="32110" string="Set quality:"/>
+	  <entry id="32108" string="Set bitrate"/>
+	  <entry id="32109" string="Set ratio"/>
+	  <entry id="32110" string="Set quality"/>
 	  <entry id="32111" string="worse"/>
 	  <entry id="32112" string="better"/>
 	  <entry id="32113" string="VBR mode"/>
@@ -605,13 +637,13 @@
 	  <entry id="32209" string="Joint Stereo"/>
 	  <entry id="32210" string="Force Joint Stereo"/>
 	  <entry id="32211" string="VBR bitrate range"/>
-	  <entry id="32212" string="Set minimum VBR bitrate:"/>
-	  <entry id="32213" string="Set maximum VBR bitrate:"/>
+	  <entry id="32212" string="Set minimum VBR bitrate"/>
+	  <entry id="32213" string="Set maximum VBR bitrate"/>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH"/>
-	  <entry id="32301" string="Enable ATH:"/>
+	  <entry id="32301" string="Enable ATH"/>
 	  <entry id="32302" string="Use default setting"/>
 	  <entry id="32303" string="Psycho acoustic model"/>
 	  <entry id="32304" string="Use Temporal Masking Effect"/>
@@ -624,11 +656,11 @@
 	  <entry id="32401" string="auto"/>
 	  <entry id="32402" string="no resampling"/>
 	  <entry id="32403" string="Highpass filter"/>
-	  <entry id="32404" string="Set Highpass frequency (Hz):"/>
-	  <entry id="32405" string="Set Highpass width (Hz):"/>
+	  <entry id="32404" string="Set Highpass frequency (Hz)"/>
+	  <entry id="32405" string="Set Highpass width (Hz)"/>
 	  <entry id="32406" string="Lowpass filter"/>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):"/>
-	  <entry id="32408" string="Set Lowpass width (Hz):"/>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)"/>
+	  <entry id="32408" string="Set Lowpass width (Hz)"/>
 	  <entry id="32409" string="Misc settings"/>
 	  <entry id="32410" string="Disable all filtering"/>
 	</section>
@@ -646,14 +678,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate"/>
 	  <entry id="33201" string="Bitrate / Quality"/>
-	  <entry id="33202" string="Bitrate per channel:"/>
-	  <entry id="33203" string="Set quality:"/>
+	  <entry id="33202" string="Bitrate per channel"/>
+	  <entry id="33203" string="Set quality"/>
 	  <entry id="33204" string="Stereo mode"/>
 	  <entry id="33205" string="Allow Joint Stereo"/>
 	  <entry id="33206" string="Temporal Noise Shaping"/>
 	  <entry id="33207" string="Use Temporal Noise Shaping"/>
 	  <entry id="33208" string="Maximum bandwidth"/>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):"/>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)"/>
 	</section>
 
 	<section name="Format">
@@ -675,7 +707,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets"/>
-	  <entry id="34101" string="Use preset:"/>
+	  <entry id="34101" string="Use preset"/>
 	  <entry id="34102" string="Custom settings"/>
 	  <entry id="34103" string="Fastest encoding"/>
 	  <entry id="34104" string="Best compression"/>
@@ -688,14 +720,13 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset"/>
-	  <entry id="34201" string="Blocksize:"/>
-	  <entry id="34202" string="bytes"/>
+	  <entry id="34201" string="Blocksize"/>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization"/>
-	  <entry id="34301" string="Apodization function(s):"/>
-	  <entry id="34302" string="Note:"/>
+	  <entry id="34300" string="Signal processing"/>
+	  <entry id="34301" string="Window function(s)"/>
+	  <entry id="34302" string="Note"/>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons."/>
 	  <entry id="34304" string="Linear predictor"/>
 	  <entry id="34305" string="Maximum LPC order"/>
@@ -716,9 +747,9 @@
 	<entry id="35002" string="Average Bitrate"/>
 	<entry id="35003" string="Quality"/>
 	<entry id="35004" string="Bitrate"/>
-	<entry id="35005" string="Minimum bitrate:"/>
-	<entry id="35006" string="Average bitrate:"/>
-	<entry id="35007" string="Maximum bitrate:"/>
+	<entry id="35005" string="Minimum bitrate"/>
+	<entry id="35006" string="Average bitrate"/>
+	<entry id="35007" string="Maximum bitrate"/>
 	<entry id="35008" string="File extension"/>
       </section>
 
@@ -731,20 +762,21 @@
 	<entry id="36005" string="Write uncompressed WMA files"/>
 	<entry id="36006" string="Automatically select format based on settings and input format"/>
 	<entry id="36007" string="Use VBR encoding"/>
-	<entry id="36008" string="Use 2-pass encoding"/>
+	<entry id="36008" string="Quality"/>
 	<entry id="36009" string="Target bitrate"/>
+	<entry id="36010" string="Use 2-pass encoding"/>
       </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate"/>
-	<entry id="37001" string="Bitrate per channel:"/>
+	<entry id="37001" string="Bitrate per channel"/>
 	<entry id="37002" string="Preselection"/>
-	<entry id="37003" string="Number of preselection candidates:"/>
+	<entry id="37003" string="Number of preselection candidates"/>
       </section>
 
       <section name="Monkey's Audio">
 	<entry id="38000" string="Compression"/>
-	<entry id="38001" string="Compression mode:"/>
+	<entry id="38001" string="Compression mode"/>
 	<entry id="38002" string="Fast"/>
 	<entry id="38003" string="Normal"/>
 	<entry id="38004" string="High"/>
@@ -754,7 +786,7 @@
 
       <section name="Speex">
 	<entry id="39000" string="Profile"/>
-	<entry id="39001" string="Select encoding profile:"/>
+	<entry id="39001" string="Select encoding profile"/>
 	<entry id="39002" string="Auto"/>
 	<entry id="39003" string="Narrowband (8 kHz)"/>
 	<entry id="39004" string="Wideband (16 kHz)"/>
@@ -767,22 +799,22 @@
 	<entry id="39011" string="Voice Activity Detection"/>
 	<entry id="39012" string="Discontinued Transmission"/>
 	<entry id="39013" string="Algorithm complexity"/>
-	<entry id="39014" string="Complexity:"/>
+	<entry id="39014" string="Complexity"/>
 	<entry id="39015" string="CBR quality"/>
 	<entry id="39016" string="VBR quality"/>
 	<entry id="39017" string="ABR target bitrate"/>
-	<entry id="39018" string="Bitrate:"/>
-	<entry id="39019" string="Quality:"/>
-	<entry id="39020" string="Max. bitrate:"/>
+	<entry id="39018" string="Bitrate"/>
+	<entry id="39019" string="Quality"/>
+	<entry id="39020" string="Max. bitrate"/>
       </section>
 
       <section name="Opus">
 	<entry id="40000" string="Basic settings"/>
-	<entry id="40001" string="Encoding mode:"/>
+	<entry id="40001" string="Encoding mode"/>
 	<entry id="40002" string="Auto"/>
 	<entry id="40003" string="Voice"/>
 	<entry id="40004" string="Music"/>
-	<entry id="40005" string="Bandwidth:"/>
+	<entry id="40005" string="Bandwidth"/>
 	<entry id="40006" string="Narrowband"/>
 	<entry id="40007" string="Mediumband"/>
 	<entry id="40008" string="Wideband"/>
@@ -793,20 +825,19 @@
 	<entry id="40013" string="Enable variable bitrate encoding"/>
 	<entry id="40014" string="Constrain bitrate to target value"/>
 	<entry id="40015" string="Quality"/>
-	<entry id="40016" string="Bitrate:"/>
-	<entry id="40017" string="kbps"/>
-	<entry id="40018" string="Complexity:"/>
-	<entry id="40019" string="Stream"/>
-	<entry id="40020" string="Frame length:"/>
-	<entry id="40021" string="Options"/>
-	<entry id="40022" string="Enable discontinous transmission"/>
-	<entry id="40023" string="Expected packet loss:"/>
+	<entry id="40016" string="Bitrate"/>
+	<entry id="40017" string="Complexity"/>
+	<entry id="40018" string="Stream"/>
+	<entry id="40019" string="Frame length"/>
+	<entry id="40020" string="Options"/>
+	<entry id="40021" string="Enable discontinous transmission"/>
+	<entry id="40022" string="Expected packet loss"/>
       </section>
 
       <section name="SndFile">
 	<entry id="41000" string="Output format"/>
-	<entry id="41001" string="File format:"/>
-	<entry id="41002" string="Audio format:"/>
+	<entry id="41001" string="File format"/>
+	<entry id="41002" string="Audio format"/>
 	<entry id="41003" string="mono"/>
 	<entry id="41004" string="auto select"/>
 
@@ -837,19 +868,19 @@
 
       <section name="Video Downloader">
 	<entry id="52000" string="Video"/>
-	<entry id="52001" string="Enter video URL here:"/>
+	<entry id="52001" string="Enter video URL here"/>
 	<entry id="52002" string="Download"/>
 	<entry id="52003" string="Automatically download URLs copied to clipboard"/>
 	<entry id="52004" string="Save downloaded video files"/>
-	<entry id="52005" string="Video downloads:"/>
-	<entry id="52006" string="Downloaded tracks:"/>
+	<entry id="52005" string="Video downloads"/>
+	<entry id="52006" string="Downloaded tracks"/>
 	<entry id="52007" string="Uploader"/>
-	<entry id="52008" string="Video URL:"/>
-	<entry id="52009" string="Video title:"/>
-	<entry id="52010" string="Video description:"/>
-	<entry id="52011" string="Site name:"/>
-	<entry id="52012" string="Uploaded by:"/>
-	<entry id="52013" string="Uploaded on:"/>
+	<entry id="52008" string="Video URL"/>
+	<entry id="52009" string="Video title"/>
+	<entry id="52010" string="Video description"/>
+	<entry id="52011" string="Site name"/>
+	<entry id="52012" string="Uploaded by"/>
+	<entry id="52013" string="Uploaded on"/>
 	<entry id="52014" string="Length"/>
 	<entry id="52015" string="Size"/>
 	<entry id="52016" string="Cancel download"/>
@@ -861,10 +892,10 @@
 	  <entry id="52101" string="Automatization"/>
 	  <entry id="52102" string="Video files"/>
 	  <entry id="52103" string="Browse"/>
-	  <entry id="52104" string="Select the folder to save downloaded video files to:"/>
+	  <entry id="52104" string="Select the folder to save downloaded video files to"/>
 	  <entry id="52105" string="Downloads"/>
-	  <entry id="52106" string="Maximum number of simultaneous downloads:"/>
-	  <entry id="52107" string="Output format:"/>
+	  <entry id="52106" string="Maximum number of simultaneous downloads"/>
+	  <entry id="52107" string="Output format"/>
 	  <entry id="52108" string="keep original format"/>
 	</section>
 

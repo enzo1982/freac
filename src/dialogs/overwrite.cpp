@@ -47,7 +47,7 @@ BonkEnc::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track>
 	button_overwrite->SetWidth(Math::Max(80, button_overwrite->GetUnscaledTextWidth() + 14));
 	button_overwrite->SetX(103 + button_skip->GetWidth() + button_overwrite->GetWidth());
 
-	text_files		= new Text(i18n->TranslateString("The following %1 files already exist and will be overwritten").Replace("%1", String::FromInt(tracks.Length())).Append(":"), Point(7, 5));
+	text_files		= new Text(i18n->AddColon(i18n->TranslateString("The following %1 files already exist and will be overwritten").Replace("%1", String::FromInt(tracks.Length()))), Point(7, 5));
 
 	Config	*bonkEncConfig	= Config::Get();
 

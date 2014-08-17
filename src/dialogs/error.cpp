@@ -35,7 +35,7 @@ BonkEnc::ErrorDialog::ErrorDialog(const Array<String> &errors)
 	btn_ok->onAction.Connect(&ErrorDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	text_errors	= new Text(i18n->TranslateString("%1 errors while processing job").Replace("%1", String::FromInt(errors.Length())).Append(":"), Point(7, 5));
+	text_errors	= new Text(i18n->AddColon(i18n->TranslateString("%1 errors while processing job").Replace("%1", String::FromInt(errors.Length()))), Point(7, 5));
 
 	list_errors	= new ListBox(Point(7, 24), Size(378, 180));
 	list_errors->onSelectEntry.Connect(&ErrorDialog::OnSelectError, this);

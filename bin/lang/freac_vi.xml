@@ -31,7 +31,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 bytes</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">Thêm</entry>
 	<entry id="1101" string="Remove">Loại bỏ</entry>
-	<entry id="1102" string="Load joblist...">Tải công việc...</entry>
-	<entry id="1103" string="Save joblist...">Lưu công việc...</entry>
+	<entry id="1102" string="Load joblist">Tải công việc</entry>
+	<entry id="1103" string="Save joblist">Lưu công việc</entry>
 	<entry id="1104" string="Clear joblist">Xóa danh sách công việc</entry>
 	<entry id="1105" string="Exit">Thoát</entry>
 	<entry id="1106" string="Audio file(s)">Tập tin Audio</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Truy vấn cơ sở dữ liệu CDDB</entry>
-	<entry id="1201" string="Submit CDDB data...">Trình bày dữ liệu CDDB...</entry>
+	<entry id="1201" string="Submit CDDB data">Trình bày dữ liệu CDDB</entry>
 	<entry id="1202" string="Query CDDB database later">Truy vấn CDDB database sau</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Hiển thị hàng đợi CDDB entry...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Hiển thị queued CDDB queries...</entry>
+	<entry id="1203" string="Show queued CDDB entries">Hiển thị hàng đợi CDDB entry</entry>
+	<entry id="1204" string="Show queued CDDB queries">Hiển thị queued CDDB queries</entry>
 	<entry id="1205" string="Enable CDDB cache">Cho phép CDDB cache</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Quản lý CDDB cache entries...</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Quản lý CDDB cache entries</entry>
 	<entry id="1207" string="Automatic CDDB queries">Tự động truy vấn CDDB</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">Thiết lập chung...</entry>
-	<entry id="1301" string="Configure selected encoder...">Chỉnh sửa loại chuyển mã...</entry>
+	<entry id="1300" string="General settings">Thiết lập chung</entry>
+	<entry id="1301" string="Configure selected encoder">Chỉnh sửa loại chuyển mã</entry>
 	<entry id="1302" string="Active CD-ROM drive">Cho phép CD-ROM drive</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Chủ đề trợ giúp...</entry>
+	<entry id="1500" string="Help topics">Chủ đề trợ giúp</entry>
 	<entry id="1501" string="Show Tip of the Day">Hiển thị các mánh hay</entry>
 	<entry id="1502" string="Check for updates now">Kiểm tra cập nhật phiên bản mới</entry>
 	<entry id="1503" string="Check for updates at startup">Kiểm tra cập nhật khi khởi động</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Xóa bỏ các entry được chọn khỏi danh sách công việc</entry>
       <entry id="2003" string="Clear the entire joblist">Hủy bỏ toàn bộ danh sách công việc</entry>
       <entry id="2004" string="Query CDDB database">Truy vấn cơ sở dữ liệu CDDB</entry>
-      <entry id="2005" string="Submit CDDB data...">Trình bày dữ liệu CDDB...</entry>
+      <entry id="2005" string="Submit CDDB data">Trình bày dữ liệu CDDB</entry>
       <entry id="2006" string="Configure general settings">Chỉnh sửa thiết lập chung</entry>
       <entry id="2007" string="Configure the selected audio encoder">Chỉnh sửa cách chuyển mã file audio được chọn</entry>
       <entry id="2008" string="Start the encoding process">Bắt đầu chuyển mã</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">Đang chuyển mã file:</entry>
-      <entry id="3001" string="Time left:">Thời gian còn lại:</entry>
-      <entry id="3002" string="Selected encoder:">Lựa chọn chuyển mã:</entry>
-      <entry id="3003" string="File progress:">Tiến độ tập tin:</entry>
-      <entry id="3004" string="Output folder:">Thư mục xuất ra:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 tập tin trong danh sách công việc:</entry>
+      <entry id="3000" string="Encoding file">Đang chuyển mã file</entry>
+      <entry id="3001" string="Time left">Thời gian còn lại</entry>
+      <entry id="3002" string="Selected encoder">Lựa chọn chuyển mã</entry>
+      <entry id="3003" string="File progress">Tiến độ tập tin</entry>
+      <entry id="3004" string="Output folder">Thư mục xuất ra</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 tập tin trong danh sách công việc</entry>
       <entry id="3006" string="none">không</entry>
       <entry id="3007" string="Show title info">Hiển thị thông tin tiêu đề</entry>
       <entry id="3008" string="Play">Chơi</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">Chữ Đầu Tiên In Hoa</entry>
       <entry id="3029" string="all lower case">tất cả chữ in thường</entry>
       <entry id="3030" string="all upper case">tất cả chữ in hoa</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Chọn thư mục để lưu tập tin đã được chuyển mã:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Chọn thư mục để lưu tập tin đã được chuyển mã</entry>
       <entry id="3032" string="Sampling rate">Xếp hạng mẫu</entry>
       <entry id="3033" string="Sample resolution">Độ phân giải mẫu</entry>
       <entry id="3034" string="Number of samples">Số lượng các mẫu</entry>
       <entry id="3035" string="Channels">Kênh</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="bit">bit</entry>
-      <entry id="3039" string="min">min</entry>
-      <entry id="3040" string="bytes">bytes</entry>
-      <entry id="3041" string="Length">Độ dài</entry>
-      <entry id="3042" string="File">Tập tin</entry>
-      <entry id="3043" string="Size">Kích thước</entry>
-      <entry id="3044" string="Bitrate">Bitrate</entry>
-      <entry id="3045" string="Audio Files">Tập tin Audio</entry>
-      <entry id="3046" string="All Files">Tất cả tập tin</entry>
-      <entry id="3047" string="Playlist Files">Tập tin danh sách</entry>
+      <entry id="3038" string="Length">Độ dài</entry>
+      <entry id="3039" string="File">Tập tin</entry>
+      <entry id="3040" string="Size">Kích thước</entry>
+      <entry id="3041" string="Bitrate">Bitrate</entry>
+      <entry id="3042" string="Audio Files">Tập tin Audio</entry>
+      <entry id="3043" string="All Files">Tất cả tập tin</entry>
+      <entry id="3044" string="Playlist Files">Tập tin danh sách</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Thư mục</entry>
 	<entry id="3101" string="Add folder">Thêm thư mục</entry>
-	<entry id="3102" string="Choose folder:">Chọn thư mục:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Chọn thư mục để thêm vào danh sách công việc:</entry>
+	<entry id="3102" string="Choose folder">Chọn thư mục</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Chọn thư mục để thêm vào danh sách công việc</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,14 +177,14 @@
 	<entry id="3201" string="Pattern">Mẫu</entry>
 	<entry id="3202" string="Start folder">Bắt đầu từ thư mục</entry>
 	<entry id="3203" string="Filename pattern">Tên file mẫu</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">Chọn thư mục để thêm vào danh sách công việc:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Chọn thư mục để thêm vào danh sách công việc</entry>
       </section>
 
       <section name="Character set"/>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Bạn chưa chọn tập tin nào hết!</entry>
-	<entry id="3401" string="No files found matching pattern:">Không tìm thấy tập tin nào trùng với mẫu:</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Không tìm thấy tập tin nào trùng với mẫu: %1</entry>
       </section>
     </section>
 
@@ -198,7 +206,7 @@
 
 	<section name="Errors">
 	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Đã xảy ra lỗi khi kết nối với máy chủ feedback.</entry>
-	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Hãy điền vào tất cả các khung trống và tiêu đề nhạc trước khi  trình bày.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Hãy điền vào tất cả các khung trống và tiêu đề nhạc trước khi trình bày.</entry>
 	</section>
       </section>
 
@@ -211,7 +219,7 @@
 	<entry id="4105" string="No exact matches found">Không tìm thấy</entry>
 	<entry id="4106" string="Multiple matches found">Các lực chọn giống nhau được tìm thấy</entry>
 	<entry id="4107" string="Matches">Giống</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">Lựa chọn entry sao cho vừa vặn với CD:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">Lựa chọn entry sao cho vừa vặn với CD</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Bạn có muốn thực hiện truy vấn lần nữa không?</entry>
 	<entry id="4110" string="none">không</entry>
 	<entry id="4111" string="Preview">Xem thử</entry>
@@ -227,12 +235,12 @@
 	<entry id="4202" string="Query">Truy vấn</entry>
 	<entry id="4203" string="Query all">Truy vấn tất cả</entry>
 	<entry id="4204" string="Query string">Truy vấn chuỗi</entry>
-	<entry id="4205" string="CDDB queries to perform:">Thực hiên truy vấn CDDB:</entry>
+	<entry id="4205" string="CDDB queries to perform">Thực hiên truy vấn CDDB</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Loại bỏ entry</entry>
-	<entry id="4301" string="CDDB entries to submit:">Trình bày CDDB entry:</entry>
+	<entry id="4301" string="CDDB entries to submit">Trình bày CDDB entry</entry>
 	<entry id="4302" string="Submit all">Trình bày tất cả</entry>
 	<entry id="4303" string="CDDB data">Dữ liệu CDDB</entry>
 	<entry id="4304" string="Submit">Trình bày</entry>
@@ -246,7 +254,7 @@
 	<entry id="4400" string="CDDB data">Dữ liệu CDDB</entry>
 	<entry id="4401" string="Update joblist with this information">Cập nhật danh sách công việc với thông tin này</entry>
 	<entry id="4402" string="Charset">Chuyển mã ký tự</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Các CDDB entries đã tải xuống:</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Các CDDB entries đã tải xuống</entry>
 	<entry id="4404" string="Disc name">Tên đĩa</entry>
 	<entry id="4405" string="Preview">Xem thử</entry>
 	<entry id="4406" string="Remove entry">Loại bỏ entry</entry>
@@ -266,7 +274,7 @@
 	<entry id="5101" string="Encoder">Chuyển mã</entry>
 	<entry id="5102" string="Output folder">Thư mục xuất dữ liệu</entry>
 	<entry id="5103" string="Browse">Duyệt</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Chọn thư mục để lưu tập tin đã được chuyển mã:</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Chọn thư mục để lưu tập tin đã được chuyển mã</entry>
 	<entry id="5105" string="Use input file folder if possible">Sử dụng thư mục của tập tin nhập vào nếu được</entry>
 	<entry id="5106" string="Allow overwriting input file">Cho phép ghi đè lên tập tin nhập vào</entry>
 	<entry id="5107" string="Options">Tùy chọn</entry>
@@ -287,19 +295,19 @@
 	<entry id="5203" string="Browse">Duyệt</entry>
 	<entry id="5204" string="Use encoder output folder">Sử dụng thư mục xuất dữ liệu chuyển mã</entry>
 	<entry id="5205" string="Filename pattern">Tên file mẫu</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Chọn thư mục nơi tập tin danh sách sẽ được lưu:</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Chọn thư mục nơi tập tin danh sách sẽ được lưu</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Cho cơ sở dữ liệu CDDB</entry>
 	<entry id="5301" string="Enable remote CDDB database">Cho phép điều khiển cơ sở dữ liệu CDDB</entry>
-	<entry id="5302" string="CDDB path:">Thư mục CDDB:</entry>
+	<entry id="5302" string="CDDB path">Thư mục CDDB</entry>
 	<entry id="5303" string="Browse">Duyệt</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Chọn thư mục của cơ sở dữ liệu CDDB:</entry>
-	<entry id="5305" string="CDDB access mode:">Phương thức xử lý CDDB:</entry>
-	<entry id="5306" string="CDDB server:">Máy chủ CDDB:</entry>
-	<entry id="5307" string="Port:">Cổng:</entry>
-	<entry id="5308" string="eMail address:">Thư điện tử:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Chọn thư mục của cơ sở dữ liệu CDDB</entry>
+	<entry id="5305" string="CDDB access mode">Phương thức xử lý CDDB</entry>
+	<entry id="5306" string="CDDB server">Máy chủ CDDB</entry>
+	<entry id="5307" string="Port">Cổng</entry>
+	<entry id="5308" string="eMail address">Thư điện tử</entry>
 	<entry id="5309" string="HTTP settings">Thiết lập HTTP</entry>
 	<entry id="5310" string="Proxy settings">Thiết lập Proxy</entry>
 	<entry id="5311" string="Options">Tùy chọn</entry>
@@ -311,13 +319,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Mở rộng thiết lập CDDB</entry>
 	  <entry id="5331" string="CGI scripts">Mã CGI</entry>
-	  <entry id="5332" string="CDDB query script:">Mã truy vấn CDDB:</entry>
-	  <entry id="5333" string="CDDB submit script:">Trình bày mã CDDB:</entry>
+	  <entry id="5332" string="CDDB query script">Mã truy vấn CDDB</entry>
+	  <entry id="5333" string="CDDB submit script">Trình bày mã CDDB</entry>
 	  <entry id="5334" string="no proxy">không có proxy</entry>
-	  <entry id="5335" string="Proxy type:">Loại Proxy:</entry>
-	  <entry id="5336" string="Proxy server:">Máy chủ Proxy:</entry>
-	  <entry id="5337" string="User name:">Tên người dùng:</entry>
-	  <entry id="5338" string="Password:">Mật khẩu:</entry>
+	  <entry id="5335" string="Proxy type">Loại Proxy</entry>
+	  <entry id="5336" string="Proxy server">Máy chủ Proxy</entry>
+	  <entry id="5337" string="User name">Tên người dùng</entry>
+	  <entry id="5338" string="Password">Mật khẩu</entry>
 	</section>
 
 	<section name="Errors">
@@ -327,7 +335,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">Lựa chọn ngôn ngữ:</entry>
+	<entry id="5400" string="Select language">Lựa chọn ngôn ngữ</entry>
 	<entry id="5401" string="Edit language file">Chỉnh sửa tập tin ngôn ngữ</entry>
 	<entry id="5402" string="Information">Thông tin</entry>
 	<entry id="5403" string="Encoding">Đang chuyển mã</entry>
@@ -338,13 +346,13 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">Tab thông tin</entry>
 	<entry id="5501" string="Tag formats">Chuyển mã Tag</entry>
-	<entry id="5502" string="Default comment string:">Chuỗi nhận xét mặc định:</entry>
+	<entry id="5502" string="Default comment string">Chuỗi nhận xét mặc định</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Thay thế bình luận đã tồn tại bằng bình luận mặc định</entry>
 	<entry id="5504" string="Filename pattern">Tên file mẫu</entry>
-	<entry id="5505" string="Encoding:">Đang chuyển mã:</entry>
+	<entry id="5505" string="Encoding">Đang chuyển mã</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -410,7 +418,7 @@
       <entry id="9003" string="Read CD Text">Đọc CD Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Đọc cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Thiết lập Ripper</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">Cho phép chế độ cdparanoia:</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Cho phép chế độ cdparanoia</entry>
       <entry id="9007" string="Overlap only">Chỉ Overlap</entry>
       <entry id="9008" string="No verify">No xác định</entry>
       <entry id="9009" string="No scratch repair">Không có mảnh xước để sửa chữa</entry>
@@ -460,16 +468,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Presets</entry>
-	  <entry id="32101" string="Use preset:">Sử dụng preset:</entry>
+	  <entry id="32101" string="Use preset">Sử dụng preset</entry>
 	  <entry id="32102" string="Custom settings">Thiết lập tùy chọn</entry>
 	  <entry id="32103" string="Medium, Fast">Trung bình, Nhanh</entry>
 	  <entry id="32104" string="Standard, Fast">Tiêu chuẩn, Nhanh</entry>
 	  <entry id="32105" string="Extreme, Fast">Cực kỳ, Nhanh</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Chất lượng</entry>
-	  <entry id="32108" string="Set bitrate:">Tạo bitrate:</entry>
-	  <entry id="32109" string="Set ratio:">Tạo tỉ lệ:</entry>
-	  <entry id="32110" string="Set quality:">Tạo chất lượng:</entry>
+	  <entry id="32108" string="Set bitrate">Tạo bitrate</entry>
+	  <entry id="32109" string="Set ratio">Tạo tỉ lệ</entry>
+	  <entry id="32110" string="Set quality">Tạo chất lượng</entry>
 	  <entry id="32111" string="worse">tệ hơn</entry>
 	  <entry id="32112" string="better">tốt hơn</entry>
 	  <entry id="32113" string="VBR mode">Chế độ VBR</entry>
@@ -491,13 +499,13 @@
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Bắt buộc Joint Stereo</entry>
 	  <entry id="32211" string="VBR bitrate range">Phạm vi VBR bitrate</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Tạo tối thiểu VBR bitrate:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Tạo tối đa VBR bitrate:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Tạo tối thiểu VBR bitrate</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Tạo tối đa VBR bitrate</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH:">Cho phép ATH:</entry>
+	  <entry id="32301" string="Enable ATH">Cho phép ATH</entry>
 	  <entry id="32302" string="Use default setting">Sử dụng thiết lập mặc định</entry>
 	  <entry id="32303" string="Psycho acoustic model">Mô hình âm học tinh thần</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Sử dụng hiệu ứng mặt nạ tạm thời</entry>
@@ -510,11 +518,11 @@
 	  <entry id="32401" string="auto">tự động</entry>
 	  <entry id="32402" string="no resampling">không thí dụ</entry>
 	  <entry id="32403" string="Highpass filter">Bộ lọc Highpass</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Tạo tần số Highpass (Hz):</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Tạo chiều rộng Highpass (Hz):</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Tạo tần số Highpass (Hz)</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Tạo chiều rộng Highpass (Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Bộ lọc Lowpass</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Tạo tần số Lowpass (Hz):</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Tạo chiều rộng Lowpass (Hz):</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Tạo tần số Lowpass (Hz)</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Tạo chiều rộng Lowpass (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Thiết lập chung</entry>
 	  <entry id="32410" string="Disable all filtering">Tắt tất cả bộ lọc</entry>
 	</section>
@@ -527,14 +535,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Bitrate</entry>
 	  <entry id="33201" string="Bitrate / Quality">Bitrate / Chất lượng</entry>
-	  <entry id="33202" string="Bitrate per channel:">Bitrate mỗi kênh:</entry>
-	  <entry id="33203" string="Set quality:">Tạo chất lượng:</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitrate mỗi kênh</entry>
+	  <entry id="33203" string="Set quality">Tạo chất lượng</entry>
 	  <entry id="33204" string="Stereo mode">Chế độ Stereo</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Cho phép nối Stereo</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Định dạng tạp âm tạm thời</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Sử dụng định dạng tạp âm tạm thời</entry>
 	  <entry id="33208" string="Maximum bandwidth">Băng thông tối đa</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Tần số băng thông AAC tối đa được sử dụng (Hz):</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Tần số băng thông AAC tối đa được sử dụng (Hz)</entry>
 	</section>
 
 	<section name="Format">
@@ -555,7 +563,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Presets</entry>
-	  <entry id="34101" string="Use preset:">Sử dụng preset:</entry>
+	  <entry id="34101" string="Use preset">Sử dụng preset</entry>
 	  <entry id="34102" string="Custom settings">Thiết lập tùy chọn</entry>
 	  <entry id="34103" string="Fastest encoding">Chuyển mã nhanh</entry>
 	  <entry id="34104" string="Best compression">Nén tốt nhất</entry>
@@ -567,14 +575,13 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Sử dụng luồng con</entry>
-	  <entry id="34201" string="Blocksize:">Kích thước khối:</entry>
-	  <entry id="34202" string="bytes">bytes</entry>
+	  <entry id="34201" string="Blocksize">Kích thước khối</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">Làm êm</entry>
-	  <entry id="34301" string="Apodization function(s):">Chức năng làm êm:</entry>
-	  <entry id="34302" string="Note:">Ghi chú:</entry>
+	  <entry id="34300" string="Signal processing">Làm êm</entry>
+	  <entry id="34301" string="Window function(s)">Chức năng làm êm</entry>
+	  <entry id="34302" string="Note">Ghi chú</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Bạn có thể chọn lựa nhiều chức năng bằng dấu chấm phẩy.</entry>
 	  <entry id="34304" string="Linear predictor">Dự đoán đường vạch</entry>
 	  <entry id="34305" string="Maximum LPC order">Thứ tự LPC tối đa</entry>
@@ -597,13 +604,15 @@
 	<entry id="35004" string="Bitrate">Bitrate</entry>
       </section>
 
-      <section name="WMA"/>
+      <section name="WMA">
+	<entry id="36008" string="Quality">Chất lượng</entry>
+      </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Bitrate</entry>
-	<entry id="37001" string="Bitrate per channel:">Bitrate mỗi kênh:</entry>
+	<entry id="37001" string="Bitrate per channel">Bitrate mỗi kênh</entry>
 	<entry id="37002" string="Preselection">Chọn lại</entry>
-	<entry id="37003" string="Number of preselection candidates:">Con số các ứng viên chọn lại:</entry>
+	<entry id="37003" string="Number of preselection candidates">Con số các ứng viên chọn lại</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -619,12 +628,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">Tự động</entry>
 	<entry id="40015" string="Quality">Chất lượng</entry>
-	<entry id="40021" string="Options">Tùy chọn</entry>
+	<entry id="40020" string="Options">Tùy chọn</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">Định dạng tập tin:</entry>
-	<entry id="41002" string="Audio format:">Định dạng audio:</entry>
+	<entry id="41001" string="File format">Định dạng tập tin</entry>
+	<entry id="41002" string="Audio format">Định dạng audio</entry>
 	<entry id="41003" string="mono">mono</entry>
       </section>
     </section>

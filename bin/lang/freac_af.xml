@@ -31,7 +31,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bis (bit)</entry>
+      <entry id="516" string="%1 bytes">%1 grepe (bytes)</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">Voeg by</entry>
 	<entry id="1101" string="Remove">Verwyder</entry>
-	<entry id="1102" string="Load joblist...">Laai taaklys...</entry>
-	<entry id="1103" string="Save joblist...">Bêre taaklys...</entry>
+	<entry id="1102" string="Load joblist">Laai taaklys</entry>
+	<entry id="1103" string="Save joblist">Bêre taaklys</entry>
 	<entry id="1104" string="Clear joblist">Maak taaklys skoon</entry>
 	<entry id="1105" string="Exit">Sluit</entry>
 	<entry id="1106" string="Audio file(s)">Oudiolêer(s)</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Navraag by CDDB-databank</entry>
-	<entry id="1201" string="Submit CDDB data...">Stuur CDDB-data...</entry>
+	<entry id="1201" string="Submit CDDB data">Stuur CDDB-data</entry>
 	<entry id="1202" string="Query CDDB database later">Doen later navraag by CDDB-databank</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Wys CDDB-inskrywings wat toustaan...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Wys CDDB-navrae wat toustaan...</entry>
+	<entry id="1203" string="Show queued CDDB entries">Wys CDDB-inskrywings wat toustaan</entry>
+	<entry id="1204" string="Show queued CDDB queries">Wys CDDB-navrae wat toustaan</entry>
 	<entry id="1205" string="Enable CDDB cache">Aktiveer CDDB-cache</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Beheer CDDB cache-inskrywings...</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Beheer CDDB cache-inskrywings</entry>
 	<entry id="1207" string="Automatic CDDB queries">Outomatiese CDDB-navrae</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">Algemene opstellings...</entry>
-	<entry id="1301" string="Configure selected encoder...">Konfigureer gekose enkodeerder...</entry>
+	<entry id="1300" string="General settings">Algemene opstellings</entry>
+	<entry id="1301" string="Configure selected encoder">Konfigureer gekose enkodeerder</entry>
 	<entry id="1302" string="Active CD-ROM drive">Aktiewe CD-ROM aandrywer</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Hulponderwerpe...</entry>
+	<entry id="1500" string="Help topics">Hulponderwerpe</entry>
 	<entry id="1501" string="Show Tip of the Day">Toon wenk van die dag</entry>
 	<entry id="1502" string="Check for updates now">Kontroleer vir opdaterings</entry>
 	<entry id="1503" string="Check for updates at startup">Kontroleer vir opdaterings tydens aanskakeling</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Verwyder gekose take uit taaklys</entry>
       <entry id="2003" string="Clear the entire joblist">Maak taaklys skoon</entry>
       <entry id="2004" string="Query CDDB database">Navraag by CDDB-databank</entry>
-      <entry id="2005" string="Submit CDDB data...">Stuur CDDB-data...</entry>
+      <entry id="2005" string="Submit CDDB data">Stuur CDDB-data</entry>
       <entry id="2006" string="Configure general settings">Konfigureer algemene opstellings</entry>
       <entry id="2007" string="Configure the selected audio encoder">Konfigureer gekose oudio-enkodeerder</entry>
       <entry id="2008" string="Start the encoding process">Begin enkoderingsproses</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">Enkoderingslêer:</entry>
-      <entry id="3001" string="Time left:">Oorblywende tyd:</entry>
-      <entry id="3002" string="Selected encoder:">Gekose enkodeerder:</entry>
-      <entry id="3003" string="File progress:">Vordering:</entry>
-      <entry id="3004" string="Output folder:">Uitsetgids:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 lêer(s) in taaklys:</entry>
+      <entry id="3000" string="Encoding file">Enkoderingslêer</entry>
+      <entry id="3001" string="Time left">Oorblywende tyd</entry>
+      <entry id="3002" string="Selected encoder">Gekose enkodeerder</entry>
+      <entry id="3003" string="File progress">Vordering</entry>
+      <entry id="3004" string="Output folder">Uitsetgids</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 lêer(s) in taaklys</entry>
       <entry id="3006" string="none">geen</entry>
       <entry id="3007" string="Show title info">Gee titelbesonderhede</entry>
       <entry id="3008" string="Play">Speel</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">eerste letter bokas</entry>
       <entry id="3029" string="all lower case">alles onderkas</entry>
       <entry id="3030" string="all upper case">alles bokas</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Kies gids waain die geënkodeerde lêers geplaas gaan word:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Kies gids waain die geënkodeerde lêers geplaas gaan word</entry>
       <entry id="3032" string="Sampling rate">Monsternemingskoers</entry>
       <entry id="3033" string="Sample resolution">Monsterontleding</entry>
       <entry id="3034" string="Number of samples">Aantal monsters</entry>
       <entry id="3035" string="Channels">Kanale</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="bit">bis (bit)</entry>
-      <entry id="3039" string="min">min</entry>
-      <entry id="3040" string="bytes">grepe (bytes)</entry>
-      <entry id="3041" string="Length">Lengte</entry>
-      <entry id="3042" string="File">Lêer</entry>
-      <entry id="3043" string="Size">Grootte</entry>
-      <entry id="3044" string="Bitrate">Bistempo</entry>
-      <entry id="3045" string="Audio Files">Oudiolêers</entry>
-      <entry id="3046" string="All Files">Alle lêers</entry>
-      <entry id="3047" string="Playlist Files">Speellyslêers</entry>
+      <entry id="3038" string="Length">Lengte</entry>
+      <entry id="3039" string="File">Lêer</entry>
+      <entry id="3040" string="Size">Grootte</entry>
+      <entry id="3041" string="Bitrate">Bistempo</entry>
+      <entry id="3042" string="Audio Files">Oudiolêers</entry>
+      <entry id="3043" string="All Files">Alle lêers</entry>
+      <entry id="3044" string="Playlist Files">Speellyslêers</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Gids</entry>
 	<entry id="3101" string="Add folder">Voeg gids by</entry>
-	<entry id="3102" string="Choose folder:">Kies gids:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Kies die gids om by die taaklys te voeg:</entry>
+	<entry id="3102" string="Choose folder">Kies gids</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Kies die gids om by die taaklys te voeg</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,12 +177,12 @@
 	<entry id="3201" string="Pattern">Vorm</entry>
 	<entry id="3202" string="Start folder">Aanvangsgids</entry>
 	<entry id="3203" string="Filename pattern">Lêernaammodel</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">Kies die gids om by die taaklys te voeg:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Kies die gids om by die taaklys te voeg</entry>
       </section>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Jy het nie 'n snit gekies nie!</entry>
-	<entry id="3401" string="No files found matching pattern:">Geen lêers met dié vorm gevind:</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Geen lêers met dié vorm gevind: %1</entry>
       </section>
     </section>
 
@@ -209,7 +217,7 @@
 	<entry id="4105" string="No exact matches found">Geen presiese gelykes gevind nie</entry>
 	<entry id="4106" string="Multiple matches found">Veelvuldige gelykes gevind</entry>
 	<entry id="4107" string="Matches">Gelykes</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">Kies die inskrywing wat die beste by jou CD pas:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">Kies die inskrywing wat die beste by jou CD pas</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Wil jy hierdie navraag later herhaal?</entry>
 	<entry id="4110" string="none">geen</entry>
 	<entry id="4111" string="Preview">Voorskou</entry>
@@ -225,12 +233,12 @@
 	<entry id="4202" string="Query">Doen navraag</entry>
 	<entry id="4203" string="Query all">Doen navraag oor alles</entry>
 	<entry id="4204" string="Query string">Doen navraag oor string</entry>
-	<entry id="4205" string="CDDB queries to perform:">CDDB-navrae om uit te voer:</entry>
+	<entry id="4205" string="CDDB queries to perform">CDDB-navrae om uit te voer</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Verwyder inskrywing</entry>
-	<entry id="4301" string="CDDB entries to submit:">CDDB-gegewens om in te dien:</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB-gegewens om in te dien</entry>
 	<entry id="4302" string="Submit all">Dien alles in</entry>
 	<entry id="4303" string="CDDB data">CDDB-data</entry>
 	<entry id="4304" string="Submit">Dien in</entry>
@@ -244,7 +252,7 @@
 	<entry id="4400" string="CDDB data">CDDB-data</entry>
 	<entry id="4401" string="Update joblist with this information">Dateer taaklyste met hierdie inligting op</entry>
 	<entry id="4402" string="Charset">Letterstel</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Afgelaaide CDDB-inskrywings:</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Afgelaaide CDDB-inskrywings</entry>
 	<entry id="4404" string="Disc name">Skyfnaam</entry>
 	<entry id="4405" string="Preview">Voorskou</entry>
 	<entry id="4406" string="Remove entry">Verwyder inskrywing</entry>
@@ -265,7 +273,7 @@
 	<entry id="5101" string="Encoder">Enkodeerder</entry>
 	<entry id="5102" string="Output folder">Uitsetgids</entry>
 	<entry id="5103" string="Browse">Rondlees</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Kies gids waain die geënkodeerde lêers geplaas gaan word:</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Kies gids waain die geënkodeerde lêers geplaas gaan word</entry>
 	<entry id="5105" string="Use input file folder if possible">Gebruik die invoerlêergids indien moontlik</entry>
 	<entry id="5106" string="Allow overwriting input file">Laat oorskrywing van insetlêer toe</entry>
 	<entry id="5107" string="Options">Opsies</entry>
@@ -286,19 +294,19 @@
 	<entry id="5203" string="Browse">Rondlees</entry>
 	<entry id="5204" string="Use encoder output folder">Gebruik enkodeerder se uitsetgids</entry>
 	<entry id="5205" string="Filename pattern">Lêernaammodel</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Kies die gids waarin die speellyslêers geplaas sal word:</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Kies die gids waarin die speellyslêers geplaas sal word</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Aktiveer lokale CDDB-databank</entry>
 	<entry id="5301" string="Enable remote CDDB database">Aktiveer afstands-CDDB-databank</entry>
-	<entry id="5302" string="CDDB path:">CDDB-gids:</entry>
+	<entry id="5302" string="CDDB path">CDDB-gids</entry>
 	<entry id="5303" string="Browse">Rondlees</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Kies die gids van die CDDB-databank:</entry>
-	<entry id="5305" string="CDDB access mode:">CDDB-toegangsmodus:</entry>
-	<entry id="5306" string="CDDB server:">CDDB-bediener:</entry>
-	<entry id="5307" string="Port:">Poort:</entry>
-	<entry id="5308" string="eMail address:">E-posadres:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Kies die gids van die CDDB-databank</entry>
+	<entry id="5305" string="CDDB access mode">CDDB-toegangsmodus</entry>
+	<entry id="5306" string="CDDB server">CDDB-bediener</entry>
+	<entry id="5307" string="Port">Poort</entry>
+	<entry id="5308" string="eMail address">E-posadres</entry>
 	<entry id="5309" string="HTTP settings">HTTP-opstellings</entry>
 	<entry id="5310" string="Proxy settings">Proksie-opstellings</entry>
 	<entry id="5311" string="Options">Opsies</entry>
@@ -310,13 +318,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Uitgebreide CDDB-opstellings</entry>
 	  <entry id="5331" string="CGI scripts">CGI scripts</entry>
-	  <entry id="5332" string="CDDB query script:">CDDB-navraag-script:</entry>
-	  <entry id="5333" string="CDDB submit script:">CDDB-indien-script:</entry>
+	  <entry id="5332" string="CDDB query script">CDDB-navraag-script</entry>
+	  <entry id="5333" string="CDDB submit script">CDDB-indien-script</entry>
 	  <entry id="5334" string="no proxy">geen proksie</entry>
-	  <entry id="5335" string="Proxy type:">Proksietipe:</entry>
-	  <entry id="5336" string="Proxy server:">Proksiebediener:</entry>
-	  <entry id="5337" string="User name:">Gebruikersnaam:</entry>
-	  <entry id="5338" string="Password:">Wagwoord:</entry>
+	  <entry id="5335" string="Proxy type">Proksietipe</entry>
+	  <entry id="5336" string="Proxy server">Proksiebediener</entry>
+	  <entry id="5337" string="User name">Gebruikersnaam</entry>
+	  <entry id="5338" string="Password">Wagwoord</entry>
 	</section>
 
 	<section name="Errors">
@@ -326,7 +334,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">Kies 'n taal:</entry>
+	<entry id="5400" string="Select language">Kies 'n taal</entry>
 	<entry id="5401" string="Edit language file">Redigeer taallêer</entry>
 	<entry id="5402" string="Information">Informasie</entry>
 	<entry id="5403" string="Encoding">Enkodering</entry>
@@ -337,10 +345,10 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">Inligtingsetikette</entry>
 	<entry id="5501" string="Tag formats">Etiket-enkoderings</entry>
-	<entry id="5502" string="Default comment string:">Verstekkommentaarstring:</entry>
+	<entry id="5502" string="Default comment string">Verstekkommentaarstring</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Vervang bestaande kommentaar met verstekkommentaar</entry>
 	<entry id="5504" string="Filename pattern">Lêernaammodel</entry>
-	<entry id="5505" string="Encoding:">Enkodering:</entry>
+	<entry id="5505" string="Encoding">Enkodering</entry>
       </section>
     </section>
 
@@ -383,7 +391,7 @@
       <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-ondersteuning is buite werking! Aktiveer&#10;asb. plaaslike of afstands-CDDB-ondersteuning&#10;in die konfigurasiedialoog.</entry>
       <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Afstands-CDDB-ondersteuning is afgeskakel! Stel dit&#10;asseblief in werking op die kofigurasieskerm.</entry>
       <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows het toegang tot CD-ROM-aandrywers geweier.&#10;&#10;Kontak asseblief u stelseladministrateur om toegang&#10;tot die CD-ROM-aandrywer te verkry.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Kan nie toegang  tot invoerlêer kry nie: %1</entry>
+      <entry id="7015" string="Cannot access input file: %1">Kan nie toegang tot invoerlêer kry nie: %1</entry>
       <entry id="7016" string="Cannot create output file: %1">Kan nie uitsetlêer skep nie: %1</entry>
       <entry id="7017" string="File not found">Lêer nie gevind nie</entry>
       <entry id="7018" string="Unknown file type">Onbekende lêertipe</entry>
@@ -401,12 +409,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Aktiewe CD-ROM aandrywer</entry>
-      <entry id="9001" string="Set drive speed limit:">Stel aandrywerspoedlimiet</entry>
+      <entry id="9001" string="Set drive speed limit">Stel aandrywerspoedlimiet</entry>
       <entry id="9002" string="CD information">CD-informasie</entry>
       <entry id="9003" string="Read CD Text">Lees die CD-teks</entry>
       <entry id="9004" string="Read cdplayer.ini">Lees cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Stroopstellings (rip)</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">Ativeer CD-paranoiamodus:</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Ativeer CD-paranoiamodus</entry>
       <entry id="9007" string="Overlap only">Slegs oorvleueling</entry>
       <entry id="9008" string="No verify">Geen toets</entry>
       <entry id="9009" string="No scratch repair">Geen krap herstelwerk</entry>
@@ -456,16 +464,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Verstekopstellings</entry>
-	  <entry id="32101" string="Use preset:">Gebruik verstekopstelling:</entry>
+	  <entry id="32101" string="Use preset">Gebruik verstekopstelling</entry>
 	  <entry id="32102" string="Custom settings">Pasmaak-opstellings</entry>
 	  <entry id="32103" string="Medium, Fast">Medium, Vinnig</entry>
 	  <entry id="32104" string="Standard, Fast">Standaard, Vinnig</entry>
 	  <entry id="32105" string="Extreme, Fast">Uiters, Vinnig</entry>
 	  <entry id="32106" string="Bitrate">Bistempo</entry>
 	  <entry id="32107" string="Quality">Kwaliteit</entry>
-	  <entry id="32108" string="Set bitrate:">Stel biskoers:</entry>
-	  <entry id="32109" string="Set ratio:">Stel verhouding:</entry>
-	  <entry id="32110" string="Set quality:">Stel kwaliteit:</entry>
+	  <entry id="32108" string="Set bitrate">Stel biskoers</entry>
+	  <entry id="32109" string="Set ratio">Stel verhouding</entry>
+	  <entry id="32110" string="Set quality">Stel kwaliteit</entry>
 	  <entry id="32111" string="worse">slegter</entry>
 	  <entry id="32112" string="better">beter</entry>
 	  <entry id="32113" string="VBR mode">VBR-modus</entry>
@@ -475,7 +483,7 @@
 	</section>
 
 	<section name="Misc">
-	  <entry id="32200" string="Control bits">Kontrole  bisse</entry>
+	  <entry id="32200" string="Control bits">Kontrole bisse</entry>
 	  <entry id="32201" string="Set Copyright bit">Stel kopieregbis</entry>
 	  <entry id="32202" string="Set Original bit">Stel oorspronklike bis</entry>
 	  <entry id="32203" string="Set Private bit">Stel private bis</entry>
@@ -487,13 +495,13 @@
 	  <entry id="32209" string="Joint Stereo">Medestereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forseer medestereo</entry>
 	  <entry id="32211" string="VBR bitrate range">VBR-biskoersomvang</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Stel min. VBR-biskoers:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Stel maks. VBR-biskoers:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Stel min. VBR-biskoers</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Stel maks. VBR-biskoers</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH:">Bemagtig ATH:</entry>
+	  <entry id="32301" string="Enable ATH">Bemagtig ATH</entry>
 	  <entry id="32302" string="Use default setting">Gebruik verstek-opstellings</entry>
 	  <entry id="32303" string="Psycho acoustic model">Psigo-akoestiese model</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Gebruik tydelike maskeringseffek</entry>
@@ -506,11 +514,11 @@
 	  <entry id="32401" string="auto">outo</entry>
 	  <entry id="32402" string="no resampling">geen hermonsterneming</entry>
 	  <entry id="32403" string="Highpass filter">Hoë deurlaatfilter</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Stel hoë deurlaatfrekwensie (Hz):</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Stel hoë deurlaatwydte (Hz):</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Stel hoë deurlaatfrekwensie (Hz)</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Stel hoë deurlaatwydte (Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Lae deurlaatfilter</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Stel lae deurlaatfrekwensie (Hz):</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Stel lae deurlaatwydte (Hz):</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Stel lae deurlaatfrekwensie (Hz)</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Stel lae deurlaatwydte (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Verskillende stellings</entry>
 	  <entry id="32410" string="Disable all filtering">Skakel alle filtrering af</entry>
 	</section>
@@ -523,14 +531,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Bistempo</entry>
 	  <entry id="33201" string="Bitrate / Quality">Bitkoers / Kwaliteit</entry>
-	  <entry id="33202" string="Bitrate per channel:">Biskoers per kanaal:</entry>
-	  <entry id="33203" string="Set quality:">Stel kwaliteit:</entry>
+	  <entry id="33202" string="Bitrate per channel">Biskoers per kanaal</entry>
+	  <entry id="33203" string="Set quality">Stel kwaliteit</entry>
 	  <entry id="33204" string="Stereo mode">Stereomodus</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Laat medestereo toe</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Tydelike geraas vormering</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Gebruik tydelike geraas vormering</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maks. bandbreedte</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Maks. AAC frekwensiebandbreedte vir gebruik (Hz):</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maks. AAC frekwensiebandbreedte vir gebruik (Hz)</entry>
 	</section>
 
 	<section name="Format">
@@ -550,7 +558,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Verstekopstellings</entry>
-	  <entry id="34101" string="Use preset:">Gebruik verstekopstelling:</entry>
+	  <entry id="34101" string="Use preset">Gebruik verstekopstelling</entry>
 	  <entry id="34102" string="Custom settings">Pasmaak-opstellings</entry>
 	  <entry id="34103" string="Fastest encoding">Vinnigste enkodering</entry>
 	  <entry id="34104" string="Best compression">Beste kompressie</entry>
@@ -563,18 +571,17 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Gebruik stroombare substel</entry>
-	  <entry id="34201" string="Blocksize:">Blokgrootte:</entry>
-	  <entry id="34202" string="bytes">grepe (bytes)</entry>
+	  <entry id="34201" string="Blocksize">Blokgrootte</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">Apodisasie</entry>
-	  <entry id="34301" string="Apodization function(s):">Apodisasiefunksie(s):</entry>
-	  <entry id="34302" string="Note:">Opmerking:</entry>
-	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Jy kan meerdere funksies, geskei deur kommapunte, spesifiseer.</entry>
+	  <entry id="34300" string="Signal processing">Apodisasie</entry>
+	  <entry id="34301" string="Window function(s)">Apodisasiefunksie(s)</entry>
+	  <entry id="34302" string="Note">Opmerking</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Jy kan meerdere funksies, geskei deur kommapunte,&#10;spesifiseer.</entry>
 	  <entry id="34304" string="Linear predictor">Liniêre voorspeller</entry>
 	  <entry id="34305" string="Maximum LPC order">Maksimum LPC-reëlmaat</entry>
-	  <entry id="34306" string="disabled">buite werking gestel</entry>
+	  <entry id="34306" string="disabled">gestremde</entry>
 	  <entry id="34307" string="Exhaustive model search">Volledige modelsoektog</entry>
 	  <entry id="34308" string="Quantized LPC precision">Gekwantifiseerde LPC-presisie</entry>
 	  <entry id="34309" string="auto">outo</entry>
@@ -587,7 +594,7 @@
 
       <section name="Vorbis">
 	<entry id="35000" string="Encoding Mode">Enkoderingsmodus</entry>
-	<entry id="35001" string="Variable Bitrate">Veranderbare  bistempo (bitrate)</entry>
+	<entry id="35001" string="Variable Bitrate">Veranderbare bistempo (bitrate)</entry>
 	<entry id="35002" string="Average Bitrate">Gemiddelde bistempo</entry>
 	<entry id="35003" string="Quality">Kwaliteit</entry>
 	<entry id="35004" string="Bitrate">Bistempo</entry>
@@ -602,15 +609,16 @@
 	<entry id="36005" string="Write uncompressed WMA files">Skryf nie-saamgeperste WMA-lêers</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">Kies die formaat outomaties gebaseer op opstelling en die insetformaat</entry>
 	<entry id="36007" string="Use VBR encoding">Gebruik VBR-enkodering</entry>
-	<entry id="36008" string="Use 2-pass encoding">Gebruik &quot;2-pass&quot;-enkodering</entry>
+	<entry id="36008" string="Quality">Kwaliteit</entry>
 	<entry id="36009" string="Target bitrate">Teikenbiskoers</entry>
+	<entry id="36010" string="Use 2-pass encoding">Gebruik &quot;2-pass&quot;-enkodering</entry>
       </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Bistempo</entry>
-	<entry id="37001" string="Bitrate per channel:">Biskoers per kanaal:</entry>
+	<entry id="37001" string="Bitrate per channel">Biskoers per kanaal</entry>
 	<entry id="37002" string="Preselection">Preseleksie</entry>
-	<entry id="37003" string="Number of preselection candidates:">Aantal preseleksie kandidate:</entry>
+	<entry id="37003" string="Number of preselection candidates">Aantal preseleksie kandidate</entry>
       </section>
 
       <section name="Speex">
@@ -624,12 +632,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">Outomaties</entry>
 	<entry id="40015" string="Quality">Kwaliteit</entry>
-	<entry id="40021" string="Options">Opsies</entry>
+	<entry id="40020" string="Options">Opsies</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">Lêerformaat:</entry>
-	<entry id="41002" string="Audio format:">Oudioformaat:</entry>
+	<entry id="41001" string="File format">Lêerformaat</entry>
+	<entry id="41002" string="Audio format">Oudioformaat</entry>
 	<entry id="41003" string="mono">mono</entry>
       </section>
     </section>
@@ -639,8 +647,8 @@
       <section name="Donate">
 	<entry id="50000" string="Support this project">Help hierdie projek</entry>
 	<entry id="50001" string="Please support this project!">Help asseblief hierdie projek!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:&#10;&#10;&#10;&#10;&#10;&#10;&#10;</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.&#10;&#10;Skryf asseblief aan %1 as jy graag 'n donasie wil maak via elektroniese oordrag,&#10;of 'n tjek wil pos, of geld per pos wil stuur.</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:</entry>
+	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.&#10;&#10;Skryf asseblief aan %1 as jy graag 'n donasie wil maak via&#10;elektroniese oordrag, of 'n tjek wil pos, of geld per pos wil stuur.</entry>
 	<entry id="50004" string="usd">usd</entry>
 	<entry id="50005" string="en">en</entry>
 	<entry id="50006" string="Thank you very much!">Baie dankie!</entry>

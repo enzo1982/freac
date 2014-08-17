@@ -11,6 +11,7 @@
 #include <jobs/job.h>
 #include <dialogs/error.h>
 
+#include <boca.h>
 #include <time.h>
 
 Array<BonkEnc::Job *>		 BonkEnc::Job::planned;
@@ -26,6 +27,8 @@ Signal1<Void, BonkEnc::Job *>	 BonkEnc::Job::onFinishJob;
 
 BonkEnc::Job::Job() : ListEntry("Job")
 {
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
 	progressLabel	= new Text("Progress:", Point(7, 23));
 
 	progress	= new Progressbar(Point(progressLabel->GetX() + progressLabel->GetUnscaledTextWidth() + 7, progressLabel->GetY() - 3), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
@@ -38,7 +41,7 @@ BonkEnc::Job::Job() : ListEntry("Job")
 	timeLabel->SetX(timeLabel->GetUnscaledTextWidth() + timeValue->GetWidth() + 15);
 	timeLabel->SetOrientation(OR_UPPERRIGHT);
 
-	progressValue	= new EditBox("0%", Point(timeLabel->GetX() + 41, progress->GetY()), Size(34, 0), 0);
+	progressValue	= new EditBox(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"), Point(timeLabel->GetX() + 41, progress->GetY()), Size(34, 0), 0);
 	progressValue->SetOrientation(OR_UPPERRIGHT);
 	progressValue->Deactivate();
 
@@ -238,12 +241,8 @@ Int BonkEnc::Job::SetText(const String &newText)
 
 Int BonkEnc::Job::SetProgress(Int nValue)
 {
-	static String	 percentString = "%";
-	static String	 zeroString    = "0";
-	static String	 colonString   = ":";
-
 	progress->SetValue(nValue);
-	progressValue->SetText(String::FromInt(Math::Round(Float(nValue) / 10.0)).Append(percentString));
+	progressValue->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(Float(nValue) / 10.0))));
 
 	Int	 totalTicks  = S::System::System::Clock() - startTicks;
 	Int	 secondsLeft = (Int) (totalTicks * ((1000.0 - nValue) / nValue)) / 1000 + (nValue < 1000 ? 1 : 0);
@@ -251,16 +250,16 @@ Int BonkEnc::Job::SetProgress(Int nValue)
 	if (secondsLeft < previousSecondsLeft || secondsLeft >= previousSecondsLeft + 2)
 	{
 		String	 buffer = String::FromInt(secondsLeft / 60);
-		String	 text = zeroString;
+		String	 text	= "0";
 
 		if (buffer.Length() == 1) text.Append(buffer);
 		else			  text.Copy(buffer);
 
-		text.Append(colonString);
+		text.Append(":");
 
 		buffer = String::FromInt(secondsLeft % 60);
 
-		if (buffer.Length() == 1) text.Append(String(zeroString).Append(buffer));
+		if (buffer.Length() == 1) text.Append(String("0").Append(buffer));
 		else			  text.Append(buffer);
 
 		timeValue->SetText(text);

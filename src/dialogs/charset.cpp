@@ -38,7 +38,7 @@ BonkEnc::ChooseCharsetDialog::ChooseCharsetDialog()
 
 	group_charset	= new GroupBox(i18n->TranslateString("Character set"), Point(7, 11), Size(293, 37));
 
-	text_charset	= new Text(i18n->TranslateString("Choose character set").Append(":"), Point(9, 12));
+	text_charset	= new Text(i18n->AddColon(i18n->TranslateString("Choose character set")), Point(9, 12));
 	edit_charset	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastCustomCharsetID, Config::SettingsLastCustomCharsetDefault), Point(16 + text_charset->GetUnscaledTextWidth(), 9), Size(268 - text_charset->GetUnscaledTextWidth(), 0));
 
 	group_charset->Add(text_charset);

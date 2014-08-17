@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -42,10 +42,10 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 	http_group_scripts	= new GroupBox(i18n->TranslateString("CGI scripts"), Point(7, 11), Size(312, 66));
 
-	http_text_query		= new Text(i18n->TranslateString("CDDB query script:"), Point(16, 24));
+	http_text_query		= new Text(i18n->AddColon(i18n->TranslateString("CDDB query script")), Point(16, 24));
 	http_edit_query		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault), Point(117, 21), Size(192, 0), 0);
 
-	http_text_submit	= new Text(i18n->TranslateString("CDDB submit script:"), Point(16, 51));
+	http_text_submit	= new Text(i18n->AddColon(i18n->TranslateString("CDDB submit script")), Point(16, 51));
 	http_edit_submit	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, Config::FreedbSubmitPathDefault), Point(117, 48), Size(192, 0), 0);
 
 	Int	 maxTextSize = Math::Max(http_text_query->GetUnscaledTextWidth(), http_text_submit->GetUnscaledTextWidth());
@@ -55,7 +55,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 	proxy_group_proxy	= new GroupBox(i18n->TranslateString("Proxy settings"), Point(7, 11), Size(312, 93));
 
-	proxy_text_mode		= new Text(i18n->TranslateString("Proxy type:"), Point(16, 24));
+	proxy_text_mode		= new Text(i18n->AddColon(i18n->TranslateString("Proxy type")), Point(16, 24));
 
 	proxy_combo_mode	= new ComboBox(Point(116, 21), Size(185, 0));
 	proxy_combo_mode->onSelectEntry.Connect(&cddbExtendedSettingsDlg::SetProxyMode, this);
@@ -65,19 +65,19 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	proxy_combo_mode->AddEntry("SOCKS v4/v4a");
 	proxy_combo_mode->AddEntry("SOCKS v5");
 
-	proxy_text_server	= new Text(i18n->TranslateString("Proxy server:"), Point(16, 51));
+	proxy_text_server	= new Text(i18n->AddColon(i18n->TranslateString("Proxy server")), Point(16, 51));
 	proxy_edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyID, Config::FreedbProxyDefault), Point(116, 48), Size(100, 0), 0);
 
-	proxy_text_port		= new Text(i18n->TranslateString("Port:"), Point(226, 51));
+	proxy_text_port		= new Text(i18n->AddColon(i18n->TranslateString("Port")), Point(226, 51));
 	proxy_text_port->SetPosition(Point(264 - proxy_text_port->GetUnscaledTextWidth(), proxy_text_port->GetY()));
 
 	proxy_edit_port		= new EditBox(String::FromInt(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyPortID, Config::FreedbProxyPortDefault)), Point(272, 48), Size(37, 0), 5);
 	proxy_edit_port->SetFlags(EDB_NUMERIC);
 
-	proxy_text_user		= new Text(i18n->TranslateString("User name:"), Point(16, 78));
+	proxy_text_user		= new Text(i18n->AddColon(i18n->TranslateString("User name")), Point(16, 78));
 	proxy_edit_user		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyUserID, Config::FreedbProxyUserDefault), Point(116, 75), Size(100, 0), 0);
 
-	proxy_text_password	= new Text(i18n->TranslateString("Password:"), Point(226, 78));
+	proxy_text_password	= new Text(i18n->AddColon(i18n->TranslateString("Password")), Point(226, 78));
 	proxy_text_password->SetPosition(Point(234 - proxy_text_password->GetUnscaledTextWidth(), proxy_text_password->GetY()));
 
 	proxy_edit_password	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbProxyPasswordID, Config::FreedbProxyPasswordDefault), Point(242, 75), Size(67, 0), 0);

@@ -26,13 +26,13 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 
 	SetText(i18n->TranslateString("Jobs"));
 
-	text_progress	= new Text(i18n->TranslateString("Progress:"), Point(7, 11));
+	text_progress	= new Text(i18n->AddColon(i18n->TranslateString("Progress")), Point(7, 11));
 
 	list_threads	= new ListBox(Point(7, 35), Size(500, 360));
 	list_threads->onSelectEntry.Connect(&LayerThreads::OnSelectJob, this);
 	list_threads->EnableLocking();
 
-	text_errors	= new Text(i18n->TranslateString("Errors / Warnings:"), Point(7, 25));
+	text_errors	= new Text(i18n->AddColon(i18n->TranslateString("Errors / Warnings")), Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);
 
 	edit_errors	= new EditBox(NIL, Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
@@ -103,8 +103,8 @@ Void BonkEnc::LayerThreads::OnChangeLanguageSettings()
 
 	if (prevVisible) Hide();
 
-	text_progress->SetText(i18n->TranslateString("Progress:"));
-	text_errors->SetText(i18n->TranslateString("Errors / Warnings:"));
+	text_progress->SetText(i18n->AddColon(i18n->TranslateString("Progress")));
+	text_errors->SetText(i18n->AddColon(i18n->TranslateString("Errors / Warnings")));
 
 	edit_errors->SetX(text_errors->GetUnscaledTextWidth() + 14);
 	combo_errors->SetX(text_errors->GetUnscaledTextWidth() + 47);

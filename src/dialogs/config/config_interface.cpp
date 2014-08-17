@@ -23,7 +23,7 @@ BonkEnc::ConfigureInterface::ConfigureInterface()
 
 	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 136));
 
-	text_fields	= new Text(i18n->TranslateString("Columns:"), Point(9, 12));
+	text_fields	= new Text(i18n->AddColon(i18n->TranslateString("Columns")), Point(9, 12));
 
 	list_fields	= new ListBox(Point(16 + text_fields->GetUnscaledTextWidth(), 10), group_joblist->GetSize() - Size(114 + text_fields->GetUnscaledTextWidth(), 20));
 	list_fields->SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);

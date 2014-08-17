@@ -43,8 +43,8 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 
 	group_pattern		= new GroupBox(i18n->TranslateString("Pattern"), Point(7, 11), Size(380, 91));
 
-	text_directory		= new Text(i18n->TranslateString("Start folder").Append(":"), Point(16, 24));
-	text_pattern		= new Text(i18n->TranslateString("Filename pattern").Append(":"), Point(16, 51));
+	text_directory		= new Text(i18n->AddColon(i18n->TranslateString("Start folder")), Point(16, 24));
+	text_pattern		= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(16, 51));
 
 	edit_directory		= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 21), Size(268 - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()), 0));
 
@@ -149,7 +149,7 @@ Void BonkEnc::AddPatternDialog::Browse()
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(i18n->TranslateString("Select the folder to add to the joblist:")));
+	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder to add to the joblist"))));
 	dialog->SetDirName(edit_directory->GetText());
 
 	if (dialog->ShowDialog() == Success())

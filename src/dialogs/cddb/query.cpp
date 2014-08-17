@@ -120,12 +120,12 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	Int	 result;
 
 	prog_status->SetValue(0);
-	text_status->SetText(i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault)).Append("..."));
+	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Connecting to freedb server at").Append(" ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault))));
 
 	cddb.ConnectToServer();
 
 	prog_status->SetValue(20);
-	text_status->SetText(i18n->TranslateString("Requesting CD information").Append("..."));
+	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Requesting CD information")));
 
 	cddb.SetActiveDrive(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 

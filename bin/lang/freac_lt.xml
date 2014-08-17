@@ -31,7 +31,18 @@
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
       <entry id="501" string="%1...">%1...</entry>
-      <entry id="502" string="(%1)">(%1)</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 baitai</entry>
+      <entry id="517" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -44,8 +55,8 @@
       <section name="File">
 	<entry id="1100" string="Add">Pridėti</entry>
 	<entry id="1101" string="Remove">Pašalinti</entry>
-	<entry id="1102" string="Load joblist...">Įkelti darbų sąrašą...</entry>
-	<entry id="1103" string="Save joblist...">Išsaugoti darbų sąrašą...</entry>
+	<entry id="1102" string="Load joblist">Įkelti darbų sąrašą</entry>
+	<entry id="1103" string="Save joblist">Išsaugoti darbų sąrašą</entry>
 	<entry id="1104" string="Clear joblist">Valyti darbų sąrašą</entry>
 	<entry id="1105" string="Exit">Išeiti</entry>
 	<entry id="1106" string="Audio file(s)">Audio failas(ai)</entry>
@@ -56,18 +67,18 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Užklausti CDDB duomenų bazę</entry>
-	<entry id="1201" string="Submit CDDB data...">Perduoti CDDB duomenis...</entry>
+	<entry id="1201" string="Submit CDDB data">Perduoti CDDB duomenis</entry>
 	<entry id="1202" string="Query CDDB database later">Užklausti CDDB duomenų bazę vėliau</entry>
-	<entry id="1203" string="Show queued CDDB entries...">Rodyti užklaustus CDDB įrašus...</entry>
-	<entry id="1204" string="Show queued CDDB queries...">Rodyti užklaustas CDDB užklausas...</entry>
+	<entry id="1203" string="Show queued CDDB entries">Rodyti užklaustus CDDB įrašus</entry>
+	<entry id="1204" string="Show queued CDDB queries">Rodyti užklaustas CDDB užklausas</entry>
 	<entry id="1205" string="Enable CDDB cache">Įjungti CDDB spartinančiąją atmintį</entry>
-	<entry id="1206" string="Manage CDDB cache entries...">Tvarkyti CDDB talpyklos įrašus...</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Tvarkyti CDDB talpyklos įrašus</entry>
 	<entry id="1207" string="Automatic CDDB queries">Automatinės CDDB užklausos</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings...">Bendros nuostatos</entry>
-	<entry id="1301" string="Configure selected encoder...">Konfigūruoti pasirinktą koduotoją...</entry>
+	<entry id="1300" string="General settings">Bendros nuostatos</entry>
+	<entry id="1301" string="Configure selected encoder">Konfigūruoti pasirinktą koduotoją</entry>
 	<entry id="1302" string="Active CD-ROM drive">Aktyvus CD-ROM diskasukis</entry>
       </section>
 
@@ -84,7 +95,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics...">Pagalbos temos...</entry>
+	<entry id="1500" string="Help topics">Pagalbos temos</entry>
 	<entry id="1501" string="Show Tip of the Day">Rodyti dienos patarimą</entry>
 	<entry id="1502" string="Check for updates now">Ieškoti atnaujinimų dabar</entry>
 	<entry id="1503" string="Check for updates at startup">Ieškoti atnaujinimų paleidimo metu</entry>
@@ -99,7 +110,7 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Pašalinti pažymėtą įrašą iš darbų sąrašo</entry>
       <entry id="2003" string="Clear the entire joblist">Išvalyti visą darbų sąrašą</entry>
       <entry id="2004" string="Query CDDB database">Užklausti CDDB duomenų bazę</entry>
-      <entry id="2005" string="Submit CDDB data...">Perduoti CDDB duomenis...</entry>
+      <entry id="2005" string="Submit CDDB data">Perduoti CDDB duomenis</entry>
       <entry id="2006" string="Configure general settings">Konfigūruoti bendrąsias nuostatas</entry>
       <entry id="2007" string="Configure the selected audio encoder">Konfigūruoti pasirinktą audio koduotoją</entry>
       <entry id="2008" string="Start the encoding process">Pradėti kodavimo procesą</entry>
@@ -108,12 +119,12 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file:">Koduojamas failas:</entry>
-      <entry id="3001" string="Time left:">Likęs laiko:</entry>
-      <entry id="3002" string="Selected encoder:">Pasirinktas koduotojas:</entry>
-      <entry id="3003" string="File progress:">Failo progresas:</entry>
-      <entry id="3004" string="Output folder:">Išvesties aplankas:</entry>
-      <entry id="3005" string="%1 file(s) in joblist:">%1 failai(-ų, -s) darbų sąraše:</entry>
+      <entry id="3000" string="Encoding file">Koduojamas failas</entry>
+      <entry id="3001" string="Time left">Likęs laiko</entry>
+      <entry id="3002" string="Selected encoder">Pasirinktas koduotojas</entry>
+      <entry id="3003" string="File progress">Failo progresas</entry>
+      <entry id="3004" string="Output folder">Išvesties aplankas</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 failai(-ų, -s) darbų sąraše</entry>
       <entry id="3006" string="none">nieko</entry>
       <entry id="3007" string="Show title info">Rodyti pavadinimo informaciją</entry>
       <entry id="3008" string="Play">Groti</entry>
@@ -139,29 +150,26 @@
       <entry id="3028" string="first letter upper case">pirmoji raidė didžioji</entry>
       <entry id="3029" string="all lower case">visos mažosios raidės</entry>
       <entry id="3030" string="all upper case">visos didžiosios raidės</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed:">Pasirinkite aplanką, kuriame bus patalpinti koduoti failai:</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Pasirinkite aplanką, kuriame bus patalpinti koduoti failai</entry>
       <entry id="3032" string="Sampling rate">Atrankos tempas</entry>
       <entry id="3033" string="Sample resolution">Rinkinio rezoliucija</entry>
       <entry id="3034" string="Number of samples">Rinkinių kiekis</entry>
       <entry id="3035" string="Channels">Kanalai</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="bit">bit</entry>
-      <entry id="3039" string="min">min</entry>
-      <entry id="3040" string="bytes">baitai</entry>
-      <entry id="3041" string="Length">Trukmė</entry>
-      <entry id="3042" string="File">Failas</entry>
-      <entry id="3043" string="Size">Dydis</entry>
-      <entry id="3044" string="Bitrate">Bitų srautas</entry>
-      <entry id="3045" string="Audio Files">Audio failai</entry>
-      <entry id="3046" string="All Files">Visi failai</entry>
-      <entry id="3047" string="Playlist Files">Grojaraščio failai</entry>
+      <entry id="3038" string="Length">Trukmė</entry>
+      <entry id="3039" string="File">Failas</entry>
+      <entry id="3040" string="Size">Dydis</entry>
+      <entry id="3041" string="Bitrate">Bitų srautas</entry>
+      <entry id="3042" string="Audio Files">Audio failai</entry>
+      <entry id="3043" string="All Files">Visi failai</entry>
+      <entry id="3044" string="Playlist Files">Grojaraščio failai</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Aplankas</entry>
 	<entry id="3101" string="Add folder">Pridėti aplanką</entry>
-	<entry id="3102" string="Choose folder:">Pasirinkite aplanką:</entry>
-	<entry id="3103" string="Select the folder to add to the joblist:">Pasirinkite aplanką, kurį norite pridėti į darbų sąrašą:</entry>
+	<entry id="3102" string="Choose folder">Pasirinkite aplanką</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Pasirinkite aplanką, kurį norite pridėti į darbų sąrašą</entry>
       </section>
 
       <section name="Add by pattern">
@@ -169,14 +177,14 @@
 	<entry id="3201" string="Pattern">Ruošinys</entry>
 	<entry id="3202" string="Start folder">Pradžios aplankas</entry>
 	<entry id="3203" string="Filename pattern">Failo vardo ruošinys</entry>
-	<entry id="3205" string="Select the folder to add to the joblist:">Pasirinkite aplanką, kurį norite pridėti į darbų sąrašą:</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Pasirinkite aplanką, kurį norite pridėti į darbų sąrašą</entry>
       </section>
 
       <section name="Character set"/>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Jūs nepasirinkote takelio!</entry>
-	<entry id="3401" string="No files found matching pattern:">Nerasta failų, atitinkančių ruošinį:</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Nerasta failų, atitinkančių ruošinį: %1</entry>
       </section>
     </section>
 
@@ -211,7 +219,7 @@
 	<entry id="4105" string="No exact matches found">Tikslių atitikmenų nerasta</entry>
 	<entry id="4106" string="Multiple matches found">Rasta kartotinių atitikmenų</entry>
 	<entry id="4107" string="Matches">Atitikmenys</entry>
-	<entry id="4108" string="Select the entry that best fits your CD:">Pasirinkite įraša, labiausiai atitinkantį Jūsų CD:</entry>
+	<entry id="4108" string="Select the entry that best fits your CD">Pasirinkite įraša, labiausiai atitinkantį Jūsų CD</entry>
 	<entry id="4109" string="Would you like to perform this query again later?">Ar norėtumėte dar kartą vykdyti šią užklausą vėliau?</entry>
 	<entry id="4110" string="none">nieko</entry>
 	<entry id="4111" string="Preview">Peržiūra</entry>
@@ -227,12 +235,12 @@
 	<entry id="4202" string="Query">Užklausti</entry>
 	<entry id="4203" string="Query all">Užklausti viską</entry>
 	<entry id="4204" string="Query string">Užklausti sakinį</entry>
-	<entry id="4205" string="CDDB queries to perform:">CDDB užklausos, kurias reikia atlikti:</entry>
+	<entry id="4205" string="CDDB queries to perform">CDDB užklausos, kurias reikia atlikti</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Pašalinti įrašą</entry>
-	<entry id="4301" string="CDDB entries to submit:">CDDB įrašai perdavimui:</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB įrašai perdavimui</entry>
 	<entry id="4302" string="Submit all">Perduoti viską</entry>
 	<entry id="4303" string="CDDB data">CDDB duomenys</entry>
 	<entry id="4304" string="Submit">Perduoti</entry>
@@ -246,7 +254,7 @@
 	<entry id="4400" string="CDDB data">CDDB duomenys</entry>
 	<entry id="4401" string="Update joblist with this information">Atnaujinti darbų sąrašą šia informacija</entry>
 	<entry id="4402" string="Charset">Koduotė</entry>
-	<entry id="4403" string="Downloaded CDDB entries:">Parsisiųsti CDDB įrašai:</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Parsisiųsti CDDB įrašai</entry>
 	<entry id="4404" string="Disc name">Disko vardas</entry>
 	<entry id="4405" string="Preview">Peržiūra</entry>
 	<entry id="4406" string="Remove entry">Pašalinti įrašą</entry>
@@ -266,7 +274,7 @@
 	<entry id="5101" string="Encoder">Koduotojas</entry>
 	<entry id="5102" string="Output folder">Išvesties aplankas</entry>
 	<entry id="5103" string="Browse">Naršyti</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed:">Pasirinkite aplanką, kuriame bus patalpinti koduoti failai:</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Pasirinkite aplanką, kuriame bus patalpinti koduoti failai</entry>
 	<entry id="5105" string="Use input file folder if possible">Naudoti įvesties failo aplanką, jei įmanoma</entry>
 	<entry id="5106" string="Allow overwriting input file">Leisti perrašyti įvesties failą</entry>
 	<entry id="5107" string="Options">Pasirinktys</entry>
@@ -287,19 +295,19 @@
 	<entry id="5203" string="Browse">Naršyti</entry>
 	<entry id="5204" string="Use encoder output folder">Naudoti koduotojo išvesties aplanką</entry>
 	<entry id="5205" string="Filename pattern">Failo vardo ruošinys</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed:">Pasirinkite aplanką, į kurį bus patalpinti grojaraščio failai:</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Pasirinkite aplanką, į kurį bus patalpinti grojaraščio failai</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Įjungti vietinę CDDB</entry>
 	<entry id="5301" string="Enable remote CDDB database">Įjungti nuotolinę CDDB duomenų bazę</entry>
-	<entry id="5302" string="CDDB path:">CDDB aplankas:</entry>
+	<entry id="5302" string="CDDB path">CDDB aplankas</entry>
 	<entry id="5303" string="Browse">Naršyti</entry>
-	<entry id="5304" string="Select the folder of the CDDB database:">Pasirinkite CDDB duomenų bazės aplanką:</entry>
-	<entry id="5305" string="CDDB access mode:">CDDB pasiekimo režimas:</entry>
-	<entry id="5306" string="CDDB server:">CDDB serveris:</entry>
-	<entry id="5307" string="Port:">Portas:</entry>
-	<entry id="5308" string="eMail address:">El. pašto adresas:</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Pasirinkite CDDB duomenų bazės aplanką</entry>
+	<entry id="5305" string="CDDB access mode">CDDB pasiekimo režimas</entry>
+	<entry id="5306" string="CDDB server">CDDB serveris</entry>
+	<entry id="5307" string="Port">Portas</entry>
+	<entry id="5308" string="eMail address">El. pašto adresas</entry>
 	<entry id="5309" string="HTTP settings">HTTP nuostatos</entry>
 	<entry id="5310" string="Proxy settings">Proxy nuostatos</entry>
 	<entry id="5311" string="Options">Pasirinktys</entry>
@@ -311,13 +319,13 @@
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Išplėstinės CDDB nuostatos</entry>
 	  <entry id="5331" string="CGI scripts">CGI scenarijai</entry>
-	  <entry id="5332" string="CDDB query script:">CDDB užklausos scenarijus:</entry>
-	  <entry id="5333" string="CDDB submit script:">CDDB perdavimo scenarijus:</entry>
+	  <entry id="5332" string="CDDB query script">CDDB užklausos scenarijus</entry>
+	  <entry id="5333" string="CDDB submit script">CDDB perdavimo scenarijus</entry>
 	  <entry id="5334" string="no proxy">jokio proxy</entry>
-	  <entry id="5335" string="Proxy type:">Proxy tipas:</entry>
-	  <entry id="5336" string="Proxy server:">Proxy serveris:</entry>
-	  <entry id="5337" string="User name:">Vartotojo vardas:</entry>
-	  <entry id="5338" string="Password:">Slaptažodis:</entry>
+	  <entry id="5335" string="Proxy type">Proxy tipas</entry>
+	  <entry id="5336" string="Proxy server">Proxy serveris</entry>
+	  <entry id="5337" string="User name">Vartotojo vardas</entry>
+	  <entry id="5338" string="Password">Slaptažodis</entry>
 	</section>
 
 	<section name="Errors">
@@ -327,7 +335,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language:">Pasirinkite kalbą:</entry>
+	<entry id="5400" string="Select language">Pasirinkite kalbą</entry>
 	<entry id="5401" string="Edit language file">Redaguoti kalbos failą</entry>
 	<entry id="5402" string="Information">Informacija</entry>
 	<entry id="5403" string="Encoding">Koduotė</entry>
@@ -338,13 +346,13 @@
       <section name="Tags">
 	<entry id="5500" string="Tags">Informacinės žymos</entry>
 	<entry id="5501" string="Tag formats">Žymų kodavimas</entry>
-	<entry id="5502" string="Default comment string:">Numatytasis komentaras:</entry>
+	<entry id="5502" string="Default comment string">Numatytasis komentaras</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Pakeisti esančius komentarus numatytuoju</entry>
 	<entry id="5504" string="Filename pattern">Failo vardo ruošinys</entry>
-	<entry id="5505" string="Encoding:">Koduotė:</entry>
+	<entry id="5505" string="Encoding">Koduotė</entry>
       </section>
 
-      <section name="Interface"/>
+      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -365,7 +373,7 @@
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 palaiko Lame, Ogg Vorbis, FAAC, FLAC&#10;bei Bonk koduotojus. VQF formato koduotoją galite rasti&#10;%1 svetainėje: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 gali naudoti Winamp 2 įvesties įskiepius,&#10;kad palaikyti daugiau failų formatų. Nukopijuokite in_*.dll failus į&#10;BoknEnc/plugins aplanką, kad %1 suprastų šiuos failus.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Naudodamiesi %1, Jūs freedb CD duomenų bazei galite&#10;perduoti įrašus, susidedančius iš Unicode simbolių.&#10;Taigi, jeigu turite kokį nors CD su ne lotynišku atlikėju&#10;ar takelių pavadinimais, su %1 galite lengvai&#10;perduoti freedb duomenų bazei korektiškus įrašus.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kad ištaisyti disko skaitymo problemas, %1 konfigūracijos&#10;lange, skleidėjo nuostatose, Jūs  galite įjungti virpėjimo taisymą.&#10;Jei tai nepadės, bandykite naudoti vieną iš Paranoia režimų.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kad ištaisyti disko skaitymo problemas, %1 konfigūracijos&#10;lange, skleidėjo nuostatose, Jūs galite įjungti virpėjimo taisymą.&#10;Jei tai nepadės, bandykite naudoti vieną iš Paranoia režimų.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Ar turite pasiūlymų kaip pagerinti %1?&#10;Bet kokias įdėjas galite perduoti skiltyje Tracker, esančioje %1&#10;projekto SourceForge puslapyje - %2&#10;arba siųskite el. laišką adresu: %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Jums patinka %1? %1 yra nemokamas, bet Jūs galite&#10;paspartinti vystymąsi paremdami %1 projektą.&#10;Pinigus galite siųsti į %2, naudodamiesi PayPal.&#10;Daugiau informacijos rasite čia:&#10;%3.</entry>
     </section>
@@ -406,12 +414,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Aktyvus CD-ROM diskasukis</entry>
-      <entry id="9001" string="Set drive speed limit:">Nustatyti diskasukio greičio limitą:</entry>
+      <entry id="9001" string="Set drive speed limit">Nustatyti diskasukio greičio limitą</entry>
       <entry id="9002" string="CD information">CD informacija</entry>
       <entry id="9003" string="Read CD Text">Skaityti CD tekstą</entry>
       <entry id="9004" string="Read cdplayer.ini">Skaityti cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Skleidėjo nuostatos</entry>
-      <entry id="9006" string="Activate cdparanoia mode:">Aktyvuoti cdparanoia režimą:</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktyvuoti cdparanoia režimą</entry>
       <entry id="9007" string="Overlap only">Tik uždengimas</entry>
       <entry id="9008" string="No verify">Jokio patvirtinimo</entry>
       <entry id="9009" string="No scratch repair">Jokio įbrežimų taisymo</entry>
@@ -461,16 +469,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Ruošiniai</entry>
-	  <entry id="32101" string="Use preset:">Naudoti ruošinį:</entry>
+	  <entry id="32101" string="Use preset">Naudoti ruošinį</entry>
 	  <entry id="32102" string="Custom settings">Individualūs nustatymai</entry>
 	  <entry id="32103" string="Medium, Fast">Vidutinis, Greitas</entry>
 	  <entry id="32104" string="Standard, Fast">Standartinis, Greitas</entry>
 	  <entry id="32105" string="Extreme, Fast">Ekstremalus, Greitas</entry>
 	  <entry id="32106" string="Bitrate">Bitų srautas</entry>
 	  <entry id="32107" string="Quality">Kokybė</entry>
-	  <entry id="32108" string="Set bitrate:">Nustatyti bitų srautą:</entry>
-	  <entry id="32109" string="Set ratio:">Nustatyti santykį:</entry>
-	  <entry id="32110" string="Set quality:">Nustatyti kokybę:</entry>
+	  <entry id="32108" string="Set bitrate">Nustatyti bitų srautą</entry>
+	  <entry id="32109" string="Set ratio">Nustatyti santykį</entry>
+	  <entry id="32110" string="Set quality">Nustatyti kokybę</entry>
 	  <entry id="32111" string="worse">prastesnė</entry>
 	  <entry id="32112" string="better">geresnė</entry>
 	  <entry id="32113" string="VBR mode">VBR režimas</entry>
@@ -492,13 +500,13 @@
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Force Joint Stereo</entry>
 	  <entry id="32211" string="VBR bitrate range">VBR bitų srauto sritis</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate:">Nustatyti mažiausią VBR bitų srautą:</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate:">Nustatyti didžiausią VBR bitų srautą:</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Nustatyti mažiausią VBR bitų srautą</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Nustatyti didžiausią VBR bitų srautą</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH:">Įjungti ATH</entry>
+	  <entry id="32301" string="Enable ATH">Įjungti ATH</entry>
 	  <entry id="32302" string="Use default setting">Naudoti pradines nuostatas</entry>
 	  <entry id="32303" string="Psycho acoustic model">Psycho akustinis modelis</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Naudoti laikiną maskavimo efektą</entry>
@@ -511,11 +519,11 @@
 	  <entry id="32401" string="auto">auto</entry>
 	  <entry id="32402" string="no resampling">jokio perrinkimo</entry>
 	  <entry id="32403" string="Highpass filter">Highpass filtras</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz):">Nustatyti Highpass dažnį (Hz):</entry>
-	  <entry id="32405" string="Set Highpass width (Hz):">Nustatyti Highpass plotį (Hz):</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Nustatyti Highpass dažnį (Hz)</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Nustatyti Highpass plotį (Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Lowpass filtras</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz):">Nustatyti Lowpass dažnį (Hz):</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz):">Nustatyti Lowpass plotį (Hz):</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Nustatyti Lowpass dažnį (Hz)</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Nustatyti Lowpass plotį (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Įvairios nuostatos</entry>
 	  <entry id="32410" string="Disable all filtering">Išjungti visą filtravimą</entry>
 	</section>
@@ -528,14 +536,14 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Bitų srautas</entry>
 	  <entry id="33201" string="Bitrate / Quality">Bitų srautas / Kokybė</entry>
-	  <entry id="33202" string="Bitrate per channel:">Bitų srautas kanalui</entry>
-	  <entry id="33203" string="Set quality:">Nustatyti kokybę:</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitų srautas kanalui</entry>
+	  <entry id="33203" string="Set quality">Nustatyti kokybę</entry>
 	  <entry id="33204" string="Stereo mode">Stereo režimas</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Leisti Joint Stereo</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Laikinas garsų apipavidalinimas</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Naudoti laikiną garsų apipavidalinimą</entry>
 	  <entry id="33208" string="Maximum bandwidth">Didžiausias juosto plotis</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz):">Didžiausias naudotinas AAC juostos dažnis (Hz):</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Didžiausias naudotinas AAC juostos dažnis (Hz)</entry>
 	</section>
 
 	<section name="Format">
@@ -556,7 +564,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Ruošiniai</entry>
-	  <entry id="34101" string="Use preset:">Naudoti ruošinį:</entry>
+	  <entry id="34101" string="Use preset">Naudoti ruošinį</entry>
 	  <entry id="34102" string="Custom settings">Individualūs nustatymai</entry>
 	  <entry id="34103" string="Fastest encoding">Greičiausias kodavimas</entry>
 	  <entry id="34104" string="Best compression">Geriausias suspaudimas</entry>
@@ -568,14 +576,13 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Naudoti srauto poaibį</entry>
-	  <entry id="34201" string="Blocksize:">Bloko dydis:</entry>
-	  <entry id="34202" string="bytes">baitai</entry>
+	  <entry id="34201" string="Blocksize">Bloko dydis</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Apodization">Apodizacija</entry>
-	  <entry id="34301" string="Apodization function(s):">Apodizacijos funkcija (-os):</entry>
-	  <entry id="34302" string="Note:">Svarbu:</entry>
+	  <entry id="34300" string="Signal processing">Apodizacija</entry>
+	  <entry id="34301" string="Window function(s)">Apodizacijos funkcija (-os)</entry>
+	  <entry id="34302" string="Note">Svarbu</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Galite įvesti keletą funkcijų askirdami jas kabliataškiais.</entry>
 	  <entry id="34304" string="Linear predictor">Linijinis pranašavimas</entry>
 	  <entry id="34305" string="Maximum LPC order">Didžiausias LPC užsakas</entry>
@@ -607,15 +614,16 @@
 	<entry id="36005" string="Write uncompressed WMA files">Nesuspausti WMA failų</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">Automatiškai parinkti formatą pagal nuostatas bei įvesties failo formatą</entry>
 	<entry id="36007" string="Use VBR encoding">Naudoti VBR kodavimą</entry>
-	<entry id="36008" string="Use 2-pass encoding">Naudoti dviejų užėjimų kodavimą</entry>
+	<entry id="36008" string="Quality">Kokybė</entry>
 	<entry id="36009" string="Target bitrate">Numatomas bitų srautas</entry>
+	<entry id="36010" string="Use 2-pass encoding">Naudoti dviejų užėjimų kodavimą</entry>
       </section>
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Bitų srautas</entry>
-	<entry id="37001" string="Bitrate per channel:">Bitų srautas kanalui</entry>
+	<entry id="37001" string="Bitrate per channel">Bitų srautas kanalui</entry>
 	<entry id="37002" string="Preselection">Išankstinis parinkimas</entry>
-	<entry id="37003" string="Number of preselection candidates:">Išankstinio parinkimo kandidatų kiekis</entry>
+	<entry id="37003" string="Number of preselection candidates">Išankstinio parinkimo kandidatų kiekis</entry>
       </section>
 
       <section name="Monkey's Audio"/>
@@ -631,12 +639,12 @@
       <section name="Opus">
 	<entry id="40002" string="Auto">Auto</entry>
 	<entry id="40015" string="Quality">Kokybė</entry>
-	<entry id="40021" string="Options">Pasirinktys</entry>
+	<entry id="40020" string="Options">Pasirinktys</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format:">Failo formatas:</entry>
-	<entry id="41002" string="Audio format:">Audio formatas:</entry>
+	<entry id="41001" string="File format">Failo formatas</entry>
+	<entry id="41002" string="Audio format">Audio formatas</entry>
 	<entry id="41003" string="mono">mono</entry>
       </section>
     </section>

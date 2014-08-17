@@ -46,7 +46,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	check_updateJoblist->SetWidth(check_updateJoblist->GetUnscaledTextWidth() + 21);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
-	text_entries	= new Text(i18n->TranslateString("Downloaded CDDB entries:"), Point(7, 10));
+	text_entries	= new Text(i18n->AddColon(i18n->TranslateString("Downloaded CDDB entries")), Point(7, 10));
 
 	list_entries	= new ListBox(Point(7, 29), Size(261, 213));
 	list_entries->AddTab(i18n->TranslateString("Disc name"), 0);
@@ -60,12 +60,12 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
 	}
 
-	text_preview	= new Text(i18n->TranslateString("Preview").Append(":"), Point(276, 10));
+	text_preview	= new Text(i18n->AddColon(i18n->TranslateString("Preview")), Point(276, 10));
 
 	edit_preview	= new MultiEdit(NIL, Point(276, 29), Size(261, 186), 0);
 	edit_preview->Deactivate();
 
-	text_charset	= new Text(i18n->TranslateString("Charset").Append(":"), Point(276, 226));
+	text_charset	= new Text(i18n->AddColon(i18n->TranslateString("Charset")), Point(276, 226));
 
 	list_charset	= new List();
 	list_charset->AddEntry("CP1251");
