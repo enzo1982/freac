@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>How to ...? - fre:ac User Guide</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Nola ...? - fre:ac Erabiltzaile Gida</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>fre:ac ezarpena eta ezaugarri berezien gida</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Edukiak</h4>
+		<blockquote>
+		  <p><a href="#anchor_pat">Nola erabili irteera izen ereduak fre:ac-n?</a></p>
+		  <p><a href="#anchor_tra">Nola gehitu itzulpen berri bat fre:ac-ra?</a></p>
+		  <p><a href="#anchor_rem">Nola kendu fre:ac nire ordenagailutik?</a></p>
+		</blockquote>
+		<h4 id="anchor_pat">Nola erabili irteera izen ereduak fre:ac-n?</h4>
+		<blockquote>
+		  <p>Irteera agiri izen eredua itxurapen elkarrizketako <b>Kodeatzailea</b> orrialdean itxuratu. Ezker-barrak
+		    erabili ditzakezu zuzenbideak eta markatzaileak adierazteko meta argibideei buruz.
+			Hurrengo markatzaileak daude eskuragarri:</p>
+		  <ul>
+		    <li><b>&lt;artist&gt;</b> - Abestiaren artista</li>
+		    <li><b>&lt;title&gt;</b> - Abestiaren izenburua</li>
+		    <li><b>&lt;album&gt;</b> - Bildumaren izenburua</li>
+		    <li><b>&lt;track&gt;</b> - Abestiaren bide zenbakia</li>
+		    <li><b>&lt;genre&gt;</b> - Abesti mota</li>
+		    <li><b>&lt;year&gt;</b> - Abestia argitaratutako urtea</li>
+		  </ul>
+		  <p>Gaineko markatzaileak abesti eta bildumaren argibideei buruzkoak dira. Hurrengo markatzailak irteera agiriaren mota zehazten dute:</p>
+		  <ul>
+		    <li><b>&lt;filetype&gt;</b> - Irteera agiriaren mota</li>
+		  </ul>
+		  <p>Markatzaile honen erabilpen arrunt bat sarri heuskarri ezberdinetan kodeatzen baduzu izan daiteke
+		    (adib. FLAC artxibatzeko eta M4A zure mugikorreko irakurgailurako)
+		    eta kodeatutako agiriak zuzenbide zuhaitz ezberdinetan edukitzea nahi badituzu.</p>
+		  <p>Gainekoez gain beste bi markatzaile daude fre:ac-en kodeatzen hasita dagoen agiriaren
+		    jatorrizko agiri izenari buruzkoak:</p>
+		  <ul>
+		    <li><b>&lt;filename&gt;</b> - Sarrera agiriaren agiri izena</li>
+		    <li><b>&lt;directory&gt;</b> - Sarrera agiria dagoen zuzenbidea</li>
+		  </ul>
+		  <p><b>&lt;directory&gt;</b> eredua berezia da eta aldatu ere egin dezakezu bi zenbakizko argumentu bat erabiliz.
+		    Erabili dezakezu <b>&lt;directory+n&gt;</b> edo <b>&lt;directory+n(m)&gt;</b> bezala. Adierazpen honetan, <b>n</b>-k
+		    hasieratik kendu behar diren helburuko osagai zenbatekoa adierazten du. <b>m</b>-k gainontzekotik erabili behar diren
+		    osagai zenbatekoa adierazten du. <b>(m)</b> zatia gabe hasieratik <b>n</b> osagai kendu ondoren helburuan
+			gelditzen diren osagai guztiak erabiliko dira. <b>&lt;directory&gt;</b> argumenturik gabe ezartzen bada helburu osoa erabiliko du.<p>
+		  <p>Hortaz nola erabili hau praktikan? Kontuan hartzen badugu zure bilduma honela antolatua duzula:</p>
+		  <blockquote>
+		    <p>C:\Musika\[beste irizpide bat]\[artist]\[album]\[track] - [title]</p>
+		  </blockquote>
+		  <p>Badaiteke <b>C:\Musika\Gogokoenak\Starsailor\Silence is Easy\01 - Music was Saved.flac</b> izeneko agiri izatea.</p>
+		  <p>Orain esan dezagun zenbait musika agiri kodeatzea nahi dituzula zure eramangarri irakurgailuan erabiltzeko eta <b>C:\Kodeatuta\</b>
+		    zuzenbidean jartzea.
+		    Zure <b>[beste irizpide bat]</b> eremuari heusteko, <b>&lt;directory&gt;</b> eredua erabili behar duzu.
+		    Zure kodeatzailearen irteera zuzenbidea <b>C:\Kodeatuta\</b> bada, zure agirizen eredu osoa honela ikusiko da:</p>
+		  <blockquote>
+		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+		  </blockquote>
+		  <p>Honek lehen aipaturiko agiria <b>C:\Kodeatuta\Gogokoenak\Starsailor - Silence is Easy\Starsailor - Silence
+		    is Easy - 01 - Music was Saved.m4a</b>-ra kodeatuko du.</p>
+		</blockquote>
+		<h4 id="anchor_tra">Nola gehitu itzulpen berri bat fre:ac-ra?</h4>
+		<blockquote>
+		  <p>Mesedez erabili fre:ac banaketan barneratzen den <b>smooth Translator</b> tresna eta ireki badagoen
+		    itzulpen agiri bat (<b>freac/lang</b> zuzenbidean aurkitzen dira). Orduan aldatu hizkuntza ezarpenak
+		    sortzea nahi duzun itzulpena isladatu dezan eta hasi banakako idazki kateak itzultzen. Gorde zure itzulpena
+		    agiri berri bat bezala eredu hau jarraituz: <b>freac_??.xml</b> (ordeztu ?? zure hizkuntza kodearekin), berrabiarazi fre:ac
+		    eta saiatu itzulpen berria hautatzen itxurapen elkarrizketan.</p>
+		  <p>Mesedez aurkeztu zure itzulpena hemen: <a href="mailto:translations@freac.org">translations@freac.org</a>, horrela banaketa
+		  ofizialean barneratu ahalko da.</p>
+		</blockquote>
+		<h4 id="anchor_rem">Nola kendu fre:ac nire ordenagailutik?</h4>
+		<blockquote>
+		  <p>fre:ac-ren bertsio berrienak <b>Hasiera</b> menutik exekutatu dezakezun
+		  desinstalatzaile batekin datoz.</p>
+		  <p>Hasiera menuko multzoa ezabatzen baduzu edo ezinezkoa bazaizu aurkitzea, soberan nahikoa da 
+		    aplikazioaren zuzenbidea ezabatzea fre:ac kentzeko. fre:ac-ek ez du inolako Windows erregistro sarrerarik sortzen
+		    ezta osagai aktiborik biltegiratzen aplikazioaren ezarpenaren zuzenbidetik kanpo.</p>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyrighta (C) 2006 Joseph Nahmias<br/>
+		Copyrighta (C) 2007-2014 fre:ac egitasmoa<br/>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

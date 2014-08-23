@@ -36,7 +36,9 @@ Geschichte
 
 	Version 1.0.23 (August 2014)
 
+		- Sprachunterstützung für Basikisch hinzugefügt
 		- Chinesische (traditionell) und tschechische Übersetzungen aktualisiert
+		- Baskische Anleitung hinzugefügt
 		- Zusätzliche, von Winamp 5.6 definierte Genres hinzugefügt
 		- Das Hauptfenster wird beim Drücken von Escape nicht mehr geschlossen
 		- Problem behoben, durch das der Drag & Drop-Zielbereich nicht mit der Jobliste übereinstimmte
@@ -87,8 +89,8 @@ Geschichte
 
 	Version 1.0.20a (März 2012)
 
-		- fixed unintended dependency on Intel runtime libraries
-		- fixed bogus error messages on AMD CPUs
+		- Unbeasichtigte Abhängigkeit zu Intel Laufzeitbibliotheken entfernt
+		- Falsche Fehlermeldungen mit AMD CPUs behoben
 
 	Version 1.0.20 (März 2012)
 
@@ -450,7 +452,8 @@ Besonderen Dank
 			   Ilan Tsmeret (Hebräisch),
 			   Eman Ali Fhoula (Arabisch),
 			   Martin Deyanov (Bulgarisch),
-			   Cois Wiid (Afrikaans)
+			   Cois Wiid (Afrikaans),
+			   Xabier Aramendi (Baskisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC-Kodierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
