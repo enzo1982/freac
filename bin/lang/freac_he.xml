@@ -110,8 +110,6 @@
     <entry id="111" string="Set bitrate:">קבע קצב ביטים:</entry>
     <entry id="112" string="Set ratio:">יחס:</entry>
     <entry id="113" string="Set quality:">הגדר איכות:</entry>
-    <entry id="114" string="worse">worse</entry>
-    <entry id="115" string="better">mejor</entry>
     <entry id="116" string="Auto">אוטומטי</entry>
     <entry id="117" string="Stereo">Stereo</entry>
     <entry id="118" string="Joint Stereo">ערוצי Stereo ממוזגים</entry>
@@ -208,7 +206,7 @@
     <entry id="331" string="Disc name">שם דיסק</entry>
     <entry id="336" string="Password:">סיסמה:</entry>
     <entry id="337" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
-    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?&#10;</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?</entry>
     <entry id="340" string="Playlists">רשימת השמעה</entry>
     <entry id="341" string="Create playlists">צור רשימת השמעה</entry>
     <entry id="345" string="Data track">דיסק מידע</entry>

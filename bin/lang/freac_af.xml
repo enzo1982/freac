@@ -409,8 +409,8 @@
     <entry id="405" string="Set drive speed limit:">Stel aandrywerspoedlimiet</entry>
     <entry id="406" string="Support this project">Help hierdie projek</entry>
     <entry id="407" string="Please support this project!">Help asseblief hierdie projek!</entry>
-    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:&#10;&#10;&#10;&#10;&#10;&#10;&#10;</entry>
-    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.&#10;&#10;Skryf asseblief aan %1 as jy graag 'n donasie wil maak via elektroniese oordrag,&#10;of 'n tjek wil pos, of geld per pos wil stuur.</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.&#10;&#10;Skryf asseblief aan %1 as jy graag 'n donasie wil maak via&#10;elektroniese oordrag, of 'n tjek wil pos, of geld per pos wil stuur.</entry>
     <entry id="410" string="usd">usd</entry>
     <entry id="411" string="en">en</entry>
     <entry id="412" string="Thank you very much!">Baie dankie!</entry>
