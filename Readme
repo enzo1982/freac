@@ -40,6 +40,7 @@ History
 		- added Basque user guide
 		- added additional genres as defined by Winamp 5.6
 		- the main window is no longer closed when pressing escape
+		- fixed crash when writing cover art to WMA tags
 		- fixed drag & drop target area not matching joblist
 
 	Version 1.0.22 (July 2014)

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -131,9 +131,9 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 
 			metadata.Add(picture);
 
+			if (picInfo->mime != NIL)	 ex_FLAC__metadata_object_picture_set_mime_type(picture, picInfo->mime, true);
 			if (picInfo->description != NIL) ex_FLAC__metadata_object_picture_set_description(picture, (FLAC__byte *) picInfo->description.ConvertTo("UTF-8"), true);
 
-			ex_FLAC__metadata_object_picture_set_mime_type(picture, picInfo->mime, true);
 			ex_FLAC__metadata_object_picture_set_data(picture, picInfo->data, picInfo->data.Size(), true);
 
 			picture->data.picture.type = (FLAC__StreamMetadata_Picture_Type) picInfo->type;

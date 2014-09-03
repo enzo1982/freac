@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -184,21 +184,30 @@ Bool BonkEnc::FilterOutWMA::Deactivate()
 				{
 					foreach (const Picture *picInfo, format->pictures)
 					{
-						WM_PICTURE	 picture;
+						WM_PICTURE	 picture = { 0 };
 
-						picture.pwszMIMEType	= new WCHAR [picInfo->mime.Length() + 1];
-						picture.bPictureType	= picInfo->type;
-						picture.pwszDescription	= new WCHAR [picInfo->description.Length() + 1];
-						picture.dwDataLen	= picInfo->data.Size();
-						picture.pbData		= (BYTE *) (UnsignedByte *) picInfo->data;
+						picture.bPictureType = picInfo->type;
+						picture.dwDataLen    = picInfo->data.Size();
+						picture.pbData	     = (BYTE *) (UnsignedByte *) picInfo->data;
 
-						wcsncpy(picture.pwszMIMEType, picInfo->mime, picInfo->mime.Length() + 1);
-						wcsncpy(picture.pwszDescription, picInfo->description, picInfo->description.Length() + 1);
+						if (picInfo->mime != NIL)
+						{
+							picture.pwszMIMEType = new WCHAR [picInfo->mime.Length() + 1];
+
+							wcsncpy(picture.pwszMIMEType, picInfo->mime, picInfo->mime.Length() + 1);
+						}
+
+						if (picInfo->description != NIL)
+						{
+							picture.pwszDescription = new WCHAR [picInfo->description.Length() + 1];
+
+							wcsncpy(picture.pwszDescription, picInfo->description, picInfo->description.Length() + 1);
+						}
 
 						hr = pHeaderInfo->AddAttribute(0, g_wszWMPicture, NIL, WMT_TYPE_BINARY, 0, (BYTE *) &picture, sizeof(WM_PICTURE));
 
-						delete [] picture.pwszMIMEType;
-						delete [] picture.pwszDescription;
+						if (picInfo->mime != NIL)	 delete [] picture.pwszMIMEType;
+						if (picInfo->description != NIL) delete [] picture.pwszDescription;
 					}
 				}
 

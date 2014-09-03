@@ -41,6 +41,7 @@ Geschichte
 		- Baskische Anleitung hinzugefügt
 		- Zusätzliche, von Winamp 5.6 definierte Genres hinzugefügt
 		- Das Hauptfenster wird beim Drücken von Escape nicht mehr geschlossen
+		- Absturz beim Schreiben von Coverbildern in WMA-Tags behoben
 		- Problem behoben, durch das der Drag & Drop-Zielbereich nicht mit der Jobliste übereinstimmte
 
 	Version 1.0.22 (Juli 2014)
