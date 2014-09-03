@@ -33,9 +33,9 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.23 (August 2014)
+	Version 1.0.23 (September 2014)
 
-		- added Basque language support
+		- added Basque and Serbian (Cyrillic) language support
 		- updated Chinese (traditional) and Czech translations
 		- added Basque user guide
 		- added additional genres as defined by Winamp 5.6
