@@ -14,7 +14,10 @@
     <entry id="100" string="OK">OK</entry>
     <entry id="101" string="Cancel">Avbryt</entry>
     <entry id="102" string="Close">Stäng</entry>
+
     <entry id="200" string="Error">Fel</entry>
+    <entry id="202" string="Info">Information</entry>
+
     <entry id="300" string="Artist">Artist</entry>
     <entry id="301" string="Title">Titel</entry>
     <entry id="302" string="Album">Album</entry>
@@ -22,6 +25,7 @@
     <entry id="304" string="Genre">Genre</entry>
     <entry id="305" string="Comment">Kommentar</entry>
     <entry id="306" string="Year">År</entry>
+
     <entry id="350" string="unknown artist">okänd artist</entry>
     <entry id="351" string="unknown title">okänd titel</entry>
     <entry id="352" string="unknown album">okänt album</entry>
@@ -212,15 +216,14 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB-sökning</entry>
-	<entry id="4101" string="Info">Information</entry>
-	<entry id="4102" string="No freedb entry for this disk.">Det finns ingen freedb-post för denna skiva.</entry>
-	<entry id="4103" string="Connecting to freedb server at">Ansluter till freedb-server på</entry>
-	<entry id="4104" string="Requesting CD information">Begär CD-information</entry>
-	<entry id="4105" string="No exact matches found">Inga exakta träffar hittades</entry>
-	<entry id="4106" string="Multiple matches found">Flera träffar hittades</entry>
-	<entry id="4107" string="Matches">Träffar</entry>
-	<entry id="4108" string="Select the entry that best fits your CD">Välj den post som bäst beskriver din CD-skiva</entry>
-	<entry id="4109" string="Would you like to perform this query again later?">Vill du utföra denna sökning igen senare?</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Det finns ingen freedb-post för denna skiva.</entry>
+	<entry id="4102" string="Connecting to freedb server at">Ansluter till freedb-server på</entry>
+	<entry id="4103" string="Requesting CD information">Begär CD-information</entry>
+	<entry id="4104" string="No exact matches found">Inga exakta träffar hittades</entry>
+	<entry id="4105" string="Multiple matches found">Flera träffar hittades</entry>
+	<entry id="4106" string="Matches">Träffar</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Välj den post som bäst beskriver din CD-skiva</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Vill du utföra denna sökning igen senare?</entry>
 	<entry id="4110" string="none">ingen</entry>
 	<entry id="4111" string="Preview">Förhandsvisning</entry>
 

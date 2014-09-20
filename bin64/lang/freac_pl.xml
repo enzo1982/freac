@@ -14,7 +14,10 @@
     <entry id="100" string="OK">Akceptuj</entry>
     <entry id="101" string="Cancel">Anuluj</entry>
     <entry id="102" string="Close">Zamknij</entry>
+
     <entry id="200" string="Error">Błąd</entry>
+    <entry id="202" string="Info">Informacje</entry>
+
     <entry id="300" string="Artist">Artysta</entry>
     <entry id="301" string="Title">Tytuł</entry>
     <entry id="302" string="Album">Album</entry>
@@ -22,6 +25,7 @@
     <entry id="304" string="Genre">Rodzaj</entry>
     <entry id="305" string="Comment">Komentarz</entry>
     <entry id="306" string="Year">Rok</entry>
+
     <entry id="350" string="unknown artist">nieznany artysta</entry>
     <entry id="351" string="unknown title">nieznany tytuł</entry>
     <entry id="352" string="unknown album">nieznany album</entry>
@@ -212,15 +216,14 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Zapytanie CDDB</entry>
-	<entry id="4101" string="Info">Informacje</entry>
-	<entry id="4102" string="No freedb entry for this disk.">Baza freedb nie zawiera danych tej płyty CD.</entry>
-	<entry id="4103" string="Connecting to freedb server at">Łączenie z serwerem freedb</entry>
-	<entry id="4104" string="Requesting CD information">Wysyłanie zapytania o dane płyty CD</entry>
-	<entry id="4105" string="No exact matches found">Brak danych pasujących do wzorca</entry>
-	<entry id="4106" string="Multiple matches found">Znaleziono kilka wpisów pasujących do wzorca</entry>
-	<entry id="4107" string="Matches">Znalezione wpisy</entry>
-	<entry id="4108" string="Select the entry that best fits your CD">Wybierz wpis najlepiej odpowiadający płycie CD</entry>
-	<entry id="4109" string="Would you like to perform this query again later?">Chcesz ponowić wysłanie tych zapytań później?</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Baza freedb nie zawiera danych tej płyty CD.</entry>
+	<entry id="4102" string="Connecting to freedb server at">Łączenie z serwerem freedb</entry>
+	<entry id="4103" string="Requesting CD information">Wysyłanie zapytania o dane płyty CD</entry>
+	<entry id="4104" string="No exact matches found">Brak danych pasujących do wzorca</entry>
+	<entry id="4105" string="Multiple matches found">Znaleziono kilka wpisów pasujących do wzorca</entry>
+	<entry id="4106" string="Matches">Znalezione wpisy</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Wybierz wpis najlepiej odpowiadający płycie CD</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Chcesz ponowić wysłanie tych zapytań później?</entry>
 	<entry id="4110" string="none">brak</entry>
 	<entry id="4111" string="Preview">Podgląd</entry>
 

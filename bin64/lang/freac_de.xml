@@ -14,7 +14,11 @@
     <entry id="100" string="OK">OK</entry>
     <entry id="101" string="Cancel">Abbrechen</entry>
     <entry id="102" string="Close">Schließen</entry>
+
     <entry id="200" string="Error">Fehler</entry>
+    <entry id="201" string="Warning">Warnung</entry>
+    <entry id="202" string="Info">Info</entry>
+
     <entry id="300" string="Artist">Künstler</entry>
     <entry id="301" string="Title">Titel</entry>
     <entry id="302" string="Album">Album</entry>
@@ -26,6 +30,7 @@
     <entry id="308" string="Rating">Bewertung</entry>
     <entry id="309" string="File name">Dateiname</entry>
     <entry id="310" string="File type">Dateityp</entry>
+
     <entry id="350" string="unknown artist">unbekannter Künstler</entry>
     <entry id="351" string="unknown title">unbekannter Titel</entry>
     <entry id="352" string="unknown album">unbekanntes Album</entry>
@@ -210,6 +215,7 @@
       <entry id="3502" string="Errors / Warnings">Fehler / Warnungen</entry>
       <entry id="3503" string="Details">Details</entry>
       <entry id="3504" string="Error details">Fehlerdetails</entry>
+      <entry id="3505" string="Time left">Restzeit</entry>
     </section>
 
     <section name="CDDB">
@@ -236,15 +242,15 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB-Abfrage</entry>
-	<entry id="4101" string="Info">Info</entry>
-	<entry id="4102" string="No freedb entry for this disk.">Kein freedb-Eintrag für diese CD.</entry>
-	<entry id="4103" string="Connecting to freedb server at">Verbinde mit freedb-Server an</entry>
-	<entry id="4104" string="Requesting CD information">Abfrage der CD-Informationen</entry>
-	<entry id="4105" string="No exact matches found">Keine genauen Übereinstimmungen gefunden</entry>
-	<entry id="4106" string="Multiple matches found">Mehrere Übereinstimmungen gefunden</entry>
-	<entry id="4107" string="Matches">Übereinstimmungen</entry>
-	<entry id="4108" string="Select the entry that best fits your CD">Wählen sie den Eintrag, der am besten zu ihrer CD passt</entry>
-	<entry id="4109" string="Would you like to perform this query again later?">Möchten Sie diese Abfrage später erneut durchführen?</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Kein freedb-Eintrag für diese CD.</entry>
+	<entry id="4102" string="Connecting to freedb server at">Verbinde mit freedb-Server an</entry>
+	<entry id="4103" string="Requesting CD information">Abfrage der CD-Informationen</entry>
+	<entry id="4104" string="No exact matches found">Keine genauen Übereinstimmungen gefunden</entry>
+	<entry id="4105" string="Multiple matches found">Mehrere Übereinstimmungen gefunden</entry>
+	<entry id="4106" string="Matches">Übereinstimmungen</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Wählen sie den Eintrag, der am besten zu ihrer CD passt</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Möchten Sie diese Abfrage später erneut durchführen?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">Möchten Sie die verbleibenden Abfragen später erneut durchführen?</entry>
 	<entry id="4110" string="none">keine</entry>
 	<entry id="4111" string="Preview">Vorschau</entry>
 	<entry id="4112" string="loading preview">lade Vorschau</entry>
@@ -450,15 +456,10 @@
       </section>
 
       <section name="Resources">
-	<entry id="5700" string="CPU">Prozessor</entry>
-	<entry id="5701" string="Enable multi core processing">Multicore-Verarbeitung aktivieren</entry>
-	<entry id="5702" string="Number of threads to use">Anzahl zu verwendender Threads</entry>
+	<entry id="5700" string="Parallel processing">Parallelverarbeitung</entry>
+	<entry id="5701" string="Enable parallel processing (experimental)">Parallelverarbeitung aktivieren (experimentell)</entry>
+	<entry id="5702" string="Number of conversion threads">Anzahl an Konvertierungsthreads</entry>
 	<entry id="5703" string="auto">automatisch</entry>
-
-	<section name="Messages">
-	  <entry id="5750" string="Note">Hinweis</entry>
-	  <entry id="5750" string="You need to restart %1 for CPU setting changes to take effect.">Sie müssen %1 neu starten, um die geänderten CPU-Einstellungen zu aktivieren.</entry>
-	</section>
       </section>
     </section>
 

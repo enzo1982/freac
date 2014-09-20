@@ -14,7 +14,10 @@
     <entry id="100" string="OK">Ok</entry>
     <entry id="101" string="Cancel">Avbryt</entry>
     <entry id="102" string="Close">Lukk</entry>
+
     <entry id="200" string="Error">Feil</entry>
+    <entry id="202" string="Info">Info</entry>
+
     <entry id="300" string="Artist">Artist</entry>
     <entry id="301" string="Title">Tittel</entry>
     <entry id="302" string="Album">Album</entry>
@@ -22,6 +25,7 @@
     <entry id="304" string="Genre">Sjanger</entry>
     <entry id="305" string="Comment">Kommentar</entry>
     <entry id="306" string="Year">År</entry>
+
     <entry id="350" string="unknown artist">Ukjent artist</entry>
     <entry id="351" string="unknown title">Ukjent tittel</entry>
     <entry id="352" string="unknown album">Ukjent album</entry>
@@ -212,15 +216,14 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB-forespørsel</entry>
-	<entry id="4101" string="Info">Info</entry>
-	<entry id="4102" string="No freedb entry for this disk.">Ingen freedb-oppføring for denne CDen.</entry>
-	<entry id="4103" string="Connecting to freedb server at">Kontakter freedb-servern på</entry>
-	<entry id="4104" string="Requesting CD information">Etterspørr CD-informasjon</entry>
-	<entry id="4105" string="No exact matches found">Ingen eksakte treff funnet</entry>
-	<entry id="4106" string="Multiple matches found">Flere treff funnet</entry>
-	<entry id="4107" string="Matches">Treff</entry>
-	<entry id="4108" string="Select the entry that best fits your CD">Velgt den oppføringen som passer best til din CD</entry>
-	<entry id="4109" string="Would you like to perform this query again later?">Ønsker du å forespørre igjen senere?</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Ingen freedb-oppføring for denne CDen.</entry>
+	<entry id="4102" string="Connecting to freedb server at">Kontakter freedb-servern på</entry>
+	<entry id="4103" string="Requesting CD information">Etterspørr CD-informasjon</entry>
+	<entry id="4104" string="No exact matches found">Ingen eksakte treff funnet</entry>
+	<entry id="4105" string="Multiple matches found">Flere treff funnet</entry>
+	<entry id="4106" string="Matches">Treff</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Velgt den oppføringen som passer best til din CD</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Ønsker du å forespørre igjen senere?</entry>
 	<entry id="4110" string="none">Ingen</entry>
 	<entry id="4111" string="Preview">Forhåndsvisning</entry>
 

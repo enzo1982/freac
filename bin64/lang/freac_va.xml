@@ -14,7 +14,10 @@
     <entry id="100" string="OK">Acceptar</entry>
     <entry id="101" string="Cancel">Cancelar</entry>
     <entry id="102" string="Close">Tancar</entry>
+
     <entry id="200" string="Error">Erro</entry>
+    <entry id="202" string="Info">Info</entry>
+
     <entry id="300" string="Artist">Artiste</entry>
     <entry id="301" string="Title">Titul</entry>
     <entry id="302" string="Album">Album</entry>
@@ -22,6 +25,7 @@
     <entry id="304" string="Genre">Genero</entry>
     <entry id="305" string="Comment">Comentari</entry>
     <entry id="306" string="Year">Any</entry>
+
     <entry id="350" string="unknown artist">artiste desconegut</entry>
     <entry id="351" string="unknown title">titul desconegut</entry>
     <entry id="352" string="unknown album">Album desconegut</entry>
@@ -211,15 +215,14 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Consulta a CDDB</entry>
-	<entry id="4101" string="Info">Info</entry>
-	<entry id="4102" string="No freedb entry for this disk.">No hi ha una entrada freedb d'este CD</entry>
-	<entry id="4103" string="Connecting to freedb server at">Conectant al servidor freedb a</entry>
-	<entry id="4104" string="Requesting CD information">Demanant informacio del CD</entry>
-	<entry id="4105" string="No exact matches found">Sense trobar resultats exactes</entry>
-	<entry id="4106" string="Multiple matches found">S'han trobat varios resultats</entry>
-	<entry id="4107" string="Matches">Resultats</entry>
-	<entry id="4108" string="Select the entry that best fits your CD">Seleccione el registre que coincidix en el teu CD</entry>
-	<entry id="4109" string="Would you like to perform this query again later?">¿Desija realisar esta consulta un atra vegada mes tart?</entry>
+	<entry id="4101" string="No freedb entry for this disk.">No hi ha una entrada freedb d'este CD</entry>
+	<entry id="4102" string="Connecting to freedb server at">Conectant al servidor freedb a</entry>
+	<entry id="4103" string="Requesting CD information">Demanant informacio del CD</entry>
+	<entry id="4104" string="No exact matches found">Sense trobar resultats exactes</entry>
+	<entry id="4105" string="Multiple matches found">S'han trobat varios resultats</entry>
+	<entry id="4106" string="Matches">Resultats</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Seleccione el registre que coincidix en el teu CD</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">¿Desija realisar esta consulta un atra vegada mes tart?</entry>
 	<entry id="4110" string="none">cap</entry>
 	<entry id="4111" string="Preview">Vista previa</entry>
 

@@ -14,7 +14,10 @@
     <entry id="100" string="OK">OK</entry>
     <entry id="101" string="Cancel">キャンセル</entry>
     <entry id="102" string="Close">閉じる</entry>
+
     <entry id="200" string="Error">エラー</entry>
+    <entry id="202" string="Info">情報</entry>
+
     <entry id="300" string="Artist">アーティスト</entry>
     <entry id="301" string="Title">タイトル</entry>
     <entry id="302" string="Album">アルバム</entry>
@@ -25,6 +28,7 @@
     <entry id="307" string="Disc">ディスク</entry>
     <entry id="309" string="File name">ファイル名</entry>
     <entry id="310" string="File type">ファイルタイプ</entry>
+
     <entry id="350" string="unknown artist">アーティスト不明</entry>
     <entry id="351" string="unknown title">タイトル不明</entry>
     <entry id="352" string="unknown album">アルバム不明</entry>
@@ -197,6 +201,7 @@
     <section name="Jobs">
       <entry id="3500" string="Jobs">ジョブ</entry>
       <entry id="3501" string="Progress">処理状況</entry>
+      <entry id="3505" string="Time left">残り時間</entry>
     </section>
 
     <section name="CDDB">
@@ -211,9 +216,9 @@
 	<entry id="4006" string="Successfully read CD!">CD の読み取りに成功しました!</entry>
 	<entry id="4007" string="Save entry">項目を保存</entry>
 	<entry id="4008" string="Various artists">Various artists</entry>
-	<entry id="4009" string="Data track">データ トラック</entry>
-	<entry id="4010" string="Submit to online database later">後でオンライン データベースに送信</entry>
-	<entry id="4011" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
+	<entry id="4010" string="Data track">データ トラック</entry>
+	<entry id="4011" string="Submit to online database later">後でオンライン データベースに送信</entry>
+	<entry id="4012" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
 
 	<section name="Errors">
 	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">freedb サーバ接続の試行中に問題が発生しました。</entry>
@@ -223,17 +228,16 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB 問い合わせ</entry>
-	<entry id="4101" string="Info">情報</entry>
-	<entry id="4102" string="No freedb entry for this disk.">このディスクの情報は freedb にありません。</entry>
-	<entry id="4103" string="Connecting to freedb server at">freedb サーバに接続しています</entry>
-	<entry id="4104" string="Requesting CD information">CD 情報をリクエスト中</entry>
-	<entry id="4105" string="No exact matches found">一致する物がありません</entry>
-	<entry id="4106" string="Multiple matches found">複数の物が一致</entry>
-	<entry id="4107" string="Matches">一致</entry>
-	<entry id="4108" string="Select the entry that best fits your CD">この CD に最適な項目を選択</entry>
-	<entry id="4109" string="Would you like to perform this query again later?">この問い合わせを後で再度実行しますか？</entry>
-	<entry id="4110" string="none">なし</entry>
-	<entry id="4111" string="Preview">プレビュー</entry>
+	<entry id="4101" string="No freedb entry for this disk.">このディスクの情報は freedb にありません。</entry>
+	<entry id="4102" string="Connecting to freedb server at">freedb サーバに接続しています</entry>
+	<entry id="4103" string="Requesting CD information">CD 情報をリクエスト中</entry>
+	<entry id="4104" string="No exact matches found">一致する物がありません</entry>
+	<entry id="4105" string="Multiple matches found">複数の物が一致</entry>
+	<entry id="4106" string="Matches">一致</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">この CD に最適な項目を選択</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">この問い合わせを後で再度実行しますか？</entry>
+	<entry id="4109" string="none">なし</entry>
+	<entry id="4110" string="Preview">プレビュー</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">freedb サーバ接続の試行中に問題が発生しました。</entry>
