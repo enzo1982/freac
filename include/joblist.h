@@ -41,6 +41,7 @@ namespace BonkEnc
 			Void				 AddHeaderTabs();
 			Void				 UpdateTextLine();
 
+			Bool				 SortsAfter(const String &, const String &) const;
 			String				 GetEntryText(const BoCA::Track &) const;
 		public:
 							 JobList(const Point &, const Size &);
@@ -84,6 +85,8 @@ namespace BonkEnc
 			Void				 OnSelectEntry();
 			Void				 OnMarkEntry(ListEntry *);
 
+			Void				 OnClickTab(Int);
+
 			Void				 OnComponentSelectTrack(const BoCA::Track &);
 
 			Void				 OnComponentMarkTrack(const BoCA::Track &);
@@ -91,6 +94,7 @@ namespace BonkEnc
 
 			Void				 OnChangeConfigurationSettings();
 			Void				 OnChangeLanguageSettings();
+			Void				 OnChangeHeaderColumns();
 	};
 };
 

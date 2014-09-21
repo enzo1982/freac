@@ -46,6 +46,8 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	onSelectEntry.Connect(&JobList::OnSelectEntry, this);
 	onMarkEntry.Connect(&JobList::OnMarkEntry, this);
 
+	onClickTab.Connect(&JobList::OnClickTab, this);
+
 	BoCA::JobList::Get()->onComponentAddTrack.Connect(&JobList::AddTrack, this);
 	BoCA::JobList::Get()->onComponentRemoveTrack.Connect(&JobList::RemoveTrack, this);
 	BoCA::JobList::Get()->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
@@ -709,6 +711,23 @@ Void BonkEnc::JobList::SaveList()
 	DeleteObject(dialog);
 }
 
+Bool BonkEnc::JobList::SortsAfter(const String &str1, const String &str2) const
+{
+	String	 str1l = str1.ToLower();
+	String	 str2l = str2.ToLower();
+
+	Int	 length = Math::Min(str1l.Length(), str2l.Length());
+
+	for (Int i = 0; i < length; i++)
+	{
+		if	(str1l[i] > str2l[i]) return True;
+		else if	(str1l[i] < str2l[i]) return False;
+	}
+
+	if (str1l.Length() > str2l.Length()) return True;
+	else				     return False;
+}
+
 Void BonkEnc::JobList::OnRegister(Widget *container)
 {
 	container->Add(droparea);
@@ -746,6 +765,114 @@ Void BonkEnc::JobList::OnMarkEntry(ListEntry *entry)
 
 	if (entry->IsMarked())	BoCA::JobList::Get()->onApplicationMarkTrack.Emit(tracks.Get(entry->GetHandle()));
 	else			BoCA::JobList::Get()->onApplicationUnmarkTrack.Emit(tracks.Get(entry->GetHandle()));
+}
+
+Void BonkEnc::JobList::OnClickTab(Int n)
+{
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+	/* Find sorting criteria.
+	 */
+	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
+
+	Bool	 sortByArtist = (fields.GetNth(n) == "<artist>");
+	Bool	 sortByAlbum  = (fields.GetNth(n) == "<album>");
+	Bool	 sortByTitle  = (fields.GetNth(n) == "<title>");
+	Bool	 sortByGenre  = (fields.GetNth(n) == "<genre>");
+	Bool	 sortByFile   = (fields.GetNth(n) == "<file>");
+	Bool	 sortByType   = (fields.GetNth(n) == "<filetype>");
+	Bool	 sortByOutput = (fields.GetNth(n) == "<outputfile>");
+	Bool	 sortByDisc   = (fields.GetNth(n) == "<disc>");
+	Bool	 sortByTrack  = (fields.GetNth(n) == "<track>");
+	Bool	 sortByRating = (fields.GetNth(n) == "<rating>");
+	Bool	 sortByTime   = (fields.GetNth(n) == "<time>");
+	Bool	 sortByBytes  = (fields.GetNth(n) == "<bytes>");
+
+	/* Check if reverse sorting is needed.
+	 */
+	static String	 previousCriteria;
+	Bool		 reverse = False;
+
+	if (fields.GetNth(n) == previousCriteria) { previousCriteria = NIL; reverse = True; }
+	else					    previousCriteria = fields.GetNth(n);
+
+	String::ExplodeFinish();
+
+	/* Get file types and output file names.
+	 */
+	Array<String>	 fileTypes;
+	Array<String>	 outputFileNames;
+
+	for (Int i = 0; sortByType && i < tracks.Length(); i++)
+	{
+		const Track	&track = GetNthTrack(i);
+
+		if	(track.origFilename.Find("://") >= 0) fileTypes.Add(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
+		else if (track.origFilename.Find(".")   >= 0) fileTypes.Add(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+	}
+
+	for (Int i = 0; sortByOutput && i < tracks.Length(); i++)
+	{
+		const Track	&track	  = GetNthTrack(i);
+		String		 fileName = Utilities::GetOutputFileName(track);
+
+		outputFileNames.Add(fileName.Tail(fileName.Length() - config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault).Length()));
+	}
+
+	/* Sort the list using gnome sort.
+	 */
+	Bool	 changed = False;
+	Int	 skip	 = 0;
+
+	for (Int i = 0; i < tracks.Length() - 1; i++)
+	{
+		const Track	&thisTrack  = GetNthTrack(i);
+		const Info	&thisInfo   = thisTrack.GetInfo();
+		const Format	&thisFormat = thisTrack.GetFormat();
+
+		const Track	&nextTrack  = GetNthTrack(i + 1);
+		const Info	&nextInfo   = nextTrack.GetInfo();
+		const Format	&nextFormat = nextTrack.GetFormat();
+
+		if ((sortByArtist &&  SortsAfter(thisInfo.artist, nextInfo.artist)											  ) ||
+		    (sortByAlbum  &&  SortsAfter(thisInfo.album, nextInfo.album)											  ) ||
+		    (sortByTitle  &&  SortsAfter(thisInfo.title, nextInfo.title)											  ) ||
+		    (sortByGenre  &&  SortsAfter(thisInfo.genre, nextInfo.genre)											  ) ||
+		    (sortByFile	  &&  SortsAfter(thisTrack.origFilename, nextTrack.origFilename)									  ) ||
+		    (sortByType	  &&  SortsAfter(fileTypes.GetNth(i), fileTypes.GetNth(i + 1))										  ) ||
+		    (sortByOutput &&  SortsAfter(outputFileNames.GetNth(i), outputFileNames.GetNth(i + 1))											  ) ||
+		    (sortByDisc	  &&  thisInfo.disc						       >  nextInfo.disc							  ) ||
+		    (sortByTrack  &&  thisInfo.track						       >  nextInfo.track						  ) ||
+		    (sortByRating &&  thisInfo.rating						       >  nextInfo.rating						  ) ||
+		    (sortByTime	  && (thisTrack.length > 0 ? thisTrack.length :
+							     thisTrack.approxLength) / thisFormat.rate > (nextTrack.length > 0 ? nextTrack.length :
+																 nextTrack.approxLength) / nextFormat.rate) ||
+		    (sortByBytes  &&  thisTrack.fileSize					       >  nextTrack.fileSize						  ))
+		{
+			SwitchEntries(i, i + 1);
+
+			if (sortByType)	  fileTypes.SwitchNth(i, i + 1);
+			if (sortByOutput) outputFileNames.SwitchNth(i, i + 1);
+
+			if (--i >= 0) { i--; skip++; }
+
+			changed = True;
+		}
+		else
+		{
+			i += skip;
+
+			skip = 0;
+		}
+	}
+
+	/* Revert sort order if requested.
+	 */
+	for (Int i = 0; reverse && i < tracks.Length() / 2; i++) SwitchEntries(i, tracks.Length() - i - 1);
+
+	/* Redraw if anything has changed.
+	 */
+	if (changed || reverse) Paint(SP_UPDATE);
 }
 
 Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
