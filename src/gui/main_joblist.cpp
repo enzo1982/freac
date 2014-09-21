@@ -17,6 +17,7 @@
 #include <gui/player.h>
 
 #include <jobs/engine/convert.h>
+#include <jobs/engine/convertworker.h>
 
 #include <dialogs/charset.h>
 
@@ -641,8 +642,8 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	info_text_genre->SetX(info_edit_year->GetX() + 38);
 	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
 	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
-	info_edit_artist->SetWidth(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - (info_image_cover->IsVisible() ? 54 : 0));
-	info_edit_album->SetWidth(clientSize.cx - 255 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - (info_image_cover->IsVisible() ? 54 : 0));
+	info_edit_artist->SetWidth(clientSize.cx - 240 - info_edit_artist->GetX() - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
+	info_edit_album->SetWidth(clientSize.cx - 240 - info_edit_album->GetX() - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
 	info_edit_genre->SetX(clientSize.cx - 142);
 
 	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
@@ -768,6 +769,9 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 	edb_filename->SetX(maxTextLength + 14);
 	edb_format->SetX(maxTextLength + 14);
 	edb_outdir->SetX(maxTextLength + 14);
+
+	edb_trackPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
+	edb_totalPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 
 	progress->SetX(maxTextLength + 14);
 	progress_total->SetX(maxTextLength + 14);
@@ -1341,13 +1345,13 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 
 	switch (mode)
 	{
-		case CONVERTER_MODE_ON_THE_FLY:
+		case CONVERTER_STEP_ON_THE_FLY:
 			// nothing special in this case
 			break;
-		case CONVERTER_MODE_DECODE:
+		case CONVERTER_STEP_DECODE:
 			edb_filename->SetText(edb_filename->GetText().Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
 			break;
-		case CONVERTER_MODE_ENCODE:
+		case CONVERTER_STEP_ENCODE:
 			edb_filename->SetText(edb_filename->GetText().Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
 			break;
 	}
@@ -1544,10 +1548,8 @@ Void BonkEnc::LayerJoblist::OnSelectDir()
 
 Void BonkEnc::LayerJoblist::OnSelectEncoder()
 {
-	if (!Config::Get()->CanChangeConfig()) return;
-
 	BoCA::Config	*config = BoCA::Config::Get();
-	Registry	&boca = Registry::Get();
+	Registry	&boca	= Registry::Get();
 
 	for (Int i = 0, n = 0; i < boca.GetNumberOfComponents(); i++)
 	{
@@ -1560,6 +1562,10 @@ Void BonkEnc::LayerJoblist::OnSelectEncoder()
 			break;
 		}
 	}
+
+	/* Update joblist entries if output file name might need to be changed.
+	 */
+	if (config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Contains("<outputfile>")) joblist->OnChangeHeaderColumns();
 }
 
 Void BonkEnc::LayerJoblist::ToggleEditPopup()

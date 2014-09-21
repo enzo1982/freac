@@ -98,9 +98,10 @@ Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInf
 	trackInfo.length = nTrackInfo.length;
 }
 
-Void BonkEnc::Progress::InitTrackProgressValues()
+Void BonkEnc::Progress::InitTrackProgressValues(UnsignedInt64 startTicks)
 {
-	trackStartTicks = S::System::System::Clock();
+	if (startTicks != 0) trackStartTicks = startTicks;
+	else		     trackStartTicks = S::System::System::Clock();
 }
 
 Void BonkEnc::Progress::PauseTrackProgress()

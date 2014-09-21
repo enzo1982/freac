@@ -131,11 +131,11 @@ const Bool	 BonkEnc::Config::SettingsShowJobsTabDefault			= False;
 
 /* Category Resources
  */
-const String	 BonkEnc::Config::ResourcesEnableOpenMPID			= "EnableOpenMP";
-const Bool	 BonkEnc::Config::ResourcesEnableOpenMPDefault			= True;
+const String	 BonkEnc::Config::ResourcesEnableParallelConversionsID		= "EnableParallelConversions";
+const Bool	 BonkEnc::Config::ResourcesEnableParallelConversionsDefault	= False;
 
-const String	 BonkEnc::Config::ResourcesNumberOfThreadsID			= "NumberOfThreads";
-const Int	 BonkEnc::Config::ResourcesNumberOfThreadsDefault		= 0;
+const String	 BonkEnc::Config::ResourcesNumberOfConversionThreadsID		= "NumberOfConversionThreads";
+const Int	 BonkEnc::Config::ResourcesNumberOfConversionThreadsDefault	= 0;
 
 /* Category Joblist
  */

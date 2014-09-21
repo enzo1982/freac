@@ -21,12 +21,17 @@ namespace BonkEnc
 	class Decoder
 	{
 		protected:
+			static Array<Threads::Mutex *>	 mutexes;
+			static Threads::Mutex		 managementMutex;
+
 			String				 fileName;
 			Int64				 sampleOffset;
 
 			IO::InStream			*f_in;
 			BoCA::AS::DecoderComponent	*filter_in;
 		public:
+			static Void			 FreeLockObjects();
+
 							 Decoder();
 			virtual				~Decoder();
 
@@ -40,6 +45,7 @@ namespace BonkEnc
 			Bool				 Seek(Int64);
 
 			Int64				 GetInBytes() const;
+
 			String				 GetDecoderName() const;
 	};
 };

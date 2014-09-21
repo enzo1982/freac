@@ -17,10 +17,6 @@
 
 namespace BonkEnc
 {
-	const Int	 CONVERTER_MODE_ON_THE_FLY = 0;
-	const Int	 CONVERTER_MODE_DECODE	   = 1;
-	const Int	 CONVERTER_MODE_ENCODE	   = 2;
-
 	class JobConvert : public Job
 	{
 		private:
@@ -30,12 +26,24 @@ namespace BonkEnc
 			static Bool							 skipTrack;
 			static Bool							 stopConversion;
 
+			static Array<Bool>						 deviceLocked;
+			static Array<Bool>						 outputLocked;
+
+			static Threads::Mutex						 managementMutex;
+
 			Array<BoCA::Track>						 tracks;
+			Array<Int>							 trackActions;
 
 			Void								 UpdateProgress(Int, Int);
 
 			Bool								 CheckSingleFileSampleFormat();
 			BoCA::Track							 ConsolidateTrackInfo();
+
+			Bool								 LockDeviceForTrack(const BoCA::Track &);
+			Bool								 UnlockDeviceForTrack(const BoCA::Track &);
+
+			Bool								 LockOutputForTrack(const BoCA::Track &);
+			Bool								 UnlockOutputForTrack(const BoCA::Track &);
 		public:
 			static Bool							 IsConverting()	{ return conversionRunning; }
 			static Bool							 IsPaused()	{ return conversionPaused;  }
@@ -49,6 +57,7 @@ namespace BonkEnc
 											 JobConvert(Array<BoCA::Track> &);
 			virtual								~JobConvert();
 
+			virtual Error							 Precheck();
 			virtual Bool							 ReadyToRun();
 		signals:
 			static Signal0<Void>						 onStartEncoding;

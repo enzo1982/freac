@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -31,6 +31,8 @@ BonkEnc::Converter::~Converter()
 
 Void BonkEnc::Converter::Convert(JobList *joblist, Bool useThread)
 {
+	/* Check if currently playing a track.
+	 */
 	if (Playback::Get()->IsPlaying())
 	{
 		BoCA::Utilities::ErrorMessage("Cannot start encoding while playing a file!");
@@ -38,6 +40,8 @@ Void BonkEnc::Converter::Convert(JobList *joblist, Bool useThread)
 		return;
 	}
 
+	/* Create array of tracks to convert.
+	 */
 	Array<Track>	 tracks;
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
@@ -47,6 +51,8 @@ Void BonkEnc::Converter::Convert(JobList *joblist, Bool useThread)
 		tracks.Add(joblist->GetNthTrack(i), joblist->GetNthTrack(i).GetTrackID());
 	}
 
+	/* Start conversion job.
+	 */
 	Job	*convert = new JobConvert(tracks);
 
 	if (!useThread)	convert->onFinish.Connect(&Converter::OnFinishJob, this);

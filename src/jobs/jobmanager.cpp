@@ -49,8 +49,21 @@ Void BonkEnc::JobManager::ManagerThread()
 
 	while (!exitThread)
 	{
-		const Array<Job *>	&planned = Job::GetPlannedJobs();
-		const Array<Job *>	&running = Job::GetRunningJobs();
+		const Array<Job *>	&scheduled = Job::GetScheduledJobs();
+		const Array<Job *>	&planned   = Job::GetPlannedJobs();
+		const Array<Job *>	&running   = Job::GetRunningJobs();
+
+		if (scheduled.Length() > 0)
+		{
+			foreachreverse (Job *job, scheduled)
+			{
+				/* Call the job's precheck method.
+				 */
+				if (job->RunPrecheck() != Success()) Object::DeleteObject(job);
+			}
+
+			continue;
+		}
 
 		if (planned.Length() > 0 && running.Length() < config->maxActiveJobs)
 		{

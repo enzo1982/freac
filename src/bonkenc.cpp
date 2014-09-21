@@ -35,6 +35,9 @@ Void smooth::DetachDLL()
 #include <jobs/jobmanager.h>
 #include <cddb/cddbcache.h>
 
+#include <engine/decoder.h>
+#include <engine/encoder.h>
+
 BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
 
 /* General application information and fixed settings.
@@ -124,6 +127,11 @@ BonkEnc::BonkEnc::~BonkEnc()
 	JobManager::Quit();
 
 	debug->Write("  Cleaning up...");
+
+	/* Free conversion locks.
+	 */
+	Decoder::FreeLockObjects();
+	Encoder::FreeLockObjects();
 
 	/* Free the audio player.
 	 */

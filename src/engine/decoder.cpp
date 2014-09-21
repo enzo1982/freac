@@ -17,6 +17,9 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
+Array<Threads::Mutex *>	 BonkEnc::Decoder::mutexes;
+Threads::Mutex		 BonkEnc::Decoder::managementMutex;
+
 BonkEnc::Decoder::Decoder()
 {
 	f_in	     = NIL;
@@ -51,6 +54,8 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 		return False;
 	}
 
+	/* Create decoder component.
+	 */
 	filter_in = boca.CreateDecoderForStream(nFileName);
 
 	if (filter_in == NIL)
@@ -63,6 +68,21 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 		return False;
 	}
 
+	/* Lock decoder if it's not thread safe.
+	 */
+	if (!filter_in->IsThreadSafe())
+	{
+		managementMutex.Lock();
+
+		if (mutexes.Get(filter_in->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), filter_in->GetID().ComputeCRC32());
+
+		managementMutex.Release();
+
+		mutexes.Get(filter_in->GetID().ComputeCRC32())->Lock();
+	}
+
+	/* Add decoder to stream.
+	 */
 	Track	 trackInfo = track;
 
 	trackInfo.origFilename = nFileName;
@@ -72,6 +92,8 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 	if (f_in->AddFilter(filter_in) == False)
 	{
 		BoCA::Utilities::ErrorMessage("Cannot set up decoder for input file: %1\n\nError: %2", File(nFileName).GetFileName(), filter_in->GetErrorString());
+
+		if (!filter_in->IsThreadSafe()) mutexes.Get(filter_in->GetID().ComputeCRC32())->Release();
 
 		boca.DeleteComponent(filter_in);
 
@@ -109,6 +131,8 @@ Bool BonkEnc::Decoder::Destroy()
 
 	if (filter_in->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", filter_in->GetErrorString());
 
+	if (!filter_in->IsThreadSafe()) mutexes.Get(filter_in->GetID().ComputeCRC32())->Release();
+
 	boca.DeleteComponent(filter_in);
 
 	delete f_in;
@@ -145,4 +169,11 @@ Int64 BonkEnc::Decoder::GetInBytes() const
 String BonkEnc::Decoder::GetDecoderName() const
 {
 	return filter_in->GetName();
+}
+
+Void BonkEnc::Decoder::FreeLockObjects()
+{
+	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
+
+	mutexes.RemoveAll();
 }

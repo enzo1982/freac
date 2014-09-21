@@ -14,6 +14,7 @@
 #include <boca.h>
 #include <time.h>
 
+Array<BonkEnc::Job *>		 BonkEnc::Job::scheduled;
 Array<BonkEnc::Job *>		 BonkEnc::Job::planned;
 Array<BonkEnc::Job *>		 BonkEnc::Job::running;
 
@@ -29,7 +30,9 @@ BonkEnc::Job::Job() : ListEntry("Job")
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	progressLabel	= new Text("Progress:", Point(7, 23));
+	i18n->SetContext("Jobs");
+
+	progressLabel	= new Text(i18n->TranslateString("%1:", "Characters").Replace("%1", i18n->TranslateString("Progress")), Point(7, 23));
 
 	progress	= new Progressbar(Point(progressLabel->GetX() + progressLabel->GetUnscaledTextWidth() + 7, progressLabel->GetY() - 3), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 
@@ -37,7 +40,7 @@ BonkEnc::Job::Job() : ListEntry("Job")
 	timeValue->SetOrientation(OR_UPPERRIGHT);
 	timeValue->Deactivate();
 
-	timeLabel	= new Text("Time left:", Point(0, progressLabel->GetY()));
+	timeLabel	= new Text(i18n->TranslateString("%1:", "Characters").Replace("%1", i18n->TranslateString("Time left")), Point(0, progressLabel->GetY()));
 	timeLabel->SetX(timeLabel->GetUnscaledTextWidth() + timeValue->GetWidth() + 15);
 	timeLabel->SetOrientation(OR_UPPERRIGHT);
 
@@ -76,6 +79,7 @@ BonkEnc::Job::Job() : ListEntry("Job")
 
 BonkEnc::Job::~Job()
 {
+	scheduled.Remove(GetHandle());
 	planned.Remove(GetHandle());
 	running.Remove(GetHandle());
 
@@ -95,6 +99,17 @@ BonkEnc::Job::~Job()
 
 Int BonkEnc::Job::Schedule()
 {
+	scheduled.InsertAtPos(0, this, GetHandle());
+
+	return Success();
+}
+
+Int BonkEnc::Job::RunPrecheck()
+{
+	scheduled.Remove(GetHandle());
+
+	if (Precheck() != Success()) return Error();
+
 	planned.Add(this, GetHandle());
 
 	EnterProtectedRegion();
@@ -134,6 +149,11 @@ Int BonkEnc::Job::Run()
 
 	LeaveProtectedRegion();
 
+	return Success();
+}
+
+Error BonkEnc::Job::Precheck()
+{
 	return Success();
 }
 

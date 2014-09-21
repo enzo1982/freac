@@ -33,6 +33,7 @@ namespace BonkEnc
 			UnsignedInt64			 startTicks;
 			Int				 previousSecondsLeft;
 
+			static Array<Job *>		 scheduled;
 			static Array<Job *>		 planned;
 			static Array<Job *>		 running;
 
@@ -47,9 +48,22 @@ namespace BonkEnc
 			virtual Int			 Paint(Int);
 
 			Int				 Schedule();
+
+			Int				 RunPrecheck();
 			Int				 Run();
 
+			/* Overwrite Precheck to run checks before
+			 * the job is actually scheduled.
+			 */
+			virtual Error			 Precheck();
+
+			/* Overwrite ReadyToRun to check conditions
+			 * before running the job.
+			 */
 			virtual Bool			 ReadyToRun();
+
+			/* Implement your actual job in Perform.
+			 */
 			virtual Error			 Perform() = 0;
 		accessors:
 			Int				 SetText(const String &);
@@ -60,6 +74,7 @@ namespace BonkEnc
 			const Array<String>		&GetErrors()		{ return errors; }
 			const Array<String>		&GetWarnings()		{ return warnings; }
 
+			static const Array<Job *>	&GetScheduledJobs()	{ return scheduled; }
 			static const Array<Job *>	&GetPlannedJobs()	{ return planned; }
 			static const Array<Job *>	&GetRunningJobs()	{ return running; }
 

@@ -132,11 +132,11 @@ namespace BonkEnc
 
 			/* Category Resources
 			 */
-			static const String	 ResourcesEnableOpenMPID;
-			static const Bool	 ResourcesEnableOpenMPDefault;
+			static const String	 ResourcesEnableParallelConversionsID;
+			static const Bool	 ResourcesEnableParallelConversionsDefault;
 
-			static const String	 ResourcesNumberOfThreadsID;
-			static const Int	 ResourcesNumberOfThreadsDefault;
+			static const String	 ResourcesNumberOfConversionThreadsID;
+			static const Int	 ResourcesNumberOfConversionThreadsDefault;
 
 			/* Category Joblist
 			 */

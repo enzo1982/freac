@@ -20,16 +20,16 @@ namespace BonkEnc
 	{
 		private:
 			GroupBox	*group_cpu;
-			CheckBox	*check_enable_openmp;
+			CheckBox	*check_enable_parallel;
 			Text		*text_threads;
 			Slider		*slider_threads;
 			Text		*text_threads_value;
 
-			Bool		 enableOpenMP;
+			Bool		 enableParallel;
  		slots:
-			Void		 ToggleOpenMP();
+			Void		 ToggleParallel();
 
-			Void		 ChangeOpenMPThreads();
+			Void		 ChangeConversionThreads();
 		public:
 					 ConfigureResources();
 					~ConfigureResources();

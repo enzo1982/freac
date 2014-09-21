@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -21,6 +21,9 @@ namespace BonkEnc
 	class Encoder
 	{
 		protected:
+			static Array<Threads::Mutex *>	 mutexes;
+			static Threads::Mutex		 managementMutex;
+
 			IO::OutStream			*f_out;
 			BoCA::AS::EncoderComponent	*filter_out;
 
@@ -29,6 +32,8 @@ namespace BonkEnc
 			Int64				 bytes;
 			Int64				 offset;
 		public:
+			static Void			 FreeLockObjects();
+
 							 Encoder();
 			virtual				~Encoder();
 

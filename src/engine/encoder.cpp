@@ -15,6 +15,9 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
+Array<Threads::Mutex *>	 BonkEnc::Encoder::mutexes;
+Threads::Mutex		 BonkEnc::Encoder::managementMutex;
+
 BonkEnc::Encoder::Encoder()
 {
 	f_out	   = NIL;
@@ -52,6 +55,8 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 		return False;
 	}
 
+	/* Create encoder component.
+	 */
 	filter_out = (EncoderComponent *) boca.CreateComponentByID(encoderID);
 
 	if (filter_out == NIL)
@@ -64,11 +69,28 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 		return False;
 	}
 
+	/* Lock encoder if it's not thread safe.
+	 */
+	if (!filter_out->IsThreadSafe())
+	{
+		managementMutex.Lock();
+
+		if (mutexes.Get(filter_out->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), filter_out->GetID().ComputeCRC32());
+
+		managementMutex.Release();
+
+		mutexes.Get(filter_out->GetID().ComputeCRC32())->Lock();
+	}
+
+	/* Add encoder to stream.
+	 */
 	filter_out->SetAudioTrackInfo(album);
 
 	if (f_out->AddFilter(filter_out) == False)
 	{
 		BoCA::Utilities::ErrorMessage("Cannot set up encoder for output file: %1\n\nError: %2", File(fileName).GetFileName(), filter_out->GetErrorString());
+
+		if (!filter_out->IsThreadSafe()) mutexes.Get(filter_out->GetID().ComputeCRC32())->Release();
 
 		boca.DeleteComponent(filter_out);
 
@@ -94,6 +116,8 @@ Bool BonkEnc::Encoder::Destroy()
 	f_out->RemoveFilter(filter_out);
 
 	if (filter_out->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", filter_out->GetErrorString());
+
+	if (!filter_out->IsThreadSafe()) mutexes.Get(filter_out->GetID().ComputeCRC32())->Release();
 
 	boca.DeleteComponent(filter_out);
 
@@ -130,4 +154,11 @@ Void BonkEnc::Encoder::SignalChapterChange()
 	offset += track.length;
 
 	chapter++;
+}
+
+Void BonkEnc::Encoder::FreeLockObjects()
+{
+	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
+
+	mutexes.RemoveAll();
 }

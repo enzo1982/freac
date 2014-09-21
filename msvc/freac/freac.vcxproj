@@ -180,6 +180,7 @@
     <ClCompile Include="..\..\src\bonkenc.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\dialogs\charset.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_resources.cpp" />
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
@@ -188,6 +189,7 @@
     <ClCompile Include="..\..\src\jobs\engine\convert.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_convert.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\jobs\engine\convertworker.cpp" />
     <ClCompile Include="..\..\src\jobs\joblist\adddirectory.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_adddirectory.obj</ObjectFileName>
     </ClCompile>
@@ -264,12 +266,14 @@
     <ClInclude Include="..\..\include\bonkenc.h" />
     <ClInclude Include="..\..\include\config.h" />
     <ClInclude Include="..\..\include\dialogs\charset.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_resources.h" />
     <ClInclude Include="..\..\include\dialogs\error.h" />
     <ClInclude Include="..\..\include\dialogs\overwrite.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
     <ClInclude Include="..\..\include\gui\player.h" />
     <ClInclude Include="..\..\include\joblist.h" />
     <ClInclude Include="..\..\include\jobs\engine\convert.h" />
+    <ClInclude Include="..\..\include\jobs\engine\convertworker.h" />
     <ClInclude Include="..\..\include\jobs\joblist\adddirectory.h" />
     <ClInclude Include="..\..\include\jobs\joblist\addfiles.h" />
     <ClInclude Include="..\..\include\jobs\joblist\addtracks.h" />

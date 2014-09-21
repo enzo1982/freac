@@ -25,28 +25,28 @@ BonkEnc::ConfigureResources::ConfigureResources()
 
 	i18n->SetContext("Configuration::Resources");
 
-	enableOpenMP = config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableOpenMPID, Config::ResourcesEnableOpenMPDefault);
+	enableParallel = config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
 
-	group_cpu		= new GroupBox(i18n->TranslateString("CPU"), Point(7, 11), Size(350, 65));
+	group_cpu		= new GroupBox(i18n->TranslateString("Parallel processing"), Point(7, 11), Size(350, 65));
 
-	check_enable_openmp	= new CheckBox(i18n->TranslateString("Enable multi core processing"), Point(10, 13), Size(group_cpu->GetWidth() - 20, 0), &enableOpenMP);
-	check_enable_openmp->onAction.Connect(&ConfigureResources::ToggleOpenMP, this);
+	check_enable_parallel	= new CheckBox(i18n->TranslateString("Enable parallel processing (experimental)"), Point(10, 13), Size(group_cpu->GetWidth() - 20, 0), &enableParallel);
+	check_enable_parallel->onAction.Connect(&ConfigureResources::ToggleParallel, this);
 
-	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of threads to use")), Point(10, 40));
+	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of conversion threads")), Point(10, 40));
 	text_threads_value	= new Text(i18n->TranslateString("auto"), Point(350, 40));
 	text_threads_value->SetX(group_cpu->GetWidth() - text_threads_value->GetUnscaledTextWidth() - 10);
 
 	slider_threads		= new Slider(Point(17 + text_threads->GetUnscaledTextWidth(), 38), Size(group_cpu->GetWidth() - 35 - text_threads->GetUnscaledTextWidth() - text_threads_value->GetUnscaledTextWidth(), 0), OR_HORZ, NIL, 0, CPU().GetNumLogicalCPUs());
-	slider_threads->SetValue(config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfThreadsID, Config::ResourcesNumberOfThreadsDefault));
-	slider_threads->onAction.Connect(&ConfigureResources::ChangeOpenMPThreads, this);
+	slider_threads->SetValue(config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault));
+	slider_threads->onAction.Connect(&ConfigureResources::ChangeConversionThreads, this);
 
-	group_cpu->Add(check_enable_openmp);
+	group_cpu->Add(check_enable_parallel);
 	group_cpu->Add(text_threads);
 	group_cpu->Add(text_threads_value);
 	group_cpu->Add(slider_threads);
 
-	ToggleOpenMP();
-	ChangeOpenMPThreads();
+	ToggleParallel();
+	ChangeConversionThreads();
 
 	Add(group_cpu);
 
@@ -56,15 +56,15 @@ BonkEnc::ConfigureResources::ConfigureResources()
 BonkEnc::ConfigureResources::~ConfigureResources()
 {
 	DeleteObject(group_cpu);
-	DeleteObject(check_enable_openmp);
+	DeleteObject(check_enable_parallel);
 	DeleteObject(text_threads);
 	DeleteObject(text_threads_value);
 	DeleteObject(slider_threads);
 }
 
-Void BonkEnc::ConfigureResources::ToggleOpenMP()
+Void BonkEnc::ConfigureResources::ToggleParallel()
 {
-	if (enableOpenMP)
+	if (enableParallel)
 	{
 		text_threads->Activate();
 		text_threads_value->Activate();
@@ -78,7 +78,7 @@ Void BonkEnc::ConfigureResources::ToggleOpenMP()
 	}
 }
 
-Void BonkEnc::ConfigureResources::ChangeOpenMPThreads()
+Void BonkEnc::ConfigureResources::ChangeConversionThreads()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -91,18 +91,9 @@ Void BonkEnc::ConfigureResources::ChangeOpenMPThreads()
 Int BonkEnc::ConfigureResources::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	i18n->SetContext("Configuration::Resources::Messages");
-
-	if (enableOpenMP	       != config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableOpenMPID, Config::ResourcesEnableOpenMPDefault) ||
-	    slider_threads->GetValue() != config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfThreadsID, Config::ResourcesNumberOfThreadsDefault))
-	{
-		QuickMessage(i18n->TranslateString("You need to restart %1 for CPU setting changes to take effect.").Replace("%1", BonkEnc::appName), i18n->TranslateString("Note"), Message::Buttons::Ok, Message::Icon::Information);
-	}
-
-	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableOpenMPID, enableOpenMP);
-	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfThreadsID, slider_threads->GetValue());
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, enableParallel);
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, slider_threads->GetValue());
 
 	return Success();
 }
