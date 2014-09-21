@@ -89,7 +89,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	selectedLayer = NIL;
 
-	tree_bonkenc		= new Tree(::BonkEnc::BonkEnc::appName);
+	tree_freac		= new Tree(::BonkEnc::BonkEnc::appName);
 
 	tree_ripper		= new Tree(i18n->TranslateString("Ripper"));
 	tree_interface		= new Tree(i18n->TranslateString("Interface"));
@@ -112,14 +112,14 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	if (tree_output->Length()    > 0) tree_components->Add(tree_output);
 	if (tree_other->Length()     > 0) tree_components->Add(tree_other);
 
-	tree_bonkenc->Open();
+	tree_freac->Open();
 
 	tree_ripper->Open();
 	tree_interface->Open();
 
 	tree_components->Open();
 
-	list_layers->Add(tree_bonkenc);
+	list_layers->Add(tree_freac);
 	list_layers->Add(tree_components);
 
 	Add(mainWnd);
@@ -153,7 +153,7 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 
 	DeleteObject(list_layers);
 
-	DeleteObject(tree_bonkenc);
+	DeleteObject(tree_freac);
 
 	DeleteObject(tree_ripper);
 	DeleteObject(tree_interface);
@@ -180,7 +180,7 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	createdLayers.Add(layers.GetLast());
 	entries.Add(new ConfigEntry(i18n->TranslateString("Encoders"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_bonkenc->Add(entries.GetLast());
+	tree_freac->Add(entries.GetLast());
 
 	/* Connect to the onChangeComponentSettings signal of the encoder configuration
 	 * layer to be notified when settings for a specific component are changed.
@@ -191,7 +191,7 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	createdLayers.Add(layers.GetLast());
 	entries.Add(new ConfigEntry(i18n->TranslateString("Resources"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_bonkenc->Add(entries.GetLast());
+	tree_freac->Add(entries.GetLast());
 
 	Component	*component = NIL;
 
@@ -225,7 +225,7 @@ Void BonkEnc::ConfigDialog::AddLayers()
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 		tree_ripper->Add(entries.GetLast());
 
-		tree_bonkenc->Add(tree_ripper);
+		tree_freac->Add(tree_ripper);
 	}
 
 	if (i18n->GetNOfLanguages() > 1)
@@ -243,7 +243,7 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_interface->Add(entries.GetLast());
 
-	tree_bonkenc->Add(tree_interface);
+	tree_freac->Add(tree_interface);
 
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0)
 	{
@@ -251,7 +251,7 @@ Void BonkEnc::ConfigDialog::AddLayers()
 		createdLayers.Add(layers.GetLast());
 		entries.Add(new ConfigEntry(i18n->TranslateString("Playlists"), layers.GetLast()));
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-		tree_bonkenc->Add(entries.GetLast());
+		tree_freac->Add(entries.GetLast());
 
 		/* Connect to the onChangeComponentSettings signal of the playlist configuration
 		 * layer to be notified when settings for a specific component are changed.
@@ -263,7 +263,7 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	createdLayers.Add(layers.GetLast());
 	entries.Add(new ConfigEntry(i18n->TranslateString("Tags"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_bonkenc->Add(entries.GetLast());
+	tree_freac->Add(entries.GetLast());
 
 	i18n->SetContext("Configuration");
 
@@ -320,8 +320,8 @@ Void BonkEnc::ConfigDialog::DeleteLayers()
 	layers.RemoveAll();
 	entries.RemoveAll();
 
-	tree_bonkenc->Remove(tree_ripper);
-	tree_bonkenc->Remove(tree_interface);
+	tree_freac->Remove(tree_ripper);
+	tree_freac->Remove(tree_interface);
 
 	Registry	&boca = Registry::Get();
 
@@ -420,7 +420,7 @@ Void BonkEnc::ConfigDialog::OnSelectConfiguration()
 	DeleteLayers();
 	AddLayers();
 
-	tree_bonkenc->SelectNthEntry(0);
+	tree_freac->SelectNthEntry(0);
 
 	list_layers->Paint(SP_PAINT);
 

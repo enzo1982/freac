@@ -34,7 +34,7 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 
 	SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 
-	headerTabsHash = 0;
+	headerTabsHash	= 0;
 
 	EnableLocking();
 
@@ -373,7 +373,7 @@ Void BonkEnc::JobList::AddTracksByDragAndDrop(const Array<String> &files)
 		else				   BoCA::Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(file).GetFileName(), i18n->TranslateString("File not found", "Messages"));
 	}
 
-	(new JobAddFiles(filesToAdd))->Schedule();
+	if (filesToAdd.Length() > 0) (new JobAddFiles(filesToAdd))->Schedule();
 
 	foreach (const String &directory, directoriesToAdd) (new JobAddDirectory(directory))->Schedule();
 }
@@ -1035,7 +1035,7 @@ String BonkEnc::JobList::GetEntryText(const Track &track) const
 
 	i18n->SetContext("Joblist");
 
-	const Info		&info = track.GetInfo();
+	const Info		&info	= track.GetInfo();
 	const Array<String>	&fields = config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
 	String			 jlEntry;

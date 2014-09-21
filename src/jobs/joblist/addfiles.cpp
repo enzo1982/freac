@@ -30,6 +30,8 @@ BonkEnc::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
 	abort = False;
 
 	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddFiles::OnRemoveAllTracksJobScheduled, this);
+
+	SetText("Waiting for other jobs to finish...");
 }
 
 BonkEnc::JobAddFiles::~JobAddFiles()
