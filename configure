@@ -1,0 +1,30 @@
+#!/bin/sh
+echo "There is no need to run configure for building fre:ac. Just make sure"
+echo "the following prerequisites are met before running make:"
+echo
+echo "  All operating systems:"
+echo
+echo "    - Get, build and install the latest version of the smooth Class Library;"
+echo "      it can be obtained via CVS using:"
+echo
+echo "      cvs -d:pserver:anonymous@smooth.cvs.sf.net:/cvsroot/smooth co -P smooth"
+echo
+echo "    - Get, build and install the fre:ac Component Development Kit"
+echo "      available from http://www.freac.org/"
+echo
+echo "  On Linux:"
+echo
+echo "    - libudev development package"
+echo
+echo "  On OS X:"
+echo
+echo "    - Building fre:ac is tested on OS X Leopard 10.5.8 only using"
+echo "      the Xcode 3.1 Command Line Tools (no Xcode project file provided)"
+echo
+echo "  On Windows:"
+echo
+echo "    - Please use MinGW (http://www.mingw.org/) or Visual Studio 2010"
+echo "      with the msvc/freac/freac.sln project file to build fre:ac"
+echo
+echo "When all prerequisites are met, simply run \"make && make install\"."
+echo
