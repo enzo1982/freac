@@ -1182,6 +1182,17 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 Void BonkEnc::BonkEncGUI::Encode()
 {
+	/* Resume paused conversions if any.
+	 */
+	if (JobConvert::IsConverting() && JobConvert::IsPaused())
+	{
+		JobConvert::Resume();
+
+		return;
+	}
+
+	/* If a specific encoder was selected, activate it.
+	 */
 	if (clicked_encoder >= 0)
 	{
 		BoCA::Config	*config = BoCA::Config::Get();
@@ -1196,6 +1207,8 @@ Void BonkEnc::BonkEncGUI::Encode()
 		OptionBox::internalCheckValues.Emit();
 	}
 
+	/* Start conversion.
+	 */
 	Converter().Convert(joblist);
 }
 
