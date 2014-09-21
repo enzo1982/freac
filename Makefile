@@ -91,28 +91,28 @@ ifeq ($(BUILD_OSX),True)
 	LOADER_CONSOLE_LINKER_OPTS	+= -Wl,-x
 
 ifeq ($(BUILD_X86),True)
-	COMPILER_OPTS			+= -arch i386
+	COMPILER_OPTS			+= -arch i386 -Xarch_i386 -march=prescott
 
 	LINKER_OPTS			+= -arch i386
 	LOADER_GUI_LINKER_OPTS		+= -arch i386
 	LOADER_CONSOLE_LINKER_OPTS	+= -arch i386
 endif
 ifeq ($(BUILD_X86_64),True)
-	COMPILER_OPTS			+= -arch x86_64
+	COMPILER_OPTS			+= -arch x86_64 -Xarch_x86_64 -march=core2
 
 	LINKER_OPTS			+= -arch x86_64
 	LOADER_GUI_LINKER_OPTS		+= -arch x86_64
 	LOADER_CONSOLE_LINKER_OPTS	+= -arch x86_64
 endif
 ifeq ($(BUILD_PPC),True)
-	COMPILER_OPTS			+= -arch ppc
+	COMPILER_OPTS			+= -arch ppc -Xarch_ppc -mcpu=G4
 
 	LINKER_OPTS			+= -arch ppc
 	LOADER_GUI_LINKER_OPTS		+= -arch ppc
 	LOADER_CONSOLE_LINKER_OPTS	+= -arch ppc
 endif
 ifeq ($(BUILD_PPC64),True)
-	COMPILER_OPTS			+= -arch ppc64
+	COMPILER_OPTS			+= -arch ppc64 -Xarch_ppc64 -mcpu=G5
 
 	LINKER_OPTS			+= -arch ppc64
 	LOADER_GUI_LINKER_OPTS		+= -arch ppc64
