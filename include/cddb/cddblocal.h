@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -23,8 +23,8 @@ namespace BonkEnc
 
 			BoCA::Protocol	*protocol;
 
-			Bool		 QueryUnixDB(Int);
-			Bool		 QueryWinDB(Int);
+			Bool		 QueryUnixDB(const String &);
+			Bool		 QueryWinDB(const String &);
 		public:
 					 CDDBLocal();
 			virtual		~CDDBLocal();

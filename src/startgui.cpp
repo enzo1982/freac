@@ -28,6 +28,8 @@
 #include <dialogs/adddirectory.h>
 #include <dialogs/addpattern.h>
 
+#include <dialogs/error.h>
+
 #include <cddb/cddbremote.h>
 #include <cddb/cddbcache.h>
 
@@ -635,6 +637,7 @@ Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
 Void BonkEnc::BonkEncGUI::QueryCDDB()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	/* Check if CDDB support is enabled.
 	 */
@@ -675,7 +678,8 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 	/* Query database using each query string.
 	 */
-	Bool	 remoteCDDBEnabled = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault);
+	Bool		 remoteCDDBEnabled = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault);
+	Array<String>	 queryErrors;
 
 	for (Int i = 0; i < queryStrings.Length(); i++)
 	{
@@ -694,9 +698,30 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 				if (dlg->ShowDialog() == Error())
 				{
+					/* Ask whether to perform this query later.
+					 */
+					CDDBBatch	*queries = new CDDBBatch();
+
+					if (i == queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+					{
+						queries->AddQuery(queryString);
+					}
+					else if (i < queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform the remaining queries again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+					{
+						for (Int j = i; j < queryStrings.Length(); j++) queries->AddQuery(queryStrings.GetNth(j));
+					}
+
+					delete queries;
+
 					/* Temporarily disable remote CDDB queries if connection failed.
 					 */
 					config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, False);
+				}
+				else if (dlg->GetErrorString() != NIL)
+				{
+					/* If there's an info message, add it to the list of errors.
+					 */
+					queryErrors.Add(dlg->GetErrorString());
 				}
 
 				cdInfo = dlg->GetCDDBInfo();
@@ -743,6 +768,15 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 				BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 			}
 		}
+	}
+
+	/* Display errors.
+	 */
+	if (queryErrors.Length() > 0)
+	{
+		ErrorDialog	 dialog(queryErrors);
+
+		dialog.ShowDialog();
 	}
 
 	/* Restore previous remote CDDB state.

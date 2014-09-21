@@ -23,6 +23,8 @@
 
 using namespace BoCA;
 
+using namespace smooth::GUI::Dialogs;
+
 BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -603,7 +605,27 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 		{
 			cddbQueryDlg	*dlg = new cddbQueryDlg(cddb.GetCDDBQueryString());
 
-			if (dlg->ShowDialog() == Success()) cdInfo = dlg->GetCDDBInfo();
+			if (dlg->ShowDialog() == Error())
+			{
+				/* Ask whether to perform this query later.
+				 */
+				if (QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+				{
+					CDDBBatch	*queries = new CDDBBatch();
+
+					queries->AddQuery(cddb.GetCDDBQueryString());
+
+					delete queries;
+				}
+			}
+			else if (dlg->GetErrorString() != NIL)
+			{
+				/* Display info message if any.
+				 */
+				BoCA::Utilities::InfoMessage(dlg->GetErrorString());
+			}
+
+			cdInfo = dlg->GetCDDBInfo();
 
 			DeleteObject(dlg);
 		}

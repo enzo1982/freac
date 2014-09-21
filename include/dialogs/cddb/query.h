@@ -31,25 +31,29 @@ namespace BonkEnc
 			Progressbar	*prog_status;
 			Button		*btn_cancel;
 
+			Bool		 errorState;
+			String		 errorString;
+
 			CDDBInfo	 cddbInfo;
 			String		 queryString;
-
-			Bool		 allowAddToBatch;
 
 			Threads::Thread	*queryThread;
 
 			Void		 Cancel();
 			Int		 QueryThread();
 
-			Bool		 QueryCDDB(CDDB &, Bool);
+			Bool		 QueryCDDB(CDDB &);
 		public:
-					 cddbQueryDlg(const String &, Bool = True);
+					 cddbQueryDlg(const String &);
 					~cddbQueryDlg();
 
 			const Error	&ShowDialog();
 
 		accessors:
-			const CDDBInfo	&GetCDDBInfo()	{ return cddbInfo; }
+			Bool		 GetErrorState() const	{ return errorState; }
+			const String	&GetErrorString() const	{ return errorString; }
+
+			const CDDBInfo	&GetCDDBInfo()		{ return cddbInfo; }
 	};
 };
 

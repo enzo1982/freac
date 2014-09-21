@@ -21,27 +21,27 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::cddbQueryDlg::cddbQueryDlg(const String &iQueryString, Bool iAllowAddToBatch)
+BonkEnc::cddbQueryDlg::cddbQueryDlg(const String &iQueryString)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("CDDB::Query");
 
-	queryThread	= NIL;
+	errorState  = False;
 
-	queryString	= iQueryString;
-	allowAddToBatch = iAllowAddToBatch;
+	queryThread = NIL;
+	queryString = iQueryString;
 
-	mainWnd			= new Window(i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
+	mainWnd		 = new Window(i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
-	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
+	mainWnd_titlebar = new Titlebar(TB_CLOSEBUTTON);
 
-	text_status		= new Text(NIL, Point(7, 5));
-	prog_status		= new Progressbar(Point(7, 24), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 100, 0);
+	text_status	 = new Text(NIL, Point(7, 5));
+	prog_status	 = new Progressbar(Point(7, 24), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 100, 0);
 
-	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(215, 23), Size());
+	btn_cancel	 = new Button(i18n->TranslateString("Cancel"), NIL, Point(215, 23), Size());
 	btn_cancel->onAction.Connect(&cddbQueryDlg::Cancel, this);
 
 	Add(mainWnd);
@@ -94,14 +94,14 @@ Int BonkEnc::cddbQueryDlg::QueryThread()
 	{
 		CDDBLocal	 cddbLocal;
 
-		result = QueryCDDB(cddbLocal, !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault));
+		result = QueryCDDB(cddbLocal);
 	}
 
 	if (!result && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
 		CDDBRemote	 cddbRemote;
 
-		result = QueryCDDB(cddbRemote, True);
+		result = QueryCDDB(cddbRemote);
 	}
 
 	mainWnd->Close();
@@ -110,12 +110,15 @@ Int BonkEnc::cddbQueryDlg::QueryThread()
 	else	    return Error();
 }
 
-Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
+Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("CDDB::Query");
+
+	errorState  = False;
+	errorString = NIL;
 
 	Int	 result;
 
@@ -127,32 +130,20 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	prog_status->SetValue(20);
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Requesting CD information")));
 
-	cddb.SetActiveDrive(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
+	/* Perform query using query string.
+	 */
+	result = cddb.Query(queryString);
 
-	if (queryString == NIL)
-	{
-		/* Query by disc ID of inserted disc.
-		 */
-		Int	 discID = cddb.ComputeDiscID();
-
-		if (discID == 0 || discID == -1) return False; // no disc in drive or read error
-
-		result = cddb.Query(discID);
-	}
-	else
-	{
-		/* Use query string.
-		 */
-		result = cddb.Query(queryString);
-	}
-
+	/* Process result.
+	 */
 	String	 category;
 	Int	 discID	= 0;
 	Bool	 fuzzy	= False;
 
 	if (result == QUERY_RESULT_NONE)
 	{
-		if (displayError) QuickMessage(i18n->TranslateString("No freedb entry for this disk."), i18n->TranslateString("Info"), Message::Buttons::Ok, Message::Icon::Information);
+		errorState  = True;
+		errorString = i18n->TranslateString("%1:", "Characters").Replace("%1", queryString.SubString(11, 8)).Append(" ").Append(i18n->TranslateString("No freedb entry for this disk.")).Append("\n\n").Append(queryString);
 	}
 	else if (result == QUERY_RESULT_SINGLE)
 	{
@@ -191,6 +182,8 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 		}
 	}
 
+	/* Read actual CDDB data.
+	 */
 	Bool	 readError = False;
 
 	if (category != NIL && discID != 0)
@@ -202,27 +195,13 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 		if (fuzzy) cddbInfo.revision = -1;
 	}
 
+	/* Process read errors.
+	 */
 	if (readError || result == QUERY_RESULT_ERROR)
 	{
-		i18n->SetContext("CDDB::Query::Errors");
-
-		if (allowAddToBatch)
-		{
-			if (QuickMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server.").Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
-			{
-				CDDBBatch	*queries = new CDDBBatch();
-
-				queries->AddQuery(cddb.GetCDDBQueryString());
-
-				delete queries;
-			}
-		}
-		else
-		{
-			BoCA::Utilities::ErrorMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server."));
-		}
-
-		error = Error();
+		errorState  = True;
+		errorString = i18n->TranslateString("Some error occurred trying to connect to the freedb server.", "CDDB::Query::Errors");
+		error	    = Error();
 	}
 
 	cddb.CloseConnection();

@@ -26,36 +26,30 @@ BonkEnc::CDDBLocal::~CDDBLocal()
 {
 }
 
-Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
+Bool BonkEnc::CDDBLocal::QueryUnixDB(const String &queryString)
 {
-	static String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
+	static String	 array[] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data", NIL };
 
 	BoCA::Config		*config = BoCA::Config::Get();
-	Registry		&boca	= Registry::Get();
-	DeviceInfoComponent	*info	= boca.CreateDeviceInfoComponent();
+	const Array<String>	&values = queryString.Explode(" ");
 
-	if (info == NIL) return False;
-
-	const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
-
-	Int		 numTocEntries = mcdi.GetNumberOfEntries();
+	Int		 numTocEntries = values.GetNth(3).ToInt();
+	Int		 discID	       = StringToDiscID(values.GetNth(2));
+	Int		 discLength    = values.GetNth(numTocEntries + 4).ToInt();
 	Array<Int>	 discOffsets;
-	Int		 discLength;
 
-	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(mcdi.GetNthEntryOffset(l) + 150);
+	for (Int i = 0; i < numTocEntries; i++) discOffsets.Add(values.GetNth(i + 4).ToInt());
 
-	discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
-
-	boca.DeleteComponent(info);
+	String::ExplodeFinish();
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	for (Int i = 0; i < 11; i++)
+	for (Int i = 0; array[i] != NIL; i++)
 	{
-		if (!File(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid))).Exists()) continue;
+		if (!File(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discID))).Exists()) continue;
 
-		InStream	*in = new InStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discid)), IS_READ);
+		InStream	*in = new InStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discID)), IS_READ);
 		String		 result = in->InputString(in->Size());
 
 		delete in;
@@ -75,7 +69,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 
 			if (match)
 			{
-				ids.Add(discid);
+				ids.Add(discID);
 				categories.Add(array[i]);
 				titles.Add(String(cddbInfo.dArtist).Append(" / ").Append(cddbInfo.dTitle));
 				results.Add(result);
@@ -89,35 +83,29 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 	return (results.Length() != 0);
 }
 
-Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
+Bool BonkEnc::CDDBLocal::QueryWinDB(const String &queryString)
 {
-	static String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
+	static String	 array[] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data", NIL };
 
 	BoCA::Config		*config = BoCA::Config::Get();
-	Registry		&boca	= Registry::Get();
-	DeviceInfoComponent	*info	= boca.CreateDeviceInfoComponent();
+	const Array<String>	&values = queryString.Explode(" ");
 
-	if (info == NIL) return False;
-
-	const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
-
-	Int		 numTocEntries = mcdi.GetNumberOfEntries();
+	Int		 numTocEntries = values.GetNth(3).ToInt();
+	Int		 discID	       = StringToDiscID(values.GetNth(2));
+	Int		 discLength    = values.GetNth(numTocEntries + 4).ToInt();
 	Array<Int>	 discOffsets;
-	Int		 discLength;
 
-	for (Int l = 0; l < numTocEntries; l++) discOffsets.Add(mcdi.GetNthEntryOffset(l) + 150);
+	for (Int i = 0; i < numTocEntries; i++) discOffsets.Add(values.GetNth(i + 4).ToInt());
 
-	discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
-
-	boca.DeleteComponent(info);
+	String::ExplodeFinish();
 
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	for (Int i = 0; i < 11; i++)
+	for (Int i = 0; array[i] != NIL; i++)
 	{
 		Directory dir	  = Directory(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]));
-		String	  pattern = String().CopyN(DiscIDToString(discid), 2).Append("to??");
+		String	  pattern = String().CopyN(DiscIDToString(discID), 2).Append("to??");
 		String	  found;
 
 		do
@@ -142,7 +130,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 		if (found == NIL) continue;
 
 		InStream	*in = new InStream(STREAM_FILE, found, IS_READ);
-		String		 idString = String("#FILENAME=").Append(DiscIDToString(discid));
+		String		 idString = String("#FILENAME=").Append(DiscIDToString(discID));
 		String		 result;
 
 		while (in->GetPos() < in->Size())
@@ -186,7 +174,7 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 
 			if (match)
 			{
-				ids.Add(discid);
+				ids.Add(discID);
 				categories.Add(array[i]);
 				titles.Add(String(cddbInfo.dArtist).Append(" / ").Append(cddbInfo.dTitle));
 				results.Add(result);
@@ -207,9 +195,14 @@ Bool BonkEnc::CDDBLocal::ConnectToServer()
 
 Int BonkEnc::CDDBLocal::Query(Int discid)
 {
+	return Query(GetCDDBQueryString());
+}
+
+Int BonkEnc::CDDBLocal::Query(const String &queryString)
+{
 	/* Try to find Unix style record first; if no match is found, try Windows style
 	 */
-	if (!QueryUnixDB(discid)) QueryWinDB(discid);
+	if (!QueryUnixDB(queryString)) QueryWinDB(queryString);
 
 	/* No match found
 	 */
@@ -224,17 +217,6 @@ Int BonkEnc::CDDBLocal::Query(Int discid)
 	if (categories.Length() >  1) return QUERY_RESULT_MULTIPLE;
 
 	return QUERY_RESULT_ERROR;
-}
-
-Int BonkEnc::CDDBLocal::Query(const String &queryString)
-{
-	/* Extract disc ID from query string and call Query() with disc ID
-	 */
-	String	 discID;
-
-	for (Int i = 0; i < 8; i++) discID[i] = queryString[i + 11];
-
-	return Query(StringToDiscID(discID));
 }
 
 Bool BonkEnc::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddbInfo)

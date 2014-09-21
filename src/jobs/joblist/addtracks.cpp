@@ -12,6 +12,8 @@
 #include <jobs/joblist/removeall.h>
 
 #include <cddb/cddbcache.h>
+#include <cddb/cddbbatch.h>
+
 #include <dialogs/cddb/query.h>
 
 #include <utilities.h>
@@ -24,6 +26,8 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
+using namespace smooth::GUI::Dialogs;
+
 BonkEnc::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
 {
 	foreach (const String &url, iURLs) urls.Add(url);
@@ -32,6 +36,8 @@ BonkEnc::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead
 	abort	   = False;
 
 	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddTracks::OnRemoveAllTracksJobScheduled, this);
+
+	SetText("Waiting for other jobs to finish...");
 }
 
 BonkEnc::JobAddTracks::~JobAddTracks()
@@ -54,6 +60,7 @@ Bool BonkEnc::JobAddTracks::ReadyToRun()
 Error BonkEnc::JobAddTracks::Perform()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	CDDBInfo	 cdInfo;
 	Bool		 cddbQueried = False;
@@ -153,7 +160,27 @@ Error BonkEnc::JobAddTracks::Perform()
 						const Info	&info = track.GetInfo();
 						cddbQueryDlg	*dlg  = new cddbQueryDlg(CDDB::QueryStringFromMCDI(info.mcdi));
 
-						if (dlg->ShowDialog() == Success()) cdInfo = dlg->GetCDDBInfo();
+						if (dlg->ShowDialog() == Error())
+						{
+							/* Ask whether to perform this query later.
+							 */
+							if (QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+							{
+								CDDBBatch	*queries = new CDDBBatch();
+
+								queries->AddQuery(CDDB::QueryStringFromMCDI(info.mcdi));
+
+								delete queries;
+							}
+						}
+						else if (dlg->GetErrorString() != NIL)
+						{
+							/* Display info message if any.
+							 */
+							BoCA::Utilities::InfoMessage(dlg->GetErrorString());
+						}
+
+						cdInfo = dlg->GetCDDBInfo();
 
 						DeleteObject(dlg);
 					}

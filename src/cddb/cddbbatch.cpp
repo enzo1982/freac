@@ -15,6 +15,7 @@
 #include <utilities.h>
 
 #include <dialogs/cddb/query.h>
+#include <dialogs/error.h>
 
 BonkEnc::CDDBBatch::CDDBBatch()
 {
@@ -272,44 +273,58 @@ Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 Int BonkEnc::CDDBBatch::Query(Int n)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	/* Query entry and delete entry if successful
 	 */
 	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
 	    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
-		cddbQueryDlg	*dlg = new cddbQueryDlg(queries.GetNth(n), False);
-
-		dlg->ShowDialog();
-
-		const CDDBInfo	&cddbInfo = dlg->GetCDDBInfo();
+		cddbQueryDlg	*dlg	     = new cddbQueryDlg(queries.GetNth(n));
+		Int		 error	     = dlg->ShowDialog();
+		String		 errorString = dlg->GetErrorString();
+		const CDDBInfo	&cddbInfo    = dlg->GetCDDBInfo();
 
 		Object::DeleteObject(dlg);
 
-		if (cddbInfo != NIL)
+		if (error == Error())
 		{
-			/* Save current freedb path
+			/* Display error message and return.
 			 */
-			String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
+			BoCA::Utilities::ErrorMessage(i18n->TranslateString("Some error occurred trying to connect to the freedb server.", "CDDB::Query::Errors"));
 
-			config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
-
-			CDDBLocal	 cddb;
-
-			cddb.SetUpdateTrackOffsets(False);
-
-			/* Save entry to local cache
-			 */
-			cddb.Submit(cddbInfo);
-
-			/* Restore real freedb path
-			 */
-			config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
-
-			DeleteQuery(n);
-
-			return QUERY_RESULT_SINGLE;
+			return QUERY_RESULT_ERROR;
 		}
+		else if (errorString != NIL)
+		{
+			/* If there's an info message, add it to the list of errors.
+			 */
+			queryErrors.Add(errorString);
+		}
+
+		if (cddbInfo == NIL) return QUERY_RESULT_NONE;
+
+		/* Save current freedb path
+		 */
+		String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
+
+		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
+
+		CDDBLocal	 cddb;
+
+		cddb.SetUpdateTrackOffsets(False);
+
+		/* Save entry to local cache
+		 */
+		cddb.Submit(cddbInfo);
+
+		/* Restore real freedb path
+		 */
+		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
+
+		DeleteQuery(n);
+
+		return QUERY_RESULT_SINGLE;
 	}
 
 	return QUERY_RESULT_ERROR;
@@ -317,9 +332,25 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 Bool BonkEnc::CDDBBatch::QueryAll()
 {
-	while (queries.Length() > 0)
+	/* Run all scheduled queries.
+	 */
+	Int	 skipped = 0;
+
+	while (queries.Length() > skipped)
 	{
-		if (Query(0) == QUERY_RESULT_ERROR) return False;
+		Int	 result = Query(skipped);
+
+		if	(result == QUERY_RESULT_ERROR) return False;
+		else if (result == QUERY_RESULT_NONE)  skipped++;
+	}
+
+	/* Display errors.
+	 */
+	if (queryErrors.Length() > 0)
+	{
+		ErrorDialog	 dialog(queryErrors);
+
+		dialog.ShowDialog();
 	}
 
 	return True;
