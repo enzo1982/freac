@@ -915,13 +915,7 @@ Void BonkEnc::JobList::OnChangeConfigurationSettings()
 				    Append(String::FromInt(config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault))).
 				    Append(String::FromInt(config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault)));
 
-	if (headerTabsConfig.ComputeCRC32() != headerTabsHash)
-	{
-		/* We basically need the functionality of
-		 * OnChangeLanguageSettings here, so let's call that.
-		 */
-		OnChangeLanguageSettings();
-	}
+	if (headerTabsConfig.ComputeCRC32() != headerTabsHash) OnChangeHeaderColumns();
 
 	headerTabsHash = headerTabsConfig.ComputeCRC32();
 }
@@ -958,6 +952,29 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 	AddHeaderTabs();
 
 	Show();
+}
+
+Void BonkEnc::JobList::OnChangeHeaderColumns()
+{
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+
+	Hide();
+
+	for (Int i = 0; i < GetNOfTracks(); i++)
+	{
+		const Track	&track = GetNthTrack(i);
+		ListEntry	*entry = GetNthEntry(i);
+
+		entry->SetText(GetEntryText(track));
+	}
+
+	AddHeaderTabs();
+
+	Show();
+
+	surface->EndPaint();
 }
 
 Void BonkEnc::JobList::AddHeaderTabs()
