@@ -19,8 +19,10 @@ using namespace BoCA::AS;
 
 BonkEnc::Decoder::Decoder()
 {
-	f_in	  = NIL;
-	filter_in = NIL;
+	f_in	     = NIL;
+	filter_in    = NIL;
+
+	sampleOffset = 0;
 }
 
 BonkEnc::Decoder::~Decoder()
@@ -91,7 +93,8 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 		while (bytesLeft) bytesLeft -= Read(buffer, Math::Min((Int64) buffer.Size(), bytesLeft));
 	}
 
-	fileName = nFileName;
+	fileName     = nFileName;
+	sampleOffset = track.sampleOffset;
 
 	return True;
 }
@@ -110,10 +113,11 @@ Bool BonkEnc::Decoder::Destroy()
 
 	delete f_in;
 
-	filter_in = NIL;
-	f_in	  = NIL;
+	filter_in    = NIL;
+	f_in	     = NIL;
 
-	fileName  = NIL;
+	fileName     = NIL;
+	sampleOffset = 0;
 
 	return True;
 }
@@ -130,7 +134,7 @@ Int BonkEnc::Decoder::Read(Buffer<UnsignedByte> &buffer, Int bytes)
 
 Bool BonkEnc::Decoder::Seek(Int64 sample)
 {
-	return filter_in->Seek(sample);
+	return filter_in->Seek(sampleOffset + sample);
 }
 
 Int64 BonkEnc::Decoder::GetInBytes() const

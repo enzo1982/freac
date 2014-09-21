@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,6 +22,7 @@ namespace BonkEnc
 	{
 		protected:
 			String				 fileName;
+			Int64				 sampleOffset;
 
 			IO::InStream			*f_in;
 			BoCA::AS::DecoderComponent	*filter_in;
