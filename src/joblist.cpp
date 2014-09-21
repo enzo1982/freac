@@ -1044,9 +1044,13 @@ String BonkEnc::JobList::GetEntryText(const Track &track) const
 
 		else if (field == "<outputfile>")
 		{
-			String	 fileName = Utilities::GetOutputFileName(track);
+			String	 inputDirectory	 = track.origFilename.Head(track.origFilename.FindLast(Directory::GetDirectoryDelimiter()) + 1);
+			String	 outputDirectory = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
 
-			jlEntry.Append(fileName.Tail(fileName.Length() - config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault).Length()));
+			String	 fileName	 = Utilities::GetOutputFileName(track);
+
+			if	(fileName.StartsWith(outputDirectory)) jlEntry.Append(fileName.Tail(fileName.Length() - outputDirectory.Length()));
+			else if (fileName.StartsWith(inputDirectory))  jlEntry.Append(fileName.Tail(fileName.Length() - inputDirectory.Length()));
 		}
 
 		jlEntry.Append("\t");
