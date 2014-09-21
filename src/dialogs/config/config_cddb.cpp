@@ -361,8 +361,8 @@ Int BonkEnc::ConfigureCDDB::SaveSettings()
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, edit_server->GetText());
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, edit_email->GetText());
 
-	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP) config->GetIntValue(Config::CategoryFreedbID, Config::FreedbCDDBPPortID, edit_port->GetText().ToInt());
-	else															 config->GetIntValue(Config::CategoryFreedbID, Config::FreedbHTTPPortID, edit_port->GetText().ToInt());
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP) config->SetIntValue(Config::CategoryFreedbID, Config::FreedbCDDBPPortID, edit_port->GetText().ToInt());
+	else															 config->SetIntValue(Config::CategoryFreedbID, Config::FreedbHTTPPortID, edit_port->GetText().ToInt());
 
 	return Success();
 }
