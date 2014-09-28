@@ -1154,7 +1154,7 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveUp()
 
 	if (joblist->GetSelectedEntryNumber() > 0)
 	{
-		joblist->SwitchEntries(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() - 1);
+		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() - 1);
 
 		joblist->Paint(SP_PAINT);
 	}
@@ -1166,7 +1166,7 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveDown()
 
 	if (joblist->GetSelectedEntryNumber() < joblist->Length() - 1)
 	{
-		joblist->SwitchEntries(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() + 1);
+		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() + 1);
 
 		joblist->Paint(SP_PAINT);
 	}
@@ -1178,8 +1178,7 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveTop()
 
 	if (joblist->GetSelectedEntryNumber() > 0)
 	{
-		for (Int i = joblist->GetSelectedEntryNumber(); i > 0; i--) joblist->SwitchEntries(i, i - 1);
-
+		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), 0);
 		joblist->Paint(SP_PAINT);
 	}
 }
@@ -1190,8 +1189,7 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveBottom()
 
 	if (joblist->GetSelectedEntryNumber() < joblist->Length() - 1)
 	{
-		for (Int i = joblist->GetSelectedEntryNumber(); i < joblist->Length() - 1; i++) joblist->SwitchEntries(i, i + 1);
-
+		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), joblist->Length() - 1);
 		joblist->Paint(SP_PAINT);
 	}
 }

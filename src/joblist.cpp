@@ -849,10 +849,10 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 																 nextTrack.approxLength) / nextFormat.rate) ||
 		    (sortByBytes  &&  thisTrack.fileSize					       >  nextTrack.fileSize						  ))
 		{
-			SwitchEntries(i, i + 1);
+			MoveEntry(i, i + 1);
 
-			if (sortByType)	  fileTypes.SwitchNth(i, i + 1);
-			if (sortByOutput) outputFileNames.SwitchNth(i, i + 1);
+			if (sortByType)	  fileTypes.MoveNth(i, i + 1);
+			if (sortByOutput) outputFileNames.MoveNth(i, i + 1);
 
 			if (--i >= 0) { i--; skip++; }
 
@@ -868,7 +868,7 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 
 	/* Revert sort order if requested.
 	 */
-	for (Int i = 0; reverse && i < tracks.Length() / 2; i++) SwitchEntries(i, tracks.Length() - i - 1);
+	for (Int i = 0; reverse && i < tracks.Length(); i++) MoveEntry(0, tracks.Length() - i - 1);
 
 	/* Redraw if anything has changed.
 	 */

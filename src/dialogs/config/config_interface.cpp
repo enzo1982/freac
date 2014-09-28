@@ -131,14 +131,14 @@ Void BonkEnc::ConfigureInterface::OnSelectJoblistField()
 
 Void BonkEnc::ConfigureInterface::JoblistFieldMoveUp()
 {
-	list_fields->SwitchEntries(list_fields->GetSelectedEntryNumber(), list_fields->GetSelectedEntryNumber() - 1);
+	list_fields->MoveEntry(list_fields->GetSelectedEntryNumber(), list_fields->GetSelectedEntryNumber() - 1);
 
 	list_fields->Paint(SP_UPDATE);
 }
 
 Void BonkEnc::ConfigureInterface::JoblistFieldMoveDown()
 {
-	list_fields->SwitchEntries(list_fields->GetSelectedEntryNumber(), list_fields->GetSelectedEntryNumber() + 1);
+	list_fields->MoveEntry(list_fields->GetSelectedEntryNumber(), list_fields->GetSelectedEntryNumber() + 1);
 
 	list_fields->Paint(SP_UPDATE);
 }
