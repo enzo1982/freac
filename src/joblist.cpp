@@ -791,10 +791,22 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 	/* Check if reverse sorting is needed.
 	 */
 	static String	 previousCriteria;
-	Bool		 reverse = False;
+	static Bool	 reverse = False;
 
-	if (fields.GetNth(n) == previousCriteria) { previousCriteria = NIL; reverse = True; }
-	else					    previousCriteria = fields.GetNth(n);
+	if (fields.GetNth(n) == previousCriteria)
+	{
+		/* Revert sort order previously reversed.
+		 */
+		for (Int i = 0; reverse && i < tracks.Length(); i++) MoveEntry(0, tracks.Length() - i - 1);
+
+		reverse = !reverse;
+	}
+	else
+	{
+		previousCriteria = fields.GetNth(n);
+
+		reverse = False;
+	}
 
 	String::ExplodeFinish();
 
@@ -821,48 +833,49 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 
 	/* Sort the list using gnome sort.
 	 */
-	Bool	 changed = False;
-	Int	 skip	 = 0;
-
-	for (Int i = 0; i < tracks.Length() - 1; i++)
+	for (Int i = 1; i < tracks.Length(); i++)
 	{
 		const Track	&thisTrack  = GetNthTrack(i);
 		const Info	&thisInfo   = thisTrack.GetInfo();
 		const Format	&thisFormat = thisTrack.GetFormat();
 
-		const Track	&nextTrack  = GetNthTrack(i + 1);
-		const Info	&nextInfo   = nextTrack.GetInfo();
-		const Format	&nextFormat = nextTrack.GetFormat();
+		Int		 offset	    = 0;
 
-		if ((sortByArtist &&  SortsAfter(thisInfo.artist, nextInfo.artist)											  ) ||
-		    (sortByAlbum  &&  SortsAfter(thisInfo.album, nextInfo.album)											  ) ||
-		    (sortByTitle  &&  SortsAfter(thisInfo.title, nextInfo.title)											  ) ||
-		    (sortByGenre  &&  SortsAfter(thisInfo.genre, nextInfo.genre)											  ) ||
-		    (sortByFile	  &&  SortsAfter(thisTrack.origFilename, nextTrack.origFilename)									  ) ||
-		    (sortByType	  &&  SortsAfter(fileTypes.GetNth(i), fileTypes.GetNth(i + 1))										  ) ||
-		    (sortByOutput &&  SortsAfter(outputFileNames.GetNth(i), outputFileNames.GetNth(i + 1))											  ) ||
-		    (sortByDisc	  &&  thisInfo.disc						       >  nextInfo.disc							  ) ||
-		    (sortByTrack  &&  thisInfo.track						       >  nextInfo.track						  ) ||
-		    (sortByRating &&  thisInfo.rating						       >  nextInfo.rating						  ) ||
-		    (sortByTime	  && (thisTrack.length > 0 ? thisTrack.length :
-							     thisTrack.approxLength) / thisFormat.rate > (nextTrack.length > 0 ? nextTrack.length :
-																 nextTrack.approxLength) / nextFormat.rate) ||
-		    (sortByBytes  &&  thisTrack.fileSize					       >  nextTrack.fileSize						  ))
+		for (Int j = i - 1; j >= 0; j--)
 		{
-			MoveEntry(i, i + 1);
+			const Track	&prevTrack  = GetNthTrack(j);
+			const Info	&prevInfo   = prevTrack.GetInfo();
+			const Format	&prevFormat = prevTrack.GetFormat();
 
-			if (sortByType)	  fileTypes.MoveNth(i, i + 1);
-			if (sortByOutput) outputFileNames.MoveNth(i, i + 1);
+			if ((sortByArtist &&  SortsAfter(prevInfo.artist, thisInfo.artist)											  ) ||
+			    (sortByAlbum  &&  SortsAfter(prevInfo.album, thisInfo.album)											  ) ||
+			    (sortByTitle  &&  SortsAfter(prevInfo.title, thisInfo.title)											  ) ||
+			    (sortByGenre  &&  SortsAfter(prevInfo.genre, thisInfo.genre)											  ) ||
+			    (sortByFile	  &&  SortsAfter(prevTrack.origFilename, thisTrack.origFilename)									  ) ||
+			    (sortByType	  &&  SortsAfter(fileTypes.GetNth(j), fileTypes.GetNth(i))										  ) ||
+			    (sortByOutput &&  SortsAfter(outputFileNames.GetNth(j), outputFileNames.GetNth(i))									  ) ||
+			    (sortByDisc	  &&  prevInfo.disc						       >  thisInfo.disc							  ) ||
+			    (sortByTrack  &&  prevInfo.track						       >  thisInfo.track						  ) ||
+			    (sortByRating &&  prevInfo.rating						       >  thisInfo.rating						  ) ||
+			    (sortByTime	  && (prevTrack.length > 0 ? prevTrack.length :
+								     prevTrack.approxLength) / prevFormat.rate > (thisTrack.length > 0 ? thisTrack.length :
+																	 thisTrack.approxLength) / thisFormat.rate) ||
+			    (sortByBytes  &&  prevTrack.fileSize					       >  thisTrack.fileSize						  ))
+			{
+				offset++;
 
-			if (--i >= 0) { i--; skip++; }
+				continue;
+			}
 
-			changed = True;
+			break;
 		}
-		else
-		{
-			i += skip;
 
-			skip = 0;
+		if (offset > 0)
+		{
+			MoveEntry(i, i - offset);
+
+			if (sortByType)	  fileTypes.MoveNth(i, i - offset);
+			if (sortByOutput) outputFileNames.MoveNth(i, i - offset);
 		}
 	}
 
@@ -870,9 +883,9 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 	 */
 	for (Int i = 0; reverse && i < tracks.Length(); i++) MoveEntry(0, tracks.Length() - i - 1);
 
-	/* Redraw if anything has changed.
+	/* Redraw joblist.
 	 */
-	if (changed || reverse) Paint(SP_UPDATE);
+	Paint(SP_UPDATE);
 }
 
 Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
