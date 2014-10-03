@@ -20,6 +20,7 @@
 #include <utilities.h>
 
 #include <support/autorelease.h>
+#include <support/notification.h>
 
 #include <dialogs/overwrite.h>
 
@@ -354,6 +355,38 @@ Error BonkEnc::JobConvert::Perform()
 
 				if (File(track.outfile).Exists())
 				{
+					/* Eject CD if this was the last track from that disc.
+					 */
+					if (track.isCDTrack && ripperEjectDisc)
+					{
+						/* Check if this was the last track.
+						 */
+						Bool	 ejectDisk = True;
+
+						foreach (const Track &trackToCheck, tracks)
+						{
+							if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
+						}
+
+						/* Eject disc if no more tracks left.
+						 */
+						if (ejectDisk)
+						{
+							DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+							if (info != NIL)
+							{
+								info->OpenNthDeviceTray(track.drive);
+
+								boca.DeleteComponent(info);
+
+								/* Notify application of removed disc.
+								 */
+								Notification::Get()->onDiscRemove.Emit(track.drive);
+							}
+						}
+					}
+
 					/* Remove track from joblist.
 					 */
 					if (removeProcessedTracks && !config->enable_console)
@@ -942,6 +975,8 @@ Error BonkEnc::JobConvert::Perform()
 			 */
 			if (trackInfo.isCDTrack && ripperEjectDisc && mode != CONVERTER_STEP_DECODE)
 			{
+				/* Check if this was the last track.
+				 */
 				Bool	 ejectDisk = True;
 
 				for (Int j = i + 1; j < tracks.Length(); j++)
@@ -949,6 +984,8 @@ Error BonkEnc::JobConvert::Perform()
 					if (tracks.GetNth(j).drive == trackInfo.drive) { ejectDisk = False; break; }
 				}
 
+				/* Eject disc if no more tracks left.
+				 */
 				if (ejectDisk)
 				{
 					DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
@@ -958,6 +995,10 @@ Error BonkEnc::JobConvert::Perform()
 						info->OpenNthDeviceTray(trackInfo.drive);
 
 						boca.DeleteComponent(info);
+
+						/* Notify application of removed disc.
+						 */
+						Notification::Get()->onDiscRemove.Emit(trackInfo.drive);
 					}
 				}
 			}
