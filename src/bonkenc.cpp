@@ -93,6 +93,10 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	currentConfig	= Config::Get();
 
+	/* Increment start count.
+	 */
+	BoCA::Config::Get()->SetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) + 1);
+
 	/* Set default comment unless already set.
 	 */
 	BoCA::Config::Get()->SetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, BoCA::Config::Get()->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, String(appLongName).Append(" <").Append(website).Append(">")));
@@ -140,10 +144,6 @@ BonkEnc::BonkEnc::~BonkEnc()
 	/* Free the CDDB cache.
 	 */
 	CDDBCache::Free();
-
-	/* Set first start flag to false.
-	 */
-	BoCA::Config::Get()->SetIntValue(Config::CategorySettingsID, Config::SettingsFirstStartID, False);
 
 	/* Free easyUpdate library.
 	 */

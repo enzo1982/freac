@@ -38,7 +38,17 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 	SetText("Preparing update check...");
 
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsFirstStartID, Config::SettingsFirstStartDefault))
+	/* Do not check for updates on first startup.
+	 */
+	if (startup && config->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 1)
+	{
+		return Success();
+	}
+
+	/* Ask whether to check for updates on second startup.
+	 */
+	if (startup && config->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2 &&
+		      !config->GetIntValue(Config::CategorySettingsID, Config::SettingsUpdatesCheckedID, Config::SettingsUpdatesCheckedDefault))
 	{
 		if (QuickMessage(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?").Replace("%1", ::BonkEnc::BonkEnc::appName), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question) == Message::Button::No)
 		{
@@ -48,6 +58,8 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		}
 	}
 
+	/* Create update context and check for updates.
+	 */
 	SetText("Creating update context...");
 
 #ifdef __WIN32__
@@ -107,13 +119,14 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 			DeleteObject(msgBox);
 		}
-		else if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsFirstStartID, Config::SettingsFirstStartDefault))
+		else if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2)
 		{
 			QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information);
 		}
 	}
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, checkUpdates);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsUpdatesCheckedID, True);
 
 	ex_eUpdate_FreeUpdateContext(context);
 #endif

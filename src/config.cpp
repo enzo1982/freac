@@ -29,8 +29,8 @@ const String	 BonkEnc::Config::CategoryFreedbID				= "freedb";
 
 /* Category Settings
  */
-const String	 BonkEnc::Config::SettingsFirstStartID				= "FirstStart";
-const Bool	 BonkEnc::Config::SettingsFirstStartDefault			= True;
+const String	 BonkEnc::Config::SettingsStartCountID				= "StartCount";
+const Int	 BonkEnc::Config::SettingsStartCountDefault			= 0;
 
 const String	 BonkEnc::Config::SettingsWindowPosXID				= "WindowPosX";
 const Int	 BonkEnc::Config::SettingsWindowPosXDefault			= 100;
@@ -70,6 +70,9 @@ const Bool	 BonkEnc::Config::SettingsEncodingHeuristicsDefault		= False;
 
 const String	 BonkEnc::Config::SettingsCheckForUpdatesID			= "CheckUpdatesAtStartup";
 const Bool	 BonkEnc::Config::SettingsCheckForUpdatesDefault		= True;
+
+const String	 BonkEnc::Config::SettingsUpdatesCheckedID			= "UpdatesChecked";
+const Bool	 BonkEnc::Config::SettingsUpdatesCheckedDefault			= False;
 
 const String	 BonkEnc::Config::SettingsLastUsedGenreID			= "LastUsedGenre";
 

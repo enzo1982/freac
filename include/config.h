@@ -30,8 +30,8 @@ namespace BonkEnc
 
 			/* Category Settings
 			 */
-			static const String	 SettingsFirstStartID;
-			static const Bool	 SettingsFirstStartDefault;
+			static const String	 SettingsStartCountID;
+			static const Int	 SettingsStartCountDefault;
 
 			static const String	 SettingsWindowPosXID;
 			static const Int	 SettingsWindowPosXDefault;
@@ -71,6 +71,9 @@ namespace BonkEnc
 
 			static const String	 SettingsCheckForUpdatesID;
 			static const Bool	 SettingsCheckForUpdatesDefault;
+
+			static const String	 SettingsUpdatesCheckedID;
+			static const Bool	 SettingsUpdatesCheckedDefault;
 
 			static const String	 SettingsLastUsedGenreID;
 
