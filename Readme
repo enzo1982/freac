@@ -162,8 +162,8 @@ Requirements
 	Requirements for running the binaries:
 
 		Supported operating systems:
-			- Windows XP/Vista/7/8.x (older Windows version might work with some limitations)
-			- Mac OS X Leopard or later
+			- Windows XP/Vista/7/8.x
+			- OS X 10.5 Leopard or later
 			- Linux (most modern distributions should work)
 			- FreeBSD/PC-BSD (tested on FreeBSD 10.0)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)

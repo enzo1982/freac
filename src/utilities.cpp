@@ -279,19 +279,18 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 
 	for (Int k = 0, b = 0; k < string.Length(); k++)
 	{
-		if	(string[k] == '\"')			{ rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
-		else if (string[k] == '?')			b--;
-		else if (string[k] == '|')			rVal[k + b] = '_';
-		else if (string[k] == '*')			b--;
-		else if (string[k] == '<')			rVal[k + b] = '(';
-		else if (string[k] == '>')			rVal[k + b] = ')';
-		else if (string[k] == ':')			b--;
-		else if (string[k] == '/'  && replaceSlash)	rVal[k + b] = '-';
-		else if (string[k] == '\\' && replaceSlash)	rVal[k + b] = '-';
-		else if (string[k] == ' '  && replaceSpaces)	rVal[k + b] = '_';
-		else if (string[k] >= 256  &&
-			(!useUnicode || !Setup::enableUnicode))	rVal[k + b] = '#';
-		else						rVal[k + b] = string[k];
+		if	(string[k] == '\"')		   { rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
+		else if (string[k] == '?')		     b--;
+		else if (string[k] == '|')		     rVal[k + b] = '_';
+		else if (string[k] == '*')		     b--;
+		else if (string[k] == '<')		     rVal[k + b] = '(';
+		else if (string[k] == '>')		     rVal[k + b] = ')';
+		else if (string[k] == ':')		     b--;
+		else if (string[k] == '/'  && replaceSlash)  rVal[k + b] = '-';
+		else if (string[k] == '\\' && replaceSlash)  rVal[k + b] = '-';
+		else if (string[k] == ' '  && replaceSpaces) rVal[k + b] = '_';
+		else if (string[k] >= 256  && !useUnicode)   rVal[k + b] = '#';
+		else					     rVal[k + b] = string[k];
 	}
 
 	return rVal;
@@ -684,8 +683,7 @@ Void BonkEnc::Utilities::GainShutdownPrivilege()
 
 		OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, &htoken);
 
-		if (Setup::enableUnicode)	LookupPrivilegeValueW(NULL, SE_SHUTDOWN_NAME, &value);
-		else				LookupPrivilegeValueA(NULL, "SeShutdownPrivilege", &value);
+		LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &value);
 
 		token.PrivilegeCount = 1;
 		token.Privileges[0].Luid = value;

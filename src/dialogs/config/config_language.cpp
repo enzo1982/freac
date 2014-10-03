@@ -120,8 +120,7 @@ Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 #if defined __WIN32__
-	if (Setup::enableUnicode) ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\""), String("."), SW_SHOW);
-	else			  ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\""), String("."), SW_SHOW);
+	ShellExecute(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\""), String("."), SW_SHOW);
 #else
 	String	 command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator\"");
 

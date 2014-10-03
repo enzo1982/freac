@@ -1061,7 +1061,7 @@ String BonkEnc::JobList::GetEntryText(const Track &track) const
 		else if (field == "<genre>")	  jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : i18n->TranslateString("unknown genre"));
 		else if (field == "<disc>")	  jlEntry.Append(info.disc > 0 ? (info.disc < 10 ? String("0").Append(String::FromInt(info.disc)) : String::FromInt(info.disc)) : String());
 		else if (field == "<track>")	  jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String());
-		else if (field == "<rating>")	  jlEntry.Append(info.rating > 0 ? (Setup::enableUnicode ? String().FillN(0x2605, Math::Round(info.rating / 25.0) + 1).Append(String().FillN(0x2606, 5 - (Math::Round(info.rating / 25.0) + 1))) : String::FromInt(Math::Round(info.rating / 25.0) + 1).Append("/5")) : String());
+		else if (field == "<rating>")	  jlEntry.Append(info.rating > 0 ? String().FillN(0x2605, Math::Round(info.rating / 25.0) + 1).Append(String().FillN(0x2606, 5 - (Math::Round(info.rating / 25.0) + 1))) : String());
 		else if (field == "<time>")	  jlEntry.Append(track.GetLengthString());
 		else if (field == "<bytes>")	  jlEntry.Append(track.GetFileSizeString());
 		else if (field == "<file>")	  jlEntry.Append(track.origFilename);

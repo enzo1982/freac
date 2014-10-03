@@ -11,15 +11,12 @@
 #include <dllinterfaces.h>
 
 #ifdef __WIN32__
-	EUCREATEUPDATECONTEXT	 ex_eUpdate_CreateUpdateContext		= NIL;
-	EUCREATEUPDATECONTEXTW	 ex_eUpdate_CreateUpdateContextW	= NIL;
-	EUSETCONFIGFILE		 ex_eUpdate_SetConfigFile		= NIL;
-	EUSETCONFIGFILEW	 ex_eUpdate_SetConfigFileW		= NIL;
-	EUSETLANGUAGE		 ex_eUpdate_SetLanguage			= NIL;
-	EUSETLANGUAGEW		 ex_eUpdate_SetLanguageW		= NIL;
-	EUFREEUPDATECONTEXT	 ex_eUpdate_FreeUpdateContext		= NIL;
-	EUCHECKFORNEWUPDATES	 ex_eUpdate_CheckForNewUpdates		= NIL;
-	EUAUTOMATICUPDATE	 ex_eUpdate_AutomaticUpdate		= NIL;
+	EUCREATEUPDATECONTEXT	 ex_eUpdate_CreateUpdateContext	= NIL;
+	EUSETCONFIGFILE		 ex_eUpdate_SetConfigFile	= NIL;
+	EUSETLANGUAGE		 ex_eUpdate_SetLanguage		= NIL;
+	EUFREEUPDATECONTEXT	 ex_eUpdate_FreeUpdateContext	= NIL;
+	EUCHECKFORNEWUPDATES	 ex_eUpdate_CheckForNewUpdates	= NIL;
+	EUAUTOMATICUPDATE	 ex_eUpdate_AutomaticUpdate	= NIL;
 #endif
 
 DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
@@ -32,21 +29,15 @@ Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 	eupdatedll = new DynamicLoader("eUpdate");
 
 	ex_eUpdate_CreateUpdateContext	= (EUCREATEUPDATECONTEXT) eupdatedll->GetFunctionAddress("eUpdate_CreateUpdateContext");
-	ex_eUpdate_CreateUpdateContextW	= (EUCREATEUPDATECONTEXTW) eupdatedll->GetFunctionAddress("eUpdate_CreateUpdateContextW");
 	ex_eUpdate_SetConfigFile	= (EUSETCONFIGFILE) eupdatedll->GetFunctionAddress("eUpdate_SetConfigFile");
-	ex_eUpdate_SetConfigFileW	= (EUSETCONFIGFILEW) eupdatedll->GetFunctionAddress("eUpdate_SetConfigFileW");
 	ex_eUpdate_SetLanguage		= (EUSETLANGUAGE) eupdatedll->GetFunctionAddress("eUpdate_SetLanguage");
-	ex_eUpdate_SetLanguageW		= (EUSETLANGUAGEW) eupdatedll->GetFunctionAddress("eUpdate_SetLanguageW");
 	ex_eUpdate_FreeUpdateContext	= (EUFREEUPDATECONTEXT) eupdatedll->GetFunctionAddress("eUpdate_FreeUpdateContext");
 	ex_eUpdate_CheckForNewUpdates	= (EUCHECKFORNEWUPDATES) eupdatedll->GetFunctionAddress("eUpdate_CheckForNewUpdates");
 	ex_eUpdate_AutomaticUpdate	= (EUAUTOMATICUPDATE) eupdatedll->GetFunctionAddress("eUpdate_AutomaticUpdate");
 
 	if (ex_eUpdate_CreateUpdateContext	== NIL ||
-	    ex_eUpdate_CreateUpdateContextW	== NIL ||
 	    ex_eUpdate_SetConfigFile		== NIL ||
-	    ex_eUpdate_SetConfigFileW		== NIL ||
 	    ex_eUpdate_SetLanguage		== NIL ||
-	    ex_eUpdate_SetLanguageW		== NIL ||
 	    ex_eUpdate_FreeUpdateContext	== NIL ||
 	    ex_eUpdate_CheckForNewUpdates	== NIL ||
 	    ex_eUpdate_AutomaticUpdate		== NIL) { FreeEUpdateDLL(); return False; }

@@ -162,8 +162,8 @@ Voraussetzungen
 	Voraussetzungen zum Ausführen der Binärpakete:
 
 		Unterstützte Betriebsysteme:
-			- Windows XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
-			- Mac OS X Leopard oder neuer
+			- Windows XP/Vista/7/8.x
+			- OS X 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen sollten funktionieren)
 			- FreeBSD/PC-BSD (getestet unter FreeBSD 10.0)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)

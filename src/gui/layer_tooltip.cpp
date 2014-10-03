@@ -72,15 +72,10 @@ const String &BonkEnc::LayerTooltip::GetTooltipText(const Track &track)
 
 	if (format.rate > 0)
 	{
+		static wchar_t	 sign[2] = { 0x2248, 0 };
+
 		if	(track.length	    > 0) tooltip.Append("\n").Append(i18n->AddColon(i18n->TranslateString("Bitrate"))).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.length / format.rate) * 8.0 / 1000.0))));
-		else if (track.approxLength > 0) tooltip.Append("\n").Append(i18n->AddColon(i18n->TranslateString("Bitrate"))).Append(" ~ ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / format.rate) * 8.0 / 1000.0))));
-
-		if (Setup::enableUnicode)
-		{
-			static wchar_t	 sign[2] = { 0x2248, 0 };
-
-			tooltip.Replace("~", sign);
-		}
+		else if (track.approxLength > 0) tooltip.Append("\n").Append(i18n->AddColon(i18n->TranslateString("Bitrate"))).Append(" ").Append(sign).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / format.rate) * 8.0 / 1000.0))));
 	}
 
 	return tooltip;

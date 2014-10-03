@@ -1,5 +1,5 @@
  /* easyUpdate online update system
-  * Copyright (C) 2004-2006 chapter.0 software solutions
+  * Copyright (C) 2004-2014 chapter.0 software solutions
   *
   * This file may be distributed freely. There are no license
   * terms or any other legal requirements for this file. */
@@ -21,20 +21,16 @@ extern "C"
 {
 /* Use these functions to create and destroy an update context. */
 
-	DLLAPI void * EUCCONV	eUpdate_CreateUpdateContext		(const char *, const char *, const char *);
-	DLLAPI void * EUCCONV	eUpdate_CreateUpdateContextW		(const wchar_t *, const wchar_t *, const wchar_t *);
-
+	DLLAPI void * EUCCONV	 eUpdate_CreateUpdateContext		(const wchar_t *, const wchar_t *, const wchar_t *);
 	DLLAPI int EUCCONV	 eUpdate_FreeUpdateContext		(void *);
 
 /* Use this function to set the name of the configuration file to be used by easyUpdate. */
 
-	DLLAPI bool EUCCONV	 eUpdate_SetConfigFile			(void *, const char *);
-	DLLAPI bool EUCCONV	 eUpdate_SetConfigFileW			(void *, const wchar_t *);
+	DLLAPI bool EUCCONV	 eUpdate_SetConfigFile			(void *, const wchar_t *);
 
 /* Use this function to set the name of the language file to be used by easyUpdate. */
 
-	DLLAPI bool EUCCONV	 eUpdate_SetLanguage			(void *, const char *);
-	DLLAPI bool EUCCONV	 eUpdate_SetLanguageW			(void *, const wchar_t *);
+	DLLAPI bool EUCCONV	 eUpdate_SetLanguage			(void *, const wchar_t *);
 
 /* Use this function to check if new updates are available. It will return the number of available new updates. */
 

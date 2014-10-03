@@ -59,7 +59,7 @@ RESCOMP			   = windres
 LINKER			   = gcc
 REMOVER			   = rm
 ECHO			   = echo
-COMPILER_OPTS		   = -pipe -I$(INCLUDEDIR) -g0 -Wall -Os -fvisibility=hidden -fno-exceptions -DUNICODE -D_UNICODE -c
+COMPILER_OPTS		   = -pipe -I$(INCLUDEDIR) -g0 -Wall -Os -fvisibility=hidden -fno-exceptions -c
 RESCOMP_OPTS		   = -O coff
 LINKER_OPTS		   = -pipe -lstdc++ -o $(DLLNAME)
 LOADER_GUI_LINKER_OPTS	   = -pipe -lstdc++ -o $(EXENAME)
@@ -150,11 +150,7 @@ ifneq ($(BUILD_WIN32),True)
 endif
 
 ifeq ($(BUILD_WIN32),True)
-	COMPILER_OPTS			+= -I$(CDK)/include
-
-	ifeq ($(BUILD_X86),True)
-		LINKER_OPTS		+= -lunicows
-	endif
+	COMPILER_OPTS			+= -DUNICODE -D_UNICODE -I$(CDK)/include
 
 	LINKER_OPTS			+= -L$(LIBDIR) -lsmooth -lboca -Wl,--dynamicbase,--nxcompat -lws2_32 -lole32 -luuid -Wl,--out-implib,$(LIBNAME)
 	LOADER_GUI_LINKER_OPTS		+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat -mwindows

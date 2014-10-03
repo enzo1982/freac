@@ -143,9 +143,6 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	edit_filename->SetDropDownList(list_filename);
 
 	check_unicode_files	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 39), Size(261, 0), &unicode_files);
-
-	if (!Setup::enableUnicode) check_unicode_files->Deactivate();
-
 	check_replace_spaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(280, 39), Size(261, 0), &replace_spaces);
 
 	group_filename->Add(text_filename);

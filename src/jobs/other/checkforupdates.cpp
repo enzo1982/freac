@@ -53,11 +53,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 #ifdef __WIN32__
 	Void	*context = ex_eUpdate_CreateUpdateContext(::BonkEnc::BonkEnc::appLongName, ::BonkEnc::BonkEnc::version, ::BonkEnc::BonkEnc::updatePath);
 
-	if (config->configDir != NIL)
-	{
-		if (Setup::enableUnicode) ex_eUpdate_SetConfigFileW(context, String(config->configDir).Append("eUpdate.xml"));
-		else			  ex_eUpdate_SetConfigFile(context, String(config->configDir).Append("eUpdate.xml"));
-	}
+	if (config->configDir != NIL) ex_eUpdate_SetConfigFile(context, String(config->configDir).Append("eUpdate.xml"));
 
 	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
 
@@ -67,11 +63,11 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 		for (Int i = language.Find("_") + 1; i < language.Length(); i++) langID[i - language.Find("_") - 1] = language[i];
 
-		if (!ex_eUpdate_SetLanguage(context, String("eupdate_").Append(langID))) ex_eUpdate_SetLanguage(context, "internal");
+		if (!ex_eUpdate_SetLanguage(context, String("eupdate_").Append(langID))) ex_eUpdate_SetLanguage(context, String("internal"));
 	}
 	else
 	{
-		ex_eUpdate_SetLanguage(context, "internal");
+		ex_eUpdate_SetLanguage(context, String("internal"));
 	}
 
 	SetText("Contacting update server...");
