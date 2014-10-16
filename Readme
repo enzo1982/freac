@@ -33,13 +33,14 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.0.23 (September 2014)
+	Version 1.0.23 (October 2014)
 
 		- added Basque and Serbian (Cyrillic) language support
 		- updated Chinese (traditional) and Czech translations
 		- added Basque user guide
 		- added additional genres as defined by Winamp 5.6
 		- the main window is no longer closed when pressing escape
+		- fixed stability issues when decoding MP3 files
 		- fixed crash when writing cover art to WMA tags
 		- fixed drag & drop target area not matching joblist
 

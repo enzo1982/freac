@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -289,7 +289,7 @@ mad_flow BonkEnc::MADInputCallback(void *client_data, mad_stream *stream)
 
 	filter->readDataMutex->Lock();
 
-	/* Check if we have any nore data. If not, append an empty
+	/* Check if we have any more data. If not, append an empty
 	 * frame to the last frame to allow the decoder to finish.
 	 */
 	if (filter->driver->GetPos() == filter->driver->GetSize()) filter->finished = True;
@@ -297,13 +297,12 @@ mad_flow BonkEnc::MADInputCallback(void *client_data, mad_stream *stream)
 	Int	 bytes = Math::Min((Int64) 131072, filter->finished ? 1440 : filter->driver->GetSize() - filter->driver->GetPos());
 	Int	 backup = stream->bufend - stream->next_frame;
 
-	inputBuffer.Resize(bytes + backup);
-
-	if (filter->finished) inputBuffer.Zero();
-
 	memmove(inputBuffer, stream->next_frame, backup);
 
+	inputBuffer.Resize(bytes + backup);
+
 	if (!filter->finished) filter->driver->ReadData(inputBuffer + backup, bytes);
+	else		       memset(inputBuffer + backup, 0, bytes);
 
 	filter->readDataMutex->Release();
 
