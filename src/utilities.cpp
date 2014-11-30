@@ -457,17 +457,29 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 		else		     outputFileName.Copy(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 		/* Get file extension from selected encoder component
+		 * caching the result for requests in quick succession.
 		 */
-		Registry		&boca	       = Registry::Get();
-		EncoderComponent	*encoder       = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+		static String		 fileExtension	 = NIL;
+		static String		 selectedEncoder = NIL;
+		static UnsignedInt64	 lastRequest	 = 0;
 
-		String			 fileExtension = (encoder != NIL) ? encoder->GetOutputFileExtension() : "audio";
-		String			 filePattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+		if (selectedEncoder != config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) || S::System::System::Clock() - lastRequest >= 750)
+		{
+			Registry		&boca	 = Registry::Get();
+			EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
-		boca.DeleteComponent(encoder);
+			fileExtension	= (encoder != NIL) ? encoder->GetOutputFileExtension() : "audio";
+			selectedEncoder	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 
-		/* Replace patterns
+			boca.DeleteComponent(encoder);
+		}
+
+		lastRequest = S::System::System::Clock();
+
+		/* Replace patterns.
 		 */
+		String	 filePattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+
 		if ((info.artist != NIL && filePattern.Find("<artist>")   >= 0) ||
 		    (info.title  != NIL && filePattern.Find("<title>")    >= 0) ||
 		    (info.track  != -1  && filePattern.Find("<track>")    >= 0) ||
@@ -549,7 +561,7 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 			outputFileName.Append(shortInFileName);
 		}
 
-		/* Append file extension
+		/* Append file extension.
 		 */
 		outputFileName.Append(".").Append(fileExtension);
 	}
