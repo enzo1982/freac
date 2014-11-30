@@ -179,7 +179,7 @@ BonkEnc::BonkEnc::~BonkEnc()
 	if (currentConfig->enable_mad)		DLLInterfaces::FreeMADDLL();
 	if (currentConfig->enable_wma)		DLLInterfaces::FreeWMVCoreDLL();
 
-#ifdef __WIN32
+#ifdef __WIN32__
 	DLLInterfaces::FreeWinampDLLs();
 #endif
 
