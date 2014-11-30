@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,12 +15,16 @@
 #	include <mmreg.h>
 #else
 #	define WAVE_FORMAT_PCM	      0x0001
+#	define WAVE_FORMAT_IEEE_FLOAT 0x0003
 #	define WAVE_FORMAT_EXTENSIBLE 0xFFFE
 #endif
 
 BonkEnc::FilterInWAVE::FilterInWAVE(Config *config, Track *format) : InputFilter(config, format)
 {
-	packageSize = 0;
+	packageSize	= 0;
+
+	floatFormat	= False;
+	floatFormatBits	= 32;
 }
 
 BonkEnc::FilterInWAVE::~FilterInWAVE()
@@ -42,7 +46,23 @@ Bool BonkEnc::FilterInWAVE::Activate()
 
 		Int	 cSize = in->InputNumber(4);
 
-		if (chunk != "data") in->RelSeek(cSize + cSize % 2);
+		if (chunk == "fmt ")
+		{
+			Int	 waveFormat = in->InputNumber(2);
+
+			if (waveFormat == WAVE_FORMAT_IEEE_FLOAT) floatFormat = True;
+
+			in->RelSeek(12);
+
+			floatFormatBits	= uint16(in->InputNumber(2));
+
+			// Skip rest of chunk
+			in->RelSeek(cSize - 16 + cSize % 2);
+		}
+		else if (chunk != "data")
+		{
+			in->RelSeek(cSize + cSize % 2);
+		}
 	}
 	while (chunk != "data");
 
@@ -62,9 +82,28 @@ Int BonkEnc::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (driver->GetPos() == driver->GetSize()) return -1;
 
+	// Read data
+	if (floatFormat && floatFormatBits == 64) size *= 2;
+
 	data.Resize(size);
 
 	size = driver->ReadData(data, size);
+
+	// Convert float to integer
+	if (floatFormat && floatFormatBits == 32)
+	{
+		for (Int i = 0; i < size / 4; i++) ((Int32 *) (unsigned char *) data)[i] = Math::Min(Int64( 0x7FFFFFFF),
+											   Math::Max(Int64(~0x7FFFFFFF), Int64(((ShortFloat *) (unsigned char *) data)[i] * 0x80000000)));
+	}
+	else if (floatFormat && floatFormatBits == 64)
+	{
+		for (Int i = 0; i < size / 8; i++) ((Int32 *) (unsigned char *) data)[i] = Math::Min(Int64( 0x7FFFFFFF),
+											   Math::Max(Int64(~0x7FFFFFFF), Int64(((Float *)      (unsigned char *) data)[i] * 0x80000000)));
+
+		size /= 2;
+
+		data.Resize(size);
+	}
 
 	return size;
 }
@@ -97,7 +136,8 @@ BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 		{
 			Int	 waveFormat = f_in->InputNumber(2);
 
-			if (waveFormat != WAVE_FORMAT_PCM &&
+			if (waveFormat != WAVE_FORMAT_PCM	 &&
+			    waveFormat != WAVE_FORMAT_IEEE_FLOAT &&
 			    waveFormat != WAVE_FORMAT_EXTENSIBLE) { errorState = True; errorString = "Unsupported audio format"; }
 
 			nFormat->channels = uint16(f_in->InputNumber(2));
@@ -113,6 +153,7 @@ BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
 		else if (chunk == "data")
 		{
 			nFormat->length = uint32(cSize) / (nFormat->bits / 8);
+			nFormat->bits	= Math::Min(32, nFormat->bits);
 
 			// Skip chunk
 			f_in->RelSeek(cSize + cSize % 2);
