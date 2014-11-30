@@ -44,6 +44,9 @@ History
 		- fixed stability issues when decoding MP3 files
 		- fixed crash when writing cover art to WMA tags
 		- fixed drag & drop target area not matching joblist
+		- fixed failure to delete read-only files with "Delete files after encoding" option
+		- fixed interpretation of non-standard UTF-16 strings in ID3v2 tags
+		- upgraded FLAC to version 1.3.1
 
 	Version 1.0.22 (July 2014)
 
