@@ -1,4 +1,4 @@
-fre:ac Version 1.0.23
+fre:ac Version 1.0.24
 
 fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
 Das Programm unterstützt das Rippen von Audio-CDs und konvertiert folgende
@@ -33,6 +33,10 @@ Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
 Geschichte
 ----------
+
+	Version 1.0.24 (Januar 2015)
+
+		- Samplerate-Prüfung bei FAAC-Kodierer hinzugefügt
 
 	Version 1.0.23 (November 2014)
 
@@ -403,10 +407,12 @@ Bekannte Probleme
 
 		- BladeEnc:
 				- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
+		- FAAC:
+				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
 		- FLAC:
 				- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
 		- LAME:
-				- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen,
+				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 oder 48 kHz vorliegen,
 				  können von LAME konvertiert werden
 		- TwinVQ:
 				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen

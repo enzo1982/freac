@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,6 +14,18 @@
 
 BonkEnc::FilterOutFAAC::FilterOutFAAC(Config *config, Track *format) : OutputFilter(config, format)
 {
+	if (format->rate !=  8000 && format->rate != 11025 && format->rate != 12000 &&
+	    format->rate != 16000 && format->rate != 22050 && format->rate != 24000 &&
+	    format->rate != 32000 && format->rate != 44100 && format->rate != 48000 &&
+	    format->rate != 64000 && format->rate != 88200 && format->rate != 96000)
+	{
+		Utilities::ErrorMessage("Bad sampling rate! The selected sampling rate is not supported.");
+
+		errorState = True;
+
+		return;
+	}
+
 	if (format->channels > 2)
 	{
 		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
