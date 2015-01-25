@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -40,10 +40,11 @@ BonkEnc::Debug		*BonkEnc::debug_out;
  */
 String	 BonkEnc::BonkEnc::appName	= "fre:ac";
 String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
-String	 BonkEnc::BonkEnc::version	= "v1.0.23";
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.23";
+String	 BonkEnc::BonkEnc::version	= "v1.0.24";
+String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.24";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.17";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
+String	 BonkEnc::BonkEnc::copyright	= "Copyright (C) 2001-2015 Robert Kausch";
 String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml";
 
