@@ -47,7 +47,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 History
 -------
 
-	Version 1.1 CVS (September 2014)
+	Version 1.1 CVS (January 2015)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -129,6 +129,7 @@ History
 		- fixed not writing Xing header when using LAME presets
 		- fixed crash when trying to open unsupported Sun Audio (.au) files
 		- fixed and improved decoding of raw audio formats WAVE, AIFF and AU
+		- fixed failure to delete read-only files with "Delete files after encoding" option
 		- fixed last track of CD-Extra discs being two seconds too long
 		- fixed encoding empty tracks when no CD is inserted
 		- fixed various CDDB issues
@@ -138,8 +139,8 @@ History
 		- improved CDDB data sanity check
 		- improved title info editing user friendliness
 		- improved support for network files and directories
-		- raised maximum file name length on NT systems
-		- NT SCSI mode is now used by default to access CD drives on NT systems
+		- raised maximum file name length
+		- NT SCSI mode is now used by default to access CD drives
 		- fixed ASPI error message being displayed on systems without optical drives
 		- installer improvements
 		- lots of fixes to the command line encoder
@@ -152,7 +153,7 @@ History
 		- upgraded LAME to version 3.99.5
 		- upgraded Vorbis to aoTuV beta 6.03 (2014)
 		- upgraded Ogg library to version 1.3.2
-		- upgraded CDRip to version 1.24 (with cdparanoia III version 10.2)
+		- upgraded CDRip to version 2.0 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0.0
 		- lots of other fixes
 
@@ -220,8 +221,10 @@ Known problems
 
 		- There are the following restrictions on the input file format:
 
+			- FAAC, FDK AAC, VisualOn AAC:
+				- audio must be at 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 or 96 kHz
 			- LAME:
-				- audio must be at standard rates (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz),
+				- audio must be at 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 or 48 kHz,
 				  can be converted by LAME
 
 		- Resampling is only supported with LAME. Input files must be at the desired output

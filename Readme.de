@@ -47,7 +47,7 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 Geschichte
 ----------
 
-	Version 1.1 CVS (September 2014)
+	Version 1.1 CVS (Januar 2015)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -129,6 +129,7 @@ Geschichte
 		- Fehlende Xing-Header bei Verwendung von LAME-Voreinstellungen behoben
 		- Absturz beim Lesen von nicht unterstützten Sun Audio Dateien (.au) behoben
 		- Probleme beim Dekodieren der Raw-Formate WAVE, AIFF und AU behoben
+		- Problem mit der Option "Originale nach dem Kodieren löschen" mit geschützten Dateien behoben
 		- Problem bei der Berechnung der Länge des letzten Tracks von CD-Extra CDs behoben
 		- Kodierung von leeren Tracks behoben, wenn keine CD eingelegt ist
 		- Verschiedene CDDB-Probleme behoben
@@ -138,8 +139,8 @@ Geschichte
 		- Gültigkeitsprüfung für CDDB-Daten verbessert
 		- Benutzerfreundlichkeit der Titelinfopflege verbessert
 		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
-		- Maximale Länge von Dateinamen auf NT-Systemen angehoben
-		- NT SCSI-Modus wird auf NT-Systemen nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
+		- Maximale Länge von Dateinamen angehoben
+		- NT SCSI-Modus wird nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
 		- Anzeige einer ASPI-Fehlermeldung auf Systemen ohne optische Laufwerke behoben
 		- Verbesserungen beim Installer
 		- Viele Fehler im Kommandozeilen-Kodierer behoben
@@ -152,7 +153,7 @@ Geschichte
 		- LAME suf Version 3.99.5 aktualisiert
 		- Vorbis auf aoTuV Beta 6.03 (2014) aktualisiert
 		- Ogg-Bibliothek auf Version 1.3.2 aktualisiert
-		- CDRip auf Version 1.24 aktualisiert (mit cdparanoia III Version 10.2)
+		- CDRip auf Version 2.0 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0.0
 		- Viele weitere Korrekturen
 
@@ -220,8 +221,10 @@ Bekannte Probleme
 
 		- Es gibt folgende Einschränkungen für das Eingabeformat:
 
+			- FAAC, FDK AAC, VisualOn AAC:
+				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
 			- LAME:
-				- Audiodaten müssen in Standardraten (8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48 kHz) vorliegen,
+				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 oder 48 kHz vorliegen,
 				  können von LAME konvertiert werden
 
 		- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
