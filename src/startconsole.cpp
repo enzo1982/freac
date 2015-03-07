@@ -363,8 +363,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 			job->Schedule();
 
-			while (Job::GetPlannedJobs().Length() > 0) S::System::System::Sleep(10);
-			while (Job::GetRunningJobs().Length() > 0) S::System::System::Sleep(10);
+			while (Job::GetScheduledJobs().Length()	> 0) S::System::System::Sleep(10);
+			while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
+			while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
 
 			if (joblist->GetNOfTracks() > 0)
 			{
@@ -416,8 +417,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 				job->Schedule();
 
-				while (Job::GetPlannedJobs().Length() > 0) S::System::System::Sleep(10);
-				while (Job::GetRunningJobs().Length() > 0) S::System::System::Sleep(10);
+				while (Job::GetScheduledJobs().Length()	> 0) S::System::System::Sleep(10);
+				while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
+				while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
 
 				if (joblist->GetNOfTracks() > 0)
 				{
