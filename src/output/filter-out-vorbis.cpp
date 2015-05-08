@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -55,14 +55,17 @@ Bool BonkEnc::FilterOutVORBIS::Activate()
 
 		if (format->artist != NIL || format->title != NIL)
 		{
-			if	(format->title	!= NIL) ex_vorbis_comment_add_tag(&vc, (char *) "TITLE", format->title);
-			if	(format->artist	!= NIL) ex_vorbis_comment_add_tag(&vc, (char *) "ARTIST", format->artist);
-			if	(format->album	!= NIL) ex_vorbis_comment_add_tag(&vc, (char *) "ALBUM", format->album);
-			if	(format->track	 >   0) ex_vorbis_comment_add_tag(&vc, (char *) "TRACKNUMBER", String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)));
-			if	(format->year	 >   0) ex_vorbis_comment_add_tag(&vc, (char *) "DATE", String::FromInt(format->year));
-			if	(format->genre	!= NIL) ex_vorbis_comment_add_tag(&vc, (char *) "GENRE", format->genre);
-			if	(format->label	!= NIL) ex_vorbis_comment_add_tag(&vc, (char *) "ORGANIZATION", format->label);
-			if	(format->isrc	!= NIL) ex_vorbis_comment_add_tag(&vc, (char *) "ISRC", format->isrc);
+			if	(format->title	  != NIL) ex_vorbis_comment_add_tag(&vc, (char *) "TITLE", format->title);
+			if	(format->artist	  != NIL) ex_vorbis_comment_add_tag(&vc, (char *) "ARTIST", format->artist);
+			if	(format->album	  != NIL) ex_vorbis_comment_add_tag(&vc, (char *) "ALBUM", format->album);
+			if	(format->track	   >   0) ex_vorbis_comment_add_tag(&vc, (char *) "TRACKNUMBER", String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)));
+			if	(format->numTracks >   0) ex_vorbis_comment_add_tag(&vc, (char *) "TRACKTOTAL", String(format->numTracks < 10 ? "0" : NIL).Append(String::FromInt(format->numTracks)));
+			if	(format->disc	   >   0) ex_vorbis_comment_add_tag(&vc, (char *) "DISCNUMBER", String(format->disc < 10 ? "0" : NIL).Append(String::FromInt(format->disc)));
+			if	(format->numDiscs  >   0) ex_vorbis_comment_add_tag(&vc, (char *) "DISCTOTAL", String(format->numDiscs < 10 ? "0" : NIL).Append(String::FromInt(format->numDiscs)));
+			if	(format->year	   >   0) ex_vorbis_comment_add_tag(&vc, (char *) "DATE", String::FromInt(format->year));
+			if	(format->genre	  != NIL) ex_vorbis_comment_add_tag(&vc, (char *) "GENRE", format->genre);
+			if	(format->label	  != NIL) ex_vorbis_comment_add_tag(&vc, (char *) "ORGANIZATION", format->label);
+			if	(format->isrc	  != NIL) ex_vorbis_comment_add_tag(&vc, (char *) "ISRC", format->isrc);
 
 			if	(format->comment != NIL && !currentConfig->overwriteComments) ex_vorbis_comment_add_tag(&vc, (char *) "COMMENT", format->comment);
 			else if (currentConfig->default_comment != NIL)			      ex_vorbis_comment_add_tag(&vc, (char *) "COMMENT", currentConfig->default_comment);

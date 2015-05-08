@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -143,6 +143,9 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	nFormat->genre		= infoFormat->genre;
 	nFormat->year		= infoFormat->year;
 	nFormat->track		= infoFormat->track;
+	nFormat->numTracks	= infoFormat->numTracks;
+	nFormat->disc		= infoFormat->disc;
+	nFormat->numDiscs	= infoFormat->numDiscs;
 	nFormat->comment	= infoFormat->comment;
 	nFormat->label		= infoFormat->label;
 	nFormat->isrc		= infoFormat->isrc;
@@ -273,8 +276,11 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 	{
 		if (metadata->data.vorbis_comment.num_comments > 0)
 		{
-			filter->infoFormat->track = -1;
-			filter->infoFormat->outfile = NIL;
+			filter->infoFormat->track     = -1;
+			filter->infoFormat->numTracks = -1;
+			filter->infoFormat->disc      = -1;
+			filter->infoFormat->numDiscs  = -1;
+			filter->infoFormat->outfile   = NIL;
 
 			String	 prevInFormat = String::SetInputFormat("UTF-8");
 
@@ -283,15 +289,18 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 				String	 comment = String((char *) metadata->data.vorbis_comment.comments[j].entry);
 				String	 id = String().CopyN(comment, comment.Find("=")).ToUpper();
 
-				if	(id == "TITLE")		filter->infoFormat->title   = comment.Tail(comment.Length() - 6);
-				else if (id == "ARTIST")	filter->infoFormat->artist  = comment.Tail(comment.Length() - 7);
-				else if (id == "ALBUM")		filter->infoFormat->album   = comment.Tail(comment.Length() - 6);
-				else if (id == "GENRE")		filter->infoFormat->genre   = comment.Tail(comment.Length() - 6);
-				else if (id == "DATE")		filter->infoFormat->year    = comment.Tail(comment.Length() - 5).ToInt();
-				else if (id == "TRACKNUMBER")	filter->infoFormat->track   = comment.Tail(comment.Length() - 12).ToInt();
-				else if (id == "COMMENT")	filter->infoFormat->comment = comment.Tail(comment.Length() - 8);
-				else if (id == "ORGANIZATION")	filter->infoFormat->label   = comment.Tail(comment.Length() - 13);
-				else if (id == "ISRC")		filter->infoFormat->isrc    = comment.Tail(comment.Length() - 5);
+				if	(id == "TITLE")		filter->infoFormat->title     = comment.Tail(comment.Length() - 6);
+				else if (id == "ARTIST")	filter->infoFormat->artist    = comment.Tail(comment.Length() - 7);
+				else if (id == "ALBUM")		filter->infoFormat->album     = comment.Tail(comment.Length() - 6);
+				else if (id == "GENRE")		filter->infoFormat->genre     = comment.Tail(comment.Length() - 6);
+				else if (id == "DATE")		filter->infoFormat->year      = comment.Tail(comment.Length() - 5).ToInt();
+				else if (id == "TRACKNUMBER")	filter->infoFormat->track     = comment.Tail(comment.Length() - 12).ToInt();
+				else if (id == "TRACKTOTAL")	filter->infoFormat->numTracks = comment.Tail(comment.Length() - 11).ToInt();
+				else if (id == "DISCNUMBER")	filter->infoFormat->disc      = comment.Tail(comment.Length() - 11).ToInt();
+				else if (id == "DISCTOTAL")	filter->infoFormat->numDiscs  = comment.Tail(comment.Length() - 10).ToInt();
+				else if (id == "COMMENT")	filter->infoFormat->comment   = comment.Tail(comment.Length() - 8);
+				else if (id == "ORGANIZATION")	filter->infoFormat->label     = comment.Tail(comment.Length() - 13);
+				else if (id == "ISRC")		filter->infoFormat->isrc      = comment.Tail(comment.Length() - 5);
 			}
 
 			String::SetInputFormat(prevInFormat);

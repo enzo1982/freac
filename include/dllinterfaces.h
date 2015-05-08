@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -454,6 +454,8 @@ namespace BonkEnc
 	typedef bool					(*MP4GETMETADATAGENRE)				(MP4FileHandle, char **);
 	typedef bool					(*MP4SETMETADATATRACK)				(MP4FileHandle, uint16_t, uint16_t);
 	typedef bool					(*MP4GETMETADATATRACK)				(MP4FileHandle, uint16_t *, uint16_t *);
+	typedef bool					(*MP4SETMETADATADISK)				(MP4FileHandle, uint16_t, uint16_t);
+	typedef bool					(*MP4GETMETADATADISK)				(MP4FileHandle, uint16_t *, uint16_t *);
 	typedef uint32_t				(*MP4GETNUMBEROFTRACKS)				(MP4FileHandle, const char *, uint8_t);
 	typedef MP4TrackId				(*MP4FINDTRACKID)				(MP4FileHandle, uint16_t, const char *, uint8_t);
 	typedef const char *				(*MP4GETTRACKTYPE)				(MP4FileHandle, MP4TrackId);
@@ -485,6 +487,8 @@ namespace BonkEnc
 	extern BEEXPORT MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre;
 	extern BEEXPORT MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack;
 	extern BEEXPORT MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack;
+	extern BEEXPORT MP4SETMETADATADISK		 ex_MP4SetMetadataDisk;
+	extern BEEXPORT MP4GETMETADATADISK		 ex_MP4GetMetadataDisk;
 	extern BEEXPORT MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
 	extern BEEXPORT MP4FINDTRACKID			 ex_MP4FindTrackId;
 	extern BEEXPORT MP4GETTRACKTYPE			 ex_MP4GetTrackType;

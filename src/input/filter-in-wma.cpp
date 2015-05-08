@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -381,6 +381,12 @@ BonkEnc::Track *BonkEnc::FilterInWMA::GetFileInfo(const String &inFile)
 				{
 					if	(type == WMT_TYPE_DWORD)  nFormat->track = ((DWORD *) pbValue)[0];
 					else if (type == WMT_TYPE_STRING) nFormat->track = String((LPWSTR) pbValue).ToInt();
+				}
+				else if (String(name) == g_wszWMPartOfSet)
+				{
+					nFormat->disc = String((LPWSTR) pbValue).ToInt();
+
+					if (String((LPWSTR) pbValue).Find("/") >= 0) nFormat->numDiscs = String((LPWSTR) pbValue).Tail(String((LPWSTR) pbValue).Length() - String((LPWSTR) pbValue).Find("/") - 1).ToInt();
 				}
 				else if (String(name) == g_wszWMPicture)
 				{

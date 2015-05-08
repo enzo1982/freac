@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -191,6 +191,8 @@ MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre			= NIL;
 MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre			= NIL;
 MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack			= NIL;
 MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack			= NIL;
+MP4SETMETADATADISK		 ex_MP4SetMetadataDisk			= NIL;
+MP4GETMETADATADISK		 ex_MP4GetMetadataDisk			= NIL;
 MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks		= NIL;
 MP4FINDTRACKID			 ex_MP4FindTrackId			= NIL;
 MP4GETTRACKTYPE			 ex_MP4GetTrackType			= NIL;
@@ -946,6 +948,8 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	ex_MP4GetMetadataGenre		= (MP4GETMETADATAGENRE) mp4v2dll->GetFunctionAddress("MP4GetMetadataGenre");
 	ex_MP4SetMetadataTrack		= (MP4SETMETADATATRACK) mp4v2dll->GetFunctionAddress("MP4SetMetadataTrack");
 	ex_MP4GetMetadataTrack		= (MP4GETMETADATATRACK) mp4v2dll->GetFunctionAddress("MP4GetMetadataTrack");
+	ex_MP4SetMetadataDisk		= (MP4SETMETADATADISK) mp4v2dll->GetFunctionAddress("MP4SetMetadataDisk");
+	ex_MP4GetMetadataDisk		= (MP4GETMETADATADISK) mp4v2dll->GetFunctionAddress("MP4GetMetadataDisk");
 	ex_MP4GetNumberOfTracks		= (MP4GETNUMBEROFTRACKS) mp4v2dll->GetFunctionAddress("MP4GetNumberOfTracks");
 	ex_MP4FindTrackId		= (MP4FINDTRACKID) mp4v2dll->GetFunctionAddress("MP4FindTrackId");
 	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) mp4v2dll->GetFunctionAddress("MP4GetTrackType");
@@ -977,6 +981,8 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	    ex_MP4GetMetadataGenre		== NIL ||
 	    ex_MP4SetMetadataTrack		== NIL ||
 	    ex_MP4GetMetadataTrack		== NIL ||
+	    ex_MP4SetMetadataDisk		== NIL ||
+	    ex_MP4GetMetadataDisk		== NIL ||
 	    ex_MP4GetNumberOfTracks		== NIL ||
 	    ex_MP4FindTrackId			== NIL ||
 	    ex_MP4GetTrackType			== NIL ||

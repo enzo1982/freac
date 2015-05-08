@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -53,6 +53,9 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 			FLAC__StreamMetadata_VorbisComment_Entry	 genre;
 			FLAC__StreamMetadata_VorbisComment_Entry	 date;
 			FLAC__StreamMetadata_VorbisComment_Entry	 track;
+			FLAC__StreamMetadata_VorbisComment_Entry	 numTracks;
+			FLAC__StreamMetadata_VorbisComment_Entry	 disc;
+			FLAC__StreamMetadata_VorbisComment_Entry	 numDiscs;
 			FLAC__StreamMetadata_VorbisComment_Entry	 comment;
 			FLAC__StreamMetadata_VorbisComment_Entry	 label;
 			FLAC__StreamMetadata_VorbisComment_Entry	 isrc;
@@ -93,6 +96,24 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 			{
 				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&track, "TRACKNUMBER", String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)));
 				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, track, false);
+			}
+
+			if (format->numTracks > 0)
+			{
+				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&numTracks, "TRACKTOTAL", String(format->numTracks < 10 ? "0" : NIL).Append(String::FromInt(format->numTracks)));
+				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, numTracks, false);
+			}
+
+			if (format->disc > 0)
+			{
+				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&disc, "DISCNUMBER", String(format->disc < 10 ? "0" : NIL).Append(String::FromInt(format->disc)));
+				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, disc, false);
+			}
+
+			if (format->numDiscs > 0)
+			{
+				ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair(&numDiscs, "DISCTOTAL", String(format->numDiscs < 10 ? "0" : NIL).Append(String::FromInt(format->numDiscs)));
+				ex_FLAC__metadata_object_vorbiscomment_append_comment(vorbiscomment, numDiscs, false);
 			}
 
 			if (format->comment != NIL && !currentConfig->overwriteComments)

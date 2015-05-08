@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -174,6 +174,15 @@ Bool BonkEnc::FilterOutWMA::Deactivate()
 				if (format->genre  != NIL) RenderWMAItem(g_wszWMGenre,	     format->genre,		     pHeaderInfo);
 				if (format->label  != NIL) RenderWMAItem(g_wszWMPublisher,   format->label,		     pHeaderInfo);
 				if (format->isrc   != NIL) RenderWMAItem(g_wszWMISRC,	     format->isrc,		     pHeaderInfo);
+
+				if (format->disc > 0)
+				{
+					String	 discString = String::FromInt(format->disc);
+
+					if (format->numDiscs > 0) discString.Append("/").Append(String::FromInt(format->numDiscs));
+
+					RenderWMAItem(g_wszWMPartOfSet, discString, pHeaderInfo);
+				}
 
 				if	(format->comment != NIL && !currentConfig->overwriteComments)	RenderWMAItem(g_wszWMDescription, format->comment, pHeaderInfo);
 				else if (currentConfig->default_comment != NIL)				RenderWMAItem(g_wszWMDescription, currentConfig->default_comment, pHeaderInfo);

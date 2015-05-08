@@ -31,12 +31,76 @@ fre:ac verwendet die CDRip Ripping Library zum CD-Rippen.
 
 Code from FAAD2 is copyright (c) Nero AG, www.nero.com
 
+Installation
+------------
+
+	fre:ac steht in zwei Varianten bereit, als .exe-Datei, welche einen Installationsassistenten enthält,
+	oder alternativ als .zip-Archiv, welches nur die Anwendung ohne Installer beinhaltet.
+
+	Wenn Sie die .exe-Datei heruntergeladen haben, führen Sie sie einfach aus und der Installationsassistent
+	wird Sie durch den Installationsprozess führen und Startmenüeinträge zum Starten von fre:ac anlegen.
+
+	Wenn Sie das .zip-Archiv heruntergeladen haben, entpacken Sie bitte den Inhalt an einen Ort Ihrer Wahl
+	und starten Sie anschließend freac.exe um fre:ac auszuführen.
+
+Voraussetzungen
+---------------
+
+	Voraussetzungen zum Ausführen von fre:ac:
+
+		Unterstützte Betriebsysteme:
+			- Windows XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
+
+		Minimale Hardwarevoraussetzungen:
+			- Intel Pentium III oder AMD Athlon XP Prozessor
+			- 256 MB RAM
+			- 50 MB freier Festplattenplatz
+
+		Empfohlene Hardwarespezifikationen:
+			- Intel Core i3 oder AMD Phenom II Prozessor
+			- 1 GB RAM
+			- 1 GB freier Festplattenplatz
+
+	Zusätzliche Vorraussetzungen zur Übersetzung des Quellcodes:
+
+		- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual C++ v10.0
+		- smooth v0.8.71.0 (http://www.smooth-project.org/)
+
+	Zusätzliche optionale Software:
+
+		- TwinVQ wird verwendet, wenn es installiert ist
+		- Winamp-Plugins können verwendet werden, wenn sie im "plugins"-Verzeichnis vorhanden sind
+
+Bekannte Probleme
+-----------------
+
+	- Es gibt folgende Einschränkungen für das Eingabeformat:
+
+		- BladeEnc:
+				- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
+		- FAAC:
+				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
+		- FLAC:
+				- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
+		- LAME:
+				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 oder 48 kHz vorliegen,
+				  können von LAME konvertiert werden
+		- TwinVQ:
+				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
+
+	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
+	  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
+
+	- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
+
 Geschichte
 ----------
 
-	Version 1.0.24 (Januar 2015)
+	Version 1.0.24 (Mai 2015)
 
+		- Toleranz gegen Mauszittern für Tooltips hinzugefügt
 		- Samplerate-Prüfung bei FAAC-Kodierer hinzugefügt
+		- Information zu CD-Nummer wird bei Konvertierung beibehalten
 
 	Version 1.0.23 (November 2014)
 
@@ -371,56 +435,6 @@ Geschichte
 		- FAAC auf Version 1.25 aktualisiert
 		- Vorbis auf aoTuV Beta 5 aktualisiert
 		- Einige kleinere Fehler behoben
-
-Voraussetzungen
----------------
-
-	Voraussetzungen zum Ausführen der Binärpakete:
-
-		Unterstützte Betriebsysteme:
-			- Windows XP/Vista/7/8.x (ältere Windows-Versionen funktionieren evtl. mit einigen Einschränkungen)
-
-		Minimale Hardwarevoraussetzungen:
-			- Intel Pentium III oder AMD Athlon XP Prozessor
-			- 256 MB RAM
-			- 50 MB freier Festplattenplatz
-
-		Empfohlene Hardwarespezifikationen:
-			- Intel Core i3 oder AMD Phenom II Prozessor
-			- 1 GB RAM
-			- 1 GB freier Festplattenplatz
-
-	Zusätzliche Vorraussetzungen zur Übersetzung des Quellcodes:
-
-		- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual C++ v10.0
-		- smooth v0.8.71.0 (http://www.smooth-project.org/)
-
-	Zusätzliche optionale Software:
-
-		- TwinVQ wird verwendet, wenn es installiert ist
-		- Winamp-Plugins können verwendet werden, wenn sie im "plugins"-Verzeichnis vorhanden sind
-
-Bekannte Probleme
------------------
-
-	- Es gibt folgende Einschränkungen für das Eingabeformat:
-
-		- BladeEnc:
-				- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
-		- FAAC:
-				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
-		- FLAC:
-				- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
-		- LAME:
-				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 oder 48 kHz vorliegen,
-				  können von LAME konvertiert werden
-		- TwinVQ:
-				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
-
-	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
-	  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
-
-	- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
 
 Besonderen Dank
 ---------------

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -146,6 +146,8 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 	char		*buffer		= NIL;
 	unsigned short	 trackNr	= 0;
 	unsigned short	 nOfTracks	= 0;
+	unsigned short	 discNr		= 0;
+	unsigned short	 nOfDiscs	= 0;
 
 	String	 prevInFormat = String::SetInputFormat("UTF-8");
 
@@ -155,7 +157,8 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 	if (ex_MP4GetMetadataYear(mp4File, &buffer)) { nFormat->year = String(buffer).ToInt(); ex_MP4Free(buffer); }
 	if (ex_MP4GetMetadataAlbum(mp4File, &buffer)) { nFormat->album = buffer; ex_MP4Free(buffer); }
 	if (ex_MP4GetMetadataGenre(mp4File, &buffer)) { nFormat->genre = buffer; ex_MP4Free(buffer); }
-	if (ex_MP4GetMetadataTrack(mp4File, (uint16_t *) &trackNr, (uint16_t *) &nOfTracks)) { nFormat->track = trackNr; }
+	if (ex_MP4GetMetadataTrack(mp4File, (uint16_t *) &trackNr, (uint16_t *) &nOfTracks)) { nFormat->track = trackNr; nFormat->numTracks = nOfTracks; }
+	if (ex_MP4GetMetadataDisk(mp4File, (uint16_t *) &discNr, (uint16_t *) &nOfDiscs)) { nFormat->disc = discNr; nFormat->numDiscs = nOfDiscs; }
 
 	String::SetInputFormat(prevInFormat);
 
@@ -177,8 +180,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 
 		ex_MP4GetTrackESConfiguration(mp4File, mp4Track, (uint8_t **) &esc_buffer, (uint32_t *) &buffer_size);
 
-		ex_NeAACDecInit2(handle, (unsigned char *) esc_buffer, buffer_size,
- (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
+		ex_NeAACDecInit2(handle, (unsigned char *) esc_buffer, buffer_size, (unsigned long *) &nFormat->rate, (unsigned char *) &nFormat->channels);
 
 		nFormat->length		= Math::Round(ex_MP4GetTrackDuration(mp4File, mp4Track) * nFormat->channels * nFormat->rate / ex_MP4GetTrackTimeScale(mp4File, mp4Track));
 		nFormat->order		= BYTE_INTEL;

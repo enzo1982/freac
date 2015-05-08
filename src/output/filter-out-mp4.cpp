@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -122,7 +122,8 @@ Bool BonkEnc::FilterOutMP4::Deactivate()
 			if (format->year > 0)		ex_MP4SetMetadataYear(mp4File, String::FromInt(format->year));
 			if (format->album != NIL)	ex_MP4SetMetadataAlbum(mp4File, format->album);
 			if (format->genre != NIL)	ex_MP4SetMetadataGenre(mp4File, format->genre);
-			if (format->track > 0)		ex_MP4SetMetadataTrack(mp4File, format->track, 0);
+			if (format->track > 0)		ex_MP4SetMetadataTrack(mp4File, format->track, format->numTracks > 0 ? format->numTracks : 0);
+			if (format->disc > 0)		ex_MP4SetMetadataDisk(mp4File, format->disc, format->numDiscs > 0 ? format->numDiscs : 0);
 
 			if (format->comment != NIL && !currentConfig->overwriteComments) ex_MP4SetMetadataComment(mp4File, format->comment);
 			else if (currentConfig->default_comment != NIL)			 ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -95,14 +95,36 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 
 	if (format->track > 0)
 	{
+		String	 trackString = String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track));
+
+		if (format->numTracks > 0) trackString.Append("/").Append(format->numTracks < 10 ? "0" : NIL).Append(String::FromInt(format->numTracks));
+
 		ex_ID3Field_SetINT(ex_ID3Frame_GetField(track, ID3FN_TEXTENC), encoding);
 		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(track, ID3FN_TEXT), encoding);
 
-		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track))).ConvertTo("UTF-16LE"));
-		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)).ConvertTo("UTF-16BE"));
-		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), String(format->track < 10 ? "0" : NIL).Append(String::FromInt(format->track)));
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(trackString).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(track, ID3FN_TEXT), (unicode_t *) trackString.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(track, ID3FN_TEXT), trackString);
 
 		ex_ID3Tag_AddFrame(tag, track);
+	}
+
+	ID3Frame	*disc = ex_ID3Frame_NewID(ID3FID_PARTINSET);
+
+	if (format->disc > 0)
+	{
+		String	 discString = String(format->disc < 10 ? "0" : NIL).Append(String::FromInt(format->disc));
+
+		if (format->numDiscs > 0) discString.Append("/").Append(format->numDiscs < 10 ? "0" : NIL).Append(String::FromInt(format->numDiscs));
+
+		ex_ID3Field_SetINT(ex_ID3Frame_GetField(disc, ID3FN_TEXTENC), encoding);
+		ex_ID3Field_SetEncoding(ex_ID3Frame_GetField(disc, ID3FN_TEXT), encoding);
+
+		if	(encoding == ID3TE_UTF16)   ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(disc, ID3FN_TEXT), (unicode_t *) String(leBOM).Append(discString).ConvertTo("UTF-16LE"));
+		else if (encoding == ID3TE_UTF16BE) ex_ID3Field_SetUNICODE(ex_ID3Frame_GetField(disc, ID3FN_TEXT), (unicode_t *) discString.ConvertTo("UTF-16BE"));
+		else				    ex_ID3Field_SetASCII(ex_ID3Frame_GetField(disc, ID3FN_TEXT), discString);
+
+		ex_ID3Tag_AddFrame(tag, disc);
 	}
 
 	ID3Frame	*year = ex_ID3Frame_NewID(ID3FID_YEAR);
@@ -244,6 +266,7 @@ Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buff
 	ex_ID3Frame_Delete(title);
 	ex_ID3Frame_Delete(album);
 	ex_ID3Frame_Delete(track);
+	ex_ID3Frame_Delete(disc);
 	ex_ID3Frame_Delete(year);
 	ex_ID3Frame_Delete(genre);
 	ex_ID3Frame_Delete(label);
