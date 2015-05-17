@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -339,7 +339,7 @@ Void BonkEnc::ConfigDialog::DeleteLayers()
 
 const Error &BonkEnc::ConfigDialog::ShowDialog()
 {
-	mainWnd->Stay();
+	mainWnd->WaitUntilClosed();
 
 	return error;
 }
