@@ -101,6 +101,7 @@ Geschichte
 		- Toleranz gegen Mauszittern für Tooltips hinzugefügt
 		- Samplerate-Prüfung bei FAAC-Kodierer hinzugefügt
 		- Information zu CD-Nummer wird bei Konvertierung beibehalten
+		- CDDB-Abfragedialog ist wieder modal
 
 	Version 1.0.23 (November 2014)
 

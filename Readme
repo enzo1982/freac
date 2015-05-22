@@ -100,6 +100,7 @@ History
 		- added mouse jitter tolerance for tooltips
 		- added sample rate check to FAAC encoder
 		- retain disc number info when converting
+		- made CDDB query dialog modal again
 
 	Version 1.0.23 (November 2014)
 
