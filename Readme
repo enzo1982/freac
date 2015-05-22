@@ -44,10 +44,112 @@ fre:ac uses the cdparanoia library for audio ripping on Linux, FreeBSD and OpenB
 
 Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 
+Installation
+------------
+
+	fre:ac is distributed in two variants, an .exe file containing a setup wizard or alternatively
+	a .zip archive that contains just the application without an installer.
+
+	If you downloaded the .exe installer, simply run it and the setup wizard will guide you through
+	the installation process creating start menu icons that will run fre:ac.
+
+	If you downloaded the .zip package, please extract/move the contents to a location of your
+	choice and run freac.exe to start fre:ac.
+
+Requirements
+------------
+
+	Requirements for running fre:ac:
+
+		Supported operating systems:
+			- Windows XP/Vista/7/8.x
+			- OS X 10.5 Leopard or later
+			- Linux (most modern distributions should work)
+			- FreeBSD/PC-BSD (tested on FreeBSD 10.0)
+			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
+			- OpenBSD (tested on OpenBSD 5.3)
+			- Solaris (tested on Solaris 11)
+			- GNU Hurd (tested on Debian Sid)
+			- QNX (tested on QNX 6.5)
+
+		Minimum hardware requirements:
+			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 or ARMv5 CPU
+			- 512 MB RAM
+			- 100 MB free disk space
+
+		Recommended hardware specs:
+			- Intel Core i3 or AMD Phenom II CPU
+			- 1 GB RAM
+			- 1 GB free disk space
+
+	Additional requirements for compiling the sources:
+
+		All platforms:
+
+			- smooth v0.8.72.0 CVS (http://www.smooth-project.org/)
+
+		Windows:
+
+			- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual C++ v10.0
+
+		All Linux and Unix platforms:
+
+			- GCC v4.0+
+
+			- libbz2, libcairo, libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
+			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libXmu
+
+			Linux:
+
+				- libasound2, libcdio, libcdio-paranoia, libgtk2, libudev
+
+			Solaris:
+
+				- audio headers
+
+	Additional optional software:
+
+		- On Windows, Winamp plug-ins can be used if they are present in the 'plugins' directory.
+
+		- Several external codecs can be used with fre:ac. Please see the manual for more details.
+
+Known problems
+--------------
+
+	All platforms:
+
+		- There are the following restrictions on the input file format:
+
+			- FAAC, FDK AAC, VisualOn AAC:
+				- audio must be at 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 or 96 kHz
+			- LAME:
+				- audio must be at 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 or 48 kHz,
+				  can be converted by LAME
+
+		- Resampling is only supported with LAME. Input files must be at the desired output
+		  sampling rate unless you are encoding with LAME.
+
+		- fre:ac is currently limited to a maximum of 2 audio channels
+
+	Windows specific problems:
+
+		- There are the following restrictions on the input file format:
+
+			- BladeEnc:
+				- audio must be at 32, 44.1 or 48 kHz
+
+			- TwinVQ:
+				- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
+
+	Linux and Unix specific problems:
+
+		- There are no application packages for fre:ac yet, so you need to install dependencies manually for now.
+		  Please just extract the contents of the archive to your home directory.
+
 History
 -------
 
-	Version 1.1 CVS (January 2015)
+	Version 1.1 CVS (March 2015)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -156,96 +258,6 @@ History
 		- upgraded CDRip to version 2.0 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0.0
 		- lots of other fixes
-
-Requirements
-------------
-
-	Requirements for running the binaries:
-
-		Supported operating systems:
-			- Windows XP/Vista/7/8.x
-			- OS X 10.5 Leopard or later
-			- Linux (most modern distributions should work)
-			- FreeBSD/PC-BSD (tested on FreeBSD 10.0)
-			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
-			- OpenBSD (tested on OpenBSD 5.3)
-			- Solaris (tested on Solaris 11)
-			- GNU Hurd (tested on Debian Sid)
-			- QNX (tested on QNX 6.5)
-
-		Minimum hardware requirements:
-			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 or ARMv5 CPU
-			- 512 MB RAM
-			- 100 MB free disk space
-
-		Recommended hardware specs:
-			- Intel Core i3 or AMD Phenom II CPU
-			- 1 GB RAM
-			- 1 GB free disk space
-
-	Additional requirements for compiling the sources:
-
-		All platforms:
-
-			- smooth v0.8.72.0 CVS (http://www.smooth-project.org/)
-
-		Windows:
-
-			- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual C++ v10.0
-
-		All Linux and Unix platforms:
-
-			- GCC v4.0+
-
-			- libbz2, libcairo, libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
-			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libXmu
-
-			Linux:
-
-				- libasound2, libcdio, libcdio-paranoia, libgtk2, libudev
-
-			Solaris:
-
-				- audio headers
-
-	Additional optional software:
-
-		- On Windows, Winamp plug-ins can be used if they are present in the 'plugins' directory.
-
-		- Several external codecs can be used with fre:ac. Please see the manual for more details.
-
-Known problems
---------------
-
-	All platforms:
-
-		- There are the following restrictions on the input file format:
-
-			- FAAC, FDK AAC, VisualOn AAC:
-				- audio must be at 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 or 96 kHz
-			- LAME:
-				- audio must be at 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 or 48 kHz,
-				  can be converted by LAME
-
-		- Resampling is only supported with LAME. Input files must be at the desired output
-		  sampling rate unless you are encoding with LAME.
-
-		- fre:ac is currently limited to a maximum of 2 audio channels
-
-	Windows specific problems:
-
-		- There are the following restrictions on the input file format:
-
-			- BladeEnc:
-				- audio must be at 32, 44.1 or 48 kHz
-
-			- TwinVQ:
-				- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
-
-	Linux and Unix specific problems:
-
-		- There are no application packages for fre:ac yet, so you need to install dependencies manually for now.
-		  Please just extract the contents of the archive to your home directory.
 
 Special thanks to
 -----------------

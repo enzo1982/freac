@@ -44,6 +44,108 @@ fre:ac verwendet die cdparanoia-Bibliothek zum CD-Rippen unter Linux, FreeBSD un
 
 Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 
+Installation
+------------
+
+	fre:ac steht in zwei Varianten bereit, als .exe-Datei, welche einen Installationsassistenten enthält,
+	oder alternativ als .zip-Archiv, welches nur die Anwendung ohne Installer beinhaltet.
+
+	Wenn Sie die .exe-Datei heruntergeladen haben, führen Sie sie einfach aus und der Installationsassistent
+	wird Sie durch den Installationsprozess führen und Startmenüeinträge zum Starten von fre:ac anlegen.
+
+	Wenn Sie das .zip-Archiv heruntergeladen haben, entpacken Sie bitte den Inhalt an einen Ort Ihrer Wahl
+	und starten Sie anschließend freac.exe um fre:ac auszuführen.
+
+Voraussetzungen
+---------------
+
+	Voraussetzungen zum Ausführen von fre:ac:
+
+		Unterstützte Betriebsysteme:
+			- Windows XP/Vista/7/8.x
+			- OS X 10.5 Leopard oder neuer
+			- Linux (die meisten modernen Distributionen sollten funktionieren)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 10.0)
+			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
+			- OpenBSD (getestet unter OpenBSD 5.3)
+			- Solaris (getestet unter Solaris 11)
+			- GNU Hurd (getestet unter Debian Sid)
+			- QNX (getestet unter QNX 6.5)
+
+		Minimale Hardwarevoraussetzungen:
+			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv5 Prozessor
+			- 512 MB RAM
+			- 100 MB freier Festplattenplatz
+
+		Empfohlene Hardwarespezifikationen:
+			- Intel Core i3 oder AMD Phenom II Prozessor
+			- 1 GB RAM
+			- 1 GB freier Festplattenplatz
+
+	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
+
+		Alle Systeme:
+
+			- smooth v0.8.72.0 CVS (http://www.smooth-project.org/)
+
+		Windows:
+
+			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual C++ v10.0
+
+		Alle Linux- und Unix-Systeme:
+
+			- GCC v4.0+
+
+			- libbz2, libcairo, libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
+			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libXmu
+
+			Linux:
+
+				- libasound2, libcdio, libcdio-paranoia, libgtk2, libudev
+
+			Solaris:
+
+				- audio headers
+
+	Zusätzliche optionale Software:
+
+		- Unter Windows können Winamp-Plugins verwendet werden, wenn sie im "plugins"-Verzeichnis vorhanden sind
+
+		- Einige externe Codecs können von fre:ac verwendet werden. Mehr Informationen dazu finden Sie im Benutzerhandbuch.
+
+Bekannte Probleme
+-----------------
+
+	Alle Systeme:
+
+		- Es gibt folgende Einschränkungen für das Eingabeformat:
+
+			- FAAC, FDK AAC, VisualOn AAC:
+				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
+			- LAME:
+				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 oder 48 kHz vorliegen,
+				  können von LAME konvertiert werden
+
+		- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
+		  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
+
+		- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
+
+	Windows-spezifische Probleme:
+
+		- Es gibt folgende Einschränkungen für das Eingabeformat:
+
+			- BladeEnc:
+				- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
+
+			- TwinVQ:
+				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
+
+	Linux- und Unix-spezifische probleme:
+
+		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden müssen.
+		  Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis.
+
 Geschichte
 ----------
 
@@ -156,96 +258,6 @@ Geschichte
 		- CDRip auf Version 2.0 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0.0
 		- Viele weitere Korrekturen
-
-Voraussetzungen
----------------
-
-	Voraussetzungen zum Ausführen der Binärpakete:
-
-		Unterstützte Betriebsysteme:
-			- Windows XP/Vista/7/8.x
-			- OS X 10.5 Leopard oder neuer
-			- Linux (die meisten modernen Distributionen sollten funktionieren)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 10.0)
-			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
-			- OpenBSD (getestet unter OpenBSD 5.3)
-			- Solaris (getestet unter Solaris 11)
-			- GNU Hurd (getestet unter Debian Sid)
-			- QNX (getestet unter QNX 6.5)
-
-		Minimale Hardwarevoraussetzungen:
-			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv5 Prozessor
-			- 512 MB RAM
-			- 100 MB freier Festplattenplatz
-
-		Empfohlene Hardwarespezifikationen:
-			- Intel Core i3 oder AMD Phenom II Prozessor
-			- 1 GB RAM
-			- 1 GB freier Festplattenplatz
-
-	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
-
-		Alle Systeme:
-
-			- smooth v0.8.72.0 CVS (http://www.smooth-project.org/)
-
-		Windows:
-
-			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual C++ v10.0
-
-		Alle Linux- und Unix-Systeme:
-
-			- GCC v4.0+
-
-			- libbz2, libcairo, libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
-			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libXmu
-
-			Linux:
-
-				- libasound2, libcdio, libcdio-paranoia, libgtk2, libudev
-
-			Solaris:
-
-				- audio headers
-
-	Zusätzliche optionale Software:
-
-		- Unter Windows können Winamp-Plugins verwendet werden, wenn sie im "plugins"-Verzeichnis vorhanden sind
-
-		- Einige externe Codecs können von fre:ac verwendet werden. Mehr Informationen dazu finden Sie im Benutzerhandbuch.
-
-Bekannte Probleme
------------------
-
-	Alle Systeme:
-
-		- Es gibt folgende Einschränkungen für das Eingabeformat:
-
-			- FAAC, FDK AAC, VisualOn AAC:
-				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
-			- LAME:
-				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 oder 48 kHz vorliegen,
-				  können von LAME konvertiert werden
-
-		- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
-		  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
-
-		- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
-
-	Windows-spezifische Probleme:
-
-		- Es gibt folgende Einschränkungen für das Eingabeformat:
-
-			- BladeEnc:
-				- Audiodaten müssen in 32, 44.1 oder 48 kHz vorliegen
-
-			- TwinVQ:
-				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
-
-	Linux- und Unix-spezifische probleme:
-
-		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden müssen.
-		  Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis.
 
 Besonderen Dank
 ---------------
