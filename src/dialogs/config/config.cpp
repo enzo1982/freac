@@ -130,7 +130,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	mainWnd->Add(btn_cancel);
 	mainWnd->Add(list_layers);
 
-	mainWnd->SetFlags(WF_NORMAL);
+	mainWnd->SetFlags(WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 

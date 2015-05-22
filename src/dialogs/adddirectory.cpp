@@ -61,7 +61,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divbar);
 
-	mainWnd->SetFlags(WF_NOTASKBUTTON);
+	mainWnd->SetFlags(WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 

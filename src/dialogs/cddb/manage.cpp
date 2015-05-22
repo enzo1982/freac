@@ -109,7 +109,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	mainWnd->Add(btn_delete);
 	mainWnd->Add(btn_save);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 

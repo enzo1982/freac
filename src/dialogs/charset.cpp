@@ -53,7 +53,7 @@ BonkEnc::ChooseCharsetDialog::ChooseCharsetDialog()
 	mainWnd->Add(btn_ok);
 	mainWnd->Add(btn_cancel);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
+	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
