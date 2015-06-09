@@ -28,10 +28,12 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg(const String &iQueryString)
 
 	i18n->SetContext("CDDB::Query");
 
-	errorState  = False;
+	errorState	 = False;
 
-	queryThread = NIL;
-	queryString = iQueryString;
+	queryThread	 = NIL;
+	queryString	 = iQueryString;
+
+	stopQueryThread	 = False;
 
 	mainWnd		 = new Window(i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
@@ -66,26 +68,41 @@ BonkEnc::cddbQueryDlg::~cddbQueryDlg()
 
 const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 {
+	mainWnd->Show();
+
 	queryThread = NonBlocking0<>(&cddbQueryDlg::QueryThread, this).Call();
 
 	mainWnd->WaitUntilClosed();
 
-	queryThread->Stop();
+	queryThread->Wait();
 
 	return error;
 }
 
 Void BonkEnc::cddbQueryDlg::Cancel()
 {
-	if (queryThread != NIL) queryThread->Stop();
+	if (queryThread == NIL) return;
 
 	mainWnd->Close();
+
+	stopQueryThread = True;
+
+	/* Wait up to one second for thread to finish.
+	 */
+	for (Int i = 0; i < 100; i++)
+	{
+		if (queryThread->GetStatus() != Threads::THREAD_RUNNING) return;
+
+		S::System::System::Sleep(10);
+	}
+
+	/* Kill thead if it did not finish after one second.
+	 */
+	queryThread->Stop();
 }
 
 Int BonkEnc::cddbQueryDlg::QueryThread()
 {
-	while (!mainWnd->IsVisible()) S::System::System::Sleep(0);
-
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	Bool	 result = False;
@@ -127,12 +144,16 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 
 	cddb.ConnectToServer();
 
+	if (stopQueryThread) { cddb.CloseConnection(); return False; }
+
 	prog_status->SetValue(20);
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Requesting CD information")));
 
 	/* Perform query using query string.
 	 */
 	result = cddb.Query(queryString);
+
+	if (stopQueryThread) { cddb.CloseConnection(); return False; }
 
 	/* Process result.
 	 */
@@ -182,6 +203,8 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 		}
 	}
 
+	if (stopQueryThread) { cddb.CloseConnection(); return False; }
+
 	/* Read actual CDDB data.
 	 */
 	Bool	 readError = False;
@@ -194,6 +217,8 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 
 		if (fuzzy) cddbInfo.revision = -1;
 	}
+
+	if (stopQueryThread) { cddbInfo = NIL; cddb.CloseConnection(); return False; }
 
 	/* Process read errors.
 	 */
