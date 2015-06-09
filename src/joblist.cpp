@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -1008,7 +1008,8 @@ Void BonkEnc::JobList::AddHeaderTabs()
 
 		if	(field == "<artist>")	  { tabName = "Artist";				       tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<album>")	  { tabName = "Album";				       tabSize = tabSize <= 0 ? 120 : tabSize; }
-		else if (field == "<title>")	  { tabName = "Title";				       tabSize = 0;			       }
+		else if (field == "<title>")	  { tabName = "Title";				       tabSize = !config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Contains("<file>") ? 0 :
+														 tabSize <= 0 ? 180 : tabSize; }
 		else if (field == "<genre>")	  { tabName = "Genre";				       tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<disc>")	  { tabName = "Disc";		  tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<track>")	  { tabName = "Track";		  tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
