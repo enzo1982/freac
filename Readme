@@ -149,7 +149,7 @@ Known problems
 History
 -------
 
-	Version 1.1 CVS (March 2015)
+	Version 1.1 CVS (June 2015)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -242,6 +242,7 @@ History
 		- improved title info editing user friendliness
 		- improved support for network files and directories
 		- raised maximum file name length
+		- do not eject discs when user stopped conversion
 		- NT SCSI mode is now used by default to access CD drives
 		- fixed ASPI error message being displayed on systems without optical drives
 		- installer improvements

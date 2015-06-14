@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -973,7 +973,7 @@ Error BonkEnc::JobConvert::Perform()
 
 			/* Eject CD if this was the last track from that disc.
 			 */
-			if (trackInfo.isCDTrack && ripperEjectDisc && mode != CONVERTER_STEP_DECODE)
+			if (trackInfo.isCDTrack && ripperEjectDisc && !stopConversion && mode != CONVERTER_STEP_DECODE)
 			{
 				/* Check if this was the last track.
 				 */
