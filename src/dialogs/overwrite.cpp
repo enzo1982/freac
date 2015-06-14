@@ -78,7 +78,7 @@ BonkEnc::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track>
 
 	foreach (const BoCA::Track &track, tracks)
 	{
-		list_files->AddEntry(String(track.outfile).Append("\t").Append(i18n->TranslateString("Overwrite")))->SetMark(True);
+		list_files->AddEntry(String(track.outfile).Append("\t").Append(i18n->TranslateString("Overwrite")), True);
 	}
 
 	Add(mainWnd);

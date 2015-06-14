@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -106,7 +106,7 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 		{
 			const String	&entryText = entryTexts.GetNth(i);
 
-			if (entryText.StartsWith(field)) { list_fields->AddEntry(entryText)->SetMark(True); entryPresent.SetNth(i, True); }
+			if (entryText.StartsWith(field)) { list_fields->AddEntry(entryText, True); entryPresent.SetNth(i, True); }
 		}
 	}
 
@@ -116,7 +116,7 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 	{
 		const String	&entryText = entryTexts.GetNth(i);
 
-		if (!entryPresent.GetNth(i)) list_fields->AddEntry(entryText)->SetMark(False);
+		if (!entryPresent.GetNth(i)) list_fields->AddEntry(entryText, False);
 	}
 }
 

@@ -180,9 +180,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 
 	/* Add entry to joblist.
 	 */
-	ListEntry	*entry	= AddEntry(GetEntryText(track));
-
-	entry->SetMark(True);
+	ListEntry	*entry	= AddEntry(GetEntryText(track), True);
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault)) entry->SetTooltipLayer(new LayerTooltip(track));
 
@@ -240,6 +238,10 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 
 Bool BonkEnc::JobList::RemoveAllTracks()
 {
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+
 	for (Int i = 0; i < tracks.Length(); i++)
 	{
 		ListEntry	*entry = GetNthEntry(i);
@@ -253,6 +255,8 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 			entry->SetTooltipLayer(NIL);
 		}
 	}
+
+	surface->EndPaint();
 
 	/* Notify components that all tracks will be removed.
 	 */

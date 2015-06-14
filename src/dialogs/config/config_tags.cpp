@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -55,7 +55,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 		foreach (TagSpec *spec, specs)
 		{
-			list_tag_formats->AddEntry(spec->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(spec->GetName().Replace(" ", NIL)), spec->IsDefault()));
+			list_tag_formats->AddEntry(spec->GetName(), config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(spec->GetName().Replace(" ", NIL)), spec->IsDefault()));
 			selected_encodings.Add(config->GetStringValue(Config::CategoryTagsID, spec->GetName().Replace(" ", NIL).Append("Encoding"), spec->GetDefaultEncoding()));
 		}
 	}
@@ -118,7 +118,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 		foreach (TagSpec *spec, specs)
 		{
-			if (spec->IsCoverArtSupported()) list_coverart_write_tags_format->AddEntry(spec->GetName())->SetMark(config->GetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(spec->GetName().Replace(" ", NIL)), spec->IsCoverArtDefault()));
+			if (spec->IsCoverArtSupported()) list_coverart_write_tags_format->AddEntry(spec->GetName(), config->GetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(spec->GetName().Replace(" ", NIL)), spec->IsCoverArtDefault()));
 		}
 	}
 
