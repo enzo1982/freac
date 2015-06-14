@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -513,7 +513,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 			cueSheet.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), Math::Round((Float) (encodedSamples - trackLength) / (trackInfo->rate * trackInfo->channels) * 75), trackInfo->title.Length() > 0 ? trackInfo->title : i18n->TranslateString("unknown title"), trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"));
 		}
 
-		if (trackInfo->isCDTrack && currentConfig->cdrip_autoEject && step == 1)
+		if (trackInfo->isCDTrack && currentConfig->cdrip_autoEject && !stop_encoding && step == 1)
 		{
 			Bool	 ejectDisk = True;
 

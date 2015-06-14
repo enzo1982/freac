@@ -95,10 +95,11 @@ Known problems
 History
 -------
 
-	Version 1.0.24 (May 2015)
+	Version 1.0.24 (June 2015)
 
 		- added mouse jitter tolerance for tooltips
 		- added sample rate check to FAAC encoder
+		- do not eject discs when user stopped conversion
 		- retain disc number info when converting
 		- made CDDB query dialog modal again
 

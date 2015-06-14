@@ -96,10 +96,11 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.24 (Mai 2015)
+	Version 1.0.24 (Juni 2015)
 
 		- Toleranz gegen Mauszittern für Tooltips hinzugefügt
 		- Samplerate-Prüfung bei FAAC-Kodierer hinzugefügt
+		- CDs nicht auswerfen, wenn der Nutzer die Konvertierung gestoppt hat
 		- Information zu CD-Nummer wird bei Konvertierung beibehalten
 		- CDDB-Abfragedialog ist wieder modal
 
