@@ -524,7 +524,7 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)
 		Surface	*surface   = mainWnd->GetDrawSurface();
 		Layer	*mainLayer = mainWnd->GetMainLayer();
 
-		surface->StartPaint(Rect(Point(218, 40) * surface->GetSurfaceDPI() / 96.0, mainLayer->GetRealSize() - Size(210, 32) * surface->GetSurfaceDPI() / 96.0));
+		surface->StartPaint(Rect(mainLayer->GetRealPosition() + Point(218, 40) * surface->GetSurfaceDPI() / 96.0, mainLayer->GetRealSize() - Size(218, 40) * surface->GetSurfaceDPI() / 96.0));
 
 		if (selectedLayer != NIL) mainLayer->Remove(selectedLayer);
 					  mainLayer->Add(newLayer);
