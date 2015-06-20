@@ -19,6 +19,9 @@
     <entry id="201" string="Warning"/>
     <entry id="202" string="Info"/>
 
+    <entry id="210" string="Do not display this warning again"/>
+    <entry id="211" string="Do not display this note again"/>
+
     <entry id="300" string="Artist"/>
     <entry id="301" string="Title"/>
     <entry id="302" string="Album"/>
@@ -510,6 +513,7 @@
       <entry id="7020" string="Unknown error"/>
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
       <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1"/>
+      <entry id="7023" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
     </section>
 
     <section name="Dialogs">
@@ -887,7 +891,6 @@
 	<entry id="52016" string="Cancel download"/>
 	<entry id="52017" string="unknown"/>
 	<entry id="52018" string="Note"/>
-	<entry id="52019" string="Do not display this note again"/>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization"/>

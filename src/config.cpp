@@ -1,5 +1,5 @@
 /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -131,6 +131,9 @@ const String	 BonkEnc::Config::SettingsLastCustomCharsetDefault		= NIL;
 
 const String	 BonkEnc::Config::SettingsShowJobsTabID				= "ShowJobsTab";
 const Bool	 BonkEnc::Config::SettingsShowJobsTabDefault			= False;
+
+const String	 BonkEnc::Config::SettingsWarnLossyToLosslessID			= "WarnLossyToLossless";
+const Bool	 BonkEnc::Config::SettingsWarnLossyToLosslessDefault		= True;
 
 /* Category Resources
  */

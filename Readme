@@ -62,7 +62,7 @@ Requirements
 	Requirements for running fre:ac:
 
 		Supported operating systems:
-			- Windows XP/Vista/7/8.x
+			- Windows XP/Vista/7/8.x/10
 			- OS X 10.5 Leopard or later
 			- Linux (most modern distributions should work)
 			- FreeBSD/PC-BSD (tested on FreeBSD 10.0)
@@ -211,6 +211,7 @@ History
 		- added support for reading and writing Vorbis files with .oga extension
 		- added support for XSPF, Windows Media and PLS playlists
 		- added a slider for seeking during playback
+		- added a warning when converting from lossy to lossless formats
 		- added the ability to sort the joblist by clicking headers
 		- the time left indicator now shows hours if necessary
 		- the five last used file name patterns are now saved for later use
@@ -254,7 +255,7 @@ History
 		- upgraded FAAC to version 1.28
 		- upgraded FAAD2 to version 2.7
 		- upgraded LAME to version 3.99.5
-		- upgraded Vorbis to aoTuV beta 6.03 (2014)
+		- upgraded Vorbis to version 1.3.5 + aoTuV beta 6.03 (2014)
 		- upgraded Ogg library to version 1.3.2
 		- upgraded CDRip to version 2.0 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0.0

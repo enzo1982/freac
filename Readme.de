@@ -62,7 +62,7 @@ Voraussetzungen
 	Voraussetzungen zum Ausführen von fre:ac:
 
 		Unterstützte Betriebsysteme:
-			- Windows XP/Vista/7/8.x
+			- Windows XP/Vista/7/8.x/10
 			- OS X 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen sollten funktionieren)
 			- FreeBSD/PC-BSD (getestet unter FreeBSD 10.0)
@@ -211,6 +211,7 @@ Geschichte
 		- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
 		- Unterstützung für XSPF-, Windows Media- und PLS-Playlisten hinzugefügt
 		- Slider zum Springen während der Wiedergabe hinzugefügt
+		- Warnung beim Konvertieren von verlustbehafteten in verlustfreie Formate hinzugefügt
 		- Möglichkeit zur Sortierung der Jobliste durch Klick auf Überschriften hinzugefügt
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
@@ -254,7 +255,7 @@ Geschichte
 		- FAAC auf Version 1.28 aktualisiert
 		- FAAD2 suf Version 2.7 aktualisiert
 		- LAME suf Version 3.99.5 aktualisiert
-		- Vorbis auf aoTuV Beta 6.03 (2014) aktualisiert
+		- Vorbis auf Version 1.3.5 + aoTuV Beta 6.03 (2014) aktualisiert
 		- Ogg-Bibliothek auf Version 1.3.2 aktualisiert
 		- CDRip auf Version 2.0 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0.0

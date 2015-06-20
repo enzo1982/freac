@@ -18,6 +18,8 @@
     <entry id="200" string="Error">Error</entry>
     <entry id="202" string="Info">Info</entry>
 
+    <entry id="211" string="Do not display this note again">No mostrar esta nota de nuevo</entry>
+
     <entry id="300" string="Artist">Artista</entry>
     <entry id="301" string="Title">Título</entry>
     <entry id="302" string="Album">Álbum</entry>
@@ -834,7 +836,6 @@
 	<entry id="52016" string="Cancel download">Cancelar descarga</entry>
 	<entry id="52017" string="unknown">ninguno</entry>
 	<entry id="52018" string="Note">Nota</entry>
-	<entry id="52019" string="Do not display this note again">No mostrar esta nota de nuevo</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Automatización</entry>

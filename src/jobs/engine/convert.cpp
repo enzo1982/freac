@@ -67,6 +67,9 @@ BonkEnc::JobConvert::~JobConvert()
 Error BonkEnc::JobConvert::Precheck()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	Registry	&boca	= Registry::Get();
 
 	/* Get config values.
 	 */
@@ -85,6 +88,19 @@ Error BonkEnc::JobConvert::Precheck()
 		return Error();
 	}
 
+	/* Find out if we are encoding lossless.
+	 */
+	String			 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	EncoderComponent	*encoder	= (EncoderComponent *) boca.CreateComponentByID(encoderID);
+	Bool			 encodeLossless = False;
+
+	if (encoder != NIL)
+	{
+		encodeLossless = encoder->IsLossless();
+
+		boca.DeleteComponent(encoder);
+	}
+
 	/* Calculate output filenames.
 	 */
 	if (!encodeToSingleFile)
@@ -96,8 +112,12 @@ Error BonkEnc::JobConvert::Precheck()
 		Array<Track>	 existingTracks;
 		Array<Track>	 newTracks;
 
+		Bool		 haveLossyTracks = False;
+
 		foreach (Track &track, tracks)
 		{
+			if (!track.lossless) haveLossyTracks = True;
+
 			track.outfile = Utilities::GetOutputFileName(track);
 
 			if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)) { existingTracks.Add(track); continue; }
@@ -113,6 +133,23 @@ Error BonkEnc::JobConvert::Precheck()
 			else	   newTracks.Add(track);
 		}
 
+		/* Check if we have lossy tracks that would be converted to lossless.
+		 */
+		Bool	 doNotWarnAgain = !config->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault);
+
+		if (encodeLossless && haveLossyTracks && !doNotWarnAgain)
+		{
+			MessageDlg	 messageBox(i18n->TranslateString("You seem to be converting from a lossy to a lossless format.\n\nPlease be aware that quality loss cannot be undone, so this process\nwill not improve quality in any way, and most likely increase file size.\n\nWould you like to continue anyway?", "Messages"), i18n->TranslateString("Warning"), Message::Buttons::YesNo, Message::Icon::Warning, i18n->TranslateString("Do not display this warning again"), &doNotWarnAgain);
+
+			messageBox.ShowDialog();
+
+			config->SetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, !doNotWarnAgain);
+
+			if (messageBox.GetButtonCode() == Message::Button::No) return Error();
+		}
+
+		/* Check if we have existing files that would be overwritten.
+		 */
 		if (existingTracks.Length() > 0 && !overwriteAllFiles)
 		{
 			/* Display dialog to confirm overwrite.

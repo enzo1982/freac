@@ -18,6 +18,8 @@
     <entry id="200" string="Error">Грешка</entry>
     <entry id="202" string="Info">Информация</entry>
 
+    <entry id="211" string="Do not display this note again">Не показвай тази забележка повече</entry>
+
     <entry id="300" string="Artist">Изпълнител</entry>
     <entry id="301" string="Title">Заглавие</entry>
     <entry id="302" string="Album">Албум</entry>
@@ -792,7 +794,6 @@
 	<entry id="52016" string="Cancel download">Отмяна на изтеглянето</entry>
 	<entry id="52017" string="unknown">неизвестно</entry>
 	<entry id="52018" string="Note">Забележка</entry>
-	<entry id="52019" string="Do not display this note again">Не показвай тази забележка повече</entry>
 
 	<section name="Configuration">
 	  <entry id="52101" string="Automatization">Автоматизация</entry>
