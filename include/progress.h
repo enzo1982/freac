@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,11 +25,14 @@ namespace BonkEnc
 	class Progress
 	{
 		private:
+			Threads::Mutex		 mutex;
 #ifdef __WIN32__
 			HWND			 hwnd;
 			ITaskbarList3		*taskbar;
 #endif
 		protected:
+			UnsignedInt64		 lastInvoked;
+
 			Int64			 totalSamples;
 			Float			 totalSamplesDone;
 
@@ -43,7 +46,7 @@ namespace BonkEnc
 						~Progress();
 
 			Void			 ComputeTotalSamples(const Array<BoCA::Track> &);
-			Void			 FixTotalSamples(BoCA::Track &, const BoCA::Track &);
+			Void			 FixTotalSamples(const BoCA::Track &, const BoCA::Track &);
 
 			Int64			 GetTotalSamples()			{ return totalSamples; }
 			Int			 GetTrackTimePassed()			{ return S::System::System::Clock() - trackStartTicks; }

@@ -210,41 +210,21 @@ Error BonkEnc::JobConvert::Perform()
 	Bool	 encodeToSingleFile	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
 	Bool	 overwriteAllFiles	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || config->enable_console;
 
-	Bool	 encodeOnTheFly		= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
-	Bool	 keepWaveFiles		= config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
-
 	String	 encoderOutputDirectory	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
 	Bool	 writeToInputDirectory	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
-	Bool	 allowOverwriteSource	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault);
 
 	Bool	 removeProcessedTracks	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsRemoveTracksID, Config::SettingsRemoveTracksDefault);
 	Bool	 addEncodedTracks	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, Config::SettingsAddEncodedTracksDefault);
 
-	Int	 ripperTimeout		= config->GetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 	Bool	 ripperEjectDisc	= config->GetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, Config::RipperEjectAfterRippingDefault);
 
 	Bool	 createPlaylist		= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
 	Bool	 createCueSheet		= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
 
-#ifdef __APPLE__
-	Int	 sndFileFormat		= config->GetIntValue("SndFile", "Format", 0x020000);
-	Int	 sndFileSubFormat	= config->GetIntValue("SndFile", "SubFormat", 0x000000);
-#else
-	Int	 sndFileFormat		= config->GetIntValue("SndFile", "Format", 0x010000);
-	Int	 sndFileSubFormat	= config->GetIntValue("SndFile", "SubFormat", 0x000000);
-#endif
-
-	/* Find system byte order.
-	 */
-	Int	 systemByteOrder       = CPU().GetEndianness() == EndianLittle ? BYTE_INTEL : BYTE_RAW;
-
 	/* Set number of threads if set to automatic mode.
 	 */
-	if (numberOfThreads == 0) numberOfThreads = CPU().GetNumCores();
-
-	/* We need to encode on the fly when encoding to a single file.
-	 */
-	if (encodeToSingleFile) encodeOnTheFly = True;
+	if	(!enableParallel)      numberOfThreads = 1;
+	else if (numberOfThreads == 0) numberOfThreads = CPU().GetNumCores();
 
 	/* Setup conversion log.
 	 */
@@ -331,742 +311,375 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Enter actual conversion routines.
 	 */
-	Int	 encodedTracks = 0;
+	Int	 encodedTracks	=  0;
+	Int	 conversionStep = -1;
+	String	 decoderName;
 
-	if (enableParallel)
+	/* Instantiate and start worker threads.
+	 */
+	Array<JobConvertWorker *>	 workers;
+
+	for (Int i = 0; i < (encodeToSingleFile ? 1 : numberOfThreads); i++) workers.Add(new JobConvertWorker());
+
+	foreach (JobConvertWorker *worker, workers)
 	{
-		/* Instantiate and start worker threads.
+		worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
+		worker->onFinishTrack.Connect(&Progress::FinishTrackProgressValues, progress);
+
+		worker->Start();
+	}
+
+	/* Main conversion loop.
+	 */
+	Bool				 allTracksAssigned = False;
+	Array<JobConvertWorker *>	 workerQueue;
+
+	do
+	{
+		if (encodeToSingleFile && singleFileEncoder == NIL) break;
+
+		/* Cancel workers if stop requested.
 		 */
-		Array<JobConvertWorker *>	 workers;
-
-		for (Int i = 0; i < (encodeToSingleFile ? 1 : numberOfThreads); i++) workers.Add(new JobConvertWorker());
-
-		foreach (JobConvertWorker *worker, workers) worker->Start();
-
-		/* Main conversion loop.
-		 */
-		Bool				 allTracksAssigned = False;
-		Array<JobConvertWorker *>	 workerQueue;
-
-		do
+		if (stopConversion)
 		{
-			if (encodeToSingleFile && singleFileEncoder == NIL) break;
-
-			/* Cancel workers if stop requested.
-			 */
-			if (stopConversion)
-			{
-				foreach (JobConvertWorker *worker, workers)
-				{
-					/* Unlock track device and output file if necessary.
-					 */
-					UnlockDeviceForTrack(worker->GetTrackToConvert());
-					UnlockOutputForTrack(worker->GetTrackToConvert());
-
-					worker->Cancel();
-				}
-
-				break;
-			}
-
-			/* Cancel first worker if skip requested.
-			 */
-			if (skipTrack && workerQueue.Length() > 0)
-			{
-				JobConvertWorker *worker = workerQueue.GetFirst();
-
-				worker->Cancel();
-
-				skipTrack = False;
-			}
-
-			/* Remove finished workers from queue.
-			 */
-			foreach (JobConvertWorker *worker, workerQueue)
-			{
-				if (!worker->IsIdle()) continue;
-
-				const Track	&track = worker->GetTrackToConvert();
-
-				progress->FinishTrackProgressValues(track);
-
-				if (File(track.outfile).Exists())
-				{
-					/* Eject CD if this was the last track from that disc.
-					 */
-					if (track.isCDTrack && ripperEjectDisc)
-					{
-						/* Check if this was the last track.
-						 */
-						Bool	 ejectDisk = True;
-
-						foreach (const Track &trackToCheck, tracks)
-						{
-							if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
-						}
-
-						/* Eject disc if no more tracks left.
-						 */
-						if (ejectDisk)
-						{
-							DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
-
-							if (info != NIL)
-							{
-								info->OpenNthDeviceTray(track.drive);
-
-								boca.DeleteComponent(info);
-
-								/* Notify application of removed disc.
-								 */
-								Notification::Get()->onDiscRemove.Emit(track.drive);
-							}
-						}
-					}
-
-					/* Remove track from joblist.
-					 */
-					if (removeProcessedTracks && !config->enable_console)
-					{
-						JobList			*joblist = JobList::Get();
-						const Array<Track>	*tracks	 = joblist->getTrackList.Call();
-
-						foreach (const Track &jltrack, *tracks)
-						{
-							if (jltrack.GetTrackID() == track.GetTrackID())
-							{
-								joblist->onComponentRemoveTrack.Emit(jltrack);
-
-								break;
-							}
-						}
-					}
-
-					/* Add encoded track to joblist if requested.
-					 */
-					if (addEncodedTracks && !encodeToSingleFile && !config->enable_console)
-					{
-						Array<String>	 files;
-
-						files.Add(track.outfile);
-
-						(new JobAddFiles(files))->Schedule();
-					}
-
-					/* Add track to list of converted tracks.
-					 */
-					converted_tracks.Add(track, track.GetTrackID());
-				}
-
-				encodedTracks++;
-
-				workerQueue.Remove(worker->GetThreadID());
-
-				/* Unlock track device and output file if necessary.
-				 */
-				UnlockDeviceForTrack(track);
-				UnlockOutputForTrack(track);
-
-				/* Announce next track.
-				 */
-				foreach (JobConvertWorker *worker, workerQueue)
-				{
-					if (worker->IsWaiting()) continue;
-
-					onEncodeTrack.Emit(worker->GetTrackToConvert(), worker->GetDecoderName(), worker->GetConversionStep());
-
-					progress->InitTrackProgressValues(worker->GetTrackStartTicks());
-					progress->UpdateProgressValues(worker->GetTrackToConvert(), worker->GetTrackPosition());
-
-					break;
-				}
-			}
-
-			/* Pause if requested.
-			 */
-			if (conversionPaused)
-			{
-				progress->PauseTrackProgress();
-				progress->PauseTotalProgress();
-
-				foreach (JobConvertWorker *worker, workers) worker->Pause(True);
-
-				while (conversionPaused && !stopConversion && !skipTrack) S::System::System::Sleep(50);
-
-				foreach (JobConvertWorker *worker, workers) worker->Pause(False);
-
-				progress->ResumeTrackProgress();
-				progress->ResumeTotalProgress();
-			}
-
-			/* Find a free worker thread.
-			 */
-			JobConvertWorker	*workerToUse = NIL;
-
 			foreach (JobConvertWorker *worker, workers)
 			{
-				if (!worker->IsIdle()) continue;
+				/* Unlock track device and output file if necessary.
+				 */
+				UnlockDeviceForTrack(worker->GetTrackToConvert());
+				UnlockOutputForTrack(worker->GetTrackToConvert());
 
-				workerToUse = worker;
+				worker->Cancel();
 			}
 
-			/* Update progress values.
-			 */
-			foreach (JobConvertWorker *worker, workerQueue)
-			{
-				if (worker->IsWaiting()) continue;
-
-				AutoRelease	 autoRelease;
-
-				progress->UpdateProgressValues(worker->GetTrackToConvert(), worker->GetTrackPosition());
-
-				break;
-			}
-
-			/* Sleep for 25ms.
-			 */
-			if (workerQueue.Length() > 0) S::System::System::Sleep(25);
-
-			/* Continue if no worker found.
-			 */
-			if (workerToUse == NIL || allTracksAssigned) continue;
-
-			/* Find next track to convert.
-			 */
-			allTracksAssigned = True;
-
-			for (Int i = 0; i < tracks.Length(); i++)
-			{
-				const Track	&track = tracks.GetNth(i);
-
-				/* Skip track if initially requested.
-				 */
-				if (trackActions.Get(track.GetTrackID()) == ConfirmOverwrite::Action::Skip) continue;
-
-				allTracksAssigned = False;
-
-				/* Lock track device and output file if necessary.
-				 */
-				if (!LockDeviceForTrack(track))				       continue;
-				if (!LockOutputForTrack(track)) { UnlockDeviceForTrack(track); continue; }
-
-				/* Check if track should be overwritten.
-				 */
-				if (!overwriteAllFiles && trackActions.Get(track.GetTrackID()) != ConfirmOverwrite::Action::Overwrite)
-				{
-					/* Check track existence again as it might have been created in the meantime.
-					 */
-					if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory))
-					{
-						BoCA::I18n	*i18n = BoCA::I18n::Get();
-
-						i18n->SetContext("Messages");
-
-						MessageDlg	*confirmation = new MessageDlg(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
-
-						confirmation->ShowDialog();
-
-						if (confirmation->GetButtonCode() == Message::Button::Cancel)
-						{
-							stopConversion = True;
-
-							/* Unlock track device and output file if necessary.
-							 */
-							UnlockDeviceForTrack(track);
-							UnlockOutputForTrack(track);
-
-							Object::DeleteObject(confirmation);
-
-							break;
-						}
-
-						if (confirmation->GetButtonCode() == Message::Button::No)
-						{
-							overwriteAllFiles = False;
-
-							trackActions.Add(ConfirmOverwrite::Action::Skip, track.GetTrackID());
-
-							/* Unlock track device and output file if necessary.
-							 */
-							UnlockDeviceForTrack(track);
-							UnlockOutputForTrack(track);
-
-							Object::DeleteObject(confirmation);
-
-							continue;
-						}
-
-						Object::DeleteObject(confirmation);
-					}
-				}
-
-				/* Assign track and add worker to end of queue.
-				 */
-				workerToUse->SetSingleFileEncoder(singleFileEncoder);
-				workerToUse->SetTrackToConvert(track);
-
-				workerQueue.Add(workerToUse, workerToUse->GetThreadID());
-
-				/* Announce that we are converting a new track.
-				 */
-				if (workerToUse == workerQueue.GetFirst())
-				{
-					while (workerToUse->IsWaiting() && !workerToUse->IsIdle()) S::System::System::Sleep(1);
-
-					onEncodeTrack.Emit(track, workerToUse->GetDecoderName(), workerToUse->GetConversionStep());
-
-					progress->InitTrackProgressValues(workerToUse->GetTrackStartTicks());
-				}
-
-				/* Remove track from track list.
-				 */
-				tracks.RemoveNth(i);
-
-				break;
-			}
+			break;
 		}
-		while (workerQueue.Length() > 0);
 
-		/* Clean up worker threads.
+		/* Cancel first worker if skip requested.
 		 */
-		foreach (JobConvertWorker *worker, workers) worker->Quit();
-		foreach (JobConvertWorker *worker, workers) worker->Wait();
-		foreach (JobConvertWorker *worker, workers) delete worker;
-
-		workers.RemoveAll();
-
-		/* Fill playlist and cuesheet tracks.
-		 */
-		String	 absoluteOutputDir = Utilities::GetAbsoluteDirName(encoderOutputDirectory);
-
-		foreach (const Track &original_track, original_tracks)
+		if (skipTrack && workerQueue.Length() > 0)
 		{
-			Track	 track = converted_tracks.Get(original_track.GetTrackID());
+			JobConvertWorker	*worker = workerQueue.GetFirst();
 
-			if (track == NIL) continue;
+			worker->Cancel();
 
-			if (!encodeToSingleFile)
-			{
-				Track	 playlistTrack = track;
-
-				playlistTrack.isCDTrack	   = False;
-				playlistTrack.origFilename = track.outfile;
-
-				playlist_tracks.Add(playlistTrack);
-				cuesheet_tracks.Add(playlistTrack);
-
-				track.SaveCoverArtFiles(absoluteOutputDir);
-			}
-			else
-			{
-				Track	 cuesheetTrack = original_track;
-
-				cuesheetTrack.isCDTrack	   = False;
-				cuesheetTrack.sampleOffset = track.sampleOffset;
-				cuesheetTrack.length	   = track.length;
-				cuesheetTrack.origFilename = singleOutFile;
-
-				cuesheet_tracks.Add(cuesheetTrack);
-			}
-		}
-	}
-	else
-	{
-		/* Main conversion loop.
-		 */
-		Int64	 encodedSamples	   = 0;
-		Int	 mode		   = CONVERTER_STEP_ON_THE_FLY;
-
-		for (Int i = 0; i < tracks.Length(); (mode == CONVERTER_STEP_DECODE) ? i : i++)
-		{
-			/* Reset encoder mode if skip pressed while decoding.
+			/* Wait for worker to become idle.
 			 */
-			if (skipTrack && mode == CONVERTER_STEP_DECODE)
-			{
-				mode		= CONVERTER_STEP_ENCODE;
-				activeEncoderID = selectedEncoderID;
+			while (!worker->IsIdle()) S::System::System::Sleep(1);
 
-				continue;
-			}
+			workerQueue.Remove(worker->GetThreadID());
 
-			if (encodeToSingleFile && singleFileEncoder == NIL) break;
+			/* Unlock track device and output file if necessary.
+			 */
+			const Track	&track = worker->GetTrackToConvert();
 
-			AutoRelease	 autoRelease;
-
-			Track		 trackInfo = tracks.GetNth(i);
-			const Format	&format	   = trackInfo.GetFormat();
-
-			String	 in_filename = trackInfo.origFilename;
-			String	 out_filename;
+			UnlockDeviceForTrack(track);
+			UnlockOutputForTrack(track);
 
 			skipTrack = False;
+		}
 
-			/* Setup output file name.
-			 */
-			if (!encodeToSingleFile)
+		/* Remove finished workers from queue.
+		 */
+		foreach (JobConvertWorker *worker, workerQueue)
+		{
+			if (!worker->IsIdle()) continue;
+
+			const Track	&track = worker->GetTrackToConvert();
+
+			if (File(track.outfile).Exists())
 			{
-				/* Skip track if initially requested.
+				/* Eject CD if this was the last track from that disc.
 				 */
-				if (trackActions.Get(trackInfo.GetTrackID()) == ConfirmOverwrite::Action::Skip) continue;
-
-				/* Check if track should be overwritten.
-				 */
-				if (!overwriteAllFiles && trackActions.Get(trackInfo.GetTrackID()) != ConfirmOverwrite::Action::Overwrite && mode != CONVERTER_STEP_DECODE)
+				if (track.isCDTrack && ripperEjectDisc)
 				{
-					/* Check track existence again as it might have been created in the meantime.
+					/* Check if this was the last track.
 					 */
-					if (File(trackInfo.outfile).Exists() && !(trackInfo.outfile.ToLower() == trackInfo.origFilename.ToLower() && writeToInputDirectory))
+					Bool	 ejectDisk = True;
+
+					foreach (const Track &trackToCheck, tracks)
 					{
-						BoCA::I18n	*i18n = BoCA::I18n::Get();
-
-						i18n->SetContext("Messages");
-
-						MessageDlg	*confirmation = new MessageDlg(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", trackInfo.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
-
-						confirmation->ShowDialog();
-
-						if (confirmation->GetButtonCode() == Message::Button::Cancel)
-						{
-							Object::DeleteObject(confirmation);
-
-							break;
-						}
-
-						if (confirmation->GetButtonCode() == Message::Button::No)
-						{
-							overwriteAllFiles = False;
-
-							Object::DeleteObject(confirmation);
-
-							continue;
-						}
-
-						Object::DeleteObject(confirmation);
-					}
-				}
-
-				/* Set final output filename.
-				 */
-				out_filename = trackInfo.outfile;
-
-				if (out_filename.ToLower() == in_filename.ToLower()) out_filename.Append(".temp");
-
-				trackInfo.outfile = out_filename;
-			}
-
-			/* Set encoder mode in non-on-the-fly mode.
-			 */
-			if (!encodeOnTheFly)
-			{
-				if (selectedEncoderID != "wave-enc" && selectedEncoderID != "sndfile-enc")
-				{
-					if (mode == CONVERTER_STEP_DECODE) mode = CONVERTER_STEP_ENCODE;
-					else				   mode = CONVERTER_STEP_DECODE;
-				}
-
-				if (mode == CONVERTER_STEP_DECODE)
-				{
-					activeEncoderID = "wave-enc";
-
-					if (!boca.ComponentExists("wave-enc"))
-					{
-						activeEncoderID = "sndfile-enc";
-
-						config->SetIntValue("SndFile", "Format", 0x010000);
-						config->SetIntValue("SndFile", "SubFormat", 0x000000);
+						if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
 					}
 
-					out_filename.Append(".wav");
-				}
-				else if (mode == CONVERTER_STEP_ENCODE)
-				{
-					activeEncoderID = selectedEncoderID;
-
-					in_filename = out_filename;
-					in_filename.Append(".wav");
-				}
-			}
-
-			/* Create decoder.
-			 */
-			Decoder	*decoder = new Decoder();
-
-			if (!decoder->Create(in_filename, trackInfo))
-			{
-				delete decoder;
-
-				continue;
-			}
-
-			/* Fix total samples value when not encoding on-the-fly.
-			 */
-			if (mode == CONVERTER_STEP_ENCODE)
-			{
-				Track	 nTrackInfo = trackInfo;
-
-				decoder->GetStreamInfo(nTrackInfo);
-				progress->FixTotalSamples(trackInfo, nTrackInfo);
-			}
-
-			log->Write(String("\tEncoding from: ").Append(in_filename));
-			log->Write(String("\t         to:   ").Append(out_filename));
-
-			onEncodeTrack.Emit(trackInfo, decoder->GetDecoderName(), mode);
-
-			SetText(String("Converting %1...").Replace("%1", in_filename));
-
-			Encoder	*encoder = singleFileEncoder;
-
-			if (!encodeToSingleFile)
-			{
-				encoder = new Encoder();
-
-				if (!encoder->Create(activeEncoderID, out_filename, trackInfo))
-				{
-					delete decoder;
-					delete encoder;
-
-					File(out_filename).Delete();
-
-					continue;
-				}
-			}
-
-			log->Write("\t\tEntering encoder loop...");
-
-			Int64		 trackLength  = 0;
-			Int64		 position     = 0;
-			UnsignedLong	 samples_size = 512;
-
-			progress->InitTrackProgressValues();
-			progress->ResumeTotalProgress();
-
-			Int			 bytesPerSample = format.bits / 8;
-			Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample * format.channels);
-
-			while (!skipTrack && !stopConversion)
-			{
-				Int	 step = samples_size;
-
-				if (trackInfo.length >= 0)
-				{
-					if (position >= trackInfo.length) break;
-
-					if (position + step > trackInfo.length) step = trackInfo.length - position;
-				}
-
-				/* Read samples from decoder.
-				 */
-				Int	 bytes = decoder->Read(buffer, step * bytesPerSample * format.channels);
-
-				if	(bytes == -1) { stopConversion = True; break; }
-				else if (bytes ==  0)			       break;
-
-				/* Switch byte order to native.
-				 */
-				if (format.order != BYTE_NATIVE && format.order != systemByteOrder) BoCA::Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
-
-				/* Pass samples to encoder.
-				 */
-				if (encoder->Write(buffer, bytes) == -1) { stopConversion = True; break; }
-
-				/* Update length and position info.
-				 */
-				trackLength += (bytes / bytesPerSample / format.channels);
-
-				if (trackInfo.length >= 0) position += (bytes / bytesPerSample / format.channels);
-				else			   position = decoder->GetInBytes();
-
-				/* Check for ripper timeout.
-				 */
-				if (trackInfo.isCDTrack && ripperTimeout > 0 && progress->GetTrackTimePassed() > ripperTimeout * 1000)
-				{
-					BoCA::Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(ripperTimeout));
-
-					skipTrack = True;
-				}
-
-				/* Pause if requested.
-				 */
-				if (conversionPaused)
-				{
-					progress->PauseTrackProgress();
-					progress->PauseTotalProgress();
-
-					while (conversionPaused && !stopConversion && !skipTrack) S::System::System::Sleep(50);
-
-					progress->ResumeTrackProgress();
-					progress->ResumeTotalProgress();
-				}
-
-				/* Update progress values.
-				 */
-				progress->UpdateProgressValues(trackInfo, position);
-			}
-
-			log->Write("\t\tLeaving encoder loop...");
-
-			delete decoder;
-
-			encodedSamples += trackLength;
-
-			/* Close encoder or signal next chapter.
-			 */
-			if (!encodeToSingleFile)
-			{
-				delete encoder;
-
-				if (File(out_filename).GetFileSize() <= 0 || skipTrack || stopConversion)
-				{
-					File(out_filename).Delete();
-				}
-			}
-			else if (!skipTrack)
-			{
-				encoder->SignalChapterChange();
-
-				Track	 cuesheetTrack = original_tracks.GetNth(i);
-
-				cuesheetTrack.isCDTrack	   = False;
-				cuesheetTrack.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
-				cuesheetTrack.length	   = trackLength;
-				cuesheetTrack.origFilename = singleOutFile;
-
-				cuesheet_tracks.Add(cuesheetTrack);
-			}
-
-			progress->PauseTotalProgress();
-			progress->FinishTrackProgressValues(trackInfo);
-
-			/* Reset SndFile configuration after decoding.
-			 */
-			if (mode == CONVERTER_STEP_DECODE && !boca.ComponentExists("wave-enc"))
-			{
-				config->SetIntValue("SndFile", "Format", sndFileFormat);
-				config->SetIntValue("SndFile", "SubFormat", sndFileSubFormat);
-			}
-
-			/* Delete input file if requested or not in on-the-fly mode.
-			 */
-			if (mode == CONVERTER_STEP_ENCODE)
-			{
-				if (!keepWaveFiles) File(in_filename).Delete();
-
-				if (in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
-			}
-
-			if (mode != CONVERTER_STEP_ENCODE && Config::Get()->deleteAfterEncoding && !stopConversion && !skipTrack) File(in_filename).Delete();
-
-			/* Move output file if temporary.
-			 */
-			if (out_filename.ToLower() == String(in_filename.ToLower()).Append(".temp") && File(out_filename).Exists())
-			{
-				if (!writeToInputDirectory || allowOverwriteSource || !File(in_filename).Exists())
-				{
-					File(in_filename).Delete();
-					File(out_filename).Move(in_filename);
-
-					out_filename = in_filename;
-				}
-				else
-				{
-					File(String(in_filename).Append(".new")).Delete();
-					File(out_filename).Move(String(in_filename).Append(".new"));
-
-					out_filename = String(in_filename).Append(".new");
-				}
-			}
-
-			/* Add track to playlist, cuesheet or joblist.
-			 */
-			if (!encodeToSingleFile)
-			{
-				if (mode != CONVERTER_STEP_DECODE && File(out_filename).Exists())
-				{
-					Track	 playlistTrack = trackInfo;
-
-					playlistTrack.isCDTrack	   = False;
-					playlistTrack.sampleOffset = 0;
-					playlistTrack.length	   = trackLength;
-					playlistTrack.origFilename = out_filename;
-
-					playlist_tracks.Add(playlistTrack);
-					cuesheet_tracks.Add(playlistTrack);
-
-					trackInfo.SaveCoverArtFiles(Utilities::GetAbsoluteDirName(encoderOutputDirectory));
-
-					/* Add encoded track to joblist if requested.
+					/* Eject disc if no more tracks left.
 					 */
-					if (addEncodedTracks)
+					if (ejectDisk)
 					{
-						Array<String>	 files;
+						DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
-						files.Add(out_filename);
+						if (info != NIL)
+						{
+							info->OpenNthDeviceTray(track.drive);
 
-						(new JobAddFiles(files))->Schedule();
+							boca.DeleteComponent(info);
+
+							/* Notify application of removed disc.
+							 */
+							Notification::Get()->onDiscRemove.Emit(track.drive);
+						}
 					}
 				}
-			}
 
-			/* Eject CD if this was the last track from that disc.
-			 */
-			if (trackInfo.isCDTrack && ripperEjectDisc && !stopConversion && mode != CONVERTER_STEP_DECODE)
-			{
-				/* Check if this was the last track.
+				/* Remove track from joblist.
 				 */
-				Bool	 ejectDisk = True;
-
-				for (Int j = i + 1; j < tracks.Length(); j++)
-				{
-					if (tracks.GetNth(j).drive == trackInfo.drive) { ejectDisk = False; break; }
-				}
-
-				/* Eject disc if no more tracks left.
-				 */
-				if (ejectDisk)
-				{
-					DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
-
-					if (info != NIL)
-					{
-						info->OpenNthDeviceTray(trackInfo.drive);
-
-						boca.DeleteComponent(info);
-
-						/* Notify application of removed disc.
-						 */
-						Notification::Get()->onDiscRemove.Emit(trackInfo.drive);
-					}
-				}
-			}
-
-			/* Count encoded tracks and remove track from joblist.
-			 */
-			if (!stopConversion && !skipTrack && mode != CONVERTER_STEP_DECODE)
-			{
 				if (removeProcessedTracks && !config->enable_console)
 				{
 					JobList			*joblist = JobList::Get();
 					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
 
-					foreach (const Track &track, *tracks)
+					foreach (const Track &jltrack, *tracks)
 					{
-						if (track.GetTrackID() == trackInfo.GetTrackID())
+						if (jltrack.GetTrackID() == track.GetTrackID())
 						{
-							joblist->onComponentRemoveTrack.Emit(track);
+							joblist->onComponentRemoveTrack.Emit(jltrack);
 
 							break;
 						}
 					}
 				}
 
-				encodedTracks++;
+				/* Add encoded track to joblist if requested.
+				 */
+				if (addEncodedTracks && !encodeToSingleFile && !config->enable_console)
+				{
+					Array<String>	 files;
+
+					files.Add(track.outfile);
+
+					(new JobAddFiles(files))->Schedule();
+				}
+
+				/* Add track to list of converted tracks.
+				 */
+				converted_tracks.Add(track, track.GetTrackID());
 			}
 
-			if (stopConversion) log->WriteWarning("\tEncoding cancelled.");
-			else		    log->Write("\tEncoding finished.");
+			encodedTracks++;
 
-			if (stopConversion) break;
+			workerQueue.Remove(worker->GetThreadID());
+
+			/* Unlock track device and output file if necessary.
+			 */
+			UnlockDeviceForTrack(track);
+			UnlockOutputForTrack(track);
+
+			/* Announce next track.
+			 */
+			foreach (JobConvertWorker *worker, workerQueue)
+			{
+				if (worker->IsWaiting()) continue;
+
+				Surface	*surface = GetDrawSurface();
+
+				surface->StartPaint(Rect(Point(0, 0), surface->GetSize()));
+
+				onEncodeTrack.Emit(worker->GetTrackToConvert(), decoderName    = worker->GetDecoderName(),
+										conversionStep = worker->GetConversionStep());
+
+				SetText(String("Converting %1...").Replace("%1", worker->GetTrackToConvert().origFilename));
+
+				progress->InitTrackProgressValues(worker->GetTrackStartTicks());
+				progress->UpdateProgressValues(worker->GetTrackToConvert(), worker->GetTrackPosition());
+
+				surface->EndPaint();
+
+				break;
+			}
+		}
+
+		/* Pause if requested.
+		 */
+		if (conversionPaused)
+		{
+			progress->PauseTrackProgress();
+			progress->PauseTotalProgress();
+
+			foreach (JobConvertWorker *worker, workers) worker->Pause(True);
+
+			while (conversionPaused && !stopConversion && !skipTrack) S::System::System::Sleep(50);
+
+			foreach (JobConvertWorker *worker, workers) worker->Pause(False);
+
+			progress->ResumeTrackProgress();
+			progress->ResumeTotalProgress();
+		}
+
+		/* Find a free worker thread.
+		 */
+		JobConvertWorker	*workerToUse = NIL;
+
+		foreach (JobConvertWorker *worker, workers)
+		{
+			if (!worker->IsIdle()) continue;
+
+			workerToUse = worker;
+		}
+
+		/* Update progress values.
+		 */
+		foreach (JobConvertWorker *worker, workerQueue)
+		{
+			if (worker->IsWaiting()) continue;
+
+			AutoRelease	 autoRelease;
+
+			if (worker->GetConversionStep() != conversionStep ||
+			    worker->GetDecoderName()	!= decoderName) onEncodeTrack.Emit(worker->GetTrackToConvert(), decoderName    = worker->GetDecoderName(),
+															conversionStep = worker->GetConversionStep());
+
+			progress->UpdateProgressValues(worker->GetTrackToConvert(), worker->GetTrackPosition());
+
+			break;
+		}
+
+		/* Sleep for 25ms.
+		 */
+		if (workerQueue.Length() > 0) S::System::System::Sleep(25);
+
+		/* Continue if no worker found.
+		 */
+		if (workerToUse == NIL || allTracksAssigned) continue;
+
+		/* Find next track to convert.
+		 */
+		allTracksAssigned = True;
+
+		for (Int i = 0; i < tracks.Length(); i++)
+		{
+			const Track	&track = tracks.GetNth(i);
+
+			/* Skip track if initially requested.
+			 */
+			if (trackActions.Get(track.GetTrackID()) == ConfirmOverwrite::Action::Skip) continue;
+
+			allTracksAssigned = False;
+
+			/* Lock track device and output file if necessary.
+			 */
+			if (!LockDeviceForTrack(track))				       continue;
+			if (!LockOutputForTrack(track)) { UnlockDeviceForTrack(track); continue; }
+
+			/* Check if track should be overwritten.
+			 */
+			if (!overwriteAllFiles && trackActions.Get(track.GetTrackID()) != ConfirmOverwrite::Action::Overwrite)
+			{
+				/* Check track existence again as it might have been created in the meantime.
+				 */
+				if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory))
+				{
+					BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+					i18n->SetContext("Messages");
+
+					MessageDlg	*confirmation = new MessageDlg(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
+
+					confirmation->ShowDialog();
+
+					if (confirmation->GetButtonCode() == Message::Button::Cancel)
+					{
+						stopConversion = True;
+
+						/* Unlock track device and output file if necessary.
+						 */
+						UnlockDeviceForTrack(track);
+						UnlockOutputForTrack(track);
+
+						Object::DeleteObject(confirmation);
+
+						break;
+					}
+
+					if (confirmation->GetButtonCode() == Message::Button::No)
+					{
+						overwriteAllFiles = False;
+
+						trackActions.Add(ConfirmOverwrite::Action::Skip, track.GetTrackID());
+
+						/* Unlock track device and output file if necessary.
+						 */
+						UnlockDeviceForTrack(track);
+						UnlockOutputForTrack(track);
+
+						Object::DeleteObject(confirmation);
+
+						continue;
+					}
+
+					Object::DeleteObject(confirmation);
+				}
+			}
+
+			/* Assign track and add worker to end of queue.
+			 */
+			workerToUse->SetSingleFileEncoder(singleFileEncoder);
+			workerToUse->SetTrackToConvert(track);
+
+			workerQueue.Add(workerToUse, workerToUse->GetThreadID());
+
+			/* Announce that we are converting a new track.
+			 */
+			if (workerToUse == workerQueue.GetFirst())
+			{
+				while (workerToUse->IsWaiting() && !workerToUse->IsIdle()) S::System::System::Sleep(1);
+
+				onEncodeTrack.Emit(track, decoderName	 = workerToUse->GetDecoderName(),
+							  conversionStep = workerToUse->GetConversionStep());
+
+				SetText(String("Converting %1...").Replace("%1", workerToUse->GetTrackToConvert().origFilename));
+
+				progress->InitTrackProgressValues(workerToUse->GetTrackStartTicks());
+			}
+
+			/* Remove track from track list.
+			 */
+			tracks.RemoveNth(i);
+
+			break;
+		}
+	}
+	while (workerQueue.Length() > 0);
+
+	/* Clean up worker threads.
+	 */
+	foreach (JobConvertWorker *worker, workers) worker->Quit();
+	foreach (JobConvertWorker *worker, workers) worker->Wait();
+	foreach (JobConvertWorker *worker, workers) delete worker;
+
+	workers.RemoveAll();
+
+	/* Fill playlist and cuesheet tracks.
+	 */
+	String	 absoluteOutputDir = Utilities::GetAbsoluteDirName(encoderOutputDirectory);
+
+	foreach (const Track &original_track, original_tracks)
+	{
+		Track	 track = converted_tracks.Get(original_track.GetTrackID());
+
+		if (track == NIL) continue;
+
+		if (!encodeToSingleFile)
+		{
+			Track	 playlistTrack = track;
+
+			playlistTrack.isCDTrack	   = False;
+			playlistTrack.origFilename = track.outfile;
+
+			playlist_tracks.Add(playlistTrack);
+			cuesheet_tracks.Add(playlistTrack);
+
+			track.SaveCoverArtFiles(absoluteOutputDir);
+		}
+		else
+		{
+			Track	 cuesheetTrack = original_track;
+
+			cuesheetTrack.isCDTrack	   = False;
+			cuesheetTrack.sampleOffset = track.sampleOffset;
+			cuesheetTrack.length	   = track.length;
+			cuesheetTrack.origFilename = singleOutFile;
+
+			cuesheet_tracks.Add(cuesheetTrack);
 		}
 	}
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -17,6 +17,8 @@ using namespace BoCA;
 
 BonkEnc::Progress::Progress()
 {
+	lastInvoked	 = 0;
+
 	totalSamples	 = 0;
 	totalSamplesDone = 0;
 
@@ -79,15 +81,23 @@ Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 		else				      totalSamples += (240 * trackInfo.GetFormat().rate);
 	}
 
-	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault) && config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "wave-enc" &&
-																	 config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) != "sndfile-enc") totalSamples *= 2;
+	/* Check if we are encoding on-the-fly.
+	 */
+	Bool	 encodeOnTheFly	    = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
+	Bool	 encodeToSingleFile = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+	String	 selectedEncoderID  = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+
+	if (!encodeOnTheFly && !encodeToSingleFile && selectedEncoderID != "wave-enc" &&
+						      selectedEncoderID != "sndfile-enc") totalSamples *= 2;
 }
 
-Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInfo)
+Void BonkEnc::Progress::FixTotalSamples(const Track &trackInfo, const Track &nTrackInfo)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	if (config->enable_console) return;
+
+	mutex.Lock();
 
 	if	(trackInfo.length	>= 0) totalSamples -= 2 * trackInfo.length;
 	else if (trackInfo.approxLength >= 0) totalSamples -= 2 * trackInfo.approxLength;
@@ -95,11 +105,13 @@ Void BonkEnc::Progress::FixTotalSamples(Track &trackInfo, const Track &nTrackInf
 
 	totalSamples += 2 * nTrackInfo.length;
 
-	trackInfo.length = nTrackInfo.length;
+	mutex.Release();
 }
 
 Void BonkEnc::Progress::InitTrackProgressValues(UnsignedInt64 startTicks)
 {
+	lastInvoked = 0;
+
 	if (startTicks != 0) trackStartTicks = startTicks;
 	else		     trackStartTicks = S::System::System::Clock();
 }
@@ -154,13 +166,14 @@ Void BonkEnc::Progress::ResumeTotalProgress()
 Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int samplePosition)
 {
 	static BoCA::Config	*config = BoCA::Config::Get();
-	static UnsignedInt64	 lastInvoked = 0;
 
 	if (config->enable_console) return;
 
 	UnsignedInt64	 clockValue = S::System::System::Clock();
 
 	if (clockValue - lastInvoked < 40) return;
+
+	mutex.Lock();
 
 	Int	 trackTicks = clockValue - trackStartTicks;
 	Int	 totalTicks = clockValue - totalStartTicks;
@@ -184,6 +197,8 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 		trackTicks = Math::Round((Float(trackTicks) / (				     Float(samplePosition) / trackInfo.fileSize)					 - trackTicks) / 1000);
 		totalTicks = Math::Round((Float(totalTicks) / ((totalSamplesDone / 1000.0) + Float(samplePosition) / trackInfo.fileSize * trackInfo.approxLength / totalSamples) - totalTicks) / 1000);
 	}
+
+	mutex.Release();
 
 	/* Notify listeners of updated values.
 	 */
@@ -211,7 +226,11 @@ Void BonkEnc::Progress::FinishTrackProgressValues(const Track &trackInfo)
 
 	if (config->enable_console) return;
 
+	mutex.Lock();
+
 	if	(trackInfo.length	>= 0) totalSamplesDone += (( trackInfo.length		       * 100.0 / totalSamples) * 10.0);
 	else if (trackInfo.approxLength >= 0) totalSamplesDone += (( trackInfo.approxLength	       * 100.0 / totalSamples) * 10.0);
 	else				      totalSamplesDone += (((240 * trackInfo.GetFormat().rate) * 100.0 / totalSamples) * 10.0);
+
+	mutex.Release();
 }
