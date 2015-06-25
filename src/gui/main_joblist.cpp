@@ -1335,11 +1335,11 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 
 	previousTrackSeconds = -10;
 
-	const Info	&info = track.GetInfo();
+	const Info	&info	  = track.GetInfo();
+	String		 fileInfo = track.origFilename;
 
-	if (info.artist.Length() == 0 &&
-	    info.title.Length()  == 0)	edb_filename->SetText(track.origFilename);
-	else				edb_filename->SetText(String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
+	if (info.artist.Length() > 0 ||
+	    info.title.Length()	 > 0) fileInfo = String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title"));
 
 	switch (mode)
 	{
@@ -1347,13 +1347,14 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 			// nothing special in this case
 			break;
 		case CONVERTER_STEP_DECODE:
-			edb_filename->SetText(edb_filename->GetText().Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")"));
+			fileInfo = fileInfo.Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")");
 			break;
 		case CONVERTER_STEP_ENCODE:
-			edb_filename->SetText(edb_filename->GetText().Append(" (").Append(i18n->TranslateString("encoding")).Append(")"));
+			fileInfo = fileInfo.Append(" (").Append(i18n->TranslateString("encoding")).Append(")");
 			break;
 	}
 
+	edb_filename->SetText(fileInfo);
 	edb_format->SetText(decoderName);
 }
 
