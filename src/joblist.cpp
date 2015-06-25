@@ -207,6 +207,10 @@ Bool BonkEnc::JobList::RemoveTrack(const Track &track)
 
 		/* Remove track from track list and joblist.
 		 */
+		Surface	*surface = GetDrawSurface();
+
+		surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+
 		tracks.Remove(entry->GetHandle());
 
 		entry->Hide();
@@ -219,6 +223,8 @@ Bool BonkEnc::JobList::RemoveTrack(const Track &track)
 		}
 
 		Remove(entry);
+
+		surface->EndPaint();
 
 		UpdateTextLine();
 	}
