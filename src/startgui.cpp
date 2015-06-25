@@ -553,11 +553,14 @@ Void BonkEnc::BonkEncGUI::OnChangeConfiguration()
 			mainWnd->Remove(mainTab);
 			mainWnd->Add(tabs_main);
 
-			mainTab->SetOrientation(OR_UPPERLEFT);
+			if (mainTab != NIL)
+			{
+				mainTab->SetOrientation(OR_UPPERLEFT);
 
-			tabs_main->Remove(tab);
-			tabs_main->Add(mainTab);
-			tabs_main->Add(tab);
+				tabs_main->Remove(tab);
+				tabs_main->Add(mainTab);
+				tabs_main->Add(tab);
+			}
 		}
 
 		mainWnd->Paint(SP_PAINT);

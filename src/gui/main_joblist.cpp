@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -1389,7 +1389,7 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 
 	/* Set percent values.
 	 */
-	edb_trackPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10))));
+	edb_trackPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10.0))));
 
 	progress->SetValue(progressValue);
 }
@@ -1419,7 +1419,7 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 
 	/* Set percent values.
 	 */
-	edb_totalPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10))));
+	edb_totalPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10.0))));
 
 	progress_total->SetValue(progressValue);
 
