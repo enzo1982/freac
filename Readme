@@ -160,6 +160,7 @@ History
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
 		- added support for multiple configurations
+		- conversions are now done in parallel if possible
 		- redesigned progress display area
 		- new dialog to confirm overwriting of existing files before conversion
 		- completely reworked LAME configuration dialog

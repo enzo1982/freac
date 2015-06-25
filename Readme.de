@@ -160,6 +160,7 @@ Geschichte
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
 		- Neuen Konfigurationsdialog implementiert
 		- Unterstützung für mehrere Konfigurationen hinzugefügt
+		- Konvertierungen werden nun wenn möglich parallel ausgeführt
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
 		- Komplett überarbeiteter LAME-Konfigurationsdialog

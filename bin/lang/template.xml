@@ -460,7 +460,7 @@
 
       <section name="Resources">
 	<entry id="5700" string="Parallel processing"/>
-	<entry id="5701" string="Enable parallel processing (experimental)"/>
+	<entry id="5701" string="Enable parallel processing"/>
 	<entry id="5702" string="Number of conversion threads"/>
 	<entry id="5703" string="auto"/>
       </section>

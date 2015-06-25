@@ -459,7 +459,7 @@
 
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Параллельная обработка</entry>
-	<entry id="5701" string="Enable parallel processing (experimental)">Разрешить параллельную обработку (экспериментально)</entry>
+	<entry id="5701" string="Enable parallel processing">Разрешить параллельную обработку</entry>
 	<entry id="5702" string="Number of conversion threads">Количество потоков преобразования</entry>
 	<entry id="5703" string="auto">авто</entry>
       </section>

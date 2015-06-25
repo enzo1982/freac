@@ -138,7 +138,7 @@ const Bool	 BonkEnc::Config::SettingsWarnLossyToLosslessDefault		= True;
 /* Category Resources
  */
 const String	 BonkEnc::Config::ResourcesEnableParallelConversionsID		= "EnableParallelConversions";
-const Bool	 BonkEnc::Config::ResourcesEnableParallelConversionsDefault	= False;
+const Bool	 BonkEnc::Config::ResourcesEnableParallelConversionsDefault	= True;
 
 const String	 BonkEnc::Config::ResourcesNumberOfConversionThreadsID		= "NumberOfConversionThreads";
 const Int	 BonkEnc::Config::ResourcesNumberOfConversionThreadsDefault	= 0;

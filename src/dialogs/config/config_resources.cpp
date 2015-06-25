@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -29,7 +29,7 @@ BonkEnc::ConfigureResources::ConfigureResources()
 
 	group_cpu		= new GroupBox(i18n->TranslateString("Parallel processing"), Point(7, 11), Size(350, 65));
 
-	check_enable_parallel	= new CheckBox(i18n->TranslateString("Enable parallel processing (experimental)"), Point(10, 13), Size(group_cpu->GetWidth() - 20, 0), &enableParallel);
+	check_enable_parallel	= new CheckBox(i18n->TranslateString("Enable parallel processing"), Point(10, 13), Size(group_cpu->GetWidth() - 20, 0), &enableParallel);
 	check_enable_parallel->onAction.Connect(&ConfigureResources::ToggleParallel, this);
 
 	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of conversion threads")), Point(10, 40));
