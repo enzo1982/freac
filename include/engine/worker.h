@@ -8,10 +8,11 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_FREAC_JOB_CONVERT_WORKER
-#define H_FREAC_JOB_CONVERT_WORKER
+#ifndef H_FREAC_CONVERT_WORKER
+#define H_FREAC_CONVERT_WORKER
 
-#include "../../engine/encoder.h"
+#include "decoder.h"
+#include "encoder.h"
 
 namespace BonkEnc
 {
@@ -19,15 +20,12 @@ namespace BonkEnc
 	const Int	 CONVERTER_STEP_DECODE	   = 1;
 	const Int	 CONVERTER_STEP_ENCODE	   = 2;
 
-	class JobConvertWorker : public Threads::Thread
+	class ConvertWorker : public Threads::Thread
 	{
-		private:
+		protected:
 			BoCA::Track				 trackToConvert;
 			UnsignedInt64				 trackStartTicks;
 			Int64					 trackPosition;
-
-			Encoder					*singleFileEncoder;
-			Int64					 encodedSamples;
 
 			String					 decoderName;
 			Int					 conversionStep;
@@ -40,11 +38,12 @@ namespace BonkEnc
 			Bool					 quit;
 
 			Int					 Perform();
+			Int64					 Loop(Decoder *, Encoder *);
 
-			Int					 Convert(const BoCA::Track &);
+			virtual Int				 Convert();
 		public:
-								 JobConvertWorker();
-								~JobConvertWorker();
+								 ConvertWorker();
+			virtual					~ConvertWorker();
 
 			Int					 Pause(Bool);
 			Int					 Cancel();
@@ -52,8 +51,6 @@ namespace BonkEnc
 		accessors:
 			Bool					 IsIdle() const				      { return idle; }
 			Bool					 IsWaiting() const			      { return waiting; }
-
-			Void					 SetSingleFileEncoder(Encoder *nEncoder)      { singleFileEncoder = nEncoder; }
 
 			const BoCA::Track			&GetTrackToConvert() const		      { return trackToConvert; }
 			Void					 SetTrackToConvert(const BoCA::Track &nTrack) { trackToConvert = nTrack; idle = False; waiting = True; }

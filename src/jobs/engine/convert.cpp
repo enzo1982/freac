@@ -9,11 +9,14 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <jobs/engine/convert.h>
-#include <jobs/engine/convertworker.h>
+
 #include <jobs/joblist/addfiles.h>
 
 #include <engine/decoder.h>
 #include <engine/encoder.h>
+
+#include <engine/worker.h>
+#include <engine/worker_singlefile.h>
 
 #include <progress.h>
 #include <config.h>
@@ -317,11 +320,12 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Instantiate and start worker threads.
 	 */
-	Array<JobConvertWorker *>	 workers;
+	Array<ConvertWorker *>	 workers;
 
-	for (Int i = 0; i < (encodeToSingleFile ? 1 : numberOfThreads); i++) workers.Add(new JobConvertWorker());
+	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(singleFileEncoder));
+	else			for (Int i = 0; i < numberOfThreads; i++) workers.Add(new ConvertWorker());
 
-	foreach (JobConvertWorker *worker, workers)
+	foreach (ConvertWorker *worker, workers)
 	{
 		worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
 		worker->onFinishTrack.Connect(&Progress::FinishTrackProgressValues, progress);
@@ -331,8 +335,8 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Main conversion loop.
 	 */
-	Bool				 allTracksAssigned = False;
-	Array<JobConvertWorker *>	 workerQueue;
+	Bool			 allTracksAssigned = False;
+	Array<ConvertWorker *>	 workerQueue;
 
 	do
 	{
@@ -342,7 +346,7 @@ Error BonkEnc::JobConvert::Perform()
 		 */
 		if (stopConversion)
 		{
-			foreach (JobConvertWorker *worker, workers)
+			foreach (ConvertWorker *worker, workers)
 			{
 				/* Unlock track device and output file if necessary.
 				 */
@@ -359,7 +363,7 @@ Error BonkEnc::JobConvert::Perform()
 		 */
 		if (skipTrack && workerQueue.Length() > 0)
 		{
-			JobConvertWorker	*worker = workerQueue.GetFirst();
+			ConvertWorker	*worker = workerQueue.GetFirst();
 
 			worker->Cancel();
 
@@ -381,7 +385,7 @@ Error BonkEnc::JobConvert::Perform()
 
 		/* Remove finished workers from queue.
 		 */
-		foreach (JobConvertWorker *worker, workerQueue)
+		foreach (ConvertWorker *worker, workerQueue)
 		{
 			if (!worker->IsIdle()) continue;
 
@@ -466,7 +470,7 @@ Error BonkEnc::JobConvert::Perform()
 
 			/* Announce next track.
 			 */
-			foreach (JobConvertWorker *worker, workerQueue)
+			foreach (ConvertWorker *worker, workerQueue)
 			{
 				if (worker->IsWaiting()) continue;
 
@@ -495,11 +499,11 @@ Error BonkEnc::JobConvert::Perform()
 			progress->PauseTrackProgress();
 			progress->PauseTotalProgress();
 
-			foreach (JobConvertWorker *worker, workers) worker->Pause(True);
+			foreach (ConvertWorker *worker, workers) worker->Pause(True);
 
 			while (conversionPaused && !stopConversion && !skipTrack) S::System::System::Sleep(50);
 
-			foreach (JobConvertWorker *worker, workers) worker->Pause(False);
+			foreach (ConvertWorker *worker, workers) worker->Pause(False);
 
 			progress->ResumeTrackProgress();
 			progress->ResumeTotalProgress();
@@ -507,9 +511,9 @@ Error BonkEnc::JobConvert::Perform()
 
 		/* Find a free worker thread.
 		 */
-		JobConvertWorker	*workerToUse = NIL;
+		ConvertWorker	*workerToUse = NIL;
 
-		foreach (JobConvertWorker *worker, workers)
+		foreach (ConvertWorker *worker, workers)
 		{
 			if (!worker->IsIdle()) continue;
 
@@ -518,7 +522,7 @@ Error BonkEnc::JobConvert::Perform()
 
 		/* Update progress values.
 		 */
-		foreach (JobConvertWorker *worker, workerQueue)
+		foreach (ConvertWorker *worker, workerQueue)
 		{
 			if (worker->IsWaiting()) continue;
 
@@ -612,7 +616,6 @@ Error BonkEnc::JobConvert::Perform()
 
 			/* Assign track and add worker to end of queue.
 			 */
-			workerToUse->SetSingleFileEncoder(singleFileEncoder);
 			workerToUse->SetTrackToConvert(track);
 
 			workerQueue.Add(workerToUse, workerToUse->GetThreadID());
@@ -642,9 +645,9 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Clean up worker threads.
 	 */
-	foreach (JobConvertWorker *worker, workers) worker->Quit();
-	foreach (JobConvertWorker *worker, workers) worker->Wait();
-	foreach (JobConvertWorker *worker, workers) delete worker;
+	foreach (ConvertWorker *worker, workers) worker->Quit();
+	foreach (ConvertWorker *worker, workers) worker->Wait();
+	foreach (ConvertWorker *worker, workers) delete worker;
 
 	workers.RemoveAll();
 
