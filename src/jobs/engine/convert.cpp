@@ -227,7 +227,7 @@ Error BonkEnc::JobConvert::Perform()
 	/* Set number of threads if set to automatic mode.
 	 */
 	if	(!enableParallel)      numberOfThreads = 1;
-	else if (numberOfThreads == 0) numberOfThreads = CPU().GetNumCores();
+	else if (numberOfThreads <= 1) numberOfThreads = CPU().GetNumCores();
 
 	/* Setup conversion log.
 	 */

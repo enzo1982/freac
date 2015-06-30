@@ -36,7 +36,7 @@ BonkEnc::ConfigureResources::ConfigureResources()
 	text_threads_value	= new Text(i18n->TranslateString("auto"), Point(350, 40));
 	text_threads_value->SetX(group_cpu->GetWidth() - text_threads_value->GetUnscaledTextWidth() - 10);
 
-	slider_threads		= new Slider(Point(17 + text_threads->GetUnscaledTextWidth(), 38), Size(group_cpu->GetWidth() - 35 - text_threads->GetUnscaledTextWidth() - text_threads_value->GetUnscaledTextWidth(), 0), OR_HORZ, NIL, 0, CPU().GetNumLogicalCPUs());
+	slider_threads		= new Slider(Point(17 + text_threads->GetUnscaledTextWidth(), 38), Size(group_cpu->GetWidth() - 35 - text_threads->GetUnscaledTextWidth() - text_threads_value->GetUnscaledTextWidth(), 0), OR_HORZ, NIL, 1, CPU().GetNumLogicalCPUs());
 	slider_threads->SetValue(config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault));
 	slider_threads->onAction.Connect(&ConfigureResources::ChangeConversionThreads, this);
 
@@ -84,7 +84,7 @@ Void BonkEnc::ConfigureResources::ChangeConversionThreads()
 
 	i18n->SetContext("Configuration::Resources");
 
-	if (slider_threads->GetValue() == 0) text_threads_value->SetText(i18n->TranslateString("auto"));
+	if (slider_threads->GetValue() == 1) text_threads_value->SetText(i18n->TranslateString("auto"));
 	else				     text_threads_value->SetText(String::FromInt(slider_threads->GetValue()));
 }
 
