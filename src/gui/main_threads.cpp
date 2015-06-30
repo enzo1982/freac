@@ -124,7 +124,7 @@ Void BonkEnc::LayerThreads::OnChangeJobs()
 {
 	Surface	*surface = GetDrawSurface();
 
-	surface->StartPaint(Rect(list_threads->GetRealPosition(), list_threads->GetRealSize()));
+	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
 
 	list_threads->RemoveAllEntries();
 
