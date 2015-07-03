@@ -17,10 +17,6 @@ using namespace BoCA::AS;
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
 
-#ifdef __WIN32__
-#	include <windows.h>
-#endif
-
 Void BonkEnc::Utilities::FillGenreList(List *list)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -296,10 +292,9 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 	return rVal;
 }
 
-/* This function returns the absolute output path.
- * It may differ from the output directory setting
- * due to use of the <installdrive> placeholder or
- * because the output directory is a relative path.
+/* This function returns the absolute output path. It may differ
+ * from the output directory setting due to use of the <installdrive>
+ * placeholder or because the output directory is a relative path.
  */
 String BonkEnc::Utilities::GetAbsoluteDirName(const String &dirName)
 {
@@ -323,33 +318,20 @@ String BonkEnc::Utilities::GetAbsoluteDirName(const String &dirName)
 	return rDirName;
 }
 
-/* This function takes a file name and normalizes
- * all the directory names included in the path by
- * removing spaces and dots at the end. It also
- * shortens each directory and the file name to a
- * maximum of 248 or 96 characters.
+/* This function takes a file name and normalizes all the
+ * directory names included in the path by removing spaces
+ * and dots at the end. It also shortens each directory
+ * and the file name to a maximum of 248 characters.
  */
 String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 {
+	String	 rFileName = fileName;
+	String	 dir	   = fileName;
+
 	Int	 maxLength = 248;
 
-	/* Set smaller maximum path component length on old systems.
-	 */
-#ifdef __WIN32__
-	OSVERSIONINFOA	 vInfo;
-
-	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
-
-	GetVersionExA(&vInfo);
-
-	if (vInfo.dwPlatformId != VER_PLATFORM_WIN32_NT) maxLength = 96;
-#endif
-
-	String	 rFileName = fileName;
-	String	 dir = fileName;
-
 	String	 tmpDir;
-	Int	 lastBS = 0;
+	Int	 lastBS	   = 0;
 
 	for (Int i = 0; i < dir.Length(); i++)
 	{
@@ -676,32 +658,4 @@ String BonkEnc::Utilities::GetPlaylistFileName(const Track &track)
 String BonkEnc::Utilities::GetInstallDrive()
 {
 	return GUI::Application::GetApplicationDirectory().Head(2);
-}
-
-Void BonkEnc::Utilities::GainShutdownPrivilege()
-{
-#ifdef __WIN32__
-	OSVERSIONINFOA	 vInfo;
-
-	vInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
-
-	GetVersionExA(&vInfo);
-
-	if (vInfo.dwPlatformId == VER_PLATFORM_WIN32_NT)
-	{
-		LUID			 value;
-		TOKEN_PRIVILEGES	 token;
-		HANDLE			 htoken;
-
-		OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, &htoken);
-
-		LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &value);
-
-		token.PrivilegeCount = 1;
-		token.Privileges[0].Luid = value;
-		token.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-
-		AdjustTokenPrivileges(htoken, false, &token, 0, NULL, NULL);
-	}
-#endif
 }

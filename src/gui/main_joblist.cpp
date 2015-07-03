@@ -21,14 +21,6 @@
 
 #include <dialogs/charset.h>
 
-#ifdef __WIN32__
-#	include <windows.h>
-
-#	ifndef EWX_FORCEIFHUNG
-#		define EWX_FORCEIFHUNG 16
-#	endif
-#endif
-
 using namespace smooth::GUI::Dialogs;
 
 using namespace BoCA;
@@ -1305,14 +1297,9 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 	btn_skip->Deactivate();
 
-	if (success && Config::Get()->shutdownAfterEncoding)
-	{
-		Utilities::GainShutdownPrivilege();
-
-#ifdef __WIN32__
-		ExitWindowsEx(EWX_POWEROFF | EWX_FORCEIFHUNG, 0);
-#endif
-	}
+	/* Shutdown system if requested.
+	 */
+	if (success && Config::Get()->shutdownAfterEncoding) S::System::System::Shutdown();
 }
 
 Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, Int mode)
