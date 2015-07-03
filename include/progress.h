@@ -14,10 +14,6 @@
 #include <smooth.h>
 #include <boca.h>
 
-#ifdef __WIN32__
-#	include <shlobj.h>
-#endif
-
 using namespace smooth;
 
 namespace BonkEnc
@@ -26,10 +22,8 @@ namespace BonkEnc
 	{
 		private:
 			Threads::Mutex		 mutex;
-#ifdef __WIN32__
-			HWND			 hwnd;
-			ITaskbarList3		*taskbar;
-#endif
+
+			Window			*window;
 		protected:
 			UnsignedInt64		 lastInvoked;
 

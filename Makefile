@@ -152,7 +152,7 @@ endif
 ifeq ($(BUILD_WIN32),True)
 	COMPILER_OPTS			+= -DUNICODE -D_UNICODE -I$(CDK)/include
 
-	LINKER_OPTS			+= -L$(LIBDIR) -lsmooth -lboca -Wl,--dynamicbase,--nxcompat -lws2_32 -lole32 -luuid -Wl,--out-implib,$(LIBNAME)
+	LINKER_OPTS			+= -L$(LIBDIR) -lsmooth -lboca -Wl,--dynamicbase,--nxcompat -lws2_32 -Wl,--out-implib,$(LIBNAME)
 	LOADER_GUI_LINKER_OPTS		+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat -mwindows
 	LOADER_CONSOLE_LINKER_OPTS	+= -L$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat
 else
