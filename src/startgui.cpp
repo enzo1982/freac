@@ -1221,7 +1221,7 @@ Void BonkEnc::BonkEncGUI::Encode()
 {
 	/* Resume paused conversions if any.
 	 */
-	if (JobConvert::IsConverting() && JobConvert::IsPaused())
+	if (JobConvert::IsConverting() && JobConvert::IsPaused() && clicked_encoder == -1)
 	{
 		JobConvert::Resume();
 
@@ -1235,13 +1235,25 @@ Void BonkEnc::BonkEncGUI::Encode()
 		BoCA::Config	*config = BoCA::Config::Get();
 		Registry	&boca	= Registry::Get();
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(clicked_encoder));
+		if (!JobConvert::IsConverting())
+		{
+			config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(clicked_encoder));
 
-		tab_layer_joblist->UpdateEncoderText();
+			tab_layer_joblist->UpdateEncoderText();
+		}
 
 		clicked_encoder = -1;
 
 		OptionBox::internalCheckValues.Emit();
+	}
+
+	/* We can only handle one conversion at a time.
+	 */
+	if (JobConvert::IsConverting())
+	{
+		BoCA::Utilities::ErrorMessage("A conversion process is already active!");
+
+		return;
 	}
 
 	/* Start conversion.

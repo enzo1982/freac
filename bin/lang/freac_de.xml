@@ -514,6 +514,7 @@
       <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Die ausgewählten Dateien können aufgrund unterschiedlicher&#10;Sample-Formate nicht in eine Datei kombiniert werden.&#10;&#10;Bitte konvertieren Sie zunächst alle Dateien in das gleiche Sample-Format.</entry>
       <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1">Kein Konfigurationsdialog verfügbar für:&#10;&#10;%1</entry>
       <entry id="7023" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Sie scheinen dabei zu sein, von einem verlustbehafteten in ein verlustfreies Format zu konvertieren.&#10;&#10;Bitte beachten Sie, dass Qualitätsverlust nicht rückgängig gemacht werden kann und dieser Vorgang&#10;die Qualität in keiner Weise verbessern, aber sehr wahrscheinlich die Dateigröße erhöhen wird.&#10;&#10;Möchten Sie dennoch fortfahren?</entry>
+      <entry id="7024" string="A conversion process is already active!">Ein Konvertierungsvorgang ist bereits aktiv!</entry>
     </section>
 
     <section name="Dialogs">

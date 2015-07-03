@@ -1263,6 +1263,8 @@ Void BonkEnc::LayerJoblist::OnEncoderStartEncoding()
 	BoCA::Config	*config	= BoCA::Config::Get();
 
 	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault)) btn_skip->Activate();
+
+	combo_encoder->Deactivate();
 }
 
 Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
@@ -1296,6 +1298,8 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	previousTotalSeconds = -10;
 
 	btn_skip->Deactivate();
+
+	combo_encoder->Activate();
 
 	/* Shutdown system if requested.
 	 */
