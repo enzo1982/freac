@@ -456,7 +456,7 @@ BonkEnc::BonkEncCommandline::~BonkEncCommandline()
 {
 }
 
-Void BonkEnc::BonkEncCommandline::OnEncodeTrack(const Track &track, const String &decoderName, Int mode)
+Void BonkEnc::BonkEncCommandline::OnEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
 {
 	static Bool	 firstTime = True;
 

@@ -184,6 +184,7 @@
       <entry id="3047" string="unknown"/>
       <entry id="3048" string="Other"/>
       <entry id="3049" string="Output file name"/>
+      <entry id="3050" string="verifying"/>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder"/>
@@ -464,6 +465,14 @@
 	<entry id="5702" string="Number of conversion threads"/>
 	<entry id="5703" string="auto"/>
       </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification"/>
+	<entry id="5801" string="Enable input verification"/>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from."/>
+	<entry id="5803" string="Enable output verification"/>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them."/>
+      </section>
     </section>
 
     <section name="About">
@@ -515,6 +524,7 @@
       <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1"/>
       <entry id="7023" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
       <entry id="7024" string="A conversion process is already active!"/>
+      <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
     </section>
 
     <section name="Dialogs">

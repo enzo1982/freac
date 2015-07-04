@@ -11,15 +11,13 @@
 #ifndef H_FREAC_CONVERT_WORKER
 #define H_FREAC_CONVERT_WORKER
 
+#include "converter.h"
+
 #include "decoder.h"
 #include "encoder.h"
 
 namespace BonkEnc
 {
-	const Int	 CONVERTER_STEP_ON_THE_FLY = 0;
-	const Int	 CONVERTER_STEP_DECODE	   = 1;
-	const Int	 CONVERTER_STEP_ENCODE	   = 2;
-
 	class ConvertWorker : public Threads::Thread
 	{
 		protected:
@@ -28,7 +26,7 @@ namespace BonkEnc
 			Int64					 trackPosition;
 
 			String					 decoderName;
-			Int					 conversionStep;
+			ConversionStep				 conversionStep;
 
 			Bool					 idle;
 			Bool					 waiting;
@@ -56,14 +54,17 @@ namespace BonkEnc
 			Void					 SetTrackToConvert(const BoCA::Track &nTrack) { trackToConvert = nTrack; idle = False; waiting = True; }
 
 			const String				&GetDecoderName() const			      { return decoderName; }
-			Int					 GetConversionStep() const		      { return conversionStep; }
+			ConversionStep				 GetConversionStep() const		      { return conversionStep; }
 
 			UnsignedInt64				 GetTrackStartTicks() const		      { return trackStartTicks; }
 			Int64					 GetTrackPosition() const		      { return trackPosition; }
 		signals:
+			Signal1<Void, const BoCA::Track &>	 onFinishTrack;
 			Signal2<Void, const BoCA::Track &,
 				      const BoCA::Track &>	 onFixTotalSamples;
-			Signal1<Void, const BoCA::Track &>	 onFinishTrack;
+
+			Signal1<Void, String>			 onReportError;
+			Signal1<Void, String>			 onReportWarning;
 	};
 };
 

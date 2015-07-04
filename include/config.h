@@ -27,6 +27,7 @@ namespace BonkEnc
 			static const String	 CategoryPlaylistID;
 			static const String	 CategoryTagsID;
 			static const String	 CategoryFreedbID;
+			static const String	 CategoryVerificationID;
 
 			/* Category Settings
 			 */
@@ -135,6 +136,14 @@ namespace BonkEnc
 
 			static const String	 SettingsWarnLossyToLosslessID;
 			static const Bool	 SettingsWarnLossyToLosslessDefault;
+
+			/* Category Verification
+			 */
+			static const String	 VerificationVerifyInputID;
+			static const Bool	 VerificationVerifyInputDefault;
+
+			static const String	 VerificationVerifyOutputID;
+			static const Bool	 VerificationVerifyOutputDefault;
 
 			/* Category Resources
 			 */

@@ -23,7 +23,7 @@ BonkEnc::ConvertWorker::ConvertWorker()
 	trackStartTicks	  = 0;
 	trackPosition	  = 0;
 
-	conversionStep	  = CONVERTER_STEP_ON_THE_FLY;
+	conversionStep	  = ConversionStepNone;
 
 	idle		  = True;
 	waiting		  = True;
@@ -58,12 +58,16 @@ Int BonkEnc::ConvertWorker::Perform()
 Int BonkEnc::ConvertWorker::Convert()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
 	Registry	&boca	= Registry::Get();
 
 	/* Get config values.
 	 */
 	Bool	 encodeOnTheFly		= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
 	Bool	 keepWaveFiles		= config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
+
+	Bool	 verifyOutput		= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
 	Bool	 writeToInputDirectory	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 	Bool	 allowOverwriteSource	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault);
@@ -96,6 +100,9 @@ Int BonkEnc::ConvertWorker::Convert()
 
 	/* Loop over conversion passes.
 	 */
+	String	 encodeChecksum;
+	String	 verifyChecksum;
+
 	for (Int step = 0; step < conversionSteps && !cancel; step++)
 	{
 		/* Setup track and file names.
@@ -108,17 +115,23 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		if (out_filename.ToLower() == in_filename.ToLower()) out_filename.Append(".temp");
 
-		/* Set conversion step in non-on-the-fly mode.
+		/* Set conversion step.
 		 */
-		if (!encodeOnTheFly)
+		if (encodeOnTheFly)
 		{
-			if (step == 0) conversionStep = CONVERTER_STEP_DECODE;
-			else	       conversionStep = CONVERTER_STEP_ENCODE;
+			if	(step == 0) conversionStep = ConversionStepOnTheFly;
+			else		    conversionStep = ConversionStepVerify;
+		}
+		else
+		{
+			if	(step == 0) conversionStep = ConversionStepDecode;
+			else if (step == 1) conversionStep = ConversionStepEncode;
+			else		    conversionStep = ConversionStepVerify;
 		}
 
 		/* Setup intermediate encoder in non-on-the-fly mode
 		 */
-		if (conversionStep == CONVERTER_STEP_DECODE)
+		if (conversionStep == ConversionStepDecode)
 		{
 			activeEncoderID = "wave-enc";
 
@@ -132,12 +145,52 @@ Int BonkEnc::ConvertWorker::Convert()
 
 			out_filename.Append(".wav");
 		}
-		else if (conversionStep == CONVERTER_STEP_ENCODE)
+		else if (conversionStep == ConversionStepEncode)
 		{
 			activeEncoderID = selectedEncoderID;
 
 			in_filename = out_filename;
 			in_filename.Append(".wav");
+		}
+
+		/* Setup input file name in verification step.
+		 */
+		if (conversionStep == ConversionStepVerify) in_filename = out_filename;
+
+		/* Check format of output file in verification step.
+		 */
+		if (conversionStep == ConversionStepVerify)
+		{
+			DecoderComponent	*decoder = boca.CreateDecoderForStream(in_filename);
+
+			if (decoder != NIL)
+			{
+				Track	 outTrack;
+
+				decoder->GetStreamInfo(in_filename, outTrack);
+
+				boca.DeleteComponent(decoder);
+
+				const Format	&outFormat = outTrack.GetFormat();
+
+				if (outFormat.rate     != format.rate ||
+				    outFormat.bits     != format.bits ||
+				    outFormat.channels != format.channels)
+				{
+					onReportWarning.Emit(i18n->TranslateString(String("Skipped verification due to format mismatch: %1\n\n")
+										  .Append("Original format: %2 Hz, %3 bit, %4 channels\n")
+										  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", File(in_filename).GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
+																								  .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
+
+					log->WriteWarning(String("\tSkipping verification due to format mismatch: ").Append(in_filename));
+
+					trackPosition = trackToConvert.length;
+
+					onFinishTrack.Emit(trackToConvert);
+
+					break;
+				}
+			}
 		}
 
 		/* Create decoder.
@@ -157,7 +210,7 @@ Int BonkEnc::ConvertWorker::Convert()
 		 */
 		Encoder	*encoder = new Encoder();
 
-		if (!encoder->Create(activeEncoderID, out_filename, trackToConvert))
+		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToConvert))
 		{
 			delete decoder;
 			delete encoder;
@@ -167,15 +220,77 @@ Int BonkEnc::ConvertWorker::Convert()
 			return Error();
 		}
 
+		/* Enable MD5 and add a verification step if we are to verify the output.
+		 */
+		if	(verifyOutput && (conversionStep == ConversionStepOnTheFly ||
+					  conversionStep == ConversionStepEncode) && encoder->IsLossless()) { encoder->SetCalculateMD5(True); conversionSteps += 1; }
+		else if	(verifyOutput &&  conversionStep == ConversionStepVerify			  )   decoder->SetCalculateMD5(True);
+
+		/* Output log messages.
+		 */
+		switch (conversionStep)
+		{
+			default:
+			case ConversionStepOnTheFly:
+				log->Write(String("\tConverting from: ").Append(in_filename));
+				log->Write(String("\t           to:   ").Append(out_filename));
+
+				break;
+			case ConversionStepDecode:
+				log->Write(String("\tDecoding from: ").Append(in_filename));
+				log->Write(String("\t         to:   ").Append(out_filename));
+
+				break;
+			case ConversionStepEncode:
+				log->Write(String("\tEncoding from: ").Append(in_filename));
+				log->Write(String("\t         to:   ").Append(out_filename));
+
+				break;
+			case ConversionStepVerify:
+				log->Write(String("\tVerifying: ").Append(in_filename));
+
+				break;
+		}
+
 		/* Run main conversion loop.
 		 */
-		log->Write(String("\tEncoding from: ").Append(in_filename));
-		log->Write(String("\t         to:   ").Append(out_filename));
-
 		Int64	 trackLength = Loop(decoder, encoder);
 
-		if (cancel) log->WriteWarning(String("\tCancelled encoding: ").Append(in_filename));
-		else	    log->Write(String("\tFinished encoding:" ).Append(in_filename));
+		/* Get MD5 checksums if we are to verify the output.
+		 */
+		if	(verifyOutput && (conversionStep == ConversionStepOnTheFly ||
+					  conversionStep == ConversionStepEncode) && encoder->IsLossless()) encodeChecksum = encoder->GetMD5Checksum();
+		else if	(verifyOutput &&  conversionStep == ConversionStepVerify			  ) verifyChecksum = decoder->GetMD5Checksum();
+
+		/* Output log messages.
+		 */
+		switch (conversionStep)
+		{
+			default:
+			case ConversionStepOnTheFly:
+				if (cancel) log->WriteWarning(String("\tCancelled converting: ").Append(in_filename));
+				else	    log->Write(String("\tFinished converting:" ).Append(in_filename));
+
+				break;
+			case ConversionStepDecode:
+				if (cancel) log->WriteWarning(String("\tCancelled decoding: ").Append(in_filename));
+				else	    log->Write(String("\tFinished decoding:" ).Append(in_filename));
+
+				break;
+			case ConversionStepEncode:
+				if (cancel) log->WriteWarning(String("\tCancelled encoding: ").Append(in_filename));
+				else	    log->Write(String("\tFinished encoding:" ).Append(in_filename));
+
+				break;
+			case ConversionStepVerify:
+				if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(in_filename).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
+
+				if	(cancel)			   log->WriteWarning(String("\tCancelled verifying: ").Append(in_filename));
+				else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying:" ).Append(in_filename));
+				else					   log->Write(String("\tSuccessfully verified:" ).Append(in_filename));
+
+				break;
+		}
 
 		/* Free encoder and decoder.
 		 */
@@ -188,7 +303,7 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Reset SndFile configuration after decoding.
 		 */
-		if (conversionStep == CONVERTER_STEP_DECODE && !boca.ComponentExists("wave-enc"))
+		if (conversionStep == ConversionStepDecode && !boca.ComponentExists("wave-enc"))
 		{
 			config->SetIntValue("SndFile", "Format", sndFileFormat);
 			config->SetIntValue("SndFile", "SubFormat", sndFileSubFormat);
@@ -196,13 +311,13 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Delete input file if requested or not in on-the-fly mode.
 		 */
-		if (conversionStep == CONVERTER_STEP_ENCODE)
+		if (conversionStep == ConversionStepEncode)
 		{
 			if (!keepWaveFiles || cancel) File(in_filename).Delete();
 
 			if (in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
 		}
-		else if (Config::Get()->deleteAfterEncoding && !cancel)
+		else if (conversionStep != ConversionStepVerify && Config::Get()->deleteAfterEncoding && !cancel)
 		{
 			File(in_filename).Delete();
 		}
@@ -227,9 +342,9 @@ Int BonkEnc::ConvertWorker::Convert()
 			}
 		}
 
-		/* Revert to waiting state when not encoding on-the-fly.
+		/* Revert to waiting state when there are more steps left.
 		 */
-		if (conversionStep == CONVERTER_STEP_DECODE) waiting = True;
+		if (step < conversionSteps - 1) waiting = True;
 
 		/* Report finished conversion.
 		 */
@@ -242,7 +357,7 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Fix total samples value when not encoding on-the-fly.
 		 */
-		if (conversionStep == CONVERTER_STEP_DECODE) onFixTotalSamples.Emit(track, trackToConvert);
+		if (conversionStep == ConversionStepDecode) onFixTotalSamples.Emit(track, trackToConvert);
 	}
 
 	return Success();
@@ -286,9 +401,11 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Encoder *encoder)
 			if (trackPosition + step > trackToConvert.length) step = trackToConvert.length - trackPosition;
 		}
 
+		buffer.Resize(step * bytesPerSample * format.channels);
+
 		/* Read samples from decoder.
 		 */
-		Int	 bytes = decoder->Read(buffer, step * bytesPerSample * format.channels);
+		Int	 bytes = decoder->Read(buffer);
 
 		if	(bytes == -1) { cancel = True; break; }
 		else if (bytes ==  0)		       break;
@@ -299,7 +416,7 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Encoder *encoder)
 
 		/* Pass samples to encoder.
 		 */
-		if (encoder->Write(buffer, bytes) == -1) { cancel = True; break; }
+		if (encoder->Write(buffer) == -1) { cancel = True; break; }
 
 		/* Update length and position info.
 		 */

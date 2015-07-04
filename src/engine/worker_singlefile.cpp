@@ -27,9 +27,51 @@ BonkEnc::ConvertWorkerSingleFile::~ConvertWorkerSingleFile()
 
 Int BonkEnc::ConvertWorkerSingleFile::Convert()
 {
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	Registry	&boca = Registry::Get();
+
 	/* Setup conversion log.
 	 */
 	BoCA::Protocol	*log = BoCA::Protocol::Get("Converter log");
+
+	/* Check format of output file in verification step.
+	 */
+	Format	 format = trackToConvert.GetFormat();
+
+	if (conversionStep == ConversionStepVerify)
+	{
+		DecoderComponent	*decoder = boca.CreateDecoderForStream(trackToConvert.origFilename);
+
+		if (decoder != NIL)
+		{
+			Track	 outTrack;
+
+			decoder->GetStreamInfo(trackToConvert.origFilename, outTrack);
+
+			boca.DeleteComponent(decoder);
+
+			const Format	&outFormat = outTrack.GetFormat();
+
+			if (outFormat.rate     != format.rate ||
+			    outFormat.bits     != format.bits ||
+			    outFormat.channels != format.channels)
+			{
+				onReportWarning.Emit(i18n->TranslateString(String("Skipped verification due to format mismatch: %1\n\n")
+									  .Append("Original format: %2 Hz, %3 bit, %4 channels\n")
+									  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
+																									  .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
+
+				log->WriteWarning(String("\tSkipping verification due to format mismatch: ").Append(trackToConvert.origFilename));
+
+				trackPosition = trackToConvert.length;
+
+				onFinishTrack.Emit(trackToConvert);
+
+				return Success();
+			}
+		}
+	}
 
 	/* Create decoder.
 	 */
@@ -44,14 +86,54 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 	decoderName = decoder->GetDecoderName();
 
+	/* Enable MD5 if we are to verify the output.
+	 */
+	if (conversionStep == ConversionStepVerify) decoder->SetCalculateMD5(True);
+
+	/* Output log messages.
+	 */
+	switch (conversionStep)
+	{
+		default:
+		case ConversionStepOnTheFly:
+			log->Write(String("\tConverting from: ").Append(trackToConvert.origFilename));
+
+			break;
+		case ConversionStepVerify:
+			log->Write(String("\tVerifying: ").Append(trackToConvert.origFilename));
+
+			break;
+	}
+
 	/* Run main conversion loop.
 	 */
-	log->Write(String("\tEncoding from: ").Append(trackToConvert.origFilename));
-
 	Int64	 trackLength = Loop(decoder, encoder);
 
-	if (cancel) log->WriteWarning(String("\tCancelled encoding: ").Append(trackToConvert.origFilename));
-	else	    log->Write(String("\tFinished encoding:" ).Append(trackToConvert.origFilename));
+	/* Get MD5 checksum if we are to verify the output.
+	 */
+	String	 verifyChecksum;
+
+	if (conversionStep == ConversionStepVerify) verifyChecksum = decoder->GetMD5Checksum();
+
+	/* Output log messages.
+	 */
+	switch (conversionStep)
+	{
+		default:
+		case ConversionStepOnTheFly:
+			if (cancel) log->WriteWarning(String("\tCancelled converting: ").Append(trackToConvert.origFilename));
+			else	    log->Write(String("\tFinished converting:" ).Append(trackToConvert.origFilename));
+
+			break;
+		case ConversionStepVerify:
+			if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
+
+			if	(cancel)			   log->WriteWarning(String("\tCancelled verifying: ").Append(trackToConvert.origFilename));
+			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying:" ).Append(trackToConvert.origFilename));
+			else					   log->Write(String("\tSuccessfully verified:" ).Append(trackToConvert.origFilename));
+
+			break;
+	}
 
 	/* Free decoder.
 	 */
@@ -75,8 +157,6 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 	/* Update track length and offset.
 	 */
-	Format	 format = trackToConvert.GetFormat();
-
 	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
 	trackToConvert.length	    = trackLength;
 

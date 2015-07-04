@@ -33,25 +33,27 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Bool							 BonkEnc::JobConvert::conversionRunning = False;
-Bool							 BonkEnc::JobConvert::conversionPaused	= False;
+Bool					 BonkEnc::JobConvert::conversionRunning = False;
+Bool					 BonkEnc::JobConvert::conversionPaused	= False;
 
-Bool							 BonkEnc::JobConvert::skipTrack		= False;
-Bool							 BonkEnc::JobConvert::stopConversion	= False;
+Bool					 BonkEnc::JobConvert::skipTrack		= False;
+Bool					 BonkEnc::JobConvert::stopConversion	= False;
 
-Array<Bool>						 BonkEnc::JobConvert::deviceLocked;
-Array<Bool>						 BonkEnc::JobConvert::outputLocked;
+Array<Bool>				 BonkEnc::JobConvert::deviceLocked;
+Array<Bool>				 BonkEnc::JobConvert::outputLocked;
 
-Threads::Mutex						 BonkEnc::JobConvert::managementMutex;
+Threads::Mutex				 BonkEnc::JobConvert::managementMutex;
 
-Signal0<Void>						 BonkEnc::JobConvert::onStartEncoding;
-Signal1<Void, Bool>					 BonkEnc::JobConvert::onFinishEncoding;
+Signal0<Void>				 BonkEnc::JobConvert::onStartEncoding;
+Signal1<Void, Bool>			 BonkEnc::JobConvert::onFinishEncoding;
 
-Signal3<Void, const BoCA::Track &, const String &, Int>	 BonkEnc::JobConvert::onEncodeTrack;
-Signal0<Void>						 BonkEnc::JobConvert::onFinishTrack;
+Signal3<Void, const BoCA::Track &,
+	      const String &,
+	      BonkEnc::ConversionStep>	 BonkEnc::JobConvert::onEncodeTrack;
+Signal0<Void>				 BonkEnc::JobConvert::onFinishTrack;
 
-Signal2<Void, Int, Int>					 BonkEnc::JobConvert::onTrackProgress;
-Signal2<Void, Int, Int>					 BonkEnc::JobConvert::onTotalProgress;
+Signal2<Void, Int, Int>			 BonkEnc::JobConvert::onTrackProgress;
+Signal2<Void, Int, Int>			 BonkEnc::JobConvert::onTotalProgress;
 
 BonkEnc::JobConvert::JobConvert(Array<BoCA::Track> &iTracks)
 {
@@ -84,24 +86,63 @@ Error BonkEnc::JobConvert::Precheck()
 	/* When converting to a single file, check that all
 	 * files to be combined have the same sample format.
 	 */
-	if (encodeToSingleFile && !CheckSingleFileSampleFormat())
+	if (encodeToSingleFile)
 	{
-		BoCA::Utilities::ErrorMessage("The selected files cannot be combined into a single\noutput file due to different sample formats.\n\nPlease convert all files to the same sample format first.");
+		SetText("Checking sample formats...");
 
-		return Error();
+		if (!CheckSingleFileSampleFormat())
+		{
+			BoCA::Utilities::ErrorMessage("The selected files cannot be combined into a single\noutput file due to different sample formats.\n\nPlease convert all files to the same sample format first.");
+
+			return Error();
+		}
 	}
 
-	/* Find out if we are encoding lossless.
+	/* Check if we have lossy tracks that would be converted to lossless.
 	 */
-	String			 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
-	EncoderComponent	*encoder	= (EncoderComponent *) boca.CreateComponentByID(encoderID);
-	Bool			 encodeLossless = False;
+	Bool	 doNotWarnAgain = !config->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault);
 
-	if (encoder != NIL)
+	if (!doNotWarnAgain)
 	{
-		encodeLossless = encoder->IsLossless();
+		SetText("Checking for lossy to lossless conversion...");
 
-		boca.DeleteComponent(encoder);
+		/* Find out if we are encoding lossless.
+		 */
+		String			 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+		EncoderComponent	*encoder	= (EncoderComponent *) boca.CreateComponentByID(encoderID);
+		Bool			 encodeLossless = False;
+
+		if (encoder != NIL)
+		{
+			encodeLossless = encoder->IsLossless();
+
+			boca.DeleteComponent(encoder);
+		}
+
+		/* Find out if we have lossy tracks.
+		 */
+		Bool	 haveLossyTracks = False;
+
+		if (encodeLossless)
+		{
+			foreach (Track &track, tracks)
+			{
+				if (!track.lossless) { haveLossyTracks = True; break; }
+			}
+		}
+
+		/* Warn about lossy to lossless conversion.
+		 */
+		if (haveLossyTracks)
+		{
+			MessageDlg	 messageBox(i18n->TranslateString("You seem to be converting from a lossy to a lossless format.\n\nPlease be aware that quality loss cannot be undone, so this process\nwill not improve quality in any way, and most likely increase file size.\n\nWould you like to continue anyway?", "Messages"), i18n->TranslateString("Warning"), Message::Buttons::YesNo, Message::Icon::Warning, i18n->TranslateString("Do not display this warning again"), &doNotWarnAgain);
+
+			messageBox.ShowDialog();
+
+			config->SetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, !doNotWarnAgain);
+
+			if (messageBox.GetButtonCode() == Message::Button::No) return Error();
+		}
 	}
 
 	/* Calculate output filenames.
@@ -115,12 +156,8 @@ Error BonkEnc::JobConvert::Precheck()
 		Array<Track>	 existingTracks;
 		Array<Track>	 newTracks;
 
-		Bool		 haveLossyTracks = False;
-
 		foreach (Track &track, tracks)
 		{
-			if (!track.lossless) haveLossyTracks = True;
-
 			track.outfile = Utilities::GetOutputFileName(track);
 
 			if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)) { existingTracks.Add(track); continue; }
@@ -134,21 +171,6 @@ Error BonkEnc::JobConvert::Precheck()
 
 			if (found) existingTracks.Add(track);
 			else	   newTracks.Add(track);
-		}
-
-		/* Check if we have lossy tracks that would be converted to lossless.
-		 */
-		Bool	 doNotWarnAgain = !config->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault);
-
-		if (encodeLossless && haveLossyTracks && !doNotWarnAgain)
-		{
-			MessageDlg	 messageBox(i18n->TranslateString("You seem to be converting from a lossy to a lossless format.\n\nPlease be aware that quality loss cannot be undone, so this process\nwill not improve quality in any way, and most likely increase file size.\n\nWould you like to continue anyway?", "Messages"), i18n->TranslateString("Warning"), Message::Buttons::YesNo, Message::Icon::Warning, i18n->TranslateString("Do not display this warning again"), &doNotWarnAgain);
-
-			messageBox.ShowDialog();
-
-			config->SetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, !doNotWarnAgain);
-
-			if (messageBox.GetButtonCode() == Message::Button::No) return Error();
 		}
 
 		/* Check if we have existing files that would be overwritten.
@@ -180,9 +202,9 @@ Error BonkEnc::JobConvert::Precheck()
 				return Error();
 			}
 		}
-
-		SetText("Waiting for other jobs to finish...");
 	}
+
+	SetText("Waiting for other jobs to finish...");
 
 	return Success();
 }
@@ -212,6 +234,8 @@ Error BonkEnc::JobConvert::Perform()
 
 	Bool	 encodeToSingleFile	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
 	Bool	 overwriteAllFiles	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || config->enable_console;
+
+	Bool	 verifyOutput		= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
 	String	 encoderOutputDirectory	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
 	Bool	 writeToInputDirectory	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
@@ -261,14 +285,13 @@ Error BonkEnc::JobConvert::Perform()
 	onStartEncoding.Emit();
 
 	progress->ComputeTotalSamples(tracks);
-	progress->InitTotalProgressValues();
-	progress->PauseTotalProgress();
 
 	/* Setup single file encoder.
 	 */
 	String	 selectedEncoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 	String	 activeEncoderID   = selectedEncoderID;
 
+	Track	 singleTrack;
 	String	 singleOutFile;
 	Encoder	*singleFileEncoder = NIL;
 
@@ -276,7 +299,7 @@ Error BonkEnc::JobConvert::Perform()
 	{
 		/* Consolidate track information.
 		 */
-		Track	 singleTrack = ConsolidateTrackInfo();
+		singleTrack = ConsolidateTrackInfo();
 
 		/* Get single file name.
 		 */
@@ -306,17 +329,26 @@ Error BonkEnc::JobConvert::Perform()
 				singleFileEncoder = NIL;
 			}
 
+			if (singleFileEncoder != NIL && singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
+
 			/* Set track output file in single file mode.
 			 */
 			foreach (Track &track, tracks) track.outfile = singleOutFile;
 		}
 	}
 
+	/* Initialize progress values (note that this needs to be done
+	 * after GetSingleOutputFileName in single file mode as otherwise
+	 * the taskbar will not show progress on some versions of Windows).
+	 */
+	progress->InitTotalProgressValues();
+	progress->PauseTotalProgress();
+
 	/* Enter actual conversion routines.
 	 */
-	Int	 encodedTracks	=  0;
-	Int	 conversionStep = -1;
-	String	 decoderName;
+	Int		 encodedTracks	= 0;
+	ConversionStep	 conversionStep = ConversionStepNone;
+	String		 decoderName;
 
 	/* Instantiate and start worker threads.
 	 */
@@ -327,8 +359,11 @@ Error BonkEnc::JobConvert::Perform()
 
 	foreach (ConvertWorker *worker, workers)
 	{
+		worker->onFinishTrack.Connect(&Progress::FinalizeTrackProgress, progress);
 		worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
-		worker->onFinishTrack.Connect(&Progress::FinishTrackProgressValues, progress);
+
+		worker->onReportError.Connect(&JobConvert::OnWorkerReportError, this);
+		worker->onReportWarning.Connect(&JobConvert::OnWorkerReportWarning, this);
 
 		worker->Start();
 	}
@@ -429,7 +464,7 @@ Error BonkEnc::JobConvert::Perform()
 				 */
 				if (removeProcessedTracks && !config->enable_console)
 				{
-					JobList			*joblist = JobList::Get();
+					BoCA::JobList		*joblist = BoCA::JobList::Get();
 					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
 
 					foreach (const Track &jltrack, *tracks)
@@ -478,13 +513,15 @@ Error BonkEnc::JobConvert::Perform()
 
 				surface->StartPaint(Rect(Point(0, 0), surface->GetSize()));
 
-				onEncodeTrack.Emit(worker->GetTrackToConvert(), decoderName    = worker->GetDecoderName(),
-										conversionStep = worker->GetConversionStep());
+				const Track	&workerTrack = worker->GetTrackToConvert();
 
-				SetText(String("Converting %1...").Replace("%1", worker->GetTrackToConvert().origFilename));
+				onEncodeTrack.Emit(original_tracks.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+												  conversionStep = worker->GetConversionStep());
+
+				SetText(String("Converting %1...").Replace("%1", workerTrack.origFilename));
 
 				progress->InitTrackProgressValues(worker->GetTrackStartTicks());
-				progress->UpdateProgressValues(worker->GetTrackToConvert(), worker->GetTrackPosition());
+				progress->UpdateProgressValues(workerTrack, worker->GetTrackPosition());
 
 				surface->EndPaint();
 
@@ -528,11 +565,13 @@ Error BonkEnc::JobConvert::Perform()
 
 			AutoRelease	 autoRelease;
 
-			if (worker->GetConversionStep() != conversionStep ||
-			    worker->GetDecoderName()	!= decoderName) onEncodeTrack.Emit(worker->GetTrackToConvert(), decoderName    = worker->GetDecoderName(),
-															conversionStep = worker->GetConversionStep());
+			const Track	&workerTrack = worker->GetTrackToConvert();
 
-			progress->UpdateProgressValues(worker->GetTrackToConvert(), worker->GetTrackPosition());
+			if (worker->GetConversionStep() != conversionStep ||
+			    worker->GetDecoderName()	!= decoderName) onEncodeTrack.Emit(original_tracks.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																	  conversionStep = worker->GetConversionStep());
+
+			progress->UpdateProgressValues(workerTrack, worker->GetTrackPosition());
 
 			break;
 		}
@@ -626,10 +665,10 @@ Error BonkEnc::JobConvert::Perform()
 			{
 				while (workerToUse->IsWaiting() && !workerToUse->IsIdle()) S::System::System::Sleep(1);
 
-				onEncodeTrack.Emit(track, decoderName	 = workerToUse->GetDecoderName(),
-							  conversionStep = workerToUse->GetConversionStep());
+				onEncodeTrack.Emit(original_tracks.Get(track.GetTrackID()), decoderName	   = workerToUse->GetDecoderName(),
+											    conversionStep = workerToUse->GetConversionStep());
 
-				SetText(String("Converting %1...").Replace("%1", workerToUse->GetTrackToConvert().origFilename));
+				SetText(String("Converting %1...").Replace("%1", track.origFilename));
 
 				progress->InitTrackProgressValues(workerToUse->GetTrackStartTicks());
 			}
@@ -643,13 +682,66 @@ Error BonkEnc::JobConvert::Perform()
 	}
 	while (workerQueue.Length() > 0);
 
-	/* Clean up worker threads.
+	/* Verify single file encodes.
 	 */
-	foreach (ConvertWorker *worker, workers) worker->Quit();
-	foreach (ConvertWorker *worker, workers) worker->Wait();
-	foreach (ConvertWorker *worker, workers) delete worker;
+	if (encodeToSingleFile && verifyOutput && encodedTracks > 0 && !skipTrack && !stopConversion && singleFileEncoder != NIL && singleFileEncoder->IsLossless())
+	{
+		/* Save checksum and replace single file encoder.
+		 */
+		String	 encodeChecksum = singleFileEncoder->GetMD5Checksum();
 
-	workers.RemoveAll();
+		delete singleFileEncoder;
+
+		singleFileEncoder  = new Encoder();
+		singleTrack.length = progress->GetTotalSamples();
+
+		/* Setup and start worker for verification.
+		 */
+		ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(singleFileEncoder);
+
+		worker->onFinishTrack.Connect(&Progress::FinalizeTrackProgress, progress);
+		worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
+
+		worker->onReportError.Connect(&JobConvert::OnWorkerReportError, this);
+		worker->onReportWarning.Connect(&JobConvert::OnWorkerReportWarning, this);
+
+		worker->SetEncodeChecksum(encodeChecksum);
+		worker->SetConversionStep(ConversionStepVerify);
+		worker->SetTrackToConvert(singleTrack);
+
+		worker->Start();
+
+		/* Announce new track.
+		 */
+		while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
+
+		onEncodeTrack.Emit(singleTrack, decoderName    = worker->GetDecoderName(),
+						conversionStep = worker->GetConversionStep());
+
+		SetText(String("Verifying %1...").Replace("%1", singleTrack.origFilename));
+
+		progress->InitTrackProgressValues(worker->GetTrackStartTicks());
+
+		/* Loop until finished.
+		 */
+		while (!worker->IsIdle())
+		{
+			if (worker->IsWaiting()) continue;
+
+			AutoRelease	 autoRelease;
+
+			progress->UpdateProgressValues(singleTrack, worker->GetTrackPosition());
+
+			S::System::System::Sleep(25);
+		}
+
+		/* Delete worker.
+		 */
+		worker->Quit();
+		worker->Wait();
+
+		delete worker;
+	}
 
 	/* Fill playlist and cuesheet tracks.
 	 */
@@ -728,6 +820,16 @@ Error BonkEnc::JobConvert::Perform()
 		Config::Get()->deleteAfterEncoding = False;
 	}
 
+	/* Clean up worker threads.
+	 */
+	foreach (ConvertWorker *worker, workers) worker->Quit();
+	foreach (ConvertWorker *worker, workers) worker->Wait();
+	foreach (ConvertWorker *worker, workers) delete worker;
+
+	workers.RemoveAll();
+
+	/* Clean up.
+	 */
 	onFinishEncoding.Emit(!stopConversion && encodedTracks > 0);
 
 	delete progress;
@@ -739,6 +841,13 @@ Error BonkEnc::JobConvert::Perform()
 
 	if (stopConversion) log->WriteWarning("Encoding process cancelled.");
 	else		    log->Write("Encoding process finished.");
+
+	SetProgress(1000);
+
+	if	(stopConversion	      )	SetText(       "Conversion cancelled");
+	else if (errors.Length()   > 0)	SetText(String("Conversion finished with %1 errors").Replace("%1", String::FromInt(errors.Length())));
+	else if (warnings.Length() > 0)	SetText(String("Conversion finished with %1 warnings").Replace("%1", String::FromInt(warnings.Length())));
+	else				SetText(       "Conversion finished");
 
 	return Success();
 }
@@ -759,6 +868,16 @@ Void BonkEnc::JobConvert::Stop()
 Void BonkEnc::JobConvert::UpdateProgress(Int progressValue, Int secondsLeft)
 {
 	SetProgress(progressValue);
+}
+
+Void BonkEnc::JobConvert::OnWorkerReportError(String error)
+{
+	errors.Add(error);
+}
+
+Void BonkEnc::JobConvert::OnWorkerReportWarning(String warning)
+{
+	warnings.Add(warning);
 }
 
 Bool BonkEnc::JobConvert::CheckSingleFileSampleFormat()

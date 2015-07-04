@@ -16,9 +16,6 @@
 
 #include <gui/player.h>
 
-#include <jobs/engine/convert.h>
-#include <jobs/engine/convertworker.h>
-
 #include <dialogs/charset.h>
 
 using namespace smooth::GUI::Dialogs;
@@ -1306,7 +1303,7 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	if (success && Config::Get()->shutdownAfterEncoding) S::System::System::Shutdown();
 }
 
-Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, Int mode)
+Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -1334,14 +1331,18 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 
 	switch (mode)
 	{
-		case CONVERTER_STEP_ON_THE_FLY:
+		default:
+		case ConversionStepOnTheFly:
 			// nothing special in this case
 			break;
-		case CONVERTER_STEP_DECODE:
+		case ConversionStepDecode:
 			fileInfo = fileInfo.Append(" (").Append(i18n->TranslateString("ripping/decoding")).Append(")");
 			break;
-		case CONVERTER_STEP_ENCODE:
+		case ConversionStepEncode:
 			fileInfo = fileInfo.Append(" (").Append(i18n->TranslateString("encoding")).Append(")");
+			break;
+		case ConversionStepVerify:
+			fileInfo = fileInfo.Append(" (").Append(i18n->TranslateString("verifying")).Append(")");
 			break;
 	}
 
@@ -1380,9 +1381,12 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 
 	/* Set percent values.
 	 */
-	edb_trackPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10.0))));
+	if (progressValue > progress->GetValue())
+	{
+		edb_trackPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10.0))));
 
-	progress->SetValue(progressValue);
+		progress->SetValue(progressValue);
+	}
 }
 
 Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsLeft)
@@ -1410,9 +1414,12 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 
 	/* Set percent values.
 	 */
-	edb_totalPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10.0))));
+	if (progressValue > progress_total->GetValue())
+	{
+		edb_totalPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10.0))));
 
-	progress_total->SetValue(progressValue);
+		progress_total->SetValue(progressValue);
+	}
 
 	/* End painting, started in OnEncoderTrackProgress.
 	 */

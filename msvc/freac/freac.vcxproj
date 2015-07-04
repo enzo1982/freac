@@ -181,6 +181,7 @@
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\dialogs\charset.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_resources.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_verification.cpp" />
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
@@ -268,6 +269,7 @@
     <ClInclude Include="..\..\include\config.h" />
     <ClInclude Include="..\..\include\dialogs\charset.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_resources.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_verification.h" />
     <ClInclude Include="..\..\include\dialogs\error.h" />
     <ClInclude Include="..\..\include\dialogs\overwrite.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />

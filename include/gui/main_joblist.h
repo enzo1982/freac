@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,6 +13,8 @@
 
 #include <smooth.h>
 #include <boca.h>
+
+#include "../engine/converter.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -186,7 +188,7 @@ namespace BonkEnc
 			Void			 OnEncoderStartEncoding();
 			Void			 OnEncoderFinishEncoding(Bool);
 
-			Void			 OnEncoderEncodeTrack(const BoCA::Track &, const String &, Int);
+			Void			 OnEncoderEncodeTrack(const BoCA::Track &, const String &, ConversionStep);
 
 			Void			 OnEncoderTrackProgress(Int, Int);
 			Void			 OnEncoderTotalProgress(Int, Int);

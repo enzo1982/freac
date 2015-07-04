@@ -184,6 +184,7 @@
       <entry id="3047" string="unknown">unbekannt</entry>
       <entry id="3048" string="Other">Andere</entry>
       <entry id="3049" string="Output file name">Ausgabedateiname</entry>
+      <entry id="3050" string="verifying">Überprüfen</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Ordner</entry>
@@ -464,6 +465,14 @@
 	<entry id="5702" string="Number of conversion threads">Anzahl an Konvertierungsthreads</entry>
 	<entry id="5703" string="auto">automatisch</entry>
       </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">Verifikation</entry>
+	<entry id="5801" string="Enable input verification">Eingabeverifikation aktivieren</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Überprüfen, dass verlustfreie Quellen exakt den Daten&#10;entsprechen, aus den sie ursprünglich erzeugt wurden.</entry>
+	<entry id="5803" string="Enable output verification">Ausgabeverifikation aktivieren</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Überprüfen, dass verlustfreie Ausgaben exakt den Daten&#10;entsprechen, die zum Kodieren verwendet wurden.</entry>
+      </section>
     </section>
 
     <section name="About">
@@ -515,6 +524,7 @@
       <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1">Kein Konfigurationsdialog verfügbar für:&#10;&#10;%1</entry>
       <entry id="7023" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Sie scheinen dabei zu sein, von einem verlustbehafteten in ein verlustfreies Format zu konvertieren.&#10;&#10;Bitte beachten Sie, dass Qualitätsverlust nicht rückgängig gemacht werden kann und dieser Vorgang&#10;die Qualität in keiner Weise verbessern, aber sehr wahrscheinlich die Dateigröße erhöhen wird.&#10;&#10;Möchten Sie dennoch fortfahren?</entry>
       <entry id="7024" string="A conversion process is already active!">Ein Konvertierungsvorgang ist bereits aktiv!</entry>
+      <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Prüfsummenfehler beim Verifizieren der Ausgabedatei: %1&#10;&#10;Prüfsumme beim Kodieren: %2&#10;Prüfsumme bei Verifikation: %3</entry>
     </section>
 
     <section name="Dialogs">

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,8 +22,10 @@ Threads::Mutex		 BonkEnc::Decoder::managementMutex;
 
 BonkEnc::Decoder::Decoder()
 {
-	f_in	     = NIL;
-	filter_in    = NIL;
+	stream	     = NIL;
+	decoder	     = NIL;
+
+	calculateMD5 = False;
 
 	sampleOffset = 0;
 }
@@ -39,46 +41,46 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 
 	Registry	&boca = Registry::Get();
 
-	if (nFileName.StartsWith("device://")) f_in = new InStream(STREAM_DRIVER, &zero_in);
-	else				       f_in = new InStream(STREAM_FILE, nFileName, IS_READ);
+	if (nFileName.StartsWith("device://")) stream = new InStream(STREAM_DRIVER, &zero_in);
+	else				       stream = new InStream(STREAM_FILE, nFileName, IS_READ);
 
-	f_in->SetPackageSize(track.length >= 0 ? 196608 : 12288);
+	stream->SetPackageSize(track.length >= 0 ? 196608 : 12288);
 
-	if (f_in->GetLastError() != IO_ERROR_OK)
+	if (stream->GetLastError() != IO_ERROR_OK)
 	{
 		BoCA::Utilities::ErrorMessage("Cannot access input file: %1", nFileName);
 
-		delete f_in;
-		f_in = NIL;
+		delete stream;
+		stream = NIL;
 
 		return False;
 	}
 
 	/* Create decoder component.
 	 */
-	filter_in = boca.CreateDecoderForStream(nFileName);
+	decoder = boca.CreateDecoderForStream(nFileName);
 
-	if (filter_in == NIL)
+	if (decoder == NIL)
 	{
 		BoCA::Utilities::ErrorMessage("Cannot create decoder component for input file: %1", nFileName);
 
-		delete f_in;
-		f_in = NIL;
+		delete stream;
+		stream = NIL;
 
 		return False;
 	}
 
 	/* Lock decoder if it's not thread safe.
 	 */
-	if (!filter_in->IsThreadSafe())
+	if (!decoder->IsThreadSafe())
 	{
 		managementMutex.Lock();
 
-		if (mutexes.Get(filter_in->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), filter_in->GetID().ComputeCRC32());
+		if (mutexes.Get(decoder->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), decoder->GetID().ComputeCRC32());
 
 		managementMutex.Release();
 
-		mutexes.Get(filter_in->GetID().ComputeCRC32())->Lock();
+		mutexes.Get(decoder->GetID().ComputeCRC32())->Lock();
 	}
 
 	/* Add decoder to stream.
@@ -87,32 +89,32 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 
 	trackInfo.origFilename = nFileName;
 
-	filter_in->SetAudioTrackInfo(trackInfo);
+	decoder->SetAudioTrackInfo(trackInfo);
 
-	if (f_in->AddFilter(filter_in) == False)
+	if (stream->AddFilter(decoder) == False)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot set up decoder for input file: %1\n\nError: %2", File(nFileName).GetFileName(), filter_in->GetErrorString());
+		BoCA::Utilities::ErrorMessage("Cannot set up decoder for input file: %1\n\nError: %2", File(nFileName).GetFileName(), decoder->GetErrorString());
 
-		if (!filter_in->IsThreadSafe()) mutexes.Get(filter_in->GetID().ComputeCRC32())->Release();
+		if (!decoder->IsThreadSafe()) mutexes.Get(decoder->GetID().ComputeCRC32())->Release();
 
-		boca.DeleteComponent(filter_in);
+		boca.DeleteComponent(decoder);
 
-		filter_in = NIL;
+		decoder = NIL;
 
-		delete f_in;
-		f_in = NIL;
+		delete stream;
+		stream = NIL;
 
 		return False;
 	}
 
 	/* Seek to sampleOffset if necessary.
 	 */
-	if (track.sampleOffset > 0 && !filter_in->Seek(track.sampleOffset))
+	if (track.sampleOffset > 0 && !decoder->Seek(track.sampleOffset))
 	{
-		Buffer<UnsignedByte>	 buffer(1024);
 		Int64			 bytesLeft = track.sampleOffset * track.GetFormat().channels * (track.GetFormat().bits / 8);
+		Buffer<UnsignedByte>	 buffer(Math::Min((Int64) 1024, bytesLeft));
 
-		while (bytesLeft) bytesLeft -= Read(buffer, Math::Min((Int64) buffer.Size(), bytesLeft));
+		while (bytesLeft) bytesLeft -= Read(buffer);
 	}
 
 	fileName     = nFileName;
@@ -123,22 +125,22 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 
 Bool BonkEnc::Decoder::Destroy()
 {
-	if (filter_in == NIL || f_in == NIL) return False;
+	if (decoder == NIL || stream == NIL) return False;
 
 	Registry	&boca = Registry::Get();
 
-	f_in->RemoveFilter(filter_in);
+	stream->RemoveFilter(decoder);
 
-	if (filter_in->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", filter_in->GetErrorString());
+	if (decoder->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", decoder->GetErrorString());
 
-	if (!filter_in->IsThreadSafe()) mutexes.Get(filter_in->GetID().ComputeCRC32())->Release();
+	if (!decoder->IsThreadSafe()) mutexes.Get(decoder->GetID().ComputeCRC32())->Release();
 
-	boca.DeleteComponent(filter_in);
+	boca.DeleteComponent(decoder);
 
-	delete f_in;
+	delete stream;
 
-	filter_in    = NIL;
-	f_in	     = NIL;
+	decoder	     = NIL;
+	stream	     = NIL;
 
 	fileName     = NIL;
 	sampleOffset = 0;
@@ -148,27 +150,43 @@ Bool BonkEnc::Decoder::Destroy()
 
 Bool BonkEnc::Decoder::GetStreamInfo(Track &track)
 {
-	return filter_in->GetStreamInfo(fileName, track);
+	return decoder->GetStreamInfo(fileName, track);
 }
 
-Int BonkEnc::Decoder::Read(Buffer<UnsignedByte> &buffer, Int bytes)
+Int BonkEnc::Decoder::Read(Buffer<UnsignedByte> &buffer)
 {
-	return f_in->InputData(buffer, bytes);
+	if (decoder == NIL || stream == NIL) return 0;
+
+	Int	 bytes = stream->InputData(buffer, buffer.Size());
+
+	if (bytes >= 0)
+	{
+		buffer.Resize(bytes);
+
+		if (calculateMD5) md5.Feed(buffer);
+	}
+
+	return bytes;
 }
 
 Bool BonkEnc::Decoder::Seek(Int64 sample)
 {
-	return filter_in->Seek(sampleOffset + sample);
+	return decoder->Seek(sampleOffset + sample);
 }
 
 Int64 BonkEnc::Decoder::GetInBytes() const
 {
-	return filter_in->GetInBytes();
+	return decoder->GetInBytes();
 }
 
 String BonkEnc::Decoder::GetDecoderName() const
 {
-	return filter_in->GetName();
+	return decoder->GetName();
+}
+
+String BonkEnc::Decoder::GetMD5Checksum()
+{
+	return md5.Finish();
 }
 
 Void BonkEnc::Decoder::FreeLockObjects()

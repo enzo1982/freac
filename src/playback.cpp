@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -171,9 +171,11 @@ Int BonkEnc::Playback::PlayThread()
 				if (position + step > track.length) step = track.length - position;
 			}
 
+			buffer.Resize(step * bytesPerSample * format.channels);
+
 			/* Read samples.
 			 */
-			Int	 bytes = decoder->Read(buffer, step * bytesPerSample * format.channels);
+			Int	 bytes = decoder->Read(buffer);
 
 			if (bytes == 0) break;
 

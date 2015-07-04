@@ -28,6 +28,7 @@ namespace BonkEnc
 			UnsignedInt64		 lastInvoked;
 
 			Int64			 totalSamples;
+			Int			 totalSamplesMultiplier;
 			Float			 totalSamplesDone;
 
 			UnsignedInt64		 trackStartTicks;
@@ -42,7 +43,7 @@ namespace BonkEnc
 			Void			 ComputeTotalSamples(const Array<BoCA::Track> &);
 			Void			 FixTotalSamples(const BoCA::Track &, const BoCA::Track &);
 
-			Int64			 GetTotalSamples()			{ return totalSamples; }
+			Int64			 GetTotalSamples()			{ return totalSamples / totalSamplesMultiplier; }
 			Int			 GetTrackTimePassed()			{ return S::System::System::Clock() - trackStartTicks; }
 			Int			 GetTotalTimePassed()			{ return S::System::System::Clock() - totalStartTicks; }
 
@@ -58,7 +59,7 @@ namespace BonkEnc
 
 			Void			 UpdateProgressValues(const BoCA::Track &, Int);
 
-			Void			 FinishTrackProgressValues(const BoCA::Track &);
+			Void			 FinalizeTrackProgress(const BoCA::Track &);
 		signals:
 			Signal2<Void, Int, Int>	 onTrackProgress;
 			Signal2<Void, Int, Int>	 onTotalProgress;

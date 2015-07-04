@@ -22,7 +22,7 @@ endif
 RESOURCEDIR = ./resources
 BINRESDIR   = $(RESOURCEDIR)/binary
 
-DLLOBJECTS  = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_resources.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/error.o $(OBJECTDIR)/overwrite.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/engine_worker.o $(OBJECTDIR)/engine_worker_singlefile.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/player.o $(OBJECTDIR)/job_convert.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_addtracks.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/job_removedisc.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS  = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbbatch.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cddb_extsettings.o $(OBJECTDIR)/cddb_manage.o $(OBJECTDIR)/cddb_managequeries.o $(OBJECTDIR)/cddb_managesubmits.o $(OBJECTDIR)/cddb_multimatch.o $(OBJECTDIR)/cddb_query.o $(OBJECTDIR)/cddb_submit.o $(OBJECTDIR)/dialog_config.o $(OBJECTDIR)/config_cddb.o $(OBJECTDIR)/config_encoders.o $(OBJECTDIR)/config_interface.o $(OBJECTDIR)/config_language.o $(OBJECTDIR)/config_playlists.o $(OBJECTDIR)/config_resources.o $(OBJECTDIR)/config_tags.o $(OBJECTDIR)/config_verification.o $(OBJECTDIR)/configcomponent.o $(OBJECTDIR)/configentry.o $(OBJECTDIR)/adddirectory.o $(OBJECTDIR)/addpattern.o $(OBJECTDIR)/charset.o $(OBJECTDIR)/error.o $(OBJECTDIR)/overwrite.o $(OBJECTDIR)/engine_converter.o $(OBJECTDIR)/engine_decoder.o $(OBJECTDIR)/engine_encoder.o $(OBJECTDIR)/engine_worker.o $(OBJECTDIR)/engine_worker_singlefile.o $(OBJECTDIR)/layer_tooltip.o $(OBJECTDIR)/main_joblist.o $(OBJECTDIR)/main_threads.o $(OBJECTDIR)/player.o $(OBJECTDIR)/job_convert.o $(OBJECTDIR)/job_adddirectory.o $(OBJECTDIR)/job_addfiles.o $(OBJECTDIR)/job_addtracks.o $(OBJECTDIR)/job_removeall.o $(OBJECTDIR)/job_removedisc.o $(OBJECTDIR)/job_checkforupdates.o $(OBJECTDIR)/job.o $(OBJECTDIR)/jobmanager.o $(OBJECTDIR)/tools_encoding.o $(OBJECTDIR)/bonkenc.o $(OBJECTDIR)/config.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/playback.o $(OBJECTDIR)/progress.o $(OBJECTDIR)/startconsole.o $(OBJECTDIR)/startgui.o $(OBJECTDIR)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
 	DLLOBJECTS += $(OBJECTDIR)/autorelease_none.o
@@ -508,6 +508,11 @@ $(OBJECTDIR)/config_resources.o: $(SRCDIR)/dialogs/config/config_resources.cpp
 $(OBJECTDIR)/config_tags.o: $(SRCDIR)/dialogs/config/config_tags.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/dialogs/config/config_tags.cpp...
 	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/config/config_tags.cpp -o $(OBJECTDIR)/config_tags.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/config_verification.o: $(SRCDIR)/dialogs/config/config_verification.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/dialogs/config/config_verification.cpp...
+	$(COMPILER) $(COMPILER_OPTS) $(SRCDIR)/dialogs/config/config_verification.cpp -o $(OBJECTDIR)/config_verification.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/configcomponent.o: $(SRCDIR)/dialogs/config/configcomponent.cpp

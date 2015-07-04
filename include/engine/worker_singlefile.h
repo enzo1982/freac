@@ -21,10 +21,16 @@ namespace BonkEnc
 			Encoder	*encoder;
 			Int64	 encodedSamples;
 
+			String	 encodeChecksum;
+
 			Int	 Convert();
 		public:
 				 ConvertWorkerSingleFile(Encoder *);
 				~ConvertWorkerSingleFile();
+		accessors:
+			Void	 SetEncodeChecksum(const String &nEncodeChecksum)  { encodeChecksum = nEncodeChecksum; }
+
+			Void	 SetConversionStep(ConversionStep nConversionStep) { conversionStep = nConversionStep; }
 	};
 };
 

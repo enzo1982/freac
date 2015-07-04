@@ -16,6 +16,7 @@
 #include <dialogs/config/config_playlists.h>
 #include <dialogs/config/config_resources.h>
 #include <dialogs/config/config_tags.h>
+#include <dialogs/config/config_verification.h>
 
 #include <bonkenc.h>
 #include <config.h>
@@ -186,6 +187,12 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	 * layer to be notified when settings for a specific component are changed.
 	 */
 	((ConfigureEncoders *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
+
+	layers.Add(new ConfigureVerification());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Verification"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_freac->Add(entries.GetLast());
 
 	layers.Add(new ConfigureResources());
 	createdLayers.Add(layers.GetLast());

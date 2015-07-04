@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,12 +20,14 @@ Threads::Mutex		 BonkEnc::Encoder::managementMutex;
 
 BonkEnc::Encoder::Encoder()
 {
-	f_out	   = NIL;
-	filter_out = NIL;
+	stream	     = NIL;
+	encoder      = NIL;
 
-	chapter	   = 0;
-	bytes	   = 0;
-	offset	   = 0;
+	chapter      = 0;
+	bytes	     = 0;
+	offset	     = 0;
+
+	calculateMD5 = False;
 }
 
 BonkEnc::Encoder::~Encoder()
@@ -42,62 +44,62 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 	bytes	= 0;
 	offset	= 0;
 
-	f_out = new OutStream(STREAM_FILE, BoCA::Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
-	f_out->SetPackageSize(196608);
+	stream = new OutStream(STREAM_FILE, BoCA::Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
+	stream->SetPackageSize(196608);
 
-	if (f_out->GetLastError() != IO_ERROR_OK)
+	if (stream->GetLastError() != IO_ERROR_OK)
 	{
 		BoCA::Utilities::ErrorMessage("Cannot create output file: %1", File(fileName).GetFileName());
 
-		delete f_out;
-		f_out = NIL;
+		delete stream;
+		stream = NIL;
 
 		return False;
 	}
 
 	/* Create encoder component.
 	 */
-	filter_out = (EncoderComponent *) boca.CreateComponentByID(encoderID);
+	encoder = (EncoderComponent *) boca.CreateComponentByID(encoderID);
 
-	if (filter_out == NIL)
+	if (encoder == NIL)
 	{
 		BoCA::Utilities::ErrorMessage("Cannot create encoder component: %1", encoderID);
 
-		delete f_out;
-		f_out = NIL;
+		delete stream;
+		stream = NIL;
 
 		return False;
 	}
 
 	/* Lock encoder if it's not thread safe.
 	 */
-	if (!filter_out->IsThreadSafe())
+	if (!encoder->IsThreadSafe())
 	{
 		managementMutex.Lock();
 
-		if (mutexes.Get(filter_out->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), filter_out->GetID().ComputeCRC32());
+		if (mutexes.Get(encoder->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), encoder->GetID().ComputeCRC32());
 
 		managementMutex.Release();
 
-		mutexes.Get(filter_out->GetID().ComputeCRC32())->Lock();
+		mutexes.Get(encoder->GetID().ComputeCRC32())->Lock();
 	}
 
 	/* Add encoder to stream.
 	 */
-	filter_out->SetAudioTrackInfo(album);
+	encoder->SetAudioTrackInfo(album);
 
-	if (f_out->AddFilter(filter_out) == False)
+	if (stream->AddFilter(encoder) == False)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot set up encoder for output file: %1\n\nError: %2", File(fileName).GetFileName(), filter_out->GetErrorString());
+		BoCA::Utilities::ErrorMessage("Cannot set up encoder for output file: %1\n\nError: %2", File(fileName).GetFileName(), encoder->GetErrorString());
 
-		if (!filter_out->IsThreadSafe()) mutexes.Get(filter_out->GetID().ComputeCRC32())->Release();
+		if (!encoder->IsThreadSafe()) mutexes.Get(encoder->GetID().ComputeCRC32())->Release();
 
-		boca.DeleteComponent(filter_out);
+		boca.DeleteComponent(encoder);
 
-		filter_out = NIL;
+		encoder = NIL;
 
-		delete f_out;
-		f_out = NIL;
+		delete stream;
+		stream = NIL;
 
 		return False;
 	}
@@ -107,35 +109,39 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 
 Bool BonkEnc::Encoder::Destroy()
 {
-	if (filter_out == NIL || f_out == NIL) return False;
+	if (encoder == NIL || stream == NIL) return False;
 
 	Registry	&boca = Registry::Get();
 
-	filter_out->SetAudioTrackInfo(album);
+	encoder->SetAudioTrackInfo(album);
 
-	f_out->RemoveFilter(filter_out);
+	stream->RemoveFilter(encoder);
 
-	if (filter_out->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", filter_out->GetErrorString());
+	if (encoder->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", encoder->GetErrorString());
 
-	if (!filter_out->IsThreadSafe()) mutexes.Get(filter_out->GetID().ComputeCRC32())->Release();
+	if (!encoder->IsThreadSafe()) mutexes.Get(encoder->GetID().ComputeCRC32())->Release();
 
-	boca.DeleteComponent(filter_out);
+	boca.DeleteComponent(encoder);
 
-	delete f_out;
+	delete stream;
 
-	filter_out = NIL;
-	f_out	   = NIL;
+	encoder = NIL;
+	stream	= NIL;
 
 	return True;
 }
 
-Int BonkEnc::Encoder::Write(Buffer<UnsignedByte> &buffer, Int nbytes)
+Int BonkEnc::Encoder::Write(Buffer<UnsignedByte> &buffer)
 {
-	bytes += nbytes;
+	if (encoder == NIL || stream == NIL) return 0;
 
-	if (f_out->OutputData(buffer, nbytes) == False || filter_out->GetErrorState()) return -1;
+	bytes += buffer.Size();
 
-	return bytes;
+	if (calculateMD5) md5.Feed(buffer);
+
+	if (stream->OutputData(buffer, buffer.Size()) == False || encoder->GetErrorState()) return -1;
+
+	return buffer.Size();
 }
 
 Void BonkEnc::Encoder::SignalChapterChange()
@@ -154,6 +160,16 @@ Void BonkEnc::Encoder::SignalChapterChange()
 	offset += track.length;
 
 	chapter++;
+}
+
+Bool BonkEnc::Encoder::IsLossless() const
+{
+	return encoder->IsLossless();
+}
+
+String BonkEnc::Encoder::GetMD5Checksum()
+{
+	return md5.Finish();
 }
 
 Void BonkEnc::Encoder::FreeLockObjects()

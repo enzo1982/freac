@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -27,8 +27,11 @@ namespace BonkEnc
 			String				 fileName;
 			Int64				 sampleOffset;
 
-			IO::InStream			*f_in;
-			BoCA::AS::DecoderComponent	*filter_in;
+			IO::InStream			*stream;
+			BoCA::AS::DecoderComponent	*decoder;
+
+			Bool				 calculateMD5;
+			Hash::MD5			 md5;
 		public:
 			static Void			 FreeLockObjects();
 
@@ -40,13 +43,16 @@ namespace BonkEnc
 
 			Bool				 GetStreamInfo(BoCA::Track &);
 
-			Int				 Read(Buffer<UnsignedByte> &, Int);
+			Int				 Read(Buffer<UnsignedByte> &);
 
 			Bool				 Seek(Int64);
+		accessors:
+			Void				 SetCalculateMD5(Bool nCalculateMD5)	{ calculateMD5 = nCalculateMD5; }
 
 			Int64				 GetInBytes() const;
-
 			String				 GetDecoderName() const;
+
+			String				 GetMD5Checksum();
 	};
 };
 

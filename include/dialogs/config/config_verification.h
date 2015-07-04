@@ -8,39 +8,30 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_FREAC_CONVERTER
-#define H_FREAC_CONVERTER
+#ifndef H_FREAC_CONFIG_VERIFICATION
+#define H_FREAC_CONFIG_VERIFICATION
 
 #include <smooth.h>
 #include <boca.h>
 
-using namespace smooth;
-
 namespace BonkEnc
 {
-	class JobList;
-
-	enum ConversionStep
-	{
-		ConversionStepNone     = -1,
-
-		ConversionStepOnTheFly = 0,
-		ConversionStepDecode   = 1,
-		ConversionStepEncode   = 2,
-		ConversionStepVerify   = 3
-	};
-
-	class Converter
+	class ConfigureVerification : public BoCA::ConfigLayer
 	{
 		private:
-			Bool	 conversionFinished;
-		public:
-				 Converter();
-				~Converter();
+			GroupBox	*group_verification;
+			CheckBox	*check_input;
+			Text		*text_input;
+			CheckBox	*check_output;
+			Text		*text_output;
 
-			Void	 Convert(JobList *, Bool = True);
-		slots:
-			Void	 OnFinishJob();
+			Bool		 verifyInput;
+			Bool		 verifyOutput;
+		public:
+					 ConfigureVerification();
+					~ConfigureVerification();
+
+			Int		 SaveSettings();
 	};
 };
 

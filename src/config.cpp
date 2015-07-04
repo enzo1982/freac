@@ -26,6 +26,7 @@ const String	 BonkEnc::Config::CategoryRipperID				= "Ripper";
 const String	 BonkEnc::Config::CategoryPlaylistID				= "Playlist";
 const String	 BonkEnc::Config::CategoryTagsID				= "Tags";
 const String	 BonkEnc::Config::CategoryFreedbID				= "freedb";
+const String	 BonkEnc::Config::CategoryVerificationID			= "Verification";
 
 /* Category Settings
  */
@@ -134,6 +135,14 @@ const Bool	 BonkEnc::Config::SettingsShowJobsTabDefault			= False;
 
 const String	 BonkEnc::Config::SettingsWarnLossyToLosslessID			= "WarnLossyToLossless";
 const Bool	 BonkEnc::Config::SettingsWarnLossyToLosslessDefault		= True;
+
+/* Category Verification
+ */
+const String	 BonkEnc::Config::VerificationVerifyInputID			= "VerifyInput";
+const Bool	 BonkEnc::Config::VerificationVerifyInputDefault		= True;
+
+const String	 BonkEnc::Config::VerificationVerifyOutputID			= "VerifyOutput";
+const Bool	 BonkEnc::Config::VerificationVerifyOutputDefault		= False;
 
 /* Category Resources
  */
