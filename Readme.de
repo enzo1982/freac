@@ -149,7 +149,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 CVS (Juni 2015)
+	Version 1.1 CVS (Juli 2015)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -164,6 +164,7 @@ Geschichte
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
+		- Untersützung für Verifikation von verlustfreien Ausgabedateien hinzugefügt
 		- Einfachen Tag-Editor hinzugefügt
 		- Video-Downloader-Erweiterung hinzugefügt
 		- Monkey's Audiokodierer/-dekodierer hinzugefügt
