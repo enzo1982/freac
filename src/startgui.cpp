@@ -1247,6 +1247,10 @@ Void BonkEnc::BonkEncGUI::Encode()
 		OptionBox::internalCheckValues.Emit();
 	}
 
+	/* Return if there are no tracks to convert.
+	 */
+	if (joblist->Length() == 0) return;
+
 	/* We can only handle one conversion at a time.
 	 */
 	if (JobConvert::IsConverting())

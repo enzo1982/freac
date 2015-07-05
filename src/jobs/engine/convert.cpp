@@ -222,7 +222,7 @@ Error BonkEnc::JobConvert::Perform()
 {
 	/* Return immediately if there are no tracks to convert.
 	 */
-	if (tracks.Length() == 0) return Success();
+	if (tracks.Length() == 0) { conversionRunning = False; return Success(); }
 
 	BoCA::Config	*config	= BoCA::Config::Get();
 	Registry	&boca	= Registry::Get();
