@@ -1143,9 +1143,16 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveUp()
 
 	if (joblist->GetSelectedEntryNumber() > 0)
 	{
-		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() - 1);
+		Surface	*surface = GetDrawSurface();
 
+		surface->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetRealSize()));
+
+		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() - 1);
 		joblist->Paint(SP_PAINT);
+
+		while (joblist->GetSelectedEntry()->GetVisibleArea().GetHeight() < joblist->GetSelectedEntry()->GetRealSize().cy) joblist->ScrollUp(1);
+
+		surface->EndPaint();
 	}
 }
 
@@ -1155,9 +1162,16 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveDown()
 
 	if (joblist->GetSelectedEntryNumber() < joblist->Length() - 1)
 	{
-		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() + 1);
+		Surface	*surface = GetDrawSurface();
 
+		surface->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetRealSize()));
+
+		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), joblist->GetSelectedEntryNumber() + 1);
 		joblist->Paint(SP_PAINT);
+
+		while (joblist->GetSelectedEntry()->GetVisibleArea().GetHeight() < joblist->GetSelectedEntry()->GetRealSize().cy) joblist->ScrollDown(1);
+
+		surface->EndPaint();
 	}
 }
 
@@ -1167,8 +1181,15 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveTop()
 
 	if (joblist->GetSelectedEntryNumber() > 0)
 	{
+		Surface	*surface = GetDrawSurface();
+
+		surface->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetRealSize()));
+
 		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), 0);
+		joblist->ScrollUp();
 		joblist->Paint(SP_PAINT);
+
+		surface->EndPaint();
 	}
 }
 
@@ -1178,8 +1199,15 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveBottom()
 
 	if (joblist->GetSelectedEntryNumber() < joblist->Length() - 1)
 	{
+		Surface	*surface = GetDrawSurface();
+
+		surface->StartPaint(Rect(joblist->GetRealPosition(), joblist->GetRealSize()));
+
 		joblist->MoveEntry(joblist->GetSelectedEntryNumber(), joblist->Length() - 1);
+		joblist->ScrollDown();
 		joblist->Paint(SP_PAINT);
+
+		surface->EndPaint();
 	}
 }
 
