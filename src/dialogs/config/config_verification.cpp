@@ -28,11 +28,8 @@ BonkEnc::ConfigureVerification::ConfigureVerification()
 
 	group_verification	= new GroupBox(i18n->TranslateString("Verification"), Point(7, 11), Size(350, 128));
 
-	check_input		= new CheckBox(i18n->TranslateString("Enable input verification"), Point(10, 14), Size(330, 0)/*, &verifyInput*/);
+	check_input		= new CheckBox(i18n->TranslateString("Enable input verification"), Point(10, 14), Size(330, 0), &verifyInput);
 	text_input		= new Text(i18n->TranslateString("Verify that lossless inputs decode to exactly the data\nthey were originally created from."), Point(27, 34));
-
-	check_input->Deactivate();
-	text_input->Deactivate();
 
 	check_output		= new CheckBox(i18n->TranslateString("Enable output verification"), Point(10, 70), Size(330, 0), &verifyOutput);
 	text_output		= new Text(i18n->TranslateString("Verify that lossless outputs decode to exactly the data\nused when encoding them."), Point(27, 90));

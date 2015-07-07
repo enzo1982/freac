@@ -67,6 +67,7 @@ Int BonkEnc::ConvertWorker::Convert()
 	Bool	 encodeOnTheFly		= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
 	Bool	 keepWaveFiles		= config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
 
+	Bool	 verifyInput		= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
 	Bool	 verifyOutput		= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
 	Bool	 writeToInputDirectory	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
@@ -220,6 +221,14 @@ Int BonkEnc::ConvertWorker::Convert()
 			return Error();
 		}
 
+		/* Create verifier.
+		 */
+		Verifier	*verifier = new Verifier();
+		Bool		 verify	  = False;
+
+		if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
+				    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
+
 		/* Enable MD5 and add a verification step if we are to verify the output.
 		 */
 		if	(verifyOutput && (conversionStep == ConversionStepOnTheFly ||
@@ -254,7 +263,20 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Run main conversion loop.
 		 */
-		Int64	 trackLength = Loop(decoder, encoder);
+		Int64	 trackLength = Loop(decoder, verifier, encoder);
+
+		/* Verify input.
+		 */
+		if (!cancel && verify && verifier->Verify())
+		{
+			log->Write(String("\tSuccessfully verified input file: ").Append(in_filename));
+		}
+		else if (!cancel && verify)
+		{
+			onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Messages").Replace("%1", in_filename.Contains("://") ? in_filename : File(in_filename).GetFileName()));
+
+			log->WriteError(String("\tFailed to verify input file: ").Append(in_filename));
+		}
 
 		/* Get MD5 checksums if we are to verify the output.
 		 */
@@ -285,17 +307,18 @@ Int BonkEnc::ConvertWorker::Convert()
 			case ConversionStepVerify:
 				if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(in_filename).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
 
-				if	(cancel)			   log->WriteWarning(String("\tCancelled verifying: ").Append(in_filename));
-				else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying:" ).Append(in_filename));
-				else					   log->Write(String("\tSuccessfully verified:" ).Append(in_filename));
+				if	(cancel)			   log->WriteWarning(String("\tCancelled verifying output file: ").Append(in_filename));
+				else if (encodeChecksum != verifyChecksum) log->WriteError(String("\tChecksum mismatch verifying output file:" ).Append(in_filename));
+				else					   log->Write(String("\tSuccessfully verified output file:" ).Append(in_filename));
 
 				break;
 		}
 
-		/* Free encoder and decoder.
+		/* Free encoder, decoder and verifier.
 		 */
 		delete encoder;
 		delete decoder;
+		delete verifier;
 
 		/* Delete output file if it doesn't look sane.
 		 */
@@ -363,7 +386,7 @@ Int BonkEnc::ConvertWorker::Convert()
 	return Success();
 }
 
-Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Encoder *encoder)
+Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder *encoder)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
@@ -413,6 +436,10 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Encoder *encoder)
 		/* Switch byte order to native.
 		 */
 		if (format.order != BYTE_NATIVE && format.order != systemByteOrder) BoCA::Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
+
+		/* Pass samples to verifier.
+		 */
+		verifier->Process(buffer);
 
 		/* Pass samples to encoder.
 		 */

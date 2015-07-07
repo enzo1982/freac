@@ -15,6 +15,7 @@
 
 #include "decoder.h"
 #include "encoder.h"
+#include "verifier.h"
 
 namespace BonkEnc
 {
@@ -36,7 +37,7 @@ namespace BonkEnc
 			Bool					 quit;
 
 			Int					 Perform();
-			Int64					 Loop(Decoder *, Encoder *);
+			Int64					 Loop(Decoder *, Verifier *, Encoder *);
 
 			virtual Int				 Convert();
 		public:

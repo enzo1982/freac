@@ -27,9 +27,14 @@ BonkEnc::ConvertWorkerSingleFile::~ConvertWorkerSingleFile()
 
 Int BonkEnc::ConvertWorkerSingleFile::Convert()
 {
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	Registry	&boca = Registry::Get();
+	Registry	&boca	= Registry::Get();
+
+	/* Get config values.
+	 */
+	Bool	 verifyInput	= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
 
 	/* Setup conversion log.
 	 */
@@ -86,6 +91,12 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 	decoderName = decoder->GetDecoderName();
 
+	/* Create verifier.
+	 */
+	Verifier	*verifier = new Verifier();
+
+	if (verifyInput && conversionStep == ConversionStepOnTheFly) verifier->Create(trackToConvert);
+
 	/* Enable MD5 if we are to verify the output.
 	 */
 	if (conversionStep == ConversionStepVerify) decoder->SetCalculateMD5(True);
@@ -107,7 +118,20 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 	/* Run main conversion loop.
 	 */
-	Int64	 trackLength = Loop(decoder, encoder);
+	Int64	 trackLength = Loop(decoder, verifier, encoder);
+
+	/* Verify input.
+	 */
+	if (!cancel && verifier->Verify())
+	{
+		log->Write(String("\tSuccessfully verified input file: ").Append(trackToConvert.origFilename));
+	}
+	else if (!cancel)
+	{
+		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()));
+
+		log->WriteError(String("\tFailed to verify input file: ").Append(trackToConvert.origFilename));
+	}
 
 	/* Get MD5 checksum if we are to verify the output.
 	 */
@@ -128,16 +152,17 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 		case ConversionStepVerify:
 			if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
 
-			if	(cancel)			   log->WriteWarning(String("\tCancelled verifying: ").Append(trackToConvert.origFilename));
-			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying:" ).Append(trackToConvert.origFilename));
-			else					   log->Write(String("\tSuccessfully verified:" ).Append(trackToConvert.origFilename));
+			if	(cancel)			   log->WriteWarning(String("\tCancelled verifying output file: ").Append(trackToConvert.origFilename));
+			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file:" ).Append(trackToConvert.origFilename));
+			else					   log->Write(String("\tSuccessfully verified output file:" ).Append(trackToConvert.origFilename));
 
 			break;
 	}
 
-	/* Free decoder.
+	/* Free decoder and verifier.
 	 */
 	delete decoder;
+	delete verifier;
 
 	/* Signal next chapter.
 	 */
