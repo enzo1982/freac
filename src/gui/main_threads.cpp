@@ -30,6 +30,7 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 
 	list_threads	= new ListBox(Point(7, 35), Size(500, 360));
 	list_threads->onSelectEntry.Connect(&LayerThreads::OnSelectJob, this);
+	list_threads->SetFlags(LF_ALLOWRESELECT);
 	list_threads->EnableLocking();
 
 	text_errors	= new Text(i18n->AddColon(i18n->TranslateString("Errors / Warnings")), Point(7, 25));
