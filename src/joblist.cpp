@@ -339,7 +339,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	for (Int i = 0; i < extensions.Length(); i++)
 	{
-		if (fileTypes.Find(extensions.GetNth(i)) < 0) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
+		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
 	}
 
 	fileTypes.Append(";*.cue");
@@ -419,7 +419,7 @@ Void BonkEnc::JobList::FindTracksByPattern(Array<String> &jobFiles, const String
 		foreach (const Directory &directory, directories) FindTracksByPattern(jobFiles, directory, pattern, True);
 	}
 
-	if (pattern.Find(Directory::GetDirectoryDelimiter()) >= 0)
+	if (pattern.Contains(Directory::GetDirectoryDelimiter()))
 	{
 		String	 head = pattern.Head(pattern.Find(Directory::GetDirectoryDelimiter()));
 		String	 tail = pattern.Tail(pattern.Length() - pattern.Find(Directory::GetDirectoryDelimiter()) - 1);
@@ -573,7 +573,7 @@ Void BonkEnc::JobList::LoadList()
 
 	for (Int i = 0; i < extensions.Length(); i++)
 	{
-		if (fileTypes.Find(extensions.GetNth(i)) < 0) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
+		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
 	}
 
 	dialog->AddFilter(i18n->TranslateString("Playlist Files"), fileTypes);
@@ -829,8 +829,8 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 	{
 		const Track	&track = GetNthTrack(i);
 
-		if	(track.origFilename.Find("://") >= 0) fileTypes.Add(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
-		else if (track.origFilename.Find(".")   >= 0) fileTypes.Add(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+		if	(track.origFilename.Contains("://")) fileTypes.Add(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
+		else if (track.origFilename.Contains("."))   fileTypes.Add(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
 	}
 
 	for (Int i = 0; sortByOutput && i < tracks.Length(); i++)
@@ -1079,8 +1079,8 @@ String BonkEnc::JobList::GetEntryText(const Track &track) const
 
 		else if (field == "<filetype>")
 		{
-			if	(track.origFilename.Find("://") >= 0) jlEntry.Append(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
-			else if (track.origFilename.Find(".")   >= 0) jlEntry.Append(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+			if	(track.origFilename.Contains("://")) jlEntry.Append(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
+			else if (track.origFilename.Contains("."))   jlEntry.Append(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
 		}
 
 		else if (field == "<outputfile>")

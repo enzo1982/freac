@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -462,10 +462,10 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 		 */
 		String	 filePattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
-		if ((info.artist != NIL && filePattern.Find("<artist>")   >= 0) ||
-		    (info.title  != NIL && filePattern.Find("<title>")    >= 0) ||
-		    (info.track  != -1  && filePattern.Find("<track>")    >= 0) ||
-		    (			   filePattern.Find("<filename>") >= 0))
+		if ((info.artist != NIL && filePattern.Contains("<artist>")  ) ||
+		    (info.title  != NIL && filePattern.Contains("<title>")   ) ||
+		    (info.track  != -1  && filePattern.Contains("<track>")   ) ||
+		    (			   filePattern.Contains("<filename>")))
 		{
 			String	 shortOutFileName = filePattern;
 

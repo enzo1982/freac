@@ -506,7 +506,7 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 					prevParam == "-extc"	 ||
 					prevParam == "-extm"))
 		{
-			if (param.Find("*") != -1 || param.Find("?") != -1)
+			if (param.Contains("*") || param.Contains("?"))
 			{
 				File			 file(param);
 				Directory		 dir(file.GetFilePath());
@@ -555,7 +555,7 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 	{
 		String	 current;
 
-		if (rest.Find(",") != -1)
+		if (rest.Contains(","))
 		{
 			Int	 comma = rest.Find(",");
 
@@ -568,11 +568,11 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 			rest = NIL;
 		}
 
-		if (current.Find("-") != -1)
+		if (current.Contains("-"))
 		{
-			Int	 dash = current.Find("-");
+			Int	 dash  = current.Find("-");
 			Int	 first = current.Head(dash).ToInt();
-			Int	 last = current.Tail(current.Length() - dash - 1).ToInt();
+			Int	 last  = current.Tail(current.Length() - dash - 1).ToInt();
 
 			for (Int i = first; i <= last; i++) (*files).Add(String("device://cdda:")
 									.Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault)))
