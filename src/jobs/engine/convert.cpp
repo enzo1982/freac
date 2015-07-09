@@ -552,7 +552,7 @@ Error BonkEnc::JobConvert::Perform()
 
 		foreach (ConvertWorker *worker, workers)
 		{
-			if (!worker->IsIdle()) continue;
+			if (!worker->IsIdle() || workerQueue.Get(worker->GetThreadID()) != NIL) continue;
 
 			workerToUse = worker;
 		}
