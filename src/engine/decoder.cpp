@@ -112,9 +112,14 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 	if (track.sampleOffset > 0 && !decoder->Seek(track.sampleOffset))
 	{
 		Int64			 bytesLeft = track.sampleOffset * track.GetFormat().channels * (track.GetFormat().bits / 8);
-		Buffer<UnsignedByte>	 buffer(Math::Min((Int64) 1024, bytesLeft));
+		Buffer<UnsignedByte>	 buffer;
 
-		while (bytesLeft) bytesLeft -= Read(buffer);
+		while (bytesLeft)
+		{
+			buffer.Resize(Math::Min((Int64) 1024, bytesLeft));
+
+			bytesLeft -= Read(buffer);
+		}
 	}
 
 	fileName     = nFileName;
