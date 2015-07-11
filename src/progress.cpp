@@ -16,8 +16,10 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::Progress::Progress()
+BonkEnc::Progress::Progress(const BoCA::Config *iConfiguration)
 {
+	configuration	       = iConfiguration;
+
 	lastInvoked	       = 0;
 
 	totalSamples	       = 0;
@@ -44,10 +46,9 @@ BonkEnc::Progress::~Progress()
 
 Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-	Registry	&boca	= Registry::Get();
+	Registry	&boca = Registry::Get();
 
-	if (config->enable_console) return;
+	if (configuration->enable_console) return;
 
 	totalSamples	       = 0;
 	totalSamplesMultiplier = 1;
@@ -62,12 +63,14 @@ Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 
 	/* Find out if we are encoding lossless.
 	 */
-	String			 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	String			 encoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 	EncoderComponent	*encoder	= (EncoderComponent *) boca.CreateComponentByID(encoderID);
 	Bool			 encodeLossless = False;
 
 	if (encoder != NIL)
 	{
+		encoder->SetConfiguration(configuration);
+
 		encodeLossless = encoder->IsLossless();
 
 		boca.DeleteComponent(encoder);
@@ -75,17 +78,17 @@ Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 
 	/* Check if we are encoding on-the-fly.
 	 */
-	Bool	 encodeOnTheFly	    = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
-	Bool	 encodeToSingleFile = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+	Bool	 encodeOnTheFly	    = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
+	Bool	 encodeToSingleFile = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
 
-	String	 selectedEncoderID  = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	String	 selectedEncoderID  = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 
 	if (!encodeOnTheFly && !encodeToSingleFile && selectedEncoderID != "wave-enc" &&
 						      selectedEncoderID != "sndfile-enc") totalSamplesMultiplier += 1;
 
 	/* Check if we are performing verification.
 	 */
-	Bool	 verifyOutput	    = config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
+	Bool	 verifyOutput	    = configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
 	if (encodeLossless && verifyOutput) totalSamplesMultiplier += 1;
 
@@ -94,9 +97,7 @@ Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 
 Void BonkEnc::Progress::FixTotalSamples(const Track &trackInfo, const Track &nTrackInfo)
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	if (config->enable_console) return;
+	if (configuration->enable_console) return;
 
 	mutex.Lock();
 
@@ -156,9 +157,7 @@ Void BonkEnc::Progress::ResumeTotalProgress()
 
 Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int samplePosition)
 {
-	static BoCA::Config	*config = BoCA::Config::Get();
-
-	if (config->enable_console) return;
+	if (configuration->enable_console) return;
 
 	UnsignedInt64	 clockValue = S::System::System::Clock();
 
@@ -207,9 +206,7 @@ Void BonkEnc::Progress::UpdateProgressValues(const Track &trackInfo, Int sampleP
 
 Void BonkEnc::Progress::FinalizeTrackProgress(const Track &trackInfo)
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	if (config->enable_console) return;
+	if (configuration->enable_console) return;
 
 	mutex.Lock();
 

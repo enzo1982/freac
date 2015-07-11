@@ -15,7 +15,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::ConvertWorkerSingleFile::ConvertWorkerSingleFile(Encoder *iEncoder)
+BonkEnc::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Encoder *iEncoder) : ConvertWorker(iConfiguration)
 {
 	encoder	       = iEncoder;
 	encodedSamples = 0;
@@ -27,14 +27,13 @@ BonkEnc::ConvertWorkerSingleFile::~ConvertWorkerSingleFile()
 
 Int BonkEnc::ConvertWorkerSingleFile::Convert()
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	Registry	&boca	= Registry::Get();
+	Registry	&boca = Registry::Get();
 
 	/* Get config values.
 	 */
-	Bool	 verifyInput	= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
+	Bool	 verifyInput	= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
 
 	/* Setup conversion log.
 	 */
@@ -80,7 +79,7 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 	/* Create decoder.
 	 */
-	Decoder	*decoder = new Decoder();
+	Decoder	*decoder = new Decoder(configuration);
 
 	if (!decoder->Create(trackToConvert.origFilename, trackToConvert))
 	{
@@ -93,7 +92,7 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 	/* Create verifier.
 	 */
-	Verifier	*verifier = new Verifier();
+	Verifier	*verifier = new Verifier(configuration);
 
 	if (verifyInput && conversionStep == ConversionStepOnTheFly) verifier->Create(trackToConvert);
 

@@ -25,7 +25,7 @@ namespace BonkEnc
 
 			Int	 Convert();
 		public:
-				 ConvertWorkerSingleFile(Encoder *);
+				 ConvertWorkerSingleFile(const BoCA::Config *, Encoder *);
 				~ConvertWorkerSingleFile();
 		accessors:
 			Void	 SetEncodeChecksum(const String &nEncodeChecksum)  { encodeChecksum = nEncodeChecksum; }

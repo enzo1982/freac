@@ -13,9 +13,11 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::Verifier::Verifier()
+BonkEnc::Verifier::Verifier(const BoCA::Config *iConfiguration)
 {
-	verifier = NIL;
+	configuration = iConfiguration;
+
+	verifier      = NIL;
 }
 
 BonkEnc::Verifier::~Verifier()
@@ -35,6 +37,7 @@ Bool BonkEnc::Verifier::Create(const Track &track)
 
 	/* Activate verifier.
 	 */
+	verifier->SetConfiguration(configuration);
 	verifier->SetAudioTrackInfo(track);
 	verifier->Activate();
 

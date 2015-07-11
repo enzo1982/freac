@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,8 +14,6 @@
 #include <config.h>
 #include <dllinterfaces.h>
 
-#include <boca.h>
-
 using namespace smooth::GUI::Dialogs;
 
 BonkEnc::JobCheckForUpdates::JobCheckForUpdates(Bool iStartup)
@@ -29,7 +27,6 @@ BonkEnc::JobCheckForUpdates::~JobCheckForUpdates()
 
 Error BonkEnc::JobCheckForUpdates::Perform()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	i18n->SetContext("Updates");
@@ -40,18 +37,20 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 	/* Do not check for updates on first startup.
 	 */
-	if (startup && config->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 1)
+	if (startup && configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 1)
 	{
 		return Success();
 	}
 
 	/* Ask whether to check for updates on second startup.
 	 */
-	if (startup && config->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2 &&
-		      !config->GetIntValue(Config::CategorySettingsID, Config::SettingsUpdatesCheckedID, Config::SettingsUpdatesCheckedDefault))
+	if (startup && configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2 &&
+		      !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsUpdatesCheckedID, Config::SettingsUpdatesCheckedDefault))
 	{
 		if (QuickMessage(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?").Replace("%1", ::BonkEnc::BonkEnc::appName), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question) == Message::Button::No)
 		{
+			BoCA::Config	*config = BoCA::Config::Get();
+
 			config->SetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, False);
 
 			return Success();
@@ -65,9 +64,9 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 #ifdef __WIN32__
 	Void	*context = ex_eUpdate_CreateUpdateContext(::BonkEnc::BonkEnc::appLongName, ::BonkEnc::BonkEnc::version, ::BonkEnc::BonkEnc::updatePath);
 
-	if (config->configDir != NIL) ex_eUpdate_SetConfigFile(context, String(config->configDir).Append("eUpdate.xml"));
+	if (configuration->configDir != NIL) ex_eUpdate_SetConfigFile(context, String(configuration->configDir).Append("eUpdate.xml"));
 
-	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
+	String	 language = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
 
 	if (language != "internal")
 	{
@@ -85,7 +84,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 	SetText("Contacting update server...");
 	SetProgress(100);
 
-	Bool	 checkUpdates = config->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault);
+	Bool	 checkUpdates = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault);
 
 	if (ex_eUpdate_CheckForNewUpdates(context, !startup) > 0)
 	{
@@ -98,6 +97,8 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 		if (msgBox->GetButtonCode() == Message::Button::Yes)
 		{
+			BoCA::Config	*config = BoCA::Config::Get();
+
 			config->SetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, checkUpdates);
 			config->SaveSettings();
 
@@ -119,11 +120,13 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 			DeleteObject(msgBox);
 		}
-		else if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2)
+		else if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2)
 		{
 			QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information);
 		}
 	}
+
+	BoCA::Config	*config = BoCA::Config::Get();
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, checkUpdates);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsUpdatesCheckedID, True);

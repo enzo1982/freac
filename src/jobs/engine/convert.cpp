@@ -71,17 +71,16 @@ BonkEnc::JobConvert::~JobConvert()
 
 Error BonkEnc::JobConvert::Precheck()
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	Registry	&boca	= Registry::Get();
+	Registry	&boca = Registry::Get();
 
 	/* Get config values.
 	 */
-	Bool	 encodeToSingleFile    = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
-	Bool	 overwriteAllFiles     = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || config->enable_console;
+	Bool	 encodeToSingleFile    = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+	Bool	 overwriteAllFiles     = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || configuration->enable_console;
 
-	Bool	 writeToInputDirectory = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+	Bool	 writeToInputDirectory = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
 	/* When converting to a single file, check that all
 	 * files to be combined have the same sample format.
@@ -100,7 +99,7 @@ Error BonkEnc::JobConvert::Precheck()
 
 	/* Check if we have lossy tracks that would be converted to lossless.
 	 */
-	Bool	 doNotWarnAgain = !config->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault);
+	Bool	 doNotWarnAgain = !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault);
 
 	if (!doNotWarnAgain)
 	{
@@ -108,12 +107,14 @@ Error BonkEnc::JobConvert::Precheck()
 
 		/* Find out if we are encoding lossless.
 		 */
-		String			 encoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+		String			 encoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 		EncoderComponent	*encoder	= (EncoderComponent *) boca.CreateComponentByID(encoderID);
 		Bool			 encodeLossless = False;
 
 		if (encoder != NIL)
 		{
+			encoder->SetConfiguration(configuration);
+
 			encodeLossless = encoder->IsLossless();
 
 			boca.DeleteComponent(encoder);
@@ -135,6 +136,7 @@ Error BonkEnc::JobConvert::Precheck()
 		 */
 		if (haveLossyTracks)
 		{
+			BoCA::Config	*config = BoCA::Config::Get();
 			MessageDlg	 messageBox(i18n->TranslateString("You seem to be converting from a lossy to a lossless format.\n\nPlease be aware that quality loss cannot be undone, so this process\nwill not improve quality in any way, and most likely increase file size.\n\nWould you like to continue anyway?", "Messages"), i18n->TranslateString("Warning"), Message::Buttons::YesNo, Message::Icon::Warning, i18n->TranslateString("Do not display this warning again"), &doNotWarnAgain);
 
 			messageBox.ShowDialog();
@@ -224,29 +226,28 @@ Error BonkEnc::JobConvert::Perform()
 	 */
 	if (tracks.Length() == 0) { conversionRunning = False; return Success(); }
 
-	BoCA::Config	*config	= BoCA::Config::Get();
-	Registry	&boca	= Registry::Get();
+	Registry	&boca = Registry::Get();
 
 	/* Get config values.
 	 */
-	Bool	 enableParallel		= config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
-	Int	 numberOfThreads	= config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
+	Bool	 enableParallel		= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	Int	 numberOfThreads	= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
 
-	Bool	 encodeToSingleFile	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
-	Bool	 overwriteAllFiles	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || config->enable_console;
+	Bool	 encodeToSingleFile	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+	Bool	 overwriteAllFiles	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || configuration->enable_console;
 
-	Bool	 verifyOutput		= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
+	Bool	 verifyOutput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
-	String	 encoderOutputDirectory	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
-	Bool	 writeToInputDirectory	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+	String	 encoderOutputDirectory	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 writeToInputDirectory	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
-	Bool	 removeProcessedTracks	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsRemoveTracksID, Config::SettingsRemoveTracksDefault);
-	Bool	 addEncodedTracks	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, Config::SettingsAddEncodedTracksDefault);
+	Bool	 removeProcessedTracks	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsRemoveTracksID, Config::SettingsRemoveTracksDefault);
+	Bool	 addEncodedTracks	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, Config::SettingsAddEncodedTracksDefault);
 
-	Bool	 ripperEjectDisc	= config->GetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, Config::RipperEjectAfterRippingDefault);
+	Bool	 ripperEjectDisc	= configuration->GetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, Config::RipperEjectAfterRippingDefault);
 
-	Bool	 createPlaylist		= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
-	Bool	 createCueSheet		= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
+	Bool	 createPlaylist		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
+	Bool	 createCueSheet		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
 
 	/* Set number of threads if set to automatic mode.
 	 */
@@ -261,7 +262,7 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Setup playlist and cuesheet writers.
 	 */
-	String			 playlistID	    = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault);
+	String			 playlistID	    = configuration->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault);
 	PlaylistComponent	*playlist	    = (PlaylistComponent *) boca.CreateComponentByID(playlistID.Head(playlistID.FindLast("-")));
 	PlaylistComponent	*cuesheet	    = (PlaylistComponent *) boca.CreateComponentByID("cuesheet-playlist");
 
@@ -276,7 +277,7 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Setup progress indicators.
 	 */
-	Progress	*progress = new Progress();
+	Progress	*progress = new Progress(configuration);
 
 	progress->onTrackProgress.Connect(&onTrackProgress);
 	progress->onTotalProgress.Connect(&onTotalProgress);
@@ -288,7 +289,7 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Setup single file encoder.
 	 */
-	String	 selectedEncoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	String	 selectedEncoderID = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 	String	 activeEncoderID   = selectedEncoderID;
 
 	Track	 singleTrack;
@@ -320,7 +321,7 @@ Error BonkEnc::JobConvert::Perform()
 
 			/* Create encoder for single file output.
 			 */
-			singleFileEncoder = new Encoder();
+			singleFileEncoder = new Encoder(configuration);
 
 			if (!singleFileEncoder->Create(activeEncoderID, singleOutFile, singleTrack))
 			{
@@ -354,8 +355,8 @@ Error BonkEnc::JobConvert::Perform()
 	 */
 	Array<ConvertWorker *>	 workers;
 
-	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(singleFileEncoder));
-	else			for (Int i = 0; i < numberOfThreads; i++) workers.Add(new ConvertWorker());
+	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleFileEncoder));
+	else			for (Int i = 0; i < numberOfThreads; i++) workers.Add(new ConvertWorker(configuration));
 
 	foreach (ConvertWorker *worker, workers)
 	{
@@ -462,7 +463,7 @@ Error BonkEnc::JobConvert::Perform()
 
 				/* Remove track from joblist.
 				 */
-				if (removeProcessedTracks && !config->enable_console)
+				if (removeProcessedTracks && !configuration->enable_console)
 				{
 					BoCA::JobList		*joblist = BoCA::JobList::Get();
 					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
@@ -480,7 +481,7 @@ Error BonkEnc::JobConvert::Perform()
 
 				/* Add encoded track to joblist if requested.
 				 */
-				if (addEncodedTracks && !encodeToSingleFile && !config->enable_console)
+				if (addEncodedTracks && !encodeToSingleFile && !configuration->enable_console)
 				{
 					Array<String>	 files;
 
@@ -692,12 +693,12 @@ Error BonkEnc::JobConvert::Perform()
 
 		delete singleFileEncoder;
 
-		singleFileEncoder  = new Encoder();
+		singleFileEncoder  = new Encoder(configuration);
 		singleTrack.length = progress->GetTotalSamples();
 
 		/* Setup and start worker for verification.
 		 */
-		ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(singleFileEncoder);
+		ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleFileEncoder);
 
 		worker->onFinishTrack.Connect(&Progress::FinalizeTrackProgress, progress);
 		worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);

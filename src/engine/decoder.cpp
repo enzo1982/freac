@@ -20,14 +20,16 @@ using namespace BoCA::AS;
 Array<Threads::Mutex *>	 BonkEnc::Decoder::mutexes;
 Threads::Mutex		 BonkEnc::Decoder::managementMutex;
 
-BonkEnc::Decoder::Decoder()
+BonkEnc::Decoder::Decoder(const BoCA::Config *iConfiguration)
 {
-	stream	     = NIL;
-	decoder	     = NIL;
+	configuration = iConfiguration;
 
-	calculateMD5 = False;
+	stream	      = NIL;
+	decoder	      = NIL;
 
-	sampleOffset = 0;
+	calculateMD5  = False;
+
+	sampleOffset  = 0;
 }
 
 BonkEnc::Decoder::~Decoder()
@@ -89,6 +91,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 
 	trackInfo.origFilename = nFileName;
 
+	decoder->SetConfiguration(configuration);
 	decoder->SetAudioTrackInfo(trackInfo);
 
 	if (stream->AddFilter(decoder) == False)

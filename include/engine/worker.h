@@ -22,6 +22,8 @@ namespace BonkEnc
 	class ConvertWorker : public Threads::Thread
 	{
 		protected:
+			const BoCA::Config			*configuration;
+
 			BoCA::Track				 trackToConvert;
 			UnsignedInt64				 trackStartTicks;
 			Int64					 trackPosition;
@@ -41,7 +43,7 @@ namespace BonkEnc
 
 			virtual Int				 Convert();
 		public:
-								 ConvertWorker();
+								 ConvertWorker(const BoCA::Config *);
 			virtual					~ConvertWorker();
 
 			Int					 Pause(Bool);

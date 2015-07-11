@@ -24,6 +24,8 @@ namespace BonkEnc
 			static Array<Threads::Mutex *>	 mutexes;
 			static Threads::Mutex		 managementMutex;
 
+			const BoCA::Config		*configuration;
+
 			String				 fileName;
 			Int64				 sampleOffset;
 
@@ -35,7 +37,7 @@ namespace BonkEnc
 		public:
 			static Void			 FreeLockObjects();
 
-							 Decoder();
+							 Decoder(const BoCA::Config *);
 			virtual				~Decoder();
 
 			Bool				 Create(const String &, const BoCA::Track &);

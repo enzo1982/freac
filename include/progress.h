@@ -25,6 +25,8 @@ namespace BonkEnc
 
 			Window			*window;
 		protected:
+			const BoCA::Config	*configuration;
+
 			UnsignedInt64		 lastInvoked;
 
 			Int64			 totalSamples;
@@ -37,7 +39,7 @@ namespace BonkEnc
 			UnsignedInt64		 totalStartTicks;
 			UnsignedInt64		 totalPauseTicks;
 		public:
-						 Progress();
+						 Progress(const BoCA::Config *);
 						~Progress();
 
 			Void			 ComputeTotalSamples(const Array<BoCA::Track> &);

@@ -24,6 +24,8 @@ namespace BonkEnc
 			static Array<Threads::Mutex *>	 mutexes;
 			static Threads::Mutex		 managementMutex;
 
+			const BoCA::Config		*configuration;
+
 			IO::OutStream			*stream;
 			BoCA::AS::EncoderComponent	*encoder;
 
@@ -37,7 +39,7 @@ namespace BonkEnc
 		public:
 			static Void			 FreeLockObjects();
 
-							 Encoder();
+							 Encoder(const BoCA::Config *);
 			virtual				~Encoder();
 
 			Bool				 Create(const String &, const String &, const BoCA::Track &);

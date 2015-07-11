@@ -18,16 +18,18 @@ using namespace BoCA::AS;
 Array<Threads::Mutex *>	 BonkEnc::Encoder::mutexes;
 Threads::Mutex		 BonkEnc::Encoder::managementMutex;
 
-BonkEnc::Encoder::Encoder()
+BonkEnc::Encoder::Encoder(const BoCA::Config *iConfiguration)
 {
-	stream	     = NIL;
-	encoder      = NIL;
+	configuration = iConfiguration;
 
-	chapter      = 0;
-	bytes	     = 0;
-	offset	     = 0;
+	stream	      = NIL;
+	encoder       = NIL;
 
-	calculateMD5 = False;
+	chapter       = 0;
+	bytes	      = 0;
+	offset	      = 0;
+
+	calculateMD5  = False;
 }
 
 BonkEnc::Encoder::~Encoder()
@@ -86,6 +88,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 
 	/* Add encoder to stream.
 	 */
+	encoder->SetConfiguration(configuration);
 	encoder->SetAudioTrackInfo(album);
 
 	if (stream->AddFilter(encoder) == False)

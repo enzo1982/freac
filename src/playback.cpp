@@ -87,7 +87,8 @@ Void BonkEnc::Playback::Play(const Track &iTrack)
 
 Int BonkEnc::Playback::PlayThread()
 {
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
+	BoCA::Config	*config = BoCA::Config::Copy();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	/* Find system byte order.
 	 */
@@ -113,12 +114,13 @@ Int BonkEnc::Playback::PlayThread()
 		return Error();
 	}
 
+	output->SetConfiguration(config);
 	output->SetAudioTrackInfo(track);
 	output->Activate();
 
 	/* Create decoder.
 	 */
-	Decoder	*decoder = new Decoder();
+	Decoder	*decoder = new Decoder(config);
 
 	if (!decoder->Create(track.origFilename, track))
 	{
@@ -204,6 +206,8 @@ Int BonkEnc::Playback::PlayThread()
 	boca.DeleteComponent(output);
 
 	delete decoder;
+
+	BoCA::Config::Free(config);
 
 	/* Notify application about finished playback.
 	 */

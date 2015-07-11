@@ -15,9 +15,11 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::ConvertWorker::ConvertWorker()
+BonkEnc::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
 {
 	SetFlags(Threads::THREAD_WAITFLAG_START);
+
+	configuration	  = iConfiguration;
 
 	trackToConvert	  = NIL;
 	trackStartTicks	  = 0;
@@ -57,33 +59,24 @@ Int BonkEnc::ConvertWorker::Perform()
 
 Int BonkEnc::ConvertWorker::Convert()
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	Registry	&boca	= Registry::Get();
+	Registry	&boca = Registry::Get();
 
 	/* Get config values.
 	 */
-	Bool	 encodeOnTheFly		= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
-	Bool	 keepWaveFiles		= config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
+	Bool	 encodeOnTheFly		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
+	Bool	 keepWaveFiles		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
 
-	Bool	 verifyInput		= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
-	Bool	 verifyOutput		= config->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
+	Bool	 verifyInput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
+	Bool	 verifyOutput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
-	Bool	 writeToInputDirectory	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
-	Bool	 allowOverwriteSource	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault);
-
-#ifdef __APPLE__
-	Int	 sndFileFormat		= config->GetIntValue("SndFile", "Format", 0x020000);
-	Int	 sndFileSubFormat	= config->GetIntValue("SndFile", "SubFormat", 0x000000);
-#else
-	Int	 sndFileFormat		= config->GetIntValue("SndFile", "Format", 0x010000);
-	Int	 sndFileSubFormat	= config->GetIntValue("SndFile", "SubFormat", 0x000000);
-#endif
+	Bool	 writeToInputDirectory	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+	Bool	 allowOverwriteSource	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault);
 
 	/* Find encoder to use.
 	 */
-	String	 selectedEncoderID	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	String	 selectedEncoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 	String	 activeEncoderID	= selectedEncoderID;
 
 	/* We always convert on the fly when outputting simple audio files.
@@ -132,6 +125,8 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Setup intermediate encoder in non-on-the-fly mode
 		 */
+		BoCA::Config	*encoderConfig = BoCA::Config::Copy(configuration);
+
 		if (conversionStep == ConversionStepDecode)
 		{
 			activeEncoderID = "wave-enc";
@@ -140,8 +135,8 @@ Int BonkEnc::ConvertWorker::Convert()
 			{
 				activeEncoderID = "sndfile-enc";
 
-				config->SetIntValue("SndFile", "Format", 0x010000);
-				config->SetIntValue("SndFile", "SubFormat", 0x000000);
+				encoderConfig->SetIntValue("SndFile", "Format", 0x010000);
+				encoderConfig->SetIntValue("SndFile", "SubFormat", 0x000000);
 			}
 
 			out_filename.Append(".wav");
@@ -196,7 +191,7 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Create decoder.
 		 */
-		Decoder	*decoder = new Decoder();
+		Decoder	*decoder = new Decoder(configuration);
 
 		if (!decoder->Create(in_filename, trackToConvert))
 		{
@@ -209,7 +204,7 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Create encoder.
 		 */
-		Encoder	*encoder = new Encoder();
+		Encoder	*encoder = new Encoder(encoderConfig);
 
 		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToConvert))
 		{
@@ -223,7 +218,7 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Create verifier.
 		 */
-		Verifier	*verifier = new Verifier();
+		Verifier	*verifier = new Verifier(configuration);
 		Bool		 verify	  = False;
 
 		if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
@@ -320,17 +315,11 @@ Int BonkEnc::ConvertWorker::Convert()
 		delete decoder;
 		delete verifier;
 
+		BoCA::Config::Free(encoderConfig);
+
 		/* Delete output file if it doesn't look sane.
 		 */
 		if (File(out_filename).GetFileSize() <= 0 || cancel) File(out_filename).Delete();
-
-		/* Reset SndFile configuration after decoding.
-		 */
-		if (conversionStep == ConversionStepDecode && !boca.ComponentExists("wave-enc"))
-		{
-			config->SetIntValue("SndFile", "Format", sndFileFormat);
-			config->SetIntValue("SndFile", "SubFormat", sndFileSubFormat);
-		}
 
 		/* Delete input file if requested or not in on-the-fly mode.
 		 */
@@ -388,11 +377,9 @@ Int BonkEnc::ConvertWorker::Convert()
 
 Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder *encoder)
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
-
 	/* Get config values.
 	 */
-	Int	 ripperTimeout	 = config->GetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
+	Int	 ripperTimeout	 = configuration->GetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 
 	/* Find system byte order.
 	 */

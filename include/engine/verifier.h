@@ -21,9 +21,11 @@ namespace BonkEnc
 	class Verifier
 	{
 		protected:
+			const BoCA::Config		*configuration;
+
 			BoCA::AS::VerifierComponent	*verifier;
 		public:
-							 Verifier();
+							 Verifier(const BoCA::Config *);
 			virtual				~Verifier();
 
 			Bool				 Create(const BoCA::Track &);

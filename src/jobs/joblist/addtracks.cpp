@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,12 +16,10 @@
 
 #include <dialogs/cddb/query.h>
 
-#include <utilities.h>
 #include <config.h>
+#include <utilities.h>
 
 #include <support/autorelease.h>
-
-#include <boca.h>
 
 using namespace BoCA;
 using namespace BoCA::AS;
@@ -59,8 +57,7 @@ Bool BonkEnc::JobAddTracks::ReadyToRun()
 
 Error BonkEnc::JobAddTracks::Perform()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	CDDBInfo	 cdInfo;
 	Bool		 cddbQueried = False;
@@ -146,16 +143,16 @@ Error BonkEnc::JobAddTracks::Perform()
 
 		/* Query CDDB and update track info.
 		 */
-		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault))
+		if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault))
 		{
 			if (!cddbQueried)
 			{
-				if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(track.discid);
+				if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(track.discid);
 
 				if (cdInfo == NIL)
 				{
-					if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
-					    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
+					if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
+					    configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 					{
 						const Info	&info = track.GetInfo();
 						cddbQueryDlg	*dlg  = new cddbQueryDlg(CDDB::QueryStringFromMCDI(info.mcdi));
