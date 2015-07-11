@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,7 +11,7 @@
 #ifndef H_FREAC_JOB
 #define H_FREAC_JOB
 
-#include <smooth.h>
+#include <boca.h>
 
 using namespace smooth;
 using namespace smooth::GUI;
@@ -39,6 +39,8 @@ namespace BonkEnc
 
 			static Array<Job *>		 all;
 		protected:
+			BoCA::Config			*configuration;
+
 			Array<String>			 errors;
 			Array<String>			 warnings;
 		public:

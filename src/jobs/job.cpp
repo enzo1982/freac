@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,7 +11,6 @@
 #include <jobs/job.h>
 #include <dialogs/error.h>
 
-#include <boca.h>
 #include <time.h>
 
 Array<BonkEnc::Job *>		 BonkEnc::Job::scheduled;
@@ -31,6 +30,8 @@ BonkEnc::Job::Job() : ListEntry("Job")
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	i18n->SetContext("Jobs");
+
+	configuration	= BoCA::Config::Copy();
 
 	progressLabel	= new Text(i18n->TranslateString("%1:", "Characters").Replace("%1", i18n->TranslateString("Progress")), Point(7, 23));
 
@@ -79,6 +80,8 @@ BonkEnc::Job::Job() : ListEntry("Job")
 
 BonkEnc::Job::~Job()
 {
+	BoCA::Config::Free(configuration);
+
 	scheduled.Remove(GetHandle());
 	planned.Remove(GetHandle());
 	running.Remove(GetHandle());
