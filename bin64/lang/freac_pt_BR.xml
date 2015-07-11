@@ -382,28 +382,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">A codificação está ativa! Deseja realmente sair?</entry>
-      <entry id="7001" string="Currently encoding">Codificando</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Não se pode mudar as opções durante a codificação!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Drivers ASPI não puderam ser carregados! Extração de CD desabilitada!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Não consegue abrir o arquivo: %1&#10;&#10;Erro: %2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Não se pode tocar um arquivo durante a codificação!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Não se pode codificar durante a reprodução de um arquivo!</entry>
-      <entry id="7007" string="Delete original files after encoding">Apagar arquivos originais após codificação</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opção irá apagar os arquivos originais&#10;depois da codificação! Tem certeza?</entry>
-      <entry id="7009" string="File already exists">Arquivo já existe</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">O arquivo %1&#10;já existe! Quer sobrescrevê-lo?</entry>
-      <entry id="7011" string="Overwrite all further files">Sobrescreva todos os demais arquivos</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suporte CDDB está inativo! Ative o suporte CDDB&#10;local ou remoto no diálogo de configuração.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB remoto está inativo! Ative o&#10;CDDB no diálogo de configuração.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">O acesso ao drive de CD foi bloqueado pelo Windows.&#10;&#10;Contate o administrador do sistema para permitir&#10;acesso ao drive de CD-ROM.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Sem acesso ao arquivo: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Erro de criação do arquivo: %1</entry>
-      <entry id="7017" string="File not found">Arquivo não encontrado</entry>
-      <entry id="7018" string="Unknown file type">Tipo de arquivo desconhecido</entry>
-      <entry id="7019" string="Unsupported audio format">Formatro de áudio não suportado</entry>
-      <entry id="7020" string="Unknown error">Erro desconhecido</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Os arquivos selecionados não podem ser combinados&#10;em um único arquivo devido às taxas diferentes.&#10;&#10;Primeiro converta todos os arquivos para a mesma&#10;taxa de amostragem.</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">A codificação está ativa! Deseja realmente sair?</entry>
+      <entry id="7001" string="Currently converting">Codificando</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Drivers ASPI não puderam ser carregados! Extração de CD desabilitada!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Não consegue abrir o arquivo: %1&#10;&#10;Erro: %2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Não se pode tocar um arquivo durante a codificação!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Não se pode codificar durante a reprodução de um arquivo!</entry>
+      <entry id="7006" string="Delete original files after encoding">Apagar arquivos originais após codificação</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opção irá apagar os arquivos originais&#10;depois da codificação! Tem certeza?</entry>
+      <entry id="7008" string="File already exists">Arquivo já existe</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">O arquivo %1&#10;já existe! Quer sobrescrevê-lo?</entry>
+      <entry id="7010" string="Overwrite all further files">Sobrescreva todos os demais arquivos</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suporte CDDB está inativo! Ative o suporte CDDB&#10;local ou remoto no diálogo de configuração.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB remoto está inativo! Ative o&#10;CDDB no diálogo de configuração.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">O acesso ao drive de CD foi bloqueado pelo Windows.&#10;&#10;Contate o administrador do sistema para permitir&#10;acesso ao drive de CD-ROM.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Sem acesso ao arquivo: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Erro de criação do arquivo: %1</entry>
+      <entry id="7016" string="File not found">Arquivo não encontrado</entry>
+      <entry id="7017" string="Unknown file type">Tipo de arquivo desconhecido</entry>
+      <entry id="7018" string="Unsupported audio format">Formatro de áudio não suportado</entry>
+      <entry id="7019" string="Unknown error">Erro desconhecido</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Os arquivos selecionados não podem ser combinados&#10;em um único arquivo devido às taxas diferentes.&#10;&#10;Primeiro converta todos os arquivos para a mesma&#10;taxa de amostragem.</entry>
     </section>
 
     <section name="Dialogs">

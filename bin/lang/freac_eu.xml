@@ -383,28 +383,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Kodeaketa haria oraindik ekinean dago! Egitan nahi duzu uztea?</entry>
-      <entry id="7001" string="Currently encoding">Orain kodeatzen</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Ezin dira ezarpenak aldatu kodeaketan zehar!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Ezinezkoa ASPI gidatzaileak gertatzea! CD erauzketa ezgaituta!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Ezin da agiri bat irakurri kodeaketan zehar!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Ezin da kodeaketa hasi agiri bat irakurtzeraoan!</entry>
-      <entry id="7007" string="Delete original files after encoding">Ezabatu jatorrizko agiriak kodeatu ondoren</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aukera honek jatorrizko agiriak ezabatuko ditu zure&#10;ordenagailutik kodeaketa garapenaren ondoren!&#10;&#10;Zihur zaude eginkizun hau gaitzea nahi duzula?</entry>
-      <entry id="7009" string="File already exists">Agiria badago jadanik</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">%1 irteera agiria jadanik badago!&#10;Gainidaztea nahi duzu?</entry>
-      <entry id="7011" string="Overwrite all further files">Gainidatzi gainontzeko agiri guztiak</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB sostengua ezgaituta dago! Mesedez gaitu tokiko&#10;edo hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Hurreneko CDDB sostengua ezgaituta! Mesedez gaitu&#10;hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows-ek ukatu egin du CD-ROM gidagailuetarako sarbidea.&#10;&#10;Mesedez jarri harremanetan zure sistemaren administratzailearekin&#10;CD-ROM gidagailura sarbide zuzena izatea bermatzeko.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Ez dago sarbiderik sarrera agirira: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Ezin da irteera agiria sortu: %1</entry>
-      <entry id="7017" string="File not found">Agiria ez da aurkitu</entry>
-      <entry id="7018" string="Unknown file type">Agiri mota ezezaguna</entry>
-      <entry id="7019" string="Unsupported audio format">Audio heuskarri sostengu gabea</entry>
-      <entry id="7020" string="Unknown error">Akats ezezaguna</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Hautaturiko agiriak ezin dira irteera agiri bakar batean&#10;nahastu laginketa heuskarri ezberdinak dituztelako.&#10;&#10;Mesedez bihurtu agiriak laginketa heuskarri berdinera lehenik.</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Kodeaketa haria oraindik ekinean dago! Egitan nahi duzu uztea?</entry>
+      <entry id="7001" string="Currently converting">Orain kodeatzen</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Ezinezkoa ASPI gidatzaileak gertatzea! CD erauzketa ezgaituta!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Ezin da agiri bat irakurri kodeaketan zehar!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Ezin da kodeaketa hasi agiri bat irakurtzeraoan!</entry>
+      <entry id="7006" string="Delete original files after encoding">Ezabatu jatorrizko agiriak kodeatu ondoren</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aukera honek jatorrizko agiriak ezabatuko ditu zure&#10;ordenagailutik kodeaketa garapenaren ondoren!&#10;&#10;Zihur zaude eginkizun hau gaitzea nahi duzula?</entry>
+      <entry id="7008" string="File already exists">Agiria badago jadanik</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">%1 irteera agiria jadanik badago!&#10;Gainidaztea nahi duzu?</entry>
+      <entry id="7010" string="Overwrite all further files">Gainidatzi gainontzeko agiri guztiak</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB sostengua ezgaituta dago! Mesedez gaitu tokiko&#10;edo hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Hurreneko CDDB sostengua ezgaituta! Mesedez gaitu&#10;hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows-ek ukatu egin du CD-ROM gidagailuetarako sarbidea.&#10;&#10;Mesedez jarri harremanetan zure sistemaren administratzailearekin&#10;CD-ROM gidagailura sarbide zuzena izatea bermatzeko.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Ez dago sarbiderik sarrera agirira: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Ezin da irteera agiria sortu: %1</entry>
+      <entry id="7016" string="File not found">Agiria ez da aurkitu</entry>
+      <entry id="7017" string="Unknown file type">Agiri mota ezezaguna</entry>
+      <entry id="7018" string="Unsupported audio format">Audio heuskarri sostengu gabea</entry>
+      <entry id="7019" string="Unknown error">Akats ezezaguna</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Hautaturiko agiriak ezin dira irteera agiri bakar batean&#10;nahastu laginketa heuskarri ezberdinak dituztelako.&#10;&#10;Mesedez bihurtu agiriak laginketa heuskarri berdinera lehenik.</entry>
     </section>
 
     <section name="Dialogs">

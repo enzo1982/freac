@@ -427,29 +427,28 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Proces kódování ještě běží! Chcete přesto program ukončit?</entry>
-      <entry id="7001" string="Currently encoding">Proces kódování je ještě aktivní</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Během kódování nemohou být žádná nastavení změněna</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Nemohu načíst ASPI ovladače! Ripování CD deaktivováno!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Nemohu přehrát soubor při jeho kódování!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Nemohu kódovat při přehrávání souboru!</entry>
-      <entry id="7007" string="Delete original files after encoding">Po kódování smazat původní soubory</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tato volba smaže originální soubory po kódování z PC.&#10;&#10;Jste si jistý, že chcete pokračovat ve smazání souborů?</entry>
-      <entry id="7009" string="File already exists">soubor už existuje</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupní soubor %1&#10;již existuje! Chcete jej přepsat?</entry>
-      <entry id="7011" string="Overwrite all further files">Přepsat všechny další soubory</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povolte lokální&#10;nebo vzdálenou CDDB podporu v dialogu Volby.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdálená CDDB podpora je vypnutá! Prosím povolte&#10;vzdálenou CDDB podporu v dialogu Volby.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Přístup k CD-ROM mechanice byl Windows zamítnut.&#10;&#10;Prosím, kontaktujte vašeho systémového administrátora pro&#10;získaní přístupu k CD-ROM mechanice.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Nejde přistupovat k souboru: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Nejde vytvořit soubor: %1</entry>
-      <entry id="7017" string="File not found">Soubor nebyl nalezen</entry>
-      <entry id="7018" string="Unknown file type">Neznámý typ souboru</entry>
-      <entry id="7019" string="Unsupported audio format">Nepodporovaný audio formát</entry>
-      <entry id="7020" string="Unknown error">Neznámá chyba</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Vybrané soubory nelze kombinovat do jediného výstupní soubor z důvodu různých vzorkovacích formátů.&#10;&#10;Prosím překonvertujte nejdříve všechny soubory na stejný vzorkovací formát.</entry>
-      <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1">Žádný konfigurační dialog pro:&#10;&#10;%1</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Proces kódování ještě běží! Chcete přesto program ukončit?</entry>
+      <entry id="7001" string="Currently converting">Proces kódování je ještě aktivní</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Nemohu načíst ASPI ovladače! Ripování CD deaktivováno!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Nemohu přehrát soubor při jeho kódování!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Nemohu kódovat při přehrávání souboru!</entry>
+      <entry id="7006" string="Delete original files after encoding">Po kódování smazat původní soubory</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tato volba smaže originální soubory po kódování z PC.&#10;&#10;Jste si jistý, že chcete pokračovat ve smazání souborů?</entry>
+      <entry id="7008" string="File already exists">soubor už existuje</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupní soubor %1&#10;již existuje! Chcete jej přepsat?</entry>
+      <entry id="7010" string="Overwrite all further files">Přepsat všechny další soubory</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povolte lokální&#10;nebo vzdálenou CDDB podporu v dialogu Volby.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdálená CDDB podpora je vypnutá! Prosím povolte&#10;vzdálenou CDDB podporu v dialogu Volby.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Přístup k CD-ROM mechanice byl Windows zamítnut.&#10;&#10;Prosím, kontaktujte vašeho systémového administrátora pro&#10;získaní přístupu k CD-ROM mechanice.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Nejde přistupovat k souboru: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Nejde vytvořit soubor: %1</entry>
+      <entry id="7016" string="File not found">Soubor nebyl nalezen</entry>
+      <entry id="7017" string="Unknown file type">Neznámý typ souboru</entry>
+      <entry id="7018" string="Unsupported audio format">Nepodporovaný audio formát</entry>
+      <entry id="7019" string="Unknown error">Neznámá chyba</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Vybrané soubory nelze kombinovat do jediného výstupní soubor z důvodu různých vzorkovacích formátů.&#10;&#10;Prosím překonvertujte nejdříve všechny soubory na stejný vzorkovací formát.</entry>
+      <entry id="7021" string="No configuration dialog available for:&#10;&#10;%1">Žádný konfigurační dialog pro:&#10;&#10;%1</entry>
     </section>
 
     <section name="Dialogs">

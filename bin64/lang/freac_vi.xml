@@ -382,28 +382,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Quá trình chuyển mã vẫn đang chạy, bạn có thực sự muốn thoát?</entry>
-      <entry id="7001" string="Currently encoding">Đang chuyển mã hiện tại</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Không thể thay đổi thiết lập khi chuyển mã!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Không thể tải driver của ASPI! Việc rip đĩa CD bị vô hiệu!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Không thể mở file: %1&#10;&#10;Error: %2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Không thể chơi tập tin khi đang chuyển mã!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Không thể chuyển mã khi đang chơi tập tin!</entry>
-      <entry id="7007" string="Delete original files after encoding">Xóa file gốc sau khi chuyển mã</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Phần lựa chọn này sẽ xóa tập tin gốc khỏi hệ thông sau&#10;khi quá trình chuyển mã hoàn tất!&#10;&#10;Bạn có thực sự muốn kích hoạt tính năng&#10;này không?</entry>
-      <entry id="7009" string="File already exists">Tập tin đó đã tồn tại</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Tập tin xuất ra %1!&#10;Do you want to overwrite it?</entry>
-      <entry id="7011" string="Overwrite all further files">Ghi đè lên các tập tin sau đó</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Hỗ trợ CDDB bị tạm khóa! Hãy bật hỗ trợ từ xa&#10;của CDDB hoặc nội tuyến trong khung&#10;chỉnh sửa.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Điều khiển từ xa của CDDB bị vô hiệu!&#10;Hãy bật chế độ điều khiển từ xa của CDDB&#10;từ phần tùy chỉnh.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Việc truy cập vào ổ đĩa CD-ROM bị từ chối.&#10;&#10;Hãy liên hệ người quản trị hệ thống nhằm cho phép&#10;bạn quyền được truy cập sử dụng ổ đĩa.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Không thể xử lý tập tin nhập vào: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Không thể tạo tập tin xuất ra: %1</entry>
-      <entry id="7017" string="File not found">Không tìm thấy file</entry>
-      <entry id="7018" string="Unknown file type">Không biết dạng file</entry>
-      <entry id="7019" string="Unsupported audio format">Định dạng audio không được hỗ trợ</entry>
-      <entry id="7020" string="Unknown error">Lỗi không biết</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Các file được chọn không thể nối lại với nhau.&#10;Sample formats for the files are different.&#10;&#10;Please convert all files to the same sample format first.</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Quá trình chuyển mã vẫn đang chạy, bạn có thực sự muốn thoát?</entry>
+      <entry id="7001" string="Currently converting">Đang chuyển mã hiện tại</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Không thể tải driver của ASPI! Việc rip đĩa CD bị vô hiệu!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Không thể mở file: %1&#10;&#10;Error: %2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Không thể chơi tập tin khi đang chuyển mã!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Không thể chuyển mã khi đang chơi tập tin!</entry>
+      <entry id="7006" string="Delete original files after encoding">Xóa file gốc sau khi chuyển mã</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Phần lựa chọn này sẽ xóa tập tin gốc khỏi hệ thông sau&#10;khi quá trình chuyển mã hoàn tất!&#10;&#10;Bạn có thực sự muốn kích hoạt tính năng&#10;này không?</entry>
+      <entry id="7008" string="File already exists">Tập tin đó đã tồn tại</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Tập tin xuất ra %1!&#10;Do you want to overwrite it?</entry>
+      <entry id="7010" string="Overwrite all further files">Ghi đè lên các tập tin sau đó</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Hỗ trợ CDDB bị tạm khóa! Hãy bật hỗ trợ từ xa&#10;của CDDB hoặc nội tuyến trong khung&#10;chỉnh sửa.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Điều khiển từ xa của CDDB bị vô hiệu!&#10;Hãy bật chế độ điều khiển từ xa của CDDB&#10;từ phần tùy chỉnh.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Việc truy cập vào ổ đĩa CD-ROM bị từ chối.&#10;&#10;Hãy liên hệ người quản trị hệ thống nhằm cho phép&#10;bạn quyền được truy cập sử dụng ổ đĩa.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Không thể xử lý tập tin nhập vào: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Không thể tạo tập tin xuất ra: %1</entry>
+      <entry id="7016" string="File not found">Không tìm thấy file</entry>
+      <entry id="7017" string="Unknown file type">Không biết dạng file</entry>
+      <entry id="7018" string="Unsupported audio format">Định dạng audio không được hỗ trợ</entry>
+      <entry id="7019" string="Unknown error">Lỗi không biết</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Các file được chọn không thể nối lại với nhau.&#10;Sample formats for the files are different.&#10;&#10;Please convert all files to the same sample format first.</entry>
     </section>
 
     <section name="Dialogs">

@@ -164,6 +164,7 @@ Geschichte
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
+		- Möglichkeit zum Bearbeiten der Konfiguration während der Konvertierung hinzugefügt
 		- Untersützung für Verifikation von verlustfreien Ausgabedateien hinzugefügt
 		- Einfachen Tag-Editor hinzugefügt
 		- Video-Downloader-Erweiterung hinzugefügt

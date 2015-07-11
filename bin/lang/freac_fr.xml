@@ -382,28 +382,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">La tâche d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
-      <entry id="7001" string="Currently encoding">Encodage en cours</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Impossible de modifier les paramètres lors de l'encodage !</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Impossible de charger les pilotes ASPI ! Extraction du CD désactivée !</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Impossible d'ouvrir le fichier : %1&#10;&#10;%2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Impossible de lire un fichier lors de l'encodage !</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Impossible de lancer l'encodage lorsqu'un fichier est en cours de lecture !</entry>
-      <entry id="7007" string="Delete original files after encoding">Supprimer fichiers initiaux après encodage</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Cette option va supprimer les fichiers initiaux après leur&#10;encodage ! Voulez-vous vraiment continuer ?</entry>
-      <entry id="7009" string="File already exists">Le fichier existe déjà.</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Le fichier de sortie %1&#10;existe déjà ! Voulez-vous le remplacer ?</entry>
-      <entry id="7011" string="Overwrite all further files">Ecraser tous les autres fichiers</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB est désactivée ! Activez la prise en charge locale ou&#10;distante dans la boîte de dialogue de configuration.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB distante est désactivée ! Activez la prise en charge&#10;distante dans la boîte de dialogue de configuration.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows a refusé l'accès aux lecteurs de CD-ROM.&#10;&#10;Adressez-vous à votre administrateur système pour&#10;obtenir le droit d'accès au lecteur de CD-ROM.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Impossible d'accéder au fichier d'entrée : %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Impossible d'accéder au fichier de sortie : %1</entry>
-      <entry id="7017" string="File not found">Fichier non trouvé</entry>
-      <entry id="7018" string="Unknown file type">Type de fichier inconnu</entry>
-      <entry id="7019" string="Unsupported audio format">Format audio non supporté</entry>
-      <entry id="7020" string="Unknown error">Erreur inconnue</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Les fichiers sélectionnés ne peuvent être combinés en&#10;un seul fichier de sortie parce que les formats sont différents.&#10;&#10;Veuillez d'abord convertir tous les fichiers au même format.</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">La tâche d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
+      <entry id="7001" string="Currently converting">Encodage en cours</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Impossible de charger les pilotes ASPI ! Extraction du CD désactivée !</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Impossible d'ouvrir le fichier : %1&#10;&#10;%2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Impossible de lire un fichier lors de l'encodage !</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Impossible de lancer l'encodage lorsqu'un fichier est en cours de lecture !</entry>
+      <entry id="7006" string="Delete original files after encoding">Supprimer fichiers initiaux après encodage</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Cette option va supprimer les fichiers initiaux après leur&#10;encodage ! Voulez-vous vraiment continuer ?</entry>
+      <entry id="7008" string="File already exists">Le fichier existe déjà.</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Le fichier de sortie %1&#10;existe déjà ! Voulez-vous le remplacer ?</entry>
+      <entry id="7010" string="Overwrite all further files">Ecraser tous les autres fichiers</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB est désactivée ! Activez la prise en charge locale ou&#10;distante dans la boîte de dialogue de configuration.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB distante est désactivée ! Activez la prise en charge&#10;distante dans la boîte de dialogue de configuration.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows a refusé l'accès aux lecteurs de CD-ROM.&#10;&#10;Adressez-vous à votre administrateur système pour&#10;obtenir le droit d'accès au lecteur de CD-ROM.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Impossible d'accéder au fichier d'entrée : %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Impossible d'accéder au fichier de sortie : %1</entry>
+      <entry id="7016" string="File not found">Fichier non trouvé</entry>
+      <entry id="7017" string="Unknown file type">Type de fichier inconnu</entry>
+      <entry id="7018" string="Unsupported audio format">Format audio non supporté</entry>
+      <entry id="7019" string="Unknown error">Erreur inconnue</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Les fichiers sélectionnés ne peuvent être combinés en&#10;un seul fichier de sortie parce que les formats sont différents.&#10;&#10;Veuillez d'abord convertir tous les fichiers au même format.</entry>
     </section>
 
     <section name="Dialogs">

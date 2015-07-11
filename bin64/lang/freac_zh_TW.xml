@@ -383,28 +383,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">編碼執行緒正在執行！您確定要結束嗎？</entry>
-      <entry id="7001" string="Currently encoding">目前正在編碼</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">無法在編碼過程中變更設定！</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入 ASPI 驅動程式！CD 音軌提取功能已停用！</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案： %1&#10;&#10;錯誤： %2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">無法在編碼過程中播放檔案！</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">無法在播放檔案過程中進行編碼！</entry>
-      <entry id="7007" string="Delete original files after encoding">編碼完成後刪除原始檔案</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">此選項將會在編碼處理完成後移除電腦內的原始檔案！&#10;&#10;您確定要使用此功能嗎？</entry>
-      <entry id="7009" string="File already exists">檔案已經存在</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">輸出檔案 %1&#10;已經存在！您想要將其覆寫嗎？</entry>
-      <entry id="7011" string="Overwrite all further files">覆寫之後所有的檔案</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB 支援已停用！請在組態對話框中&#10;啟用本地或遠端 CDDB 支援。</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">遠端 CDDB 支援已停用！請在組態對話框中&#10;啟用遠端 CDDB 支援。</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">存取 CD-ROM 光碟機被 Windows 拒絕。&#10;&#10;請聯絡您的系統管理員以便&#10;取得存取 CD-ROM 光碟機的權限。</entry>
-      <entry id="7015" string="Cannot access input file: %1">無法存取輸入檔案： %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">無法建立輸出檔案： %1</entry>
-      <entry id="7017" string="File not found">找不到檔案</entry>
-      <entry id="7018" string="Unknown file type">未知檔案類型</entry>
-      <entry id="7019" string="Unsupported audio format">未支援的音訊格式</entry>
-      <entry id="7020" string="Unknown error">未知錯誤</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">選擇的檔案因採用不同的取樣格式而無法&#10;被合併為單一輸出檔案。&#10;&#10;請先將所有的檔案轉換為相同取樣格式。</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">編碼執行緒正在執行！您確定要結束嗎？</entry>
+      <entry id="7001" string="Currently converting">目前正在編碼</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入 ASPI 驅動程式！CD 音軌提取功能已停用！</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案： %1&#10;&#10;錯誤： %2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">無法在編碼過程中播放檔案！</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">無法在播放檔案過程中進行編碼！</entry>
+      <entry id="7006" string="Delete original files after encoding">編碼完成後刪除原始檔案</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">此選項將會在編碼處理完成後移除電腦內的原始檔案！&#10;&#10;您確定要使用此功能嗎？</entry>
+      <entry id="7008" string="File already exists">檔案已經存在</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">輸出檔案 %1&#10;已經存在！您想要將其覆寫嗎？</entry>
+      <entry id="7010" string="Overwrite all further files">覆寫之後所有的檔案</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB 支援已停用！請在組態對話框中&#10;啟用本地或遠端 CDDB 支援。</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">遠端 CDDB 支援已停用！請在組態對話框中&#10;啟用遠端 CDDB 支援。</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">存取 CD-ROM 光碟機被 Windows 拒絕。&#10;&#10;請聯絡您的系統管理員以便&#10;取得存取 CD-ROM 光碟機的權限。</entry>
+      <entry id="7014" string="Cannot access input file: %1">無法存取輸入檔案： %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">無法建立輸出檔案： %1</entry>
+      <entry id="7016" string="File not found">找不到檔案</entry>
+      <entry id="7017" string="Unknown file type">未知檔案類型</entry>
+      <entry id="7018" string="Unsupported audio format">未支援的音訊格式</entry>
+      <entry id="7019" string="Unknown error">未知錯誤</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">選擇的檔案因採用不同的取樣格式而無法&#10;被合併為單一輸出檔案。&#10;&#10;請先將所有的檔案轉換為相同取樣格式。</entry>
     </section>
 
     <section name="Dialogs">

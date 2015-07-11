@@ -887,6 +887,8 @@ Void BonkEnc::LayerJoblist::FillMenus()
 
 Void BonkEnc::LayerJoblist::UpdateEncoderText()
 {
+	if (!combo_encoder->IsActive()) return;
+
 	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();
 	Component	*component = boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
@@ -1326,6 +1328,8 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 	combo_encoder->Activate();
 
+	UpdateEncoderText();
+
 	/* Shutdown system if requested.
 	 */
 	if (success && Config::Get()->shutdownAfterEncoding) S::System::System::Shutdown();
@@ -1546,8 +1550,6 @@ Void BonkEnc::LayerJoblist::UpdateOutputDir()
 
 Void BonkEnc::LayerJoblist::OnSelectDir()
 {
-	if (!Config::Get()->CanChangeConfig()) return;
-
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

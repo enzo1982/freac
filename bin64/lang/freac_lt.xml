@@ -382,28 +382,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Kodavimo veiksmas vis dar veikia! Ar tikrai norite išeiti?</entry>
-      <entry id="7001" string="Currently encoding">Šiuo metu koduojama</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Negalima keisti nuostatų per kodavimą!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Neįmanoma įkelti ASPI tvarkyklių! CD skleidimas išjungtas!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;Klaida: %2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Negalima groti failo per kodavimą!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Negalima pradėti kodavimo, kol grojamas failas!</entry>
-      <entry id="7007" string="Delete original files after encoding">Po kodavimo ištrinti originalo failus</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Po perkodavimo originalūs failai bus ištrinti.&#10;Ar tikrai norite tęsti?</entry>
-      <entry id="7009" string="File already exists">Failas jau egzistuoja</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Išvesties failas %1&#10;jau egzistuoja! Ar norite jį perrašyti?</entry>
-      <entry id="7011" string="Overwrite all further files">Perrašyti visus ankstesnius failus</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."> Vietinės CDDB palaikymas išjungtas! Prašome&#10;įjungti vietinės CDDB palaikymą konfigūracijos kortelėje.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Nuotolinės CDDB palaikymas išjungtas! Prašome&#10;įjungti nuotolinės CDDB palaikymą konfigūracijos kortelėje.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows uždraudė priėjimą prie CD-ROM diskasukių.&#10;&#10;Prašome susisiekti su Jūsū sistemos administrtoriumi,&#10;kad jis užtikrintų priėjimą prie CD-ROM diskasukių.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Neįmanoma pasiekti įvesties failo: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Neįmanoma sukurti išvesties failo: %1</entry>
-      <entry id="7017" string="File not found">Failas nerastas</entry>
-      <entry id="7018" string="Unknown file type">Nežinomas failo tipas</entry>
-      <entry id="7019" string="Unsupported audio format">Nepalaikomas audio formatas</entry>
-      <entry id="7020" string="Unknown error">Nežinoma klaida</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Pažymėtieji failai negali būti sujungti į vieną&#10;išvesties failą, nes jų formatai skiriasi.&#10;&#10;Prašome visų pirma perkoduoti visus failus į vieną formatą.</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Kodavimo veiksmas vis dar veikia! Ar tikrai norite išeiti?</entry>
+      <entry id="7001" string="Currently converting">Šiuo metu koduojama</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Neįmanoma įkelti ASPI tvarkyklių! CD skleidimas išjungtas!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;Klaida: %2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Negalima groti failo per kodavimą!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Negalima pradėti kodavimo, kol grojamas failas!</entry>
+      <entry id="7006" string="Delete original files after encoding">Po kodavimo ištrinti originalo failus</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Po perkodavimo originalūs failai bus ištrinti.&#10;Ar tikrai norite tęsti?</entry>
+      <entry id="7008" string="File already exists">Failas jau egzistuoja</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Išvesties failas %1&#10;jau egzistuoja! Ar norite jį perrašyti?</entry>
+      <entry id="7010" string="Overwrite all further files">Perrašyti visus ankstesnius failus</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."> Vietinės CDDB palaikymas išjungtas! Prašome&#10;įjungti vietinės CDDB palaikymą konfigūracijos kortelėje.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Nuotolinės CDDB palaikymas išjungtas! Prašome&#10;įjungti nuotolinės CDDB palaikymą konfigūracijos kortelėje.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows uždraudė priėjimą prie CD-ROM diskasukių.&#10;&#10;Prašome susisiekti su Jūsū sistemos administrtoriumi,&#10;kad jis užtikrintų priėjimą prie CD-ROM diskasukių.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Neįmanoma pasiekti įvesties failo: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Neįmanoma sukurti išvesties failo: %1</entry>
+      <entry id="7016" string="File not found">Failas nerastas</entry>
+      <entry id="7017" string="Unknown file type">Nežinomas failo tipas</entry>
+      <entry id="7018" string="Unsupported audio format">Nepalaikomas audio formatas</entry>
+      <entry id="7019" string="Unknown error">Nežinoma klaida</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Pažymėtieji failai negali būti sujungti į vieną&#10;išvesties failą, nes jų formatai skiriasi.&#10;&#10;Prašome visų pirma perkoduoti visus failus į vieną formatą.</entry>
     </section>
 
     <section name="Dialogs">

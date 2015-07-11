@@ -499,32 +499,31 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?"/>
-      <entry id="7001" string="Currently encoding"/>
-      <entry id="7002" string="Cannot change settings while encoding!"/>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!"/>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2"/>
-      <entry id="7005" string="Cannot play a file while encoding!"/>
-      <entry id="7006" string="Cannot start encoding while playing a file!"/>
-      <entry id="7007" string="Delete original files after encoding"/>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
-      <entry id="7009" string="File already exists"/>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
-      <entry id="7011" string="Overwrite all further files"/>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
-      <entry id="7015" string="Cannot access input file: %1"/>
-      <entry id="7016" string="Cannot create output file: %1"/>
-      <entry id="7017" string="File not found"/>
-      <entry id="7018" string="Unknown file type"/>
-      <entry id="7019" string="Unsupported audio format"/>
-      <entry id="7020" string="Unknown error"/>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
-      <entry id="7022" string="No configuration dialog available for:&#10;&#10;%1"/>
-      <entry id="7023" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
-      <entry id="7024" string="A conversion process is already active!"/>
-      <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?"/>
+      <entry id="7001" string="Currently converting"/>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!"/>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2"/>
+      <entry id="7004" string="Cannot play a file while encoding!"/>
+      <entry id="7005" string="Cannot start encoding while playing a file!"/>
+      <entry id="7006" string="Delete original files after encoding"/>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
+      <entry id="7008" string="File already exists"/>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
+      <entry id="7010" string="Overwrite all further files"/>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
+      <entry id="7014" string="Cannot access input file: %1"/>
+      <entry id="7015" string="Cannot create output file: %1"/>
+      <entry id="7016" string="File not found"/>
+      <entry id="7017" string="Unknown file type"/>
+      <entry id="7018" string="Unsupported audio format"/>
+      <entry id="7019" string="Unknown error"/>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
+      <entry id="7021" string="No configuration dialog available for:&#10;&#10;%1"/>
+      <entry id="7022" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
+      <entry id="7023" string="A conversion process is already active!"/>
+      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
     </section>
 
     <section name="Dialogs">

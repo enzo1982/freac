@@ -319,8 +319,6 @@ namespace BonkEnc
 
 			Bool			 enable_eUpdate;
 
-			Bool			 CanChangeConfig();
-
 			/* Returns a new or existing instance of Config
 			 */
 			static Config		*Get();

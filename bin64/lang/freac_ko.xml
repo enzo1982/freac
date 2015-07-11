@@ -290,13 +290,12 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">인코딩 중입니다. 정말로 끝내시겠습니까?</entry>
-      <entry id="7001" string="Currently encoding">현재 인코딩 중</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">인코딩 중에는 설정을 변경할 수 없습니다!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">인코딩 중에는 파일을 재생할 수 없습니다!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">파일재생 중에는 인코딩을 시작할 수 없습니다!</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">인코딩 중입니다. 정말로 끝내시겠습니까?</entry>
+      <entry id="7001" string="Currently converting">현재 인코딩 중</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">인코딩 중에는 파일을 재생할 수 없습니다!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">파일재생 중에는 인코딩을 시작할 수 없습니다!</entry>
     </section>
 
     <section name="Dialogs">

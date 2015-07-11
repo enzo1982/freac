@@ -378,23 +378,22 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Η κωδικοποίηση βρίσκεται ακόμα σε εξέλιξη! Σίγουρα επιθυμείτε έξοδο;</entry>
-      <entry id="7001" string="Currently encoding">Τρέχουσα κωδικοποίηση</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Αδύνατη αλλαγή των ρυθμίσεων κατά την κωδικοποίηση!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Αδύνατο να φορτωθούν οι οδηγοί ASPI! Το CD ripping απενεργοποιήθηκε!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Αδύνατο το άνοιγμα του αρχείου: %1&#10;&#10;%2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Αδύνατη η αναπαραγωγή κατά την κωδικοποίηση!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Αδύνατη η κωδικοποίηση κατά την αναπαραγωγή!</entry>
-      <entry id="7007" string="Delete original files after encoding">Διαγραφή αρχείων μετά την κωδικοποίηση</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Αυτή η επιλογή θα διαγράψει τα αρχεία μετα την&#10;κωδικοποίηση! Θέλετε σίγουρα να συνεχίσετε;</entry>
-      <entry id="7009" string="File already exists">Το αρχείο υπάρχει ήδη</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Το αρχείο εξόδου %1&#10;υπάρχει ήδη! Θέλετε να αντικατασταθεί;</entry>
-      <entry id="7011" string="Overwrite all further files">Αντικατάσταση όλων των αρχείων</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Υποστήριξη CDDB απενεργοποιημένη! Παρακαλώ&#10;ενεργοποιήστε τοπική ή απομακρυσμένη βάση δεδομένων&#10;CDDB στις ρυθμίσεις.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Απομακρυσμένη CDDB απενεργοποιημένη! Παρακαλώ ενεργοποιήστε&#10;την απομακρυσμένη CDDB στις ρυθμίσεις.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Πρόσβαση στις συσκευές CD αποκλείστηκε από τα Windows&#10;&#10;Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματός&#10;σας.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Αδύνατη πρόσβαση στο αρχείο εισόδου: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Αδύνατη η δημιουργία του αρχέιου εξόδου: %1</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Η κωδικοποίηση βρίσκεται ακόμα σε εξέλιξη! Σίγουρα επιθυμείτε έξοδο;</entry>
+      <entry id="7001" string="Currently converting">Τρέχουσα κωδικοποίηση</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Αδύνατο να φορτωθούν οι οδηγοί ASPI! Το CD ripping απενεργοποιήθηκε!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Αδύνατο το άνοιγμα του αρχείου: %1&#10;&#10;%2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Αδύνατη η αναπαραγωγή κατά την κωδικοποίηση!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Αδύνατη η κωδικοποίηση κατά την αναπαραγωγή!</entry>
+      <entry id="7006" string="Delete original files after encoding">Διαγραφή αρχείων μετά την κωδικοποίηση</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Αυτή η επιλογή θα διαγράψει τα αρχεία μετα την&#10;κωδικοποίηση! Θέλετε σίγουρα να συνεχίσετε;</entry>
+      <entry id="7008" string="File already exists">Το αρχείο υπάρχει ήδη</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Το αρχείο εξόδου %1&#10;υπάρχει ήδη! Θέλετε να αντικατασταθεί;</entry>
+      <entry id="7010" string="Overwrite all further files">Αντικατάσταση όλων των αρχείων</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Υποστήριξη CDDB απενεργοποιημένη! Παρακαλώ&#10;ενεργοποιήστε τοπική ή απομακρυσμένη βάση δεδομένων&#10;CDDB στις ρυθμίσεις.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Απομακρυσμένη CDDB απενεργοποιημένη! Παρακαλώ ενεργοποιήστε&#10;την απομακρυσμένη CDDB στις ρυθμίσεις.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Πρόσβαση στις συσκευές CD αποκλείστηκε από τα Windows&#10;&#10;Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματός&#10;σας.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Αδύνατη πρόσβαση στο αρχείο εισόδου: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Αδύνατη η δημιουργία του αρχέιου εξόδου: %1</entry>
     </section>
 
     <section name="Dialogs">

@@ -382,28 +382,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">A tömörítés még fut! Megállítsam?</entry>
-      <entry id="7001" string="Currently encoding">Tömörítés folyamatban</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Tömörítés közben a beállítások nem változtathatók meg!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Az ASPI meghajtókat nem tudom betölteni! CD-másolás kikapcsolva!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Tömörítés alatt nem lehet lejátszani!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Lejátszás alatt nem lehet tömöríteni!</entry>
-      <entry id="7007" string="Delete original files after encoding">Eredeti fájlok törlése tömörítés után</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ez a beállítás letörli az eredeti fájlokat a kódolás&#10;után. Biztos folytatja a műveletet? </entry>
-      <entry id="7009" string="File already exists">A fájl már létezik!</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">A %1 kimeneti fájl&#10;már létezik! Felül szeretnéd írni?</entry>
-      <entry id="7011" string="Overwrite all further files">További fájlok felülírása</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">A CDDB támogatás inaktív! Engedélyezd a&#10;helyi vagy távoli CDDB támogatást a konfig. menüben.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">A távoli CDDB támogatás inaktív! Engedélyezd&#10;a távoli CDDB támogatást a konfig. menüben.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">A CD-ROM meghajtók elérését blokkolta a Windows.&#10;&#10;Vedd fel a kapcsolatot a rendszer adminisztrátorral&#10;a CD-ROM-hoz való jogosultság megadásáért.</entry>
-      <entry id="7015" string="Cannot access input file: %1">A forrás fájl nem elérhető: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">A kimeneti fájl nem jött létre: %1</entry>
-      <entry id="7017" string="File not found">A fájl nem található</entry>
-      <entry id="7018" string="Unknown file type">Ismeretlen fájltípus</entry>
-      <entry id="7019" string="Unsupported audio format">Nem támogatott audio formátum</entry>
-      <entry id="7020" string="Unknown error">Ismeretlen hiba</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">A kiválasztott fájlok nem fűzhetők egy kimeneti&#10;fájlba az eltérő mintavételezés miatt.&#10;&#10;Konvertáld először a fájokalt egyforma mintavételezésűre.</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">A tömörítés még fut! Megállítsam?</entry>
+      <entry id="7001" string="Currently converting">Tömörítés folyamatban</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Az ASPI meghajtókat nem tudom betölteni! CD-másolás kikapcsolva!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Tömörítés alatt nem lehet lejátszani!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Lejátszás alatt nem lehet tömöríteni!</entry>
+      <entry id="7006" string="Delete original files after encoding">Eredeti fájlok törlése tömörítés után</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ez a beállítás letörli az eredeti fájlokat a kódolás&#10;után. Biztos folytatja a műveletet? </entry>
+      <entry id="7008" string="File already exists">A fájl már létezik!</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">A %1 kimeneti fájl&#10;már létezik! Felül szeretnéd írni?</entry>
+      <entry id="7010" string="Overwrite all further files">További fájlok felülírása</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">A CDDB támogatás inaktív! Engedélyezd a&#10;helyi vagy távoli CDDB támogatást a konfig. menüben.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">A távoli CDDB támogatás inaktív! Engedélyezd&#10;a távoli CDDB támogatást a konfig. menüben.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">A CD-ROM meghajtók elérését blokkolta a Windows.&#10;&#10;Vedd fel a kapcsolatot a rendszer adminisztrátorral&#10;a CD-ROM-hoz való jogosultság megadásáért.</entry>
+      <entry id="7014" string="Cannot access input file: %1">A forrás fájl nem elérhető: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">A kimeneti fájl nem jött létre: %1</entry>
+      <entry id="7016" string="File not found">A fájl nem található</entry>
+      <entry id="7017" string="Unknown file type">Ismeretlen fájltípus</entry>
+      <entry id="7018" string="Unsupported audio format">Nem támogatott audio formátum</entry>
+      <entry id="7019" string="Unknown error">Ismeretlen hiba</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">A kiválasztott fájlok nem fűzhetők egy kimeneti&#10;fájlba az eltérő mintavételezés miatt.&#10;&#10;Konvertáld először a fájokalt egyforma mintavételezésűre.</entry>
     </section>
 
     <section name="Dialogs">

@@ -356,15 +356,3 @@ Void BonkEnc::Config::Free()
 		instance = NIL;
 	}
 }
-
-Bool BonkEnc::Config::CanChangeConfig()
-{
-	if (JobConvert::IsConverting())
-	{
-		Utilities::ErrorMessage("Cannot change settings while encoding!");
-
-		return False;
-	}
-
-	return True;
-}

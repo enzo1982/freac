@@ -340,7 +340,7 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 
 		i18n->SetContext("Messages");
 
-		if (Message::Button::No == QuickMessage(i18n->TranslateString("The encoding thread is still running! Do you really want to quit?"), i18n->TranslateString("Currently encoding"), Message::Buttons::YesNo, Message::Icon::Question)) return False;
+		if (Message::Button::No == QuickMessage(i18n->TranslateString("A conversion process is still active! Do you really want to quit?"), i18n->TranslateString("Currently converting"), Message::Buttons::YesNo, Message::Icon::Question)) return False;
 
 		JobConvert::Stop();
 	}
@@ -414,8 +414,6 @@ Void BonkEnc::BonkEncGUI::About()
 
 Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 {
-	if (!currentConfig->CanChangeConfig()) return;
-
 	BoCA::Config	*config	= BoCA::Config::Get();
 
 	Registry	&boca = Registry::Get();
@@ -445,8 +443,6 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 
 Void BonkEnc::BonkEncGUI::ConfigureSettings()
 {
-	if (!currentConfig->CanChangeConfig()) return;
-
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	/* Save joblist tab field sizes.
@@ -485,8 +481,6 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 
 Void BonkEnc::BonkEncGUI::OnSelectConfiguration()
 {
-	if (!currentConfig->CanChangeConfig()) return;
-
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	config->SetActiveConfiguration(config->GetNthConfigurationName(clicked_configuration));
@@ -1235,12 +1229,9 @@ Void BonkEnc::BonkEncGUI::Encode()
 		BoCA::Config	*config = BoCA::Config::Get();
 		Registry	&boca	= Registry::Get();
 
-		if (!JobConvert::IsConverting())
-		{
-			config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(clicked_encoder));
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(clicked_encoder));
 
-			tab_layer_joblist->UpdateEncoderText();
-		}
+		tab_layer_joblist->UpdateEncoderText();
 
 		clicked_encoder = -1;
 

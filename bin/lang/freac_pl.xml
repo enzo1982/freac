@@ -384,28 +384,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Wątek konwersji jeszcze trwa! Na pewno zakończyć program?</entry>
-      <entry id="7001" string="Currently encoding">Trwa konwersja</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Nie można zmieniać ustawień podczas konwersji!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Nie można załadować sterowników ASPI! Zgrywanie płyt CD zostało wyłączone!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Nie można odtwarzać pliku podczas kompresji!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Nie można rozpocząć konwersji podczas odtwarzania pliku!</entry>
-      <entry id="7007" string="Delete original files after encoding">Usuń oryginalne pliki po zakończeniu konwersji</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Zaznaczenie tej opcji spowoduje skasowanie&#10;oryginalnych plików po konwersji. Kontynuować?</entry>
-      <entry id="7009" string="File already exists">Plik o tej nazwie już istnieje</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Plik wynikowy %1&#10;już istnieje! Czy chcesz go nadpisać?</entry>
-      <entry id="7011" string="Overwrite all further files">Zastąp wszystkie kolejne pliki</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Obsługa CDDB jest wyłączona! Uaktywnij zdalną&#10;bądź lokalna bazę CDDB w opcjach konfiguracji.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Obsługa zdalnej bazy CDDB jest wyłączona! Uaktywnij&#10;obsługę zdalnej bazy CDDB w opcjach konfiguracji.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows odmawia dostępu do napędów CD-ROM.&#10;&#10;Skontaktuj się z administratorem systemu&#10;celem uzyskania dostępu do napędu CD-ROM.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Brak dostępu do pliku wejściowego: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Nie można utworzyć pliku wyjściowego: %1</entry>
-      <entry id="7017" string="File not found">Nie znaleziono pliku</entry>
-      <entry id="7018" string="Unknown file type">Nieznany typ pliku</entry>
-      <entry id="7019" string="Unsupported audio format">Nieobsługiwany format audio</entry>
-      <entry id="7020" string="Unknown error">Nieznany błąd</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Wybrane pliki nie mogą być połączone w jeden plik&#10;wyjściowy ze względu na rożny format próbki.&#10;&#10;Skonwertuj najpierw wszystkie pliki do tego samego formatu próbki.</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Wątek konwersji jeszcze trwa! Na pewno zakończyć program?</entry>
+      <entry id="7001" string="Currently converting">Trwa konwersja</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Nie można załadować sterowników ASPI! Zgrywanie płyt CD zostało wyłączone!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Nie można odtwarzać pliku podczas kompresji!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Nie można rozpocząć konwersji podczas odtwarzania pliku!</entry>
+      <entry id="7006" string="Delete original files after encoding">Usuń oryginalne pliki po zakończeniu konwersji</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Zaznaczenie tej opcji spowoduje skasowanie&#10;oryginalnych plików po konwersji. Kontynuować?</entry>
+      <entry id="7008" string="File already exists">Plik o tej nazwie już istnieje</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Plik wynikowy %1&#10;już istnieje! Czy chcesz go nadpisać?</entry>
+      <entry id="7010" string="Overwrite all further files">Zastąp wszystkie kolejne pliki</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Obsługa CDDB jest wyłączona! Uaktywnij zdalną&#10;bądź lokalna bazę CDDB w opcjach konfiguracji.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Obsługa zdalnej bazy CDDB jest wyłączona! Uaktywnij&#10;obsługę zdalnej bazy CDDB w opcjach konfiguracji.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows odmawia dostępu do napędów CD-ROM.&#10;&#10;Skontaktuj się z administratorem systemu&#10;celem uzyskania dostępu do napędu CD-ROM.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Brak dostępu do pliku wejściowego: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Nie można utworzyć pliku wyjściowego: %1</entry>
+      <entry id="7016" string="File not found">Nie znaleziono pliku</entry>
+      <entry id="7017" string="Unknown file type">Nieznany typ pliku</entry>
+      <entry id="7018" string="Unsupported audio format">Nieobsługiwany format audio</entry>
+      <entry id="7019" string="Unknown error">Nieznany błąd</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Wybrane pliki nie mogą być połączone w jeden plik&#10;wyjściowy ze względu na rożny format próbki.&#10;&#10;Skonwertuj najpierw wszystkie pliki do tego samego formatu próbki.</entry>
     </section>
 
     <section name="Dialogs">

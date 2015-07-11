@@ -383,28 +383,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Enkodovanje u toku! Da li zaista želite da ga otkažete?</entry>
-      <entry id="7001" string="Currently encoding">Enkodovanje u toku</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Podešenja se ne mogu menjati za vreme enkodovanja!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Nije moguće učitati ASPI drajvere! Ripovanje CD-a otkazano!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Nemoguće otvoriti fajl: %1&#10;&#10;%2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Za vreme enkodovanja nije moguće pokretanje fajla!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Nije moguće pokrenuti enkodovanje za vreme pokretanja fajla!</entry>
-      <entry id="7007" string="Delete original files after encoding">Obriši izvorni fajl nakon enkodovanja</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ova opcija briše izvorne fajlove nakon enkodovanja!&#10;&#10;Da li ste sigurni da želite da nastavite?</entry>
-      <entry id="7009" string="File already exists">Fajl već postoji</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Izlazni fajl %1&#10;već postoji! Da li želite da ga prepišete?</entry>
-      <entry id="7011" string="Overwrite all further files">Prepiši sve buduće fajlove</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB podrša je onemogućena! Molimo omogućite&#10;lokalnu ili udaljenu CDDB podršku u konfigurisanju.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Udaljena CDDB podrša onemogućena! Molimo&#10;omogućite CDDB podršku u dijalogu konfigurisanja.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pristup ROM uređaju odbijen od strane Windowsa.&#10;&#10;Molimo obratite se administratoru sistema da Vam&#10;odobri pristup ROM uređaju.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Ne mogu da pristupim ulaznom fajlu: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Ne mogu da kreiram izlazni fajl: %1</entry>
-      <entry id="7017" string="File not found">Fajl nije nađen</entry>
-      <entry id="7018" string="Unknown file type">Nepoznata vrsta fajla</entry>
-      <entry id="7019" string="Unsupported audio format">Ovaj audio format nije podržan</entry>
-      <entry id="7020" string="Unknown error">Nepoznata greška</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrani fajlovi ne mogu se kombinovati u jedan&#10;izlazni fajl zbog različitih ulaznih formata.&#10;&#10;Molimo prvo pretvorite sve fajlove u isti format.</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Enkodovanje u toku! Da li zaista želite da ga otkažete?</entry>
+      <entry id="7001" string="Currently converting">Enkodovanje u toku</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Nije moguće učitati ASPI drajvere! Ripovanje CD-a otkazano!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nemoguće otvoriti fajl: %1&#10;&#10;%2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Za vreme enkodovanja nije moguće pokretanje fajla!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Nije moguće pokrenuti enkodovanje za vreme pokretanja fajla!</entry>
+      <entry id="7006" string="Delete original files after encoding">Obriši izvorni fajl nakon enkodovanja</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ova opcija briše izvorne fajlove nakon enkodovanja!&#10;&#10;Da li ste sigurni da želite da nastavite?</entry>
+      <entry id="7008" string="File already exists">Fajl već postoji</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Izlazni fajl %1&#10;već postoji! Da li želite da ga prepišete?</entry>
+      <entry id="7010" string="Overwrite all further files">Prepiši sve buduće fajlove</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB podrša je onemogućena! Molimo omogućite&#10;lokalnu ili udaljenu CDDB podršku u konfigurisanju.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Udaljena CDDB podrša onemogućena! Molimo&#10;omogućite CDDB podršku u dijalogu konfigurisanja.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pristup ROM uređaju odbijen od strane Windowsa.&#10;&#10;Molimo obratite se administratoru sistema da Vam&#10;odobri pristup ROM uređaju.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Ne mogu da pristupim ulaznom fajlu: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Ne mogu da kreiram izlazni fajl: %1</entry>
+      <entry id="7016" string="File not found">Fajl nije nađen</entry>
+      <entry id="7017" string="Unknown file type">Nepoznata vrsta fajla</entry>
+      <entry id="7018" string="Unsupported audio format">Ovaj audio format nije podržan</entry>
+      <entry id="7019" string="Unknown error">Nepoznata greška</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrani fajlovi ne mogu se kombinovati u jedan&#10;izlazni fajl zbog različitih ulaznih formata.&#10;&#10;Molimo prvo pretvorite sve fajlove u isti format.</entry>
     </section>
 
     <section name="Dialogs">

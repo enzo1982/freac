@@ -382,28 +382,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="The encoding thread is still running! Do you really want to quit?">Kodningstråden kører stadig! Vil du virkelig afslutte?</entry>
-      <entry id="7001" string="Currently encoding">Koder lige nu</entry>
-      <entry id="7002" string="Cannot change settings while encoding!">Du kan IKKE ændre indstillinger mens du koder!</entry>
-      <entry id="7003" string="Unable to load ASPI drivers! CD ripping disabled!">Kunne ikke loade ASPI drivere! CD ripning slået fra!</entry>
-      <entry id="7004" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åbne filen: %1&#10;&#10;%2</entry>
-      <entry id="7005" string="Cannot play a file while encoding!">Kan IKKE afspille en fil under kodning!</entry>
-      <entry id="7006" string="Cannot start encoding while playing a file!">Kan IKKE starte kodning under afspilning af fil!</entry>
-      <entry id="7007" string="Delete original files after encoding">Slet orginale filer efter endt kodning</entry>
-      <entry id="7008" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne indstilling vil slette de orginale filer efter de er blevet kodet! Ønsker du at forsætte?</entry>
-      <entry id="7009" string="File already exists">Filen eksisterer allerede</entry>
-      <entry id="7010" string="The output file %1&#10;already exists! Do you want to overwrite it?">Uddata filen %1 eksisterer allerede! Vil du virkelig overskrive den?</entry>
-      <entry id="7011" string="Overwrite all further files">Overskriv alle tidligere filer</entry>
-      <entry id="7012" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB support er slået fra! Venligst slå lokal eller ekstern CDDB support til i indstillinger dialogen.</entry>
-      <entry id="7013" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Ekstern CDDB support er slået fra! Venligst slå det det til igen under ekstern CDDB support under indstillinger.</entry>
-      <entry id="7014" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Adgang til CD-ROM drev blev afslået af Windows.&#10;&#10;Kontak din system administrator for at få adgang til CD-ROM drevene.</entry>
-      <entry id="7015" string="Cannot access input file: %1">Kan ikke få adgang til den indlæste fil: %1</entry>
-      <entry id="7016" string="Cannot create output file: %1">Kan ikke oprette udgående fil: %1</entry>
-      <entry id="7017" string="File not found">Fil ikke fundet</entry>
-      <entry id="7018" string="Unknown file type">Ukendt fil type</entry>
-      <entry id="7019" string="Unsupported audio format">Ikke understøttet lyd format</entry>
-      <entry id="7020" string="Unknown error">Ukendt fejl</entry>
-      <entry id="7021" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">De valgte filer kan ikke kombineres til én fil pga. forskellige sample formater.&#10;&#10;Venligst konventér alle filerne til samme sample format først</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Kodningstråden kører stadig! Vil du virkelig afslutte?</entry>
+      <entry id="7001" string="Currently converting">Koder lige nu</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Kunne ikke loade ASPI drivere! CD ripning slået fra!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åbne filen: %1&#10;&#10;%2</entry>
+      <entry id="7004" string="Cannot play a file while encoding!">Kan IKKE afspille en fil under kodning!</entry>
+      <entry id="7005" string="Cannot start encoding while playing a file!">Kan IKKE starte kodning under afspilning af fil!</entry>
+      <entry id="7006" string="Delete original files after encoding">Slet orginale filer efter endt kodning</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne indstilling vil slette de orginale filer efter de er blevet kodet! Ønsker du at forsætte?</entry>
+      <entry id="7008" string="File already exists">Filen eksisterer allerede</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Uddata filen %1 eksisterer allerede! Vil du virkelig overskrive den?</entry>
+      <entry id="7010" string="Overwrite all further files">Overskriv alle tidligere filer</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB support er slået fra! Venligst slå lokal eller ekstern CDDB support til i indstillinger dialogen.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Ekstern CDDB support er slået fra! Venligst slå det det til igen under ekstern CDDB support under indstillinger.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Adgang til CD-ROM drev blev afslået af Windows.&#10;&#10;Kontak din system administrator for at få adgang til CD-ROM drevene.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Kan ikke få adgang til den indlæste fil: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Kan ikke oprette udgående fil: %1</entry>
+      <entry id="7016" string="File not found">Fil ikke fundet</entry>
+      <entry id="7017" string="Unknown file type">Ukendt fil type</entry>
+      <entry id="7018" string="Unsupported audio format">Ikke understøttet lyd format</entry>
+      <entry id="7019" string="Unknown error">Ukendt fejl</entry>
+      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">De valgte filer kan ikke kombineres til én fil pga. forskellige sample formater.&#10;&#10;Venligst konventér alle filerne til samme sample format først</entry>
     </section>
 
     <section name="Dialogs">
