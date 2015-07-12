@@ -523,7 +523,8 @@
       <entry id="7021" string="No configuration dialog available for:&#10;&#10;%1"/>
       <entry id="7022" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
       <entry id="7023" string="A conversion process is already active!"/>
-      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
+      <entry id="7024" string="Failed to verify input file: %1"/>
+      <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
     </section>
 
     <section name="Dialogs">
