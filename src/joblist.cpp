@@ -18,8 +18,6 @@
 #include <jobs/joblist/addfiles.h>
 #include <jobs/joblist/removeall.h>
 
-#include <tools/encoding.h>
-
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
 
@@ -156,27 +154,6 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	Track		 track	= iTrack;
 
 	track.SetOriginalInfo(track.GetInfo());
-
-	/* Detect encoding and translate info if requested.
-	 *
-	 * ToDo: Enable encoding heuristics by default once it's ready.
-	 */
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodingHeuristicsID, Config::SettingsEncodingHeuristicsDefault))
-	{
-		String	 prevOutFormat = String::SetOutputFormat("ISO-8859-1");
-
-		Info	 info = track.GetInfo();
-
-		if (info.artist	 != NIL && !String::IsUnicode(info.artist))  info.artist.ImportFrom(Encoding::GuessEncoding(info.artist), info.artist);
-		if (info.title	 != NIL && !String::IsUnicode(info.title))   info.title.ImportFrom(Encoding::GuessEncoding(info.title), info.title);
-		if (info.album	 != NIL && !String::IsUnicode(info.album))   info.album.ImportFrom(Encoding::GuessEncoding(info.album), info.album);
-		if (info.genre	 != NIL && !String::IsUnicode(info.genre))   info.genre.ImportFrom(Encoding::GuessEncoding(info.genre), info.genre);
-		if (info.comment != NIL && !String::IsUnicode(info.comment)) info.comment.ImportFrom(Encoding::GuessEncoding(info.comment), info.comment);
-
-		track.SetInfo(info);
-
-		String::SetOutputFormat(prevOutFormat);
-	}
 
 	/* Add entry to joblist.
 	 */

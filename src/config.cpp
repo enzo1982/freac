@@ -66,9 +66,6 @@ const Int	 BonkEnc::Config::SettingsNextTipDefault			= 0;
 const String	 BonkEnc::Config::SettingsDisplayErrorsID			= "DisplayErrors";
 const Bool	 BonkEnc::Config::SettingsDisplayErrorsDefault			= True;
 
-const String	 BonkEnc::Config::SettingsEncodingHeuristicsID			= "EnableEncodingHeuristics";
-const Bool	 BonkEnc::Config::SettingsEncodingHeuristicsDefault		= False;
-
 const String	 BonkEnc::Config::SettingsCheckForUpdatesID			= "CheckUpdatesAtStartup";
 const Bool	 BonkEnc::Config::SettingsCheckForUpdatesDefault		= True;
 

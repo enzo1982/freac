@@ -67,9 +67,6 @@ namespace BonkEnc
 			static const String	 SettingsDisplayErrorsID;
 			static const Bool	 SettingsDisplayErrorsDefault;
 
-			static const String	 SettingsEncodingHeuristicsID;
-			static const Bool	 SettingsEncodingHeuristicsDefault;
-
 			static const String	 SettingsCheckForUpdatesID;
 			static const Bool	 SettingsCheckForUpdatesDefault;
 
