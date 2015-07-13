@@ -39,7 +39,8 @@ BonkEnc::Encoder::~Encoder()
 
 Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, const Track &track)
 {
-	Registry	&boca = Registry::Get();
+	Registry	&boca	= Registry::Get();
+	const Format	&format = track.GetFormat();
 
 	album	= track;
 	chapter = 0;
@@ -47,7 +48,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 	offset	= 0;
 
 	stream = new OutStream(STREAM_FILE, BoCA::Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
-	stream->SetPackageSize(196608);
+	stream->SetPackageSize(32768 * format.channels * (format.bits / 8));
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{

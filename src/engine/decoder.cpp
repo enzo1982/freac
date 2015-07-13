@@ -41,12 +41,13 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 {
 	static DriverZero	 zero_in;
 
-	Registry	&boca = Registry::Get();
+	Registry	&boca	= Registry::Get();
+	const Format	&format = track.GetFormat();
 
 	if (nFileName.StartsWith("device://")) stream = new InStream(STREAM_DRIVER, &zero_in);
 	else				       stream = new InStream(STREAM_FILE, nFileName, IS_READ);
 
-	stream->SetPackageSize(track.length >= 0 ? 196608 : 12288);
+	stream->SetPackageSize((track.length >= 0 ? 32768 : 2048) * format.channels * (format.bits / 8));
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
@@ -114,7 +115,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 	 */
 	if (track.sampleOffset > 0 && !decoder->Seek(track.sampleOffset))
 	{
-		Int64			 bytesLeft = track.sampleOffset * track.GetFormat().channels * (track.GetFormat().bits / 8);
+		Int64			 bytesLeft = track.sampleOffset * format.channels * (format.bits / 8);
 		Buffer<UnsignedByte>	 buffer;
 
 		while (bytesLeft)
