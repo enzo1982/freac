@@ -976,8 +976,11 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 		{
-			menu_drives->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &clicked_drive, i)->onAction.Connect(&BonkEncGUI::ReadCD, this);
-			menu_seldrive->AddEntry(info->GetNthDeviceInfo(i).name, NIL, NIL, NIL, &config->GetPersistentIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault), i);
+			const Device	&device = info->GetNthDeviceInfo(i);
+			String		 name	= String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim();
+
+			menu_drives->AddEntry(name, NIL, NIL, NIL, &clicked_drive, i)->onAction.Connect(&BonkEncGUI::ReadCD, this);
+			menu_seldrive->AddEntry(name, NIL, NIL, NIL, &config->GetPersistentIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault), i);
 		}
 
 		boca.DeleteComponent(info);

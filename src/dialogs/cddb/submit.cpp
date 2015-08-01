@@ -102,7 +102,9 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	{
 		for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 		{
-			combo_drive->AddEntry(info->GetNthDeviceInfo(i).name);
+			const Device	&device = info->GetNthDeviceInfo(i);
+
+			combo_drive->AddEntry(String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim());
 		}
 
 		boca.DeleteComponent(info);
