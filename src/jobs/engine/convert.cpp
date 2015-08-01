@@ -369,6 +369,38 @@ Error BonkEnc::JobConvert::Perform()
 		worker->Start();
 	}
 
+	/* Set up per worker progress displays.
+	 */
+	Array<Text *>		 workerText;
+	Array<Progressbar *>	 workerProgress;
+
+	for (Int i = 0; i < workers.Length(); i++)
+	{
+		/* Instantiate text views.
+		 */
+		Text	*text = new Text(NIL, Point(8, 0));
+		Font	 font = text->GetFont();
+
+		font.SetSize(Math::Round(Font::DefaultSize * 0.8));
+
+		text->SetFont(font);
+		text->Hide();
+
+		Add(text);
+
+		workerText.Add(text);
+
+		/* Instantiate progress bars.
+		 */
+		Progressbar	*progress = new Progressbar(Point(8, 0), Size(500, 8), OR_HORZ, PB_NOTEXT, 0, 1000);
+
+		progress->Hide();
+
+		Add(progress);
+
+		workerProgress.Add(progress);
+	}
+
 	/* Main conversion loop.
 	 */
 	Bool			 allTracksAssigned = False;
@@ -408,6 +440,8 @@ Error BonkEnc::JobConvert::Perform()
 			while (!worker->IsIdle()) S::System::System::Sleep(1);
 
 			workerQueue.Remove(worker->GetThreadID());
+
+			SetHeight(51 + workerQueue.Length() * 20);
 
 			/* Unlock track device and output file if necessary.
 			 */
@@ -558,7 +592,7 @@ Error BonkEnc::JobConvert::Perform()
 			workerToUse = worker;
 		}
 
-		/* Update progress values.
+		/* Update total progress values.
 		 */
 		foreach (ConvertWorker *worker, workerQueue)
 		{
@@ -577,13 +611,71 @@ Error BonkEnc::JobConvert::Perform()
 			break;
 		}
 
-		/* Sleep for 25ms.
+		/* Update per track progress values.
 		 */
-		if (workerQueue.Length() > 0) S::System::System::Sleep(25);
+		if ( GetHeight() < 51 + workerQueue.Length() * 20 ||
+		    (GetHeight() > 51 + workerQueue.Length() * 20 && allTracksAssigned))
+		{
+			SetHeight(51 + workerQueue.Length() * 20);
 
-		/* Continue if no worker found.
+			container->Paint(SP_PAINT);
+		}
+
+		Bool	 visible = IsVisible();
+		Surface	*surface = GetDrawSurface();
+
+		if (visible) surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+
+		for (Int i = 0; i < workers.Length(); i++)
+		{
+			ConvertWorker	*worker	  = workerQueue.Length() >= i + 1 ? workerQueue.GetNth(i) : NIL;
+
+			Text		*text	  = workerText.GetNth(i);
+			Progressbar	*progress = workerProgress.GetNth(i);
+
+			if (worker == NIL)
+			{
+				text->Hide();
+				progress->Hide();
+
+				continue;
+			}
+
+			const Track	&workerTrack	    = worker->GetTrackToConvert();
+
+			ConversionStep	 conversionStep	    = worker->GetConversionStep();
+			Int64		 conversionProgress = worker->GetTrackPosition();
+
+			BoCA::I18n	*i18n		    = BoCA::I18n::Get();
+			String		 conversionStepText;
+
+			if	(conversionStep == ConversionStepDecode) conversionStepText = String(" (").Append(i18n->TranslateString("ripping/decoding", "Joblist")).Append(")");
+			else if (conversionStep == ConversionStepEncode) conversionStepText = String(" (").Append(i18n->TranslateString("encoding", "Joblist")).Append(")");
+			else if (conversionStep == ConversionStepVerify) conversionStepText = String(" (").Append(i18n->TranslateString("verifying", "Joblist")).Append(")");
+
+			text->SetY(42 + i * 20);
+			text->SetText(workerTrack.origFilename.Tail(workerTrack.origFilename.Length() - workerTrack.origFilename.FindLast(Directory::GetDirectoryDelimiter()) - 1).Append(conversionStepText));
+			text->Show();
+
+			progress->SetY(54 + i * 20);
+			progress->SetWidth(GetWidth() - 16);
+
+			if (workerTrack.length >= 0) progress->SetValue(1000.0 / workerTrack.length * conversionProgress);
+			else			     progress->SetValue(1000.0 / workerTrack.fileSize * conversionProgress);
+
+			progress->Show();
+		}
+
+		if (visible) surface->EndPaint();
+
+		/* Sleep for 25ms and continue if no worker found.
 		 */
-		if (workerToUse == NIL || allTracksAssigned) continue;
+		if (workerToUse == NIL || allTracksAssigned)
+		{
+			if (workerQueue.Length() > 0) S::System::System::Sleep(25);
+
+			continue;
+		}
 
 		/* Find next track to convert.
 		 */
@@ -682,6 +774,8 @@ Error BonkEnc::JobConvert::Perform()
 		}
 	}
 	while (workerQueue.Length() > 0);
+
+	SetHeight(51);
 
 	/* Verify single file encodes.
 	 */
