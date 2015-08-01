@@ -88,14 +88,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Starta kodning</entry>
-	<entry id="1401" string="Pause/resume encoding">Pausa/återuppta kodning</entry>
-	<entry id="1402" string="Stop encoding">Stoppa kodning</entry>
-	<entry id="1403" string="Encoder options">Kodningsinställningar</entry>
-	<entry id="1404" string="Encode to single file">Koda till en enda fil</entry>
-	<entry id="1405" string="Encode to input file folder if possible">Koda till originalfilens källmapp, om möjligt</entry>
-	<entry id="1406" string="Allow overwriting input file">Tillåt överskrivning av originalfilen</entry>
-	<entry id="1407" string="Delete original files after encoding">Ta bort originalfiler efter kodning</entry>
-	<entry id="1408" string="Shutdown after encoding">Stäng av efter kodning</entry>
+	<entry id="1401" string="Start encoding with">Starta kodning med</entry>
+	<entry id="1402" string="Pause/resume encoding">Pausa/återuppta kodning</entry>
+	<entry id="1403" string="Stop encoding">Stoppa kodning</entry>
+	<entry id="1404" string="Encoder options">Kodningsinställningar</entry>
+	<entry id="1405" string="Encode to single file">Koda till en enda fil</entry>
+	<entry id="1406" string="Encode to input file folder if possible">Koda till originalfilens källmapp, om möjligt</entry>
+	<entry id="1407" string="Allow overwriting input file">Tillåt överskrivning av originalfilen</entry>
+	<entry id="1408" string="Delete original files after encoding">Ta bort originalfiler efter kodning</entry>
+	<entry id="1409" string="Shutdown after encoding">Stäng av efter kodning</entry>
       </section>
 
       <section name="Help">

@@ -78,13 +78,14 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">התחל המרה</entry>
-	<entry id="1401" string="Pause/resume encoding">השהה / חדש המרה</entry>
-	<entry id="1402" string="Stop encoding">עצור המרה</entry>
-	<entry id="1403" string="Encoder options">אפשרויות המרה</entry>
-	<entry id="1404" string="Encode to single file">המר לקובץ אחד</entry>
-	<entry id="1406" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
-	<entry id="1407" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
-	<entry id="1408" string="Shutdown after encoding">כבה מחשב לאחר המרה</entry>
+	<entry id="1401" string="Start encoding with">התחל המרה</entry>
+	<entry id="1402" string="Pause/resume encoding">השהה / חדש המרה</entry>
+	<entry id="1403" string="Stop encoding">עצור המרה</entry>
+	<entry id="1404" string="Encoder options">אפשרויות המרה</entry>
+	<entry id="1405" string="Encode to single file">המר לקובץ אחד</entry>
+	<entry id="1407" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
+	<entry id="1408" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
+	<entry id="1409" string="Shutdown after encoding">כבה מחשב לאחר המרה</entry>
       </section>
 
       <section name="Help">

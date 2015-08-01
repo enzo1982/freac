@@ -1083,7 +1083,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0)
 	{
 		menu_encode->AddEntry();
-		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
+		menu_encode->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Start encoding with")), NIL, menu_encoders);
 	}
 
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));

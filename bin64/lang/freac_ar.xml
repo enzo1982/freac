@@ -88,14 +88,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">بدء الترميز</entry>
-	<entry id="1401" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
-	<entry id="1402" string="Stop encoding">إيقاف الترميز</entry>
-	<entry id="1403" string="Encoder options">خيارات الترميز</entry>
-	<entry id="1404" string="Encode to single file">ملف و حيد للترميز</entry>
-	<entry id="1405" string="Encode to input file folder if possible">إذا كان ذلك ممكنا الترميز ‘إلى مجلد ملف الناتج</entry>
-	<entry id="1406" string="Allow overwriting input file">السماح بالكتابة على ملف الادخال</entry>
-	<entry id="1407" string="Delete original files after encoding">حذف الملف الأصلي بعد الترميز</entry>
-	<entry id="1408" string="Shutdown after encoding">غلق الحاسب بعد الترميز</entry>
+	<entry id="1401" string="Start encoding with">بدء الترميز</entry>
+	<entry id="1402" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
+	<entry id="1403" string="Stop encoding">إيقاف الترميز</entry>
+	<entry id="1404" string="Encoder options">خيارات الترميز</entry>
+	<entry id="1405" string="Encode to single file">ملف و حيد للترميز</entry>
+	<entry id="1406" string="Encode to input file folder if possible">إذا كان ذلك ممكنا الترميز ‘إلى مجلد ملف الناتج</entry>
+	<entry id="1407" string="Allow overwriting input file">السماح بالكتابة على ملف الادخال</entry>
+	<entry id="1408" string="Delete original files after encoding">حذف الملف الأصلي بعد الترميز</entry>
+	<entry id="1409" string="Shutdown after encoding">غلق الحاسب بعد الترميز</entry>
       </section>
 
       <section name="Help">

@@ -88,14 +88,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Започни енкодовање</entry>
-	<entry id="1401" string="Pause/resume encoding">Паузирај/настави енкодовање</entry>
-	<entry id="1402" string="Stop encoding">Прекид енкодовања</entry>
-	<entry id="1403" string="Encoder options">Опције енкодера</entry>
-	<entry id="1404" string="Encode to single file">Енкодуј у један фајл</entry>
-	<entry id="1405" string="Encode to input file folder if possible">Ако је могуће, енкодуј у улазни фолдер</entry>
-	<entry id="1406" string="Allow overwriting input file">Дозволи преписивање улазних фајлова</entry>
-	<entry id="1407" string="Delete original files after encoding">Обриши изворни фајл након енкодовања</entry>
-	<entry id="1408" string="Shutdown after encoding">Угаси ПЦ након енкодовања</entry>
+	<entry id="1401" string="Start encoding with">Започни енкодовање са</entry>
+	<entry id="1402" string="Pause/resume encoding">Паузирај/настави енкодовање</entry>
+	<entry id="1403" string="Stop encoding">Прекид енкодовања</entry>
+	<entry id="1404" string="Encoder options">Опције енкодера</entry>
+	<entry id="1405" string="Encode to single file">Енкодуј у један фајл</entry>
+	<entry id="1406" string="Encode to input file folder if possible">Ако је могуће, енкодуј у улазни фолдер</entry>
+	<entry id="1407" string="Allow overwriting input file">Дозволи преписивање улазних фајлова</entry>
+	<entry id="1408" string="Delete original files after encoding">Обриши изворни фајл након енкодовања</entry>
+	<entry id="1409" string="Shutdown after encoding">Угаси ПЦ након енкодовања</entry>
       </section>
 
       <section name="Help">

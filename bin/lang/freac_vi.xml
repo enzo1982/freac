@@ -88,14 +88,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Bắt đầu chuyển mã</entry>
-	<entry id="1401" string="Pause/resume encoding">Tạm dừng/làm lại chuyển mã</entry>
-	<entry id="1402" string="Stop encoding">Dừng chuyển mã</entry>
-	<entry id="1403" string="Encoder options">Tùy chọn chuyển mã</entry>
-	<entry id="1404" string="Encode to single file">Chuyển mã thành 1 file</entry>
-	<entry id="1405" string="Encode to input file folder if possible">Chuyển mã lưu ở phần thư mục nhập vào nếu được</entry>
-	<entry id="1406" string="Allow overwriting input file">Cho phép ghi đè lên tập tin nhập vào</entry>
-	<entry id="1407" string="Delete original files after encoding">Xóa file gốc sau khi chuyển mã</entry>
-	<entry id="1408" string="Shutdown after encoding">Tắt máy sau khi chuyển mã</entry>
+	<entry id="1401" string="Start encoding with">Bắt đầu chuyển mã với</entry>
+	<entry id="1402" string="Pause/resume encoding">Tạm dừng/làm lại chuyển mã</entry>
+	<entry id="1403" string="Stop encoding">Dừng chuyển mã</entry>
+	<entry id="1404" string="Encoder options">Tùy chọn chuyển mã</entry>
+	<entry id="1405" string="Encode to single file">Chuyển mã thành 1 file</entry>
+	<entry id="1406" string="Encode to input file folder if possible">Chuyển mã lưu ở phần thư mục nhập vào nếu được</entry>
+	<entry id="1407" string="Allow overwriting input file">Cho phép ghi đè lên tập tin nhập vào</entry>
+	<entry id="1408" string="Delete original files after encoding">Xóa file gốc sau khi chuyển mã</entry>
+	<entry id="1409" string="Shutdown after encoding">Tắt máy sau khi chuyển mã</entry>
       </section>
 
       <section name="Help">

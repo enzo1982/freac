@@ -93,14 +93,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Начало на кодирането</entry>
-	<entry id="1401" string="Pause/resume encoding">Пауза/продължаване на кодирането</entry>
-	<entry id="1402" string="Stop encoding">Спиране на кодирането</entry>
-	<entry id="1403" string="Encoder options">Настройки на енкодера</entry>
-	<entry id="1404" string="Encode to single file">Кодиране в един файл</entry>
-	<entry id="1405" string="Encode to input file folder if possible">Кодиране в папката на входния файл ако е възможно</entry>
-	<entry id="1406" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
-	<entry id="1407" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
-	<entry id="1408" string="Shutdown after encoding">Изключване след кодирането</entry>
+	<entry id="1401" string="Start encoding with">Начало на кодирането с</entry>
+	<entry id="1402" string="Pause/resume encoding">Пауза/продължаване на кодирането</entry>
+	<entry id="1403" string="Stop encoding">Спиране на кодирането</entry>
+	<entry id="1404" string="Encoder options">Настройки на енкодера</entry>
+	<entry id="1405" string="Encode to single file">Кодиране в един файл</entry>
+	<entry id="1406" string="Encode to input file folder if possible">Кодиране в папката на входния файл ако е възможно</entry>
+	<entry id="1407" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
+	<entry id="1408" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
+	<entry id="1409" string="Shutdown after encoding">Изключване след кодирането</entry>
       </section>
 
       <section name="Help">

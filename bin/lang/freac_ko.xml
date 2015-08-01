@@ -76,7 +76,8 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">인코딩 시작</entry>
-	<entry id="1402" string="Stop encoding">인코딩 정지</entry>
+	<entry id="1401" string="Start encoding with">인코딩 시작</entry>
+	<entry id="1403" string="Stop encoding">인코딩 정지</entry>
       </section>
 
       <section name="Help">

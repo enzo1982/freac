@@ -88,14 +88,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Començar codificacio</entry>
-	<entry id="1401" string="Pause/resume encoding">Pausar/continuar codificacio</entry>
-	<entry id="1402" string="Stop encoding">Parar codificacio</entry>
-	<entry id="1403" string="Encoder options">Opcions de codificador</entry>
-	<entry id="1404" string="Encode to single file">Codificar a un sol archiu</entry>
-	<entry id="1405" string="Encode to input file folder if possible">Codificar l'entrada de l'archiu, si es possible</entry>
-	<entry id="1406" string="Allow overwriting input file">Permetre sobreescriure l'archiu d'entrada</entry>
-	<entry id="1407" string="Delete original files after encoding">Eliminar els archius originals al finalisar la codificacio</entry>
-	<entry id="1408" string="Shutdown after encoding">Apagar el PC al finalisar la codificacio</entry>
+	<entry id="1401" string="Start encoding with">Començar codificacio</entry>
+	<entry id="1402" string="Pause/resume encoding">Pausar/continuar codificacio</entry>
+	<entry id="1403" string="Stop encoding">Parar codificacio</entry>
+	<entry id="1404" string="Encoder options">Opcions de codificador</entry>
+	<entry id="1405" string="Encode to single file">Codificar a un sol archiu</entry>
+	<entry id="1406" string="Encode to input file folder if possible">Codificar l'entrada de l'archiu, si es possible</entry>
+	<entry id="1407" string="Allow overwriting input file">Permetre sobreescriure l'archiu d'entrada</entry>
+	<entry id="1408" string="Delete original files after encoding">Eliminar els archius originals al finalisar la codificacio</entry>
+	<entry id="1409" string="Shutdown after encoding">Apagar el PC al finalisar la codificacio</entry>
       </section>
 
       <section name="Help">
