@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -109,6 +109,8 @@ Void BonkEnc::ConfigureLanguage::SelectLanguage()
 		link_url->SetText(i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 		link_url->SetURL(i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 		link_url->SetX(9 + text_info->GetFont().GetUnscaledTextSizeX(i18n->TranslateString("URL").Append(": ")));
+
+		link_url->Paint(SP_PAINT);
 
 		if (i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()) == "internal") btn_edit->Deactivate();
 		else										    btn_edit->Activate();
