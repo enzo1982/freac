@@ -189,6 +189,8 @@ Int BonkEnc::Playback::PlayThread()
 
 			output->WriteData(buffer, bytes);
 		}
+
+		if (!stop) output->Finish();
 	}
 
 	while (!stop && output->IsPlaying()) S::System::System::Sleep(20);
