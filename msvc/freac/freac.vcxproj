@@ -260,7 +260,6 @@
     <ClCompile Include="..\..\src\gui\main_threads.cpp" />
     <ClCompile Include="..\..\src\jobs\job.cpp" />
     <ClCompile Include="..\..\src\jobs\jobmanager.cpp" />
-    <ClCompile Include="..\..\src\tools\encoding.cpp" />
     <ClCompile Include="..\..\src\engine\converter.cpp" />
     <ClCompile Include="..\..\src\engine\decoder.cpp" />
     <ClCompile Include="..\..\src\engine\encoder.cpp" />
@@ -323,7 +322,6 @@
     <ClInclude Include="..\..\include\gui\main_threads.h" />
     <ClInclude Include="..\..\include\jobs\job.h" />
     <ClInclude Include="..\..\include\jobs\jobmanager.h" />
-    <ClInclude Include="..\..\include\tools\encoding.h" />
     <ClInclude Include="..\..\include\engine\converter.h" />
     <ClInclude Include="..\..\include\engine\decoder.h" />
     <ClInclude Include="..\..\include\engine\encoder.h" />
