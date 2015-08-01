@@ -623,7 +623,7 @@ Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
 
 		Job	*job = new JobAddTracks(urls, autoCDRead);
 
-		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&BonkEncGUI::Encode, this);
+		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&BonkEncGUI::Convert, this);
 
 		job->Schedule();
 
@@ -1067,7 +1067,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	i18n->SetContext("Menu::Encode");
 
 	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:31")));
-	entry->onAction.Connect(&BonkEncGUI::Encode, this);
+	entry->onAction.Connect(&BonkEncGUI::Convert, this);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyE, mainWnd);
 
 	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:32")))->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
@@ -1077,7 +1077,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
 
-		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&BonkEncGUI::Encode, this);
+		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&BonkEncGUI::Convert, this);
 	}
 
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0)
@@ -1194,7 +1194,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	mainWnd_iconbar->AddEntry();
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:9")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
-	entry->onAction.Connect(&BonkEncGUI::Encode, this);
+	entry->onAction.Connect(&BonkEncGUI::Convert, this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:10")));
@@ -1214,7 +1214,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	surface->EndPaint();
 }
 
-Void BonkEnc::BonkEncGUI::Encode()
+Void BonkEnc::BonkEncGUI::Convert()
 {
 	/* Resume paused conversions if any.
 	 */
@@ -1245,18 +1245,23 @@ Void BonkEnc::BonkEncGUI::Encode()
 	 */
 	if (joblist->Length() == 0) return;
 
-	/* We can only handle one conversion at a time.
+	/* Detect accidental double clicks.
 	 */
-	if (JobConvert::IsConverting())
-	{
-		BoCA::Utilities::ErrorMessage("A conversion process is already active!");
+	static Int64	 previousTicks = 0;
 
-		return;
-	}
+	if (S::System::System::Clock() - previousTicks < 250) return;
+
+	/* Warn about active conversion.
+	 */
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	if (JobConvert::IsConverting() && QuickMessage(i18n->TranslateString("A conversion process is already active!\n\nWould you like to enqueue this conversion?", "Messages"), i18n->TranslateString("Info"), Message::Buttons::YesNo, Message::Icon::Question) != Message::Button::Yes) return;
 
 	/* Start conversion.
 	 */
 	Converter().Convert(joblist);
+
+	previousTicks = S::System::System::Clock();
 }
 
 Void BonkEnc::BonkEncGUI::PauseResumeEncoding()
