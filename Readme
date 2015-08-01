@@ -48,7 +48,7 @@ Requirements
 	Requirements for running fre:ac:
 
 		Supported operating systems:
-			- Windows XP/Vista/7/8.x (older Windows version might work with some limitations)
+			- Windows XP/Vista/7/8.x/10 (older Windows version might work with some limitations)
 
 		Minimum hardware requirements:
 			- Intel Pentium III or AMD Athlon XP CPU
@@ -63,7 +63,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual C++ v10.0
-		- smooth v0.8.71.0 (http://www.smooth-project.org/)
+		- smooth v0.8.71.3 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
@@ -95,13 +95,16 @@ Known problems
 History
 -------
 
-	Version 1.0.24 (June 2015)
+	Version 1.0.24 (July 2015)
 
 		- added mouse jitter tolerance for tooltips
 		- added sample rate check to FAAC encoder
 		- do not eject discs when user stopped conversion
 		- retain disc number info when converting
+		- fixed visual glitches on Windows 8.x and 10
+		- flat titlebar style on Windows 8.x and 10
 		- made CDDB query dialog modal again
+		- upgraded Vorbis to version 1.3.5 + aoTuV beta 6.03 (2014)
 
 	Version 1.0.23 (November 2014)
 
