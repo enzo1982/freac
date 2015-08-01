@@ -41,6 +41,7 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 	/* Check format of output file in verification step.
 	 */
+	Track	 track  = trackToConvert;
 	Format	 format = trackToConvert.GetFormat();
 
 	if (conversionStep == ConversionStepVerify)
@@ -189,6 +190,11 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 	 */
 	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
 	trackToConvert.length	    = trackLength;
+
+	/* Fix total samples value in case we had
+	 * a wrong or uncertain track length before.
+	 */
+	onFixTotalSamples.Emit(track, trackToConvert);
 
 	return Success();
 }

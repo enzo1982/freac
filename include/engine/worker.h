@@ -54,7 +54,7 @@ namespace BonkEnc
 			Bool					 IsWaiting() const			      { return waiting; }
 
 			const BoCA::Track			&GetTrackToConvert() const		      { return trackToConvert; }
-			Void					 SetTrackToConvert(const BoCA::Track &nTrack) { trackToConvert = nTrack; idle = False; waiting = True; }
+			Void					 SetTrackToConvert(const BoCA::Track &);
 
 			const String				&GetDecoderName() const			      { return decoderName; }
 			ConversionStep				 GetConversionStep() const		      { return conversionStep; }

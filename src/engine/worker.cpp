@@ -19,20 +19,20 @@ BonkEnc::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
 {
 	SetFlags(Threads::THREAD_WAITFLAG_START);
 
-	configuration	  = iConfiguration;
+	configuration	= iConfiguration;
 
-	trackToConvert	  = NIL;
-	trackStartTicks	  = 0;
-	trackPosition	  = 0;
+	trackToConvert	= NIL;
+	trackStartTicks	= 0;
+	trackPosition	= 0;
 
-	conversionStep	  = ConversionStepNone;
+	conversionStep	= ConversionStepNone;
 
-	idle		  = True;
-	waiting		  = True;
+	idle		= True;
+	waiting		= True;
 
-	pause		  = False;
-	cancel		  = False;
-	quit		  = False;
+	pause		= False;
+	cancel		= False;
+	quit		= False;
 
 	threadMain.Connect(&ConvertWorker::Perform, this);
 }
@@ -373,9 +373,10 @@ Int BonkEnc::ConvertWorker::Convert()
 		trackToConvert.sampleOffset = 0;
 		trackToConvert.length	    = trackLength;
 
-		/* Fix total samples value when not encoding on-the-fly.
+		/* Fix total samples value in case we had
+		 * a wrong or uncertain track length before.
 		 */
-		if (conversionStep == ConversionStepDecode) onFixTotalSamples.Emit(track, trackToConvert);
+		onFixTotalSamples.Emit(track, trackToConvert);
 	}
 
 	return Success();
@@ -452,6 +453,16 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 	}
 
 	return trackLength;
+}
+
+Void BonkEnc::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
+{
+	trackToConvert	= nTrack;
+	trackStartTicks	= 0;
+	trackPosition	= 0;
+
+	idle		= False;
+	waiting		= True;
 }
 
 Int BonkEnc::ConvertWorker::Pause(Bool value)
