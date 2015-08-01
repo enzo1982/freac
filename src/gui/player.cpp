@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -204,17 +204,15 @@ Void BonkEnc::LayerPlayer::PlaySelectedItem()
 
 Void BonkEnc::LayerPlayer::PlayPreviousItem()
 {
-	const Array<Track>	*tracks = joblist->GetTrackList();
-
-	for (Int i = 1; i < tracks->Length(); i++)
+	for (Int i = 1; i < joblist->Length(); i++)
 	{
-		const Track	&track = tracks->GetNth(i);
+		const Track	&track = joblist->GetNthTrack(i);
 
 		if (track.GetTrackID() == playingTrack.GetTrackID())
 		{
 			StopPlayback();
 
-			Play(tracks->GetNth(i - 1));
+			Play(joblist->GetNthTrack(i - 1));
 
 			break;
 		}
@@ -223,17 +221,15 @@ Void BonkEnc::LayerPlayer::PlayPreviousItem()
 
 Void BonkEnc::LayerPlayer::PlayNextItem()
 {
-	const Array<Track>	*tracks = joblist->GetTrackList();
-
-	for (Int i = 0; i < tracks->Length() - 1; i++)
+	for (Int i = 0; i < joblist->Length() - 1; i++)
 	{
-		const Track	&track = tracks->GetNth(i);
+		const Track	&track = joblist->GetNthTrack(i);
 
 		if (track.GetTrackID() == playingTrack.GetTrackID())
 		{
 			StopPlayback();
 
-			Play(tracks->GetNth(i + 1));
+			Play(joblist->GetNthTrack(i + 1));
 
 			break;
 		}
@@ -243,6 +239,14 @@ Void BonkEnc::LayerPlayer::PlayNextItem()
 Void BonkEnc::LayerPlayer::Play(const Track &track)
 {
 	playingTrack = track;
+
+	/* Play track.
+	 */
+	Playback	*player = Playback::Get();
+
+	player->Play(playingTrack);
+
+	if (!player->IsPlaying()) return;
 
 	/* Set joblist entry color.
 	 */
@@ -256,12 +260,6 @@ Void BonkEnc::LayerPlayer::Play(const Track &track)
 
 		entry->SetFont(font);
 	}
-
-	/* Play track.
-	 */
-	Playback	*player = Playback::Get();
-
-	player->Play(playingTrack);
 }
 
 Void BonkEnc::LayerPlayer::PauseResumePlayback()
