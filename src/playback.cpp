@@ -112,7 +112,15 @@ Int BonkEnc::Playback::PlayThread()
 
 	output->SetConfiguration(config);
 	output->SetAudioTrackInfo(track);
-	output->Activate();
+
+	if (!output->Activate())
+	{
+		boca.DeleteComponent(output);
+
+		playing = False;
+
+		return Error();
+	}
 
 	/* Create decoder.
 	 */
@@ -120,6 +128,10 @@ Int BonkEnc::Playback::PlayThread()
 
 	if (!decoder->Create(track.origFilename, track))
 	{
+		output->Deactivate();
+
+		boca.DeleteComponent(output);
+
 		delete decoder;
 
 		playing = False;
