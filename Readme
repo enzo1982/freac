@@ -129,18 +129,6 @@ Known problems
 		- Resampling is only supported with LAME. Input files must be at the desired output
 		  sampling rate unless you are encoding with LAME.
 
-		- fre:ac is currently limited to a maximum of 2 audio channels
-
-	Windows specific problems:
-
-		- There are the following restrictions on the input file format:
-
-			- BladeEnc:
-				- audio must be at 32, 44.1 or 48 kHz
-
-			- TwinVQ:
-				- audio must be at 22.05 kHz (24 and 32 kBit) or 44.1 kHz (48 kBit)
-
 	Linux and Unix specific problems:
 
 		- There are no application packages for fre:ac yet, so you need to install dependencies manually for now.
@@ -165,7 +153,7 @@ History
 		- new dialog to confirm overwriting of existing files before conversion
 		- completely reworked LAME configuration dialog
 		- added support for editing configurations during conversions
-		- added support for verifying lossless output files
+		- added support for verifying lossless input and output files
 		- added a simple tag editor
 		- added video downloader extension
 		- added Monkey's Audio encoder/decoder
@@ -216,6 +204,7 @@ History
 		- added a slider for seeking during playback
 		- added a warning when converting from lossy to lossless formats
 		- added the ability to sort the joblist by clicking headers
+		- added basic multi-channel audio support
 		- the time left indicator now shows hours if necessary
 		- the five last used file name patterns are now saved for later use
 		- greatly improved case conversion functions
