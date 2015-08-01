@@ -90,10 +90,6 @@ Int BonkEnc::Playback::PlayThread()
 	BoCA::Config	*config = BoCA::Config::Copy();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	/* Find system byte order.
-	 */
-	Int	 systemByteOrder = CPU().GetEndianness() == EndianLittle ? BYTE_INTEL : BYTE_RAW;
-
 	/* Create output component.
 	 */
 	Registry	&boca = Registry::Get();
@@ -180,10 +176,6 @@ Int BonkEnc::Playback::PlayThread()
 			Int	 bytes = decoder->Read(buffer);
 
 			if (bytes == 0) break;
-
-			/* Switch byte order to native.
-			 */
-			if (format.order != BYTE_NATIVE && format.order != systemByteOrder) BoCA::Utilities::SwitchBufferByteOrder(buffer, bytesPerSample);
 
 			/* Update position and write data.
 			 */

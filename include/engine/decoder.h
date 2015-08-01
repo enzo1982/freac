@@ -29,6 +29,8 @@ namespace BonkEnc
 			String				 fileName;
 			Int64				 sampleOffset;
 
+			BoCA::Format			 format;
+
 			IO::InStream			*stream;
 			BoCA::AS::DecoderComponent	*decoder;
 

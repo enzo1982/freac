@@ -141,8 +141,12 @@ Int BonkEnc::Encoder::Write(Buffer<UnsignedByte> &buffer)
 
 	bytes += buffer.Size();
 
+	/* Calculate MD5 if requested.
+	 */
 	if (calculateMD5) md5.Feed(buffer);
 
+	/* Hand data to encoder component.
+	 */
 	if (stream->OutputData(buffer, buffer.Size()) == False || encoder->GetErrorState()) return -1;
 
 	return buffer.Size();

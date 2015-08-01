@@ -74,6 +74,12 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 				return Success();
 			}
+
+			/* Update track format with decoder format.
+			 */
+			format.order = outFormat.order;
+
+			trackToConvert.SetFormat(format);
 		}
 	}
 

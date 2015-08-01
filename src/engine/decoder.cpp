@@ -41,8 +41,9 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 {
 	static DriverZero	 zero_in;
 
-	Registry	&boca	= Registry::Get();
-	const Format	&format = track.GetFormat();
+	Registry	&boca = Registry::Get();
+
+	format = track.GetFormat();
 
 	if (nFileName.StartsWith("device://")) stream = new InStream(STREAM_DRIVER, &zero_in);
 	else				       stream = new InStream(STREAM_FILE, nFileName, IS_READ);
@@ -166,12 +167,24 @@ Int BonkEnc::Decoder::Read(Buffer<UnsignedByte> &buffer)
 {
 	if (decoder == NIL || stream == NIL) return 0;
 
+	/* Find system byte order.
+	 */
+	static Int	 systemByteOrder = CPU().GetEndianness() == EndianLittle ? BYTE_INTEL : BYTE_RAW;
+
+	/* Get data from decoder component.
+	 */
 	Int	 bytes = stream->InputData(buffer, buffer.Size());
 
 	if (bytes >= 0)
 	{
 		buffer.Resize(bytes);
 
+		/* Switch byte order to native.
+		 */
+		if (format.order != BYTE_NATIVE && format.order != systemByteOrder) BoCA::Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
+
+		/* Calculate MD5 if requested.
+		 */
 		if (calculateMD5) md5.Feed(buffer);
 	}
 

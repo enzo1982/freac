@@ -186,6 +186,12 @@ Int BonkEnc::ConvertWorker::Convert()
 
 					break;
 				}
+
+				/* Update track format with decoder format.
+				 */
+				format.order = outFormat.order;
+
+				trackToConvert.SetFormat(format);
 			}
 		}
 
@@ -381,10 +387,6 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 	 */
 	Int	 ripperTimeout	 = configuration->GetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 
-	/* Find system byte order.
-	 */
-	Int	 systemByteOrder = CPU().GetEndianness() == EndianLittle ? BYTE_INTEL : BYTE_RAW;
-
 	/* Enter conversion loop.
 	 */
 	Format		 format	     = trackToConvert.GetFormat();
@@ -419,10 +421,6 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 
 		if	(bytes == -1) { cancel = True; break; }
 		else if (bytes ==  0)		       break;
-
-		/* Switch byte order to native.
-		 */
-		if (format.order != BYTE_NATIVE && format.order != systemByteOrder) BoCA::Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
 
 		/* Pass samples to verifier.
 		 */
