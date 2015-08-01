@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -24,6 +24,7 @@ BonkEnc::JobManager::JobManager()
 
 	/* Enable R/W locking for job lists.
 	 */
+	Job::GetScheduledJobs().EnableLocking();
 	Job::GetPlannedJobs().EnableLocking();
 	Job::GetRunningJobs().EnableLocking();
 
@@ -76,6 +77,8 @@ Void BonkEnc::JobManager::ManagerThread()
 				job->onFinishJob.Connect(&JobManager::OnFinishJob, this);
 
 				NonBlocking0<>(&Job::Run, job).Call();
+
+				while (planned.Get(job->GetHandle()) == job) S::System::System::Sleep(0);
 
 				break;
 			}
