@@ -230,7 +230,7 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 		{
 			out_filename = GetOutputFileName(trackInfo);
 
-			if (!overwriteAll && File(out_filename).Exists() && !currentConfig->writeToInputDir && !(!currentConfig->enc_onTheFly && step == 0))
+			if (!overwriteAll && File(out_filename).Exists() && !(out_filename.ToLower() == trackInfo->origFilename.ToLower() && currentConfig->writeToInputDir) && !(!currentConfig->enc_onTheFly && step == 0))
 			{
 				MessageDlg	*confirmation = new MessageDlg(String(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?")).Replace("%1", out_filename), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAll);
 
