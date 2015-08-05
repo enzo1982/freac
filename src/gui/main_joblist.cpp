@@ -14,6 +14,8 @@
 #include <config.h>
 #include <utilities.h>
 
+#include <jobs/job.h>
+
 #include <gui/player.h>
 
 #include <dialogs/charset.h>
@@ -1332,7 +1334,7 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 	/* Shutdown system if requested.
 	 */
-	if (success && Config::Get()->shutdownAfterEncoding) S::System::System::Shutdown();
+	if (success && Job::GetPlannedJobs().Length() == 0 && Config::Get()->shutdownAfterEncoding) S::System::System::Shutdown();
 }
 
 Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
