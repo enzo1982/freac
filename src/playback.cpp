@@ -189,6 +189,8 @@ Int BonkEnc::Playback::PlayThread()
 
 			if (bytes == 0) break;
 
+			buffer.Resize(bytes);
+
 			/* Update position and write data.
 			 */
 			position += (bytes / bytesPerSample / format.channels);
@@ -199,7 +201,7 @@ Int BonkEnc::Playback::PlayThread()
 
 			while (output->CanWrite() < bytes && !stop) S::System::System::Sleep(10);
 
-			output->WriteData(buffer, bytes);
+			output->WriteData(buffer);
 		}
 
 		if (!stop) output->Finish();
