@@ -71,7 +71,7 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 				trackPosition = trackToConvert.length;
 
-				onFinishTrack.Emit(trackToConvert);
+				onFinishTrack.Emit(trackToConvert, False);
 
 				return Success();
 			}
@@ -184,7 +184,7 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 
 	/* Report finished conversion.
 	 */
-	onFinishTrack.Emit(trackToConvert);
+	onFinishTrack.Emit(trackToConvert, False);
 
 	/* Update track length and offset.
 	 */

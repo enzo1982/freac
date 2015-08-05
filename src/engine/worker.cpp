@@ -182,7 +182,7 @@ Int BonkEnc::ConvertWorker::Convert()
 
 					trackPosition = trackToConvert.length;
 
-					onFinishTrack.Emit(trackToConvert);
+					onFinishTrack.Emit(trackToConvert, False);
 
 					break;
 				}
@@ -366,7 +366,7 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Report finished conversion.
 		 */
-		onFinishTrack.Emit(trackToConvert);
+		onFinishTrack.Emit(trackToConvert, waiting);
 
 		/* Update track length and offset.
 		 */

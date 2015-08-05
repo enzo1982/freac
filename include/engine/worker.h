@@ -22,52 +22,52 @@ namespace BonkEnc
 	class ConvertWorker : public Threads::Thread
 	{
 		protected:
-			const BoCA::Config			*configuration;
+			const BoCA::Config				*configuration;
 
-			BoCA::Track				 trackToConvert;
-			UnsignedInt64				 trackStartTicks;
-			Int64					 trackPosition;
+			BoCA::Track					 trackToConvert;
+			UnsignedInt64					 trackStartTicks;
+			Int64						 trackPosition;
 
-			String					 decoderName;
-			ConversionStep				 conversionStep;
+			String						 decoderName;
+			ConversionStep					 conversionStep;
 
-			Bool					 idle;
-			Bool					 waiting;
+			Bool						 idle;
+			Bool						 waiting;
 
-			Bool					 pause;
-			Bool					 cancel;
-			Bool					 quit;
+			Bool						 pause;
+			Bool						 cancel;
+			Bool						 quit;
 
-			Int					 Perform();
-			Int64					 Loop(Decoder *, Verifier *, Encoder *);
+			Int						 Perform();
+			Int64						 Loop(Decoder *, Verifier *, Encoder *);
 
-			virtual Int				 Convert();
+			virtual Int					 Convert();
 		public:
-								 ConvertWorker(const BoCA::Config *);
-			virtual					~ConvertWorker();
+									 ConvertWorker(const BoCA::Config *);
+			virtual						~ConvertWorker();
 
-			Int					 Pause(Bool);
-			Int					 Cancel();
-			Int					 Quit();
+			Int						 Pause(Bool);
+			Int						 Cancel();
+			Int						 Quit();
 		accessors:
-			Bool					 IsIdle() const				      { return idle; }
-			Bool					 IsWaiting() const			      { return waiting; }
+			Bool						 IsIdle() const				      { return idle; }
+			Bool						 IsWaiting() const			      { return waiting; }
 
-			const BoCA::Track			&GetTrackToConvert() const		      { return trackToConvert; }
-			Void					 SetTrackToConvert(const BoCA::Track &);
+			const BoCA::Track				&GetTrackToConvert() const		      { return trackToConvert; }
+			Void						 SetTrackToConvert(const BoCA::Track &);
 
-			const String				&GetDecoderName() const			      { return decoderName; }
-			ConversionStep				 GetConversionStep() const		      { return conversionStep; }
+			const String					&GetDecoderName() const			      { return decoderName; }
+			ConversionStep					 GetConversionStep() const		      { return conversionStep; }
 
-			UnsignedInt64				 GetTrackStartTicks() const		      { return trackStartTicks; }
-			Int64					 GetTrackPosition() const		      { return trackPosition; }
+			UnsignedInt64					 GetTrackStartTicks() const		      { return trackStartTicks; }
+			Int64						 GetTrackPosition() const		      { return trackPosition; }
 		signals:
-			Signal1<Void, const BoCA::Track &>	 onFinishTrack;
+			Signal2<Void, const BoCA::Track &, Bool>	 onFinishTrack;
 			Signal2<Void, const BoCA::Track &,
-				      const BoCA::Track &>	 onFixTotalSamples;
+				      const BoCA::Track &>		 onFixTotalSamples;
 
-			Signal1<Void, String>			 onReportError;
-			Signal1<Void, String>			 onReportWarning;
+			Signal1<Void, String>				 onReportError;
+			Signal1<Void, String>				 onReportWarning;
 	};
 };
 

@@ -338,13 +338,6 @@ Error BonkEnc::JobConvert::Perform()
 		}
 	}
 
-	/* Initialize progress values (note that this needs to be done
-	 * after GetSingleOutputFileName in single file mode as otherwise
-	 * the taskbar will not show progress on some versions of Windows).
-	 */
-	progress->InitTotalProgressValues();
-	progress->PauseTotalProgress();
-
 	/* Enter actual conversion routines.
 	 */
 	Int		 encodedTracks	= 0;
@@ -360,7 +353,7 @@ Error BonkEnc::JobConvert::Perform()
 
 	foreach (ConvertWorker *worker, workers)
 	{
-		worker->onFinishTrack.Connect(&Progress::FinalizeTrackProgress, progress);
+		worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
 		worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
 
 		worker->onReportError.Connect(&JobConvert::OnWorkerReportError, this);
@@ -400,6 +393,12 @@ Error BonkEnc::JobConvert::Perform()
 
 		workerProgress.Add(progress);
 	}
+
+	/* Start progress display (note that this needs to be done after
+	 * GetSingleOutputFileName in single file mode as otherwise the
+	 * taskbar will not show progress on some versions of Windows).
+	 */
+	progress->Start();
 
 	/* Main conversion loop.
 	 */
@@ -555,8 +554,7 @@ Error BonkEnc::JobConvert::Perform()
 
 				SetText(String("Converting %1...").Replace("%1", workerTrack.origFilename));
 
-				progress->InitTrackProgressValues(worker->GetTrackStartTicks());
-				progress->UpdateProgressValues(workerTrack, worker->GetTrackPosition());
+				progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 
 				surface->EndPaint();
 
@@ -568,8 +566,7 @@ Error BonkEnc::JobConvert::Perform()
 		 */
 		if (conversionPaused)
 		{
-			progress->PauseTrackProgress();
-			progress->PauseTotalProgress();
+			progress->Pause();
 
 			foreach (ConvertWorker *worker, workers) worker->Pause(True);
 
@@ -577,8 +574,7 @@ Error BonkEnc::JobConvert::Perform()
 
 			foreach (ConvertWorker *worker, workers) worker->Pause(False);
 
-			progress->ResumeTrackProgress();
-			progress->ResumeTotalProgress();
+			progress->Resume();
 		}
 
 		/* Find a free worker thread.
@@ -594,6 +590,8 @@ Error BonkEnc::JobConvert::Perform()
 
 		/* Update total progress values.
 		 */
+		Bool	 first = True;
+
 		foreach (ConvertWorker *worker, workerQueue)
 		{
 			if (worker->IsWaiting()) continue;
@@ -602,13 +600,13 @@ Error BonkEnc::JobConvert::Perform()
 
 			const Track	&workerTrack = worker->GetTrackToConvert();
 
-			if (worker->GetConversionStep() != conversionStep ||
-			    worker->GetDecoderName()	!= decoderName) onEncodeTrack.Emit(original_tracks.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
-																	  conversionStep = worker->GetConversionStep());
+			if (first && (worker->GetConversionStep() != conversionStep ||
+				      worker->GetDecoderName()	  != decoderName)) onEncodeTrack.Emit(original_tracks.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																		     conversionStep = worker->GetConversionStep());
 
-			progress->UpdateProgressValues(workerTrack, worker->GetTrackPosition());
+			first = False;
 
-			break;
+			progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 		}
 
 		/* Update per track progress values.
@@ -660,8 +658,11 @@ Error BonkEnc::JobConvert::Perform()
 			progress->SetY(54 + i * 20);
 			progress->SetWidth(GetWidth() - 16);
 
-			if (workerTrack.length >= 0) progress->SetValue(1000.0 / workerTrack.length * conversionProgress);
-			else			     progress->SetValue(1000.0 / workerTrack.fileSize * conversionProgress);
+			if (conversionProgress > 0)
+			{
+				if (workerTrack.length > 0) progress->SetValue(1000.0 / workerTrack.length * conversionProgress);
+				else			    progress->SetValue(1000.0 / workerTrack.fileSize * conversionProgress);
+			}
 
 			progress->Show();
 		}
@@ -762,9 +763,9 @@ Error BonkEnc::JobConvert::Perform()
 											    conversionStep = workerToUse->GetConversionStep());
 
 				SetText(String("Converting %1...").Replace("%1", track.origFilename));
-
-				progress->InitTrackProgressValues(workerToUse->GetTrackStartTicks());
 			}
+
+			progress->StartTrack(workerToUse->GetTrackToConvert());
 
 			/* Remove track from track list.
 			 */
@@ -774,6 +775,14 @@ Error BonkEnc::JobConvert::Perform()
 		}
 	}
 	while (workerQueue.Length() > 0);
+
+	/* Delete per worker progress displays.
+	 */
+	foreach (Text *text, workerText) DeleteObject(text);
+	foreach (Progressbar *progress, workerProgress) DeleteObject(progress);
+
+	workerText.RemoveAll();
+	workerProgress.RemoveAll();
 
 	SetHeight(51);
 
@@ -794,7 +803,7 @@ Error BonkEnc::JobConvert::Perform()
 		 */
 		ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleFileEncoder);
 
-		worker->onFinishTrack.Connect(&Progress::FinalizeTrackProgress, progress);
+		worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
 		worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
 
 		worker->onReportError.Connect(&JobConvert::OnWorkerReportError, this);
@@ -815,7 +824,7 @@ Error BonkEnc::JobConvert::Perform()
 
 		SetText(String("Verifying %1...").Replace("%1", singleTrack.origFilename));
 
-		progress->InitTrackProgressValues(worker->GetTrackStartTicks());
+		progress->StartTrack(singleTrack);
 
 		/* Loop until finished.
 		 */
@@ -825,7 +834,7 @@ Error BonkEnc::JobConvert::Perform()
 
 			AutoRelease	 autoRelease;
 
-			progress->UpdateProgressValues(singleTrack, worker->GetTrackPosition());
+			progress->UpdateTrack(singleTrack, worker->GetTrackPosition());
 
 			S::System::System::Sleep(25);
 		}

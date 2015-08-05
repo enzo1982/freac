@@ -21,50 +21,43 @@ namespace BonkEnc
 	class Progress
 	{
 		private:
-			Threads::Mutex		 mutex;
+			Threads::Mutex			 mutex;
 
-			Window			*window;
+			Window				*window;
 		protected:
-			const BoCA::Config	*configuration;
+			const BoCA::Config		*configuration;
 
-			UnsignedInt64		 lastInvoked;
+			UnsignedInt64			 lastInvoked;
 
-			Int64			 totalSamples;
-			Int			 totalSamplesMultiplier;
-			Float			 totalSamplesDone;
+			Int64				 totalSamples;
+			Int				 totalSamplesMultiplier;
+			Float				 totalSamplesDone;
 
-			UnsignedInt64		 trackStartTicks;
-			UnsignedInt64		 trackPauseTicks;
+			Array<const BoCA::Track &>	 trackList;
+			Array<UnsignedInt64>		 trackStartTicks;
+			Array<Int64>			 trackPositions;
 
-			UnsignedInt64		 totalStartTicks;
-			UnsignedInt64		 totalPauseTicks;
+			UnsignedInt64			 startTicks;
+			UnsignedInt64			 pauseTicks;
 		public:
-						 Progress(const BoCA::Config *);
-						~Progress();
+							 Progress(const BoCA::Config *);
+							~Progress();
 
-			Void			 ComputeTotalSamples(const Array<BoCA::Track> &);
-			Void			 FixTotalSamples(const BoCA::Track &, const BoCA::Track &);
+			Void				 ComputeTotalSamples(const Array<BoCA::Track> &);
+			Void				 FixTotalSamples(const BoCA::Track &, const BoCA::Track &);
 
-			Int64			 GetTotalSamples()			{ return totalSamples / totalSamplesMultiplier; }
-			Int			 GetTrackTimePassed()			{ return S::System::System::Clock() - trackStartTicks; }
-			Int			 GetTotalTimePassed()			{ return S::System::System::Clock() - totalStartTicks; }
+			Int64				 GetTotalSamples() const;
 
-			Void			 InitTrackProgressValues(UnsignedInt64 = 0);
+			Void				 Start();
+			Void				 Pause();
+			Void				 Resume();
 
-			Void			 PauseTrackProgress();
-			Void			 ResumeTrackProgress();
-
-			Void			 InitTotalProgressValues();
-
-			Void			 PauseTotalProgress();
-			Void			 ResumeTotalProgress();
-
-			Void			 UpdateProgressValues(const BoCA::Track &, Int);
-
-			Void			 FinalizeTrackProgress(const BoCA::Track &);
+			Void				 StartTrack(const BoCA::Track &);
+			Void				 UpdateTrack(const BoCA::Track &, Int64);
+			Void				 FinishTrack(const BoCA::Track &, Bool);
 		signals:
-			Signal2<Void, Int, Int>	 onTrackProgress;
-			Signal2<Void, Int, Int>	 onTotalProgress;
+			Signal2<Void, Int, Int>		 onTrackProgress;
+			Signal2<Void, Int, Int>		 onTotalProgress;
 	};
 };
 
