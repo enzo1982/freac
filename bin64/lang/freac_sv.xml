@@ -870,7 +870,7 @@
       <section name="Donate">
 	<entry id="50000" string="Support this project">Stöd det här projektet</entry>
 	<entry id="50001" string="Please support this project!">Det här projektet behöver ditt stöd!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Hjälp oss att även i framtiden kunna erbjuda detta program#10;helt gratis genom att donera en slant till projektet %1.&#10;&#10;Klicka på en av knapparna nedan för att donera via PayPal:</entry>
+	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Hjälp oss att även i framtiden kunna erbjuda detta program helt&#10;gratis genom att donera en slant till projektet %1.&#10;&#10;Klicka på en av knapparna nedan för att donera via PayPal:</entry>
 	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Du kan även skicka pengar direkt till %1 via PayPal.&#10;&#10;Skriv till %1 om du önskar göra en donation via&#10;elektronisk överföring, eller en check/pengar via posten.</entry>
 	<entry id="50004" string="usd">eur</entry>
 	<entry id="50005" string="en">en</entry>
