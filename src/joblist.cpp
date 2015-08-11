@@ -385,7 +385,7 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 	}
 }
 
-Void BonkEnc::JobList::FindTracksByPattern(Array<String> &jobFiles, const String &directory, const String &pattern, Bool searchSubDirectories)
+Void BonkEnc::JobList::FindTracksByPattern(Array<String> &jobFiles, const String &directory, const String &pattern, Bool searchSubDirectories) const
 {
 	Directory	 dir = Directory(directory);
 
@@ -700,19 +700,16 @@ Void BonkEnc::JobList::SaveList()
 
 Bool BonkEnc::JobList::SortsAfter(const String &str1, const String &str2) const
 {
-	String	 str1l = str1.ToLower();
-	String	 str2l = str2.ToLower();
-
-	Int	 length = Math::Min(str1l.Length(), str2l.Length());
+	Int	 length = Math::Min(str1.Length(), str2.Length());
 
 	for (Int i = 0; i < length; i++)
 	{
-		if	(str1l[i] > str2l[i]) return True;
-		else if	(str1l[i] < str2l[i]) return False;
+		if	(str1[i] > str2[i]) return True;
+		else if	(str1[i] < str2[i]) return False;
 	}
 
-	if (str1l.Length() > str2l.Length()) return True;
-	else				     return False;
+	if (str1.Length() > str2.Length()) return True;
+	else				   return False;
 }
 
 Void BonkEnc::JobList::OnRegister(Widget *container)
@@ -757,6 +754,10 @@ Void BonkEnc::JobList::OnMarkEntry(ListEntry *entry)
 Void BonkEnc::JobList::OnClickTab(Int n)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
+
+	/* Operate on a copy of the actual track list to avoid locking.
+	 */
+	Array<Track>	 tracks = this->tracks;
 
 	/* Find sorting criteria.
 	 */
@@ -804,7 +805,7 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 
 	for (Int i = 0; sortByType && i < tracks.Length(); i++)
 	{
-		const Track	&track = GetNthTrack(i);
+		const Track	&track = tracks.Get(GetNthEntry(i)->GetHandle());
 
 		if	(track.origFilename.Contains("://")) fileTypes.Add(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
 		else if (track.origFilename.Contains("."))   fileTypes.Add(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
@@ -812,7 +813,7 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 
 	for (Int i = 0; sortByOutput && i < tracks.Length(); i++)
 	{
-		const Track	&track	  = GetNthTrack(i);
+		const Track	&track	  = tracks.Get(GetNthEntry(i)->GetHandle());
 		String		 fileName = Utilities::GetOutputFileName(track);
 
 		outputFileNames.Add(fileName.Tail(fileName.Length() - config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault).Length()));
@@ -822,15 +823,27 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 	 */
 	for (Int i = 1; i < tracks.Length(); i++)
 	{
-		const Track	&thisTrack  = GetNthTrack(i);
-		const Info	&thisInfo   = thisTrack.GetInfo();
+		Track		&thisTrack  = tracks.GetReference(GetNthEntry(i)->GetHandle());
+		Info		 thisInfo   = thisTrack.GetInfo();
 		const Format	&thisFormat = thisTrack.GetFormat();
 
-		Int		 offset	    = 0;
+		if	(sortByArtist) thisInfo.artist	      = thisInfo.artist.ToLower();
+		else if (sortByAlbum)  thisInfo.album	      = thisInfo.album.ToLower();
+		else if (sortByTitle)  thisInfo.title	      = thisInfo.title.ToLower();
+		else if (sortByGenre)  thisInfo.genre	      = thisInfo.genre.ToLower();
+
+		else if (sortByFile)   thisTrack.origFilename = thisTrack.origFilename.ToLower();
+
+		else if (sortByType)   fileTypes.SetNth(i, fileTypes.GetNth(i).ToLower());
+		else if (sortByOutput) outputFileNames.SetNth(i, outputFileNames.GetNth(i).ToLower());
+
+		thisTrack.SetInfo(thisInfo);
+
+		Int		 offset	      = 0;
 
 		for (Int j = i - 1; j >= 0; j--)
 		{
-			const Track	&prevTrack  = GetNthTrack(j);
+			const Track	&prevTrack  = tracks.Get(GetNthEntry(j)->GetHandle());
 			const Info	&prevInfo   = prevTrack.GetInfo();
 			const Format	&prevFormat = prevTrack.GetFormat();
 
