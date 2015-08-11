@@ -47,6 +47,8 @@ namespace BonkEnc
 							 Job();
 			virtual				~Job();
 
+			static String			 SecondsToString(UnsignedInt);
+
 			virtual Int			 Paint(Int);
 
 			Int				 Schedule();
@@ -71,10 +73,10 @@ namespace BonkEnc
 			Int				 SetText(const String &);
 
 			Int				 SetProgress(Int);
-			Int				 GetProgress();
+			Int				 GetProgress() const;
 
-			const Array<String>		&GetErrors()		{ return errors; }
-			const Array<String>		&GetWarnings()		{ return warnings; }
+			const Array<String>		&GetErrors() const	{ return errors; }
+			const Array<String>		&GetWarnings() const	{ return warnings; }
 
 			static const Array<Job *>	&GetScheduledJobs()	{ return scheduled; }
 			static const Array<Job *>	&GetPlannedJobs()	{ return planned; }

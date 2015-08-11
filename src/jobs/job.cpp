@@ -37,7 +37,7 @@ BonkEnc::Job::Job() : ListEntry("Job")
 
 	progress	= new Progressbar(Point(progressLabel->GetX() + progressLabel->GetUnscaledTextWidth() + 7, progressLabel->GetY() - 3), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 
-	timeValue	= new EditBox("00:00", Point(43, progress->GetY()), Size(35, 0), 0);
+	timeValue	= new EditBox("00:00", Point(42, progress->GetY()), Size(34, 0), 0);
 	timeValue->SetOrientation(OR_UPPERRIGHT);
 	timeValue->Deactivate();
 
@@ -170,7 +170,29 @@ Void BonkEnc::Job::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
+	Surface	*surface    = GetDrawSurface();
+
+	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+
+	progress->Hide();
+	progressValue->Hide();
+
+	timeLabel->Hide();
+	timeValue->Hide();
+
 	progress->SetWidth(clientSize.cx - progressLabel->GetUnscaledTextWidth() - progressValue->GetWidth() - timeLabel->GetUnscaledTextWidth() - timeValue->GetWidth() - 36);
+	progressValue->SetX(timeLabel->GetUnscaledTextWidth() + timeValue->GetWidth() + 56);
+
+	timeLabel->SetX(timeLabel->GetUnscaledTextWidth() + timeValue->GetWidth() + 15);
+	timeValue->SetX(timeValue->GetWidth() + 8);
+
+	progress->Show();
+	progressValue->Show();
+
+	timeLabel->Show();
+	timeValue->Show();
+
+	surface->EndPaint();
 }
 
 Void BonkEnc::Job::OnDoubleClick()
@@ -272,20 +294,16 @@ Int BonkEnc::Job::SetProgress(Int nValue)
 
 	if (secondsLeft < previousSecondsLeft || secondsLeft >= previousSecondsLeft + 2)
 	{
-		String	 buffer = String::FromInt(secondsLeft / 60);
-		String	 text	= "0";
+		String	 secondsString = SecondsToString(secondsLeft);
 
-		if (buffer.Length() == 1) text.Append(buffer);
-		else			  text.Copy(buffer);
+		timeValue->SetText(secondsString);
 
-		text.Append(":");
+		if (timeValue->GetWidth() != Math::Max(34, timeValue->GetUnscaledTextWidth() + 6))
+		{
+			timeValue->SetWidth(Math::Max(34, timeValue->GetUnscaledTextWidth() + 6));
 
-		buffer = String::FromInt(secondsLeft % 60);
-
-		if (buffer.Length() == 1) text.Append(String("0").Append(buffer));
-		else			  text.Append(buffer);
-
-		timeValue->SetText(text);
+			OnChangeSize(GetSize());
+		}
 
 		previousSecondsLeft = secondsLeft;
 	}
@@ -293,7 +311,49 @@ Int BonkEnc::Job::SetProgress(Int nValue)
 	return Success();
 }
 
-Int BonkEnc::Job::GetProgress()
+Int BonkEnc::Job::GetProgress() const
 {
 	return progress->GetValue();
+}
+
+String BonkEnc::Job::SecondsToString(UnsignedInt seconds)
+{
+	if (seconds >= 360000) return "??:??:??";
+
+	static String	 zeroString  = "0";
+	static String	 colonString = ":";
+
+	String	 buffer;
+	String	 text;
+
+	/* Append hours.
+	 */
+	if (seconds >= 3600)
+	{
+		buffer = String::FromInt(seconds / 3600);
+
+		if (buffer.Length() == 1) text.Append(zeroString);
+
+		text.Append(buffer);
+		text.Append(colonString);
+	}
+
+	/* Append minutes.
+	 */
+	buffer = String::FromInt(seconds % 3600 / 60);
+
+	if (buffer.Length() == 1) text.Append(zeroString);
+
+	text.Append(buffer);
+	text.Append(colonString);
+
+	/* Append seconds.
+	 */
+	buffer = String::FromInt(seconds % 3600 % 60);
+
+	if (buffer.Length() == 1) text.Append(zeroString);
+
+	text.Append(buffer);
+
+	return text;
 }
