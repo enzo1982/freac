@@ -140,8 +140,6 @@ namespace BonkEnc
 			Void			 ShowCoverArea();
 			Void			 HideCoverArea();
 
-			String			 SecondsToString(Int);
-
 			String			 AdjustCaseFirstCapital(const String &);
 			String			 AdjustCaseWordsFirstCapital(const String &);
 			String			 AdjustCaseLongWordsFirstCapital(const String &);

@@ -1399,7 +1399,7 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 	{
 		/* Set track time string.
 		 */
-		String	 secondsString = SecondsToString(secondsLeft);
+		String	 secondsString = Job::SecondsToString(secondsLeft);
 
 		edb_trackTime->SetText(secondsString);
 
@@ -1432,7 +1432,7 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 	{
 		/* Set total time string.
 		 */
-		String	 secondsString = SecondsToString(secondsLeft);
+		String	 secondsString = Job::SecondsToString(secondsLeft);
 
 		edb_totalTime->SetText(secondsString);
 
@@ -1661,48 +1661,6 @@ Void BonkEnc::LayerJoblist::ToggleEditPopup()
 	menu_case_all->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
 	menu_case_all->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
 	menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
-}
-
-String BonkEnc::LayerJoblist::SecondsToString(Int seconds)
-{
-	if (seconds >= 360000) return "??:??:??";
-
-	static String	 zeroString  = "0";
-	static String	 colonString = ":";
-
-	String	 buffer;
-	String	 text;
-
-	/* Append hours.
-	 */
-	if (seconds >= 3600)
-	{
-		buffer = String::FromInt(seconds / 3600);
-
-		if (buffer.Length() == 1) text.Append(zeroString);
-
-		text.Append(buffer);
-		text.Append(colonString);
-	}
-
-	/* Append minutes.
-	 */
-	buffer = String::FromInt(seconds % 3600 / 60);
-
-	if (buffer.Length() == 1) text.Append(zeroString);
-
-	text.Append(buffer);
-	text.Append(colonString);
-
-	/* Append seconds.
-	 */
-	buffer = String::FromInt(seconds % 3600 % 60);
-
-	if (buffer.Length() == 1) text.Append(zeroString);
-
-	text.Append(buffer);
-
-	return text;
 }
 
 String BonkEnc::LayerJoblist::AdjustCaseFirstCapital(const String &string)
