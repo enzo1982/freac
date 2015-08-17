@@ -776,6 +776,14 @@ Error BonkEnc::JobConvert::Perform()
 	}
 	while (workerQueue.Length() > 0);
 
+	/* Clean up worker threads.
+	 */
+	foreach (ConvertWorker *worker, workers) worker->Quit();
+	foreach (ConvertWorker *worker, workers) worker->Wait();
+	foreach (ConvertWorker *worker, workers) delete worker;
+
+	workers.RemoveAll();
+
 	/* Delete per worker progress displays.
 	 */
 	foreach (Text *text, workerText) DeleteObject(text);
@@ -923,14 +931,6 @@ Error BonkEnc::JobConvert::Perform()
 
 		Config::Get()->deleteAfterEncoding = False;
 	}
-
-	/* Clean up worker threads.
-	 */
-	foreach (ConvertWorker *worker, workers) worker->Quit();
-	foreach (ConvertWorker *worker, workers) worker->Wait();
-	foreach (ConvertWorker *worker, workers) delete worker;
-
-	workers.RemoveAll();
 
 	/* Clean up.
 	 */
