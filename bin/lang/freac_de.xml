@@ -587,6 +587,11 @@
 	<entry id="11001" string="Active decoder">Aktiver Dekodierer</entry>
 	<entry id="11002" string="auto select">automatische Auswahl</entry>
       </section>
+
+      <section name="CueSheet">
+	<entry id="12000" string="Alternative files">Alternative Dateien</entry>
+	<entry id="12001" string="Look for compressed alternatives if referenced Wave files cannot be located">Suche nach komprimierten Alternativen, wenn referenzierte Wave-Dateien nicht gefunden werden</entry>
+      </section>
     </section>
 
     <section name="Encoders">
