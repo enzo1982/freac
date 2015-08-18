@@ -150,7 +150,7 @@ Int BonkEnc::FilterInWMA::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 	/* Update inBytes to indicate progress.
 	 */
-	inBytes += format->fileSize * data.Size() / (format->approxLength * (format->bits / 8));
+	if (format->approxLength > 0) inBytes += format->fileSize * data.Size() / (format->approxLength * (format->bits / 8));
 
 	return data.Size();
 }
