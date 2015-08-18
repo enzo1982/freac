@@ -97,6 +97,7 @@ History
 
 	Version 1.0.25 CVS (August 2015)
 
+		- updated Swedish translation
 		- fixed existing files being overwritten in "Output to input folder" mode
 		- fixed crash when trying to decode WMA files without duration field set
 

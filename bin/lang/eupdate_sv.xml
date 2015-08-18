@@ -15,14 +15,14 @@
     <entry id="3" string="Show unstable releases">Visa instabila versioner</entry>
     <entry id="4" string="Select the updated program version to be installed:">Välj den programuppdatering som du vill installera:</entry>
     <entry id="5" string="You can select optional components to be installed:">Du kan även välja att installera valfria tillvalskomponenter:</entry>
-    <entry id="6" string="Version ID">Versions-ID</entry>
+    <entry id="6" string="Version ID">Versions-id</entry>
     <entry id="7" string="Package">Paket</entry>
     <entry id="8" string="Description">Beskrivning</entry>
     <entry id="9" string="Latest">Senaste</entry>
     <entry id="10" string="Size">Storlek</entry>
     <entry id="11" string="Yes">Ja</entry>
     <entry id="12" string="No">Nej</entry>
-    <entry id="13" string="unknown">okänd</entry>
+    <entry id="13" string="unknown">i.u.</entry>
     <entry id="14" string="Installing files...">Installerar filer …</entry>
     <entry id="15" string="Installing file:">Installerar fil:</entry>
     <entry id="16" string="Downloading file:">Hämtar fil:</entry>
