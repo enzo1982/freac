@@ -61,7 +61,7 @@
     <entry id="48" string="%1 encoder configuration">%1 kodeatzaile itxurapena</entry>
     <entry id="49" string="OK">Ongi</entry>
     <entry id="50" string="Cancel">Ezeztatu</entry>
-    <entry id="51" string="Encoding Mode">Kodeaketa Moduta</entry>
+    <entry id="51" string="Encoding Mode">Kodeaketa Modua</entry>
     <entry id="52" string="Variable Bitrate">Bitneurri Aldakorra</entry>
     <entry id="53" string="Average Bitrate">Bataz-besteko Bitneurria</entry>
     <entry id="54" string="Quality">Ontasuna</entry>
@@ -91,7 +91,7 @@
     <entry id="78" string="No scratch repair">Urradura konponketarik ez</entry>
     <entry id="79" string="Full cdparanoia mode">cdparanoia osoa modua</entry>
     <entry id="80" string="Bitrate">Bitneurria</entry>
-    <entry id="81" string="Copyright bit">Copyraight bita</entry>
+    <entry id="81" string="Copyright bit">Copyright bita</entry>
     <entry id="82" string="CRC">CRC</entry>
     <entry id="83" string="Original bit">Jatorrizko bita</entry>
     <entry id="84" string="Channels">Bideak</entry>
@@ -297,7 +297,7 @@
     <entry id="293" string="Fastest encoding">Kodeaketa azkarrena</entry>
     <entry id="294" string="Best compression">Konpresio hoberena</entry>
     <entry id="295" string="Linear predictor">Iragarle linearra</entry>
-    <entry id="296" string="Maximum LPC order">Gehinezko LPC ordena</entry>
+    <entry id="296" string="Maximum LPC order">Gehienezko LPC ordena</entry>
     <entry id="297" string="Quantized LPC precision">LPC zehazpen kuantizatua</entry>
     <entry id="298" string="Exhaustive model search">Modelo bilaketa gogorra</entry>
     <entry id="299" string="Optimize LPC quantization">Hoberendu LPC kuantizazioa</entry>
@@ -335,7 +335,7 @@
     <entry id="331" string="Disc name">Diskaren izena</entry>
     <entry id="332" string="Charset">Hizki-kodeaketa</entry>
     <entry id="333" string="Preview">Aurreikuspena</entry>
-    <entry id="334" string="Downloaded CDDB entries:">Jeitsitasko CDDB sarrerak:</entry>
+    <entry id="334" string="Downloaded CDDB entries:">Jeitsitako CDDB sarrerak:</entry>
     <entry id="335" string="User name:">Erabiltzaile izena:</entry>
     <entry id="336" string="Password:">Sarhitza:</entry>
     <entry id="337" string="Delete original files after encoding">Ezabatu jatorrizko agiriak kodeatu ondoren</entry>
@@ -383,9 +383,9 @@
     <entry id="379" string="Read CD Text">Irakurri CD Text</entry>
     <entry id="380" string="Read cdplayer.ini">Irakurri cdplayer.ini</entry>
     <entry id="381" string="Apodization">Izenordepena</entry>
-    <entry id="382" string="Apodization function(s):">Izenordepen eginkizuna(k):</entry>
+    <entry id="382" string="Apodization function(s):">Izenordezte eginkizuna(k):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Eginkizun anitz adierazi ditzakezu ';' bananduta.</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1-k berezgaitasunezko egiaztapen bat egin dezake&#10;programaren onlineko eguneraketentzat abiatzerakoan.&#10;&#10;Nahi duzu %1-k abiatzerakoan egunerak begiratzea?</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1-k berezgaitasunezko egiaztapen bat egin dezake&#10;programaren onlineko eguneraketentzat abiatzerakoan.&#10;&#10;Nahi duzu %1-k abiatzerakoan eguneraketak begiratzea?</entry>
     <entry id="385" string="Cannot access input file: %1">Ez dago sarbiderik sarrera agirira: %1</entry>
     <entry id="386" string="Cannot create output file: %1">Ezin da irteera agiria sortu: %1</entry>
     <entry id="387" string="File not found">Agiria ez da aurkitu</entry>
