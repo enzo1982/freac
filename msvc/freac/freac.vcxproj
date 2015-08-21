@@ -333,7 +333,6 @@
     <None Include="..\..\src\support\notification_osx.mm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
-    <None Include="VTune\freac.vpj" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\resources\resources.rc">
