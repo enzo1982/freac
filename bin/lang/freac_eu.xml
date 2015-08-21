@@ -258,7 +258,7 @@
 	<entry id="4400" string="CDDB data">CDDB datuak</entry>
 	<entry id="4401" string="Update joblist with this information">Eguneratu lan-zerrenda argibide hauekin</entry>
 	<entry id="4402" string="Charset">Hizki-kodeaketa</entry>
-	<entry id="4403" string="Downloaded CDDB entries">Jeitsitasko CDDB sarrerak</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Jeitsitako CDDB sarrerak</entry>
 	<entry id="4404" string="Disc name">Diskaren izena</entry>
 	<entry id="4405" string="Preview">Aurreikuspena</entry>
 	<entry id="4406" string="Remove entry">Kendu sarrera</entry>
@@ -370,7 +370,7 @@
       <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">%1-rako eguneraketa berri bat dago eskuragarri online!&#10;Nahi duzu eguneraketa eskuragarrien zerrenda bat ikustea orain?</entry>
       <entry id="6101" string="There are no updates available at the moment!">Ez dago eguneraketarik eskuragarri une honetan!</entry>
       <entry id="6102" string="Check for updates at startup">Egiaztatu eguneraketak hasieran</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1-k berezgaitasunezko egiaztapen bat egin dezake&#10;programaren onlineko eguneraketentzat abiatzerakoan.&#10;&#10;Nahi duzu %1-k abiatzerakoan egunerak begiratzea?</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1-k berezgaitasunezko egiaztapen bat egin dezake&#10;programaren onlineko eguneraketentzat abiatzerakoan.&#10;&#10;Nahi duzu %1-k abiatzerakoan eguneraketak begiratzea?</entry>
     </section>
 
     <section name="Tips">
@@ -443,7 +443,7 @@
 
       <section name="BladeEnc">
 	<entry id="30000" string="Bitrate">Bitneurria</entry>
-	<entry id="30001" string="Copyright bit">Copyraight bita</entry>
+	<entry id="30001" string="Copyright bit">Copyright bita</entry>
 	<entry id="30002" string="CRC">CRC</entry>
 	<entry id="30003" string="Original bit">Jatorrizko bita</entry>
 	<entry id="30004" string="Channels">Bideak</entry>
@@ -586,11 +586,11 @@
 
 	<section name="Expert">
 	  <entry id="34300" string="Signal processing">Izenordepena</entry>
-	  <entry id="34301" string="Window function(s)">Izenordepen eginkizuna(k)</entry>
+	  <entry id="34301" string="Window function(s)">Izenordezte eginkizuna(k)</entry>
 	  <entry id="34302" string="Note">Oharra</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Eginkizun anitz adierazi ditzakezu ';' bananduta.</entry>
 	  <entry id="34304" string="Linear predictor">Iragarle linearra</entry>
-	  <entry id="34305" string="Maximum LPC order">Gehinezko LPC ordena</entry>
+	  <entry id="34305" string="Maximum LPC order">Gehienezko LPC ordena</entry>
 	  <entry id="34306" string="disabled">ezgaituta</entry>
 	  <entry id="34307" string="Exhaustive model search">Modelo bilaketa gogorra</entry>
 	  <entry id="34308" string="Quantized LPC precision">LPC zehazpen kuantizatua</entry>
@@ -603,7 +603,7 @@
       </section>
 
       <section name="Vorbis">
-	<entry id="35000" string="Encoding Mode">Kodeaketa Moduta</entry>
+	<entry id="35000" string="Encoding Mode">Kodeaketa Modua</entry>
 	<entry id="35001" string="Variable Bitrate">Bitneurri Aldakorra</entry>
 	<entry id="35002" string="Average Bitrate">Bataz-besteko Bitneurria</entry>
 	<entry id="35003" string="Quality">Ontasuna</entry>
