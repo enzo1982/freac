@@ -819,9 +819,9 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 		outputFileNames.Add(fileName.Tail(fileName.Length() - config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault).Length()));
 	}
 
-	/* Sort the list using gnome sort.
+	/* Sort the list using insertion sort.
 	 */
-	for (Int i = 1; i < tracks.Length(); i++)
+	for (Int i = 0; i < tracks.Length(); i++)
 	{
 		Track		&thisTrack  = tracks.GetReference(GetNthEntry(i)->GetHandle());
 		Info		 thisInfo   = thisTrack.GetInfo();
@@ -839,43 +839,49 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 
 		thisTrack.SetInfo(thisInfo);
 
-		Int		 offset	      = 0;
+		/* Find position using optimized binary search.
+		 */
+		Int	 bottom = 0;
+		Int	 top	= i - 1;
 
-		for (Int j = i - 1; j >= 0; j--)
+		while (top >= bottom)
 		{
-			const Track	&prevTrack  = tracks.Get(GetNthEntry(j)->GetHandle());
-			const Info	&prevInfo   = prevTrack.GetInfo();
-			const Format	&prevFormat = prevTrack.GetFormat();
+			/* Select element to compare optimizing for pre-sorted lists by
+			 * selecting i - 1 initially before sticking to binary search.
+			 */
+			Int	 m = (top == i - 1 ? top : (top + bottom) / 2);
 
-			if ((sortByArtist &&  SortsAfter(prevInfo.artist, thisInfo.artist)											  ) ||
-			    (sortByAlbum  &&  SortsAfter(prevInfo.album, thisInfo.album)											  ) ||
-			    (sortByTitle  &&  SortsAfter(prevInfo.title, thisInfo.title)											  ) ||
-			    (sortByGenre  &&  SortsAfter(prevInfo.genre, thisInfo.genre)											  ) ||
-			    (sortByFile	  &&  SortsAfter(prevTrack.origFilename, thisTrack.origFilename)									  ) ||
-			    (sortByType	  &&  SortsAfter(fileTypes.GetNth(j), fileTypes.GetNth(i))										  ) ||
-			    (sortByOutput &&  SortsAfter(outputFileNames.GetNth(j), outputFileNames.GetNth(i))									  ) ||
-			    (sortByDisc	  &&  prevInfo.disc						       >  thisInfo.disc							  ) ||
-			    (sortByTrack  &&  prevInfo.track						       >  thisInfo.track						  ) ||
-			    (sortByRating &&  prevInfo.rating						       >  thisInfo.rating						  ) ||
-			    (sortByTime	  && (prevTrack.length > 0 ? prevTrack.length :
-								     prevTrack.approxLength) / prevFormat.rate > (thisTrack.length > 0 ? thisTrack.length :
+			/* Perform comparison.
+			 */
+			const Track	&compTrack  = tracks.Get(GetNthEntry(m)->GetHandle());
+			const Info	&compInfo   = compTrack.GetInfo();
+			const Format	&compFormat = compTrack.GetFormat();
+
+			if ((sortByArtist &&  SortsAfter(compInfo.artist, thisInfo.artist)											  ) ||
+			    (sortByAlbum  &&  SortsAfter(compInfo.album, thisInfo.album)											  ) ||
+			    (sortByTitle  &&  SortsAfter(compInfo.title, thisInfo.title)											  ) ||
+			    (sortByGenre  &&  SortsAfter(compInfo.genre, thisInfo.genre)											  ) ||
+			    (sortByFile	  &&  SortsAfter(compTrack.origFilename, thisTrack.origFilename)									  ) ||
+			    (sortByType	  &&  SortsAfter(fileTypes.GetNth(m), fileTypes.GetNth(i))										  ) ||
+			    (sortByOutput &&  SortsAfter(outputFileNames.GetNth(m), outputFileNames.GetNth(i))									  ) ||
+			    (sortByDisc	  &&  compInfo.disc						       >  thisInfo.disc							  ) ||
+			    (sortByTrack  &&  compInfo.track						       >  thisInfo.track						  ) ||
+			    (sortByRating &&  compInfo.rating						       >  thisInfo.rating						  ) ||
+			    (sortByTime	  && (compTrack.length > 0 ? compTrack.length :
+								     compTrack.approxLength) / compFormat.rate > (thisTrack.length > 0 ? thisTrack.length :
 																	 thisTrack.approxLength) / thisFormat.rate) ||
-			    (sortByBytes  &&  prevTrack.fileSize					       >  thisTrack.fileSize						  ))
-			{
-				offset++;
-
-				continue;
-			}
-
-			break;
+			    (sortByBytes  &&  compTrack.fileSize					       >  thisTrack.fileSize						  )) top    = m - 1;
+			else																			     bottom = m + 1;
 		}
 
-		if (offset > 0)
+		/* Move element to target position.
+		 */
+		if (Math::Max(top, bottom) != i)
 		{
-			MoveEntry(i, i - offset);
+			MoveEntry(i, Math::Max(top, bottom));
 
-			if (sortByType)	  fileTypes.MoveNth(i, i - offset);
-			if (sortByOutput) outputFileNames.MoveNth(i, i - offset);
+			if (sortByType)	  fileTypes.MoveNth(i, Math::Max(top, bottom));
+			if (sortByOutput) outputFileNames.MoveNth(i, Math::Max(top, bottom));
 		}
 	}
 
