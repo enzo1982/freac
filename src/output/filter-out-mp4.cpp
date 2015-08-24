@@ -129,6 +129,29 @@ Bool BonkEnc::FilterOutMP4::Deactivate()
 			else if (currentConfig->default_comment != NIL)			 ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
 		}
 
+		/* Save cover art.
+		 */
+		if (currentConfig->copy_picture_tags)
+		{
+			/* Put front and back covers first.
+			 */
+			Array<const Picture *>	 pictures;
+
+			foreach (const Picture *picInfo, format->pictures)
+			{
+				if	(picInfo->type == 3) pictures.InsertAtPos(0, picInfo);
+				else if	(picInfo->type == 4) pictures.InsertAtPos((pictures.Length() > 0 && pictures.GetFirst()->type == 3) ? 1 : 0, picInfo);
+				else			     pictures.Add(picInfo);
+			}
+
+			/* Add cover art to tag.
+			 */
+			foreach (const Picture *picInfo, pictures)
+			{
+				ex_MP4SetMetadataCoverArt(mp4File, (BYTE *) (UnsignedByte *) picInfo->data, (uint32_t) picInfo->data.Size());
+			}
+		}
+
 		String::SetOutputFormat(prevOutFormat);
 	}
 

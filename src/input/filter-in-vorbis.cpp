@@ -260,6 +260,7 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 			nFormat->outfile   = NIL;
 
 			String	 prevInFormat = String::SetInputFormat("UTF-8");
+			Int	 numCovers    = 0;
 
 			for (Int j = 0; j < fvc.comments; j++)
 			{
@@ -278,6 +279,65 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 				else if (id == "COMMENT")	nFormat->comment   = comment.Tail(comment.Length() - 8);
 				else if (id == "ORGANIZATION")	nFormat->label	   = comment.Tail(comment.Length() - 13);
 				else if (id == "ISRC")		nFormat->isrc	   = comment.Tail(comment.Length() - 5);
+
+				else if (id == "METADATA_BLOCK_PICTURE")
+				{
+					/* This is the official way to store cover art in Vorbis
+					 * comments. It is used by most newer software.
+					 */
+					Picture			*picture = new Picture();
+					Buffer<UnsignedByte>	 buffer;
+
+					Encoding::Base64(buffer).Decode(comment.Tail(comment.Length() - 23));
+
+					InStream		 picIn(STREAM_BUFFER, buffer, buffer.Size());
+
+					picture->type	     = picIn.InputNumberRaw(4);
+					picture->mime	     = picIn.InputString(picIn.InputNumberRaw(4));
+					picture->description = picIn.InputString(picIn.InputNumberRaw(4));
+
+					picIn.RelSeek(16);
+
+					Int	 dataSize = picIn.InputNumberRaw(4);
+
+					picture->data.Resize(dataSize);
+
+					memcpy(picture->data, buffer + picIn.GetPos(), dataSize);
+
+					if	(picture->data[0] == 0xFF && picture->data[1] == 0xD8) picture->mime = "image/jpeg";
+					else if (picture->data[0] == 0x89 && picture->data[1] == 0x50 &&
+						 picture->data[2] == 0x4E && picture->data[3] == 0x47 &&
+						 picture->data[4] == 0x0D && picture->data[5] == 0x0A &&
+						 picture->data[6] == 0x1A && picture->data[7] == 0x0A) picture->mime = "image/png";
+
+					if (picture->mime != "-->") nFormat->pictures.Add(picture);
+				}
+				else if (id == "COVERART")
+				{
+					/* This is an unofficial way to store cover art in Vorbis
+					 * comments. It is used by some existing software.
+					 */
+					Picture			*picture = new Picture();
+					Buffer<UnsignedByte>	 buffer;
+
+					Encoding::Base64(buffer).Decode(comment.Tail(comment.Length() - 9));
+
+					picture->data = buffer;
+
+					if	(picture->data[0] == 0xFF && picture->data[1] == 0xD8) picture->mime = "image/jpeg";
+					else if (picture->data[0] == 0x89 && picture->data[1] == 0x50 &&
+						 picture->data[2] == 0x4E && picture->data[3] == 0x47 &&
+						 picture->data[4] == 0x0D && picture->data[5] == 0x0A &&
+						 picture->data[6] == 0x1A && picture->data[7] == 0x0A) picture->mime = "image/png";
+
+					if	(numCovers == 0) picture->type = 3; // Cover (front)
+					else if (numCovers == 1) picture->type = 4; // Cover (back)
+					else			 picture->type = 0; // Other
+
+					nFormat->pictures.Add(picture);
+
+					numCovers++;
+				}
 			}
 
 			String::SetInputFormat(prevInFormat);

@@ -160,6 +160,37 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 	if (ex_MP4GetMetadataTrack(mp4File, (uint16_t *) &trackNr, (uint16_t *) &nOfTracks)) { nFormat->track = trackNr; nFormat->numTracks = nOfTracks; }
 	if (ex_MP4GetMetadataDisk(mp4File, (uint16_t *) &discNr, (uint16_t *) &nOfDiscs)) { nFormat->disc = discNr; nFormat->numDiscs = nOfDiscs; }
 
+	uint32_t	 artworkCount = ex_MP4GetMetadataCoverArtCount(mp4File);
+
+	for (UnsignedInt i = 0; i < artworkCount; i++)
+	{
+		unsigned char	*buffer	= NIL;
+		uint32_t	 size	= 0;
+
+		if (ex_MP4GetMetadataCoverArt(mp4File, &buffer, &size, i))
+		{
+			Picture	*picture = new Picture();
+
+			picture->data.Resize(size);
+
+			memcpy(picture->data, buffer, picture->data.Size());
+
+			if	(buffer[0] == 0xFF && buffer[1] == 0xD8) picture->mime = "image/jpeg";
+			else if (buffer[0] == 0x89 && buffer[1] == 0x50 &&
+				 buffer[2] == 0x4E && buffer[3] == 0x47 &&
+				 buffer[4] == 0x0D && buffer[5] == 0x0A &&
+				 buffer[6] == 0x1A && buffer[7] == 0x0A) picture->mime = "image/png";
+
+			if	(i == 0) picture->type = 3; // Cover (front)
+			else if (i == 1) picture->type = 4; // Cover (back)
+			else		 picture->type = 0; // Other
+
+			nFormat->pictures.Add(picture);
+
+			ex_MP4Free(buffer);
+		}
+	}
+
 	String::SetInputFormat(prevInFormat);
 
 	mp4Track = GetAudioTrack();

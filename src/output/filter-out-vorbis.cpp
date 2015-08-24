@@ -71,6 +71,41 @@ Bool BonkEnc::FilterOutVORBIS::Activate()
 			else if (currentConfig->default_comment != NIL)			      ex_vorbis_comment_add_tag(&vc, (char *) "COMMENT", currentConfig->default_comment);
 		}
 
+		/* Save cover art.
+		 */
+		if (currentConfig->copy_picture_tags)
+		{
+			/* This is the official way to store cover art in Vorbis
+			 * comments. It is used by most newer software.
+			 */
+			foreach (const Picture *picInfo, format->pictures)
+			{
+				Buffer<UnsignedByte>	 picBuffer((picInfo->mime	 != NIL ? strlen(picInfo->mime)	       : 0) +
+								   (picInfo->description != NIL ? strlen(picInfo->description) : 0) + picInfo->data.Size() + 32);
+				OutStream		 picOut(STREAM_BUFFER, picBuffer, picBuffer.Size());
+
+				picOut.OutputNumberRaw(picInfo->type, 4);
+
+				picOut.OutputNumberRaw(picInfo->mime != NIL ? strlen(picInfo->mime) : 0, 4);
+				picOut.OutputString(picInfo->mime);
+
+				picOut.OutputNumberRaw(picInfo->description != NIL ? strlen(picInfo->description) : 0, 4);
+				picOut.OutputString(picInfo->description);
+
+				picOut.OutputNumberRaw(0, 4);
+				picOut.OutputNumberRaw(0, 4);
+				picOut.OutputNumberRaw(0, 4);
+				picOut.OutputNumberRaw(0, 4);
+
+				picOut.OutputNumberRaw(picInfo->data.Size(), 4);
+				picOut.OutputData(picInfo->data, picInfo->data.Size());
+
+				picOut.Close();
+
+				ex_vorbis_comment_add_tag(&vc, (char *) "METADATA_BLOCK_PICTURE", Encoding::Base64(picBuffer).Encode());
+			}
+		}
+
 		String::SetOutputFormat(prevOutFormat);
 	}
 

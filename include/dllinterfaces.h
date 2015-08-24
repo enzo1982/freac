@@ -456,6 +456,9 @@ namespace BonkEnc
 	typedef bool					(*MP4GETMETADATATRACK)				(MP4FileHandle, uint16_t *, uint16_t *);
 	typedef bool					(*MP4SETMETADATADISK)				(MP4FileHandle, uint16_t, uint16_t);
 	typedef bool					(*MP4GETMETADATADISK)				(MP4FileHandle, uint16_t *, uint16_t *);
+	typedef uint32_t				(*MP4GETMETADATACOVERARTCOUNT)			(MP4FileHandle);
+	typedef bool					(*MP4SETMETADATACOVERART)			(MP4FileHandle, uint8_t *, uint32_t);
+	typedef bool					(*MP4GETMETADATACOVERART)			(MP4FileHandle, uint8_t **, uint32_t *, uint32_t);
 	typedef uint32_t				(*MP4GETNUMBEROFTRACKS)				(MP4FileHandle, const char *, uint8_t);
 	typedef MP4TrackId				(*MP4FINDTRACKID)				(MP4FileHandle, uint16_t, const char *, uint8_t);
 	typedef const char *				(*MP4GETTRACKTYPE)				(MP4FileHandle, MP4TrackId);
@@ -489,6 +492,9 @@ namespace BonkEnc
 	extern BEEXPORT MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack;
 	extern BEEXPORT MP4SETMETADATADISK		 ex_MP4SetMetadataDisk;
 	extern BEEXPORT MP4GETMETADATADISK		 ex_MP4GetMetadataDisk;
+	extern BEEXPORT MP4GETMETADATACOVERARTCOUNT	 ex_MP4GetMetadataCoverArtCount;
+	extern BEEXPORT MP4SETMETADATACOVERART		 ex_MP4SetMetadataCoverArt;
+	extern BEEXPORT MP4GETMETADATACOVERART		 ex_MP4GetMetadataCoverArt;
 	extern BEEXPORT MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
 	extern BEEXPORT MP4FINDTRACKID			 ex_MP4FindTrackId;
 	extern BEEXPORT MP4GETTRACKTYPE			 ex_MP4GetTrackType;

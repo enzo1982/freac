@@ -193,6 +193,9 @@ MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack			= NIL;
 MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack			= NIL;
 MP4SETMETADATADISK		 ex_MP4SetMetadataDisk			= NIL;
 MP4GETMETADATADISK		 ex_MP4GetMetadataDisk			= NIL;
+MP4GETMETADATACOVERARTCOUNT	 ex_MP4GetMetadataCoverArtCount		= NIL;
+MP4SETMETADATACOVERART		 ex_MP4SetMetadataCoverArt		= NIL;
+MP4GETMETADATACOVERART		 ex_MP4GetMetadataCoverArt		= NIL;
 MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks		= NIL;
 MP4FINDTRACKID			 ex_MP4FindTrackId			= NIL;
 MP4GETTRACKTYPE			 ex_MP4GetTrackType			= NIL;
@@ -950,6 +953,9 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	ex_MP4GetMetadataTrack		= (MP4GETMETADATATRACK) mp4v2dll->GetFunctionAddress("MP4GetMetadataTrack");
 	ex_MP4SetMetadataDisk		= (MP4SETMETADATADISK) mp4v2dll->GetFunctionAddress("MP4SetMetadataDisk");
 	ex_MP4GetMetadataDisk		= (MP4GETMETADATADISK) mp4v2dll->GetFunctionAddress("MP4GetMetadataDisk");
+	ex_MP4GetMetadataCoverArtCount	= (MP4GETMETADATACOVERARTCOUNT) mp4v2dll->GetFunctionAddress("MP4GetMetadataCoverArtCount");
+	ex_MP4SetMetadataCoverArt	= (MP4SETMETADATACOVERART) mp4v2dll->GetFunctionAddress("MP4SetMetadataCoverArt");
+	ex_MP4GetMetadataCoverArt	= (MP4GETMETADATACOVERART) mp4v2dll->GetFunctionAddress("MP4GetMetadataCoverArt");
 	ex_MP4GetNumberOfTracks		= (MP4GETNUMBEROFTRACKS) mp4v2dll->GetFunctionAddress("MP4GetNumberOfTracks");
 	ex_MP4FindTrackId		= (MP4FINDTRACKID) mp4v2dll->GetFunctionAddress("MP4FindTrackId");
 	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) mp4v2dll->GetFunctionAddress("MP4GetTrackType");
@@ -983,6 +989,9 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	    ex_MP4GetMetadataTrack		== NIL ||
 	    ex_MP4SetMetadataDisk		== NIL ||
 	    ex_MP4GetMetadataDisk		== NIL ||
+	    ex_MP4GetMetadataCoverArtCount	== NIL ||
+	    ex_MP4SetMetadataCoverArt		== NIL ||
+	    ex_MP4GetMetadataCoverArt		== NIL ||
 	    ex_MP4GetNumberOfTracks		== NIL ||
 	    ex_MP4FindTrackId			== NIL ||
 	    ex_MP4GetTrackType			== NIL ||
