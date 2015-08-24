@@ -98,8 +98,9 @@ History
 	Version 1.0.25 CVS (August 2015)
 
 		- updated Swedish and Basque translations
-		- fixed existing files being overwritten in "Output to input folder" mode
+		- fixed cover art not being written to WMA files without a description present
 		- fixed crash when trying to decode WMA files without duration field set
+		- fixed existing files being overwritten in "Output to input folder" mode
 
 	Version 1.0.24 (July 2015)
 

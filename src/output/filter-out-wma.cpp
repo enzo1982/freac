@@ -195,28 +195,21 @@ Bool BonkEnc::FilterOutWMA::Deactivate()
 					{
 						WM_PICTURE	 picture = { 0 };
 
-						picture.bPictureType = picInfo->type;
-						picture.dwDataLen    = picInfo->data.Size();
-						picture.pbData	     = (BYTE *) (UnsignedByte *) picInfo->data;
+						picture.bPictureType	   = picInfo->type;
+						picture.pwszMIMEType	   = new WCHAR [picInfo->mime.Length() + 1];
+						picture.pwszMIMEType[0]    = 0;
+						picture.pwszDescription	   = new WCHAR [picInfo->description.Length() + 1];
+						picture.pwszDescription[0] = 0;
+						picture.dwDataLen	   = picInfo->data.Size();
+						picture.pbData		   = (BYTE *) (UnsignedByte *) picInfo->data;
 
-						if (picInfo->mime != NIL)
-						{
-							picture.pwszMIMEType = new WCHAR [picInfo->mime.Length() + 1];
-
-							wcsncpy(picture.pwszMIMEType, picInfo->mime, picInfo->mime.Length() + 1);
-						}
-
-						if (picInfo->description != NIL)
-						{
-							picture.pwszDescription = new WCHAR [picInfo->description.Length() + 1];
-
-							wcsncpy(picture.pwszDescription, picInfo->description, picInfo->description.Length() + 1);
-						}
+						if (picInfo->mime	 != NIL) wcsncpy(picture.pwszMIMEType, picInfo->mime, picInfo->mime.Length() + 1);
+	  					if (picInfo->description != NIL) wcsncpy(picture.pwszDescription, picInfo->description, picInfo->description.Length() + 1);
 
 						hr = pHeaderInfo->AddAttribute(0, g_wszWMPicture, NIL, WMT_TYPE_BINARY, 0, (BYTE *) &picture, sizeof(WM_PICTURE));
 
-						if (picInfo->mime != NIL)	 delete [] picture.pwszMIMEType;
-						if (picInfo->description != NIL) delete [] picture.pwszDescription;
+						delete [] picture.pwszMIMEType;
+						delete [] picture.pwszDescription;
 					}
 				}
 

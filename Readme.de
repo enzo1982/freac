@@ -99,8 +99,9 @@ Geschichte
 	Version 1.0.25 CVS (August 2015)
 
 		- Schwedische und baskische Übersetzungen aktualisiert
-		- Überschreiben vorhandener Dateien im "Ausgabe in Eingabeordner"-Modus behoben
+		- Fehler behoben, durch den keine Coverbilder ohne Beschreibung in WMA-Dateien geschrieben wurden
 		- Absturz beim Versuch, WMA-Dateien ohne gesetzte Abspieldauer abzuspielen, behoben
+		- Überschreiben vorhandener Dateien im "Ausgabe in Eingabeordner"-Modus behoben
 
 	Version 1.0.24 (Juli 2015)
 
