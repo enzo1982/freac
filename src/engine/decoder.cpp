@@ -96,7 +96,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 	decoder->SetConfiguration(configuration);
 	decoder->SetAudioTrackInfo(trackInfo);
 
-	if (stream->AddFilter(decoder) == False)
+	if (stream->SetFilter(decoder) == False)
 	{
 		BoCA::Utilities::ErrorMessage("Cannot set up decoder for input file: %1\n\nError: %2", File(nFileName).GetFileName(), decoder->GetErrorString());
 
@@ -139,7 +139,7 @@ Bool BonkEnc::Decoder::Destroy()
 
 	Registry	&boca = Registry::Get();
 
-	stream->RemoveFilter(decoder);
+	stream->RemoveFilter();
 
 	if (decoder->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", decoder->GetErrorString());
 
@@ -158,7 +158,7 @@ Bool BonkEnc::Decoder::Destroy()
 	return True;
 }
 
-Bool BonkEnc::Decoder::GetStreamInfo(Track &track)
+Bool BonkEnc::Decoder::GetStreamInfo(Track &track) const
 {
 	return decoder->GetStreamInfo(fileName, track);
 }

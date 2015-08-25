@@ -92,7 +92,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 	encoder->SetConfiguration(configuration);
 	encoder->SetAudioTrackInfo(album);
 
-	if (stream->AddFilter(encoder) == False)
+	if (stream->SetFilter(encoder) == False)
 	{
 		BoCA::Utilities::ErrorMessage("Cannot set up encoder for output file: %1\n\nError: %2", File(fileName).GetFileName(), encoder->GetErrorString());
 
@@ -119,7 +119,7 @@ Bool BonkEnc::Encoder::Destroy()
 
 	encoder->SetAudioTrackInfo(album);
 
-	stream->RemoveFilter(encoder);
+	stream->RemoveFilter();
 
 	if (encoder->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", encoder->GetErrorString());
 

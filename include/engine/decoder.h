@@ -45,7 +45,7 @@ namespace BonkEnc
 			Bool				 Create(const String &, const BoCA::Track &);
 			Bool				 Destroy();
 
-			Bool				 GetStreamInfo(BoCA::Track &);
+			Bool				 GetStreamInfo(BoCA::Track &) const;
 
 			Int				 Read(Buffer<UnsignedByte> &);
 
