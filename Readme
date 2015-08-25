@@ -97,7 +97,7 @@ History
 
 	Version 1.0.25 CVS (August 2015)
 
-		- updated Swedish and Basque translations
+		- updated Italian, Swedish and Basque translations
 		- added MP4/AAC and Ogg Vorbis cover art support
 		- fixed cover art not being written to WMA files without a description present
 		- fixed crash when trying to decode WMA files without duration field set

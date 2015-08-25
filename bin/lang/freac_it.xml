@@ -24,7 +24,7 @@
     <entry id="11" string="Audio CD contents">Brani da CD audio</entry>
     <entry id="12" string="Start encoding">Avvia codifica</entry>
     <entry id="13" string="Stop encoding">Interrompi codifica</entry>
-    <entry id="14" string="Encoding file:">File processato:</entry>
+    <entry id="14" string="Encoding file:">File elaborato:</entry>
     <entry id="15" string="Time left:">Tempo residuo:</entry>
     <entry id="16" string="Percent done:">Completato:</entry>
     <entry id="17" string="Selected encoder:">Codificatore selezionato:</entry>
@@ -67,45 +67,45 @@
     <entry id="54" string="Quality">Qualità</entry>
     <entry id="55" string="Encoders">Codificatori</entry>
     <entry id="56" string="Language">Lingua</entry>
-    <entry id="57" string="Show title info">Mostra informazioni sul brano</entry>
+    <entry id="57" string="Show title info">Visualizza informazioni brano</entry>
     <entry id="58" string="General settings setup">Impostazioni generali</entry>
     <entry id="59" string="Configure encoder">Configura...</entry>
     <entry id="60" string="Encoder">Codificatore</entry>
-    <entry id="61" string="Output folder">Cartella di destinazione</entry>
+    <entry id="61" string="Output folder">Cartella destinazione</entry>
     <entry id="62" string="Browse">Sfoglia...</entry>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:">Selezionare la cartella in cui memorizzare i file processati:</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Seleziona la cartella in cui memorizzare i file elaborati:</entry>
     <entry id="64" string="Encoding">Codifica</entry>
     <entry id="65" string="Author">Autore</entry>
     <entry id="66" string="URL">URL</entry>
     <entry id="67" string="Information">Informazioni</entry>
-    <entry id="68" string="Select language:">Scegliere la lingua:</entry>
+    <entry id="68" string="Select language:">Scegli la lingua:</entry>
     <entry id="69" string="Active CD-ROM drive">Unità CD predefinita</entry>
     <entry id="70" string="Ripper settings">Impostazioni estrazione dati audio</entry>
     <entry id="71" string="Activate cdparanoia mode:">Attiva modalità paranoia</entry>
     <entry id="72" string="Activate jitter correction">Attiva correzione Jitter</entry>
     <entry id="73" string="Swap left/right channel">Inverti canali destro e sinistro</entry>
-    <entry id="74" string="Lock CD tray while ripping">Blocca cassetto CD</entry>
+    <entry id="74" string="Lock CD tray while ripping">Blocca vassoio CD</entry>
     <entry id="75" string="Use native NT SCSI library">Utilizza libreria NT SCSI</entry>
     <entry id="76" string="Overlap only">Solo overlap</entry>
     <entry id="77" string="No verify">Nessuna verifica</entry>
-    <entry id="78" string="No scratch repair">Nessuna correzione suono</entry>
+    <entry id="78" string="No scratch repair">Nessuna correzione audio</entry>
     <entry id="79" string="Full cdparanoia mode">Modalità paranoia completa</entry>
     <entry id="80" string="Bitrate">Bitrate</entry>
-    <entry id="81" string="Copyright bit">Bit di Copyright</entry>
+    <entry id="81" string="Copyright bit">Bit copyright</entry>
     <entry id="82" string="CRC">CRC</entry>
-    <entry id="83" string="Original bit">Bit Originale</entry>
+    <entry id="83" string="Original bit">Bit originale</entry>
     <entry id="84" string="Channels">Canali</entry>
-    <entry id="85" string="Private bit">Bit Privato</entry>
-    <entry id="86" string="Set Copyright bit">Imposta bit Copyright</entry>
+    <entry id="85" string="Private bit">Bit privato</entry>
+    <entry id="86" string="Set Copyright bit">Imposta bit copyright</entry>
     <entry id="87" string="Enable CRC">Attiva CRC</entry>
-    <entry id="88" string="Set Original bit">Imposta bit Originale</entry>
+    <entry id="88" string="Set Original bit">Imposta bit originale</entry>
     <entry id="89" string="Dual channel encoding">Codifica canali stereo</entry>
-    <entry id="90" string="Set Private bit">Imposta bit Privato</entry>
-    <entry id="91" string="Encoder mode">Modalità di codifica</entry>
+    <entry id="90" string="Set Private bit">Imposta bit privato</entry>
+    <entry id="91" string="Encoder mode">Modalità codifica</entry>
     <entry id="92" string="Stereo mode">Modalità stereo</entry>
     <entry id="93" string="Quantization">Quantizzazione</entry>
     <entry id="94" string="Downsampling ratio">Rapporto downsampling</entry>
-    <entry id="95" string="Predictor size">Predictor</entry>
+    <entry id="95" string="Predictor size">Dim. predictor</entry>
     <entry id="96" string="Enable lossless encoding">Codifica senza perdite</entry>
     <entry id="97" string="Enable Joint Stereo">Attiva Joint Stereo</entry>
     <entry id="98" string="Bitrate per channel:">Bitrate per canale:</entry>
@@ -142,10 +142,10 @@
     <entry id="129" string="Enforce strict ISO compliance">Forza conformità ISO</entry>
     <entry id="135" string="Output sampling rate">Frequenza</entry>
     <entry id="136" string="no resampling">no ricampionatura</entry>
-    <entry id="137" string="Highpass filter">Filtro Highpass</entry>
+    <entry id="137" string="Highpass filter">Filtro passa alto</entry>
     <entry id="138" string="Set Highpass frequency (Hz):">Imposta frequenza (in Hz):</entry>
     <entry id="139" string="Set Highpass width (Hz):">Imposta ampiezza (in Hz):</entry>
-    <entry id="140" string="Lowpass filter">Filtro Lowpass</entry>
+    <entry id="140" string="Lowpass filter">Filtro passa basso</entry>
     <entry id="141" string="Set Lowpass frequency (Hz):">Imposta frequenza (in Hz):</entry>
     <entry id="142" string="Set Lowpass width (Hz):">Imposta ampiezza (in Hz):</entry>
     <entry id="143" string="Misc settings">Altre impostazioni</entry>
@@ -162,21 +162,21 @@
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Si sono verificati errori durante la connessione al server freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Connessione al server freedb su</entry>
     <entry id="156" string="Requesting CD information">Richiesta informazioni sul CD</entry>
-    <entry id="157" string="eMail address:">Indirizzo e-mail:</entry>
-    <entry id="158" string="Please enter a valid eMail address.">Digitare un indirizzo di posta elettronica valido.</entry>
+    <entry id="157" string="eMail address:">Indirizzo email:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Inserisci un indirizzo di posta elettronica valido.</entry>
     <entry id="159" string="No exact matches found">Nessuna corrispondenza trovata</entry>
     <entry id="160" string="Multiple matches found">Trovate corrispondenze multiple</entry>
     <entry id="161" string="Matches">Corrispondenze</entry>
-    <entry id="162" string="Select the entry that best fits your CD:">Scegliere la voce corretta per il CD:</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Scegli la voce corretta per il CD:</entry>
     <entry id="163" string="Extended CDDB settings">Opzioni avanzate CDDB</entry>
     <entry id="164" string="CGI scripts">Script CGI</entry>
     <entry id="165" string="CDDB query script:">Interrogazione database CDDB:</entry>
     <entry id="166" string="CDDB submit script:">Invio dati CDDB:</entry>
     <entry id="167" string="HTTP settings">Impostazioni HTTP</entry>
-    <entry id="168" string="Proxy settings">Impostazioni Proxy</entry>
+    <entry id="168" string="Proxy settings">Impostazioni proxy</entry>
     <entry id="169" string="no proxy">nessun proxy</entry>
-    <entry id="170" string="Proxy type:">Tipo Proxy:</entry>
-    <entry id="171" string="Proxy server:">Server Proxy:</entry>
+    <entry id="170" string="Proxy type:">Tipo proxy:</entry>
+    <entry id="171" string="Proxy server:">Server proxy:</entry>
     <entry id="172" string="Presets">Preimpostazioni</entry>
     <entry id="173" string="Use preset:">Utilizza:</entry>
     <entry id="174" string="Custom settings">Impostazioni personalizzate</entry>
@@ -212,8 +212,8 @@
     <entry id="208" string="Help">?</entry>
     <entry id="209" string="index_en.html">index_it.html</entry>
     <entry id="210" string="Plug-ins">Plugin</entry>
-    <entry id="211" string="Input plug-ins">Input</entry>
-    <entry id="212" string="Output plug-ins">Output</entry>
+    <entry id="211" string="Input plug-ins">Sorgente</entry>
+    <entry id="212" string="Output plug-ins">Destinazione</entry>
     <entry id="213" string="Configure">Configura</entry>
     <entry id="214" string="About">Informazioni...</entry>
     <entry id="215" string="Play">Riproduci</entry>
@@ -229,25 +229,25 @@
     <entry id="225" string="Expert">Avanzate</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Non è possibile configurare il codificatore durante la fase di codifica.</entry>
     <entry id="227" string="The output folder does not exist! Do you want to create it?">La cartella di destinazione non esiste. Crearla?</entry>
-    <entry id="228" string="Filename pattern">Modello per il nome di file</entry>
+    <entry id="228" string="Filename pattern">Modello nome file</entry>
     <entry id="229" string="unknown album">album sconosciuto</entry>
     <entry id="230" string="Translated by %1.">Traduzione a cura di %1.</entry>
     <entry id="231" string="Select all">Seleziona tutto</entry>
     <entry id="232" string="Select none">Deseleziona tutto</entry>
     <entry id="233" string="Toggle selection">Inverti selezione</entry>
-    <entry id="234" string="Show Tip of the Day">Mostra suggerimenti</entry>
-    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 è disponibile in %2 lingue. Se la propria lingua non è&#10;supportata dal programma, utilizzare lo strumento 'smooth&#10;Translator' per tradurre l'interfaccia grafica di %1.</entry>
+    <entry id="234" string="Show Tip of the Day">Visualizza suggerimenti</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 è disponibile in %2 lingue. Se la tua lingua non è&#10;supportata dal programma, utilizza lo strumento 'smooth&#10;Translator' per tradurre l'interfaccia grafica di %1.</entry>
     <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Il pacchetto di distribuzione di %1 include i codificatori&#10;LAME, Ogg Vorbis e Bonk. I codificatori per i formati audio&#10;AAC e VQF sono disponibili sul sito Web di %1:&#10;%2.</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 supporta i plugin di WinAmp 2. Ciò consente la&#10;riproduzione di numerosi altri tipi di file. Per aggiungere un&#10;plugin di WinAmp, copiare il relativo file in_*.dll nella cartella&#10;%1/plugins.</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Con %1 è possibile inviare al database di freedb informazioni&#10;che includono i caratteri Unicode. Se si dispone di CD i cui titoli dei&#10;brani o i nomi degli interpreti contengono caratteri non latini,&#10;%1 è in grado di importare in modo corretto le voci contenute&#10;nel database di freedb.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per correggere gli errori di lettura durante la copia dei brani da CD&#10;aprire la finestra di dialogo Impostazioni generali, scegliere la&#10;scheda CDRip, quindi selezionare la casella di controllo Attiva&#10;correzione Jitter. Se gli errori di lettura persistono, utilizzare una delle&#10;modalità Paranoia.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Per commenti o suggerimenti su come migliorare %1,&#10;compilare il modulo Tracker, disponibile sulla pagina Web&#10;SourceForge project di %1 oppure inviare un'e-mail&#10;all'indirizzo %3.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Per commenti o suggerimenti su come migliorare %1,&#10;compilare il modulo Tracker, disponibile sulla pagina Web&#10;SourceForge project di %1 oppure inviare un'email&#10;all'indirizzo %3.</entry>
     <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Trovate utile %1? %1 è disponibile gratutitamente, ma&#10;potete finanziare lo sviluppo del programma effettuando una&#10;donazione. Per inviare denaro all'indirizzo %2&#10;utilizzare il servizio offerto da PayPal. Per ulteriori informazioni&#10;consultare la seguente pagina Web:&#10;%3.</entry>
-    <entry id="242" string="Bitrate / Quality">Bitrate / Qualità</entry>
-    <entry id="243" string="Check for updates now">Verifica la disponibilità di aggiornamenti</entry>
+    <entry id="242" string="Bitrate / Quality">Bitrate/qualità</entry>
+    <entry id="243" string="Check for updates now">Controllo disponibilità aggiornamenti</entry>
     <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">È disponibile su Internet una nuova versione di %1.&#10;Effettuare il download ed installare la nuova versione?</entry>
     <entry id="245" string="There are no updates available at the moment!">Al momento non sono disponibili nuovi aggiornamenti del programma.</entry>
-    <entry id="246" string="Check for updates at startup">Verifica la disponibilità di aggiornamenti all'avvio</entry>
+    <entry id="246" string="Check for updates at startup">Verifica disponibilità aggiornamenti all'avvio</entry>
     <entry id="247" string="Read CD contents on insert">Leggi CD una volta inserito</entry>
     <entry id="248" string="Eject disk after ripping">Espelli disco al termine</entry>
     <entry id="249" string="Encode 'On-The-Fly'">Codifica 'al volo'</entry>
@@ -287,7 +287,7 @@
     <entry id="283" string="Load joblist...">Carica elenco...</entry>
     <entry id="284" string="Save joblist...">Salva elenco...</entry>
     <entry id="285" string="Pause/resume encoding">Sospendi/riprendi codifica</entry>
-    <entry id="286" string="Shutdown after encoding">Arresta il sistema al termine della codifica</entry>
+    <entry id="286" string="Shutdown after encoding">Arresta il sistema a codifica completata</entry>
     <entry id="287" string="Playlist Files">File della playlist</entry>
     <entry id="288" string="unknown year">anno sconosciuto</entry>
     <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Impossibile inizializzare il codificatore %1. Verificare i parametri di configurazione.</entry>
@@ -311,7 +311,7 @@
     <entry id="307" string="Folder">Cartella</entry>
     <entry id="308" string="Add folder">Aggiungi cartella</entry>
     <entry id="309" string="Choose folder:">Scegli cartella:</entry>
-    <entry id="310" string="Select the folder to add to the joblist:">Selezionare la cartella da aggiungere:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">Seleziona la cartella da aggiungere:</entry>
     <entry id="311" string="Add files by pattern">Aggiungi file per modello</entry>
     <entry id="312" string="Pattern">Modello</entry>
     <entry id="313" string="Start folder">Cartella iniziale</entry>
@@ -357,25 +357,25 @@
     <entry id="353" string="Enable local CDDB database">Attiva database CDDB locale</entry>
     <entry id="354" string="CDDB path:">Cartella CDDB:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Selezionare la cartella in cui è memorizzato il database CDDB.</entry>
-    <entry id="356" string="File already exists">Il file già esiste</entry>
-    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Il file di destinazione %1&#10;già esiste. Sovrascriverlo?</entry>
+    <entry id="356" string="File already exists">Il file esiste già</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Il file di destinazione %1&#10;esiste già. Sovrascriverlo?</entry>
     <entry id="358" string="Overwrite all further files">Sovrascrivi tutti i file</entry>
     <entry id="359" string="Start ripping automatically">Attiva estrazione automatica</entry>
     <entry id="360" string="Submit to online database later">Invia al database online in seguito</entry>
     <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Il supporto CDDB è disattivato. Attivare il supporto CDDB&#10;locale o remoto nella finestra delle impostazioni.</entry>
     <entry id="362" string="CDDB entries to submit:">Voci CDDB da inviare:</entry>
-    <entry id="363" string="Show queued CDDB entries...">Mostra voci CDDB in coda...</entry>
+    <entry id="363" string="Show queued CDDB entries...">Visualizza voci CDDB in coda...</entry>
     <entry id="364" string="Submit all">Invia tutto</entry>
     <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Il supporto CDDB remoto è disattivato. Attivare il supporto&#10;CDDB remoto nella finestra delle impostazioni.</entry>
     <entry id="366" string="Category">Categoria</entry>
     <entry id="367" string="Close">Chiudi</entry>
     <entry id="368" string="Automatization">Automatizzazione</entry>
     <entry id="369" string="Query CDDB database later">Interroga database CDDB in seguito</entry>
-    <entry id="370" string="Show queued CDDB queries...">Mostra interrogazioni CDDB in coda...</entry>
+    <entry id="370" string="Show queued CDDB queries...">Visualizza interrogazioni CDDB in coda...</entry>
     <entry id="371" string="CDDB queries">Interrogazioni CDB</entry>
     <entry id="372" string="Query">Interroga</entry>
     <entry id="373" string="Query all">Interroga tutti</entry>
-    <entry id="374" string="Query string">Stringa di interrogazione</entry>
+    <entry id="374" string="Query string">Stringa interrogazione</entry>
     <entry id="375" string="CDDB queries to perform:">Interrogazioni CDDB da eseguire:</entry>
     <entry id="376" string="Would you like to perform this query again later?">Si desidera eseguire nuovamente questa interrogazione in seguito?</entry>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows ha negato l'accesso alle unità CD-ROM.&#10;&#10;Contattare l'amministratore di sistema per poter&#10;accedere all'unità CD-ROM.</entry>
@@ -407,8 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">Usa codifica a 2 passi</entry>
     <entry id="404" string="Target bitrate">Bitrate</entry>
     <entry id="405" string="Set drive speed limit:">Limita velocità dell'unità:</entry>
+    <entry id="406" string="Support this project"/>Suppota questo progetto</entry>
+    <entry id="407" string="Please support this project!"/>Per favore supporta questo progetto!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>Aiutaci a mantenere questo sofwtare gratuito supportando il progetto %1&#10;con una donazione&#10;&#10;Fai clic su uno dei pulsanti sottostanti per fare una donazione con PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>Puoi inviare anche direttamente del denaro a %1 usando PayPal.&#10;&#10;Per favore scrivi a %1 se vuoi donare usando&#10;un pagamento elettronico, inviarci un cheque o inviarci denaro via mail.</entry>
     <entry id="410" string="usd">eur</entry>
+    <entry id="411" string="en"/>en</entry>
+    <entry id="412" string="Thank you very much!"/>Molte grazie!</entry>
+    <entry id="413" string="Remind me later"/>Ricordamelo più tardi</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="416" string="Default"/>Predefinito</entry>
   </data>
 </LangFile>

@@ -98,7 +98,7 @@ Geschichte
 
 	Version 1.0.25 CVS (August 2015)
 
-		- Schwedische und baskische Übersetzungen aktualisiert
+		- Italienische, schwedische und baskische Übersetzungen aktualisiert
 		- Unterstützung für Coverbilder in MP4/AAC- und Ogg Vorbis-Dateien hinzugefügt
 		- Fehler behoben, durch den keine Coverbilder ohne Beschreibung in WMA-Dateien geschrieben wurden
 		- Absturz beim Versuch, WMA-Dateien ohne gesetzte Abspieldauer abzuspielen, behoben
