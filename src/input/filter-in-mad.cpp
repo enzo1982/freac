@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -66,6 +66,7 @@ BonkEnc::FilterInMAD::~FilterInMAD()
 
 Bool BonkEnc::FilterInMAD::Activate()
 {
+	stop	 = False;
 	finished = False;
 
 	InStream	*f_in = new InStream(STREAM_DRIVER, driver);
@@ -84,22 +85,24 @@ Bool BonkEnc::FilterInMAD::Activate()
 
 	infoFormat = new Track();
 
-	decoderThread = new Thread();
-	decoderThread->threadMain.Connect(&FilterInMAD::ReadMADData, this);
-	decoderThread->SetFlags(THREAD_WAITFLAG_START);
-	decoderThread->Start();
+	decoderThread = NIL;
 
 	return true;
 }
 
 Bool BonkEnc::FilterInMAD::Deactivate()
 {
-	decoderThread->Stop();
+	if (decoderThread != NIL)
+	{
+		stop = True;
+
+		readDataMutex->Release();
+
+		decoderThread->Wait();
+	}
 
 	delete readDataMutex;
 	delete samplesBufferMutex;
-
-	Object::DeleteObject(decoderThread);
 
 	delete infoFormat;
 
@@ -108,6 +111,8 @@ Bool BonkEnc::FilterInMAD::Deactivate()
 
 Int BonkEnc::FilterInMAD::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
+	if (decoderThread == NIL) decoderThread = NonBlocking0<>(&FilterInMAD::ReadMADData, this).Call();
+
 	if (decoderThread->GetStatus() != THREAD_RUNNING && samplesBuffer.Size() <= 0) return -1;
 
 	readDataMutex->Release();
@@ -213,6 +218,7 @@ BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
 	infoFormat = new Track;
 	infoFormat->fileSize = nFormat->fileSize;
 
+	stop	 = False;
 	finished = False;
 
 	SkipID3v2Tag(f_in);
@@ -224,17 +230,10 @@ BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
 	readDataMutex = new Mutex();
 	samplesBufferMutex = new Mutex();
 
-	decoderThread = new Thread();
-	decoderThread->threadMain.Connect(&FilterInMAD::ReadMADMetadata, this);
-	decoderThread->SetFlags(THREAD_WAITFLAG_START);
-	decoderThread->Start();
-
-	while (decoderThread->GetStatus() == THREAD_RUNNING) S::System::System::Sleep(0);
+	ReadMADMetadata();
 
 	delete readDataMutex;
 	delete samplesBufferMutex;
-
-	Object::DeleteObject(decoderThread);
 
 	delete f_in;
 	delete ioDriver;
@@ -257,7 +256,7 @@ BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
-Int BonkEnc::FilterInMAD::ReadMADData(Thread *self)
+Int BonkEnc::FilterInMAD::ReadMADData()
 {
 	ex_mad_decoder_init(&decoder, this, &MADInputCallback, NIL, NIL, &MADOutputCallback, &MADErrorCallback, NIL);
 
@@ -268,7 +267,7 @@ Int BonkEnc::FilterInMAD::ReadMADData(Thread *self)
 	return Success();
 }
 
-Int BonkEnc::FilterInMAD::ReadMADMetadata(Thread *self)
+Int BonkEnc::FilterInMAD::ReadMADMetadata()
 {
 	ex_mad_decoder_init(&decoder, this, &MADInputCallback, NIL, NIL, &MADHeaderCallback, &MADErrorCallback, NIL);
 
@@ -283,7 +282,7 @@ mad_flow BonkEnc::MADInputCallback(void *client_data, mad_stream *stream)
 {
 	FilterInMAD	*filter = (FilterInMAD *) client_data;
 
-	if (filter->finished) return MAD_FLOW_STOP;
+	if (filter->stop || filter->finished) return MAD_FLOW_STOP;
 
 	static Buffer<UnsignedByte>	 inputBuffer;
 

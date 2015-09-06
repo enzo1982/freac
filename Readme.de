@@ -100,9 +100,10 @@ Geschichte
 
 		- Italienische, schwedische, baskische und valencianische Übersetzungen aktualisiert
 		- Unterstützung für Coverbilder in MP4/AAC- und Ogg Vorbis-Dateien hinzugefügt
-		- Fehler behoben, durch den keine Coverbilder ohne Beschreibung in WMA-Dateien geschrieben wurden
-		- Absturz beim Versuch, WMA-Dateien ohne gesetzte Abspieldauer abzuspielen, behoben
 		- Überschreiben vorhandener Dateien im "Ausgabe in Eingabeordner"-Modus behoben
+		- Abstürze in den MAD- und FLAC-Decoder-Komponenten behoben
+		- Absturz beim Versuch, WMA-Dateien ohne gesetzte Abspieldauer abzuspielen, behoben
+		- Fehler behoben, durch den keine Coverbilder ohne Beschreibung in WMA-Dateien geschrieben wurden
 
 	Version 1.0.24 (Juli 2015)
 

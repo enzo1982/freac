@@ -39,6 +39,7 @@ BonkEnc::FilterInFLAC::~FilterInFLAC()
 
 Bool BonkEnc::FilterInFLAC::Activate()
 {
+	stop	 = False;
 	finished = False;
 
 	readDataMutex = new Mutex();
@@ -48,22 +49,24 @@ Bool BonkEnc::FilterInFLAC::Activate()
 
 	infoFormat = new Track();
 
-	decoderThread = new Thread();
-	decoderThread->threadMain.Connect(&FilterInFLAC::ReadFLACData, this);
-	decoderThread->SetFlags(THREAD_WAITFLAG_START);
-	decoderThread->Start();
+	decoderThread = NIL;
 
 	return true;
 }
 
 Bool BonkEnc::FilterInFLAC::Deactivate()
 {
-	decoderThread->Stop();
+	if (decoderThread != NIL)
+	{
+		stop = True;
+
+		readDataMutex->Release();
+
+		decoderThread->Wait();
+	}
 
 	delete readDataMutex;
 	delete samplesBufferMutex;
-
-	Object::DeleteObject(decoderThread);
 
 	delete infoFormat;
 
@@ -72,6 +75,8 @@ Bool BonkEnc::FilterInFLAC::Deactivate()
 
 Int BonkEnc::FilterInFLAC::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
+	if (decoderThread == NIL) decoderThread = NonBlocking0<>(&FilterInFLAC::ReadFLACData, this).Call();
+
 	if (decoderThread->GetStatus() != THREAD_RUNNING && samplesBuffer.Size() <= 0) return -1;
 
 	readDataMutex->Release();
@@ -110,6 +115,8 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	nFormat->fileSize	= f_in->Size();
 
 	infoFormat = new Track;
+
+	stop	 = False;
 	finished = False;
 
 	driver = ioDriver;
@@ -117,17 +124,10 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	readDataMutex = new Mutex();
 	samplesBufferMutex = new Mutex();
 
-	decoderThread = new Thread();
-	decoderThread->threadMain.Connect(&FilterInFLAC::ReadFLACMetadata, this);
-	decoderThread->SetFlags(THREAD_WAITFLAG_START);
-	decoderThread->Start();
-
-	while (decoderThread->GetStatus() == THREAD_RUNNING) S::System::System::Sleep(0);
+	ReadFLACMetadata();
 
 	delete readDataMutex;
 	delete samplesBufferMutex;
-
-	Object::DeleteObject(decoderThread);
 
 	delete f_in;
 	delete ioDriver;
@@ -160,7 +160,7 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
-Int BonkEnc::FilterInFLAC::ReadFLACData(Thread *self)
+Int BonkEnc::FilterInFLAC::ReadFLACData()
 {
 	decoder = ex_FLAC__stream_decoder_new();
 
@@ -174,7 +174,7 @@ Int BonkEnc::FilterInFLAC::ReadFLACData(Thread *self)
 	return Success();
 }
 
-Int BonkEnc::FilterInFLAC::ReadFLACMetadata(Thread *self)
+Int BonkEnc::FilterInFLAC::ReadFLACMetadata()
 {
 	decoder = ex_FLAC__stream_decoder_new();
 
@@ -194,6 +194,13 @@ Int BonkEnc::FilterInFLAC::ReadFLACMetadata(Thread *self)
 FLAC__StreamDecoderReadStatus BonkEnc::FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *decoder, FLAC__byte buffer[], size_t *bytes, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
+
+	if (filter->stop)
+	{
+	    *bytes = 0;
+
+	    return FLAC__STREAM_DECODER_READ_STATUS_ABORT;
+	}
 
 	filter->readDataMutex->Lock();
 

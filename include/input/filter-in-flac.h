@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -30,6 +30,8 @@ namespace BonkEnc
 
 		private:
 			FLAC__StreamDecoder	*decoder;
+
+			Bool			 stop;
 			Bool			 finished;
 
 			Buffer<signed int>	 samplesBuffer;
@@ -40,8 +42,8 @@ namespace BonkEnc
 			Threads::Mutex		*readDataMutex;
 			Threads::Mutex		*samplesBufferMutex;
 
-			Int			 ReadFLACMetadata(Threads::Thread *);
-			Int			 ReadFLACData(Threads::Thread *);
+			Int			 ReadFLACMetadata();
+			Int			 ReadFLACData();
 		public:
 						 FilterInFLAC(Config *, Track *);
 						~FilterInFLAC();
