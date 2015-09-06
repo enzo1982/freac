@@ -67,7 +67,7 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 									  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
 																									  .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
 
-				log->WriteWarning(String("\tSkipping verification due to format mismatch: ").Append(trackToConvert.origFilename));
+				log->Write(String("\tSkipping verification due to format mismatch: ").Append(trackToConvert.origFilename), MessageTypeWarning);
 
 				trackPosition = trackToConvert.length;
 
@@ -136,7 +136,7 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 	{
 		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()));
 
-		log->WriteError(String("\tFailed to verify input file: ").Append(trackToConvert.origFilename));
+		log->Write(String("\tFailed to verify input file: ").Append(trackToConvert.origFilename), MessageTypeError);
 	}
 
 	/* Get MD5 checksum if we are to verify the output.
@@ -151,14 +151,14 @@ Int BonkEnc::ConvertWorkerSingleFile::Convert()
 	{
 		default:
 		case ConversionStepOnTheFly:
-			if (cancel) log->WriteWarning(String("\tCancelled converting: ").Append(trackToConvert.origFilename));
+			if (cancel) log->Write(String("\tCancelled converting: ").Append(trackToConvert.origFilename), MessageTypeWarning);
 			else	    log->Write(String("\tFinished converting:" ).Append(trackToConvert.origFilename));
 
 			break;
 		case ConversionStepVerify:
 			if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
 
-			if	(cancel)			   log->WriteWarning(String("\tCancelled verifying output file: ").Append(trackToConvert.origFilename));
+			if	(cancel)			   log->Write(String("\tCancelled verifying output file: ").Append(trackToConvert.origFilename), MessageTypeWarning);
 			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file:" ).Append(trackToConvert.origFilename));
 			else					   log->Write(String("\tSuccessfully verified output file:" ).Append(trackToConvert.origFilename));
 

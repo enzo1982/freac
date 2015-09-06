@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -121,7 +121,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 
 			if (http.DownloadToBuffer(httpResultBuffer) == Error())
 			{
-				protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)));
+				protocol->Write(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)), MessageTypeError);
 
 				str = "error";
 
@@ -171,7 +171,7 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 
 		if (socket->GetLastError() != IO_ERROR_OK)
 		{
-			protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_cddbp_port)));
+			protocol->Write(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_cddbp_port)), MessageTypeError);
 
 			connected = False;
 
@@ -385,7 +385,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 	if (http.DownloadToBuffer(httpResultBuffer) == Error())
 	{
-		protocol->WriteError(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)));
+		protocol->Write(String("CDDB: Error connecting to CDDB server at ").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)), MessageTypeError);
 
 		return False;
 	}

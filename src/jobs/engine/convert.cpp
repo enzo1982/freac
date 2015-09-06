@@ -943,7 +943,7 @@ Error BonkEnc::JobConvert::Perform()
 
 	conversionRunning = False;
 
-	if (stopConversion) log->WriteWarning("Encoding process cancelled.");
+	if (stopConversion) log->Write("Encoding process cancelled.", MessageTypeWarning);
 	else		    log->Write("Encoding process finished.");
 
 	SetProgress(1000);
