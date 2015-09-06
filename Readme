@@ -95,9 +95,9 @@ Known problems
 History
 -------
 
-	Version 1.0.25 CVS (August 2015)
+	Version 1.0.25 CVS (September 2015)
 
-		- updated Italian, Swedish and Basque translations
+		- updated Italian, Swedish, Basque and Valencian translations
 		- added MP4/AAC and Ogg Vorbis cover art support
 		- fixed cover art not being written to WMA files without a description present
 		- fixed crash when trying to decode WMA files without duration field set
@@ -481,7 +481,7 @@ Special thanks to
 			   Naglis Jonaitis (Lithuanian),
 			   Borca Alin and Laurentiu Bubuianu (Romanian),
 			   El libre (Catalan),
-			   Vjatv (Valencian),
+			   Agustín Bou (Valencian),
 			   Jose Goncalves (Portuguese),
 			   Meelis Pasieko (Estonian),
 			   Goran Bekic (Croatian),
