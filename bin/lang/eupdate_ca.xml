@@ -10,7 +10,7 @@
     <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>
   <data>
-    <entry id="1" string="Cancel">Cancel.lar</entry>
+    <entry id="1" string="Cancel">Cancel·lar</entry>
     <entry id="2" string="Install">Instalar</entry>
     <entry id="3" string="Show unstable releases">Mostrar versions inestables</entry>
     <entry id="4" string="Select the updated program version to be installed:">Selecciona la versió actualitzada del programa per a instalar:</entry>
