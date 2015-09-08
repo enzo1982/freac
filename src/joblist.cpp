@@ -319,8 +319,6 @@ Void BonkEnc::JobList::AddTrackByDialog()
 		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
 	}
 
-	fileTypes.Append(";*.cue");
-
 	dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
 
 	for (Int i = 0; i < types.Length(); i++) dialog->AddFilter(types.GetNth(i), extensions.GetNth(i));
