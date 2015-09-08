@@ -870,6 +870,15 @@
       </section>
     </section>
 
+    <section name="DSP">
+
+      <section name="Resample">
+	<entry id="50000" string="Converter">Konverter</entry>
+	<entry id="50001" string="Sampling rate">Samplerate</entry>
+	<entry id="50002" string="Output sampling rate">Ausgabesamplerate</entry>
+      </section>
+    </section>
+
     <section name="Extensions">
 
       <section name="Donate">
