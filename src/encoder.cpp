@@ -179,6 +179,8 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 
 				singleTrackInfo->outfile	= singleOutFile;
 
+				playlist_filename		= singleOutFile.Head(singleOutFile.FindLast("."));
+
 				playlist.AddTrack(GetRelativeFileName(singleOutFile, playlist_filename), String(singleTrackInfo->artist.Length() > 0 ? singleTrackInfo->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(singleTrackInfo->title.Length() > 0 ? singleTrackInfo->title : i18n->TranslateString("unknown title")), Math::Round((Float) totalSamples / (singleTrackInfo->rate * singleTrackInfo->channels)));
 
 				f_out		= new OutStream(STREAM_FILE, singleOutFile, OS_REPLACE);
